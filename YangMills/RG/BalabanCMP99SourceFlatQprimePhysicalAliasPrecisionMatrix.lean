@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeComplexFibreModeAction
 import YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary
 
 /-!
-# PRE-VALIDATION: physical flat Qprime alias precision matrix
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Physical flat Qprime alias precision matrix
 
 At fixed coarse momentum the fine modes form one finite reciprocal fibre.
 This module keeps the two physical momentum orientations distinct: the

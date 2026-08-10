@@ -8472,3 +8472,36 @@ Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
 preserve the coercion, carrier-normalization and elaboration failures.
 Restored diagnostic PASS `31385953304` did not seal; only the cold run above
 retires PRE-VALIDATION.
+
+### Step 7.5cxliii physical diagonal-plus-rank-one alias precision matrix (SEALED; active-region CLM and inverse open)
+
+Exact source checkpoint `e77a9ba120a621298f800db1dd73c4c75dec8d62`
+passed cold GitHub Actions run
+[`31390994217`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31390994217)
+with workflow checkpoint `b5e940837dd4a09394e0010bfb0194b428e3b499`.
+Restoration and saving of `.lake/build` were both skipped. The focal ran from
+`13:08:42Z` to `13:30:44Z`, completed 8,533 jobs, and emitted no warning or
+error in the new target. The audit ended at `13:30:52Z`; both stages exited
+zero and all seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The producer keeps the two physical momentum orientations literal. The
+opposite-momentum entire average performs fibre analysis, the direct-momentum
+factor performs synthesis, and their matrix action is proved to be exactly
+synthesis after analysis. The physical diagonal is the rescaled periodic
+stencil with its single `M^2` spacing conversion and mass term. The signed
+alias dictionary of Step 7.5cxlii transports the diagonal and the two rank-one
+axes separately; reindexing both axes yields the printed CMP89 entire
+diagonal-plus-rank-one precision matrix. No abstract self-adjointness exchanges
+the row and column factors, and the diagonal and rank-one coefficients remain
+separate.
+
+This is the finite flat Fourier-fibre matrix identity. It does not yet identify
+the active-region transported real/complex CLM with the fibre
+analysis/synthesis, construct its weighted adjoint, prove inverse uniqueness,
+or transport the inverse to the regional Green operator. Physical `B0`, window
+15 and every terminal field remain open. Counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostics `31389151982`, `31389531313`,
+`31389925909` and `31390252630` preserve only elaborational normalization
+repairs. Restored diagnostic PASS `31390748590` did not seal; only the cold run
+above retires PRE-VALIDATION.

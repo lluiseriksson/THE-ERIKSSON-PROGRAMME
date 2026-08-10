@@ -32865,3 +32865,39 @@ count stays exactly `20/41`, `TermSource = 0`. Failed diagnostics
 `31384293486`, `31384589759`, `31384920151`, `31385271471` and `31385586958`
 remain preserved; restored diagnostic PASS `31385953304` did not seal. Only
 the cold run above retires PRE-VALIDATION.
+
+## Addendum 718 (2026-08-10, **physical flat Qprime alias precision matrix GREEN; active-region CLM and inverse open; 20/41 unchanged**)
+
+Exact source checkpoint `e77a9ba120a621298f800db1dd73c4c75dec8d62`
+passed cold GitHub Actions run
+[`31390994217`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31390994217)
+with workflow checkpoint `b5e940837dd4a09394e0010bfb0194b428e3b499`.
+The cold job ran for `27m00s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `13:08:42Z` to `13:30:44Z`, completed 8,533
+jobs and emitted no warning or error in the new target. The audit ended at
+`13:30:52Z`. Both stages exited zero and all seven audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9064521013`, named
+`flat-qprime-physical-alias-precision-matrix-e77a9ba120a621298f800db1dd73c4c75dec8d62`,
+has GitHub digest
+`11cc22bd55bd98581d4d270103d072ba36cba0ba1f42de8cff2bcd663197994b`.
+Its deterministic inner archive re-hashed on Windows to
+`26e7276573b9a7f65788e7bdf7cad1291334cecf6301d0be214d7df4408864d2`;
+all 13 internal manifest entries matched.
+
+The producer proves the finite flat Fourier-fibre matrix identity without
+identifying the two momentum orientations abstractly. The opposite-momentum
+factor is analysis, the direct-momentum factor is synthesis, and their literal
+composition is the rank-one term. The diagonal is the rescaled periodic flat
+stencil with one `M^2` conversion and one mass term. The sealed signed alias
+dictionary transports the diagonal, row and column separately, and the
+two-axis reindexing is exactly the CMP89 entire diagonal-plus-rank-one matrix.
+
+This does not yet instantiate the active-region transported CLM, identify its
+weighted adjoint, construct the inverse, or transport that inverse to the
+regional Green operator. Physical `B0`, window 15 and every terminal field
+remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31389151982`, `31389531313`, `31389925909` and `31390252630`
+remain preserved; restored diagnostic PASS `31390748590` did not seal. Only
+the cold run above retires PRE-VALIDATION.
