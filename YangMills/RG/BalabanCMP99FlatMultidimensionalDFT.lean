@@ -212,22 +212,60 @@ theorem cmp99FlatZModDFT_InvDFT {d N : ℕ} [NeZero N]
     cmp99FlatZModDFT (cmp99FlatZModInvDFT psi) = psi := by
   funext k
   unfold cmp99FlatZModDFT cmp99FlatZModInvDFT
-  rw [← Finset.mul_sum]
-  congr 1
-  rw [Finset.sum_comm]
-  apply Finset.sum_congr rfl
-  intro l _
-  rw [Finset.sum_mul]
-  apply congrArg (fun z : ℂ => z * psi l)
-  apply Finset.sum_congr rfl
-  intro x _
-  rw [mul_comm, cmp99FlatZModFourierCharacter_comm,
-    cmp99FlatZModFourierCharacter_neg_swap,
-    cmp99FlatZModFourierCharacter_comm]
-  rw [sum_cmp99FlatZModFourierCharacter_mul_neg]
   have hcard : (N : ℂ) ^ d ≠ 0 := by
     exact pow_ne_zero d (Nat.cast_ne_zero.mpr (NeZero.ne N))
-  simp [hcard]
+  have hkernel (l : CMP99FlatZModBox d N) :
+      (∑ x, cmp99FlatZModFourierCharacter (-k) x *
+        cmp99FlatZModFourierCharacter l x) =
+        if l = k then (N : ℂ) ^ d else 0 := by
+    calc
+      (∑ x, cmp99FlatZModFourierCharacter (-k) x *
+          cmp99FlatZModFourierCharacter l x) =
+          ∑ x, cmp99FlatZModFourierCharacter x l *
+            cmp99FlatZModFourierCharacter (-x) k := by
+        apply Finset.sum_congr rfl
+        intro x _
+        rw [mul_comm, cmp99FlatZModFourierCharacter_comm l x,
+          cmp99FlatZModFourierCharacter_neg_swap k x]
+      _ = if l = k then (N : ℂ) ^ d else 0 := by
+        rw [sum_cmp99FlatZModFourierCharacter_mul_neg]
+  calc
+    (∑ x, cmp99FlatZModFourierCharacter (-k) x *
+          (((N : ℂ) ^ d)⁻¹ *
+            ∑ l, cmp99FlatZModFourierCharacter l x * psi l)) =
+        ((N : ℂ) ^ d)⁻¹ *
+          ∑ x, cmp99FlatZModFourierCharacter (-k) x *
+            ∑ l, cmp99FlatZModFourierCharacter l x * psi l := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro x _
+      ring
+    _ = ((N : ℂ) ^ d)⁻¹ *
+          ∑ x, ∑ l, cmp99FlatZModFourierCharacter (-k) x *
+            (cmp99FlatZModFourierCharacter l x * psi l) := by
+      congr 1
+      apply Finset.sum_congr rfl
+      intro x _
+      rw [Finset.mul_sum]
+    _ = ((N : ℂ) ^ d)⁻¹ *
+          ∑ l, (∑ x, cmp99FlatZModFourierCharacter (-k) x *
+            cmp99FlatZModFourierCharacter l x) * psi l := by
+      congr 1
+      rw [Finset.sum_comm]
+      apply Finset.sum_congr rfl
+      intro l _
+      rw [Finset.sum_mul]
+      apply Finset.sum_congr rfl
+      intro x _
+      ring
+    _ = ((N : ℂ) ^ d)⁻¹ *
+          ∑ l, (if l = k then (N : ℂ) ^ d else 0) * psi l := by
+      congr 1
+      apply Finset.sum_congr rfl
+      intro l _
+      rw [hkernel]
+    _ = psi k := by
+      simp [hcard]
 
 /-- The exact multidimensional DFT convention as a complex-linear
 equivalence. -/
