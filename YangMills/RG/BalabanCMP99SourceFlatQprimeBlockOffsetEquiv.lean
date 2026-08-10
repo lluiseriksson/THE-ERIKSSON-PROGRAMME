@@ -28,7 +28,7 @@ open scoped BigOperators
 
 noncomputable section
 
-variable {d M N' : ℕ} [NeZero M] [NeZero N']
+variable {d M N' : ℕ} [NeZero d] [NeZero M] [NeZero N']
 
 /-- Recovering the internal offset of an embedded block site is exact. -/
 @[simp] theorem cmp99BlockOffsetOfMem_embed
