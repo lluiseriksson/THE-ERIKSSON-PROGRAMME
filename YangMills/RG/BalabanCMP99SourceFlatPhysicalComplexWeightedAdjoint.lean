@@ -62,8 +62,8 @@ omit [NeZero d] [NeZero Nc] in
   rw [cmp99SourceFlatComplexBlockWeightedAdjointCLM,
     cmp99SourceTransportedBlockWeightedAdjointCLM,
     cmp99TransportedBlockSynthesisCLM_apply]
-  simp only [one_smul, cmp99SourceFlatComplexTransport_apply,
-    LinearIsometryEquiv.symm_apply_apply]
+  simp only [one_smul]
+  rfl
 
 /-- Complexifying the literal physical flat weighted adjoint pointwise is
 the same as applying the internally constructed complex synthesis. -/
@@ -82,9 +82,17 @@ theorem cmp99SourceFlatComplexBlockWeightedAdjoint_commutes_complexification
             (cmp99SourceFlatGaugeConfig d (M * N') Nc)) eta) := by
   apply WithLp.ofLp_injective
   funext x
-  rw [cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply,
-    cmp99SourceTransportedBlockWeightedAdjointCLM_flat_apply]
-  simp only [cmp99ActiveGaugeZeroCochainComplexificationCLM_apply]
+  rw [cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply]
+  change cmp99SUNLieCoordComplexificationLM Nc
+      (eta ⟨blockSite M N' x.1,
+        (mem_cmp99ActiveCoarseRegion_sites_iff
+          (M := M) (N' := N') Omega (blockSite M N' x.1)).2
+            (hOmega x.1 x.2)⟩) =
+    cmp99SUNLieCoordComplexificationLM Nc
+      (cmp99SourceTransportedBlockWeightedAdjointCLM Omega hOmega
+        (cmp99SourceWeightedPhysicalTransport rho
+          (cmp99SourceFlatGaugeConfig d (M * N') Nc)) eta x)
+  rw [cmp99SourceTransportedBlockWeightedAdjointCLM_flat_apply]
 
 /-- Pointwise fine-region field obtained by synthesizing one coarse complex
 Fourier mode.  This is not yet a statement about fine Fourier coefficients. -/
@@ -103,9 +111,9 @@ omit [NeZero d] [NeZero Nc] in
     cmp99SourceFlatActiveComplexCoarseModeSynthesis Omega ell v x =
       cmp99FlatComplexFibreFourierMode ell v (blockSite M N' x.1) := rfl
 
+omit [NeZero d] [NeZero Nc] in
 /-- Exact pointwise action of the complex source weighted adjoint on one
 restricted coarse Fourier mode.  No reciprocal-fibre expansion is asserted. -/
-omit [NeZero Nc] in
 theorem cmp99SourceFlatComplexBlockWeightedAdjoint_fourierMode
     (Omega : ActiveGaugeRegion d (M * N'))
     (hOmega : Omega.BlockSaturated)
