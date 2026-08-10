@@ -1,4 +1,4 @@
-name: Validate CMP89 normalized fine-lattice Fourier Green
+name: Validate CMP99 flat ambient Laplacian
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 414212ec8410c88fdb1dfe7bcb5081844e5f0903
+  SOURCE_SHA: c04b8dc87b948077c44fb3e2c09e827982987343
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    normalized-fine-lattice-fourier-green
     physical-fine-uniform-normalized-owner-bound
     physical-fine-normalized-owner-bound
     fine-lattice-endpoint-product-telescope
@@ -26,10 +27,9 @@ env:
     fine-lattice-stabilized-endpoint-bound
     fourier-left-derivative-kernel
     fixed-rate-physical-owner-bound
-    physical-normalized-owner-bound
 
 jobs:
-  normalized-fine-lattice-fourier-green:
+  flat-ambient-laplacian:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-normalized-fine-lattice-fourier-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-ambient-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq248FineLatticeNormalizedFourierGreen.lean \
-            YangMills/RG/BalabanCMP89Eq248FineLatticeNormalizedFourierGreenAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatAmbientLaplacian.lean \
+            YangMills/RG/BalabanCMP99SourceFlatAmbientLaplacianAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage normalized_fine_lattice_fourier_green_focal \
-            lake build YangMills.RG.BalabanCMP89Eq248FineLatticeNormalizedFourierGreen
-          run_stage normalized_fine_lattice_fourier_green_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq248FineLatticeNormalizedFourierGreenAudit.lean
+          run_stage flat_ambient_laplacian_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatAmbientLaplacian
+          run_stage flat_ambient_laplacian_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatAmbientLaplacianAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "normalized_fine_lattice_fourier_green_audit.log": 7,
+              "flat_ambient_laplacian_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              normalized-fine-lattice-fourier-green-evidence.tar.gz
-          sha256sum normalized-fine-lattice-fourier-green-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-ambient-laplacian-evidence.tar.gz
+          sha256sum flat-ambient-laplacian-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: normalized-fine-lattice-fourier-green-${{ env.SOURCE_SHA }}
+          name: flat-ambient-laplacian-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            normalized-fine-lattice-fourier-green-evidence.tar.gz
+            flat-ambient-laplacian-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-normalized-fine-lattice-fourier-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-ambient-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
