@@ -111,11 +111,23 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_eq_rescaledPeriodic
   apply Finset.sum_congr rfl
   intro mu _
   simp only [cmp99SourceFlatQprimeAmplitudeMomentum]
-  rw [show -((M : ℂ) * (-(cmp99FlatDiscreteMomentum k mu : ℂ))) =
-      (M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ) by ring]
-  rw [cmp89Eq245EntireScaledDifference_invNat_natMul,
-    cmp89Eq245EntireScaledDifference_invNat_natMul,
-    cmp99Flat_characterPair_eq_entireUnitDifferencePair]
+  have hneg :
+      cmp89Eq245EntireScaledDifference ((M : ℝ)⁻¹)
+          (-((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ))) =
+        (M : ℂ) * cmp89Eq245EntireScaledDifference 1
+          (-(cmp99FlatDiscreteMomentum k mu : ℂ)) := by
+    rw [show -((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ)) =
+        (M : ℂ) * (-(cmp99FlatDiscreteMomentum k mu : ℂ)) by ring]
+    exact cmp89Eq245EntireScaledDifference_invNat_natMul _
+  have hpos :
+      cmp89Eq245EntireScaledDifference ((M : ℝ)⁻¹)
+          (-(-((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ)))) =
+        (M : ℂ) * cmp89Eq245EntireScaledDifference 1
+          (cmp99FlatDiscreteMomentum k mu : ℂ) := by
+    rw [show -(-((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ))) =
+        (M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ) by ring]
+    exact cmp89Eq245EntireScaledDifference_invNat_natMul _
+  rw [hneg, hpos, cmp99Flat_characterPair_eq_entireUnitDifferencePair]
   ring
 
 /-- Fixed-coarse physical fine-momentum fibre. -/
