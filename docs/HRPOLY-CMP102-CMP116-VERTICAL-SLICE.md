@@ -7942,3 +7942,37 @@ terminal fields remain open. Counters stay exactly `20/41`, `TermSource = 0`.
 Diagnostic run `31347240982` passed with a restored graph but did not seal;
 failed diagnostic `31347092998` remains preserved as an elaboration failure.
 Only the cold run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxix fine-lattice Fourier left-derivative kernel (SEALED; physical Green dictionary open)
+
+Exact source checkpoint `8532124d6a387cbd2459fe2c5c377e5599db1242`
+passed cold GitHub Actions run
+[`31349337028`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31349337028)
+with workflow checkpoint `e084acbfd5b83fb09ef006f50fec8821c2ddcf69`.
+The job completed in `16m38s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `02:18:23Z` to `02:32:45Z`, the audit ended
+at `02:32:53Z`, and both stages exited zero. All six audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9048630196`, named
+`fine-lattice-fourier-left-derivative-kernel-8532124d6a387cbd2459fe2c5c377e5599db1242`,
+has GitHub digest
+`89660b103325ac3336f39808781bc99b4c23b963014bde9734717e39b50e16b1`.
+Its deterministic inner archive re-hashed on Windows to
+`41c6c7bebedae397152750c9fc90c7ef147d02d210049a833d103d2007b3462a`;
+all 13 internal manifest entries matched.
+
+At the literal `alpha = 0` specialization the endpoint integrand is now
+proved independent of the Holder displacement. A separate fine-lattice
+Fourier kernel is constructed at the physical endpoint displacement
+`(L^j)^(-1) * u`; every normalized physical endpoint is identified with that
+kernel, and the complete normalized stabilized expression is proved exactly
+equal to the difference of the two independently constructed endpoint kernel
+values. The older integer-displacement kernel is not imported or reused.
+
+This seals the source-shaped fine Fourier expression, not its identification
+with the repository's literal operator `partial_mu^xi (G_j Q_j^*)`. That
+operator dictionary, physical `B0`, window 15 and terminal fields remain
+open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
+`31349187530` passed with a restored graph but did not seal; only the cold run
+above retired the two PRE-VALIDATION marks.

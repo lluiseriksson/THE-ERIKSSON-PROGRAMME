@@ -32387,3 +32387,33 @@ terminal field is discharged. Live counters stay exactly `20/41`,
 `TermSource = 0`. Diagnostic PASS `31347240982` did not seal; failed
 diagnostic `31347092998` is retained as an elaboration failure. Only the cold
 run above did.
+
+## Addendum 704 (2026-08-10, **fine-lattice Fourier left-derivative kernel GREEN; physical Green dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `8532124d6a387cbd2459fe2c5c377e5599db1242`
+passed cold GitHub Actions run
+[`31349337028`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31349337028)
+with workflow checkpoint `e084acbfd5b83fb09ef006f50fec8821c2ddcf69`.
+The job completed in `16m38s`; restore/save of `.lake/build` were skipped.
+The focal ran from `02:18:23Z` to `02:32:45Z`, and the audit ended at
+`02:32:53Z`. Both stages exited zero, and all six audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9048630196`, named
+`fine-lattice-fourier-left-derivative-kernel-8532124d6a387cbd2459fe2c5c377e5599db1242`,
+has GitHub digest
+`89660b103325ac3336f39808781bc99b4c23b963014bde9734717e39b50e16b1`.
+Its deterministic inner archive re-hashed on Windows to
+`41c6c7bebedae397152750c9fc90c7ef147d02d210049a833d103d2007b3462a`;
+all 13 internal manifest entries matched.
+
+The sealed producer removes the Holder displacement from the literal
+`alpha = 0` endpoint internally, constructs the endpoint at physical spacing
+`(L^j)^(-1)`, identifies its normalized integral with a separate fine Fourier
+kernel, and proves exact two-endpoint recombination. It does not reuse the
+integer-displacement kernel forbidden by the phase-scale no-go.
+
+The Fourier/operator identity with `partial_mu^xi (G_j Q_j^*)`, physical
+`B0`, window 15 and every terminal field remain open. Live counters stay
+exactly `20/41`, `TermSource = 0`. Diagnostic PASS `31349187530` did not
+seal; only the cold run above did.

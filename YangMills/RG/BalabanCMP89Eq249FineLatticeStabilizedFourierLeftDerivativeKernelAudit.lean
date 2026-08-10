@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq249FineLatticeStabilizedFourierLeftDerivativeKernel
 
 /-!
-# PRE-VALIDATION audit: fine-lattice Fourier left-derivative kernel
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Audit: fine-lattice Fourier left-derivative kernel
 -/
 
 #print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand_zero_holder_independent

@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedIntegralRecombination
 
 /-!
-# PRE-VALIDATION: fine-lattice Fourier left-derivative kernel
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Fine-lattice Fourier left-derivative kernel
 
 CMP89 (2.49) evaluates the left-derivative kernel at physical fine-lattice
 displacements `xi*u`, with `xi = (L^j)^(-1)`.  The previously sealed
