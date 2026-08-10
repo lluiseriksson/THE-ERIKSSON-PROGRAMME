@@ -111,8 +111,11 @@ def validate_meta(data: dict[str, Any]) -> dict[str, Any]:
             err("meta.latest_submission.pdf_sha256 must be a 64-character digest")
         for key in ("source_anchor", "paper_commit"):
             oid = submission_obj.get(key)
-            if not isinstance(oid, str) or len(oid) != 40:
-                err(f"meta.latest_submission.{key} must be a full 40-character SHA")
+            if oid is not None and (not isinstance(oid, str) or len(oid) != 40):
+                err(
+                    f"meta.latest_submission.{key} must be null or a full "
+                    "40-character SHA"
+                )
     return meta
 
 

@@ -17,21 +17,20 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-10; outcome pending).** The 11-page paper
-*Every Spectral Switch Costs Memory: Sharp Robust Wigner–Smith Speed Limits for
-Passive Quantum Networks* is frozen at commit `e4d8989f`, with 339,660 bytes
-and SHA-256
-`795E03238F152B48241E49B3DB924497DAE16D9E13ABDA725E43ED3B60C1F4FF`.
-Exact links, release artifacts, scope and the known bibliographic limitation
-are recorded in
-[`docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md`](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md).
-The paper derives sharp robust Wigner–Smith action and McMillan-degree costs
-from approximate spectral routing. The submitted PDF omits the recommended
-explicit comparison with named subspace/operator-flow speed-limit antecedents,
-so its priority claim is recorded narrowly. GitHub publication is not treated
-as viXra acceptance, and no public identifier has been recorded. The exact
-calibration-memory and passive-reservoir submissions remain separate. None of
-these external papers changes the canonical Yang--Mills proof-state checkpoint.
+**Latest ai.viXra submission (2026-08-10; outcome pending).** The 11-page paper
+*Noncommuting Block Measurements Generate Quantum Diffusion: A Sharp
+Diamond-Norm Zeno Limit, a Noncommutative Connectivity Gap, and an Exact
+Irreducible Architecture* has 444,318 bytes and SHA-256
+`6F1A48265D87B24561289BADD8DAD1EDE334EB2DE365C7022E36712E8C841625`.
+Its reproducibility ZIP has 17 entries, passes 16/16 manifest hashes, and
+contains a byte-identical PDF. Exact metadata, scope and the absence of a
+public locator/source commit are recorded in
+[`docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md`](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md).
+The paper proves the sharp cubic-obstruction dichotomy for a direct CPTP
+block-measurement product and distinguishes it from multi-product Zeno
+post-processing. No public identifier has been recorded. The earlier external
+submission records remain separate, and none changes the canonical
+Yang--Mills proof-state checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

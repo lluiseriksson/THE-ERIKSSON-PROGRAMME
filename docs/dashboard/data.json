@@ -18,14 +18,14 @@
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "latest_submission": {
       "date": "2026-08-10",
-      "status": "paper reported submitted to viXra; moderation outcome and public identifier not recorded",
-      "title": "Every Spectral Switch Costs Memory: Sharp Robust Wigner–Smith Speed Limits for Passive Quantum Networks",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md",
-      "pdf": "https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/download/v1.3-robust-spectral-routing/every_spectral_switch_costs_memory.pdf",
-      "pdf_sha256": "795E03238F152B48241E49B3DB924497DAE16D9E13ABDA725E43ED3B60C1F4FF",
-      "source_anchor": "e4d8989f59a2a6f881db0e9f91299150b5fbaacc",
-      "paper_commit": "e4d8989f59a2a6f881db0e9f91299150b5fbaacc",
-      "integration": "external repository finite-sample-spectral-certificates; immutable v1.3 GitHub release"
+      "status": "paper reported submitted to ai.viXra; moderation outcome and public identifier not recorded",
+      "title": "Noncommuting Block Measurements Generate Quantum Diffusion: A Sharp Diamond-Norm Zeno Limit, a Noncommutative Connectivity Gap, and an Exact Irreducible Architecture",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md",
+      "pdf": "",
+      "pdf_sha256": "6F1A48265D87B24561289BADD8DAD1EDE334EB2DE365C7022E36712E8C841625",
+      "source_anchor": null,
+      "paper_commit": null,
+      "integration": "owner-local exact PDF and reproducibility ZIP verified; no public PDF locator or Git source anchor supplied"
     }
   },
   "status_legend": {

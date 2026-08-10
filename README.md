@@ -440,23 +440,22 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ## Latest ai.viXra submission
 
-**Submitted 2026-08-10; moderation outcome and public viXra identifier are not
-yet recorded.** The latest 11-page paper is *Every Spectral Switch Costs
-Memory: Sharp Robust Wigner–Smith Speed Limits for Passive Quantum Networks*.
-Its immutable
-[`v1.3` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.3-robust-spectral-routing)
-contains a 339,660-byte PDF with SHA-256
-`795E03238F152B48241E49B3DB924497DAE16D9E13ABDA725E43ED3B60C1F4FF`.
-The [submission record](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md)
-preserves the exact commit, release artifacts, scope and known bibliographic
-limitation.
+**Submitted 2026-08-10; moderation outcome and public ai.viXra identifier are
+not yet recorded.** The latest 11-page paper is *Noncommuting Block
+Measurements Generate Quantum Diffusion: A Sharp Diamond-Norm Zeno Limit, a
+Noncommutative Connectivity Gap, and an Exact Irreducible Architecture*. Its
+exact local PDF has 444,318 bytes and SHA-256
+`6F1A48265D87B24561289BADD8DAD1EDE334EB2DE365C7022E36712E8C841625`.
+The [submission record](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md)
+preserves the artifact and package hashes, 16/16 manifest verification, scope
+and provenance limitation.
 
-The paper converts approximate complementary-sector routing into sharp
-Wigner–Smith trace-action and McMillan-degree lower bounds, additive across
-disjoint frequency arcs. The immutable submitted PDF does not include the
-recommended explicit comparison with several known subspace/operator-flow
-speed-limit antecedents; the acta narrows the priority claim accordingly. The
-earlier [exact calibration memory](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md),
+The paper identifies the exact cubic obstruction governing the sharp
+`Theta(n^-1/2)` versus `O(n^-1)` direct-product dichotomy and develops the
+associated block-algebra quantum diffusion, connectivity gap and exact
+irreducible example. No public PDF locator or Git source commit was supplied,
+so none is invented in the dashboard. Earlier [robust spectral routing](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md),
+[exact calibration memory](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md),
 [passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),
 [OS reconstruction](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md),
 [AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
