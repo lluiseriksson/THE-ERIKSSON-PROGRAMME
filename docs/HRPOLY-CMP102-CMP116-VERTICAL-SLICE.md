@@ -7835,3 +7835,37 @@ remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
 `31342182306` passed with a restored graph but did not seal; failed diagnostic
 run `31342007885` remains preserved as an elaboration failure. Only the cold
 run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxvi normalized fine-lattice endpoint recombination (SEALED; physical Green dictionary open)
+
+Exact source checkpoint `335af26bb8959b7c0692963d251d635cc12843ce`
+passed cold GitHub Actions run
+[`31343838078`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31343838078)
+with workflow checkpoint `64c363330558559f0ce1d3370622831ebf618c5f`.
+The job completed in `20m23s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `00:14:45Z` to `00:33:04Z`, the audit ended
+at `00:33:16Z`, and both stages exited zero. All seven audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9046938975`, named
+`normalized-fine-lattice-recombination-335af26bb8959b7c0692963d251d635cc12843ce`,
+has GitHub digest
+`bb3089dd249da5c8f7cf75dc764a99d3da1a4b9b31595248144608e1d2b64527`.
+Its deterministic inner archive re-hashed on Windows to
+`030eebf71c763b4bfb312c2a285e2400974691e1a2b89f1efe7f04ed1930ca49`;
+all 13 manifest entries re-hashed exactly.
+
+The complete normalized stabilized integral is proved to be the exact
+difference of two endpoint integrals after shifting each endpoint along its
+own signed contour. Integrability and both contour equalities are constructed
+internally. The norm bound retains the sum of the two literal physical
+fine-lattice weights; a separate theorem compares them with the exact visible
+cost `exp (rho * (L^j)^(-1))` for a unit fine edge. No common endpoint sign
+and no unnamed neighbor constant are introduced.
+
+The physical unit-bond producer, the identification with
+`partial_mu^xi (G_j Q_j^*)`, physical `B0`, window 15 and terminal fields
+remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
+`31343695361` passed with a restored graph but did not seal; failed diagnostic
+runs `31343318299` and `31343514391` remain preserved as elaboration failures.
+Only the cold run above retired the two PRE-VALIDATION marks.

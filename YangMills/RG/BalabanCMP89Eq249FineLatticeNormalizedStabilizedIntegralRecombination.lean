@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegral
 
 /-!
-# PRE-VALIDATION: normalized physical fine-lattice endpoint recombination
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Cold-sealed normalized physical fine-lattice endpoint recombination
 
 The stabilized CMP89 integrand is literally the difference of two endpoint
 terms.  This module constructs that split at physical spacing `(L^j)^(-1)`,

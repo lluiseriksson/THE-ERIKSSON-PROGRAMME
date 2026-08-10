@@ -32289,3 +32289,35 @@ Fourier/operator dictionary, physical `B0`, window 15 and terminal fields
 remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic
 PASS `31342182306` did not seal; failed diagnostic `31342007885` is retained
 as an elaboration failure. Only the cold run above did.
+
+## Addendum 701 (2026-08-10, **normalized fine-lattice recombination GREEN; physical Green dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `335af26bb8959b7c0692963d251d635cc12843ce`
+passed cold GitHub Actions run
+[`31343838078`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31343838078)
+with workflow checkpoint `64c363330558559f0ce1d3370622831ebf618c5f`.
+The job completed in `20m23s`; restore/save of `.lake/build` were skipped.
+The focal ran from `00:14:45Z` to `00:33:04Z`, and the audit ended at
+`00:33:16Z`. Both stages exited zero, and all seven audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9046938975`, named
+`normalized-fine-lattice-recombination-335af26bb8959b7c0692963d251d635cc12843ce`,
+has GitHub digest
+`bb3089dd249da5c8f7cf75dc764a99d3da1a4b9b31595248144608e1d2b64527`.
+Its deterministic inner archive re-hashed on Windows to
+`030eebf71c763b4bfb312c2a285e2400974691e1a2b89f1efe7f04ed1930ca49`;
+all 13 internal manifest entries matched.
+
+The complete source-normalized physical fine-lattice integral is derived as
+the exact difference of two endpoint integrals, each shifted with its own
+signed contour. The resulting norm estimate retains both literal endpoint
+weights. Their separate comparison pays exactly
+`exp (rho * (L^j)^(-1))` for a unit fine edge; that cost is not absorbed into
+an unnamed constant.
+
+The physical unit-bond producer, Fourier/operator dictionary, physical `B0`,
+window 15 and terminal fields remain open. Live counters stay exactly
+`20/41`, `TermSource = 0`. Diagnostic PASS `31343695361` did not seal; failed
+diagnostics `31343318299` and `31343514391` remain retained as elaboration
+failures. Only the cold run above did.
