@@ -32901,3 +32901,39 @@ remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
 diagnostics `31389151982`, `31389531313`, `31389925909` and `31390252630`
 remain preserved; restored diagnostic PASS `31390748590` did not seal. Only
 the cold run above retires PRE-VALIDATION.
+
+## Addendum 719 (2026-08-10, **literal flat physical contour transport GREEN; interacting transport and regional Green open; 20/41 unchanged**)
+
+Exact source checkpoint `00177e508cfb22e302b7487a82bce001f9631aee`
+passed cold GitHub Actions run
+[`31395397728`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31395397728)
+with workflow checkpoint `4e2e3e4f8f75348155bd82f3287024166fca3dda`.
+The cold job ran for `17m44s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `13:57:30Z` to `14:13:11Z`, completed 8,428
+jobs and emitted no warning or error in the new target. The audit ended at
+`14:13:20Z`. Both stages exited zero and all seven audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9066008436`, named
+`flat-physical-transport-00177e508cfb22e302b7487a82bce001f9631aee`,
+has GitHub digest
+`53a273c402b3d19e3be1e38854a5e634adccb774f97a566c5282c183215b3f72`.
+Its deterministic inner archive re-hashed on Windows to
+`7d478de3cab99843e1fb99c2d20251d1d7d6b546ca0f3a5b2bf6ede40f36e625`;
+all 13 internal manifest entries matched.
+
+The producer constructs the literal flat gauge configuration inside the
+physical CMP99 contour API, proves every ordered Wilson line and contour
+holonomy equal to one, and identifies the resulting source transport with
+the identity isometry. Consequently the literal source physical block
+average reduces to its fixed `M^-d` normalized block sum and the literal
+source weighted adjoint reduces to unit synthesis. Neither transport nor
+normalization is supplied by the caller.
+
+This is a flat-background specialization, not an interacting-transport
+theorem. The complexified physical Fourier transform, active-region CLM
+identification, inverse uniqueness and regional Green transport remain open.
+Physical `B0`, window 15 and all terminal fields remain open. Live counters
+stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31394121111` and
+`31394732916` remain preserved; restored diagnostic PASS `31395156202` did
+not seal. Only the cold run above retires the PRE-VALIDATION mark.

@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTower
 
 /-!
-# PRE-VALIDATION: flat physical contour transport
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Flat physical contour transport
 
 The physical CMP99 average does not receive a transport family from its
 caller: it constructs contour holonomies in the supplied background and then

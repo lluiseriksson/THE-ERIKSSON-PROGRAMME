@@ -8505,3 +8505,44 @@ or transport the inverse to the regional Green operator. Physical `B0`, window
 `31389925909` and `31390252630` preserve only elaborational normalization
 repairs. Restored diagnostic PASS `31390748590` did not seal; only the cold run
 above retires PRE-VALIDATION.
+
+### Step 7.5cxliv literal flat physical contour transport (SEALED; interacting transport and regional Green open)
+
+Exact source checkpoint `00177e508cfb22e302b7487a82bce001f9631aee`
+passed cold GitHub Actions run
+[`31395397728`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31395397728)
+with workflow checkpoint `4e2e3e4f8f75348155bd82f3287024166fca3dda`.
+The cold job ran for `17m44s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `13:57:30Z` to `14:13:11Z`, completed 8,428
+jobs and emitted no warning or error in the new target. The audit ended at
+`14:13:20Z`. Both stages exited zero and all seven audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9066008436`, named
+`flat-physical-transport-00177e508cfb22e302b7487a82bce001f9631aee`,
+has GitHub digest
+`53a273c402b3d19e3be1e38854a5e634adccb774f97a566c5282c183215b3f72`.
+Its deterministic inner archive re-hashed on Windows to
+`7d478de3cab99843e1fb99c2d20251d1d7d6b546ca0f3a5b2bf6ede40f36e625`;
+all 13 internal manifest entries matched.
+
+The physical source average is not supplied with an arbitrary transport.
+The new producer constructs the literal flat gauge configuration, proves
+every ordered Wilson line and contour holonomy equal to one, and therefore
+identifies the source-constructed adjoint transport with the identity. Its
+two consumers then reduce the actual one-step physical average to the
+source-normalized `M^-d` block sum and the actual source weighted adjoint to
+unit-coefficient synthesis. No transport family or normalization is supplied
+as data.
+
+This is the exact flat-background specialization on an arbitrary
+block-saturated active region. It does not identify the interacting contour
+transport with the flat one, construct the physical complexified Fourier
+transform, identify the active-region CLM with the sealed fibre matrix,
+construct its inverse, or transport an inverse to the regional Green
+operator. Physical `B0`, window 15 and every terminal field remain open.
+Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
+`31394121111` and `31394732916` preserve respectively the explicit-instance
+and equivalence-extensionality/identity-normalization repairs. Diagnostic PASS
+`31395156202` restored the graph and did not seal; only the cold run above
+retires the PRE-VALIDATION mark.
