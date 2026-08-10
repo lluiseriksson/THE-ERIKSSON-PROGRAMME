@@ -81,7 +81,7 @@ theorem cmp99Flat_characterPair_eq_entireUnitDifferencePair
           (-(Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ))) = 1 := by
     rw [← Complex.exp_add]
     simp
-  linear_combination hmul
+  linear_combination -2 * hmul
 
 /-- At lattice spacing one, the scaled CMP89 symbol is definitionally the
 unit-lattice symbol used in (2.49). -/
@@ -107,7 +107,7 @@ theorem cmp99FlatPeriodicLaplacianSymbol_eq_cmp89Unit
           (fun i => (cmp99FlatDiscreteMomentum k i : ℂ)) := by
       unfold cmp99FlatPeriodicLaplacianSymbol
         cmp89Eq245EntireScaledLaplacianSymbol
-      rw [show (0 : ℂ) ^ 2 = 0 by norm_num, add_zero]
+      norm_num only [map_zero, zero_pow, OfNat.ofNat_ne_zero, add_zero]
       apply Finset.sum_congr rfl
       intro i _
       exact cmp99Flat_characterPair_eq_entireUnitDifferencePair k i
