@@ -18,14 +18,14 @@
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "latest_submission": {
       "date": "2026-08-10",
-      "status": "v3 paper reported submitted to ai.viXra after v1 was cancelled before publication; moderation outcome and public identifier not recorded",
-      "title": "Noncommuting Block Measurements Generate Quantum Diffusion: A Three-Obstruction Convergence Hierarchy, a Noncommutative Connectivity Gap, and Exact Algebraic Architectures",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md",
+      "status": "paper reported submitted as a new ai.viXra submission; moderation outcome and public identifier not recorded",
+      "title": "Operational Curvature of the Heisenberg Cut: Exact Diamond Readout, a Discrete Stokes Law, and Sharp Action Bounds for Dissipative Zeno Holonomy",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md",
       "pdf": "",
-      "pdf_sha256": "1EBD2390B9BE9257E6D6772DEA56B6ACB90867674AA77C05CC53C5B3956A178F",
+      "pdf_sha256": "16C1224FD17383F9F191FA69622961863C3925076F9A1669024D9335DC3C38B4",
       "source_anchor": null,
       "paper_commit": null,
-      "integration": "owner-local v3 PDF and reproducibility ZIP verified; cancelled v1 is non-public; no public PDF locator or Git source anchor supplied"
+      "integration": "owner-local exact PDF and reproducibility ZIP verified; no public PDF locator or Git source anchor supplied"
     }
   },
   "status_legend": {

@@ -441,20 +441,22 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 ## Latest ai.viXra submission
 
 **Submitted 2026-08-10; moderation outcome and public ai.viXra identifier are
-not yet recorded.** The latest 13-page paper is *Noncommuting Block
-Measurements Generate Quantum Diffusion: A Three-Obstruction Convergence
-Hierarchy, a Noncommutative Connectivity Gap, and Exact Algebraic
-Architectures*. Its exact local PDF has 460,394 bytes and SHA-256
-`1EBD2390B9BE9257E6D6772DEA56B6ACB90867674AA77C05CC53C5B3956A178F`.
-The [submission record](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md)
-preserves the v3 artifact and package hashes, 16/16 manifest verification and
-the cancellation status of the non-public v1 precursor.
+not yet recorded.** The latest 10-page paper is *Operational Curvature of the
+Heisenberg Cut: Exact Diamond Readout, a Discrete Stokes Law, and Sharp Action
+Bounds for Dissipative Zeno Holonomy*. Its exact local PDF has 413,414 bytes
+and SHA-256
+`16C1224FD17383F9F191FA69622961863C3925076F9A1669024D9335DC3C38B4`.
+The [submission record](docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md)
+preserves the exact metadata, mathematical scope, visual review and the
+reproducibility package identity; its 14/14 manifest entries pass and its
+embedded PDF is byte-identical to the submitted artifact.
 
-The paper proves the sharp three-obstruction hierarchy through the attained
-`Theta(n^-3/2)` quintic branch and `O(n^-2)` fourth level. The earlier v1 upload
-was cancelled before publication and is not treated as an ai.viXra version of
-record. No public PDF locator or Git source commit was supplied for v3, so none
-is invented. Earlier [exact Finsler speed limits](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md),
+The paper gives an exact diamond-norm readout of ordering curvature, a discrete
+non-Abelian Stokes law, balanced semigroup integration and the sharp qubit
+action bound `kappa <= S^2/[m tan(pi/m)]`. No public PDF locator or Git source
+commit was supplied, so none is invented. Earlier [block-record Zeno
+diffusion](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md),
+[exact Finsler speed limits](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md),
 [robust spectral routing](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md),
 [exact calibration memory](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md),
 [passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),

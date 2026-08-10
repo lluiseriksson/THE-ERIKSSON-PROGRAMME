@@ -17,19 +17,18 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest ai.viXra submission (2026-08-10; outcome pending).** The 13-page v3
-paper *Noncommuting Block Measurements Generate Quantum Diffusion: A
-Three-Obstruction Convergence Hierarchy, a Noncommutative Connectivity Gap,
-and Exact Algebraic Architectures* has 460,394 bytes and SHA-256
-`1EBD2390B9BE9257E6D6772DEA56B6ACB90867674AA77C05CC53C5B3956A178F`.
-Its reproducibility ZIP passes 16/16 manifest hashes and contains a
-byte-identical PDF. The prior v1 upload was cancelled before publication and
-is classified as non-public, not as a version of record. Exact metadata,
-three-obstruction scope and lifecycle are recorded in
-[`docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md`](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md).
+**Latest ai.viXra submission (2026-08-10; outcome pending).** The 10-page paper
+*Operational Curvature of the Heisenberg Cut: Exact Diamond Readout, a Discrete
+Stokes Law, and Sharp Action Bounds for Dissipative Zeno Holonomy* has 413,414
+bytes and SHA-256
+`16C1224FD17383F9F191FA69622961863C3925076F9A1669024D9335DC3C38B4`.
+Its reproducibility ZIP passes 14/14 manifest hashes and contains a
+byte-identical PDF. Exact metadata, mathematical scope, visual QA and lifecycle
+are recorded in
+[`docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md`](docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md).
 No public identifier, PDF locator or source commit has been recorded. Earlier
-external submissions remain separate, and none changes the canonical
-Yang--Mills proof-state checkpoint.
+external submissions, including the block-record Zeno v3 paper, remain
+separate, and none changes the canonical Yang--Mills proof-state checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
