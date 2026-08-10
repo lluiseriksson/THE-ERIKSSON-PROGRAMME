@@ -66,8 +66,9 @@ theorem cmp99SourceFlatQprimeAmplitudeMomentum_fourierNeg_eq_neg_add_period
     cmp99FlatDiscreteMomentum]
   push_cast
   field_simp [hM, hN]
-  rw [hcC]
-  ring
+  change -(((kneg mu).val : ℕ) : ℂ) =
+    (((k mu).val : ℕ) : ℂ) - (M : ℂ) * (N' : ℂ) * (c mu : ℂ)
+  linear_combination -hcC
 
 /-- The one-block amplitude at periodic negative Fourier momentum is exactly
 the separately named opposite-momentum row amplitude. -/
