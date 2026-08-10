@@ -7,10 +7,13 @@ import YangMills.RG.BalabanCMP89Eq245EntireAveragePeriodicity
 import YangMills.RG.BalabanCMP99SourceFlatQprimeAliasFibreDictionary
 
 /-!
-# PRE-VALIDATION: signed flat Qprime momentum to the printed CMP89 alias fibre
+# Cold-sealed signed flat Qprime momentum to the printed CMP89 alias fibre
 
-The source is present, its `.olean` has not yet been materialized, and the
-result has not yet been verified by the compiler.
+Compiler-verified at exact source checkpoint
+`5225ae39da3458a93aba34f79c045971f7922d24` by cold GitHub Actions run
+`31386205166`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,530 jobs, the audit exited zero, and all eight audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The cold-sealed fibre dictionary enumerates a quotient coordinate `q : Fin M`
 by the centered interval.  Enumeration alone does not identify physical

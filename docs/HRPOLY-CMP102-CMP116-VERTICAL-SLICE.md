@@ -8429,3 +8429,46 @@ and `31381866244` preserve the four initial elaboration failures, the reduced
 single `mod` failure and the opaque-product-coordinate failure respectively.
 Restored diagnostic PASS `31382114494` did not seal; only the cold run above
 retires the two PRE-VALIDATION marks.
+
+### Step 7.5cxlii signed fine momentum to the printed CMP89 alias momentum (SEALED; weighted-adjoint matrix open)
+
+Exact source checkpoint `5225ae39da3458a93aba34f79c045971f7922d24`
+passed cold GitHub Actions run
+[`31386205166`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31386205166)
+with workflow checkpoint `e12cd097c3eb2688e0c51e32035121a88a0fe4d4`.
+The cold job completed in `23m41s`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `12:04:55Z` to `12:26:35Z`, completed
+8,530 jobs and emitted no warning or error in the new target. The audit ended
+at `12:26:41Z`. Both stages exited zero, and all eight audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9062479430`, named
+`flat-qprime-signed-alias-momentum-dictionary-5225ae39da3458a93aba34f79c045971f7922d24`,
+has GitHub digest
+`af5c4d89f46faaee0da69fc1060131398439af9c16d34c70e04532b7147b9b00`.
+Its deterministic inner archive re-hashed on Windows to
+`4b82f8728f017ad2fb74be1e9fd307cd0667521d2efae06b152ff5256241e16b`;
+all 13 internal manifest entries matched.
+
+The order-preserving carrier enumeration of Step 7.5cxli is deliberately not
+used as a momentum identity. The physical one-block amplitude is evaluated at
+`-M * p_fine`, so the new equivalence sends the quotient residue `q` to the
+unique centered representative of `-q mod M`. It is constructed through the
+explicit affine involution `x |-> -x - lower` on `ZMod M`. The module proves
+that the resulting printed alias integer plus `q` is divisible by `M`, hence
+the physical amplitude momentum differs from the CMP89 alias momentum by an
+internally constructed integer multiple of the exact `2*pi*M` period in each
+coordinate.
+
+Column and opposite-momentum row transports are proved separately. Thus no
+abstract self-adjointness or shared use of the word "row" changes the
+orientation, and no pointwise equality of different reciprocal
+representatives is asserted. The next source-facing brick is the literal
+diagonal-plus-rank-one matrix identity for the weighted adjoint and
+`Q'^*Q'` on this signed alias fibre. Inverse uniqueness and regional transport
+remain open. Physical `B0`, window 15 and every terminal field remain open.
+Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
+`31384293486`, `31384589759`, `31384920151`, `31385271471` and `31385586958`
+preserve the coercion, carrier-normalization and elaboration failures.
+Restored diagnostic PASS `31385953304` did not seal; only the cold run above
+retires PRE-VALIDATION.

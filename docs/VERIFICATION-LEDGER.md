@@ -32829,3 +32829,39 @@ remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
 diagnostics `31381194800`, `31381581934` and `31381866244` remain preserved;
 restored diagnostic PASS `31382114494` did not seal. Only the cold run above
 retires the two PRE-VALIDATION marks.
+
+## Addendum 717 (2026-08-10, **signed physical Qprime momentum to centered CMP89 alias momentum GREEN; weighted-adjoint matrix open; 20/41 unchanged**)
+
+Exact source checkpoint `5225ae39da3458a93aba34f79c045971f7922d24`
+passed cold GitHub Actions run
+[`31386205166`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31386205166)
+with workflow checkpoint `e12cd097c3eb2688e0c51e32035121a88a0fe4d4`.
+The cold job ran for `23m41s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `12:04:55Z` to `12:26:35Z`, completed 8,530
+jobs and emitted no warning or error in the new target. The audit ended at
+`12:26:41Z`. Both stages exited zero and all eight audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9062479430`, named
+`flat-qprime-signed-alias-momentum-dictionary-5225ae39da3458a93aba34f79c045971f7922d24`,
+has GitHub digest
+`af5c4d89f46faaee0da69fc1060131398439af9c16d34c70e04532b7147b9b00`.
+Its deterministic inner archive re-hashed on Windows to
+`4b82f8728f017ad2fb74be1e9fd307cd0667521d2efae06b152ff5256241e16b`;
+all 13 internal manifest entries matched.
+
+The carrier equivalence of Addendum 716 orders the quotient coordinates but
+does not preserve their physical momentum classes. The new producer closes
+that semantic gate: it constructs the centered representative of `-q mod M`
+by an affine involution on `ZMod M`, proves the exact divisibility relation,
+and derives the coordinatewise `2*pi*M` period between the physical signed
+amplitude momentum and the printed CMP89 alias momentum. The entire average
+column and its opposite-momentum row are transported separately.
+
+This is not yet the weighted-adjoint or rank-one `Q'^*Q'` matrix identity.
+The diagonal fine symbol, inverse uniqueness and regional transport remain
+open. Physical `B0`, window 15 and every terminal field remain open. The live
+count stays exactly `20/41`, `TermSource = 0`. Failed diagnostics
+`31384293486`, `31384589759`, `31384920151`, `31385271471` and `31385586958`
+remain preserved; restored diagnostic PASS `31385953304` did not seal. Only
+the cold run above retires PRE-VALIDATION.
