@@ -286,10 +286,10 @@ theorem cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen_forwardDifference
       normalization * ∫ x, deriv x ∂measure
   calc
     _ = normalization *
-        ((∫ x, shifted x ∂measure) - ∫ x, base x ∂measure) / (xi : ℂ) := by
+        (((∫ x, shifted x ∂measure) - ∫ x, base x ∂measure) / (xi : ℂ)) := by
       ring
     _ = normalization *
-        (∫ x, shifted x - base x ∂measure) / (xi : ℂ) := by
+        ((∫ x, shifted x - base x ∂measure) / (xi : ℂ)) := by
       rw [MeasureTheory.integral_sub hshifted hbase]
     _ = normalization *
         (∫ x, (shifted x - base x) / (xi : ℂ) ∂measure) := by
