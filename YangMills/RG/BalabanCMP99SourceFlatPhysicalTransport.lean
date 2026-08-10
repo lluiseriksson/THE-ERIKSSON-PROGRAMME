@@ -35,7 +35,8 @@ variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 
 /-- The literal flat gauge configuration: every oriented link is the group
 identity. -/
-def cmp99SourceFlatGaugeConfig (d N Nc : ℕ) [NeZero N] [NeZero Nc] :
+def cmp99SourceFlatGaugeConfig (d N Nc : ℕ)
+    [NeZero d] [NeZero N] [NeZero Nc] :
     GaugeConfig d N (SUN Nc) where
   toFun := fun _ => 1
   map_reverse := by intro _; simp
@@ -124,7 +125,7 @@ theorem cmp99SourceTransportedBlockWeightedAdjointCLM_flat_apply
   rw [cmp99SourceTransportedBlockWeightedAdjointCLM,
     cmp99TransportedBlockSynthesisCLM_apply]
   rw [cmp99SourceWeightedPhysicalTransport_flat_eq_refl]
-  simp
+  rfl
 
 end
 
