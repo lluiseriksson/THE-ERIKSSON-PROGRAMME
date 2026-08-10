@@ -1,4 +1,4 @@
-name: Validate CMP99 flat Qprime alias-fibre dictionary
+name: Validate CMP99 flat Qprime signed alias-momentum dictionary
 
 on:
   workflow_dispatch:
@@ -13,12 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 2a99a8997763597e7faac87c6455163c3df3ec99
+  SOURCE_SHA: 8e9b6debd7f4daa32c0d4ebe868f6747be04b0f3
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    flat-qprime-complex-fibre-mode-action
+    flat-qprime-alias-fibre-dictionary
     flat-qprime-coarse-alias
     flat-qprime-fourier-mode-action
     flat-qprime-block-offset
@@ -29,7 +29,7 @@ env:
     normalized-fine-lattice-recombination
 
 jobs:
-  flat-qprime-alias-fibre-dictionary:
+  flat-qprime-signed-alias-momentum-dictionary:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-qprime-alias-fibre-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-qprime-signed-alias-momentum-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeAliasFibreDictionary.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeAliasFibreDictionaryAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_qprime_alias_fibre_dictionary_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeAliasFibreDictionary
-          run_stage flat_qprime_alias_fibre_dictionary_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeAliasFibreDictionaryAudit.lean
+          run_stage flat_qprime_signed_alias_momentum_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary
+          run_stage flat_qprime_signed_alias_momentum_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_qprime_alias_fibre_dictionary_audit.log": 5,
+              "flat_qprime_signed_alias_momentum_dictionary_audit.log": 7,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-qprime-alias-fibre-dictionary-evidence.tar.gz
-          sha256sum flat-qprime-alias-fibre-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-qprime-signed-alias-momentum-dictionary-evidence.tar.gz
+          sha256sum flat-qprime-signed-alias-momentum-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-qprime-alias-fibre-dictionary-${{ env.SOURCE_SHA }}
+          name: flat-qprime-signed-alias-momentum-dictionary-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-qprime-alias-fibre-dictionary-evidence.tar.gz
+            flat-qprime-signed-alias-momentum-dictionary-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-qprime-alias-fibre-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-qprime-signed-alias-momentum-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
