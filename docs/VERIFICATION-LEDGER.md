@@ -32554,3 +32554,36 @@ open; counters remain exactly `20/41`, `TermSource = 0`. Diagnostic PASS
 `31360401684` did not seal. Cold PASS `31359048549` on the warning-bearing
 predecessor, diagnostic PASS `31358894795`, and failed diagnostic
 `31358679426` remain preserved; only the warning-clean cold run above seals.
+
+## Addendum 709 (2026-08-10, **flat character-to-printed-symbol dictionary GREEN; physical complexification open; 20/41 unchanged**)
+
+Exact source checkpoint `67083c091614869de17f8c28132ab509a9bebf46`
+passed cold GitHub Actions run
+[`31363297991`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31363297991)
+with workflow checkpoint `d14501b14ddba77cb090bfcd52c3e2f7c5846d5d`.
+The cold job ran from `06:47:19Z` to `07:10:42Z` (`23m23s`), with both
+restore/save of `.lake/build` skipped. The focal and audit both exited zero;
+all six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, and the target emitted no warning
+or error of its own.
+
+Artifact `9053704495`, named
+`flat-fourier-symbol-67083c091614869de17f8c28132ab509a9bebf46`, has
+GitHub digest
+`56f812fbe99e5ee855f44a8ebf0d2d5b89c9a08a744203953102780328cdea67`.
+Its deterministic inner archive re-hashed on Windows to
+`7caff2c19bcf361eb260d73ee4c548ab39bd344907154ebc73b7825f9307b2e8`;
+all 13 internal manifest entries matched.
+
+The producer fixes the literal discrete momentum, proves both character
+orientations as complex exponentials, identifies their product with the
+opposite-momentum entire pairing and, at spacing one, proves the scalar
+stencil eigenvalue equal to the printed CMP89 unit-lattice symbol. It accepts
+none of those Fourier conventions or identities as data.
+
+Explicit complexification of `SUNLieCoord Nc`, the generated `Q'`
+symbol/adjoint, inverse uniqueness and regional transport remain open.
+Physical `B0`, window 15 and all terminal fields stay open; counters remain
+exactly `20/41`, `TermSource = 0`. Failed diagnostics `31362048764`,
+`31362313958`, `31362542312` and `31362781143` remain preserved. Diagnostic
+PASS `31363036192` did not seal; only the cold run above did.

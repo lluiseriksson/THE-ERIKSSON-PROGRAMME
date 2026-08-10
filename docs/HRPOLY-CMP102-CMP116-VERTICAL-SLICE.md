@@ -8128,3 +8128,40 @@ counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
 `31359048549` on the warning-bearing predecessor, diagnostic PASS
 `31358894795`, and failed diagnostic `31358679426` remain preserved; only the
 warning-clean cold run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxxiv flat character-to-printed-symbol dictionary (SEALED; physical complexification open)
+
+Exact source checkpoint `67083c091614869de17f8c28132ab509a9bebf46`
+passed cold GitHub Actions run
+[`31363297991`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31363297991)
+with workflow checkpoint `d14501b14ddba77cb090bfcd52c3e2f7c5846d5d`.
+The cold job ran from `06:47:19Z` to `07:10:42Z` (`23m23s`);
+restoration and saving of `.lake/build` were both skipped. The focal ended at
+`07:10:30Z`, the audit at `07:10:38Z`, and both stages exited zero. All six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+the sealed target emitted no warning or error of its own.
+
+Artifact `9053704495`, named
+`flat-fourier-symbol-67083c091614869de17f8c28132ab509a9bebf46`, has
+GitHub digest
+`56f812fbe99e5ee855f44a8ebf0d2d5b89c9a08a744203953102780328cdea67`.
+Its deterministic inner archive re-hashed on Windows to
+`7caff2c19bcf361eb260d73ee4c548ab39bd344907154ebc73b7825f9307b2e8`;
+all 13 internal manifest entries matched.
+
+The dictionary constructs the literal discrete momentum `2*pi*k/N`, proves
+the positive and negative standard additive characters equal the corresponding
+complex exponentials, and identifies their product with the opposite-momentum
+entire unit-difference pairing. After the explicit spacing-one specialization,
+the scalar complex stencil eigenvalue is exactly the printed real CMP89
+unit-lattice Laplacian symbol. No Fourier sign, momentum normalization or
+opposite-momentum product is accepted as an input.
+
+This remains a scalar complex dictionary. It does not complexify the real
+`SUNLieCoord Nc` fibre, diagonalize the generated `Q'` term, prove inverse
+uniqueness or transport to a regional Green operator. Physical `B0`, window
+15 and every terminal field remain open; counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostic runs `31362048764`, `31362313958`,
+`31362542312` and `31362781143` preserve the elaboration corrections.
+Diagnostic PASS `31363036192` restored and saved the graph and did not seal;
+only the cold run above retired the two PRE-VALIDATION marks.

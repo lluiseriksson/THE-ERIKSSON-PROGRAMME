@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP89Eq248EntireFourierSymbols
 import YangMills.RG.BalabanCMP99SourceFlatFourierStencil
 
 /-!
-# PRE-VALIDATION: flat CMP99 character symbol versus the printed CMP89 symbol
-
-Source is present, the corresponding `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Flat CMP99 character symbol versus the printed CMP89 symbol
 
 This module fixes the discrete physical momentum `2*pi*k/N` and identifies
 the scalar character eigenvalue of the flat periodic CMP99 stencil with the
