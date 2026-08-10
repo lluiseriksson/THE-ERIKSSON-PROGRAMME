@@ -17,19 +17,18 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-03; v2 replacement submitted).**  The
-20-page v5.5 edition of *The Row Sums Were the Method, Not the Theorem* was
-sent as the v2 replacement.  Its exact PDF is pinned at paper commit
-`e68b821f7`, has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`, and is
-described in
-[`docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md`](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md).
-The fresh-clone evidence on branch `d3-closure` records a green 8,475-job core
-and a 2,980-report repository oracle at verified source anchor `8e8375d34`.
-Those are branch measurements, not a replacement for the canonical `main`
-checkpoint: neither the paper commit nor its source anchor was in `main` when
-this notice was written.  The moderation/publication outcome is not yet
-recorded here.
+**Latest ai.viXra submission (2026-08-10; outcome pending).** The 10-page paper
+*Operational Curvature of the Heisenberg Cut: Exact Diamond Readout, a Discrete
+Stokes Law, and Sharp Action Bounds for Dissipative Zeno Holonomy* has 413,414
+bytes and SHA-256
+`16C1224FD17383F9F191FA69622961863C3925076F9A1669024D9335DC3C38B4`.
+Its reproducibility ZIP passes 14/14 manifest hashes and contains a
+byte-identical PDF. Exact metadata, mathematical scope, visual QA and lifecycle
+are recorded in
+[`docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md`](docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md).
+No public identifier, PDF locator or source commit has been recorded. Earlier
+external submissions, including the block-record Zeno v3 paper, remain
+separate, and none changes the canonical Yang--Mills proof-state checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

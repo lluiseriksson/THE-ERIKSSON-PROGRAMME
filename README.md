@@ -438,21 +438,32 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ---
 
-## Latest viXra submission
+## Latest ai.viXra submission
 
-**Submitted 2026-08-03 as a v2 replacement; moderation outcome not yet
-recorded.**  The 20-page v5.5 edition of *The Row Sums Were the Method, Not the
-Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay
-of Correlations, and a Misattributed Uniformity Wall* was sent to viXra.  The
-exact PDF is pinned at paper commit [`e68b821f7`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf)
-and has SHA-256
-`3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888`.
-See the [submission record](docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md)
-for the clean-clone build, oracle evidence, superseded edition, and exact scope.
+**Submitted 2026-08-10; moderation outcome and public ai.viXra identifier are
+not yet recorded.** The latest 10-page paper is *Operational Curvature of the
+Heisenberg Cut: Exact Diamond Readout, a Discrete Stokes Law, and Sharp Action
+Bounds for Dissipative Zeno Holonomy*. Its exact local PDF has 413,414 bytes
+and SHA-256
+`16C1224FD17383F9F191FA69622961863C3925076F9A1669024D9335DC3C38B4`.
+The [submission record](docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md)
+preserves the exact metadata, mathematical scope, visual review and the
+reproducibility package identity; its 14/14 manifest entries pass and its
+embedded PDF is byte-identical to the submitted artifact.
 
-The paper/source commits remain on remote branch `d3-closure`; this notice does
-not claim that the lane is integrated into `main`, and it does not alter the
-canonical proof-state DAG or the recorded distance to the Clay problem.
+The paper gives an exact diamond-norm readout of ordering curvature, a discrete
+non-Abelian Stokes law, balanced semigroup integration and the sharp qubit
+action bound `kappa <= S^2/[m tan(pi/m)]`. No public PDF locator or Git source
+commit was supplied, so none is invented. Earlier [block-record Zeno
+diffusion](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md),
+[exact Finsler speed limits](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md),
+[robust spectral routing](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md),
+[exact calibration memory](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md),
+[passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),
+[OS reconstruction](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md),
+[AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
+and [Dobrushin C*-state](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
+submission records remain available.
 
 ---
 

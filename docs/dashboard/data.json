@@ -2,7 +2,7 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-08-03",
+    "updated": "2026-08-10",
     "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
@@ -17,15 +17,15 @@
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "latest_submission": {
-      "date": "2026-08-03",
-      "status": "viXra v2 replacement submitted; moderation outcome not recorded",
-      "title": "The Row Sums Were the Method, Not the Theorem: a Machine-Checked Chain from a Positive Weight to Exponential Decay of Correlations, and a Misattributed Uniformity Wall",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/DOBRUSHIN-MATRIX-V2-SUBMISSION-20260803.md",
-      "pdf": "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e68b821f7b5a766551c7e249706aaf7dc4d0eb66/papers/dobrushin-matrix/dobrushin_matrix.pdf",
-      "pdf_sha256": "3A0DDBCDB60E7E5A2EAA33E1A5D458312FEBE0B46F3A5481FA5287BF09E21888",
-      "source_anchor": "8e8375d3415575e997765e61515e1a8af283df97",
-      "paper_commit": "e68b821f7b5a766551c7e249706aaf7dc4d0eb66",
-      "integration": "remote branch d3-closure; not in main when recorded"
+      "date": "2026-08-10",
+      "status": "paper reported submitted as a new ai.viXra submission; moderation outcome and public identifier not recorded",
+      "title": "Operational Curvature of the Heisenberg Cut: Exact Diamond Readout, a Discrete Stokes Law, and Sharp Action Bounds for Dissipative Zeno Holonomy",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/OPERATIONAL-CURVATURE-VIXRA-SUBMISSION-20260810.md",
+      "pdf": "",
+      "pdf_sha256": "16C1224FD17383F9F191FA69622961863C3925076F9A1669024D9335DC3C38B4",
+      "source_anchor": null,
+      "paper_commit": null,
+      "integration": "owner-local exact PDF and reproducibility ZIP verified; no public PDF locator or Git source anchor supplied"
     }
   },
   "status_legend": {
