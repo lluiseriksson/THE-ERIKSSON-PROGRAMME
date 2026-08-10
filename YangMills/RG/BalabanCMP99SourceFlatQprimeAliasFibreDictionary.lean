@@ -83,9 +83,10 @@ def cmp99SourceFlatQprimeFixedCoarseFibreEquiv
     ⟨fun mu => finProdFinEquiv (q mu, ell mu), by
       funext mu
       apply Fin.ext
-      simp only [cmp99SourceFlatQprimeCoarseAlias, finProdFinEquiv,
-        Nat.add_mul_mod_self_left]
-      exact Nat.mod_eq_of_lt (ell mu).isLt
+      simp only [cmp99SourceFlatQprimeCoarseAlias]
+      rw [show (finProdFinEquiv (q mu, ell mu)).val =
+          (ell mu).val + N' * (q mu).val by rfl,
+        Nat.add_mul_mod_self_left, Nat.mod_eq_of_lt (ell mu).isLt]
     ⟩
   left_inv k := by
     apply Subtype.ext
