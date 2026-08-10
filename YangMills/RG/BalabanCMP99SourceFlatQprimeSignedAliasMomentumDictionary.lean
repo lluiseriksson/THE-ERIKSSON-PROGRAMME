@@ -76,7 +76,9 @@ theorem cmp99SourceFlatQprimeSignedCenteredAliasEquiv_cast_eq_neg
     intro x
     cases M with
     | zero => exact (NeZero.ne 0 rfl).elim
-    | succ n => rfl
+    | succ n =>
+        rw [show x.1 = (ZMod.finEquiv (n + 1) x).val by rfl]
+        exact ZMod.natCast_zmod_val _
   rw [hfin (cmp99SourceFlatQprimeSignedResidueEquiv M q), hfin q]
   simp [cmp99SourceFlatQprimeSignedResidueEquiv,
     cmp99SourceFlatQprimeSignedResidueAffineEquiv]
@@ -107,6 +109,20 @@ def cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
           cmp99SourceFlatQprimeSignedCenteredAliasEquiv M).trans
         (cmp89Eq245CenteredAliasVectorPiEquiv d M).symm)
   simpa only [CMP89Eq246AliasIndex, pow_one] using e
+
+/-- Coordinate projection of the signed fibre dictionary.  This theorem keeps
+the physical residue choice visible to downstream matrix consumers. -/
+@[simp]
+theorem cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv_apply
+    (d M N' : ℕ) [NeZero M] [NeZero N']
+    (ell : FinBox d N')
+    (k : {k : FinBox d (M * N') //
+      cmp99SourceFlatQprimeCoarseAlias k = ell}) (mu : Fin d) :
+    (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
+        d M N' ell k).1 mu =
+      (cmp99SourceFlatQprimeSignedCenteredAliasEquiv M
+        (cmp99SourceFlatQprimeFixedCoarseFibreEquiv
+          d M N' ell k mu)).1 := rfl
 
 /-- The coarse complex momentum paired with the signed reciprocal alias. -/
 def cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
@@ -149,10 +165,7 @@ theorem cmp99SourceFlatQprimeAmplitudeMomentum_eq_alias_add_period
   have hm : ∀ mu : Fin d,
       (M : ℤ) ∣ m.1 mu + (q mu).val := by
     intro mu
-    dsimp [m]
-    change (M : ℤ) ∣
-      (cmp99SourceFlatQprimeSignedCenteredAliasEquiv M (q mu)).1 +
-        ((q mu).val : ℤ)
+    rw [cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv_apply]
     exact cmp99SourceFlatQprimeSignedCenteredAlias_add_quotient_dvd M (q mu)
   choose c hc using hm
   refine ⟨fun mu => -c mu, ?_⟩
