@@ -70,11 +70,11 @@ theorem cmp89Eq245EntireScaledLaplacianSymbol_add_int_aliasPeriods
   have hn := cmp89Eq245EntireAverageBase_add_int_aliasPeriod
     hM (-w mu) (-z mu)
   unfold cmp89Eq245EntireAverageBase at hp hn
+  push_cast at hp hn
   have hneg :
-      -(z mu + (w mu : ℂ) *
-          (((2 * Real.pi * (M : ℝ) : ℝ) : ℂ))) =
+      -(z mu + (w mu : ℂ) * (2 * (Real.pi : ℂ) * (M : ℂ))) =
         -z mu + ((-w mu : ℤ) : ℂ) *
-          (((2 * Real.pi * (M : ℝ) : ℝ) : ℂ)) := by
+          (2 * (Real.pi : ℂ) * (M : ℂ)) := by
     push_cast
     ring
   unfold cmp89Eq245EntireScaledDifference
@@ -84,13 +84,15 @@ theorem cmp89Eq245EntireScaledLaplacianSymbol_add_int_aliasPeriods
 /-- The physical rescaled diagonal on a fine periodic Fourier mode.  The
 factor `M^2` is the spacing conversion; the mass is added exactly once. -/
 def cmp99SourceFlatQprimeRescaledPeriodicFineSymbol
-    {d M N' : ℕ} (mass : ℝ) (k : FinBox d (M * N')) : ℂ :=
+    {d M N' : ℕ} [NeZero M] [NeZero N']
+    (mass : ℝ) (k : FinBox d (M * N')) : ℂ :=
   (M : ℂ) ^ 2 * cmp99FlatPeriodicLaplacianSymbol k + (mass : ℂ) ^ 2
 
 /-- The literal scaled entire symbol evaluated at the physical signed
 one-block momentum. -/
 def cmp99SourceFlatQprimePhysicalFineSymbol
-    {d M N' : ℕ} (mass : ℝ) (k : FinBox d (M * N')) : ℂ :=
+    {d M N' : ℕ} [NeZero M] [NeZero N']
+    (mass : ℝ) (k : FinBox d (M * N')) : ℂ :=
   cmp89Eq245EntireScaledLaplacianSymbol d ((M : ℝ)⁻¹) mass
     (cmp99SourceFlatQprimeAmplitudeMomentum k)
 
@@ -108,16 +110,11 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_eq_rescaledPeriodic
   congr 1
   apply Finset.sum_congr rfl
   intro mu _
-  let p : ℂ := (cmp99FlatDiscreteMomentum k mu : ℂ)
-  change
-    cmp89Eq245EntireScaledDifference ((M : ℝ)⁻¹) ((M : ℂ) * (-p)) *
-        cmp89Eq245EntireScaledDifference ((M : ℝ)⁻¹) ((M : ℂ) * p) =
-      (M : ℂ) ^ 2 *
-        (2 - ZMod.stdAddChar ((k mu).val : ZMod (M * N')) -
-          ZMod.stdAddChar (-((k mu).val : ZMod (M * N')))) := by
-    simp only [cmp99SourceFlatQprimeAmplitudeMomentum]
-    change _
-    ring_nf
+  simp only [cmp99SourceFlatQprimeAmplitudeMomentum]
+  rw [show -((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ)) =
+      (M : ℂ) * (-(cmp99FlatDiscreteMomentum k mu : ℂ)) by ring,
+    show -(-((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ))) =
+      (M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ) by ring]
   rw [cmp89Eq245EntireScaledDifference_invNat_natMul,
     cmp89Eq245EntireScaledDifference_invNat_natMul,
     cmp99Flat_characterPair_eq_entireUnitDifferencePair]
@@ -167,6 +164,9 @@ theorem cmp99SourceFlatQprimePhysicalRankOneMatrix_mulVec
     cmp99SourceFlatQprimePhysicalFibreSynthesis
     cmp99SourceFlatQprimePhysicalFibreAnalysis
   rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro n _
+  ring
 
 /-- Literal physical diagonal-plus-rank-one precision on the fixed coarse
 fibre.  `a` multiplies only the rank-one block term. -/
@@ -221,8 +221,16 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_entry_eq_cmp89
     cmp99SourceFlatQprimePhysicalFineSymbol_eq_entireAliasFineSymbol,
     cmp99SourceFlatQprimeAmplitude_eq_entireAliasColumn,
     cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow]
-  simp only [Equiv.apply_eq_apply_iff]
-  ring
+  by_cases hmn : m = n
+  · subst n
+    simp
+  · have halias :
+        cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell m ≠
+          cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell n :=
+      fun h => hmn
+        ((cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
+          d M N' ell).injective h)
+    simp [hmn, halias]
 
 /-- Reindexing both axes by the signed physical dictionary gives the literal
 CMP89 entire alias precision matrix. -/
