@@ -84,7 +84,8 @@ theorem cmp99SourceWeightedPhysicalTransport_flat_eq_refl
     cmp99SourceWeightedPhysicalTransport rho
         (cmp99SourceFlatGaugeConfig d (M * N') Nc) y x =
       LinearIsometryEquiv.refl ℝ (SUNLieCoord Nc) := by
-  ext X
+  apply LinearIsometryEquiv.ext
+  intro X
   exact cmp99SourceWeightedPhysicalTransport_flat_apply rho y x X
 
 /-- In the flat background the physical one-step average is exactly its
@@ -125,7 +126,14 @@ theorem cmp99SourceTransportedBlockWeightedAdjointCLM_flat_apply
   rw [cmp99SourceTransportedBlockWeightedAdjointCLM,
     cmp99TransportedBlockSynthesisCLM_apply]
   rw [cmp99SourceWeightedPhysicalTransport_flat_eq_refl]
-  rfl
+  simp only [one_smul]
+  simpa only [LinearIsometryEquiv.coe_refl, id_eq] using
+    (LinearIsometryEquiv.symm_apply_apply
+      (LinearIsometryEquiv.refl ℝ (SUNLieCoord Nc))
+      (eta ⟨blockSite M N' x.1,
+        (mem_cmp99ActiveCoarseRegion_sites_iff
+          (M := M) (N' := N') Omega (blockSite M N' x.1)).2
+            (hOmega x.1 x.2)⟩))
 
 end
 
