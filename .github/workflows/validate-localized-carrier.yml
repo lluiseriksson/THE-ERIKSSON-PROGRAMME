@@ -1,4 +1,4 @@
-name: Validate CMP99 flat Qprime block offset dictionary
+name: Validate CMP99 flat Qprime Fourier mode action
 
 on:
   workflow_dispatch:
@@ -13,12 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 819497118e773c78e67f6792dea652e749e7199c
+  SOURCE_SHA: 4d534e885c404c75ede953c73ef2c96a4fb43cfa
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    physical-fibre-complexification
+    flat-qprime-block-offset
     normalized-fine-lattice-fourier-green
     physical-fine-uniform-normalized-owner-bound
     physical-fine-normalized-owner-bound
@@ -29,7 +29,7 @@ env:
     flat-qprime-fourier-amplitude
 
 jobs:
-  flat-qprime-block-offset:
+  flat-qprime-fourier-mode-action:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-qprime-block-offset-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-qprime-fourier-mode-action-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeBlockOffsetEquiv.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeBlockOffsetEquivAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeFourierModeAction.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeFourierModeActionAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_qprime_block_offset_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeBlockOffsetEquiv
-          run_stage flat_qprime_block_offset_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeBlockOffsetEquivAudit.lean
+          run_stage flat_qprime_fourier_mode_action_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeFourierModeAction
+          run_stage flat_qprime_fourier_mode_action_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeFourierModeActionAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_qprime_block_offset_audit.log": 3,
+              "flat_qprime_fourier_mode_action_audit.log": 9,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-qprime-block-offset-evidence.tar.gz
-          sha256sum flat-qprime-block-offset-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-qprime-fourier-mode-action-evidence.tar.gz
+          sha256sum flat-qprime-fourier-mode-action-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-qprime-block-offset-${{ env.SOURCE_SHA }}
+          name: flat-qprime-fourier-mode-action-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-qprime-block-offset-evidence.tar.gz
+            flat-qprime-fourier-mode-action-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-qprime-block-offset-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-qprime-fourier-mode-action-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
