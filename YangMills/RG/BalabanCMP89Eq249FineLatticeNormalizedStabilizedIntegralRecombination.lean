@@ -123,7 +123,8 @@ theorem cmp89Eq249NormalizedFineLatticeStabilizedIntegral_eq_sub_signedEndpoints
         holderDisplacement
         (cmp89Eq249PhysicalFineLatticeDisplacement
           (cmp89Eq249FineLatticeSpacing L j) firstU)) productMeasure := by
-    simpa [productMeasure, holderDisplacement, firstU,
+    simpa [cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand,
+      productMeasure, holderDisplacement, firstU,
       cmp89Eq249FineLatticeSpacing] using
       (integrable_cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand
         (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
@@ -133,7 +134,8 @@ theorem cmp89Eq249NormalizedFineLatticeStabilizedIntegral_eq_sub_signedEndpoints
       cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a 0
         (fun nu => (cmp89Eq251PhysicalBrillouinParameter x nu : ℂ)) mu
         holderDisplacement transportDisplacement) productMeasure := by
-    simpa [productMeasure, holderDisplacement, transportDisplacement,
+    simpa [cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand,
+      productMeasure, holderDisplacement, transportDisplacement,
       cmp89Eq249FineLatticeSpacing] using
       (integrable_cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand
         (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
@@ -279,7 +281,8 @@ theorem cmp89Eq249PhysicalFineEndpointWeights_add_le
             (fun nu => holder nu + transport nu)))) := by
   have htransport :=
     exp_neg_cmp89Eq251DisplacementL1_physicalFine_transport_le
-      (L := L) (j := j) hrho hunit
+      (L := L) (j := j) (holder := holder) (transport := transport)
+      hrho hunit
   calc
     Real.exp (-(rho * cmp89Eq251DisplacementL1
           (cmp89Eq249PhysicalFineLatticeDisplacement
