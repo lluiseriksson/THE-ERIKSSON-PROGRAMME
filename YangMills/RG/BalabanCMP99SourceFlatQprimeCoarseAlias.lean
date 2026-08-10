@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeFourierModeAction
 /-!
 # Coarse reciprocal alias of one flat `Q'` Fourier mode
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
-
 After the exact one-block average, the surviving fine mode is sampled at the
 literal block basepoint.  This module constructs the corresponding coarse
 reciprocal alias coordinatewise by reduction modulo `N'`.  It then proves,
