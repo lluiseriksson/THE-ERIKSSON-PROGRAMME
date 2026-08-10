@@ -1,4 +1,4 @@
-name: Validate CMP99 flat weighted-adjoint physical column
+name: Validate CMP99 flat weighted-adjoint Fourier orientation
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: ad78686dbff42e180c82480e1342b3b37eaa47f0
+  SOURCE_SHA: 068bc5377e50803640bc2b9fbb9f475c833537e7
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    flat-weighted-adjoint-physical-column
     flat-weighted-adjoint-scalar-column
     flat-physical-fibre-dft
     flat-finbox-dft
@@ -26,10 +27,9 @@ env:
     flat-physical-complex-mode
     flat-physical-transport
     flat-qprime-alias-fibre-dictionary
-    flat-qprime-coarse-alias
 
 jobs:
-  flat-weighted-adjoint-physical-column:
+  flat-weighted-adjoint-fourier-orientation:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-weighted-adjoint-physical-column-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-weighted-adjoint-fourier-orientation-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointPhysicalColumn.lean \
-            YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointPhysicalColumnAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointFourierOrientation.lean \
+            YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointFourierOrientationAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_weighted_adjoint_physical_column_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointPhysicalColumn
-          run_stage flat_weighted_adjoint_physical_column_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointPhysicalColumnAudit.lean
+          run_stage flat_weighted_adjoint_fourier_orientation_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointFourierOrientation
+          run_stage flat_weighted_adjoint_fourier_orientation_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatWeightedAdjointFourierOrientationAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_weighted_adjoint_physical_column_audit.log": 6,
+              "flat_weighted_adjoint_fourier_orientation_audit.log": 3,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-weighted-adjoint-physical-column-evidence.tar.gz
-          sha256sum flat-weighted-adjoint-physical-column-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-weighted-adjoint-fourier-orientation-evidence.tar.gz
+          sha256sum flat-weighted-adjoint-fourier-orientation-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-weighted-adjoint-physical-column-${{ env.SOURCE_SHA }}
+          name: flat-weighted-adjoint-fourier-orientation-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-weighted-adjoint-physical-column-evidence.tar.gz
+            flat-weighted-adjoint-fourier-orientation-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-weighted-adjoint-physical-column-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-weighted-adjoint-fourier-orientation-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
