@@ -31,6 +31,12 @@ noncomputable section
 
 variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
 
+/-- Literal trivial physical gauge background. Giving the unit field a
+source-level name fixes its group-valued type before any specialization. -/
+def cmp99FlatGaugeBackground (d N Nc : ℕ) [NeZero Nc] :
+    PhysicalGaugeBackground d N Nc :=
+  fun _ => 1
+
 /-- Ordinary symmetric nearest-neighbour stencil on the periodic fine
 lattice. This is the zero-background differential part of the CMP99
 precision before the physical `spacing⁻²` factor is applied. -/
@@ -46,7 +52,8 @@ nearest-neighbour stencil. -/
 theorem cmp99AmbientCovariantLaplacianStencil_one
     (rho : SUNAdjointModel Nc) (phi : PhysicalGaugeZeroCochain d N Nc)
     (x : FinBox d N) :
-    cmp99AmbientCovariantLaplacianStencil rho (fun _ => 1) phi x =
+    cmp99AmbientCovariantLaplacianStencil rho
+        (cmp99FlatGaugeBackground d N Nc) phi x =
       cmp99FlatPeriodicLaplacianStencil phi x := by
   simp [cmp99AmbientCovariantLaplacianStencil,
     cmp99FlatPeriodicLaplacianStencil, rho.ad_one_apply]
@@ -57,8 +64,8 @@ no hidden convention or nonzero-spacing premise. -/
 theorem cmp99GeneratedAmbientScaledCovariantLaplacian_one_apply
     (rho : SUNAdjointModel Nc) (spacing : ℝ)
     (phi : PhysicalGaugeZeroCochain d N Nc) (x : FinBox d N) :
-    cmp99GeneratedAmbientScaledCovariantLaplacian rho (fun _ => 1)
-        spacing phi x =
+    cmp99GeneratedAmbientScaledCovariantLaplacian rho
+        (cmp99FlatGaugeBackground d N Nc) spacing phi x =
       spacing⁻¹ • spacing⁻¹ • cmp99FlatPeriodicLaplacianStencil phi x := by
   rw [cmp99GeneratedAmbientScaledCovariantLaplacian_apply_eq_stencil,
     cmp99AmbientCovariantLaplacianStencil_one]
