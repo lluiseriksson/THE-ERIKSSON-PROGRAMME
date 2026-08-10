@@ -1,4 +1,4 @@
-name: Validate CMP89 transposed alias solution
+name: Validate physical transposed alias solution
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: bb8bd699814d7862cb476216d4188db6cc711ec9
+  SOURCE_SHA: c205122b1c72c27de11f5f7f36fb0d83b60820ba
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     flat-qprime-alias-fibre-dictionary
 
 jobs:
-  entire-alias-transpose-solution:
+  physical-alias-transpose-solution:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-entire-alias-transpose-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-physical-alias-transpose-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq247EntireAliasTransposeSolution.lean \
-            YangMills/RG/BalabanCMP89Eq247EntireAliasTransposeSolutionAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalAliasTransposeSolution.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalAliasTransposeSolutionAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage entire_alias_transpose_solution_focal \
-            lake build YangMills.RG.BalabanCMP89Eq247EntireAliasTransposeSolution
-          run_stage entire_alias_transpose_solution_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq247EntireAliasTransposeSolutionAudit.lean
+          run_stage physical_alias_transpose_solution_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasTransposeSolution
+          run_stage physical_alias_transpose_solution_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalAliasTransposeSolutionAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "entire_alias_transpose_solution_audit.log": 3,
+              "physical_alias_transpose_solution_audit.log": 2,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              entire-alias-transpose-solution-evidence.tar.gz
-          sha256sum entire-alias-transpose-solution-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              physical-alias-transpose-solution-evidence.tar.gz
+          sha256sum physical-alias-transpose-solution-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: entire-alias-transpose-solution-${{ env.SOURCE_SHA }}
+          name: physical-alias-transpose-solution-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            entire-alias-transpose-solution-evidence.tar.gz
+            physical-alias-transpose-solution-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-entire-alias-transpose-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-physical-alias-transpose-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
