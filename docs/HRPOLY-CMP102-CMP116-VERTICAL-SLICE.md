@@ -8014,3 +8014,42 @@ counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
 `31351062941`, and cold PASS `31351453287` on the warning-bearing predecessor,
 remain preserved; only the warning-clean cold run above retired the two
 PRE-VALIDATION marks.
+
+### Step 7.5cxxxi normalized fine-lattice Fourier Green integral (SEALED; operator dictionary open)
+
+Exact source checkpoint `414212ec8410c88fdb1dfe7bcb5081844e5f0903`
+passed cold GitHub Actions run
+[`31354841843`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31354841843)
+with workflow checkpoint `72cb8ab07dfa5a707910037d14524414854fc528`.
+The job completed in `20m19s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `04:15:56Z` to `04:34:16Z`, the audit ended
+at `04:34:28Z`, and both stages exited zero. All seven audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`; the sealed target
+emitted no warning or error of its own.
+
+Artifact `9050601865`, named
+`normalized-fine-lattice-fourier-green-414212ec8410c88fdb1dfe7bcb5081844e5f0903`,
+has GitHub digest
+`604a6c914fdc121ba60aba14f62853cd140f0026ee356a41a27f1794aa6b5472`.
+Its deterministic inner archive re-hashed on Windows to
+`a3d33492d63ca214ed45ee30c7618fab7d85bd294e46ce4fa59030b5ab3f8e29`;
+all 13 internal manifest entries matched.
+
+The literal stabilized Fourier Green value is now proved integrable on the
+real Brillouin cube from the already sealed complete-polydisc nonvanishing
+gate and compactness; no integrability premise is accepted. The
+source-normalized Green integral is constructed internally, and its exact
+positive fine-site forward quotient is proved equal to the sealed normalized
+left-derivative kernel by moving the difference through the integral. The
+full-polydisc condition remains `forall mu, |Im z_mu| <= rho`; it is not
+weakened to a one-coordinate strip.
+
+This does not identify the Fourier Green with the repository's literal
+`G_j Q_j^*`. That remaining dictionary requires the periodic zero-background
+specialization, Fourier diagonalization of the generated precision, the
+symbol/adjoint dictionary for `Q'`, and inverse uniqueness before any
+regional transport. Physical `B0`, window 15 and every terminal field remain
+open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
+`31354670690` used a restored graph and did not seal. Failed diagnostics
+`31354142299`, `31354327613` and `31354499576` remain preserved; only the
+cold run above retired the two PRE-VALIDATION marks.

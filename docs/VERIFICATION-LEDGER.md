@@ -32451,3 +32451,38 @@ terminal fields remain open. Counters stay exactly `20/41`, `TermSource = 0`.
 Diagnostic PASS `31351283751` did not seal. Failed diagnostics `31350838812`
 and `31351062941`, plus cold PASS `31351453287` on the warning-bearing
 predecessor, remain preserved; only the warning-clean cold run above seals.
+
+## Addendum 706 (2026-08-10, **normalized fine-lattice Fourier Green integral GREEN; operator dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `414212ec8410c88fdb1dfe7bcb5081844e5f0903`
+passed cold GitHub Actions run
+[`31354841843`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31354841843)
+with workflow checkpoint `72cb8ab07dfa5a707910037d14524414854fc528`.
+The job completed in `20m19s`; restore/save of `.lake/build` were skipped.
+The focal ran from `04:15:56Z` to `04:34:16Z`, and the audit ended at
+`04:34:28Z`. Both stages exited zero, all seven audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9050601865`, named
+`normalized-fine-lattice-fourier-green-414212ec8410c88fdb1dfe7bcb5081844e5f0903`,
+has GitHub digest
+`604a6c914fdc121ba60aba14f62853cd140f0026ee356a41a27f1794aa6b5472`.
+Its deterministic inner archive re-hashed on Windows to
+`a3d33492d63ca214ed45ee30c7618fab7d85bd294e46ce4fa59030b5ab3f8e29`;
+all 13 internal manifest entries matched.
+
+The Green value integrability is derived from the complete-polydisc
+nonvanishing producer and compactness rather than accepted as a hypothesis.
+The literal source-normalized Green is constructed, and the exact positive
+fine-site forward quotient is moved through the integral and identified with
+the already sealed normalized left-derivative kernel. The four-dimensional
+gate remains a full polydisc at every point.
+
+The Fourier/operator identity with the literal `G_j Q_j^*`, physical `B0`,
+window 15 and every terminal field remain open. That identity is not a
+definitional reindexing: it still requires zero-background specialization,
+Fourier diagonalization of the generated precision, the `Q'` symbol/adjoint
+dictionary and inverse uniqueness. Live counters stay exactly `20/41`,
+`TermSource = 0`. Diagnostic PASS `31354670690` did not seal; only the cold
+run above did.

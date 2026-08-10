@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq248FineLatticeNormalizedFourierGreen
 
 /-!
-# PRE-VALIDATION audit: normalized fine-lattice Fourier Green
+# Audit: normalized fine-lattice Fourier Green
 -/
 
 #print axioms YangMills.RG.differentiable_cmp89Eq248ComplexBareGreenEndpointNumerator

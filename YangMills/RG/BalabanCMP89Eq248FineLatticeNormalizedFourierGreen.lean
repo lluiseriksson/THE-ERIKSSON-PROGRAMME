@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative
 
 /-!
-# PRE-VALIDATION: normalized fine-lattice Fourier Green
-
-Source is present, the corresponding `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Normalized fine-lattice Fourier Green
 
 CMP89 (2.48)--(2.49) obtains the fine left derivative by applying one
 physical fine-lattice difference to the Green kernel.  The pointwise identity
