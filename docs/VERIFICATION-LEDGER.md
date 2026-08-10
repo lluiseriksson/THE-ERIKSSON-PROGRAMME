@@ -32316,8 +32316,9 @@ weights. Their separate comparison pays exactly
 `exp (rho * (L^j)^(-1))` for a unit fine edge; that cost is not absorbed into
 an unnamed constant.
 
-The physical unit-bond producer, Fourier/operator dictionary, physical `B0`,
-window 15 and terminal fields remain open. Live counters stay exactly
-`20/41`, `TermSource = 0`. Diagnostic PASS `31343695361` did not seal; failed
+Installation of the already sealed physical-bond and fine-site dictionaries,
+the Fourier/operator dictionary, physical `B0`, window 15 and terminal fields
+remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic
+PASS `31343695361` did not seal; failed
 diagnostics `31343318299` and `31343514391` remain retained as elaboration
 failures. Only the cold run above did.

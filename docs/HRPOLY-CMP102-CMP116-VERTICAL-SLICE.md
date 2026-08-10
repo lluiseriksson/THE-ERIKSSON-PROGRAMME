@@ -7863,9 +7863,10 @@ fine-lattice weights; a separate theorem compares them with the exact visible
 cost `exp (rho * (L^j)^(-1))` for a unit fine edge. No common endpoint sign
 and no unnamed neighbor constant are introduced.
 
-The physical unit-bond producer, the identification with
-`partial_mu^xi (G_j Q_j^*)`, physical `B0`, window 15 and terminal fields
-remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
+Installation of the already sealed physical-bond and fine-site dictionaries,
+the identification with `partial_mu^xi (G_j Q_j^*)`, physical `B0`, window 15
+and terminal fields remain open. Counters stay exactly `20/41`,
+`TermSource = 0`. Diagnostic run
 `31343695361` passed with a restored graph but did not seal; failed diagnostic
 runs `31343318299` and `31343514391` remain preserved as elaboration failures.
 Only the cold run above retired the two PRE-VALIDATION marks.

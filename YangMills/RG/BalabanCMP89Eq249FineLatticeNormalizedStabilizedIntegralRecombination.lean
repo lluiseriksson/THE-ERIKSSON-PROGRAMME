@@ -17,8 +17,8 @@ The resulting bound retains the sum of the two physical `l1` weights.  A
 separate theorem compares that sum using the exact unit-fine-edge cost
 `exp (rho * (L^j)^(-1))`; the cost is not absorbed into an unnamed constant.
 
-The physical bond-to-unit-edge producer, the Fourier/operator dictionary,
-`B0`, window 15 and terminal fields remain open.
+Installation of the sealed physical-bond and fine-site dictionaries, the
+Fourier/operator dictionary, `B0`, window 15 and terminal fields remain open.
 -/
 
 namespace YangMills.RG
