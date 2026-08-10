@@ -35,11 +35,11 @@ abbrev CMP99FlatZModBox (d N : ℕ) := Fin d → ZMod N
 
 /-- Positive product character.  Its two arguments are kept in this order so
 the sign convention of the forward transform remains visible. -/
-def cmp99FlatZModFourierCharacter {d N : ℕ}
+def cmp99FlatZModFourierCharacter {d N : ℕ} [NeZero N]
     (k x : CMP99FlatZModBox d N) : ℂ :=
   ∏ mu, ZMod.stdAddChar (k mu * x mu)
 
-theorem cmp99FlatZModFourierCharacter_comm {d N : ℕ}
+theorem cmp99FlatZModFourierCharacter_comm {d N : ℕ} [NeZero N]
     (k x : CMP99FlatZModBox d N) :
     cmp99FlatZModFourierCharacter k x =
       cmp99FlatZModFourierCharacter x k := by
@@ -48,7 +48,7 @@ theorem cmp99FlatZModFourierCharacter_comm {d N : ℕ}
   intro mu _
   rw [mul_comm]
 
-theorem cmp99FlatZModFourierCharacter_add_left {d N : ℕ}
+theorem cmp99FlatZModFourierCharacter_add_left {d N : ℕ} [NeZero N]
     (k l x : CMP99FlatZModBox d N) :
     cmp99FlatZModFourierCharacter (k + l) x =
       cmp99FlatZModFourierCharacter k x *
@@ -59,7 +59,7 @@ theorem cmp99FlatZModFourierCharacter_add_left {d N : ℕ}
   intro mu _
   rw [Pi.add_apply, add_mul, AddChar.map_add_eq_mul]
 
-theorem cmp99FlatZModFourierCharacter_add_right {d N : ℕ}
+theorem cmp99FlatZModFourierCharacter_add_right {d N : ℕ} [NeZero N]
     (k x y : CMP99FlatZModBox d N) :
     cmp99FlatZModFourierCharacter k (x + y) =
       cmp99FlatZModFourierCharacter k x *
@@ -68,7 +68,7 @@ theorem cmp99FlatZModFourierCharacter_add_right {d N : ℕ}
     cmp99FlatZModFourierCharacter_add_left]
   congr 1 <;> rw [cmp99FlatZModFourierCharacter_comm]
 
-theorem cmp99FlatZModFourierCharacter_neg_left {d N : ℕ}
+theorem cmp99FlatZModFourierCharacter_neg_left {d N : ℕ} [NeZero N]
     (k x : CMP99FlatZModBox d N) :
     cmp99FlatZModFourierCharacter (-k) x =
       (cmp99FlatZModFourierCharacter k x)⁻¹ := by
@@ -78,7 +78,7 @@ theorem cmp99FlatZModFourierCharacter_neg_left {d N : ℕ}
   intro mu _
   rw [Pi.neg_apply, neg_mul, map_neg]
 
-theorem cmp99FlatZModFourierCharacter_neg_swap {d N : ℕ}
+theorem cmp99FlatZModFourierCharacter_neg_swap {d N : ℕ} [NeZero N]
     (k x : CMP99FlatZModBox d N) :
     cmp99FlatZModFourierCharacter (-k) x =
       cmp99FlatZModFourierCharacter (-x) k := by
@@ -158,13 +158,13 @@ theorem sum_cmp99FlatZModFourierCharacter_mul_neg
 
 /-- Unnormalized forward transform: negative character, exactly as in
 `ZMod.dft`. -/
-def cmp99FlatZModDFT {d N : ℕ}
+def cmp99FlatZModDFT {d N : ℕ} [NeZero N]
     (phi : CMP99FlatZModBox d N → ℂ) (k : CMP99FlatZModBox d N) : ℂ :=
   ∑ x, cmp99FlatZModFourierCharacter (-k) x * phi x
 
 /-- Inverse transform: positive character and the product normalization
 `N^-d`. -/
-def cmp99FlatZModInvDFT {d N : ℕ}
+def cmp99FlatZModInvDFT {d N : ℕ} [NeZero N]
     (psi : CMP99FlatZModBox d N → ℂ) (x : CMP99FlatZModBox d N) : ℂ :=
   ((N : ℂ) ^ d)⁻¹ *
     ∑ k, cmp99FlatZModFourierCharacter k x * psi k
