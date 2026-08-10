@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99FlatMultidimensionalDFT
 
 /-!
-# PRE-VALIDATION: exact FinBox transport of the flat DFT
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Exact FinBox transport of the flat DFT
 
 The scalar product DFT is already fixed on `Fin d → ZMod N`.  This module
 constructs the literal coordinate equivalence with `FinBox d N`, transports

@@ -8667,3 +8667,39 @@ incidents before Lean. Restored diagnostic PASS `31416032381` did not seal.
 Cold PASS `31416346641` retained a target linter warning and therefore did not
 seal. Diagnostic PASS `31418530925` was warning-free but restored the graph;
 only the final cold run above retires PRE-VALIDATION.
+
+### Step 7.5cxlviii exact FinBox DFT transport (SEALED; physical-fibre adapter and direct column open)
+
+Exact source checkpoint `9e1908ee7e5734dadfeae392443673d0bdbb5942`
+passed cold GitHub Actions run
+[`31421947998`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31421947998)
+with workflow checkpoint `3a8002de2b6ef18ecdc88f956dda23b699b3b1db`.
+The cold job ran for `27m26s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `19:07:30Z`; the focal
+then built 8,478 jobs through `19:27:58Z`, and the audit ended at
+`19:28:06Z`. Both stages exited zero. The first three of the eight audited
+declarations use `[propext, Quot.sound]`; the remaining five use exactly
+`[propext, Classical.choice, Quot.sound]`. The new target emitted no warning
+or error.
+
+Artifact `9076527091`, named
+`flat-finbox-dft-9e1908ee7e5734dadfeae392443673d0bdbb5942`, has GitHub digest
+`d499c40249f2b29ba6924e9a5456cdd1799d70a05e0cdfb1cd4ad9e78941f40f`.
+Its deterministic inner archive re-hashed on Windows to
+`778109ad2a5ce688f3c2e14dd221d4a944a8b11982768974355ec38484731619`;
+all 13 internal manifest entries matched.
+
+The producer constructs the literal equivalence from `FinBox d N` to the
+sealed additive box `Fin d -> ZMod N`, transports the negative-character
+forward DFT and normalized positive-character inverse through that
+equivalence, proves both inverse laws and exposes the resulting complex-linear
+equivalence. The character convention and normalization are inherited from
+the sealed scalar DFT rather than supplied again by a caller.
+
+This is not yet a DFT on the physical `SUNLieComplexCoord` fibre, an
+active-region restriction or the direct-momentum column of the source
+weighted adjoint. Interacting transport, inverse uniqueness, regional Green
+transport and the physical `B0` remain open. Window 15 is still compatible
+but not attained. Counters stay exactly `20/41`, `TermSource = 0`. Restored
+diagnostic PASS `31421681555` did not seal; only the cold run above retires
+PRE-VALIDATION from the two FinBox modules.
