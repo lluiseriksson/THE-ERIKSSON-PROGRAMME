@@ -72,10 +72,12 @@ theorem cmp99SourceFlatQprimeSignedCenteredAliasEquiv_cast_eq_neg
         ((cmp99SourceFlatQprimeSignedResidueEquiv M q).1 : ℕ) : ℤ)) :
       ZMod M) = -((q.1 : ℕ) : ZMod M)
   simp only [Int.cast_add, Int.cast_natCast]
-  change
-    (cmp89Eq245CenteredAliasLower M : ZMod M) +
-        ZMod.finEquiv M (cmp99SourceFlatQprimeSignedResidueEquiv M q) =
-      -ZMod.finEquiv M q
+  have hfin : ∀ x : Fin M, ((x.1 : ℕ) : ZMod M) = ZMod.finEquiv M x := by
+    intro x
+    cases M with
+    | zero => exact (NeZero.ne 0 rfl).elim
+    | succ n => rfl
+  rw [hfin (cmp99SourceFlatQprimeSignedResidueEquiv M q), hfin q]
   simp [cmp99SourceFlatQprimeSignedResidueEquiv,
     cmp99SourceFlatQprimeSignedResidueAffineEquiv]
 
@@ -147,6 +149,7 @@ theorem cmp99SourceFlatQprimeAmplitudeMomentum_eq_alias_add_period
   have hm : ∀ mu : Fin d,
       (M : ℤ) ∣ m.1 mu + (q mu).val := by
     intro mu
+    dsimp [m]
     change (M : ℤ) ∣
       (cmp99SourceFlatQprimeSignedCenteredAliasEquiv M (q mu)).1 +
         ((q mu).val : ℤ)
@@ -161,6 +164,9 @@ theorem cmp99SourceFlatQprimeAmplitudeMomentum_eq_alias_add_period
   have hkC := congrArg (fun x : ℕ => (x : ℂ)) hk
   have hcC := congrArg (fun x : ℤ => (x : ℂ)) (hc mu)
   push_cast at hkC hcC
+  have hmC : ((m.1 mu : ℤ) : ℂ) =
+      (M : ℂ) * (c mu : ℂ) - ((q mu).val : ℂ) := by
+    linear_combination hcC
   have hM : (M : ℂ) ≠ 0 := by
     exact_mod_cast (NeZero.ne M)
   have hN : (N' : ℂ) ≠ 0 := by
@@ -171,9 +177,8 @@ theorem cmp99SourceFlatQprimeAmplitudeMomentum_eq_alias_add_period
     cmp89Eq248EntireAliasMomentum, cmp89Eq245AliasShift]
   push_cast
   field_simp [hM, hN]
-  linear_combination
-    -(2 * (Real.pi : ℂ) * M) * hkC +
-      (2 * (Real.pi : ℂ) * N') * hcC
+  rw [hkC, hmC]
+  ring
 
 /-- Exact transport of the physical one-block column amplitude to the printed
 CMP89 alias column. -/
@@ -224,6 +229,7 @@ theorem cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow
             ((-w mu : ℤ) : ℂ) *
               (((2 * Real.pi * (M : ℝ) : ℝ) : ℂ)) := by
     funext mu
+    change -(cmp99SourceFlatQprimeAmplitudeMomentum k.1 mu) = _
     rw [congrFun hw mu]
     push_cast
     ring
