@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceFlatPhysicalTransport
 import YangMills.RG.BalabanCMP99SourceFlatQprimeComplexFibreModeAction
 
 /-!
-# PRE-VALIDATION: active flat physical average on complex Fourier modes
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Active flat physical average on complex Fourier modes
 
 The literal physical CMP99 average is real-linear on the real Lie-coordinate
 fibre.  This module constructs its pointwise coordinate complexification and,

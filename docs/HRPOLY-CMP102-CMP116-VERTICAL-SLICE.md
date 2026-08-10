@@ -8546,3 +8546,45 @@ Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
 and equivalence-extensionality/identity-normalization repairs. Diagnostic PASS
 `31395156202` restored the graph and did not seal; only the cold run above
 retires the PRE-VALIDATION mark.
+
+### Step 7.5cxlv active flat physical complex-mode action (SEALED; weighted adjoint and inverse open)
+
+Exact source checkpoint `94a93d24e8dcad9314a8e1446a1bad0119acc7e0`
+passed cold GitHub Actions run
+[`31405153522`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31405153522)
+with workflow checkpoint `a1f4d9cb1c67e5a3188a4051baf973f2f7b94921`.
+The cold job ran for `23m26s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `15:46:05Z` to `16:07:15Z`, completed 8,490
+jobs and emitted no warning or error in the new target. The audit ended at
+`16:07:25Z`. Both stages exited zero and all ten audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9070103679`, named
+`flat-physical-complex-mode-94a93d24e8dcad9314a8e1446a1bad0119acc7e0`,
+has GitHub digest
+`4ffa9aebf84ac56ad615aeed57b54ee1958184ca463b4882c6aa8b5e42f4f278`.
+Its deterministic inner archive re-hashed on Windows to
+`f350795c50a94d1a2a0e56f562b544ecd4c068e1d67bceaa139e5c16e19e7b40`;
+all 13 internal manifest entries matched.
+
+The producer constructs pointwise complexification on the actual active
+zero-cochain, constructs the source-normalized complex average with identity
+flat transport, and proves that this average commutes with complexification
+of the literal physical flat average. Restricting an internally constructed
+complex Fourier mode to the active region then gives the exact coarse-alias
+mode action, using the canonical block-offset equivalence and the sealed
+one-block amplitude. No Fourier family, transport family or reciprocal
+enumeration is supplied by the caller.
+
+This is the active-region flat average action, not the source weighted-adjoint
+action on Fourier coefficients. Interacting transport, a global Fourier
+equivalence, weighted-adjoint analysis/synthesis, inverse uniqueness and
+regional Green transport remain open. Physical `B0`, window 15 and every
+terminal field remain open. Counters stay exactly `20/41`, `TermSource = 0`.
+Failed diagnostics `31398057183`, `31398178152`, `31398683698`,
+`31399256447` and `31402382641` preserve respectively the cache-key,
+complexification/elaboration, dependent-extensionality, definitional-sum and
+docstring-scope failures. Diagnostic PASSes `31399586719`, `31399873331` and
+`31404901940` did not seal: the first two predate removal of the target's own
+warning, and the last restored the project graph. Only the cold run above
+retires PRE-VALIDATION.

@@ -32937,3 +32937,39 @@ Physical `B0`, window 15 and all terminal fields remain open. Live counters
 stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31394121111` and
 `31394732916` remain preserved; restored diagnostic PASS `31395156202` did
 not seal. Only the cold run above retires the PRE-VALIDATION mark.
+
+## Addendum 720 (2026-08-10, **active flat physical complex-mode action GREEN; weighted adjoint and inverse open; 20/41 unchanged**)
+
+Exact source checkpoint `94a93d24e8dcad9314a8e1446a1bad0119acc7e0`
+passed cold GitHub Actions run
+[`31405153522`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31405153522)
+with workflow checkpoint `a1f4d9cb1c67e5a3188a4051baf973f2f7b94921`.
+The job ran for `23m26s` with both restore and save skipped. The focal built
+8,490 jobs from `15:46:05Z` to `16:07:15Z`; the audit ended at `16:07:25Z`.
+Both stages exited zero. All ten audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, the axiom blacklist was empty, and
+the new target emitted no warning or error.
+
+Artifact `9070103679`, named
+`flat-physical-complex-mode-94a93d24e8dcad9314a8e1446a1bad0119acc7e0`,
+has GitHub digest
+`4ffa9aebf84ac56ad615aeed57b54ee1958184ca463b4882c6aa8b5e42f4f278`.
+The downloaded deterministic archive has SHA-256
+`f350795c50a94d1a2a0e56f562b544ecd4c068e1d67bceaa139e5c16e19e7b40`,
+and all 13 internal manifest entries matched.
+
+The new module constructs the active cochain complexification and the literal
+flat complex average internally, proves its commutation with complexification
+of the physical source average, and proves the exact action on one restricted
+complex Fourier mode. The conclusion is the internally constructed coarse
+reciprocal alias mode with the sealed entire average amplitude. It supplies
+neither a transport nor a Fourier family as caller data.
+
+This does not identify the source weighted adjoint on Fourier coefficients,
+construct a global Fourier equivalence, replace interacting transport by flat
+transport, construct an inverse, or produce the regional Green operator.
+Physical `B0`, window 15 and all terminal fields remain open. Live counters
+stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31398057183`,
+`31398178152`, `31398683698`, `31399256447` and `31402382641` remain
+preserved. Diagnostic PASSes `31399586719`, `31399873331` and `31404901940`
+did not seal; only the cold run above retires PRE-VALIDATION.
