@@ -76,7 +76,7 @@ theorem cmp99FlatZModFourierCharacter_neg_left {d N : ℕ} [NeZero N]
   rw [← Finset.prod_inv_distrib]
   apply Finset.prod_congr rfl
   intro mu _
-  rw [Pi.neg_apply, neg_mul, map_neg]
+  rw [Pi.neg_apply, neg_mul, AddChar.map_neg_eq_inv]
 
 theorem cmp99FlatZModFourierCharacter_neg_swap {d N : ℕ} [NeZero N]
     (k x : CMP99FlatZModBox d N) :
