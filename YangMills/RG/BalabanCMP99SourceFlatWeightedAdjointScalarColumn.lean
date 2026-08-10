@@ -172,7 +172,7 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
           ∑ y : FinBox d N', ∑ x ∈ blockOf M N' y,
             cmp99FlatFourierMode kneg x *
               cmp99FlatFourierMode ell (blockSite M N' x) := by
-      rw [sum_blockOf M N']
+      rw [← sum_blockOf M N']
     _ = ∑ y : FinBox d N',
           (cmp99SourceBlockAverageWeight M d : ℂ) *
             ∑ x ∈ blockOf M N' y,
