@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointFourierOrientation
 
 /-!
-# PRE-VALIDATION audit: Fourier orientation of the flat physical weighted adjoint
-
-The imported source has not yet been materialized as an `.olean`; these
-axiom checks are therefore not yet compiler-verified.
+# Axiom audit: Fourier orientation of the flat physical weighted adjoint
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatQprimeAmplitudeMomentum_fourierNeg_eq_neg_add_period

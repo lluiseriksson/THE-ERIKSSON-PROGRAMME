@@ -8816,3 +8816,37 @@ compatible but unattained. Counters stay exactly `20/41`, `TermSource = 0`.
 Failed diagnostic `31433709204` preserves the already-closed-goal elaboration
 error; restored diagnostic PASS `31434412694` did not seal. Only the cold run
 above retires PRE-VALIDATION.
+
+### Step 7.5clii exact Fourier orientation of the flat physical weighted adjoint (SEALED; inverse, interacting and regional transport open)
+
+Exact source checkpoint `7cc2a9d7e36aad31e65712ac5bd27189131b8916`
+passed cold GitHub Actions run
+[`31438216272`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31438216272)
+with workflow checkpoint `d73dd4f88f39f4434178168d2a51fc23d77c3052`.
+The cold job ran for `23m39s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `22:27:00Z`; the focal
+exited zero at `22:48:47Z` and the audit exited zero at `22:48:54Z`. All three
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+the axiom blacklist was empty.
+
+Artifact `9082415438`, named
+`flat-weighted-adjoint-fourier-orientation-7cc2a9d7e36aad31e65712ac5bd27189131b8916`,
+has GitHub digest
+`ebf2f60d14e8b6f0afd23b5fa8ec3c1a5bdb4f15fac34c70ff44d47982ce1935`.
+Its deterministic inner archive re-hashed on Windows to
+`bdeda74aa1c7e5bd6f28d80c152369ae498301d9836339448db4264236e43218`;
+all 13 internal manifest entries matched.
+
+The producer proves that literal `ZMod` Fourier negation changes the physical
+one-block amplitude momentum by an internally constructed integer multiple
+of the exact `2*pi*M` period. It then proves amplitude invariance under that
+period and identifies the fixed-coarse-fibre DFT of the physical flat
+weighted-adjoint column with the separately printed opposite-momentum alias
+row. No abstract self-adjointness exchanges the two orientations.
+
+This does not invert the alias matrix, identify flat and interacting
+transport, restrict to a regional Dirichlet carrier or produce physical
+`B0`. Window 15 remains compatible but unattained. Counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostic `31437612264` preserves the
+cast-normalization failure; restored diagnostic PASS `31437959575` did not
+seal. Only the cold run above retires PRE-VALIDATION.

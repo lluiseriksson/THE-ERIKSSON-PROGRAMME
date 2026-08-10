@@ -33181,3 +33181,35 @@ and physical `B0` remain open. Window 15 is compatible but unattained. Live
 counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostic
 `31433709204` and restored diagnostic PASS `31434412694` remain preserved;
 only the cold run above retires PRE-VALIDATION.
+
+## Addendum 727 (2026-08-11, **exact Fourier orientation of the flat physical weighted adjoint GREEN; inverse, interacting and regional transport open; 20/41 unchanged**)
+
+Exact source checkpoint `7cc2a9d7e36aad31e65712ac5bd27189131b8916`
+passed cold GitHub Actions run
+[`31438216272`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31438216272)
+with workflow checkpoint `d73dd4f88f39f4434178168d2a51fc23d77c3052`.
+The job ran for `23m39s` with restore and save both skipped. Dependency
+materialization ended at `22:27:00Z`; the focal exited zero at `22:48:47Z`
+and the audit exited zero at `22:48:54Z`. All three declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; no forbidden axiom occurred.
+
+Artifact `9082415438`, named
+`flat-weighted-adjoint-fourier-orientation-7cc2a9d7e36aad31e65712ac5bd27189131b8916`,
+has GitHub digest
+`ebf2f60d14e8b6f0afd23b5fa8ec3c1a5bdb4f15fac34c70ff44d47982ce1935`.
+The downloaded deterministic archive has SHA-256
+`bdeda74aa1c7e5bd6f28d80c152369ae498301d9836339448db4264236e43218`,
+and all 13 internal manifest entries matched.
+
+The source constructs the exact reciprocal-period correction for literal
+Fourier negation, proves that the entire one-block amplitude is invariant
+under it and identifies the fixed-coarse-fibre DFT column with the printed
+opposite-momentum alias row. The orientation is discharged through the
+literal periodic momentum dictionary, not through abstract
+self-adjointness.
+
+Alias-matrix inversion, interacting transport, regional Dirichlet
+restriction and physical `B0` remain open. Window 15 is compatible but
+unattained. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostic `31437612264` and restored diagnostic PASS `31437959575` remain
+preserved; only the cold run above retires PRE-VALIDATION.

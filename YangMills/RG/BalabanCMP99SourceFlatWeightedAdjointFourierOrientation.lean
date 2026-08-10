@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix
 import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointPhysicalColumn
 
 /-!
-# PRE-VALIDATION: Fourier orientation of the flat physical weighted adjoint
-
-Source is present at this checkpoint, its `.olean` has not yet been
-materialized, and the result is not yet compiler-verified.
+# Fourier orientation of the flat physical weighted adjoint
 
 The forward DFT evaluates the source weighted-adjoint column at the periodic
 negative fine momentum.  The physical alias-precision matrix keeps its
