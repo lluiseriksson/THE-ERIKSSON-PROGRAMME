@@ -111,7 +111,6 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexWeightedAdjointCoarseMode
             (cmp99FinBoxFourierNeg k))) * v a
     rw [hfun a, cmp99FlatFinBoxDFT_mul_const,
       cmp99FlatFinBoxDFT_sourceFlatScalarCoarseModeSynthesis, if_pos h]
-    ring
   · rw [if_neg h]
     ext a
     change cmp99FlatFinBoxDFT
