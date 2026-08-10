@@ -50,7 +50,7 @@ private lemma cmp99Flat_shift_val_zmod
     (((x.shift i) μ).val : ZMod N) =
       ((x μ).val : ZMod N) + if μ = i then 1 else 0 := by
   by_cases h : μ = i
-  · subst h
+  · subst μ
     have hv : ((x.shift i) i).val = ((x i).val + 1) % N := by
       simp [FinBox.shift]
     rw [hv, if_pos rfl, cmp99Flat_natCast_mod_zmod]
@@ -77,7 +77,7 @@ theorem cmp99FlatFourierPhase_shift
             apply Finset.sum_congr rfl
             intro μ _
             rw [cmp99Flat_shift_val_zmod]
-            by_cases h : μ = i <;> simp [h]
+            by_cases h : μ = i <;> simp [h] <;> ring
     _ = (∑ μ : Fin d, ((k μ).val : ZMod N) * ((x μ).val : ZMod N)) +
           ∑ μ : Fin d, if μ = i then ((k μ).val : ZMod N) else 0 := by
             rw [Finset.sum_add_distrib]
@@ -91,7 +91,7 @@ theorem cmp99FlatFourierPhase_shiftBack
     cmp99FlatFourierPhase k (x.shiftBack i) =
       cmp99FlatFourierPhase k x - ((k i).val : ZMod N) := by
   have h := cmp99FlatFourierPhase_shift k (x.shiftBack i) i
-  rw [FinBox.shiftBack_shift] at h
+  rw [FinBox.shift_shiftBack] at h
   exact eq_sub_of_add_eq h.symm
 
 /-- Positive-orientation Fourier character on the literal periodic box. -/
@@ -106,6 +106,7 @@ theorem cmp99FlatFourierMode_shift
       ZMod.stdAddChar ((k i).val : ZMod N) * cmp99FlatFourierMode k x := by
   unfold cmp99FlatFourierMode
   rw [cmp99FlatFourierPhase_shift, AddChar.map_add_eq_mul]
+  ring
 
 /-- A negative lattice shift multiplies the mode by the inverse character. -/
 theorem cmp99FlatFourierMode_shiftBack
@@ -115,6 +116,7 @@ theorem cmp99FlatFourierMode_shiftBack
   unfold cmp99FlatFourierMode
   rw [cmp99FlatFourierPhase_shiftBack, sub_eq_add_neg,
     AddChar.map_add_eq_mul]
+  ring
 
 /-- Scalar complex counterpart of the sealed flat physical stencil. -/
 def cmp99FlatPeriodicComplexStencil
