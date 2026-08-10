@@ -73,7 +73,7 @@ theorem cmp99FlatZModFourierCharacter_neg_left {d N : ℕ} [NeZero N]
     cmp99FlatZModFourierCharacter (-k) x =
       (cmp99FlatZModFourierCharacter k x)⁻¹ := by
   unfold cmp99FlatZModFourierCharacter
-  rw [Finset.prod_inv_distrib]
+  rw [← Finset.prod_inv_distrib]
   apply Finset.prod_congr rfl
   intro mu _
   rw [Pi.neg_apply, neg_mul, map_neg]
