@@ -45,6 +45,7 @@ def cmp99SourceFlatQprimeFineOffsetPhase
 
 /-- The fine phase at an embedded block site is exactly the sum of the phase
 at the canonical block basepoint and the internal-offset phase. -/
+omit [NeZero d] [NeZero N'] in
 theorem cmp99FlatFourierPhase_blockEmbed
     (k : FinBox d (M * N')) (y : FinBox d N') (r : FinBox d M) :
     cmp99FlatFourierPhase k (cmp99BlockEmbed y r) =
@@ -82,6 +83,7 @@ def cmp99SourceFlatQprimeAmplitudeMomentum
 
 /-- One CMP89 geometric-series base at the signed amplitude momentum is the
 positive standard character of the corresponding fine momentum. -/
+omit [NeZero d] in
 theorem cmp89Eq245EntireAverageBase_amplitudeMomentum
     (k : FinBox d (M * N')) (mu : Fin d) :
     cmp89Eq245EntireAverageBase M
@@ -94,7 +96,6 @@ theorem cmp89Eq245EntireAverageBase_amplitudeMomentum
     exact_mod_cast (NeZero.ne M)
   congr 1
   field_simp [hM]
-  ring
 
 /-- The additive offset character is the coordinatewise product character.
 This is the only use of the additive-character algebra in the block sum. -/
@@ -107,10 +108,10 @@ theorem cmp99SourceFlatQprimeFineOffsetCharacter_eq_prod
     cmp99SourceFlatQprimeFineOffsetPhase
   let psi : AddChar (ZMod (M * N')) ℂ := ZMod.stdAddChar
   have hprod : ∀ s : Finset (Fin d),
-      psi (∑ mu in s,
+      psi (∑ mu ∈ s,
           ((k mu).val : ZMod (M * N')) *
             ((r mu).val : ZMod (M * N'))) =
-        ∏ mu in s,
+        ∏ mu ∈ s,
           psi ((k mu).val : ZMod (M * N')) ^ (r mu).val := by
     intro s
     induction s using Finset.induction_on with
@@ -169,7 +170,7 @@ theorem cmp99SourceFlatQprimeWeightedBlockSum_fourierMode
             cmp99SourceFlatQprimeOffsetCharacter d M
               (cmp99SourceFlatQprimeAmplitudeMomentum k) r) *
           cmp99FlatFourierMode k (blockBasepoint M N' y) := by
-            rw [Finset.sum_mul]
+            rw [Fintype.sum_mul]
             ring
     _ = cmp89Eq245EntireAverageAmplitude d M
           (cmp99SourceFlatQprimeAmplitudeMomentum k) *
