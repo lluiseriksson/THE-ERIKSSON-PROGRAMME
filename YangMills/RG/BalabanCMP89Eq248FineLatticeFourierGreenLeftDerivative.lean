@@ -34,7 +34,7 @@ noncomputable section
 /-- Add one unit fine-lattice step in the displayed derivative coordinate. -/
 def cmp89Eq248FineLatticeForwardCoordinateShift {d : ℕ}
     (mu : Fin d) (u : Fin d → ℤ) : Fin d → ℤ :=
-  fun nu => u nu + Pi.single mu 1 nu
+  fun nu => u nu + (Pi.single mu (1 : ℤ) : Fin d → ℤ) nu
 
 /-- Physical fine-lattice scaling turns the integer coordinate step into the
 literal real step `xi` in that coordinate. -/
@@ -43,7 +43,7 @@ theorem cmp89Eq249PhysicalFineLatticeDisplacement_forwardCoordinateShift
     cmp89Eq249PhysicalFineLatticeDisplacement xi
         (cmp89Eq248FineLatticeForwardCoordinateShift mu u) =
       fun nu => cmp89Eq249PhysicalFineLatticeDisplacement xi u nu +
-        Pi.single mu xi nu := by
+        (Pi.single mu xi : Fin d → ℝ) nu := by
   funext nu
   by_cases hnu : nu = mu
   · subst nu
@@ -66,8 +66,10 @@ theorem cmp89Eq251EntireAliasPhase_forwardCoordinateShift
         (xi : ℂ) * cmp89Eq248EntireAliasMomentum z m mu := by
   rw [cmp89Eq249PhysicalFineLatticeDisplacement_forwardCoordinateShift,
     cmp89Eq251EntirePhase_add]
-  congr 1
-  simp [cmp89Eq251EntirePhase, Pi.single_apply]
+  rw [show cmp89Eq251EntirePhase (cmp89Eq248EntireAliasMomentum z m)
+        (Pi.single mu xi : Fin d → ℝ) =
+      cmp89Eq248EntireAliasMomentum z m mu * (xi : ℂ) by
+    simp [cmp89Eq251EntirePhase, Pi.single_apply]]
   ring
 
 /-- The phase difference quotient is exactly the entire fine difference
@@ -92,7 +94,6 @@ theorem cmp89Eq251_exp_aliasPhase_forwardDifference_div_spacing
   unfold cmp89Eq245EntireScaledDifference
   have hxiC : (xi : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr hxi
   field_simp [hxiC]
-  ring
 
 /-- One reciprocal-alias contribution to the Green endpoint before applying
 the fine left difference. -/
@@ -296,7 +297,7 @@ theorem cmp89Eq248ComplexStabilizedGreenEndpoint_forwardDifference
     (ne_of_gt (cmp89Eq249FineLatticeSpacing_pos L j))
   have hnum :=
     cmp89Eq248ComplexStabilizedGreenEndpointNumerator_forwardDifference
-      (mass := mass) z mu u
+      (d := 4) (L := L) (j := j) (mass := mass) z mu u
   unfold cmp89Eq248ComplexStabilizedGreenEndpointIntegrand
     cmp89Eq249FineLatticeStabilizedFourierLeftDerivativeKernelIntegrand
     cmp89Eq251ComplexStabilizedEndpointIntegrand
