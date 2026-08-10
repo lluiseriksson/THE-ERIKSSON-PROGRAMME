@@ -32520,3 +32520,37 @@ terminal fields remain open. Counters stay exactly `20/41`,
 `TermSource = 0`. Diagnostic PASS `31356849772` did not seal. Failed
 diagnostics `31356282470`, `31356476316` and `31356678354` remain preserved;
 only the cold run above did.
+
+## Addendum 708 (2026-08-10, **flat periodic Fourier stencil GREEN; printed-symbol and physical complexification open; 20/41 unchanged**)
+
+Exact source checkpoint `a82d41ac41bb5ccbe86fd7554c5bdef06468d956`
+passed cold GitHub Actions run
+[`31360584905`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31360584905)
+with workflow checkpoint `d75c5ce026ba97e9bacefeceb516c025d429d360`.
+The job completed in `15m27s`; restore/save of `.lake/build` were skipped.
+The focal ran from `06:05:25Z` to `06:18:48Z`, and the audit ended at
+`06:18:54Z`. Both stages exited zero, all nine audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9052509105`, named
+`flat-fourier-stencil-a82d41ac41bb5ccbe86fd7554c5bdef06468d956`, has
+GitHub digest
+`855381e975866515e56727dfa92c164d479d7da4afa402bc1374a11f60a16748`.
+Its deterministic inner archive re-hashed on Windows to
+`2e65d22a1864b5943231b54ea9cb6e3949020e754f04d09e9404b331597af1ab`;
+all 13 internal manifest entries matched.
+
+The producer constructs the periodic `ZMod` phase, derives both literal shift
+laws through the standard additive character, and proves the exact
+eigenvalue identity for the scalar complex symmetric stencil. This fixes the
+orientation and discrete normalization without accepting a Fourier family or
+an eigenvalue as input.
+
+The printed CMP89 real-symbol identity, an explicit complexification of
+`SUNLieCoord Nc`, the `Q'` symbol/adjoint, inverse uniqueness and regional
+transport remain open. Physical `B0`, window 15 and all terminal fields stay
+open; counters remain exactly `20/41`, `TermSource = 0`. Diagnostic PASS
+`31360401684` did not seal. Cold PASS `31359048549` on the warning-bearing
+predecessor, diagnostic PASS `31358894795`, and failed diagnostic
+`31358679426` remain preserved; only the warning-clean cold run above seals.

@@ -7,10 +7,7 @@ import Mathlib.Analysis.Fourier.ZMod
 import YangMills.RG.BalabanCMP99SourceFlatAmbientLaplacian
 
 /-!
-# PRE-VALIDATION: Fourier modes of the flat periodic CMP99 stencil
-
-Source is present, the corresponding `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Fourier modes of the flat periodic CMP99 stencil
 
 This module diagonalizes the scalar complex stencil that is definitionally
 parallel to `cmp99FlatPeriodicLaplacianStencil`.  The phase is built from the

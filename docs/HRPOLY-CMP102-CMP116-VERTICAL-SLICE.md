@@ -8090,3 +8090,41 @@ terminal field remain open. Counters stay exactly `20/41`,
 not seal; failed diagnostics `31356282470`, `31356476316` and `31356678354`
 remain preserved. Only the cold run above retired the two PRE-VALIDATION
 marks.
+
+### Step 7.5cxxxiii flat periodic Fourier stencil (SEALED; printed-symbol and physical complexification open)
+
+Exact source checkpoint `a82d41ac41bb5ccbe86fd7554c5bdef06468d956`
+passed cold GitHub Actions run
+[`31360584905`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31360584905)
+with workflow checkpoint `d75c5ce026ba97e9bacefeceb516c025d429d360`.
+The job completed in `15m27s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `06:05:25Z` to `06:18:48Z`, the audit ended
+at `06:18:54Z`, and both stages exited zero. All nine audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`; the sealed target
+emitted no warning or error of its own.
+
+Artifact `9052509105`, named
+`flat-fourier-stencil-a82d41ac41bb5ccbe86fd7554c5bdef06468d956`, has
+GitHub digest
+`855381e975866515e56727dfa92c164d479d7da4afa402bc1374a11f60a16748`.
+Its deterministic inner archive re-hashed on Windows to
+`2e65d22a1864b5943231b54ea9cb6e3949020e754f04d09e9404b331597af1ab`;
+all 13 internal manifest entries matched.
+
+The literal `FinBox d N -> ZMod N` phase and Mathlib standard additive
+character now give exact positive- and negative-shift laws. The scalar
+complex symmetric nearest-neighbour stencil is diagonalized by those modes,
+with the eigenvalue written as the sum of the positive and negative character
+terms. Orientation and the `2*pi/N` normalization therefore enter through
+the character itself rather than an unnamed Fourier convention.
+
+This is a scalar complex stencil theorem. It does not yet identify the
+character eigenvalue with the printed real CMP89 unit-lattice symbol, provide
+an explicit complexification of the real `SUNLieCoord Nc` fibre, diagonalize
+the `Q'` term, prove inverse uniqueness or transport to a regional Green
+operator. Physical `B0`, window 15 and every terminal field remain open;
+counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
+`31360401684` used a restored graph and did not seal. Cold PASS
+`31359048549` on the warning-bearing predecessor, diagnostic PASS
+`31358894795`, and failed diagnostic `31358679426` remain preserved; only the
+warning-clean cold run above retired the two PRE-VALIDATION marks.

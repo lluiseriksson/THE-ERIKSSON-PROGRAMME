@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatFourierStencil
 
 /-!
-# PRE-VALIDATION audit: Fourier modes of the flat periodic CMP99 stencil
+# Axiom audit: Fourier modes of the flat periodic CMP99 stencil
 -/
 
 #print axioms YangMills.RG.cmp99FlatFourierPhase
