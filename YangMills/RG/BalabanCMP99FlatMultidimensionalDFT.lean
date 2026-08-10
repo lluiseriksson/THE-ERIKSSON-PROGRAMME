@@ -174,18 +174,38 @@ theorem cmp99FlatZModInvDFT_DFT {d N : ℕ} [NeZero N]
     cmp99FlatZModInvDFT (cmp99FlatZModDFT phi) = phi := by
   funext x
   unfold cmp99FlatZModInvDFT cmp99FlatZModDFT
-  congr 1
-  rw [Finset.sum_comm]
-  apply Finset.sum_congr rfl
-  intro y _
-  rw [Finset.sum_mul]
-  apply Finset.sum_congr rfl
-  intro k _
-  ring
-  rw [sum_cmp99FlatZModFourierCharacter_mul_neg]
   have hcard : (N : ℂ) ^ d ≠ 0 := by
     exact pow_ne_zero d (Nat.cast_ne_zero.mpr (NeZero.ne N))
-  simp [hcard]
+  calc
+    ((N : ℂ) ^ d)⁻¹ *
+          ∑ k, cmp99FlatZModFourierCharacter k x *
+            ∑ y, cmp99FlatZModFourierCharacter (-k) y * phi y =
+        ((N : ℂ) ^ d)⁻¹ *
+          ∑ k, ∑ y, cmp99FlatZModFourierCharacter k x *
+            (cmp99FlatZModFourierCharacter (-k) y * phi y) := by
+      congr 1
+      apply Finset.sum_congr rfl
+      intro k _
+      rw [Finset.mul_sum]
+    _ = ((N : ℂ) ^ d)⁻¹ *
+          ∑ y, (∑ k, cmp99FlatZModFourierCharacter k x *
+            cmp99FlatZModFourierCharacter (-k) y) * phi y := by
+      congr 1
+      rw [Finset.sum_comm]
+      apply Finset.sum_congr rfl
+      intro y _
+      rw [Finset.sum_mul]
+      apply Finset.sum_congr rfl
+      intro k _
+      ring
+    _ = ((N : ℂ) ^ d)⁻¹ *
+          ∑ y, (if x = y then (N : ℂ) ^ d else 0) * phi y := by
+      congr 1
+      apply Finset.sum_congr rfl
+      intro y _
+      rw [sum_cmp99FlatZModFourierCharacter_mul_neg]
+    _ = phi x := by
+      simp [hcard]
 
 theorem cmp99FlatZModDFT_InvDFT {d N : ℕ} [NeZero N]
     (psi : CMP99FlatZModBox d N → ℂ) :
