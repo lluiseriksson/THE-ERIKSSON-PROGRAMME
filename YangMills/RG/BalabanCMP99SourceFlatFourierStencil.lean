@@ -31,7 +31,7 @@ open scoped BigOperators
 
 noncomputable section
 
-variable {d N : ℕ} [NeZero d] [NeZero N]
+variable {d N : ℕ} [NeZero N]
 
 /-- Casting a reduced natural coordinate into `ZMod` removes the explicit
 remainder.  Kept local to the Fourier dictionary so it does not import the
@@ -77,7 +77,10 @@ theorem cmp99FlatFourierPhase_shift
             apply Finset.sum_congr rfl
             intro μ _
             rw [cmp99Flat_shift_val_zmod]
-            by_cases h : μ = i <;> simp [h] <;> ring
+            by_cases h : μ = i
+            · simp [h]
+              ring
+            · simp [h]
     _ = (∑ μ : Fin d, ((k μ).val : ZMod N) * ((x μ).val : ZMod N)) +
           ∑ μ : Fin d, if μ = i then ((k μ).val : ZMod N) else 0 := by
             rw [Finset.sum_add_distrib]
