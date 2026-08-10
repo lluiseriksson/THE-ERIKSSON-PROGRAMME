@@ -83,6 +83,7 @@ noncomputable def cmp99SourceFlatComplexBlockAverageCLM
   cmp99SourceTransportedBlockAverageCLM Omega
     (cmp99SourceFlatComplexTransport (d := d) (M := M) (N' := N') (Nc := Nc))
 
+omit [NeZero d] [NeZero Nc] in
 @[simp] theorem cmp99SourceFlatComplexBlockAverageCLM_apply
     (Omega : ActiveGaugeRegion d (M * N'))
     (phi : ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc))
@@ -118,6 +119,7 @@ theorem cmp99SourceFlatComplexBlockAverage_commutes_complexification
           (cmp99SourceFlatGaugeConfig d (M * N') Nc)) phi y)
   rw [cmp99SourceFlatComplexBlockAverageCLM_apply,
     cmp99SourceTransportedBlockAverageCLM_flat_apply, map_smul, map_sum]
+  simp only [cmp99ActiveGaugeZeroCochainComplexificationCLM_apply]
 
 /-- Restriction of one explicit complex-fibre Fourier mode to an active
 region.  No Fourier family or enumeration is supplied. -/
