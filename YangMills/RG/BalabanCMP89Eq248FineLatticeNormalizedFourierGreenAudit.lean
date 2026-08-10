@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP89Eq248FineLatticeNormalizedFourierGreen
+
+/-!
+# PRE-VALIDATION audit: normalized fine-lattice Fourier Green
+-/
+
+#print axioms YangMills.RG.differentiable_cmp89Eq248ComplexBareGreenEndpointNumerator
+#print axioms YangMills.RG.differentiableAt_cmp89Eq248ComplexStabilizedGreenEndpointNumerator
+#print axioms YangMills.RG.differentiableAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand
+#print axioms YangMills.RG.differentiableAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_of_commonRadius
+#print axioms YangMills.RG.integrable_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_real
+#print axioms YangMills.RG.cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen
+#print axioms YangMills.RG.cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen_forwardDifference
