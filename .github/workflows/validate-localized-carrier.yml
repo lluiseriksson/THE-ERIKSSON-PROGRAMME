@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: e77a9ba120a621298f800db1dd73c4c75dec8d62
+  SOURCE_SHA: a8075aa4a726e86a0939cfac5f342e62363dc81d
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     normalized-fine-lattice-recombination
 
 jobs:
-  flat-qprime-physical-alias-precision-matrix:
+  flat-physical-transport:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-qprime-physical-alias-precision-matrix-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-physical-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrixAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatPhysicalTransport.lean \
+            YangMills/RG/BalabanCMP99SourceFlatPhysicalTransportAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_qprime_physical_alias_precision_matrix_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix
-          run_stage flat_qprime_physical_alias_precision_matrix_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrixAudit.lean
+          run_stage flat_physical_transport_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatPhysicalTransport
+          run_stage flat_physical_transport_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatPhysicalTransportAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_qprime_physical_alias_precision_matrix_audit.log": 7,
+              "flat_physical_transport_audit.log": 7,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-qprime-physical-alias-precision-matrix-evidence.tar.gz
-          sha256sum flat-qprime-physical-alias-precision-matrix-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-physical-transport-evidence.tar.gz
+          sha256sum flat-physical-transport-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-qprime-physical-alias-precision-matrix-${{ env.SOURCE_SHA }}
+          name: flat-physical-transport-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-qprime-physical-alias-precision-matrix-evidence.tar.gz
+            flat-physical-transport-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-qprime-physical-alias-precision-matrix-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-physical-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
