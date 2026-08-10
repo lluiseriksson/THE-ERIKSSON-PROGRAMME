@@ -1,4 +1,4 @@
-name: Validate CMP89 fine-lattice Fourier Green derivative bridge
+name: Validate CMP89 normalized fine-lattice Fourier Green
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 531032b6bec993e56129e443c3a2463dd61b54be
+  SOURCE_SHA: 6b05c0cbfdae8e6e16d6e42f1924ff75c926a783
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     physical-normalized-owner-bound
 
 jobs:
-  fine-lattice-fourier-green-derivative:
+  normalized-fine-lattice-fourier-green:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-fine-lattice-fourier-green-derivative-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-normalized-fine-lattice-fourier-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative.lean \
-            YangMills/RG/BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivativeAudit.lean \
+            YangMills/RG/BalabanCMP89Eq248FineLatticeNormalizedFourierGreen.lean \
+            YangMills/RG/BalabanCMP89Eq248FineLatticeNormalizedFourierGreenAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage fine_lattice_fourier_green_derivative_focal \
-            lake build YangMills.RG.BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative
-          run_stage fine_lattice_fourier_green_derivative_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivativeAudit.lean
+          run_stage normalized_fine_lattice_fourier_green_focal \
+            lake build YangMills.RG.BalabanCMP89Eq248FineLatticeNormalizedFourierGreen
+          run_stage normalized_fine_lattice_fourier_green_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq248FineLatticeNormalizedFourierGreenAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "fine_lattice_fourier_green_derivative_audit.log": 10,
+              "normalized_fine_lattice_fourier_green_audit.log": 7,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              fine-lattice-fourier-green-derivative-evidence.tar.gz
-          sha256sum fine-lattice-fourier-green-derivative-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              normalized-fine-lattice-fourier-green-evidence.tar.gz
+          sha256sum normalized-fine-lattice-fourier-green-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fine-lattice-fourier-green-derivative-${{ env.SOURCE_SHA }}
+          name: normalized-fine-lattice-fourier-green-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            fine-lattice-fourier-green-derivative-evidence.tar.gz
+            normalized-fine-lattice-fourier-green-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-fine-lattice-fourier-green-derivative-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-normalized-fine-lattice-fourier-green-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
