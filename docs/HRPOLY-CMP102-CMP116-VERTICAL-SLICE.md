@@ -506,6 +506,7 @@ following table is normative for new interfaces and proofs:
 | `cmp116Eq80Lemma1CombinedDomainMetric` | branch-local native tree metric | direct and native metrics retain their own block lattices; the native metric is not recomputed after support coarsification |
 | `physicalBondDist b b'` | fine-lattice Chebyshev bond distance, including the direction coordinate | comparison with block counts costs an explicit factor of `M`, e.g. `physicalBondDist <= 4*M*blocks.card` |
 | `cmp99SourceBlockAverageWeight M d` | normalized mass of one generated `Q'` row at one blocking scale | exactly `M^-d`; this is a row mass, not a count of the `M^d` fine sites in the owner block |
+| `cmp99SourceFlatQprimeOffsetAmplitude d M z` | source-normalized Fourier amplitude of one complete `M^d` offset fibre | the single coefficient `M^-d` multiplies the full offset sum and equals exactly the printed product `cmp89Eq245EntireAverageAmplitude d M z`; it is not applied once per coordinate after the sum |
 | `(cmp99SourceBlockAverageWeight M d)^depth` | normalized row mass of the depth-`depth` generated counting tower | exactly `(M^-d)^depth`; every induction step contributes one new normalized row mass |
 | owner-block count times one-scale row mass | cancellation between counting and averaging units | `M^d * M^-d = 1`; never replace the normalized row mass by the raw owner-block cardinality or apply the normalization a second time |
 | `L` in the source-separated regional route | RG block ratio of the generated tower | controls the precision range `L^(depth+1)` and the Poincare/coercivity package `CP(L)`; it is held fixed when the independent large-block parameter grows |
@@ -8202,3 +8203,39 @@ uniqueness or transport to a regional Green operator. Physical `B0`, window
 `31362542312` and `31362781143` preserve the elaboration corrections.
 Diagnostic PASS `31363036192` restored and saved the graph and did not seal;
 only the cold run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxxvi flat one-block `Q'` Fourier amplitude (SEALED; physical mode action open)
+
+Exact source checkpoint `c0bad89fd6bd4365dac40bd6fd8a9af070ce772b`
+passed cold GitHub Actions run
+[`31368645861`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31368645861)
+with workflow checkpoint `8800307200cc6dc356eeb60cbdef98cd6efacd92`.
+The cold job completed in `17m07s`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `08:08:51Z` to `08:23:52Z`, and the
+audit ended at `08:23:59Z`. Both stages exited zero, all four declarations
+use exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted
+no warning or error of its own.
+
+Artifact `9055606077`, named
+`flat-qprime-fourier-amplitude-c0bad89fd6bd4365dac40bd6fd8a9af070ce772b`,
+has GitHub digest
+`a0c066dd404a305d9894b47d84e9653b568071922da6cba5fcc95aec022f5df3`.
+Its deterministic inner archive re-hashed on Windows to
+`9aae33eccec082787a4fba72c3866ae94233baad60b8713d604bf6911ff06d53`;
+all 13 internal manifest entries matched.
+
+The producer expands the literal source coefficient
+`cmp99SourceBlockAverageWeight M d = M^-d` over the complete `M^d` offset
+fibre and proves its character sum exactly equal to the printed product of
+coordinatewise CMP89 entire averaging factors. The opposite-momentum product
+is retained without inserting complex conjugation away from the real slice.
+
+This seal identifies only the scalar offset amplitude. It does not yet build
+the offset-to-physical-block equivalence, prove the fine-to-coarse mode action
+of `cmp99SourceTransportedBlockAverageCLM`, identify the weighted adjoint,
+diagonalize `Q'^*Q'`, prove inverse uniqueness or transport to a regional
+Green operator. Physical `B0`, window 15 and every terminal field remain
+open. Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostic
+`31368030280` remains preserved; diagnostic PASS `31368432187` used a
+restored graph and did not seal. Only the cold run above retires the two
+PRE-VALIDATION marks.

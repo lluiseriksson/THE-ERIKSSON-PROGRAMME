@@ -32618,3 +32618,38 @@ remain open. Physical `B0`, window 15 and all terminal fields stay open;
 counters remain exactly `20/41`, `TermSource = 0`. Failed diagnostic
 `31365448830` and cached diagnostic PASS `31365742122` remain preserved; only
 the cold run above seals.
+
+## Addendum 711 (2026-08-10, **flat one-block `Q'` Fourier amplitude GREEN; physical mode action open; 20/41 unchanged**)
+
+Exact source checkpoint `c0bad89fd6bd4365dac40bd6fd8a9af070ce772b`
+passed cold GitHub Actions run
+[`31368645861`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31368645861)
+with workflow checkpoint `8800307200cc6dc356eeb60cbdef98cd6efacd92`.
+The cold job ran for `17m07s`, with restoration and saving of `.lake/build`
+both skipped. The focal ran from `08:08:51Z` to `08:23:52Z`; the audit ended
+at `08:23:59Z`. Both stages exited zero, all four audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9055606077`, named
+`flat-qprime-fourier-amplitude-c0bad89fd6bd4365dac40bd6fd8a9af070ce772b`,
+has GitHub digest
+`a0c066dd404a305d9894b47d84e9653b568071922da6cba5fcc95aec022f5df3`.
+Its deterministic inner archive re-hashed on Windows to
+`9aae33eccec082787a4fba72c3866ae94233baad60b8713d604bf6911ff06d53`;
+all 13 internal manifest entries matched.
+
+The producer proves that the single source row coefficient `M^-d` times the
+complete product-character sum over the `M^d` internal block offsets is
+exactly the printed product of normalized CMP89 entire averaging factors.
+The opposite-momentum pairing is also exact and introduces no conjugation
+away from the real slice. The normative convention table now records this
+identity next to the existing row-mass/counting cancellation, preventing a
+second application of the normalization.
+
+The physical fine-to-coarse action of `Q'`, its weighted adjoint,
+`Q'^*Q'`, inverse uniqueness and regional transport remain open. Physical
+`B0`, window 15 and every terminal field remain open. Live counters stay
+exactly `20/41`, `TermSource = 0`. Failed diagnostic `31368030280` remains
+preserved; restored diagnostic PASS `31368432187` did not seal. Only the cold
+run above retires PRE-VALIDATION.

@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjoint
 /-!
 # The flat one-block `Q'` Fourier amplitude
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
-
 CMP99 (3.19) fixes the one-step zero-cochain average to the coefficient
 `M^-d`.  CMP89 (2.45) writes its momentum-space amplitude as the product of
 the normalized finite geometric sums `u_M`.  This file proves that these are
