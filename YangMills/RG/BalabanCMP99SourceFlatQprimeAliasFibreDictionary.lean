@@ -53,12 +53,7 @@ def cmp99SourceFlatQprimeCenteredAliasEquiv (M : ℕ) [NeZero M] :
       omega⟩
   left_inv q := by
     apply Fin.ext
-    simp only
-    have hnonneg : 0 ≤
-        cmp89Eq245CenteredAliasLower M + (q.1 : ℤ) -
-          cmp89Eq245CenteredAliasLower M := by omega
-    rw [Int.toNat_of_nonneg hnonneg]
-    omega
+    simp only [add_sub_cancel_left, Int.toNat_natCast]
   right_inv m := by
     apply Subtype.ext
     have hm : cmp89Eq245CenteredAliasLower M ≤ m.1 ∧
@@ -88,7 +83,8 @@ def cmp99SourceFlatQprimeFixedCoarseFibreEquiv
     ⟨fun mu => finProdFinEquiv (q mu, ell mu), by
       funext mu
       apply Fin.ext
-      simp [cmp99SourceFlatQprimeCoarseAlias, finProdFinEquiv]
+      change (ell mu).val % N' = (ell mu).val
+      exact Nat.mod_eq_of_lt (ell mu).isLt
     ⟩
   left_inv k := by
     apply Subtype.ext
@@ -106,6 +102,25 @@ def cmp99SourceFlatQprimeFixedCoarseFibreEquiv
     exact congrArg Prod.fst
       (Equiv.symm_apply_apply finProdFinEquiv (q mu, ell mu))
 
+@[simp]
+theorem cmp99SourceFlatQprimeFixedCoarseFibreEquiv_apply_val
+    (d M N' : ℕ) [NeZero M] [NeZero N']
+    (ell : FinBox d N')
+    (k : {k : FinBox d (M * N') //
+      cmp99SourceFlatQprimeCoarseAlias k = ell}) (mu : Fin d) :
+    (cmp99SourceFlatQprimeFixedCoarseFibreEquiv d M N' ell k mu).val =
+      (k.1 mu).divNat.val := rfl
+
+/-- Reconstructing from the nonnegative quotient retains the literal
+Euclidean decomposition `ell + N' * quotient`. -/
+@[simp]
+theorem cmp99SourceFlatQprimeFixedCoarseFibreEquiv_symm_apply_val
+    (d M N' : ℕ) [NeZero M] [NeZero N']
+    (ell : FinBox d N') (q : FinBox d M) (mu : Fin d) :
+    (((cmp99SourceFlatQprimeFixedCoarseFibreEquiv
+        d M N' ell).symm q).1 mu).val =
+      (ell mu).val + N' * (q mu).val := rfl
+
 /-- The source-faithful dictionary between fine momenta with a fixed coarse
 alias and the centered CMP89 alias index at one block-averaging step. -/
 def cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv
@@ -121,28 +136,6 @@ def cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv
           cmp99SourceFlatQprimeCenteredAliasEquiv M).trans
         (cmp89Eq245CenteredAliasVectorPiEquiv d M).symm)
   simpa only [CMP89Eq246AliasIndex, pow_one] using e
-
-/-- The forward dictionary exposes the centered representative coordinate:
-`-floor(M/2)` plus the Euclidean quotient of the fine momentum. -/
-theorem cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv_apply_coordinate
-    (d M N' : ℕ) [NeZero M] [NeZero N']
-    (ell : FinBox d N')
-    (k : {k : FinBox d (M * N') //
-      cmp99SourceFlatQprimeCoarseAlias k = ell}) (mu : Fin d) :
-    ((cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv d M N' ell k).1 mu) =
-      cmp89Eq245CenteredAliasLower M + ((k.1 mu).divNat.1 : ℤ) := by
-  rfl
-
-/-- Reconstructing a fine momentum from a centered CMP89 alias retains the
-literal Euclidean decomposition `ell + N' * quotient`. -/
-theorem cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv_symm_apply_val
-    (d M N' : ℕ) [NeZero M] [NeZero N']
-    (ell : FinBox d N') (m : CMP89Eq246AliasIndex d M 1) (mu : Fin d) :
-    (((cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv
-        d M N' ell).symm m).1 mu).val =
-      (ell mu).val + N' *
-        Int.toNat (m.1 mu - cmp89Eq245CenteredAliasLower M) := by
-  rfl
 
 /-- The inverse dictionary lands in the requested coarse-alias fibre by
 construction, rather than by an assumed congruence. -/
