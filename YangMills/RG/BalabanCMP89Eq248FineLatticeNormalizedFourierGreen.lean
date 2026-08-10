@@ -183,9 +183,12 @@ theorem integrable_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_real
     have houter :=
       differentiableAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_of_commonRadius
         (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
-        ha hmassPos hrho hamplitude hradius hwindow hmass hp
-        (by intro nu; simp [cmp89Eq251PhysicalBrillouinParameter])
-        (by intro nu; simp [hrho])
+        ha hmassPos hrho hamplitude hradius hwindow hmass
+        (p := cmp89Eq251PhysicalBrillouinParameter x) hp
+        (z := fun nu =>
+          (cmp89Eq251PhysicalBrillouinParameter x nu : ℂ))
+        (by intro nu; simp)
+        (by intro nu; simpa using hrho)
         (endpointDisplacement := endpointDisplacement)
     have hinner : ContinuousAt (fun y : Fin 4 → ℝ =>
         fun nu => (cmp89Eq251PhysicalBrillouinParameter y nu : ℂ)) x := by
@@ -293,7 +296,7 @@ theorem cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen_forwardDifference
       rw [MeasureTheory.integral_sub hshifted hbase]
     _ = normalization *
         (∫ x, (shifted x - base x) / (xi : ℂ) ∂measure) := by
-      rw [MeasureTheory.integral_div]
+      rw [← MeasureTheory.integral_div]
     _ = normalization * ∫ x, deriv x ∂measure := by
       congr 1
       apply integral_congr_ae
