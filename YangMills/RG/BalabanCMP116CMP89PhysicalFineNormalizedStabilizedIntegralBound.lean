@@ -93,25 +93,27 @@ theorem norm_cmp116CMP89PhysicalFineNormalizedStabilizedIntegral_le_owner
   have hrate : 0 ≤ rate := mul_nonneg hrho hxi
   have hweight (u : Fin 4 → ℤ) :
       Real.exp (-(rho * cmp89Eq251DisplacementL1
-        (cmp89Eq249PhysicalFineLatticeDisplacement xi u))) =
+        (cmp89Eq249PhysicalFineLatticeDisplacement
+          (cmp89Eq249FineLatticeSpacing L (depth + 1)) u))) =
         cmp89SignedLatticeL1ExponentialWeight rate u := by
     rw [cmp89Eq251DisplacementL1_physicalFineLatticeDisplacement hxi,
       cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
     unfold cmp89Eq251LatticeL1Length
     congr 1
-    dsimp [rate]
+    dsimp [rate, xi]
     ring
   have hscale : rate * (L ^ (depth + 1) : ℝ) = rho := by
-    have hpow : (L ^ (depth + 1) : ℝ) ≠ 0 := by positivity
-    change (rho * ((L ^ (depth + 1) : ℝ)⁻¹) *
-      (L ^ (depth + 1) : ℝ)) = rho
+    have hL : (L : ℝ) ≠ 0 := by exact_mod_cast (NeZero.ne L)
+    have hpow : (L : ℝ) ^ (depth + 1) ≠ 0 := pow_ne_zero _ hL
+    dsimp [rate, xi, cmp89Eq249FineLatticeSpacing]
+    rw [Nat.cast_pow]
     rw [mul_assoc, inv_mul_cancel₀ hpow, mul_one]
   have hnormalized :=
     norm_cmp89Eq249NormalizedFineLatticeStabilizedIntegral_le
       (L := L) (j := depth + 1) (mass := mass) (a := a) (rho := rho)
       ha hmassPos hrho hamplitude hradius hwindow hmass mu
       (cmp116CMP89PhysicalBondHolderDisplacement b) transport
-  simp_rw [hweight] at hnormalized
+  rw [hweight, hweight] at hnormalized
   have hweights :=
     cmp116CMP89PhysicalEndpointWeights_le_ownerWeight
       depth hrate b y
