@@ -32686,3 +32686,42 @@ all terminal fields remain open. Live counters stay exactly `20/41`,
 `TermSource = 0`. Failed diagnostic `31370258620` remains preserved;
 diagnostic PASS `31370540139` restored the graph and did not seal. Only the
 cold run above retires PRE-VALIDATION.
+
+## Addendum 713 (2026-08-10, **exact flat one-block `Q'` Fourier-mode action GREEN; coarse alias open; 20/41 unchanged**)
+
+Exact source checkpoint `811bbd4e3bb66d9f16df165f8f976a47cfc08dae`
+passed cold GitHub Actions run
+[`31373952680`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31373952680)
+with workflow checkpoint `708d825b4d5bc8d3f2bd2a061c54ba694b6b15ff`.
+The cold job ran for `23m42s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `09:20:08Z` to `09:41:49Z`; the audit ended
+at `09:41:56Z`. Both stages exited zero, all nine audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9057854933`, named
+`flat-qprime-fourier-mode-action-811bbd4e3bb66d9f16df165f8f976a47cfc08dae`,
+has GitHub digest
+`a903728e30fbf7ffc30bc7b97d9b7bd45616d2fbefd24db1112d2064e97867fd`.
+Its deterministic inner archive re-hashed on Windows to
+`f45497f8fe831ed8b3d84470247d9ffc24edefa4b8e56b882520a0f64dbe7704`;
+all 13 internal manifest entries matched. An initial local verification that
+reported `evidence/evidence/...` mismatches was an observer-root error; the
+manifest was then re-run from the artifact root and passed `13/13`, with the
+archive digest equal to the value recorded inside the artifact.
+
+The producer proves the literal one-block mode calculation. It factors the
+fine character at the physical block embedding, evaluates the internal
+offset factor through the sealed CMP89 entire amplitude at `-M * p_fine`,
+and cancels the single source row normalization against the complete offset
+sum exactly. It does not call the surviving block-basepoint phase a coarse
+mode and does not choose a reciprocal alias. No second block cardinality,
+row mass or normalization is introduced.
+
+The coarse-alias dictionary, coarse mode action, physical Lie-fibre action,
+weighted adjoint, `Q'^*Q'`, inverse uniqueness and regional transport remain
+open. Physical `B0`, window 15 and every terminal field remain open. Live
+counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
+`31372848347`, `31373122676` and `31373438940` remain preserved; restored
+diagnostic PASS `31373704872` did not seal. Only the cold run above retires
+the two PRE-VALIDATION marks.

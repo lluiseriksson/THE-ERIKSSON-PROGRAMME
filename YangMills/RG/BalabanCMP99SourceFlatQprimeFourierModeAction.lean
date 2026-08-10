@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceFlatFourierSymbolDictionary
 /-!
 # Exact flat one-block `Q'` action on a fine Fourier mode
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
-
 The fine Fourier mode lives on `FinBox d (M * N')`, whereas one application
 of the CMP99 average produces a function of the coarse owner block.  This
 module keeps those carriers distinct.  It first splits the fine character at

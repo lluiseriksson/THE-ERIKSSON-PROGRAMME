@@ -8274,3 +8274,40 @@ prove inverse uniqueness or transport to a regional Green operator. Physical
 `20/41`, `TermSource = 0`. Failed diagnostic `31370258620` is preserved;
 restored diagnostic PASS `31370540139` did not seal. Only the cold run above
 retires PRE-VALIDATION.
+
+### Step 7.5cxxxviii exact flat one-block `Q'` Fourier-mode action (SEALED; coarse alias open)
+
+Exact source checkpoint `811bbd4e3bb66d9f16df165f8f976a47cfc08dae`
+passed cold GitHub Actions run
+[`31373952680`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31373952680)
+with workflow checkpoint `708d825b4d5bc8d3f2bd2a061c54ba694b6b15ff`.
+The cold job completed in `23m42s`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `09:20:08Z` to `09:41:49Z`, and the
+audit ended at `09:41:56Z`. Both stages exited zero, all nine audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`, and the
+target emitted no warning or error of its own.
+
+Artifact `9057854933`, named
+`flat-qprime-fourier-mode-action-811bbd4e3bb66d9f16df165f8f976a47cfc08dae`,
+has GitHub digest
+`a903728e30fbf7ffc30bc7b97d9b7bd45616d2fbefd24db1112d2064e97867fd`.
+Its deterministic inner archive re-hashed on Windows to
+`f45497f8fe831ed8b3d84470247d9ffc24edefa4b8e56b882520a0f64dbe7704`;
+all 13 internal manifest entries matched.
+
+The producer factors the literal fine Fourier character at `cmp99BlockEmbed`
+into its block-basepoint and internal-offset phases, identifies the latter
+with the sealed CMP89 amplitude at the explicit momentum `-M * p_fine`, and
+proves the exact source-normalized `M^-d` sum over one complete owner block.
+The remaining factor is still the fine mode evaluated at the literal block
+basepoint: no coarse mode, reciprocal alias, physical Lie-fibre action,
+weighted adjoint or `Q'^*Q'` diagonalization is inferred.
+
+This brick introduces no second block cardinality, row mass or normalization.
+Physical `B0`, window 15 and all terminal fields remain open. Counters stay
+exactly `20/41`, `TermSource = 0`. Failed diagnostics `31372848347`,
+`31373122676` and `31373438940` remain preserved; restored diagnostic PASS
+`31373704872` did not seal. Only the cold run above retires the two
+PRE-VALIDATION marks. The next honest brick fixes the coarse reciprocal alias
+and proves that the surviving block-basepoint phase is the corresponding
+coarse Fourier mode.
