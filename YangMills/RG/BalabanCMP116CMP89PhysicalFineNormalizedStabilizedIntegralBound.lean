@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP116CMP89PhysicalOwnerExponentialTransport
 import YangMills.RG.BalabanCMP116CMP89PhysicalNormalizedStabilizedIntegralBound
 
 /-!
-# PRE-VALIDATION: physical fine-lattice normalized integral owner bound
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Physical fine-lattice normalized integral owner bound
 
 This module installs the already sealed physical-bond and fine-site
 displacement dictionaries in the source-faithful normalized fine-lattice

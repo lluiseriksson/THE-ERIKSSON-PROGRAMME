@@ -32322,3 +32322,35 @@ remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic
 PASS `31343695361` did not seal; failed
 diagnostics `31343318299` and `31343514391` remain retained as elaboration
 failures. Only the cold run above did.
+
+## Addendum 702 (2026-08-10, **physical fine normalized owner bound GREEN; uniform coefficient and Green dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `e8964e0247c072bda948a48e385b063f924ca4c7`
+passed cold GitHub Actions run
+[`31345479919`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31345479919)
+with workflow checkpoint `2b9139b530c088aadcaeae03aff26c0f26aa6b59`.
+The job completed in `28m07s`; restore/save of `.lake/build` were skipped.
+The focal ran from `00:51:35Z` to `01:17:39Z`, and the audit ended at
+`01:17:46Z`. Both stages exited zero, and all three audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9047557376`, named
+`physical-fine-normalized-owner-bound-e8964e0247c072bda948a48e385b063f924ca4c7`,
+has GitHub digest
+`4f404c3d4386322ca5c8ea62a80c31f66d50780b1b2768eb41baefb5ce560e54`.
+Its deterministic inner archive re-hashed on Windows to
+`63d6424e3b0524535273ae033e9e2ccd02a466c15ffe6e55b4c9473a3cabf033`;
+all 13 internal manifest entries matched.
+
+The physical unit-link and fine-site transports are now consumed by the
+source-normalized two-endpoint recombination. The exact scale cancellation
+`(rho*(L^(depth+1))^(-1))*L^(depth+1) = rho` yields fixed owner decay, while
+the unit-link and block-boundary costs remain separate in the displayed
+coefficient. No unnamed neighboring-endpoint constant is introduced.
+
+This brick does not supply the complete physical `B0`: uniform simplification
+of the displayed coefficient and the Fourier/operator dictionary remain open.
+Window 15 is still compatible but unattained; no terminal field is discharged.
+Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
+`31345330119` did not seal; failed diagnostic `31345138516` is retained as an
+elaboration failure. Only the cold run above did.

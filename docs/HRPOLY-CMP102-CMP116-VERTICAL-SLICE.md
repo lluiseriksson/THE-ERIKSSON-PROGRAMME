@@ -7870,3 +7870,39 @@ and terminal fields remain open. Counters stay exactly `20/41`,
 `31343695361` passed with a restored graph but did not seal; failed diagnostic
 runs `31343318299` and `31343514391` remain preserved as elaboration failures.
 Only the cold run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxvii physical fine normalized owner bound (SEALED; uniform coefficient and Green dictionary open)
+
+Exact source checkpoint `e8964e0247c072bda948a48e385b063f924ca4c7`
+passed cold GitHub Actions run
+[`31345479919`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31345479919)
+with workflow checkpoint `2b9139b530c088aadcaeae03aff26c0f26aa6b59`.
+The job completed in `28m07s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `00:51:35Z` to `01:17:39Z`, the audit ended
+at `01:17:46Z`, and both stages exited zero. All three audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9047557376`, named
+`physical-fine-normalized-owner-bound-e8964e0247c072bda948a48e385b063f924ca4c7`,
+has GitHub digest
+`4f404c3d4386322ca5c8ea62a80c31f66d50780b1b2768eb41baefb5ce560e54`.
+Its deterministic inner archive re-hashed on Windows to
+`63d6424e3b0524535273ae033e9e2ccd02a466c15ffe6e55b4c9473a3cabf033`;
+all 13 manifest entries re-hashed exactly.
+
+The already sealed physical unit-bond and fine-site displacement dictionaries
+are installed in the source-normalized recombination. At fine spacing
+`xi = (L^(depth+1))^(-1)`, the inverse-scale bridge proves the exact identity
+`(rho*xi)*L^(depth+1) = rho`, so the resulting decay has the fixed owner rate
+`rho`. The coefficient keeps both costs visible: the neighboring-endpoint
+factor `1+exp(rho*xi)` and the inverse-scale block-boundary factor
+`exp((rho*xi)*2*(L^(depth+1)-1))`.
+
+This is infrastructure below the physical CMP89 Green certificate, not a
+terminal field. A depth-uniform simplification of the displayed coefficient,
+the Fourier/operator identification with the printed Holder difference of
+`partial_mu^xi (G_j Q_j^*)`, physical `B0`, window 15 and terminal fields
+remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
+`31345330119` passed with a restored graph but did not seal; failed diagnostic
+run `31345138516` remains preserved as an elaboration failure. Only the cold
+run above retired the two PRE-VALIDATION marks.
