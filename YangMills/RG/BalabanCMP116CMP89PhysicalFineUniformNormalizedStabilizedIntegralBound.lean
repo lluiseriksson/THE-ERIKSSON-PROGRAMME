@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP116CMP89PhysicalFineNormalizedStabilizedIntegralBound
 
 /-!
-# PRE-VALIDATION: uniform physical fine-lattice normalized owner bound
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Uniform physical fine-lattice normalized owner bound
 
 This module bounds the exact coefficient of the sealed physical fine-lattice
 owner estimate uniformly in localization depth.  It uses only the literal

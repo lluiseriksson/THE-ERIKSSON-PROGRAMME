@@ -32354,3 +32354,36 @@ Window 15 is still compatible but unattained; no terminal field is discharged.
 Live counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
 `31345330119` did not seal; failed diagnostic `31345138516` is retained as an
 elaboration failure. Only the cold run above did.
+
+## Addendum 703 (2026-08-10, **uniform physical fine normalized owner bound GREEN; fine Fourier/Green dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `27e975e36ac3c7a5aa36d1e3db8217aa677342d8`
+passed cold GitHub Actions run
+[`31347364638`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31347364638)
+with workflow checkpoint `a11403b06907384e3e06dc35b6da08c7f5f9a800`.
+The job completed in `31m01s`; restore/save of `.lake/build` were skipped.
+The focal ran from `01:34:33Z` to `02:03:30Z`, and the audit ended at
+`02:03:38Z`. Both stages exited zero, and all four audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9048221362`, named
+`physical-fine-uniform-normalized-owner-bound-27e975e36ac3c7a5aa36d1e3db8217aa677342d8`,
+has GitHub digest
+`c58bb238c097d15ff8b0f668a833a5435effabb56fe3614269bfbc9ecb41c9a0`.
+Its deterministic inner archive re-hashed on Windows to
+`4796efa76f0485741c79c010afa7547a6132479384017ce1e2e9fe289fb5c9f1`;
+all 13 internal manifest entries matched.
+
+The exact fine-spacing coefficient is reduced to the depth-independent
+majorant `(1+exp rho)*exp(2*rho)*endpointAmplitude`. The proof keeps the two
+scale estimates separate and consumes the already sealed physical owner
+bound. No localization-depth constant remains in this displayed coefficient.
+
+This remains a source-shaped Fourier estimate, not the complete physical
+`B0`. The integer-displacement Fourier kernel is not reused: its phases live
+at the wrong lattice scale. A physical fine Fourier kernel and its Green
+operator dictionary remain open. Window 15 is compatible but unattained; no
+terminal field is discharged. Live counters stay exactly `20/41`,
+`TermSource = 0`. Diagnostic PASS `31347240982` did not seal; failed
+diagnostic `31347092998` is retained as an elaboration failure. Only the cold
+run above did.

@@ -7906,3 +7906,39 @@ remain open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic run
 `31345330119` passed with a restored graph but did not seal; failed diagnostic
 run `31345138516` remains preserved as an elaboration failure. Only the cold
 run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxviii uniform physical fine normalized owner bound (SEALED; fine Fourier/Green dictionary open)
+
+Exact source checkpoint `27e975e36ac3c7a5aa36d1e3db8217aa677342d8`
+passed cold GitHub Actions run
+[`31347364638`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31347364638)
+with workflow checkpoint `a11403b06907384e3e06dc35b6da08c7f5f9a800`.
+The job completed in `31m01s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `01:34:33Z` to `02:03:30Z`, the audit ended
+at `02:03:38Z`, and both stages exited zero. All four audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9048221362`, named
+`physical-fine-uniform-normalized-owner-bound-27e975e36ac3c7a5aa36d1e3db8217aa677342d8`,
+has GitHub digest
+`c58bb238c097d15ff8b0f668a833a5435effabb56fe3614269bfbc9ecb41c9a0`.
+Its deterministic inner archive re-hashed on Windows to
+`4796efa76f0485741c79c010afa7547a6132479384017ce1e2e9fe289fb5c9f1`;
+all 13 manifest entries re-hashed exactly.
+
+The literal fine coefficient from Step 7.5cxxvii is now bounded uniformly in
+`depth`. The endpoint exponent uses `rho*xi <= rho`; the inverse-scale
+boundary exponent uses
+`(rho*xi)*2*(L^(depth+1)-1) <= 2*rho`. Thus the source-shaped physical fine
+integral has the explicit depth-independent coefficient
+`(1+exp rho)*exp(2*rho)*endpointAmplitude` at fixed owner rate `rho`.
+
+The older integer-displacement Fourier kernel cannot serve as this endpoint:
+it encodes unit-lattice phases and would reintroduce the sealed phase-scale
+no-go. A separate fine-lattice Fourier kernel and its equality with the
+printed Holder difference of `partial_mu^xi (G_j Q_j^*)` remain open. Hence
+this coefficient is not yet the complete physical `B0`; window 15 and all
+terminal fields remain open. Counters stay exactly `20/41`, `TermSource = 0`.
+Diagnostic run `31347240982` passed with a restored graph but did not seal;
+failed diagnostic `31347092998` remains preserved as an elaboration failure.
+Only the cold run above retired the two PRE-VALIDATION marks.

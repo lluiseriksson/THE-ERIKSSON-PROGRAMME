@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP116CMP89PhysicalFineUniformNormalizedStabilizedIntegralBound
 
 /-!
-# PRE-VALIDATION audit: uniform physical fine-lattice normalized owner bound
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+# Axiom audit: uniform physical fine-lattice normalized owner bound
 -/
 
 #print axioms YangMills.RG.cmp116CMP89PhysicalFineUniformNormalizedStabilizedIntegralAmplitudeBound
