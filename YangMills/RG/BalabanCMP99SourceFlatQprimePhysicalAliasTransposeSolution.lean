@@ -50,8 +50,10 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_solut
       cmp99SourceFlatQprimePhysicalFineSymbol mass k.1 ≠ 0)
     (hreduced : cmp89Eq247ComplexReducedAliasDenominator d M 1 mass a
       (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) ≠ 0) :
-    (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose.mulVec
-        (cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a) =
+    (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix
+        (d := d) (M := M) (N' := N') ell mass a).transpose.mulVec
+        (cmp99SourceFlatQprimePhysicalAliasTransposeSolution
+          (d := d) (M := M) (N' := N') ell mass a) =
       fun k => cmp89Eq245EntireAverageAmplitude d M
         (-cmp99SourceFlatQprimeAmplitudeMomentum k.1) := by
   classical
@@ -62,25 +64,30 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_solut
       cmp89Eq246EntireAliasFineSymbol d M 1 mass z m ≠ 0 := by
     intro m
     rw [← cmp99SourceFlatQprimePhysicalFineSymbol_eq_entireAliasFineSymbol
-      ell mass (e.symm m)]
+      (d := d) (M := M) (N' := N') ell mass (e.symm m)]
     exact hfine (e.symm m)
   have hgeneric :=
     cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_solution
       d M 1 mass a z hfineAlias hreduced
   funext k
   change (∑ n,
-      cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a n k *
-        cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a n) = _
+      cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix
+          (d := d) (M := M) (N' := N') ell mass a n k *
+        cmp99SourceFlatQprimePhysicalAliasTransposeSolution
+          (d := d) (M := M) (N' := N') ell mass a n) = _
   calc
     (∑ n,
-        cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a n k *
-          cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a n) =
+        cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix
+            (d := d) (M := M) (N' := N') ell mass a n k *
+          cmp99SourceFlatQprimePhysicalAliasTransposeSolution
+            (d := d) (M := M) (N' := N') ell mass a n) =
         ∑ n,
           cmp89Eq246EntireAliasPrecisionMatrix d M 1 mass a z (e n) (e k) *
             cmp89Eq247EntireAliasTransposeSolution d M 1 mass a z (e n) := by
       apply Finset.sum_congr rfl
       intro n _
-      rw [cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_entry_eq_cmp89]
+      rw [cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_entry_eq_cmp89
+        (d := d) (M := M) (N' := N')]
       rfl
     _ = ∑ m,
         cmp89Eq246EntireAliasPrecisionMatrix d M 1 mass a z m (e k) *
@@ -92,7 +99,8 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_solut
       exact congrFun hgeneric (e k)
     _ = cmp89Eq245EntireAverageAmplitude d M
         (-cmp99SourceFlatQprimeAmplitudeMomentum k.1) := by
-      exact (cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow ell k).symm
+      exact (cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow
+        (d := d) (M := M) (N' := N') ell k).symm
 
 end
 
