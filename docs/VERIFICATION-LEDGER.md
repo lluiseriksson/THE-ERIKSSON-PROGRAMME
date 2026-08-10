@@ -33149,3 +33149,35 @@ counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
 `31429164908` and `31430000991` retain the elaboration failures; restored
 diagnostic PASS `31431068711` did not seal. Only the cold run above retires
 PRE-VALIDATION.
+
+## Addendum 726 (2026-08-11, **physical reciprocal-fibre column of the flat weighted adjoint GREEN; interacting and regional transport open; 20/41 unchanged**)
+
+Exact source checkpoint `ad78686dbff42e180c82480e1342b3b37eaa47f0`
+passed cold GitHub Actions run
+[`31434869611`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31434869611)
+with workflow checkpoint `d682e8b23a1dd04f4ecb86df95c3e78ec1821ec2`.
+The job ran for `25m11s` with restore and save both skipped. Dependency
+materialization ended at `21:43:33Z`; the focal exited zero at `22:04:48Z`
+and the audit exited zero at `22:04:56Z`. All six declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; no forbidden axiom occurred.
+
+Artifact `9081263523`, named
+`flat-weighted-adjoint-physical-column-ad78686dbff42e180c82480e1342b3b37eaa47f0`,
+has GitHub digest
+`776f1f8820055f7b9cc4350edaca61bc2f12f001a12bc365cad1e6830852b71c`.
+The downloaded deterministic archive has SHA-256
+`81b6146d8e92b114688b6c512e3cf0b2af88119e09d16920bac16c84eccbc63e`,
+and all 13 internal manifest entries matched.
+
+The source constructs the actual full-region flat complex weighted-adjoint
+field from one restricted coarse physical Fourier mode, lifts the sealed
+scalar owner-block identity coordinatewise and proves the exact physical
+fine-fibre DFT column. Support is the literal reciprocal-fibre condition
+`coarseAlias(k) = ell`; the coefficient retains both full fine volume and the
+one-block entire amplitude at periodic negative momentum.
+
+Interacting transport, inverse uniqueness, regional Dirichlet restriction
+and physical `B0` remain open. Window 15 is compatible but unattained. Live
+counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostic
+`31433709204` and restored diagnostic PASS `31434412694` remain preserved;
+only the cold run above retires PRE-VALIDATION.

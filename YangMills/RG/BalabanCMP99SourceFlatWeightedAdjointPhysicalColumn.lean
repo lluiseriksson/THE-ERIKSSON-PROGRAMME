@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexWeightedAdjoint
 import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointScalarColumn
 
 /-!
-# PRE-VALIDATION: physical Fourier column of the flat weighted adjoint
-
-Source is present at this checkpoint, its `.olean` has not yet been
-materialized, and the result is not yet compiler-verified.
+# Physical Fourier column of the flat weighted adjoint
 
 This module lifts the sealed scalar reciprocal-fibre column coordinatewise
 to the literal `SUNLieComplexCoord` fibre.  The synthesized fine field is not

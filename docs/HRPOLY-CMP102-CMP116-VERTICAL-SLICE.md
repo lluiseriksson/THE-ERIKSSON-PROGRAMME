@@ -8780,3 +8780,39 @@ but unattained. Counters stay exactly `20/41`, `TermSource = 0`. Failed
 diagnostics `31429164908` and `31430000991` preserve only equivalence,
 instance and definitional-reduction repairs. Restored diagnostic PASS
 `31431068711` did not seal; only the cold run above retires PRE-VALIDATION.
+
+### Step 7.5cli physical-fibre reciprocal column of the flat weighted adjoint (SEALED; interacting and regional transport open)
+
+Exact source checkpoint `ad78686dbff42e180c82480e1342b3b37eaa47f0`
+passed cold GitHub Actions run
+[`31434869611`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31434869611)
+with workflow checkpoint `d682e8b23a1dd04f4ecb86df95c3e78ec1821ec2`.
+The cold job ran for `25m11s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `21:43:33Z`; the focal
+exited zero at `22:04:48Z` and the audit exited zero at `22:04:56Z`. All six
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+the axiom blacklist was empty.
+
+Artifact `9081263523`, named
+`flat-weighted-adjoint-physical-column-ad78686dbff42e180c82480e1342b3b37eaa47f0`,
+has GitHub digest
+`776f1f8820055f7b9cc4350edaca61bc2f12f001a12bc365cad1e6830852b71c`.
+Its deterministic inner archive re-hashed on Windows to
+`81b6146d8e92b114688b6c512e3cf0b2af88119e09d16920bac16c84eccbc63e`;
+all 13 internal manifest entries matched.
+
+The producer specializes the literal active-region flat complex weighted
+adjoint to the full fine box and applies it to one restricted coarse Fourier
+mode. The scalar owner-block pullback is lifted coordinatewise to the
+`SUNLieComplexCoord` fibre. Its full-box DFT is supported exactly on
+`coarseAlias(k) = ell`, with the complete fine-volume coefficient and the
+literal one-block entire amplitude at periodic negative momentum. The fine
+field is constructed internally; it is not accepted as caller data.
+
+This remains the flat, full-box physical-fibre column. It does not identify
+flat and interacting transport, invert the physical precision, restrict to a
+regional Dirichlet carrier or produce the physical `B0`. Window 15 remains
+compatible but unattained. Counters stay exactly `20/41`, `TermSource = 0`.
+Failed diagnostic `31433709204` preserves the already-closed-goal elaboration
+error; restored diagnostic PASS `31434412694` did not seal. Only the cold run
+above retires PRE-VALIDATION.
