@@ -34,7 +34,7 @@ open scoped BigOperators
 
 noncomputable section
 
-variable {d M N' : ℕ} [NeZero d] [NeZero M] [NeZero N']
+variable {d M N' : ℕ} [NeZero M] [NeZero N']
 
 /-- The additive fine-lattice phase carried only by an internal block
 offset.  Its modulus remains the fine torus size `M * N'`. -/
@@ -43,9 +43,9 @@ def cmp99SourceFlatQprimeFineOffsetPhase
   ∑ mu : Fin d,
     ((k mu).val : ZMod (M * N')) * ((r mu).val : ZMod (M * N'))
 
+omit [NeZero N'] in
 /-- The fine phase at an embedded block site is exactly the sum of the phase
 at the canonical block basepoint and the internal-offset phase. -/
-omit [NeZero d] [NeZero N'] in
 theorem cmp99FlatFourierPhase_blockEmbed
     (k : FinBox d (M * N')) (y : FinBox d N') (r : FinBox d M) :
     cmp99FlatFourierPhase k (cmp99BlockEmbed y r) =
@@ -65,6 +65,7 @@ def cmp99SourceFlatQprimeFineOffsetCharacter
     (k : FinBox d (M * N')) (r : FinBox d M) : ℂ :=
   ZMod.stdAddChar (cmp99SourceFlatQprimeFineOffsetPhase k r)
 
+omit [NeZero N'] in
 /-- Exact character factorization at the literal block embedding. -/
 theorem cmp99FlatFourierMode_blockEmbed
     (k : FinBox d (M * N')) (y : FinBox d N') (r : FinBox d M) :
@@ -83,7 +84,6 @@ def cmp99SourceFlatQprimeAmplitudeMomentum
 
 /-- One CMP89 geometric-series base at the signed amplitude momentum is the
 positive standard character of the corresponding fine momentum. -/
-omit [NeZero d] in
 theorem cmp89Eq245EntireAverageBase_amplitudeMomentum
     (k : FinBox d (M * N')) (mu : Fin d) :
     cmp89Eq245EntireAverageBase M
@@ -97,6 +97,7 @@ theorem cmp89Eq245EntireAverageBase_amplitudeMomentum
   congr 1
   field_simp [hM]
 
+omit [NeZero N'] in
 /-- The additive offset character is the coordinatewise product character.
 This is the only use of the additive-character algebra in the block sum. -/
 theorem cmp99SourceFlatQprimeFineOffsetCharacter_eq_prod
@@ -170,7 +171,7 @@ theorem cmp99SourceFlatQprimeWeightedBlockSum_fourierMode
             cmp99SourceFlatQprimeOffsetCharacter d M
               (cmp99SourceFlatQprimeAmplitudeMomentum k) r) *
           cmp99FlatFourierMode k (blockBasepoint M N' y) := by
-            rw [Fintype.sum_mul]
+            rw [← Finset.sum_mul]
             ring
     _ = cmp89Eq245EntireAverageAmplitude d M
           (cmp99SourceFlatQprimeAmplitudeMomentum k) *
