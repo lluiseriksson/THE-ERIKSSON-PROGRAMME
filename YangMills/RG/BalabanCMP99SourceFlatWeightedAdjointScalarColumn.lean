@@ -142,7 +142,12 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
         rw [sum_blockSites_eq_sum_offsets]
         apply Finset.sum_congr rfl
         intro r _
-        simpa only [cmp99BlockOffsetEquiv, hsite r]
+        change cmp99FlatFourierMode kneg (cmp99BlockEmbed y r) *
+            cmp99FlatFourierMode ell
+              (blockSite M N' (cmp99BlockEmbed y r)) =
+          cmp99FlatFourierMode kneg (cmp99BlockEmbed y r) *
+            cmp99FlatFourierMode ell y
+        rw [hsite r]
       _ = ((cmp99SourceBlockAverageWeight M d : ℂ) *
             ∑ r : FinBox d M,
               cmp99FlatFourierMode kneg (cmp99BlockEmbed y r)) *
@@ -167,7 +172,7 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
             cmp99FlatFourierMode kneg x *
               cmp99FlatFourierMode ell (blockSite M N' x) := by
       rw [cmp99FlatFinBoxDFT_eq_sum_fourierNeg]
-      simp only [cmp99SourceFlatScalarCoarseModeSynthesis]
+      simp only [cmp99SourceFlatScalarCoarseModeSynthesis, kneg]
     _ = (cmp99SourceBlockAverageWeight M d : ℂ) *
           ∑ y : FinBox d N', ∑ x ∈ blockOf M N' y,
             cmp99FlatFourierMode kneg x *
