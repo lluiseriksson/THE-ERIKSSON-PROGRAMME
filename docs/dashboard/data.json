@@ -18,14 +18,14 @@
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "latest_submission": {
       "date": "2026-08-10",
-      "status": "paper reported submitted to viXra; moderation outcome and public identifier not recorded",
-      "title": "Proper-Delay Spectra Majorize Subspace Rotation: Exact Finsler Resource Laws for Passive Networks",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md",
-      "pdf": "https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/download/v1.5-exact-finsler-speed-limits/proper_delay_spectra_majorize_subspace_rotation.pdf",
-      "pdf_sha256": "BE4BB95E0E7B833A8D2201DAB60846A43DF1D06F02DD292644FF9FCC80DE3D42",
-      "source_anchor": "53a845e0a72cce633154887de7fffb41913527cd",
-      "paper_commit": "53a845e0a72cce633154887de7fffb41913527cd",
-      "integration": "external repository finite-sample-spectral-certificates; immutable v1.5 GitHub release"
+      "status": "v3 paper reported submitted to ai.viXra after v1 was cancelled before publication; moderation outcome and public identifier not recorded",
+      "title": "Noncommuting Block Measurements Generate Quantum Diffusion: A Three-Obstruction Convergence Hierarchy, a Noncommutative Connectivity Gap, and Exact Algebraic Architectures",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md",
+      "pdf": "",
+      "pdf_sha256": "1EBD2390B9BE9257E6D6772DEA56B6ACB90867674AA77C05CC53C5B3956A178F",
+      "source_anchor": null,
+      "paper_commit": null,
+      "integration": "owner-local v3 PDF and reproducibility ZIP verified; cancelled v1 is non-public; no public PDF locator or Git source anchor supplied"
     }
   },
   "status_legend": {

@@ -440,21 +440,21 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ## Latest ai.viXra submission
 
-**Submitted 2026-08-10; moderation outcome and public viXra identifier are not
-yet recorded.** The latest 11-page paper is *Proper-Delay Spectra Majorize
-Subspace Rotation: Exact Finsler Resource Laws for Passive Networks*. Its
-immutable
-[`v1.5` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.5-exact-finsler-speed-limits)
-contains a 348,460-byte PDF with SHA-256
-`BE4BB95E0E7B833A8D2201DAB60846A43DF1D06F02DD292644FF9FCC80DE3D42`.
-The [submission record](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md)
-preserves the exact commit, release assets, scope and verification.
+**Submitted 2026-08-10; moderation outcome and public ai.viXra identifier are
+not yet recorded.** The latest 13-page paper is *Noncommuting Block
+Measurements Generate Quantum Diffusion: A Three-Obstruction Convergence
+Hierarchy, a Noncommutative Connectivity Gap, and Exact Algebraic
+Architectures*. Its exact local PDF has 460,394 bytes and SHA-256
+`1EBD2390B9BE9257E6D6772DEA56B6ACB90867674AA77C05CC53C5B3956A178F`.
+The [submission record](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md)
+preserves the v3 artifact and package hashes, 16/16 manifest verification and
+the cancellation status of the non-public v1 precursor.
 
-The paper proves an exact variational principle for every symmetric gauge,
-with one positive path minimizing all gauges simultaneously, and adds a strict
-20% intermediate-prefix separation plus quantitative near-rigidity. It also
-incorporates the named operator-speed-limit antecedents missing from the v1.3
-routing paper. Earlier [block-record Zeno diffusion](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md),
+The paper proves the sharp three-obstruction hierarchy through the attained
+`Theta(n^-3/2)` quintic branch and `O(n^-2)` fourth level. The earlier v1 upload
+was cancelled before publication and is not treated as an ai.viXra version of
+record. No public PDF locator or Git source commit was supplied for v3, so none
+is invented. Earlier [exact Finsler speed limits](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md),
 [robust spectral routing](docs/ROBUST-SPECTRAL-ROUTING-VIXRA-SUBMISSION-20260810.md),
 [exact calibration memory](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md),
 [passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),

@@ -17,19 +17,19 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submission (2026-08-10; outcome pending).** The 11-page paper
-*Proper-Delay Spectra Majorize Subspace Rotation: Exact Finsler Resource Laws
-for Passive Networks* is frozen at commit `53a845e0`, with 348,460 bytes and
-SHA-256
-`BE4BB95E0E7B833A8D2201DAB60846A43DF1D06F02DD292644FF9FCC80DE3D42`.
-Exact links, release assets, scope and verification are recorded in
-[`docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md`](docs/EXACT-FINSLER-SPEED-LIMITS-VIXRA-SUBMISSION-20260810.md).
-The paper proves the exact symmetric-gauge variational principle, a common
-positive minimizer, intermediate-prefix separation and near-rigidity. Local
-and release PDFs are byte-identical and all visible CI runs are green. No
-public viXra identifier has been recorded. Earlier external submission records
-remain separate, and none changes the canonical Yang--Mills proof-state
-checkpoint.
+**Latest ai.viXra submission (2026-08-10; outcome pending).** The 13-page v3
+paper *Noncommuting Block Measurements Generate Quantum Diffusion: A
+Three-Obstruction Convergence Hierarchy, a Noncommutative Connectivity Gap,
+and Exact Algebraic Architectures* has 460,394 bytes and SHA-256
+`1EBD2390B9BE9257E6D6772DEA56B6ACB90867674AA77C05CC53C5B3956A178F`.
+Its reproducibility ZIP passes 16/16 manifest hashes and contains a
+byte-identical PDF. The prior v1 upload was cancelled before publication and
+is classified as non-public, not as a version of record. Exact metadata,
+three-obstruction scope and lifecycle are recorded in
+[`docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md`](docs/BLOCK-RECORD-ZENO-DIFFUSION-VIXRA-SUBMISSION-20260810.md).
+No public identifier, PDF locator or source commit has been recorded. Earlier
+external submissions remain separate, and none changes the canonical
+Yang--Mills proof-state checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
