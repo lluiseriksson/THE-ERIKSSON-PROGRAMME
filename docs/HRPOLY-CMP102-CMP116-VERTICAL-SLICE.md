@@ -8389,3 +8389,43 @@ not seal; only the cold run above retires the two PRE-VALIDATION marks. The
 next source-faithful gate is the finite carrier equivalence between fine
 momenta with fixed coarse alias and `CMP89Eq246AliasIndex`, before any
 weighted-adjoint matrix identity is attempted.
+
+### Step 7.5cxli fixed-coarse fine-momentum fibre to centered CMP89 alias fibre (SEALED; amplitude-period dictionary open)
+
+Exact source checkpoint `2a99a8997763597e7faac87c6455163c3df3ec99`
+passed cold GitHub Actions run
+[`31382323118`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31382323118)
+with workflow checkpoint `0c7a5d9f33d881218d6482b8a440a23f608661c5`.
+The cold job completed in `16m48s`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `11:13:05Z` to `11:27:03Z`, completed
+8,500 jobs and emitted no warning or error in the new target. The audit ended
+at `11:27:06Z`. Both stages exited zero, and all five audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9060791193`, named
+`flat-qprime-alias-fibre-dictionary-2a99a8997763597e7faac87c6455163c3df3ec99`,
+has GitHub digest
+`348177eb8b058a2f31c652990cc9332af7cfc81f5309475137e582051fe32a0d`.
+Its deterministic inner archive re-hashed on Windows to
+`ce1ec18781b8f1e3fdb121b831ae31f07a54edef3be37e56a6ec9f6eca446cf3`;
+all 13 internal manifest entries matched.
+
+The dictionary contains no free enumeration. Euclidean division identifies
+the fixed coarse-alias fibre in `FinBox d (M*N')` with `FinBox d M`; the
+coordinate formula retains the literal reconstruction
+`fine = ell + N' * quotient`. A second canonical equivalence translates the
+quotient to the centered half-open interval beginning at `-floor(M/2)`, and
+the product equivalence lands in `CMP89Eq246AliasIndex d M 1`. Thus the even
+endpoint convention is the one printed in CMP89 (2.45), not an arbitrary
+congruence representative.
+
+This brick identifies carriers only. The signed amplitude momentum still has
+to be transported to the CMP89 alias momentum using its proved `2*pi*M`
+period before the weighted adjoint and rank-one `Q'^*Q'` matrix can be
+identified. Inverse uniqueness and regional transport remain open. Physical
+`B0`, window 15 and every terminal field remain open. Counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostics `31381194800`, `31381581934`
+and `31381866244` preserve the four initial elaboration failures, the reduced
+single `mod` failure and the opaque-product-coordinate failure respectively.
+Restored diagnostic PASS `31382114494` did not seal; only the cold run above
+retires the two PRE-VALIDATION marks.

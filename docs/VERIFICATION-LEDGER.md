@@ -32794,3 +32794,38 @@ transport remain open. Physical `B0`, window 15 and every terminal field
 remain open. Live counters stay exactly `20/41`, `TermSource = 0`.
 Restored diagnostic PASS `31379102294` did not seal; only the cold run above
 retires the two PRE-VALIDATION marks.
+
+## Addendum 716 (2026-08-10, **fixed-coarse fine-momentum fibre to centered CMP89 alias fibre GREEN; amplitude-period dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `2a99a8997763597e7faac87c6455163c3df3ec99`
+passed cold GitHub Actions run
+[`31382323118`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31382323118)
+with workflow checkpoint `0c7a5d9f33d881218d6482b8a440a23f608661c5`.
+The cold job ran for `16m48s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `11:13:05Z` to `11:27:03Z`, completed 8,500
+jobs and emitted no warning or error in the new target. The audit ended at
+`11:27:06Z`. Both stages exited zero and all five audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9060791193`, named
+`flat-qprime-alias-fibre-dictionary-2a99a8997763597e7faac87c6455163c3df3ec99`,
+has GitHub digest
+`348177eb8b058a2f31c652990cc9332af7cfc81f5309475137e582051fe32a0d`.
+Its deterministic inner archive re-hashed on Windows to
+`ce1ec18781b8f1e3fdb121b831ae31f07a54edef3be37e56a6ec9f6eca446cf3`;
+all 13 internal manifest entries matched.
+
+The producer constructs an actual equivalence from the fine reciprocal
+momenta with fixed coarse alias to the centered CMP89 alias index. It uses
+Euclidean quotient/remainder and the printed half-open interval, so neither
+an enumeration nor a congruence representative is supplied as data. The two
+coordinate conventions remain explicit: `fine = ell + N' * quotient` and
+`centered = -floor(M/2) + quotient`.
+
+This is a carrier dictionary, not the weighted-adjoint matrix identity. The
+signed amplitude-period bridge, `Q'^*Q'`, inverse uniqueness and regional
+transport remain open. Physical `B0`, window 15 and every terminal field
+remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31381194800`, `31381581934` and `31381866244` remain preserved;
+restored diagnostic PASS `31382114494` did not seal. Only the cold run above
+retires the two PRE-VALIDATION marks.

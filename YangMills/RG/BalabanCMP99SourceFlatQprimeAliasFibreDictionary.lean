@@ -8,10 +8,13 @@ import YangMills.RG.BalabanCMP89Eq246EntireAliasPrecisionMatrix
 import YangMills.RG.BalabanCMP99SourceFlatQprimeCoarseAlias
 
 /-!
-# PRE-VALIDATION: flat fine-momentum fibre to the printed CMP89 alias fibre
+# Cold-sealed flat fine-momentum fibre to the printed CMP89 alias fibre
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the Lean compiler.
+Compiler-verified at exact source checkpoint
+`2a99a8997763597e7faac87c6455163c3df3ec99` by cold GitHub Actions run
+`31382323118`. Restoration and saving of `.lake/build` were skipped. The focal
+completed 8,500 jobs, the audit exited zero, and all five audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
 
 At fixed coarse momentum `ell`, a fine momentum in `FinBox d (M * N')` has a
 unique quotient coordinate in `Fin M`.  CMP89 (2.45), however, indexes the
