@@ -81,8 +81,27 @@ theorem cmp99Flat_characterPair_eq_entireUnitDifferencePair
           (-(Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ))) = 1 := by
     rw [← Complex.exp_add]
     simp
-  ring_nf
-  exact sub_eq_zero.mpr hmul
+  calc
+    2 - Complex.exp
+          (Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ)) -
+        Complex.exp
+          (-(Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ))) =
+        1 - Complex.exp
+              (Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ)) -
+          Complex.exp
+              (-(Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ))) +
+          Complex.exp
+              (Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ)) *
+            Complex.exp
+              (-(Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ))) := by
+      rw [hmul]
+      ring
+    _ =
+        (Complex.exp
+              (-(Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ))) - 1) *
+          (Complex.exp
+              (Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ)) - 1) := by
+      ring
 
 /-- At lattice spacing one, the scaled CMP89 symbol is definitionally the
 unit-lattice symbol used in (2.49). -/
