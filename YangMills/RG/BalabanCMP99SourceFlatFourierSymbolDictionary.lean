@@ -42,12 +42,13 @@ theorem cmp99Flat_stdAddChar_eq_exp_discreteMomentum
     (k : FinBox d N) (i : Fin d) :
     ZMod.stdAddChar ((k i).val : ZMod N) =
       Complex.exp (Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ)) := by
-  change ZMod.stdAddChar (((k i).val : ℤ) : ZMod N) = _
-  rw [ZMod.stdAddChar_coe]
-  unfold cmp99FlatDiscreteMomentum
-  congr 1
-  push_cast
-  ring
+  have h := ZMod.stdAddChar_coe (N := N) ((k i).val : ℤ)
+  convert h using 1
+  · norm_num
+  · unfold cmp99FlatDiscreteMomentum
+    push_cast
+    congr 1
+    ring
 
 /-- The negative standard character is the opposite-momentum exponential. -/
 theorem cmp99Flat_stdAddChar_neg_eq_exp_neg_discreteMomentum
@@ -74,10 +75,12 @@ theorem cmp99Flat_characterPair_eq_entireUnitDifferencePair
   unfold cmp89Eq245EntireScaledDifference
   norm_num
   have hmul :
-      Complex.exp (Complex.I * (-(cmp99FlatDiscreteMomentum k i) : ℂ)) *
-          Complex.exp (Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ)) = 1 := by
+      Complex.exp
+          (Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ)) *
+        Complex.exp
+          (-(Complex.I * (cmp99FlatDiscreteMomentum k i : ℂ))) = 1 := by
     rw [← Complex.exp_add]
-    convert Complex.exp_zero using 1 <;> ring
+    simp
   linear_combination hmul
 
 /-- At lattice spacing one, the scaled CMP89 symbol is definitionally the
@@ -104,7 +107,7 @@ theorem cmp99FlatPeriodicLaplacianSymbol_eq_cmp89Unit
           (fun i => (cmp99FlatDiscreteMomentum k i : ℂ)) := by
       unfold cmp99FlatPeriodicLaplacianSymbol
         cmp89Eq245EntireScaledLaplacianSymbol
-      norm_num
+      rw [show (0 : ℂ) ^ 2 = 0 by norm_num, add_zero]
       apply Finset.sum_congr rfl
       intro i _
       exact cmp99Flat_characterPair_eq_entireUnitDifferencePair k i
