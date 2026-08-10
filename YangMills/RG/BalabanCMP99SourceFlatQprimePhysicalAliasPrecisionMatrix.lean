@@ -75,7 +75,6 @@ theorem cmp89Eq245EntireScaledLaplacianSymbol_add_int_aliasPeriods
       -(z mu + (w mu : ℂ) * (2 * (Real.pi : ℂ) * (M : ℂ))) =
         -z mu + (-(w mu : ℂ)) *
           (2 * (Real.pi : ℂ) * (M : ℂ)) := by
-    push_cast
     ring
   unfold cmp89Eq245EntireScaledDifference
   push_cast
@@ -112,9 +111,7 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_eq_rescaledPeriodic
   apply Finset.sum_congr rfl
   intro mu _
   simp only [cmp99SourceFlatQprimeAmplitudeMomentum]
-  rw [show -((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ)) =
-      (M : ℂ) * (-(cmp99FlatDiscreteMomentum k mu : ℂ)) by ring,
-    show -(-((M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ))) =
+  rw [show -((M : ℂ) * (-(cmp99FlatDiscreteMomentum k mu : ℂ))) =
       (M : ℂ) * (cmp99FlatDiscreteMomentum k mu : ℂ) by ring]
   rw [cmp89Eq245EntireScaledDifference_invNat_natMul,
     cmp89Eq245EntireScaledDifference_invNat_natMul,
@@ -224,14 +221,16 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_entry_eq_cmp89
     cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow]
   by_cases hmn : m = n
   · subst n
-    simp <;> ring
+    simp
+    ring
   · have halias :
         cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell m ≠
           cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell n :=
       fun h => hmn
         ((cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
           d M N' ell).injective h)
-    simp [hmn, halias] <;> ring
+    simp [hmn, halias]
+    ring
 
 /-- Reindexing both axes by the signed physical dictionary gives the literal
 CMP89 entire alias precision matrix. -/
