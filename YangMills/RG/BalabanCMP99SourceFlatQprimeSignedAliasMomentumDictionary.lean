@@ -95,20 +95,37 @@ theorem cmp99SourceFlatQprimeSignedCenteredAlias_add_quotient_dvd
   ring
 
 /-- Source-faithful signed dictionary from a fixed coarse fine-momentum fibre
-to the printed centered CMP89 alias fibre. -/
+to the literal centered alias-vector subtype, before the depth-one carrier
+specialization. -/
+def cmp99SourceFlatQprimeFixedCoarseSignedAliasVectorEquiv
+    (d M N' : ℕ) [NeZero M] [NeZero N']
+    (ell : FinBox d N') :
+    {k : FinBox d (M * N') // cmp99SourceFlatQprimeCoarseAlias k = ell} ≃
+      {m : Fin d → ℤ // m ∈ cmp89Eq245CenteredAliasVectors d M} :=
+  (cmp99SourceFlatQprimeFixedCoarseFibreEquiv d M N' ell).trans
+    ((Equiv.piCongrRight fun _ : Fin d =>
+        cmp99SourceFlatQprimeSignedCenteredAliasEquiv M).trans
+      (cmp89Eq245CenteredAliasVectorPiEquiv d M).symm)
+
+/-- The depth-one CMP89 alias carrier is explicitly equivalent to the same
+centered vector subtype with `M ^ 1` reduced to `M`. -/
+def cmp99SourceFlatQprimeAliasIndexOneVectorEquiv (d M : ℕ) :
+    CMP89Eq246AliasIndex d M 1 ≃
+      {m : Fin d → ℤ // m ∈ cmp89Eq245CenteredAliasVectors d M} where
+  toFun m := ⟨m.1, by simpa only [pow_one] using m.property⟩
+  invFun m := ⟨m.1, by simpa only [pow_one] using m.property⟩
+  left_inv m := by apply Subtype.ext; rfl
+  right_inv m := by apply Subtype.ext; rfl
+
+/-- Signed physical fibre dictionary on the exact depth-one CMP89 carrier. -/
 def cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
     (d M N' : ℕ) [NeZero M] [NeZero N']
     (ell : FinBox d N') :
     {k : FinBox d (M * N') // cmp99SourceFlatQprimeCoarseAlias k = ell} ≃
-      CMP89Eq246AliasIndex d M 1 := by
-  let e :
-      {k : FinBox d (M * N') // cmp99SourceFlatQprimeCoarseAlias k = ell} ≃
-        {m : Fin d → ℤ // m ∈ cmp89Eq245CenteredAliasVectors d M} :=
-    (cmp99SourceFlatQprimeFixedCoarseFibreEquiv d M N' ell).trans
-      ((Equiv.piCongrRight fun _ : Fin d =>
-          cmp99SourceFlatQprimeSignedCenteredAliasEquiv M).trans
-        (cmp89Eq245CenteredAliasVectorPiEquiv d M).symm)
-  simpa only [CMP89Eq246AliasIndex, pow_one] using e
+      CMP89Eq246AliasIndex d M 1 :=
+  (cmp99SourceFlatQprimeFixedCoarseSignedAliasVectorEquiv
+    d M N' ell).trans
+      (cmp99SourceFlatQprimeAliasIndexOneVectorEquiv d M).symm
 
 /-- Coordinate projection of the signed fibre dictionary.  This theorem keeps
 the physical residue choice visible to downstream matrix consumers. -/
