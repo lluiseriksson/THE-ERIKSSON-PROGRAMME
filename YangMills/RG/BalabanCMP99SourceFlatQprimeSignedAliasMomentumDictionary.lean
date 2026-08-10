@@ -112,8 +112,12 @@ centered vector subtype with `M ^ 1` reduced to `M`. -/
 def cmp99SourceFlatQprimeAliasIndexOneVectorEquiv (d M : ℕ) :
     CMP89Eq246AliasIndex d M 1 ≃
       {m : Fin d → ℤ // m ∈ cmp89Eq245CenteredAliasVectors d M} where
-  toFun m := ⟨m.1, by simpa only [pow_one] using m.property⟩
-  invFun m := ⟨m.1, by simpa only [pow_one] using m.property⟩
+  toFun m := ⟨m.1, by
+    change m.1 ∈ cmp89Eq245CenteredAliasVectors d (M ^ 1) at m.property
+    simpa only [pow_one] using m.property⟩
+  invFun m := ⟨m.1, by
+    change m.1 ∈ cmp89Eq245CenteredAliasVectors d (M ^ 1)
+    simpa only [pow_one] using m.property⟩
   left_inv m := by apply Subtype.ext; rfl
   right_inv m := by apply Subtype.ext; rfl
 
