@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: a82d41ac41bb5ccbe86fd7554c5bdef06468d956
+  SOURCE_SHA: 9c5f07eb249e9fd301938533a117923866b58ec5
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     fourier-left-derivative-kernel
 
 jobs:
-  flat-fourier-stencil:
+  flat-fourier-symbol:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-fourier-stencil-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-fourier-symbol-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatFourierStencil.lean \
-            YangMills/RG/BalabanCMP99SourceFlatFourierStencilAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatFourierSymbolDictionary.lean \
+            YangMills/RG/BalabanCMP99SourceFlatFourierSymbolDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_fourier_stencil_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatFourierStencil
-          run_stage flat_fourier_stencil_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatFourierStencilAudit.lean
+          run_stage flat_fourier_symbol_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatFourierSymbolDictionary
+          run_stage flat_fourier_symbol_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatFourierSymbolDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_fourier_stencil_audit.log": 9,
+              "flat_fourier_symbol_audit.log": 6,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-fourier-stencil-evidence.tar.gz
-          sha256sum flat-fourier-stencil-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-fourier-symbol-evidence.tar.gz
+          sha256sum flat-fourier-symbol-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-fourier-stencil-${{ env.SOURCE_SHA }}
+          name: flat-fourier-symbol-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-fourier-stencil-evidence.tar.gz
+            flat-fourier-symbol-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-fourier-stencil-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-fourier-symbol-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
