@@ -18,14 +18,14 @@
     "surface_theorem": "PROVED AND TERMINALLY SEALED (2026-07-28). The global Bessel-series ratio theorem has an exact terminal domain union: finite beta [20,1000/9] and high-beta lambda lanes [0,3/2], [3/2,2], [2,3], [3,infinity), with production/replay checks and explicit seams. Manuscript: papers/surface-complete/surface_theorem_complete.tex and PDF. This is a two-dimensional Wilson-action surface theorem and has no claimed consequence for the open four-dimensional continuum Yang-Mills mass-gap problem.",
     "latest_submission": {
       "date": "2026-08-10",
-      "status": "two paper objects reported submitted to viXra; moderation outcomes and public identifiers not recorded",
-      "title": "Architecture-Dependent Decoherence Suppression in Passive Quantum Networks: Irreducible Channel Mixing, Squared Rate Gaps, and the Price in Dwell Time",
-      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md",
-      "pdf": "https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/download/v1.1-passive-quantum-reservoir/architecture_dependent_decoherence.pdf",
-      "pdf_sha256": "B4DDFCC82B3B0C8B620F5A786083B0B951380B220D582FA3F51FF6D5C303F9D2",
-      "source_anchor": "4bb63290ea4da5c914a4d8eaed7b71a49fa3678f",
-      "paper_commit": "4bb63290ea4da5c914a4d8eaed7b71a49fa3678f",
-      "integration": "external repository finite-sample-spectral-certificates; immutable v1.0 and v1.1 GitHub releases"
+      "status": "paper reported submitted to viXra; moderation outcome and public identifier not recorded",
+      "title": "Lossless Calibration Is Stored Memory: A Topological McMillan-Degree and Wigner–Smith Law for Passive Quantum Networks",
+      "record": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md",
+      "pdf": "https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/download/v1.2-topological-calibration-memory/lossless_calibration_memory.pdf",
+      "pdf_sha256": "89ACD5362D43022C78FF694ED414F9134E995472CC2DB1E0974A0021589D8C61",
+      "source_anchor": "a52d6e74dba697477acf9204077a1b67ffe56dfc",
+      "paper_commit": "a52d6e74dba697477acf9204077a1b67ffe56dfc",
+      "integration": "external repository finite-sample-spectral-certificates; immutable v1.2 GitHub release"
     }
   },
   "status_legend": {

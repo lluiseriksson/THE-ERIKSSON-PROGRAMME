@@ -440,21 +440,22 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ## Latest ai.viXra submission
 
-**Two objects submitted 2026-08-10; moderation outcomes and public viXra
-identifiers are not yet recorded.** The current 17-page object is
-*Architecture-Dependent Decoherence Suppression in Passive Quantum Networks:
-Irreducible Channel Mixing, Squared Rate Gaps, and the Price in Dwell Time*.
-Its immutable
-[`v1.1` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.1-passive-quantum-reservoir)
-contains a 506,639-byte PDF with SHA-256
-`B4DDFCC82B3B0C8B620F5A786083B0B951380B220D582FA3F51FF6D5C303F9D2`.
-The [submission record](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md)
-also preserves the first 13-page v1.0 object at `4113C20A...EA9BDD`.
+**Submitted 2026-08-10; moderation outcome and public viXra identifier are not
+yet recorded.** The latest 13-page paper is *Lossless Calibration Is Stored
+Memory: A Topological McMillan-Degree and Wigner–Smith Law for Passive Quantum
+Networks*. Its immutable
+[`v1.2` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.2-topological-calibration-memory)
+contains a 388,593-byte PDF with SHA-256
+`89ACD5362D43022C78FF694ED414F9134E995472CC2DB1E0974A0021589D8C61`.
+The [submission record](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md)
+preserves the exact commit, certificate, scope and lifecycle boundary.
 
-The paper proves the stated architecture-dependent passive-filter separation,
-finite-error obstruction, squared dephasing-rate gap and delay-resource bound.
-It does not claim cost-free coherence protection: the gain is paid in passive
-memory, vacuum ports and conditioning. Earlier [OS reconstruction](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md),
+The paper gives an architecture-independent lower bound connecting exactly
+lossless calibration directions, McMillan degree and integrated Wigner–Smith
+delay for finite-dimensional rational-inner passive networks. Its proposed
+robust approximate pass–stop extension is future work, not a theorem silently
+attributed to this release. The earlier [passive reservoir](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md),
+[OS reconstruction](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md),
 [AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
 and [Dobrushin C*-state](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
 submission records remain available.

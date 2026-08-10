@@ -17,19 +17,20 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest viXra submissions (2026-08-10; two objects reported submitted).** The
-paper *Architecture-Dependent Decoherence Suppression in Passive Quantum
-Networks: Irreducible Channel Mixing, Squared Rate Gaps, and the Price in Dwell
-Time* is frozen in two public GitHub releases. The first v1.0 PDF has 13 pages,
-442,280 bytes and SHA-256 `4113C20A...EA9BDD`; the later robustness-hardened
-v1.1 has 17 pages, 506,639 bytes and SHA-256
-`B4DDFCC82B3B0C8B620F5A786083B0B951380B220D582FA3F51FF6D5C303F9D2`.
-Exact links, commits, metadata and scope are recorded in
-[`docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md`](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md).
-GitHub publication of the release assets is not treated as evidence of viXra
-acceptance; no viXra identifier has been recorded. This quantum-reservoir paper
-is maintained in the separate `finite-sample-spectral-certificates` repository
-and does not alter the canonical Yang--Mills proof-state checkpoint.
+**Latest viXra submission (2026-08-10; outcome pending).** The 13-page paper
+*Lossless Calibration Is Stored Memory: A Topological McMillan-Degree and
+Wigner–Smith Law for Passive Quantum Networks* is frozen at commit
+`a52d6e74`, with 388,593 bytes and SHA-256
+`89ACD5362D43022C78FF694ED414F9134E995472CC2DB1E0974A0021589D8C61`.
+Exact links, certificate identity, scope and lifecycle are recorded in
+[`docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md`](docs/LOSSLESS-CALIBRATION-MEMORY-VIXRA-SUBMISSION-20260810.md).
+The paper relates exact lossless calibration load to McMillan degree and
+integrated Wigner–Smith delay for rational-inner passive networks. The proposed
+robust approximate pass–stop law remains future work. GitHub publication is not
+treated as viXra acceptance, and no public viXra identifier has been recorded.
+The earlier two-object passive-reservoir submission remains recorded
+separately. Neither external paper changes the canonical Yang--Mills
+proof-state checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
