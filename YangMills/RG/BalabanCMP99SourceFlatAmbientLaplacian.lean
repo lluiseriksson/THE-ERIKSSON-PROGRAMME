@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceCovariantLaplacianCutoffIdentity
 
 /-!
-# PRE-VALIDATION: flat periodic CMP99 ambient Laplacian
-
-Source is present, the corresponding `.olean` has not yet been materialized,
-and the result has not yet been compiler-verified.
+# Flat periodic CMP99 ambient Laplacian
 
 CMP89 (2.43)--(2.48) diagonalizes the zero-background periodic precision.
 Before introducing Fourier modes, this module proves the exact first

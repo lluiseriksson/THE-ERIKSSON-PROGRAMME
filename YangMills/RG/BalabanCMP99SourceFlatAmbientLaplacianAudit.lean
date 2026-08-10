@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatAmbientLaplacian
 
 /-!
-# PRE-VALIDATION audit: flat periodic CMP99 ambient Laplacian
+# Axiom audit: flat periodic CMP99 ambient Laplacian
 -/
 
 #print axioms YangMills.RG.cmp99FlatGaugeBackground

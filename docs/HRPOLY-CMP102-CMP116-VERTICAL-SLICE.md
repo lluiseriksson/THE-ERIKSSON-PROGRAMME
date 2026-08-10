@@ -8053,3 +8053,40 @@ open. Counters stay exactly `20/41`, `TermSource = 0`. Diagnostic PASS
 `31354670690` used a restored graph and did not seal. Failed diagnostics
 `31354142299`, `31354327613` and `31354499576` remain preserved; only the
 cold run above retired the two PRE-VALIDATION marks.
+
+### Step 7.5cxxxii flat generated ambient Laplacian (SEALED; Fourier diagonalization open)
+
+Exact source checkpoint `d9c0cac633b9e8888fb2025a604300bd092c92dd`
+passed cold GitHub Actions run
+[`31356996075`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31356996075)
+with workflow checkpoint `97ad8edf893517cfa6fcb97ae8644e3aa61493f1`.
+The job completed in `22m53s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `04:57:14Z` to `05:18:12Z`, the audit ended
+at `05:18:20Z`, and both stages exited zero. All four audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`; the sealed target emitted
+no warning or error of its own.
+
+Artifact `9051363785`, named
+`flat-ambient-laplacian-d9c0cac633b9e8888fb2025a604300bd092c92dd`, has
+GitHub digest
+`8efd4eaf4668bf578ab12b0f8d4b22f8629a620b448079fbe300114cbf9ca265`.
+Its deterministic inner archive re-hashed on Windows to
+`bf13f2d5466eda9dd1a9bd165c13bff0dc0f15b8cee03f23a468fde3f11c0273`;
+all 13 internal manifest entries matched.
+
+The literal trivial gauge background is constructed by the canonical
+`trivialPhysicalGaugeBackground`, not supplied as a free function. At that
+background the complete CMP99 ambient covariant stencil is proved term by
+term equal to the ordinary symmetric periodic nearest-neighbour stencil, and
+the generated ambient operator retains exactly the two visible
+`spacing⁻¹` factors. No positivity or nonzero-spacing premise is introduced.
+
+This is the first non-circular operator-dictionary entry below the sealed
+CMP89 Fourier integral. It does not Fourier-diagonalize the stencil, identify
+the symbol or adjoint of `Q'`, prove inverse uniqueness, or transport the
+result to a regional Green operator. Physical `B0`, window 15 and every
+terminal field remain open. Counters stay exactly `20/41`,
+`TermSource = 0`. Diagnostic PASS `31356849772` used a restored graph and did
+not seal; failed diagnostics `31356282470`, `31356476316` and `31356678354`
+remain preserved. Only the cold run above retired the two PRE-VALIDATION
+marks.

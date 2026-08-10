@@ -32486,3 +32486,37 @@ Fourier diagonalization of the generated precision, the `Q'` symbol/adjoint
 dictionary and inverse uniqueness. Live counters stay exactly `20/41`,
 `TermSource = 0`. Diagnostic PASS `31354670690` did not seal; only the cold
 run above did.
+
+## Addendum 707 (2026-08-10, **flat generated ambient Laplacian GREEN; Fourier/operator dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `d9c0cac633b9e8888fb2025a604300bd092c92dd`
+passed cold GitHub Actions run
+[`31356996075`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31356996075)
+with workflow checkpoint `97ad8edf893517cfa6fcb97ae8644e3aa61493f1`.
+The job completed in `22m53s`; restore/save of `.lake/build` were skipped.
+The focal ran from `04:57:14Z` to `05:18:12Z`, and the audit ended at
+`05:18:20Z`. Both stages exited zero, all four audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9051363785`, named
+`flat-ambient-laplacian-d9c0cac633b9e8888fb2025a604300bd092c92dd`, has
+GitHub digest
+`8efd4eaf4668bf578ab12b0f8d4b22f8629a620b448079fbe300114cbf9ca265`.
+Its deterministic inner archive re-hashed on Windows to
+`bf13f2d5466eda9dd1a9bd165c13bff0dc0f15b8cee03f23a468fde3f11c0273`;
+all 13 internal manifest entries matched.
+
+The producer reuses the canonical trivial physical gauge background, proves
+the covariant ambient stencil equal term by term to the symmetric periodic
+nearest-neighbour stencil, and specializes the generated ambient Laplacian
+with both `spacing⁻¹` normalizations still literal. It accepts no background
+family, Fourier transform, eigenvalue, Green inverse or regional dictionary.
+
+Fourier diagonalization, the exact `Q'` symbol/adjoint, inverse uniqueness and
+regional transport remain open before the constructed CMP89 Fourier Green can
+be identified with the literal `G_j Q_j^*`. Physical `B0`, window 15 and all
+terminal fields remain open. Counters stay exactly `20/41`,
+`TermSource = 0`. Diagnostic PASS `31356849772` did not seal. Failed
+diagnostics `31356282470`, `31356476316` and `31356678354` remain preserved;
+only the cold run above did.
