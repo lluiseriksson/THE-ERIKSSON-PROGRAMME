@@ -8850,3 +8850,40 @@ transport, restrict to a regional Dirichlet carrier or produce physical
 `20/41`, `TermSource = 0`. Failed diagnostic `31437612264` preserves the
 cast-normalization failure; restored diagnostic PASS `31437959575` did not
 seal. Only the cold run above retires PRE-VALIDATION.
+
+### Step 7.5cliii transposed alias-fibre solution of CMP89 (2.47) (SEALED; central stabilization and physical specialization open)
+
+Exact source checkpoint `bb8bd699814d7862cb476216d4188db6cc711ec9`
+passed cold GitHub Actions run
+[`31441217997`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31441217997)
+with workflow checkpoint `7ae74776394d0d13fe01f0827b54c7f0ecc4f608`.
+The cold job ran for `2m29s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `23:11:09Z`; the focal
+exited zero at `23:11:46Z` and the audit exited zero at `23:11:49Z`. All three
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+the axiom blacklist was empty.
+
+Artifact `9082955042`, named
+`entire-alias-transpose-solution-bb8bd699814d7862cb476216d4188db6cc711ec9`,
+has GitHub digest
+`af7b7aca6c8e60cb1c659dfa9ff90200742965a55a37ab8cd3bd310dc0edcf6e`.
+Its deterministic inner archive re-hashed on Windows to
+`e1810796ebbeb308bedb5c638521ec00436e154f3a443dc393a6a78bf0fa69ee`;
+all 13 internal manifest entries matched.
+
+The module proves that the DFT convention fixed in Step 7.5clii makes the
+source equation use the transpose of the printed
+`diag(Delta) + a * column * row` matrix. Its direct-momentum column is then
+inside the contraction and its opposite-momentum row is the output source,
+so the internally constructed solution has exactly the printed denominator
+`1 + a * sum column*row/Delta`. No abstract adjoint or arbitrary solution
+family is supplied.
+
+The theorem is deliberately restricted to the domain where the printed
+quotients are defined. The central removable zero, its stabilized analytic
+continuation, the physical fixed-fibre specialization, interacting/regional
+transport and physical `B0` remain open. Window 15 remains compatible but
+unattained. Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostic
+`31440675278` preserves the transpose/abbreviation normalization errors;
+restored diagnostic PASS `31441006236` did not seal. Only the cold run above
+retires PRE-VALIDATION.

@@ -33213,3 +33213,35 @@ restriction and physical `B0` remain open. Window 15 is compatible but
 unattained. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
 diagnostic `31437612264` and restored diagnostic PASS `31437959575` remain
 preserved; only the cold run above retires PRE-VALIDATION.
+
+## Addendum 728 (2026-08-11, **transposed CMP89 (2.47) alias solution GREEN; central stabilization and physical specialization open; 20/41 unchanged**)
+
+Exact source checkpoint `bb8bd699814d7862cb476216d4188db6cc711ec9`
+passed cold GitHub Actions run
+[`31441217997`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31441217997)
+with workflow checkpoint `7ae74776394d0d13fe01f0827b54c7f0ecc4f608`.
+The job ran for `2m29s` with restore and save both skipped. Dependency
+materialization ended at `23:11:09Z`; the focal exited zero at `23:11:46Z`
+and the audit exited zero at `23:11:49Z`. All three declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; no forbidden axiom occurred.
+
+Artifact `9082955042`, named
+`entire-alias-transpose-solution-bb8bd699814d7862cb476216d4188db6cc711ec9`,
+has GitHub digest
+`af7b7aca6c8e60cb1c659dfa9ff90200742965a55a37ab8cd3bd310dc0edcf6e`.
+The downloaded deterministic archive has SHA-256
+`e1810796ebbeb308bedb5c638521ec00436e154f3a443dc393a6a78bf0fa69ee`,
+and all 13 internal manifest entries matched.
+
+The source proves the literal transpose action forced by the sealed DFT
+orientation and constructs the CMP89 (2.47) quotient internally as its
+solution. The resulting scalar contraction is exactly
+`sum column*row/Delta`; solving the untransposed matrix would instead produce
+the wrong row-squared denominator and is not used.
+
+The central removable zero, stabilized continuation, physical fixed-fibre
+specialization, interacting/regional transport and physical `B0` remain
+open. Window 15 is compatible but unattained. Live counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostic `31440675278` and restored
+diagnostic PASS `31441006236` remain preserved; only the cold run above
+retires PRE-VALIDATION.

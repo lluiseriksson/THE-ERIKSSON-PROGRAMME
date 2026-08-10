@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq246EntireAliasPrecisionMatrix
 
 /-!
-# PRE-VALIDATION: transposed alias-fibre solution in CMP89 (2.47)
-
-Source is present at this checkpoint, its `.olean` has not yet been
-materialized, and the result is not yet compiler-verified.
+# Transposed alias-fibre solution in CMP89 (2.47)
 
 The DFT convention of the physical weighted adjoint produces the printed
 opposite-momentum row.  Consequently the finite system acts through the

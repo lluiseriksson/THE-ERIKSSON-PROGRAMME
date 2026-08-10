@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq247EntireAliasTransposeSolution
 
 /-!
-# PRE-VALIDATION audit: transposed alias-fibre solution in CMP89 (2.47)
-
-The imported source has not yet been materialized as an `.olean`; these
-axiom checks are therefore not yet compiler-verified.
+# Axiom audit: transposed alias-fibre solution in CMP89 (2.47)
 -/
 
 #print axioms YangMills.RG.cmp89Eq247EntireAliasTransposeSolution
