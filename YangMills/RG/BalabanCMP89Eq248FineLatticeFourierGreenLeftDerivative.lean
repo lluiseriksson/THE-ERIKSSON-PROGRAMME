@@ -64,12 +64,17 @@ theorem cmp89Eq251EntireAliasPhase_forwardCoordinateShift
       cmp89Eq251EntirePhase (cmp89Eq248EntireAliasMomentum z m)
           (cmp89Eq249PhysicalFineLatticeDisplacement xi u) +
         (xi : ℂ) * cmp89Eq248EntireAliasMomentum z m mu := by
+  classical
   rw [cmp89Eq249PhysicalFineLatticeDisplacement_forwardCoordinateShift,
     cmp89Eq251EntirePhase_add]
   rw [show cmp89Eq251EntirePhase (cmp89Eq248EntireAliasMomentum z m)
         (Pi.single mu xi : Fin d → ℝ) =
       cmp89Eq248EntireAliasMomentum z m mu * (xi : ℂ) by
-    simp [cmp89Eq251EntirePhase, Pi.single_apply]]
+    rw [cmp89Eq251EntirePhase, Finset.sum_eq_single mu]
+    · simp [Pi.single_apply]
+    · intro nu _ hnu
+      simp [Pi.single_apply, hnu]
+    · simp]
   ring
 
 /-- The phase difference quotient is exactly the entire fine difference
