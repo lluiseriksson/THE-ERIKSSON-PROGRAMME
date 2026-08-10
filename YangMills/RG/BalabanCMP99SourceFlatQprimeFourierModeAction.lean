@@ -65,7 +65,6 @@ def cmp99SourceFlatQprimeFineOffsetCharacter
     (k : FinBox d (M * N')) (r : FinBox d M) : ℂ :=
   ZMod.stdAddChar (cmp99SourceFlatQprimeFineOffsetPhase k r)
 
-omit [NeZero N'] in
 /-- Exact character factorization at the literal block embedding. -/
 theorem cmp99FlatFourierMode_blockEmbed
     (k : FinBox d (M * N')) (y : FinBox d N') (r : FinBox d M) :
@@ -97,7 +96,6 @@ theorem cmp89Eq245EntireAverageBase_amplitudeMomentum
   congr 1
   field_simp [hM]
 
-omit [NeZero N'] in
 /-- The additive offset character is the coordinatewise product character.
 This is the only use of the additive-character algebra in the block sum. -/
 theorem cmp99SourceFlatQprimeFineOffsetCharacter_eq_prod
