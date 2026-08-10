@@ -73,7 +73,7 @@ theorem cmp89Eq245EntireScaledLaplacianSymbol_add_int_aliasPeriods
   push_cast at hp hn
   have hneg :
       -(z mu + (w mu : ℂ) * (2 * (Real.pi : ℂ) * (M : ℂ))) =
-        -z mu + ((-w mu : ℤ) : ℂ) *
+        -z mu + (-(w mu : ℂ)) *
           (2 * (Real.pi : ℂ) * (M : ℂ)) := by
     push_cast
     ring
@@ -106,6 +106,7 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_eq_rescaledPeriodic
   unfold cmp99SourceFlatQprimePhysicalFineSymbol
     cmp99SourceFlatQprimeRescaledPeriodicFineSymbol
     cmp89Eq245EntireScaledLaplacianSymbol
+    cmp99FlatPeriodicLaplacianSymbol
   rw [Finset.mul_sum]
   congr 1
   apply Finset.sum_congr rfl
@@ -223,14 +224,14 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_entry_eq_cmp89
     cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow]
   by_cases hmn : m = n
   · subst n
-    simp
+    simp <;> ring
   · have halias :
         cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell m ≠
           cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell n :=
       fun h => hmn
         ((cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
           d M N' ell).injective h)
-    simp [hmn, halias]
+    simp [hmn, halias] <;> ring
 
 /-- Reindexing both axes by the signed physical dictionary gives the literal
 CMP89 entire alias precision matrix. -/
