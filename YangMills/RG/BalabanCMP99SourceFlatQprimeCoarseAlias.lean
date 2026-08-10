@@ -30,15 +30,17 @@ open scoped BigOperators
 
 noncomputable section
 
-variable {d M N' : ℕ} [NeZero M] [NeZero N']
+variable {d M N' : ℕ}
 
 /-- The literal coarse reciprocal alias of a fine periodic momentum. -/
 def cmp99SourceFlatQprimeCoarseAlias
+    [NeZero N']
     (k : FinBox d (M * N')) : FinBox d N' :=
   fun mu => ⟨(k mu).val % N',
     Nat.mod_lt _ (Nat.pos_of_ne_zero (NeZero.ne N'))⟩
 
 @[simp] theorem cmp99SourceFlatQprimeCoarseAlias_apply_val
+    [NeZero N']
     (k : FinBox d (M * N')) (mu : Fin d) :
     (cmp99SourceFlatQprimeCoarseAlias k mu).val = (k mu).val % N' := rfl
 
@@ -54,6 +56,7 @@ private lemma cmp99SourceFlatQprime_natCast_mod_zmod (a : ℕ) :
 /-- Restricting the standard character of the fine torus to a multiple of
 the block scale gives the standard character of the coarse torus. -/
 private theorem cmp99SourceFlatQprime_stdAddChar_mul_blockScale
+    [NeZero M] [NeZero N']
     (a : ℤ) :
     ZMod.stdAddChar (((M : ℤ) * a : ℤ) : ZMod (M * N')) =
       ZMod.stdAddChar (a : ZMod N') := by
@@ -65,10 +68,10 @@ private theorem cmp99SourceFlatQprime_stdAddChar_mul_blockScale
   congr 1
   push_cast
   field_simp [hM, hN]
-  ring
 
 /-- Coordinatewise character equality at the canonical block basepoint. -/
 theorem cmp99SourceFlatQprime_coordinateCharacter_blockBasepoint
+    [NeZero M] [NeZero N']
     (k : FinBox d (M * N')) (y : FinBox d N') (mu : Fin d) :
     ZMod.stdAddChar
         (((k mu).val : ZMod (M * N')) *
@@ -116,6 +119,7 @@ theorem cmp99FlatFourierMode_eq_coordinateProduct
 /-- The fine mode sampled at a canonical block basepoint is literally the
 coarse mode at the coordinatewise reciprocal alias. -/
 theorem cmp99FlatFourierMode_blockBasepoint_eq_coarseAlias
+    [NeZero M] [NeZero N']
     (k : FinBox d (M * N')) (y : FinBox d N') :
     cmp99FlatFourierMode k (blockBasepoint M N' y) =
       cmp99FlatFourierMode (cmp99SourceFlatQprimeCoarseAlias k) y := by
@@ -129,6 +133,7 @@ theorem cmp99FlatFourierMode_blockBasepoint_eq_coarseAlias
 block average.  Both the amplitude and the coarse reciprocal alias are now
 literal objects rather than inputs. -/
 theorem cmp99SourceFlatQprimeWeightedBlockSum_fourierMode_eq_coarseAlias
+    [NeZero M] [NeZero N']
     (k : FinBox d (M * N')) (y : FinBox d N') :
     (cmp99SourceBlockAverageWeight M d : ℂ) *
         ∑ r : FinBox d M,
