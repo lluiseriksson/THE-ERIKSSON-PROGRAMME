@@ -32973,3 +32973,37 @@ stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31398057183`,
 `31398178152`, `31398683698`, `31399256447` and `31402382641` remain
 preserved. Diagnostic PASSes `31399586719`, `31399873331` and `31404901940`
 did not seal; only the cold run above retires PRE-VALIDATION.
+
+## Addendum 721 (2026-08-10, **flat physical complex weighted adjoint GREEN; Fourier column and inverse open; 20/41 unchanged**)
+
+Exact source checkpoint `85763428444a29a64dd05ba1369ed493fe7f6c91`
+passed cold GitHub Actions run
+[`31408636358`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31408636358)
+with workflow checkpoint `bf2b4f8746ff615c3f21e0752bcbc3a4ccbc6d24`.
+The job ran for `24m00s` with restore and save both skipped. The focal built
+8,491 jobs from `16:25:47Z` to `16:46:48Z`; the audit ended at `16:46:56Z`.
+Both stages exited zero. All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, the axiom blacklist was empty, and
+the new target emitted no warning or error.
+
+Artifact `9071431702`, named
+`flat-physical-complex-weighted-adjoint-85763428444a29a64dd05ba1369ed493fe7f6c91`,
+has GitHub digest
+`410dbbc1d4b865ab8957911c4004a526fb24dd5303a95da849492a91cc85cb3a`.
+The downloaded deterministic archive has SHA-256
+`ef3e5b8935db046b99b8d6d34fc4b106b3341a5cd336d1a9e6ed2db099f093d2`,
+and all 13 internal manifest entries matched.
+
+The complex source weighted adjoint is constructed with coefficient one and
+identity flat transport. It commutes pointwise with complexification of the
+literal physical adjoint, and its action on one restricted coarse Fourier
+mode is exactly the internally defined owner-site synthesis field. No
+transport family, adjoint family or Fourier coefficients are caller data.
+
+This is not yet the direct-momentum Fourier column: that statement needs a
+global Fourier equivalence and its normalization. Interacting transport,
+inverse uniqueness and regional Green transport remain open. Physical `B0`,
+window 15 and all terminal fields remain open. Live counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostic `31407924638` remains preserved;
+restored diagnostic PASS `31408296172` did not seal. Only the cold run above
+retires PRE-VALIDATION.

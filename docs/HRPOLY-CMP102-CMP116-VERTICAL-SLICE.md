@@ -8588,3 +8588,41 @@ docstring-scope failures. Diagnostic PASSes `31399586719`, `31399873331` and
 `31404901940` did not seal: the first two predate removal of the target's own
 warning, and the last restored the project graph. Only the cold run above
 retires PRE-VALIDATION.
+
+### Step 7.5cxlvi flat physical complex weighted adjoint (SEALED; Fourier column and inverse open)
+
+Exact source checkpoint `85763428444a29a64dd05ba1369ed493fe7f6c91`
+passed cold GitHub Actions run
+[`31408636358`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31408636358)
+with workflow checkpoint `bf2b4f8746ff615c3f21e0752bcbc3a4ccbc6d24`.
+The cold job ran for `24m00s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `16:25:47Z` to `16:46:48Z`, completed 8,491
+jobs and emitted no warning or error in the new target. The audit ended at
+`16:46:56Z`. Both stages exited zero and all six audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9071431702`, named
+`flat-physical-complex-weighted-adjoint-85763428444a29a64dd05ba1369ed493fe7f6c91`,
+has GitHub digest
+`410dbbc1d4b865ab8957911c4004a526fb24dd5303a95da849492a91cc85cb3a`.
+Its deterministic inner archive re-hashed on Windows to
+`ef3e5b8935db046b99b8d6d34fc4b106b3341a5cd336d1a9e6ed2db099f093d2`;
+all 13 internal manifest entries matched.
+
+The producer constructs the source weighted adjoint on the explicit complex
+physical fibre with coefficient one and the sealed identity flat transport.
+It proves pointwise commutation with complexification of the literal physical
+weighted adjoint. Applied to a restricted coarse complex Fourier mode, it is
+exactly the fine-region field obtained by evaluating that mode at the owner
+block of each fine site. No adjoint family or synthesized field is supplied
+as caller data.
+
+This endpoint is pointwise synthesis, not a theorem about fine Fourier
+coefficients. The direct-momentum column on a fixed reciprocal fibre still
+requires a global Fourier equivalence and its normalization. Interacting
+transport, inverse uniqueness and regional Green transport remain open.
+Physical `B0`, window 15 and every terminal field remain open. Counters stay
+exactly `20/41`, `TermSource = 0`. Failed diagnostic `31407924638` preserves
+the identity-transport normalization, complexification exposure and command
+scope repairs. Restored diagnostic PASS `31408296172` did not seal; only the
+cold run above retires PRE-VALIDATION.

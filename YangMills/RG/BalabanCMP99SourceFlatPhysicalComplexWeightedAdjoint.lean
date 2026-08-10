@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction
 
 /-!
-# PRE-VALIDATION: flat physical complex weighted adjoint
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Flat physical complex weighted adjoint
 
 The printed CMP99 weighted adjoint has coefficient one between the source
 lattice-spacing Hilbert products.  This module constructs that synthesis on
