@@ -8741,3 +8741,42 @@ transport, inverse uniqueness, regional Green transport and physical `B0`
 remain open. Window 15 remains compatible but unattained. Counters stay
 exactly `20/41`, `TermSource = 0`. Restored diagnostic PASS `31424842327`
 did not seal; only the cold run above retires PRE-VALIDATION.
+
+### Step 7.5cl scalar reciprocal-fibre column of the flat weighted adjoint (SEALED; physical-fibre lift open)
+
+Exact source checkpoint `26e9ee6f5ce3e1251d50cd862356350f6ff5538d`
+passed cold GitHub Actions run
+[`31431328313`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31431328313)
+with workflow checkpoint `168148a6de750f7d5da88fb63d00531114dceb3e`.
+The cold job ran for `22m56s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `20:56:32Z`; the focal
+completed from then through `21:17:33Z`, and the audit ended at `21:17:40Z`.
+Both stages exited zero. The first two of seven audited declarations use
+`[propext, Quot.sound]`; the other five use exactly
+`[propext, Classical.choice, Quot.sound]`. The axiom blacklist was empty.
+
+Artifact `9079913123`, named
+`flat-weighted-adjoint-scalar-column-26e9ee6f5ce3e1251d50cd862356350f6ff5538d`,
+has GitHub digest
+`62610c78a3b3d70508a3f8ca8dc51bcb0471b3cbd11201325028ef4f26c8b933`.
+Its deterministic inner archive re-hashed on Windows to
+`9a013f80337396a64bd16f3e6366fcb316120b6b91238bee48bde0a515e85157`;
+all 13 internal manifest entries matched.
+
+The producer transports periodic momentum negation through the sealed
+`FinBox`--`ZMod` equivalence rather than identifying half-open real
+representatives. It rewrites the literal forward DFT as a sum against that
+negative mode, reindexes the complete fine box by owner blocks, consumes the
+sealed one-block amplitude and obtains support exactly on
+`coarseAlias(k) = ell`. Removing the source block weight by its proved
+`M^d` normalization leaves the complete fine-volume coefficient and the
+one-block entire amplitude at the literal periodic negative momentum.
+
+This is the scalar column only. It does not supply a physical Lie-fibre
+vector, replace the active weighted adjoint by a free field, identify flat
+and interacting transport, invert the precision, restrict to a regional
+Dirichlet carrier or produce the physical `B0`. Window 15 remains compatible
+but unattained. Counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31429164908` and `31430000991` preserve only equivalence,
+instance and definitional-reduction repairs. Restored diagnostic PASS
+`31431068711` did not seal; only the cold run above retires PRE-VALIDATION.

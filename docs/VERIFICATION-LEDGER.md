@@ -33114,3 +33114,38 @@ uniqueness, regional Green transport and physical `B0` remain open. Window 15
 is compatible but unattained. Live counters stay exactly `20/41`,
 `TermSource = 0`. Restored diagnostic PASS `31424842327` did not seal; only
 the cold run above retires PRE-VALIDATION.
+
+## Addendum 725 (2026-08-10, **scalar reciprocal-fibre column of the flat weighted adjoint GREEN; physical-fibre lift open; 20/41 unchanged**)
+
+Exact source checkpoint `26e9ee6f5ce3e1251d50cd862356350f6ff5538d`
+passed cold GitHub Actions run
+[`31431328313`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31431328313)
+with workflow checkpoint `168148a6de750f7d5da88fb63d00531114dceb3e`.
+The job ran for `22m56s` with restore and save both skipped. Dependency
+materialization ended at `20:56:32Z`; the focal exited zero at `21:17:33Z`
+and the audit exited zero at `21:17:40Z`. The first two of seven declarations
+use `[propext, Quot.sound]`; the remaining five use exactly
+`[propext, Classical.choice, Quot.sound]`. No forbidden axiom occurred.
+
+Artifact `9079913123`, named
+`flat-weighted-adjoint-scalar-column-26e9ee6f5ce3e1251d50cd862356350f6ff5538d`,
+has GitHub digest
+`62610c78a3b3d70508a3f8ca8dc51bcb0471b3cbd11201325028ef4f26c8b933`.
+The downloaded deterministic archive has SHA-256
+`9a013f80337396a64bd16f3e6366fcb316120b6b91238bee48bde0a515e85157`,
+and all 13 internal manifest entries matched.
+
+The source constructs the periodic negative momentum through the exact
+`ZMod` equivalence, rewrites the forward DFT against that character and
+reindexes the full fine box by literal owner blocks. The sealed one-block
+amplitude and block-weight cancellation give the complete fine-volume
+coefficient supported exactly on `coarseAlias(k) = ell`. No false equality
+between different half-open real momentum representatives is asserted.
+
+This remains a scalar full-box column. The physical-fibre active weighted
+adjoint, interacting transport, inverse uniqueness, regional Green transport
+and physical `B0` remain open. Window 15 is compatible but unattained. Live
+counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
+`31429164908` and `31430000991` retain the elaboration failures; restored
+diagnostic PASS `31431068711` did not seal. Only the cold run above retires
+PRE-VALIDATION.

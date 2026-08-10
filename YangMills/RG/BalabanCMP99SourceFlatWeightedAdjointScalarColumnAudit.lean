@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointScalarColumn
 
 /-!
-# PRE-VALIDATION audit: scalar Fourier column of the flat weighted adjoint
-
-The imported source has not yet been materialized as an `.olean`; these
-axiom checks are therefore not yet compiler-verified.
+# Audit: scalar Fourier column of the flat weighted adjoint
 -/
 
 #print axioms YangMills.RG.cmp99FinBoxFourierNeg

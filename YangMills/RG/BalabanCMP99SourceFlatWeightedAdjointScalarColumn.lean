@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99FlatPhysicalFibreDFT
 import YangMills.RG.BalabanCMP99SourceFlatQprimeBlockOffsetEquiv
 
 /-!
-# PRE-VALIDATION: scalar Fourier column of the flat weighted adjoint
-
-Source is present at this checkpoint, its `.olean` has not yet been
-materialized, and the result is not yet compiler-verified.
+# Scalar Fourier column of the flat weighted adjoint
 
 The source-weighted adjoint of one flat block average has coefficient one:
 it pulls a coarse scalar field back along `blockSite`.  This module computes
