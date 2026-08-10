@@ -26,7 +26,6 @@ env:
     normalized-fine-lattice-fourier-green
     physical-fine-uniform-normalized-owner-bound
     physical-fine-normalized-owner-bound
-    fine-lattice-endpoint-product-telescope
     normalized-fine-lattice-recombination
 
 jobs:
