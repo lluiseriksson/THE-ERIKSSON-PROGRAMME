@@ -296,7 +296,11 @@ theorem cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen_forwardDifference
       rw [MeasureTheory.integral_sub hshifted hbase]
     _ = normalization *
         (∫ x, (shifted x - base x) / (xi : ℂ) ∂measure) := by
-      rw [← MeasureTheory.integral_div]
+      apply congrArg (fun value : ℂ => normalization * value)
+      simpa [div_eq_mul_inv] using
+        (MeasureTheory.integral_mul_const
+          (fun x => shifted x - base x) ((xi : ℂ)⁻¹)
+          (μ := measure)).symm
     _ = normalization * ∫ x, deriv x ∂measure := by
       congr 1
       apply integral_congr_ae
