@@ -119,7 +119,7 @@ theorem sum_cmp99FlatZModFourierCharacter
   rw [hfactor]
   by_cases hx : x = 0
   · subst x
-    simp [sum_cmp99FlatZMod_standardCharacter_mul]
+    simp
   · rw [if_neg hx]
     have hex : ∃ mu, x mu ≠ 0 := by
       by_contra h
