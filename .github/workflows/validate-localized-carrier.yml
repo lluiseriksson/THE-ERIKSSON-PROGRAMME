@@ -1,4 +1,4 @@
-name: Validate CMP99 flat ambient Laplacian
+name: Validate CMP99 flat Fourier stencil
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: d9c0cac633b9e8888fb2025a604300bd092c92dd
+  SOURCE_SHA: 5d520b8052255c8bf083891a441e8d8e4daf3af6
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    flat-ambient-laplacian
     normalized-fine-lattice-fourier-green
     physical-fine-uniform-normalized-owner-bound
     physical-fine-normalized-owner-bound
@@ -26,10 +27,9 @@ env:
     fine-lattice-endpoint-boundary-seam
     fine-lattice-stabilized-endpoint-bound
     fourier-left-derivative-kernel
-    fixed-rate-physical-owner-bound
 
 jobs:
-  flat-ambient-laplacian:
+  flat-fourier-stencil:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-ambient-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-fourier-stencil-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatAmbientLaplacian.lean \
-            YangMills/RG/BalabanCMP99SourceFlatAmbientLaplacianAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatFourierStencil.lean \
+            YangMills/RG/BalabanCMP99SourceFlatFourierStencilAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_ambient_laplacian_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatAmbientLaplacian
-          run_stage flat_ambient_laplacian_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatAmbientLaplacianAudit.lean
+          run_stage flat_fourier_stencil_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatFourierStencil
+          run_stage flat_fourier_stencil_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatFourierStencilAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,7 +168,7 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_ambient_laplacian_audit.log": 4,
+              "flat_fourier_stencil_audit.log": 9,
           }
           result = {}
           for name, expected in audits.items():
@@ -200,17 +200,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-ambient-laplacian-evidence.tar.gz
-          sha256sum flat-ambient-laplacian-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-fourier-stencil-evidence.tar.gz
+          sha256sum flat-fourier-stencil-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-ambient-laplacian-${{ env.SOURCE_SHA }}
+          name: flat-fourier-stencil-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-ambient-laplacian-evidence.tar.gz
+            flat-fourier-stencil-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -219,4 +219,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-ambient-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-fourier-stencil-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
