@@ -287,7 +287,7 @@ noncomputable def cmp99FlatZModDFTLinearEquiv {d N : ℕ} [NeZero N] :
     rw [Finset.mul_sum]
     apply Finset.sum_congr rfl
     intro x _
-    ring
+    ring_nf
 
 end
 
