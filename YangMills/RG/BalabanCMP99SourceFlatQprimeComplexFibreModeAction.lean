@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeCoarseAlias
 /-!
 # Flat `Q'` mode action in the complexified physical fibre
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
-
 The scalar one-block action and its reciprocal alias are already literal.
 This module transports that equality to `SUNLieComplexCoord Nc`, the explicit
 coordinatewise complexification of the physical Lie-coordinate fibre.  A

@@ -28813,41 +28813,6 @@ Cached diagnostic run `31206078448` passed.  Run `31205417982` is retained as
 an infrastructure cancellation before Lean; only the cold run above retired
 the two PRE-VALIDATION marks.
 
-## Addendum 714 (2026-08-10, **coarse reciprocal alias and exact coarse-mode action GREEN; physical fibre action open; 20/41 unchanged**)
-
-Exact source checkpoint `297b79c636bf246dedc20f72596a603103d2beab`
-passed cold GitHub Actions run
-[`31377161152`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31377161152)
-with workflow checkpoint `bfe432c62ac87bda4d4cdacc8d26e990b53784b6`.
-The cold job ran for `22m23s`; restoration and saving of `.lake/build` were
-both skipped. The focal ran from `10:01:38Z` to `10:22:12Z`; the audit ended
-at `10:22:18Z`. Both stages exited zero. Two declarations depend only on
-`[propext]`, and the remaining four use exactly
-`[propext, Classical.choice, Quot.sound]`. The target emitted no warning or
-error of its own.
-
-Artifact `9059009193`, named
-`flat-qprime-coarse-alias-297b79c636bf246dedc20f72596a603103d2beab`,
-has GitHub digest
-`9b99a16860cbd13b886267547248576462e3c75bc264f3c2c71665aa4af7ed83`.
-Its deterministic inner archive re-hashed on Windows to
-`196f057a7e129394f528b8d5470e8d075c798c4dff8bf123ea325f7939fb583b`;
-all 13 internal manifest entries matched.
-
-The alias is not an input: it is the coordinatewise reduction `k mod N'`.
-The producer derives the character restriction across `M*N' -> N'`, proves
-that the fine mode at the canonical block basepoint is exactly the coarse
-mode at that alias, and composes this theorem with the sealed one-block Q'
-calculation. The unique `M^-d` source normalization remains the one already
-recorded; no second row mass or block cardinality enters this dictionary.
-
-Physical Lie-fibre action, the weighted adjoint, `Q'^*Q'`, inverse uniqueness
-and regional transport remain open. Physical `B0`, window 15 and every
-terminal field remain open. Live counters stay exactly `20/41`,
-`TermSource = 0`. Failed diagnostic `31376562811` remains preserved;
-restored diagnostic PASS `31376937385` did not seal. Only the cold run above
-retires the two PRE-VALIDATION marks.
-
 No Neumann sum, strict physical contraction, or uniform production of the
 Green constants is proved.  Window 15 remains compatible but unattained;
 rows 23--24 and a first `TermSource` inhabitant remain open.  The live counters
@@ -32760,3 +32725,72 @@ counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
 `31372848347`, `31373122676` and `31373438940` remain preserved; restored
 diagnostic PASS `31373704872` did not seal. Only the cold run above retires
 the two PRE-VALIDATION marks.
+
+## Addendum 714 (2026-08-10, **coarse reciprocal alias and exact coarse-mode action GREEN; physical fibre action open; 20/41 unchanged**)
+
+Exact source checkpoint `297b79c636bf246dedc20f72596a603103d2beab`
+passed cold GitHub Actions run
+[`31377161152`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31377161152)
+with workflow checkpoint `bfe432c62ac87bda4d4cdacc8d26e990b53784b6`.
+The cold job ran for `22m23s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `10:01:38Z` to `10:22:12Z`; the audit ended
+at `10:22:18Z`. Both stages exited zero. Two declarations depend only on
+`[propext]`, and the remaining four use exactly
+`[propext, Classical.choice, Quot.sound]`. The target emitted no warning or
+error of its own.
+
+Artifact `9059009193`, named
+`flat-qprime-coarse-alias-297b79c636bf246dedc20f72596a603103d2beab`,
+has GitHub digest
+`9b99a16860cbd13b886267547248576462e3c75bc264f3c2c71665aa4af7ed83`.
+Its deterministic inner archive re-hashed on Windows to
+`196f057a7e129394f528b8d5470e8d075c798c4dff8bf123ea325f7939fb583b`;
+all 13 internal manifest entries matched.
+
+The alias is not an input: it is the coordinatewise reduction `k mod N'`.
+The producer derives the character restriction across `M*N' -> N'`, proves
+that the fine mode at the canonical block basepoint is exactly the coarse
+mode at that alias, and composes this theorem with the sealed one-block Q'
+calculation. The unique `M^-d` source normalization remains the one already
+recorded; no second row mass or block cardinality enters this dictionary.
+
+Physical Lie-fibre action, the weighted adjoint, `Q'^*Q'`, inverse uniqueness
+and regional transport remain open. Physical `B0`, window 15 and every
+terminal field remain open. Live counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostic `31376562811` remains preserved;
+restored diagnostic PASS `31376937385` did not seal. Only the cold run above
+retires the two PRE-VALIDATION marks.
+
+## Addendum 715 (2026-08-10, **flat `Q'` action in the complexified physical fibre GREEN; transported CLM open; 20/41 unchanged**)
+
+Exact source checkpoint `5eec68ba158e3fb0de006130fc40e66a0215e9ed`
+passed cold GitHub Actions run
+[`31379326913`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31379326913)
+with workflow checkpoint `512bac4865882e6c4688bd01338d403c8275276e`.
+The cold job ran for `14m59s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `10:31:10Z` to `10:44:02Z`; the audit ended
+at `10:44:07Z`. Both stages exited zero, all three audited declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9059626063`, named
+`flat-qprime-complex-fibre-mode-action-5eec68ba158e3fb0de006130fc40e66a0215e9ed`,
+has GitHub digest
+`6c3615d1d77b937daef259a4cfa380c396d12ec46e1362e3859468a9965978aa`.
+Its deterministic inner archive re-hashed on Windows to
+`afa1907fbd71c437e9e821460a7cd3c26dde204338077efe00c51802c54d3caf`;
+all 13 internal manifest entries matched.
+
+The exact scalar Q' action now acts on the already sealed explicit
+`SUNLieComplexCoord Nc` fibre. A separate corollary fixes the fibre vector to
+the internally constructed complexification of an actual physical
+`SUNLieCoord Nc` vector. The unique source row normalization and the coarse
+alias remain those of Addenda 713--714; no second coefficient is introduced.
+
+This does not yet instantiate the active-region transported CLM or identify
+its contour-holonomy transport with the flat action. The weighted adjoint,
+the finite alias-fibre matrix for `Q'^*Q'`, inverse uniqueness and regional
+transport remain open. Physical `B0`, window 15 and every terminal field
+remain open. Live counters stay exactly `20/41`, `TermSource = 0`.
+Restored diagnostic PASS `31379102294` did not seal; only the cold run above
+retires the two PRE-VALIDATION marks.

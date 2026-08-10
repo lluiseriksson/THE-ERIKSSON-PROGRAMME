@@ -8351,3 +8351,41 @@ PASS `31376937385` did not seal; only the cold run above retires the two
 PRE-VALIDATION marks. The next honest brick transports this exact action to
 the already sealed explicit physical-fibre complexification without yet
 identifying the weighted adjoint.
+
+### Step 7.5cxl exact flat `Q'` action in the complexified physical fibre (SEALED; transported CLM open)
+
+Exact source checkpoint `5eec68ba158e3fb0de006130fc40e66a0215e9ed`
+passed cold GitHub Actions run
+[`31379326913`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31379326913)
+with workflow checkpoint `512bac4865882e6c4688bd01338d403c8275276e`.
+The cold job completed in `14m59s`; restoration and saving of `.lake/build`
+were both skipped. The focal ran from `10:31:10Z` to `10:44:02Z`; the audit
+ended at `10:44:07Z`. Both stages exited zero, all three declarations use
+exactly `[propext, Classical.choice, Quot.sound]`, and the target emitted no
+warning or error of its own.
+
+Artifact `9059626063`, named
+`flat-qprime-complex-fibre-mode-action-5eec68ba158e3fb0de006130fc40e66a0215e9ed`,
+has GitHub digest
+`6c3615d1d77b937daef259a4cfa380c396d12ec46e1362e3859468a9965978aa`.
+Its deterministic inner archive re-hashed on Windows to
+`afa1907fbd71c437e9e821460a7cd3c26dde204338077efe00c51802c54d3caf`;
+all 13 internal manifest entries matched.
+
+The producer transports the exact scalar one-block action to
+`SUNLieComplexCoord Nc`, proves the corresponding block-basepoint alias
+identity for vector-valued Fourier modes, and supplies a corollary whose
+fibre vector is constructed internally as the image of an actual
+`SUNLieCoord Nc` vector under the sealed coordinatewise complexification.
+No complex-fibre identification or Fourier family is supplied as data.
+
+This is the flat identity-transport block sum, not yet the literal
+active-region `cmp99SourceTransportedBlockAverageCLM`: contour-holonomy
+transport, its weighted adjoint, the finite alias-fibre matrix for `Q'^*Q'`,
+inverse uniqueness and regional transport remain open. Physical `B0`, window
+15 and all terminal fields remain open. Counters stay exactly `20/41`,
+`TermSource = 0`. Diagnostic PASS `31379102294` restored the graph and did
+not seal; only the cold run above retires the two PRE-VALIDATION marks. The
+next source-faithful gate is the finite carrier equivalence between fine
+momenta with fixed coarse alias and `CMP89Eq246AliasIndex`, before any
+weighted-adjoint matrix identity is attempted.
