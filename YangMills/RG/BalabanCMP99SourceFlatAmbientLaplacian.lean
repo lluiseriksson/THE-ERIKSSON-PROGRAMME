@@ -34,9 +34,9 @@ variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
 /-- Literal trivial physical gauge background. Giving the unit field a
 source-level name fixes its group-valued type before any specialization. -/
 def cmp99FlatGaugeBackground (d N Nc : ℕ)
-    [NeZero d] [NeZero N] [NeZero Nc] :
+    [NeZero d] [NeZero N] :
     PhysicalGaugeBackground d N Nc :=
-  fun _ => 1
+  trivialPhysicalGaugeBackground d N Nc
 
 /-- Ordinary symmetric nearest-neighbour stencil on the periodic fine
 lattice. This is the zero-background differential part of the CMP99
@@ -56,8 +56,11 @@ theorem cmp99AmbientCovariantLaplacianStencil_one
     cmp99AmbientCovariantLaplacianStencil rho
         (cmp99FlatGaugeBackground d N Nc) phi x =
       cmp99FlatPeriodicLaplacianStencil phi x := by
-  simp [cmp99AmbientCovariantLaplacianStencil,
-    cmp99FlatPeriodicLaplacianStencil, rho.ad_one_apply]
+  unfold cmp99AmbientCovariantLaplacianStencil
+    cmp99FlatPeriodicLaplacianStencil
+  apply Finset.sum_congr rfl
+  intro i _
+  simp [cmp99FlatGaugeBackground, trivialPhysicalGaugeBackground]
 
 /-- Exact periodic zero-background specialization of the generated ambient
 scaled Laplacian. The source normalization is `spacing⁻¹ • spacing⁻¹`, with
