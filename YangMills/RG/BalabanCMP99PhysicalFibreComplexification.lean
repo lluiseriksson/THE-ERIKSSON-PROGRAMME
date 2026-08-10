@@ -40,7 +40,7 @@ fibre.  The map is explicitly real-linear; no complex fibre is identified
 definitionally with `SUNLieCoord Nc`. -/
 def cmp99SUNLieCoordComplexificationLM (Nc : ℕ) :
     SUNLieCoord Nc →ₗ[ℝ] SUNLieComplexCoord Nc where
-  toFun X := fun a => (X a : ℂ)
+  toFun X := WithLp.toLp 2 fun a => (X a : ℂ)
   map_add' X Y := by
     ext a
     simp
@@ -51,7 +51,8 @@ def cmp99SUNLieCoordComplexificationLM (Nc : ℕ) :
 @[simp]
 theorem cmp99SUNLieCoordComplexificationLM_apply
     (X : SUNLieCoord Nc) (a : Fin (Nc ^ 2 - 1)) :
-    cmp99SUNLieCoordComplexificationLM Nc X a = (X a : ℂ) := rfl
+    cmp99SUNLieCoordComplexificationLM Nc X a = (X a : ℂ) := by
+  rfl
 
 /-- The coordinatewise complexification loses no physical real vector. -/
 theorem cmp99SUNLieCoordComplexificationLM_injective :
@@ -59,7 +60,7 @@ theorem cmp99SUNLieCoordComplexificationLM_injective :
   intro X Y h
   ext a
   apply Complex.ofReal_injective
-  exact congrArg (fun Z : SUNLieComplexCoord Nc => Z a) h
+  simpa using congrArg (fun Z : SUNLieComplexCoord Nc => Z a) h
 
 /-- Symmetric nearest-neighbour stencil on the explicitly complexified
 physical fibre. -/
@@ -98,7 +99,8 @@ theorem cmp99FlatPeriodicComplexFibreStencil_fourierMode
   ext a
   unfold cmp99FlatPeriodicComplexFibreStencil
     cmp99FlatComplexFibreFourierMode cmp99FlatPeriodicLaplacianSymbol
-  simp only [PiLp.sum_apply, PiLp.sub_apply, PiLp.smul_apply]
+  rw [WithLp.ofLp_sum, Finset.sum_apply]
+  simp only [PiLp.sub_apply, PiLp.smul_apply, smul_eq_mul]
   rw [Finset.sum_mul]
   apply Finset.sum_congr rfl
   intro i _
