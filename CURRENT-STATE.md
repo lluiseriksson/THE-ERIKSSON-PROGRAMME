@@ -17,20 +17,19 @@ four-dimensional continuum Yang--Mills mass gap.
 The canonical repository-wide proof-state contract remains
 [`project-state.json`](project-state.json).
 
-**Latest ai.viXra submission (2026-08-05; new paper submitted).** The 13-page
-paper *The Reconstructed Theory Has One Mass: a Machine-Checked Volume-Uniform
-Spectral Gap with Exact Identification Against the Gibbs Sums* was submitted
-to ai.viXra.org. Its exact PDF is pinned at `0894ba06`, has 424,886 bytes and
-SHA-256
-`E7B1DE004E105996FDDC4CE98C7B825FF8F3DB402E79FA2A392FF9C90BF3B259`.
-The exact form metadata, verification anchors, lifecycle rules and scope are
-recorded in
-[`docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md`](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md).
-The stated mass and time-correlation bounds are uniform in spatial extent
-inside the inherited Dobrushin window; no spatial infinite-volume state,
-continuum theory or Yang--Mills consequence is claimed. Moderation/publication
-and a public identifier remain pending. The earlier AQFT rapid-maintenance and
-Dobrushin C*-state submissions remain documented separately.
+**Latest viXra submissions (2026-08-10; two objects reported submitted).** The
+paper *Architecture-Dependent Decoherence Suppression in Passive Quantum
+Networks: Irreducible Channel Mixing, Squared Rate Gaps, and the Price in Dwell
+Time* is frozen in two public GitHub releases. The first v1.0 PDF has 13 pages,
+442,280 bytes and SHA-256 `4113C20A...EA9BDD`; the later robustness-hardened
+v1.1 has 17 pages, 506,639 bytes and SHA-256
+`B4DDFCC82B3B0C8B620F5A786083B0B951380B220D582FA3F51FF6D5C303F9D2`.
+Exact links, commits, metadata and scope are recorded in
+[`docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md`](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md).
+GitHub publication of the release assets is not treated as evidence of viXra
+acceptance; no viXra identifier has been recorded. This quantum-reservoir paper
+is maintained in the separate `finite-sample-spectral-certificates` repository
+and does not alter the canonical Yang--Mills proof-state checkpoint.
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),

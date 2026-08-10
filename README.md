@@ -440,24 +440,24 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ## Latest ai.viXra submission
 
-**Submitted 2026-08-05 as a new AI-assisted paper; moderation outcome and
-public identifier are not yet recorded.** The 13-page paper *The Reconstructed
-Theory Has One Mass: a Machine-Checked Volume-Uniform Spectral Gap with Exact
-Identification Against the Gibbs Sums* was sent to ai.viXra.org. Its exact PDF
-is pinned at paper commit
-[`0894ba06`](https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/0894ba06616e1af626b960fbca14896d42cb283d/papers/os-reconstruction/os_reconstruction_uniform.pdf),
-has 424,886 bytes, and SHA-256
-`E7B1DE004E105996FDDC4CE98C7B825FF8F3DB402E79FA2A392FF9C90BF3B259`.
-The [submission record](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md)
-links the repository-native metadata manifest, verification anchors and exact
-scope boundary.
+**Two objects submitted 2026-08-10; moderation outcomes and public viXra
+identifiers are not yet recorded.** The current 17-page object is
+*Architecture-Dependent Decoherence Suppression in Passive Quantum Networks:
+Irreducible Channel Mixing, Squared Rate Gaps, and the Price in Dwell Time*.
+Its immutable
+[`v1.1` release](https://github.com/lluiseriksson/finite-sample-spectral-certificates/releases/tag/v1.1-passive-quantum-reservoir)
+contains a 506,639-byte PDF with SHA-256
+`B4DDFCC82B3B0C8B620F5A786083B0B951380B220D582FA3F51FF6D5C303F9D2`.
+The [submission record](docs/PASSIVE-QUANTUM-RESERVOIR-VIXRA-SUBMISSIONS-20260810.md)
+also preserves the first 13-page v1.0 object at `4113C20A...EA9BDD`.
 
-The paper proves the stated extent-independent transfer-operator gap and
-time-correlation bounds inside the inherited Dobrushin window. It does not
-construct the spatial infinite-volume state or claim a Yang--Mills
-consequence. The earlier [AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
+The paper proves the stated architecture-dependent passive-filter separation,
+finite-error obstruction, squared dephasing-rate gap and delay-resource bound.
+It does not claim cost-free coherence protection: the gain is paid in passive
+memory, vacuum ports and conditioning. Earlier [OS reconstruction](docs/OS-RECONSTRUCTION-UNIFORM-SUBMISSION-20260805.md),
+[AQFT rapid-maintenance](docs/AQFT-RAPID-MAINTENANCE-SUBMISSION-20260805.md)
 and [Dobrushin C*-state](docs/DOBRUSHIN-CSTAR-SUBMISSION-20260805.md)
-submissions remain recorded independently.
+submission records remain available.
 
 ---
 
