@@ -44,11 +44,13 @@ noncomputable def cmp99ActiveGaugeZeroCochainComplexificationCLM
     { toFun := fun phi => WithLp.toLp 2 fun x =>
         cmp99SUNLieCoordComplexificationLM Nc (phi x)
       map_add' := fun phi psi => by
-        ext x a
-        simp
+        apply WithLp.ofLp_injective
+        funext x
+        exact (cmp99SUNLieCoordComplexificationLM Nc).map_add (phi x) (psi x)
       map_smul' := fun r phi => by
-        ext x a
-        simp [Complex.real_smul] }
+        apply WithLp.ofLp_injective
+        funext x
+        exact (cmp99SUNLieCoordComplexificationLM Nc).map_smul r (phi x) }
 
 omit [NeZero d] [NeZero Nc] in
 @[simp] theorem cmp99ActiveGaugeZeroCochainComplexificationCLM_apply
@@ -81,6 +83,17 @@ noncomputable def cmp99SourceFlatComplexBlockAverageCLM
   cmp99SourceTransportedBlockAverageCLM Omega
     (cmp99SourceFlatComplexTransport (d := d) (M := M) (N' := N') (Nc := Nc))
 
+@[simp] theorem cmp99SourceFlatComplexBlockAverageCLM_apply
+    (Omega : ActiveGaugeRegion d (M * N'))
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc))
+    (y : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)) :
+    cmp99SourceFlatComplexBlockAverageCLM Omega phi y =
+      cmp99SourceBlockAverageWeight M d •
+        ∑ x : {x : FinBox d (M * N') // x ∈ blockOf M N' y.1},
+          phi (cmp99ActiveFineSiteOfBlock Omega y x) := by
+  rfl
+
 /-- Complexifying the literal physical flat average pointwise is exactly the
 same as first complexifying the field and then using identity transport in
 the explicit complexified fibre. -/
@@ -95,16 +108,16 @@ theorem cmp99SourceFlatComplexBlockAverage_commutes_complexification
         (cmp99SourceTransportedBlockAverageCLM Omega
           (cmp99SourceWeightedPhysicalTransport rho
             (cmp99SourceFlatGaugeConfig d (M * N') Nc)) phi) := by
-  ext y a
-  rw [cmp99SourceFlatComplexBlockAverageCLM,
-    cmp99SourceTransportedBlockAverageCLM_apply,
-    cmp99SourceTransportedBlockAverageCLM_flat_apply]
-  simp only [cmp99ActiveGaugeZeroCochainComplexificationCLM_apply,
-    cmp99SourceFlatComplexTransport_apply, PiLp.smul_apply,
-    WithLp.ofLp_sum, Finset.sum_apply,
-    cmp99SUNLieCoordComplexificationLM_apply]
-  push_cast
-  ring
+  apply WithLp.ofLp_injective
+  funext y
+  change cmp99SourceFlatComplexBlockAverageCLM Omega
+      (cmp99ActiveGaugeZeroCochainComplexificationCLM Omega phi) y =
+    cmp99SUNLieCoordComplexificationLM Nc
+      (cmp99SourceTransportedBlockAverageCLM Omega
+        (cmp99SourceWeightedPhysicalTransport rho
+          (cmp99SourceFlatGaugeConfig d (M * N') Nc)) phi y)
+  rw [cmp99SourceFlatComplexBlockAverageCLM_apply,
+    cmp99SourceTransportedBlockAverageCLM_flat_apply, map_smul, map_sum]
 
 /-- Restriction of one explicit complex-fibre Fourier mode to an active
 region.  No Fourier family or enumeration is supplied. -/
@@ -135,9 +148,9 @@ theorem cmp99SourceFlatComplexBlockAverage_fourierMode
         cmp99SourceFlatActiveComplexFibreFourierMode
           (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
           (cmp99SourceFlatQprimeCoarseAlias k) v := by
-  ext y
-  rw [cmp99SourceFlatComplexBlockAverageCLM,
-    cmp99SourceTransportedBlockAverageCLM_apply]
+  apply WithLp.ofLp_injective
+  funext y
+  rw [cmp99SourceFlatComplexBlockAverageCLM_apply]
   rw [sum_blockSites_eq_sum_offsets y.1]
   simpa only [cmp99SourceFlatComplexTransport_apply,
     cmp99SourceFlatActiveComplexFibreFourierMode_apply,
