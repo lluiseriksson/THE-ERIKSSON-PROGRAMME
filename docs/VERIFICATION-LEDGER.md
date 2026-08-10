@@ -33007,3 +33007,41 @@ window 15 and all terminal fields remain open. Live counters stay exactly
 `20/41`, `TermSource = 0`. Failed diagnostic `31407924638` remains preserved;
 restored diagnostic PASS `31408296172` did not seal. Only the cold run above
 retires PRE-VALIDATION.
+
+## Addendum 722 (2026-08-10, **multidimensional flat DFT convention GREEN; FinBox and physical-fibre adapters open; 20/41 unchanged**)
+
+Exact source checkpoint `a9389e1086cb426cb4eae4f35775b228b6090b19`
+passed cold GitHub Actions run
+[`31418790263`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31418790263)
+with workflow checkpoint `afbb314f65d16f4120403565dbea7f8225572a9d`.
+The job ran for `26m18s` with restore and save both skipped. The focal built
+8,477 jobs from `18:28:25Z` to `18:49:10Z`; the audit ended at `18:49:22Z`.
+Both stages exited zero. All fourteen audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, the axiom blacklist was empty, and
+the new target emitted no warning or error.
+
+Artifact `9075311781`, named
+`flat-multidimensional-dft-a9389e1086cb426cb4eae4f35775b228b6090b19`,
+has GitHub digest
+`95ba040d565aecc76aca595598e263421f7621343f0a9224c62e5e24966ebdbb`.
+The downloaded deterministic archive has SHA-256
+`816c7772f013ceb82dde73ec21cd8269dd6ae3a221d30c1dc1e7167914e62b3e`,
+and all 13 internal manifest entries matched.
+
+The module fixes the negative-character forward transform and the
+positive-character inverse with literal normalization `((N : ℂ)^d)⁻¹` on the
+full scalar periodic box `Fin d -> ZMod N`. Product orthogonality proves both
+inversion directions, and the resulting maps form a complex-linear
+equivalence. No Fourier convention or inverse is caller data.
+
+This does not yet identify Fourier coefficients of the source weighted
+adjoint. `FinBox`, active-region and physical-fibre adapters remain open, as
+do interacting transport, inverse uniqueness and regional Green transport.
+Physical `B0`, window 15 and all terminal fields remain open. Live counters
+stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31411577995`,
+`31411892487`, `31412274838`, `31413438061`, `31413805233`, `31414105657`,
+`31414569549` and `31414881088` remain preserved. Runs `31412567515` and
+`31415184980` were cancelled as dependency-materialization incidents before
+Lean. Restored diagnostic PASSes `31416032381` and `31418530925` did not seal.
+Cold PASS `31416346641` retained a target linter warning and did not seal;
+only the warning-free cold run above retires PRE-VALIDATION.

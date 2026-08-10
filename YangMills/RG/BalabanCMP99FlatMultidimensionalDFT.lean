@@ -7,10 +7,7 @@ import Mathlib.Analysis.Fourier.ZMod
 import YangMills.RG.BalabanCMP99SourceFlatFourierStencil
 
 /-!
-# PRE-VALIDATION: multidimensional flat discrete Fourier convention
-
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+# Multidimensional flat discrete Fourier convention
 
 `ZMod.dft` fixes the one-dimensional convention: the forward transform uses
 the negative standard character and the inverse uses the positive character

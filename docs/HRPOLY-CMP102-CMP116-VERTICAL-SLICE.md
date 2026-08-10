@@ -8626,3 +8626,44 @@ exactly `20/41`, `TermSource = 0`. Failed diagnostic `31407924638` preserves
 the identity-transport normalization, complexification exposure and command
 scope repairs. Restored diagnostic PASS `31408296172` did not seal; only the
 cold run above retires PRE-VALIDATION.
+
+### Step 7.5cxlvii multidimensional flat DFT convention (SEALED; FinBox and physical-fibre adapters open)
+
+Exact source checkpoint `a9389e1086cb426cb4eae4f35775b228b6090b19`
+passed cold GitHub Actions run
+[`31418790263`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31418790263)
+with workflow checkpoint `afbb314f65d16f4120403565dbea7f8225572a9d`.
+The cold job ran for `26m18s`; restoration and saving of `.lake/build` were
+both skipped. The focal ran from `18:28:25Z` to `18:49:10Z`, completed 8,477
+jobs and emitted no warning or error in the new target. The audit ended at
+`18:49:22Z`. Both stages exited zero and all fourteen audited declarations
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+Artifact `9075311781`, named
+`flat-multidimensional-dft-a9389e1086cb426cb4eae4f35775b228b6090b19`,
+has GitHub digest
+`95ba040d565aecc76aca595598e263421f7621343f0a9224c62e5e24966ebdbb`.
+Its deterministic inner archive re-hashed on Windows to
+`816c7772f013ceb82dde73ec21cd8269dd6ae3a221d30c1dc1e7167914e62b3e`;
+all 13 internal manifest entries matched.
+
+The producer fixes the periodic scalar Fourier convention on
+`Fin d -> ZMod N`: the forward transform uses the negative product character,
+the inverse uses the positive character with the literal normalization
+`((N : ℂ)^d)⁻¹`, and product orthogonality proves both inversion directions.
+The two maps are bundled as a complex-linear equivalence. Neither the sign
+nor the normalization is supplied by a caller.
+
+This is not yet the direct-momentum Fourier column of the physical weighted
+adjoint. The adapters to `FinBox`, active-region restrictions and the
+`SUNLieComplexCoord` fibre remain open, as do interacting transport, inverse
+uniqueness and regional Green transport. Physical `B0`, window 15 and every
+terminal field remain open. Counters stay exactly `20/41`, `TermSource = 0`.
+Failed diagnostics `31411577995`, `31411892487`, `31412274838`, `31413438061`,
+`31413805233`, `31414105657`, `31414569549` and `31414881088` preserve the
+interface, character-negation, finite-sum and scalar-linearity repairs.
+Runs `31412567515` and `31415184980` were cancelled as dependency-materialization
+incidents before Lean. Restored diagnostic PASS `31416032381` did not seal.
+Cold PASS `31416346641` retained a target linter warning and therefore did not
+seal. Diagnostic PASS `31418530925` was warning-free but restored the graph;
+only the final cold run above retires PRE-VALIDATION.
