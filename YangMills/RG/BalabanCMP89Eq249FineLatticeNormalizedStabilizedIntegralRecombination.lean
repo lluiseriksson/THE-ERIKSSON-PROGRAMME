@@ -40,7 +40,6 @@ theorem cmp89Eq249PhysicalFineLatticeDisplacement_add
         cmp89Eq249PhysicalFineLatticeDisplacement xi v mu := by
   funext mu
   simp [cmp89Eq249PhysicalFineLatticeDisplacement]
-  push_cast
   ring
 
 /-- One physical endpoint after its own signed contour shift, with the exact
@@ -123,24 +122,24 @@ theorem cmp89Eq249NormalizedFineLatticeStabilizedIntegral_eq_sub_signedEndpoints
         holderDisplacement
         (cmp89Eq249PhysicalFineLatticeDisplacement
           (cmp89Eq249FineLatticeSpacing L j) firstU)) productMeasure := by
-    simpa [cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand,
-      productMeasure, holderDisplacement, firstU,
-      cmp89Eq249FineLatticeSpacing] using
-      (integrable_cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand
-        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+    simpa [productMeasure, holderDisplacement] using
+      (integrable_cmp89Eq251ComplexStabilizedEndpointIntegrand_partialSigned
+        (L := L) (j := j) (mass := mass) (a := a) (alpha := 0)
+        (rho := rho)
         ha hmassPos hrho hamplitude hradius hwindow hmass
-        0 mu holderDisplacement firstU)
+        0 mu holderDisplacement
+        (cmp89Eq249PhysicalFineLatticeDisplacement
+          (cmp89Eq249FineLatticeSpacing L j) firstU))
   have hsecondIntegrable : Integrable (fun x : Fin 4 → ℝ =>
       cmp89Eq251ComplexStabilizedEndpointIntegrand 4 L j mass a 0
         (fun nu => (cmp89Eq251PhysicalBrillouinParameter x nu : ℂ)) mu
         holderDisplacement transportDisplacement) productMeasure := by
-    simpa [cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand,
-      productMeasure, holderDisplacement, transportDisplacement,
-      cmp89Eq249FineLatticeSpacing] using
-      (integrable_cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand
-        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+    simpa [productMeasure, holderDisplacement, transportDisplacement] using
+      (integrable_cmp89Eq251ComplexStabilizedEndpointIntegrand_partialSigned
+        (L := L) (j := j) (mass := mass) (a := a) (alpha := 0)
+        (rho := rho)
         ha hmassPos hrho hamplitude hradius hwindow hmass
-        0 mu holderDisplacement transportU)
+        0 mu holderDisplacement transportDisplacement)
   have hadd :
       cmp89Eq249PhysicalFineLatticeDisplacement
           (cmp89Eq249FineLatticeSpacing L j) firstU =
@@ -300,7 +299,7 @@ theorem cmp89Eq249PhysicalFineEndpointWeights_add_le
             (cmp89Eq249PhysicalFineLatticeDisplacement
               (cmp89Eq249FineLatticeSpacing L j)
               (fun nu => holder nu + transport nu)))) :=
-      add_le_add_left htransport _
+      add_le_add le_rfl htransport
     _ = (1 + Real.exp (rho * cmp89Eq249FineLatticeSpacing L j)) *
         Real.exp (-(rho * cmp89Eq251DisplacementL1
           (cmp89Eq249PhysicalFineLatticeDisplacement
