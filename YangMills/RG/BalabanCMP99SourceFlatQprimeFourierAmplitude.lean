@@ -58,7 +58,18 @@ theorem cmp99SourceFlatQprimeOffsetAmplitude_eq_entireAverageAmplitude
     cmp99SourceFlatQprimeOffsetCharacter
     cmp89Eq245EntireAverageAmplitude
     cmp89Eq245EntireAverageFactor
-  rw [Finset.sum_prod_piFinset]
+  have hsum :
+      (∑ r ∈ Fintype.piFinset
+          (fun _mu : Fin d ↦ (Finset.univ : Finset (Fin M))),
+        ∏ mu, cmp89Eq245EntireAverageBase M (z mu) ^ (r mu).val) =
+        ∏ mu, ∑ r : Fin M,
+          cmp89Eq245EntireAverageBase M (z mu) ^ r.val := by
+    simpa only using
+      (Finset.sum_prod_piFinset
+        (R := ℂ) (ι := Fin d)
+        (Finset.univ : Finset (Fin M))
+        (fun mu r => cmp89Eq245EntireAverageBase M (z mu) ^ r.val))
+  rw [hsum]
   have hcoeff :
       (cmp99SourceBlockAverageWeight M d : ℂ) =
         ∏ _mu : Fin d, (M : ℂ)⁻¹ := by
