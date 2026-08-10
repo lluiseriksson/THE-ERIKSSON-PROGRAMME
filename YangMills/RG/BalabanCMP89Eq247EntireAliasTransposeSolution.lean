@@ -52,15 +52,16 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec
         (a : ℂ) * cmp89Eq246EntireAliasAverageRow d L j z m *
           ∑ n, cmp89Eq246EntireAliasAverageColumn d L j z n * phi n := by
   classical
-  unfold Matrix.transpose Matrix.mulVec dotProduct
-    cmp89Eq246EntireAliasPrecisionMatrix
+  change (∑ x,
+      cmp89Eq246EntireAliasPrecisionMatrix d L j mass a z x m * phi x) = _
+  unfold cmp89Eq246EntireAliasPrecisionMatrix
   simp only [add_mul, Finset.sum_add_distrib]
   have hdiagonal :
       (∑ x,
         (if x = m then cmp89Eq246EntireAliasFineSymbol d L j mass z x else 0) *
           phi x) =
         cmp89Eq246EntireAliasFineSymbol d L j mass z m * phi m := by
-    simpa only [ite_mul, zero_mul] using
+    simpa only [ite_mul, zero_mul, eq_comm] using
       (Fintype.sum_ite_eq m
         (fun x => cmp89Eq246EntireAliasFineSymbol d L j mass z x * phi x))
   rw [hdiagonal]
@@ -103,7 +104,8 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_solution
   have hreducedEq :
       reduced = 1 + (a : ℂ) *
         ∑ n : CMP89Eq246AliasIndex d L j, column n * row n / fine n := by
-    rw [reduced, cmp89Eq247ComplexReducedAliasDenominator, hsumSubtype]
+    change cmp89Eq247ComplexReducedAliasDenominator d L j mass a z = _
+    rw [cmp89Eq247ComplexReducedAliasDenominator, hsumSubtype]
   have hsolution (n : CMP89Eq246AliasIndex d L j) :
       cmp89Eq247EntireAliasTransposeSolution d L j mass a z n =
         row n / (fine n * reduced) := rfl
@@ -118,16 +120,28 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_solution
     intro n _
     rw [hsolution]
     field_simp [hfine n, hreduced]
-    ring
   funext m
   rw [cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec, hsumSolution,
     hsolution]
-  change fine m * (row m / (fine m * reduced)) +
-      (a : ℂ) * row m *
-        ((∑ n : CMP89Eq246AliasIndex d L j,
-          column n * row n / fine n) / reduced) = row m
-  field_simp [hfine m, hreduced]
-  linear_combination row m * hreducedEq
+  have hfine' : fine m ≠ 0 := by
+    simpa [fine] using hfine m
+  have hreduced' : reduced ≠ 0 := by
+    simpa [reduced] using hreduced
+  have hfirst : fine m * (row m / (fine m * reduced)) = row m / reduced := by
+    field_simp [hfine', hreduced']
+  rw [hfirst]
+  calc
+    row m / reduced +
+          (a : ℂ) * row m *
+            ((∑ n : CMP89Eq246AliasIndex d L j,
+              column n * row n / fine n) / reduced) =
+        row m *
+          (1 + (a : ℂ) *
+            ∑ n : CMP89Eq246AliasIndex d L j,
+              column n * row n / fine n) / reduced := by ring
+    _ = row m := by
+      rw [← hreducedEq]
+      field_simp [hreduced']
 
 end
 
