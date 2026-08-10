@@ -96,7 +96,7 @@ def cmp99SourceFlatScalarCoarseModeSynthesis
 exactly to the one-block negative-momentum amplitude times the coarse DFT.
 This form isolates the normalization cancellation used in the final column. -/
 theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
-    {d M N' : ℕ} [NeZero M] [NeZero N']
+    {d M N' : ℕ} [NeZero d] [NeZero M] [NeZero N']
     (ell : FinBox d N') (k : FinBox d (M * N')) :
     (cmp99SourceBlockAverageWeight M d : ℂ) *
         cmp99FlatFinBoxDFT
@@ -192,6 +192,9 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
               (cmp99SourceFlatQprimeCoarseAlias k) y)⁻¹ *
                 cmp99FlatFourierMode ell y := by
       rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro y _
+      ring
     _ = amplitude * cmp99FlatFinBoxDFT
           (cmp99FlatFourierMode ell)
           (cmp99SourceFlatQprimeCoarseAlias k) := by
@@ -209,7 +212,7 @@ theorem cmp99SourceBlockAverageWeight_mul_flatScalarSynthesisDFT
 weighted adjoint.  The volume factor is the full fine cardinality and the
 support is the literal coarse reciprocal fibre. -/
 theorem cmp99FlatFinBoxDFT_sourceFlatScalarCoarseModeSynthesis
-    {d M N' : ℕ} [NeZero M] [NeZero N']
+    {d M N' : ℕ} [NeZero d] [NeZero M] [NeZero N']
     (ell : FinBox d N') (k : FinBox d (M * N')) :
     cmp99FlatFinBoxDFT
         (cmp99SourceFlatScalarCoarseModeSynthesis (M := M) ell) k =
