@@ -137,10 +137,10 @@ omit [NeZero d] [NeZero Nc] in
     cmp99SourceFlatActiveComplexFibreFourierMode Omega k v x =
       cmp99FlatComplexFibreFourierMode k v x.1 := rfl
 
+omit [NeZero Nc] in
 /-- Exact action of the actual active-region flat complex average on one
 fine Fourier mode.  The target is the restriction of the internally
 constructed coarse reciprocal alias mode. -/
-omit [NeZero Nc] in
 theorem cmp99SourceFlatComplexBlockAverage_fourierMode
     (Omega : ActiveGaugeRegion d (M * N'))
     (k : FinBox d (M * N')) (v : SUNLieComplexCoord Nc) :
