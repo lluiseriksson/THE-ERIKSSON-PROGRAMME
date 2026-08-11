@@ -46,8 +46,10 @@ theorem cmp99SourceIteratedLift_terminalOwner_eq_iff_generatedTerminalBlockSite_
         cmp99GeneratedTerminalBlockSite M N depth source.1 := by
   let regions :=
     cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega depth
-  rw [← regions.sameTerminalBlock_iff_terminalSiteOfFine_eq,
-    cmp99SourceIteratedLift_sameTerminalBlock_iff]
+  exact
+    (regions.sameTerminalBlock_iff_terminalSiteOfFine_eq target source).symm.trans
+      (cmp99SourceIteratedLift_sameTerminalBlock_iff
+        (M := M) Omega depth target source)
 
 /-- Exact direct-owner kernel of the source-weighted flat generated mass on
 the canonical iterated lift. -/
@@ -66,10 +68,15 @@ theorem cmp99SourceIteratedLift_flatExplicitWeightedMass_single_apply
             cmp99GeneratedTerminalBlockSite M N depth source.1 then
           (cmp99SourceBlockAverageWeight M d) ^ depth • v
         else 0 := by
+  dsimp only
+  intro source target v
   let regions :=
     cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega depth
   letI : NeZero (cmp99RegionalLatticeSize M N depth) := regions.neZero
-  intro source target v
+  change
+    ((regions.flatExplicitWeightedAdjoint (Nc := Nc)).comp
+        (regions.flatExplicitQprime (Nc := Nc)))
+          (singleFinitePiLp source v) target = _
   rw [regions.flatExplicitWeightedMass_single_apply]
   exact if_congr
     (cmp99SourceIteratedLift_terminalOwner_eq_iff_generatedTerminalBlockSite_eq
@@ -93,10 +100,15 @@ theorem cmp99SourceIteratedLift_flatExplicitCountingMass_single_apply
             cmp99GeneratedTerminalBlockSite M N depth source.1 then
           (cmp99SourceBlockAverageWeight M d) ^ (2 * depth) • v
         else 0 := by
+  dsimp only
+  intro source target v
   let regions :=
     cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega depth
   letI : NeZero (cmp99RegionalLatticeSize M N depth) := regions.neZero
-  intro source target v
+  change
+    ((regions.flatExplicitQprime (Nc := Nc)).adjoint.comp
+        (regions.flatExplicitQprime (Nc := Nc)))
+          (singleFinitePiLp source v) target = _
   rw [regions.flatExplicitCountingMass_single_apply]
   exact if_congr
     (cmp99SourceIteratedLift_terminalOwner_eq_iff_generatedTerminalBlockSite_eq
