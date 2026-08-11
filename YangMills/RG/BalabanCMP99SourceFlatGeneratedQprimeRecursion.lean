@@ -247,10 +247,9 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
                 (SUNLieCoord Nc) →L[ℝ]
               PiLp 2 (fun _ : tail.terminalSite => SUNLieCoord Nc) =>
           T.comp (cmp99SourceFlatRealBlockAverageCLM Omega))
-      convert htail' using 1 <;>
-        try rfl <;>
-        try simp only [cmp99SourceUbarNextFineRadius_zero,
-          cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+      rw [cmp99SourceUbarNextFineRadius_zero,
+        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+      exact htail'
 
 /-- The generated coefficient-one physical synthesis is likewise exactly the
 explicit reverse flat recursion. -/
@@ -293,10 +292,9 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
                 (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
                 (SUNLieCoord Nc) =>
           (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp T)
-      convert htail' using 1 <;>
-        try rfl <;>
-        try simp only [cmp99SourceUbarNextFineRadius_zero,
-          cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+      rw [cmp99SourceUbarNextFineRadius_zero,
+        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+      exact htail'
 
 end
 
