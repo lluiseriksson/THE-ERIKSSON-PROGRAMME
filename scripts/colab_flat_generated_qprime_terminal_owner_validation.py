@@ -32,12 +32,27 @@ def main() -> int:
     if actual != BASE_RUNNER_SHA256:
         raise RuntimeError("BASE_RUNNER_TRANSPORT_HASH_MISMATCH")
 
+    repro = Path("/content/terminal-owner-power-repro.lean")
+    repro.write_text(
+        """import Mathlib
+
+noncomputable section
+
+example {n depth : ℕ} (weight : ℝ)
+    (v : EuclideanSpace ℝ (Fin (n - 1))) :
+    weight ^ depth • (weight • v) = weight ^ (depth + 1) • v := by
+  simpa only [smul_smul] using
+    congrArg (fun scalar : ℝ => scalar • v) (pow_succ weight depth).symm
+""",
+        encoding="utf-8",
+    )
+
     namespace: dict[str, object] = {"__name__": "colab_validation_base"}
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "flat-generated-qprime-terminal-owner-v2",
-            "SOURCE_SHA": "d89463586c883709e432c088156819d19bc12423",
+            "RUNNER_REV": "flat-generated-qprime-terminal-owner-v3",
+            "SOURCE_SHA": "1614bf4f8b311643d7aa5662f87c518255614d47",
             "ROOT": Path("/content/hrpoly-flat-generated-qprime-terminal-owner"),
             "EVIDENCE": Path(
                 "/content/hrpoly-flat-generated-qprime-terminal-owner-evidence"
@@ -50,11 +65,16 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeTerminalOwner.lean":
-                    "bc71f397fe5954f13369ec60ed761dd35e516018e3ba3962fca715b7980d0b29",
+                    "168c63d5244153299252cb4e377cd47ba011b69584e7a5198a5e39c6f857a939",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeTerminalOwnerAudit.lean":
                     "269e9fe2eaa8785721d391670197a22b56c0b881df4ca5597ff6a284b9acd304",
             },
             "QUEUE": [
+                (
+                    "terminal_owner_power_repro",
+                    ["lake", "env", "lean", str(repro)],
+                    None,
+                ),
                 (
                     "flat_generated_qprime_terminal_owner_focal",
                     [
