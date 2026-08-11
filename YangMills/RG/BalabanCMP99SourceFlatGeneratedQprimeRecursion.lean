@@ -206,6 +206,7 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
         exact cmp99SourceFlatGaugeConfig_zero_small
       unfold CMP99SourceActiveRegionChain.flatPhysicalQprime
         CMP99SourceActiveRegionChain.flatExplicitQprime
+        CMP99SourceActiveRegionChain.physicalQprime
       change
         (tail.physicalQprime hd hM rho ((M : ℝ) * spacing) 0
           Scale.toSourceScale.data.nextBackground
@@ -246,6 +247,7 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
         exact cmp99SourceFlatGaugeConfig_zero_small
       unfold CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
         CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint
+        CMP99SourceActiveRegionChain.physicalWeightedAdjoint
       change
         (cmp99SourceTransportedBlockWeightedAdjointCLM Omega hOmega
           (cmp99SourceWeightedPhysicalTransport rho
