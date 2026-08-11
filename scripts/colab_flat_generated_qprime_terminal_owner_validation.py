@@ -36,8 +36,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "flat-generated-qprime-terminal-owner-v1",
-            "SOURCE_SHA": "689f049462544abd1696fe1abcb58b8d40da1cbc",
+            "RUNNER_REV": "flat-generated-qprime-terminal-owner-v2",
+            "SOURCE_SHA": "d89463586c883709e432c088156819d19bc12423",
             "ROOT": Path("/content/hrpoly-flat-generated-qprime-terminal-owner"),
             "EVIDENCE": Path(
                 "/content/hrpoly-flat-generated-qprime-terminal-owner-evidence"
@@ -50,7 +50,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeTerminalOwner.lean":
-                    "41cabce65930f226c6fbe0a8d431d49974868ee3f0e9fa1397ab7050fb6f730f",
+                    "bc71f397fe5954f13369ec60ed761dd35e516018e3ba3962fca715b7980d0b29",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeTerminalOwnerAudit.lean":
                     "269e9fe2eaa8785721d391670197a22b56c0b881df4ca5597ff6a284b9acd304",
             },
