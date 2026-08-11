@@ -9281,6 +9281,46 @@ open. Window 15 remains compatible but unattained. Counters remain exactly
 and `31499483231`, plus warm diagnostic PASS `31499831474`, remain preserved
 and did not seal. Only the cold run above retires the PRE-VALIDATION marks.
 
+### Step 7.5cmj generated flat `Q'/Q'^*` complexification (SEALED; recursive Fourier and stratum-precision dictionaries open)
+
+Exact source checkpoint `f9aa2a653b75b2225825bba6a93226477da37807`
+passed cold GitHub Actions run
+[`31504482851`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31504482851)
+with workflow checkpoint `4fcc599e3622d3b419a58403913c45a924578df0`.
+The job ran from `14:58:26Z` to `15:18:28Z` (`20m02s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`15:00:39Z`; the focal then ran to `15:18:15Z`, completed `8,502` jobs and
+exited zero. The audit ended at `15:18:24Z` and also exited zero. All eight
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+the axiom blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9107145977`, named
+`flat-generated-qprime-complexification-f9aa2a653b75b2225825bba6a93226477da37807`,
+has GitHub digest
+`984f3d756f5d848edfce91a9face840728d9f23e516474ad3e2d06e256d3bfd4`.
+The downloaded deterministic archive has SHA-256
+`54eec107dd83a2439993646d34d0bd12b80678e5519db9d5878f6677e388951d`,
+and all 13 internal manifest entries matched.
+
+The source constructs the complete flat complex average and reverse
+coefficient-one weighted-adjoint recursions internally on the same dependent
+active-region chain as the sealed real recursion. It proves one-step
+commutation with the canonical `matrixSUNAdjointModel Nc`, then proves by
+induction that both complete recursions commute with pointwise
+complexification. No complex operator family, intermediate background or
+desired recursion equality is caller data.
+
+This seals complexification of the typed per-prefix recursion, not an
+identification of distinct CMP99 strata with one terminal block average. It
+does not yet derive the recursive Fourier alias/amplitude action, collapse a
+printed stratum, match the generated real precision with the separately
+reconstructed full-complex precision, construct an inverse or produce a
+regional Green bound. Regional transport and uniform physical `B0` remain
+open. Window 15 remains compatible but unattained. Counters remain exactly
+`20/41`, `TermSource = 0`. Failed diagnostic `31503784550` and warm diagnostic
+PASS `31504207313` remain preserved and did not seal. Only the cold run above
+retires the two PRE-VALIDATION marks.
+
 ### Step 7.5cmf canonical zero-radius normalized flat scale (SEALED; recursive flat tower and generated operator dictionaries open)
 
 Exact source checkpoint `1f044aa0200ab73a9386df0a969e45d257db4f78`

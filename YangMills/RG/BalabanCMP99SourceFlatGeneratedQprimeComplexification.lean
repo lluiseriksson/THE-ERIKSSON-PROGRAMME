@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeRecursion
 import YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexWeightedAdjoint
 
 /-!
-# PRE-VALIDATION: complexification of the generated flat CMP99 `Q'` recursion
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the Lean compiler.
+# Complexification of the generated flat CMP99 `Q'` recursion
 
 The generated flat physical tower is a typed multiscale recursion, not one
 global terminal block average.  This file constructs the same recursion on

@@ -33752,3 +33752,33 @@ generated precision, or transport a Green bound regionally. Uniform physical
 stay exactly `20/41`, `TermSource = 0`. The thirteen failed diagnostics listed
 in the vertical map and warm PASS `31499831474` remain preserved and did not
 seal.
+
+## Addendum 744 (2026-08-11, **generated flat `Q'/Q'^*` complexification SEALED; recursive Fourier and stratum-precision dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `f9aa2a653b75b2225825bba6a93226477da37807`
+passed cold GitHub Actions run
+[`31504482851`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31504482851)
+with workflow checkpoint `4fcc599e3622d3b419a58403913c45a924578df0`.
+The job ran for `20m02s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,502` jobs and the focal/audit stages exited `0/0`.
+All eight declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9107145977`, named
+`flat-generated-qprime-complexification-f9aa2a653b75b2225825bba6a93226477da37807`,
+has GitHub digest
+`984f3d756f5d848edfce91a9face840728d9f23e516474ad3e2d06e256d3bfd4`.
+The downloaded deterministic archive has SHA-256
+`54eec107dd83a2439993646d34d0bd12b80678e5519db9d5878f6677e388951d`,
+and all 13 internal manifest entries matched.
+
+The source constructs the complex flat average and reverse coefficient-one
+weighted-adjoint recursions internally and proves, scale by scale and then by
+induction, that both commute with the canonical pointwise complexification of
+the sealed real recursion. It does not identify distinct source strata with
+one terminal block average, derive the recursive Fourier action, match the
+generated precision with the separately reconstructed full-complex operator,
+construct its inverse or produce uniform physical `B0`. Window 15 remains
+compatible but unattained. Live counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostic `31503784550` and warm PASS `31504207313`
+remain preserved and did not seal.
