@@ -32,11 +32,10 @@ open scoped Matrix.Norms.L2Operator RealInnerProductSpace
 noncomputable section
 
 variable {d M N Nc : ℕ}
-variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
+variable [NeZero d] [NeZero M] [NeZero N]
 
 /-- A coordinate probe is averaged to its exact recursively generated terminal
 owner, with one literal factor `M^{-d}` per scale. -/
-omit [NeZero Nc] in
 theorem CMP99SourceActiveRegionChain.flatExplicitQprime_single
     {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
@@ -81,6 +80,8 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_single
       simpa only [smul_smul] using
         congrArg (fun weight : ℝ => weight • v)
           (pow_succ (cmp99SourceBlockAverageWeight M d) depth).symm
+
+variable [NeZero Nc]
 
 /-- The reverse coefficient-one recursion reads the terminal coordinate owned
 by each fine site, with no additional normalization. -/
