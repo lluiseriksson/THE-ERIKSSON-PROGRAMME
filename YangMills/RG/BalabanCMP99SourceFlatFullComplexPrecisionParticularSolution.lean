@@ -206,7 +206,7 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_particularSolut
           ((cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose
             output input *
             cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input)) •
-          v := by
+          v) := by
         apply Finset.sum_congr rfl
         intro input _
         module
