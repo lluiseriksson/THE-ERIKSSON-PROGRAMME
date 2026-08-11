@@ -40,22 +40,20 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_smul
     cmp99SourceFlatFullComplexPrecisionAction mass a (c • phi) =
       c • cmp99SourceFlatFullComplexPrecisionAction mass a phi := by
   funext x
-  have hactive :
-      cmp99SourceFlatFullActiveComplexField (c • phi) =
-        c • cmp99SourceFlatFullActiveComplexField phi := by
-    ext y b
-    rfl
   have hq :
       cmp99SourceFlatFullComplexQprimeMass (c • phi) x =
         c • cmp99SourceFlatFullComplexQprimeMass phi x := by
     unfold cmp99SourceFlatFullComplexQprimeMass
-    rw [hactive, map_smul, map_smul]
-    rfl
+    rw [cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply,
+      cmp99SourceFlatComplexBlockAverageCLM_apply]
+    simp only [cmp99SourceFlatFullActiveComplexField_apply, Pi.smul_apply]
+    rw [Finset.smul_sum]
+    module
   have hstencil :
       cmp99FlatPeriodicComplexFibreStencil (c • phi) x =
         c • cmp99FlatPeriodicComplexFibreStencil phi x := by
     unfold cmp99FlatPeriodicComplexFibreStencil
-    rw [← Finset.smul_sum]
+    rw [Finset.smul_sum]
     apply Finset.sum_congr rfl
     intro i _
     simp only [Pi.smul_apply]
