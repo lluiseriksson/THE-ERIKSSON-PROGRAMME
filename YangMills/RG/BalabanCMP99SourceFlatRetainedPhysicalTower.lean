@@ -84,6 +84,7 @@ noncomputable def cmp99SourceFlatRetainedPhysicalTower
     (cmp99SourceFlatZeroRadiusChain depth)
     (by
       intro e
+      change ‖((1 : SUN Nc) : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0
       simp)
 
 end
