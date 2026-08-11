@@ -1,4 +1,4 @@
-name: Validate flat normalized source scale
+name: Validate generated flat retained tower
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 1f044aa0200ab73a9386df0a969e45d257db4f78
+  SOURCE_SHA: 83decd753f4c5df0e45d8215e3c08f100567a91f
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    flat-normalized-scale
     flat-ubar-preservation
     stabilized-full-complex-precision-particular-solution
     physical-stabilized-alias-transpose-solution
@@ -26,10 +27,9 @@ env:
     flat-full-complex-precision-fibre-action
     flat-full-complex-precision-mode-action
     physical-alias-transpose-solution
-    stabilized-qprime-star-field
 
 jobs:
-  flat-normalized-scale:
+  flat-retained-tower:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-normalized-scale-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-retained-tower-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatNormalizedScale.lean \
-            YangMills/RG/BalabanCMP99SourceFlatNormalizedScaleAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatRetainedPhysicalTower.lean \
+            YangMills/RG/BalabanCMP99SourceFlatRetainedPhysicalTowerAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_normalized_scale_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatNormalizedScale
-          run_stage flat_normalized_scale_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatNormalizedScaleAudit.lean
+          run_stage flat_retained_tower_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatRetainedPhysicalTower
+          run_stage flat_retained_tower_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatRetainedPhysicalTowerAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_normalized_scale_audit.log": 3,
+              "flat_retained_tower_audit.log": 5,
           }
           focal = (Path("evidence") /
-              "flat_normalized_scale_focal.log").read_text(
+              "flat_retained_tower_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatNormalizedScale.lean:"
+              "BalabanCMP99SourceFlatRetainedPhysicalTower.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-normalized-scale-evidence.tar.gz
-          sha256sum flat-normalized-scale-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-retained-tower-evidence.tar.gz
+          sha256sum flat-retained-tower-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-normalized-scale-${{ env.SOURCE_SHA }}
+          name: flat-retained-tower-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-normalized-scale-evidence.tar.gz
+            flat-retained-tower-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-normalized-scale-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-retained-tower-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
