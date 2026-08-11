@@ -206,7 +206,7 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution
         have hfn : fine n ≠ 0 := hfine n hncentral
         change column n *
             (centralFine * row n / (fine n * stabilized)) = _
-        field_simp [hfn, hstabilized'] <;> ring
+        field_simp [hfn, hstabilized']
       _ = centralFine *
           (∑ n ∈ Finset.univ.erase central,
             column n * row n / fine n) / stabilized := by
@@ -225,7 +225,9 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution
         cmp89Eq249StabilizedAliasTransposeSolution_central
           d L j mass a z
     rw [hcentralSolution]
-    field_simp [hstabilized'] <;> rw [hcentralPair] <;> ring
+    field_simp [hstabilized']
+    rw [hcentralPair]
+    ring
   funext m
   rw [cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec, hsumSolution]
   change fine m * solution m +
@@ -239,7 +241,9 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution
         cmp89Eq249StabilizedAliasTransposeSolution_central
           d L j mass a z
     rw [hcentralSolution, hcentralFine]
-    field_simp [hstabilized'] <;> rw [hstabilizedEq] <;> ring
+    field_simp [hstabilized']
+    rw [hstabilizedEq]
+    ring
   · have hsolution :
         solution m = centralFine * row m / (fine m * stabilized) := by
       simpa only [solution, centralFine, row, fine, stabilized, central] using
@@ -247,7 +251,9 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution
           d L j mass a z m hm
     have hfm : fine m ≠ 0 := hfine m hm
     rw [hsolution]
-    field_simp [hfm, hstabilized'] <;> rw [hstabilizedEq] <;> ring
+    field_simp [hfm, hstabilized']
+    rw [hstabilizedEq]
+    ring
 
 end
 
