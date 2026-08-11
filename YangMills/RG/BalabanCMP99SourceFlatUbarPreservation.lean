@@ -73,8 +73,10 @@ theorem cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one
   intro i hi
   change w i • nearLog ((D i : Matrix (Fin Nc) (Fin Nc) ℂ) - 1) = 0
   rw [hD i hi]
-  change w i • (0 : Matrix (Fin Nc) (Fin Nc) ℂ) = 0
-  exact smul_zero _
+  have hsub :
+      ((1 : SUN Nc) : Matrix (Fin Nc) (Fin Nc) ℂ) - 1 = 0 := by
+    simp
+  rw [hsub, nearLog_zero, smul_zero]
 
 /-- The direct deviation-budget Ubar block is one in the literal flat
 background.  The budget and its proof certify that the constructor is legal;
@@ -96,7 +98,8 @@ they do not affect the resulting zero exponent. -/
   apply Subtype.ext
   rw [cmp99UbarSpecialUnitaryBlockOfDeviationBudget_coe]
   rw [cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one]
-  · exact cmp99SourceBaseCoarseBackground_flat_apply_pos b
+  · exact @cmp99SourceBaseCoarseBackground_flat_apply_pos
+      d M N' Nc hd hM hN' hNc b
   · intro x hx
     exact UbarDeviation_cmp99SourceFlatGaugeConfig b x
       (Γ_1 b) (Γ_2 b) (Γ_3 b)
@@ -120,10 +123,26 @@ theorem cmp99PhysicalUbarGaugeConfigOfDeviationBudget_flat
   intro e
   cases e with
   | mk y μ sign =>
-      cases sign <;>
-        simp [cmp99PhysicalUbarGaugeConfigOfDeviationBudget,
-          gaugeConfigOfPositiveBonds, cmp99SourceFlatGaugeConfig,
-          cmp99PhysicalUbarBlockOfDeviationBudget_flat]
+      cases sign with
+      | false =>
+          change
+            (cmp99PhysicalUbarBlockOfDeviationBudget
+              (cmp99SourceFlatGaugeConfig d (M * N') Nc)
+              (cmp99SourceBaseCoarseBackground
+                (cmp99SourceFlatGaugeConfig d (M * N') Nc))
+              Γ_1 Γ_2 Γ_3 B hdev (y, μ))⁻¹ = 1
+          rw [@cmp99PhysicalUbarBlockOfDeviationBudget_flat
+            d M N' Nc hd hM hN' hNc Γ_1 Γ_2 Γ_3 B hdev (y, μ)]
+          simp
+      | true =>
+          change
+            cmp99PhysicalUbarBlockOfDeviationBudget
+              (cmp99SourceFlatGaugeConfig d (M * N') Nc)
+              (cmp99SourceBaseCoarseBackground
+                (cmp99SourceFlatGaugeConfig d (M * N') Nc))
+              Γ_1 Γ_2 Γ_3 B hdev (y, μ) = 1
+          exact @cmp99PhysicalUbarBlockOfDeviationBudget_flat
+            d M N' Nc hd hM hN' hNc Γ_1 Γ_2 Γ_3 B hdev (y, μ)
 
 end
 
