@@ -37,11 +37,11 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_add
     (ell : FinBox d N') (mass a : ℝ)
     (v w : SUNLieComplexCoord Nc) :
     cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
-        ell mass a (v + w) =
+        (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a (v + w) =
       cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
-          ell mass a v +
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a v +
         cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
-          ell mass a w := by
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a w := by
   apply (cmp99FlatPhysicalFibreDFTLinearEquiv
     (d := d) (N := M * N') (Nc := Nc)).injective
   rw [map_add]
@@ -50,18 +50,18 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_add
   by_cases hk : cmp99SourceFlatQprimeCoarseAlias k = ell
   · let output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨k, hk⟩
     rw [cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
-          ell mass a (v + w) output,
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a (v + w) output,
       cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
-          ell mass a v output,
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a v output,
       cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
-          ell mass a w output]
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a w output]
     module
   · rw [cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_eq_zero_of_coarseAlias_ne
-          ell mass a (v + w) k hk,
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a (v + w) k hk,
       cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_eq_zero_of_coarseAlias_ne
-          ell mass a v k hk,
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a v k hk,
       cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_eq_zero_of_coarseAlias_ne
-          ell mass a w k hk]
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a w k hk]
     exact (add_zero 0).symm
 
 omit [NeZero d] [NeZero Nc] in
@@ -71,9 +71,9 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_smul
     (ell : FinBox d N') (mass a : ℝ) (c : ℂ)
     (v : SUNLieComplexCoord Nc) :
     cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
-        ell mass a (c • v) =
+        (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a (c • v) =
       c • cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
-        ell mass a v := by
+        (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a v := by
   apply (cmp99FlatPhysicalFibreDFTLinearEquiv
     (d := d) (N := M * N') (Nc := Nc)).injective
   rw [map_smul]
@@ -82,14 +82,14 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_smul
   by_cases hk : cmp99SourceFlatQprimeCoarseAlias k = ell
   · let output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨k, hk⟩
     rw [cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
-          ell mass a (c • v) output,
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a (c • v) output,
       cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
-          ell mass a v output]
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a v output]
     module
   · rw [cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_eq_zero_of_coarseAlias_ne
-          ell mass a (c • v) k hk,
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a (c • v) k hk,
       cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_eq_zero_of_coarseAlias_ne
-          ell mass a v k hk]
+          (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a v k hk]
     exact (smul_zero c).symm
 
 omit [NeZero d] [NeZero Nc] in
@@ -98,10 +98,11 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_add
     (mass a : ℝ)
     (eta zeta : FinBox d N' → SUNLieComplexCoord Nc) :
     cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
-        mass a (eta + zeta) =
-      cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField mass a eta +
+        (d := d) (M := M) (N' := N') (Nc := Nc) mass a (eta + zeta) =
+      cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
+          (d := d) (M := M) (N' := N') (Nc := Nc) mass a eta +
         cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
-          mass a zeta := by
+          (d := d) (M := M) (N' := N') (Nc := Nc) mass a zeta := by
   unfold cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
   rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
@@ -110,7 +111,8 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_add
     ((cmp99FlatPhysicalFibreDFTLinearEquiv
       (d := d) (N := N') (Nc := Nc)).map_add eta zeta) ell
   rw [hDFT, smul_add,
-    cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_add]
+    cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_add
+      (d := d) (M := M) (N' := N') (Nc := Nc)]
 
 omit [NeZero d] [NeZero Nc] in
 /-- The finite arbitrary-source `G Q'^*` field commutes with complex scalar
@@ -119,9 +121,9 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_smul
     (mass a : ℝ) (c : ℂ)
     (eta : FinBox d N' → SUNLieComplexCoord Nc) :
     cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
-        mass a (c • eta) =
+        (d := d) (M := M) (N' := N') (Nc := Nc) mass a (c • eta) =
       c • cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
-        mass a eta := by
+        (d := d) (M := M) (N' := N') (Nc := Nc) mass a eta := by
   unfold cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
   rw [Finset.smul_sum]
   apply Finset.sum_congr rfl
@@ -136,7 +138,7 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_smul
           cmp99FlatPhysicalFibreDFT eta ell) by module]
   exact
     cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_smul
-      ell mass a c _
+      (d := d) (M := M) (N' := N') (Nc := Nc) ell mass a c _
 
 /-- Complex-linear map underlying the stabilized full-box `G Q'^*` field. -/
 noncomputable def
@@ -144,11 +146,14 @@ noncomputable def
     (mass a : ℝ) :
     (FinBox d N' → SUNLieComplexCoord Nc) →ₗ[ℂ]
       (FinBox d (M * N') → SUNLieComplexCoord Nc) where
-  toFun := cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField mass a
+  toFun := cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
+    (d := d) (M := M) (N' := N') (Nc := Nc) mass a
   map_add' :=
-    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_add mass a
+    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_add
+      (d := d) (M := M) (N' := N') (Nc := Nc) mass a
   map_smul' :=
-    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_smul mass a
+    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_smul
+      (d := d) (M := M) (N' := N') (Nc := Nc) mass a
 
 /-- Continuous complex-linear packaging of the internally constructed
 stabilized full-box `G Q'^*` field. -/
@@ -158,14 +163,16 @@ noncomputable def
     (FinBox d N' → SUNLieComplexCoord Nc) →L[ℂ]
       (FinBox d (M * N') → SUNLieComplexCoord Nc) :=
   LinearMap.toContinuousLinearMap
-    (cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldLM mass a)
+    (cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldLM
+      (d := d) (M := M) (N' := N') (Nc := Nc) mass a)
 
 @[simp] theorem
     cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldCLM_apply
     (mass a : ℝ) (eta : FinBox d N' → SUNLieComplexCoord Nc) :
-    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldCLM mass a eta =
+    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldCLM
+        (d := d) (M := M) (N' := N') (Nc := Nc) mass a eta =
       cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
-        mass a eta := rfl
+        (d := d) (M := M) (N' := N') (Nc := Nc) mass a eta := rfl
 
 /-- Bundled endpoint: the literal precision sends the internally constructed
 continuous-linear `G Q'^*` field exactly to the coefficient-one weighted
@@ -180,13 +187,14 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_stabilizedQprimeStarFieldCLM
     (hstabilized : ∀ ell : FinBox d N',
       cmp89Eq249CentralStabilizedAliasDenominator d M 1 mass a
         (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) ≠ 0) :
-    cmp99SourceFlatFullComplexPrecisionAction mass a
+    cmp99SourceFlatFullComplexPrecisionAction
+        (d := d) (M := M) (N' := N') (Nc := Nc) mass a
         (cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldCLM
-          mass a eta) =
+          (d := d) (M := M) (N' := N') (Nc := Nc) mass a eta) =
       cmp99SourceFlatFullComplexWeightedAdjoint
         (d := d) (M := M) (N' := N') (Nc := Nc) eta := by
   exact cmp99SourceFlatFullComplexPrecisionAction_stabilizedQprimeStarField
-    mass a eta hfine hstabilized
+    (d := d) (M := M) (N' := N') (Nc := Nc) mass a eta hfine hstabilized
 
 end
 
