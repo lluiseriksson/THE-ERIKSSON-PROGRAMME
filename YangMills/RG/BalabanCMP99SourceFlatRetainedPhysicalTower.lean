@@ -35,12 +35,13 @@ variable {d M N Nc : ℕ}
 variable [hd0 : NeZero d] [hM0 : NeZero M] [hN0 : NeZero N]
 variable [hNc0 : NeZero Nc]
 
-/-- Zero is a fixed point of the exact one-step source Ubar radius map. -/
 omit hd0 hM0 in
+/-- Zero is a fixed point of the exact one-step source Ubar radius map. -/
 @[simp] theorem cmp99SourceUbarNextFineRadius_zero :
     cmp99SourceUbarNextFineRadius d M 0 = 0 := by
   simp [cmp99SourceUbarNextFineRadius, cmp99SourceUbarFineDeviationRadius]
 
+omit hd0 hM0 in
 /-- Every radius in the source recursion remains literally zero when the
 initial fine-link radius is zero. -/
 @[simp] theorem cmp99SourceUbarRadiusAt_zero_radius (k : ℕ) :
