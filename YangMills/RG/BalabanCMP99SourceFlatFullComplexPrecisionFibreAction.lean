@@ -79,8 +79,7 @@ theorem cmp99FlatPhysicalFibreDFT_fixedCoarseFibreFourierSynthesis
     cmp99FlatPhysicalFibreDFT
         (cmp99SourceFlatFixedCoarseFibreFourierSynthesis ell coeff) k.1 =
       coeff k := by
-  rw [cmp99SourceFlatFixedCoarseFibreFourierSynthesis,
-    cmp99FlatPhysicalFibreDFT_InvDFT]
+  rw [cmp99FlatPhysicalFibreDFT_InvDFT]
   exact cmp99SourceFlatFixedCoarseFibreCoefficientExtension_apply ell coeff k
 
 /-- The inverse-DFT synthesis is the finite sum of physical Fourier modes
