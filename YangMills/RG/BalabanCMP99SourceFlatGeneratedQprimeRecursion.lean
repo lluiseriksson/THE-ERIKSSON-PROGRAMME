@@ -42,10 +42,22 @@ def cmp99SourceFlatRealTransport {N' : ℕ} [NeZero N'] :
       (SUNLieCoord Nc ≃ₗᵢ[ℝ] SUNLieCoord Nc) :=
   fun _ _ => LinearIsometryEquiv.refl ℝ (SUNLieCoord Nc)
 
+omit [NeZero d] [NeZero M] [NeZero Nc] in
 @[simp] theorem cmp99SourceFlatRealTransport_apply
     {N' : ℕ} [NeZero N'] (y : FinBox d N') (x : FinBox d (M * N'))
     (v : SUNLieCoord Nc) :
     cmp99SourceFlatRealTransport y x v = v := rfl
+
+/-- Linkwise radius-zero smallness of the literal flat background, with the
+matrix coercion exposed once for all recursive consumers. -/
+theorem cmp99SourceFlatGaugeConfig_zero_small
+    {N : ℕ} [NeZero N] :
+    ∀ e : ConcreteEdge d N,
+      ‖(cmp99SourceFlatGaugeConfig d N Nc e :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
+  intro e
+  change ‖((1 : SUN Nc) : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0
+  simp
 
 /-- The physical contour transport on a flat background is the explicit
 identity transport as a complete family of fibre isometries. -/
@@ -148,7 +160,7 @@ noncomputable def CMP99SourceActiveRegionChain.flatPhysicalQprime
   exact regions.physicalQprime hd hM rho spacing 0
     (cmp99SourceFlatGaugeConfig d N Nc)
     (cmp99SourceFlatZeroRadiusChain depth)
-    (by intro e; simp)
+    cmp99SourceFlatGaugeConfig_zero_small
 
 /-- Specialization of the internally generated physical weighted adjoint to
 the same literal flat data. -/
@@ -163,7 +175,7 @@ noncomputable def CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
   exact regions.physicalWeightedAdjoint hd hM rho spacing 0
     (cmp99SourceFlatGaugeConfig d N Nc)
     (cmp99SourceFlatZeroRadiusChain depth)
-    (by intro e; simp)
+    cmp99SourceFlatGaugeConfig_zero_small
 
 /-- Every internally generated flat physical average is exactly the explicit
 identity-transport recursion.  Flatness of every hidden intermediate
@@ -187,10 +199,15 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
       let Scale := cmp99SourceFlatNormalizedRegionalScale
         (Nc := Nc) hd hM Omega hOmega
       have htail := ih ((M : ℝ) * spacing)
+      have nextSmall : ∀ e : ConcreteEdge d N',
+          ‖(Scale.toSourceScale.data.nextBackground e :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
+        rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
+        exact cmp99SourceFlatGaugeConfig_zero_small
       change
         (tail.physicalQprime hd hM rho ((M : ℝ) * spacing) 0
           Scale.toSourceScale.data.nextBackground
-          (cmp99SourceFlatZeroRadiusChain depth) (by intro e; simp)).comp
+          (cmp99SourceFlatZeroRadiusChain depth) nextSmall).comp
             (cmp99SourceTransportedBlockAverageCLM Omega
               (cmp99SourceWeightedPhysicalTransport rho
                 (cmp99SourceFlatGaugeConfig d (M * N') Nc))) =
@@ -220,13 +237,18 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
       let Scale := cmp99SourceFlatNormalizedRegionalScale
         (Nc := Nc) hd hM Omega hOmega
       have htail := ih ((M : ℝ) * spacing)
+      have nextSmall : ∀ e : ConcreteEdge d N',
+          ‖(Scale.toSourceScale.data.nextBackground e :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
+        rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
+        exact cmp99SourceFlatGaugeConfig_zero_small
       change
         (cmp99SourceTransportedBlockWeightedAdjointCLM Omega hOmega
           (cmp99SourceWeightedPhysicalTransport rho
             (cmp99SourceFlatGaugeConfig d (M * N') Nc))).comp
           (tail.physicalWeightedAdjoint hd hM rho ((M : ℝ) * spacing) 0
             Scale.toSourceScale.data.nextBackground
-            (cmp99SourceFlatZeroRadiusChain depth) (by intro e; simp)) =
+            (cmp99SourceFlatZeroRadiusChain depth) nextSmall) =
         (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp
           tail.flatExplicitWeightedAdjoint
       rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground,
