@@ -46,14 +46,10 @@ theorem cmp99FlatPhysicalFibreInvDFT_eq_fourierSum
           (((N : ℂ) ^ d)⁻¹ • psi k) := by
   funext x
   ext b
-  change
-    ((N : ℂ) ^ d)⁻¹ *
-        ∑ k : CMP99FlatZModBox d N,
-          cmp99FlatZModFourierCharacter k (cmp99FinBoxZModEquiv d N x) *
-            psi ((cmp99FinBoxZModEquiv d N).symm k) b =
-      ∑ k : FinBox d N,
-        cmp99FlatFourierMode k x *
-          (((N : ℂ) ^ d)⁻¹ * psi k b)
+  rw [cmp99FlatPhysicalFibreInvDFT_apply, Finset.sum_apply]
+  simp only [cmp99FlatComplexFibreFourierMode, PiLp.smul_apply,
+    smul_eq_mul]
+  unfold cmp99FlatFinBoxInvDFT cmp99FlatZModInvDFT
   rw [← Equiv.sum_comp (cmp99FinBoxZModEquiv d N)]
   simp only [Equiv.apply_symm_apply]
   rw [Finset.mul_sum]
@@ -113,8 +109,10 @@ one-mode physical weighted-adjoint field. -/
 theorem cmp99SourceFlatFullComplexWeightedAdjoint_fourierMode
     (ell : FinBox d N') (v : SUNLieComplexCoord Nc) :
     cmp99SourceFlatFullComplexWeightedAdjoint
+        (d := d) (M := M) (N' := N') (Nc := Nc)
         (cmp99FlatComplexFibreFourierMode ell v) =
-      cmp99SourceFlatFullComplexWeightedAdjointCoarseMode ell v := by
+      cmp99SourceFlatFullComplexWeightedAdjointCoarseMode
+        (d := d) (M := M) (N' := N') (Nc := Nc) ell v := by
   funext x
   rw [cmp99SourceFlatFullComplexWeightedAdjoint_apply,
     cmp99SourceFlatFullComplexWeightedAdjointCoarseMode_apply]
@@ -143,9 +141,10 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_stabilizedQprimeStarField
       cmp89Eq249CentralStabilizedAliasDenominator d M 1 mass a
         (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) ≠ 0) :
     cmp99SourceFlatFullComplexPrecisionAction mass a
-        (cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
+      (cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
           mass a eta) =
-      cmp99SourceFlatFullComplexWeightedAdjoint eta := by
+      cmp99SourceFlatFullComplexWeightedAdjoint
+        (d := d) (M := M) (N' := N') (Nc := Nc) eta := by
   let coeff : FinBox d N' → SUNLieComplexCoord Nc :=
     fun ell => (((N' : ℕ) : ℂ) ^ d)⁻¹ •
       cmp99FlatPhysicalFibreDFT eta ell
