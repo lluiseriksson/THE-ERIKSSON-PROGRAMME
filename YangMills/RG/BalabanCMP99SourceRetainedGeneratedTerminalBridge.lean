@@ -32,6 +32,7 @@ variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
 /-- Transporting a retained physical tower and then selecting a prefix is
 the same as transporting that prefix as a weighted regional tower. -/
+omit [NeZero M] in
 theorem CMP99SourceRetainedPhysicalTower.towerAt_transport
     {Omega₁ Omega₂ : ActiveGaugeRegion d N} (h : Omega₁ = Omega₂)
     {rho : SUNAdjointModel Nc} {spacing : ℝ}
@@ -63,6 +64,7 @@ theorem CMP99SourceActiveRegionChain.weightedQprimeTower_transport
 
 /-- The two standard presentations of transport for a typed active-region
 chain (`▸` and `Eq.mpr` on the indexed family) coincide. -/
+omit [NeZero d] [NeZero N] in
 theorem CMP99SourceActiveRegionChain.transport_eq_mpr
     {Omega₁ Omega₂ : ActiveGaugeRegion d N} (h : Omega₁ = Omega₂)
     {depth : ℕ}
