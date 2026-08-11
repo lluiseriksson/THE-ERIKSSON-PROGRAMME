@@ -36,6 +36,7 @@ variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
 /-- A coordinate probe is averaged to its exact recursively generated terminal
 owner, with one literal factor `M^{-d}` per scale. -/
+omit [NeZero Nc] in
 theorem CMP99SourceActiveRegionChain.flatExplicitQprime_single
     {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
