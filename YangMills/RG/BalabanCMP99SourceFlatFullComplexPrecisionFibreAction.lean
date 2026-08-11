@@ -79,7 +79,8 @@ theorem cmp99FlatPhysicalFibreDFT_fixedCoarseFibreFourierSynthesis
     cmp99FlatPhysicalFibreDFT
         (cmp99SourceFlatFixedCoarseFibreFourierSynthesis ell coeff) k.1 =
       coeff k := by
-  rw [cmp99FlatPhysicalFibreDFT_InvDFT]
+  rw [cmp99SourceFlatFixedCoarseFibreFourierSynthesis,
+    cmp99FlatPhysicalFibreDFT_InvDFT]
   exact cmp99SourceFlatFixedCoarseFibreCoefficientExtension_apply ell coeff k
 
 /-- The inverse-DFT synthesis is the finite sum of physical Fourier modes
@@ -94,6 +95,7 @@ theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
           (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k) x := by
   apply (cmp99FlatPhysicalFibreDFTLinearEquiv
     (d := d) (N := M * N') (Nc := Nc)).injective
+  rw [cmp99SourceFlatFixedCoarseFibreFourierSynthesis]
   change cmp99FlatPhysicalFibreDFT
       (cmp99FlatPhysicalFibreInvDFT
         (cmp99SourceFlatFixedCoarseFibreCoefficientExtension ell coeff)) =
@@ -101,8 +103,7 @@ theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
       (∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
         cmp99FlatComplexFibreFourierMode k.1
           (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k))
-  rw [cmp99SourceFlatFixedCoarseFibreFourierSynthesis,
-    cmp99FlatPhysicalFibreDFT_InvDFT]
+  rw [cmp99FlatPhysicalFibreDFT_InvDFT]
   change cmp99SourceFlatFixedCoarseFibreCoefficientExtension ell coeff =
     cmp99FlatPhysicalFibreDFTLinearEquiv
       (∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
@@ -142,6 +143,7 @@ theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
     rw [if_neg hkl]
     simp
 
+omit [NeZero d] [NeZero Nc] in
 /-- The literal full-box precision is additive in the physical field. -/
 theorem cmp99SourceFlatFullComplexPrecisionAction_add
     (mass a : ℝ)
@@ -206,6 +208,22 @@ noncomputable def cmp99SourceFlatFullComplexPrecisionAddHom
     simp
   map_add' := cmp99SourceFlatFullComplexPrecisionAction_add mass a
 
+/-- The literal additive precision action commutes with every finite sum. -/
+theorem cmp99SourceFlatFullComplexPrecisionAction_finset_sum
+    {ι : Type*} (mass a : ℝ) (s : Finset ι)
+    (term : ι → FinBox d (M * N') → SUNLieComplexCoord Nc) :
+    cmp99SourceFlatFullComplexPrecisionAction mass a
+        (∑ i ∈ s, term i) =
+      ∑ i ∈ s, cmp99SourceFlatFullComplexPrecisionAction mass a (term i) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+      exact (cmp99SourceFlatFullComplexPrecisionAddHom
+        (d := d) (M := M) (N' := N') (Nc := Nc) mass a).map_zero
+  | @insert i s hi ih =>
+      rw [Finset.sum_insert hi, Finset.sum_insert hi,
+        cmp99SourceFlatFullComplexPrecisionAction_add, ih]
+
 /-- Arbitrary fixed-fibre coefficient action of the literal full-box
 precision.  The output is the transpose alias matrix applied entrywise to the
 Lie-fibre coefficient vector; the DFT volume cancels internally. -/
@@ -230,18 +248,24 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fixedCoarseFibr
       cmp99SourceFlatFullComplexPrecisionAction mass a (∑ input, term input) =
         ∑ input,
           cmp99SourceFlatFullComplexPrecisionAction mass a (term input) := by
-    exact (cmp99SourceFlatFullComplexPrecisionAddHom
-      (d := d) (M := M) (N' := N') (Nc := Nc) mass a).map_sum term
-  rw [show (fun x => ∑ input,
+    simpa only using
+      cmp99SourceFlatFullComplexPrecisionAction_finset_sum
+        (d := d) (M := M) (N' := N') (Nc := Nc)
+        mass a Finset.univ term
+  have hterm : (fun x => ∑ input,
       cmp99FlatComplexFibreFourierMode input.1
         (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff input) x) =
-      ∑ input, term input by rfl]
+      ∑ input, term input := by
+    funext x
+    rw [Finset.sum_apply]
+  rw [hterm]
   rw [hprecisionSum]
   change cmp99FlatPhysicalFibreDFTLinearEquiv
       (∑ input : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
         cmp99SourceFlatFullComplexPrecisionAction mass a (term input))
       output.1 = _
   rw [map_sum]
+  rw [Finset.sum_apply]
   apply Finset.sum_congr rfl
   intro input _
   change cmp99FlatPhysicalFibreDFT
