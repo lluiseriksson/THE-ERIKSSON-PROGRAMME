@@ -70,6 +70,7 @@ def cmp99SourceFlatFixedCoarseFibreFourierSynthesis
   cmp99FlatPhysicalFibreInvDFT
     (cmp99SourceFlatFixedCoarseFibreCoefficientExtension ell coeff)
 
+omit [NeZero d] [NeZero Nc] in
 /-- The literal DFT recovers every coefficient on the selected fibre. -/
 theorem cmp99FlatPhysicalFibreDFT_fixedCoarseFibreFourierSynthesis
     (ell : FinBox d N')
@@ -96,21 +97,29 @@ theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
   apply (cmp99FlatPhysicalFibreDFTLinearEquiv
     (d := d) (N := M * N') (Nc := Nc)).injective
   rw [cmp99SourceFlatFixedCoarseFibreFourierSynthesis]
-  change cmp99FlatPhysicalFibreDFT
-      (cmp99FlatPhysicalFibreInvDFT
-        (cmp99SourceFlatFixedCoarseFibreCoefficientExtension ell coeff)) =
-    cmp99FlatPhysicalFibreDFT
-      (∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
+  change (cmp99FlatPhysicalFibreDFTLinearEquiv
+      (d := d) (N := M * N') (Nc := Nc))
+        ((cmp99FlatPhysicalFibreDFTLinearEquiv
+          (d := d) (N := M * N') (Nc := Nc)).symm
+            (cmp99SourceFlatFixedCoarseFibreCoefficientExtension ell coeff)) =
+    (cmp99FlatPhysicalFibreDFTLinearEquiv
+      (d := d) (N := M * N') (Nc := Nc)) (fun x =>
+      ∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
         cmp99FlatComplexFibreFourierMode k.1
-          (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k))
-  rw [cmp99FlatPhysicalFibreDFT_InvDFT]
-  change cmp99SourceFlatFixedCoarseFibreCoefficientExtension ell coeff =
-    cmp99FlatPhysicalFibreDFTLinearEquiv
-      (∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
+          (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k) x)
+  rw [LinearEquiv.apply_symm_apply]
+  have hsum : (fun x =>
+      ∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
         cmp99FlatComplexFibreFourierMode k.1
-          (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k))
+          (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k) x) =
+      ∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
+        cmp99FlatComplexFibreFourierMode k.1
+          (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k) := by
+    funext x
+    rw [Finset.sum_apply]
+  rw [hsum, map_sum]
   funext l
-  rw [map_sum]
+  rw [Finset.sum_apply]
   by_cases hl : cmp99SourceFlatQprimeCoarseAlias l = ell
   · let k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨l, hl⟩
     rw [show cmp99SourceFlatFixedCoarseFibreCoefficientExtension ell coeff l =
@@ -208,6 +217,7 @@ noncomputable def cmp99SourceFlatFullComplexPrecisionAddHom
     simp
   map_add' := cmp99SourceFlatFullComplexPrecisionAction_add mass a
 
+omit [NeZero d] [NeZero Nc] in
 /-- The literal additive precision action commutes with every finite sum. -/
 theorem cmp99SourceFlatFullComplexPrecisionAction_finset_sum
     {ι : Type*} (mass a : ℝ) (s : Finset ι)
@@ -273,9 +283,9 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fixedCoarseFibr
         (cmp99FlatComplexFibreFourierMode input.1
           (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff input))) output.1 = _
   rw [cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fourierMode]
-  have hvol : ((((M * N' : ℕ) : ℂ) ^ d)) ≠ 0 := by
-    exact pow_ne_zero d (Nat.cast_ne_zero.mpr (NeZero.ne (M * N')))
-  module
+  have hM : (M : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne M)
+  have hN : (N' : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne N')
+  field_simp [hM, hN]
 
 end
 
