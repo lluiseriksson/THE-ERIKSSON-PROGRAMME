@@ -150,8 +150,17 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fourierMode
           (cmp99SourceFlatQprimeAmplitudeMomentum input.1)) •
             cmp99SourceFlatFullComplexWeightedAdjointCoarseMode ell v))
         output.1 = _
-  rw [map_add, map_smul, map_smul,
-    cmp99FlatPhysicalFibreDFT_fourierMode,
+  rw [map_add, map_smul, map_smul]
+  change
+    cmp99SourceFlatQprimePhysicalFineSymbol mass input.1 •
+          cmp99FlatPhysicalFibreDFT
+            (cmp99FlatComplexFibreFourierMode input.1 v) output.1 +
+        (((a : ℂ) * cmp89Eq245EntireAverageAmplitude d M
+          (cmp99SourceFlatQprimeAmplitudeMomentum input.1)) •
+            cmp99FlatPhysicalFibreDFT
+              (cmp99SourceFlatFullComplexWeightedAdjointCoarseMode ell v)
+              output.1) = _
+  rw [cmp99FlatPhysicalFibreDFT_fourierMode,
     cmp99FlatPhysicalFibreDFT_sourceFlatWeightedAdjoint_fixedCoarse_eq_aliasRow]
   rw [Matrix.transpose_apply,
     cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix]
