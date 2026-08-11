@@ -54,7 +54,7 @@ noncomputable def cmp99FinitePiLpSUNLieCoordComplexificationCLM
         funext i
         exact (cmp99SUNLieCoordComplexificationLM Nc).map_smul r (phi i) }
 
-omit [NeZero d] [NeZero M] [NeZero N] in
+omit [NeZero d] [NeZero M] [NeZero N] [NeZero Nc] in
 @[simp] theorem cmp99FinitePiLpSUNLieCoordComplexificationCLM_apply
     (ι : Type) [Fintype ι] [DecidableEq ι]
     (phi : PiLp 2 (fun _ : ι => SUNLieCoord Nc)) (i : ι) :
@@ -149,9 +149,14 @@ theorem
       rfl
   | @step N' depth _ Omega hOmega tail ih =>
       intro phi
-      simp only [CMP99SourceActiveRegionChain.flatExplicitComplexQprime,
-        CMP99SourceActiveRegionChain.flatExplicitQprime,
-        ContinuousLinearMap.comp_apply]
+      change
+        tail.flatExplicitComplexQprime
+            (cmp99SourceFlatComplexBlockAverageCLM Omega
+              (cmp99ActiveGaugeZeroCochainComplexificationCLM Omega phi)) =
+          cmp99FinitePiLpSUNLieCoordComplexificationCLM
+            (Nc := Nc) tail.terminalSite
+            (tail.flatExplicitQprime
+              (cmp99SourceFlatRealBlockAverageCLM Omega phi))
       rw [cmp99SourceFlatComplexBlockAverage_commutes_real_explicit]
       exact ih _
 
@@ -175,10 +180,14 @@ theorem
       rfl
   | @step N' depth _ Omega hOmega tail ih =>
       intro eta
-      simp only [
-        CMP99SourceActiveRegionChain.flatExplicitComplexWeightedAdjoint,
-        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint,
-        ContinuousLinearMap.comp_apply]
+      change
+        cmp99SourceFlatComplexBlockWeightedAdjointCLM Omega hOmega
+            (tail.flatExplicitComplexWeightedAdjoint
+              (cmp99FinitePiLpSUNLieCoordComplexificationCLM
+                (Nc := Nc) tail.terminalSite eta)) =
+          cmp99ActiveGaugeZeroCochainComplexificationCLM Omega
+            (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega
+              (tail.flatExplicitWeightedAdjoint eta))
       rw [ih eta]
       exact
         cmp99SourceFlatComplexBlockWeightedAdjoint_commutes_real_explicit
