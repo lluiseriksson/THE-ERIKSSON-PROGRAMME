@@ -142,6 +142,7 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fourierMode
         (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose
           output input) • v := by
   rw [cmp99SourceFlatFullComplexPrecisionAction_fourierMode]
+  rw [input.property]
   change cmp99FlatPhysicalFibreDFTLinearEquiv
       (cmp99SourceFlatQprimePhysicalFineSymbol mass input.1 •
           cmp99FlatComplexFibreFourierMode input.1 v +
@@ -161,10 +162,8 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fourierMode
   · have hval : input.1 ≠ output.1 := by
       intro hval
       exact h (Subtype.ext hval)
-    rw [if_neg hval, if_neg]
-    · module
-    · intro hrev
-      exact h (Subtype.ext hrev.symm)
+    rw [if_neg hval, if_neg h]
+    module
 
 end
 
