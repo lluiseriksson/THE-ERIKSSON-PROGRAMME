@@ -1,4 +1,4 @@
-name: Validate stabilized full-box physical GQprime star
+name: Validate arbitrary-source stabilized physical GQprime star
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 7844238067f840687cee61b5d4df510a21f1d30a
+  SOURCE_SHA: 845f70748b3526634dfe4993400c036b3880a3af
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    stabilized-full-complex-precision-particular-solution
     physical-stabilized-alias-transpose-solution
     stabilized-alias-transpose-solution
     flat-full-complex-precision-particular-solution
@@ -25,11 +26,10 @@ env:
     flat-full-complex-precision-mode-action
     physical-alias-transpose-solution
     flat-weighted-adjoint-physical-column
-    flat-weighted-adjoint-scalar-column
     flat-physical-fibre-dft
 
 jobs:
-  stabilized-full-complex-precision-particular-solution:
+  stabilized-qprime-star-field:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-full-complex-precision-particular-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-qprime-star-field-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionStabilizedParticularSolution.lean \
-            YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionStabilizedParticularSolutionAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeStarField.lean \
+            YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage stabilized_full_complex_precision_particular_solution_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionStabilizedParticularSolution
-          run_stage stabilized_full_complex_precision_particular_solution_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionStabilizedParticularSolutionAudit.lean
+          run_stage stabilized_qprime_star_field_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
+          run_stage stabilized_qprime_star_field_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "stabilized_full_complex_precision_particular_solution_audit.log": 5,
+              "stabilized_qprime_star_field_audit.log": 5,
           }
           focal = (Path("evidence") /
-              "stabilized_full_complex_precision_particular_solution_focal.log").read_text(
+              "stabilized_qprime_star_field_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatFullComplexPrecisionStabilizedParticularSolution.lean:"
+              "BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeStarField.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              stabilized-full-complex-precision-particular-solution-evidence.tar.gz
-          sha256sum stabilized-full-complex-precision-particular-solution-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              stabilized-qprime-star-field-evidence.tar.gz
+          sha256sum stabilized-qprime-star-field-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: stabilized-full-complex-precision-particular-solution-${{ env.SOURCE_SHA }}
+          name: stabilized-qprime-star-field-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            stabilized-full-complex-precision-particular-solution-evidence.tar.gz
+            stabilized-qprime-star-field-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-stabilized-full-complex-precision-particular-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-stabilized-qprime-star-field-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
