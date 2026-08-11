@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 568f0f6def53cc0f7058cdacc8c658b689460e6c
+  SOURCE_SHA: 7895a4f1a4b494f4d1a6a45986a4a748fe126088
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    physical-stabilized-alias-transpose-solution
     stabilized-alias-transpose-solution
     flat-full-complex-precision-particular-solution
     flat-full-complex-precision-fibre-action
@@ -26,7 +27,6 @@ env:
     flat-weighted-adjoint-physical-column
     flat-weighted-adjoint-scalar-column
     flat-physical-fibre-dft
-    flat-physical-complex-weighted-adjoint
 
 jobs:
   physical-stabilized-alias-transpose-solution:
