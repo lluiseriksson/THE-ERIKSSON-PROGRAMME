@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatPhysicalTransport
 /-!
 # Preservation of the flat background by the physical Ubar map
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The source-generated next background is not caller data.  This file proves
 the first dictionary needed to compare the generated physical tower with the
 literal flat Fourier operator: when every fine link is one, every contour

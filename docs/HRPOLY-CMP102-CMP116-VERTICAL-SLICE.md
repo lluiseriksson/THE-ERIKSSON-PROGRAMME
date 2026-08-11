@@ -9281,3 +9281,40 @@ exactly `20/41`, `TermSource = 0`. Failed diagnostics `31471917140`,
 `31472242314`, `31472534664` and `31472872194`, plus warm diagnostic PASS
 `31473137923`, remain preserved and did not seal. Only the cold run above
 retires the two PRE-VALIDATION marks.
+
+### Step 7.5cme physical Ubar preserves the literal flat background (SEALED; normalized one-scale and recursive tower dictionaries open)
+
+Exact source checkpoint `bfb4c2a1802fc40933e8642cfbb839ba9fed939e`
+passed cold GitHub Actions run
+[`31478887310`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31478887310)
+with workflow checkpoint `83a39a2250a4e882b8c2001716ea84f7be26f788`.
+The job ran from `09:42:12Z` to `10:00:24Z` (`18m12s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`09:43:58Z`; the focal then ran to `10:00:10Z`, completed `8,429` jobs and
+exited zero. The audit ended at `10:00:21Z` and also exited zero. All five
+audited declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+the axiom blacklist and the explicit two-module text gate were empty.
+
+Artifact `9096895600`, named
+`flat-ubar-preservation-bfb4c2a1802fc40933e8642cfbb839ba9fed939e`, has
+GitHub digest
+`933a5cc258a7ad736058bab9e37daff66dd8346cacb0970335112d62af55a134`.
+The downloaded deterministic archive has SHA-256
+`10c777d08f46156b9533dfd779eef5a64da66962871a9bb21cb0f9c23a85de68`,
+and all 13 internal manifest entries matched.
+
+The sealed source proves, without a caller-supplied next background, that the
+straight coarse transport of a flat fine gauge field is one, all four-contour
+Ubar deviations are one, the finite special-unitary exponent is zero, and the
+direct deviation-budget Ubar constructor returns the literal flat coarse
+gauge configuration in both orientations. This is the exact one-scale Ubar
+preservation statement; it does not yet construct the canonical normalized
+scale at `epsilon = 0`, prove that the recursively generated tower remains
+flat, identify the generated `Q'` tower or bridge Lean's counting adjoint to
+the printed weighted adjoint. Those dictionaries remain explicit. Regional
+transport and uniform physical `B0` remain open. Window 15 remains compatible
+but unattained. Counters remain exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31476670001`, `31477156542`, `31477467222`, `31477764120`,
+`31478077838` and `31478373414`, plus warm diagnostic PASS `31478664898`,
+remain preserved and did not seal. Only the cold run above retires the two
+PRE-VALIDATION marks.
