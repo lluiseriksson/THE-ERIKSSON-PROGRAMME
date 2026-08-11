@@ -204,6 +204,8 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
         rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
         exact cmp99SourceFlatGaugeConfig_zero_small
+      unfold CMP99SourceActiveRegionChain.flatPhysicalQprime
+        CMP99SourceActiveRegionChain.flatExplicitQprime
       change
         (tail.physicalQprime hd hM rho ((M : ℝ) * spacing) 0
           Scale.toSourceScale.data.nextBackground
@@ -242,6 +244,8 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
         rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
         exact cmp99SourceFlatGaugeConfig_zero_small
+      unfold CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
+        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint
       change
         (cmp99SourceTransportedBlockWeightedAdjointCLM Omega hOmega
           (cmp99SourceWeightedPhysicalTransport rho
