@@ -8967,3 +8967,45 @@ folded-rank-one elaboration boundaries. Warm passes `31446095141` and
 `31447893374` did not seal. Cold PASS `31446282022` is retained as superseded
 evidence because its source emitted one unused-instance linter warning; only
 the warning-free cold run above retires PRE-VALIDATION.
+
+### Step 7.5clw arbitrary fixed-fibre precision action (SEALED; physical solution field and central stabilization open)
+
+Exact source checkpoint `35f755aa97f098893ee44b7f8a286dd34f6c0a28`
+passed cold GitHub Actions run
+[`31453744491`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31453744491)
+with workflow checkpoint `f1796a2a9c0ebec6a6c8e4f3583d79130fafb7c7`.
+Restoration and saving of `.lake/build` were both skipped. The focal ran from
+`02:55:50Z` to `03:19:17Z`, completed `8,544` jobs and exited zero; the audit
+exited zero at `03:19:25Z`. All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and the explicit
+new-module warning gate were both empty.
+
+Artifact `9087703119`, named
+`flat-full-complex-precision-fibre-action-35f755aa97f098893ee44b7f8a286dd34f6c0a28`,
+has GitHub digest
+`570edcc665ec24d38dd4a951999e75529e5f828e7f5cae283db8a96013ba91e1`.
+Its deterministic inner archive re-hashed on Windows to
+`bb9e2a540618b643f53fe699dde06eee5e2f74cf569534de10dc58b9126d0f9b`;
+all 13 internal manifest entries matched.
+
+The source extends one fixed reciprocal-fibre coefficient vector by zero to
+the literal full momentum box and reconstructs its physical field with the
+sealed inverse DFT. It proves the exact finite Fourier-mode expansion with the
+inverse fine-volume normalization, packages the literal full-box precision as
+an additive map and derives its arbitrary-vector DFT action as the transpose
+physical alias matrix applied entrywise. The forward fine-volume factor and
+inverse-transform normalization cancel internally; no synthetic Fourier
+operator or free matrix action is introduced.
+
+This does not yet construct the physical particular solution. That next brick
+must scale the sealed transpose solution by the fine volume, prove the output
+vanishes off the chosen reciprocal fibre and use DFT injectivity to obtain the
+literal field equation. The central removable zero, inverse CLM,
+stabilized-kernel dictionary, interacting/regional transport and physical
+`B0` remain open. Window 15 remains compatible but unattained. Counters stay
+exactly `20/41`, `TermSource = 0`. Failed diagnostics `31450180972`,
+`31450508511`, `31450771159`, `31451005213`, `31451348876`, `31451551123`
+and `31451740889` preserve the elaboration boundary; warm PASSes
+`31451946285` and `31453542148` did not seal. Cold PASS `31452112604` is
+retained as superseded evidence because its source emitted one unused-section
+warning; only the warning-free cold run above retires PRE-VALIDATION.

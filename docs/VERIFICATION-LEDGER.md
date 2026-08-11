@@ -33315,3 +33315,40 @@ PASSes `31446095141` and `31447893374`, and superseded cold PASS `31446282022`
 remain preserved; the latter was not used to seal because its source emitted
 one unused-instance linter warning. Only the warning-free cold run above
 retires PRE-VALIDATION.
+
+## Addendum 731 (2026-08-11, **arbitrary fixed-fibre flat precision action GREEN; physical solution field and central stabilization open; 20/41 unchanged**)
+
+Exact source checkpoint `35f755aa97f098893ee44b7f8a286dd34f6c0a28`
+passed cold GitHub Actions run
+[`31453744491`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31453744491)
+with workflow checkpoint `f1796a2a9c0ebec6a6c8e4f3583d79130fafb7c7`.
+The job ran for `25m31s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,544` jobs and the focal/audit stages exited `0/0`.
+All six declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom or new-module linter warning occurred.
+
+Artifact `9087703119`, named
+`flat-full-complex-precision-fibre-action-35f755aa97f098893ee44b7f8a286dd34f6c0a28`,
+has GitHub digest
+`570edcc665ec24d38dd4a951999e75529e5f828e7f5cae283db8a96013ba91e1`.
+The downloaded deterministic archive has SHA-256
+`bb9e2a540618b643f53fe699dde06eee5e2f74cf569534de10dc58b9126d0f9b`,
+and all 13 internal manifest entries matched.
+
+The source proves the literal inverse-DFT synthesis formula for an arbitrary
+coefficient vector supported on one physical reciprocal fibre, proves
+additivity of the actual full-box precision and derives its complete
+fixed-fibre DFT action from the sealed mode columns. The conclusion is the
+transpose physical alias precision matrix applied to the Lie-fibre
+coefficients, with the fine-volume normalization cancelled internally.
+
+The physical particular solution, off-fibre vanishing theorem, exact field
+equation, central stabilized branch, inverse CLM, interacting/regional
+transport and physical `B0` remain open. Window 15 is compatible but
+unattained. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31450180972`, `31450508511`, `31450771159`, `31451005213`,
+`31451348876`, `31451551123` and `31451740889`, plus warm diagnostic PASSes
+`31451946285` and `31453542148`, remain preserved. Cold PASS `31452112604`
+is retained as superseded evidence: focal/audit/axioms passed, but one
+unused-section warning remained, so it did not retire PRE-VALIDATION. Only the
+warning-free cold run above seals this brick.

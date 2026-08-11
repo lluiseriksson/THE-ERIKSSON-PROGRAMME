@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionModeAction
 /-!
 # Full-box flat complex precision on one reciprocal fibre
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The mode-column identity is lifted to an arbitrary coefficient vector on one
 fixed physical reciprocal fibre.  The coefficients are extended by zero to
 the literal full momentum box and reconstructed by the already sealed
