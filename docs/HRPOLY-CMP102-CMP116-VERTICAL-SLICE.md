@@ -9275,6 +9275,43 @@ physical route to window 15 remain open. Live counters stay exactly `20/41`,
 warm PASS `31508177460`, remain preserved and did not seal. Only the cold run
 above retires the two PRE-VALIDATION marks.
 
+### Step 7.5cml generated flat counting/source-weighted adjoint dictionary (SEALED; terminal-collapse and stratum-precision dictionaries open)
+
+Exact source checkpoint `cc62468f9afacc9c3266a9aedc2e0abf496c3bb6`
+passed cold GitHub Actions run
+[`31512759209`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31512759209)
+with workflow checkpoint `753bfdcfb23642e407241cbf23f874545b17234d`.
+The job ran from `16:30:41Z` to `17:02:10Z` (`31m29s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`16:37:36Z`; the focal ran to `17:01:50Z`, completed `8,482` jobs and exited
+zero. The audit ended at `17:01:57Z` and also exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9110856914`, named
+`flat-generated-qprime-adjoint-dictionary-cc62468f9afacc9c3266a9aedc2e0abf496c3bb6`,
+has GitHub digest
+`d129177159ec93764b3a9c28ae0a3af3e789fb2e894e539b34796ca3b87882dc`.
+The downloaded deterministic archive has SHA-256
+`f1e682e724310dd8bb8c14c86c00a47e192eb24d695e6c2d32e637f69038b0e5`,
+and all 13 internal manifest entries matched.
+
+The sealed source proves that the counting-space adjoint of the literal flat
+one-step average is exactly `M^{-d}` times the source-weighted coefficient-one
+adjoint. It then lifts the conversion through the complete typed recursion:
+the recursive counting adjoint is `(M^{-d})^depth` times the reverse weighted
+adjoint recursion, and the same visible factor rewrites the exact generated
+`Q'^* Q'` composition.
+
+This is not a collapse to one side-`M^depth` block, an identification of CMP99
+strata, a match with the separately reconstructed flat/full-complex precision,
+an inverse, a Green estimate or a regional transport theorem. Uniform physical
+`B0` and physical attainment of window 15 remain open. Counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostics `31511264192`, `31511622674` and
+`31511987236`, plus content-PASS run `31512372910` whose packaging gate rejected
+the then-visible new-module linter warning, remain preserved and did not seal.
+Only the cold run above retires the two PRE-VALIDATION marks.
+
 ### Step 7.5cmi canonical flat generated `Q'/Q'^*` recursion (SEALED; printed one-block collapse and precision dictionaries open)
 
 Exact source checkpoint `3857450a087721447f2456ba1a8e199565b1ed49`

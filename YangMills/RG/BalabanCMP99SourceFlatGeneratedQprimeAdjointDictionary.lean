@@ -6,9 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeRecursion
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Counting/source-weighted adjoint dictionary for the flat generated `Q'`
 
 CMP99 uses the lattice-spacing Hilbert products, whose one-step adjoint is

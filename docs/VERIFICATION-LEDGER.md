@@ -33812,3 +33812,34 @@ regional Green bound. Uniform physical `B0` and physical attainment of window
 15 remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
 diagnostics `31507440096` and `31507882118`, plus warm PASS `31508177460`,
 remain preserved and did not seal.
+
+## Addendum 746 (2026-08-11, **generated flat counting/source-weighted adjoint dictionary SEALED; terminal-collapse and stratum-precision dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `cc62468f9afacc9c3266a9aedc2e0abf496c3bb6`
+passed cold GitHub Actions run
+[`31512759209`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31512759209)
+with workflow checkpoint `753bfdcfb23642e407241cbf23f874545b17234d`.
+The job ran for `31m29s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,482` jobs and the focal/audit stages exited `0/0`.
+All three declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9110856914`, named
+`flat-generated-qprime-adjoint-dictionary-cc62468f9afacc9c3266a9aedc2e0abf496c3bb6`,
+has GitHub digest
+`d129177159ec93764b3a9c28ae0a3af3e789fb2e894e539b34796ca3b87882dc`.
+The downloaded deterministic archive has SHA-256
+`f1e682e724310dd8bb8c14c86c00a47e192eb24d695e6c2d32e637f69038b0e5`,
+and all 13 internal manifest entries matched.
+
+The source proves the exact one-step conversion between the counting adjoint
+and the source-weighted coefficient-one adjoint and lifts it through the
+complete flat generated recursion, retaining the explicit
+`(M^{-d})^depth` factor in both the adjoint and `Q'^* Q'` identities. It does
+not collapse the typed recursion to one terminal block, identify CMP99 strata,
+match a flat/full-complex precision, construct an inverse or produce a Green
+bound. Regional transport and uniform physical `B0` remain open. Window 15
+remains compatible but unattained. Live counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostics `31511264192`, `31511622674` and
+`31511987236`, plus content-PASS `31512372910`, remain preserved and did not
+seal.
