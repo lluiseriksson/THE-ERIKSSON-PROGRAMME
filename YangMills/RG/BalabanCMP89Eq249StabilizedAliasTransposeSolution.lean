@@ -116,9 +116,7 @@ theorem cmp89Eq249AliasSubtypeNoncentralSum_eq
       cmp89Eq246EntireAliasFineSymbol,
       cmp89Eq248ComplexAliasDenominatorSummand,
       cmp89Eq245EntireAveragePair,
-      cmp89Eq248EntireAliasMomentum,
-      cmp89Eq249ZeroAlias,
-      cmp89Eq245AliasShift]
+      cmp89Eq248EntireAliasMomentum]
   have hleft := Finset.sum_erase_add Finset.univ subtypeTerm
     (Finset.mem_univ central)
   have hright := Finset.sum_erase_add aliases printedTerm hzero
@@ -160,22 +158,26 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution
   let stabilized :=
     cmp89Eq249CentralStabilizedAliasDenominator d L j mass a z
   let solution := cmp89Eq249StabilizedAliasTransposeSolution d L j mass a z
+  have hzeroMomentum :
+      cmp89Eq248EntireAliasMomentum z (cmp89Eq249ZeroAlias d) = z := by
+    funext mu
+    simp [cmp89Eq248EntireAliasMomentum, cmp89Eq249ZeroAlias,
+      cmp89Eq245AliasShift]
   have hcentralFine : fine central = centralFine := by
-    simp [fine, centralFine, central,
-      cmp89Eq246EntireAliasFineSymbol,
-      cmp89Eq249CentralEntireFineSymbol,
-      cmp89Eq248EntireAliasMomentum,
-      cmp89Eq249ZeroAlias,
-      cmp89Eq245AliasShift]
+    change cmp89Eq245EntireScaledLaplacianSymbol
+        d (((L : ℝ) ^ j)⁻¹) mass
+          (cmp89Eq248EntireAliasMomentum z (cmp89Eq249ZeroAlias d)) =
+      cmp89Eq245EntireScaledLaplacianSymbol
+        d (((L : ℝ) ^ j)⁻¹) mass z
+    rw [hzeroMomentum]
   have hcentralPair : column central * row central = centralPair := by
-    simp [column, row, centralPair, central,
-      cmp89Eq246EntireAliasAverageColumn,
-      cmp89Eq246EntireAliasAverageRow,
-      cmp89Eq249CentralEntireAveragePair,
-      cmp89Eq245EntireAveragePair,
-      cmp89Eq248EntireAliasMomentum,
-      cmp89Eq249ZeroAlias,
-      cmp89Eq245AliasShift]
+    change cmp89Eq245EntireAverageAmplitude d (L ^ j)
+          (cmp89Eq248EntireAliasMomentum z (cmp89Eq249ZeroAlias d)) *
+        cmp89Eq245EntireAverageAmplitude d (L ^ j)
+          (-cmp89Eq248EntireAliasMomentum z (cmp89Eq249ZeroAlias d)) =
+      cmp89Eq245EntireAverageAmplitude d (L ^ j) z *
+        cmp89Eq245EntireAverageAmplitude d (L ^ j) (-z)
+    rw [hzeroMomentum]
   have hnoncentral :
       (∑ n ∈ Finset.univ.erase central,
         column n * row n / fine n) = noncentral := by
@@ -194,8 +196,12 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution
         apply Finset.sum_congr rfl
         intro n hn
         have hncentral : n ≠ central := (Finset.mem_erase.mp hn).1
-        rw [cmp89Eq249StabilizedAliasTransposeSolution_noncentral
-          d L j mass a z n hncentral]
+        have hsolutionN :
+            solution n = centralFine * row n / (fine n * stabilized) := by
+          simpa only [solution, centralFine, row, fine, stabilized, central]
+            using cmp89Eq249StabilizedAliasTransposeSolution_noncentral
+              d L j mass a z n hncentral
+        rw [hsolutionN]
         have hfn : fine n ≠ 0 := hfine n hncentral
         change column n *
             (centralFine * row n / (fine n * stabilized)) = _
@@ -215,26 +221,35 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution
     rw [hnoncentralSolution]
     have hcentralSolution :
         solution central = row central / stabilized := by
-      exact cmp89Eq249StabilizedAliasTransposeSolution_central
-        d L j mass a z
-    rw [hcentralSolution, hcentralPair]
+      simpa only [solution, row, stabilized, central] using
+        cmp89Eq249StabilizedAliasTransposeSolution_central
+          d L j mass a z
+    rw [hcentralSolution]
+    change centralFine * noncentral / stabilized +
+        (column central * row central) / stabilized = _
+    rw [hcentralPair]
     field_simp [hstabilized]
     ring
   funext m
   rw [cmp89Eq246EntireAliasPrecisionMatrix_transpose_mulVec, hsumSolution]
+  change fine m * solution m +
+      (a : ℂ) * row m *
+        ((centralPair + centralFine * noncentral) / stabilized) = row m
   by_cases hm : m = central
   · subst m
     have hcentralSolution :
         solution central = row central / stabilized := by
-      exact cmp89Eq249StabilizedAliasTransposeSolution_central
-        d L j mass a z
-    rw [hcentralSolution, hcentralFine, hcentralPair, hstabilizedEq]
+      simpa only [solution, row, stabilized, central] using
+        cmp89Eq249StabilizedAliasTransposeSolution_central
+          d L j mass a z
+    rw [hcentralSolution, hcentralFine, hstabilizedEq]
     field_simp [hstabilized]
     ring
   · have hsolution :
         solution m = centralFine * row m / (fine m * stabilized) := by
-      exact cmp89Eq249StabilizedAliasTransposeSolution_noncentral
-        d L j mass a z m hm
+      simpa only [solution, centralFine, row, fine, stabilized, central] using
+        cmp89Eq249StabilizedAliasTransposeSolution_noncentral
+          d L j mass a z m hm
     have hfm : fine m ≠ 0 := hfine m hm
     rw [hsolution, hstabilizedEq]
     field_simp [hfm, hstabilized]
