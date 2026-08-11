@@ -84,6 +84,7 @@ theorem cmp99FlatPhysicalFibreDFT_fixedCoarseFibreFourierSynthesis
     cmp99FlatPhysicalFibreDFT_InvDFT]
   exact cmp99SourceFlatFixedCoarseFibreCoefficientExtension_apply ell coeff k
 
+omit [NeZero d] [NeZero Nc] in
 /-- The inverse-DFT synthesis is the finite sum of physical Fourier modes
 with the literal inverse volume normalization. -/
 theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
