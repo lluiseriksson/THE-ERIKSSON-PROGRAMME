@@ -57,9 +57,9 @@ def cmp99SourceFlatFullComplexPrecisionParticularSolution
   cmp99SourceFlatFixedCoarseFibreFourierSynthesis ell
     (cmp99SourceFlatFullComplexPrecisionParticularCoefficients ell mass a v)
 
+omit [NeZero d] [NeZero Nc] in
 /-- On the selected reciprocal fibre, the DFT of the particular solution is
 the fine-volume multiple of the printed transposed alias solution. -/
-omit [NeZero d] [NeZero Nc] in
 theorem cmp99FlatPhysicalFibreDFT_particularSolution_fixedCoarseFibre
     (ell : FinBox d N') (mass a : ℝ) (v : SUNLieComplexCoord Nc)
     (k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell) :
@@ -71,9 +71,9 @@ theorem cmp99FlatPhysicalFibreDFT_particularSolution_fixedCoarseFibre
   exact cmp99FlatPhysicalFibreDFT_fixedCoarseFibreFourierSynthesis ell
     (cmp99SourceFlatFullComplexPrecisionParticularCoefficients ell mass a v) k
 
+omit [NeZero d] [NeZero Nc] in
 /-- Outside the selected reciprocal fibre, the DFT of the particular
 solution vanishes by its literal zero extension. -/
-omit [NeZero d] [NeZero Nc] in
 theorem cmp99FlatPhysicalFibreDFT_particularSolution_eq_zero_of_coarseAlias_ne
     (ell : FinBox d N') (mass a : ℝ) (v : SUNLieComplexCoord Nc)
     (k : FinBox d (M * N'))
@@ -199,44 +199,34 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_particularSolut
           output input •
         cmp99SourceFlatFullComplexPrecisionParticularCoefficients
           ell mass a v input) = _
-  ext b
-  rw [Finset.sum_apply]
-  simp only [cmp99SourceFlatFullComplexPrecisionParticularCoefficients,
-    PiLp.smul_apply, smul_eq_mul]
-  change
-    (∑ input,
-      (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose
-          output input *
-        ((((M * N' : ℕ) : ℂ) ^ d *
-          cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input) *
-          v b)) = _
+  simp only [cmp99SourceFlatFullComplexPrecisionParticularCoefficients]
   calc
     _ = ∑ input,
-        (((M * N' : ℕ) : ℂ) ^ d *
+        ((((M * N' : ℕ) : ℂ) ^ d *
           ((cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose
             output input *
-            cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input)) *
-          v b := by
+            cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input)) •
+          v := by
         apply Finset.sum_congr rfl
         intro input _
-        ring
+        module
     _ = (((M * N' : ℕ) : ℂ) ^ d *
           (∑ input,
             (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose
               output input *
-              cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input)) *
-          v b := by
-        rw [Finset.mul_sum, Finset.sum_mul]
+              cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input)) •
+          v := by
+        rw [Finset.mul_sum, Finset.sum_smul]
     _ = (((M * N' : ℕ) : ℂ) ^ d *
           cmp89Eq245EntireAverageAmplitude d M
-            (-cmp99SourceFlatQprimeAmplitudeMomentum output.1)) * v b := by
+            (-cmp99SourceFlatQprimeAmplitudeMomentum output.1)) • v := by
         rw [show
           (∑ input,
-            (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose
-              output input *
-              cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input) =
-            cmp89Eq245EntireAverageAmplitude d M
-              (-cmp99SourceFlatQprimeAmplitudeMomentum output.1) by
+              (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix ell mass a).transpose
+                output input *
+                cmp99SourceFlatQprimePhysicalAliasTransposeSolution ell mass a input) =
+              cmp89Eq245EntireAverageAmplitude d M
+                (-cmp99SourceFlatQprimeAmplitudeMomentum output.1) by
             simpa only [Matrix.mulVec, dotProduct] using hsolution]
     _ = _ := by
       rw [cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow]
@@ -257,6 +247,12 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_particularSolution
   apply (cmp99FlatPhysicalFibreDFTLinearEquiv
     (d := d) (N := M * N') (Nc := Nc)).injective
   funext k
+  change cmp99FlatPhysicalFibreDFT
+      (cmp99SourceFlatFullComplexPrecisionAction mass a
+        (cmp99SourceFlatFullComplexPrecisionParticularSolution ell mass a v)) k =
+    cmp99FlatPhysicalFibreDFT
+      (cmp99SourceFlatFullComplexWeightedAdjointCoarseMode
+        (d := d) (M := M) (N' := N') (Nc := Nc) ell v) k
   by_cases hk : cmp99SourceFlatQprimeCoarseAlias k = ell
   · let output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨k, hk⟩
     exact
