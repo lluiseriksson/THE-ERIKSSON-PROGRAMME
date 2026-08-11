@@ -51,6 +51,7 @@ def cmp99SourceFlatFullActiveComplexField
       (SUNLieComplexCoord Nc) :=
   WithLp.toLp 2 fun x => phi x.1
 
+omit [NeZero d] [NeZero Nc] in
 @[simp] theorem cmp99SourceFlatFullActiveComplexField_apply
     (phi : FinBox d (M * N') → SUNLieComplexCoord Nc)
     (x : ActiveGaugeRegion.Site
