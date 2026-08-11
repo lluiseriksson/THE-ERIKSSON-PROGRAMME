@@ -61,6 +61,28 @@ theorem CMP99SourceActiveRegionChain.weightedQprimeTower_transport
   cases h
   rfl
 
+/-- Transport of the terminal-prefix identification across an equality of
+regional indices.  Packaging both dependent structures in one lemma avoids
+comparing propositionally equal `Eq.rec` motives downstream. -/
+theorem cmp99SourceRetainedWeightedTerminal_transport
+    {Omega₁ Omega₂ : ActiveGaugeRegion d N} (h : Omega₁ = Omega₂)
+    {rho : SUNAdjointModel Nc} {spacing epsilon : ℝ} {depth : ℕ}
+    {background : GaugeConfig d N (SUN Nc)}
+    (T : CMP99SourceRetainedPhysicalTower rho Omega₂ M spacing background depth)
+    (regions : CMP99SourceActiveRegionChain d M N Omega₂ depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d N,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hterminal : T.towerAt (Fin.last depth) =
+      regions.weightedQprimeTower hd hM rho spacing epsilon background chain
+        fineSmall) :
+    ((h.symm ▸ T).towerAt (Fin.last depth)) =
+      (h.symm ▸ regions).weightedQprimeTower hd hM rho spacing epsilon
+        background chain fineSmall := by
+  cases h
+  exact hterminal
+
 /-- The last prefix retained by the physical recursive constructor is
 literally the tower generated on the canonical typed active-region chain. -/
 theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower
@@ -140,39 +162,16 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
             regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
               (cmp99SourceUbarNextFineRadius d M epsilon)
               Scale.toSourceScale.data.nextBackground chain.tail nextSmall := by
-        calc
-          Tail'.towerAt (Fin.last depth) =
-              hregion.symm ▸ (Tail.towerAt (Fin.last depth)) :=
-            CMP99SourceRetainedPhysicalTower.towerAt_transport hregion Tail _
-          _ = hregion.symm ▸
-              (regions.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
-                (cmp99SourceUbarNextFineRadius d M epsilon)
-                Scale.toSourceScale.data.nextBackground chain.tail
-                nextSmall) := by
-            exact congrArg
-              (fun T : CMP99SourceWeightedRegionalTower
-                  (g := SUNLieCoord Nc)
-                  (cmp99IteratedLiftActiveRegion (M := M) Omega depth)
-                  ((M : ℝ) * spacing) => hregion.symm ▸ T)
-              htail
-          _ = regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
-                (cmp99SourceUbarNextFineRadius d M epsilon)
-                Scale.toSourceScale.data.nextBackground chain.tail
-                nextSmall := by
-            simpa [regions'] using
-              (regions.weightedQprimeTower_transport hregion hd hM rho
-                ((M : ℝ) * spacing)
-                (cmp99SourceUbarNextFineRadius d M epsilon)
-                Scale.toSourceScale.data.nextBackground chain.tail
-                nextSmall).symm
+        simpa [Tail', regions'] using
+          cmp99SourceRetainedWeightedTerminal_transport hregion Tail regions
+            hd hM chain.tail nextSmall htail
       have hlast : Fin.last (depth + 1) = (Fin.last depth).succ := by
         apply Fin.ext
         simp
-      rw [hlast]
       simpa [cmp99SourceGeneratedRetainedPhysicalTower,
         cmp99SourceIteratedLiftActiveRegionChain,
         CMP99SourceActiveRegionChain.weightedQprimeTower, Scale, Tail',
-        regions'] using
+        regions', hlast, Fin.cases_succ] using
         congrArg
           (fun T => CMP99SourceWeightedRegionalTower.step
             (g := SUNLieCoord Nc)
