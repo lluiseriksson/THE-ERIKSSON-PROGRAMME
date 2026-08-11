@@ -7,9 +7,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeAdjointDictionary
 import YangMills.RG.BalabanCMP99SourceGeneratedWeightedAdjointRange
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Exact terminal-owner action of the flat generated `Q'`
 
 The typed flat recursion is not silently identified with a separately

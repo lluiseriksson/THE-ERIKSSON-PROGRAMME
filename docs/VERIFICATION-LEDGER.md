@@ -33843,3 +33843,37 @@ remains compatible but unattained. Live counters stay exactly `20/41`,
 `TermSource = 0`. Failed diagnostics `31511264192`, `31511622674` and
 `31511987236`, plus content-PASS `31512372910`, remain preserved and did not
 seal.
+
+## Addendum 747 (2026-08-12, **flat generated terminal-owner action and mass kernels SEALED; terminal-block and stratum dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `e781ba4a25bea54229a3679bc1af50536a42a2e2`
+passed cold GitHub Actions run
+[`31539934539`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31539934539)
+with workflow checkpoint `694b241342b1e7465e80220d019276baed1b85f4`.
+The job ran for `27m18s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,483` jobs and the focal/audit stages exited `0/0`.
+All four declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9121003880`, named
+`flat-generated-qprime-terminal-owner-e781ba4a25bea54229a3679bc1af50536a42a2e2`,
+has GitHub digest
+`8fba273825ca427adf147e764a64cc42965995d4cc02c7994fdedca6bbc4c275`.
+The downloaded deterministic archive has SHA-256
+`a9d0760868a56164de18fa059b07da2189167cdba597be49dbbc7e49cfa01f73`,
+and all 13 internal manifest entries matched.
+
+The source proves the exact terminal-owner action of the canonical flat
+generated `Q'` and of its reverse coefficient-one synthesis. It consequently
+derives the source-weighted and counting-adjoint mass kernels with the literal
+coefficients `(M^{-d})^depth` and `(M^{-d})^(2*depth)`, respectively, on one
+terminal-owner fibre and zero off that fibre. No terminal operator or kernel
+identity is supplied by the caller.
+
+This is terminal-owner dictionary infrastructure, not a terminal-field
+producer. Terminal-block collapse, CMP99 stratum identification, generated
+precision matching, inversion, regional transport and uniform physical `B0`
+remain open. Window 15 remains compatible but unattained. Live counters stay
+exactly `20/41`, `TermSource = 0`. Colab v3 and warning-free v5 PASS remain
+diagnostic only; failed Colab v4 remains preserved. Only the cold run above
+retires the two PRE-VALIDATION marks.

@@ -9586,3 +9586,42 @@ diagnostics `31476670001`, `31477156542`, `31477467222`, `31477764120`,
 `31478077838` and `31478373414`, plus warm diagnostic PASS `31478664898`,
 remain preserved and did not seal. Only the cold run above retires the two
 PRE-VALIDATION marks.
+
+### Step 7.5cmm exact terminal-owner action and flat generated mass kernels (SEALED; terminal-block and stratum dictionaries open)
+
+Exact source checkpoint `e781ba4a25bea54229a3679bc1af50536a42a2e2`
+passed cold GitHub Actions run
+[`31539934539`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31539934539)
+with workflow checkpoint `694b241342b1e7465e80220d019276baed1b85f4`.
+The job ran from `21:53:05Z` to `22:20:23Z` (`27m18s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`21:54:56Z`; the focal ran to `22:20:10Z`, completed `8,483` jobs and exited
+zero. The audit ended at `22:20:19Z` and also exited zero. All four audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9121003880`, named
+`flat-generated-qprime-terminal-owner-e781ba4a25bea54229a3679bc1af50536a42a2e2`,
+has GitHub digest
+`8fba273825ca427adf147e764a64cc42965995d4cc02c7994fdedca6bbc4c275`.
+The downloaded deterministic archive has SHA-256
+`a9d0760868a56164de18fa059b07da2189167cdba597be49dbbc7e49cfa01f73`,
+and all 13 internal manifest entries matched.
+
+The source proves the exact action of the canonical flat generated `Q'` on a
+fine coordinate probe: its recursively generated terminal owner receives the
+literal coefficient `(M^{-d})^depth`. The reverse coefficient-one synthesis
+reads exactly that owner. These two facts derive explicit kernels for both
+the source-weighted mass, with coefficient `(M^{-d})^depth`, and Lean's
+counting-adjoint mass, with coefficient `(M^{-d})^(2*depth)`, inside one
+terminal-owner fibre and zero outside it.
+
+This seals terminal-owner dictionary infrastructure only. It does not
+identify the terminal coordinate type with one full coarse block, identify
+CMP99 strata, match the generated precision, construct an inverse or produce
+a regional Green bound. Regional transport and uniform physical `B0` remain
+open. Window 15 remains compatible but unattained. No terminal field is
+discharged: counters remain exactly `20/41`, `TermSource = 0`. The successful
+Colab v3 diagnostic and the failed v4 syntax diagnostic remain preserved; the
+warning-free Colab v5 PASS did not seal. Only the cold run above retires the
+two PRE-VALIDATION marks.
