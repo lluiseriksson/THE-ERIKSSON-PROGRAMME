@@ -33488,3 +33488,37 @@ interacting/regional transport and uniform `B0` remain open. Window 15 remains
 compatible but unattained. Live counters stay exactly `20/41`,
 `TermSource = 0`. Warm diagnostic PASS `31461960444` remains preserved and did
 not seal. Only the cold run above retires the two PRE-VALIDATION marks.
+
+## Addendum 736 (2026-08-11, **physical central-stabilized `G Q'^*` for an arbitrary coarse source GREEN; inverse packaging and generated identification open; 20/41 unchanged**)
+
+Exact source checkpoint `cc191c62e5109a343dfaacb97a1b28697177d35d`
+passed cold GitHub Actions run
+[`31465224082`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31465224082)
+with workflow checkpoint `801906660f41ec244346d38ca18bd37f9afe5f29`.
+The job ran for `25m19s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,551` jobs and the focal/audit stages exited `0/0`.
+All five declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom or new-module linter warning occurred.
+
+Artifact `9091813779`, named
+`stabilized-qprime-star-field-cc191c62e5109a343dfaacb97a1b28697177d35d`,
+has GitHub digest
+`2741476943f15506b98ffac1f027fd5ede1d3dcfea1338cc790f88d67e8f8114`.
+The downloaded deterministic archive has SHA-256
+`d288d18947b4ace9ec12d3d7d0d9a2484cd35c16fc409e88e497406993eaf1fa`,
+and all 13 internal manifest entries matched.
+
+The sealed source decomposes an arbitrary coarse physical field by the exact
+finite DFT, feeds every coefficient to the internally constructed stabilized
+one-mode solution and sums the resulting full-box fields. The literal
+precision sends this sum exactly to the coefficient-one physical weighted
+adjoint, proving `K H eta = Q'^* eta` without a supplied solution family or
+synthetic reconstruction identity.
+
+This is an arbitrary-source particular field, not an inverse CLM. Linear
+packaging, inverse-uniqueness identification with the generated physical
+covariance, interacting/regional transport and uniform `B0` remain open.
+Window 15 remains compatible but unattained. Live counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostics `31464394113` and
+`31464695776`, and warm diagnostic PASS `31464995108`, remain preserved and
+did not seal. Only the cold run above retires the two PRE-VALIDATION marks.

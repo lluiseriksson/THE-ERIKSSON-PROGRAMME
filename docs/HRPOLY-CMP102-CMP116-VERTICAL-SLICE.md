@@ -9162,3 +9162,40 @@ interacting/regional transport and uniform physical `B0` remain open. Window
 15 remains compatible but unattained. Counters stay exactly `20/41`,
 `TermSource = 0`. Warm diagnostic PASS `31461960444` remains preserved and
 did not seal. Only the cold run above retires the two PRE-VALIDATION marks.
+
+### Step 7.5cmb physical central-stabilized `G Q'^*` for an arbitrary coarse source (SEALED; inverse packaging and generated identification open)
+
+Exact source checkpoint `cc191c62e5109a343dfaacb97a1b28697177d35d`
+passed cold GitHub Actions run
+[`31465224082`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31465224082)
+with workflow checkpoint `801906660f41ec244346d38ca18bd37f9afe5f29`.
+The cold job ran for `25m19s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `06:30:36Z`; the focal ran
+from `06:30:36Z` to `06:53:50Z`, completed `8,551` jobs and exited zero; the
+audit exited zero at `06:53:59Z`. All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and explicit
+new-module warning gate were both empty.
+
+Artifact `9091813779`, named
+`stabilized-qprime-star-field-cc191c62e5109a343dfaacb97a1b28697177d35d`,
+has GitHub digest
+`2741476943f15506b98ffac1f027fd5ede1d3dcfea1338cc790f88d67e8f8114`.
+The downloaded deterministic archive has SHA-256
+`d288d18947b4ace9ec12d3d7d0d9a2484cd35c16fc409e88e497406993eaf1fa`,
+and all 13 internal manifest entries matched.
+
+The source proves the literal finite inverse-DFT expansion of every coarse
+physical field, specializes the coefficient-one full-box weighted adjoint to
+each sealed Fourier mode, and sums the internally constructed one-mode
+particular solutions. Linearity of the literal precision and exact DFT
+inversion then give the full-box equation `K H eta = Q'^* eta` for every
+coarse source. No inverse operator, solution family or reconstruction
+identity is supplied by the caller.
+
+This seals the arbitrary-source particular field, not an inverse CLM. Linear
+packaging, identification by inverse uniqueness with the generated physical
+covariance, interacting/regional transport and uniform physical `B0` remain
+open. Window 15 remains compatible but unattained. Counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostics `31464394113` and
+`31464695776`, and warm diagnostic PASS `31464995108`, remain preserved and
+did not seal. Only the cold run above retires the two PRE-VALIDATION marks.
