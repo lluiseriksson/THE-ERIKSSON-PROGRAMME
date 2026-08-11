@@ -54,6 +54,7 @@ theorem cmp99SourceFlatRealBlockAverageCLM_adjoint_eq_weight_smul
   simp only [ContinuousLinearMap.smul_apply, smul_smul]
   rw [cmp99SourceBlockAverageWeight_mul_card, one_smul]
 
+omit [NeZero d] [NeZero N] [NeZero Nc] in
 /-- The complete generated counting adjoint retains exactly one factor
 `M^{-d}` per recursive scale.  The reverse operator is the literal
 coefficient-one synthesis recursion paired with the same region chain. -/
@@ -92,7 +93,7 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_eq_weight_pow_sm
       simp only [ContinuousLinearMap.comp_apply,
         ContinuousLinearMap.smul_apply, map_smul, smul_smul, pow_succ]
 
-omit [NeZero N] in
+omit [NeZero d] [NeZero N] [NeZero Nc] in
 /-- Consequently the literal counting-space mass `Q'^* Q'` is the
 source-weighted mass with the same visible recursive volume factor. -/
 theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_comp_eq
