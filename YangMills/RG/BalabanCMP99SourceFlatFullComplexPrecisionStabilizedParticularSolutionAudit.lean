@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionStabilizedParticularSolution
+
+/-!
+PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
+and the result has not yet been verified by the Lean compiler.
+-/
+
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_eq_zero_of_coarseAlias_ne
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_stabilizedParticularSolution_eq_zero_of_coarseAlias_ne
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_stabilizedParticularSolution_fixedCoarseFibre
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionAction_stabilizedParticularSolution
