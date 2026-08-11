@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointFourierOrientation
 
 /-!
-# PRE-VALIDATION: full-box flat complex precision on one Fourier mode
-
-The source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the compiler.
+# Full-box flat complex precision on one Fourier mode
 
 CMP89 (2.44) uses the literal full-lattice precision
 

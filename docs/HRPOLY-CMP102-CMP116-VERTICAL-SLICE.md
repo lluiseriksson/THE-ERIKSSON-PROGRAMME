@@ -8925,3 +8925,45 @@ stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31442342886` and
 `31442580969` preserve the pinned-index and equivalence-normalization errors;
 restored diagnostic PASS `31442806454` did not seal. Only the cold run above
 retires PRE-VALIDATION.
+
+### Step 7.5clv literal full-box precision mode action and physical DFT column (SEALED; arbitrary coefficient vectors and central stabilization open)
+
+Exact source checkpoint `aeeaf38cd0fd31c7b0e5a71e35129191b50b312e`
+passed cold GitHub Actions run
+[`31448164862`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31448164862)
+with workflow checkpoint `7abd190cead5377d1e09081abd943106c8b997c7`.
+Restoration and saving of `.lake/build` were both skipped. The focal ran from
+`01:06:35Z` to `01:29:46Z`, completed `8,543` jobs and exited zero; the audit
+exited zero at `01:29:54Z`. All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist was empty and
+the new module emitted no linter warning.
+
+Artifact `9085767466`, named
+`flat-full-complex-precision-mode-action-aeeaf38cd0fd31c7b0e5a71e35129191b50b312e`,
+has GitHub digest
+`19db379b4da0f57c4a90a7fdd6e64a64496863c95fba2136dfca1d428116ec79`.
+Its deterministic inner archive re-hashed on Windows to
+`c70f76e18ce440e13ac365f46bf948e44083e556458c6e92b1f84d8266cf3faa`;
+all 13 internal manifest entries matched.
+
+The source constructs the literal full-box `Q'^*Q'` by composing the sealed
+source-normalized flat average with its coefficient-one weighted adjoint. It
+then assembles the printed flat precision as the sum of the `M^2`-scaled flat
+stencil, the separate scalar mass-squared term and `a Q'^*Q'`. On one physical
+Fourier mode its exact forward DFT is the fine-volume multiple of one column
+of the transpose of the sealed physical alias precision matrix. The transpose
+and opposite-momentum row are inherited from the literal DFT/weighted-adjoint
+orientation; no synthetic Fourier operator or abstract self-adjointness is
+substituted.
+
+This does not yet lift the column equality to an arbitrary fixed-fibre
+coefficient vector, construct the physical solution field, stabilize the
+central removable zero, build an inverse CLM, identify the stabilized Fourier
+kernel with `G Q'^*`, transport to the interacting/regional operator or
+produce physical `B0`. Window 15 remains compatible but unattained. Counters
+stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31445364521`,
+`31445590852` and `31445847597` preserve the coarse-alias, nominal-DFT and
+folded-rank-one elaboration boundaries. Warm passes `31446095141` and
+`31447893374` did not seal. Cold PASS `31446282022` is retained as superseded
+evidence because its source emitted one unused-instance linter warning; only
+the warning-free cold run above retires PRE-VALIDATION.

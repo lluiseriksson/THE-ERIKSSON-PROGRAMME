@@ -33278,3 +33278,40 @@ remain open. Window 15 is compatible but unattained. Live counters stay
 exactly `20/41`, `TermSource = 0`. Failed diagnostics `31442342886` and
 `31442580969`, plus restored diagnostic PASS `31442806454`, remain preserved;
 only the cold run above retires PRE-VALIDATION.
+
+## Addendum 730 (2026-08-11, **literal full-box flat precision mode action GREEN; arbitrary-vector lift and central stabilization open; 20/41 unchanged**)
+
+Exact source checkpoint `aeeaf38cd0fd31c7b0e5a71e35129191b50b312e`
+passed cold GitHub Actions run
+[`31448164862`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31448164862)
+with workflow checkpoint `7abd190cead5377d1e09081abd943106c8b997c7`.
+The job ran for `25m08s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,543` jobs and the focal/audit stages exited `0/0`.
+All six declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom or new-module linter warning occurred.
+
+Artifact `9085767466`, named
+`flat-full-complex-precision-mode-action-aeeaf38cd0fd31c7b0e5a71e35129191b50b312e`,
+has GitHub digest
+`19db379b4da0f57c4a90a7fdd6e64a64496863c95fba2136dfca1d428116ec79`.
+The downloaded deterministic archive has SHA-256
+`c70f76e18ce440e13ac365f46bf948e44083e556458c6e92b1f84d8266cf3faa`,
+and all 13 internal manifest entries matched.
+
+The source constructs the actual full-box `Q'^*Q'`, keeps the scalar
+mass-squared and averaging coefficient `a` separate, and assembles the literal
+flat precision `M^2 Delta_flat + mass^2 I + a Q'^*Q'`. Its forward physical
+DFT on one Fourier mode is exactly the full fine-volume multiple of the
+corresponding column of the transposed physical alias precision matrix. The
+orientation is derived from the literal weighted adjoint and opposite-momentum
+row, not from abstract self-adjointness.
+
+The arbitrary-coefficient lift, physical solution field, central stabilized
+branch, inverse CLM, stabilized-kernel dictionary, interacting/regional
+transport and physical `B0` remain open. Window 15 is compatible but
+unattained. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31445364521`, `31445590852` and `31445847597`, warm diagnostic
+PASSes `31446095141` and `31447893374`, and superseded cold PASS `31446282022`
+remain preserved; the latter was not used to seal because its source emitted
+one unused-instance linter warning. Only the warning-free cold run above
+retires PRE-VALIDATION.
