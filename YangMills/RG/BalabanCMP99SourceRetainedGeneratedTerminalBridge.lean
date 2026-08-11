@@ -159,11 +159,16 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
                 (cmp99SourceUbarNextFineRadius d M epsilon)
                 Scale.toSourceScale.data.nextBackground chain.tail
                 nextSmall := by
-            exact (regions.weightedQprimeTower_transport hregion hd hM rho
-              ((M : ℝ) * spacing)
-              (cmp99SourceUbarNextFineRadius d M epsilon)
-              Scale.toSourceScale.data.nextBackground chain.tail
-              nextSmall).symm
+            simpa [regions'] using
+              (regions.weightedQprimeTower_transport hregion hd hM rho
+                ((M : ℝ) * spacing)
+                (cmp99SourceUbarNextFineRadius d M epsilon)
+                Scale.toSourceScale.data.nextBackground chain.tail
+                nextSmall).symm
+      have hlast : Fin.last (depth + 1) = (Fin.last depth).succ := by
+        apply Fin.ext
+        simp
+      rw [hlast]
       simpa [cmp99SourceGeneratedRetainedPhysicalTower,
         cmp99SourceIteratedLiftActiveRegionChain,
         CMP99SourceActiveRegionChain.weightedQprimeTower, Scale, Tail',
