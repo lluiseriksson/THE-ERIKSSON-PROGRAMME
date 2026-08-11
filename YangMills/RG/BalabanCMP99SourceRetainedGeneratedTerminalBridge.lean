@@ -30,6 +30,37 @@ noncomputable section
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
+/-- Transporting a retained physical tower and then selecting a prefix is
+the same as transporting that prefix as a weighted regional tower. -/
+theorem CMP99SourceRetainedPhysicalTower.towerAt_transport
+    {Omega₁ Omega₂ : ActiveGaugeRegion d N} (h : Omega₁ = Omega₂)
+    {rho : SUNAdjointModel Nc} {spacing : ℝ}
+    {background : GaugeConfig d N (SUN Nc)} {depth : ℕ}
+    (T : CMP99SourceRetainedPhysicalTower rho Omega₂ M spacing background depth)
+    (r : Fin (depth + 1)) :
+    ((h.symm ▸ T).towerAt r) = h.symm ▸ (T.towerAt r) := by
+  cases h
+  rfl
+
+/-- The generated weighted tower commutes with transport of its typed source
+region chain.  Backgrounds, radius chains, and smallness certificates do not
+change because they live on the fixed ambient lattice. -/
+theorem CMP99SourceActiveRegionChain.weightedQprimeTower_transport
+    {Omega₁ Omega₂ : ActiveGaugeRegion d N} (h : Omega₁ = Omega₂)
+    {depth : ℕ}
+    (regions : CMP99SourceActiveRegionChain d M N Omega₂ depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing epsilon : ℝ) (background : GaugeConfig d N (SUN Nc))
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d N,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ((h.symm ▸ regions).weightedQprimeTower hd hM rho spacing epsilon
+        background chain fineSmall) =
+      h.symm ▸ (regions.weightedQprimeTower hd hM rho spacing epsilon
+        background chain fineSmall) := by
+  cases h
+  rfl
+
 /-- The last prefix retained by the physical recursive constructor is
 literally the tower generated on the canonical typed active-region chain. -/
 theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower
@@ -100,9 +131,7 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
           (cmp99ActiveCoarseRegion
             (M := M) (N' := cmp99RegionalLatticeSize M N depth)
             (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
-          depth := by
-        rw [hregion]
-        exact regions
+          depth := hregion.symm ▸ regions
       have htail := ih ((M : ℝ) * spacing)
         (cmp99SourceUbarNextFineRadius d M epsilon)
         Scale.toSourceScale.data.nextBackground chain.tail nextSmall
@@ -111,7 +140,30 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
             regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
               (cmp99SourceUbarNextFineRadius d M epsilon)
               Scale.toSourceScale.data.nextBackground chain.tail nextSmall := by
-        simpa [Tail', regions', regions] using htail
+        calc
+          Tail'.towerAt (Fin.last depth) =
+              hregion.symm ▸ (Tail.towerAt (Fin.last depth)) :=
+            CMP99SourceRetainedPhysicalTower.towerAt_transport hregion Tail _
+          _ = hregion.symm ▸
+              (regions.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+                (cmp99SourceUbarNextFineRadius d M epsilon)
+                Scale.toSourceScale.data.nextBackground chain.tail
+                nextSmall) := by
+            exact congrArg
+              (fun T : CMP99SourceWeightedRegionalTower
+                  (g := SUNLieCoord Nc)
+                  (cmp99IteratedLiftActiveRegion (M := M) Omega depth)
+                  ((M : ℝ) * spacing) => hregion.symm ▸ T)
+              htail
+          _ = regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+                (cmp99SourceUbarNextFineRadius d M epsilon)
+                Scale.toSourceScale.data.nextBackground chain.tail
+                nextSmall := by
+            exact (regions.weightedQprimeTower_transport hregion hd hM rho
+              ((M : ℝ) * spacing)
+              (cmp99SourceUbarNextFineRadius d M epsilon)
+              Scale.toSourceScale.data.nextBackground chain.tail
+              nextSmall).symm
       simpa [cmp99SourceGeneratedRetainedPhysicalTower,
         cmp99SourceIteratedLiftActiveRegionChain,
         CMP99SourceActiveRegionChain.weightedQprimeTower, Scale, Tail',
