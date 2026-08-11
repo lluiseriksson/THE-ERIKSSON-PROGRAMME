@@ -136,7 +136,7 @@ theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
       rw [Nat.cast_mul, mul_pow]
       have hscale :
           ((M : ℂ) ^ d * (N' : ℂ) ^ d) *
-              (1 / ((M : ℂ) ^ d * (N' : ℂ) ^ d)) = 1 := by
+              (((M : ℂ) ^ d * (N' : ℂ) ^ d)⁻¹) = 1 := by
         field_simp [hM, hN]
       rw [smul_smul, hscale, one_smul]
     · intro b _ hb
