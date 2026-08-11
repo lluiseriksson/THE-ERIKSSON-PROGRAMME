@@ -63,6 +63,7 @@ Wilson line is one. -/
 
 /-- A finite physical Ubar exponent vanishes when every special-unitary
 deviation in its support is one. -/
+omit hNc in
 theorem cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one
     {ι : Type*} (s : Finset ι) (w : ι → ℝ) (D : ι → SUN Nc)
     (hD : ∀ i ∈ s, D i = 1) :
