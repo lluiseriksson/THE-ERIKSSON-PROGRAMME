@@ -238,12 +238,13 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
         exact cmp99SourceFlatGaugeConfig_zero_small
       simp only [CMP99SourceActiveRegionChain.flatPhysicalQprime,
         CMP99SourceActiveRegionChain.physicalQprime,
-        CMP99SourceActiveRegionChain.flatExplicitQprime,
-        cmp99SourceUbarNextFineRadius_zero,
-        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+        CMP99SourceActiveRegionChain.flatExplicitQprime]
       rw [cmp99SourceTransportedBlockAverageCLM_flat_eq_explicit]
-      exact congrArg
-        (fun T => T.comp (cmp99SourceFlatRealBlockAverageCLM Omega)) htail'
+      apply congrArg
+        (fun T => T.comp (cmp99SourceFlatRealBlockAverageCLM Omega))
+      convert htail' using 1 <;>
+        simp only [cmp99SourceUbarNextFineRadius_zero,
+          cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
 
 /-- The generated coefficient-one physical synthesis is likewise exactly the
 explicit reverse flat recursion. -/
@@ -277,14 +278,14 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
         exact cmp99SourceFlatGaugeConfig_zero_small
       simp only [CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint,
         CMP99SourceActiveRegionChain.physicalWeightedAdjoint,
-        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint,
-        cmp99SourceUbarNextFineRadius_zero,
-        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint]
       rw [cmp99SourceTransportedBlockWeightedAdjointCLM_flat_eq_explicit]
-      exact congrArg
+      apply congrArg
         (fun T =>
           (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp T)
-        htail'
+      convert htail' using 1 <;>
+        simp only [cmp99SourceUbarNextFineRadius_zero,
+          cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
 
 end
 
