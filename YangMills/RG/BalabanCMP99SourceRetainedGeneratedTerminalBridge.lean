@@ -248,7 +248,10 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
             spacing
             (cmp99SourceWeightedPhysicalTransport rho background) T)
           htailRec
-        _ = _ := hgenerated.symm
+        _ = (cmp99SourceIteratedLiftActiveRegionChain
+              (M := M) Omega (depth + 1)
+              |>.weightedQprimeTower hd hM rho spacing epsilon background
+                chain fineSmall) := hgenerated.symm
 
 /-- At the literal flat background, the terminal retained prefix is therefore
 the canonical generated `Q'` tower used by the CMP99 transition, mass,
