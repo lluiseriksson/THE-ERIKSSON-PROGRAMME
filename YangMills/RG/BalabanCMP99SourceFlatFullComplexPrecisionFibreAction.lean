@@ -130,10 +130,11 @@ theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
           (cmp99FlatComplexFibreFourierMode k.1
             (((((M * N' : ℕ) : ℂ) ^ d)⁻¹) • coeff k)) l
       rw [cmp99FlatPhysicalFibreDFT_fourierMode]
-      simp only [k, if_pos rfl]
-      have hvol : ((((M * N' : ℕ) : ℂ) ^ d)) ≠ 0 := by
-        exact pow_ne_zero d (Nat.cast_ne_zero.mpr (NeZero.ne (M * N')))
-      module
+      simp only [k, if_true]
+      have hM : (M : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne M)
+      have hN : (N' : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne N')
+      rw [Nat.cast_mul, mul_pow]
+      field_simp [hM, hN]
     · intro b _ hb
       change cmp99FlatPhysicalFibreDFT
           (cmp99FlatComplexFibreFourierMode b.1
