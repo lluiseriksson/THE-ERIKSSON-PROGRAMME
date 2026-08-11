@@ -44,6 +44,8 @@ theorem cmp99SourceFlatComplexBlockAverageCLM_map_complex_smul
       c • cmp99SourceFlatComplexBlockAverageCLM Omega phi := by
   apply WithLp.ofLp_injective
   funext y
+  change cmp99SourceFlatComplexBlockAverageCLM Omega (c • phi) y =
+    c • cmp99SourceFlatComplexBlockAverageCLM Omega phi y
   rw [cmp99SourceFlatComplexBlockAverageCLM_apply,
     cmp99SourceFlatComplexBlockAverageCLM_apply]
   simp only [PiLp.smul_apply]
@@ -63,6 +65,9 @@ theorem cmp99SourceFlatComplexBlockWeightedAdjointCLM_map_complex_smul
       c • cmp99SourceFlatComplexBlockWeightedAdjointCLM Omega hOmega eta := by
   apply WithLp.ofLp_injective
   funext x
+  change cmp99SourceFlatComplexBlockWeightedAdjointCLM Omega hOmega
+      (c • eta) x =
+    c • cmp99SourceFlatComplexBlockWeightedAdjointCLM Omega hOmega eta x
   rw [cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply,
     cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply]
   rfl
@@ -70,6 +75,7 @@ theorem cmp99SourceFlatComplexBlockWeightedAdjointCLM_map_complex_smul
 /-- The complete generated forward complex recursion is complex homogeneous.
 This is proved from the literal one-step maps rather than supplied as a
 property of an external complex operator family. -/
+omit [NeZero d] [NeZero Nc] in
 theorem CMP99SourceActiveRegionChain.flatExplicitComplexQprime_map_complex_smul
     {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
@@ -92,6 +98,7 @@ theorem CMP99SourceActiveRegionChain.flatExplicitComplexQprime_map_complex_smul
 
 /-- The complete generated reverse coefficient-one synthesis is complex
 homogeneous as well. -/
+omit [NeZero d] [NeZero Nc] in
 theorem
     CMP99SourceActiveRegionChain.flatExplicitComplexWeightedAdjoint_map_complex_smul
     {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
@@ -112,7 +119,16 @@ theorem
           (tail.flatExplicitComplexWeightedAdjoint (c • eta)) =
         c • cmp99SourceFlatComplexBlockWeightedAdjointCLM Omega hOmega
           (tail.flatExplicitComplexWeightedAdjoint eta)
-      rw [ih, cmp99SourceFlatComplexBlockWeightedAdjointCLM_map_complex_smul]
+      calc
+        _ = cmp99SourceFlatComplexBlockWeightedAdjointCLM Omega hOmega
+              (c • tail.flatExplicitComplexWeightedAdjoint eta) :=
+            congrArg
+              (fun z =>
+                cmp99SourceFlatComplexBlockWeightedAdjointCLM Omega hOmega z)
+              (ih c eta)
+        _ = _ :=
+          cmp99SourceFlatComplexBlockWeightedAdjointCLM_map_complex_smul
+            Omega hOmega c _
 
 /-- Product of the literal one-step Fourier amplitudes along one typed active
 region chain.  Every reciprocal alias is generated internally at its prefix. -/
@@ -163,7 +179,9 @@ theorem CMP99SourceActiveRegionChain.flatExplicitComplexQprime_fourierMode
   induction regions with
   | stop Omega =>
       intro k v
-      rfl
+      change cmp99SourceFlatActiveComplexFibreFourierMode Omega k v =
+        (1 : ℂ) • cmp99SourceFlatActiveComplexFibreFourierMode Omega k v
+      simp
   | @step N' depth _ Omega hOmega tail ih =>
       intro k v
       change tail.flatExplicitComplexQprime
