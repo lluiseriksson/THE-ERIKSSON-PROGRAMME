@@ -33620,3 +33620,34 @@ counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
 `31476670001`, `31477156542`, `31477467222`, `31477764120`, `31478077838` and
 `31478373414`, and warm PASS `31478664898`, remain preserved and did not
 seal.
+
+## Addendum 740 (2026-08-11, **canonical zero-radius normalized flat scale SEALED; recursive generated dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `1f044aa0200ab73a9386df0a969e45d257db4f78`
+passed cold GitHub Actions run
+[`31481437430`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31481437430)
+with workflow checkpoint `8dd1c35e235e300eb5a4424aad710645817f9096`.
+The job ran for `18m31s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,430` jobs and the focal/audit stages exited `0/0`.
+All three declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; no forbidden axiom or new-module
+text-gate violation occurred.
+
+Artifact `9097889525`, named
+`flat-normalized-scale-1f044aa0200ab73a9386df0a969e45d257db4f78`, has
+GitHub digest
+`25a593b7b1984bc69a81264c0a87e6c65ef69513dc67d0366277bcf54329bbcb`.
+The downloaded deterministic archive has SHA-256
+`a2ca7484da309c5897e763d8d9a99ebf1bcab64ce87cfb09a862e8569ff4ec91`,
+and all 13 internal manifest entries matched.
+
+The source constructs the canonical normalized one-scale object on the flat
+fine background at radius zero, derives its no-winding and fine-smallness
+proofs, and proves that its physical next background is literally flat. It
+does not accept the scale or successor background as data. Recursive flatness,
+the exact generated `Q'` tower, counting-adjoint/weighted-adjoint spacing,
+real precision matching and complexification remain open dictionaries.
+Regional transport and uniform physical `B0` remain open. Window 15 remains
+compatible but unattained. Live counters stay exactly `20/41`,
+`TermSource = 0`. Warm diagnostic PASS `31480922329` remains preserved and
+did not seal.

@@ -9239,6 +9239,41 @@ stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31467608127`,
 remain preserved and did not seal. Only the cold run above retires the two
 PRE-VALIDATION marks.
 
+### Step 7.5cmf canonical zero-radius normalized flat scale (SEALED; recursive flat tower and generated operator dictionaries open)
+
+Exact source checkpoint `1f044aa0200ab73a9386df0a969e45d257db4f78`
+passed cold GitHub Actions run
+[`31481437430`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31481437430)
+with workflow checkpoint `8dd1c35e235e300eb5a4424aad710645817f9096`.
+The job ran from `10:15:58Z` to `10:34:29Z` (`18m31s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`10:17:44Z`; the focal ran to `10:34:18Z`, completed `8,430` jobs and exited
+zero. The audit ended at `10:34:27Z` and also exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text gate were empty.
+
+Artifact `9097889525`, named
+`flat-normalized-scale-1f044aa0200ab73a9386df0a969e45d257db4f78`, has
+GitHub digest
+`25a593b7b1984bc69a81264c0a87e6c65ef69513dc67d0366277bcf54329bbcb`.
+The downloaded deterministic archive has SHA-256
+`a2ca7484da309c5897e763d8d9a99ebf1bcab64ce87cfb09a862e8569ff4ec91`,
+and all 13 internal manifest entries matched.
+
+The sealed source proves positivity of the explicit no-winding threshold and
+constructs the canonical source-normalized scale on a saturated active region
+at literal fine radius zero. Linkwise smallness and no winding are generated
+internally. Its physical-Ubar-produced `nextBackground` is then the literal
+flat coarse gauge configuration by the preceding seal; neither the scale nor
+the successor background is supplied by the caller. This is still one scale.
+The zero-radius certificate chain, recursive flatness of the retained physical
+tower, exact generated `Q'`, the counting-adjoint/weighted-adjoint spacing
+factor, real precision matching and complexification remain explicit next
+dictionaries. Regional transport and uniform physical `B0` remain open.
+Window 15 remains compatible but unattained. Counters remain exactly `20/41`,
+`TermSource = 0`. Warm diagnostic PASS `31480922329` remains preserved and did
+not seal. Only the cold run above retires the two PRE-VALIDATION marks.
+
 ### Step 7.5cmd flat full-complex inverse uniqueness (SEALED; generated physical dictionary open)
 
 Exact source checkpoint `621a84bdd7a33ccb87f4bb02043d63cd52967ac4`

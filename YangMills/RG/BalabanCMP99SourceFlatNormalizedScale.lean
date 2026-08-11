@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatUbarPreservation
 /-!
 # The canonical normalized CMP99 scale at the flat background
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 This file installs the sealed flat-Ubar preservation theorem in the canonical
 source-normalized one-scale constructor.  The fine radius is literally zero,
 so fine-link smallness and no winding are derived internally.  In particular,
