@@ -67,8 +67,10 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_eq_weight_pow_sm
   letI : NeZero N := regions.neZero
   induction regions with
   | stop Omega =>
-      simp [CMP99SourceActiveRegionChain.flatExplicitQprime,
-        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint]
+      simp only [CMP99SourceActiveRegionChain.flatExplicitQprime,
+        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint,
+        pow_zero, one_smul]
+      rw [ContinuousLinearMap.adjoint_id]
   | @step N' depth _ Omega hOmega tail ih =>
       letI : NeZero (M * N') := inferInstance
       change
@@ -87,6 +89,7 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_eq_weight_pow_sm
 
 /-- Consequently the literal counting-space mass `Q'^* Q'` is the
 source-weighted mass with the same visible recursive volume factor. -/
+omit [NeZero N] in
 theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_comp_eq
     {depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
