@@ -61,9 +61,9 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_eq_weight_pow_sm
     {depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
     letI : NeZero N := regions.neZero
-    regions.flatExplicitQprime.adjoint =
+    (regions.flatExplicitQprime (Nc := Nc)).adjoint =
       (cmp99SourceBlockAverageWeight M d) ^ depth •
-        regions.flatExplicitWeightedAdjoint := by
+        regions.flatExplicitWeightedAdjoint (Nc := Nc) := by
   letI : NeZero N := regions.neZero
   induction regions with
   | stop Omega =>
@@ -72,11 +72,11 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_eq_weight_pow_sm
   | @step N' depth _ Omega hOmega tail ih =>
       letI : NeZero (M * N') := inferInstance
       change
-        (tail.flatExplicitQprime.comp
+        ((tail.flatExplicitQprime (Nc := Nc)).comp
           (cmp99SourceFlatRealBlockAverageCLM Omega)).adjoint =
         (cmp99SourceBlockAverageWeight M d) ^ (depth + 1) •
           ((cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp
-            tail.flatExplicitWeightedAdjoint)
+            (tail.flatExplicitWeightedAdjoint (Nc := Nc)))
       rw [ContinuousLinearMap.adjoint_comp, ih,
         cmp99SourceFlatRealBlockAverageCLM_adjoint_eq_weight_smul
           Omega hOmega]
@@ -91,10 +91,11 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_comp_eq
     {depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
     letI : NeZero N := regions.neZero
-    regions.flatExplicitQprime.adjoint.comp regions.flatExplicitQprime =
+    (regions.flatExplicitQprime (Nc := Nc)).adjoint.comp
+        (regions.flatExplicitQprime (Nc := Nc)) =
       (cmp99SourceBlockAverageWeight M d) ^ depth •
-        (regions.flatExplicitWeightedAdjoint.comp
-          regions.flatExplicitQprime) := by
+        ((regions.flatExplicitWeightedAdjoint (Nc := Nc)).comp
+          (regions.flatExplicitQprime (Nc := Nc))) := by
   letI : NeZero N := regions.neZero
   rw [regions.flatExplicitQprime_adjoint_eq_weight_pow_smul]
   apply ContinuousLinearMap.ext
