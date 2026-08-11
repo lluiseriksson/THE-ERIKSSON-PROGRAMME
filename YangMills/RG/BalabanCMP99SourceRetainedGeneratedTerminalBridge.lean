@@ -61,6 +61,19 @@ theorem CMP99SourceActiveRegionChain.weightedQprimeTower_transport
   cases h
   rfl
 
+/-- The two standard presentations of transport for a typed active-region
+chain (`▸` and `Eq.mpr` on the indexed family) coincide. -/
+theorem CMP99SourceActiveRegionChain.transport_eq_mpr
+    {Omega₁ Omega₂ : ActiveGaugeRegion d N} (h : Omega₁ = Omega₂)
+    {depth : ℕ}
+    (regions : CMP99SourceActiveRegionChain d M N Omega₂ depth) :
+    (h.symm ▸ regions) =
+      Eq.mpr (congrArg
+        (fun region => CMP99SourceActiveRegionChain d M N region depth) h)
+        regions := by
+  cases h
+  rfl
+
 /-- Transport of the terminal-prefix identification across an equality of
 regional indices.  Packaging both dependent structures in one lemma avoids
 comparing propositionally equal `Eq.rec` motives downstream. -/
@@ -154,6 +167,17 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
             (M := M) (N' := cmp99RegionalLatticeSize M N depth)
             (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
           depth := hregion.symm ▸ regions
+      let regionsRec : CMP99SourceActiveRegionChain d M
+          (cmp99RegionalLatticeSize M N depth)
+          (cmp99ActiveCoarseRegion
+            (M := M) (N' := cmp99RegionalLatticeSize M N depth)
+            (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+          depth := by
+        rw [hregion]
+        exact regions
+      have hregions : regions' = regionsRec := by
+        simpa [regions', regionsRec] using
+          regions.transport_eq_mpr hregion
       have htail := ih ((M : ℝ) * spacing)
         (cmp99SourceUbarNextFineRadius d M epsilon)
         Scale.toSourceScale.data.nextBackground chain.tail nextSmall
@@ -165,6 +189,13 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
         simpa [Tail', regions'] using
           cmp99SourceRetainedWeightedTerminal_transport hregion Tail regions
             hd hM chain.tail nextSmall htail
+      have htailRec :
+          Tail'.towerAt (Fin.last depth) =
+            regionsRec.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+              (cmp99SourceUbarNextFineRadius d M epsilon)
+              Scale.toSourceScale.data.nextBackground chain.tail nextSmall := by
+        rw [← hregions]
+        exact htail'
       have hlast : Fin.last (depth + 1) = (Fin.last depth).succ := by
         apply Fin.ext
         simp
@@ -189,7 +220,7 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
               (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
               (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
               spacing (cmp99SourceWeightedPhysicalTransport rho background)
-              (regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+              (regionsRec.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
                 (cmp99SourceUbarNextFineRadius d M epsilon)
                 Scale.toSourceScale.data.nextBackground chain.tail
                 nextSmall) := by
@@ -206,7 +237,7 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
               (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
               (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
               spacing (cmp99SourceWeightedPhysicalTransport rho background)
-              (regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+              (regionsRec.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
                 (cmp99SourceUbarNextFineRadius d M epsilon)
                 Scale.toSourceScale.data.nextBackground chain.tail
                 nextSmall) := congrArg
@@ -216,7 +247,7 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
             (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
             spacing
             (cmp99SourceWeightedPhysicalTransport rho background) T)
-          htail'
+          htailRec
         _ = _ := hgenerated.symm
 
 /-- At the literal flat background, the terminal retained prefix is therefore
