@@ -7,6 +7,7 @@ and the result has not yet been verified by the Lean compiler.
 
 #print axioms YangMills.RG.cmp99SourceFlatRealTransport
 #print axioms YangMills.RG.cmp99SourceFlatGaugeConfig_zero_small
+#print axioms YangMills.RG.cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground
 #print axioms YangMills.RG.cmp99SourceWeightedPhysicalTransport_flat_eq_explicit
 #print axioms YangMills.RG.cmp99SourceFlatRealBlockAverageCLM
 #print axioms YangMills.RG.cmp99SourceFlatRealBlockWeightedAdjointCLM

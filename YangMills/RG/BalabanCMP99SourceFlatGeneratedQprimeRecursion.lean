@@ -59,6 +59,34 @@ theorem cmp99SourceFlatGaugeConfig_zero_small
   change ‖((1 : SUN Nc) : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0
   simp
 
+/-- Every radius-zero normalized scale built on the literal flat background
+has the literal flat next background, independently of the proof terms used
+to certify nonnegativity, no winding, and fine-link smallness. -/
+@[simp] theorem
+    cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground
+    {N' : ℕ} [NeZero N']
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (Omega : ActiveGaugeRegion d (M * N'))
+    (blockSaturated : Omega.BlockSaturated)
+    (epsilonFine_nonneg : 0 ≤ (0 : ℝ))
+    (noWinding : cmp99SourceUbarFineDeviationRadius d M 0 <
+      cmp99UbarNoWindingThreshold Nc)
+    (fineSmall : ∀ e : ConcreteEdge d (M * N'),
+      ‖(cmp99SourceFlatGaugeConfig d (M * N') Nc e :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0) :
+    (CMP99SourceNormalizedRegionalScale.ofFineSmall hd hM Omega
+        (cmp99SourceFlatGaugeConfig d (M * N') Nc) blockSaturated
+        0 epsilonFine_nonneg noWinding fineSmall).toSourceScale.data.nextBackground =
+      cmp99SourceFlatGaugeConfig d N' Nc := by
+  change
+    cmp99PhysicalUbarGaugeConfigOfDeviationBudget
+        (cmp99SourceFlatGaugeConfig d (M * N') Nc)
+        (cmp99SourceBaseCoarseBackground
+          (cmp99SourceFlatGaugeConfig d (M * N') Nc))
+        _ _ _ _ _ =
+      cmp99SourceFlatGaugeConfig d N' Nc
+  exact cmp99PhysicalUbarGaugeConfigOfDeviationBudget_flat _ _ _ _ _
+
 /-- The physical contour transport on a flat background is the explicit
 identity transport as a complete family of fibre isometries. -/
 theorem cmp99SourceWeightedPhysicalTransport_flat_eq_explicit
@@ -199,6 +227,10 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
       let Scale := cmp99SourceFlatNormalizedRegionalScale
         (Nc := Nc) hd hM Omega hOmega
       have htail := ih ((M : ℝ) * spacing)
+      have htail' := htail
+      simp only [CMP99SourceActiveRegionChain.flatPhysicalQprime,
+        CMP99SourceActiveRegionChain.physicalQprime,
+        CMP99SourceActiveRegionChain.flatExplicitQprime] at htail'
       have nextSmall : ∀ e : ConcreteEdge d N',
           ‖(Scale.toSourceScale.data.nextBackground e :
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
@@ -206,9 +238,10 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
         exact cmp99SourceFlatGaugeConfig_zero_small
       simp only [CMP99SourceActiveRegionChain.flatPhysicalQprime,
         CMP99SourceActiveRegionChain.physicalQprime,
-        CMP99SourceActiveRegionChain.flatExplicitQprime]
-      rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground,
-        htail, cmp99SourceTransportedBlockAverageCLM_flat_eq_explicit]
+        CMP99SourceActiveRegionChain.flatExplicitQprime,
+        cmp99SourceUbarNextFineRadius_zero,
+        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+      rw [htail', cmp99SourceTransportedBlockAverageCLM_flat_eq_explicit]
 
 /-- The generated coefficient-one physical synthesis is likewise exactly the
 explicit reverse flat recursion. -/
@@ -231,6 +264,10 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
       let Scale := cmp99SourceFlatNormalizedRegionalScale
         (Nc := Nc) hd hM Omega hOmega
       have htail := ih ((M : ℝ) * spacing)
+      have htail' := htail
+      simp only [CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint,
+        CMP99SourceActiveRegionChain.physicalWeightedAdjoint,
+        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint] at htail'
       have nextSmall : ∀ e : ConcreteEdge d N',
           ‖(Scale.toSourceScale.data.nextBackground e :
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
@@ -238,9 +275,10 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
         exact cmp99SourceFlatGaugeConfig_zero_small
       simp only [CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint,
         CMP99SourceActiveRegionChain.physicalWeightedAdjoint,
-        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint]
-      rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground,
-        htail,
+        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint,
+        cmp99SourceUbarNextFineRadius_zero,
+        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
+      rw [htail',
         cmp99SourceTransportedBlockWeightedAdjointCLM_flat_eq_explicit]
 
 end
