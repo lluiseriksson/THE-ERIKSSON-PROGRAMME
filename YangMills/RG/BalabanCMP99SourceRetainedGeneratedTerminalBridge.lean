@@ -225,33 +225,15 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
                 Scale.toSourceScale.data.nextBackground chain.tail
                 nextSmall) := by
         rfl
-      calc
-        _ = CMP99SourceWeightedRegionalTower.step
-              (g := SUNLieCoord Nc)
-              (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
-              (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
-              spacing (cmp99SourceWeightedPhysicalTransport rho background)
-              (Tail'.towerAt (Fin.last depth)) := hretained
-        _ = CMP99SourceWeightedRegionalTower.step
-              (g := SUNLieCoord Nc)
-              (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
-              (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
-              spacing (cmp99SourceWeightedPhysicalTransport rho background)
-              (regionsRec.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
-                (cmp99SourceUbarNextFineRadius d M epsilon)
-                Scale.toSourceScale.data.nextBackground chain.tail
-                nextSmall) := congrArg
-          (fun T => CMP99SourceWeightedRegionalTower.step
-            (g := SUNLieCoord Nc)
-            (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
-            (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
-            spacing
-            (cmp99SourceWeightedPhysicalTransport rho background) T)
-          htailRec
-        _ = (cmp99SourceIteratedLiftActiveRegionChain
-              (M := M) Omega (depth + 1)
-              |>.weightedQprimeTower hd hM rho spacing epsilon background
-                chain fineSmall) := hgenerated.symm
+      have hstep := congrArg
+        (fun T => CMP99SourceWeightedRegionalTower.step
+          (g := SUNLieCoord Nc)
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+          (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
+          spacing
+          (cmp99SourceWeightedPhysicalTransport rho background) T)
+        htailRec
+      exact Eq.trans hretained (Eq.trans hstep hgenerated.symm)
 
 /-- At the literal flat background, the terminal retained prefix is therefore
 the canonical generated `Q'` tower used by the CMP99 transition, mass,
