@@ -46,6 +46,15 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_add
     (d := d) (N := M * N') (Nc := Nc)).injective
   rw [map_add]
   funext k
+  change cmp99FlatPhysicalFibreDFT
+      (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
+        ell mass a (v + w)) k =
+    cmp99FlatPhysicalFibreDFT
+        (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
+          ell mass a v) k +
+      cmp99FlatPhysicalFibreDFT
+        (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
+          ell mass a w) k
   simp only [Pi.add_apply]
   by_cases hk : cmp99SourceFlatQprimeCoarseAlias k = ell
   · let output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨k, hk⟩
@@ -78,6 +87,12 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_smul
     (d := d) (N := M * N') (Nc := Nc)).injective
   rw [map_smul]
   funext k
+  change cmp99FlatPhysicalFibreDFT
+      (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
+        ell mass a (c • v)) k =
+    c • cmp99FlatPhysicalFibreDFT
+      (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
+        ell mass a v) k
   simp only [Pi.smul_apply]
   by_cases hk : cmp99SourceFlatQprimeCoarseAlias k = ell
   · let output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨k, hk⟩
@@ -107,9 +122,18 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_add
   rw [← Finset.sum_add_distrib]
   apply Finset.sum_congr rfl
   intro ell _
-  have hDFT := congrFun
-    ((cmp99FlatPhysicalFibreDFTLinearEquiv
-      (d := d) (N := N') (Nc := Nc)).map_add eta zeta) ell
+  have hDFT : cmp99FlatPhysicalFibreDFT (eta + zeta) ell =
+      cmp99FlatPhysicalFibreDFT eta ell +
+        cmp99FlatPhysicalFibreDFT zeta ell := by
+    change (cmp99FlatPhysicalFibreDFTLinearEquiv
+        (d := d) (N := N') (Nc := Nc)) (eta + zeta) ell =
+      (cmp99FlatPhysicalFibreDFTLinearEquiv
+          (d := d) (N := N') (Nc := Nc)) eta ell +
+        (cmp99FlatPhysicalFibreDFTLinearEquiv
+          (d := d) (N := N') (Nc := Nc)) zeta ell
+    exact congrFun
+      ((cmp99FlatPhysicalFibreDFTLinearEquiv
+        (d := d) (N := N') (Nc := Nc)).map_add eta zeta) ell
   rw [hDFT, smul_add,
     cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_add
       (d := d) (M := M) (N' := N') (Nc := Nc)]
@@ -128,9 +152,15 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_smul
   rw [Finset.smul_sum]
   apply Finset.sum_congr rfl
   intro ell _
-  have hDFT := congrFun
-    ((cmp99FlatPhysicalFibreDFTLinearEquiv
-      (d := d) (N := N') (Nc := Nc)).map_smul c eta) ell
+  have hDFT : cmp99FlatPhysicalFibreDFT (c • eta) ell =
+      c • cmp99FlatPhysicalFibreDFT eta ell := by
+    change (cmp99FlatPhysicalFibreDFTLinearEquiv
+        (d := d) (N := N') (Nc := Nc)) (c • eta) ell =
+      c • (cmp99FlatPhysicalFibreDFTLinearEquiv
+        (d := d) (N := N') (Nc := Nc)) eta ell
+    exact congrFun
+      ((cmp99FlatPhysicalFibreDFTLinearEquiv
+        (d := d) (N := N') (Nc := Nc)).map_smul c eta) ell
   rw [hDFT]
   rw [show ((((N' : ℕ) : ℂ) ^ d)⁻¹ •
       (c • cmp99FlatPhysicalFibreDFT eta ell)) =
