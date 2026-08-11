@@ -9199,3 +9199,42 @@ open. Window 15 remains compatible but unattained. Counters stay exactly
 `20/41`, `TermSource = 0`. Failed diagnostics `31464394113` and
 `31464695776`, and warm diagnostic PASS `31464995108`, remain preserved and
 did not seal. Only the cold run above retires the two PRE-VALIDATION marks.
+
+### Step 7.5cmc linearly packaged physical central-stabilized `G Q'^*` (SEALED; generated identification and regional transport open)
+
+Exact source checkpoint `8e7a009f70627706391112cebfdbbbde622ca70a`
+passed cold GitHub Actions run
+[`31468954203`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31468954203)
+with workflow checkpoint `2eceeece44d17a6dd5e6a83acda5820f0bc63b11`.
+The cold job ran for `24m56s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `07:28:23Z`; the focal ran
+from `07:28:23Z` to `07:51:22Z`, completed `8,552` jobs and exited zero; the
+audit exited zero at `07:51:31Z`. All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and explicit
+new-module warning gate were both empty.
+
+Artifact `9093213008`, named
+`stabilized-qprime-star-clm-8e7a009f70627706391112cebfdbbbde622ca70a`,
+has GitHub digest
+`6490e94eb4c31f666c1d984af212cc78f3fc9b730c5948adcf29bc4db4de72f2`.
+The downloaded deterministic archive has SHA-256
+`478770f5a6c0512a4c00d1189a1b18a1eb2a238f010d563c1742a54914c2b576`,
+and all 13 internal manifest entries matched.
+
+The source proves additivity and complex scalar linearity first for each
+stabilized Fourier mode and then for the finite arbitrary-source
+superposition. It packages the literal field `H = G Q'^*` as a linear map
+and a continuous linear map and proves the bundled endpoint
+`K (H eta) = Q'^* eta` internally.
+
+This seals linear packaging of the arbitrary-source particular field, not a
+constructed inverse `G`. Identification with the generated physical
+covariance still requires matching the full carrier and operator: generated
+parameters, trivial background, spacing normalization, the `Q'` tower,
+mass/coupling conventions and real-to-complex extension must be made literal
+before inverse uniqueness applies. Regional transport and uniform physical
+`B0` also remain open. Window 15 remains compatible but unattained. Counters
+stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31467608127`,
+`31468200197` and `31468496923`, and warm diagnostic PASS `31468749704`,
+remain preserved and did not seal. Only the cold run above retires the two
+PRE-VALIDATION marks.

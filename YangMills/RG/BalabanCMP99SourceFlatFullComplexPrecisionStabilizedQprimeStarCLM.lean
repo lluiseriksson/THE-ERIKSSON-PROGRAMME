@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeSt
 /-!
 # Linear packaging of the stabilized flat physical `G Q'^*` field
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The sealed arbitrary-source field is linear in its coarse physical source.
 This file packages that literal finite Fourier superposition as a
 continuous complex-linear map and restates the already proved full-box
