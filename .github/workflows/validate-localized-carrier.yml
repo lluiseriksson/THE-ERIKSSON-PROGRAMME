@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 3e6a6dd8fa8c3dfec99ad724ecdf729fde5ad974
+  SOURCE_SHA: 35f755aa97f098893ee44b7f8a286dd34f6c0a28
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -170,6 +170,15 @@ jobs:
           audits = {
               "flat_full_complex_precision_fibre_action_audit.log": 6,
           }
+          focal = (Path("evidence") /
+              "flat_full_complex_precision_fibre_action_focal.log").read_text(
+                  encoding="utf-8")
+          source_warning = (
+              "warning: YangMills/RG/"
+              "BalabanCMP99SourceFlatFullComplexPrecisionFibreAction.lean:"
+          )
+          if source_warning in focal:
+              raise SystemExit("NEW_MODULE_LINTER_WARNING")
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
