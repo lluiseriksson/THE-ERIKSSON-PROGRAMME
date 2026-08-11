@@ -47,8 +47,8 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_smul
     rw [cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply,
       cmp99SourceFlatComplexBlockAverageCLM_apply]
     simp only [cmp99SourceFlatFullActiveComplexField_apply, Pi.smul_apply]
-    rw [Finset.smul_sum]
-    module
+    rw [← Finset.smul_sum]
+    exact smul_comm _ _ _
   have hstencil :
       cmp99FlatPeriodicComplexFibreStencil (c • phi) x =
         c • cmp99FlatPeriodicComplexFibreStencil phi x := by
