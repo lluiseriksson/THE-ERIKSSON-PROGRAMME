@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeComplexification
 /-!
 # Fourier action of the generated flat CMP99 `Q'` recursion
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The generated flat physical tower is a typed recursion through the literal
 active coarse regions.  This file first proves that its explicit complex
 one-step maps, and hence the complete forward and reverse recursions, are

@@ -33782,3 +33782,33 @@ construct its inverse or produce uniform physical `B0`. Window 15 remains
 compatible but unattained. Live counters stay exactly `20/41`,
 `TermSource = 0`. Failed diagnostic `31503784550` and warm PASS `31504207313`
 remain preserved and did not seal.
+
+## Addendum 745 (2026-08-11, **generated flat `Q'` recursive Fourier action SEALED; terminal-collapse and stratum-precision dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `97eb26010cf2aba4cae56e05ac94a32468688f4d`
+passed cold GitHub Actions run
+[`31508419658`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31508419658)
+with workflow checkpoint `062f3f832120215d03739d4da8750bfca2282550`.
+The job ran for `18m23s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,503` jobs and the focal/audit stages exited `0/0`.
+All seven declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9108666527`, named
+`flat-generated-qprime-fourier-action-97eb26010cf2aba4cae56e05ac94a32468688f4d`,
+has GitHub digest
+`f40bd27626310ca8fbd821d6d3aca708edbc6987a0730de725e293f4da907e4b`.
+The downloaded deterministic archive has SHA-256
+`fece602a8f209e452b8f788af26ece0d4dd8d1907e8d5208afa28e5c979eae40`,
+and all 13 internal manifest entries matched.
+
+The source proves complex homogeneity of both literal one-step maps and the
+complete typed generated recursions. It constructs the recursive product of
+one-step Fourier amplitudes and the terminal restricted mode internally, then
+proves the exact forward action while preserving every prefix reciprocal
+alias. It does not collapse the chain to one terminal block, identify source
+strata, match the generated precision, construct an inverse or produce a
+regional Green bound. Uniform physical `B0` and physical attainment of window
+15 remain open. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31507440096` and `31507882118`, plus warm PASS `31508177460`,
+remain preserved and did not seal.

@@ -9239,6 +9239,42 @@ stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31467608127`,
 remain preserved and did not seal. Only the cold run above retires the two
 PRE-VALIDATION marks.
 
+### Step 7.5cmk generated flat `Q'` recursive Fourier action (SEALED; terminal-collapse and stratum-precision dictionaries open)
+
+Exact source checkpoint `97eb26010cf2aba4cae56e05ac94a32468688f4d`
+passed cold GitHub Actions run
+[`31508419658`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31508419658)
+with workflow checkpoint `062f3f832120215d03739d4da8750bfca2282550`.
+The job ran from `15:41:43Z` to `16:00:06Z` (`18m23s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`15:43:39Z`; the focal ran to `15:59:54Z`, completed `8,503` jobs and exited
+zero. The audit ended at `16:00:01Z` and also exited zero. All seven audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9108666527`, named
+`flat-generated-qprime-fourier-action-97eb26010cf2aba4cae56e05ac94a32468688f4d`,
+has GitHub digest
+`f40bd27626310ca8fbd821d6d3aca708edbc6987a0730de725e293f4da907e4b`.
+The downloaded deterministic archive has SHA-256
+`fece602a8f209e452b8f788af26ece0d4dd8d1907e8d5208afa28e5c979eae40`,
+and all 13 internal manifest entries matched.
+
+The sealed source proves complex homogeneity of the literal one-step average
+and coefficient-one synthesis and lifts both facts through the complete typed
+generated recursion. It then constructs, internally and by the same chain,
+the product of one-step Fourier amplitudes and the terminal restricted mode
+reached by the matching sequence of reciprocal aliases. The resulting exact
+Fourier theorem retains every prefix region and alias.
+
+This is not a collapse to one side-`M^depth` block, a global Fourier
+equivalence, an identification of distinct CMP99 strata, a precision match,
+an inverse or a regional Green estimate. Uniform physical `B0` and the
+physical route to window 15 remain open. Live counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostics `31507440096` and `31507882118`, plus
+warm PASS `31508177460`, remain preserved and did not seal. Only the cold run
+above retires the two PRE-VALIDATION marks.
+
 ### Step 7.5cmi canonical flat generated `Q'/Q'^*` recursion (SEALED; printed one-block collapse and precision dictionaries open)
 
 Exact source checkpoint `3857450a087721447f2456ba1a8e199565b1ed49`
