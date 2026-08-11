@@ -134,7 +134,11 @@ theorem cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum
       have hM : (M : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne M)
       have hN : (N' : ℂ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne N')
       rw [Nat.cast_mul, mul_pow]
-      field_simp [hM, hN]
+      have hscale :
+          ((M : ℂ) ^ d * (N' : ℂ) ^ d) *
+              (1 / ((M : ℂ) ^ d * (N' : ℂ) ^ d)) = 1 := by
+        field_simp [hM, hN]
+      rw [smul_smul, hscale, one_smul]
     · intro b _ hb
       change cmp99FlatPhysicalFibreDFT
           (cmp99FlatComplexFibreFourierMode b.1
