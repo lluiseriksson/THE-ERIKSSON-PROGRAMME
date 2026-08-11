@@ -36,6 +36,7 @@ variable [hd0 : NeZero d] [hM0 : NeZero M] [hN0 : NeZero N]
 variable [hNc0 : NeZero Nc]
 
 /-- Zero is a fixed point of the exact one-step source Ubar radius map. -/
+omit hd0 hM0 in
 @[simp] theorem cmp99SourceUbarNextFineRadius_zero :
     cmp99SourceUbarNextFineRadius d M 0 = 0 := by
   simp [cmp99SourceUbarNextFineRadius, cmp99SourceUbarFineDeviationRadius]
