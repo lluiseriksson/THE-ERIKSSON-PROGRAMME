@@ -1,4 +1,4 @@
-name: Validate flat generated Qprime complexification
+name: Validate flat generated Qprime Fourier action
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: f9aa2a653b75b2225825bba6a93226477da37807
+  SOURCE_SHA: 78e4a7214bc44c11441eba95ae94e5f0979e02e2
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     flat-full-complex-precision-particular-solution
 
 jobs:
-  flat-generated-qprime-complexification:
+  flat-generated-qprime-fourier-action:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-qprime-complexification-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-generated-qprime-fourier-action-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeComplexification.lean \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeComplexificationAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeFourierAction.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeFourierActionAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_generated_qprime_complexification_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeComplexification
-          run_stage flat_generated_qprime_complexification_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeComplexificationAudit.lean
+          run_stage flat_generated_qprime_fourier_action_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeFourierAction
+          run_stage flat_generated_qprime_fourier_action_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeFourierActionAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_generated_qprime_complexification_audit.log": 8,
+              "flat_generated_qprime_fourier_action_audit.log": 7,
           }
           focal = (Path("evidence") /
-              "flat_generated_qprime_complexification_focal.log").read_text(
+              "flat_generated_qprime_fourier_action_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatGeneratedQprimeComplexification.lean:"
+              "BalabanCMP99SourceFlatGeneratedQprimeFourierAction.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-generated-qprime-complexification-evidence.tar.gz
-          sha256sum flat-generated-qprime-complexification-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-generated-qprime-fourier-action-evidence.tar.gz
+          sha256sum flat-generated-qprime-fourier-action-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-generated-qprime-complexification-${{ env.SOURCE_SHA }}
+          name: flat-generated-qprime-fourier-action-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-generated-qprime-complexification-evidence.tar.gz
+            flat-generated-qprime-fourier-action-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-qprime-complexification-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-generated-qprime-fourier-action-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
