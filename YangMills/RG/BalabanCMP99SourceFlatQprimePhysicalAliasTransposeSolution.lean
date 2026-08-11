@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix
 /-!
 # Physical specialization of the transposed CMP89 (2.47) alias solution
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and the result has not yet been verified by the Lean compiler.
-
 The signed physical alias dictionary identifies each fixed coarse fibre with
 the depth-one carrier printed in CMP89.  This module pulls the transposed
 solution back through that equivalence and proves that it solves the literal

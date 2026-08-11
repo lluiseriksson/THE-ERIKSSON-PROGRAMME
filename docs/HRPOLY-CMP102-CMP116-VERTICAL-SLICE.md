@@ -8887,3 +8887,41 @@ unattained. Counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostic
 `31440675278` preserves the transpose/abbreviation normalization errors;
 restored diagnostic PASS `31441006236` did not seal. Only the cold run above
 retires PRE-VALIDATION.
+
+### Step 7.5cliv physical fixed-fibre specialization of the transposed CMP89 (2.47) solution (SEALED; central stabilization and literal full-box precision action open)
+
+Exact source checkpoint `62ce05f17719fa5946dbbc80993c9ffd288f2ec1`
+passed cold GitHub Actions run
+[`31443022370`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31443022370)
+with workflow checkpoint `7d365bde8871578bd76424dabdc832ad80871e59`.
+Restoration and saving of `.lake/build` were both skipped. The focal ran from
+`23:38:50Z` to `00:01:28Z`, completed `8,535` jobs and exited zero; the audit
+exited zero at `00:01:33Z`. Both audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist was empty and
+the new modules emitted no linter warning.
+
+Artifact `9084019035`, named
+`physical-alias-transpose-solution-62ce05f17719fa5946dbbc80993c9ffd288f2ec1`,
+has GitHub digest
+`4e384aa9137a7fd3333e62f75c1e1ea982d3de33297d80dcfc2adb07cdaed36b`.
+Its deterministic inner archive re-hashed on Windows to
+`614eee6a6258d468130720972ec29166495315828a5b3fadbc844aa3b3d24f60`;
+all 13 internal manifest entries matched.
+
+The source pulls the internally constructed transposed solution back through
+the already sealed signed equivalence between the literal fixed physical
+coarse fibre and the depth-one CMP89 alias carrier. Entrywise precision,
+fine-symbol and opposite-momentum row dictionaries are consumed inside the
+proof, and the finite sum is transported by the equivalence rather than by a
+free enumeration. Thus the transpose of the literal physical fibre matrix
+solves the literal physical opposite-momentum source on the nonsingular
+domain of the printed quotients.
+
+This does not yet identify that matrix action with the DFT of the literal
+full-box complex precision, stabilize the removable central zero, construct
+an inverse CLM, transport to the interacting/regional Green operator or
+produce physical `B0`. Window 15 remains compatible but unattained. Counters
+stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31442342886` and
+`31442580969` preserve the pinned-index and equivalence-normalization errors;
+restored diagnostic PASS `31442806454` did not seal. Only the cold run above
+retires PRE-VALIDATION.

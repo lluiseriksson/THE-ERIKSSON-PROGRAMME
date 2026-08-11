@@ -33245,3 +33245,36 @@ open. Window 15 is compatible but unattained. Live counters stay exactly
 `20/41`, `TermSource = 0`. Failed diagnostic `31440675278` and restored
 diagnostic PASS `31441006236` remain preserved; only the cold run above
 retires PRE-VALIDATION.
+
+## Addendum 729 (2026-08-11, **physical transposed CMP89 (2.47) fixed-fibre solution GREEN; central stabilization and literal full-box precision action open; 20/41 unchanged**)
+
+Exact source checkpoint `62ce05f17719fa5946dbbc80993c9ffd288f2ec1`
+passed cold GitHub Actions run
+[`31443022370`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31443022370)
+with workflow checkpoint `7d365bde8871578bd76424dabdc832ad80871e59`.
+The job ran for `24m41s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,535` jobs and the focal/audit stages exited `0/0`.
+Both declarations use exactly `[propext, Classical.choice, Quot.sound]`; no
+forbidden axiom or new-module linter warning occurred.
+
+Artifact `9084019035`, named
+`physical-alias-transpose-solution-62ce05f17719fa5946dbbc80993c9ffd288f2ec1`,
+has GitHub digest
+`4e384aa9137a7fd3333e62f75c1e1ea982d3de33297d80dcfc2adb07cdaed36b`.
+The downloaded deterministic archive has SHA-256
+`614eee6a6258d468130720972ec29166495315828a5b3fadbc844aa3b3d24f60`,
+and all 13 internal manifest entries matched.
+
+The source specializes the transposed CMP89 solution to the literal physical
+fixed coarse fibre. The signed carrier equivalence, entrywise precision
+dictionary, fine-symbol dictionary and opposite-momentum source row are all
+consumed internally; no alias enumeration or solution family is supplied by
+the caller. The conclusion remains on the nonsingular domain of the printed
+rational formula.
+
+The DFT action of the literal full-box complex precision, central removable
+stabilization, inverse CLM, interacting/regional transport and physical `B0`
+remain open. Window 15 is compatible but unattained. Live counters stay
+exactly `20/41`, `TermSource = 0`. Failed diagnostics `31442342886` and
+`31442580969`, plus restored diagnostic PASS `31442806454`, remain preserved;
+only the cold run above retires PRE-VALIDATION.
