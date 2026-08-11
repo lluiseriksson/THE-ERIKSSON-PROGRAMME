@@ -9312,6 +9312,46 @@ open. Window 15 remains compatible but unattained. Counters remain exactly
 `31483956365`, plus warm diagnostic PASS `31484191821`, remain preserved and
 did not seal. Only the cold run above retires the two PRE-VALIDATION marks.
 
+### Step 7.5cmh retained terminal prefix equals the canonical generated `Q'` tower (SEALED; flat printed-operator dictionary open)
+
+Exact source checkpoint `ee60acf0a1f8899ed3fc690771cb12a109cff7cf`
+passed cold GitHub Actions run
+[`31490868798`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31490868798)
+with workflow checkpoint `5930c99f22c51e5772468243dc199714bbb2d1b9`.
+The job ran from `12:22:09Z` to `12:42:27Z` (`20m18s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`12:23:53Z`; the focal ran to `12:42:08Z`, completed `8,464` jobs and exited
+zero. The audit ended at `12:42:24Z` and also exited zero. All six audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9101583485`, named
+`retained-generated-terminal-bridge-ee60acf0a1f8899ed3fc690771cb12a109cff7cf`,
+has GitHub digest
+`8c95112ee40fa90b5a6176ab35289c42deea9eaebacf5c30f9f9f05b8a0d41ea`.
+The downloaded deterministic archive has SHA-256
+`e5f00bc7dd9b3114f0eb1d2c1bd55cc0c7d8458192eac883c12e29850b428a5c`,
+and all 13 internal manifest entries matched.
+
+The source proves, by induction on the typed active-region chain, that the
+last prefix of the recursively generated retained physical tower is exactly
+the canonical generated `weightedQprimeTower`. Transport across the proved
+regional equalities is internal, and the flat corollary uses the literal
+zero-radius chain; no terminal operator family or identification equality is
+supplied by the caller.
+
+This seals the retained-to-generated terminal bridge only. It does not yet
+identify the generated operator with the separately reconstructed flat
+printed block average, expose the full canonical flat `Q'/Q'^*` recursion,
+bridge counting adjoints to source-weighted adjoints, or finish real-precision
+matching and complexification. Regional transport and uniform physical `B0`
+remain open. Window 15 remains compatible but unattained. Counters remain
+exactly `20/41`, `TermSource = 0`. Failed diagnostics `31487053514`,
+`31487355478`, `31487710390`, `31488086415`, `31488392429`, `31488725784`,
+`31489324526`, `31489622730`, `31489988724` and `31490350285`, plus warm
+diagnostic PASS `31490585466`, remain preserved and did not seal. Only the
+cold run above retires the PRE-VALIDATION mark.
+
 ### Step 7.5cmd flat full-complex inverse uniqueness (SEALED; generated physical dictionary open)
 
 Exact source checkpoint `621a84bdd7a33ccb87f4bb02043d63cd52967ac4`

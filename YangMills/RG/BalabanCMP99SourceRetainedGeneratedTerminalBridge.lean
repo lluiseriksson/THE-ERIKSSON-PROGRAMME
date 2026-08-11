@@ -7,9 +7,6 @@ import YangMills.RG.BalabanCMP99SourceFlatRetainedPhysicalTower
 import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized and these
-declarations have not yet been verified by the Lean compiler.
-
 # The retained terminal prefix is the generated `Q'` tower
 
 The retained physical construction and the typed active-region-chain
