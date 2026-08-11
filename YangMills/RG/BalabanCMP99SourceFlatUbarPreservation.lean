@@ -31,7 +31,8 @@ open scoped Matrix.Norms.L2Operator BigOperators
 noncomputable section
 
 variable {d M N' Nc : ℕ}
-variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
+variable [hd : NeZero d] [hM : NeZero M] [hN' : NeZero N']
+variable [hNc : NeZero Nc]
 
 /-- The straight coarse transport generated from the flat fine background is
 one on every positive coarse bond. -/
@@ -70,6 +71,7 @@ theorem cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one
     cmp99UbarExponent
   apply Finset.sum_eq_zero
   intro i hi
+  change w i • nearLog ((D i : Matrix (Fin Nc) (Fin Nc) ℂ) - 1) = 0
   rw [hD i hi]
   simp
 
@@ -92,8 +94,8 @@ they do not affect the resulting zero exponent. -/
           (positiveEdgeOfPhysicalBond b) x
           (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ)
     (b : PhysicalBond d N') :
-    cmp99PhysicalUbarBlockOfDeviationBudget
-        (d := d) (L := M) (N' := N') (Nc := Nc)
+    @cmp99PhysicalUbarBlockOfDeviationBudget
+        d N' M Nc hd hN' hM hNc
         (cmp99SourceFlatGaugeConfig d (M * N') Nc)
         (cmp99SourceBaseCoarseBackground
           (cmp99SourceFlatGaugeConfig d (M * N') Nc))
@@ -126,8 +128,8 @@ theorem cmp99PhysicalUbarGaugeConfigOfDeviationBudget_flat
             (cmp99SourceFlatGaugeConfig d (M * N') Nc))
           (positiveEdgeOfPhysicalBond b) x
           (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ) :
-    cmp99PhysicalUbarGaugeConfigOfDeviationBudget
-        (d := d) (L := M) (N' := N') (Nc := Nc)
+    @cmp99PhysicalUbarGaugeConfigOfDeviationBudget
+        d N' M Nc hd hN' hM hNc
         (cmp99SourceFlatGaugeConfig d (M * N') Nc)
         (cmp99SourceBaseCoarseBackground
           (cmp99SourceFlatGaugeConfig d (M * N') Nc))
