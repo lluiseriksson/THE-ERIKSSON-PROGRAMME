@@ -73,7 +73,7 @@ theorem cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one
   intro i hi
   change w i • nearLog ((D i : Matrix (Fin Nc) (Fin Nc) ℂ) - 1) = 0
   rw [hD i hi]
-  simp
+  exact smul_zero _
 
 /-- The direct deviation-budget Ubar block is one in the literal flat
 background.  The budget and its proof certify that the constructor is legal;
@@ -83,19 +83,9 @@ they do not affect the resulting zero exponent. -/
       List (FiniteLatticeGeometry.E
         (d := d) (N := M * N') (G := SUN Nc)))
     (B : MatrixNearLogNoWindingBudget Nc)
-    (hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
-      x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
-        (positiveEdgeOfPhysicalBond b)) →
-      ‖UbarDeviationLogArg
-          (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
-          (cmp99SourceFlatGaugeConfig d (M * N') Nc)
-          (cmp99SourceBaseCoarseBackground
-            (cmp99SourceFlatGaugeConfig d (M * N') Nc))
-          (positiveEdgeOfPhysicalBond b) x
-          (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ)
+    (hdev)
     (b : PhysicalBond d N') :
-    @cmp99PhysicalUbarBlockOfDeviationBudget
-        d N' M Nc hd hN' hM hNc
+    cmp99PhysicalUbarBlockOfDeviationBudget
         (cmp99SourceFlatGaugeConfig d (M * N') Nc)
         (cmp99SourceBaseCoarseBackground
           (cmp99SourceFlatGaugeConfig d (M * N') Nc))
@@ -118,18 +108,8 @@ theorem cmp99PhysicalUbarGaugeConfigOfDeviationBudget_flat
       List (FiniteLatticeGeometry.E
         (d := d) (N := M * N') (G := SUN Nc)))
     (B : MatrixNearLogNoWindingBudget Nc)
-    (hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
-      x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
-        (positiveEdgeOfPhysicalBond b)) →
-      ‖UbarDeviationLogArg
-          (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
-          (cmp99SourceFlatGaugeConfig d (M * N') Nc)
-          (cmp99SourceBaseCoarseBackground
-            (cmp99SourceFlatGaugeConfig d (M * N') Nc))
-          (positiveEdgeOfPhysicalBond b) x
-          (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ) :
-    @cmp99PhysicalUbarGaugeConfigOfDeviationBudget
-        d N' M Nc hd hN' hM hNc
+    (hdev) :
+    cmp99PhysicalUbarGaugeConfigOfDeviationBudget
         (cmp99SourceFlatGaugeConfig d (M * N') Nc)
         (cmp99SourceBaseCoarseBackground
           (cmp99SourceFlatGaugeConfig d (M * N') Nc))
