@@ -204,18 +204,9 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
         rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
         exact cmp99SourceFlatGaugeConfig_zero_small
-      unfold CMP99SourceActiveRegionChain.flatPhysicalQprime
-        CMP99SourceActiveRegionChain.flatExplicitQprime
-        CMP99SourceActiveRegionChain.physicalQprime
-      change
-        (tail.physicalQprime hd hM rho ((M : ℝ) * spacing) 0
-          Scale.toSourceScale.data.nextBackground
-          (cmp99SourceFlatZeroRadiusChain depth) nextSmall).comp
-            (cmp99SourceTransportedBlockAverageCLM Omega
-              (cmp99SourceWeightedPhysicalTransport rho
-                (cmp99SourceFlatGaugeConfig d (M * N') Nc))) =
-          tail.flatExplicitQprime.comp
-            (cmp99SourceFlatRealBlockAverageCLM Omega)
+      simp only [CMP99SourceActiveRegionChain.flatPhysicalQprime,
+        CMP99SourceActiveRegionChain.physicalQprime,
+        CMP99SourceActiveRegionChain.flatExplicitQprime]
       rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground,
         htail, cmp99SourceTransportedBlockAverageCLM_flat_eq_explicit]
 
@@ -245,18 +236,9 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
         rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
         exact cmp99SourceFlatGaugeConfig_zero_small
-      unfold CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
-        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint
-        CMP99SourceActiveRegionChain.physicalWeightedAdjoint
-      change
-        (cmp99SourceTransportedBlockWeightedAdjointCLM Omega hOmega
-          (cmp99SourceWeightedPhysicalTransport rho
-            (cmp99SourceFlatGaugeConfig d (M * N') Nc))).comp
-          (tail.physicalWeightedAdjoint hd hM rho ((M : ℝ) * spacing) 0
-            Scale.toSourceScale.data.nextBackground
-            (cmp99SourceFlatZeroRadiusChain depth) nextSmall) =
-        (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp
-          tail.flatExplicitWeightedAdjoint
+      simp only [CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint,
+        CMP99SourceActiveRegionChain.physicalWeightedAdjoint,
+        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint]
       rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground,
         htail,
         cmp99SourceTransportedBlockWeightedAdjointCLM_flat_eq_explicit]
