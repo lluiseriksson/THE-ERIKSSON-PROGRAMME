@@ -72,10 +72,10 @@ theorem cmp99SourceFlatComplexBlockWeightedAdjointCLM_map_complex_smul
     cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply]
   rfl
 
+omit [NeZero d] [NeZero Nc] in
 /-- The complete generated forward complex recursion is complex homogeneous.
 This is proved from the literal one-step maps rather than supplied as a
 property of an external complex operator family. -/
-omit [NeZero d] [NeZero Nc] in
 theorem CMP99SourceActiveRegionChain.flatExplicitComplexQprime_map_complex_smul
     {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
@@ -96,9 +96,9 @@ theorem CMP99SourceActiveRegionChain.flatExplicitComplexQprime_map_complex_smul
           (cmp99SourceFlatComplexBlockAverageCLM Omega phi)
       rw [cmp99SourceFlatComplexBlockAverageCLM_map_complex_smul, ih]
 
+omit [NeZero d] [NeZero Nc] in
 /-- The complete generated reverse coefficient-one synthesis is complex
 homogeneous as well. -/
-omit [NeZero d] [NeZero Nc] in
 theorem
     CMP99SourceActiveRegionChain.flatExplicitComplexWeightedAdjoint_map_complex_smul
     {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
@@ -162,6 +162,7 @@ noncomputable def CMP99SourceActiveRegionChain.flatFourierTerminalMode
   | @step N' depth _ Omega hOmega tail ih =>
       exact fun k v => ih (cmp99SourceFlatQprimeCoarseAlias k) v
 
+omit [NeZero Nc] in
 /-- Exact Fourier action of the complete generated flat complex `Q'`
 recursion.  The conclusion is recursive by construction: it keeps the
 product of prefix amplitudes and the terminal mode reached by the matching
