@@ -163,7 +163,9 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fourierMode
   rw [cmp99FlatPhysicalFibreDFT_fourierMode,
     cmp99FlatPhysicalFibreDFT_sourceFlatWeightedAdjoint_fixedCoarse_eq_aliasRow]
   rw [Matrix.transpose_apply,
-    cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix]
+    cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix,
+    cmp99SourceFlatQprimePhysicalRankOneMatrix,
+    cmp99SourceFlatQprimeNegAmplitude_eq_entireAliasRow]
   by_cases h : input = output
   · subst output
     rw [if_pos rfl, if_pos rfl]
