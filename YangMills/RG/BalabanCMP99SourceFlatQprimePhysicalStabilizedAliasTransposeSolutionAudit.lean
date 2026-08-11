@@ -1,8 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+Cold-sealed axiom audit for the physical central-stabilized alias pullback.
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalCentralAliasIndex_reindex

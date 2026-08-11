@@ -9086,3 +9086,41 @@ interacting/regional transport and uniform physical `B0` remain open. Window
 `TermSource = 0`. Failed diagnostics `31458140980`, `31458352861`,
 `31458580334` and `31458776556`, plus warm diagnostic PASS `31458994322`,
 remain preserved. Only the cold run above retires PRE-VALIDATION.
+
+### Step 7.5clz physical central-stabilized alias pullback (SEALED; full-box realization open)
+
+Exact source checkpoint `7895a4f1a4b494f4d1a6a45986a4a748fe126088`
+passed cold GitHub Actions run
+[`31460094418`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31460094418)
+with workflow checkpoint `f3e8c312824fdf6ff641cd2afc2eb94b788c1610`.
+The cold job ran for `22m33s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `04:59:23Z`; the focal ran
+from `04:59:23Z` to `05:19:48Z`, completed `8,536` jobs and exited zero; the
+audit exited zero at `05:19:53Z`. All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and explicit
+new-module warning gate were both empty.
+
+Artifact `9089857733`, named
+`physical-stabilized-alias-transpose-solution-7895a4f1a4b494f4d1a6a45986a4a748fe126088`,
+has GitHub digest
+`1ca5374027c8f7ea4c21463cb1b87446b842fd14ed11da5e8bce5a6bd35c3bb3`.
+The downloaded deterministic archive has SHA-256
+`289996b3e88a2a390e93a4fba46a9030adf3330a71f13027b74151b5d86c5a32`,
+and all 13 internal manifest entries matched.
+
+The source constructs the physical central fine mode as the inverse image of
+the printed zero alias under the sealed signed fibre equivalence and pulls
+back the complete stabilized solution.  Entrywise matrix and momentum
+dictionaries are consumed internally.  The transpose of the literal physical
+alias precision matrix therefore sends this vector to the literal
+opposite-momentum average row while requiring the fine symbol to be nonzero
+only away from the constructed central mode.  No central fine-symbol
+nonvanishing, free enumeration or supplied solution family is introduced.
+
+This is the exact physical fixed-fibre matrix solution, not yet its full-box
+inverse-DFT realization as `G Q'^*`.  That realization, inverse uniqueness,
+interacting/regional transport and uniform physical `B0` remain open. Window
+15 remains compatible but unattained. Counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostic `31459717734` and warm diagnostic PASS
+`31459917125` remain preserved. Only the cold run above retires the two
+PRE-VALIDATION marks.

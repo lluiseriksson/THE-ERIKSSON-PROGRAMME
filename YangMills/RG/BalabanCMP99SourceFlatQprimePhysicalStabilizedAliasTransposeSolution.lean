@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix
 /-!
 # Physical central-stabilized transposed alias solution
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The signed physical reciprocal-fibre dictionary transports the sealed CMP89
 central-stabilized solution to the literal flat `Q'` precision matrix.  The
 central physical mode is constructed as the inverse image of the printed zero
