@@ -168,11 +168,48 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
       have hlast : Fin.last (depth + 1) = (Fin.last depth).succ := by
         apply Fin.ext
         simp
-      simpa [cmp99SourceGeneratedRetainedPhysicalTower,
-        cmp99SourceIteratedLiftActiveRegionChain,
-        CMP99SourceActiveRegionChain.weightedQprimeTower, Scale, Tail',
-        regions', hlast, Fin.cases_succ] using
-        congrArg
+      have hretained :
+          (cmp99SourceGeneratedRetainedPhysicalTower hd hM rho Omega
+              (depth + 1) spacing epsilon background chain fineSmall).towerAt
+              (Fin.last (depth + 1)) =
+            CMP99SourceWeightedRegionalTower.step
+              (g := SUNLieCoord Nc)
+              (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+              (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
+              spacing (cmp99SourceWeightedPhysicalTransport rho background)
+              (Tail'.towerAt (Fin.last depth)) := by
+        rw [hlast]
+        rfl
+      have hgenerated :
+          (cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega (depth + 1)
+              |>.weightedQprimeTower hd hM rho spacing epsilon background
+                chain fineSmall) =
+            CMP99SourceWeightedRegionalTower.step
+              (g := SUNLieCoord Nc)
+              (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+              (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
+              spacing (cmp99SourceWeightedPhysicalTransport rho background)
+              (regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+                (cmp99SourceUbarNextFineRadius d M epsilon)
+                Scale.toSourceScale.data.nextBackground chain.tail
+                nextSmall) := by
+        rfl
+      calc
+        _ = CMP99SourceWeightedRegionalTower.step
+              (g := SUNLieCoord Nc)
+              (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+              (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
+              spacing (cmp99SourceWeightedPhysicalTransport rho background)
+              (Tail'.towerAt (Fin.last depth)) := hretained
+        _ = CMP99SourceWeightedRegionalTower.step
+              (g := SUNLieCoord Nc)
+              (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+              (cmp99IteratedLiftActiveRegion_blockSaturated Omega depth)
+              spacing (cmp99SourceWeightedPhysicalTransport rho background)
+              (regions'.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+                (cmp99SourceUbarNextFineRadius d M epsilon)
+                Scale.toSourceScale.data.nextBackground chain.tail
+                nextSmall) := congrArg
           (fun T => CMP99SourceWeightedRegionalTower.step
             (g := SUNLieCoord Nc)
             (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
@@ -180,6 +217,7 @@ theorem cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprime
             spacing
             (cmp99SourceWeightedPhysicalTransport rho background) T)
           htail'
+        _ = _ := hgenerated.symm
 
 /-- At the literal flat background, the terminal retained prefix is therefore
 the canonical generated `Q'` tower used by the CMP99 transition, mass,
