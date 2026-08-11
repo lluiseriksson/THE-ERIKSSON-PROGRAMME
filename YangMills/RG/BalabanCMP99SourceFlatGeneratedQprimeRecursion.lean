@@ -209,7 +209,7 @@ noncomputable def CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
 scalar radii and backgrounds; the proof-valued radius chain and smallness
 certificate carry no additional operator data. -/
 theorem CMP99SourceActiveRegionChain.physicalQprime_congr_data
-    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    {N depth : ℕ} [NeZero N] {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
     (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
     (spacing : ℝ) {epsilon₁ epsilon₂ : ℝ}
@@ -233,7 +233,7 @@ theorem CMP99SourceActiveRegionChain.physicalQprime_congr_data
 /-- The same proof-data invariance for the generated coefficient-one weighted
 adjoint. -/
 theorem CMP99SourceActiveRegionChain.physicalWeightedAdjoint_congr_data
-    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    {N depth : ℕ} [NeZero N] {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
     (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
     (spacing : ℝ) {epsilon₁ epsilon₂ : ℝ}
@@ -281,6 +281,11 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
         rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
         exact cmp99SourceFlatGaugeConfig_zero_small
+      have nextSmallRaw : ∀ e : ConcreteEdge d N',
+          ‖(Scale.toSourceScale.data.nextBackground e :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+            cmp99SourceUbarNextFineRadius d M 0 := by
+        simpa only [cmp99SourceUbarNextFineRadius_zero] using nextSmall
       simp only [CMP99SourceActiveRegionChain.flatPhysicalQprime,
         CMP99SourceActiveRegionChain.physicalQprime,
         CMP99SourceActiveRegionChain.flatExplicitQprime]
@@ -302,7 +307,7 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
         tail.physicalQprime hd hM rho ((M : ℝ) * spacing)
             (cmp99SourceUbarNextFineRadius d M 0)
             Scale.toSourceScale.data.nextBackground
-            (cmp99SourceFlatZeroRadiusChain (depth + 1)).tail nextSmall =
+            (cmp99SourceFlatZeroRadiusChain (depth + 1)).tail nextSmallRaw =
           tail.flatExplicitQprime
       calc
         _ = tail.physicalQprime hd hM rho ((M : ℝ) * spacing) 0
@@ -340,6 +345,11 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
         rw [cmp99SourceFlatNormalizedRegionalScale_nextBackground]
         exact cmp99SourceFlatGaugeConfig_zero_small
+      have nextSmallRaw : ∀ e : ConcreteEdge d N',
+          ‖(Scale.toSourceScale.data.nextBackground e :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+            cmp99SourceUbarNextFineRadius d M 0 := by
+        simpa only [cmp99SourceUbarNextFineRadius_zero] using nextSmall
       simp only [CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint,
         CMP99SourceActiveRegionChain.physicalWeightedAdjoint,
         CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint]
@@ -361,7 +371,7 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
         tail.physicalWeightedAdjoint hd hM rho ((M : ℝ) * spacing)
             (cmp99SourceUbarNextFineRadius d M 0)
             Scale.toSourceScale.data.nextBackground
-            (cmp99SourceFlatZeroRadiusChain (depth + 1)).tail nextSmall =
+            (cmp99SourceFlatZeroRadiusChain (depth + 1)).tail nextSmallRaw =
           tail.flatExplicitWeightedAdjoint
       calc
         _ = tail.physicalWeightedAdjoint hd hM rho ((M : ℝ) * spacing) 0
