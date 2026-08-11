@@ -33554,3 +33554,35 @@ Regional transport and uniform `B0` remain open. Window 15 remains compatible
 but unattained. Live counters stay exactly `20/41`, `TermSource = 0`.
 Diagnostics `31467608127`, `31468200197`, `31468496923` and warm PASS
 `31468749704` remain preserved and did not seal.
+
+## Addendum 738 (2026-08-11, **flat full-complex inverse uniqueness SEALED; generated physical dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `621a84bdd7a33ccb87f4bb02043d63cd52967ac4`
+passed cold GitHub Actions run
+[`31473379111`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31473379111)
+with workflow checkpoint `7cc735a661d341bb1d5cb168a99106918c2ba336`.
+The job ran for `23m06s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,553` jobs and the focal/audit stages exited `0/0`.
+All seven declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; no forbidden axiom or new-module
+text-gate violation occurred.
+
+Artifact `9094887288`, named
+`flat-precision-inverse-uniqueness-621a84bdd7a33ccb87f4bb02043d63cd52967ac4`,
+has GitHub digest
+`a631d09bc4d34db5c9aeef7b8606c8b5f38f1322a2431cea4126f91e6b2fcf22`.
+The downloaded deterministic archive has SHA-256
+`6368aa683db52e02e610b2f85cf5953535f8632568bd56475fe617f4e7254a44`,
+and all 13 internal manifest entries matched.
+
+The source packages the literal flat precision and coefficient-one weighted
+adjoint as continuous complex-linear maps, proves `K H = Q'^*`, and derives
+`H = G Q'^*` from a left-inverse law for the same `K`. It does not assume the
+desired equality or identify this operator with the generated physical
+tower. That dictionary still requires flat-Ubar preservation, the exact
+generated `Q'` tower, the counting-adjoint/weighted-adjoint spacing factor,
+real precision identification and complexification. Regional transport and
+uniform physical `B0` remain open. Window 15 remains compatible but
+unattained. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31471917140`, `31472242314`, `31472534664` and `31472872194`,
+and warm PASS `31473137923`, remain preserved and did not seal.

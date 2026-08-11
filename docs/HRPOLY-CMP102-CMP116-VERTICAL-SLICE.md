@@ -9238,3 +9238,46 @@ stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31467608127`,
 `31468200197` and `31468496923`, and warm diagnostic PASS `31468749704`,
 remain preserved and did not seal. Only the cold run above retires the two
 PRE-VALIDATION marks.
+
+### Step 7.5cmd flat full-complex inverse uniqueness (SEALED; generated physical dictionary open)
+
+Exact source checkpoint `621a84bdd7a33ccb87f4bb02043d63cd52967ac4`
+passed cold GitHub Actions run
+[`31473379111`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31473379111)
+with workflow checkpoint `7cc735a661d341bb1d5cb168a99106918c2ba336`.
+The cold job ran for `23m06s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `08:30:40Z`; the focal ran
+from `08:30:40Z` to `08:51:43Z`, completed `8,553` jobs and exited zero; the
+audit exited zero at `08:51:52Z`. All seven audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and explicit
+new-module text gate were both empty.
+
+Artifact `9094887288`, named
+`flat-precision-inverse-uniqueness-621a84bdd7a33ccb87f4bb02043d63cd52967ac4`,
+has GitHub digest
+`a631d09bc4d34db5c9aeef7b8606c8b5f38f1322a2431cea4126f91e6b2fcf22`.
+The downloaded deterministic archive has SHA-256
+`6368aa683db52e02e610b2f85cf5953535f8632568bd56475fe617f4e7254a44`,
+and all 13 internal manifest entries matched.
+
+The sealed source proves complex homogeneity of the literal flat full-box
+precision and the coefficient-one physical weighted adjoint, packages both
+as continuous complex-linear maps, and bundles `K H = Q'^*`. Given an
+explicit left-inverse law `G K = id` for this same literal precision, inverse
+uniqueness derives `H = G Q'^*` internally. The desired equality is not a
+caller hypothesis.
+
+This is an inverse-uniqueness bridge for the literal flat complex operator,
+not yet its identification with the generated real physical tower. The next
+dictionary must prove preservation of the flat background by physical Ubar,
+collapse the generated `Q'` tower, expose the spacing ratio between Lean's
+counting adjoint and the printed weighted adjoint, and match the real
+precision before complexification. In particular the flat Fourier
+coefficient is the generated mass multiplied by
+`spacing^d / terminalSpacing^d`; it is not silently identified with the
+generated mass. Regional/interacting transport and uniform physical `B0`
+remain open. Window 15 remains compatible but unattained. Counters stay
+exactly `20/41`, `TermSource = 0`. Failed diagnostics `31471917140`,
+`31472242314`, `31472534664` and `31472872194`, plus warm diagnostic PASS
+`31473137923`, remain preserved and did not seal. Only the cold run above
+retires the two PRE-VALIDATION marks.

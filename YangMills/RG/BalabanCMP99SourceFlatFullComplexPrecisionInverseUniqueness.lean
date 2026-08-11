@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeSt
 /-!
 # Inverse uniqueness for the stabilized flat physical `G Q'^*` field
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 This file packages the literal full-box precision and coefficient-one
 weighted adjoint as continuous complex-linear maps.  The already constructed
 stabilized field then satisfies the bundled equation `K H = Q'^*`.
