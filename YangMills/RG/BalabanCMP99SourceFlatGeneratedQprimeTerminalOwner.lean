@@ -76,6 +76,7 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_single
             (cmp99SourceBlockAverageWeight M d • v)) =
         singleFinitePiLp (tail.terminalSiteOfFine sourceCoarse)
           ((cmp99SourceBlockAverageWeight M d) ^ (depth + 1) • v)
+      congr 1
       rw [pow_succ, smul_smul]
 
 /-- The reverse coefficient-one recursion reads the terminal coordinate owned
