@@ -55,7 +55,6 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_add
       cmp99FlatPhysicalFibreDFT
         (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
           ell mass a w) k
-  simp only [Pi.add_apply]
   by_cases hk : cmp99SourceFlatQprimeCoarseAlias k = ell
   · let output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨k, hk⟩
     rw [cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
@@ -93,7 +92,6 @@ theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_smul
     c • cmp99FlatPhysicalFibreDFT
       (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution
         ell mass a v) k
-  simp only [Pi.smul_apply]
   by_cases hk : cmp99SourceFlatQprimeCoarseAlias k = ell
   · let output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell := ⟨k, hk⟩
     rw [cmp99FlatPhysicalFibreDFT_stabilizedParticularSolution_fixedCoarseFibre
@@ -196,6 +194,7 @@ noncomputable def
     (cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldLM
       (d := d) (M := M) (N' := N') (Nc := Nc) mass a)
 
+omit [NeZero d] [NeZero Nc] in
 @[simp] theorem
     cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldCLM_apply
     (mass a : ℝ) (eta : FinBox d N' → SUNLieComplexCoord Nc) :
