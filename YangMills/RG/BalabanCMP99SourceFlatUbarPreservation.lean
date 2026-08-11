@@ -76,7 +76,10 @@ theorem cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one
   have hsub :
       ((1 : SUN Nc) : Matrix (Fin Nc) (Fin Nc) ℂ) - 1 = 0 := by
     simp
-  rw [hsub, nearLog_zero, smul_zero]
+  rw [hsub, nearLog_zero]
+  exact
+    (smul_zero (w i) :
+      w i • (0 : Matrix (Fin Nc) (Fin Nc) ℂ) = 0)
 
 /-- The direct deviation-budget Ubar block is one in the literal flat
 background.  The budget and its proof certify that the constructor is legal;
@@ -98,8 +101,10 @@ they do not affect the resulting zero exponent. -/
   apply Subtype.ext
   rw [cmp99UbarSpecialUnitaryBlockOfDeviationBudget_coe]
   rw [cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one]
-  · exact @cmp99SourceBaseCoarseBackground_flat_apply_pos
-      d M N' Nc hd hM hN' hNc b
+  · rw [NormedSpace.exp_zero, one_mul]
+    exact congrArg Subtype.val
+      (@cmp99SourceBaseCoarseBackground_flat_apply_pos
+        d M N' Nc hd hM hN' hNc b)
   · intro x hx
     exact UbarDeviation_cmp99SourceFlatGaugeConfig b x
       (Γ_1 b) (Γ_2 b) (Γ_3 b)
