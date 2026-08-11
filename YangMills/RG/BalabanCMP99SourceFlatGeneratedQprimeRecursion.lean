@@ -247,8 +247,17 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
                 (SUNLieCoord Nc) →L[ℝ]
               PiLp 2 (fun _ : tail.terminalSite => SUNLieCoord Nc) =>
           T.comp (cmp99SourceFlatRealBlockAverageCLM Omega))
-      simpa only [cmp99SourceUbarNextFineRadius_zero,
-        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground] using htail'
+      have hradius : cmp99SourceUbarNextFineRadius d M 0 = 0 :=
+        cmp99SourceUbarNextFineRadius_zero
+      cases hradius
+      have hbackground :
+          Scale.toSourceScale.data.nextBackground =
+            cmp99SourceFlatGaugeConfig d N' Nc := by
+        simpa only [Scale] using
+          cmp99SourceFlatNormalizedRegionalScale_nextBackground
+            (Nc := Nc) hd hM Omega hOmega
+      cases hbackground
+      exact htail'
 
 /-- The generated coefficient-one physical synthesis is likewise exactly the
 explicit reverse flat recursion. -/
@@ -291,8 +300,17 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
                 (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
                 (SUNLieCoord Nc) =>
           (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp T)
-      simpa only [cmp99SourceUbarNextFineRadius_zero,
-        cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground] using htail'
+      have hradius : cmp99SourceUbarNextFineRadius d M 0 = 0 :=
+        cmp99SourceUbarNextFineRadius_zero
+      cases hradius
+      have hbackground :
+          Scale.toSourceScale.data.nextBackground =
+            cmp99SourceFlatGaugeConfig d N' Nc := by
+        simpa only [Scale] using
+          cmp99SourceFlatNormalizedRegionalScale_nextBackground
+            (Nc := Nc) hd hM Omega hOmega
+      cases hbackground
+      exact htail'
 
 end
 
