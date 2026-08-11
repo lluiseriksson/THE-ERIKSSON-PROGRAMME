@@ -44,9 +44,9 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_smul
       cmp99SourceFlatFullComplexQprimeMass (c • phi) x =
         c • cmp99SourceFlatFullComplexQprimeMass phi x := by
     unfold cmp99SourceFlatFullComplexQprimeMass
-    rw [cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply,
-      cmp99SourceFlatComplexBlockAverageCLM_apply]
-    simp only [cmp99SourceFlatFullActiveComplexField_apply, Pi.smul_apply]
+    simp only [cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply,
+      cmp99SourceFlatComplexBlockAverageCLM_apply,
+      cmp99SourceFlatFullActiveComplexField_apply, Pi.smul_apply]
     rw [← Finset.smul_sum]
     exact smul_comm (M := ℝ) (N := ℂ)
       (α := SUNLieComplexCoord Nc) _ _ _
