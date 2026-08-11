@@ -241,7 +241,12 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
         CMP99SourceActiveRegionChain.flatExplicitQprime]
       rw [cmp99SourceTransportedBlockAverageCLM_flat_eq_explicit]
       apply congrArg
-        (fun T => T.comp (cmp99SourceFlatRealBlockAverageCLM Omega))
+        (fun T :
+            ActiveGaugeZeroCochain
+                (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
+                (SUNLieCoord Nc) →L[ℝ]
+              PiLp 2 (fun _ : tail.terminalSite => SUNLieCoord Nc) =>
+          T.comp (cmp99SourceFlatRealBlockAverageCLM Omega))
       convert htail' using 1 <;>
         simp only [cmp99SourceUbarNextFineRadius_zero,
           cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground]
@@ -281,7 +286,11 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
         CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint]
       rw [cmp99SourceTransportedBlockWeightedAdjointCLM_flat_eq_explicit]
       apply congrArg
-        (fun T =>
+        (fun T :
+            PiLp 2 (fun _ : tail.terminalSite => SUNLieCoord Nc) →L[ℝ]
+              ActiveGaugeZeroCochain
+                (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
+                (SUNLieCoord Nc) =>
           (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp T)
       convert htail' using 1 <;>
         simp only [cmp99SourceUbarNextFineRadius_zero,
