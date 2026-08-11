@@ -33352,3 +33352,37 @@ diagnostics `31450180972`, `31450508511`, `31450771159`, `31451005213`,
 is retained as superseded evidence: focal/audit/axioms passed, but one
 unused-section warning remained, so it did not retire PRE-VALIDATION. Only the
 warning-free cold run above seals this brick.
+
+## Addendum 732 (2026-08-11, **flat physical particular solution GREEN; central stabilization and inverse open; 20/41 unchanged**)
+
+Exact source checkpoint `30386cddaddb1a6ce4f65ae8fc9bcb3bc3ff74e7`
+passed cold GitHub Actions run
+[`31456409096`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31456409096)
+with workflow checkpoint `aa7ca9413ba3aa26d2858689121ca6919e883cd5`.
+The job ran for `25m48s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,547` jobs and the focal/audit stages exited `0/0`.
+All six declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom or new-module linter warning occurred.
+
+Artifact `9088657541`, named
+`flat-full-complex-precision-particular-solution-30386cddaddb1a6ce4f65ae8fc9bcb3bc3ff74e7`,
+has GitHub digest
+`38d03a50e822fc45a8dc66893a35835197271e9504b80199d07d471622ea7db5`.
+The downloaded deterministic archive has SHA-256
+`96162f69a3c1b30529708bb955b6f2a7e51d5f858aef9609ba1ad64a2278d41c`,
+and all 13 internal manifest entries matched.
+
+The source internally scales the sealed transposed alias solution by the fine
+volume, reconstructs the corresponding physical field, proves exact on-fibre
+and off-fibre DFT identities for the field and the literal flat precision,
+and concludes the full-box field equation by DFT injectivity. No abstract
+Fourier operator, free enumeration or externally supplied solution family is
+used.
+
+The central removable zero, stabilized physical solution, inverse CLM,
+stabilized Fourier-kernel dictionary, interacting/regional transport and
+physical `B0` remain open. Window 15 remains compatible but unattained. Live
+counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
+`31455562523`, `31455788779` and `31456041784`, plus warm diagnostic PASS
+`31456262055`, remain preserved. Only the cold run above retires the two
+PRE-VALIDATION marks.

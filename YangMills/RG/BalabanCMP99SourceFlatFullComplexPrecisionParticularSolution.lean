@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasTransposeSolution
 /-!
 # Flat physical particular solution on one reciprocal fibre
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The sealed transpose alias solution is multiplied by the literal fine volume
 and reconstructed through the sealed physical inverse DFT.  The volume is not
 absorbed into a free normalization: it cancels the inverse-transform factor

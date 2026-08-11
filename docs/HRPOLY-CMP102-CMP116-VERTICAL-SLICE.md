@@ -9009,3 +9009,41 @@ and `31451740889` preserve the elaboration boundary; warm PASSes
 `31451946285` and `31453542148` did not seal. Cold PASS `31452112604` is
 retained as superseded evidence because its source emitted one unused-section
 warning; only the warning-free cold run above retires PRE-VALIDATION.
+
+### Step 7.5clx flat physical particular solution (SEALED; central stabilization open)
+
+Exact source checkpoint `30386cddaddb1a6ce4f65ae8fc9bcb3bc3ff74e7`
+passed cold GitHub Actions run
+[`31456409096`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31456409096)
+with workflow checkpoint `aa7ca9413ba3aa26d2858689121ca6919e883cd5`.
+Restoration and saving of `.lake/build` were both skipped. The focal ran from
+`03:48:14Z` to `04:12:03Z`, completed `8,547` jobs and exited zero; the audit
+exited zero at `04:12:12Z`. All six audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and explicit
+new-module warning gate were both empty.
+
+Artifact `9088657541`, named
+`flat-full-complex-precision-particular-solution-30386cddaddb1a6ce4f65ae8fc9bcb3bc3ff74e7`,
+has GitHub digest
+`38d03a50e822fc45a8dc66893a35835197271e9504b80199d07d471622ea7db5`.
+Its deterministic inner archive re-hashed on Windows to
+`96162f69a3c1b30529708bb955b6f2a7e51d5f858aef9609ba1ad64a2278d41c`;
+all 13 internal manifest entries matched.
+
+The source multiplies the sealed transposed fixed-fibre solution by the
+literal fine volume and reconstructs an actual physical field through the
+sealed inverse DFT. It proves its selected-fibre coefficient exactly, proves
+both the field and literal precision output vanish on every other reciprocal
+fibre, and identifies the selected output with the coefficient-one physical
+weighted-adjoint source. DFT injectivity then yields the literal full-box
+field equation; no synthetic Fourier operator or supplied solution family is
+introduced.
+
+The theorem still lies on the nonsingular domain of the printed rational
+formula. The central removable zero and its stabilized solution, inverse CLM,
+stabilized-kernel dictionary, interacting/regional transport and physical
+`B0` remain open. Window 15 remains compatible but unattained. Counters stay
+exactly `20/41`, `TermSource = 0`. Failed diagnostics `31455562523`,
+`31455788779` and `31456041784` preserve the PiLp-coordinate, proof-order and
+delimiter boundaries; warm PASS `31456262055` was diagnostic only. Only the
+cold run above retires PRE-VALIDATION.
