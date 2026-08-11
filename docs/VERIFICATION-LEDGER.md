@@ -33718,3 +33718,37 @@ Window 15 remains compatible but unattained. Live counters stay exactly
 `31487710390`, `31488086415`, `31488392429`, `31488725784`, `31489324526`,
 `31489622730`, `31489988724` and `31490350285`, plus warm diagnostic PASS
 `31490585466`, remain preserved and did not seal.
+
+## Addendum 743 (2026-08-11, **canonical flat generated `Q'/Q'^*` recursion SEALED; printed one-block and precision dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `3857450a087721447f2456ba1a8e199565b1ed49`
+passed cold GitHub Actions run
+[`31500199257`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31500199257)
+with workflow checkpoint `51e956f12036a624dc6875651913c36761e938c7`.
+The job ran for `26m40s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,481` jobs and the focal/audit stages exited `0/0`.
+All sixteen declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9105674980`, named
+`flat-generated-qprime-recursion-3857450a087721447f2456ba1a8e199565b1ed49`,
+has GitHub digest
+`a59a78c1728e89761ea846d5592568b30321e0e2661036de6746b4f123d4a3c4`.
+The downloaded deterministic archive has SHA-256
+`ee58f56f0a7c37c3b9036083060bead61675ff465e5b0203f259d6c0697f4400`,
+and all 13 internal manifest entries matched.
+
+The source derives every hidden flat successor background from physical Ubar,
+identifies the literal physical one-step average and coefficient-one weighted
+adjoint with explicit identity-transport maps, and proves the complete typed
+generated `Q'/Q'^*` recursions equal the explicit flat recursions. Proof-valued
+radius chains and smallness witnesses cannot hide operator data: their
+invariance is expressed by two separately audited congruence lemmas.
+
+This does not collapse the recursion to one printed side-`M^depth` block,
+bridge counting and source-weighted adjoints, match or complexify the real
+generated precision, or transport a Green bound regionally. Uniform physical
+`B0` remains open. Window 15 remains compatible but unattained. Live counters
+stay exactly `20/41`, `TermSource = 0`. The thirteen failed diagnostics listed
+in the vertical map and warm PASS `31499831474` remain preserved and did not
+seal.

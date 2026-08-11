@@ -9239,6 +9239,48 @@ stay exactly `20/41`, `TermSource = 0`. Failed diagnostics `31467608127`,
 remain preserved and did not seal. Only the cold run above retires the two
 PRE-VALIDATION marks.
 
+### Step 7.5cmi canonical flat generated `Q'/Q'^*` recursion (SEALED; printed one-block collapse and precision dictionaries open)
+
+Exact source checkpoint `3857450a087721447f2456ba1a8e199565b1ed49`
+passed cold GitHub Actions run
+[`31500199257`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31500199257)
+with workflow checkpoint `51e956f12036a624dc6875651913c36761e938c7`.
+The job ran from `14:11:33Z` to `14:38:13Z` (`26m40s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`14:13:27Z`; the focal ran to `14:37:41Z`, completed `8,481` jobs and exited
+zero. The audit ended at `14:38:08Z` and also exited zero. All sixteen audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9105674980`, named
+`flat-generated-qprime-recursion-3857450a087721447f2456ba1a8e199565b1ed49`,
+has GitHub digest
+`a59a78c1728e89761ea846d5592568b30321e0e2661036de6746b4f123d4a3c4`.
+The downloaded deterministic archive has SHA-256
+`ee58f56f0a7c37c3b9036083060bead61675ff465e5b0203f259d6c0697f4400`,
+and all 13 internal manifest entries matched.
+
+The source constructs the identity transport on the literal flat background,
+identifies both physical one-step maps with the explicit flat average and
+coefficient-one weighted adjoint, and proves by induction on the typed active
+region chain that the complete internally generated physical `Q'` and `Q'^*`
+recursions equal their explicit flat recursions. Every hidden next background
+is derived from physical Ubar. The two proof-data congruence lemmas make the
+dependent radius-chain transport explicit; no operator family, successor
+background or desired equality is caller data.
+
+This seals the canonical typed flat recursion only. It does not collapse the
+recursion to one printed block average of side `M^depth`, identify counting
+with source-weighted adjoints, match the generated real precision with the
+separately reconstructed flat complex precision, complexify it, or produce a
+regional Green bound. Regional transport and uniform physical `B0` remain
+open. Window 15 remains compatible but unattained. Counters remain exactly
+`20/41`, `TermSource = 0`. Failed diagnostics `31494264301`, `31494624376`,
+`31494990623`, `31495580310`, `31495961675`, `31496517462`, `31496912692`,
+`31497266590`, `31497623352`, `31497972893`, `31498519455`, `31498980631`
+and `31499483231`, plus warm diagnostic PASS `31499831474`, remain preserved
+and did not seal. Only the cold run above retires the PRE-VALIDATION marks.
+
 ### Step 7.5cmf canonical zero-radius normalized flat scale (SEALED; recursive flat tower and generated operator dictionaries open)
 
 Exact source checkpoint `1f044aa0200ab73a9386df0a969e45d257db4f78`

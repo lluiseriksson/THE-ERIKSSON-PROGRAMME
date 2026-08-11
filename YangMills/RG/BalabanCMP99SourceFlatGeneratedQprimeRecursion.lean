@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedQprimeRowMass
 /-!
 # Canonical flat recursion for the generated CMP99 `Q'` and `Q'^*`
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The generated physical tower already constructs every background and every
 one-step average internally.  At the literal flat background, physical Ubar
 preserves flatness.  This file uses that fact to identify the complete
