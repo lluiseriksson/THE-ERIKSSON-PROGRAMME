@@ -9274,6 +9274,44 @@ Window 15 remains compatible but unattained. Counters remain exactly `20/41`,
 `TermSource = 0`. Warm diagnostic PASS `31480922329` remains preserved and did
 not seal. Only the cold run above retires the two PRE-VALIDATION marks.
 
+### Step 7.5cmg canonical generated flat retained tower (SEALED; intermediate-background and generated-operator dictionaries open)
+
+Exact source checkpoint `cea77517466b91bd1b7fcb0c3a1d8292d158795e`
+passed cold GitHub Actions run
+[`31484384185`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31484384185)
+with workflow checkpoint `c9c63c388518f317556332bddc95b1a4265b613d`.
+The job ran from `10:56:16Z` to `11:16:07Z` (`19m51s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`10:58:03Z`; the focal ran to `11:15:55Z`, completed `8,447` jobs and exited
+zero. The audit ended at `11:16:04Z` and also exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9099057417`, named
+`flat-retained-tower-cea77517466b91bd1b7fcb0c3a1d8292d158795e`, has GitHub
+digest
+`e6ceadb2688bb0911690e628e62916388777d7450ff9029ec7775c3251f29e16`.
+The downloaded deterministic archive has SHA-256
+`caef681c42bda31228039d33d4d4990f57d9d0112dfd7ce0736a48c41f69643b`,
+and all 13 internal manifest entries matched.
+
+The source proves that zero is an exact fixed point of the printed Ubar radius
+recursion, constructs the complete proof-valued zero-radius chain from one
+closed scalar budget, and feeds that chain plus the literal flat fine
+background into the source recursion to construct the canonical generated
+retained physical tower. Neither the chain nor a fine-smallness family is
+caller data.
+
+This seals existence of the actual recursively generated tower object, not an
+identification of its hidden intermediate backgrounds with the flat
+configuration. The exact generated `Q'` tower, the counting-adjoint versus
+weighted-adjoint spacing factor, real precision matching and complexification
+remain open dictionaries. Regional transport and uniform physical `B0` remain
+open. Window 15 remains compatible but unattained. Counters remain exactly
+`20/41`, `TermSource = 0`. Failed diagnostics `31483205444`, `31483629713` and
+`31483956365`, plus warm diagnostic PASS `31484191821`, remain preserved and
+did not seal. Only the cold run above retires the two PRE-VALIDATION marks.
+
 ### Step 7.5cmd flat full-complex inverse uniqueness (SEALED; generated physical dictionary open)
 
 Exact source checkpoint `621a84bdd7a33ccb87f4bb02043d63cd52967ac4`

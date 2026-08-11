@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 /-!
 # The generated retained CMP99 tower at the flat background
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The scalar Ubar radius recursion fixes zero exactly.  Consequently one closed
 zero-radius budget constructs the entire former proof-valued radius chain,
 and the physical retained-tower constructor can be run on the literal flat

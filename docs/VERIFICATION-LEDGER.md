@@ -33651,3 +33651,36 @@ Regional transport and uniform physical `B0` remain open. Window 15 remains
 compatible but unattained. Live counters stay exactly `20/41`,
 `TermSource = 0`. Warm diagnostic PASS `31480922329` remains preserved and
 did not seal.
+
+## Addendum 741 (2026-08-11, **canonical generated flat retained tower SEALED; generated operator dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `cea77517466b91bd1b7fcb0c3a1d8292d158795e`
+passed cold GitHub Actions run
+[`31484384185`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31484384185)
+with workflow checkpoint `c9c63c388518f317556332bddc95b1a4265b613d`.
+The job ran for `19m51s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,447` jobs and the focal/audit stages exited `0/0`.
+All five declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; no forbidden axiom, new-module
+warning or text-gate violation occurred.
+
+Artifact `9099057417`, named
+`flat-retained-tower-cea77517466b91bd1b7fcb0c3a1d8292d158795e`, has GitHub
+digest
+`e6ceadb2688bb0911690e628e62916388777d7450ff9029ec7775c3251f29e16`.
+The downloaded deterministic archive has SHA-256
+`caef681c42bda31228039d33d4d4990f57d9d0112dfd7ce0736a48c41f69643b`,
+and all 13 internal manifest entries matched.
+
+The source proves the exact zero fixed point of the Ubar radius recursion,
+constructs its complete proof-valued chain from one closed zero-radius budget,
+and uses that chain and the literal flat fine background to build the actual
+generated retained physical tower. It does not accept a chain or fine-smallness
+family from the caller. This does not yet identify every hidden intermediate
+background as flat or identify the retained `Q'` with the printed flat block
+average. The exact generated `Q'`, counting-adjoint/weighted-adjoint spacing,
+real precision and complexification dictionaries remain open. Regional
+transport and uniform physical `B0` remain open. Window 15 remains compatible
+but unattained. Live counters stay exactly `20/41`, `TermSource = 0`. Failed
+diagnostics `31483205444`, `31483629713` and `31483956365`, and warm PASS
+`31484191821`, remain preserved and did not seal.
