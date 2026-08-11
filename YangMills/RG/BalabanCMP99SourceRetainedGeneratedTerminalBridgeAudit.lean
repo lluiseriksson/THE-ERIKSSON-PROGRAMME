@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceRetainedGeneratedTerminalBridge
+
+#print axioms YangMills.RG.cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower
+#print axioms YangMills.RG.cmp99SourceFlatRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower
