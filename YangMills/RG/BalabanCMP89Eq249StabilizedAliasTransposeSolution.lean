@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP89Eq249CentralStabilizedAliasDenominator
 /-!
 # Central-stabilized transposed alias solution
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The rational CMP89 (2.47) solution divides every alias by its fine symbol.
 That presentation has a removable central zero.  Here the zero alias is
 separated before solving the diagonal-plus-rank-one system: the central

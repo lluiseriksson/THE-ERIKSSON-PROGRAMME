@@ -9047,3 +9047,42 @@ exactly `20/41`, `TermSource = 0`. Failed diagnostics `31455562523`,
 `31455788779` and `31456041784` preserve the PiLp-coordinate, proof-order and
 delimiter boundaries; warm PASS `31456262055` was diagnostic only. Only the
 cold run above retires PRE-VALIDATION.
+
+### Step 7.5cly central-stabilized transposed alias solution (SEALED; physical specialization open)
+
+Exact source checkpoint `5265c73db3ec71ffaca115e1993375312e327ced`
+passed cold GitHub Actions run
+[`31459140597`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31459140597)
+with workflow checkpoint `0e6372ce7cc473520cb81f114663ca6fd3a334b6`.
+The cold job ran for `2m49s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `04:40:57Z`; the focal ran
+from `04:40:57Z` to `04:41:46Z`, completed `3,294` jobs and exited zero; the
+audit exited zero at `04:41:51Z`. All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and explicit
+new-module warning gate were both empty.
+
+Artifact `9089187256`, named
+`stabilized-alias-transpose-solution-5265c73db3ec71ffaca115e1993375312e327ced`,
+has GitHub digest
+`44416f8d0833951dcf8feffbe1b23fec971a3c792e61fc65a27436770dcc7a92`.
+Its deterministic inner archive re-hashed on Windows to
+`49043a6e409ebd8e77ae2dcaaaccaa6b771e9cc646fb82b0d713bf9e6a0cf264`;
+all 13 internal manifest entries matched.
+
+The source separates the zero reciprocal alias before solving the literal
+diagonal-plus-rank-one system. The central coefficient divides only by the
+sealed stabilized denominator; every noncentral coefficient keeps the
+literal fine-symbol quotient. The resulting vector is proved internally to
+solve the transposed entire alias matrix, requiring nonvanishing only of the
+noncentral fine symbols and the stabilized denominator. In particular no
+nonvanishing premise is imposed on the central fine symbol, and the
+noncentral subtype sum is identified with the printed CMP89 sum without a
+free enumeration.
+
+This is still the generic alias system. Pullback through the signed physical
+fibre dictionary, the stabilized full-box particular field, inverse CLM,
+interacting/regional transport and uniform physical `B0` remain open. Window
+15 remains compatible but unattained. Counters stay exactly `20/41`,
+`TermSource = 0`. Failed diagnostics `31458140980`, `31458352861`,
+`31458580334` and `31458776556`, plus warm diagnostic PASS `31458994322`,
+remain preserved. Only the cold run above retires PRE-VALIDATION.

@@ -33386,3 +33386,37 @@ counters stay exactly `20/41`, `TermSource = 0`. Failed diagnostics
 `31455562523`, `31455788779` and `31456041784`, plus warm diagnostic PASS
 `31456262055`, remain preserved. Only the cold run above retires the two
 PRE-VALIDATION marks.
+
+## Addendum 733 (2026-08-11, **central-stabilized alias solution GREEN; physical specialization open; 20/41 unchanged**)
+
+Exact source checkpoint `5265c73db3ec71ffaca115e1993375312e327ced`
+passed cold GitHub Actions run
+[`31459140597`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31459140597)
+with workflow checkpoint `0e6372ce7cc473520cb81f114663ca6fd3a334b6`.
+The job ran for `2m49s`; restore and save of `.lake/build` were both skipped.
+The focal completed `3,294` jobs and the focal/audit stages exited `0/0`.
+All five declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom or new-module linter warning occurred.
+
+Artifact `9089187256`, named
+`stabilized-alias-transpose-solution-5265c73db3ec71ffaca115e1993375312e327ced`,
+has GitHub digest
+`44416f8d0833951dcf8feffbe1b23fec971a3c792e61fc65a27436770dcc7a92`.
+The downloaded deterministic archive has SHA-256
+`49043a6e409ebd8e77ae2dcaaaccaa6b771e9cc646fb82b0d713bf9e6a0cf264`,
+and all 13 internal manifest entries matched.
+
+The source cancels the removable central zero at the level of the literal
+CMP89 alias matrix: the central coefficient uses only the stabilized
+denominator, while noncentral coefficients retain their fine-symbol
+denominators. The complete transposed matrix equation is derived internally,
+with neither a nonzero central fine symbol nor a supplied solution family or
+alias enumeration.
+
+The signed physical-fibre specialization, stabilized full-box particular
+field, inverse CLM, interacting/regional transport and uniform `B0` remain
+open. Window 15 remains compatible but unattained. Live counters stay exactly
+`20/41`, `TermSource = 0`. Failed diagnostics `31458140980`, `31458352861`,
+`31458580334` and `31458776556`, plus warm diagnostic PASS `31458994322`,
+remain preserved. Only the cold run above retires the two PRE-VALIDATION
+marks.
