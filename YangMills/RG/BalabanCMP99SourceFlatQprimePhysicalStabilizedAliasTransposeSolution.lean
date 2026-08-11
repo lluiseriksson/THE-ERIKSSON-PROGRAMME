@@ -40,7 +40,8 @@ def cmp99SourceFlatQprimePhysicalCentralAliasIndex
 theorem cmp99SourceFlatQprimePhysicalCentralAliasIndex_reindex
     {d M N' : ℕ} [NeZero M] [NeZero N'] (ell : FinBox d N') :
     cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell
-        (cmp99SourceFlatQprimePhysicalCentralAliasIndex ell) =
+        (cmp99SourceFlatQprimePhysicalCentralAliasIndex
+          (d := d) (M := M) (N' := N') ell) =
       cmp89Eq249CentralAliasIndex d M 1 := by
   simp [cmp99SourceFlatQprimePhysicalCentralAliasIndex]
 
@@ -61,7 +62,9 @@ theorem cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_central
     {d M N' : ℕ} [NeZero M] [NeZero N'] (ell : FinBox d N')
     (mass a : ℝ) :
     cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution
-        ell mass a (cmp99SourceFlatQprimePhysicalCentralAliasIndex ell) =
+        (d := d) (M := M) (N' := N') ell mass a
+        (cmp99SourceFlatQprimePhysicalCentralAliasIndex
+          (d := d) (M := M) (N' := N') ell) =
       cmp89Eq246EntireAliasAverageRow d M 1
           (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
           (cmp89Eq249CentralAliasIndex d M 1) /
@@ -77,7 +80,8 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_stabi
     {d M N' : ℕ} [NeZero M] [NeZero N'] (ell : FinBox d N')
     (mass a : ℝ)
     (hfine : ∀ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
-      k ≠ cmp99SourceFlatQprimePhysicalCentralAliasIndex ell →
+      k ≠ cmp99SourceFlatQprimePhysicalCentralAliasIndex
+          (d := d) (M := M) (N' := N') ell →
         cmp99SourceFlatQprimePhysicalFineSymbol mass k.1 ≠ 0)
     (hstabilized :
       cmp89Eq249CentralStabilizedAliasDenominator d M 1 mass a
@@ -98,7 +102,8 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_stabi
         cmp89Eq246EntireAliasFineSymbol d M 1 mass z m ≠ 0 := by
     intro m hm
     have hphysicalNe :
-        e.symm m ≠ cmp99SourceFlatQprimePhysicalCentralAliasIndex ell := by
+        e.symm m ≠ cmp99SourceFlatQprimePhysicalCentralAliasIndex
+          (d := d) (M := M) (N' := N') ell := by
       intro h
       apply hm
       have heq := congrArg e h
