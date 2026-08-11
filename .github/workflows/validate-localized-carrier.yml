@@ -1,4 +1,4 @@
-name: Validate generated flat retained tower
+name: Validate retained/generated terminal bridge
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: cea77517466b91bd1b7fcb0c3a1d8292d158795e
+  SOURCE_SHA: 887745760627b9dbaae59115ee598047c0b4a9a8
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    flat-retained-tower
     flat-normalized-scale
     flat-ubar-preservation
     stabilized-full-complex-precision-particular-solution
@@ -26,10 +27,9 @@ env:
     flat-full-complex-precision-particular-solution
     flat-full-complex-precision-fibre-action
     flat-full-complex-precision-mode-action
-    physical-alias-transpose-solution
 
 jobs:
-  flat-retained-tower:
+  retained-generated-terminal-bridge:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-retained-tower-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-retained-generated-terminal-bridge-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatRetainedPhysicalTower.lean \
-            YangMills/RG/BalabanCMP99SourceFlatRetainedPhysicalTowerAudit.lean \
+            YangMills/RG/BalabanCMP99SourceRetainedGeneratedTerminalBridge.lean \
+            YangMills/RG/BalabanCMP99SourceRetainedGeneratedTerminalBridgeAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_retained_tower_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatRetainedPhysicalTower
-          run_stage flat_retained_tower_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatRetainedPhysicalTowerAudit.lean
+          run_stage retained_generated_terminal_bridge_focal \
+            lake build YangMills.RG.BalabanCMP99SourceRetainedGeneratedTerminalBridge
+          run_stage retained_generated_terminal_bridge_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceRetainedGeneratedTerminalBridgeAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_retained_tower_audit.log": 5,
+              "retained_generated_terminal_bridge_audit.log": 2,
           }
           focal = (Path("evidence") /
-              "flat_retained_tower_focal.log").read_text(
+              "retained_generated_terminal_bridge_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatRetainedPhysicalTower.lean:"
+              "BalabanCMP99SourceRetainedGeneratedTerminalBridge.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-retained-tower-evidence.tar.gz
-          sha256sum flat-retained-tower-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              retained-generated-terminal-bridge-evidence.tar.gz
+          sha256sum retained-generated-terminal-bridge-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-retained-tower-${{ env.SOURCE_SHA }}
+          name: retained-generated-terminal-bridge-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-retained-tower-evidence.tar.gz
+            retained-generated-terminal-bridge-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-retained-tower-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-retained-generated-terminal-bridge-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
