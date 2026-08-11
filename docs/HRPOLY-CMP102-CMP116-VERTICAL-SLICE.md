@@ -9124,3 +9124,41 @@ interacting/regional transport and uniform physical `B0` remain open. Window
 `TermSource = 0`. Failed diagnostic `31459717734` and warm diagnostic PASS
 `31459917125` remain preserved. Only the cold run above retires the two
 PRE-VALIDATION marks.
+
+### Step 7.5cma physical central-stabilized full-box particular solution (SEALED; arbitrary coarse source and inverse uniqueness open)
+
+Exact source checkpoint `7844238067f840687cee61b5d4df510a21f1d30a`
+passed cold GitHub Actions run
+[`31462172984`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31462172984)
+with workflow checkpoint `8cd64709ca4c5a6c0385f50147e1ffed923ec4bd`.
+The cold job ran for `25m22s`; restoration and saving of `.lake/build` were
+both skipped. Dependency materialization ended at `05:37:43Z`; the focal ran
+from `05:37:43Z` to `06:01:12Z`, completed `8,550` jobs and exited zero; the
+audit exited zero at `06:01:20Z`. All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist and explicit
+new-module warning gate were both empty.
+
+Artifact `9090675377`, named
+`stabilized-full-complex-precision-particular-solution-7844238067f840687cee61b5d4df510a21f1d30a`,
+has GitHub digest
+`fb5e0e5e4ec8dfc0de2f6aafbeaf7bac92d9e03f8d7ba393227be31c65288b71`.
+The downloaded deterministic archive has SHA-256
+`3f6e66a866bd8fa4da0c56635db8386971fbe438e63d48ff1b9eef37827f644e`,
+and all 13 internal manifest entries matched.
+
+The source multiplies the sealed physical central-stabilized alias vector by
+the literal fine volume and reconstructs an actual full-box field with the
+sealed inverse DFT. It proves the exact selected-fibre coefficient, zero DFT
+off that reciprocal fibre for both the field and the precision output, and
+the selected-fibre identity with the coefficient-one physical weighted
+adjoint. DFT injectivity then gives the literal full-box equation
+`K h_ell(v) = Q'^* phi_ell(v)`. The central fine symbol is never required to
+be nonzero, and no solution family or synthetic inverse is supplied.
+
+This is one coarse Fourier mode of `G Q'^*`, not yet the operator on an
+arbitrary coarse field. The finite coarse-mode superposition, inverse CLM,
+identification by inverse uniqueness with the generated physical covariance,
+interacting/regional transport and uniform physical `B0` remain open. Window
+15 remains compatible but unattained. Counters stay exactly `20/41`,
+`TermSource = 0`. Warm diagnostic PASS `31461960444` remains preserved and
+did not seal. Only the cold run above retires the two PRE-VALIDATION marks.

@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTranspose
 /-!
 # Central-stabilized flat physical particular solution
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The sealed physical central-stabilized alias vector is multiplied by the
 literal fine volume and reconstructed through the physical inverse DFT.  The
 literal full-box precision sends the resulting field exactly to the actual

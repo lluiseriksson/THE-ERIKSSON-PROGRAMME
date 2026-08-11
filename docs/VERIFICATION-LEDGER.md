@@ -33454,3 +33454,37 @@ interacting/regional transport and uniform physical `B0` remain open. Window
 `TermSource = 0`. Failed diagnostic `31459717734` and warm diagnostic PASS
 `31459917125` remain preserved. Only the cold run above retires the two
 PRE-VALIDATION marks.
+
+## Addendum 735 (2026-08-11, **physical central-stabilized full-box particular solution GREEN; arbitrary coarse source and inverse open; 20/41 unchanged**)
+
+Exact source checkpoint `7844238067f840687cee61b5d4df510a21f1d30a`
+passed cold GitHub Actions run
+[`31462172984`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31462172984)
+with workflow checkpoint `8cd64709ca4c5a6c0385f50147e1ffed923ec4bd`.
+The job ran for `25m22s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,550` jobs and the focal/audit stages exited `0/0`.
+All five declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom or new-module linter warning occurred.
+
+Artifact `9090675377`, named
+`stabilized-full-complex-precision-particular-solution-7844238067f840687cee61b5d4df510a21f1d30a`,
+has GitHub digest
+`fb5e0e5e4ec8dfc0de2f6aafbeaf7bac92d9e03f8d7ba393227be31c65288b71`.
+The downloaded deterministic archive has SHA-256
+`3f6e66a866bd8fa4da0c56635db8386971fbe438e63d48ff1b9eef37827f644e`,
+and all 13 internal manifest entries matched.
+
+The sealed producer realizes one physical coarse Fourier mode of `G Q'^*` as
+an actual full-box field. The literal precision sends it exactly to the
+coefficient-one weighted-adjoint coarse mode; on- and off-fibre DFT identities
+and DFT injectivity are proved internally. The hypotheses exclude only the
+noncentral fine-symbol zeros and the stabilized denominator zero. In
+particular the central fine symbol is not assumed nonzero, and no arbitrary
+solution family or inverse operator is supplied.
+
+Finite superposition over an arbitrary coarse field, inverse CLM packaging,
+inverse-uniqueness identification with the generated physical covariance,
+interacting/regional transport and uniform `B0` remain open. Window 15 remains
+compatible but unattained. Live counters stay exactly `20/41`,
+`TermSource = 0`. Warm diagnostic PASS `31461960444` remains preserved and did
+not seal. Only the cold run above retires the two PRE-VALIDATION marks.
