@@ -59,6 +59,7 @@ def cmp99SourceFlatFullComplexPrecisionParticularSolution
 
 /-- On the selected reciprocal fibre, the DFT of the particular solution is
 the fine-volume multiple of the printed transposed alias solution. -/
+omit [NeZero d] [NeZero Nc] in
 theorem cmp99FlatPhysicalFibreDFT_particularSolution_fixedCoarseFibre
     (ell : FinBox d N') (mass a : ℝ) (v : SUNLieComplexCoord Nc)
     (k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell) :
@@ -72,6 +73,7 @@ theorem cmp99FlatPhysicalFibreDFT_particularSolution_fixedCoarseFibre
 
 /-- Outside the selected reciprocal fibre, the DFT of the particular
 solution vanishes by its literal zero extension. -/
+omit [NeZero d] [NeZero Nc] in
 theorem cmp99FlatPhysicalFibreDFT_particularSolution_eq_zero_of_coarseAlias_ne
     (ell : FinBox d N') (mass a : ℝ) (v : SUNLieComplexCoord Nc)
     (k : FinBox d (M * N'))
@@ -198,6 +200,7 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_particularSolut
         cmp99SourceFlatFullComplexPrecisionParticularCoefficients
           ell mass a v input) = _
   ext b
+  rw [Finset.sum_apply]
   simp only [cmp99SourceFlatFullComplexPrecisionParticularCoefficients,
     PiLp.smul_apply, smul_eq_mul]
   change
@@ -249,7 +252,8 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_particularSolution
       (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) ≠ 0) :
     cmp99SourceFlatFullComplexPrecisionAction mass a
         (cmp99SourceFlatFullComplexPrecisionParticularSolution ell mass a v) =
-      cmp99SourceFlatFullComplexWeightedAdjointCoarseMode ell v := by
+      cmp99SourceFlatFullComplexWeightedAdjointCoarseMode
+        (d := d) (M := M) (N' := N') (Nc := Nc) ell v := by
   apply (cmp99FlatPhysicalFibreDFTLinearEquiv
     (d := d) (N := M * N') (Nc := Nc)).injective
   funext k
