@@ -46,12 +46,13 @@ theorem cmp99FlatPhysicalFibreInvDFT_eq_fourierSum
           (((N : ℂ) ^ d)⁻¹ • psi k) := by
   funext x
   ext b
-  rw [cmp99FlatPhysicalFibreInvDFT_apply, Finset.sum_apply]
+  rw [cmp99FlatPhysicalFibreInvDFT_apply, Finset.sum_apply,
+    WithLp.ofLp_sum, Finset.sum_apply]
   simp only [cmp99FlatComplexFibreFourierMode, PiLp.smul_apply,
     smul_eq_mul]
   unfold cmp99FlatFinBoxInvDFT cmp99FlatZModInvDFT
   rw [← Equiv.sum_comp (cmp99FinBoxZModEquiv d N)]
-  simp only [Equiv.apply_symm_apply]
+  simp only [Equiv.symm_apply_apply]
   rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro k _
@@ -103,7 +104,6 @@ omit [NeZero d] [NeZero Nc] in
     cmp99SourceFlatComplexBlockWeightedAdjointCLM_apply]
   rfl
 
-omit [NeZero d] [NeZero Nc] in
 /-- The arbitrary-source weighted adjoint specializes exactly to the sealed
 one-mode physical weighted-adjoint field. -/
 theorem cmp99SourceFlatFullComplexWeightedAdjoint_fourierMode
@@ -179,6 +179,7 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_stabilizedQprimeStarField
       have hfourier := congrFun
         (cmp99FlatPhysicalFibre_fourierSum_DFT eta)
         (blockSite M N' x)
+      rw [Finset.sum_apply] at hfourier
       simpa only [coeff,
         cmp99SourceFlatFullComplexWeightedAdjointCoarseMode_apply] using hfourier
 
