@@ -58,7 +58,7 @@ Wilson line is one. -/
           (cmp99SourceFlatGaugeConfig d (M * N') Nc))
         (positiveEdgeOfPhysicalBond b) x Γ_1 Γ_2 Γ_3 = 1 := by
   unfold UbarDeviation
-  simp
+  simp [OrientedLatticePath.holonomy]
 
 /-- A finite physical Ubar exponent vanishes when every special-unitary
 deviation in its support is one. -/
@@ -66,8 +66,12 @@ theorem cmp99UbarSpecialUnitaryExponent_eq_zero_of_eq_one
     {ι : Type*} (s : Finset ι) (w : ι → ℝ) (D : ι → SUN Nc)
     (hD : ∀ i ∈ s, D i = 1) :
     cmp99UbarSpecialUnitaryExponent s w D = 0 := by
-  simp [cmp99UbarSpecialUnitaryExponent, cmp99UbarUnitaryExponent,
-    cmp99UbarExponent, hD]
+  unfold cmp99UbarSpecialUnitaryExponent cmp99UbarUnitaryExponent
+    cmp99UbarExponent
+  apply Finset.sum_eq_zero
+  intro i hi
+  rw [hD i hi]
+  simp
 
 /-- The direct deviation-budget Ubar block is one in the literal flat
 background.  The budget and its proof certify that the constructor is legal;
@@ -77,7 +81,7 @@ they do not affect the resulting zero exponent. -/
       List (FiniteLatticeGeometry.E
         (d := d) (N := M * N') (G := SUN Nc)))
     (B : MatrixNearLogNoWindingBudget Nc)
-    (hdev : ∀ b x,
+    (hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
       x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
         (positiveEdgeOfPhysicalBond b)) →
       ‖UbarDeviationLogArg
@@ -89,6 +93,7 @@ they do not affect the resulting zero exponent. -/
           (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ)
     (b : PhysicalBond d N') :
     cmp99PhysicalUbarBlockOfDeviationBudget
+        (d := d) (L := M) (N' := N') (Nc := Nc)
         (cmp99SourceFlatGaugeConfig d (M * N') Nc)
         (cmp99SourceBaseCoarseBackground
           (cmp99SourceFlatGaugeConfig d (M * N') Nc))
@@ -111,7 +116,7 @@ theorem cmp99PhysicalUbarGaugeConfigOfDeviationBudget_flat
       List (FiniteLatticeGeometry.E
         (d := d) (N := M * N') (G := SUN Nc)))
     (B : MatrixNearLogNoWindingBudget Nc)
-    (hdev : ∀ b x,
+    (hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
       x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
         (positiveEdgeOfPhysicalBond b)) →
       ‖UbarDeviationLogArg
@@ -122,6 +127,7 @@ theorem cmp99PhysicalUbarGaugeConfigOfDeviationBudget_flat
           (positiveEdgeOfPhysicalBond b) x
           (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ) :
     cmp99PhysicalUbarGaugeConfigOfDeviationBudget
+        (d := d) (L := M) (N' := N') (Nc := Nc)
         (cmp99SourceFlatGaugeConfig d (M * N') Nc)
         (cmp99SourceBaseCoarseBackground
           (cmp99SourceFlatGaugeConfig d (M * N') Nc))
