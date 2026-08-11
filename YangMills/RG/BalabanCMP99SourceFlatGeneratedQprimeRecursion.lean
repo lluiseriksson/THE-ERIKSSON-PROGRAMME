@@ -205,6 +205,55 @@ noncomputable def CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
     (cmp99SourceFlatZeroRadiusChain depth)
     cmp99SourceFlatGaugeConfig_zero_small
 
+/-- The generated physical average is invariant under propositionally equal
+scalar radii and backgrounds; the proof-valued radius chain and smallness
+certificate carry no additional operator data. -/
+theorem CMP99SourceActiveRegionChain.physicalQprime_congr_data
+    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing : ℝ) {epsilon₁ epsilon₂ : ℝ}
+    {background₁ background₂ : GaugeConfig d N (SUN Nc)}
+    (hepsilon : epsilon₁ = epsilon₂)
+    (hbackground : background₁ = background₂)
+    (chain₁ : CMP99SourceUbarRadiusChain d M Nc depth epsilon₁)
+    (chain₂ : CMP99SourceUbarRadiusChain d M Nc depth epsilon₂)
+    (fineSmall₁ : ∀ e : ConcreteEdge d N,
+      ‖(background₁ e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon₁)
+    (fineSmall₂ : ∀ e : ConcreteEdge d N,
+      ‖(background₂ e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon₂) :
+    regions.physicalQprime hd hM rho spacing epsilon₁ background₁
+        chain₁ fineSmall₁ =
+      regions.physicalQprime hd hM rho spacing epsilon₂ background₂
+        chain₂ fineSmall₂ := by
+  cases hepsilon
+  cases hbackground
+  rfl
+
+/-- The same proof-data invariance for the generated coefficient-one weighted
+adjoint. -/
+theorem CMP99SourceActiveRegionChain.physicalWeightedAdjoint_congr_data
+    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing : ℝ) {epsilon₁ epsilon₂ : ℝ}
+    {background₁ background₂ : GaugeConfig d N (SUN Nc)}
+    (hepsilon : epsilon₁ = epsilon₂)
+    (hbackground : background₁ = background₂)
+    (chain₁ : CMP99SourceUbarRadiusChain d M Nc depth epsilon₁)
+    (chain₂ : CMP99SourceUbarRadiusChain d M Nc depth epsilon₂)
+    (fineSmall₁ : ∀ e : ConcreteEdge d N,
+      ‖(background₁ e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon₁)
+    (fineSmall₂ : ∀ e : ConcreteEdge d N,
+      ‖(background₂ e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon₂) :
+    regions.physicalWeightedAdjoint hd hM rho spacing epsilon₁ background₁
+        chain₁ fineSmall₁ =
+      regions.physicalWeightedAdjoint hd hM rho spacing epsilon₂ background₂
+        chain₂ fineSmall₂ := by
+  cases hepsilon
+  cases hbackground
+  rfl
+
 /-- Every internally generated flat physical average is exactly the explicit
 identity-transport recursion.  Flatness of every hidden intermediate
 background is derived from physical Ubar, not assumed as a family. -/
@@ -227,10 +276,6 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
       let Scale := cmp99SourceFlatNormalizedRegionalScale
         (Nc := Nc) hd hM Omega hOmega
       have htail := ih ((M : ℝ) * spacing)
-      have htail' := htail
-      simp only [CMP99SourceActiveRegionChain.flatPhysicalQprime,
-        CMP99SourceActiveRegionChain.physicalQprime,
-        CMP99SourceActiveRegionChain.flatExplicitQprime] at htail'
       have nextSmall : ∀ e : ConcreteEdge d N',
           ‖(Scale.toSourceScale.data.nextBackground e :
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
@@ -247,17 +292,27 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
                 (SUNLieCoord Nc) →L[ℝ]
               PiLp 2 (fun _ : tail.terminalSite => SUNLieCoord Nc) =>
           T.comp (cmp99SourceFlatRealBlockAverageCLM Omega))
-      have hradius : cmp99SourceUbarNextFineRadius d M 0 = 0 :=
-        cmp99SourceUbarNextFineRadius_zero
-      cases hradius
       have hbackground :
           Scale.toSourceScale.data.nextBackground =
             cmp99SourceFlatGaugeConfig d N' Nc := by
         simpa only [Scale] using
           cmp99SourceFlatNormalizedRegionalScale_nextBackground
             (Nc := Nc) hd hM Omega hOmega
-      cases hbackground
-      exact htail'
+      change
+        tail.physicalQprime hd hM rho ((M : ℝ) * spacing)
+            (cmp99SourceUbarNextFineRadius d M 0)
+            Scale.toSourceScale.data.nextBackground
+            (cmp99SourceFlatZeroRadiusChain (depth + 1)).tail nextSmall =
+          tail.flatExplicitQprime
+      calc
+        _ = tail.physicalQprime hd hM rho ((M : ℝ) * spacing) 0
+            (cmp99SourceFlatGaugeConfig d N' Nc)
+            (cmp99SourceFlatZeroRadiusChain depth)
+            cmp99SourceFlatGaugeConfig_zero_small :=
+          tail.physicalQprime_congr_data hd hM rho ((M : ℝ) * spacing)
+            cmp99SourceUbarNextFineRadius_zero hbackground _ _ _ _
+        _ = tail.flatExplicitQprime := by
+          simpa only [CMP99SourceActiveRegionChain.flatPhysicalQprime] using htail
 
 /-- The generated coefficient-one physical synthesis is likewise exactly the
 explicit reverse flat recursion. -/
@@ -280,10 +335,6 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
       let Scale := cmp99SourceFlatNormalizedRegionalScale
         (Nc := Nc) hd hM Omega hOmega
       have htail := ih ((M : ℝ) * spacing)
-      have htail' := htail
-      simp only [CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint,
-        CMP99SourceActiveRegionChain.physicalWeightedAdjoint,
-        CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint] at htail'
       have nextSmall : ∀ e : ConcreteEdge d N',
           ‖(Scale.toSourceScale.data.nextBackground e :
               Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 := by
@@ -300,17 +351,28 @@ theorem CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
                 (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
                 (SUNLieCoord Nc) =>
           (cmp99SourceFlatRealBlockWeightedAdjointCLM Omega hOmega).comp T)
-      have hradius : cmp99SourceUbarNextFineRadius d M 0 = 0 :=
-        cmp99SourceUbarNextFineRadius_zero
-      cases hradius
       have hbackground :
           Scale.toSourceScale.data.nextBackground =
             cmp99SourceFlatGaugeConfig d N' Nc := by
         simpa only [Scale] using
           cmp99SourceFlatNormalizedRegionalScale_nextBackground
             (Nc := Nc) hd hM Omega hOmega
-      cases hbackground
-      exact htail'
+      change
+        tail.physicalWeightedAdjoint hd hM rho ((M : ℝ) * spacing)
+            (cmp99SourceUbarNextFineRadius d M 0)
+            Scale.toSourceScale.data.nextBackground
+            (cmp99SourceFlatZeroRadiusChain (depth + 1)).tail nextSmall =
+          tail.flatExplicitWeightedAdjoint
+      calc
+        _ = tail.physicalWeightedAdjoint hd hM rho ((M : ℝ) * spacing) 0
+            (cmp99SourceFlatGaugeConfig d N' Nc)
+            (cmp99SourceFlatZeroRadiusChain depth)
+            cmp99SourceFlatGaugeConfig_zero_small :=
+          tail.physicalWeightedAdjoint_congr_data hd hM rho
+            ((M : ℝ) * spacing) cmp99SourceUbarNextFineRadius_zero
+            hbackground _ _ _ _
+        _ = tail.flatExplicitWeightedAdjoint := by
+          simpa only [CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint] using htail
 
 end
 

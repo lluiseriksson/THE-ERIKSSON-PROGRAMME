@@ -17,5 +17,7 @@ and the result has not yet been verified by the Lean compiler.
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalQprime
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.physicalQprime_congr_data
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.physicalWeightedAdjoint_congr_data
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit
