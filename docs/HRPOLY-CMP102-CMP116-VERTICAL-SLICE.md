@@ -9661,3 +9661,45 @@ but unattained. No terminal field is discharged: counters remain exactly
 `20/41`, `TermSource = 0`. Failed Colab v1 and diagnostic Colab v2 PASS remain
 preserved and did not seal; only the cold run above retires the two
 PRE-VALIDATION marks.
+
+### Step 7.5cmo generated physical precision at the flat background (SEALED; stratum and inverse dictionaries open)
+
+Exact source checkpoint `5c0eb928fd24f9c9b7598530c3beeccb0921c1cb`
+passed cold GitHub Actions run
+[`31567100405`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31567100405)
+with workflow checkpoint `d71a43397163f2f0aacc5dea478c3f6de3c789f2`.
+The job ran from `05:36:24Z` to `06:02:39Z` (`26m15s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`05:38:12Z`; the focal ran to `06:02:23Z`, completed `8,485` jobs and exited
+zero. The audit ended at `06:02:36Z` and also exited zero. All five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9130388288`, named
+`generated-flat-physical-precision-kernel-5c0eb928fd24f9c9b7598530c3beeccb0921c1cb`,
+has GitHub digest
+`10c9ef3ade9f4d269def749a7ff7dfcf515f7e818d46855f8b4ee4856540e166`.
+The downloaded deterministic archive has SHA-256
+`f8117d060f45918cedf79858cef0448d46f3d566cc7e429629ec17fa0387cb7c`,
+and all 13 internal manifest entries matched.
+
+The source specializes the literal generated physical precision internally to
+the flat background and the zero-radius source budget. It proves that terminal
+codomain transport preserves `Q'^* Q'`, identifies the transported physical
+`Q'` with the sealed explicit flat recursion, and exposes the coordinate-probe
+kernel as the literal covariant Laplacian plus the separate generated physical
+mass. The mass term retains the exact direct-owner test and coefficient
+`(M^{-d})^(2*(depth+1))`; neither an operator nor a kernel equality is supplied
+by the caller.
+
+This is the flat real physical-operator dictionary only. It does not identify
+CMP99 strata, match the recursive generated precision to the separately
+constructed one-block full-complex precision, construct its inverse, transport
+a regional Green bound or produce uniform physical `B0`. The existing
+one-block inverse therefore cannot be reused without explicit carrier,
+Laplacian-scale, counting/source-weighted-adjoint, parameter and
+complexification dictionaries. Window 15 remains compatible but unattained.
+No terminal field is discharged: counters remain exactly `20/41`,
+`TermSource = 0`. Colab v1--v7 remain preserved diagnostics; warning-free v8
+passed only diagnostically and did not seal. Only the cold run above retires
+the two PRE-VALIDATION marks.

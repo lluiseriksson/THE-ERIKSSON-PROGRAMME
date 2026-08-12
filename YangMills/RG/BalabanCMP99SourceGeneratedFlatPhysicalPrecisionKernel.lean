@@ -7,9 +7,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Direct kernel of the generated physical precision at the flat background
 
 The generated physical precision uses the bundled terminal Hilbert space of

@@ -33911,3 +33911,37 @@ remain open. Window 15 remains compatible but unattained. Live counters stay
 exactly `20/41`, `TermSource = 0`. Failed Colab v1 and diagnostic Colab v2
 PASS remain preserved and did not seal; only the cold run above retires the
 two PRE-VALIDATION marks.
+
+## Addendum 749 (2026-08-12, **generated physical precision at the flat background SEALED; stratum and inverse dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `5c0eb928fd24f9c9b7598530c3beeccb0921c1cb`
+passed cold GitHub Actions run
+[`31567100405`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31567100405)
+with workflow checkpoint `d71a43397163f2f0aacc5dea478c3f6de3c789f2`.
+The job ran for `26m15s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,485` jobs and the focal/audit stages exited `0/0`.
+All five declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9130388288`, named
+`generated-flat-physical-precision-kernel-5c0eb928fd24f9c9b7598530c3beeccb0921c1cb`,
+has GitHub digest
+`10c9ef3ade9f4d269def749a7ff7dfcf515f7e818d46855f8b4ee4856540e166`.
+The downloaded deterministic archive has SHA-256
+`f8117d060f45918cedf79858cef0448d46f3d566cc7e429629ec17fa0387cb7c`,
+and all 13 internal manifest entries matched.
+
+The source constructs the flat physical specialization and its zero-radius
+budget internally, proves invariance of the adjoint square under terminal
+codomain transport, identifies the transported physical `Q'` with the sealed
+explicit recursion, and states the literal coordinate-probe kernel. The
+Laplacian and generated mass remain separate, with the direct-owner mass
+coefficient `(M^{-d})^(2*(depth+1))` visible.
+
+This is a flat real physical-operator dictionary, not a generated inverse or
+regional Green producer. CMP99 stratum identification, the match to the
+one-block full-complex precision, parameter and complexification dictionaries,
+inversion, regional transport and uniform physical `B0` remain open. Window 15
+remains compatible but unattained. Live counters stay exactly `20/41`,
+`TermSource = 0`. Colab v1--v7 and diagnostic v8 remain preserved and did not
+seal; only the cold run above retires the two PRE-VALIDATION marks.
