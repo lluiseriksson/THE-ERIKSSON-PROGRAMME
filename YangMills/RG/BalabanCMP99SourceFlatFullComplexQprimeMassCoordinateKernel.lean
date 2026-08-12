@@ -61,16 +61,17 @@ theorem cmp99SourceFlatComplexBlockAverage_full_single_apply
       (mem_blockOf R N y.1 source).2 howner.symm
     let sourceInBlock : {x : FinBox d (R * N) // x ∈ blockOf R N y.1} :=
       ⟨source, hsource⟩
-    have hsource_iff
-        (x : {x : FinBox d (R * N) // x ∈ blockOf R N y.1}) :
-        x.1 = source ↔ x = sourceInBlock := by
-      constructor
-      · intro hx
-        exact Subtype.ext hx
-      · intro hx
-        exact congrArg Subtype.val hx
-    simp only [cmp99SourceFlatFullComplexSingle, hsource_iff]
-    simp
+    simp only [cmp99SourceFlatFullComplexSingle]
+    rw [Finset.sum_eq_single sourceInBlock]
+    · simp [sourceInBlock]
+    · intro other _hother hne
+      have hval : other.1 ≠ source := by
+        intro heq
+        apply hne
+        exact Subtype.ext heq
+      rw [if_neg hval]
+    · intro hnot
+      exact (hnot (Finset.mem_univ sourceInBlock)).elim
   · rw [if_neg howner]
     have hsource_ne
         (x : {x : FinBox d (R * N) // x ∈ blockOf R N y.1}) :
