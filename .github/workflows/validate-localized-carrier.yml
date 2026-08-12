@@ -1,4 +1,4 @@
-name: Validate generated terminal block collapse
+name: Validate generated precision scalar dictionary
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 69fcd7bd26432b55f72e4c41723dca7014cb1106
+  SOURCE_SHA: e0692ca78b4d3502226f441c8e61d40c8fa442d1
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    generated-terminal-block-collapse
     flat-generated-qprime-direct-owner-kernel
     flat-generated-qprime-terminal-owner
     flat-generated-qprime-recursion
@@ -26,10 +27,9 @@ env:
     flat-ubar-preservation
     stabilized-full-complex-precision-particular-solution
     physical-stabilized-alias-transpose-solution
-    stabilized-alias-transpose-solution
 
 jobs:
-  generated-terminal-block-collapse:
+  generated-precision-scalar-dictionary:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-terminal-block-collapse-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-precision-scalar-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse.lean \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalBlockCollapseAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_terminal_block_collapse_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse
-          run_stage generated_terminal_block_collapse_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalBlockCollapseAudit.lean
+          run_stage generated_precision_scalar_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary
+          run_stage generated_precision_scalar_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "generated_terminal_block_collapse_audit.log": 5,
+              "generated_precision_scalar_dictionary_audit.log": 6,
           }
           focal = (Path("evidence") /
-              "generated_terminal_block_collapse_focal.log").read_text(
+              "generated_precision_scalar_dictionary_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse.lean:"
+              "BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              generated-terminal-block-collapse-evidence.tar.gz
-          sha256sum generated-terminal-block-collapse-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              generated-precision-scalar-dictionary-evidence.tar.gz
+          sha256sum generated-precision-scalar-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-terminal-block-collapse-${{ env.SOURCE_SHA }}
+          name: generated-precision-scalar-dictionary-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-terminal-block-collapse-evidence.tar.gz
+            generated-precision-scalar-dictionary-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-terminal-block-collapse-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-precision-scalar-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
