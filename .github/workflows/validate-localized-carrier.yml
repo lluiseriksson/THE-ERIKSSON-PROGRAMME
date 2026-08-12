@@ -1,4 +1,4 @@
-name: Validate flat generated Qprime direct owner kernel
+name: Validate generated flat physical precision kernel
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 1466264a8a568b9d3da1749a8d4e686502f95ea4
+  SOURCE_SHA: 5c0eb928fd24f9c9b7598530c3beeccb0921c1cb
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    flat-generated-qprime-direct-owner-kernel
     flat-generated-qprime-terminal-owner
     flat-generated-qprime-recursion
     flat-retained-tower
@@ -26,10 +27,9 @@ env:
     stabilized-full-complex-precision-particular-solution
     physical-stabilized-alias-transpose-solution
     stabilized-alias-transpose-solution
-    flat-full-complex-precision-particular-solution
 
 jobs:
-  flat-generated-qprime-direct-owner-kernel:
+  generated-flat-physical-precision-kernel:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-qprime-direct-owner-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-flat-physical-precision-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel.lean \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernelAudit.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernelAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_generated_qprime_direct_owner_kernel_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel
-          run_stage flat_generated_qprime_direct_owner_kernel_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernelAudit.lean
+          run_stage generated_flat_physical_precision_kernel_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel
+          run_stage generated_flat_physical_precision_kernel_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernelAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_generated_qprime_direct_owner_kernel_audit.log": 3,
+              "generated_flat_physical_precision_kernel_audit.log": 5,
           }
           focal = (Path("evidence") /
-              "flat_generated_qprime_direct_owner_kernel_focal.log").read_text(
+              "generated_flat_physical_precision_kernel_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel.lean:"
+              "BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-generated-qprime-direct-owner-kernel-evidence.tar.gz
-          sha256sum flat-generated-qprime-direct-owner-kernel-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              generated-flat-physical-precision-kernel-evidence.tar.gz
+          sha256sum generated-flat-physical-precision-kernel-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-generated-qprime-direct-owner-kernel-${{ env.SOURCE_SHA }}
+          name: generated-flat-physical-precision-kernel-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-generated-qprime-direct-owner-kernel-evidence.tar.gz
+            generated-flat-physical-precision-kernel-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-qprime-direct-owner-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-flat-physical-precision-kernel-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
