@@ -35,8 +35,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v2",
-            "SOURCE_SHA": "042bb515d29c2138937f0a7e24679ce6b35e05f9",
+            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v3",
+            "SOURCE_SHA": "feaa21d094c501a6eea6374e391077b2ecbdd63b",
             "ROOT": Path("/content/hrpoly-generated-qprime-mass-complex-dictionary"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-qprime-mass-complex-dictionary-evidence"
@@ -49,7 +49,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary.lean":
-                    "effadeefde7bddff7317d822d85350d7ef1c04e8cda1c0321f058b0ad2a2e081",
+                    "f050e59dd0da5c6fa8682c5f70c66ec39c83bef57a655154407d7a5695ee3f74",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionaryAudit.lean":
                     "8e408cbea90867f2b1a8d1572ae61767e7cbcf72c720cfdffec0a8fc3934edef",
             },
