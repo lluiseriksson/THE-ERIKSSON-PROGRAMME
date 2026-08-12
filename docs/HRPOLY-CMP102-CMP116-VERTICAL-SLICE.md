@@ -9703,3 +9703,43 @@ No terminal field is discharged: counters remain exactly `20/41`,
 `TermSource = 0`. Colab v1--v7 remain preserved diagnostics; warning-free v8
 passed only diagnostically and did not seal. Only the cold run above retires
 the two PRE-VALIDATION marks.
+
+### Step 7.5cmp generated terminal owner collapse (SEALED; full-precision dictionary open)
+
+Exact source checkpoint `69fcd7bd26432b55f72e4c41723dca7014cb1106`
+passed cold GitHub Actions run
+[`31574048398`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31574048398)
+with workflow checkpoint `0a4cee527e7074a6be114c25dbe6a31b10a99c68`.
+The job ran for `27m02s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,485` jobs and the focal/audit stages exited `0/0`.
+All five audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; the axiom blacklist, explicit
+two-module text gate and new-module warning gate were empty.
+
+Artifact `9133165960`, named
+`generated-terminal-block-collapse-69fcd7bd26432b55f72e4c41723dca7014cb1106`,
+has GitHub digest
+`007960d1fe47626cc1d2430772edfbc7c4a3c4aa22fd7daad750c8c22e5fb04d`.
+The downloaded deterministic archive has SHA-256
+`0227d7a2f955d336380e9f5e418557e5e5cf84dfe76f3b78682d5a53ebe75bce`,
+and all 13 internal manifest entries matched.
+
+The source constructs the explicit finite-box equivalence between the
+generated fine side and the literal side `M^depth * N`, identifies the
+recursive terminal owner with `blockSite (M^depth) N`, and proves the two
+normalization identities
+`(M^{-d})^depth = (M^depth)^{-d}` and
+`(M^{-d})^(2*depth) = ((M^depth)^{-d})^2`.  The final coordinate-probe
+statement rewrites the canonical generated counting mass using this literal
+one-block owner.  It does not identify a CMP99 stratum or a full precision.
+
+The next dictionary must keep three normalizations explicit: carrier/owner
+at block side `M^depth`, the generated counting coefficient (a square of the
+one-block source weight) versus the full-complex weighted-adjoint coefficient,
+and the Laplacian scale at physical spacing.  Precision equality,
+complexification, inverse uniqueness, regional transport and uniform physical
+`B0` remain open.  This is dictionary infrastructure, not a terminal-field
+producer: counters remain exactly `20/41`, `TermSource = 0`, and window 15
+remains compatible but unattained.  Failed diagnostic Colab v1 and diagnostic
+Colab v2 PASS remain preserved and did not seal; only the cold run above
+retires the two PRE-VALIDATION marks.

@@ -33945,3 +33945,37 @@ inversion, regional transport and uniform physical `B0` remain open. Window 15
 remains compatible but unattained. Live counters stay exactly `20/41`,
 `TermSource = 0`. Colab v1--v7 and diagnostic v8 remain preserved and did not
 seal; only the cold run above retires the two PRE-VALIDATION marks.
+
+## Addendum 750 (2026-08-12, **generated terminal owner collapse SEALED; full-precision dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `69fcd7bd26432b55f72e4c41723dca7014cb1106`
+passed cold GitHub Actions run
+[`31574048398`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31574048398)
+with workflow checkpoint `0a4cee527e7074a6be114c25dbe6a31b10a99c68`.
+The job ran for `27m02s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,485` jobs and the focal/audit stages exited `0/0`.
+All five declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9133165960`, named
+`generated-terminal-block-collapse-69fcd7bd26432b55f72e4c41723dca7014cb1106`,
+has GitHub digest
+`007960d1fe47626cc1d2430772edfbc7c4a3c4aa22fd7daad750c8c22e5fb04d`.
+The downloaded deterministic archive has SHA-256
+`0227d7a2f955d336380e9f5e418557e5e5cf84dfe76f3b78682d5a53ebe75bce`,
+and all 13 internal manifest entries matched.
+
+The source proves the finite-box carrier equivalence, terminal-owner collapse
+to the literal order-`M^depth` block map and the corresponding one-block and
+squared counting-mass normalizations.  Its endpoint is the canonical generated
+counting-mass coordinate kernel with the literal one-block owner; it does not
+identify a CMP99 stratum, precision, inverse or Green operator.
+
+This is dictionary infrastructure.  The full-precision bridge must still keep
+the carrier, Laplacian scale, counting/source-weighted-adjoint coefficient,
+physical parameter and complexification dictionaries visible before inverse
+uniqueness can be consumed.  Regional transport and uniform physical `B0`
+remain open.  Window 15 remains compatible but unattained.  Live counters
+stay exactly `20/41`, `TermSource = 0`.  Failed diagnostic Colab v1 and
+diagnostic Colab v2 PASS remain preserved and did not seal; only the cold run
+above retires the two PRE-VALIDATION marks.

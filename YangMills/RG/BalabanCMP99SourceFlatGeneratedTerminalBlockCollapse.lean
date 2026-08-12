@@ -6,9 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Collapse of the generated terminal owner to one physical block
 
 On the canonical full flat tower, `depth` successive order-`M` block maps have
