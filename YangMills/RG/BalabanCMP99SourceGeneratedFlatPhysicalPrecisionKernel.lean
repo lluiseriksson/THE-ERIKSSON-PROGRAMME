@@ -69,6 +69,30 @@ noncomputable def cmp99SourceGeneratedFlatPhysicalPrecision
       (depth + 1))
     cmp99SourceFlatGaugeConfig_zero_small
 
+/-- The same flat precision written with the sealed explicit generated
+`Q'` recursion.  Naming this operator keeps the public comparison theorem
+from elaborating the full dependent terminal tower in its result type. -/
+noncomputable def cmp99SourceGeneratedFlatPhysicalPrecisionExplicit
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
+    (depth : ℕ) (spacing : ℝ) :
+    ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+        (SUNLieCoord Nc) :=
+  let regions := cmp99SourceIteratedLiftActiveRegionChain
+    (M := M) Omega (depth + 1)
+  cmp99SourceGaugePrecision
+    (cmp99ActiveRegionSourceCovariantLaplacian
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+      (matrixSUNAdjointModel Nc)
+      (cmp99SourceFlatGaugeConfig d
+        (cmp99RegionalLatticeSize M N (depth + 1)) Nc)
+      spacing)
+    regions.flatExplicitQprime
+    (cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing 0)
+
 /-- Exact flat specialization of the physical precision: the covariant
 Laplacian is unchanged and the generated mass is rewritten to the explicit
 flat `Q'` recursion. -/
@@ -76,17 +100,8 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
     (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
     (depth : ℕ) (spacing : ℝ) :
     cmp99SourceGeneratedFlatPhysicalPrecision hd hM Omega depth spacing =
-      let regions := cmp99SourceIteratedLiftActiveRegionChain
-        (M := M) Omega (depth + 1)
-      cmp99SourceGaugePrecision
-        (cmp99ActiveRegionSourceCovariantLaplacian
-          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
-          (matrixSUNAdjointModel Nc)
-          (cmp99SourceFlatGaugeConfig d
-            (cmp99RegionalLatticeSize M N (depth + 1)) Nc)
-          spacing)
-        regions.flatExplicitQprime
-        (cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing 0) := by
+      cmp99SourceGeneratedFlatPhysicalPrecisionExplicit
+        hd hM Omega depth spacing := by
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := M) Omega (depth + 1)
   let background := cmp99SourceFlatGaugeConfig d
@@ -112,9 +127,9 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
           (regions.transportedQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
             background chain fineSmall) =
         T.Qprime.adjoint.comp T.Qprime := by
-    simpa only [CMP99SourceActiveRegionChain.transportedQprime] using
-      (cmp99SourceTerminalCLMTransport_adjoint_comp_self
-        (hT.trans hCoord) T.Qprime)
+    cases hT
+    cases hCoord
+    rfl
   have hphysical := regions.physicalQprime_eq_transported hd hM
     (matrixSUNAdjointModel Nc) spacing 0 background chain fineSmall
   have hflat := regions.flatPhysicalQprime_eq_explicit hd hM
@@ -175,6 +190,7 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_single_apply
             (cmp99SourceBlockAverageWeight M d) ^ (2 * (depth + 1)) • v
           else 0) := by
   rw [cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit]
+  unfold cmp99SourceGeneratedFlatPhysicalPrecisionExplicit
   unfold cmp99SourceGaugePrecision
   rw [ContinuousLinearMap.add_apply, PiLp.add_apply,
     ContinuousLinearMap.smul_apply, PiLp.smul_apply,
