@@ -51,57 +51,6 @@ theorem cmp99SourceTerminalCLMTransport_adjoint_comp_self
     cmp99SourceTerminalCLMTransport_comp]
   rfl
 
-/-- At the flat background, the adjoint square of the bundled generated
-physical `Q'` is exactly the adjoint square of the explicit coordinate
-recursion.  No equivalence of unrelated terminal carriers is supplied by the
-caller. -/
-theorem CMP99SourceActiveRegionChain.flatWeightedQprimeTower_adjoint_comp_eq_explicit
-    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
-    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
-    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc) :
-    letI : NeZero N := regions.neZero
-    ∀ spacing : ℝ,
-      let T := regions.weightedQprimeTower hd hM rho spacing 0
-        (cmp99SourceFlatGaugeConfig d N Nc)
-        (cmp99SourceFlatZeroRadiusChain depth)
-        cmp99SourceFlatGaugeConfig_zero_small
-      T.Qprime.adjoint.comp T.Qprime =
-        regions.flatExplicitQprime.adjoint.comp regions.flatExplicitQprime := by
-  letI : NeZero N := regions.neZero
-  intro spacing
-  let background := cmp99SourceFlatGaugeConfig d N Nc
-  let chain := cmp99SourceFlatZeroRadiusChain (d := d) (M := M) (Nc := Nc) depth
-  let fineSmall : ∀ e : ConcreteEdge d N,
-      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 :=
-    cmp99SourceFlatGaugeConfig_zero_small
-  let T := regions.weightedQprimeTower hd hM rho spacing 0 background chain
-    fineSmall
-  let hT : T.TerminalSpace = regions.terminalHilbertSpace Nc :=
-    regions.weightedQprimeTower_terminalSpace_eq hd hM rho spacing 0
-      background chain fineSmall
-  let hCoord : regions.terminalHilbertSpace Nc =
-      regions.terminalCoordinateHilbertSpace (Nc := Nc) :=
-    regions.terminalHilbertSpace_eq_coordinate
-  let Qt := regions.transportedQprime hd hM rho spacing 0 background chain
-    fineSmall
-  have hmass : Qt.adjoint.comp Qt = T.Qprime.adjoint.comp T.Qprime := by
-    change
-      (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord) T.Qprime).adjoint.comp
-          (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord) T.Qprime) =
-        T.Qprime.adjoint.comp T.Qprime
-    exact cmp99SourceTerminalCLMTransport_adjoint_comp_self
-      (hT.trans hCoord) T.Qprime
-  have hphysical := regions.physicalQprime_eq_transported hd hM rho spacing 0
-    background chain fineSmall
-  have hflat := regions.flatPhysicalQprime_eq_explicit hd hM rho spacing
-  have hQt : Qt = regions.flatExplicitQprime := by
-    calc
-      Qt = regions.physicalQprime hd hM rho spacing 0 background chain
-          fineSmall := hphysical.symm
-      _ = regions.flatPhysicalQprime hd hM rho spacing := rfl
-      _ = regions.flatExplicitQprime := hflat
-  exact hmass.symm.trans (congrArg (fun Q => Q.adjoint.comp Q) hQt)
-
 /-- Literal generated physical precision specialized to the flat background
 and the internally constructed zero-radius source budget. -/
 noncomputable def cmp99SourceGeneratedFlatPhysicalPrecision
@@ -140,16 +89,48 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
         (cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing 0) := by
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := M) Omega (depth + 1)
+  let background := cmp99SourceFlatGaugeConfig d
+    (cmp99RegionalLatticeSize M N (depth + 1)) Nc
+  let chain := cmp99SourceFlatZeroRadiusChain
+    (d := d) (M := M) (Nc := Nc) (depth + 1)
+  let fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ 0 :=
+    cmp99SourceFlatGaugeConfig_zero_small
   let T := regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
     spacing 0
-    (cmp99SourceFlatGaugeConfig d
-      (cmp99RegionalLatticeSize M N (depth + 1)) Nc)
-    (cmp99SourceFlatZeroRadiusChain (d := d) (M := M) (Nc := Nc)
-      (depth + 1))
-    cmp99SourceFlatGaugeConfig_zero_small
-  have hmass :=
-    regions.flatWeightedQprimeTower_adjoint_comp_eq_explicit hd hM
-      (matrixSUNAdjointModel Nc) spacing
+    background chain fineSmall
+  let hT : T.TerminalSpace = regions.terminalHilbertSpace Nc :=
+    regions.weightedQprimeTower_terminalSpace_eq hd hM
+      (matrixSUNAdjointModel Nc) spacing 0 background chain fineSmall
+  let hCoord : regions.terminalHilbertSpace Nc =
+      regions.terminalCoordinateHilbertSpace (Nc := Nc) :=
+    regions.terminalHilbertSpace_eq_coordinate
+  have htransported :
+      (regions.transportedQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
+          background chain fineSmall).adjoint.comp
+          (regions.transportedQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
+            background chain fineSmall) =
+        T.Qprime.adjoint.comp T.Qprime := by
+    simpa only [CMP99SourceActiveRegionChain.transportedQprime] using
+      (cmp99SourceTerminalCLMTransport_adjoint_comp_self
+        (hT.trans hCoord) T.Qprime)
+  have hphysical := regions.physicalQprime_eq_transported hd hM
+    (matrixSUNAdjointModel Nc) spacing 0 background chain fineSmall
+  have hflat := regions.flatPhysicalQprime_eq_explicit hd hM
+    (matrixSUNAdjointModel Nc) spacing
+  have hQ :
+      regions.transportedQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
+          background chain fineSmall = regions.flatExplicitQprime := by
+    calc
+      _ = regions.physicalQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
+          background chain fineSmall := hphysical.symm
+      _ = regions.flatPhysicalQprime hd hM (matrixSUNAdjointModel Nc)
+          spacing := rfl
+      _ = regions.flatExplicitQprime := hflat
+  have hmass : T.Qprime.adjoint.comp T.Qprime =
+      regions.flatExplicitQprime.adjoint.comp regions.flatExplicitQprime :=
+    htransported.symm.trans (congrArg (fun Q => Q.adjoint.comp Q) hQ)
   change cmp99SourceGaugePrecision
       (cmp99ActiveRegionSourceCovariantLaplacian
         (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
