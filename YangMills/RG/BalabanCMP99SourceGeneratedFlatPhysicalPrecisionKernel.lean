@@ -73,8 +73,7 @@ noncomputable def cmp99SourceGeneratedFlatPhysicalPrecision
 `Q'` recursion.  Naming this operator keeps the public comparison theorem
 from elaborating the full dependent terminal tower in its result type. -/
 noncomputable def cmp99SourceGeneratedFlatPhysicalPrecisionExplicit
-    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
-    (depth : ℕ) (spacing : ℝ) :
+    (Omega : ActiveGaugeRegion d N) (depth : ℕ) (spacing : ℝ) :
     ActiveGaugeZeroCochain
         (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
         (SUNLieCoord Nc) →L[ℝ]
@@ -101,7 +100,7 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
     (depth : ℕ) (spacing : ℝ) :
     cmp99SourceGeneratedFlatPhysicalPrecision hd hM Omega depth spacing =
       cmp99SourceGeneratedFlatPhysicalPrecisionExplicit
-        hd hM Omega depth spacing := by
+        (d := d) (M := M) (N := N) (Nc := Nc) Omega depth spacing := by
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := M) Omega (depth + 1)
   let background := cmp99SourceFlatGaugeConfig d
