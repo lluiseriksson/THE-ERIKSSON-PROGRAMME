@@ -35,8 +35,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-terminal-block-collapse-v1",
-            "SOURCE_SHA": "875ad1e89983a510c6d4243121da324e0b66af79",
+            "RUNNER_REV": "generated-terminal-block-collapse-v2",
+            "SOURCE_SHA": "69fcd7bd26432b55f72e4c41723dca7014cb1106",
             "ROOT": Path("/content/hrpoly-generated-terminal-block-collapse"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-terminal-block-collapse-evidence"
@@ -49,7 +49,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse.lean":
-                    "d3158b84f95ab165675106c4f7868a963d4bc372eb5fab263f4c2b63f4ac49ac",
+                    "6239259cc2914c8bd19a787562267899530c341a2ced584860551511cc0f4b1d",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalBlockCollapseAudit.lean":
                     "51aef4f0cffb34b58a9a14400d35c1b3cb5d2d34c16a23cbc9c6cf42852e2729",
             },
