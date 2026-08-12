@@ -142,6 +142,10 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
             (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
               T.Qprime) :=
         (cmp99SourceTerminalCLMTransport_adjoint_comp_self
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc
+            (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+          (F := T.TerminalSpace)
+          (F' := regions.terminalCoordinateHilbertSpace (Nc := Nc))
           (hT.trans hCoord) T.Qprime).symm
       _ = regions.flatExplicitQprime.adjoint.comp
           regions.flatExplicitQprime :=
