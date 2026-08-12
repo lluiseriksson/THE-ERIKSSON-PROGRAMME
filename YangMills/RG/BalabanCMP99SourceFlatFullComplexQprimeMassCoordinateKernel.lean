@@ -61,7 +61,8 @@ theorem cmp99SourceFlatComplexBlockAverage_full_single_apply
       (mem_blockOf R N y.1 source).2 howner.symm
     let sourceInBlock : {x : FinBox d (R * N) // x ∈ blockOf R N y.1} :=
       ⟨source, hsource⟩
-    simp only [cmp99SourceFlatFullComplexSingle]
+    simp only [cmp99SourceFlatFullComplexSingle,
+      cmp99ActiveFineSiteOfBlock_val]
     rw [Finset.sum_eq_single sourceInBlock]
     · simp [sourceInBlock]
     · intro other _hother hne
