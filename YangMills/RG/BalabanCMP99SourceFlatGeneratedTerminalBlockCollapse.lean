@@ -40,6 +40,7 @@ def cmp99GeneratedFineBoxOneBlockEquiv (M N depth : ℕ) :
   Equiv.cast (congrArg (FinBox d)
     (cmp99RegionalLatticeSize_eq_pow_mul M N depth))
 
+omit [NeZero d] in
 private theorem finBox_cast_apply_val
     {A B : ℕ} (h : A = B) (x : FinBox d A) (i : Fin d) :
     ((Equiv.cast (congrArg (FinBox d) h) x) i).val = (x i).val := by
@@ -55,6 +56,7 @@ omit [NeZero d] [NeZero M] [NeZero N] [NeZero Nc] in
   exact finBox_cast_apply_val
     (cmp99RegionalLatticeSize_eq_pow_mul M N depth) x i
 
+omit [NeZero d] in
 /-- The recursively generated terminal owner is the literal one-block owner
 with block side `M^depth`. -/
 theorem cmp99GeneratedTerminalBlockSite_eq_blockSite_pow
