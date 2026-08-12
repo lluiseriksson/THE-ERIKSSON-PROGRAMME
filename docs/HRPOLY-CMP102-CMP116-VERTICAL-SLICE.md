@@ -9625,3 +9625,39 @@ discharged: counters remain exactly `20/41`, `TermSource = 0`. The successful
 Colab v3 diagnostic and the failed v4 syntax diagnostic remain preserved; the
 warning-free Colab v5 PASS did not seal. Only the cold run above retires the
 two PRE-VALIDATION marks.
+
+### Step 7.5cmn direct generated-owner mass kernels (SEALED; physical precision and stratum dictionaries open)
+
+Exact source checkpoint `1466264a8a568b9d3da1749a8d4e686502f95ea4`
+passed cold GitHub Actions run
+[`31549159604`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31549159604)
+with workflow checkpoint `d9d93cf8b1c1e9188a2ca9da303812932ed0daaf`.
+The job ran from `00:08:55Z` to `00:34:33Z` (`25m38s`). Restore and save of
+`.lake/build` were both skipped. Dependency materialization ended at
+`00:10:41Z`; the focal ran to `00:34:24Z`, completed `8,484` jobs and exited
+zero. The audit ended at `00:34:31Z` and also exited zero. All three audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`; the axiom
+blacklist and explicit two-module text and warning gates were empty.
+
+Artifact `9124113566`, named
+`flat-generated-qprime-direct-owner-kernel-1466264a8a568b9d3da1749a8d4e686502f95ea4`,
+has GitHub digest
+`cb701f2f6c25039caf9419734a64a7eace8cba86ac1e373529d7e542521b32ec`.
+The downloaded deterministic archive has SHA-256
+`b26710fd7aeb3afb6e93191c52137f60091d43010be3bc1bd29d6be2c457ea93`,
+and all 13 internal manifest entries matched.
+
+The source proves that equality in the dependent terminal-owner type of the
+canonical iterated lift is exactly equality of the literal coordinatewise
+order-`M^depth` owners. It then rewrites both explicit flat generated mass
+kernels to that direct owner test, retaining the exact coefficients
+`(M^{-d})^depth` and `(M^{-d})^(2*depth)`. It deliberately does not assert
+that an arbitrary active-region fibre has full block cardinality.
+
+This is a dictionary seal only. Physical flat-operator specialization, CMP99
+stratum identification, generated-precision matching, inversion, regional
+transport and uniform physical `B0` remain open. Window 15 remains compatible
+but unattained. No terminal field is discharged: counters remain exactly
+`20/41`, `TermSource = 0`. Failed Colab v1 and diagnostic Colab v2 PASS remain
+preserved and did not seal; only the cold run above retires the two
+PRE-VALIDATION marks.

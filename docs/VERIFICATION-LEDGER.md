@@ -33877,3 +33877,37 @@ remain open. Window 15 remains compatible but unattained. Live counters stay
 exactly `20/41`, `TermSource = 0`. Colab v3 and warning-free v5 PASS remain
 diagnostic only; failed Colab v4 remains preserved. Only the cold run above
 retires the two PRE-VALIDATION marks.
+
+## Addendum 748 (2026-08-12, **direct generated-owner mass kernels SEALED; physical precision and stratum dictionaries open; 20/41 unchanged**)
+
+Exact source checkpoint `1466264a8a568b9d3da1749a8d4e686502f95ea4`
+passed cold GitHub Actions run
+[`31549159604`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31549159604)
+with workflow checkpoint `d9d93cf8b1c1e9188a2ca9da303812932ed0daaf`.
+The job ran for `25m38s`; restore and save of `.lake/build` were both skipped.
+The focal completed `8,484` jobs and the focal/audit stages exited `0/0`.
+All three declarations use exactly `[propext, Classical.choice, Quot.sound]`;
+no forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9124113566`, named
+`flat-generated-qprime-direct-owner-kernel-1466264a8a568b9d3da1749a8d4e686502f95ea4`,
+has GitHub digest
+`cb701f2f6c25039caf9419734a64a7eace8cba86ac1e373529d7e542521b32ec`.
+The downloaded deterministic archive has SHA-256
+`b26710fd7aeb3afb6e93191c52137f60091d43010be3bc1bd29d6be2c457ea93`,
+and all 13 internal manifest entries matched.
+
+The source identifies dependent terminal-owner equality on the canonical
+iterated lift with the literal coordinatewise order-`M^depth` owner and uses
+that dictionary to state both explicit flat generated mass kernels directly.
+The source-weighted and counting-adjoint coefficients remain visibly
+`(M^{-d})^depth` and `(M^{-d})^(2*depth)`. No full-cardinality assertion is
+made for boundary-truncated active regions.
+
+This is dictionary infrastructure, not a terminal-field producer. Physical
+flat-operator specialization, CMP99 stratum identification, generated
+precision matching, inversion, regional transport and uniform physical `B0`
+remain open. Window 15 remains compatible but unattained. Live counters stay
+exactly `20/41`, `TermSource = 0`. Failed Colab v1 and diagnostic Colab v2
+PASS remain preserved and did not seal; only the cold run above retires the
+two PRE-VALIDATION marks.

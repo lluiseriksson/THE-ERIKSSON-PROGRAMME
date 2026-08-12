@@ -6,9 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeTerminalOwner
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Direct terminal-owner kernels for the canonical flat generated `Q'`
 
 The terminal-owner seal states its kernels through equality in the dependent
