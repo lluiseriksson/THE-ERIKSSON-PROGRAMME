@@ -69,10 +69,10 @@ theorem cmp99SourceGeneratedCountingMass_complexCoordinateDictionary
           (cmp99GeneratedFineBoxOneBlockEquiv
             (d := d) M N (depth + 1) source.1)
   · rw [if_pos howner, if_pos howner]
-    rw [RCLike.real_smul_eq_coe_smul]
     ext a
     simp only [cmp99SUNLieCoordComplexificationLM_apply, PiLp.smul_apply,
       smul_eq_mul]
+    rw [RCLike.real_smul_eq_coe_mul (K := ℂ)]
     push_cast
     let va : ℂ := ((v.ofLp a : ℝ) : ℂ)
     let w : ℂ :=
