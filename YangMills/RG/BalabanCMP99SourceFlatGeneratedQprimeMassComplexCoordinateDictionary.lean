@@ -69,12 +69,28 @@ theorem cmp99SourceGeneratedCountingMass_complexCoordinateDictionary
           (cmp99GeneratedFineBoxOneBlockEquiv
             (d := d) M N (depth + 1) source.1)
   · rw [if_pos howner, if_pos howner]
+    rw [RCLike.real_smul_eq_coe_smul]
     ext a
     simp only [cmp99SUNLieCoordComplexificationLM_apply, PiLp.smul_apply,
-      RCLike.real_smul_eq_coe_smul, smul_eq_mul]
+      smul_eq_mul]
     push_cast
-    rw [← cmp99SourceGeneratedFullComplexA_mul_weight_complex]
-    ring
+    let va : ℂ := ((v.ofLp a : ℝ) : ℂ)
+    let w : ℂ :=
+      ((cmp99SourceBlockAverageWeight (M ^ (depth + 1)) d : ℝ) : ℂ)
+    let mass : ℂ :=
+      ((cmp99SourceGeneratedPhysicalMass d M (depth + 1)
+        spacing epsilon : ℝ) : ℂ)
+    let A : ℂ :=
+      ((cmp99SourceGeneratedFullComplexA d M (depth + 1)
+        spacing epsilon : ℝ) : ℂ)
+    have hscalar : A * w = mass * w ^ 2 := by
+      exact cmp99SourceGeneratedFullComplexA_mul_weight_complex
+        d M (depth + 1) spacing epsilon
+    change mass * (w ^ 2 * va) = A * (w * va)
+    calc
+      mass * (w ^ 2 * va) = (mass * w ^ 2) * va := (mul_assoc _ _ _).symm
+      _ = (A * w) * va := congrArg (fun z : ℂ => z * va) hscalar.symm
+      _ = A * (w * va) := mul_assoc _ _ _
   · rw [if_neg howner, if_neg howner]
     simp
 
