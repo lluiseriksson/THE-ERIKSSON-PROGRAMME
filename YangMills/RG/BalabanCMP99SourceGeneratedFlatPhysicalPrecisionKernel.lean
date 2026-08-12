@@ -120,6 +120,14 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
   let hCoord : regions.terminalHilbertSpace Nc =
       regions.terminalCoordinateHilbertSpace (Nc := Nc) :=
     regions.terminalHilbertSpace_eq_coordinate
+  let Qtransported := cmp99SourceTerminalCLMTransport
+    (E := cmp99SourcePhysicalTerminalHilbertSpace Nc
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+    (F := T.TerminalSpace)
+    (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+    (F' := regions.terminalCoordinateHilbertSpace (Nc := Nc))
+    rfl (hT.trans hCoord) T.Qprime
   have hphysical := regions.physicalQprime_eq_transported hd hM
     (matrixSUNAdjointModel Nc) spacing 0 background chain fineSmall
   have hflat := regions.flatPhysicalQprime_eq_explicit hd hM
@@ -133,23 +141,23 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
       _ = regions.flatPhysicalQprime hd hM (matrixSUNAdjointModel Nc)
           spacing := rfl
       _ = regions.flatExplicitQprime := hflat
+  have hQtransported : Qtransported = regions.flatExplicitQprime := hQ
+  have htransported : Qtransported.adjoint.comp Qtransported =
+      T.Qprime.adjoint.comp T.Qprime := by
+    exact cmp99SourceTerminalCLMTransport_adjoint_comp_self
+      (E := cmp99SourcePhysicalTerminalHilbertSpace Nc
+        (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+      (F := T.TerminalSpace)
+      (F' := regions.terminalCoordinateHilbertSpace (Nc := Nc))
+      (hT.trans hCoord) T.Qprime
   have hmass : T.Qprime.adjoint.comp T.Qprime =
       regions.flatExplicitQprime.adjoint.comp regions.flatExplicitQprime := by
     calc
       T.Qprime.adjoint.comp T.Qprime =
-          (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
-            T.Qprime).adjoint.comp
-            (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
-              T.Qprime) :=
-        (cmp99SourceTerminalCLMTransport_adjoint_comp_self
-          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc
-            (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
-          (F := T.TerminalSpace)
-          (F' := regions.terminalCoordinateHilbertSpace (Nc := Nc))
-          (hT.trans hCoord) T.Qprime).symm
+          Qtransported.adjoint.comp Qtransported := htransported.symm
       _ = regions.flatExplicitQprime.adjoint.comp
           regions.flatExplicitQprime :=
-        congrArg (fun Q => Q.adjoint.comp Q) hQ
+        congrArg (fun Q => Q.adjoint.comp Q) hQtransported
   change cmp99SourceGaugePrecision
       (cmp99ActiveRegionSourceCovariantLaplacian
         (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
