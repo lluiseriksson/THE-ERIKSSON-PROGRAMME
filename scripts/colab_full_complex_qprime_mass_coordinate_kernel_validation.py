@@ -35,8 +35,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "full-complex-qprime-mass-coordinate-kernel-v2",
-            "SOURCE_SHA": "d58ea48bf96d4bda63c6c0cb431c3c45d70b6056",
+            "RUNNER_REV": "full-complex-qprime-mass-coordinate-kernel-v3",
+            "SOURCE_SHA": "6220199ad49c39cbae3817bda0707efe37a5d9b7",
             "ROOT": Path("/content/hrpoly-full-complex-qprime-mass-kernel"),
             "EVIDENCE": Path(
                 "/content/hrpoly-full-complex-qprime-mass-kernel-evidence"
@@ -49,7 +49,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatFullComplexQprimeMassCoordinateKernel.lean":
-                    "43dea3f9746d4ed652746c2dd4b299f3dd01bad7e24ae7c16eb3ad680d6cc1a3",
+                    "bbb10b99c41089f8927998200056a6fb4a527d922eaa4c245fe4d7b80300991c",
                 "YangMills/RG/BalabanCMP99SourceFlatFullComplexQprimeMassCoordinateKernelAudit.lean":
                     "17792b2979093492a2fef9658cafbddc7eb8d42da4624e32c95cdb7ba10ffb9f",
             },
