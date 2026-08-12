@@ -7,9 +7,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Scalar dictionary for the generated flat precision
 
 After `depth` order-`M` block maps, the literal one-block side is

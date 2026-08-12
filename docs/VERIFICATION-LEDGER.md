@@ -33979,3 +33979,40 @@ remain open.  Window 15 remains compatible but unattained.  Live counters
 stay exactly `20/41`, `TermSource = 0`.  Failed diagnostic Colab v1 and
 diagnostic Colab v2 PASS remain preserved and did not seal; only the cold run
 above retires the two PRE-VALIDATION marks.
+
+## Addendum 751 (2026-08-12, **generated precision scalar dictionary SEALED; operator dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `e0692ca78b4d3502226f441c8e61d40c8fa442d1`
+passed cold GitHub Actions run
+[`31579884743`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31579884743)
+with workflow checkpoint `14104829d6ae0ed8dfbd780a0c52e5f68e0798d8`.
+The job completed in `26m27s`; restore and save of `.lake/build` were both
+skipped.  The focal ran from `08:48:29Z` to `09:13:06Z`, completed `8,486`
+jobs and exited zero.  The audit ended at `09:13:11Z` and also exited zero.
+The block-side definition uses exactly `[propext]`; the other five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.  No
+forbidden axiom, new-module warning or text-gate violation occurred.
+
+Artifact `9135484399`, named
+`generated-precision-scalar-dictionary-e0692ca78b4d3502226f441c8e61d40c8fa442d1`,
+has GitHub digest
+`6ab3d73d09af61ddb96c69c8a528f75a227a52d9ffc28c63a2a8e45173980499`.
+The downloaded deterministic archive has SHA-256
+`5ceafe08faf2996f1d54132a4aa23c1eb316a5be1c95c49c32be854f7f9397a5`,
+and all 13 internal manifest entries matched.
+
+The source records only the exact scalar conversion from a depth-`depth`
+generated tower to a one-block full-complex precision: block side `R =
+M^depth`, spacing `R^-1`, stencil factor `R^2`, averaging coefficient
+`generatedMass * R^-d`, and the second weighted-adjoint factor `R^-d` that
+recovers `generatedMass * (R^-d)^2`.  The complex-cast identity is explicit.
+
+No carrier, Laplacian, complexification, precision, inverse or regional Green
+equality is asserted.  The diagnostic Colab PASS (evidence SHA-256
+`841b88dffb6beaef66f83727ad275824587a0125b8a862542c7ecca4c31e11f2`,
+archive SHA-256
+`4ee6f824f78362c4f4ee86b94895a8999012031a7d7748d11e2656f29d6f1d1b`)
+remains preserved and did not seal; only the cold run above retires the two
+PRE-VALIDATION marks.  This is dictionary infrastructure, not a terminal
+producer.  Live counters stay exactly `20/41`, `TermSource = 0`, and window
+15 remains compatible but unattained.

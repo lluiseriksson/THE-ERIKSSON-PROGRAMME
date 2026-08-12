@@ -9743,3 +9743,44 @@ producer: counters remain exactly `20/41`, `TermSource = 0`, and window 15
 remains compatible but unattained.  Failed diagnostic Colab v1 and diagnostic
 Colab v2 PASS remain preserved and did not seal; only the cold run above
 retires the two PRE-VALIDATION marks.
+
+### Step 7.5cmq generated precision scalar dictionary (SEALED; operator dictionary open)
+
+Exact source checkpoint `e0692ca78b4d3502226f441c8e61d40c8fa442d1`
+passed cold GitHub Actions run
+[`31579884743`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31579884743)
+with workflow checkpoint `14104829d6ae0ed8dfbd780a0c52e5f68e0798d8`.
+The cold job completed in `26m27s`; restore and save of `.lake/build` were
+both skipped.  The focal ran from `08:48:29Z` to `09:13:06Z`, completed
+`8,486` jobs and exited zero; the audit ended at `09:13:11Z` and also exited
+zero.  Of the six audited declarations, the block-side definition uses
+exactly `[propext]`; the other five use exactly
+`[propext, Classical.choice, Quot.sound]`.  The axiom blacklist, explicit
+two-module text gate and new-module warning gate were empty.
+
+Artifact `9135484399`, named
+`generated-precision-scalar-dictionary-e0692ca78b4d3502226f441c8e61d40c8fa442d1`,
+has GitHub digest
+`6ab3d73d09af61ddb96c69c8a528f75a227a52d9ffc28c63a2a8e45173980499`.
+The downloaded deterministic archive has SHA-256
+`5ceafe08faf2996f1d54132a4aa23c1eb316a5be1c95c49c32be854f7f9397a5`,
+and all 13 internal manifest entries matched.
+
+The source fixes the terminal block side `R = M^depth`, the corresponding
+physical spacing `R^-1` and its inverse-square factor `R^2`.  It then defines
+the full-complex averaging coefficient as generated physical mass times the
+single source weight `R^-d`, and proves that multiplying by the weighted-
+adjoint kernel's second `R^-d` gives the generated counting coefficient
+`generatedMass * (R^-d)^2`, including the literal complex cast.  Thus the
+two row conventions and their two distinct weights remain visible.
+
+This is scalar dictionary infrastructure only.  It asserts no carrier,
+Laplacian, complexification, precision, inverse or regional Green equality;
+those operator-level dictionaries remain open.  The diagnostic Colab PASS
+with evidence hash
+`841b88dffb6beaef66f83727ad275824587a0125b8a862542c7ecca4c31e11f2`
+and archive hash
+`4ee6f824f78362c4f4ee86b94895a8999012031a7d7748d11e2656f29d6f1d1b`
+did not seal.  Only the cold run above retires these two PRE-VALIDATION marks.
+No terminal field is discharged: counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.
