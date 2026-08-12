@@ -126,9 +126,14 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
           (regions.transportedQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
             background chain fineSmall) =
         T.Qprime.adjoint.comp T.Qprime := by
-    cases hT
-    cases hCoord
-    rfl
+    change
+      (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
+          T.Qprime).adjoint.comp
+          (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
+            T.Qprime) =
+        T.Qprime.adjoint.comp T.Qprime
+    exact cmp99SourceTerminalCLMTransport_adjoint_comp_self
+      (hT.trans hCoord) T.Qprime
   have hphysical := regions.physicalQprime_eq_transported hd hM
     (matrixSUNAdjointModel Nc) spacing 0 background chain fineSmall
   have hflat := regions.flatPhysicalQprime_eq_explicit hd hM
