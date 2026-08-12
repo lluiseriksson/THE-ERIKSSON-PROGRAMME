@@ -6,9 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionModeAction
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Coordinate kernel of the full-box flat complex `Q'^*Q'`
 
 The full-complex precision uses the source-normalized average `Q'`, whose

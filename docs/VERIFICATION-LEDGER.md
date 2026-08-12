@@ -34016,3 +34016,42 @@ remains preserved and did not seal; only the cold run above retires the two
 PRE-VALIDATION marks.  This is dictionary infrastructure, not a terminal
 producer.  Live counters stay exactly `20/41`, `TermSource = 0`, and window
 15 remains compatible but unattained.
+
+## Addendum 752 (2026-08-12, **full-complex `Q'^*Q'` coordinate kernel SEALED; operator dictionary open; 20/41 unchanged**)
+
+Exact source checkpoint `6220199ad49c39cbae3817bda0707efe37a5d9b7`
+passed cold GitHub Actions run
+[`31589107253`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31589107253)
+with workflow checkpoint `0c9caa76797fa93cdbdfdebdfa34dc78faeb0f6f`.
+The job completed in `19m25s`; restore and save of `.lake/build` were both
+skipped. The focal ran from `10:51:28Z` to `11:08:34Z`, completed `8,544`
+jobs and exited zero. The audit ended at `11:08:40Z` and also exited zero.
+All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`. No forbidden axiom,
+new-module warning or text-gate violation occurred.
+
+Artifact `9138911003`, named
+`full-complex-qprime-mass-coordinate-kernel-6220199ad49c39cbae3817bda0707efe37a5d9b7`,
+has GitHub digest
+`d153f7d4615cabd33a08f43a22bfe3905a14d616b1d8b5cc819015d45e881f69`.
+The downloaded deterministic archive has SHA-256
+`1e556c719ee5120048f39fe66ebb64ae77419e6e4fcee3d3855e651e30050c3d`,
+and all 13 internal manifest entries matched.
+
+The source proves the exact coordinate kernel of the literal full-box
+complex `Q'^*Q'`. A coordinate delta contributes one source-normalized
+block weight `R^-d` to its unique owner; the coefficient-one weighted
+adjoint copies that value to exactly the fine targets with the same literal
+`blockSite R N` owner. It introduces no second weight and uses no fibre-
+cardinality argument.
+
+No generated carrier, Laplacian, scalar mass, complexification, precision,
+inverse or regional Green equality is asserted. The diagnostic Colab PASS
+(evidence SHA-256
+`5050ae59631d053fd0d1d7e7d874e158889f97c31e86ae8f2d1578fff006a20f`,
+archive SHA-256
+`deb7ed4e704eb7dc6d64fe21a2aa3b35ba132926be5a78fb4c9ed968820dbacc`)
+remains preserved and did not seal. Only the cold run retires the two
+PRE-VALIDATION marks. This is operator-dictionary infrastructure, not a
+terminal producer. Live counters stay exactly `20/41`, `TermSource = 0`,
+and window 15 remains compatible but unattained.
