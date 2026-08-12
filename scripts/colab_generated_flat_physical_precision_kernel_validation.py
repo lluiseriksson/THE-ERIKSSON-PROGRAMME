@@ -36,8 +36,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-flat-physical-precision-kernel-v3",
-            "SOURCE_SHA": "277d949effcbabad416e7ee4a353ab34a5df8cc7",
+            "RUNNER_REV": "generated-flat-physical-precision-kernel-v4",
+            "SOURCE_SHA": "e4109aeecacb7c7e81033ec19bb258b41b404b60",
             "ROOT": Path("/content/hrpoly-generated-flat-physical-precision"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-flat-physical-precision-evidence"
@@ -50,7 +50,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel.lean":
-                    "62bf6a08dfa4a68161d484966ed6beaa51d9859edfdf0c1558fb22715b779c39",
+                    "bad45be859fb7525a9cb07d947176e885bac6943f80ca17cf73501d6aa7ef99f",
                 "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernelAudit.lean":
                     "d58320d9d1412d650eb872deecfecb6ac46db9746933e81d3fdeecd76267910d",
             },
