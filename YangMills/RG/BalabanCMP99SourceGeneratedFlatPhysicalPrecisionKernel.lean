@@ -120,20 +120,6 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
   let hCoord : regions.terminalHilbertSpace Nc =
       regions.terminalCoordinateHilbertSpace (Nc := Nc) :=
     regions.terminalHilbertSpace_eq_coordinate
-  have htransported :
-      (regions.transportedQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
-          background chain fineSmall).adjoint.comp
-          (regions.transportedQprime hd hM (matrixSUNAdjointModel Nc) spacing 0
-            background chain fineSmall) =
-        T.Qprime.adjoint.comp T.Qprime := by
-    change
-      (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
-          T.Qprime).adjoint.comp
-          (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
-            T.Qprime) =
-        T.Qprime.adjoint.comp T.Qprime
-    exact cmp99SourceTerminalCLMTransport_adjoint_comp_self
-      (hT.trans hCoord) T.Qprime
   have hphysical := regions.physicalQprime_eq_transported hd hM
     (matrixSUNAdjointModel Nc) spacing 0 background chain fineSmall
   have hflat := regions.flatPhysicalQprime_eq_explicit hd hM
@@ -148,8 +134,18 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit
           spacing := rfl
       _ = regions.flatExplicitQprime := hflat
   have hmass : T.Qprime.adjoint.comp T.Qprime =
-      regions.flatExplicitQprime.adjoint.comp regions.flatExplicitQprime :=
-    htransported.symm.trans (congrArg (fun Q => Q.adjoint.comp Q) hQ)
+      regions.flatExplicitQprime.adjoint.comp regions.flatExplicitQprime := by
+    calc
+      T.Qprime.adjoint.comp T.Qprime =
+          (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
+            T.Qprime).adjoint.comp
+            (cmp99SourceTerminalCLMTransport rfl (hT.trans hCoord)
+              T.Qprime) :=
+        (cmp99SourceTerminalCLMTransport_adjoint_comp_self
+          (hT.trans hCoord) T.Qprime).symm
+      _ = regions.flatExplicitQprime.adjoint.comp
+          regions.flatExplicitQprime :=
+        congrArg (fun Q => Q.adjoint.comp Q) hQ
   change cmp99SourceGaugePrecision
       (cmp99ActiveRegionSourceCovariantLaplacian
         (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
