@@ -71,22 +71,20 @@ theorem cmp99SourceGeneratedCountingMass_complexCoordinateDictionary
   · rw [if_pos howner, if_pos howner]
     ext a
     simp only [cmp99SUNLieCoordComplexificationLM_apply, PiLp.smul_apply,
-      smul_eq_mul, Complex.real_smul]
-    push_cast
+      smul_eq_mul]
     have hscalar := cmp99SourceGeneratedFullComplexA_mul_weight_complex
       d M (depth + 1) spacing epsilon
-    calc
-      _ = (((cmp99SourceGeneratedPhysicalMass
-              d M (depth + 1) spacing epsilon : ℝ) : ℂ) *
-            ((cmp99SourceBlockAverageWeight
-              (cmp99SourceGeneratedFullComplexBlockSide M (depth + 1)) d : ℝ) : ℂ) ^ 2) *
-          ((v.ofLp a : ℝ) : ℂ) := by ring
-      _ = ((((cmp99SourceGeneratedFullComplexA
-              d M (depth + 1) spacing epsilon : ℝ) : ℂ) *
-            ((cmp99SourceBlockAverageWeight
-              (cmp99SourceGeneratedFullComplexBlockSide M (depth + 1)) d : ℝ) : ℂ)) *
-          ((v.ofLp a : ℝ) : ℂ)) := by rw [hscalar]
-      _ = _ := by ring
+    change
+      ((cmp99SourceGeneratedPhysicalMass d M (depth + 1)
+          spacing epsilon : ℝ) : ℂ) *
+          ((cmp99SourceBlockAverageWeight (M ^ (depth + 1)) d : ℝ) : ℂ) ^ 2 *
+            ((v.ofLp a : ℝ) : ℂ) =
+        ((cmp99SourceGeneratedFullComplexA d M (depth + 1)
+            spacing epsilon : ℝ) : ℂ) *
+          (((cmp99SourceBlockAverageWeight (M ^ (depth + 1)) d : ℝ) : ℂ) *
+            ((v.ofLp a : ℝ) : ℂ))
+    rw [← hscalar]
+    ring
   · rw [if_neg howner, if_neg howner]
     simp
 
