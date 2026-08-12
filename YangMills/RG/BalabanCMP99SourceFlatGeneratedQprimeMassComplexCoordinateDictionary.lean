@@ -54,7 +54,7 @@ theorem cmp99SourceGeneratedCountingMass_complexCoordinateDictionary
       ((cmp99SourceGeneratedFullComplexA
           d M (depth + 1) spacing epsilon : ℝ) : ℂ) •
         cmp99SourceFlatFullComplexQprimeMass
-          (R := M ^ (depth + 1)) (N' := N)
+          (M := M ^ (depth + 1)) (N' := N)
           (cmp99SourceFlatFullComplexSingle sourceBox
             (cmp99SUNLieCoordComplexificationLM Nc v)) targetBox := by
   classical
