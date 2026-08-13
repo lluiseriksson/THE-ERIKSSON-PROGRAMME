@@ -34121,3 +34121,14 @@ and `07b7d928486e87438d70d7b2aa66ed6ad91802fe`, respectively, but have not
 run.  Both Lean modules retain PRE-VALIDATION.  No counter moves: live state
 remains exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
+
+Instrumentation diagnosis: the original Git-backed notebook declared only
+`accelerator: CPU`.  Toggling high RAM in the browser did not persist that
+machine shape in the immutable notebook object, so fresh allocations returned
+the standard 12.67-GiB profile.  Instrumentation checkpoint
+`e123e26daa81273c2126326bc85dd9da58b3395f` adds the explicit notebook
+metadata `colab.machine_shape = "hm"`.  Before execution the Colab control
+then displayed `CPU / Mycket RAM-minne`, and the v2 runner subsequently
+reported `RAM_GIB=50.99`.  Future Git-backed Colab notebooks that require the
+high-memory gate must encode this metadata rather than depend on mutable UI
+state.
