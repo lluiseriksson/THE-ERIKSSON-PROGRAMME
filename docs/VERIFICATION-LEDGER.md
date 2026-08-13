@@ -29235,6 +29235,32 @@ Both modules remain PRE-VALIDATION pending a warning-clean fresh diagnostic
 and one cold terminal seal.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
+Diagnostic v4 on exact checkpoint
+`6f9c24428971606a84180e628eeef454a0fe6df0` again passed semantically:
+focal/audit exits `0/0`, focal `1622.292 s`, audit `6.957 s`, literal
+`Build completed successfully (8566 jobs).`, and three exact allowed axiom
+blocks.  Evidence/archive SHA-256 are
+`59a7edea578be22600d52258e1eb2dacc43290561978cbd88ca9b44ec4f19625`
+and
+`d821326d6d25b7a6a9d7467f9152961fde3c0b56e64b9f8ae65203fdc4bd507d`;
+the runtime auto-unassigned.  The two public transport warnings disappeared,
+but this diagnostic exposed the final theorem's unused `[NeZero d]` instance,
+so it still does not seal.
+
+Checkpoint `68de67d6e2d3887c4c7587603d0d615a494df840` extends the final
+theorem's existing `omit` command from `[NeZero Nc]` to
+`[NeZero d] [NeZero Nc]`; no statement or proof changes.  Corrected
+source/audit Git-blob SHA-256 are
+`1de69ea0b85000de633ce1c4ace0c616e780bbcff55f6a98660450c908a92356`
+and
+`0a34ba42e5e5e5b8d6e331a55f38f07c07e9cc3fb2729f2efca974ce96ae13b6`.
+Runner v5 checkpoint `7d18d06baa6fee8f051f0f7f5034ec1103b23a27` has Git-blob
+SHA-256
+`5a98593b61890679b292aef0ebe723ec86be77a7a69b54682a86022cb6a0973f`.
+Both modules remain PRE-VALIDATION pending a warning-clean fresh diagnostic
+and one cold terminal seal.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`
