@@ -7,9 +7,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary
 import YangMills.RG.BalabanCMP99SourceFlatFullComplexQprimeMassCoordinateKernel
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Complex coordinate dictionary for the generated flat `Q'^*Q'` mass
 
 At generated depth `depth + 1`, the terminal one-block side is literally

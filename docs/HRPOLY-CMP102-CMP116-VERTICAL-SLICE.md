@@ -9825,3 +9825,43 @@ remains preserved and did not seal. Only the cold run above retires these
 two PRE-VALIDATION marks. No terminal field is discharged: counters remain
 exactly `20/41`, `TermSource = 0`, and window 15 remains compatible but
 unattained.
+
+### Step 7.5cms generated/full-complex `Q'^*Q'` mass coordinate dictionary (SEALED; carrier and full precision open)
+
+Exact source checkpoint `4f72af55fdcb3755d4cb90b0dbc34189ac2a7af0`
+passed cold GitHub Actions run
+[`31674704480`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31674704480)
+with workflow checkpoint `66bc8d13dda9a7038d1cd87c8ac7bc8e1253849c`.
+The cold job ran from `06:40:19Z` to `07:01:54Z`; restore and save of
+`.lake/build` were both skipped. The focal ran from `06:42:07Z` to
+`07:01:46Z`, completed `8,560` jobs and exited zero. The audit ended at
+`07:01:51Z`, exited zero and reports exactly
+`[propext, Classical.choice, Quot.sound]`. The two-module text gate, axiom
+blacklist and new-module warning gate were empty.
+
+Artifact `9171584812`, named
+`generated-qprime-mass-complex-coordinate-dictionary-4f72af55fdcb3755d4cb90b0dbc34189ac2a7af0`,
+has GitHub digest
+`e1590482e4c9cbaec9a02bfe71e99693f4ae4986dcbe7582ecf1eb332d4013f7`.
+The downloaded deterministic archive has SHA-256
+`3d3e72262588a3cd9a992c21c55546664cb06fdfaed34b88ca2b7cbeeee66585`,
+and all 13 internal manifest entries matched.
+
+On a generated active coordinate delta, after the explicit real-to-complex
+Lie-fibre embedding, the source proves equality between the generated
+counting `Q'^*Q'` mass coordinate and the literal one-block full-complex
+weighted-adjoint mass coordinate. The two normalization factors remain
+visible: the generated side carries the squared counting weight, while the
+complex scalar coefficient and the complex kernel each carry one source
+weight. The result is deliberately pointwise and real-source-specific.
+
+No global carrier identification, Laplacian transport, arbitrary complex
+source equality, full precision, inverse or regional Green equality is
+asserted. Diagnostic Colab v10 PASS (evidence SHA-256
+`021663f2cbda002bd5efa9ad96b64b83283bfd8f7b881c0db46b87ea7ae98bd2`,
+archive SHA-256
+`fdc5c959ca644d838a1c75f624c546ae82e3c3dd0d61e46c5440bd060701ad1f`)
+did not seal; only the cold run above retires these two PRE-VALIDATION marks.
+This is dictionary infrastructure, not a terminal producer: counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 remains compatible but
+unattained.

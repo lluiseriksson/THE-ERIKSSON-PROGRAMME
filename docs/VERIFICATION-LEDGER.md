@@ -34055,3 +34055,33 @@ remains preserved and did not seal. Only the cold run retires the two
 PRE-VALIDATION marks. This is operator-dictionary infrastructure, not a
 terminal producer. Live counters stay exactly `20/41`, `TermSource = 0`,
 and window 15 remains compatible but unattained.
+
+## Addendum 753 (2026-08-13, **generated/full-complex `Q'^*Q'` mass coordinate dictionary SEALED; full precision open; 20/41 unchanged**)
+
+Exact source checkpoint `4f72af55fdcb3755d4cb90b0dbc34189ac2a7af0`
+passed cold GitHub Actions run
+[`31674704480`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31674704480)
+with workflow checkpoint `66bc8d13dda9a7038d1cd87c8ac7bc8e1253849c`.
+The job ran from `06:40:19Z` to `07:01:54Z`. Restore and save of
+`.lake/build` were both skipped. The focal completed `8,560` jobs and exited
+zero; the audit also exited zero and printed exactly
+`[propext, Classical.choice, Quot.sound]`. No forbidden axiom,
+new-module warning or text-gate violation occurred.
+
+Artifact `9171584812` has GitHub digest
+`e1590482e4c9cbaec9a02bfe71e99693f4ae4986dcbe7582ecf1eb332d4013f7`.
+The deterministic archive SHA-256 is
+`3d3e72262588a3cd9a992c21c55546664cb06fdfaed34b88ca2b7cbeeee66585`;
+all 13 manifest entries matched.
+
+The source identifies the generated counting mass with the literal
+full-complex `Q'^*Q'` mass only on coordinate deltas after the explicit
+real-to-complex Lie-fibre embedding. It preserves the distinction between
+the generated squared counting weight and the two single source weights on
+the complex scalar and kernel sides. It proves no carrier, Laplacian, full
+precision, inverse or regional Green equality. The diagnostic Colab PASS
+(evidence `021663f2cbda002bd5efa9ad96b64b83283bfd8f7b881c0db46b87ea7ae98bd2`,
+archive `fdc5c959ca644d838a1c75f624c546ae82e3c3dd0d61e46c5440bd060701ad1f`)
+did not seal. Only the cold run retires the two PRE-VALIDATION marks.
+Counters stay exactly `20/41`, `TermSource = 0`, and window 15 remains
+compatible but unattained.
