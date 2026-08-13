@@ -29,6 +29,7 @@ example {n : ℕ} (r : ℝ) (v : EuclideanSpace ℂ (Fin n)) (a : Fin n) :
     (r • v).ofLp a = (r : ℂ) * v.ofLp a := by
   simp only [WithLp.ofLp_smul, Pi.smul_apply]
   rw [RCLike.real_smul_eq_coe_mul (K := ℂ)]
+  rfl
 """
 
 
@@ -44,7 +45,7 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v9",
+            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v10",
             "SOURCE_SHA": "4f72af55fdcb3755d4cb90b0dbc34189ac2a7af0",
             "ROOT": Path("/content/hrpoly-generated-qprime-mass-complex-dictionary"),
             "EVIDENCE": Path(
