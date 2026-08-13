@@ -34140,9 +34140,20 @@ high-memory gate must encode this metadata rather than depend on mutable UI
 state.
 
 This diagnostic does not seal.  Cold workflow checkpoint
-`a0454ddfd012bd4b6984c58e96d9e8c257fd9bcf` has exactly one terminal run in
-flight, [`31682526462`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31682526462),
-with `cold=true` and source fixed to `dbd6e08888129f19b71a93620a2265930c3e0d55`.
-Both Lean modules retain PRE-VALIDATION until that cold evidence passes and
-is audited.  No counter moves: live state remains exactly `20/41`,
-`TermSource = 0`, and window 15 compatible but unattained.
+`a0454ddfd012bd4b6984c58e96d9e8c257fd9bcf` ran exactly once as
+[`31682526462`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31682526462),
+with `cold=true` and source fixed to
+`dbd6e08888129f19b71a93620a2265930c3e0d55`.  Restore and save of
+`.lake/build` were both skipped.  The focal and audit exited `0/0`; the focal
+ended with literal `Build completed successfully (8561 jobs).`, and the audit
+printed the allowed trio for all three declarations.  The seal was nevertheless
+rejected because the new source emitted one unused-section-variable warning on
+`cmp99SourceFlatFullComplexQprimeMass_sum`.  Artifact `9174898524` has GitHub
+digest `024f7f5639e3dc0fd5848e57de8c52bbd1038308c8f7bd5958cfcd5eeec2844b`.
+
+Checkpoint `fcdfb890e3a71dafad83623b9a53159022962714` applies exactly Lean's
+recommended `omit [NeZero d] [NeZero Nc] in` to that theorem; its statement,
+constants and proof body are unchanged.  Diagnostic runner v3 is fixed to this
+source.  Both Lean modules retain PRE-VALIDATION until the corrected source
+passes diagnostic and a later cold seal.  No counter moves: live state remains
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.

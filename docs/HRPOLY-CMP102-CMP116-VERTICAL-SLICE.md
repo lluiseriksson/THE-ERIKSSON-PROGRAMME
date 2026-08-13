@@ -9895,12 +9895,21 @@ All three declarations use exactly
 `2041c6d6416f821f1788cba3243db3e493865a6f08b05ca097574216d6bf0563`.
 The runtime auto-unassigned.
 
-Diagnostic PASS does not seal.  Exactly one cold terminal run is in flight:
+Diagnostic PASS does not seal.  The first cold terminal run,
 [`31682526462`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31682526462),
 workflow `a0454ddfd012bd4b6984c58e96d9e8c257fd9bcf`, `cold=true`, same source
-SHA.  PRE-VALIDATION remains on both Lean modules until its evidence passes
-and is audited.  Counters remain exactly `20/41`, `TermSource = 0`, and
-window 15 compatible but unattained.
+SHA, had restore/save both skipped and focal/audit exits `0/0`, but correctly
+failed its seal on one new-module unused-section-variable warning.  Its focal
+ended with literal `Build completed successfully (8561 jobs).`; all three
+axiom readouts were the allowed trio.  Artifact `9174898524` has GitHub digest
+`024f7f5639e3dc0fd5848e57de8c52bbd1038308c8f7bd5958cfcd5eeec2844b`.
+
+Checkpoint `fcdfb890e3a71dafad83623b9a53159022962714` adds only the recommended
+`omit [NeZero d] [NeZero Nc] in` around that theorem, without changing its
+statement or proof.  Diagnostic v3 is in flight on the corrected source.
+PRE-VALIDATION remains on both Lean modules until diagnostic and a later cold
+seal pass.  Counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
 
 If this brick seals, the next full-precision dictionary is a finite chain,
 not a free carrier identification:
