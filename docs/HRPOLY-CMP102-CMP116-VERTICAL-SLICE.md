@@ -10135,7 +10135,7 @@ Step 4 is sealed as a background-name dictionary; later shift/stencil,
 spacing, precision, inverse and Green steps remain open.  Counters remain
 exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
 
-### Step 5: flat generated ambient specialization (PRE-VALIDATION)
+### Step 5: flat generated ambient specialization (SEALED)
 
 The new leaf module applies the literal generated ambient covariant Laplacian
 to the canonical `realZeroExtension` stored by the step-2 field package.  It
@@ -10147,6 +10147,13 @@ ambient field nor either background is caller data.
 This specializes only the real ambient operator.  The generated-box
 equivalence has not yet been proved to commute with `shift` and `shiftBack`,
 the complex stencil and spacing-power dictionaries remain open, and no mass,
-full precision, inverse or Green equality is asserted.  Source and audit are
-PRE-VALIDATION pending fresh-clone diagnostics and a cold seal.  Counters
+full precision, inverse or Green equality is asserted.
+
+Cold workflow `31732272415` seals exact source `0d64561a`: restore/save of
+`.lake/build` skipped, focal/audit `0/0`, literal `8565`-job terminal line,
+one exact standard axiom block, clean warning/text gates and manifest `13/13`.
+Artifact `9194618665` has GitHub digest `cf714580...`; deterministic archive
+`767506b3...`.  Only the two corresponding PRE-VALIDATION marks are retired.
+Step 5 is sealed as a real ambient specialization; shift/stencil transport,
+spacing, mass, full precision, inverse and Green steps remain open.  Counters
 remain exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.

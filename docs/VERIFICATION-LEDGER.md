@@ -29097,7 +29097,7 @@ retired PRE-VALIDATION.  No terminal field is discharged: the live counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
 
-## Addendum 759 (2026-08-13, **flat generated ambient specialization PRE-VALIDATION; step 5; 20/41 unchanged**)
+## Addendum 759 (2026-08-13, **flat generated ambient specialization SEALED; step 5; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `0d64561a9e8baedf87328619e5bae40973f0918c`
 adds one leaf theorem and its focused axiom audit.  For the canonical real
@@ -29133,6 +29133,30 @@ and
 `0e6ce607a508101bd9365f42567833dea35844fbab7e002b0f8c173d453953a8`.
 The runtime auto-unassigned.  This diagnostic does not seal; PRE-VALIDATION
 remains until the one prepared cold workflow and its durable artifact pass.
+
+Cold terminal workflow checkpoint
+`214ddbf4c3664084e4bc75515b085d66caa28b8d` then ran exactly once as
+[`31732272415`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31732272415),
+with `cold=true` and exact source
+`0d64561a9e8baedf87328619e5bae40973f0918c`.  Exact checkout, toolchain,
+cache-key budget and Mathlib pin passed; restoration and saving of
+`.lake/build` were both skipped.  The focal ran from `18:46:24Z` to
+`19:12:34Z`, exited zero and ended with literal
+`Build completed successfully (8565 jobs).`.  The audit ended at
+`19:12:41Z`, exited zero and printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Text, axiom and new-source warning
+gates passed.
+
+Artifact `9194618665` has GitHub digest
+`cf7145803d74b29718905530dc1ffd893f7d7a7186195fb77087d8ecc7a02ac1`.
+Its deterministic archive independently re-hashed on Windows to
+`767506b35c63632acc8b54de33904bd878b7854079010ced9694425ad4c21b0f`,
+identical to the declared hash; all `13/13` manifest entries matched.  This
+cold run seals the source and audit, so only their two PRE-VALIDATION marks
+are removed.  It seals step 5 as a real ambient flat specialization, not a
+shift/stencil, spacing, mass, full-precision, inverse or Green dictionary.
+No terminal producer is added: counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
 
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 

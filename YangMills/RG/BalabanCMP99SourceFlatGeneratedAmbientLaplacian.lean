@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedBackgroundDictionary
 /-!
 # Flat generated ambient Laplacian
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 For the canonical real zero extension retained by the generated terminal field
 package, this module specializes the literal ambient covariant Laplacian at the
 source-recursion flat background.  The independently named unit backgrounds
