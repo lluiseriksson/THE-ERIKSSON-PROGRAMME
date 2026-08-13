@@ -70,6 +70,7 @@ noncomputable def complexZeroExtension
 
 /-- The two canonical extensions are related globally through the sealed
 transported-delta dictionary. -/
+omit [NeZero d] [NeZero Nc] in
 theorem complexZeroExtension_apply_eq_complexification_realZeroExtension
     {Omega : ActiveGaugeRegion d N} {depth : ℕ}
     (D : CMP99SourceGeneratedTerminalComplexFieldData
