@@ -29261,6 +29261,21 @@ Both modules remain PRE-VALIDATION pending a warning-clean fresh diagnostic
 and one cold terminal seal.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
+Diagnostic v5 passed warning-clean on exact checkpoint
+`68de67d6e2d3887c4c7587603d0d615a494df840`: CPU high-RAM
+(`50.99 GiB`), exact toolchain and Mathlib pin, focal/audit exits `0/0`,
+focal `2021.742 s`, audit `9.264 s`, and literal
+`Build completed successfully (8566 jobs).`.  The audit printed exactly three
+copies of `[propext, Classical.choice, Quot.sound]`; the new source emitted no
+linter warning.  Evidence/archive SHA-256 are
+`8006ae62cd379bd7a21fe48b5a2c8020c6c96c6c4ce25fc2b29454f0c7328963`
+and
+`77a04f23512c38d30e5020eac974540a957fd16b7bb8112d62123f9878108fad`;
+the runtime auto-unassigned.  This diagnostic PASS does not seal.  One cold
+terminal workflow is prepared at the exact same source; both modules remain
+PRE-VALIDATION and the hard counters remain unchanged until its durable
+artifact is audited.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`
