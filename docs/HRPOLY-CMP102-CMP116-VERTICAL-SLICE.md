@@ -10119,3 +10119,9 @@ background dictionary: shift/stencil transport, spacing, full precision,
 inverse and Green identifications remain open.  Both source and audit retain
 PRE-VALIDATION pending fresh-clone diagnostics and a cold seal; hard counters
 remain exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
+
+The exact checkpoint then passed a fresh Colab diagnostic with literal
+`Build completed successfully (8564 jobs).`, focal/audit `0/0`, one exact
+standard axiom block and no new-source warning.  This remains diagnostic
+evidence only; a single cold workflow is prepared, and step 4 remains
+PRE-VALIDATION until its durable artifact is audited.

@@ -29117,6 +29117,19 @@ has Git-blob SHA-256
 Both modules remain PRE-VALIDATION.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
+The fresh Colab diagnostic passed on the exact checkpoint: CPU `50.99 GiB`,
+exact Mathlib pin, focal/audit exits `0/0`, focal `2183.606 s`, audit
+`8.639 s`, and literal `Build completed successfully (8564 jobs).`.  The
+single declaration printed exactly `[propext, Classical.choice, Quot.sound]`
+and the new source emitted no linter warning.  Evidence/archive SHA-256 are
+`b69eaae3d63ce9acf7a70a6d9762a669d38b905c5b88c4fe2e742a7363054f4a`
+and
+`c80c5932df73e8abcafda61b8a12610db62a151bef2179307491831ac1b34367`;
+the runtime auto-unassigned.  This diagnostic does not seal.  The workflow
+is fixed to exact source `b29a92d38504d8d9b282f14425b7d2a5d5237412`
+for one cold terminal run; PRE-VALIDATION remains until its artifact is
+audited.
+
 ## Addendum 605 (2026-08-08, **CMP89 (2.45) complex-to-sinc dictionary GREEN; denominator comparison open; 20/41 unchanged**)
 
 Exact source checkpoint
