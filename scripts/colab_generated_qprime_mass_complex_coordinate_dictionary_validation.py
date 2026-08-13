@@ -22,6 +22,16 @@ BASE_RUNNER_SHA256 = (
     "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 )
 
+REPRO_PATH = Path("/content/generated-qprime-complex-coordinate-smul-repro.lean")
+REPRO_SOURCE = """import Mathlib.Analysis.Normed.Lp.PiLp
+import Mathlib.Analysis.RCLike.Basic
+
+example {n : ℕ} (r : ℝ) (v : EuclideanSpace ℂ (Fin n)) (a : Fin n) :
+    (r • v).ofLp a = (r : ℂ) * v.ofLp a := by
+  simp only [WithLp.ofLp_smul, Pi.smul_apply]
+  rw [RCLike.real_smul_eq_coe_mul (K := ℂ)]
+"""
+
 
 def main() -> int:
     with urllib.request.urlopen(BASE_RUNNER_URL) as response:
@@ -35,8 +45,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v7",
-            "SOURCE_SHA": "72907938985a825d70e92446a2f5106cf68e44d6",
+            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v8",
+            "SOURCE_SHA": "4f72af55fdcb3755d4cb90b0dbc34189ac2a7af0",
             "ROOT": Path("/content/hrpoly-generated-qprime-mass-complex-dictionary"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-qprime-mass-complex-dictionary-evidence"
@@ -49,11 +59,16 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary.lean":
-                    "53326b694f46152c1adb4adbbc0d11aa0f2d9b4bf848ed10ae251c0055709fd2",
+                    "d53117dfdf5edfe1c70fbc2efe0765852301b574c11b004b0d734700048e1a15",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionaryAudit.lean":
                     "8e408cbea90867f2b1a8d1572ae61767e7cbcf72c720cfdffec0a8fc3934edef",
             },
             "QUEUE": [
+                (
+                    "generated_qprime_complex_coordinate_smul_repro",
+                    ["lake", "env", "lean", str(REPRO_PATH)],
+                    None,
+                ),
                 (
                     "generated_qprime_mass_complex_coordinate_dictionary_focal",
                     [
@@ -79,6 +94,7 @@ def main() -> int:
             "RECORDS": [],
         }
     )
+    REPRO_PATH.write_text(REPRO_SOURCE, encoding="utf-8", newline="\n")
     return namespace["main"]()
 
 
