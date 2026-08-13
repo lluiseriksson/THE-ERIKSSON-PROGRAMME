@@ -10192,3 +10192,16 @@ The generated `Q'^*Q'` mass remains a separate summand.  No full precision,
 inverse or Green equality is asserted, and both new modules retain visible
 PRE-VALIDATION headers pending compiler diagnostics.  Counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+A fresh Colab CPU/high-RAM diagnostic on exact source `e123abc9` passed with
+the pinned toolchain and Mathlib revision: focal/audit exits `0/0`, focal
+`2149.206 s`, audit `10.219 s`, and literal terminal line
+`Build completed successfully (8567 jobs).`.  The single audited declaration
+printed exactly `[propext, Classical.choice, Quot.sound]`; the source emitted
+no new warning.  Evidence/archive SHA-256 are
+`db13c7c410cbad7765b6ae2fd68ef3ed0db94e7a339c527d80dcce2eea63e6ea`
+and
+`a9ab2e3a40bd5d577da7ebf6647417366c9c498d0728aa9a5e5d6bde7940d92f`.
+The runtime auto-unassigned.  This diagnostic does not seal: both
+PRE-VALIDATION headers remain until one cold terminal workflow on this exact
+source is audited.

@@ -29320,6 +29320,20 @@ This is only the Laplacian summand.  Generated mass, full precision, inverse
 and Green equalities remain open.  Both Lean modules remain PRE-VALIDATION;
 no seal or counter movement is claimed.
 
+The fresh Colab CPU/high-RAM diagnostic then passed on exact source
+`e123abc98f29b916a7659e4b1520fc0f92779ab5` with the exact toolchain and
+Mathlib pin.  Focal/audit exits were `0/0`; elapsed times were `2149.206 s`
+and `10.219 s`; the focal ended with literal
+`Build completed successfully (8567 jobs).`.  The one axiom block was exactly
+`[propext, Classical.choice, Quot.sound]`, and the new source emitted no
+linter warning.  Evidence SHA-256 is
+`db13c7c410cbad7765b6ae2fd68ef3ed0db94e7a339c527d80dcce2eea63e6ea`;
+the deterministic archive SHA-256 is
+`a9ab2e3a40bd5d577da7ebf6647417366c9c498d0728aa9a5e5d6bde7940d92f`.
+The runtime auto-unassigned.  This was diagnostic evidence only: both
+PRE-VALIDATION marks remain pending one audited cold workflow on the same
+source, and all counters remain unchanged.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`

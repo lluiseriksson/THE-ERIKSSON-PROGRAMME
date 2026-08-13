@@ -1,4 +1,4 @@
-name: Validate flat generated complex stencil
+name: Validate flat generated active Laplacian complex dictionary
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 68de67d6e2d3887c4c7587603d0d615a494df840
+  SOURCE_SHA: e123abc98f29b916a7659e4b1520fc0f92779ab5
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     flat-retained-tower
 
 jobs:
-  flat-generated-complex-stencil:
+  flat-generated-active-laplacian-complex:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-complex-stencil-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-generated-active-laplacian-complex-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedComplexStencilDictionary.lean \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedComplexStencilDictionaryAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_generated_complex_stencil_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedComplexStencilDictionary
-          run_stage flat_generated_complex_stencil_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedComplexStencilDictionaryAudit.lean
+          run_stage flat_generated_active_laplacian_complex_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary
+          run_stage flat_generated_active_laplacian_complex_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_generated_complex_stencil_audit.log": 3,
+              "flat_generated_active_laplacian_complex_audit.log": 1,
           }
           focal = (Path("evidence") /
-              "flat_generated_complex_stencil_focal.log").read_text(
+              "flat_generated_active_laplacian_complex_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatGeneratedComplexStencilDictionary.lean:"
+              "BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-generated-complex-stencil-evidence.tar.gz
-          sha256sum flat-generated-complex-stencil-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-generated-active-laplacian-complex-evidence.tar.gz
+          sha256sum flat-generated-active-laplacian-complex-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-generated-complex-stencil-${{ env.SOURCE_SHA }}
+          name: flat-generated-active-laplacian-complex-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-generated-complex-stencil-evidence.tar.gz
+            flat-generated-active-laplacian-complex-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-complex-stencil-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-generated-active-laplacian-complex-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
