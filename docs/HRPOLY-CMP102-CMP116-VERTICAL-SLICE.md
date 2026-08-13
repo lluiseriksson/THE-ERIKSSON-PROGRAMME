@@ -10019,3 +10019,15 @@ has blob SHA-256
 `09cf0fb558a639a1da8ef90ec26d190690b1a569e8c73c32e07ff13fdb6ae771`.
 No statement, carrier claim or quantitative datum changes; PRE-VALIDATION
 and `20/41` remain.
+
+Diagnostic v4 passed on the warning-repair source: CPU `50.99 GiB`,
+focal/audit exits `0/0`, focal `1460.445 s`, audit `8.580 s`, literal
+`Build completed successfully (8562 jobs).`, exact allowed trio for the sole
+declaration, and no new-module linter warning.  Evidence/archive SHA-256 are
+`1e8437364d3b723b1674af179553c73b776547a7f95f5f88bf3d199bc91649b7`
+and
+`4a5e79209e32a1732d3118a29c0e4148c1594049a76657f5f5e5516d394dd0bc`;
+the runtime auto-unassigned.  Diagnostic PASS does not seal.  The workflow
+is fixed to exact source `af040627262aef1b5109fba114e2184c24a6665f`
+for a single cold terminal run; PRE-VALIDATION and `20/41` remain until its
+artifact is audited.

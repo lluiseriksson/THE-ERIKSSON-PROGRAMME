@@ -34256,3 +34256,16 @@ Runner v4 checkpoint `d3409b2719de255163911619b35fdb076f88d5ca`
 has blob SHA-256
 `09cf0fb558a639a1da8ef90ec26d190690b1a569e8c73c32e07ff13fdb6ae771`.
 Diagnostic PASS does not seal and PRE-VALIDATION remains.
+
+Diagnostic v4 passed on the warning-repair source: CPU `50.99 GiB`,
+focal/audit exits `0/0`, focal `1460.445 s`, audit `8.580 s`, literal
+`Build completed successfully (8562 jobs).`, and exactly
+`[propext, Classical.choice, Quot.sound]` for the new declaration.  The new
+module emitted no linter warning.  Evidence/archive SHA-256 are
+`1e8437364d3b723b1674af179553c73b776547a7f95f5f88bf3d199bc91649b7`
+and
+`4a5e79209e32a1732d3118a29c0e4148c1594049a76657f5f5e5516d394dd0bc`;
+the runtime auto-unassigned.  This diagnostic still does not seal.  The
+workflow is now fixed to exact source `af040627262aef1b5109fba114e2184c24a6665f`
+for one cold terminal run; PRE-VALIDATION remains until its artifact is
+audited.
