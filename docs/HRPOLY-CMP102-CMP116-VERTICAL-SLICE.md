@@ -9904,9 +9904,15 @@ ended with literal `Build completed successfully (8561 jobs).`; all three
 axiom readouts were the allowed trio.  Artifact `9174898524` has GitHub digest
 `024f7f5639e3dc0fd5848e57de8c52bbd1038308c8f7bd5958cfcd5eeec2844b`.
 
-Checkpoint `fcdfb890e3a71dafad83623b9a53159022962714` adds only the recommended
-`omit [NeZero d] [NeZero Nc] in` around that theorem, without changing its
-statement or proof.  Diagnostic v3 is in flight on the corrected source.
+Checkpoint `fcdfb890e3a71dafad83623b9a53159022962714` placed the recommended
+`omit [NeZero d] [NeZero Nc] in` after the docstring.  Diagnostic v3 rejected
+that placement after `1273.312 s` with literal `:51:19: unexpected token
+'omit'; expected 'lemma'`.  Evidence/archive SHA-256 are
+`437e92d6b6567b7967ebd35e10f11cd5387484366004907a373751ccbe649e51` and
+`b5238638ed124058c8660c398e2aef36aebf9eb972fb817408938542e8fae3e0`.
+Checkpoint `806fc25bf8b755d15558fe48c415df57d77f6436` moves the same command
+before the docstring, matching existing repository syntax without changing
+the theorem statement or proof.  Diagnostic v4 is prepared on that source.
 PRE-VALIDATION remains on both Lean modules until diagnostic and a later cold
 seal pass.  Counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.

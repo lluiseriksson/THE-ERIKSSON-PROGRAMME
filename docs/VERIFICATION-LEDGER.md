@@ -34151,9 +34151,19 @@ rejected because the new source emitted one unused-section-variable warning on
 `cmp99SourceFlatFullComplexQprimeMass_sum`.  Artifact `9174898524` has GitHub
 digest `024f7f5639e3dc0fd5848e57de8c52bbd1038308c8f7bd5958cfcd5eeec2844b`.
 
-Checkpoint `fcdfb890e3a71dafad83623b9a53159022962714` applies exactly Lean's
-recommended `omit [NeZero d] [NeZero Nc] in` to that theorem; its statement,
-constants and proof body are unchanged.  Diagnostic runner v3 is fixed to this
-source.  Both Lean modules retain PRE-VALIDATION until the corrected source
-passes diagnostic and a later cold seal.  No counter moves: live state remains
-exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+Checkpoint `fcdfb890e3a71dafad83623b9a53159022962714` applied Lean's recommended
+`omit [NeZero d] [NeZero Nc] in` after the theorem docstring.  Diagnostic v3
+showed that placement is syntactically invalid: after `1273.312 s`, Lean
+reported literal `:51:19: unexpected token 'omit'; expected 'lemma'` and the
+runner stopped at the focal.  Evidence/archive SHA-256 are
+`437e92d6b6567b7967ebd35e10f11cd5387484366004907a373751ccbe649e51` and
+`b5238638ed124058c8660c398e2aef36aebf9eb972fb817408938542e8fae3e0`;
+the runtime auto-unassigned.
+
+Checkpoint `806fc25bf8b755d15558fe48c415df57d77f6436` moves the same `omit`
+command before the docstring, matching existing repository syntax.  The
+theorem statement, constants and proof body remain unchanged.  Diagnostic
+runner v4 is fixed to this source.  Both Lean modules retain PRE-VALIDATION
+until the corrected source passes diagnostic and a later cold seal.  No
+counter moves: live state remains exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
