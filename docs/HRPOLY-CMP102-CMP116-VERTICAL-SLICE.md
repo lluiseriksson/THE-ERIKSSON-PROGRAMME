@@ -9963,3 +9963,13 @@ already named generated averaging coefficient.  The chain does not assert a
 global equality between the generated active carrier and the periodic full
 box.  Inverse uniqueness, regional Green transport and uniform physical
 `B0` remain later obligations even after this action dictionary closes.
+
+Step 1 is now present at PRE-VALIDATION checkpoint
+`4e17bd3f073f97227b7268c98500e4de63e96e53`: the explicit transported sum
+of complex deltas is compared globally, site by site, with the
+complexification of `extendZeroZeroCLM`.  The proof splits on active-site
+membership and uses the canonical finite-box equivalence only by injectivity;
+it introduces no carrier equality.  Source/audit Git-blob SHA-256 are
+`5df8605fbd752112969b0dd88ac8e6b60aa03e5749330faee3257c3f6bb988d2`
+and `03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343`.
+It remains compiler-unverified and does not move `20/41`.

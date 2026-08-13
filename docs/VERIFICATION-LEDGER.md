@@ -34187,3 +34187,20 @@ and its 13-entry internal manifest verifies with zero mismatch.  This cold
 run seals the source and audit, so their PRE-VALIDATION marks are removed.
 No counter moves: live state remains exactly `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+PRE-VALIDATION checkpoint
+`4e17bd3f073f97227b7268c98500e4de63e96e53` adds the next leaf dictionary:
+the explicit transported finite sum of complex coordinate deltas agrees at
+every generated full-box site with the pointwise complexification of
+`extendZeroZeroCLM`.  Membership selects the unique active delta;
+non-membership kills every delta; the canonical box equivalence is consumed
+only through injectivity.  The statement does not identify active and full
+carriers and does not touch the Laplacian, full precision, inverse or Green
+operator.  Source/audit Git-blob SHA-256 are
+`5df8605fbd752112969b0dd88ac8e6b60aa03e5749330faee3257c3f6bb988d2`
+and `03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343`.
+Runner checkpoint `0b1321279ea340ca4dc86657b925a21a89ccd4d5`
+has blob SHA-256
+`040cecfcba45602128ebb652581831edc10a8ec6d8d619aeba32783c31b949da`.
+The two Lean modules remain PRE-VALIDATION and do not count until a compiler
+run and later cold seal pass.
