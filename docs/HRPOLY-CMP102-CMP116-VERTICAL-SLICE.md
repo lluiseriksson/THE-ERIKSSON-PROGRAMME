@@ -10109,3 +10109,13 @@ PRE-VALIDATION marks are retired.  Steps 2--3 are now sealed dictionary and
 compression infrastructure; the flat-background dictionary remains step 4.
 No terminal producer is added, so counters remain exactly `20/41`,
 `TermSource = 0`, window 15 compatible but unattained.
+
+### Step 4: flat generated-background dictionary (PRE-VALIDATION)
+
+Checkpoint `b29a92d` proves that the source-recursion flat gauge configuration
+and the independently named ambient-Laplacian flat background are literally
+the same unit `GaugeConfig`.  Neither side is caller data.  This is only the
+background dictionary: shift/stencil transport, spacing, full precision,
+inverse and Green identifications remain open.  Both source and audit retain
+PRE-VALIDATION pending fresh-clone diagnostics and a cold seal; hard counters
+remain exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.

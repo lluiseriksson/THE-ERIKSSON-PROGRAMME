@@ -29097,6 +29097,26 @@ retired PRE-VALIDATION.  No terminal field is discharged: the live counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
 
+## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`
+adds the exact dictionary between the source-recursion flat gauge
+configuration and the independently named ambient-Laplacian flat background.
+Both sides are literal unit `GaugeConfig`s; neither is caller data.  This is
+nominal step 4 of the nine-step full-precision chain.  It proves no shift or
+stencil transport, spacing normalization, precision equality, inverse or
+Green identification.
+
+Source/audit Git-blob SHA-256 are
+`6e8000c1b8ef3fa5fe63ddf30a43ae97c1715843caa9686246d29e3e3819347b`
+and
+`a772cc75aca79f454efb34cf6d52a5b683cca5a27b8d072ecf7652427e91813e`.
+Runner v1 checkpoint `ba65047871c814b039d3bbfc84163978c422ecd7`
+has Git-blob SHA-256
+`c3d82567159a715aeebd79353c749f00536bb450cf5dddd9aea9112802be1c37`.
+Both modules remain PRE-VALIDATION.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
 ## Addendum 605 (2026-08-08, **CMP89 (2.45) complex-to-sinc dictionary GREEN; denominator comparison open; 20/41 unchanged**)
 
 Exact source checkpoint
