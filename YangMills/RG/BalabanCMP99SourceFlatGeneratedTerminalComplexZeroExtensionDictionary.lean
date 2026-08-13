@@ -53,19 +53,21 @@ theorem cmp99SourceGeneratedTerminalComplexZeroExtension_apply_eq_complexificati
   · let source : ActiveGaugeRegion.Site region := ⟨x, hx⟩
     rw [extendZeroZeroCLM_apply_of_mem region eta x hx]
     unfold cmp99SourceGeneratedTerminalComplexZeroExtension
+    rw [Finset.sum_apply]
     rw [Finset.sum_eq_single source]
-    · simp [source, e, cmp99SourceFlatFullComplexSingle]
+    · simp [source, cmp99SourceFlatFullComplexSingle]
     · intro other _hother hne
       have htarget : e x ≠ e other.1 := by
         intro heq
         apply hne
         apply Subtype.ext
         exact e.injective heq.symm
-      simp [e, cmp99SourceFlatFullComplexSingle, htarget]
+      simp [cmp99SourceFlatFullComplexSingle, htarget]
     · intro hnot
       exact (hnot (Finset.mem_univ source)).elim
   · rw [extendZeroZeroCLM_apply_of_not_mem region eta x hx, map_zero]
     unfold cmp99SourceGeneratedTerminalComplexZeroExtension
+    rw [Finset.sum_apply]
     apply Finset.sum_eq_zero
     intro source _hsource
     have htarget : e x ≠ e source.1 := by
