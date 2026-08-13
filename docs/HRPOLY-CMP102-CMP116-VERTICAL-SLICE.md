@@ -10157,3 +10157,18 @@ Artifact `9194618665` has GitHub digest `cf714580...`; deterministic archive
 Step 5 is sealed as a real ambient specialization; shift/stencil transport,
 spacing, mass, full precision, inverse and Green steps remain open.  Counters
 remain exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
+
+### Step 6: generated-box neighbour transport and complex stencil (PRE-VALIDATION)
+
+The generated closed-form fine-box equivalence is a dependent cast along the
+already sealed side-length equality.  The new module proves separately that
+it commutes propositionally with `shift` and `shiftBack`; it then rewrites all
+three sites in every nearest-neighbour summand of the canonical generated
+complex zero extension and consumes the sealed coordinatewise
+complexification theorem for the flat stencil.
+
+The two dependent box types are not declared definitionally equal.  This step
+does not expose `spacing⁻²`, consume the generated mass, identify the full
+precision, construct an inverse or transport a Green operator.  Source and
+audit remain PRE-VALIDATION pending compiler diagnostics.  Counters remain
+exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
