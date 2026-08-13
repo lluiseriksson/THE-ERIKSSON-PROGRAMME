@@ -10125,3 +10125,12 @@ The exact checkpoint then passed a fresh Colab diagnostic with literal
 standard axiom block and no new-source warning.  This remains diagnostic
 evidence only; a single cold workflow is prepared, and step 4 remains
 PRE-VALIDATION until its durable artifact is audited.
+
+Cold workflow `31725899611` seals exact source `b29a92d`: restore/save of
+`.lake/build` skipped, focal/audit `0/0`, literal `8564`-job terminal line,
+one exact standard axiom block, clean warning gate and manifest `13/13`.
+Artifact `9192157649` has GitHub digest `eb613d33...`; deterministic archive
+`91c8ba62...`.  Only the two corresponding PRE-VALIDATION marks are retired.
+Step 4 is sealed as a background-name dictionary; later shift/stencil,
+spacing, precision, inverse and Green steps remain open.  Counters remain
+exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.

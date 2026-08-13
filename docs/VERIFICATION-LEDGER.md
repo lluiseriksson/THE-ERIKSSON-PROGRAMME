@@ -29130,6 +29130,28 @@ is fixed to exact source `b29a92d38504d8d9b282f14425b7d2a5d5237412`
 for one cold terminal run; PRE-VALIDATION remains until its artifact is
 audited.
 
+Cold workflow checkpoint `a2cf06ebd174aa0f596ed685e2b4cfedd167d010`
+then ran exactly once as
+[`31725899611`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31725899611),
+with `cold=true` and exact source
+`b29a92d38504d8d9b282f14425b7d2a5d5237412`.  Exact checkout, toolchain,
+cache-key budget and Mathlib pin passed; restore and save of `.lake/build`
+were both skipped.  The focal ran from `17:30:43Z` to `17:57:09Z`, exited
+zero and ended with literal `Build completed successfully (8564 jobs).`.
+The audit ended at `17:57:15Z`, exited zero and printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The text/axiom/warning gates
+passed.
+
+Artifact `9192157649` has GitHub digest
+`eb613d33bad50db6d8c25dda85df039bbb963d0a30a41502a04f5793f2789ab5`.
+Its deterministic archive SHA-256 is
+`91c8ba623962b234dc1ab33eb84ad10d26d3ef7854fa526c4f16a2c70b766aa8`;
+all 13 internal manifest entries matched.  This seals nominal chain step 4,
+so only its two PRE-VALIDATION marks are removed.  It remains a unit-field
+background-name dictionary, not a shift/stencil, spacing, precision, inverse
+or Green theorem.  No terminal producer is added: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
 ## Addendum 605 (2026-08-08, **CMP89 (2.45) complex-to-sinc dictionary GREEN; denominator comparison open; 20/41 unchanged**)
 
 Exact source checkpoint
