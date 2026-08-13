@@ -9912,10 +9912,15 @@ that placement after `1273.312 s` with literal `:51:19: unexpected token
 `b5238638ed124058c8660c398e2aef36aebf9eb972fb817408938542e8fae3e0`.
 Checkpoint `806fc25bf8b755d15558fe48c415df57d77f6436` moves the same command
 before the docstring, matching existing repository syntax without changing
-the theorem statement or proof.  Diagnostic v4 is prepared on that source.
-PRE-VALIDATION remains on both Lean modules until diagnostic and a later cold
-seal pass.  Counters remain exactly `20/41`, `TermSource = 0`, and window 15
-compatible but unattained.
+the theorem statement or proof.  Diagnostic v4 passed on that source: CPU
+`50.99 GiB`, focal/audit exits `0/0`, focal `1448.555 s`, audit `9.240 s`,
+literal `Build completed successfully (8561 jobs).`, and the allowed trio for
+all three declarations.  Evidence/archive SHA-256 are
+`e8d02e5b4446f00a158c45a85dd5a0e9881a3faa9bd1a91536ae41a3f472488f`
+and `526d236504dfcd357d357bcfcd7033b709d848554782f6541d8f58a22aaa3f46`.
+Diagnostic PASS does not seal.  PRE-VALIDATION remains on both Lean modules
+until a later cold seal passes.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
 
 If this brick seals, the next full-precision dictionary is a finite chain,
 not a free carrier identification:

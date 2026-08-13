@@ -34162,8 +34162,14 @@ the runtime auto-unassigned.
 
 Checkpoint `806fc25bf8b755d15558fe48c415df57d77f6436` moves the same `omit`
 command before the docstring, matching existing repository syntax.  The
-theorem statement, constants and proof body remain unchanged.  Diagnostic
-runner v4 is fixed to this source.  Both Lean modules retain PRE-VALIDATION
-until the corrected source passes diagnostic and a later cold seal.  No
-counter moves: live state remains exactly `20/41`, `TermSource = 0`, and
-window 15 compatible but unattained.
+theorem statement, constants and proof body remain unchanged.  Diagnostic v4
+passed on this exact source: CPU `50.99 GiB`, focal/audit exits `0/0`, focal
+`1448.555 s`, audit `9.240 s`, literal terminal line
+`Build completed successfully (8561 jobs).`, and the allowed trio for all
+three declarations.  Evidence/archive SHA-256 are
+`e8d02e5b4446f00a158c45a85dd5a0e9881a3faa9bd1a91536ae41a3f472488f`
+and `526d236504dfcd357d357bcfcd7033b709d848554782f6541d8f58a22aaa3f46`;
+the runtime auto-unassigned.  Diagnostic PASS does not seal.  Both Lean
+modules retain PRE-VALIDATION until the corrected source passes one later
+cold seal.  No counter moves: live state remains exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
