@@ -23,8 +23,7 @@ BASE_RUNNER_SHA256 = (
 )
 
 REPRO_PATH = Path("/content/generated-qprime-complex-coordinate-smul-repro.lean")
-REPRO_SOURCE = """import Mathlib.Analysis.Normed.Lp.PiLp
-import Mathlib.Analysis.RCLike.Basic
+REPRO_SOURCE = """import Mathlib
 
 example {n : ℕ} (r : ℝ) (v : EuclideanSpace ℂ (Fin n)) (a : Fin n) :
     (r • v).ofLp a = (r : ℂ) * v.ofLp a := by
@@ -45,7 +44,7 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v8",
+            "RUNNER_REV": "generated-qprime-mass-complex-coordinate-dictionary-v9",
             "SOURCE_SHA": "4f72af55fdcb3755d4cb90b0dbc34189ac2a7af0",
             "ROOT": Path("/content/hrpoly-generated-qprime-mass-complex-dictionary"),
             "EVIDENCE": Path(
