@@ -49,6 +49,7 @@ private theorem finBoxEquivCast_shiftBack
   subst B
   rfl
 
+omit [NeZero d] in
 /-- The generated closed-form fine-box equivalence commutes with the positive
 periodic step.  The equality is propositional across the two dependent box
 types. -/
@@ -61,6 +62,7 @@ theorem cmp99GeneratedFineBoxOneBlockEquiv_shift
   exact finBoxEquivCast_shift
     (cmp99RegionalLatticeSize_eq_pow_mul M N depth) x i
 
+omit [NeZero d] in
 /-- The generated closed-form fine-box equivalence commutes with the negative
 periodic step.  The equality is propositional across the two dependent box
 types. -/
