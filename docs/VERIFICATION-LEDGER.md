@@ -29179,6 +29179,35 @@ Spacing, mass, full precision, inverse and Green dictionaries remain open.
 Counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained.
 
+The first fresh Colab diagnostic passed semantically on the exact source
+checkpoint: CPU high-RAM (`50.99 GiB`), exact toolchain and Mathlib pin,
+focal/audit exits `0/0`, focal `1888.059 s`, audit `8.759 s`, and literal
+`Build completed successfully (8566 jobs).`.  The audit printed exactly three
+copies of `[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256
+are
+`04d730f6fc0b19fea1ed4ecac6085e015c41744c9bc3e4ff5d5e4de21850eea8`
+and
+`95a87ba74fb51beebafb0b89d447c1b155fea7a730483f7306a2bf24328b9f1e`;
+the runtime auto-unassigned.  This PASS does not seal because the new source
+reported three `unusedSectionVars` warnings.
+
+Checkpoint `9bcdb6800ff7be1ce847b3d9dc113595bfdabb86` added only explicit
+`omit` commands for those unused instances.  Static ledger review then caught,
+before another runtime was opened, that the third command separated a docstring
+from its theorem.  Checkpoint
+`3cb3a721b13f274ea35bbe3ac09a6a1ba421b500` moves that command before the
+docstring; theorem statements and proofs are unchanged.  Corrected source/audit
+Git-blob SHA-256 are
+`bdf0f54f780acfc6a58f007a87ba4ffb1c65ecb3baf736f338f018a3e761af33`
+and
+`0a34ba42e5e5e5b8d6e331a55f38f07c07e9cc3fb2729f2efca974ce96ae13b6`.
+Runner v3 checkpoint `e1697d36312a5f703eb60774939b18cfebba2d86`
+has Git-blob SHA-256
+`665f7dcc075bab9d95c10b61d37ca66971c3c7f35797ed6c669f72df61a9adf0`.
+Both modules remain PRE-VALIDATION pending a warning-clean fresh diagnostic
+and one cold terminal seal.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`
