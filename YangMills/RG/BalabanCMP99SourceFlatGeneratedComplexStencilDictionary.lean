@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99PhysicalFibreComplexification
 /-!
 # Flat generated complex-stencil dictionary
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 The generated closed-form fine-box equivalence is a dependent cast along the
 sealed side-length equality.  This module proves propositionally that the cast
 commutes with both periodic nearest-neighbour steps, then transports the

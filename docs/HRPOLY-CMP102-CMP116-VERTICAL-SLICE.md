@@ -10158,7 +10158,7 @@ Step 5 is sealed as a real ambient specialization; shift/stencil transport,
 spacing, mass, full precision, inverse and Green steps remain open.  Counters
 remain exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
 
-### Step 6: generated-box neighbour transport and complex stencil (PRE-VALIDATION)
+### Step 6: generated-box neighbour transport and complex stencil (SEALED)
 
 The generated closed-form fine-box equivalence is a dependent cast along the
 already sealed side-length equality.  The new module proves separately that
@@ -10170,5 +10170,11 @@ complexification theorem for the flat stencil.
 The two dependent box types are not declared definitionally equal.  This step
 does not expose `spacing⁻²`, consume the generated mass, identify the full
 precision, construct an inverse or transport a Green operator.  Source and
-audit remain PRE-VALIDATION pending compiler diagnostics.  Counters remain
-exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
+audit were sealed by cold workflow `31748745108` on exact source
+`68de67d6`: restore/save of `.lake/build` skipped, focal/audit `0/0`, literal
+`8566`-job terminal line, three exact standard axiom blocks, clean warning and
+text gates, and manifest `13/13`.  Artifact `9200863771` has GitHub digest
+`c4ae6f46...`; deterministic archive `d6cdba0c...`.  Only these two
+PRE-VALIDATION marks are retired.  Spacing, full precision, inverse and Green
+steps remain open.  Counters remain exactly `20/41`, `TermSource = 0`, window
+15 compatible but unattained.

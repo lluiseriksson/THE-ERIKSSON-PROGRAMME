@@ -29276,6 +29276,28 @@ terminal workflow is prepared at the exact same source; both modules remain
 PRE-VALIDATION and the hard counters remain unchanged until its durable
 artifact is audited.
 
+Cold terminal workflow
+[`31748745108`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31748745108)
+seals exact source `68de67d6e2d3887c4c7587603d0d615a494df840` from workflow
+checkpoint `af7a14a268b7072613c78e4e2c39180b6917aa62`.  Restore and save of
+`.lake/build` were both skipped.  The focal/audit exited `0/0`; the focal ran
+`22:12:46Z–22:40:32Z` and ended with literal
+`Build completed successfully (8566 jobs).`; the audit ended at `22:40:38Z`
+and printed exactly three copies of
+`[propext, Classical.choice, Quot.sound]`.  The new-source warning gate was
+clean.
+
+Artifact `9200863771` has GitHub digest
+`c4ae6f4677ff059458bd3e0ee72fbafc17aa92ee870121e67f58c2c1a42688fc`.
+Its deterministic archive independently re-hashed on Windows to
+`d6cdba0c66453d10159794e6ecbdb3ca527dd64295ff81be7a5e10d405affe1f`,
+identical to the declared hash; all `13/13` manifest entries matched.  This
+cold run seals step 6, so only its source and audit PRE-VALIDATION marks are
+removed.  It proves neighbour transport and the complex-stencil dictionary,
+not spacing, full precision, inverse or Green transport.  No terminal producer
+is added: counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`
