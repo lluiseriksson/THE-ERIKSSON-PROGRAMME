@@ -10092,3 +10092,10 @@ block without changing the theorem statement or proof.  This is still a
 PRE-VALIDATION correction, not a seal.  Steps 2--3 remain open and the hard
 counters remain exactly `20/41`, `TermSource = 0`, window 15 compatible but
 unattained.
+
+The corrected checkpoint subsequently passed a fresh Colab diagnostic:
+literal `Build completed successfully (8563 jobs).`, focal/audit `0/0`, three
+exact standard axiom blocks and no new-source warning.  This is diagnostic
+evidence only.  A single cold terminal workflow is prepared at `48af41c4`;
+the two modules remain PRE-VALIDATION and steps 2--3 remain unsealed until
+that cold artifact is audited.

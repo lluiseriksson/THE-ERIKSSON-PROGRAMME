@@ -34364,3 +34364,16 @@ Runner v3 checkpoint `2f6a898424072ff0e6720f075a460fbb3f274b12`
 has Git-blob SHA-256
 `c7a2ff51b4c00ecee6332400223f7151e7da219b1a24c818a49c4826bcba3aaa`.
 Both modules remain PRE-VALIDATION; no seal or counter movement is claimed.
+
+Diagnostic v3 then passed on the corrected checkpoint: CPU `50.99 GiB`,
+exact Mathlib pin, focal/audit exits `0/0`, focal `2005.161 s`, audit
+`10.352 s`, and literal `Build completed successfully (8563 jobs).`.  All
+three declarations printed exactly `[propext, Classical.choice, Quot.sound]`
+and the new source emitted no linter warning.  Evidence/archive SHA-256 are
+`38295cc444e83feb4eff8edad12806a3b790f32be1c7cde8fc41eafb54bfe96c`
+and
+`eead99163d52b588a70d93a18399c4578081f999ebc8fd3a97927895e7ba904c`;
+the runtime auto-unassigned.  This diagnostic does not seal.  Workflow
+checkpoint `48af41c4e84563a0abcfdc42e409980990dda29f` is fixed to the exact
+source for one cold terminal run; PRE-VALIDATION remains until its durable
+artifact is audited.
