@@ -7,9 +7,6 @@ import YangMills.RG.BalabanCMP99OneScaleRegionalPoincare
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Global zero-extension dictionary for the generated complex field
 
 The explicit finite sum of transported full-box coordinate deltas is exactly

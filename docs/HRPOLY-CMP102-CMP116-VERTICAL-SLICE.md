@@ -10031,3 +10031,25 @@ the runtime auto-unassigned.  Diagnostic PASS does not seal.  The workflow
 is fixed to exact source `af040627262aef1b5109fba114e2184c24a6665f`
 for a single cold terminal run; PRE-VALIDATION and `20/41` remain until its
 artifact is audited.
+
+Cold terminal workflow checkpoint
+`c2eefe6b05db9df22a9f580c1281227ae362f32b` ran exactly once as
+[`31704297052`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31704297052),
+with `cold=true` and exact source
+`af040627262aef1b5109fba114e2184c24a6665f`.  Restore and save of
+`.lake/build` were skipped.  The focal/audit exited `0/0`; the focal ran
+`13:21:01Z–13:47:14Z` and ended with literal
+`Build completed successfully (8562 jobs).`; the audit ended at `13:47:20Z`
+and printed exactly `[propext, Classical.choice, Quot.sound]`.  No new-source
+linter warning or axiom/text-gate failure occurred.
+
+Artifact `9183467695` has GitHub digest
+`6cf551680e53c1df7b5a1a571b6be6e0ebd0554fe3a77608f09d979d79547ea2`.
+The downloaded deterministic archive SHA-256 is
+`51165261b0880027214299a25e6b8c49b4cda36f77bc9cebd26ecf88c340213a`;
+all 13 internal manifest entries matched.  This seal retires only the source
+and audit PRE-VALIDATION marks.  Step 1 of the nine-step action dictionary is
+now sealed, but it remains dictionary infrastructure: no carrier equality,
+Laplacian, full precision, inverse or Green equality is asserted.  Counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.

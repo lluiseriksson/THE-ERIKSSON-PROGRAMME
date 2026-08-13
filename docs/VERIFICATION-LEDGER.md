@@ -34269,3 +34269,26 @@ the runtime auto-unassigned.  This diagnostic still does not seal.  The
 workflow is now fixed to exact source `af040627262aef1b5109fba114e2184c24a6665f`
 for one cold terminal run; PRE-VALIDATION remains until its artifact is
 audited.
+
+Cold terminal workflow checkpoint
+`c2eefe6b05db9df22a9f580c1281227ae362f32b` then ran exactly once as
+[`31704297052`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31704297052),
+with `cold=true` and exact source
+`af040627262aef1b5109fba114e2184c24a6665f`.  Exact checkout, toolchain,
+cache-key budget and Mathlib pin all passed; restore and save of `.lake/build`
+were both skipped.  The focal ran from `13:21:01Z` to `13:47:14Z`, exited
+zero and ended with literal `Build completed successfully (8562 jobs).`.
+The audit ended at `13:47:20Z`, exited zero and printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The new source emitted no linter
+warning and the axiom/text gates passed.
+
+Artifact `9183467695` has GitHub digest
+`6cf551680e53c1df7b5a1a571b6be6e0ebd0554fe3a77608f09d979d79547ea2`.
+Its deterministic archive SHA-256 is
+`51165261b0880027214299a25e6b8c49b4cda36f77bc9cebd26ecf88c340213a`;
+all 13 internal manifest entries matched.  This cold run seals the source and
+audit, so only their two PRE-VALIDATION marks are removed.  The theorem is a
+global zero-extension dictionary, not a carrier, Laplacian, precision,
+inverse or Green identification.  No terminal producer is added: counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
