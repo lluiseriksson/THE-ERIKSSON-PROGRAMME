@@ -31,6 +31,7 @@ noncomputable section
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
+omit [NeZero d] in
 private theorem finBoxEquivCast_shift
     {A B : ℕ} [NeZero A] [NeZero B]
     (h : A = B) (x : FinBox d A) (i : Fin d) :
@@ -39,6 +40,7 @@ private theorem finBoxEquivCast_shift
   subst B
   rfl
 
+omit [NeZero d] in
 private theorem finBoxEquivCast_shiftBack
     {A B : ℕ} [NeZero A] [NeZero B]
     (h : A = B) (x : FinBox d A) (i : Fin d) :
@@ -77,6 +79,7 @@ namespace CMP99SourceGeneratedTerminalComplexFieldData
 coordinatewise complexification of the real flat stencil on its canonical
 real zero extension.  Both neighbour orientations use the explicit generated
 box transport above. -/
+omit [NeZero Nc] in
 theorem complexStencil_apply_generatedBox_eq_complexification_realStencil
     {Omega : ActiveGaugeRegion d N} {depth : ℕ}
     (D : CMP99SourceGeneratedTerminalComplexFieldData
