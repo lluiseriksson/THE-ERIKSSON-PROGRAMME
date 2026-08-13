@@ -10053,3 +10053,25 @@ now sealed, but it remains dictionary infrastructure: no carrier equality,
 Laplacian, full precision, inverse or Green equality is asserted.  Counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
+
+### Steps 2--3: source-pinned field data and regional compression (PRE-VALIDATION)
+
+Checkpoint `d0de24e630f54dba5d2b852960a0b1fe12653ec7` introduces
+`CMP99SourceGeneratedTerminalComplexFieldData`.  Its only stored field is the
+literal generated active real field.  The real Dirichlet extension and
+transported complex full-box field are computed definitions, so a caller
+cannot choose either ambient field or supply a free identification between
+them.  The package derives the sealed global extension dictionary and the
+existing regional-Laplacian compression theorem for that same active field.
+
+Thus nominal chain steps 2 and 3 are combined without identifying the active
+carrier with the periodic full box.  The flat-background dictionary, shift
+and stencil transport, spacing normalization, full precision, inverse and
+Green comparisons remain later steps.  Source/audit Git-blob SHA-256 are
+`77771a74339136b0578bcbf3364f4d941a73a842985f64acf7104a03d75833a6`
+and
+`0aa8cb34ce0a8566348d1f48eb2d1b44d33dc1952665be8f0bff273f601eb4cd`;
+runner checkpoint `3506a92e480526e7b4c17364543a6ec5db2b4612` has blob SHA-256
+`c11f5d8d2a9424adb75282232c846b4d44b33c5487e026ea487504b9c285c744`.
+Both modules remain PRE-VALIDATION and the live counters remain `20/41`,
+`TermSource = 0`, window 15 compatible but unattained.

@@ -34292,3 +34292,27 @@ global zero-extension dictionary, not a carrier, Laplacian, precision,
 inverse or Green identification.  No terminal producer is added: counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
+
+## Addendum 755 (2026-08-13, **source-pinned terminal complex field data PRE-VALIDATION; steps 2--3 combined; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint
+`d0de24e630f54dba5d2b852960a0b1fe12653ec7` adds a package whose only
+caller-supplied datum is the literal generated active real field.  Its real
+Dirichlet extension and transported complex full-box field are definitions,
+not independently chosen fields accompanied by convenient equalities.  The
+same package derives (i) the global complexification/zero-extension identity
+from the sealed transported-delta dictionary and (ii) the regional source
+Laplacian as the Dirichlet compression of the ambient operator acting on that
+same real extension.
+
+This combines nominal steps 2 and 3 of the nine-step full-precision chain
+without assuming a carrier equality.  It proves no flat-background
+dictionary, shift transport, periodic stencil, spacing dictionary, full
+precision, inverse or Green identity.  Source/audit Git-blob SHA-256 are
+`77771a74339136b0578bcbf3364f4d941a73a842985f64acf7104a03d75833a6`
+and
+`0aa8cb34ce0a8566348d1f48eb2d1b44d33dc1952665be8f0bff273f601eb4cd`.
+Runner checkpoint `3506a92e480526e7b4c17364543a6ec5db2b4612` has blob SHA-256
+`c11f5d8d2a9424adb75282232c846b4d44b33c5487e026ea487504b9c285c744`.
+The two modules remain PRE-VALIDATION.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
