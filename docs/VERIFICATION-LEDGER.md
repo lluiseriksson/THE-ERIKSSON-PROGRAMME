@@ -29097,6 +29097,29 @@ retired PRE-VALIDATION.  No terminal field is discharged: the live counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
 
+## Addendum 759 (2026-08-13, **flat generated ambient specialization PRE-VALIDATION; step 5; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `0d64561a9e8baedf87328619e5bae40973f0918c`
+adds one leaf theorem and its focused axiom audit.  For the canonical real
+zero extension of the generated active field, the theorem rewrites the
+source-recursion unit background through the sealed step-4 dictionary and
+specializes the literal generated ambient covariant Laplacian to the scaled
+flat periodic stencil.  It accepts neither an ambient field nor a background
+equality from the caller.
+
+Source/audit Git-blob SHA-256 are
+`658ca4c253791e816432bbd60d4ae9d84a7c7b5e583f980cb6ed0146c59c52bb`
+and
+`8de3e915e36d9dd3750f85597c56c38508be519fb16d74651cf077520b94b51b`.
+Runner checkpoint `95aac7c97a32f7160377be6dc064767aa1ab123b` has
+Git-blob SHA-256
+`eaf30c144d6d50e3159d22797c7da79caff66ba8de245b87b63cc850806ae380`.
+Both Lean modules remain PRE-VALIDATION pending a fresh Colab diagnostic and
+a cold terminal seal.  Shift/shiftBack transport, the complex stencil,
+spacing-power and mass dictionaries, full precision, inverse and Green
+identifications remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`
