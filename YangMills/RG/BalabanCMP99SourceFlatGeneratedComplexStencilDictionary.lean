@@ -75,11 +75,11 @@ theorem cmp99GeneratedFineBoxOneBlockEquiv_shiftBack
 
 namespace CMP99SourceGeneratedTerminalComplexFieldData
 
+omit [NeZero Nc] in
 /-- The complex flat stencil of the canonical generated full-box field is the
 coordinatewise complexification of the real flat stencil on its canonical
 real zero extension.  Both neighbour orientations use the explicit generated
 box transport above. -/
-omit [NeZero Nc] in
 theorem complexStencil_apply_generatedBox_eq_complexification_realStencil
     {Omega : ActiveGaugeRegion d N} {depth : ℕ}
     (D : CMP99SourceGeneratedTerminalComplexFieldData
