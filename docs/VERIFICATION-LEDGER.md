@@ -29120,6 +29120,20 @@ spacing-power and mass dictionaries, full precision, inverse and Green
 identifications remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
+The fresh Colab diagnostic then passed on the exact source checkpoint.  The
+runtime was CPU high-RAM (`50.99 GiB`), the toolchain and exact Mathlib pin
+matched, both Git-blob hashes matched, and both textual guards exited zero.
+The focal exited zero after `1566.152 s` with literal
+`Build completed successfully (8565 jobs).`; the audit exited zero after
+`7.202 s` and printed exactly one
+`[propext, Classical.choice, Quot.sound]` block.  The new source emitted no
+linter warning.  Evidence/archive SHA-256 are
+`9897c430e863d89112f8826719b8c6b1159ef73f881669e1f967630dc01db0f1`
+and
+`0e6ce607a508101bd9365f42567833dea35844fbab7e002b0f8c173d453953a8`.
+The runtime auto-unassigned.  This diagnostic does not seal; PRE-VALIDATION
+remains until the one prepared cold workflow and its durable artifact pass.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`

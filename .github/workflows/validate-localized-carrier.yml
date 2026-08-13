@@ -1,4 +1,4 @@
-name: Validate flat generated-background dictionary
+name: Validate flat generated ambient Laplacian
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: b29a92d38504d8d9b282f14425b7d2a5d5237412
+  SOURCE_SHA: 0d64561a9e8baedf87328619e5bae40973f0918c
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -29,7 +29,7 @@ env:
     flat-retained-tower
 
 jobs:
-  flat-generated-background-dictionary:
+  flat-generated-ambient-laplacian:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-background-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-generated-ambient-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedBackgroundDictionary.lean \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedBackgroundDictionaryAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedAmbientLaplacian.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedAmbientLaplacianAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage flat_generated_background_dictionary_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedBackgroundDictionary
-          run_stage flat_generated_background_dictionary_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedBackgroundDictionaryAudit.lean
+          run_stage flat_generated_ambient_laplacian_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedAmbientLaplacian
+          run_stage flat_generated_ambient_laplacian_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedAmbientLaplacianAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "flat_generated_background_dictionary_audit.log": 1,
+              "flat_generated_ambient_laplacian_audit.log": 1,
           }
           focal = (Path("evidence") /
-              "flat_generated_background_dictionary_focal.log").read_text(
+              "flat_generated_ambient_laplacian_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatGeneratedBackgroundDictionary.lean:"
+              "BalabanCMP99SourceFlatGeneratedAmbientLaplacian.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              flat-generated-background-dictionary-evidence.tar.gz
-          sha256sum flat-generated-background-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              flat-generated-ambient-laplacian-evidence.tar.gz
+          sha256sum flat-generated-ambient-laplacian-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: flat-generated-background-dictionary-${{ env.SOURCE_SHA }}
+          name: flat-generated-ambient-laplacian-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            flat-generated-background-dictionary-evidence.tar.gz
+            flat-generated-ambient-laplacian-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-flat-generated-background-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-flat-generated-ambient-laplacian-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
