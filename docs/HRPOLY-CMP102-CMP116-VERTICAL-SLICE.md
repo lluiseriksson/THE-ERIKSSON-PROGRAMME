@@ -9892,19 +9892,24 @@ PRE-VALIDATION remains on both Lean modules.  Counters remain exactly
 If this brick seals, the next full-precision dictionary is a finite chain,
 not a free carrier identification:
 
-1. retain the generated active field and its explicit zero extension;
-2. rewrite the regional Dirichlet Laplacian with
+1. prove, at every full-box site, that the explicit finite sum of deltas is
+   the complexification of `extendZeroZeroCLM`, transported through
+   `cmp99GeneratedFineBoxOneBlockEquiv`; the inverse equivalence may be used
+   internally in this theorem but is not an input to the field constructor;
+2. retain the generated active field and this certified zero extension;
+3. rewrite the regional Dirichlet Laplacian with
    `cmp99ActiveRegionSourceCovariantLaplacian_apply_eq_compression`;
-3. prove the named background dictionary
+4. prove the named background dictionary
    `cmp99SourceFlatGaugeConfig = cmp99FlatGaugeBackground`; both are literal
    unit fields, but no definitional identification is assumed;
-4. specialize the ambient operator with
+5. specialize the ambient operator with
    `cmp99GeneratedAmbientScaledCovariantLaplacian_one_apply`;
-5. complexify the literal stencil with
+6. prove that `cmp99GeneratedFineBoxOneBlockEquiv` commutes with `shift` and
+   `shiftBack`, then complexify the literal stencil with
    `cmp99FlatPeriodicComplexFibreStencil_complexification`;
-6. expose `spacing⁻² = (M^(depth+1))²` through the sealed scalar dictionary;
-7. consume this field-mass dictionary for the separate `Q'^*Q'` summand;
-8. identify the compressed generated action, only on active targets, with
+7. expose `spacing⁻² = (M^(depth+1))²` through the sealed scalar dictionary;
+8. consume this field-mass dictionary for the separate `Q'^*Q'` summand;
+9. identify the compressed generated action, only on active targets, with
    `cmp99SourceFlatFullComplexPrecisionAction 0 A` on the zero extension.
 
 The terminal `0` is the mass argument of the full-complex action; `A` is the
