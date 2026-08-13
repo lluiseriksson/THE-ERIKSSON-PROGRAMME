@@ -35,8 +35,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-qprime-mass-complex-field-dictionary-v1",
-            "SOURCE_SHA": "46ef9dc63b7c84919d458ec57358e64d669712e2",
+            "RUNNER_REV": "generated-qprime-mass-complex-field-dictionary-v2",
+            "SOURCE_SHA": "dbd6e08888129f19b71a93620a2265930c3e0d55",
             "ROOT": Path("/content/hrpoly-generated-qprime-mass-complex-field"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-qprime-mass-complex-field-evidence"
@@ -49,7 +49,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary.lean":
-                    "3e9992bb61753ade8ea73f47c65e51b2a6866f8fef7e891336610404b12c0cd0",
+                    "f9f08e7649937c2f09379ab0cce22db31a04d45e7d0666c7e190a8f9967fa388",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionaryAudit.lean":
                     "c9c9380b94ef9951d87e3f686924528a31317502133e8728b799ea0853e60ae7",
             },
