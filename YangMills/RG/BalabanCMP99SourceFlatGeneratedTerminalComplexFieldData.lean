@@ -7,9 +7,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalComplexZeroExtensionD
 import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Source-pinned generated terminal complex field data
 
 This package retains only the literal generated active real field.  Its real

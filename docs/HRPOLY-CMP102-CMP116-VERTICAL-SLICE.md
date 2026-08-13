@@ -10099,3 +10099,13 @@ exact standard axiom blocks and no new-source warning.  This is diagnostic
 evidence only.  A single cold terminal workflow is prepared at `48af41c4`;
 the two modules remain PRE-VALIDATION and steps 2--3 remain unsealed until
 that cold artifact is audited.
+
+Cold workflow `31719064164` seals exact source `44d4de58`: restore/save of
+`.lake/build` skipped, focal/audit `0/0`, literal `8563`-job terminal line,
+three exact standard axiom blocks, clean new-source warning gate and local
+manifest `13/13`.  Artifact `9189461392` has GitHub digest `fc8162bc...` and
+the deterministic archive is `e45eb3d0...`.  Only the two corresponding
+PRE-VALIDATION marks are retired.  Steps 2--3 are now sealed dictionary and
+compression infrastructure; the flat-background dictionary remains step 4.
+No terminal producer is added, so counters remain exactly `20/41`,
+`TermSource = 0`, window 15 compatible but unattained.

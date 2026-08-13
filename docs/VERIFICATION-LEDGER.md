@@ -34377,3 +34377,28 @@ the runtime auto-unassigned.  This diagnostic does not seal.  Workflow
 checkpoint `48af41c4e84563a0abcfdc42e409980990dda29f` is fixed to the exact
 source for one cold terminal run; PRE-VALIDATION remains until its durable
 artifact is audited.
+
+Cold terminal workflow checkpoint `48af41c4e84563a0abcfdc42e409980990dda29f`
+then ran exactly once as
+[`31719064164`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31719064164),
+with `cold=true` and exact source
+`44d4de580d0be52e0a9a45e74e8ad90b85ca0b4c`.  Exact checkout, toolchain,
+cache-key budget and Mathlib pin all passed; restore and save of `.lake/build`
+were both skipped.  The focal ran from `16:09:22Z` to `16:35:32Z`, exited
+zero and ended with literal `Build completed successfully (8563 jobs).`.
+The audit ended at `16:35:39Z`, exited zero and printed exactly three copies
+of `[propext, Classical.choice, Quot.sound]`.  The new source emitted no
+linter warning and the text/axiom gates passed.
+
+Artifact `9189461392` has GitHub digest
+`fc8162bc2aba9fd5643ede04ae9cee729c42ad5bf0fb9cffefa5ccbfa3bb0c9a`.
+Its deterministic archive SHA-256 is
+`e45eb3d048a0bcd482fc9d02c3df67a2df19bbdc4d670c67928b497e900d3bbc`;
+all 13 internal manifest entries matched.  This cold run seals the source and
+audit, so only their two PRE-VALIDATION marks are removed.  The package
+combines nominal chain steps 2--3: one literal active real field internally
+determines both canonical extensions and the regional-Laplacian compression.
+It does not prove the flat-background, shift/stencil, spacing, full-precision,
+inverse or Green dictionaries.  No terminal producer is added: counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
