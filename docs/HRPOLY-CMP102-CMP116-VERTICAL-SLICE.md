@@ -9973,3 +9973,16 @@ it introduces no carrier equality.  Source/audit Git-blob SHA-256 are
 `5df8605fbd752112969b0dd88ac8e6b60aa03e5749330faee3257c3f6bb988d2`
 and `03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343`.
 It remains compiler-unverified and does not move `20/41`.
+
+Diagnostic v1 reached the new theorem and failed only because the proof had
+not rewritten the finite sum of functions with `Finset.sum_apply` before
+using `sum_eq_single`/`sum_eq_zero`.  Evidence/archive SHA-256 are
+`5ed984086212480b0ab4657ddc28696de7b5d8e6100131316874d8c3bb090c50`
+and `3565d14e9539c8927393faa86a11e2fc23b9c4649939727bd59a0e0ab3e2056c`.
+The repair is phase-only; the statement and dictionary boundary are
+unchanged.  Corrected source checkpoint
+`20e5c723aa9b9f05eb83d2a58f5af59f3790fd1e` has source/audit Git-blob
+SHA-256
+`a85f14c5b5b0f0714f8a88649555fd8b6b6fe9b83ae385959ba6a7d0438aaabe`
+and `03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343`.
+PRE-VALIDATION remains.

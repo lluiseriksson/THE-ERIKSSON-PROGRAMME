@@ -34204,3 +34204,19 @@ has blob SHA-256
 `040cecfcba45602128ebb652581831edc10a8ec6d8d619aeba32783c31b949da`.
 The two Lean modules remain PRE-VALIDATION and do not count until a compiler
 run and later cold seal pass.
+
+Diagnostic v1 on that exact source stopped at the focal after `2151.356 s`.
+The two first errors were both the same elaboration boundary: the proof tried
+to apply `Finset.sum_eq_single`/`sum_eq_zero` while the expression was still a
+sum of functions rather than its evaluation at the target.  No carrier or
+mathematical equality failed.  Evidence/archive SHA-256 are
+`5ed984086212480b0ab4657ddc28696de7b5d8e6100131316874d8c3bb090c50`
+and `3565d14e9539c8927393faa86a11e2fc23b9c4649939727bd59a0e0ab3e2056c`;
+the runtime auto-unassigned.  The minimal repair exposes
+`Finset.sum_apply` before the finite-sum lemmas and removes the now-reported
+unused `simp` arguments.  Corrected source checkpoint
+`20e5c723aa9b9f05eb83d2a58f5af59f3790fd1e` has source/audit Git-blob
+SHA-256
+`a85f14c5b5b0f0714f8a88649555fd8b6b6fe9b83ae385959ba6a7d0438aaabe`
+and `03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343`.
+Diagnostic runner v2 is fixed to that source.  PRE-VALIDATION remains.
