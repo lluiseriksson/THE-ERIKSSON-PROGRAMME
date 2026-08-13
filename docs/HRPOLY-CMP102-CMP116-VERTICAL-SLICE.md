@@ -9986,3 +9986,15 @@ SHA-256
 `a85f14c5b5b0f0714f8a88649555fd8b6b6fe9b83ae385959ba6a7d0438aaabe`
 and `03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343`.
 PRE-VALIDATION remains.
+
+Diagnostic v2 consumed that phase repair and reached both literal delta
+branches.  It stopped after `2013.813 s` on two residual implications of the
+same form, `x = source → complexifiedValue = 0`: broad simplification had
+expanded the equivalence before using the named inequality between the two
+transported targets.  Evidence/archive SHA-256 are
+`40779ac0bb4a6cb6655824f6c65e30f8970ac4e056def7cc544e769339cad6df`
+and
+`f8864d1f6e3c933eb923581e2e225117d444fe6938b017faab9b75b7aa34e574`.
+The runtime auto-unassigned.  The minimal follow-up unfolds only the delta
+and rewrites by `if_neg` before simplification.  No statement, carrier claim
+or quantitative datum changes; PRE-VALIDATION and `20/41` remain.

@@ -62,7 +62,8 @@ theorem cmp99SourceGeneratedTerminalComplexZeroExtension_apply_eq_complexificati
         apply hne
         apply Subtype.ext
         exact e.injective heq.symm
-      simp [cmp99SourceFlatFullComplexSingle, htarget]
+      simp only [cmp99SourceFlatFullComplexSingle]
+      rw [if_neg htarget]
     · intro hnot
       exact (hnot (Finset.mem_univ source)).elim
   · rw [extendZeroZeroCLM_apply_of_not_mem region eta x hx, map_zero]
@@ -75,7 +76,8 @@ theorem cmp99SourceGeneratedTerminalComplexZeroExtension_apply_eq_complexificati
       apply hx
       have hval : x = source.1 := e.injective heq
       simpa [region, hval] using source.2
-    simp [e, cmp99SourceFlatFullComplexSingle, htarget]
+    simp only [cmp99SourceFlatFullComplexSingle]
+    rw [if_neg htarget]
 
 end
 

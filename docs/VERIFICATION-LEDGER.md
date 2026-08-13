@@ -34220,3 +34220,17 @@ SHA-256
 `a85f14c5b5b0f0714f8a88649555fd8b6b6fe9b83ae385959ba6a7d0438aaabe`
 and `03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343`.
 Diagnostic runner v2 is fixed to that source.  PRE-VALIDATION remains.
+
+Diagnostic v2 reached the pointwise delta branches after the
+`Finset.sum_apply` repair and stopped at the focal after `2013.813 s`.  The
+only remaining goals were the two identical implications
+`x = source → complexifiedValue = 0`: broad `simp` unfolded the box
+equivalence before it could consume the already proved transported-target
+inequality.  Evidence/archive SHA-256 are
+`40779ac0bb4a6cb6655824f6c65e30f8970ac4e056def7cc544e769339cad6df`
+and
+`f8864d1f6e3c933eb923581e2e225117d444fe6938b017faab9b75b7aa34e574`;
+the runtime auto-unassigned.  The next repair unfolds only the literal
+coordinate delta and applies `if_neg` to the named inequality before any
+other simplification.  The theorem statement and dictionary boundary remain
+unchanged, and PRE-VALIDATION remains.
