@@ -29208,6 +29208,33 @@ Both modules remain PRE-VALIDATION pending a warning-clean fresh diagnostic
 and one cold terminal seal.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
+The second fresh Colab diagnostic also passed semantically on exact checkpoint
+`3cb3a721b13f274ea35bbe3ac09a6a1ba421b500`: focal/audit exits `0/0`,
+focal `2389.536 s`, audit `9.808 s`, and literal
+`Build completed successfully (8566 jobs).`.  The audit again printed exactly
+three copies of `[propext, Classical.choice, Quot.sound]`.  Evidence/archive
+SHA-256 are
+`9fdd6d2d446d1e09196c119981f62acfe401cb5f0b434516ae73f7f7323fc14e`
+and
+`8d50860ac270d434ec7489dea86d3207d20b6e971bcd81a9e6e20d89eebfce44`;
+the runtime auto-unassigned.  This PASS still does not seal: it removed the
+new-source `Nc` warning but exposed that the two public neighbour-transport
+theorems, rather than only their private helpers, also carried unused
+`[NeZero d]` section instances.
+
+Checkpoint `6f9c24428971606a84180e628eeef454a0fe6df0` adds only the two
+corresponding public `omit [NeZero d]` commands.  The theorem statements,
+proofs and audit are unchanged.  Corrected source/audit Git-blob SHA-256 are
+`f65a5fc092509ea8d163a642b3bf4407cb919222e720040d01372fe94510b14b`
+and
+`0a34ba42e5e5e5b8d6e331a55f38f07c07e9cc3fb2729f2efca974ce96ae13b6`.
+Runner v4 checkpoint `ef41ef4772b173d2240b3b919c4f4811cd7c650b` has Git-blob
+SHA-256
+`fe28c98e71aeb28fe24c98e81b8a61d9495c38bfa48d2205a558447c33c57259`.
+Both modules remain PRE-VALIDATION pending a warning-clean fresh diagnostic
+and one cold terminal seal.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`
