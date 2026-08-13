@@ -6,9 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 # Field dictionary for the generated flat `Q'^*Q'` mass
 
 The sealed coordinate dictionary is summed over the literal generated active

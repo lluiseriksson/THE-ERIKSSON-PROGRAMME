@@ -34169,7 +34169,21 @@ passed on this exact source: CPU `50.99 GiB`, focal/audit exits `0/0`, focal
 three declarations.  Evidence/archive SHA-256 are
 `e8d02e5b4446f00a158c45a85dd5a0e9881a3faa9bd1a91536ae41a3f472488f`
 and `526d236504dfcd357d357bcfcd7033b709d848554782f6541d8f58a22aaa3f46`;
-the runtime auto-unassigned.  Diagnostic PASS does not seal.  Both Lean
-modules retain PRE-VALIDATION until the corrected source passes one later
-cold seal.  No counter moves: live state remains exactly `20/41`,
-`TermSource = 0`, and window 15 compatible but unattained.
+the runtime auto-unassigned.  Diagnostic PASS did not seal.
+
+Cold terminal workflow checkpoint
+`ae36dd874b7db24c20225356b281d6ecad68683a` then ran exactly once as
+[`31690217932`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31690217932),
+with `cold=true` and source fixed to
+`806fc25bf8b755d15558fe48c415df57d77f6436`.  Restore and save of
+`.lake/build` were both skipped.  The focal/audit exited `0/0`, the focal
+ended with literal `Build completed successfully (8561 jobs).`, and all three
+axiom blocks were exactly `[propext, Classical.choice, Quot.sound]`.  The new
+source emitted no linter warning.  Artifact `9177854419` has GitHub digest
+`e2f69e025319cc595d4f2fa4a93ba106958fc05e97fbc5496f62180aefaa0913`;
+its deterministic archive SHA-256 is
+`ffbe6a500d8e2b47fef2c74ca1d90a820aaa79f6850001dae260edb7301fa69e`,
+and its 13-entry internal manifest verifies with zero mismatch.  This cold
+run seals the source and audit, so their PRE-VALIDATION marks are removed.
+No counter moves: live state remains exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.

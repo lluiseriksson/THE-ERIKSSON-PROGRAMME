@@ -9918,11 +9918,24 @@ literal `Build completed successfully (8561 jobs).`, and the allowed trio for
 all three declarations.  Evidence/archive SHA-256 are
 `e8d02e5b4446f00a158c45a85dd5a0e9881a3faa9bd1a91536ae41a3f472488f`
 and `526d236504dfcd357d357bcfcd7033b709d848554782f6541d8f58a22aaa3f46`.
-Diagnostic PASS does not seal.  PRE-VALIDATION remains on both Lean modules
-until a later cold seal passes.  Counters remain exactly `20/41`,
-`TermSource = 0`, and window 15 compatible but unattained.
+Diagnostic PASS did not seal.  Cold terminal workflow checkpoint
+`ae36dd874b7db24c20225356b281d6ecad68683a` then ran exactly once as
+[`31690217932`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31690217932),
+with `cold=true` and source fixed to
+`806fc25bf8b755d15558fe48c415df57d77f6436`.  Restore/save were both
+skipped; focal/audit exited `0/0`; the focal ended with literal
+`Build completed successfully (8561 jobs).`; all three declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`; and the corrected source
+emitted no linter warning.  Artifact `9177854419` has GitHub digest
+`e2f69e025319cc595d4f2fa4a93ba106958fc05e97fbc5496f62180aefaa0913`;
+the deterministic archive SHA-256 is
+`ffbe6a500d8e2b47fef2c74ca1d90a820aaa79f6850001dae260edb7301fa69e`,
+and its 13-entry internal manifest verifies with zero mismatch.  The cold run
+seals both modules, so their PRE-VALIDATION marks are removed.  Counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
 
-If this brick seals, the next full-precision dictionary is a finite chain,
+With this brick sealed, the next full-precision dictionary is a finite chain,
 not a free carrier identification:
 
 1. prove, at every full-box site, that the explicit finite sum of deltas is
