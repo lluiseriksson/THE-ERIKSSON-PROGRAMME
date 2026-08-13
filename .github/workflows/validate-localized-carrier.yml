@@ -1,4 +1,4 @@
-name: Validate generated/full-complex Qprime mass coordinate dictionary
+name: Validate generated/full-complex Qprime mass field dictionary
 
 on:
   workflow_dispatch:
@@ -13,11 +13,12 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 4f72af55fdcb3755d4cb90b0dbc34189ac2a7af0
+  SOURCE_SHA: dbd6e08888129f19b71a93620a2265930c3e0d55
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
+    generated-qprime-mass-complex-coordinate-dictionary
     generated-precision-scalar-dictionary
     generated-terminal-block-collapse
     flat-generated-qprime-direct-owner-kernel
@@ -26,10 +27,9 @@ env:
     flat-retained-tower
     flat-normalized-scale
     flat-ubar-preservation
-    stabilized-full-complex-precision-particular-solution
 
 jobs:
-  generated-qprime-mass-complex-coordinate-dictionary:
+  generated-qprime-mass-complex-field-dictionary:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -94,7 +94,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-qprime-mass-complex-coordinate-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-qprime-mass-complex-field-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -128,8 +128,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary.lean \
-            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionaryAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary.lean \
+            YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -151,10 +151,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_qprime_mass_complex_coordinate_dictionary_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary
-          run_stage generated_qprime_mass_complex_coordinate_dictionary_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionaryAudit.lean
+          run_stage generated_qprime_mass_complex_field_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary
+          run_stage generated_qprime_mass_complex_field_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -168,14 +168,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "generated_qprime_mass_complex_coordinate_dictionary_audit.log": 1,
+              "generated_qprime_mass_complex_field_dictionary_audit.log": 3,
           }
           focal = (Path("evidence") /
-              "generated_qprime_mass_complex_coordinate_dictionary_focal.log").read_text(
+              "generated_qprime_mass_complex_field_dictionary_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary.lean:"
+              "BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -209,17 +209,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              generated-qprime-mass-complex-coordinate-dictionary-evidence.tar.gz
-          sha256sum generated-qprime-mass-complex-coordinate-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              generated-qprime-mass-complex-field-dictionary-evidence.tar.gz
+          sha256sum generated-qprime-mass-complex-field-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-qprime-mass-complex-coordinate-dictionary-${{ env.SOURCE_SHA }}
+          name: generated-qprime-mass-complex-field-dictionary-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-qprime-mass-complex-coordinate-dictionary-evidence.tar.gz
+            generated-qprime-mass-complex-field-dictionary-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -228,4 +228,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-qprime-mass-complex-coordinate-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-qprime-mass-complex-field-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
