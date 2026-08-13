@@ -35,8 +35,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-terminal-complex-field-data-v1",
-            "SOURCE_SHA": "d0de24e630f54dba5d2b852960a0b1fe12653ec7",
+            "RUNNER_REV": "generated-terminal-complex-field-data-v2",
+            "SOURCE_SHA": "48f694abba8409a9825d4eacc9c09344974bc413",
             "ROOT": Path("/content/hrpoly-generated-complex-field-data"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-complex-field-data-evidence"
@@ -49,7 +49,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalComplexFieldData.lean":
-                    "77771a74339136b0578bcbf3364f4d941a73a842985f64acf7104a03d75833a6",
+                    "d3d7570fdabb536ac226808c7db769852f2fd189447aa2cd1552a93940cad9c9",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalComplexFieldDataAudit.lean":
                     "0aa8cb34ce0a8566348d1f48eb2d1b44d33dc1952665be8f0bff273f601eb4cd",
             },
