@@ -29298,6 +29298,28 @@ not spacing, full precision, inverse or Green transport.  No terminal producer
 is added: counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
 
+## Addendum 761 (2026-08-14, **active flat Laplacian complex dictionary PRE-VALIDATION; step 7a; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `e123abc98f29b916a7659e4b1520fc0f92779ab5`
+adds one pointwise theorem and its focused axiom audit.  At a generated active
+target, it fixes the real active field, both zero extensions, flat physical
+background and canonical generated spacing internally.  It then composes the
+sealed regional compression, ambient flat specialization, generated-box
+neighbour transport and scalar spacing dictionary to identify the
+complexified active Laplacian with the exact block-side-square full-box
+complex stencil.
+
+Source/audit Git-blob SHA-256 are
+`3795e3c07595d50ec494b9489f08bfb5c18b4f93bfc5f854fcf273ef00aa1ff3`
+and
+`9492e48f8f088932d754ba1c6ebd2e88dbac4919d6afe5e2d5251e94c8b9cb46`.
+Runner checkpoint `8aa675752f8ca00de2238725bb563f22d506dbaf` has
+Git-blob SHA-256
+`890d9ee992ed4ec9065db17ada3c322515e6622bf5969c374e8f2951d4e7d44e`.
+This is only the Laplacian summand.  Generated mass, full precision, inverse
+and Green equalities remain open.  Both Lean modules remain PRE-VALIDATION;
+no seal or counter movement is claimed.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`

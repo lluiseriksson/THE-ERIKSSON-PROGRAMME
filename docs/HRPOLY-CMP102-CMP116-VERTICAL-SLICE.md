@@ -10178,3 +10178,17 @@ text gates, and manifest `13/13`.  Artifact `9200863771` has GitHub digest
 PRE-VALIDATION marks are retired.  Spacing, full precision, inverse and Green
 steps remain open.  Counters remain exactly `20/41`, `TermSource = 0`, window
 15 compatible but unattained.
+
+### Step 7a: active flat Laplacian in full-box complex coordinates (PRE-VALIDATION)
+
+Checkpoint `e123abc9` adds one pointwise dictionary on transported active
+targets.  The retained real active field fixes both zero extensions; the
+source-recursion unit background and canonical generated spacing are internal.
+The theorem composes the sealed compression, ambient flat specialization,
+neighbour transport and exact spacing-square dictionary to identify only the
+Laplacian summand with the corresponding full-box complex stencil term.
+
+The generated `Q'^*Q'` mass remains a separate summand.  No full precision,
+inverse or Green equality is asserted, and both new modules retain visible
+PRE-VALIDATION headers pending compiler diagnostics.  Counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
