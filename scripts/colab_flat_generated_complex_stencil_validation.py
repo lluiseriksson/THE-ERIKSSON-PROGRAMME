@@ -30,8 +30,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "flat-generated-complex-stencil-v3",
-            "SOURCE_SHA": "3cb3a721b13f274ea35bbe3ac09a6a1ba421b500",
+            "RUNNER_REV": "flat-generated-complex-stencil-v4",
+            "SOURCE_SHA": "6f9c24428971606a84180e628eeef454a0fe6df0",
             "ROOT": Path("/content/hrpoly-flat-generated-complex-stencil"),
             "EVIDENCE": Path(
                 "/content/hrpoly-flat-generated-complex-stencil-evidence"
@@ -44,7 +44,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedComplexStencilDictionary.lean":
-                    "bdf0f54f780acfc6a58f007a87ba4ffb1c65ecb3baf736f338f018a3e761af33",
+                    "f65a5fc092509ea8d163a642b3bf4407cb919222e720040d01372fe94510b14b",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedComplexStencilDictionaryAudit.lean":
                     "0a34ba42e5e5e5b8d6e331a55f38f07c07e9cc3fb2729f2efca974ce96ae13b6",
             },
