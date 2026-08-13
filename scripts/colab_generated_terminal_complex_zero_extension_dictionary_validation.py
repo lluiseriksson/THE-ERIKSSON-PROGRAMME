@@ -35,8 +35,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-terminal-complex-zero-extension-dictionary-v2",
-            "SOURCE_SHA": "20e5c723aa9b9f05eb83d2a58f5af59f3790fd1e",
+            "RUNNER_REV": "generated-terminal-complex-zero-extension-dictionary-v3",
+            "SOURCE_SHA": "4ab330ca87b22be7a1dbd2258e5cd884e64b6f0e",
             "ROOT": Path("/content/hrpoly-generated-complex-zero-extension"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-complex-zero-extension-evidence"
@@ -49,7 +49,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalComplexZeroExtensionDictionary.lean":
-                    "a85f14c5b5b0f0714f8a88649555fd8b6b6fe9b83ae385959ba6a7d0438aaabe",
+                    "1276d78784d94b983f70cd2e67fd42b3e745ae5f7ce02181417e279635647f13",
                 "YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalComplexZeroExtensionDictionaryAudit.lean":
                     "03f2c214024eeb588fa139ab8ec4b515f0f5b0d8567d00441613b7cae3099343",
             },
