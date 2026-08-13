@@ -34337,3 +34337,27 @@ change the statement or proof.  Source/audit Git-blob SHA-256 are
 Both modules remain PRE-VALIDATION until a warning-clean diagnostic and cold
 seal pass.  Counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+## Addendum 757 — diagnostic FAIL retained; `omit` command/docstring order fixed
+
+Runner v2 reached the exact source checkpoint
+`48f694abba8409a9825d4eacc9c09344974bc413` and exact Mathlib pin, then
+stopped at the first focal error before any audit.  The literal first error
+was
+`BalabanCMP99SourceFlatGeneratedTerminalComplexFieldData.lean:72:32:
+unexpected token 'omit'; expected 'lemma'`.  The `omit` command had been put
+after the theorem docstring, so Lean tried to attach the docstring to a
+declaration and rejected the intervening command.  Focal exit was `1` after
+`1869.314 s`; evidence/archive SHA-256 are
+`ccae24e0b118b13fa1266f811ee3f57fe95a1e10f3089ec91e71074ccf54ca3d`
+and
+`4ad62111ac3e9c4373ed521ac5a21a01023aa8414cfb70838beec40587e8803c`.
+The runtime auto-unassigned and the audit was not run.
+
+Checkpoint `44d4de580d0be52e0a9a45e74e8ad90b85ca0b4c` moves only the docstring
+inside the existing `omit` block.  The theorem statement and proof are
+unchanged.  Source/audit Git-blob SHA-256 are
+`85d7ac16d799e8f8dafe33e111aece43a5106a88db3355318d4ec1d22b2c0402`
+and
+`0aa8cb34ce0a8566348d1f48eb2d1b44d33dc1952665be8f0bff273f601eb4cd`.
+Both modules remain PRE-VALIDATION; no seal or counter movement is claimed.

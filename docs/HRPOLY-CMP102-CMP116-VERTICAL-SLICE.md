@@ -10084,3 +10084,11 @@ warning in the new source.  The source-only checkpoint `48f694ab` narrows
 that theorem's instance scope without changing its statement.  It remains
 PRE-VALIDATION pending a warning-clean diagnostic and cold seal; therefore
 steps 2--3 are not yet sealed and the hard counters do not move.
+
+Runner v2 then stopped before audit on the exact parser error `unexpected
+token 'omit'; expected 'lemma'`: the theorem docstring preceded the `omit`
+command.  Checkpoint `44d4de58` moves the docstring inside the same `omit`
+block without changing the theorem statement or proof.  This is still a
+PRE-VALIDATION correction, not a seal.  Steps 2--3 remain open and the hard
+counters remain exactly `20/41`, `TermSource = 0`, window 15 compatible but
+unattained.
