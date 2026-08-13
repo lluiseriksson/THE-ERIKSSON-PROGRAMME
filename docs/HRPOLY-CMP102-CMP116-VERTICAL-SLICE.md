@@ -9866,7 +9866,7 @@ This is dictionary infrastructure, not a terminal producer: counters remain
 exactly `20/41`, `TermSource = 0`, and window 15 remains compatible but
 unattained.
 
-### Step 7.5cmt generated/full-complex `Q'^*Q'` mass field dictionary (PRE-VALIDATION; Colab high-RAM allocation blocked)
+### Step 7.5cmt generated/full-complex `Q'^*Q'` mass field dictionary (PRE-VALIDATION; diagnostic PASS; cold seal in flight)
 
 The source at checkpoint `dbd6e08888129f19b71a93620a2265930c3e0d55`
 defines the full-box complex zero extension of an arbitrary generated real
@@ -9876,18 +9876,31 @@ carrier, only at transported active targets and only after the explicit
 real-to-complex fibre embedding.  It asserts no global carrier, Laplacian,
 full-precision, inverse or regional Green equality.
 
-This source is NOT compiler-verified.  Diagnostic Colab v1 targeted its
-predecessor `46ef9dc63b7c84919d458ec57358e64d669712e2` but stopped before checkout
+Diagnostic Colab v1 targeted predecessor
+`46ef9dc63b7c84919d458ec57358e64d669712e2` but stopped before checkout
 with literal gate output `RAM_GIB=12.67`,
 `ERROR=RuntimeError('HIGH_RAM_REQUIRED')`, `FINAL_STATUS=FAIL` and
 `RUNTIME_UNASSIGN_REQUESTED=1`.  No Lean, Lake or oracle ran.  Evidence and
 reported archive SHA-256 are
 `ae69ff4958321cf68ae076a0bcc04870b668cc480601d8b82dcd4a4a35abafa0` and
 `bddb988e9f316fe7b8be99b5aba5a01d19ad76a11f0a78c52e78c87bee06e30b`.
-Runner v2/notebook checkpoints `46c6f4d54fde45df1cce679e0b8974e0af1482c5`
-and `07b7d928486e87438d70d7b2aa66ed6ad91802fe` are published but unexecuted.
-PRE-VALIDATION remains on both Lean modules.  Counters remain exactly
-`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+Runner v2 checkpoint `46c6f4d54fde45df1cce679e0b8974e0af1482c5`,
+opened from high-memory notebook `e123e26daa81273c2126326bc85dd9da58b3395f`,
+then passed on exact source `dbd6e08888129f19b71a93620a2265930c3e0d55`:
+CPU `50.99 GiB`, focal/audit exits `0/0`, focal `2012.183 s`, audit
+`12.197 s`, and literal line `Build completed successfully (8561 jobs).`.
+All three declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`cd8a800edafaa084bdad5834c3954e472e14c37dbae330ad6e9e4a700e25d859` and
+`2041c6d6416f821f1788cba3243db3e493865a6f08b05ca097574216d6bf0563`.
+The runtime auto-unassigned.
+
+Diagnostic PASS does not seal.  Exactly one cold terminal run is in flight:
+[`31682526462`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31682526462),
+workflow `a0454ddfd012bd4b6984c58e96d9e8c257fd9bcf`, `cold=true`, same source
+SHA.  PRE-VALIDATION remains on both Lean modules until its evidence passes
+and is audited.  Counters remain exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
 
 If this brick seals, the next full-precision dictionary is a finite chain,
 not a free carrier identification:

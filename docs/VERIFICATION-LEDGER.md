@@ -34086,7 +34086,7 @@ did not seal. Only the cold run retires the two PRE-VALIDATION marks.
 Counters stay exactly `20/41`, `TermSource = 0`, and window 15 remains
 compatible but unattained.
 
-## Addendum 754 (2026-08-13, **complex mass field dictionary BLOCKED-HIGH-RAM before checkout; NOT compiler-verified; 20/41 unchanged**)
+## Addendum 754 (2026-08-13, **complex mass field dictionary diagnostic PASS; cold seal in flight; 20/41 unchanged**)
 
 Diagnostic Colab runner v1 targeted PRE-VALIDATION source checkpoint
 `46ef9dc63b7c84919d458ec57358e64d669712e2`.  The visible account was
@@ -34116,11 +34116,17 @@ Static review then found that the decomposition equality had been rewritten
 on both sides.  Checkpoint `dbd6e08888129f19b71a93620a2265930c3e0d55`
 restricts it to the left side and keeps the right-hand zero extension literal,
 without changing any theorem statement, constant or hypothesis.  Runner v2
-and its notebook are published at `46c6f4d54fde45df1cce679e0b8974e0af1482c5`
-and `07b7d928486e87438d70d7b2aa66ed6ad91802fe`, respectively, but have not
-run.  Both Lean modules retain PRE-VALIDATION.  No counter moves: live state
-remains exactly `20/41`, `TermSource = 0`, and window 15 compatible but
-unattained.
+at `46c6f4d54fde45df1cce679e0b8974e0af1482c5`, opened through the high-memory
+notebook checkpoint below, then passed diagnostically on that exact source.
+The runtime opened at `2026-08-13T07:51:07.231904+00:00` as CPU with
+`RAM_GIB=50.99`.  The focal emitted the literal terminal line
+`Build completed successfully (8561 jobs).`, exited zero after `2012.183 s`,
+and the audit exited zero after `12.197 s`.  All three declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.  Diagnostic evidence and
+archive SHA-256 are
+`cd8a800edafaa084bdad5834c3954e472e14c37dbae330ad6e9e4a700e25d859` and
+`2041c6d6416f821f1788cba3243db3e493865a6f08b05ca097574216d6bf0563`.
+`FINAL_STATUS=PASS` and `RUNTIME_UNASSIGN_REQUESTED=1` were both emitted.
 
 Instrumentation diagnosis: the original Git-backed notebook declared only
 `accelerator: CPU`.  Toggling high RAM in the browser did not persist that
@@ -34132,3 +34138,11 @@ then displayed `CPU / Mycket RAM-minne`, and the v2 runner subsequently
 reported `RAM_GIB=50.99`.  Future Git-backed Colab notebooks that require the
 high-memory gate must encode this metadata rather than depend on mutable UI
 state.
+
+This diagnostic does not seal.  Cold workflow checkpoint
+`a0454ddfd012bd4b6984c58e96d9e8c257fd9bcf` has exactly one terminal run in
+flight, [`31682526462`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31682526462),
+with `cold=true` and source fixed to `dbd6e08888129f19b71a93620a2265930c3e0d55`.
+Both Lean modules retain PRE-VALIDATION until that cold evidence passes and
+is audited.  No counter moves: live state remains exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
