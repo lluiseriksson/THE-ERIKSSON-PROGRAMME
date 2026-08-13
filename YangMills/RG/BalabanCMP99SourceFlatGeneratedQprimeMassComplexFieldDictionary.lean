@@ -94,10 +94,15 @@ theorem cmp99SourceGeneratedCountingMass_complexFieldDictionary
   dsimp only
   have heta : eta = ∑ source, singleFinitePiLp source (eta source) :=
     (sum_singleFinitePiLp_eq eta).symm
-  rw [heta]
-  simp only [map_sum, finitePiLp_sum_apply]
+  conv_lhs =>
+    rw [heta]
   rw [map_sum]
+  rw [finitePiLp_sum_apply]
+  rw [Finset.smul_sum]
+  rw [map_sum]
+  unfold cmp99SourceGeneratedTerminalComplexZeroExtension
   rw [cmp99SourceFlatFullComplexQprimeMass_sum]
+  rw [Finset.smul_sum]
   apply Finset.sum_congr rfl
   intro source _hsource
   exact cmp99SourceGeneratedCountingMass_complexCoordinateDictionary
