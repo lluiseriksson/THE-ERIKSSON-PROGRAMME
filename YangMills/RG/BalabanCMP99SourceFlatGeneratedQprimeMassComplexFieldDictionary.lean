@@ -47,9 +47,9 @@ def cmp99SourceGeneratedTerminalComplexZeroExtension
         (d := d) M N (depth + 1) source.1)
       (cmp99SUNLieCoordComplexificationLM Nc (eta source))
 
+omit [NeZero d] [NeZero Nc] in
 /-- The literal full-box complex mass distributes over a finite sum of
 full-box fields. -/
-omit [NeZero d] [NeZero Nc] in
 theorem cmp99SourceFlatFullComplexQprimeMass_sum
     {ι : Type*} [Fintype ι]
     (phi : ι → FinBox d (M * N) → SUNLieComplexCoord Nc)
