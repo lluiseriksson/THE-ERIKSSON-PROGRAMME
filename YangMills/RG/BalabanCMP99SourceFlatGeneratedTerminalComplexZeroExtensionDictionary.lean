@@ -31,6 +31,7 @@ noncomputable section
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
+omit [NeZero d] [NeZero Nc] in
 /-- The explicit transported complex field is the complexification of the
 literal Dirichlet zero extension at every generated full-box site. -/
 theorem cmp99SourceGeneratedTerminalComplexZeroExtension_apply_eq_complexification_extendZero

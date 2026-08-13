@@ -10002,5 +10002,14 @@ and rewrites by `if_neg` before simplification.  Repair checkpoint
 runner v3 is fixed by checkpoint
 `d046f2fad51d362906f235bd93ddd98569125b1c`, runner-blob SHA-256
 `fe5b55862405d174c266be83ad47c0640af316d4ca4861842e714d9551f254c3`.
-No statement, carrier claim or quantitative datum changes; PRE-VALIDATION
-and `20/41` remain.
+It passed diagnostically: focal/audit `0/0`, focal `1388.315 s`, literal
+`Build completed successfully (8562 jobs).`, and exactly
+`[propext, Classical.choice, Quot.sound]` for the new declaration.
+Evidence/archive SHA-256 are
+`3649719f639da1d94deac23fdef2e1c7e11d7ed469ebab32c3730210f223624e`
+and
+`0b441a693ae1ff5b9c4f9927a2c62c47eb93beae51efbab56b9e20dcd28ed058`;
+the runtime auto-unassigned.  The diagnostic exposed one new-module linter:
+`[NeZero d]` and `[NeZero Nc]` are unused.  The source now omits those two
+instances explicitly before the theorem docstring.  No statement, carrier
+claim or quantitative datum changes; PRE-VALIDATION and `20/41` remain.
