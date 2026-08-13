@@ -34085,3 +34085,39 @@ archive `fdc5c959ca644d838a1c75f624c546ae82e3c3dd0d61e46c5440bd060701ad1f`)
 did not seal. Only the cold run retires the two PRE-VALIDATION marks.
 Counters stay exactly `20/41`, `TermSource = 0`, and window 15 remains
 compatible but unattained.
+
+## Addendum 754 (2026-08-13, **complex mass field dictionary BLOCKED-HIGH-RAM before checkout; NOT compiler-verified; 20/41 unchanged**)
+
+Diagnostic Colab runner v1 targeted PRE-VALIDATION source checkpoint
+`46ef9dc63b7c84919d458ec57358e64d669712e2`.  The visible account was
+`lluiseriksson@gmail.com`, the transport hash matched
+`3a0bc896a246630e5395e4900dbdf34b4757fef09eac3f7c16a32ba8fdc185cf`,
+and the runner emitted at `2026-08-13T07:38:27.413942+00:00`:
+
+```text
+RUNTIME=CPU
+RAM_GIB=12.67
+ERROR=RuntimeError('HIGH_RAM_REQUIRED')
+FINAL_STATUS=FAIL
+RUNTIME_UNASSIGN_REQUESTED=1
+```
+
+The failure occurred before checkout, dependency materialization, Lean,
+Lake or an oracle.  Its evidence SHA-256 is
+`ae69ff4958321cf68ae076a0bcc04870b668cc480601d8b82dcd4a4a35abafa0`
+and the in-runtime archive SHA-256 reported on stdout is
+`bddb988e9f316fe7b8be99b5aba5a01d19ad76a11f0a78c52e78c87bee06e30b`;
+the runtime auto-unassigned before browser download, so the stdout record is
+the retained incident evidence.  Colab returned the same 12.67-GiB runtime
+after two explicit high-RAM save/delete/reconnect cycles; the gate was not
+weakened.
+
+Static review then found that the decomposition equality had been rewritten
+on both sides.  Checkpoint `dbd6e08888129f19b71a93620a2265930c3e0d55`
+restricts it to the left side and keeps the right-hand zero extension literal,
+without changing any theorem statement, constant or hypothesis.  Runner v2
+and its notebook are published at `46c6f4d54fde45df1cce679e0b8974e0af1482c5`
+and `07b7d928486e87438d70d7b2aa66ed6ad91802fe`, respectively, but have not
+run.  Both Lean modules retain PRE-VALIDATION.  No counter moves: live state
+remains exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
