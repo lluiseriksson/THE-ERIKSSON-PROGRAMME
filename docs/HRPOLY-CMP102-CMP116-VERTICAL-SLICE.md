@@ -9996,5 +9996,11 @@ transported targets.  Evidence/archive SHA-256 are
 and
 `f8864d1f6e3c933eb923581e2e225117d444fe6938b017faab9b75b7aa34e574`.
 The runtime auto-unassigned.  The minimal follow-up unfolds only the delta
-and rewrites by `if_neg` before simplification.  No statement, carrier claim
-or quantitative datum changes; PRE-VALIDATION and `20/41` remain.
+and rewrites by `if_neg` before simplification.  Repair checkpoint
+`4ab330ca87b22be7a1dbd2258e5cd884e64b6f0e` has source Git-blob SHA-256
+`1276d78784d94b983f70cd2e67fd42b3e745ae5f7ce02181417e279635647f13`;
+runner v3 is fixed by checkpoint
+`d046f2fad51d362906f235bd93ddd98569125b1c`, runner-blob SHA-256
+`fe5b55862405d174c266be83ad47c0640af316d4ca4861842e714d9551f254c3`.
+No statement, carrier claim or quantitative datum changes; PRE-VALIDATION
+and `20/41` remain.
