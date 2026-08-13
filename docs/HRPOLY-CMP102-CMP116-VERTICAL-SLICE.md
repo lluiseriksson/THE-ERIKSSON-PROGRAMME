@@ -10134,3 +10134,19 @@ Artifact `9192157649` has GitHub digest `eb613d33...`; deterministic archive
 Step 4 is sealed as a background-name dictionary; later shift/stencil,
 spacing, precision, inverse and Green steps remain open.  Counters remain
 exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
+
+### Step 5: flat generated ambient specialization (PRE-VALIDATION)
+
+The new leaf module applies the literal generated ambient covariant Laplacian
+to the canonical `realZeroExtension` stored by the step-2 field package.  It
+rewrites the source-recursion unit background with the sealed step-4
+dictionary and then consumes
+`cmp99GeneratedAmbientScaledCovariantLaplacian_one_apply`.  Thus neither the
+ambient field nor either background is caller data.
+
+This specializes only the real ambient operator.  The generated-box
+equivalence has not yet been proved to commute with `shift` and `shiftBack`,
+the complex stencil and spacing-power dictionaries remain open, and no mass,
+full precision, inverse or Green equality is asserted.  Source and audit are
+PRE-VALIDATION pending fresh-clone diagnostics and a cold seal.  Counters
+remain exactly `20/41`, `TermSource = 0`, window 15 compatible but unattained.
