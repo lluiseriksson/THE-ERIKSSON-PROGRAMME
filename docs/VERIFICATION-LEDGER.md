@@ -34249,5 +34249,10 @@ and
 the runtime auto-unassigned.  The diagnostic also reported that `[NeZero d]`
 and `[NeZero Nc]` are unused in the new theorem.  They are omitted explicitly
 before the theorem docstring, using the repository syntax already validated
-by the preceding field brick.  Diagnostic PASS does not seal and
-PRE-VALIDATION remains.
+by the preceding field brick.  Warning-repair checkpoint
+`af040627262aef1b5109fba114e2184c24a6665f` has source Git-blob SHA-256
+`912f57212559dd615bf5fb076e56a5f789edcb74e454d7cbe50a0b3a062652b5`.
+Runner v4 checkpoint `d3409b2719de255163911619b35fdb076f88d5ca`
+has blob SHA-256
+`09cf0fb558a639a1da8ef90ec26d190690b1a569e8c73c32e07ff13fdb6ae771`.
+Diagnostic PASS does not seal and PRE-VALIDATION remains.

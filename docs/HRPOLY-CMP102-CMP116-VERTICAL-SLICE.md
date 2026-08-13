@@ -10011,5 +10011,11 @@ and
 `0b441a693ae1ff5b9c4f9927a2c62c47eb93beae51efbab56b9e20dcd28ed058`;
 the runtime auto-unassigned.  The diagnostic exposed one new-module linter:
 `[NeZero d]` and `[NeZero Nc]` are unused.  The source now omits those two
-instances explicitly before the theorem docstring.  No statement, carrier
-claim or quantitative datum changes; PRE-VALIDATION and `20/41` remain.
+instances explicitly before the theorem docstring.  Warning-repair checkpoint
+`af040627262aef1b5109fba114e2184c24a6665f` has source Git-blob SHA-256
+`912f57212559dd615bf5fb076e56a5f789edcb74e454d7cbe50a0b3a062652b5`;
+runner v4 checkpoint `d3409b2719de255163911619b35fdb076f88d5ca`
+has blob SHA-256
+`09cf0fb558a639a1da8ef90ec26d190690b1a569e8c73c32e07ff13fdb6ae771`.
+No statement, carrier claim or quantitative datum changes; PRE-VALIDATION
+and `20/41` remain.
