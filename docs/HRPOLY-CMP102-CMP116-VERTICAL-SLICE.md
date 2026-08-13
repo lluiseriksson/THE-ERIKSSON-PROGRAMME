@@ -10075,3 +10075,12 @@ runner checkpoint `3506a92e480526e7b4c17364543a6ec5db2b4612` has blob SHA-256
 `c11f5d8d2a9424adb75282232c846b4d44b33c5487e026ea487504b9c285c744`.
 Both modules remain PRE-VALIDATION and the live counters remain `20/41`,
 `TermSource = 0`, window 15 compatible but unattained.
+### Source-pinned terminal field data diagnostic
+
+The first fresh Colab diagnostic at `d0de24e6` compiled the two canonical
+extensions and regional-compression endpoint (`8563` jobs; focal/audit
+`0/0`; three exact standard axiom blocks), but exposed one unused-instance
+warning in the new source.  The source-only checkpoint `48f694ab` narrows
+that theorem's instance scope without changing its statement.  It remains
+PRE-VALIDATION pending a warning-clean diagnostic and cold seal; therefore
+steps 2--3 are not yet sealed and the hard counters do not move.

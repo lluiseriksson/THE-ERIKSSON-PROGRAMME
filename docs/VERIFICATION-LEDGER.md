@@ -34316,3 +34316,24 @@ Runner checkpoint `3506a92e480526e7b4c17364543a6ec5db2b4612` has blob SHA-256
 `c11f5d8d2a9424adb75282232c846b4d44b33c5487e026ea487504b9c285c744`.
 The two modules remain PRE-VALIDATION.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+## Addendum 756 — diagnostic PASS retained; unused-instance warning fixed
+
+The first Colab diagnostic of the source-pinned terminal complex field data
+compiled checkpoint `d0de24e630f54dba5d2b852960a0b1fe12653ec7` successfully:
+`Build completed successfully (8563 jobs).`, focal/audit exits `0/0`, and all
+three audited declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The deterministic diagnostic
+archive SHA-256 was
+`dd9622e1f6219668ed2de3aec9b913c880d56ca7cdc20b06dae65e51abbcfed6`
+and the runtime auto-unassigned.  This PASS does not seal because the focal
+reported one new-module `unusedSectionVars` warning on the global
+zero-extension theorem.
+
+Checkpoint `48f694abba8409a9825d4eacc9c09344974bc413` changes only the theorem's
+instance scope by explicitly omitting `[NeZero d] [NeZero Nc]`; it does not
+change the statement or proof.  Source/audit Git-blob SHA-256 are
+`d3d7570fdabb536ac226808c7db769852f2fd189447aa2cd1552a93940cad9c9` and
+`0aa8cb34ce0a8566348d1f48eb2d1b44d33dc1952665be8f0bff273f601eb4cd`.
+Both modules remain PRE-VALIDATION until a warning-clean diagnostic and cold
+seal pass.  Counters remain `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
