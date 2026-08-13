@@ -29120,6 +29120,27 @@ spacing-power and mass dictionaries, full precision, inverse and Green
 identifications remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
 
+## Addendum 760 (2026-08-13, **generated-box neighbour transport and complex stencil PRE-VALIDATION; step 6; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `89dd14f18b310f700774bf15e820fe8bf9e12c83`
+adds two propositional transport theorems for `shift` and `shiftBack` across
+the generated closed-form fine-box equivalence, then uses both orientations
+to identify the complex flat stencil of the canonical generated full-box
+field with the coordinatewise complexification of the real flat stencil.
+The two dependent boxes are not identified definitionally.
+
+Source/audit Git-blob SHA-256 are
+`9a2f1d04bb3c0570668401480e34d0515c7096415809a5b81896c623c6ef7c31`
+and
+`0a34ba42e5e5e5b8d6e331a55f38f07c07e9cc3fb2729f2efca974ce96ae13b6`.
+Runner checkpoint `dc396875a3e63283998d116454e741dc8afbef63` has
+Git-blob SHA-256
+`02e0729c29b51f7e9011feafa70d024e8da14c43c673258d87a0c8d953b2e2d2`.
+Both modules remain PRE-VALIDATION pending fresh-clone compiler diagnostics.
+Spacing, mass, full precision, inverse and Green dictionaries remain open.
+Counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
+
 The fresh Colab diagnostic then passed on the exact source checkpoint.  The
 runtime was CPU high-RAM (`50.99 GiB`), the toolchain and exact Mathlib pin
 matched, both Git-blob hashes matched, and both textual guards exited zero.
