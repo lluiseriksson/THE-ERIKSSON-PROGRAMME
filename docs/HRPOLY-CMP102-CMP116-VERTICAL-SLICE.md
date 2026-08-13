@@ -9888,3 +9888,27 @@ Runner v2/notebook checkpoints `46c6f4d54fde45df1cce679e0b8974e0af1482c5`
 and `07b7d928486e87438d70d7b2aa66ed6ad91802fe` are published but unexecuted.
 PRE-VALIDATION remains on both Lean modules.  Counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+If this brick seals, the next full-precision dictionary is a finite chain,
+not a free carrier identification:
+
+1. retain the generated active field and its explicit zero extension;
+2. rewrite the regional Dirichlet Laplacian with
+   `cmp99ActiveRegionSourceCovariantLaplacian_apply_eq_compression`;
+3. prove the named background dictionary
+   `cmp99SourceFlatGaugeConfig = cmp99FlatGaugeBackground`; both are literal
+   unit fields, but no definitional identification is assumed;
+4. specialize the ambient operator with
+   `cmp99GeneratedAmbientScaledCovariantLaplacian_one_apply`;
+5. complexify the literal stencil with
+   `cmp99FlatPeriodicComplexFibreStencil_complexification`;
+6. expose `spacing⁻² = (M^(depth+1))²` through the sealed scalar dictionary;
+7. consume this field-mass dictionary for the separate `Q'^*Q'` summand;
+8. identify the compressed generated action, only on active targets, with
+   `cmp99SourceFlatFullComplexPrecisionAction 0 A` on the zero extension.
+
+The terminal `0` is the mass argument of the full-complex action; `A` is the
+already named generated averaging coefficient.  The chain does not assert a
+global equality between the generated active carrier and the periodic full
+box.  Inverse uniqueness, regional Green transport and uniform physical
+`B0` remain later obligations even after this action dictionary closes.
