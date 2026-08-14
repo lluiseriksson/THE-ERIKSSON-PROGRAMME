@@ -51,14 +51,17 @@ def finitePiLpComplexOfReal
     FinitePiLpField ι (EuclideanSpace ℂ κ) :=
   WithLp.toLp 2 fun i => WithLp.toLp 2 fun a => (x i a : ℂ)
 
+omit [Fintype ι] [Fintype κ] in
 @[simp] theorem finitePiLpComplexRealPart_apply
     (z : FinitePiLpField ι (EuclideanSpace ℂ κ)) (i : ι) (a : κ) :
     finitePiLpComplexRealPart z i a = (z i a).re := rfl
 
+omit [Fintype ι] [Fintype κ] in
 @[simp] theorem finitePiLpComplexImagPart_apply
     (z : FinitePiLpField ι (EuclideanSpace ℂ κ)) (i : ι) (a : κ) :
     finitePiLpComplexImagPart z i a = (z i a).im := rfl
 
+omit [Fintype ι] [Fintype κ] in
 @[simp] theorem finitePiLpComplexOfReal_apply
     (x : FinitePiLpField ι (EuclideanSpace ℝ κ)) (i : ι) (a : κ) :
     finitePiLpComplexOfReal x i a = (x i a : ℂ) := rfl
@@ -104,6 +107,7 @@ theorem finitePiLpComplexImagPart_smul
   apply PiLp.ext
   intro a
   simp [Complex.mul_im]
+  ring
 
 /-- Every finite complex field is its real part plus `i` times its imaginary
 part, with both parts embedded through the canonical real inclusion. -/
@@ -116,6 +120,26 @@ theorem finitePiLpComplexOfReal_real_add_I_smul_imag
   apply PiLp.ext
   intro a
   apply Complex.ext <;> simp
+
+omit [Fintype ι] [Fintype κ] in
+@[simp] theorem finitePiLpComplexRealPart_ofReal
+    (x : FinitePiLpField ι (EuclideanSpace ℝ κ)) :
+    finitePiLpComplexRealPart (finitePiLpComplexOfReal x) = x := by
+  apply PiLp.ext
+  intro i
+  apply PiLp.ext
+  intro a
+  simp
+
+omit [Fintype ι] [Fintype κ] in
+@[simp] theorem finitePiLpComplexImagPart_ofReal
+    (x : FinitePiLpField ι (EuclideanSpace ℝ κ)) :
+    finitePiLpComplexImagPart (finitePiLpComplexOfReal x) = 0 := by
+  apply PiLp.ext
+  intro i
+  apply PiLp.ext
+  intro a
+  simp
 
 /-- Canonical complex-linear extension of a real operator on a finite
 counting-Hilbert field. -/
@@ -135,6 +159,7 @@ noncomputable def finitePiLpCanonicalComplexificationLM
     apply PiLp.ext
     intro a
     simp
+    ring
   map_smul' c z := by
     rw [finitePiLpComplexRealPart_smul, finitePiLpComplexImagPart_smul,
       map_sub, map_add, map_smul, map_smul, map_smul, map_smul]
@@ -142,8 +167,8 @@ noncomputable def finitePiLpCanonicalComplexificationLM
     intro i
     apply PiLp.ext
     intro a
-    simp [Complex.mul_re, Complex.mul_im]
-    ring
+    apply Complex.ext <;>
+      simp [Complex.mul_re, Complex.mul_im] <;> ring
 
 /-- Continuous packaging of the canonical complexification.  Continuity is
 automatic because both counting-Hilbert spaces are finite-dimensional. -/
@@ -194,11 +219,7 @@ noncomputable def finitePiLpCanonicalComplexificationCLM
     (x : FinitePiLpField ι (EuclideanSpace ℝ κ)) :
     finitePiLpCanonicalComplexificationCLM T (finitePiLpComplexOfReal x) =
       finitePiLpComplexOfReal (T x) := by
-  apply PiLp.ext
-  intro i
-  apply PiLp.ext
-  intro a
-  simp
+  simp [finitePiLpCanonicalComplexificationCLM_apply]
 
 /-- Canonical complexification preserves composition exactly. -/
 theorem finitePiLpCanonicalComplexificationCLM_comp
@@ -206,14 +227,20 @@ theorem finitePiLpCanonicalComplexificationCLM_comp
       FinitePiLpField ι (EuclideanSpace ℝ κ)) :
     finitePiLpCanonicalComplexificationCLM (S.comp T) =
       (finitePiLpCanonicalComplexificationCLM S).comp
-        (finitePiLpCanonicalComplexificationCLM T) := by
+      (finitePiLpCanonicalComplexificationCLM T) := by
   apply ContinuousLinearMap.ext
   intro z
-  apply PiLp.ext
-  intro i
-  apply PiLp.ext
-  intro a
-  simp
+  change
+    finitePiLpComplexOfReal
+          ((S.comp T) (finitePiLpComplexRealPart z)) +
+        Complex.I • finitePiLpComplexOfReal
+          ((S.comp T) (finitePiLpComplexImagPart z)) =
+      finitePiLpCanonicalComplexificationCLM S
+        (finitePiLpCanonicalComplexificationCLM T z)
+  rw [ContinuousLinearMap.comp_apply,
+    finitePiLpCanonicalComplexificationCLM_apply,
+    finitePiLpComplexRealPart_complexification,
+    finitePiLpComplexImagPart_complexification]
 
 /-- Canonical complexification sends the real identity to the complex
 identity. -/
