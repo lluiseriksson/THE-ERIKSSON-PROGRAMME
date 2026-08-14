@@ -35515,3 +35515,23 @@ Diagnostic-v5 runner checkpoint
 `ba013a2f298aa260ec11e9b1ac078b6c896b7258` has Git-blob SHA-256
 `d82a9c5b8197c30349f67834ee3bf8319eea2259bdc4cae38e9ef3a0779071a2`.
 PRE-VALIDATION remains and no counter moves.
+
+The exact v5 diagnostic opened a fresh verified CPU/high-RAM runtime at
+`2026-08-14T15:54:11Z`; every pre-focal gate passed.  The focal stopped first
+after `1762.551 s`, before the audit.  Evidence SHA-256 is
+`fea36237af885dd8eedca5b88e0d90802116254b08c9b94052a8e32be8b374a9`
+and archive SHA-256 is
+`88293702a269b515139c136e6f9e745bbdc04abfcc466018669e8e09b44ced25`.
+`FINAL_STATUS=FAIL` and the runtime unassigned itself.
+
+The first error was syntactic: `omit [NeZero Nc] in` had been placed between
+the module docstring and the declaration it qualifies.  The later whnf
+timeouts and unknown constant are downstream of that missing declaration, so
+no heartbeat increase or theorem change was accepted.  Checkpoint
+`ef6505205763f633d071f4bc66107483b8e7b6af` moves only the scope marker before
+the docstring; source Git-blob SHA-256 is
+`f28af27d0f7713de1250a44618af3ecc161b90d44ad5c7f6b1d04558e52f270f`.
+Diagnostic-v6 runner checkpoint
+`12a4124e6ef45ba095734e00b3e7556bcd1c413c` has Git-blob SHA-256
+`41bc602ca2f08f0929d1c5aaa83ab339742b0f53e84a4664ff0d0c4143fc6e86`.
+PRE-VALIDATION remains; counters stay exactly `20/41`.
