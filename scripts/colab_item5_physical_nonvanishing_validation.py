@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Colab diagnostic gate for the first three Step-7b item-5 bricks.
+"""Colab diagnostic resume gate for the third Step-7b item-5 brick.
 
 The immutable mathematical source is ``SOURCE_SHA``.  This runner-only child
 reuses the established fresh-clone transport, pin gates, robust axiom parser,
 evidence archive, and runtime auto-release from the three-species runner.
+The first two bricks already passed on the exact parent checkpoint; this queue
+starts at the only source file changed by the import-boundary repair.
 """
 
 from __future__ import annotations
@@ -20,8 +22,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "item5-physical-nonvanishing-v2"
-runner.SOURCE_SHA = "e0530945a4c42d4558735b9352e7049cdd95f15e"
+runner.RUNNER_REV = "item5-mass-zero-central-resume-v3"
+runner.SOURCE_SHA = "6ffd5b73974ef9ce8207d58ea1d5f78e37196c3f"
 runner.ROOT = Path("/content/hrpoly-item5-physical-nonvanishing")
 runner.EVIDENCE = Path("/content/hrpoly-item5-physical-nonvanishing-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-item5-physical-nonvanishing-evidence.tar.gz")
@@ -37,32 +39,12 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredCoarseMomentumAudit.lean":
         "2fff838c21cfde90a5e27c3388d71e72e0972d60cf428288f81fd81a6f5a664b",
     "YangMills/RG/BalabanCMP89MassZeroCentralFineSymbolNonvanishing.lean":
-        "ba5881609bb6f33fa2a2ec3938b822e4231abba9463a8ab69c2a927ef8817456",
+        "cb0556e469d6b9f95595411ed84ba10a29a1a2d1adf88c1c6137f40a8c128f05",
     "YangMills/RG/BalabanCMP89MassZeroCentralFineSymbolNonvanishingAudit.lean":
         "820fb51e725810aeefe14d2a9b7fec9e6a98287d9a2bcb8114ad89e9ef23898a",
 }
 
 runner.QUEUE = [
-    (
-        "generated_full_complex_a_positive_focal",
-        ["lake", "build", "YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive"],
-        None,
-    ),
-    (
-        "generated_full_complex_a_positive_audit",
-        ["lake", "env", "lean", "YangMills/RG/BalabanCMP99SourceGeneratedFullComplexAPositiveAudit.lean"],
-        4,
-    ),
-    (
-        "centered_coarse_momentum_focal",
-        ["lake", "build", "YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum"],
-        None,
-    ),
-    (
-        "centered_coarse_momentum_audit",
-        ["lake", "env", "lean", "YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredCoarseMomentumAudit.lean"],
-        4,
-    ),
     (
         "mass_zero_central_fine_nonvanishing_focal",
         ["lake", "build", "YangMills.RG.BalabanCMP89MassZeroCentralFineSymbolNonvanishing"],
