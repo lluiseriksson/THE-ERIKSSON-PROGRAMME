@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedPhysicalPrecisionComplexDicti
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification
 
 /-!
-# PRE-VALIDATION: generated ambient precision dictionary
-
-This source is present, but its `.olean` has not yet been materialized and its
-declarations have not yet been verified by the Lean compiler.
+# Generated ambient precision dictionary
 
 The generated real precision has already been transported to the one ambient
 carrier used by the regional construction and canonically complexified there.

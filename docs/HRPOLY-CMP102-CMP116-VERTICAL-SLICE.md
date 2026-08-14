@@ -10619,8 +10619,23 @@ The finite implementation list for item 5 is therefore:
    using the item-3 inverse and item-4 precision equality.  The endpoint must
    expose no free scalar nonvanishing family.
 
-This list is static design evidence only until item 4 is cold-sealed and each
-new declaration receives its own focal and axiom audit.
+Item 4 is now cold-sealed.  The remaining list is static design evidence until
+each item-5 declaration receives its own focal and axiom audit.
+
+Exact item-4 source `f6633ff08c45535bd74ba5fcfae20325877ae000`
+was sealed by cold workflow
+[`31826053877`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31826053877)
+under vehicle `b049fa514ccb44901ab050ce6b74f90f06ded7a4`.
+Project-graph restore and save were both skipped.  The focal ended with
+literal line `Build completed successfully (8636 jobs).`; the audit emitted
+eight permitted `[propext, Classical.choice, Quot.sound]` blocks.  Artifact
+`9229863826` has GitHub digest
+`7cb20af09e52f38856a4de712715180b219de6f631f259e7c5782665ba4be29e`;
+the deterministic archive SHA-256 is
+`26f82341cfccad2380f0098cc82df784e8a6e8d07ff7767a7674b125fc9957d3`,
+with `13/13` manifest entries matching.  This seals the exact ambient
+complex-precision dictionary only.  It does not construct the literal Green,
+attain window 15, move `20/41`, or inhabit `TermSource`.
 
 Static refinement after reading the exact mass-uniform APIs: gate 5 does not
 need a new positive-mass or strip estimate at the centered representative.
