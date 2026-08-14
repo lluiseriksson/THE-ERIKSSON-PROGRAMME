@@ -29097,6 +29097,30 @@ retired PRE-VALIDATION.  No terminal field is discharged: the live counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
 
+The exact v7 diagnostic opened a fresh verified Colab Pro+ CPU/high-RAM
+runtime (`50.99 GiB`) at `2026-08-14T17:14:44Z`.  All transport, toolchain,
+source/audit-blob, text/import, Mathlib-pin, and cache gates passed.  The focal
+closed with the literal line `Build completed successfully (8636 jobs).`,
+exit zero after `1896.529 s`; the audit then exited zero after `17.932 s` and
+printed exactly eight axiom blocks, every one
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`c435e26d15f776b2af5ebf3d27ac6d8027f83004d3358be50fa8c217346e7840`
+and archive SHA-256 is
+`6c5d451817c45582649703f40f414d12637c6047a96e45bc69ea42942b32014c`.
+`FINAL_STATUS=PASS`; the runtime unassigned itself and was closed.
+
+This diagnostic validates the public dictionary but does not yet seal it:
+the focal also reported one new-module linter warning, an automatically
+included unused `[NeZero Nc]` on the private pointwise Step-7b application
+lemma.  PRE-VALIDATION source checkpoint
+`f6633ff08c45535bd74ba5fcfae20325877ae000` removes only that unused private
+instance via an explicit `omit`; it changes no public declaration, proof
+term, constant, or hypothesis.  Its source Git-blob SHA-256 is
+`f2574fe4337372ec257d89e0a11b0bd114d2eae4729c3f7c57ba9e31647df42e`.
+The single terminal CI vehicle is pinned to that exact source with cold graph
+restore/save disabled.  PRE-VALIDATION remains pending its cold verdict;
+there is still no terminal producer and no counter movement.
+
 ## Addendum 759 (2026-08-13, **flat generated ambient specialization SEALED; step 5; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `0d64561a9e8baedf87328619e5bae40973f0918c`
