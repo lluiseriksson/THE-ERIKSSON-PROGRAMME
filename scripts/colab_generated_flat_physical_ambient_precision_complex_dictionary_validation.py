@@ -30,8 +30,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-flat-ambient-precision-step7b-dictionary-v5",
-            "SOURCE_SHA": "085dafeafb268465ca4fb8f90cbfc61293efb143",
+            "RUNNER_REV": "generated-flat-ambient-precision-step7b-dictionary-v6",
+            "SOURCE_SHA": "ef6505205763f633d071f4bc66107483b8e7b6af",
             "ROOT": Path("/content/hrpoly-step7b-ambient-precision"),
             "EVIDENCE": Path(
                 "/content/hrpoly-step7b-ambient-precision-evidence"
@@ -45,7 +45,7 @@ def main() -> int:
             "SOURCE_BLOBS": {
                 "YangMills/RG/"
                 "BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary.lean":
-                    "e4738982d3570b957882ae2f358eb81b3db070f8f2c64b8b74ff015d590a89ec",
+                    "f28af27d0f7713de1250a44618af3ecc161b90d44ad5c7f6b1d04558e52f270f",
                 "YangMills/RG/"
                 "BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionaryAudit.lean":
                     "43ce7b06a054c2401a6cf8d07ea9d89d449212eba1fe02a6fe1bae9b8453c78f",
