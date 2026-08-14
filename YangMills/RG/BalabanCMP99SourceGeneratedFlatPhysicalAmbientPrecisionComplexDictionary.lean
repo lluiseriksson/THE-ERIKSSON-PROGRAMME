@@ -217,6 +217,7 @@ private theorem ambientPrecision_apply_eq_explicit
     cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit]
   rfl
 
+omit [NeZero Nc] in
 private theorem step7bAmbientPrecisionCLM_apply
     (depth : ℕ)
     (z : FinBox 4 (cmp99SourceRegionalLargeBlockSide M depth * (2 * Q)) →
