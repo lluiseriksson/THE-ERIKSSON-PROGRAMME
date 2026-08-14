@@ -34799,3 +34799,29 @@ It does not prove the flat-background, shift/stencil, spacing, full-precision,
 inverse or Green dictionaries.  No terminal producer is added: counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
+
+## Addendum 763 (2026-08-14, **canonical generated flat physical Green PRE-VALIDATION; complex inverse dictionary open; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint
+`8712e1a0a3515bd32b021b6aecd990ea1b1715c0` proves syntactically the
+radius-zero Poincare-error identity, positivity of the canonical generated
+spacing, constructs the flat physical Green internally, and states its two
+real inverse laws against the same literal flat precision sealed in step 7b.
+No inverse family or equality is supplied by the caller.
+
+Source/audit Git-blob SHA-256 are
+`82946bb75066a9b721685bb115ea7d171bbe8331024e3a44605fa73eed857528`
+and
+`6bb3b44d59db6b64b29dd235a0900a66be76738dbfb64935eb675bbc2a4d53a6`.
+Runner checkpoint `f56ef9c023f331dc505987e6b5e05b41ee8b1454` has
+Git-blob SHA-256
+`737e11b634ee7d6e3a2a2b097e1590920ad50fe72337bdd0826ce4eae6575b09`.
+The exact two-file textual overlay gate passed locally.  No Lean, Lake or
+oracle ran on Windows.
+
+The modules remain PRE-VALIDATION until a Colab diagnostic passes and a
+separate cold seal is audited.  Complexification, identification with the
+full-box complex inverse, the `G Q'^*` consequence of inverse uniqueness,
+regional compression and uniform physical `B0` remain open.  This is inverse
+infrastructure, not a terminal-field producer: counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.

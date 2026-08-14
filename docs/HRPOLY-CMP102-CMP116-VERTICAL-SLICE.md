@@ -10218,7 +10218,7 @@ and all `13/13` manifest entries matched.  This cold evidence seals step 7a,
 so only its two PRE-VALIDATION marks are retired.  Generated mass, full
 precision, inverse and Green equalities remain open, with no counter movement.
 
-### Step 7b: generated flat physical precision in full-box coordinates (PRE-VALIDATION)
+### Step 7b: generated flat physical precision in full-box coordinates (SEALED)
 
 The next module starts from the literal generated flat physical precision,
 not from two caller-supplied operators.  It unfolds that precision only far
@@ -10299,3 +10299,30 @@ marks are retired.  It identifies the literal generated flat physical
 precision action, not its inverse or regional Green operator.  No terminal
 producer is added: counters remain exactly `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+### Step 8a: canonical generated flat physical Green (PRE-VALIDATION)
+
+Exact source checkpoint `8712e1a0a3515bd32b021b6aecd990ea1b1715c0`
+adds the radius-zero specialization of the generated physical Green.  The
+module proves that the accumulated source Poincare error vanishes at every
+depth, proves positivity of the canonical generated spacing, and constructs
+the Green internally from the literal flat background, zero source budget
+and already generated coercivity.  It states both real inverse laws for the
+same literal flat precision used by step 7b.
+
+Source/audit Git-blob SHA-256 are
+`82946bb75066a9b721685bb115ea7d171bbe8331024e3a44605fa73eed857528`
+and
+`6bb3b44d59db6b64b29dd235a0900a66be76738dbfb64935eb675bbc2a4d53a6`.
+Runner checkpoint `f56ef9c023f331dc505987e6b5e05b41ee8b1454` has
+Git-blob SHA-256
+`737e11b634ee7d6e3a2a2b097e1590920ad50fe72337bdd0826ce4eae6575b09`.
+The exact two-file textual overlay gate passed locally; no Lean or Lake ran
+on Windows.
+
+This is a real finite-box inverse construction only.  Complexification,
+the full-box complex inverse dictionary, multiplication by `Q'^*`, regional
+compression and a uniform physical Green bound remain open.  Both modules
+retain visible PRE-VALIDATION headers pending a Colab diagnostic.  No
+terminal producer is added: counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
