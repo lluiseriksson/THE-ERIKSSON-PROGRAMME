@@ -10570,6 +10570,17 @@ SHA-256
 It is independent of the outer-transport module and remains unverified until
 its own Colab focal and audit complete; it changes no counter.
 
+Its first diagnostic stopped at one explicit inverse-cancellation atom:
+`piLpCongrLeft e.symm (piLpCongrLeft e phi) = phi` remained visible under an
+arbitrary continuous linear map.  Repair
+`41c07595b6929c333904b734b5911fe74718a2bc` names exactly that carrier-level
+identity and changes no public theorem or physical dictionary.  The repaired
+source/audit Git-blob SHA-256 are
+`263404afc01dd21520a4da88551a09a6884eb8e8815a104c26efd9e75c69d7ff`
+and `3a41f55b57054af87f50c4df21fb5f66801a381564e7ba806cf48926d7823313`.
+It remains PRE-VALIDATION pending diagnostic v2; the failed v1 moves no
+counter and proves no part of the physical endpoint.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after

@@ -35185,3 +35185,30 @@ Lean or Lake ran on Windows.  Both modules remain PRE-VALIDATION pending a
 separate Colab focal and audit.  No physical precision, Green, complex
 inverse, terminal producer or counter movement is claimed: counters remain
 exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.
+
+## Addendum 776 (2026-08-14, **typed-kernel reindex diagnostic v1 FAIL; exact inverse atom repaired PRE-VALIDATION; 20/41 unchanged**)
+
+Colab diagnostic v1 on exact source
+`442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` verified the runner, both Git
+blobs, toolchain and pins, then stopped at the first Lean error.  The focal
+exited `1` after `152.734 s`; the first error was
+`FinitePiLpTypedKernelReindexAlgebra.lean:40:53`, where simplification had
+exposed but not discharged the exact atom `U.symm (U phi) = phi` underneath
+an arbitrary continuous linear map.  No audit ran.  Evidence/archive SHA-256
+are `5941657c3b574d9c0f1a63f97b4ca52389e7e933352406a8617ac18f7881b5d5`
+and `90bc31a3fb1b1eb3e50f1434ec64390c3743aa347aab748fe361e0ebb038b555`;
+`FINAL_STATUS=FAIL` and the runtime-unassign sentinel were emitted.
+
+PRE-VALIDATION repair `41c07595b6929c333904b734b5911fe74718a2bc`
+adds one private named cancellation lemma using the literal inverse law of
+`piLpCongrLeft` and feeds it to the two existing proofs.  It changes no public
+statement, hypothesis, constant or audit declaration.  Repaired source/audit
+Git-blob SHA-256 are
+`263404afc01dd21520a4da88551a09a6884eb8e8815a104c26efd9e75c69d7ff`
+and `3a41f55b57054af87f50c4df21fb5f66801a381564e7ba806cf48926d7823313`.
+The exact text/import guards pass locally; no Lean or Lake ran on Windows.
+Diagnostic v2 runner checkpoint is
+`aa4770432abf9236111264a90e00a5eb2ecfaf97`, with Git-blob SHA-256
+`a26f72ae51f74f87697fb461624e20da95a02f5c74899de94d9e0b33479d22e6`.
+Both modules remain PRE-VALIDATION until the repaired focal and audit pass.
+No counter moves.
