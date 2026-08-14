@@ -20,8 +20,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "item5-physical-nonvanishing-v1"
-runner.SOURCE_SHA = "baa351bdb57e0824ca127140ad3c1d6d505c8d9a"
+runner.RUNNER_REV = "item5-physical-nonvanishing-v2"
+runner.SOURCE_SHA = "e0530945a4c42d4558735b9352e7049cdd95f15e"
 runner.ROOT = Path("/content/hrpoly-item5-physical-nonvanishing")
 runner.EVIDENCE = Path("/content/hrpoly-item5-physical-nonvanishing-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-item5-physical-nonvanishing-evidence.tar.gz")
@@ -33,7 +33,7 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFullComplexAPositiveAudit.lean":
         "d7a91ea26380631aa5d71702b716208d17d1b295f135559045a502637be16cfc",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum.lean":
-        "fd08df237493137f4e1e738f7dbdbddfb4eb3c644c3cc73358f2dbf5d0a544b2",
+        "fb77288e77d68a23544490c96212f36c29570394354ea4c1b922f8ecae20ee46",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredCoarseMomentumAudit.lean":
         "2fff838c21cfde90a5e27c3388d71e72e0972d60cf428288f81fd81a6f5a664b",
     "YangMills/RG/BalabanCMP89MassZeroCentralFineSymbolNonvanishing.lean":
