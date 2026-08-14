@@ -8,9 +8,6 @@ import YangMills.RG.FinitePiLpCanonicalComplexification
 /-!
 # Outer-norm transport for canonical finite complexification
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 The real generated operators are stored on a finite counting-Hilbert
 `PiLp 2` space, while the literal full-box complex precision is packaged on
 the ordinary finite function space.  These spaces have the same coordinates

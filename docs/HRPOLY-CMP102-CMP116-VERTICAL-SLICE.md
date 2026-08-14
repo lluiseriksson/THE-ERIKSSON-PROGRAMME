@@ -10599,6 +10599,22 @@ literal terminal line `Build completed successfully (8173 jobs).`, audit
 It remains diagnostic only pending the one cold seal; item 2 and every
 physical endpoint remain open.
 
+The outer-norm transport is now cold-sealed by run `31790383378` at exact
+source `5f13c04ae1b3bdb97fe17d25055f28509b2416ee`: cache restore/save skipped,
+literal terminal line `Build completed successfully (8486 jobs).`, six exact
+permitted axiom trios, and a fully verified evidence archive.  Its two
+PRE-VALIDATION marks are retired.  This closes only the explicit outer norm
+conjugation.
+
+Item 1, the typed-kernel reindex algebra, is cold-sealed independently by run
+`31791819258` at exact source
+`510ee90e913a44c7ea361ef0ec1c99b902d6911e`: cache restore/save skipped,
+literal terminal line `Build completed successfully (8173 jobs).`, three
+exact permitted axiom trios, no source warning, and zero evidence-hash
+mismatches.  Its two PRE-VALIDATION marks are retired.  Item 2 may now be
+built on a sealed parent; the physical precision and Green remain open and
+the counters remain unchanged.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after

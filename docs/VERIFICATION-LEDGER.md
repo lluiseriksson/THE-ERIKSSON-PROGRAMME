@@ -35262,3 +35262,48 @@ place until a single cold checkout at the same source passes with both
 project-cache restore and save skipped.  This carrier algebra adds no
 physical precision or Green dictionary, terminal producer, or counter
 movement.
+
+## Addendum 779 (2026-08-14, **outer transport cold-sealed; exact norm conjugation certified; 20/41 unchanged**)
+
+The single terminal cold run
+[`31790383378`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31790383378)
+checked out exact source `5f13c04ae1b3bdb97fe17d25055f28509b2416ee`
+under workflow vehicle `652dce6f559afc2b0eb21616b57678cf9776658b`.
+Project-graph restore and save were both skipped.  The focal exited zero with
+literal terminal line `Build completed successfully (8486 jobs).`; the audit
+exited zero and its six declarations contain exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Durable artifact id `9215822443` has GitHub archive digest
+`37d0630a818008825c40c222925ff3e153c92affaada63aa7f30e853337aec2f`.
+The contained deterministic archive has SHA-256
+`32911ad2f39014863f0eefd7c4ecc504fcf3c601cf29df4e2831856adbc18c42`;
+its declared hash agrees with the downloaded file and all `SHA256SUMS`
+entries verify with zero mismatches.  `FINAL_STATUS=PASS`, Mathlib is exactly
+`07642720480157414db592fa85b626dafb71355b`, and both stage exits are zero.
+Only the two outer-transport PRE-VALIDATION marks are removed.  This seals a
+norm/carrier conjugation, not a physical precision or Green identification;
+no terminal counter moves.
+
+## Addendum 780 (2026-08-14, **typed-kernel reindex algebra cold-sealed; ordered inverse transport certified; 20/41 unchanged**)
+
+The single terminal cold run
+[`31791819258`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31791819258)
+checked out exact warning-free source
+`510ee90e913a44c7ea361ef0ec1c99b902d6911e` under workflow vehicle
+`88c888402122bea43d30873f54095ba843f3972e`.  Project-graph restore and save
+were both skipped.  The focal exited zero with literal terminal line
+`Build completed successfully (8173 jobs).`; the audit exited zero and its
+three declarations contain exactly `[propext, Classical.choice, Quot.sound]`.
+
+Durable artifact id `9215848737` has GitHub archive digest
+`a4bd800e7d251cba9aa2e1b40abdcc3e55b638036bc76b1fb7cc4055aeb6495d`.
+The deterministic evidence archive has SHA-256
+`a35d134a36f682e5e020db71822a1dd716845c03a6a62044e53118192f673039`;
+its declared hash agrees with the downloaded file and all `SHA256SUMS`
+entries verify with zero mismatches.  `FINAL_STATUS=PASS`, Mathlib is exact,
+and both stage exits are zero.  Only the two reindex-algebra PRE-VALIDATION
+marks are removed.  The next physical reindexing brick may now depend on this
+sealed algebra, but no physical dictionary or terminal producer exists yet;
+the counters remain exactly `20/41`, `TermSource = 0`, with window 15
+compatible but unattained.

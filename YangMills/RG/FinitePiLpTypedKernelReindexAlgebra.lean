@@ -8,9 +8,6 @@ import YangMills.RG.FinitePiLpTypedKernelReindex
 /-!
 # Exact algebra of finite typed-kernel reindexing
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 The physical generated precision and Green initially live on an active
 counting-Hilbert carrier.  Reindexing both through one explicit finite
 equivalence must preserve composition and identity before any complexification
