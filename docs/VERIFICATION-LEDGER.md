@@ -35467,3 +35467,30 @@ Lake ran on Windows.
 Both PRE-VALIDATION marks remain and item 4 is not sealed pending a newly
 prepared validation.  This changes no terminal producer: counters remain
 exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.
+
+The exact v3 diagnostic then ran once in Colab Pro+ on the verified
+`lluiseriksson@gmail.com` session, CPU/high-RAM runtime (`50.99 GB`), opened at
+`2026-08-14T14:43:06Z`.  Transport, toolchain, source/audit blobs, text/import
+guards, Mathlib pin `07642720480157414db592fa85b626dafb71355b`, and cache
+materialization all passed.  The focal stopped first after `1720.853 s`; the
+audit did not run.  Evidence SHA-256 is
+`8b1008d90bf5f173d4e82c0f45df9928b3daf9457cd4313cf9065eaa06d669cc`
+and archive SHA-256 is
+`8e9d347629154e6d4f6d09ad0b4e63fa69f5092af77c7ff9f89ec894f3c9a58c`.
+`FINAL_STATUS=FAIL`, and `RUNTIME_UNASSIGN_REQUESTED=1` closed the runtime.
+
+The remaining three atoms are again elaboration boundaries, not mathematical
+hypotheses: literal evaluation of `piLpCongrLeft` at the active site, canonical
+complexification of a real field without expanding a spurious zero branch,
+and the two pointwise equalities connecting the reindexed real precision and
+the transported full-box action.  Repair checkpoint
+`5cd6f979c1c22fcac8e7a92f9aa8a3f71334b9f5` names those equalities and changes
+no declaration statement.  Its source Git-blob SHA-256 is
+`146f9d9beda6c1affb92dd1abd61a4e12b1f7e8bb0031666fadb29681ad0a5f7`;
+the audit blob remains
+`43ce7b06a054c2401a6cf8d07ea9d89d449212eba1fe02a6fe1bae9b8453c78f`.
+Diagnostic-v4 runner checkpoint
+`7ff3c3827e1cab5bd55073ac5418f9769e35c971` has Git-blob SHA-256
+`9f3ba737487e39a4f64bd79a8e7120fd56e5344a8877be85f0208770c9d01d10`.
+The exact overlay guards and runner syntax pass locally; no Lean or Lake ran
+on Windows.  PRE-VALIDATION remains and the counters do not move.
