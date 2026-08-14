@@ -27,6 +27,19 @@ noncomputable section
 
 universe u u' w
 
+/-- The two explicitly opposed coordinate reindexings cancel on the finite
+counting-Hilbert carrier.  This is kept named because the cancellation occurs
+under an arbitrary continuous linear map in the composition theorem below. -/
+private theorem piLpCongrLeft_inverse_apply
+    {ι : Type u} {ι' : Type u'} {g : Type w}
+    [Fintype ι] [Fintype ι']
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (e : ι ≃ ι') (phi : FinitePiLpField ι g) :
+    (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e.symm)
+        ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e) phi) = phi := by
+  simpa only [LinearIsometryEquiv.piLpCongrLeft_symm] using
+    (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e).symm_apply_apply phi
+
 /-- Reindexing both legs of two square kernels preserves their ordered
 composition exactly. -/
 theorem finitePiLpTypedKernelReindex_comp
@@ -43,7 +56,8 @@ theorem finitePiLpTypedKernelReindex_comp
   apply PiLp.ext
   intro x
   simp [finitePiLpTypedKernelReindex,
-    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
+    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft',
+    piLpCongrLeft_inverse_apply]
 
 /-- Reindexing the real identity through one finite equivalence is the
 identity on the reindexed counting-Hilbert carrier. -/
@@ -60,7 +74,8 @@ theorem finitePiLpTypedKernelReindex_id
   apply PiLp.ext
   intro x
   simp [finitePiLpTypedKernelReindex,
-    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
+    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft',
+    piLpCongrLeft_inverse_apply]
 
 /-- An exact inverse law survives square finite reindexing in the same order.
 The order is explicit so this one theorem transports both left- and
