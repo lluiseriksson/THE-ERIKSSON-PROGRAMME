@@ -1,4 +1,4 @@
-name: Validate complexified flat physical ambient Green
+name: Validate Step-7b ambient complex precision dictionary
 
 on:
   workflow_dispatch:
@@ -13,15 +13,15 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 0eae1b434ef037cae73995c530a79186e4041921
+  SOURCE_SHA: 0fbef2953dafb341fd9c77b7a036f6c03cf1996f
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    generated-flat-ambient-green-complexification
+    generated-flat-ambient-precision-step7b-dictionary
 
 jobs:
-  generated-flat-ambient-green-complexification:
+  generated-flat-ambient-precision-step7b-dictionary:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -86,7 +86,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-flat-ambient-green-complexification-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-flat-ambient-precision-step7b-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -120,8 +120,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification.lean \
-            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexificationAudit.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionaryAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -143,10 +143,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_flat_ambient_green_complexification_focal \
-            lake build YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification
-          run_stage generated_flat_ambient_green_complexification_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexificationAudit.lean
+          run_stage generated_flat_ambient_precision_step7b_dictionary_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary
+          run_stage generated_flat_ambient_precision_step7b_dictionary_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionaryAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -160,14 +160,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "generated_flat_ambient_green_complexification_audit.log": 4,
+              "generated_flat_ambient_precision_step7b_dictionary_audit.log": 8,
           }
           focal = (Path("evidence") /
-              "generated_flat_ambient_green_complexification_focal.log").read_text(
+              "generated_flat_ambient_precision_step7b_dictionary_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification.lean:"
+              "BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -201,17 +201,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              generated-flat-ambient-green-complexification-evidence.tar.gz
-          sha256sum generated-flat-ambient-green-complexification-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              generated-flat-ambient-precision-step7b-dictionary-evidence.tar.gz
+          sha256sum generated-flat-ambient-precision-step7b-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-flat-ambient-green-complexification-${{ env.SOURCE_SHA }}
+          name: generated-flat-ambient-precision-step7b-dictionary-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-flat-ambient-green-complexification-evidence.tar.gz
+            generated-flat-ambient-precision-step7b-dictionary-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -220,4 +220,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-flat-ambient-green-complexification-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-generated-flat-ambient-precision-step7b-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
