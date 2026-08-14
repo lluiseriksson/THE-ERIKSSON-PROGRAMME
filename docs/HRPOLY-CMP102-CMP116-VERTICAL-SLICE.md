@@ -10502,7 +10502,18 @@ Diagnostic runner checkpoint
 This is a norm/carrier transport brick only.  It does not identify the
 reindexed real precision with the literal physical precision, derive the
 literal Green by inverse uniqueness, attain window 15, move `20/41`, or
-inhabit a `TermSource`.  Both modules remain PRE-VALIDATION pending Colab.
+inhabit a `TermSource`.
+
+The first diagnostic attempt is `INCOMPLETE-RUNTIME-LOSS`: its persisted
+transcript reaches the focal command but contains no focal exit, audit,
+archive, `FINAL_STATUS`, or unassign sentinel.  The identical-source rerun is
+green.  Its focal exited zero after `1469.267 s` with literal terminal line
+`Build completed successfully (8486 jobs).`; its audit exited zero after
+`12.680 s` with six permitted axiom trios.  Evidence/archive SHA-256 are
+`c4ca6bf8d59e3f3d7b4b410c0bb5c0eb02e079be9634bbde1c6d14c6e0a9c06c`
+and `14300045fdc62cabaf5962b005e6a3dcb968aa27f78a375a46932cbcf076a72b`.
+This is diagnostic only: both modules remain PRE-VALIDATION pending the
+single cold seal at exact source `5f13c04ae1b3bdb97fe17d25055f28509b2416ee`.
 
 The post-seal route is finite and ordered.  It must not be collapsed into a
 single informal "reindexing" step:
@@ -10547,6 +10558,17 @@ strictly positive mass.  Those hypotheses must therefore be constructed for
 remain visibly named inputs); they must not be borrowed from the
 positive-mass strip by notation.  This gate is downstream of the exact
 complex inverse and does not block items 1--4.
+
+Item 1 now has PRE-VALIDATION source checkpoint
+`442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` and a three-declaration audit in
+`FinitePiLpTypedKernelReindexAlgebra`.  Source/audit Git-blob SHA-256 are
+`027c1ef07863968dccc3e2454cad39ed0be71d0a0a26a18c2e0ed1673807b8e7`
+and `3a41f55b57054af87f50c4df21fb5f66801a381564e7ba806cf48926d7823313`.
+Runner checkpoint `91e4cb58a89ae793ad5e74e96796d8724a6ff39e` has Git-blob
+SHA-256
+`0e4b7950152e63a5eaecd801f2d3ef29c8f4b56dacb9a7fe9c4f4bd475edae4f`.
+It is independent of the outer-transport module and remains unverified until
+its own Colab focal and audit complete; it changes no counter.
 
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line

@@ -35145,10 +35145,22 @@ failure and not evidence of success.
 
 A fresh diagnostic v1 rerun opened at `2026-08-14T09:28:49.832106Z` with the
 same runner, source checkpoint, blob hashes, toolchain and pins.  No source or
-claim changed between the two attempts.  Both modules remain PRE-VALIDATION
-until a complete diagnostic and a subsequent single cold seal succeed.  No
-terminal producer is added; counters remain exactly `20/41`,
-`TermSource = 0`, with window 15 compatible but unattained.
+claim changed between the two attempts.  It completed green: the focal exited
+zero after `1469.267 s` with literal terminal line
+`Build completed successfully (8486 jobs).`; the audit exited zero after
+`12.680 s` and printed exactly six copies of
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`c4ca6bf8d59e3f3d7b4b410c0bb5c0eb02e079be9634bbde1c6d14c6e0a9c06c`;
+the deterministic archive SHA-256 is
+`14300045fdc62cabaf5962b005e6a3dcb968aa27f78a375a46932cbcf076a72b`.
+`FINAL_STATUS=PASS` and `RUNTIME_UNASSIGN_REQUESTED=1` were emitted.  The
+notebook's final `SystemExit: 0` is the base runner returning its successful
+status, not a failed stage.
+
+This is diagnostic evidence only.  Both modules remain PRE-VALIDATION until
+the subsequent single cold seal succeeds.  No terminal producer is added;
+counters remain exactly `20/41`, `TermSource = 0`, with window 15 compatible
+but unattained.
 
 ## Addendum 775 (2026-08-14, **typed-kernel reindex algebra PRE-VALIDATION; independent of outer transport; 20/41 unchanged**)
 

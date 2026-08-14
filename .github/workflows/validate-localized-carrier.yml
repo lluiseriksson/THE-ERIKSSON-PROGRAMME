@@ -1,4 +1,4 @@
-name: Validate canonical finite PiLp complexification
+name: Validate finite PiLp complex outer transport
 
 on:
   workflow_dispatch:
@@ -13,15 +13,15 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 9e2b9b7f8e4ef941330587dab8bf848d25b3159d
+  SOURCE_SHA: 5f13c04ae1b3bdb97fe17d25055f28509b2416ee
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    finite-pilp-canonical-complexification
+    finite-pilp-complex-outer-transport
 
 jobs:
-  finite-pilp-canonical-complexification:
+  finite-pilp-complex-outer-transport:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -86,7 +86,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-finite-pilp-canonical-complexification-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-finite-pilp-complex-outer-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -120,8 +120,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/FinitePiLpCanonicalComplexification.lean \
-            YangMills/RG/FinitePiLpCanonicalComplexificationAudit.lean \
+            YangMills/RG/FinitePiLpCanonicalComplexificationOuterTransport.lean \
+            YangMills/RG/FinitePiLpCanonicalComplexificationOuterTransportAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -143,10 +143,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage finite_pilp_canonical_complexification_focal \
-            lake build YangMills.RG.FinitePiLpCanonicalComplexification
-          run_stage finite_pilp_canonical_complexification_audit \
-            lake env lean YangMills/RG/FinitePiLpCanonicalComplexificationAudit.lean
+          run_stage finite_pilp_complex_outer_transport_focal \
+            lake build YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport
+          run_stage finite_pilp_complex_outer_transport_audit \
+            lake env lean YangMills/RG/FinitePiLpCanonicalComplexificationOuterTransportAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -160,14 +160,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "finite_pilp_canonical_complexification_audit.log": 14,
+              "finite_pilp_complex_outer_transport_audit.log": 6,
           }
           focal = (Path("evidence") /
-              "finite_pilp_canonical_complexification_focal.log").read_text(
+              "finite_pilp_complex_outer_transport_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "FinitePiLpCanonicalComplexification.lean:"
+              "FinitePiLpCanonicalComplexificationOuterTransport.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -201,17 +201,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              finite-pilp-canonical-complexification-evidence.tar.gz
-          sha256sum finite-pilp-canonical-complexification-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              finite-pilp-complex-outer-transport-evidence.tar.gz
+          sha256sum finite-pilp-complex-outer-transport-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: finite-pilp-canonical-complexification-${{ env.SOURCE_SHA }}
+          name: finite-pilp-complex-outer-transport-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            finite-pilp-canonical-complexification-evidence.tar.gz
+            finite-pilp-complex-outer-transport-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -220,4 +220,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-finite-pilp-canonical-complexification-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-finite-pilp-complex-outer-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
