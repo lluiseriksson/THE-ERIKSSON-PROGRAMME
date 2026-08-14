@@ -35023,3 +35023,26 @@ Diagnostic v3 runner checkpoint is
 The audit now contains fourteen declarations and remains pending Colab.
 No terminal producer is added; counters remain exactly `20/41`,
 `TermSource = 0`, with window 15 compatible but unattained.
+
+## Addendum 770 (2026-08-14, **canonical finite `PiLp` complexification diagnostic v3 FAIL on surplus tactic; PRE-VALIDATION repair; 20/41 unchanged**)
+
+Colab diagnostic v3 checked out exact source
+`339d8f56da1d594ba6ef75adb8a975e5d3bb9e12`, verified the runner/source
+hashes and exact toolchain/Mathlib pins, and reduced the focal to one error:
+`FinitePiLpCanonicalComplexification.lean:184:6: No goals to be solved`.
+The preceding `simp` had already closed the second imaginary-coordinate
+branch, so its following `ring` tactic was surplus.  The focal exited one
+after `1342.107 s`; the audit did not run.  Evidence SHA-256 is
+`ca403183eedca95a0dcfa236ca9b1c57d2f60a57d446d7d87faaa9ebd344b9de`;
+the deterministic archive SHA-256 is
+`e16e04bf0ef2f8716c840dc837ad05f945015b27ce6ad3ccdedc6579f11caade`.
+`FINAL_STATUS=FAIL` and `RUNTIME_UNASSIGN_REQUESTED=1` were emitted.
+
+PRE-VALIDATION repair checkpoint
+`9e2b9b7f8e4ef941330587dab8bf848d25b3159d` removes only that already-closed
+tactic.  The source/audit Git-blob SHA-256 are
+`054f1de2cd6637cc06a4af1be8850b36a1d0b6fbe4ed792b40cb12a263638f30`
+and `1f50d5911571e9b27f8b44ac2a10ed809ac2bd0a6fb1d385032caa96a0988927`.
+The fourteen-declaration audit remains pending Colab.  No terminal producer
+is added; counters remain exactly `20/41`, `TermSource = 0`, with window 15
+compatible but unattained.

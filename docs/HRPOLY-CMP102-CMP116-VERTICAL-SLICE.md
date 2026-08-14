@@ -10469,3 +10469,14 @@ diagnostic v3 runner checkpoint is
 `f487238ffbd8b92b0bd7eea7b87a096bf5beb1b7`, with Git-blob SHA-256
 `ca4568634ef31b0ac4bb4b114485a8179f3a5d7a8f5850777950e67c5d734464`.
 The fourteen-declaration audit remains pending Colab.  Counters are unchanged.
+
+Diagnostic v3 on exact source `339d8f56da1d594ba6ef75adb8a975e5d3bb9e12`
+failed after `1342.107 s` only because a `ring` tactic followed a `simp` that
+had already closed the goal.  Evidence/archive SHA-256 are
+`ca403183eedca95a0dcfa236ca9b1c57d2f60a57d446d7d87faaa9ebd344b9de`
+and `e16e04bf0ef2f8716c840dc837ad05f945015b27ce6ad3ccdedc6579f11caade`.
+PRE-VALIDATION repair `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
+removes only the surplus tactic; source/audit Git-blob SHA-256 are
+`054f1de2cd6637cc06a4af1be8850b36a1d0b6fbe4ed792b40cb12a263638f30`
+and `1f50d5911571e9b27f8b44ac2a10ed809ac2bd0a6fb1d385032caa96a0988927`.
+The fourteen-declaration audit remains pending Colab.  Counters are unchanged.

@@ -30,8 +30,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "finite-pilp-canonical-complexification-v3",
-            "SOURCE_SHA": "339d8f56da1d594ba6ef75adb8a975e5d3bb9e12",
+            "RUNNER_REV": "finite-pilp-canonical-complexification-v4",
+            "SOURCE_SHA": "9e2b9b7f8e4ef941330587dab8bf848d25b3159d",
             "ROOT": Path("/content/hrpoly-finite-pilp-complexification"),
             "EVIDENCE": Path(
                 "/content/hrpoly-finite-pilp-complexification-evidence"
@@ -44,7 +44,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/FinitePiLpCanonicalComplexification.lean":
-                    "f63b952cf9b7ed17ec588f8b1fcbff1b184e802be194a095bbf0bc40eeed07ef",
+                    "054f1de2cd6637cc06a4af1be8850b36a1d0b6fbe4ed792b40cb12a263638f30",
                 "YangMills/RG/FinitePiLpCanonicalComplexificationAudit.lean":
                     "1f50d5911571e9b27f8b44ac2a10ed809ac2bd0a6fb1d385032caa96a0988927",
             },
