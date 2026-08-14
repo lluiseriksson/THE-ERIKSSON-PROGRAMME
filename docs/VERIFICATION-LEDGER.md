@@ -34952,3 +34952,36 @@ and audit.  Physical full-carrier transport, identification with the literal
 complex precision, inverse uniqueness, regional compression, and uniform
 physical `B0` remain open.  No terminal producer is added: counters remain
 exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 768 (2026-08-14, **canonical finite `PiLp` complexification diagnostic v1 FAIL; algebraic repair PRE-VALIDATION; 20/41 unchanged**)
+
+Colab diagnostic v1 checked out exact source
+`525c82fa93744f814a5389c5718b1bdf05fb22aa`, verified the runner and source
+hash gates, Lean `v4.29.0-rc6`, and exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`.  The focal then failed after
+`1084.992 s`; the audit did not run.  The compiler reported only algebraic
+elaboration goals: commuted real summands, distribution through the
+real/imaginary decomposition, the two `ofReal` projections, and the rewrite
+order for composition.  No physical declaration or dictionary occurred in
+the first error.
+
+Evidence SHA-256 is
+`90c4d03ee54a47a0bce1c7bc36334f2e5facaf8749650ec82d05ed971742bed9`;
+the deterministic archive SHA-256 is
+`f4dc743631313fdbdc43f88351f93846df6cf10e5c5e758964a77b1a9b34877f`.
+`FINAL_STATUS=FAIL` and `RUNTIME_UNASSIGN_REQUESTED=1` were emitted.  A prior
+0.009-second UI attempt merely exposed Colab's append-instead-of-replace
+editor behavior and ran no runner, Lean, or Lake; it is instrumentation, not
+compiler evidence.
+
+PRE-VALIDATION repair checkpoint
+`f70de807e6b6ef39fb5e61a3f1c6a4fb9249e622` keeps every definition and
+endpoint unchanged, makes the algebraic rearrangements explicit, and adds
+the two canonical real/imaginary projection lemmas used by the public
+`ofReal` endpoint.  Corrected source/audit Git-blob SHA-256 are
+`02692632a374d3e3d8def326f7297c236319f85b833dc35411113d7ffb1aa428`
+and `278b67fc6922359fd4037527fba16a101d5b21a088d14d725e177a506c5714c7`.
+The audit now contains thirteen declarations.  The corrected brick remains
+PRE-VALIDATION pending a new Colab focal; no terminal producer is added and
+counters remain exactly `20/41`, `TermSource = 0`, with window 15 compatible
+but unattained.

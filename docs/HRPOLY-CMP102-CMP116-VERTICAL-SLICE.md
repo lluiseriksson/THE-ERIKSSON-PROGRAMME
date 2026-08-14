@@ -10424,3 +10424,28 @@ brick does not yet transport to the full physical carrier, identify the
 literal complex precision, invoke inverse uniqueness, or produce a terminal
 field.  Counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
+
+**Step 8b.2 norm gate (design fixed, source not yet written).**  The real
+generated precision and Green are stored on the counting-Hilbert outer space
+`PiLp 2`, whereas the already sealed literal full-box complex precision API
+is packaged on the ordinary finite function space.  These must not be treated
+as definitionally equal or as carrying the same norm.  The specialization
+will first reindex both real operators to the full `FinBox`, transport both
+real inverse laws, canonically complexify them, and then conjugate through
+`PiLp.continuousLinearEquiv`.  Only after that explicit norm transport may the
+Step 7b dictionary identify the resulting precision with the literal complex
+action and inverse uniqueness derive `G Q'^*`.  This is a design gate, not a
+verified producer, and changes no counter.
+
+Diagnostic v1 on exact source `525c82fa93744f814a5389c5718b1bdf05fb22aa`
+reached the focal and failed after `1084.992 s` on five purely algebraic
+elaboration goals; its audit did not run.  Evidence/archive SHA-256 are
+`90c4d03ee54a47a0bce1c7bc36334f2e5facaf8749650ec82d05ed971742bed9`
+and `f4dc743631313fdbdc43f88351f93846df6cf10e5c5e758964a77b1a9b34877f`.
+Corrected PRE-VALIDATION source `f70de807e6b6ef39fb5e61a3f1c6a4fb9249e622`
+retains the construction and all endpoints, makes the commutative-ring
+normalizations explicit, and names the real/imaginary projections of
+`ofReal`.  Corrected source/audit Git-blob SHA-256 are
+`02692632a374d3e3d8def326f7297c236319f85b833dc35411113d7ffb1aa428`
+and `278b67fc6922359fd4037527fba16a101d5b21a088d14d725e177a506c5714c7`;
+the thirteen-declaration audit remains pending Colab.  Counters are unchanged.
