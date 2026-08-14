@@ -133,14 +133,16 @@ theorem cmp99SourceGeneratedPhysicalTerminalDataOfAmbient_complexZeroExtension
   have hactive : D.activeField target = phi (eFull target) := by
     simp [D, cmp99SourceGeneratedPhysicalTerminalDataOfAmbient,
       CMP99SourceGeneratedTerminalComplexFieldData.ofActiveField,
-      LinearIsometryEquiv.piLpCongrLeft_apply]
+      LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
   have hy : y =
       cmp99SourceGeneratedPhysicalStep7bSiteEquiv M Q depth
         (eFull target) := by
-    simp [cmp99SourceGeneratedPhysicalStep7bSiteEquiv, eFull, eActive,
-      target]
+    change y = eActive (eFull.symm (eFull (eActive.symm y)))
+    rw [eFull.symm_apply_apply, eActive.apply_symm_apply]
   rw [hactive, hy]
-  simp [cmp99SourceGeneratedPhysicalStep7bFieldEquiv]
+  simp [cmp99SourceGeneratedPhysicalStep7bFieldEquiv,
+    ContinuousLinearEquiv.piCongrLeft, LinearEquiv.piCongrLeft,
+    Homeomorph.piCongrLeft, Equiv.piCongrLeft]
 
 /-- Literal Step-7b full-box precision, transported only after its physical
 block/coarse factorization has been fixed. -/
@@ -185,7 +187,7 @@ theorem cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex_apply_ofReal
           (M := M) (Q := Q) (Nc := Nc) hM depth
           (fun x => cmp99SUNLieCoordComplexificationLM Nc (phi x)) =
         fun x => cmp99SUNLieCoordComplexificationLM Nc
-          (cmp99SourceGeneratedFlatPhysicalPrecision
+          (cmp99SourceGeneratedFlatPhysicalAmbientPrecision
             (M := M) (Q := Q) (Nc := Nc) hM depth phi x) := by
     funext y
     ext a
