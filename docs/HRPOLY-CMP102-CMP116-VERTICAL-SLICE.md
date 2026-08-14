@@ -10648,10 +10648,15 @@ complex inverse data.  Its source/audit Git-blob SHA-256 are
 and `10257b119f42801ba5eafe4d783d2123a1dc8342625308993a7dd18939f9b78c`;
 runner checkpoint `dff0f1fac0c4619eebdf71ed70c8eb94a6131de3` has blob SHA-256
 `eecc4fa6d79f40d383b38fc389738fc6f1bd458dff4f8efd859a4cbebb1cc9b5`.
-It remains PRE-VALIDATION until Colab focal/audit evidence exists.  The
-literal complex precision equality and Step-7b physical dictionary remain
-open, so counters stay exactly `20/41`, `TermSource = 0`, with window 15
-compatible but unattained.
+Diagnostic Colab now passes on that exact source: focal exit zero after
+`1574.640 s`, literal terminal line
+`Build completed successfully (8625 jobs).`, and audit exit zero after
+`18.365 s` with four exact permitted axiom trios.  Evidence/archive SHA-256
+are `0c13e1abfc8bdb914d81e883e9d379fe9727f108287c6bc8dbc60d4b08f5d69b`
+and `6415dbfd6eec221e2bb0aebe1bd2069517b9075383ed204943b83770230a36d8`.
+It remains PRE-VALIDATION until its cold seal.  The literal complex precision
+equality and Step-7b physical dictionary remain open, so counters stay
+exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.
 
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line

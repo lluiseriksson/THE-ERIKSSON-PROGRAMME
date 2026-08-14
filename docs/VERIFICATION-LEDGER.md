@@ -35377,7 +35377,14 @@ Diagnostic runner checkpoint is
 `dff0f1fac0c4619eebdf71ed70c8eb94a6131de3`, with Git-blob SHA-256
 `eecc4fa6d79f40d383b38fc389738fc6f1bd458dff4f8efd859a4cbebb1cc9b5`.
 The exact text/import guards and runner syntax gate pass locally; no Lean or
-Lake ran on Windows.  The module remains PRE-VALIDATION pending its Colab
-focal and audit.  This is item 3 of the finite-carrier route only; it does not
-identify the complexified precision with the literal Step-7b physical
-precision, and no terminal counter moves.
+Lake ran on Windows.  Diagnostic Colab on that exact source is green: focal
+exit zero after `1574.640 s`, literal terminal line
+`Build completed successfully (8625 jobs).`, and audit exit zero after
+`18.365 s` with four exact copies of
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`0c13e1abfc8bdb914d81e883e9d379fe9727f108287c6bc8dbc60d4b08f5d69b`
+and `6415dbfd6eec221e2bb0aebe1bd2069517b9075383ed204943b83770230a36d8`.
+`FINAL_STATUS=PASS`; the runtime requested unassignment and was closed.
+PRE-VALIDATION remains pending the single cold seal.  This is item 3 of the
+finite-carrier route only; it does not identify the complexified precision
+with the literal Step-7b physical precision, and no terminal counter moves.
