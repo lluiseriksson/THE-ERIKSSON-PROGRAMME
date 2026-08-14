@@ -35404,7 +35404,7 @@ marks are removed.  This seals item 3 of the finite-carrier route; it still
 does not identify the complexified precision with the literal Step-7b
 physical precision, and no terminal counter moves.
 
-## Addendum 783 (2026-08-14, **Step-7b ambient complex precision dictionary repaired; terminal cold seal in flight; 20/41 unchanged**)
+## Addendum 783 (2026-08-14, **Step-7b ambient complex precision dictionary cold FAIL; second explicit repair PRE-VALIDATION; 20/41 unchanged**)
 
 Initial PRE-VALIDATION source `e61acbf1ac9a6d42f067ed20b083239e827b30b7`
 added
@@ -35442,8 +35442,24 @@ restart, the prepared single cold terminal run
 [`31807277587`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31807277587)
 was launched under workflow vehicle
 `d34ca808c919f6e49ad13b464ffa16ca83764a27`.  It checks out the exact repair
-source with project-graph restore disabled.  Until that run emits a complete
-focal, eight-block axiom audit, durable archive and `FINAL_STATUS=PASS`, both
-PRE-VALIDATION marks remain and item 4 is not sealed.  This changes no
-terminal producer: counters remain exactly `20/41`, `TermSource = 0`, with
-window 15 compatible but unattained.
+source with project-graph restore disabled.  Restore was skipped and 8,635
+dependencies compiled, but the new target exited one after `1,911 s`; the
+audit and PASS packager did not run.  Durable artifact id `9222725698` has
+GitHub digest
+`97dc73c3ae255cd748112afab4ef82806ab3aac19afefeb9d12670f4ca20589f`;
+the focal-log SHA-256 is
+`90b07e9c9fed94c454b3f144a0b2caf055e55234f9cfe02118032351a034efc8`.
+There is deliberately no terminal archive or `FINAL_STATUS=PASS`.
+
+The four reported atoms are elaboration defects in the new module, not new
+hypotheses: evaluation of `piLpCongrLeft` at the transported site, two exact
+equivalence cancellations, and an accidental reference to the active
+precision instead of the already constructed ambient precision.  Repair
+checkpoint `6ae54d1a5a0a179cd2cf3ff4a5b89bfe35fc9aee` names those reductions and
+changes no declaration statement.  Its source/audit Git-blob SHA-256 are
+`b6648fc79b81b32cf5bb53701d27400aba61f8feeb2aa9e30cf99ed7151aee58`
+and `43ce7b06a054c2401a6cf8d07ea9d89d449212eba1fe02a6fe1bae9b8453c78f`.
+The exact two-file text/import guard passes; no Lean or Lake ran on Windows.
+Both PRE-VALIDATION marks remain and item 4 is not sealed pending a newly
+prepared validation.  This changes no terminal producer: counters remain
+exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.
