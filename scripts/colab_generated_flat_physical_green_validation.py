@@ -30,8 +30,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-flat-physical-green-v1",
-            "SOURCE_SHA": "8712e1a0a3515bd32b021b6aecd990ea1b1715c0",
+            "RUNNER_REV": "generated-flat-physical-green-v2",
+            "SOURCE_SHA": "3d5d39a90a968a4bdbb9be49432c6a3378e2147a",
             "ROOT": Path("/content/hrpoly-generated-flat-physical-green"),
             "EVIDENCE": Path(
                 "/content/hrpoly-generated-flat-physical-green-evidence"
@@ -44,7 +44,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreen.lean":
-                    "82946bb75066a9b721685bb115ea7d171bbe8331024e3a44605fa73eed857528",
+                    "b3ba8b8d1fae7c689d4f4a7ed93eb733e6cb639d67d159f97355ba95c09c80c7",
                 "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenAudit.lean":
                     "6bb3b44d59db6b64b29dd235a0900a66be76738dbfb64935eb675bbc2a4d53a6",
             },
