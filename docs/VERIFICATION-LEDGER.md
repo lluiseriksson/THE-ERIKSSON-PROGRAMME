@@ -35359,7 +35359,7 @@ exits are zero.  Only the source/audit PRE-VALIDATION marks are removed.
 This seals item 2 of the finite-carrier route, not its complexification or
 Step-7b physical dictionary; no terminal counter moves.
 
-## Addendum 782 (2026-08-14, **generated flat ambient Green complexification PRE-VALIDATION; both complex inverse laws explicit; 20/41 unchanged**)
+## Addendum 782 (2026-08-14, **generated flat ambient Green complexification cold-sealed; both complex inverse laws explicit; 20/41 unchanged**)
 
 PRE-VALIDATION source checkpoint
 `0eae1b434ef037cae73995c530a79186e4041921` adds
@@ -35385,6 +35385,21 @@ exit zero after `1574.640 s`, literal terminal line
 `0c13e1abfc8bdb914d81e883e9d379fe9727f108287c6bc8dbc60d4b08f5d69b`
 and `6415dbfd6eec221e2bb0aebe1bd2069517b9075383ed204943b83770230a36d8`.
 `FINAL_STATUS=PASS`; the runtime requested unassignment and was closed.
-PRE-VALIDATION remains pending the single cold seal.  This is item 3 of the
-finite-carrier route only; it does not identify the complexified precision
-with the literal Step-7b physical precision, and no terminal counter moves.
+The single terminal cold run
+[`31799867272`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31799867272)
+checked out that exact source under workflow vehicle
+`fbcd540df85af6dfd2f0beb5abdd324ff7bc4ebc`.  Project-graph restore and save
+were both skipped.  It emitted the same literal terminal line
+`Build completed successfully (8625 jobs).`; the audit exited zero with the
+same four exact permitted axiom trios.
+
+Durable artifact id `9219744556` has GitHub archive digest
+`b0f766cb00de0212da0cdab0fca448c19b6a3ccf8159dda254d69a6c2f26a461`.
+The deterministic evidence archive has SHA-256
+`5e1ed7511e81d1d1674f6f3394bb67c4ef137aaa0e866183ee098b2e3a4a28c7`;
+its declared hash agrees with the downloaded file and all thirteen
+`SHA256SUMS` entries verify with zero mismatches.  `FINAL_STATUS=PASS`,
+Mathlib is exact, and both stage exits are zero.  Only the two PRE-VALIDATION
+marks are removed.  This seals item 3 of the finite-carrier route; it still
+does not identify the complexified precision with the literal Step-7b
+physical precision, and no terminal counter moves.

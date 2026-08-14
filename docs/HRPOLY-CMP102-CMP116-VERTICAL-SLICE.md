@@ -10654,9 +10654,15 @@ Diagnostic Colab now passes on that exact source: focal exit zero after
 `18.365 s` with four exact permitted axiom trios.  Evidence/archive SHA-256
 are `0c13e1abfc8bdb914d81e883e9d379fe9727f108287c6bc8dbc60d4b08f5d69b`
 and `6415dbfd6eec221e2bb0aebe1bd2069517b9075383ed204943b83770230a36d8`.
-It remains PRE-VALIDATION until its cold seal.  The literal complex precision
-equality and Step-7b physical dictionary remain open, so counters stay
-exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.
+Cold run `31799867272` checked out that exact source with project-graph
+restore/save skipped and emitted literal terminal line
+`Build completed successfully (8625 jobs).`; its four audited declarations
+have the exact permitted axiom trio.  Deterministic evidence archive SHA-256
+is `5e1ed7511e81d1d1674f6f3394bb67c4ef137aaa0e866183ee098b2e3a4a28c7`,
+with thirteen verified entries and zero mismatches.  The PRE-VALIDATION marks
+are retired.  The literal complex precision equality and Step-7b physical
+dictionary remain open, so counters stay exactly `20/41`, `TermSource = 0`,
+with window 15 compatible but unattained.
 
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line

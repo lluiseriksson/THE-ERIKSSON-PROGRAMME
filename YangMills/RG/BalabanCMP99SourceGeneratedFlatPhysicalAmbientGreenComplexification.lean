@@ -9,9 +9,6 @@ import YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport
 /-!
 # Canonical complexification of the generated flat ambient Green
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 The generated flat ambient precision and Green are a two-sided inverse pair
 on the real counting-Hilbert carrier.  This file applies the single canonical
 finite-dimensional complexification to both operators and transports both
