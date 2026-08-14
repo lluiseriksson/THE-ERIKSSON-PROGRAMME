@@ -10350,3 +10350,25 @@ Runner v2 checkpoint `a8fa21c2a0d19b607470a5a475acbf7ff4fd215f`
 has Git-blob SHA-256
 `b916f8e0a175bafe047bb9f2cccce129398b87e682e333e96958bafd42b4ff88`.
 PRE-VALIDATION and all counters remain unchanged pending a new diagnostic.
+
+The second diagnostic checked out exact corrected source
+`3d5d39a90a968a4bdbb9be49432c6a3378e2147a` and eliminated the earlier
+positivity and unused-`simp` failures.  It stopped before the audit solely on
+the two identity conclusions at lines 85 and 104: the wildcard carrier of
+`ContinuousLinearMap.id` left `SUNLieCoord ?m` and hence its additive
+instance underdetermined.  Focal exit was `1` after `2007.911 s`;
+evidence/archive SHA-256 are
+`64c36d521fedb62df09b52877f1fb7bfecece2dab5c6304fd7746f4f132908d1`
+and `0237a2e40c433ebcb9207d046029e417e0f3ff53d1e8bd22aeccdf33c88e6525`.
+The runtime auto-unassigned.
+
+Correction checkpoint `4f69e5b19bbd9173e6f68c672fb17bc1aa21dbeb`
+pins the literal generated active carrier and `SUNLieCoord Nc` in both
+identity conclusions, without changing any statement, constant or
+hypothesis.  Source/audit Git-blob SHA-256 are
+`1c630617b3fc75dfa397dfd971257176942c709fd51ec48a7244da835e170d5e`
+and `6bb3b44d59db6b64b29dd235a0900a66be76738dbfb64935eb675bbc2a4d53a6`.
+Runner v3 checkpoint `eccdb69bb8f6fb5bdfbb81cbecea18f91644d1c6`
+has Git-blob SHA-256
+`dd59d7bb6647474f70a780ef5d98751bfd334064f2ff312301dd8387e826e605`.
+PRE-VALIDATION and all counters remain unchanged pending another diagnostic.

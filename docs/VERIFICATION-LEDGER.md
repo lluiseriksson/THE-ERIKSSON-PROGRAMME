@@ -34854,3 +34854,32 @@ has Git-blob SHA-256
 `b916f8e0a175bafe047bb9f2cccce129398b87e682e333e96958bafd42b4ff88`.
 The two Lean modules remain PRE-VALIDATION.  Counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 765 (2026-08-14, **generated flat Green diagnostic v2 FAIL retained; identity carrier pinned PRE-VALIDATION**)
+
+The second Colab diagnostic checked out exact corrected source
+`3d5d39a90a968a4bdbb9be49432c6a3378e2147a`, verified the pinned
+toolchain, Mathlib and both Git blobs, and again stopped on the focal before
+running the audit.  The earlier positivity and unused-`simp` failures were
+gone.  The only remaining errors were the two identity conclusions at
+`BalabanCMP99SourceGeneratedFlatPhysicalGreen.lean:85:6` and `:104:6`:
+`AddCommMonoid (ActiveGaugeZeroCochain ... (SUNLieCoord ?m))` was stuck
+because the wildcard carrier of `ContinuousLinearMap.id` left `Nc`
+undetermined.  Focal exit was `1` after `2007.911 s`.  Evidence SHA-256 is
+`64c36d521fedb62df09b52877f1fb7bfecece2dab5c6304fd7746f4f132908d1`;
+the deterministic archive SHA-256 is
+`0237a2e40c433ebcb9207d046029e417e0f3ff53d1e8bd22aeccdf33c88e6525`.
+`FINAL_STATUS=FAIL` and `RUNTIME_UNASSIGN_REQUESTED=1` were both emitted.
+
+Correction checkpoint `4f69e5b19bbd9173e6f68c672fb17bc1aa21dbeb`
+replaces only the two wildcard identity carriers by their literal generated
+active carrier with fibre `SUNLieCoord Nc`.  Statements, constants and
+hypotheses are unchanged.  Corrected source/audit Git-blob SHA-256 are
+`1c630617b3fc75dfa397dfd971257176942c709fd51ec48a7244da835e170d5e`
+and `6bb3b44d59db6b64b29dd235a0900a66be76738dbfb64935eb675bbc2a4d53a6`.
+Runner v3 checkpoint `eccdb69bb8f6fb5bdfbb81cbecea18f91644d1c6`
+has Git-blob SHA-256
+`dd59d7bb6647474f70a780ef5d98751bfd334064f2ff312301dd8387e826e605`.
+The exact two-file text and import-prefix guards passed locally; no Lean or
+Lake ran on Windows.  The modules remain PRE-VALIDATION and all counters
+remain unchanged pending a new Colab diagnostic.
