@@ -35403,3 +35403,47 @@ Mathlib is exact, and both stage exits are zero.  Only the two PRE-VALIDATION
 marks are removed.  This seals item 3 of the finite-carrier route; it still
 does not identify the complexified precision with the literal Step-7b
 physical precision, and no terminal counter moves.
+
+## Addendum 783 (2026-08-14, **Step-7b ambient complex precision dictionary repaired; terminal cold seal in flight; 20/41 unchanged**)
+
+Initial PRE-VALIDATION source `e61acbf1ac9a6d42f067ed20b083239e827b30b7`
+added
+`BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary`
+and its eight-declaration audit.  The file constructs the exact composite
+carrier equivalence, pulls every ambient real field back to the generated
+active carrier, and identifies the canonical complexified ambient precision
+with the literal full-box Step-7b precision.  It accepts no complex precision
+equality, full-box field, inverse law, or carrier coincidence as input.
+
+The first exact Colab diagnostic failed in the focal after `2002.511 s`; the
+audit did not run.  Evidence SHA-256 is
+`edfa7b33a9cf704b21c1c9ca16d9ed0b7ca2ac517b8ae531150b6ae99d506e49`
+and archive SHA-256 is
+`3876d25a3d09cb2a4334766b21fc96fd81d08d494b67f59e7b511e2b30de6012`.
+`FINAL_STATUS=FAIL`, and the runtime was unassigned and closed.  The three
+reported atoms were elaboration gaps rather than new hypotheses: explicit
+carrier reindexing of the zero extension, pointwise reduction of canonical
+outer complexification on an `ofReal` field, and the scalar identity
+`z = z.re + I*z.im`.
+
+Repair checkpoint `0fbef2953dafb341fd9c77b7a036f6c03cf1996f`
+names those three equalities without changing a theorem statement.  Its
+source/audit Git-blob SHA-256 are
+`1a51085ba91e9d30ab6defd7ef6f4c5b4cb52d603e5e0078c41e3dc24c840e9c`
+and `43ce7b06a054c2401a6cf8d07ea9d89d449212eba1fe02a6fe1bae9b8453c78f`.
+Runner checkpoint `d5fe42c147fffcf36dcc320f1396702892181f18`
+has Git-blob SHA-256
+`ad4eefb8224046a500ad2953c30da4290383e8a473849606823033d1ff5242ed`.
+Text/import guards and runner syntax pass locally; no Lean or Lake ran on
+Windows.
+
+Because the in-app Colab surface remained unavailable after the application
+restart, the prepared single cold terminal run
+[`31807277587`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31807277587)
+was launched under workflow vehicle
+`d34ca808c919f6e49ad13b464ffa16ca83764a27`.  It checks out the exact repair
+source with project-graph restore disabled.  Until that run emits a complete
+focal, eight-block axiom audit, durable archive and `FINAL_STATUS=PASS`, both
+PRE-VALIDATION marks remain and item 4 is not sealed.  This changes no
+terminal producer: counters remain exactly `20/41`, `TermSource = 0`, with
+window 15 compatible but unattained.
