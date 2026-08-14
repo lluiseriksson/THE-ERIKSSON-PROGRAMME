@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP89Eq248AliasMomentumCycle
+import YangMills.RG.BalabanCMP89Eq245EntireScaledLaplacianPeriodicity
 import YangMills.RG.BalabanCMP89MassZeroCentralFineSymbolNonvanishing
 import YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum
 
@@ -52,7 +53,12 @@ theorem cmp99SourceFlatQprimeCenteredCoarseBaseMomentum_ne_zero
   have haliasReal :
       (cmp99SourceFlatQprimeCenteredCoarseAlias ell mu : ℝ) = 0 := by
     field_simp [hN] at hcoord
-    nlinarith [Real.pi_pos]
+    have hprod :
+        (2 * Real.pi) *
+            (cmp99SourceFlatQprimeCenteredCoarseAlias ell mu : ℝ) = 0 := by
+      simpa using hcoord
+    exact (mul_eq_zero.mp hprod).resolve_left
+      (mul_ne_zero (by norm_num) (ne_of_gt Real.pi_pos))
   have halias : cmp99SourceFlatQprimeCenteredCoarseAlias ell mu = 0 := by
     exact_mod_cast haliasReal
   have hresidue :=
@@ -85,8 +91,8 @@ theorem cmp89Eq245EntireAliasFibre_massZero_ne_zero_centered
   · have hcentral :=
       cmp89Eq249CentralEntireFineSymbol_massZero_ne_zero_ofReal
         (N := M) hpCube hp
-    simpa [p, cmp89Eq249CentralEntireFineSymbol,
-      cmp89Eq248EntireAliasMomentum, cmp89Eq245AliasShift, hm0] using hcentral
+    simpa [p, cmp89Eq249CentralEntireFineSymbol, hm0,
+      cmp89Eq248EntireAliasMomentum_zero] using hcentral
   · have hpos :=
       cmp89Eq245ScaledLaplacianSymbol_noncentral_alias_pos
         (d := d) (N := M) (mass := 0) (m := m.1) (p := p)
@@ -121,10 +127,9 @@ theorem cmp89Eq245EntireAliasFibreNonvanishing_physicalShift_iff
   have hperiod : ∀ q,
       F (cmp89Eq251CoordinateAliasPeriodShift M mu q) = F q := by
     intro q
-    have h := cmp89Eq245EntireScaledLaplacianSymbol_add_int_aliasPeriods
-      (d := d) (M := M) (Nat.pos_of_ne_zero (NeZero.ne M)) mass q
-      (Pi.single mu 1)
-    simpa [F, cmp89Eq251CoordinateAliasPeriodShift, Pi.single_apply] using h
+    exact
+      cmp89Eq245EntireScaledLaplacianSymbol_invNat_coordinateAliasPeriodShift
+        (Nat.pos_of_ne_zero (NeZero.ne M)) mass mu q
   let cycle := cmp89Eq245CenteredAliasVectorCycle d M
     (Nat.pos_of_ne_zero (NeZero.ne M)) mu
   have htransport : ∀ m,
@@ -137,10 +142,17 @@ theorem cmp89Eq245EntireAliasFibreNonvanishing_physicalShift_iff
   constructor
   · intro h m
     have hm := h (cycle.symm m)
+    change F (cmp89Eq248EntireAliasMomentum
+      (cmp89Eq248PhysicalCoordinatePeriodShift mu z)
+        (cycle.symm m).1) ≠ 0 at hm
     rw [htransport (cycle.symm m)] at hm
+    change F (cmp89Eq248EntireAliasMomentum z m.1) ≠ 0
     simpa only [Equiv.apply_symm_apply] using hm
   · intro h m
+    change F (cmp89Eq248EntireAliasMomentum
+      (cmp89Eq248PhysicalCoordinatePeriodShift mu z) m.1) ≠ 0
     rw [htransport m]
+    change F (cmp89Eq248EntireAliasMomentum z (cycle m).1) ≠ 0
     exact h (cycle m)
 
 /-- Coordinatewise integer physical periods preserve complete alias-fibre
@@ -174,7 +186,7 @@ theorem cmp89Eq245EntireAliasFibreNonvanishing_add_intPeriods_iff
   have hsum : Function.Periodic P
       (∑ mu : Fin d, (w mu) • Pi.single mu (2 * Real.pi : ℂ)) := by
     classical
-    induction Finset.univ using Finset.induction_on with
+    induction (Finset.univ : Finset (Fin d)) using Finset.induction_on with
     | empty => simpa [Function.Periodic]
     | @insert mu s hmu ih =>
         rw [Finset.sum_insert hmu]
@@ -213,7 +225,9 @@ theorem cmp89Eq246EntireAliasFineSymbol_massZero_ne_zero_physical
   intro m
   let m' : {m : Fin d → ℤ //
       m ∈ cmp89Eq245CenteredAliasVectors d M} :=
-    ⟨m.1, by simpa only [pow_one] using m.property⟩
+    ⟨m.1, by
+      change m.1 ∈ cmp89Eq245CenteredAliasVectors d (M ^ 1) at m.property
+      simpa only [pow_one] using m.property⟩
   have hm := hunwrapped m'
   rw [hw]
   simpa [cmp89Eq246EntireAliasFineSymbol, pow_one, m'] using hm
