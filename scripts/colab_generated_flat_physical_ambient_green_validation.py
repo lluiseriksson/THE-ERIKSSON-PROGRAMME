@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hash-gated Colab validation for the generated flat ambient Green."""
+"""Hash-gated Colab validation for complexified flat ambient Green."""
 
 from __future__ import annotations
 
@@ -30,47 +30,47 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "generated-flat-physical-ambient-green-v1",
-            "SOURCE_SHA": "9f05ccceaee703297f276edb0068cc3d18c43baf",
-            "ROOT": Path("/content/hrpoly-generated-flat-ambient-green"),
+            "RUNNER_REV": "generated-flat-ambient-green-complexification-v1",
+            "SOURCE_SHA": "0eae1b434ef037cae73995c530a79186e4041921",
+            "ROOT": Path("/content/hrpoly-flat-ambient-green-complex"),
             "EVIDENCE": Path(
-                "/content/hrpoly-generated-flat-ambient-green-evidence"
+                "/content/hrpoly-flat-ambient-green-complex-evidence"
             ),
             "ARCHIVE": Path(
-                "/content/hrpoly-generated-flat-ambient-green-evidence.tar.gz"
+                "/content/hrpoly-flat-ambient-green-complex-evidence.tar.gz"
             ),
             "PATH_MANIFEST": Path(
-                "/content/hrpoly-generated-flat-ambient-green-paths.txt"
+                "/content/hrpoly-flat-ambient-green-complex-paths.txt"
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/"
-                "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen.lean":
-                    "ab1b252314e8b072e3087d5bf2727e8dfd923c7e9043a119d22537bb8c9aa9fc",
+                "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification.lean":
+                    "d1c95125790b2c62c1458737bbfe0912263d37c68c42bd49a0f57eed08b87cb5",
                 "YangMills/RG/"
-                "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenAudit.lean":
-                    "96025fd7c8d82f6a5133d22e3d8a58b85f25c5a6a330ba1680dd0f7e4a30b192",
+                "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexificationAudit.lean":
+                    "10257b119f42801ba5eafe4d783d2123a1dc8342625308993a7dd18939f9b78c",
             },
             "QUEUE": [
                 (
-                    "generated_flat_physical_ambient_green_focal",
+                    "generated_flat_ambient_green_complexification_focal",
                     [
                         "lake",
                         "build",
                         "YangMills.RG."
-                        "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen",
+                        "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification",
                     ],
                     None,
                 ),
                 (
-                    "generated_flat_physical_ambient_green_audit",
+                    "generated_flat_ambient_green_complexification_audit",
                     [
                         "lake",
                         "env",
                         "lean",
                         "YangMills/RG/"
-                        "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenAudit.lean",
+                        "BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexificationAudit.lean",
                     ],
-                    3,
+                    4,
                 ),
             ],
             "RECORDS": [],
