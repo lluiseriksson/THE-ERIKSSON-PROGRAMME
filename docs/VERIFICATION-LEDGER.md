@@ -35101,3 +35101,29 @@ not transport through `PiLp.continuousLinearEquiv`, identify the physical
 full-box precision, derive the complex inverse by uniqueness, attain window
 15, or add a terminal producer.  Live counters remain exactly `20/41`,
 `TermSource = 0`, with window 15 compatible but unattained.
+
+## Addendum 773 (2026-08-14, **outer-norm canonical complexification transport PRE-VALIDATION; physical dictionary open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`5f13c04ae1b3bdb97fe17d25055f28509b2416ee` adds
+`FinitePiLpCanonicalComplexificationOuterTransport` and its six-declaration
+audit.  The construction conjugates the sealed canonical complexification
+through the explicit `PiLp.continuousLinearEquiv`, proves exact preservation
+of composition and identity after that conjugation, and transports either
+order of an exact real inverse law.  It accepts no physical precision, Green
+operator, inverse equality, or carrier dictionary.
+
+The exact source/audit Git-blob SHA-256 values are
+`a3e6a28db47137db9a9ed6792a1bbe75fa7aae51058c9b216b0c5d5623c034aa`
+and `25c248ec03123bc67fe67a79ad58bfbfed6e1feac1da135a3b74728a25b7bb31`.
+The two-file text/import guard passes from Git objects.  Diagnostic runner
+checkpoint is `5759e0d2fd11ab18cdbbfbb34cc6259a4905a7ec`; its Git-blob
+SHA-256 is
+`3adcf357148dd1ffa8ebc794b0d8fee44692985f35981c28f5f51874bd6e8343`.
+No Lean or Lake ran on Windows.
+
+Both Lean modules remain PRE-VALIDATION pending a Colab focal and audit.
+The subsequent real reindexing, Step 7b physical precision identification,
+inverse uniqueness and literal `G Q'^*` are still open.  No terminal producer
+is added; counters remain exactly `20/41`, `TermSource = 0`, with window 15
+compatible but unattained.

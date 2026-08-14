@@ -10486,6 +10486,24 @@ retired.  The explicit outer-space conjugation, physical precision
 identification, inverse uniqueness and literal `G Q'^*` remain open; this
 seal moves neither `20/41` nor window 15 and leaves `TermSource = 0`.
 
+### Step 8b.2: explicit outer-norm transport (PRE-VALIDATION)
+
+Source checkpoint `5f13c04ae1b3bdb97fe17d25055f28509b2416ee`
+conjugates the sealed canonical complexification through Mathlib's explicit
+`PiLp.continuousLinearEquiv`.  It proves exact composition and identity laws
+on the ordinary finite function space and a single ordered theorem that
+transports either real inverse law.  Source/audit Git-blob SHA-256 are
+`a3e6a28db47137db9a9ed6792a1bbe75fa7aae51058c9b216b0c5d5623c034aa`
+and `25c248ec03123bc67fe67a79ad58bfbfed6e1feac1da135a3b74728a25b7bb31`.
+Diagnostic runner checkpoint
+`5759e0d2fd11ab18cdbbfbb34cc6259a4905a7ec` has Git-blob SHA-256
+`3adcf357148dd1ffa8ebc794b0d8fee44692985f35981c28f5f51874bd6e8343`.
+
+This is a norm/carrier transport brick only.  It does not identify the
+reindexed real precision with the literal physical precision, derive the
+literal Green by inverse uniqueness, attain window 15, move `20/41`, or
+inhabit a `TermSource`.  Both modules remain PRE-VALIDATION pending Colab.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after
