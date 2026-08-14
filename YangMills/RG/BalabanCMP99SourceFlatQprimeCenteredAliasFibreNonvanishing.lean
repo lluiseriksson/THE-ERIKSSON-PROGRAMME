@@ -91,8 +91,11 @@ theorem cmp89Eq245EntireAliasFibre_massZero_ne_zero_centered
   · have hcentral :=
       cmp89Eq249CentralEntireFineSymbol_massZero_ne_zero_ofReal
         (N := M) hpCube hp
-    simpa [p, cmp89Eq249CentralEntireFineSymbol, hm0,
-      cmp89Eq248EntireAliasMomentum_zero] using hcentral
+    have hmZeroAlias : m.1 = cmp89Eq249ZeroAlias d := by
+      funext mu
+      simpa [cmp89Eq249ZeroAlias] using congrFun hm0 mu
+    rw [hmZeroAlias, cmp89Eq248EntireAliasMomentum_zero]
+    simpa [p, cmp89Eq249CentralEntireFineSymbol] using hcentral
   · have hpos :=
       cmp89Eq245ScaledLaplacianSymbol_noncentral_alias_pos
         (d := d) (N := M) (mass := 0) (m := m.1) (p := p)
@@ -152,7 +155,6 @@ theorem cmp89Eq245EntireAliasFibreNonvanishing_physicalShift_iff
     change F (cmp89Eq248EntireAliasMomentum
       (cmp89Eq248PhysicalCoordinatePeriodShift mu z) m.1) ≠ 0
     rw [htransport m]
-    change F (cmp89Eq248EntireAliasMomentum z (cycle m).1) ≠ 0
     exact h (cycle m)
 
 /-- Coordinatewise integer physical periods preserve complete alias-fibre
@@ -187,7 +189,7 @@ theorem cmp89Eq245EntireAliasFibreNonvanishing_add_intPeriods_iff
       (∑ mu : Fin d, (w mu) • Pi.single mu (2 * Real.pi : ℂ)) := by
     classical
     induction (Finset.univ : Finset (Fin d)) using Finset.induction_on with
-    | empty => simpa [Function.Periodic]
+    | empty => simp [Function.Periodic]
     | @insert mu s hmu ih =>
         rw [Finset.sum_insert hmu]
         exact ((hcoordinate mu).zsmul (w mu)).add_period ih
@@ -223,11 +225,13 @@ theorem cmp89Eq246EntireAliasFineSymbol_massZero_ne_zero_physical
         (cmp99SourceFlatQprimeCenteredCoarseBaseMomentum ell mu : ℂ)) w).2
       hcentered
   intro m
+  have hmMem :
+      m.1 ∈ cmp89Eq245CenteredAliasVectors d (M ^ 1) := m.property
+  have hmMem' : m.1 ∈ cmp89Eq245CenteredAliasVectors d M := by
+    simpa only [pow_one] using hmMem
   let m' : {m : Fin d → ℤ //
       m ∈ cmp89Eq245CenteredAliasVectors d M} :=
-    ⟨m.1, by
-      change m.1 ∈ cmp89Eq245CenteredAliasVectors d (M ^ 1) at m.property
-      simpa only [pow_one] using m.property⟩
+    ⟨m.1, hmMem'⟩
   have hm := hunwrapped m'
   rw [hw]
   simpa [cmp89Eq246EntireAliasFineSymbol, pow_one, m'] using hm
