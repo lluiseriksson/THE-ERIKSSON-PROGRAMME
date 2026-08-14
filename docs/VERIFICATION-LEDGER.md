@@ -35679,3 +35679,30 @@ This evidence retires the three source PRE-VALIDATION headers.  It does not
 prove complete physical fibre nonvanishing, the literal stabilized
 denominator, or Green identification; it does not attain window 15 or add a
 terminal producer.  Counters remain exactly `20/41`, `TermSource = 0`.
+
+## Addendum 785 (2026-08-14, **Step-7b item-5 gate 4 PRE-VALIDATION; complete fine fibre only; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`12bdcd473d8b9892a0a3f5a825cb78461734472a` adds the complete zero-mass fine
+alias-fibre nonvanishing gate and a five-declaration audit.  The proof first
+derives nonzero signed centered coarse momentum from the exact residue
+dictionary.  It treats the zero reciprocal alias with the cold-sealed central
+mass-zero theorem and every nonzero alias with the cold-sealed noncentral real
+gap.  It then proves that *complete-fibre nonvanishing* is periodic under one
+physical `2*pi` coordinate shift by explicitly cycling the finite alias
+carrier, accumulates coordinatewise integer shifts with
+`Function.Periodic.zsmul`, and reaches the literal uncentered physical base
+momentum.
+
+The source and audit Git-blob SHA-256 values, computed from `git cat-file` at
+the source checkpoint rather than from the CRLF worktree, are
+`5d31ec998b7dc5208de221f4161a003cb3ca9e22ac48b74ab2ce83884029cbad`
+and
+`465f765819ba56465c8854ce9f0ba138643c22464f7365665e0992eafb1c3846`.
+The exact two-file textual overlay gate reports `FILES=2 FAILURES=0`.
+
+No stabilized denominator is declared periodic or transported.  The literal
+stabilized denominator, Green identification, window 15 and every terminal
+producer remain open.  Both new modules retain visible PRE-VALIDATION headers
+pending a fresh Colab focal and audit.  Counters remain exactly `20/41`,
+`TermSource = 0`.

@@ -10659,6 +10659,20 @@ fibre nonvanishing, the stabilized denominator, Green identification, window
 15, every terminal field and `TermSource` remain open; counters stay exactly
 `20/41`, `TermSource = 0`.
 
+Item-5 gate 4 is now present at PRE-VALIDATION source checkpoint
+`12bdcd473d8b9892a0a3f5a825cb78461734472a`.  It proves, subject to compiler
+validation, that a nonzero coarse mode gives a nonzero signed centered base
+momentum; combines the central mass-zero lemma with the noncentral real gap
+over the complete literal alias fibre; and transports that *fibre-wide
+property* through coordinatewise integer physical periods using the sealed
+alias-cycle permutation.  It never transports the stabilized denominator.
+The exact source/audit Git-blob SHA-256 values are
+`5d31ec998b7dc5208de221f4161a003cb3ca9e22ac48b74ab2ce83884029cbad`
+and
+`465f765819ba56465c8854ce9f0ba138643c22464f7365665e0992eafb1c3846`.
+Both modules retain PRE-VALIDATION pending a fresh Colab focal and its
+five-declaration audit.  This checkpoint changes no terminal counter.
+
 Static refinement after reading the exact mass-uniform APIs: gate 5 does not
 need a new positive-mass or strip estimate at the centered representative.
 `cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform` already applies
