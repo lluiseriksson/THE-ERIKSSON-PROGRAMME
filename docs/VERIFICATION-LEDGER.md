@@ -35242,3 +35242,23 @@ Diagnostic v3 runner checkpoint is
 `8f888af0f5896a6ed4d96415b874a77c7935c6352d1c83dc5c55188b8064146c`.
 PRE-VALIDATION remains until the warning-free source passes and is cold
 sealed.  Counters remain unchanged.
+
+## Addendum 778 (2026-08-14, **typed-kernel reindex diagnostic v3 PASS without new-module warnings; cold seal pending; 20/41 unchanged**)
+
+Colab diagnostic v3 on exact source
+`510ee90e913a44c7ea361ef0ec1c99b902d6911e` passed from a fresh CPU/high-RAM
+runtime.  The focal exited zero after `146.121 s` with literal terminal line
+`Build completed successfully (8173 jobs).`; the audit exited zero after
+`9.167 s` and printed exactly three copies of
+`[propext, Classical.choice, Quot.sound]`.  The repaired source emitted no
+new-module warning.  Evidence/archive SHA-256 are
+`6c3cb21c6d5e02d9a71016993650d0964705ecd5ceeda587162465ba819fa1e1`
+and `da2de3eb77360738ea2a8ba5ae6d63f32b2f3b6efba4974884df4cfa68632387`.
+`FINAL_STATUS=PASS` and `RUNTIME_UNASSIGN_REQUESTED=1` were emitted and the
+Colab tab was closed after release.
+
+This remains diagnostic evidence.  The two PRE-VALIDATION marks stay in
+place until a single cold checkout at the same source passes with both
+project-cache restore and save skipped.  This carrier algebra adds no
+physical precision or Green dictionary, terminal producer, or counter
+movement.

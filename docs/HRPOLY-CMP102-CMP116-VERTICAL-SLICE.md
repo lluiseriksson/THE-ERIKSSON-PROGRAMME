@@ -10592,6 +10592,13 @@ without changing a public statement; its exact source Git-blob SHA-256 is
 The module remains PRE-VALIDATION pending warning-free diagnostic v3 and its
 cold seal.  This still changes no terminal counter.
 
+Warning-free diagnostic v3 on exact source
+`510ee90e913a44c7ea361ef0ec1c99b902d6911e` is green: focal `EXIT=0` with
+literal terminal line `Build completed successfully (8173 jobs).`, audit
+`EXIT=0`, three permitted axiom trios, and no warning from the new source.
+It remains diagnostic only pending the one cold seal; item 2 and every
+physical endpoint remain open.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after

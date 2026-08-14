@@ -1,4 +1,4 @@
-name: Validate finite PiLp complex outer transport
+name: Validate finite PiLp typed-kernel reindex algebra
 
 on:
   workflow_dispatch:
@@ -13,15 +13,15 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 5f13c04ae1b3bdb97fe17d25055f28509b2416ee
+  SOURCE_SHA: 510ee90e913a44c7ea361ef0ec1c99b902d6911e
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    finite-pilp-complex-outer-transport
+    finite-pilp-typed-kernel-reindex-algebra
 
 jobs:
-  finite-pilp-complex-outer-transport:
+  finite-pilp-typed-kernel-reindex-algebra:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -86,7 +86,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-finite-pilp-complex-outer-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-finite-pilp-typed-kernel-reindex-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -120,8 +120,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/FinitePiLpCanonicalComplexificationOuterTransport.lean \
-            YangMills/RG/FinitePiLpCanonicalComplexificationOuterTransportAudit.lean \
+            YangMills/RG/FinitePiLpTypedKernelReindexAlgebra.lean \
+            YangMills/RG/FinitePiLpTypedKernelReindexAlgebraAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -143,10 +143,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage finite_pilp_complex_outer_transport_focal \
-            lake build YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport
-          run_stage finite_pilp_complex_outer_transport_audit \
-            lake env lean YangMills/RG/FinitePiLpCanonicalComplexificationOuterTransportAudit.lean
+          run_stage finite_pilp_typed_kernel_reindex_algebra_focal \
+            lake build YangMills.RG.FinitePiLpTypedKernelReindexAlgebra
+          run_stage finite_pilp_typed_kernel_reindex_algebra_audit \
+            lake env lean YangMills/RG/FinitePiLpTypedKernelReindexAlgebraAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -160,14 +160,14 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "finite_pilp_complex_outer_transport_audit.log": 6,
+              "finite_pilp_typed_kernel_reindex_algebra_audit.log": 3,
           }
           focal = (Path("evidence") /
-              "finite_pilp_complex_outer_transport_focal.log").read_text(
+              "finite_pilp_typed_kernel_reindex_algebra_focal.log").read_text(
                   encoding="utf-8")
           source_warning = (
               "warning: YangMills/RG/"
-              "FinitePiLpCanonicalComplexificationOuterTransport.lean:"
+              "FinitePiLpTypedKernelReindexAlgebra.lean:"
           )
           if source_warning in focal:
               raise SystemExit("NEW_MODULE_LINTER_WARNING")
@@ -201,17 +201,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              finite-pilp-complex-outer-transport-evidence.tar.gz
-          sha256sum finite-pilp-complex-outer-transport-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              finite-pilp-typed-kernel-reindex-algebra-evidence.tar.gz
+          sha256sum finite-pilp-typed-kernel-reindex-algebra-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: finite-pilp-complex-outer-transport-${{ env.SOURCE_SHA }}
+          name: finite-pilp-typed-kernel-reindex-algebra-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            finite-pilp-complex-outer-transport-evidence.tar.gz
+            finite-pilp-typed-kernel-reindex-algebra-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -220,4 +220,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-finite-pilp-complex-outer-transport-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-finite-pilp-typed-kernel-reindex-algebra-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
