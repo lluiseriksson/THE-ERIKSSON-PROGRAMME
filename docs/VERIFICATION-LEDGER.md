@@ -35307,3 +35307,27 @@ marks are removed.  The next physical reindexing brick may now depend on this
 sealed algebra, but no physical dictionary or terminal producer exists yet;
 the counters remain exactly `20/41`, `TermSource = 0`, with window 15
 compatible but unattained.
+
+## Addendum 781 (2026-08-14, **generated flat physical ambient Green PRE-VALIDATION; both real inverse laws explicit; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`9f05ccceaee703297f276edb0068cc3d18c43baf` adds
+`BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen` and its
+three-declaration audit.  It specializes the existing generated physical
+ambient precision to the canonical flat data, reindexes the internally
+constructed flat Green through the same sealed full-site equivalence, and
+uses the cold-sealed typed-kernel algebra to state both ordered inverse laws
+on the literal regional ambient carrier.  It accepts no Green, inverse law,
+carrier equality or operator dictionary as input.
+
+Source/audit Git-blob SHA-256 are
+`ab1b252314e8b072e3087d5bf2727e8dfd923c7e9043a119d22537bb8c9aa9fc`
+and `96025fd7c8d82f6a5133d22e3d8a58b85f25c5a6a330ba1680dd0f7e4a30b192`.
+Diagnostic runner checkpoint is
+`3fc8318dbf88cbdd5101939d06e36a5e3c063651`, with Git-blob SHA-256
+`a340be7a075c4348bc6f09e1ccb7dc247044fd927618725eec568e750a0fe113`.
+The exact text/import guards and runner syntax gate pass locally; no Lean or
+Lake ran on Windows.  The module remains PRE-VALIDATION pending its Colab
+focal and audit.  It is item 2 of the finite carrier route only: no
+complexification or Step-7b physical dictionary is claimed, and no terminal
+counter moves.

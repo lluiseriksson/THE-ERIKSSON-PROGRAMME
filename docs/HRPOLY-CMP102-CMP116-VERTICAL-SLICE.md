@@ -10615,6 +10615,18 @@ mismatches.  Its two PRE-VALIDATION marks are retired.  Item 2 may now be
 built on a sealed parent; the physical precision and Green remain open and
 the counters remain unchanged.
 
+Item 2 now has PRE-VALIDATION source checkpoint
+`9f05ccceaee703297f276edb0068cc3d18c43baf` in
+`BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen`.  The source fixes the
+canonical flat precision internally, transports the internally generated
+Green through `cmp99SourceGeneratedPhysicalFullSiteEquiv`, and retains both
+real inverse laws using the sealed reindex algebra.  Its source/audit
+Git-blob SHA-256 are
+`ab1b252314e8b072e3087d5bf2727e8dfd923c7e9043a119d22537bb8c9aa9fc`
+and `96025fd7c8d82f6a5133d22e3d8a58b85f25c5a6a330ba1680dd0f7e4a30b192`.
+It remains unverified until its own Colab focal and audit pass and does not
+yet enter the complex or Step-7b dictionary.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after
