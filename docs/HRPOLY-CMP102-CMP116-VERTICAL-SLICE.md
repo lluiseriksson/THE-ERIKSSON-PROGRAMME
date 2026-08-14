@@ -10593,6 +10593,35 @@ uncentered physical momentum.  This route keeps the removable central pole
 and the exceptional zero mode visible; treating the stabilized factor as
 periodic would be a false dictionary.
 
+The finite implementation list for item 5 is therefore:
+
+1. prove strict positivity of the literal generated coefficient
+   `cmp99SourceGeneratedFullComplexA 4 M (depth + 1) spacing 0` from the
+   positive source energy coefficient and the positive one-block averaging
+   weight;
+2. construct the coordinatewise signed centered representative of
+   `-ell mod N'`, prove its `|p_mu| <= pi` bound, and exhibit the exact
+   integer `2*pi` displacement to
+   `cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell`;
+3. prove the missing mass-zero central fine-symbol lemma on the centered cube:
+   nonzero momentum implies a strictly positive scaled Laplacian symbol;
+4. combine that central lemma with the existing noncentral gap to obtain
+   nonvanishing for the complete centered alias fibre when `ell != 0`, then
+   transport it coordinatewise by the already sealed alias cycle and integer
+   periodicity (`Function.Periodic.int_mul`);
+5. prove the stabilized denominator directly at `ell = 0`; off zero, derive
+   centered reduced/full nonvanishing by
+   `cmp89Eq249CentralFine_mul_reduced_eq_stabilized`, transport only the full
+   denominator, and recover the literal stabilized factor after proving the
+   two real fine factors nonzero; and
+6. feed those internally produced `hfine` and `hstabilized` facts to
+   `cmp99SourceFlatFullComplexPrecisionStabilizedFieldCLM_eq_inverse_comp`,
+   using the item-3 inverse and item-4 precision equality.  The endpoint must
+   expose no free scalar nonvanishing family.
+
+This list is static design evidence only until item 4 is cold-sealed and each
+new declaration receives its own focal and axiom audit.
+
 Item 1 now has PRE-VALIDATION source checkpoint
 `442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` and a three-declaration audit in
 `FinitePiLpTypedKernelReindexAlgebra`.  Source/audit Git-blob SHA-256 are
