@@ -10372,3 +10372,14 @@ Runner v3 checkpoint `eccdb69bb8f6fb5bdfbb81cbecea18f91644d1c6`
 has Git-blob SHA-256
 `dd59d7bb6647474f70a780ef5d98751bfd334064f2ff312301dd8387e826e605`.
 PRE-VALIDATION and all counters remain unchanged pending another diagnostic.
+
+Diagnostic v3 passed at that exact source and pin.  Focal/audit exits were
+`0/0`; the focal took `1984.233 s` and ended with literal
+`Build completed successfully (8570 jobs).`, while the audit took
+`21.607 s` and printed five permitted
+`[propext, Classical.choice, Quot.sound]` blocks.  Evidence/archive SHA-256
+are `517b244a88682b70b529050d020de9b0a2e27b394b62b3cb8dc6ad4ef7310b86`
+and `895a69000341964c55e4d1a3e304e7a91664c777f15becfda01c876ecd1fea8e`.
+The runtime auto-unassigned.  This is diagnostic evidence only; both modules
+remain PRE-VALIDATION pending one cold seal, and the live counters remain
+exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.

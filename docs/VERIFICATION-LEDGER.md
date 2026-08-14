@@ -34883,3 +34883,26 @@ has Git-blob SHA-256
 The exact two-file text and import-prefix guards passed locally; no Lean or
 Lake ran on Windows.  The modules remain PRE-VALIDATION and all counters
 remain unchanged pending a new Colab diagnostic.
+
+## Addendum 766 (2026-08-14, **generated flat Green diagnostic v3 PASS; cold seal pending; 20/41 unchanged**)
+
+Colab diagnostic v3 checked out exact corrected source
+`4f69e5b19bbd9173e6f68c672fb17bc1aa21dbeb`, verified Lean
+`v4.29.0-rc6`, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b` and both Git blobs, then passed
+the focal and audit with exits `0/0`.  The focal took `1984.233 s` and ended
+with literal `Build completed successfully (8570 jobs).`; the audit took
+`21.607 s`.  All five declarations printed only the permitted axiom set
+`[propext, Classical.choice, Quot.sound]`, including two lists wrapped by
+Lean across output lines, and the normalized sentinel accepted all five.
+The new source emitted no linter warning.
+
+Evidence SHA-256 is
+`517b244a88682b70b529050d020de9b0a2e27b394b62b3cb8dc6ad4ef7310b86`;
+the deterministic archive SHA-256 is
+`895a69000341964c55e4d1a3e304e7a91664c777f15becfda01c876ecd1fea8e`.
+`FINAL_STATUS=PASS` and `RUNTIME_UNASSIGN_REQUESTED=1` were both emitted,
+and the runtime disconnected.  This is diagnostic evidence only: the two
+modules remain PRE-VALIDATION until one cold GitHub seal at the exact source
+is audited.  No terminal producer is added; counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
