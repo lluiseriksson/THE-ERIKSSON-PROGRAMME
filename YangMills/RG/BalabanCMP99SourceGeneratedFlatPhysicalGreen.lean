@@ -50,7 +50,7 @@ theorem cmp99SourceGeneratedFullComplexSpacing_pos
     (M depth : ℕ) [NeZero M] :
     0 < cmp99SourceGeneratedFullComplexSpacing M depth := by
   unfold cmp99SourceGeneratedFullComplexSpacing
-  positivity
+  exact inv_pos.mpr (Nat.cast_pos.mpr (pow_pos (NeZero.pos M) depth))
 
 /-- Literal generated physical Green at the flat background, canonical
 spacing and zero source radius.  Coercivity and every small-field datum are
@@ -72,7 +72,7 @@ noncomputable def cmp99SourceGeneratedFlatPhysicalGreen
     (cmp99SourceFlatZeroClosedBudget (d := d) (M := M) (Nc := Nc)
       (depth + 1))
     cmp99SourceFlatGaugeConfig_zero_small
-    (by simp [spacing])
+    (by simp)
 
 /-- The canonical flat precision followed by its internally generated Green
 is the identity. -/
@@ -83,7 +83,8 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_comp_green
       (cmp99SourceGeneratedFullComplexSpacing M (depth + 1))).comp
         (cmp99SourceGeneratedFlatPhysicalGreen hd hM Omega depth) =
       ContinuousLinearMap.id ℝ _ := by
-  exact cmp99SourceGeneratedPhysicalPrecision_comp_green hd hM Omega depth
+  exact cmp99SourceGeneratedPhysicalPrecision_comp_green
+    (d := d) (M := M) (N := N) (Nc := Nc) hd hM Omega depth
     (cmp99SourceGeneratedFullComplexSpacing_pos M (depth + 1))
     (cmp99SourceFlatGaugeConfig d
       (cmp99RegionalLatticeSize M N (depth + 1)) Nc)
@@ -101,7 +102,8 @@ theorem cmp99SourceGeneratedFlatPhysicalGreen_comp_precision
         (cmp99SourceGeneratedFlatPhysicalPrecision hd hM Omega depth
           (cmp99SourceGeneratedFullComplexSpacing M (depth + 1))) =
       ContinuousLinearMap.id ℝ _ := by
-  exact cmp99SourceGeneratedPhysicalGreen_comp_precision hd hM Omega depth
+  exact cmp99SourceGeneratedPhysicalGreen_comp_precision
+    (d := d) (M := M) (N := N) (Nc := Nc) hd hM Omega depth
     (cmp99SourceGeneratedFullComplexSpacing_pos M (depth + 1))
     (cmp99SourceFlatGaugeConfig d
       (cmp99RegionalLatticeSize M N (depth + 1)) Nc)
