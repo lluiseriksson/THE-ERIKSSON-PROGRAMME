@@ -10415,6 +10415,9 @@ than reintroduced as complex hypotheses.
 Source/audit Git-blob SHA-256 are
 `617a7ca70dfd816a8a64d81c7777eafd145b774436e0cfeaa4b5b29b073aa042`
 and `9727fbcbe80eb53b27e552f67c938f3b3feacb7921f3ceb556f3f229b04dd856`.
+Diagnostic runner checkpoint is
+`14dc50d700565e47bb31345ad28af3f33b2f3fba`; its Git-blob SHA-256 is
+`aa93cdd69a1270024ac74fa78b5254cc36d0996427aa5b8d46c86928b1f9d2fa`.
 The exact two-file text/import guards pass locally; no Lean or Lake ran on
 Windows.  Both modules remain PRE-VALIDATION pending Colab.  This generic
 brick does not yet transport to the full physical carrier, identify the
