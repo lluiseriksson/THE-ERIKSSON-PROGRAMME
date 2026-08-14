@@ -35494,3 +35494,24 @@ Diagnostic-v4 runner checkpoint
 `9f3ba737487e39a4f64bd79a8e7120fd56e5344a8877be85f0208770c9d01d10`.
 The exact overlay guards and runner syntax pass locally; no Lean or Lake ran
 on Windows.  PRE-VALIDATION remains and the counters do not move.
+
+The exact v4 diagnostic reused the same verified Colab account and opened a
+fresh CPU/high-RAM runtime at `2026-08-14T15:21:50Z`.  Every transport,
+toolchain, source, guard, pin, and cache gate again passed.  The focal stopped
+first after `1603.630 s`; the audit did not run.  Evidence SHA-256 is
+`85a20329d18e10d2e30593821cd30a7b53c3b3bfb23e060427ae703c6701ef56`
+and archive SHA-256 is
+`98657fc434225a21bc212227097a01d872682eb52337a21f4bfa44b299736612`.
+`FINAL_STATUS=FAIL`, followed by `RUNTIME_UNASSIGN_REQUESTED=1`.
+
+This run reduced the boundary to two type-level corrections: use the standard
+`ContinuousLinearEquiv.symm_apply_apply` inverse law, and feed the ambient
+field (not its already transported image) to the transported Step-7b operator.
+It also exposed two source warnings, removed before another run.  Repair
+checkpoint `085dafeafb268465ca4fb8f90cbfc61293efb143` changes no theorem
+statement; its source Git-blob SHA-256 is
+`e4738982d3570b957882ae2f358eb81b3db070f8f2c64b8b74ff015d590a89ec`.
+Diagnostic-v5 runner checkpoint
+`ba013a2f298aa260ec11e9b1ac078b6c896b7258` has Git-blob SHA-256
+`d82a9c5b8197c30349f67834ee3bf8319eea2259bdc4cae38e9ef3a0779071a2`.
+PRE-VALIDATION remains and no counter moves.
