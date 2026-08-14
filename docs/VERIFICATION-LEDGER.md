@@ -29357,6 +29357,20 @@ precision, inverse or Green transport.  No terminal producer is added:
 counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained.
 
+## Addendum 762 (2026-08-14, **generated flat physical precision complex dictionary PRE-VALIDATION; step 7b; 20/41 unchanged**)
+
+This PRE-VALIDATION source composes the two already sealed summand
+dictionaries.  It starts from the literal
+`cmp99SourceGeneratedFlatPhysicalPrecisionExplicit`, fixes canonical spacing
+and the retained active field internally, exposes the covariant-Laplacian and
+generated counting-mass summands, and identifies their complexification with
+`cmp99SourceFlatFullComplexPrecisionAction` at scalar mass zero and the exact
+generated averaging coefficient.
+
+No caller-supplied operator equality, inverse or Green identity is accepted.
+The two new Lean modules retain visible PRE-VALIDATION headers pending compiler
+diagnostics.  No terminal producer or counter movement is claimed.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`

@@ -10217,3 +10217,18 @@ its deterministic archive SHA-256 is
 and all `13/13` manifest entries matched.  This cold evidence seals step 7a,
 so only its two PRE-VALIDATION marks are retired.  Generated mass, full
 precision, inverse and Green equalities remain open, with no counter movement.
+
+### Step 7b: generated flat physical precision in full-box coordinates (PRE-VALIDATION)
+
+The next module starts from the literal generated flat physical precision,
+not from two caller-supplied operators.  It unfolds that precision only far
+enough to expose its two summands, applies the sealed step-7a Laplacian
+dictionary and the independently sealed generated counting-mass field
+dictionary, and recognizes their sum as the literal full-box complex
+precision action.  Canonical spacing, active field, both zero extensions,
+generated averaging coefficient and scalar mass zero are fixed internally.
+
+The two budgets remain separate until the endpoint.  No inverse or Green
+equality is asserted.  Both new modules retain visible PRE-VALIDATION headers
+pending compiler diagnostics.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
