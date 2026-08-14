@@ -35612,3 +35612,48 @@ ambient complex precision with the literal Step-7b full-box precision; it
 does not identify the Green, discharge the item-5 nonvanishing gates, attain
 window 15, or add a terminal producer.  Counters remain exactly `20/41`,
 `TermSource = 0`.
+
+## Addendum 784 (2026-08-14, **Step-7b item-5 prerequisites diagnostic PASS; cold seal pending; 20/41 unchanged**)
+
+Three source-facing prerequisites for item 5 are now present: positivity of
+the literal generated full-complex coefficient, the exact signed centered
+coarse-momentum dictionary, and mass-zero nonvanishing of the central fine
+symbol at a nonzero centered real momentum.  None is a terminal producer and
+all three retain their PRE-VALIDATION headers pending one cold terminal seal.
+
+The full diagnostic at source checkpoint
+`e0530945a4c42d4558735b9352e7049cdd95f15e` passed the first two focal/audit
+pairs.  Their terminal lines were respectively
+`Build completed successfully (8571 jobs).` and
+`Build completed successfully (8531 jobs).`; focal/audit exits were all zero,
+and the `4 + 4` axiom blocks were exactly
+`[propext, Classical.choice, Quot.sound]`.  It then stopped on the first error
+in the third brick: the already defined central entire fine symbol was outside
+the import boundary.  No theorem statement, constant or hypothesis changed.
+Evidence SHA-256 is
+`58d21fd018bc5f650337e80a6062c833819a0a82b7a4b37b7f14bee83fd0c6a6`;
+archive SHA-256 is
+`830e1bfb3cfdf14b990667997cf7687b359b4f02dda13b86b2d598fa7505cf0f`;
+`FINAL_STATUS=FAIL` and the runtime unassigned itself.
+
+Checkpoint `6ffd5b73974ef9ce8207d58ea1d5f78e37196c3f` adds only the missing direct
+import to the third source file.  Because this is the sole source delta from
+the parent whose first two pairs already passed, diagnostic-v3 resumed at the
+third focal rather than rebuilding certified prefixes.  In a fresh Colab
+Pro+ CPU/high-RAM runtime, all transport, toolchain, source-blob, text/import,
+Mathlib-pin and cache gates passed.  The focal ended after `106.618 s` with
+the literal line `Build completed successfully (3294 jobs).`; its audit ended
+after `8.747 s` and printed exactly three
+`[propext, Classical.choice, Quot.sound]` blocks.  Evidence SHA-256 is
+`0dc89a0609186d71fbb5ece62312c042b23f2e3da0616835c5fa6082225907ac`;
+archive SHA-256 is
+`77ccfd59ac58769f75e1b6c2d73efaf90223cc677150388b6ef83c7d6d24de40`;
+`FINAL_STATUS=PASS`, launcher exit was zero, and the runtime unassigned itself.
+
+The single cold terminal workflow is now pinned to exact mathematical source
+`6ffd5b73974ef9ce8207d58ea1d5f78e37196c3f`, contains all six source/audit
+paths, expects `4 + 4 + 3` permitted axiom blocks, rejects new-module linter
+warnings, and disables project-graph restore/save when dispatched with
+`cold=true`.  Until that verdict, no PRE-VALIDATION mark is retired.  Counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 remains compatible but
+unattained.

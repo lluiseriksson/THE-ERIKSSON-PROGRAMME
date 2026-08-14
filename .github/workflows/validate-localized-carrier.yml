@@ -1,4 +1,4 @@
-name: Validate Step-7b ambient complex precision dictionary
+name: Validate Step-7b item-5 physical nonvanishing prerequisites
 
 on:
   workflow_dispatch:
@@ -13,15 +13,15 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: f6633ff08c45535bd74ba5fcfae20325877ae000
+  SOURCE_SHA: 6ffd5b73974ef9ce8207d58ea1d5f78e37196c3f
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    generated-flat-ambient-precision-step7b-dictionary
+    step7b-item5-physical-nonvanishing
 
 jobs:
-  generated-flat-ambient-precision-step7b-dictionary:
+  step7b-item5-physical-nonvanishing:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -86,7 +86,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-flat-ambient-precision-step7b-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-step7b-item5-physical-nonvanishing-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -120,8 +120,12 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary.lean \
-            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionaryAudit.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedFullComplexAPositive.lean \
+            YangMills/RG/BalabanCMP99SourceGeneratedFullComplexAPositiveAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredCoarseMomentumAudit.lean \
+            YangMills/RG/BalabanCMP89MassZeroCentralFineSymbolNonvanishing.lean \
+            YangMills/RG/BalabanCMP89MassZeroCentralFineSymbolNonvanishingAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -143,10 +147,18 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_flat_ambient_precision_step7b_dictionary_focal \
-            lake build YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary
-          run_stage generated_flat_ambient_precision_step7b_dictionary_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionaryAudit.lean
+          run_stage generated_full_complex_a_positive_focal \
+            lake build YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive
+          run_stage generated_full_complex_a_positive_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedFullComplexAPositiveAudit.lean
+          run_stage centered_coarse_momentum_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum
+          run_stage centered_coarse_momentum_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredCoarseMomentumAudit.lean
+          run_stage mass_zero_central_fine_nonvanishing_focal \
+            lake build YangMills.RG.BalabanCMP89MassZeroCentralFineSymbolNonvanishing
+          run_stage mass_zero_central_fine_nonvanishing_audit \
+            lake env lean YangMills/RG/BalabanCMP89MassZeroCentralFineSymbolNonvanishingAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -160,17 +172,22 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "generated_flat_ambient_precision_step7b_dictionary_audit.log": 8,
+              "generated_full_complex_a_positive_audit.log": 4,
+              "centered_coarse_momentum_audit.log": 4,
+              "mass_zero_central_fine_nonvanishing_audit.log": 3,
           }
-          focal = (Path("evidence") /
-              "generated_flat_ambient_precision_step7b_dictionary_focal.log").read_text(
-                  encoding="utf-8")
-          source_warning = (
-              "warning: YangMills/RG/"
-              "BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary.lean:"
-          )
-          if source_warning in focal:
-              raise SystemExit("NEW_MODULE_LINTER_WARNING")
+          focals = {
+              "generated_full_complex_a_positive_focal.log":
+                  "BalabanCMP99SourceGeneratedFullComplexAPositive.lean:",
+              "centered_coarse_momentum_focal.log":
+                  "BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum.lean:",
+              "mass_zero_central_fine_nonvanishing_focal.log":
+                  "BalabanCMP89MassZeroCentralFineSymbolNonvanishing.lean:",
+          }
+          for name, source_name in focals.items():
+              focal = (Path("evidence") / name).read_text(encoding="utf-8")
+              if f"warning: YangMills/RG/{source_name}" in focal:
+                  raise SystemExit(f"NEW_MODULE_LINTER_WARNING FILE={name}")
           result = {}
           for name, expected in audits.items():
               text = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -201,17 +218,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              generated-flat-ambient-precision-step7b-dictionary-evidence.tar.gz
-          sha256sum generated-flat-ambient-precision-step7b-dictionary-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              step7b-item5-physical-nonvanishing-evidence.tar.gz
+          sha256sum step7b-item5-physical-nonvanishing-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: generated-flat-ambient-precision-step7b-dictionary-${{ env.SOURCE_SHA }}
+          name: step7b-item5-physical-nonvanishing-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            generated-flat-ambient-precision-step7b-dictionary-evidence.tar.gz
+            step7b-item5-physical-nonvanishing-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -220,4 +237,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-generated-flat-ambient-precision-step7b-dictionary-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-step7b-item5-physical-nonvanishing-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
