@@ -66,6 +66,16 @@ omit [Fintype ι] [Fintype κ] in
     (x : FinitePiLpField ι (EuclideanSpace ℝ κ)) (i : ι) (a : κ) :
     finitePiLpComplexOfReal x i a = (x i a : ℂ) := rfl
 
+omit [Fintype ι] [Fintype κ] in
+@[simp] theorem finitePiLpComplexOfReal_zero :
+    finitePiLpComplexOfReal
+        (0 : FinitePiLpField ι (EuclideanSpace ℝ κ)) = 0 := by
+  apply PiLp.ext
+  intro i
+  apply PiLp.ext
+  intro a
+  rfl
+
 theorem finitePiLpComplexRealPart_add
     (z w : FinitePiLpField ι (EuclideanSpace ℂ κ)) :
     finitePiLpComplexRealPart (z + w) =
@@ -139,7 +149,7 @@ omit [Fintype ι] [Fintype κ] in
   intro i
   apply PiLp.ext
   intro a
-  simp
+  rfl
 
 /-- Canonical complex-linear extension of a real operator on a finite
 counting-Hilbert field. -/
@@ -167,8 +177,11 @@ noncomputable def finitePiLpCanonicalComplexificationLM
     intro i
     apply PiLp.ext
     intro a
-    apply Complex.ext <;>
-      simp [Complex.mul_re, Complex.mul_im] <;> ring
+    apply Complex.ext
+    · simp [Complex.mul_re, Complex.mul_im]
+      ring
+    · simp [Complex.mul_re, Complex.mul_im]
+      ring
 
 /-- Continuous packaging of the canonical complexification.  Continuity is
 automatic because both counting-Hilbert spaces are finite-dimensional. -/
@@ -240,7 +253,8 @@ theorem finitePiLpCanonicalComplexificationCLM_comp
   rw [ContinuousLinearMap.comp_apply,
     finitePiLpCanonicalComplexificationCLM_apply,
     finitePiLpComplexRealPart_complexification,
-    finitePiLpComplexImagPart_complexification]
+    finitePiLpComplexImagPart_complexification,
+    ContinuousLinearMap.comp_apply]
 
 /-- Canonical complexification sends the real identity to the complex
 identity. -/

@@ -8,6 +8,7 @@ verified by the compiler.
 #print axioms YangMills.RG.finitePiLpComplexRealPart
 #print axioms YangMills.RG.finitePiLpComplexImagPart
 #print axioms YangMills.RG.finitePiLpComplexOfReal
+#print axioms YangMills.RG.finitePiLpComplexOfReal_zero
 #print axioms YangMills.RG.finitePiLpComplexOfReal_real_add_I_smul_imag
 #print axioms YangMills.RG.finitePiLpComplexRealPart_ofReal
 #print axioms YangMills.RG.finitePiLpComplexImagPart_ofReal
