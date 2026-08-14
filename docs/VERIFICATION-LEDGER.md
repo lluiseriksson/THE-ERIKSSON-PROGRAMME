@@ -35535,3 +35535,33 @@ Diagnostic-v6 runner checkpoint
 `12a4124e6ef45ba095734e00b3e7556bcd1c413c` has Git-blob SHA-256
 `41bc602ca2f08f0929d1c5aaa83ab339742b0f53e84a4664ff0d0c4143fc6e86`.
 PRE-VALIDATION remains; counters stay exactly `20/41`.
+
+The exact v6 diagnostic opened a fresh verified CPU/high-RAM runtime and
+passed every transport, toolchain, source, text/import, Mathlib-pin, and
+cache gate.  The focal stopped first after `2100.562 s`; the audit did not
+run.  Evidence SHA-256 is
+`ea38a5fcfdbf41ad1bb464f5b008115ce9d36784c038b36e8ce3dd9372aabd75`
+and archive SHA-256 is
+`f87d9162f5c4938aab59912cae8fc8d730c4f7460ca567ad5c371c4f8ea9b4d9`.
+`FINAL_STATUS=FAIL`, followed by `RUNTIME_UNASSIGN_REQUESTED=1`.
+
+The only two primary failures were deterministic `whnf` timeouts at the
+default `200000` heartbeat limit: one while elaborating the pointwise
+of-real dictionary and one while reducing the literal transported Step-7b
+application.  The later unknown constant was downstream of the failed
+theorem.  No heartbeat increase was accepted.  PRE-VALIDATION repair
+checkpoint `28e1a17bedf4ea0c8a93a3cef2976d9893806c56` instead splits the
+three independently meaningful reductions into private leaf theorems with
+the ambient carrier, physical fibre, and site index fixed in their
+signatures.  It changes no public declaration statement and adds no
+hypothesis.  The source Git-blob SHA-256 is
+`6f74ea76f639a83300d314426be7b170ed8dac1e0ffbed0a867984414890e067`;
+the audit blob remains
+`43ce7b06a054c2401a6cf8d07ea9d89d449212eba1fe02a6fe1bae9b8453c78f`.
+Diagnostic-v7 runner checkpoint
+`2982d7a8478e8c1f212f9553c5fa931a4c1451e0` has Git-blob SHA-256
+`445d3113e1177a7aa273d2de99d4ef19d7ddb70dd89400fea02ed439f69e9394`.
+The exact one-file overlay guard and runner syntax gate pass locally; no Lean
+or Lake ran on Windows.  Both PRE-VALIDATION marks remain, counters stay
+exactly `20/41`, `TermSource = 0`, and window 15 remains compatible but
+unattained.
