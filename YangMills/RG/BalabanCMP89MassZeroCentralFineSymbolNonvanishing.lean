@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP89Eq251NoncentralLaplacianRatio
+import YangMills.RG.BalabanCMP89Eq249CentralStabilizedAliasDenominator
 
 /-!
 # PRE-VALIDATION: mass-zero central fine-symbol nonvanishing
