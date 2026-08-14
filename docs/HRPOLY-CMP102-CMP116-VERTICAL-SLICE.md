@@ -10624,8 +10624,14 @@ real inverse laws using the sealed reindex algebra.  Its source/audit
 Git-blob SHA-256 are
 `ab1b252314e8b072e3087d5bf2727e8dfd923c7e9043a119d22537bb8c9aa9fc`
 and `96025fd7c8d82f6a5133d22e3d8a58b85f25c5a6a330ba1680dd0f7e4a30b192`.
-It remains unverified until its own Colab focal and audit pass and does not
-yet enter the complex or Step-7b dictionary.
+Its diagnostic Colab focal and audit now pass at that exact source: literal
+terminal line `Build completed successfully (8622 jobs).`, focal/audit exits
+zero, and three exact permitted axiom trios.  Evidence/archive SHA-256 are
+`d4745f3318714fc9834431b8d59bb5fd1540d0bec051a21745340525293786bb`
+and `ae57a5f85e9838a8f7332390586205d90ce857444da711de9235b3327fbd09f5`.
+The result remains diagnostic; a cold run with project-graph restore/save
+skipped is still required before PRE-VALIDATION can be retired, and the brick
+does not yet enter the complex or Step-7b dictionary.
 
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
