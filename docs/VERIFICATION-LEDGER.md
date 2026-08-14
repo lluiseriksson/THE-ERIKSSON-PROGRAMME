@@ -29413,6 +29413,12 @@ The runtime auto-unassigned.  This PASS is diagnostic only.  Both modules
 remain PRE-VALIDATION; counters remain exactly `20/41`, `TermSource = 0`,
 and window 15 compatible but unattained.
 
+Cold workflow checkpoint `5d9a709a0886ce37e5d0202a09eb79dcf1fa7230`
+is fixed to exact source `2e6c98d20cb63f4d12cafa5db8448c510621ff2e`
+for one terminal run with `cold=true`.  Restoration and saving of
+`.lake/build` are disabled by that input.  PRE-VALIDATION remains until the
+durable artifact is audited.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`

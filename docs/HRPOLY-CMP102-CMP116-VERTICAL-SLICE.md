@@ -10273,3 +10273,9 @@ and
 `318f9a6bf88e427831dea197f32e506a14705d35fe1b7c80ac73667616f0e5e3`.
 The runtime auto-unassigned.  This PASS is diagnostic only: PRE-VALIDATION
 remains and no seal or counter movement is claimed.
+
+Cold workflow checkpoint `5d9a709a0886ce37e5d0202a09eb79dcf1fa7230`
+is fixed to exact source `2e6c98d20cb63f4d12cafa5db8448c510621ff2e`
+for one terminal run with `cold=true`.  Restoration and saving of
+`.lake/build` are disabled by that input.  PRE-VALIDATION remains until the
+resulting durable artifact is audited.
