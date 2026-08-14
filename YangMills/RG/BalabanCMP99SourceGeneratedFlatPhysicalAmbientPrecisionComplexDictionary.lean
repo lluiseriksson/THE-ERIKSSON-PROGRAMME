@@ -130,7 +130,17 @@ theorem cmp99SourceGeneratedPhysicalTerminalDataOfAmbient_complexZeroExtension
   rw [hpoint]
   rw [CMP99SourceGeneratedTerminalComplexFieldData.realZeroExtension,
     extendZeroZeroCLM_apply_of_mem region D.activeField target.1 hx]
-  rfl
+  have hactive : D.activeField target = phi (eFull target) := by
+    simp [D, cmp99SourceGeneratedPhysicalTerminalDataOfAmbient,
+      CMP99SourceGeneratedTerminalComplexFieldData.ofActiveField,
+      LinearIsometryEquiv.piLpCongrLeft_apply]
+  have hy : y =
+      cmp99SourceGeneratedPhysicalStep7bSiteEquiv M Q depth
+        (eFull target) := by
+    simp [cmp99SourceGeneratedPhysicalStep7bSiteEquiv, eFull, eActive,
+      target]
+  rw [hactive, hy]
+  simp [cmp99SourceGeneratedPhysicalStep7bFieldEquiv]
 
 /-- Literal Step-7b full-box precision, transported only after its physical
 block/coarse factorization has been fixed. -/
@@ -170,8 +180,23 @@ theorem cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex_apply_ofReal
       U (fun x => cmp99SUNLieCoordComplexificationLM Nc (phi x)) :=
     cmp99SourceGeneratedPhysicalTerminalDataOfAmbient_complexZeroExtension
       (M := M) (Q := Q) (Nc := Nc) depth phi
+  have hambient :
+      cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex
+          (M := M) (Q := Q) (Nc := Nc) hM depth
+          (fun x => cmp99SUNLieCoordComplexificationLM Nc (phi x)) =
+        fun x => cmp99SUNLieCoordComplexificationLM Nc
+          (cmp99SourceGeneratedFlatPhysicalPrecision
+            (M := M) (Q := Q) (Nc := Nc) hM depth phi x) := by
+    funext y
+    ext a
+    simp [cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex,
+      finitePiLpCanonicalComplexificationOuterCLM,
+      finitePiLpCanonicalComplexificationCLM_apply,
+      finitePiLpComplexRealPart, finitePiLpComplexImagPart,
+      finitePiLpComplexOfReal, finitePiLpComplexOuterEquiv]
   apply funext
   intro x
+  rw [congrFun hambient x]
   have hphysical := D.physicalPrecision_complexification_eq_fullComplexAction
     (eFull.symm x)
   rw [hfield] at hphysical
@@ -210,7 +235,7 @@ theorem cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex_eq_step7b
           (fun x => cmp99SUNLieCoordComplexificationLM Nc (xi x)) := by
     funext x
     ext a
-    simp [xr, xi]
+    simpa [xr, xi, mul_comm] using (Complex.re_add_im (z x a)).symm
   rw [hz, map_add, map_add, map_smul, map_smul]
   rw [cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex_apply_ofReal
       (M := M) (Q := Q) (Nc := Nc) hM depth xr,

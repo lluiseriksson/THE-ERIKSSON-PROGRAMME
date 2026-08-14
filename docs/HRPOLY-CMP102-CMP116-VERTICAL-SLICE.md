@@ -10559,6 +10559,20 @@ remain visibly named inputs); they must not be borrowed from the
 positive-mass strip by notation.  This gate is downstream of the exact
 complex inverse and does not block items 1--4.
 
+There is a second, independent convention gate inside the same obligation.
+The literal solver evaluates the central stabilized denominator at
+`cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell`, whose real
+coordinates are `-2*pi*(ell mu).val/N'` and therefore range in `(-2*pi,0]`.
+The sealed mass-uniform real lower theorem
+`cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform` assumes instead
+the centered cube `|p_mu| <= pi`.  The latter theorem cannot be applied to
+the former momentum by notation.  Item 5 must either construct the exact
+coarse-momentum centering together with the induced cycle of the finite alias
+fibre, or prove nonvanishing directly on the physical uncentered fibre.  In
+either route the generated positivity of the averaging coefficient and the
+mass-zero fine-symbol nonvanishing must be produced internally; an arbitrary
+`hstabilized` input is not a physical dictionary.
+
 Item 1 now has PRE-VALIDATION source checkpoint
 `442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` and a three-declaration audit in
 `FinitePiLpTypedKernelReindexAlgebra`.  Source/audit Git-blob SHA-256 are
