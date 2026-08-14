@@ -34928,3 +34928,24 @@ consequence of inverse uniqueness, regional compression and uniform physical
 `B0` remain open.  This is inverse infrastructure, not a terminal producer:
 counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained.
+
+## Addendum 767 (2026-08-14, **canonical finite `PiLp` complexification PRE-VALIDATION; physical specialization open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`525c82fa93744f814a5389c5718b1bdf05fb22aa` constructs the canonical
+complex-linear extension of a real endomorphism on a finite Euclidean `PiLp`
+field by applying the real operator independently to real and imaginary
+parts.  It proves the coordinate decomposition, recovers the real and
+imaginary actions of the extension, and states exact preservation of
+composition and identity.  No complex operator, inverse, or equality with a
+physical Green is supplied by a caller.
+
+Source/audit Git-blob SHA-256 are
+`617a7ca70dfd816a8a64d81c7777eafd145b774436e0cfeaa4b5b29b073aa042`
+and `9727fbcbe80eb53b27e552f67c938f3b3feacb7921f3ceb556f3f229b04dd856`.
+The exact two-file textual and import-prefix gates pass locally; no Lean or
+Lake ran on Windows.  The modules remain PRE-VALIDATION pending a Colab focal
+and audit.  Physical full-carrier transport, identification with the literal
+complex precision, inverse uniqueness, regional compression, and uniform
+physical `B0` remain open.  No terminal producer is added: counters remain
+exactly `20/41`, `TermSource = 0`, and window 15 compatible but unattained.

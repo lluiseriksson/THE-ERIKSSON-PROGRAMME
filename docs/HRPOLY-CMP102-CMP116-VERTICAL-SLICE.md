@@ -10402,3 +10402,22 @@ This seals Step 8a and removes only its two PRE-VALIDATION marks.  It does
 not identify the real Green with a complex full-box inverse or prove a Green
 decay bound.  Counters remain exactly `20/41`, `TermSource = 0`, with window
 15 compatible but unattained.
+
+### Step 8b.1: canonical finite `PiLp` complexification (PRE-VALIDATION)
+
+Source checkpoint `525c82fa93744f814a5389c5718b1bdf05fb22aa`
+constructs the complex-linear extension of an arbitrary real finite
+counting-Hilbert endomorphism from its actions on real and imaginary parts.
+The load-bearing endpoints are exact preservation of composition and the
+identity, so the two inverse laws of Step 8a can later be transported rather
+than reintroduced as complex hypotheses.
+
+Source/audit Git-blob SHA-256 are
+`617a7ca70dfd816a8a64d81c7777eafd145b774436e0cfeaa4b5b29b073aa042`
+and `9727fbcbe80eb53b27e552f67c938f3b3feacb7921f3ceb556f3f229b04dd856`.
+The exact two-file text/import guards pass locally; no Lean or Lake ran on
+Windows.  Both modules remain PRE-VALIDATION pending Colab.  This generic
+brick does not yet transport to the full physical carrier, identify the
+literal complex precision, invoke inverse uniqueness, or produce a terminal
+field.  Counters remain exactly `20/41`, `TermSource = 0`, and window 15
+compatible but unattained.
