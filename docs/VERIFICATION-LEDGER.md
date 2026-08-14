@@ -29334,6 +29334,29 @@ The runtime auto-unassigned.  This was diagnostic evidence only: both
 PRE-VALIDATION marks remain pending one audited cold workflow on the same
 source, and all counters remain unchanged.
 
+Cold workflow checkpoint `a03e593c480a5a3b31427e0b06e87664a0dc1f55`
+then ran exactly once as
+[`31754552966`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31754552966)
+with `cold=true` and exact source
+`e123abc98f29b916a7659e4b1520fc0f92779ab5`.  Exact checkout, toolchain,
+cache-key budget and Mathlib pin passed; restore and save of `.lake/build`
+were both skipped.  The focal ran from `23:40:28Z` to `00:05:24Z`, exited
+zero and ended with literal `Build completed successfully (8567 jobs).`.
+The audit ended at `00:05:30Z`, exited zero and printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Text, warning and axiom gates
+passed.
+
+Artifact `9202783700` has GitHub digest
+`590914dcdfa7d0ac543d17cdf233e99fdb21994ec7cae6d571fc1d28e885ee22`.
+Its deterministic archive SHA-256 is
+`bd25fd3180e6437a0b6ee134a1f383aca818787f64398da66e95b755c3c90281`;
+all `13/13` internal manifest entries matched.  This cold run seals step 7a,
+so only its source and audit PRE-VALIDATION marks are removed.  It proves the
+active Laplacian summand dictionary, not the generated mass combination, full
+precision, inverse or Green transport.  No terminal producer is added:
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`

@@ -10179,7 +10179,7 @@ PRE-VALIDATION marks are retired.  Spacing, full precision, inverse and Green
 steps remain open.  Counters remain exactly `20/41`, `TermSource = 0`, window
 15 compatible but unattained.
 
-### Step 7a: active flat Laplacian in full-box complex coordinates (PRE-VALIDATION)
+### Step 7a: active flat Laplacian in full-box complex coordinates (SEALED)
 
 Checkpoint `e123abc9` adds one pointwise dictionary on transported active
 targets.  The retained real active field fixes both zero extensions; the
@@ -10189,9 +10189,8 @@ neighbour transport and exact spacing-square dictionary to identify only the
 Laplacian summand with the corresponding full-box complex stencil term.
 
 The generated `Q'^*Q'` mass remains a separate summand.  No full precision,
-inverse or Green equality is asserted, and both new modules retain visible
-PRE-VALIDATION headers pending compiler diagnostics.  Counters remain exactly
-`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+inverse or Green equality is asserted.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
 
 A fresh Colab CPU/high-RAM diagnostic on exact source `e123abc9` passed with
 the pinned toolchain and Mathlib revision: focal/audit exits `0/0`, focal
@@ -10202,6 +10201,19 @@ no new warning.  Evidence/archive SHA-256 are
 `db13c7c410cbad7765b6ae2fd68ef3ed0db94e7a339c527d80dcce2eea63e6ea`
 and
 `a9ab2e3a40bd5d577da7ebf6647417366c9c498d0728aa9a5e5d6bde7940d92f`.
-The runtime auto-unassigned.  This diagnostic does not seal: both
-PRE-VALIDATION headers remain until one cold terminal workflow on this exact
-source is audited.
+The runtime auto-unassigned.  This diagnostic did not itself seal.
+
+Cold workflow
+[`31754552966`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31754552966)
+then validated the same exact source under workflow checkpoint `a03e593c`.
+Restore and save of `.lake/build` were both skipped.  Focal/audit exits were
+`0/0`; the focal ran from `23:40:28Z` to `00:05:24Z` and ended with literal
+`Build completed successfully (8567 jobs).`; the audit ended at `00:05:30Z`
+and printed the one exact standard axiom block.  The text, warning and axiom
+gates passed.  Artifact `9202783700` has GitHub digest
+`590914dcdfa7d0ac543d17cdf233e99fdb21994ec7cae6d571fc1d28e885ee22`;
+its deterministic archive SHA-256 is
+`bd25fd3180e6437a0b6ee134a1f383aca818787f64398da66e95b755c3c90281`,
+and all `13/13` manifest entries matched.  This cold evidence seals step 7a,
+so only its two PRE-VALIDATION marks are retired.  Generated mass, full
+precision, inverse and Green equalities remain open, with no counter movement.

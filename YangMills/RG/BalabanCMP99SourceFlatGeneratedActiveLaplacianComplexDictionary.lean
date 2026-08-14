@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary
 /-!
 # Generated active Laplacian in full-box complex coordinates
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 The retained active real field determines both its Dirichlet zero extension
 and its transported full-box complex field.  At the canonical generated
 spacing, this module combines the sealed regional compression, flat ambient
