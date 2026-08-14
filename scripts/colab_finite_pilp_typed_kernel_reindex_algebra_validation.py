@@ -30,8 +30,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "finite-pilp-reindex-algebra-v2",
-            "SOURCE_SHA": "41c07595b6929c333904b734b5911fe74718a2bc",
+            "RUNNER_REV": "finite-pilp-reindex-algebra-v3",
+            "SOURCE_SHA": "510ee90e913a44c7ea361ef0ec1c99b902d6911e",
             "ROOT": Path("/content/hrpoly-finite-pilp-reindex-algebra"),
             "EVIDENCE": Path(
                 "/content/hrpoly-finite-pilp-reindex-algebra-evidence"
@@ -44,7 +44,7 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/FinitePiLpTypedKernelReindexAlgebra.lean":
-                    "263404afc01dd21520a4da88551a09a6884eb8e8815a104c26efd9e75c69d7ff",
+                    "228d928504d3935b881c1798b844578117aad430f02150e085e5c54a85c0f33a",
                 "YangMills/RG/FinitePiLpTypedKernelReindexAlgebraAudit.lean":
                     "3a41f55b57054af87f50c4df21fb5f66801a381564e7ba806cf48926d7823313",
             },
