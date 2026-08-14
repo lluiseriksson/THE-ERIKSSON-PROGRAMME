@@ -77,4 +77,17 @@ runner.QUEUE = [
 
 
 if __name__ == "__main__":
+    # This runner is launched as a child of the single Colab notebook cell.
+    # Releasing the runtime from the child can kill the parent before its
+    # captured transcript is flushed, losing both stdout and `/content`
+    # evidence.  The parent owns the final release after printing the complete
+    # child transcript and archive hash.
+    try:
+        from google.colab import runtime
+
+        runtime.unassign = lambda: print(
+            "RUNTIME_UNASSIGN_DEFERRED_TO_LAUNCHER=1", flush=True
+        )
+    except ImportError:
+        pass
     raise SystemExit(runner.main())
