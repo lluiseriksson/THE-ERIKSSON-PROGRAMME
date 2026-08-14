@@ -10452,3 +10452,17 @@ diagnostic v2 runner checkpoint is
 `c74f13706cc00f5cdc705f1133772d8f523cb764`, with Git-blob SHA-256
 `9145c9d08189ddebe2c3b912768a5d122ffae7eec6ea4a0d0a31a5890f242d0b`.
 The thirteen-declaration audit remains pending Colab.  Counters are unchanged.
+
+Diagnostic v2 on exact source `f70de807e6b6ef39fb5e61a3f1c6a4fb9249e622`
+failed its focal after `1518.909 s`; its audit did not run.  The remaining
+goals were the literal zero embedding, the second composition occurrence,
+and a coordinatewise simplification that exhausted heartbeats.  Evidence and
+archive SHA-256 are
+`fa2a0792c4f321980043a695a656601c7cef5cc62a6a651966a60dbea527a5ab`
+and `e20766093b44015f717f18ba8e5575e5cdcf8b37ee04eefdd49f1ba11efa0888`.
+PRE-VALIDATION repair `339d8f56da1d594ba6ef75adb8a975e5d3bb9e12`
+closes those goals explicitly without increasing heartbeats or changing any
+endpoint.  Its source/audit Git-blob SHA-256 are
+`f63b952cf9b7ed17ec588f8b1fcbff1b184e802be194a095bbf0bc40eeed07ef`
+and `1f50d5911571e9b27f8b44ac2a10ed809ac2bd0a6fb1d385032caa96a0988927`;
+the fourteen-declaration audit remains pending Colab.  Counters are unchanged.

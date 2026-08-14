@@ -30,8 +30,8 @@ def main() -> int:
     exec(compile(base_source, BASE_RUNNER_URL, "exec"), namespace)
     namespace.update(
         {
-            "RUNNER_REV": "finite-pilp-canonical-complexification-v2",
-            "SOURCE_SHA": "f70de807e6b6ef39fb5e61a3f1c6a4fb9249e622",
+            "RUNNER_REV": "finite-pilp-canonical-complexification-v3",
+            "SOURCE_SHA": "339d8f56da1d594ba6ef75adb8a975e5d3bb9e12",
             "ROOT": Path("/content/hrpoly-finite-pilp-complexification"),
             "EVIDENCE": Path(
                 "/content/hrpoly-finite-pilp-complexification-evidence"
@@ -44,9 +44,9 @@ def main() -> int:
             ),
             "SOURCE_BLOBS": {
                 "YangMills/RG/FinitePiLpCanonicalComplexification.lean":
-                    "02692632a374d3e3d8def326f7297c236319f85b833dc35411113d7ffb1aa428",
+                    "f63b952cf9b7ed17ec588f8b1fcbff1b184e802be194a095bbf0bc40eeed07ef",
                 "YangMills/RG/FinitePiLpCanonicalComplexificationAudit.lean":
-                    "278b67fc6922359fd4037527fba16a101d5b21a088d14d725e177a506c5714c7",
+                    "1f50d5911571e9b27f8b44ac2a10ed809ac2bd0a6fb1d385032caa96a0988927",
             },
             "QUEUE": [
                 (
@@ -67,7 +67,7 @@ def main() -> int:
                         "YangMills/RG/"
                         "FinitePiLpCanonicalComplexificationAudit.lean",
                     ],
-                    13,
+                    14,
                 ),
             ],
             "RECORDS": [],

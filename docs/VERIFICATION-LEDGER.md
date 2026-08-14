@@ -34988,3 +34988,35 @@ PRE-VALIDATION pending a new Colab focal.  Diagnostic v2 runner checkpoint is
 No terminal producer is added and
 counters remain exactly `20/41`, `TermSource = 0`, with window 15 compatible
 but unattained.
+
+## Addendum 769 (2026-08-14, **canonical finite `PiLp` complexification diagnostic v2 FAIL; explicit zero and composition repair PRE-VALIDATION; 20/41 unchanged**)
+
+Colab diagnostic v2 checked out exact source
+`f70de807e6b6ef39fb5e61a3f1c6a4fb9249e622`, verified runner/source hashes,
+Lean `v4.29.0-rc6`, and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`.  The focal failed after
+`1518.909 s`; the audit did not run.  The remaining failures were one
+deterministic `simp` heartbeat timeout at the coordinatewise imaginary
+projection, the missing explicit equality `finitePiLpComplexOfReal 0 = 0`,
+and the second occurrence of `ContinuousLinearMap.comp_apply`.  A style
+warning also exposed an unnecessary sequential-focus combinator.  No
+physical declaration or dictionary occurred in the first error, and no
+heartbeat limit was raised.
+
+Evidence SHA-256 is
+`fa2a0792c4f321980043a695a656601c7cef5cc62a6a651966a60dbea527a5ab`;
+the deterministic archive SHA-256 is
+`e20766093b44015f717f18ba8e5575e5cdcf8b37ee04eefdd49f1ba11efa0888`.
+`FINAL_STATUS=FAIL` and `RUNTIME_UNASSIGN_REQUESTED=1` were emitted.
+
+PRE-VALIDATION repair checkpoint
+`339d8f56da1d594ba6ef75adb8a975e5d3bb9e12` proves the zero embedding
+coordinatewise, replaces the timed-out projection simplification by
+definitional reduction, rewrites both composition occurrences explicitly,
+and removes the warning without changing the construction or public
+endpoints.  Source/audit Git-blob SHA-256 are
+`f63b952cf9b7ed17ec588f8b1fcbff1b184e802be194a095bbf0bc40eeed07ef`
+and `1f50d5911571e9b27f8b44ac2a10ed809ac2bd0a6fb1d385032caa96a0988927`.
+The audit now contains fourteen declarations and remains pending Colab.
+No terminal producer is added; counters remain exactly `20/41`,
+`TermSource = 0`, with window 15 compatible but unattained.
