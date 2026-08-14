@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary
 
 /-!
-# PRE-VALIDATION: centered physical coarse momentum
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been compiler-verified.
+# Centered physical coarse momentum
 
 The literal Step-7b base momentum uses the nonnegative representative
 `ell : Fin N'` and therefore lies in a half-open interval of length `2*pi`,

@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP89Eq251NoncentralLaplacianRatio
 import YangMills.RG.BalabanCMP89Eq249CentralStabilizedAliasDenominator
 
 /-!
-# PRE-VALIDATION: mass-zero central fine-symbol nonvanishing
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been compiler-verified.
+# Mass-zero central fine-symbol nonvanishing
 
 On the centered real cube, a nonzero momentum has strictly positive continuum
 momentum square.  The already sealed expanded-zone comparison then makes the

@@ -10619,8 +10619,9 @@ The finite implementation list for item 5 is therefore:
    using the item-3 inverse and item-4 precision equality.  The endpoint must
    expose no free scalar nonvanishing family.
 
-Item 4 is now cold-sealed.  The remaining list is static design evidence until
-each item-5 declaration receives its own focal and axiom audit.
+Item 4 and item-5 prerequisites 1--3 are now cold-sealed.  Items 4--6 remain
+static design evidence until each declaration receives its own focal and
+axiom audit.
 
 Exact item-4 source `f6633ff08c45535bd74ba5fcfae20325877ae000`
 was sealed by cold workflow
@@ -10637,6 +10638,27 @@ with `13/13` manifest entries matching.  This seals the exact ambient
 complex-precision dictionary only.  It does not construct the literal Green,
 attain window 15, move `20/41`, or inhabit `TermSource`.
 
+Exact item-5 prerequisite source
+`6ffd5b73974ef9ce8207d58ea1d5f78e37196c3f` was sealed by cold workflow
+[`31841321042`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31841321042)
+under vehicle `c4c93462d164314cec454d92cb55b139253c792f`.
+Project-graph restore and save were both skipped.  The three focal terminal
+lines were, in queue order,
+`Build completed successfully (8571 jobs).`,
+`Build completed successfully (8531 jobs).`, and
+`Build completed successfully (3294 jobs).`; all six focal/audit exits were
+zero.  The audits emitted exactly `4 + 4 + 3` permitted
+`[propext, Classical.choice, Quot.sound]` blocks.  Artifact `9235064386` has
+GitHub digest
+`8a8145b1ce87d26f014cc3a60618dd3989c6ba50efb1950ba664418856522efc`;
+the downloaded deterministic archive SHA-256 is
+`442ad074d5312dcfe1b749f577e98bd4b80f9aff8bce1f411f1bfbbb60b5a7e8`,
+with `17/17` manifest entries matching.  This seals coefficient positivity,
+signed centering, and central mass-zero fine nonvanishing only.  Complete
+fibre nonvanishing, the stabilized denominator, Green identification, window
+15, every terminal field and `TermSource` remain open; counters stay exactly
+`20/41`, `TermSource = 0`.
+
 Static refinement after reading the exact mass-uniform APIs: gate 5 does not
 need a new positive-mass or strip estimate at the centered representative.
 `cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform` already applies
@@ -10647,7 +10669,7 @@ be reduced to
 nonzero coordinate.  Thus the new analytic content is limited to central
 mass-zero positivity; the remaining work is signed centering, exact
 integer-period transport and inverse-uniqueness composition.  This remains
-static evidence until the item-4 cold seal and subsequent compiler checks.
+static evidence for items 4--6 until their subsequent compiler checks.
 
 Item 1 now has PRE-VALIDATION source checkpoint
 `442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` and a three-declaration audit in

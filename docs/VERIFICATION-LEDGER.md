@@ -35613,13 +35613,12 @@ does not identify the Green, discharge the item-5 nonvanishing gates, attain
 window 15, or add a terminal producer.  Counters remain exactly `20/41`,
 `TermSource = 0`.
 
-## Addendum 784 (2026-08-14, **Step-7b item-5 prerequisites diagnostic PASS; cold seal pending; 20/41 unchanged**)
+## Addendum 784 (2026-08-14, **Step-7b item-5 prerequisites cold SEALED; 20/41 unchanged**)
 
-Three source-facing prerequisites for item 5 are now present: positivity of
+Three source-facing prerequisites for item 5 are now sealed: positivity of
 the literal generated full-complex coefficient, the exact signed centered
 coarse-momentum dictionary, and mass-zero nonvanishing of the central fine
-symbol at a nonzero centered real momentum.  None is a terminal producer and
-all three retain their PRE-VALIDATION headers pending one cold terminal seal.
+symbol at a nonzero centered real momentum.  None is a terminal producer.
 
 The full diagnostic at source checkpoint
 `e0530945a4c42d4558735b9352e7049cdd95f15e` passed the first two focal/audit
@@ -35650,10 +35649,33 @@ archive SHA-256 is
 `77ccfd59ac58769f75e1b6c2d73efaf90223cc677150388b6ef83c7d6d24de40`;
 `FINAL_STATUS=PASS`, launcher exit was zero, and the runtime unassigned itself.
 
-The single cold terminal workflow is now pinned to exact mathematical source
+The single cold terminal workflow was pinned to exact mathematical source
 `6ffd5b73974ef9ce8207d58ea1d5f78e37196c3f`, contains all six source/audit
 paths, expects `4 + 4 + 3` permitted axiom blocks, rejects new-module linter
 warnings, and disables project-graph restore/save when dispatched with
-`cold=true`.  Until that verdict, no PRE-VALIDATION mark is retired.  Counters
-remain exactly `20/41`, `TermSource = 0`, and window 15 remains compatible but
-unattained.
+`cold=true`.  No PRE-VALIDATION mark was retired before the verdict below;
+counters remained exactly `20/41`, `TermSource = 0`, and window 15 remained
+compatible but unattained.
+
+Cold terminal workflow
+[`31841321042`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31841321042)
+then sealed exact source `6ffd5b73974ef9ce8207d58ea1d5f78e37196c3f`
+under workflow vehicle `c4c93462d164314cec454d92cb55b139253c792f`.
+`COLD_MODE=true`; project-graph restore and save were both skipped.  The focal
+queue ran `2026-08-14T21:13:14Z–21:40:42Z`; all six focal/audit exits were
+zero.  Its three literal terminal lines were
+`Build completed successfully (8571 jobs).`,
+`Build completed successfully (8531 jobs).`, and
+`Build completed successfully (3294 jobs).`.  The audits printed exactly
+`4 + 4 + 3` permitted `[propext, Classical.choice, Quot.sound]` blocks, and
+the text, warning and axiom gates all passed.  Artifact `9235064386` has
+GitHub digest
+`8a8145b1ce87d26f014cc3a60618dd3989c6ba50efb1950ba664418856522efc`;
+its downloaded deterministic archive has SHA-256
+`442ad074d5312dcfe1b749f577e98bd4b80f9aff8bce1f411f1bfbbb60b5a7e8`.
+All `17/17` internal manifest entries verify with zero mismatches.
+
+This evidence retires the three source PRE-VALIDATION headers.  It does not
+prove complete physical fibre nonvanishing, the literal stabilized
+denominator, or Green identification; it does not attain window 15 or add a
+terminal producer.  Counters remain exactly `20/41`, `TermSource = 0`.

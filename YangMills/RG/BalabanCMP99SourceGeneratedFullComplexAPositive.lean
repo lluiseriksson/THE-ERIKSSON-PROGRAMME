@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreen
 
 /-!
-# PRE-VALIDATION: positivity of the generated full-complex coefficient
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been compiler-verified.
+# Positivity of the generated full-complex coefficient
 
 The literal Step-7b coefficient is the product of the generated physical mass
 and one normalized block-average weight.  At successor depth both factors are
