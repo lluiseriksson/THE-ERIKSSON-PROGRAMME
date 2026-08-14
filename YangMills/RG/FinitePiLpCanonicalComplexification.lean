@@ -181,7 +181,6 @@ noncomputable def finitePiLpCanonicalComplexificationLM
     · simp [Complex.mul_re, Complex.mul_im]
       ring
     · simp [Complex.mul_re, Complex.mul_im]
-      ring
 
 /-- Continuous packaging of the canonical complexification.  Continuity is
 automatic because both counting-Hilbert spaces are finite-dimensional. -/
