@@ -99,10 +99,10 @@ noncomputable def cmp99SourceGeneratedPhysicalTerminalDataOfAmbient
       (cmp99SourceGeneratedPhysicalFullSiteEquiv M Q depth).symm
       ).toContinuousLinearEquiv phi)
 
+omit [NeZero Nc] in
 /-- The canonical complex zero extension of the pulled-back active field is
 exactly ordinary coordinate transport of the ambient real field followed by
 the physical fibre complexification. -/
-omit [NeZero Nc] in
 theorem cmp99SourceGeneratedPhysicalTerminalDataOfAmbient_complexZeroExtension
     (depth : ℕ)
     (phi : GaugeZeroCochain 4
