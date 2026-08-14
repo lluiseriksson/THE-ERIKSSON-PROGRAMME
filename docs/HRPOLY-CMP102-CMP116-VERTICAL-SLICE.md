@@ -10448,4 +10448,7 @@ normalizations explicit, and names the real/imaginary projections of
 `ofReal`.  Corrected source/audit Git-blob SHA-256 are
 `02692632a374d3e3d8def326f7297c236319f85b833dc35411113d7ffb1aa428`
 and `278b67fc6922359fd4037527fba16a101d5b21a088d14d725e177a506c5714c7`;
-the thirteen-declaration audit remains pending Colab.  Counters are unchanged.
+diagnostic v2 runner checkpoint is
+`c74f13706cc00f5cdc705f1133772d8f523cb764`, with Git-blob SHA-256
+`9145c9d08189ddebe2c3b912768a5d122ffae7eec6ea4a0d0a31a5890f242d0b`.
+The thirteen-declaration audit remains pending Colab.  Counters are unchanged.

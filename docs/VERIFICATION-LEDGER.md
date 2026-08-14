@@ -34982,6 +34982,9 @@ the two canonical real/imaginary projection lemmas used by the public
 `02692632a374d3e3d8def326f7297c236319f85b833dc35411113d7ffb1aa428`
 and `278b67fc6922359fd4037527fba16a101d5b21a088d14d725e177a506c5714c7`.
 The audit now contains thirteen declarations.  The corrected brick remains
-PRE-VALIDATION pending a new Colab focal; no terminal producer is added and
+PRE-VALIDATION pending a new Colab focal.  Diagnostic v2 runner checkpoint is
+`c74f13706cc00f5cdc705f1133772d8f523cb764`; its Git-blob SHA-256 is
+`9145c9d08189ddebe2c3b912768a5d122ffae7eec6ea4a0d0a31a5890f242d0b`.
+No terminal producer is added and
 counters remain exactly `20/41`, `TermSource = 0`, with window 15 compatible
 but unattained.
