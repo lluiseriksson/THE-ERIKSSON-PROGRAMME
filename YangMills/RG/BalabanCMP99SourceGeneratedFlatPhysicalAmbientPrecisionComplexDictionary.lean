@@ -102,6 +102,7 @@ noncomputable def cmp99SourceGeneratedPhysicalTerminalDataOfAmbient
 /-- The canonical complex zero extension of the pulled-back active field is
 exactly ordinary coordinate transport of the ambient real field followed by
 the physical fibre complexification. -/
+omit [NeZero Nc] in
 theorem cmp99SourceGeneratedPhysicalTerminalDataOfAmbient_complexZeroExtension
     (depth : ℕ)
     (phi : GaugeZeroCochain 4
@@ -143,7 +144,7 @@ theorem cmp99SourceGeneratedPhysicalTerminalDataOfAmbient_complexZeroExtension
     rw [eFull.symm_apply_apply, eActive.apply_symm_apply]
   rw [hactive, hy]
   simp [cmp99SourceGeneratedPhysicalStep7bFieldEquiv,
-    ContinuousLinearEquiv.piCongrLeft, LinearEquiv.piCongrLeft,
+    ContinuousLinearEquiv.piCongrLeft,
     Homeomorph.piCongrLeft, Equiv.piCongrLeft]
 
 /-- Literal Step-7b full-box precision, transported only after its physical
@@ -212,7 +213,7 @@ theorem cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex_apply_ofReal
             (finitePiLpComplexOuterEquiv
               (finitePiLpComplexOfReal phi)))) =
       finitePiLpComplexOuterEquiv (finitePiLpComplexOfReal (P phi))
-    rw [finitePiLpComplexOuterEquiv.symm_apply,
+    rw [ContinuousLinearEquiv.symm_apply_apply,
       finitePiLpCanonicalComplexificationCLM_ofReal]
   apply funext
   intro x
@@ -234,7 +235,7 @@ theorem cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex_apply_ofReal
   have hstep :
       cmp99SourceGeneratedFlatPhysicalStep7bAmbientPrecisionCLM
           (M := M) (Q := Q) (Nc := Nc) depth
-          (U (fun x => cmp99SUNLieCoordComplexificationLM Nc (phi x))) x =
+          (fun x => cmp99SUNLieCoordComplexificationLM Nc (phi x)) x =
         cmp99SourceFlatFullComplexPrecisionAction
           (M := M ^ (depth + 1)) (N' := 2 * (M * Q)) 0
           (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
