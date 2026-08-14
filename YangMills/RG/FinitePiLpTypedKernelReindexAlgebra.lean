@@ -74,8 +74,7 @@ theorem finitePiLpTypedKernelReindex_id
   apply PiLp.ext
   intro x
   simp [finitePiLpTypedKernelReindex,
-    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft',
-    piLpCongrLeft_inverse_apply]
+    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
 
 /-- An exact inverse law survives square finite reindexing in the same order.
 The order is explicit so this one theorem transports both left- and
