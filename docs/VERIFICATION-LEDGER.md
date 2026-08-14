@@ -35358,3 +35358,26 @@ Mathlib is exactly `07642720480157414db592fa85b626dafb71355b`, and both stage
 exits are zero.  Only the source/audit PRE-VALIDATION marks are removed.
 This seals item 2 of the finite-carrier route, not its complexification or
 Step-7b physical dictionary; no terminal counter moves.
+
+## Addendum 782 (2026-08-14, **generated flat ambient Green complexification PRE-VALIDATION; both complex inverse laws explicit; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`0eae1b434ef037cae73995c530a79186e4041921` adds
+`BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification` and its
+four-declaration audit.  It applies the single cold-sealed canonical outer
+complexification to the now cold-sealed real ambient precision and Green,
+then transports both ordered inverse laws internally.  It accepts no complex
+operator, inverse law, carrier equality, Step-7b dictionary or physical
+full-box identification as input.
+
+Source/audit Git-blob SHA-256 are
+`d1c95125790b2c62c1458737bbfe0912263d37c68c42bd49a0f57eed08b87cb5`
+and `10257b119f42801ba5eafe4d783d2123a1dc8342625308993a7dd18939f9b78c`.
+Diagnostic runner checkpoint is
+`dff0f1fac0c4619eebdf71ed70c8eb94a6131de3`, with Git-blob SHA-256
+`eecc4fa6d79f40d383b38fc389738fc6f1bd458dff4f8efd859a4cbebb1cc9b5`.
+The exact text/import guards and runner syntax gate pass locally; no Lean or
+Lake ran on Windows.  The module remains PRE-VALIDATION pending its Colab
+focal and audit.  This is item 3 of the finite-carrier route only; it does not
+identify the complexified precision with the literal Step-7b physical
+precision, and no terminal counter moves.
