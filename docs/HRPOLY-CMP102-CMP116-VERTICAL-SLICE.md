@@ -10573,6 +10573,26 @@ either route the generated positivity of the averaging coefficient and the
 mass-zero fine-symbol nonvanishing must be produced internally; an arbitrary
 `hstabilized` input is not a physical dictionary.
 
+Static route audit (not yet compiler-verified): the stabilized denominator
+itself must **not** be declared `2*pi`-periodic.  Its central fine-symbol
+factor changes under a physical-period shift.  The faithful finite-carrier
+route therefore splits `ell = 0` from `ell != 0`.  At zero, the literal base
+momentum is already centered and the mass-uniform central lower bound applies
+directly.  Off zero, first construct the signed centered representative of
+`-ell mod N'` coordinatewise and its exact integer `2*pi` displacement from
+the literal base momentum.  On that centered representative, positivity of
+the generated averaging coefficient gives a nonzero stabilized denominator;
+nonvanishing of the central fine and unit symbols then identifies a nonzero
+reduced/full denominator through
+`cmp89Eq249CentralFine_mul_reduced_eq_stabilized`.  Transport only the full
+denominator with
+`cmp89Eq249ComplexFullAliasDenominator_physicalPeriodShift` and the finite
+alias-cycle machinery.  Finally recover the literal reduced and stabilized
+factors after separately proving the two real fine symbols nonzero at the
+uncentered physical momentum.  This route keeps the removable central pole
+and the exceptional zero mode visible; treating the stabilized factor as
+periodic would be a false dictionary.
+
 Item 1 now has PRE-VALIDATION source checkpoint
 `442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` and a three-declaration audit in
 `FinitePiLpTypedKernelReindexAlgebra`.  Source/audit Git-blob SHA-256 are
