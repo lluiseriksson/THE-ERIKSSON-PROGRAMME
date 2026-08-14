@@ -22,8 +22,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "item5-complete-fibre-nonvanishing-v2"
-runner.SOURCE_SHA = "9838dcada8c05e1afe1cb451c899fbb91150a44c"
+runner.RUNNER_REV = "item5-complete-fibre-nonvanishing-v3"
+runner.SOURCE_SHA = "a7131fdb05c32c4956a8cf1bba8f8e7b1d907f13"
 runner.ROOT = Path("/content/hrpoly-item5-complete-fibre")
 runner.EVIDENCE = Path("/content/hrpoly-item5-complete-fibre-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-item5-complete-fibre-evidence.tar.gz")
@@ -31,7 +31,7 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-item5-complete-fibre-paths.txt")
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishing.lean":
-        "a2e872afed46de0493ad9883d37a5f21d9c02a61d94915502fd8d0ba4cdfbac0",
+        "a6a3574a73eb99a16de0de2ebde1291103b04f2a8f21759f92899f03c26e547e",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishingAudit.lean":
         "465f765819ba56465c8854ce9f0ba138643c22464f7365665e0992eafb1c3846",
 }

@@ -10690,6 +10690,19 @@ Gate 4 remains PRE-VALIDATION pending diagnostic v2.  Counters stay exactly
 `20/41`, `TermSource = 0`; the stabilized denominator and window 15 remain
 open.
 
+Diagnostic v2 at `9838dcada8c05e1afe1cb451c899fbb91150a44c` removed four of
+the six v1 errors and stopped after `1098.441 s` at the two remaining
+elaboration boundaries: conversion of plain Pi zero to the named zero alias,
+and rewriting a dependent subtype projection in place.  Evidence/archive
+SHA-256 are
+`6ac62dece3241ad6879be22a43a262d881db56f1a890d5bbe2ada3ae0130da1c`
+and `b6981ab103f6ccfeaccc249a923caddfecd42b04d57ed6aaf90570a2e635f01a`.
+Repair checkpoint `a7131fdb05c32c4956a8cf1bba8f8e7b1d907f13` makes both
+identifications explicit and removes the two linter warnings without changing
+any statement.  Its source Git-blob SHA-256 is
+`a6a3574a73eb99a16de0de2ebde1291103b04f2a8f21759f92899f03c26e547e`.
+Gate 4 remains PRE-VALIDATION pending v3 and changes no counter.
+
 Static refinement after reading the exact mass-uniform APIs: gate 5 does not
 need a new positive-mass or strip estimate at the centered representative.
 `cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform` already applies

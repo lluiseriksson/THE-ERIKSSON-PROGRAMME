@@ -35733,3 +35733,23 @@ the audit blob remains
 `465f765819ba56465c8854ce9f0ba138643c22464f7365665e0992eafb1c3846`.
 PRE-VALIDATION remains pending diagnostic v2; the failed diagnostic moves no
 counter and proves no part of gate 4.
+
+Diagnostic v2 at exact source `9838dcada8c05e1afe1cb451c899fbb91150a44c`
+again passed every non-Lean gate.  The focal stopped with `EXIT=1` after
+`1098.441 s`, now at only two remaining elaboration boundaries: plain Pi zero
+had not been converted to the named `cmp89Eq249ZeroAlias`, and `change` was
+applied directly to the dependent projection `m.property`.  It also reported
+one redundant `change` and one unnecessary `simpa`; no audit ran.  Evidence
+SHA-256 is
+`6ac62dece3241ad6879be22a43a262d881db56f1a890d5bbe2ada3ae0130da1c`;
+archive SHA-256 is
+`b6981ab103f6ccfeaccc249a923caddfecd42b04d57ed6aaf90570a2e635f01a`.
+
+Repair checkpoint `a7131fdb05c32c4956a8cf1bba8f8e7b1d907f13` constructs the
+named zero-alias equality coordinatewise, binds the depth-one membership to a
+local hypothesis before simplification, and removes both warnings.  Public
+statements and constants are unchanged.  The repaired source Git-blob
+SHA-256 is
+`a6a3574a73eb99a16de0de2ebde1291103b04f2a8f21759f92899f03c26e547e`.
+PRE-VALIDATION remains pending diagnostic v3; counters remain exactly
+`20/41`, `TermSource = 0`.
