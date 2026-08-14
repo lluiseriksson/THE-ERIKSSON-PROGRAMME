@@ -35212,3 +35212,33 @@ Diagnostic v2 runner checkpoint is
 `a26f72ae51f74f87697fb461624e20da95a02f5c74899de94d9e0b33479d22e6`.
 Both modules remain PRE-VALIDATION until the repaired focal and audit pass.
 No counter moves.
+
+## Addendum 777 (2026-08-14, **typed-kernel reindex diagnostic v2 PASS; warning-only cleanup PRE-VALIDATION; 20/41 unchanged**)
+
+Colab diagnostic v2 opened at `2026-08-14T10:06:39.640988Z` on a CPU/high-RAM
+runtime with `50.99 GiB`, verified exact source
+`41c07595b6929c333904b734b5911fe74718a2bc`, both Git blobs, Lean
+`v4.29.0-rc6` and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`.  The focal exited zero after
+`103.722 s` with literal terminal line
+`Build completed successfully (8173 jobs).`; the audit exited zero after
+`8.446 s` and printed exactly three copies of
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`917f21a410fb355ed6cee2f471766111daa4831105e003dddc7b911ea253f1ce`
+and `ad29698b34001f08b6e6173bc05558ef0dd994772710cbb14f9ac15a97b56a27`.
+`FINAL_STATUS=PASS` and `RUNTIME_UNASSIGN_REQUESTED=1` were emitted; the
+notebook's terminal `SystemExit: 0` is the successful runner return.
+
+The successful focal also emitted one new-module linter warning: the named
+inverse atom is required by the composition theorem but was redundantly
+listed in the identity theorem's `simp` set.  PRE-VALIDATION cleanup
+`510ee90e913a44c7ea361ef0ec1c99b902d6911e` removes only that unused
+argument.  It changes no declaration statement or proof dependency.  Its
+source/audit Git-blob SHA-256 are
+`228d928504d3935b881c1798b844578117aad430f02150e085e5c54a85c0f33a`
+and `3a41f55b57054af87f50c4df21fb5f66801a381564e7ba806cf48926d7823313`.
+Diagnostic v3 runner checkpoint is
+`2dd937c64c66ae432e913ef40d4766a49131142e`, with Git-blob SHA-256
+`8f888af0f5896a6ed4d96415b874a77c7935c6352d1c83dc5c55188b8064146c`.
+PRE-VALIDATION remains until the warning-free source passes and is cold
+sealed.  Counters remain unchanged.

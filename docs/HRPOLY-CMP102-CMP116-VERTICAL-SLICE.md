@@ -10581,6 +10581,17 @@ and `3a41f55b57054af87f50c4df21fb5f66801a381564e7ba806cf48926d7823313`.
 It remains PRE-VALIDATION pending diagnostic v2; the failed v1 moves no
 counter and proves no part of the physical endpoint.
 
+Diagnostic v2 is green at `41c07595b6929c333904b734b5911fe74718a2bc`:
+focal `EXIT=0`, literal terminal line
+`Build completed successfully (8173 jobs).`, audit `EXIT=0`, and three exact
+permitted axiom trios.  It exposed only an unused-simp-argument warning in
+the identity theorem.  Cleanup
+`510ee90e913a44c7ea361ef0ec1c99b902d6911e` removes that redundant argument
+without changing a public statement; its exact source Git-blob SHA-256 is
+`228d928504d3935b881c1798b844578117aad430f02150e085e5c54a85c0f33a`.
+The module remains PRE-VALIDATION pending warning-free diagnostic v3 and its
+cold seal.  This still changes no terminal counter.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after
