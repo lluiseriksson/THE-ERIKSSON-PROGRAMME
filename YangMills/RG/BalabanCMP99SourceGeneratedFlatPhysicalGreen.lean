@@ -82,7 +82,10 @@ theorem cmp99SourceGeneratedFlatPhysicalPrecision_comp_green
     (cmp99SourceGeneratedFlatPhysicalPrecision hd hM Omega depth
       (cmp99SourceGeneratedFullComplexSpacing M (depth + 1))).comp
         (cmp99SourceGeneratedFlatPhysicalGreen hd hM Omega depth) =
-      ContinuousLinearMap.id ℝ _ := by
+      ContinuousLinearMap.id ℝ
+        (ActiveGaugeZeroCochain
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+          (SUNLieCoord Nc)) := by
   exact cmp99SourceGeneratedPhysicalPrecision_comp_green
     (d := d) (M := M) (N := N) (Nc := Nc) hd hM Omega depth
     (cmp99SourceGeneratedFullComplexSpacing_pos M (depth + 1))
@@ -101,7 +104,10 @@ theorem cmp99SourceGeneratedFlatPhysicalGreen_comp_precision
     (cmp99SourceGeneratedFlatPhysicalGreen hd hM Omega depth).comp
         (cmp99SourceGeneratedFlatPhysicalPrecision hd hM Omega depth
           (cmp99SourceGeneratedFullComplexSpacing M (depth + 1))) =
-      ContinuousLinearMap.id ℝ _ := by
+      ContinuousLinearMap.id ℝ
+        (ActiveGaugeZeroCochain
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+          (SUNLieCoord Nc)) := by
   exact cmp99SourceGeneratedPhysicalGreen_comp_precision
     (d := d) (M := M) (N := N) (Nc := Nc) hd hM Omega depth
     (cmp99SourceGeneratedFullComplexSpacing_pos M (depth + 1))
