@@ -1,10 +1,5 @@
 import YangMills.RG.FinitePiLpCanonicalComplexification
 
-/-!
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
--/
-
 #print axioms YangMills.RG.finitePiLpComplexRealPart
 #print axioms YangMills.RG.finitePiLpComplexImagPart
 #print axioms YangMills.RG.finitePiLpComplexOfReal

@@ -35071,3 +35071,33 @@ diagnostic evidence only: the two modules remain PRE-VALIDATION until the
 single cold GitHub seal at this exact source is audited.  No terminal producer
 is added; counters remain exactly `20/41`, `TermSource = 0`, with window 15
 compatible but unattained.
+
+## Addendum 772 (2026-08-14, **canonical finite `PiLp` complexification SEALED cold; physical outer transport open; 20/41 unchanged**)
+
+The single terminal GitHub Actions run
+[`31784588620`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31784588620)
+checked out workflow vehicle `0900d009ce580770dad84f3d09db9730de8e211d`
+and exact source checkpoint `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`.
+It used Lean `v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and `COLD_MODE=true`; both
+project-cache restore and save steps were `skipped`.  The focal exited zero
+from `2026-08-14T08:38:20Z` to `08:59:43Z` with the literal terminal line
+`Build completed successfully (8485 jobs).`.  The audit exited zero from
+`08:59:43Z` to `08:59:54Z` and printed exactly fourteen copies of
+`[propext, Classical.choice, Quot.sound]`, with no forbidden axiom and no
+warning from the source module.
+
+Durable artifact id `9213595964` has GitHub archive digest
+`be24fee79f248be8c67df7117d29b74438afa519c2157709bf1887175a188e5f`.
+The contained deterministic evidence archive has SHA-256
+`8959a2b2818056d90f04ad62196d6418c715be489bca341f68f389ae02422592`;
+its declared digest matches and all entries in `SHA256SUMS` verify with zero
+mismatches.  `FINAL_STATUS=PASS`, both recorded stage exits are zero, and the
+text/import guards pass for exactly the two overlay modules.
+
+This cold evidence seals only the canonical finite `PiLp` complexification
+and its audit, so only their two PRE-VALIDATION marks are removed.  It does
+not transport through `PiLp.continuousLinearEquiv`, identify the physical
+full-box precision, derive the complex inverse by uniqueness, attain window
+15, or add a terminal producer.  Live counters remain exactly `20/41`,
+`TermSource = 0`, with window 15 compatible but unattained.

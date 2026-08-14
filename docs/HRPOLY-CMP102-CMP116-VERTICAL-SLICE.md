@@ -10470,6 +10470,22 @@ diagnostic v3 runner checkpoint is
 `ca4568634ef31b0ac4bb4b114485a8179f3a5d7a8f5850777950e67c5d734464`.
 The fourteen-declaration audit remains pending Colab.  Counters are unchanged.
 
+Cold GitHub Actions run
+[`31784588620`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31784588620)
+then sealed exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
+from workflow vehicle `0900d009ce580770dad84f3d09db9730de8e211d`.
+Project-cache restore/save were both skipped, the focal ended with literal
+line `Build completed successfully (8485 jobs).`, and the audit emitted
+fourteen permitted axiom trios.  GitHub artifact id `9213595964` has digest
+`be24fee79f248be8c67df7117d29b74438afa519c2157709bf1887175a188e5f`;
+the deterministic evidence archive has SHA-256
+`8959a2b2818056d90f04ad62196d6418c715be489bca341f68f389ae02422592`,
+with zero internal manifest mismatches.  The canonical finite `PiLp`
+complexification is therefore SEALED and its two PRE-VALIDATION marks are
+retired.  The explicit outer-space conjugation, physical precision
+identification, inverse uniqueness and literal `G Q'^*` remain open; this
+seal moves neither `20/41` nor window 15 and leaves `TermSource = 0`.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after

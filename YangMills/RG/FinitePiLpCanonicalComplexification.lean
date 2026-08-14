@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99PhysicalFibreComplexification
 /-!
 # Canonical complexification of finite counting-Hilbert operators
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 A real operator on a finite `PiLp` field has a canonical complex-linear
 extension: apply it independently to the real and imaginary parts and
 recombine.  This file constructs that extension internally and proves that it
