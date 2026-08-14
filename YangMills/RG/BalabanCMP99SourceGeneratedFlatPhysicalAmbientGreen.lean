@@ -10,9 +10,6 @@ import YangMills.RG.FinitePiLpTypedKernelReindexAlgebra
 /-!
 # Generated flat physical Green on the source ambient carrier
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 The internally generated flat precision and Green initially live on the full
 active terminal carrier.  This file transports both through the one sealed
 full-site equivalence used by the regional large-block construction and

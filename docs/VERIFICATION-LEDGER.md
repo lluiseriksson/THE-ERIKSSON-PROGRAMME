@@ -35308,7 +35308,7 @@ sealed algebra, but no physical dictionary or terminal producer exists yet;
 the counters remain exactly `20/41`, `TermSource = 0`, with window 15
 compatible but unattained.
 
-## Addendum 781 (2026-08-14, **generated flat physical ambient Green PRE-VALIDATION; both real inverse laws explicit; 20/41 unchanged**)
+## Addendum 781 (2026-08-14, **generated flat physical ambient Green cold-sealed; both real inverse laws explicit; 20/41 unchanged**)
 
 PRE-VALIDATION source checkpoint
 `9f05ccceaee703297f276edb0068cc3d18c43baf` adds
@@ -35340,5 +35340,21 @@ after `2005.364 s` with literal terminal line
 the evidence archive SHA-256 is
 `ae57a5f85e9838a8f7332390586205d90ce857444da711de9235b3327fbd09f5`.
 `FINAL_STATUS=PASS` and the runtime requested unassignment and was closed.
-This is diagnostic evidence only: PRE-VALIDATION remains until the single
-cold seal at source `9f05ccceaee703297f276edb0068cc3d18c43baf`.
+The single terminal cold run
+[`31795074593`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31795074593)
+then checked out that exact source under workflow vehicle
+`38a1d3687b983ba96abbfa0d3449f3db6158eae2`.  Project-graph restore and save
+were both skipped.  The focal exited zero with literal terminal line
+`Build completed successfully (8622 jobs).`; the audit exited zero and its
+three declarations contain exactly `[propext, Classical.choice, Quot.sound]`.
+
+Durable artifact id `9217834577` has GitHub archive digest
+`f7028bc58045637d99c919b03a8af2b97609fa0ace67643109a09007443b955f`.
+The deterministic evidence archive has SHA-256
+`d3cba7fc94531f322aef239c5be9078f41d18b98370c64f4d533ad3717d08b2e`;
+its declared hash agrees with the downloaded file, and all thirteen
+`SHA256SUMS` entries verify with zero mismatches.  `FINAL_STATUS=PASS`,
+Mathlib is exactly `07642720480157414db592fa85b626dafb71355b`, and both stage
+exits are zero.  Only the source/audit PRE-VALIDATION marks are removed.
+This seals item 2 of the finite-carrier route, not its complexification or
+Step-7b physical dictionary; no terminal counter moves.

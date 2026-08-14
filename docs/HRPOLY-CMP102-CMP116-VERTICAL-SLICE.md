@@ -10615,7 +10615,7 @@ mismatches.  Its two PRE-VALIDATION marks are retired.  Item 2 may now be
 built on a sealed parent; the physical precision and Green remain open and
 the counters remain unchanged.
 
-Item 2 now has PRE-VALIDATION source checkpoint
+Item 2 is cold-sealed at source checkpoint
 `9f05ccceaee703297f276edb0068cc3d18c43baf` in
 `BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen`.  The source fixes the
 canonical flat precision internally, transports the internally generated
@@ -10629,9 +10629,14 @@ terminal line `Build completed successfully (8622 jobs).`, focal/audit exits
 zero, and three exact permitted axiom trios.  Evidence/archive SHA-256 are
 `d4745f3318714fc9834431b8d59bb5fd1540d0bec051a21745340525293786bb`
 and `ae57a5f85e9838a8f7332390586205d90ce857444da711de9235b3327fbd09f5`.
-The result remains diagnostic; a cold run with project-graph restore/save
-skipped is still required before PRE-VALIDATION can be retired, and the brick
-does not yet enter the complex or Step-7b dictionary.
+Cold run `31795074593` checked out that exact source with project-graph
+restore/save skipped and emitted literal terminal line
+`Build completed successfully (8622 jobs).`; its three audited declarations
+have the exact permitted axiom trio.  Deterministic evidence archive SHA-256
+is `d3cba7fc94531f322aef239c5be9078f41d18b98370c64f4d533ad3717d08b2e`,
+with thirteen verified entries and zero mismatches.  The PRE-VALIDATION marks
+are retired.  The brick still does not enter the complex or Step-7b
+dictionary.
 
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
