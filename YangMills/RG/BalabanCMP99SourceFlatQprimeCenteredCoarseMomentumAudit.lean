@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimeCenteredCoarseAlias_mem
+#print axioms YangMills.RG.two_mul_abs_cmp99SourceFlatQprimeCenteredCoarseAlias_le
+#print axioms YangMills.RG.abs_cmp99SourceFlatQprimeCenteredCoarseBaseMomentum_le_pi
+#print axioms YangMills.RG.cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_eq_centered_add_intPeriods
