@@ -35127,3 +35127,49 @@ The subsequent real reindexing, Step 7b physical precision identification,
 inverse uniqueness and literal `G Q'^*` are still open.  No terminal producer
 is added; counters remain exactly `20/41`, `TermSource = 0`, with window 15
 compatible but unattained.
+
+## Addendum 774 (2026-08-14, **outer transport diagnostic v1 INCOMPLETE-RUNTIME-LOSS; rerun at identical source; 20/41 unchanged**)
+
+The first Colab diagnostic v1 opened at
+`2026-08-14T09:17:48.731818Z` on a CPU/high-RAM runtime with `50.99 GiB`,
+verified runner SHA-256
+`3adcf357148dd1ffa8ebc794b0d8fee44692985f35981c28f5f51874bd6e8343`,
+checked out exact source `5f13c04ae1b3bdb97fe17d25055f28509b2416ee`,
+verified both source blobs, the text/import guards, Lean `v4.29.0-rc6`, and
+Mathlib pin `07642720480157414db592fa85b626dafb71355b`.  Its persisted
+transcript stops immediately after emitting the focal command for
+`YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport`: it contains
+no focal exit, audit, evidence archive, `FINAL_STATUS`, or runtime-unassign
+sentinel.  It is therefore classified `INCOMPLETE-RUNTIME-LOSS`, not a Lean
+failure and not evidence of success.
+
+A fresh diagnostic v1 rerun opened at `2026-08-14T09:28:49.832106Z` with the
+same runner, source checkpoint, blob hashes, toolchain and pins.  No source or
+claim changed between the two attempts.  Both modules remain PRE-VALIDATION
+until a complete diagnostic and a subsequent single cold seal succeed.  No
+terminal producer is added; counters remain exactly `20/41`,
+`TermSource = 0`, with window 15 compatible but unattained.
+
+## Addendum 775 (2026-08-14, **typed-kernel reindex algebra PRE-VALIDATION; independent of outer transport; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` adds
+`FinitePiLpTypedKernelReindexAlgebra` and its three-declaration audit.  It
+proves exact preservation of ordered composition and identity under the
+existing square isometric reindexing and packages either real inverse law in
+one ordered theorem.  The source imports only the already sealed generic
+typed-kernel reindexer; it does not depend on the outer transport currently in
+Colab and therefore does not stack a new physical claim on an unvalidated
+parent.
+
+Source/audit Git-blob SHA-256 are
+`027c1ef07863968dccc3e2454cad39ed0be71d0a0a26a18c2e0ed1673807b8e7`
+and `3a41f55b57054af87f50c4df21fb5f66801a381564e7ba806cf48926d7823313`.
+Diagnostic runner checkpoint is
+`91e4cb58a89ae793ad5e74e96796d8724a6ff39e`; its Git-blob SHA-256 is
+`0e4b7950152e63a5eaecd801f2d3ef29c8f4b56dacb9a7fe9c4f4bd475edae4f`.
+The exact two-file text/import guards and runner syntax gate pass locally; no
+Lean or Lake ran on Windows.  Both modules remain PRE-VALIDATION pending a
+separate Colab focal and audit.  No physical precision, Green, complex
+inverse, terminal producer or counter movement is claimed: counters remain
+exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.

@@ -10504,6 +10504,50 @@ reindexed real precision with the literal physical precision, derive the
 literal Green by inverse uniqueness, attain window 15, move `20/41`, or
 inhabit a `TermSource`.  Both modules remain PRE-VALIDATION pending Colab.
 
+The post-seal route is finite and ordered.  It must not be collapsed into a
+single informal "reindexing" step:
+
+1. add exact composition, identity and ordered inverse-law transport for
+   `finitePiLpTypedKernelReindex`;
+2. reindex the internally generated flat real precision and Green through
+   `cmp99SourceGeneratedPhysicalFullSiteEquiv`, retaining both real inverse
+   laws on the full carrier;
+3. apply the sealed canonical complexification and this explicit outer-norm
+   conjugation to those same two operators;
+4. assemble the pointwise Step 7b theorem
+   `physicalPrecision_complexification_eq_fullComplexAction` into the exact
+   full-box complex precision equality, with no caller-supplied operator
+   dictionary; and
+5. feed the resulting literal left inverse to
+   `cmp99SourceFlatFullComplexPrecisionStabilizedFieldCLM_eq_inverse_comp` to
+   derive the literal `G Q'^*` field.
+
+Only item 5 reaches the physical Green endpoint.  A green prefix through any
+earlier item remains carrier/norm/dictionary infrastructure and moves neither
+the terminal counter nor window 15.
+
+**Factorization gate.**  The full generated carrier has the arithmetic
+identity
+`M^(depth+1) * (2 * (M * Q)) = M^(depth+2) * (2 * Q)`, but these two
+factorizations must not be substituted for one another inside the literal
+`Q'` precision.  Step 7b fixes block side `M^(depth+1)` and coarse carrier
+`2 * (M * Q)`; replacing them by block side `M^(depth+2)` and carrier `2 * Q`
+would change the owner map even though the total `FinBox` cardinality agrees.
+The next carrier equivalence must therefore target the Step 7b factorization
+explicitly (or add only an outer coordinate cast after the physical operator
+has been fixed).  Arithmetic equality of total side lengths is not a physical
+precision dictionary.
+
+**Mass-zero nonvanishing gate.**  The inverse-uniqueness endpoint in item 5
+still consumes the noncentral fine-symbol and stabilized-central-denominator
+nonvanishing hypotheses `hfine` and `hstabilized`.  Step 7b fixes the scalar
+mass to zero, whereas the existing common-strip lower-bound API assumes a
+strictly positive mass.  Those hypotheses must therefore be constructed for
+`mass = 0` and the internally generated positive averaging coefficient (or
+remain visibly named inputs); they must not be borrowed from the
+positive-mass strip by notation.  This gate is downstream of the exact
+complex inverse and does not block items 1--4.
+
 Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 is green: focal exit zero after `1563.921 s`, literal terminal line
 `Build completed successfully (8485 jobs).`, and audit exit zero after
