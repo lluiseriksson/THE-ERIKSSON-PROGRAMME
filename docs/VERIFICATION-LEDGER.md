@@ -35049,3 +35049,25 @@ Diagnostic v4 runner checkpoint is
 The fourteen-declaration audit remains pending Colab.  No terminal producer
 is added; counters remain exactly `20/41`, `TermSource = 0`, with window 15
 compatible but unattained.
+
+## Addendum 771 (2026-08-14, **canonical finite `PiLp` complexification diagnostic v4 GREEN; cold seal pending; 20/41 unchanged**)
+
+Colab diagnostic v4 checked out exact source
+`9e2b9b7f8e4ef941330587dab8bf848d25b3159d`, verified runner/source hashes,
+Lean `v4.29.0-rc6`, and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`.  The focal exited zero after
+`1563.921 s` with literal terminal line
+`Build completed successfully (8485 jobs).`.  The audit exited zero after
+`17.372 s` and printed exactly fourteen copies of
+`[propext, Classical.choice, Quot.sound]`.  The text, import-prefix, warning,
+axiom-count and forbidden-axiom gates passed.
+
+Evidence SHA-256 is
+`c6bace95465e0ad6a8c9028e061fc040d6a394bb3c6cff5cf69e270daf8d0ba9`;
+the deterministic archive SHA-256 is
+`29c9b19cfbb60dbf932fcf824d0b6d3cd0ea39304177a0920f534899b36abc0f`.
+`FINAL_STATUS=PASS` and `RUNTIME_UNASSIGN_REQUESTED=1` were emitted.  This is
+diagnostic evidence only: the two modules remain PRE-VALIDATION until the
+single cold GitHub seal at this exact source is audited.  No terminal producer
+is added; counters remain exactly `20/41`, `TermSource = 0`, with window 15
+compatible but unattained.

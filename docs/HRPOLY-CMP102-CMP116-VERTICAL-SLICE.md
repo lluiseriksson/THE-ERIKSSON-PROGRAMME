@@ -10470,6 +10470,16 @@ diagnostic v3 runner checkpoint is
 `ca4568634ef31b0ac4bb4b114485a8179f3a5d7a8f5850777950e67c5d734464`.
 The fourteen-declaration audit remains pending Colab.  Counters are unchanged.
 
+Diagnostic v4 on exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
+is green: focal exit zero after `1563.921 s`, literal terminal line
+`Build completed successfully (8485 jobs).`, and audit exit zero after
+`17.372 s` with fourteen copies of the permitted axiom trio.  Evidence and
+archive SHA-256 are
+`c6bace95465e0ad6a8c9028e061fc040d6a394bb3c6cff5cf69e270daf8d0ba9`
+and `29c9b19cfbb60dbf932fcf824d0b6d3cd0ea39304177a0920f534899b36abc0f`.
+This remains diagnostic only; PRE-VALIDATION marks and counters stay unchanged
+pending the single cold seal at the exact source.
+
 Diagnostic v3 on exact source `339d8f56da1d594ba6ef75adb8a975e5d3bb9e12`
 failed after `1342.107 s` only because a `ring` tactic followed a `simp` that
 had already closed the goal.  Evidence/archive SHA-256 are
