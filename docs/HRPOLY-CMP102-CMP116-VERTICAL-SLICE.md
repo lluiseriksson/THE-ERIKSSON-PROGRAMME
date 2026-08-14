@@ -10673,6 +10673,23 @@ and
 Both modules retain PRE-VALIDATION pending a fresh Colab focal and its
 five-declaration audit.  This checkpoint changes no terminal counter.
 
+Diagnostic v1 at exact source `12bdcd473d8b9892a0a3f5a825cb78461734472a`
+passed every transport, toolchain, pin, cache and textual gate, then stopped
+the focal at six elaboration boundaries after `1673.919 s`; its audit did not
+run.  The first error was the uncancelled product in the proof that nonzero
+coarse mode gives nonzero centered momentum.  Evidence/archive SHA-256 are
+`93133b86d917b891c2cfbac125c336a092fb4bf8a8095ceca3e95a30b258f339`
+and `a4984aae494b241c2132ff98f76ada6b60119ee21ab9d54977bdf9278a895565`.
+Repair checkpoint `9838dcada8c05e1afe1cb451c899fbb91150a44c` changes no
+statement: it exposes exactly those six elaboration boundaries.  Its repaired
+source Git-blob SHA-256 is
+`a2e872afed46de0493ad9883d37a5f21d9c02a61d94915502fd8d0ba4cdfbac0`;
+the audit blob remains
+`465f765819ba56465c8854ce9f0ba138643c22464f7365665e0992eafb1c3846`.
+Gate 4 remains PRE-VALIDATION pending diagnostic v2.  Counters stay exactly
+`20/41`, `TermSource = 0`; the stabilized denominator and window 15 remain
+open.
+
 Static refinement after reading the exact mass-uniform APIs: gate 5 does not
 need a new positive-mass or strip estimate at the centered representative.
 `cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform` already applies

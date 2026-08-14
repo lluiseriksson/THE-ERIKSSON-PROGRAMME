@@ -35706,3 +35706,30 @@ stabilized denominator, Green identification, window 15 and every terminal
 producer remain open.  Both new modules retain visible PRE-VALIDATION headers
 pending a fresh Colab focal and audit.  Counters remain exactly `20/41`,
 `TermSource = 0`.
+
+Diagnostic v1 ran once in a fresh Colab CPU/high-RAM runtime (reported
+`50.99 GiB`) at exact source `12bdcd473d8b9892a0a3f5a825cb78461734472a`.
+The transport hash gate, exact Lean `v4.29.0-rc6` toolchain, Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, overlay guards and cache gate all
+passed.  The focal stopped with `EXIT=1` after `1673.919 s`; the first real
+error was the uncancelled scalar product in the centered-representative proof
+at source line 55.  Five later diagnostics were also elaboration boundaries:
+the zero-alias rewrite, a wrong periodicity theorem name, two rewrites hidden
+under the local abbreviation `F`, an unpinned `Fintype`, and an undisclosed
+`CMP89Eq246AliasIndex` subtype.  The audit was not run.  Evidence SHA-256 is
+`93133b86d917b891c2cfbac125c336a092fb4bf8a8095ceca3e95a30b258f339`;
+the evidence-archive SHA-256 is
+`a4984aae494b241c2132ff98f76ada6b60119ee21ab9d54977bdf9278a895565`.
+The runtime was released by the launcher and the cell was not reexecuted.
+
+Repair checkpoint `9838dcada8c05e1afe1cb451c899fbb91150a44c` changes no
+statement or physical mechanism.  It cancels the product explicitly, uses
+the sealed zero-alias and inverse-natural-spacing period theorems by their
+literal names, exposes the local abbreviation before rewriting, pins
+`Finset (Fin d)`, and unfolds the depth-one alias carrier.  The repaired source
+Git-blob SHA-256 is
+`a2e872afed46de0493ad9883d37a5f21d9c02a61d94915502fd8d0ba4cdfbac0`;
+the audit blob remains
+`465f765819ba56465c8854ce9f0ba138643c22464f7365665e0992eafb1c3846`.
+PRE-VALIDATION remains pending diagnostic v2; the failed diagnostic moves no
+counter and proves no part of gate 4.
