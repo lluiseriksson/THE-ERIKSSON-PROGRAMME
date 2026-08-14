@@ -10279,3 +10279,23 @@ is fixed to exact source `2e6c98d20cb63f4d12cafa5db8448c510621ff2e`
 for one terminal run with `cold=true`.  Restoration and saving of
 `.lake/build` are disabled by that input.  PRE-VALIDATION remains until the
 resulting durable artifact is audited.
+
+Cold workflow
+[`31761329693`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31761329693)
+then sealed that exact source under workflow vehicle
+`868252c0a48bea64cd335989dd523630ddc199bc`.  `COLD_MODE=true`; restoration
+and saving of `.lake/build` were both skipped.  The focal ran
+`01:42:05Z–02:07:40Z`, ended with literal
+`Build completed successfully (8569 jobs).`, and the audit exited zero at
+`02:07:46Z` with the one exact standard axiom block.  Focal/audit exits were
+`0/0`, the warning/text/axiom gates passed, and the durable manifest matched
+`13/13` entries.  Artifact `9205203086` has GitHub digest
+`8724276c2c417605ef4b4e021d4655c6c1bbf774951416c29864249564454149`;
+the deterministic archive SHA-256 is
+`0331f9c7b78875996cd3be6994c858dd91341d678a80e3b69b340d8071fff7a1`.
+
+This evidence seals step 7b, so only its source and audit PRE-VALIDATION
+marks are retired.  It identifies the literal generated flat physical
+precision action, not its inverse or regional Green operator.  No terminal
+producer is added: counters remain exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.

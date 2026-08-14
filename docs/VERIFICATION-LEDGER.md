@@ -29419,6 +29419,26 @@ for one terminal run with `cold=true`.  Restoration and saving of
 `.lake/build` are disabled by that input.  PRE-VALIDATION remains until the
 durable artifact is audited.
 
+Cold workflow
+[`31761329693`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31761329693)
+sealed that exact source under workflow vehicle
+`868252c0a48bea64cd335989dd523630ddc199bc`.  `COLD_MODE=true`; restoration
+and saving of `.lake/build` were skipped.  The focal ran
+`01:42:05Z–02:07:40Z`, ended with literal
+`Build completed successfully (8569 jobs).`, and the audit exited zero at
+`02:07:46Z` with the one exact standard axiom block.  Focal/audit exits were
+`0/0`; warning, text and axiom gates passed; the durable manifest matched
+`13/13` entries.  Artifact `9205203086` has GitHub digest
+`8724276c2c417605ef4b4e021d4655c6c1bbf774951416c29864249564454149`;
+the deterministic archive SHA-256 is
+`0331f9c7b78875996cd3be6994c858dd91341d678a80e3b69b340d8071fff7a1`.
+
+Only the source and audit PRE-VALIDATION marks for step 7b are retired.  The
+seal proves the literal generated full-precision action dictionary, not an
+inverse or regional Green equality.  No terminal producer is added; counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
+unattained.
+
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint `b29a92d38504d8d9b282f14425b7d2a5d5237412`

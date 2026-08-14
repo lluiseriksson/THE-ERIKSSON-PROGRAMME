@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel
 /-!
 # Generated flat physical precision in full-box complex coordinates
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 The generated flat physical precision is already a literal sum of the active
 covariant Laplacian and the generated counting-space `Q'^*Q'` mass.  This
 module keeps those two summands separate until it consumes their independently
