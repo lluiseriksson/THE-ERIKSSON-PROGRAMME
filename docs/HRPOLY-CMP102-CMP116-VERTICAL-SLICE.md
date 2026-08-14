@@ -10232,3 +10232,12 @@ The two budgets remain separate until the endpoint.  No inverse or Green
 equality is asserted.  Both new modules retain visible PRE-VALIDATION headers
 pending compiler diagnostics.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+Exact source checkpoint is `7456864edd66404496ae0a9eeaf332d2fc2bcbbb`.
+Source/audit Git-blob SHA-256 are
+`016cdcc69f9b6dd1a8a2efb9c4a5056c86693c7db8ccdf2f827b8db50173f12f`
+and
+`29655046dcede299612e6635f6b4ab62bafb00d5786db7277d9ef6c4a2baafc2`.
+Runner checkpoint `4cd8be775ac669dc19b51ce07ef824360cdafaf0` has
+Git-blob SHA-256
+`fba135e20d6f9fd9a02ffda1f35b4b71589a7a6e83d7f33a60c65033ac7778bc`.
