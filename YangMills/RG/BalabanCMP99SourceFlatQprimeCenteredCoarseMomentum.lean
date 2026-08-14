@@ -108,8 +108,9 @@ theorem cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_eq_centered_add_intPeri
         (N' : ℂ) * (c mu : ℂ) - ((ell mu).val : ℂ) := by
     linear_combination hcC
   rw [cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum,
-    cmp99SourceFlatQprimeCenteredCoarseBaseMomentum, hrep]
+    cmp99SourceFlatQprimeCenteredCoarseBaseMomentum]
   push_cast
+  rw [hrep]
   field_simp [hN]
   ring
 
