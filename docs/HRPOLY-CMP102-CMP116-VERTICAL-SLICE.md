@@ -10326,3 +10326,27 @@ compression and a uniform physical Green bound remain open.  Both modules
 retain visible PRE-VALIDATION headers pending a Colab diagnostic.  No
 terminal producer is added: counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 compatible but unattained.
+
+The first Colab diagnostic reached exact source checkpoint
+`8712e1a0a3515bd32b021b6aecd990ea1b1715c0` and exact Mathlib, then stopped
+at the focal before the audit.  Its first error was
+`BalabanCMP99SourceGeneratedFlatPhysicalGreen.lean:53:2: failed to prove
+strict positivity`; the same focal also exposed one unused `simp` argument
+and two stuck `Nc` metavariables in the inverse-law wrappers.  Focal exit was
+`1` after `1481.671 s`; evidence/archive SHA-256 are
+`425e591607f01857d4061ec668caf6714bb393270c0fcff9e15dab6ed4705cca`
+and `25e9ca86dc7ab7c95732c8d1ea8889fb5125aea79325187e5557818850805f85`.
+The runtime auto-unassigned.  This is retained as diagnostic FAIL evidence,
+not as a compiler verdict on any declaration.
+
+Correction checkpoint `3d5d39a90a968a4bdbb9be49432c6a3378e2147a` proves spacing positivity
+from the explicit positive natural power, removes the unused `simp` argument,
+and pins `(d, M, N, Nc)` in the two inherited inverse laws.  It changes no
+statement, physical constant or hypothesis.  The corrected source/audit
+Git-blob SHA-256 are
+`b3ba8b8d1fae7c689d4f4a7ed93eb733e6cb639d67d159f97355ba95c09c80c7`
+and `6bb3b44d59db6b64b29dd235a0900a66be76738dbfb64935eb675bbc2a4d53a6`.
+Runner v2 checkpoint `a8fa21c2a0d19b607470a5a475acbf7ff4fd215f`
+has Git-blob SHA-256
+`b916f8e0a175bafe047bb9f2cccce129398b87e682e333e96958bafd42b4ff88`.
+PRE-VALIDATION and all counters remain unchanged pending a new diagnostic.

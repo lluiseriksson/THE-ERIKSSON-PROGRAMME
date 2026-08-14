@@ -34825,3 +34825,32 @@ full-box complex inverse, the `G Q'^*` consequence of inverse uniqueness,
 regional compression and uniform physical `B0` remain open.  This is inverse
 infrastructure, not a terminal-field producer: counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+## Addendum 764 (2026-08-14, **generated flat Green diagnostic FAIL retained; minimal elaboration correction PRE-VALIDATION**)
+
+The first Colab diagnostic checked out exact source
+`8712e1a0a3515bd32b021b6aecd990ea1b1715c0`, verified the pinned toolchain,
+Mathlib and both Git blobs, and stopped on the focal before running the audit.
+The literal first error was
+`YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreen.lean:53:2:
+failed to prove strict positivity, but it would be possible to prove
+nonnegativity if desired`.  The same focal reported an unused `spacing`
+argument to `simp` at line 75 and stuck `Nc` metavariables at lines 85 and
+103.  Focal exit was `1` after `1481.671 s`.  Evidence SHA-256 is
+`425e591607f01857d4061ec668caf6714bb393270c0fcff9e15dab6ed4705cca`;
+the deterministic archive SHA-256 is
+`25e9ca86dc7ab7c95732c8d1ea8889fb5125aea79325187e5557818850805f85`.
+`FINAL_STATUS=FAIL` and `RUNTIME_UNASSIGN_REQUESTED=1` were both emitted.
+
+Correction checkpoint `3d5d39a90a968a4bdbb9be49432c6a3378e2147a` replaces automation-only
+positivity by the explicit positive natural power followed by inverse
+positivity, removes the unused `simp` argument, and pins the four physical
+indices in both wrapper calls.  Statements, constants and hypotheses are
+unchanged.  Corrected source/audit Git-blob SHA-256 are
+`b3ba8b8d1fae7c689d4f4a7ed93eb733e6cb639d67d159f97355ba95c09c80c7`
+and `6bb3b44d59db6b64b29dd235a0900a66be76738dbfb64935eb675bbc2a4d53a6`.
+Runner v2 checkpoint `a8fa21c2a0d19b607470a5a475acbf7ff4fd215f`
+has Git-blob SHA-256
+`b916f8e0a175bafe047bb9f2cccce129398b87e682e333e96958bafd42b4ff88`.
+The two Lean modules remain PRE-VALIDATION.  Counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 compatible but unattained.
