@@ -10241,3 +10241,24 @@ and
 Runner checkpoint `4cd8be775ac669dc19b51ce07ef824360cdafaf0` has
 Git-blob SHA-256
 `fba135e20d6f9fd9a02ffda1f35b4b71589a7a6e83d7f33a60c65033ac7778bc`.
+
+The first fresh Colab diagnostic stopped at the focal after `2063.801 s`;
+the audit was not run.  Its only unsolved goal was the definitional equality
+between the explicit generated terminal complex zero extension and
+`D.complexZeroExtension`.  Evidence/archive SHA-256 are
+`7f6685908a1d3779877af4460414b61340d8127092a4b9eee2c8478775acf035`
+and
+`c9bba847f5404eb671a89574f4702603ca14f1feecef86aef981ee57685d9b61`.
+The runtime auto-unassigned, and this FAIL is diagnostic evidence only.
+
+Correction checkpoint `2e6c98d20cb63f4d12cafa5db8448c510621ff2e`
+adds the existing public definition `complexZeroExtension` to the final
+normalization; it changes no statement, constant or hypothesis.  Corrected
+source/audit Git-blob SHA-256 are
+`4c490ee0165f9db258969807c67cef316eb5021e1568e23e809aeff48b2fbf80`
+and
+`29655046dcede299612e6635f6b4ab62bafb00d5786db7277d9ef6c4a2baafc2`.
+Runner-v2 checkpoint `fa4078c4e1ca7b778df233415d218b6abb76a716`
+has Git-blob SHA-256
+`7f7425eb5c4d3e9a465168abe40915bde8e922d517829fece22ef58636008630`.
+PRE-VALIDATION remains and no seal or counter movement is claimed.
