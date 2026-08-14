@@ -65,7 +65,7 @@ theorem physicalPrecision_complexification_eq_fullComplexAction
   rw [D.activeLaplacian_complexification_eq_fullComplexStencil]
   rw [cmp99SourceGeneratedCountingMass_complexFieldDictionary]
   simp [cmp99SourceFlatFullComplexPrecisionAction,
-    cmp99SourceGeneratedFullComplexBlockSide]
+    cmp99SourceGeneratedFullComplexBlockSide, complexZeroExtension]
 
 end CMP99SourceGeneratedTerminalComplexFieldData
 
