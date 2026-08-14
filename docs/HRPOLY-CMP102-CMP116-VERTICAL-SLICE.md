@@ -10622,6 +10622,18 @@ The finite implementation list for item 5 is therefore:
 This list is static design evidence only until item 4 is cold-sealed and each
 new declaration receives its own focal and axiom audit.
 
+Static refinement after reading the exact mass-uniform APIs: gate 5 does not
+need a new positive-mass or strip estimate at the centered representative.
+`cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform` already applies
+at `mass = 0`; strict positivity of the internally generated `a` makes its
+explicit floor positive.  Likewise, the missing central fine-symbol lemma can
+be reduced to
+`one_div_three_pi_mul_abs_le_cmp89Eq245ScaledDifferenceNorm` after choosing a
+nonzero coordinate.  Thus the new analytic content is limited to central
+mass-zero positivity; the remaining work is signed centering, exact
+integer-period transport and inverse-uniqueness composition.  This remains
+static evidence until the item-4 cold seal and subsequent compiler checks.
+
 Item 1 now has PRE-VALIDATION source checkpoint
 `442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` and a three-declaration audit in
 `FinitePiLpTypedKernelReindexAlgebra`.  Source/audit Git-blob SHA-256 are
