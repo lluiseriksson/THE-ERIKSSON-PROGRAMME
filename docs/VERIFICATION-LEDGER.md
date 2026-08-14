@@ -35459,7 +35459,11 @@ checkpoint `6ae54d1a5a0a179cd2cf3ff4a5b89bfe35fc9aee` names those reductions and
 changes no declaration statement.  Its source/audit Git-blob SHA-256 are
 `b6648fc79b81b32cf5bb53701d27400aba61f8feeb2aa9e30cf99ed7151aee58`
 and `43ce7b06a054c2401a6cf8d07ea9d89d449212eba1fe02a6fe1bae9b8453c78f`.
-The exact two-file text/import guard passes; no Lean or Lake ran on Windows.
+Diagnostic-v3 runner checkpoint
+`1d7141de1503a663d4c8cab95480f140a66c085f` has Git-blob SHA-256
+`5239be58f04dcf6ae491ed3e46def3deea512d623bea5276899180ca00b7d1c6`.
+The exact two-file text/import guard and runner syntax gate pass; no Lean or
+Lake ran on Windows.
 Both PRE-VALIDATION marks remain and item 4 is not sealed pending a newly
 prepared validation.  This changes no terminal producer: counters remain
 exactly `20/41`, `TermSource = 0`, with window 15 compatible but unattained.
