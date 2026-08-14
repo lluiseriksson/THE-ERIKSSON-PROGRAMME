@@ -10479,4 +10479,7 @@ PRE-VALIDATION repair `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
 removes only the surplus tactic; source/audit Git-blob SHA-256 are
 `054f1de2cd6637cc06a4af1be8850b36a1d0b6fbe4ed792b40cb12a263638f30`
 and `1f50d5911571e9b27f8b44ac2a10ed809ac2bd0a6fb1d385032caa96a0988927`.
+Diagnostic v4 runner checkpoint is
+`dd4d7a63919335ecd929cdf42598d16f5c33389a`, with Git-blob SHA-256
+`50073d1331df469e6dd83743b253e693025435331f15b28779f1605204d17e6a`.
 The fourteen-declaration audit remains pending Colab.  Counters are unchanged.
