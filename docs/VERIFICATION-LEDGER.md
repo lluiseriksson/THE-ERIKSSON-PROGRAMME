@@ -34906,3 +34906,25 @@ and the runtime disconnected.  This is diagnostic evidence only: the two
 modules remain PRE-VALIDATION until one cold GitHub seal at the exact source
 is audited.  No terminal producer is added; counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 compatible but unattained.
+
+Cold workflow
+[`31770052264`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31770052264)
+then sealed that exact source under workflow vehicle
+`2c775320184cb182bb4853070c44bc515f6a20c5`.  `COLD_MODE=true`; restoration
+and saving of `.lake/build` were both skipped.  The focal ran
+`04:32:09Z–04:59:35Z`, exited zero and ended with literal
+`Build completed successfully (8570 jobs).`.  The audit ended at
+`04:59:47Z`, exited zero and printed exactly five copies of the permitted
+axiom set.  The text, warning and normalized axiom gates passed.
+
+Artifact `9208318458` has GitHub digest
+`cf45329e426b0f637bf64977f075f36ac27b54b89c9e99f7f52118f95ffb3b49`.
+Its deterministic archive SHA-256 is
+`687a8da3adac22d670c2af7adc6555d422eb0de5233a67892faec70050f1ed82`;
+all `13/13` internal manifest entries matched.  This cold evidence seals
+Step 8a, so only its source and audit PRE-VALIDATION marks are removed.
+Complexification, the full-box complex inverse dictionary, the `G Q'^*`
+consequence of inverse uniqueness, regional compression and uniform physical
+`B0` remain open.  This is inverse infrastructure, not a terminal producer:
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.

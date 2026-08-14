@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision
 /-!
 # Canonical generated flat physical Green
 
-PRE-VALIDATION: source present; `.olean` not yet materialized; result not yet
-verified by the compiler.
-
 At radius zero the recursively generated Poincare error is exactly zero at
 every depth.  This module uses that identity, the canonical generated spacing
 and the already constructed zero-radius source budget to build the literal
