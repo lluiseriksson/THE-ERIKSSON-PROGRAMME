@@ -29399,8 +29399,19 @@ and
 Runner-v2 checkpoint `fa4078c4e1ca7b778df233415d218b6abb76a716`
 has Git-blob SHA-256
 `7f7425eb5c4d3e9a465168abe40915bde8e922d517829fece22ef58636008630`.
-Both modules remain PRE-VALIDATION.  Counters remain exactly `20/41`,
-`TermSource = 0`, and window 15 compatible but unattained.
+The fresh CPU/high-RAM Colab diagnostic opened at
+`2026-08-14T01:06:26.171078+00:00` with `50.99 GiB` RAM and passed on that
+exact corrected checkpoint.  Focal/audit exits were `0/0`, with durations
+`1505.388 s` and `8.910 s`; the focal ended with literal
+`Build completed successfully (8569 jobs).`, and the sole audited declaration
+printed exactly `[propext, Classical.choice, Quot.sound]`.  Evidence/archive
+SHA-256 are
+`12b70f065c674aa40e4b99d7a93509122513bbcbb9a687fbb12281812994af32`
+and
+`318f9a6bf88e427831dea197f32e506a14705d35fe1b7c80ac73667616f0e5e3`.
+The runtime auto-unassigned.  This PASS is diagnostic only.  Both modules
+remain PRE-VALIDATION; counters remain exactly `20/41`, `TermSource = 0`,
+and window 15 compatible but unattained.
 
 ## Addendum 758 (2026-08-13, **flat generated-background dictionary PRE-VALIDATION; step 4; 20/41 unchanged**)
 
