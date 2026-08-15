@@ -44,8 +44,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-phase-v2"
-runner.SOURCE_SHA = "234753950b8b2250c74a157da6cfe85feaab6acd"
+runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-phase-v3"
+runner.SOURCE_SHA = "f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e"
 runner.ROOT = Path("/content/hrpoly-flat-qprime-endpoint-phase")
 runner.EVIDENCE = Path("/content/hrpoly-flat-qprime-endpoint-phase-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-flat-qprime-endpoint-phase-evidence.tar.gz")
@@ -53,12 +53,32 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-flat-qprime-endpoint-phase-paths.tx
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhase.lean":
-        "ec6c91dcce42d2ed50ccd68b15774ffc3d9934c06d7226213706f4aa46df60ef",
+        "e03e6d2d0a662dffa283d2b3f3d50751ed7bcd9c8dd9744b0ce26a0f171eafcf",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhaseAudit.lean":
         "ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90",
 }
 
+REPRO = HERE / "flat_qprime_endpoint_phase_sum_repro.lean"
+REPRO.write_text(
+    """import Mathlib
+
+open scoped BigOperators
+
+example {ι : Type} [Fintype ι] (a b : ι → ℂ) :
+    Complex.I * (∑ i, a i) + -(Complex.I * ∑ i, b i) =
+      Complex.I * ∑ i, (a i - b i) := by
+  rw [← sub_eq_add_neg, ← mul_sub, ← Finset.sum_sub_distrib,
+    Finset.mul_sum, Finset.mul_sum]
+""",
+    encoding="utf-8",
+)
+
 runner.QUEUE = [
+    (
+        "flat_qprime_endpoint_phase_sum_repro",
+        ["lake", "env", "lean", str(REPRO)],
+        None,
+    ),
     (
         "flat_qprime_endpoint_phase_focal",
         [
