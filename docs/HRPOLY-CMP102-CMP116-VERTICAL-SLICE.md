@@ -11682,7 +11682,7 @@ terminal field and a `TermSource` inhabitant remain open. Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
-### Step 8b.11: fine-to-coarse endpoint phase (PRE-VALIDATION; diagnostic PASS; cold seal prepared)
+### Step 8b.11: fine-to-coarse endpoint phase (SEALED COLD)
 
 Initial source checkpoint `aec4077a9d4ae7e8b8cec70719ec09c12de0c66e`
 introduces the integer endpoint displacement `M*y-x` and keeps its fine-to-
@@ -11783,6 +11783,24 @@ branch`.  This is `BLOCKED-DISPATCH`, not a terminal run.  Correction checkpoint
 `db689e1c` supersedes the undispatchable filename and installs the same pinned
 queue in the already registered `validate-localized-carrier.yml`; no source,
 statement or evidence claim changes.
+
+The single cold terminal run
+[`31909428858`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31909428858)
+then executed the registered workflow at vehicle HEAD
+`92e2b41d4ac95c1b59dcafbd10ded590525ebe88` and checked out exact source
+`f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e`.  It recorded
+`COLD_MODE=true`; project-graph restore and save were both `skipped`.
+The focal exited `0` with literal terminal line
+`Build completed successfully (8532 jobs).`; the audit exited `0`.  The
+displacement declaration was axiom-free and the other three declarations used
+exactly `[propext, Classical.choice, Quot.sound]`.  Artifact `9253520855` has
+GitHub digest
+`869f5ed4e6f04e960bfe3a73c18f1bc7e0f420df4eedcc73e0e9db340e40c03c`.
+The downloaded deterministic archive SHA-256 is
+`cf61120df96559f15bf777c95a3becfd2bc347c5e33dd2d3b7100f1a3e752642`;
+all `14/14` internal hashes matched, `FINAL_STATUS=PASS`, and the focal emitted
+no new-module warning.  This evidence retires exactly the two Step-8b.11
+PRE-VALIDATION marks.
 
 This brick is the unit/phase dictionary only.  It does not yet combine the
 sealed Step-8b.10 affine carrier reindexing with the finite synthesis, identify

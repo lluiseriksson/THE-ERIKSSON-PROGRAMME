@@ -37137,8 +37137,24 @@ the byte-equivalent pinned queue through the already registered
 `validate-localized-carrier.yml`.  The source SHA, blob gates, queue, constants
 and expected three nonempty axiom blocks are unchanged.
 
-Both Lean files remain visibly PRE-VALIDATION and the latest source remains NOT
-COLD-SEALED.  The brick does
+The single cold terminal run
+[`31909428858`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31909428858)
+used workflow vehicle HEAD `92e2b41d4ac95c1b59dcafbd10ded590525ebe88`
+and checked out exact source
+`f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e`.  `COLD_MODE=true` was
+recorded and both project-graph restore and save were `skipped`.  Focal/audit
+exits were `0/0`; the literal focal terminal line was
+`Build completed successfully (8532 jobs).`.  The displacement theorem was
+axiom-free and the other three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Artifact `9253520855` has GitHub
+digest `869f5ed4e6f04e960bfe3a73c18f1bc7e0f420df4eedcc73e0e9db340e40c03c`.
+The downloaded deterministic archive SHA-256 is
+`cf61120df96559f15bf777c95a3becfd2bc347c5e33dd2d3b7100f1a3e752642`;
+all `14/14` internal hashes matched, `FINAL_STATUS=PASS`, and the focal had no
+new-module warning.  This evidence retires exactly the source and audit
+PRE-VALIDATION marks for Step 8b.11.
+
+The brick is sealed cold.  It does
 not yet combine the affine carrier action with the finite synthesis, identify
 the sampled sum with a continuous Brillouin integral, produce regional `B0`,
 attain window 15, discharge any terminal field or inhabit `TermSource`.

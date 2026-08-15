@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeCoarseAlias
 /-!
 # Fine-to-coarse endpoint phase below the generated flat Green synthesis
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 The positive fine Fourier character at `x`, divided by its value at the
 canonical block basepoint of `y`, is identified with the literal CMP89 entire
 phase.  The endpoint displacement is the integer vector `M*y-x`, while the
