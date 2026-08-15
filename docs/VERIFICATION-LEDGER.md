@@ -37160,3 +37160,38 @@ the sampled sum with a continuous Brillouin integral, produce regional `B0`,
 attain window 15, discharge any terminal field or inhabit `TermSource`.
 Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+## Addendum 828 (2026-08-16, **signed-alias endpoint phase PRE-VALIDATION; row/column orientation open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`1fc19056f0a1fa0782924196687b84b074785679` adds
+`BalabanCMP99SourceFlatQprimeEndpointAliasPhase` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`5da43c092180dbfa1e892e243b0384fff6fbcff517d03adc35cbef8ed964e9f4`
+and
+`41adac323d2ea168de171c9d3d97594979e81f104e1ca0946ef7cb3376745ec3`.
+
+Diagnostic runner checkpoint `9733f9c8d0a64bd76620fec0a5ea63e477260d01`
+has Git-blob SHA-256
+`ef801516097aa7ecad8aee9d90d5b0b38d641ba65081d7db3670d0263eaf58a6`;
+notebook vehicle checkpoint is
+`60e3125acabcc77f36a8b61edcb11e393a36dd4a`.  Its first queue item is a
+Mathlib-only reproduction of the exact period-pairing proof; only a passing
+repro proceeds to the project focal.  The audit gate expects four nonempty
+axiom blocks and the pairing definition is allowed to be pure.
+
+The source defines the exact integer alias-period pairing, proves that a
+coordinatewise `2*pi*M` period vector contributes only the integer phase
+`2*pi*<w,u>` at `M^-1 u`, and uses the already sealed physical momentum
+dictionary to identify the fine endpoint quotient with the signed CMP89 alias
+phase.  The compensating `M^-1`, the integer endpoint displacement and the
+fixed-coarse-fibre proof all remain visible in the endpoint theorem.
+
+This is not yet a finite-synthesis or Green-integrand identification.  The
+physical coefficient is the stabilized transposed solution and therefore
+contains the row factor `u(-q)`; the CMP89 bare Green numerator contains the
+column factor `u(q)`.  Their exact transport under the sealed affine
+Fourier-negation carry remains a separate obligation.  Both files retain
+visible PRE-VALIDATION headers and are NOT CHECKED.  No Lean or Lake ran on
+Windows.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

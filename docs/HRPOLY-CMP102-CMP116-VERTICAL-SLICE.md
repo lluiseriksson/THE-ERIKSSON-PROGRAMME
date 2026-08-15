@@ -11807,3 +11807,32 @@ sealed Step-8b.10 affine carrier reindexing with the finite synthesis, identify
 a Brillouin integral, produce regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.12: signed-alias endpoint phase transport (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `1fc19056f0a1fa0782924196687b84b074785679` adds
+`BalabanCMP99SourceFlatQprimeEndpointAliasPhase` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`5da43c092180dbfa1e892e243b0384fff6fbcff517d03adc35cbef8ed964e9f4`
+and
+`41adac323d2ea168de171c9d3d97594979e81f104e1ca0946ef7cb3376745ec3`.
+Diagnostic runner checkpoint `9733f9c8d0a64bd76620fec0a5ea63e477260d01`
+has Git-blob SHA-256
+`ef801516097aa7ecad8aee9d90d5b0b38d641ba65081d7db3670d0263eaf58a6`;
+notebook vehicle checkpoint is
+`60e3125acabcc77f36a8b61edcb11e393a36dd4a`.  The runner executes a
+Mathlib-only reproduction of the period-pairing algebra before the expensive
+focal and expects four nonempty axiom blocks plus the pure pairing definition.
+The brick makes the integer pairing `<w,u>` literal, proves that every vector
+of `2*pi*M` alias periods disappears after exponentiation at the physical
+fine displacement `M^-1 u`, and transports the Step-8b.11 endpoint quotient
+to the signed CMP89 alias momentum constructed by the sealed fibre dictionary.
+
+The orientation gate remains open and visible: the physical synthesis carries
+the transposed solution's row amplitude `u(-q)`, whereas the CMP89 bare Green
+numerator carries the column amplitude `u(q)`.  No row/column reflection,
+Fourier-negation reindexing, finite-sum identity, Brillouin integral, regional
+`B0`, window-15 attainment, terminal-field producer or `TermSource` inhabitant
+is claimed here.  Both new files remain visibly PRE-VALIDATION and no Lean or
+Lake has run on Windows.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
