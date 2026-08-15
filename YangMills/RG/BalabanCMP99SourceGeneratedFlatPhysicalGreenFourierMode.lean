@@ -55,9 +55,6 @@ theorem
     have hellk : ell ≠ k := by
       exact fun h => hk h.symm
     rw [cmp99FlatPhysicalFibreDFT_fourierMode, if_neg hellk]
-    have hzero : ((((N' : ℕ) : ℂ) ^ d)⁻¹ •
-        (0 : SUNLieComplexCoord Nc)) = 0 := by simp
-    rw [hzero]
     simpa using
       (cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_smul
         (d := d) (M := M) (N' := N') (Nc := Nc)
@@ -93,11 +90,10 @@ theorem cmp99SourceGeneratedFlatPhysicalGreenQprimeStar_fourierMode
       T (cmp99FlatComplexFibreFourierMode ell v))
     (cmp99SourceGeneratedFlatPhysicalStabilizedFieldCLM_eq_green_comp
       (M := M) (Q := Q) (Nc := Nc) hM depth)
-  rw [cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldCLM_apply]
-    at hgate
-  rw [cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_fourierMode]
-    at hgate
-  exact hgate.symm
+  simpa only [
+    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarFieldCLM_apply,
+    cmp99SourceFlatFullComplexPrecisionStabilizedQprimeStarField_fourierMode]
+    using hgate.symm
 
 /-- On its selected reciprocal fibre, the generated Gate-6 endpoint has the
 literal stabilized alias coefficient and the exact fine-volume factor. -/
