@@ -1,4 +1,4 @@
-name: Validate CMP99 centered alias reflection
+name: Validate CMP99 coarse fibre Fourier negation
 
 on:
   workflow_dispatch:
@@ -13,17 +13,17 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 3bf925319be2b09c6d77706be64913e9817eb3b4
-  SOURCE_BLOB_SHA256: 50a27bed81d489105ba1df211823e1d999b5ac4b20df45b4a88a72ee694c3b58
-  AUDIT_BLOB_SHA256: b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082
+  SOURCE_SHA: c1f9b5104ea94162b3ccc4d6aec6774a6f92005f
+  SOURCE_BLOB_SHA256: f39b4a46111a5274d264e29ab0c4506abc120a5cf9158b8038944eee47c464b3
+  AUDIT_BLOB_SHA256: 3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    cmp99-centered-alias-reflection
+    cmp99-coarse-fibre-fourier-neg
 
 jobs:
-  cmp99-centered-alias-reflection:
+  cmp99-coarse-fibre-fourier-neg:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -43,8 +43,8 @@ jobs:
             "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP99SourceCenteredAliasReflection.lean
-          audit_path=YangMills/RG/BalabanCMP99SourceCenteredAliasReflectionAudit.lean
+          source_path=YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNeg.lean
+          audit_path=YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNegAudit.lean
           test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
           test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-centered-alias-reflection-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-coarse-fibre-fourier-neg-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -126,14 +126,14 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceCenteredAliasReflection.lean \
-            YangMills/RG/BalabanCMP99SourceCenteredAliasReflectionAudit.lean \
+            YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNeg.lean \
+            YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNegAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
           python scripts/check_lean_import_prefix.py \
-            YangMills/RG/BalabanCMP99SourceCenteredAliasReflection.lean \
-            YangMills/RG/BalabanCMP99SourceCenteredAliasReflectionAudit.lean | \
+            YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNeg.lean \
+            YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNegAudit.lean | \
             tee evidence/import-prefix-guard.log
           run_stage() {
             local stage="$1"
@@ -153,10 +153,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_centered_alias_reflection_focal \
-            lake build YangMills.RG.BalabanCMP99SourceCenteredAliasReflection
-          run_stage cmp99_centered_alias_reflection_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceCenteredAliasReflectionAudit.lean
+          run_stage cmp99_coarse_fibre_fourier_neg_focal \
+            lake build YangMills.RG.BalabanCMP99SourceCoarseFibreFourierNeg
+          run_stage cmp99_coarse_fibre_fourier_neg_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNegAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -170,11 +170,11 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_centered_alias_reflection_audit.log": 5,
+              "cmp99_coarse_fibre_fourier_neg_audit.log": 3,
           }
           focals = {
-              "cmp99_centered_alias_reflection_focal.log":
-                  "BalabanCMP99SourceCenteredAliasReflection.lean:",
+              "cmp99_coarse_fibre_fourier_neg_focal.log":
+                  "BalabanCMP99SourceCoarseFibreFourierNeg.lean:",
           }
           for name, source_name in focals.items():
               focal = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -210,17 +210,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp99-centered-alias-reflection-evidence.tar.gz
-          sha256sum cmp99-centered-alias-reflection-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp99-coarse-fibre-fourier-neg-evidence.tar.gz
+          sha256sum cmp99-coarse-fibre-fourier-neg-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-centered-alias-reflection-${{ env.SOURCE_SHA }}
+          name: cmp99-coarse-fibre-fourier-neg-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-centered-alias-reflection-evidence.tar.gz
+            cmp99-coarse-fibre-fourier-neg-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -229,4 +229,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-centered-alias-reflection-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-coarse-fibre-fourier-neg-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
