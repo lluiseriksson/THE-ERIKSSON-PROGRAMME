@@ -131,7 +131,14 @@ theorem cmp89Eq249CentralStabilizedAliasDenominator_massZero_ne_zero_physical
           (fun mu => (p mu : ℂ))).re :=
       (cmp89Eq249CentralStabilizedLowerConstant_pos ha).trans_le hfloor
     have hne := complex_ne_zero_of_re_pos hre
-    simpa [p, cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum] using hne
+    have hphysicalZero :
+        cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
+            (0 : FinBox d N') =
+          fun _ => 0 := by
+      funext mu
+      simp [cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum]
+    rw [hphysicalZero]
+    simpa [p] using hne
   · let p := cmp99SourceFlatQprimeCenteredCoarseBaseMomentum ell
     let z : Fin d → ℂ := fun mu => (p mu : ℂ)
     let physical := cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell
@@ -176,8 +183,10 @@ theorem cmp89Eq249CentralStabilizedAliasDenominator_massZero_ne_zero_physical
       ⟨w, hw⟩
     have hfullPhysical :
         cmp89Eq249ComplexFullAliasDenominator d M 1 0 a physical ≠ 0 := by
+      change cmp89Eq249ComplexFullAliasDenominator d M 1 0 a
+        (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) ≠ 0
       rw [hw, cmp89Eq249ComplexFullAliasDenominator_add_intPeriods]
-      exact hfullCentered
+      simpa only [z, p] using hfullCentered
     have hreducedPhysical :
         cmp89Eq247ComplexReducedAliasDenominator d M 1 0 a physical ≠ 0 := by
       intro hreduced
