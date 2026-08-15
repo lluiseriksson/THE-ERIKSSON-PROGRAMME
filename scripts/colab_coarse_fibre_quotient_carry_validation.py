@@ -45,8 +45,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-coarse-fibre-quotient-carry-v1"
-runner.SOURCE_SHA = "0559a9c849d9ba29a3dab346ffcbf5602ffec532"
+runner.RUNNER_REV = "cmp99-coarse-fibre-quotient-carry-v2"
+runner.SOURCE_SHA = "e6f399f890c24e19deef5dbdde3e7f0b9ea7ce87"
 runner.ROOT = Path("/content/hrpoly-coarse-fibre-quotient-carry")
 runner.EVIDENCE = Path("/content/hrpoly-coarse-fibre-quotient-carry-evidence")
 runner.ARCHIVE = Path(
@@ -58,7 +58,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNegQuotientCarry.lean":
-        "1f6a6451dae64d24d3dc92a13248661f00fd003db07396e0c494cbc230e79937",
+        "5e46ec8badf11870e4f2f0eb7b760df4225fdfb90595fe149512dbefe4e701b6",
     "YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNegQuotientCarryAudit.lean":
         "2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b",
 }
