@@ -36767,3 +36767,37 @@ signed-alias transport, endpoint phase, regional `B0`, window-15 producer,
 terminal field and `TermSource` inhabitant remain open.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 819 (2026-08-15, **cross-fibre Euclidean quotient carry checkpointed separately; PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`0559a9c849d9ba29a3dab346ffcbf5602ffec532` adds
+`BalabanCMP99SourceCoarseFibreFourierNegQuotientCarry` and its
+three-declaration audit.  The module first exposes the natural representative
+of periodic negation, then proves the target fixed-fibre quotient formula
+
+`q'.val = if ell.val = 0 then (M - q.val) % M else M - q.val - 1`,
+
+and only afterwards casts it to the consumer-facing affine residue identity
+
+`(q' : ZMod M) = -(q : ZMod M) - if ell.val = 0 then 0 else 1`.
+
+The proof uses the literal `Fin.divNat` quotient of `finProdFinEquiv`, the
+sealed fixed-fibre reconstruction and `ZMod.neg_val'`.  It does not cancel
+`N'` inside `ZMod (M * N')`, unfold a centered-alias dictionary or identify
+the new carry with the fixed carrier reflection from Step 8b.7.  Source/audit
+Git-blob SHA-256 are
+`1f6a6451dae64d24d3dc92a13248661f00fd003db07396e0c494cbc230e79937`
+and
+`2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b`.
+Text/import-prefix guards pass; no Lean or Lake ran on Windows.
+
+Diagnostic runner v1 checkpoint
+`4e48a361a327dc7351966a9472623756bb9c7f59` has Git-blob SHA-256
+`701ab51b2317b48fe4c155bd1d6bd3321306e854206760d2e788f3b5420ed6c7`.
+It gates exactly those two blobs and runs only the focal plus the
+three-declaration audit in a fresh Colab clone.  Both Lean files remain
+visibly PRE-VALIDATION and NOT CHECKED.  The signed-alias affine map,
+endpoint phase, regional `B0`, window-15 producer, terminal field and
+`TermSource` inhabitant remain open.  Counters stay exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

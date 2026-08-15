@@ -11502,3 +11502,30 @@ The downloaded deterministic archive SHA-256 is
 and every internal `SHA256SUMS` entry matched.  This evidence retires exactly
 the two Step-8b.8 PRE-VALIDATION headers.  It seals no affine quotient-carry
 or physical endpoint claim and moves no counter.
+
+### Step 8b.9: Euclidean quotient carry across the two fibres (PRE-VALIDATION; NOT CHECKED)
+
+Independent source checkpoint `0559a9c849d9ba29a3dab346ffcbf5602ffec532`
+adds `BalabanCMP99SourceCoarseFibreFourierNegQuotientCarry` and its
+three-declaration audit.  It keeps natural periodic negation, Euclidean
+division and the later signed centered-alias convention as three separate
+layers.  Its central natural statement is
+
+`q'.val = if ell.val = 0 then (M - q.val) % M else M - q.val - 1`;
+
+the outer remainder is required for the canonical periodic zero at
+`ell = q = 0`.  Only after this equality is fixed does the module state the
+residue corollary `q' = -q` or `-q-1` in `ZMod M`.  It neither imports nor
+identifies the Step-8b.7 centered-carrier reflection.
+
+Source/audit Git-blob SHA-256 are
+`1f6a6451dae64d24d3dc92a13248661f00fd003db07396e0c494cbc230e79937`
+and `2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b`.
+Text/import-prefix guards pass locally; no Lean or Lake ran on Windows.
+Diagnostic runner v1 checkpoint
+`4e48a361a327dc7351966a9472623756bb9c7f59` has Git-blob SHA-256
+`701ab51b2317b48fe4c155bd1d6bd3321306e854206760d2e788f3b5420ed6c7`.
+Both modules retain visible PRE-VALIDATION and are NOT CHECKED until that
+runner emits a compiler verdict.  Every signed-alias, phase and physical
+claim remains downstream; counters remain `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
