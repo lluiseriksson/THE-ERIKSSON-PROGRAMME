@@ -11414,7 +11414,7 @@ physical brick must expose that affine carry as a function of the coarse
 residue; it may not claim simple intertwinement with
 `cmp99SourceAliasIndexOneReflection`.
 
-### Step 8b.8: periodic Fourier negation between coarse fibres (PRE-VALIDATION; diagnostic PASS; terminal cold NOT CHECKED)
+### Step 8b.8: periodic Fourier negation between coarse fibres (cold-sealed; affine quotient carry still open)
 
 Independent source checkpoint `80ab41f2839cf9546e19c5a12a68196e45b5d246` adds
 `BalabanCMP99SourceCoarseFibreFourierNeg` and its three-declaration audit.
@@ -11486,6 +11486,19 @@ The runtime released after literal `FINAL_STATUS=PASS` and launcher exit `0`.
 Terminal cold workflow vehicle
 `3c171d05eb544da66e55f6bf2f4ca502e5917f07` (workflow Git-blob SHA-256
 `9a460d446087a90061d2e685889894f674d8ccdaf3831fca46da3603bcd6d86a`)
-is prepared against the same exact source and blobs.  No terminal run has yet
-been dispatched, so both Lean modules remain PRE-VALIDATION.  The diagnostic
-seals no quotient-carry or physical endpoint claim and moves no counter.
+was executed once with `cold=true` as terminal run
+[`31889853498`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31889853498).
+Restoration and saving of `.lake/build` were both skipped.  The focal ran
+`14:27:07Z–14:40:31Z`, exited zero and ended with literal
+`Build completed successfully (8492 jobs).`; the audit ran
+`14:40:31Z–14:40:35Z`, exited zero and produced three exact
+`[propext, Quot.sound]` blocks.  All source, toolchain, Mathlib, text, import,
+warning and axiom gates passed.
+
+Artifact `9248425721` has GitHub digest
+`12ddc1813ccec9ba2e6eaa3a6c890e37903c870e083c97d939115484411d4d19`.
+The downloaded deterministic archive SHA-256 is
+`3363557a2d193d8481b788434baf5d66224261d1da670b6699e66c286341c1e6`,
+and every internal `SHA256SUMS` entry matched.  This evidence retires exactly
+the two Step-8b.8 PRE-VALIDATION headers.  It seals no affine quotient-carry
+or physical endpoint claim and moves no counter.

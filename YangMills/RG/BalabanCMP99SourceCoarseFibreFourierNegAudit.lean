@@ -1,8 +1,9 @@
 import YangMills.RG.BalabanCMP99SourceCoarseFibreFourierNeg
 
 /-!
-PRE-VALIDATION: this audit source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Cold-seal audit for exact source checkpoint
+`c1f9b5104ea94162b3ccc4d6aec6774a6f92005f`, GitHub Actions run
+`31889853498`.
 -/
 
 #print axioms YangMills.RG.cmp99FinBoxFourierNeg_fourierNeg

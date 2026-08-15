@@ -36731,3 +36731,39 @@ three-declaration audit, robust axiom parsing, and no restoration or saving of
 quotient carry and all downstream physical claims remain open.  Counters stay
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 818 (2026-08-15, **coarse-fibre Fourier negation cold-sealed; affine quotient carry remains open; 20/41 unchanged**)
+
+Terminal cold workflow
+[`31889853498`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31889853498)
+ran exactly once against source
+`c1f9b5104ea94162b3ccc4d6aec6774a6f92005f` under workflow content introduced
+by vehicle `3c171d05eb544da66e55f6bf2f4ca502e5917f07` (workflow Git-blob SHA-256
+`9a460d446087a90061d2e685889894f674d8ccdaf3831fca46da3603bcd6d86a`).
+The workflow checkout records execution head
+`2559c69f213dac037547222360f0d51953d19b00`, while `SOURCE_SHA` and actual
+detached checkout both equal the exact source checkpoint.  Source/audit blob
+SHA-256 remained
+`f39b4a46111a5274d264e29ab0c4506abc120a5cf9158b8038944eee47c464b3`
+and
+`3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
+
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran `14:27:07Z–14:40:31Z`, exited `0` and ended with literal
+`Build completed successfully (8492 jobs).`; the audit ran
+`14:40:31Z–14:40:35Z`, exited `0`, and all three declarations printed exactly
+`[propext, Quot.sound]`.  Lean was `4.29.0-rc6`, Mathlib was
+`07642720480157414db592fa85b626dafb71355b`, and the text, import-prefix,
+warning and axiom gates all passed.
+
+Artifact `9248425721` has GitHub digest
+`12ddc1813ccec9ba2e6eaa3a6c890e37903c870e083c97d939115484411d4d19`.
+The downloaded deterministic archive SHA-256 is
+`3363557a2d193d8481b788434baf5d66224261d1da670b6699e66c286341c1e6`;
+all internal `SHA256SUMS` entries matched.  This evidence retires exactly the
+source and audit PRE-VALIDATION marks.  It seals the cross-fibre carrier
+equivalence only.  The coarse-residue-dependent affine quotient carry,
+signed-alias transport, endpoint phase, regional `B0`, window-15 producer,
+terminal field and `TermSource` inhabitant remain open.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

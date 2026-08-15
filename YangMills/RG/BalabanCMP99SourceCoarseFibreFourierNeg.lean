@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointScalarColumn
 /-!
 # Periodic Fourier negation between coarse momentum fibres
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Compiler-verified at exact source checkpoint
+`c1f9b5104ea94162b3ccc4d6aec6774a6f92005f` by cold GitHub Actions run
+`31889853498`.  Restoration and saving of `.lake/build` were skipped.  The
+focal completed 8,492 jobs, the audit exited zero, and all three audited
+declarations use exactly `[propext, Quot.sound]`.
 
 Physical momentum negation does not preserve a fixed coarse reciprocal
 fibre.  This module proves the exact replacement: periodic Fourier negation
