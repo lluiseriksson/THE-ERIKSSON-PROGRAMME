@@ -37277,3 +37277,26 @@ notebook vehicle checkpoint is `6dbde9ce`.  Terminal workflow checkpoint
 allowed blocks, and disables both project-graph restore and save under
 `cold=true`.  This is a prepared terminal vehicle only: PRE-VALIDATION remains
 until its one cold artifact is audited.
+
+The single cold terminal run
+[`31914703879`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31914703879)
+used workflow vehicle `6a71f63e07574a46e57268325f4b68070c587603`
+and checked out exact source
+`afad237929739252cf850f55f0c273a71bf5a524`.  `COLD_MODE=true` was recorded;
+project-graph restore and save were both `skipped`.  Focal/audit exits were
+`0/0`; the literal focal terminal line was
+`Build completed successfully (8542 jobs).`.  All five declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.  Artifact `9254837559` has
+GitHub digest
+`66ae26c1b8097d3e055fd9566fbc3a820759c304a7388cb585b9ada6f53f5d0e`.
+The downloaded deterministic archive SHA-256 is
+`f68c457a18de1120e6b831cf520951a038c8477e70e2d80722afc265d31fa200`;
+all `14/14` internal hashes matched, `FINAL_STATUS=PASS`, and the focal emitted
+no new-module warning.  This evidence retires exactly the source and audit
+PRE-VALIDATION marks for Step 8b.12.
+
+The brick is cold-sealed but remains only the endpoint-phase dictionary.  It
+does not identify row and column amplitudes, reindex the complete finite sum,
+construct a Brillouin integral or regional `B0`, attain window 15, discharge a
+terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

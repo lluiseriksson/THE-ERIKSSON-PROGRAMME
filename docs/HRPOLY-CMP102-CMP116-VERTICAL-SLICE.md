@@ -11884,6 +11884,28 @@ exact source blobs and the five-block gate, with restore/save disabled in
 `cold=true`.  PRE-VALIDATION remains until that single cold artifact is
 audited.  No counter moves.
 
+The single cold terminal run
+[`31914703879`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31914703879)
+used workflow vehicle `6a71f63e07574a46e57268325f4b68070c587603`
+and exact source `afad237929739252cf850f55f0c273a71bf5a524`.
+`COLD_MODE=true`; project-graph restore/save were both `skipped`.  Focal/audit
+exits were `0/0`, with literal line
+`Build completed successfully (8542 jobs).`; all five declarations used
+exactly `[propext, Classical.choice, Quot.sound]`.  Artifact `9254837559` has
+GitHub digest
+`66ae26c1b8097d3e055fd9566fbc3a820759c304a7388cb585b9ada6f53f5d0e`;
+the downloaded deterministic archive SHA-256 is
+`f68c457a18de1120e6b831cf520951a038c8477e70e2d80722afc265d31fa200`.
+All `14/14` internal hashes matched, `FINAL_STATUS=PASS`, and the focal had no
+new-module warning.  Exactly the two Step-8b.12 PRE-VALIDATION marks are
+retired.
+
+Step 8b.12 is cold-sealed but remains a phase dictionary.  Row/column
+orientation, the complete finite-sum reindex, Brillouin periodization,
+regional `B0`, window 15 and terminal fields remain open.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
+
 Diagnostic v2 passed the Mathlib-only reproduction in `7.331 s` but the fresh
 Colab focal failed after `1625.702 s` at the new source: a redundant `ring`
 followed a goal-closing `field_simp`, and the abbreviation

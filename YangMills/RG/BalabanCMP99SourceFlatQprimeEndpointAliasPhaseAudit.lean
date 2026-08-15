@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointAliasPhase
 
 /-!
-PRE-VALIDATION: this audit source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Cold-sealed with the imported source at exact checkpoint
+`afad237929739252cf850f55f0c273a71bf5a524` by GitHub Actions run
+`31914703879`.  All five declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatQprimeEndpointAliasPeriodPairing

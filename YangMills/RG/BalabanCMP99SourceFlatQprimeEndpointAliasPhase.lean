@@ -11,8 +11,11 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary
 /-!
 # Physical endpoint phase on the signed CMP89 alias carrier
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Compiler-verified at exact source checkpoint
+`afad237929739252cf850f55f0c273a71bf5a524` by cold GitHub Actions run
+`31914703879`.  Restoration and saving of `.lake/build` were skipped.  The
+focal completed 8,542 jobs, the audit exited zero, and all five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The sealed physical momentum dictionary determines the fine amplitude
 momentum only up to coordinatewise integer multiples of the exact alias
