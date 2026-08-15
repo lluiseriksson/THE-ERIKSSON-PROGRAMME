@@ -37035,7 +37035,7 @@ unattained.
 
 ## Addendum 827 (2026-08-15, **fine-to-coarse endpoint phase PRE-VALIDATION; exact `M⁻¹` unit conversion visible; 20/41 unchanged**)
 
-PRE-VALIDATION source checkpoint
+Initial PRE-VALIDATION source checkpoint
 `aec4077a9d4ae7e8b8cec70719ec09c12de0c66e` adds
 `BalabanCMP99SourceFlatQprimeEndpointPhase` and its four-declaration audit.
 It defines the integer endpoint displacement as `M*y-x`, proves the canonical
@@ -37044,16 +37044,32 @@ identity with the compensating `M⁻¹` inside
 `cmp89Eq249PhysicalFineLatticeDisplacement`.  Thus neither the sign nor the
 fine/block unit conversion is absorbed into notation.
 
-Source/audit Git-blob SHA-256 are
-`1af4c3a6368a12ef0e4bd444bfb3aab801ae645c5c67f49ad26ebabb557bf2c5`
+The first fresh Colab diagnostic reached the focal and stopped after
+`1695.182` seconds: source line 62 contained a redundant tactic after
+`field_simp`, while lines 73 and 109 required explicit distribution and
+combination of finite sums.  The audit did not run.  Evidence SHA-256 is
+`e1bc4c8429cebeaa453ad1789a5e7d219d6f1e9bc2912179328128cac78e7951`;
+archive SHA-256 is
+`c5fd00c5c49284c369475ae1d53e8d07f9ed0f61dfcfa0aeec31b435b3896bd3`.
+The terminal markers were `FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1`, with runtime
+release requested.  This is compiler evidence, not an infrastructure failure.
+
+Correction checkpoint `234753950b8b2250c74a157da6cfe85feaab6acd`
+changes only those proof normalizations.  It leaves every theorem statement,
+sign, scale, constant and hypothesis unchanged.  Corrected source/audit
+Git-blob SHA-256 are
+`ec6c91dcce42d2ed50ccd68b15774ffc3d9934c06d7226213706f4aa46df60ef`
 and
 `ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90`.
 The exact two-file textual and import-prefix guards passed locally in under
-one second.  No Lean or Lake ran on Windows. Diagnostic runner checkpoint
-`ae0bcc5e2cc960b6edcfe1d024139f2d2a233108` has Git-blob SHA-256
-`3353c0f14222c12a8e18fad22687172b3218cbe44a54899351a1ba75cec1bf87`.
+one second.  No Lean or Lake ran on Windows. Retry runner checkpoint
+`91d905d8f6902212b6b1b1e1fe0856e780c495ce` has Git-blob SHA-256
+`50273dc7437afc16bbe6da404eef3cd101560b93aadb37fda6a920f675d6a76e`;
+notebook vehicle checkpoint is
+`1fe27f510d19d61f03dd09577f0432ae2fe57341`.
 
-Both Lean files remain visibly PRE-VALIDATION and NOT CHECKED.  The brick does
+Both Lean files remain visibly PRE-VALIDATION and the corrected source remains
+NOT CHECKED.  The brick does
 not yet combine the affine carrier action with the finite synthesis, identify
 the sampled sum with a continuous Brillouin integral, produce regional `B0`,
 attain window 15, discharge any terminal field or inhabit `TermSource`.

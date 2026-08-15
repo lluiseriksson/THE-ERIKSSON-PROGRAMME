@@ -11684,22 +11684,37 @@ unattained.
 
 ### Step 8b.11: fine-to-coarse endpoint phase (PRE-VALIDATION; NOT CHECKED)
 
-Source checkpoint `aec4077a9d4ae7e8b8cec70719ec09c12de0c66e`
+Initial source checkpoint `aec4077a9d4ae7e8b8cec70719ec09c12de0c66e`
 introduces the integer endpoint displacement `M*y-x` and keeps its fine-to-
 block conversion visibly equal to `M⁻¹`.  The terminal theorem identifies the
 positive fine Fourier mode divided by the coarse mode at `y` with the exact
 CMP89 entire phase at the source amplitude momentum.  The sign and the scale
 are therefore statements, not conventions.
 
-Source/audit Git-blob SHA-256 are
-`1af4c3a6368a12ef0e4bd444bfb3aab801ae645c5c67f49ad26ebabb557bf2c5`
+The first fresh Colab diagnostic on that checkpoint stopped at the focal after
+`1695.182` seconds.  It found one redundant tactic at source line 62 and two
+explicit finite-sum normalizations at lines 73 and 109; the audit did not run.
+This is a compiler FAIL, not an infrastructure failure.  Evidence SHA-256 is
+`e1bc4c8429cebeaa453ad1789a5e7d219d6f1e9bc2912179328128cac78e7951`;
+archive SHA-256 is
+`c5fd00c5c49284c369475ae1d53e8d07f9ed0f61dfcfa0aeec31b435b3896bd3`.
+The runner printed `FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1` and requested runtime
+release.
+
+Correction checkpoint `234753950b8b2250c74a157da6cfe85feaab6acd`
+removes only the redundant tactic and makes `Finset.mul_sum` and
+`Finset.sum_sub_distrib` explicit; no statement, sign, scale or hypothesis
+changes.  Corrected source/audit Git-blob SHA-256 are
+`ec6c91dcce42d2ed50ccd68b15774ffc3d9934c06d7226213706f4aa46df60ef`
 and
 `ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90`.
 Exact two-file text and import-prefix guards pass locally; no Lean or Lake ran
-on Windows. Diagnostic runner checkpoint
-`ae0bcc5e2cc960b6edcfe1d024139f2d2a233108` has Git-blob SHA-256
-`3353c0f14222c12a8e18fad22687172b3218cbe44a54899351a1ba75cec1bf87`.
-Both modules remain visibly PRE-VALIDATION and NOT CHECKED.
+on Windows. Retry runner checkpoint
+`91d905d8f6902212b6b1b1e1fe0856e780c495ce` has Git-blob SHA-256
+`50273dc7437afc16bbe6da404eef3cd101560b93aadb37fda6a920f675d6a76e`;
+notebook vehicle checkpoint is
+`1fe27f510d19d61f03dd09577f0432ae2fe57341`.  Both Lean modules remain visibly
+PRE-VALIDATION and the corrected source remains NOT CHECKED.
 
 This brick is the unit/phase dictionary only.  It does not yet combine the
 sealed Step-8b.10 affine carrier reindexing with the finite synthesis, identify
