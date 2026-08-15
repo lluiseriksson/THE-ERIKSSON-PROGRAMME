@@ -36883,3 +36883,38 @@ has Git-blob SHA-256
 `7b76ff5323709ad84665bd92cedf003c9ee07ef148a1d365924e7481704d13c6`.
 The files remain visibly PRE-VALIDATION and NOT CHECKED pending v3. No
 counter, terminal field, window-15 claim or `TermSource` inhabitant moves.
+
+## Addendum 822 (2026-08-15, **quotient-carry diagnostic v3 PASS; one cold seal prepared; 20/41 unchanged**)
+
+Diagnostic v3 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible `lluiseriksson@gmail.com` account. It verified runner checkpoint
+`e21c2d541127b8eab6d9e1b2cbbcbade06fa9043`, runner Git-blob SHA-256
+`7b76ff5323709ad84665bd92cedf003c9ee07ef148a1d365924e7481704d13c6`,
+source checkpoint `be86a1ccb81dd8c69599245e12b3d7a52d7dae9c`, source/audit
+Git-blob SHA-256
+`94d28e9fcd8e9c0e0c677cbb96399d3fe4d7afdc1bb53a8362e921e49a18779b`
+and
+`2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b`,
+Lean `4.29.0-rc6`, and Mathlib
+`07642720480157414db592fa85b626dafb71355b`. Both textual guards passed.
+
+The focal ended with literal `Build completed successfully (8507 jobs).`,
+exit `0`, after `1417.604 s`. The audit ended exit `0` after `6.862 s`.
+Its three declarations reported respectively `[propext, Quot.sound]`,
+`[propext, Classical.choice, Quot.sound]`, and
+`[propext, Classical.choice, Quot.sound]`. Evidence JSON/archive SHA-256 are
+`1c7d78a67da7bbe34eeb13a6aa0c45ee2b209cb6b18b406c5857016cb61cd981`
+and
+`e4890663d09f0b91b1ea8c33529b8535e28b2e49dc2183e27cc90b1f995ebe68`.
+Literal terminal markers were `FINAL_STATUS=PASS`, `LAUNCHER_EXIT=0`,
+`RUNTIME_UNASSIGN_REQUESTED=1`, and
+`LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the runtime disconnected and the
+browser tab was closed.
+
+This is diagnostic evidence, not the cold seal. Both Lean files retain their
+visible PRE-VALIDATION headers until exactly one cold GitHub Actions run on
+the same source checkpoint succeeds and its durable package is audited.
+The signed-alias affine map, endpoint phase, regional `B0`, window-15
+producer, terminal field and `TermSource` inhabitant remain open. Counters
+stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

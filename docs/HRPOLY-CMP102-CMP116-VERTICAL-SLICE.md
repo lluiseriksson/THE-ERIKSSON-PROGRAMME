@@ -11585,3 +11585,21 @@ has Git-blob SHA-256
 Both source files remain PRE-VALIDATION and NOT CHECKED pending that single
 diagnostic. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+Diagnostic v3 on exact source
+`be86a1ccb81dd8c69599245e12b3d7a52d7dae9c` passed in one fresh Colab
+Pro+ CPU/high-RAM clone. The focal printed literal
+`Build completed successfully (8507 jobs).` and exited `0` after
+`1417.604 s`; the audit exited `0` after `6.862 s`. Its three axiom sets were
+one `[propext, Quot.sound]` and two
+`[propext, Classical.choice, Quot.sound]`. Evidence JSON/archive SHA-256 are
+`1c7d78a67da7bbe34eeb13a6aa0c45ee2b209cb6b18b406c5857016cb61cd981`
+and
+`e4890663d09f0b91b1ea8c33529b8535e28b2e49dc2183e27cc90b1f995ebe68`.
+The runtime released and disconnected without reexecution.
+
+This PASS authorizes exactly one cold terminal workflow for the same source
+and blob hashes; it does not itself retire the PRE-VALIDATION headers. No
+signed-alias, endpoint-phase or physical claim is sealed, and counters stay
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
