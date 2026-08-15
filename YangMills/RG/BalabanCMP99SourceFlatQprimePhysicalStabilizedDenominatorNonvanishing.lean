@@ -9,10 +9,7 @@ import YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive
 import YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishing
 
 /-!
-# PRE-VALIDATION: physical stabilized denominator nonvanishing
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been compiler-verified.
+# Physical stabilized denominator nonvanishing
 
 The mass-uniform real lower bound first proves that the stabilized denominator
 is nonzero at the centered coarse representative.  For a nonzero coarse mode,

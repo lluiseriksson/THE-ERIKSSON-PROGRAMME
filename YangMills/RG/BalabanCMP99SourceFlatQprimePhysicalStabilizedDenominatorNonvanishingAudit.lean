@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing
 
 /-!
-# PRE-VALIDATION: Gate-5 axiom audit
-
-Source is present, its `.olean` has not yet been materialized, and these audit
-results have not yet been compiler-verified.
+# Gate-5 axiom audit
 -/
 
 #print axioms YangMills.RG.cmp89Eq249CentralStabilizedLowerConstant_pos

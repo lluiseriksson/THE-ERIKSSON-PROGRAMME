@@ -10501,6 +10501,21 @@ and `3a28a8837e754eb6efb4f6e9f85bbc17e7d2f7b2d17f408bc83be4e354134c7e`.
 This remains diagnostic only: PRE-VALIDATION and the exact counters stay in
 place pending the one cold seal at the same source.
 
+The single cold seal is now complete in run
+[`31858189627`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31858189627)
+at the same source.  Restore/save of `.lake/build` were both skipped.  The
+focal returned `EXIT=0` with literal terminal line
+`Build completed successfully (8578 jobs).`; the audit returned `EXIT=0`
+with five exact permitted axiom trios.  Artifact `9240084010` has GitHub
+digest
+`cc72b15dae55683f8e93371abd8514cf8e614ab8fcb2d1c98885e878964c589f`;
+the downloaded deterministic archive SHA-256 is
+`ca18f029eba5a4769f2b69295fd6ac9e69a3aaae5bec04e3ff85ed25ba85644f`,
+with `13/13` internal hashes verified.  Gate-5 PRE-VALIDATION is retired.
+This closes direct stabilized-denominator nonvanishing only; the generated
+Green identification and window 15 remain open.  Counters stay exactly
+`20/41`, `TermSource = 0`.
+
 Cold GitHub Actions run
 [`31784588620`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31784588620)
 then sealed exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`

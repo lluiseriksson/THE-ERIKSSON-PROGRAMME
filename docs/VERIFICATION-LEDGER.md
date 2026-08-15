@@ -35864,3 +35864,32 @@ cold workflow checks out the same source with project-graph restore and save
 both skipped.  Gate 5 still does not identify the generated Green, attain
 window 15, discharge a terminal field, or inhabit `TermSource`.  Counters
 remain exactly `20/41`, `TermSource = 0`.
+
+## Addendum 789 (2026-08-15, **Gate 5 COLD-SEALED; direct stabilized denominator nonvanishing; 20/41 unchanged**)
+
+The single terminal cold workflow
+[`31858189627`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31858189627)
+sealed exact source `c99e2bbd4d8b3c24462a59f68b4cbbc3b5ddad81` under workflow
+vehicle `6892786a814695fe478125669c6bd6bc6daf5f7d`.  The workflow Git-blob
+SHA-256 is
+`0af4ada71da70184cb12fcb39991a002762969ca937df803cd1bb9aa70e81da6`.
+`COLD_MODE=true`; project-graph restore and save were both skipped.  The focal
+ran `2026-08-15T02:05:38Z--02:33:27Z`, returned `EXIT=0`, and emitted literal
+terminal line `Build completed successfully (8578 jobs).`; the audit ran
+`02:33:27Z--02:33:36Z`, returned `EXIT=0`, and printed five exact
+`[propext, Classical.choice, Quot.sound]` blocks.
+
+Artifact `9240084010` has GitHub digest
+`cc72b15dae55683f8e93371abd8514cf8e614ab8fcb2d1c98885e878964c589f`.
+Its downloaded deterministic archive has SHA-256
+`ca18f029eba5a4769f2b69295fd6ac9e69a3aaae5bec04e3ff85ed25ba85644f`;
+all `13/13` internal manifest entries verify with zero mismatches.  This
+evidence retires both Gate-5 PRE-VALIDATION headers.
+
+Gate 5 proves the literal generated physical stabilized denominator nonzero
+without stating periodicity of that denominator: only the complete multiplied
+denominator is transported, and the stabilized factor is reconstructed at the
+physical representative.  It still does not identify the internally generated
+Green, attain window 15, discharge a terminal field, or inhabit `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+and unattained.
