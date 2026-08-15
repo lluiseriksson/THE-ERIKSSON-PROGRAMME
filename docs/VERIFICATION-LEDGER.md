@@ -36474,3 +36474,23 @@ only a genuine permutation of the printed alias carrier and complete-sum
 reindexing, with no physical fixed-fibre claim.  Its current Colab diagnostic
 may therefore continue unchanged.  No counter moves: `20/41`,
 `TermSource = 0`; window 15 remains compatible and unattained.
+
+## Addendum 810 (2026-08-15, **coarse-fibre Fourier-negation bridge checkpointed independently; PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint `91169e80` adds
+`BalabanCMP99SourceCoarseFibreFourierNeg` and its three-declaration audit.
+The source proves the involution on the literal fine `FinBox`, the exact
+commutation of coarse reciprocal projection with periodic negation, and the
+resulting equivalence from the fine fibre over `ell` to the fibre over
+`cmp99FinBoxFourierNeg ell`.  Source/audit Git-blob SHA-256 are
+`4f79bf6e12a7d9c5dbdbe459cc889d766fdd036107d81cbe13e975529a59a32d`
+and
+`3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
+
+The checkpoint is deliberately independent of the unsealed centered-alias
+reflection brick.  It does not prove the affine quotient carry, simple alias
+intertwinement, an endpoint phase, finite-to-continuous periodization,
+regional `B0`, window-15 contraction, a terminal field or a `TermSource`
+inhabitant.  Both Lean files remain visibly PRE-VALIDATION and NOT CHECKED.
+Hard counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible and unattained.

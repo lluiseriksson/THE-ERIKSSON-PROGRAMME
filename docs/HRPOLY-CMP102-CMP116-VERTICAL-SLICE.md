@@ -11378,3 +11378,24 @@ The printed signed alias therefore acquires a unit borrow/carry.  The next
 physical brick must expose that affine carry as a function of the coarse
 residue; it may not claim simple intertwinement with
 `cmp99SourceAliasIndexOneReflection`.
+
+### Step 8b.8: periodic Fourier negation between coarse fibres (PRE-VALIDATION; NOT CHECKED)
+
+Independent source checkpoint `91169e80` adds
+`BalabanCMP99SourceCoarseFibreFourierNeg` and its three-declaration audit.
+The source proves that periodic Fourier negation is involutive on the literal
+`FinBox`, that `cmp99SourceFlatQprimeCoarseAlias` commutes with it, and hence
+constructs the exact equivalence from the fine fibre over `ell` to the fibre
+over `cmp99FinBoxFourierNeg ell`.  Source/audit Git-blob SHA-256 are
+`4f79bf6e12a7d9c5dbdbe459cc889d766fdd036107d81cbe13e975529a59a32d`
+and
+`3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
+
+This checkpoint deliberately depends only on already sealed coarse-alias and
+Fourier-negation modules; it does not import the Step-8b.7 PRE-VALIDATION
+reflection.  It stops before the quotient carry.  In particular it does not
+claim intertwinement with `cmp99SourceAliasIndexOneReflection`, identify an
+endpoint phase, construct regional `B0`, attain window 15, discharge a
+terminal field or inhabit `TermSource`.  Both files retain visible
+PRE-VALIDATION headers and are NOT CHECKED.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
