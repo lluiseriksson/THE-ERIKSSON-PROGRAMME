@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeAliasFibreDictionary
 /-!
 # Euclidean quotient carry under cross-fibre Fourier negation
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 Periodic negation changes both the coarse residue and the Euclidean quotient
 of a fine momentum.  This module exposes the exact natural-valued quotient
 law before passing to the signed centered-alias dictionary: the target

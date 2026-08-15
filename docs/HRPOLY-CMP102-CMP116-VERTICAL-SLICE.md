@@ -11503,7 +11503,7 @@ and every internal `SHA256SUMS` entry matched.  This evidence retires exactly
 the two Step-8b.8 PRE-VALIDATION headers.  It seals no affine quotient-carry
 or physical endpoint claim and moves no counter.
 
-### Step 8b.9: Euclidean quotient carry across the two fibres (diagnostic v1 FAIL; repair v2 PRE-VALIDATION; NOT CHECKED)
+### Step 8b.9: Euclidean quotient carry across the two fibres (SEALED COLD; carrier arithmetic only)
 
 Independent source checkpoint `0559a9c849d9ba29a3dab346ffcbf5602ffec532`
 adds `BalabanCMP99SourceCoarseFibreFourierNegQuotientCarry` and its
@@ -11603,3 +11603,22 @@ and blob hashes; it does not itself retire the PRE-VALIDATION headers. No
 signed-alias, endpoint-phase or physical claim is sealed, and counters stay
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+The single cold terminal run
+[`31896349484`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31896349484)
+then checked out exact source
+`be86a1ccb81dd8c69599245e12b3d7a52d7dae9c` with `COLD_MODE=true`; project
+graph restore/save were both skipped. The focal printed literal
+`Build completed successfully (8507 jobs).` and the focal/audit exits were
+`0/0`. The three axiom blocks were one `[propext, Quot.sound]` and two
+standard `[propext, Classical.choice, Quot.sound]` blocks. Artifact
+`9250160027` has GitHub digest
+`73812fcb416d694719db94f3343434fb7713b7ffba3b2ca39190be0f0f02c409`;
+the downloaded deterministic archive SHA-256 is
+`4f200835c9142a5cc2048ed32185be3d4bffdfb4df82e05e734e764a5ce16634`,
+with all `14/14` internal hashes matching.
+
+This seal retires exactly the source/audit PRE-VALIDATION headers for Step
+8b.9. It establishes no signed-alias affine carry or physical endpoint
+identity. Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

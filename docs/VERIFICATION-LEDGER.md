@@ -36918,3 +36918,32 @@ The signed-alias affine map, endpoint phase, regional `B0`, window-15
 producer, terminal field and `TermSource` inhabitant remain open. Counters
 stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 823 (2026-08-15, **quotient carry sealed cold; exact PRE-VALIDATION retirement; 20/41 unchanged**)
+
+The single authorized cold GitHub Actions run
+[`31896349484`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31896349484)
+checked out exact source `be86a1ccb81dd8c69599245e12b3d7a52d7dae9c`
+under workflow vehicle `fb12539c7964a84e34658e81cc86c96698671b16`.
+It recorded `COLD_MODE=true`; both project-graph restore and save were
+`skipped`. Toolchain, Mathlib pin, source/audit Git-blob hashes, textual
+guards and cache-key budget all passed.
+
+The focal exited `0` with literal
+`Build completed successfully (8507 jobs).`; the audit exited `0`. Its three
+axiom blocks were one `[propext, Quot.sound]` and two
+`[propext, Classical.choice, Quot.sound]`. GitHub artifact `9250160027` has
+digest
+`73812fcb416d694719db94f3343434fb7713b7ffba3b2ca39190be0f0f02c409`.
+The downloaded deterministic archive SHA-256 is
+`4f200835c9142a5cc2048ed32185be3d4bffdfb4df82e05e734e764a5ce16634`;
+all `14/14` internal `SHA256SUMS` entries matched, `FINAL_STATUS=PASS`, and
+the focal log contains no new-module warning.
+
+This evidence retires exactly the PRE-VALIDATION headers in
+`BalabanCMP99SourceCoarseFibreFourierNegQuotientCarry` and its audit. It
+seals the natural periodic representative, Euclidean quotient carry and
+`ZMod M` residue corollary only. It does not seal the signed-alias affine
+map, endpoint phase, regional `B0`, window-15 producer, terminal field or a
+`TermSource` inhabitant. Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
