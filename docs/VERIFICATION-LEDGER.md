@@ -35842,3 +35842,25 @@ the unchanged audit blob remains
 `9135c10d79ccb18b0719800c565d14d3abe43bbc4c5252488bded9e238cb06bc`.
 Compiler status remains **NOT CHECKED** pending diagnostic v2.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
+
+## Addendum 788 (2026-08-15, **Gate-5 diagnostic v2 GREEN; cold seal pending; 20/41 unchanged**)
+
+Diagnostic v2 ran once in a fresh Colab Pro+ CPU/high-RAM runtime at exact
+source `c99e2bbd4d8b3c24462a59f68b4cbbc3b5ddad81`.  The two runner
+transport hashes, official toolchain digest, exact Mathlib pin, source blobs,
+and both textual guards passed.  The focal returned `EXIT=0` after
+`1451.528 s` with literal terminal line
+`Build completed successfully (8578 jobs).`; the audit returned `EXIT=0`
+after `9.417 s` and printed five exact
+`[propext, Classical.choice, Quot.sound]` blocks.  Evidence and archive
+SHA-256 are
+`dce238d589e2cb031e7ad64a2360e0b347609bb9962974bca483d2b19a9dd0f5`
+and
+`3a28a8837e754eb6efb4f6e9f85bbc17e7d2f7b2d17f408bc83be4e354134c7e`.
+The runtime was disconnected and deleted without reexecuting the cell.
+
+This is diagnostic evidence only.  PRE-VALIDATION remains until the single
+cold workflow checks out the same source with project-graph restore and save
+both skipped.  Gate 5 still does not identify the generated Green, attain
+window 15, discharge a terminal field, or inhabit `TermSource`.  Counters
+remain exactly `20/41`, `TermSource = 0`.

@@ -1,4 +1,4 @@
-name: Validate Gate-4 complete-fibre nonvanishing
+name: Validate Gate-5 stabilized denominator
 
 on:
   workflow_dispatch:
@@ -13,17 +13,17 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: a7131fdb05c32c4956a8cf1bba8f8e7b1d907f13
-  SOURCE_BLOB_SHA256: a6a3574a73eb99a16de0de2ebde1291103b04f2a8f21759f92899f03c26e547e
-  AUDIT_BLOB_SHA256: 465f765819ba56465c8854ce9f0ba138643c22464f7365665e0992eafb1c3846
+  SOURCE_SHA: c99e2bbd4d8b3c24462a59f68b4cbbc3b5ddad81
+  SOURCE_BLOB_SHA256: 515dc3865264dfae973d3cad627f14a450cc40a6a2638b1a7e75c00031f13b91
+  AUDIT_BLOB_SHA256: 9135c10d79ccb18b0719800c565d14d3abe43bbc4c5252488bded9e238cb06bc
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    gate4-complete-fibre-nonvanishing
+    gate5-stabilized-denominator
 
 jobs:
-  gate4-complete-fibre-nonvanishing:
+  gate5-stabilized-denominator:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -43,8 +43,8 @@ jobs:
             "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishing.lean
-          audit_path=YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishingAudit.lean
+          source_path=YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing.lean
+          audit_path=YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishingAudit.lean
           test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
           test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-gate4-complete-fibre-nonvanishing-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-gate5-stabilized-denominator-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -126,8 +126,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishing.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishingAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishingAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -149,10 +149,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage complete_fibre_nonvanishing_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishing
-          run_stage complete_fibre_nonvanishing_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishingAudit.lean
+          run_stage stabilized_denominator_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing
+          run_stage stabilized_denominator_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishingAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -166,11 +166,11 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "complete_fibre_nonvanishing_audit.log": 5,
+              "stabilized_denominator_audit.log": 5,
           }
           focals = {
-              "complete_fibre_nonvanishing_focal.log":
-                  "BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishing.lean:",
+              "stabilized_denominator_focal.log":
+                  "BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing.lean:",
           }
           for name, source_name in focals.items():
               focal = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -206,17 +206,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              gate4-complete-fibre-nonvanishing-evidence.tar.gz
-          sha256sum gate4-complete-fibre-nonvanishing-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              gate5-stabilized-denominator-evidence.tar.gz
+          sha256sum gate5-stabilized-denominator-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gate4-complete-fibre-nonvanishing-${{ env.SOURCE_SHA }}
+          name: gate5-stabilized-denominator-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            gate4-complete-fibre-nonvanishing-evidence.tar.gz
+            gate5-stabilized-denominator-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -225,4 +225,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-gate4-complete-fibre-nonvanishing-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-gate5-stabilized-denominator-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}

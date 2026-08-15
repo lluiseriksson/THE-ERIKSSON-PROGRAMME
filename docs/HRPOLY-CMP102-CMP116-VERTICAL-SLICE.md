@@ -10491,6 +10491,16 @@ pending diagnostic v2.  It still does not identify the generated Green,
 attain window 15, discharge a terminal field, or inhabit `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`.
 
+Diagnostic v2 at exact source
+`c99e2bbd4d8b3c24462a59f68b4cbbc3b5ddad81` is green: focal
+`EXIT=0` after `1451.528 s` with literal terminal line
+`Build completed successfully (8578 jobs).`, and audit `EXIT=0` after
+`9.417 s` with five exact permitted axiom trios.  Evidence/archive SHA-256
+are `dce238d589e2cb031e7ad64a2360e0b347609bb9962974bca483d2b19a9dd0f5`
+and `3a28a8837e754eb6efb4f6e9f85bbc17e7d2f7b2d17f408bc83be4e354134c7e`.
+This remains diagnostic only: PRE-VALIDATION and the exact counters stay in
+place pending the one cold seal at the same source.
+
 Cold GitHub Actions run
 [`31784588620`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31784588620)
 then sealed exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`
