@@ -36023,3 +36023,25 @@ nonvanishing family, or stabilized denominator.  It does not prove a regional
 Green bound, attain window 15, discharge a terminal field, or inhabit
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
+
+## Addendum 795 (2026-08-15, **Gate 7 PRE-VALIDATION; one-mode Green Fourier fibre NOT CHECKED; 20/41 unchanged**)
+
+Source checkpoint `bcc852cee5e709bff91fad7de26fa21cff754e1f` contains
+the proposed one-coarse-mode specialization of the cold-sealed generated
+Green endpoint.  It collapses the full stabilized field to the internally
+generated central stabilized particular solution and exposes the fine DFT on
+the selected reciprocal fibre and its exact zero value off that fibre.
+
+Source/audit Git-blob SHA-256 are
+`1ac7f4c87f28c28f653b91a9a7afffa92194d88d1ff5a9d175a3d1842c761aca`
+and
+`d2ccb839a72db990c1d014d373b85228f290befee643bb8b1cb37c26f10ea25a`.
+Both files retain visible PRE-VALIDATION headers.  No Lean/Lake/oracle has run
+on this source yet; all four declarations are NOT CHECKED pending a fresh
+Colab focal and audit.
+
+This is only the discrete one-mode side of the Fourier/operator dictionary.
+It does not identify a continuous Brillouin integral, produce a regional
+Green estimate or uniform `B0`, attain window 15, discharge a terminal field,
+or inhabit `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible and unattained.

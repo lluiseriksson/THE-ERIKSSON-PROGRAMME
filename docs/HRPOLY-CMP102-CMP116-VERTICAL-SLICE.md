@@ -11017,3 +11017,24 @@ no free inverse, precision dictionary, `hfine`, or stabilized-denominator
 input.  It still does not prove a regional Green bound, attain window 15,
 discharge a terminal field, or inhabit `TermSource`.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
+
+### Step 8b.4 Gate 7: one-mode generated Green Fourier fibre (PRE-VALIDATION)
+
+Source checkpoint `bcc852cee5e709bff91fad7de26fa21cff754e1f` adds the
+first exact Fourier specialization downstream of cold-sealed Gate 6.  For a
+single coarse Fourier mode it proposes to collapse the full stabilized field
+to the internally generated central stabilized particular solution, then
+states the selected reciprocal-fibre DFT and the exact off-fibre zero law.
+
+Source/audit Git-blob SHA-256 are
+`1ac7f4c87f28c28f653b91a9a7afffa92194d88d1ff5a9d175a3d1842c761aca`
+and
+`d2ccb839a72db990c1d014d373b85228f290befee643bb8b1cb37c26f10ea25a`.
+Both files visibly retain PRE-VALIDATION and are NOT CHECKED by Lean pending
+the fresh Colab focal and four-declaration audit.
+
+Even if validated, Gate 7 supplies only the discrete one-mode side of the
+Fourier/operator dictionary.  It does not identify a continuous Brillouin
+integral, produce a regional Green estimate or uniform `B0`, attain window 15,
+discharge a terminal field, or inhabit `TermSource`.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
