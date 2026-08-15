@@ -36452,3 +36452,25 @@ Its queue is exactly the new focal followed by the five-declaration audit in
 one fresh Colab clone.  The two Lean modules retain visible PRE-VALIDATION
 headers and are NOT CHECKED.  Hard counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible and unattained.
+
+## Addendum 809 (2026-08-15, **simple signed-alias reflection intertwinement rejected by Euclidean carry; PRE-VALIDATION brick scope unchanged**)
+
+Static review corrects the replacement route recorded in Addendum 807.  Fine
+periodic negation does transport the coarse fibre over `ell` to the fibre over
+`cmp99FinBoxFourierNeg ell`, but its quotient coordinate is not generally
+`-q mod M`.  Negating the decomposition `k = ell + N' * q` borrows one coarse
+period whenever the chosen nonnegative representative of `ell` is nonzero.
+
+The counterexample is literal: for `M = 2`, `N' = 3`, `ell = 1`, `q = 0`,
+fine coordinate `1 mod 6` negates to `5 = 2 + 3 * 1`.  The new coarse residue
+is `2`, while the new quotient is `1`, not `0 = -q mod 2`.  Consequently the
+signed alias dictionary on the target fibre is not the source alias followed
+by `cmp99SourceAliasIndexOneReflection`.  The physical bridge must expose the
+coarse-residue-dependent affine carry and prove the full coarse-plus-alias
+momentum identity.
+
+This no-go does not invalidate the PRE-VALIDATION brick: that module states
+only a genuine permutation of the printed alias carrier and complete-sum
+reindexing, with no physical fixed-fibre claim.  Its current Colab diagnostic
+may therefore continue unchanged.  No counter moves: `20/41`,
+`TermSource = 0`; window 15 remains compatible and unattained.

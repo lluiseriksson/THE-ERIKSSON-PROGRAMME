@@ -11336,10 +11336,11 @@ not produce the physical opposite momentum: it changes
 the distinct coarse fibre `cmp99FinBoxFourierNeg ell`.  Therefore no
 fixed-fibre permutation may be advertised as the physical row-to-column
 reflection.  The faithful route is a cross-fibre equivalence from the fibre
-over `ell` to the fibre over `cmp99FinBoxFourierNeg ell`, followed by a
-separate proof that the signed alias dictionaries intertwine with residue
-reflection.  This is a static no-go and design replacement, not a compiler
-seal or terminal-field discharge.
+over `ell` to the fibre over `cmp99FinBoxFourierNeg ell`, followed by an
+explicit Euclidean carry law for the quotient coordinate.  A later static
+check sharpened this gate: the signed alias dictionaries do **not** generally
+intertwine with residue reflection alone.  This is a static no-go and design
+replacement, not a compiler seal or terminal-field discharge.
 
 ### Step 8b.7: centered alias residue reflection (PRE-VALIDATION; NOT CHECKED)
 
@@ -11368,3 +11369,12 @@ five-declaration audit stop-on-first-error in one fresh Colab clone.  Both
 Lean modules remain visibly PRE-VALIDATION and NOT CHECKED.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+The carry obstruction is already concrete in one dimension.  With `M = 2`,
+`N' = 3`, coarse residue `ell = 1` and quotient `q = 0`, the fine coordinate
+is `1 mod 6`; periodic negation gives `5 = 2 + 3 * 1`.  Thus the negated
+coarse residue is `2`, but the new quotient is `1`, not `-q = 0 mod 2`.
+The printed signed alias therefore acquires a unit borrow/carry.  The next
+physical brick must expose that affine carry as a function of the coarse
+residue; it may not claim simple intertwinement with
+`cmp99SourceAliasIndexOneReflection`.
