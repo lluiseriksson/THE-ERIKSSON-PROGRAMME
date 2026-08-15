@@ -37032,3 +37032,30 @@ finite-to-continuous periodization, regional `B0`, window-15 attainment,
 every terminal field and a `TermSource` inhabitant remain open. Counters stay
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 827 (2026-08-15, **fine-to-coarse endpoint phase PRE-VALIDATION; exact `M⁻¹` unit conversion visible; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`aec4077a9d4ae7e8b8cec70719ec09c12de0c66e` adds
+`BalabanCMP99SourceFlatQprimeEndpointPhase` and its four-declaration audit.
+It defines the integer endpoint displacement as `M*y-x`, proves the canonical
+fine Fourier mode as an entire phase, and states the final fine-to-coarse
+identity with the compensating `M⁻¹` inside
+`cmp89Eq249PhysicalFineLatticeDisplacement`.  Thus neither the sign nor the
+fine/block unit conversion is absorbed into notation.
+
+Source/audit Git-blob SHA-256 are
+`1af4c3a6368a12ef0e4bd444bfb3aab801ae645c5c67f49ad26ebabb557bf2c5`
+and
+`ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90`.
+The exact two-file textual and import-prefix guards passed locally in under
+one second.  No Lean or Lake ran on Windows. Diagnostic runner checkpoint
+`ae0bcc5e2cc960b6edcfe1d024139f2d2a233108` has Git-blob SHA-256
+`3353c0f14222c12a8e18fad22687172b3218cbe44a54899351a1ba75cec1bf87`.
+
+Both Lean files remain visibly PRE-VALIDATION and NOT CHECKED.  The brick does
+not yet combine the affine carrier action with the finite synthesis, identify
+the sampled sum with a continuous Brillouin integral, produce regional `B0`,
+attain window 15, discharge any terminal field or inhabit `TermSource`.
+Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.

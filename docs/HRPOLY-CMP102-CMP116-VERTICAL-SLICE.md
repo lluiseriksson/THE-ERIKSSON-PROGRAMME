@@ -11681,3 +11681,28 @@ phase, finite-to-continuous periodization, regional `B0`, window 15, every
 terminal field and a `TermSource` inhabitant remain open. Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+### Step 8b.11: fine-to-coarse endpoint phase (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `aec4077a9d4ae7e8b8cec70719ec09c12de0c66e`
+introduces the integer endpoint displacement `M*y-x` and keeps its fine-to-
+block conversion visibly equal to `M⁻¹`.  The terminal theorem identifies the
+positive fine Fourier mode divided by the coarse mode at `y` with the exact
+CMP89 entire phase at the source amplitude momentum.  The sign and the scale
+are therefore statements, not conventions.
+
+Source/audit Git-blob SHA-256 are
+`1af4c3a6368a12ef0e4bd444bfb3aab801ae645c5c67f49ad26ebabb557bf2c5`
+and
+`ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90`.
+Exact two-file text and import-prefix guards pass locally; no Lean or Lake ran
+on Windows. Diagnostic runner checkpoint
+`ae0bcc5e2cc960b6edcfe1d024139f2d2a233108` has Git-blob SHA-256
+`3353c0f14222c12a8e18fad22687172b3218cbe44a54899351a1ba75cec1bf87`.
+Both modules remain visibly PRE-VALIDATION and NOT CHECKED.
+
+This brick is the unit/phase dictionary only.  It does not yet combine the
+sealed Step-8b.10 affine carrier reindexing with the finite synthesis, identify
+a Brillouin integral, produce regional `B0`, attain window 15, discharge a
+terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
