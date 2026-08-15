@@ -11644,3 +11644,18 @@ The two Lean files remain visibly PRE-VALIDATION and NOT CHECKED. Endpoint
 phase, finite-to-continuous periodization, regional `B0`, window 15 and every
 terminal-field claim remain open; counters stay exactly `20/41`,
 `TermSource = 0`.
+
+Diagnostic v1 then passed once in a fresh Colab Pro+ CPU/high-RAM clone on
+the exact source and runner above. The focal exited `0` after `1544.845 s`
+with literal `Build completed successfully (8539 jobs).`; the audit exited
+`0` after `7.382 s`, and all three declarations used exactly the standard
+axiom trio. Evidence JSON/archive SHA-256 are
+`432a3143978e43b4097d3a608dfb958f30df4cf5876ec89aebcec647ff855f8b`
+and
+`93f99967f5a8e09e37e8a3ff02f88d16f9321c0a68788332a9b8a467aaa0d6ba`.
+The runtime released and the tab closed without reexecution.
+
+This diagnostic PASS authorizes one cold seal but does not itself retire the
+two PRE-VALIDATION headers. The brick remains carrier arithmetic only, with
+all endpoint and physical consumers still open; counters remain exactly
+`20/41`, `TermSource = 0`.

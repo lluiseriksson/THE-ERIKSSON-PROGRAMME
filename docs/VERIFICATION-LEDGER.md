@@ -36973,3 +36973,34 @@ brick does not identify an endpoint phase, finite synthesis with the CMP89
 integral, regional `B0`, window-15 attainment, a terminal field or a
 `TermSource` inhabitant. Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 825 (2026-08-15, **signed-alias affine carry diagnostic PASS; one cold seal prepared; 20/41 unchanged**)
+
+Diagnostic v1 ran exactly once in Colab Pro+ under the visible account
+`lluiseriksson@gmail.com`, CPU/high-RAM (`50.99 GiB`), opening at
+`2026-08-15T17:18:13.624351+00:00`. It verified runner checkpoint
+`881bec52abe782b6735aefbacc96b814ec4d6cd9`, runner Git-blob SHA-256
+`d0c840c3a2cf1bbda47442658cd9973e5adf2c447cb4f8e16e498c6d77abab1a`,
+source checkpoint `e73cd91d00e0f241c0b772cb84888d47b34d2df8`, both source
+blob hashes, Lean `4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and both textual guards.
+
+The focal exited `0` after `1544.845 s` with literal
+`Build completed successfully (8539 jobs).`; the audit exited `0` after
+`7.382 s`. All three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`. Evidence JSON/archive SHA-256 are
+`432a3143978e43b4097d3a608dfb958f30df4cf5876ec89aebcec647ff855f8b`
+and
+`93f99967f5a8e09e37e8a3ff02f88d16f9321c0a68788332a9b8a467aaa0d6ba`.
+Literal terminal markers were `FINAL_STATUS=PASS`, `LAUNCHER_EXIT=0`,
+`RUNTIME_UNASSIGN_REQUESTED=1` and
+`LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the runtime disconnected and the
+browser tab was closed.
+
+This PASS authorizes exactly one cold GitHub Actions run on the same source
+and blob hashes. It is diagnostic evidence only: both Lean files retain
+visible PRE-VALIDATION headers until the durable cold package is audited.
+Endpoint phase, finite-to-continuous periodization, regional `B0`, window 15,
+every terminal field and a `TermSource` inhabitant remain open. Counters stay
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
