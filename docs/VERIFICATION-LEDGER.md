@@ -37300,3 +37300,32 @@ does not identify row and column amplitudes, reindex the complete finite sum,
 construct a Brillouin integral or regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 831 (2026-08-16, **row-oriented endpoint samples PRE-VALIDATION; orientation bridge still open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`62862316ed330ef0efa8db676fa3b3f97b441c6e` adds
+`BalabanCMP99SourceFlatQprimeTransposeEndpointSample` and its three-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`bb7fb89b9366d99eaed0f98105f64a628c562657bc9b54f94f542a29b4415012`
+and
+`9bc50c439e007be0024db76ee5a807d67689710a2c7d652aa3f0b06cc2965b2a`.
+The source composes the cold-sealed physical finite synthesis with the
+cold-sealed endpoint-phase quotient: one summand and then the complete fixed
+coarse-fibre sum are rewritten as named row-oriented endpoint samples.  No
+normalization, cardinality or integral factor is inserted.
+
+The orientation remains explicit and open.  This brick does not replace the
+row amplitude by the CMP89 column amplitude, reindex through cross-fibre
+Fourier negation, claim that the affine carry preserves the zero alias
+termwise, identify a Brillouin integral, produce regional `B0`, attain window
+15, discharge a terminal field or inhabit `TermSource`.
+
+Diagnostic runner checkpoint `22a087e5156f34c582b37798624b1a626297cac2`
+has Git-blob SHA-256
+`7282f931d1bdc66f73cadd0248596ec28334cb4cde2577d566dd04683b5fab42`;
+notebook vehicle checkpoint is `e2159c58`.  A Mathlib-only repro checks the
+factor reordering and `Finset.sum_mul` rewrite before the project focal.  Both
+Lean files retain visible PRE-VALIDATION headers and are NOT CHECKED.  No Lean
+or Lake ran on Windows.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

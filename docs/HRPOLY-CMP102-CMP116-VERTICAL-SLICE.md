@@ -11930,3 +11930,28 @@ notebook vehicle checkpoint is `c2209bd2`.  Statements, constants, hypotheses
 and delimitations are unchanged.  Step 8b.12 remains PRE-VALIDATION and NOT
 CHECKED pending v3; counters remain `20/41`, `TermSource = 0`, window 15
 compatible but unattained.
+
+### Step 8b.13: row-oriented sampled endpoint normal form (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `62862316ed330ef0efa8db676fa3b3f97b441c6e`
+adds `BalabanCMP99SourceFlatQprimeTransposeEndpointSample` and its
+three-declaration audit.  Source/audit Git-blob SHA-256 are
+`bb7fb89b9366d99eaed0f98105f64a628c562657bc9b54f94f542a29b4415012`
+and
+`9bc50c439e007be0024db76ee5a807d67689710a2c7d652aa3f0b06cc2965b2a`.
+The brick rewrites one physical transpose-Green Fourier summand, and then its
+complete fixed-fibre sum, into a named row-oriented endpoint sample using the
+cold-sealed endpoint phase.  It inserts no volume or integral normalization.
+
+The orientation gate stays visible: no row-to-column replacement,
+cross-fibre Fourier-negation reindex, termwise zero-alias claim, Green
+periodization, Brillouin integral, regional `B0`, window-15 attainment,
+terminal-field producer or `TermSource` inhabitant is claimed.
+
+Diagnostic runner checkpoint `22a087e5156f34c582b37798624b1a626297cac2`
+has Git-blob SHA-256
+`7282f931d1bdc66f73cadd0248596ec28334cb4cde2577d566dd04683b5fab42`;
+notebook vehicle checkpoint is `e2159c58`.  Its Mathlib-only repro checks the
+two algebraic rewrites before the expensive focal.  Both files remain visibly
+PRE-VALIDATION and NOT CHECKED; no Lean or Lake ran on Windows.  Counters stay
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
