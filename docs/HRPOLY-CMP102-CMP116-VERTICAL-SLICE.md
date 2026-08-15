@@ -11503,7 +11503,7 @@ and every internal `SHA256SUMS` entry matched.  This evidence retires exactly
 the two Step-8b.8 PRE-VALIDATION headers.  It seals no affine quotient-carry
 or physical endpoint claim and moves no counter.
 
-### Step 8b.9: Euclidean quotient carry across the two fibres (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.9: Euclidean quotient carry across the two fibres (diagnostic v1 FAIL; repair v2 PRE-VALIDATION; NOT CHECKED)
 
 Independent source checkpoint `0559a9c849d9ba29a3dab346ffcbf5602ffec532`
 adds `BalabanCMP99SourceCoarseFibreFourierNegQuotientCarry` and its
@@ -11529,3 +11529,28 @@ Both modules retain visible PRE-VALIDATION and are NOT CHECKED until that
 runner emits a compiler verdict.  Every signed-alias, phase and physical
 claim remains downstream; counters remain `20/41`, `TermSource = 0`, and
 window 15 compatible but unattained.
+
+Diagnostic v1 reached the focal in one fresh CPU/high-RAM Colab clone and
+stopped after `1901.181 s` with exit `1`; the audit did not run.  The first
+real error was the mechanical direction of `Nat.mul_lt_mul_right`.  The same
+transcript exposed an over-broad natural-subtraction rewrite and a missing
+import for the already sealed fixed-fibre quotient equivalence.  Evidence
+JSON/archive SHA-256 are
+`961b5a63a52b0111f5908526169e57072b3b61733b475d516b55ceb707ba108c`
+and
+`33dce0b4d4bbdfec3fe9b7b484c0d48e2c440dddf2cc3b2333434d8039d25134`;
+the runtime released after literal `FINAL_STATUS=FAIL`.
+
+PRE-VALIDATION repair checkpoint
+`e6f399f890c24e19deef5dbdde3e7f0b9ea7ce87` changes no statement, constant
+or hypothesis.  It imports the actual quotient dictionary, takes the `.2`
+direction of the multiplication-order equivalence, and uses `congrArg` for
+the exact subtraction normal form.  Revised source/audit Git-blob SHA-256 are
+`5e46ec8badf11870e4f2f0eb7b760df4225fdfb90595fe149512dbefe4e701b6`
+and
+`2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b`.
+Runner v2 checkpoint `e62872d959cbfd66743a30409f2e9ad65757af7c`
+has Git-blob SHA-256
+`afba3b3defb2a06cd95b91e50ec4f46ce786973035131e654aae499c9fb58e9f`.
+Both source files remain PRE-VALIDATION and NOT CHECKED; the counter and all
+downstream physical claims remain unchanged.

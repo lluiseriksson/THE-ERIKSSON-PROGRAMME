@@ -36801,3 +36801,50 @@ visibly PRE-VALIDATION and NOT CHECKED.  The signed-alias affine map,
 endpoint phase, regional `B0`, window-15 producer, terminal field and
 `TermSource` inhabitant remain open.  Counters stay exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 820 (2026-08-15, **quotient-carry diagnostic v1 FAIL; minimal PRE-VALIDATION repair checkpointed; 20/41 unchanged**)
+
+Diagnostic v1 ran exactly once in Colab Pro+ under visible account
+`lluiseriksson@gmail.com`, CPU/high-RAM (`50.99 GiB`), opening at
+`2026-08-15T14:53:53.029493+00:00`.  It verified runner checkpoint
+`4e48a361a327dc7351966a9472623756bb9c7f59`, runner Git-blob SHA-256
+`701ab51b2317b48fe4c155bd1d6bd3321306e854206760d2e788f3b5420ed6c7`,
+source checkpoint `0559a9c849d9ba29a3dab346ffcbf5602ffec532`, both source blob gates,
+Lean `4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and both textual guards.
+
+The focal stopped at its first compiler stage after `1901.181 s` with exit
+`1`; the audit did not run.  The first real error at line `54:34` was the
+mechanical use of `Nat.mul_lt_mul_right hN` as a function although Lean
+returns an equivalence.  The same transcript exposed two downstream
+elaboration boundaries: an over-broad rewrite of `M - q` inside a natural
+subtraction normal form, and the missing import of the already sealed fixed
+coarse-fibre quotient equivalence.  Evidence JSON/archive SHA-256 are
+`961b5a63a52b0111f5908526169e57072b3b61733b475d516b55ceb707ba108c`
+and
+`33dce0b4d4bbdfec3fe9b7b484c0d48e2c440dddf2cc3b2333434d8039d25134`.
+The transcript ended with literal `FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1`
+and `LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the runtime disconnected and the
+tab was closed.  This is diagnostic evidence only.
+
+PRE-VALIDATION source repair checkpoint
+`e6f399f890c24e19deef5dbdde3e7f0b9ea7ce87` changes no theorem statement,
+constant or hypothesis.  It imports
+`BalabanCMP99SourceFlatQprimeAliasFibreDictionary`, uses the `.2` direction
+of `Nat.mul_lt_mul_right`, and transports the exact natural equality through
+`congrArg` instead of recursively rewriting the subtraction expression.
+Revised source/audit Git-blob SHA-256 are
+`5e46ec8badf11870e4f2f0eb7b760df4225fdfb90595fe149512dbefe4e701b6`
+and
+`2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b`.
+Text/import-prefix guards pass locally; no Lean or Lake ran on Windows.
+
+Diagnostic runner v2 checkpoint
+`e62872d959cbfd66743a30409f2e9ad65757af7c` has Git-blob SHA-256
+`afba3b3defb2a06cd95b91e50ec4f46ce786973035131e654aae499c9fb58e9f`.
+Both Lean files remain visibly PRE-VALIDATION and NOT CHECKED at the repaired
+checkpoint.  No terminal workflow is authorized until the diagnostic passes.
+The signed-alias affine map, endpoint phase, regional `B0`, window-15
+producer, terminal field and `TermSource` inhabitant remain open.  Counters
+stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
