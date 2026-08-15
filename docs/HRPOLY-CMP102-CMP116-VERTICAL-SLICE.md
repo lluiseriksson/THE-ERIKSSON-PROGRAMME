@@ -11623,7 +11623,7 @@ This seal retires exactly the source/audit PRE-VALIDATION headers for Step
 identity. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
-### Step 8b.10: signed-alias affine carry (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.10: signed-alias affine carry (SEALED COLD)
 
 Source checkpoint `e73cd91d00e0f241c0b772cb84888d47b34d2df8`
 conjugates the two source-pinned signed fibre dictionaries through the sealed
@@ -11659,3 +11659,25 @@ This diagnostic PASS authorizes one cold seal but does not itself retire the
 two PRE-VALIDATION headers. The brick remains carrier arithmetic only, with
 all endpoint and physical consumers still open; counters remain exactly
 `20/41`, `TermSource = 0`.
+
+The single cold terminal run
+[`31899370629`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31899370629)
+checked out exact source `e73cd91d00e0f241c0b772cb84888d47b34d2df8`
+under workflow vehicle `7f8bf448bfc891652425941e0f0f0070d284151e`.
+It recorded `COLD_MODE=true`; project-graph restore and save were both
+`skipped`. The focal exited `0` with literal
+`Build completed successfully (8539 jobs).`; the audit exited `0`, and all
+three declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+Artifact `9250930709` has GitHub digest
+`142de2a783380cfd9c25b4f2de31cb8be0f498a8c81e3b4337d70b06cee31cfd`.
+The downloaded deterministic archive SHA-256 is
+`45bd61fa2d559836b649a7972f68f63084b44c8c46cf655f24dd14181ba1cb60`;
+all `14/14` internal `SHA256SUMS` entries matched, `FINAL_STATUS=PASS`, and
+the focal evidence contains no new-module warning.
+
+This cold evidence retires exactly the source/audit PRE-VALIDATION headers
+for Step 8b.10. It seals only the affine signed-alias carrier law. Endpoint
+phase, finite-to-continuous periodization, regional `B0`, window 15, every
+terminal field and a `TermSource` inhabitant remain open. Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

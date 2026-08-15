@@ -37004,3 +37004,31 @@ Endpoint phase, finite-to-continuous periodization, regional `B0`, window 15,
 every terminal field and a `TermSource` inhabitant remain open. Counters stay
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 826 (2026-08-15, **signed-alias affine carry sealed cold; exact PRE-VALIDATION retirement; 20/41 unchanged**)
+
+The single authorized cold GitHub Actions run
+[`31899370629`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31899370629)
+checked out exact source `e73cd91d00e0f241c0b772cb84888d47b34d2df8`
+under workflow vehicle `7f8bf448bfc891652425941e0f0f0070d284151e`.
+It recorded `COLD_MODE=true`; both project-graph restore and save were
+`skipped`. Toolchain, Mathlib pin, source/audit Git-blob hashes, textual
+guards and cache-key budget all passed.
+
+The focal exited `0` with literal
+`Build completed successfully (8539 jobs).`; the audit exited `0`. All three
+axiom blocks were exactly `[propext, Classical.choice, Quot.sound]`. GitHub
+artifact `9250930709` has digest
+`142de2a783380cfd9c25b4f2de31cb8be0f498a8c81e3b4337d70b06cee31cfd`.
+The downloaded deterministic archive SHA-256 is
+`45bd61fa2d559836b649a7972f68f63084b44c8c46cf655f24dd14181ba1cb60`;
+all `14/14` internal `SHA256SUMS` entries matched, `FINAL_STATUS=PASS`, and
+the focal evidence contains no new-module warning.
+
+This evidence retires exactly the PRE-VALIDATION headers in
+`BalabanCMP99SourceSignedAliasFourierNegCarry` and its audit. It seals the
+signed-alias affine carrier law only. Endpoint phase,
+finite-to-continuous periodization, regional `B0`, window-15 attainment,
+every terminal field and a `TermSource` inhabitant remain open. Counters stay
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

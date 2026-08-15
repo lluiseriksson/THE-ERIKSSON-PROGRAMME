@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceCenteredAliasReflection
 /-!
 # Signed-alias affine carry under cross-fibre Fourier negation
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 The cold-sealed Euclidean quotient law is conjugated through the cold-sealed
 signed fibre dictionaries.  The output signed alias is the actual centered
 residue reflection of the input plus the unit carry selected by the coarse
