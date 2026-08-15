@@ -85,16 +85,23 @@ theorem cmp99SourceCenteredAliasReflection_cast_eq_neg
     (m : {m : ℤ // m ∈ cmp89Eq245CenteredAliasIntegers M}) :
     (((cmp99SourceCenteredAliasReflection M m).1 : ℤ) : ZMod M) =
       -((m.1 : ℤ) : ZMod M) := by
-  have hout := cmp99SourceCenteredAliasResidueEquiv_apply M
-    (cmp99SourceCenteredAliasReflection M m)
   have hin := cmp99SourceCenteredAliasResidueEquiv_apply M m
   change
     (((cmp99SourceCenteredAliasResidueEquiv M).symm
       (-(cmp99SourceCenteredAliasResidueEquiv M m))).1 : ZMod M) =
       -((m.1 : ℤ) : ZMod M)
-  rw [← hout]
-  simp only [Equiv.apply_symm_apply]
-  rw [hin]
+  calc
+    (((cmp99SourceCenteredAliasResidueEquiv M).symm
+        (-(cmp99SourceCenteredAliasResidueEquiv M m))).1 : ZMod M) =
+        cmp99SourceCenteredAliasResidueEquiv M
+          ((cmp99SourceCenteredAliasResidueEquiv M).symm
+            (-(cmp99SourceCenteredAliasResidueEquiv M m))) :=
+      (cmp99SourceCenteredAliasResidueEquiv_apply M _).symm
+    _ = -(cmp99SourceCenteredAliasResidueEquiv M m) := by
+      exact Equiv.apply_symm_apply
+        (cmp99SourceCenteredAliasResidueEquiv M)
+        (-(cmp99SourceCenteredAliasResidueEquiv M m))
+    _ = -((m.1 : ℤ) : ZMod M) := by rw [hin]
 
 /-- Coordinatewise residue reflection on the full printed alias vector fibre.
 The sealed product equivalence carries all membership proofs; no closure under
