@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq249NoncentralRealGap
 /-!
 # Mass-uniform complex floor for the stabilized CMP89 (2.49) denominator
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Compiler-verified at exact source checkpoint
+`733ecbb60d43b72e04f9740eb825251b397503b8` by cold GitHub Actions run
+`31880056149`.  Restoration and saving of `.lake/build` were skipped.  The
+focal completed 8,441 jobs, and all three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 The sealed vertical-variation estimate already assumes the explicit source
 mass window `mass ^ 2 ≤ 1`.  Its existing complex-floor consumer additionally

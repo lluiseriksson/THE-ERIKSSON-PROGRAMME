@@ -36389,3 +36389,39 @@ consumer: `cmp99SourceMassParameter` is the source averaging coefficient
 `CMP89Eq251UniformMassWindow mass`; doing so would be type-correct but
 source-false.  Preservation of the physical mass-flow window remains a
 separate named debt.
+
+## Addendum 807 (2026-08-15, **mass-uniform central complex floor COLD-SEALED; alias fixed-fibre shortcut rejected; 20/41 unchanged**)
+
+Terminal cold workflow
+[`31880056149`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31880056149)
+checked out exact source `733ecbb60d43b72e04f9740eb825251b397503b8`
+under workflow vehicle `975b2a883f9f864fcb1ef88dc83847a8cd59ba7f`.
+`COLD_MODE=true`; project-graph restoration and saving were both skipped.
+The focal ran `10:41:15Z–10:58:53Z`, returned exit zero and ended with literal
+`Build completed successfully (8441 jobs).`.  The audit ran
+`10:58:53Z–10:59:01Z`, returned exit zero and printed three exact
+`[propext, Classical.choice, Quot.sound]` blocks.  The warning, overlay-text
+and axiom gates passed; `FINAL_STATUS=PASS`.
+
+Artifact `9245977306` has GitHub digest
+`41a6ab0ca9d6a18bf55b34fabbeb6abd3f59a5710b658647b94decd8b6cc2388`.
+It was downloaded once under
+`validation-evidence/mass-uniform-floor-31880056149-cold/`; its embedded
+manifest verified `13/13` files, and deterministic archive SHA-256 is
+`c74135fc37c5c95b37c18b6ad909f4916eeaf7ead0fee3b7271fffff222d601c`.
+Exactly the source and audit PRE-VALIDATION headers are retired.  No theorem
+statement, proof, constant or hypothesis changes in this seal.
+
+Static review also rejects a second source-false shortcut.  Residue
+reflection inside one centered alias carrier does not give physical momentum
+negation while the coarse mode `ell` is fixed: the missing coarse term lies
+in the fibre over `cmp99FinBoxFourierNeg ell`.  The next physical dictionary
+must construct an equivalence between those two coarse fibres and prove that
+the signed alias dictionaries intertwine.  A fixed-fibre permutation remains
+valid only as alias algebra, not as a physical row-to-column bridge.  This
+negative gate is not a compiler result and moves no counter.
+
+The seal does not prove the RG mass-flow window, a sampled-to-continuous
+periodization, regional `B0`, window-15 contraction, a terminal field or a
+`TermSource` inhabitant.  Hard counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible and unattained.

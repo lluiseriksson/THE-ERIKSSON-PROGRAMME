@@ -11257,7 +11257,7 @@ same raw source SHA.  At that point PRE-VALIDATION remained pending that cold
 run, and the counters remained `20/41`, `TermSource = 0`; window 15 remained
 compatible and unattained.
 
-### Step 8b.6: mass-uniform central complex floor (PRE-VALIDATION; COLAB DIAGNOSTIC PASS; COLD SEAL PENDING)
+### Step 8b.6: mass-uniform central complex floor (COLD-SEALED)
 
 Checkpoint `733ecbb60d43b72e04f9740eb825251b397503b8` adds a three-theorem
 bridge that removes only the obsolete `0 < mass` premise from the central
@@ -11306,3 +11306,37 @@ Consequently its positive uniform floor cannot discharge
 `CMP89Eq251UniformMassWindow mass`.  The physical mass-flow window remains the
 separate source dictionary recorded above.  Using `a_j` here would be
 type-correct but physically false.
+
+Cold workflow
+[`31880056149`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31880056149)
+then sealed exact source `733ecbb60d43b72e04f9740eb825251b397503b8`
+under workflow vehicle `975b2a883f9f864fcb1ef88dc83847a8cd59ba7f`.
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran `10:41:15Z–10:58:53Z`, exited zero and ended with literal
+`Build completed successfully (8441 jobs).`; the audit ran
+`10:58:53Z–10:59:01Z`, exited zero and produced the three exact standard
+axiom blocks.  The warning, text and axiom gates passed and the durable
+manifest matched `13/13` entries.  Artifact `9245977306` has GitHub digest
+`41a6ab0ca9d6a18bf55b34fabbeb6abd3f59a5710b658647b94decd8b6cc2388`;
+the deterministic archive SHA-256 is
+`c74135fc37c5c95b37c18b6ad909f4916eeaf7ead0fee3b7271fffff222d601c`.
+
+This evidence retires exactly the two step-8b.6 PRE-VALIDATION headers.  It
+removes only the obsolete positive-mass premise from the already explicit
+complex-floor chain; it does not prove preservation of the physical mass
+window, finite-to-continuous periodization, a regional `B0`, window-15
+contraction, a terminal field or a `TermSource` inhabitant.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
+
+A second static gate fixes the orientation of the next alias dictionary.
+Negating a centered alias while keeping the coarse momentum `ell` fixed does
+not produce the physical opposite momentum: it changes
+`z(ell) + 2*pi*m` to `z(ell) - 2*pi*m`, while the missing `-z(ell)` lies in
+the distinct coarse fibre `cmp99FinBoxFourierNeg ell`.  Therefore no
+fixed-fibre permutation may be advertised as the physical row-to-column
+reflection.  The faithful route is a cross-fibre equivalence from the fibre
+over `ell` to the fibre over `cmp99FinBoxFourierNeg ell`, followed by a
+separate proof that the signed alias dictionaries intertwine with residue
+reflection.  This is a static no-go and design replacement, not a compiler
+seal or terminal-field discharge.
