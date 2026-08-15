@@ -36226,3 +36226,37 @@ complex reverse-triangle bridge and its consumers.  No continuous integral,
 periodization, regional `B0`, window-15 attainment, terminal-field discharge,
 or `TermSource` inhabitant is claimed.  Counters remain `20/41` and
 `TermSource = 0`.
+
+## Addendum 802 (2026-08-15, **Gate 8 terminal cold FAIL; docstring/`omit` order repaired; PRE-VALIDATION retained**)
+
+The sole terminal cold workflow
+[`31873674715`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31873674715)
+checked workflow vehicle `f230e5632df5b5f6725a81456012ff407656464f`
+and exact source `17dd7f2bfaa52d19c12cb69ef04b49890a0b52a9`.
+The source/hash, toolchain, cache-key and Mathlib gates passed; project-graph
+restore was skipped.  The focal ran `2026-08-15T08:08:48Z--08:39:15Z`
+and failed only when compiling the new target, after all `8646` prerequisites
+had built.  The first real error was literal:
+
+```text
+YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis.lean:50:14:
+unexpected token 'omit'; expected 'lemma'
+```
+
+The audit and evidence-packaging gate did not run.  Failed-run artifact
+`9244488437` has GitHub digest
+`93b347a3cd788b43ed9cc1db4d2f542b6700bfcd789d3f24b01e46c95cbfd492`;
+its focal log and checkpoint files were downloaded once under
+`validation-evidence/gate8-31873674715-failed/`.  There is no successful
+deterministic evidence archive for this run.
+
+The cause is purely syntactic: a declaration docstring must immediately
+precede the command it documents, whereas the warning repair placed
+`omit [NeZero d] [NeZero Nc] in` between the docstring and `theorem`.  The
+minimal repair moves that unchanged `omit` line above the unchanged docstring.
+No statement, constant, definition, hypothesis or proof body changes.  The
+two-file overlay text guard, import-prefix guard, explicit order check and
+`git diff --check` pass.  This repair is not compiler evidence: both
+PRE-VALIDATION headers remain, Gate 8 remains NOT COLD-SEALED, and counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
+unattained.

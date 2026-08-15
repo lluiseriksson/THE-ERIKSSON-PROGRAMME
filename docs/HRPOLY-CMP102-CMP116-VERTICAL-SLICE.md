@@ -11208,3 +11208,16 @@ massless complex-floor bridge is localized: reuse the same vertical variation
 budget and replace only the obsolete positive-mass real-floor input.  Neither
 gate changes `20/41`, constructs `B0`, attains window 15, or inhabits
 `TermSource`.
+
+The sole cold terminal run
+[`31873674715`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31873674715)
+then rejected the warning-only checkpoint before Gate 8 itself materialized.
+All `8646` prerequisites built, but the new file ended with
+`unexpected token 'omit'; expected 'lemma'`: the `omit ... in` command had
+been inserted between a declaration docstring and its theorem.  The repair
+only moves that line above the docstring, matching the established syntax in
+the tree; the theorem statement and proof are byte-for-byte unchanged.  The
+failed-run artifact is `9244488437`, GitHub digest
+`93b347a3cd788b43ed9cc1db4d2f542b6700bfcd789d3f24b01e46c95cbfd492`.
+No audit or successful evidence archive exists for that run.  Both
+PRE-VALIDATION headers therefore remain and Gate 8 is still NOT COLD-SEALED.
