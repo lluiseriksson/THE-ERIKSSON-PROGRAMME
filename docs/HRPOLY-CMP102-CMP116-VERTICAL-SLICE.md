@@ -11860,3 +11860,28 @@ notebook vehicle checkpoint is
 `0c85ca9224b53a43df2c902e3b5c2fb8f4a5a19d`.  The mathematical source SHA,
 both source blobs, declarations, statements and audit are unchanged.  Step
 8b.12 remains PRE-VALIDATION and NOT CHECKED pending the corrected diagnostic.
+
+Diagnostic v2 passed the Mathlib-only reproduction in `7.331 s` but the fresh
+Colab focal failed after `1625.702 s` at the new source: a redundant `ring`
+followed a goal-closing `field_simp`, and the abbreviation
+`CMP99SourceFlatQprimeFixedCoarseFibre` lacked its direct defining import.
+Evidence/archive SHA-256 are
+`9608e88bf46d26b9880ff1052ca55dd8e2e653b4a9df78dfa23f877ecc0ca042`
+and
+`786521b87af26f3f44c5de8ecb6659f3cdb35a08226d3b0c22e5cf3297fafd0c`.
+The audit did not run; the runtime was released.  This is a measured focal
+elaboration failure, not infrastructure or a counterexample.
+
+Correction checkpoint `afad237929739252cf850f55f0c273a71bf5a524`
+changes only those two mechanical points.  Corrected source/audit Git-blob
+SHA-256 are
+`c83042469334a986d8313e5abb42b7eed67eb57f783554aba7e824b393350da8`
+and
+`41adac323d2ea168de171c9d3d97594979e81f104e1ca0946ef7cb3376745ec3`.
+Runner v3 checkpoint `ce03fc3268b1d3d7ee8b363ed87922c111a822a6`
+has Git-blob SHA-256
+`d39f863283d97f216fdfa1b6c2a69cdc977e3038bcbe51af0fa1a4d0acb82c29`;
+notebook vehicle checkpoint is `c2209bd2`.  Statements, constants, hypotheses
+and delimitations are unchanged.  Step 8b.12 remains PRE-VALIDATION and NOT
+CHECKED pending v3; counters remain `20/41`, `TermSource = 0`, window 15
+compatible but unattained.

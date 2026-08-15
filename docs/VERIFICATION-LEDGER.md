@@ -37223,3 +37223,34 @@ Fourier-negation carry remains a separate obligation.  Both files retain
 visible PRE-VALIDATION headers and are NOT CHECKED.  No Lean or Lake ran on
 Windows.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 830 (2026-08-16, **Step 8b.12 focal elaboration failure measured; corrected v3 pending; 20/41 unchanged**)
+
+Diagnostic v2 opened one fresh Colab Pro+ CPU/high-RAM runtime under the
+visible `lluiseriksson@gmail.com` account.  The runner transport, official
+toolchain digest, exact source checkout `1fc19056f0a1fa0782924196687b84b074785679`,
+Mathlib pin, both Git-blob gates and both textual guards passed.  The corrected
+Mathlib-only reproduction exited zero in `7.331 s`.  The project focal then
+failed after `1625.702 s` at the new source itself: line 66 contained a
+redundant `ring` after `field_simp` had closed the goal, and lines 99/126 lacked
+the direct import that defines `CMP99SourceFlatQprimeFixedCoarseFibre`.  The
+audit did not run.  Evidence SHA-256 is
+`9608e88bf46d26b9880ff1052ca55dd8e2e653b4a9df78dfa23f877ecc0ca042`;
+archive SHA-256 is
+`786521b87af26f3f44c5de8ecb6659f3cdb35a08226d3b0c22e5cf3297fafd0c`.
+The launcher recorded `FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1` and released the
+runtime.  This is a valid focal elaboration failure, not infrastructure and not
+a mathematical counterexample.
+
+PRE-VALIDATION correction checkpoint
+`afad237929739252cf850f55f0c273a71bf5a524` changes only those two mechanical
+points.  The corrected source Git-blob SHA-256 is
+`c83042469334a986d8313e5abb42b7eed67eb57f783554aba7e824b393350da8`;
+the audit blob remains
+`41adac323d2ea168de171c9d3d97594979e81f104e1ca0946ef7cb3376745ec3`.
+Runner v3 checkpoint `ce03fc3268b1d3d7ee8b363ed87922c111a822a6`
+has Git-blob SHA-256
+`d39f863283d97f216fdfa1b6c2a69cdc977e3038bcbe51af0fa1a4d0acb82c29`;
+notebook vehicle checkpoint is `c2209bd2`.  Statements, constants, hypotheses
+and scope are unchanged.  Step 8b.12 remains visibly PRE-VALIDATION and NOT
+CHECKED until v3 passes.
