@@ -44,8 +44,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-coarse-fibre-fourier-neg-v2"
-runner.SOURCE_SHA = "80ab41f2839cf9546e19c5a12a68196e45b5d246"
+runner.RUNNER_REV = "cmp99-coarse-fibre-fourier-neg-v3"
+runner.SOURCE_SHA = "c1f9b5104ea94162b3ccc4d6aec6774a6f92005f"
 runner.ROOT = Path("/content/hrpoly-coarse-fibre-fourier-neg")
 runner.EVIDENCE = Path("/content/hrpoly-coarse-fibre-fourier-neg-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-coarse-fibre-fourier-neg-evidence.tar.gz")
@@ -53,7 +53,7 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-coarse-fibre-fourier-neg-paths.txt"
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNeg.lean":
-        "df6985a32c48a9b3eb44673b93e9be6be915efb3cc527aa0a7f98921c050f991",
+        "f39b4a46111a5274d264e29ab0c4506abc120a5cf9158b8038944eee47c464b3",
     "YangMills/RG/BalabanCMP99SourceCoarseFibreFourierNegAudit.lean":
         "3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0",
 }
