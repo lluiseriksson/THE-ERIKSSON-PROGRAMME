@@ -37122,8 +37122,15 @@ Git-blob SHA-256 is
 notebook vehicle checkpoint is
 `c34eb060e15da0a0834b58f72f981d2f25090ab1`.
 
+Terminal workflow checkpoint `222bb84b` adds
+`validate-flat-qprime-endpoint-phase.yml`, pinned to exact source
+`f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e` and its source/audit Git-blob
+hashes.  In `cold=true` mode both project-graph restore and save are disabled;
+the gate expects exactly three nonempty axiom blocks and packages deterministic
+evidence.  This records a prepared terminal vehicle only, not a seal.
+
 Both Lean files remain visibly PRE-VALIDATION and the latest source remains NOT
-CHECKED.  The brick does
+COLD-SEALED.  The brick does
 not yet combine the affine carrier action with the finite synthesis, identify
 the sampled sum with a continuous Brillouin integral, produce regional `B0`,
 attain window 15, discharge any terminal field or inhabit `TermSource`.

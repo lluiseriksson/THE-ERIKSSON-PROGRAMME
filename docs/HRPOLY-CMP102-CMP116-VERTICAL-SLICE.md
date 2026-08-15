@@ -11682,7 +11682,7 @@ terminal field and a `TermSource` inhabitant remain open. Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
-### Step 8b.11: fine-to-coarse endpoint phase (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.11: fine-to-coarse endpoint phase (PRE-VALIDATION; diagnostic PASS; cold seal prepared)
 
 Initial source checkpoint `aec4077a9d4ae7e8b8cec70719ec09c12de0c66e`
 introduces the integer endpoint displacement `M*y-x` and keeps its fine-to-
@@ -11768,6 +11768,14 @@ Git-blob SHA-256 is
 notebook vehicle checkpoint is
 `c34eb060e15da0a0834b58f72f981d2f25090ab1`.  Both Lean modules remain visibly
 PRE-VALIDATION pending the cold seal.
+
+Terminal workflow checkpoint `222bb84b` adds
+`validate-flat-qprime-endpoint-phase.yml`, pinned to source
+`f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e` and the two Git-blob hashes above.
+It disables project-graph restore/save under `cold=true`, expects exactly three
+nonempty axiom blocks, and packages deterministic evidence.  This is a prepared
+vehicle only: no terminal run has yet been claimed, PRE-VALIDATION remains, and
+no counter moves before the durable cold artifact is audited.
 
 This brick is the unit/phase dictionary only.  It does not yet combine the
 sealed Step-8b.10 affine carrier reindexing with the finite synthesis, identify
