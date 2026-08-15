@@ -36330,3 +36330,23 @@ does not identify the sum with the continuous CMP89 integral, prove
 periodization, construct regional `B0`, attain window 15, discharge a
 terminal field, or inhabit `TermSource`.  Counters therefore remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
+
+## Addendum 805 (2026-08-15, **mass-uniform central complex floor PRE-VALIDATION; NOT CHECKED**)
+
+Source checkpoint `733ecbb60d43b72e04f9740eb825251b397503b8` adds
+`BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniform` and its
+three-declaration audit.  Source/audit Git-blob SHA-256 are
+`8b87cc9a40b2d8b951b3c16c6042dab9f040f667ff1d81f02d7b3ea05a65b75b`
+and
+`18d69877b2d7c5a83d261933f611edc43aaac5878e97dca0dfc0776bb3c85154`.
+The bridge reuses the sealed vertical-variation theorem and substitutes the
+already sealed mass-uniform real floor for the obsolete positive-mass input.
+It retains `CMP89Eq251UniformMassWindow mass` and every radius, amplitude and
+complex-window premise.
+
+Both new files visibly retain PRE-VALIDATION and are NOT CHECKED by Lean.
+This checkpoint does not prove preservation of the source mass window,
+attainment of the complex window, finite-to-continuous periodization, a
+regional `B0`, window-15 contraction, a terminal field, or a `TermSource`
+inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible and unattained.

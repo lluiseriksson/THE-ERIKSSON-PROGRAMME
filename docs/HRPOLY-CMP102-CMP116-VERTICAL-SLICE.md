@@ -11204,9 +11204,9 @@ after the PASS.  That UI decoration is not a failed Lean stage.
 
 The diagnostic also exposed one new-module linter warning: the first theorem
 carried the unused section instances `[NeZero d]` and `[NeZero Nc]`.  A
-warning-only source checkpoint now omits exactly those two instances.  The
-PRE-VALIDATION headers remain until one cold terminal workflow verifies that
-checkpoint with project-graph restore and save skipped.
+warning-only source checkpoint then omitted exactly those two instances.  At
+that point the PRE-VALIDATION headers remained pending one cold terminal
+workflow with project-graph restore and save skipped.
 
 That warning-only source checkpoint is
 `17dd7f2bfaa52d19c12cb69ef04b49890a0b52a9`; its source/audit Git-blob
@@ -11236,7 +11236,8 @@ the tree; the theorem statement and proof are byte-for-byte unchanged.  The
 failed-run artifact is `9244488437`, GitHub digest
 `93b347a3cd788b43ed9cc1db4d2f542b6700bfcd789d3f24b01e46c95cbfd492`.
 No audit or successful evidence archive exists for that run.  Both
-PRE-VALIDATION headers therefore remain and Gate 8 is still NOT COLD-SEALED.
+PRE-VALIDATION headers therefore remained and Gate 8 was still NOT
+COLD-SEALED at that checkpoint.
 The next diagnostic vehicle is revision
 `gate8-generated-green-fourier-synthesis-v2`, pinned to repaired source
 `0e852bb5973c34eef9cfd17cf2b0a8c0f1987658` and Git-blob SHA-256
@@ -11251,7 +11252,27 @@ with `Build completed successfully (8647 jobs).`; the audit returned
 and
 `50ec39c9d7ae63b9deaed858544b91e804b145d4e4c4ecb58283ecf5036655f2`.
 The runner emitted `FINAL_STATUS=PASS`; the runtime was explicitly
-disconnected and deleted.  This authorizes one terminal cold workflow on the
-same raw source SHA.  PRE-VALIDATION remains until that cold run passes, and
-the counters remain `20/41`, `TermSource = 0`; window 15 remains compatible
-and unattained.
+disconnected and deleted.  This authorized one terminal cold workflow on the
+same raw source SHA.  At that point PRE-VALIDATION remained pending that cold
+run, and the counters remained `20/41`, `TermSource = 0`; window 15 remained
+compatible and unattained.
+
+### Step 8b.6: mass-uniform central complex floor (PRE-VALIDATION)
+
+Checkpoint `733ecbb60d43b72e04f9740eb825251b397503b8` adds a three-theorem
+bridge that removes only the obsolete `0 < mass` premise from the central
+complex-floor chain.  It reuses the sealed vertical-variation theorem, keeps
+the explicit `CMP89Eq251UniformMassWindow mass` assumption, and obtains the
+real-slice floor from
+`cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform`.  Source/audit
+Git-blob SHA-256 are
+`8b87cc9a40b2d8b951b3c16c6042dab9f040f667ff1d81f02d7b3ea05a65b75b`
+and
+`18d69877b2d7c5a83d261933f611edc43aaac5878e97dca0dfc0776bb3c85154`.
+
+Both files retain PRE-VALIDATION and are NOT CHECKED by Lean.  The brick does
+not prove the mass window is preserved by the source flow, attain the scalar
+complex window, identify the finite synthesis with a continuous integral,
+construct regional `B0`, attain window 15, discharge a terminal field, or
+inhabit `TermSource`.  Counters remain `20/41`, `TermSource = 0`; window 15
+remains compatible and unattained.
