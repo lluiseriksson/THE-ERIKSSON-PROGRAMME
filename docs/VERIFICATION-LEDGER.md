@@ -35815,3 +35815,30 @@ pass; no Lean or Lake ran on Windows.  Compiler status is **NOT CHECKED**.
 This gate does not yet identify the internally generated Green with the
 literal stabilized field, attain window 15, discharge a terminal field, or
 inhabit `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`.
+
+## Addendum 787 (2026-08-15, **Gate-5 diagnostic v1 FAIL; two explicit transports repaired; 20/41 unchanged**)
+
+The first Colab Pro+ CPU/high-RAM diagnostic at exact source
+`998605926d036a652595d1fe1ee27975e1ba5597` passed both runner-transport
+hashes, the official toolchain digest, Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and both textual guards.  The
+focal stopped with `EXIT=1` after `1586.529 s`; the audit did not run.  The two
+errors were definitional transports only: the zero physical momentum had not
+been stated as an explicit function equality, and the local `physical` alias
+hid the occurrence rewritten by the integer-period equality.  Evidence and
+archive SHA-256 are
+`272c9764e2eb8063926833dacb39413f40ce284b409ed6f4d38f93e0c6065821`
+and
+`824da6f2130d23069e0a3b930d428a8b12d3be1dc80b87a17ee10905e33670e0`.
+
+PRE-VALIDATION repair checkpoint
+`c99e2bbd4d8b3c24462a59f68b4cbbc3b5ddad81` adds the zero-momentum
+function equality coordinatewise and exposes the literal physical momentum
+before rewriting by the already sealed period theorem.  No public statement,
+constant, hypothesis, or physical identification changes.  The repaired
+source Git-blob SHA-256 is
+`515dc3865264dfae973d3cad627f14a450cc40a6a2638b1a7e75c00031f13b91`;
+the unchanged audit blob remains
+`9135c10d79ccb18b0719800c565d14d3abe43bbc4c5252488bded9e238cb06bc`.
+Compiler status remains **NOT CHECKED** pending diagnostic v2.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible and unattained.

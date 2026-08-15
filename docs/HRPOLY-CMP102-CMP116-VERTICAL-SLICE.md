@@ -10470,6 +10470,27 @@ diagnostic v3 runner checkpoint is
 `ca4568634ef31b0ac4bb4b114485a8179f3a5d7a8f5850777950e67c5d734464`.
 The fourteen-declaration audit remains pending Colab.  Counters are unchanged.
 
+### Step 7b item 5 Gate 5 diagnostic v1 (FAIL; explicit transports repaired)
+
+Diagnostic v1 at source `998605926d036a652595d1fe1ee27975e1ba5597`
+reached the new focal after all transport, pin and textual gates.  It failed
+only because two local definitions obstructed rewriting: the zero physical
+momentum was not exposed as a function equality, and the local `physical`
+alias hid the integer-period transport.  The audit did not run.  Evidence and
+archive SHA-256 are
+`272c9764e2eb8063926833dacb39413f40ce284b409ed6f4d38f93e0c6065821`
+and
+`824da6f2130d23069e0a3b930d428a8b12d3be1dc80b87a17ee10905e33670e0`.
+
+Repair checkpoint `c99e2bbd4d8b3c24462a59f68b4cbbc3b5ddad81`
+states both transports explicitly without changing the theorem statements or
+the physical route.  Its source Git-blob SHA-256 is
+`515dc3865264dfae973d3cad627f14a450cc40a6a2638b1a7e75c00031f13b91`;
+the audit blob is unchanged.  Gate 5 remains PRE-VALIDATION and **NOT CHECKED**
+pending diagnostic v2.  It still does not identify the generated Green,
+attain window 15, discharge a terminal field, or inhabit `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`.
+
 Cold GitHub Actions run
 [`31784588620`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31784588620)
 then sealed exact source `9e2b9b7f8e4ef941330587dab8bf848d25b3159d`

@@ -22,8 +22,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "item5-stabilized-denominator-v1"
-runner.SOURCE_SHA = "998605926d036a652595d1fe1ee27975e1ba5597"
+runner.RUNNER_REV = "item5-stabilized-denominator-v2"
+runner.SOURCE_SHA = "c99e2bbd4d8b3c24462a59f68b4cbbc3b5ddad81"
 runner.ROOT = Path("/content/hrpoly-item5-stabilized-denominator")
 runner.EVIDENCE = Path("/content/hrpoly-item5-stabilized-denominator-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-item5-stabilized-denominator-evidence.tar.gz")
@@ -31,7 +31,7 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-item5-stabilized-denominator-paths.
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing.lean":
-        "aceb025835fe52a464f7770745a7227937dc64715128276e658ac63aba3e844a",
+        "515dc3865264dfae973d3cad627f14a450cc40a6a2638b1a7e75c00031f13b91",
     "YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishingAudit.lean":
         "9135c10d79ccb18b0719800c565d14d3abe43bbc4c5252488bded9e238cb06bc",
 }
