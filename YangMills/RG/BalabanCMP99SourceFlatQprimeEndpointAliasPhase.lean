@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP89Eq251FineLatticePhasePeriodicity
 import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointPhase
+import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix
 import YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary
 
 /-!
@@ -63,7 +64,6 @@ theorem cmp89Eq251EntirePhase_add_int_aliasPeriods_physicalFine
   have hN : (N : ℂ) ≠ 0 := by
     exact_mod_cast (NeZero.ne N)
   field_simp [hN]
-  ring
 
 /-- The exponentiated endpoint phase is invariant under every vector of full
 physical alias periods. -/
