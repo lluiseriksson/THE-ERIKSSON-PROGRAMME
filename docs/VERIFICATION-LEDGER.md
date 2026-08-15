@@ -36383,6 +36383,34 @@ the same raw source checkpoint.  Both PRE-VALIDATION headers remain pending
 that durable cold evidence.  No counter moves: `20/41`, `TermSource = 0`, and
 window 15 remains compatible but unattained.
 
+## Addendum 829 (2026-08-16, **Step 8b.12 repro-only instrumentation failure; source unchanged**)
+
+One fresh Colab Pro+ CPU/high-RAM runtime under visible account
+`lluiseriksson@gmail.com` opened at `2026-08-15T22:07:27Z`.  Transport,
+toolchain, exact source checkout `1fc19056f0a1fa0782924196687b84b074785679`,
+source hashes and textual guards passed.  The first Mathlib-only queue item
+failed after `5.866 s`: its two `Real`/`Complex` definitions lacked
+`noncomputable`, and two following `ring` tactics ran after `field_simp` had
+already closed their goals.  The project focal and audit did not run.
+
+Evidence JSON SHA-256 is
+`84fd22b24e9a22f9be6434c1f1110deeb1dc91732e83ccde7375d61a2f52d8ba`;
+archive SHA-256 is
+`aa00ff7336dfd7245bfc68f452e2bacf4e8e11dc081ae0b7523a5ecc9862b6e7`.
+`FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1`; runtime release was requested and the
+tab was closed without reexecution.  Classification is
+`BLOCKED-INSTRUMENTATION`, not mathematical evidence.
+
+Runner-only checkpoint `74a36c692878005201c900f7eac48468eef1536c`
+repairs exactly those four repro lines and changes `RUNNER_REV` to v2.  Its
+Git-blob SHA-256 is
+`c692fdefdf8b9102ece2b5ae706e85e4c883c36967abab6c513bacdc9b04b9d1`;
+notebook vehicle checkpoint is
+`0c85ca9224b53a43df2c902e3b5c2fb8f4a5a19d`.  Mathematical source and both
+source-blob hashes are byte-identical.  Both Lean files remain visibly
+PRE-VALIDATION and NOT CHECKED; counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.
+
 Static review also sealed a negative dictionary fact before it could enter a
 consumer: `cmp99SourceMassParameter` is the source averaging coefficient
 `a_j`, not the physical mass.  Its lower bound cannot be used to manufacture

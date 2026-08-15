@@ -11836,3 +11836,27 @@ Fourier-negation reindexing, finite-sum identity, Brillouin integral, regional
 is claimed here.  Both new files remain visibly PRE-VALIDATION and no Lean or
 Lake has run on Windows.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+Diagnostic v1 opened one Colab Pro+ CPU/high-RAM runtime under visible account
+`lluiseriksson@gmail.com` at `2026-08-15T22:07:27Z`.  Runner transport,
+official toolchain digest, exact checkout, both source-blob gates and both
+textual guards passed.  The Mathlib-only repro then stopped after `5.866 s`,
+before the project focal, with two missing `noncomputable` markers and two
+literal `No goals to be solved` reports after `field_simp` had already closed
+the goals.  Evidence/archive SHA-256 are
+`84fd22b24e9a22f9be6434c1f1110deeb1dc91732e83ccde7375d61a2f52d8ba`
+and
+`aa00ff7336dfd7245bfc68f452e2bacf4e8e11dc081ae0b7523a5ecc9862b6e7`.
+The launcher emitted `FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1` and released the
+runtime.  This is `BLOCKED-INSTRUMENTATION`, not a mathematical failure; no
+project Lean target ran.
+
+Runner-only correction checkpoint
+`74a36c692878005201c900f7eac48468eef1536c` marks the two repro definitions
+`noncomputable` and removes only the two redundant tactics.  Its Git-blob
+SHA-256 is
+`c692fdefdf8b9102ece2b5ae706e85e4c883c36967abab6c513bacdc9b04b9d1`;
+notebook vehicle checkpoint is
+`0c85ca9224b53a43df2c902e3b5c2fb8f4a5a19d`.  The mathematical source SHA,
+both source blobs, declarations, statements and audit are unchanged.  Step
+8b.12 remains PRE-VALIDATION and NOT CHECKED pending the corrected diagnostic.
