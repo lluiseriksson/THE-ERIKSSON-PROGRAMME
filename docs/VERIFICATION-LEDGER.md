@@ -35786,3 +35786,32 @@ complete fine-symbol fibre nonvanishing and its physical-period transport; it
 does not prove or transport the stabilized denominator, identify the generated
 Green, attain window 15, discharge a terminal field, or inhabit `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`.
+
+## Addendum 786 (2026-08-15, **Step-7b item-5 gate 5 PRE-VALIDATION; stabilized denominator direct, not periodic; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`998605926d036a652595d1fe1ee27975e1ba5597` adds the five-declaration
+physical stabilized-denominator gate and its audit.  The source first derives
+strict positivity of the literal mass-uniform real floor and applies it at the
+centered coarse representative.  For a nonzero coarse mode, the sealed central
+fine symbol recovers the reduced denominator.  The proof transports only the
+complete multiplied denominator through the sealed physical periods; at the
+literal physical representative it recovers the reduced denominator from the
+nonzero product and reconstructs the stabilized denominator from the central
+fine factor.  At the zero coarse mode the literal physical momentum is zero,
+so the real floor applies directly.  No periodicity of the stabilized
+denominator is stated or used.
+
+The final theorem specializes to the literal generated coefficient
+`cmp99SourceGeneratedFullComplexA 4 M (depth + 1) ... 0` and obtains its
+positivity internally from the already sealed physical producer.  The
+source/audit Git-blob SHA-256 values are
+`aceb025835fe52a464f7770745a7227937dc64715128276e658ac63aba3e844a`
+and
+`9135c10d79ccb18b0719800c565d14d3abe43bbc4c5252488bded9e238cb06bc`.
+Both modules carry visible PRE-VALIDATION headers.  Exact two-file text guards
+pass; no Lean or Lake ran on Windows.  Compiler status is **NOT CHECKED**.
+
+This gate does not yet identify the internally generated Green with the
+literal stabilized field, attain window 15, discharge a terminal field, or
+inhabit `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`.

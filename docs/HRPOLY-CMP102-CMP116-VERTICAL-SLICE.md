@@ -10730,6 +10730,23 @@ mass-zero positivity; the remaining work is signed centering, exact
 integer-period transport and inverse-uniqueness composition.  This remains
 static evidence for items 4--6 until their subsequent compiler checks.
 
+Item-5 gate 5 now has PRE-VALIDATION source checkpoint
+`998605926d036a652595d1fe1ee27975e1ba5597`.  Its five declarations implement
+the source-faithful case split.  At `ell = 0`, the literal physical momentum is
+zero and the mass-uniform real floor applies directly.  At `ell != 0`, the
+centered floor plus central fine-symbol nonvanishing first recover the centered
+reduced denominator; only the complete multiplied denominator is transported
+through integer physical periods; the physical reduced and central factors
+then reconstruct the stabilized denominator.  The final generated
+specialization produces strict positivity of `a` internally.  Source/audit
+Git-blob SHA-256 are
+`aceb025835fe52a464f7770745a7227937dc64715128276e658ac63aba3e844a`
+and
+`9135c10d79ccb18b0719800c565d14d3abe43bbc4c5252488bded9e238cb06bc`.
+Both modules remain PRE-VALIDATION and compiler status is **NOT CHECKED**.
+Counters stay exactly `20/41`, `TermSource = 0`; Green identification and
+window 15 remain open.
+
 Item 1 now has PRE-VALIDATION source checkpoint
 `442ebf8f0b32ab480a6dc476f51ba8ced9b73f68` and a three-declaration audit in
 `FinitePiLpTypedKernelReindexAlgebra`.  Source/audit Git-blob SHA-256 are
