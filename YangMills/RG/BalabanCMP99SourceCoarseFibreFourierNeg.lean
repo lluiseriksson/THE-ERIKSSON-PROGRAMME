@@ -55,7 +55,8 @@ theorem cmp99SourceFlatQprimeCoarseAlias_fourierNeg
   have h := congrFun (cmp99FinBoxZModEquiv_fourierNeg k) mu
   have hdiv : N' ∣ M * N' := dvd_mul_left N' M
   have hcast := congrArg (ZMod.castHom hdiv (ZMod N')) h
-  simpa only [cmp99FinBoxZModEquiv_apply, map_neg, map_natCast] using hcast
+  simpa only [cmp99FinBoxZModEquiv_apply, Pi.neg_apply, map_neg,
+    map_natCast] using hcast
 
 /-- Physical periodic momentum negation is an equivalence from the fine fibre
 over `ell` to the generally distinct fibre over its periodic negative. -/
