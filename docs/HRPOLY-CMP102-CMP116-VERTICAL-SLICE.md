@@ -11622,3 +11622,25 @@ This seal retires exactly the source/audit PRE-VALIDATION headers for Step
 8b.9. It establishes no signed-alias affine carry or physical endpoint
 identity. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+### Step 8b.10: signed-alias affine carry (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `e73cd91d00e0f241c0b772cb84888d47b34d2df8`
+conjugates the two source-pinned signed fibre dictionaries through the sealed
+cross-fibre negation equivalence. Its coordinate theorem combines the sealed
+Euclidean quotient residue law with the actual centered-carrier reflection:
+the output alias residue is the reflected input residue plus the coarse
+zero/nonzero unit carry. The reflection corollary is derived from the sealed
+depth-one bridge rather than postulated as a second convention.
+
+Source/audit Git-blob SHA-256 are
+`d44a8f64a6ec081ce026bf022332a2008bc27d49894e856294838088631c153b`
+and
+`a4b45c0e5e963f6487befc1a75cc21d059c5ee78dce8feb272aa91c8f4ab9e0b`.
+Diagnostic runner checkpoint
+`881bec52abe782b6735aefbacc96b814ec4d6cd9` has Git-blob SHA-256
+`d0c840c3a2cf1bbda47442658cd9973e5adf2c447cb4f8e16e498c6d77abab1a`.
+The two Lean files remain visibly PRE-VALIDATION and NOT CHECKED. Endpoint
+phase, finite-to-continuous periodization, regional `B0`, window 15 and every
+terminal-field claim remain open; counters stay exactly `20/41`,
+`TermSource = 0`.

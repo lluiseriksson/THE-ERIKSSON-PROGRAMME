@@ -36947,3 +36947,29 @@ seals the natural periodic representative, Euclidean quotient carry and
 map, endpoint phase, regional `B0`, window-15 producer, terminal field or a
 `TermSource` inhabitant. Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 824 (2026-08-15, **signed-alias affine carry PRE-VALIDATION; endpoint phase remains open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`e73cd91d00e0f241c0b772cb84888d47b34d2df8` adds
+`BalabanCMP99SourceSignedAliasFourierNegCarry` and its three-declaration
+audit. It conjugates the cold-sealed signed fibre dictionaries through the
+cold-sealed cross-fibre Fourier-negation equivalence. The terminal theorem
+states the exact `ZMod M` affine law: output signed alias equals the actual
+centered residue reflection of the input plus the unit carry selected by
+whether the coarse residue is zero.
+
+Source/audit Git-blob SHA-256 are
+`d44a8f64a6ec081ce026bf022332a2008bc27d49894e856294838088631c153b`
+and
+`a4b45c0e5e963f6487befc1a75cc21d059c5ee78dce8feb272aa91c8f4ab9e0b`.
+Both exact-file text guards pass locally; no Lean or Lake ran on Windows.
+Diagnostic runner checkpoint
+`881bec52abe782b6735aefbacc96b814ec4d6cd9` has Git-blob SHA-256
+`d0c840c3a2cf1bbda47442658cd9973e5adf2c447cb4f8e16e498c6d77abab1a`.
+
+The two new Lean files remain visibly PRE-VALIDATION and NOT CHECKED. This
+brick does not identify an endpoint phase, finite synthesis with the CMP89
+integral, regional `B0`, window-15 attainment, a terminal field or a
+`TermSource` inhabitant. Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
