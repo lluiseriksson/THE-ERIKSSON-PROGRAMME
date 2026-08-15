@@ -9,10 +9,7 @@ import YangMills.RG.BalabanCMP89MassZeroCentralFineSymbolNonvanishing
 import YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredCoarseMomentum
 
 /-!
-# PRE-VALIDATION: complete physical alias-fibre nonvanishing at zero mass
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been compiler-verified.
+# Complete physical alias-fibre nonvanishing at zero mass
 
 For a nonzero coarse Fourier mode, the signed centered base momentum is
 nonzero.  The central alias is therefore covered by the sealed mass-zero

@@ -35680,7 +35680,7 @@ prove complete physical fibre nonvanishing, the literal stabilized
 denominator, or Green identification; it does not attain window 15 or add a
 terminal producer.  Counters remain exactly `20/41`, `TermSource = 0`.
 
-## Addendum 785 (2026-08-14, **Step-7b item-5 gate 4 PRE-VALIDATION; complete fine fibre only; 20/41 unchanged**)
+## Addendum 785 (2026-08-14--15, **Step-7b item-5 gate 4 cold SEALED; complete fine fibre only; 20/41 unchanged**)
 
 PRE-VALIDATION source checkpoint
 `12bdcd473d8b9892a0a3f5a825cb78461734472a` adds the complete zero-mass fine
@@ -35703,9 +35703,9 @@ The exact two-file textual overlay gate reports `FILES=2 FAILURES=0`.
 
 No stabilized denominator is declared periodic or transported.  The literal
 stabilized denominator, Green identification, window 15 and every terminal
-producer remain open.  Both new modules retain visible PRE-VALIDATION headers
-pending a fresh Colab focal and audit.  Counters remain exactly `20/41`,
-`TermSource = 0`.
+producer remain open.  The source module retains a visible PRE-VALIDATION
+header pending a fresh Colab focal and audit; the audit is a gate-only file
+without a module docstring.  Counters remain exactly `20/41`, `TermSource = 0`.
 
 Diagnostic v1 ran once in a fresh Colab CPU/high-RAM runtime (reported
 `50.99 GiB`) at exact source `12bdcd473d8b9892a0a3f5a825cb78461734472a`.
@@ -35753,3 +35753,36 @@ SHA-256 is
 `a6a3574a73eb99a16de0de2ebde1291103b04f2a8f21759f92899f03c26e547e`.
 PRE-VALIDATION remains pending diagnostic v3; counters remain exactly
 `20/41`, `TermSource = 0`.
+
+Diagnostic v3 then ran once in a fresh Colab Pro+ CPU/high-RAM runtime at exact
+source `a7131fdb05c32c4956a8cf1bba8f8e7b1d907f13`.  Every transport,
+toolchain, Mathlib, textual and cache gate passed.  The focal returned
+`EXIT=0` after `1212.850 s` with literal terminal line
+`Build completed successfully (8535 jobs).`; the audit returned `EXIT=0`
+after `10.231 s` and printed five exact
+`[propext, Classical.choice, Quot.sound]` blocks.  Evidence SHA-256 is
+`d3033ef64e85b0195004335dd41c1cfd938416b565a5d056f15d06c087971a0a`;
+the diagnostic archive SHA-256 is
+`eff764ab5391cb09e937fdad2caff8c72e1d6ec84e1b6a53f2e425ed92d663ad`.
+This was diagnostic evidence only; the runtime was released and no cell was
+reexecuted.
+
+The single terminal cold workflow
+[`31852173144`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31852173144)
+then sealed that exact source under workflow vehicle
+`c0a9dc004eef7cdaa3b5439153adc624a87a1a6c`.  `COLD_MODE=true`; project-graph
+restore and save were both skipped.  The focal ran
+`2026-08-15T00:00:57Z--00:22:57Z`, returned `EXIT=0`, and emitted literal
+terminal line `Build completed successfully (8535 jobs).`; the audit ran
+`00:22:57Z--00:23:05Z`, returned `EXIT=0`, and printed the same five permitted
+axiom trios.  Artifact `9238254658` has GitHub digest
+`ca4af447753cc7fafd46db8b36100cea9be61f7b2fc3e92e74fee87f2d1d6f89`.
+Its downloaded deterministic archive has SHA-256
+`b48f45986d2f71989eb000972a38918844293e2d80806a4f5426df4e2a9d561a`;
+all `13/13` internal manifest entries verify with zero mismatches.
+
+This evidence retires the source module's PRE-VALIDATION header.  Gate 4 proves
+complete fine-symbol fibre nonvanishing and its physical-period transport; it
+does not prove or transport the stabilized denominator, identify the generated
+Green, attain window 15, discharge a terminal field, or inhabit `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`.

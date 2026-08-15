@@ -10703,6 +10703,21 @@ any statement.  Its source Git-blob SHA-256 is
 `a6a3574a73eb99a16de0de2ebde1291103b04f2a8f21759f92899f03c26e547e`.
 Gate 4 remains PRE-VALIDATION pending v3 and changes no counter.
 
+Gate 4 is now cold-sealed at exact source
+`a7131fdb05c32c4956a8cf1bba8f8e7b1d907f13`.  Fresh Colab diagnostic v3
+returned focal/audit exits zero, literal terminal line
+`Build completed successfully (8535 jobs).`, and five exact permitted axiom
+trios.  The single cold terminal workflow
+[`31852173144`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31852173144)
+checked out the same source with project-graph restore and save both skipped,
+reproduced the same terminal line and five axiom trios, and produced a durable
+archive with SHA-256
+`b48f45986d2f71989eb000972a38918844293e2d80806a4f5426df4e2a9d561a`;
+all `13/13` manifest entries verify.  The source PRE-VALIDATION header is
+retired.  This closes item-5 gate 4 only: the literal stabilized denominator,
+Green identification, window 15 and every terminal field remain open.
+Counters stay exactly `20/41`, `TermSource = 0`.
+
 Static refinement after reading the exact mass-uniform APIs: gate 5 does not
 need a new positive-mass or strip estimate at the centered representative.
 `cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform` already applies
