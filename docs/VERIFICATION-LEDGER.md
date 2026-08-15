@@ -36498,3 +36498,54 @@ Diagnostic runner checkpoint
 its queue is exactly the focal and three-declaration audit.  Hard counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
 unattained.
+
+## Addendum 811 (2026-08-15, **PR-body publication incident recovered from the canonical ledger; Git/source state unaffected**)
+
+While appending the Step-8b.8 PRE-VALIDATION notice, PowerShell captured the
+multi-line PR body as an object array; passing that object directly to
+`gh pr edit` replaced the remote body by the literal text `System.Object[]`.
+No Git commit, branch, source blob, workflow, artifact or compiler evidence
+was altered.
+
+The PR body was immediately rebuilt as a concise evidence index from the two
+authoritative checked-in records, `VERIFICATION-LEDGER.md` and
+`HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md`, then published through
+`--body-file`.  Post-write verification records: body length `4558`, draft
+status true, head `d95f6b8729b0dac987857ae7c00f775b72ac5e6a`, and both active source
+checkpoints (`8ab6624c...`, `91169e80...`) present.  Future long-body writes
+must use `--body-file` or redirected standard input with an explicitly joined
+string; a raw PowerShell command-output array is forbidden.
+
+This was a publication-instrumentation incident, not mathematical evidence.
+No counter moves: `20/41`, `TermSource = 0`; window 15 remains compatible and
+unattained.
+
+## Addendum 812 (2026-08-15, **centered-alias reflection diagnostic v1 stopped at the first elaboration error; explicit transport repair prepared**)
+
+Fresh Colab diagnostic v1 checked out exact source
+`8ab6624c67ebbdba270c6a8bb1176000a9319ae3`, verified both Git blobs, Lean
+`4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and passed both textual guards.
+The focal then built its dependency prefix through job `8530/8531` and failed
+at `BalabanCMP99SourceCenteredAliasReflection.lean:95:6`: the rewrite
+`rw [← hout]` did not find the definitionally equal reflected alias beneath
+the inverse residue equivalence.  Focal exit was `1` after `1629.209 s`; the
+audit was not executed.  Evidence JSON/archive SHA-256 are
+`caa77e25c2e795397572d4d9ba524f8213b5e079764ca563702042b0eeafd7ea`
+and `665f6ca3674fd115eca0aa52e1f76c3b7efc348bf78087b77cf24cd385918ed2`.
+The launcher requested runtime release and exited `1`.
+
+Source checkpoint `3bf925319be2b09c6d77706be64913e9817eb3b4`
+changes only that proof step: a `calc` applies
+`cmp99SourceCenteredAliasResidueEquiv_apply` to the exact inverse-equivalence
+term, then uses `Equiv.apply_symm_apply` and the input residue identity.
+Source/audit Git-blob SHA-256 are
+`50a27bed81d489105ba1df211823e1d999b5ac4b20df45b4a88a72ee694c3b58`
+and `b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082`.
+Text/import guards pass locally; no Lean/Lake ran on Windows.  Diagnostic
+runner v2 checkpoint `3968bac63c4bd470f22826da967161d4b7b82d94`
+has Git-blob SHA-256
+`a6c8122d2d1b170eb7ad9222fffa43ccba754e404738dea8395ecf01cf15e239`.
+The revised files remain PRE-VALIDATION and NOT CHECKED until that runner
+emits a compiler verdict.  Hard counters remain `20/41`, `TermSource = 0`;
+window 15 remains compatible and unattained.

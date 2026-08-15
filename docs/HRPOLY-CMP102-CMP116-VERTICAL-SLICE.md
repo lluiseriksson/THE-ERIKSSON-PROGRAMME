@@ -11344,14 +11344,14 @@ replacement, not a compiler seal or terminal-field discharge.
 
 ### Step 8b.7: centered alias residue reflection (PRE-VALIDATION; NOT CHECKED)
 
-Source checkpoint `8ab6624c67ebbdba270c6a8bb1176000a9319ae3` adds
+Revised source checkpoint `3bf925319be2b09c6d77706be64913e9817eb3b4` adds
 the residue-preserving equivalence from the printed half-open centered alias
 carrier to `ZMod M`, conjugates residue negation to obtain its actual
 reflection, lifts it coordinatewise to the centered vector carrier, and
 transports it through the explicit depth-one alias-index bridge.  The fifth
 audited theorem states that this bridge intertwines the two reflection
 actions.  Source/audit Git-blob SHA-256 are
-`fd91da6614c95a0b04a126f0f468d8f58c870f0174468d2aec41dfa9c5621047`
+`50a27bed81d489105ba1df211823e1d999b5ac4b20df45b4a88a72ee694c3b58`
 and
 `b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082`.
 
@@ -11361,14 +11361,25 @@ coarse fibre, identify an endpoint phase, equate a finite synthesis with the
 CMP89 integral, construct regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.
 
-Diagnostic runner checkpoint `1a61eede2a6df09b38aa2d8693551611b4523949`
-has Git-blob SHA-256
-`d1bdb943562a40ae6e86f2e78a07dce50bb8a51097ef3663b93cdace08442499`.
-It gates the two source blobs above, then executes only the focal and the
-five-declaration audit stop-on-first-error in one fresh Colab clone.  Both
-Lean modules remain visibly PRE-VALIDATION and NOT CHECKED.  Counters remain
-exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
-unattained.
+Diagnostic v1 reached the focal in a fresh high-RAM Colab clone and stopped
+at its first real error after `1629.209 s`: line `95:6` attempted to rewrite
+a definitionally equal alias-reflection term beneath an inverse equivalence.
+The focal exited `1`; the audit did not run.  Evidence JSON/archive SHA-256
+are `caa77e25c2e795397572d4d9ba524f8213b5e079764ca563702042b0eeafd7ea`
+and `665f6ca3674fd115eca0aa52e1f76c3b7efc348bf78087b77cf24cd385918ed2`.
+The runtime released immediately.  No compiler claim is inferred from the
+successfully built prefix.
+
+The source repair replaces only that fragile rewrite by a three-line `calc`
+which applies the residue theorem to the exact inverse-equivalence term.
+Diagnostic runner v2 checkpoint
+`3968bac63c4bd470f22826da967161d4b7b82d94` has Git-blob SHA-256
+`a6c8122d2d1b170eb7ad9222fffa43ccba754e404738dea8395ecf01cf15e239`.
+It gates the revised source blob and unchanged audit, then executes only the
+focal and five-declaration audit stop-on-first-error in one fresh Colab
+clone.  Both Lean modules remain visibly PRE-VALIDATION and NOT CHECKED.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
 
 The carry obstruction is already concrete in one dimension.  With `M = 2`,
 `N' = 3`, coarse residue `ell = 1` and quotient `q = 0`, the fine coordinate
