@@ -45,8 +45,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-centered-alias-reflection-v1"
-runner.SOURCE_SHA = "8ab6624c67ebbdba270c6a8bb1176000a9319ae3"
+runner.RUNNER_REV = "cmp99-centered-alias-reflection-v2"
+runner.SOURCE_SHA = "3bf925319be2b09c6d77706be64913e9817eb3b4"
 runner.ROOT = Path("/content/hrpoly-centered-alias-reflection")
 runner.EVIDENCE = Path("/content/hrpoly-centered-alias-reflection-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-centered-alias-reflection-evidence.tar.gz")
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-centered-alias-reflection-paths.txt
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceCenteredAliasReflection.lean":
-        "fd91da6614c95a0b04a126f0f468d8f58c870f0174468d2aec41dfa9c5621047",
+        "50a27bed81d489105ba1df211823e1d999b5ac4b20df45b4a88a72ee694c3b58",
     "YangMills/RG/BalabanCMP99SourceCenteredAliasReflectionAudit.lean":
         "b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082",
 }
