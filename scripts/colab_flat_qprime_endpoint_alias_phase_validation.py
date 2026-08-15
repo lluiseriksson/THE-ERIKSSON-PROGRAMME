@@ -45,8 +45,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-alias-phase-v2"
-runner.SOURCE_SHA = "1fc19056f0a1fa0782924196687b84b074785679"
+runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-alias-phase-v3"
+runner.SOURCE_SHA = "afad237929739252cf850f55f0c273a71bf5a524"
 runner.ROOT = Path("/content/hrpoly-flat-qprime-endpoint-alias-phase")
 runner.EVIDENCE = Path("/content/hrpoly-flat-qprime-endpoint-alias-phase-evidence")
 runner.ARCHIVE = Path(
@@ -58,7 +58,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhase.lean":
-        "5da43c092180dbfa1e892e243b0384fff6fbcff517d03adc35cbef8ed964e9f4",
+        "c83042469334a986d8313e5abb42b7eed67eb57f783554aba7e824b393350da8",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhaseAudit.lean":
         "41adac323d2ea168de171c9d3d97594979e81f104e1ca0946ef7cb3376745ec3",
 }
