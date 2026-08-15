@@ -35970,3 +35970,26 @@ changes.  The saved real runtime-unassign handle was called after the failure
 and the browser tab was closed.  Compiler status remains **NOT CHECKED**
 pending diagnostic v3.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible and unattained.
+
+## Addendum 793 (2026-08-15, **Gate 6 diagnostic v3 GREEN; cold seal pending; 20/41 unchanged**)
+
+Diagnostic v3 ran once in a fresh Colab Pro+ CPU/high-RAM runtime at exact
+source `3078a38a710dfdb735b5ecdde65d7a014b9c83ef`.  Runner transport,
+official toolchain digest, exact Mathlib pin, source Git blobs, and both
+textual guards passed.  The focal returned `EXIT=0` after `1549.086 s` and
+emitted literal terminal line `Build completed successfully (8645 jobs).`;
+the audit returned `EXIT=0` after `16.124 s` and printed four exact
+`[propext, Classical.choice, Quot.sound]` blocks.  Evidence and deterministic
+archive SHA-256 are
+`298216b87f7482efa08217417dfde941c5eac9a9acfc21f6ac2394f1efb883dd`
+and
+`2ebef3fcc1d33449bd0ee9bde92f85669d3fa7dc961c05412a5cff800321e4f2`.
+The runtime was explicitly terminated through the Colab session manager and
+the browser tab closed without reexecuting the cell.
+
+This is diagnostic evidence only.  PRE-VALIDATION remains until the single
+cold workflow checks out the same source with project-graph restore and save
+both skipped.  Gate 6 identifies the internally generated Green endpoint but
+does not prove a regional Green bound, attain window 15, discharge a terminal
+field, or inhabit `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`.

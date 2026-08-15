@@ -10981,3 +10981,17 @@ pattern.  Its source Git-blob SHA-256 is
 the audit blob is unchanged.  No statement, constant, hypothesis, inverse,
 or physical factorization changes.  Compiler status remains NOT CHECKED
 pending diagnostic v3; counters and window 15 remain unchanged.
+
+Diagnostic v3 ran once in a fresh Colab Pro+ CPU/high-RAM runtime at exact
+source `3078a38a710dfdb735b5ecdde65d7a014b9c83ef`.  Runner transport,
+toolchain digest, Mathlib pin, source hashes, and both textual guards passed.
+The focal returned `EXIT=0` after `1549.086 s` with literal terminal line
+`Build completed successfully (8645 jobs).`; the audit returned `EXIT=0`
+after `16.124 s` and printed four exact
+`[propext, Classical.choice, Quot.sound]` blocks.  Evidence/archive SHA-256
+are `298216b87f7482efa08217417dfde941c5eac9a9acfc21f6ac2394f1efb883dd`
+and `2ebef3fcc1d33449bd0ee9bde92f85669d3fa7dc961c05412a5cff800321e4f2`.
+The runtime was explicitly terminated through the Colab session manager and
+the tab closed.  This is diagnostic evidence only: PRE-VALIDATION remains
+until the single cold workflow checks the same source with project-graph
+restore and save both skipped.  Counters and window 15 remain unchanged.
