@@ -36124,3 +36124,34 @@ and save both skipped.  Gate 7 proves only the discrete one-mode Fourier
 fibre, not a continuous Brillouin integral, periodization/Poisson bridge,
 regional `B0`, window-15 attainment, terminal field, or `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`.
+
+## Addendum 799 (2026-08-15, **Gate 7 COLD-SEALED; one-mode Green Fourier fibre; 20/41 unchanged**)
+
+The single terminal cold workflow
+[`31869674637`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31869674637)
+sealed exact source `65545ad3084c38831ed3f8bc02124c7d49de3d89` under
+workflow vehicle `c528d0d8f3feda072fcc7b18efc3fa506a30e7c6`.  The workflow
+Git-blob SHA-256 is
+`6dc6fce2a42481b18c70cca6f8d3889c1e79dd56d5e2c30f52808740922c336c`.
+`COLD_MODE=true`; project-graph restore and save were both skipped.  The focal
+ran `2026-08-15T06:33:45Z--07:06:33Z`, returned `EXIT=0`, and emitted literal
+terminal line `Build completed successfully (8646 jobs).`; the audit ran
+`07:06:33Z--07:06:46Z`, returned `EXIT=0`, and printed four exact
+`[propext, Classical.choice, Quot.sound]` blocks.  The new source emitted zero
+warnings, and neither `sorryAx` nor `ofReduceBool` appeared.
+
+Artifact `9243434656` has GitHub digest
+`1e9053d3d0f84994a85ece64a2340ef5ea503253df34339514094f510f437a8e`.
+Its downloaded deterministic archive has SHA-256
+`2a79ef827d5c6f35c6655dcc7029a9cbcea72b5ad579c81846c83805582f7fc4`;
+all `13/13` internal manifest entries verify with zero mismatches.  This
+evidence retires exactly the two Gate-7 PRE-VALIDATION headers.
+
+Gate 7 proves only the discrete one-mode Fourier fibre.  It does not identify
+a continuous Brillouin integral, prove finite-grid periodization, construct a
+regional `B0`, attain window 15, discharge a terminal field, or inhabit
+`TermSource`.  The remaining dictionary must also separate the fixed RG ratio
+`L` from the independently large regional parameter `K`; the present
+one-parameter carrier is only the diagonal comparison `K = L = M`.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
+unattained.

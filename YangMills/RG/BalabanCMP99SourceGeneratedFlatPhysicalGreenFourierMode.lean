@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenIdentification
 /-!
 # Generated flat physical Green on one coarse Fourier mode
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 Gate 6 identifies the complete stabilized Step-7b field with the internally
 generated Green composed with the literal coefficient-one `Q'^*`.  This file
 specializes that equality to one coarse physical Fourier mode.  The finite

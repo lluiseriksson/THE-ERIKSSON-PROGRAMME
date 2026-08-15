@@ -11018,7 +11018,7 @@ input.  It still does not prove a regional Green bound, attain window 15,
 discharge a terminal field, or inhabit `TermSource`.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
 
-### Step 8b.4 Gate 7: one-mode generated Green Fourier fibre (PRE-VALIDATION)
+### Step 8b.4 Gate 7: one-mode generated Green Fourier fibre (COLD-SEALED)
 
 Source checkpoint `bcc852cee5e709bff91fad7de26fa21cff754e1f` adds the
 first exact Fourier specialization downstream of cold-sealed Gate 6.  For a
@@ -11093,3 +11093,50 @@ the one cold workflow seals the same source with project-graph restore and
 save skipped.  Gate 7 remains the discrete one-mode Fourier fibre only;
 counters remain exactly `20/41`, `TermSource = 0`, and window 15 remains
 compatible and unattained.
+
+The single terminal cold workflow
+[`31869674637`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31869674637)
+sealed exact source `65545ad3084c38831ed3f8bc02124c7d49de3d89`
+under workflow vehicle `c528d0d8f3feda072fcc7b18efc3fa506a30e7c6`.
+`COLD_MODE=true`; project-graph restore and save were both skipped.  The focal
+ran `2026-08-15T06:33:45Z--07:06:33Z`, returned `EXIT=0`, and emitted literal
+terminal line `Build completed successfully (8646 jobs).`; the audit ran
+`07:06:33Z--07:06:46Z`, returned `EXIT=0`, and printed four exact
+`[propext, Classical.choice, Quot.sound]` blocks.  The new source emitted zero
+warnings, and neither `sorryAx` nor `ofReduceBool` appeared.
+
+Artifact `9243434656` has GitHub digest
+`1e9053d3d0f84994a85ece64a2340ef5ea503253df34339514094f510f437a8e`.
+Its downloaded deterministic archive has SHA-256
+`2a79ef827d5c6f35c6655dcc7029a9cbcea72b5ad579c81846c83805582f7fc4`;
+all `13/13` internal manifest entries verify with zero mismatches.  This cold
+evidence retires exactly the two Gate-7 PRE-VALIDATION headers.
+
+Gate 7 remains a discrete one-mode statement.  The finite post-Gate-7 route
+is therefore recorded explicitly rather than identifying a finite DFT with a
+continuous integral:
+
+1. prove the exact alias-orientation/reindex dictionary between the
+   transposed physical row at negative sampled momentum and the CMP89 endpoint
+   column factors, including the centered half-open alias wrap;
+2. identify the one-mode finite synthesis pointwise with the sampled CMP89
+   stabilized endpoint integrand, without an integral claim;
+3. prove finite-grid Fourier aliasing/periodization from absolutely summable
+   continuous coefficients and the already sealed finite-character
+   orthogonality;
+4. specialize the sealed exponential coefficient estimate to the periodic
+   owner metric, with the fine-period/owner-unit conversion explicit and no
+   volume factor;
+5. reinstantiate or generalize the diagonal carrier `K = L = M` to the
+   source-separated scales `(L, K)`, where `L` controls the generated tower
+   and independently large `K` controls regional contraction;
+6. only then perform regional compression and construct the physical `B0`
+   and window-15 contraction.
+
+The scale-separation item is load-bearing: the current Gate-6/7 carrier hardcodes
+block side `M^(depth+1)` and coarse carrier `2*(M*Q)`, so it cannot by itself
+realize the source freedom `K >> L` used by the contraction.  No prefix of
+this list is a continuous Brillouin-integral identification, a regional Green
+bound, window-15 attainment, a terminal-field discharge, or a `TermSource`
+inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible and unattained.
