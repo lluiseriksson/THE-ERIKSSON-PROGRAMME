@@ -11397,5 +11397,9 @@ reflection.  It stops before the quotient carry.  In particular it does not
 claim intertwinement with `cmp99SourceAliasIndexOneReflection`, identify an
 endpoint phase, construct regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Both files retain visible
-PRE-VALIDATION headers and are NOT CHECKED.  Counters remain exactly `20/41`,
-`TermSource = 0`; window 15 remains compatible but unattained.
+PRE-VALIDATION headers and are NOT CHECKED.  Diagnostic runner checkpoint
+`1f3301107367d6ceb8539aaf0a26ab8b9754ec57` has Git-blob SHA-256
+`e6d742c678fe9c08419b8d33ad62b2e4d3da66092bed174b64fda78f5fc64eb9`;
+it gates exactly these two blobs and runs only the focal plus the
+three-declaration audit.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

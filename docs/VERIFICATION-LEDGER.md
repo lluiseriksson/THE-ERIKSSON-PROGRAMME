@@ -36492,5 +36492,9 @@ reflection brick.  It does not prove the affine quotient carry, simple alias
 intertwinement, an endpoint phase, finite-to-continuous periodization,
 regional `B0`, window-15 contraction, a terminal field or a `TermSource`
 inhabitant.  Both Lean files remain visibly PRE-VALIDATION and NOT CHECKED.
-Hard counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
-compatible and unattained.
+Diagnostic runner checkpoint
+`1f3301107367d6ceb8539aaf0a26ab8b9754ec57` has Git-blob SHA-256
+`e6d742c678fe9c08419b8d33ad62b2e4d3da66092bed174b64fda78f5fc64eb9`;
+its queue is exactly the focal and three-declaration audit.  Hard counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
+unattained.
