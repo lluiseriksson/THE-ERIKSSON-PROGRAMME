@@ -9,8 +9,11 @@ import YangMills.RG.BalabanCMP89Eq245CenteredAliasVectorCycle
 /-!
 # Residue reflection on the printed centered alias carrier
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Compiler-verified at exact source checkpoint
+`3bf925319be2b09c6d77706be64913e9817eb3b4` by cold GitHub Actions run
+`31885511354`.  Restoration and saving of `.lake/build` were skipped.  The
+focal completed 8,531 jobs, the audit exited zero, and all five audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
 
 The half-open centered alias interval is not closed under literal integer
 negation at its even lower endpoint.  This module instead identifies every

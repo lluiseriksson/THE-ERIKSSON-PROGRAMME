@@ -11342,7 +11342,7 @@ check sharpened this gate: the signed alias dictionaries do **not** generally
 intertwine with residue reflection alone.  This is a static no-go and design
 replacement, not a compiler seal or terminal-field discharge.
 
-### Step 8b.7: centered alias residue reflection (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.7: centered alias residue reflection (cold-sealed; carrier algebra only)
 
 Revised source checkpoint `3bf925319be2b09c6d77706be64913e9817eb3b4` adds
 the residue-preserving equivalence from the printed half-open centered alias
@@ -11385,13 +11385,24 @@ audit exit `0` in `7.102 s`, and all five declarations used exactly
 and `1b1112838a57933cd725521b2086dc7946ab684c3320d5d10c9ab42196aec76a`.
 `FINAL_STATUS=PASS`, launcher exit `0`, and runtime release were all literal.
 
-This is a fresh-clone diagnostic, not the terminal cold seal.  Both Lean
-modules remain visibly PRE-VALIDATION until the single prepared cold Actions
-run verifies the same source SHA with `.lake/build` restore/save skipped.
-The terminal workflow vehicle is
-`3ab1e84875cd6c33ab32ea748e2444f8dcd4e415`; workflow Git-blob SHA-256 is
-`fcbd51289a197682c5af8d7531c787e4461fc153afb6cd64a7d60950498bfd7c`.
-Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+Terminal cold workflow
+[`31885511354`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31885511354)
+then sealed the same source under workflow vehicle
+`3ab1e84875cd6c33ab32ea748e2444f8dcd4e415` (workflow Git-blob SHA-256
+`fcbd51289a197682c5af8d7531c787e4461fc153afb6cd64a7d60950498bfd7c`).
+`COLD_MODE=true`; restoration and saving of `.lake/build` were both skipped.
+The focal ran `12:50:00Z–13:12:46Z`, exited zero and ended with literal
+`Build completed successfully (8531 jobs).`; the audit ran
+`13:12:46Z–13:12:51Z`, exited zero and produced five exact standard axiom
+blocks.  The text, import-prefix, warning and axiom gates passed.
+
+Artifact `9247413976` has GitHub digest
+`82603ae773fb5710b1cfa91aee02929494529d4e6bfcf12076db513c70d66868`;
+the deterministic archive SHA-256 is
+`a4f8f9dff0ceb1a03796ef9490cdfb86665b7df17e25b92a06a819c92b39d706`,
+with zero mismatches in the internal manifest.  This evidence retires exactly
+the two Step-8b.7 PRE-VALIDATION marks.  It seals carrier algebra only:
+counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
 The carry obstruction is already concrete in one dimension.  With `M = 2`,
@@ -11405,25 +11416,31 @@ residue; it may not claim simple intertwinement with
 
 ### Step 8b.8: periodic Fourier negation between coarse fibres (PRE-VALIDATION; NOT CHECKED)
 
-Independent source checkpoint `91169e80` adds
+Independent source checkpoint `80ab41f2839cf9546e19c5a12a68196e45b5d246` adds
 `BalabanCMP99SourceCoarseFibreFourierNeg` and its three-declaration audit.
 The source proves that periodic Fourier negation is involutive on the literal
 `FinBox`, that `cmp99SourceFlatQprimeCoarseAlias` commutes with it, and hence
 constructs the exact equivalence from the fine fibre over `ell` to the fibre
 over `cmp99FinBoxFourierNeg ell`.  Source/audit Git-blob SHA-256 are
-`4f79bf6e12a7d9c5dbdbe459cc889d766fdd036107d81cbe13e975529a59a32d`
+`df6985a32c48a9b3eb44673b93e9be6be915efb3cc527aa0a7f98921c050f991`
 and
 `3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
 
+Static preflight superseded the original `91169e80` source before any
+compiler run.  Its coarse-alias proof had attempted to close an equality in
+`ZMod N'` directly from one in `ZMod (M * N')`.  The revised source applies
+the canonical ring homomorphism along `N' ∣ M * N'`; it does not identify the
+two moduli or add a periodicity premise.
+
 This checkpoint deliberately depends only on already sealed coarse-alias and
-Fourier-negation modules; it does not import the Step-8b.7 PRE-VALIDATION
-reflection.  It stops before the quotient carry.  In particular it does not
+Fourier-negation modules; it does not import the Step-8b.7 reflection.  It
+stops before the quotient carry.  In particular it does not
 claim intertwinement with `cmp99SourceAliasIndexOneReflection`, identify an
 endpoint phase, construct regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Both files retain visible
-PRE-VALIDATION headers and are NOT CHECKED.  Diagnostic runner checkpoint
-`1f3301107367d6ceb8539aaf0a26ab8b9754ec57` has Git-blob SHA-256
-`e6d742c678fe9c08419b8d33ad62b2e4d3da66092bed174b64fda78f5fc64eb9`;
+PRE-VALIDATION headers and are NOT CHECKED.  Diagnostic runner v2 checkpoint
+`f342e9d2bf5fc1c8f87df6111169f91e40a279b9` has Git-blob SHA-256
+`e2a49c74a415a852c033716eb0c5e1988cb4868469fd20a5185ab8c9bb95ea25`;
 it gates exactly these two blobs and runs only the focal plus the
 three-declaration audit.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.

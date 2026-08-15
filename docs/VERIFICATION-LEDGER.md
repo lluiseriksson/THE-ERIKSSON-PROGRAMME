@@ -36585,3 +36585,62 @@ audit, robust axiom parsing and `.lake/build` restore/save skipped.  No
 Actions run has yet been dispatched for this checkpoint.  Hard counters
 remain `20/41`, `TermSource = 0`; window 15 remains compatible and
 unattained.
+
+## Addendum 814 (2026-08-15, **centered-alias reflection cold-sealed; carrier algebra only; 20/41 unchanged**)
+
+Terminal cold workflow
+[`31885511354`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31885511354)
+ran exactly once against source
+`3bf925319be2b09c6d77706be64913e9817eb3b4` under workflow vehicle
+`3ab1e84875cd6c33ab32ea748e2444f8dcd4e415`.  `COLD_MODE=true`;
+restoration and saving of `.lake/build` were both skipped.  Source/audit
+Git-blob SHA-256 remained
+`50a27bed81d489105ba1df211823e1d999b5ac4b20df45b4a88a72ee694c3b58`
+and
+`b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082`.
+
+The focal ran `12:50:00Z–13:12:46Z`, exited `0` and ended with literal
+`Build completed successfully (8531 jobs).`; the five-declaration audit ran
+`13:12:46Z–13:12:51Z`, exited `0`, and every declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Lean was `4.29.0-rc6`, Mathlib was
+`07642720480157414db592fa85b626dafb71355b`, and the text, import-prefix,
+warning and axiom gates all passed.
+
+Artifact `9247413976` has GitHub digest
+`82603ae773fb5710b1cfa91aee02929494529d4e6bfcf12076db513c70d66868`.
+The downloaded deterministic archive SHA-256 is
+`a4f8f9dff0ceb1a03796ef9490cdfb86665b7df17e25b92a06a819c92b39d706`;
+all internal `SHA256SUMS` entries matched.  This evidence retires exactly the
+source and audit PRE-VALIDATION marks.  The result remains alias-carrier
+algebra and complete-sum reindexing, not a physical fixed-fibre reflection,
+affine quotient carry, endpoint phase, regional `B0`, window-15 producer,
+terminal field or `TermSource` inhabitant.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible and unattained.
+
+## Addendum 815 (2026-08-15, **coarse-fibre negation modulus transport repaired before diagnostic; PRE-VALIDATION; 20/41 unchanged**)
+
+Static preflight rejected the original Step-8b.8 proof before its first
+compiler run.  The proof of coarse-alias commutation had obtained periodic
+negation in `ZMod (M * N')` and attempted to close a goal in `ZMod N'` by
+`simpa`; those moduli are not definitionally equal.  No diagnostic evidence
+is attributed to the superseded source `91169e80`.
+
+PRE-VALIDATION source checkpoint
+`80ab41f2839cf9546e19c5a12a68196e45b5d246` applies the canonical ring
+homomorphism `ZMod.castHom` along the literal divisibility
+`N' ∣ M * N'`, then simplifies its action on negation and natural casts.  It
+does not change the theorem statement or introduce a periodicity hypothesis.
+Revised source/audit Git-blob SHA-256 are
+`df6985a32c48a9b3eb44673b93e9be6be915efb3cc527aa0a7f98921c050f991`
+and
+`3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
+Text/import-prefix guards pass; no Lean or Lake ran on Windows.
+
+Diagnostic runner v2 checkpoint
+`f342e9d2bf5fc1c8f87df6111169f91e40a279b9` has Git-blob SHA-256
+`e2a49c74a415a852c033716eb0c5e1988cb4868469fd20a5185ab8c9bb95ea25`.
+It gates exactly the revised source and unchanged three-declaration audit in
+one fresh Colab clone.  Both Lean modules retain visible PRE-VALIDATION and
+are NOT CHECKED.  The affine quotient carry and every downstream physical
+claim remain open.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible and unattained.

@@ -1,8 +1,9 @@
 import YangMills.RG.BalabanCMP99SourceCenteredAliasReflection
 
 /-!
-PRE-VALIDATION: this audit source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Cold audit for `BalabanCMP99SourceCenteredAliasReflection`, sealed at source
+checkpoint `3bf925319be2b09c6d77706be64913e9817eb3b4` by GitHub Actions run
+`31885511354` with `.lake/build` restoration and saving skipped.
 -/
 
 #print axioms YangMills.RG.cmp99SourceCenteredAliasResidueEquiv_apply
