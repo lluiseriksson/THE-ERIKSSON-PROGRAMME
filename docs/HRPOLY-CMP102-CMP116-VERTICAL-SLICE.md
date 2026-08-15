@@ -11072,3 +11072,24 @@ the audit blob remains
 `d2ccb839a72db990c1d014d373b85228f290befee643bb8b1cb37c26f10ea25a`.
 Compiler status remains NOT CHECKED pending diagnostic v3.  Counters and
 window 15 remain unchanged.
+
+Diagnostic v3 ran once in a fresh Colab Pro+ CPU/high-RAM runtime under the
+visible account `lluiseriksson@gmail.com`, checking out exact source
+`65545ad3084c38831ed3f8bc02124c7d49de3d89`.  Runner transport, official
+toolchain digest, Mathlib pin, both source hashes, and both textual guards
+passed.  The focal returned `EXIT=0` after `2355.241 s` with literal terminal
+line `Build completed successfully (8646 jobs).`; the audit returned
+`EXIT=0` after `22.802 s` and printed four exact
+`[propext, Classical.choice, Quot.sound]` blocks.  Neither `sorryAx` nor
+`ofReduceBool` appeared.  Evidence/archive SHA-256 are
+`99dd1e55fdec3cc836fa9de9cd5e9608bb1dd1fe33a6fa72e818e010266ec71b`
+and
+`bd4bd5dd596b359417629cafd9818903083049ba9019921818df7de9800cac37`.
+The runtime was explicitly disconnected and deleted and the sole browser tab
+closed.
+
+This is diagnostic evidence only.  Both PRE-VALIDATION headers remain until
+the one cold workflow seals the same source with project-graph restore and
+save skipped.  Gate 7 remains the discrete one-mode Fourier fibre only;
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 remains
+compatible and unattained.

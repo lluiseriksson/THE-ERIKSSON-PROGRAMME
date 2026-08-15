@@ -36095,3 +36095,32 @@ the audit blob remains
 Both PRE-VALIDATION headers remain.  Gate 7 is NOT CHECKED pending diagnostic
 v3; counters remain exactly `20/41`, `TermSource = 0`, and window 15 remains
 compatible and unattained.
+
+## Addendum 798 (2026-08-15, **Gate 7 diagnostic v3 GREEN; cold seal pending; 20/41 unchanged**)
+
+Diagnostic v3 ran exactly once in a fresh Colab Pro+ CPU/high-RAM runtime
+under the visible account `lluiseriksson@gmail.com`, at exact source
+`65545ad3084c38831ed3f8bc02124c7d49de3d89`.  Runner transport SHA-256 was
+`c1803d1c187923f01d30092a83593a048eaf9b28bfa5aa8f23b70e7ee92da74d`;
+the pinned base-runner transport SHA-256 was
+`d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee`.
+The official toolchain digest, exact Mathlib pin, both source Git blobs, and
+both textual guards passed.
+
+The focal returned `EXIT=0` after `2355.241 s` and emitted literal terminal
+line `Build completed successfully (8646 jobs).`; the audit returned
+`EXIT=0` after `22.802 s` and printed four exact
+`[propext, Classical.choice, Quot.sound]` blocks.  Neither `sorryAx` nor
+`ofReduceBool` appeared.  Evidence and deterministic archive SHA-256 are
+`99dd1e55fdec3cc836fa9de9cd5e9608bb1dd1fe33a6fa72e818e010266ec71b`
+and
+`bd4bd5dd596b359417629cafd9818903083049ba9019921818df7de9800cac37`.
+The runtime was explicitly disconnected and deleted and the sole browser tab
+was closed.
+
+This is diagnostic evidence only.  Both PRE-VALIDATION headers remain until
+the single cold workflow checks the same source with project-graph restore
+and save both skipped.  Gate 7 proves only the discrete one-mode Fourier
+fibre, not a continuous Brillouin integral, periodization/Poisson bridge,
+regional `B0`, window-15 attainment, terminal field, or `TermSource`
+inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`.
