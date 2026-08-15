@@ -35914,3 +35914,29 @@ materialized.  Compiler status is **NOT CHECKED** pending the fresh Colab
 focal and four-declaration audit.  This checkpoint does not attain window 15,
 discharge a terminal field, or inhabit `TermSource`; counters remain exactly
 `20/41`, `TermSource = 0`.
+
+## Addendum 791 (2026-08-15, **Gate 6 diagnostic v1 FAIL; two `M^1` transports repaired; 20/41 unchanged**)
+
+The first fresh Colab Pro+ CPU/high-RAM diagnostic at exact source
+`d0ea9148c746914a60c4a9af6e187ad701f0cb0c` passed runner transport,
+toolchain, Mathlib pin, source hashes, and both textual guards.  The focal
+returned `EXIT=1` after `1646.490 s`; the audit did not run.  Both errors were
+the same depth-one normalization: an alias membership lived in
+`CenteredAliasVectors d (M^1)` while the sealed noncentral gap expected
+`... d M`, and the concluding real symbol retained `(M^1)^-1` rather than
+`M^-1`.  Evidence/archive SHA-256 are
+`d3fd50464032f4220fa87ef11f445414dbf075eb6f6588c6e814e23ddd17844e`
+and
+`44cb446bf4902a081b4d4656571e5f1a9e2f22bf7925fb911ae8e8bbfc47f262`.
+The runtime auto-released and no cell was reexecuted.
+
+PRE-VALIDATION repair checkpoint
+`10c80c3579de6f84f6686462e52cf23bf22bb761` inserts only the two explicit
+`pow_one` transports.  No statement, constant, hypothesis, inverse, or
+physical factorization changes.  The repaired source Git-blob SHA-256 is
+`3120ad19f781f98e143812672ccef8293b0879639e465edb6de30ad0026d5661`;
+the audit blob remains
+`aece1c37a834af9d9afdc7ef58af0d11fc4dfef7bd3bf9934141f3cc5240475c`.
+Compiler status is **NOT CHECKED** pending diagnostic v2.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
+unattained.

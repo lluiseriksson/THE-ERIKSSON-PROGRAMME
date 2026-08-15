@@ -10943,3 +10943,22 @@ pass, the Green equality is NOT CHECKED.  Even after validation this brick
 will identify the literal `G Q'^*` field only; it will not prove a regional
 Green bound, attain window 15, discharge a terminal field, or inhabit
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`.
+
+Diagnostic v1 at exact source
+`d0ea9148c746914a60c4a9af6e187ad701f0cb0c` stopped at two explicit
+`pow_one` normalizations in the zero-coarse/noncentral branch.  The focal
+returned `EXIT=1` after `1646.490 s`; the audit did not run.  Evidence/archive
+SHA-256 are
+`d3fd50464032f4220fa87ef11f445414dbf075eb6f6588c6e814e23ddd17844e`
+and
+`44cb446bf4902a081b4d4656571e5f1a9e2f22bf7925fb911ae8e8bbfc47f262`.
+The runtime auto-released.
+
+Repair checkpoint `10c80c3579de6f84f6686462e52cf23bf22bb761`
+normalizes membership from the depth-one alias carrier `M^1` to `M` and
+normalizes the same power in the final real-symbol comparison.  It changes no
+public statement, physical dictionary, constant, or hypothesis.  Repaired
+source Git-blob SHA-256 is
+`3120ad19f781f98e143812672ccef8293b0879639e465edb6de30ad0026d5661`;
+the audit blob is unchanged.  Compiler status remains NOT CHECKED pending
+diagnostic v2; counters and window 15 remain unchanged.
