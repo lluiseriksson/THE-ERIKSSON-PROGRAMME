@@ -11225,3 +11225,17 @@ The next diagnostic vehicle is revision
 `gate8-generated-green-fourier-synthesis-v2`, pinned to repaired source
 `0e852bb5973c34eef9cfd17cf2b0a8c0f1987658` and Git-blob SHA-256
 `70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f`.
+
+That repaired source then passed the fresh single-clone Colab diagnostic on
+CPU/high RAM (`50.99 GiB`).  The focal returned `EXIT=0` after `1807.618 s`
+with `Build completed successfully (8647 jobs).`; the audit returned
+`EXIT=0` after `12.408 s` and both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`517f9f5b74d6b56bd76bec5793bed1d6319b59cd5ad2dd47222514bb2e1aa088`
+and
+`50ec39c9d7ae63b9deaed858544b91e804b145d4e4c4ecb58283ecf5036655f2`.
+The runner emitted `FINAL_STATUS=PASS`; the runtime was explicitly
+disconnected and deleted.  This authorizes one terminal cold workflow on the
+same raw source SHA.  PRE-VALIDATION remains until that cold run passes, and
+the counters remain `20/41`, `TermSource = 0`; window 15 remains compatible
+and unattained.

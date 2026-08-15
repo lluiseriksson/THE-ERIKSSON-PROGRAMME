@@ -36266,3 +36266,37 @@ source `0e852bb5973c34eef9cfd17cf2b0a8c0f1987658`, source Git-blob SHA-256
 `70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f`,
 and the unchanged audit blob.  It is a diagnostic vehicle only; no second
 terminal workflow is authorized until that fresh Colab diagnostic passes.
+
+## Addendum 803 (2026-08-15, **Gate 8 repaired Colab diagnostic PASS; one terminal cold seal authorized; 20/41 unchanged**)
+
+The repaired exact source checkpoint
+`0e852bb5973c34eef9cfd17cf2b0a8c0f1987658` passed the fresh single-clone
+Colab diagnostic on CPU/high RAM (`50.99 GiB`).  The transport runner was
+fetched from vehicle `b15fb952aa4f4f992053a2f5a370eb6840a9efc2` with
+Git-blob SHA-256
+`74b2c0aebac15c7ee789be2e0bc9cabd280a9695a3cb8a5fcb2df48355104521`.
+The source/audit blob gates matched
+`70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f`
+and
+`bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36`;
+the official Lean asset and exact Mathlib pin also matched.
+
+The focal returned `EXIT=0` after `1807.618 s` with literal terminal line
+`Build completed successfully (8647 jobs).`.  The audit returned `EXIT=0`
+after `12.408 s`; both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence and deterministic
+archive SHA-256 are
+`517f9f5b74d6b56bd76bec5793bed1d6319b59cd5ad2dd47222514bb2e1aa088`
+and
+`50ec39c9d7ae63b9deaed858544b91e804b145d4e4c4ecb58283ecf5036655f2`.
+The runner emitted `FINAL_STATUS=PASS`; IPython's subsequent `SystemExit: 0`
+is the known false-red cell decoration.  The runtime was explicitly
+disconnected and deleted after the result.
+
+This diagnostic authorizes exactly one new terminal `cold=true` workflow
+against the same raw source checkpoint, with `.lake/build` restore and save
+both required to be skipped.  PRE-VALIDATION remains on both modules until
+that durable cold evidence passes.  The diagnostic does not identify a
+continuous integral, prove periodization, construct regional `B0`, attain
+window 15, discharge a terminal field, or inhabit `TermSource`; counters
+remain exactly `20/41`, `TermSource = 0`.
