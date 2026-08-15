@@ -45,7 +45,7 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-alias-phase-v3"
+runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-alias-phase-v4"
 runner.SOURCE_SHA = "afad237929739252cf850f55f0c273a71bf5a524"
 runner.ROOT = Path("/content/hrpoly-flat-qprime-endpoint-alias-phase")
 runner.EVIDENCE = Path("/content/hrpoly-flat-qprime-endpoint-alias-phase-evidence")
@@ -157,7 +157,7 @@ runner.QUEUE = [
             "lean",
             "YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhaseAudit.lean",
         ],
-        4,
+        5,
     ),
 ]
 
