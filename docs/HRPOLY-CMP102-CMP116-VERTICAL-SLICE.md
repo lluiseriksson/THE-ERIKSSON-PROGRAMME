@@ -11746,8 +11746,28 @@ uses a distinct right summand plus a pointwise equality, matching the real
 non-reflexive target.  Its Git-blob SHA-256 is
 `3f5d52a418b6be5ec8960c9b79a1eb0ec099ea498e8d16458401751897c83fe6`;
 notebook vehicle checkpoint is
-`325e83c6bfdd5b0b1406bfa2c209a735a47a411e`.  Both Lean modules remain visibly
-PRE-VALIDATION and the latest source remains NOT CHECKED.
+`325e83c6bfdd5b0b1406bfa2c209a735a47a411e`.
+
+The next fresh Colab run passed the corrected repro (`7.882` seconds), built the
+source with literal terminal line `Build completed successfully (8532 jobs).`
+(`1685.950` seconds), and ran the audit with exit zero (`9.532` seconds).  The
+displacement declaration printed `does not depend on any axioms`; the other
+three printed exactly `[propext, Classical.choice, Quot.sound]`.  The wrapper
+then emitted `FINAL_STATUS=FAIL` solely because it expected four nonempty axiom
+blocks instead of three.  Evidence SHA-256 is
+`e843ce461ec34935a5980834e3eab555bb39928594256c0eb76c1c01e655b877`;
+archive SHA-256 is
+`06ec3db14f981ccd62e3909870cc3299fe6799422e71194e3d2166bdd68700bd`.
+Thus focal and audit are green in a fresh clone, but the checkpoint is not yet
+cold-sealed because the sentinel verdict was instrumentation-false.
+
+Runner checkpoint `738663c0295dcb3046c3101697bb96a422674d51`
+changes only the expected nonempty axiom-block count from four to three.  Its
+Git-blob SHA-256 is
+`a3e7522b81f9d8d00f41cf4555c6c71dbe2471321029e3a53b7937499f36b832`;
+notebook vehicle checkpoint is
+`c34eb060e15da0a0834b58f72f981d2f25090ab1`.  Both Lean modules remain visibly
+PRE-VALIDATION pending the cold seal.
 
 This brick is the unit/phase dictionary only.  It does not yet combine the
 sealed Step-8b.10 affine carrier reindexing with the finite synthesis, identify

@@ -37101,6 +37101,27 @@ non-reflexive target.  Its Git-blob SHA-256 is
 notebook vehicle checkpoint is
 `325e83c6bfdd5b0b1406bfa2c209a735a47a411e`.
 
+The subsequent fresh Colab run passed the corrected repro in `7.882` seconds,
+built the source with literal terminal line
+`Build completed successfully (8532 jobs).` in `1685.950` seconds, and ran the
+audit with exit zero in `9.532` seconds.  The displacement declaration printed
+`does not depend on any axioms`; the other three printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The wrapper nevertheless emitted
+`FINAL_STATUS=FAIL` because it expected four nonempty axiom blocks instead of
+three. Evidence SHA-256 is
+`e843ce461ec34935a5980834e3eab555bb39928594256c0eb76c1c01e655b877`;
+archive SHA-256 is
+`06ec3db14f981ccd62e3909870cc3299fe6799422e71194e3d2166bdd68700bd`.
+This is a false instrumentation verdict after green focal and audit, not a Lean
+failure; it does not authorize removal of PRE-VALIDATION before a cold seal.
+
+Runner checkpoint `738663c0295dcb3046c3101697bb96a422674d51`
+changes only the expected nonempty axiom-block count from four to three.  Its
+Git-blob SHA-256 is
+`a3e7522b81f9d8d00f41cf4555c6c71dbe2471321029e3a53b7937499f36b832`;
+notebook vehicle checkpoint is
+`c34eb060e15da0a0834b58f72f981d2f25090ab1`.
+
 Both Lean files remain visibly PRE-VALIDATION and the latest source remains NOT
 CHECKED.  The brick does
 not yet combine the affine carrier action with the finite synthesis, identify
