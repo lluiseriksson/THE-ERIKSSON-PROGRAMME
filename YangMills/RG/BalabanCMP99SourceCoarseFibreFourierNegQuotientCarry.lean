@@ -53,7 +53,7 @@ private theorem periodicNegQuotient
         rw [Nat.sub_mul]
         simp only [Nat.mul_comm]
       rw [hnum, Nat.mod_eq_of_lt ((Nat.mul_lt_mul_right hN).2 hsublt),
-        Nat.mul_div_right _ hN, Nat.mod_eq_of_lt hsublt]
+        Nat.mul_div_left _ hN, Nat.mod_eq_of_lt hsublt]
   · have hellpos : 0 < ell := Nat.pos_of_ne_zero he
     have hqle : q + 1 ≤ M := Nat.succ_le_iff.mpr hq
     have hsumlt : ell + N * q < M * N := by
@@ -79,7 +79,7 @@ private theorem periodicNegQuotient
           congrArg (fun t => t * N - ell) hsubsucc
         _ = ((M - q - 1) * N + N) - ell := by ring
         _ = (M - q - 1) * N + (N - ell) := by omega
-        _ = (N - ell) + N * (M - q - 1) := by ring
+        _ = (N - ell) + N * (M - q - 1) := by ac_rfl
     rw [hrewrite, Nat.add_mul_div_left (N - ell) (M - q - 1) hN]
     rw [Nat.div_eq_of_lt (by omega : N - ell < N)]
     omega
@@ -114,7 +114,7 @@ theorem cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv_quotient_val
           (k.1 mu).val % N' + N' * ((k.1 mu).val / N') :=
         (Nat.mod_add_div _ _).symm
       _ = (ell mu).val + N' * ((k.1 mu).val / N') := by rw [hmod]
-  rw [hk]
+  conv_lhs => rw [hk]
   exact periodicNegQuotient M N' (ell mu).val
     ((k.1 mu).val / N') (Nat.pos_of_ne_zero (NeZero.ne M))
     (Nat.pos_of_ne_zero (NeZero.ne N')) (ell mu).isLt
@@ -156,6 +156,7 @@ theorem cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv_quotient_cast
     rw [show M - (q mu).val - 1 = M - ((q mu).val + 1) by omega,
       Nat.cast_sub hqsucc]
     push_cast
+    rw [ZMod.natCast_self]
     ring
 
 end
