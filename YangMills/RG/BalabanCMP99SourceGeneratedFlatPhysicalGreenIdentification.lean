@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNon
 /-!
 # Generated flat physical Green identification
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its result has not yet been verified by the compiler.
-
 The internally generated ambient Green is transported through the exact
 Step-7b carrier equivalence, retaining the physical factorization with block
 side `M^(depth+1)` and coarse side `2*(M*Q)`.  Its left-inverse law follows

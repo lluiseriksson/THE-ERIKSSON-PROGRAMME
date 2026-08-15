@@ -10922,7 +10922,7 @@ Diagnostic v4 runner checkpoint is
 `50073d1331df469e6dd83743b253e693025435331f15b28779f1605204d17e6a`.
 The fourteen-declaration audit remains pending Colab.  Counters are unchanged.
 
-### Step 8b.3 Gate 6: generated physical Green endpoint (PRE-VALIDATION)
+### Step 8b.3 Gate 6: generated physical Green endpoint (COLD-SEALED)
 
 Source checkpoint `d0ea9148c746914a60c4a9af6e187ad701f0cb0c`
 contains the single post-Gate-5 endpoint brick.  It transports the internally
@@ -10995,3 +10995,25 @@ The runtime was explicitly terminated through the Colab session manager and
 the tab closed.  This is diagnostic evidence only: PRE-VALIDATION remains
 until the single cold workflow checks the same source with project-graph
 restore and save both skipped.  Counters and window 15 remain unchanged.
+
+The single terminal cold workflow
+[`31863743950`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31863743950)
+sealed exact source `3078a38a710dfdb735b5ecdde65d7a014b9c83ef` under workflow
+vehicle `e736572a7b6342c14cd87ed1843981de1659a730` (workflow Git-blob
+SHA-256 `a0f3581804d3125bf79c0261e0a9f40b0e45dfc8750b63bcffe264f3545c380c`).
+Project-graph restore and save were both skipped.  The focal ran
+`04:12:32Z--04:47:17Z`, returned `EXIT=0`, and emitted literal terminal line
+`Build completed successfully (8645 jobs).`; the audit ran
+`04:47:17Z--04:47:31Z`, returned `EXIT=0`, and printed four exact standard
+axiom blocks.  Artifact `9241815547` has GitHub digest
+`a4eda6e6fe08d0f49508c66c5e698ac512a5d92a84c179186569b6cd8f8076fd`;
+the downloaded deterministic archive has SHA-256
+`4601cbd8631279a2dc6c2b9beaa4b8c6201f95d4e8d0a4557b1cee5b7dc8b6a5`,
+and all `13/13` manifest entries verify with zero mismatches.  This evidence
+retires both Gate-6 PRE-VALIDATION headers.
+
+Gate 6 now cold-seals the literal generated Step-7b Green identification with
+no free inverse, precision dictionary, `hfine`, or stabilized-denominator
+input.  It still does not prove a regional Green bound, attain window 15,
+discharge a terminal field, or inhabit `TermSource`.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible and unattained.

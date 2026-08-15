@@ -35993,3 +35993,33 @@ both skipped.  Gate 6 identifies the internally generated Green endpoint but
 does not prove a regional Green bound, attain window 15, discharge a terminal
 field, or inhabit `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`.
+
+## Addendum 794 (2026-08-15, **Gate 6 COLD-SEALED; generated physical Green endpoint; 20/41 unchanged**)
+
+The single terminal cold workflow
+[`31863743950`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31863743950)
+sealed exact source `3078a38a710dfdb735b5ecdde65d7a014b9c83ef` under workflow
+vehicle `e736572a7b6342c14cd87ed1843981de1659a730`.  The workflow Git-blob
+SHA-256 is
+`a0f3581804d3125bf79c0261e0a9f40b0e45dfc8750b63bcffe264f3545c380c`.
+`COLD_MODE=true`; project-graph restore and save were both skipped.  The focal
+ran `2026-08-15T04:12:32Z--04:47:17Z`, returned `EXIT=0`, and emitted literal
+terminal line `Build completed successfully (8645 jobs).`; the audit ran
+`04:47:17Z--04:47:31Z`, returned `EXIT=0`, and printed four exact
+`[propext, Classical.choice, Quot.sound]` blocks.  The new source emitted zero
+linter warnings, and neither `sorryAx` nor `ofReduceBool` appeared.
+
+Artifact `9241815547` has GitHub digest
+`a4eda6e6fe08d0f49508c66c5e698ac512a5d92a84c179186569b6cd8f8076fd`.
+Its downloaded deterministic archive has SHA-256
+`4601cbd8631279a2dc6c2b9beaa4b8c6201f95d4e8d0a4557b1cee5b7dc8b6a5`;
+all `13/13` internal manifest entries verify with zero mismatches.  This
+evidence retires both Gate-6 PRE-VALIDATION headers.
+
+Gate 6 identifies the literal generated stabilized Step-7b field with the
+internally generated Green applied to the literal coefficient-one `Q'^*`,
+without a caller-supplied inverse, physical precision dictionary, fine-symbol
+nonvanishing family, or stabilized denominator.  It does not prove a regional
+Green bound, attain window 15, discharge a terminal field, or inhabit
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible and unattained.
