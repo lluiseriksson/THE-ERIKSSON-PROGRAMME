@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceCoarseFibreFourierNeg
+import YangMills.RG.BalabanCMP99SourceFlatQprimeAliasFibreDictionary
 
 /-!
 # Euclidean quotient carry under cross-fibre Fourier negation
@@ -45,13 +46,13 @@ private theorem periodicNegQuotient
     rw [if_pos rfl, zero_add]
     by_cases hq0 : q = 0
     · subst q
-      simp [hM.ne', hN.ne']
+      simp
     · have hqpos : 0 < q := Nat.pos_of_ne_zero hq0
       have hsublt : M - q < M := Nat.sub_lt hM hqpos
       have hnum : M * N - N * q = (M - q) * N := by
         rw [Nat.sub_mul]
         simp only [Nat.mul_comm]
-      rw [hnum, Nat.mod_eq_of_lt (Nat.mul_lt_mul_right hN hsublt),
+      rw [hnum, Nat.mod_eq_of_lt ((Nat.mul_lt_mul_right hN).2 hsublt),
         Nat.mul_div_right _ hN, Nat.mod_eq_of_lt hsublt]
   · have hellpos : 0 < ell := Nat.pos_of_ne_zero he
     have hqle : q + 1 ≤ M := Nat.succ_le_iff.mpr hq
@@ -74,7 +75,8 @@ private theorem periodicNegQuotient
       calc
         M * N - (ell + N * q) = (M * N - N * q) - ell := by omega
         _ = (M - q) * N - ell := by rw [hMNq]
-        _ = ((M - q - 1) + 1) * N - ell := by rw [hsubsucc]
+        _ = ((M - q - 1) + 1) * N - ell :=
+          congrArg (fun t => t * N - ell) hsubsucc
         _ = ((M - q - 1) * N + N) - ell := by ring
         _ = (M - q - 1) * N + (N - ell) := by omega
         _ = (N - ell) + N * (M - q - 1) := by ring
