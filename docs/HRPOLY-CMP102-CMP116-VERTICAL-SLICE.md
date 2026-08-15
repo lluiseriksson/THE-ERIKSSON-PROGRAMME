@@ -11142,9 +11142,9 @@ bound, window-15 attainment, a terminal-field discharge, or a `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
 
-### Step 8b.5 Gate 8: pointwise finite Green synthesis (PRE-VALIDATION)
+### Step 8b.5 Gate 8: pointwise finite Green synthesis (COLD-SEALED)
 
-The PRE-VALIDATION checkpoint adds the exact finite pointwise synthesis
+The cold-sealed checkpoint adds the exact finite pointwise synthesis
 downstream of Gate 7.  It expands the internally constructed particular
 solution, cancels its literal inverse-volume normalization, and leaves each
 summand as the positive physical Fourier character times the already named
@@ -11159,17 +11159,33 @@ modules already supply the centered half-open alias involution, exact
 row/column transport, and physical transpose solution that the next bridge
 must compose.
 
-Source/audit staged Git-blob SHA-256 are
-`29e576fed85346d1a67af3aadf58b959fc17a4966c4db7376f1d98ae19ecd47f`
+Source/audit Git-blob SHA-256 at the validated source checkpoint are
+`70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f`
 and
 `bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36`.
-Both files visibly retain PRE-VALIDATION and are NOT CHECKED by Lean.  This
-brick is only a finite periodic synthesis normal form.  It does not identify
+Both declarations are cold compiler-verified.  This brick is only a finite
+periodic synthesis normal form.  It does not identify
 the sum with a continuous CMP89 Brillouin integral, prove finite-grid
 periodization, separate the source scales `(L, K)`, construct a regional
 `B0`, attain window 15, discharge a terminal field, or inhabit `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 and unattained.
+
+Terminal run
+[`31877061903`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31877061903)
+verified workflow vehicle `d180802c52a2473ef120ad7bb0e081df86efb130`
+against raw source `0e852bb5973c34eef9cfd17cf2b0a8c0f1987658` with
+project-graph restore/save both skipped.  The focal ran
+`2026-08-15T09:30:08Z--10:02:47Z`, returned `EXIT=0`, and ended with
+`Build completed successfully (8647 jobs).`; the two-declaration audit also
+returned `EXIT=0` with exactly `[propext, Classical.choice, Quot.sound]`.
+Artifact `9245388629` has GitHub digest
+`f7215ad829602240d8d7ea21c05a4197c5493d105ee507be55d00b9a2cbdbf59`;
+the deterministic evidence archive SHA-256 is
+`0753c76cc4c23c1dda0291d21d967807829514a5cdd3264d6e905c3e36e13989`
+and its manifest verifies `13/13` files.  Exactly the two Gate-8
+PRE-VALIDATION headers were retired after this evidence.  Counters remain
+`20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
 
 The exact source checkpoint `b640a744bbf17aea9cf3d05a60a259ebe6ca26c2`
 then passed its single-clone Colab diagnostic.  The focal completed the

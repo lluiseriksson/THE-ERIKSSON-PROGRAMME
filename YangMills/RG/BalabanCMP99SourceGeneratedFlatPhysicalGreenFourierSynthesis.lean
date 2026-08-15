@@ -8,8 +8,12 @@ import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode
 /-!
 # Pointwise Fourier synthesis of the generated flat physical Green
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+Cold compiler evidence: exact source checkpoint
+`0e852bb5973c34eef9cfd17cf2b0a8c0f1987658`, workflow vehicle
+`d180802c52a2473ef120ad7bb0e081df86efb130`, GitHub Actions run
+`31877061903` (`cold=true`, project-graph restore/save both skipped).  The
+focal completed `8647` jobs and the two-declaration audit uses exactly
+`[propext, Classical.choice, Quot.sound]`.
 
 Cold-sealed Gate 7 exposes every fine DFT coefficient of the generated Green
 on one coarse Fourier source.  This file cancels the literal inverse-volume

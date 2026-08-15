@@ -36300,3 +36300,33 @@ that durable cold evidence passes.  The diagnostic does not identify a
 continuous integral, prove periodization, construct regional `B0`, attain
 window 15, discharge a terminal field, or inhabit `TermSource`; counters
 remain exactly `20/41`, `TermSource = 0`.
+
+## Addendum 804 (2026-08-15, **Gate 8 COLD-SEALED; pointwise finite synthesis verified; 20/41 unchanged**)
+
+Terminal GitHub Actions run
+[`31877061903`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31877061903)
+verified workflow vehicle `d180802c52a2473ef120ad7bb0e081df86efb130`
+against exact raw source checkpoint
+`0e852bb5973c34eef9cfd17cf2b0a8c0f1987658`.  Checkout, source/audit blob,
+official toolchain and Mathlib gates all passed.  Project-graph restore and
+save were both `skipped` under `cold=true`.
+
+The focal ran `2026-08-15T09:30:08Z--10:02:47Z`, returned `EXIT=0`, and ended
+with literal line `Build completed successfully (8647 jobs).`.  The audit ran
+`10:02:47Z--10:02:54Z`, returned `EXIT=0`, and both declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.  The durable artifact is
+`9245388629`, GitHub artifact digest
+`f7215ad829602240d8d7ea21c05a4197c5493d105ee507be55d00b9a2cbdbf59`.
+Its deterministic evidence archive has SHA-256
+`0753c76cc4c23c1dda0291d21d967807829514a5cdd3264d6e905c3e36e13989`;
+the embedded manifest verifies `13/13` files.  The artifact was downloaded
+once under `validation-evidence/gate8-31877061903-cold/` and audited locally
+without Lean.
+
+Exactly the two Gate-8 PRE-VALIDATION headers are now retired.  No theorem,
+definition, statement, constant, hypothesis or proof body changes in this
+seal commit.  Gate 8 proves an exact finite periodic pointwise synthesis; it
+does not identify the sum with the continuous CMP89 integral, prove
+periodization, construct regional `B0`, attain window 15, discharge a
+terminal field, or inhabit `TermSource`.  Counters therefore remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
