@@ -44,7 +44,7 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-phase-v3"
+runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-phase-v4"
 runner.SOURCE_SHA = "f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e"
 runner.ROOT = Path("/content/hrpoly-flat-qprime-endpoint-phase")
 runner.EVIDENCE = Path("/content/hrpoly-flat-qprime-endpoint-phase-evidence")
@@ -64,11 +64,15 @@ REPRO.write_text(
 
 open scoped BigOperators
 
-example {ι : Type} [Fintype ι] (a b : ι → ℂ) :
+example {ι : Type} [Fintype ι] (a b c : ι → ℂ)
+    (h : ∀ i, a i - b i = c i) :
     Complex.I * (∑ i, a i) + -(Complex.I * ∑ i, b i) =
-      Complex.I * ∑ i, (a i - b i) := by
+      Complex.I * ∑ i, c i := by
   rw [← sub_eq_add_neg, ← mul_sub, ← Finset.sum_sub_distrib,
     Finset.mul_sum, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [h i]
 """,
     encoding="utf-8",
 )
