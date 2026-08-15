@@ -35928,7 +35928,11 @@ the same depth-one normalization: an alias membership lived in
 `d3fd50464032f4220fa87ef11f445414dbf075eb6f6588c6e814e23ddd17844e`
 and
 `44cb446bf4902a081b4d4656571e5f1a9e2f22bf7925fb911ae8e8bbfc47f262`.
-The runtime auto-released and no cell was reexecuted.
+The wrapper printed its release request, but an instrumentation monkeypatch
+prevented the launcher from disconnecting the runtime.  This was recorded as
+an instrumentation defect, not mathematical evidence; no cell was
+reexecuted, and the still-connected runtime was reused only for hot
+diagnostic v2.
 
 PRE-VALIDATION repair checkpoint
 `10c80c3579de6f84f6686462e52cf23bf22bb761` inserts only the two explicit
@@ -35940,3 +35944,29 @@ the audit blob remains
 Compiler status is **NOT CHECKED** pending diagnostic v2.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
 unattained.
+
+## Addendum 792 (2026-08-15, **Gate 6 diagnostic v2 FAIL; dependent carrier transport repaired; 20/41 unchanged**)
+
+Hot diagnostic v2 reused the still-connected Colab Pro+ CPU/high-RAM runtime
+at exact source `10c80c3579de6f84f6686462e52cf23bf22bb761`.  Both textual
+guards passed.  The focal returned `EXIT=1` after `37.119 s`; the audit did
+not run.  The sole remaining error was the dependent carrier transport:
+`simpa only [pow_one] using m.property` retained membership in
+`CMP89Eq246AliasIndex d M 1` instead of exposing membership in
+`cmp89Eq245CenteredAliasVectors d M`.  The Green conjugation, left inverse,
+Gate-5 stabilized denominator input, and uniqueness endpoint were not
+reached by an error.
+
+PRE-VALIDATION repair checkpoint
+`3078a38a710dfdb735b5ecdde65d7a014b9c83ef` first pins the membership at
+`cmp89Eq245CenteredAliasVectors d (M ^ 1)` and only then reduces `pow_one`,
+matching the sealed depth-one carrier dictionary.  The repaired source
+Git-blob SHA-256 is
+`4223dca0923eb7b9682a6c16544a5552eb51b0e9195621b8371e75f791413868`;
+the audit blob remains
+`aece1c37a834af9d9afdc7ef58af0d11fc4dfef7bd3bf9934141f3cc5240475c`.
+No statement, constant, hypothesis, inverse, or physical factorization
+changes.  The saved real runtime-unassign handle was called after the failure
+and the browser tab was closed.  Compiler status remains **NOT CHECKED**
+pending diagnostic v3.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible and unattained.

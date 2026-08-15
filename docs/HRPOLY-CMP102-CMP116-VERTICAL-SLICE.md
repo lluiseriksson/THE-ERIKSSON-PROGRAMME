@@ -10952,7 +10952,10 @@ SHA-256 are
 `d3fd50464032f4220fa87ef11f445414dbf075eb6f6588c6e814e23ddd17844e`
 and
 `44cb446bf4902a081b4d4656571e5f1a9e2f22bf7925fb911ae8e8bbfc47f262`.
-The runtime auto-released.
+The wrapper printed its release request, but an instrumentation monkeypatch
+prevented the launcher from disconnecting the runtime.  That defect was
+measured rather than treated as mathematical evidence; the still-connected
+runtime was reused only for the hot diagnostic v2.
 
 Repair checkpoint `10c80c3579de6f84f6686462e52cf23bf22bb761`
 normalizes membership from the depth-one alias carrier `M^1` to `M` and
@@ -10962,3 +10965,19 @@ source Git-blob SHA-256 is
 `3120ad19f781f98e143812672ccef8293b0879639e465edb6de30ad0026d5661`;
 the audit blob is unchanged.  Compiler status remains NOT CHECKED pending
 diagnostic v2; counters and window 15 remain unchanged.
+
+Hot diagnostic v2 at exact source
+`10c80c3579de6f84f6686462e52cf23bf22bb761` passed both textual guards, then
+stopped after `37.119 s` at the single remaining carrier transport.  The
+direct `simpa only [pow_one] using m.property` did not unfold the dependent
+alias subtype, so Lean retained membership in
+`CMP89Eq246AliasIndex d M 1` rather than the required centered carrier at
+`M`.  No Green-conjugation or endpoint declaration failed, and the audit did
+not run.  The repaired checkpoint
+`3078a38a710dfdb735b5ecdde65d7a014b9c83ef` first pins membership at `M ^ 1`
+and then reduces `pow_one`, following the already sealed carrier-dictionary
+pattern.  Its source Git-blob SHA-256 is
+`4223dca0923eb7b9682a6c16544a5552eb51b0e9195621b8371e75f791413868`;
+the audit blob is unchanged.  No statement, constant, hypothesis, inverse,
+or physical factorization changes.  Compiler status remains NOT CHECKED
+pending diagnostic v3; counters and window 15 remain unchanged.

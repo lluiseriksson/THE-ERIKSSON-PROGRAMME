@@ -22,8 +22,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "gate6-generated-green-v2"
-runner.SOURCE_SHA = "10c80c3579de6f84f6686462e52cf23bf22bb761"
+runner.RUNNER_REV = "gate6-generated-green-v3"
+runner.SOURCE_SHA = "3078a38a710dfdb735b5ecdde65d7a014b9c83ef"
 runner.ROOT = Path("/content/hrpoly-gate6-generated-green")
 runner.EVIDENCE = Path("/content/hrpoly-gate6-generated-green-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-gate6-generated-green-evidence.tar.gz")
@@ -31,7 +31,7 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-gate6-generated-green-paths.txt")
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenIdentification.lean":
-        "3120ad19f781f98e143812672ccef8293b0879639e465edb6de30ad0026d5661",
+        "4223dca0923eb7b9682a6c16544a5552eb51b0e9195621b8371e75f791413868",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenIdentificationAudit.lean":
         "aece1c37a834af9d9afdc7ef58af0d11fc4dfef7bd3bf9934141f3cc5240475c",
 }
