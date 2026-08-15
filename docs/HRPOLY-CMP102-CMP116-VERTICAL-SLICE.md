@@ -11414,7 +11414,7 @@ physical brick must expose that affine carry as a function of the coarse
 residue; it may not claim simple intertwinement with
 `cmp99SourceAliasIndexOneReflection`.
 
-### Step 8b.8: periodic Fourier negation between coarse fibres (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.8: periodic Fourier negation between coarse fibres (PRE-VALIDATION; diagnostic PASS; terminal cold NOT CHECKED)
 
 Independent source checkpoint `80ab41f2839cf9546e19c5a12a68196e45b5d246` adds
 `BalabanCMP99SourceCoarseFibreFourierNeg` and its three-declaration audit.
@@ -11462,8 +11462,30 @@ Revised source/audit Git-blob SHA-256 are
 `f39b4a46111a5274d264e29ab0c4506abc120a5cf9158b8038944eee47c464b3`
 and `3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
 Runner v3 checkpoint `396f03bea9434fc57c10bd83de3356bae7f7fd5d`
-gates the repaired source and the unchanged three-declaration audit.  Until
-that runner emits a compiler verdict, both modules remain PRE-VALIDATION and
-NOT CHECKED.  The quotient carry and all downstream physical claims remain
-open; counters stay exactly `20/41`, `TermSource = 0`, and window 15 remains
+gates the repaired source and the unchanged three-declaration audit.  The
+diagnostic result below does not retire PRE-VALIDATION before the terminal
+cold seal.  The quotient carry and all downstream physical claims remain open;
+counters stay exactly `20/41`, `TermSource = 0`, and window 15 remains
 compatible but unattained.
+
+Diagnostic v3 passed in one fresh CPU/high-RAM Colab clone after a separate
+standard-RAM launch was correctly rejected before toolchain installation by
+literal `HIGH_RAM_REQUIRED`.  The useful run opened at
+`2026-08-15T13:59:47.360340+00:00`, checked out exact source
+`c1f9b5104ea94162b3ccc4d6aec6774a6f92005f`, reverified both blob gates,
+Lean `4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and both textual guards.  Its
+literal focal terminal line was `Build completed successfully (8492 jobs).`;
+the focal exited `0` after `1117.577 s`, the audit exited `0` after `5.486 s`,
+and all three declarations used exactly `[propext, Quot.sound]`.  Evidence
+JSON/archive SHA-256 are
+`1aa521768b451ad1808c3d302a6c556751853f224c37b4226904ed4a0e21c5f9`
+and `336eeac50300d7b320aa9029ac9b7709e4ea9e27c62e193a9f296217065a40c9`.
+The runtime released after literal `FINAL_STATUS=PASS` and launcher exit `0`.
+
+Terminal cold workflow vehicle
+`3c171d05eb544da66e55f6bf2f4ca502e5917f07` (workflow Git-blob SHA-256
+`9a460d446087a90061d2e685889894f674d8ccdaf3831fca46da3603bcd6d86a`)
+is prepared against the same exact source and blobs.  No terminal run has yet
+been dispatched, so both Lean modules remain PRE-VALIDATION.  The diagnostic
+seals no quotient-carry or physical endpoint claim and moves no counter.

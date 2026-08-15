@@ -36685,3 +36685,49 @@ Diagnostic runner v3 checkpoint
 Both Lean modules remain visibly PRE-VALIDATION and NOT CHECKED at the revised
 checkpoint.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
+
+## Addendum 817 (2026-08-15, **coarse-fibre Fourier negation diagnostic v3 PASS in fresh high-RAM Colab; terminal cold seal prepared**)
+
+The first v3 launch was rejected by the runner before toolchain installation
+because Colab supplied only `12.67 GiB`; literal `HIGH_RAM_REQUIRED` was
+recorded, with evidence JSON/archive SHA-256
+`558df4b9a30c986c308b1c0891c6fa73e33aa54a3bf34412617eb9d050156144`
+and `86e23b1bfb0a96eb0db1cd08ed93ce4d8d6b558f07e6ca0f5c96beb4b52ffb49`.
+This is `BLOCKED-RUNTIME-CLASS`, not compiler evidence.
+
+Diagnostic v3 then ran exactly once in Colab Pro+ under visible account
+`lluiseriksson@gmail.com`, CPU/high-RAM (`50.99 GiB`), opening at
+`2026-08-15T13:59:47.360340+00:00`.  It verified runner checkpoint
+`396f03bea9434fc57c10bd83de3356bae7f7fd5d` and Git-blob SHA-256
+`66852ee650d83d0ca5827d42f4d59e4cfe99039d7054376311e452681afbdb57`,
+checked out exact source `c1f9b5104ea94162b3ccc4d6aec6774a6f92005f`,
+gated source/audit blobs
+`f39b4a46111a5274d264e29ab0c4506abc120a5cf9158b8038944eee47c464b3`
+and
+`3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`,
+verified Lean `4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and passed both textual guards.
+
+Literal focal terminal line:
+
+`Build completed successfully (8492 jobs).`
+
+The focal exited `0` after `1117.577 s`; the three-declaration audit exited
+`0` after `5.486 s`.  Every declaration printed exactly
+`[propext, Quot.sound]`.  Evidence JSON/archive SHA-256 are
+`1aa521768b451ad1808c3d302a6c556751853f224c37b4226904ed4a0e21c5f9`
+and `336eeac50300d7b320aa9029ac9b7709e4ea9e27c62e193a9f296217065a40c9`.
+The transcript ended with literal `FINAL_STATUS=PASS`, `LAUNCHER_EXIT=0` and
+`LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the runtime disconnected and the tab
+was closed.
+
+This diagnostic validates the one-token simplification repair but does not
+retire PRE-VALIDATION.  Terminal workflow vehicle
+`3c171d05eb544da66e55f6bf2f4ca502e5917f07` has workflow Git-blob SHA-256
+`9a460d446087a90061d2e685889894f674d8ccdaf3831fca46da3603bcd6d86a`.
+It targets the same source with `cold=true`, exact blob gates, focal plus
+three-declaration audit, robust axiom parsing, and no restoration or saving of
+`.lake/build`.  No terminal Actions run has yet been dispatched.  The affine
+quotient carry and all downstream physical claims remain open.  Counters stay
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
