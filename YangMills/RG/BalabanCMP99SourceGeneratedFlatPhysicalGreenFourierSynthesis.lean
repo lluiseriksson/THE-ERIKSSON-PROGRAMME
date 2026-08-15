@@ -48,6 +48,7 @@ finite pointwise sum of its positive Fourier characters times the transposed
 stabilized alias coefficients.  The fine-volume normalization cancels
 internally; no Fourier coefficient or reconstruction identity is supplied by
 the caller. -/
+omit [NeZero d] [NeZero Nc] in
 theorem cmp99SourceFlatFullComplexPrecisionStabilizedParticularSolution_apply_eq_sum_transposeGreenTerms
     (ell : FinBox d N') (mass a : ℝ) (v : SUNLieComplexCoord Nc)
     (x : FinBox d (M * N')) :

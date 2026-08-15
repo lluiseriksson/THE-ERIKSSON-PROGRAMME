@@ -11160,7 +11160,7 @@ row/column transport, and physical transpose solution that the next bridge
 must compose.
 
 Source/audit staged Git-blob SHA-256 are
-`c81326bec76d0b6f64e9538cf5482e6ef101129a82f8a840378d8dd2a45108dc`
+`29e576fed85346d1a67af3aadf58b959fc17a4966c4db7376f1d98ae19ecd47f`
 and
 `bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36`.
 Both files visibly retain PRE-VALIDATION and are NOT CHECKED by Lean.  This
@@ -11170,3 +11170,35 @@ periodization, separate the source scales `(L, K)`, construct a regional
 `B0`, attain window 15, discharge a terminal field, or inhabit `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 and unattained.
+
+The exact source checkpoint `b640a744bbf17aea9cf3d05a60a259ebe6ca26c2`
+then passed its single-clone Colab diagnostic.  The focal completed the
+literal terminal line `Build completed successfully (8647 jobs).`, returned
+`EXIT=0` after `1536.746 s`, and the two-declaration audit returned `EXIT=0`
+after `10.654 s`; both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence and deterministic archive
+SHA-256 are
+`7d6a405a549edffe2a2dd0b890c89b10b1f957f1bb347bb91ee8bcace0648e6b`
+and
+`072f1468764062366e61004d89d8766d3cadc6544f4488c740d5eed8b55ceb98`.
+The runner emitted `FINAL_STATUS=PASS` and requested runtime unassignment;
+the launcher disconnected the runtime.  Colab decorated the completed cell as
+failed only because IPython displayed the runner's final `SystemExit: 0`
+after the PASS.  That UI decoration is not a failed Lean stage.
+
+The diagnostic also exposed one new-module linter warning: the first theorem
+carried the unused section instances `[NeZero d]` and `[NeZero Nc]`.  A
+warning-only source checkpoint now omits exactly those two instances.  The
+PRE-VALIDATION headers remain until one cold terminal workflow verifies that
+checkpoint with project-graph restore and save skipped.
+
+Two post-Gate-8 gates are now explicit.  The half-open centered alias carrier
+is not closed under literal integer negation; row-to-column reflection must
+use the already sealed signed residue equivalence and retain the wrap.  Also,
+Gate 8 fixes scalar mass zero while the current complex-floor consumer still
+asks for `0 < mass`.  The real-slice floor is already mass-uniform in
+`cmp89Eq249CentralStabilizedLowerConstant_le_re_massUniform`, so the remaining
+massless complex-floor bridge is localized: reuse the same vertical variation
+budget and replace only the obsolete positive-mass real-floor input.  Neither
+gate changes `20/41`, constructs `B0`, attains window 15, or inhabits
+`TermSource`.

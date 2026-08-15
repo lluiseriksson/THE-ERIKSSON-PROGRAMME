@@ -36179,3 +36179,44 @@ periodization theorem, source-scale separation, regional `B0`, window-15
 attainment, terminal-field discharge, or `TermSource` inhabitant.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
 unattained.
+
+## Addendum 801 (2026-08-15, **Gate 8 Colab diagnostic PASS; warning-only seal checkpoint pending; 20/41 unchanged**)
+
+Exact source `b640a744bbf17aea9cf3d05a60a259ebe6ca26c2` passed the
+single-clone Colab diagnostic on CPU/high RAM (`50.99 GiB`) under the official
+Lean `v4.29.0-rc6` asset SHA-256
+`bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`
+and exact Mathlib pin `07642720480157414db592fa85b626dafb71355b`.
+The focal returned `EXIT=0` after `1536.746 s` with literal terminal line
+`Build completed successfully (8647 jobs).`; the audit returned `EXIT=0`
+after `10.654 s` and printed two exact
+`[propext, Classical.choice, Quot.sound]` blocks.  Evidence and archive
+SHA-256 are
+`7d6a405a549edffe2a2dd0b890c89b10b1f957f1bb347bb91ee8bcace0648e6b`
+and
+`072f1468764062366e61004d89d8766d3cadc6544f4488c740d5eed8b55ceb98`.
+The runner emitted `FINAL_STATUS=PASS` and requested unassignment; the
+launcher disconnected the runtime.  IPython subsequently displayed
+`SystemExit: 0`, causing a false failed-cell decoration after the authoritative
+PASS, not a failed Lean/Lake/audit stage.
+
+One warning in the new source remains unacceptable for the terminal seal:
+the first theorem inherited unused `[NeZero d]` and `[NeZero Nc]` section
+instances.  The source-only repair is the explicit omission of exactly those
+instances; it changes no statement, constant, definition, or proof body.
+The repaired source/audit staged Git-blob SHA-256 are
+`29e576fed85346d1a67af3aadf58b959fc17a4966c4db7376f1d98ae19ecd47f`
+and
+`bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36`.
+PRE-VALIDATION therefore remains in place pending one cold terminal workflow
+with project-graph restore/save skipped.
+
+Static post-diagnostic audit also fixes two downstream debts.  Negation on
+the centered half-open alias carrier must go through the sealed residue
+equivalence rather than `m |-> -m`.  Separately, Gate 8 uses mass zero while
+the current complex-floor theorem still carries `0 < mass`; the already
+sealed mass-uniform real floor shows that the repair is confined to the
+complex reverse-triangle bridge and its consumers.  No continuous integral,
+periodization, regional `B0`, window-15 attainment, terminal-field discharge,
+or `TermSource` inhabitant is claimed.  Counters remain `20/41` and
+`TermSource = 0`.
