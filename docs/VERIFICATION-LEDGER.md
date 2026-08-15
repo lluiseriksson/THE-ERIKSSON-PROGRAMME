@@ -36045,3 +36045,21 @@ It does not identify a continuous Brillouin integral, produce a regional
 Green estimate or uniform `B0`, attain window 15, discharge a terminal field,
 or inhabit `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible and unattained.
+
+## Addendum 796 (2026-08-15, **Gate 7 diagnostic v1 BLOCKED-INSTRUMENTATION before checkout; NOT CHECKED**)
+
+The outer Colab cell verified runner transport SHA-256
+`db4e8e2a37011b9c30a421e8181c37fe62561b40af9eb75204f24ac62124624f`
+under the visible account `lluiseriksson@gmail.com` in a CPU/high-RAM runtime.
+The inherited in-memory launcher then stopped literally with
+`NameError: name '__file__' is not defined`.  No checkout, Lean, Lake, or
+oracle ran.  The runtime was disconnected and deleted without reexecution.
+
+Runner v2 removes the ambient `__file__` dependency.  It fetches the pinned
+base runner from source `bcc852cee5e709bff91fad7de26fa21cff754e1f`, verifies
+SHA-256
+`d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee`,
+and only then imports it from `/content`.  No mathematical source, statement,
+constant, hypothesis, or source-blob hash changes.  Gate 7 remains entirely
+NOT CHECKED; counters remain `20/41`, `TermSource = 0`, and window 15 remains
+compatible and unattained.

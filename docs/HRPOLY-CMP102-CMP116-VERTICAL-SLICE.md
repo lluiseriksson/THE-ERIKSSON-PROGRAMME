@@ -11038,3 +11038,13 @@ Fourier/operator dictionary.  It does not identify a continuous Brillouin
 integral, produce a regional Green estimate or uniform `B0`, attain window 15,
 discharge a terminal field, or inhabit `TermSource`.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible and unattained.
+
+Diagnostic v1 stopped before checkout and before Lean.  The outer notebook
+verified runner transport, then the child runner failed literally with
+`NameError: name '__file__' is not defined` because the inherited launcher
+executed it from memory.  The runtime was disconnected and deleted without
+reexecution.  This is `BLOCKED-INSTRUMENTATION`, not mathematical evidence;
+all Gate-7 declarations remain NOT CHECKED.  Runner v2 removes the ambient
+`__file__` dependency and downloads the pinned base runner by raw SHA plus
+SHA-256 before importing it.  Mathematical source and both source-blob hashes
+are unchanged.

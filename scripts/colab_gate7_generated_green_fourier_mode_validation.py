@@ -12,11 +12,29 @@ uniform ``B0``, or attainment of window 15.
 from __future__ import annotations
 
 import importlib.util
+import hashlib
 from pathlib import Path
+import urllib.request
 
 
-HERE = Path(__file__).resolve().parent
+HERE = Path("/content")
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
+BASE_RUNNER_URL = (
+    "https://raw.githubusercontent.com/lluiseriksson/"
+    "THE-ERIKSSON-PROGRAMME/"
+    "bcc852cee5e709bff91fad7de26fa21cff754e1f/"
+    "scripts/colab_qprime_row_validation.py"
+)
+BASE_RUNNER_SHA256 = (
+    "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
+)
+with urllib.request.urlopen(BASE_RUNNER_URL) as response:
+    base_runner_source = response.read()
+base_runner_hash = hashlib.sha256(base_runner_source).hexdigest()
+print("BASE_RUNNER_TRANSPORT_SHA256=" + base_runner_hash, flush=True)
+if base_runner_hash != BASE_RUNNER_SHA256:
+    raise RuntimeError("BASE_RUNNER_TRANSPORT_HASH_MISMATCH")
+BASE_RUNNER.write_bytes(base_runner_source)
 SPEC = importlib.util.spec_from_file_location("gate7_fourier_base_runner", BASE_RUNNER)
 if SPEC is None or SPEC.loader is None:
     raise RuntimeError(f"cannot load base runner: {BASE_RUNNER}")
