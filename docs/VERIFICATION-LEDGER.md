@@ -35893,3 +35893,24 @@ physical representative.  It still does not identify the internally generated
 Green, attain window 15, discharge a terminal field, or inhabit `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 and unattained.
+
+## Addendum 790 (2026-08-15, **Gate 6 PRE-VALIDATION; generated Green endpoint NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`d0ea9148c746914a60c4a9af6e187ad701f0cb0c` adds the finite endpoint after
+the sealed complex precision dictionary and Gate-5 scalar nonvanishing.  It
+constructs the Step-7b Green by exact carrier conjugation of the internally
+generated ambient Green, derives the literal left inverse, treats the zero
+coarse mode separately when constructing noncentral fine-symbol
+nonvanishing, and invokes inverse uniqueness with no free inverse,
+operator-dictionary, `hfine`, or `hstabilized` input.
+
+The source/audit Git-blob SHA-256 values are
+`735f1912726256a3acfdbc2783fb85b65dc50efc0932839f459ef4bfa8f7864a`
+and
+`aece1c37a834af9d9afdc7ef58af0d11fc4dfef7bd3bf9934141f3cc5240475c`.
+Textual gates pass on exactly those two files, but neither `.olean` has been
+materialized.  Compiler status is **NOT CHECKED** pending the fresh Colab
+focal and four-declaration audit.  This checkpoint does not attain window 15,
+discharge a terminal field, or inhabit `TermSource`; counters remain exactly
+`20/41`, `TermSource = 0`.

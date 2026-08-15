@@ -10921,3 +10921,25 @@ Diagnostic v4 runner checkpoint is
 `dd4d7a63919335ecd929cdf42598d16f5c33389a`, with Git-blob SHA-256
 `50073d1331df469e6dd83743b253e693025435331f15b28779f1605204d17e6a`.
 The fourteen-declaration audit remains pending Colab.  Counters are unchanged.
+
+### Step 8b.3 Gate 6: generated physical Green endpoint (PRE-VALIDATION)
+
+Source checkpoint `d0ea9148c746914a60c4a9af6e187ad701f0cb0c`
+contains the single post-Gate-5 endpoint brick.  It transports the internally
+generated complex ambient Green through the exact Step-7b field equivalence,
+derives its left-inverse law from the sealed ambient inverse and physical
+precision dictionary, constructs the zero-mass noncentral fine-symbol family
+for every coarse mode, and feeds that family together with the cold-sealed
+Gate-5 denominator theorem to inverse uniqueness.  The physical
+factorization remains block side `M^(depth+1)` and coarse carrier
+`2*(M*Q)`; no arithmetic refactorization to `M^(depth+2), 2*Q` occurs.
+
+Source/audit Git-blob SHA-256 are
+`735f1912726256a3acfdbc2783fb85b65dc50efc0932839f459ef4bfa8f7864a`
+and
+`aece1c37a834af9d9afdc7ef58af0d11fc4dfef7bd3bf9934141f3cc5240475c`.
+Both files retain PRE-VALIDATION.  Until the focal and four-declaration audit
+pass, the Green equality is NOT CHECKED.  Even after validation this brick
+will identify the literal `G Q'^*` field only; it will not prove a regional
+Green bound, attain window 15, discharge a terminal field, or inhabit
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`.
