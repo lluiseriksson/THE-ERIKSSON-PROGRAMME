@@ -36260,3 +36260,9 @@ two-file overlay text guard, import-prefix guard, explicit order check and
 PRE-VALIDATION headers remain, Gate 8 remains NOT COLD-SEALED, and counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
 unattained.
+
+Runner revision `gate8-generated-green-fourier-synthesis-v2` pins repaired
+source `0e852bb5973c34eef9cfd17cf2b0a8c0f1987658`, source Git-blob SHA-256
+`70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f`,
+and the unchanged audit blob.  It is a diagnostic vehicle only; no second
+terminal workflow is authorized until that fresh Colab diagnostic passes.

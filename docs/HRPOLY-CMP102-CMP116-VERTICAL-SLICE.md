@@ -11221,3 +11221,7 @@ failed-run artifact is `9244488437`, GitHub digest
 `93b347a3cd788b43ed9cc1db4d2f542b6700bfcd789d3f24b01e46c95cbfd492`.
 No audit or successful evidence archive exists for that run.  Both
 PRE-VALIDATION headers therefore remain and Gate 8 is still NOT COLD-SEALED.
+The next diagnostic vehicle is revision
+`gate8-generated-green-fourier-synthesis-v2`, pinned to repaired source
+`0e852bb5973c34eef9cfd17cf2b0a8c0f1987658` and Git-blob SHA-256
+`70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f`.

@@ -41,8 +41,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "gate8-generated-green-fourier-synthesis-v1"
-runner.SOURCE_SHA = "b640a744bbf17aea9cf3d05a60a259ebe6ca26c2"
+runner.RUNNER_REV = "gate8-generated-green-fourier-synthesis-v2"
+runner.SOURCE_SHA = "0e852bb5973c34eef9cfd17cf2b0a8c0f1987658"
 runner.ROOT = Path("/content/hrpoly-gate8-generated-green-fourier-synthesis")
 runner.EVIDENCE = Path(
     "/content/hrpoly-gate8-generated-green-fourier-synthesis-evidence"
@@ -56,7 +56,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis.lean":
-        "c81326bec76d0b6f64e9538cf5482e6ef101129a82f8a840378d8dd2a45108dc",
+        "70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesisAudit.lean":
         "bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36",
 }
