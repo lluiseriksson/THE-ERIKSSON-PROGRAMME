@@ -11192,6 +11192,12 @@ warning-only source checkpoint now omits exactly those two instances.  The
 PRE-VALIDATION headers remain until one cold terminal workflow verifies that
 checkpoint with project-graph restore and save skipped.
 
+That warning-only source checkpoint is
+`17dd7f2bfaa52d19c12cb69ef04b49890a0b52a9`; its source/audit Git-blob
+SHA-256 are the staged values above.  The workflow vehicle targets that raw
+SHA and rejects any new-module warning, any axiom outside the standard trio,
+or any project-graph restore/save in cold mode.
+
 Two post-Gate-8 gates are now explicit.  The half-open centered alias carrier
 is not closed under literal integer negation; row-to-column reflection must
 use the already sealed signed residue equivalence and retain the wrap.  Also,

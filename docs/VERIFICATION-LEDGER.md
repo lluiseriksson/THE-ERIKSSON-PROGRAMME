@@ -36211,6 +36211,12 @@ and
 PRE-VALIDATION therefore remains in place pending one cold terminal workflow
 with project-graph restore/save skipped.
 
+The exact warning-only source checkpoint is
+`17dd7f2bfaa52d19c12cb69ef04b49890a0b52a9`.  Its terminal workflow vehicle
+pins that raw source SHA and the two Git-blob hashes, checks the exact Mathlib
+pin and official toolchain asset, rejects a warning from the new source, and
+is intended for one `cold=true` run only.
+
 Static post-diagnostic audit also fixes two downstream debts.  Negation on
 the centered half-open alias carrier must go through the sealed residue
 equivalence rather than `m |-> -m`.  Separately, Gate 8 uses mass zero while
