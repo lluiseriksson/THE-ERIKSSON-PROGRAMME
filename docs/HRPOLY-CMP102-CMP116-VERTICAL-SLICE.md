@@ -11388,6 +11388,9 @@ and `1b1112838a57933cd725521b2086dc7946ab684c3320d5d10c9ab42196aec76a`.
 This is a fresh-clone diagnostic, not the terminal cold seal.  Both Lean
 modules remain visibly PRE-VALIDATION until the single prepared cold Actions
 run verifies the same source SHA with `.lake/build` restore/save skipped.
+The terminal workflow vehicle is
+`3ab1e84875cd6c33ab32ea748e2444f8dcd4e415`; workflow Git-blob SHA-256 is
+`fcbd51289a197682c5af8d7531c787e4461fc153afb6cd64a7d60950498bfd7c`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 

@@ -36577,8 +36577,11 @@ The transcript ended with literal `FINAL_STATUS=PASS`, `LAUNCHER_EXIT=0` and
 `LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the completed tab was closed.
 
 This diagnostic validates the repair but is not used to retire the visible
-PRE-VALIDATION marks.  The single terminal workflow vehicle is prepared for
-the same source SHA with `cold=true`, exact blob gates, focal plus audit,
-robust axiom parsing and `.lake/build` restore/save skipped.  No Actions run
-has yet been dispatched for this checkpoint.  Hard counters remain `20/41`,
-`TermSource = 0`; window 15 remains compatible and unattained.
+PRE-VALIDATION marks.  Terminal workflow vehicle
+`3ab1e84875cd6c33ab32ea748e2444f8dcd4e415` has workflow Git-blob SHA-256
+`fcbd51289a197682c5af8d7531c787e4461fc153afb6cd64a7d60950498bfd7c`.
+It targets the same source SHA with `cold=true`, exact blob gates, focal plus
+audit, robust axiom parsing and `.lake/build` restore/save skipped.  No
+Actions run has yet been dispatched for this checkpoint.  Hard counters
+remain `20/41`, `TermSource = 0`; window 15 remains compatible and
+unattained.
