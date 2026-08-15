@@ -11116,9 +11116,10 @@ Gate 7 remains a discrete one-mode statement.  The finite post-Gate-7 route
 is therefore recorded explicitly rather than identifying a finite DFT with a
 continuous integral:
 
-1. prove the exact alias-orientation/reindex dictionary between the
-   transposed physical row at negative sampled momentum and the CMP89 endpoint
-   column factors, including the centered half-open alias wrap;
+1. reuse and compose the already cold-sealed signed-alias and weighted-adjoint
+   orientation dictionaries between the transposed physical row at negative
+   sampled momentum and the CMP89 endpoint column factors, including the
+   centered half-open alias wrap;
 2. identify the one-mode finite synthesis pointwise with the sampled CMP89
    stabilized endpoint integrand, without an integral claim;
 3. prove finite-grid Fourier aliasing/periodization from absolutely summable
@@ -11140,3 +11141,32 @@ this list is a continuous Brillouin-integral identification, a regional Green
 bound, window-15 attainment, a terminal-field discharge, or a `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
+
+### Step 8b.5 Gate 8: pointwise finite Green synthesis (PRE-VALIDATION)
+
+The PRE-VALIDATION checkpoint adds the exact finite pointwise synthesis
+downstream of Gate 7.  It expands the internally constructed particular
+solution, cancels its literal inverse-volume normalization, and leaves each
+summand as the positive physical Fourier character times the already named
+transposed stabilized alias coefficient.  No inverse, coefficient family, or
+reconstruction identity is accepted from the caller.
+
+The orientation layer is not reproved here.  The existing cold-sealed
+`BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary`,
+`BalabanCMP99SourceFlatWeightedAdjointFourierOrientation`, and
+`BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution`
+modules already supply the centered half-open alias involution, exact
+row/column transport, and physical transpose solution that the next bridge
+must compose.
+
+Source/audit staged Git-blob SHA-256 are
+`c81326bec76d0b6f64e9538cf5482e6ef101129a82f8a840378d8dd2a45108dc`
+and
+`bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36`.
+Both files visibly retain PRE-VALIDATION and are NOT CHECKED by Lean.  This
+brick is only a finite periodic synthesis normal form.  It does not identify
+the sum with a continuous CMP89 Brillouin integral, prove finite-grid
+periodization, separate the source scales `(L, K)`, construct a regional
+`B0`, attain window 15, discharge a terminal field, or inhabit `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+and unattained.

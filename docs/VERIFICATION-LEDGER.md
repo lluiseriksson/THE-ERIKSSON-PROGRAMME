@@ -36155,3 +36155,27 @@ regional `B0`, attain window 15, discharge a terminal field, or inhabit
 one-parameter carrier is only the diagonal comparison `K = L = M`.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
 unattained.
+
+## Addendum 800 (2026-08-15, **Gate 8 PRE-VALIDATION; pointwise finite synthesis NOT CHECKED; 20/41 unchanged**)
+
+The staged Gate-8 source proposes the first exact pointwise finite synthesis
+downstream of cold-sealed Gate 7.  It expands the internally constructed
+particular solution and cancels the literal inverse-volume normalization,
+leaving the positive physical Fourier character and transposed stabilized
+alias coefficient visible in every summand.  The caller supplies no inverse,
+coefficient family, or reconstruction identity.
+
+The signed-alias and weighted-adjoint orientation dictionaries are already
+cold-sealed and are not duplicated by this brick.  Source/audit staged
+Git-blob SHA-256 are
+`c81326bec76d0b6f64e9538cf5482e6ef101129a82f8a840378d8dd2a45108dc`
+and
+`bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36`.
+Both headers remain visibly PRE-VALIDATION and the declarations are NOT
+CHECKED by Lean pending a Colab focal and audit.
+
+This is not a continuous Brillouin-integral identification, finite-grid
+periodization theorem, source-scale separation, regional `B0`, window-15
+attainment, terminal-field discharge, or `TermSource` inhabitant.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible and
+unattained.
