@@ -37084,11 +37084,22 @@ SHA-256 are
 `e03e6d2d0a662dffa283d2b3f3d50751ed7bcd9c8dd9744b0ce26a0f171eafcf`
 and
 `ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90`.
-Runner checkpoint `5330aa7f43e66b568c343f697b213ed919efe63d` has Git-blob SHA-256
-`e3c2aba47c118c816187d3e2188365799f699b45dabffccf5064fa7ace8c6272`
-and adds a Mathlib-only reproduction of the exact finite-sum normalization
-before the expensive focal.  Notebook vehicle checkpoint is
-`bb648d4e9d25427f2a49fec32d32a22cea600054`.
+Runner checkpoint `5330aa7f43e66b568c343f697b213ed919efe63d` first added a
+Mathlib-only reproduction before the expensive focal.  It stopped after
+`7.563` seconds because the toy statement used the same summand on both sides:
+the first rewrite made the goal reflexive, so the second found no pattern.  No
+project target ran.  The classification is `BLOCKED-INSTRUMENTATION`, not a
+source failure. Evidence SHA-256 is
+`d2fe149a6c9ef57427bf5510ff81dece56dae5454445c8d9f1f24f370bb39d6a`;
+archive SHA-256 is
+`026e8c4b324078488dbc8f9305cfebf672e51f4a27675c1761b18718ac39dcb7`.
+
+Corrected runner checkpoint `a2b6fc7a096d40e2be440f5b21c0548bcc4a8c4b`
+uses a distinct right summand and a pointwise equality, matching the real
+non-reflexive target.  Its Git-blob SHA-256 is
+`3f5d52a418b6be5ec8960c9b79a1eb0ec099ea498e8d16458401751897c83fe6`;
+notebook vehicle checkpoint is
+`325e83c6bfdd5b0b1406bfa2c209a735a47a411e`.
 
 Both Lean files remain visibly PRE-VALIDATION and the latest source remains NOT
 CHECKED.  The brick does
