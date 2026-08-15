@@ -36848,3 +36848,38 @@ The signed-alias affine map, endpoint phase, regional `B0`, window-15
 producer, terminal field and `TermSource` inhabitant remain open.  Counters
 stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 821 (2026-08-15, **quotient-carry diagnostic v2 FAIL; normalization repair v3 prepared; 20/41 unchanged**)
+
+Diagnostic v2 checked out exact source
+`e6f399f890c24e19deef5dbdde3e7f0b9ea7ce87` in a fresh Colab Pro+
+CPU/high-RAM clone under the visible `lluiseriksson@gmail.com` account.
+Runner transport, Lean `4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, both source hashes and both
+textual guards passed. The focal exited `1` after `1644.003 s`; the audit did
+not run. The first real error was the wrong orientation of the natural
+multiplication/division cancellation. Two later errors were likewise
+normalization-only: a broad rewrite changed the quotient on both sides, and
+the final `ZMod M` goal had not reduced the cast of `M` to zero.
+
+Evidence JSON/archive SHA-256 are
+`0860e914c845478bf5a0049f466f39081f9a9515cb905ae9a9c2c54e5a91c6fc`
+and
+`3451118705f2697d5680410f1f80bd0f1f7f5b23183e135c93adadc69b0af2f4`.
+Literal terminal markers were `FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1` and
+`LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the runtime disconnected without
+reexecution.
+
+Source repair checkpoint
+`be86a1ccb81dd8c69599245e12b3d7a52d7dae9c` changes no theorem statement,
+constant or hypothesis. It uses `Nat.mul_div_left`, `ac_rfl`, a left-side
+`conv` for the Euclidean decomposition, and `ZMod.natCast_self`. Revised
+source/audit Git-blob SHA-256 are
+`94d28e9fcd8e9c0e0c677cbb96399d3fe4d7afdc1bb53a8362e921e49a18779b`
+and
+`2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b`.
+Runner v3 checkpoint `e21c2d541127b8eab6d9e1b2cbbcbade06fa9043`
+has Git-blob SHA-256
+`7b76ff5323709ad84665bd92cedf003c9ee07ef148a1d365924e7481704d13c6`.
+The files remain visibly PRE-VALIDATION and NOT CHECKED pending v3. No
+counter, terminal field, window-15 claim or `TermSource` inhabitant moves.

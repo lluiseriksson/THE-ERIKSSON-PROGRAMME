@@ -11554,3 +11554,34 @@ has Git-blob SHA-256
 `afba3b3defb2a06cd95b91e50ec4f46ce786973035131e654aae499c9fb58e9f`.
 Both source files remain PRE-VALIDATION and NOT CHECKED; the counter and all
 downstream physical claims remain unchanged.
+
+Diagnostic v2 reached exact repaired source
+`e6f399f890c24e19deef5dbdde3e7f0b9ea7ce87` in one fresh Colab Pro+
+CPU/high-RAM clone. Runner transport, official toolchain, exact Mathlib pin,
+both source blobs and both textual guards passed. The focal stopped after
+`1644.003 s` with exit `1`; the audit did not run. The first real error was
+the orientation of the multiplication/division cancellation lemma. The same
+transcript exposed two further normalization debts: rewriting the fine
+coordinate only on the left side of the quotient equality, and reducing the
+cast of `M` to zero in `ZMod M`. Evidence JSON/archive SHA-256 are
+`0860e914c845478bf5a0049f466f39081f9a9515cb905ae9a9c2c54e5a91c6fc`
+and
+`3451118705f2697d5680410f1f80bd0f1f7f5b23183e135c93adadc69b0af2f4`.
+The runner emitted literal `FINAL_STATUS=FAIL`; the launcher requested
+runtime release and the runtime disconnected without reexecution.
+
+PRE-VALIDATION repair checkpoint
+`be86a1ccb81dd8c69599245e12b3d7a52d7dae9c` uses the matching
+`Nat.mul_div_left` orientation, an `ac_rfl` permutation for the natural
+semiring normal form, a left-side-only rewrite of the Euclidean decomposition,
+and the literal `ZMod.natCast_self` reduction. It changes no public
+statement, constant or hypothesis. Revised source/audit Git-blob SHA-256 are
+`94d28e9fcd8e9c0e0c677cbb96399d3fe4d7afdc1bb53a8362e921e49a18779b`
+and
+`2202b0a3380b493bff9082653c6547351b6839822237f7f4f013212e431eee8b`.
+Runner v3 checkpoint `e21c2d541127b8eab6d9e1b2cbbcbade06fa9043`
+has Git-blob SHA-256
+`7b76ff5323709ad84665bd92cedf003c9ee07ef148a1d365924e7481704d13c6`.
+Both source files remain PRE-VALIDATION and NOT CHECKED pending that single
+diagnostic. Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
