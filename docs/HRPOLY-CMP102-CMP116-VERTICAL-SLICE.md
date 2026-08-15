@@ -11340,3 +11340,31 @@ over `ell` to the fibre over `cmp99FinBoxFourierNeg ell`, followed by a
 separate proof that the signed alias dictionaries intertwine with residue
 reflection.  This is a static no-go and design replacement, not a compiler
 seal or terminal-field discharge.
+
+### Step 8b.7: centered alias residue reflection (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `8ab6624c67ebbdba270c6a8bb1176000a9319ae3` adds
+the residue-preserving equivalence from the printed half-open centered alias
+carrier to `ZMod M`, conjugates residue negation to obtain its actual
+reflection, lifts it coordinatewise to the centered vector carrier, and
+transports it through the explicit depth-one alias-index bridge.  The fifth
+audited theorem states that this bridge intertwines the two reflection
+actions.  Source/audit Git-blob SHA-256 are
+`fd91da6614c95a0b04a126f0f468d8f58c870f0174468d2aec41dfa9c5621047`
+and
+`b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082`.
+
+The module deliberately stops at alias-carrier algebra and complete-sum
+reindexing.  It does not claim that reflection remains inside a physical
+coarse fibre, identify an endpoint phase, equate a finite synthesis with the
+CMP89 integral, construct regional `B0`, attain window 15, discharge a
+terminal field or inhabit `TermSource`.
+
+Diagnostic runner checkpoint `1a61eede2a6df09b38aa2d8693551611b4523949`
+has Git-blob SHA-256
+`d1bdb943562a40ae6e86f2e78a07dce50bb8a51097ef3663b93cdace08442499`.
+It gates the two source blobs above, then executes only the focal and the
+five-declaration audit stop-on-first-error in one fresh Colab clone.  Both
+Lean modules remain visibly PRE-VALIDATION and NOT CHECKED.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

@@ -36425,3 +36425,30 @@ The seal does not prove the RG mass-flow window, a sampled-to-continuous
 periodization, regional `B0`, window-15 contraction, a terminal field or a
 `TermSource` inhabitant.  Hard counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible and unattained.
+
+## Addendum 808 (2026-08-15, **centered alias residue reflection PRE-VALIDATION; physical cross-fibre negation open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`8ab6624c67ebbdba270c6a8bb1176000a9319ae3` adds
+`BalabanCMP99SourceCenteredAliasReflection` and its five-declaration audit.
+Source/audit Git-blob SHA-256 are
+`fd91da6614c95a0b04a126f0f468d8f58c870f0174468d2aec41dfa9c5621047`
+and
+`b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082`.
+The source constructs the literal residue equivalence, scalar and vector
+reflections, complete-sum reindexing, and the explicit depth-one carrier
+transport.  It accepts no integer-negation closure of the half-open carrier.
+
+Honest scope is fixed in the module header.  This is alias algebra only: the
+physical reflection must move the coarse fibre from `ell` to
+`cmp99FinBoxFourierNeg ell`.  No fixed-fibre physical permutation, phase
+identity, finite-to-continuous periodization, regional `B0`, window-15
+contraction, terminal field or `TermSource` inhabitant is claimed.
+
+Diagnostic runner checkpoint `1a61eede2a6df09b38aa2d8693551611b4523949`
+has Git-blob SHA-256
+`d1bdb943562a40ae6e86f2e78a07dce50bb8a51097ef3663b93cdace08442499`.
+Its queue is exactly the new focal followed by the five-declaration audit in
+one fresh Colab clone.  The two Lean modules retain visible PRE-VALIDATION
+headers and are NOT CHECKED.  Hard counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible and unattained.
