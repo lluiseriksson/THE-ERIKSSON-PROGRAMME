@@ -128,6 +128,9 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_massZero_ne_zero_noncentral
       apply hmCentral
       apply Subtype.ext
       simpa [cmp89Eq249CentralAliasIndex, cmp89Eq249ZeroAlias] using hm
+    have hmMem :
+        m.1 ∈ cmp89Eq245CenteredAliasVectors d M := by
+      simpa only [pow_one] using m.property
     let p : Fin d → ℝ := fun _ => 0
     have hpCube : ∀ mu, |p mu| ≤ Real.pi := by
       intro mu
@@ -135,7 +138,7 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_massZero_ne_zero_noncentral
     have hpos :=
       cmp89Eq245ScaledLaplacianSymbol_noncentral_alias_pos
         (d := d) (N := M) (mass := 0) (m := m.1) (p := p)
-        (NeZero.pos M) m.property hm0 hpCube
+        (NeZero.pos M) hmMem hm0 hpCube
     let q : Fin d → ℝ :=
       fun mu => p mu + 2 * Real.pi * (m.1 mu : ℝ)
     have hbase :
@@ -158,7 +161,8 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_massZero_ne_zero_noncentral
         (0 : FinBox d N')) m ≠ 0
     rw [cmp89Eq246EntireAliasFineSymbol, halias,
       cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq]
-    exact Complex.ofReal_ne_zero.mpr (ne_of_gt hpos)
+    simpa only [pow_one] using
+      Complex.ofReal_ne_zero.mpr (ne_of_gt hpos)
   · exact cmp89Eq246EntireAliasFineSymbol_massZero_ne_zero_physical
       (d := d) (M := M) (N' := N') hell
       (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
