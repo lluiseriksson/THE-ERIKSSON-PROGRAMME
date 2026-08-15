@@ -37254,3 +37254,26 @@ has Git-blob SHA-256
 notebook vehicle checkpoint is `c2209bd2`.  Statements, constants, hypotheses
 and scope are unchanged.  Step 8b.12 remains visibly PRE-VALIDATION and NOT
 CHECKED until v3 passes.
+
+Diagnostic v3 checked out corrected source
+`afad237929739252cf850f55f0c273a71bf5a524` in a fresh Colab Pro+ CPU/high-RAM
+runtime.  The repro exited zero in `8.662 s`; the focal exited zero in
+`1693.132 s` with literal line `Build completed successfully (8542 jobs).`;
+the audit exited zero in `10.224 s`.  All five audited declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.  The wrapper alone emitted
+`FINAL_STATUS=FAIL` because it expected four nonempty axiom blocks rather than
+the five measured blocks.  Evidence/archive SHA-256 are
+`a3c23dc5c3136e8342b54725c50fa1d3512c8ea5dd7f57d6cced2d45a1163e15`
+and
+`bd0634850ae06c86ee20728b29fc809521e6270bfb9dbb9b2665e5c3de8d6962`.
+This is a false instrumentation verdict after green focal and audit; the
+runtime was released and the computation is not repeated.
+
+Runner-only v4 checkpoint `a440801c18e4c9a7889c46944ad3ffa89588e209`
+changes the expected block count from four to five.  Its Git-blob SHA-256 is
+`f44af86edf35437258e9b700456193529d6aa3a0268cb19ea28936eeb93c79b1`;
+notebook vehicle checkpoint is `6dbde9ce`.  Terminal workflow checkpoint
+`03a61455` pins the corrected source and both exact blob hashes, requires five
+allowed blocks, and disables both project-graph restore and save under
+`cold=true`.  This is a prepared terminal vehicle only: PRE-VALIDATION remains
+until its one cold artifact is audited.

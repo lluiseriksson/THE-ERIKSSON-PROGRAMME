@@ -11861,6 +11861,29 @@ notebook vehicle checkpoint is
 both source blobs, declarations, statements and audit are unchanged.  Step
 8b.12 remains PRE-VALIDATION and NOT CHECKED pending the corrected diagnostic.
 
+Diagnostic v3 then checked out corrected source `afad2379` in a fresh Colab
+Pro+ CPU/high-RAM runtime.  The repro exited zero in `8.662 s`; the focal
+exited zero in `1693.132 s` with literal line
+`Build completed successfully (8542 jobs).`; the audit exited zero in
+`10.224 s`.  All five audited declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The runner's sole failure was an
+expected-block count of four rather than the measured five.  Evidence/archive
+SHA-256 are
+`a3c23dc5c3136e8342b54725c50fa1d3512c8ea5dd7f57d6cced2d45a1163e15`
+and
+`bd0634850ae06c86ee20728b29fc809521e6270bfb9dbb9b2665e5c3de8d6962`.
+This is a false instrumentation verdict after green focal/audit; the runtime
+was released and the computation is not repeated.
+
+Runner-only v4 checkpoint `a440801c18e4c9a7889c46944ad3ffa89588e209`
+has Git-blob SHA-256
+`f44af86edf35437258e9b700456193529d6aa3a0268cb19ea28936eeb93c79b1`
+and expects the measured five blocks; notebook checkpoint is `6dbde9ce`.
+Terminal workflow checkpoint `03a61455` pins corrected source `afad2379`, both
+exact source blobs and the five-block gate, with restore/save disabled in
+`cold=true`.  PRE-VALIDATION remains until that single cold artifact is
+audited.  No counter moves.
+
 Diagnostic v2 passed the Mathlib-only reproduction in `7.331 s` but the fresh
 Colab focal failed after `1625.702 s` at the new source: a redundant `ring`
 followed a goal-closing `field_simp`, and the abbreviation
