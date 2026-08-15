@@ -36644,3 +36644,44 @@ one fresh Colab clone.  Both Lean modules retain visible PRE-VALIDATION and
 are NOT CHECKED.  The affine quotient carry and every downstream physical
 claim remain open.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible and unattained.
+
+## Addendum 816 (2026-08-15, **coarse-fibre negation diagnostic v2 stopped at pointwise function negation; repair v3 prepared; 20/41 unchanged**)
+
+Fresh Colab diagnostic v2 ran once under visible account
+`lluiseriksson@gmail.com` on CPU/high-RAM (`50.99 GiB`).  It checked out exact
+source `80ab41f2839cf9546e19c5a12a68196e45b5d246`, verified source/audit
+Git-blob SHA-256
+`df6985a32c48a9b3eb44673b93e9be6be915efb3cc527aa0a7f98921c050f991`
+and
+`3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`,
+Lean `4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and both textual guards.
+
+The focal stopped at the first real error after `1595.697 s`, at
+`BalabanCMP99SourceCoarseFibreFourierNeg.lean:58:2`.  After applying the
+correct `ZMod.castHom`, simplification had left the pointwise expression
+`((-(cmp99FinBoxZModEquiv ... k)) mu)` intact, while the goal contained the
+definitionally equal `-((k mu).val : ZMod N')`.  Thus the modulus transport
+was accepted and the remaining mismatch was exactly function negation versus
+pointwise negation.  Focal exit was `1`; the audit was not run.  Evidence
+JSON/archive SHA-256 are
+`4fa255ed37f2113f0b9928052372f5e383bcc92f27812e5eec65c68d229f66d6`
+and
+`db1d11a29079183b707331dd717cc710d54808b7e5f81e5e05b2ce2bda3d3b3f`.
+The transcript ended with literal `FINAL_STATUS=FAIL`, `LAUNCHER_EXIT=1` and
+`LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the runtime disconnected.
+
+PRE-VALIDATION repair checkpoint
+`c1f9b5104ea94162b3ccc4d6aec6774a6f92005f` adds only `Pi.neg_apply` to the
+explicit simplification list.  The theorem statement, modulus map and every
+hypothesis are unchanged.  Revised source/audit Git-blob SHA-256 are
+`f39b4a46111a5274d264e29ab0c4506abc120a5cf9158b8038944eee47c464b3`
+and
+`3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
+Text/import-prefix guards pass locally; no Lean or Lake ran on Windows.
+Diagnostic runner v3 checkpoint
+`396f03bea9434fc57c10bd83de3356bae7f7fd5d` has Git-blob SHA-256
+`66852ee650d83d0ca5827d42f4d59e4cfe99039d7054376311e452681afbdb57`.
+Both Lean modules remain visibly PRE-VALIDATION and NOT CHECKED at the revised
+checkpoint.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible and unattained.

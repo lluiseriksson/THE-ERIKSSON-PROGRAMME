@@ -11444,3 +11444,26 @@ PRE-VALIDATION headers and are NOT CHECKED.  Diagnostic runner v2 checkpoint
 it gates exactly these two blobs and runs only the focal plus the
 three-declaration audit.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+Diagnostic v2 reached the revised focal in one fresh CPU/high-RAM Colab clone
+and stopped at its first real error after `1595.697 s`.  The canonical
+`ZMod.castHom` had already transported the equality to `ZMod N'`; line `58:2`
+failed only because the explicit simplification list did not unfold
+pointwise negation `((-f) mu)` to `-(f mu)`.  Focal exit was `1`; the audit
+did not run.  Evidence JSON/archive SHA-256 are
+`4fa255ed37f2113f0b9928052372f5e383bcc92f27812e5eec65c68d229f66d6`
+and `db1d11a29079183b707331dd717cc710d54808b7e5f81e5e05b2ce2bda3d3b3f`.
+The runtime released immediately after literal `FINAL_STATUS=FAIL`.
+
+PRE-VALIDATION repair checkpoint
+`c1f9b5104ea94162b3ccc4d6aec6774a6f92005f` adds exactly `Pi.neg_apply` to
+that simplification list and changes no statement, map or hypothesis.
+Revised source/audit Git-blob SHA-256 are
+`f39b4a46111a5274d264e29ab0c4506abc120a5cf9158b8038944eee47c464b3`
+and `3cabe9895f86e647585b378c77f779f49e87254e7e64b6253ed563ad37beede0`.
+Runner v3 checkpoint `396f03bea9434fc57c10bd83de3356bae7f7fd5d`
+gates the repaired source and the unchanged three-declaration audit.  Until
+that runner emits a compiler verdict, both modules remain PRE-VALIDATION and
+NOT CHECKED.  The quotient carry and all downstream physical claims remain
+open; counters stay exactly `20/41`, `TermSource = 0`, and window 15 remains
+compatible but unattained.
