@@ -59,7 +59,6 @@ theorem cmp99Flat_stdAddChar_mul_eq_exp_discreteMomentum
     have hN : (N : ℂ) ≠ 0 := by
       exact_mod_cast (NeZero.ne N)
     field_simp [hN]
-    ring
 
 /-- The positive flat Fourier mode is the exact entire phase at the canonical
 integer lift of its periodic site. -/
@@ -77,6 +76,9 @@ theorem cmp99FlatFourierMode_eq_exp_entirePhase_canonicalLift
   congr 2
   simp only [cmp89Eq251EntirePhase, cmp89Eq251LatticeDisplacement]
   push_cast
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro mu _
   ring
 
 /-- Exact fine-to-coarse endpoint phase.  The scale conversion is a theorem,
@@ -106,6 +108,7 @@ theorem cmp99FlatFourierMode_div_coarseMode_eq_exp_amplitudeMomentum_endpoint
     cmp99FlatDiscreteMomentum, blockBasepoint]
   have hM : (M : ℂ) ≠ 0 := by
     exact_mod_cast (NeZero.ne M)
+  rw [← sub_eq_add_neg, ← mul_sub, ← Finset.sum_sub_distrib, Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro mu _
   push_cast
