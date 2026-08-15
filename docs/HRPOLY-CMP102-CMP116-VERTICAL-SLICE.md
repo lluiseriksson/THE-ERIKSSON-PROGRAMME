@@ -11777,6 +11777,13 @@ nonempty axiom blocks, and packages deterministic evidence.  This is a prepared
 vehicle only: no terminal run has yet been claimed, PRE-VALIDATION remains, and
 no counter moves before the durable cold artifact is audited.
 
+The attempted dispatch of that new filename was rejected before run creation
+with literal GitHub response `HTTP 404: workflow ... not found on the default
+branch`.  This is `BLOCKED-DISPATCH`, not a terminal run.  Correction checkpoint
+`db689e1c` supersedes the undispatchable filename and installs the same pinned
+queue in the already registered `validate-localized-carrier.yml`; no source,
+statement or evidence claim changes.
+
 This brick is the unit/phase dictionary only.  It does not yet combine the
 sealed Step-8b.10 affine carrier reindexing with the finite synthesis, identify
 a Brillouin integral, produce regional `B0`, attain window 15, discharge a

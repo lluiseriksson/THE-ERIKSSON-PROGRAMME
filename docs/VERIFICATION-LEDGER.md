@@ -37129,6 +37129,14 @@ hashes.  In `cold=true` mode both project-graph restore and save are disabled;
 the gate expects exactly three nonempty axiom blocks and packages deterministic
 evidence.  This records a prepared terminal vehicle only, not a seal.
 
+GitHub rejected dispatch of the new filename before creating a run, with
+literal response `HTTP 404: workflow ... not found on the default branch`.
+The incident is `BLOCKED-DISPATCH`; it consumed no terminal execution.
+Correction checkpoint `db689e1c` removes that undispatchable file and routes
+the byte-equivalent pinned queue through the already registered
+`validate-localized-carrier.yml`.  The source SHA, blob gates, queue, constants
+and expected three nonempty axiom blocks are unchanged.
+
 Both Lean files remain visibly PRE-VALIDATION and the latest source remains NOT
 COLD-SEALED.  The brick does
 not yet combine the affine carrier action with the finite synthesis, identify
