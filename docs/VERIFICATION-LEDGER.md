@@ -36063,3 +36063,35 @@ and only then imports it from `/content`.  No mathematical source, statement,
 constant, hypothesis, or source-blob hash changes.  Gate 7 remains entirely
 NOT CHECKED; counters remain `20/41`, `TermSource = 0`, and window 15 remains
 compatible and unattained.
+
+## Addendum 797 (2026-08-15, **Gate 7 diagnostic v2 FAIL; two proof normalizations repaired; 20/41 unchanged**)
+
+Diagnostic v2 ran once in a fresh Colab Pro+ CPU/high-RAM runtime at exact
+source `bcc852cee5e709bff91fad7de26fa21cff754e1f`.  Runner and base-runner
+transport, official Lean toolchain digest, exact Mathlib pin, source Git
+blobs, and both textual guards passed.  The focal returned `EXIT=1` after
+`1479.761 s`; the audit did not run.  The two first errors were both proof
+normalization failures in
+`BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode.lean`: line 60
+rewrote a complex-scalar zero using a vector-valued equality, and line 96
+tried to rewrite a continuous-linear-map application still syntactically
+under the `congrArg` lambda.  No public statement, constant, or hypothesis
+failed.
+
+Evidence and deterministic archive SHA-256 are
+`e67a04e70ad2708f2f46553201fdc451e5c1fce1c6e536255adbe6c8023f4872`
+and
+`fe1c8f134c02d6dfb8dcacdb7552da9fbcc9e1d8c91e6fd944be7dc0c5a043b2`.
+The runtime was explicitly disconnected and deleted without reexecution and
+the browser tab was closed.
+
+PRE-VALIDATION repair checkpoint
+`65545ad3084c38831ed3f8bc02124c7d49de3d89` lets `simp` normalize the
+complex zero and uses `simpa only` to beta-reduce the CLM application before
+applying the two named equalities.  Repaired source Git-blob SHA-256 is
+`7c24e402dbc4f9d5761bb90a4869fdc73b846742003c857e3902acea931e8166`;
+the audit blob remains
+`d2ccb839a72db990c1d014d373b85228f290befee643bb8b1cb37c26f10ea25a`.
+Both PRE-VALIDATION headers remain.  Gate 7 is NOT CHECKED pending diagnostic
+v3; counters remain exactly `20/41`, `TermSource = 0`, and window 15 remains
+compatible and unattained.

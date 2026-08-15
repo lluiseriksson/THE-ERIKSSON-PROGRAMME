@@ -11048,3 +11048,27 @@ all Gate-7 declarations remain NOT CHECKED.  Runner v2 removes the ambient
 `__file__` dependency and downloads the pinned base runner by raw SHA plus
 SHA-256 before importing it.  Mathematical source and both source-blob hashes
 are unchanged.
+
+Diagnostic v2 reached Lean at exact source
+`bcc852cee5e709bff91fad7de26fa21cff754e1f`.  Toolchain, pin, checkout,
+source-hash gates, and both textual guards passed.  The focal stopped with
+`EXIT=1` after `1479.761 s`; the audit did not run.  Lean reported two proof
+normalization failures: line 60 attempted to rewrite a zero in the wrong
+scalar/vector type, and line 96 attempted to rewrite a CLM application still
+hidden under the `congrArg` lambda.  Evidence/archive SHA-256 are
+`e67a04e70ad2708f2f46553201fdc451e5c1fce1c6e536255adbe6c8023f4872`
+and
+`fe1c8f134c02d6dfb8dcacdb7552da9fbcc9e1d8c91e6fd944be7dc0c5a043b2`.
+The runtime was disconnected and deleted without reexecution and the browser
+tab was closed.
+
+PRE-VALIDATION repair checkpoint
+`65545ad3084c38831ed3f8bc02124c7d49de3d89` removes the mistyped explicit
+zero rewrite and normalizes the CLM application with `simpa only` after beta
+reduction.  The public statements, constants, hypotheses, and audit are
+unchanged.  Repaired source Git-blob SHA-256 is
+`7c24e402dbc4f9d5761bb90a4869fdc73b846742003c857e3902acea931e8166`;
+the audit blob remains
+`d2ccb839a72db990c1d014d373b85228f290befee643bb8b1cb37c26f10ea25a`.
+Compiler status remains NOT CHECKED pending diagnostic v3.  Counters and
+window 15 remain unchanged.

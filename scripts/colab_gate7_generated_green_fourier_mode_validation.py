@@ -41,8 +41,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "gate7-generated-green-fourier-v1"
-runner.SOURCE_SHA = "bcc852cee5e709bff91fad7de26fa21cff754e1f"
+runner.RUNNER_REV = "gate7-generated-green-fourier-v3"
+runner.SOURCE_SHA = "65545ad3084c38831ed3f8bc02124c7d49de3d89"
 runner.ROOT = Path("/content/hrpoly-gate7-generated-green-fourier")
 runner.EVIDENCE = Path("/content/hrpoly-gate7-generated-green-fourier-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-gate7-generated-green-fourier-evidence.tar.gz")
@@ -50,7 +50,7 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-gate7-generated-green-fourier-paths
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode.lean":
-        "1ac7f4c87f28c28f653b91a9a7afffa92194d88d1ff5a9d175a3d1842c761aca",
+        "7c24e402dbc4f9d5761bb90a4869fdc73b846742003c857e3902acea931e8166",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierModeAudit.lean":
         "d2ccb839a72db990c1d014d373b85228f290befee643bb8b1cb37c26f10ea25a",
 }
