@@ -36549,3 +36549,36 @@ has Git-blob SHA-256
 The revised files remain PRE-VALIDATION and NOT CHECKED until that runner
 emits a compiler verdict.  Hard counters remain `20/41`, `TermSource = 0`;
 window 15 remains compatible and unattained.
+
+## Addendum 813 (2026-08-15, **centered-alias reflection diagnostic v2 PASS in a fresh high-RAM Colab clone; terminal cold seal prepared, not yet run**)
+
+Diagnostic v2 ran exactly once in Colab Pro+ under visible account
+`lluiseriksson@gmail.com`, CPU/high-RAM (`50.99 GiB`), opening at
+`2026-08-15T12:17:02.475735+00:00`.  The launcher verified runner checkpoint
+`3968bac63c4bd470f22826da967161d4b7b82d94` and Git-blob SHA-256
+`a6c8122d2d1b170eb7ad9222fffa43ccba754e404738dea8395ecf01cf15e239`.
+The runner checked out exact source
+`3bf925319be2b09c6d77706be64913e9817eb3b4`, gated source/audit blobs
+`50a27bed81d489105ba1df211823e1d999b5ac4b20df45b4a88a72ee694c3b58`
+and `b934a5e4618844cc747e70e40971e9057f5f3b66a7356ba015d3651648007082`,
+verified Lean `4.29.0-rc6`, the official toolchain asset hash and Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and passed both textual guards.
+
+Literal focal terminal line:
+
+`Build completed successfully (8531 jobs).`
+
+The focal exited `0` after `1317.583 s`; the five-declaration audit exited
+`0` after `7.102 s`.  Every declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence JSON/archive SHA-256 are
+`54e36fc397d569ebdb71f50a6d1cd68b070b50545fc48bb900d0a1415e75e6ce`
+and `1b1112838a57933cd725521b2086dc7946ab684c3320d5d10c9ab42196aec76a`.
+The transcript ended with literal `FINAL_STATUS=PASS`, `LAUNCHER_EXIT=0` and
+`LAUNCHER_RUNTIME_RELEASE_REQUESTED=1`; the completed tab was closed.
+
+This diagnostic validates the repair but is not used to retire the visible
+PRE-VALIDATION marks.  The single terminal workflow vehicle is prepared for
+the same source SHA with `cold=true`, exact blob gates, focal plus audit,
+robust axiom parsing and `.lake/build` restore/save skipped.  No Actions run
+has yet been dispatched for this checkpoint.  Hard counters remain `20/41`,
+`TermSource = 0`; window 15 remains compatible and unattained.

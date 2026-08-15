@@ -11377,7 +11377,17 @@ Diagnostic runner v2 checkpoint
 `a6c8122d2d1b170eb7ad9222fffa43ccba754e404738dea8395ecf01cf15e239`.
 It gates the revised source blob and unchanged audit, then executes only the
 focal and five-declaration audit stop-on-first-error in one fresh Colab
-clone.  Both Lean modules remain visibly PRE-VALIDATION and NOT CHECKED.
+clone.  Diagnostic v2 passed: literal terminal line
+`Build completed successfully (8531 jobs).`, focal exit `0` in `1317.583 s`,
+audit exit `0` in `7.102 s`, and all five declarations used exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence JSON/archive SHA-256 are
+`54e36fc397d569ebdb71f50a6d1cd68b070b50545fc48bb900d0a1415e75e6ce`
+and `1b1112838a57933cd725521b2086dc7946ab684c3320d5d10c9ab42196aec76a`.
+`FINAL_STATUS=PASS`, launcher exit `0`, and runtime release were all literal.
+
+This is a fresh-clone diagnostic, not the terminal cold seal.  Both Lean
+modules remain visibly PRE-VALIDATION until the single prepared cold Actions
+run verifies the same source SHA with `.lake/build` restore/save skipped.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
