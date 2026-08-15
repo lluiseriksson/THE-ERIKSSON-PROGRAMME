@@ -1,4 +1,4 @@
-name: Validate CMP99 flat Qprime endpoint phase
+name: Validate CMP99 flat Qprime endpoint alias phase
 
 on:
   workflow_dispatch:
@@ -13,17 +13,17 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e
-  SOURCE_BLOB_SHA256: e03e6d2d0a662dffa283d2b3f3d50751ed7bcd9c8dd9744b0ce26a0f171eafcf
-  AUDIT_BLOB_SHA256: ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90
+  SOURCE_SHA: afad237929739252cf850f55f0c273a71bf5a524
+  SOURCE_BLOB_SHA256: c83042469334a986d8313e5abb42b7eed67eb57f783554aba7e824b393350da8
+  AUDIT_BLOB_SHA256: 41adac323d2ea168de171c9d3d97594979e81f104e1ca0946ef7cb3376745ec3
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    cmp99-flat-qprime-endpoint-phase
+    cmp99-flat-qprime-endpoint-alias-phase
 
 jobs:
-  cmp99-flat-qprime-endpoint-phase:
+  cmp99-flat-qprime-endpoint-alias-phase:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -43,8 +43,8 @@ jobs:
             "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhase.lean
-          audit_path=YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhaseAudit.lean
+          source_path=YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhase.lean
+          audit_path=YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhaseAudit.lean
           test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
           test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-flat-qprime-endpoint-phase-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-flat-qprime-endpoint-alias-phase-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -126,14 +126,14 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhase.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhaseAudit.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhase.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhaseAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
           python scripts/check_lean_import_prefix.py \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhase.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhaseAudit.lean | \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhase.lean \
+            YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhaseAudit.lean | \
             tee evidence/import-prefix-guard.log
           run_stage() {
             local stage="$1"
@@ -153,10 +153,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_flat_qprime_endpoint_phase_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointPhase
-          run_stage cmp99_flat_qprime_endpoint_phase_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointPhaseAudit.lean
+          run_stage cmp99_flat_qprime_endpoint_alias_phase_focal \
+            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointAliasPhase
+          run_stage cmp99_flat_qprime_endpoint_alias_phase_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeEndpointAliasPhaseAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -170,11 +170,11 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_flat_qprime_endpoint_phase_audit.log": 3,
+              "cmp99_flat_qprime_endpoint_alias_phase_audit.log": 5,
           }
           focals = {
-              "cmp99_flat_qprime_endpoint_phase_focal.log":
-                  "BalabanCMP99SourceFlatQprimeEndpointPhase.lean:",
+              "cmp99_flat_qprime_endpoint_alias_phase_focal.log":
+                  "BalabanCMP99SourceFlatQprimeEndpointAliasPhase.lean:",
           }
           for name, source_name in focals.items():
               focal = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -210,17 +210,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp99-flat-qprime-endpoint-phase-evidence.tar.gz
-          sha256sum cmp99-flat-qprime-endpoint-phase-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp99-flat-qprime-endpoint-alias-phase-evidence.tar.gz
+          sha256sum cmp99-flat-qprime-endpoint-alias-phase-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-flat-qprime-endpoint-phase-${{ env.SOURCE_SHA }}
+          name: cmp99-flat-qprime-endpoint-alias-phase-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-flat-qprime-endpoint-phase-evidence.tar.gz
+            cmp99-flat-qprime-endpoint-alias-phase-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -229,4 +229,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-flat-qprime-endpoint-phase-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-flat-qprime-endpoint-alias-phase-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
