@@ -108,7 +108,8 @@ theorem cmp99FlatFourierMode_div_coarseMode_eq_exp_amplitudeMomentum_endpoint
     cmp99FlatDiscreteMomentum, blockBasepoint]
   have hM : (M : ℂ) ≠ 0 := by
     exact_mod_cast (NeZero.ne M)
-  rw [← sub_eq_add_neg, ← mul_sub, ← Finset.sum_sub_distrib, Finset.mul_sum]
+  rw [← sub_eq_add_neg, ← mul_sub, ← Finset.sum_sub_distrib,
+    Finset.mul_sum, Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro mu _
   push_cast
