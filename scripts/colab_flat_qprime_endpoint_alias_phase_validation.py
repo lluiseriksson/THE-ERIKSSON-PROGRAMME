@@ -45,7 +45,7 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-alias-phase-v1"
+runner.RUNNER_REV = "cmp99-flat-qprime-endpoint-alias-phase-v2"
 runner.SOURCE_SHA = "1fc19056f0a1fa0782924196687b84b074785679"
 runner.ROOT = Path("/content/hrpoly-flat-qprime-endpoint-alias-phase")
 runner.EVIDENCE = Path("/content/hrpoly-flat-qprime-endpoint-alias-phase-evidence")
@@ -69,10 +69,11 @@ REPRO.write_text(
 
 open scoped BigOperators
 
-def reproPhase {d : ℕ} (z : Fin d → ℂ) (u : Fin d → ℝ) : ℂ :=
+noncomputable def reproPhase {d : ℕ} (z : Fin d → ℂ) (u : Fin d → ℝ) : ℂ :=
   ∑ mu, z mu * (u mu : ℂ)
 
-def reproFineDisplacement {d : ℕ} (N : ℕ) (u : Fin d → ℤ) : Fin d → ℝ :=
+noncomputable def reproFineDisplacement {d : ℕ} (N : ℕ)
+    (u : Fin d → ℤ) : Fin d → ℝ :=
   fun mu => (N : ℝ)⁻¹ * (u mu : ℝ)
 
 def reproPairing {d : ℕ} (w u : Fin d → ℤ) : ℤ :=
@@ -95,7 +96,6 @@ example {d N : ℕ} [NeZero N] (z : Fin d → ℂ) (w u : Fin d → ℤ) :
   have hN : (N : ℂ) ≠ 0 := by
     exact_mod_cast (NeZero.ne N)
   field_simp [hN]
-  ring
 
 example {d N : ℕ} [NeZero N] (z : Fin d → ℂ) (w u : Fin d → ℤ) :
     Complex.exp (Complex.I * reproPhase
@@ -117,8 +117,7 @@ example {d N : ℕ} [NeZero N] (z : Fin d → ℂ) (w u : Fin d → ℤ) :
     apply Finset.sum_congr rfl
     intro mu _
     have hN : (N : ℂ) ≠ 0 := by exact_mod_cast (NeZero.ne N)
-    field_simp [hN]
-    ring,
+    field_simp [hN],
     mul_add, Complex.exp_add]
   rw [show
     Complex.exp (Complex.I * (((2 * Real.pi : ℝ) : ℂ) *
