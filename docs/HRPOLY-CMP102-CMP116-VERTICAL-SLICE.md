@@ -11257,7 +11257,7 @@ same raw source SHA.  At that point PRE-VALIDATION remained pending that cold
 run, and the counters remained `20/41`, `TermSource = 0`; window 15 remained
 compatible and unattained.
 
-### Step 8b.6: mass-uniform central complex floor (PRE-VALIDATION)
+### Step 8b.6: mass-uniform central complex floor (PRE-VALIDATION; COLAB DIAGNOSTIC PASS; COLD SEAL PENDING)
 
 Checkpoint `733ecbb60d43b72e04f9740eb825251b397503b8` adds a three-theorem
 bridge that removes only the obsolete `0 < mass` premise from the central
@@ -11276,3 +11276,33 @@ complex window, identify the finite synthesis with a continuous integral,
 construct regional `B0`, attain window 15, discharge a terminal field, or
 inhabit `TermSource`.  Counters remain `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
+
+The exact source checkpoint then passed its fresh single-clone Colab
+diagnostic on the visually confirmed `lluiseriksson@gmail.com` Pro+ account,
+CPU/high RAM (`50.99 GiB`), no GPU.  Runner vehicle
+`4161e2396e8c302ca07984fc9516709da07f6034` and runner Git-blob SHA-256
+`4688adbe4a8ade1b4eb54e4b1ba8099b06ab8911133c8bff35b88e7457f701a3`
+gated the two source blobs above, the official Lean asset and exact Mathlib
+pin.  The focal returned `EXIT=0` after `868.597 s` with literal line
+`Build completed successfully (8441 jobs).`; the audit returned `EXIT=0`
+after `9.720 s`, and all three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence and deterministic archive
+SHA-256 are
+`d463928738815e5c26271cfb54de5dda02023719acdfdac3e31a13ff6509df0a`
+and
+`972e5c63213dcee9067c73ae5a82485d514adb83333d078dad08f85641ceb686`.
+The runner emitted `FINAL_STATUS=PASS`; the launcher returned zero, requested
+runtime release, and the runtime/tab were closed.  Connected cell time was
+`1035.632 s`.
+
+This diagnostic authorizes one terminal cold workflow on the same raw source
+checkpoint.  It is not the cold seal: both PRE-VALIDATION headers remain until
+durable evidence passes with `.lake/build` restore and save skipped.
+
+A static dictionary gate also rejects a tempting but source-false shortcut.
+`cmp99SourceMassParameter` is the flowing averaging coefficient `a_j`, passed
+in the denominator's `a` slot; it is not the physical `mass` argument.
+Consequently its positive uniform floor cannot discharge
+`CMP89Eq251UniformMassWindow mass`.  The physical mass-flow window remains the
+separate source dictionary recorded above.  Using `a_j` here would be
+type-correct but physically false.

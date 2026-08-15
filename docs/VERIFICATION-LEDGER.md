@@ -36350,3 +36350,42 @@ attainment of the complex window, finite-to-continuous periodization, a
 regional `B0`, window-15 contraction, a terminal field, or a `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
+
+## Addendum 806 (2026-08-15, **mass-uniform central complex floor Colab diagnostic PASS; one cold seal authorized; 20/41 unchanged**)
+
+Exact source checkpoint `733ecbb60d43b72e04f9740eb825251b397503b8`
+passed a fresh single-clone Colab Pro+ diagnostic on the visually confirmed
+`lluiseriksson@gmail.com` account, CPU/high RAM (`50.99 GiB`), no GPU.  Runner
+vehicle `4161e2396e8c302ca07984fc9516709da07f6034` was transported with exact
+Git-blob SHA-256
+`4688adbe4a8ade1b4eb54e4b1ba8099b06ab8911133c8bff35b88e7457f701a3`.
+Its source/audit gates reproduced
+`8b87cc9a40b2d8b951b3c16c6042dab9f040f667ff1d81f02d7b3ea05a65b75b`
+and
+`18d69877b2d7c5a83d261933f611edc43aaac5878e97dca0dfc0776bb3c85154`;
+the official Lean toolchain asset and Mathlib
+`07642720480157414db592fa85b626dafb71355b` also matched.
+
+The focal returned `EXIT=0` after `868.597 s` with literal terminal line
+`Build completed successfully (8441 jobs).`.  The audit returned `EXIT=0`
+after `9.720 s`; all three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence and deterministic archive
+SHA-256 are
+`d463928738815e5c26271cfb54de5dda02023719acdfdac3e31a13ff6509df0a`
+and
+`972e5c63213dcee9067c73ae5a82485d514adb83333d078dad08f85641ceb686`.
+The cell completed in `1035.632 s`; `FINAL_STATUS=PASS`, launcher exit zero,
+and the explicit runtime-release request were all visible.  The released
+runtime and its browser tab were then closed.
+
+This diagnostic authorizes exactly one terminal `cold=true` workflow against
+the same raw source checkpoint.  Both PRE-VALIDATION headers remain pending
+that durable cold evidence.  No counter moves: `20/41`, `TermSource = 0`, and
+window 15 remains compatible but unattained.
+
+Static review also sealed a negative dictionary fact before it could enter a
+consumer: `cmp99SourceMassParameter` is the source averaging coefficient
+`a_j`, not the physical mass.  Its lower bound cannot be used to manufacture
+`CMP89Eq251UniformMassWindow mass`; doing so would be type-correct but
+source-false.  Preservation of the physical mass-flow window remains a
+separate named debt.

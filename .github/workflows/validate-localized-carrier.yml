@@ -1,4 +1,4 @@
-name: Validate Gate-8 generated Green Fourier synthesis
+name: Validate CMP89 mass-uniform central complex floor
 
 on:
   workflow_dispatch:
@@ -13,17 +13,17 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 0e852bb5973c34eef9cfd17cf2b0a8c0f1987658
-  SOURCE_BLOB_SHA256: 70a40b91e2387d3823a6cdf3bd739afd9bb4361fad2dd1c57298bb71c121548f
-  AUDIT_BLOB_SHA256: bf1d64de62d3a5165b6168ef5a09a87c3d86e01cd54b7a7ae11d22956f774d36
+  SOURCE_SHA: 733ecbb60d43b72e04f9740eb825251b397503b8
+  SOURCE_BLOB_SHA256: 8b87cc9a40b2d8b951b3c16c6042dab9f040f667ff1d81f02d7b3ea05a65b75b
+  AUDIT_BLOB_SHA256: 18d69877b2d7c5a83d261933f611edc43aaac5878e97dca0dfc0776bb3c85154
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    gate8-generated-green-fourier-synthesis
+    cmp89-mass-uniform-complex-floor
 
 jobs:
-  gate8-generated-green-fourier-synthesis:
+  cmp89-mass-uniform-complex-floor:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -43,8 +43,8 @@ jobs:
             "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis.lean
-          audit_path=YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesisAudit.lean
+          source_path=YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniform.lean
+          audit_path=YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniformAudit.lean
           test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
           test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-gate8-generated-green-fourier-synthesis-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-mass-uniform-complex-floor-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -126,8 +126,8 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis.lean \
-            YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesisAudit.lean \
+            YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniform.lean \
+            YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniformAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
@@ -149,10 +149,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage generated_green_fourier_synthesis_focal \
-            lake build YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis
-          run_stage generated_green_fourier_synthesis_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesisAudit.lean
+          run_stage cmp89_mass_uniform_complex_floor_focal \
+            lake build YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniform
+          run_stage cmp89_mass_uniform_complex_floor_audit \
+            lake env lean YangMills/RG/BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniformAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -166,11 +166,11 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "generated_green_fourier_synthesis_audit.log": 2,
+              "cmp89_mass_uniform_complex_floor_audit.log": 3,
           }
           focals = {
-              "generated_green_fourier_synthesis_focal.log":
-                  "BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis.lean:",
+              "cmp89_mass_uniform_complex_floor_focal.log":
+                  "BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniform.lean:",
           }
           for name, source_name in focals.items():
               focal = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -206,17 +206,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              gate8-generated-green-fourier-synthesis-evidence.tar.gz
-          sha256sum gate8-generated-green-fourier-synthesis-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp89-mass-uniform-complex-floor-evidence.tar.gz
+          sha256sum cmp89-mass-uniform-complex-floor-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gate8-generated-green-fourier-synthesis-${{ env.SOURCE_SHA }}
+          name: cmp89-mass-uniform-complex-floor-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            gate8-generated-green-fourier-synthesis-evidence.tar.gz
+            cmp89-mass-uniform-complex-floor-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -225,4 +225,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-gate8-generated-green-fourier-synthesis-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp89-mass-uniform-complex-floor-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
