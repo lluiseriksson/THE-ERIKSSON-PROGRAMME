@@ -128,9 +128,13 @@ theorem cmp99SourceFlatQprimePhysicalFineSymbol_massZero_ne_zero_noncentral
       apply hmCentral
       apply Subtype.ext
       simpa [cmp89Eq249CentralAliasIndex, cmp89Eq249ZeroAlias] using hm
+    have hmMemPow :
+        m.1 ∈ cmp89Eq245CenteredAliasVectors d (M ^ 1) := by
+      change m.1 ∈ cmp89Eq245CenteredAliasVectors d (M ^ 1)
+      exact m.property
     have hmMem :
         m.1 ∈ cmp89Eq245CenteredAliasVectors d M := by
-      simpa only [pow_one] using m.property
+      simpa only [pow_one] using hmMemPow
     let p : Fin d → ℝ := fun _ => 0
     have hpCube : ∀ mu, |p mu| ≤ Real.pi := by
       intro mu
