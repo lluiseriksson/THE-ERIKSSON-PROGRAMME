@@ -37068,8 +37068,30 @@ one second.  No Lean or Lake ran on Windows. Retry runner checkpoint
 notebook vehicle checkpoint is
 `1fe27f510d19d61f03dd09577f0432ae2fe57341`.
 
-Both Lean files remain visibly PRE-VALIDATION and the corrected source remains
-NOT CHECKED.  The brick does
+The second fresh Colab diagnostic eliminated the first two failures and stopped
+only at source line 112 after `1626.611` focal seconds: the left side was a
+finite sum while the right side still retained `Complex.I * ∑`.  Evidence
+SHA-256 is
+`4e0df84f5154fcaa0cfff1793dbb9aa2fd84fbb8774bcdc1fb7968ab09b1fa01`;
+archive SHA-256 is
+`dab2461b310f3cb807090cc618694598a71d6bfc7e14c553dd013ae5092dcdfb`.
+The audit did not run; terminal markers were again `FINAL_STATUS=FAIL`,
+`LAUNCHER_EXIT=1`, with runtime release requested.
+
+Latest correction checkpoint `f7d0e7e7f4d02f92bf60942bbf218788f6d69f5e`
+adds exactly the second `Finset.mul_sum` rewrite.  Latest source/audit Git-blob
+SHA-256 are
+`e03e6d2d0a662dffa283d2b3f3d50751ed7bcd9c8dd9744b0ce26a0f171eafcf`
+and
+`ec32bf2d253e0a543dc9c799b1ccc9f7fab9637ea9c9ed8f79c1f232e5028d90`.
+Runner checkpoint `5330aa7f43e66b568c343f697b213ed919efe63d` has Git-blob SHA-256
+`e3c2aba47c118c816187d3e2188365799f699b45dabffccf5064fa7ace8c6272`
+and adds a Mathlib-only reproduction of the exact finite-sum normalization
+before the expensive focal.  Notebook vehicle checkpoint is
+`bb648d4e9d25427f2a49fec32d32a22cea600054`.
+
+Both Lean files remain visibly PRE-VALIDATION and the latest source remains NOT
+CHECKED.  The brick does
 not yet combine the affine carrier action with the finite synthesis, identify
 the sampled sum with a continuous Brillouin integral, produce regional `B0`,
 attain window 15, discharge any terminal field or inhabit `TermSource`.
