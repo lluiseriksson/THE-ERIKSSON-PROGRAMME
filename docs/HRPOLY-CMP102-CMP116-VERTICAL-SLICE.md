@@ -11931,7 +11931,7 @@ and delimitations are unchanged.  Step 8b.12 remains PRE-VALIDATION and NOT
 CHECKED pending v3; counters remain `20/41`, `TermSource = 0`, window 15
 compatible but unattained.
 
-### Step 8b.13: row-oriented sampled endpoint normal form (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.13: row-oriented sampled endpoint normal form (cold-sealed; orientation bridge open)
 
 Source checkpoint `62862316ed330ef0efa8db676fa3b3f97b441c6e`
 adds `BalabanCMP99SourceFlatQprimeTransposeEndpointSample` and its
@@ -11964,6 +11964,20 @@ all three audited declarations have exactly
 `90366e317240975eb2ae5cc011404ce90c969b9d34ac55afaff010804f0a81ff`
 and
 `39403b815f50db81717e110bef6688c1186ffcb31348d5d00d27fe91eff070a1`.
-The runtime was released.  PRE-VALIDATION remains until the already
-registered workflow seals this same object from a cold checkout; no counter
-or downstream orientation claim moves on the diagnostic alone.
+The runtime was released.  The diagnostic alone did not retire
+PRE-VALIDATION or move any counter or downstream orientation claim.
+
+The single terminal workflow then cold-sealed the same immutable source in
+GitHub Actions run `31917596890` (job `95092009512`, vehicle checkpoint
+`c2a9dd7e2fb793838771f1fe995cf3bccf6c718f`).  Restore and save were both
+skipped; focal/audit exited `0/0`; the focal ended with literal line
+`Build completed successfully (8657 jobs).`; and all three audit blocks were
+exactly `[propext, Classical.choice, Quot.sound]`.  `FINAL_STATUS=PASS`, all
+`14/14` internal SHA-256 entries match, artifact id `9255750579` has GitHub
+digest
+`43811a374d17fb172bc22b5f23719f8876af9443fd88d017bf993ccfdeabde9f`,
+and the downloaded evidence archive has SHA-256
+`3276539b687868f7345109d9e2e64d4335717c77fc040e11fd3b967c3f8c1d31`.
+PRE-VALIDATION is retired exactly for the source and audit certified here.
+The orientation bridge remains open; counters stay `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.

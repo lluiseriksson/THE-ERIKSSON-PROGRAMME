@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis
 /-!
 # Row-oriented sampled endpoint normal form
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+COLD-SEALED: the exact source checkpoint `62862316ed330ef0efa8db676fa3b3f97b441c6e`
+was compiler verified from a cold checkout by GitHub Actions run
+`31917596890`; the focal completed successfully with 8657 jobs and the
+three-declaration audit printed exactly the standard axiom trio.
 
 The cold-sealed finite Green synthesis carries the transpose solution, hence
 the CMP89 row amplitude.  The preceding endpoint-phase dictionary identifies

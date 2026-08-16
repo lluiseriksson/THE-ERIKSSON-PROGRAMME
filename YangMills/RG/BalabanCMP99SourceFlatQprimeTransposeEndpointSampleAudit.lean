@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimeTransposeEndpointSample
 
 /-!
-PRE-VALIDATION: this audit source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+COLD-SEALED: the exact audit at source checkpoint
+`62862316ed330ef0efa8db676fa3b3f97b441c6e` was compiler verified by GitHub
+Actions run `31917596890`; all three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatPhysicalTransposeGreenEndpointSample

@@ -37301,9 +37301,9 @@ construct a Brillouin integral or regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-## Addendum 831 (2026-08-16, **row-oriented endpoint samples PRE-VALIDATION; orientation bridge still open; 20/41 unchanged**)
+## Addendum 831 (2026-08-16, **row-oriented endpoint samples cold-sealed; orientation bridge still open; 20/41 unchanged**)
 
-PRE-VALIDATION source checkpoint
+Source checkpoint
 `62862316ed330ef0efa8db676fa3b3f97b441c6e` adds
 `BalabanCMP99SourceFlatQprimeTransposeEndpointSample` and its three-declaration
 audit.  Source/audit Git-blob SHA-256 are
@@ -37344,6 +37344,23 @@ Mathlib-only repro exited zero in 28.469 s; the focal exited zero in
 the deterministic archive SHA-256 is
 `39403b815f50db81717e110bef6688c1186ffcb31348d5d00d27fe91eff070a1`.
 `FINAL_STATUS=PASS`; the runtime was released immediately.  This diagnostic
-does not retire PRE-VALIDATION.  The registered terminal workflow is now
-retargeted to the same immutable source and three-block audit for one cold
-seal only.
+did not retire PRE-VALIDATION.
+
+The one authorized terminal workflow cold-sealed the same immutable source
+in GitHub Actions run `31917596890` (job `95092009512`, vehicle checkpoint
+`c2a9dd7e2fb793838771f1fe995cf3bccf6c718f`) in 34m09s.  Restore and save
+were both skipped.  Focal/audit exited `0/0`; the focal printed literal line
+`Build completed successfully (8657 jobs).`; all three audit blocks were
+exactly `[propext, Classical.choice, Quot.sound]`; and the new-module warning
+gate passed.  `FINAL_STATUS=PASS`; all `14/14` internal SHA-256 entries match.
+Artifact id `9255750579` has GitHub digest
+`43811a374d17fb172bc22b5f23719f8876af9443fd88d017bf993ccfdeabde9f`;
+the downloaded evidence archive has SHA-256
+`3276539b687868f7345109d9e2e64d4335717c77fc040e11fd3b967c3f8c1d31`.
+
+PRE-VALIDATION is retired exactly for
+`BalabanCMP99SourceFlatQprimeTransposeEndpointSample` and its audit.  No
+row-to-column identity, cross-fibre reindexing, Green periodization, regional
+`B0`, window-15 attainment, terminal-field producer or `TermSource`
+inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
