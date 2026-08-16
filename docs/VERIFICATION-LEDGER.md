@@ -37329,3 +37329,21 @@ factor reordering and `Finset.sum_mul` rewrite before the project focal.  Both
 Lean files retain visible PRE-VALIDATION headers and are NOT CHECKED.  No Lean
 or Lake ran on Windows.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+The single Colab Pro+ CPU/high-RAM diagnostic for Step 8b.13 ran against the
+exact source checkpoint `62862316ed330ef0efa8db676fa3b3f97b441c6e` with
+50.99 GiB visible RAM.  Runner transport, source/audit blobs, Lean
+`v4.29.0-rc6`, and Mathlib
+`07642720480157414db592fa85b626dafb71355b` all passed their hash gates.  The
+Mathlib-only repro exited zero in 28.469 s; the focal exited zero in
+1711.295 s with literal terminal line
+`Build completed successfully (8657 jobs).`; the audit exited zero in
+16.660 s.  All three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Diagnostic evidence SHA-256 is
+`90366e317240975eb2ae5cc011404ce90c969b9d34ac55afaff010804f0a81ff`;
+the deterministic archive SHA-256 is
+`39403b815f50db81717e110bef6688c1186ffcb31348d5d00d27fe91eff070a1`.
+`FINAL_STATUS=PASS`; the runtime was released immediately.  This diagnostic
+does not retire PRE-VALIDATION.  The registered terminal workflow is now
+retargeted to the same immutable source and three-block audit for one cold
+seal only.

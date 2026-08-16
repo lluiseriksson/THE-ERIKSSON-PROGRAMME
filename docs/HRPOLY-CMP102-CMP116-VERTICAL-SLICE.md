@@ -11955,3 +11955,15 @@ notebook vehicle checkpoint is `e2159c58`.  Its Mathlib-only repro checks the
 two algebraic rewrites before the expensive focal.  Both files remain visibly
 PRE-VALIDATION and NOT CHECKED; no Lean or Lake ran on Windows.  Counters stay
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+The one-clone Colab Pro+ diagnostic is green at the exact source SHA
+`62862316ed330ef0efa8db676fa3b3f97b441c6e`: repro/focal/audit exit
+`0/0/0`, literal focal line `Build completed successfully (8657 jobs).`, and
+all three audited declarations have exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`90366e317240975eb2ae5cc011404ce90c969b9d34ac55afaff010804f0a81ff`
+and
+`39403b815f50db81717e110bef6688c1186ffcb31348d5d00d27fe91eff070a1`.
+The runtime was released.  PRE-VALIDATION remains until the already
+registered workflow seals this same object from a cold checkout; no counter
+or downstream orientation claim moves on the diagnostic alone.
