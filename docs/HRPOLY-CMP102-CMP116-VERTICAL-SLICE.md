@@ -12269,12 +12269,13 @@ Brillouin integral, regional `B0`, window 15, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-### Step 8b.17: reflected stabilized denominator and solution (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.17: reflected stabilized denominator and solution (PRE-VALIDATION; diagnostic v2 prepared)
 
-Source checkpoint `e215af32bd506bfc27604b55f6791e750fa1242a` adds
+Source checkpoint `53d0312379fa66059cc0665467751d9cb90256b0`
+(repair of initial checkpoint `e215af32bd506bfc27604b55f6791e750fa1242a`) adds
 `BalabanCMP99SourceAliasReflectionStabilizedSolution` and its
 seven-declaration audit.  Source/audit Git-blob SHA-256 are
-`fd8fbc2002cf1119628e4a2a4463dd8c358a0818d00d7114ade644cefd1fb7df`
+`69976ab87dd666f930c89846fff353ce676b8992d31a698ec8a0770f80df468f`
 and
 `579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d`.
 
@@ -12296,12 +12297,22 @@ or regional `B0`, attain window 15, discharge a terminal field or inhabit
 NOT CHECKED; no Lean or Lake ran on Windows.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
 
-Diagnostic runner checkpoint
-`63f237606a4f79e08e885f0c84c0e998e885f6ae` has Git-blob SHA-256
-`b2d7a60c4cd34a8136f34027e08a303758f950f12cd331812f60d66d19d62ec5`;
+Diagnostic v1 on initial source `e215af32...` passed transport, pin and
+Mathlib-only gates, then stopped at the focal after `1314.206 s` with exit
+code `1`; the audit did not run.  Evidence/archive SHA-256 are
+`c3a186f604049c3cd3a123ccfcd3a44a175a419d30966880a2cbe812bf897748`
+and `e10a04a2b73d0aef5438313733b54cb79b1635c9bb5169b28f636f691e5721a0`.
+The only errors were three elaboration normalizations: residue zero after
+the equivalence, `M ^ 1` before the fine-symbol evenness lemma, and rewriting
+the reflected central alias before the row/column coefficient theorem.  No
+statement, hypothesis or constant changed in checkpoint `53d03123...`.
+
+Diagnostic v2 runner checkpoint
+`de831c827a5fdf0c2f54bb558fecfb830f10b6ec` has Git-blob SHA-256
+`5ef907fb46d9ca8ff26d664b61149b8ca37192ea7c62a5e6bbb0f77d9bbc1dfe`;
 notebook vehicle checkpoint is
-`d31cffc444e69fba5542540d10faae558e280265`, with Git-blob SHA-256
-`12d5ccea3357b576f299dfcfba5de4b345c3e6294b0bf5ba038ca3b0f9ea1b8a`.
+`c6cd62ef6582b0d70d319e3d3d7a1596a195e288`, with Git-blob SHA-256
+`2d0944a39d4f4a0b8d6ceb4be4f358bf8b4f6496e41879e50895cf13f87a4ab8`.
 The runner gates exact source and both source blobs, executes a Mathlib-only
 reproduction of the finite-sum reindex-and-erase argument, then runs the
 focal and seven-block audit stop-on-first-error in one fresh Colab CPU/high-

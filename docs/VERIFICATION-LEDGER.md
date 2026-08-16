@@ -37714,3 +37714,34 @@ fresh Colab CPU/high-RAM clone, stops on first error and releases the runtime.
 This prepares one diagnostic only; it does not retire PRE-VALIDATION.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible and unattained.
+
+## Addendum 840 (2026-08-16, **alias-reflection diagnostic v1 failed mechanically; v2 prepared; PRE-VALIDATION retained**)
+
+The first fresh Colab CPU/high-RAM diagnostic for Step 8b.17 used source
+`e215af32bd506bfc27604b55f6791e750fa1242a`.  Transport, exact source/blob
+gates, pinned toolchain/Mathlib and the Mathlib-only reproduction passed.
+The focal returned exit code `1` after `1314.206 s`; stop-on-first-error
+correctly prevented the audit.  Evidence/archive SHA-256 are
+`c3a186f604049c3cd3a123ccfcd3a44a175a419d30966880a2cbe812bf897748`
+and `e10a04a2b73d0aef5438313733b54cb79b1635c9bb5169b28f636f691e5721a0`.
+The runtime released automatically.
+
+The first error set contained exactly three elaboration normalizations:
+the residue equivalence had already exposed negated zero, the central fine
+symbol retained the syntactic `M ^ 1`, and the central row/column theorem
+needed its reflected index rewritten before use.  Source repair checkpoint
+`53d0312379fa66059cc0665467751d9cb90256b0`, Git-blob SHA-256
+`69976ab87dd666f930c89846fff353ce676b8992d31a698ec8a0770f80df468f`,
+changes only those proofs.  The audit blob remains
+`579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d`.
+No statement, hypothesis, constant or declared scope changed.
+
+Diagnostic v2 runner checkpoint
+`de831c827a5fdf0c2f54bb558fecfb830f10b6ec`, Git-blob SHA-256
+`5ef907fb46d9ca8ff26d664b61149b8ca37192ea7c62a5e6bbb0f77d9bbc1dfe`,
+and notebook checkpoint `c6cd62ef6582b0d70d319e3d3d7a1596a195e288`,
+Git-blob SHA-256
+`2d0944a39d4f4a0b8d6ceb4be4f358bf8b4f6496e41879e50895cf13f87a4ab8`,
+pin the repaired source.  PRE-VALIDATION remains visible and the result is
+still NOT CHECKED until v2 runs.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
