@@ -12040,3 +12040,16 @@ has Git-blob SHA-256
 `e7fa94d4347b5147364c6f4de1d07c1d65c54a5375e93142d4eee0c473f063c7`;
 its notebook vehicle checkpoint is `4f835cd9`.  It preserves the same repro,
 focal, five-block audit, stop-on-first-error and runtime-release contract.
+
+Diagnostic v2 checked out exact corrected source
+`5d3fab0e1d3513a5733ce525a05edb06a05731bf` in a fresh Colab Pro+ CPU/high-RAM
+runtime with 50.99 GiB visible RAM.  The focal exited zero in `1263.399 s`
+with literal terminal line `Build completed successfully (8495 jobs).`; the
+audit exited zero in `10.400 s`.  All five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`d0161493dba3c62ba11a82118c1201f857c49a0df4d940b621c5a50309256543`
+and
+`bab210969ff4e46cfde22358ec8931b20de41f7eb4ec29d58247921acbbf0071`.
+`FINAL_STATUS=PASS`, launcher exit was zero and runtime release was requested.
+This remains diagnostic evidence only: both PRE-VALIDATION marks and all hard
+counters remain unchanged pending the single cold terminal seal.
