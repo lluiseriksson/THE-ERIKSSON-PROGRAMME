@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient
+
+/-!
+PRE-VALIDATION: this audit source is present, its `.olean` has not yet been
+materialized, and its declarations have not yet been compiler verified.
+-/
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_fourierNeg
+#print axioms YangMills.RG.cmp89Eq247ComplexReducedAliasDenominator_coarseFourierNeg
+#print axioms YangMills.RG.cmp99FlatPeriodicLaplacianSymbol_fourierNeg
+#print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalFineSymbol_fourierNeg
+#print axioms YangMills.RG.cmp99SourceFlatQprimeSignedAliasFourierNegCarryEquiv_apply_dictionary
+#print axioms YangMills.RG.cmp89Eq247ComplexReducedAliasDenominator_massZero_ne_zero_physical
+#print axioms YangMills.RG.cmp89Eq247EntireAliasTransposeSolution_coarseFourierNeg_eq_column
+#print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_coarseFourierNeg_eq_column
