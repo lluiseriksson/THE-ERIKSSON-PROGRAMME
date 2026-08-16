@@ -45,8 +45,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-alias-reflection-coefficients-v1"
-runner.SOURCE_SHA = "e4d2b2eb6640d5c36d6febad8b424bdbd5c40c99"
+runner.RUNNER_REV = "cmp99-alias-reflection-coefficients-v2"
+runner.SOURCE_SHA = "c669f5f5e081c316186bfbeade7a6a79752db418"
 runner.ROOT = Path("/content/hrpoly-cmp99-alias-reflection-coefficients")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-alias-reflection-coefficients-evidence"
@@ -60,7 +60,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficients.lean":
-        "593be2a9474c75b10e04c2f462a8d3ade70dac6903f2403e36a540318fd272fc",
+        "e2675eb46f47dad3fa60d0d88e29edd3f62ba6c5c8dc9f04d250343446a915f7",
     "YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficientsAudit.lean":
         "3e5259c476fcc0de4095cb06d722c529d57580ad4d24f6363701edc511618ee9",
 }
@@ -76,6 +76,12 @@ example (z a b p : ℂ) (h : a + b = p) :
 example (z p : ℂ) : -(z + p) = -z + (-p) := by ring
 
 example (a b : ℂ) : b * a = a * b := by ring
+
+example (a b M w p : ℂ) (h : a + b = M * w) :
+    2 * p * a + (p * M * w * 2 - p * a * 2) +
+        (-(p * b * 2) - w * (2 * p * M)) + 2 * p * b = 0 := by
+  ring_nf at h ⊢
+  linear_combination (2 * p) * h
 """,
     encoding="utf-8",
 )
