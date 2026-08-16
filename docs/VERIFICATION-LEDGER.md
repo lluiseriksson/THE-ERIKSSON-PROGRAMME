@@ -37957,3 +37957,36 @@ pins that runner. Mathematical source remains checkpoint
 constant or scope changes. PRE-VALIDATION remains visible and the result is
 still NOT CHECKED. Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 849 (2026-08-16, **stabilized-quotient diagnostic v5 exposes the exact definitional denominator; v6 prepared**)
+
+Diagnostic v5 passed exact transport, repaired source/blob gates, official
+toolchain and Mathlib pins, both text guards, cache materialization and the
+exact residual-cancellation repro. The focal returned exit code `1` after
+`1125.846 s`; stop-on-first-error prevented the audit.
+
+Both source errors had the same more precise shape after denominator
+clearing:
+`coefficient * centralFine / cmp89Eq249CentralEntireFineSymbol … =
+coefficient`. The previous repair had treated the division as an explicit
+inverse product and therefore found no three-factor product to reassociate.
+`FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`fb468cd86d8088850ab1dec99f882a8fa9a17adf7dde3c233bdb665e7b83719e`
+and
+`890aeddabedc32e8d786528c180be82d97ccbd7e78ce3d3aa4392001da0005ab`.
+The runtime released automatically after `1248.462 s` and the tab closed.
+
+Source repair checkpoint `64714dc87b9aecec8af7a3418eeab6258a3b823c`,
+Git-blob SHA-256
+`b050fde2d0270936e15e82b6b3439ef56fe7673612413d70a1563d8b7648943a`,
+first changes the denominator definitionally to `centralFine`, then clears
+that literal quotient using `hcentral`. Runner v6 checkpoint
+`9cdd6968f5ff51638cb96a21d2552889cb49d35d`, Git-blob SHA-256
+`c8c82229f68f9acfb029f73cfcb50d3f2748e4b03626ca21b56fbb1576840b14`,
+tests exactly `coefficient * central / central = coefficient`. Notebook
+checkpoint `e4a958eb175b478fbf647ccaa902ead4aae6ef85`, Git-blob SHA-256
+`2adb85d203fa81cba4a1750e65a4c9f3eb686425d9a12363b8a81a4128c49a7c`,
+pins v6. Statements, hypotheses, constants and scope remain unchanged.
+PRE-VALIDATION remains visible and the result remains NOT CHECKED. Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

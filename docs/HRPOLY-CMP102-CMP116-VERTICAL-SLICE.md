@@ -12482,3 +12482,29 @@ pins it. Source remains `839727ffa9b21fd683c23558dac0211374cefdd8`;
 PRE-VALIDATION remains visible, the result remains NOT CHECKED, and counters
 remain exactly `20/41`, `TermSource = 0`, with window 15 compatible but
 unattained.
+
+Diagnostic v5 passed every preflight and the exact residual-cancellation
+repro, then reached the source focal. It stopped after `1125.846 s` with
+exit code `1`; the audit did not run. The two source failures had the same
+precise shape:
+`coefficient * centralFine / cmp89Eq249CentralEntireFineSymbol … =
+coefficient`. Evidence/archive SHA-256 are
+`fb468cd86d8088850ab1dec99f882a8fa9a17adf7dde3c233bdb665e7b83719e`
+and
+`890aeddabedc32e8d786528c180be82d97ccbd7e78ce3d3aa4392001da0005ab`.
+The runtime released after `1248.462 s` and the tab closed.
+
+Repair checkpoint `64714dc87b9aecec8af7a3418eeab6258a3b823c`, source
+Git-blob SHA-256
+`b050fde2d0270936e15e82b6b3439ef56fe7673612413d70a1563d8b7648943a`,
+makes the definitional denominator `centralFine` visible and then clears the
+literal quotient with `hcentral`. Runner v6 checkpoint
+`9cdd6968f5ff51638cb96a21d2552889cb49d35d`, Git-blob SHA-256
+`c8c82229f68f9acfb029f73cfcb50d3f2748e4b03626ca21b56fbb1576840b14`,
+and notebook checkpoint `e4a958eb175b478fbf647ccaa902ead4aae6ef85`,
+Git-blob SHA-256
+`2adb85d203fa81cba4a1750e65a4c9f3eb686425d9a12363b8a81a4128c49a7c`,
+pin that exact residual repro. No statement, hypothesis, constant or scope
+changed. PRE-VALIDATION remains visible and the result remains NOT CHECKED;
+counters remain exactly `20/41`, `TermSource = 0`, and window 15 remains
+compatible but unattained.
