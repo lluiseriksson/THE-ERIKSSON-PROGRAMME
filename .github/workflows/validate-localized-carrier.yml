@@ -1,4 +1,4 @@
-name: Validate CMP89 stabilized Green endpoint periodicity
+name: Validate CMP99 alias reflection coefficients
 
 on:
   workflow_dispatch:
@@ -13,17 +13,17 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: ce2522edfb26366dee93db84640dcff6298f141c
-  SOURCE_BLOB_SHA256: 9c1417e951a5e9fb29ed1431484a81e6570c8adcf91207df8e56c6caadf642ec
-  AUDIT_BLOB_SHA256: 97f0d810895611def785ceb99335c282cd2b5c9e84b1a1da5c4f5ea8887db2e4
+  SOURCE_SHA: c669f5f5e081c316186bfbeade7a6a79752db418
+  SOURCE_BLOB_SHA256: e2675eb46f47dad3fa60d0d88e29edd3f62ba6c5c8dc9f04d250343446a915f7
+  AUDIT_BLOB_SHA256: 3e5259c476fcc0de4095cb06d722c529d57580ad4d24f6363701edc511618ee9
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    cmp89-stabilized-green-endpoint-periodicity
+    cmp99-alias-reflection-coefficients
 
 jobs:
-  cmp89-stabilized-green-endpoint-periodicity:
+  cmp99-alias-reflection-coefficients:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -43,8 +43,8 @@ jobs:
             "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity.lean
-          audit_path=YangMills/RG/BalabanCMP89Eq248StabilizedGreenEndpointPeriodicityAudit.lean
+          source_path=YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficients.lean
+          audit_path=YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficientsAudit.lean
           test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
           test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-stabilized-green-endpoint-periodicity-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-alias-reflection-coefficients-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -126,14 +126,14 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity.lean \
-            YangMills/RG/BalabanCMP89Eq248StabilizedGreenEndpointPeriodicityAudit.lean \
+            YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficients.lean \
+            YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficientsAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
           python scripts/check_lean_import_prefix.py \
-            YangMills/RG/BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity.lean \
-            YangMills/RG/BalabanCMP89Eq248StabilizedGreenEndpointPeriodicityAudit.lean | \
+            YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficients.lean \
+            YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficientsAudit.lean | \
             tee evidence/import-prefix-guard.log
           run_stage() {
             local stage="$1"
@@ -153,10 +153,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp89_stabilized_green_endpoint_periodicity_focal \
-            lake build YangMills.RG.BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity
-          run_stage cmp89_stabilized_green_endpoint_periodicity_audit \
-            lake env lean YangMills/RG/BalabanCMP89Eq248StabilizedGreenEndpointPeriodicityAudit.lean
+          run_stage cmp99_alias_reflection_coefficients_focal \
+            lake build YangMills.RG.BalabanCMP99SourceAliasReflectionCoefficients
+          run_stage cmp99_alias_reflection_coefficients_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceAliasReflectionCoefficientsAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -170,11 +170,11 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp89_stabilized_green_endpoint_periodicity_audit.log": 7,
+              "cmp99_alias_reflection_coefficients_audit.log": 5,
           }
           focals = {
-              "cmp89_stabilized_green_endpoint_periodicity_focal.log":
-                  "BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity.lean:",
+              "cmp99_alias_reflection_coefficients_focal.log":
+                  "BalabanCMP99SourceAliasReflectionCoefficients.lean:",
           }
           for name, source_name in focals.items():
               focal = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -210,17 +210,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp89-stabilized-green-endpoint-periodicity-evidence.tar.gz
-          sha256sum cmp89-stabilized-green-endpoint-periodicity-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp99-alias-reflection-coefficients-evidence.tar.gz
+          sha256sum cmp99-alias-reflection-coefficients-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp89-stabilized-green-endpoint-periodicity-${{ env.SOURCE_SHA }}
+          name: cmp99-alias-reflection-coefficients-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp89-stabilized-green-endpoint-periodicity-evidence.tar.gz
+            cmp99-alias-reflection-coefficients-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -229,4 +229,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp89-stabilized-green-endpoint-periodicity-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-alias-reflection-coefficients-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
