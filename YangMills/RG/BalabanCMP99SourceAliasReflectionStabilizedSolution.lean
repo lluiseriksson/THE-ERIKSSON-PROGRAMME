@@ -50,10 +50,9 @@ theorem cmp99SourceCenteredAliasReflection_zero
         ((cmp99SourceCenteredAliasResidueEquiv M).symm
           (-(cmp99SourceCenteredAliasResidueEquiv M zeroAlias))) =
       cmp99SourceCenteredAliasResidueEquiv M zeroAlias
-  rw [Equiv.apply_symm_apply,
-    cmp99SourceCenteredAliasResidueEquiv_apply,
-    cmp99SourceCenteredAliasResidueEquiv_apply]
-  simp [zeroAlias]
+  rw [Equiv.apply_symm_apply]
+  change -(0 : ZMod M) = 0
+  simp
 
 /-- The transported depth-one reflection fixes the distinguished zero alias. -/
 @[simp]
@@ -78,8 +77,10 @@ theorem cmp89Eq249CentralEntireFineSymbol_neg
     (d M : ℕ) (mass : ℝ) (z : Fin d → ℂ) :
     cmp89Eq249CentralEntireFineSymbol d M 1 mass (-z) =
       cmp89Eq249CentralEntireFineSymbol d M 1 mass z := by
-  exact cmp89Eq245EntireScaledLaplacianSymbol_neg
-    d ((M : ℝ)⁻¹) mass z
+  unfold cmp89Eq249CentralEntireFineSymbol
+  simpa only [pow_one] using
+    cmp89Eq245EntireScaledLaplacianSymbol_neg
+      d ((M : ℝ)⁻¹) mass z
 
 /-- The central averaging pair is even because negation exchanges its two
 entire factors. -/
@@ -171,8 +172,11 @@ theorem cmp89Eq249StabilizedAliasTransposeSolution_neg_reflection_eq_column
       exact cmp99SourceAliasIndexOneReflection_central d M]
     rw [cmp89Eq249StabilizedAliasTransposeSolution_central,
       cmp89Eq249StabilizedAliasColumnSolution_central]
-    rw [cmp89Eq246EntireAliasAverageRow_neg_reflection_eq_column,
-      cmp89Eq249CentralStabilizedAliasDenominator_neg]
+    have hrow :=
+      cmp89Eq246EntireAliasAverageRow_neg_reflection_eq_column
+        (d := d) (M := M) z central
+    rw [cmp99SourceAliasIndexOneReflection_central] at hrow
+    rw [hrow, cmp89Eq249CentralStabilizedAliasDenominator_neg]
   · have hreflectNe : reflect m ≠ central := by
       intro h
       apply hm
