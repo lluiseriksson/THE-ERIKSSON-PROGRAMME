@@ -37459,7 +37459,7 @@ row/column equality, Green periodization, cross-fibre reindexing, regional
 inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
 
-## Addendum 833 (2026-08-16, **stabilized Green period PRE-VALIDATION; orientation bridge still open; 20/41 unchanged**)
+## Addendum 833 (2026-08-16, **stabilized Green period cold-sealed; orientation bridge still open; 20/41 unchanged**)
 
 PRE-VALIDATION source checkpoint
 `ce2522edfb26366dee93db84640dcff6298f141c` adds
@@ -37506,3 +37506,25 @@ and
 `d857d9bca0d919ffae4f3e87251ddfd7c0e928a75f4a84da1721c7e22fed4fa4`.
 `FINAL_STATUS=PASS`; launcher exit was zero and runtime release was requested.
 This diagnostic does not retire PRE-VALIDATION or move a counter.
+
+The single authorized cold terminal workflow
+[`31923477687`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31923477687)
+(job `95107157525`, vehicle checkpoint
+`37302a98472ddb6b9fd6fb2d7114d975ce902034`) checked out exact source
+`ce2522edfb26366dee93db84640dcff6298f141c`.  `COLD_MODE=true` was recorded;
+project-graph restore and save were both skipped.  Focal/audit exited `0/0`;
+the focal ran `03:09:00Z--03:27:26Z` and printed literal line
+`Build completed successfully (8493 jobs).`; all seven declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`; and no new-module warning
+was emitted.  `FINAL_STATUS=PASS`; all `14/14` internal hashes match.
+Artifact `9257341755` has GitHub digest
+`8e1b8763d8fc79c73d06b1b61d141802f98395cf7d3cfb2c944925906f8b0126`.
+The downloaded deterministic archive SHA-256 is
+`2ee75104e0703ee04ba4a8eebc0a5e7f4e9c2a00a10f9bef125fd0f6f6aa74a6`.
+
+PRE-VALIDATION is retired exactly for
+`BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity` and its audit.  No
+physical row/column equality, cross-fibre reindexing, Brillouin integral,
+regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
+inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

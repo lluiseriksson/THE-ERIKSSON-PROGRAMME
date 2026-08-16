@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative
 /-!
 # Physical-period dictionary for the stabilized Green endpoint
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 The central-stabilized denominator is not periodic by itself: a physical
 `2*pi` shift changes which centered alias is central.  This file therefore
 follows the source-faithful route already sealed for the differentiated

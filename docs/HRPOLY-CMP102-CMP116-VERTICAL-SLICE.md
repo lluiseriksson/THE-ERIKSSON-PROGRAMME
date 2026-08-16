@@ -12075,7 +12075,7 @@ regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
-### Step 8b.15: stabilized Green endpoint physical period (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.15: stabilized Green endpoint physical period (COLD-SEALED; orientation bridge open)
 
 Source checkpoint `ce2522edfb26366dee93db84640dcff6298f141c` adds
 `BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity` and its seven-declaration
@@ -12124,3 +12124,26 @@ and
 `FINAL_STATUS=PASS`, launcher exit was zero and runtime release was requested.
 This is diagnostic evidence only: PRE-VALIDATION and counters remain pending
 the single cold terminal seal.
+
+The single authorized cold terminal workflow
+[`31923477687`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31923477687)
+(job `95107157525`, vehicle checkpoint
+`37302a98472ddb6b9fd6fb2d7114d975ce902034`) checked out the same immutable
+source with `COLD_MODE=true`; project-graph restore and save were both
+skipped.  Focal/audit exited `0/0`; the focal ran
+`03:09:00Z--03:27:26Z` and ended with literal line
+`Build completed successfully (8493 jobs).`; all seven audit blocks were
+exactly `[propext, Classical.choice, Quot.sound]`; and the new-module warning
+gate passed.  `FINAL_STATUS=PASS` and all `14/14` internal SHA-256 entries
+match.  Artifact id `9257341755` has GitHub digest
+`8e1b8763d8fc79c73d06b1b61d141802f98395cf7d3cfb2c944925906f8b0126`;
+the downloaded deterministic archive has SHA-256
+`2ee75104e0703ee04ba4a8eebc0a5e7f4e9c2a00a10f9bef125fd0f6f6aa74a6`.
+
+This evidence retires exactly the source and audit PRE-VALIDATION marks for
+Step 8b.15.  It seals physical periodicity of the stabilized Green endpoint
+on the stated non-singular domain, not a row/column identity, cross-fibre
+Fourier-negation carry, termwise zero-alias preservation, Brillouin integral,
+regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
+inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
