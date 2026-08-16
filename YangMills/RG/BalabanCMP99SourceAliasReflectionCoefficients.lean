@@ -67,6 +67,8 @@ theorem cmp89Eq248EntireAliasMomentum_aliasIndexOneReflection
   push_cast at hwC
   simp only [cmp89Eq248EntireAliasMomentum, cmp89Eq245AliasShift,
     Pi.neg_apply]
+  push_cast
+  ring_nf at hwC ⊢
   linear_combination (2 * (Real.pi : ℂ)) * hwC
 
 /-- Reflection exchanges the direct-momentum averaging column with the
@@ -105,6 +107,7 @@ theorem cmp89Eq246EntireAliasAverageRow_neg_reflection_eq_column
             ((-w mu : ℤ) : ℂ) *
               (((2 * Real.pi * (M : ℝ) : ℝ) : ℂ)) := by
     funext mu
+    simp only [Pi.neg_apply]
     rw [congrFun hw mu]
     push_cast
     ring
@@ -127,6 +130,7 @@ theorem cmp89Eq246EntireAliasFineSymbol_neg_reflection_eq
   rcases cmp89Eq248EntireAliasMomentum_aliasIndexOneReflection z m with
     ⟨w, hw⟩
   unfold cmp89Eq246EntireAliasFineSymbol
+  simp only [pow_one]
   rw [hw]
   rw [show
     cmp89Eq245EntireScaledLaplacianSymbol d ((M : ℝ)⁻¹) mass
