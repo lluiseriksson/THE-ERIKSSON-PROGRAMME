@@ -47,8 +47,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-zero-fibre-endpoint-reflection-v1"
-runner.SOURCE_SHA = "34f75aa60e39301a7fd281054513bfce5fe99cc2"
+runner.RUNNER_REV = "cmp99-zero-fibre-endpoint-reflection-v2"
+runner.SOURCE_SHA = "cfb67cb9cab17889d3416358f981a336815a4ef8"
 runner.ROOT = Path("/content/hrpoly-cmp99-zero-fibre-endpoint-reflection")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-zero-fibre-endpoint-reflection-evidence"
@@ -62,7 +62,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection.lean":
-        "2f70d3506436590e77654c9e08670f32d66965d0bc413033bc2c9223e0138329",
+        "5c92cc36c1eb2544ded179b9c0b93145b725fcbe818d1f6200e7ecc9e974ead8",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflectionAudit.lean":
         "74f5dc0d70bc3fac6f0297aaf032b32310809b87641f5bfa055d355c4212de2b",
 }
@@ -82,6 +82,11 @@ example {d : ℕ} (p : Fin d → ℂ) (u : Fin d → ℤ) (xi : ℝ) :
 example {A : Type*} [Fintype A] (e : A ≃ A) (f : A → ℂ) :
     (∑ a, f (e a)) = ∑ a, f a := by
   exact Equiv.sum_comp e f
+
+example {A : Type*} [Fintype A] (f : A → ℂ) :
+    let e := Equiv.refl A
+    (∑ a, f (e a)) = ∑ a, f a := by
+  simp
 
 example {d : ℕ} (u : Fin d → ℤ) :
     (fun mu => -(-u mu)) = u := by
