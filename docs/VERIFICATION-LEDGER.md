@@ -37365,7 +37365,7 @@ row-to-column identity, cross-fibre reindexing, Green periodization, regional
 inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
 
-## Addendum 832 (2026-08-16, **stabilized column endpoint PRE-VALIDATION; physical orientation bridge still open; 20/41 unchanged**)
+## Addendum 832 (2026-08-16, **stabilized column endpoint cold-sealed; physical orientation bridge still open; 20/41 unchanged**)
 
 PRE-VALIDATION source checkpoint
 `e3f613b66edea1ad7fc7fde472a2b4ac093a7c9e` adds
@@ -37436,3 +37436,25 @@ and
 `FINAL_STATUS=PASS`; launcher exit was zero and runtime release was requested.
 The result is diagnostic only and does not retire PRE-VALIDATION or move a
 counter.  One cold terminal seal remains required.
+
+The one authorized cold terminal workflow
+[`31921457075`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31921457075)
+(job `95101855543`, vehicle checkpoint
+`c18f23c8f33ea8c097ef588ee943b2de3196c443`) checked out exact source
+`5d3fab0e1d3513a5733ce525a05edb06a05731bf`.  `COLD_MODE=true` was
+recorded; project-graph restore and save were both skipped.  Focal/audit exits
+were `0/0`; the focal printed literal line
+`Build completed successfully (8495 jobs).`; all five declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`; and no new-module warning
+was emitted.  Artifact `9256700099` has GitHub digest
+`6d690b440aec4f0d9f9113f81f343134620837823b560ead80aa1d3f619e2229`.
+The downloaded deterministic archive SHA-256 is
+`ffc8fb2bd352c1681f7a742a37382c1da05663e1d922333b0fd93eb209addc3a`;
+all `14/14` internal hashes match and `FINAL_STATUS=PASS`.
+
+PRE-VALIDATION is retired exactly for
+`BalabanCMP89Eq249StabilizedAliasColumnSolution` and its audit.  No physical
+row/column equality, Green periodization, cross-fibre reindexing, regional
+`B0`, window-15 attainment, terminal-field producer or `TermSource`
+inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

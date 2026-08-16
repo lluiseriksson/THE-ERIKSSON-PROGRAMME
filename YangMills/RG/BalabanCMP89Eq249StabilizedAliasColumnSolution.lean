@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative
 /-!
 # Central-stabilized column solution and endpoint sum
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 The physical Green endpoint in CMP89 carries the direct-momentum averaging
 column.  The already sealed weighted-adjoint synthesis instead carries the
 opposite-momentum row and therefore the transposed solution.  This file builds

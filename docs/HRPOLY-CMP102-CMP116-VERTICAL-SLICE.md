@@ -11982,7 +11982,7 @@ PRE-VALIDATION is retired exactly for the source and audit certified here.
 The orientation bridge remains open; counters stay `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
 
-### Step 8b.14: stabilized column solution and literal endpoint sum (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.14: stabilized column solution and literal endpoint sum (COLD-SEALED)
 
 Source checkpoint `e3f613b66edea1ad7fc7fde472a2b4ac093a7c9e` adds
 `BalabanCMP89Eq249StabilizedAliasColumnSolution` and its five-declaration
@@ -12053,3 +12053,24 @@ and
 `FINAL_STATUS=PASS`, launcher exit was zero and runtime release was requested.
 This remains diagnostic evidence only: both PRE-VALIDATION marks and all hard
 counters remain unchanged pending the single cold terminal seal.
+
+The single authorized cold terminal workflow
+[`31921457075`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31921457075)
+(job `95101855543`, vehicle checkpoint
+`c18f23c8f33ea8c097ef588ee943b2de3196c443`) checked out the same immutable
+source.  `COLD_MODE=true` was recorded; project-graph restore and save were
+both skipped.  Focal/audit exited `0/0`; the focal ended with literal line
+`Build completed successfully (8495 jobs).`; all five audit blocks were
+exactly `[propext, Classical.choice, Quot.sound]`; and the new-module warning
+gate passed.  `FINAL_STATUS=PASS` and all `14/14` internal SHA-256 entries
+match.  Artifact id `9256700099` has GitHub digest
+`6d690b440aec4f0d9f9113f81f343134620837823b560ead80aa1d3f619e2229`;
+the downloaded deterministic archive has SHA-256
+`ffc8fb2bd352c1681f7a742a37382c1da05663e1d922333b0fd93eb209addc3a`.
+
+This evidence retires exactly the source and audit PRE-VALIDATION marks for
+Step 8b.14.  It seals the column solution and literal column endpoint sum,
+not a row-to-column identity, Green periodization, cross-fibre reindexing,
+regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
+inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
