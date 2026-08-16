@@ -12420,3 +12420,18 @@ and
 The Colab CPU/high-RAM runtime released after `52.473 s` and the tab was
 closed.  v2 changes only those two runner constants; mathematical source,
 statements, hypotheses and source checkpoint remain unchanged.
+
+Diagnostic v2 then passed transport, both corrected source-blob gates,
+toolchain/Mathlib pins, both text guards and cache materialization.  Its
+corrected algebraic equality was discharged completely by `field_simp`, so
+the following standalone `ring` failed with literal error
+`No goals to be solved`.  Stop-on-first-error prevented the project focal and
+audit.  This is again `BLOCKED-INSTRUMENTATION`, not source evidence;
+`FINAL_STATUS=FAIL`.  Evidence/archive SHA-256 are
+`1723241b88e646cee6350234d9914deca53f940baae7129170a58927a4454b01`
+and
+`c2b89b2404f90c135938921cfa217ff7326efb65ff0ede8b9ee8823e9554cdf1`.
+The runtime released after `160.571 s` and the tab was closed.  v3 replaces
+the repro by the literal stabilized-to-reduced quotient equality and uses
+`field_simp [...] <;> ring`; mathematical source remains unchanged and
+PRE-VALIDATION remains visible.

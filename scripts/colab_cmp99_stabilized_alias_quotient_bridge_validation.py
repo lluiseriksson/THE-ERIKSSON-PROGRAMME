@@ -47,7 +47,7 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v2"
+runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v3"
 runner.SOURCE_SHA = "01f9a0c287666094233343e4bd63a4edc8224bdb"
 runner.ROOT = Path("/content/hrpoly-cmp99-stabilized-alias-quotient-bridge")
 runner.EVIDENCE = Path(
@@ -71,12 +71,13 @@ REPRO = HERE / "cmp99_stabilized_alias_quotient_bridge_repro.lean"
 REPRO.write_text(
     """import Mathlib
 
-example (a b c r : ℂ) (ha : a ≠ 0) (hb : b ≠ 0) (hr : r ≠ 0)
-    (hstable : c = a * r) :
-    b * a / (a * (b * c)) = 1 / (a * r) := by
+example (central row fine reduced stabilized : ℂ)
+    (hcentral : central ≠ 0) (hfine : fine ≠ 0)
+    (hreduced : reduced ≠ 0)
+    (hstable : stabilized = central * reduced) :
+    central * row / (fine * stabilized) = row / (fine * reduced) := by
   rw [hstable]
-  field_simp [ha, hb, hr]
-  ring
+  field_simp [hcentral, hfine, hreduced] <;> ring
 """,
     encoding="utf-8",
 )
