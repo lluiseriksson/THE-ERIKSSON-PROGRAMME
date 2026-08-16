@@ -12222,3 +12222,26 @@ the runtime released after `198.313 s`.  Runner v3 checkpoint
 replaces only that repro with the actual affine equality.  Notebook v3 is
 `e455e56fc3534f318413322fe3af46e0ffdf0742`.  Mathematical source and both
 source hashes remain unchanged; PRE-VALIDATION remains visible.
+
+Diagnostic v3 ran exactly once in a fresh Colab CPU/high-RAM clone under
+visible account `lluiseriksson@gmail.com`, opening at
+`2026-08-16T04:44:12.355106Z`.  It verified exact source
+`c669f5f5e081c316186bfbeade7a6a79752db418`, both blob hashes, Lean
+`v4.29.0-rc6`, Mathlib `07642720480157414db592fa85b626dafb71355b`, both
+text guards and the corrected repro.  The focal exited zero in `1472.330 s`
+with literal terminal line `Build completed successfully (8542 jobs).`;
+the audit exited zero in `9.529 s`; and all five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`5fd5d3bd409275b336b53d2530f7dda57c938e5d7695b4b3ca19679960593ecc`
+and
+`5cc37f24880b34132f14aa695329af08e57dbf6b29d78fea4ac4e433c35b6015`.
+`FINAL_STATUS=PASS`, launcher exit was zero and runtime release completed;
+connected execution was `1667.939 s`.
+
+This is diagnostic evidence only.  PRE-VALIDATION remains visible pending
+the single cold seal.  Workflow vehicle checkpoint
+`c3e6fa4787326e4cc671a09a637864a173277dae` has Git-blob SHA-256
+`9bf5f25938bebf985fca562f585bebe80bc0f414ba874c232906d9cecdad0675`;
+it fixes the same source and blob hashes, uses `cold=true`, skips project-graph
+restore/save, and gates the five-declaration audit.  No terminal workflow has
+yet been dispatched for this vehicle.

@@ -37623,3 +37623,33 @@ checkpoint is `e455e56fc3534f318413322fe3af46e0ffdf0742`.
 Mathematical source, theorem statements and source blob hashes are unchanged.
 PRE-VALIDATION remains visible; counters remain `20/41`, `TermSource = 0`;
 window 15 remains compatible and unattained.
+
+## Addendum 837 (2026-08-16, **alias-reflection coefficient diagnostic v3 PASS in fresh Colab; one cold terminal seal prepared**)
+
+Diagnostic v3 ran exactly once in a fresh Colab Pro+ CPU/high-RAM clone under
+visible account `lluiseriksson@gmail.com`, opening at
+`2026-08-16T04:44:12.355106Z` with `50.99 GiB` RAM.  Runner/base-runner
+transport, source `c669f5f5e081c316186bfbeade7a6a79752db418`, both source
+blob hashes, both text guards, Lean `v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, cache acquisition and the
+corrected affine repro all passed.
+
+The focal exited zero in `1472.330 s` with literal terminal line
+`Build completed successfully (8542 jobs).`; the audit exited zero in
+`9.529 s`.  All five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`5fd5d3bd409275b336b53d2530f7dda57c938e5d7695b4b3ca19679960593ecc`;
+archive SHA-256 is
+`5cc37f24880b34132f14aa695329af08e57dbf6b29d78fea4ac4e433c35b6015`.
+`FINAL_STATUS=PASS`, launcher exit was zero, runtime release completed and
+connected execution was `1667.939 s`.
+
+This diagnostic does not retire PRE-VALIDATION.  The single cold terminal
+workflow vehicle `c3e6fa4787326e4cc671a09a637864a173277dae` has Git-blob
+SHA-256
+`9bf5f25938bebf985fca562f585bebe80bc0f414ba874c232906d9cecdad0675`.
+It targets the same immutable source and blob hashes, records `cold=true`,
+skips `.lake/build` restore/save, runs focal then five-block audit, rejects
+new-module warnings and packages durable evidence.  No terminal run has yet
+been dispatched.  Counters remain `20/41`, `TermSource = 0`; window 15
+remains compatible and unattained.
