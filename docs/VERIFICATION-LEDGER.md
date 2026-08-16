@@ -37681,3 +37681,36 @@ solution, central-alias termwise behavior, full cross-fibre physical sum,
 Brillouin integral, regional `B0`, window 15, a terminal field or
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
+
+## Addendum 839 (2026-08-16, **reflected stabilized denominator/solution PRE-VALIDATION; physical carry still open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`e215af32bd506bfc27604b55f6791e750fa1242a` adds
+`BalabanCMP99SourceAliasReflectionStabilizedSolution` and its
+seven-declaration audit.  Exact source/audit Git-blob SHA-256 are
+`fd8fbc2002cf1119628e4a2a4463dd8c358a0818d00d7114ade644cefd1fb7df`
+and
+`579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d`.
+The source derives central-alias fixation, complete noncentral-sum
+reflection, evenness of the central-stabilized denominator, and the exact
+transpose-at-opposite-momentum to column-at-direct-momentum solution
+transport.  It receives none of those conclusions as hypotheses.
+
+This is simple CMP89 alias reflection only.  The affine cross-fibre carry,
+termwise central-alias behavior under that carry, complete physical endpoint
+sum, Brillouin integral, regional `B0`, window 15, every terminal field and
+`TermSource` remain open.  Both Lean files are visibly PRE-VALIDATION and NOT
+CHECKED.  No Lean or Lake ran on Windows.
+
+Diagnostic runner checkpoint
+`63f237606a4f79e08e885f0c84c0e998e885f6ae`, Git-blob SHA-256
+`b2d7a60c4cd34a8136f34027e08a303758f950f12cd331812f60d66d19d62ec5`,
+and notebook checkpoint `d31cffc444e69fba5542540d10faae558e280265`,
+Git-blob SHA-256
+`12d5ccea3357b576f299dfcfba5de4b345c3e6294b0bf5ba038ca3b0f9ea1b8a`,
+pin that exact source and both source blobs.  The queue runs a Mathlib-only
+finite-sum reindex-and-erase repro, the focal and the seven-block audit in one
+fresh Colab CPU/high-RAM clone, stops on first error and releases the runtime.
+This prepares one diagnostic only; it does not retire PRE-VALIDATION.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible and unattained.

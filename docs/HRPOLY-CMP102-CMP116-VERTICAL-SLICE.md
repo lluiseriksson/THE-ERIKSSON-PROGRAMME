@@ -12268,3 +12268,42 @@ central-alias termwise behavior, complete cross-fibre physical reindexing,
 Brillouin integral, regional `B0`, window 15, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.17: reflected stabilized denominator and solution (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `e215af32bd506bfc27604b55f6791e750fa1242a` adds
+`BalabanCMP99SourceAliasReflectionStabilizedSolution` and its
+seven-declaration audit.  Source/audit Git-blob SHA-256 are
+`fd8fbc2002cf1119628e4a2a4463dd8c358a0818d00d7114ade644cefd1fb7df`
+and
+`579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d`.
+
+The source composes the sealed coefficient reflection on the complete CMP89
+depth-one alias fibre.  It proves that the actual half-open residue
+reflection fixes the central alias, reindexes the noncentral rational sum,
+preserves the central-stabilized denominator, and transports the stabilized
+transposed solution at opposite base momentum to the direct-momentum column
+solution.  These conclusions are constructed internally; no denominator
+symmetry, solution family, nonvanishing premise or finite-sum identity is
+accepted from the caller.
+
+This brick remains below the physical cross-fibre bridge.  It does not
+identify the affine carry from `ell` to `cmp99FinBoxFourierNeg ell` with the
+simple alias reflection, preserve the zero alias termwise under that carry,
+reindex the complete physical endpoint sum, construct a Brillouin integral
+or regional `B0`, attain window 15, discharge a terminal field or inhabit
+`TermSource`.  Both Lean files retain visible PRE-VALIDATION headers and are
+NOT CHECKED; no Lean or Lake ran on Windows.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Diagnostic runner checkpoint
+`63f237606a4f79e08e885f0c84c0e998e885f6ae` has Git-blob SHA-256
+`b2d7a60c4cd34a8136f34027e08a303758f950f12cd331812f60d66d19d62ec5`;
+notebook vehicle checkpoint is
+`d31cffc444e69fba5542540d10faae558e280265`, with Git-blob SHA-256
+`12d5ccea3357b576f299dfcfba5de4b345c3e6294b0bf5ba038ca3b0f9ea1b8a`.
+The runner gates exact source and both source blobs, executes a Mathlib-only
+reproduction of the finite-sum reindex-and-erase argument, then runs the
+focal and seven-block audit stop-on-first-error in one fresh Colab CPU/high-
+RAM clone and releases the runtime.  It authorizes one diagnostic only and
+does not retire PRE-VALIDATION or move a counter.
