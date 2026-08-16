@@ -12732,3 +12732,29 @@ Brillouin integral, regional `B0`, window-15 attainment, terminal fields and a
 PRE-VALIDATION headers; no Lean, Lake or oracle has run for this step on
 Windows.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+Diagnostic v1 ran once in a fresh Colab Pro+ CPU/high-RAM clone at exact
+source `dbd02a992c749b08e100a3b0b9258bb32a864924`.  Transport, source/blob,
+pin, text-guard and Mathlib-only repro gates passed.  The focal stopped with
+exit code `1` after `1642.968 s`; stop-on-first-error prevented the audit.
+The two errors were explicit: the physical scale `M` remained a metavariable
+at the alias-period lemma, and the pointwise consumer attempted to rewrite
+the endpoint phase in the opposite orientation.  Evidence/archive SHA-256
+are `8296115ef907eb2393d80800a3b9ffd00b1e437747edd5f3b47a3357efa4e846`
+and `d57470d50979e8d630a0f26826f75979882673854bc6c6acd3ab5dc2aa44059e`.
+`FINAL_STATUS=FAIL`; the runtime released automatically and the cell was not
+rerun.
+
+Repair checkpoint `237f11941c763e1a68071c2d69bc246d305dbb81`, source
+Git-blob SHA-256
+`c95973adaaef8717db6fe12360297a807c11d946ec13b2d1db5a3e6c2a439730`,
+pins `(N := M)` and derives a separately typed equality
+`phase_original(u) = phase_fourierNeg(-u)` before composing the two factors.
+Runner v2 checkpoint `a4dad78a62574d156c8e9273c83621407dfe1c20`, Git-blob
+SHA-256
+`144148ee9472ada530196c58ad52ec38639f20c4912da9fa0a5b30df8d40ec6a`,
+and notebook checkpoint `8513f4898ee818711bc05e909cbdec6b6dd6e4aa`, Git-blob
+SHA-256
+`67a9d731ad80fbd8dae1d1256aa7acb7fc7d0356f8e602e79f84340ae4f6a3ef`,
+prepare the controlled retry.  Statements, hypotheses, constants and scope
+are unchanged.  PRE-VALIDATION remains visible and v2 is NOT CHECKED.

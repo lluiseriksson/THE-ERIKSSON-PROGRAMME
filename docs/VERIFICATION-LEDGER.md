@@ -38241,3 +38241,36 @@ and exact-overlay text guards passed over exactly the two new files, but this
 is not compiler evidence.  Brillouin integration, regional `B0`, window-15
 attainment and terminal fields remain open.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 858 (2026-08-16, **cross-fibre endpoint phase diagnostic v1 FAIL; v2 prepared; 20/41 unchanged**)
+
+Diagnostic v1 ran exactly once in a fresh Colab Pro+ CPU/high-RAM clone under
+the visible account `lluiseriksson@gmail.com` at exact source
+`dbd02a992c749b08e100a3b0b9258bb32a864924`.  Runner transport, exact source
+and both Git-blob hashes, official Lean/Mathlib pins, text guards and the
+Mathlib-only repro all passed.  The focal returned exit code `1` after
+`1642.968 s`; stop-on-first-error prevented the four-declaration audit.
+
+The first error left the physical scale `M` as a metavariable at
+`exp_I_cmp89Eq251EntirePhase_add_int_aliasPeriods_physicalFine`; the second
+showed that the pointwise consumer was rewriting the phase from the wrong
+side.  `FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`8296115ef907eb2393d80800a3b9ffd00b1e437747edd5f3b47a3357efa4e846`
+and
+`d57470d50979e8d630a0f26826f75979882673854bc6c6acd3ab5dc2aa44059e`.
+The runtime released automatically and the cell was not rerun.
+
+Repair checkpoint `237f11941c763e1a68071c2d69bc246d305dbb81`, source
+Git-blob SHA-256
+`c95973adaaef8717db6fe12360297a807c11d946ec13b2d1db5a3e6c2a439730`,
+fixes the scale explicitly and constructs the correctly oriented phase
+equality at the negated endpoint displacement.  Runner v2 checkpoint
+`a4dad78a62574d156c8e9273c83621407dfe1c20`, Git-blob SHA-256
+`144148ee9472ada530196c58ad52ec38639f20c4912da9fa0a5b30df8d40ec6a`,
+and notebook checkpoint `8513f4898ee818711bc05e909cbdec6b6dd6e4aa`, Git-blob
+SHA-256
+`67a9d731ad80fbd8dae1d1256aa7acb7fc7d0356f8e602e79f84340ae4f6a3ef`,
+pin v2.  Statements, hypotheses, constants and scope are unchanged.
+PRE-VALIDATION remains visible and v2 is NOT CHECKED.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
