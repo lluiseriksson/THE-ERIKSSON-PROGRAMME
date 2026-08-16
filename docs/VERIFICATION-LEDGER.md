@@ -38127,3 +38127,36 @@ affine cross-fibre carry, the zero coarse fibre, the complete physical finite
 sum, regional `B0`, window-15 attainment or any terminal field. Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 854 (2026-08-16, **cross-fibre quotient diagnostic v1 FAIL; v2 prepared; 20/41 unchanged**)
+
+Diagnostic v1 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com`. It verified runner transport,
+exact source and both Git-blob hashes, the official Lean/Mathlib pins, text
+guards, dependency materialization and the Mathlib-only repro. The focal
+returned exit code `1` after `1639.397 s`; stop-on-first-error prevented the
+eight-declaration audit.
+
+The three first source errors were mechanical and distinct: the cast of a
+natural subtraction was not rewritten with its bound, the pointwise
+function negation was not exposed to the already sealed denominator parity,
+and Fourier-negation involutivity lacked an explicit proof that zero maps to
+zero. `FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`9995f5e0efa8d9a39dc41ea0ff9e9aea34af1940c9182ac0bdd9f0264173f070`
+and
+`60cf0bd3696fe4fd94c0b2d6c884107877b5009a6042fc1fbea3b25153f58a30`.
+The runtime released automatically and no cell was rerun.
+
+Repair checkpoint `316f9fab920a1ec9b6fead040e9d8dae16f19f4e`, source
+Git-blob SHA-256
+`2dd35012b5320e599f556f7f3e69d6299c253b666d6af107fc4d3ac168348ea9`,
+changes only those three proof transports. Runner v2 checkpoint
+`de5d9688b1e89a0d2953731f832f0a05d299d644`, Git-blob SHA-256
+`27a7e942b457282993cb3305515476a4cec63723abe2e7dddfc0351832d25b8e`,
+and notebook checkpoint `e4c0b3a98a7901279075e47a2c6e48ae68c20c1b`,
+Git-blob SHA-256
+`cd0b0f2ec929382a2f7e0152577b2e4ce697c0721f81cc05566597939df617bd`,
+pin the repaired source. Statements, hypotheses, constants and scope are
+unchanged. PRE-VALIDATION remains visible and v2 remains NOT CHECKED.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

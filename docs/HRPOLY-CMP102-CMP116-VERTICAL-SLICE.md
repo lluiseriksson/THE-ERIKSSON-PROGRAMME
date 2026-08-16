@@ -12615,3 +12615,45 @@ denominator and stabilized-to-literal quotient cancellation only; the affine
 cross-fibre carry, complete physical sum, regional `B0`, window 15 and
 terminal fields remain open. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.18b: nonzero cross-fibre physical quotient transport (PRE-VALIDATION)
+
+Source checkpoint `6fefea5306d8b1f8af470ea537c51954dd87fee4` adds
+`BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient` and its
+eight-declaration audit. The brick keeps the affine signed-alias carry
+literal: periodic Fourier negation moves the physical fibre over `ell` to
+the fibre over `FourierNeg ell`, and the row quotient becomes the column
+quotient there. It derives reduced-denominator nonvanishing internally on
+each nonzero coarse fibre from the sealed stabilized product and central
+fine-symbol nonvanishing. It does not reflect a fixed physical fibre or
+cancel the central mass-zero symbol.
+
+Diagnostic v1 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com`. Exact runner/source/blob gates,
+official Lean/Mathlib pins, both text guards and the Mathlib-only repro
+passed. The focal stopped with exit code `1` after `1639.397 s`; the audit
+did not run. The three first errors were elaboration boundaries only:
+`Nat.cast_sub` remained unapplied in the periodic representative,
+pointwise function negation was not syntactically exposed to the sealed
+denominator-evenness theorem, and the zero value of transported Fourier
+negation was not supplied to the involution proof. `FINAL_STATUS=FAIL`;
+evidence/archive SHA-256 are
+`9995f5e0efa8d9a39dc41ea0ff9e9aea34af1940c9182ac0bdd9f0264173f070`
+and
+`60cf0bd3696fe4fd94c0b2d6c884107877b5009a6042fc1fbea3b25153f58a30`.
+The runtime released automatically.
+
+Repair checkpoint `316f9fab920a1ec9b6fead040e9d8dae16f19f4e`, source
+Git-blob SHA-256
+`2dd35012b5320e599f556f7f3e69d6299c253b666d6af107fc4d3ac168348ea9`,
+applies exactly those three transports; statements, hypotheses, constants
+and scope are unchanged. Runner v2 checkpoint
+`de5d9688b1e89a0d2953731f832f0a05d299d644`, Git-blob SHA-256
+`27a7e942b457282993cb3305515476a4cec63723abe2e7dddfc0351832d25b8e`,
+tests the exact natural-subtraction cast before the focal. Notebook
+checkpoint `e4c0b3a98a7901279075e47a2c6e48ae68c20c1b`, Git-blob SHA-256
+`cd0b0f2ec929382a2f7e0152577b2e4ce697c0721f81cc05566597939df617bd`,
+pins v2. PRE-VALIDATION remains visible and v2 is NOT CHECKED. The complete
+finite alias sum, the zero coarse fibre, Brillouin integral, regional `B0`,
+window 15 and terminal fields remain open. Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
