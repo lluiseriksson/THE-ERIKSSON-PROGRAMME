@@ -37391,3 +37391,12 @@ regional `B0`, attain window 15, discharge a terminal field or inhabit
 `TermSource`.  Both Lean files retain visible PRE-VALIDATION headers and are
 NOT CHECKED.  No Lean or Lake ran on Windows.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Diagnostic runner checkpoint `7668978b71d900e2b9f85fefda30e39868dfb497`
+has Git-blob SHA-256
+`30bc97fc31ca432ff7bd94ad55b097378b59eea3eb776db3981d8c2def012f42`;
+notebook vehicle checkpoint is `2d4c4ceb29e3a16c659fc68ec0623f436a0f29ee`.
+The runner performs exact source and two-blob hash gates, a Mathlib-only
+finite-sum repro, the focal, and a five-block axiom audit; it stops on first
+error and releases the Colab runtime.  This prepares one fresh-clone
+diagnostic only.  PRE-VALIDATION and all hard counters remain unchanged.

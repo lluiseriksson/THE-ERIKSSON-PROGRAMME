@@ -12008,3 +12008,13 @@ attainment, terminal-field production and `TermSource` habitation remain
 open.  Both new files are visibly PRE-VALIDATION and NOT CHECKED; no Lean or
 Lake ran on Windows.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+Diagnostic runner checkpoint `7668978b71d900e2b9f85fefda30e39868dfb497`
+has Git-blob SHA-256
+`30bc97fc31ca432ff7bd94ad55b097378b59eea3eb776db3981d8c2def012f42`;
+notebook vehicle checkpoint is `2d4c4ceb29e3a16c659fc68ec0623f436a0f29ee`.
+Its Mathlib-only repro checks the finite central/erase split and common-factor
+sum rewrite before the focal.  The runner fixes the source SHA and both Git
+blob hashes, expects exactly five axiom blocks, stops on first error and
+releases the runtime.  It authorizes one fresh-clone Colab diagnostic only;
+PRE-VALIDATION remains until a later cold terminal seal.
