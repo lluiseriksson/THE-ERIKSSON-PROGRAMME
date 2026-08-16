@@ -1,4 +1,4 @@
-name: Validate CMP99 reflected stabilized solution
+name: Validate CMP99 stabilized alias quotient bridge
 
 on:
   workflow_dispatch:
@@ -13,17 +13,17 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: ce00198eb10766b15e3fb90dc756cbf634e34740
-  SOURCE_BLOB_SHA256: 0925f929542853a1826bd61dbeed67ccb2679b4679ac328c8ba8e7e2746b9591
-  AUDIT_BLOB_SHA256: 579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d
+  SOURCE_SHA: 72e665f18309e7fb96c4bc720b52296a03fabecc
+  SOURCE_BLOB_SHA256: 5638e4b31785fafabd591e0a9c8bab4cb19d138fd789c4d4c6aaae0d999c7167
+  AUDIT_BLOB_SHA256: 8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
   PROJECT_RESTORE_PREFIXES: |
-    cmp99-alias-reflection-stabilized-solution
+    cmp99-stabilized-alias-quotient-bridge
 
 jobs:
-  cmp99-alias-reflection-stabilized-solution:
+  cmp99-stabilized-alias-quotient-bridge:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -43,8 +43,8 @@ jobs:
             "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolution.lean
-          audit_path=YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolutionAudit.lean
+          source_path=YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridge.lean
+          audit_path=YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean
           test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
           test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
 
@@ -92,7 +92,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-alias-reflection-stabilized-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-stabilized-alias-quotient-bridge-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
           restore-keys: ${{ steps.cache-keys.outputs.keys }}
 
       - name: Record diagnostic cache state
@@ -126,14 +126,14 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolution.lean \
-            YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolutionAudit.lean \
+            YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridge.lean \
+            YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
           python scripts/check_lean_import_prefix.py \
-            YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolution.lean \
-            YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolutionAudit.lean | \
+            YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridge.lean \
+            YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean | \
             tee evidence/import-prefix-guard.log
           run_stage() {
             local stage="$1"
@@ -153,10 +153,10 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_alias_reflection_stabilized_solution_focal \
-            lake build YangMills.RG.BalabanCMP99SourceAliasReflectionStabilizedSolution
-          run_stage cmp99_alias_reflection_stabilized_solution_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolutionAudit.lean
+          run_stage cmp99_stabilized_alias_quotient_bridge_focal \
+            lake build YangMills.RG.BalabanCMP99SourceStabilizedAliasQuotientBridge
+          run_stage cmp99_stabilized_alias_quotient_bridge_audit \
+            lake env lean YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean
 
       - name: Verify axiom gates and package cold evidence
         shell: bash
@@ -170,11 +170,11 @@ jobs:
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           audits = {
-              "cmp99_alias_reflection_stabilized_solution_audit.log": 7,
+              "cmp99_stabilized_alias_quotient_bridge_audit.log": 5,
           }
           focals = {
-              "cmp99_alias_reflection_stabilized_solution_focal.log":
-                  "BalabanCMP99SourceAliasReflectionStabilizedSolution.lean:",
+              "cmp99_stabilized_alias_quotient_bridge_focal.log":
+                  "BalabanCMP99SourceStabilizedAliasQuotientBridge.lean:",
           }
           for name, source_name in focals.items():
               focal = (Path("evidence") / name).read_text(encoding="utf-8")
@@ -210,17 +210,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp99-alias-reflection-stabilized-solution-evidence.tar.gz
-          sha256sum cmp99-alias-reflection-stabilized-solution-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp99-stabilized-alias-quotient-bridge-evidence.tar.gz
+          sha256sum cmp99-stabilized-alias-quotient-bridge-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-alias-reflection-stabilized-solution-${{ env.SOURCE_SHA }}
+          name: cmp99-stabilized-alias-quotient-bridge-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-alias-reflection-stabilized-solution-evidence.tar.gz
+            cmp99-stabilized-alias-quotient-bridge-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
 
@@ -229,4 +229,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: .lake/build
-          key: hRpoly-cmp99-alias-reflection-stabilized-solution-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
+          key: hRpoly-cmp99-stabilized-alias-quotient-bridge-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
