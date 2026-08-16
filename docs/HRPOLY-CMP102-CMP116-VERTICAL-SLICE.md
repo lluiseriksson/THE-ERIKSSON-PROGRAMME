@@ -12035,3 +12035,8 @@ SHA-256 are
 and
 `2ef8189260419385af18bfd34ad0fb55e29886aae8a916d092cd816ced742fef`.
 Step 8b.14 remains PRE-VALIDATION and NOT CHECKED pending v2.
+Runner v2 checkpoint `b098b649275d64eb376de2a279b2636bc2c505fd`
+has Git-blob SHA-256
+`e7fa94d4347b5147364c6f4de1d07c1d65c54a5375e93142d4eee0c473f063c7`;
+its notebook vehicle checkpoint is `4f835cd9`.  It preserves the same repro,
+focal, five-block audit, stop-on-first-error and runtime-release contract.

@@ -37417,3 +37417,8 @@ SHA-256 are
 `8f54dad29eb3040d0c59cd90eea693333cfe745f6c73d51175d16288247461df`
 and
 `2ef8189260419385af18bfd34ad0fb55e29886aae8a916d092cd816ced742fef`.
+Runner v2 checkpoint `b098b649275d64eb376de2a279b2636bc2c505fd`
+has Git-blob SHA-256
+`e7fa94d4347b5147364c6f4de1d07c1d65c54a5375e93142d4eee0c473f063c7`;
+its notebook vehicle checkpoint is `4f835cd9`.  The execution contract is
+unchanged and Step 8b.14 remains PRE-VALIDATION pending the v2 diagnostic.
