@@ -45,7 +45,7 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-alias-reflection-coefficients-v2"
+runner.RUNNER_REV = "cmp99-alias-reflection-coefficients-v3"
 runner.SOURCE_SHA = "c669f5f5e081c316186bfbeade7a6a79752db418"
 runner.ROOT = Path("/content/hrpoly-cmp99-alias-reflection-coefficients")
 runner.EVIDENCE = Path(
@@ -77,9 +77,8 @@ example (z p : ℂ) : -(z + p) = -z + (-p) := by ring
 
 example (a b : ℂ) : b * a = a * b := by ring
 
-example (a b M w p : ℂ) (h : a + b = M * w) :
-    2 * p * a + (p * M * w * 2 - p * a * 2) +
-        (-(p * b * 2) - w * (2 * p * M)) + 2 * p * b = 0 := by
+example (z a b M w p : ℂ) (h : a + b = M * w) :
+    -z + 2 * p * a = -(z + 2 * p * b) + w * (2 * p * M) := by
   ring_nf at h ⊢
   linear_combination (2 * p) * h
 """,
