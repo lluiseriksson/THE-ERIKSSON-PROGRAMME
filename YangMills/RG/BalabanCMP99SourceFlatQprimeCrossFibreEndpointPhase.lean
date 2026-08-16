@@ -74,6 +74,7 @@ theorem cmp99SourceFlatQprimeAliasEndpointPhase_fourierNeg_eq_negDisplacement
     ⟨w, hw⟩
   rw [hw,
     exp_I_cmp89Eq251EntirePhase_add_int_aliasPeriods_physicalFine
+      (N := M)
       (-cmp99SourceFlatQprimeAmplitudeMomentum k.1) w u]
   congr 2
   simp only [cmp89Eq251EntirePhase,
@@ -117,9 +118,32 @@ theorem cmp99SourceFlatPhysicalTransposeGreenEndpointSample_fourierNeg_eq_column
           d M N' ell k) := by
   unfold cmp99SourceFlatPhysicalTransposeGreenEndpointSample
     cmp99SourceFlatPhysicalColumnGreenEndpointSample
-  rw [cmp99SourceFlatQprimeAliasEndpointPhase_fourierNeg_eq_negDisplacement
-      ell k
-      (cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x y),
+  have hphase :=
+    cmp99SourceFlatQprimeAliasEndpointPhase_fourierNeg_eq_negDisplacement
+      ell k (fun mu =>
+        -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x y mu)
+  have hphase' :
+      Complex.exp (Complex.I * cmp89Eq251EntirePhase
+          (cmp89Eq248EntireAliasMomentum
+            (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+            (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
+              d M N' ell k).1)
+          (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
+            (cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x y))) =
+        Complex.exp (Complex.I * cmp89Eq251EntirePhase
+          (cmp89Eq248EntireAliasMomentum
+            (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
+              (cmp99FinBoxFourierNeg ell))
+            (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N'
+              (cmp99FinBoxFourierNeg ell)
+              (cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv
+                d M N' ell k)).1)
+          (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
+            (fun mu =>
+              -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+                M x y mu))) := by
+    simpa only [neg_neg] using hphase.symm
+  rw [hphase',
     cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_coarseFourierNeg_eq_column
       ha hell k]
 
