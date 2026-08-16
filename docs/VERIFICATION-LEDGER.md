@@ -38357,3 +38357,23 @@ SHA-256
 `c84aee6ec0ff84a0d7fd339412d3a1e89ab50860866fe668775a737d4508adf8`,
 prepare a single fresh Colab diagnostic.  PRE-VALIDATION remains visible and
 the result remains NOT CHECKED.
+
+## Addendum 862 (2026-08-16, **zero-fibre reflection diagnostic v1 FAIL; v2 repair written; 20/41 unchanged**)
+
+Diagnostic v1 passed all fresh-clone transport, source/blob, official pin,
+text-guard and Mathlib-only repro gates at exact source
+`34f75aa60e39301a7fd281054513bfce5fe99cc2`.  The focal returned exit code
+`1` after `2481.662 s`; stop-on-first-error prevented the five-declaration
+audit.  The only unsolved goal showed the same signed-alias equivalence as
+the local abbreviation `e` on one side and its literal definition on the
+other.  Evidence/archive SHA-256 are
+`56dcc6b572b9930fc59fe3c2ac3844af91c302f0b62e488dd6d24cdc1c7d0c9f`
+and
+`4dee3db7339cf0058e3a3aba24d02400ae4807ce5e7dbf0cbc5db427ff9c5d9e`.
+`FINAL_STATUS=FAIL`; the runtime released automatically and no cell was
+rerun.
+
+The v2 repair adds only `e` to the existing local `simp only` list at that
+reindexing step.  Statements, hypotheses, constants and scope are unchanged.
+PRE-VALIDATION remains visible, v2 is NOT CHECKED, and counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

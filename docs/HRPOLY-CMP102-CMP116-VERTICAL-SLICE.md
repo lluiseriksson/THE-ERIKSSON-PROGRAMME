@@ -12825,3 +12825,20 @@ Notebook checkpoint `f795fb52f7196bbd26c3f843ed08419d19623647`, Git-blob
 SHA-256
 `c84aee6ec0ff84a0d7fd339412d3a1e89ab50860866fe668775a737d4508adf8`,
 pins the runner.  The queued result remains NOT CHECKED.
+
+Diagnostic v1 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com` at exact source
+`34f75aa60e39301a7fd281054513bfce5fe99cc2`.  Runner transport, exact
+source/blob hashes, official Lean/Mathlib pins, both text guards and the
+Mathlib-only repro passed.  The focal stopped with exit code `1` after
+`2481.662 s`; stop-on-first-error prevented the audit.  The only goal exposed
+the definitionally identical signed-alias equivalence once as the local
+abbreviation `e` and once literally; the proof had not unfolded `e` in that
+reindexing step.  Evidence/archive SHA-256 are
+`56dcc6b572b9930fc59fe3c2ac3844af91c302f0b62e488dd6d24cdc1c7d0c9f`
+and
+`4dee3db7339cf0058e3a3aba24d02400ae4807ce5e7dbf0cbc5db427ff9c5d9e`.
+`FINAL_STATUS=FAIL`; the runtime released automatically and the cell was not
+rerun.  The v2 repair unfolds only that local abbreviation; statements,
+hypotheses, constants and scope remain unchanged.  PRE-VALIDATION remains
+visible and v2 is NOT CHECKED.

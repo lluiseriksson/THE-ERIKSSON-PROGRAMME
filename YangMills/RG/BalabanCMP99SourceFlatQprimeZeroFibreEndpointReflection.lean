@@ -163,7 +163,7 @@ theorem sum_cmp99SourceFlatPhysicalTransposeGreenEndpointSample_zero_eq_endpoint
       intro k _
       unfold cmp99SourceFlatPhysicalTransposeGreenEndpointSample
       simp only [cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_zero,
-        row, u]
+        row, u, e]
     _ = ∑ m : CMP89Eq246AliasIndex d M 1, row m := by
       exact Equiv.sum_comp e row
     _ = ∑ m : CMP89Eq246AliasIndex d M 1,
