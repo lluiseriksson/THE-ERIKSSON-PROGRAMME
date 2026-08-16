@@ -37528,3 +37528,39 @@ physical row/column equality, cross-fibre reindexing, Brillouin integral,
 regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
 inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 834 (2026-08-16, **alias-reflection coefficient transport PRE-VALIDATION; complete orientation bridge open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`e4d2b2eb6640d5c36d6febad8b424bdbd5c40c99` adds
+`BalabanCMP99SourceAliasReflectionCoefficients` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`593be2a9474c75b10e04c2f462a8d3ade70dac6903f2403e36a540318fd272fc`
+and
+`3e5259c476fcc0de4095cb06d722c529d57580ad4d24f6363701edc511618ee9`.
+
+The source constructs the affine alias-period carry from the actual
+half-open carrier reflection.  It first derives divisibility in `ZMod M`,
+then proves that the reflected alias momentum at opposite base momentum is
+the negative original momentum plus coordinatewise integer `2*pi*M`
+periods.  The column-to-row, row-to-column and fine-symbol transports are
+derived from that equality and the existing exact period theorems; no
+abstract row/column symmetry is used.
+
+This is coefficient algebra, not the complete physical orientation bridge.
+It does not identify the stabilized denominator or solution, preserve the
+central alias termwise, reindex the cross-fibre physical sum, construct the
+Brillouin integral or regional `B0`, attain window 15, discharge a terminal
+field or inhabit `TermSource`.  Both Lean files remain visibly
+PRE-VALIDATION and NOT CHECKED; no Lean or Lake ran on Windows.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
+
+Diagnostic runner checkpoint `9a55678052e7c5394ef5c51f5de86f4ab9f8be14`
+has Git-blob SHA-256
+`b6de4efa8f7f20436fa95f9b36395278f3dd043862906ec78214b764f71adbc2`;
+notebook vehicle checkpoint is `8b756f09d1051015ac283dea71b3403c7baca8af`.
+The runner gates exact source and blob hashes, an algebraic Mathlib-only
+repro, the focal and five-declaration audit, and releases the runtime after
+PASS or the first error.  This prepares one fresh-clone diagnostic only and
+does not retire PRE-VALIDATION or move any counter.

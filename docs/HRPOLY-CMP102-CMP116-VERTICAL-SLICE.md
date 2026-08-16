@@ -12147,3 +12147,36 @@ Fourier-negation carry, termwise zero-alias preservation, Brillouin integral,
 regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+### Step 8b.16: alias-reflection coefficient transport (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `e4d2b2eb6640d5c36d6febad8b424bdbd5c40c99` adds
+`BalabanCMP99SourceAliasReflectionCoefficients` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`593be2a9474c75b10e04c2f462a8d3ade70dac6903f2403e36a540318fd272fc`
+and
+`3e5259c476fcc0de4095cb06d722c529d57580ad4d24f6363701edc511618ee9`.
+
+The brick does not identify the half-open centered reflection with literal
+integer negation.  It derives coordinatewise divisibility from the sealed
+`ZMod M` reflection law, constructs the resulting integer `2*pi*M` carry in
+the alias momentum, and uses the already sealed exact period laws to exchange
+the averaging column and row and to preserve the fine symbol.  Evenness of
+the entire opposite-momentum Laplacian pairing is proved directly.
+
+The stabilized denominator and solution, central-alias behavior, complete
+cross-fibre finite-sum reindexing, Brillouin integral, regional `B0`, window
+15, terminal field and `TermSource` remain open.  In particular no termwise
+zero-alias preservation is claimed.  Both Lean files remain visibly
+PRE-VALIDATION and NOT CHECKED; no Lean or Lake ran on Windows.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
+
+Diagnostic runner checkpoint `9a55678052e7c5394ef5c51f5de86f4ab9f8be14`
+has Git-blob SHA-256
+`b6de4efa8f7f20436fa95f9b36395278f3dd043862906ec78214b764f71adbc2`;
+notebook vehicle checkpoint is `8b756f09d1051015ac283dea71b3403c7baca8af`.
+The runner fixes the immutable source and both Git-blob hashes, runs a
+Mathlib-only algebraic repro, the focal and the five-block audit, stops on the
+first error and releases the Colab runtime.  It authorizes one fresh-clone
+diagnostic only; PRE-VALIDATION and hard counters remain unchanged.
