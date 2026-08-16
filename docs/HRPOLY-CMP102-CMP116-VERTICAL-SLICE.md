@@ -12758,3 +12758,27 @@ SHA-256
 `67a9d731ad80fbd8dae1d1256aa7acb7fc7d0356f8e602e79f84340ae4f6a3ef`,
 prepare the controlled retry.  Statements, hypotheses, constants and scope
 are unchanged.  PRE-VALIDATION remains visible and v2 is NOT CHECKED.
+
+Diagnostic v2 passed the same gates and stopped at the focal with exit code
+`1` after `2143.029 s`; the audit did not run.  The explicit scale was now
+correct, but the target exposed `(-p) mu` as `-p mu`, and the sample had
+already unfolded the physical stabilized-solution wrapper before its sealed
+theorem was applied.  Evidence/archive SHA-256 are
+`2fc0ac994fd1e9fb408d822fac74caa23026a8219051b946e6e6f6e57ee2eb25`
+and `eb3e8cd83bfcefd774c9572d64b137f224f548686594eb52e1e583a518fe21c2`.
+`FINAL_STATUS=FAIL`; the runtime released automatically and the cell was not
+rerun.
+
+Repair checkpoint `affa623b62d9238e1f64f6c8ca87cfb76444c266`, source
+Git-blob SHA-256
+`c5f1893c0f95688701174e6ead237e38f374c716c3e4c44f6e273cc1960c5d80`,
+uses an explicit `calc`/`Pi.neg_apply` conversion for the phase and a named
+equality that unfolds the physical solution wrapper before factorwise
+composition.  Runner v3 checkpoint
+`c182cb6e3d10ad56769d7b022cd4a5ba478cd629`, Git-blob SHA-256
+`3ec37b0974dda562d4ed9a5588287c4791e0542260315e17ab0bce6c9c296b3e`,
+and notebook checkpoint `3014cd17165da45e8f8767728d32cd3414408fe9`, Git-blob
+SHA-256
+`5f9bf018dda4d032263b43b8fffa536a453accad33b8e5205b45204d13003643`,
+prepare v3.  Statements, hypotheses, constants and scope remain unchanged;
+PRE-VALIDATION stays visible and v3 is NOT CHECKED.
