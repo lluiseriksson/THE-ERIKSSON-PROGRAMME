@@ -37564,3 +37564,38 @@ The runner gates exact source and blob hashes, an algebraic Mathlib-only
 repro, the focal and five-declaration audit, and releases the runtime after
 PASS or the first error.  This prepares one fresh-clone diagnostic only and
 does not retire PRE-VALIDATION or move any counter.
+
+## Addendum 835 (2026-08-16, **alias-reflection coefficient diagnostic v1 stopped at first elaboration failure; v2 repair prepared without statement drift**)
+
+Fresh Colab diagnostic v1 ran exactly once under visible account
+`lluiseriksson@gmail.com`, CPU/high-RAM (`50.99 GiB`), opening at
+`2026-08-16T03:36:09.403215Z`.  Runner/base-runner transport, exact source
+and two blob hashes, both text guards, Lean `v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, cache acquisition and the
+Mathlib-only repro all passed.  The focal stopped on its first real error
+after `1582.090 s`; the audit was not executed.  The three diagnostics were
+all elaboration-normalization failures in the new file: product normalization
+at line 70, rewriting below pointwise negation at line 108, and the
+definitionally reducible `M^1` versus `M` mismatch at line 131.
+
+Evidence SHA-256 is
+`26c59972365ad22422e8ebffd2cedb0a7e50e5e0aea89f94e1b905223f426861`;
+archive SHA-256 is
+`1e8e856ce993b0253cf556f02443426888db9be909b2f466091e09faefea4e89`.
+`FINAL_STATUS=FAIL`, launcher exit was one and the high-RAM runtime was
+released.  This is diagnostic evidence, not a compiler verification.
+
+Repair checkpoint `c669f5f5e081c316186bfbeade7a6a79752db418` changes only
+the three proof normalizations: explicit ring normal form, exposing
+`Pi.neg_apply`, and reducing `pow_one`.  No theorem statement, constant or
+hypothesis changed.  Revised source/audit Git-blob SHA-256 are
+`e2675eb46f47dad3fa60d0d88e29edd3f62ba6c5c8dc9f04d250343446a915f7`
+and
+`3e5259c476fcc0de4095cb06d722c529d57580ad4d24f6363701edc511618ee9`.
+Runner v2 checkpoint `ca4bf05623a5cbc47b98acf6754417b1c01c116a`
+has Git-blob SHA-256
+`2b3fea3c0973da95cbe08f9be3ec6085eaafaae93b0b974640cc3e1962c0462c`;
+notebook vehicle checkpoint is
+`e0bed88bbdd9a0b9383e82ed6549906188d0a11f`.  Both Lean files remain
+visibly PRE-VALIDATION and NOT CHECKED.  Counters remain `20/41`,
+`TermSource = 0`; window 15 remains compatible and unattained.

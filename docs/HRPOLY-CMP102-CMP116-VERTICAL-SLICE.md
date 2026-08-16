@@ -12180,3 +12180,31 @@ The runner fixes the immutable source and both Git-blob hashes, runs a
 Mathlib-only algebraic repro, the focal and the five-block audit, stops on the
 first error and releases the Colab runtime.  It authorizes one fresh-clone
 diagnostic only; PRE-VALIDATION and hard counters remain unchanged.
+
+Fresh Colab diagnostic v1 ran once under visible account
+`lluiseriksson@gmail.com`, CPU/high-RAM (`50.99 GiB`), from
+`2026-08-16T03:36:09.403215Z`.  Transport, exact HEAD/blob gates, both text
+guards, Lean `v4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, cache acquisition and the
+Mathlib-only repro all passed.  The focal stopped at its first real error
+after `1582.090 s`, before the audit, with three elaboration failures in the
+new source: product normalization at line 70, rewriting beneath pointwise
+negation at line 108, and `M^1` versus `M` at line 131.  Evidence/archive
+SHA-256 are
+`26c59972365ad22422e8ebffd2cedb0a7e50e5e0aea89f94e1b905223f426861`
+and
+`1e8e856ce993b0253cf556f02443426888db9be909b2f466091e09faefea4e89`;
+`FINAL_STATUS=FAIL`, launcher exit was one and runtime release completed.
+
+Source repair checkpoint `c669f5f5e081c316186bfbeade7a6a79752db418`
+changes only those three proof normalizations; the theorem statements,
+constants and hypotheses are unchanged.  Revised source/audit Git-blob
+SHA-256 are
+`e2675eb46f47dad3fa60d0d88e29edd3f62ba6c5c8dc9f04d250343446a915f7`
+and
+`3e5259c476fcc0de4095cb06d722c529d57580ad4d24f6363701edc511618ee9`.
+Diagnostic runner v2 checkpoint
+`ca4bf05623a5cbc47b98acf6754417b1c01c116a` has Git-blob SHA-256
+`2b3fea3c0973da95cbe08f9be3ec6085eaafaae93b0b974640cc3e1962c0462c`;
+notebook checkpoint is `e0bed88bbdd9a0b9383e82ed6549906188d0a11f`.
+PRE-VALIDATION remains visible and the repair remains NOT CHECKED.
