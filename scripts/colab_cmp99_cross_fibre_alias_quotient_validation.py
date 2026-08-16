@@ -48,8 +48,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-cross-fibre-alias-quotient-v2"
-runner.SOURCE_SHA = "316f9fab920a1ec9b6fead040e9d8dae16f19f4e"
+runner.RUNNER_REV = "cmp99-cross-fibre-alias-quotient-v3"
+runner.SOURCE_SHA = "da7eed698c279304d24fb7f7a5f64278cbededf0"
 runner.ROOT = Path("/content/hrpoly-cmp99-cross-fibre-alias-quotient")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-cross-fibre-alias-quotient-evidence"
@@ -63,7 +63,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient.lean":
-        "2dd35012b5320e599f556f7f3e69d6299c253b666d6af107fc4d3ac168348ea9",
+        "8b6f5296d06ab284a1bc15313797bd995a92d136791d3d0b4cbae492e89e0897",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotientAudit.lean":
         "1d3235c0b6f26445dd7e84184b0b1a0ebb95602b924ea2014c027965433142b7",
 }
@@ -76,6 +76,10 @@ example (N l : ℕ) (hle : l ≤ N) :
     -(((N - l : ℕ) : ℂ)) = (l : ℂ) - (N : ℂ) := by
   rw [Nat.cast_sub hle]
   ring
+
+example {d : ℕ} : -(fun _ : Fin d => (0 : ℤ)) = fun _ => 0 := by
+  funext mu
+  simp
 """,
     encoding="utf-8",
 )
