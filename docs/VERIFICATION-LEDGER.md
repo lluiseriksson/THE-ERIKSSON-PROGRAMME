@@ -38428,3 +38428,17 @@ and exact-overlay text guards pass over exactly the two new files, but this is
 not compiler evidence.  Brillouin integration, regional `B0`, window-15
 attainment and terminal fields remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+Source checkpoint `063f4337faba31ce7e5235e8c915a24b602a33a6` has
+source/audit Git-blob SHA-256
+`4437f382c9a19951141ff2503a69beabf41603be59751c35d79a789ffbe4bb45`
+and
+`144f1b3814bfe62e0e252e89169194f534f4fbf25b6e794f8c02301d9ad88b13`.
+Runner v1 checkpoint `7c24b5be3d6587990b08be6acfe977251871403a`, Git-blob
+SHA-256
+`071b7adac47133c39040eaee44a3de7b5088abdbbc1d25aee7f9306074d327d3`,
+and notebook checkpoint `eab84571d72cd5b5b938f405ce186201e0b9ebd9`, Git-blob
+SHA-256
+`93036ee8349eb2712740f3cb312c966b773450893c660b46e218e73051cb4b3d`,
+prepare one fresh Colab diagnostic.  PRE-VALIDATION remains visible and the
+result remains NOT CHECKED.
