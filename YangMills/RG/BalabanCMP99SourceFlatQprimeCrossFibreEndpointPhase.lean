@@ -72,17 +72,22 @@ theorem cmp99SourceFlatQprimeAliasEndpointPhase_fourierNeg_eq_negDisplacement
       cmp99SourceFlatQprimeAmplitudeMomentum_fourierNeg_eq_neg_add_period
         k.1 with
     ⟨w, hw⟩
-  rw [hw,
-    exp_I_cmp89Eq251EntirePhase_add_int_aliasPeriods_physicalFine
-      (N := M)
-      (-cmp99SourceFlatQprimeAmplitudeMomentum k.1) w u]
-  congr 2
-  simp only [cmp89Eq251EntirePhase,
-    cmp89Eq249PhysicalFineLatticeDisplacement, Pi.neg_apply]
-  push_cast
-  apply Finset.sum_congr rfl
-  intro mu _
-  ring
+  rw [hw]
+  calc
+    _ = Complex.exp (Complex.I * cmp89Eq251EntirePhase
+        (-cmp99SourceFlatQprimeAmplitudeMomentum k.1)
+        (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹) u)) := by
+      simpa only [Pi.neg_apply] using
+        (exp_I_cmp89Eq251EntirePhase_add_int_aliasPeriods_physicalFine
+          (N := M) (-cmp99SourceFlatQprimeAmplitudeMomentum k.1) w u)
+    _ = _ := by
+      congr 2
+      simp only [cmp89Eq251EntirePhase,
+        cmp89Eq249PhysicalFineLatticeDisplacement, Pi.neg_apply]
+      push_cast
+      apply Finset.sum_congr rfl
+      intro mu _
+      ring
 
 /-- One column-oriented endpoint sample on the Fourier-negative fibre.  Its
 displacement is the literal opposite of the row-oriented physical sample. -/
@@ -143,9 +148,23 @@ theorem cmp99SourceFlatPhysicalTransposeGreenEndpointSample_fourierNeg_eq_column
               -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
                 M x y mu))) := by
     simpa only [neg_neg] using hphase.symm
-  rw [hphase',
-    cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_coarseFourierNeg_eq_column
-      ha hell k]
+  have hsolution :
+      cmp89Eq249StabilizedAliasTransposeSolution d M 1 0 a
+          (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+          (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
+            d M N' ell k) =
+        cmp89Eq249StabilizedAliasColumnSolution d M 1 0 a
+          (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
+            (cmp99FinBoxFourierNeg ell))
+          (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N'
+            (cmp99FinBoxFourierNeg ell)
+            (cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv
+              d M N' ell k)) := by
+    simpa only [cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution]
+      using
+        (cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_coarseFourierNeg_eq_column
+          ha hell k)
+  rw [hphase', hsolution]
 
 /-- The complete nonzero physical fibre sum is transported to the complete
 column-oriented sum on the Fourier-negative fibre.  This is a reindexing of
