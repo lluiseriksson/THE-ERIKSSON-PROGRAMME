@@ -38442,3 +38442,24 @@ SHA-256
 `93036ee8349eb2712740f3cb312c966b773450893c660b46e218e73051cb4b3d`,
 prepare one fresh Colab diagnostic.  PRE-VALIDATION remains visible and the
 result remains NOT CHECKED.
+
+## Addendum 865 (2026-08-16, **complete endpoint-integrand consumer sealed in fresh Colab clone; 20/41 unchanged**)
+
+One fresh Colab CPU/high-RAM clone at exact source
+`063f4337faba31ce7e5235e8c915a24b602a33a6` passed every transport, source,
+Git-blob, Mathlib-pin, text and minimal-repro gate.  The focal exited `0` after
+`1727.387 s` with the literal terminal line
+`Build completed successfully (8703 jobs).`; the audit exited `0` after
+`8.152 s`.  Both audited declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Evidence SHA-256 is
+`1195ba89172c8e065b386f38a45ef224f53ec99225734887289e3e5ccd487330`;
+archive SHA-256 is
+`7806b769510a0b7c2f73a53e8ea5ba9f60348c58ea8897ad43919d2ed562d553`.
+The runner emitted `FINAL_STATUS=PASS`, auto-unassigned the runtime, and was
+not rerun.  This evidence retires exactly the source and audit PRE-VALIDATION
+marks for Step 8b.21.  It seals the complete endpoint-integrand consumer; it
+does not construct a Brillouin integral, regional `B0`, attain window 15,
+discharge a terminal field or inhabit `TermSource`.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

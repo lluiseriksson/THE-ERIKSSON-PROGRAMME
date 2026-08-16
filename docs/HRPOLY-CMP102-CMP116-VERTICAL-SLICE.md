@@ -12871,7 +12871,7 @@ sum only.  A combined zero/nonzero consumer, Brillouin integration, regional
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
-### Step 8b.21: complete physical-fibre endpoint integrand (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.21: complete physical-fibre endpoint integrand (SEALED)
 
 `BalabanCMP99SourceFlatQprimeCompleteEndpointIntegrand` first reindexes the
 column-oriented physical fibre through the literal signed-alias equivalence
@@ -12882,11 +12882,9 @@ singular zero fibre consumes the sealed Eq. (249) reflection.  Both branches
 land at one literal endpoint-integrand target; no `if` wrapper or termwise
 identification of the affine carry with reflection is introduced.
 
-Source and two-declaration audit retain visible PRE-VALIDATION headers.  No
-Lean, Lake or oracle has run for this brick on Windows.  The import-prefix
-and exact-overlay text guards pass over exactly the two new files, but this is
-not compiler evidence.  Brillouin integration, regional `B0`, window-15
-attainment, terminal fields and a `TermSource` inhabitant remain open.
+No Lean, Lake or oracle ran for this brick on Windows.  Brillouin integration,
+regional `B0`, window-15 attainment, terminal fields and a `TermSource`
+inhabitant remain open.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
@@ -12902,4 +12900,18 @@ places exact equivalence-reindexing and case-split repros before the focal.
 Notebook checkpoint `eab84571d72cd5b5b938f405ce186201e0b9ebd9`, Git-blob
 SHA-256
 `93036ee8349eb2712740f3cb312c966b773450893c660b46e218e73051cb4b3d`,
-pins the runner.  The queued result remains NOT CHECKED.
+pins the runner.
+
+One fresh Colab CPU/high-RAM clone at exact source
+`063f4337faba31ce7e5235e8c915a24b602a33a6` passed every transport, blob,
+pin, text and repro gate.  The focal exited `0` after `1727.387 s` with the
+literal terminal line `Build completed successfully (8703 jobs).`; the audit
+exited `0` after `8.152 s`, and both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`1195ba89172c8e065b386f38a45ef224f53ec99225734887289e3e5ccd487330`;
+archive SHA-256 is
+`7806b769510a0b7c2f73a53e8ea5ba9f60348c58ea8897ad43919d2ed562d553`.
+`FINAL_STATUS=PASS`; the runtime auto-unassigned and no rerun occurred.  This
+seal retires exactly the two Step-8b.21 PRE-VALIDATION marks.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

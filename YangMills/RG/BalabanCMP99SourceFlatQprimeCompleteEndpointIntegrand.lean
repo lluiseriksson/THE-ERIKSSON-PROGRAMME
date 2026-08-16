@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection
 /-!
 # Complete physical-fibre endpoint integrand
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the result
-has not yet been verified by the Lean compiler.
-
 The column-oriented physical fibre is first reindexed through the literal
 signed-alias equivalence and identified with the CMP89 stabilized endpoint
 integrand.  The complete transpose sum is then treated by cases on the coarse
