@@ -12435,3 +12435,29 @@ The runtime released after `160.571 s` and the tab was closed.  v3 replaces
 the repro by the literal stabilized-to-reduced quotient equality and uses
 `field_simp [...] <;> ring`; mathematical source remains unchanged and
 PRE-VALIDATION remains visible.
+
+Diagnostic v3 passed all transport, blob, pin, text and Mathlib-only repro
+gates, then reached the project focal. It stopped after `1819.971 s` with
+exit code `1`; the audit did not run. Both errors were the same literal
+residual cancellation in the row and column branches:
+`centralFine * coefficient * centralFine⁻¹ = coefficient`.
+Evidence/archive SHA-256 are
+`d8734490b613a8490123336d1ba8b9afd91190c65d329804103e7d58803b2901`
+and
+`87b08b05a0d19bcd5d9f95b96b0c8ef75af69edb07f6563d31b793b1833fbade`.
+The runtime released and the tab was closed.
+
+Repair checkpoint `839727ffa9b21fd683c23558dac0211374cefdd8`, source
+Git-blob SHA-256
+`97d4780f50271eec24c1df523f49e0439056181338c3a044c5b1ea7ea824b67e`,
+changes only those tactic tails to explicit commutation, association and
+`mul_inv_cancel₀ hcentral`. Runner v4 checkpoint
+`756a7a41bd65597b756fe3e550f230cdc3df7ef8`, Git-blob SHA-256
+`19b4415bdd29f81a45d158f38bb8006cce53ba4b6d148f75dcde17b3708c68ff`,
+and notebook checkpoint `acd5bd0ef4491f659ada880e9c32253225d3f322`,
+Git-blob SHA-256
+`750bbfce89ce5510011b3936ac098645697c8fc893f886472f02d7d661e7a81b`,
+test that exact residual shape before the focal. No statement, hypothesis,
+constant or scope changed. PRE-VALIDATION remains visible and the result
+remains NOT CHECKED; counters remain exactly `20/41`, `TermSource = 0`, and
+window 15 remains compatible but unattained.

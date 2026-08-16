@@ -37898,3 +37898,37 @@ Mathematical source, statements, hypotheses, constants and source checkpoint
 remain unchanged.  PRE-VALIDATION remains visible and the result remains NOT
 CHECKED.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 847 (2026-08-16, **stabilized-quotient diagnostic v3 reaches source and exposes two literal cancellation goals; v4 prepared**)
+
+Diagnostic v3 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com`. It verified exact source
+`01f9a0c287666094233343e4bd63a4edc8224bdb`, both Git-blob hashes, Lean
+`v4.29.0-rc6`, Mathlib `07642720480157414db592fa85b626dafb71355b`, both
+text guards, and the Mathlib-only quotient repro. The focal then returned
+exit code `1` after `1819.971 s`; stop-on-first-error prevented the audit.
+
+The only source errors were the same residual goal in the row and column
+branches, at lines 147 and 181 after denominator clearing:
+`centralFine * coefficient * centralFine⁻¹ = coefficient`. This is a
+literal cancellation/association obligation, not a change to the theorem.
+`FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`d8734490b613a8490123336d1ba8b9afd91190c65d329804103e7d58803b2901`
+and
+`87b08b05a0d19bcd5d9f95b96b0c8ef75af69edb07f6563d31b793b1833fbade`.
+The runtime released automatically and the browser tab was closed.
+
+Source repair checkpoint `839727ffa9b21fd683c23558dac0211374cefdd8`,
+Git-blob SHA-256
+`97d4780f50271eec24c1df523f49e0439056181338c3a044c5b1ea7ea824b67e`,
+replaces only the two failed tactic tails by explicit commutation,
+association and `mul_inv_cancel₀ hcentral`. Runner v4 checkpoint
+`756a7a41bd65597b756fe3e550f230cdc3df7ef8`, Git-blob SHA-256
+`19b4415bdd29f81a45d158f38bb8006cce53ba4b6d148f75dcde17b3708c68ff`,
+and notebook checkpoint `acd5bd0ef4491f659ada880e9c32253225d3f322`,
+Git-blob SHA-256
+`750bbfce89ce5510011b3936ac098645697c8fc893f886472f02d7d661e7a81b`,
+use the exact source orientation in the repro. Statements, hypotheses,
+constants and scope are unchanged. PRE-VALIDATION remains visible and the
+result remains NOT CHECKED. Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
