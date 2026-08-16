@@ -11981,3 +11981,30 @@ and the downloaded evidence archive has SHA-256
 PRE-VALIDATION is retired exactly for the source and audit certified here.
 The orientation bridge remains open; counters stay `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+### Step 8b.14: stabilized column solution and literal endpoint sum (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `e3f613b66edea1ad7fc7fde472a2b4ac093a7c9e` adds
+`BalabanCMP89Eq249StabilizedAliasColumnSolution` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`0ea5db98dba245eb09bf12097a7f3e2f65810dc860d612254b618477af5330ab`
+and
+`2ef8189260419385af18bfd34ad0fb55e29886aae8a916d092cd816ced742fef`.
+
+The brick constructs the direct-momentum column solution internally with the
+same removable central cancellation as the cold-sealed transposed solution,
+proves that it solves the original finite alias matrix, transports the
+noncentral subtype sum to the literal raw-alias sum, and identifies the
+complete phase-weighted column sum with
+`cmp89Eq248ComplexStabilizedGreenEndpointIntegrand`.  No nonvanishing
+hypothesis is needed for the endpoint identity itself; the inverse-system
+theorem exposes exactly the noncentral and stabilized nonvanishing premises.
+
+This is not yet the orientation bridge.  No equality between the physical
+row sum of Step 8b.13 and this column sum is claimed, and no termwise
+zero-alias preservation is smuggled through the affine carry.  Cross-fibre
+Fourier-negation reindexing, Green periodization, regional `B0`, window-15
+attainment, terminal-field production and `TermSource` habitation remain
+open.  Both new files are visibly PRE-VALIDATION and NOT CHECKED; no Lean or
+Lake ran on Windows.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

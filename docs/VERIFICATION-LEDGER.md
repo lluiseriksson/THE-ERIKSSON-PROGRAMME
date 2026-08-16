@@ -37364,3 +37364,30 @@ row-to-column identity, cross-fibre reindexing, Green periodization, regional
 `B0`, window-15 attainment, terminal-field producer or `TermSource`
 inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 832 (2026-08-16, **stabilized column endpoint PRE-VALIDATION; physical orientation bridge still open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`e3f613b66edea1ad7fc7fde472a2b4ac093a7c9e` adds
+`BalabanCMP89Eq249StabilizedAliasColumnSolution` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`0ea5db98dba245eb09bf12097a7f3e2f65810dc860d612254b618477af5330ab`
+and
+`2ef8189260419385af18bfd34ad0fb55e29886aae8a916d092cd816ced742fef`.
+
+The source does not accept a column solution or endpoint identity as data.
+It constructs the central-stabilized direct-momentum column vector, proves it
+solves the original finite alias matrix from the literal noncentral and
+stabilized nonvanishing premises, proves the exact subtype/raw-alias
+noncentral sum dictionary, and derives the complete phase-weighted sum as the
+literal stabilized CMP89 Green endpoint integrand.  No volume, cardinality or
+integral normalization is inserted.
+
+The row/column distinction remains portante.  This brick does not identify
+the Step-8b.13 physical row sum with the column sum, reindex the complete sum
+through cross-fibre Fourier negation and its affine signed-alias carry, claim
+termwise preservation of the zero alias, periodize the Green kernel, produce
+regional `B0`, attain window 15, discharge a terminal field or inhabit
+`TermSource`.  Both Lean files retain visible PRE-VALIDATION headers and are
+NOT CHECKED.  No Lean or Lake ran on Windows.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
