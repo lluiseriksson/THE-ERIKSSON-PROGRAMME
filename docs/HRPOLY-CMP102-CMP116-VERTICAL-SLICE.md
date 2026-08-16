@@ -12534,3 +12534,29 @@ Git-blob SHA-256
 pin v7. Statements and scope are unchanged; PRE-VALIDATION remains visible,
 the result is NOT CHECKED, counters remain `20/41`, `TermSource = 0`, and
 window 15 remains compatible but unattained.
+
+Diagnostic v7 passed every transport, blob, pin, text and Mathlib-only repro
+gate, then reached the project source. The focal stopped after `1567.077 s`
+with exit code `1`; the audit did not run. In the row and column noncentral
+branches, the first denominator-clearing `field_simp` already closed the
+goal, so each following tactic line failed literally with
+`No goals to be solved` (lines 155 and 193). Evidence/archive SHA-256 are
+`0caf0e09a7016b28ec4f8748f52a766f41afcc0cb5af8f7317e839588c0ef94e`
+and
+`227608e7ff8fa2c09ac6071865fffd9a444be83c902eda8bae255b16eebf83f0`.
+The runtime released automatically after `1716.492 s` and the tab closed.
+
+Repair checkpoint `fc26d50d2c660a26b65c1e3bbf79e8761b35b4da`, source
+Git-blob SHA-256
+`268f6f985af57ccbb7013a5951f0276d6d6595599d65986d3c02a50a3a2c5cba`,
+removes only those redundant tails and their unused local literal
+nonvanishing names. Runner v8 checkpoint
+`94cf85a966b3b98bb9e0200fdaa0b6df546a79f5`, Git-blob SHA-256
+`5624cbba3ec2894bf12cc35d034a3675b54053781c4308dd1a1bc795a0d50ab3`,
+and notebook checkpoint `ab0b022356669b33532d292ce891dc53ce609d28`,
+Git-blob SHA-256
+`a153554868535e713fccd63b5b5ef2d0719ee76f1fc8e4081f536d1b7c3200e6`,
+pin v8. Statements, hypotheses, constants and scope are unchanged;
+PRE-VALIDATION remains visible and the result remains NOT CHECKED. Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

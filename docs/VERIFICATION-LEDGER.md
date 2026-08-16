@@ -37588,6 +37588,39 @@ PRE-VALIDATION remains visible and the result remains NOT CHECKED. Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
+## Addendum 851 (2026-08-16, **stabilized-quotient diagnostic v7 exposes two redundant closed-goal tails; v8 prepared**)
+
+Diagnostic v7 passed exact transport, both source-blob gates, official Lean
+and Mathlib pins, both text guards, cache materialization and the
+Mathlib-only cancellation repro. The project focal then reached the new
+module and returned exit code `1` after `1567.077 s`; stop-on-first-error
+prevented the audit. In both noncentral branches the first
+`field_simp [hcentral, hfine m, hreduced]` already closed the goal, so the
+following tactic line failed literally with `No goals to be solved` at
+lines 155 and 193. This is a redundant proof tail, not a statement,
+hypothesis, constant or scope failure.
+
+`FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`0caf0e09a7016b28ec4f8748f52a766f41afcc0cb5af8f7317e839588c0ef94e`
+and
+`227608e7ff8fa2c09ac6071865fffd9a444be83c902eda8bae255b16eebf83f0`.
+The CPU/high-RAM runtime released automatically after `1716.492 s` and the
+browser tab was closed.
+
+Source checkpoint `fc26d50d2c660a26b65c1e3bbf79e8761b35b4da`, Git-blob
+SHA-256
+`268f6f985af57ccbb7013a5951f0276d6d6595599d65986d3c02a50a3a2c5cba`,
+removes exactly the two redundant tails and their now-unused local literal
+nonvanishing names. Runner v8 checkpoint
+`94cf85a966b3b98bb9e0200fdaa0b6df546a79f5`, Git-blob SHA-256
+`5624cbba3ec2894bf12cc35d034a3675b54053781c4308dd1a1bc795a0d50ab3`,
+and notebook checkpoint `ab0b022356669b33532d292ce891dc53ce609d28`,
+Git-blob SHA-256
+`a153554868535e713fccd63b5b5ef2d0719ee76f1fc8e4081f536d1b7c3200e6`,
+pin the repaired source. PRE-VALIDATION remains visible and the result is
+NOT CHECKED. Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
+
 Diagnostic runner checkpoint `9a55678052e7c5394ef5c51f5de86f4ab9f8be14`
 has Git-blob SHA-256
 `b6de4efa8f7f20436fa95f9b36395278f3dd043862906ec78214b764f71adbc2`;
