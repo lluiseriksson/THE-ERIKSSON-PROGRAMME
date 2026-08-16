@@ -12870,3 +12870,22 @@ sum only.  A combined zero/nonzero consumer, Brillouin integration, regional
 `B0`, window-15 attainment and terminal fields remain open.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+### Step 8b.21: complete physical-fibre endpoint integrand (PRE-VALIDATION; NOT CHECKED)
+
+`BalabanCMP99SourceFlatQprimeCompleteEndpointIntegrand` first reindexes the
+column-oriented physical fibre through the literal signed-alias equivalence
+and identifies the complete sum with the CMP89 stabilized endpoint
+integrand.  Its second theorem splits only on the actual coarse mode: nonzero
+fibres consume the sealed Fourier-negation quotient transport, while the
+singular zero fibre consumes the sealed Eq. (249) reflection.  Both branches
+land at one literal endpoint-integrand target; no `if` wrapper or termwise
+identification of the affine carry with reflection is introduced.
+
+Source and two-declaration audit retain visible PRE-VALIDATION headers.  No
+Lean, Lake or oracle has run for this brick on Windows.  The import-prefix
+and exact-overlay text guards pass over exactly the two new files, but this is
+not compiler evidence.  Brillouin integration, regional `B0`, window-15
+attainment, terminal fields and a `TermSource` inhabitant remain open.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

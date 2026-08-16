@@ -38411,3 +38411,20 @@ sum.  A combined zero/nonzero consumer, Brillouin integration, regional `B0`,
 window-15 attainment and terminal fields remain open.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 864 (2026-08-16, **complete endpoint-integrand consumer written; PRE-VALIDATION and NOT CHECKED; 20/41 unchanged**)
+
+`BalabanCMP99SourceFlatQprimeCompleteEndpointIntegrand` and its
+two-declaration audit are written with visible PRE-VALIDATION headers.  The
+first theorem reindexes any complete column-oriented physical fibre through
+the signed-alias equivalence and lands at the literal CMP89 stabilized
+endpoint integrand.  The second combines the sealed nonzero Fourier-negation
+transport and sealed singular zero-fibre reflection by cases on the actual
+coarse mode.  The conclusion is one literal endpoint-integrand formula, not a
+piecewise wrapper.
+
+No Lean, Lake or oracle has run for this brick on Windows.  The import-prefix
+and exact-overlay text guards pass over exactly the two new files, but this is
+not compiler evidence.  Brillouin integration, regional `B0`, window-15
+attainment and terminal fields remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
