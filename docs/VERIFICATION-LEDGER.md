@@ -38091,3 +38091,39 @@ pin that exact repair and exercise the same lemma in the pre-focal repro.
 Statements, hypotheses, constants and scope are unchanged. PRE-VALIDATION
 remains visible and the result remains NOT CHECKED. Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 853 (2026-08-16, **stabilized-to-quotient bridge diagnostic and cold terminal PASS; marks retired**)
+
+Diagnostic v9 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com`. The first cell click encountered
+Colab's GitHub security dialog and is classified as a non-start; the evidence
+clock began only when the confirmed cell printed `STAGE=runtime_open` at
+`2026-08-16T12:23:09.549075Z`. Runner transport, exact source and Git-blob
+hashes, official Lean/Mathlib pins, text guards, cache materialization and the
+direct `mul_div_cancel_left₀` repro all passed. The focal printed the literal
+terminal line `Build completed successfully (8591 jobs).`; the five audit
+declarations each printed exactly `[propext, Classical.choice, Quot.sound]`.
+`FINAL_STATUS=PASS`; evidence/archive SHA-256 are
+`9e05709a86014e20793c158b8c04c376fa48c335d1d6a31d3c0a33708fce57d9`
+and
+`03f4f6c8887d9772b72c64e281547c8bd4c214446aef12cbafbc402dbb4e59b5`.
+The runtime auto-released and the tab was closed.
+
+The single terminal cold validation was GitHub Actions run `31948322330`.
+It checked out exact source
+`72e665f18309e7fb96c4bc720b52296a03fabecc`, verified both source blobs and
+the pinned environment, and recorded both project-cache restore and save as
+skipped. The focal again printed `Build completed successfully (8591 jobs).`;
+the audit again returned the exact standard trio for all five declarations.
+The downloaded durable archive SHA-256 is
+`4fff4812f17f07a993479411ed1cda12c154a5aa23889f2e612c1ae09147697c`,
+matching `evidence/ARCHIVE_SHA256`; `FINAL_STATUS=PASS`.
+
+Seal commit `dabe90ca5051996fe57a9fef669d3f607bd82324` retires exactly the
+source and audit PRE-VALIDATION marks. The seal covers reduced-denominator
+negation/periodicity and the row/column stabilized-to-literal quotient
+cancellation under explicit complete non-singularity. It does not cover the
+affine cross-fibre carry, the zero coarse fibre, the complete physical finite
+sum, regional `B0`, window-15 attainment or any terminal field. Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

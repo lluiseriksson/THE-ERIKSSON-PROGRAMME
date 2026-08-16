@@ -12378,7 +12378,7 @@ physical sum, Brillouin integral, regional `B0`, window-15 attainment,
 terminal fields or `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-### Step 8b.18a: stabilized-to-quotient bridge (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.18a: stabilized-to-quotient bridge (COLD-SEALED)
 
 Source checkpoint `01f9a0c287666094233343e4bd63a4edc8224bdb` adds
 `BalabanCMP99SourceStabilizedAliasQuotientBridge` and its five-declaration
@@ -12586,3 +12586,32 @@ pin v9 and test the same cancellation lemma before the focal. No statement,
 hypothesis, constant or scope changed. PRE-VALIDATION remains visible, the
 result remains NOT CHECKED, counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+Diagnostic v9 ran once in Colab Pro+ CPU/high RAM under the visible account
+`lluiseriksson@gmail.com`. The first click was blocked by Colab's GitHub
+security dialog and is classified as a non-start; the evidence clock began
+only when runner v9 printed `STAGE=runtime_open` at
+`2026-08-16T12:23:09.549075Z`. Exact transport, source/blob hashes,
+toolchain/Mathlib pins, text guards and the direct
+`mul_div_cancel_left₀` repro all passed. The focal then printed
+`Build completed successfully (8591 jobs).`; all five audit declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+`FINAL_STATUS=PASS`; evidence/archive SHA-256 are
+`9e05709a86014e20793c158b8c04c376fa48c335d1d6a31d3c0a33708fce57d9`
+and
+`03f4f6c8887d9772b72c64e281547c8bd4c214446aef12cbafbc402dbb4e59b5`.
+The runtime auto-released after the run and the browser tab was closed.
+
+Cold terminal GitHub Actions run `31948322330` then checked out exact source
+`72e665f18309e7fb96c4bc720b52296a03fabecc`; both cache restore and save
+were skipped. The focal again printed `Build completed successfully (8591
+jobs).`, the five-declaration audit again printed exactly the standard axiom
+trio, and `FINAL_STATUS=PASS`. The downloaded durable archive SHA-256 is
+`4fff4812f17f07a993479411ed1cda12c154a5aa23889f2e612c1ae09147697c`,
+matching its internal manifest. Seal commit
+`dabe90ca5051996fe57a9fef669d3f607bd82324` retires exactly the two
+PRE-VALIDATION marks. This seals parity/periodicity of the reduced
+denominator and stabilized-to-literal quotient cancellation only; the affine
+cross-fibre carry, complete physical sum, regional `B0`, window 15 and
+terminal fields remain open. Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
