@@ -46,8 +46,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-finite-grid-aliasing-v1"
-runner.SOURCE_SHA = "0b26b942db7bf0872a6de36fe62ed84e38a94f32"
+runner.RUNNER_REV = "cmp99-finite-grid-aliasing-v2"
+runner.SOURCE_SHA = "534493728038813f3772f8b3b073237f4da1884e"
 runner.ROOT = Path("/content/hrpoly-cmp99-finite-grid-aliasing")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-finite-grid-aliasing-evidence"
@@ -61,7 +61,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean":
-        "bddc81b3f5cc32dcf371e40f4be5da6bb5c9810cc7220eacb537a686f830979f",
+        "de04ca53ce8b753e80514e607f0b47ae6c6cf41811b353e60030b21f4a5a2a52",
     "YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean":
         "1207c5881c98379753407f426392100b08e44c503d64ce03cc2c3daba7b5290b",
 }
