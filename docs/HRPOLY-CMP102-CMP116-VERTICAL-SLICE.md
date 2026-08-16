@@ -12508,3 +12508,29 @@ pin that exact residual repro. No statement, hypothesis, constant or scope
 changed. PRE-VALIDATION remains visible and the result remains NOT CHECKED;
 counters remain exactly `20/41`, `TermSource = 0`, and window 15 remains
 compatible but unattained.
+
+Diagnostic v6 passed every gate and the exact quotient-cancellation repro,
+then reached the focal. It stopped after `1117.935 s` with exit code `1`;
+the audit did not run. Lean rejected the same whole-goal definitional
+`change` in the row and column branches: the literal central fine-symbol in
+the target did not convert to the local `let` abbreviation. Evidence/archive
+SHA-256 are
+`1668b0c1ee7d45536f492e835b3f6d1fcc41248cfa20b8aaf07c4c7994d94a60`
+and
+`82fb7eb88717ee9c603bdc31b0c4303cb296965a075908305972c4f138ea302a`.
+The runtime released after `1228.658 s` and the tab closed.
+
+Repair checkpoint `c7bfde5edb48a52032d2616c7b15bf3ee753704d`, source
+Git-blob SHA-256
+`361f61fdce19b545ffea727453da58f7877249ef3f458d798303fdaaf58889ac`,
+names nonvanishing of the literal denominator by simplifying the local
+abbreviation, then cancels without converting the whole goal. Runner v7
+checkpoint `1a2b3731a7f63be4c21910aaa58414d15872d66e`, Git-blob
+SHA-256
+`031d1f43d5c078a3375b43fb25600320e9bf39ffb012f2b6c504ea990c49267c`,
+and notebook checkpoint `245f5063f2263ec11daaf096e179c4a0281e13d1`,
+Git-blob SHA-256
+`63ecea50e3234db2e4ed7c53d0d95e61a6526470faec3b97228a863a2064e99d`,
+pin v7. Statements and scope are unchanged; PRE-VALIDATION remains visible,
+the result is NOT CHECKED, counters remain `20/41`, `TermSource = 0`, and
+window 15 remains compatible but unattained.
