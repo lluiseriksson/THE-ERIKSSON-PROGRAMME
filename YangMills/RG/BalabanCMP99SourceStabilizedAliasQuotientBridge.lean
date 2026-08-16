@@ -148,7 +148,8 @@ theorem cmp89Eq249StabilizedAliasTransposeSolution_eq_unstabilized
       d L j mass a z m hm]
     unfold cmp89Eq247EntireAliasTransposeSolution
     rw [← hstabilized]
-    field_simp [hcentral, hfine m, hreduced] <;> ring
+    field_simp [hcentral, hfine m, hreduced]
+    rw [mul_comm centralFine, mul_assoc, mul_inv_cancel₀ hcentral, mul_one]
 
 /-- On the same non-singular domain, the separately constructed stabilized
 column solution cancels to its literal rational quotient. -/
@@ -182,7 +183,8 @@ theorem cmp89Eq249StabilizedAliasColumnSolution_eq_unstabilized
       d L j mass a z m hm]
     unfold cmp89Eq247EntireAliasColumnSolution
     rw [← hstabilized]
-    field_simp [hcentral, hfine m, hreduced] <;> ring
+    field_simp [hcentral, hfine m, hreduced]
+    rw [mul_comm centralFine, mul_assoc, mul_inv_cancel₀ hcentral, mul_one]
 
 end
 
