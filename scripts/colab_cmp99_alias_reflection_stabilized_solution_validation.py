@@ -46,8 +46,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-alias-reflection-stabilized-solution-v2"
-runner.SOURCE_SHA = "53d0312379fa66059cc0665467751d9cb90256b0"
+runner.RUNNER_REV = "cmp99-alias-reflection-stabilized-solution-v3"
+runner.SOURCE_SHA = "ce00198eb10766b15e3fb90dc756cbf634e34740"
 runner.ROOT = Path("/content/hrpoly-cmp99-alias-reflection-stabilized-solution")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-alias-reflection-stabilized-solution-evidence"
@@ -61,7 +61,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolution.lean":
-        "69976ab87dd666f930c89846fff353ce676b8992d31a698ec8a0770f80df468f",
+        "0925f929542853a1826bd61dbeed67ccb2679b4679ac328c8ba8e7e2746b9591",
     "YangMills/RG/BalabanCMP99SourceAliasReflectionStabilizedSolutionAudit.lean":
         "579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d",
 }
