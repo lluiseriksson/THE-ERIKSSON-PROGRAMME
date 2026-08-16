@@ -50,7 +50,7 @@ theorem norm_cmp99FlatZModFourierCharacter
     ‖cmp99FlatZModFourierCharacter k x‖ = 1 := by
   unfold cmp99FlatZModFourierCharacter
   rw [norm_prod]
-  simp [ZMod.stdAddChar_apply, Complex.norm_exp]
+  simp [ZMod.stdAddChar_apply]
 
 /-- The normalized finite-grid character average selects exactly one residue
 class of integer frequencies. -/
@@ -140,6 +140,7 @@ theorem cmp99Flat_normalizedFiniteGridFourierSeriesSample_eq_residueClass
     intro u
     simp only [term, norm_mul,
       norm_cmp99FlatZModFourierCharacter, one_mul]
+    exact le_rfl
   have hdistribute : ∀ k : CMP99FlatZModBox d N,
       cmp99FlatZModFourierCharacter (-k) r *
           cmp99FlatFiniteGridFourierSeriesSample coefficient k =
@@ -180,7 +181,22 @@ theorem cmp99Flat_normalizedFiniteGridFourierSeriesSample_eq_residueClass
                   (cmp99FlatZModFourierCharacter k
                     (cmp99FlatIntegerResidue (N := N) u) *
                       coefficient u)) = _
-          rw [← Finset.sum_mul]
+          have hfactor :
+              (∑ k : CMP99FlatZModBox d N,
+                cmp99FlatZModFourierCharacter (-k) r *
+                  (cmp99FlatZModFourierCharacter k
+                    (cmp99FlatIntegerResidue (N := N) u) *
+                      coefficient u)) =
+                (∑ k : CMP99FlatZModBox d N,
+                  cmp99FlatZModFourierCharacter (-k) r *
+                    cmp99FlatZModFourierCharacter k
+                      (cmp99FlatIntegerResidue (N := N) u)) *
+                    coefficient u := by
+            rw [Finset.sum_mul]
+            apply Finset.sum_congr rfl
+            intro k _
+            ring
+          rw [hfactor]
           rw [show ((N : ℂ) ^ d)⁻¹ *
               ((∑ k : CMP99FlatZModBox d N,
                 cmp99FlatZModFourierCharacter (-k) r *
