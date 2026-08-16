@@ -12383,7 +12383,7 @@ terminal fields or `TermSource`.  Counters remain exactly `20/41`,
 Source checkpoint `01f9a0c287666094233343e4bd63a4edc8224bdb` adds
 `BalabanCMP99SourceStabilizedAliasQuotientBridge` and its five-declaration
 audit.  Source/audit Git-blob SHA-256 are
-`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eef199ff3d40f93c04`
+`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eefaf199ff3d40f93c04`
 and
 `8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647`.
 Both Lean files retain visible PRE-VALIDATION headers and are NOT CHECKED;
@@ -12405,3 +12405,18 @@ Brillouin integral or regional `B0`, attain window 15, discharge a terminal
 field or inhabit `TermSource`.  The zero and nonzero coarse fibres remain a
 required split for the later physical bridge.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Diagnostic v1 stopped at the source-blob gate before dependency
+materialization, the Mathlib-only repro, focal or audit.  The expected source
+digest had lost the two hex characters `af`; the actual Git blob remained
+unchanged and verified as
+`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eefaf199ff3d40f93c04`.
+The same static review also found that the optional repro's right-hand side
+used the wrong cancelled factor.  This is `BLOCKED-INSTRUMENTATION`, not
+compiler evidence.  `FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`68ae4c6835d5174e02d2f13654cac3331c83fe5c2786314559b3a3828a3cb969`
+and
+`56a5520421543389ef9ca00d588c97df36a8e4335396d19d66caec6ac8630fbf`.
+The Colab CPU/high-RAM runtime released after `52.473 s` and the tab was
+closed.  v2 changes only those two runner constants; mathematical source,
+statements, hypotheses and source checkpoint remain unchanged.

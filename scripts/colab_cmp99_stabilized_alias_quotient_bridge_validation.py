@@ -47,7 +47,7 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v1"
+runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v2"
 runner.SOURCE_SHA = "01f9a0c287666094233343e4bd63a4edc8224bdb"
 runner.ROOT = Path("/content/hrpoly-cmp99-stabilized-alias-quotient-bridge")
 runner.EVIDENCE = Path(
@@ -62,7 +62,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridge.lean":
-        "cb44411e518726f2fe74e3f6ee3f76432c6de582b188eef199ff3d40f93c04",
+        "cb44411e518726f2fe74e3f6ee3f76432c6de582b188eefaf199ff3d40f93c04",
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean":
         "8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647",
 }
@@ -73,7 +73,7 @@ REPRO.write_text(
 
 example (a b c r : ℂ) (ha : a ≠ 0) (hb : b ≠ 0) (hr : r ≠ 0)
     (hstable : c = a * r) :
-    b * a / (a * (b * c)) = 1 / (b * r) := by
+    b * a / (a * (b * c)) = 1 / (a * r) := by
   rw [hstable]
   field_simp [ha, hb, hr]
   ring

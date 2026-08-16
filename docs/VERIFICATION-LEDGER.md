@@ -37840,7 +37840,7 @@ remains compatible but unattained.
 Source checkpoint `01f9a0c287666094233343e4bd63a4edc8224bdb` adds
 `BalabanCMP99SourceStabilizedAliasQuotientBridge` and its five-declaration
 audit.  Source/audit Git-blob SHA-256 are
-`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eef199ff3d40f93c04`
+`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eefaf199ff3d40f93c04`
 and
 `8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647`.
 Both files retain visible PRE-VALIDATION headers and no compiler evidence is
@@ -37854,4 +37854,27 @@ stabilized denominator to a periodic object.  The affine cross-fibre carry,
 its zero/nonzero coarse-fibre split, endpoint phases, complete physical sum,
 Brillouin integral, regional `B0`, window-15 attainment, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 845 (2026-08-16, **stabilized-quotient diagnostic v1 blocked by instrumentation before Lean; v2 prepared**)
+
+Fresh Colab CPU/high-RAM diagnostic v1 under visible account
+`lluiseriksson@gmail.com` verified the runner transport and official Lean
+asset, then stopped at the first source-blob hash gate.  The expected source
+digest had accidentally omitted the two characters `af`; exact source
+`01f9a0c287666094233343e4bd63a4edc8224bdb` and its Git blob were unchanged.
+No dependency materialization, Mathlib-only repro, focal or audit ran.
+`FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`68ae4c6835d5174e02d2f13654cac3331c83fe5c2786314559b3a3828a3cb969`
+and
+`56a5520421543389ef9ca00d588c97df36a8e4335396d19d66caec6ac8630fbf`.
+The runtime released after `52.473 s` and the browser tab was closed.
+
+Static review also caught that the optional quotient-algebra repro cancelled
+to `1 / (a * r)`, not its v1 right-hand side.  Runner v2 corrects exactly the
+source digest to
+`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eefaf199ff3d40f93c04`
+and the repro right-hand side.  Mathematical source, statements, hypotheses,
+constants and source checkpoint do not change.  PRE-VALIDATION remains
+visible; the result is still NOT CHECKED.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
