@@ -36830,26 +36830,6 @@ endpoint phase, regional `B0`, window-15 producer, terminal field and
 `TermSource` inhabitant remain open.  Counters stay exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-## Addendum 846 (2026-08-16, **stabilized-quotient diagnostic v2 blocked by completed repro tactic; v3 prepared**)
-
-Diagnostic v2 passed exact transport, both source-blob hashes, official
-toolchain and Mathlib pins, both text guards and cache materialization.  The
-corrected algebraic equality was already closed by `field_simp`; the next
-standalone `ring` therefore failed with literal error
-`No goals to be solved`.  Stop-on-first-error prevented the project focal and
-audit.  `FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
-`1723241b88e646cee6350234d9914deca53f940baae7129170a58927a4454b01`
-and
-`c2b89b2404f90c135938921cfa217ff7326efb65ff0ede8b9ee8823e9554cdf1`.
-The CPU/high-RAM runtime released after `160.571 s` and the tab was closed.
-
-Runner v3 states the exact quotient cancellation used by the source and
-replaces the fragile tactic sequence with `field_simp [...] <;> ring`.
-Mathematical source, statements, hypotheses, constants and source checkpoint
-remain unchanged.  PRE-VALIDATION remains visible and the result remains NOT
-CHECKED.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
-remains compatible but unattained.
-
 ## Addendum 820 (2026-08-15, **quotient-carry diagnostic v1 FAIL; minimal PRE-VALIDATION repair checkpointed; 20/41 unchanged**)
 
 Diagnostic v1 ran exactly once in Colab Pro+ under visible account
@@ -37898,3 +37878,23 @@ and the repro right-hand side.  Mathematical source, statements, hypotheses,
 constants and source checkpoint do not change.  PRE-VALIDATION remains
 visible; the result is still NOT CHECKED.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 846 (2026-08-16, **stabilized-quotient diagnostic v2 blocked by completed repro tactic; v3 prepared**)
+
+Diagnostic v2 passed exact transport, both source-blob hashes, official
+toolchain and Mathlib pins, both text guards and cache materialization.  The
+corrected algebraic equality was already closed by `field_simp`; the next
+standalone `ring` therefore failed with literal error
+`No goals to be solved`.  Stop-on-first-error prevented the project focal and
+audit.  `FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`1723241b88e646cee6350234d9914deca53f940baae7129170a58927a4454b01`
+and
+`c2b89b2404f90c135938921cfa217ff7326efb65ff0ede8b9ee8823e9554cdf1`.
+The CPU/high-RAM runtime released after `160.571 s` and the tab was closed.
+
+Runner v3 states the exact quotient cancellation used by the source and
+replaces the fragile tactic sequence with `field_simp [...] <;> ring`.
+Mathematical source, statements, hypotheses, constants and source checkpoint
+remain unchanged.  PRE-VALIDATION remains visible and the result remains NOT
+CHECKED.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
