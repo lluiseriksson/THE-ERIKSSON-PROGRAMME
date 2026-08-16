@@ -149,6 +149,7 @@ theorem cmp89Eq249StabilizedAliasTransposeSolution_eq_unstabilized
     unfold cmp89Eq247EntireAliasTransposeSolution
     rw [← hstabilized]
     field_simp [hcentral, hfine m, hreduced]
+    rw [mul_div_cancel_left₀ _ hcentral]
 
 /-- On the same non-singular domain, the separately constructed stabilized
 column solution cancels to its literal rational quotient. -/
@@ -183,6 +184,7 @@ theorem cmp89Eq249StabilizedAliasColumnSolution_eq_unstabilized
     unfold cmp89Eq247EntireAliasColumnSolution
     rw [← hstabilized]
     field_simp [hcentral, hfine m, hreduced]
+    rw [mul_div_cancel_left₀ _ hcentral]
 
 end
 
