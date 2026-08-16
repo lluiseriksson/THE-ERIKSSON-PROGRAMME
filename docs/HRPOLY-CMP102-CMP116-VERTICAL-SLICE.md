@@ -12915,3 +12915,21 @@ archive SHA-256 is
 seal retires exactly the two Step-8b.21 PRE-VALIDATION marks.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+### Step 8b.22: exact finite-grid Fourier aliasing substrate (PRE-VALIDATION; NOT CHECKED)
+
+`BalabanCMP99FlatFiniteGridAliasing` starts item 3 of the finite post-Gate-7
+route without identifying a finite DFT with an integral.  It reduces integer
+Fourier frequencies into the exact multidimensional `ZMod` box, proves the
+normalized character selector for an arbitrary residue class, and uses
+absolute summability to exchange the finite grid sum with the infinite
+Fourier series.  The endpoint is the literal sum of continuous coefficients
+in that residue class.
+
+The physical Fourier-series expansion of the CMP89 endpoint integrand is not
+accepted as a premise or asserted here; it remains the next source-specific
+producer.  Both new Lean files retain visible PRE-VALIDATION headers and are
+NOT CHECKED.  No Lean, Lake or oracle ran on Windows.  Regional `B0`, window
+15, terminal fields and a `TermSource` inhabitant remain open.  Counters stay
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

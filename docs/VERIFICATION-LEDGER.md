@@ -38463,3 +38463,19 @@ marks for Step 8b.21.  It seals the complete endpoint-integrand consumer; it
 does not construct a Brillouin integral, regional `B0`, attain window 15,
 discharge a terminal field or inhabit `TermSource`.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 866 (2026-08-16, **finite-grid Fourier aliasing substrate written; PRE-VALIDATION and NOT CHECKED; 20/41 unchanged**)
+
+`BalabanCMP99FlatFiniteGridAliasing` and its seven-declaration audit are
+written with visible PRE-VALIDATION headers.  The generic algebraic brick
+reduces integer frequencies into the finite reciprocal box, selects an exact
+residue class by the already sealed multidimensional character orthogonality,
+and exchanges the finite sample sum with an absolutely summable Fourier
+series.  It does not accept or assert the physical Fourier-series expansion
+of the CMP89 integrand.
+
+No Lean, Lake or oracle ran on Windows.  The result is NOT CHECKED.  It does
+not identify the physical Brillouin integral, construct regional `B0`, attain
+window 15, discharge a terminal field or inhabit `TermSource`.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
