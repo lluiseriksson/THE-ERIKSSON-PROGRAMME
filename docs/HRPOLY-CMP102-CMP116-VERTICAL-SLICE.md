@@ -12711,3 +12711,24 @@ the zero coarse fibre, the complete finite alias sum, a Brillouin integral,
 regional `B0`, window-15 attainment or any terminal field. Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+### Step 8b.19: nonzero cross-fibre endpoint phase and complete physical-fibre reindexing (PRE-VALIDATION; NOT CHECKED)
+
+`BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase` separates the endpoint
+phase from the mass-zero singularity.  Physical Fourier negation moves a mode
+from the fibre over `ell` to the fibre over `cmp99FinBoxFourierNeg ell`; the
+full `2*pi*M` alias period is discharged at the physical fine-lattice
+displacement before moving the remaining sign from momentum to displacement.
+The resulting pointwise identity is composed with the sealed Step-8b.18b
+nonzero quotient transport and then reindexed over the complete finite
+physical fibre.
+
+This source deliberately assumes `ell != 0` only where the quotient solution
+is consumed.  It does not assert that a distinguished alias is preserved
+termwise.  The zero coarse fibre remains a separate branch to be discharged
+with the sealed Eq. (249) reflection rather than quotient cancellation.  A
+Brillouin integral, regional `B0`, window-15 attainment, terminal fields and a
+`TermSource` inhabitant remain open.  Both new Lean files carry visible
+PRE-VALIDATION headers; no Lean, Lake or oracle has run for this step on
+Windows.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

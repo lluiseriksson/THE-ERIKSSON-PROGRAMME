@@ -38222,3 +38222,22 @@ and transported literal stabilized row-to-column solution. It does not cover
 the zero coarse fibre, complete finite alias sum, Brillouin integral, regional
 `B0`, window-15 attainment or a terminal field. Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 857 (2026-08-16, **cross-fibre endpoint phase written; PRE-VALIDATION and NOT CHECKED; 20/41 unchanged**)
+
+`BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase` and its four-declaration
+audit are written with visible PRE-VALIDATION headers.  The brick proves the
+endpoint phase transport under actual physical Fourier negation, defines the
+literal column-oriented endpoint sample on the negative fibre, composes it
+with the sealed nonzero row-to-column quotient theorem, and reindexes the
+complete finite physical fibre.  The `ell != 0` hypothesis appears only at
+the quotient consumer; the phase theorem itself is unrestricted.
+
+The source does not preserve a central alias termwise or cover the zero
+coarse fibre.  That branch must use the separately sealed Eq. (249) reflection
+because the mass-zero central fine symbol prevents quotient cancellation.
+No Lean, Lake or oracle has run for this brick on Windows.  The import-prefix
+and exact-overlay text guards passed over exactly the two new files, but this
+is not compiler evidence.  Brillouin integration, regional `B0`, window-15
+attainment and terminal fields remain open.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
