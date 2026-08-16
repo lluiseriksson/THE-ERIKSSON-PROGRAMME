@@ -12461,3 +12461,24 @@ test that exact residual shape before the focal. No statement, hypothesis,
 constant or scope changed. PRE-VALIDATION remains visible and the result
 remains NOT CHECKED; counters remain exactly `20/41`, `TermSource = 0`, and
 window 15 remains compatible but unattained.
+
+Diagnostic v4 stopped before the project focal. It passed transport, repaired
+source/blob hashes, pins, text guards and cache materialization, but its
+abstract quotient repro was already closed by `field_simp`; the following
+rewrite failed with literal `No goals to be solved`. Evidence/archive
+SHA-256 are
+`cdb4c9fa228dbc7e94ebd4fa08dc68b6075ffcba3b0a8172684f36bef176d559`
+and
+`79654d9050d7c014c61bbb08656cb34f4f154dd817c59695de88a78279150168`.
+The runtime released after `114.682 s` and the tab was closed.
+
+Runner v5 checkpoint `17dfd10ac96e8d14821eef006c1ab34cc9276dc2`,
+Git-blob SHA-256
+`1fb81b491e327b74910e0944d5c2323017afbe2090175e201923160c7230c757`,
+tests only the exact residual cancellation. Notebook checkpoint
+`4c9857bca0c168bbe8b228720035770e2b6527fd`, Git-blob SHA-256
+`de978d372f05a4b566b87b001abae12d1525441bbdb69fb5d86f96f8d9498dd6`,
+pins it. Source remains `839727ffa9b21fd683c23558dac0211374cefdd8`;
+PRE-VALIDATION remains visible, the result remains NOT CHECKED, and counters
+remain exactly `20/41`, `TermSource = 0`, with window 15 compatible but
+unattained.

@@ -37932,3 +37932,28 @@ use the exact source orientation in the repro. Statements, hypotheses,
 constants and scope are unchanged. PRE-VALIDATION remains visible and the
 result remains NOT CHECKED. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 848 (2026-08-16, **stabilized-quotient diagnostic v4 blocked by an over-complete repro; v5 prepared**)
+
+Diagnostic v4 verified exact runner transport, repaired source/blob hashes,
+toolchain and Mathlib pins, text guards and cache materialization. Its
+abstract repro was stronger than the source tail: `field_simp` discharged
+the complete quotient equality, so the following explicit cancellation
+rewrite failed with literal `No goals to be solved`. No project focal or
+audit ran. `FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`cdb4c9fa228dbc7e94ebd4fa08dc68b6075ffcba3b0a8172684f36bef176d559`
+and
+`79654d9050d7c014c61bbb08656cb34f4f154dd817c59695de88a78279150168`.
+The CPU/high-RAM runtime released after `114.682 s` and the tab was closed.
+
+Runner v5 checkpoint `17dfd10ac96e8d14821eef006c1ab34cc9276dc2`,
+Git-blob SHA-256
+`1fb81b491e327b74910e0944d5c2323017afbe2090175e201923160c7230c757`,
+reduces the repro to the exact residual goal only. Notebook checkpoint
+`4c9857bca0c168bbe8b228720035770e2b6527fd`, Git-blob SHA-256
+`de978d372f05a4b566b87b001abae12d1525441bbdb69fb5d86f96f8d9498dd6`,
+pins that runner. Mathematical source remains checkpoint
+`839727ffa9b21fd683c23558dac0211374cefdd8`; no statement, hypothesis,
+constant or scope changes. PRE-VALIDATION remains visible and the result is
+still NOT CHECKED. Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
