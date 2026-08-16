@@ -232,6 +232,7 @@ theorem cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_coarseFour
     have hzero : cmp99FinBoxFourierNeg (0 : FinBox d N') = 0 := by
       apply (cmp99FinBoxZModEquiv d N').injective
       rw [cmp99FinBoxZModEquiv_fourierNeg]
+      funext mu
       simp [cmp99FinBoxZModEquiv]
     intro hneg
     apply hell
