@@ -37491,3 +37491,18 @@ It performs exact source/blob hash gates, a Mathlib-only finite-sum repro, the
 focal and a seven-declaration axiom audit, stops on first error and releases
 the Colab runtime.  This prepares one fresh-clone diagnostic only and does not
 retire PRE-VALIDATION or move a counter.
+
+The fresh Colab Pro+ CPU/high-RAM diagnostic checked out exact source
+`ce2522edfb26366dee93db84640dcff6298f141c` with 50.99 GiB visible RAM.
+Runner and base-runner transport, both source blobs, Lean `v4.29.0-rc6` and
+Mathlib `07642720480157414db592fa85b626dafb71355b` passed their gates.  The
+repro exited zero in `14.875 s`; focal/audit exits were `0/0`, with focal time
+`957.539 s`, audit time `8.731 s` and literal line
+`Build completed successfully (8493 jobs).`.  All seven declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256
+are
+`28051de2d14fdb7c3cd7a48d27f0d3750413040c4deed1060ccd6ca4a4b1ec8e`
+and
+`d857d9bca0d919ffae4f3e87251ddfd7c0e928a75f4a84da1721c7e22fed4fa4`.
+`FINAL_STATUS=PASS`; launcher exit was zero and runtime release was requested.
+This diagnostic does not retire PRE-VALIDATION or move a counter.

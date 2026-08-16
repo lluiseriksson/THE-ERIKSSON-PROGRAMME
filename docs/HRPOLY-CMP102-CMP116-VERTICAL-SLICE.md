@@ -12108,3 +12108,19 @@ Mathlib-only central-split/common-factor repro, the focal and the seven-block
 audit, stops on first error and releases the runtime.  It authorizes one
 fresh-clone Colab diagnostic only; PRE-VALIDATION and hard counters remain
 unchanged.
+
+The fresh Colab Pro+ CPU/high-RAM diagnostic checked out exact source
+`ce2522edfb26366dee93db84640dcff6298f141c` with 50.99 GiB visible RAM.
+Runner/base-runner, source/audit blobs, Lean `v4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b` all passed their gates.  The
+Mathlib-only repro exited zero in `14.875 s`; the focal exited zero in
+`957.539 s` with literal terminal line
+`Build completed successfully (8493 jobs).`; and the audit exited zero in
+`8.731 s`.  All seven declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`28051de2d14fdb7c3cd7a48d27f0d3750413040c4deed1060ccd6ca4a4b1ec8e`
+and
+`d857d9bca0d919ffae4f3e87251ddfd7c0e928a75f4a84da1721c7e22fed4fa4`.
+`FINAL_STATUS=PASS`, launcher exit was zero and runtime release was requested.
+This is diagnostic evidence only: PRE-VALIDATION and counters remain pending
+the single cold terminal seal.
