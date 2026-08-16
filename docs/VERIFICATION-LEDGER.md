@@ -37400,3 +37400,20 @@ The runner performs exact source and two-blob hash gates, a Mathlib-only
 finite-sum repro, the focal, and a five-block axiom audit; it stops on first
 error and releases the Colab runtime.  This prepares one fresh-clone
 diagnostic only.  PRE-VALIDATION and all hard counters remain unchanged.
+
+The v1 Colab diagnostic reached the focal and stopped on its first real error
+after `879.818 s`: line 172 attempted to rewrite `row central * column central`
+with the existing equality oriented as `column central * row central`.
+`FINAL_STATUS=FAIL`; evidence SHA-256 is
+`5e56b7d26ca44fa785e2a96799c4ef9c562ff1035b9ad3b8660d0f2ee8e55816`,
+and the in-runtime evidence archive SHA-256 is
+`bcf9fda505f0015e01f3c5b9ef8964369e694940e36fb14d50501d1638141340`.
+The runner requested and the launcher performed runtime release.  No audit ran
+and no PRE-VALIDATION mark or counter moved.  The v2 patch introduces only the
+explicit commutative orientation of that already proved central pair.
+Corrected source checkpoint is
+`5d3fab0e1d3513a5733ce525a05edb06a05731bf`; corrected source/audit Git-blob
+SHA-256 are
+`8f54dad29eb3040d0c59cd90eea693333cfe745f6c73d51175d16288247461df`
+and
+`2ef8189260419385af18bfd34ad0fb55e29886aae8a916d092cd816ced742fef`.

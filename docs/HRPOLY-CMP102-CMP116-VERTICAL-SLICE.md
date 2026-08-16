@@ -12018,3 +12018,20 @@ sum rewrite before the focal.  The runner fixes the source SHA and both Git
 blob hashes, expects exactly five axiom blocks, stops on first error and
 releases the runtime.  It authorizes one fresh-clone Colab diagnostic only;
 PRE-VALIDATION remains until a later cold terminal seal.
+
+The v1 diagnostic stopped at the first focal error after `879.818 s`:
+`BalabanCMP89Eq249StabilizedAliasColumnSolution.lean:172:8` had the already
+proved central pair in the opposite commutative order (`column * row` versus
+`row * column`).  `FINAL_STATUS=FAIL`; evidence and archive SHA-256 are
+`5e56b7d26ca44fa785e2a96799c4ef9c562ff1035b9ad3b8660d0f2ee8e55816`
+and
+`bcf9fda505f0015e01f3c5b9ef8964369e694940e36fb14d50501d1638141340`.
+The runtime was released.  The v2 source changes only that multiplication
+normalization; statements, constants, hypotheses and delimitations are
+unchanged.  Corrected source checkpoint is
+`5d3fab0e1d3513a5733ce525a05edb06a05731bf`; corrected source/audit Git-blob
+SHA-256 are
+`8f54dad29eb3040d0c59cd90eea693333cfe745f6c73d51175d16288247461df`
+and
+`2ef8189260419385af18bfd34ad0fb55e29886aae8a916d092cd816ced742fef`.
+Step 8b.14 remains PRE-VALIDATION and NOT CHECKED pending v2.
