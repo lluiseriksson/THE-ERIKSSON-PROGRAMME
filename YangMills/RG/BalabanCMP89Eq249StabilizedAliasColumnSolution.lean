@@ -169,7 +169,9 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedColumnSolution
           d L j mass a z
     rw [hcentralSolution]
     field_simp [hstabilized']
-    rw [hcentralPair]
+    have hcentralPair' : row central * column central = centralPair := by
+      simpa only [mul_comm] using hcentralPair
+    rw [hcentralPair']
     ring
   funext m
   rw [cmp89Eq246EntireAliasPrecisionMatrix_mulVec, hsumSolution]
