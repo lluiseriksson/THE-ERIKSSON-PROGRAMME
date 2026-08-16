@@ -51,8 +51,8 @@ theorem cmp99SourceCenteredAliasReflection_zero
           (-(cmp99SourceCenteredAliasResidueEquiv M zeroAlias))) =
       cmp99SourceCenteredAliasResidueEquiv M zeroAlias
   rw [Equiv.apply_symm_apply]
-  change -(0 : ZMod M) = 0
-  simp
+  rw [cmp99SourceCenteredAliasResidueEquiv_apply]
+  simp [zeroAlias]
 
 /-- The transported depth-one reflection fixes the distinguished zero alias. -/
 @[simp]
