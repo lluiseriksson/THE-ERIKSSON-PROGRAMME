@@ -38343,3 +38343,17 @@ compiler evidence.  A combined zero/nonzero consumer, Brillouin integration,
 regional `B0`, window-15 attainment and terminal fields remain open.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+Source checkpoint `34f75aa60e39301a7fd281054513bfce5fe99cc2`
+has source/audit Git-blob SHA-256
+`2f70d3506436590e77654c9e08670f32d66965d0bc413033bc2c9223e0138329`
+and
+`74f5dc0d70bc3fac6f0297aaf032b32310809b87641f5bfa055d355c4212de2b`.
+Runner v1 checkpoint `56a637877bcc02cedafe00b5910a08243caaa792`, Git-blob
+SHA-256
+`51c7202f1469fa62a17cf806ac83df650f691fed934a177b76335c9bbed18244`,
+and notebook checkpoint `f795fb52f7196bbd26c3f843ed08419d19623647`, Git-blob
+SHA-256
+`c84aee6ec0ff84a0d7fd339412d3a1e89ab50860866fe668775a737d4508adf8`,
+prepare a single fresh Colab diagnostic.  PRE-VALIDATION remains visible and
+the result remains NOT CHECKED.
