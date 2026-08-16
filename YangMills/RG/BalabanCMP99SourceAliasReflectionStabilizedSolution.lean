@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP89Eq249StabilizedAliasColumnSolution
 /-!
 # Alias-reflection transport of the central-stabilized solution
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 The sealed coefficient reflection exchanges the direct-momentum column and
 opposite-momentum row and preserves the fine symbol.  This file performs the
 remaining algebra on the complete finite alias fibre: the actual half-open

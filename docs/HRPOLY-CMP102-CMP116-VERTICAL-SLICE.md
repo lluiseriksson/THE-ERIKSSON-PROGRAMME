@@ -12269,7 +12269,7 @@ Brillouin integral, regional `B0`, window 15, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-### Step 8b.17: reflected stabilized denominator and solution (PRE-VALIDATION; diagnostic v3 prepared)
+### Step 8b.17: reflected stabilized denominator and solution (COLD-SEALED; physical cross-fibre bridge open)
 
 Source checkpoint `ce00198eb10766b15e3fb90dc756cbf634e34740`
 (second proof-only repair of initial checkpoint
@@ -12294,8 +12294,9 @@ identify the affine carry from `ell` to `cmp99FinBoxFourierNeg ell` with the
 simple alias reflection, preserve the zero alias termwise under that carry,
 reindex the complete physical endpoint sum, construct a Brillouin integral
 or regional `B0`, attain window 15, discharge a terminal field or inhabit
-`TermSource`.  Both Lean files retain visible PRE-VALIDATION headers and are
-NOT CHECKED; no Lean or Lake ran on Windows.  Counters remain exactly
+`TermSource`.  At the initial source checkpoint both Lean files retained
+visible PRE-VALIDATION headers and were NOT CHECKED; no Lean or Lake ran on
+Windows.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
 
 Diagnostic v1 on initial source `e215af32...` passed transport, pin and
@@ -12353,3 +12354,26 @@ It pins the same immutable source and blobs, requires `cold=true`, skips
 project-graph restore/save, runs focal then seven-block audit, rejects
 new-module warnings and packages deterministic evidence.  No terminal run
 has yet been dispatched.
+
+The single terminal cold GitHub Actions run
+[`31935700856`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31935700856),
+job `95137148615`, checked out exact source
+`ce00198eb10766b15e3fb90dc756cbf634e34740` from workflow HEAD
+`1336cf08eb8e2a6e731a83615cd40f77cefef6da`.  It recorded
+`COLD_MODE=true`; project-graph restore and save were both `skipped`.  The
+focal ran from `2026-08-16T08:11:20Z` to `08:34:26Z`, exited zero and ended
+with literal line `Build completed successfully (8590 jobs).`; the audit
+ended at `08:34:32Z` with exit zero.  All seven declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`, and the new-module warning gate
+passed.
+
+The downloaded artifact has id `9260879647` and GitHub digest
+`sha256:021bdca07c722250400c9cab8ee9296138b5d583101614b285abf800c268e83e`.
+Its `14/14` internal SHA-256 entries verified, and the deterministic archive
+SHA-256 is
+`4fae14dc8b51ec5990987057481e2b5a89d8986463c71deab2b8f59bff9dd87b`.
+This cold evidence retires exactly the source and audit PRE-VALIDATION marks.
+It seals simple alias-reflection algebra only, not the affine cross-fibre
+physical sum, Brillouin integral, regional `B0`, window-15 attainment,
+terminal fields or `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

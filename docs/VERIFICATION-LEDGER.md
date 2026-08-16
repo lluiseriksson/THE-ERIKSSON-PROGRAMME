@@ -37807,3 +37807,30 @@ It pins the same source/blob hashes, requires `cold=true`, skips
 new-module warnings and packages durable evidence.  No terminal workflow
 has yet been dispatched.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 843 (2026-08-16, **alias-reflection stabilized solution cold-sealed; physical cross-fibre bridge remains open**)
+
+The single terminal cold GitHub Actions run
+[`31935700856`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31935700856),
+job `95137148615`, checked out exact source
+`ce00198eb10766b15e3fb90dc756cbf634e34740` from workflow HEAD
+`1336cf08eb8e2a6e731a83615cd40f77cefef6da`.  It recorded
+`COLD_MODE=true`; project-graph restore and save were both `skipped`.  The
+focal ran from `2026-08-16T08:11:20Z` to `08:34:26Z`, exited zero and ended
+with literal line `Build completed successfully (8590 jobs).`; the audit
+ended at `08:34:32Z` with exit zero.  All seven declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`, and the new-module warning gate
+passed.
+
+Artifact id `9260879647` has GitHub digest
+`sha256:021bdca07c722250400c9cab8ee9296138b5d583101614b285abf800c268e83e`.
+The downloaded package verified all `14/14` internal SHA-256 entries and its
+deterministic archive has SHA-256
+`4fae14dc8b51ec5990987057481e2b5a89d8986463c71deab2b8f59bff9dd87b`.
+This evidence retires exactly the two Step-8b.17 PRE-VALIDATION marks.  It
+seals fixed-alias reflection of the central-stabilized denominator and
+solution only.  It does not identify the affine cross-fibre carry termwise,
+reindex the complete physical endpoint sum, construct the Brillouin integral
+or regional `B0`, attain window 15, discharge a terminal field or inhabit
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
