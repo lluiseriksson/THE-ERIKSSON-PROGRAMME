@@ -45,8 +45,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp89-stabilized-alias-column-solution-v1"
-runner.SOURCE_SHA = "e3f613b66edea1ad7fc7fde472a2b4ac093a7c9e"
+runner.RUNNER_REV = "cmp89-stabilized-alias-column-solution-v2"
+runner.SOURCE_SHA = "5d3fab0e1d3513a5733ce525a05edb06a05731bf"
 runner.ROOT = Path("/content/hrpoly-cmp89-stabilized-alias-column-solution")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp89-stabilized-alias-column-solution-evidence"
@@ -60,7 +60,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq249StabilizedAliasColumnSolution.lean":
-        "0ea5db98dba245eb09bf12097a7f3e2f65810dc860d612254b618477af5330ab",
+        "8f54dad29eb3040d0c59cd90eea693333cfe745f6c73d51175d16288247461df",
     "YangMills/RG/BalabanCMP89Eq249StabilizedAliasColumnSolutionAudit.lean":
         "2ef8189260419385af18bfd34ad0fb55e29886aae8a916d092cd816ced742fef",
 }
