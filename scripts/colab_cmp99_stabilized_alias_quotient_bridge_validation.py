@@ -47,8 +47,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v8"
-runner.SOURCE_SHA = "fc26d50d2c660a26b65c1e3bbf79e8761b35b4da"
+runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v9"
+runner.SOURCE_SHA = "72e665f18309e7fb96c4bc720b52296a03fabecc"
 runner.ROOT = Path("/content/hrpoly-cmp99-stabilized-alias-quotient-bridge")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-stabilized-alias-quotient-bridge-evidence"
@@ -62,7 +62,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridge.lean":
-        "268f6f985af57ccbb7013a5951f0276d6d6595599d65986d3c02a50a3a2c5cba",
+        "5638e4b31785fafabd591e0a9c8bab4cb19d138fd789c4d4c6aaae0d999c7167",
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean":
         "8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647",
 }
@@ -72,8 +72,8 @@ REPRO.write_text(
     """import Mathlib
 
 example (central coefficient : ℂ) (hcentral : central ≠ 0) :
-    coefficient * central / central = coefficient := by
-  field_simp [hcentral]
+    central * coefficient / central = coefficient := by
+  rw [mul_div_cancel_left₀ _ hcentral]
 """,
     encoding="utf-8",
 )
