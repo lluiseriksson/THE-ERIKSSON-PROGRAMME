@@ -47,8 +47,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v3"
-runner.SOURCE_SHA = "01f9a0c287666094233343e4bd63a4edc8224bdb"
+runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v4"
+runner.SOURCE_SHA = "839727ffa9b21fd683c23558dac0211374cefdd8"
 runner.ROOT = Path("/content/hrpoly-cmp99-stabilized-alias-quotient-bridge")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-stabilized-alias-quotient-bridge-evidence"
@@ -62,7 +62,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridge.lean":
-        "cb44411e518726f2fe74e3f6ee3f76432c6de582b188eefaf199ff3d40f93c04",
+        "97d4780f50271eec24c1df523f49e0439056181338c3a044c5b1ea7ea824b67e",
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean":
         "8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647",
 }
@@ -74,10 +74,11 @@ REPRO.write_text(
 example (central row fine reduced stabilized : ℂ)
     (hcentral : central ≠ 0) (hfine : fine ≠ 0)
     (hreduced : reduced ≠ 0)
-    (hstable : stabilized = central * reduced) :
+    (hstable : central * reduced = stabilized) :
     central * row / (fine * stabilized) = row / (fine * reduced) := by
-  rw [hstable]
-  field_simp [hcentral, hfine, hreduced] <;> ring
+  rw [← hstable]
+  field_simp [hcentral, hfine, hreduced]
+  rw [mul_comm central, mul_assoc, mul_inv_cancel₀ hcentral, mul_one]
 """,
     encoding="utf-8",
 )
