@@ -38302,3 +38302,26 @@ pin v3.  Statements, hypotheses, constants and scope are unchanged.
 PRE-VALIDATION remains visible and v3 is NOT CHECKED.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 860 (2026-08-16, **cross-fibre endpoint phase diagnostic v3 PASS and sealed; 20/41 unchanged**)
+
+Diagnostic v3 passed once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com` at exact source
+`affa623b62d9238e1f64f6c8ca87cfb76444c266`.  All runner transport,
+source/blob, official Lean/Mathlib pin, text-guard and Mathlib-only repro
+gates passed.  The focal returned exit code `0` after `1588.597 s`, with
+literal terminal line `Build completed successfully (8701 jobs).`; the audit
+returned exit code `0` after `8.898 s`, and all four declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+Evidence/archive SHA-256 are
+`9ddf24ee25176d6898ae645e3105f853bda9c964db150271ab77c355903ee1dd`
+and
+`3dd8be3b88970c9303e3d9a7d716ba34076aeeb8d905f06e48ad1a6f9c82aa3f`.
+`FINAL_STATUS=PASS`; the runtime released automatically and the cell was not
+rerun.  The seal retires exactly the source and audit PRE-VALIDATION marks.
+It covers the nonzero-coarse-fibre endpoint phase, pointwise row-to-column
+sample, and complete finite physical-fibre reindexing.  The zero coarse
+fibre, Brillouin integration, regional `B0`, window-15 attainment and
+terminal fields remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

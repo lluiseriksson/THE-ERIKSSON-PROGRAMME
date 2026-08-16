@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeTransposeEndpointSample
 /-!
 # Cross-fibre endpoint phase under physical Fourier negation
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the result
-has not yet been verified by the Lean compiler.
-
 Periodic Fourier negation moves the physical fibre over `ell` to the fibre
 over `cmp99FinBoxFourierNeg ell`.  This module transports the literal endpoint
 phase through that equivalence and combines it with the sealed nonzero-fibre

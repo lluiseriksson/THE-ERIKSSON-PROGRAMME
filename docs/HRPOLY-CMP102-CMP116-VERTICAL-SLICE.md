@@ -12712,7 +12712,7 @@ regional `B0`, window-15 attainment or any terminal field. Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
-### Step 8b.19: nonzero cross-fibre endpoint phase and complete physical-fibre reindexing (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.19: nonzero cross-fibre endpoint phase and complete physical-fibre reindexing (SEALED)
 
 `BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase` separates the endpoint
 phase from the mass-zero singularity.  Physical Fourier negation moves a mode
@@ -12728,10 +12728,8 @@ is consumed.  It does not assert that a distinguished alias is preserved
 termwise.  The zero coarse fibre remains a separate branch to be discharged
 with the sealed Eq. (249) reflection rather than quotient cancellation.  A
 Brillouin integral, regional `B0`, window-15 attainment, terminal fields and a
-`TermSource` inhabitant remain open.  Both new Lean files carry visible
-PRE-VALIDATION headers; no Lean, Lake or oracle has run for this step on
-Windows.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
-compatible but unattained.
+`TermSource` inhabitant remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
 
 Diagnostic v1 ran once in a fresh Colab Pro+ CPU/high-RAM clone at exact
 source `dbd02a992c749b08e100a3b0b9258bb32a864924`.  Transport, source/blob,
@@ -12782,3 +12780,15 @@ SHA-256
 `5f9bf018dda4d032263b43b8fffa536a453accad33b8e5205b45204d13003643`,
 prepare v3.  Statements, hypotheses, constants and scope remain unchanged;
 PRE-VALIDATION stays visible and v3 is NOT CHECKED.
+
+Diagnostic v3 passed once in a fresh Colab Pro+ CPU/high-RAM clone at exact
+source `affa623b62d9238e1f64f6c8ca87cfb76444c266`.  All transport,
+source/blob, pin, text-guard and repro gates passed.  The focal returned exit
+code `0` after `1588.597 s`, with literal terminal line
+`Build completed successfully (8701 jobs).`; the audit returned exit code `0`
+after `8.898 s`, and all four declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`9ddf24ee25176d6898ae645e3105f853bda9c964db150271ab77c355903ee1dd`
+and `3dd8be3b88970c9303e3d9a7d716ba34076aeeb8d905f06e48ad1a6f9c82aa3f`.
+`FINAL_STATUS=PASS`; the runtime released automatically and the cell was not
+rerun.  The seal retires exactly the two Step-8b.19 PRE-VALIDATION marks.
