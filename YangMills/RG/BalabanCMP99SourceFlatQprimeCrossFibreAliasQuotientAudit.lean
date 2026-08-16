@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient
 
-/-!
-PRE-VALIDATION: this audit source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
--/
-
 #print axioms YangMills.RG.cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_fourierNeg
 #print axioms YangMills.RG.cmp89Eq247ComplexReducedAliasDenominator_coarseFourierNeg
 #print axioms YangMills.RG.cmp99FlatPeriodicLaplacianSymbol_fourierNeg

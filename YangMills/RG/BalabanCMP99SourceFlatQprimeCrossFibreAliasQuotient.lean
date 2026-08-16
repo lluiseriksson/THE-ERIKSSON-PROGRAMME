@@ -11,9 +11,6 @@ import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointFourierOrientation
 /-!
 # Cross-fibre physical transport of the literal alias quotient
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 Periodic Fourier negation moves the physical fine fibre over `ell` to the
 fibre over `FourierNeg ell`.  This module transports the literal rational
 row solution to the literal column solution on every nonzero coarse fibre.
