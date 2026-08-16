@@ -48,8 +48,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-cross-fibre-alias-quotient-v1"
-runner.SOURCE_SHA = "6fefea5306d8b1f8af470ea537c51954dd87fee4"
+runner.RUNNER_REV = "cmp99-cross-fibre-alias-quotient-v2"
+runner.SOURCE_SHA = "316f9fab920a1ec9b6fead040e9d8dae16f19f4e"
 runner.ROOT = Path("/content/hrpoly-cmp99-cross-fibre-alias-quotient")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-cross-fibre-alias-quotient-evidence"
@@ -63,7 +63,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient.lean":
-        "e610f898d42f677063904e9d60e2469e62181bac8c53b1a15365feb19627a4cb",
+        "2dd35012b5320e599f556f7f3e69d6299c253b666d6af107fc4d3ac168348ea9",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotientAudit.lean":
         "1d3235c0b6f26445dd7e84184b0b1a0ebb95602b924ea2014c027965433142b7",
 }
@@ -72,10 +72,9 @@ REPRO = HERE / "cmp99_cross_fibre_alias_quotient_repro.lean"
 REPRO.write_text(
     """import Mathlib
 
-example (N l : ℂ) (hN : N ≠ 0) :
-    -(2 * Real.pi : ℂ) * (N - l) / N =
-      -(-(2 * Real.pi : ℂ) * l / N) + (-1 : ℂ) * (2 * Real.pi : ℂ) := by
-  field_simp [hN]
+example (N l : ℕ) (hle : l ≤ N) :
+    -(((N - l : ℕ) : ℂ)) = (l : ℂ) - (N : ℂ) := by
+  rw [Nat.cast_sub hle]
   ring
 """,
     encoding="utf-8",
