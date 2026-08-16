@@ -38377,3 +38377,14 @@ The v2 repair adds only `e` to the existing local `simp only` list at that
 reindexing step.  Statements, hypotheses, constants and scope are unchanged.
 PRE-VALIDATION remains visible, v2 is NOT CHECKED, and counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Repair checkpoint `cfb67cb9cab17889d3416358f981a336815a4ef8`, source
+Git-blob SHA-256
+`5c92cc36c1eb2544ded179b9c0b93145b725fcbe818d1f6200e7ecc9e974ead8`,
+contains only that elaboration repair.  Runner v2 checkpoint
+`c8d02d5cc42cd3198b064340b4e76c210f7dae48`, Git-blob SHA-256
+`7a781c442bc59cdf7019f0eb26e7b6ea9c021da9e6f114dad9ec41e19cf423df`,
+and notebook checkpoint `b50417d466972b2a4fdb3e54f37b82d35a11a523`, Git-blob
+SHA-256
+`ba4e29e9c01069581f6cd1a9f330d6548821b3c4d6e400abfba668872d9e3a65`,
+prepare the controlled v2 retry.
