@@ -37458,3 +37458,27 @@ row/column equality, Green periodization, cross-fibre reindexing, regional
 `B0`, window-15 attainment, terminal-field producer or `TermSource`
 inhabitant is added.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 833 (2026-08-16, **stabilized Green period PRE-VALIDATION; orientation bridge still open; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`ce2522edfb26366dee93db84640dcff6298f141c` adds
+`BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity` and its seven-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`9c1417e951a5e9fb29ed1431484a81e6570c8adcf91207df8e56c6caadf642ec`
+and
+`97f0d810895611def785ceb99335c282cd2b5c9e84b1a1da5c4f5ea8887db2e4`.
+
+The source refuses the false shortcut of periodicizing the isolated
+central-stabilized denominator.  It reconstructs the displayed rational
+Green endpoint, proves the complete finite sum invariant under the physical
+coordinate period, proves equality with the stabilized extension on the
+literal non-singular domain, and derives shifted non-singularity internally.
+The endpoint phase period is tied to an integer lattice vector in the type.
+
+The two files remain visibly PRE-VALIDATION and NOT CHECKED.  They do not
+identify the physical row and column sums, perform cross-fibre reindexing,
+claim termwise zero-alias preservation, construct a Brillouin integral or
+regional `B0`, attain window 15, discharge a terminal field or inhabit
+`TermSource`.  No Lean or Lake ran on Windows.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

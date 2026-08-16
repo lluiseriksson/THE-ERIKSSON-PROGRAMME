@@ -12074,3 +12074,27 @@ not a row-to-column identity, Green periodization, cross-fibre reindexing,
 regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+### Step 8b.15: stabilized Green endpoint physical period (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `ce2522edfb26366dee93db84640dcff6298f141c` adds
+`BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity` and its seven-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`9c1417e951a5e9fb29ed1431484a81e6570c8adcf91207df8e56c6caadf642ec`
+and
+`97f0d810895611def785ceb99335c282cd2b5c9e84b1a1da5c4f5ea8887db2e4`.
+
+The brick deliberately does not assert that the central-stabilized
+denominator is periodic.  It constructs the displayed rational Green sum,
+proves its physical period by the already sealed centered-alias cycle, proves
+displayed/stabilized equality on the complete non-singular domain, and only
+then transports the period to the stabilized extension.  Integer endpoint
+coordinates are data, so phase periodicity is derived internally.
+
+This is not the physical orientation bridge.  No row/column equality,
+cross-fibre Fourier-negation carry, termwise zero-alias preservation,
+Brillouin integral, regional `B0`, window-15 attainment, terminal-field
+producer or `TermSource` inhabitant is claimed.  Both new files retain visible
+PRE-VALIDATION headers and are NOT CHECKED; no Lean or Lake ran on Windows.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.
