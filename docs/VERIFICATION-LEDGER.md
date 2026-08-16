@@ -38325,3 +38325,21 @@ sample, and complete finite physical-fibre reindexing.  The zero coarse
 fibre, Brillouin integration, regional `B0`, window-15 attainment and
 terminal fields remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 861 (2026-08-16, **zero-fibre endpoint reflection written; PRE-VALIDATION and NOT CHECKED; 20/41 unchanged**)
+
+`BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection` and its
+five-declaration audit are written with visible PRE-VALIDATION headers.  The
+brick proves that the signed coarse base momentum at the literal zero mode is
+zero, transports the endpoint phase through the sealed alias reflection,
+reindexes the complete finite zero-fibre sum, and lands at the literal CMP89
+stabilized column endpoint integrand at the opposite displacement.
+
+The construction never divides the central mass-zero symbol and does not
+identify a cross-fibre affine carry termwise with reflection.  No Lean, Lake
+or oracle has run for this brick on Windows.  The import-prefix and
+exact-overlay text guards pass over exactly the two new files, but this is not
+compiler evidence.  A combined zero/nonzero consumer, Brillouin integration,
+regional `B0`, window-15 attainment and terminal fields remain open.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

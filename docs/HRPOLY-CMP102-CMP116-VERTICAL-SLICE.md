@@ -12792,3 +12792,22 @@ after `8.898 s`, and all four declarations printed exactly
 and `3dd8be3b88970c9303e3d9a7d716ba34076aeeb8d905f06e48ad1a6f9c82aa3f`.
 `FINAL_STATUS=PASS`; the runtime released automatically and the cell was not
 rerun.  The seal retires exactly the two Step-8b.19 PRE-VALIDATION marks.
+
+### Step 8b.20: zero-coarse-fibre endpoint reflection (PRE-VALIDATION; NOT CHECKED)
+
+`BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection` treats the singular
+coarse fibre without dividing by the central mass-zero symbol.  It reindexes
+the complete signed alias carrier by the sealed Eq. (249) reflection, moves
+the endpoint phase to the opposite fine-lattice displacement using the full
+physical alias period, and identifies the resulting finite sum with the
+literal stabilized CMP89 column endpoint integrand.
+
+The branch does not identify an affine cross-fibre carry termwise with the
+reflection and does not cancel a central quotient.  Source and audit retain
+visible PRE-VALIDATION headers; no Lean, Lake or oracle has run for this brick
+on Windows.  The import-prefix and exact-overlay text guards pass over exactly
+the two new files, but this is not compiler evidence.  A combined zero/nonzero
+consumer, Brillouin integration, regional `B0`, window-15 attainment,
+terminal fields and a `TermSource` inhabitant remain open.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
