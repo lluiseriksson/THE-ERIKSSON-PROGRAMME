@@ -37834,3 +37834,24 @@ reindex the complete physical endpoint sum, construct the Brillouin integral
 or regional `B0`, attain window 15, discharge a terminal field or inhabit
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 844 (2026-08-16, **stabilized-to-quotient bridge written; PRE-VALIDATION and NOT CHECKED**)
+
+Source checkpoint `01f9a0c287666094233343e4bd63a4edc8224bdb` adds
+`BalabanCMP99SourceStabilizedAliasQuotientBridge` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eef199ff3d40f93c04`
+and
+`8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647`.
+Both files retain visible PRE-VALIDATION headers and no compiler evidence is
+claimed.  No Lean or Lake ran on Windows.
+
+The source proves evenness and integer-period invariance only for the reduced
+denominator, and proves cancellation from the separately constructed
+central-stabilized row and column solutions to the literal rational quotients
+only under explicit full non-singularity hypotheses.  It does not promote the
+stabilized denominator to a periodic object.  The affine cross-fibre carry,
+its zero/nonzero coarse-fibre split, endpoint phases, complete physical sum,
+Brillouin integral, regional `B0`, window-15 attainment, terminal fields and
+`TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

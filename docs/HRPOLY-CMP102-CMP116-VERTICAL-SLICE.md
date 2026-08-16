@@ -12377,3 +12377,31 @@ It seals simple alias-reflection algebra only, not the affine cross-fibre
 physical sum, Brillouin integral, regional `B0`, window-15 attainment,
 terminal fields or `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.18a: stabilized-to-quotient bridge (PRE-VALIDATION; NOT CHECKED)
+
+Source checkpoint `01f9a0c287666094233343e4bd63a4edc8224bdb` adds
+`BalabanCMP99SourceStabilizedAliasQuotientBridge` and its five-declaration
+audit.  Source/audit Git-blob SHA-256 are
+`cb44411e518726f2fe74e3f6ee3f76432c6de582b188eef199ff3d40f93c04`
+and
+`8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647`.
+Both Lean files retain visible PRE-VALIDATION headers and are NOT CHECKED;
+no Lean or Lake ran on Windows.
+
+This brick proves two facts needed before the affine physical reindexing.
+First, the complete reduced denominator is even under the actual half-open
+alias reflection and periodic under coordinatewise integer physical periods.
+Second, on the full non-singular domain, both separately constructed
+central-stabilized solutions cancel exactly to their literal rational
+quotients.  The nonvanishing hypotheses remain visible and are not inferred
+from stabilization.
+
+The scope is deliberately coefficient-level.  It does not assert periodicity
+of the central-stabilized denominator, identify the affine carry between
+coarse Fourier fibres, preserve the central alias termwise under that carry,
+transport endpoint phases, reindex the complete physical sum, construct a
+Brillouin integral or regional `B0`, attain window 15, discharge a terminal
+field or inhabit `TermSource`.  The zero and nonzero coarse fibres remain a
+required split for the later physical bridge.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
