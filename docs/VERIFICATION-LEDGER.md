@@ -38189,3 +38189,36 @@ adds the exact Mathlib-only reproduction. Notebook checkpoint
 pins v3. Statements, hypotheses, constants and scope are unchanged.
 PRE-VALIDATION remains visible and v3 is NOT CHECKED. Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 856 (2026-08-16, **cross-fibre quotient diagnostic and cold seal PASS; 20/41 unchanged**)
+
+Diagnostic v3 passed once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com` at exact source
+`da7eed698c279304d24fb7f7a5f64278cbededf0`. All transport, source/blob, pin,
+text-guard and repro gates passed. The focal returned exit code `0` after
+`1861.516 s`, with literal terminal line
+`Build completed successfully (8631 jobs).`; the audit returned exit code `0`
+after `13.046 s`, and all eight declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`. Evidence/archive SHA-256 are
+`83978bc315339ca4e2301ed54d87be50589412ecf7c3aa319db2c10112e2acd4`
+and
+`b6e5912c41c0d628da311f9e3f8dae0640b528ad123fa12851f48715b62d1d9d`.
+`FINAL_STATUS=PASS`; the runtime released automatically and no cell was rerun.
+
+The one terminal workflow run `31956044339` used workflow checkpoint
+`3b518600bc2237d4f28922df05246f78f8bd92cd`, checked out the same exact source,
+recorded `COLD_MODE=true`, skipped project-cache restoration, and passed its
+focal/audit stages with exit codes `0/0`. It reproduced the same literal
+`Build completed successfully (8631 jobs).` line and the same eight standard
+axiom triples. Downloaded archive SHA-256
+`08ab432aee6e21ea46a2be875f1ded9c933c75836d1d7c103fea3a1075f0171e`
+matches the declared archive hash; all `14/14` entries in `SHA256SUMS` match
+and `FINAL_STATUS=PASS`.
+
+Seal commit `56e2b5418e9ac85ed9e9c2e87c61e3a4467be828` retires exactly the source
+and audit PRE-VALIDATION marks. The seal covers the nonzero-coarse-fibre
+affine Fourier-negation carry
+and transported literal stabilized row-to-column solution. It does not cover
+the zero coarse fibre, complete finite alias sum, Brillouin integral, regional
+`B0`, window-15 attainment or a terminal field. Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

@@ -12616,7 +12616,7 @@ cross-fibre carry, complete physical sum, regional `B0`, window 15 and
 terminal fields remain open. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-### Step 8b.18b: nonzero cross-fibre physical quotient transport (PRE-VALIDATION)
+### Step 8b.18b: nonzero cross-fibre physical quotient transport (SEALED)
 
 Source checkpoint `6fefea5306d8b1f8af470ea537c51954dd87fee4` adds
 `BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient` and its
@@ -12681,3 +12681,33 @@ adds the exact Mathlib-only zero-function-negation repro. Notebook checkpoint
 pins v3. Statements, hypotheses, constants and scope are unchanged.
 PRE-VALIDATION remains visible and v3 is NOT CHECKED. Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Diagnostic v3 then passed once in a fresh Colab Pro+ CPU/high-RAM clone at
+exact source `da7eed698c279304d24fb7f7a5f64278cbededf0`. The repro passed;
+the focal returned exit code `0` after `1861.516 s` with literal terminal line
+`Build completed successfully (8631 jobs).`; the audit returned exit code `0`
+after `13.046 s`, and all eight declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`. Evidence/archive SHA-256 are
+`83978bc315339ca4e2301ed54d87be50589412ecf7c3aa319db2c10112e2acd4`
+and
+`b6e5912c41c0d628da311f9e3f8dae0640b528ad123fa12851f48715b62d1d9d`;
+`FINAL_STATUS=PASS` and the runtime released automatically.
+
+The single terminal cold workflow run `31956044339` at workflow checkpoint
+`3b518600bc2237d4f28922df05246f78f8bd92cd` checked out the same exact source,
+recorded `COLD_MODE=true` with project-cache restoration skipped, and passed
+the focal/audit queue with exit codes `0/0`. It reproduced the same literal
+`Build completed successfully (8631 jobs).` line and the same eight standard
+axiom triples. The downloaded durable archive SHA-256
+`08ab432aee6e21ea46a2be875f1ded9c933c75836d1d7c103fea3a1075f0171e`
+matches `evidence/ARCHIVE_SHA256`; all `14/14` internal evidence hashes match
+and `FINAL_STATUS=PASS`. Seal commit
+`56e2b5418e9ac85ed9e9c2e87c61e3a4467be828` retires exactly the source and
+audit PRE-VALIDATION marks.
+
+The seal covers the nonzero-coarse-fibre affine Fourier-negation carry and
+the transported literal stabilized row-to-column solution. It does not cover
+the zero coarse fibre, the complete finite alias sum, a Brillouin integral,
+regional `B0`, window-15 attainment or any terminal field. Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
