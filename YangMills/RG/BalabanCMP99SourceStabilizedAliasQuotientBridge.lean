@@ -9,8 +9,10 @@ import YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominatorPeriodicity
 /-!
 # Stabilized-to-quotient bridge for the physical orientation transport
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
+COLD-SEALED: source checkpoint `72e665f18309e7fb96c4bc720b52296a03fabecc`
+was compiler verified from a cold checkout by GitHub Actions run
+`31948322330`; the focal completed successfully with 8591 jobs and the
+five-declaration audit printed exactly the standard axiom trio.
 
 Away from the removable central zero, the stabilized row and column
 solutions must reduce to the literal rational solutions.  This module proves
