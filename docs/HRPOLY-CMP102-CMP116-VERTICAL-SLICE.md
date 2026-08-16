@@ -12269,13 +12269,14 @@ Brillouin integral, regional `B0`, window 15, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-### Step 8b.17: reflected stabilized denominator and solution (PRE-VALIDATION; diagnostic v2 prepared)
+### Step 8b.17: reflected stabilized denominator and solution (PRE-VALIDATION; diagnostic v3 prepared)
 
-Source checkpoint `53d0312379fa66059cc0665467751d9cb90256b0`
-(repair of initial checkpoint `e215af32bd506bfc27604b55f6791e750fa1242a`) adds
+Source checkpoint `ce00198eb10766b15e3fb90dc756cbf634e34740`
+(second proof-only repair of initial checkpoint
+`e215af32bd506bfc27604b55f6791e750fa1242a`) adds
 `BalabanCMP99SourceAliasReflectionStabilizedSolution` and its
 seven-declaration audit.  Source/audit Git-blob SHA-256 are
-`69976ab87dd666f930c89846fff353ce676b8992d31a698ec8a0770f80df468f`
+`0925f929542853a1826bd61dbeed67ccb2679b4679ac328c8ba8e7e2746b9591`
 and
 `579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d`.
 
@@ -12307,12 +12308,22 @@ the equivalence, `M ^ 1` before the fine-symbol evenness lemma, and rewriting
 the reflected central alias before the row/column coefficient theorem.  No
 statement, hypothesis or constant changed in checkpoint `53d03123...`.
 
-Diagnostic v2 runner checkpoint
-`de831c827a5fdf0c2f54bb558fecfb830f10b6ec` has Git-blob SHA-256
-`5ef907fb46d9ca8ff26d664b61149b8ca37192ea7c62a5e6bbb0f77d9bbc1dfe`;
+Diagnostic v2 on source `53d03123...` passed every preflight and the two
+nonzero repairs, then stopped at the focal after `1539.035 s` with one
+remaining elaboration error: `change` could not unfold the residue
+equivalence at the distinguished zero alias.  The audit did not run.
+Evidence/archive SHA-256 are
+`4916a7c0e385a54d459733c8784b73684e12cb0cb9fa87a149bbe071e0037b06`
+and `6147896078549ad08585966c7bf3cdc32bd55b41692ff12ce2f623935772bf93`.
+Checkpoint `ce00198e...` replaces only that failed definitional conversion
+with the already sealed exact application theorem.
+
+Diagnostic v3 runner checkpoint
+`b7e12fa9d682f7f87e22a23e7374817050c68310` has Git-blob SHA-256
+`69dd7b40af713b5bce658c0282198cf2b20c14fb434827e01afc7265cc6058a0`;
 notebook vehicle checkpoint is
-`c6cd62ef6582b0d70d319e3d3d7a1596a195e288`, with Git-blob SHA-256
-`2d0944a39d4f4a0b8d6ceb4be4f358bf8b4f6496e41879e50895cf13f87a4ab8`.
+`31336112d0a30e7f520c90553a7d8cce8289870b`, with Git-blob SHA-256
+`b54bf75d3986fa294459959d79c6887c44b9f1164b24e4050813070ab536acbc`.
 The runner gates exact source and both source blobs, executes a Mathlib-only
 reproduction of the finite-sum reindex-and-erase argument, then runs the
 focal and seven-block audit stop-on-first-error in one fresh Colab CPU/high-

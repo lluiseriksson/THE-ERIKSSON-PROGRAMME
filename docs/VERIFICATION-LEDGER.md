@@ -37745,3 +37745,34 @@ Git-blob SHA-256
 pin the repaired source.  PRE-VALIDATION remains visible and the result is
 still NOT CHECKED until v2 runs.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 841 (2026-08-16, **alias-reflection diagnostic v2 reduced to one elaboration error; v3 prepared**)
+
+Fresh Colab CPU/high-RAM diagnostic v2 pinned source
+`53d0312379fa66059cc0665467751d9cb90256b0`.  Transport, exact source/blob,
+toolchain/Mathlib, text guards and Mathlib-only repro all passed.  The focal
+returned exit code `1` after `1539.035 s`; stop-on-first-error prevented the
+audit.  Evidence/archive SHA-256 are
+`4916a7c0e385a54d459733c8784b73684e12cb0cb9fa87a149bbe071e0037b06`
+and `6147896078549ad08585966c7bf3cdc32bd55b41692ff12ce2f623935772bf93`.
+The runtime released automatically.
+
+The two nonzero repairs from v1 elaborated.  The only remaining failure was
+the attempted definitional `change` from the residue equivalence applied to
+the distinguished zero alias.  Source checkpoint
+`ce00198eb10766b15e3fb90dc756cbf634e34740`, Git-blob SHA-256
+`0925f929542853a1826bd61dbeed67ccb2679b4679ac328c8ba8e7e2746b9591`,
+uses the already sealed theorem
+`cmp99SourceCenteredAliasResidueEquiv_apply` instead.  Audit SHA-256 remains
+`579d4b8ea2d6988528c66fc19aeec46c3565a5dd77f8ea386c653c8184ffc61d`.
+No statement, hypothesis, constant or scope changed.
+
+Diagnostic v3 runner checkpoint
+`b7e12fa9d682f7f87e22a23e7374817050c68310`, Git-blob SHA-256
+`69dd7b40af713b5bce658c0282198cf2b20c14fb434827e01afc7265cc6058a0`,
+and notebook checkpoint `31336112d0a30e7f520c90553a7d8cce8289870b`,
+Git-blob SHA-256
+`b54bf75d3986fa294459959d79c6887c44b9f1164b24e4050813070ab536acbc`,
+pin that source.  PRE-VALIDATION remains visible and the mathematical result
+is still NOT CHECKED.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
