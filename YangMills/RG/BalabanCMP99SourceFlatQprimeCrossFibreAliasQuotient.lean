@@ -53,6 +53,7 @@ theorem cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_fourierNeg
       cmp99FinBoxFourierNeg_apply_val, hmu]
   · have hN : 0 < N' := Nat.pos_of_ne_zero (NeZero.ne N')
     have hmuPos : 0 < (ell mu).val := Nat.pos_of_ne_zero hmu
+    have hmuLe : (ell mu).val ≤ N' := Nat.le_of_lt (ell mu).isLt
     have hsub : N' - (ell mu).val < N' := Nat.sub_lt hN hmuPos
     have hNC : (N' : ℂ) ≠ 0 := by
       exact_mod_cast (NeZero.ne N')
@@ -60,7 +61,7 @@ theorem cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_fourierNeg
       cmp99FinBoxFourierNeg_apply_val]
     rw [Nat.mod_eq_of_lt hsub]
     simp only [hmu, if_false, Int.cast_neg, Int.cast_one]
-    push_cast
+    rw [Nat.cast_sub hmuLe]
     field_simp [hNC]
     ring
 
@@ -77,8 +78,10 @@ theorem cmp89Eq247ComplexReducedAliasDenominator_coarseFourierNeg
   rcases
       cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_fourierNeg ell with
     ⟨w, hw⟩
-  rw [hw, cmp89Eq247ComplexReducedAliasDenominator_add_intPeriods,
-    cmp89Eq247ComplexReducedAliasDenominator_neg]
+  rw [hw, cmp89Eq247ComplexReducedAliasDenominator_add_intPeriods]
+  simpa only [Pi.neg_apply] using
+    cmp89Eq247ComplexReducedAliasDenominator_neg d M mass a
+      (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
 
 /-- The literal symmetric periodic stencil symbol is invariant under
 transported Fourier negation. -/
@@ -226,10 +229,13 @@ theorem cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_coarseFour
           (cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv
             d M N' ell k)) := by
   have hellNeg : cmp99FinBoxFourierNeg ell ≠ 0 := by
+    have hzero : cmp99FinBoxFourierNeg (0 : FinBox d N') = 0 := by
+      apply (cmp99FinBoxZModEquiv d N').injective
+      rw [cmp99FinBoxZModEquiv_fourierNeg]
+      simp [cmp99FinBoxZModEquiv]
     intro hneg
     apply hell
-    rw [← cmp99FinBoxFourierNeg_fourierNeg ell, hneg]
-    simp [cmp99FinBoxFourierNeg]
+    rw [← cmp99FinBoxFourierNeg_fourierNeg ell, hneg, hzero]
   have hfineIn :=
     cmp89Eq246EntireAliasFineSymbol_massZero_ne_zero_physical
       (d := d) (M := M) (N' := N') hell
