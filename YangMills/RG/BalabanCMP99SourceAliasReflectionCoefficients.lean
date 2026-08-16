@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceSignedAliasFourierNegCarry
 /-!
 # Alias-reflection transport of the CMP89 fibre coefficients
 
-PRE-VALIDATION: this source is present, its `.olean` has not yet been
-materialized, and its declarations have not yet been compiler verified.
-
 The printed centered alias carrier is half open, so reflection is residue
 negation rather than literal integer negation.  This file first proves the
 exact replacement: at reflected alias and opposite base momentum, the alias

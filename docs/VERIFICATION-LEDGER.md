@@ -37653,3 +37653,31 @@ skips `.lake/build` restore/save, runs focal then five-block audit, rejects
 new-module warnings and packages durable evidence.  No terminal run has yet
 been dispatched.  Counters remain `20/41`, `TermSource = 0`; window 15
 remains compatible and unattained.
+
+## Addendum 838 (2026-08-16, **alias-reflection coefficient transport sealed cold; coefficient substrate only; 20/41 unchanged**)
+
+Terminal cold GitHub Actions run
+[`31928676798`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31928676798),
+job `95120140347`, validated exact source
+`c669f5f5e081c316186bfbeade7a6a79752db418` from workflow HEAD
+`f5c652d7c07105b7e91ecb0c9348151bebfd85ef`.  The run recorded
+`COLD_MODE=true`; project `.lake/build` restore and save were both `skipped`.
+The focal ran from `2026-08-16T05:19:44Z` to `05:42:28Z`, exited zero and
+ended with literal line `Build completed successfully (8542 jobs).`.  The
+five-block audit ended at `05:42:35Z` with exit zero, and every declaration
+printed exactly `[propext, Classical.choice, Quot.sound]`.
+
+Downloaded artifact id is `9258894150`, with GitHub digest
+`sha256:40ccf09bd2ad87e80344881e340e7a8a67caaefe1c080814177c95f27ee1c788`.
+All `14/14` internal SHA-256 entries verified.  Deterministic local archive
+SHA-256 is
+`762a166bb55689cd897532efb2d6533c5908d38eebdbc6526a730542b859a21f`.
+The warning gate passed.
+
+This evidence retires exactly the PRE-VALIDATION headers in
+`BalabanCMP99SourceAliasReflectionCoefficients` and its audit.  It seals the
+alias-reflection coefficient algebra, not the stabilized denominator or
+solution, central-alias termwise behavior, full cross-fibre physical sum,
+Brillouin integral, regional `B0`, window 15, a terminal field or
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible and unattained.

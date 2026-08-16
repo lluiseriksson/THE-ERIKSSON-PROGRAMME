@@ -12148,7 +12148,7 @@ regional `B0`, window-15 attainment, terminal-field producer or `TermSource`
 inhabitant.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
-### Step 8b.16: alias-reflection coefficient transport (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.16: alias-reflection coefficient transport (SEALED; coefficient substrate only)
 
 Source checkpoint `e4d2b2eb6640d5c36d6febad8b424bdbd5c40c99` adds
 `BalabanCMP99SourceAliasReflectionCoefficients` and its five-declaration
@@ -12245,3 +12245,26 @@ the single cold seal.  Workflow vehicle checkpoint
 it fixes the same source and blob hashes, uses `cold=true`, skips project-graph
 restore/save, and gates the five-declaration audit.  No terminal workflow has
 yet been dispatched for this vehicle.
+
+Terminal cold GitHub Actions run
+[`31928676798`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31928676798),
+job `95120140347`, then sealed exact source
+`c669f5f5e081c316186bfbeade7a6a79752db418` from workflow HEAD
+`f5c652d7c07105b7e91ecb0c9348151bebfd85ef`.  It recorded
+`COLD_MODE=true`; project-graph restore and save were both `skipped`.
+The focal ran from `2026-08-16T05:19:44Z` to `05:42:28Z`, exited zero and
+ended with literal line `Build completed successfully (8542 jobs).`; the
+audit ended at `05:42:35Z` with exit zero.  All five declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+The downloaded artifact has id `9258894150` and GitHub digest
+`sha256:40ccf09bd2ad87e80344881e340e7a8a67caaefe1c080814177c95f27ee1c788`.
+Its `14/14` internal SHA-256 entries verified, and the deterministic local
+archive SHA-256 is
+`762a166bb55689cd897532efb2d6533c5908d38eebdbc6526a730542b859a21f`.
+This cold evidence retires exactly the source and audit PRE-VALIDATION marks.
+It seals coefficient algebra only: stabilized denominator/solution,
+central-alias termwise behavior, complete cross-fibre physical reindexing,
+Brillouin integral, regional `B0`, window 15, terminal fields and
+`TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
