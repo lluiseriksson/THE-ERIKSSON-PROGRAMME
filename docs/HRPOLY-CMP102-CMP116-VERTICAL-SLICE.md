@@ -12098,3 +12098,13 @@ producer or `TermSource` inhabitant is claimed.  Both new files retain visible
 PRE-VALIDATION headers and are NOT CHECKED; no Lean or Lake ran on Windows.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+Diagnostic runner checkpoint `4992b07187f91dd25ad6f3cc6424711392c3c8c8`
+has Git-blob SHA-256
+`84550d722b55a58ae1041606ef0732844d3c0a511f7167d4cc3c3e082c4c0dd0`;
+notebook vehicle checkpoint is `40b01b3fbe110aa4416ab12e76cbefdb7b7fb103`.
+The runner fixes the immutable source and both Git-blob hashes, runs a
+Mathlib-only central-split/common-factor repro, the focal and the seven-block
+audit, stops on first error and releases the runtime.  It authorizes one
+fresh-clone Colab diagnostic only; PRE-VALIDATION and hard counters remain
+unchanged.

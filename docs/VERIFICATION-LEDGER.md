@@ -37482,3 +37482,12 @@ claim termwise zero-alias preservation, construct a Brillouin integral or
 regional `B0`, attain window 15, discharge a terminal field or inhabit
 `TermSource`.  No Lean or Lake ran on Windows.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Diagnostic runner checkpoint `4992b07187f91dd25ad6f3cc6424711392c3c8c8`
+has Git-blob SHA-256
+`84550d722b55a58ae1041606ef0732844d3c0a511f7167d4cc3c3e082c4c0dd0`;
+notebook vehicle checkpoint is `40b01b3fbe110aa4416ab12e76cbefdb7b7fb103`.
+It performs exact source/blob hash gates, a Mathlib-only finite-sum repro, the
+focal and a seven-declaration axiom audit, stops on first error and releases
+the Colab runtime.  This prepares one fresh-clone diagnostic only and does not
+retire PRE-VALIDATION or move a counter.
