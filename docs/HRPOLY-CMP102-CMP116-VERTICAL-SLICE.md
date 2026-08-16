@@ -12329,3 +12329,27 @@ reproduction of the finite-sum reindex-and-erase argument, then runs the
 focal and seven-block audit stop-on-first-error in one fresh Colab CPU/high-
 RAM clone and releases the runtime.  It authorizes one diagnostic only and
 does not retire PRE-VALIDATION or move a counter.
+
+Diagnostic v3 ran exactly once in a fresh Colab Pro+ CPU/high-RAM clone under
+visible account `lluiseriksson@gmail.com`, opening at
+`2026-08-16T07:36:35.847150Z` with `50.99 GiB`.  It verified source
+`ce00198eb10766b15e3fb90dc756cbf634e34740`, both blob hashes, Lean
+`v4.29.0-rc6`, Mathlib `07642720480157414db592fa85b626dafb71355b`,
+both text guards and the Mathlib-only repro.  The focal exited zero in
+`1149.297 s` with literal terminal line
+`Build completed successfully (8590 jobs).`; the audit exited zero in
+`7.851 s`; and all seven declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`31bbd47b8cd7a8b575125fa6bbe29374b49c331c674d647fe8aa0b3df9a11e67`
+and `e42f6a070e86f50526d942ee02027dc3753db0679e636ac6f027f5e7a0431c98`.
+`FINAL_STATUS=PASS`, launcher exit was zero and runtime release completed;
+connected cell time was `1272.875 s`.
+
+This is diagnostic evidence only.  PRE-VALIDATION remains visible pending
+the single cold terminal seal.  Workflow vehicle checkpoint
+`efb75529f1359ebe7457997d37d4d75693e701f2` has Git-blob SHA-256
+`9dc86518ccf4bcd8b81bbb2fc10639cfe11a2ae5d616b9c6828f37e73725acf6`.
+It pins the same immutable source and blobs, requires `cold=true`, skips
+project-graph restore/save, runs focal then seven-block audit, rejects
+new-module warnings and packages deterministic evidence.  No terminal run
+has yet been dispatched.
