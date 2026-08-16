@@ -37599,3 +37599,27 @@ notebook vehicle checkpoint is
 `e0bed88bbdd9a0b9383e82ed6549906188d0a11f`.  Both Lean files remain
 visibly PRE-VALIDATION and NOT CHECKED.  Counters remain `20/41`,
 `TermSource = 0`; window 15 remains compatible and unattained.
+
+## Addendum 836 (2026-08-16, **alias-reflection diagnostic v2 blocked by an overdetermined repro before focal; source SHA unchanged; v3 prepared**)
+
+Diagnostic v2 checked exact mathematical source
+`c669f5f5e081c316186bfbeade7a6a79752db418` and both source blob hashes,
+then stopped before the project focal.  The added Mathlib-only repro stated an
+identity whose terms canceled without its hypothesis; `ring_nf` therefore
+closed the goal and the next `linear_combination` reported literal error
+`No goals to be solved`.  Repro exit was one after `16.587 s`; total connected
+execution was `198.313 s`.  Evidence/archive SHA-256 are
+`eeda3592664f8857b22b596707b64eedfd0c4e04752ed4393c109dc9e0ec949c`
+and
+`9821f501f04d363cfd01afa90ff9876bb5b91e724afcb6cc10a8c1c941365ec4`.
+`FINAL_STATUS=FAIL`, launcher exit was one and runtime release completed.
+
+This is BLOCKED-INSTRUMENTATION and gives no compiler verdict on the source.
+Runner v3 checkpoint `616734a5dec1c50abcea0b3b70d4975718621038`
+has Git-blob SHA-256
+`337d6f4984a4de4b51d2b06b8889e8071d16c11123dc1d0a33cb71cc0e2a13d2`;
+it changes only the repro to the original affine equality.  Notebook v3
+checkpoint is `e455e56fc3534f318413322fe3af46e0ffdf0742`.
+Mathematical source, theorem statements and source blob hashes are unchanged.
+PRE-VALIDATION remains visible; counters remain `20/41`, `TermSource = 0`;
+window 15 remains compatible and unattained.

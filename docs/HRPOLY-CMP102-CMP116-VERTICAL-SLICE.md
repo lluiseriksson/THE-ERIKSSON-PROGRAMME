@@ -12208,3 +12208,17 @@ Diagnostic runner v2 checkpoint
 `2b3fea3c0973da95cbe08f9be3ec6085eaafaae93b0b974640cc3e1962c0462c`;
 notebook checkpoint is `e0bed88bbdd9a0b9383e82ed6549906188d0a11f`.
 PRE-VALIDATION remains visible and the repair remains NOT CHECKED.
+
+Diagnostic v2 stopped before the project focal: its newly added algebraic
+repro was identically normalized by `ring_nf`, so its following
+`linear_combination` produced `No goals to be solved`.  This is classified as
+instrumentation failure, not source evidence.  Evidence/archive SHA-256 are
+`eeda3592664f8857b22b596707b64eedfd0c4e04752ed4393c109dc9e0ec949c`
+and
+`9821f501f04d363cfd01afa90ff9876bb5b91e724afcb6cc10a8c1c941365ec4`;
+the runtime released after `198.313 s`.  Runner v3 checkpoint
+`616734a5dec1c50abcea0b3b70d4975718621038`, Git-blob SHA-256
+`337d6f4984a4de4b51d2b06b8889e8071d16c11123dc1d0a33cb71cc0e2a13d2`,
+replaces only that repro with the actual affine equality.  Notebook v3 is
+`e455e56fc3534f318413322fe3af46e0ffdf0742`.  Mathematical source and both
+source hashes remain unchanged; PRE-VALIDATION remains visible.
