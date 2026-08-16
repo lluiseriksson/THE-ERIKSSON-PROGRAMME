@@ -47,8 +47,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v6"
-runner.SOURCE_SHA = "64714dc87b9aecec8af7a3418eeab6258a3b823c"
+runner.RUNNER_REV = "cmp99-stabilized-alias-quotient-bridge-v7"
+runner.SOURCE_SHA = "c7bfde5edb48a52032d2616c7b15bf3ee753704d"
 runner.ROOT = Path("/content/hrpoly-cmp99-stabilized-alias-quotient-bridge")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-stabilized-alias-quotient-bridge-evidence"
@@ -62,7 +62,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridge.lean":
-        "b050fde2d0270936e15e82b6b3439ef56fe7673612413d70a1563d8b7648943a",
+        "361f61fdce19b545ffea727453da58f7877249ef3f458d798303fdaaf58889ac",
     "YangMills/RG/BalabanCMP99SourceStabilizedAliasQuotientBridgeAudit.lean":
         "8d2f7f222bb824e08ceae8adf4293418f4ca9c5fede3d7a85f48758ef1625647",
 }
