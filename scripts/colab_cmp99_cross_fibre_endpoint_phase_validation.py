@@ -48,8 +48,8 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
-runner.RUNNER_REV = "cmp99-cross-fibre-endpoint-phase-v1"
-runner.SOURCE_SHA = "dbd02a992c749b08e100a3b0b9258bb32a864924"
+runner.RUNNER_REV = "cmp99-cross-fibre-endpoint-phase-v2"
+runner.SOURCE_SHA = "237f11941c763e1a68071c2d69bc246d305dbb81"
 runner.ROOT = Path("/content/hrpoly-cmp99-cross-fibre-endpoint-phase")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp99-cross-fibre-endpoint-phase-evidence"
@@ -63,7 +63,7 @@ runner.PATH_MANIFEST = Path(
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase.lean":
-        "148312e0a3763e2ee62e9f6ae99426851a5978c5d51f5deb53dbcf1e606847aa",
+        "c95973adaaef8717db6fe12360297a807c11d946ec13b2d1db5a3e6c2a439730",
     "YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhaseAudit.lean":
         "eca7be0dfc0ba3f644fa44f8493be50f21e05edaaaae93d6d551d5cce3022f35",
 }
@@ -79,6 +79,11 @@ example {d : ℕ} (p : Fin d → ℂ) (u : Fin d → ℤ) (xi : ℝ) :
   intro mu _
   push_cast
   ring
+
+example {d : ℕ} (u : Fin d → ℤ) :
+    (fun mu => -(-u mu)) = u := by
+  funext mu
+  simp
 
 example {A B : Type*} [Fintype A] [Fintype B]
     (e : A ≃ B) (f : B → ℂ) :
