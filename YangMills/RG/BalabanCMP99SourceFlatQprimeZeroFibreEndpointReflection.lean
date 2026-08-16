@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceAliasReflectionStabilizedSolution
 /-!
 # Zero-coarse-fibre endpoint reflection
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the result
-has not yet been verified by the Lean compiler.
-
 At zero coarse momentum the mass-zero central fine symbol vanishes, so the
 nonzero quotient bridge cannot be used.  The correct replacement reindexes
 the complete signed alias sum by the sealed half-open carrier reflection.

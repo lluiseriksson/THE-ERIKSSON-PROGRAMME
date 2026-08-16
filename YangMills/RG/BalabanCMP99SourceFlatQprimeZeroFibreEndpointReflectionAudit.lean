@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection
 
 /-!
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the audit
-has not yet been verified by the Lean compiler.
+Fresh-clone Colab CPU/high-RAM seal at exact source
+`cfb67cb9cab17889d3416358f981a336815a4ef8`.  The focal ended with
+`Build completed successfully (8702 jobs).`; all five declarations below use
+exactly `[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_zero

@@ -38388,3 +38388,26 @@ and notebook checkpoint `b50417d466972b2a4fdb3e54f37b82d35a11a523`, Git-blob
 SHA-256
 `ba4e29e9c01069581f6cd1a9f330d6548821b3c4d6e400abfba668872d9e3a65`,
 prepare the controlled v2 retry.
+
+## Addendum 863 (2026-08-16, **zero-fibre reflection diagnostic v2 PASS and sealed; 20/41 unchanged**)
+
+Diagnostic v2 passed once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com` at exact source
+`cfb67cb9cab17889d3416358f981a336815a4ef8`.  All transport, source/blob,
+official Lean/Mathlib pin, exact text-guard and repro gates passed.  The focal
+returned exit code `0` after `1576.064 s`, with literal terminal line
+`Build completed successfully (8702 jobs).`; the audit returned exit code `0`
+after `7.176 s`, and all five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+Evidence/archive SHA-256 are
+`42a1c30b5bb7d0bf405b82cc485353fa36a01d95d7ecd8dbdc31e4b234742f50`
+and
+`b329e9993815eca5836f73ef78d7c091dec48858c78b50ce2bf0b7b7ac9be837`.
+`FINAL_STATUS=PASS`; the runtime released automatically and no cell was
+rerun.  The seal retires exactly the source and audit PRE-VALIDATION marks.
+It covers only the zero-coarse-fibre reflection and its complete finite alias
+sum.  A combined zero/nonzero consumer, Brillouin integration, regional `B0`,
+window-15 attainment and terminal fields remain open.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

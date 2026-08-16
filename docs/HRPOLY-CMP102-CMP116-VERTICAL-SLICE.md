@@ -12793,7 +12793,7 @@ and `3dd8be3b88970c9303e3d9a7d716ba34076aeeb8d905f06e48ad1a6f9c82aa3f`.
 `FINAL_STATUS=PASS`; the runtime released automatically and the cell was not
 rerun.  The seal retires exactly the two Step-8b.19 PRE-VALIDATION marks.
 
-### Step 8b.20: zero-coarse-fibre endpoint reflection (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.20: zero-coarse-fibre endpoint reflection (SEALED)
 
 `BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection` treats the singular
 coarse fibre without dividing by the central mass-zero symbol.  It reindexes
@@ -12852,3 +12852,21 @@ adds the exact local-abbreviation repro.  Notebook checkpoint
 `b50417d466972b2a4fdb3e54f37b82d35a11a523`, Git-blob SHA-256
 `ba4e29e9c01069581f6cd1a9f330d6548821b3c4d6e400abfba668872d9e3a65`,
 pins v2.
+
+Diagnostic v2 passed once in a fresh Colab Pro+ CPU/high-RAM clone at exact
+source `cfb67cb9cab17889d3416358f981a336815a4ef8`.  All runner transport,
+source/blob, official Lean/Mathlib pin, exact text-guard and repro gates
+passed.  The focal returned exit code `0` after `1576.064 s`, with literal
+terminal line `Build completed successfully (8702 jobs).`; the audit returned
+exit code `0` after `7.176 s`, and all five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence/archive SHA-256 are
+`42a1c30b5bb7d0bf405b82cc485353fa36a01d95d7ecd8dbdc31e4b234742f50`
+and
+`b329e9993815eca5836f73ef78d7c091dec48858c78b50ce2bf0b7b7ac9be837`.
+`FINAL_STATUS=PASS`; the runtime released automatically and the cell was not
+rerun.  The seal retires exactly the source and audit PRE-VALIDATION marks.
+It covers the zero-coarse-fibre endpoint reflection and complete finite alias
+sum only.  A combined zero/nonzero consumer, Brillouin integration, regional
+`B0`, window-15 attainment and terminal fields remain open.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
