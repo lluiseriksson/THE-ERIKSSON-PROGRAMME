@@ -38055,3 +38055,39 @@ pins v6. Statements, hypotheses, constants and scope remain unchanged.
 PRE-VALIDATION remains visible and the result remains NOT CHECKED. Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 852 (2026-08-16, **stabilized-quotient diagnostic v8 reaches the literal central cancellation; v9 prepared**)
+
+Diagnostic v8 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+visible account `lluiseriksson@gmail.com`. It passed the exact runner
+transport, source and both Git-blob gates, official Lean and Mathlib pins,
+both text guards, cache materialization and the Mathlib-only repro. The
+project focal returned exit code `1` after `1625.516 s`; stop-on-first-error
+prevented the audit.
+
+Both remaining goals were the same literal cancellation, for the row and
+column coefficients respectively:
+`centralFine * coefficient / centralFine = coefficient`. Thus the previous
+denominator clearing exposed exactly the standard nonzero left-factor
+cancellation but did not close it. `FINAL_STATUS=FAIL`; evidence/archive
+SHA-256 are
+`0c2228f831b35cedbde9f1dddec8e3d8851714c0f05f7eeb41b4a375b82c8f36`
+and
+`95a51925a03e0774f8a1215d29d807e7dc69211dbd3f659269c982b75e25bde5`.
+The runtime released automatically after `1780.514 s` and the browser tab
+was closed.
+
+Source repair checkpoint `72e665f18309e7fb96c4bc720b52296a03fabecc`,
+Git-blob SHA-256
+`5638e4b31785fafabd591e0a9c8bab4cb19d138fd789c4d4c6aaae0d999c7167`,
+adds only the standard `mul_div_cancel_left₀` rewrite to each exposed
+goal. Runner v9 checkpoint `7c2e79e515bdea59bd2c68fcc7f87fd9b7869ccd`,
+Git-blob SHA-256
+`8d33d3e586643edd6021f6ec5e678daf1add23f766a3007c9e5ccd97e787d6d2`,
+and notebook checkpoint `860950fa5c053dcef2ca5461e66dcbd3d47a0ea0`,
+Git-blob SHA-256
+`5c046e11574e02b963848d54a4dc3bf33115c7325f1bf9308f1e1cf4a50a97bd`,
+pin that exact repair and exercise the same lemma in the pre-focal repro.
+Statements, hypotheses, constants and scope are unchanged. PRE-VALIDATION
+remains visible and the result remains NOT CHECKED. Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

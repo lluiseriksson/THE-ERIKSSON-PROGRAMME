@@ -12560,3 +12560,29 @@ pin v8. Statements, hypotheses, constants and scope are unchanged;
 PRE-VALIDATION remains visible and the result remains NOT CHECKED. Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+Diagnostic v8 passed every transport, blob, pin, text and Mathlib-only repro
+gate, then reached the project source. The focal stopped after `1625.516 s`
+with exit code `1`; the audit did not run. Its only two goals were the literal
+row/column instances of
+`centralFine * coefficient / centralFine = coefficient`. Evidence/archive
+SHA-256 are
+`0c2228f831b35cedbde9f1dddec8e3d8851714c0f05f7eeb41b4a375b82c8f36`
+and
+`95a51925a03e0774f8a1215d29d807e7dc69211dbd3f659269c982b75e25bde5`.
+The runtime released after `1780.514 s` and the browser tab closed.
+
+Repair checkpoint `72e665f18309e7fb96c4bc720b52296a03fabecc`, source
+Git-blob SHA-256
+`5638e4b31785fafabd591e0a9c8bab4cb19d138fd789c4d4c6aaae0d999c7167`,
+adds only the standard `mul_div_cancel_left₀` rewrite to those two exact
+goals. Runner v9 checkpoint `7c2e79e515bdea59bd2c68fcc7f87fd9b7869ccd`,
+Git-blob SHA-256
+`8d33d3e586643edd6021f6ec5e678daf1add23f766a3007c9e5ccd97e787d6d2`,
+and notebook checkpoint `860950fa5c053dcef2ca5461e66dcbd3d47a0ea0`,
+Git-blob SHA-256
+`5c046e11574e02b963848d54a4dc3bf33115c7325f1bf9308f1e1cf4a50a97bd`,
+pin v9 and test the same cancellation lemma before the focal. No statement,
+hypothesis, constant or scope changed. PRE-VALIDATION remains visible, the
+result remains NOT CHECKED, counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.
