@@ -136,6 +136,9 @@ theorem cmp89Eq249StabilizedAliasTransposeSolution_eq_unstabilized
   have hcentral : centralFine ≠ 0 := by
     rw [← hcentralValue]
     exact hfine central
+  have hcentralLiteral :
+      cmp89Eq249CentralEntireFineSymbol d L j mass z ≠ 0 := by
+    simpa only [centralFine] using hcentral
   have hstabilized :=
     cmp89Eq249CentralFine_mul_reduced_eq_stabilized
       d L j mass a z hcentral
@@ -149,8 +152,7 @@ theorem cmp89Eq249StabilizedAliasTransposeSolution_eq_unstabilized
     unfold cmp89Eq247EntireAliasTransposeSolution
     rw [← hstabilized]
     field_simp [hcentral, hfine m, hreduced]
-    change _ * centralFine / centralFine = _
-    field_simp [hcentral]
+    field_simp [hcentralLiteral] <;> ring
 
 /-- On the same non-singular domain, the separately constructed stabilized
 column solution cancels to its literal rational quotient. -/
@@ -172,6 +174,9 @@ theorem cmp89Eq249StabilizedAliasColumnSolution_eq_unstabilized
   have hcentral : centralFine ≠ 0 := by
     rw [← hcentralValue]
     exact hfine central
+  have hcentralLiteral :
+      cmp89Eq249CentralEntireFineSymbol d L j mass z ≠ 0 := by
+    simpa only [centralFine] using hcentral
   have hstabilized :=
     cmp89Eq249CentralFine_mul_reduced_eq_stabilized
       d L j mass a z hcentral
@@ -185,8 +190,7 @@ theorem cmp89Eq249StabilizedAliasColumnSolution_eq_unstabilized
     unfold cmp89Eq247EntireAliasColumnSolution
     rw [← hstabilized]
     field_simp [hcentral, hfine m, hreduced]
-    change _ * centralFine / centralFine = _
-    field_simp [hcentral]
+    field_simp [hcentralLiteral] <;> ring
 
 end
 
