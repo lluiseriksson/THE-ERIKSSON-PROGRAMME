@@ -12657,3 +12657,27 @@ pins v2. PRE-VALIDATION remains visible and v2 is NOT CHECKED. The complete
 finite alias sum, the zero coarse fibre, Brillouin integral, regional `B0`,
 window 15 and terminal fields remain open. Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Diagnostic v2 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the
+same visible account. All transport, source/blob, pin, text-guard and repro
+gates passed. The focal stopped with exit code `1` after `2019.806 s`; the
+audit did not run. The only error was the remaining pointwise normalization
+`-(fun mu => 0) = fun mu => 0` inside the proof that Fourier negation fixes
+zero. `FINAL_STATUS=FAIL`; evidence/archive SHA-256 are
+`f03a3b3122e853bc32541d3a5262106a7550d5382c9e97c761bbc44f315c3428`
+and
+`b463cb034b2f78ad587e46811fdf2b6cf3c664856b5342cc9f04f0a41be21a67`.
+The runtime released automatically.
+
+Repair checkpoint `da7eed698c279304d24fb7f7a5f64278cbededf0`, source
+Git-blob SHA-256
+`8b6f5296d06ab284a1bc15313797bd995a92d136791d3d0b4cbae492e89e0897`,
+adds only pointwise function extensionality at that goal. Runner v3 checkpoint
+`ae6ce9cf1a022e54d0a43bd52c0caa74372717d2`, Git-blob SHA-256
+`3c0a137600a34dc4d25e9efcefb9e2172193586d710c5d9d7149b39e36e15caf`,
+adds the exact Mathlib-only zero-function-negation repro. Notebook checkpoint
+`f27bf31e72741f01d18557a79e8d7af92af38c51`, Git-blob SHA-256
+`6f48e50df47f62458fa5045633e05214c735d0d9c8c988d1edb449abf354f1d9`,
+pins v3. Statements, hypotheses, constants and scope are unchanged.
+PRE-VALIDATION remains visible and v3 is NOT CHECKED. Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
