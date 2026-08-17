@@ -1,32 +1,36 @@
-name: Validate CMP99 cross-fibre alias quotient
+name: Validate CMP99 finite-grid aliasing
 
 on:
   workflow_dispatch:
     inputs:
       cold:
-        description: Do not restore or save the diagnostic project graph
+        description: Require a cold checkout without project-graph restoration
         required: true
-        default: false
+        default: true
         type: boolean
 
 permissions:
   contents: read
 
 env:
-  SOURCE_SHA: da7eed698c279304d24fb7f7a5f64278cbededf0
-  SOURCE_BLOB_SHA256: 8b6f5296d06ab284a1bc15313797bd995a92d136791d3d0b4cbae492e89e0897
-  AUDIT_BLOB_SHA256: 1d3235c0b6f26445dd7e84184b0b1a0ebb95602b924ea2014c027965433142b7
+  SOURCE_SHA: 534493728038813f3772f8b3b073237f4da1884e
+  SOURCE_BLOB_SHA256: de04ca53ce8b753e80514e607f0b47ae6c6cf41811b353e60030b21f4a5a2a52
+  AUDIT_BLOB_SHA256: 1207c5881c98379753407f426392100b08e44c503d64ce03cc2c3daba7b5290b
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
-  PROJECT_RESTORE_PREFIXES: |
-    cmp99-cross-fibre-alias-quotient
 
 jobs:
-  cmp99-cross-fibre-alias-quotient:
+  cmp99-finite-grid-aliasing:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
+      - name: Require cold terminal mode
+        shell: bash
+        run: |
+          set -euo pipefail
+          test '${{ inputs.cold }}' = 'true'
+
       - name: Checkout exact source checkpoint
         uses: actions/checkout@v4
         with:
@@ -39,12 +43,13 @@ jobs:
           set -euo pipefail
           mkdir -p evidence
           actual="$(git rev-parse HEAD)"
-          printf 'SOURCE_SHA=%s\nACTUAL_HEAD=%s\nWORKFLOW_SHA=%s\n' \
-            "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
+          printf 'SOURCE_SHA=%s\nACTUAL_HEAD=%s\nWORKFLOW_SHA=%s\nCOLD_MODE=%s\n' \
+            "$SOURCE_SHA" "$actual" "$GITHUB_SHA" '${{ inputs.cold }}' | \
+            tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient.lean
-          audit_path=YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotientAudit.lean
+          source_path=YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean
+          audit_path=YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean
           test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
           test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
 
@@ -70,41 +75,6 @@ jobs:
             sha256sum "$bindir/lean" "$bindir/lake"
           } | tee evidence/toolchain.txt
 
-      - name: Verify cache-key budget
-        id: cache-keys
-        shell: bash
-        run: |
-          mapfile -t prefixes < <(printf '%s\n' "$PROJECT_RESTORE_PREFIXES" | sed '/^[[:space:]]*$/d')
-          total_count="$((1 + ${#prefixes[@]}))"
-          printf 'CACHE_KEY_COUNT=%s\n' "$total_count"
-          test "$total_count" -le 10
-          {
-            printf 'keys<<EOF\n'
-            for prefix in "${prefixes[@]}"; do
-              printf 'hRpoly-%s-%s-%s-\n' "$prefix" "$RUNNER_OS" "$EXPECTED_MATHLIB"
-            done
-            printf 'EOF\n'
-          } >> "$GITHUB_OUTPUT"
-
-      - name: Restore diagnostic project graph
-        if: ${{ inputs.cold == false }}
-        id: project-cache
-        uses: actions/cache/restore@v4
-        with:
-          path: .lake/build
-          key: hRpoly-cmp99-cross-fibre-alias-quotient-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
-          restore-keys: ${{ steps.cache-keys.outputs.keys }}
-
-      - name: Record diagnostic cache state
-        shell: bash
-        run: |
-          printf 'COLD_MODE=%s\nPROJECT_CACHE_HIT=%s\nPROJECT_CACHE_PRIMARY_KEY=%s\nPROJECT_CACHE_MATCHED_KEY=%s\n' \
-            '${{ inputs.cold }}' \
-            '${{ steps.project-cache.outputs.cache-hit }}' \
-            '${{ steps.project-cache.outputs.cache-primary-key }}' \
-            '${{ steps.project-cache.outputs.cache-matched-key }}' | \
-            tee evidence/project-cache.txt
-
       - name: Materialize pinned dependencies
         shell: bash
         run: |
@@ -126,14 +96,14 @@ jobs:
         run: |
           set -euo pipefail
           printf '%s\n' \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotientAudit.lean \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean \
             > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
           python scripts/check_lean_import_prefix.py \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient.lean \
-            YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotientAudit.lean | \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean | \
             tee evidence/import-prefix-guard.log
           run_stage() {
             local stage="$1"
@@ -153,54 +123,43 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_cross_fibre_alias_quotient_focal \
-            lake build YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient
-          run_stage cmp99_cross_fibre_alias_quotient_audit \
-            lake env lean YangMills/RG/BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotientAudit.lean
+          run_stage cmp99_finite_grid_aliasing_focal \
+            lake build YangMills.RG.BalabanCMP99FlatFiniteGridAliasing
+          run_stage cmp99_finite_grid_aliasing_audit \
+            lake env lean YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean
 
-      - name: Verify axiom gates and package cold evidence
+      - name: Verify axiom gate and package cold evidence
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import hashlib
           import json
           from pathlib import Path
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audits = {
-              "cmp99_cross_fibre_alias_quotient_audit.log": 8,
-          }
-          focals = {
-              "cmp99_cross_fibre_alias_quotient_focal.log":
-                  "BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient.lean:",
-          }
-          for name, source_name in focals.items():
-              focal = (Path("evidence") / name).read_text(encoding="utf-8")
-              if f"warning: YangMills/RG/{source_name}" in focal:
-                  raise SystemExit(f"NEW_MODULE_LINTER_WARNING FILE={name}")
-          result = {}
-          for name, expected in audits.items():
-              text = (Path("evidence") / name).read_text(encoding="utf-8")
-              compact = re.sub(r"\s+", "", text)
-              for forbidden in ("sorryAx", "ofReduceBool"):
-                  if forbidden in compact:
-                      raise SystemExit(f"FORBIDDEN_AXIOM={forbidden} FILE={name}")
-              blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
-              if len(blocks) != expected:
-                  raise SystemExit(
-                      f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED={expected} FILE={name}"
-                  )
-              parsed = []
-              for body in blocks:
-                  names = {item for item in body.split(",") if item}
-                  if not names.issubset(allowed):
-                      raise SystemExit(f"AXIOM_SET={sorted(names)} FILE={name}")
-                  parsed.append(sorted(names))
-              result[name] = parsed
-          (Path("evidence") / "axioms.json").write_text(
-              json.dumps(result, sort_keys=True, indent=2) + "\n", encoding="utf-8"
+          audit_path = Path("evidence/cmp99_finite_grid_aliasing_audit.log")
+          focal_path = Path("evidence/cmp99_finite_grid_aliasing_focal.log")
+          focal = focal_path.read_text(encoding="utf-8")
+          if "warning: YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean:" in focal:
+              raise SystemExit("NEW_MODULE_LINTER_WARNING")
+          text = audit_path.read_text(encoding="utf-8")
+          compact = re.sub(r"\s+", "", text)
+          for forbidden in ("sorryAx", "ofReduceBool"):
+              if forbidden in compact:
+                  raise SystemExit(f"FORBIDDEN_AXIOM={forbidden}")
+          blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+          if len(blocks) != 7:
+              raise SystemExit(f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED=7")
+          parsed = []
+          for body in blocks:
+              names = {item for item in body.split(",") if item}
+              if not names.issubset(allowed):
+                  raise SystemExit(f"AXIOM_SET={sorted(names)}")
+              parsed.append(sorted(names))
+          Path("evidence/axioms.json").write_text(
+              json.dumps(parsed, sort_keys=True, indent=2) + "\n",
+              encoding="utf-8",
           )
           PY
           printf 'FINAL_STATUS=PASS\n' | tee evidence/FINAL_STATUS
@@ -210,23 +169,16 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n > \
-              cmp99-cross-fibre-alias-quotient-evidence.tar.gz
-          sha256sum cmp99-cross-fibre-alias-quotient-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+              cmp99-finite-grid-aliasing-evidence.tar.gz
+          sha256sum cmp99-finite-grid-aliasing-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-cross-fibre-alias-quotient-${{ env.SOURCE_SHA }}
+          name: cmp99-finite-grid-aliasing-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-cross-fibre-alias-quotient-evidence.tar.gz
+            cmp99-finite-grid-aliasing-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
-
-      - name: Save diagnostic project graph
-        if: ${{ always() && inputs.cold == false && steps.project-cache.outputs.cache-hit != 'true' }}
-        uses: actions/cache/save@v4
-        with:
-          path: .lake/build
-          key: hRpoly-cmp99-cross-fibre-alias-quotient-${{ runner.os }}-${{ env.EXPECTED_MATHLIB }}-${{ env.SOURCE_SHA }}
