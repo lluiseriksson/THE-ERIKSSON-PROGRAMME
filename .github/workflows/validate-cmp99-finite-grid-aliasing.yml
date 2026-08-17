@@ -1,0 +1,171 @@
+name: Validate CMP99 finite-grid aliasing
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_SHA: 534493728038813f3772f8b3b073237f4da1884e
+  SOURCE_BLOB_SHA256: de04ca53ce8b753e80514e607f0b47ae6c6cf41811b353e60030b21f4a5a2a52
+  AUDIT_BLOB_SHA256: 1207c5881c98379753407f426392100b08e44c503d64ce03cc2c3daba7b5290b
+  EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
+  TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
+  TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+
+jobs:
+  cmp99-finite-grid-aliasing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout exact source checkpoint
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 1
+
+      - name: Verify source checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          actual="$(git rev-parse HEAD)"
+          printf 'SOURCE_SHA=%s\nACTUAL_HEAD=%s\nWORKFLOW_SHA=%s\n' \
+            "$SOURCE_SHA" "$actual" "$GITHUB_SHA" | tee evidence/checkpoint.txt
+          test "$actual" = "$SOURCE_SHA"
+          test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
+          source_path=YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean
+          audit_path=YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean
+          test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
+          test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
+
+      - name: Install exact Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset=/tmp/lean-4.29.0-rc6-linux.tar.zst
+          curl --fail --location --retry 5 --retry-all-errors --retry-delay 2 \
+            -o "$asset" "$TOOLCHAIN_URL"
+          printf '%s  %s\n' "$TOOLCHAIN_SHA256" "$asset" | sha256sum -c -
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq zstd
+          mkdir -p /tmp/lean-toolchain
+          tar --use-compress-program=unzstd -xf "$asset" -C /tmp/lean-toolchain
+          bindir=/tmp/lean-toolchain/lean-4.29.0-rc6-linux/bin
+          test -x "$bindir/lean"
+          test -x "$bindir/lake"
+          echo "$bindir" >> "$GITHUB_PATH"
+          {
+            printf 'TOOLCHAIN_URL=%s\nTOOLCHAIN_ASSET_SHA256=%s\n' \
+              "$TOOLCHAIN_URL" "$TOOLCHAIN_SHA256"
+            sha256sum "$bindir/lean" "$bindir/lake"
+          } | tee evidence/toolchain.txt
+
+      - name: Materialize pinned dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          lean --version | tee -a evidence/toolchain.txt
+          lake --version | tee -a evidence/toolchain.txt
+          manifest_before="$(sha256sum lake-manifest.json | cut -d' ' -f1)"
+          toolchain_before="$(sha256sum lean-toolchain | cut -d' ' -f1)"
+          lake update 2>&1 | tee evidence/lake-update.log
+          test "$(sha256sum lake-manifest.json | cut -d' ' -f1)" = "$manifest_before"
+          test "$(sha256sum lean-toolchain | cut -d' ' -f1)" = "$toolchain_before"
+          mathlib="$(git -C .lake/packages/mathlib rev-parse HEAD)"
+          printf 'MATHLIB_SHA=%s\n' "$mathlib" | tee evidence/mathlib.txt
+          test "$mathlib" = "$EXPECTED_MATHLIB"
+          lake exe cache get 2>&1 | tee evidence/cache-get.log
+
+      - name: Run focal queue stop on first error
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean \
+            > evidence/overlay-paths.txt
+          python scripts/check_lean_overlay_text.py \
+            --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
+          python scripts/check_lean_import_prefix.py \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean \
+            YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean | \
+            tee evidence/import-prefix-guard.log
+          run_stage() {
+            local stage="$1"
+            shift
+            local started ended code
+            started="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            printf 'STAGE=%s STARTED=%s CMD=' "$stage" "$started" | tee -a evidence/stages.txt
+            printf '%q ' "$@" | tee -a evidence/stages.txt
+            printf '\n' | tee -a evidence/stages.txt
+            set +e
+            "$@" 2>&1 | tee "evidence/${stage}.log"
+            code=${PIPESTATUS[0]}
+            set -e
+            ended="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            printf 'STAGE=%s EXIT=%s ENDED=%s\n' "$stage" "$code" "$ended" | \
+              tee -a evidence/stages.txt
+            test "$code" -eq 0
+          }
+
+          run_stage cmp99_finite_grid_aliasing_focal \
+            lake build YangMills.RG.BalabanCMP99FlatFiniteGridAliasing
+          run_stage cmp99_finite_grid_aliasing_audit \
+            lake env lean YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean
+
+      - name: Verify axiom gate and package cold evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import re
+
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          audit_path = Path("evidence/cmp99_finite_grid_aliasing_audit.log")
+          focal_path = Path("evidence/cmp99_finite_grid_aliasing_focal.log")
+          focal = focal_path.read_text(encoding="utf-8")
+          if "warning: YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean:" in focal:
+              raise SystemExit("NEW_MODULE_LINTER_WARNING")
+          text = audit_path.read_text(encoding="utf-8")
+          compact = re.sub(r"\s+", "", text)
+          for forbidden in ("sorryAx", "ofReduceBool"):
+              if forbidden in compact:
+                  raise SystemExit(f"FORBIDDEN_AXIOM={forbidden}")
+          blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+          if len(blocks) != 7:
+              raise SystemExit(f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED=7")
+          parsed = []
+          for body in blocks:
+              names = {item for item in body.split(",") if item}
+              if not names.issubset(allowed):
+                  raise SystemExit(f"AXIOM_SET={sorted(names)}")
+              parsed.append(sorted(names))
+          Path("evidence/axioms.json").write_text(
+              json.dumps(parsed, sort_keys=True, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+          printf 'FINAL_STATUS=PASS\n' | tee evidence/FINAL_STATUS
+          sums="$(mktemp)"
+          find evidence -maxdepth 1 -type f ! -name SHA256SUMS -print0 | \
+            sort -z | xargs -0 sha256sum > "$sums"
+          mv "$sums" evidence/SHA256SUMS
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
+            --numeric-owner -cf - evidence | gzip -n > \
+              cmp99-finite-grid-aliasing-evidence.tar.gz
+          sha256sum cmp99-finite-grid-aliasing-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+
+      - name: Upload durable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmp99-finite-grid-aliasing-${{ env.SOURCE_SHA }}
+          path: |
+            evidence
+            cmp99-finite-grid-aliasing-evidence.tar.gz
+          if-no-files-found: error
+          retention-days: 14
