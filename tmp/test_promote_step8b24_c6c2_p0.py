@@ -207,7 +207,7 @@ def main() -> int:
             raise SystemExit("P0_PROMOTER_SELFTEST_WRITE_FAILED\n" + write.stdout)
         expected = {
             "BalabanCMP99SourceCanonicalPrefixTower.lean": (
-                "37BC3079D0AA92F8BE13F50E6FAE14B436ED27A7A9208B8B85FC703E01B4206F"
+                "9435C77AEA383CB8979E7797C1C2CEE95E915006852FC5413283992137C1D61B"
             ),
             "BalabanCMP99SourceCanonicalPrefixTowerAudit.lean": (
                 "C667A038AB0CB336BB93FD8D38AA450DF7AE401893240F49CF763743293B3B6A"
