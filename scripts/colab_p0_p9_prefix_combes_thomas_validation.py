@@ -111,7 +111,24 @@ AXIOM_COUNTS = {
 if set(AXIOM_COUNTS) != {path for path in paths if path.endswith("Audit.lean")}:
     raise RuntimeError("P0_P9_AXIOM_SCOPE_MISMATCH")
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v1"
+# The scratch chain imports these tracked project modules directly.  The
+# Mathlib cache does not materialize local ``YangMills`` oleans, so a fresh
+# clone must build this exact prerequisite frontier before invoking ``lean``
+# on P0.  This is infrastructure only: none of these targets is a P0--P9
+# conclusion, and SOURCE_SHA plus the 39 mathematical blobs remain unchanged.
+PROJECT_PREREQUISITES = [
+    "YangMills.RG.BalabanCMP99SourceRetainedGeneratedTerminalBridge",
+    "YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance",
+    "YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary",
+    "YangMills.RG.FinitePiLpTypedKernelReindexAlgebra",
+    "YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary",
+    "YangMills.RG.BalabanCMP99SourceGeneratedRegionalFinePartition",
+    "YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition",
+    "YangMills.RG.BalabanCMP99SourceGeneratedCombesThomas",
+    "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
+]
+
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -129,6 +146,11 @@ runner.QUEUE = [
     (
         "p0_p9_static_selftest",
         ["python3", "tmp/test_p0_p9_diagnostic.py"],
+        None,
+    ),
+    (
+        "p0_p9_materialize_project_prerequisites",
+        ["lake", "build", *PROJECT_PREREQUISITES],
         None,
     ),
 ]
