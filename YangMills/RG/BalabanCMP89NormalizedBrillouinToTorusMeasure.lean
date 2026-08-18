@@ -102,8 +102,10 @@ theorem measurePreserving_cmp89PhysicalBrillouinToUnitAddCircle :
   have htranslate := measurePreserving_add_left
     (volume : Measure UnitAddCircle) ((1 / 2 : ℝ) : UnitAddCircle)
   have h := htranslate.comp (hneg.comp (hquot'.comp hscale))
-  simpa [cmp89PhysicalBrillouinToUnitAddCircle, sub_eq_add_neg,
-    Function.comp_def, one_div, mul_inv_rev, mul_assoc] using h
+  convert h using 1 <;>
+    simp only [cmp89PhysicalBrillouinToUnitAddCircle, sub_eq_add_neg,
+      Function.comp_def, one_div, mul_inv_rev] <;>
+    try (funext x; congr 1; ring)
 
 /-- Four-dimensional physical Brillouin coordinate mapped coordinatewise to
 the unit torus. -/
@@ -136,12 +138,9 @@ theorem cmp89Measure_pi_const_smul
     Measure.pi (fun _ : iota => c • mu) =
       c ^ Fintype.card iota • Measure.pi (fun _ : iota => mu) := by
   apply Measure.pi_eq
-  intro s hs
-  rw [Measure.smul_apply (c ^ Fintype.card iota)
-      (Measure.pi fun _ : iota => mu) (MeasurableSet.univ_pi hs),
-    Measure.pi_pi]
-  simp_rw [Measure.smul_apply c mu (hs _)]
-  rw [Finset.prod_mul_distrib, Finset.prod_const]
+  intro s _
+  simp [Measure.pi_pi, Measure.smul_apply, ENNReal.smul_def,
+    Finset.prod_mul_distrib]
 
 /-- The product of the four normalized one-coordinate measures is literally
 the source normalization times the repository's translated Brillouin
