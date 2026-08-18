@@ -90,7 +90,7 @@ theorem reproMeasurePiConstSmul
     Measure.pi (fun _ : ι => (c : ENNReal) • mu) =
       (c : ENNReal) ^ Fintype.card ι •
         Measure.pi (fun _ : ι => mu) := by
-  letI : ∀ _ : ι, SigmaFinite ((c : ENNReal) • mu) := fun _ =>
+  letI : SigmaFinite ((c : ENNReal) • mu) :=
     Eq.mp
       (congrArg (fun nu : Measure α => SigmaFinite nu)
         (ENNReal.smul_def c mu))

@@ -140,7 +140,7 @@ theorem cmp89Measure_pi_const_smul
     Measure.pi (fun _ : iota => (c : ENNReal) • mu) =
       (c : ENNReal) ^ Fintype.card iota •
         Measure.pi (fun _ : iota => mu) := by
-  letI : ∀ _ : iota, SigmaFinite ((c : ENNReal) • mu) := fun _ =>
+  letI : SigmaFinite ((c : ENNReal) • mu) :=
     Eq.mp
       (congrArg (fun nu : Measure α => SigmaFinite nu)
         (ENNReal.smul_def c mu))
