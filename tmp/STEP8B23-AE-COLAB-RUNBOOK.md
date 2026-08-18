@@ -6,15 +6,16 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `5317e1b051c503217cc1044abae0d323a89cd36b`.
-- Scope: 36 Git blobs, 18 ordered focal/audit bricks, 124 independently
-  declared axiom headers.  Unit F is absent.
+  `a3d149b481205ec22e3b7771bffcdb143179d2ec`.
+- Scope: 36 mathematical Git blobs, one Mathlib-only coefficient reproducer,
+  18 ordered focal/audit bricks, and 124 independently declared axiom
+  headers.  Unit F is absent.
 - Runner checkpoint:
-  `5f9dad379d0e91b6b96f2184d65a32f9ab8a0c4d`.
+  `af5f97561bcbd0148bb9cfcb84ae6b50d934c31a`.
 - Runner Git-blob SHA-256:
-  `101EA30F28A7CEE3F7040C101B1FA0D1DEBCFA88B3A148F19FF0432E25C0A3F6`.
+  `DD009E8F011B9B96F135B66B60C37830B40AB3CAA4F5A74599A0CD5797D04965`.
 - Launcher notebook SHA-256:
-  `550A685D1BF116C7F569E5CA0C4E4763D20F2635B295183C99F95A2A8EAA5255`.
+  `A1BCAB9EA6A1F1F5F387619BE200EDFA0A384F4EE929764A9C37706013F639F2`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -77,15 +78,29 @@ evidence/archive SHA-256 values are respectively
 and
 `824ADF76C44CB17DB557DD35CACC7C82F862C9BE0650361FC7547300C2BD24DE`.
 
+V8 verified the first three focal/audit pairs; in particular the source
+Fourier normalization passed after 1227.573 seconds and its four-readout
+audit passed.  The fourth focal then stopped after 145.075 seconds at the
+literal normalization between the fourth power of the real Haar coefficient
+and the complex coefficient `(2*pi)^(-4)`.  V9 exposes that coefficient
+identity separately, rewrites the real scalar action by
+`Complex.real_smul`, and runs the exact equality first as a Mathlib-only
+reproducer.  No public statement, measure, physical constant or hypothesis
+changes.  The retained V8 evidence/archive SHA-256 values are respectively
+`C62222745BCBA7B20DCF81C5F34A3772B0A742BC6C888430452A2839B49B72AC`
+and
+`0D8B6F8E6405B14EBAEA3E471021E9931DF3053ED05AC27D33E9477913C4A516`.
+
 ## Execution contract
 
 1. Use Colab Pro+ CPU/high-RAM, never GPU and never Windows Lean/Lake.
 2. Open the one-cell launcher at its raw Git checkpoint.  Reject runner hash
    drift before executing downloaded code.
 3. The runner clones the exact source checkpoint without credentials, checks
-   all 36 source blobs, toolchain and Mathlib pins, and refuses drift.
-4. Execute the 18 focal/audit pairs in the frozen dependency order and stop on
-   the first nonzero child exit.
+   all 36 mathematical source blobs plus the one reproducer, toolchain and
+   Mathlib pins, and refuses drift.
+4. Execute the coefficient reproducer, then the 18 focal/audit pairs in the
+   frozen dependency order, and stop on the first nonzero child exit.
 5. Require exactly 124 axiom headers and reject `sorryAx`, `ofReduceBool` or
    any axiom outside `{propext, Classical.choice, Quot.sound}`.
 6. Preserve every child's complete combined output as a hash-checked stage
