@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "a6646c47335c465e07ce1b7a8348c48182c778c0"
+SOURCE_SHA = "509571c6bb48de63133d26b65d18d9994024eb36"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -49,15 +49,19 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "22a32340cacc6ca490565ce77d0a4cabf14e450641beb9e4ed5bf9ca60c09939"
+    "7928fc43b124bae521b000d8cec14fde5c0bf8b65a82196a3daf910ac6943cb6"
 )
 P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
 P2B_REPRO_SHA256 = (
-    "6b0b71190cf629a3bac9e1d2f8ffe24c0ffcf157573bcbcaa5c6d8507d25764e"
+    "eb383078580605d6d3be28700c6c65e6de8738cc969b5e5269de9fb4982dcf7c"
 )
 P3_REPRO_PATH = "tmp/P3BlockGaussianAlgebra.repro.lean"
 P3_REPRO_SHA256 = (
-    "80594766949878a6f1f96ec039b7d107c30075918c145b489b2e5eeda5f68533"
+    "520bbeca32622084706e4aee6b35adaea1b4f0c3f40077da9fbca4a9ad4bd38a"
+)
+P3_TYPED_REPRO_PATH = "tmp/P3TypedSchurAveraging.repro.lean"
+P3_TYPED_REPRO_SHA256 = (
+    "0500e7925c646d0810ea184684c421c17aee0732877c5f371420e6f9f6baad32"
 )
 
 
@@ -136,6 +140,7 @@ if len(paths) != 39 or list(source_blobs) != paths:
     raise RuntimeError(f"P0_P9_TRANSPORT_SCOPE_MISMATCH={len(paths)}/{len(source_blobs)}")
 source_blobs[P2B_REPRO_PATH] = P2B_REPRO_SHA256
 source_blobs[P3_REPRO_PATH] = P3_REPRO_SHA256
+source_blobs[P3_TYPED_REPRO_PATH] = P3_TYPED_REPRO_SHA256
 
 # These counts are an independent audit contract, not values inferred from
 # the source files at runtime.  A missing or extra readout therefore fails.
@@ -183,7 +188,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v27"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v28"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -266,6 +271,11 @@ runner.QUEUE = [
     (
         "p0_p9_p3_algebra_repro",
         ["lake", "env", "lean", P3_REPRO_PATH],
+        None,
+    ),
+    (
+        "p0_p9_p3_typed_averaging_repro",
+        ["lake", "env", "lean", P3_TYPED_REPRO_PATH],
         None,
     ),
     (
