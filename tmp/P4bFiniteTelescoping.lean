@@ -14,7 +14,7 @@ is not compiler evidence and is not imported by the tracked tree.
 
 namespace YangMills.RG
 
-open scoped BigOperators RealInnerProductSpace
+open scoped BigOperators Matrix.Norms.L2Operator RealInnerProductSpace
 
 noncomputable section
 

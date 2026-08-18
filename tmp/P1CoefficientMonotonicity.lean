@@ -15,6 +15,8 @@ namespace YangMills.RG
 
 noncomputable section
 
+open scoped Matrix.Norms.L2Operator
+
 variable {d M : ℕ} [NeZero d] [NeZero M]
 
 /-- Adjacent-depth monotonicity of the generated Poincare energy ledger. -/

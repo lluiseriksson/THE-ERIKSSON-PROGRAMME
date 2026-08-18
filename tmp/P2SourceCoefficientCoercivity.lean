@@ -19,7 +19,7 @@ coefficient.
 
 namespace YangMills.RG
 
-open scoped RealInnerProductSpace
+open scoped Matrix.Norms.L2Operator RealInnerProductSpace
 
 noncomputable section
 

@@ -14,7 +14,7 @@ evidence and is not imported by the tracked tree.
 
 namespace YangMills.RG
 
-open scoped RealInnerProductSpace
+open scoped Matrix.Norms.L2Operator RealInnerProductSpace
 
 noncomputable section
 

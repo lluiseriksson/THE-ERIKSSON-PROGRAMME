@@ -14,6 +14,8 @@ namespace YangMills.RG
 
 noncomputable section
 
+open scoped Matrix.Norms.L2Operator
+
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
