@@ -5,13 +5,13 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A4:
-  `5dfe850dfa41ec3e8eb276f3e6f8f3f4abec043f`.  This PRE-VALIDATION commit
+- Source checkpoint A5:
+  `6710f53d4bc94a1e8d18203e80688f6db1e84b54`.  This PRE-VALIDATION commit
   contains the exact 39-file chain and its fail-closed static gates.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `876AB6449973FDECE0249A37336FF87A69506C9D385B46306AD8C0B36677C86B`
+  `DF050DC2D598915690825847DAB93C7AE54875A708EE34F2364E9C0D09984D0F`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -20,18 +20,18 @@ intermediate-brick validation.  It is not compiler evidence.
   `D778C56620FD562985F6C0D2539D74B52104BFD30EE697138BD8453A8972C849`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C5:
-  `cdcea59907f4e3b63a3519a0e4889546d4d1b992`; runner Git-blob SHA-256
-  `675F33283AD6CA5DD7A59894466B8FF997ECAAC65270526385D26ACBBDF3B27A`.
-  It supersedes C4 after P0 and its audit passed and the first real P1
-  elaboration exposed three local proof/parser defects.
+- Runner checkpoint C6:
+  `7631d9f218dd50d998c5a172a204e0e419187fb3`; runner Git-blob SHA-256
+  `779F81A78E3FEFB6C82E07AB0240762C06B82C3E7215158AB1586B1D5DC6D2F3`.
+  It supersedes C5 after the repaired P1 reached a single missing imported
+  declaration; A5 derives that base positivity locally instead.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C5 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C6 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
@@ -95,6 +95,21 @@ SHA-256
 the remote structured evidence and archive hashes were respectively
 `25091BE69E1EFB898CF4CEA3A4321858B1FFE334150D91B7E12868B9A4FEF7AB`, and
 `A460DC52C9A2E463E9F1A917F3214237383A6058C9108246E4F569DE0E393F52`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C5 materialized the prerequisite frontier successfully (`8562` jobs,
+exit `0`, `3393.793` seconds), then verified P0 and its ten-readout audit
+(`7.521` and `13.566` seconds, both exit `0`; only `propext`,
+`Classical.choice`, and `Quot.sound`).  The repaired P1 stopped at one missing
+imported declaration, `cmp99SourcePoincareEnergyCoeff_pos_succ`, at line 122;
+classification: **FAIL-P1-IMPORT-FRONTIER**.  A5 copies no theorem and adds no
+dependency: it derives the same depth-one positivity locally from the literal
+coefficient definition and already imported nonnegativity lemmas.  The
+executed notebook was preserved with SHA-256
+`B3D0BF293B3CFBBCB85C09D6E990F2DE7DDA989704BFB83A7A5A93F610CE3760`;
+the structured evidence and archive hashes were respectively
+`3419080CABF56D527A42637CB42F45402A0342D23450FB3D9667A919324AB8B0`, and
+`166184DACF09769655D236A4D57CCB00E911612BB3787CB673DD3B664453F190`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
