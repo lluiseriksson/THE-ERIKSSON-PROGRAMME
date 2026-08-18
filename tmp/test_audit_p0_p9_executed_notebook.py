@@ -28,8 +28,8 @@ def transcript() -> str:
         f"RUNNER_REV={audit.RUNNER_REV}",
         "RUNTIME=CPU RAM_GIB=50.99",
         f"HEAD is now at {audit.SOURCE_SHA[:9]}",
-        "LEAN_OVERLAY_TEXT_OK files=40",
-        "LEAN_IMPORT_PREFIX_OK files=40",
+        "LEAN_OVERLAY_TEXT_OK files=42",
+        "LEAN_IMPORT_PREFIX_OK files=42",
     ]
     audit_stages = audit.expected_audit_stages()
     pure_pending = True
