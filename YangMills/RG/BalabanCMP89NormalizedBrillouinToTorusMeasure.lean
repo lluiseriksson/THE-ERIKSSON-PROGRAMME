@@ -12,6 +12,7 @@ field is asserted here.
 
 import Mathlib.Analysis.Fourier.AddCircleMulti
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic
+import Mathlib.MeasureTheory.Measure.Haar.Unique
 import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound
 import YangMills.RG.BalabanCMP89CenteredTorusFourierPhase
 
@@ -102,7 +103,7 @@ theorem measurePreserving_cmp89PhysicalBrillouinToUnitAddCircle :
     (volume : Measure UnitAddCircle) ((1 / 2 : ℝ) : UnitAddCircle)
   have h := htranslate.comp (hneg.comp (hquot'.comp hscale))
   simpa [cmp89PhysicalBrillouinToUnitAddCircle, sub_eq_add_neg,
-    Function.comp_def, mul_inv_rev] using h
+    Function.comp_def, one_div, mul_inv_rev, mul_assoc] using h
 
 /-- Four-dimensional physical Brillouin coordinate mapped coordinatewise to
 the unit torus. -/
@@ -136,9 +137,10 @@ theorem cmp89Measure_pi_const_smul
       c ^ Fintype.card iota • Measure.pi (fun _ : iota => mu) := by
   apply Measure.pi_eq
   intro s hs
-  rw [Measure.smul_apply _ (MeasurableSet.univ_pi hs),
+  rw [Measure.smul_apply (c ^ Fintype.card iota)
+      (Measure.pi fun _ : iota => mu) (MeasurableSet.univ_pi hs),
     Measure.pi_pi]
-  simp_rw [Measure.smul_apply _ (hs _)]
+  simp_rw [Measure.smul_apply c mu (hs _)]
   rw [Finset.prod_mul_distrib, Finset.prod_const]
 
 /-- The product of the four normalized one-coordinate measures is literally
@@ -199,7 +201,6 @@ theorem integral_unitAddTorus_eq_cmp89NormalizedBrillouin
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
       have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
       rw [ENNReal.toReal_ofReal hc, inv_pow, Complex.real_smul]
-      norm_cast
 
 end
 

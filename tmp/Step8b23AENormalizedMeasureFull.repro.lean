@@ -1,5 +1,6 @@
 import Mathlib.Analysis.Fourier.AddCircleMulti
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic
+import Mathlib.MeasureTheory.Measure.Haar.Unique
 
 open MeasureTheory
 
@@ -77,7 +78,7 @@ example :
     (volume : Measure UnitAddCircle) ((1 / 2 : ℝ) : UnitAddCircle)
   have h := htranslate.comp (hneg.comp (hquot'.comp hscale))
   simpa [reproPhysicalBrillouinToCircle, sub_eq_add_neg,
-    Function.comp_def, mul_inv_rev] using h
+    Function.comp_def, one_div, mul_inv_rev, mul_assoc] using h
 
 theorem reproMeasurePiConstSmul
     {ι α : Type*} [Fintype ι] [MeasurableSpace α]
@@ -86,9 +87,10 @@ theorem reproMeasurePiConstSmul
       c ^ Fintype.card ι • Measure.pi (fun _ : ι => mu) := by
   apply Measure.pi_eq
   intro s hs
-  rw [Measure.smul_apply _ (MeasurableSet.univ_pi hs),
+  rw [Measure.smul_apply (c ^ Fintype.card ι)
+      (Measure.pi fun _ : ι => mu) (MeasurableSet.univ_pi hs),
     Measure.pi_pi]
-  simp_rw [Measure.smul_apply _ (hs _)]
+  simp_rw [Measure.smul_apply c mu (hs _)]
   rw [Finset.prod_mul_distrib, Finset.prod_const]
 
 example (I : ℂ) :
@@ -96,6 +98,5 @@ example (I : ℂ) :
       (((2 * Real.pi) ^ 4)⁻¹ : ℝ) * I := by
   have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
   rw [ENNReal.toReal_ofReal hc, inv_pow, Complex.real_smul]
-  norm_cast
 
 end
