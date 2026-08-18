@@ -5,14 +5,14 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A15:
-  `71511a770a40b4092dbd2500ca3cfc9c20c1d551`.  This PRE-VALIDATION commit
+- Source checkpoint A16:
+  `c537ea3babcc1770570f9a131e11e8f11d6806ba`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `257ADF091B89B2D644FD1F08D9CF7229BCCCD95432CA3A3E8F9F542894CBB655`
+  `7DC25B62AC67F3C6C55866B3BF32D70C55C964CCC0C13DAFFE07B7DCAFFF72BD`
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P9 source SHA-256:
@@ -20,17 +20,19 @@ intermediate-brick validation.  It is not compiler evidence.
 - P9 audit SHA-256:
   `EA3489E333FE66999EEBE1B949B157D07F93023D5F5A7B09FED558663EFDE37E`
 - Static validator SHA-256:
-  `21563A63F65007B0D6F196F054E8CB8AE31CB4E1686A5A4C2E47BF7D4447978D`
+  `A1139CFED4574E34FC80F25CE43640E4F9D4A868A15300D87C5C5C5CC0F28A34`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C18:
-  `a23d94144ab2e7086f11930d74d0af85dfae65ea`; runner Git-blob SHA-256
-  `177ACDC8EAA3D1F5434BE6DF5C2B1A065D867AE06894D5624D1BC70287CA3742`.
-  It supersedes C17 instrumentally after C17 verified P0--P2b and stopped at
-  P2c but retained only the digest of the first failing child.  C18 preserves
+- Runner checkpoint C19:
+  `36ba21f54844079971994fc0b3e67bcd19e8597c`; runner Git-blob SHA-256
+  `93E72530731986C234BE2421CD0270DBDD16E486665A56D5A72EADCAEB319981`.
+  It supersedes C18 after C18 retained the exact P2c failure: three local
+  abbreviations were referenced outside the theorem-statement `let` scope.
+  A16 recreates those exact abbreviations inside the proof without changing
+  the equality, hypotheses or constants.  C19 preserves
   every child's complete combined output as a hash-checked stage log inside
   the evidence archive and requests its browser download before runtime
-  release.  The immutable mathematical source remains A15; no theorem
+  release.  The immutable mathematical source is A16; no theorem
   statement, hypothesis, axiom contract, target or prerequisite is changed.
 
 ## Runtime contract
@@ -38,7 +40,7 @@ intermediate-brick validation.  It is not compiler evidence.
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C18 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C19 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
