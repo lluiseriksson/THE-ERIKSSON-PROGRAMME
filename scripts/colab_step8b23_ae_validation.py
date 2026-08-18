@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v10"
-runner.SOURCE_SHA = 'a2dffa40e62d94353c97bbc3aa42295c161f1c88'
+runner.RUNNER_REV = "step8b23-ae-v11"
+runner.SOURCE_SHA = '08bc9ad8dfb64ad2898d71fed4e1bad414bd2441'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -81,7 +81,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean': '9d11c7bbb58eb52901cf7be95a0f469832a45e8a0fc04dc812e27a4ae021451e',
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean': 'f9efec45f5856ccc8a97ea5f0240e43c929a495122e58600d19e5a09cfabd643',
     'tmp/Step8b23AENormalizedMeasureCoeff.repro.lean': 'a77d77600322140c6fa45134b3a3b1c974cea5fba8be2b60b7b069505d2f6403',
-    'tmp/Step8b23AENormalizedMeasureFull.repro.lean': '6be0a6a3db553a9744414f44ccb8043c3c1325bd4c1fb1e7cf022b35c70a2376',
+    'tmp/Step8b23AENormalizedMeasureFull.repro.lean': '48c82da2d6d9de16d19efff64ad5ffc12383157cbe02943463f42f93cb380cb5',
 }
 
 
