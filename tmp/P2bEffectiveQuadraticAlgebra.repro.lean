@@ -88,6 +88,7 @@ theorem reproSchurFineField_euler
   simpa only [smul_add, smul_smul, mul_comm, mul_left_comm, mul_assoc] using
     congrArg (fun x : H => bCount • x) hpoint
 
+set_option linter.unusedVariables false in
 theorem repro_completedSquare
     {H F : Type*}
     [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]

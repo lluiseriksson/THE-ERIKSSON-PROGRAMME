@@ -104,6 +104,7 @@ theorem scratch_cmp85SchurFineField_euler
 /-- Exact completed-square identity for CMP85 (2.21) in counting
 coordinates.  The factor `bWeighted/bCount` is precisely the fine/coarse
 volume ratio after the physical specialization. -/
+set_option linter.unusedVariables false in
 theorem scratch_inner_cmp85EffectiveQuadratic_eq_completedSquare
     {H F : Type*}
     [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]

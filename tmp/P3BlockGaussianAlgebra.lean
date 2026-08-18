@@ -16,20 +16,21 @@ This file is not compiler evidence and is not imported by the tracked tree.
 
 namespace YangMills.RG
 
+private theorem scratch_cmp85_commute_assoc
+    {A : Type*} [Ring A] {x y : A} (hxy : x * y = y * x) (z : A) :
+    x * (y * z) = y * (x * z) := by
+  rw [← mul_assoc, hxy, mul_assoc]
+
 noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℝ A]
-
-private theorem scratch_cmp85_commute_assoc
-    {x y : A} (hxy : x * y = y * x) (z : A) :
-    x * (y * z) = y * (x * z) := by
-  rw [← mul_assoc, hxy, mul_assoc]
 
 /-- The right Schur bracket vanishes from a right inverse of
 `b·1 - b²S + cP`, the projector law, and the source recurrence.
 
 The displayed certificate deliberately keeps the algebra noncommutative;
 only scalar images from `ℝ` commute with the operator variables. -/
+set_option linter.unusedVariables false in
 theorem scratch_cmp85_rightSchurBracket_eq_zero
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
@@ -93,6 +94,7 @@ theorem scratch_cmp85_rightSchurBracket_eq_zero
 /-- Left-handed companion of `scratch_cmp85_rightSchurBracket_eq_zero`.
 It is kept separate so that the eventual physical producer must supply both
 inverse laws rather than infer one from an unrecorded symmetry argument. -/
+set_option linter.unusedVariables false in
 theorem scratch_cmp85_leftSchurBracket_eq_zero
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)

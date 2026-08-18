@@ -2,12 +2,14 @@ import Mathlib
 
 noncomputable section
 
-variable {A : Type*} [Ring A] [Algebra ℝ A]
-
-private theorem reproCommuteAssoc {x y : A} (hxy : x * y = y * x) (z : A) :
+private theorem reproCommuteAssoc
+    {A : Type*} [Ring A] {x y : A} (hxy : x * y = y * x) (z : A) :
     x * (y * z) = y * (x * z) := by
   rw [← mul_assoc, hxy, mul_assoc]
 
+variable {A : Type*} [Ring A] [Algebra ℝ A]
+
+set_option linter.unusedVariables false in
 theorem reproRightSchurBracket
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
@@ -62,6 +64,7 @@ theorem reproRightSchurBracket
               reproCommuteAssoc hBetaS, reproCommuteAssoc hBetaC]
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
+set_option linter.unusedVariables false in
 theorem reproLeftSchurBracket
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
