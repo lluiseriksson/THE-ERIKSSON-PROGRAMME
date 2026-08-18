@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v14"
-runner.SOURCE_SHA = 'b6f96216e428d44f5e335a16d31d2767fd14d726'
+runner.RUNNER_REV = "step8b23-ae-v15"
+runner.SOURCE_SHA = 'fa48f53ce4936ab022694e94435d1be609479179'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -50,7 +50,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotientAudit.lean': '8a14bdda0ea10e74d3bc59b0ee183aea477490b6acef6880dbc2dca62802bb75',
     'YangMills/RG/BalabanCMP89CenteredTorusFourierPhase.lean': 'b7c58f3becacd65e0c4a1a4387804574eb1c74d0284547c8bf8d09453da03a0c',
     'YangMills/RG/BalabanCMP89CenteredTorusFourierPhaseAudit.lean': '246ef491a33109859d1f4e0a7889eb1f209a2a363e4001717d0e0dc6e67eea88',
-    'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean': 'ef167d4e9a1625caa5b43d509fd995cae360d7f9b93844efa7d84741be08511b',
+    'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean': '158748a4061dbc56452f2c795918bf864de92d4434408deee5b82d487d10f030',
     'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasureAudit.lean': '35db023192efabc07380ebf0299eb1c07245be4e16e201e14e11ea5f201b38e8',
     'YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphy.lean': '95f3666c7d00e2e80dcad94b863b35c352cf9162e809acf9851078498b38173f',
     'YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphyAudit.lean': '2510acfc6f38f7c45ee669d93f58795214a6725ccbe9fe9e77dbf52fb5711cec',
@@ -81,7 +81,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean': '9d11c7bbb58eb52901cf7be95a0f469832a45e8a0fc04dc812e27a4ae021451e',
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean': 'f9efec45f5856ccc8a97ea5f0240e43c929a495122e58600d19e5a09cfabd643',
     'tmp/Step8b23AENormalizedMeasureCoeff.repro.lean': 'a77d77600322140c6fa45134b3a3b1c974cea5fba8be2b60b7b069505d2f6403',
-    'tmp/Step8b23AENormalizedMeasureFull.repro.lean': '98d3822b4cd71468cdc0c0258225d5ea202903af142f7819528663a3222ee7aa',
+    'tmp/Step8b23AENormalizedMeasureFull.repro.lean': 'edea29ee9db4e8b818ab9342aaeab5e38b8471974a22821b9dd248a79fd37346',
 }
 
 
