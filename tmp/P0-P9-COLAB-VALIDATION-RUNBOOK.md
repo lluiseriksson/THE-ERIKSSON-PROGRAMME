@@ -5,16 +5,16 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A11:
-  `480137954910aeb99ad9e37ecec9cce23c2d3eb8`.  This PRE-VALIDATION commit
+- Source checkpoint A12:
+  `61c80e68995bb387b287a4b8c99a9137f236e1b6`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `C7DC3E1113888DE9ECAE59DB297FC89B7D6F5D79863890DE59CC95FBA9A57CE3`
+  `E6131898C5DC6494F3ED6BA9246BAF712A36C66737F61F447E781C6ADA30B808`
 - P2b algebra reproducer Git-blob SHA-256:
-  `10126363D103CC8141BD82ABC928C9B19C6586272A79A2AF40602FE0B5FA6D8E`
+  `F6A494E1093D408BDA69F7DA0D9BBA20A16C5930FDACB7E47A0192E5AF501091`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -23,20 +23,20 @@ intermediate-brick validation.  It is not compiler evidence.
   `C044D7D5948311D20ED76163B2500F597461118D6C2E8D4CB8EB6F5E7604E77C`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C13:
-  `37181f142cca2bbb8514e907cba10ed7d7a15165`; runner Git-blob SHA-256
-  `05E6D5DE73AB1241167A5A5FDAEEDFAF41C71E88CCDF9A0086FE9A83FF764D96`.
-  It supersedes C12 after the textual guard caught an unclosed section in the
-  new reproducer before project materialization.  A11 closes only that section;
-  the exact three proof shapes, theorem statements, hypotheses, complete/empty
-  axiom headers and prerequisite split remain unchanged.
+- Runner checkpoint C14:
+  `506b955f68a114f2ad7b83cc2e06834ee94adba0`; runner Git-blob SHA-256
+  `8631E547BDDEB6AB9644A5A8292594CBBE1A313EC9C0C0CBAB346F8109CF31F8`.
+  It supersedes C13 after the minimal reproducer verified symmetry and Euler
+  and reduced P2b to one redundant directed inner-product rewrite.  A12 removes
+  only that rewrite and its two measured unused simp arguments; theorem
+  statements, hypotheses, axiom contracts and prerequisite split are unchanged.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C13 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C14 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
@@ -224,6 +224,20 @@ one-file delta.  The executed notebook was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `AFE6963785F0A3639E6C099C18C7899F6FA70EE2619510FA407704FAD73CBD8C`, and
 `54A01F8E201685009E9C6AB5D97BA8728D45A1E40AF4A554188C6EA69BDED04E`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C13 verified A11, both textual gates, the exact Mathlib pin and the
+static source contract.  Its Mathlib-only reproducer ran in `18.550` seconds:
+the symmetry and Euler proofs compiled, and the completed-square proof stopped
+on one redundant `inner_sub_left` rewrite after the target had already exposed
+only right-hand subtractions.  No YangMills prerequisite was materialized.
+Classification: **FAIL-P2B-MINIMAL-REPRO**; the mathematical scope is reduced
+to one generic normalization and P2b--P9 remain PRE-VALIDATION.  The executed
+notebook was preserved with SHA-256
+`4D6B86ECDF73261A1DFB1425230C25F2F457A30DABF4D51022C065728DDA3D53`;
+the structured evidence and archive hashes were respectively
+`3A0F021933ACAB9F815C314F7779560CFE999439D848F82825A1B2D20A04074B`, and
+`859FCE0F24F074DD213E64290943588B33FD812C8EEE5F922A3207005B30041A`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
