@@ -185,9 +185,13 @@ theorem integral_unitAddTorus_eq_cmp89NormalizedBrillouin
       rw [cmp89NormalizedBrillouinProductMeasure_eq,
         MeasureTheory.integral_smul_measure]
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
-      have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
-      simp [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc,
-        smul_eq_mul, inv_pow]
+      have hc : 0 ≤ Real.pi⁻¹ * (2 : ℝ)⁻¹ := by positivity
+      have hcoeff :
+          (Real.pi⁻¹ * (2 : ℝ)⁻¹) ^ 4 = ((2 * Real.pi) ^ 4)⁻¹ := by
+        field_simp [Real.pi_ne_zero]
+      rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, hcoeff,
+        Complex.real_smul]
+      norm_cast
 
 end
 
