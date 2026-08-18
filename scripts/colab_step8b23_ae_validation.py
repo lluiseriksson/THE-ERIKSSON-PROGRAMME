@@ -36,15 +36,15 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v2"
-runner.SOURCE_SHA = '393be82998cd34c455c886827e21ac2c9f7229e9'
+runner.RUNNER_REV = "step8b23-ae-v3"
+runner.SOURCE_SHA = '36a0c79082c69735e4e4a76d4a50c20fe6e7cf7a'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-step8b23-ae-paths.txt")
 
 runner.SOURCE_BLOBS = {
-    'YangMills/RG/BalabanCMP89CenteredBrillouinAffineSlice.lean': 'f9ad58df751206118a080298feb2c79e9af8b208d3fa801266d3bfe3d6ac903a',
+    'YangMills/RG/BalabanCMP89CenteredBrillouinAffineSlice.lean': '54fa7a75a58b0e57ebfd4aedaf07acc959c0fabb3c04b0d0a9046d8dc0043a9f',
     'YangMills/RG/BalabanCMP89CenteredBrillouinAffineSliceAudit.lean': '0bb147baf82707e0de48a3ce888b968c005d9584b9bae6d14a5d9cac012a23c2',
     'YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotient.lean': '7c3697b646c1f5e4f2f590fcf3159b6535cf3a2ac1bb16854f157706d2c4cc79',
     'YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotientAudit.lean': '8a14bdda0ea10e74d3bc59b0ee183aea477490b6acef6880dbc2dca62802bb75',
