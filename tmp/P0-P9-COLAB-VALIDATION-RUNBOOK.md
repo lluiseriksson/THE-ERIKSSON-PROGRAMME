@@ -5,16 +5,19 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A18:
-  `670fce295690861fe06a14b6540e2286d987aada`.  This PRE-VALIDATION commit
-  contains the exact 39-file chain, its fail-closed static gates, and one
-  Mathlib-only P2b algebra reproducer executed before project materialization.
+- Source checkpoint A19:
+  `1cf99ddf2ca04e6fd4fa82b74d254c7ddebadae8`.  This PRE-VALIDATION commit
+  contains the exact 39-file chain, its fail-closed static gates, and two
+  Mathlib-only P2b/P3 algebra reproducers executed before project
+  materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `BDA19EA3F8490E1065E2AA5BCFD731E62BA905AB5C0B5C445E6E7649E74EA4B6`
+  `16D26CDA82D19666FF78D0AB3BF4DE4D6A4157E3F6565A5AFC7A87F157B2AE06`
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
+- P3 algebra reproducer Git-blob SHA-256:
+  `8BD0EE8E98D3188EEE45F6835A8C25F63215B3824F09D892762F76D39BD2B9E9`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -23,15 +26,25 @@ intermediate-brick validation.  It is not compiler evidence.
   `6DA079C6034AEED1091492B756C21D577C957E111F8A8D8CC528CC3F4DACEA09`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C22:
-  `759e6fca5c0cca4f1ac2b5ac20b51ee80c48113d`; runner Git-blob SHA-256
-  `4AD657815E56189F8EDF9AF908F3C8350DF57CDF9D97E302F1FC9DF44BD52882`.
-  It supersedes C21, which passed P0--P2c, their audits, and P3 scalar
-  recurrence plus its audit, then stopped at P3 block Gaussian algebra.  Its
-  two noncommutative polynomial identities still hid the central scalar maps
-  behind local abbreviations.  A18 unfolds exactly those three abbreviations
-  before `noncomm_ring`; statements, hypotheses, constants and the two-sided
-  inverse contract are unchanged.  C21 produced structured evidence SHA-256
+- Runner checkpoint C23:
+  `540530846f8aa17f158886319f3d014c78290811`; runner Git-blob SHA-256
+  `1FAAD57B925A976895B013350E57AF9ABD68F0E6B3CF873CC808CF8A7B014961`.
+  It supersedes C22, which passed P0--P2c, their audits, and P3 scalar
+  recurrence plus its audit, then stopped after 9.486 seconds at P3 block
+  Gaussian algebra.  The universal simplification rule supplied as
+  `noncomm_ring [Algebra.commutes]` recursively instantiated until Lean's
+  default maximum recursion depth.  A19 replaces that universal rule by the
+  finite list of scalar/operator commutations used by the two identities and
+  adds an exact Mathlib-only P3 reproducer before project materialization.
+  Statements, hypotheses, constants and the two-sided inverse contract are
+  unchanged.  C22 produced structured evidence SHA-256
+  `BB52410BF3C420B44F483948258341FA3EE2F18FF954DA9CF8F109C0ACEBDDA4`
+  and archive SHA-256
+  `F1ABBB15143CCB38F29EBD86C8EE7C23789832FA0F89A25E89BDDC560E368C2`.
+  C22 had superseded C21, which passed the same prefix and then measured that
+  the two noncommutative polynomial identities still hid the central scalar
+  maps behind local abbreviations.  A18 unfolded exactly those three
+  abbreviations before `noncomm_ring`; C21 produced structured evidence SHA-256
   `0877B6236223C1E42ECF040C66A63BD97E1F642B0CE29F3C47947B4653367DD1`
   and archive SHA-256
   `B68B757EF54094075C72E658F5861AACE8994F325085EE7308CC730419A4B793`.
@@ -57,15 +70,15 @@ intermediate-brick validation.  It is not compiler evidence.
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-  downloads runner checkpoint C21 over raw HTTPS and rejects any hash drift.
+  downloads runner checkpoint C23 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
-   P2b reproducer before elaboration.
+   P2b and P3 reproducers before elaboration.
 4. Run `python scripts/check_lean_overlay_text.py --paths-from
    tmp/P0-P9-SCRATCH-PATHS.txt`, `python tmp/audit_p0_p9_diagnostic.py`, and
    `python tmp/test_p0_p9_diagnostic.py`.
-5. Execute the P2b Mathlib-only reproducer.  Only if it exits `0`, materialize
+5. Execute both Mathlib-only reproducers.  Only if both exit `0`, materialize
    the exact four-target P0--P5
    prerequisite frontier.  Immediately before P7, materialize the remaining
    five direct-import targets.  Together these are the same exact nine-target
