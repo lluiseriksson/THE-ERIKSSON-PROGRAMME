@@ -2,7 +2,8 @@
 """Audit a diagnostic Step 8b.23 Units A--E Colab archive.
 
 This composes the generic retained-stage-log checks with an independent
-Git-object reconstruction of the 36 source blobs and the 36-stage queue.
+Git-object reconstruction of the 36 source blobs, two reproducers and the
+38-stage queue.
 """
 
 from __future__ import annotations
@@ -17,8 +18,8 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_SHA = "a3d149b481205ec22e3b7771bffcdb143179d2ec"
-RUNNER_REV = "step8b23-ae-v9"
+SOURCE_SHA = "13aa164c9b868c57b6615b54f595b98c36652995"
+RUNNER_REV = "step8b23-ae-v20"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 EVIDENCE_ROOT = "hrpoly-step8b23-ae-evidence"
 
@@ -36,7 +37,7 @@ generator = runpy.run_path(
 )
 BRICKS: tuple[tuple[str, int], ...] = generator["BRICKS"]
 SOURCE_PATHS: list[str] = generator["source_paths"]()
-REPRO_PATH: str = generator["REPRO_PATH"]
+REPROS: tuple[tuple[str, str], ...] = generator["REPROS"]
 
 
 def git_blob(path: str) -> bytes:
@@ -61,12 +62,12 @@ def git_blob(path: str) -> bytes:
 def expected_blobs() -> dict[str, str]:
     return {
         path: hashlib.sha256(git_blob(path)).hexdigest()
-        for path in SOURCE_PATHS + [REPRO_PATH]
+        for path in SOURCE_PATHS + [path for _, path in REPROS]
     }
 
 
 def expected_queue() -> list[str]:
-    stages: list[str] = ["00_normalized_measure_coefficient_repro"]
+    stages: list[str] = [stage for stage, _ in REPROS]
     for index, (module, _) in enumerate(BRICKS, start=1):
         slug = module.removeprefix("Balaban").lower()
         stages.extend((f"{index:02d}_{slug}_focal", f"{index:02d}_{slug}_audit"))
@@ -84,9 +85,16 @@ def audit(path: Path) -> str:
     if measured_blobs != wanted_blobs:
         raise ValueError("source blob map differs from independent Git objects")
     records = evidence["records"]
+    repro_stages = {stage for stage, _ in REPROS}
     measured_queue = [
         row["stage"] for row in records
-        if isinstance(row, dict) and re.fullmatch(r"[0-9]{2}_.+_(?:focal|audit)", row.get("stage", ""))
+        if isinstance(row, dict)
+        and (
+            row.get("stage", "") in repro_stages
+            or re.fullmatch(
+                r"[0-9]{2}_.+_(?:focal|audit)", row.get("stage", "")
+            )
+        )
     ]
     wanted_queue = expected_queue()
     if measured_queue != wanted_queue[:len(measured_queue)]:
