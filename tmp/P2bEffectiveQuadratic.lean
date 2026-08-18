@@ -54,10 +54,6 @@ theorem scratch_cmp85EffectiveQuadratic_isSymmetric
         ContinuousLinearMap.adjoint_inner_left Q _ _
   intro x y
   unfold scratch_cmp85EffectiveQuadratic
-  simp only [ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
-    ContinuousLinearMap.id_apply, ContinuousLinearMap.comp_apply,
-    inner_sub_left, inner_sub_right, inner_smul_left, inner_smul_right,
-    conj_trivial]
   rw [hmiddle]
 
 /-- The fine field selected by one coarse test field in the Schur
@@ -87,7 +83,8 @@ theorem scratch_cmp85SchurFineField_euler
         (eta - Q (scratch_cmp85SchurFineField Q G bCount eta)) := by
   have hpoint := congrArg
     (fun A : H →L[ℝ] H => A (Q.adjoint eta)) hKG
-  rw [ContinuousLinearMap.comp_apply, ContinuousLinearMap.id_apply] at hpoint
+  change cmp99SourceGaugePrecision D Q bCount (G (Q.adjoint eta)) =
+    Q.adjoint eta at hpoint
   unfold scratch_cmp85SchurFineField
   rw [map_smul, cmp99SourceGaugePrecision,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
@@ -123,12 +120,10 @@ theorem scratch_inner_cmp85EffectiveQuadratic_eq_completedSquare
         bCount * inner ℝ (Q phi) (eta - Q phi) := by
     rw [hEuler, inner_smul_right,
       ContinuousLinearMap.adjoint_inner_right]
-    simp only [conj_trivial]
-  rw [scratch_cmp85EffectiveQuadratic,
+  simp only [scratch_cmp85EffectiveQuadratic,
     ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
     ContinuousLinearMap.id_apply, ContinuousLinearMap.comp_apply,
-    inner_sub_right, inner_smul_right, inner_smul_right]
-  simp only [conj_trivial]
+    inner_sub_right, inner_smul_right, conj_trivial]
   change _ = (bWeighted / bCount) * inner ℝ phi (D phi) + _
   rw [hEnergy]
   have hQphi :
@@ -275,10 +270,10 @@ theorem scratch_inner_cmp85SourceGeneratedEffectiveQuadratic_nonneg
     scratch_cmp85SourcePrefixCountingCoefficient_pos T ha hspacing r
   have hDnonneg : ∀ phi, 0 ≤ inner ℝ phi (D phi) := by
     intro phi
-    rw [D, scratch_inner_cmp85BareMassPrecision,
-      inner_cmp99ActiveRegionSourceCovariantLaplacian]
-    exact add_nonneg (sq_nonneg _)
-      (mul_nonneg (sq_nonneg mass) (sq_nonneg ‖phi‖))
+    simpa only [D, scratch_inner_cmp85BareMassPrecision,
+      inner_cmp99ActiveRegionSourceCovariantLaplacian] using
+      add_nonneg (sq_nonneg _)
+        (mul_nonneg (sq_nonneg mass) (sq_nonneg ‖phi‖))
   have hKG : (cmp99SourceGaugePrecision D Q bCount).comp G =
       ContinuousLinearMap.id ℝ _ := by
     simpa only [D, Q, G, bCount, T,
