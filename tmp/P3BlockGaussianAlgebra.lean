@@ -69,8 +69,9 @@ theorem scratch_cmp85_rightSchurBracket_eq_zero
         B * R - Beta * P * R + Beta * C0 * (P * P - P) * C +
           (Beta * (B + C0) - B * C0) * P * C := by
             dsimp [E, R]
-            noncomm_ring [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
+            simp only [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
               hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
+            noncomm_ring
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
 /-- Left-handed companion of `scratch_cmp85_rightSchurBracket_eq_zero`.
@@ -120,8 +121,9 @@ theorem scratch_cmp85_leftSchurBracket_eq_zero
         B * R - Beta * R * P + Beta * C0 * C * (P * P - P) +
           (Beta * (B + C0) - B * C0) * C * P := by
             dsimp [E, R]
-            noncomm_ring [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
+            simp only [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
               hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
+            noncomm_ring
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
 end
