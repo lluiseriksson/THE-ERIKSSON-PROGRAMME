@@ -20,20 +20,21 @@ intermediate-brick validation.  It is not compiler evidence.
   `39F39068AB500097DF7384D2FECFB429EE3496B78E14459BA96C06C4F7AE6B88`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C9:
-  `3e02faa375eb8c29ad5f65831221ce6c8b27596b`; runner Git-blob SHA-256
-  `BFD7A4FB412E362D99DD344015BC26487503EF8390EC13B58332A92F1E7E6692`.
-  It supersedes C8 after P2 exposed one remaining scalar-power normalization
-  goal.  A8 directs the rewrite to the intended exponent only; C9 splits
-  prerequisite materialization at the P7 boundary without changing the
-  mathematical queue, statements, or hypotheses.
+- Runner checkpoint C10:
+  `aad1baadaeb99748f3c23c25034a3d052bdfdbb9`; runner Git-blob SHA-256
+  `E986A1BB7198E0491DE6A784766BF0E009BAA621D98774D944FCF2EB82809394`.
+  It supersedes C9 after P2 source and its Lean audit both exited `0`, while
+  the old transcript parser counted only nonempty axiom lists.  C10 counts
+  both Lean output forms (`depends on axioms: [...]` and `does not depend on
+  any axioms`) against the same independently declared total; no expected
+  readout is removed.  The P0--P5/P7--P9 prerequisite split is unchanged.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C9 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C10 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
@@ -158,6 +159,23 @@ executed notebook was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `F198C375CA6CCD5BDD418A4D4188DF72E6DCE7CF524F4B79088E8EEE9727EE07`, and
 `917043F54D7088213DB5AACA0BC33B02A85B4E82E4188F71C1D3A1EF37E299B0`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C9 split prerequisite materialization and built the four-target
+P0--P5 frontier successfully (`8539` jobs, exit `0`, `1450.986` seconds).
+P0, P1 and P2 sources all elaborated with exit `0`; their audits also exited
+`0` and printed only the allowed axiom trio, with one P2 declaration printing
+the strictly stronger empty-axiom form.  The runner then classified the P2
+audit as failed because its inherited parser counted the 25 nonempty lists
+but not that one empty list against the expected total of 26.  Classification:
+**BLOCKED-AXIOM-PARSER** after successful Lean elaboration; the complete
+P0--P9 chain remains PRE-VALIDATION.  C10 repairs only this instrumentation
+defect and keeps the expected total at 26.  The executed notebook was
+preserved with SHA-256
+`335F67D4EE4A967BE87DE0882EC26DEA7C4BA2784E6C66077AEF464900CFF065`;
+the structured evidence and archive hashes were respectively
+`80957B9923677EA2CD9E481E05B97842C2C5B47CAE4D39261BA14375146E9837`, and
+`15429C1654BC03D3BDA75A95D250E8FC4BF8F72A2650D1663EA0E92CFB482BC6`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully

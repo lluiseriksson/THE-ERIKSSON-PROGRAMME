@@ -19,13 +19,35 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
 SOURCE_SHA = "90388ee4f3bb5908d0e8c80e254c4c3beb6a5411"
-RUNNER_SHA256 = "bfd7a4fb412e362d99dd344015bc26487503ef8390ec13b58332a92f1e7e6692"
+RUNNER_SHA256 = "e986a1bb7198e0491de6a784766bf0e009baa621d98774d944fcf2eb82809394"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
 MANIFEST_SHA256 = "4fcb87c0003288ebe981656aa4fbd2f779264ab3e4c57d3490d69dccd213cc7a"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v9"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v10"
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
+AUDIT_AXIOM_COUNTS = {
+    "tmp/P0CanonicalPrefixTowerAudit.lean": 10,
+    "tmp/P1CoefficientMonotonicityAudit.lean": 8,
+    "tmp/P2SourceCoefficientCoercivityAudit.lean": 26,
+    "tmp/P2bEffectiveQuadraticAudit.lean": 10,
+    "tmp/P2cCoarseCovarianceAudit.lean": 24,
+    "tmp/P3ScalarRecurrenceAudit.lean": 9,
+    "tmp/P3BlockGaussianAlgebraAudit.lean": 2,
+    "tmp/P3TypedSchurBracketsAudit.lean": 8,
+    "tmp/P3TypedGreenInverseAudit.lean": 8,
+    "tmp/P3SourceStepCoisometryAudit.lean": 2,
+    "tmp/P3PhysicalScalarSpecializationAudit.lean": 4,
+    "tmp/P3PhysicalOperatorDictionaryAudit.lean": 3,
+    "tmp/P3PhysicalGreenRecurrenceAudit.lean": 3,
+    "tmp/P3PhysicalGreenRecurrenceAggregateAudit.lean": 18,
+    "tmp/P4aPhysicalBaseAudit.lean": 12,
+    "tmp/P4bFiniteTelescopingAudit.lean": 14,
+    "tmp/P5PhysicalGreenScaleDictionaryAudit.lean": 13,
+    "tmp/P7SourceSeparatedAmbientPrefixPrecisionAudit.lean": 8,
+    "tmp/P8SourceSeparatedRegionalPrefixGreenAudit.lean": 5,
+    "tmp/P9SourceSeparatedPrefixCombesThomasAudit.lean": 12,
+}
 REQUIRED_CORE_STAGES = {
     "download_toolchain",
     "extract_toolchain",
@@ -91,6 +113,35 @@ def expected_queue_stages() -> set[str]:
     return result
 
 
+def expected_audit_stages() -> dict[str, int]:
+    payload = PATHS.read_bytes()
+    if sha256(payload) != PATHS_SHA256:
+        raise ValueError("local immutable path-list digest drift")
+    paths = [line for line in payload.decode("utf-8-sig").splitlines() if line]
+    if set(AUDIT_AXIOM_COUNTS) != {path for path in paths if path.endswith("Audit.lean")}:
+        raise ValueError("local immutable audit scope drift")
+    result: dict[str, int] = {}
+    for index, relative in enumerate(paths, start=1):
+        if relative not in AUDIT_AXIOM_COUNTS:
+            continue
+        stem = Path(relative).stem
+        suffix = re.sub(r"[^A-Za-z0-9]+", "_", stem).lower()
+        result[f"p0_p9_{index:02d}_{suffix}"] = AUDIT_AXIOM_COUNTS[relative]
+    if sum(result.values()) != EXPECTED_AXIOM_BLOCKS:
+        raise ValueError("independent axiom-header total drift")
+    return result
+
+
+def stage_output(text: str, stage: str) -> str:
+    command = f"STAGE={stage} CMD="
+    result = f"STAGE={stage} EXIT="
+    if text.count(command) != 1 or text.count(result) != 1:
+        raise ValueError(f"stage delimiter count drift: {stage}")
+    start = text.index("\n", text.index(command)) + 1
+    end = text.index(result, start)
+    return text[start:end]
+
+
 def require_once(text: str, literal: str) -> None:
     count = text.count(literal)
     if count != 1:
@@ -151,16 +202,23 @@ def audit(path: Path) -> str:
     if failed:
         raise ValueError(f"nonzero stage results: {failed}")
 
-    compact = re.sub(r"\s+", "", text)
-    blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
-    if len(blocks) != EXPECTED_AXIOM_BLOCKS:
-        raise ValueError(
-            f"axiom block count={len(blocks)}, expected={EXPECTED_AXIOM_BLOCKS}"
-        )
-    for index, body in enumerate(blocks):
-        names = {name for name in body.split(",") if name}
-        if not names.issubset(ALLOWED_AXIOMS):
-            raise ValueError(f"axiom block {index}={sorted(names)}")
+    axiom_headers = 0
+    pure_headers = 0
+    for stage, expected_headers in expected_audit_stages().items():
+        compact = re.sub(r"\s+", "", stage_output(text, stage))
+        blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+        pure = compact.count("doesnotdependonanyaxioms")
+        if len(blocks) + pure != expected_headers:
+            raise ValueError(
+                f"axiom header count for {stage}={len(blocks) + pure}, "
+                f"expected={expected_headers}, nonempty={len(blocks)}, empty={pure}"
+            )
+        for index, body in enumerate(blocks):
+            names = {name for name in body.split(",") if name}
+            if not names.issubset(ALLOWED_AXIOMS):
+                raise ValueError(f"axiom block {stage}/{index}={sorted(names)}")
+        axiom_headers += len(blocks) + pure
+        pure_headers += pure
 
     evidence = re.findall(r"EVIDENCE_SHA256=([0-9a-f]{64})", text)
     archive = re.findall(r"EVIDENCE_ARCHIVE_SHA256=([0-9a-f]{64})", text)
@@ -171,7 +229,8 @@ def audit(path: Path) -> str:
     return (
         "P0_P9_EXECUTED_NOTEBOOK_OK "
         f"source_sha={SOURCE_SHA} stages={len(stages)} queue_stages=39 "
-        f"axiom_blocks={len(blocks)} evidence_sha256={evidence[0]} "
+        f"axiom_headers={axiom_headers} empty_axiom_headers={pure_headers} "
+        f"evidence_sha256={evidence[0]} "
         f"archive_sha256={archive[0]} transcript_sha256={transcript_hash} "
         f"notebook_sha256={notebook_hash}"
     )
