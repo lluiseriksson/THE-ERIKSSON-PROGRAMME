@@ -21,7 +21,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "3af413563b2f71c250e9e7bbd4972efca436ad55"
+SOURCE_SHA = "5dfe850dfa41ec3e8eb276f3e6f8f3f4abec043f"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -44,7 +44,7 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "71da54fe12b77f7288a33c4edb6130733b288cc0b2ba3e3a3d081e0469e4f3f9"
+    "876ab6449973fdece0249a37336ff87a69506c9d385b46306ad8c0b36677c86b"
 )
 
 
@@ -128,7 +128,7 @@ PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v4"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v5"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
