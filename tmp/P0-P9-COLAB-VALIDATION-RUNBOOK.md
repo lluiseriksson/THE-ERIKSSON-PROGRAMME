@@ -20,24 +20,28 @@ intermediate-brick validation.  It is not compiler evidence.
   `C60B7C62CCA3BC6CCFE3F5B8939F8903A7DBEA7DE213BD5C6084A9194D38D84D`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C:
-  `29139afded5f10653deef05b632d61f571433eb7`; runner Git-blob SHA-256
-  `06C63E966F8EAAD1A2CA80DE565BC643E25CC19F3E4F64B20BABBA017E82C03F`.
+- Runner checkpoint C2:
+  `6a870ce09d760b32b8c76eec923c2ca27bbca7fd`; runner Git-blob SHA-256
+  `1C607BAC9523D60CAFC53770F933997FCD7C4559E15EC7E05B69FD88D714EDDA`.
+  It supersedes checkpoint C
+  `29139afded5f10653deef05b632d61f571433eb7`, which omitted the local
+  `YangMills` prerequisite frontier from a fresh clone.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C2 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
 4. Run `python scripts/check_lean_overlay_text.py --paths-from
    tmp/P0-P9-SCRATCH-PATHS.txt`, `python tmp/audit_p0_p9_diagnostic.py`, and
    `python tmp/test_p0_p9_diagnostic.py`.
-5. Materialize the pinned dependency cache.  No manifest or toolchain drift is
-   accepted.
+5. Materialize the pinned dependency cache and then the exact nine-target
+   tracked-project prerequisite frontier derived from direct `YangMills.*`
+   imports in the 39-file list.  No manifest or toolchain drift is accepted.
 6. Execute `lake env lean PATH` for every nonblank path in
    `tmp/P0-P9-SCRATCH-PATHS.txt`, in listed order, stop on the first nonzero
    exit code.  Do not jump directly to P7–P9: P0–P5 are semantic gates.
@@ -47,6 +51,22 @@ intermediate-brick validation.  It is not compiler evidence.
    Quot.sound}`.
 8. Package transcript, hashes, environment and result JSON.  Disconnect and
    delete the runtime immediately after PASS or first FAIL.
+
+## Superseded instrumentation attempt
+
+The first execution of runner C reached all transport, pin, cache and static
+gates, then stopped before mathematical elaboration at
+`p0_p9_01_p0canonicalprefixtower`: Lean reported `unknown module prefix
+'YangMills'`.  Classification: **BLOCKED-PREREQUISITE-MATERIALIZATION**;
+P0--P9 remain not compiler-verified.  The runtime was released and the cell
+was not re-executed.
+
+- structured evidence SHA-256:
+  `20BF41FFB98EE633FBE72577CCDF37DB9ECBC1E517773AAAC8B4976B97BDF6B9`
+- Colab evidence archive SHA-256:
+  `C6C20A3F331BF2C98C640F55253107FF6198EAB3184F241B7455DF20FFCB1C6E`
+- downloaded executed-notebook SHA-256:
+  `A0E1706AE914654DC47EDC9A213602F4BAEB77D38BD7B6B366391DC733369232`
 
 ## Honest verdict boundary
 
