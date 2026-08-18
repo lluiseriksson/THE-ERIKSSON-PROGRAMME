@@ -18,12 +18,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
-SOURCE_SHA = "5ff91e5054683acd863d01adfa552e8f0df3e6d9"
-RUNNER_SHA256 = "e2c84f7f39204a9ff90283cfaded2017e9921bc36deb2ceb167bff4df0e0fa7b"
+SOURCE_SHA = "71511a770a40b4092dbd2500ca3cfc9c20c1d551"
+RUNNER_SHA256 = "feb858d7f990b5f29c0a64aa3dcd62011fe494b93fffe930a5daf4179de4e2ba"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
-MANIFEST_SHA256 = "dd4f418edbea7ae695e5e41287ff93bca05e15a4a6fea3528862bc6952ac9a9a"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v16"
+MANIFEST_SHA256 = "257adf091b89b2d644fd1f08d9cf7229bcccd95432ca3a3e8f9f542894cbb655"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v17"
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 AUDIT_AXIOM_COUNTS = {

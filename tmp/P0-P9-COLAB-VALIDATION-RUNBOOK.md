@@ -5,14 +5,14 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A14:
-  `5ff91e5054683acd863d01adfa552e8f0df3e6d9`.  This PRE-VALIDATION commit
+- Source checkpoint A15:
+  `71511a770a40b4092dbd2500ca3cfc9c20c1d551`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `DD4F418EDBEA7AE695E5E41287FF93BCA05E15A4A6FEA3528862BC6952AC9A9A`
+  `257ADF091B89B2D644FD1F08D9CF7229BCCCD95432CA3A3E8F9F542894CBB655`
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P9 source SHA-256:
@@ -23,21 +23,21 @@ intermediate-brick validation.  It is not compiler evidence.
   `21563A63F65007B0D6F196F054E8CB8AE31CB4E1686A5A4C2E47BF7D4447978D`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C16:
-  `86927280b504e24a9005352f4eb010ca7602190e`; runner Git-blob SHA-256
-  `E2C84F7F39204A9FF90283CFADED2017E9921BC36DEB2CEB167BFF4DF0E0FA7B`.
-  It supersedes C15 after the minimal reproducer showed that the real-inner
-  symmetry was necessary but the left subtraction and scalar actions still
-  remained opaque to `ring`.  A14 expands exactly those generic inner-product
-  operations before field normalization; no theorem statement, hypothesis,
-  axiom contract or prerequisite is changed.
+- Runner checkpoint C17:
+  `33180094de7882e87d513f8713b7bf508fb475c3`; runner Git-blob SHA-256
+  `FEB858D7F990B5F29C0A64AA3DCD62011FE494B93FFFE930A5DAF4179DE4E2BA`.
+  It supersedes C16 after A14 verified P0--P2b and exposed the first P2c
+  elaboration boundary.  A15 repairs only the six measured proof/interface
+  defects and applies the already-measured `Fin` compatibility update to the
+  downstream P3--P4 files; no theorem statement, physical hypothesis, axiom
+  contract or prerequisite is changed.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C16 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C17 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
@@ -265,6 +265,30 @@ was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `FCC915EBAD4A7D037947183874D6A559BD8F2202B33386C5F89D59FE2D470CD9`, and
 `6E4E4C2267A53ECCA33A3BCB4A5FD52CBFA1E8E9F4656CD7FC2178EEC24FC263`.
+The runtime was released automatically and the cell was not re-executed.
+
+The first C16 connection received only `12.67` GiB of RAM and was rejected
+before checkout or Lean.  Classification: **BLOCKED-HIGH-RAM**.  The executed
+notebook was preserved with SHA-256
+`68A2509F3DB323F336B34DE4771FC79D05728D5CCA808BAD7EACD59A7B3ADF4C`;
+the structured evidence and archive hashes were respectively
+`E5A40E3E2F4652B4E169447D5F045CE4E86E3C66765283AC40DE741112E049C2`, and
+`B24C7438463CCFDE92312FA2704F911B9F50240D2FA37AE95D01F52EDC43B3CD`.
+
+Runner C16 then ran on a verified `50.99` GiB high-RAM runtime.  The minimal
+reproducer passed in `35.443` seconds, the cold `8539`-job prerequisite build
+passed, and P0, P1, P2 and P2b plus all four audits passed with only the
+allowed axiom set.  P2c stopped on six measured elaboration defects: obsolete
+`Fin` normalization names, duplicate norm instances, three uninferred scalar
+parameters, an opaque `currentPrefix` carrier equality, and a `let`-bound
+operator supplied to `rw`.  Classification: **FAIL-P2C-ELABORATION**; P2c--P9
+remain PRE-VALIDATION.  A15 repairs exactly those defects and propagates the
+same already-measured `Fin` compatibility spelling through P3--P4.  The
+executed notebook was preserved with SHA-256
+`E7C2E38C67FE788006EB754F980335BCE2C764A934654AB218924DCABC9033F9`;
+the structured evidence and archive hashes were respectively
+`8D53BE70D55154E4420B1AE699340DDF5A050EC2BC2AC63407A62A5D7ED04952`, and
+`FA44C863B879CBE028009D99B93AF072DD695B7D2C43A0EC9F65A734AB04D0A1`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
