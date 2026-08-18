@@ -6,15 +6,15 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `393be82998cd34c455c886827e21ac2c9f7229e9`.
+  `36a0c79082c69735e4e4a76d4a50c20fe6e7cf7a`.
 - Scope: 36 Git blobs, 18 ordered focal/audit bricks, 124 independently
   declared axiom headers.  Unit F is absent.
 - Runner checkpoint:
-  `735dab7248cb2cc5aebe79033b560be6a4aa33a7`.
+  `2a9f6ef3c65df9a7f065b9699bd4434e8757b539`.
 - Runner Git-blob SHA-256:
-  `A80C93C96285BDA9767D954E74E244ACACE7025EC891756725B357165E42A994`.
+  `72413CD99187EAC6472AE7AB717023749668E463BF319C0E2D0B354D326BFCB1`.
 - Launcher notebook SHA-256:
-  `4A950126D4A9981AA5F15FD5956CEC16A84D83993DBD53E7630180F8583043A4`.
+  `A353381265A578CE3F4FAABF2D68DF321DFCEFE1977574A2701A381C8131BE75`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -28,6 +28,11 @@ The v1 diagnostic is retained as a measured failure at
 action did not definitionally match complex multiplication.  V2 changes only
 that spelling and the diagnostic transport; no theorem statement, constant or
 hypothesis changed.
+
+V2 measured that merely changing the displayed target to a real scalar action
+still let simplification normalize the two scalar structures differently.  V3
+rewrites explicitly with `Complex.real_smul` before applying the generic affine
+slice theorem.  Again, the public statement and all physical data are unchanged.
 
 ## Execution contract
 
