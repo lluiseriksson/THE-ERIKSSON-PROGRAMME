@@ -429,6 +429,11 @@ theorem scratch_cmp85SourceGeneratedCoarsePrecision_eq_weighted
         cStepWeighted •
           ((scratch_cmp85SourceStepWeightedAdjoint T k.1).comp
             (T.nextAverage k.1)) := by
+  let T := scratch_cmp85SourceGeneratedPrefixTower hd hM Omega0 depth
+    spacing epsilon background0 chain fineSmall
+  let r := k.currentPrefix
+  let G := scratch_cmp85SourceGeneratedPrefixGreen hd hM Omega0 depth
+    hspacing ha mass background0 chain fineSmall hsmall r
   dsimp only
   unfold scratch_cmp85SourceGeneratedCoarsePrecision
   unfold scratch_cmp85CoarsePrecision
