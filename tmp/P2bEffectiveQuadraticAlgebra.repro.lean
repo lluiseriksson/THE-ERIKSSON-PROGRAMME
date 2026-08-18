@@ -120,6 +120,7 @@ theorem repro_completedSquare
   simp only [inner_smul_left, conj_trivial]
   rw [← real_inner_self_eq_norm_sq, inner_sub_right, inner_sub_right]
   field_simp [hbCount]
+  rw [real_inner_comm eta (Q (G (Q.adjoint eta)))]
   ring
 
 end
