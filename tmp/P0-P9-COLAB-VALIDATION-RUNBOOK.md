@@ -5,38 +5,39 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A13:
-  `9e282d108274b5795dc62e49766baa5111245ef2`.  This PRE-VALIDATION commit
+- Source checkpoint A14:
+  `5ff91e5054683acd863d01adfa552e8f0df3e6d9`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `FB27566BC121DCA91FD081B15FC459DED8B904DD1B97FFF8FDCB88E8772C3B03`
+  `DD4F418EDBEA7AE695E5E41287FF93BCA05E15A4A6FEA3528862BC6952AC9A9A`
 - P2b algebra reproducer Git-blob SHA-256:
-  `E6B19646CE0C42979796C3B984E3BCB7DFCE62F38AFF7F9CA8A0FBA023D11B58`
+  `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
   `EA3489E333FE66999EEBE1B949B157D07F93023D5F5A7B09FED558663EFDE37E`
 - Static validator SHA-256:
-  `C044D7D5948311D20ED76163B2500F597461118D6C2E8D4CB8EB6F5E7604E77C`
+  `21563A63F65007B0D6F196F054E8CB8AE31CB4E1686A5A4C2E47BF7D4447978D`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C15:
-  `d25bb3d2c35ee1bef9fa4082e89e0afbb3a50e7d`; runner Git-blob SHA-256
-  `02A3B561EE0E91D04A37758432390F7862ED2390B47913B315118026FB87B47C`.
-  It supersedes C14 after the minimal reproducer exposed one remaining atom:
-  `inner eta q` versus `inner q eta`.  A13 cites `real_inner_comm` for that
-  exact pair before `ring`; no theorem statement, hypothesis, axiom contract
-  or prerequisite is changed.
+- Runner checkpoint C16:
+  `86927280b504e24a9005352f4eb010ca7602190e`; runner Git-blob SHA-256
+  `E2C84F7F39204A9FF90283CFADED2017E9921BC36DEB2CEB167BFF4DF0E0FA7B`.
+  It supersedes C15 after the minimal reproducer showed that the real-inner
+  symmetry was necessary but the left subtraction and scalar actions still
+  remained opaque to `ring`.  A14 expands exactly those generic inner-product
+  operations before field normalization; no theorem statement, hypothesis,
+  axiom contract or prerequisite is changed.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C15 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C16 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
@@ -251,6 +252,19 @@ notebook was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `0B70B7C472DC146D9A235ADA3ED4810585FA6D8B98B9426FA2BCE584BF54330E`, and
 `F03A33872EA3F2B2E774ADF9EF5EE821A9C1CE34917225D12B959CA254C9F995`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C15 verified A13 and reached the minimal reproducer in `14.677`
+seconds.  The explicit real-inner symmetry compiled, but the final `ring`
+goal retained the left subtraction and scalar actions inside four inner
+products.  No YangMills prerequisite was materialized.  Classification:
+**FAIL-P2B-INNER-LINEARITY-NORMALIZATION**; A14 expands only those generic
+inner-product operations before field normalization.  The executed notebook
+was preserved with SHA-256
+`5C3AC8FDBADF2B692D637EEB2ADBE6C65E3C1B5F5034C3963A192DAEC86C98FB`;
+the structured evidence and archive hashes were respectively
+`FCC915EBAD4A7D037947183874D6A559BD8F2202B33386C5F89D59FE2D470CD9`, and
+`6E4E4C2267A53ECCA33A3BCB4A5FD52CBFA1E8E9F4656CD7FC2178EEC24FC263`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
