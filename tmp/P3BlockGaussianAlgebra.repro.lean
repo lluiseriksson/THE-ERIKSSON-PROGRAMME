@@ -1,31 +1,10 @@
-import tmp.P3ScalarRecurrence
-
-/-!
-PRE-VALIDATION SCRATCH: source present under `tmp`; no `.olean` has been
-materialized and no declaration in this file has been compiler-verified.
-
-Scratch-only noncommutative algebra gate for CMP85 (2.41)--(2.42).
-
-The two identities below expose every relation used by the block-Gaussian
-inverse calculation.  In particular, neither the next Green operator nor the
-recurrence formula is accepted as an operator-valued hypothesis: the only
-scalar input is `beta * (b + c) = b * c`.
-
-This file is not compiler evidence and is not imported by the tracked tree.
--/
-
-namespace YangMills.RG
+import Mathlib
 
 noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℝ A]
 
-/-- The right Schur bracket vanishes from a right inverse of
-`b·1 - b²S + cP`, the projector law, and the source recurrence.
-
-The displayed certificate deliberately keeps the algebra noncommutative;
-only scalar images from `ℝ` commute with the operator variables. -/
-theorem scratch_cmp85_rightSchurBracket_eq_zero
+theorem reproRightSchurBracket
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
     (hC :
@@ -73,10 +52,7 @@ theorem scratch_cmp85_rightSchurBracket_eq_zero
               hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
-/-- Left-handed companion of `scratch_cmp85_rightSchurBracket_eq_zero`.
-It is kept separate so that the eventual physical producer must supply both
-inverse laws rather than infer one from an unrecorded symmetry argument. -/
-theorem scratch_cmp85_leftSchurBracket_eq_zero
+theorem reproLeftSchurBracket
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
     (hC :
@@ -125,5 +101,3 @@ theorem scratch_cmp85_leftSchurBracket_eq_zero
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
 end
-
-end YangMills.RG
