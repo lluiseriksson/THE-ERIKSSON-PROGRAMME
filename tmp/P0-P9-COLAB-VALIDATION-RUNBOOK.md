@@ -5,8 +5,8 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A10:
-  `346b6bf1da333c745fa59e9f5972847e0e31a336`.  This PRE-VALIDATION commit
+- Source checkpoint A11:
+  `480137954910aeb99ad9e37ecec9cce23c2d3eb8`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
@@ -14,7 +14,7 @@ intermediate-brick validation.  It is not compiler evidence.
 - Manifest SHA-256:
   `C7DC3E1113888DE9ECAE59DB297FC89B7D6F5D79863890DE59CC95FBA9A57CE3`
 - P2b algebra reproducer Git-blob SHA-256:
-  `4E1974E97B56C319C5C4BCECE1234B5150B3BC0504F061951AB9F21630A0A17B`
+  `10126363D103CC8141BD82ABC928C9B19C6586272A79A2AF40602FE0B5FA6D8E`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -23,20 +23,20 @@ intermediate-brick validation.  It is not compiler evidence.
   `C044D7D5948311D20ED76163B2500F597461118D6C2E8D4CB8EB6F5E7604E77C`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C12:
-  `0fe1ffe8ab6145f9853716ccd42bca30139b4cbe`; runner Git-blob SHA-256
-  `70ED10CD11D1ED5AB214FA89C250E86CABA7DB435E372B7B87E537C760BE0E49`.
-  It supersedes C11 after A9 reduced P2b to three generic continuous-linear-map
-  algebra errors.  A10 isolates those exact proof shapes in a Mathlib-only
-  reproducer that runs before the 8539-job project frontier.  Complete/empty
-  axiom headers and the P0--P5/P7--P9 prerequisite split remain enforced.
+- Runner checkpoint C13:
+  `37181f142cca2bbb8514e907cba10ed7d7a15165`; runner Git-blob SHA-256
+  `05E6D5DE73AB1241167A5A5FDAEEDFAF41C71E88CCDF9A0086FE9A83FF764D96`.
+  It supersedes C12 after the textual guard caught an unclosed section in the
+  new reproducer before project materialization.  A11 closes only that section;
+  the exact three proof shapes, theorem statements, hypotheses, complete/empty
+  axiom headers and prerequisite split remain unchanged.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C12 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C13 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
@@ -211,6 +211,19 @@ project bootstrap.  The executed notebook was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `B0E6584AFABD9D082CD601DC2AB646C7D6510F47F5A9220AA17A4F1AC5AF3406`, and
 `36A3C6174F9FD7E42BA4F684E55E35E9166603FFB177C386ED6B5A1451DA6798`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C12 verified the exact A10 transport, toolchain and all 40 blob hashes,
+then stopped in the textual overlay gate after `28.904` seconds: the new
+Mathlib-only reproducer opened a `noncomputable section` without its terminal
+`end`.  No Lean command and no project materialization ran.  Classification:
+**BLOCKED-TEXT-GUARD**; the mathematical status is unchanged.  A11 adds only
+the missing section terminator, and the same local guard now accepts the
+one-file delta.  The executed notebook was preserved with SHA-256
+`9642BFF326BB064AD0A31548E3603D2D4DFC786983CBEC5FA3AB58B03654E028`;
+the structured evidence and archive hashes were respectively
+`AFE6963785F0A3639E6C099C18C7899F6FA70EE2619510FA407704FAD73CBD8C`, and
+`54A01F8E201685009E9C6AB5D97BA8728D45A1E40AF4A554188C6EA69BDED04E`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
