@@ -6,15 +6,15 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `b02a6e7fc9c5eaf2077c75f202dc752cdf4fada6`.
+  `393be82998cd34c455c886827e21ac2c9f7229e9`.
 - Scope: 36 Git blobs, 18 ordered focal/audit bricks, 124 independently
   declared axiom headers.  Unit F is absent.
 - Runner checkpoint:
-  `855e1481767860875bd85b016a7b105df59e4884`.
+  `735dab7248cb2cc5aebe79033b560be6a4aa33a7`.
 - Runner Git-blob SHA-256:
-  `4EF81C13FC84E6977A0425C095E67EABB986BCBBB1C0155BB1DBEE9CD457F3A0`.
+  `A80C93C96285BDA9767D954E74E244ACACE7025EC891756725B357165E42A994`.
 - Launcher notebook SHA-256:
-  `6F67ACF268628D2B003E9AB3DB8188276FF33B669194CBDBD2BC45E289AA4935`.
+  `4A950126D4A9981AA5F15FD5956CEC16A84D83993DBD53E7630180F8583043A4`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -22,6 +22,12 @@ The source checkpoint is the output of the fail-closed A--E promotion writer
 at promoted-content manifest
 `C1057D840543EB2EF8024B8F90B7D9B785DF7C40D5C15582E3F4E83022F41AD0`.
 Every source/audit file retains its visible PRE-VALIDATION header.
+
+The v1 diagnostic is retained as a measured failure at
+`BalabanCMP89CenteredBrillouinAffineSlice.lean:52`: its generic real scalar
+action did not definitionally match complex multiplication.  V2 changes only
+that spelling and the diagnostic transport; no theorem statement, constant or
+hypothesis changed.
 
 ## Execution contract
 
