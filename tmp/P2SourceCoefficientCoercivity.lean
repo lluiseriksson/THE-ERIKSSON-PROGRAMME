@@ -250,8 +250,11 @@ theorem scratch_cmp85SourcePrefixCountingCoefficient_eq
   have hpow (x : ℝ) (hx : x ≠ 0) :
       x⁻¹ ^ 2 * x ^ d = x ^ (d - 2) := by
     have hd' : d = (d - 2) + 2 := by omega
-    rw [hd', pow_add]
-    field_simp [hx]
+    calc
+      x⁻¹ ^ 2 * x ^ d = x⁻¹ ^ 2 * x ^ ((d - 2) + 2) := by rw [← hd']
+      _ = x ^ (d - 2) := by
+        rw [pow_add]
+        field_simp [hx]
   calc
     scratch_cmp85SourcePrefixA (M := M) a r *
           (T.towerAt r.1).terminalSpacing⁻¹ ^ 2 *
