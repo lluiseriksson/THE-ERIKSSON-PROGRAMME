@@ -50,7 +50,7 @@ theorem scratch_cmp85RecurrenceC_eq_sourceStepWeighted
         (M : ℝ) * (T.towerAt k.currentPrefix.1).terminalSpacing := by
     rw [T.towerAt_terminalSpacing, T.towerAt_terminalSpacing]
     simp only [ScratchCMP85PositiveCoarseStep.currentPrefix,
-      Fin.succ_val, Fin.coe_castSucc]
+      Fin.val_succ, Fin.val_castSucc]
     rw [pow_succ]
     ring
   unfold scratch_cmp85RecurrenceC
@@ -69,14 +69,14 @@ theorem scratch_cmp85RecurrenceBeta_eq_sourceNextWeighted
       scratch_cmp85SourcePrefixWeightedCoefficient T a k.nextPrefix := by
   have hindex : (k.1.val - 1) + 1 = k.1.val := by omega
   have hnextIndex : k.nextPrefix.1.val - 1 = k.1.val := by
-    simp only [ScratchCMP85PositiveCoarseStep.nextPrefix, Fin.succ_val]
+    simp only [ScratchCMP85PositiveCoarseStep.nextPrefix, Fin.val_succ]
   have hterminal :
       (T.towerAt k.nextPrefix.1).terminalSpacing =
         (M : ℝ) * (T.towerAt k.currentPrefix.1).terminalSpacing := by
     rw [T.towerAt_terminalSpacing, T.towerAt_terminalSpacing]
     simp only [ScratchCMP85PositiveCoarseStep.nextPrefix,
       ScratchCMP85PositiveCoarseStep.currentPrefix,
-      Fin.succ_val, Fin.coe_castSucc]
+      Fin.val_succ, Fin.val_castSucc]
     rw [pow_succ]
     ring
   unfold scratch_cmp85RecurrenceBeta

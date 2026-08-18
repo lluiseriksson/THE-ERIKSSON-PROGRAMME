@@ -94,8 +94,7 @@ theorem scratch_cmp85SourceStepWeightedAdjoint_pairing
       (T.towerAt k.succ).terminalSpacing =
         (M : ℝ) * (T.towerAt k.castSucc).terminalSpacing := by
     rw [T.towerAt_terminalSpacing, T.towerAt_terminalSpacing]
-    simp only [Fin.succ_val, Fin.coe_castSucc]
-    rw [pow_succ]
+    simp only [Fin.val_succ, Fin.val_castSucc, pow_succ]
     ring
   rw [hspacing]
   unfold cmp99SourceSpacingPairing
@@ -127,8 +126,8 @@ theorem scratch_cmp85SourceStepWeightedTerm_eq_counting
 /-- An absorbed Poincare inequality forces a field to vanish once its two
 literal numerator terms vanish.  No coercivity constant is introduced. -/
 theorem scratch_eq_zero_of_absorbedPoincare_numerator_eq_zero
-    {E F : Type*} [NormedAddCommGroup E] [Norm E]
-    [NormedAddCommGroup F] [Norm F]
+    {E F : Type*} [NormedAddCommGroup E]
+    [NormedAddCommGroup F]
     {A B C energy : ℝ} {Q : E → F} {phi : E}
     (hPoincare : ‖phi‖ ^ 2 ≤
       (A * energy + C * ‖Q phi‖ ^ 2) / (1 - B))
@@ -263,7 +262,8 @@ theorem scratch_cmp85CoarsePrecision_eq_zero_imp
     eta = 0 := by
   let phi := scratch_cmp85SchurFineField Q G bCount eta
   have hquad := scratch_inner_cmp85CoarsePrecision_eq_completedSquare
-    D Q G Qstep hbCount.ne' hKG eta
+    D Q G Qstep (bWeighted := bWeighted) (bCount := bCount)
+      (cStepCount := cStepCount) hbCount.ne' hKG eta
   rw [heta, inner_zero_right] at hquad
   have hx0 :
       0 ≤ (bWeighted / bCount) * inner ℝ phi (D phi) :=
@@ -365,7 +365,7 @@ abbrev ScratchCMP85PositiveCoarseStep (depth : ℕ) :=
   {k : Fin depth // 0 < k.val}
 
 /-- The current positive prefix corresponding to a positive coarse step. -/
-def ScratchCMP85PositiveCoarseStep.currentPrefix
+abbrev ScratchCMP85PositiveCoarseStep.currentPrefix
     {depth : ℕ} (k : ScratchCMP85PositiveCoarseStep depth) :
     ScratchCMP85PositivePrefix depth :=
   ⟨k.1.castSucc, k.2⟩
@@ -478,7 +478,8 @@ theorem scratch_cmp85SourceGeneratedCoarsePrecision_injective
     scratch_cmp85SourceStepCountingCoefficient_pos T ha hspacing k.1
   have hDnonneg : ∀ phi, 0 ≤ inner ℝ phi (D phi) := by
     intro phi
-    rw [D, scratch_inner_cmp85BareMassPrecision,
+    dsimp only [D]
+    rw [scratch_inner_cmp85BareMassPrecision,
       inner_cmp99ActiveRegionSourceCovariantLaplacian]
     exact add_nonneg (sq_nonneg _)
       (mul_nonneg (sq_nonneg mass) (sq_nonneg ‖phi‖))

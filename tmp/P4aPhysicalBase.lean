@@ -51,7 +51,7 @@ theorem scratch_cmp85SourceFirstPrefix_Qprime_eq_step
   let k := scratch_cmp85FirstStep hdepth
   have hk0 : k.castSucc = (0 : Fin (depth + 1)) := by
     ext
-    simp only [k, scratch_cmp85FirstStep, Fin.coe_castSucc, Fin.zero_eta]
+    simp only [k, scratch_cmp85FirstStep, Fin.val_castSucc, Fin.zero_eta]
   have hQ := T.Qprime_succ k
   rw [hk0, T.towerAt_zero] at hQ
   simpa only [k, scratch_cmp85FirstPositivePrefix,
@@ -71,7 +71,7 @@ theorem scratch_cmp85SourceFirstPrefix_weightedAdjoint_eq_step
   let k := scratch_cmp85FirstStep hdepth
   have hk0 : k.castSucc = (0 : Fin (depth + 1)) := by
     ext
-    simp only [k, scratch_cmp85FirstStep, Fin.coe_castSucc, Fin.zero_eta]
+    simp only [k, scratch_cmp85FirstStep, Fin.val_castSucc, Fin.zero_eta]
   have hW := scratch_cmp85SourceWeightedAdjoint_succ T hspacing k
   rw [hk0, T.towerAt_zero] at hW
   simpa only [k, scratch_cmp85FirstPositivePrefix,
@@ -92,7 +92,7 @@ theorem scratch_cmp85SourceFirstPrefixWeightedCoefficient_eq
   unfold scratch_cmp85SourcePrefixWeightedCoefficient
   unfold scratch_cmp85SourcePrefixA
   simp only [scratch_cmp85FirstPositivePrefix, scratch_cmp85FirstStep,
-    Fin.succ_val, Nat.zero_add, Nat.add_sub_cancel,
+    Fin.val_succ, Nat.zero_add, Nat.add_sub_cancel,
     cmp99SourceMassParameter_zero]
 
 /-- The separately written literal base precision equals the generated P2a

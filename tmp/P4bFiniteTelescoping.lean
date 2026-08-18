@@ -204,8 +204,8 @@ theorem scratch_cmp85SourceGeneratedPrefixGreenAtNat_succ_eq_add
   simpa only [scratch_cmp85PositivePrefixOfNat,
     scratch_cmp85PositiveCoarseStepOfNat,
     ScratchCMP85PositiveCoarseStep.currentPrefix,
-    ScratchCMP85PositiveCoarseStep.nextPrefix, Fin.coe_castSucc,
-    Fin.succ_val] using
+    ScratchCMP85PositiveCoarseStep.nextPrefix, Fin.val_castSucc,
+    Fin.val_succ] using
       scratch_cmp85SourceGeneratedPrefixGreen_succ_eq_add_increment hd hM
         Omega0 depth hspacing ha mass background0 chain fineSmall hsmall
         (scratch_cmp85PositiveCoarseStepOfNat j hpos hlt)

@@ -52,7 +52,7 @@ theorem scratch_cmp85SourceWeightedAdjoint_succ
       next.terminalSpacing = (M : ℝ) * current.terminalSpacing := by
     rw [next, current, T.towerAt_terminalSpacing,
       T.towerAt_terminalSpacing]
-    simp only [Fin.succ_val, Fin.coe_castSucc]
+    simp only [Fin.val_succ, Fin.val_castSucc]
     rw [pow_succ]
     ring
   have hratio :
