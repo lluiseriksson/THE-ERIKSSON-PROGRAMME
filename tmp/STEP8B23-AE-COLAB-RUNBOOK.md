@@ -6,15 +6,15 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `b7f46dd81b4c0fde311f80c148e130aec943d19d`.
+  `0aa914ca4732f6fb7baa8dd6fcf45106d9dc75b5`.
 - Scope: 36 Git blobs, 18 ordered focal/audit bricks, 124 independently
   declared axiom headers.  Unit F is absent.
 - Runner checkpoint:
-  `5942ee522a92f5945bb5d7e22c6fa237edfbdd7a`.
+  `73a2fc54e89e898a520d915a1035bed896d4f8ec`.
 - Runner Git-blob SHA-256:
-  `0DCB106CF6116953F07F26BFC078DD608BDC27AE8EA70213C294C40B8B123283`.
+  `129D5F5A98B64E320A9F344263AD7B2B038C5929CED338A31656B636B2A49C19`.
 - Launcher notebook SHA-256:
-  `93B97E43F02DDFD2DF0FB38ADCE9C8A81AC51B748F439913AEE62763000B3C59`.
+  `7543C18972594957CA95272800D49348DE48C097D79A203BB3167C9D3C3AA2BB`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -38,6 +38,16 @@ V3 measured that rewriting the generic theorem directly still failed to
 specialize across the scalar-action boundary.  V4 replaces that rewrite by an
 explicit `calc` step and proves only the final affine argument identity under
 the integral.  The public statement remains unchanged.
+
+V4 verified the first focal and its two-readout audit.  The queue then stopped
+at `BalabanCMP89CenteredUnitCubeTorusQuotient`: one missing measure-theory
+import exposed the remaining mechanical API/proof-shape incompatibilities in
+that module.  V5 adds that exact import, makes the quotient-map namespace and
+coordinatewise continuity explicit, replaces obsolete update rewrites by
+their definitions, and proves the endpoint/final-replacement orientations
+directly.  It also replaces the first brick's two linter-producing tactics by
+the equivalent `ring_nf`.  No public statement, physical constant or
+hypothesis changes.
 
 ## Execution contract
 
