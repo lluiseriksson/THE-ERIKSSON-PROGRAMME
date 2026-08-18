@@ -60,6 +60,15 @@ def main() -> int:
     original_runner_blob = runner_globals["blob"]
     runner_globals["blob"] = lambda sha, path: b"import Mathlib\n"
     expect_failure(lambda: runner["generate"]("a" * 40), "MISSING_PRE_VALIDATION")
+    runner_globals["blob"] = lambda sha, path: (
+        "import Mathlib\n/-! PRE-VALIDATION: synthetic. -/\n"
+        "/-- declaration docs -/\nset_option linter.unusedTactic false in\n"
+        "theorem bad : True := by trivial\n"
+    ).encode()
+    expect_failure(
+        lambda: runner["generate"]("a" * 40),
+        "DOCSTRING_BEFORE_SCOPED_OPTION",
+    )
     runner_globals["blob"] = original_runner_blob
 
     workflow_globals["blob"] = good_blob

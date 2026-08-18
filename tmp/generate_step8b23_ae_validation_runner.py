@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 from pathlib import Path
+import re
 import subprocess
 
 
@@ -159,6 +160,12 @@ def generate(source_sha: str) -> str:
             raise SystemExit(f"MISSING_PRE_VALIDATION={path}")
         if any(token in text for token in ("sorry", "admit", "by?", "exact?")):
             raise SystemExit(f"FORBIDDEN_PLACEHOLDER={path}")
+        if re.search(
+            r"(?s)/--.*?-/\s*set_option\s+[^\n]+\s+in\s*\n\s*"
+            r"(?:set_option\s+[^\n]+\s+in\s*\n\s*)*(?:theorem|lemma)",
+            text,
+        ):
+            raise SystemExit(f"DOCSTRING_BEFORE_SCOPED_OPTION={path}")
         digests.append((path, hashlib.sha256(data).hexdigest()))
 
     repro_digests: list[tuple[str, str]] = []
@@ -167,6 +174,12 @@ def generate(source_sha: str) -> str:
         repro_text = repro_data.decode("utf-8")
         if any(token in repro_text for token in ("sorry", "admit", "by?", "exact?")):
             raise SystemExit(f"FORBIDDEN_PLACEHOLDER={repro_path}")
+        if re.search(
+            r"(?s)/--.*?-/\s*set_option\s+[^\n]+\s+in\s*\n\s*"
+            r"(?:set_option\s+[^\n]+\s+in\s*\n\s*)*(?:theorem|lemma)",
+            repro_text,
+        ):
+            raise SystemExit(f"DOCSTRING_BEFORE_SCOPED_OPTION={repro_path}")
         repro_digests.append((repro_path, hashlib.sha256(repro_data).hexdigest()))
     diagnostic_digests = digests + repro_digests
 
