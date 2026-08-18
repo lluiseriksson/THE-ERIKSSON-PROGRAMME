@@ -60,9 +60,10 @@ theorem cmp89UnitAddTorus_mFourier_neg_eq_exp_physicalPhase
           (n mu : ℂ))) := by
   rw [UnitAddTorus.mFourier]
   simp only [ContinuousMap.coe_mk, Pi.neg_apply,
-    fourier_coe_apply, div_one]
+    fourier_coe_apply]
   rw [← Complex.exp_sum]
   congr 1
+  rw [Finset.mul_sum]
   apply Finset.sum_congr rfl
   intro mu _
   unfold cmp89Eq248NegativeTwoPiTorusMomentum
