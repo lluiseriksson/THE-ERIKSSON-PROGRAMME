@@ -21,7 +21,7 @@ intermediate-brick validation.  It is not compiler evidence.
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
 - Runner checkpoint C2:
-  `6a870ce09d760b32b8c76eec923c2ca27bbca7fd`; runner Git-blob SHA-256
+  `89ddfe78cb4348cff4ea0b87a5e5344622e7c709`; runner Git-blob SHA-256
   `1C607BAC9523D60CAFC53770F933997FCD7C4559E15EC7E05B69FD88D714EDDA`.
   It supersedes checkpoint C
   `29139afded5f10653deef05b632d61f571433eb7`, which omitted the local
