@@ -47,6 +47,7 @@ theorem measurePreserving_cmp89NormalizedBrillouinScale :
       (fun x : ℝ => c⁻¹ * x) ⁻¹' Set.Ioc 0 1 = Set.Ioc 0 c := by
     rw [Set.preimage_const_mul_Ioc₀ 0 1 (inv_pos.mpr hc)]
     field_simp [hc0]
+    simp
   have hrestrict := e.measurableEmbedding.restrict_map
     (volume : Measure ℝ) (Set.Ioc 0 1)
   have hrestrict' :
@@ -75,7 +76,7 @@ theorem measurePreserving_cmp89NormalizedBrillouinScale :
 /-- Physical translated Brillouin coordinate mapped to the centered torus
 parameter `t = 1/2 - x/(2*pi)`. -/
 def cmp89PhysicalBrillouinToUnitAddCircle (x : ℝ) : UnitAddCircle :=
-  ((1 / 2 : ℝ) - (2 * Real.pi)⁻¹ * x : UnitAddCircle)
+  (((1 / 2 : ℝ) - (2 * Real.pi)⁻¹ * x : ℝ) : UnitAddCircle)
 
 /-- The normalized physical coordinate maps exactly to Haar measure.  The
 proof composes scaling, quotienting, negation and translation; none of those
@@ -86,11 +87,17 @@ theorem measurePreserving_cmp89PhysicalBrillouinToUnitAddCircle :
       (volume : Measure UnitAddCircle) := by
   have hscale := measurePreserving_cmp89NormalizedBrillouinScale
   have hquot := AddCircle.measurePreserving_mk (1 : ℝ) (0 : ℝ)
+  have hquot' :
+      MeasurePreserving
+        (fun x : ℝ => (x : UnitAddCircle))
+        (volume.restrict (Set.Ioc 0 1))
+        (volume : Measure UnitAddCircle) := by
+    simpa using hquot
   have hneg := Measure.measurePreserving_neg
     (volume : Measure UnitAddCircle)
   have htranslate := measurePreserving_add_left
     (volume : Measure UnitAddCircle) ((1 / 2 : ℝ) : UnitAddCircle)
-  have h := htranslate.comp (hneg.comp (hquot.comp hscale))
+  have h := htranslate.comp (hneg.comp (hquot'.comp hscale))
   simpa [cmp89PhysicalBrillouinToUnitAddCircle, sub_eq_add_neg,
     Function.comp_def] using h
 
@@ -121,7 +128,7 @@ scalar per coordinate.  This is the bookkeeping lemma that prevents the
 four-dimensional source normalization from being counted twice. -/
 theorem cmp89Measure_pi_const_smul
     {iota α : Type*} [Fintype iota] [MeasurableSpace α]
-    (c : ℝ≥0∞) (mu : Measure α) [SigmaFinite mu] :
+    (c : ENNReal) (mu : Measure α) [SigmaFinite mu] :
     Measure.pi (fun _ : iota => c • mu) =
       c ^ Fintype.card iota • Measure.pi (fun _ : iota => mu) := by
   apply Measure.pi_eq
@@ -141,8 +148,8 @@ theorem cmp89NormalizedBrillouinProductMeasure_eq :
         cmp89Eq249FourDimensionalBrillouinMeasure := by
   unfold cmp89OneDimensionalNormalizedBrillouinMeasure
     cmp89Eq249FourDimensionalBrillouinMeasure
-  simpa [Set.uIoc_of_le
-      (mul_nonneg (by norm_num) Real.pi_pos.le)] using
+  have htwoPi_nonneg : (0 : ℝ) ≤ 2 * Real.pi := by positivity
+  simpa [Set.uIoc_of_le htwoPi_nonneg] using
     (cmp89Measure_pi_const_smul (iota := Fin 4)
       (ENNReal.ofReal ((2 * Real.pi)⁻¹))
       (volume.restrict (Set.Ioc 0 (2 * Real.pi))))
@@ -185,11 +192,8 @@ theorem integral_unitAddTorus_eq_cmp89NormalizedBrillouin
       rw [cmp89NormalizedBrillouinProductMeasure_eq,
         MeasureTheory.integral_smul_measure]
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
-      have hc : 0 ≤ Real.pi⁻¹ * (2 : ℝ)⁻¹ := by positivity
-      have hcoeff :
-          (Real.pi⁻¹ * (2 : ℝ)⁻¹) ^ 4 = ((2 * Real.pi) ^ 4)⁻¹ := by
-        field_simp [Real.pi_ne_zero]
-      rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, hcoeff,
+      have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
+      rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
         Complex.real_smul]
       norm_cast
 
