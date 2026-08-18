@@ -6,16 +6,16 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `a2dffa40e62d94353c97bbc3aa42295c161f1c88`.
+  `08bc9ad8dfb64ad2898d71fed4e1bad414bd2441`.
 - Scope: 36 mathematical Git blobs, two Mathlib-only measure reproducers,
   18 ordered focal/audit bricks, and 124 independently declared axiom
   headers.  Unit F is absent.
 - Runner checkpoint:
-  `a6af65ac8bf27059939ef88c955838e012ce4c37`.
+  `3fb531123dc1b938212ade60cdd5c3f2c62ac075`.
 - Runner Git-blob SHA-256:
-  `7F6A8672C34CFFCBD9364484EC36CC5D02A5A1249D483587987CCE63525E9951`.
+  `232800577666333D127AC706FD00F8178AC7A9B379C0FDCF66EACA8BCCF4D409`.
 - Launcher notebook SHA-256:
-  `9B8EF83486B65D4121C8DF9BB406F8DEDBCA2298CCD1F86EA686A129D3BAA06A`.
+  `79CB60A9214E61E25A8DD21B1611278DDF32A7BE74BCF404EA094B9E4A2A1E61`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -106,6 +106,15 @@ retained V9 evidence/archive SHA-256 values are respectively
 `91C5AFC9A03EF4322E4743B730E489C9FC17051702FF4EDBED2A81742FF34DF6`
 and
 `F642B21FD83BACEB474713FF05885B4AD6ABAA1904D6123870FABC10F722FF71`.
+
+V10 stopped before Lean at the overlay text guard: the newly added full
+reproducer opened a `noncomputable section` without its final `end`.  V11
+adds only that delimiter.  The corrected reproducer passes the same local
+overlay text and import-prefix guards before publication.  The retained V10
+evidence/archive SHA-256 values are respectively
+`F5BE79241A1F24FC1A375038E8EE6D6113A5E8B1580BF4B57DCE793DF7430390`
+and
+`E6BA94CB7FBFE24E9546A2F92DEE441406E0DB96B4552C3212EAE004DCA22952`.
 
 ## Execution contract
 
