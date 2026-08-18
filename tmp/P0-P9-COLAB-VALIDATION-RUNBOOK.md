@@ -23,21 +23,22 @@ intermediate-brick validation.  It is not compiler evidence.
   `21563A63F65007B0D6F196F054E8CB8AE31CB4E1686A5A4C2E47BF7D4447978D`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C17:
-  `33180094de7882e87d513f8713b7bf508fb475c3`; runner Git-blob SHA-256
-  `FEB858D7F990B5F29C0A64AA3DCD62011FE494B93FFFE930A5DAF4179DE4E2BA`.
-  It supersedes C16 after A14 verified P0--P2b and exposed the first P2c
-  elaboration boundary.  A15 repairs only the six measured proof/interface
-  defects and applies the already-measured `Fin` compatibility update to the
-  downstream P3--P4 files; no theorem statement, physical hypothesis, axiom
-  contract or prerequisite is changed.
+- Runner checkpoint C18:
+  `a23d94144ab2e7086f11930d74d0af85dfae65ea`; runner Git-blob SHA-256
+  `177ACDC8EAA3D1F5434BE6DF5C2B1A065D867AE06894D5624D1BC70287CA3742`.
+  It supersedes C17 instrumentally after C17 verified P0--P2b and stopped at
+  P2c but retained only the digest of the first failing child.  C18 preserves
+  every child's complete combined output as a hash-checked stage log inside
+  the evidence archive and requests its browser download before runtime
+  release.  The immutable mathematical source remains A15; no theorem
+  statement, hypothesis, axiom contract, target or prerequisite is changed.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C17 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C18 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
@@ -290,6 +291,24 @@ the structured evidence and archive hashes were respectively
 `8D53BE70D55154E4420B1AE699340DDF5A050EC2BC2AC63407A62A5D7ED04952`, and
 `FA44C863B879CBE028009D99B93AF072DD695B7D2C43A0EC9F65A734AB04D0A1`.
 The runtime was released automatically and the cell was not re-executed.
+
+Runner C17 ran A15 on the same verified `50.99` GiB high-RAM class.  The P2b
+reproducer passed in `67.870` seconds, the cold prerequisite frontier passed
+in `1787.416` seconds, and P0, P1, P2 and P2b plus all four audits again exited
+`0`.  P2c was the first failing stage, with exit `1` after `15.348` seconds and
+output SHA-256
+`6B00C2D02819D4C08939D985BDCBEC078A9BA1C19D917FA926F0FBB3C4C8F38E`.
+The released runtime's archive had SHA-256
+`660D20769B324E15659F1E0045238053566CDA77084639589B3FC160BC513D15`;
+the recovered structured evidence has SHA-256
+`6208F059275288DD0F333BE7CDECA32C9A15C33A9610211A58420976F8A628F2`.
+Its recovery notebook is retained under
+`validation-evidence/p0-p9-colab-fail-p2c-a15-recovered/` with SHA-256
+`8E790BAFCEA8E7449C6B18BC1B3601356026B535BD4B0C663C2AFC63552CADE8`.
+Classification: **FAIL-P2C-ELABORATION / INCOMPLETE-DIAGNOSTIC-RETENTION**.
+The exact P2c diagnostic lines were not retained, so no mathematical source
+change is inferred from this run.  C18 fixes only that evidence-retention
+defect and reruns the same immutable A15 queue stop-on-first-error.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
 (`8562` jobs, exit `0`, `5076.172` seconds).  P0 itself then elaborated with

@@ -19,11 +19,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
 SOURCE_SHA = "71511a770a40b4092dbd2500ca3cfc9c20c1d551"
-RUNNER_SHA256 = "feb858d7f990b5f29c0a64aa3dcd62011fe494b93fffe930a5daf4179de4e2ba"
+RUNNER_SHA256 = "177acdc8eaa3d1f5434be6df5c2b1a065d867ae06894d5624d1bc70287ca3742"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
 MANIFEST_SHA256 = "257adf091b89b2d644fd1f08d9cf7229bcccd95432ca3a3e8f9f542894cbb655"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v17"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v18"
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 AUDIT_AXIOM_COUNTS = {
@@ -167,6 +167,7 @@ def audit(path: Path) -> str:
         "LEAN_OVERLAY_TEXT_OK files=40",
         "LEAN_IMPORT_PREFIX_OK files=40",
         "FINAL_STATUS=PASS",
+        "EVIDENCE_DOWNLOAD_REQUESTED=1",
         "LAUNCHER_EXIT=0",
         "LAUNCHER_RUNTIME_RELEASE_REQUESTED=1",
     ):
