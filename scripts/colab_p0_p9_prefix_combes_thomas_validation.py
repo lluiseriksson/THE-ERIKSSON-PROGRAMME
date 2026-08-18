@@ -16,8 +16,12 @@ from __future__ import annotations
 
 import hashlib
 import importlib.util
+import json
+import os
 from pathlib import Path
 import re
+import subprocess
+import time
 import urllib.request
 
 
@@ -174,7 +178,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v17"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v18"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -183,6 +187,61 @@ runner.ARCHIVE = Path(
 )
 runner.PATH_MANIFEST = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-paths.txt")
 runner.SOURCE_BLOBS = source_blobs
+
+
+def run_with_persistent_log(
+    stage: str,
+    command: list[str],
+    *,
+    cwd: Path | None = None,
+) -> str:
+    """Run one child and retain its complete combined output in evidence.
+
+    The shared runner records a digest for each child, which is sufficient for
+    a PASS but not for diagnosing a first FAIL after Colab releases its
+    runtime.  This exact wrapper keeps the shared stop-on-first-error semantics
+    while making the digest auditable against a stage log in the archive.
+    """
+    started = time.perf_counter()
+    print("STAGE=" + stage + " CMD=" + json.dumps(command), flush=True)
+    child = subprocess.run(
+        command,
+        cwd=cwd,
+        env=os.environ.copy(),
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    elapsed = time.perf_counter() - started
+    output = child.stdout
+    print(output, flush=True)
+    runner.EVIDENCE.mkdir(parents=True, exist_ok=True)
+    log_name = re.sub(r"[^A-Za-z0-9_.-]+", "_", stage) + ".log"
+    log_path = runner.EVIDENCE / log_name
+    log_path.write_text(output, encoding="utf-8")
+    output_hash = hashlib.sha256(output.encode()).hexdigest()
+    if hashlib.sha256(log_path.read_bytes()).hexdigest() != output_hash:
+        raise RuntimeError("STAGE_LOG_HASH_MISMATCH=" + stage)
+    runner.RECORDS.append(
+        {
+            "stage": stage,
+            "exit": child.returncode,
+            "seconds": elapsed,
+            "output_sha256": output_hash,
+            "log": log_name,
+        }
+    )
+    print(
+        "STAGE=" + stage + " EXIT=" + str(child.returncode)
+        + " SECONDS=%.3f" % elapsed,
+        flush=True,
+    )
+    if child.returncode != 0:
+        raise RuntimeError("FIRST_ERROR=" + stage)
+    return output
+
+
+runner.run = run_with_persistent_log
 runner.QUEUE = [
     (
         "p0_p9_static_gate",
@@ -243,4 +302,12 @@ if __name__ == "__main__":
         )
     except ImportError:
         pass
-    raise SystemExit(runner.main())
+    runner_exit = runner.main()
+    try:
+        from google.colab import files
+
+        files.download(str(runner.ARCHIVE))
+        print("EVIDENCE_DOWNLOAD_REQUESTED=1", flush=True)
+    except Exception as error:
+        print("EVIDENCE_DOWNLOAD_ERROR=" + repr(error), flush=True)
+    raise SystemExit(runner_exit)
