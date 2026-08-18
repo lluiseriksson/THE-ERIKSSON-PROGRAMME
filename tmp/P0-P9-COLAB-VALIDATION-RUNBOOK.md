@@ -5,13 +5,13 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A5:
-  `6710f53d4bc94a1e8d18203e80688f6db1e84b54`.  This PRE-VALIDATION commit
+- Source checkpoint A6:
+  `3da141555aaba1410bba10a529eda7e14ad52eca`.  This PRE-VALIDATION commit
   contains the exact 39-file chain and its fail-closed static gates.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `DF050DC2D598915690825847DAB93C7AE54875A708EE34F2364E9C0D09984D0F`
+  `F64D26DBB55D78E61961560099713CB4550EBC744F26F35E0FA9141A8CBF3048`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -20,18 +20,18 @@ intermediate-brick validation.  It is not compiler evidence.
   `D778C56620FD562985F6C0D2539D74B52104BFD30EE697138BD8453A8972C849`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C6:
-  `7631d9f218dd50d998c5a172a204e0e419187fb3`; runner Git-blob SHA-256
-  `779F81A78E3FEFB6C82E07AB0240762C06B82C3E7215158AB1586B1D5DC6D2F3`.
-  It supersedes C5 after the repaired P1 reached a single missing imported
-  declaration; A5 derives that base positivity locally instead.
+- Runner checkpoint C7:
+  `f3c4ade57b625bb8102e0878e02d31a703787f37`; runner Git-blob SHA-256
+  `4BBAD5C75774361313DA37ED487CE47B3FF56EC38CBA9BCA815B2C14722B22F2`.
+  It supersedes C6 after P1 and its audit passed and P2 exposed one
+  underconstrained local witness; A6 pins its physical coefficient type.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C6 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C7 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
@@ -110,6 +110,20 @@ executed notebook was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `3419080CABF56D527A42637CB42F45402A0342D23450FB3D9667A919324AB8B0`, and
 `166184DACF09769655D236A4D57CCB00E911612BB3787CB673DD3B664453F190`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C6 materialized the prerequisite frontier successfully (`8562` jobs,
+exit `0`, `3461.301` seconds), then verified P0 and P1 with their audits
+(`8.121`, `14.582`, `6.531`, and `10.275` seconds; all exit `0`).  P2 stopped
+at lines 443/446 because an untyped `have hA := ...` left the implicit
+`epsilon` underconstrained.  Classification: **FAIL-P2-ELABORATION**.  A6 pins
+the literal energy-coefficient proposition and supplies `epsilon` explicitly;
+the theorem statement and mathematical hypotheses are unchanged.  The
+executed notebook was preserved with SHA-256
+`BF341028FC6E0DD6A3BBE553CBE24399E397FB69328BECB8605D717D55B9D7E7`;
+the structured evidence and archive hashes were respectively
+`D39172E2C366153CF55AD38300E00BD23C3CFFBCD0E046FE1B3047954687E9F6`, and
+`9CD651791D16FDB64A6F1C542D8AE5069BA9E17190E03A0A819311F558C0AB85`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
