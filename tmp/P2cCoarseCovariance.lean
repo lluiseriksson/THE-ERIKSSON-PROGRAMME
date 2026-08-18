@@ -437,6 +437,7 @@ theorem scratch_cmp85SourceGeneratedCoarsePrecision_eq_weighted
   dsimp only
   unfold scratch_cmp85SourceGeneratedCoarsePrecision
   unfold scratch_cmp85CoarsePrecision
+  dsimp only
   rw [← scratch_cmp85SourceEffectiveQuadratic_weighted_eq_counting
     T G hspacing r]
   rw [← scratch_cmp85SourceStepWeightedTerm_eq_counting T a k.1]
