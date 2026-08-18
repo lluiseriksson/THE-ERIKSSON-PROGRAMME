@@ -22,7 +22,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "346b6bf1da333c745fa59e9f5972847e0e31a336"
+SOURCE_SHA = "480137954910aeb99ad9e37ecec9cce23c2d3eb8"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -49,7 +49,7 @@ MANIFEST_SHA256 = (
 )
 P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
 P2B_REPRO_SHA256 = (
-    "4e1974e97b56c319c5c4bcece1234b5150b3bc0504f061951ab9f21630a0a17b"
+    "10126363d103cc8141bd82abc928c9b19c6586272a79a2af40602fe0b5fa6d8e"
 )
 
 
@@ -174,7 +174,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v12"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v13"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
