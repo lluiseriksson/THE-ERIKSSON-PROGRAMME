@@ -137,8 +137,12 @@ four-dimensional source normalization from being counted twice. -/
 theorem cmp89Measure_pi_const_smul
     {iota α : Type*} [Fintype iota] [MeasurableSpace α]
     (c : NNReal) (mu : Measure α) [SigmaFinite mu] :
-    Measure.pi (fun _ : iota => c • mu) =
-      c ^ Fintype.card iota • Measure.pi (fun _ : iota => mu) := by
+    Measure.pi (fun _ : iota => (c : ENNReal) • mu) =
+      (c : ENNReal) ^ Fintype.card iota •
+        Measure.pi (fun _ : iota => mu) := by
+  letI : ∀ _ : iota, SigmaFinite ((c : ENNReal) • mu) := fun _ => by
+    rw [← ENNReal.smul_def]
+    infer_instance
   apply Measure.pi_eq
   intro s _
   simp [Measure.pi_pi, Measure.smul_apply, ENNReal.smul_def,
@@ -157,7 +161,7 @@ theorem cmp89NormalizedBrillouinProductMeasure_eq :
   have htwoPi_nonneg : (0 : ℝ) ≤ 2 * Real.pi := by positivity
   have hcoeff_nonneg : (0 : ℝ) ≤ (2 * Real.pi)⁻¹ := by positivity
   simpa [Set.uIoc_of_le htwoPi_nonneg,
-    ENNReal.ofReal_eq_coe_nnreal hcoeff_nonneg, ENNReal.smul_def] using
+    ENNReal.ofReal_eq_coe_nnreal hcoeff_nonneg] using
     (cmp89Measure_pi_const_smul (iota := Fin 4)
       (⟨(2 * Real.pi)⁻¹, hcoeff_nonneg⟩ : NNReal)
       (volume.restrict (Set.Ioc 0 (2 * Real.pi))))
