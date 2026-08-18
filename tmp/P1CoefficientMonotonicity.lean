@@ -118,8 +118,15 @@ theorem scratch_cmp99SourcePoincareEnergyCoeff_pos
     0 < cmp99SourcePoincareEnergyCoeff d M depth spacing epsilon := by
   have hbase :
       0 < cmp99SourcePoincareEnergyCoeff d M 1 spacing epsilon := by
-    simpa using
-      (cmp99SourcePoincareEnergyCoeff_pos_succ d M 0 hspacing)
+    simp only [cmp99SourcePoincareEnergyCoeff]
+    exact mul_pos cmp99OneScaleBlockPoincareConstant_pos
+      (add_pos_of_pos_of_nonneg (sq_pos_of_pos hspacing)
+        (mul_nonneg
+          (mul_nonneg (by positivity)
+            (cmp99SourceBlockAverageWeight_nonneg M d))
+          (cmp99SourcePoincareEnergyCoeff_nonneg d M 0
+            ((M : ℝ) * spacing)
+            (cmp99SourceUbarNextFineRadius d M epsilon))))
   exact hbase.trans_le
     (scratch_cmp99SourcePoincareEnergyCoeff_monotone
       (d := d) (M := M) spacing epsilon hdepth)
