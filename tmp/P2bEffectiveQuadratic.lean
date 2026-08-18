@@ -54,7 +54,14 @@ theorem scratch_cmp85EffectiveQuadratic_isSymmetric
         ContinuousLinearMap.adjoint_inner_left Q _ _
   intro x y
   unfold scratch_cmp85EffectiveQuadratic
-  rw [hmiddle]
+  change inner ℝ
+      (bWeighted • x -
+        (bWeighted * bCount) • Q (G (Q.adjoint x))) y =
+    inner ℝ x
+      (bWeighted • y -
+        (bWeighted * bCount) • Q (G (Q.adjoint y)))
+  simp only [inner_sub_left, inner_sub_right, inner_smul_left,
+    inner_smul_right, conj_trivial, hmiddle]
 
 /-- The fine field selected by one coarse test field in the Schur
 completion. -/
@@ -86,10 +93,10 @@ theorem scratch_cmp85SchurFineField_euler
   change cmp99SourceGaugePrecision D Q bCount (G (Q.adjoint eta)) =
     Q.adjoint eta at hpoint
   unfold scratch_cmp85SchurFineField
-  rw [map_smul, cmp99SourceGaugePrecision,
+  simp only [map_smul, map_sub, smul_sub]
+  simp only [cmp99SourceGaugePrecision,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
-    ContinuousLinearMap.comp_apply] at hpoint ⊢
-  rw [map_smul, map_smul]
+    ContinuousLinearMap.comp_apply] at hpoint
   apply eq_sub_iff_add_eq.mpr
   simpa only [smul_add, smul_smul, mul_comm, mul_left_comm, mul_assoc] using
     congrArg (fun x : H => bCount • x) hpoint
@@ -130,8 +137,8 @@ theorem scratch_inner_cmp85EffectiveQuadratic_eq_completedSquare
       Q phi = bCount • Q (G (Q.adjoint eta)) := by
     unfold phi scratch_cmp85SchurFineField
     rw [map_smul]
-  rw [hQphi, inner_smul_left, inner_smul_right]
-  simp only [conj_trivial]
+  rw [hQphi]
+  simp only [inner_smul_left, inner_smul_right, conj_trivial]
   rw [← real_inner_self_eq_norm_sq, inner_sub_left, inner_sub_right,
     inner_sub_left, inner_sub_right]
   field_simp [hbCount]
