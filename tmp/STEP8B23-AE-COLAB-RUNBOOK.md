@@ -6,16 +6,16 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `9429a8746a222af999d87fbfc51757d6c68a49a2`.
+  `3fda1abcab2038bd5ca68d0f2520eec6f9ff0329`.
 - Scope: 36 mathematical Git blobs, two Mathlib-only measure reproducers,
   18 ordered focal/audit bricks, and 124 independently declared axiom
   headers.  Unit F is absent.
 - Runner checkpoint:
-  `f00deb0c4b79749a32d25bbfb5dd7711c0ed0e38`.
+  `afe322dc62fe7f4ef6c17a3c34503035b7e5758f`.
 - Runner Git-blob SHA-256:
-  `EC3717108AEAF960216E6A16EC0D6ADAFAD5EF4B97F6BEE8DA653336F6B24C59`.
+  `E2B25AC8E8185D35FC6C45656137278195CD867AB43356A2D094C18923894533`.
 - Launcher notebook SHA-256:
-  `656208736C562EE08B58356BC92D2B5C5C220608FF60997FAB9131205A1805AF`.
+  `7BD5CC1C6A15315F337A83CD66EA95B7C564F6CDC9B012BF0CC0133DE2D5398A`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -127,6 +127,19 @@ V11 evidence/archive SHA-256 values are respectively
 `AB9E53A1EF9092F013D5F0F8C64E7BA69797D4CEE158A90B5201BBB1C510D3E5`
 and
 `FE7B2FD0E62FE219746DD736F6E60D66F88FFC339AA28681D992D6C2D938FEE3`.
+
+V12 reached the same reproducer and stopped after 5.151 seconds.  It measured
+that the Haar-negation instance's defining module was not imported, the
+`NNReal` specialization requires all three explicit arguments to
+`Measure.smul_apply`, and the final coefficient rewrite already closes its
+goal.  It also retained one literal affine-function normalization.  V13 adds
+the exact Haar import, pins those arguments, removes the closed-goal tactic,
+and exposes the remaining inverse-product normalization.  Public statements,
+measures, constants and hypotheses remain unchanged.  The retained V12
+evidence/archive SHA-256 values are respectively
+`AA331177333A3C818A919C184454F98B7438CC925ABD29E1D4754702013980AD`
+and
+`30A915405CC273D7E00D213F9D15742E765B1FC102D3AF5BD5EE8591F6D216A5`.
 
 ## Execution contract
 
