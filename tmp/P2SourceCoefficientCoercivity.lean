@@ -104,7 +104,6 @@ theorem scratch_inner_cmp85BareMassPrecision
   rw [scratch_cmp85BareMassPrecision, ContinuousLinearMap.add_apply,
     ContinuousLinearMap.smul_apply, ContinuousLinearMap.id_apply,
     inner_add_right, inner_smul_right, real_inner_self_eq_norm_sq]
-  simp only [conj_trivial]
 
 /-- The independent bare-mass square preserves symmetry. -/
 theorem scratch_cmp85BareMassPrecision_isSymmetric
@@ -150,7 +149,8 @@ theorem scratch_isCoerciveCLM_of_twoWeightPoincare_with_bareMass
           C * ‖Q phi‖ ^ 2 := by
         rw [scratch_inner_cmp85BareMassPrecision]
         gcongr
-        exact mul_nonneg (sq_nonneg mass) (sq_nonneg ‖phi‖)
+        exact le_add_of_nonneg_right
+          (mul_nonneg (sq_nonneg mass) (sq_nonneg ‖phi‖))
 
 /-! ## Source-weighted versus counting-Hilbert coefficient -/
 
@@ -247,8 +247,21 @@ theorem scratch_cmp85SourcePrefixCountingCoefficient_eq
   unfold scratch_cmp85SourcePrefixCountingCoefficient
   unfold scratch_cmp85SourcePrefixWeightedCoefficient
   unfold scratch_cmp85SourcePrefixVolumeRatio
-  rw [show d = (d - 2) + 2 by omega, pow_add]
-  field_simp [hterminal, hspacing.ne']
+  have hpow (x : ℝ) (hx : x ≠ 0) :
+      x⁻¹ ^ 2 * x ^ d = x ^ (d - 2) := by
+    have hd' : d = (d - 2) + 2 := by omega
+    rw [hd', pow_add]
+    field_simp [hx]
+  calc
+    scratch_cmp85SourcePrefixA (M := M) a r *
+          (T.towerAt r.1).terminalSpacing⁻¹ ^ 2 *
+          ((T.towerAt r.1).terminalSpacing ^ d / spacing ^ d) =
+        scratch_cmp85SourcePrefixA (M := M) a r *
+          ((T.towerAt r.1).terminalSpacing⁻¹ ^ 2 *
+            (T.towerAt r.1).terminalSpacing ^ d) / spacing ^ d := by ring
+    _ = scratch_cmp85SourcePrefixA (M := M) a r *
+          (T.towerAt r.1).terminalSpacing ^ (d - 2) / spacing ^ d := by
+      rw [hpow _ hterminal]
 
 /-- The source-weighted and counting-Hilbert presentations of the prefix
 precision are exactly the same operator.  This theorem is the mandatory
@@ -418,8 +431,10 @@ theorem scratch_isCoerciveCLM_cmp85SourceGeneratedPrefixPrecision
       hrawNorm phi
   have hDnonneg : ∀ phi, 0 ≤ inner ℝ phi (D phi) := by
     intro phi
-    rw [D, inner_cmp99ActiveRegionSourceCovariantLaplacian]
-    exact sq_nonneg _
+    simpa only [D, inner_cmp99ActiveRegionSourceCovariantLaplacian] using
+      (sq_nonneg ‖cmp99ActiveRegionSourceCovariantD0CLM
+        (cmp99IteratedLiftActiveRegion (M := M) Omega0 depth)
+        (matrixSUNAdjointModel Nc) background0 spacing phi‖)
   have hcoercive :=
     scratch_isCoerciveCLM_of_twoWeightPoincare_with_bareMass
       D Q mass hA hC hb hDnonneg hraw
