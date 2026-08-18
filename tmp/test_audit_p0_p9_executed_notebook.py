@@ -50,6 +50,7 @@ def transcript() -> str:
             "EVIDENCE_SHA256=" + "1" * 64,
             "EVIDENCE_ARCHIVE_SHA256=" + "2" * 64,
             "FINAL_STATUS=PASS",
+            "EVIDENCE_DOWNLOAD_REQUESTED=1",
             "LAUNCHER_EXIT=0",
             "LAUNCHER_RUNTIME_RELEASE_REQUESTED=1",
         ]
