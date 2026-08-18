@@ -44,12 +44,12 @@ theorem scratch_cmp99SourcePoincareEnergyCoeff_le_succ
                     (cmp99SourceUbarNextFineRadius d M epsilon))
       apply mul_le_mul_of_nonneg_left _
         (le_of_lt cmp99OneScaleBlockPoincareConstant_pos)
-      apply add_le_add_left
-      exact mul_le_mul_of_nonneg_left
-        (ih ((M : ℝ) * spacing)
-          (cmp99SourceUbarNextFineRadius d M epsilon))
-        (mul_nonneg (by norm_num)
-          (cmp99SourceBlockAverageWeight_nonneg M d))
+      exact add_le_add le_rfl
+        (mul_le_mul_of_nonneg_left
+          (ih ((M : ℝ) * spacing)
+            (cmp99SourceUbarNextFineRadius d M epsilon))
+          (mul_nonneg (by norm_num)
+            (cmp99SourceBlockAverageWeight_nonneg M d)))
 
 /-- Full depth monotonicity of the generated Poincare energy ledger. -/
 theorem scratch_cmp99SourcePoincareEnergyCoeff_monotone
@@ -118,9 +118,8 @@ theorem scratch_cmp99SourcePoincareEnergyCoeff_pos
     0 < cmp99SourcePoincareEnergyCoeff d M depth spacing epsilon := by
   have hbase :
       0 < cmp99SourcePoincareEnergyCoeff d M 1 spacing epsilon := by
-    change 0 < cmp99OneScaleBlockPoincareConstant d M * spacing ^ 2
-    exact mul_pos cmp99OneScaleBlockPoincareConstant_pos
-      (pow_pos hspacing 2)
+    simpa using
+      (cmp99SourcePoincareEnergyCoeff_pos_succ d M 0 hspacing)
   exact hbase.trans_le
     (scratch_cmp99SourcePoincareEnergyCoeff_monotone
       (d := d) (M := M) spacing epsilon hdepth)
@@ -134,11 +133,11 @@ theorem scratch_cmp99OneScaleBlockPoincareConstant_pow_pos
 /-- One terminal smallness hypothesis discharges every prefix smallness
 hypothesis; no family of scalar windows is accepted from the caller. -/
 theorem scratch_cmp99SourcePoincareErrorCoeff_lt_of_le_depth
-    {prefix depth : ℕ} (hprefix : prefix ≤ depth)
+    {prefixDepth depth : ℕ} (hprefix : prefixDepth ≤ depth)
     {spacing epsilon : ℝ}
     (hterminal :
       cmp99SourcePoincareErrorCoeff d M depth spacing epsilon < 1) :
-    cmp99SourcePoincareErrorCoeff d M prefix spacing epsilon < 1 :=
+    cmp99SourcePoincareErrorCoeff d M prefixDepth spacing epsilon < 1 :=
   (scratch_cmp99SourcePoincareErrorCoeff_monotone
     (d := d) (M := M) spacing epsilon hprefix).trans_lt hterminal
 
