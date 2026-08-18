@@ -6,15 +6,15 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `0aa914ca4732f6fb7baa8dd6fcf45106d9dc75b5`.
+  `339afb22dd296977a2ee43623ae7e89e77f538ce`.
 - Scope: 36 Git blobs, 18 ordered focal/audit bricks, 124 independently
   declared axiom headers.  Unit F is absent.
 - Runner checkpoint:
-  `73a2fc54e89e898a520d915a1035bed896d4f8ec`.
+  `4a196e56d6565daac4314bdbd2ec37c6116db297`.
 - Runner Git-blob SHA-256:
-  `129D5F5A98B64E320A9F344263AD7B2B038C5929CED338A31656B636B2A49C19`.
+  `7101C7F9CF7D924D31B00A137821C6B4F8B7C53EB16948169520580DFBEDAA3C`.
 - Launcher notebook SHA-256:
-  `7543C18972594957CA95272800D49348DE48C097D79A203BB3167C9D3C3AA2BB`.
+  `A435C6799F5ED62E7944D0AA6D0B30E921D658B780FBE028C46334BE13A04459`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -48,6 +48,11 @@ their definitions, and proves the endpoint/final-replacement orientations
 directly.  It also replaces the first brick's two linter-producing tactics by
 the equivalent `ring_nf`.  No public statement, physical constant or
 hypothesis changes.
+
+V5 verified the first focal/audit pair without warnings and reduced the second
+brick to one literal endpoint normalization in the one-coordinate
+measure-preserving theorem.  V6 supplies that equality while pinning the
+coordinate map's type; no public statement or measure is changed.
 
 ## Execution contract
 
