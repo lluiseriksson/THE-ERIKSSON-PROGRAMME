@@ -101,10 +101,10 @@ theorem scratch_cmp85SchurFineField_euler
   simpa only [smul_add, smul_smul, mul_comm, mul_left_comm, mul_assoc] using
     congrArg (fun x : H => bCount • x) hpoint
 
+set_option linter.unusedVariables false in
 /-- Exact completed-square identity for CMP85 (2.21) in counting
 coordinates.  The factor `bWeighted/bCount` is precisely the fine/coarse
 volume ratio after the physical specialization. -/
-set_option linter.unusedVariables false in
 theorem scratch_inner_cmp85EffectiveQuadratic_eq_completedSquare
     {H F : Type*}
     [NormedAddCommGroup H] [InnerProductSpace ℝ H] [CompleteSpace H]
