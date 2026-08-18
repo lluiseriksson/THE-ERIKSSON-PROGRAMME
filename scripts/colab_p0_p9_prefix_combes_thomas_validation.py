@@ -2,9 +2,10 @@
 """Fresh-clone Colab gate for the exact P0--P9 scratch chain.
 
 The immutable mathematical source is ``SOURCE_SHA``.  The 39 shipped Lean
-blobs are bound by the source checkpoint's path list and SHA-256 manifest;
-both transport objects are hash-gated before the shared validation runner is
-entered.  The queue is sequential and stop-on-first-error.
+chain blobs are bound by the source checkpoint's path list and SHA-256
+manifest.  One additional Mathlib-only reproducer is hash-gated separately
+and runs before the project prerequisite frontier.  The queue is sequential
+and stop-on-first-error.
 
 Honest scope: a green run verifies only the per-depth P0--P9 chain.  It does
 not produce uniform CMP99 (3.42) constants, the four source actions, C6c.4,
@@ -21,7 +22,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "9200946ce6f15010e1f3287c977de55d75bd6f4f"
+SOURCE_SHA = "346b6bf1da333c745fa59e9f5972847e0e31a336"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -44,7 +45,11 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "97c3e657f739c45ffa2ee9efa24ad0e0a5edd47c82db555bad9fee00b0cffcbc"
+    "c7dc3e1113888de9ecae59db297fc89b7d6f5d79863890de59cc95fba9a57ce3"
+)
+P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
+P2B_REPRO_SHA256 = (
+    "4e1974e97b56c319c5c4bcece1234b5150b3bc0504f061951ab9f21630a0a17b"
 )
 
 
@@ -121,6 +126,7 @@ for number, line in enumerate(
     source_blobs[match.group(2)] = match.group(1).lower()
 if len(paths) != 39 or list(source_blobs) != paths:
     raise RuntimeError(f"P0_P9_TRANSPORT_SCOPE_MISMATCH={len(paths)}/{len(source_blobs)}")
+source_blobs[P2B_REPRO_PATH] = P2B_REPRO_SHA256
 
 # These counts are an independent audit contract, not values inferred from
 # the source files at runtime.  A missing or extra readout therefore fails.
@@ -168,7 +174,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v11"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v12"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -186,6 +192,11 @@ runner.QUEUE = [
     (
         "p0_p9_static_selftest",
         ["python3", "tmp/test_p0_p9_diagnostic.py"],
+        None,
+    ),
+    (
+        "p0_p9_p2b_algebra_repro",
+        ["lake", "env", "lean", P2B_REPRO_PATH],
         None,
     ),
     (
