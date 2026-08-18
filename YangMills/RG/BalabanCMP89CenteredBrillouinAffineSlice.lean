@@ -50,8 +50,18 @@ theorem cmp89CenteredBrillouin_affineSlice_complex
       ∫ t in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
         f (-(2 * Real.pi) * t) := by
   rw [← Complex.real_smul]
-  rw [cmp89CenteredBrillouin_affineSlice]
-  congr 2 <;> ring
+  calc
+    ((2 * Real.pi)⁻¹ : ℝ) •
+          (∫ x in (0 : ℝ)..2 * Real.pi, f (-Real.pi + x)) =
+        ∫ t in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          f (0 - (2 * Real.pi) * t) :=
+      cmp89CenteredBrillouin_affineSlice f
+    _ = ∫ t in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
+          f (-(2 * Real.pi) * t) := by
+      apply intervalIntegral.integral_congr
+      intro t _ht
+      congr 1
+      ring
 
 end
 
