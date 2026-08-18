@@ -68,17 +68,20 @@ example :
         (volume.restrict (Set.Ioc 0 1))
         (volume : Measure UnitAddCircle) := by
     simpa using hquot
+  letI : Measure.IsNegInvariant (volume : Measure UnitAddCircle) :=
+    Measure.IsAddHaarMeasure.isNegInvariant_of_regular
+      (volume : Measure UnitAddCircle)
   have hneg := Measure.measurePreserving_neg
     (volume : Measure UnitAddCircle)
   have htranslate := measurePreserving_add_left
     (volume : Measure UnitAddCircle) ((1 / 2 : ℝ) : UnitAddCircle)
   have h := htranslate.comp (hneg.comp (hquot'.comp hscale))
   simpa [reproPhysicalBrillouinToCircle, sub_eq_add_neg,
-    Function.comp_def] using h
+    Function.comp_def, mul_inv_rev] using h
 
 theorem reproMeasurePiConstSmul
     {ι α : Type*} [Fintype ι] [MeasurableSpace α]
-    (c : ENNReal) (mu : Measure α) [SigmaFinite mu] :
+    (c : NNReal) (mu : Measure α) [SigmaFinite mu] :
     Measure.pi (fun _ : ι => c • mu) =
       c ^ Fintype.card ι • Measure.pi (fun _ : ι => mu) := by
   apply Measure.pi_eq
@@ -90,10 +93,9 @@ theorem reproMeasurePiConstSmul
 
 example (I : ℂ) :
     (ENNReal.ofReal ((2 * Real.pi)⁻¹)).toReal ^ 4 • I =
-      ((2 * Real.pi) ^ 4)⁻¹ * I := by
+      (((2 * Real.pi) ^ 4)⁻¹ : ℝ) * I := by
   have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
-  rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
-    Complex.real_smul]
+  rw [ENNReal.toReal_ofReal hc, inv_pow, Complex.real_smul]
   norm_cast
 
 end

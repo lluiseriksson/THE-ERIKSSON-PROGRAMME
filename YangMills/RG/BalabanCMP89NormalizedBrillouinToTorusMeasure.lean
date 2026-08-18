@@ -93,13 +93,16 @@ theorem measurePreserving_cmp89PhysicalBrillouinToUnitAddCircle :
         (volume.restrict (Set.Ioc 0 1))
         (volume : Measure UnitAddCircle) := by
     simpa using hquot
+  letI : Measure.IsNegInvariant (volume : Measure UnitAddCircle) :=
+    Measure.IsAddHaarMeasure.isNegInvariant_of_regular
+      (volume : Measure UnitAddCircle)
   have hneg := Measure.measurePreserving_neg
     (volume : Measure UnitAddCircle)
   have htranslate := measurePreserving_add_left
     (volume : Measure UnitAddCircle) ((1 / 2 : ℝ) : UnitAddCircle)
   have h := htranslate.comp (hneg.comp (hquot'.comp hscale))
   simpa [cmp89PhysicalBrillouinToUnitAddCircle, sub_eq_add_neg,
-    Function.comp_def] using h
+    Function.comp_def, mul_inv_rev] using h
 
 /-- Four-dimensional physical Brillouin coordinate mapped coordinatewise to
 the unit torus. -/
@@ -128,7 +131,7 @@ scalar per coordinate.  This is the bookkeeping lemma that prevents the
 four-dimensional source normalization from being counted twice. -/
 theorem cmp89Measure_pi_const_smul
     {iota α : Type*} [Fintype iota] [MeasurableSpace α]
-    (c : ENNReal) (mu : Measure α) [SigmaFinite mu] :
+    (c : NNReal) (mu : Measure α) [SigmaFinite mu] :
     Measure.pi (fun _ : iota => c • mu) =
       c ^ Fintype.card iota • Measure.pi (fun _ : iota => mu) := by
   apply Measure.pi_eq
@@ -149,9 +152,11 @@ theorem cmp89NormalizedBrillouinProductMeasure_eq :
   unfold cmp89OneDimensionalNormalizedBrillouinMeasure
     cmp89Eq249FourDimensionalBrillouinMeasure
   have htwoPi_nonneg : (0 : ℝ) ≤ 2 * Real.pi := by positivity
-  simpa [Set.uIoc_of_le htwoPi_nonneg] using
+  have hcoeff_nonneg : (0 : ℝ) ≤ (2 * Real.pi)⁻¹ := by positivity
+  simpa [Set.uIoc_of_le htwoPi_nonneg,
+    ENNReal.ofReal_eq_coe_nnreal hcoeff_nonneg] using
     (cmp89Measure_pi_const_smul (iota := Fin 4)
-      (ENNReal.ofReal ((2 * Real.pi)⁻¹))
+      (⟨(2 * Real.pi)⁻¹, hcoeff_nonneg⟩ : NNReal)
       (volume.restrict (Set.Ioc 0 (2 * Real.pi))))
 
 /-- The fourfold normalized physical Brillouin product measure is sent
@@ -193,8 +198,7 @@ theorem integral_unitAddTorus_eq_cmp89NormalizedBrillouin
         MeasureTheory.integral_smul_measure]
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
       have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
-      rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
-        Complex.real_smul]
+      rw [ENNReal.toReal_ofReal hc, inv_pow, Complex.real_smul]
       norm_cast
 
 end
