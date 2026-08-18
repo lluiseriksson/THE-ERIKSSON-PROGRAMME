@@ -6,15 +6,15 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `ff94008e1831d18cd317dda8883ccc7a08ace730`.
+  `5317e1b051c503217cc1044abae0d323a89cd36b`.
 - Scope: 36 Git blobs, 18 ordered focal/audit bricks, 124 independently
   declared axiom headers.  Unit F is absent.
 - Runner checkpoint:
-  `0b5b6fd8601f84bdfec0c137941fa04734dcc6f4`.
+  `5f9dad379d0e91b6b96f2184d65a32f9ab8a0c4d`.
 - Runner Git-blob SHA-256:
-  `33D3885D0607D44FEFCF92820273B8BB9ED32A5FC7229AE852F0EE0D794592E9`.
+  `101EA30F28A7CEE3F7040C101B1FA0D1DEBCFA88B3A148F19FF0432E25C0A3F6`.
 - Launcher notebook SHA-256:
-  `7D008F6F1A66B279734F8A101896CD4111CC073760EFA1E61A2DB0D0764C79E1`.
+  `550A685D1BF116C7F569E5CA0C4E4763D20F2635B295183C99F95A2A8EAA5255`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -65,6 +65,17 @@ The retained V6 evidence/archive SHA-256 values are respectively
 `8A0EBFDFFEB5436E42D2A38A4410B8CD77F59B821C4189E72EC4D5BA7B27A4EE`
 and
 `17EB280319A77AD256301CDCD3F943E9208C297F451AE06CF1DDA43D18B26DB0`.
+
+V7 verified the same first two pairs and then stopped after 1220.193 seconds
+at the now-first error on line 66: the target retained
+`Complex.I * ∑ mu, ...`, so `Finset.sum_congr` could not yet apply.  V8 uses
+the isolated `Finset.mul_sum` normalization before the congruence and removes
+the simultaneously measured unused `div_one` simp argument.  No theorem
+statement, physical constant or hypothesis changes.  The retained V7
+evidence/archive SHA-256 values are respectively
+`A235A375A6BB404EB6809642ED97CF363D4158BDB85098F211AFB1A2DFDFCBDD`
+and
+`824ADF76C44CB17DB557DD35CACC7C82F862C9BE0650361FC7547300C2BD24DE`.
 
 ## Execution contract
 
