@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "509571c6bb48de63133d26b65d18d9994024eb36"
+SOURCE_SHA = "32fe3fa590f1f529134985b30326785683ebb07f"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -49,7 +49,7 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "7928fc43b124bae521b000d8cec14fde5c0bf8b65a82196a3daf910ac6943cb6"
+    "27591c26fefa55bcd0d0051b664c1489e1bf5e15fa91d8594438764e9a8807ea"
 )
 P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
 P2B_REPRO_SHA256 = (
@@ -61,7 +61,7 @@ P3_REPRO_SHA256 = (
 )
 P3_TYPED_REPRO_PATH = "tmp/P3TypedSchurAveraging.repro.lean"
 P3_TYPED_REPRO_SHA256 = (
-    "0500e7925c646d0810ea184684c421c17aee0732877c5f371420e6f9f6baad32"
+    "14efa63ece428de46e183edef7e3224053f8eba1e4630e041833f754954dc6a6"
 )
 
 
@@ -188,7 +188,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v28"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v29"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
