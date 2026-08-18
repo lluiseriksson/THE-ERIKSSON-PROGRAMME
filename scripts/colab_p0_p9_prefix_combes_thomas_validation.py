@@ -68,6 +68,44 @@ if SPEC is None or SPEC.loader is None:
 runner = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runner)
 
+
+def parse_complete_axiom_headers(output: str, expected: int) -> None:
+    """Accept both textual forms emitted by ``#print axioms``.
+
+    Lean prints a nonempty dependency list as ``depends on axioms: [...]``
+    and a declaration with the empty list as ``does not depend on any
+    axioms``.  Both are audit headers and both count toward the independently
+    declared expected total.
+    """
+    compact = re.sub(r"\s+", "", output)
+    for forbidden in ("sorryAx", "ofReduceBool"):
+        if forbidden in compact:
+            raise RuntimeError("FORBIDDEN_AXIOM=" + forbidden)
+    blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+    pure = compact.count("doesnotdependonanyaxioms")
+    if len(blocks) + pure != expected:
+        raise RuntimeError(
+            "AXIOM_HEADER_COUNT=" + str(len(blocks) + pure)
+            + " EXPECTED=" + str(expected)
+            + " NONEMPTY=" + str(len(blocks))
+            + " EMPTY=" + str(pure)
+        )
+    for index, body in enumerate(blocks):
+        names = {name for name in body.split(",") if name}
+        if not names.issubset(runner.ALLOWED_AXIOMS):
+            raise RuntimeError(f"AXIOM_SET_{index}={sorted(names)}")
+
+
+# The shared runner predates Lean's empty-axiom output form.  Override only
+# this parser; command execution, evidence packaging and runtime release stay
+# on the immutable shared implementation.
+parse_complete_axiom_headers(
+    "'Fixture.allowed' depends on axioms: [propext, Quot.sound]\n"
+    "'Fixture.pure' does not depend on any axioms\n",
+    2,
+)
+runner.parse_axioms = parse_complete_axiom_headers
+
 paths_payload = fetch_exact(PATHS_URL, PATHS_SHA256, "P0_P9_PATHS")
 manifest_payload = fetch_exact(
     MANIFEST_URL, MANIFEST_SHA256, "P0_P9_MANIFEST"
@@ -130,7 +168,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v9"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v10"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
