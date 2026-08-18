@@ -25,12 +25,12 @@ noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℝ A]
 
+set_option linter.unusedVariables false in
 /-- The right Schur bracket vanishes from a right inverse of
 `b·1 - b²S + cP`, the projector law, and the source recurrence.
 
 The displayed certificate deliberately keeps the algebra noncommutative;
 only scalar images from `ℝ` commute with the operator variables. -/
-set_option linter.unusedVariables false in
 theorem scratch_cmp85_rightSchurBracket_eq_zero
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
@@ -91,10 +91,10 @@ theorem scratch_cmp85_rightSchurBracket_eq_zero
               scratch_cmp85_commute_assoc hBetaC]
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
+set_option linter.unusedVariables false in
 /-- Left-handed companion of `scratch_cmp85_rightSchurBracket_eq_zero`.
 It is kept separate so that the eventual physical producer must supply both
 inverse laws rather than infer one from an unrecorded symmetry argument. -/
-set_option linter.unusedVariables false in
 theorem scratch_cmp85_leftSchurBracket_eq_zero
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
