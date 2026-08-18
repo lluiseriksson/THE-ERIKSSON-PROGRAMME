@@ -130,7 +130,7 @@ theorem scratch_inner_cmp85EffectiveQuadratic_eq_completedSquare
   simp only [scratch_cmp85EffectiveQuadratic,
     ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
     ContinuousLinearMap.id_apply, ContinuousLinearMap.comp_apply,
-    inner_sub_right, inner_smul_right, conj_trivial]
+    inner_sub_right, inner_smul_right]
   change _ = (bWeighted / bCount) * inner ℝ phi (D phi) + _
   rw [hEnergy]
   have hQphi :
@@ -138,9 +138,8 @@ theorem scratch_inner_cmp85EffectiveQuadratic_eq_completedSquare
     unfold phi scratch_cmp85SchurFineField
     rw [map_smul]
   rw [hQphi]
-  simp only [inner_smul_left, inner_smul_right, conj_trivial]
-  rw [← real_inner_self_eq_norm_sq, inner_sub_left, inner_sub_right,
-    inner_sub_left, inner_sub_right]
+  simp only [inner_smul_left, conj_trivial]
+  rw [← real_inner_self_eq_norm_sq, inner_sub_right, inner_sub_right]
   field_simp [hbCount]
   ring
 
