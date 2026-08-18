@@ -191,12 +191,16 @@ theorem scratch_cmp85Typed_rightAveragingIdentity
         ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
         ContinuousLinearMap.id_apply] using hCx
     rw [← hbase]
-    abel
+    abel_nf
   have hRlinear := congrArg R hlinear
-  have hRPx := congrArg (fun T : K →L[ℝ] L => T (C x)) hRP
-  simpa only [P, S, ContinuousLinearMap.comp_apply,
+  have hRPx : R (P (C x)) = R (C x) := by
+    simpa only [ContinuousLinearMap.comp_apply] using
+      congrArg (fun T : K →L[ℝ] L => T (C x)) hRP
+  simp only [map_add, map_smul] at hRlinear
+  rw [hRPx] at hRlinear
+  simpa only [S, ContinuousLinearMap.comp_apply,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
-    ContinuousLinearMap.id_apply, map_add, map_smul, hRPx, add_smul] using
+    ContinuousLinearMap.id_apply, map_add, map_smul, add_smul] using
       hRlinear
 
 end
