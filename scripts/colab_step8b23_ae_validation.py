@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v6"
-runner.SOURCE_SHA = '339afb22dd296977a2ee43623ae7e89e77f538ce'
+runner.RUNNER_REV = "step8b23-ae-v7"
+runner.SOURCE_SHA = 'ff94008e1831d18cd317dda8883ccc7a08ace730'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -48,7 +48,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89CenteredBrillouinAffineSliceAudit.lean': '0bb147baf82707e0de48a3ce888b968c005d9584b9bae6d14a5d9cac012a23c2',
     'YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotient.lean': '1bd9c2c0660a0b7a9eb94e1c7867028ed7c4278210317cbf8cdd674e1d720bc7',
     'YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotientAudit.lean': '8a14bdda0ea10e74d3bc59b0ee183aea477490b6acef6880dbc2dca62802bb75',
-    'YangMills/RG/BalabanCMP89CenteredTorusFourierPhase.lean': '5c53fda1f05d0bc8d364f925c17666034387d1ac5e9593d50a71b32380c6a5a0',
+    'YangMills/RG/BalabanCMP89CenteredTorusFourierPhase.lean': '5e5dc09447363d5f38ad1adef9b35e1a8e053170ac508a6c80c4b7e9a0c9e606',
     'YangMills/RG/BalabanCMP89CenteredTorusFourierPhaseAudit.lean': '246ef491a33109859d1f4e0a7889eb1f209a2a363e4001717d0e0dc6e67eea88',
     'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean': '302f91446ca087b207c4adc0562cd7e0ca4d623ba158b4ee143e412f3a8407f0',
     'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasureAudit.lean': '35db023192efabc07380ebf0299eb1c07245be4e16e201e14e11ea5f201b38e8',
