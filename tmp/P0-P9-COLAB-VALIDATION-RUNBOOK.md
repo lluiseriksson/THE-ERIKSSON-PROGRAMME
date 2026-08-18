@@ -26,9 +26,11 @@ intermediate-brick validation.  It is not compiler evidence.
   `6DA079C6034AEED1091492B756C21D577C957E111F8A8D8CC528CC3F4DACEA09`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C23:
-  `540530846f8aa17f158886319f3d014c78290811`; runner Git-blob SHA-256
-  `1FAAD57B925A976895B013350E57AF9ABD68F0E6B3CF873CC808CF8A7B014961`.
+- Runner checkpoint C24:
+  `2e94ad1d1c660aec437024e92cb996d65eb533f6`; runner Git-blob SHA-256
+  `4FE7B7273FCF16E1BC22B084FCFF1F0CC6565B70449956D3EBDA924D92266241`.
+- Launcher notebook Git-blob SHA-256:
+  `2CA18314BD2205069E491B626CA9836BB5872CD4C9DC76C28701D787B26D1C09`.
   It supersedes C22, which passed P0--P2c, their audits, and P3 scalar
   recurrence plus its audit, then stopped after 9.486 seconds at P3 block
   Gaussian algebra.  The universal simplification rule supplied as
