@@ -5,8 +5,8 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A20:
-  `9429a8746a222af999d87fbfc51757d6c68a49a2`.  This PRE-VALIDATION commit
+- Source checkpoint A21:
+  `3fda1abcab2038bd5ca68d0f2520eec6f9ff0329`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and two
   Mathlib-only P2b/P3 algebra reproducers executed before project
   materialization.
@@ -17,7 +17,7 @@ intermediate-brick validation.  It is not compiler evidence.
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P3 algebra reproducer Git-blob SHA-256:
-  `4348A2BA32DB4BF8A3879F403B2942F1E2021CF813999D8807033CB9D733199E`
+  `78E47B7B9631D771F913AA2C4B76E9C30FC25B0962260008036857FD9867D3E1`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -26,11 +26,11 @@ intermediate-brick validation.  It is not compiler evidence.
   `6DA079C6034AEED1091492B756C21D577C957E111F8A8D8CC528CC3F4DACEA09`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C24:
-  `2e94ad1d1c660aec437024e92cb996d65eb533f6`; runner Git-blob SHA-256
-  `4FE7B7273FCF16E1BC22B084FCFF1F0CC6565B70449956D3EBDA924D92266241`.
+- Runner checkpoint C25:
+  `d37f92de879a24de10868e88b302b4ab74458a7b`; runner Git-blob SHA-256
+  `D9620F1B43797B8D8DFE4CF8963A910039AB76A1B4ADC7500E533D5F347F18C5`.
 - Launcher notebook Git-blob SHA-256:
-  `2CA18314BD2205069E491B626CA9836BB5872CD4C9DC76C28701D787B26D1C09`.
+  `C1682170F7FD18F0281319E608742FFC7F296F20C346683D1EC36F3DF1F06D8A`.
   It supersedes C22, which passed P0--P2c, their audits, and P3 scalar
   recurrence plus its audit, then stopped after 9.486 seconds at P3 block
   Gaussian algebra.  The universal simplification rule supplied as
@@ -382,6 +382,17 @@ evidence/archive SHA-256 values are respectively
 `5FAEB8D07C453A2628CC9B91D6729102EB2DF1C79D50CCB0C9C652B3869D1487`
 and
 `7AF2238519BE830BBDA0647132D975F602C526BA4F3C391C8ED526E33D876009`.
+
+Runner C24 again stopped in the P3 reproducer, now after 10.178 seconds.  The
+central rewrites were applied before distributive expansion, so most were
+unused and the same two nested-word identities remained.  C25 first expands
+both sides to noncommutative normal form, then applies the finite central
+rewrites, and finally normalizes the resulting words.  No Schur statement,
+recurrence, inverse law, constant or hypothesis changes.  The retained C24
+evidence/archive SHA-256 values are respectively
+`7793DD9F40AC4DDD6854BFD00045C53FDE3C6FB516EE4D2014872FD77DF6486C`
+and
+`EEB1A3208BE2D2EE1FA41F253ECBD107BECAA40164DBDF43565ECB8E91A51E9`.
 
 ## Honest verdict boundary
 
