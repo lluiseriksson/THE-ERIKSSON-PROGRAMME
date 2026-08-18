@@ -5,8 +5,8 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A19:
-  `1cf99ddf2ca04e6fd4fa82b74d254c7ddebadae8`.  This PRE-VALIDATION commit
+- Source checkpoint A20:
+  `9429a8746a222af999d87fbfc51757d6c68a49a2`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and two
   Mathlib-only P2b/P3 algebra reproducers executed before project
   materialization.
@@ -17,7 +17,7 @@ intermediate-brick validation.  It is not compiler evidence.
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P3 algebra reproducer Git-blob SHA-256:
-  `8BD0EE8E98D3188EEE45F6835A8C25F63215B3824F09D892762F76D39BD2B9E9`
+  `4348A2BA32DB4BF8A3879F403B2942F1E2021CF813999D8807033CB9D733199E`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -367,6 +367,19 @@ the remote structured evidence and archive hashes were respectively
 `140A176154F94C99DF8F7ABDC8F071E722FAE4B35B12E716EE4D58E2171ACB96`, and
 `424BBCF22C983572D630539A4DE69AFB2AEF96069C66F2389AAA3E0E3A73170`.
 The runtime was released automatically and the cell was not re-executed.
+
+Runner C23 eliminated the recursion-depth failure and ran the P3
+Mathlib-only reproducer before the project frontier.  The reproducer stopped
+after 10.489 seconds on the two exact noncommutative polynomial identities:
+the finite centrality equations were supplied to `noncomm_ring`, but the
+tactic did not normalize their occurrences under nested products.  C24 first
+rewrites those central scalar factors with the same finite equations and then
+invokes the pure noncommutative normalizer.  No Schur statement, recurrence,
+inverse law, constant or hypothesis changes.  The retained C23
+evidence/archive SHA-256 values are respectively
+`5FAEB8D07C453A2628CC9B91D6729102EB2DF1C79D50CCB0C9C652B3869D1487`
+and
+`7AF2238519BE830BBDA0647132D975F602C526BA4F3C391C8ED526E33D876009`.
 
 ## Honest verdict boundary
 
