@@ -443,8 +443,10 @@ theorem scratch_cmp85SourceGeneratedPrefixCoercivity_pos
       spacing epsilon a background0 chain fineSmall r := by
   let T := scratch_cmp85SourceGeneratedPrefixTower hd hM Omega0 depth
     spacing epsilon background0 chain fineSmall
-  have hA := scratch_cmp99SourcePoincareEnergyCoeff_pos
-    (d := d) (M := M) r.2 hspacing
+  have hA :
+      0 < cmp99SourcePoincareEnergyCoeff d M r.1.val spacing epsilon :=
+    scratch_cmp99SourcePoincareEnergyCoeff_pos
+      (d := d) (M := M) (epsilon := epsilon) r.2 hspacing
   have hB := scratch_cmp99SourcePoincareErrorCoeff_lt_of_le_depth
     (d := d) (M := M) (Nat.lt_succ_iff.mp r.1.isLt) hsmall
   have hC := scratch_cmp99OneScaleBlockPoincareConstant_pow_pos
