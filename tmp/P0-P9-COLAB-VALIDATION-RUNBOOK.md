@@ -5,13 +5,13 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A3:
-  `3af413563b2f71c250e9e7bbd4972efca436ad55`.  This PRE-VALIDATION commit
+- Source checkpoint A4:
+  `5dfe850dfa41ec3e8eb276f3e6f8f3f4abec043f`.  This PRE-VALIDATION commit
   contains the exact 39-file chain and its fail-closed static gates.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `71DA54FE12B77F7288A33C4EDB6130733B288CC0B2BA3E3A3D081E0469E4F3F9`
+  `876AB6449973FDECE0249A37336FF87A69506C9D385B46306AD8C0B36677C86B`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -20,19 +20,18 @@ intermediate-brick validation.  It is not compiler evidence.
   `D778C56620FD562985F6C0D2539D74B52104BFD30EE697138BD8453A8972C849`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C4:
-  `bd5fe8f2f0a2466aff36da23b1c3e14c05b04057`; runner Git-blob SHA-256
-  `871A20BE4B1F7F62FDBB98BD3019034F64B6EDDE5E54EC0754C66FB40AC87C49`.
-  It supersedes C3 after P0 elaborated successfully but its audit exposed that
-  a bare `lean source.lean` does not materialize the scratch `.olean` on Lake's
-  import path.
+- Runner checkpoint C5:
+  `cdcea59907f4e3b63a3519a0e4889546d4d1b992`; runner Git-blob SHA-256
+  `675F33283AD6CA5DD7A59894466B8FF997ECAAC65270526385D26ACBBDF3B27A`.
+  It supersedes C4 after P0 and its audit passed and the first real P1
+  elaboration exposed three local proof/parser defects.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C4 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C5 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
@@ -80,6 +79,22 @@ The single executed notebook was preserved with SHA-256
 the remote structured evidence and archive hashes were respectively
 `9CCEFB76F3A49F6D3B605F1AAB78EDB6941AA9BF9FA77EFEBDED6B9CE0171917`, and
 `1AC7301AC46AE900EBFEDEB46E4EED6E1E34ACC9D9B4247A852029B8CFF7330B`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C4 materialized the prerequisite frontier successfully (`8562` jobs,
+exit `0`, `4718.921` seconds), wrote P0's scratch `.olean`, and then verified
+P0 plus its ten-readout audit (`11.094` and `18.490` seconds, both exit `0`;
+all readouts used only `propext`, `Classical.choice`, and `Quot.sound`).  The
+queue stopped at P1: an addition congruence used the wrong orientation, the
+base positivity proof assumed a non-definitional reduction, and `prefix` was
+parsed as a reserved token.  Classification: **FAIL-P1-ELABORATION**.  P0 has
+valid scratch compiler evidence but is not promoted or terminally sealed;
+P1--P9 remain PRE-VALIDATION.  The executed notebook was preserved with
+SHA-256
+`20A1C26BD06120B7B7439C0C32673BC7C6775CDB9B2C9B19E7FC8F8322310E66`;
+the remote structured evidence and archive hashes were respectively
+`25091BE69E1EFB898CF4CEA3A4321858B1FFE334150D91B7E12868B9A4FEF7AB`, and
+`A460DC52C9A2E463E9F1A917F3214237383A6058C9108246E4F569DE0E393F52`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
