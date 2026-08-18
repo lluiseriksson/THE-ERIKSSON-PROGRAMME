@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Fail-closed audit for a P0--P9 v29 Colab evidence archive.
+"""Fail-closed audit for a P0--P9 v30 Colab evidence archive.
 
-The v29 runner retains every child's complete combined stdout/stderr as a
+The v30 runner retains every child's complete combined stdout/stderr as a
 stage log.  This checker verifies those logs against the digests recorded in
 ``evidence.json`` without extracting untrusted archive paths to disk.
 """
@@ -17,8 +17,8 @@ import tarfile
 import tempfile
 
 
-SOURCE_SHA = "32fe3fa590f1f529134985b30326785683ebb07f"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v29"
+SOURCE_SHA = "de48111f44d09a20174196a1a8716e8e425e2d3a"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v30"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 EVIDENCE_ROOT = "hrpoly-p0-p9-prefix-combes-thomas-evidence"
 
