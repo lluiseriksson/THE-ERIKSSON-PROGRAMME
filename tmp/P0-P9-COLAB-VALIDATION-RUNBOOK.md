@@ -5,14 +5,14 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A16:
-  `c537ea3babcc1770570f9a131e11e8f11d6806ba`.  This PRE-VALIDATION commit
+- Source checkpoint A17:
+  `34787cac96df5b5f1e79aa39d62ff63cbfb491aa`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `7DC25B62AC67F3C6C55866B3BF32D70C55C964CCC0C13DAFFE07B7DCAFFF72BD`
+  `017F46886D4FF4F2DD1CA77B69EC22E3C0F8720B5CC95C3E8C427903A39E31A9`
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P9 source SHA-256:
@@ -23,12 +23,16 @@ intermediate-brick validation.  It is not compiler evidence.
   `A1139CFED4574E34FC80F25CE43640E4F9D4A868A15300D87C5C5C5CC0F28A34`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C20:
-  `c93ebfcf3c40019b1a33c0b7e9921427f6a25f8f`; runner Git-blob SHA-256
-  `A9B9BF7EB5974DCB79852E76F28A29CA8A3DA960250D42696154C201845C4421`.
-  It supersedes C19, whose launcher rejected its own stale expected manifest
+- Runner checkpoint C21:
+  `b30739f80703c5f2fd9405200c730a4c769bb80b`; runner Git-blob SHA-256
+  `8C138C91F24968B64F852C342B6FD69584950EFE1A042CADEEBC72B13E26A0F3`.
+  It supersedes C20, which reached P2c after P0--P2b and their audits passed,
+  then measured one missing zeta reduction after unfolding the generated
+  coarse precision.  A17 adds only that reduction; the equality, hypotheses
+  and constants are unchanged.  C20 had superseded C19, whose launcher
+  rejected its own stale expected manifest
   digest before checkout or Lean; no mathematical verdict was produced.
-  C20 binds the already-published A16 manifest digest and otherwise preserves
+  C21 binds the already-published A17 manifest digest and otherwise preserves
   the C19 queue.  C19 had superseded C18 after C18 retained the exact P2c
   failure: three local
   abbreviations were referenced outside the theorem-statement `let` scope.
@@ -44,7 +48,7 @@ intermediate-brick validation.  It is not compiler evidence.
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C20 over raw HTTPS and rejects any hash drift.
+  downloads runner checkpoint C21 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
@@ -315,6 +319,19 @@ Classification: **FAIL-P2C-ELABORATION / INCOMPLETE-DIAGNOSTIC-RETENTION**.
 The exact P2c diagnostic lines were not retained, so no mathematical source
 change is inferred from this run.  C18 fixes only that evidence-retention
 defect and reruns the same immutable A15 queue stop-on-first-error.
+
+Runner C20 verified A16 on a `50.99` GiB high-RAM runtime.  The P2b algebra
+reproducer passed in `23.383` seconds, the cold prerequisite frontier passed
+in `2068.879` seconds, and P0, P1, P2 and P2b plus their audits all exited
+`0`.  P2c was the first failing stage, with exit `1` after `21.075` seconds:
+after unfolding the generated coarse precision, its newly introduced local
+`let` bindings had not been zeta-reduced before the first weighted-adjoint
+rewrite.  Classification: **FAIL-P2C-ZETA-REDUCTION**.  A17 adds the single
+post-unfold `dsimp only`; no theorem statement, hypothesis or constant is
+changed.  The structured evidence and archive SHA-256 values are respectively
+`1E5A73E2378F7D6320C300A3DB7221A4A553C30F6FD8DBCDE8E8AAC89566EB41`
+and `973D492B4DC1C8FDFF785945077201279E851AC0C1BA36E366B731A4125F6DBC`.
+The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
 (`8562` jobs, exit `0`, `5076.172` seconds).  P0 itself then elaborated with
