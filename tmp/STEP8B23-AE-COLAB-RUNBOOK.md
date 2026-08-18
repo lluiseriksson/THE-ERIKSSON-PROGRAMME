@@ -6,16 +6,16 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `08bc9ad8dfb64ad2898d71fed4e1bad414bd2441`.
+  `9429a8746a222af999d87fbfc51757d6c68a49a2`.
 - Scope: 36 mathematical Git blobs, two Mathlib-only measure reproducers,
   18 ordered focal/audit bricks, and 124 independently declared axiom
   headers.  Unit F is absent.
 - Runner checkpoint:
-  `3fb531123dc1b938212ade60cdd5c3f2c62ac075`.
+  `f00deb0c4b79749a32d25bbfb5dd7711c0ed0e38`.
 - Runner Git-blob SHA-256:
-  `232800577666333D127AC706FD00F8178AC7A9B379C0FDCF66EACA8BCCF4D409`.
+  `EC3717108AEAF960216E6A16EC0D6ADAFAD5EF4B97F6BEE8DA653336F6B24C59`.
 - Launcher notebook SHA-256:
-  `79CB60A9214E61E25A8DD21B1611278DDF32A7BE74BCF404EA094B9E4A2A1E61`.
+  `656208736C562EE08B58356BC92D2B5C5C220608FF60997FAB9131205A1805AF`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -115,6 +115,18 @@ evidence/archive SHA-256 values are respectively
 `F5BE79241A1F24FC1A375038E8EE6D6113A5E8B1580BF4B57DCE793DF7430390`
 and
 `E6BA94CB7FBFE24E9546A2F92DEE441406E0DB96B4552C3212EAE004DCA22952`.
+
+V11 reached the full Mathlib-only reproducer and stopped there after 4.723
+seconds.  It measured four API-level mismatches: negation invariance was not
+materialized for Haar volume, the composed affine map retained the reversed
+inverse product, sigma-finiteness is provided for `NNReal` rather than an
+arbitrary `ENNReal` scalar, and the final real coefficient was inferred in a
+complex target.  V12 makes exactly those choices explicit and changes no
+public statement, measure, physical constant or hypothesis.  The retained
+V11 evidence/archive SHA-256 values are respectively
+`AB9E53A1EF9092F013D5F0F8C64E7BA69797D4CEE158A90B5201BBB1C510D3E5`
+and
+`FE7B2FD0E62FE219746DD736F6E60D66F88FFC339AA28681D992D6C2D938FEE3`.
 
 ## Execution contract
 
