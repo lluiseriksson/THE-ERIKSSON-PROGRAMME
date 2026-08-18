@@ -38479,3 +38479,38 @@ not identify the physical Brillouin integral, construct regional `B0`, attain
 window 15, discharge a terminal field or inhabit `TermSource`.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+## Addendum 867 (2026-08-17, **finite-grid Fourier aliasing substrate sealed in cold GitHub Actions checkout; 20/41 unchanged**)
+
+Cold run [31991954503](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31991954503), job `95276977132`, checked exact source
+`534493728038813f3772f8b3b073237f4da1884e` at workflow HEAD `b05ef65af97a95752d1c929e30749d886d425d8d` with no
+restored `.lake/build`.  The focal exited `0` after
+`1277 s` with the literal terminal line
+`Build completed successfully (8478 jobs).`; the audit
+exited `0` after `7 s`.
+
+The seven measured axiom sets were:
+
+- declaration 1: `[Quot.sound, propext]`
+- declaration 2: `[Quot.sound, propext]`
+- declaration 3: `[Classical.choice, Quot.sound, propext]`
+- declaration 4: `[Classical.choice, Quot.sound, propext]`
+- declaration 5: `[Classical.choice, Quot.sound, propext]`
+- declaration 6: `[Classical.choice, Quot.sound, propext]`
+- declaration 7: `[Classical.choice, Quot.sound, propext]`
+
+The evidence-manifest SHA-256 is
+`54DA96AF75D488FE0518936414702D52CEE9BDC0DFBC1C5C018CE93DADE719FF`; deterministic inner archive SHA-256 is
+`1610A800772CB5BCB89C69072F2F2CF647505B461C69B8C889EFCA8ECAB22C42`; raw GitHub artifact ZIP SHA-256 is
+`FFA624A9283C54EFDC49034F45A6124410ACB8F315BBBF26A50F327C6734D9C4`.  The independent validator checked
+`13` manifest entries, `14`
+inner members and `16` outer members, with literal
+`FINAL_STATUS=PASS`.
+
+This seal removes exactly the source and audit PRE-VALIDATION marks and adds
+the audit to `YangMillsCore.lean`.  It proves generic finite-grid aliasing
+only; it does not construct the physical Fourier-series expansion, regional
+`B0`, attain window 15, discharge a terminal field or inhabit `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

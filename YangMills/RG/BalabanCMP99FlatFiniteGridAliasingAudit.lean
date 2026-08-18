@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99FlatFiniteGridAliasing
 
-/-!
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the audit
-has not yet been verified by the Lean compiler.
--/
-
 #print axioms YangMills.RG.cmp99FlatIntegerResidue
 #print axioms YangMills.RG.CMP99FlatIntegerResidueClass
 #print axioms YangMills.RG.norm_cmp99FlatZModFourierCharacter

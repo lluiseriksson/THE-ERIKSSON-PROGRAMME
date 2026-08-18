@@ -12916,7 +12916,7 @@ seal retires exactly the two Step-8b.21 PRE-VALIDATION marks.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
-### Step 8b.22: exact finite-grid Fourier aliasing substrate (PRE-VALIDATION; NOT CHECKED)
+### Step 8b.22: exact finite-grid Fourier aliasing substrate (SEALED; cold run 31991954503; 20/41 unchanged)
 
 `BalabanCMP99FlatFiniteGridAliasing` starts item 3 of the finite post-Gate-7
 route without identifying a finite DFT with an integral.  It reduces integer
@@ -12926,10 +12926,20 @@ absolute summability to exchange the finite grid sum with the infinite
 Fourier series.  The endpoint is the literal sum of continuous coefficients
 in that residue class.
 
+Cold GitHub Actions run [31991954503](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/31991954503), job `95276977132`, validated exact
+source `534493728038813f3772f8b3b073237f4da1884e` under workflow HEAD `b05ef65af97a95752d1c929e30749d886d425d8d`.
+The focal exited `0` after `1277 s` with literal
+`Build completed successfully (8478 jobs).`; the audit
+exited `0` after `7 s`.  All seven measured
+axiom blocks are recorded in ledger Addendum 867 and are subsets of
+`{propext, Classical.choice, Quot.sound}`.  `FINAL_STATUS=PASS` and the
+independent artifact audit verified `13` manifest
+entries, `14` inner members and
+`16` outer members.
+
 The physical Fourier-series expansion of the CMP89 endpoint integrand is not
 accepted as a premise or asserted here; it remains the next source-specific
-producer.  Both new Lean files retain visible PRE-VALIDATION headers and are
-NOT CHECKED.  No Lean, Lake or oracle ran on Windows.  Regional `B0`, window
-15, terminal fields and a `TermSource` inhabitant remain open.  Counters stay
-exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
-unattained.
+producer.  This seal covers generic finite-grid aliasing only.  Regional
+`B0`, window 15, terminal fields and a `TermSource` inhabitant remain open.
+Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.

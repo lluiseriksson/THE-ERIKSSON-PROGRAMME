@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99FlatMultidimensionalDFT
 /-!
 # Exact finite-grid aliasing for absolutely summable Fourier coefficients
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the result
-has not yet been verified by the Lean compiler.
-
 The remaining CMP99 finite-to-continuous bridge must not identify a finite
 DFT with a Brillouin integral by definition.  This module isolates the exact
 algebraic part of that bridge.  An integer Fourier frequency is reduced into
