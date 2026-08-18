@@ -48,6 +48,7 @@ theorem reproRightSchurBracket
         B * R - Beta * P * R + Beta * C0 * (P * P - P) * C +
           (Beta * (B + C0) - B * C0) * P * C := by
             dsimp [E, R]
+            noncomm_ring_nf
             simp only [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
               hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
             noncomm_ring
@@ -97,6 +98,7 @@ theorem reproLeftSchurBracket
         B * R - Beta * R * P + Beta * C0 * C * (P * P - P) +
           (Beta * (B + C0) - B * C0) * C * P := by
             dsimp [E, R]
+            noncomm_ring_nf
             simp only [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
               hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
             noncomm_ring
