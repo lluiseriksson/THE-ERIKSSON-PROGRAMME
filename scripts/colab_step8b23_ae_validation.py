@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v8"
-runner.SOURCE_SHA = '5317e1b051c503217cc1044abae0d323a89cd36b'
+runner.RUNNER_REV = "step8b23-ae-v9"
+runner.SOURCE_SHA = 'a3d149b481205ec22e3b7771bffcdb143179d2ec'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -50,7 +50,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotientAudit.lean': '8a14bdda0ea10e74d3bc59b0ee183aea477490b6acef6880dbc2dca62802bb75',
     'YangMills/RG/BalabanCMP89CenteredTorusFourierPhase.lean': 'b7c58f3becacd65e0c4a1a4387804574eb1c74d0284547c8bf8d09453da03a0c',
     'YangMills/RG/BalabanCMP89CenteredTorusFourierPhaseAudit.lean': '246ef491a33109859d1f4e0a7889eb1f209a2a363e4001717d0e0dc6e67eea88',
-    'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean': '302f91446ca087b207c4adc0562cd7e0ca4d623ba158b4ee143e412f3a8407f0',
+    'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean': 'b3b5fc042e7c1b4bf4c4a2f1cc84b343024b593e035534991c80b445f8493ab2',
     'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasureAudit.lean': '35db023192efabc07380ebf0299eb1c07245be4e16e201e14e11ea5f201b38e8',
     'YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphy.lean': '95f3666c7d00e2e80dcad94b863b35c352cf9162e809acf9851078498b38173f',
     'YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphyAudit.lean': '2510acfc6f38f7c45ee669d93f58795214a6725ccbe9fe9e77dbf52fb5711cec',
@@ -80,6 +80,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean': 'e1ff97694e15ed9d0976b033a933a2d1d45bd87cfe7ae73c4efd930fd38de532',
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean': '9d11c7bbb58eb52901cf7be95a0f469832a45e8a0fc04dc812e27a4ae021451e',
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean': 'f9efec45f5856ccc8a97ea5f0240e43c929a495122e58600d19e5a09cfabd643',
+    'tmp/Step8b23AENormalizedMeasureCoeff.repro.lean': 'a77d77600322140c6fa45134b3a3b1c974cea5fba8be2b60b7b069505d2f6403',
 }
 
 
@@ -132,6 +133,11 @@ def run_with_persistent_log(
 runner.run = run_with_persistent_log
 
 runner.QUEUE = [
+    (
+        "00_normalized_measure_coefficient_repro",
+        ["lake", "env", "lean", 'tmp/Step8b23AENormalizedMeasureCoeff.repro.lean'],
+        None,
+    ),
     (
         '01_cmp89centeredbrillouinaffineslice_focal',
         ['lake', 'build', 'YangMills.RG.BalabanCMP89CenteredBrillouinAffineSlice'],

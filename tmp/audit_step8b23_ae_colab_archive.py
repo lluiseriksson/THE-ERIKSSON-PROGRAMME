@@ -17,8 +17,8 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_SHA = "5317e1b051c503217cc1044abae0d323a89cd36b"
-RUNNER_REV = "step8b23-ae-v8"
+SOURCE_SHA = "a3d149b481205ec22e3b7771bffcdb143179d2ec"
+RUNNER_REV = "step8b23-ae-v9"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 EVIDENCE_ROOT = "hrpoly-step8b23-ae-evidence"
 
@@ -36,6 +36,7 @@ generator = runpy.run_path(
 )
 BRICKS: tuple[tuple[str, int], ...] = generator["BRICKS"]
 SOURCE_PATHS: list[str] = generator["source_paths"]()
+REPRO_PATH: str = generator["REPRO_PATH"]
 
 
 def git_blob(path: str) -> bytes:
@@ -58,11 +59,14 @@ def git_blob(path: str) -> bytes:
 
 
 def expected_blobs() -> dict[str, str]:
-    return {path: hashlib.sha256(git_blob(path)).hexdigest() for path in SOURCE_PATHS}
+    return {
+        path: hashlib.sha256(git_blob(path)).hexdigest()
+        for path in SOURCE_PATHS + [REPRO_PATH]
+    }
 
 
 def expected_queue() -> list[str]:
-    stages: list[str] = []
+    stages: list[str] = ["00_normalized_measure_coefficient_repro"]
     for index, (module, _) in enumerate(BRICKS, start=1):
         slug = module.removeprefix("Balaban").lower()
         stages.extend((f"{index:02d}_{slug}_focal", f"{index:02d}_{slug}_audit"))

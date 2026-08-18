@@ -102,6 +102,7 @@ BRICKS: tuple[tuple[str, int], ...] = (
     ("BalabanCMP89CenteredGreenFourierSummability", 5),
     ("BalabanCMP99PhysicalGreenFiniteGridAliasing", 5),
 )
+REPRO_PATH = "tmp/Step8b23AENormalizedMeasureCoeff.repro.lean"
 
 
 def git(*args: str, binary: bool = False) -> bytes | str:
@@ -151,11 +152,19 @@ def generate(source_sha: str) -> str:
             raise SystemExit(f"FORBIDDEN_PLACEHOLDER={path}")
         digests.append((path, hashlib.sha256(data).hexdigest()))
 
+    repro_data = blob(source_sha, REPRO_PATH)
+    repro_text = repro_data.decode("utf-8")
+    if any(token in repro_text for token in ("sorry", "admit", "by?", "exact?")):
+        raise SystemExit(f"FORBIDDEN_PLACEHOLDER={REPRO_PATH}")
+    diagnostic_digests = digests + [
+        (REPRO_PATH, hashlib.sha256(repro_data).hexdigest())
+    ]
+
     if len(digests) != 36 or sum(count for _, count in BRICKS) != 124:
         raise SystemExit("FROZEN_SCOPE_MISMATCH")
 
     blob_rows = "\n".join(
-        f"    {q(path)}: {q(digest)}," for path, digest in digests
+        f"    {q(path)}: {q(digest)}," for path, digest in diagnostic_digests
     )
     queue_rows: list[str] = []
     for index, (module, count) in enumerate(BRICKS, start=1):
@@ -213,7 +222,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v8"
+runner.RUNNER_REV = "step8b23-ae-v9"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
@@ -226,6 +235,11 @@ runner.SOURCE_BLOBS = {{
 
 {PERSISTENT_LOG_BLOCK}
 runner.QUEUE = [
+    (
+        "00_normalized_measure_coefficient_repro",
+        ["lake", "env", "lean", {q(REPRO_PATH)}],
+        None,
+    ),
 {queue}
 ]
 

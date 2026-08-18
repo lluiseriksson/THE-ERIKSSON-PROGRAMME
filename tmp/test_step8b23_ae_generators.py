@@ -48,6 +48,8 @@ def main() -> int:
     compile(runner_text, "generated_step8b23_ae_runner.py", "exec")
     assert runner_text.count("'lake', 'build'") == 18
     assert runner_text.count("'lake', 'env', 'lean'") == 18
+    assert '["lake", "env", "lean"' in runner_text
+    assert "00_normalized_measure_coefficient_repro" in runner_text
     assert "CenteredPeriodicL1ResidueSum" not in runner_text
     assert runner_text.count("PRE-VALIDATION") == 0
     assert "runner.run = run_with_persistent_log" in runner_text
@@ -82,7 +84,7 @@ def main() -> int:
     print(
         "STEP8B23_AE_GENERATOR_SELFTEST_OK "
         "runner=pass workflow=pass tamper=fail_closed "
-        "files=36 bricks=18 stages=36 axiom_blocks=124"
+        "files=36 repros=1 bricks=18 stages=37 axiom_blocks=124"
     )
     return 0
 
