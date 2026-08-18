@@ -95,3 +95,5 @@ example (I : ℂ) :
   rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
     Complex.real_smul]
   norm_cast
+
+end
