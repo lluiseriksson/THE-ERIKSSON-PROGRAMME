@@ -5,16 +5,16 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A12:
-  `61c80e68995bb387b287a4b8c99a9137f236e1b6`.  This PRE-VALIDATION commit
+- Source checkpoint A13:
+  `9e282d108274b5795dc62e49766baa5111245ef2`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `E6131898C5DC6494F3ED6BA9246BAF712A36C66737F61F447E781C6ADA30B808`
+  `FB27566BC121DCA91FD081B15FC459DED8B904DD1B97FFF8FDCB88E8772C3B03`
 - P2b algebra reproducer Git-blob SHA-256:
-  `F6A494E1093D408BDA69F7DA0D9BBA20A16C5930FDACB7E47A0192E5AF501091`
+  `E6B19646CE0C42979796C3B984E3BCB7DFCE62F38AFF7F9CA8A0FBA023D11B58`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -23,20 +23,20 @@ intermediate-brick validation.  It is not compiler evidence.
   `C044D7D5948311D20ED76163B2500F597461118D6C2E8D4CB8EB6F5E7604E77C`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C14:
-  `506b955f68a114f2ad7b83cc2e06834ee94adba0`; runner Git-blob SHA-256
-  `8631E547BDDEB6AB9644A5A8292594CBBE1A313EC9C0C0CBAB346F8109CF31F8`.
-  It supersedes C13 after the minimal reproducer verified symmetry and Euler
-  and reduced P2b to one redundant directed inner-product rewrite.  A12 removes
-  only that rewrite and its two measured unused simp arguments; theorem
-  statements, hypotheses, axiom contracts and prerequisite split are unchanged.
+- Runner checkpoint C15:
+  `d25bb3d2c35ee1bef9fa4082e89e0afbb3a50e7d`; runner Git-blob SHA-256
+  `02A3B561EE0E91D04A37758432390F7862ED2390B47913B315118026FB87B47C`.
+  It supersedes C14 after the minimal reproducer exposed one remaining atom:
+  `inner eta q` versus `inner q eta`.  A13 cites `real_inner_comm` for that
+  exact pair before `ring`; no theorem statement, hypothesis, axiom contract
+  or prerequisite is changed.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C14 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C15 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
@@ -238,6 +238,19 @@ notebook was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `3A0F021933ACAB9F815C314F7779560CFE999439D848F82825A1B2D20A04074B`, and
 `859FCE0F24F074DD213E64290943588B33FD812C8EEE5F922A3207005B30041A`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C14 verified A12 and reached the same minimal reproducer in `21.724`
+seconds.  All rewrites then succeeded; `ring` left one goal whose only
+non-algebraic distinction was the order of a real inner product,
+`inner eta q` versus `inner q eta`.  No YangMills prerequisite was
+materialized.  Classification: **FAIL-P2B-REAL-INNER-SYMMETRY**; A13 adds the
+single explicit `real_inner_comm` instance before normalization.  The executed
+notebook was preserved with SHA-256
+`10602FBC56D462CDBE7AA3170A5E3B10A41F2F6EF3B3D3FF84ADFBA2851DA919`;
+the structured evidence and archive hashes were respectively
+`0B70B7C472DC146D9A235ADA3ED4810585FA6D8B98B9426FA2BCE584BF54330E`, and
+`F03A33872EA3F2B2E774ADF9EF5EE821A9C1CE34917225D12B959CA254C9F995`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
