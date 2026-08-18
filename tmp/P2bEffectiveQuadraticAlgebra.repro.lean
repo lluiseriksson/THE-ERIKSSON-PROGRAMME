@@ -123,3 +123,5 @@ theorem repro_completedSquare
     inner_sub_left, inner_sub_right]
   field_simp [hbCount]
   ring
+
+end
