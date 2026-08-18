@@ -5,13 +5,16 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A9:
-  `9200946ce6f15010e1f3287c977de55d75bd6f4f`.  This PRE-VALIDATION commit
-  contains the exact 39-file chain and its fail-closed static gates.
+- Source checkpoint A10:
+  `346b6bf1da333c745fa59e9f5972847e0e31a336`.  This PRE-VALIDATION commit
+  contains the exact 39-file chain, its fail-closed static gates, and one
+  Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `97C3E657F739C45FFA2EE9EFA24AD0E0A5EDD47C82DB555BAD9FEE00B0CFFCBC`
+  `C7DC3E1113888DE9ECAE59DB297FC89B7D6F5D79863890DE59CC95FBA9A57CE3`
+- P2b algebra reproducer Git-blob SHA-256:
+  `4E1974E97B56C319C5C4BCECE1234B5150B3BC0504F061951AB9F21630A0A17B`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -20,27 +23,29 @@ intermediate-brick validation.  It is not compiler evidence.
   `C044D7D5948311D20ED76163B2500F597461118D6C2E8D4CB8EB6F5E7604E77C`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C11:
-  `3c05bcf6c34e54a87a3f557d30be05da1503e2b9`; runner Git-blob SHA-256
-  `64153860AC8E65049455F84F0316E6AE1A5E723C4AE16603F247A8588FCEFEB9`.
-  It supersedes C10 after that runner verified P0--P2 and exposed four
-  elaboration-only failures in P2b.  A9 normalizes those operator applications
-  without changing a theorem statement or hypothesis.  Complete/empty axiom
-  headers and the P0--P5/P7--P9 prerequisite split remain enforced.
+- Runner checkpoint C12:
+  `0fe1ffe8ab6145f9853716ccd42bca30139b4cbe`; runner Git-blob SHA-256
+  `70ED10CD11D1ED5AB214FA89C250E86CABA7DB435E372B7B87E537C760BE0E49`.
+  It supersedes C11 after A9 reduced P2b to three generic continuous-linear-map
+  algebra errors.  A10 isolates those exact proof shapes in a Mathlib-only
+  reproducer that runs before the 8539-job project frontier.  Complete/empty
+  axiom headers and the P0--P5/P7--P9 prerequisite split remain enforced.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C11 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C12 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
-   39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
+   39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
+   P2b reproducer before elaboration.
 4. Run `python scripts/check_lean_overlay_text.py --paths-from
    tmp/P0-P9-SCRATCH-PATHS.txt`, `python tmp/audit_p0_p9_diagnostic.py`, and
    `python tmp/test_p0_p9_diagnostic.py`.
-5. Materialize the pinned dependency cache, then the exact four-target P0--P5
+5. Execute the P2b Mathlib-only reproducer.  Only if it exits `0`, materialize
+   the exact four-target P0--P5
    prerequisite frontier.  Immediately before P7, materialize the remaining
    five direct-import targets.  Together these are the same exact nine-target
    frontier; the split only makes an early failure observable without first
@@ -190,6 +195,22 @@ executed notebook was preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `41B89D56AD89D8467127B2DF099308C7F0BC0E80720F7F8CD90BBED952DE7421`, and
 `F8C2DBEB49DC673BA42D3468999540168D23BE7332CE6DFBD3452D0970307A64`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C11 again verified P0, P1 and P2 sources and all three audits after a
+cold four-target prerequisite frontier (`8539` jobs, exit `0`, `2333.845`
+seconds).  P2b then stopped on three proof-shape errors that mention no project
+object: expansion of a continuous-linear-map application under an inner
+product, separation of target-only linearity from the inverse-law point
+identity, and a redundant directed inner-product rewrite after scalar
+normalization.  Classification: **FAIL-P2B-GENERIC-CLM-ALGEBRA**; P2b--P9
+remain PRE-VALIDATION.  A10 changes no theorem statement or hypothesis and
+adds a Mathlib-only reproducer so this class is checked before the next cold
+project bootstrap.  The executed notebook was preserved with SHA-256
+`78B196C90A629BB812D5BA81BD93647839A32A9DAD481BFE610DBE89517FD070`;
+the structured evidence and archive hashes were respectively
+`B0E6584AFABD9D082CD601DC2AB646C7D6510F47F5A9220AA17A4F1AC5AF3406`, and
+`36A3C6174F9FD7E42BA4F684E55E35E9166603FFB177C386ED6B5A1451DA6798`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully

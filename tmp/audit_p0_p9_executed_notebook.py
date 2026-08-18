@@ -18,12 +18,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
-SOURCE_SHA = "9200946ce6f15010e1f3287c977de55d75bd6f4f"
-RUNNER_SHA256 = "64153860ac8e65049455f84f0316e6ae1a5e723c4ae16603f247a8588fcefeb9"
+SOURCE_SHA = "346b6bf1da333c745fa59e9f5972847e0e31a336"
+RUNNER_SHA256 = "70ed10cd11d1ed5ab214fa89c250e86caba7db435e372b7b87e537c760be0e49"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
-MANIFEST_SHA256 = "97c3e657f739c45ffa2ee9efa24ad0e0a5edd47c82db555bad9fee00b0cffcbc"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v11"
+MANIFEST_SHA256 = "c7dc3e1113888de9ecae59db297fc89b7d6f5d79863890de59cc95fba9a57ce3"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v12"
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 AUDIT_AXIOM_COUNTS = {
@@ -63,6 +63,7 @@ REQUIRED_CORE_STAGES = {
     "cache_get",
     "p0_p9_static_gate",
     "p0_p9_static_selftest",
+    "p0_p9_p2b_algebra_repro",
     "p0_p9_materialize_project_prerequisites",
     "p0_p9_materialize_p7_p9_project_prerequisites",
     "p0_p9_prepare_scratch_build_dir",
@@ -163,8 +164,8 @@ def audit(path: Path) -> str:
         f"RUNNER_REV={RUNNER_REV}",
         f"HEAD is now at {SOURCE_SHA[:9]}",
         "RUNTIME=CPU RAM_GIB=",
-        "LEAN_OVERLAY_TEXT_OK files=39",
-        "LEAN_IMPORT_PREFIX_OK files=39",
+        "LEAN_OVERLAY_TEXT_OK files=40",
+        "LEAN_IMPORT_PREFIX_OK files=40",
         "FINAL_STATUS=PASS",
         "LAUNCHER_EXIT=0",
         "LAUNCHER_RUNTIME_RELEASE_REQUESTED=1",
