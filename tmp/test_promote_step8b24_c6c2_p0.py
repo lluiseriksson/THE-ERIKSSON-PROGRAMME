@@ -124,12 +124,23 @@ def make_green_evidence(fixture: Path) -> Path:
         f"RUNNER_REV={audit.RUNNER_REV}",
         "RUNTIME=CPU RAM_GIB=50.99",
         f"HEAD is now at {audit.SOURCE_SHA[:9]}",
-        "LEAN_OVERLAY_TEXT_OK files=39",
-        "LEAN_IMPORT_PREFIX_OK files=39",
+        "LEAN_OVERLAY_TEXT_OK files=40",
+        "LEAN_IMPORT_PREFIX_OK files=40",
     ]
+    audit_stages = audit.expected_audit_stages()
+    pure_pending = True
     for stage in sorted(audit.REQUIRED_CORE_STAGES | audit.expected_queue_stages()):
+        rows.append(f"STAGE={stage} CMD=[]")
+        count = audit_stages.get(stage, 0)
+        if count:
+            nonempty = count - int(pure_pending)
+            rows.extend(
+                "depends on axioms: [propext, Quot.sound]" for _ in range(nonempty)
+            )
+            if pure_pending:
+                rows.append("'Fixture.pure' does not depend on any axioms")
+                pure_pending = False
         rows.append(f"STAGE={stage} EXIT=0 SECONDS=1.000")
-    rows.extend("depends on axioms: [propext, Quot.sound]" for _ in range(199))
     rows.extend(
         [
             "EVIDENCE_SHA256=" + "1" * 64,
