@@ -23,10 +23,14 @@ intermediate-brick validation.  It is not compiler evidence.
   `A1139CFED4574E34FC80F25CE43640E4F9D4A868A15300D87C5C5C5CC0F28A34`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C19:
-  `36ba21f54844079971994fc0b3e67bcd19e8597c`; runner Git-blob SHA-256
-  `93E72530731986C234BE2421CD0270DBDD16E486665A56D5A72EADCAEB319981`.
-  It supersedes C18 after C18 retained the exact P2c failure: three local
+- Runner checkpoint C20:
+  `c93ebfcf3c40019b1a33c0b7e9921427f6a25f8f`; runner Git-blob SHA-256
+  `A9B9BF7EB5974DCB79852E76F28A29CA8A3DA960250D42696154C201845C4421`.
+  It supersedes C19, whose launcher rejected its own stale expected manifest
+  digest before checkout or Lean; no mathematical verdict was produced.
+  C20 binds the already-published A16 manifest digest and otherwise preserves
+  the C19 queue.  C19 had superseded C18 after C18 retained the exact P2c
+  failure: three local
   abbreviations were referenced outside the theorem-statement `let` scope.
   A16 recreates those exact abbreviations inside the proof without changing
   the equality, hypotheses or constants.  C19 preserves
@@ -40,7 +44,7 @@ intermediate-brick validation.  It is not compiler evidence.
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C19 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C20 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` plus the separately bound
