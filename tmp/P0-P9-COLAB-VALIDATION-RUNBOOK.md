@@ -5,14 +5,14 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A17:
-  `34787cac96df5b5f1e79aa39d62ff63cbfb491aa`.  This PRE-VALIDATION commit
+- Source checkpoint A18:
+  `670fce295690861fe06a14b6540e2286d987aada`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and one
   Mathlib-only P2b algebra reproducer executed before project materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `017F46886D4FF4F2DD1CA77B69EC22E3C0F8720B5CC95C3E8C427903A39E31A9`
+  `BDA19EA3F8490E1065E2AA5BCFD731E62BA905AB5C0B5C445E6E7649E74EA4B6`
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P9 source SHA-256:
@@ -20,13 +20,22 @@ intermediate-brick validation.  It is not compiler evidence.
 - P9 audit SHA-256:
   `EA3489E333FE66999EEBE1B949B157D07F93023D5F5A7B09FED558663EFDE37E`
 - Static validator SHA-256:
-  `A1139CFED4574E34FC80F25CE43640E4F9D4A868A15300D87C5C5C5CC0F28A34`
+  `6DA079C6034AEED1091492B756C21D577C957E111F8A8D8CC528CC3F4DACEA09`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C21:
-  `b30739f80703c5f2fd9405200c730a4c769bb80b`; runner Git-blob SHA-256
-  `8C138C91F24968B64F852C342B6FD69584950EFE1A042CADEEBC72B13E26A0F3`.
-  It supersedes C20, which reached P2c after P0--P2b and their audits passed,
+- Runner checkpoint C22:
+  `759e6fca5c0cca4f1ac2b5ac20b51ee80c48113d`; runner Git-blob SHA-256
+  `4AD657815E56189F8EDF9AF908F3C8350DF57CDF9D97E302F1FC9DF44BD52882`.
+  It supersedes C21, which passed P0--P2c, their audits, and P3 scalar
+  recurrence plus its audit, then stopped at P3 block Gaussian algebra.  Its
+  two noncommutative polynomial identities still hid the central scalar maps
+  behind local abbreviations.  A18 unfolds exactly those three abbreviations
+  before `noncomm_ring`; statements, hypotheses, constants and the two-sided
+  inverse contract are unchanged.  C21 produced structured evidence SHA-256
+  `0877B6236223C1E42ECF040C66A63BD97E1F642B0CE29F3C47947B4653367DD1`
+  and archive SHA-256
+  `B68B757EF54094075C72E658F5861AACE8994F325085EE7308CC730419A4B793`.
+  C21 had superseded C20, which reached P2c after P0--P2b and their audits passed,
   then measured one missing zeta reduction after unfolding the generated
   coarse precision.  A17 adds only that reduction; the equality, hypotheses
   and constants are unchanged.  C20 had superseded C19, whose launcher
