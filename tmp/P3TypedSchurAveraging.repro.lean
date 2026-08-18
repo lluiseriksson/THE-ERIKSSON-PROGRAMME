@@ -13,8 +13,12 @@ example
     (P S C : K →L[ℝ] K) (b c : ℝ) (x : K)
     (hbase : b • C x - b ^ 2 • S (C x) + c • P (C x) = x) :
     x + b ^ 2 • S (C x) = b • C x + c • P (C x) := by
-  rw [← hbase]
-  abel_nf
+  calc
+    x + b ^ 2 • S (C x) =
+        (b • C x - b ^ 2 • S (C x) + c • P (C x)) +
+          b ^ 2 • S (C x) :=
+      congrArg (fun y : K => y + b ^ 2 • S (C x)) hbase.symm
+    _ = b • C x + c • P (C x) := by abel
 
 example
     {K L : Type*}

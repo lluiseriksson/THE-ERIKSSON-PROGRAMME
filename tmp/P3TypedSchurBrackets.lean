@@ -190,8 +190,12 @@ theorem scratch_cmp85Typed_rightAveragingIdentity
         ContinuousLinearMap.comp_apply, ContinuousLinearMap.add_apply,
         ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
         ContinuousLinearMap.id_apply] using hCx
-    rw [← hbase]
-    abel_nf
+    calc
+      x + b ^ 2 • S (C x) =
+          (b • C x - b ^ 2 • S (C x) + c • P (C x)) +
+            b ^ 2 • S (C x) :=
+        congrArg (fun y : K => y + b ^ 2 • S (C x)) hbase.symm
+      _ = b • C x + c • P (C x) := by abel
   have hRlinear := congrArg R hlinear
   have hRPx : R (P (C x)) = R (C x) := by
     simpa only [ContinuousLinearMap.comp_apply] using
