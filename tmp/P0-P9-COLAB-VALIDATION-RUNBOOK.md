@@ -5,19 +5,19 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A22:
-  `b6f96216e428d44f5e335a16d31d2767fd14d726`.  This PRE-VALIDATION commit
+- Source checkpoint A23:
+  `a6646c47335c465e07ce1b7a8348c48182c778c0`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and two
   Mathlib-only P2b/P3 algebra reproducers executed before project
   materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `16D26CDA82D19666FF78D0AB3BF4DE4D6A4157E3F6565A5AFC7A87F157B2AE06`
+  `22A32340CACC6CA490565CE77D0A4CABF14E450641BEB9E4ED5BF9CA60C09939`
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P3 algebra reproducer Git-blob SHA-256:
-  `8BD0EE8E98D3188EEE45F6835A8C25F63215B3824F09D892762F76D39BD2B9E9`
+  `80594766949878A6F1F96EC039B7D107C30075918C145B489B2E5EEDA5F68533`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -26,11 +26,22 @@ intermediate-brick validation.  It is not compiler evidence.
   `6DA079C6034AEED1091492B756C21D577C957E111F8A8D8CC528CC3F4DACEA09`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C26:
-  `b72b69d3151d7fb20f0f620edb208f2cb382fece`; runner Git-blob SHA-256
-  `C4BAFA8C1FF78DA1B09D4989C02406FB98AC5BF9DDA1A81623D229538081C4B3`.
+- Runner checkpoint C27:
+  `d6846da9a363165fbf8e586ebae855868533ed88`; runner Git-blob SHA-256
+  `41D17A7279F51DF2574A086B2C2C5856DE5D598D85CA383F9484886E447C38E0`.
 - Launcher notebook Git-blob SHA-256:
-  `B5BD5BB1745D1529F042D2C0DED66931EE041B1AF9C189AEF9B070298627D39D`.
+  `00E87ABEF963FE27B4EDBD7B934B5A33114C1AA9744A48BB78BCBBD3010DA9A5`.
+  C26 passed every transport, pin and static gate plus the P2b reproducer,
+  then stopped in the P3 Mathlib-only reproducer after 6.324 seconds.  The
+  finite scalar/operator commutations were now visible, but the tactic's
+  right-associated words required their equally finite consequences
+  `x * (y * z) = y * (x * z)`.  A23 derives only those consequences from the
+  already present commutation facts.  It adds no algebraic hypothesis and
+  changes no statement, constant or inverse contract.  C26 produced
+  structured evidence SHA-256
+  `ADBD8F53432D9D4156FD8A1722B8306EB552F97A09FED14A82590B7D642F051D`
+  and archive SHA-256
+  `BB689B538A96D45855043A7F6A2899FBF55223E0743DC6CA5868967C456D19B6`.
   C25 passed every transport, pin and static gate plus the P2b reproducer,
   then stopped in the P3 Mathlib-only reproducer after 6.358 seconds.  It
   measured that this pinned Mathlib exposes `noncomm_ring` but not the
