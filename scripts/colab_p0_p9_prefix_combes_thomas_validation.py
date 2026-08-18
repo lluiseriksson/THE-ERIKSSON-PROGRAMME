@@ -3,7 +3,7 @@
 
 The immutable mathematical source is ``SOURCE_SHA``.  The 39 shipped Lean
 chain blobs are bound by the source checkpoint's path list and SHA-256
-manifest.  Two additional Mathlib-only reproducers are hash-gated separately
+manifest.  Three additional Mathlib-only reproducers are hash-gated separately
 and runs before the project prerequisite frontier.  The queue is sequential
 and stop-on-first-error.
 
@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "32fe3fa590f1f529134985b30326785683ebb07f"
+SOURCE_SHA = "de48111f44d09a20174196a1a8716e8e425e2d3a"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -49,7 +49,7 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "27591c26fefa55bcd0d0051b664c1489e1bf5e15fa91d8594438764e9a8807ea"
+    "95e84f8ae0792a563e0a7b54d6078b40b43a30939e61597e5992f0c484f9538a"
 )
 P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
 P2B_REPRO_SHA256 = (
@@ -188,7 +188,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v29"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v30"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
