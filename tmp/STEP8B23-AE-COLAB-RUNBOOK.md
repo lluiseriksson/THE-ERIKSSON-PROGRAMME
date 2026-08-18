@@ -6,16 +6,16 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `a3d149b481205ec22e3b7771bffcdb143179d2ec`.
-- Scope: 36 mathematical Git blobs, one Mathlib-only coefficient reproducer,
+  `a2dffa40e62d94353c97bbc3aa42295c161f1c88`.
+- Scope: 36 mathematical Git blobs, two Mathlib-only measure reproducers,
   18 ordered focal/audit bricks, and 124 independently declared axiom
   headers.  Unit F is absent.
 - Runner checkpoint:
-  `af5f97561bcbd0148bb9cfcb84ae6b50d934c31a`.
+  `a6af65ac8bf27059939ef88c955838e012ce4c37`.
 - Runner Git-blob SHA-256:
-  `DD009E8F011B9B96F135B66B60C37830B40AB3CAA4F5A74599A0CD5797D04965`.
+  `7F6A8672C34CFFCBD9364484EC36CC5D02A5A1249D483587987CCE63525E9951`.
 - Launcher notebook SHA-256:
-  `A1BCAB9EA6A1F1F5F387619BE200EDFA0A384F4EE929764A9C37706013F639F2`.
+  `9B8EF83486B65D4121C8DF9BB406F8DEDBCA2298CCD1F86EA686A129D3BAA06A`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -91,15 +91,31 @@ changes.  The retained V8 evidence/archive SHA-256 values are respectively
 and
 `0D8B6F8E6405B14EBAEA3E471021E9931DF3053ED05AC27D33E9477913C4A516`.
 
+V9 verified its isolated coefficient equality in 3.725 seconds and again
+verified the first three focal/audit pairs; the Fourier focal took 1114.034
+seconds.  The fourth focal then stopped after 118.573 seconds.  Elaborating
+the complete module exposed the exact remaining proof-shape obligations:
+normalizing the scaled interval endpoint, pinning the quotient map's source
+measure, spelling the extended nonnegative-real scalar type unambiguously,
+pinning the nonnegativity used by the product-measure rewrite, and rewriting
+the coefficient in the syntactic form actually left by the module.  V10
+changes only those measured proof terms and adds a Mathlib-only reproducer
+that exercises the complete measure transport before the long focal queue.
+No public statement, measure, physical constant or hypothesis changes.  The
+retained V9 evidence/archive SHA-256 values are respectively
+`91C5AFC9A03EF4322E4743B730E489C9FC17051702FF4EDBED2A81742FF34DF6`
+and
+`F642B21FD83BACEB474713FF05885B4AD6ABAA1904D6123870FABC10F722FF71`.
+
 ## Execution contract
 
 1. Use Colab Pro+ CPU/high-RAM, never GPU and never Windows Lean/Lake.
 2. Open the one-cell launcher at its raw Git checkpoint.  Reject runner hash
    drift before executing downloaded code.
 3. The runner clones the exact source checkpoint without credentials, checks
-   all 36 mathematical source blobs plus the one reproducer, toolchain and
+   all 36 mathematical source blobs plus the two reproducers, toolchain and
    Mathlib pins, and refuses drift.
-4. Execute the coefficient reproducer, then the 18 focal/audit pairs in the
+4. Execute both measure reproducers, then the 18 focal/audit pairs in the
    frozen dependency order, and stop on the first nonzero child exit.
 5. Require exactly 124 axiom headers and reject `sorryAx`, `ofReduceBool` or
    any axiom outside `{propext, Classical.choice, Quot.sound}`.
