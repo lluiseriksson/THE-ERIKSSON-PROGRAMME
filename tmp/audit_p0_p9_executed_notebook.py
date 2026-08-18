@@ -2,7 +2,7 @@
 """Fail-closed audit of the single-cell P0--P9 Colab transcript.
 
 This checker does not compile Lean.  It verifies that an executed notebook is
-the output of the immutable v2 launcher and that the runner itself reported a
+the output of the immutable launcher and that the runner itself reported a
 complete PASS for the exact 39-file source checkpoint.  A green transcript is
 still intermediate compiler evidence, not a terminal hRpoly result.
 """
@@ -19,11 +19,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
 SOURCE_SHA = "3af413563b2f71c250e9e7bbd4972efca436ad55"
-RUNNER_SHA256 = "c662da6a142bbd749488954bc086d5700f35f9c4cf3db969edcca1a12ece6346"
+RUNNER_SHA256 = "871a20be4b1f7f62fdbb98bd3019034f64b6edde5e54ec0754c66fb40ac87c49"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
 MANIFEST_SHA256 = "71da54fe12b77f7288a33c4edb6130733b288cc0b2ba3e3a3d081e0469e4f3f9"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v3"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v4"
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 REQUIRED_CORE_STAGES = {
@@ -42,6 +42,7 @@ REQUIRED_CORE_STAGES = {
     "p0_p9_static_gate",
     "p0_p9_static_selftest",
     "p0_p9_materialize_project_prerequisites",
+    "p0_p9_prepare_scratch_build_dir",
 }
 
 

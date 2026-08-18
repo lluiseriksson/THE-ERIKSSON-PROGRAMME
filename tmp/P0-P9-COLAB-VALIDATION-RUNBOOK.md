@@ -20,18 +20,19 @@ intermediate-brick validation.  It is not compiler evidence.
   `D778C56620FD562985F6C0D2539D74B52104BFD30EE697138BD8453A8972C849`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C3:
-  `5e567fc19e3fbf89a9b07bb9b2febea96ffdc48a`; runner Git-blob SHA-256
-  `C662DA6A142BBD749488954BC086D5700F35F9C4CF3DB969EDCCA1A12ECE6346`.
-  It supersedes C2 after the first real elaboration error exposed the missing
-  `Matrix.Norms.L2Operator` scope in the P0--P5 physical matrix signatures.
+- Runner checkpoint C4:
+  `bd5fe8f2f0a2466aff36da23b1c3e14c05b04057`; runner Git-blob SHA-256
+  `871A20BE4B1F7F62FDBB98BD3019034F64B6EDDE5E54EC0754C66FB40AC87C49`.
+  It supersedes C3 after P0 elaborated successfully but its audit exposed that
+  a bare `lean source.lean` does not materialize the scratch `.olean` on Lake's
+  import path.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C3 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C4 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
@@ -41,9 +42,11 @@ intermediate-brick validation.  It is not compiler evidence.
 5. Materialize the pinned dependency cache and then the exact nine-target
    tracked-project prerequisite frontier derived from direct `YangMills.*`
    imports in the 39-file list.  No manifest or toolchain drift is accepted.
-6. Execute `lake env lean PATH` for every nonblank path in
-   `tmp/P0-P9-SCRATCH-PATHS.txt`, in listed order, stop on the first nonzero
-   exit code.  Do not jump directly to P7–P9: P0–P5 are semantic gates.
+6. For every non-audit source, execute `lake env lean PATH -o
+   .lake/build/lib/lean/tmp/STEM.olean`; then execute its audit with `lake env
+   lean PATH`.  Follow `tmp/P0-P9-SCRATCH-PATHS.txt` exactly and stop on the
+   first nonzero exit code.  Do not jump directly to P7–P9: P0–P5 are semantic
+   gates.
 7. Record each command, duration and real child exit code.  For audit files,
    require one axiom header per expected declaration and reject `sorryAx`,
    `ofReduceBool` or any axiom outside `{propext, Classical.choice,
@@ -77,6 +80,19 @@ The single executed notebook was preserved with SHA-256
 the remote structured evidence and archive hashes were respectively
 `9CCEFB76F3A49F6D3B605F1AAB78EDB6941AA9BF9FA77EFEBDED6B9CE0171917`, and
 `1AC7301AC46AE900EBFEDEB46E4EED6E1E34ACC9D9B4247A852029B8CFF7330B`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C3 again materialized the exact prerequisite frontier successfully
+(`8562` jobs, exit `0`, `5076.172` seconds).  P0 itself then elaborated with
+exit `0` in `11.346` seconds.  Its audit stopped immediately because
+`tmp.P0CanonicalPrefixTower` was not on the import path: the previous command
+checked P0 without writing its `.olean`.  Classification:
+**FAIL-SCRATCH-OLEAN-MATERIALIZATION**; P0 remains PRE-VALIDATION because its
+axiom audit did not run.  The executed notebook was preserved with SHA-256
+`D18751DA82354887F1B4878608E6B748773AC11E67F970E3852C9C05696157DE`;
+the remote structured evidence and archive hashes were respectively
+`140A176154F94C99DF8F7ABDC8F071E722FAE4B35B12E716EE4D58E2171ACB96`, and
+`424BBCF22C983572D630539A4DE69AFB2AEF96069C66F2389AAA3E0E3A73170`.
 The runtime was released automatically and the cell was not re-executed.
 
 ## Honest verdict boundary
