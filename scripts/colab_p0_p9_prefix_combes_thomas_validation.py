@@ -3,7 +3,7 @@
 
 The immutable mathematical source is ``SOURCE_SHA``.  The 39 shipped Lean
 chain blobs are bound by the source checkpoint's path list and SHA-256
-manifest.  One additional Mathlib-only reproducer is hash-gated separately
+manifest.  Two additional Mathlib-only reproducers are hash-gated separately
 and runs before the project prerequisite frontier.  The queue is sequential
 and stop-on-first-error.
 
@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "670fce295690861fe06a14b6540e2286d987aada"
+SOURCE_SHA = "1cf99ddf2ca04e6fd4fa82b74d254c7ddebadae8"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -49,11 +49,15 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "bda19ea3f8490e1065e2aa5bcfd731e62ba905ab5c0b5c445e6e7649e74ea4b6"
+    "16d26cda82d19666ff78d0ab3bf4de4d6a4157e3f6565a5afc7a87f157b2ae06"
 )
 P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
 P2B_REPRO_SHA256 = (
     "6b0b71190cf629a3bac9e1d2f8ffe24c0ffcf157573bcbcaa5c6d8507d25764e"
+)
+P3_REPRO_PATH = "tmp/P3BlockGaussianAlgebra.repro.lean"
+P3_REPRO_SHA256 = (
+    "8bd0ee8e98d3188eee45f6835a8c25f63215b3824f09d892762f76d39bd2b9e9"
 )
 
 
@@ -131,6 +135,7 @@ for number, line in enumerate(
 if len(paths) != 39 or list(source_blobs) != paths:
     raise RuntimeError(f"P0_P9_TRANSPORT_SCOPE_MISMATCH={len(paths)}/{len(source_blobs)}")
 source_blobs[P2B_REPRO_PATH] = P2B_REPRO_SHA256
+source_blobs[P3_REPRO_PATH] = P3_REPRO_SHA256
 
 # These counts are an independent audit contract, not values inferred from
 # the source files at runtime.  A missing or extra readout therefore fails.
@@ -178,7 +183,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v22"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v23"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -256,6 +261,11 @@ runner.QUEUE = [
     (
         "p0_p9_p2b_algebra_repro",
         ["lake", "env", "lean", P2B_REPRO_PATH],
+        None,
+    ),
+    (
+        "p0_p9_p3_algebra_repro",
+        ["lake", "env", "lean", P3_REPRO_PATH],
         None,
     ),
     (
