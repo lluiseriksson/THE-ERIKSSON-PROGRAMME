@@ -85,17 +85,42 @@ example :
 theorem reproMeasurePiConstSmul
     {ι α : Type*} [Fintype ι] [MeasurableSpace α]
     (c : NNReal) (mu : Measure α) [SigmaFinite mu] :
-    Measure.pi (fun _ : ι => c • mu) =
-      c ^ Fintype.card ι • Measure.pi (fun _ : ι => mu) := by
+    Measure.pi (fun _ : ι => (c : ENNReal) • mu) =
+      (c : ENNReal) ^ Fintype.card ι •
+        Measure.pi (fun _ : ι => mu) := by
   apply Measure.pi_eq
   intro s _
   simp [Measure.pi_pi, Measure.smul_apply, ENNReal.smul_def,
     Finset.prod_mul_distrib]
 
+def reproOneDimensionalNormalizedBrillouinMeasure : Measure ℝ :=
+  ENNReal.ofReal ((2 * Real.pi)⁻¹) •
+    volume.restrict (Set.uIoc 0 (2 * Real.pi))
+
+def reproFourDimensionalBrillouinMeasure : Measure (Fin 4 → ℝ) :=
+  Measure.pi fun _ : Fin 4 =>
+    volume.restrict (Set.uIoc 0 (2 * Real.pi))
+
+example :
+    (Measure.pi fun _ : Fin 4 =>
+        reproOneDimensionalNormalizedBrillouinMeasure) =
+      ENNReal.ofReal ((2 * Real.pi)⁻¹) ^ 4 •
+        reproFourDimensionalBrillouinMeasure := by
+  unfold reproOneDimensionalNormalizedBrillouinMeasure
+    reproFourDimensionalBrillouinMeasure
+  have htwoPi_nonneg : (0 : ℝ) ≤ 2 * Real.pi := by positivity
+  have hcoeff_nonneg : (0 : ℝ) ≤ (2 * Real.pi)⁻¹ := by positivity
+  simpa [Set.uIoc_of_le htwoPi_nonneg,
+    ENNReal.ofReal_eq_coe_nnreal hcoeff_nonneg] using
+    (reproMeasurePiConstSmul (ι := Fin 4)
+      (⟨(2 * Real.pi)⁻¹, hcoeff_nonneg⟩ : NNReal)
+      (volume.restrict (Set.Ioc 0 (2 * Real.pi))))
+
 example (I : ℂ) :
-    (ENNReal.ofReal ((2 * Real.pi)⁻¹)).toReal ^ 4 • I =
+    (ENNReal.ofReal ((2 * Real.pi)⁻¹) ^ 4).toReal • I =
       (((2 * Real.pi) ^ 4)⁻¹ : ℝ) * I := by
   have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
-  rw [ENNReal.toReal_ofReal hc, inv_pow, Complex.real_smul]
+  rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
+    Complex.real_smul]
 
 end

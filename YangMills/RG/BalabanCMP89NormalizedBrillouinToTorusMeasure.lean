@@ -135,8 +135,9 @@ four-dimensional source normalization from being counted twice. -/
 theorem cmp89Measure_pi_const_smul
     {iota α : Type*} [Fintype iota] [MeasurableSpace α]
     (c : NNReal) (mu : Measure α) [SigmaFinite mu] :
-    Measure.pi (fun _ : iota => c • mu) =
-      c ^ Fintype.card iota • Measure.pi (fun _ : iota => mu) := by
+    Measure.pi (fun _ : iota => (c : ENNReal) • mu) =
+      (c : ENNReal) ^ Fintype.card iota •
+        Measure.pi (fun _ : iota => mu) := by
   apply Measure.pi_eq
   intro s _
   simp [Measure.pi_pi, Measure.smul_apply, ENNReal.smul_def,
@@ -199,7 +200,8 @@ theorem integral_unitAddTorus_eq_cmp89NormalizedBrillouin
         MeasureTheory.integral_smul_measure]
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
       have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
-      rw [ENNReal.toReal_ofReal hc, inv_pow, Complex.real_smul]
+      rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
+        Complex.real_smul]
 
 end
 
