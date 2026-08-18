@@ -49,10 +49,9 @@ theorem cmp89CenteredBrillouin_affineSlice_complex
         (∫ x in (0 : ℝ)..2 * Real.pi, f (-Real.pi + x)) =
       ∫ t in (-(1 / 2 : ℝ))..(1 / 2 : ℝ),
         f (-(2 * Real.pi) * t) := by
-  change ((2 * Real.pi)⁻¹ : ℝ) •
-      (∫ x in (0 : ℝ)..2 * Real.pi, f (-Real.pi + x)) = _
-  simpa [sub_eq_add_neg] using
-    (cmp89CenteredBrillouin_affineSlice f)
+  rw [← Complex.real_smul]
+  rw [cmp89CenteredBrillouin_affineSlice]
+  congr 2 <;> ring
 
 end
 
