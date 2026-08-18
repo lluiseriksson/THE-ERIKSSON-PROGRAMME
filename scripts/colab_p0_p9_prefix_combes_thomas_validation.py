@@ -21,7 +21,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "274d57089b3529e284525c167e7f75aeff0ce6e7"
+SOURCE_SHA = "90388ee4f3bb5908d0e8c80e254c4c3beb6a5411"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -44,7 +44,7 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "3874ff009d8bd409de22d1e5b74bed38ef92237c594742352d228a29cf2f1945"
+    "4fcb87c0003288ebe981656aa4fbd2f779264ab3e4c57d3490d69dccd213cc7a"
 )
 
 
@@ -116,11 +116,13 @@ if set(AXIOM_COUNTS) != {path for path in paths if path.endswith("Audit.lean")}:
 # clone must build this exact prerequisite frontier before invoking ``lean``
 # on P0.  This is infrastructure only: none of these targets is a P0--P9
 # conclusion, and SOURCE_SHA plus the 39 mathematical blobs remain unchanged.
-PROJECT_PREREQUISITES = [
+P0_P5_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceRetainedGeneratedTerminalBridge",
     "YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance",
     "YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary",
     "YangMills.RG.FinitePiLpTypedKernelReindexAlgebra",
+]
+P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary",
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalFinePartition",
     "YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition",
@@ -128,7 +130,7 @@ PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v8"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v9"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -150,7 +152,7 @@ runner.QUEUE = [
     ),
     (
         "p0_p9_materialize_project_prerequisites",
-        ["lake", "build", *PROJECT_PREREQUISITES],
+        ["lake", "build", *P0_P5_PROJECT_PREREQUISITES],
         None,
     ),
     (
@@ -160,6 +162,14 @@ runner.QUEUE = [
     ),
 ]
 for index, path in enumerate(paths, start=1):
+    if path == "tmp/P7SourceSeparatedAmbientPrefixPrecision.lean":
+        runner.QUEUE.append(
+            (
+                "p0_p9_materialize_p7_p9_project_prerequisites",
+                ["lake", "build", *P7_P9_PROJECT_PREREQUISITES],
+                None,
+            )
+        )
     stem = Path(path).stem
     stage = f"p0_p9_{index:02d}_{re.sub(r'[^A-Za-z0-9]+', '_', stem).lower()}"
     command = ["lake", "env", "lean", path]
