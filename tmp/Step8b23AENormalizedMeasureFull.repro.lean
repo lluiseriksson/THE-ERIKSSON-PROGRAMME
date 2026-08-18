@@ -87,8 +87,14 @@ example :
 theorem reproMeasurePiConstSmul
     {ι α : Type*} [Fintype ι] [MeasurableSpace α]
     (c : NNReal) (mu : Measure α) [SigmaFinite mu] :
-    Measure.pi (fun _ : ι => c • mu) =
-      c ^ Fintype.card ι • Measure.pi (fun _ : ι => mu) := by
+    Measure.pi (fun _ : ι => (c : ENNReal) • mu) =
+      (c : ENNReal) ^ Fintype.card ι •
+        Measure.pi (fun _ : ι => mu) := by
+  letI : ∀ _ : ι, SigmaFinite ((c : ENNReal) • mu) := fun _ =>
+    Eq.mp
+      (congrArg (fun nu : Measure α => SigmaFinite nu)
+        (ENNReal.smul_def c mu))
+      (inferInstance : SigmaFinite (c • mu))
   apply Measure.pi_eq
   intro s _
   simp [Measure.pi_pi, Measure.smul_apply, ENNReal.smul_def,
@@ -113,13 +119,6 @@ example :
   have hcoeff_nonneg : (0 : ℝ) ≤ (2 * Real.pi)⁻¹ := by positivity
   rw [Set.uIoc_of_le htwoPi_nonneg,
     ENNReal.ofReal_eq_coe_nnreal hcoeff_nonneg]
-  change
-    (Measure.pi fun _ : Fin 4 =>
-        (⟨(2 * Real.pi)⁻¹, hcoeff_nonneg⟩ : NNReal) •
-          volume.restrict (Set.Ioc 0 (2 * Real.pi))) =
-      (⟨(2 * Real.pi)⁻¹, hcoeff_nonneg⟩ : NNReal) ^ 4 •
-        Measure.pi (fun _ : Fin 4 =>
-          volume.restrict (Set.Ioc 0 (2 * Real.pi)))
   exact reproMeasurePiConstSmul (ι := Fin 4)
     (⟨(2 * Real.pi)⁻¹, hcoeff_nonneg⟩ : NNReal)
     (volume.restrict (Set.Ioc 0 (2 * Real.pi)))
