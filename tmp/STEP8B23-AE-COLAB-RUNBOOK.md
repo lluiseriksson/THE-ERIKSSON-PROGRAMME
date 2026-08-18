@@ -6,16 +6,16 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `3fda1abcab2038bd5ca68d0f2520eec6f9ff0329`.
+  `b6f96216e428d44f5e335a16d31d2767fd14d726`.
 - Scope: 36 mathematical Git blobs, two Mathlib-only measure reproducers,
   18 ordered focal/audit bricks, and 124 independently declared axiom
   headers.  Unit F is absent.
 - Runner checkpoint:
-  `afe322dc62fe7f4ef6c17a3c34503035b7e5758f`.
+  `b72b69d3151d7fb20f0f620edb208f2cb382fece`.
 - Runner Git-blob SHA-256:
-  `E2B25AC8E8185D35FC6C45656137278195CD867AB43356A2D094C18923894533`.
+  `3216C4DA4442F90A5B8D095B0D9F1D6F7D26DECA052EA93AEF19106748ACBE22`.
 - Launcher notebook SHA-256:
-  `7BD5CC1C6A15315F337A83CD66EA95B7C564F6CDC9B012BF0CC0133DE2D5398A`.
+  `81062C4264564F320D3BC66D3AB06821060CED9C461CA438D7FC8B3BA9E24EE0`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
@@ -140,6 +140,20 @@ evidence/archive SHA-256 values are respectively
 `AA331177333A3C818A919C184454F98B7438CC925ABD29E1D4754702013980AD`
 and
 `30A915405CC273D7E00D213F9D15742E765B1FC102D3AF5BD5EE8591F6D216A5`.
+
+V13 passed bootstrap, both transport guards and the isolated coefficient
+reproducer, then stopped in the complete measure reproducer after 6.438
+seconds.  The Haar import and final coefficient rewrite were thereby
+confirmed.  The remaining errors were one literal affine-function equality
+and an incorrect call shape for `Measure.smul_apply` in the product-measure
+lemma.  V14 proves the affine equality explicitly after `convert` and reduces
+the product measure on rectangles directly with `Measure.pi_pi` and the
+`NNReal` action.  No public statement, measure, physical constant or
+hypothesis changes.  The retained V13 evidence/archive SHA-256 values are
+respectively
+`7E10972FE4AE8BE99EEF8C34C369577A003031486D844AA98C5080E925D7091`
+and
+`979525E4E6D9727D81F1BA8C39C93BF089EDE90C673B20DAD49705FC0175B22A`.
 
 ## Execution contract
 

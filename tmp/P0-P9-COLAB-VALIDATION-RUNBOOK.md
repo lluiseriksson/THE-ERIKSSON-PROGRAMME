@@ -5,19 +5,19 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A21:
-  `3fda1abcab2038bd5ca68d0f2520eec6f9ff0329`.  This PRE-VALIDATION commit
+- Source checkpoint A22:
+  `b6f96216e428d44f5e335a16d31d2767fd14d726`.  This PRE-VALIDATION commit
   contains the exact 39-file chain, its fail-closed static gates, and two
   Mathlib-only P2b/P3 algebra reproducers executed before project
   materialization.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `3B5BB5C862E3AA11113A5072E7C2852E068C99A8752A459B5E52B409DAA85D9E`
+  `16D26CDA82D19666FF78D0AB3BF4DE4D6A4157E3F6565A5AFC7A87F157B2AE06`
 - P2b algebra reproducer Git-blob SHA-256:
   `6B0B71190CF629A3BAC9E1D2F8FFE24C0FFCF157573BCBCAA5C6D8507D25764E`
 - P3 algebra reproducer Git-blob SHA-256:
-  `78E47B7B9631D771F913AA2C4B76E9C30FC25B0962260008036857FD9867D3E1`
+  `8BD0EE8E98D3188EEE45F6835A8C25F63215B3824F09D892762F76D39BD2B9E9`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
@@ -26,11 +26,22 @@ intermediate-brick validation.  It is not compiler evidence.
   `6DA079C6034AEED1091492B756C21D577C957E111F8A8D8CC528CC3F4DACEA09`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C25:
-  `d37f92de879a24de10868e88b302b4ab74458a7b`; runner Git-blob SHA-256
-  `D9620F1B43797B8D8DFE4CF8963A910039AB76A1B4ADC7500E533D5F347F18C5`.
+- Runner checkpoint C26:
+  `b72b69d3151d7fb20f0f620edb208f2cb382fece`; runner Git-blob SHA-256
+  `C4BAFA8C1FF78DA1B09D4989C02406FB98AC5BF9DDA1A81623D229538081C4B3`.
 - Launcher notebook Git-blob SHA-256:
-  `C1682170F7FD18F0281319E608742FFC7F296F20C346683D1EC36F3DF1F06D8A`.
+  `B5BD5BB1745D1529F042D2C0DED66931EE041B1AF9C189AEF9B070298627D39D`.
+  C25 passed every transport, pin and static gate plus the P2b reproducer,
+  then stopped in the P3 Mathlib-only reproducer after 6.358 seconds.  It
+  measured that this pinned Mathlib exposes `noncomm_ring` but not the
+  attempted `noncomm_ring_nf`, and that pre-normalizing before expansion did
+  not expose the finite central commutations.  A22 instead supplies those
+  exact commutations as the documented user simp rules of `noncomm_ring`;
+  statements, hypotheses, constants and the two-sided inverse contract are
+  unchanged.  C25 produced structured evidence SHA-256
+  `FF90F2C8DDA44D867C53699FB9D0793D6D1FBBD9F3D41B5E8FAA06D22E4F8922`
+  and archive SHA-256
+  `28E76E90941B96F920976240662BDCEBC7A2A6E14B951B075CC7C205C09CD225`.
   It supersedes C22, which passed P0--P2c, their audits, and P3 scalar
   recurrence plus its audit, then stopped after 9.486 seconds at P3 block
   Gaussian algebra.  The universal simplification rule supplied as
