@@ -6,20 +6,20 @@ compiler seal and not authority to remove any PRE-VALIDATION mark.
 ## Immutable inputs
 
 - Mathematical source checkpoint:
-  `339afb22dd296977a2ee43623ae7e89e77f538ce`.
+  `ff94008e1831d18cd317dda8883ccc7a08ace730`.
 - Scope: 36 Git blobs, 18 ordered focal/audit bricks, 124 independently
   declared axiom headers.  Unit F is absent.
 - Runner checkpoint:
-  `4a196e56d6565daac4314bdbd2ec37c6116db297`.
+  `0b5b6fd8601f84bdfec0c137941fa04734dcc6f4`.
 - Runner Git-blob SHA-256:
-  `7101C7F9CF7D924D31B00A137821C6B4F8B7C53EB16948169520580DFBEDAA3C`.
+  `33D3885D0607D44FEFCF92820273B8BB9ED32A5FC7229AE852F0EE0D794592E9`.
 - Launcher notebook SHA-256:
-  `A435C6799F5ED62E7944D0AA6D0B30E921D658B780FBE028C46334BE13A04459`.
+  `7D008F6F1A66B279734F8A101896CD4111CC073760EFA1E61A2DB0D0764C79E1`.
 - Exact Lean toolchain: `leanprover/lean4:v4.29.0-rc6`.
 - Exact Mathlib commit: `07642720480157414db592fa85b626dafb71355b`.
 
-The source checkpoint is the output of the fail-closed A--E promotion writer
-at promoted-content manifest
+The source checkpoint descends from the output of the fail-closed A--E
+promotion writer at promoted-content manifest
 `C1057D840543EB2EF8024B8F90B7D9B785DF7C40D5C15582E3F4E83022F41AD0`.
 Every source/audit file retains its visible PRE-VALIDATION header.
 
@@ -53,6 +53,18 @@ V5 verified the first focal/audit pair without warnings and reduced the second
 brick to one literal endpoint normalization in the one-coordinate
 measure-preserving theorem.  V6 supplies that equality while pinning the
 coordinate map's type; no public statement or measure is changed.
+
+V6 verified the first two focal/audit pairs without warnings.  The third focal
+then stopped after 1212.849 seconds at two proof-shape errors in
+`BalabanCMP89CenteredTorusFourierPhase.lean`: line 51 applied `ring` after
+`field_simp` had already closed its goal, and line 67 did not yet normalize the
+finite sum into the requested scalar product.  Under the exact-first-error
+rule, V7 removes only the closed-goal tactic at line 51.  It does not change a
+public statement, constant, hypothesis, or the still-unreached line-67 proof.
+The retained V6 evidence/archive SHA-256 values are respectively
+`8A0EBFDFFEB5436E42D2A38A4410B8CD77F59B821C4189E72EC4D5BA7B27A4EE`
+and
+`17EB280319A77AD256301CDCD3F943E9208C297F451AE06CF1DDA43D18B26DB0`.
 
 ## Execution contract
 
