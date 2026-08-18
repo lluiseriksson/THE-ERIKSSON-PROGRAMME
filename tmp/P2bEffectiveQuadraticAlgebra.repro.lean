@@ -119,6 +119,7 @@ theorem repro_completedSquare
   rw [hQphi]
   simp only [inner_smul_left, conj_trivial]
   rw [← real_inner_self_eq_norm_sq, inner_sub_right, inner_sub_right]
+  simp only [inner_sub_left, inner_smul_left, inner_smul_right, conj_trivial]
   field_simp [hbCount]
   rw [real_inner_comm eta (Q (G (Q.adjoint eta)))]
   ring
