@@ -18,12 +18,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
-SOURCE_SHA = "274d57089b3529e284525c167e7f75aeff0ce6e7"
-RUNNER_SHA256 = "a9099bebb613af3b5380b6966587b21ab940476d1d8c81af483ee64869dcc785"
+SOURCE_SHA = "90388ee4f3bb5908d0e8c80e254c4c3beb6a5411"
+RUNNER_SHA256 = "bfd7a4fb412e362d99dd344015bc26487503ef8390ec13b58332a92f1e7e6692"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
-MANIFEST_SHA256 = "3874ff009d8bd409de22d1e5b74bed38ef92237c594742352d228a29cf2f1945"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v8"
+MANIFEST_SHA256 = "4fcb87c0003288ebe981656aa4fbd2f779264ab3e4c57d3490d69dccd213cc7a"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v9"
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 REQUIRED_CORE_STAGES = {
@@ -42,6 +42,7 @@ REQUIRED_CORE_STAGES = {
     "p0_p9_static_gate",
     "p0_p9_static_selftest",
     "p0_p9_materialize_project_prerequisites",
+    "p0_p9_materialize_p7_p9_project_prerequisites",
     "p0_p9_prepare_scratch_build_dir",
 }
 

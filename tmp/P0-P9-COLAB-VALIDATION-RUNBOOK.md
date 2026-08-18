@@ -5,43 +5,47 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A7:
-  `274d57089b3529e284525c167e7f75aeff0ce6e7`.  This PRE-VALIDATION commit
+- Source checkpoint A8:
+  `90388ee4f3bb5908d0e8c80e254c4c3beb6a5411`.  This PRE-VALIDATION commit
   contains the exact 39-file chain and its fail-closed static gates.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `3874FF009D8BD409DE22D1E5B74BED38EF92237C594742352D228A29CF2F1945`
+  `4FCB87C0003288EBE981656AA4FBD2F779264AB3E4C57D3490D69DCCD213CC7A`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
   `EA3489E333FE66999EEBE1B949B157D07F93023D5F5A7B09FED558663EFDE37E`
 - Static validator SHA-256:
-  `D778C56620FD562985F6C0D2539D74B52104BFD30EE697138BD8453A8972C849`
+  `39F39068AB500097DF7384D2FECFB429EE3496B78E14459BA96C06C4F7AE6B88`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C8:
-  `69095afc8f87cfbe0802eb9f60b80b378bcf3565`; runner Git-blob SHA-256
-  `A9099BEBB613AF3B5380B6966587B21AB940476D1D8C81AF483EE64869DCC785`.
-  It supersedes C7 after P2 exposed four independent elaboration defects;
-  A7 repairs only those measured proof terms without changing statements or
-  mathematical hypotheses.
+- Runner checkpoint C9:
+  `3e02faa375eb8c29ad5f65831221ce6c8b27596b`; runner Git-blob SHA-256
+  `BFD7A4FB412E362D99DD344015BC26487503EF8390EC13B58332A92F1E7E6692`.
+  It supersedes C8 after P2 exposed one remaining scalar-power normalization
+  goal.  A8 directs the rewrite to the intended exponent only; C9 splits
+  prerequisite materialization at the P7 boundary without changing the
+  mathematical queue, statements, or hypotheses.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C8 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C9 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
 4. Run `python scripts/check_lean_overlay_text.py --paths-from
    tmp/P0-P9-SCRATCH-PATHS.txt`, `python tmp/audit_p0_p9_diagnostic.py`, and
    `python tmp/test_p0_p9_diagnostic.py`.
-5. Materialize the pinned dependency cache and then the exact nine-target
-   tracked-project prerequisite frontier derived from direct `YangMills.*`
-   imports in the 39-file list.  No manifest or toolchain drift is accepted.
+5. Materialize the pinned dependency cache, then the exact four-target P0--P5
+   prerequisite frontier.  Immediately before P7, materialize the remaining
+   five direct-import targets.  Together these are the same exact nine-target
+   frontier; the split only makes an early failure observable without first
+   compiling dependencies used solely by P7--P9.  No manifest or toolchain
+   drift is accepted.
 6. For every non-audit source, execute `lake env lean PATH -o
    .lake/build/lib/lean/tmp/STEM.olean`; then execute its audit with `lake env
    lean PATH`.  Follow `tmp/P0-P9-SCRATCH-PATHS.txt` exactly and stop on the
@@ -141,6 +145,19 @@ preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `EDE488B30F5CC684D2BAD58292B2460A8473E5EDFE0EE4DD4A9F2813C2AFA777`, and
 `89BD84F623FD366A70B29846A249CD47AACFEA954F51E04B4E23B3E2A94C224A`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C8 materialized the full prerequisite frontier (`8562` jobs, exit `0`,
+`4857.122` seconds), then verified P0 and P1 with their audits (all four exits
+`0`).  P2 stopped at line 251 on one scalar identity: rewriting the dimension
+also rewrote the subtracted exponent on the target side.  Classification:
+**FAIL-P2-ELABORATION**; P2 remains PRE-VALIDATION.  A8 replaces that broad
+rewrite by a directed `calc` step that changes only the intended power.  The
+executed notebook was preserved with SHA-256
+`AAAD8F18566ADDEDC81D264240CB2D717A80B596284CD42FD533C2A0CE927E49`;
+the structured evidence and archive hashes were respectively
+`F198C375CA6CCD5BDD418A4D4188DF72E6DCE7CF524F4B79088E8EEE9727EE07`, and
+`917043F54D7088213DB5AACA0BC33B02A85B4E82E4188F71C1D3A1EF37E299B0`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
