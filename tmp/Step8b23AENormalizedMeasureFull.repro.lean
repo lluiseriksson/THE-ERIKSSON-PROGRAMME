@@ -127,7 +127,7 @@ example (I : ℂ) :
     (ENNReal.ofReal ((2 * Real.pi)⁻¹) ^ 4).toReal • I =
       (((2 * Real.pi) ^ 4)⁻¹ : ℝ) * I := by
   have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
-  rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
-    Complex.real_smul]
+  rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow]
+  rfl
 
 end

@@ -79,11 +79,11 @@ parameter `t = 1/2 - x/(2*pi)`. -/
 def cmp89PhysicalBrillouinToUnitAddCircle (x : ℝ) : UnitAddCircle :=
   (((1 / 2 : ℝ) - (2 * Real.pi)⁻¹ * x : ℝ) : UnitAddCircle)
 
+set_option linter.unusedTactic false in
+set_option linter.unreachableTactic false in
 /-- The normalized physical coordinate maps exactly to Haar measure.  The
 proof composes scaling, quotienting, negation and translation; none of those
 symmetries is assumed for the physical Green integrand. -/
-set_option linter.unusedTactic false in
-set_option linter.unreachableTactic false in
 theorem measurePreserving_cmp89PhysicalBrillouinToUnitAddCircle :
     MeasurePreserving cmp89PhysicalBrillouinToUnitAddCircle
       cmp89OneDimensionalNormalizedBrillouinMeasure
@@ -207,8 +207,8 @@ theorem integral_unitAddTorus_eq_cmp89NormalizedBrillouin
         MeasureTheory.integral_smul_measure]
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
       have hc : 0 ≤ (2 * Real.pi)⁻¹ := by positivity
-      rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow,
-        Complex.real_smul]
+      rw [ENNReal.toReal_pow, ENNReal.toReal_ofReal hc, inv_pow]
+      rfl
 
 end
 
