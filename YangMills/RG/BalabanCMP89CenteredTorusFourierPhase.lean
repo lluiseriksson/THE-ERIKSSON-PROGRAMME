@@ -48,7 +48,6 @@ theorem cmp89Eq251EntirePhase_physicalFine_affineResidue
   intro mu _
   push_cast
   field_simp [hMC]
-  ring
 
 /-- Mathlib's negative Fourier monomial is exactly the exponential of the
 physical `p(t) dot n` phase in the chosen negative-momentum convention. -/
