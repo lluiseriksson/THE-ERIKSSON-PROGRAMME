@@ -21,7 +21,7 @@ EXPECTED_PATHS_SHA256 = (
     "FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61"
 )
 EXPECTED_MANIFEST_SHA256 = (
-    "27591C26FEFA55BCD0D0051B664C1489E1BF5E15FA91D8594438764E9A8807EA"
+    "95E84F8AE0792A563E0A7B54D6078B40B43A30939E61597E5992F0C484F9538A"
 )
 DECL = re.compile(
     r"(?m)^(?:(?:noncomputable|protected)\s+)?"
@@ -73,6 +73,12 @@ def main() -> int:
         measured = digest(ROOT / relative)
         if measured != expected:
             fail(f"P0_P9_BLOB_DRIFT={relative}/{measured}")
+        text = (ROOT / relative).read_text(encoding="utf-8-sig")
+        if re.search(
+            r"(?s)/--.*?-/\s*set_option\s+[^\n]+\s+in\s*\n\s*(?:theorem|lemma)",
+            text,
+        ):
+            fail(f"P0_P9_DOCSTRING_BEFORE_SCOPED_OPTION={relative}")
 
     source_path = ROOT / "tmp/P9SourceSeparatedPrefixCombesThomas.lean"
     audit_path = ROOT / "tmp/P9SourceSeparatedPrefixCombesThomasAudit.lean"
