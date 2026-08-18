@@ -20,6 +20,11 @@ noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℝ A]
 
+private theorem scratch_cmp85_commute_assoc
+    {x y : A} (hxy : x * y = y * x) (z : A) :
+    x * (y * z) = y * (x * z) := by
+  rw [← mul_assoc, hxy, mul_assoc]
+
 /-- The right Schur bracket vanishes from a right inverse of
 `b·1 - b²S + cP`, the projector law, and the source recurrence.
 
@@ -70,7 +75,19 @@ theorem scratch_cmp85_rightSchurBracket_eq_zero
           (Beta * (B + C0) - B * C0) * P * C := by
             dsimp [E, R]
             noncomm_ring [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
-              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
+              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC,
+              scratch_cmp85_commute_assoc hBP,
+              scratch_cmp85_commute_assoc hBS,
+              scratch_cmp85_commute_assoc hBC,
+              scratch_cmp85_commute_assoc hBC0,
+              scratch_cmp85_commute_assoc hBBeta,
+              scratch_cmp85_commute_assoc hC0P,
+              scratch_cmp85_commute_assoc hC0S,
+              scratch_cmp85_commute_assoc hC0C,
+              scratch_cmp85_commute_assoc hC0Beta,
+              scratch_cmp85_commute_assoc hBetaP,
+              scratch_cmp85_commute_assoc hBetaS,
+              scratch_cmp85_commute_assoc hBetaC]
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
 /-- Left-handed companion of `scratch_cmp85_rightSchurBracket_eq_zero`.
@@ -121,7 +138,19 @@ theorem scratch_cmp85_leftSchurBracket_eq_zero
           (Beta * (B + C0) - B * C0) * C * P := by
             dsimp [E, R]
             noncomm_ring [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
-              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
+              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC,
+              scratch_cmp85_commute_assoc hBP,
+              scratch_cmp85_commute_assoc hBS,
+              scratch_cmp85_commute_assoc hBC,
+              scratch_cmp85_commute_assoc hBC0,
+              scratch_cmp85_commute_assoc hBBeta,
+              scratch_cmp85_commute_assoc hC0P,
+              scratch_cmp85_commute_assoc hC0S,
+              scratch_cmp85_commute_assoc hC0C,
+              scratch_cmp85_commute_assoc hC0Beta,
+              scratch_cmp85_commute_assoc hBetaP,
+              scratch_cmp85_commute_assoc hBetaS,
+              scratch_cmp85_commute_assoc hBetaC]
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
 end

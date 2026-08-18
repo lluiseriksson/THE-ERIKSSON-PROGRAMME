@@ -4,6 +4,10 @@ noncomputable section
 
 variable {A : Type*} [Ring A] [Algebra ℝ A]
 
+private theorem reproCommuteAssoc {x y : A} (hxy : x * y = y * x) (z : A) :
+    x * (y * z) = y * (x * z) := by
+  rw [← mul_assoc, hxy, mul_assoc]
+
 theorem reproRightSchurBracket
     (b c beta : ℝ) (P S C : A)
     (hP : P * P = P)
@@ -49,7 +53,13 @@ theorem reproRightSchurBracket
           (Beta * (B + C0) - B * C0) * P * C := by
             dsimp [E, R]
             noncomm_ring [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
-              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
+              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC,
+              reproCommuteAssoc hBP, reproCommuteAssoc hBS,
+              reproCommuteAssoc hBC, reproCommuteAssoc hBC0,
+              reproCommuteAssoc hBBeta, reproCommuteAssoc hC0P,
+              reproCommuteAssoc hC0S, reproCommuteAssoc hC0C,
+              reproCommuteAssoc hC0Beta, reproCommuteAssoc hBetaP,
+              reproCommuteAssoc hBetaS, reproCommuteAssoc hBetaC]
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
 theorem reproLeftSchurBracket
@@ -97,7 +107,13 @@ theorem reproLeftSchurBracket
           (Beta * (B + C0) - B * C0) * C * P := by
             dsimp [E, R]
             noncomm_ring [hBP, hBS, hBC, hBC0, hBBeta, hC0P, hC0S,
-              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC]
+              hC0C, hC0Beta, hBetaP, hBetaS, hBetaC,
+              reproCommuteAssoc hBP, reproCommuteAssoc hBS,
+              reproCommuteAssoc hBC, reproCommuteAssoc hBC0,
+              reproCommuteAssoc hBBeta, reproCommuteAssoc hC0P,
+              reproCommuteAssoc hC0S, reproCommuteAssoc hC0C,
+              reproCommuteAssoc hC0Beta, reproCommuteAssoc hBetaP,
+              reproCommuteAssoc hBetaS, reproCommuteAssoc hBetaC]
     _ = 0 := by rw [hR, hP0, hrec0]; noncomm_ring
 
 end
