@@ -128,7 +128,7 @@ PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v3"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v4"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -153,12 +153,25 @@ runner.QUEUE = [
         ["lake", "build", *PROJECT_PREREQUISITES],
         None,
     ),
+    (
+        "p0_p9_prepare_scratch_build_dir",
+        ["mkdir", "-p", ".lake/build/lib/lean/tmp"],
+        None,
+    ),
 ]
 for index, path in enumerate(paths, start=1):
     stem = Path(path).stem
     stage = f"p0_p9_{index:02d}_{re.sub(r'[^A-Za-z0-9]+', '_', stem).lower()}"
+    command = ["lake", "env", "lean", path]
+    if not path.endswith("Audit.lean"):
+        # Scratch audits import their immediate source through the module name
+        # ``tmp.<Stem>``.  A bare ``lean source.lean`` checks the source but does
+        # not leave an olean on Lake's import path; materialize that exact olean
+        # under the clone's ordinary build root before running the audit.
+        olean = f".lake/build/lib/lean/{Path(path).with_suffix('.olean').as_posix()}"
+        command.extend(["-o", olean])
     runner.QUEUE.append(
-        (stage, ["lake", "env", "lean", path], AXIOM_COUNTS.get(path))
+        (stage, command, AXIOM_COUNTS.get(path))
     )
 
 
