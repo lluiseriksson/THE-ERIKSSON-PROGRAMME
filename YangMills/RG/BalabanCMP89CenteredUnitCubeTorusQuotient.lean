@@ -10,6 +10,7 @@ attainment or terminal field is asserted here.
 -/
 
 import Mathlib.Analysis.Fourier.AddCircleMulti
+import Mathlib.MeasureTheory.Constructions.Pi
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic
 import Mathlib.Topology.Separation.Hausdorff
 
@@ -21,6 +22,8 @@ been materialized, and its result has not yet been verified by the compiler.
 namespace YangMills.RG
 
 noncomputable section
+
+open MeasureTheory
 
 /-- Centered representatives of the unit additive circle. -/
 abbrev CMP89CenteredUnitInterval :=
@@ -57,8 +60,8 @@ theorem cmp89CenteredUnitInterval_eq_or_oppositeEndpoints
   have hfaces :
       (((-(1 / 2 : ℝ) : ℝ) : UnitAddCircle)) =
         ((((1 / 2 : ℝ) : ℝ) : UnitAddCircle)) := by
-    rw [show (1 / 2 : ℝ) = -(1 / 2 : ℝ) + 1 by ring,
-      AddCircle.coe_add, AddCircle.coe_period, add_zero]
+    simpa only [show (-(1 / 2 : ℝ)) + 1 = 1 / 2 by ring] using
+      (AddCircle.coe_add_period (p := (1 : ℝ)) (-(1 / 2 : ℝ))).symm
   have hleftMem : (-(1 / 2 : ℝ)) ∈
       Set.Ico (-(1 / 2 : ℝ)) (-(1 / 2 : ℝ) + 1) := by
     constructor <;> norm_num
@@ -82,8 +85,8 @@ theorem cmp89CenteredUnitInterval_eq_or_oppositeEndpoints
             ((y.1 : ℝ) : UnitAddCircle) := by
         rw [hfaces]
         simpa only [hxRight] using hxy
-      exact (AddCircle.coe_eq_coe_iff_of_mem_Ico hleftMem hyMem).mp
-        hleftEqY
+      exact ((AddCircle.coe_eq_coe_iff_of_mem_Ico hleftMem hyMem).mp
+        hleftEqY).symm
   · have hxMem : x.1 ∈
         Set.Ico (-(1 / 2 : ℝ)) (-(1 / 2 : ℝ) + 1) := by
       constructor
@@ -178,7 +181,7 @@ theorem cmp89CenteredUnitCube_factorsThrough_of_faceSeam
       f x = f (cmp89CenteredUnitCubeReplace x y S) := by
     intro S
     induction S using Finset.induction_on with
-    | empty => simp [cmp89CenteredUnitCubeReplace]
+    | empty => rfl
     | @insert i S hi ih =>
         have hbefore :
             cmp89CenteredUnitCubeReplace x y S =
@@ -188,7 +191,7 @@ theorem cmp89CenteredUnitCube_factorsThrough_of_faceSeam
           by_cases hki : k = i
           · subst k
             simp [cmp89CenteredUnitCubeReplace, hi]
-          · simp [Function.update_noteq hki,
+          · simp [Function.update, hki,
               cmp89CenteredUnitCubeReplace]
         have hafter :
             cmp89CenteredUnitCubeReplace x y (insert i S) =
@@ -198,8 +201,8 @@ theorem cmp89CenteredUnitCube_factorsThrough_of_faceSeam
           by_cases hki : k = i
           · subst k
             simp [cmp89CenteredUnitCubeReplace]
-          · simp [Function.update_noteq hki,
-              cmp89CenteredUnitCubeReplace, hki]
+          · simp [Function.update, hki,
+              cmp89CenteredUnitCubeReplace]
         calc
           f x = f (cmp89CenteredUnitCubeReplace x y S) := ih
           _ = f (Function.update
@@ -211,15 +214,22 @@ theorem cmp89CenteredUnitCube_factorsThrough_of_faceSeam
                 f hface _ i (hcoord i)
           _ = f (cmp89CenteredUnitCubeReplace x y (insert i S)) := by
               rw [hafter]
-  simpa [cmp89CenteredUnitCubeReplace] using
-    hchain (Finset.univ : Finset iota)
+  have hfinal :
+      cmp89CenteredUnitCubeReplace x y (Finset.univ : Finset iota) = y := by
+    funext i
+    simp [cmp89CenteredUnitCubeReplace]
+  have h := hchain (Finset.univ : Finset iota)
+  rw [hfinal] at h
+  exact h
 
 /-- The centered product covering map is continuous. -/
 theorem continuous_cmp89CenteredUnitCubeToTorus
     {iota : Type*} [Fintype iota] :
     Continuous
       (cmp89CenteredUnitCubeToTorus (iota := iota)) := by
-  fun_prop
+  exact continuous_pi fun i =>
+    (AddCircle.continuous_mk' (1 : ℝ)).comp
+      (continuous_subtype_val.comp (continuous_apply i))
 
 /-- Every torus point has a centered half-open representative, hence a point
 in the centered closed cube. -/
@@ -232,7 +242,9 @@ theorem surjective_cmp89CenteredUnitCubeToTorus
   let x : CMP89CenteredUnitCube iota := fun i ↦
     ⟨(e (z i)).1, by
       have hi := (e (z i)).property
-      constructor <;> linarith⟩
+      constructor
+      · exact le_of_lt hi.1
+      · simpa only [show -(1 / 2 : ℝ) + 1 = 1 / 2 by ring] using hi.2⟩
   refine ⟨x, ?_⟩
   funext i
   change (((e (z i)).1 : ℝ) : UnitAddCircle) = z i
@@ -246,7 +258,7 @@ theorem isQuotientMap_cmp89CenteredUnitCubeToTorus
     {iota : Type*} [Fintype iota] :
     Topology.IsQuotientMap
       (cmp89CenteredUnitCubeToTorus (iota := iota)) :=
-  Topology.IsQuotientMap.of_surjective_continuous
+  IsQuotientMap.of_surjective_continuous
     surjective_cmp89CenteredUnitCubeToTorus
     continuous_cmp89CenteredUnitCubeToTorus
 

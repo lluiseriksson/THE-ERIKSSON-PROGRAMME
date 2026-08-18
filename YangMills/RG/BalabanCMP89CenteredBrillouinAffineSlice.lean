@@ -60,8 +60,7 @@ theorem cmp89CenteredBrillouin_affineSlice_complex
           f (-(2 * Real.pi) * t) := by
       apply intervalIntegral.integral_congr
       intro t _ht
-      congr 1
-      ring
+      ring_nf
 
 end
 
