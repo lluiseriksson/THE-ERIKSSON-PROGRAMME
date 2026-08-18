@@ -53,6 +53,8 @@ theorem reproMeasurePreservingScale :
 def reproPhysicalBrillouinToCircle (x : ℝ) : UnitAddCircle :=
   (((1 / 2 : ℝ) - (2 * Real.pi)⁻¹ * x : ℝ) : UnitAddCircle)
 
+set_option linter.unusedTactic false in
+set_option linter.unreachableTactic false in
 example :
     MeasurePreserving reproPhysicalBrillouinToCircle
       reproNormalizedBrillouinMeasure
@@ -85,9 +87,8 @@ example :
 theorem reproMeasurePiConstSmul
     {ι α : Type*} [Fintype ι] [MeasurableSpace α]
     (c : NNReal) (mu : Measure α) [SigmaFinite mu] :
-    Measure.pi (fun _ : ι => (c : ENNReal) • mu) =
-      (c : ENNReal) ^ Fintype.card ι •
-        Measure.pi (fun _ : ι => mu) := by
+    Measure.pi (fun _ : ι => c • mu) =
+      c ^ Fintype.card ι • Measure.pi (fun _ : ι => mu) := by
   apply Measure.pi_eq
   intro s _
   simp [Measure.pi_pi, Measure.smul_apply, ENNReal.smul_def,
@@ -111,7 +112,7 @@ example :
   have htwoPi_nonneg : (0 : ℝ) ≤ 2 * Real.pi := by positivity
   have hcoeff_nonneg : (0 : ℝ) ≤ (2 * Real.pi)⁻¹ := by positivity
   simpa [Set.uIoc_of_le htwoPi_nonneg,
-    ENNReal.ofReal_eq_coe_nnreal hcoeff_nonneg] using
+    ENNReal.ofReal_eq_coe_nnreal hcoeff_nonneg, ENNReal.smul_def] using
     (reproMeasurePiConstSmul (ι := Fin 4)
       (⟨(2 * Real.pi)⁻¹, hcoeff_nonneg⟩ : NNReal)
       (volume.restrict (Set.Ioc 0 (2 * Real.pi))))
