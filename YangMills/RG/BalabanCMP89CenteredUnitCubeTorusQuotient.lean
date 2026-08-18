@@ -328,12 +328,18 @@ theorem measurePreserving_cmp89CenteredUnitRealCubeToTorus
       (cmp89CenteredUnitRealCubeToTorus (iota := iota))
       (cmp89CenteredUnitRealCubeMeasure iota)
       (volume : Measure (UnitAddTorus iota)) := by
+  have hcoordinate : ∀ _ : iota,
+      MeasurePreserving (fun x : ℝ => (x : UnitAddCircle))
+        (volume.restrict (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2 : ℝ)))
+        volume := by
+    intro _
+    simpa only [show -(1 / 2 : ℝ) + 1 = 1 / 2 by ring] using
+      (AddCircle.measurePreserving_mk (1 : ℝ) (-(1 / 2 : ℝ)))
   have hpi := MeasureTheory.measurePreserving_pi
     (fun _ : iota =>
       volume.restrict (Set.Ioc (-(1 / 2 : ℝ)) (1 / 2 : ℝ)))
     (fun _ : iota => (volume : Measure UnitAddCircle))
-    (fun _ : iota => AddCircle.measurePreserving_mk (1 : ℝ)
-      (-(1 / 2 : ℝ)))
+    hcoordinate
   simpa [cmp89CenteredUnitRealCubeToTorus,
     cmp89CenteredUnitRealCubeMeasure, MeasureTheory.volume_pi] using hpi
 
