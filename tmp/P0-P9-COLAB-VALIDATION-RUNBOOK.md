@@ -5,36 +5,35 @@ intermediate-brick validation.  It is not compiler evidence.
 
 ## Immutable inputs
 
-- Source checkpoint A8:
-  `90388ee4f3bb5908d0e8c80e254c4c3beb6a5411`.  This PRE-VALIDATION commit
+- Source checkpoint A9:
+  `9200946ce6f15010e1f3287c977de55d75bd6f4f`.  This PRE-VALIDATION commit
   contains the exact 39-file chain and its fail-closed static gates.
 - Path-list SHA-256:
   `FEC594C0FBA52E14F8CC1E1BA886202FCDF2E425DE2C93E56DBF59FEEBB2FA61`
 - Manifest SHA-256:
-  `4FCB87C0003288EBE981656AA4FBD2F779264AB3E4C57D3490D69DCCD213CC7A`
+  `97C3E657F739C45FFA2EE9EFA24AD0E0A5EDD47C82DB555BAD9FEE00B0CFFCBC`
 - P9 source SHA-256:
   `57D2EF9910DB7D548246AC0B4226CA8CBD97F29B17348BAEC9B70D499ACF34AA`
 - P9 audit SHA-256:
   `EA3489E333FE66999EEBE1B949B157D07F93023D5F5A7B09FED558663EFDE37E`
 - Static validator SHA-256:
-  `39F39068AB500097DF7384D2FECFB429EE3496B78E14459BA96C06C4F7AE6B88`
+  `C044D7D5948311D20ED76163B2500F597461118D6C2E8D4CB8EB6F5E7604E77C`
 - Static-gate self-test SHA-256:
   `445C6EEBBF0FE289716B0FB44C2A53105D9D4E507ACDEDFFA99FD9386E64E464`
-- Runner checkpoint C10:
-  `aad1baadaeb99748f3c23c25034a3d052bdfdbb9`; runner Git-blob SHA-256
-  `E986A1BB7198E0491DE6A784766BF0E009BAA621D98774D944FCF2EB82809394`.
-  It supersedes C9 after P2 source and its Lean audit both exited `0`, while
-  the old transcript parser counted only nonempty axiom lists.  C10 counts
-  both Lean output forms (`depends on axioms: [...]` and `does not depend on
-  any axioms`) against the same independently declared total; no expected
-  readout is removed.  The P0--P5/P7--P9 prerequisite split is unchanged.
+- Runner checkpoint C11:
+  `3c05bcf6c34e54a87a3f557d30be05da1503e2b9`; runner Git-blob SHA-256
+  `64153860AC8E65049455F84F0316E6AE1A5E723C4AE16603F247A8588FCEFEB9`.
+  It supersedes C10 after that runner verified P0--P2 and exposed four
+  elaboration-only failures in P2b.  A9 normalizes those operator applications
+  without changing a theorem statement or hypothesis.  Complete/empty axiom
+  headers and the P0--P5/P7--P9 prerequisite split remain enforced.
 
 ## Runtime contract
 
 1. Colab Pro+ CPU/high-RAM; no GPU.
 2. Open the published one-cell notebook
    `scripts/colab_p0_p9_prefix_combes_thomas_validation.ipynb`.  Its launcher
-   downloads runner checkpoint C10 over raw HTTPS and rejects any hash drift.
+   downloads runner checkpoint C11 over raw HTTPS and rejects any hash drift.
 3. The runner clones exact source checkpoint A without credentials.  Verify
    detached `HEAD`, `lean-toolchain`, `lake-manifest.json`, Mathlib pin and all
    39 rows of `tmp/P0-P9-SCRATCH-MANIFEST.sha256` before elaboration.
@@ -176,6 +175,21 @@ preserved with SHA-256
 the structured evidence and archive hashes were respectively
 `80957B9923677EA2CD9E481E05B97842C2C5B47CAE4D39261BA14375146E9837`, and
 `15429C1654BC03D3BDA75A95D250E8FC4BF8F72A2650D1663EA0E92CFB482BC6`.
+The runtime was released automatically and the cell was not re-executed.
+
+Runner C10 verified P0, P1 and P2 sources and all three audits.  The P2 audit
+was accepted with 26 exact headers: 25 used only the allowed trio and one was
+axiom-free.  The queue then stopped in P2b on four measured elaboration
+defects: a simplifier call after definitional reduction, two structural
+composition rewrites applied before beta reduction, and one `let`-bound
+operator supplied to `rw` as if it were an equality.  Classification:
+**FAIL-P2B-ELABORATION**; P2b--P9 remain PRE-VALIDATION.  A9 replaces only
+those proof-shape steps with directed `change`/`simpa` normalization.  The
+executed notebook was preserved with SHA-256
+`678D53C5FF7F066468383A09137D8A301BC123426C5CB36BAD2FAED53B4D4F5F`;
+the structured evidence and archive hashes were respectively
+`41B89D56AD89D8467127B2DF099308C7F0BC0E80720F7F8CD90BBED952DE7421`, and
+`F8C2DBEB49DC673BA42D3468999540168D23BE7332CE6DFBD3452D0970307A64`.
 The runtime was released automatically and the cell was not re-executed.
 
 Runner C3 again materialized the exact prerequisite frontier successfully
