@@ -48,7 +48,6 @@ theorem cmp89Eq248PhysicalFineGreenDecay_eq_signedLatticeWeight_draft
   congr 1
   have hLjR : (((L ^ j : ℕ) : ℝ)) ≠ 0 := by exact_mod_cast hLj.ne'
   field_simp [hLjR]
-  ring
 
 /-- The literal physical affine-residue Green coefficients are absolutely
 summable at every positive common radius. -/
@@ -77,8 +76,10 @@ theorem summable_cmp89Eq248CenteredGreenPhysicalFourierCoefficient_draft
       (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho.le hamplitude hradius hwindow hmass
       (cmp89SignedLatticeResidueAffineMap M u n)
-  simpa [cmp89Eq248CenteredGreenPhysicalFourierCoefficient, M, amplitude,
-    cmp89Eq248PhysicalFineGreenDecay_eq_signedLatticeWeight_draft]
+  rw [cmp89Eq248PhysicalFineGreenDecay_eq_signedLatticeWeight_draft
+    (L := L) (j := j) rho
+    (cmp89SignedLatticeResidueAffineMap M u n)] at hgreen
+  simpa [cmp89Eq248CenteredGreenPhysicalFourierCoefficient, M, amplitude]
     using hgreen
 
 /-- The Mathlib torus coefficient is definitionally the literal physical
@@ -121,9 +122,11 @@ theorem summable_mFourierCoeff_cmp89Eq248CenteredGreenTorus_draft
     summable_cmp89Eq248CenteredGreenPhysicalFourierCoefficient_draft
       (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho hamplitude hradius hwindow hmass u
-  simpa only [cmp89_mFourierCoeff_centeredGreen_eq_physicalCoefficient_draft
+  apply hphysical.congr
+  intro n
+  exact (cmp89_mFourierCoeff_centeredGreen_eq_physicalCoefficient_draft
     (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
-    ha hrho.le hamplitude hradius hwindow hmass u] using hphysical
+    ha hrho.le hamplitude hradius hwindow hmass u n).symm
 
 end
 
