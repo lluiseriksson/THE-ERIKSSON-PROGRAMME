@@ -129,6 +129,7 @@ theorem cmp89UnitAddTorus_mFourier_unitTorusSample_eq_flatCharacter
       (((((ell mu).val : ℝ) / (N' : ℝ) : ℝ) : UnitAddCircle)) =
     ZMod.stdAddChar (((ell mu).val : ZMod N') * (n mu : ZMod N'))
   rw [fourier_coe_apply]
+  push_cast
   change
     Complex.exp
         (2 * Real.pi * Complex.I * (n mu : ℂ) *
