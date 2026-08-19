@@ -18,8 +18,8 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_SHA = "63d03b06eb0fe14c4b4341610e14c02c0beac01a"
-RUNNER_REV = "step8b23-ae-v28"
+SOURCE_SHA = "a60dc67b3a42baa5dbf3ad6f3cd26c8d8a1544e1"
+RUNNER_REV = "step8b23-ae-v29"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 EVIDENCE_ROOT = "hrpoly-step8b23-ae-evidence"
 
