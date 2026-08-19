@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v41"
-runner.SOURCE_SHA = '98fa7087e544b221f83236cacbeed3d53ada43cd'
+runner.RUNNER_REV = "step8b23-ae-v42"
+runner.SOURCE_SHA = '4616ce5474c0584f794a1d70da5a07564d4d480b'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -72,7 +72,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89Eq248MassUniformNormalizedGreenBoundAudit.lean': '7604d1727e8168662806efc6d82470c953cd42443b02705183bea1980790626b',
     'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhase.lean': '9fd51d9136ffa446d414fd36f509576bd03fa4081d695f6cb6bda2b691b44ab4',
     'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhaseAudit.lean': '613507fd729af2fdb242eeb9a7414286e9de080c893cf0c4ea87b58096f26908',
-    'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionary.lean': 'd1ce78f7a0933fbb3f576f0e3696abfb4eb7f16ab33ee5c64f0f7d853b0936a2',
+    'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionary.lean': 'c5675411ab72bdbee55f99267e6caeb57e0db6c99be82649f1712e1e97536f1e',
     'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionaryAudit.lean': 'ca78912c3c168b77daeffd69808fc72b84f31ca1db28d51477891a7d56794342',
     'YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean': '2ce03a45c58c74c1be7f8bb5da0e694d3aa048c14c0f18ce3ef95baf423f898b',
     'YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean': '80bad23756e1a24508d84bb969cebe2dff18ea72bc938fa24b28ab911fb296fb',
