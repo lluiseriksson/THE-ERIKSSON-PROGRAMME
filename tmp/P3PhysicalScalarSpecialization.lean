@@ -70,6 +70,7 @@ theorem scratch_cmp85RecurrenceBeta_eq_sourceNextWeighted
   have hindex : (k.1.val - 1) + 1 = k.1.val := by omega
   have hnextIndex : k.nextPrefix.1.val - 1 = k.1.val := by
     simp only [ScratchCMP85PositiveCoarseStep.nextPrefix, Fin.val_succ]
+    omega
   have hterminal :
       (T.towerAt k.nextPrefix.1).terminalSpacing =
         (M : ℝ) * (T.towerAt k.currentPrefix.1).terminalSpacing := by
