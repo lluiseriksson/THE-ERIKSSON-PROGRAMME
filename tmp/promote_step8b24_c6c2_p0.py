@@ -8,6 +8,10 @@ Step 8b.22 must already be cold-sealed, including its core/map/ledger record,
 and a write additionally requires a fail-closed audit of the immutable P0--P9
 Colab evidence archive.  A later stop-on-first-error is acceptable only after
 the exact P0 source and its axiom audit have both passed.
+
+An interrupted earlier write may be resumed only when every existing target
+is byte-identical to the deterministic promotion output; divergent targets
+remain a hard failure.
 """
 
 from __future__ import annotations
