@@ -235,9 +235,20 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
     (spacingJ := (T.towerAt r.1).terminalSpacing)
     ha (by exact_mod_cast (NeZero.pos M)) hcurrentSpacing (k.1.val - 1)
   rw [hb, hc] at hsum
+  have hk : k.1.val - 1 + 1 = k.1.val := by
+    omega
+  have hsum' :
+      scratch_cmp85SourcePrefixWeightedCoefficient T a r +
+          scratch_cmp85SourceStepWeightedCoefficient T a k.1 =
+        (a * scratch_cmp85SourcePrefixA (M := M) a r /
+            scratch_cmp85SourcePrefixA (M := M) a rn) *
+          (T.towerAt r.1).terminalSpacing⁻¹ ^ 2 := by
+    simpa [r, rn, scratch_cmp85SourcePrefixA,
+      ScratchCMP85PositiveCoarseStep.currentPrefix,
+      ScratchCMP85PositiveCoarseStep.nextPrefix, hk] using hsum
   change (T.towerAt k.1.succ).Qprime.comp Gnext = _
   rw [hQ]
-  simpa only [r, rn, Gnext, scratch_cmp85SourcePrefixA, hsum] using hAvg
+  simpa only [r, rn, Gnext, ContinuousLinearMap.comp_assoc, hsum'] using hAvg
 
 end
 
