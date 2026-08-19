@@ -167,7 +167,7 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
           congr 1
           apply ContinuousLinearMap.ext
           intro eta
-          rw [hQ]
+          rw [← hQ]
           exact (scratch_cmp85SourceWeightedAdjoint_succ
             T hspacing k.1
               ((T.nextAverage k.1) ((T.towerAt r.1).Qprime eta))).symm
