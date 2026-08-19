@@ -47,14 +47,14 @@ def cmp99SourceFlatQprimeCenteredUnitCubeRepresentative
         exact_mod_cast
           two_mul_abs_cmp99SourceFlatQprimeCenteredCoarseAlias_le ell mu
       constructor
-      · rw [neg_div]
+      · rw [← neg_div]
         have habsLower :
             -(N' : ℝ) / 2 ≤
               -(cmp99SourceFlatQprimeCenteredCoarseAlias ell mu : ℝ) := by
           rw [neg_le_neg_iff]
           exact le_trans (le_abs_self _) (by linarith)
         exact (div_le_div_iff_of_pos_right hN).2 (by linarith)
-      · rw [neg_div]
+      · rw [← neg_div]
         have habsUpper :
             -(cmp99SourceFlatQprimeCenteredCoarseAlias ell mu : ℝ) ≤
               (N' : ℝ) / 2 := by
@@ -126,6 +126,10 @@ theorem cmp89UnitAddTorus_mFourier_unitTorusSample_eq_flatCharacter
         (cmp99FlatIntegerResidue (N := N') n) := by
   unfold UnitAddTorus.mFourier cmp99FlatZModFourierCharacter
     cmp99SourceFlatQprimeUnitTorusSample cmp99FlatIntegerResidue
+  change (∏ mu, fourier (n mu)
+      (((((ell mu).val : ℝ) / (N' : ℝ) : ℝ) : UnitAddCircle))) =
+    ∏ mu, ZMod.stdAddChar
+      ((cmp99FinBoxZModEquiv d N') ell mu * (n mu : ZMod N'))
   apply Finset.prod_congr rfl
   intro mu _
   rw [fourier_coe_apply]
