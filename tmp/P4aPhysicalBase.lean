@@ -68,11 +68,13 @@ theorem scratch_cmp85SourceFirstPrefix_weightedAdjoint_eq_step
     (T.towerAt (scratch_cmp85FirstPositivePrefix hdepth).1).weightedAdjoint =
       scratch_cmp85SourceStepWeightedAdjoint T
         (scratch_cmp85FirstStep hdepth) := by
+  apply ContinuousLinearMap.ext
+  intro eta
   let k := scratch_cmp85FirstStep hdepth
   have hk0 : k.castSucc = (0 : Fin (depth + 1)) := by
     ext
     simp only [k, scratch_cmp85FirstStep, Fin.val_castSucc, Fin.zero_eta]
-  have hW := scratch_cmp85SourceWeightedAdjoint_succ T hspacing k
+  have hW := scratch_cmp85SourceWeightedAdjoint_succ T hspacing k eta
   rw [hk0, T.towerAt_zero] at hW
   simpa only [k, scratch_cmp85FirstPositivePrefix,
     CMP99SourceWeightedRegionalTower.stop,

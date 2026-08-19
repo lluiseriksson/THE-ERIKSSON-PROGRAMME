@@ -22,17 +22,20 @@ noncomputable section
 variable {d M N Nc depth : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
-/-- The weighted adjoint of the next retained prefix factors as the current
-weighted adjoint followed by the literal one-step weighted adjoint. -/
+/-- Pointwise, the weighted adjoint of the next retained prefix factors as
+the current weighted adjoint followed by the literal one-step weighted
+adjoint.  The pointwise statement avoids an expensive dependent operator
+equality at the elaboration boundary. -/
 theorem scratch_cmp85SourceWeightedAdjoint_succ
     {rho : SUNAdjointModel Nc} {Omega : ActiveGaugeRegion d N}
     {spacing : ℝ} {background : GaugeConfig d N (SUN Nc)}
     (T : CMP99SourceRetainedPhysicalTower rho Omega M spacing background depth)
-    (hspacing : 0 < spacing) (k : Fin depth) :
-    (T.towerAt k.succ).weightedAdjoint =
-      (T.towerAt k.castSucc).weightedAdjoint.comp
+    (hspacing : 0 < spacing) (k : Fin depth)
+    (eta : (T.towerAt k.succ).TerminalSpace.carrier) :
+    (T.towerAt k.succ).weightedAdjoint eta =
+      (T.towerAt k.castSucc).weightedAdjoint
         (scratch_cmp85SourceStepWeightedAdjoint
-          (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k) := by
+          (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k eta) := by
   let R := T.nextAverage k
   let Wstep := scratch_cmp85SourceStepWeightedAdjoint
     (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k
@@ -75,8 +78,6 @@ theorem scratch_cmp85SourceWeightedAdjoint_succ
     current.adjoint_eq_spacingRatio_smul_weightedAdjoint hcurrent.ne'
   have hnextAdj :=
     next.adjoint_eq_spacingRatio_smul_weightedAdjoint hnext.ne'
-  apply ContinuousLinearMap.ext
-  intro eta
   have hadjPoint := congrArg
     (fun A : next.TerminalSpace.carrier →L[ℝ]
       ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) => A eta) hQadj
@@ -118,8 +119,10 @@ theorem scratch_cmp85SourceStep_comp_weightedAdjoint
   have hnext := T.prefix_comp_weightedAdjoint k.succ
   have hcurrent := T.prefix_comp_weightedAdjoint k.castSucc
   have hQ := T.Qprime_succ k
-  have hW := scratch_cmp85SourceWeightedAdjoint_succ
-    (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T hspacing k
+  have hW (eta : (T.towerAt k.succ).TerminalSpace.carrier) :=
+    scratch_cmp85SourceWeightedAdjoint_succ
+      (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth)
+      T hspacing k eta
   calc
     (T.nextAverage k).comp
         (scratch_cmp85SourceStepWeightedAdjoint
@@ -136,7 +139,11 @@ theorem scratch_cmp85SourceStep_comp_weightedAdjoint
             (scratch_cmp85SourceStepWeightedAdjoint
               (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k)) := rfl
     _ = (T.towerAt k.succ).Qprime.comp
-          (T.towerAt k.succ).weightedAdjoint := by rw [← hQ, ← hW]
+          (T.towerAt k.succ).weightedAdjoint := by
+      apply ContinuousLinearMap.ext
+      intro eta
+      simp only [ContinuousLinearMap.comp_apply]
+      rw [← hQ, ← hW eta]
     _ = ContinuousLinearMap.id ℝ
           (T.towerAt k.succ).TerminalSpace.carrier := hnext
 

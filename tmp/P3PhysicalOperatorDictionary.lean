@@ -145,7 +145,6 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
   let beta := scratch_cmp85RecurrenceBeta a (M : ℝ)
     (T.towerAt r.1).terminalSpacing (k.1.val - 1)
   have hQ := T.Qprime_succ k.1
-  have hW := scratch_cmp85SourceWeightedAdjoint_succ T hspacing k.1
   have hbeta := scratch_cmp85RecurrenceBeta_eq_sourceNextWeighted T a k
   have hweighted := scratch_cmp85SourcePrefixPrecision_weighted_eq_counting
     T D hspacing rn
@@ -162,7 +161,15 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
     _ = D + scratch_cmp85SourcePrefixWeightedCoefficient T a rn •
         ((T.towerAt rn.1).weightedAdjoint.comp
           (T.towerAt rn.1).Qprime) := by
-          rw [hbeta, ← hW, ← hQ]
+          rw [hbeta]
+          congr 1
+          apply ContinuousLinearMap.ext
+          intro eta
+          simp only [ContinuousLinearMap.comp_apply]
+          rw [hQ]
+          exact (scratch_cmp85SourceWeightedAdjoint_succ
+            T hspacing k.1
+              ((T.nextAverage k.1) ((T.towerAt r.1).Qprime eta))).symm
     _ = scratch_cmp85SourceGeneratedPrefixPrecision hd hM Omega0 depth
         spacing epsilon mass a background0 chain fineSmall rn := by
           simpa only [scratch_cmp85SourceGeneratedPrefixPrecision,
