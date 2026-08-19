@@ -248,7 +248,7 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
       ScratchCMP85PositiveCoarseStep.nextPrefix, hk] using hsum
   change (T.towerAt k.1.succ).Qprime.comp Gnext = _
   rw [hQ]
-  simpa only [r, rn, Gnext, ContinuousLinearMap.comp_assoc, hsum'] using hAvg
+  simpa only [T, r, rn, Gnext, ContinuousLinearMap.comp_assoc, hsum'] using hAvg
 
 end
 
