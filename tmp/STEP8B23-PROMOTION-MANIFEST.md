@@ -212,7 +212,7 @@ Unit F has its own mechanical gate rather than inheriting authority from the
 aggregate 44-file preview.  `tmp/promote_step8b23_f.py` requires exact HEAD
 and clean tracked state, compares all 36 A--E targets against their expected
 **sealed** bytes (PRE-VALIDATION removed) with prerequisite digest
-`B2B8F3969E6779624866FF31A600A97D6BC804D35E6AC45509E7DAF3C6984660`,
+`07C83157A79B64A12F5135423F86F76252E092CD185D0D58FDF61694A34C1978`,
 requires every A--E audit already imported by `YangMillsCore.lean`, requires
 the eight F targets absent, and writes only those eight under the
 explicit `--write` flag.  Their PRE-VALIDATION promotion digest remains
