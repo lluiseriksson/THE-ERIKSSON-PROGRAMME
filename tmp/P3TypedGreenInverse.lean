@@ -112,7 +112,8 @@ theorem scratch_cmp85TypedGreenCandidate_rightInverse
     ContinuousLinearMap.smul_apply, map_add, map_smul]
   rw [hFinePoint x, hFinePoint (Qdag (C y))]
   simpa only [y, S, ContinuousLinearMap.comp_apply,
-    ContinuousLinearMap.id_apply, add_assoc, add_comm, add_left_comm] using
+    ContinuousLinearMap.id_apply, add_zero, add_assoc, add_comm,
+    add_left_comm] using
     congrArg (fun z : H => x + z) hcorr
 
 /-- The candidate (2.42) is also a left inverse.  This consumes the opposite
@@ -166,7 +167,7 @@ theorem scratch_cmp85TypedGreenCandidate_leftInverse
     ContinuousLinearMap.smul_apply, map_add]
   rw [hFinePoint x]
   simpa only [y, S, ContinuousLinearMap.comp_apply,
-    ContinuousLinearMap.id_apply, add_assoc] using
+    ContinuousLinearMap.id_apply, add_zero, add_assoc] using
     congrArg (fun z : H => x + z) hcorr
 
 /-- Inverse uniqueness identifies the independently supplied next Green

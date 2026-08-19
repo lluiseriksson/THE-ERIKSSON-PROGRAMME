@@ -25,10 +25,10 @@ example
 /-- The right-inverse endpoint is additive normalization, not a definitional
 unfolding of the local aliases. -/
 example (x a b c : H) (h : a + b + c = 0) : x + b + a + c = x := by
-  simpa only [add_assoc, add_comm, add_left_comm] using
+  simpa only [add_zero, add_assoc, add_comm, add_left_comm] using
     congrArg (fun z : H => x + z) h
 
 /-- The left-inverse endpoint has the bracket order already used by the
 certificate and needs only reassociation. -/
 example (x a b c : H) (h : a + b + c = 0) : x + a + b + c = x := by
-  simpa only [add_assoc] using congrArg (fun z : H => x + z) h
+  simpa only [add_zero, add_assoc] using congrArg (fun z : H => x + z) h
