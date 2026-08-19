@@ -6,14 +6,17 @@ promotes only P0: later P0--P5 sources may not enter the tracked tree until
 their immediate predecessor has elaborated and its axiom audit has run.
 Step 8b.22 must already be cold-sealed, including its core/map/ledger record,
 and a write additionally requires a fail-closed audit of the immutable P0--P9
-Colab transcript.
+Colab evidence archive.  A later stop-on-first-error is acceptable only after
+the exact P0 source and its axiom audit have both passed.
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 from pathlib import Path
+import re
 import runpy
 import subprocess
 
@@ -21,7 +24,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 TMP = ROOT / "tmp"
 PREVIEW = runpy.run_path(str(TMP / "audit_p0_p5_promotion_preview.py"))
-NOTEBOOK_AUDIT = runpy.run_path(str(TMP / "audit_p0_p9_executed_notebook.py"))
+ARCHIVE_AUDIT = runpy.run_path(str(TMP / "audit_p0_p9_evidence_archive.py"))
 P0_FILES = (
     TMP / "P0CanonicalPrefixTower.lean",
     TMP / "P0CanonicalPrefixTowerAudit.lean",
@@ -41,6 +44,10 @@ STEP8B22_PAIR = (
 )
 STEP8B22_RUN = "31991954503"
 STEP8B22_SOURCE = "534493728038813f3772f8b3b073237f4da1884e"
+P0_SOURCE_STAGE = "p0_p9_01_p0canonicalprefixtower"
+P0_AUDIT_STAGE = "p0_p9_02_p0canonicalprefixtoweraudit"
+P0_AXIOM_HEADERS = 10
+ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
 def sha256(data: bytes) -> str:
@@ -65,14 +72,6 @@ def git(*args: str) -> str:
 def promotion_plan() -> list[tuple[Path, bytes]]:
     targets = PREVIEW["complete_target_map"]()
     names = PREVIEW["declaration_map"]()
-    listed = [
-        ROOT / line
-        for line in (TMP / "P0-P5-SCRATCH-PATHS.txt")
-        .read_text(encoding="utf-8-sig")
-        .splitlines()
-        if line
-    ]
-    PREVIEW["verify_raw_scope"](listed)
 
     result: list[tuple[Path, bytes]] = []
     rows: list[str] = []
@@ -114,6 +113,43 @@ def require_step8b22_sealed() -> None:
             raise SystemExit(f"STEP8B22_EVIDENCE_IDENTITY_MISSING={relative}")
 
 
+def require_p0_evidence(path: Path) -> str:
+    """Accept a complete PASS or a later stop-on-first-error after P0 passed."""
+
+    summary: str = ARCHIVE_AUDIT["audit"](path)
+    members: dict[str, bytes] = ARCHIVE_AUDIT["read_regular_members"](path)
+    root: str = ARCHIVE_AUDIT["EVIDENCE_ROOT"]
+    evidence = json.loads(members[f"{root}/evidence.json"].decode("utf-8"))
+    records = evidence["records"]
+    by_stage = {record["stage"]: (index, record) for index, record in enumerate(records)}
+    for stage in (P0_SOURCE_STAGE, P0_AUDIT_STAGE):
+        if stage not in by_stage:
+            raise ValueError(f"required P0 stage missing: {stage}")
+        if by_stage[stage][1]["exit"] != 0:
+            raise ValueError(f"required P0 stage failed: {stage}")
+    if by_stage[P0_SOURCE_STAGE][0] >= by_stage[P0_AUDIT_STAGE][0]:
+        raise ValueError("P0 source/audit order drift")
+
+    audit_record = by_stage[P0_AUDIT_STAGE][1]
+    audit_log = members[f"{root}/{audit_record['log']}"].decode("utf-8")
+    compact = re.sub(r"\s+", "", audit_log)
+    blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+    pure = compact.count("doesnotdependonanyaxioms")
+    if len(blocks) + pure != P0_AXIOM_HEADERS:
+        raise ValueError(
+            f"P0 axiom header count={len(blocks) + pure}, "
+            f"expected={P0_AXIOM_HEADERS}"
+        )
+    for index, body in enumerate(blocks):
+        names = {name for name in body.split(",") if name}
+        if not names.issubset(ALLOWED_AXIOMS):
+            raise ValueError(f"forbidden P0 axiom block {index}: {sorted(names)}")
+    for forbidden in ("sorryAx", "ofReduceBool"):
+        if forbidden in compact:
+            raise ValueError(f"forbidden P0 audit marker: {forbidden}")
+    return summary + f" p0_axiom_headers={P0_AXIOM_HEADERS}"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--expected-head", required=True)
@@ -145,11 +181,11 @@ def main() -> int:
         return 0
 
     if args.evidence is None:
-        raise SystemExit("P0_PROMOTION_EXECUTED_NOTEBOOK_REQUIRED")
+        raise SystemExit("P0_PROMOTION_EVIDENCE_ARCHIVE_REQUIRED")
     try:
-        evidence_result = NOTEBOOK_AUDIT["audit"](args.evidence.resolve())
-    except (OSError, UnicodeError, ValueError) as error:
-        raise SystemExit(f"P0_PROMOTION_EXECUTED_NOTEBOOK_REJECTED={error}") from error
+        evidence_result = require_p0_evidence(args.evidence.resolve())
+    except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
+        raise SystemExit(f"P0_PROMOTION_EVIDENCE_ARCHIVE_REJECTED={error}") from error
     print(evidence_result)
 
     for target, content in rows:

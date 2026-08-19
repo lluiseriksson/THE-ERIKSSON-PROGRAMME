@@ -5,10 +5,12 @@ from __future__ import annotations
 
 import hashlib
 import importlib.util
+import io
 import json
 import shutil
 import subprocess
 import sys
+import tarfile
 import tempfile
 from pathlib import Path
 
@@ -50,7 +52,7 @@ def make_fixture(parent: Path) -> tuple[Path, str]:
         "P0-P5-SCRATCH-PATHS.txt",
         "P0-P5-SCRATCH-MANIFEST.sha256",
         "P0-P9-SCRATCH-PATHS.txt",
-        "audit_p0_p9_executed_notebook.py",
+        "audit_p0_p9_evidence_archive.py",
         "audit_p0_p5_promotion.py",
         "audit_p0_p5_promotion_preview.py",
         "audit_step8b23_promotion_preview.py",
@@ -110,68 +112,54 @@ def make_fixture(parent: Path) -> tuple[Path, str]:
 
 
 def make_green_evidence(fixture: Path) -> Path:
-    audit_path = fixture / "tmp" / "audit_p0_p9_executed_notebook.py"
+    audit_path = fixture / "tmp" / "audit_p0_p9_evidence_archive.py"
     spec = importlib.util.spec_from_file_location("fixture_p0_p9_audit", audit_path)
     if spec is None or spec.loader is None:
-        raise RuntimeError("cannot load fixture notebook auditor")
+        raise RuntimeError("cannot load fixture archive auditor")
     audit = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(audit)
-    rows = [
-        f"RUNNER_TRANSPORT_SHA256={audit.RUNNER_SHA256}",
-        f"BASE_RUNNER_TRANSPORT_SHA256={audit.BASE_RUNNER_SHA256}",
-        f"P0_P9_PATHS_TRANSPORT_SHA256={audit.PATHS_SHA256}",
-        f"P0_P9_MANIFEST_TRANSPORT_SHA256={audit.MANIFEST_SHA256}",
-        f"RUNNER_REV={audit.RUNNER_REV}",
-        "RUNTIME=CPU RAM_GIB=50.99",
-        f"HEAD is now at {audit.SOURCE_SHA[:9]}",
-        "LEAN_OVERLAY_TEXT_OK files=40",
-        "LEAN_IMPORT_PREFIX_OK files=40",
-    ]
-    audit_stages = audit.expected_audit_stages()
-    pure_pending = True
-    for stage in sorted(audit.REQUIRED_CORE_STAGES | audit.expected_queue_stages()):
-        rows.append(f"STAGE={stage} CMD=[]")
-        count = audit_stages.get(stage, 0)
-        if count:
-            nonempty = count - int(pure_pending)
-            rows.extend(
-                "depends on axioms: [propext, Quot.sound]" for _ in range(nonempty)
-            )
-            if pure_pending:
-                rows.append("'Fixture.pure' does not depend on any axioms")
-                pure_pending = False
-        rows.append(f"STAGE={stage} EXIT=0 SECONDS=1.000")
-    rows.extend(
-        [
-            "EVIDENCE_SHA256=" + "1" * 64,
-            "EVIDENCE_ARCHIVE_SHA256=" + "2" * 64,
-            "FINAL_STATUS=PASS",
-            "LAUNCHER_EXIT=0",
-            "LAUNCHER_RUNTIME_RELEASE_REQUESTED=1",
-        ]
-    )
-    notebook = {
-        "cells": [
-            {
-                "cell_type": "code",
-                "execution_count": 1,
-                "metadata": {},
-                "outputs": [
-                    {
-                        "name": "stdout",
-                        "output_type": "stream",
-                        "text": "\n".join(rows) + "\n",
-                    }
-                ],
-                "source": ["# immutable launcher\n"],
-            }
-        ],
-        "metadata": {},
-        "nbformat": 4,
-        "nbformat_minor": 5,
+    logs = {
+        "p0-source.log": b"source compiled\n",
+        "p0-audit.log": (
+            b"depends on axioms: [propext, Quot.sound]\n" * 9
+            + b"'Fixture.pure' does not depend on any axioms\n"
+        ),
+        "p1-fail.log": b"later failure\n",
     }
-    target = fixture / "tmp" / "p0-p9-green.executed.ipynb"
-    target.write_text(json.dumps(notebook), encoding="utf-8")
+    stages = (
+        ("p0_p9_01_p0canonicalprefixtower", 0, "p0-source.log"),
+        ("p0_p9_02_p0canonicalprefixtoweraudit", 0, "p0-audit.log"),
+        ("p0_p9_03_p1coefficientmonotonicity", 1, "p1-fail.log"),
+    )
+    records = [
+        {
+            "stage": stage,
+            "exit": exit_code,
+            "seconds": 1.0,
+            "output_sha256": hashlib.sha256(logs[log]).hexdigest(),
+            "log": log,
+        }
+        for stage, exit_code, log in stages
+    ]
+    evidence = {
+        "source_sha": audit.SOURCE_SHA,
+        "runner_rev": audit.RUNNER_REV,
+        "mathlib_sha": audit.MATHLIB_SHA,
+        "status": "FAIL",
+        "records": records,
+    }
+    target = fixture / "tmp" / "p0-p9-later-fail.tar.gz"
+    root = audit.EVIDENCE_ROOT
+    with tarfile.open(target, "w:gz") as archive:
+        payloads = {
+            f"{root}/evidence.json":
+                (json.dumps(evidence, sort_keys=True) + "\n").encode(),
+            **{f"{root}/{name}": body for name, body in logs.items()},
+        }
+        for name, body in payloads.items():
+            info = tarfile.TarInfo(name)
+            info.size = len(body)
+            archive.addfile(info, io.BytesIO(body))
     return target
 
 
@@ -197,7 +185,7 @@ def main() -> int:
         )
         if (
             missing_evidence.returncode == 0
-            or "P0_PROMOTION_EXECUTED_NOTEBOOK_REQUIRED" not in missing_evidence.stdout
+            or "P0_PROMOTION_EVIDENCE_ARCHIVE_REQUIRED" not in missing_evidence.stdout
         ):
             raise SystemExit(
                 "P0_PROMOTER_SELFTEST_MISSING_EVIDENCE_FAILED\n"
