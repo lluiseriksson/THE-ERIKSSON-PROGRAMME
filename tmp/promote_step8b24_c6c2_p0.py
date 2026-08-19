@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TMP = ROOT / "tmp"
 PREVIEW = runpy.run_path(str(TMP / "audit_p0_p5_promotion_preview.py"))
 ARCHIVE_AUDIT = runpy.run_path(str(TMP / "audit_p0_p9_evidence_archive.py"))
+NOTEBOOK_AUDIT = runpy.run_path(str(TMP / "audit_p0_p9_executed_notebook.py"))
 P0_FILES = (
     TMP / "P0CanonicalPrefixTower.lean",
     TMP / "P0CanonicalPrefixTowerAudit.lean",
@@ -169,6 +170,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--expected-head", required=True)
     parser.add_argument("--evidence", type=Path)
+    parser.add_argument("--executed-notebook", type=Path)
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
 
@@ -195,10 +197,17 @@ def main() -> int:
         )
         return 0
 
-    if args.evidence is None:
-        raise SystemExit("P0_PROMOTION_EVIDENCE_ARCHIVE_REQUIRED")
+    supplied = int(args.evidence is not None) + int(args.executed_notebook is not None)
+    if supplied != 1:
+        raise SystemExit("P0_PROMOTION_EXACTLY_ONE_EVIDENCE_INPUT_REQUIRED")
     try:
-        evidence_result = require_p0_evidence(args.evidence.resolve())
+        if args.evidence is not None:
+            evidence_result = require_p0_evidence(args.evidence.resolve())
+        else:
+            assert args.executed_notebook is not None
+            evidence_result = NOTEBOOK_AUDIT["audit_p0"](
+                args.executed_notebook.resolve()
+            )
     except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
         raise SystemExit(f"P0_PROMOTION_EVIDENCE_ARCHIVE_REJECTED={error}") from error
     print(evidence_result)

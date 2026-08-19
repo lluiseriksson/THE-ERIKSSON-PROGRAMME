@@ -53,6 +53,7 @@ def make_fixture(parent: Path) -> tuple[Path, str]:
         "P0-P5-SCRATCH-MANIFEST.sha256",
         "P0-P9-SCRATCH-PATHS.txt",
         "audit_p0_p9_evidence_archive.py",
+        "audit_p0_p9_executed_notebook.py",
         "audit_p0_p5_promotion.py",
         "audit_p0_p5_promotion_preview.py",
         "audit_step8b23_promotion_preview.py",
@@ -185,7 +186,8 @@ def main() -> int:
         )
         if (
             missing_evidence.returncode == 0
-            or "P0_PROMOTION_EVIDENCE_ARCHIVE_REQUIRED" not in missing_evidence.stdout
+            or "P0_PROMOTION_EXACTLY_ONE_EVIDENCE_INPUT_REQUIRED"
+            not in missing_evidence.stdout
         ):
             raise SystemExit(
                 "P0_PROMOTER_SELFTEST_MISSING_EVIDENCE_FAILED\n"

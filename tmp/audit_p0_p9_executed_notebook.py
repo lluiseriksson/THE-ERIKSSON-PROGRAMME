@@ -24,6 +24,24 @@ BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
 MANIFEST_SHA256 = "da4b48eb37ceec6252c6e1f4ca5e2cf3154a8a7b15e4d9533e124e3c8ec5cffd"
 RUNNER_REV = "p0-p9-prefix-combes-thomas-v35"
+SUPPORTED_TRANSCRIPTS = {
+    (
+        "84eb07b5d1f2c3d7f245230a25846065b745a38e",
+        "p0-p9-prefix-combes-thomas-v34",
+    ): {
+        "runner_sha256":
+            "d6c06a8206a99e9538ac401e489fb7e5e6c300fe44dfd7e15c3bc6fca2311abb",
+        "manifest_sha256":
+            "e75af26bbbce875b13cab3a4403486bbf051457b4283152ad2c9bbe210137c91",
+    },
+    (SOURCE_SHA, RUNNER_REV): {
+        "runner_sha256": RUNNER_SHA256,
+        "manifest_sha256": MANIFEST_SHA256,
+    },
+}
+P0_SOURCE_STAGE = "p0_p9_01_p0canonicalprefixtower"
+P0_AUDIT_STAGE = "p0_p9_02_p0canonicalprefixtoweraudit"
+P0_AXIOM_HEADERS = 10
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 AUDIT_AXIOM_COUNTS = {
@@ -150,6 +168,109 @@ def require_once(text: str, literal: str) -> None:
     count = text.count(literal)
     if count != 1:
         raise ValueError(f"marker count {count}, expected 1: {literal}")
+
+
+def identify_supported_transcript(text: str) -> tuple[str, str, dict[str, str]]:
+    matches: list[tuple[str, str, dict[str, str]]] = []
+    for (source_sha, runner_rev), transport in SUPPORTED_TRANSCRIPTS.items():
+        markers = (
+            f"RUNNER_TRANSPORT_SHA256={transport['runner_sha256']}",
+            f"P0_P9_MANIFEST_TRANSPORT_SHA256={transport['manifest_sha256']}",
+            f"RUNNER_REV={runner_rev}",
+            f"HEAD is now at {source_sha[:9]}",
+        )
+        if all(text.count(marker) == 1 for marker in markers):
+            matches.append((source_sha, runner_rev, transport))
+    if len(matches) != 1:
+        raise ValueError(f"supported transcript identity count={len(matches)}")
+    return matches[0]
+
+
+def audit_p0(path: Path) -> str:
+    """Audit the exact P0 pair even when a later stage stops the queue."""
+
+    notebook_bytes = path.read_bytes()
+    notebook = json.loads(notebook_bytes.decode("utf-8"))
+    text, executed = output_text(notebook)
+    if executed != 1:
+        raise ValueError(f"executed code-cell count={executed}, expected 1")
+    source_sha, runner_rev, transport = identify_supported_transcript(text)
+    for literal in (
+        f"RUNNER_TRANSPORT_SHA256={transport['runner_sha256']}",
+        f"BASE_RUNNER_TRANSPORT_SHA256={BASE_RUNNER_SHA256}",
+        f"P0_P9_PATHS_TRANSPORT_SHA256={PATHS_SHA256}",
+        f"P0_P9_MANIFEST_TRANSPORT_SHA256={transport['manifest_sha256']}",
+        f"RUNNER_REV={runner_rev}",
+        f"HEAD is now at {source_sha[:9]}",
+        "RUNTIME=CPU RAM_GIB=",
+        "LEAN_OVERLAY_TEXT_OK files=42",
+        "LEAN_IMPORT_PREFIX_OK files=42",
+        "EVIDENCE_DOWNLOAD_REQUESTED=1",
+        "LAUNCHER_RUNTIME_RELEASE_REQUESTED=1",
+    ):
+        require_once(text, literal)
+    ram = re.search(r"RUNTIME=CPU RAM_GIB=([0-9]+(?:\.[0-9]+)?)", text)
+    if ram is None or float(ram.group(1)) < 40:
+        raise ValueError("high-RAM CPU runtime not proved")
+
+    pass_count = text.count("FINAL_STATUS=PASS")
+    fail_count = text.count("FINAL_STATUS=FAIL")
+    if pass_count + fail_count != 1:
+        raise ValueError("unique final status not proved")
+    status = "PASS" if pass_count else "FAIL"
+    require_once(text, "LAUNCHER_EXIT=0" if status == "PASS" else "LAUNCHER_EXIT=1")
+    for forbidden in ("FORBIDDEN_AXIOM=", "sorryAx", "ofReduceBool"):
+        if forbidden in text:
+            raise ValueError(f"forbidden transcript marker: {forbidden}")
+
+    stage_rows = re.findall(
+        r"STAGE=([a-z0-9_]+) EXIT=([-0-9]+) SECONDS=([0-9]+(?:\.[0-9]+)?)",
+        text,
+    )
+    order: list[str] = []
+    stages: dict[str, int] = {}
+    for stage, exit_code, _ in stage_rows:
+        if stage in stages:
+            raise ValueError(f"duplicate stage result: {stage}")
+        order.append(stage)
+        stages[stage] = int(exit_code)
+    missing_core = sorted(REQUIRED_CORE_STAGES - stages.keys())
+    if missing_core:
+        raise ValueError(f"missing prerequisite stage results: {missing_core}")
+    for stage in (P0_SOURCE_STAGE, P0_AUDIT_STAGE):
+        if stage not in stages or stages[stage] != 0:
+            raise ValueError(f"required P0 stage not green: {stage}")
+    if order.index(P0_SOURCE_STAGE) >= order.index(P0_AUDIT_STAGE):
+        raise ValueError("P0 source/audit order drift")
+    failed = [stage for stage in order if stages[stage] != 0]
+    if status == "PASS" and failed:
+        raise ValueError(f"PASS has nonzero stages: {failed}")
+    if status == "FAIL" and (len(failed) != 1 or failed[0] != order[-1]):
+        raise ValueError(f"stop-on-first-error not proved: {failed}")
+
+    compact = re.sub(r"\s+", "", stage_output(text, P0_AUDIT_STAGE))
+    blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+    pure = compact.count("doesnotdependonanyaxioms")
+    if len(blocks) + pure != P0_AXIOM_HEADERS:
+        raise ValueError(
+            f"P0 axiom header count={len(blocks) + pure}, expected={P0_AXIOM_HEADERS}"
+        )
+    for index, body in enumerate(blocks):
+        names = {name for name in body.split(",") if name}
+        if not names.issubset(ALLOWED_AXIOMS):
+            raise ValueError(f"forbidden P0 axiom block {index}: {sorted(names)}")
+
+    evidence = re.findall(r"EVIDENCE_SHA256=([0-9a-f]{64})", text)
+    archive = re.findall(r"EVIDENCE_ARCHIVE_SHA256=([0-9a-f]{64})", text)
+    if len(evidence) != 1 or len(archive) != 1:
+        raise ValueError("unique evidence hashes not proved")
+    return (
+        "P0_EXECUTED_NOTEBOOK_OK "
+        f"source_sha={source_sha} runner_rev={runner_rev} status={status} "
+        f"stages={len(stages)} p0_axiom_headers={P0_AXIOM_HEADERS} "
+        f"evidence_sha256={evidence[0]} archive_sha256={archive[0]} "
+        f"notebook_sha256={sha256(notebook_bytes)}"
+    )
 
 
 def audit(path: Path) -> str:

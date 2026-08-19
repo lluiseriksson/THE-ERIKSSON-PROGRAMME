@@ -94,6 +94,31 @@ with tempfile.TemporaryDirectory() as directory:
     result = audit.audit(good)
     assert result.startswith("P0_P9_EXECUTED_NOTEBOOK_OK ")
 
+    partial_fail = root / "partial-fail-after-p0.ipynb"
+    last_stage = sorted(audit.REQUIRED_CORE_STAGES | audit.expected_queue_stages())[-1]
+    partial_text = transcript().replace(
+        f"STAGE={last_stage} EXIT=0 SECONDS=1.000",
+        f"STAGE={last_stage} EXIT=1 SECONDS=1.000",
+    ).replace("FINAL_STATUS=PASS", "FINAL_STATUS=FAIL").replace(
+        "LAUNCHER_EXIT=0", "LAUNCHER_EXIT=1"
+    )
+    write(partial_fail, notebook(partial_text))
+    partial_result = audit.audit_p0(partial_fail)
+    assert partial_result.startswith("P0_EXECUTED_NOTEBOOK_OK ")
+
+    crossed = root / "crossed-identity.ipynb"
+    old_identity = sorted(audit.SUPPORTED_TRANSCRIPTS)[0]
+    write(
+        crossed,
+        notebook(transcript().replace(audit.RUNNER_REV, old_identity[1])),
+    )
+    try:
+        audit.audit_p0(crossed)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("crossed transcript identity accepted")
+
     bad_status = root / "bad-status.ipynb"
     write(bad_status, notebook(transcript().replace("FINAL_STATUS=PASS", "FINAL_STATUS=FAIL")))
     expect_fail(bad_status)
