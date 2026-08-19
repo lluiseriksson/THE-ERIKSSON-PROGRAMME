@@ -56,7 +56,7 @@ theorem scratch_cmp85SourceGeneratedPrefixPrecision_eq_typed
       (matrixSUNAdjointModel Nc) background0 spacing)
     mass
   have hweighted := scratch_cmp85SourcePrefixPrecision_weighted_eq_counting
-    T D hspacing r
+    T D (a := a) hspacing r
   simpa only [scratch_cmp85TypedFinePrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision, T, D,
     scratch_cmp85SourceGeneratedPrefixTower] using hweighted
@@ -147,7 +147,7 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
   have hQ := T.Qprime_succ k.1
   have hbeta := scratch_cmp85RecurrenceBeta_eq_sourceNextWeighted T a k
   have hweighted := scratch_cmp85SourcePrefixPrecision_weighted_eq_counting
-    T D hspacing rn
+    T D (a := a) hspacing rn
   calc
     scratch_cmp85TypedNextPrecision D
         (T.towerAt r.1).Qprime (T.towerAt r.1).weightedAdjoint
