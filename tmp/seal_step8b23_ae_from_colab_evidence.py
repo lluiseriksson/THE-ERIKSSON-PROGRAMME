@@ -238,7 +238,7 @@ def ledger_addendum(
     queue_seconds, _ = stage_summary(evidence)
     return f"""
 
-## Addendum 868 (2026-08-19, **Step 8b.23 Units A--E sealed in one fresh Colab clone; 20/41 unchanged**)
+## Addendum 869 (2026-08-19, **Step 8b.23 Units A--E sealed in one fresh Colab clone; 20/41 unchanged**)
 
 One fresh Colab Pro+ CPU/high-RAM clone compiled and audited the complete
 18-brick A--E queue at exact source `{SOURCE_SHA}` under runner
@@ -282,7 +282,7 @@ def seal_plan(
     vertical += map_section(evidence, evidence_hash, archive_hash)
 
     ledger = LEDGER.read_bytes()
-    if b"## Addendum 868 " in ledger or b"## Addendum 867 " not in ledger:
+    if b"## Addendum 869 " in ledger or b"## Addendum 868 " not in ledger:
         raise SystemExit("A_E_LEDGER_STATE_MISMATCH")
     ledger += ledger_addendum(evidence, evidence_hash, archive_hash)
     return [*sources, (CORE, core), (MAP, vertical), (LEDGER, ledger)]
