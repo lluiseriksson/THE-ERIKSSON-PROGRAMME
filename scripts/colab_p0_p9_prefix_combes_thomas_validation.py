@@ -3,7 +3,7 @@
 
 The immutable mathematical source is ``SOURCE_SHA``.  The 39 shipped Lean
 chain blobs are bound by the source checkpoint's path list and SHA-256
-manifest.  Four additional Mathlib-only reproducers are hash-gated separately
+manifest.  Five additional Mathlib-only reproducers are hash-gated separately
 and runs before the project prerequisite frontier.  The queue is sequential
 and stop-on-first-error.
 
@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "d5c704c4e671336d5a220f7ed711170766a9ee97"
+SOURCE_SHA = "6bbb3e08478795a83a2cd953f213475d630f2fba"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -49,7 +49,7 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "bd0f88c1ef87082cff16a7f1ac3eee440f92f8d846835ed6698be02a5ee52238"
+    "5f068b6d51d0c7997b2b6372b27addc1f10677ad23356e16614d4d62017daea9"
 )
 P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
 P2B_REPRO_SHA256 = (
@@ -66,6 +66,10 @@ P3_TYPED_REPRO_SHA256 = (
 P3_GREEN_REPRO_PATH = "tmp/P3TypedGreenInverseAlgebra.repro.lean"
 P3_GREEN_REPRO_SHA256 = (
     "dbdab8f3c5b0e2ae20c98568a3d114195aad1989283d4715f237edb3adb12137"
+)
+P3_DICTIONARY_REPRO_PATH = "tmp/P3PhysicalOperatorDictionaryComposition.repro.lean"
+P3_DICTIONARY_REPRO_SHA256 = (
+    "74f1a221b8097016397c15eb10dfbe5b8535ab096380499f160b55781164fda8"
 )
 
 
@@ -146,6 +150,7 @@ source_blobs[P2B_REPRO_PATH] = P2B_REPRO_SHA256
 source_blobs[P3_REPRO_PATH] = P3_REPRO_SHA256
 source_blobs[P3_TYPED_REPRO_PATH] = P3_TYPED_REPRO_SHA256
 source_blobs[P3_GREEN_REPRO_PATH] = P3_GREEN_REPRO_SHA256
+source_blobs[P3_DICTIONARY_REPRO_PATH] = P3_DICTIONARY_REPRO_SHA256
 
 # These counts are an independent audit contract, not values inferred from
 # the source files at runtime.  A missing or extra readout therefore fails.
@@ -193,7 +198,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v44"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v45"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
@@ -286,6 +291,11 @@ runner.QUEUE = [
     (
         "p0_p9_p3_typed_green_inverse_repro",
         ["lake", "env", "lean", P3_GREEN_REPRO_PATH],
+        None,
+    ),
+    (
+        "p0_p9_p3_physical_dictionary_repro",
+        ["lake", "env", "lean", P3_DICTIONARY_REPRO_PATH],
         None,
     ),
     (
