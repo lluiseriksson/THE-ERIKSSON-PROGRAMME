@@ -204,10 +204,22 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
   have hae := cmp89_ae_mFourier_mul_centeredGreen_physicalBrillouin
     (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
     ha hrho hamplitude hradius hwindow hmass u n
+  have htransport_mul :
+      (∫ t, UnitAddTorus.mFourier (-n) t *
+          cmp89Eq248CenteredGreenTorus
+            (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+            ha hrho hamplitude hradius hwindow hmass u t
+          ∂(volume : Measure (UnitAddTorus (Fin 4)))) =
+        cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
+          (fun x => UnitAddTorus.mFourier (-n)
+              (cmp89PhysicalBrillouinToUnitAddTorus x) *
+            cmp89Eq248CenteredGreenTorus
+              (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+              ha hrho hamplitude hradius hwindow hmass u
+              (cmp89PhysicalBrillouinToUnitAddTorus x)) := by
+    simpa [f, smul_eq_mul] using htransport
   unfold UnitAddTorus.mFourierCoeff
-  simp only [smul_eq_mul]
-  change (∫ t, f t ∂(volume : Measure (UnitAddTorus (Fin 4)))) = _
-  rw [htransport]
+  rw [htransport_mul]
   unfold cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen
     cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
   congr 1
