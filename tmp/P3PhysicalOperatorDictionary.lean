@@ -167,10 +167,17 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
           congr 1
           apply ContinuousLinearMap.ext
           intro eta
-          rw [← hQ]
-          exact (scratch_cmp85SourceWeightedAdjoint_succ
-            T hspacing k.1
-              ((T.nextAverage k.1) ((T.towerAt r.1).Qprime eta))).symm
+          have hQeta := congrArg (fun Q => Q eta) hQ
+          simp only [ContinuousLinearMap.comp_apply] at hQeta
+          simp only [ContinuousLinearMap.comp_apply,
+            ContinuousLinearMap.smul_apply]
+          rw [hQeta]
+          exact congrArg
+            (fun z =>
+              scratch_cmp85SourcePrefixWeightedCoefficient T a rn • z)
+            (scratch_cmp85SourceWeightedAdjoint_succ
+              T hspacing k.1
+                ((T.nextAverage k.1) ((T.towerAt r.1).Qprime eta))).symm
     _ = scratch_cmp85SourceGeneratedPrefixPrecision hd hM Omega0 depth
         spacing epsilon mass a background0 chain fineSmall rn := by
           simpa only [scratch_cmp85SourceGeneratedPrefixPrecision,
