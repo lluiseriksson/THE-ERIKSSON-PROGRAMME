@@ -1,4 +1,4 @@
-name: Validate CMP99 finite-grid aliasing
+name: Validate Step 8b.23 Units A-E
 
 on:
   workflow_dispatch:
@@ -13,17 +13,15 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 534493728038813f3772f8b3b073237f4da1884e
-  SOURCE_BLOB_SHA256: de04ca53ce8b753e80514e607f0b47ae6c6cf41811b353e60030b21f4a5a2a52
-  AUDIT_BLOB_SHA256: 1207c5881c98379753407f426392100b08e44c503d64ce03cc2c3daba7b5290b
+  SOURCE_SHA: 02b9076cfe48fd830e1763e8d5c06cc39d4a9955
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  cmp99-finite-grid-aliasing:
+  step8b23-ae:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 360
     steps:
       - name: Require cold terminal mode
         shell: bash
@@ -37,7 +35,7 @@ jobs:
           ref: ${{ env.SOURCE_SHA }}
           fetch-depth: 1
 
-      - name: Verify source checkpoint
+      - name: Verify exact source checkpoint and 36 blobs
         shell: bash
         run: |
           set -euo pipefail
@@ -48,10 +46,49 @@ jobs:
             tee evidence/checkpoint.txt
           test "$actual" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          source_path=YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean
-          audit_path=YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean
-          test "$(git cat-file blob "$SOURCE_SHA:$source_path" | sha256sum | cut -d' ' -f1)" = "$SOURCE_BLOB_SHA256"
-          test "$(git cat-file blob "$SOURCE_SHA:$audit_path" | sha256sum | cut -d' ' -f1)" = "$AUDIT_BLOB_SHA256"
+          cat > evidence/source-blobs.sha256 <<'SOURCE_BLOBS'
+          c266423f68421b5ba771140586d458ef53d766831fb06d12a879ce25ae3e9853  YangMills/RG/BalabanCMP89CenteredBrillouinAffineSlice.lean
+          0bb147baf82707e0de48a3ce888b968c005d9584b9bae6d14a5d9cac012a23c2  YangMills/RG/BalabanCMP89CenteredBrillouinAffineSliceAudit.lean
+          1bd9c2c0660a0b7a9eb94e1c7867028ed7c4278210317cbf8cdd674e1d720bc7  YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotient.lean
+          8a14bdda0ea10e74d3bc59b0ee183aea477490b6acef6880dbc2dca62802bb75  YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotientAudit.lean
+          b7c58f3becacd65e0c4a1a4387804574eb1c74d0284547c8bf8d09453da03a0c  YangMills/RG/BalabanCMP89CenteredTorusFourierPhase.lean
+          246ef491a33109859d1f4e0a7889eb1f209a2a363e4001717d0e0dc6e67eea88  YangMills/RG/BalabanCMP89CenteredTorusFourierPhaseAudit.lean
+          f307d1e00de4f1ac64a08639b533c2df2bba2bc558209f877cbc3f04fc916e11  YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean
+          35db023192efabc07380ebf0299eb1c07245be4e16e201e14e11ea5f201b38e8  YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasureAudit.lean
+          05ebd095ba003fd2872f09c60cff0c36cd68e7a8ffdd0f55009179cf30729d6b  YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphy.lean
+          2510acfc6f38f7c45ee669d93f58795214a6725ccbe9fe9e77dbf52fb5711cec  YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphyAudit.lean
+          b6ed5793f44b3de83f77747a46daccd32f9fe45ba0dd4d466c93a525f6d9c7dc  YangMills/RG/BalabanCMP89Eq248DisplayedGreenVectorPeriodicity.lean
+          0ec7924267e39b7712b348902bdd4e69b29cb64ca5ca22dab0d77a128ee1ff2e  YangMills/RG/BalabanCMP89Eq248DisplayedGreenVectorPeriodicityAudit.lean
+          39c42d4afca80c9df810f9971809eb57be8b70dff8bc11b4a7997e6bd1072933  YangMills/RG/BalabanCMP89Eq248CenteredGreenTorus.lean
+          e698677b04e71a36f3783b58db1f37e1cb84a89e69b9cb28805e589210f0efc0  YangMills/RG/BalabanCMP89Eq248CenteredGreenTorusAudit.lean
+          1dbc344b93891dc2c36ee251a81b70ec3c8e50ea77895851ec7084c2c3735834  YangMills/RG/BalabanCMP99CenteredTorusSampleDictionary.lean
+          ee9d5c4d19309a5586465d6c650e3602397a2e7372c74da55a6d845d02ad96ce  YangMills/RG/BalabanCMP99CenteredTorusSampleDictionaryAudit.lean
+          5ffd9f42d4cbbf35147f78fc5e5198444c4a7186d50e37eda8d453ba0ac05d7e  YangMills/RG/BalabanCMP99CenteredTorusPhysicalGreenSampleTransport.lean
+          ebbc79a2c206e04c9b290c096590a2456cc8eab293bccdcf6db27ccddd3767a8  YangMills/RG/BalabanCMP99CenteredTorusPhysicalGreenSampleTransportAudit.lean
+          7c881899c1f70b92854309fcf3debb53e3d3f27ec3e2afdd0dbf9be7167a43e3  YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShift.lean
+          4a2349c526da39442794b7dc75a30ca5f45ca2b9faf33a5f190e98882aceab60  YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShiftAudit.lean
+          33f013b8d996a584400ad03ffd1878bc5738734f8972707b69d5589ab6fd6d67  YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescope.lean
+          2bf1ecedd087092acdb914e64ba0979d2de654febe36fb69c09f29b4d305f171  YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescopeAudit.lean
+          5637560f3823c5e84833dfdf9d184445aea92c79b78ce56de8b11cb8cc324e8e  YangMills/RG/BalabanCMP89Eq248MassUniformGreenBound.lean
+          83fb7dfc26b7e21800465b0a04d53de838b2b76feda52ed4f14bccff438768ff  YangMills/RG/BalabanCMP89Eq248MassUniformGreenBoundAudit.lean
+          2acecd3d2c9042e9639eb46b0db53a5ed8ede752f66f1574144fb70b28ecf3b9  YangMills/RG/BalabanCMP89Eq248MassUniformNormalizedGreenBound.lean
+          7604d1727e8168662806efc6d82470c953cd42443b02705183bea1980790626b  YangMills/RG/BalabanCMP89Eq248MassUniformNormalizedGreenBoundAudit.lean
+          b01992bd7764ac1d91c103ee8befc7734123386dc81069d8ac196c4444e9e941  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhase.lean
+          613507fd729af2fdb242eeb9a7414286e9de080c893cf0c4ea87b58096f26908  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhaseAudit.lean
+          6b20c651c3d9aa3319e010320f8b47de2845c336e59d7f1ae3a2ad32ae784366  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionary.lean
+          ca78912c3c168b77daeffd69808fc72b84f31ca1db28d51477891a7d56794342  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionaryAudit.lean
+          2ce03a45c58c74c1be7f8bb5da0e694d3aa048c14c0f18ce3ef95baf423f898b  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean
+          80bad23756e1a24508d84bb969cebe2dff18ea72bc938fa24b28ab911fb296fb  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean
+          665f47f30ce334fc25c0ba9100ca82eecae6d32cd278527030d6fb1e4c7d1851  YangMills/RG/BalabanCMP89CenteredGreenFourierSummability.lean
+          e1ff97694e15ed9d0976b033a933a2d1d45bd87cfe7ae73c4efd930fd38de532  YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean
+          9d11c7bbb58eb52901cf7be95a0f469832a45e8a0fc04dc812e27a4ae021451e  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean
+          f9efec45f5856ccc8a97ea5f0240e43c929a495122e58600d19e5a09cfabd643  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean
+          SOURCE_BLOBS
+          test "$(wc -l < evidence/source-blobs.sha256)" -eq 36
+          while read -r expected path; do
+            actual_blob="$(git cat-file blob "$SOURCE_SHA:$path" | sha256sum | cut -d' ' -f1)"
+            test "$actual_blob" = "$expected"
+          done < evidence/source-blobs.sha256
 
       - name: Install exact Lean toolchain
         shell: bash
@@ -91,19 +128,15 @@ jobs:
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee evidence/cache-get.log
 
-      - name: Run focal queue stop on first error
+      - name: Run 18-brick focal and audit queue stop on first error
         shell: bash
         run: |
           set -euo pipefail
-          printf '%s\n' \
-            YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean \
-            YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean \
-            > evidence/overlay-paths.txt
+          awk '{print $2}' evidence/source-blobs.sha256 > evidence/overlay-paths.txt
           python scripts/check_lean_overlay_text.py \
             --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
-          python scripts/check_lean_import_prefix.py \
-            YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean \
-            YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean | \
+          mapfile -t overlay_paths < evidence/overlay-paths.txt
+          python scripts/check_lean_import_prefix.py "${overlay_paths[@]}" | \
             tee evidence/import-prefix-guard.log
           run_stage() {
             local stage="$1"
@@ -123,12 +156,44 @@ jobs:
             test "$code" -eq 0
           }
 
-          run_stage cmp99_finite_grid_aliasing_focal \
-            lake build YangMills.RG.BalabanCMP99FlatFiniteGridAliasing
-          run_stage cmp99_finite_grid_aliasing_audit \
-            lake env lean YangMills/RG/BalabanCMP99FlatFiniteGridAliasingAudit.lean
+          run_stage 01_cmp89centeredbrillouinaffineslice_focal lake build YangMills.RG.BalabanCMP89CenteredBrillouinAffineSlice
+          run_stage 01_cmp89centeredbrillouinaffineslice_audit lake env lean YangMills/RG/BalabanCMP89CenteredBrillouinAffineSliceAudit.lean
+          run_stage 02_cmp89centeredunitcubetorusquotient_focal lake build YangMills.RG.BalabanCMP89CenteredUnitCubeTorusQuotient
+          run_stage 02_cmp89centeredunitcubetorusquotient_audit lake env lean YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotientAudit.lean
+          run_stage 03_cmp89centeredtorusfourierphase_focal lake build YangMills.RG.BalabanCMP89CenteredTorusFourierPhase
+          run_stage 03_cmp89centeredtorusfourierphase_audit lake env lean YangMills/RG/BalabanCMP89CenteredTorusFourierPhaseAudit.lean
+          run_stage 04_cmp89normalizedbrillouintotorusmeasure_focal lake build YangMills.RG.BalabanCMP89NormalizedBrillouinToTorusMeasure
+          run_stage 04_cmp89normalizedbrillouintotorusmeasure_audit lake env lean YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasureAudit.lean
+          run_stage 05_cmp89eq248greenmassuniformholomorphy_focal lake build YangMills.RG.BalabanCMP89Eq248GreenMassUniformHolomorphy
+          run_stage 05_cmp89eq248greenmassuniformholomorphy_audit lake env lean YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphyAudit.lean
+          run_stage 06_cmp89eq248displayedgreenvectorperiodicity_focal lake build YangMills.RG.BalabanCMP89Eq248DisplayedGreenVectorPeriodicity
+          run_stage 06_cmp89eq248displayedgreenvectorperiodicity_audit lake env lean YangMills/RG/BalabanCMP89Eq248DisplayedGreenVectorPeriodicityAudit.lean
+          run_stage 07_cmp89eq248centeredgreentorus_focal lake build YangMills.RG.BalabanCMP89Eq248CenteredGreenTorus
+          run_stage 07_cmp89eq248centeredgreentorus_audit lake env lean YangMills/RG/BalabanCMP89Eq248CenteredGreenTorusAudit.lean
+          run_stage 08_cmp99centeredtorussampledictionary_focal lake build YangMills.RG.BalabanCMP99CenteredTorusSampleDictionary
+          run_stage 08_cmp99centeredtorussampledictionary_audit lake env lean YangMills/RG/BalabanCMP99CenteredTorusSampleDictionaryAudit.lean
+          run_stage 09_cmp99centeredtorusphysicalgreensampletransport_focal lake build YangMills.RG.BalabanCMP99CenteredTorusPhysicalGreenSampleTransport
+          run_stage 09_cmp99centeredtorusphysicalgreensampletransport_audit lake env lean YangMills/RG/BalabanCMP99CenteredTorusPhysicalGreenSampleTransportAudit.lean
+          run_stage 10_cmp89eq248greenonecoordinatecontourshift_focal lake build YangMills.RG.BalabanCMP89Eq248GreenOneCoordinateContourShift
+          run_stage 10_cmp89eq248greenonecoordinatecontourshift_audit lake env lean YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShiftAudit.lean
+          run_stage 11_cmp89eq248greenproductcontourtelescope_focal lake build YangMills.RG.BalabanCMP89Eq248GreenProductContourTelescope
+          run_stage 11_cmp89eq248greenproductcontourtelescope_audit lake env lean YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescopeAudit.lean
+          run_stage 12_cmp89eq248massuniformgreenbound_focal lake build YangMills.RG.BalabanCMP89Eq248MassUniformGreenBound
+          run_stage 12_cmp89eq248massuniformgreenbound_audit lake env lean YangMills/RG/BalabanCMP89Eq248MassUniformGreenBoundAudit.lean
+          run_stage 13_cmp89eq248massuniformnormalizedgreenbound_focal lake build YangMills.RG.BalabanCMP89Eq248MassUniformNormalizedGreenBound
+          run_stage 13_cmp89eq248massuniformnormalizedgreenbound_audit lake env lean YangMills/RG/BalabanCMP89Eq248MassUniformNormalizedGreenBoundAudit.lean
+          run_stage 14_cmp89centeredtorusgreencoefficientphase_focal lake build YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientPhase
+          run_stage 14_cmp89centeredtorusgreencoefficientphase_audit lake env lean YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhaseAudit.lean
+          run_stage 15_cmp89centeredtorusgreencoefficientdictionary_focal lake build YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientDictionary
+          run_stage 15_cmp89centeredtorusgreencoefficientdictionary_audit lake env lean YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionaryAudit.lean
+          run_stage 16_cmp89signedlatticel1totalsum_focal lake build YangMills.RG.BalabanCMP89SignedLatticeL1TotalSum
+          run_stage 16_cmp89signedlatticel1totalsum_audit lake env lean YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean
+          run_stage 17_cmp89centeredgreenfouriersummability_focal lake build YangMills.RG.BalabanCMP89CenteredGreenFourierSummability
+          run_stage 17_cmp89centeredgreenfouriersummability_audit lake env lean YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean
+          run_stage 18_cmp99physicalgreenfinitegridaliasing_focal lake build YangMills.RG.BalabanCMP99PhysicalGreenFiniteGridAliasing
+          run_stage 18_cmp99physicalgreenfinitegridaliasing_audit lake env lean YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean
 
-      - name: Verify axiom gate and package cold evidence
+      - name: Verify 124 axiom blocks and package cold evidence
         shell: bash
         run: |
           set -euo pipefail
@@ -138,28 +203,81 @@ jobs:
           import re
 
           allowed = {"propext", "Classical.choice", "Quot.sound"}
-          audit_path = Path("evidence/cmp99_finite_grid_aliasing_audit.log")
-          focal_path = Path("evidence/cmp99_finite_grid_aliasing_focal.log")
-          focal = focal_path.read_text(encoding="utf-8")
-          if "warning: YangMills/RG/BalabanCMP99FlatFiniteGridAliasing.lean:" in focal:
-              raise SystemExit("NEW_MODULE_LINTER_WARNING")
-          text = audit_path.read_text(encoding="utf-8")
-          compact = re.sub(r"\s+", "", text)
-          for forbidden in ("sorryAx", "ofReduceBool"):
-              if forbidden in compact:
-                  raise SystemExit(f"FORBIDDEN_AXIOM={forbidden}")
-          blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
-          if len(blocks) != 7:
-              raise SystemExit(f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED=7")
-          parsed = []
-          for body in blocks:
-              names = {item for item in body.split(",") if item}
-              if not names.issubset(allowed):
-                  raise SystemExit(f"AXIOM_SET={sorted(names)}")
-              parsed.append(sorted(names))
+          expected = {
+              '01_cmp89centeredbrillouinaffineslice_audit': 2,
+              '02_cmp89centeredunitcubetorusquotient_audit': 20,
+              '03_cmp89centeredtorusfourierphase_audit': 4,
+              '04_cmp89normalizedbrillouintotorusmeasure_audit': 10,
+              '05_cmp89eq248greenmassuniformholomorphy_audit': 11,
+              '06_cmp89eq248displayedgreenvectorperiodicity_audit': 4,
+              '07_cmp89eq248centeredgreentorus_audit': 8,
+              '08_cmp99centeredtorussampledictionary_audit': 5,
+              '09_cmp99centeredtorusphysicalgreensampletransport_audit': 5,
+              '10_cmp89eq248greenonecoordinatecontourshift_audit': 1,
+              '11_cmp89eq248greenproductcontourtelescope_audit': 5,
+              '12_cmp89eq248massuniformgreenbound_audit': 12,
+              '13_cmp89eq248massuniformnormalizedgreenbound_audit': 2,
+              '14_cmp89centeredtorusgreencoefficientphase_audit': 5,
+              '15_cmp89centeredtorusgreencoefficientdictionary_audit': 7,
+              '16_cmp89signedlatticel1totalsum_audit': 13,
+              '17_cmp89centeredgreenfouriersummability_audit': 5,
+              '18_cmp99physicalgreenfinitegridaliasing_audit': 5,
+          }
+          focals = {
+              '01_cmp89centeredbrillouinaffineslice_focal': 'YangMills/RG/BalabanCMP89CenteredBrillouinAffineSlice.lean',
+              '02_cmp89centeredunitcubetorusquotient_focal': 'YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotient.lean',
+              '03_cmp89centeredtorusfourierphase_focal': 'YangMills/RG/BalabanCMP89CenteredTorusFourierPhase.lean',
+              '04_cmp89normalizedbrillouintotorusmeasure_focal': 'YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean',
+              '05_cmp89eq248greenmassuniformholomorphy_focal': 'YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphy.lean',
+              '06_cmp89eq248displayedgreenvectorperiodicity_focal': 'YangMills/RG/BalabanCMP89Eq248DisplayedGreenVectorPeriodicity.lean',
+              '07_cmp89eq248centeredgreentorus_focal': 'YangMills/RG/BalabanCMP89Eq248CenteredGreenTorus.lean',
+              '08_cmp99centeredtorussampledictionary_focal': 'YangMills/RG/BalabanCMP99CenteredTorusSampleDictionary.lean',
+              '09_cmp99centeredtorusphysicalgreensampletransport_focal': 'YangMills/RG/BalabanCMP99CenteredTorusPhysicalGreenSampleTransport.lean',
+              '10_cmp89eq248greenonecoordinatecontourshift_focal': 'YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShift.lean',
+              '11_cmp89eq248greenproductcontourtelescope_focal': 'YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescope.lean',
+              '12_cmp89eq248massuniformgreenbound_focal': 'YangMills/RG/BalabanCMP89Eq248MassUniformGreenBound.lean',
+              '13_cmp89eq248massuniformnormalizedgreenbound_focal': 'YangMills/RG/BalabanCMP89Eq248MassUniformNormalizedGreenBound.lean',
+              '14_cmp89centeredtorusgreencoefficientphase_focal': 'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhase.lean',
+              '15_cmp89centeredtorusgreencoefficientdictionary_focal': 'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionary.lean',
+              '16_cmp89signedlatticel1totalsum_focal': 'YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean',
+              '17_cmp89centeredgreenfouriersummability_focal': 'YangMills/RG/BalabanCMP89CenteredGreenFourierSummability.lean',
+              '18_cmp99physicalgreenfinitegridaliasing_focal': 'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean',
+          }
+          for stage, module_path in focals.items():
+              text = Path(f"evidence/{stage}.log").read_text(encoding="utf-8")
+              lines = [line.strip() for line in text.splitlines() if line.strip()]
+              build = [line for line in lines if re.fullmatch(
+                  r"Build completed successfully \(\d+ jobs\)\.", line
+              )]
+              if len(build) != 1 or lines[-1] != build[0]:
+                  raise SystemExit(f"BAD_BUILD_SENTINEL={stage} count={len(build)}")
+              if f"warning: {module_path}:" in text:
+                  raise SystemExit(f"NEW_MODULE_LINTER_WARNING={stage}")
+          parsed = {}
+          total = 0
+          for stage, count in expected.items():
+              text = Path(f"evidence/{stage}.log").read_text(encoding="utf-8")
+              compact = re.sub(r"\s+", "", text)
+              for forbidden in ("sorryAx", "ofReduceBool"):
+                  if forbidden in compact:
+                      raise SystemExit(f"FORBIDDEN_AXIOM={forbidden} STAGE={stage}")
+              blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+              if len(blocks) != count:
+                  raise SystemExit(
+                      f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED={count} STAGE={stage}"
+                  )
+              values = []
+              for body in blocks:
+                  names = {item for item in body.split(",") if item}
+                  if not names.issubset(allowed):
+                      raise SystemExit(f"AXIOM_SET={sorted(names)} STAGE={stage}")
+                  values.append(sorted(names))
+              parsed[stage] = values
+              total += len(values)
+          if total != 124:
+              raise SystemExit(f"TOTAL_AXIOM_BLOCKS={total} EXPECTED=124")
           Path("evidence/axioms.json").write_text(
-              json.dumps(parsed, sort_keys=True, indent=2) + "\n",
-              encoding="utf-8",
+              json.dumps(parsed, sort_keys=True, indent=2) + "\n", encoding="utf-8"
           )
           PY
           printf 'FINAL_STATUS=PASS\n' | tee evidence/FINAL_STATUS
@@ -168,17 +286,16 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > \
-              cmp99-finite-grid-aliasing-evidence.tar.gz
-          sha256sum cmp99-finite-grid-aliasing-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > step8b23-ae-evidence.tar.gz
+          sha256sum step8b23-ae-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cmp99-finite-grid-aliasing-${{ env.SOURCE_SHA }}
+          name: step8b23-ae-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            cmp99-finite-grid-aliasing-evidence.tar.gz
+            step8b23-ae-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
