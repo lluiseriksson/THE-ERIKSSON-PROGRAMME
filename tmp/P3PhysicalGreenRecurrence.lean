@@ -126,6 +126,8 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_typed
     exact mul_pos
       (pow_pos (by exact_mod_cast (NeZero.pos M)) r.1.val) hspacing
   have hrec0 := scratch_cmp85RecurrenceBeta_mul_add_eq_mul
+    (a := a) (L := (M : ℝ))
+    (spacingJ := (T.towerAt r.1).terminalSpacing)
     ha (by exact_mod_cast (NeZero.pos M)) hcurrentSpacing (k.1.val - 1)
   have hrec : beta * (b + c) = b * c := by
     simpa only [T, r, rn, b, c, beta, hb, hc, hbeta] using hrec0
@@ -176,8 +178,9 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq242
   have hb2 := scratch_cmp85RecurrenceB_sq a (M : ℝ)
     (T.towerAt r.1).terminalSpacing (k.1.val - 1)
   rw [hb] at hb2
+  rw [hb2] at hEq
   simpa only [scratch_cmp85TypedGreenCandidate, r,
-    scratch_cmp85SourcePrefixA, hb2] using hEq
+    scratch_cmp85SourcePrefixA] using hEq
 
 /-- Literal source form of CMP85 (2.41). -/
 theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
@@ -230,6 +233,7 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
     (spacingJ := (T.towerAt r.1).terminalSpacing)
     ha (by exact_mod_cast (NeZero.pos M)) hcurrentSpacing (k.1.val - 1)
   rw [hb, hc] at hsum
+  change (T.towerAt k.1.succ).Qprime.comp Gnext = _
   rw [hQ]
   simpa only [r, rn, scratch_cmp85SourcePrefixA, hsum] using hAvg
 
