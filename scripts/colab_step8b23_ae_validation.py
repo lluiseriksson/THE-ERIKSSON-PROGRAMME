@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v32"
-runner.SOURCE_SHA = '69645bd8efcd321479a3a063e4478fd02e78743b'
+runner.RUNNER_REV = "step8b23-ae-v33"
+runner.SOURCE_SHA = 'da2170a81df6890c7cfbfb65b9983825a2d49bd6'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -64,7 +64,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99CenteredTorusPhysicalGreenSampleTransportAudit.lean': 'ebbc79a2c206e04c9b290c096590a2456cc8eab293bccdcf6db27ccddd3767a8',
     'YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShift.lean': '7c881899c1f70b92854309fcf3debb53e3d3f27ec3e2afdd0dbf9be7167a43e3',
     'YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShiftAudit.lean': '4a2349c526da39442794b7dc75a30ca5f45ca2b9faf33a5f190e98882aceab60',
-    'YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescope.lean': '33f013b8d996a584400ad03ffd1878bc5738734f8972707b69d5589ab6fd6d67',
+    'YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescope.lean': '3bb3c98e9b95c526f9a73d4ed0986bc0a62c0a8edf4079ae6272386552c7bd56',
     'YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescopeAudit.lean': '2bf1ecedd087092acdb914e64ba0979d2de654febe36fb69c09f29b4d305f171',
     'YangMills/RG/BalabanCMP89Eq248MassUniformGreenBound.lean': '5637560f3823c5e84833dfdf9d184445aea92c79b78ce56de8b11cb8cc324e8e',
     'YangMills/RG/BalabanCMP89Eq248MassUniformGreenBoundAudit.lean': '83fb7dfc26b7e21800465b0a04d53de838b2b76feda52ed4f14bccff438768ff',
