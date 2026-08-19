@@ -92,13 +92,15 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_physicalCoefficient_draft
     (hmass : CMP89Eq251UniformMassWindow mass)
     (u n : Fin 4 → ℤ) :
     UnitAddTorus.mFourierCoeff
-        (cmp89Eq248CenteredGreenTorus ha hrho hamplitude hradius hwindow
-          hmass u) n =
+        (cmp89Eq248CenteredGreenTorus
+          (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+          ha hrho hamplitude hradius hwindow hmass u) n =
       cmp89Eq248CenteredGreenPhysicalFourierCoefficient
         L j mass a u n := by
   simpa [cmp89Eq248CenteredGreenPhysicalFourierCoefficient,
     cmp89SignedLatticeResidueAffineMap] using
     (cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho hamplitude hradius hwindow hmass u n)
 
 /-- Consequently the actual Fourier coefficients of the literal descended
@@ -112,12 +114,15 @@ theorem summable_mFourierCoeff_cmp89Eq248CenteredGreenTorus_draft
     (hmass : CMP89Eq251UniformMassWindow mass)
     (u : Fin 4 → ℤ) :
     Summable (UnitAddTorus.mFourierCoeff
-      (cmp89Eq248CenteredGreenTorus ha hrho.le hamplitude hradius hwindow
-        hmass u)) := by
+      (cmp89Eq248CenteredGreenTorus
+        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+        ha hrho.le hamplitude hradius hwindow hmass u)) := by
   have hphysical :=
     summable_cmp89Eq248CenteredGreenPhysicalFourierCoefficient_draft
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho hamplitude hradius hwindow hmass u
   simpa only [cmp89_mFourierCoeff_centeredGreen_eq_physicalCoefficient_draft
+    (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
     ha hrho.le hamplitude hradius hwindow hmass u] using hphysical
 
 end

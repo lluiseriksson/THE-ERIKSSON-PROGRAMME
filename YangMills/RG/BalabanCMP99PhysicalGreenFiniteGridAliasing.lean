@@ -59,12 +59,16 @@ theorem cmp99FlatFiniteGridFourierSeriesSample_physicalGreen_eq_torusSample_draf
     (u : Fin 4 → ℤ) (k : CMP99FlatZModBox 4 N) :
     cmp99FlatFiniteGridFourierSeriesSample
         (cmp89Eq248CenteredGreenPhysicalFourierCoefficient L j mass a u) k =
-      cmp89Eq248CenteredGreenTorus ha hrho.le hamplitude hradius hwindow
-        hmass u (cmp99FlatZModUnitTorusSample k) := by
-  let f := cmp89Eq248CenteredGreenTorus ha hrho.le hamplitude hradius
-    hwindow hmass u
+      cmp89Eq248CenteredGreenTorus
+        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+        ha hrho.le hamplitude hradius hwindow hmass u
+        (cmp99FlatZModUnitTorusSample k) := by
+  let f := cmp89Eq248CenteredGreenTorus
+    (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+    ha hrho.le hamplitude hradius hwindow hmass u
   have hcoeff :=
     summable_mFourierCoeff_cmp89Eq248CenteredGreenTorus_draft
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho hamplitude hradius hwindow hmass u
   have hseries :=
     UnitAddTorus.hasSum_mFourier_series_apply_of_summable hcoeff
@@ -77,6 +81,7 @@ theorem cmp99FlatFiniteGridFourierSeriesSample_physicalGreen_eq_torusSample_draf
     apply hseries.congr
     intro n
     rw [cmp89_mFourierCoeff_centeredGreen_eq_physicalCoefficient_draft
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho.le hamplitude hradius hwindow hmass u]
     rw [cmp89UnitAddTorus_mFourier_flatZModSample_eq_character_draft]
     simp only [smul_eq_mul]
@@ -97,8 +102,10 @@ theorem cmp99Flat_normalizedFiniteGridPhysicalGreen_eq_residueClass_draft
     ((N : ℂ) ^ 4)⁻¹ *
         ∑ k : CMP99FlatZModBox 4 N,
           cmp99FlatZModFourierCharacter (-k) r *
-            cmp89Eq248CenteredGreenTorus ha hrho.le hamplitude hradius
-              hwindow hmass u (cmp99FlatZModUnitTorusSample k) =
+            cmp89Eq248CenteredGreenTorus
+              (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+              ha hrho.le hamplitude hradius hwindow hmass u
+              (cmp99FlatZModUnitTorusSample k) =
       ∑' n : CMP99FlatIntegerResidueClass 4 N r,
         cmp89Eq248CenteredGreenPhysicalFourierCoefficient
           L j mass a u n := by
@@ -106,17 +113,21 @@ theorem cmp99Flat_normalizedFiniteGridPhysicalGreen_eq_residueClass_draft
     cmp89Eq248CenteredGreenPhysicalFourierCoefficient L j mass a u
   have hsummable :=
     summable_cmp89Eq248CenteredGreenPhysicalFourierCoefficient_draft
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho hamplitude hradius hwindow hmass u
   have halias :=
     cmp99Flat_normalizedFiniteGridFourierSeriesSample_eq_residueClass
       coefficient hsummable r
   have hsample : ∀ k : CMP99FlatZModBox 4 N,
       cmp99FlatFiniteGridFourierSeriesSample coefficient k =
-        cmp89Eq248CenteredGreenTorus ha hrho.le hamplitude hradius
-          hwindow hmass u (cmp99FlatZModUnitTorusSample k) := by
+        cmp89Eq248CenteredGreenTorus
+          (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+          ha hrho.le hamplitude hradius hwindow hmass u
+          (cmp99FlatZModUnitTorusSample k) := by
     intro k
     exact
       cmp99FlatFiniteGridFourierSeriesSample_physicalGreen_eq_torusSample_draft
+        (L := L) (j := j) (N := N) (mass := mass) (a := a) (rho := rho)
         ha hrho hamplitude hradius hwindow hmass u k
   simpa only [coefficient, hsample] using halias
 
