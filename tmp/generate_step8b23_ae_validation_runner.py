@@ -116,6 +116,10 @@ REPROS: tuple[tuple[str, str], ...] = (
         "00c_continuousat_comp_explicit_repro",
         "tmp/Step8b23AEContinuousAtCompExplicit.repro.lean",
     ),
+    (
+        "00d_signed_lattice_l1_repairs_repro",
+        "tmp/Step8b23AESignedLatticeL1Repairs.repro.lean",
+    ),
 )
 
 
@@ -257,7 +261,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v48"
+runner.RUNNER_REV = "step8b23-ae-v49"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")

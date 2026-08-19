@@ -95,7 +95,7 @@ def main() -> int:
     print(
         "STEP8B23_AE_GENERATOR_SELFTEST_OK "
         "runner=pass workflow=pass tamper=fail_closed "
-        "files=36 repros=3 bricks=18 stages=39 axiom_blocks=124"
+        "files=36 repros=4 bricks=18 stages=40 axiom_blocks=124"
     )
     return 0
 

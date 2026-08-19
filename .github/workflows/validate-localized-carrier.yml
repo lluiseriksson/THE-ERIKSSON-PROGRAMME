@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 3bb9944ed530d9043cbbea4399171ccd4f10c507
+  SOURCE_SHA: c6465f03fae2f69d38e78140747fba2c3f49df48
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -77,7 +77,7 @@ jobs:
           613507fd729af2fdb242eeb9a7414286e9de080c893cf0c4ea87b58096f26908  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhaseAudit.lean
           53c005aeb97d187a91f4509c91daf9bf448d9375a948e8528e33def1b42e79ef  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionary.lean
           ca78912c3c168b77daeffd69808fc72b84f31ca1db28d51477891a7d56794342  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionaryAudit.lean
-          2ce03a45c58c74c1be7f8bb5da0e694d3aa048c14c0f18ce3ef95baf423f898b  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean
+          8ca777ceb2c7a29b2f9da85b5eb4e5d64e7de692ed3a34cccd923e9061dc06fb  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean
           80bad23756e1a24508d84bb969cebe2dff18ea72bc938fa24b28ab911fb296fb  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean
           205bb1dbb9f81575af89fefcc1ce334df06540524ec678a6d189c9ae76c66b9d  YangMills/RG/BalabanCMP89CenteredGreenFourierSummability.lean
           e1ff97694e15ed9d0976b033a933a2d1d45bd87cfe7ae73c4efd930fd38de532  YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean

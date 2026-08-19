@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v48"
-runner.SOURCE_SHA = '3bb9944ed530d9043cbbea4399171ccd4f10c507'
+runner.RUNNER_REV = "step8b23-ae-v49"
+runner.SOURCE_SHA = 'c6465f03fae2f69d38e78140747fba2c3f49df48'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -74,7 +74,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhaseAudit.lean': '613507fd729af2fdb242eeb9a7414286e9de080c893cf0c4ea87b58096f26908',
     'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionary.lean': '53c005aeb97d187a91f4509c91daf9bf448d9375a948e8528e33def1b42e79ef',
     'YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionaryAudit.lean': 'ca78912c3c168b77daeffd69808fc72b84f31ca1db28d51477891a7d56794342',
-    'YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean': '2ce03a45c58c74c1be7f8bb5da0e694d3aa048c14c0f18ce3ef95baf423f898b',
+    'YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean': '8ca777ceb2c7a29b2f9da85b5eb4e5d64e7de692ed3a34cccd923e9061dc06fb',
     'YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean': '80bad23756e1a24508d84bb969cebe2dff18ea72bc938fa24b28ab911fb296fb',
     'YangMills/RG/BalabanCMP89CenteredGreenFourierSummability.lean': '205bb1dbb9f81575af89fefcc1ce334df06540524ec678a6d189c9ae76c66b9d',
     'YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean': 'e1ff97694e15ed9d0976b033a933a2d1d45bd87cfe7ae73c4efd930fd38de532',
@@ -83,6 +83,7 @@ runner.SOURCE_BLOBS = {
     'tmp/Step8b23AENormalizedMeasureCoeff.repro.lean': 'a77d77600322140c6fa45134b3a3b1c974cea5fba8be2b60b7b069505d2f6403',
     'tmp/Step8b23AENormalizedMeasureFull.repro.lean': 'cb7606a9d7a27fa31ebe0b63a294409ea7f5b8ae3097e2523f8c0c2256f0afa8',
     'tmp/Step8b23AEContinuousAtCompExplicit.repro.lean': '65d3f43bd36eae29d3c4ee742163a4101468481f6a760ffc5c4f7d257b26b1e7',
+    'tmp/Step8b23AESignedLatticeL1Repairs.repro.lean': '1a0ae3b3d7aa31ccc92cb4d2144dca42d9b42a5839c3030514bd5294980dc931',
 }
 
 
@@ -148,6 +149,11 @@ runner.QUEUE = [
     (
         '00c_continuousat_comp_explicit_repro',
         ["lake", "env", "lean", 'tmp/Step8b23AEContinuousAtCompExplicit.repro.lean'],
+        None,
+    ),
+    (
+        '00d_signed_lattice_l1_repairs_repro',
+        ["lake", "env", "lean", 'tmp/Step8b23AESignedLatticeL1Repairs.repro.lean'],
         None,
     ),
 
