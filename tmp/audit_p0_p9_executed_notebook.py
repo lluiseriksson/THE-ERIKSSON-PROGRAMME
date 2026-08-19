@@ -18,12 +18,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
-SOURCE_SHA = "d5c704c4e671336d5a220f7ed711170766a9ee97"
-RUNNER_SHA256 = "9f4f324458c5a28d363fb5c94bee463ef978a7f904d315ae051a436fd906c9c5"
+SOURCE_SHA = "6bbb3e08478795a83a2cd953f213475d630f2fba"
+RUNNER_SHA256 = "3707e52d0f3999242aaf20375d5c7f816962a723a4d30c143ccce040bd3c07f8"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
-MANIFEST_SHA256 = "bd0f88c1ef87082cff16a7f1ac3eee440f92f8d846835ed6698be02a5ee52238"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v44"
+MANIFEST_SHA256 = "5f068b6d51d0c7997b2b6372b27addc1f10677ad23356e16614d4d62017daea9"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v45"
 SUPPORTED_TRANSCRIPTS = {
     (
         "84eb07b5d1f2c3d7f245230a25846065b745a38e",
@@ -105,10 +105,20 @@ SUPPORTED_TRANSCRIPTS = {
             "36b12f7f9de76b24b188d9efd68c861a40551d5dafa493f2a71fd043606854e2",
         "overlay_files": "43",
     },
+    (
+        "d5c704c4e671336d5a220f7ed711170766a9ee97",
+        "p0-p9-prefix-combes-thomas-v44",
+    ): {
+        "runner_sha256":
+            "9f4f324458c5a28d363fb5c94bee463ef978a7f904d315ae051a436fd906c9c5",
+        "manifest_sha256":
+            "bd0f88c1ef87082cff16a7f1ac3eee440f92f8d846835ed6698be02a5ee52238",
+        "overlay_files": "43",
+    },
     (SOURCE_SHA, RUNNER_REV): {
         "runner_sha256": RUNNER_SHA256,
         "manifest_sha256": MANIFEST_SHA256,
-        "overlay_files": "43",
+        "overlay_files": "44",
     },
 }
 P0_SOURCE_STAGE = "p0_p9_01_p0canonicalprefixtower"
@@ -157,6 +167,7 @@ REQUIRED_CORE_STAGES = {
     "p0_p9_p3_algebra_repro",
     "p0_p9_p3_typed_averaging_repro",
     "p0_p9_p3_typed_green_inverse_repro",
+    "p0_p9_p3_physical_dictionary_repro",
     "p0_p9_materialize_project_prerequisites",
     "p0_p9_materialize_p7_p9_project_prerequisites",
     "p0_p9_prepare_scratch_build_dir",
