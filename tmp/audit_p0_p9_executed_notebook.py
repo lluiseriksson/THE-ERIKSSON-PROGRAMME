@@ -326,7 +326,13 @@ def audit_p0(path: Path) -> str:
             raise ValueError(f"duplicate stage result: {stage}")
         order.append(stage)
         stages[stage] = int(exit_code)
-    missing_core = sorted(P0_REQUIRED_CORE_STAGES - stages.keys())
+    required_core = set(P0_REQUIRED_CORE_STAGES)
+    if runner_rev != RUNNER_REV:
+        # Historical transcripts predate the dedicated P3 dictionary repro.
+        # They may certify the already-completed P0 prefix, but cannot be
+        # required to contain a stage that did not yet exist in their runner.
+        required_core.discard("p0_p9_p3_physical_dictionary_repro")
+    missing_core = sorted(required_core - stages.keys())
     if missing_core:
         raise ValueError(f"missing prerequisite stage results: {missing_core}")
     for stage in (P0_SOURCE_STAGE, P0_AUDIT_STAGE):
