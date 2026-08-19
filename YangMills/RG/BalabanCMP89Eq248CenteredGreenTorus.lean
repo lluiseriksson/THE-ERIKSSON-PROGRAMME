@@ -73,8 +73,9 @@ theorem continuous_cmp89Eq248CenteredGreenCube
   have hinner : ContinuousAt
       (fun q : CMP89CenteredUnitCube (Fin 4) =>
         cmp89Eq248CenteredCubeMomentum q) t := by
+    unfold cmp89Eq248CenteredCubeMomentum
     fun_prop
-  simpa [cmp89Eq248CenteredGreenCube, p] using
+  simpa [cmp89Eq248CenteredGreenCube, p, Function.comp_def] using
     houter.comp hinner
 
 /-- Replacing a centered-cube coordinate by its two opposite faces leaves
