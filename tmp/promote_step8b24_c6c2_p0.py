@@ -48,6 +48,16 @@ P0_SOURCE_STAGE = "p0_p9_01_p0canonicalprefixtower"
 P0_AUDIT_STAGE = "p0_p9_02_p0canonicalprefixtoweraudit"
 P0_AXIOM_HEADERS = 10
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
+P0_EVIDENCE_IDENTITIES = {
+    (
+        "84eb07b5d1f2c3d7f245230a25846065b745a38e",
+        "p0-p9-prefix-combes-thomas-v34",
+    ),
+    (
+        "909a73cf87ff51486f9f460890a08f2efbe383ec",
+        "p0-p9-prefix-combes-thomas-v35",
+    ),
+}
 
 
 def sha256(data: bytes) -> str:
@@ -116,10 +126,15 @@ def require_step8b22_sealed() -> None:
 def require_p0_evidence(path: Path) -> str:
     """Accept a complete PASS or a later stop-on-first-error after P0 passed."""
 
+    if P0_EVIDENCE_IDENTITIES != ARCHIVE_AUDIT["SUPPORTED_IDENTITIES"]:
+        raise ValueError("P0 promoter/archive identity allowlists drifted")
     summary: str = ARCHIVE_AUDIT["audit"](path)
     members: dict[str, bytes] = ARCHIVE_AUDIT["read_regular_members"](path)
     root: str = ARCHIVE_AUDIT["EVIDENCE_ROOT"]
     evidence = json.loads(members[f"{root}/evidence.json"].decode("utf-8"))
+    identity = (evidence.get("source_sha"), evidence.get("runner_rev"))
+    if identity not in P0_EVIDENCE_IDENTITIES:
+        raise ValueError(f"unsupported P0 evidence identity: {identity!r}")
     records = evidence["records"]
     by_stage = {record["stage"]: (index, record) for index, record in enumerate(records)}
     for stage in (P0_SOURCE_STAGE, P0_AUDIT_STAGE):

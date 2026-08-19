@@ -19,6 +19,13 @@ import tempfile
 
 SOURCE_SHA = "909a73cf87ff51486f9f460890a08f2efbe383ec"
 RUNNER_REV = "p0-p9-prefix-combes-thomas-v35"
+SUPPORTED_IDENTITIES = {
+    (
+        "84eb07b5d1f2c3d7f245230a25846065b745a38e",
+        "p0-p9-prefix-combes-thomas-v34",
+    ),
+    (SOURCE_SHA, RUNNER_REV),
+}
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 EVIDENCE_ROOT = "hrpoly-p0-p9-prefix-combes-thomas-evidence"
 
@@ -54,13 +61,13 @@ def audit(path: Path) -> str:
     if evidence_name not in members:
         raise ValueError("evidence.json missing")
     evidence = json.loads(members[evidence_name].decode("utf-8"))
-    for key, expected in (
-        ("source_sha", SOURCE_SHA),
-        ("runner_rev", RUNNER_REV),
-        ("mathlib_sha", MATHLIB_SHA),
-    ):
-        if evidence.get(key) != expected:
-            raise ValueError(f"{key}={evidence.get(key)!r}, expected={expected!r}")
+    identity = (evidence.get("source_sha"), evidence.get("runner_rev"))
+    if identity not in SUPPORTED_IDENTITIES:
+        raise ValueError(f"unsupported source/runner identity: {identity!r}")
+    if evidence.get("mathlib_sha") != MATHLIB_SHA:
+        raise ValueError(
+            f"mathlib_sha={evidence.get('mathlib_sha')!r}, expected={MATHLIB_SHA!r}"
+        )
     status = evidence.get("status")
     if status not in {"PASS", "FAIL"}:
         raise ValueError(f"invalid status: {status!r}")
@@ -111,16 +118,22 @@ def audit(path: Path) -> str:
     first_fail = failed[0] if failed else "none"
     return (
         "P0_P9_EVIDENCE_ARCHIVE_OK "
+        f"source_sha={identity[0]} runner_rev={identity[1]} "
         f"status={status} records={len(records)} first_fail={first_fail} "
         f"archive_sha256={sha256(archive_bytes)}"
     )
 
 
-def fixture_archive(path: Path, *, tamper: bool = False) -> None:
+def fixture_archive(
+    path: Path,
+    *,
+    tamper: bool = False,
+    identity: tuple[str, str] = (SOURCE_SHA, RUNNER_REV),
+) -> None:
     logs = {"one.log": b"ok\n", "two.log": b"bad\n"}
     evidence = {
-        "source_sha": SOURCE_SHA,
-        "runner_rev": RUNNER_REV,
+        "source_sha": identity[0],
+        "runner_rev": identity[1],
         "mathlib_sha": MATHLIB_SHA,
         "status": "FAIL",
         "records": [
@@ -157,11 +170,20 @@ def fixture_archive(path: Path, *, tamper: bool = False) -> None:
 def selftest() -> int:
     with tempfile.TemporaryDirectory() as directory:
         good = Path(directory) / "good.tar.gz"
+        old = Path(directory) / "old.tar.gz"
         bad = Path(directory) / "bad.tar.gz"
+        crossed = Path(directory) / "crossed.tar.gz"
         fixture_archive(good)
+        fixture_archive(old, identity=sorted(SUPPORTED_IDENTITIES)[0])
         fixture_archive(bad, tamper=True)
+        fixture_archive(
+            crossed,
+            identity=(sorted(SUPPORTED_IDENTITIES)[0][0], RUNNER_REV),
+        )
         if not audit(good).startswith("P0_P9_EVIDENCE_ARCHIVE_OK"):
             raise AssertionError("good fixture rejected")
+        if not audit(old).startswith("P0_P9_EVIDENCE_ARCHIVE_OK"):
+            raise AssertionError("enumerated v34 fixture rejected")
         try:
             audit(bad)
         except ValueError as error:
@@ -169,6 +191,13 @@ def selftest() -> int:
                 raise
         else:
             raise AssertionError("tampered fixture accepted")
+        try:
+            audit(crossed)
+        except ValueError as error:
+            if "unsupported source/runner identity" not in str(error):
+                raise
+        else:
+            raise AssertionError("crossed source/runner identity accepted")
     print("P0_P9_EVIDENCE_ARCHIVE_SELFTEST_OK")
     return 0
 
