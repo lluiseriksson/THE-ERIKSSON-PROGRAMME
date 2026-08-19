@@ -105,10 +105,33 @@ theorem cmp89_mFourier_mul_centeredGreen_physicalBrillouin
   rw [← cmp89CenteredRepresentative_toTorus x hx, hcover]
   unfold cmp89Eq248CenteredGreenCube
   rw [cmp89CenteredRepresentative_momentum]
-  simpa [cmp89Eq249FineLatticeSpacing, Nat.cast_pow] using
-    (cmp89UnitAddTorus_mFourier_neg_mul_stabilizedGreen_eq_affineResidue
-      (L := L) (j := j) hLj mass a n u
-      (fun mu => (t mu).1))
+  have htorus :
+      (fun mu => (((t mu).1 : ℝ) : UnitAddCircle)) =
+        cmp89CenteredUnitCubeToTorus t := by
+    rfl
+  have hreal :
+      cmp89Eq248CenteredCubeMomentum t =
+        cmp89Eq251PhysicalBrillouinParameter x := by
+    simpa only [t] using cmp89CenteredRepresentative_momentum x hx
+  have hmom :
+      cmp89Eq248NegativeTwoPiTorusMomentum (fun mu => (t mu).1) =
+        fun mu => (cmp89Eq251PhysicalBrillouinParameter x mu : ℂ) := by
+    funext mu
+    have hmu := congrFun hreal mu
+    calc
+      cmp89Eq248NegativeTwoPiTorusMomentum (fun mu => (t mu).1) mu =
+          (cmp89Eq248CenteredCubeMomentum t mu : ℂ) := by
+        unfold cmp89Eq248NegativeTwoPiTorusMomentum
+          cmp89Eq248CenteredCubeMomentum
+        push_cast
+        ring
+      _ = (cmp89Eq251PhysicalBrillouinParameter x mu : ℂ) := by
+        exact congrArg (fun z : ℝ => (z : ℂ)) hmu
+  have hphase :=
+    cmp89UnitAddTorus_mFourier_neg_mul_stabilizedGreen_eq_affineResidue
+      (L := L) (j := j) hLj mass a n u (fun mu => (t mu).1)
+  rw [htorus, hmom] at hphase
+  simpa [cmp89Eq249FineLatticeSpacing, Nat.cast_pow] using hphase
 
 /-- The pointwise dictionary holds almost everywhere for the literal source
 measure.  Boundary and off-cube values are not promoted to a global identity.
@@ -140,8 +163,8 @@ theorem cmp89_ae_mFourier_mul_centeredGreen_physicalBrillouin
     unfold cmp89Eq249FourDimensionalBrillouinMeasure
       cmp89Eq249PhysicalBrillouinCube
     rw [volume_pi, Measure.restrict_pi_pi]
-    simp [Set.uIoc_of_le
-      (mul_nonneg (by norm_num) Real.pi_pos.le)]
+    have htwoPi : (0 : ℝ) ≤ 2 * Real.pi := by positivity
+    simp only [Set.uIoc_of_le htwoPi]
   have hcube : MeasurableSet cmp89Eq249PhysicalBrillouinCube := by
     exact MeasurableSet.pi (Set.to_countable Set.univ) fun _ _ =>
       measurableSet_Ioc
@@ -182,6 +205,7 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
     (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
     ha hrho hamplitude hradius hwindow hmass u n
   unfold UnitAddTorus.mFourierCoeff
+  simp only [smul_eq_mul]
   change (∫ t, f t ∂(volume : Measure (UnitAddTorus (Fin 4)))) = _
   rw [htransport]
   unfold cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen
