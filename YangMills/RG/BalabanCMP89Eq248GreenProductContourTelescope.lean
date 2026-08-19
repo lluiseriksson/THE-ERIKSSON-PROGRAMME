@@ -91,7 +91,14 @@ theorem integrable_cmp89Eq248FineLatticeGreenPartialProductIntegrand_draft
           stage rho y endpointDisplacement) x :=
       (continuous_cmp89Eq251EndpointPartialSignedContourMomentum
         stage rho endpointDisplacement).continuousAt
-    exact (houter.continuousAt.comp' hinner).continuousWithinAt
+    exact (ContinuousAt.comp'
+      (f := fun y : Fin 4 → ℝ =>
+        cmp89Eq251EndpointPartialSignedContourMomentum
+          stage rho y endpointDisplacement)
+      (g := fun w : Fin 4 → ℂ =>
+        cmp89Eq248ComplexStabilizedGreenEndpointIntegrand
+          4 L j mass a w endpointDisplacement)
+      houter.continuousAt hinner).continuousWithinAt
   have hIcc : IntegrableOn (fun x : Fin 4 → ℝ =>
       cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 L j mass a
         (cmp89Eq251EndpointPartialSignedContourMomentum
