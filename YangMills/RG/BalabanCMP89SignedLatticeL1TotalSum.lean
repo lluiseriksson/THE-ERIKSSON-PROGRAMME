@@ -32,6 +32,13 @@ theorem cmp89SignedLatticeL1ExponentialWeight_nonneg
   exact Finset.prod_nonneg fun mu _ =>
     cmp89SignedLatticeOneDimensionalExpWeight_nonneg delta (u mu)
 
+private theorem cmp89SignedLatticeL1TotalSum_latticeL1Length_neg
+    {d : ℕ} (u : Fin d → ℤ) :
+    cmp89Eq251LatticeL1Length (fun mu ↦ -u mu) =
+      cmp89Eq251LatticeL1Length u := by
+  unfold cmp89Eq251LatticeL1Length
+  simp
+
 /-- Positive decay makes the literal `l1` product weight summable on all of
 `Z^d`.  The induction is through the exact head/tail tuple equivalence; no
 ball-counting majorant is introduced. -/
@@ -40,7 +47,7 @@ theorem summable_cmp89SignedLatticeL1ExponentialWeight
     Summable (cmp89SignedLatticeL1ExponentialWeight (d := d) delta) := by
   induction d with
   | zero =>
-      exact summable_of_finite _
+      exact Summable.of_finite
   | succ d hd =>
       let e : ℤ × (Fin d → ℤ) ≃ (Fin (d + 1) → ℤ) :=
         Fin.consEquiv (fun _ : Fin (d + 1) => ℤ)
@@ -167,7 +174,7 @@ theorem cmp89SignedLatticeResidueAffineMap_ownerLength_le
     funext mu
     simp [cmp89SignedLatticeResidueAffineMap]
   rw [hcancel, cmp89Eq251LatticeL1Length_intScale,
-    cmp89Eq251LatticeL1Length_neg] at htri
+    cmp89SignedLatticeL1TotalSum_latticeL1Length_neg] at htri
   exact htri
 
 /-- The physical fine-scale residue weight is bounded by the owner-scale
@@ -307,14 +314,13 @@ theorem tsum_cmp89SignedLatticeL1ExponentialWeight_physicalResidue_four_le
         ((1 + Real.exp (-rho)) / (1 - Real.exp (-rho))) ^ 4 := by
   have hcenter' : cmp89Eq251LatticeL1Length u ≤
       ((4 : ℕ) : ℝ) * (M : ℝ) / 2 := by
-    norm_num at hcenter ⊢
-    exact hcenter
+    nlinarith [hcenter]
   have hprefactor :
       Real.exp ((rho / (M : ℝ)) * cmp89Eq251LatticeL1Length u) ≤
         Real.exp (2 * rho) := by
     have h := exp_physicalResidue_prefactor_le_of_centered
       (d := 4) hM hrho.le u hcenter'
-    convert h using 1 <;> ring
+    convert h using 1 <;> ring_nf
   have hleft :=
     summable_cmp89SignedLatticeL1ExponentialWeight_physicalResidue
       (d := 4) hM hrho u
