@@ -262,9 +262,12 @@ jobs:
                   if forbidden in compact:
                       raise SystemExit(f"FORBIDDEN_AXIOM={forbidden} STAGE={stage}")
               blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
-              if len(blocks) != count:
+              pure = compact.count("doesnotdependonanyaxioms")
+              headers = len(blocks) + pure
+              if headers != count:
                   raise SystemExit(
-                      f"AXIOM_BLOCK_COUNT={len(blocks)} EXPECTED={count} STAGE={stage}"
+                      f"AXIOM_HEADER_COUNT={headers} EXPECTED={count} "
+                      f"NONEMPTY={len(blocks)} EMPTY={pure} STAGE={stage}"
                   )
               values = []
               for body in blocks:
@@ -272,8 +275,9 @@ jobs:
                   if not names.issubset(allowed):
                       raise SystemExit(f"AXIOM_SET={sorted(names)} STAGE={stage}")
                   values.append(sorted(names))
+              values.extend([[] for _ in range(pure)])
               parsed[stage] = values
-              total += len(values)
+              total += headers
           if total != 124:
               raise SystemExit(f"TOTAL_AXIOM_BLOCKS={total} EXPECTED=124")
           Path("evidence/axioms.json").write_text(

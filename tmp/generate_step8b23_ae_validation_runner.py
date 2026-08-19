@@ -81,6 +81,37 @@ def run_with_persistent_log(
 runner.run = run_with_persistent_log
 '''
 
+COMPLETE_AXIOM_PARSER_BLOCK = r'''
+def parse_complete_axiom_headers(output: str, expected: int) -> None:
+    """Count both textual forms emitted by ``#print axioms``."""
+    compact = re.sub(r"\s+", "", output)
+    for forbidden in ("sorryAx", "ofReduceBool"):
+        if forbidden in compact:
+            raise RuntimeError("FORBIDDEN_AXIOM=" + forbidden)
+    blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+    pure = compact.count("doesnotdependonanyaxioms")
+    headers = len(blocks) + pure
+    if headers != expected:
+        raise RuntimeError(
+            "AXIOM_HEADER_COUNT=" + str(headers)
+            + " EXPECTED=" + str(expected)
+            + " NONEMPTY=" + str(len(blocks))
+            + " EMPTY=" + str(pure)
+        )
+    for index, body in enumerate(blocks):
+        names = {name for name in body.split(",") if name}
+        if not names.issubset(runner.ALLOWED_AXIOMS):
+            raise RuntimeError(f"AXIOM_SET_{index}={sorted(names)}")
+
+
+parse_complete_axiom_headers(
+    "'Fixture.allowed' depends on axioms: [propext, Quot.sound]\n"
+    "'Fixture.pure' does not depend on any axioms\n",
+    2,
+)
+runner.parse_axioms = parse_complete_axiom_headers
+'''
+
 # Dependency order and exact public-declaration counts are frozen by
 # tmp/audit_step8b23_brick_schedule.py.
 BRICKS: tuple[tuple[str, int], ...] = (
@@ -261,7 +292,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v50"
+runner.RUNNER_REV = "step8b23-ae-v51"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
@@ -273,6 +304,7 @@ runner.SOURCE_BLOBS = {{
 }}
 
 {PERSISTENT_LOG_BLOCK}
+{COMPLETE_AXIOM_PARSER_BLOCK}
 runner.QUEUE = [
 {repro_queue}
 {queue}
