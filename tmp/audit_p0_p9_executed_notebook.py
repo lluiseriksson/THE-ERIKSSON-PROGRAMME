@@ -18,12 +18,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
-SOURCE_SHA = "de48111f44d09a20174196a1a8716e8e425e2d3a"
+SOURCE_SHA = "1882972426525d07fe282aa10deb437de9cda622"
 RUNNER_SHA256 = "bcdddb4ae5ca4cc513bca69a841e861854a047587e38d12fd66fa1517fa67c9d"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
 MANIFEST_SHA256 = "95e84f8ae0792a563e0a7b54d6078b40b43a30939e61597e5992f0c484f9538a"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v30"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v31"
 EXPECTED_AXIOM_BLOCKS = 199
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 AUDIT_AXIOM_COUNTS = {
@@ -66,6 +66,7 @@ REQUIRED_CORE_STAGES = {
     "p0_p9_p2b_algebra_repro",
     "p0_p9_p3_algebra_repro",
     "p0_p9_p3_typed_averaging_repro",
+    "p0_p9_p3_typed_green_inverse_repro",
     "p0_p9_materialize_project_prerequisites",
     "p0_p9_materialize_p7_p9_project_prerequisites",
     "p0_p9_prepare_scratch_build_dir",
