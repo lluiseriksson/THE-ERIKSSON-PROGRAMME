@@ -89,7 +89,7 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_typed
       (T.towerAt k.1.succ).TerminalSpace.carrier := by
     exact scratch_cmp85SourceStep_comp_weightedAdjoint T hspacing k.1
   have hFineDict := scratch_cmp85SourceGeneratedPrefixPrecision_eq_typed
-    hd hM Omega0 depth hspacing mass background0 chain fineSmall r
+    (a := a) hd hM Omega0 depth hspacing mass background0 chain fineSmall r
   have hFineRight :
       (scratch_cmp85TypedFinePrecision D Q Qdag b).comp G =
         ContinuousLinearMap.id ℝ _ := by
@@ -162,8 +162,8 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq242
     let C := scratch_cmp85SourceGeneratedCoarseCovariance hd hM Omega0 depth
       hspacing ha mass background0 chain fineSmall hsmall k
     Gnext = G +
-      (scratch_cmp85SourcePrefixA (M := M) a r) ^ 2 *
-          (T.towerAt r.1).terminalSpacing⁻¹ ^ 4 •
+      ((scratch_cmp85SourcePrefixA (M := M) a r) ^ 2 *
+          (T.towerAt r.1).terminalSpacing⁻¹ ^ 4) •
         G.comp (Qdag.comp (C.comp (Q.comp G))) := by
   dsimp only
   have hpair := scratch_cmp85SourceGeneratedGreenRecurrence_typed hd hM
@@ -206,9 +206,9 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
     let C := scratch_cmp85SourceGeneratedCoarseCovariance hd hM Omega0 depth
       hspacing ha mass background0 chain fineSmall hsmall k
     (T.towerAt rn.1).Qprime.comp Gnext =
-      (a * scratch_cmp85SourcePrefixA (M := M) a r /
+      ((a * scratch_cmp85SourcePrefixA (M := M) a r /
           scratch_cmp85SourcePrefixA (M := M) a rn) *
-          (T.towerAt r.1).terminalSpacing⁻¹ ^ 2 •
+          (T.towerAt r.1).terminalSpacing⁻¹ ^ 2) •
         R.comp (C.comp (Q.comp G)) := by
   dsimp only
   have hpair := scratch_cmp85SourceGeneratedGreenRecurrence_typed hd hM
@@ -226,6 +226,8 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
     exact mul_pos
       (pow_pos (by exact_mod_cast (NeZero.pos M)) r.1.val) hspacing
   have hsum := scratch_cmp85Recurrence_add_eq_eq241Coefficient
+    (a := a) (L := (M : ℝ))
+    (spacingJ := (T.towerAt r.1).terminalSpacing)
     ha (by exact_mod_cast (NeZero.pos M)) hcurrentSpacing (k.1.val - 1)
   rw [hb, hc] at hsum
   rw [hQ]
