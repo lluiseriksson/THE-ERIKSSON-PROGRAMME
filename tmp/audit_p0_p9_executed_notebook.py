@@ -291,6 +291,7 @@ def audit(path: Path) -> str:
     if executed != 1:
         raise ValueError(f"executed code-cell count={executed}, expected 1")
 
+    transport = SUPPORTED_TRANSCRIPTS[(SOURCE_SHA, RUNNER_REV)]
     for literal in (
         f"RUNNER_TRANSPORT_SHA256={RUNNER_SHA256}",
         f"BASE_RUNNER_TRANSPORT_SHA256={BASE_RUNNER_SHA256}",

@@ -20,6 +20,7 @@ SPEC.loader.exec_module(audit)
 
 
 def transcript() -> str:
+    transport = audit.SUPPORTED_TRANSCRIPTS[(audit.SOURCE_SHA, audit.RUNNER_REV)]
     rows = [
         f"RUNNER_TRANSPORT_SHA256={audit.RUNNER_SHA256}",
         f"BASE_RUNNER_TRANSPORT_SHA256={audit.BASE_RUNNER_SHA256}",
@@ -28,8 +29,8 @@ def transcript() -> str:
         f"RUNNER_REV={audit.RUNNER_REV}",
         "RUNTIME=CPU RAM_GIB=50.99",
         f"HEAD is now at {audit.SOURCE_SHA[:9]}",
-        "LEAN_OVERLAY_TEXT_OK files=42",
-        "LEAN_IMPORT_PREFIX_OK files=42",
+        f"LEAN_OVERLAY_TEXT_OK files={transport['overlay_files']}",
+        f"LEAN_IMPORT_PREFIX_OK files={transport['overlay_files']}",
     ]
     audit_stages = audit.expected_audit_stages()
     pure_pending = True
@@ -93,6 +94,11 @@ with tempfile.TemporaryDirectory() as directory:
     write(good, notebook(transcript()))
     result = audit.audit(good)
     assert result.startswith("P0_P9_EXECUTED_NOTEBOOK_OK ")
+
+    colab_null_count = root / "colab-null-execution-count.ipynb"
+    write(colab_null_count, notebook(transcript(), count=None))
+    null_result = audit.audit(colab_null_count)
+    assert null_result.startswith("P0_P9_EXECUTED_NOTEBOOK_OK ")
 
     partial_fail = root / "partial-fail-after-p0.ipynb"
     last_stage = sorted(audit.REQUIRED_CORE_STAGES | audit.expected_queue_stages())[-1]
