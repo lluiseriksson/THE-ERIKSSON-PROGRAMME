@@ -18,3 +18,5 @@ example {d : ℕ} (u : Fin d → ℤ) :
 example {M : ℕ} {x : ℝ} (hcenter : x ≤ 2 * (M : ℝ)) :
     x ≤ ((4 : ℕ) : ℝ) * (M : ℝ) / 2 := by
   nlinarith [hcenter]
+
+end
