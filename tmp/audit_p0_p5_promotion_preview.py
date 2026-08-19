@@ -28,7 +28,7 @@ RG = ROOT / "YangMills" / "RG"
 PATHS = TMP / "P0-P5-SCRATCH-PATHS.txt"
 RAW_MANIFEST = TMP / "P0-P5-SCRATCH-MANIFEST.sha256"
 EXPECTED_RAW_MANIFEST_SHA256 = (
-    "4B3693C747A2B99C5E6B17B3A9E8D76CBBEC539F33E668D00EAB182978092BEE"
+    "A223C438728DC1542E8B6BA4F97AD10646041EEA8A6826DF89E7F97BB7DFBC01"
 )
 STANDARD_BODY = (
     "PRE-VALIDATION: this module's source is present, its `.olean` has not yet\n"
@@ -36,6 +36,10 @@ STANDARD_BODY = (
 )
 IMPORT = re.compile(r"(?m)^import\s+([^\s]+)\s*$")
 DECL = scope.DECL
+PRIVATE_DECL = re.compile(
+    r"(?m)^private\s+(?:noncomputable\s+)?"
+    r"(?:def|abbrev|theorem|lemma|structure|class)\s+([A-Za-z0-9_.]+)"
+)
 # A qualified occurrence is normally preceded by the namespace separator
 # ``.``.  Dot therefore cannot be part of the boundary exclusion here, even
 # though some declarations themselves contain a namespace-qualified name.
@@ -94,7 +98,7 @@ def declaration_map() -> dict[str, str]:
     result: dict[str, str] = {}
     for source in source_target_map():
         text = source.read_text(encoding="utf-8-sig")
-        for old in DECL.findall(text):
+        for old in (*DECL.findall(text), *PRIVATE_DECL.findall(text)):
             new = scope.promoted_name(old)
             if old in result and result[old] != new:
                 raise ValueError(f"inconsistent declaration mapping: {old}")
