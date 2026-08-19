@@ -86,7 +86,7 @@ theorem integrable_cmp89Eq248FineLatticeGreenPartialProductIntegrand_draft
           stage rho y endpointDisplacement) x :=
       (continuous_cmp89Eq251EndpointPartialSignedContourMomentum
         stage rho endpointDisplacement).continuousAt
-    exact (houter.continuousAt.comp hinner).continuousWithinAt
+    exact (houter.continuousAt.comp' hinner).continuousWithinAt
   have hIcc : IntegrableOn (fun x : Fin 4 → ℝ =>
       cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 L j mass a
         (cmp89Eq251EndpointPartialSignedContourMomentum
@@ -106,9 +106,14 @@ theorem integrable_cmp89Eq248FineLatticeGreenPartialProductIntegrand_draft
       (volume : Measure (Fin 4 → ℝ)) :=
     hIcc.congr_set_ae Measure.univ_pi_Ioc_ae_eq_Icc
   rw [IntegrableOn, volume_pi, Measure.restrict_pi_pi] at hIoc
-  simpa [cmp89Eq248FineLatticeGreenPartialProductIntegrand_draft,
-    endpointDisplacement, IntegrableOn,
-    Set.uIoc_of_le htwoPi] using hIoc
+  change Integrable (fun x : Fin 4 → ℝ =>
+      cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 L j mass a
+        (cmp89Eq251EndpointPartialSignedContourMomentum
+          stage rho x endpointDisplacement)
+        endpointDisplacement)
+      (Measure.pi fun _ : Fin 4 =>
+        volume.restrict (Set.uIoc 0 (2 * Real.pi)))
+  simpa only [Set.uIoc_of_le htwoPi] using hIoc
 
 /-- Shift one coordinate of the literal Green product integral from partial
 stage `r` to `r+1`. -/
