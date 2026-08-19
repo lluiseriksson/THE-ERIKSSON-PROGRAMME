@@ -113,7 +113,10 @@ with tempfile.TemporaryDirectory() as directory:
     assert partial_result.startswith("P0_EXECUTED_NOTEBOOK_OK ")
 
     crossed = root / "crossed-identity.ipynb"
-    old_identity = sorted(audit.SUPPORTED_TRANSCRIPTS)[0]
+    old_identity = next(
+        identity for identity in sorted(audit.SUPPORTED_TRANSCRIPTS)
+        if identity != (audit.SOURCE_SHA, audit.RUNNER_REV)
+    )
     write(
         crossed,
         notebook(transcript().replace(audit.RUNNER_REV, old_identity[1])),
