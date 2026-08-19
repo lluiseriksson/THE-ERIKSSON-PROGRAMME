@@ -234,7 +234,7 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
     cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
   congr 1
   exact integral_congr_ae (by
-    simpa [f, smul_eq_mul] using hae)
+    simpa [f, smul_eq_mul, cmp89Eq249FineLatticeSpacing, Nat.cast_pow] using hae)
 
 end
 
