@@ -118,8 +118,13 @@ theorem cmp89UnitAddTorus_mFourier_unitTorusSample_eq_flatCharacter
         (cmp99FlatIntegerResidue (N := N') n) := by
   unfold UnitAddTorus.mFourier cmp99FlatZModFourierCharacter
     cmp99SourceFlatQprimeUnitTorusSample cmp99FlatIntegerResidue
+  change (∏ mu, fourier (n mu)
+      (((((ell mu).val : ℝ) / (N' : ℝ) : ℝ) : UnitAddCircle))) =
+    ∏ mu, ZMod.stdAddChar
+      ((cmp99FinBoxZModEquiv d N') ell mu * (n mu : ZMod N'))
   apply Finset.prod_congr rfl
   intro mu _
+  simp only [cmp99FinBoxZModEquiv_apply]
   change fourier (n mu)
       (((((ell mu).val : ℝ) / (N' : ℝ) : ℝ) : UnitAddCircle)) =
     ZMod.stdAddChar (((ell mu).val : ZMod N') * (n mu : ZMod N'))
