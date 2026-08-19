@@ -219,6 +219,7 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
               (cmp89PhysicalBrillouinToUnitAddTorus x)) := by
     simpa [f, smul_eq_mul] using htransport
   unfold UnitAddTorus.mFourierCoeff
+  simp only [smul_eq_mul]
   rw [htransport_mul]
   unfold cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen
     cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
