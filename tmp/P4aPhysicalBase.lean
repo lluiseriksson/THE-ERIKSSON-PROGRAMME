@@ -317,8 +317,11 @@ theorem scratch_cmp85SourceGeneratedPrefixGreen_one_eq_baseCovariance
         ContinuousLinearMap.id ℝ _ := by
     exact scratch_cmp85SourceGeneratedBasePrecision_comp_covariance hd hM
       Omega0 depth hdepth hspacing ha mass background0 chain fineSmall hsmall
-  exact rightInverse_unique_of_isCoerciveCLM K0 _ _ hc0 hK0
-    hGRight hC0Right
+  ext x
+  apply isCoerciveCLM_injective K0 hc0 hK0
+  have hGRight_x := congrArg (fun T : _ →L[ℝ] _ => T x) hGRight
+  have hC0Right_x := congrArg (fun T : _ →L[ℝ] _ => T x) hC0Right
+  simpa using hGRight_x.trans hC0Right_x.symm
 
 end
 
