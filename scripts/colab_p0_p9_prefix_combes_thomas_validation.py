@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "5fe64a3048dfff1f9db2cd76b0edf91b616b1262"
+SOURCE_SHA = "6d7b152c8cbb3b0132dee63874d5646614f264e4"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -49,7 +49,7 @@ MANIFEST_URL = (
     f"THE-ERIKSSON-PROGRAMME/{SOURCE_SHA}/tmp/P0-P9-SCRATCH-MANIFEST.sha256"
 )
 MANIFEST_SHA256 = (
-    "db443bb913d80f3bd2a991ed41da0d1125a2a8e1a43a71e524aba81b1872e96f"
+    "bd0f88c1ef87082cff16a7f1ac3eee440f92f8d846835ed6698be02a5ee52238"
 )
 P2B_REPRO_PATH = "tmp/P2bEffectiveQuadraticAlgebra.repro.lean"
 P2B_REPRO_SHA256 = (
