@@ -50,6 +50,10 @@ PRE_VALIDATION = (
 )
 STATIC_DRAFT = b"STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED."
 STATIC_SEALED = b"SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED."
+STATIC_AUDIT_DRAFT = (
+    b"/- STATIC AUDIT DRAFT ONLY -- target module is not compiler-verified. -/"
+)
+STATIC_AUDIT_SEALED = b"/- SEALED AUDIT -- target module is compiler-verified. -/"
 AUDIT_DRAFT = b"-- PRE-VALIDATION SCRATCH:"
 AUDIT_SEALED = b"-- SEALED AXIOM SURFACE:"
 
@@ -127,6 +131,7 @@ def validated_archive(path: Path) -> tuple[dict[str, object], str, str]:
 def sealed_sources() -> tuple[list[tuple[Path, bytes]], int, int]:
     plan: list[tuple[Path, bytes]] = []
     static_count = 0
+    static_audit_count = 0
     audit_note_count = 0
     for relative in SOURCE_PATHS:
         path = ROOT / PurePosixPath(relative)
@@ -142,6 +147,11 @@ def sealed_sources() -> tuple[list[tuple[Path, bytes]], int, int]:
                 raise SystemExit(f"STATIC_DRAFT_SCOPE_MISMATCH={relative}")
             sealed = sealed.replace(STATIC_DRAFT, STATIC_SEALED, 1)
             static_count += 1
+        if STATIC_AUDIT_DRAFT in sealed:
+            if sealed.count(STATIC_AUDIT_DRAFT) != 1:
+                raise SystemExit(f"STATIC_AUDIT_SCOPE_MISMATCH={relative}")
+            sealed = sealed.replace(STATIC_AUDIT_DRAFT, STATIC_AUDIT_SEALED, 1)
+            static_audit_count += 1
         if AUDIT_DRAFT in sealed:
             if sealed.count(AUDIT_DRAFT) != 1:
                 raise SystemExit(f"AUDIT_DRAFT_SCOPE_MISMATCH={relative}")
@@ -150,10 +160,16 @@ def sealed_sources() -> tuple[list[tuple[Path, bytes]], int, int]:
         if b"PRE-VALIDATION" in sealed or b"NOT COMPILER-VERIFIED" in sealed:
             raise SystemExit(f"STALE_VALIDATION_MARK_SURVIVES={relative}")
         plan.append((path, sealed))
-    if len(plan) != 36 or static_count != 22 or audit_note_count != 14:
+    if (
+        len(plan) != 36
+        or static_count != 18
+        or static_audit_count != 4
+        or audit_note_count != 14
+    ):
         raise SystemExit(
             "A_E_SEAL_SCOPE_MISMATCH="
-            f"{len(plan)}/static={static_count}/audit_note={audit_note_count}"
+            f"{len(plan)}/static={static_count}/static_audit={static_audit_count}/"
+            f"audit_note={audit_note_count}"
         )
     return plan, static_count, audit_note_count
 
