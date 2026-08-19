@@ -72,7 +72,12 @@ theorem integrable_cmp89Eq248FineLatticeGreenPartialProductIntegrand_draft
       have hxUpper := hx.2 nu
       simp only [cmp89Eq251PhysicalBrillouinParameter]
       constructor <;> linarith [Real.pi_pos]
-    have houter :=
+    have houter : DifferentiableAt ℂ
+        (fun w : Fin 4 → ℂ =>
+          cmp89Eq248ComplexStabilizedGreenEndpointIntegrand
+            4 L j mass a w endpointDisplacement)
+        (cmp89Eq251EndpointPartialSignedContourMomentum
+          stage rho x endpointDisplacement) :=
       differentiableAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_of_commonRadius_massUniform_draft
         (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
         ha hrho hamplitude hradius hwindow hmass hp
