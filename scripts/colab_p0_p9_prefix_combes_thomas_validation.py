@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "3027db61f9da49483890de2af7ebaf22b568e339"
+SOURCE_SHA = "1b98e644347a96530b8f2755d67febc132cb9774"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -198,7 +198,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v54"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v55"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
