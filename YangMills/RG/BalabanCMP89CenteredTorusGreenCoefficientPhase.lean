@@ -36,7 +36,15 @@ theorem exp_I_cmp89Eq251EntireAliasPhase_latticeDisplacement
         (cmp89Eq249PhysicalFineLatticeDisplacement ((1 : ℝ)⁻¹) n)) =
       Complex.exp (Complex.I * cmp89Eq251EntirePhase p
         (cmp89Eq249PhysicalFineLatticeDisplacement ((1 : ℝ)⁻¹) n)) := by
-  simpa [cmp89Eq248EntireAliasMomentum, cmp89Eq245AliasShift] using
+  have hAlias :
+      cmp89Eq248EntireAliasMomentum p m =
+        fun mu => p mu + (m mu : ℂ) * (((2 * Real.pi : ℝ) : ℂ)) := by
+    funext mu
+    simp only [cmp89Eq248EntireAliasMomentum, cmp89Eq245AliasShift]
+    push_cast
+    ring
+  rw [hAlias]
+  simpa using
     (exp_I_cmp89Eq251EntirePhase_add_int_aliasPeriods_physicalFine
       (N := 1) p m n)
 
@@ -85,9 +93,9 @@ theorem cmp89UnitAddTorus_mFourier_neg_mul_bareGreen_eq_affineResidue
         (cmp89Eq248NegativeTwoPiTorusMomentum t) m
         (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
           (fun mu ↦ u mu + (M : ℤ) * n mu)) := by
-  unfold cmp89Eq248ComplexBareGreenEndpointNumerator
-  rw [cmp89UnitAddTorus_mFourier_neg_mul_aliasFinePhase_eq_affineResiduePhase
-    hM]
+  simp only [cmp89Eq248ComplexBareGreenEndpointNumerator]
+  rw [← mul_assoc,
+    cmp89UnitAddTorus_mFourier_neg_mul_aliasFinePhase_eq_affineResiduePhase hM]
 
 /-- The Fourier character moves through the complete stabilized Green
 numerator.  The proof distributes over the literal finite alias sum; it does
@@ -154,13 +162,11 @@ theorem cmp89UnitAddTorus_mFourier_neg_mul_stabilizedGreenNumerator_eq_affineRes
                 (cmp89Eq248EntireAliasMomentum
                   (cmp89Eq248NegativeTwoPiTorusMomentum t) m)) := by
       rw [Finset.mul_sum]
-      congr 1
-      rw [Finset.mul_sum]
     _ = _ := by
       congr 1
       apply Finset.sum_congr rfl
       intro m _
-      rw [mul_div_assoc, hbare]
+      rw [← mul_div_assoc, hbare]
 
 /-- The exact alias-aware phase transport for the literal stabilized Green
 integrand.  The denominator is endpoint-independent and therefore unchanged. -/
@@ -177,7 +183,7 @@ theorem cmp89UnitAddTorus_mFourier_neg_mul_stabilizedGreen_eq_affineResidue
         (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
           (fun mu ↦ u mu + (M : ℤ) * n mu)) := by
   unfold cmp89Eq248ComplexStabilizedGreenEndpointIntegrand
-  rw [mul_div_assoc]
+  rw [← mul_div_assoc]
   rw [cmp89UnitAddTorus_mFourier_neg_mul_stabilizedGreenNumerator_eq_affineResidue
     hM]
 
