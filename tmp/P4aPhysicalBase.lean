@@ -84,9 +84,10 @@ theorem scratch_cmp85SourceFirstPrefixWeightedCoefficient_eq
       a * (T.towerAt (scratch_cmp85FirstPositivePrefix hdepth).1).terminalSpacing⁻¹ ^ 2 := by
   unfold scratch_cmp85SourcePrefixWeightedCoefficient
   unfold scratch_cmp85SourcePrefixA
-  simp only [scratch_cmp85FirstPositivePrefix, scratch_cmp85FirstStep,
-    Fin.val_succ, Nat.zero_add, Nat.add_sub_cancel,
-    cmp99SourceMassParameter_zero]
+  have hindex :
+      (scratch_cmp85FirstPositivePrefix hdepth).1.val - 1 = 0 := by
+    simp [scratch_cmp85FirstPositivePrefix, scratch_cmp85FirstStep]
+  rw [hindex, cmp99SourceMassParameter_zero]
 
 /-- The separately written literal base precision equals the generated P2a
 precision at source prefix one. -/
@@ -126,7 +127,7 @@ theorem scratch_cmp85SourceGeneratedBasePrecision_eq_prefixOne
     mass
   have hb := scratch_cmp85SourceFirstPrefixWeightedCoefficient_eq T a hdepth
   have hweighted := scratch_cmp85SourcePrefixPrecision_weighted_eq_counting
-    T D hspacing r1
+    (a := a) T D hspacing r1
   rw [← hb]
   simpa only [scratch_cmp85BasePrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision,
@@ -301,8 +302,8 @@ theorem scratch_cmp85SourceGeneratedPrefixGreen_one_eq_baseCovariance
     Omega0 depth hdepth hspacing ha mass background0 chain fineSmall hsmall
   have hc0 := scratch_cmp85SourceGeneratedPrefixCoercivity_pos hd hM Omega0
     depth hspacing ha background0 chain fineSmall hsmall r1
-  have hEq := scratch_cmp85SourceGeneratedBasePrecision_eq_prefixOne hd hM
-    Omega0 depth hdepth hspacing mass background0 chain fineSmall
+  have hEq := scratch_cmp85SourceGeneratedBasePrecision_eq_prefixOne
+    (a := a) hd hM Omega0 depth hdepth hspacing mass background0 chain fineSmall
   have hGRight : K0.comp
       (scratch_cmp85SourceGeneratedPrefixGreen hd hM Omega0 depth hspacing ha
         mass background0 chain fineSmall hsmall r1) =
