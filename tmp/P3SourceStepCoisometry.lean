@@ -38,10 +38,12 @@ theorem scratch_cmp85SourceWeightedAdjoint_succ
   let next := T.towerAt k.succ
   have hMpos : 0 < (M : ℝ) := by exact_mod_cast (NeZero.pos M)
   have hcurrent : 0 < current.terminalSpacing := by
-    rw [current, T.towerAt_terminalSpacing]
+    change 0 < (T.towerAt k.castSucc).terminalSpacing
+    rw [T.towerAt_terminalSpacing]
     exact mul_pos (pow_pos hMpos k.castSucc.val) hspacing
   have hnext : 0 < next.terminalSpacing := by
-    rw [next, T.towerAt_terminalSpacing]
+    change 0 < (T.towerAt k.succ).terminalSpacing
+    rw [T.towerAt_terminalSpacing]
     exact mul_pos (pow_pos hMpos k.succ.val) hspacing
   have hspacingPow : spacing ^ d ≠ 0 := pow_ne_zero d hspacing.ne'
   have hcurrentPow : current.terminalSpacing ^ d ≠ 0 :=
@@ -50,8 +52,9 @@ theorem scratch_cmp85SourceWeightedAdjoint_succ
     pow_ne_zero d hnext.ne'
   have hterminal :
       next.terminalSpacing = (M : ℝ) * current.terminalSpacing := by
-    rw [next, current, T.towerAt_terminalSpacing,
-      T.towerAt_terminalSpacing]
+    change (T.towerAt k.succ).terminalSpacing =
+      (M : ℝ) * (T.towerAt k.castSucc).terminalSpacing
+    rw [T.towerAt_terminalSpacing, T.towerAt_terminalSpacing]
     simp only [Fin.val_succ, Fin.val_castSucc]
     rw [pow_succ]
     ring
@@ -61,10 +64,11 @@ theorem scratch_cmp85SourceWeightedAdjoint_succ
     rw [hterminal, mul_pow]
     field_simp [hspacingPow, hcurrentPow, hnextPow,
       pow_ne_zero d hMpos.ne']
-  have hQ := T.Qprime_succ k
-  have hQadj := congrArg
-    (fun A => ContinuousLinearMap.adjoint A) hQ
-  rw [ContinuousLinearMap.adjoint_comp] at hQadj
+  have hQadj :
+      (T.towerAt k.succ).Qprime.adjoint =
+        (T.towerAt k.castSucc).Qprime.adjoint.comp
+          (T.nextAverage k).adjoint := by
+    rw [T.Qprime_succ, ContinuousLinearMap.adjoint_comp]
   have hcurrentAdj :=
     current.adjoint_eq_spacingRatio_smul_weightedAdjoint hcurrent.ne'
   have hnextAdj :=
