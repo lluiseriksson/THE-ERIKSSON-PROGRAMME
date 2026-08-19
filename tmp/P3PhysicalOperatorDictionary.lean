@@ -161,6 +161,7 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
     _ = D + scratch_cmp85SourcePrefixWeightedCoefficient T a rn •
         ((T.towerAt rn.1).weightedAdjoint.comp
           (T.towerAt rn.1).Qprime) := by
+          dsimp [beta]
           rw [hbeta]
           congr 1
           apply ContinuousLinearMap.ext
