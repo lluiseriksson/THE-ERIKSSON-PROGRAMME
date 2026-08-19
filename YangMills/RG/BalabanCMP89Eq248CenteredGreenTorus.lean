@@ -70,13 +70,21 @@ theorem continuous_cmp89Eq248CenteredGreenCube
       (endpointDisplacement :=
         cmp89Eq249PhysicalFineLatticeDisplacement
           (((L ^ j : ℕ) : ℝ)⁻¹) endpointU)
-  have hinner : ContinuousAt
+  have hinnerContinuous : Continuous
       (fun q : CMP89CenteredUnitCube (Fin 4) =>
-        cmp89Eq248CenteredCubeMomentum q) t := by
+        cmp89Eq248CenteredCubeMomentum q) := by
     unfold cmp89Eq248CenteredCubeMomentum
-    fun_prop
-  simpa [cmp89Eq248CenteredGreenCube, p, Function.comp_def] using
-    houter.comp hinner
+    exact continuous_pi fun mu =>
+      continuous_const.mul
+        (continuous_subtype_val.comp (continuous_apply mu))
+  have hinner := hinnerContinuous.continuousAt
+  change ContinuousAt
+    (fun q : CMP89CenteredUnitCube (Fin 4) =>
+      cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 L j mass a
+        (fun nu => (cmp89Eq248CenteredCubeMomentum q nu : ℂ))
+        (cmp89Eq249PhysicalFineLatticeDisplacement
+          (((L ^ j : ℕ) : ℝ)⁻¹) endpointU)) t
+  simpa only [Function.comp_apply] using houter.comp hinner
 
 /-- Replacing a centered-cube coordinate by its two opposite faces leaves
 the literal Green value unchanged.  The proof visibly starts from the upper
