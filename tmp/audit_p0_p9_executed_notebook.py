@@ -18,12 +18,12 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
-SOURCE_SHA = "b64da7c6586f10354083eacc176e03d626647fc2"
-RUNNER_SHA256 = "83f4fe4c85b302f0ebe62504b282a706b5a9583c85d7d487a35af75258b138b1"
+SOURCE_SHA = "c1651d72774b5b4fb9498a88a16108e7d350110a"
+RUNNER_SHA256 = "06819f4fc0a11b8ab298dd2089f28bec1719a10da9ff8f54daa7f9c432ef928e"
 BASE_RUNNER_SHA256 = "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 PATHS_SHA256 = "fec594c0fba52e14f8cc1e1ba886202fcdf2e425de2c93e56dbf59feebb2fa61"
-MANIFEST_SHA256 = "36b12f7f9de76b24b188d9efd68c861a40551d5dafa493f2a71fd043606854e2"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v41"
+MANIFEST_SHA256 = "db443bb913d80f3bd2a991ed41da0d1125a2a8e1a43a71e524aba81b1872e96f"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v42"
 SUPPORTED_TRANSCRIPTS = {
     (
         "84eb07b5d1f2c3d7f245230a25846065b745a38e",
@@ -93,6 +93,16 @@ SUPPORTED_TRANSCRIPTS = {
             "1a2e10bb123ad712a722fa3acf7ae819d0b849e75114646cdecbb8d89cf22fc2",
         "manifest_sha256":
             "035a25c14ae04079131734ea1951b0bf9163a2d8d47100888fc73f9c7c3860f2",
+        "overlay_files": "43",
+    },
+    (
+        "b64da7c6586f10354083eacc176e03d626647fc2",
+        "p0-p9-prefix-combes-thomas-v41",
+    ): {
+        "runner_sha256":
+            "83f4fe4c85b302f0ebe62504b282a706b5a9583c85d7d487a35af75258b138b1",
+        "manifest_sha256":
+            "36b12f7f9de76b24b188d9efd68c861a40551d5dafa493f2a71fd043606854e2",
         "overlay_files": "43",
     },
     (SOURCE_SHA, RUNNER_REV): {
