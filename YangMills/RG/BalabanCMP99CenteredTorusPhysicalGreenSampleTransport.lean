@@ -183,6 +183,13 @@ theorem cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_centered_eq_physical
       cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum_eq_centered_add_intPeriods
         ell with
     ⟨w, hw⟩
+  have hshift :
+      cmp89Eq248PhysicalVectorIntPeriodShift w z = physical := by
+    change cmp89Eq248PhysicalVectorIntPeriodShift w z =
+      cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell
+    rw [hw]
+    funext mu
+    simp [cmp89Eq248PhysicalVectorIntPeriodShift, z]
   have hdisplayed :
       cmp89Eq248ComplexDisplayedGreenEndpointIntegrand 4 K 1 0 a physical
           (cmp89Eq249PhysicalFineLatticeDisplacement
@@ -190,12 +197,10 @@ theorem cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_centered_eq_physical
         cmp89Eq248ComplexDisplayedGreenEndpointIntegrand 4 K 1 0 a z
           (cmp89Eq249PhysicalFineLatticeDisplacement
             (((K ^ 1 : ℕ) : ℝ)⁻¹) endpointU) := by
-    change cmp89Eq248ComplexDisplayedGreenEndpointIntegrand 4 K 1 0 a
-        (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) _ = _
-    rw [hw]
-    simpa [cmp89Eq248PhysicalVectorIntPeriodShift, z] using
-      (cmp89Eq248ComplexDisplayedGreenEndpointIntegrand_physicalFine_vectorIntPeriodShift_draft
-        (L := K) (j := 1) 0 a w z endpointU)
+    rw [← hshift]
+    exact
+      cmp89Eq248ComplexDisplayedGreenEndpointIntegrand_physicalFine_vectorIntPeriodShift_draft
+        (L := K) (j := 1) 0 a w z endpointU
   change
     cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 K 1 0 a z _ =
       cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 K 1 0 a physical _
@@ -223,7 +228,8 @@ theorem cmp89Eq248CenteredGreenTorus_unitSample_eq_physical
     (endpointU : Fin 4 → ℤ) (ell : FinBox 4 N') :
     cmp89Eq248CenteredGreenTorus
         (L := K) (j := 1) (mass := 0) (a := a) (rho := rho)
-        ha.le hrho hamplitude hradius hwindow (by norm_num)
+        ha.le hrho hamplitude hradius hwindow
+        (by norm_num [CMP89Eq251UniformMassWindow])
         endpointU (cmp99SourceFlatQprimeUnitTorusSample ell) =
       cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 K 1 0 a
         (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
@@ -233,7 +239,8 @@ theorem cmp89Eq248CenteredGreenTorus_unitSample_eq_physical
   have hcover :=
     cmp89Eq248CenteredGreenTorus_covering_apply
       (L := K) (j := 1) (mass := 0) (a := a) (rho := rho)
-      ha.le hrho hamplitude hradius hwindow (by norm_num) endpointU t
+      ha.le hrho hamplitude hradius hwindow
+      (by norm_num [CMP89Eq251UniformMassWindow]) endpointU t
   have hsample :=
     cmp89CenteredUnitCubeToTorus_centeredRepresentative_eq_sample ell
   rw [hsample] at hcover
@@ -241,12 +248,29 @@ theorem cmp89Eq248CenteredGreenTorus_unitSample_eq_physical
       (fun mu => (cmp89Eq248CenteredCubeMomentum t mu : ℂ)) =
         fun mu =>
           (cmp99SourceFlatQprimeCenteredCoarseBaseMomentum ell mu : ℂ) := by
-    simpa [t, cmp89Eq248CenteredCubeMomentum] using
-      (cmp89Eq248NegativeTwoPiTorusMomentum_centeredRepresentative ell)
+    have hnegative :=
+      cmp89Eq248NegativeTwoPiTorusMomentum_centeredRepresentative ell
+    funext mu
+    rw [← congrFun hnegative mu]
+    simp only [t]
+    unfold cmp89Eq248CenteredCubeMomentum
+      cmp89Eq248NegativeTwoPiTorusMomentum
+    push_cast
+    ring
   rw [cmp89Eq248CenteredGreenCube, hmom] at hcover
   rw [hcover]
   by_cases hell : ell = 0
   · subst ell
+    have haliasZero :
+        cmp99SourceFlatQprimeSignedCenteredAliasEquiv N' (0 : Fin N') =
+          ⟨0, zero_mem_cmp89Eq245CenteredAliasIntegers
+            (Nat.pos_of_ne_zero (NeZero.ne N'))⟩ := by
+      apply (cmp99SourceCenteredAliasResidueEquiv N').injective
+      rw [cmp99SourceCenteredAliasResidueEquiv_apply,
+        cmp99SourceCenteredAliasResidueEquiv_apply]
+      simpa using
+        (cmp99SourceFlatQprimeSignedCenteredAliasEquiv_cast_eq_neg
+          N' (0 : Fin N'))
     have hz :
         (fun mu =>
           (cmp99SourceFlatQprimeCenteredCoarseBaseMomentum
@@ -256,7 +280,7 @@ theorem cmp89Eq248CenteredGreenTorus_unitSample_eq_physical
       funext mu
       simp [cmp99SourceFlatQprimeCenteredCoarseBaseMomentum,
         cmp99SourceFlatQprimeCenteredCoarseAlias,
-        cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum]
+        cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum, haliasZero]
     exact congrArg
       (fun z =>
         cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 K 1 0 a z
