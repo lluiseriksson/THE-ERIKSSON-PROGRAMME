@@ -163,10 +163,10 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
           (T.towerAt rn.1).Qprime) := by
           dsimp [beta]
           rw [hbeta]
+          dsimp [r, rn]
           congr 1
           apply ContinuousLinearMap.ext
           intro eta
-          simp only [ContinuousLinearMap.comp_apply]
           rw [hQ]
           exact (scratch_cmp85SourceWeightedAdjoint_succ
             T hspacing k.1
