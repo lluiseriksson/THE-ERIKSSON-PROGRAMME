@@ -31,9 +31,11 @@ theorem scratch_cmp85SourceWeightedAdjoint_succ
     (hspacing : 0 < spacing) (k : Fin depth) :
     (T.towerAt k.succ).weightedAdjoint =
       (T.towerAt k.castSucc).weightedAdjoint.comp
-        (scratch_cmp85SourceStepWeightedAdjoint T k) := by
+        (scratch_cmp85SourceStepWeightedAdjoint
+          (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k) := by
   let R := T.nextAverage k
-  let Wstep := scratch_cmp85SourceStepWeightedAdjoint T k
+  let Wstep := scratch_cmp85SourceStepWeightedAdjoint
+    (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k
   let current := T.towerAt k.castSucc
   let next := T.towerAt k.succ
   have hMpos : 0 < (M : ℝ) := by exact_mod_cast (NeZero.pos M)
@@ -109,23 +111,30 @@ theorem scratch_cmp85SourceStep_comp_weightedAdjoint
     {spacing : ℝ} {background : GaugeConfig d N (SUN Nc)}
     (T : CMP99SourceRetainedPhysicalTower rho Omega M spacing background depth)
     (hspacing : 0 < spacing) (k : Fin depth) :
-    (T.nextAverage k).comp (scratch_cmp85SourceStepWeightedAdjoint T k) =
+    (T.nextAverage k).comp
+        (scratch_cmp85SourceStepWeightedAdjoint
+          (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k) =
       ContinuousLinearMap.id ℝ (T.towerAt k.succ).TerminalSpace.carrier := by
   have hnext := T.prefix_comp_weightedAdjoint k.succ
   have hcurrent := T.prefix_comp_weightedAdjoint k.castSucc
   have hQ := T.Qprime_succ k
-  have hW := scratch_cmp85SourceWeightedAdjoint_succ T hspacing k
+  have hW := scratch_cmp85SourceWeightedAdjoint_succ
+    (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T hspacing k
   calc
-    (T.nextAverage k).comp (scratch_cmp85SourceStepWeightedAdjoint T k) =
+    (T.nextAverage k).comp
+        (scratch_cmp85SourceStepWeightedAdjoint
+          (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k) =
         (T.nextAverage k).comp
           (((T.towerAt k.castSucc).Qprime.comp
             (T.towerAt k.castSucc).weightedAdjoint).comp
-              (scratch_cmp85SourceStepWeightedAdjoint T k)) := by
+              (scratch_cmp85SourceStepWeightedAdjoint
+                (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k)) := by
         rw [hcurrent]
         rfl
     _ = ((T.nextAverage k).comp (T.towerAt k.castSucc).Qprime).comp
           ((T.towerAt k.castSucc).weightedAdjoint.comp
-            (scratch_cmp85SourceStepWeightedAdjoint T k)) := rfl
+            (scratch_cmp85SourceStepWeightedAdjoint
+              (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k)) := rfl
     _ = (T.towerAt k.succ).Qprime.comp
           (T.towerAt k.succ).weightedAdjoint := by rw [← hQ, ← hW]
     _ = ContinuousLinearMap.id ℝ

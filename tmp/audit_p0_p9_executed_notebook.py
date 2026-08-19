@@ -33,10 +33,12 @@ SUPPORTED_TRANSCRIPTS = {
             "d6c06a8206a99e9538ac401e489fb7e5e6c300fe44dfd7e15c3bc6fca2311abb",
         "manifest_sha256":
             "e75af26bbbce875b13cab3a4403486bbf051457b4283152ad2c9bbe210137c91",
+        "overlay_files": "42",
     },
     (SOURCE_SHA, RUNNER_REV): {
         "runner_sha256": RUNNER_SHA256,
         "manifest_sha256": MANIFEST_SHA256,
+        "overlay_files": "43",
     },
 }
 P0_SOURCE_STAGE = "p0_p9_01_p0canonicalprefixtower"
@@ -89,6 +91,11 @@ REQUIRED_CORE_STAGES = {
     "p0_p9_materialize_p7_p9_project_prerequisites",
     "p0_p9_prepare_scratch_build_dir",
 }
+P0_REQUIRED_CORE_STAGES = REQUIRED_CORE_STAGES - {
+    # Materialized only after the P0--P5 prefix has passed; it cannot be a
+    # prerequisite for accepting the earlier P0 source/audit pair.
+    "p0_p9_materialize_p7_p9_project_prerequisites",
+}
 
 
 def sha256(data: bytes) -> str:
@@ -99,16 +106,20 @@ def output_text(notebook: dict[str, object]) -> tuple[str, int]:
     cells = notebook.get("cells")
     if not isinstance(cells, list):
         raise ValueError("notebook cells missing")
-    executed = 0
+    evidenced = 0
     chunks: list[str] = []
     for cell in cells:
         if not isinstance(cell, dict) or cell.get("cell_type") != "code":
             continue
-        if cell.get("execution_count") is not None:
-            executed += 1
         outputs = cell.get("outputs", [])
         if not isinstance(outputs, list):
             raise ValueError("code-cell outputs malformed")
+        # Colab's GitHub-backed "Download .ipynb" export can preserve the
+        # complete output transcript while normalizing `execution_count` to
+        # null.  The durable evidence is the output-bearing cell itself, not
+        # that presentation-only counter.
+        if outputs:
+            evidenced += 1
         for output in outputs:
             if not isinstance(output, dict):
                 raise ValueError("output entry malformed")
@@ -117,7 +128,7 @@ def output_text(notebook: dict[str, object]) -> tuple[str, int]:
                 chunks.extend(text if isinstance(text, list) else [str(text)])
             elif output.get("output_type") == "error":
                 chunks.append("\n".join(map(str, output.get("traceback", []))))
-    return "".join(chunks), executed
+    return "".join(chunks), evidenced
 
 
 def expected_queue_stages() -> set[str]:
@@ -203,8 +214,8 @@ def audit_p0(path: Path) -> str:
         f"RUNNER_REV={runner_rev}",
         f"HEAD is now at {source_sha[:9]}",
         "RUNTIME=CPU RAM_GIB=",
-        "LEAN_OVERLAY_TEXT_OK files=42",
-        "LEAN_IMPORT_PREFIX_OK files=42",
+        f"LEAN_OVERLAY_TEXT_OK files={transport['overlay_files']}",
+        f"LEAN_IMPORT_PREFIX_OK files={transport['overlay_files']}",
         "EVIDENCE_DOWNLOAD_REQUESTED=1",
         "LAUNCHER_RUNTIME_RELEASE_REQUESTED=1",
     ):
@@ -234,7 +245,7 @@ def audit_p0(path: Path) -> str:
             raise ValueError(f"duplicate stage result: {stage}")
         order.append(stage)
         stages[stage] = int(exit_code)
-    missing_core = sorted(REQUIRED_CORE_STAGES - stages.keys())
+    missing_core = sorted(P0_REQUIRED_CORE_STAGES - stages.keys())
     if missing_core:
         raise ValueError(f"missing prerequisite stage results: {missing_core}")
     for stage in (P0_SOURCE_STAGE, P0_AUDIT_STAGE):
@@ -288,8 +299,8 @@ def audit(path: Path) -> str:
         f"RUNNER_REV={RUNNER_REV}",
         f"HEAD is now at {SOURCE_SHA[:9]}",
         "RUNTIME=CPU RAM_GIB=",
-        "LEAN_OVERLAY_TEXT_OK files=42",
-        "LEAN_IMPORT_PREFIX_OK files=42",
+        f"LEAN_OVERLAY_TEXT_OK files={transport['overlay_files']}",
+        f"LEAN_IMPORT_PREFIX_OK files={transport['overlay_files']}",
         "FINAL_STATUS=PASS",
         "EVIDENCE_DOWNLOAD_REQUESTED=1",
         "LAUNCHER_EXIT=0",
