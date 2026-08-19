@@ -26,7 +26,7 @@ import urllib.request
 
 
 HERE = Path("/content")
-SOURCE_SHA = "c9cd1811b021dd6f98ed650bada9ec3f59126dd4"
+SOURCE_SHA = "b7a40b360e87930f6b82e97bb77c2ab8a93859a8"
 BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
 BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -65,7 +65,7 @@ P3_TYPED_REPRO_SHA256 = (
 )
 P3_GREEN_REPRO_PATH = "tmp/P3TypedGreenInverseAlgebra.repro.lean"
 P3_GREEN_REPRO_SHA256 = (
-    "c75c74f3fa360d3cf656f18369a68cb24392b53a024212459cd83d4e61705068"
+    "78e5eb81291d57158815510920d5c1d9cb0191a0c86319741c47353bde122215"
 )
 
 
@@ -193,7 +193,7 @@ P7_P9_PROJECT_PREREQUISITES = [
     "YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay",
 ]
 
-runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v32"
+runner.RUNNER_REV = "p0-p9-prefix-combes-thomas-v33"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-p0-p9-prefix-combes-thomas")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-prefix-combes-thomas-evidence")
