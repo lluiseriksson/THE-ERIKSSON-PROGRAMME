@@ -51,7 +51,7 @@ theorem cmp89Eq248ComplexDisplayedGreenEndpointIntegrand_physicalFine_intPeriodS
     intro c
     have hone :=
       cmp89Eq248ComplexDisplayedGreenEndpointIntegrand_physicalFinePeriodShift_draft
-        mass a nu
+        (d := d) (L := L) (j := j) mass a nu
         (z + Pi.single nu
           (c * ((2 * Real.pi : ℝ) : ℂ))) endpointU
     have hshift :
@@ -99,7 +99,7 @@ theorem cmp89Eq248ComplexDisplayedGreenEndpointIntegrand_physicalFine_vectorIntP
     intro mu q
     simpa [F, cmp89Eq248PhysicalCoordinatePeriodShift] using
       (cmp89Eq248ComplexDisplayedGreenEndpointIntegrand_physicalFinePeriodShift_draft
-        mass a mu q endpointU)
+        (d := d) (L := L) (j := j) mass a mu q endpointU)
   have hsum : Function.Periodic F
       (∑ mu : Fin d,
         (w mu) • Pi.single mu (((2 * Real.pi : ℝ) : ℂ))) := by
