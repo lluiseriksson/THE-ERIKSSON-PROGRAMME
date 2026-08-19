@@ -77,7 +77,10 @@ theorem continuous_cmp89Eq248CenteredGreenCube
     exact continuous_pi fun mu =>
       continuous_const.mul
         (continuous_subtype_val.comp (continuous_apply mu))
-  have hinner := hinnerContinuous.continuousAt
+  have hinner : ContinuousAt
+      (fun q : CMP89CenteredUnitCube (Fin 4) =>
+        cmp89Eq248CenteredCubeMomentum q) t :=
+    hinnerContinuous.continuousAt
   change ContinuousAt
     (fun q : CMP89CenteredUnitCube (Fin 4) =>
       cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 L j mass a
@@ -122,7 +125,6 @@ theorem cmp89Eq248CenteredGreenCube_faceSeam
       simp [cmp89Eq248PhysicalCoordinatePeriodShift, pRight, pLeft,
         tRight, tLeft, cmp89Eq248CenteredCubeMomentum,
         cmp89CenteredUnitRight, cmp89CenteredUnitLeft]
-      push_cast
       ring
     · simp [cmp89Eq248PhysicalCoordinatePeriodShift, pRight, pLeft,
         tRight, tLeft, cmp89Eq248CenteredCubeMomentum, hmu]
