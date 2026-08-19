@@ -101,22 +101,19 @@ theorem scratch_cmp85TypedGreenCandidate_rightInverse
   have hcorr :
       Qdag (E y) + b ^ 2 • Qdag (C y) +
           b ^ 2 • Qdag (E (S (C y))) = 0 := by
-    simpa only [E, S, ContinuousLinearMap.add_apply,
+    simpa only [E, S, P, ContinuousLinearMap.add_apply,
       ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
       ContinuousLinearMap.id_apply, ContinuousLinearMap.comp_apply,
       ContinuousLinearMap.zero_apply, map_add, map_sub, map_smul,
-      smul_smul] using hbrQ
+      map_zero, smul_smul] using hbrQ
   rw [hnext]
   simp only [scratch_cmp85TypedGreenCandidate,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.add_apply,
     ContinuousLinearMap.smul_apply, map_add, map_smul]
   rw [hFinePoint x, hFinePoint (Qdag (C y))]
-  change x + b ^ 2 • Qdag (C y) + Qdag (E y) +
-      b ^ 2 • Qdag (E (S (C y))) = x
-  rw [show b ^ 2 • Qdag (C y) + Qdag (E y) +
-      b ^ 2 • Qdag (E (S (C y))) = 0 by
-    simpa only [add_assoc, add_comm, add_left_comm] using hcorr]
-  exact add_zero x
+  simpa only [y, S, ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.id_apply, add_assoc, add_comm, add_left_comm] using
+    congrArg (fun z : H => x + z) hcorr
 
 /-- The candidate (2.42) is also a left inverse.  This consumes the opposite
 inverse laws of both `G` and `C`; it is not derived from symmetry. -/
@@ -158,21 +155,19 @@ theorem scratch_cmp85TypedGreenCandidate_leftInverse
   have hcorr :
       G (Qdag (E y)) + b ^ 2 • G (Qdag (C y)) +
           b ^ 2 • G (Qdag (C (S (E y)))) = 0 := by
-    simpa only [E, S, ContinuousLinearMap.add_apply,
+    simpa only [E, S, P, ContinuousLinearMap.add_apply,
       ContinuousLinearMap.sub_apply, ContinuousLinearMap.smul_apply,
       ContinuousLinearMap.id_apply, ContinuousLinearMap.comp_apply,
       ContinuousLinearMap.zero_apply, map_add, map_sub, map_smul,
-      smul_smul] using hbrG
+      map_zero, smul_smul] using hbrG
   rw [hnext]
   simp only [scratch_cmp85TypedGreenCandidate,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.add_apply,
-    ContinuousLinearMap.smul_apply, map_add, map_smul]
+    ContinuousLinearMap.smul_apply, map_add]
   rw [hFinePoint x]
-  change x + G (Qdag (E y)) + b ^ 2 • G (Qdag (C y)) +
-      b ^ 2 • G (Qdag (C (S (E y)))) = x
-  rw [show G (Qdag (E y)) + b ^ 2 • G (Qdag (C y)) +
-      b ^ 2 • G (Qdag (C (S (E y)))) = 0 by exact hcorr]
-  exact add_zero x
+  simpa only [y, S, ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.id_apply, add_assoc] using
+    congrArg (fun z : H => x + z) hcorr
 
 /-- Inverse uniqueness identifies the independently supplied next Green
 operator with the internally constructed candidate.  `Gnext` is not used in

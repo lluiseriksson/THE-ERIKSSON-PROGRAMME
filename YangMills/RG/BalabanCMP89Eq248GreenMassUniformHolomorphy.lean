@@ -74,7 +74,10 @@ theorem continuousAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_real_mass
       (endpointDisplacement := endpointDisplacement)
   have hinner : ContinuousAt (fun q : Fin 4 → ℝ =>
       fun nu => (q nu : ℂ)) p := by
-    fun_prop
+    apply Continuous.continuousAt
+    apply continuous_pi
+    intro nu
+    exact Complex.continuous_ofReal.comp (continuous_apply nu)
   exact houter.continuousAt.comp hinner
 
 /-- Static candidate for the complete displayed rational domain on a lower
