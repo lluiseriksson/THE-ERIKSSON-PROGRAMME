@@ -169,9 +169,13 @@ theorem scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed
           intro eta
           have hQeta := congrArg (fun Q => Q eta) hQ
           simp only [ContinuousLinearMap.comp_apply] at hQeta
+          have hQeta' :
+              (T.towerAt rn.1).Qprime eta =
+                (T.nextAverage k.1) ((T.towerAt r.1).Qprime eta) := by
+            simpa [r, rn] using hQeta
           simp only [ContinuousLinearMap.comp_apply,
             ContinuousLinearMap.smul_apply]
-          rw [hQeta]
+          rw [hQeta']
           exact congrArg
             (fun z =>
               scratch_cmp85SourcePrefixWeightedCoefficient T a rn • z)
