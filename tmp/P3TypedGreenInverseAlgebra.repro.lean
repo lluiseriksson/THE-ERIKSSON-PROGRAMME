@@ -33,4 +33,29 @@ certificate and needs only reassociation. -/
 example (x a b c : H) (h : a + b + c = 0) : x + a + b + c = x := by
   simpa only [add_zero, add_assoc] using congrArg (fun z : H => x + z) h
 
+/-- Exact right-inverse endpoint: unfold the Green sandwich and distribute the
+common scalar before additive normalization. -/
+example
+    (Q : H →L[ℝ] K) (Qdag : K →L[ℝ] H) (G : H →L[ℝ] H)
+    (E C : K →L[ℝ] K) (b : ℝ) (x : H) (y : K)
+    (h : Qdag (E y) + b ^ 2 • Qdag (C y) +
+        b ^ 2 • Qdag (E ((Q.comp (G.comp Qdag)) (C y))) = 0) :
+    x + (Qdag (E y) + b ^ 2 •
+        (Qdag (C y) + Qdag (E (Q (G (Qdag (C y))))))) = x := by
+  simpa only [ContinuousLinearMap.comp_apply, smul_add, add_zero, add_assoc,
+    add_comm, add_left_comm] using congrArg (fun z : H => x + z) h
+
+/-- Exact left-inverse endpoint, including the source order exposed by the
+candidate expansion. -/
+example
+    (Q : H →L[ℝ] K) (Qdag : K →L[ℝ] H) (G : H →L[ℝ] H)
+    (E C : K →L[ℝ] K) (b : ℝ) (x : H) (y : K)
+    (h : G (Qdag (E y)) + b ^ 2 • G (Qdag (C y)) +
+        b ^ 2 • G (Qdag (C ((Q.comp (G.comp Qdag)) (E y)))) = 0) :
+    x + b ^ 2 • G (Qdag (C y)) +
+        (G (Qdag (E y)) +
+          b ^ 2 • G (Qdag (C (Q (G (Qdag (E y))))))) = x := by
+  simpa only [ContinuousLinearMap.comp_apply, smul_add, add_zero, add_assoc,
+    add_comm, add_left_comm] using congrArg (fun z : H => x + z) h
+
 end
