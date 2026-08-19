@@ -88,8 +88,10 @@ theorem cmp89_mFourier_mul_centeredGreen_physicalBrillouin
     (hx : x ∈ cmp89Eq249PhysicalBrillouinCube) :
     UnitAddTorus.mFourier (-n)
           (cmp89PhysicalBrillouinToUnitAddTorus x) *
-        cmp89Eq248CenteredGreenTorus ha hrho hamplitude hradius hwindow
-          hmass u (cmp89PhysicalBrillouinToUnitAddTorus x) =
+        cmp89Eq248CenteredGreenTorus
+          (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+          ha hrho hamplitude hradius hwindow hmass u
+          (cmp89PhysicalBrillouinToUnitAddTorus x) =
       cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 L j mass a
         (fun mu => (cmp89Eq251PhysicalBrillouinParameter x mu : ℂ))
         (cmp89Eq249PhysicalFineLatticeDisplacement
@@ -98,6 +100,7 @@ theorem cmp89_mFourier_mul_centeredGreen_physicalBrillouin
   let t := cmp89PhysicalBrillouinCenteredRepresentative x hx
   have hLj : 0 < L ^ j := pow_pos (Nat.pos_of_ne_zero (NeZero.ne L)) j
   have hcover := cmp89Eq248CenteredGreenTorus_covering_apply
+    (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
     ha hrho hamplitude hradius hwindow hmass u t
   rw [← cmp89CenteredRepresentative_toTorus x hx, hcover]
   unfold cmp89Eq248CenteredGreenCube
@@ -121,8 +124,10 @@ theorem cmp89_ae_mFourier_mul_centeredGreen_physicalBrillouin
     ∀ᵐ x ∂cmp89Eq249FourDimensionalBrillouinMeasure,
       UnitAddTorus.mFourier (-n)
             (cmp89PhysicalBrillouinToUnitAddTorus x) *
-          cmp89Eq248CenteredGreenTorus ha hrho hamplitude hradius hwindow
-            hmass u (cmp89PhysicalBrillouinToUnitAddTorus x) =
+          cmp89Eq248CenteredGreenTorus
+            (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+            ha hrho hamplitude hradius hwindow hmass u
+            (cmp89PhysicalBrillouinToUnitAddTorus x) =
         cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 L j mass a
           (fun mu => (cmp89Eq251PhysicalBrillouinParameter x mu : ℂ))
           (cmp89Eq249PhysicalFineLatticeDisplacement
@@ -147,6 +152,7 @@ theorem cmp89_ae_mFourier_mul_centeredGreen_physicalBrillouin
     exact ae_restrict_mem hcube
   filter_upwards [hmem] with x hx
   exact cmp89_mFourier_mul_centeredGreen_physicalBrillouin
+    (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
     ha hrho hamplitude hradius hwindow hmass u n x hx
 
 /-- Exact G23.4 coefficient dictionary.  The Mathlib torus Fourier
@@ -161,15 +167,19 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
     (hmass : CMP89Eq251UniformMassWindow mass)
     (u n : Fin 4 → ℤ) :
     UnitAddTorus.mFourierCoeff
-        (cmp89Eq248CenteredGreenTorus ha hrho hamplitude hradius hwindow
-          hmass u) n =
+        (cmp89Eq248CenteredGreenTorus
+          (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+          ha hrho hamplitude hradius hwindow hmass u) n =
       cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen L j mass a
         (fun mu => u mu + ((L ^ j : ℕ) : ℤ) * n mu) := by
   let f : C(UnitAddTorus (Fin 4), ℂ) :=
     UnitAddTorus.mFourier (-n) *
-      cmp89Eq248CenteredGreenTorus ha hrho hamplitude hradius hwindow hmass u
+      cmp89Eq248CenteredGreenTorus
+        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+        ha hrho hamplitude hradius hwindow hmass u
   have htransport := integral_unitAddTorus_eq_cmp89NormalizedBrillouin f
   have hae := cmp89_ae_mFourier_mul_centeredGreen_physicalBrillouin
+    (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
     ha hrho hamplitude hradius hwindow hmass u n
   unfold UnitAddTorus.mFourierCoeff
   change (∫ t, f t ∂(volume : Measure (UnitAddTorus (Fin 4)))) = _
