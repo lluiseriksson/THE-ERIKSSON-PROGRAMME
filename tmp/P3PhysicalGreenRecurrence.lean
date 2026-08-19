@@ -105,7 +105,7 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_typed
     exact scratch_cmp85SourceGeneratedCoarsePrecision_comp_covariance hd hM
       Omega0 depth hspacing ha mass background0 chain fineSmall hsmall k
   have hNextDict0 :=
-    scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed hd hM Omega0
+    scratch_cmp85SourceGeneratedNextPrefixPrecision_eq_typed (a := a) hd hM Omega0
       depth hspacing mass background0 chain fineSmall k
   have hbeta := scratch_cmp85RecurrenceBeta_eq_sourceNextWeighted T a k
   have hNextDict :
