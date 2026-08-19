@@ -39,46 +39,38 @@ noncomputable def scratch_cmp85BasePrecision
     (a spacing1 : ℝ) : H →L[ℝ] H :=
   D + (a * spacing1⁻¹ ^ 2) • Rdag.comp R
 
-/-- At the first retained scale, the total average is the literal one-step
-average. -/
+/-- At the first retained scale, the total average factors through the
+literal one-step average and the empty-prefix average.  No dependent carrier
+identification is hidden in this statement. -/
 theorem scratch_cmp85SourceFirstPrefix_Qprime_eq_step
     {rho : SUNAdjointModel Nc} {Omega : ActiveGaugeRegion d N}
     {spacing : ℝ} {background : GaugeConfig d N (SUN Nc)} {depth : ℕ}
     (T : CMP99SourceRetainedPhysicalTower rho Omega M spacing background depth)
     (hdepth : 0 < depth) :
     (T.towerAt (scratch_cmp85FirstPositivePrefix hdepth).1).Qprime =
-      T.nextAverage (scratch_cmp85FirstStep hdepth) := by
-  let k := scratch_cmp85FirstStep hdepth
-  have hk0 : k.castSucc = (0 : Fin (depth + 1)) := by
-    ext
-    simp only [k, scratch_cmp85FirstStep, Fin.val_castSucc, Fin.zero_eta]
-  have hQ := T.Qprime_succ k
-  rw [hk0, T.towerAt_zero] at hQ
-  simpa only [k, scratch_cmp85FirstPositivePrefix,
-    CMP99SourceWeightedRegionalTower.stop,
-    ContinuousLinearMap.comp_id] using hQ
+      (T.nextAverage (scratch_cmp85FirstStep hdepth)).comp
+        (T.towerAt (scratch_cmp85FirstStep hdepth).castSucc).Qprime := by
+  simpa only [scratch_cmp85FirstPositivePrefix, scratch_cmp85FirstStep] using
+    T.Qprime_succ (scratch_cmp85FirstStep hdepth)
 
-/-- The first prefix weighted adjoint is the literal one-step weighted
-adjoint, with the exact `M^d` volume normalization. -/
+/-- The first prefix weighted adjoint factors through the empty-prefix
+weighted adjoint and the literal one-step weighted adjoint, with the exact
+`M^d` volume normalization. -/
 theorem scratch_cmp85SourceFirstPrefix_weightedAdjoint_eq_step
     {rho : SUNAdjointModel Nc} {Omega : ActiveGaugeRegion d N}
     {spacing : ℝ} {background : GaugeConfig d N (SUN Nc)} {depth : ℕ}
     (T : CMP99SourceRetainedPhysicalTower rho Omega M spacing background depth)
     (hspacing : 0 < spacing) (hdepth : 0 < depth) :
     (T.towerAt (scratch_cmp85FirstPositivePrefix hdepth).1).weightedAdjoint =
-      scratch_cmp85SourceStepWeightedAdjoint T
-        (scratch_cmp85FirstStep hdepth) := by
+      (T.towerAt (scratch_cmp85FirstStep hdepth).castSucc).weightedAdjoint.comp
+        (scratch_cmp85SourceStepWeightedAdjoint T
+          (scratch_cmp85FirstStep hdepth)) := by
   apply ContinuousLinearMap.ext
   intro eta
-  let k := scratch_cmp85FirstStep hdepth
-  have hk0 : k.castSucc = (0 : Fin (depth + 1)) := by
-    ext
-    simp only [k, scratch_cmp85FirstStep, Fin.val_castSucc, Fin.zero_eta]
-  have hW := scratch_cmp85SourceWeightedAdjoint_succ T hspacing k eta
-  rw [hk0, T.towerAt_zero] at hW
-  simpa only [k, scratch_cmp85FirstPositivePrefix,
-    CMP99SourceWeightedRegionalTower.stop,
-    ContinuousLinearMap.id_comp] using hW
+  simpa only [scratch_cmp85FirstPositivePrefix, scratch_cmp85FirstStep,
+    ContinuousLinearMap.comp_apply] using
+      scratch_cmp85SourceWeightedAdjoint_succ T hspacing
+        (scratch_cmp85FirstStep hdepth) eta
 
 /-- At source prefix one, `a_1=a`; the coefficient is exactly the literal
 base coefficient. -/
@@ -89,8 +81,7 @@ theorem scratch_cmp85SourceFirstPrefixWeightedCoefficient_eq
     (a : ℝ) (hdepth : 0 < depth) :
     scratch_cmp85SourcePrefixWeightedCoefficient T a
         (scratch_cmp85FirstPositivePrefix hdepth) =
-      a * (T.towerAt (scratch_cmp85FirstPositivePrefix hdepth).1)
-        .terminalSpacing⁻¹ ^ 2 := by
+      a * (T.towerAt (scratch_cmp85FirstPositivePrefix hdepth).1).terminalSpacing⁻¹ ^ 2 := by
   unfold scratch_cmp85SourcePrefixWeightedCoefficient
   unfold scratch_cmp85SourcePrefixA
   simp only [scratch_cmp85FirstPositivePrefix, scratch_cmp85FirstStep,
@@ -119,9 +110,8 @@ theorem scratch_cmp85SourceGeneratedBasePrecision_eq_prefixOne
         (matrixSUNAdjointModel Nc) background0 spacing)
       mass
     scratch_cmp85BasePrecision D
-        (T.nextAverage (scratch_cmp85FirstStep hdepth))
-        (scratch_cmp85SourceStepWeightedAdjoint T
-          (scratch_cmp85FirstStep hdepth))
+        (T.towerAt r1.1).Qprime
+        (T.towerAt r1.1).weightedAdjoint
         a (T.towerAt r1.1).terminalSpacing =
       scratch_cmp85SourceGeneratedPrefixPrecision hd hM Omega0 depth
         spacing epsilon mass a background0 chain fineSmall r1 := by
@@ -134,13 +124,10 @@ theorem scratch_cmp85SourceGeneratedBasePrecision_eq_prefixOne
       (cmp99IteratedLiftActiveRegion (M := M) Omega0 depth)
       (matrixSUNAdjointModel Nc) background0 spacing)
     mass
-  have hQ := scratch_cmp85SourceFirstPrefix_Qprime_eq_step T hdepth
-  have hW := scratch_cmp85SourceFirstPrefix_weightedAdjoint_eq_step
-    T hspacing hdepth
   have hb := scratch_cmp85SourceFirstPrefixWeightedCoefficient_eq T a hdepth
   have hweighted := scratch_cmp85SourcePrefixPrecision_weighted_eq_counting
     T D hspacing r1
-  rw [← hQ, ← hW, ← hb]
+  rw [← hb]
   simpa only [scratch_cmp85BasePrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision,
     T, r1, D, scratch_cmp85SourceGeneratedPrefixTower] using hweighted
@@ -169,9 +156,8 @@ theorem scratch_isCoerciveCLM_cmp85SourceGeneratedBasePrecision
       mass
     IsCoerciveCLM
       (scratch_cmp85BasePrecision D
-        (T.nextAverage (scratch_cmp85FirstStep hdepth))
-        (scratch_cmp85SourceStepWeightedAdjoint T
-          (scratch_cmp85FirstStep hdepth))
+        (T.towerAt r1.1).Qprime
+        (T.towerAt r1.1).weightedAdjoint
         a (T.towerAt r1.1).terminalSpacing)
       (scratch_cmp85SourceGeneratedPrefixCoercivity hd hM Omega0 depth
         spacing epsilon a background0 chain fineSmall r1) := by
@@ -205,9 +191,8 @@ noncomputable def scratch_cmp85SourceGeneratedBaseCovariance
       (matrixSUNAdjointModel Nc) background0 spacing)
     mass
   let K0 := scratch_cmp85BasePrecision D
-    (T.nextAverage (scratch_cmp85FirstStep hdepth))
-    (scratch_cmp85SourceStepWeightedAdjoint T
-      (scratch_cmp85FirstStep hdepth))
+    (T.towerAt r1.1).Qprime
+    (T.towerAt r1.1).weightedAdjoint
     a (T.towerAt r1.1).terminalSpacing
   covarianceOfIsCoerciveCLM K0
     (scratch_cmp85SourceGeneratedPrefixCoercivity_pos hd hM Omega0 depth
@@ -236,9 +221,8 @@ theorem scratch_cmp85SourceGeneratedBasePrecision_comp_covariance
         (matrixSUNAdjointModel Nc) background0 spacing)
       mass
     (scratch_cmp85BasePrecision D
-      (T.nextAverage (scratch_cmp85FirstStep hdepth))
-      (scratch_cmp85SourceStepWeightedAdjoint T
-        (scratch_cmp85FirstStep hdepth))
+      (T.towerAt r1.1).Qprime
+      (T.towerAt r1.1).weightedAdjoint
       a (T.towerAt r1.1).terminalSpacing).comp
         (scratch_cmp85SourceGeneratedBaseCovariance hd hM Omega0 depth
           hdepth hspacing ha mass background0 chain fineSmall hsmall) =
@@ -272,9 +256,8 @@ theorem scratch_cmp85SourceGeneratedBaseCovariance_comp_precision
     (scratch_cmp85SourceGeneratedBaseCovariance hd hM Omega0 depth hdepth
       hspacing ha mass background0 chain fineSmall hsmall).comp
         (scratch_cmp85BasePrecision D
-          (T.nextAverage (scratch_cmp85FirstStep hdepth))
-          (scratch_cmp85SourceStepWeightedAdjoint T
-            (scratch_cmp85FirstStep hdepth))
+          (T.towerAt r1.1).Qprime
+          (T.towerAt r1.1).weightedAdjoint
           a (T.towerAt r1.1).terminalSpacing) =
       ContinuousLinearMap.id ℝ _ := by
   dsimp only
@@ -311,9 +294,8 @@ theorem scratch_cmp85SourceGeneratedPrefixGreen_one_eq_baseCovariance
       (matrixSUNAdjointModel Nc) background0 spacing)
     mass
   let K0 := scratch_cmp85BasePrecision D
-    (T.nextAverage (scratch_cmp85FirstStep hdepth))
-    (scratch_cmp85SourceStepWeightedAdjoint T
-      (scratch_cmp85FirstStep hdepth))
+    (T.towerAt r1.1).Qprime
+    (T.towerAt r1.1).weightedAdjoint
     a (T.towerAt r1.1).terminalSpacing
   have hK0 := scratch_isCoerciveCLM_cmp85SourceGeneratedBasePrecision hd hM
     Omega0 depth hdepth hspacing ha mass background0 chain fineSmall hsmall
