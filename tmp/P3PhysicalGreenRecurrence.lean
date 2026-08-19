@@ -178,9 +178,9 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq242
   have hb2 := scratch_cmp85RecurrenceB_sq a (M : ℝ)
     (T.towerAt r.1).terminalSpacing (k.1.val - 1)
   rw [hb] at hb2
+  simp only [scratch_cmp85TypedGreenCandidate] at hEq
   rw [hb2] at hEq
-  simpa only [scratch_cmp85TypedGreenCandidate, r,
-    scratch_cmp85SourcePrefixA] using hEq
+  simpa only [r, scratch_cmp85SourcePrefixA] using hEq
 
 /-- Literal source form of CMP85 (2.41). -/
 theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
@@ -221,6 +221,8 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
     spacing epsilon background0 chain fineSmall
   let r := k.currentPrefix
   let rn := k.nextPrefix
+  let Gnext := scratch_cmp85SourceGeneratedPrefixGreen hd hM Omega0 depth
+    hspacing ha mass background0 chain fineSmall hsmall rn
   have hQ := T.Qprime_succ k.1
   have hb := scratch_cmp85RecurrenceB_eq_sourceCurrentWeighted T a k
   have hc := scratch_cmp85RecurrenceC_eq_sourceStepWeighted T a k
@@ -235,7 +237,7 @@ theorem scratch_cmp85SourceGeneratedGreenRecurrence_eq241
   rw [hb, hc] at hsum
   change (T.towerAt k.1.succ).Qprime.comp Gnext = _
   rw [hQ]
-  simpa only [r, rn, scratch_cmp85SourcePrefixA, hsum] using hAvg
+  simpa only [r, rn, Gnext, scratch_cmp85SourcePrefixA, hsum] using hAvg
 
 end
 
