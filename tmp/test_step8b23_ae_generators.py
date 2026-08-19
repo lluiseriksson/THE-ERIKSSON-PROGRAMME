@@ -51,6 +51,7 @@ def main() -> int:
     assert '["lake", "env", "lean"' in runner_text
     assert "00_normalized_measure_coefficient_repro" in runner_text
     assert "00b_normalized_measure_full_repro" in runner_text
+    assert "00c_continuousat_comp_explicit_repro" in runner_text
     assert "CenteredPeriodicL1ResidueSum" not in runner_text
     assert runner_text.count("PRE-VALIDATION") == 0
     assert "runner.run = run_with_persistent_log" in runner_text
@@ -94,7 +95,7 @@ def main() -> int:
     print(
         "STEP8B23_AE_GENERATOR_SELFTEST_OK "
         "runner=pass workflow=pass tamper=fail_closed "
-        "files=36 repros=2 bricks=18 stages=38 axiom_blocks=124"
+        "files=36 repros=3 bricks=18 stages=39 axiom_blocks=124"
     )
     return 0
 
