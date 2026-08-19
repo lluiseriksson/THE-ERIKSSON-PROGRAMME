@@ -89,9 +89,9 @@ def promotion_plan() -> list[tuple[Path, bytes]]:
     for source in P0_FILES:
         content, _ = PREVIEW["transform"](source, targets, names)
         target = targets[source]
-        if target.exists():
+        if target.exists() and target.read_bytes() != content:
             raise SystemExit(
-                f"P0_PROMOTION_TARGET_ALREADY_EXISTS={target.relative_to(ROOT)}"
+                f"P0_PROMOTION_TARGET_DIVERGES={target.relative_to(ROOT)}"
             )
         result.append((target, content))
         rows.append(
