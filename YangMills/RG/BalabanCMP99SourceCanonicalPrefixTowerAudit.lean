@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99SourceCanonicalPrefixTower
 /-!
 axiom readouts for Step 8b.24/C6c.2 P0.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
+SEALED AUDIT: compiler-verified in a fresh Colab checkout.
 -/
 
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.take

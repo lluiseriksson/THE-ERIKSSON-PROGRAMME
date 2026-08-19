@@ -38161,6 +38161,27 @@ unchanged. PRE-VALIDATION remains visible and v2 remains NOT CHECKED.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
+## Addendum 868 (2026-08-19, **Step 8b.24/C6c.2 canonical prefix tower P0 sealed in fresh Colab checkout; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM validation checked exact source
+`033469bb1a816de9979ac04867779e2fb7a196cd` with runner revision
+`step8b24-c6c2-p0-v1`.  The public focal
+`BalabanCMP99SourceCanonicalPrefixTower` exited `0` after `922.615 s` with
+`Build completed successfully (8465 jobs).`; its sibling audit exited `0`
+after `13.583 s`.  All ten declarations reported exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The independent executed-notebook auditor accepted transcript SHA-256
+`E2FE8B20EA2F058CDB74067F60536543149173ED046935A4553409DA97B3C6FE`,
+evidence SHA-256
+`21C8F879E8898C3A7F98418F1D316C4E3FB20CB18DD9FFBA47311BA0DA0A7674`,
+and reported archive SHA-256
+`A59CB567F9A7233A2BFEC7F36CCE45C9572AB3450E4D853D85043A4917AABC5F`.
+This seal removes exactly the two P0 PRE-VALIDATION marks and imports the
+sibling audit into `YangMillsCore.lean`.  It constructs canonical retained
+prefix truncations only; it does not attain window 15, discharge a terminal
+field, or inhabit `TermSource`.  Counters remain exactly `20/41` and zero.
+
 ## Addendum 855 (2026-08-16, **cross-fibre quotient diagnostic v2 FAIL; v3 prepared; 20/41 unchanged**)
 
 Diagnostic v2 ran once in a fresh Colab Pro+ CPU/high-RAM clone under the

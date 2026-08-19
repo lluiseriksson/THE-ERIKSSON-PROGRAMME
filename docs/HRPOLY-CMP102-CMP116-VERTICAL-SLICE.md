@@ -12943,3 +12943,21 @@ producer.  This seal covers generic finite-grid aliasing only.  Regional
 `B0`, window 15, terminal fields and a `TermSource` inhabitant remain open.
 Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+### Step 8b.24/C6c.2 P0 canonical retained-prefix tower (SEALED; P1 next)
+
+Fresh Colab Pro+ validation of source
+`033469bb1a816de9979ac04867779e2fb7a196cd` compiled the promoted public
+`BalabanCMP99SourceCanonicalPrefixTower` module and its ten-readout sibling
+audit.  The focal exited `0` after `922.615 s` with `8465` jobs and the audit
+exited `0` after `13.583 s`; every readout used exactly
+`{propext, Classical.choice, Quot.sound}`.  Independent transcript validation
+is recorded in ledger Addendum 868.
+
+This is the first sealed public brick of the sequential P0--P9 prefix-Green
+chain.  It fixes the canonical retained-prefix truncations and their tower
+transport; P1 coefficient monotonicity remains the immediate successor and
+may not be bypassed.  P0 does not produce the CMP96 Dirichlet defect, a
+uniform CMP99 (3.42) pair, the four regional actions, window 15, a terminal
+field, or a `TermSource`.  The live count remains exactly `20/41` and
+`TermSource = 0`; window 15 remains compatible but unattained.
