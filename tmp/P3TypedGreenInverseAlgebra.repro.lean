@@ -32,3 +32,5 @@ example (x a b c : H) (h : a + b + c = 0) : x + b + a + c = x := by
 certificate and needs only reassociation. -/
 example (x a b c : H) (h : a + b + c = 0) : x + a + b + c = x := by
   simpa only [add_zero, add_assoc] using congrArg (fun z : H => x + z) h
+
+end
