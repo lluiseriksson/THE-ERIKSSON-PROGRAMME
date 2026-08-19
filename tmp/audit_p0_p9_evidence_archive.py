@@ -17,8 +17,8 @@ import tarfile
 import tempfile
 
 
-SOURCE_SHA = "1882972426525d07fe282aa10deb437de9cda622"
-RUNNER_REV = "p0-p9-prefix-combes-thomas-v31"
+SOURCE_SHA = "c9cd1811b021dd6f98ed650bada9ec3f59126dd4"
+RUNNER_REV = "p0-p9-prefix-combes-thomas-v32"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 EVIDENCE_ROOT = "hrpoly-p0-p9-prefix-combes-thomas-evidence"
 
