@@ -209,7 +209,7 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
           cmp89Eq248CenteredGreenTorus
             (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
             ha hrho hamplitude hradius hwindow hmass u t
-          ∂(volume : Measure (UnitAddTorus (Fin 4)))) =
+          ∂(Measure.pi fun _ : Fin 4 => AddCircle.haarAddCircle)) =
         cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
           (fun x => UnitAddTorus.mFourier (-n)
               (cmp89PhysicalBrillouinToUnitAddTorus x) *
@@ -217,9 +217,18 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
               (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
               ha hrho hamplitude hradius hwindow hmass u
               (cmp89PhysicalBrillouinToUnitAddTorus x)) := by
-    simpa [f, smul_eq_mul] using htransport
+    have hcircle :
+        (volume : Measure UnitAddCircle) = AddCircle.haarAddCircle := by
+      simpa using
+        (AddCircle.volume_eq_smul_haarAddCircle (T := (1 : ℝ)))
+    simpa [f, smul_eq_mul, MeasureTheory.volume_pi, hcircle] using htransport
   unfold UnitAddTorus.mFourierCoeff
   simp only [smul_eq_mul]
+  change (∫ t, UnitAddTorus.mFourier (-n) t *
+      cmp89Eq248CenteredGreenTorus
+        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+        ha hrho hamplitude hradius hwindow hmass u t
+      ∂(Measure.pi fun _ : Fin 4 => AddCircle.haarAddCircle)) = _
   refine htransport_mul.trans ?_
   unfold cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen
     cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
