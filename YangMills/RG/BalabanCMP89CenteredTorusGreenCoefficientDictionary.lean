@@ -232,6 +232,7 @@ theorem cmp89_mFourierCoeff_centeredGreen_eq_normalizedFineGreen
   refine htransport_mul.trans ?_
   unfold cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen
     cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
+  congr 1
   exact integral_congr_ae (by
     simpa [f, smul_eq_mul] using hae)
 
