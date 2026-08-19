@@ -36,74 +36,43 @@ theorem scratch_cmp85SourceWeightedAdjoint_succ
       (T.towerAt k.castSucc).weightedAdjoint
         (scratch_cmp85SourceStepWeightedAdjoint
           (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k eta) := by
-  let R := T.nextAverage k
-  let Wstep := scratch_cmp85SourceStepWeightedAdjoint
-    (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k
-  let current := T.towerAt k.castSucc
-  let next := T.towerAt k.succ
-  have hMpos : 0 < (M : ℝ) := by exact_mod_cast (NeZero.pos M)
-  have hcurrent : 0 < current.terminalSpacing := by
-    change 0 < (T.towerAt k.castSucc).terminalSpacing
-    rw [T.towerAt_terminalSpacing]
-    exact mul_pos (pow_pos hMpos k.castSucc.val) hspacing
-  have hnext : 0 < next.terminalSpacing := by
-    change 0 < (T.towerAt k.succ).terminalSpacing
-    rw [T.towerAt_terminalSpacing]
-    exact mul_pos (pow_pos hMpos k.succ.val) hspacing
-  have hspacingPow : spacing ^ d ≠ 0 := pow_ne_zero d hspacing.ne'
-  have hcurrentPow : current.terminalSpacing ^ d ≠ 0 :=
-    pow_ne_zero d hcurrent.ne'
-  have hnextPow : next.terminalSpacing ^ d ≠ 0 :=
-    pow_ne_zero d hnext.ne'
-  have hterminal :
-      next.terminalSpacing = (M : ℝ) * current.terminalSpacing := by
-    change (T.towerAt k.succ).terminalSpacing =
-      (M : ℝ) * (T.towerAt k.castSucc).terminalSpacing
-    rw [T.towerAt_terminalSpacing, T.towerAt_terminalSpacing]
-    simp only [Fin.val_succ, Fin.val_castSucc]
-    rw [pow_succ]
-    ring
-  have hratio :
-      (spacing ^ d / next.terminalSpacing ^ d) * (M : ℝ) ^ d =
-        spacing ^ d / current.terminalSpacing ^ d := by
-    rw [hterminal, mul_pow]
-    field_simp [hspacingPow, hcurrentPow, hnextPow,
-      pow_ne_zero d hMpos.ne']
-  have hQadj :
-      (T.towerAt k.succ).Qprime.adjoint =
-        (T.towerAt k.castSucc).Qprime.adjoint.comp
-          (T.nextAverage k).adjoint := by
-    rw [T.Qprime_succ, ContinuousLinearMap.adjoint_comp]
-  have hcurrentAdj :=
-    current.adjoint_eq_spacingRatio_smul_weightedAdjoint hcurrent.ne'
-  have hnextAdj :=
-    next.adjoint_eq_spacingRatio_smul_weightedAdjoint hnext.ne'
-  have hadjPoint := congrArg
-    (fun A : next.TerminalSpace.carrier →L[ℝ]
-      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) => A eta) hQadj
-  rw [hnextAdj, hcurrentAdj] at hadjPoint
-  simp only [ContinuousLinearMap.smul_apply,
-    ContinuousLinearMap.comp_apply, map_smul] at hadjPoint
+  apply ext_inner_left ℝ
+  intro phi
+  have hQ := congrArg
+    (fun Q : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+      (T.towerAt k.succ).TerminalSpace.carrier => Q phi)
+    (T.Qprime_succ k)
+  simp only [ContinuousLinearMap.comp_apply] at hQ
+  have hnext := (T.towerAt k.succ).weightedAdjoint_pairing phi eta
+  rw [hQ] at hnext
+  have hstep := scratch_cmp85SourceStepWeightedAdjoint_pairing
+    (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth)
+    T k ((T.towerAt k.castSucc).Qprime phi) eta
+  have hcurrent := (T.towerAt k.castSucc).weightedAdjoint_pairing phi
+    (scratch_cmp85SourceStepWeightedAdjoint
+      (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth) T k eta)
+  change (T.towerAt k.succ).terminalSpacing ^ d *
+      inner ℝ ((T.nextAverage k) ((T.towerAt k.castSucc).Qprime phi)) eta =
+    spacing ^ d * inner ℝ phi ((T.towerAt k.succ).weightedAdjoint eta)
+    at hnext
+  change (T.towerAt k.succ).terminalSpacing ^ d *
+      inner ℝ ((T.nextAverage k) ((T.towerAt k.castSucc).Qprime phi)) eta =
+    (T.towerAt k.castSucc).terminalSpacing ^ d *
+      inner ℝ ((T.towerAt k.castSucc).Qprime phi)
+        (scratch_cmp85SourceStepWeightedAdjoint T k eta) at hstep
+  change (T.towerAt k.castSucc).terminalSpacing ^ d *
+      inner ℝ ((T.towerAt k.castSucc).Qprime phi)
+        (scratch_cmp85SourceStepWeightedAdjoint T k eta) =
+    spacing ^ d * inner ℝ phi
+      ((T.towerAt k.castSucc).weightedAdjoint
+        (scratch_cmp85SourceStepWeightedAdjoint T k eta)) at hcurrent
   have hscaled :
-      (spacing ^ d / next.terminalSpacing ^ d) • next.weightedAdjoint eta =
-        (spacing ^ d / next.terminalSpacing ^ d) •
-          ((M : ℝ) ^ d • current.weightedAdjoint (R.adjoint eta)) := by
-    calc
-      (spacing ^ d / next.terminalSpacing ^ d) •
-          next.weightedAdjoint eta =
-        (spacing ^ d / current.terminalSpacing ^ d) •
-          current.weightedAdjoint (R.adjoint eta) := hadjPoint
-      _ = (spacing ^ d / next.terminalSpacing ^ d) •
-          ((M : ℝ) ^ d • current.weightedAdjoint (R.adjoint eta)) := by
-        rw [smul_smul, hratio]
-  have hratioNonzero : spacing ^ d / next.terminalSpacing ^ d ≠ 0 :=
-    div_ne_zero hspacingPow hnextPow
-  have hcancel :=
-    ((isUnit_iff_ne_zero).2 hratioNonzero).smul_left_cancel.mp hscaled
-  simpa only [current, next, R, Wstep,
-    scratch_cmp85SourceStepWeightedAdjoint,
-    ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply,
-    map_smul] using hcancel
+      spacing ^ d * inner ℝ phi ((T.towerAt k.succ).weightedAdjoint eta) =
+        spacing ^ d * inner ℝ phi
+          ((T.towerAt k.castSucc).weightedAdjoint
+            (scratch_cmp85SourceStepWeightedAdjoint T k eta)) :=
+    hnext.symm.trans (hstep.trans hcurrent)
+  exact mul_left_cancel₀ (pow_ne_zero d hspacing.ne') hscaled
 
 /-- Exact source coisometry of the literal one-step retained average.  No
 new normalization constant is accepted. -/
@@ -143,7 +112,14 @@ theorem scratch_cmp85SourceStep_comp_weightedAdjoint
       apply ContinuousLinearMap.ext
       intro eta
       simp only [ContinuousLinearMap.comp_apply]
-      rw [← hQ, ← hW eta]
+      have hQeta := congrArg
+        (fun Q : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+          (T.towerAt k.succ).TerminalSpace.carrier =>
+          Q ((T.towerAt k.castSucc).weightedAdjoint
+            (scratch_cmp85SourceStepWeightedAdjoint T k eta))) hQ
+      simp only [ContinuousLinearMap.comp_apply] at hQeta
+      exact hQeta.symm.trans
+        (congrArg (T.towerAt k.succ).Qprime (hW eta).symm)
     _ = ContinuousLinearMap.id ℝ
           (T.towerAt k.succ).TerminalSpace.carrier := hnext
 
