@@ -371,6 +371,52 @@ def audit_p0(path: Path) -> str:
     )
 
 
+def audit_p1(path: Path) -> str:
+    """Audit P0 and P1 even when a later stop-on-first-error ends the queue."""
+
+    p0_result = audit_p0(path)
+    notebook_bytes = path.read_bytes()
+    notebook = json.loads(notebook_bytes.decode("utf-8"))
+    text, executed = output_text(notebook)
+    if executed != 1:
+        raise ValueError(f"executed code-cell count={executed}, expected 1")
+    source_stage = "p0_p9_03_p1coefficientmonotonicity"
+    audit_stage = "p0_p9_04_p1coefficientmonotonicityaudit"
+    stage_rows = re.findall(
+        r"STAGE=([a-z0-9_]+) EXIT=([-0-9]+) SECONDS=([0-9]+(?:\.[0-9]+)?)",
+        text,
+    )
+    order: list[str] = []
+    stages: dict[str, int] = {}
+    for stage, exit_code, _ in stage_rows:
+        if stage in stages:
+            raise ValueError(f"duplicate stage result: {stage}")
+        order.append(stage)
+        stages[stage] = int(exit_code)
+    for stage in (source_stage, audit_stage):
+        if stages.get(stage) != 0:
+            raise ValueError(f"required P1 stage not green: {stage}")
+    if order.index(source_stage) >= order.index(audit_stage):
+        raise ValueError("P1 source/audit order drift")
+    compact = re.sub(r"\s+", "", stage_output(text, audit_stage))
+    blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
+    pure = compact.count("doesnotdependonanyaxioms")
+    if len(blocks) + pure != 8:
+        raise ValueError(
+            f"P1 axiom header count={len(blocks) + pure}, expected=8"
+        )
+    for index, body in enumerate(blocks):
+        names = {name for name in body.split(",") if name}
+        if not names.issubset(ALLOWED_AXIOMS):
+            raise ValueError(f"forbidden P1 axiom block {index}: {sorted(names)}")
+    return (
+        "P1_EXECUTED_NOTEBOOK_OK "
+        f"source_stage={source_stage} audit_stage={audit_stage} "
+        f"axiom_headers={len(blocks) + pure} notebook_sha256={sha256(notebook_bytes)} "
+        f"p0=({p0_result})"
+    )
+
+
 def audit(path: Path) -> str:
     notebook_bytes = path.read_bytes()
     notebook = json.loads(notebook_bytes.decode("utf-8"))
