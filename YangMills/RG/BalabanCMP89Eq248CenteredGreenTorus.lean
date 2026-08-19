@@ -64,7 +64,7 @@ theorem continuous_cmp89Eq248CenteredGreenCube
   have hp : ∀ mu, |p mu| ≤ Real.pi :=
     abs_cmp89Eq248CenteredCubeMomentum_le_pi t
   have houter :=
-    continuousAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_real_massUniform
+    continuousAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_real_massUniform_draft
       (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho hamplitude hradius hwindow hmass hp
       (endpointDisplacement :=
@@ -154,9 +154,13 @@ def cmp89Eq248CenteredGreenTorus
     (hmass : CMP89Eq251UniformMassWindow mass)
     (endpointU : Fin 4 → ℤ) : C(UnitAddTorus (Fin 4), ℂ) :=
   cmp89CenteredUnitCubeLift
-    (cmp89Eq248CenteredGreenCubeContinuous ha hrho hamplitude hradius
+    (cmp89Eq248CenteredGreenCubeContinuous
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+      ha hrho hamplitude hradius
       hwindow hmass endpointU)
-    (cmp89Eq248CenteredGreenCube_faceSeam ha hrho hamplitude hradius
+    (cmp89Eq248CenteredGreenCube_faceSeam
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+      ha hrho hamplitude hradius
       hwindow hmass endpointU)
 
 /-- Exact pullback of the descended torus Green to the centered cube. -/
@@ -169,13 +173,19 @@ theorem cmp89Eq248CenteredGreenTorus_covering_apply
     (hmass : CMP89Eq251UniformMassWindow mass)
     (endpointU : Fin 4 → ℤ)
     (t : CMP89CenteredUnitCube (Fin 4)) :
-    cmp89Eq248CenteredGreenTorus ha hrho hamplitude hradius hwindow hmass
+    cmp89Eq248CenteredGreenTorus
+        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+        ha hrho hamplitude hradius hwindow hmass
         endpointU (cmp89CenteredUnitCubeToTorus t) =
       cmp89Eq248CenteredGreenCube L j mass a endpointU t := by
   have h := cmp89CenteredUnitCubeLift_comp_covering
-    (cmp89Eq248CenteredGreenCubeContinuous ha hrho hamplitude hradius
+    (cmp89Eq248CenteredGreenCubeContinuous
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+      ha hrho hamplitude hradius
       hwindow hmass endpointU)
-    (cmp89Eq248CenteredGreenCube_faceSeam ha hrho hamplitude hradius
+    (cmp89Eq248CenteredGreenCube_faceSeam
+      (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+      ha hrho hamplitude hradius
       hwindow hmass endpointU)
   exact DFunLike.congr_fun h t
 
