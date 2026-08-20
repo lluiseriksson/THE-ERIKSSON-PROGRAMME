@@ -185,7 +185,9 @@ def audit(path: Path) -> str:
             parsed = contract.parse_axioms(text, expected)
             expected_axioms[stage] = parsed
             total_headers += len(parsed)
-    if total_headers != 199 or evidence.get("axiom_headers") != 199:
+    expected_header_total = sum(contract.AXIOM_COUNTS.values())
+    if (total_headers != expected_header_total
+            or evidence.get("axiom_headers") != expected_header_total):
         raise ValueError("total axiom count mismatch")
     stored_axioms = json.loads(outer["evidence/axioms.json"].decode("utf-8"))
     if stored_axioms != expected_axioms:

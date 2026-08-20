@@ -87,7 +87,7 @@ def write_fixture(
         "status": "PASS",
         "first_error": None,
         "records": records,
-        "axiom_headers": 199,
+        "axiom_headers": sum(contract.AXIOM_COUNTS.values()),
     }
     files["evidence/evidence.json"] = (
         json.dumps(evidence, sort_keys=True, indent=2) + "\n"
