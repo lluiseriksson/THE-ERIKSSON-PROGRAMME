@@ -36,8 +36,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-ae-v54"
-runner.SOURCE_SHA = 'e01c35f51ef5ea31ca13a6ba73702a2ae3a90b35'
+runner.RUNNER_REV = "step8b23-ae-v55"
+runner.SOURCE_SHA = '45a6fde5370aac14d5bf6472745e4157c7946288'
 runner.ROOT = Path("/content/hrpoly-step8b23-ae")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-ae-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-ae-evidence.tar.gz")
@@ -78,7 +78,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean': '80bad23756e1a24508d84bb969cebe2dff18ea72bc938fa24b28ab911fb296fb',
     'YangMills/RG/BalabanCMP89CenteredGreenFourierSummability.lean': '24e692d3a7660bcdc3183ffaa23c3a8b50454db98ce45a7e72e74c4f1e2d975b',
     'YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean': 'e1ff97694e15ed9d0976b033a933a2d1d45bd87cfe7ae73c4efd930fd38de532',
-    'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean': '966e8ee39c49334a4d17bac97cfa4145a88f1a6563995aaceda52bc996d339b5',
+    'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean': '6ee73253a553c064f4e1b5a37f4f59916f086381d2cbf59d2ab245d4dc459750',
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean': 'f9efec45f5856ccc8a97ea5f0240e43c929a495122e58600d19e5a09cfabd643',
     'tmp/Step8b23AENormalizedMeasureCoeff.repro.lean': 'a77d77600322140c6fa45134b3a3b1c974cea5fba8be2b60b7b069505d2f6403',
     'tmp/Step8b23AENormalizedMeasureFull.repro.lean': 'cb7606a9d7a27fa31ebe0b63a294409ea7f5b8ae3097e2523f8c0c2256f0afa8',
