@@ -215,12 +215,8 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
       (L ^ (depth + 1)) := by
   dsimp only
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
-  let T := scratch_cmp89SourceSeparatedPrefixTower
-    (spacing := spacing) (epsilon := epsilon) hL depth background budget
-    fineSmall
-  let r := scratch_cmp85LastPositivePrefix (depth + 1)
-    (Nat.succ_pos depth)
   intro source target v hfar
+  change L ^ (depth + 1) < finBoxDist target.1 source.1 at hfar
   have hpowPos : 0 < L ^ (depth + 1) := pow_pos (NeZero.pos L) _
   have hlapFar : 1 < finBoxDist target.1 source.1 := by omega
   have hlap := cmp99ActiveRegionSourceCovariantLaplacian_finiteRange_one
@@ -236,16 +232,7 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
     scratch_cmp85SourceGeneratedPrefixPrecision,
     scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply]
-  change
-    cmp99ActiveRegionSourceCovariantLaplacian
-        (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1))
-        (matrixSUNAdjointModel Nc) background spacing
-          (singleFinitePiLp source v) target +
-      0 ^ 2 • (ContinuousLinearMap.id ℝ _)
-          (singleFinitePiLp source v) target +
-      scratch_cmp85SourcePrefixCountingCoefficient T a r •
-        (((T.towerAt r.1).Qprime.adjoint.comp
-          (T.towerAt r.1).Qprime) (singleFinitePiLp source v)) target = 0
+  unfold scratch_cmp89SourceSeparatedFinalPrefixQprimeMass at hmass
   rw [hlap, hmass]
   simp
 
