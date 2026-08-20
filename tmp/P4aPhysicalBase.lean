@@ -128,7 +128,7 @@ theorem scratch_cmp85SourceGeneratedBasePrecision_eq_prefixOne
   have hb := scratch_cmp85SourceFirstPrefixWeightedCoefficient_eq T a hdepth
   have hweighted := scratch_cmp85SourcePrefixPrecision_weighted_eq_counting
     (a := a) T D hspacing r1
-  rw [← hb]
+  rw [hb] at hweighted
   simpa only [scratch_cmp85BasePrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision,
     T, r1, D, scratch_cmp85SourceGeneratedPrefixTower] using hweighted
@@ -308,6 +308,7 @@ theorem scratch_cmp85SourceGeneratedPrefixGreen_one_eq_baseCovariance
       (scratch_cmp85SourceGeneratedPrefixGreen hd hM Omega0 depth hspacing ha
         mass background0 chain fineSmall hsmall r1) =
         ContinuousLinearMap.id ℝ _ := by
+    dsimp only [K0]
     rw [hEq]
     exact scratch_cmp85SourceGeneratedPrefixPrecision_comp_green hd hM
       Omega0 depth hspacing ha mass background0 chain fineSmall hsmall r1
@@ -317,7 +318,8 @@ theorem scratch_cmp85SourceGeneratedPrefixGreen_one_eq_baseCovariance
         ContinuousLinearMap.id ℝ _ := by
     exact scratch_cmp85SourceGeneratedBasePrecision_comp_covariance hd hM
       Omega0 depth hdepth hspacing ha mass background0 chain fineSmall hsmall
-  ext x
+  apply ContinuousLinearMap.ext
+  intro x
   apply isCoerciveCLM_injective K0 hc0 hK0
   have hGRight_x := congrArg (fun T : _ →L[ℝ] _ => T x) hGRight
   have hC0Right_x := congrArg (fun T : _ →L[ℝ] _ => T x) hC0Right
