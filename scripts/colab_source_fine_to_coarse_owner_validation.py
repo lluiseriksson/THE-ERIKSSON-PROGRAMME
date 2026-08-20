@@ -17,7 +17,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = "5afc37d1aeff7bd277b66b76a0f09f41a7417fed"
+SOURCE_SHA = "cb92d619c8ff95781d1f51ec9fad823b996120b4"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -45,7 +45,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "source-fine-to-coarse-owner-v2-manifest-materialization"
+runner.RUNNER_REV = "source-fine-to-coarse-owner-v3-length-composition"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-fine-to-coarse-owner")
 runner.EVIDENCE = Path("/content/hrpoly-source-fine-to-coarse-owner-evidence")
@@ -53,7 +53,7 @@ runner.ARCHIVE = Path("/content/hrpoly-source-fine-to-coarse-owner-evidence.tar.
 runner.PATH_MANIFEST = Path("/content/hrpoly-source-fine-to-coarse-owner-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFineToCoarseCenteredOwnerDictionary.lean":
-        "6cc2f63eb573faed7680d1a72b53689102cde6b7b9bbc3e369dab7d362d6dee7",
+        "34c498be457f082018f0f9ee724b377b741f7d39a153e7d566560413cbe25fd6",
     "YangMills/RG/BalabanCMP99SourceFineToCoarseCenteredOwnerDictionaryAudit.lean":
         "42bac8e320df05f310c455fd498e90bf5be5ee43b67fb3872ceea1c08f2d0b90",
 }
