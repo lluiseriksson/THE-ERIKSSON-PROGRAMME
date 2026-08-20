@@ -37,7 +37,7 @@ AXIOM_COUNTS = {
     "tmp/P3PhysicalGreenRecurrenceAggregateAudit.lean": 18,
     "tmp/P4aPhysicalBaseAudit.lean": 12,
     "tmp/P4bFiniteTelescopingAudit.lean": 14,
-    "tmp/P5PhysicalGreenScaleDictionaryAudit.lean": 13,
+    "tmp/P5PhysicalGreenScaleDictionaryAudit.lean": 14,
     "tmp/P7SourceSeparatedAmbientPrefixPrecisionAudit.lean": 8,
     "tmp/P8SourceSeparatedRegionalPrefixGreenAudit.lean": 5,
     "tmp/P9SourceSeparatedPrefixCombesThomasAudit.lean": 12,

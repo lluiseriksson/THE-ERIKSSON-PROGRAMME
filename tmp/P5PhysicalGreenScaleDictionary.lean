@@ -243,27 +243,61 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
   have htransport := congrArg (finitePiLpTypedKernelReindex e e) hfine
   rw [scratch_finitePiLpTypedKernelReindex_add,
     scratch_finitePiLpTypedKernelReindex_fintype_sum] at htransport
-  change finitePiLpTypedKernelReindex e e
-      (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
-        background budget fineSmall hsmall) = _ at htransport
-  change _ = finitePiLpTypedKernelReindex e e
-      (scratch_cmp89SourceSeparatedFineBaseCovariance hL depth hspacing ha
-        background budget fineSmall hsmall) + _ at htransport
-  change _ = _ + ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
-      finitePiLpTypedKernelReindex e e
-        (scratch_cmp89SourceSeparatedFineGreenIncrement hL depth hspacing ha
-          background budget fineSmall hsmall j) at htransport
-  change finitePiLpTypedKernelReindex e e
-      (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
-        background budget fineSmall hsmall) = _
-  change _ = finitePiLpTypedKernelReindex e e
-      (scratch_cmp89SourceSeparatedFineBaseCovariance hL depth hspacing ha
-        background budget fineSmall hsmall) + _
-  change _ = _ + ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
-      finitePiLpTypedKernelReindex e e
-        (scratch_cmp89SourceSeparatedFineGreenIncrement hL depth hspacing ha
-          background budget fineSmall hsmall j)
+  unfold scratch_cmp89SourceSeparatedAmbientPrefixGreen
+    scratch_cmp89SourceSeparatedAmbientBaseCovariance
+    scratch_cmp89SourceSeparatedAmbientGreenIncrement
+    scratch_cmp89SourceSeparatedFinePrefixGreen
+    scratch_cmp89SourceSeparatedFineBaseCovariance
+    scratch_cmp89SourceSeparatedFineGreenIncrement
   exact htransport
+
+/-- One transported CMP85 increment with the printed CMP89 coefficient and
+operator order exposed before taking the finite sum.  Keeping this conversion
+pointwise prevents the elaborator from reducing the entire transported sum. -/
+theorem scratch_cmp89SourceSeparatedAmbientGreenIncrement_eq_literal
+    (hL : 2 ≤ L) (depth : ℕ) {spacing epsilon a : ℝ}
+    (hspacing : 0 < spacing) (ha : 0 < a)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 L Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 L (depth + 1)
+      spacing epsilon < 1)
+    (j : ScratchCMP85PositiveCoarseStep (depth + 1)) :
+    let e := cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
+    let T := scratch_cmp85SourceGeneratedPrefixTower
+      (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
+      (by norm_num) hL
+      (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+      (depth + 1) spacing epsilon background budget.toRadiusChain fineSmall
+    let r := j.currentPrefix
+    let Qj := (T.towerAt r.1).Qprime
+    let Qjdag := (T.towerAt r.1).weightedAdjoint
+    let Gj := scratch_cmp85SourceGeneratedPrefixGreen
+      (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
+      (by norm_num) hL
+      (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+      (depth + 1) hspacing ha 0 background budget.toRadiusChain
+      fineSmall hsmall r
+    let Cj := scratch_cmp85SourceGeneratedCoarseCovariance
+      (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
+      (by norm_num) hL
+      (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+      (depth + 1) hspacing ha 0 background budget.toRadiusChain
+      fineSmall hsmall j
+    scratch_cmp89SourceSeparatedAmbientGreenIncrement hL depth hspacing ha
+        background budget fineSmall hsmall j =
+      finitePiLpTypedKernelReindex e e
+        (((cmp99SourceMassParameter a (L : ℝ) (r.1.val - 1)) ^ 2 *
+            (T.towerAt r.1).terminalSpacing⁻¹ ^ 4) •
+          Gj.comp (Qjdag.comp (Cj.comp (Qj.comp Gj)))) := by
+  unfold scratch_cmp89SourceSeparatedAmbientGreenIncrement
+    scratch_cmp89SourceSeparatedFineGreenIncrement
+    scratch_cmp85SourceGeneratedGreenIncrement
+    scratch_cmp85SourcePrefixA
+  rfl
 
 /-- CMP89 (2.34) with the printed coefficient and operator order visible in
 the public conclusion.  The preceding theorem is a convenient technical
@@ -319,7 +353,8 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234_literal
       background budget fineSmall hsmall + z)
   apply Finset.sum_congr rfl
   intro j hj
-  rfl
+  exact scratch_cmp89SourceSeparatedAmbientGreenIncrement_eq_literal
+    hL depth hspacing ha background budget fineSmall hsmall j
 
 end
 

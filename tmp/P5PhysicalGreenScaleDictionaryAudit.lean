@@ -21,4 +21,5 @@ materialized and no declaration in this file has been compiler-verified.
 #print axioms YangMills.RG.scratch_cmp89SourceSeparatedAmbientBaseCovariance
 #print axioms YangMills.RG.scratch_cmp89SourceSeparatedAmbientGreenIncrement
 #print axioms YangMills.RG.scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
+#print axioms YangMills.RG.scratch_cmp89SourceSeparatedAmbientGreenIncrement_eq_literal
 #print axioms YangMills.RG.scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234_literal
