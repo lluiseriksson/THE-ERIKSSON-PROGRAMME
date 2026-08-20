@@ -238,7 +238,7 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
         (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1))
         (matrixSUNAdjointModel Nc) background spacing
           (singleFinitePiLp source v)).ofLp target) + _ +
-      _ • ((scratch_cmp89SourceSeparatedFinalPrefixQprimeMass
+      (_ : ℝ) • ((scratch_cmp89SourceSeparatedFinalPrefixQprimeMass
         (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth spacing epsilon
         background budget fineSmall) (singleFinitePiLp source v)).ofLp target = 0
   rw [hlap, hmass]
