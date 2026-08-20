@@ -323,10 +323,9 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenIncrement_eq_literal
   dsimp only
   unfold scratch_cmp89SourceSeparatedAmbientGreenIncrement
   apply congrArg
-  unfold scratch_cmp89SourceSeparatedFineGreenIncrement
-    scratch_cmp85SourceGeneratedGreenIncrement
-    scratch_cmp85SourcePrefixA
-  rfl
+  simp only [scratch_cmp89SourceSeparatedFineGreenIncrement,
+    scratch_cmp85SourceGeneratedGreenIncrement,
+    scratch_cmp85SourcePrefixA]
 
 /-- CMP89 (2.34) with the printed coefficient and operator order visible in
 the public conclusion.  The preceding theorem is a convenient technical
