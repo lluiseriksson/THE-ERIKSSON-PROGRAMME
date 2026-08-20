@@ -62,20 +62,23 @@ theorem cmp89CenteredPeriodicOneDimensionalExpWeight_nat_eq
   have hnonneg : 0 ≤ u + (P : ℤ) * (n : ℤ) := by positivity
   have huAbsInt : (u.natAbs : ℤ) = u := Int.natAbs_of_nonneg hu
   have huAbsReal : (u.natAbs : ℝ) = u := by
-    exact_mod_cast huAbsInt
+    rw [← Int.cast_natCast]
+    exact congrArg (fun z : ℤ => (z : ℝ)) huAbsInt
   have hsumAbsInt :
       ((u + (P : ℤ) * (n : ℤ)).natAbs : ℤ) =
         u + (P : ℤ) * (n : ℤ) := Int.natAbs_of_nonneg hnonneg
   have hsumAbsReal :
       (((u + (P : ℤ) * (n : ℤ)).natAbs : ℕ) : ℝ) =
         u + (P : ℤ) * (n : ℤ) := by
-    exact_mod_cast hsumAbsInt
+    rw [← Int.cast_natCast]
+    exact congrArg (fun z : ℤ => (z : ℝ)) hsumAbsInt
   unfold cmp89CenteredPeriodicOneDimensionalExpWeight
   rw [hsumAbsReal, huAbsReal]
   push_cast
   rw [show -delta * ((u : ℝ) + (P : ℝ) * (n : ℝ)) =
       -delta * (u : ℝ) + (-delta * (P : ℝ)) * (n : ℝ) by ring,
-    Real.exp_add, Real.exp_nat_mul]
+    Real.exp_add, mul_comm (-delta * (P : ℝ)) (n : ℝ),
+    Real.exp_nat_mul]
   congr 1 <;> ring
 
 /-- On the negative lattice branch, centeredness makes the same geometric
@@ -314,11 +317,13 @@ theorem summable_pi_int_prod_nonneg
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
-          have hhead0 : 0 ≤ (a 0 : ℤ → ℝ) := ha0 0
-          have htail0 : 0 ≤ (fun n : Fin d → ℤ =>
-              ∏ mu, tail mu (n mu)) := fun n =>
-            Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu)
-          exact Summable.mul_of_nonneg hhead htail hhead0 htail0
+          have hheadNorm : Summable (fun n : ℤ => ‖a 0 n‖) :=
+            hhead.congr fun n => (Real.norm_of_nonneg (ha0 0 n)).symm
+          have htailNorm : Summable (fun n : Fin d → ℤ =>
+              ‖∏ mu, tail mu (n mu)‖) :=
+            htail.congr fun n => (Real.norm_of_nonneg
+              (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
+          exact summable_mul_of_summable_norm hheadNorm htailNorm
       apply e.summable_iff.mp
       simpa [e, tail, Function.comp_def, Fin.prod_univ_succ] using hpair
 
@@ -345,11 +350,13 @@ theorem tsum_pi_int_prod_nonneg
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
-          have hhead0 : 0 ≤ (a 0 : ℤ → ℝ) := ha0 0
-          have htail0 : 0 ≤ (fun n : Fin d → ℤ =>
-              ∏ mu, tail mu (n mu)) := fun n =>
-            Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu)
-          exact Summable.mul_of_nonneg hhead htail hhead0 htail0
+          have hheadNorm : Summable (fun n : ℤ => ‖a 0 n‖) :=
+            hhead.congr fun n => (Real.norm_of_nonneg (ha0 0 n)).symm
+          have htailNorm : Summable (fun n : Fin d → ℤ =>
+              ‖∏ mu, tail mu (n mu)‖) :=
+            htail.congr fun n => (Real.norm_of_nonneg
+              (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
+          exact summable_mul_of_summable_norm hheadNorm htailNorm
       calc
         (∑' n : Fin (d + 1) → ℤ, ∏ mu, a mu (n mu)) =
             ∑' p : ℤ × (Fin d → ℤ),
