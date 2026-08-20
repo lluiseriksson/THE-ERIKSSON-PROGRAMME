@@ -321,7 +321,7 @@ theorem summable_pi_int_prod_nonneg
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
-          apply (summable_prod_of_nonneg (fun p => mul_nonneg
+          apply (summable_prod_of_nonneg (fun (p : ℤ × (Fin d → ℤ)) => mul_nonneg
             (ha0 0 p.1) (Finset.prod_nonneg fun mu _ =>
               ha0 mu.succ (p.2 mu)))).2
           constructor
@@ -333,6 +333,8 @@ theorem summable_pi_int_prod_nonneg
       rw [← e.summable_iff]
       convert hpair using 1
       funext p
+      change (∏ mu, a mu ((e p) mu)) =
+        a 0 p.1 * ∏ mu, tail mu (p.2 mu)
       rw [Fin.prod_univ_succ]
       rfl
 
@@ -359,7 +361,7 @@ theorem tsum_pi_int_prod_nonneg
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
-          apply (summable_prod_of_nonneg (fun p => mul_nonneg
+          apply (summable_prod_of_nonneg (fun (p : ℤ × (Fin d → ℤ)) => mul_nonneg
             (ha0 0 p.1) (Finset.prod_nonneg fun mu _ =>
               ha0 mu.succ (p.2 mu)))).2
           constructor
@@ -386,7 +388,6 @@ theorem tsum_pi_int_prod_nonneg
                   (fun mu => ha mu.succ)]
         _ = ∏ mu, ∑' k : ℤ, a mu k := by
               rw [Fin.prod_univ_succ]
-              rfl
 
 /-- Every positive-decay periodic product fibre is summable. -/
 theorem summable_cmp89CenteredPeriodicL1ResidueWeight
