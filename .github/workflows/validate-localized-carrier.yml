@@ -1,4 +1,4 @@
-name: Validate P0-P9 v56 scratch chain
+name: Validate P0-P9 v57 scratch chain
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 1b98e644347a96530b8f2755d67febc132cb9774
+  SOURCE_SHA: ff9fcb0ef8cadeef13fb4213f38f914bbd951150
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  p0-p9-v56:
+  p0-p9-v57:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -57,12 +57,12 @@ jobs:
           test "$source_head" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < source/lean-toolchain)" = \
             'leanprover/lean4:v4.29.0-rc6'
-          sha256sum control/tmp/github_p0_p9_v56_driver.py | \
+          sha256sum control/tmp/github_p0_p9_v57_driver.py | \
             tee evidence/control-driver.sha256
           python - <<'PY'
           import importlib.util
           from pathlib import Path
-          path = Path('control/tmp/github_p0_p9_v56_driver.py')
+          path = Path('control/tmp/github_p0_p9_v57_driver.py')
           spec = importlib.util.spec_from_file_location('p0_p9_ci_gate', path)
           if spec is None or spec.loader is None:
               raise SystemExit('CONTROL_DRIVER_LOAD_FAILED')
@@ -118,7 +118,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python control/tmp/github_p0_p9_v56_driver.py \
+          python control/tmp/github_p0_p9_v57_driver.py \
             --repo source --evidence evidence
 
       - name: Package deterministic cold evidence
@@ -134,16 +134,16 @@ jobs:
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > p0-p9-v56-evidence.tar.gz
-          sha256sum p0-p9-v56-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > p0-p9-v57-evidence.tar.gz
+          sha256sum p0-p9-v57-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: p0-p9-v56-${{ env.SOURCE_SHA }}
+          name: p0-p9-v57-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            p0-p9-v56-evidence.tar.gz
+            p0-p9-v57-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
