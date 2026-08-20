@@ -12986,3 +12986,25 @@ This is a source-specific A--E seal, not Unit F and not regional `B0`.
 Window 15 is still compatible but unattained; no terminal field is discharged
 and no `TermSource` inhabitant is constructed.  Counters remain exactly
 `20/41`, `TermSource = 0`.
+
+
+### Step 8b.23 Unit F: post-aliasing periodic owner decay (SEALED; cold checkout; 20/41 unchanged)
+
+The four Unit-F bricks from the centered periodic residue sum through the
+diagonal finite Green owner bound have been compiled and audited together.
+The route retains exponential decay in the centered periodic representative
+without a volume factor and installs the exact endpoint and zero-residue
+dictionaries used by the diagonal Gate-7 carrier.
+
+One cold GitHub Actions checkout validated exact source `fa29c350fd216305b56685b15a6aee3d80e46ae7` in
+terminal run `32343215395` (https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/32343215395).  All eight focal/audit stages exited `0`
+in 1168 aggregate stage-seconds.  The four audits emitted exactly 49
+axiom blocks, each a subset of `{propext, Classical.choice, Quot.sound}`;
+the artifact contains literal `FINAL_STATUS=PASS`.  Inner archive SHA-256 is
+`3412526E138F4ED891F8A87303A293E7776F07EC065D047A9CD0BF7BE9128D12` and raw outer artifact ZIP SHA-256 is
+`187014EEBDB5DE37ADE100696E040E46B42EE535325D4493A5331EBC76A06035`.
+
+This is the Unit-F periodic-owner seal only, not the independent-scale
+regional `B0` dictionary and not window-15 attainment.  No terminal field is
+discharged and no `TermSource` inhabitant is constructed.  Counters remain
+exactly `20/41`, `TermSource = 0`.

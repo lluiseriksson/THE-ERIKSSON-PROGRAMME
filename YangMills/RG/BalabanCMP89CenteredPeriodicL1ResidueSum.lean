@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 This file isolates the periodic residue estimate needed after Step 8b.22.
 Unlike the earlier reverse-triangle majorant, it retains decay in the
@@ -19,10 +19,6 @@ uniform in `N >= 1`, while the retained decay is
 
 import YangMills.RG.BalabanCMP89SignedLatticeL1ExponentialSum
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 This file combines the literal mass-uniform CMP89 Green coefficient bound
 with the zero-residue selector of Step 8b.22 and the centered periodic lattice
@@ -14,10 +14,6 @@ construct regional `B0`, or attain window 15.
 import YangMills.RG.BalabanCMP89CenteredGreenFourierSummability
 import YangMills.RG.BalabanCMP99CenteredPeriodicEndpointDictionary
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

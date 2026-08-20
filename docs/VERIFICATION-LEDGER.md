@@ -38557,3 +38557,25 @@ their 18 audits into `YangMillsCore.lean`.  Unit F, regional `B0`, attainment
 of window 15, terminal fields and a `TermSource` inhabitant remain open.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 870 (2026-08-20, **Step 8b.23 Unit F sealed from one cold terminal checkout; 20/41 unchanged**)
+
+One cold GitHub Actions checkout compiled and audited the complete four-brick
+Unit-F queue at exact source `fa29c350fd216305b56685b15a6aee3d80e46ae7` in run `32343215395` (https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/32343215395).
+All eight focal/audit stages exited `0` in 1168 aggregate stage-seconds;
+all 49 measured axiom blocks are subsets of
+`{propext, Classical.choice, Quot.sound}`, and the retained artifact has
+literal `FINAL_STATUS=PASS`.
+
+The independent validator checked the 44 exact source/prerequisite blobs,
+the cold checkout and source/Mathlib/toolchain identities, stage order,
+literal build sentinels, every axiom block, the inner archive and the raw
+outer ZIP.  Inner archive SHA-256 is `3412526E138F4ED891F8A87303A293E7776F07EC065D047A9CD0BF7BE9128D12`; raw
+outer artifact ZIP SHA-256 is `187014EEBDB5DE37ADE100696E040E46B42EE535325D4493A5331EBC76A06035`.
+
+This seal removes validation marks only from the eight Unit-F files and
+imports their four audits into `YangMillsCore.lean`.  Regional `B0`, the
+independent-scale owner dictionary, attainment of window 15, terminal fields
+and a `TermSource` inhabitant remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 This file closes the periodic-owner estimate only on the diagonal Gate-7
 carrier `FinBox 4 (K*N)`: Green scale and owner-block side are both `K`.
@@ -12,10 +12,6 @@ not window-15 attainment.
 import YangMills.RG.BalabanCMP99PhysicalGreenZeroResidueBound
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 
