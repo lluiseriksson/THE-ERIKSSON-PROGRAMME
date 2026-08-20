@@ -231,8 +231,8 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
         source target v hmassFar
   rw [scratch_cmp89SourceSeparatedFinePrefixPrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision,
-    scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision,
-    ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply]
+    scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision]
+  simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply]
   simp only [scratch_cmp89SourceSeparatedFinalPrefixQprimeMass,
     scratch_cmp89SourceSeparatedPrefixTower] at hmass
   rw [hlap, hmass]
