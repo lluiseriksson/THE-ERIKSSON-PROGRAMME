@@ -320,7 +320,8 @@ theorem tsum_cmp89SignedLatticeL1ExponentialWeight_physicalResidue_four_le
         Real.exp (2 * rho) := by
     have h := exp_physicalResidue_prefactor_le_of_centered
       (d := 4) hM hrho.le u hcenter'
-    convert h using 1 <;> ring_nf
+    convert h using 1
+    ring_nf
   have hleft :=
     summable_cmp89SignedLatticeL1ExponentialWeight_physicalResidue
       (d := 4) hM hrho u
