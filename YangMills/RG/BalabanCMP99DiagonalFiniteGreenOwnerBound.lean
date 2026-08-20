@@ -110,7 +110,7 @@ theorem cmp89SignedLatticeL1ExponentialWeight_centeredDiagonal_le_owner
       (rho / (K : ℝ)) * (2 * (K - 1) : ℕ) ≤
           (rho / (K : ℝ)) * (2 * (K : ℝ)) :=
         mul_le_mul_of_nonneg_left hreal (div_nonneg hrho hKReal.le)
-      _ = 2 * rho := by field_simp [ne_of_gt hKReal] <;> ring
+      _ = 2 * rho := by field_simp [ne_of_gt hKReal]
   have hscaled :
       rho *
           (finBoxDist (blockSite K N x) (blockSite K N y) : ℝ) ≤
