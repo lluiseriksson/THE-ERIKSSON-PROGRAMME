@@ -38,9 +38,11 @@ theorem norm_cmp89Eq248PhysicalZeroMassGreen_le_signedLatticeWeight_draft
   have h :=
     norm_cmp89Eq248NormalizedFineLatticeStabilizedFourierGreen_le_massUniform_draft
       (L := K) (j := 1) (mass := 0) (a := a) (rho := rho)
-      ha hrho hamplitude hradius hwindow (by norm_num) v
-  rw [cmp89Eq248PhysicalFineGreenDecay_eq_signedLatticeWeight_draft]
-  simpa [mul_comm] using h
+      ha hrho hamplitude hradius hwindow
+        (by norm_num [CMP89Eq251UniformMassWindow]) v
+  rw [cmp89Eq248PhysicalFineGreenDecay_eq_signedLatticeWeight_draft
+    (L := K) (j := 1) rho v] at h
+  simpa [pow_one, mul_comm] using h
 
 /-- Absolute mass of the literal Green coefficients selected by residue zero.
 The public right-hand side retains the centered fine-lattice decay and has no
@@ -118,7 +120,8 @@ theorem norm_tsum_cmp89Eq248CenteredGreenPhysicalFourierCoefficient_zeroResidue_
   have hfull :=
     summable_cmp89Eq248CenteredGreenPhysicalFourierCoefficient_draft
       (L := K) (j := 1) (mass := 0) (a := a) (rho := rho)
-      ha hrho hamplitude hradius hwindow (by norm_num) u
+      ha hrho hamplitude hradius hwindow
+        (by norm_num [CMP89Eq251UniformMassWindow]) u
   have hnorm : Summable (fun n : CMP99FlatIntegerResidueClass 4 N 0 =>
       ‖cmp89Eq248CenteredGreenPhysicalFourierCoefficient
         K 1 0 a u n.1‖) := hfull.norm.subtype _
