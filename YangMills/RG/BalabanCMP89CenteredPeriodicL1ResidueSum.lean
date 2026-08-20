@@ -49,6 +49,7 @@ theorem cmp89CenteredPeriodicOneDimensionalExpWeight_neg_neg
   unfold cmp89CenteredPeriodicOneDimensionalExpWeight
   congr 2
   rw [show -u + (P : ℤ) * -n = -(u + (P : ℤ) * n) by ring]
+  norm_cast
   exact Int.natAbs_neg _
 
 /-- On the nonnegative half of a centered residue, the nonnegative lattice
@@ -59,9 +60,14 @@ theorem cmp89CenteredPeriodicOneDimensionalExpWeight_nat_eq
       Real.exp (-delta * (u.natAbs : ℝ)) *
         (Real.exp (-delta * (P : ℝ))) ^ n := by
   have hnonneg : 0 ≤ u + (P : ℤ) * (n : ℤ) := by positivity
-  have huAbs : (u.natAbs : ℤ) = u := Int.natAbs_of_nonneg hu
+  have huAbsReal : (u.natAbs : ℝ) = u := by
+    exact_mod_cast Int.natAbs_of_nonneg hu
+  have hsumAbsReal :
+      (((u + (P : ℤ) * (n : ℤ)).natAbs : ℕ) : ℝ) =
+        u + (P : ℤ) * (n : ℤ) := by
+    exact_mod_cast Int.natAbs_of_nonneg hnonneg
   unfold cmp89CenteredPeriodicOneDimensionalExpWeight
-  rw [Int.natAbs_of_nonneg hnonneg]
+  rw [hsumAbsReal, huAbsReal]
   push_cast
   rw [Real.exp_add, Real.exp_nat_mul]
   congr 1 <;> ring
@@ -78,11 +84,20 @@ theorem cmp89CenteredPeriodicOneDimensionalExpWeight_neg_add_one_le
         (Real.exp (-delta * (P : ℝ))) ^ n := by
   have hnonpos :
       u + (P : ℤ) * (-((n : ℤ) + 1)) ≤ 0 := by
-    omega
+    have hPnonneg : 0 ≤ (P : ℤ) := by positivity
+    have hn1 : 1 ≤ (n : ℤ) + 1 := by omega
+    have hmul : (P : ℤ) ≤ (P : ℤ) * ((n : ℤ) + 1) := by
+      simpa using mul_le_mul_of_nonneg_left hn1 hPnonneg
+    have huP : u ≤ (P : ℤ) := by omega
+    calc
+      u + (P : ℤ) * (-((n : ℤ) + 1)) =
+          u - (P : ℤ) * ((n : ℤ) + 1) := by ring
+      _ ≤ (P : ℤ) - (P : ℤ) * ((n : ℤ) + 1) := by linarith
+      _ ≤ 0 := by linarith
   have habsLower :
       (u.natAbs : ℤ) + (P : ℤ) * (n : ℤ) ≤
         ((u + (P : ℤ) * (-((n : ℤ) + 1))).natAbs : ℤ) := by
-    rw [Int.natAbs_of_nonneg hu, Int.natAbs_of_nonpos hnonpos]
+    rw [Int.natAbs_of_nonneg hu, Int.ofNat_natAbs_of_nonpos hnonpos]
     omega
   have habsLowerReal :
       (u.natAbs : ℝ) + (P : ℝ) * (n : ℝ) ≤
@@ -111,8 +126,7 @@ theorem summable_cmp89CenteredPeriodicOneDimensionalExpWeight_of_nonneg
   have hmajor : Summable (fun n : ℕ =>
       Real.exp (-delta * (u.natAbs : ℝ)) * q ^ n) :=
     hgeom.mul_left _
-  rw [summable_int_iff_summable_nat_and_neg]
-  constructor
+  apply Summable.of_nat_of_neg_add_one
   · exact hmajor.congr fun n => by
       symm
       simpa [q] using
@@ -217,7 +231,6 @@ theorem tsum_cmp89CenteredPeriodicOneDimensionalExpWeight_le_of_nonneg
       rw [tsum_mul_left, tsum_geometric_of_lt_one hqNonneg hqLt]
       dsimp [q]
       field_simp [ne_of_lt hqLt]
-      ring
 
 /-- Reflection removes the auxiliary nonnegativity convention from the
 one-dimensional estimate. -/
@@ -242,13 +255,14 @@ theorem tsum_cmp89CenteredPeriodicOneDimensionalExpWeight_le
               rw [← (Equiv.neg ℤ).tsum_eq]
               apply tsum_congr
               intro n
-              exact
-                (cmp89CenteredPeriodicOneDimensionalExpWeight_neg_neg
-                  delta P u n).symm
+              simpa using
+                cmp89CenteredPeriodicOneDimensionalExpWeight_neg_neg
+                  delta P (-u) n
       _ ≤ (2 / (1 - Real.exp (-delta * (P : ℝ)))) *
           Real.exp (-delta * ((-u).natAbs : ℝ)) :=
         tsum_cmp89CenteredPeriodicOneDimensionalExpWeight_le_of_nonneg
-          hdelta hP hneg hcenterNeg
+          hdelta hP hneg (by
+            simpa [Int.natAbs_of_nonneg hneg] using hcenterNeg)
       _ = (2 / (1 - Real.exp (-delta * (P : ℝ)))) *
           Real.exp (-delta * (u.natAbs : ℝ)) := by simp
 
@@ -275,7 +289,12 @@ theorem summable_pi_int_prod_nonneg
     (ha : ∀ mu, Summable (a mu)) :
     Summable (fun n : Fin d → ℤ => ∏ mu, a mu (n mu)) := by
   induction d with
-  | zero => exact summable_of_finite _
+  | zero =>
+      letI : Finite (Fin 0 → ℤ) :=
+        Finite.of_injective (fun _ : Fin 0 → ℤ => PUnit.unit)
+          (fun x y _ => Subsingleton.elim x y)
+      letI : Fintype (Fin 0 → ℤ) := Fintype.ofFinite _
+      exact (hasSum_fintype _).summable
   | succ d hd =>
       let e : ℤ × (Fin d → ℤ) ≃ (Fin (d + 1) → ℤ) :=
         Fin.consEquiv (fun _ : Fin (d + 1) => ℤ)
@@ -286,7 +305,8 @@ theorem summable_pi_int_prod_nonneg
         hd tail (fun mu n => ha0 mu.succ n) (fun mu => ha mu.succ)
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
-        hhead.mul_of_nonneg htail (ha0 0)
+        Summable.mul_of_nonneg (ι := ℤ) (ι' := Fin d → ℤ)
+          hhead htail (ha0 0)
           (fun n => Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))
       apply e.summable_iff.mp
       simpa [e, tail, Function.comp_def, Fin.prod_univ_succ] using hpair
@@ -313,7 +333,8 @@ theorem tsum_pi_int_prod_nonneg
           (fun mu n => ha0 mu.succ n) (fun mu => ha mu.succ)
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
-        hhead.mul_of_nonneg htail (ha0 0)
+        Summable.mul_of_nonneg (ι := ℤ) (ι' := Fin d → ℤ)
+          hhead htail (ha0 0)
           (fun n => Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))
       calc
         (∑' n : Fin (d + 1) → ℤ, ∏ mu, a mu (n mu)) =
@@ -367,8 +388,8 @@ theorem tsum_cmp89CenteredPeriodicL1ResidueWeight_le
     intro mu
     exact summable_cmp89CenteredPeriodicOneDimensionalExpWeight
       hdelta hP (u mu)
-  rw [cmp89CenteredPeriodicL1ResidueWeight,
-    tsum_pi_int_prod_nonneg a ha0 ha]
+  change (∑' n : Fin d → ℤ, ∏ mu, a mu (n mu)) ≤ _
+  rw [tsum_pi_int_prod_nonneg a ha0 ha]
   calc
     (∏ mu, ∑' k : ℤ, a mu k) ≤
         ∏ mu,
@@ -405,8 +426,8 @@ theorem tsum_cmp89CenteredPeriodicL1ResidueWeight_physical_le
   have hP : 0 < K * N := Nat.mul_pos hK hN
   have h := tsum_cmp89CenteredPeriodicL1ResidueWeight_le
     (d := d) hdelta hP u hcenter
-  convert h using 1 <;>
-    field_simp [ne_of_gt hKReal] <;> ring
+  convert h using 1
+  field_simp [ne_of_gt hKReal]
 
 /-- Uniform owner-scale form.  Since `N >= 1`, the geometric constant is
 bounded by the `N = 1` constant.  This is the no-volume-factor estimate that
@@ -439,12 +460,12 @@ theorem tsum_cmp89CenteredPeriodicL1ResidueWeight_physical_uniform_le
     exact div_le_div_of_nonneg_left (by norm_num) hdenPos hden
   have hleftNonneg :
       0 ≤ 2 / (1 - Real.exp (-rho * (N : ℝ))) := by
-    positivity
+    exact div_nonneg (by norm_num) (le_trans hdenPos.le hden)
   have hpow := pow_le_pow_left₀ hleftNonneg hdenMono d
   exact hbase.trans (mul_le_mul_of_nonneg_right hpow
     (by exact Finset.prod_nonneg fun mu _ =>
       cmp89SignedLatticeOneDimensionalExpWeight_nonneg
-        (rho / (K : ℝ)) (u mu)))
+        (delta := rho / (K : ℝ)) (n := u mu)))
 
 end
 
