@@ -166,20 +166,16 @@ theorem scratch_cmp89SourceSeparatedFinalPrefix_QprimeMass_finiteRange
             (depth + 1)) =>
         finBoxDist x.1 y.1)
       (L ^ (depth + 1) - 1) := by
-  unfold scratch_cmp89SourceSeparatedFinalPrefixQprimeMass
+  intro source target v hfar
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := L) Omega (depth + 1)
   let T := scratch_cmp89SourceSeparatedPrefixTower
     (spacing := spacing) (epsilon := epsilon) hL depth background budget
     fineSmall
-  change FinitePiLpFiniteRange
-    ((T.towerAt (Fin.last (depth + 1))).Qprime.adjoint.comp
+  change (((T.towerAt (Fin.last (depth + 1))).Qprime.adjoint.comp
       (T.towerAt (Fin.last (depth + 1))).Qprime)
-    (fun x y : ActiveGaugeRegion.Site
-        (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1)) =>
-      finBoxDist x.1 y.1)
-    (L ^ (depth + 1) - 1)
+        (singleFinitePiLp source v)) target = 0
   have hterminal : T.towerAt (Fin.last (depth + 1)) =
       regions.weightedQprimeTower (by norm_num) hL
         (matrixSUNAdjointModel Nc) spacing epsilon background
@@ -195,6 +191,7 @@ theorem scratch_cmp89SourceSeparatedFinalPrefix_QprimeMass_finiteRange
   exact cmp99SourceIteratedLift_QprimeMass_finiteRange
     Omega (depth + 1) (by norm_num) hL (matrixSUNAdjointModel Nc)
       spacing epsilon background budget.toRadiusChain fineSmall
+      source target v hfar
 
 /-- The complete exact prefix precision has radius `L^(depth+1)`: this
 simultaneously dominates the one-link Laplacian and `Q'†Q'` radius. -/
