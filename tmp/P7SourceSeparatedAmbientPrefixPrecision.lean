@@ -183,17 +183,13 @@ theorem scratch_cmp89SourceSeparatedAmbientPrefixPrecision_comp_green
         FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
     cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
-  exact finitePiLpTypedKernelReindex_comp_eq_id e
-    (scratch_cmp89SourceSeparatedFinePrefixPrecision hL depth
-      spacing epsilon a background budget fineSmall)
-    (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
-      background budget fineSmall hsmall)
-    (scratch_cmp85SourceGeneratedPrefixPrecision_comp_green
-      (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
-      (by norm_num) hL
-      (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) (depth + 1)
-      hspacing ha 0 background budget.toRadiusChain fineSmall hsmall
-      (scratch_cmp85LastPositivePrefix (depth + 1) (Nat.succ_pos depth)))
+  apply finitePiLpTypedKernelReindex_comp_eq_id e
+  exact scratch_cmp85SourceGeneratedPrefixPrecision_comp_green
+    (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
+    (by norm_num) hL
+    (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) (depth + 1)
+    hspacing ha 0 background budget.toRadiusChain fineSmall hsmall
+    (scratch_cmp85LastPositivePrefix (depth + 1) (Nat.succ_pos depth))
 
 /-- The P5 Green followed by the same exact separated ambient precision is
 the identity. -/
@@ -224,17 +220,13 @@ theorem scratch_cmp89SourceSeparatedAmbientPrefixGreen_comp_precision
         FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
     cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
-  exact finitePiLpTypedKernelReindex_comp_eq_id e
-    (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
-      background budget fineSmall hsmall)
-    (scratch_cmp89SourceSeparatedFinePrefixPrecision hL depth
-      spacing epsilon a background budget fineSmall)
-    (scratch_cmp85SourceGeneratedPrefixGreen_comp_precision
-      (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
-      (by norm_num) hL
-      (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) (depth + 1)
-      hspacing ha 0 background budget.toRadiusChain fineSmall hsmall
-      (scratch_cmp85LastPositivePrefix (depth + 1) (Nat.succ_pos depth)))
+  apply finitePiLpTypedKernelReindex_comp_eq_id e
+  exact scratch_cmp85SourceGeneratedPrefixGreen_comp_precision
+    (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
+    (by norm_num) hL
+    (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) (depth + 1)
+    hspacing ha 0 background budget.toRadiusChain fineSmall hsmall
+    (scratch_cmp85LastPositivePrefix (depth + 1) (Nat.succ_pos depth))
 
 end
 
