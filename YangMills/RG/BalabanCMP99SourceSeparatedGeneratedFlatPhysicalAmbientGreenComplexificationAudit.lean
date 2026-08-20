@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalAmbientGreenComplexification
+
+/-! PRE-VALIDATION: audit source present; focal `.olean` not yet materialized. -/
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientPrecisionComplex
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientGreenComplex
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientPrecisionComplex_comp_green
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientGreenComplex_comp_precision

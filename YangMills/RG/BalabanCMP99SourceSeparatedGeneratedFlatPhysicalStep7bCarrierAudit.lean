@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bCarrier
+
+/-! PRE-VALIDATION: audit source present; focal `.olean` not yet materialized. -/
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalStep7bFieldEquiv
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalTerminalDataOfAmbient
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalTerminalDataOfAmbient_complexZeroExtension
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalStep7bAmbientPrecisionCLM
