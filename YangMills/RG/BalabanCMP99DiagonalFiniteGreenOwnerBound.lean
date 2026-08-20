@@ -77,7 +77,7 @@ theorem cmp99DiagonalOwner_mul_dist_real_le_periodicL1_add_boundary
           (cmp99DiagonalPeriodicDisplacement x y) := by
     rw [cmp89Eq251LatticeL1Length_cmp99DiagonalPeriodicDisplacement_eq]
     exact_mod_cast finBoxDist_le_sum_finTorusDist x y
-  exact hblockReal.trans (add_le_add_right hfine _)
+  exact hblockReal.trans (add_le_add hfine (le_refl _))
 
 /-- The centered periodic Fourier weight transports to the diagonal owner
 metric with the exact scale-free boundary factor `exp (2*rho)`. -/
@@ -97,7 +97,7 @@ theorem cmp89SignedLatticeL1ExponentialWeight_centeredDiagonal_le_owner
   have hlength :=
     cmp89Eq251LatticeL1Length_centeredDiagonalPeriodicDisplacement_eq x y
   rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
-  unfold cmp89Eq251LatticeL1Length at hlength ⊢
+  unfold cmp89Eq251LatticeL1Length at hlength
   rw [hlength]
   rw [← Real.exp_add]
   apply Real.exp_le_exp.mpr
@@ -167,7 +167,9 @@ theorem norm_tsum_cmp89Eq248PhysicalGreen_zeroResidue_le_diagonalOwner_draft
     have hpoint :=
       norm_cmp89Eq248PhysicalZeroMassGreen_le_signedLatticeWeight_draft
         (K := K) ha hrho.le hamplitude hradius hwindow 0
-    simpa using (le_trans (norm_nonneg _) hpoint)
+    simpa [cmp89SignedLatticeL1ExponentialWeight,
+      cmp89SignedLatticeOneDimensionalExpWeight] using
+        (le_trans (norm_nonneg _) hpoint)
   have hgeom : 0 ≤ (2 / (1 - Real.exp (-rho))) ^ 4 := by positivity
   calc
     ‖∑' n : CMP99FlatIntegerResidueClass 4 N 0,
