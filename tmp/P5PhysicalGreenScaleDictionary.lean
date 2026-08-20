@@ -243,7 +243,23 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
   have htransport := congrArg (finitePiLpTypedKernelReindex e e) hfine
   rw [scratch_finitePiLpTypedKernelReindex_add,
     scratch_finitePiLpTypedKernelReindex_fintype_sum] at htransport
-  exact htransport
+  have htransportFine :
+      finitePiLpTypedKernelReindex e e
+          (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
+            background budget fineSmall hsmall) =
+        finitePiLpTypedKernelReindex e e
+            (scratch_cmp89SourceSeparatedFineBaseCovariance hL depth
+              hspacing ha background budget fineSmall hsmall) +
+          ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
+            finitePiLpTypedKernelReindex e e
+              (scratch_cmp89SourceSeparatedFineGreenIncrement hL depth
+                hspacing ha background budget fineSmall hsmall j) := by
+    simpa only [scratch_cmp89SourceSeparatedFinePrefixGreen,
+      scratch_cmp89SourceSeparatedFineBaseCovariance,
+      scratch_cmp89SourceSeparatedFineGreenIncrement] using htransport
+  simpa only [scratch_cmp89SourceSeparatedAmbientPrefixGreen,
+    scratch_cmp89SourceSeparatedAmbientBaseCovariance,
+    scratch_cmp89SourceSeparatedAmbientGreenIncrement, e] using htransportFine
 
 /-- CMP89 (2.34) with the printed coefficient and operator order visible in
 the public conclusion.  The preceding theorem is a convenient technical
@@ -292,12 +308,12 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234_literal
                 (T.towerAt r.1).terminalSpacing⁻¹ ^ 4) •
               Gj.comp (Qjdag.comp (Cj.comp (Qj.comp Gj)))) := by
   dsimp only
-  simpa only [scratch_cmp89SourceSeparatedAmbientGreenIncrement,
-    scratch_cmp89SourceSeparatedFineGreenIncrement,
-    scratch_cmp85SourceGeneratedGreenIncrement,
-    scratch_cmp85SourcePrefixA] using
-      scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
-        hL depth hspacing ha background budget fineSmall hsmall
+  rw [scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
+    hL depth hspacing ha background budget fineSmall hsmall]
+  congr 1
+  apply Finset.sum_congr rfl
+  intro j hj
+  rfl
 
 end
 
