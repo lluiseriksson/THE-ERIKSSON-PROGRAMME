@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointPhase
 /-!
 # Fine-to-coarse endpoint displacement and the periodic owner metric
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 The source-separated endpoint carries the literal integer displacement
 `x - M*y`. Unit F is written with the shortest periodic displacement from
 `x` to the canonical fine block basepoint of `y`. These signed vectors need

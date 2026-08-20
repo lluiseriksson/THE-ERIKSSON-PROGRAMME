@@ -13033,3 +13033,35 @@ This is the Unit-F periodic-owner seal only, not the independent-scale
 regional `B0` dictionary and not window-15 attainment.  No terminal field is
 discharged and no `TermSource` inhabitant is constructed.  Counters remain
 exactly `20/41`, `TermSource = 0`.
+
+
+### Step 8b.24/C4a: literal endpoint to Unit-F owner dictionary (SEALED; fresh Colab Pro+ clone; 20/41 unchanged)
+
+The source-separated endpoint uses the literal integer displacement
+`x - M*y`, whereas Unit F consumes the shortest periodic displacement from
+`x` to the canonical fine-block basepoint of `y`.  These signed vectors need
+not agree at an even antipodal seam.  C4a proves the exact invariant that is
+actually consumed: equality of their centered `l1` lengths, hence equality of
+their signed-lattice exponential weights, and transports the sealed Unit-F
+owner estimate without asserting a false signed-vector identity.
+
+One fresh Colab Pro+ CPU/high-RAM clone compiled exact source checkpoint
+`cb92d619c8ff95781d1f51ec9fad823b996120b4` using instrumental runner
+`bbd83565af5be389c997889bbea36e162bf2c68c`.  The exact Lean 4.29.0-rc6 asset,
+Mathlib pin `07642720480157414db592fa85b626dafb71355b`, nine manifest package
+pins and both source-blob hashes passed before compilation.  The focal built
+successfully in `2230.551 s` with `8649` jobs; the audit exited `0` in
+`9.967 s`.  Its four axiom blocks are respectively
+`{propext, Quot.sound}` and three copies of
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`41F32D4F88608D1EA3D6E95CCF31201C34FB2C17DA653ECFEF1545D1AB33B24C`;
+archive SHA-256 is
+`777AFEC8287F9DDB20927F268693A11739F04551DD1281FE36858480124DDF29`.
+The runner emitted literal `FINAL_STATUS=PASS` and auto-disconnected the
+runtime.
+
+This seal is the literal endpoint-to-owner dictionary consumed by C4b.  It is
+not regional `B0`, does not attain window 15, does not discharge a terminal
+field and does not construct a `TermSource` inhabitant.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

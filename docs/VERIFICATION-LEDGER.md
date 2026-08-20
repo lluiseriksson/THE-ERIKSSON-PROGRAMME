@@ -36383,6 +36383,7 @@ the same raw source checkpoint.  Both PRE-VALIDATION headers remain pending
 that durable cold evidence.  No counter moves: `20/41`, `TermSource = 0`, and
 window 15 remains compatible but unattained.
 
+
 ## Addendum 829 (2026-08-16, **Step 8b.12 repro-only instrumentation failure; source unchanged**)
 
 One fresh Colab Pro+ CPU/high-RAM runtime under visible account
@@ -38610,3 +38611,32 @@ Combes--Thomas bounds.  Uniform CMP99 (3.42), the four source-localized
 actions, C6c.4, window-15 attainment, terminal fields and a `TermSource`
 inhabitant remain open.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+
+## Addendum 872 (2026-08-21, **Step 8b.24/C4a literal endpoint-to-owner dictionary sealed in one fresh Colab Pro+ clone; 20/41 unchanged**)
+
+One fresh Colab Pro+ CPU/high-RAM clone compiled and audited exact source
+checkpoint `cb92d619c8ff95781d1f51ec9fad823b996120b4` using instrumental runner
+`bbd83565af5be389c997889bbea36e162bf2c68c`.  The official Lean 4.29.0-rc6
+asset, Mathlib pin `07642720480157414db592fa85b626dafb71355b`, all nine
+manifest package pins and both source-blob hashes passed their exact gates.
+The focal completed `8649` jobs with exit `0` in `2230.551 s`; the audit
+exited `0` in `9.967 s`.
+
+The four audited declarations emitted one axiom set
+`{propext, Quot.sound}` and three sets
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`41F32D4F88608D1EA3D6E95CCF31201C34FB2C17DA653ECFEF1545D1AB33B24C`;
+archive SHA-256 is
+`777AFEC8287F9DDB20927F268693A11739F04551DD1281FE36858480124DDF29`.
+The transcript contains literal `FINAL_STATUS=PASS`; the runtime requested
+unassignment and was confirmed disconnected.
+
+This seal removes PRE-VALIDATION only from the C4a source/audit pair and
+imports that audit into `YangMillsCore.lean`.  It certifies equality of the
+centered `l1` lengths and weights needed to transport the literal
+fine-to-coarse endpoint into Unit F's periodic owner metric; it deliberately
+does not identify antipodal signed representatives.  C4b, regional `B0`,
+window-15 attainment, terminal fields and a `TermSource` inhabitant remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
