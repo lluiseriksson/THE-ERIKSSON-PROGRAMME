@@ -70,8 +70,13 @@ theorem cmp89CenteredPeriodicOneDimensionalExpWeight_nat_eq
   have hsumAbsReal :
       (((u + (P : ℤ) * (n : ℤ)).natAbs : ℕ) : ℝ) =
         u + (P : ℤ) * (n : ℤ) := by
-    rw [← Int.cast_natCast]
-    exact congrArg (fun z : ℤ => (z : ℝ)) hsumAbsInt
+    calc
+      (((u + (P : ℤ) * (n : ℤ)).natAbs : ℕ) : ℝ) =
+          (((u + (P : ℤ) * (n : ℤ)).natAbs : ℤ) : ℝ) := by
+            rw [Int.cast_natCast]
+      _ = ((u + (P : ℤ) * (n : ℤ) : ℤ) : ℝ) :=
+        congrArg (fun z : ℤ => (z : ℝ)) hsumAbsInt
+      _ = (u : ℝ) + (P : ℝ) * (n : ℝ) := by push_cast
   unfold cmp89CenteredPeriodicOneDimensionalExpWeight
   rw [hsumAbsReal, huAbsReal]
   push_cast
@@ -79,7 +84,6 @@ theorem cmp89CenteredPeriodicOneDimensionalExpWeight_nat_eq
       -delta * (u : ℝ) + (-delta * (P : ℝ)) * (n : ℝ) by ring,
     Real.exp_add, mul_comm (-delta * (P : ℝ)) (n : ℝ),
     Real.exp_nat_mul]
-  congr 1 <;> ring
 
 /-- On the negative lattice branch, centeredness makes the same geometric
 sequence a pointwise majorant.  The inequality `2*u <= P` is the exact place
@@ -318,14 +322,28 @@ theorem summable_pi_int_prod_nonneg
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
           have hheadNorm : Summable (fun n : ℤ => ‖a 0 n‖) :=
-            hhead.congr fun n => (Real.norm_of_nonneg (ha0 0 n)).symm
+            by
+              apply hhead.congr
+              intro n
+              exact (Real.norm_of_nonneg (ha0 0 n)).symm
           have htailNorm : Summable (fun n : Fin d → ℤ =>
               ‖∏ mu, tail mu (n mu)‖) :=
-            htail.congr fun n => (Real.norm_of_nonneg
-              (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
-          exact summable_mul_of_summable_norm hheadNorm htailNorm
+            by
+              apply htail.congr
+              intro n
+              exact (Real.norm_of_nonneg
+                (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
+          have hnormProd : Summable (fun p : ℤ × (Fin d → ℤ) =>
+              ‖a 0 p.1 * ∏ mu, tail mu (p.2 mu)‖) :=
+            hheadNorm.mul_norm htailNorm
+          exact hnormProd.of_norm
       apply e.summable_iff.mp
-      simpa [e, tail, Function.comp_def, Fin.prod_univ_succ] using hpair
+      change Summable (fun p : ℤ × (Fin d → ℤ) =>
+        ∏ mu, a mu ((e p) mu))
+      convert hpair using 1
+      funext p
+      rw [Fin.prod_univ_succ]
+      rfl
 
 /-- Exact factorization of a nonnegative product family over `Fin d -> Int`.
 This helper keeps the product geometry explicit rather than replacing it by
@@ -351,12 +369,21 @@ theorem tsum_pi_int_prod_nonneg
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
           have hheadNorm : Summable (fun n : ℤ => ‖a 0 n‖) :=
-            hhead.congr fun n => (Real.norm_of_nonneg (ha0 0 n)).symm
+            by
+              apply hhead.congr
+              intro n
+              exact (Real.norm_of_nonneg (ha0 0 n)).symm
           have htailNorm : Summable (fun n : Fin d → ℤ =>
               ‖∏ mu, tail mu (n mu)‖) :=
-            htail.congr fun n => (Real.norm_of_nonneg
-              (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
-          exact summable_mul_of_summable_norm hheadNorm htailNorm
+            by
+              apply htail.congr
+              intro n
+              exact (Real.norm_of_nonneg
+                (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
+          have hnormProd : Summable (fun p : ℤ × (Fin d → ℤ) =>
+              ‖a 0 p.1 * ∏ mu, tail mu (p.2 mu)‖) :=
+            hheadNorm.mul_norm htailNorm
+          exact hnormProd.of_norm
       calc
         (∑' n : Fin (d + 1) → ℤ, ∏ mu, a mu (n mu)) =
             ∑' p : ℤ × (Fin d → ℤ),
@@ -364,7 +391,8 @@ theorem tsum_pi_int_prod_nonneg
                 rw [← e.tsum_eq]
                 apply tsum_congr
                 intro p
-                simp [e, tail, Fin.prod_univ_succ]
+                rw [Fin.prod_univ_succ]
+                rfl
         _ = (∑' k : ℤ, a 0 k) *
               (∑' n : Fin d → ℤ, ∏ mu, tail mu (n mu)) := by
                 exact (hhead.tsum_mul_tsum htail hpair).symm
