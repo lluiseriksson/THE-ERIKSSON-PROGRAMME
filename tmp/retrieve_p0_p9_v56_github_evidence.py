@@ -16,6 +16,8 @@ REPOSITORY = "lluiseriksson/THE-ERIKSSON-PROGRAMME"
 RUN_ID = 32349492939
 EXPECTED_HEAD = gate.CONTROL_SHA
 EXPECTED_NAME = f"p0-p9-v56-{gate.contract.SOURCE_SHA}"
+VERSION_MARKER = "P0_P9_V56"
+DESTINATION_SLUG = "p0-p9-v56"
 
 
 def gh(*args: str, binary: bool = False) -> bytes | str:
@@ -61,7 +63,7 @@ def main() -> int:
         "headSha": EXPECTED_HEAD,
         "url": f"https://github.com/{REPOSITORY}/actions/runs/{RUN_ID}",
     }:
-        raise SystemExit(f"P0_P9_V56_RUN_NOT_EXACT_SUCCESS={run}")
+        raise SystemExit(f"{VERSION_MARKER}_RUN_NOT_EXACT_SUCCESS={run}")
     listing = json.loads(
         str(
             gh(
@@ -73,11 +75,11 @@ def main() -> int:
     try:
         artifact = select_artifact(listing)
     except ValueError as error:
-        raise SystemExit(f"P0_P9_V56_ARTIFACT_METADATA_REJECTED={error}") from error
+        raise SystemExit(f"{VERSION_MARKER}_ARTIFACT_METADATA_REJECTED={error}") from error
 
-    destination = ROOT / "validation-evidence" / f"p0-p9-v56-run-{RUN_ID}"
+    destination = ROOT / "validation-evidence" / f"{DESTINATION_SLUG}-run-{RUN_ID}"
     if destination.exists():
-        raise SystemExit(f"P0_P9_V56_DESTINATION_EXISTS={destination}")
+        raise SystemExit(f"{VERSION_MARKER}_DESTINATION_EXISTS={destination}")
     destination.mkdir(parents=True)
     artifact_id = int(artifact["id"])
     payload = gh(
@@ -92,12 +94,12 @@ def main() -> int:
     if isinstance(digest, str) and digest.startswith("sha256:"):
         if digest != f"sha256:{measured}":
             raise SystemExit(
-                f"P0_P9_V56_GITHUB_DIGEST_MISMATCH={digest}/sha256:{measured}"
+                f"{VERSION_MARKER}_GITHUB_DIGEST_MISMATCH={digest}/sha256:{measured}"
             )
     try:
         result = gate.audit(archive)
     except (OSError, UnicodeError, json.JSONDecodeError, ValueError) as error:
-        raise SystemExit(f"P0_P9_V56_ARTIFACT_REJECTED={error}") from error
+        raise SystemExit(f"{VERSION_MARKER}_ARTIFACT_REJECTED={error}") from error
     record = {
         "run_id": RUN_ID,
         "run_url": run["url"],
@@ -114,7 +116,7 @@ def main() -> int:
     )
     print(result)
     print(
-        "P0_P9_V56_GITHUB_RETRIEVAL_OK "
+        f"{VERSION_MARKER}_GITHUB_RETRIEVAL_OK "
         f"run_id={RUN_ID} artifact_id={artifact_id} "
         f"outer_zip_sha256={measured.upper()} destination={destination}"
     )

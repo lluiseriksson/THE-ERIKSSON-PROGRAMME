@@ -16,7 +16,9 @@ import github_p0_p9_v56_driver as contract
 
 CONTROL_SHA = "5d802452204ae09d781b4c4172ff5a76a783124b"
 DRIVER_SHA256 = "5689D402B227F91382626A3FCDA5D8F2F6023B903DE4AEFD049AF1339162DB78"
+DRIVER_PATH = "control/tmp/github_p0_p9_v56_driver.py"
 ARCHIVE_NAME = "p0-p9-v56-evidence.tar.gz"
+RESULT_MARKER = "P0_P9_V56_GITHUB_EVIDENCE_OK"
 BASE_EVIDENCE = {
     "evidence/checkpoint.txt",
     "evidence/control-driver.sha256",
@@ -147,7 +149,7 @@ def audit(path: Path) -> str:
     if checkpoint != expected_checkpoint:
         raise ValueError(f"checkpoint identity mismatch: {checkpoint}")
     driver_line = outer["evidence/control-driver.sha256"].decode("utf-8").strip()
-    if driver_line != f"{DRIVER_SHA256.lower()}  control/tmp/github_p0_p9_v56_driver.py":
+    if driver_line != f"{DRIVER_SHA256.lower()}  {DRIVER_PATH}":
         raise ValueError("control driver digest mismatch")
     if contract.MATHLIB_SHA not in outer["evidence/mathlib.txt"].decode("utf-8"):
         raise ValueError("Mathlib pin readout mismatch")
@@ -198,7 +200,7 @@ def audit(path: Path) -> str:
         raise ValueError("static self-test readout missing")
 
     return (
-        "P0_P9_V56_GITHUB_EVIDENCE_OK "
+        f"{RESULT_MARKER} "
         f"source_sha={contract.SOURCE_SHA} control_sha={CONTROL_SHA} "
         f"status=PASS stages={len(records)} paths={len(paths)} "
         f"axiom_headers={total_headers} inner_archive_sha256={sha256(inner_archive).upper()} "

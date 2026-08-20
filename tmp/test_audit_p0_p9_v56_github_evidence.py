@@ -40,7 +40,7 @@ def write_fixture(
             "COLD_MODE=true\n"
         ).encode(),
         "evidence/control-driver.sha256": (
-            f"{gate.DRIVER_SHA256.lower()}  control/tmp/github_p0_p9_v56_driver.py\n"
+            f"{gate.DRIVER_SHA256.lower()}  {gate.DRIVER_PATH}\n"
         ).encode(),
         "evidence/toolchain.txt": (
             "Lean (version 4.29.0-rc6, x86_64-unknown-linux-gnu)\n"
@@ -131,12 +131,12 @@ def must_fail(path: Path, label: str) -> None:
 
 
 def main() -> None:
-    with tempfile.TemporaryDirectory(prefix="p0-p9-v56-github-evidence-") as raw:
+    with tempfile.TemporaryDirectory(prefix="p0-p9-github-evidence-") as raw:
         root = Path(raw)
         positive = root / "positive.zip"
         write_fixture(positive)
         result = gate.audit(positive)
-        if "P0_P9_V56_GITHUB_EVIDENCE_OK" not in result:
+        if gate.RESULT_MARKER not in result:
             raise AssertionError("positive fixture did not pass")
         tampered = root / "tampered.zip"
         write_fixture(tampered, outer_tamper=True)
@@ -148,7 +148,7 @@ def main() -> None:
         write_fixture(identity, checkpoint_drift=True)
         must_fail(identity, "checkpoint drift")
     print(
-        "P0_P9_V56_GITHUB_EVIDENCE_SELFTEST_OK positive=pass "
+        f"{gate.RESULT_MARKER}_SELFTEST_OK positive=pass "
         "byte_tamper=fail_closed forbidden_axiom=fail_closed "
         "checkpoint_drift=fail_closed"
     )
