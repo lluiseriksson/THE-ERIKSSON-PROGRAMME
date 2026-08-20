@@ -29,7 +29,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-f-v2"
+runner.RUNNER_REV = "step8b23-f-v3"
 runner.SOURCE_SHA = 'fa29c350fd216305b56685b15a6aee3d80e46ae7'
 runner.ROOT = Path("/content/hrpoly-step8b23-f")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-f-evidence")
@@ -78,7 +78,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionaryAudit.lean': 'd10f942b4832b84561a08ef035a6789198cfcd69ebfc24536021f20e0e2e2987',
     'YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBound.lean': '2ec3501aee6840844f41faa04ea3a69218b1fb96a43014858bda878554dfdeca',
     'YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBoundAudit.lean': '81e80e2f370bb2ccb62e8c5185b8517d97c544e2d2a197d26df4ec2e7cf6a006',
-    'YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean': '946456df9c30a1d4bf60d2d89dd3fc2b3a974334f82cdea2412d5df88d566048',
+    'YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean': 'baabfc80ac368d7ff8b25e4fc78f8534765f34864187bbf8d06ea2988629d637',
     'YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBoundAudit.lean': '8b990608a2d44ea3013e3633e1d701c366505848434c1fb0c0e85af89653108b',
 }
 runner.QUEUE = [
