@@ -10,6 +10,7 @@ window-15 attainment is asserted.
 
 import YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary
 import YangMills.RG.BalabanCMP89Eq251ExpandedAliasGeometry
+import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointRecombination
 import YangMills.RG.BalabanCMP89CenteredPeriodicL1ResidueSum
 import YangMills.RG.BalabanCMP99FlatFiniteGridAliasing
 
@@ -57,7 +58,12 @@ theorem cmp99CenteredPeriodicEndpointRepresentative_cast_eq
     -(ZMod.finEquiv P
       ((ZMod.finEquiv P).symm (-((u : ℤ) : ZMod P)))) =
         ((u : ℤ) : ZMod P)
-  rw [Equiv.apply_symm_apply]
+  have happly :
+      ZMod.finEquiv P
+          ((ZMod.finEquiv P).symm (-((u : ℤ) : ZMod P))) =
+        -((u : ℤ) : ZMod P) :=
+    (ZMod.finEquiv P).apply_symm_apply _
+  rw [happly]
   ring
 
 /-- The difference from the original displacement is an exact multiple of
@@ -278,8 +284,8 @@ theorem cmp99FlatIntegerZeroResidueClassQuotient_spec
     {d N : ℕ} [NeZero N]
     (n : CMP99FlatIntegerResidueClass d N 0) (mu : Fin d) :
     (N : ℤ) * cmp99FlatIntegerZeroResidueClassQuotient n mu = n.1 mu :=
-  Classical.choose_spec
-    (cmp99FlatIntegerZeroResidueClass_coordinate_dvd n mu)
+  (Classical.choose_spec
+    (cmp99FlatIntegerZeroResidueClass_coordinate_dvd n mu)).symm
 
 /-- Exact equivalence between `Z^d` and the residue-zero frequency subtype.
 No enumeration or cardinality argument enters. -/
@@ -335,7 +341,6 @@ theorem tsum_cmp99FlatIntegerZeroResidueClass_eq_centeredPeriodic
       congr 1
       funext mu
       simp [e, cmp99FlatIntegerZeroResidueClassEquiv]
-      push_cast
       ring
     _ = ∑' m : Fin d → ℤ,
         f (fun mu =>
