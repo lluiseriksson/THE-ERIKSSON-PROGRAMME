@@ -222,6 +222,7 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
   have hlap := cmp99ActiveRegionSourceCovariantLaplacian_finiteRange_one
     (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1))
     (matrixSUNAdjointModel Nc) background spacing source target v hlapFar
+  dsimp only [Omega] at hlap
   have hmassFar : L ^ (depth + 1) - 1 <
       finBoxDist target.1 source.1 := by omega
   have hmass :=
@@ -232,7 +233,8 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
     scratch_cmp85SourceGeneratedPrefixPrecision,
     scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply]
-  unfold scratch_cmp89SourceSeparatedFinalPrefixQprimeMass at hmass
+  simp only [scratch_cmp89SourceSeparatedFinalPrefixQprimeMass,
+    scratch_cmp89SourceSeparatedPrefixTower] at hmass
   rw [hlap, hmass]
   simp
 
