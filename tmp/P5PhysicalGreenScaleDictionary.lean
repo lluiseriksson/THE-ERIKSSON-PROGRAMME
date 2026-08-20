@@ -71,7 +71,12 @@ noncomputable def scratch_cmp89SourceSeparatedPrefixTower
     (budget : CMP99SourceUbarClosedBudget 4 L Nc (depth + 1) epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
-      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :=
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    CMP99SourceRetainedPhysicalTower (matrixSUNAdjointModel Nc)
+      (cmp99IteratedLiftActiveRegion (M := L)
+        (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+        (depth + 1))
+      L spacing background (depth + 1) :=
   scratch_cmp85SourceGeneratedPrefixTower (d := 4) (M := L)
     (N := 2 * (K * Q)) (Nc := Nc) (by norm_num) hL
     (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) (depth + 1)
@@ -115,7 +120,17 @@ noncomputable def scratch_cmp89SourceSeparatedFinePrefixGreen
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff 4 L (depth + 1)
-      spacing epsilon < 1) :=
+      spacing epsilon < 1) :
+    ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := L)
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1))
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := L)
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1))
+        (SUNLieCoord Nc) :=
   scratch_cmp85SourceGeneratedPrefixGreen (d := 4) (M := L)
     (N := 2 * (K * Q)) (Nc := Nc) (by norm_num) hL
     (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) (depth + 1)
@@ -170,7 +185,13 @@ noncomputable def scratch_cmp89SourceSeparatedAmbientPrefixGreen
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff 4 L (depth + 1)
-      spacing epsilon < 1) :=
+      spacing epsilon < 1) :
+    GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) :=
   finitePiLpTypedKernelReindex
     (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth)
     (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth)

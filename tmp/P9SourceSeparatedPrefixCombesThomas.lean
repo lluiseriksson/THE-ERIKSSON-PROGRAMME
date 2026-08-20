@@ -251,6 +251,7 @@ theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
   have hDelta := norm_cmp99ActiveRegionSourceCovariantLaplacian_le
     (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1))
     (matrixSUNAdjointModel Nc) background hspacing
+  norm_num at hDelta
   rw [scratch_cmp89SourceSeparatedFinePrefixPrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision,
     scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision]
@@ -282,7 +283,7 @@ theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
     _ ≤ 16 / spacing ^ 2 + |b| := by
       have hQsq : ‖(T.towerAt r.1).Qprime‖ ^ 2 ≤ 1 := by
         nlinarith [norm_nonneg (T.towerAt r.1).Qprime]
-      exact add_le_add_left
+      exact add_le_add_right
         (by simpa using mul_le_mul_of_nonneg_left hQsq (abs_nonneg b)) _
 
 /-- Entrywise kernel bound obtained from the exact operator-norm budget. -/
