@@ -98,7 +98,7 @@ def ledger_addendum(
     seconds = aggregate_seconds(result)
     return f"""
 
-## Addendum 868 (2026-08-19, **Step 8b.23 Units A--E sealed from one cold terminal checkout; 20/41 unchanged**)
+## Addendum 869 (2026-08-20, **Step 8b.23 Units A--E sealed from one cold terminal checkout; 20/41 unchanged**)
 
 One cold GitHub Actions checkout compiled and audited the complete 18-brick
 A--E queue at exact source `{SOURCE_SHA}` in run `{run_id}` ({run_url}).
@@ -141,7 +141,7 @@ def seal_plan(
     vertical += map_section(result, run_id, run_url)
 
     ledger = LEDGER.read_bytes()
-    if b"## Addendum 868 " in ledger or b"## Addendum 867 " not in ledger:
+    if b"## Addendum 869 " in ledger or b"## Addendum 868 " not in ledger:
         raise SystemExit("A_E_LEDGER_STATE_MISMATCH")
     ledger += ledger_addendum(result, run_id, run_url)
     return [*sources, (CORE, core), (MAP, vertical), (LEDGER, ledger)]
