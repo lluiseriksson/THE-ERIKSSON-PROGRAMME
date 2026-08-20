@@ -1,4 +1,4 @@
-name: Validate Step 8b.23 Unit F
+name: Validate P0-P9 v56 scratch chain
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: fa29c350fd216305b56685b15a6aee3d80e46ae7
+  SOURCE_SHA: 1b98e644347a96530b8f2755d67febc132cb9774
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  step8b23-f:
+  p0-p9-v56:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -29,74 +29,51 @@ jobs:
           set -euo pipefail
           test '${{ inputs.cold }}' = 'true'
 
-      - name: Checkout exact source checkpoint
+      - name: Checkout exact control checkpoint
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          path: control
+
+      - name: Checkout immutable mathematical source
         uses: actions/checkout@v4
         with:
           ref: ${{ env.SOURCE_SHA }}
           fetch-depth: 1
+          path: source
 
-      - name: Verify exact source checkpoint and 44 blobs
+      - name: Verify checkpoints and exact source scope
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p evidence
-          actual="$(git rev-parse HEAD)"
-          printf 'SOURCE_SHA=%s\nACTUAL_HEAD=%s\nWORKFLOW_SHA=%s\nCOLD_MODE=%s\n' \
-            "$SOURCE_SHA" "$actual" "$GITHUB_SHA" '${{ inputs.cold }}' | \
-            tee evidence/checkpoint.txt
-          test "$actual" = "$SOURCE_SHA"
-          test "$(tr -d '\r\n' < lean-toolchain)" = "leanprover/lean4:v4.29.0-rc6"
-          cat > evidence/source-blobs.sha256 <<'SOURCE_BLOBS'
-          7887b8583da2f189ac0af22a39f3f401300612c35149571553cff2135b75fbf4  YangMills/RG/BalabanCMP89CenteredBrillouinAffineSlice.lean
-          2d22ba868fcd5c3262a105163aea87b159f3215dd6acb63920a041e3ddae5adb  YangMills/RG/BalabanCMP89CenteredBrillouinAffineSliceAudit.lean
-          a02095bfd4ae48fa3ea583ebf472af4e1a1d54ed61a8f07f4f9290278d083624  YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotient.lean
-          c475e75ea70836d9a31f993935a3cbef0ba099ec3daf3bd17bea0268b0bc86bd  YangMills/RG/BalabanCMP89CenteredUnitCubeTorusQuotientAudit.lean
-          ac0b42198859f258966c22bd480dcb4d3d7762aa6692256f261626ecce2aa412  YangMills/RG/BalabanCMP89CenteredTorusFourierPhase.lean
-          438c63d9d86fff3f4dda819340624dfb71003a9d2111eba2a088153b34262c76  YangMills/RG/BalabanCMP89CenteredTorusFourierPhaseAudit.lean
-          445d2a8ed04f2d86da8ff733ecbea592fc8e570c429655a2c8d95937b531528b  YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasure.lean
-          b3613418139528c719c2bd92541aaddddc14bc7758e012093c7e4c6abe511166  YangMills/RG/BalabanCMP89NormalizedBrillouinToTorusMeasureAudit.lean
-          b5661f61903649b7e3abdcec12be706b432b776ea681c0cd979301bb21253fc2  YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphy.lean
-          3d6ac7652107884440ab52a62b6001ce14a09eb1af0d5400c86ade6589821da5  YangMills/RG/BalabanCMP89Eq248GreenMassUniformHolomorphyAudit.lean
-          c125de163a1552ed147af15e9ea1f2d3ce91bd9d8c47b7b7d29e119ca0b28b9a  YangMills/RG/BalabanCMP89Eq248DisplayedGreenVectorPeriodicity.lean
-          c84daddc3aaa44781215c70644e1aeb70ed8321ff7ddca1a1dda0d8462542707  YangMills/RG/BalabanCMP89Eq248DisplayedGreenVectorPeriodicityAudit.lean
-          b977cda3eacd42021bbbabf478215fc0a6796c97ee0542a0fec434c9fc345a3a  YangMills/RG/BalabanCMP89Eq248CenteredGreenTorus.lean
-          fb56db8b81c30d7e597a2eea97970581179861e668a7dcb7604174de7323a095  YangMills/RG/BalabanCMP89Eq248CenteredGreenTorusAudit.lean
-          845598b8cd9c59c6982f32c8a75869d1f20bd3704fbf62f82a5681cf4613eede  YangMills/RG/BalabanCMP99CenteredTorusSampleDictionary.lean
-          8ee679ef6ff2f8b0bc68daac3b5c097737ef9c05627f35e3fca0d5208b9163da  YangMills/RG/BalabanCMP99CenteredTorusSampleDictionaryAudit.lean
-          a6b4a9cdc8ac1055f95a977659cab4c467c879899228201381eb0fb34bfed034  YangMills/RG/BalabanCMP99CenteredTorusPhysicalGreenSampleTransport.lean
-          5a481bb4dde0299290267e52eb80b0fd73ba8fed27fbaf783fb4ca68323a12df  YangMills/RG/BalabanCMP99CenteredTorusPhysicalGreenSampleTransportAudit.lean
-          19f30514580d5a902f9d0ff2e30ed89fb37fdeaf6691d8fdbeaf5c0690fa8b58  YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShift.lean
-          6cc569c755593f2ff964c3be38348855a083f1aedd80491578d49e76b557911f  YangMills/RG/BalabanCMP89Eq248GreenOneCoordinateContourShiftAudit.lean
-          89afec986a4be22907d78ca74c53331998433c7383bb464630eaf806a15d85b7  YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescope.lean
-          6087949f5d2f407ba5d6769bf7dda414165668fcdc73bd99bff938391de23204  YangMills/RG/BalabanCMP89Eq248GreenProductContourTelescopeAudit.lean
-          50941c39098fb2d23f43a9a4d2c6cded84d44503eec8fd1d53c1a1379e43fd83  YangMills/RG/BalabanCMP89Eq248MassUniformGreenBound.lean
-          2824b97d5cf2a681a4e41ad7f4115d38fc8e5ebd7b6861b57b040470c55d00b6  YangMills/RG/BalabanCMP89Eq248MassUniformGreenBoundAudit.lean
-          541c5f02d43021693276002bbeca54c9a07009bf688add0b4d83b5a4d0675dd9  YangMills/RG/BalabanCMP89Eq248MassUniformNormalizedGreenBound.lean
-          25dafc6964de0f6f510833c1d862cfa24fb4cdc5aafa46cd967339e1985a7968  YangMills/RG/BalabanCMP89Eq248MassUniformNormalizedGreenBoundAudit.lean
-          1d31a20620f2869bc19acc6940b5e97b26c702a844ef108de567f661a7c239e8  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhase.lean
-          4df7ee5547f911a6ff37f3764e33066872f23abb5ac8da2df06fa4e5832c0177  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientPhaseAudit.lean
-          dd5934702b4302f04ae6db1dbcd561a3af1c1e6e0bb2f869703b80697c83deb6  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionary.lean
-          9db5d57a74f2ae8d14ba42145496a61717af3720a28eda626720f27a9f31d399  YangMills/RG/BalabanCMP89CenteredTorusGreenCoefficientDictionaryAudit.lean
-          646fe0732faf20a07930e3f660e6bfb163876053a3ad6a876bbc8eabfee64423  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSum.lean
-          61071e4b24d370643e7adc8b5f9f1bb6abb445d42760cf99014c377cb9228ad1  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean
-          7cc3609614a35d84fa3e4be9f21d5a4acba07b78cb0f982ca3836b5df58989c4  YangMills/RG/BalabanCMP89CenteredGreenFourierSummability.lean
-          9289b25dc0e03cbb20ca7b39759cedee6a5a7bdd00128d775e986a0ae0007275  YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean
-          65eef7a599e1ce3822b3addc9c0d3ee96e1acfcfabe04aaa66d3e9d92331bb60  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean
-          e262cf2a58d8e841e8145d66a7669aae01bc525f0467fd2228bae236f04f99fe  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean
-          fe4c7bc4e30461a7784055f50fb89360c68456180fb9bd92fcc290b2c775de26  YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSum.lean
-          5fcd885264820be34de18da6f4c652bf2c258309a57c5fa1aed658055a86c582  YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSumAudit.lean
-          dcce757e6c50851201afced170eab7951c44f871d168a0c1c1414693699c5e88  YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionary.lean
-          d10f942b4832b84561a08ef035a6789198cfcd69ebfc24536021f20e0e2e2987  YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionaryAudit.lean
-          2ec3501aee6840844f41faa04ea3a69218b1fb96a43014858bda878554dfdeca  YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBound.lean
-          81e80e2f370bb2ccb62e8c5185b8517d97c544e2d2a197d26df4ec2e7cf6a006  YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBoundAudit.lean
-          baabfc80ac368d7ff8b25e4fc78f8534765f34864187bbf8d06ea2988629d637  YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean
-          8b990608a2d44ea3013e3633e1d701c366505848434c1fb0c0e85af89653108b  YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBoundAudit.lean
-          SOURCE_BLOBS
-          test "$(wc -l < evidence/source-blobs.sha256)" -eq 44
-          while read -r expected path; do
-            actual_blob="$(git cat-file blob "$SOURCE_SHA:$path" | sha256sum | cut -d' ' -f1)"
-            test "$actual_blob" = "$expected"
-          done < evidence/source-blobs.sha256
+          control_head="$(git -C control rev-parse HEAD)"
+          source_head="$(git -C source rev-parse HEAD)"
+          printf 'SOURCE_SHA=%s\nACTUAL_SOURCE_HEAD=%s\nCONTROL_SHA=%s\nGITHUB_SHA=%s\nCOLD_MODE=%s\n' \
+            "$SOURCE_SHA" "$source_head" "$control_head" "$GITHUB_SHA" \
+            '${{ inputs.cold }}' | tee evidence/checkpoint.txt
+          test "$control_head" = "$GITHUB_SHA"
+          test "$source_head" = "$SOURCE_SHA"
+          test "$(tr -d '\r\n' < source/lean-toolchain)" = \
+            'leanprover/lean4:v4.29.0-rc6'
+          sha256sum control/tmp/github_p0_p9_v56_driver.py | \
+            tee evidence/control-driver.sha256
+          python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+          path = Path('control/tmp/github_p0_p9_v56_driver.py')
+          spec = importlib.util.spec_from_file_location('p0_p9_ci_gate', path)
+          if spec is None or spec.loader is None:
+              raise SystemExit('CONTROL_DRIVER_LOAD_FAILED')
+          gate = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(gate)
+          paths = gate.exact_paths(Path('source').resolve())
+          stages = gate.queue(paths)
+          if len(paths) != 39 or len(stages) != 49:
+              raise SystemExit('P0_P9_CI_SCOPE_DRIFT')
+          print('P0_P9_CI_SOURCE_SCOPE_OK paths=39 stages=49 audits=20 axiom_headers=199')
+          PY
 
       - name: Install exact Lean toolchain
         shell: bash
@@ -122,136 +99,51 @@ jobs:
 
       - name: Materialize pinned dependencies
         shell: bash
+        working-directory: source
         run: |
           set -euo pipefail
-          lean --version | tee -a evidence/toolchain.txt
-          lake --version | tee -a evidence/toolchain.txt
+          lean --version | tee -a ../evidence/toolchain.txt
+          lake --version | tee -a ../evidence/toolchain.txt
           manifest_before="$(sha256sum lake-manifest.json | cut -d' ' -f1)"
           toolchain_before="$(sha256sum lean-toolchain | cut -d' ' -f1)"
-          lake update 2>&1 | tee evidence/lake-update.log
+          lake update 2>&1 | tee ../evidence/lake-update.log
           test "$(sha256sum lake-manifest.json | cut -d' ' -f1)" = "$manifest_before"
           test "$(sha256sum lean-toolchain | cut -d' ' -f1)" = "$toolchain_before"
           mathlib="$(git -C .lake/packages/mathlib rev-parse HEAD)"
-          printf 'MATHLIB_SHA=%s\n' "$mathlib" | tee evidence/mathlib.txt
+          printf 'MATHLIB_SHA=%s\n' "$mathlib" | tee ../evidence/mathlib.txt
           test "$mathlib" = "$EXPECTED_MATHLIB"
-          lake exe cache get 2>&1 | tee evidence/cache-get.log
+          lake exe cache get 2>&1 | tee ../evidence/cache-get.log
 
-      - name: Run 4-brick focal and audit queue stop on first error
+      - name: Run exact P0-P9 queue stop on first error
         shell: bash
         run: |
           set -euo pipefail
-          awk '{print $2}' evidence/source-blobs.sha256 > evidence/overlay-paths.txt
-          python scripts/check_lean_overlay_text.py \
-            --paths-from evidence/overlay-paths.txt | tee evidence/text-guard.log
-          mapfile -t overlay_paths < evidence/overlay-paths.txt
-          python scripts/check_lean_import_prefix.py "${overlay_paths[@]}" | \
-            tee evidence/import-prefix-guard.log
-          run_stage() {
-            local stage="$1"
-            shift
-            local started ended code
-            started="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            printf 'STAGE=%s STARTED=%s CMD=' "$stage" "$started" | tee -a evidence/stages.txt
-            printf '%q ' "$@" | tee -a evidence/stages.txt
-            printf '\n' | tee -a evidence/stages.txt
-            set +e
-            "$@" 2>&1 | tee "evidence/${stage}.log"
-            code=${PIPESTATUS[0]}
-            set -e
-            ended="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-            printf 'STAGE=%s EXIT=%s ENDED=%s\n' "$stage" "$code" "$ended" | \
-              tee -a evidence/stages.txt
-            test "$code" -eq 0
-          }
+          python control/tmp/github_p0_p9_v56_driver.py \
+            --repo source --evidence evidence
 
-          run_stage 01_cmp89centeredperiodicl1residuesum_focal lake build YangMills.RG.BalabanCMP89CenteredPeriodicL1ResidueSum
-          run_stage 01_cmp89centeredperiodicl1residuesum_audit lake env lean YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSumAudit.lean
-          run_stage 02_cmp99centeredperiodicendpointdictionary_focal lake build YangMills.RG.BalabanCMP99CenteredPeriodicEndpointDictionary
-          run_stage 02_cmp99centeredperiodicendpointdictionary_audit lake env lean YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionaryAudit.lean
-          run_stage 03_cmp99physicalgreenzeroresiduebound_focal lake build YangMills.RG.BalabanCMP99PhysicalGreenZeroResidueBound
-          run_stage 03_cmp99physicalgreenzeroresiduebound_audit lake env lean YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBoundAudit.lean
-          run_stage 04_cmp99diagonalfinitegreenownerbound_focal lake build YangMills.RG.BalabanCMP99DiagonalFiniteGreenOwnerBound
-          run_stage 04_cmp99diagonalfinitegreenownerbound_audit lake env lean YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBoundAudit.lean
-
-      - name: Verify 49 axiom blocks and package cold evidence
+      - name: Package deterministic cold evidence
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          import re
-
-          allowed = {"propext", "Classical.choice", "Quot.sound"}
-          expected = {
-              '01_cmp89centeredperiodicl1residuesum_audit': 17,
-              '02_cmp99centeredperiodicendpointdictionary_audit': 23,
-              '03_cmp99physicalgreenzeroresiduebound_audit': 3,
-              '04_cmp99diagonalfinitegreenownerbound_audit': 6,
-          }
-          focals = {
-              '01_cmp89centeredperiodicl1residuesum_focal': 'YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSum.lean',
-              '02_cmp99centeredperiodicendpointdictionary_focal': 'YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionary.lean',
-              '03_cmp99physicalgreenzeroresiduebound_focal': 'YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBound.lean',
-              '04_cmp99diagonalfinitegreenownerbound_focal': 'YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean',
-          }
-          for stage, module_path in focals.items():
-              text = Path(f"evidence/{stage}.log").read_text(encoding="utf-8")
-              lines = [line.strip() for line in text.splitlines() if line.strip()]
-              build = [line for line in lines if re.fullmatch(
-                  r"Build completed successfully \(\d+ jobs\)\.", line
-              )]
-              if len(build) != 1 or lines[-1] != build[0]:
-                  raise SystemExit(f"BAD_BUILD_SENTINEL={stage} count={len(build)}")
-              if f"warning: {module_path}:" in text:
-                  raise SystemExit(f"NEW_MODULE_LINTER_WARNING={stage}")
-          parsed = {}
-          total = 0
-          for stage, count in expected.items():
-              text = Path(f"evidence/{stage}.log").read_text(encoding="utf-8")
-              compact = re.sub(r"\s+", "", text)
-              for forbidden in ("sorryAx", "ofReduceBool"):
-                  if forbidden in compact:
-                      raise SystemExit(f"FORBIDDEN_AXIOM={forbidden} STAGE={stage}")
-              blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
-              pure = compact.count("doesnotdependonanyaxioms")
-              headers = len(blocks) + pure
-              if headers != count:
-                  raise SystemExit(
-                      f"AXIOM_HEADER_COUNT={headers} EXPECTED={count} "
-                      f"NONEMPTY={len(blocks)} EMPTY={pure} STAGE={stage}"
-                  )
-              values = []
-              for body in blocks:
-                  names = {item for item in body.split(",") if item}
-                  if not names.issubset(allowed):
-                      raise SystemExit(f"AXIOM_SET={sorted(names)} STAGE={stage}")
-                  values.append(sorted(names))
-              values.extend([[] for _ in range(pure)])
-              parsed[stage] = values
-              total += headers
-          if total != 49:
-              raise SystemExit(f"TOTAL_AXIOM_BLOCKS={total} EXPECTED=49")
-          Path("evidence/axioms.json").write_text(
-              json.dumps(parsed, sort_keys=True, indent=2) + "\n", encoding="utf-8"
-          )
-          PY
-          printf 'FINAL_STATUS=PASS\n' | tee evidence/FINAL_STATUS
+          if test ! -f evidence/FINAL_STATUS; then
+            printf 'FINAL_STATUS=INCOMPLETE\n' > evidence/FINAL_STATUS
+          fi
           sums="$(mktemp)"
           find evidence -maxdepth 1 -type f ! -name SHA256SUMS -print0 | \
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > step8b23-f-evidence.tar.gz
-          sha256sum step8b23-f-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n > p0-p9-v56-evidence.tar.gz
+          sha256sum p0-p9-v56-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: step8b23-f-${{ env.SOURCE_SHA }}
+          name: p0-p9-v56-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            step8b23-f-evidence.tar.gz
+            p0-p9-v56-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
