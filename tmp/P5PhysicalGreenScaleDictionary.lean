@@ -243,23 +243,27 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
   have htransport := congrArg (finitePiLpTypedKernelReindex e e) hfine
   rw [scratch_finitePiLpTypedKernelReindex_add,
     scratch_finitePiLpTypedKernelReindex_fintype_sum] at htransport
-  have htransportFine :
+  change finitePiLpTypedKernelReindex e e
+      (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
+        background budget fineSmall hsmall) = _ at htransport
+  change _ = finitePiLpTypedKernelReindex e e
+      (scratch_cmp89SourceSeparatedFineBaseCovariance hL depth hspacing ha
+        background budget fineSmall hsmall) + _ at htransport
+  change _ = _ + ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
       finitePiLpTypedKernelReindex e e
-          (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
-            background budget fineSmall hsmall) =
-        finitePiLpTypedKernelReindex e e
-            (scratch_cmp89SourceSeparatedFineBaseCovariance hL depth
-              hspacing ha background budget fineSmall hsmall) +
-          ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
-            finitePiLpTypedKernelReindex e e
-              (scratch_cmp89SourceSeparatedFineGreenIncrement hL depth
-                hspacing ha background budget fineSmall hsmall j) := by
-    simpa only [scratch_cmp89SourceSeparatedFinePrefixGreen,
-      scratch_cmp89SourceSeparatedFineBaseCovariance,
-      scratch_cmp89SourceSeparatedFineGreenIncrement] using htransport
-  simpa only [scratch_cmp89SourceSeparatedAmbientPrefixGreen,
-    scratch_cmp89SourceSeparatedAmbientBaseCovariance,
-    scratch_cmp89SourceSeparatedAmbientGreenIncrement, e] using htransportFine
+        (scratch_cmp89SourceSeparatedFineGreenIncrement hL depth hspacing ha
+          background budget fineSmall hsmall j) at htransport
+  change finitePiLpTypedKernelReindex e e
+      (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
+        background budget fineSmall hsmall) = _
+  change _ = finitePiLpTypedKernelReindex e e
+      (scratch_cmp89SourceSeparatedFineBaseCovariance hL depth hspacing ha
+        background budget fineSmall hsmall) + _
+  change _ = _ + ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
+      finitePiLpTypedKernelReindex e e
+        (scratch_cmp89SourceSeparatedFineGreenIncrement hL depth hspacing ha
+          background budget fineSmall hsmall j)
+  exact htransport
 
 /-- CMP89 (2.34) with the printed coefficient and operator order visible in
 the public conclusion.  The preceding theorem is a convenient technical
@@ -310,7 +314,9 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234_literal
   dsimp only
   rw [scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
     hL depth hspacing ha background budget fineSmall hsmall]
-  congr 1
+  apply congrArg (fun z =>
+    scratch_cmp89SourceSeparatedAmbientBaseCovariance hL depth hspacing ha
+      background budget fineSmall hsmall + z)
   apply Finset.sum_congr rfl
   intro j hj
   rfl
