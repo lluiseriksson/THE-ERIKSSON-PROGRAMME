@@ -90,6 +90,7 @@ theorem scratch_norm_cmp89SourceSeparatedFinalPrefix_Qprime_le_one
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     let T := scratch_cmp89SourceSeparatedPrefixTower
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
       (spacing := spacing) (epsilon := epsilon) hL depth background budget
       fineSmall
     ‖(T.towerAt
@@ -129,6 +130,7 @@ theorem scratch_cmp89SourceSeparatedFinalPrefix_QprimeMass_finiteRange
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
     let T := scratch_cmp89SourceSeparatedPrefixTower
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
       (spacing := spacing) (epsilon := epsilon) hL depth background budget
       fineSmall
     FinitePiLpFiniteRange
@@ -183,7 +185,8 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
     FinitePiLpFiniteRange
-      (scratch_cmp89SourceSeparatedFinePrefixPrecision hL depth
+      (scratch_cmp89SourceSeparatedFinePrefixPrecision
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
         spacing epsilon a background budget fineSmall)
       (fun x y : ActiveGaugeRegion.Site
           (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1)) =>
@@ -251,7 +254,8 @@ theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
   have hDelta := norm_cmp99ActiveRegionSourceCovariantLaplacian_le
     (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1))
     (matrixSUNAdjointModel Nc) background hspacing
-  norm_num at hDelta
+  have hfour : (4 : ℝ) * (4 : ℝ) = 16 := by norm_num
+  rw [hfour] at hDelta
   rw [scratch_cmp89SourceSeparatedFinePrefixPrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision,
     scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision]
@@ -297,7 +301,8 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_kernelBound
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     FinitePiLpKernelBound
-      (scratch_cmp89SourceSeparatedFinePrefixPrecision hL depth
+      (scratch_cmp89SourceSeparatedFinePrefixPrecision
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
         spacing epsilon a background budget fineSmall)
       (fun _ _ =>
         scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound hL depth
@@ -321,20 +326,24 @@ theorem scratch_cmp89SourceSeparatedFinePrefixGreen_exponentialKernelBound
       spacing epsilon < 1)
     (hrate : 0 < rate)
     (hbudget :
-      scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound hL depth
+      scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound
+          (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
           spacing epsilon a background budget fineSmall *
         (Real.exp (rate * (L ^ (depth + 1) : ℕ)) - 1) *
         (((2 * L ^ (depth + 1) + 1) ^ 4 : ℕ) : ℝ) ≤
-      scratch_cmp89SourceSeparatedPrefixCoercivity hL depth
+      scratch_cmp89SourceSeparatedPrefixCoercivity
+          (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
           spacing epsilon a background budget fineSmall / 2) :
     let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
     FinitePiLpExponentialKernelBound
-      (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
+      (scratch_cmp89SourceSeparatedFinePrefixGreen
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth hspacing ha
         background budget fineSmall hsmall)
       (fun x y : ActiveGaugeRegion.Site
           (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1)) =>
         finBoxDist x.1 y.1)
-      (2 / scratch_cmp89SourceSeparatedPrefixCoercivity hL depth
+      (2 / scratch_cmp89SourceSeparatedPrefixCoercivity
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
         spacing epsilon a background budget fineSmall)
       rate := by
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
@@ -389,20 +398,24 @@ theorem scratch_cmp89SourceSeparatedAmbientPrefixGreen_exponentialKernelBound
       spacing epsilon < 1)
     (hrate : 0 < rate)
     (hbudget :
-      scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound hL depth
+      scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound
+          (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
           spacing epsilon a background budget fineSmall *
         (Real.exp (rate * (L ^ (depth + 1) : ℕ)) - 1) *
         (((2 * L ^ (depth + 1) + 1) ^ 4 : ℕ) : ℝ) ≤
-      scratch_cmp89SourceSeparatedPrefixCoercivity hL depth
+      scratch_cmp89SourceSeparatedPrefixCoercivity
+          (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
           spacing epsilon a background budget fineSmall / 2) :
     FinitePiLpExponentialKernelBound
-      (scratch_cmp89SourceSeparatedAmbientPrefixGreen hL depth hspacing ha
+      (scratch_cmp89SourceSeparatedAmbientPrefixGreen
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth hspacing ha
         background budget fineSmall hsmall)
       (finBoxDist : FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) →
         FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) → ℕ)
-      (2 / scratch_cmp89SourceSeparatedPrefixCoercivity hL depth
+      (2 / scratch_cmp89SourceSeparatedPrefixCoercivity
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
         spacing epsilon a background budget fineSmall)
       rate := by
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
@@ -442,7 +455,8 @@ theorem scratch_cmp89SourceSeparatedAmbientPrefixPrecision_exponentialKernelBoun
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     FinitePiLpExponentialKernelBound
-      (scratch_cmp89SourceSeparatedAmbientPrefixPrecision hL depth
+      (scratch_cmp89SourceSeparatedAmbientPrefixPrecision
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
         spacing epsilon a background budget fineSmall)
       (finBoxDist : FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) →
@@ -507,13 +521,17 @@ theorem scratch_cmp96SourceSeparatedRegionalPrefixGreen_exponentialKernelBound
     (hsmall : cmp99SourcePoincareErrorCoeff 4 L (depth + 1)
       spacing epsilon < 1)
     (cell : FinBox 4 Q) :
-    let A := scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound hL depth
+    let A := scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
         spacing epsilon a background budget fineSmall *
       Real.exp (decay * (L ^ (depth + 1) : ℕ))
-    let c := scratch_cmp89SourceSeparatedPrefixCoercivity hL depth
+    let c := scratch_cmp89SourceSeparatedPrefixCoercivity
+      (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
       spacing epsilon a background budget fineSmall
     FinitePiLpExponentialKernelBound
-      (scratch_cmp96SourceSeparatedRegionalPrefixGreen P hL depth hspacing ha
+      (scratch_cmp96SourceSeparatedRegionalPrefixGreen
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        P hL depth hspacing ha
         background budget fineSmall hsmall cell)
       (fun target source : ActiveGaugeRegion.Site
           (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell) =>
@@ -528,7 +546,8 @@ theorem scratch_cmp96SourceSeparatedRegionalPrefixGreen_exponentialKernelBound
     spacing epsilon a background budget fineSmall
   exact cmp99RegionalDirichletGreen_exponentialKernelBound
     (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
-    (scratch_cmp89SourceSeparatedAmbientPrefixPrecision hL depth
+    (scratch_cmp89SourceSeparatedAmbientPrefixPrecision
+      (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
       spacing epsilon a background budget fineSmall)
     (scratch_cmp89SourceSeparatedPrefixCoercivity_pos hL depth hspacing ha
       background budget fineSmall hsmall)
