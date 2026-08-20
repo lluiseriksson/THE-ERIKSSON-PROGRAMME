@@ -11,8 +11,8 @@ import tempfile
 
 import audit_p0_p5_promotion_preview as preview
 import audit_p0_p9_promotion as scope
-import audit_p0_p9_v59_github_evidence as evidence_gate
-import github_p0_p9_v59_driver as evidence_contract
+import audit_p0_p9_v62_github_evidence as evidence_gate
+import github_p0_p9_v62_driver as evidence_contract
 import test_audit_p0_p9_v56_github_evidence as evidence_fixture
 
 
@@ -56,12 +56,12 @@ def make_fixture(parent: Path) -> tuple[Path, str, dict[Path, Path]]:
         "audit_p0_p5_promotion_preview.py",
         "audit_p0_p9_promotion.py",
         "audit_p0_p9_v56_github_evidence.py",
-        "audit_p0_p9_v59_github_evidence.py",
+        "audit_p0_p9_v62_github_evidence.py",
         "audit_step8b23_promotion_preview.py",
         "audit_step8b24_promotion_preview.py",
         "github_p0_p9_v56_driver.py",
         "github_p0_p9_v57_driver.py",
-        "github_p0_p9_v59_driver.py",
+        "github_p0_p9_v62_driver.py",
         "promote_step8b24_c6c2_p0_p9.py",
     ):
         shutil.copyfile(ROOT / "tmp" / name, fixture / "tmp" / name)
@@ -102,7 +102,7 @@ def make_fixture(parent: Path) -> tuple[Path, str, dict[Path, Path]]:
 def main() -> None:
     with tempfile.TemporaryDirectory(prefix="p0-p9-promoter-") as raw:
         fixture, head, targets = make_fixture(Path(raw) / "positive")
-        evidence = fixture / "v59-pass.zip"
+        evidence = fixture / "v62-pass.zip"
         evidence_fixture.write_fixture(evidence)
         result = command(
             sys.executable, "tmp/promote_step8b24_c6c2_p0_p9.py",
@@ -123,7 +123,7 @@ def main() -> None:
                 )
 
         fixture, head, targets = make_fixture(Path(raw) / "tamper")
-        evidence = fixture / "v59-tampered.zip"
+        evidence = fixture / "v62-tampered.zip"
         evidence_fixture.write_fixture(evidence, outer_tamper=True)
         result = command(
             sys.executable, "tmp/promote_step8b24_c6c2_p0_p9.py",

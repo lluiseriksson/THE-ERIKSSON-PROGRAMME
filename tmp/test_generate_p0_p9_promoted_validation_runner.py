@@ -8,7 +8,7 @@ import shutil
 import sys
 import tempfile
 
-import test_audit_p0_p9_v56_evidence as evidence_fixture
+import test_audit_p0_p9_v56_github_evidence as evidence_fixture
 from test_promote_step8b24_c6c2_p0_p9 import command, make_fixture
 
 
@@ -20,8 +20,8 @@ def main() -> None:
         fixture, head, targets = make_fixture(Path(raw))
         generator = "generate_p0_p9_promoted_validation_runner.py"
         shutil.copyfile(ROOT / "tmp" / generator, fixture / "tmp" / generator)
-        evidence = fixture / "v56-pass.tar.gz"
-        evidence_fixture.write_archive(evidence)
+        evidence = fixture / "v62-pass.zip"
+        evidence_fixture.write_fixture(evidence)
         promoted = command(
             sys.executable, "tmp/promote_step8b24_c6c2_p0_p9.py",
             "--expected-head", head, "--evidence", str(evidence), "--write",
@@ -54,7 +54,7 @@ def main() -> None:
             path = str(target_relative).replace("\\", "/")
             if payload.count(path) < 2:
                 raise AssertionError(f"promoted runner path missing from blobs/queue: {path}")
-        if "axiom_headers=199" not in generated.stdout or "audits=20" not in generated.stdout:
+        if "axiom_headers=200" not in generated.stdout or "audits=20" not in generated.stdout:
             raise AssertionError("runner audit contract missing")
 
         victim = next(
@@ -78,7 +78,7 @@ def main() -> None:
 
     print(
         "P0_P9_PROMOTED_RUNNER_GENERATOR_SELFTEST_OK "
-        "paths=39 audits=20 axiom_headers=199 syntax=pass "
+        "paths=39 audits=20 axiom_headers=200 syntax=pass "
         "missing_git_blob=fail_closed"
     )
 

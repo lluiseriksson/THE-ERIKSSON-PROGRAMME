@@ -12,7 +12,7 @@ import subprocess
 
 import audit_p0_p5_promotion_preview as preview
 import audit_p0_p9_promotion as scope
-import audit_p0_p9_v56_evidence as contract
+import github_p0_p9_v62_driver as contract
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -98,7 +98,7 @@ def render(source_sha: str, paths: list[str], blobs: dict[str, str]) -> str:
             audit_counts[target.relative_to(ROOT).as_posix()] = (
                 contract.AXIOM_COUNTS[scratch_relative]
             )
-    if len(audit_counts) != 20 or sum(audit_counts.values()) != 199:
+    if len(audit_counts) != 20 or sum(audit_counts.values()) != 200:
         raise SystemExit("P0_P9_PROMOTED_AUDIT_CONTRACT_DRIFT")
 
     queue: list[tuple[str, list[str], int | None]] = [
@@ -239,7 +239,7 @@ def main() -> int:
     print(
         "P0_P9_PROMOTED_RUNNER_GENERATED "
         f"source_sha={args.source_sha} paths={len(paths)} audits=20 "
-        f"axiom_headers=199 sha256={hashlib.sha256(payload.encode()).hexdigest().upper()} "
+        f"axiom_headers=200 sha256={hashlib.sha256(payload.encode()).hexdigest().upper()} "
         f"output={output}"
     )
     return 0
