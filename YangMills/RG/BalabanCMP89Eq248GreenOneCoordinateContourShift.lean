@@ -76,9 +76,8 @@ theorem intervalIntegral_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_physi
       intro k
       by_cases hk : k = nu
       · subst k
-        simp [cmp89Eq251PhysicalCoordinateLine, Pi.single_apply,
-          hreal nu]
-      · simp [cmp89Eq251PhysicalCoordinateLine, Pi.single_apply, hk,
+        simp [cmp89Eq251PhysicalCoordinateLine, hreal nu]
+      · simp [cmp89Eq251PhysicalCoordinateLine, hk,
           hreal k]
     have hseam :=
       cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_physicalFine_boundarySeam_massUniform_draft
