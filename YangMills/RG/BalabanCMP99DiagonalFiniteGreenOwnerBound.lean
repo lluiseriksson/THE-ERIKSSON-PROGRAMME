@@ -136,7 +136,7 @@ theorem cmp89SignedLatticeL1ExponentialWeight_centeredDiagonal_le_owner
       _ ≤ (rho / (K : ℝ)) *
             cmp89Eq251LatticeL1Length
               (cmp99DiagonalPeriodicDisplacement x y) + 2 * rho :=
-        add_le_add_left hboundary _
+        add_le_add_right hboundary _
   linarith
 
 /-- Diagonal Gate-7 owner bound for the actual residue-zero physical Green
