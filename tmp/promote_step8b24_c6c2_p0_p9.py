@@ -2,7 +2,7 @@
 """Fail-closed promotion of the compiler-verified P0--P9 scratch chain.
 
 The script is read-only unless ``--write`` is supplied.  A write requires the
-exact v56 Colab PASS archive, preserves the already sealed P0 pair, requires
+exact v59 GitHub cold PASS artifact, preserves the already sealed P0 pair, requires
 the already tracked P1 pair to equal the deterministic PRE-VALIDATION output,
 and creates only the remaining 35 mapped targets.  It never removes a
 PRE-VALIDATION mark: the promoted tracked graph needs its own cold validation
@@ -18,12 +18,12 @@ import subprocess
 
 import audit_p0_p5_promotion_preview as preview
 import audit_p0_p9_promotion as scope
-import audit_p0_p9_v56_evidence as evidence_gate
+import audit_p0_p9_v59_github_evidence as evidence_gate
 
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_PROMOTED_MANIFEST_SHA256 = (
-    "738FC4E57A9557F2F3769732C821F50BDE5FA7BF7110099335B70C1AD502FCD3"
+    "DAC15F794045B2E9AC5927863BBDF57A098D0B381B21C073D2A12A53BBF4C435"
 )
 P0_FILES = frozenset(
     {"P0CanonicalPrefixTower.lean", "P0CanonicalPrefixTowerAudit.lean"}
@@ -37,7 +37,9 @@ def configure_preview() -> None:
     preview.scope = scope
     preview.PATHS = ROOT / "tmp" / "P0-P9-SCRATCH-PATHS.txt"
     preview.RAW_MANIFEST = ROOT / "tmp" / "P0-P9-SCRATCH-MANIFEST.sha256"
-    preview.EXPECTED_RAW_MANIFEST_SHA256 = evidence_gate.MANIFEST_SHA256
+    preview.EXPECTED_RAW_MANIFEST_SHA256 = (
+        evidence_gate.contract.core.MANIFEST_SHA256.upper()
+    )
     preview.SCOPE_LABEL = "P0_P9"
     preview.EXPECTED_DECLARATIONS = 181
     preview.EXPECTED_PROMOTED_MODULES = 39

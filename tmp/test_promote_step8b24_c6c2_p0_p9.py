@@ -11,7 +11,13 @@ import tempfile
 
 import audit_p0_p5_promotion_preview as preview
 import audit_p0_p9_promotion as scope
-import test_audit_p0_p9_v56_evidence as evidence_fixture
+import audit_p0_p9_v59_github_evidence as evidence_gate
+import github_p0_p9_v59_driver as evidence_contract
+import test_audit_p0_p9_v56_github_evidence as evidence_fixture
+
+
+evidence_fixture.gate = evidence_gate
+evidence_fixture.contract = evidence_contract
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,15 +45,23 @@ def make_fixture(parent: Path) -> tuple[Path, str, dict[Path, Path]]:
         target = fixture / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / relative, target)
+    for relative in evidence_contract.core.REPROS:
+        target = fixture / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / relative, target)
     for name in (
         "P0-P9-SCRATCH-PATHS.txt",
         "P0-P9-SCRATCH-MANIFEST.sha256",
         "audit_p0_p5_promotion.py",
         "audit_p0_p5_promotion_preview.py",
         "audit_p0_p9_promotion.py",
-        "audit_p0_p9_v56_evidence.py",
+        "audit_p0_p9_v56_github_evidence.py",
+        "audit_p0_p9_v59_github_evidence.py",
         "audit_step8b23_promotion_preview.py",
         "audit_step8b24_promotion_preview.py",
+        "github_p0_p9_v56_driver.py",
+        "github_p0_p9_v57_driver.py",
+        "github_p0_p9_v59_driver.py",
         "promote_step8b24_c6c2_p0_p9.py",
     ):
         shutil.copyfile(ROOT / "tmp" / name, fixture / "tmp" / name)
@@ -88,8 +102,8 @@ def make_fixture(parent: Path) -> tuple[Path, str, dict[Path, Path]]:
 def main() -> None:
     with tempfile.TemporaryDirectory(prefix="p0-p9-promoter-") as raw:
         fixture, head, targets = make_fixture(Path(raw) / "positive")
-        evidence = fixture / "v56-pass.tar.gz"
-        evidence_fixture.write_archive(evidence)
+        evidence = fixture / "v59-pass.zip"
+        evidence_fixture.write_fixture(evidence)
         result = command(
             sys.executable, "tmp/promote_step8b24_c6c2_p0_p9.py",
             "--expected-head", head, "--evidence", str(evidence), "--write",
@@ -109,8 +123,8 @@ def main() -> None:
                 )
 
         fixture, head, targets = make_fixture(Path(raw) / "tamper")
-        evidence = fixture / "v56-tampered.tar.gz"
-        evidence_fixture.write_archive(evidence, mutate_log="head")
+        evidence = fixture / "v59-tampered.zip"
+        evidence_fixture.write_fixture(evidence, outer_tamper=True)
         result = command(
             sys.executable, "tmp/promote_step8b24_c6c2_p0_p9.py",
             "--expected-head", head, "--evidence", str(evidence), "--write",
