@@ -30,11 +30,11 @@ P4A_PATH = p4a_namespace["P4A_PATH"]
 P4A_SHA256 = p4a_namespace["P4A_SHA256"]
 P4B_PATH = "tmp/P4bFiniteTelescoping.lean"
 P4B_SHA256 = (
-    "a411c3b0af52648c78a04b3ce5e8896a8a2f5c0f084a597b10d2416591c2ae28"
+    "a436160e68ff7d33d4b62b8afe5ab4d957c7939fa6459c274e26c4d70d4b27e1"
 )
 
 runner.RUNNER_REV = "p0-p9-p4b-debug-v1"
-runner.SOURCE_SHA = "230c148d22d8e3303a8c361e492554f96c74e70d"
+runner.SOURCE_SHA = "9bcc5b4b2a59e38c2794ebdb9b0791d9b0db6f73"
 runner.ROOT = Path("/content/hrpoly-p0-p9-p4b-debug")
 runner.EVIDENCE = Path("/content/hrpoly-p0-p9-p4b-debug-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-p0-p9-p4b-debug-evidence.tar.gz")
