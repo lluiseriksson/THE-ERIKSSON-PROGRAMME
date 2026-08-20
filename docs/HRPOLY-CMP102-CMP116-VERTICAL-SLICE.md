@@ -12961,3 +12961,28 @@ may not be bypassed.  P0 does not produce the CMP96 Dirichlet defect, a
 uniform CMP99 (3.42) pair, the four regional actions, window 15, a terminal
 field, or a `TermSource`.  The live count remains exactly `20/41` and
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+### Step 8b.23: source-specific physical Green Fourier route, Units A--E (SEALED; cold checkout; 20/41 unchanged)
+
+The eighteen ordered bricks from the centered Brillouin/torus dictionary
+through the literal physical finite-grid aliasing endpoint have been compiled
+and audited together.  The route constructs the common mass-uniform strip,
+the signed product-contour displacement, normalized Green bounds, the exact
+torus coefficient dictionary, absolute Fourier summability and the
+source-specific Step-8b.22 consumer.  No free Fourier-series identity is
+accepted at the endpoint.
+
+One cold GitHub Actions checkout validated exact source `9d378412d4fa282dc92728154e93d58bd9843bfe` in
+terminal run `32329127991` (https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/32329127991).  All 36 focal/audit stages exited `0` in
+1617 aggregate stage-seconds.  The 18 audits emitted exactly
+124 axiom blocks, each a subset of
+`{propext, Classical.choice, Quot.sound}`; the artifact contains literal
+`FINAL_STATUS=PASS`.  Inner archive SHA-256 is
+`90D66229E393768C17B2698012AD78A98DF358DF3B4BA2D49EF5F18DCA8C7DB9` and raw outer artifact ZIP SHA-256 is
+`1E5002004D4789D1F00F0CA0D2A87642752056EDBD07FF948C89EFE8D79C3F38`.
+
+This is a source-specific A--E seal, not Unit F and not regional `B0`.
+Window 15 is still compatible but unattained; no terminal field is discharged
+and no `TermSource` inhabitant is constructed.  Counters remain exactly
+`20/41`, `TermSource = 0`.

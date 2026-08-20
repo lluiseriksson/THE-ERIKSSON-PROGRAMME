@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 This scratch file fixes the Fourier-sign convention for Step 8b.23.  The
 Mathlib coefficient uses `mFourier (-n)` and the physical coarse momentum is
@@ -13,10 +13,6 @@ terminal field is asserted here.
 import Mathlib.Analysis.Fourier.AddCircleMulti
 import YangMills.RG.BalabanCMP89Eq249FinePhaseScaleNoGo
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

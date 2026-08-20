@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 Arbitrary integer-vector physical periodicity for the literal displayed
 Green.  The one-coordinate `2*pi` cycle is already sealed; this file turns it
@@ -13,10 +13,6 @@ attainment or terminal field is asserted here.
 
 import YangMills.RG.BalabanCMP89Eq248GreenMassUniformHolomorphy
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

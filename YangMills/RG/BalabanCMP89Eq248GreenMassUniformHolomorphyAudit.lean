@@ -1,12 +1,8 @@
 -- Promotion import:
 import YangMills.RG.BalabanCMP89Eq248GreenMassUniformHolomorphy
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
--- PRE-VALIDATION SCRATCH: intended axiom surface for Step 8b.23/Unit B.5.
+-- SEALED AXIOM SURFACE: intended axiom surface for Step 8b.23/Unit B.5.
 
 #print axioms YangMills.RG.differentiableAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_of_commonRadius_massUniform_draft
 #print axioms YangMills.RG.continuousAt_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_real_massUniform_draft

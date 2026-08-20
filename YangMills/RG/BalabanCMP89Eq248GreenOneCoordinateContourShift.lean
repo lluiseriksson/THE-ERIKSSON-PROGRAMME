@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 One-coordinate Cauchy shift for the literal stabilized Green endpoint.  It
 is the mass-uniform Green analogue of the sealed endpoint-product shift and
@@ -13,10 +13,6 @@ import YangMills.RG.HolomorphicVerticalShiftBoundary
 import YangMills.RG.BalabanCMP89Eq251OneCoordinateContourShift
 import YangMills.RG.BalabanCMP89Eq248GreenMassUniformHolomorphy
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

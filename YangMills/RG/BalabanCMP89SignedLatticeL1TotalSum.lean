@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 This file is deliberately outside the tracked YangMills tree while the cold
 Step 8b.22 verdict is pending.  It isolates the exact infinite-lattice input
@@ -15,10 +15,6 @@ No physical Fourier dictionary, `B0`, or window-15 attainment is asserted.
 
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointRecombination
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

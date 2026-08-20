@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 This scratch file isolates the one-coordinate Jacobian used by G23.4.
 It proves an equality of interval integrals, so the opposite half-open
@@ -12,10 +12,6 @@ field is asserted here.
 
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

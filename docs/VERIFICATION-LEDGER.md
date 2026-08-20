@@ -38535,3 +38535,25 @@ only; it does not construct the physical Fourier-series expansion, regional
 `B0`, attain window 15, discharge a terminal field or inhabit `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 869 (2026-08-20, **Step 8b.23 Units A--E sealed from one cold terminal checkout; 20/41 unchanged**)
+
+One cold GitHub Actions checkout compiled and audited the complete 18-brick
+A--E queue at exact source `9d378412d4fa282dc92728154e93d58bd9843bfe` in run `32329127991` (https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/32329127991).
+All 36 focal/audit stages exited `0` in 1617 aggregate stage-seconds;
+all 124 measured axiom blocks are subsets of
+`{propext, Classical.choice, Quot.sound}`, and the retained artifact has
+literal `FINAL_STATUS=PASS`.
+
+The independent validator reconstructed all 36 validated Git blobs, checked
+the cold checkout and exact source/Mathlib/toolchain identities, stage order,
+literal build sentinels, every axiom block, the inner archive and the raw
+outer ZIP.  Inner archive SHA-256 is `90D66229E393768C17B2698012AD78A98DF358DF3B4BA2D49EF5F18DCA8C7DB9`; raw
+outer artifact ZIP SHA-256 is `1E5002004D4789D1F00F0CA0D2A87642752056EDBD07FF948C89EFE8D79C3F38`.
+
+This seal removes validation marks only from the 36 A--E files and imports
+their 18 audits into `YangMillsCore.lean`.  Unit F, regional `B0`, attainment
+of window 15, terminal fields and a `TermSource` inhabitant remain open.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

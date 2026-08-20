@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 Mass-uniform four-coordinate contour telescope for the literal stabilized
 Green.  Partial-stage integrability is constructed from common-strip
@@ -14,10 +14,6 @@ open.
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductIntegrability
 import YangMills.RG.BalabanCMP89Eq248GreenOneCoordinateContourShift
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

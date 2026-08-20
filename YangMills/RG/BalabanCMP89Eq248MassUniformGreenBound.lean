@@ -1,4 +1,4 @@
-/- STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+/- SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 Pointwise mass-uniform Green bound below CMP89 (2.48)--(2.49).  This scratch
 file is intentionally not imported by `YangMillsCore`. -/
@@ -8,10 +8,6 @@ import YangMills.RG.BalabanCMP89Eq251ComplexNoncentralEndpointQuotientBound
 import YangMills.RG.BalabanCMP89Eq251SignedContourPhase
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointCentralFineUpper
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

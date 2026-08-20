@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 Source-specific application of Step 8b.22 to the literal mass-uniform
 stabilized Green.  Fourier reconstruction is derived from the actual torus
@@ -17,10 +17,6 @@ import YangMills.RG.BalabanCMP99CenteredTorusSampleDictionary
 import YangMills.RG.BalabanCMP99CenteredTorusPhysicalGreenSampleTransport
 import YangMills.RG.BalabanCMP89CenteredGreenFourierSummability
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

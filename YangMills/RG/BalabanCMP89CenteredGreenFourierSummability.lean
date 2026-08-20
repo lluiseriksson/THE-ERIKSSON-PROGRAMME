@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 Absolute summability of the literal centered-torus Green coefficients.  The
 coefficient is not synthetic: it is the normalized physical Green at the
@@ -15,10 +15,6 @@ import YangMills.RG.BalabanCMP89SignedLatticeL1TotalSum
 import YangMills.RG.BalabanCMP89Eq248MassUniformNormalizedGreenBound
 import YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientDictionary
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 

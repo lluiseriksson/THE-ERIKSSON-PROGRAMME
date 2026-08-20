@@ -1,5 +1,5 @@
 /-
-STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED.
+SEALED SOURCE-SPECIFIC BRICK -- COMPILER-VERIFIED.
 
 This scratch file specializes the future centered-cube quotient to the
 literal mass-uniform stabilized Green endpoint.  It derives continuity and
@@ -13,10 +13,6 @@ import YangMills.RG.BalabanCMP89CenteredUnitCubeTorusQuotient
 import YangMills.RG.BalabanCMP89Eq248GreenMassUniformHolomorphy
 import YangMills.RG.BalabanCMP89CenteredTorusFourierPhase
 
-/-!
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
--/
 
 namespace YangMills.RG
 
