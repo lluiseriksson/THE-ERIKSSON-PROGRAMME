@@ -137,14 +137,7 @@ theorem scratch_cmp96SourceSeparatedRegionalPrefixPrecision_comp_green
         (ActiveGaugeZeroCochain
           (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
           (SUNLieCoord Nc)) := by
-  exact cmp99RegionalDirichletPrecision_comp_green
-    (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
-    (scratch_cmp89SourceSeparatedAmbientPrefixPrecision hL depth
-      spacing epsilon a background budget fineSmall)
-    (scratch_cmp89SourceSeparatedPrefixCoercivity_pos hL depth
-      hspacing ha background budget fineSmall hsmall)
-    (scratch_isCoerciveCLM_cmp89SourceSeparatedAmbientPrefixPrecision
-      hL depth hspacing ha background budget fineSmall hsmall)
+  apply cmp99RegionalDirichletPrecision_comp_green
 
 end
 
