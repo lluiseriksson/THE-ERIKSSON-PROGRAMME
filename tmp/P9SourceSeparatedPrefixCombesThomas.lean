@@ -252,7 +252,7 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
               (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) depth))
           (SUNLieCoord Nc))
         (singleFinitePiLp source v)))) target = 0
-  simp only [WithLp.ofLp_smul, zero_smul, Pi.zero_apply]
+  simp only [zero_smul, WithLp.ofLp_zero, Pi.zero_apply]
 
 /-- Operator-norm budget for the exact prefix precision. -/
 theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
