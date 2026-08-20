@@ -327,9 +327,12 @@ theorem summable_pi_int_prod_nonneg
           constructor
           · intro n
             exact htail.mul_left (a 0 n)
-          · simpa only [htail.tsum_mul_left] using
-              hhead.mul_right (∑' n : Fin d → ℤ,
-                ∏ mu, tail mu (n mu))
+          · change Summable (fun n : ℤ =>
+              ∑' m : Fin d → ℤ, a 0 n * ∏ mu, tail mu (m mu))
+            convert hhead.mul_right (∑' m : Fin d → ℤ,
+              ∏ mu, tail mu (m mu)) using 1
+            funext n
+            rw [htail.tsum_mul_left]
       rw [← e.summable_iff]
       convert hpair using 1
       funext p
@@ -367,9 +370,12 @@ theorem tsum_pi_int_prod_nonneg
           constructor
           · intro n
             exact htail.mul_left (a 0 n)
-          · simpa only [htail.tsum_mul_left] using
-              hhead.mul_right (∑' n : Fin d → ℤ,
-                ∏ mu, tail mu (n mu))
+          · change Summable (fun n : ℤ =>
+              ∑' m : Fin d → ℤ, a 0 n * ∏ mu, tail mu (m mu))
+            convert hhead.mul_right (∑' m : Fin d → ℤ,
+              ∏ mu, tail mu (m mu)) using 1
+            funext n
+            rw [htail.tsum_mul_left]
       calc
         (∑' n : Fin (d + 1) → ℤ, ∏ mu, a mu (n mu)) =
             ∑' p : ℤ × (Fin d → ℤ),
