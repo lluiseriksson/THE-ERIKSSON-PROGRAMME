@@ -73,19 +73,30 @@ theorem cmp99FlatFiniteGridFourierSeriesSample_physicalGreen_eq_torusSample_draf
   have hseries :=
     UnitAddTorus.hasSum_mFourier_series_apply_of_summable hcoeff
       (cmp99FlatZModUnitTorusSample k)
-  have hseries' : HasSum (fun n : Fin 4 → ℤ =>
-      cmp99FlatZModFourierCharacter k
-          (cmp99FlatIntegerResidue (N := N) n) *
-        cmp89Eq248CenteredGreenPhysicalFourierCoefficient L j mass a u n)
-      (f (cmp99FlatZModUnitTorusSample k)) := by
-    apply hseries.congr
-    intro n
+  have hterm :
+      (fun n : Fin 4 → ℤ =>
+        UnitAddTorus.mFourierCoeff f n •
+          UnitAddTorus.mFourier n (cmp99FlatZModUnitTorusSample k)) =
+        (fun n : Fin 4 → ℤ =>
+          cmp99FlatZModFourierCharacter k
+              (cmp99FlatIntegerResidue (N := N) n) *
+            cmp89Eq248CenteredGreenPhysicalFourierCoefficient
+              L j mass a u n) := by
+    funext n
+    dsimp [f]
     rw [cmp89_mFourierCoeff_centeredGreen_eq_physicalCoefficient_draft
       (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hrho.le hamplitude hradius hwindow hmass u]
     rw [cmp89UnitAddTorus_mFourier_flatZModSample_eq_character_draft]
     simp only [smul_eq_mul]
     ring
+  have hseries' : HasSum (fun n : Fin 4 → ℤ =>
+      cmp99FlatZModFourierCharacter k
+          (cmp99FlatIntegerResidue (N := N) n) *
+        cmp89Eq248CenteredGreenPhysicalFourierCoefficient L j mass a u n)
+      (f (cmp99FlatZModUnitTorusSample k)) := by
+    rw [← hterm]
+    exact hseries
   simpa [cmp99FlatFiniteGridFourierSeriesSample, f] using hseries'.tsum_eq
 
 /-- **Physical finite-grid aliasing.**  The normalized finite DFT of the
