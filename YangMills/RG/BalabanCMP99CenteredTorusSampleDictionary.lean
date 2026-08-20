@@ -125,17 +125,8 @@ theorem cmp89UnitAddTorus_mFourier_unitTorusSample_eq_flatCharacter
   apply Finset.prod_congr rfl
   intro mu _
   simp only [cmp99FinBoxZModEquiv_apply]
-  change fourier (n mu)
-      (((((ell mu).val : ℝ) / (N' : ℝ) : ℝ) : UnitAddCircle)) =
-    ZMod.stdAddChar (((ell mu).val : ZMod N') * (n mu : ZMod N'))
   rw [fourier_coe_apply]
   push_cast
-  change
-    Complex.exp
-        (2 * Real.pi * Complex.I * (n mu : ℂ) *
-          (((ell mu).val : ℂ) / (N' : ℂ)) / 1) =
-      ZMod.stdAddChar
-        (((ell mu).val : ZMod N') * (n mu : ZMod N'))
   rw [show ((ell mu).val : ZMod N') * (n mu : ZMod N') =
       (((ell mu).val : ℤ) * n mu : ℤ) by push_cast; rfl,
     ZMod.stdAddChar_coe]
