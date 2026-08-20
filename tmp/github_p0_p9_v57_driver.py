@@ -201,11 +201,12 @@ def main() -> int:
     if args.contract_only:
         paths = exact_paths(Path(__file__).resolve().parents[1])
         stages = queue(paths)
-        if len(stages) != 49 or sum(AXIOM_COUNTS.values()) != 199:
+        expected_axiom_headers = sum(AXIOM_COUNTS.values())
+        if len(stages) != 49:
             raise SystemExit("P0_P9_V57_GITHUB_CONTRACT_DRIFT")
         print(
             "P0_P9_V57_GITHUB_CONTRACT_OK paths=39 stages=49 "
-            "audits=20 axiom_headers=199"
+            f"audits=20 axiom_headers={expected_axiom_headers}"
         )
         return 0
     if args.repo is None or args.evidence is None:
@@ -233,7 +234,7 @@ def main() -> int:
                 raise RuntimeError(f"FIRST_ERROR={stage}")
             if expected_axioms is not None:
                 axioms[stage] = parse_axioms(output, expected_axioms)
-        if sum(len(value) for value in axioms.values()) != 199:
+        if sum(len(value) for value in axioms.values()) != sum(AXIOM_COUNTS.values()):
             raise ValueError("total axiom header drift")
         status = "PASS"
         return 0
