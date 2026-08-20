@@ -4,8 +4,6 @@ physical index/spacing dictionary for P3.
 
 The source index shift is explicit: a current positive step with value `k` uses recurrence index `k-1`, while its next prefix uses recurrence index `k`.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

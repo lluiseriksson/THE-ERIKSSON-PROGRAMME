@@ -4,8 +4,6 @@ elaboration target for Step 8b.24/P2c.
 
 This file isolates the finite-dimensional algebra of CMP85 (2.30). The source-facing producer must discharge `hZeroControl` from the generated prefix Poincare theorem; it may not expose that implication to its caller.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

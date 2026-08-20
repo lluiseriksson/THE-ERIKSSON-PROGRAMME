@@ -9,8 +9,6 @@ This file uses P7's literal CMP85 final-prefix precision: zero bare mass and the
 
 The rate and the displayed Combes--Thomas budget remain visible. This is a per-depth statement only: it does not produce uniform CMP99 (3.42) constants, the four localized source actions, the C6c.4 terminal sup bound, or attainment of window 15.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

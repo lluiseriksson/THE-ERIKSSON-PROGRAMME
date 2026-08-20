@@ -4,8 +4,6 @@ noncommutative algebra gate for CMP85 (2.41)--(2.42).
 
 The two identities below expose every relation used by the block-Gaussian inverse calculation. In particular, neither the next Green operator nor the recurrence formula is accepted as an operator-valued hypothesis: the only scalar input is `beta * (b + c) = b * c`.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

@@ -6,8 +6,6 @@ carrier and scale dictionary from CMP85 (2.43) to the regional CMP89 (2.34) pres
 
 The RG ratio `L` and the independent regional large-block factor `K` remain different parameters. The prefix Green chain is generated on the full coarse carrier `2*(K*Q)` with `M := L`; only after the source identity is proved is the whole fine-carrier operator reindexed through the already constructed full-site equivalence. The hRpoly endpoint fixes the bare mass to zero internally.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

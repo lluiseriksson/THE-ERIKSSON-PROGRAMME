@@ -4,8 +4,6 @@ source-complete producer for CMP85 (2.41)--(2.42).
 
 Every operator in the two conclusions is generated internally from the single retained tower. The only public analytic/scalar inputs are those already required by P2a/P2c.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

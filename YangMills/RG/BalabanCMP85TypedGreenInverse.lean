@@ -4,8 +4,6 @@ outer inverse calculation for CMP85 (2.42).
 
 The candidate Green operator is constructed from `G` and `C`. The next Green operator is intentionally absent: it may enter only after these two inverse laws, through uniqueness.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

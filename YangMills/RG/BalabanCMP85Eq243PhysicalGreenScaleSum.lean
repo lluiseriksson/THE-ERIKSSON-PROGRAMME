@@ -4,8 +4,6 @@ finite telescoping layer for CMP85 (2.43).
 
 The generic lemma is purely additive. The physical increment is fixed separately from the source-complete (2.42) producer, so the later dependent `Fin` reindexing cannot alter its coefficient or operator order.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

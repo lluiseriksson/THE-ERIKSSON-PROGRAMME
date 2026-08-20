@@ -12962,6 +12962,31 @@ uniform CMP99 (3.42) pair, the four regional actions, window 15, a terminal
 field, or a `TermSource`.  The live count remains exactly `20/41` and
 `TermSource = 0`; window 15 remains compatible but unattained.
 
+### Step 8b.24/C6c.2 P0--P9 promoted prefix-Green graph (SEALED; fresh Colab Pro+ clone; 20/41 unchanged)
+
+One fresh Colab Pro+ CPU/high-RAM clone compiled and audited the full public
+P0--P9 graph at exact source
+`10e6899692defec09b416d73a64ec36ee5cc7393`.  Both cold prerequisite
+materializations and all 39 numbered focal/audit stages exited `0`.  The 20
+audits emitted exactly 200 axiom headers; every set is a subset of
+`{propext, Classical.choice, Quot.sound}`, with neither `sorryAx` nor
+`ofReduceBool`.  The evidence-payload SHA-256 is
+`49F216701E4B0BEB22BF4FB8442F2699FF471B2170111ED9BF095E4064418562`;
+the downloaded archive SHA-256 is
+`45443DB78A7FE08AD956462EEA6E992D2737F41B18940BF4F9C8E643A476A782`.
+The archive was verified locally before the runtime was disconnected and
+deleted; the cell was not rerun.
+
+The seal fixes the canonical prefix recursion, base and coarse covariances,
+the Eq. (2.34) finite scale sum, the source-separated ambient precision, the
+canonical regional Green and the per-depth Combes--Thomas bounds.  It does
+**not** produce a uniform CMP99 (3.42) pair, any of the four source-localized
+actions, the C6c.4 supremum, window-15 attainment, a terminal field or a
+`TermSource` inhabitant.  In particular, the per-depth bound
+`2 / coercivity` is not relabelled as the source-uniform `B0`.  Counters stay
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
+
 
 ### Step 8b.23: source-specific physical Green Fourier route, Units A--E (SEALED; cold checkout; 20/41 unchanged)
 

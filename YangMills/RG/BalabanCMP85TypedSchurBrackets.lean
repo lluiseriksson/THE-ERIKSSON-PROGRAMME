@@ -4,8 +4,6 @@ typed bridge from the abstract noncommutative certificates to the three-space CM
 
 `Qdag` and `Rdag` are explicit source-weighted adjoints. They are not silently replaced by Lean's counting-Hilbert adjoints.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

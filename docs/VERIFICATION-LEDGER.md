@@ -38579,3 +38579,34 @@ imports their four audits into `YangMillsCore.lean`.  Regional `B0`, the
 independent-scale owner dictionary, attainment of window 15, terminal fields
 and a `TermSource` inhabitant remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 871 (2026-08-20, **P0--P9 promoted prefix-Green graph sealed in one fresh Colab Pro+ clone; 20/41 unchanged**)
+
+One fresh Colab Pro+ CPU/high-RAM runtime compiled and audited the complete
+public P0--P9 prefix-Green graph at exact source
+`10e6899692defec09b416d73a64ec36ee5cc7393`, runner revision
+`p0-p9-promoted-10e6899692de-v1`.  The official Lean 4.29.0-rc6 asset and
+Mathlib pin `07642720480157414db592fa85b626dafb71355b` passed their exact
+hash gates.  Both prerequisite materializations and all 39 numbered
+focal/audit stages exited `0`; the evidence ledger contains 56 records, no
+nonzero exit and `4521.861 s` of aggregate recorded stage time.
+
+The 20 audits emitted exactly 200 axiom headers.  Every set is a subset of
+`{propext, Classical.choice, Quot.sound}`, and the blacklist found neither
+`sorryAx` nor `ofReduceBool`.  Canonical evidence-payload SHA-256 is
+`49F216701E4B0BEB22BF4FB8442F2699FF471B2170111ED9BF095E4064418562`;
+the downloaded archive SHA-256 is
+`45443DB78A7FE08AD956462EEA6E992D2737F41B18940BF4F9C8E643A476A782`.
+The archive was downloaded and independently rehashed before the runtime was
+disconnected and deleted; the single cell was not rerun.
+
+This seal retires exactly the 37 remaining PRE-VALIDATION marks among the 39
+validated blobs (the P0 source/audit pair was already sealed) and imports the
+19 newly sealed audits into `YangMillsCore.lean`.  The graph now fixes the
+canonical prefix recursion, base/coarse covariances, Eq. (2.34), the
+source-separated ambient precision, the regional Green and per-depth
+Combes--Thomas bounds.  Uniform CMP99 (3.42), the four source-localized
+actions, C6c.4, window-15 attainment, terminal fields and a `TermSource`
+inhabitant remain open.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

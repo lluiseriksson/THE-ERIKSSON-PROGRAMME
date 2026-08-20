@@ -4,8 +4,6 @@ elaboration target for Step 8b.24/P1.
 
 Its purpose is to validate that prefix smallness follows from one terminal Poincare-error budget without assuming monotonicity of the nonlinear `Ubar` radius map.
 
-PRE-VALIDATION: this module's source is present, its `.olean` has not yet
-been materialized, and its result has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG
