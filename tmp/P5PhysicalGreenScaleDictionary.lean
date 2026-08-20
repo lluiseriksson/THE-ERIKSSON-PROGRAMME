@@ -240,15 +240,42 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
     (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) (depth + 1)
     (Nat.succ_pos depth) hspacing ha 0 background budget.toRadiusChain
     fineSmall hsmall
-  have htransport := congrArg (finitePiLpTypedKernelReindex e e) hfine
+  have hfineNamed :
+      scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
+          background budget fineSmall hsmall =
+        scratch_cmp89SourceSeparatedFineBaseCovariance hL depth hspacing ha
+            background budget fineSmall hsmall +
+          ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
+            scratch_cmp89SourceSeparatedFineGreenIncrement hL depth
+              hspacing ha background budget fineSmall hsmall j := by
+    calc
+      scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
+          background budget fineSmall hsmall =
+        scratch_cmp85SourceGeneratedPrefixGreen
+          (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
+          (by norm_num) hL
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1) hspacing ha 0 background budget.toRadiusChain
+          fineSmall hsmall
+          (scratch_cmp85LastPositivePrefix (depth + 1)
+            (Nat.succ_pos depth)) := by rfl
+      _ = _ := hfine
+      _ = scratch_cmp89SourceSeparatedFineBaseCovariance hL depth hspacing ha
+            background budget fineSmall hsmall +
+          ∑ j : ScratchCMP85PositiveCoarseStep (depth + 1),
+            scratch_cmp89SourceSeparatedFineGreenIncrement hL depth
+              hspacing ha background budget fineSmall hsmall j := by
+        apply congrArg₂ (fun A B => A + B)
+        · rfl
+        · apply Finset.sum_congr rfl
+          intro j hj
+          rfl
+  have htransport := congrArg (finitePiLpTypedKernelReindex e e) hfineNamed
   rw [scratch_finitePiLpTypedKernelReindex_add,
     scratch_finitePiLpTypedKernelReindex_fintype_sum] at htransport
   unfold scratch_cmp89SourceSeparatedAmbientPrefixGreen
     scratch_cmp89SourceSeparatedAmbientBaseCovariance
     scratch_cmp89SourceSeparatedAmbientGreenIncrement
-    scratch_cmp89SourceSeparatedFinePrefixGreen
-    scratch_cmp89SourceSeparatedFineBaseCovariance
-    scratch_cmp89SourceSeparatedFineGreenIncrement
   exact htransport
 
 /-- One transported CMP85 increment with the printed CMP89 coefficient and
@@ -293,8 +320,10 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenIncrement_eq_literal
         (((cmp99SourceMassParameter a (L : ℝ) (r.1.val - 1)) ^ 2 *
             (T.towerAt r.1).terminalSpacing⁻¹ ^ 4) •
           Gj.comp (Qjdag.comp (Cj.comp (Qj.comp Gj)))) := by
+  dsimp only
   unfold scratch_cmp89SourceSeparatedAmbientGreenIncrement
-    scratch_cmp89SourceSeparatedFineGreenIncrement
+  apply congrArg
+  unfold scratch_cmp89SourceSeparatedFineGreenIncrement
     scratch_cmp85SourceGeneratedGreenIncrement
     scratch_cmp85SourcePrefixA
   rfl
