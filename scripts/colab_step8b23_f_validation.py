@@ -29,8 +29,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "step8b23-f-v1"
-runner.SOURCE_SHA = '48bf91700168d00b8cdf38998fff354d7f4634cf'
+runner.RUNNER_REV = "step8b23-f-v2"
+runner.SOURCE_SHA = 'fa29c350fd216305b56685b15a6aee3d80e46ae7'
 runner.ROOT = Path("/content/hrpoly-step8b23-f")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-f-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-f-evidence.tar.gz")
