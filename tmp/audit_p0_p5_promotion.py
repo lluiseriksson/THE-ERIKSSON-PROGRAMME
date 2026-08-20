@@ -16,6 +16,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TMP = ROOT / "tmp"
+SCOPE_LABEL = "P0_P5"
+DISPLAY_LABEL = "P0--P5"
+PATH_LIST_NAME = "P0-P5-SCRATCH-PATHS.txt"
+MANIFEST_NAME = "P0-P5-SCRATCH-MANIFEST.sha256"
+ALREADY_PROMOTED_SOURCES: frozenset[str] = frozenset()
 
 SOURCES: tuple[tuple[str, str], ...] = (
     ("P0CanonicalPrefixTower.lean", "BalabanCMP99SourceCanonicalPrefixTower.lean"),
@@ -60,7 +65,9 @@ DECL = re.compile(
     r"(?m)^(?:noncomputable\s+)?"
     r"(?:def|abbrev|theorem|lemma|structure|class)\s+([A-Za-z0-9_.]+)"
 )
-PRINT = re.compile(r"(?m)^#print axioms YangMills\.RG\.([A-Za-z0-9_.]+)")
+PRINT = re.compile(
+    r"(?m)^#print axioms (?:YangMills\.RG\.)?([A-Za-z0-9_.]+)"
+)
 IMPORT = re.compile(r"(?m)^import\s+([^\s]+)")
 
 
@@ -84,25 +91,25 @@ def main() -> int:
         "tmp/P3PhysicalGreenRecurrenceAudit.lean"
     ) + 1
     expected_paths.insert(aggregate_index, aggregate_path)
-    path_list = TMP / "P0-P5-SCRATCH-PATHS.txt"
+    path_list = TMP / PATH_LIST_NAME
     listed_paths = [
         line for line in path_list.read_text(encoding="utf-8").splitlines() if line
     ]
     if listed_paths != expected_paths:
-        failures.append("P0--P5 exact path-list drift")
+        failures.append(f"{DISPLAY_LABEL} exact path-list drift")
 
-    manifest_path = TMP / "P0-P5-SCRATCH-MANIFEST.sha256"
+    manifest_path = TMP / MANIFEST_NAME
     manifest_rows: list[tuple[str, str]] = []
     for line in manifest_path.read_text(encoding="utf-8").splitlines():
         if not line:
             continue
         parts = line.split("  ", 1)
-        if len(parts) != 2 or not re.fullmatch(r"[0-9a-f]{64}", parts[0]):
+        if len(parts) != 2 or not re.fullmatch(r"[0-9A-Fa-f]{64}", parts[0]):
             failures.append(f"malformed manifest row: {line}")
             continue
-        manifest_rows.append((parts[1], parts[0]))
+        manifest_rows.append((parts[1], parts[0].lower()))
     if [path for path, _ in manifest_rows] != expected_paths:
-        failures.append("P0--P5 manifest path/order drift")
+        failures.append(f"{DISPLAY_LABEL} manifest path/order drift")
     for path, expected_hash in manifest_rows:
         candidate = ROOT / path
         if not candidate.is_file():
@@ -128,7 +135,8 @@ def main() -> int:
         if not source.is_file():
             failures.append(f"missing scratch source: tmp/{scratch_name}")
             continue
-        if target.exists():
+        already_promoted = scratch_name in ALREADY_PROMOTED_SOURCES
+        if target.exists() and not already_promoted:
             failures.append(f"tracked module already exists: {target.relative_to(ROOT)}")
 
         text = source.read_text(encoding="utf-8-sig")
@@ -141,8 +149,11 @@ def main() -> int:
                 failures.append(f"proposed-name collision: {new} ({previous}, {scratch_name})")
             else:
                 proposed_seen[new] = scratch_name
-            for collision in tracked_decl_names.get(new, []):
-                failures.append(f"tracked declaration collision: {new} in {collision}")
+            if not already_promoted:
+                for collision in tracked_decl_names.get(new, []):
+                    failures.append(
+                        f"tracked declaration collision: {new} in {collision}"
+                    )
 
         audit_name = source.stem + "Audit.lean"
         audit = TMP / audit_name
@@ -192,13 +203,13 @@ def main() -> int:
             )
 
     if failures:
-        print("P0_P5_PROMOTION_STATIC_FAIL")
+        print(f"{SCOPE_LABEL}_PROMOTION_STATIC_FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
 
     print(
-        "P0_P5_PROMOTION_STATIC_OK "
+        f"{SCOPE_LABEL}_PROMOTION_STATIC_OK "
         f"sources={len(SOURCES)} declarations={declaration_count} "
         f"unique_promoted_names={len(proposed_seen)} sibling_audits={len(SOURCES)} "
         "aggregate_audits=1 "

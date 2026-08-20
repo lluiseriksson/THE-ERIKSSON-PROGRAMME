@@ -30,6 +30,9 @@ RAW_MANIFEST = TMP / "P0-P5-SCRATCH-MANIFEST.sha256"
 EXPECTED_RAW_MANIFEST_SHA256 = (
     "B4A068C7DD867A7173AC2A2C7868CD10A9B3187F8ABE29AA456CDCF5AD28487B"
 )
+SCOPE_LABEL = "P0_P5"
+EXPECTED_DECLARATIONS = 156
+EXPECTED_PROMOTED_MODULES = 33
 STANDARD_BODY = (
     "PRE-VALIDATION: this module's source is present, its `.olean` has not yet\n"
     "been materialized, and its result has not yet been verified by the compiler."
@@ -117,9 +120,9 @@ def verify_raw_scope(listed: list[Path]) -> None:
     rows: list[tuple[str, str]] = []
     for line in manifest_bytes.decode("utf-8").splitlines():
         parts = line.split("  ", 1)
-        if len(parts) != 2 or not re.fullmatch(r"[0-9a-f]{64}", parts[0]):
+        if len(parts) != 2 or not re.fullmatch(r"[0-9A-Fa-f]{64}", parts[0]):
             raise ValueError(f"malformed raw manifest row: {line}")
-        rows.append((parts[1], parts[0]))
+        rows.append((parts[1], parts[0].lower()))
     expected_paths = [path.relative_to(ROOT).as_posix() for path in listed]
     if [path for path, _ in rows] != expected_paths:
         raise ValueError("raw manifest path/order drift")
@@ -157,6 +160,16 @@ def rewrite_imports(text: str, targets: dict[Path, Path]) -> str:
 def clean_semantic_docstring(text: str, path: Path) -> str:
     starts = [match.start() for match in re.finditer(r"/-!", text)]
     if not starts:
+        if path.stem.endswith("Audit"):
+            stripped = text.lstrip()
+            imports = re.match(r"((?:import[^\n]*\n)+)", stripped)
+            if imports is None:
+                raise ValueError(f"audit import prefix missing: {path.name}")
+            return (
+                imports.group(1)
+                + f"\n/-!\n# Axiom audit\n\n{STANDARD_BODY}\n-/\n\n"
+                + stripped[imports.end() :].lstrip()
+            )
         raise ValueError(f"module docstring missing: {path.name}")
     start = starts[0]
     end = text.find("-/", start)
@@ -242,16 +255,36 @@ def main() -> int:
     manifest: list[str] = []
     promoted_texts: dict[Path, str] = {}
     declaration_total = 0
+    existing_matches = 0
+    new_targets = 0
+    allowed_existing = set(getattr(scope, "ALREADY_PROMOTED_FILES", ()))
     for source in listed:
         try:
             if source not in targets:
                 raise ValueError(f"unmapped scratch file: {source.relative_to(ROOT)}")
             target = targets[source]
-            if target.exists():
+            if target.exists() and source.name not in allowed_existing:
                 raise ValueError(f"tracked target already exists: {target.relative_to(ROOT)}")
             content, declarations = transform(source, targets, names)
             promoted_texts[source] = content.decode("utf-8")
             declaration_total += declarations
+            if target.exists():
+                promoted_visible = [
+                    line for line in VISIBLE_LINES(promoted_texts[source]) if line.strip()
+                ]
+                tracked_text = target.read_text(encoding="utf-8-sig").replace(
+                    "\r\n", "\n"
+                )
+                tracked_visible = [
+                    line for line in VISIBLE_LINES(tracked_text) if line.strip()
+                ]
+                if promoted_visible != tracked_visible:
+                    raise ValueError(
+                        f"already-promoted visible code drift: {target.relative_to(ROOT)}"
+                    )
+                existing_matches += 1
+            else:
+                new_targets += 1
             manifest.append(
                 f"{hashlib.sha256(content).hexdigest()}  "
                 f"{target.relative_to(ROOT).as_posix()}\n"
@@ -307,21 +340,27 @@ def main() -> int:
                 f"expected={expected_imports} actual={actual_imports}"
             )
 
-    if declaration_total != 156:
-        failures.append(f"declaration total {declaration_total}, expected 156")
+    if declaration_total != EXPECTED_DECLARATIONS:
+        failures.append(
+            f"declaration total {declaration_total}, "
+            f"expected {EXPECTED_DECLARATIONS}"
+        )
     if failures:
-        print("P0_P5_PROMOTION_PREVIEW_FAIL")
+        print(f"{SCOPE_LABEL}_PROMOTION_PREVIEW_FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
 
     manifest_bytes = "".join(manifest).encode("utf-8")
     print(
-        "P0_P5_PROMOTION_PREVIEW_OK "
+        f"{SCOPE_LABEL}_PROMOTION_PREVIEW_OK "
         f"files={len(listed)} sources={len(scope.SOURCES)} sibling_audits={len(scope.SOURCES)} "
         f"aggregate_audits=1 declarations={declaration_total} renamed={len(names)} "
-        f"pre_validation_blocks={len(listed)} promoted_imports_resolved=33 "
-        f"sibling_audit_scopes=16 aggregate_audit_scopes=1 target_collisions=0 "
+        f"pre_validation_blocks={len(listed)} "
+        f"sibling_audit_scopes={len(scope.SOURCES)} aggregate_audit_scopes=1 "
+        f"target_collisions=0 existing_visible_matches={existing_matches} "
+        f"new_targets={new_targets} "
+        f"promoted_imports_resolved={EXPECTED_PROMOTED_MODULES} "
         f"promoted_content_manifest_sha256={sha256(manifest_bytes)}"
     )
     return 0
