@@ -96,6 +96,7 @@ theorem scratch_norm_cmp89SourceSeparatedFinalPrefix_Qprime_le_one
     ‖(T.towerAt
       (scratch_cmp85LastPositivePrefix (depth + 1)
         (Nat.succ_pos depth)).1).Qprime‖ ≤ 1 := by
+  dsimp only
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := L) Omega (depth + 1)
@@ -212,6 +213,7 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
           (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1)) =>
         finBoxDist x.1 y.1)
       (L ^ (depth + 1)) := by
+  dsimp only
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
   let T := scratch_cmp89SourceSeparatedPrefixTower
     (spacing := spacing) (epsilon := epsilon) hL depth background budget
@@ -367,6 +369,7 @@ theorem scratch_cmp89SourceSeparatedFinePrefixGreen_exponentialKernelBound
         (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
         spacing epsilon a background budget fineSmall)
       rate := by
+  dsimp only
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
   let Kfine := scratch_cmp89SourceSeparatedFinePrefixPrecision hL depth
     spacing epsilon a background budget fineSmall
@@ -560,6 +563,7 @@ theorem scratch_cmp96SourceSeparatedRegionalPrefixGreen_exponentialKernelBound
       (2 / c)
       (finitePiLpExponentialInverseDecayRate A decay
         (cmp99OmegaSiteExpSumBound (decay / 4)) c) := by
+  dsimp only
   let A := scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound hL depth
       spacing epsilon a background budget fineSmall *
     Real.exp (decay * (L ^ (depth + 1) : ℕ))
