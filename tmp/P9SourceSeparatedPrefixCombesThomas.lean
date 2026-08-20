@@ -243,6 +243,8 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
         background budget fineSmall) (singleFinitePiLp source v)).ofLp target = 0
   rw [hlap, hmass]
   simp
+  change (0 : SUNLieCoord Nc) = 0
+  rfl
 
 /-- Operator-norm budget for the exact prefix precision. -/
 theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
