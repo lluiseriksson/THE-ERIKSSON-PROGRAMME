@@ -119,6 +119,34 @@ theorem scratch_norm_cmp89SourceSeparatedFinalPrefix_Qprime_le_one
     (by norm_num) hL (matrixSUNAdjointModel Nc) hspacing background
     budget.toRadiusChain fineSmall
 
+/-- Elaboration-only name for the exact final-prefix `Q'†Q'`.  Its explicit
+ambient endomorphism type prevents the dependent terminal carrier of the
+retained tower from leaking into every downstream theorem signature. -/
+private noncomputable def scratch_cmp89SourceSeparatedFinalPrefixQprimeMass
+    (hL : 2 ≤ L) (depth : ℕ) (spacing epsilon : ℝ)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 L Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := L)
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1))
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := L)
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1))
+        (SUNLieCoord Nc) :=
+  let T := scratch_cmp89SourceSeparatedPrefixTower
+    (L := L) (K := K) (Q := Q) (Nc := Nc)
+    (spacing := spacing) (epsilon := epsilon) hL depth background budget
+    fineSmall
+  let r := scratch_cmp85LastPositivePrefix (depth + 1) (Nat.succ_pos depth)
+  (T.towerAt r.1).Qprime.adjoint.comp (T.towerAt r.1).Qprime
+
 /-- The exact final-prefix `Q'†Q'` has the printed terminal-block radius. -/
 theorem scratch_cmp89SourceSeparatedFinalPrefix_QprimeMass_finiteRange
     (hL : 2 ≤ L) (depth : ℕ) (spacing epsilon : ℝ)
@@ -128,22 +156,17 @@ theorem scratch_cmp89SourceSeparatedFinalPrefix_QprimeMass_finiteRange
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
-    let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
-    let T := scratch_cmp89SourceSeparatedPrefixTower
-      (L := L) (K := K) (Q := Q) (Nc := Nc)
-      (spacing := spacing) (epsilon := epsilon) hL depth background budget
-      fineSmall
     FinitePiLpFiniteRange
-      ((T.towerAt
-        (scratch_cmp85LastPositivePrefix (depth + 1)
-          (Nat.succ_pos depth)).1).Qprime.adjoint.comp
-        (T.towerAt
-          (scratch_cmp85LastPositivePrefix (depth + 1)
-            (Nat.succ_pos depth)).1).Qprime)
+      (scratch_cmp89SourceSeparatedFinalPrefixQprimeMass
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        hL depth spacing epsilon background budget fineSmall)
       (fun x y : ActiveGaugeRegion.Site
-          (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1)) =>
+          (cmp99IteratedLiftActiveRegion (M := L)
+            (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+            (depth + 1)) =>
         finBoxDist x.1 y.1)
       (L ^ (depth + 1) - 1) := by
+  unfold scratch_cmp89SourceSeparatedFinalPrefixQprimeMass
   let Omega := cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q
   let regions := cmp99SourceIteratedLiftActiveRegionChain
     (M := L) Omega (depth + 1)
@@ -254,8 +277,6 @@ theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
   have hDelta := norm_cmp99ActiveRegionSourceCovariantLaplacian_le
     (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1))
     (matrixSUNAdjointModel Nc) background hspacing
-  have hfour : (4 : ℝ) * (4 : ℝ) = 16 := by norm_num
-  rw [hfour] at hDelta
   rw [scratch_cmp89SourceSeparatedFinePrefixPrecision,
     scratch_cmp85SourceGeneratedPrefixPrecision,
     scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision]
@@ -278,12 +299,15 @@ theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
           (matrixSUNAdjointModel Nc) background spacing‖ +
         ‖b • ((T.towerAt r.1).Qprime.adjoint.comp
           (T.towerAt r.1).Qprime)‖ := norm_add_le _ _
-    _ ≤ 16 / spacing ^ 2 + |b| * ‖(T.towerAt r.1).Qprime‖ ^ 2 := by
+    _ ≤ 4 * (4 : ℝ) / spacing ^ 2 +
+        |b| * ‖(T.towerAt r.1).Qprime‖ ^ 2 := by
       rw [norm_smul, ContinuousLinearMap.norm_adjoint_comp_self,
         Real.norm_eq_abs]
       simpa only [pow_two] using add_le_add hDelta
         (le_refl (|b| *
           (‖(T.towerAt r.1).Qprime‖ * ‖(T.towerAt r.1).Qprime‖)))
+    _ = 16 / spacing ^ 2 + |b| * ‖(T.towerAt r.1).Qprime‖ ^ 2 := by
+      norm_num
     _ ≤ 16 / spacing ^ 2 + |b| := by
       have hQsq : ‖(T.towerAt r.1).Qprime‖ ^ 2 ≤ 1 := by
         nlinarith [norm_nonneg (T.towerAt r.1).Qprime]
