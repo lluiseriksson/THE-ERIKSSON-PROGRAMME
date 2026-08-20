@@ -76,7 +76,7 @@ theorem cmp89CenteredPeriodicOneDimensionalExpWeight_nat_eq
             rw [Int.cast_natCast]
       _ = ((u + (P : ℤ) * (n : ℤ) : ℤ) : ℝ) :=
         congrArg (fun z : ℤ => (z : ℝ)) hsumAbsInt
-      _ = (u : ℝ) + (P : ℝ) * (n : ℝ) := by push_cast
+      _ = (u : ℝ) + (P : ℝ) * (n : ℝ) := by norm_num
   unfold cmp89CenteredPeriodicOneDimensionalExpWeight
   rw [hsumAbsReal, huAbsReal]
   push_cast
@@ -321,25 +321,16 @@ theorem summable_pi_int_prod_nonneg
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
-          have hheadNorm : Summable (fun n : ℤ => ‖a 0 n‖) :=
-            by
-              apply hhead.congr
-              intro n
-              exact (Real.norm_of_nonneg (ha0 0 n)).symm
-          have htailNorm : Summable (fun n : Fin d → ℤ =>
-              ‖∏ mu, tail mu (n mu)‖) :=
-            by
-              apply htail.congr
-              intro n
-              exact (Real.norm_of_nonneg
-                (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
-          have hnormProd : Summable (fun p : ℤ × (Fin d → ℤ) =>
-              ‖a 0 p.1 * ∏ mu, tail mu (p.2 mu)‖) :=
-            hheadNorm.mul_norm htailNorm
-          exact hnormProd.of_norm
-      apply e.summable_iff.mp
-      change Summable (fun p : ℤ × (Fin d → ℤ) =>
-        ∏ mu, a mu ((e p) mu))
+          apply (summable_prod_of_nonneg (fun p => mul_nonneg
+            (ha0 0 p.1) (Finset.prod_nonneg fun mu _ =>
+              ha0 mu.succ (p.2 mu)))).2
+          constructor
+          · intro n
+            exact htail.mul_left (a 0 n)
+          · simpa only [htail.tsum_mul_left] using
+              hhead.mul_right (∑' n : Fin d → ℤ,
+                ∏ mu, tail mu (n mu))
+      rw [← e.summable_iff]
       convert hpair using 1
       funext p
       rw [Fin.prod_univ_succ]
@@ -368,22 +359,15 @@ theorem tsum_pi_int_prod_nonneg
       have hpair : Summable (fun p : ℤ × (Fin d → ℤ) =>
           a 0 p.1 * ∏ mu, tail mu (p.2 mu)) :=
         by
-          have hheadNorm : Summable (fun n : ℤ => ‖a 0 n‖) :=
-            by
-              apply hhead.congr
-              intro n
-              exact (Real.norm_of_nonneg (ha0 0 n)).symm
-          have htailNorm : Summable (fun n : Fin d → ℤ =>
-              ‖∏ mu, tail mu (n mu)‖) :=
-            by
-              apply htail.congr
-              intro n
-              exact (Real.norm_of_nonneg
-                (Finset.prod_nonneg fun mu _ => ha0 mu.succ (n mu))).symm
-          have hnormProd : Summable (fun p : ℤ × (Fin d → ℤ) =>
-              ‖a 0 p.1 * ∏ mu, tail mu (p.2 mu)‖) :=
-            hheadNorm.mul_norm htailNorm
-          exact hnormProd.of_norm
+          apply (summable_prod_of_nonneg (fun p => mul_nonneg
+            (ha0 0 p.1) (Finset.prod_nonneg fun mu _ =>
+              ha0 mu.succ (p.2 mu)))).2
+          constructor
+          · intro n
+            exact htail.mul_left (a 0 n)
+          · simpa only [htail.tsum_mul_left] using
+              hhead.mul_right (∑' n : Fin d → ℤ,
+                ∏ mu, tail mu (n mu))
       calc
         (∑' n : Fin (d + 1) → ℤ, ∏ mu, a mu (n mu)) =
             ∑' p : ℤ × (Fin d → ℤ),
