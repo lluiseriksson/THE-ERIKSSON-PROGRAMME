@@ -197,10 +197,13 @@ theorem scratch_cmp85SourceGeneratedPrefixGreenAtNat_succ_eq_add
   have hjle : j ≤ depth := Nat.le_of_lt hlt
   have hsuccpos : 0 < j + 1 := by omega
   have hsuccle : j + 1 ≤ depth := by omega
+  have hsuccRange : 0 < j + 1 ∧ j + 1 ≤ depth :=
+    ⟨hsuccpos, hsuccle⟩
+  have hcurrentRange : 0 < j ∧ j ≤ depth := ⟨hpos, hjle⟩
+  have hstepRange : 0 < j ∧ j < depth := ⟨hpos, hlt⟩
   simp only [scratch_cmp85SourceGeneratedPrefixGreenAtNat,
     scratch_cmp85SourceGeneratedGreenIncrementAtNat,
-    dif_pos ⟨hsuccpos, hsuccle⟩, dif_pos ⟨hpos, hjle⟩,
-    dif_pos ⟨hpos, hlt⟩]
+    dif_pos hsuccRange, dif_pos hcurrentRange, dif_pos hstepRange]
   simpa only [scratch_cmp85PositivePrefixOfNat,
     scratch_cmp85PositiveCoarseStepOfNat,
     ScratchCMP85PositiveCoarseStep.currentPrefix,
@@ -314,12 +317,12 @@ theorem scratch_cmp85SourceGeneratedGreenIncrementAtNat_sum_eq_step_sum
     _ = ∑ k : ScratchCMP85PositiveCoarseStep depth,
         scratch_cmp85SourceGeneratedGreenIncrement hd hM Omega0 depth
           hspacing ha mass background0 chain fineSmall hsmall k := by
-          apply Finset.sum_congr rfl
-          intro k hk
-          simp only [f, scratch_cmp85PositiveCoarseStepEquivIco,
-            scratch_cmp85SourceGeneratedGreenIncrementAtNat,
-            dif_pos ⟨k.2, k.1.isLt⟩,
-            scratch_cmp85PositiveCoarseStepOfNat]
+      apply Finset.sum_congr rfl
+      intro k hk
+      have hkRange : 0 < k.1.val ∧ k.1.val < depth := ⟨k.2, k.1.isLt⟩
+      simp only [f, scratch_cmp85PositiveCoarseStepEquivIco,
+        scratch_cmp85SourceGeneratedGreenIncrementAtNat,
+        dif_pos hkRange, scratch_cmp85PositiveCoarseStepOfNat]
 
 /-- Final positive prefix at the fixed generated depth. -/
 def scratch_cmp85LastPositivePrefix
@@ -360,8 +363,11 @@ theorem scratch_cmp85SourceGeneratedGreenScaleSum_eq243
         scratch_cmp85SourceGeneratedPrefixGreen hd hM Omega0 depth hspacing ha
           mass background0 chain fineSmall hsmall
           (scratch_cmp85LastPositivePrefix depth hdepth) := by
+    have hdepthRange : 0 < depth ∧ depth ≤ depth := ⟨hdepth, le_rfl⟩
     rw [scratch_cmp85SourceGeneratedPrefixGreenAtNat]
-    simp only [dif_pos ⟨hdepth, le_rfl⟩]
+    rw [dif_pos hdepthRange]
+    congr 1
+    apply Subtype.ext
     rfl
   rw [hfinal] at hsum
   exact hsum
