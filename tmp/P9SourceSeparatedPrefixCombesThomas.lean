@@ -243,8 +243,16 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
         background budget fineSmall) (singleFinitePiLp source v)).ofLp target = 0
   rw [hlap, hmass]
   simp
-  rw [zero_smul]
-  rfl
+  change
+    (WithLp.ofLp ((0 : ℝ) •
+      (ContinuousLinearMap.id ℝ
+        (ActiveGaugeZeroCochain
+          (cmp99LiftActiveRegion
+            (cmp99IteratedLiftActiveRegion
+              (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q) depth))
+          (SUNLieCoord Nc))
+        (singleFinitePiLp source v)))) target = 0
+  simp only [WithLp.ofLp_smul, zero_smul, Pi.zero_apply]
 
 /-- Operator-norm budget for the exact prefix precision. -/
 theorem scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
