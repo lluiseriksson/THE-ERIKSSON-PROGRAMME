@@ -89,8 +89,8 @@ noncomputable def scratch_cmp85SourceGeneratedGreenIncrement
     hspacing ha mass background0 chain fineSmall hsmall r
   let C := scratch_cmp85SourceGeneratedCoarseCovariance hd hM Omega0 depth
     hspacing ha mass background0 chain fineSmall hsmall k
-  (scratch_cmp85SourcePrefixA (M := M) a r) ^ 2 *
-      (T.towerAt r.1).terminalSpacing⁻¹ ^ 4 •
+  ((scratch_cmp85SourcePrefixA (M := M) a r) ^ 2 *
+      (T.towerAt r.1).terminalSpacing⁻¹ ^ 4) •
     G.comp (Qdag.comp (C.comp (Q.comp G)))
 
 /-- Each positive source step is exactly addition of the literal increment;
