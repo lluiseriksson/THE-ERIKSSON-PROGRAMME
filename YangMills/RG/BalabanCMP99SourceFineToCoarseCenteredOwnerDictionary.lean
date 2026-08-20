@@ -68,6 +68,12 @@ theorem
     cmp99CenteredPeriodicEndpointRepresentative_natAbs_eq_valMinAbs
       (M * N)
       (-cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x y mu)
+  change
+    (cmp99CenteredPeriodicEndpointRepresentative (M * N)
+        (-cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+          M x y mu)).1.natAbs =
+      (cmp99DiagonalPeriodicDisplacement
+        x (blockBasepoint M N y) mu).natAbs
   rw [hcenter]
   unfold cmp99DiagonalPeriodicDisplacement
   unfold cmp116CMP89PeriodicCoordinateDisplacement
@@ -87,7 +93,15 @@ theorem
               M x y mu)) =
       cmp89SignedLatticeL1ExponentialWeight delta
         (cmp99DiagonalPeriodicDisplacement x (blockBasepoint M N y)) := by
-  unfold cmp89SignedLatticeL1ExponentialWeight
+  rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs,
+    cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
+  change
+    Real.exp (-delta * cmp89Eq251LatticeL1Length
+      (cmp99CenteredPeriodicEndpointVectorRepresentative (M * N)
+        (fun mu =>
+          -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x y mu))) =
+      Real.exp (-delta * cmp89Eq251LatticeL1Length
+        (cmp99DiagonalPeriodicDisplacement x (blockBasepoint M N y)))
   rw [
     cmp89Eq251LatticeL1Length_centered_neg_fineToCoarse_eq_diagonalPeriodic]
 
@@ -106,11 +120,34 @@ theorem cmp89SignedLatticeL1ExponentialWeight_centered_neg_fineToCoarse_le_owner
       Real.exp (2 * rho) *
         Real.exp (-rho *
           (finBoxDist (blockSite M N x) y : ℝ)) := by
-  rw [
-    cmp89SignedLatticeL1ExponentialWeight_centered_neg_fineToCoarse_eq_diagonalPeriodic]
-  simpa using
-    (cmp89SignedLatticeL1ExponentialWeight_centeredDiagonal_le_owner
-      hrho x (blockBasepoint M N y))
+  calc
+    cmp89SignedLatticeL1ExponentialWeight (rho / (M : ℝ))
+        (cmp99CenteredPeriodicEndpointVectorRepresentative (M * N)
+          (fun mu =>
+            -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+              M x y mu)) =
+      cmp89SignedLatticeL1ExponentialWeight (rho / (M : ℝ))
+        (cmp99DiagonalPeriodicDisplacement x (blockBasepoint M N y)) :=
+      cmp89SignedLatticeL1ExponentialWeight_centered_neg_fineToCoarse_eq_diagonalPeriodic
+        (rho / (M : ℝ)) x y
+    _ = cmp89SignedLatticeL1ExponentialWeight (rho / (M : ℝ))
+        (cmp99CenteredPeriodicEndpointVectorRepresentative (M * N)
+          (cmp99DiagonalPeriodicDisplacement x (blockBasepoint M N y))) := by
+      rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs,
+        cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
+      change
+        Real.exp (-(rho / (M : ℝ)) * cmp89Eq251LatticeL1Length
+          (cmp99DiagonalPeriodicDisplacement x (blockBasepoint M N y))) =
+        Real.exp (-(rho / (M : ℝ)) * cmp89Eq251LatticeL1Length
+          (cmp99CenteredPeriodicEndpointVectorRepresentative (M * N)
+            (cmp99DiagonalPeriodicDisplacement x (blockBasepoint M N y))))
+      rw [
+        cmp89Eq251LatticeL1Length_centeredDiagonalPeriodicDisplacement_eq]
+    _ ≤ Real.exp (2 * rho) *
+        Real.exp (-rho * (finBoxDist (blockSite M N x) y : ℝ)) := by
+      simpa using
+        (cmp89SignedLatticeL1ExponentialWeight_centeredDiagonal_le_owner
+          hrho x (blockBasepoint M N y))
 
 end
 
