@@ -88,11 +88,11 @@ theorem scratch_cmp89SourceSeparatedPrefixTower_terminalSpacing
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (r : Fin (depth + 2)) :
-    ((scratch_cmp89SourceSeparatedPrefixTower hL depth background budget
-      fineSmall).towerAt r).terminalSpacing =
+    ((scratch_cmp89SourceSeparatedPrefixTower (spacing := spacing)
+      (epsilon := epsilon) hL depth background budget fineSmall).towerAt r).terminalSpacing =
         (L : ℝ) ^ r.val * spacing := by
-  exact (scratch_cmp89SourceSeparatedPrefixTower hL depth background budget
-    fineSmall).towerAt_terminalSpacing r
+  exact (scratch_cmp89SourceSeparatedPrefixTower (spacing := spacing)
+    (epsilon := epsilon) hL depth background budget fineSmall).towerAt_terminalSpacing r
 
 /-- The regional large-block side is independent `K` times the final RG
 spacing factor. -/
@@ -241,14 +241,9 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234
     (Nat.succ_pos depth) hspacing ha 0 background budget.toRadiusChain
     fineSmall hsmall
   have htransport := congrArg (finitePiLpTypedKernelReindex e e) hfine
-  simpa only [scratch_cmp89SourceSeparatedAmbientPrefixGreen,
-    scratch_cmp89SourceSeparatedAmbientBaseCovariance,
-    scratch_cmp89SourceSeparatedAmbientGreenIncrement,
-    scratch_cmp89SourceSeparatedFinePrefixGreen,
-    scratch_cmp89SourceSeparatedFineBaseCovariance,
-    scratch_cmp89SourceSeparatedFineGreenIncrement,
-    scratch_finitePiLpTypedKernelReindex_add,
-    scratch_finitePiLpTypedKernelReindex_fintype_sum, e] using htransport
+  rw [scratch_finitePiLpTypedKernelReindex_add,
+    scratch_finitePiLpTypedKernelReindex_fintype_sum] at htransport
+  exact htransport
 
 /-- CMP89 (2.34) with the printed coefficient and operator order visible in
 the public conclusion.  The preceding theorem is a convenient technical
@@ -293,8 +288,8 @@ theorem scratch_cmp89SourceSeparatedAmbientGreenScaleSum_eq234_literal
             (depth + 1) hspacing ha 0 background budget.toRadiusChain
             fineSmall hsmall j
           finitePiLpTypedKernelReindex e e
-            ((cmp99SourceMassParameter a (L : ℝ) (r.1.val - 1)) ^ 2 *
-                (T.towerAt r.1).terminalSpacing⁻¹ ^ 4 •
+            (((cmp99SourceMassParameter a (L : ℝ) (r.1.val - 1)) ^ 2 *
+                (T.towerAt r.1).terminalSpacing⁻¹ ^ 4) •
               Gj.comp (Qjdag.comp (Cj.comp (Qj.comp Gj)))) := by
   dsimp only
   simpa only [scratch_cmp89SourceSeparatedAmbientGreenIncrement,
