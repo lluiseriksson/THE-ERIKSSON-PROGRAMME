@@ -113,11 +113,16 @@ def materialize_manifest_packages() -> str:
             ["git", "-C", str(destination), "remote", "add", "origin", url],
             cwd=runner.ROOT,
         )
+        fetch_options = ["fetch", "--depth=1"]
+        if name == "proofwidgets":
+            # Its Lake release target resolves the cloud artifact through the
+            # tag naming this exact revision; a SHA-only shallow fetch omits it.
+            fetch_options.append("--tags")
         base_run(
             "package_fetch_" + safe_name,
             [
                 "timeout", "300s", "git", "-c", "http.version=HTTP/1.1",
-                "-C", str(destination), "fetch", "--depth=1", "origin", rev,
+                "-C", str(destination), *fetch_options, "origin", rev,
             ],
             cwd=runner.ROOT,
         )
