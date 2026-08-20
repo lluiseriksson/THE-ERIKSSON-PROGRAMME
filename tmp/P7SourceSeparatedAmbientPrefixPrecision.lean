@@ -43,7 +43,17 @@ noncomputable def scratch_cmp89SourceSeparatedFinePrefixPrecision
     (budget : CMP99SourceUbarClosedBudget 4 L Nc (depth + 1) epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
-      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :=
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := L)
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1))
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (cmp99IteratedLiftActiveRegion (M := L)
+          (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+          (depth + 1))
+        (SUNLieCoord Nc) :=
   scratch_cmp85SourceGeneratedPrefixPrecision
     (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
     (by norm_num) hL
@@ -97,9 +107,16 @@ noncomputable def scratch_cmp89SourceSeparatedAmbientPrefixPrecision
     (budget : CMP99SourceUbarClosedBudget 4 L Nc (depth + 1) epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
-      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :=
-  let e := cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
-  finitePiLpTypedKernelReindex e e
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      GaugeZeroCochain 4
+        (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
+        (SUNLieCoord Nc) :=
+  finitePiLpTypedKernelReindex
+    (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth)
+    (cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth)
     (scratch_cmp89SourceSeparatedFinePrefixPrecision hL depth
       spacing epsilon a background budget fineSmall)
 
@@ -121,7 +138,14 @@ theorem scratch_isCoerciveCLM_cmp89SourceSeparatedAmbientPrefixPrecision
         spacing epsilon a background budget fineSmall)
       (scratch_cmp89SourceSeparatedPrefixCoercivity hL depth
         spacing epsilon a background budget fineSmall) := by
-  let e := cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
+  let e :
+      ActiveGaugeRegion.Site
+          (cmp99IteratedLiftActiveRegion (M := L)
+            (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+            (depth + 1)) ≃
+        FinBox 4
+          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+    cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
   apply isCoerciveCLM_finitePiLpTypedKernelReindex e
   exact scratch_isCoerciveCLM_cmp85SourceGeneratedPrefixPrecision
     (d := 4) (M := L) (N := 2 * (K * Q)) (Nc := Nc)
@@ -151,7 +175,14 @@ theorem scratch_cmp89SourceSeparatedAmbientPrefixPrecision_comp_green
         (GaugeZeroCochain 4
           (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
           (SUNLieCoord Nc)) := by
-  let e := cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
+  let e :
+      ActiveGaugeRegion.Site
+          (cmp99IteratedLiftActiveRegion (M := L)
+            (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+            (depth + 1)) ≃
+        FinBox 4
+          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+    cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
   exact finitePiLpTypedKernelReindex_comp_eq_id e
     (scratch_cmp89SourceSeparatedFinePrefixPrecision hL depth
       spacing epsilon a background budget fineSmall)
@@ -185,7 +216,14 @@ theorem scratch_cmp89SourceSeparatedAmbientPrefixGreen_comp_precision
         (GaugeZeroCochain 4
           (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))
           (SUNLieCoord Nc)) := by
-  let e := cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
+  let e :
+      ActiveGaugeRegion.Site
+          (cmp99IteratedLiftActiveRegion (M := L)
+            (cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion K Q)
+            (depth + 1)) ≃
+        FinBox 4
+          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+    cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv L K Q depth
   exact finitePiLpTypedKernelReindex_comp_eq_id e
     (scratch_cmp89SourceSeparatedFinePrefixGreen hL depth hspacing ha
       background budget fineSmall hsmall)
