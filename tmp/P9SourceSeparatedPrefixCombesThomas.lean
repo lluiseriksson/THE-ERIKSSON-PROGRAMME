@@ -233,13 +233,14 @@ theorem scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
     scratch_cmp85SourceGeneratedPrefixPrecision,
     scratch_cmp85BareMassPrecision, cmp99SourceGaugePrecision]
   simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply]
-  simp only [scratch_cmp89SourceSeparatedFinalPrefixQprimeMass,
-    scratch_cmp89SourceSeparatedPrefixTower] at hmass
   change
     ((cmp99ActiveRegionSourceCovariantLaplacian
         (cmp99IteratedLiftActiveRegion (M := L) Omega (depth + 1))
         (matrixSUNAdjointModel Nc) background spacing
-          (singleFinitePiLp source v)).ofLp target) + _ + _ = 0
+          (singleFinitePiLp source v)).ofLp target) + _ +
+      _ • ((scratch_cmp89SourceSeparatedFinalPrefixQprimeMass
+        (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth spacing epsilon
+        background budget fineSmall) (singleFinitePiLp source v)).ofLp target = 0
   rw [hlap, hmass]
   simp
 
