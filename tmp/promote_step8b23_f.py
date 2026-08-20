@@ -15,7 +15,7 @@ PREVIEW = runpy.run_path(str(ROOT / "tmp" / "audit_step8b23_promotion_preview.py
 AE_LIST = ROOT / "tmp" / "STEP8B23-UNIT-E-PREFIX-PATHS.txt"
 F_LIST = ROOT / "tmp" / "STEP8B23-UNIT-F-EXTENSION-PATHS.txt"
 EXPECTED_AE_SEALED_DIGEST = (
-    "07C83157A79B64A12F5135423F86F76252E092CD185D0D58FDF61694A34C1978"
+    "7B8DDDA9FED6E8F374534097835EE2A0BF49F23F430B1F763908506924825AF1"
 )
 EXPECTED_F_PROMOTED_DIGEST = (
     "AEC2A745A059DBFA7F24F8F52233156F9569ECF8AF35329292B0F3BDDCA7C619"
@@ -58,7 +58,15 @@ def ae_prerequisites() -> list[tuple[Path, bytes]]:
     rows: list[str] = []
     for draft in listed(AE_LIST):
         target: Path = PREVIEW["target_of"](draft)
-        content = sealed_content(draft)
+        if not target.is_file():
+            raise SystemExit(
+                f"SEALED_AE_PREREQUISITE_MISSING={target.relative_to(ROOT)}"
+            )
+        content = target.read_bytes()
+        if b"PRE-VALIDATION" in content or b"NOT COMPILER-VERIFIED" in content:
+            raise SystemExit(
+                f"SEALED_AE_PREREQUISITE_MARKED={target.relative_to(ROOT)}"
+            )
         result.append((target, content))
         rows.append(
             f"{hashlib.sha256(content).hexdigest()}  {target.relative_to(ROOT).as_posix()}\n"
