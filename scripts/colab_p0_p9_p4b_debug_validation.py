@@ -30,7 +30,7 @@ P4A_PATH = p4a_namespace["P4A_PATH"]
 P4A_SHA256 = p4a_namespace["P4A_SHA256"]
 P4B_PATH = "tmp/P4bFiniteTelescoping.lean"
 P4B_SHA256 = (
-    "1ed93de817c913d951b04e5391a7a1752465d78efbd6cb014a8863de3dcf6c3"
+    "1ed93de817c913d951b04e5391a7a1752465d78efbbd6cb014a8863de3dcf6c3"
 )
 
 runner.RUNNER_REV = "p0-p9-p4b-debug-v1"
