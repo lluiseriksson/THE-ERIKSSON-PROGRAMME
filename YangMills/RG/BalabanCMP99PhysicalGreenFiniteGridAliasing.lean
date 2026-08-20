@@ -154,14 +154,17 @@ theorem cmp99Flat_normalizedFiniteGridPhysicalGreenSample_eq_residueClass_draft
       ∑' n : CMP99FlatIntegerResidueClass 4 N r,
         cmp89Eq248CenteredGreenPhysicalFourierCoefficient
           K 1 0 a u n := by
+  have hmass0 : CMP89Eq251UniformMassWindow (0 : ℝ) := by
+    unfold CMP89Eq251UniformMassWindow
+    norm_num
   have halias :=
     cmp99Flat_normalizedFiniteGridPhysicalGreen_eq_residueClass_draft
       (L := K) (j := 1) (N := N) (mass := 0) (a := a) (rho := rho)
-      ha.le hrho hamplitude hradius hwindow (by norm_num) u r
+      ha.le hrho hamplitude hradius hwindow hmass0 u r
   have hsample : ∀ k : CMP99FlatZModBox 4 N,
       cmp89Eq248CenteredGreenTorus
           (L := K) (j := 1) (mass := 0) (a := a) (rho := rho)
-          ha.le hrho.le hamplitude hradius hwindow (by norm_num) u
+          ha.le hrho.le hamplitude hradius hwindow hmass0 u
           (cmp99FlatZModUnitTorusSample k) =
         cmp89Eq248ComplexStabilizedGreenEndpointIntegrand 4 K 1 0 a
           (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
