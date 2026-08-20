@@ -30,7 +30,7 @@ runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
 runner.RUNNER_REV = "step8b23-f-v1"
-runner.SOURCE_SHA = 'ac32b03d824bb341fa21c31006ffbecf8e660bac'
+runner.SOURCE_SHA = '48bf91700168d00b8cdf38998fff354d7f4634cf'
 runner.ROOT = Path("/content/hrpoly-step8b23-f")
 runner.EVIDENCE = Path("/content/hrpoly-step8b23-f-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-step8b23-f-evidence.tar.gz")
@@ -72,13 +72,13 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean': '9289b25dc0e03cbb20ca7b39759cedee6a5a7bdd00128d775e986a0ae0007275',
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean': '65eef7a599e1ce3822b3addc9c0d3ee96e1acfcfabe04aaa66d3e9d92331bb60',
     'YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean': 'e262cf2a58d8e841e8145d66a7669aae01bc525f0467fd2228bae236f04f99fe',
-    'YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSum.lean': '977a5ef2d8ae8c84df18203bfe8028f887969d4ec53bb7046f59f83d2241fa7d',
+    'YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSum.lean': 'fe4c7bc4e30461a7784055f50fb89360c68456180fb9bd92fcc290b2c775de26',
     'YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSumAudit.lean': '5fcd885264820be34de18da6f4c652bf2c258309a57c5fa1aed658055a86c582',
-    'YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionary.lean': 'e9806025d15be3a163dfb02fb988bb9bac3161b717bf3f4f9b49aec4dcbcd31b',
+    'YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionary.lean': 'dcce757e6c50851201afced170eab7951c44f871d168a0c1c1414693699c5e88',
     'YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionaryAudit.lean': 'd10f942b4832b84561a08ef035a6789198cfcd69ebfc24536021f20e0e2e2987',
-    'YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBound.lean': '26a4e937a16262d66bded4c7c8535e795517500e611295ab0841e9b8fd76ba4d',
+    'YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBound.lean': '2ec3501aee6840844f41faa04ea3a69218b1fb96a43014858bda878554dfdeca',
     'YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBoundAudit.lean': '81e80e2f370bb2ccb62e8c5185b8517d97c544e2d2a197d26df4ec2e7cf6a006',
-    'YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean': 'f9ffd54f9019426811889c1eedd289bc0f921949dd138462ca486159b7ebe338',
+    'YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean': '946456df9c30a1d4bf60d2d89dd3fc2b3a974334f82cdea2412d5df88d566048',
     'YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBoundAudit.lean': '8b990608a2d44ea3013e3633e1d701c366505848434c1fb0c0e85af89653108b',
 }
 runner.QUEUE = [

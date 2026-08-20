@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: ac32b03d824bb341fa21c31006ffbecf8e660bac
+  SOURCE_SHA: 48bf91700168d00b8cdf38998fff354d7f4634cf
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -83,13 +83,13 @@ jobs:
           9289b25dc0e03cbb20ca7b39759cedee6a5a7bdd00128d775e986a0ae0007275  YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean
           65eef7a599e1ce3822b3addc9c0d3ee96e1acfcfabe04aaa66d3e9d92331bb60  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean
           e262cf2a58d8e841e8145d66a7669aae01bc525f0467fd2228bae236f04f99fe  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean
-          977a5ef2d8ae8c84df18203bfe8028f887969d4ec53bb7046f59f83d2241fa7d  YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSum.lean
+          fe4c7bc4e30461a7784055f50fb89360c68456180fb9bd92fcc290b2c775de26  YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSum.lean
           5fcd885264820be34de18da6f4c652bf2c258309a57c5fa1aed658055a86c582  YangMills/RG/BalabanCMP89CenteredPeriodicL1ResidueSumAudit.lean
-          e9806025d15be3a163dfb02fb988bb9bac3161b717bf3f4f9b49aec4dcbcd31b  YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionary.lean
+          dcce757e6c50851201afced170eab7951c44f871d168a0c1c1414693699c5e88  YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionary.lean
           d10f942b4832b84561a08ef035a6789198cfcd69ebfc24536021f20e0e2e2987  YangMills/RG/BalabanCMP99CenteredPeriodicEndpointDictionaryAudit.lean
-          26a4e937a16262d66bded4c7c8535e795517500e611295ab0841e9b8fd76ba4d  YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBound.lean
+          2ec3501aee6840844f41faa04ea3a69218b1fb96a43014858bda878554dfdeca  YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBound.lean
           81e80e2f370bb2ccb62e8c5185b8517d97c544e2d2a197d26df4ec2e7cf6a006  YangMills/RG/BalabanCMP99PhysicalGreenZeroResidueBoundAudit.lean
-          f9ffd54f9019426811889c1eedd289bc0f921949dd138462ca486159b7ebe338  YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean
+          946456df9c30a1d4bf60d2d89dd3fc2b3a974334f82cdea2412d5df88d566048  YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBound.lean
           8b990608a2d44ea3013e3633e1d701c366505848434c1fb0c0e85af89653108b  YangMills/RG/BalabanCMP99DiagonalFiniteGreenOwnerBoundAudit.lean
           SOURCE_BLOBS
           test "$(wc -l < evidence/source-blobs.sha256)" -eq 44
