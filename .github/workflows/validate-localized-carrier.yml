@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: eea3826d87b615061a5af82d5123ca95462b5466
+  SOURCE_SHA: e01c35f51ef5ea31ca13a6ba73702a2ae3a90b35
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
@@ -81,7 +81,7 @@ jobs:
           80bad23756e1a24508d84bb969cebe2dff18ea72bc938fa24b28ab911fb296fb  YangMills/RG/BalabanCMP89SignedLatticeL1TotalSumAudit.lean
           24e692d3a7660bcdc3183ffaa23c3a8b50454db98ce45a7e72e74c4f1e2d975b  YangMills/RG/BalabanCMP89CenteredGreenFourierSummability.lean
           e1ff97694e15ed9d0976b033a933a2d1d45bd87cfe7ae73c4efd930fd38de532  YangMills/RG/BalabanCMP89CenteredGreenFourierSummabilityAudit.lean
-          f4bcb543c61f2d69442813821db44d154392b07c7760a243f0534794b78e20f0  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean
+          966e8ee39c49334a4d17bac97cfa4145a88f1a6563995aaceda52bc996d339b5  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasing.lean
           f9efec45f5856ccc8a97ea5f0240e43c929a495122e58600d19e5a09cfabd643  YangMills/RG/BalabanCMP99PhysicalGreenFiniteGridAliasingAudit.lean
           SOURCE_BLOBS
           test "$(wc -l < evidence/source-blobs.sha256)" -eq 36
