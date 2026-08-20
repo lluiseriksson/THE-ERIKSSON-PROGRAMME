@@ -319,10 +319,14 @@ theorem scratch_cmp85SourceGeneratedGreenIncrementAtNat_sum_eq_step_sum
           hspacing ha mass background0 chain fineSmall hsmall k := by
       apply Finset.sum_congr rfl
       intro k hk
+      change
+        scratch_cmp85SourceGeneratedGreenIncrementAtNat hd hM Omega0 depth
+            hspacing ha mass background0 chain fineSmall hsmall k.1.val =
+          scratch_cmp85SourceGeneratedGreenIncrement hd hM Omega0 depth
+            hspacing ha mass background0 chain fineSmall hsmall k
       have hkRange : 0 < k.1.val ∧ k.1.val < depth := ⟨k.2, k.1.isLt⟩
-      simp only [f, scratch_cmp85PositiveCoarseStepEquivIco,
-        scratch_cmp85SourceGeneratedGreenIncrementAtNat,
-        dif_pos hkRange, scratch_cmp85PositiveCoarseStepOfNat]
+      rw [scratch_cmp85SourceGeneratedGreenIncrementAtNat, dif_pos hkRange]
+      rfl
 
 /-- Final positive prefix at the fixed generated depth. -/
 def scratch_cmp85LastPositivePrefix
@@ -367,8 +371,6 @@ theorem scratch_cmp85SourceGeneratedGreenScaleSum_eq243
     rw [scratch_cmp85SourceGeneratedPrefixGreenAtNat]
     rw [dif_pos hdepthRange]
     congr 1
-    apply Subtype.ext
-    rfl
   rw [hfinal] at hsum
   exact hsum
 
