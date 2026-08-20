@@ -72,7 +72,13 @@ noncomputable def scratch_cmp96SourceSeparatedRegionalPrefixPrecision
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize L (2 * (K * Q)) (depth + 1)),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
-    (cell : FinBox 4 Q) :=
+    (cell : FinBox 4 Q) :
+    ActiveGaugeZeroCochain
+        (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
+        (SUNLieCoord Nc) :=
   cmp99RegionalDirichletPrecision
     (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
     (scratch_cmp89SourceSeparatedAmbientPrefixPrecision hL depth
@@ -92,7 +98,13 @@ noncomputable def scratch_cmp96SourceSeparatedRegionalPrefixGreen
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff 4 L (depth + 1)
       spacing epsilon < 1)
-    (cell : FinBox 4 Q) :=
+    (cell : FinBox 4 Q) :
+    ActiveGaugeZeroCochain
+        (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
+        (SUNLieCoord Nc) :=
   cmp99RegionalDirichletGreen
     (scratch_cmp96SourceSeparatedRegionalCell P L K Q depth cell)
     (scratch_cmp89SourceSeparatedAmbientPrefixPrecision hL depth
