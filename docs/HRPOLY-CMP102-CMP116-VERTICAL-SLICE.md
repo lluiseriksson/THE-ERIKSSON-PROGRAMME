@@ -11811,6 +11811,7 @@ a Brillouin integral, produce regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
+
 ### Step 8b.12: signed-alias endpoint phase transport (PRE-VALIDATION; NOT CHECKED)
 
 Source checkpoint `1fc19056f0a1fa0782924196687b84b074785679` adds
@@ -13349,3 +13350,20 @@ composition, source-owner input insertion, fine-to-owner exponential
 transport, uniform physical `B0`/`delta0`, window 15, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+### Step 8b.24/C6c.4d1: physical P8 Green on one source-owner input (PRE-VALIDATION; NOT compiler-verified; 20/41 unchanged)
+
+The promoted source composes three already named interfaces without exposing
+coordinate probes: the exact P8 inverse identity, the C6c.4d0 canonical
+rooted tilted-coercivity certificate, and the C6c.4c source-owner tilted-input
+bound.  The literal physical regional precision and Green are constructed
+internally.  The only counting-to-sup payment is the already sealed
+`L^(2*(depth+1))` factor, and it appears exactly once in the endpoint.
+
+Both the source and its one-declaration audit are visibly PRE-VALIDATION.
+They have passed textual/import-order guards only; no Lean or Lake has run on
+Windows and no compiler verdict exists yet.  C6c.4d1 still leaves the
+fine-to-owner distance transport, uniform physical `B0`/`delta0`, window-15
+attainment, terminal fields and `TermSource` open.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

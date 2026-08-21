@@ -39165,3 +39165,21 @@ one-owner input, fine-to-owner exponential transport, uniform physical
 `B0`/`delta0`, window-15 attainment, terminal fields and `TermSource` remain
 open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 893 (2026-08-21, **C6c.4d1 physical P8 owner-input inverse action promoted PRE-VALIDATION; NOT compiler-verified; 20/41 unchanged**)
+
+The promoted theorem composes the literal P8 regional inverse identity, the
+sealed canonical rooted tilted coercivity and the sealed one-owner
+tilted-input estimate.  It accepts neither a free regional precision nor a
+free coercivity certificate, does not expand the input into coordinate
+probes, and spends the physical `L^(2*(depth+1))` counting-to-sup factor
+exactly once.
+
+The source and its audit carry explicit PRE-VALIDATION headers: source is
+present, the `.olean` files have not been materialized, and the result is not
+yet compiler verified.  Only lightweight textual and import-prefix checks are
+authorized on Windows.  Fine-to-owner exponential transport, uniform
+physical `B0`/`delta0`, window-15 attainment, terminal fields and
+`TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
