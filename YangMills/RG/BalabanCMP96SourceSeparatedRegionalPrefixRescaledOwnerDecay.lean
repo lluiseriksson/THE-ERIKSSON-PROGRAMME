@@ -132,8 +132,15 @@ theorem norm_cmp96SourceSeparatedRegionalPrefixGreen_apply_le_rescaledOwnerScale
     simpa [ell, cmp99Eq342SourceLocalizedActiveOwner] using
       (cmp99Eq389SourceLocalizationOwner_mul_dist_le_fineDist_add_boundary
         (L := L) (K := K) (Q := Q) depth root.1 target.1)
-  have hbridge : (ell : ℝ) * ownerDist ≤ fineDist + 2 * boundary := by
+  have hbridgeCast :
+      (ell : ℝ) *
+          (finBoxDist owner
+            (cmp99Eq342SourceLocalizedActiveOwner L K Q depth target) : ℝ) ≤
+        (finBoxDist root.1 target.1 : ℝ) +
+          2 * ((ell - 1 : ℕ) : ℝ) := by
     exact_mod_cast hbridgeNat
+  have hbridge : (ell : ℝ) * ownerDist ≤ fineDist + 2 * boundary := by
+    simpa [ownerDist, fineDist, boundary] using hbridgeCast
   have hexponent :
       -(rate * fineDist) ≤
         2 * rate * boundary - ownerRate * ownerDist := by
@@ -184,7 +191,8 @@ theorem norm_cmp96SourceSeparatedRegionalPrefixGreen_apply_le_rescaledOwnerScale
         ring
       rw [hsplit]
       dsimp [ownerAmplitude]
-      rw [hamp]
+      rw [show ((ell - 1 : ℕ) : ℝ) = boundary by rfl]
+      rw [← hamp]
       ring
 
 end
