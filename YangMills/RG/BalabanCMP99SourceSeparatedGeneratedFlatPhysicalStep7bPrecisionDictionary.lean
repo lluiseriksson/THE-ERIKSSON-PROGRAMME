@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedPhysicalPrecisionComplexDicti
 /-!
 # Source-separated generated Step-7b precision dictionary
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 This is Step 8b.24/S2b.  It proves, rather than assumes, that the canonical
 complexification of the source-separated generated flat ambient precision is
 the literal full-box Step-7b precision with fine block side `L^(depth+1)` and

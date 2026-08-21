@@ -1,7 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalGreenFourierEndpoint
 
-/-! PRE-VALIDATION: audit source present; focal `.olean` not yet materialized. -/
-
 #print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_fourierMode
 #print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_fourierMode
 #print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_fourierMode_eq_zero_of_coarseAlias_ne

@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalEndpointInte
 /-!
 # Source-separated generated Green on one coarse point source
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 The exact point-source Fourier reconstruction and the fixed-target C0
 endpoint are composed here.  The result is a single normalized finite sum of
 literal CMP89 endpoint-integrand values with `ell`, `x` and `y` kept in one

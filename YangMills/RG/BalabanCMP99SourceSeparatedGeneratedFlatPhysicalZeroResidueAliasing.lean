@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatWeightedAdjointScalarColumn
 /-!
 # Source-separated generated endpoint at the zero alias residue
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 The point-source endpoint produced in C1b is indexed by the periodic negative
 of a literal `FinBox` momentum.  Step 8b.22/Unit E is indexed instead by the
 corresponding uncentered `ZMod` sample.  This module performs exactly those

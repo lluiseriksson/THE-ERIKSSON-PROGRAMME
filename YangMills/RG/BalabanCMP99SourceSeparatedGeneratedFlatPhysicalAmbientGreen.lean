@@ -10,9 +10,6 @@ import YangMills.RG.FinitePiLpTypedKernelReindexAlgebra
 /-!
 # Source-separated generated flat physical ambient Green
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 The generated tower already keeps its RG ratio and initial coarse carrier as
 independent parameters.  This file specializes the ratio to `L`, the coarse
 carrier to `2*(K*Q)`, and transports the canonical flat precision and Green

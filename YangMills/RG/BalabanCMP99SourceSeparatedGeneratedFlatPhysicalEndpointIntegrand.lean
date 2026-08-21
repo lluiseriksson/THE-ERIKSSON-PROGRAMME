@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeCompleteEndpointIntegrand
 /-!
 # Source-separated generated endpoint as the literal CMP89 integrand
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 For one coarse Fourier source, S4 gives the generated `G Q'^*` output as the
 complete finite sum of transposed physical Green terms.  Dividing by the
 same coarse character at one fixed source site turns that complete sum into

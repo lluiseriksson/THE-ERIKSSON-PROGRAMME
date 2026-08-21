@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNon
 /-!
 # Source-separated generated flat physical Green identification
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 This is Step 8b.24/S3.  The source-separated ambient Green is transported
 through the exact Step-7b carrier equivalence.  Its inverse law and the
 physical scalar nonvanishing families are constructed internally, so inverse

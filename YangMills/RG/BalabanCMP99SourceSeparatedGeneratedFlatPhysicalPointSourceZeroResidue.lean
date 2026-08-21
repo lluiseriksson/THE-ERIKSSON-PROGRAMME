@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueA
 /-!
 # Generated point-source Green as the zero-residue physical series
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 C1b identifies the generated `G Q'^*` point-source column with a normalized
 finite endpoint-integrand sum.  C2 identifies the scalar coefficient of that
 same sum with the literal zero-residue physical Green series.  This module

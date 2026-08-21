@@ -13065,3 +13065,36 @@ not regional `B0`, does not attain window 15, does not discharge a terminal
 field and does not construct a `TermSource` inhabitant.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+### Step 8b.24/C4b: generated point-source Green to Unit-F owner bound (SEALED; fresh Colab Pro+ clone; 20/41 unchanged)
+
+One fresh Colab Pro+ CPU/high-RAM clone compiled exact source checkpoint
+`7c0c25a3c1468bfbec0fb64340b31d03264d185f` using instrumental runner
+`5cc5ea8c2467f7e60d263233a642449a3860693d` (revision
+`source-point-owner-v7-zero-weight-normalization`).  The exact Lean
+4.29.0-rc6 asset, Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, all manifest package pins and
+all 26 source-blob hashes passed before compilation.  The focal built
+successfully in `2465.188 s` with `8751` jobs.  All thirteen audit stages
+exited `0`.
+
+The audits emitted 39 axiom blocks.  Two are the constructive subset
+`{propext, Quot.sound}` and the remaining 37 are
+`{propext, Classical.choice, Quot.sound}`; neither `sorryAx` nor
+`ofReduceBool` occurred.  Canonical evidence SHA-256 is
+`D7A022D379791C907F6A59A0090C5CAE2F848DFD209389ECF262DD32CDC865F1`;
+archive SHA-256 is
+`05A2EEBF44653C233C13F41FC10289B565FDF5B4BFC5E807D1D00F1E273D5FB0`.
+The runner emitted literal `FINAL_STATUS=PASS`, requested unassignment and
+the runtime was confirmed disconnected.
+
+The sealed route internally constructs the complex point-source Fourier
+reconstruction, neutral mass-zero noncentral symbol, source-separated
+ambient Green and complexification, exact Step-7b carrier and precision
+dictionary, physical Fourier endpoint, literal endpoint integrand,
+zero-residue aliasing and the final Unit-F owner estimate.  It is the C4b
+point-source chain, not a uniform regional `B0` producer, not attainment of
+window 15, not a terminal field and not a `TermSource` inhabitant.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

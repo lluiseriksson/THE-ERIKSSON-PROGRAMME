@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99PhysicalGreenZeroResidueBound
 /-!
 # Unit-F owner bound for the separated generated point-source Green
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 C3 identifies the generated `G Q'^*` point-source column with the literal
 zero-residue physical Green series.  The physical zero-residue theorem bounds
 that series in the centered endpoint weight, and C4a transports that weight

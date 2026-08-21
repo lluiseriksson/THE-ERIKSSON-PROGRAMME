@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTranspose
 /-!
 # Neutral mass-zero noncentral physical fine-symbol lemma
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 This generic theorem is currently housed in the diagonal generated-Green
 identification module even though its statement and proof are independent of
 that endpoint.  Step 8b.24 extracts it to a neutral substrate so both the

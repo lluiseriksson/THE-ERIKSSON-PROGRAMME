@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionar
 /-!
 # Source-separated generated Step-7b carrier
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 This is Step 8b.24/S2a.  It exposes the exact physical factorization
 
 ```text

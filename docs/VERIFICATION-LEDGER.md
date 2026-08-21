@@ -38640,3 +38640,34 @@ does not identify antipodal signed representatives.  C4b, regional `B0`,
 window-15 attainment, terminal fields and a `TermSource` inhabitant remain
 open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 873 (2026-08-21, **Step 8b.24/C4b generated point-source owner chain sealed in one fresh Colab Pro+ clone; 20/41 unchanged**)
+
+One fresh Colab Pro+ CPU/high-RAM clone compiled and audited exact source
+checkpoint `7c0c25a3c1468bfbec0fb64340b31d03264d185f` with instrumental runner
+checkpoint `5cc5ea8c2467f7e60d263233a642449a3860693d`, revision
+`source-point-owner-v7-zero-weight-normalization`.  The official Lean
+4.29.0-rc6 asset, Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, all manifest package pins and
+the 26 exact source-blob hashes passed their gates.  The focal completed
+`8751` jobs with exit `0` in `2465.188 s`; all thirteen sibling audits exited
+`0`.
+
+The audits emitted 39 axiom blocks: two sets
+`{propext, Quot.sound}` and 37 sets
+`{propext, Classical.choice, Quot.sound}`.  The blacklist found neither
+`sorryAx` nor `ofReduceBool`.  Canonical evidence SHA-256 is
+`D7A022D379791C907F6A59A0090C5CAE2F848DFD209389ECF262DD32CDC865F1`;
+archive SHA-256 is
+`05A2EEBF44653C233C13F41FC10289B565FDF5B4BFC5E807D1D00F1E273D5FB0`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was confirmed disconnected.
+
+This seal retires exactly the 26 C4b PRE-VALIDATION marks and imports the 13
+audits into `YangMillsCore.lean`.  It certifies the physical point-source
+chain from exact Fourier reconstruction through the generated ambient Green,
+Step-7b dictionaries, endpoint/zero-residue identities and the Unit-F owner
+bound.  It does not produce a uniform regional `B0`, attain window 15,
+discharge a terminal field or inhabit `TermSource`.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

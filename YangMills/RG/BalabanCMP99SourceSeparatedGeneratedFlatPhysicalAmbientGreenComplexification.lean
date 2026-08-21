@@ -9,9 +9,6 @@ import YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport
 /-!
 # Complexification of the source-separated generated flat ambient Green
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 This file is the complex half of Step 8b.24/S1.  It canonically complexifies
 the source-separated real inverse pair and transports both inverse laws.
 It introduces no full-box precision dictionary and no free inverse data.

@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99FlatPhysicalFibreDFT
 /-!
 # Exact coarse point-source Fourier reconstruction
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 This neutral finite layer reconstructs one literal complex-fibre point source
 from the already sealed positive Fourier modes with the exact product-volume
 normalization and the inverse source character.  It then transports that
