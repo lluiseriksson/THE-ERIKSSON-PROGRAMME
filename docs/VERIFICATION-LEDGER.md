@@ -37926,6 +37926,7 @@ Brillouin integral, regional `B0`, window-15 attainment, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
+
 ## Addendum 845 (2026-08-16, **stabilized-quotient diagnostic v1 blocked by instrumentation before Lean; v2 prepared**)
 
 Fresh Colab CPU/high-RAM diagnostic v1 under visible account
@@ -39191,4 +39192,29 @@ yet compiler verified.  Only lightweight textual and import-prefix checks are
 authorized on Windows.  Fine-to-owner exponential transport, uniform
 physical `B0`/`delta0`, window-15 attainment, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 894 (2026-08-21, **C6c.4d1 first Colab attempt BLOCKED-INSTRUMENTATION; runner v2 prepared; source unchanged and NOT CHECKED; 20/41 unchanged**)
+
+The fresh Colab Pro+ session verified account `lluiseriksson@gmail.com`, CPU
+high-RAM allocation (`50.99 GiB`) and launcher runner SHA-256
+`46FCB5168985EC9701FD249B5D009213676D73DC3383539AEB8F0B82B492838B`.
+The child ran for `5081.35 s` and returned exit `1`.  However, the inherited
+runner requested runtime unassignment before its captured transcript and
+archive propagated to the notebook; only `LAUNCHER_EXIT=1` survived.  No first
+Lean error, stage result, axiom output or evidence hash is recoverable.
+
+The attempt is therefore classified `BLOCKED-INSTRUMENTATION`, not as an
+attributed mathematical/compiler failure.  There was no reexecution; the
+runtime was already unassigned and the tab was closed.  Source checkpoint
+`93a4f664febe371aff82d2d67b4e31b665db47a0` and its two Git blobs are
+unchanged and remain visibly PRE-VALIDATION.
+
+Runner v1 is superseded.  Prepared revision
+`regional-prefix-owner-input-action-v2`, SHA-256
+`EEAF94F7AAF1E75ACDC6431EB90BBCBB50A330DF121FD4A72CAAC871088DF506`,
+defers `runtime.unassign()` to the launcher and requests the evidence archive
+before returning the real child exit code.  It pins the same source SHA and
+the same two Git-blob hashes.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.

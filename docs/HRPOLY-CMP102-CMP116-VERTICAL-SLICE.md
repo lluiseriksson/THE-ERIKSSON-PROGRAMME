@@ -13370,6 +13370,17 @@ Runner revision `regional-prefix-owner-input-action-v1` has SHA-256
 `46FCB5168985EC9701FD249B5D009213676D73DC3383539AEB8F0B82B492838B`
 and pins that source checkpoint plus exactly those two blobs.
 
+The first fresh Colab attempt ran for `5081.35 s` and returned child exit `1`,
+but the inherited runner unassigned the runtime before its captured transcript
+and archive reached the notebook.  Only the launcher hash and exit survived.
+This is `BLOCKED-INSTRUMENTATION`: it is not evidence that attributes a Lean
+error, and the mathematical source remains unchanged and NOT CHECKED.  Runner
+v1 is superseded without deleting the incident.  Prepared runner revision
+`regional-prefix-owner-input-action-v2`, SHA-256
+`EEAF94F7AAF1E75ACDC6431EB90BBCBB50A330DF121FD4A72CAAC871088DF506`,
+defers unassignment to the launcher and requests the evidence archive before
+exit; it pins the same source checkpoint and the same two source blobs.
+
 Both the source and its one-declaration audit are visibly PRE-VALIDATION.
 They have passed textual/import-order guards only; no Lean or Lake has run on
 Windows and no compiler verdict exists yet.  C6c.4d1 still leaves the

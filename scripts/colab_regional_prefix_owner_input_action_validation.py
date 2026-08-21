@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-owner-input-action-v1"
+runner.RUNNER_REV = "regional-prefix-owner-input-action-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-owner-input")
 runner.EVIDENCE = Path("/content/hrpoly-regional-prefix-owner-input-evidence")
@@ -77,4 +77,20 @@ runner.QUEUE = [
 
 
 if __name__ == "__main__":
-    raise SystemExit(runner.main())
+    try:
+        from google.colab import runtime
+
+        runtime.unassign = lambda: print(
+            "RUNTIME_UNASSIGN_DEFERRED_TO_LAUNCHER=1", flush=True
+        )
+    except ImportError:
+        pass
+    code = runner.main()
+    try:
+        from google.colab import files
+
+        files.download(str(runner.ARCHIVE))
+        print("EVIDENCE_DOWNLOAD_REQUESTED=1", flush=True)
+    except Exception as error:
+        print("EVIDENCE_DOWNLOAD_ERROR=" + repr(error), flush=True)
+    raise SystemExit(code)
