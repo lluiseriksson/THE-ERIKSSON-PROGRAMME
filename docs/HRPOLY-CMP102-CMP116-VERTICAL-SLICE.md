@@ -13127,7 +13127,7 @@ remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
 
-### Step 8b.24/C6a: named ambient point-source `B0` (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6a: named ambient point-source `B0` (SEALED; 20/41 unchanged)
 
 PRE-VALIDATION source checkpoint
 `1abd6761599da1ab9ade88601e4fc7f96b47a8b5` promotes the C6a source/audit
@@ -13138,10 +13138,7 @@ point-source estimate in that exact named-coefficient form.
 The coefficient remains explicitly depth-dependent through the generated
 physical `a`.  C6a is therefore an ambient point-source coefficient, not a
 uniform regional `B0`, not attainment of window 15, not a terminal field and
-not a `TermSource` inhabitant.  Both modules visibly retain PRE-VALIDATION and
-are NOT CHECKED pending one fresh Colab Pro+ focal plus three-declaration
-audit.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
-compatible but unattained.
+not a `TermSource` inhabitant.
 
 Fresh Colab diagnostic v1 stopped at the first focal error after `1679.035 s`:
 the nonnegativity proof had not unfolded the signed-lattice exponential weight
@@ -13155,3 +13152,21 @@ counter moves; v2 unfolds the two already sealed weight definitions at zero
 without changing the statement, coefficient, hypotheses or scope.  Repair
 checkpoint `1f53807c6040a0856ca98e49f610d40d6b28fed7` remains visibly
 PRE-VALIDATION pending that v2 diagnostic.
+
+Fresh Colab diagnostic v2 checked exact repair checkpoint
+`1f53807c6040a0856ca98e49f610d40d6b28fed7` with runner revision
+`point-source-b0-v2-zero-weight-normalization`.  The focal completed `8753`
+jobs in `1761.617 s`; the three-declaration audit completed in `14.647 s` and
+each declaration printed exactly `{propext, Classical.choice, Quot.sound}`.
+Canonical evidence SHA-256 is
+`680BBABE748F9A1807088B38CC329C195B550E9D768AC2C777CE55DEFB2D149C`;
+archive SHA-256 is
+`B38478583070BC5CD6B08BC62C215F81DC721EE7FCB7223C8BC60C768FB8E6A0`.
+The runner emitted literal `FINAL_STATUS=PASS`, requested unassignment and the
+runtime was closed.
+
+This seal retires exactly the two C6a PRE-VALIDATION marks and imports its
+audit into `YangMillsCore.lean`.  It certifies the named ambient point-source
+coefficient and its nonnegativity, not uniform regional `B0`, window-15
+attainment, a terminal field or a `TermSource` inhabitant.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

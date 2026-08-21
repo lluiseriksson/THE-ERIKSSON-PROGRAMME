@@ -38768,3 +38768,30 @@ SHA-256
 `07F0173FDD9A789F30C380FBC9FB803264D5B0D47C5EA009ACA6870450EA551C`.
 PRE-VALIDATION remains and counters stay exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+
+## Addendum 878 (2026-08-21, **C6a point-source B0 sealed in fresh Colab; 20/41 unchanged**)
+
+One fresh Colab Pro+ CPU/high-RAM clone checked exact repair checkpoint
+`1f53807c6040a0856ca98e49f610d40d6b28fed7` with instrumental runner commit
+`5d2e9d6b0becc12cf83c7f88b930c4fa65eedb8f`, revision
+`point-source-b0-v2-zero-weight-normalization`, and runner SHA-256
+`7C313040630B20B47925615992B769D400A9A9AB3C7657CB3C165EC9DF4EF621`.
+Toolchain, Mathlib pin, manifest and both source-blob hashes passed before
+compilation.
+
+The focal completed `8753` jobs in `1761.617 s` with exit `0`; the audit
+completed in `14.647 s` with exit `0`.  All three declarations printed
+exactly `{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256
+is `680BBABE748F9A1807088B38CC329C195B550E9D768AC2C777CE55DEFB2D149C`;
+archive SHA-256 is
+`B38478583070BC5CD6B08BC62C215F81DC721EE7FCB7223C8BC60C768FB8E6A0`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+This seal removes exactly the two C6a PRE-VALIDATION marks and adds its audit
+to `YangMillsCore.lean`.  It certifies the exact named coefficient exposed by
+C5, its nonnegativity and the named-coefficient owner form.  The coefficient
+remains depth-dependent: this is not uniform regional `B0`, attainment of
+window 15, a terminal field or a `TermSource` inhabitant.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

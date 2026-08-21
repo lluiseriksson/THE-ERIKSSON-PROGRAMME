@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalSourceOwnerB
 /-!
 # Ambient point-source coefficient for the separated generated Green
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 C5 leaves the complete coefficient visible in front of the literal CMP99
 source-owner decay.  This file names that coefficient and restates the C5
 column estimate with it.  The coefficient still depends explicitly on
