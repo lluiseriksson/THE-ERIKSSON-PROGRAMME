@@ -14,9 +14,6 @@ operator is the literal P8 Dirichlet compression of the one P7 ambient prefix
 precision; its localization, coercivity and exponential row sum are derived
 from that same physical tower.  No regional precision and no tilted
 coercivity witness is supplied by the caller.
-
-PRE-VALIDATION (C6c.4d0): source is present, its `.olean` has not yet been
-materialized, and the result is not yet verified by the Lean compiler.
 -/
 
 namespace YangMills.RG

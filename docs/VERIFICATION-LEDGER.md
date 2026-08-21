@@ -39132,3 +39132,36 @@ and pins exactly the repaired source plus the unchanged audit.  Both Lean
 files remain visibly PRE-VALIDATION and C6c.4d0 remains NOT CHECKED pending a
 fresh Colab Pro+ validation.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 892 (2026-08-21, **C6c.4d0 physical P8 canonical tilted coercivity SEALED in fresh Colab Pro+ clone; 20/41 unchanged**)
+
+Repaired source checkpoint `eb9667ca6234ce92c33cfaf2e02054890519e042`
+was validated from instrumental checkpoint
+`35eae7069e6019e5f321a650d06f01cf41254e1d`, runner revision
+`regional-prefix-tilted-coercivity-v2`, and runner SHA-256
+`766D62690F60C5DD01FC33D2D2D2722A1FC005CAC93476F2F4F58ACE1607A678`.
+The source chain, both Git-blob hashes, exact toolchain and pinned Mathlib
+manifest passed before compilation; no Lean or Lake ran on Windows.
+
+The focal completed `8582` jobs in `3989.196 s` with exit `0`; the audit
+completed in `14.650 s` with exit `0`.  The declaration printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`D7925785929AA228A704E1DE808E3C226CCC67424FB7D0356BF60B291EC176E9`;
+archive SHA-256 is
+`043111658BDBC29E1CD96AB62004EC59D076ACF6E5460A705DD11223D320687B`.
+The transcript contains literal `FINAL_STATUS=PASS` and
+`RUNTIME_UNASSIGN_REQUESTED=1`; the Colab tab was then closed.
+
+This seal removes exactly the two C6c.4d0 PRE-VALIDATION marks and adds its
+one-declaration audit to `YangMillsCore`.  It certifies the physical P8
+specialization of canonical rooted tilted coercivity: the literal regional
+Dirichlet precision, localization, coercivity and exponential row sum all
+come from the same P7/P8 physical tower.  It supplies no free regional
+operator, rate or tilted-coercivity certificate.
+
+Arbitrary-input inverse-action composition, insertion of the C6c.4c
+one-owner input, fine-to-owner exponential transport, uniform physical
+`B0`/`delta0`, window-15 attainment, terminal fields and `TermSource` remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

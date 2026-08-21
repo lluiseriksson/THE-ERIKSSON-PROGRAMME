@@ -13320,32 +13320,32 @@ transport fine distance to owner distance, construct uniform physical
 remains compatible but unattained.
 
 
-### Step 8b.24/C6c.4d0: physical P8 canonical tilted coercivity (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4d0: physical P8 canonical tilted coercivity (SEALED; fresh Colab Pro+ clone; 20/41 unchanged)
 
-Repaired PRE-VALIDATION source checkpoint
-`eb9667ca6234ce92c33cfaf2e02054890519e042` contains the explicit
-specialization of C6c.4b to the literal P8 regional prefix precision.  Its
-two Git-blob SHA-256 values are
-`527501C48691FDFAA58ECAA7D90DFE55B69C415DF0B86594A31051CF86A2DD4C`
-and
-`336A262EE3A17A6C08EB6D7178D73C545BF955F8529E4DD12A9BBBD74401A25B`.
-The exact two-file textual gate passed and no Lean or Lake ran on Windows.
-
-The theorem constructs the regional operator as the Dirichlet compression of
-the one P7 ambient prefix precision.  The exponential kernel bound,
-transported coercivity and active-region row sum are derived from that same
-physical tower before applying the canonical rooted tilt theorem; no regional
-precision, rate or tilted-coercivity witness is a caller input.  Colab v1
-reached all `8582` focal jobs but failed after `4855.196 s` on an untyped
-summation binder and a non-definitional final `change`; the audit did not run.
-The repaired source types that binder explicitly and normalizes the physical
-aliases once after constructing the canonical certificate.  Statements,
-constants, hypotheses and physical operators are unchanged.  Both Lean files
-visibly retain C6c.4d0 PRE-VALIDATION and remain NOT CHECKED.  Prepared runner
-revision `regional-prefix-tilted-coercivity-v2` has SHA-256
+Repaired source checkpoint `eb9667ca6234ce92c33cfaf2e02054890519e042`
+was validated from instrumental checkpoint
+`35eae7069e6019e5f321a650d06f01cf41254e1d`, runner revision
+`regional-prefix-tilted-coercivity-v2`, and runner SHA-256
 `766D62690F60C5DD01FC33D2D2D2722A1FC005CAC93476F2F4F58ACE1607A678`.
+The source chain, both Git-blob hashes, exact toolchain and pinned manifest
+passed before compilation; no Lean or Lake ran on Windows.
 
-Arbitrary-input inverse-action composition, source-owner input insertion,
-fine-to-owner exponential transport, uniform physical `B0`/`delta0`, window
-15, terminal fields and `TermSource` remain open.  Counters remain exactly
-`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+The fresh Colab Pro+ focal completed `8582` jobs in `3989.196 s` with exit
+`0`; the audit completed in `14.650 s` with exit `0`.  Its declaration printed
+exactly `{propext, Classical.choice, Quot.sound}`.  Canonical evidence
+SHA-256 is
+`D7925785929AA228A704E1DE808E3C226CCC67424FB7D0356BF60B291EC176E9`;
+archive SHA-256 is
+`043111658BDBC29E1CD96AB62004EC59D076ACF6E5460A705DD11223D320687B`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+The seal certifies the literal P8 Dirichlet compression of the one P7 ambient
+prefix precision.  Its exponential kernel bound, transported coercivity and
+active-region row sum are constructed internally before applying the
+canonical rooted tilt theorem; no regional precision, rate or
+tilted-coercivity witness is a caller input.  Arbitrary-input inverse-action
+composition, source-owner input insertion, fine-to-owner exponential
+transport, uniform physical `B0`/`delta0`, window 15, terminal fields and
+`TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
