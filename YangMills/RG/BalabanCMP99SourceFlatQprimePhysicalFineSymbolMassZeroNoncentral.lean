@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing
+import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution
 
 /-!
 # Neutral mass-zero noncentral physical fine-symbol lemma

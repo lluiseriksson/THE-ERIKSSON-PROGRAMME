@@ -107,6 +107,9 @@ private theorem separatedStep7bAmbientPrecisionCLM_apply
           (d := 4) L (2 * (K * Q)) (depth + 1)
           ((cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
             L K Q depth).symm x).1) := by
+  simp only [cmp99SourceSeparatedGeneratedFlatPhysicalStep7bAmbientPrecisionCLM,
+    ContinuousLinearMap.comp_apply,
+    cmp99SourceFlatFullComplexPrecisionCLM_apply]
   rfl
 
 /-- The complexified separated ambient precision agrees with the transported

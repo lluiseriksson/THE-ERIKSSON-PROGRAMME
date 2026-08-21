@@ -54,7 +54,6 @@ theorem sum_cmp99FlatFourierMode_mul_inv
         rw [cmp99FlatFourierMode_eq_finBoxFourierCharacter,
           cmp99FlatFourierMode_eq_finBoxFourierCharacter]
         rw [← cmp99FlatZModFourierCharacter_neg_left]
-        rfl
     _ = ∑ q : CMP99FlatZModBox d N, term q := by
       exact Equiv.sum_comp e term
     _ = if e x = e y then (N : ℂ) ^ d else 0 := by
@@ -88,11 +87,9 @@ theorem cmp99FlatComplexFibrePointSource_eq_normalized_sum_fourierMode
         if x = y then volume else 0 := by
     simpa only [mul_comm] using
       (sum_cmp99FlatFourierMode_mul_inv x y)
-  change (if x = y then v a else 0) =
-    volume⁻¹ *
-      ∑ k : FinBox d N,
-        (cmp99FlatFourierMode k y)⁻¹ *
-          (cmp99FlatFourierMode k x * v a)
+  simp only [cmp99FlatComplexFibrePointSource, Pi.smul_apply,
+    WithLp.ofLp_sum, Finset.sum_apply,
+    cmp99FlatComplexFibreFourierMode, PiLp.smul_apply, smul_eq_mul]
   have hfactor :
       (∑ k : FinBox d N,
           (cmp99FlatFourierMode k y)⁻¹ *
