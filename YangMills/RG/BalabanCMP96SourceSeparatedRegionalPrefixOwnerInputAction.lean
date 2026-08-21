@@ -55,6 +55,8 @@ theorem norm_cmp96SourceSeparatedRegionalPrefixGreen_apply_le_sourceScale
       (cmp99Eq342SourceLocalizedActiveOwner L K Q depth) owner f)
     (target : ActiveGaugeRegion.Site
       (cmp96SourceSeparatedRegionalCell P L K Q depth cell)) :
+    letI : Nonempty (ActiveGaugeRegion.Site
+      (cmp96SourceSeparatedRegionalCell P L K Q depth cell)) := ⟨root⟩
     let ell := L ^ (depth + 1)
     let A := cmp89SourceSeparatedPrefixPrecisionUpperBound
         (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
@@ -123,7 +125,7 @@ theorem norm_cmp96SourceSeparatedRegionalPrefixGreen_apply_le_sourceScale
   calc
     ‖Cregional f target‖ ≤
         (2 / c) * Real.exp (-(rate * (finBoxDist root.1 target.1 : ℝ))) *
-          ‖finitePiLpTiltCLM
+          ‖finitePiLpTiltCLM (g := SUNLieCoord Nc)
             (fun target source : ActiveGaugeRegion.Site Omega =>
               finBoxDist target.1 source.1)
             rate root f‖ := haction
