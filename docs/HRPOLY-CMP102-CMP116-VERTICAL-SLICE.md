@@ -13387,3 +13387,27 @@ Windows and no compiler verdict exists yet.  C6c.4d1 still leaves the
 fine-to-owner distance transport, uniform physical `B0`/`delta0`, window-15
 attainment, terminal fields and `TermSource` open.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Runner v2 subsequently produced the first attributable compiler verdict.
+All `8662` prerequisites through the P8 tilted-coercivity brick compiled; only
+the C6c.4d1 focal failed, after `3649.680 s`, at two elaboration points.  The
+theorem type lacked the local `Nonempty` instance required by
+`finitePiLpSupNorm`, despite already carrying the physical root, and the final
+tilted CLM application left its `SUNLieCoord Nc` fibre implicit.  Audit was
+correctly skipped by stop-on-first-error.  Canonical evidence SHA-256 is
+`C26B4AE6AEE1C3CD1D0A7B30968727316B25550B94B91CA2C1DC224E093B0826`;
+archive SHA-256 is
+`25D3C3FB406FB3E375B79630B953A9335C7E74CA6CA51D22E3369626259CBFE4`.
+
+Repair checkpoint `bd3c1d05775a84336549a6855c52c4cb1b45fba6` derives the
+missing instance from the existing root and pins the existing physical fibre;
+it changes no theorem hypothesis, bound, constant or operator.  Repaired
+source and unchanged audit Git-blob SHA-256 values are
+`58CC201E6E21E3358D8E5ACB5E5D872A0CFD224D26656BBD9442CC616AB039D5`
+and
+`4E78AC70ADB0C1B65EF80734BAD81C36E9645B21A2D030947A1370BE14F2976E`.
+Prepared runner revision `regional-prefix-owner-input-action-v3`, SHA-256
+`15A67B40CADBBAD611FF95EFC14EB446F2E8980CA74137CEAB8282141AC33F58`,
+pins that exact repair and retains the v2 transcript-before-unassign protocol.
+The repaired source remains PRE-VALIDATION and NOT CHECKED.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

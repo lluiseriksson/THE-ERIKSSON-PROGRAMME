@@ -39218,3 +39218,36 @@ defers `runtime.unassign()` to the launcher and requests the evidence archive
 before returning the real child exit code.  It pins the same source SHA and
 the same two Git-blob hashes.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 895 (2026-08-21, **C6c.4d1 runner v2 exposed two elaboration errors; minimal source repair and runner v3 prepared; NOT compiler-verified; 20/41 unchanged**)
+
+The fresh Colab Pro+ v2 run verified the pinned source and compiled all `8662`
+prerequisites through the physical P8 tilted-coercivity brick.  The focal then
+failed after `3649.680 s` at exactly two elaboration points in
+`BalabanCMP96SourceSeparatedRegionalPrefixOwnerInputAction.lean`: the theorem
+type did not introduce the `Nonempty` instance already witnessed by its
+physical `root`, and the final `finitePiLpTiltCLM` application did not pin the
+existing `SUNLieCoord Nc` fibre.  Stop-on-first-error skipped the audit.
+
+Canonical evidence SHA-256 is
+`C26B4AE6AEE1C3CD1D0A7B30968727316B25550B94B91CA2C1DC224E093B0826`;
+archive SHA-256 is
+`25D3C3FB406FB3E375B79630B953A9335C7E74CA6CA51D22E3369626259CBFE4`.
+The transcript records focal exit `1`, `FINAL_STATUS=FAIL`, deferred child
+unassignment and launcher unassignment.  The browser download callback was
+unavailable inside the child, but the complete structured transcript and both
+hashes survived; there was no rerun.
+
+Repair checkpoint `bd3c1d05775a84336549a6855c52c4cb1b45fba6` introduces the
+local instance from the existing root and fixes the fibre argument.  It adds
+no hypothesis and changes no theorem statement, physical operator or
+constant.  Repaired source and unchanged audit Git-blob SHA-256 values are
+`58CC201E6E21E3358D8E5ACB5E5D872A0CFD224D26656BBD9442CC616AB039D5`
+and
+`4E78AC70ADB0C1B65EF80734BAD81C36E9645B21A2D030947A1370BE14F2976E`.
+Prepared runner revision `regional-prefix-owner-input-action-v3`, SHA-256
+`15A67B40CADBBAD611FF95EFC14EB446F2E8980CA74137CEAB8282141AC33F58`,
+pins the repair and retains transcript capture before launcher unassignment.
+The source remains visibly PRE-VALIDATION and NOT CHECKED.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
