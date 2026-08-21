@@ -15,7 +15,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "f49c32c30a790d313681c53b49b8fb90bbb34664"
+SOURCE_SHA = "5e27cf5bd8d5484e5f7faa93d2c6552a0bf2860e"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -42,7 +42,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-point-owner-v2-transitive-prefix"
+runner.RUNNER_REV = "source-point-owner-v3-elaboration-repair"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-point-owner")
 runner.EVIDENCE = Path("/content/hrpoly-source-point-owner-evidence")
@@ -50,11 +50,11 @@ runner.ARCHIVE = Path("/content/hrpoly-source-point-owner-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-source-point-owner-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99FlatComplexFibrePointSourceFourierReconstruction.lean":
-        "d26bc3785a6b0ca8acb2ceecd9e37a0352c88ac6d31261d330d9b1fd5d42556b",
+        "79876de710bb76ad40b0fb5386e071dfa5d466004e0d464cbdf7de68ba7a2c04",
     "YangMills/RG/BalabanCMP99FlatComplexFibrePointSourceFourierReconstructionAudit.lean":
         "17368a6bb63f939c3808d9c4260fbc46df8cfe6a5fc254ef80f4625356715f4c",
     "YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalFineSymbolMassZeroNoncentral.lean":
-        "af307c90c22f734b6717d3c4ce6a17c4be479479103f34f75b7ec638edcd3d74",
+        "3f73d8a60037cb695dd90da7300ddb2e310c7e980a2b9d90901451b287e26e1f",
     "YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalFineSymbolMassZeroNoncentralAudit.lean":
         "ec2ab90cc02e542312fff97d5876aa27625c5218a68d9f1d43c8b1560041fcaa",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalAmbientGreen.lean":
@@ -94,7 +94,7 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bCarrierAudit.lean":
         "39120f84a4455caada59b48936963432254b3960651d0d3b594a9a05a6f00904",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bPrecisionDictionary.lean":
-        "0ff57eb90a2c2452da73af8e3eedc7aa4d70305087ba0d2c4b8961b057f318fe",
+        "103edb95f73d7ad2499f1ccc95719fd1d2bd517962c5adf5813da95625ec59b1",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bPrecisionDictionaryAudit.lean":
         "20ca1999fa2d75422cb2e002ff7f3b3e982391af26ec88d9f23c8f49465a293e",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing.lean":
