@@ -39077,3 +39077,35 @@ fine-to-owner exponential transport, uniform physical `B0`/`delta0`,
 window-15 attainment, terminal fields and `TermSource` remain open.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+## Addendum 890 (2026-08-21, **C6c.4d0 Colab v1 focal FAIL; two elaboration repairs prepared; PRE-VALIDATION retained**)
+
+Fresh Colab Pro+ validation of source checkpoint
+`c86c1a7c724da1faff85a550fd1fad59ab6d63bd` from instrumental checkpoint
+`adbea1f319d48689d937c04656eced55dbd57238` passed the source chain, both
+Git-blob hashes, exact Lean toolchain, pinned Mathlib manifest and cache
+materialization before entering the focal build.  The focal reached all
+`8582` jobs and failed after `4855.196 s` with exit `1`; the audit was not
+run, as required by stop-on-first-error.
+
+The first exact compiler error was
+`BalabanCMP96SourceSeparatedRegionalPrefixTiltedCoercivity.lean:105:29`:
+Lean could not resolve projection `.1` because the summed `source` type was
+not explicit.  The same elaboration pass then reported that the final
+`change` did not identify the local regional-precision alias with the literal
+P8 precision in the goal.  The repair gives the summation binder its exact
+`ActiveGaugeRegion.Site Omega` type and replaces the failed `change` with an
+explicit intermediate canonical certificate followed by a single
+normalization of the physical aliases.  No theorem statement, constant,
+hypothesis or physical operator changes.
+
+Diagnostic evidence SHA-256 is
+`FA2F17CF8EF7C3AEB41293D9DFB33A5DFA8E8E80C6B0757F616D6B7B68B8C4FF`;
+diagnostic archive SHA-256 is
+`F63348B5B849548CA7CA3707365FF696FDED561AFB406CE95DAF00481809B7BD`.
+The transcript contains literal `FINAL_STATUS=FAIL` and
+`RUNTIME_UNASSIGN_REQUESTED=1`; the Colab tab was then closed.  Both Lean
+files remain visibly PRE-VALIDATION and C6c.4d0 remains NOT CHECKED.  Hard
+counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

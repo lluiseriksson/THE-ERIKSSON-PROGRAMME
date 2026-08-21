@@ -101,25 +101,27 @@ theorem isCoerciveCLM_cmp96SourceSeparatedRegionalPrefixPrecision_tilt_canonical
       (isCoerciveCLM_cmp89SourceSeparatedAmbientPrefixPrecision
         hL depth hspacing ha background budget fineSmall hsmall)
   have hsum : ∀ target : ActiveGaugeRegion.Site Omega,
-      ∑ source, Real.exp (-((decay / 4) *
+      ∑ source : ActiveGaugeRegion.Site Omega, Real.exp (-((decay / 4) *
         (finBoxDist target.1 source.1 : ℝ))) ≤
           cmp99OmegaSiteExpSumBound (decay / 4) := by
     intro target
     exact activeGaugeRegion_finBoxDist_exp_sum_le Omega target
       (div_pos hdecay (by norm_num))
-  change IsCoerciveCLM
-    (finitePiLpTiltConjCLM
+  have hcanonical : IsCoerciveCLM
+      (finitePiLpTiltConjCLM
       (fun target source : ActiveGaugeRegion.Site Omega =>
         finBoxDist target.1 source.1)
       (finitePiLpExponentialInverseDecayRate A decay
         (cmp99OmegaSiteExpSumBound (decay / 4)) c)
-      root Kregional) (c / 2)
-  exact isCoerciveCLM_finitePiLpTiltConj_inverse_canonical
-    (fun target source : ActiveGaugeRegion.Site Omega =>
-      finBoxDist target.1 source.1)
-    (fun p q => finBoxDist_comm p.1 q.1)
-    (fun p q r => finBoxDist_triangle p.1 q.1 r.1)
-    Kregional hdecay hc hrow hKregional hcoer hsum root
+      root Kregional) (c / 2) := by
+    exact isCoerciveCLM_finitePiLpTiltConj_inverse_canonical
+      (fun target source : ActiveGaugeRegion.Site Omega =>
+        finBoxDist target.1 source.1)
+      (fun p q => finBoxDist_comm p.1 q.1)
+      (fun p q r => finBoxDist_triangle p.1 q.1 r.1)
+      Kregional hdecay hc hrow hKregional hcoer hsum root
+  simpa only [Omega, Kambient, Kregional, A, c,
+    cmp96SourceSeparatedRegionalPrefixPrecision] using hcanonical
 
 end
 
