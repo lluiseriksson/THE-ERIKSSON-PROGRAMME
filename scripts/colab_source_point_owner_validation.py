@@ -15,7 +15,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "5e27cf5bd8d5484e5f7faa93d2c6552a0bf2860e"
+SOURCE_SHA = "e9d82cccdbc4b38c497d58a825dd1202958103a9"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -42,7 +42,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-point-owner-v3-elaboration-repair"
+runner.RUNNER_REV = "source-point-owner-v4-volume-normalization"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-point-owner")
 runner.EVIDENCE = Path("/content/hrpoly-source-point-owner-evidence")
@@ -50,7 +50,7 @@ runner.ARCHIVE = Path("/content/hrpoly-source-point-owner-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-source-point-owner-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99FlatComplexFibrePointSourceFourierReconstruction.lean":
-        "79876de710bb76ad40b0fb5386e071dfa5d466004e0d464cbdf7de68ba7a2c04",
+        "226f8cfbcbdf074c32afd734de12e6b6b5252d6fe06738f586e4bf602245beaf",
     "YangMills/RG/BalabanCMP99FlatComplexFibrePointSourceFourierReconstructionAudit.lean":
         "17368a6bb63f939c3808d9c4260fbc46df8cfe6a5fc254ef80f4625356715f4c",
     "YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalFineSymbolMassZeroNoncentral.lean":
