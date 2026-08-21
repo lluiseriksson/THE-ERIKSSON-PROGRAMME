@@ -39109,3 +39109,26 @@ The transcript contains literal `FINAL_STATUS=FAIL` and
 files remain visibly PRE-VALIDATION and C6c.4d0 remains NOT CHECKED.  Hard
 counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 891 (2026-08-21, **C6c.4d0 Colab v2 prepared after exact elaboration repair; PRE-VALIDATION retained; 20/41 unchanged**)
+
+Repaired source checkpoint `eb9667ca6234ce92c33cfaf2e02054890519e042`
+types the regional summation binder explicitly and replaces the failed final
+`change` with an intermediate canonical tilted-coercivity certificate plus
+one explicit normalization of `Omega`, the ambient/regional precision aliases
+and the printed physical precision definition.  The source and audit
+Git-blob SHA-256 values are
+`527501C48691FDFAA58ECAA7D90DFE55B69C415DF0B86594A31051CF86A2DD4C`
+and
+`336A262EE3A17A6C08EB6D7178D73C545BF955F8529E4DD12A9BBBD74401A25B`.
+The exact two-file textual and import-prefix gates pass.  No theorem
+statement, constant, hypothesis or physical operator changed, and no Lean or
+Lake ran on Windows.
+
+Prepared runner revision `regional-prefix-tilted-coercivity-v2` has SHA-256
+`766D62690F60C5DD01FC33D2D2D2722A1FC005CAC93476F2F4F58ACE1607A678`
+and pins exactly the repaired source plus the unchanged audit.  Both Lean
+files remain visibly PRE-VALIDATION and C6c.4d0 remains NOT CHECKED pending a
+fresh Colab Pro+ validation.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

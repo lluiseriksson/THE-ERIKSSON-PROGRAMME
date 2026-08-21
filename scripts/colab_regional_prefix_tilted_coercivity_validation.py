@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "c86c1a7c724da1faff85a550fd1fad59ab6d63bd"
+SOURCE_SHA = "eb9667ca6234ce92c33cfaf2e02054890519e042"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-tilted-coercivity-v1"
+runner.RUNNER_REV = "regional-prefix-tilted-coercivity-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-tilted-coercivity")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixTiltedCoercivity.lean":
-        "0826ae9b7ffba74cf83e243b5e1cf89d7fb7932517c0a2fb945e565e380ecf4c",
+        "527501c48691fdfaa58ecaa7d90dfe55b69c415df0b86594a31051cf86a2dd4c",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixTiltedCoercivityAudit.lean":
         "336a262ee3a17a6c08eb6d7178d73c545bf955f8529e4dd12a9bbbd74401a25b",
 }

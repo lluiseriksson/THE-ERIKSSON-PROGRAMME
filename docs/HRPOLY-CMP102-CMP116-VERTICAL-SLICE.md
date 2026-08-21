@@ -13322,11 +13322,11 @@ remains compatible but unattained.
 
 ### Step 8b.24/C6c.4d0: physical P8 canonical tilted coercivity (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
 
-PRE-VALIDATION source checkpoint
-`c86c1a7c724da1faff85a550fd1fad59ab6d63bd` adds the explicit specialization
-of C6c.4b to the literal P8 regional prefix precision.  Its two Git-blob
-SHA-256 values are
-`0826AE9B7FFBA74CF83E243B5E1CF89D7FB7932517C0A2FB945E565E380ECF4C`
+Repaired PRE-VALIDATION source checkpoint
+`eb9667ca6234ce92c33cfaf2e02054890519e042` contains the explicit
+specialization of C6c.4b to the literal P8 regional prefix precision.  Its
+two Git-blob SHA-256 values are
+`527501C48691FDFAA58ECAA7D90DFE55B69C415DF0B86594A31051CF86A2DD4C`
 and
 `336A262EE3A17A6C08EB6D7178D73C545BF955F8529E4DD12A9BBBD74401A25B`.
 The exact two-file textual gate passed and no Lean or Lake ran on Windows.
@@ -13335,10 +13335,15 @@ The theorem constructs the regional operator as the Dirichlet compression of
 the one P7 ambient prefix precision.  The exponential kernel bound,
 transported coercivity and active-region row sum are derived from that same
 physical tower before applying the canonical rooted tilt theorem; no regional
-precision, rate or tilted-coercivity witness is a caller input.  Both Lean
-files visibly retain C6c.4d0 PRE-VALIDATION and remain NOT CHECKED.  Prepared
-runner revision `regional-prefix-tilted-coercivity-v1` has SHA-256
-`599895295CE7F1A0D813AF30911F2460EDADBEF5251E20D9606D2CC39FB7CB24`.
+precision, rate or tilted-coercivity witness is a caller input.  Colab v1
+reached all `8582` focal jobs but failed after `4855.196 s` on an untyped
+summation binder and a non-definitional final `change`; the audit did not run.
+The repaired source types that binder explicitly and normalizes the physical
+aliases once after constructing the canonical certificate.  Statements,
+constants, hypotheses and physical operators are unchanged.  Both Lean files
+visibly retain C6c.4d0 PRE-VALIDATION and remain NOT CHECKED.  Prepared runner
+revision `regional-prefix-tilted-coercivity-v2` has SHA-256
+`766D62690F60C5DD01FC33D2D2D2722A1FC005CAC93476F2F4F58ACE1607A678`.
 
 Arbitrary-input inverse-action composition, source-owner input insertion,
 fine-to-owner exponential transport, uniform physical `B0`/`delta0`, window
