@@ -13361,6 +13361,15 @@ bound.  The literal physical regional precision and Green are constructed
 internally.  The only counting-to-sup payment is the already sealed
 `L^(2*(depth+1))` factor, and it appears exactly once in the endpoint.
 
+Source checkpoint `93a4f664febe371aff82d2d67b4e31b665db47a0` fixes source
+and audit Git-blob SHA-256 values
+`7E18412F7AD96B7769EA90DBA12DEBC6899C14708B133308A8F4E632BE4F5097`
+and
+`4E78AC70ADB0C1B65EF80734BAD81C36E9645B21A2D030947A1370BE14F2976E`.
+Runner revision `regional-prefix-owner-input-action-v1` has SHA-256
+`46FCB5168985EC9701FD249B5D009213676D73DC3383539AEB8F0B82B492838B`
+and pins that source checkpoint plus exactly those two blobs.
+
 Both the source and its one-declaration audit are visibly PRE-VALIDATION.
 They have passed textual/import-order guards only; no Lean or Lake has run on
 Windows and no compiler verdict exists yet.  C6c.4d1 still leaves the

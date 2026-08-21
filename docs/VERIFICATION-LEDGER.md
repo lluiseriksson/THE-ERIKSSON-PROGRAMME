@@ -39176,6 +39176,15 @@ free coercivity certificate, does not expand the input into coordinate
 probes, and spends the physical `L^(2*(depth+1))` counting-to-sup factor
 exactly once.
 
+Source checkpoint `93a4f664febe371aff82d2d67b4e31b665db47a0` fixes source
+and audit Git-blob SHA-256 values
+`7E18412F7AD96B7769EA90DBA12DEBC6899C14708B133308A8F4E632BE4F5097`
+and
+`4E78AC70ADB0C1B65EF80734BAD81C36E9645B21A2D030947A1370BE14F2976E`.
+Prepared runner revision `regional-prefix-owner-input-action-v1` has SHA-256
+`46FCB5168985EC9701FD249B5D009213676D73DC3383539AEB8F0B82B492838B`
+and pins the exact source plus those two blob hashes.
+
 The source and its audit carry explicit PRE-VALIDATION headers: source is
 present, the `.olean` files have not been materialized, and the result is not
 yet compiler verified.  Only lightweight textual and import-prefix checks are
