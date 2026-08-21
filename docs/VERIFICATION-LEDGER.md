@@ -38671,3 +38671,22 @@ Step-7b dictionaries, endpoint/zero-residue identities and the Unit-F owner
 bound.  It does not produce a uniform regional `B0`, attain window 15,
 discharge a terminal field or inhabit `TermSource`.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 874 (2026-08-21, **Step 8b.24/C5 source-owner transport promoted PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `d8b873a4abf6d83bdf57068ff850a90335974f40`
+adds the C5 source/audit pair.  The single theorem consumes the sealed C4b
+owner bound at the literal source-separated site equivalence and derives the
+exact CMP99 (3.89) localization owner by theorem, not by a supplied readout.
+The source Git-blob SHA-256 values are
+`898BE703002FD1AE58F8F9D34C12BA4188BC47233C1013477EAD53351CA24A38`
+and
+`074EE48B97CCA400E9399163B6D150AE4950DF939CBCED4E84E9E47107DAFC58`.
+
+Both Lean files visibly retain PRE-VALIDATION and are NOT CHECKED.  The
+prepared Colab runner uses exact source/blob/toolchain/pin gates and one
+focal plus its one-declaration audit.  No Lean or Lake ran on Windows.  C5
+does not produce point-source or regional `B0`, attain window 15, discharge a
+terminal field or inhabit `TermSource`; counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.

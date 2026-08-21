@@ -13098,3 +13098,20 @@ point-source chain, not a uniform regional `B0` producer, not attainment of
 window 15, not a terminal field and not a `TermSource` inhabitant.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+### Step 8b.24/C5: source-localization owner transport (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`d8b873a4abf6d83bdf57068ff850a90335974f40` promotes the source/audit pair
+for C5.  The theorem evaluates the sealed C4b point-source bound at the exact
+`cmp99Eq389SourceLocalizationSiteEquiv` and rewrites the fine-block owner to
+the literal `cmp99Eq389SourceLocalizationOwner`.  No free readout,
+cardinality equivalence or diagonal `K=L` identification is introduced.
+
+The two modules visibly retain PRE-VALIDATION and remain NOT CHECKED pending
+one fresh Colab Pro+ focal/audit run.  This is source-owner transport only,
+not a point-source `B0`, not a uniform regional `B0`, not attainment of
+window 15, not a terminal field and not a `TermSource` inhabitant.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
