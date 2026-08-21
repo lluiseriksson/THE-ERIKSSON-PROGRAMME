@@ -12,6 +12,10 @@ This file packages the scalar tilt budget used when an exponentially
 localized coercive operator is inverted.  The inverse rate is chosen from the
 available decay, coercivity, amplitude, and a volume-independent exponential
 row sum.  No physical hypothesis is introduced here.
+
+PRE-VALIDATION (C6c.4b): the canonical-rate positivity and rooted tilted
+coercivity factorization are present in source but their revised `.olean` and
+audit have not yet been materialized by the Lean compiler.
 -/
 
 namespace YangMills.RG
@@ -121,36 +125,48 @@ noncomputable def finitePiLpExponentialInverseDecayRate
   min (decay / 2)
     (coercivity * decay / (8 * (amplitude * rowSum + 1)))
 
+/-- The canonical inverse rate is positive whenever the original decay and
+coercivity are positive and the amplitude and row sum are nonnegative. -/
+theorem finitePiLpExponentialInverseDecayRate_pos
+    {amplitude decay rowSum coercivity : ℝ}
+    (hamplitude : 0 ≤ amplitude) (hdecay : 0 < decay)
+    (hrowSum : 0 ≤ rowSum) (hcoercivity : 0 < coercivity) :
+    0 < finitePiLpExponentialInverseDecayRate
+      amplitude decay rowSum coercivity := by
+  unfold finitePiLpExponentialInverseDecayRate
+  exact lt_min (by positivity) (by positivity)
+
 set_option maxHeartbeats 1200000 in
-/-- An exponentially localized coercive finite kernel has an exponentially
-localized inverse at the canonical rate.  The caller supplies only the
-unweighted exponential row sum at one quarter of the original decay. -/
-theorem finitePiLpExponentialKernelBound_inverse_canonical
+/-- The canonical inverse-rate calculation already proves that every rooted
+tilted precision retains half the original coercivity.  This is the
+arbitrary-input intermediate fact hidden by point-source kernel extraction. -/
+theorem isCoerciveCLM_finitePiLpTiltConj_inverse_canonical
     {ι g : Type*} [Fintype ι] [DecidableEq ι]
     [NormedAddCommGroup g] [InnerProductSpace ℝ g] [FiniteDimensional ℝ g]
     (dist : ι → ι → ℕ)
     (hsymm : ∀ p q, dist p q = dist q p)
     (htri : ∀ p q r, dist p r ≤ dist p q + dist q r)
-    (hself : ∀ p, dist p p = 0)
-    (K C : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (K : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
     {amplitude decay rowSum coercivity : ℝ}
     (hdecay : 0 < decay) (hcoercivity : 0 < coercivity)
     (hrowSum : 0 ≤ rowSum)
     (hK : FinitePiLpExponentialKernelBound K dist amplitude decay)
     (hcoer : IsCoerciveCLM K coercivity)
-    (hKC : K.comp C = ContinuousLinearMap.id ℝ _)
     (hexpSum : ∀ target,
       ∑ source, Real.exp (-((decay / 4) * (dist target source : ℝ))) ≤
-        rowSum) :
-    FinitePiLpExponentialKernelBound C dist (2 / coercivity)
-      (finitePiLpExponentialInverseDecayRate
-        amplitude decay rowSum coercivity) := by
+        rowSum)
+    (root : ι) :
+    IsCoerciveCLM
+      (finitePiLpTiltConjCLM dist
+        (finitePiLpExponentialInverseDecayRate
+          amplitude decay rowSum coercivity) root K)
+      (coercivity / 2) := by
   let rate := finitePiLpExponentialInverseDecayRate
     amplitude decay rowSum coercivity
   have hamplitude : 0 ≤ amplitude := hK.1
   have hrate : 0 < rate := by
-    dsimp [rate, finitePiLpExponentialInverseDecayRate]
-    exact lt_min (by positivity) (by positivity)
+    exact finitePiLpExponentialInverseDecayRate_pos
+      hamplitude hdecay hrowSum hcoercivity
   have hrateHalf : rate ≤ decay / 2 := by
     dsimp [rate, finitePiLpExponentialInverseDecayRate]
     exact min_le_left _ _
@@ -204,10 +220,53 @@ theorem finitePiLpExponentialKernelBound_inverse_canonical
       _ ≤ coercivity / 2 * 1 :=
         mul_le_mul_of_nonneg_left hquot (by positivity)
       _ = coercivity / 2 := by ring
-  exact finitePiLpExponentialKernelBound_inverse_of_exponential
-    dist hsymm htri hself hrate hcoercivity
+  have htilt := isCoerciveCLM_finitePiLpTiltConj_of_exponential
+    dist hsymm htri hrate.le root
     (mul_nonneg (mul_nonneg hrate.le (by positivity)) hrowSum)
-    K C hK hcoer hKC hsum hbudget
+    hsum hK hcoer
+  intro x
+  calc
+    coercivity / 2 * ‖x‖ ^ 2 ≤
+        (coercivity - amplitude * (rate * (4 / decay) * rowSum)) *
+          ‖x‖ ^ 2 := by
+      apply mul_le_mul_of_nonneg_right _ (sq_nonneg ‖x‖)
+      linarith
+    _ ≤ inner ℝ x (finitePiLpTiltConjCLM dist rate root K x) := htilt x
+
+set_option maxHeartbeats 1200000 in
+/-- An exponentially localized coercive finite kernel has an exponentially
+localized inverse at the canonical rate.  The caller supplies only the
+unweighted exponential row sum at one quarter of the original decay. -/
+theorem finitePiLpExponentialKernelBound_inverse_canonical
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [InnerProductSpace ℝ g] [FiniteDimensional ℝ g]
+    (dist : ι → ι → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q r, dist p r ≤ dist p q + dist q r)
+    (hself : ∀ p, dist p p = 0)
+    (K C : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    {amplitude decay rowSum coercivity : ℝ}
+    (hdecay : 0 < decay) (hcoercivity : 0 < coercivity)
+    (hrowSum : 0 ≤ rowSum)
+    (hK : FinitePiLpExponentialKernelBound K dist amplitude decay)
+    (hcoer : IsCoerciveCLM K coercivity)
+    (hKC : K.comp C = ContinuousLinearMap.id ℝ _)
+    (hexpSum : ∀ target,
+      ∑ source, Real.exp (-((decay / 4) * (dist target source : ℝ))) ≤
+        rowSum) :
+    FinitePiLpExponentialKernelBound C dist (2 / coercivity)
+      (finitePiLpExponentialInverseDecayRate
+        amplitude decay rowSum coercivity) := by
+  let rate := finitePiLpExponentialInverseDecayRate
+    amplitude decay rowSum coercivity
+  have hrate : 0 < rate := by
+    exact finitePiLpExponentialInverseDecayRate_pos
+      hK.1 hdecay hrowSum hcoercivity
+  apply finitePiLpExponentialKernelBound_of_tilted_coercive
+    dist hsymm hself hrate hcoercivity K C hKC
+  intro root
+  exact isCoerciveCLM_finitePiLpTiltConj_inverse_canonical
+    dist hsymm htri K hdecay hcoercivity hrowSum hK hcoer hexpSum root
 
 end
 
