@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "bd3c1d05775a84336549a6855c52c4cb1b45fba6"
+SOURCE_SHA = "d86151b1705b985598a554b09e06aacd4dee90d6"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-owner-input-action-v3"
+runner.RUNNER_REV = "regional-prefix-owner-input-action-v4"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-owner-input")
 runner.EVIDENCE = Path("/content/hrpoly-regional-prefix-owner-input-evidence")
@@ -52,7 +52,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixOwnerInputAction.lean":
-        "58cc201e6e21e3358d8e5acb5e5d872a0cfd224d26656bbd9442cc616ab039d5",
+        "31efb0d428e43f03bd4985137ed43274682c944643bee8c1fa5f5dc4aa6801f4",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixOwnerInputActionAudit.lean":
         "4e78ac70adb0c1b65ef80734bad81c36e9645b21a2d030947a1370be14f2976e",
 }

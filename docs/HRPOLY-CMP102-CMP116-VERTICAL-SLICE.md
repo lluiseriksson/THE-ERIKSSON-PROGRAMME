@@ -13411,3 +13411,25 @@ Prepared runner revision `regional-prefix-owner-input-action-v3`, SHA-256
 pins that exact repair and retains the v2 transcript-before-unassign protocol.
 The repaired source remains PRE-VALIDATION and NOT CHECKED.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+Runner v3 again compiled all `8662` prerequisites and reached only the new
+endpoint.  The focal failed after `4128.062 s` at one remaining elaboration
+normalization: `hinput` carried the literal `L^(depth+1)` while the calc target
+used the local alias `ell`.  Canonical evidence SHA-256 is
+`76E9D08D48EAD00BE86474B26113AB437A766024E66B4ECC8A5B1F4D126FB2CC`;
+archive SHA-256 is
+`512C9DBE9CA10CA48CBCF96FCCFF76BE131056B936B183D085FE2F677D32041F`.
+Audit was skipped by stop-on-first-error and the launcher released the runtime.
+
+Repair checkpoint `d86151b1705b985598a554b09e06aacd4dee90d6` normalizes that
+single definitional alias with `simpa [ell]`; it changes no theorem statement,
+hypothesis, bound, constant or operator.  Repaired source and unchanged audit
+Git-blob SHA-256 values are
+`31EFB0D428E43F03BD4985137ED43274682C944643BEE8C1FA5F5DC4AA6801F4`
+and
+`4E78AC70ADB0C1B65EF80734BAD81C36E9645B21A2D030947A1370BE14F2976E`.
+Prepared runner revision `regional-prefix-owner-input-action-v4`, SHA-256
+`D02AA0B9BBA6DD82F5A8C4641EF6B50DBD5264ABC4528A9948CEA07A2B2EA5E7`,
+pins the exact second repair.  Source and audit remain PRE-VALIDATION and NOT
+CHECKED; counters remain `20/41`, `TermSource = 0`, and window 15 remains
+compatible but unattained.

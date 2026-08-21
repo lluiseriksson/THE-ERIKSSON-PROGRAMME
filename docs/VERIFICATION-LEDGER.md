@@ -39251,3 +39251,32 @@ Prepared runner revision `regional-prefix-owner-input-action-v3`, SHA-256
 pins the repair and retains transcript capture before launcher unassignment.
 The source remains visibly PRE-VALIDATION and NOT CHECKED.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 896 (2026-08-21, **C6c.4d1 runner v3 reached one scale-alias normalization; minimal repair and runner v4 prepared; NOT compiler-verified; 20/41 unchanged**)
+
+The fresh Colab Pro+ v3 run again compiled all `8662` prerequisites and failed
+only in the new C6c.4d1 endpoint after `4128.062 s`.  The remaining error was
+an elaboration mismatch between the literal `L^(depth+1)` in the sealed input
+bound and the definitionally equal local alias `ell` in the calc target.  The
+audit was skipped by stop-on-first-error.
+
+Canonical evidence SHA-256 is
+`76E9D08D48EAD00BE86474B26113AB437A766024E66B4ECC8A5B1F4D126FB2CC`;
+archive SHA-256 is
+`512C9DBE9CA10CA48CBCF96FCCFF76BE131056B936B183D085FE2F677D32041F`.
+The transcript records focal exit `1`, literal `FINAL_STATUS=FAIL`, launcher
+archive verification and launcher unassignment.  There was no reexecution.
+
+Repair checkpoint `d86151b1705b985598a554b09e06aacd4dee90d6` discharges only
+that alias normalization with `simpa [ell]`; it changes no theorem statement,
+hypothesis, constant, bound or physical operator.  Repaired source and
+unchanged audit Git-blob SHA-256 values are
+`31EFB0D428E43F03BD4985137ED43274682C944643BEE8C1FA5F5DC4AA6801F4`
+and
+`4E78AC70ADB0C1B65EF80734BAD81C36E9645B21A2D030947A1370BE14F2976E`.
+Prepared runner revision `regional-prefix-owner-input-action-v4`, SHA-256
+`D02AA0B9BBA6DD82F5A8C4641EF6B50DBD5264ABC4528A9948CEA07A2B2EA5E7`,
+pins that exact repair and retains transcript-before-unassign.  Source and
+audit remain visibly PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
