@@ -11588,6 +11588,7 @@ Both source files remain PRE-VALIDATION and NOT CHECKED pending that single
 diagnostic. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
+
 Diagnostic v3 on exact source
 `be86a1ccb81dd8c69599245e12b3d7a52d7dae9c` passed in one fresh Colab
 Pro+ CPU/high-RAM clone. The focal printed literal
@@ -13231,3 +13232,25 @@ normalization `12 * secondDerivBound / K^2`.  It constructs no Green, cell or
 layer sum, local defect, contraction, window-15 attainment, terminal field or
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+### Step 8b.24/C6c.4a: arbitrary-input tilted inverse action (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`dab2c355e0b6e73f9c95fa5d4a8124bbf935e611` adds one generic leaf theorem
+and its one-declaration audit.  For an arbitrary input `f`, one rooted tilted
+coercivity estimate and the literal right-inverse law imply a target action
+bound whose final factor remains exactly `‖tilt f‖₂`.
+
+This is the first admissible C6c.4 step after P9: it stops before expanding
+`f` into coordinate probes and therefore introduces no source-fibre
+cardinality.  It does not yet use source-owner support, spend the sealed
+`ell² * supNorm f` conversion, perform the fine-to-owner distance transport,
+derive uniform `B0`/`delta0`, identify the canonical regional physical Green,
+attain window 15, discharge a terminal field or construct `TermSource`.
+Both Lean files visibly retain PRE-VALIDATION pending one fresh Colab Pro+
+focal and audit.  The prepared runner revision is
+`tilted-inverse-action-v1`, SHA-256
+`E9E0C0699FAAE40EDB9376FB5A1B2D42095935483752B86683ED222827DB02BF`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

@@ -38894,3 +38894,26 @@ cutoff-Laplacian species and its inverse-square budget.  It does not construct
 a Green, local defect, contraction, window-15 attainment, terminal field or
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+## Addendum 883 (2026-08-21, **Step 8b.24/C6c.4a arbitrary-input tilted inverse action PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint `dab2c355e0b6e73f9c95fa5d4a8124bbf935e611`
+adds `FinitePiLpTiltedInverseAction.lean` and its one-declaration audit.  Their
+Git-blob SHA-256 values are
+`86E81163807523B9DCCBFEE4714DE852606314A7451F953A235E11BD860C0F78`
+and
+`83897087A3C61671242C85124D08555F354FBB89A424FD3B775442AECB626032`.
+The exact two-file textual gate passed before promotion; no Lean or Lake ran
+on Windows.
+
+The theorem keeps an arbitrary input intact and concludes with the counting-
+L2 norm of its rooted tilt.  It does not expand into coordinate probes or pay
+a fine-fibre cardinality.  It also does not yet consume source-owner support,
+the sealed `ell²` conversion or the fine-to-owner distance bridge, and it
+does not derive uniform physical constants.  Both Lean files visibly retain
+PRE-VALIDATION and remain NOT CHECKED.  Prepared runner revision
+`tilted-inverse-action-v1` has SHA-256
+`E9E0C0699FAAE40EDB9376FB5A1B2D42095935483752B86683ED222827DB02BF`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
