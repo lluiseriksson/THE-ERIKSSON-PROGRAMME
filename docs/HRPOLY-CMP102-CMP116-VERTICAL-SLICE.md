@@ -13258,3 +13258,24 @@ conversion, fine-to-owner distance, uniform physical `B0`/`delta0`, the
 canonical regional specialization, window 15, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+### Step 8b.24/C6c.4b: canonical rooted tilted coercivity (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`4d81940604d80b9534aa2a6cc7e433593d7db691` factors the canonical inverse
+decay theorem without changing its statement.  It names positivity of the
+same canonical rate and exposes the rooted tilted precision with coercivity
+`c / 2`; the existing point-source inverse theorem is rewritten to consume
+that intermediate result.
+
+No `htilt`, inverse family, physical Green, `B0` or `delta0` is added as a
+caller input.  The physical P9 specialization, source-owner `ell²` step,
+fine-to-owner transport, uniformity, window 15, terminal fields and
+`TermSource` remain open.  Both modified Lean files visibly retain the
+C6c.4b PRE-VALIDATION mark pending one fresh Colab Pro+ focal and
+four-declaration audit.  Prepared runner revision
+`canonical-tilted-coercivity-v1` has SHA-256
+`FC833B579A8505E78288AC3781AF5FE1FA09982C6F5F8BAF4B9E5C62FC9979A3`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

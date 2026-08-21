@@ -38943,3 +38943,24 @@ inverse action before source-owner specialization.  It does not pay a fibre
 cardinality, derive uniform physical constants, attain window 15, discharge a
 terminal field or construct `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 885 (2026-08-21, **Step 8b.24/C6c.4b canonical tilted coercivity PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint `4d81940604d80b9534aa2a6cc7e433593d7db691`
+modifies only `FinitePiLpExponentialInverseDecay.lean` and its audit.  Their
+Git-blob SHA-256 values are
+`0A9A90AC457C8E722D6186D74042CB8712EAFD9B31F65D44332001277EBF5B99`
+and
+`4FFE84CF3FE7B06E6203E6A21AE9F68C6DD14A8F821B7CCFC9795919195752D8`.
+The two-file textual gate passed and no Lean or Lake ran on Windows.
+
+The change factors the scalar work already present in the canonical inverse
+proof: rate positivity and rooted tilted coercivity `c / 2` become named
+theorems, and the old kernel endpoint consumes them.  No theorem statement is
+weakened and no physical hypothesis is introduced.  Both files visibly
+retain C6c.4b PRE-VALIDATION and remain NOT CHECKED.  Prepared runner revision
+`canonical-tilted-coercivity-v1` has SHA-256
+`FC833B579A8505E78288AC3781AF5FE1FA09982C6F5F8BAF4B9E5C62FC9979A3`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
