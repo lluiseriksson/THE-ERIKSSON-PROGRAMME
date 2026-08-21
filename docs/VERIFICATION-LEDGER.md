@@ -38795,3 +38795,24 @@ C5, its nonnegativity and the named-coefficient owner form.  The coefficient
 remains depth-dependent: this is not uniform regional `B0`, attainment of
 window 15, a terminal field or a `TermSource` inhabitant.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 879 (2026-08-21, **Step 8b.24/C6b localized-field B0 promoted PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `8839c2378cec95793663b204661ed9b32c367dfd`
+adds the C6b source/audit pair.  It reduces a coarse field supported in one
+fibre of the literal identity owner map to the corresponding C6a point source
+and obtains the localized-field estimate from the sealed point-source bound
+and the existing finite supremum norm.  The two source Git-blob SHA-256 values
+are
+`5A4BA9A215D46405601E5214A533C91B395BE53FFECB37D836B96B8FDF7A9A84`
+and
+`6348789029A649DB46DA57AADD6142BBE1A386F18240CFF17B2D98429D5566B4`.
+
+Both files visibly retain PRE-VALIDATION and remain NOT CHECKED.  The prepared
+Colab runner pins source, blobs, toolchain and manifest, then runs one focal
+plus its two-declaration audit.  No Lean or Lake ran on Windows.  C6b still
+concerns the ambient complex `G Q'^*` with depth-dependent coefficient; it
+does not produce uniform regional `B0`, attain window 15, discharge a
+terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.

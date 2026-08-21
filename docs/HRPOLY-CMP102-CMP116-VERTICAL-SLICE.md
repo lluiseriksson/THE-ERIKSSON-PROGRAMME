@@ -13170,3 +13170,21 @@ audit into `YangMillsCore.lean`.  It certifies the named ambient point-source
 coefficient and its nonnegativity, not uniform regional `B0`, window-15
 attainment, a terminal field or a `TermSource` inhabitant.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+### Step 8b.24/C6b: identity-owner localized coarse-field `B0` (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`8839c2378cec95793663b204661ed9b32c367dfd` promotes the C6b source/audit
+pair.  It proves that a coarse field supported in one fibre of the literal
+identity owner map is definitionally the corresponding point source, then
+feeds that equality into sealed C6a and bounds the source value by the
+existing finite supremum norm.  No source-cardinality factor is introduced.
+
+The conclusion still concerns the ambient complex operator `G Q'^*` and the
+C6a coefficient remains explicitly depth-dependent.  C6b is therefore not
+the canonical real regional Dirichlet Green, not the uniform regional (3.42)
+certificate, not attainment of window 15, not a terminal field and not a
+`TermSource` inhabitant.  Both files visibly retain PRE-VALIDATION pending a
+fresh Colab focal plus the two-declaration audit.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
