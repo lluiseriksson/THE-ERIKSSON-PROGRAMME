@@ -13454,3 +13454,27 @@ internally.  Fine-to-owner distance transport, uniform physical
 `B0`/`delta0`, window-15 attainment, terminal fields and `TermSource` remain
 open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+### Step 8b.24/C6c.4d2: physical P8 Green decay between localization owners (PRE-VALIDATION; NOT compiler-verified; 20/41 unchanged)
+
+The promoted source composes C6c.4d1 with the already sealed forward
+fine-site-to-localization-owner metric inequality.  It derives the decreasing
+exponential transport internally and preserves the same canonical rate and
+the same single `L^(2*(depth+1))` source-scale payment.  It accepts no free
+metric, owner-decay bound, regional Green or coercivity certificate.
+
+Source checkpoint `3ab0cf18587b71b54ac9bb33797316214ad8b0e9` fixes source
+and audit Git-blob SHA-256 values
+`B2F88BB72C6C81F579891E50719304837F88C19B68BD45F26128475EC17899EA`
+and
+`E3D46730E942B9922CE21C2FD0A3470BCB49743B0C9B577FF0516AE8DE2AAE6C`.
+Prepared runner revision `regional-prefix-owner-decay-v1`, SHA-256
+`0FCAA1A0E861D10B014F4E60E62971C3B48241496DFCEF8E75294BFF86CFD4A9`,
+pins that exact checkpoint and exactly those two source blobs.
+
+Both files remain visibly PRE-VALIDATION and have passed only lightweight
+textual/import-prefix checks; no Lean or Lake ran on Windows.  Uniform
+physical `B0`/`delta0`, window-15 attainment, terminal fields and
+`TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

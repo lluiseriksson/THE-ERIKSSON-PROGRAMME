@@ -39312,3 +39312,27 @@ composed internally.  It does not provide fine-to-owner distance transport,
 uniform physical `B0`/`delta0`, window-15 attainment, a terminal field or a
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+## Addendum 898 (2026-08-21, **C6c.4d2 physical P8 localization-owner decay promoted PRE-VALIDATION; NOT compiler-verified; 20/41 unchanged**)
+
+The promoted theorem composes the sealed physical P8 owner-input Green action
+with the sealed forward fine-site-to-localization-owner distance comparison.
+The decreasing exponential transport is derived internally; no free owner
+metric or decay estimate is accepted, and the canonical rate and the single
+physical `L^(2*(depth+1))` source-scale conversion are preserved literally.
+
+Source checkpoint `3ab0cf18587b71b54ac9bb33797316214ad8b0e9` fixes source
+and audit Git-blob SHA-256 values
+`B2F88BB72C6C81F579891E50719304837F88C19B68BD45F26128475EC17899EA`
+and
+`E3D46730E942B9922CE21C2FD0A3470BCB49743B0C9B577FF0516AE8DE2AAE6C`.
+Prepared runner revision `regional-prefix-owner-decay-v1`, SHA-256
+`0FCAA1A0E861D10B014F4E60E62971C3B48241496DFCEF8E75294BFF86CFD4A9`,
+pins the exact source and both blob hashes.
+
+Source and audit remain visibly PRE-VALIDATION; only lightweight textual and
+import-prefix guards ran on Windows.  Uniform physical `B0`/`delta0`,
+window-15 attainment, terminal fields and `TermSource` remain open.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
