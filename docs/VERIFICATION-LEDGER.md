@@ -38868,3 +38868,29 @@ middle species; it does not construct a Green, local defect, contraction,
 window-15 attainment, terminal field or `TermSource`.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+## Addendum 882 (2026-08-21, **Step 8b.24/C6c.3 signed cutoff species SEALED in fresh Colab Pro+ clone; 20/41 unchanged**)
+
+Source checkpoint `abf69f4410c570c39525ccfd5a0a6a72c1caabbe` was validated
+from instrumental checkpoint `0565c88b098faaf1f7ec0028bd3c4ea807b14eec`, runner
+revision `c6c3-signed-cutoff-v1`, and runner SHA-256
+`F3AC422B63CAA1535327E56F92840329A867E09B465FB1091E35F5F01E8E4B17`.
+The source chain, both Git-blob hashes, toolchain and manifest passed before
+compilation.
+
+The focal completed `8525` jobs in `1970.820 s` with exit `0`; the audit
+completed in `13.210 s` with exit `0`.  All four declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`EED96C0286A8F42D060B599043A7B5E1D37D44D7CC011707AC48173DEFBD9BB6`;
+archive SHA-256 is
+`D2D8A5FE2CD37C59F91B4822B01603B0D7583179FE877ACDDB6DE76A0BAEF4F2`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+This seal removes exactly the two C6c.3 PRE-VALIDATION marks and adds its
+audit to `YangMillsCore.lean`.  It certifies only the CMP96 (2.40) signed
+cutoff-Laplacian species and its inverse-square budget.  It does not construct
+a Green, local defect, contraction, window-15 attainment, terminal field or
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

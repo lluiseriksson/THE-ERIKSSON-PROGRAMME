@@ -13205,18 +13205,29 @@ exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
 
-### Step 8b.24/C6c.3: signed cutoff-Laplacian species (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.3: signed cutoff-Laplacian species (SEALED; fresh Colab Pro+ clone; 20/41 unchanged)
 
-PRE-VALIDATION source checkpoint
-`abf69f4410c570c39525ccfd5a0a6a72c1caabbe` promotes the exact frozen C6c.3
-source/audit pair.  It defines the literal middle species inside `K(h)` with
-the source minus sign, identifies it with the negative of the positive
-cutoff correction in the tree's `D^*D` product rule, retains the pointwise
-`48 * secondDerivBound / cutoffScale^2` estimate and proves the exact
-range-squared normalization `12 * secondDerivBound / K^2`.
+Source checkpoint `abf69f4410c570c39525ccfd5a0a6a72c1caabbe` was validated
+from instrumental checkpoint `0565c88b098faaf1f7ec0028bd3c4ea807b14eec` in a fresh
+Colab Pro+ CPU/high-RAM clone.  Runner revision `c6c3-signed-cutoff-v1`,
+SHA-256
+`F3AC422B63CAA1535327E56F92840329A867E09B465FB1091E35F5F01E8E4B17`,
+verified the source chain, both Git blobs, toolchain and manifest before
+compilation.  The focal completed `8525` jobs in `1970.820 s`; the
+four-declaration audit completed in `13.210 s`, and every declaration printed
+exactly `{propext, Classical.choice, Quot.sound}`.  Canonical evidence
+SHA-256 is
+`EED96C0286A8F42D060B599043A7B5E1D37D44D7CC011707AC48173DEFBD9BB6`;
+archive SHA-256 is
+`D2D8A5FE2CD37C59F91B4822B01603B0D7583179FE877ACDDB6DE76A0BAEF4F2`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
 
-This brick constructs no Green, cell or layer sum, local defect, contraction,
-window-15 attainment, terminal field or `TermSource`.  Both files visibly
-retain PRE-VALIDATION pending one fresh Colab focal plus the four-declaration
-audit.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
-compatible but unattained.
+The seal certifies the literal middle species inside `K(h)` with the source
+minus sign, its equality with the negative of the positive cutoff correction
+in the tree's `D^*D` product rule, the pointwise
+`48 * secondDerivBound / cutoffScale^2` estimate and the exact range-squared
+normalization `12 * secondDerivBound / K^2`.  It constructs no Green, cell or
+layer sum, local defect, contraction, window-15 attainment, terminal field or
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

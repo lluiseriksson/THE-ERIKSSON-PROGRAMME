@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSignedCutoffLaplacian
 /-!
 # CMP96 (2.40): signed cutoff-Laplacian species
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the result
-has not yet been verified by the Lean compiler.
-
 CMP96 printed p. 229 defines the middle term of `K(h)` with a minus sign,
 `-(Delta h)(x) * lambda(x)`.  The positive-`D^*D` product rule already sealed
 in the tree instead writes
