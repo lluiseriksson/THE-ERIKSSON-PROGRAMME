@@ -38165,6 +38165,7 @@ unchanged. PRE-VALIDATION remains visible and v2 remains NOT CHECKED.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
+
 ## Addendum 868 (2026-08-19, **Step 8b.24/C6c.2 canonical prefix tower P0 sealed in fresh Colab checkout; 20/41 unchanged**)
 
 Fresh Colab Pro+ CPU/high-RAM validation checked exact source
@@ -38845,3 +38846,25 @@ the coefficient remains depth-dependent: this is not uniform regional
 `B0`, attainment of window 15, a terminal field or a `TermSource` inhabitant.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 881 (2026-08-21, **Step 8b.24/C6c.3 signed cutoff species promoted PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `abf69f4410c570c39525ccfd5a0a6a72c1caabbe`
+adds the exact frozen C6c.3 source/audit pair.  The source Git-blob SHA-256
+values are
+`4A1B92B8D55AB28C47F9EAE483CF46B8FF09A6CF892BD8887956F1BEFD41A52D`
+and
+`A7D9438FAD9D637B6C56D7492EA2231A7883A6F71C149D5B6CEB58DF79650805`.
+The static promotion preview and its fail-closed tamper tests passed in
+`0.585 s` before promotion; the promoted worktree bytes match both frozen
+scratch hashes exactly.
+
+Both Lean files visibly retain PRE-VALIDATION and remain NOT CHECKED.  The
+prepared Colab runner pins source, blobs, toolchain and manifest, then runs
+one focal plus its four-declaration audit.  No Lean or Lake ran on Windows.
+C6c.3 fixes only the sign and inverse-square budget of the CMP96 (2.40)
+middle species; it does not construct a Green, local defect, contraction,
+window-15 attainment, terminal field or `TermSource`.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

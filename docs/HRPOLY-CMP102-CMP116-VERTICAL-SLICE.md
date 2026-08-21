@@ -11330,6 +11330,7 @@ contraction, a terminal field or a `TermSource` inhabitant.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
+
 A second static gate fixes the orientation of the next alias dictionary.
 Negating a centered alias while keeping the coarse momentum `ell` fixed does
 not produce the physical opposite momentum: it changes
@@ -13202,3 +13203,20 @@ Green, not the uniform regional (3.42) certificate, not attainment of window
 15, not a terminal field and not a `TermSource` inhabitant.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+### Step 8b.24/C6c.3: signed cutoff-Laplacian species (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`abf69f4410c570c39525ccfd5a0a6a72c1caabbe` promotes the exact frozen C6c.3
+source/audit pair.  It defines the literal middle species inside `K(h)` with
+the source minus sign, identifies it with the negative of the positive
+cutoff correction in the tree's `D^*D` product rule, retains the pointwise
+`48 * secondDerivBound / cutoffScale^2` estimate and proves the exact
+range-squared normalization `12 * secondDerivBound / K^2`.
+
+This brick constructs no Green, cell or layer sum, local defect, contraction,
+window-15 attainment, terminal field or `TermSource`.  Both files visibly
+retain PRE-VALIDATION pending one fresh Colab focal plus the four-declaration
+audit.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
