@@ -38990,3 +38990,29 @@ by the unchanged inverse endpoint; it does not add a free `htilt`, construct
 uniform physical `B0`/`delta0`, attain window 15, discharge a terminal field
 or construct `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 887 (2026-08-21, **Step 8b.24/C6c.4c one-owner tilted input PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint `b65846a238d3e58943950ad4ee78073dd1d994dd`
+adds `BalabanCMP99Eq342SourceOwnerTiltedInput.lean` and its two-declaration
+audit.  Their Git-blob SHA-256 values are
+`B2985EA2757D5DBACCD75C644430F105F3ACC8B5CC629A8DBABF3E6DB47FC1E0`
+and
+`FB5DE2F1DCA5FB952D7B855A03925BE941AD13C1FCC71C8968FBAB809356B6ED`.
+The exact two-file textual gate passed and no Lean or Lake ran on Windows.
+
+The generic theorem controls a supported-owner tilt by its within-owner
+diameter.  Its physical specialization derives that diameter from the exact
+source-localization `blockSite` dictionary and spends the sealed `ell²`
+counting-L2/sup conversion once.  It performs no coordinate-probe expansion
+and introduces no second fibre-cardinality factor.  Both files visibly retain
+C6c.4c PRE-VALIDATION and remain NOT CHECKED.  Prepared runner revision
+`source-owner-tilted-input-v1` will validate exactly this source/audit pair in
+one fresh Colab Pro+ clone; its SHA-256 is
+`7D2C3AF7B4F903B3BA23EA8D83CF7F226B77A432D36C4BF43A055DFCCE8F048B`.
+
+Inverse-action composition, fine-to-owner exponential transport, uniform
+physical `B0`/`delta0`, window-15 attainment, terminal fields and `TermSource`
+remain open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

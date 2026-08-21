@@ -13286,3 +13286,26 @@ support, the one permitted `ell²` conversion, fine-to-owner transport,
 uniform physical `B0`/`delta0`, window 15, terminal fields and `TermSource`
 remain open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+### Step 8b.24/C6c.4c: one-owner tilted input (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`b65846a238d3e58943950ad4ee78073dd1d994dd` adds a generic supported-owner
+tilt estimate and its physical source-localization specialization.  The
+generic theorem pays only the maximum within-owner exponential.  The physical
+theorem then invokes the sealed counting-L2 conversion exactly once, producing
+the literal `L^(2*(depth+1))` scale without a coordinate-probe sum or a second
+source-cardinality factor.
+
+The source-owner diameter is derived from the exact `blockSite` dictionary;
+it is not a free physical hypothesis.  The result does not yet combine the
+inverse action, transport fine distance to owner distance, choose uniform
+`B0`/`delta0`, attain window 15, discharge a terminal field or construct
+`TermSource`.  Both Lean files visibly retain C6c.4c PRE-VALIDATION and remain
+NOT CHECKED.  Prepared runner revision `source-owner-tilted-input-v1` will
+validate exactly the source/audit pair in one fresh Colab Pro+ clone; its
+SHA-256 is
+`7D2C3AF7B4F903B3BA23EA8D83CF7F226B77A432D36C4BF43A055DFCCE8F048B`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
