@@ -132,9 +132,10 @@ theorem norm_cmp96SourceSeparatedRegionalPrefixGreen_apply_le_sourceScale
     _ ≤ (2 / c) * Real.exp (-(rate * (finBoxDist root.1 target.1 : ℝ))) *
         (Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
           (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
-      exact mul_le_mul_of_nonneg_left hinput
-        (mul_nonneg (div_nonneg (by positivity) hc.le)
-          (Real.exp_pos _).le)
+      simpa [ell] using
+        mul_le_mul_of_nonneg_left hinput
+          (mul_nonneg (div_nonneg (by positivity) hc.le)
+            (Real.exp_pos _).le)
 
 end
 
