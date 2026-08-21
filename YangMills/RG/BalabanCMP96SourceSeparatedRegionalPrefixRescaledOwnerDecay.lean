@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 /-!
 # Rescaled owner decay for the physical P8 regional Green
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the result
-has not yet been verified by the Lean compiler.
-
 The fine-lattice Combes--Thomas rate is not the rate printed in CMP99 (3.42).
 The latter is measured in source-localization blocks of side
 `ell = L^(depth+1)`.  This module applies the sealed inverse-scale distance
