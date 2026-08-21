@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "0f72fefe09c24aaf5ac998f25032d70fbc0e4630"
+SOURCE_SHA = "c4a0160192483368f5fbd9d0e461f29709155c26"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-rescaled-owner-decay-v1"
+runner.RUNNER_REV = "regional-prefix-rescaled-owner-decay-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-rescaled-owner-decay")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixRescaledOwnerDecay.lean":
-        "b85c7e916776efd175247dccdbc84ccb496810d7a3c072459537392707868acf",
+        "9b73badd408709749c4ccec92c56556974ffca3bc0f9385bb92df2ce36151fbc",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixRescaledOwnerDecayAudit.lean":
         "f362bd316fc5f08d829b91d72460c85f64f093950eb6ee9f2e1db5eddb22e04c",
 }
