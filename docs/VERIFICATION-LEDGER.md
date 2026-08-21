@@ -39367,3 +39367,55 @@ localization-owner distance.  It does not construct uniform physical
 `B0`/`delta0`, attain window 15, discharge a terminal field or construct a
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+## Addendum 900 (2026-08-22, **C6c.4d3 block-rescaled owner decay SEALED in fresh Colab Pro+; 20/41 unchanged**)
+
+Source checkpoint `0f72fefe09c24aaf5ac998f25032d70fbc0e4630` introduced the
+per-depth physical P8 endpoint with source-owner rate `ell * rate` and the
+three explicit boundary payments
+`(2/c) * exp (3 * rate * (ell - 1))`.  Runner v1 at instrumental checkpoint
+`565d96122f365109682b59d31a9b8a4b117569b2`, SHA-256
+`B1F9E64AA2C63947B53C87F8156033AAEA0D3DE390F471D81D6A1DC1F2DFFFB3`,
+compiled every prerequisite and returned focal exit `1` after `3839.887 s`
+at two local elaboration normalizations.  Audit was skipped.  Canonical FAIL
+evidence SHA-256 is
+`CAC2549289E27B9CBE7C82D1179C46D4FDDA1246780DB732391F6E0C6A4FEE92`;
+archive SHA-256 is
+`694F0E38103676486A23B081B2EBE16624223DD54C1E99EAB4CA5827BC8B1C11`.
+
+Repair checkpoint `c4a0160192483368f5fbd9d0e461f29709155c26` changes only the
+cast-normalized intermediate statement and the orientation of an already
+proved exponential rewrite.  It changes no theorem statement, hypothesis,
+constant, bound or physical operator.  Repaired source and unchanged audit
+Git-blob SHA-256 values are
+`9B73BADD408709749C4CCEC92C56556974FFCA3BC0F9385BB92DF2CE36151FBC`
+and
+`F362BD316FC5F08D829B91D72460C85F64F093950EB6EE9F2E1DB5EDDB22E04C`.
+Instrumental checkpoint `178a980224c5c689312dee924f8a048c180e53a9`
+fixes runner revision `regional-prefix-rescaled-owner-decay-v2`, SHA-256
+`F53A5636631F73C2F2E59B030767B4A24658DC33B28AD79782462E333BBAE656`.
+
+An initial v2 notebook invocation was rejected by Python in `0.013 s`
+because the Colab editor appended stale cell fragments.  The runner did not
+start and no Lean/Lake verdict exists for that invocation; it is retained as
+`BLOCKED-INSTRUMENTATION`.  After a verified select-all replacement, the
+single clean v2 execution used the same exact runner, source and hashes.
+
+The fresh Colab Pro+ CPU high-RAM focal completed `8664` jobs in
+`4067.919 s`, exit `0`.  The one-declaration audit completed in `12.921 s`,
+exit `0`, and printed exactly `{propext, Classical.choice, Quot.sound}`.
+Canonical PASS evidence SHA-256 is
+`F526D76AF088B4E8DCD0177C53B2A31479C9E802CE94FBC35138694C574F25E5`;
+archive SHA-256 is
+`E56005B895F742FBA023E038C5ED10EDA122BF023D552B121966B08905D9F22C`.
+The transcript records literal `FINAL_STATUS=PASS`, launcher exit `0`, the
+download request and runtime unassignment; the Colab tab was closed.
+
+Seal checkpoint `cc73af702b0e0af8f8ed30211c310ee907340bbd` removes exactly
+the source and audit PRE-VALIDATION notices and adds the audit to
+`YangMillsCore`.  It certifies the unit-correct, block-rescaled per-depth
+owner decay.  It does not construct a depth-uniform `B0`/`delta0`, the
+left-derivative action, CMP96 (2.44)--(2.67), window-15 attainment, a terminal
+field or a `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

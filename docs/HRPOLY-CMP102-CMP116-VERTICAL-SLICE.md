@@ -13497,3 +13497,67 @@ free metric hypothesis.  Uniform physical `B0`/`delta0`, window-15
 attainment, terminal fields and `TermSource` remain open.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+### Step 8b.24/C6c.4d3: block-rescaled owner rate (SEALED in fresh Colab Pro+; 20/41 unchanged)
+
+The stronger sealed source-localization distance bridge gives
+
+```text
+ell * ownerDist <= fineDist + 2 * (ell - 1).
+```
+
+Composing it with C6c.4d1 exposes the rate in source-owner units as
+`ownerRate = ell * rate`.  The one source-fibre payment already present in
+C6c.4d1 and the two boundary payments of the stronger bridge remain explicit
+in
+
+```text
+ownerAmplitude = (2 / c) * exp (3 * rate * (ell - 1)).
+```
+
+No metric, Green, coercivity witness or decay estimate is supplied by the
+caller.  This fixes the unit convention that C6c.4d2 deliberately did not
+fix; it is still a per-depth Combes--Thomas endpoint.  In particular it does
+not prove one upper `B0` and one positive lower `delta0` chosen before
+`depth`, and therefore it is not CMP99 (3.42), window-15 attainment or a
+terminal producer.
+
+The first fresh Colab attempt at source checkpoint
+`0f72fefe09c24aaf5ac998f25032d70fbc0e4630` reached only the new endpoint
+after all `8663` prerequisites and failed at two elaboration normalizations:
+the casts of three local distance aliases after `exact_mod_cast`, and the
+orientation of the final exponential-product rewrite.  Focal time was
+`3839.887 s`, exit `1`; audit was skipped.  Evidence SHA-256 is
+`CAC2549289E27B9CBE7C82D1179C46D4FDDA1246780DB732391F6E0C6A4FEE92`;
+archive SHA-256 is
+`694F0E38103676486A23B081B2EBE16624223DD54C1E99EAB4CA5827BC8B1C11`.
+
+Repair checkpoint `c4a0160192483368f5fbd9d0e461f29709155c26` introduces one
+explicit cast-normalized intermediate inequality and rewrites the already
+proved exponential identity toward the target.  It changes no theorem
+statement, hypothesis, constant or physical operator.  Its source/audit
+Git-blob SHA-256 values are
+`9B73BADD408709749C4CCEC92C56556974FFCA3BC0F9385BB92DF2CE36151FBC`
+and
+`F362BD316FC5F08D829B91D72460C85F64F093950EB6EE9F2E1DB5EDDB22E04C`.
+Instrumental checkpoint `178a980224c5c689312dee924f8a048c180e53a9`
+contains runner revision `regional-prefix-rescaled-owner-decay-v2`, SHA-256
+`F53A5636631F73C2F2E59B030767B4A24658DC33B28AD79782462E333BBAE656`.
+
+The clean v2 execution in a fresh Colab Pro+ CPU high-RAM runtime compiled
+`8664` jobs in `4067.919 s`, exit `0`.  The one-declaration audit completed
+in `12.921 s`, exit `0`, and printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`F526D76AF088B4E8DCD0177C53B2A31479C9E802CE94FBC35138694C574F25E5`;
+archive SHA-256 is
+`E56005B895F742FBA023E038C5ED10EDA122BF023D552B121966B08905D9F22C`.
+The transcript contains literal `FINAL_STATUS=PASS`, launcher exit `0`,
+download request and runtime unassignment.  Seal checkpoint
+`cc73af702b0e0af8f8ed30211c310ee907340bbd` removes exactly the two C6c.4d3
+PRE-VALIDATION notices and adds its audit to `YangMillsCore`.
+
+Uniform physical `B0`/`delta0`, the left-derivative half of C6c.4, CMP96
+(2.44)--(2.67), window-15 attainment, terminal fields and a `TermSource`
+inhabitant remain open.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
