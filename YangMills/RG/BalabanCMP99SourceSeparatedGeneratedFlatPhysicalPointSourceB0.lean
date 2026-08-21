@@ -67,7 +67,9 @@ theorem cmp99SourceSeparatedGeneratedFlatPhysicalPointSourceB0_nonneg
         (K := Kfine)
         (cmp99SourceGeneratedFullComplexA_pos_physical L depth).le
         hrho.le hamplitude hradius hwindow 0
-    simpa using (le_trans (norm_nonneg _) hpoint)
+    simpa [cmp89SignedLatticeL1ExponentialWeight,
+      cmp89SignedLatticeOneDimensionalExpWeight] using
+      (le_trans (norm_nonneg _) hpoint)
   have hgeom : 0 ≤ (2 / (1 - Real.exp (-rho))) ^ 4 := by positivity
   rw [cmp99SourceSeparatedGeneratedFlatPhysicalPointSourceB0]
   exact mul_nonneg (mul_nonneg hA hgeom) (Real.exp_pos _).le

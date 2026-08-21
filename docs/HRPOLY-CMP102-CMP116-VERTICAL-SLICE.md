@@ -13142,3 +13142,14 @@ not a `TermSource` inhabitant.  Both modules visibly retain PRE-VALIDATION and
 are NOT CHECKED pending one fresh Colab Pro+ focal plus three-declaration
 audit.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+Fresh Colab diagnostic v1 stopped at the first focal error after `1679.035 s`:
+the nonnegativity proof had not unfolded the signed-lattice exponential weight
+at displacement zero, so simplification left the true extra factor visible.
+Evidence SHA-256 is
+`8284C182511357E6B12795555E53E24D58A7C83E6225E1125C3C0B1469FFBD8F`;
+archive SHA-256 is
+`C1600E358C42ADD06F4C17D222F9A78A7A4BA58596C141C2861BEA4A37DCCFE7`.
+This is a measured elaboration failure only.  PRE-VALIDATION remains and no
+counter moves; v2 unfolds the two already sealed weight definitions at zero
+without changing the statement, coefficient, hypotheses or scope.

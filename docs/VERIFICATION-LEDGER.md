@@ -36412,6 +36412,7 @@ source-blob hashes are byte-identical.  Both Lean files remain visibly
 PRE-VALIDATION and NOT CHECKED; counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
 
+
 Static review also sealed a negative dictionary fact before it could enter a
 consumer: `cmp99SourceMassParameter` is the source averaging coefficient
 `a_j`, not the physical mass.  Its lower bound cannot be used to manufacture
@@ -38740,3 +38741,26 @@ plus its three-declaration audit.  No Lean or Lake ran on Windows.  C6a does
 not produce uniform regional `B0`, attain window 15, discharge a terminal
 field or inhabit `TermSource`; counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+
+## Addendum 877 (2026-08-21, **C6a diagnostic v1 focal FAIL; zero-weight normalization repaired; PRE-VALIDATION retained**)
+
+One fresh Colab Pro+ CPU/high-RAM clone ran exact source checkpoint
+`1abd6761599da1ab9ade88601e4fc7f96b47a8b5` with runner revision
+`point-source-b0-v1`.  Toolchain, Mathlib pin, manifest and both source blobs
+passed.  The focal stopped at its first error after `1679.035 s` at
+`BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceB0.lean:70:4`:
+the proof of coefficient nonnegativity had not unfolded
+`cmp89SignedLatticeL1ExponentialWeight` and
+`cmp89SignedLatticeOneDimensionalExpWeight` at displacement zero.  Lean
+therefore retained the mathematically unit weight as an explicit factor.
+
+Canonical evidence SHA-256 is
+`8284C182511357E6B12795555E53E24D58A7C83E6225E1125C3C0B1469FFBD8F`;
+archive SHA-256 is
+`C1600E358C42ADD06F4C17D222F9A78A7A4BA58596C141C2861BEA4A37DCCFE7`.
+The runner emitted literal `FINAL_STATUS=FAIL`, requested unassignment and the
+runtime was closed.  The minimal repair unfolds exactly those two definitions
+in the existing `simpa`; no theorem statement, coefficient, hypothesis or
+scope changes.  PRE-VALIDATION remains and counters stay exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
