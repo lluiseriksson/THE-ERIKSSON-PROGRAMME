@@ -39280,3 +39280,35 @@ Prepared runner revision `regional-prefix-owner-input-action-v4`, SHA-256
 pins that exact repair and retains transcript-before-unassign.  Source and
 audit remain visibly PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+
+## Addendum 897 (2026-08-21, **C6c.4d1 physical P8 owner-input Green action SEALED in fresh Colab; 20/41 unchanged**)
+
+Runner revision `regional-prefix-owner-input-action-v4`, SHA-256
+`D02AA0B9BBA6DD82F5A8C4641EF6B50DBD5264ABC4528A9948CEA07A2B2EA5E7`,
+validated exact source checkpoint
+`d86151b1705b985598a554b09e06aacd4dee90d6` and source/audit Git-blob
+SHA-256 values
+`31EFB0D428E43F03BD4985137ED43274682C944643BEE8C1FA5F5DC4AA6801F4`
+and
+`4E78AC70ADB0C1B65EF80734BAD81C36E9645B21A2D030947A1370BE14F2976E`.
+The fresh Colab Pro+ runtime reported CPU high RAM (`50.99 GiB`) and the exact
+pinned Lean/Mathlib environment.
+
+The focal completed `8663` jobs in `3941.786 s`, exit `0`.  The
+one-declaration audit completed in `13.770 s`, exit `0`, and printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`AAAECA4D120EDAF71E6BCC342CC3B82384DF199A4FAA58A7FC3C8F93973ED067`;
+archive SHA-256 is
+`34EA4F13A7BF42C650B0F33BD230DDB30A1F18CFE38172C3D78024EFFFD61CCA`.
+The transcript records literal `FINAL_STATUS=PASS`, launcher exit `0`, archive
+hash agreement and launcher unassignment.  The Colab tab was closed.
+
+The seal removes exactly the source and audit PRE-VALIDATION notices and adds
+the audit to `YangMillsCore`.  It proves the P8 regional Green action on the
+literal source-owner input with the regional precision, inverse identity,
+canonical tilted coercivity and exactly one physical `ell^2` conversion
+composed internally.  It does not provide fine-to-owner distance transport,
+uniform physical `B0`/`delta0`, window-15 attainment, a terminal field or a
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixTiltedCoercivity
 import YangMills.RG.BalabanCMP99Eq342SourceOwnerTiltedInput
 
 /-!
-# PRE-VALIDATION: physical P8 Green action on one source-owner input
-
-Source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the Lean compiler.
+# Physical P8 Green action on one source-owner input
 
 This module composes the exact P8 inverse identity and canonical tilted
 coercivity with the already sealed source-owner tilted-input estimate.  The

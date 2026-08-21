@@ -13352,7 +13352,7 @@ transport, uniform physical `B0`/`delta0`, window 15, terminal fields and
 `TermSource = 0`; window 15 remains compatible but unattained.
 
 
-### Step 8b.24/C6c.4d1: physical P8 Green on one source-owner input (PRE-VALIDATION; NOT compiler-verified; 20/41 unchanged)
+### Step 8b.24/C6c.4d1: physical P8 Green on one source-owner input (SEALED in fresh Colab; 20/41 unchanged)
 
 The promoted source composes three already named interfaces without exposing
 coordinate probes: the exact P8 inverse identity, the C6c.4d0 canonical
@@ -13432,4 +13432,25 @@ Prepared runner revision `regional-prefix-owner-input-action-v4`, SHA-256
 `D02AA0B9BBA6DD82F5A8C4641EF6B50DBD5264ABC4528A9948CEA07A2B2EA5E7`,
 pins the exact second repair.  Source and audit remain PRE-VALIDATION and NOT
 CHECKED; counters remain `20/41`, `TermSource = 0`, and window 15 remains
+compatible but unattained.
+
+Runner v4 validated source checkpoint
+`d86151b1705b985598a554b09e06aacd4dee90d6` from a fresh Colab Pro+ CPU
+high-RAM runtime.  The focal completed `8663` jobs in `3941.786 s`, exit `0`;
+the one-declaration audit completed in `13.770 s`, exit `0`, and printed
+exactly `{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256
+is
+`AAAECA4D120EDAF71E6BCC342CC3B82384DF199A4FAA58A7FC3C8F93973ED067`;
+archive SHA-256 is
+`34EA4F13A7BF42C650B0F33BD230DDB30A1F18CFE38172C3D78024EFFFD61CCA`.
+The transcript contains literal `FINAL_STATUS=PASS`, launcher exit `0`, archive
+hash agreement and launcher unassignment; the Colab tab was closed.
+
+This seal removes exactly the two C6c.4d1 PRE-VALIDATION marks and adds the
+one-declaration audit to `YangMillsCore`.  It certifies the P8 regional Green
+action on the literal source-owner input while deriving the regional operator,
+canonical tilted coercivity and the single `ell^2` counting-to-sup payment
+internally.  Fine-to-owner distance transport, uniform physical
+`B0`/`delta0`, window-15 attainment, terminal fields and `TermSource` remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
