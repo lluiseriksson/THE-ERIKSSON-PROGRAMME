@@ -13234,23 +13234,27 @@ layer sum, local defect, contraction, window-15 attainment, terminal field or
 remains compatible but unattained.
 
 
-### Step 8b.24/C6c.4a: arbitrary-input tilted inverse action (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4a: arbitrary-input tilted inverse action (SEALED; fresh Colab Pro+ clone; 20/41 unchanged)
 
-PRE-VALIDATION source checkpoint
-`dab2c355e0b6e73f9c95fa5d4a8124bbf935e611` adds one generic leaf theorem
-and its one-declaration audit.  For an arbitrary input `f`, one rooted tilted
-coercivity estimate and the literal right-inverse law imply a target action
-bound whose final factor remains exactly `‖tilt f‖₂`.
+Source checkpoint `dab2c355e0b6e73f9c95fa5d4a8124bbf935e611` was validated
+from instrumental checkpoint `b56754ee4c02f5c54738da28a54952fe78999635` in one fresh
+Colab Pro+ CPU/high-RAM clone.  Runner revision `tilted-inverse-action-v1`,
+SHA-256
+`E9E0C0699FAAE40EDB9376FB5A1B2D42095935483752B86683ED222827DB02BF`,
+verified the source chain, both Git blobs, toolchain and manifest before
+compilation.  The focal completed `8171` jobs in `86.769 s`; the
+one-declaration audit completed in `5.315 s` and printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`0848F2388FC27DB4ED163C4A331990F5B40BCFA53D193DB75F858E17D3A06689`;
+archive SHA-256 is
+`B694A49B17AAF9423CB8AA3DA16D428E908402EC5C00FF71FB980AB9606D81AA`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
 
-This is the first admissible C6c.4 step after P9: it stops before expanding
-`f` into coordinate probes and therefore introduces no source-fibre
-cardinality.  It does not yet use source-owner support, spend the sealed
-`ell² * supNorm f` conversion, perform the fine-to-owner distance transport,
-derive uniform `B0`/`delta0`, identify the canonical regional physical Green,
-attain window 15, discharge a terminal field or construct `TermSource`.
-Both Lean files visibly retain PRE-VALIDATION pending one fresh Colab Pro+
-focal and audit.  The prepared runner revision is
-`tilted-inverse-action-v1`, SHA-256
-`E9E0C0699FAAE40EDB9376FB5A1B2D42095935483752B86683ED222827DB02BF`.
-Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
-compatible but unattained.
+The theorem preserves an arbitrary input and concludes with exactly
+`‖tilt f‖₂`; it never expands the source into coordinate probes and introduces
+no fine-fibre cardinality.  Source-owner support, the one permitted `ell²`
+conversion, fine-to-owner distance, uniform physical `B0`/`delta0`, the
+canonical regional specialization, window 15, terminal fields and
+`TermSource` remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

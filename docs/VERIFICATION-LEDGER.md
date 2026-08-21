@@ -38917,3 +38917,29 @@ PRE-VALIDATION and remain NOT CHECKED.  Prepared runner revision
 `E9E0C0699FAAE40EDB9376FB5A1B2D42095935483752B86683ED222827DB02BF`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 884 (2026-08-21, **Step 8b.24/C6c.4a arbitrary-input tilted inverse action SEALED in fresh Colab Pro+ clone; 20/41 unchanged**)
+
+Source checkpoint `dab2c355e0b6e73f9c95fa5d4a8124bbf935e611` was validated
+from instrumental checkpoint `b56754ee4c02f5c54738da28a54952fe78999635`, runner
+revision `tilted-inverse-action-v1`, and runner SHA-256
+`E9E0C0699FAAE40EDB9376FB5A1B2D42095935483752B86683ED222827DB02BF`.
+Source chain, both Git-blob hashes, toolchain and manifest passed before
+compilation.
+
+The focal completed `8171` jobs in `86.769 s` with exit `0`; the audit
+completed in `5.315 s` with exit `0`.  Its one declaration printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`0848F2388FC27DB4ED163C4A331990F5B40BCFA53D193DB75F858E17D3A06689`;
+archive SHA-256 is
+`B694A49B17AAF9423CB8AA3DA16D428E908402EC5C00FF71FB980AB9606D81AA`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+This seal removes exactly the two C6c.4a PRE-VALIDATION marks and adds its
+audit to `YangMillsCore.lean`.  It certifies only the arbitrary-input tilted
+inverse action before source-owner specialization.  It does not pay a fibre
+cardinality, derive uniform physical constants, attain window 15, discharge a
+terminal field or construct `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

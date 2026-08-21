@@ -8,9 +8,6 @@ import YangMills.RG.FinitePiLpCombesThomas
 /-!
 # Tilted inverse action before point-source expansion
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and the result
-has not yet been verified by the Lean compiler.
-
 The usual Combes--Thomas endpoint expands an inverse against a coordinate
 probe.  CMP96 (2.43) instead applies the regional Green to an arbitrary field
 supported in one source owner.  Expanding that field into probes would pay the
