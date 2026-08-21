@@ -104,8 +104,8 @@ theorem cmp99FlatComplexFibrePointSource_eq_normalized_sum_fourierMode
   rw [hfactor, hsum]
   by_cases hxy : x = y
   · rw [if_pos hxy, if_pos hxy]
-    change v a = v a * volume / volume
-    field_simp [hvolume]
+    change v a = volume⁻¹ * (volume * v a)
+    rw [← mul_assoc, inv_mul_cancel₀ hvolume, one_mul]
   · rw [if_neg hxy, if_neg hxy]
     simp
 
