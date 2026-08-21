@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixOwnerInputAction
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerForwardDistanceBridge
 
 /-!
-# PRE-VALIDATION: physical P8 Green decay between localization owners
-
-Source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the Lean compiler.
+# Physical P8 Green decay between localization owners
 
 This module transports the sealed fine-site decay of the physical P8 Green
 action to the literal CMP99 localization-owner distance.  The forward metric

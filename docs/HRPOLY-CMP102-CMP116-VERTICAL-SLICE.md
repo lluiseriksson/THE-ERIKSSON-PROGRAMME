@@ -13456,7 +13456,7 @@ open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
 
-### Step 8b.24/C6c.4d2: physical P8 Green decay between localization owners (PRE-VALIDATION; NOT compiler-verified; 20/41 unchanged)
+### Step 8b.24/C6c.4d2: physical P8 Green decay between localization owners (SEALED in fresh Colab; 20/41 unchanged)
 
 The promoted source composes C6c.4d1 with the already sealed forward
 fine-site-to-localization-owner metric inequality.  It derives the decreasing
@@ -13478,3 +13478,22 @@ textual/import-prefix checks; no Lean or Lake ran on Windows.  Uniform
 physical `B0`/`delta0`, window-15 attainment, terminal fields and
 `TermSource` remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+The fresh Colab Pro+ CPU high-RAM run validated source checkpoint
+`3ab0cf18587b71b54ac9bb33797316214ad8b0e9`.  The focal completed
+`8665` jobs in `4265.778 s`, exit `0`; the one-declaration audit completed in
+`13.851 s`, exit `0`, and printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`E0A44D57ABFF27CC2954860F5E810FBD83F8CF5BA6A14A68AB9B214A9E710099`;
+archive SHA-256 is
+`295AFFC96C2A43F95F65048A45B16B6217F2B4BDEC6BEB920F43301FA56C1060`.
+The transcript contains literal `FINAL_STATUS=PASS`, launcher exit `0`, archive
+hash agreement and launcher unassignment; the Colab tab was closed.
+
+This seal removes exactly the two C6c.4d2 PRE-VALIDATION marks and adds its
+audit to `YangMillsCore`.  The P8 Green bound now decays directly in the
+literal localization-owner distance, with the fixed canonical rate and no
+free metric hypothesis.  Uniform physical `B0`/`delta0`, window-15
+attainment, terminal fields and `TermSource` remain open.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

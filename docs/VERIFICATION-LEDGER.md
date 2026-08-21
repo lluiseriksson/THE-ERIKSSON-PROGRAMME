@@ -37559,6 +37559,7 @@ PRE-VALIDATION and NOT CHECKED; no Lean or Lake ran on Windows.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
+
 ## Addendum 850 (2026-08-16, **stabilized-quotient diagnostic v6 rejects a whole-goal definitional `change`; v7 prepared**)
 
 Diagnostic v6 passed exact transport, source/blob gates, pins, text guards,
@@ -39336,3 +39337,33 @@ import-prefix guards ran on Windows.  Uniform physical `B0`/`delta0`,
 window-15 attainment, terminal fields and `TermSource` remain open.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+## Addendum 899 (2026-08-21, **C6c.4d2 physical P8 localization-owner decay SEALED in fresh Colab; 20/41 unchanged**)
+
+Runner revision `regional-prefix-owner-decay-v1`, SHA-256
+`0FCAA1A0E861D10B014F4E60E62971C3B48241496DFCEF8E75294BFF86CFD4A9`,
+validated exact source checkpoint
+`3ab0cf18587b71b54ac9bb33797316214ad8b0e9` and source/audit Git-blob
+SHA-256 values
+`B2F88BB72C6C81F579891E50719304837F88C19B68BD45F26128475EC17899EA`
+and
+`E3D46730E942B9922CE21C2FD0A3470BCB49743B0C9B577FF0516AE8DE2AAE6C`.
+
+The fresh Colab Pro+ CPU high-RAM focal completed `8665` jobs in
+`4265.778 s`, exit `0`.  The one-declaration audit completed in `13.851 s`,
+exit `0`, and printed exactly `{propext, Classical.choice, Quot.sound}`.
+Canonical evidence SHA-256 is
+`E0A44D57ABFF27CC2954860F5E810FBD83F8CF5BA6A14A68AB9B214A9E710099`;
+archive SHA-256 is
+`295AFFC96C2A43F95F65048A45B16B6217F2B4BDEC6BEB920F43301FA56C1060`.
+The transcript records literal `FINAL_STATUS=PASS`, launcher exit `0`, archive
+hash agreement and launcher unassignment.  The Colab tab was closed.
+
+The seal removes exactly the source and audit PRE-VALIDATION notices and adds
+the audit to `YangMillsCore`.  It certifies the internally derived decreasing
+exponential transport from the P8 fine-site Green action to the literal
+localization-owner distance.  It does not construct uniform physical
+`B0`/`delta0`, attain window 15, discharge a terminal field or construct a
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
