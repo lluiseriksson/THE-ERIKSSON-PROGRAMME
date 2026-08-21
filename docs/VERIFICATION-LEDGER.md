@@ -38762,5 +38762,9 @@ archive SHA-256 is
 The runner emitted literal `FINAL_STATUS=FAIL`, requested unassignment and the
 runtime was closed.  The minimal repair unfolds exactly those two definitions
 in the existing `simpa`; no theorem statement, coefficient, hypothesis or
-scope changes.  PRE-VALIDATION remains and counters stay exactly `20/41`,
-`TermSource = 0`; window 15 remains compatible but unattained.
+scope changes.  Repair checkpoint
+`1f53807c6040a0856ca98e49f610d40d6b28fed7` has revised source Git-blob
+SHA-256
+`07F0173FDD9A789F30C380FBC9FB803264D5B0D47C5EA009ACA6870450EA551C`.
+PRE-VALIDATION remains and counters stay exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.

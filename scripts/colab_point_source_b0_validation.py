@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "1abd6761599da1ab9ade88601e4fc7f96b47a8b5"
+SOURCE_SHA = "1f53807c6040a0856ca98e49f610d40d6b28fed7"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -36,7 +36,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "point-source-b0-v1"
+runner.RUNNER_REV = "point-source-b0-v2-zero-weight-normalization"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-point-source-b0")
 runner.EVIDENCE = Path("/content/hrpoly-point-source-b0-evidence")
@@ -44,7 +44,7 @@ runner.ARCHIVE = Path("/content/hrpoly-point-source-b0-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-point-source-b0-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceB0.lean":
-        "8358152a51968574da2dff5c2f9927593373ee7542346123e3569f46d2c9932d",
+        "07f0173fdd9a789f30c380fbc9fb803264d5b0d47c5ea009aca6870450ea551c",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceB0Audit.lean":
         "aeb47cce27a4101c55a136ef762c713b0979778762d383adb2cc379d7009a205",
 }

@@ -13152,4 +13152,6 @@ archive SHA-256 is
 `C1600E358C42ADD06F4C17D222F9A78A7A4BA58596C141C2861BEA4A37DCCFE7`.
 This is a measured elaboration failure only.  PRE-VALIDATION remains and no
 counter moves; v2 unfolds the two already sealed weight definitions at zero
-without changing the statement, coefficient, hypotheses or scope.
+without changing the statement, coefficient, hypotheses or scope.  Repair
+checkpoint `1f53807c6040a0856ca98e49f610d40d6b28fed7` remains visibly
+PRE-VALIDATION pending that v2 diagnostic.
