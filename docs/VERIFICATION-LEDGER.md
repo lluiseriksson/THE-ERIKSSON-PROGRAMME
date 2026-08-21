@@ -37622,6 +37622,7 @@ pin the repaired source. PRE-VALIDATION remains visible and the result is
 NOT CHECKED. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
+
 Diagnostic runner checkpoint `9a55678052e7c5394ef5c51f5de86f4ab9f8be14`
 has Git-blob SHA-256
 `b6de4efa8f7f20436fa95f9b36395278f3dd043862906ec78214b764f71adbc2`;
@@ -37900,6 +37901,7 @@ reindex the complete physical endpoint sum, construct the Brillouin integral
 or regional `B0`, attain window 15, discharge a terminal field or inhabit
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
 
 ## Addendum 844 (2026-08-16, **stabilized-to-quotient bridge written; PRE-VALIDATION and NOT CHECKED**)
 
@@ -38719,3 +38721,22 @@ transport from the sealed C4b point-source estimate to the literal CMP99
 regional `B0`, attain window 15, discharge a terminal field or inhabit
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+## Addendum 876 (2026-08-21, **Step 8b.24/C6a point-source B0 promoted PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `1abd6761599da1ab9ade88601e4fc7f96b47a8b5`
+adds the C6a source/audit pair.  It names the exact coefficient exposed by
+sealed C5, proves nonnegativity on the existing physical strip window and
+restates the literal source-owner estimate with that coefficient.  The two
+source Git-blob SHA-256 values are
+`8358152A51968574DA2DFF5C2F9927593373EE7542346123E3569F46D2C9932D`
+and
+`AEB47CCE27A4101C55A136EF762C713B0979778762D383ADB2CC379D7009A205`.
+
+Both files visibly retain PRE-VALIDATION and remain NOT CHECKED.  The prepared
+Colab runner pins source, blobs, toolchain and manifest, then runs one focal
+plus its three-declaration audit.  No Lean or Lake ran on Windows.  C6a does
+not produce uniform regional `B0`, attain window 15, discharge a terminal
+field or inhabit `TermSource`; counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.

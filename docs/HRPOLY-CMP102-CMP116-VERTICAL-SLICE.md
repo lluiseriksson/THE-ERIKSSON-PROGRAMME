@@ -4847,6 +4847,7 @@ open. This is infrastructure below window 15, not a terminal field: counters
 remain exactly `20/41`, `TermSource = 0`, and window 15 compatible but
 unattained.
 
+
 Runs `31238460271`, `31238613347` and `31238736048` preserve the three
 elaboration failures. Cached diagnostic run `31238863986` passed but retained
 PRE-VALIDATION; only the cold run above retired it.
@@ -12172,6 +12173,7 @@ PRE-VALIDATION and NOT CHECKED; no Lean or Lake ran on Windows.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
+
 Diagnostic runner checkpoint `9a55678052e7c5394ef5c51f5de86f4ab9f8be14`
 has Git-blob SHA-256
 `b6de4efa8f7f20436fa95f9b36395278f3dd043862906ec78214b764f71adbc2`;
@@ -13123,3 +13125,20 @@ not a point-source `B0`, not a uniform regional `B0`, not attainment of
 window 15, not a terminal field and not a `TermSource` inhabitant.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+
+### Step 8b.24/C6a: named ambient point-source `B0` (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`1abd6761599da1ab9ade88601e4fc7f96b47a8b5` promotes the C6a source/audit
+pair.  It names the complete coefficient already displayed by sealed C5,
+proves its nonnegativity on the same physical strip window, and restates the
+point-source estimate in that exact named-coefficient form.
+
+The coefficient remains explicitly depth-dependent through the generated
+physical `a`.  C6a is therefore an ambient point-source coefficient, not a
+uniform regional `B0`, not attainment of window 15, not a terminal field and
+not a `TermSource` inhabitant.  Both modules visibly retain PRE-VALIDATION and
+are NOT CHECKED pending one fresh Colab Pro+ focal plus three-declaration
+audit.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
