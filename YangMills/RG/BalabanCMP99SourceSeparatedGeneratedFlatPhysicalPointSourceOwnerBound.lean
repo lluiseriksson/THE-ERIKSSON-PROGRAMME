@@ -85,6 +85,11 @@ theorem
   have howner :=
     cmp89SignedLatticeL1ExponentialWeight_centered_neg_fineToCoarse_le_owner
       (M := Kfine) (N := N) hrho.le x y
+  have hweightZero :
+      cmp89SignedLatticeL1ExponentialWeight
+          (rho / (Kfine : ℝ)) (0 : Fin 4 → ℤ) = 1 := by
+    rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
+    simp
   have hA :
       0 ≤ cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft a rho := by
     have hpoint :=
@@ -92,7 +97,7 @@ theorem
         (K := Kfine)
         (cmp99SourceGeneratedFullComplexA_pos_physical L depth).le
         hrho.le hamplitude hradius hwindow 0
-    simpa [a] using (le_trans (norm_nonneg _) hpoint)
+    simpa [a, hweightZero] using (le_trans (norm_nonneg _) hpoint)
   have hgeom : 0 ≤ (2 / (1 - Real.exp (-rho))) ^ 4 := by
     positivity
   change ‖∑' n : CMP99FlatIntegerResidueClass 4 N 0,
