@@ -13318,3 +13318,29 @@ transport fine distance to owner distance, construct uniform physical
 `B0`/`delta0`, attain window 15, discharge a terminal field or construct
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+### Step 8b.24/C6c.4d0: physical P8 canonical tilted coercivity (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+PRE-VALIDATION source checkpoint
+`c86c1a7c724da1faff85a550fd1fad59ab6d63bd` adds the explicit specialization
+of C6c.4b to the literal P8 regional prefix precision.  Its two Git-blob
+SHA-256 values are
+`0826AE9B7FFBA74CF83E243B5E1CF89D7FB7932517C0A2FB945E565E380ECF4C`
+and
+`336A262EE3A17A6C08EB6D7178D73C545BF955F8529E4DD12A9BBBD74401A25B`.
+The exact two-file textual gate passed and no Lean or Lake ran on Windows.
+
+The theorem constructs the regional operator as the Dirichlet compression of
+the one P7 ambient prefix precision.  The exponential kernel bound,
+transported coercivity and active-region row sum are derived from that same
+physical tower before applying the canonical rooted tilt theorem; no regional
+precision, rate or tilted-coercivity witness is a caller input.  Both Lean
+files visibly retain C6c.4d0 PRE-VALIDATION and remain NOT CHECKED.  Prepared
+runner revision `regional-prefix-tilted-coercivity-v1` has SHA-256
+`599895295CE7F1A0D813AF30911F2460EDADBEF5251E20D9606D2CC39FB7CB24`.
+
+Arbitrary-input inverse-action composition, source-owner input insertion,
+fine-to-owner exponential transport, uniform physical `B0`/`delta0`, window
+15, terminal fields and `TermSource` remain open.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

@@ -29009,6 +29009,7 @@ run `31221320009` retained the first elaboration errors; cached run
 live counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
 
+
 ## Addendum 602 (2026-08-08, **CMP99 (3.42) producer boundary fixed from primary source; documentation only**)
 
 Direct inspection of the local primary extraction fixes the dependency chain
@@ -39049,3 +39050,30 @@ tilted coercivity, fine-to-owner exponential transport, uniform physical
 `B0`/`delta0`, window-15 attainment, terminal fields and `TermSource` remain
 open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 889 (2026-08-21, **Step 8b.24/C6c.4d0 physical P8 canonical tilted coercivity PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint `c86c1a7c724da1faff85a550fd1fad59ab6d63bd`
+adds `BalabanCMP96SourceSeparatedRegionalPrefixTiltedCoercivity.lean` and its
+one-declaration audit.  Their Git-blob SHA-256 values are
+`0826AE9B7FFBA74CF83E243B5E1CF89D7FB7932517C0A2FB945E565E380ECF4C`
+and
+`336A262EE3A17A6C08EB6D7178D73C545BF955F8529E4DD12A9BBBD74401A25B`.
+The exact two-file textual gate passed and no Lean or Lake ran on Windows.
+
+The theorem specializes C6c.4b to the exact P8 regional prefix precision:
+the regional operator is the literal Dirichlet compression of the P7 ambient
+prefix precision, while localization, transported coercivity and the
+active-region exponential row sum are all derived internally from that same
+physical tower.  It does not accept a free regional operator, rate or
+tilted-coercivity certificate.  Both files visibly retain C6c.4d0
+PRE-VALIDATION and remain NOT CHECKED.  Prepared runner revision
+`regional-prefix-tilted-coercivity-v1` has SHA-256
+`599895295CE7F1A0D813AF30911F2460EDADBEF5251E20D9606D2CC39FB7CB24`.
+
+Inverse-action composition, insertion of the C6c.4c one-owner input,
+fine-to-owner exponential transport, uniform physical `B0`/`delta0`,
+window-15 attainment, terminal fields and `TermSource` remain open.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
