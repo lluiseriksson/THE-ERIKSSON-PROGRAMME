@@ -38964,3 +38964,29 @@ retain C6c.4b PRE-VALIDATION and remain NOT CHECKED.  Prepared runner revision
 `FC833B579A8505E78288AC3781AF5FE1FA09982C6F5F8BAF4B9E5C62FC9979A3`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+
+## Addendum 886 (2026-08-21, **Step 8b.24/C6c.4b canonical tilted coercivity SEALED in fresh Colab Pro+ clone; 20/41 unchanged**)
+
+Source checkpoint `4d81940604d80b9534aa2a6cc7e433593d7db691` was validated
+from instrumental checkpoint `90e146de6277f809dd2941862667ec9ef4dc109d`,
+runner revision `canonical-tilted-coercivity-v1`, and runner SHA-256
+`FC833B579A8505E78288AC3781AF5FE1FA09982C6F5F8BAF4B9E5C62FC9979A3`.
+Source chain, both Git-blob hashes, toolchain and manifest passed before
+compilation.
+
+The focal completed `8171` jobs in `129.607 s` with exit `0`; the audit
+completed in `10.217 s` with exit `0`.  All four declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`E3B9DBF3AA6EF77A82F0023595B17819A6732ADD36F7D270E7338D970E19FFA8`;
+archive SHA-256 is
+`0DB66874C3E7E48A13D2376A60FA8666E163B9AE00544DEE4BEBA9DA1887BC64`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+This seal removes exactly the two C6c.4b PRE-VALIDATION marks.  It certifies
+the named canonical rate positivity and rooted tilted coercivity already used
+by the unchanged inverse endpoint; it does not add a free `htilt`, construct
+uniform physical `B0`/`delta0`, attain window 15, discharge a terminal field
+or construct `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

@@ -13,9 +13,6 @@ localized coercive operator is inverted.  The inverse rate is chosen from the
 available decay, coercivity, amplitude, and a volume-independent exponential
 row sum.  No physical hypothesis is introduced here.
 
-PRE-VALIDATION (C6c.4b): the canonical-rate positivity and rooted tilted
-coercivity factorization are present in source but their revised `.olean` and
-audit have not yet been materialized by the Lean compiler.
 -/
 
 namespace YangMills.RG
