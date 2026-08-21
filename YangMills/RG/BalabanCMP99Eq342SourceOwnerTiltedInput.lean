@@ -16,9 +16,6 @@ owner.  The owner diameter contributes one exponential and the already
 sealed four-dimensional conversion contributes exactly
 `L^(2 * (depth + 1))`; there is no expansion into coordinate probes and no
 second source-cardinality factor.
-
-PRE-VALIDATION (C6c.4c): source is present, its `.olean` has not yet been
-materialized, and the result is not yet verified by the Lean compiler.
 -/
 
 namespace YangMills.RG

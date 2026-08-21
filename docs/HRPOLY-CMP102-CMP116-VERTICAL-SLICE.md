@@ -13288,24 +13288,33 @@ remain open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
 
-### Step 8b.24/C6c.4c: one-owner tilted input (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4c: one-owner tilted input (SEALED; fresh Colab Pro+ clone; 20/41 unchanged)
 
-PRE-VALIDATION source checkpoint
-`b65846a238d3e58943950ad4ee78073dd1d994dd` adds a generic supported-owner
-tilt estimate and its physical source-localization specialization.  The
-generic theorem pays only the maximum within-owner exponential.  The physical
-theorem then invokes the sealed counting-L2 conversion exactly once, producing
-the literal `L^(2*(depth+1))` scale without a coordinate-probe sum or a second
-source-cardinality factor.
-
-The source-owner diameter is derived from the exact `blockSite` dictionary;
-it is not a free physical hypothesis.  The result does not yet combine the
-inverse action, transport fine distance to owner distance, choose uniform
-`B0`/`delta0`, attain window 15, discharge a terminal field or construct
-`TermSource`.  Both Lean files visibly retain C6c.4c PRE-VALIDATION and remain
-NOT CHECKED.  Prepared runner revision `source-owner-tilted-input-v1` will
-validate exactly the source/audit pair in one fresh Colab Pro+ clone; its
-SHA-256 is
+Source checkpoint `b65846a238d3e58943950ad4ee78073dd1d994dd` was
+validated from instrumental checkpoint
+`228f45bf7a8f75259d1d4af29876e4b60d399e9e`, runner revision
+`source-owner-tilted-input-v1`, and runner SHA-256
 `7D2C3AF7B4F903B3BA23EA8D83CF7F226B77A432D36C4BF43A055DFCCE8F048B`.
-Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
-compatible but unattained.
+Source chain, both Git-blob hashes, toolchain and manifest passed before
+compilation.
+
+The focal completed `8595` jobs in `2066.282 s` with exit `0`; the audit
+completed in `10.152 s` with exit `0`.  Both declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`A5ABC30FA85221F1239702A512B5BD4C1CCBC98039005B975CFB2DA978D44AC1`;
+archive SHA-256 is
+`CA8EFC4C9A57862BA7EFD5B77207C026FF7B9DF51691E1ACF8E83D86A2591556`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+The seal certifies the generic supported-owner tilt estimate and its physical
+source-localization specialization.  The source-owner diameter is derived
+from the exact `blockSite` dictionary, and the physical theorem spends the
+sealed counting-L2 conversion exactly once, with literal
+`L^(2*(depth+1))`; it performs neither a coordinate-probe expansion nor a
+second source-cardinality payment.  It does not compose the inverse action,
+specialize canonical tilted coercivity to the P8 regional precision,
+transport fine distance to owner distance, construct uniform physical
+`B0`/`delta0`, attain window 15, discharge a terminal field or construct
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

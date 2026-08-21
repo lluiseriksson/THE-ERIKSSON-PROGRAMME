@@ -39016,3 +39016,36 @@ Inverse-action composition, fine-to-owner exponential transport, uniform
 physical `B0`/`delta0`, window-15 attainment, terminal fields and `TermSource`
 remain open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+
+## Addendum 888 (2026-08-21, **Step 8b.24/C6c.4c one-owner tilted input SEALED in fresh Colab Pro+ clone; 20/41 unchanged**)
+
+Source checkpoint `b65846a238d3e58943950ad4ee78073dd1d994dd` was validated
+from instrumental checkpoint `228f45bf7a8f75259d1d4af29876e4b60d399e9e`,
+runner revision `source-owner-tilted-input-v1`, and runner SHA-256
+`7D2C3AF7B4F903B3BA23EA8D83CF7F226B77A432D36C4BF43A055DFCCE8F048B`.
+The source chain, both Git-blob hashes, exact toolchain and pinned manifest
+passed before compilation; no Lean or Lake ran on Windows.
+
+The focal completed `8595` jobs in `2066.282 s` with exit `0`; the audit
+completed in `10.152 s` with exit `0`.  Both declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`A5ABC30FA85221F1239702A512B5BD4C1CCBC98039005B975CFB2DA978D44AC1`;
+archive SHA-256 is
+`CA8EFC4C9A57862BA7EFD5B77207C026FF7B9DF51691E1ACF8E83D86A2591556`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+This seal removes exactly the two C6c.4c PRE-VALIDATION marks and adds the
+two-declaration audit to `YangMillsCore`.  It certifies that a field supported
+in one source owner pays only the maximum within-owner exponential, and that
+the physical specialization derives the diameter from the `blockSite`
+dictionary before spending the sealed counting-L2 conversion exactly once.
+It performs no coordinate-probe expansion and introduces no second
+source-cardinality factor.
+
+Inverse-action composition, the P8 physical specialization of canonical
+tilted coercivity, fine-to-owner exponential transport, uniform physical
+`B0`/`delta0`, window-15 attainment, terminal fields and `TermSource` remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
