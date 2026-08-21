@@ -15,7 +15,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "434727494a8a23e7fdce894f945daef7e07a686c"
+SOURCE_SHA = "7c0c25a3c1468bfbec0fb64340b31d03264d185f"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -42,7 +42,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-point-owner-v6-generated-amplitude-unfold"
+runner.RUNNER_REV = "source-point-owner-v7-zero-weight-normalization"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-point-owner")
 runner.EVIDENCE = Path("/content/hrpoly-source-point-owner-evidence")
@@ -82,7 +82,7 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceEndpointAudit.lean":
         "1a60a6c6141306d82ed4b4e0b63fcb573d29a9682f4990ebeef7186d6353b0a2",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceOwnerBound.lean":
-        "4efe1ddc4c91d53926fd9637b90d7e686cf395541999d72807373f1791e9488d",
+        "fb24c6f2fa9bebdfdb8c59defcc30d82760158019036ff69e13fce6365db705e",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceOwnerBoundAudit.lean":
         "4d618354addaa277296e1115a3e2323598cf2915703a07341993f6fd207d0bd5",
     "YangMills/RG/BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceZeroResidue.lean":
