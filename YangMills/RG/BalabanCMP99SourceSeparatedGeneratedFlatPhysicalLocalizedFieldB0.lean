@@ -9,9 +9,6 @@ import YangMills.RG.FinitePiLpBlockLocalizedSup
 /-!
 # Localized coarse-field bound for the separated generated Green
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 C6a controls one coarse point source.  On the coarse source carrier the owner
 map is the identity, so an arbitrary field supported in one owner fibre is
 definitionally supported at one point.  This file proves that reduction and

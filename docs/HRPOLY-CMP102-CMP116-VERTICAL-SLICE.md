@@ -13172,7 +13172,7 @@ attainment, a terminal field or a `TermSource` inhabitant.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
 
 
-### Step 8b.24/C6b: identity-owner localized coarse-field `B0` (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6b: identity-owner localized coarse-field `B0` (SEALED; 20/41 unchanged)
 
 PRE-VALIDATION source checkpoint
 `8839c2378cec95793663b204661ed9b32c367dfd` promotes the C6b source/audit
@@ -13181,10 +13181,24 @@ identity owner map is definitionally the corresponding point source, then
 feeds that equality into sealed C6a and bounds the source value by the
 existing finite supremum norm.  No source-cardinality factor is introduced.
 
-The conclusion still concerns the ambient complex operator `G Q'^*` and the
-C6a coefficient remains explicitly depth-dependent.  C6b is therefore not
-the canonical real regional Dirichlet Green, not the uniform regional (3.42)
-certificate, not attainment of window 15, not a terminal field and not a
-`TermSource` inhabitant.  Both files visibly retain PRE-VALIDATION pending a
-fresh Colab focal plus the two-declaration audit.  Counters remain exactly
-`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+One fresh Colab Pro+ CPU/high-RAM clone checked the exact source checkpoint
+with instrumental checkpoint `1572f8f3cbf915ce3e858efbcdc845c63c700c1b`,
+runner revision `localized-field-b0-v1`, and runner SHA-256
+`7039EE3CC0C22C3A6C10D7C59A3A9880EF22DC991D6FA7BC271CC35C66160E4A`.
+The focal completed `8754` jobs in `1777.368 s`; the two-declaration audit
+completed in `11.669 s`, and both declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`3B131C83835688A8DA2CCFCDA3E149E4C7B0FD2935101104D67271255A167750`;
+archive SHA-256 is
+`9AA016F3AA23567E182CE4197AAD38058CCE66712B84EB29C7DD01277583A29C`.
+The runner emitted literal `FINAL_STATUS=PASS`, requested unassignment and
+the runtime was closed.
+
+This seal retires exactly the two C6b PRE-VALIDATION marks and imports its
+audit into `YangMillsCore.lean`.  The conclusion still concerns the ambient
+complex operator `G Q'^*` and the C6a coefficient remains explicitly
+depth-dependent.  C6b is therefore not the canonical real regional Dirichlet
+Green, not the uniform regional (3.42) certificate, not attainment of window
+15, not a terminal field and not a `TermSource` inhabitant.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

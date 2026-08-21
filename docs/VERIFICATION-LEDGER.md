@@ -38816,3 +38816,32 @@ concerns the ambient complex `G Q'^*` with depth-dependent coefficient; it
 does not produce uniform regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+
+## Addendum 880 (2026-08-21, **C6b localized-field B0 sealed in fresh Colab; 20/41 unchanged**)
+
+One fresh Colab Pro+ CPU/high-RAM clone checked exact source checkpoint
+`8839c2378cec95793663b204661ed9b32c367dfd` with instrumental checkpoint
+`1572f8f3cbf915ce3e858efbcdc845c63c700c1b`, runner revision
+`localized-field-b0-v1`, and runner SHA-256
+`7039EE3CC0C22C3A6C10D7C59A3A9880EF22DC991D6FA7BC271CC35C66160E4A`.
+Toolchain, Mathlib pin, manifest and both source-blob hashes passed before
+compilation.
+
+The focal completed `8754` jobs in `1777.368 s` with exit `0`; the audit
+completed in `11.669 s` with exit `0`.  Both declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`3B131C83835688A8DA2CCFCDA3E149E4C7B0FD2935101104D67271255A167750`;
+archive SHA-256 is
+`9AA016F3AA23567E182CE4197AAD38058CCE66712B84EB29C7DD01277583A29C`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was closed.
+
+This seal removes exactly the two C6b PRE-VALIDATION marks and adds its audit
+to `YangMillsCore.lean`.  It certifies the identity-owner reduction from an
+arbitrary localized coarse field to the sealed point source and introduces
+no source-cardinality factor.  The operator remains ambient and complex and
+the coefficient remains depth-dependent: this is not uniform regional
+`B0`, attainment of window 15, a terminal field or a `TermSource` inhabitant.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
