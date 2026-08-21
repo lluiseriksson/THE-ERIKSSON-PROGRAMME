@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99Eq389SourceLocalizationOwner
 /-!
 # Source-localization owner form of the separated generated Green bound
 
-PRE-VALIDATION: source present, `.olean` not yet materialized, and results in
-this module are not yet compiler-verified.
-
 C4b is stated on the flat source-localization carrier.  The physical regional
 presentation stores the same fine site through the already sealed
 source-separated site equivalence.  This module evaluates C4b at that exact

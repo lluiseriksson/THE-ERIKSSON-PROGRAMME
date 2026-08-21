@@ -38690,3 +38690,32 @@ focal plus its one-declaration audit.  No Lean or Lake ran on Windows.  C5
 does not produce point-source or regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`; counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+
+## Addendum 875 (2026-08-21, **Step 8b.24/C5 source-owner transport sealed in fresh Colab; 20/41 unchanged**)
+
+One fresh Colab Pro+ CPU/high-RAM clone checked exact source checkpoint
+`d8b873a4abf6d83bdf57068ff850a90335974f40` with instrumental runner commit
+`003cd61e3624fa852a2525e36ce661e745b8bf7f`, revision
+`source-owner-transport-v1`, and runner SHA-256
+`53974A787A5A15B1AF36208B501C7F4BD43C147BA6D49B8A49D77EA6DCBE91E3`.
+The exact Lean 4.29.0-rc6 toolchain, Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, manifest pins and both source
+blob hashes passed before compilation.
+
+The focal completed `8752` jobs in `1610.217 s` with exit `0`; the audit
+completed in `11.002 s` with exit `0` and printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Canonical evidence SHA-256 is
+`72CEC2F1C5CFDA1196745ABFE991D6346E7FF30DE85FDBE8E2AEA7AD3F423738`;
+archive SHA-256 is
+`E8C3E56A84736058671B47D32CA4C4B45EB660641A4C8065D94E0FDE8E25E209`.
+The transcript contains literal `FINAL_STATUS=PASS`; unassignment was
+requested and the runtime was confirmed disconnected.
+
+This seal removes exactly the two C5 PRE-VALIDATION marks and adds its audit
+to `YangMillsCore.lean`.  It certifies the exact source-site-equivalence
+transport from the sealed C4b point-source estimate to the literal CMP99
+(3.89) source-localization owner.  It does not produce point-source or
+regional `B0`, attain window 15, discharge a terminal field or inhabit
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

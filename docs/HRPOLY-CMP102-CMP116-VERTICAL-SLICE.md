@@ -13100,17 +13100,25 @@ remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
 
-### Step 8b.24/C5: source-localization owner transport (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C5: source-localization owner transport (SEALED; 20/41 unchanged)
 
-PRE-VALIDATION source checkpoint
-`d8b873a4abf6d83bdf57068ff850a90335974f40` promotes the source/audit pair
-for C5.  The theorem evaluates the sealed C4b point-source bound at the exact
+Source checkpoint `d8b873a4abf6d83bdf57068ff850a90335974f40`
+promotes the source/audit pair for C5.  The theorem evaluates the sealed C4b point-source bound at the exact
 `cmp99Eq389SourceLocalizationSiteEquiv` and rewrites the fine-block owner to
 the literal `cmp99Eq389SourceLocalizationOwner`.  No free readout,
 cardinality equivalence or diagonal `K=L` identification is introduced.
 
-The two modules visibly retain PRE-VALIDATION and remain NOT CHECKED pending
-one fresh Colab Pro+ focal/audit run.  This is source-owner transport only,
+One fresh Colab Pro+ CPU/high-RAM clone validated the exact source checkpoint
+with runner revision `source-owner-transport-v1`.  The focal completed 8752
+jobs in `1610.217 s`; the one-declaration audit completed in `11.002 s` and
+printed exactly `{propext, Classical.choice, Quot.sound}`.  Canonical evidence
+SHA-256 is `72CEC2F1C5CFDA1196745ABFE991D6346E7FF30DE85FDBE8E2AEA7AD3F423738`;
+archive SHA-256 is `E8C3E56A84736058671B47D32CA4C4B45EB660641A4C8065D94E0FDE8E25E209`.
+The runner emitted literal `FINAL_STATUS=PASS`, requested unassignment and the
+runtime was confirmed disconnected.
+
+The seal retires exactly the two C5 PRE-VALIDATION marks and imports its audit
+into `YangMillsCore.lean`.  This is source-owner transport only,
 not a point-source `B0`, not a uniform regional `B0`, not attainment of
 window 15, not a terminal field and not a `TermSource` inhabitant.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
