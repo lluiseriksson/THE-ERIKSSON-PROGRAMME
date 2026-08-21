@@ -92,7 +92,7 @@ theorem
         (K := Kfine)
         (cmp99SourceGeneratedFullComplexA_pos_physical L depth).le
         hrho.le hamplitude hradius hwindow 0
-    simpa using (le_trans (norm_nonneg _) hpoint)
+    simpa [a] using (le_trans (norm_nonneg _) hpoint)
   have hgeom : 0 ≤ (2 / (1 - Real.exp (-rho))) ^ 4 := by
     positivity
   change ‖∑' n : CMP99FlatIntegerResidueClass 4 N 0,
