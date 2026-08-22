@@ -13622,3 +13622,20 @@ depth-uniform `B0`/`delta0`, the right-adjoint derivative, the Laplacian,
 the full CMP99 (3.42) certificate, window-15 attainment, any terminal field,
 or a `TermSource` inhabitant.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.4d5: physical P8 Green block-localized owner decay (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+`BalabanCMP96SourceSeparatedRegionalPrefixGreenBlockLocalizedOwnerDecay`
+is present with an explicit PRE-VALIDATION header.  It upgrades the sealed
+one-represented-owner Green estimate to the literal source-facing
+`FinitePiLpTypedBlockLocalizedSupBound` required by the value field of CMP99
+(3.42).  The arbitrary owner is not assumed represented: an inhabited fibre
+constructs its source internally, while an empty fibre forces the supported
+input to be zero.  The displayed amplitude is exactly
+`ownerAmplitude * ell^2` at `ownerRate = ell * rate`.
+
+The source and one-declaration audit are not compiler-verified.  The brick is
+per-depth only and does not supply uniform `B0`/`delta0`, the other three
+CMP99 (3.42) actions, window-15 attainment, a terminal field, or a
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

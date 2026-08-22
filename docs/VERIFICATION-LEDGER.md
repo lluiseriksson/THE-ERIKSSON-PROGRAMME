@@ -39473,3 +39473,21 @@ adds that audit to `YangMillsCore`.  It is per-depth only: uniform physical
 window-15 attainment, terminal fields and a `TermSource` inhabitant remain
 open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 902 (2026-08-22, **C6c.4d5 physical P8 Green block-localized owner decay PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+The source/audit pair
+`BalabanCMP96SourceSeparatedRegionalPrefixGreenBlockLocalizedOwnerDecay`
+is written with visible PRE-VALIDATION headers.  Its theorem targets the
+literal value-action predicate of CMP99 (3.42) at one fixed depth, with
+amplitude `ownerAmplitude * ell^2` and rate `ell * rate`.  It removes no
+quantifier by assumption: if the requested owner fibre is inhabited the
+representing source is constructed internally; if it is empty, the support
+condition proves that the entire input field is zero.
+
+No Lean/Lake process was run on Windows.  The source and audit are NOT
+CHECKED pending a Colab Pro+ diagnostic.  Uniform `B0`/`delta0`, the
+left/right derivative and Laplacian actions as one common certificate,
+window-15 attainment, terminal fields and a `TermSource` inhabitant remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
