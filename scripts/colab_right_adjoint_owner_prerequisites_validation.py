@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "0fe0b1e4720d0d66112c5220ad2717808d49b760"
+SOURCE_SHA = "5649812a97254c0f396443095b1667e1f0ce34bf"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "right-adjoint-owner-prerequisites-v1"
+runner.RUNNER_REV = "right-adjoint-owner-prerequisites-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-right-adjoint-owner-prerequisites")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99ActiveRegionSourceCovariantAdjointStencil.lean":
-        "8155816c7027aac8b719456d35cde14cc17a8ab3df35e9292acd0eb525d87d6e",
+        "3b0d3990740f66af2a6eab6e91844e38004e9e1c062ad178e2ace3589d009f0f",
     "YangMills/RG/BalabanCMP99ActiveRegionSourceCovariantAdjointStencilAudit.lean":
         "d396e4e358ea0bc51acb7500ab6fd4a8703d71876b1188830c78f6562562dd65",
     "YangMills/RG/FinitePiLpBlockLocalizedSupOwnerKernelComposition.lean":
