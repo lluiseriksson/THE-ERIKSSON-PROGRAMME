@@ -4,10 +4,7 @@ import YangMills.RG.BalabanCMP99SourceFlatRetainedPhysicalTower
 import YangMills.RG.BalabanCMP85SourceAveragingCoefficientFloor
 
 /-!
-# PRE-VALIDATION: depth decay of the Poincare-generated full-complex coefficient
-
-Source is present, its `.olean` has not been materialized, and the result has
-not yet been verified by the compiler.
+# Depth decay of the Poincare-generated full-complex coefficient
 
 This diagnostic separates two coefficients that must not be identified
 silently.  The source averaging coefficient has a positive depth-uniform
