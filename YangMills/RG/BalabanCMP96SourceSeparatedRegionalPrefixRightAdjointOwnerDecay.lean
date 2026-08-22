@@ -173,7 +173,7 @@ theorem cmp96SourceSeparatedRegionalPrefixRightAdjoint_blockLocalizedSupBound
                 depth Omega (matrixSUNAdjointModel Nc) regionalBackground
                 terminalSpacing source f hf x
             simpa [hx] using hnear
-          · rw [if_neg hx]
+          · simp [if_neg hx]
         rw [hpart]
         have hzero : finitePiLpSupNorm
             (0 : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) = 0 := by
@@ -227,10 +227,25 @@ theorem cmp96SourceSeparatedRegionalPrefixRightAdjoint_blockLocalizedSupBound
               Real.exp (-(ownerRate * (finBoxDist target source : ℝ))) := by
         rw [← Real.exp_add]
         exact Real.exp_le_exp.mpr harg
-      exact mul_le_mul_of_nonneg_right
-        (mul_le_mul_of_nonneg_left hexp
-          (mul_nonneg hownerAmplitude (sq_nonneg _)))
-        (div_nonneg (by positivity) hterminal.le)
+      have hbase : 0 ≤ ownerAmplitude * (ell : ℝ) ^ 2 :=
+        mul_nonneg hownerAmplitude (sq_nonneg _)
+      have hcoefficient : 0 ≤ (8 : ℝ) / terminalSpacing :=
+        div_nonneg (by norm_num) hterminal.le
+      calc
+        (ownerAmplitude * (ell : ℝ) ^ 2) *
+              Real.exp (-(ownerRate * (finBoxDist target middle : ℝ))) *
+            (8 / terminalSpacing) ≤
+          ((ownerAmplitude * (ell : ℝ) ^ 2) *
+              (Real.exp ownerRate *
+                Real.exp (-(ownerRate *
+                  (finBoxDist target source : ℝ))))) *
+            (8 / terminalSpacing) :=
+              mul_le_mul_of_nonneg_right
+                (mul_le_mul_of_nonneg_left hexp hbase) hcoefficient
+        _ = ((ownerAmplitude * (ell : ℝ) ^ 2) * Real.exp ownerRate *
+                (8 / terminalSpacing)) *
+              Real.exp (-(ownerRate *
+                (finBoxDist target source : ℝ))) := by ring
     calc
       finiteOwnerKernelConvolution
           (finiteOwnerExponentialCoefficient finBoxDist
@@ -242,6 +257,7 @@ theorem cmp96SourceSeparatedRegionalPrefixRightAdjoint_blockLocalizedSupBound
             (8 / terminalSpacing) := by
           simp [finiteOwnerKernelConvolution,
             finiteOwnerExponentialCoefficient, rightCoefficient, near]
+          rw [Finset.sum_filter]
       _ ≤ ∑ _middle ∈ near,
           ((ownerAmplitude * (ell : ℝ) ^ 2) * Real.exp ownerRate *
               (8 / terminalSpacing)) *
@@ -264,18 +280,18 @@ theorem cmp96SourceSeparatedRegionalPrefixRightAdjoint_blockLocalizedSupBound
           dsimp [rightAmplitude, terminalSpacing]
           field_simp [ne_of_gt hspacing, ne_of_gt hell]
           ring
+  have hrightAmplitude : 0 ≤ rightAmplitude := by
+    dsimp [rightAmplitude]
+    positivity
   exact finitePiLpTypedBlockLocalizedSupBound_comp_of_ownerKernel
     Cregional D.adjoint
     (cmp99Eq342SourceLocalizedBondOwner L K Q depth)
     (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
     (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
     finBoxDist rightCoefficient hvalue hright
-    (mul_nonneg
-      (mul_nonneg (by positivity) hownerAmplitude)
-      (mul_nonneg (Real.exp_pos _).le (div_nonneg (by positivity) hspacing.le)))
+    (mul_nonneg hrightAmplitude hell.le)
     hconvolution
 
 end
 
 end YangMills.RG
-
