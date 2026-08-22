@@ -256,9 +256,9 @@ theorem cmp96SourceSeparatedRegionalPrefixLaplacian_blockLocalizedSupBound
           (finBoxDist
             (cmp99Eq342SourceLocalizedActiveOwner L K Q depth target)
             owner : ℝ))) * finitePiLpSupNorm f := by
-      simp only [Finset.sum_const]
+      simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin]
       dsimp [terminalSpacing, laplacianAmplitude]
-      field_simp [ne_of_gt hspacing, ne_of_gt hell] <;> ring
+      (field_simp [ne_of_gt hspacing, ne_of_gt hell]; ring)
 
 end
 
