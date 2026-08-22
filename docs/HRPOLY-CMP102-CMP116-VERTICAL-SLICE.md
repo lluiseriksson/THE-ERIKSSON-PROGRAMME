@@ -13744,3 +13744,15 @@ contains runner revision `cmp99-common-scalar-prefix-v1`, Git-blob SHA-256
 `D256F8BA882C126CD71105B94B5402A1E460594CAF7E8FF78EB936B8A1325339`.
 It pins the source checkpoint and all four blobs, then runs the two
 focal/audit pairs stop-on-first-error in Colab Pro+.
+
+The first v1 Colab run stopped at
+`FinitePiLpBlockLocalizedSupMonotone.lean:42:4`: the proof had not unfolded
+the local real-valued `distance` before transporting natural-number
+nonnegativity.  No downstream target ran.  Corrected PRE-VALIDATION source
+checkpoint `9040a8298027c520faec5042a9a03134ac9b782d` fixes only that
+elaboration step; its changed Git-blob SHA-256 is
+`DE9CBE7F7E64F7D4BA2AE0B213794E8D3DB76CC0B84EFBE0019F8A1FBEB3A8C0`.
+Runner checkpoint `2b871fdba6d3b10f3d149f1bea2ec7a73c62bcdb` carries revision
+`cmp99-common-scalar-prefix-v2`, Git-blob SHA-256
+`8BEFE2482124E467B7D89D74F074C33FC098ADC512F884413A3343DD906A4ED2`.
+The corrected queue is still NOT CHECKED; the failed run moves no counter.

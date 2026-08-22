@@ -39594,3 +39594,30 @@ provides runner revision `cmp99-common-scalar-prefix-v1`, Git-blob SHA-256
 with exact transport and a stop-on-first-error queue over both focal/audit
 pairs.  This preparation is instrumental only and does not change their NOT
 CHECKED status.
+
+## Addendum 906 (2026-08-22, **C6c.9a-b first Colab result FAIL; corrected source/runner prepared; NOT CHECKED; 20/41 unchanged**)
+
+The first Colab Pro+ run of scalar-prefix revision v1 stopped at the first
+target.  The exact compiler error was
+`FinitePiLpBlockLocalizedSupMonotone.lean:42:4`: `mod_cast` produced the
+natural-number nonnegativity statement while the goal still contained the
+local real-valued abbreviation `distance`.  The focal exited `1` after
+`159.523` seconds; no audit or common-amplitude target ran.  The runner
+reported evidence SHA-256
+`F5D790FCE80623FA17329C7DA39FF3A42F45CCA7DBEAB213064F56DB1D7B85E6`
+and archive SHA-256
+`4D33BFB5A552BCED00BBCD1B2ACE3279AEFEFDCC070E582CEEB40D2E44914F7F`.
+The browser download failed after runtime release, so those digests and the
+complete visible transcript are incident evidence, not a locally retained
+archive and not a mathematical PASS.
+
+Checkpoint `9040a8298027c520faec5042a9a03134ac9b782d` replaces only that
+failed elaboration step by unfolding `distance` and discharging cast
+nonnegativity directly.  Its corrected source Git-blob SHA-256 is
+`DE9CBE7F7E64F7D4BA2AE0B213794E8D3DB76CC0B84EFBE0019F8A1FBEB3A8C0`.
+Instrumental checkpoint `2b871fdba6d3b10f3d149f1bea2ec7a73c62bcdb`
+provides runner revision `cmp99-common-scalar-prefix-v2`, Git-blob SHA-256
+`8BEFE2482124E467B7D89D74F074C33FC098ADC512F884413A3343DD906A4ED2`.
+The corrected queue remains NOT CHECKED until a new Colab run.  Counters stay
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
