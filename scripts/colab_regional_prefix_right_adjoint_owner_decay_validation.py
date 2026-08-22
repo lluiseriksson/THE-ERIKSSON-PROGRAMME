@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-right-adjoint-owner-decay-v3"
+runner.RUNNER_REV = "regional-prefix-right-adjoint-owner-decay-v4"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-right-adjoint-owner-decay")
 runner.EVIDENCE = Path(
@@ -73,7 +73,7 @@ runner.QUEUE = [
             "lake", "env", "lean",
             "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixRightAdjointOwnerDecayAudit.lean",
         ],
-        1,
+        5,
     ),
 ]
 
