@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "017620f0c5df88c37c1064e02836a72b6ab84780"
+SOURCE_SHA = "9040a8298027c520faec5042a9a03134ac9b782d"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "cmp99-common-scalar-prefix-v1"
+runner.RUNNER_REV = "cmp99-common-scalar-prefix-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-cmp99-common-scalar-prefix")
 runner.EVIDENCE = Path("/content/hrpoly-cmp99-common-scalar-prefix-evidence")
@@ -52,7 +52,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/FinitePiLpBlockLocalizedSupMonotone.lean":
-        "0f89736b408f317165c5dfe062b45163b2d666281aa181b45ed16a1593c6cfb0",
+        "de9cbe7f7e64f7d4ba2ae0b213794e8d3db76cc0b84efbe0019f8a1fbeb3a8c0",
     "YangMills/RG/FinitePiLpBlockLocalizedSupMonotoneAudit.lean":
         "46d359d508dd759fae02bc6364485ef1169042a7c9b9ffc98cfa86b56972a3d5",
     "YangMills/RG/BalabanCMP99Eq342CommonAmplitude.lean":
