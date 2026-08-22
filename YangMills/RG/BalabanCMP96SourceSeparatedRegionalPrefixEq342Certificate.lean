@@ -173,27 +173,27 @@ theorem cmp96SourceSeparatedRegionalPrefix_eq342SourceLocalizedGreenCertificate
     laplacian_bound := ?_
   }
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hvalue0
-    · change valueAmplitude * (ell : ℝ) ^ 2 ≤ B0 * (ell : ℝ) ^ 2
-      exact mul_le_mul_of_nonneg_right
-        (le_cmp99Eq342CommonAmplitude_value hvalueAmplitude hleftAmplitude
-          hrightAmplitude hlaplacianAmplitude)
-        (sq_nonneg (ell : ℝ))
+    · simpa only [ell, Nat.cast_pow] using
+        (mul_le_mul_of_nonneg_right
+          (le_cmp99Eq342CommonAmplitude_value hvalueAmplitude hleftAmplitude
+            hrightAmplitude hlaplacianAmplitude)
+          (sq_nonneg (ell : ℝ)))
     · exact hownerRate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hleft0
-    · change leftAmplitude * (ell : ℝ) ≤ B0 * (ell : ℝ)
-      exact mul_le_mul_of_nonneg_right
-        (le_cmp99Eq342CommonAmplitude_left hvalueAmplitude hleftAmplitude
-          hrightAmplitude hlaplacianAmplitude)
-        hell.le
+    · simpa only [ell, Nat.cast_pow] using
+        (mul_le_mul_of_nonneg_right
+          (le_cmp99Eq342CommonAmplitude_left hvalueAmplitude hleftAmplitude
+            hrightAmplitude hlaplacianAmplitude)
+          hell.le)
     · exact hownerRate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hright0
-    · change rightAmplitude * (ell : ℝ) ≤ B0 * (ell : ℝ)
-      exact mul_le_mul_of_nonneg_right
-        (le_cmp99Eq342CommonAmplitude_right hvalueAmplitude hleftAmplitude
-          hrightAmplitude hlaplacianAmplitude)
-        hell.le
+    · simpa only [ell, Nat.cast_pow] using
+        (mul_le_mul_of_nonneg_right
+          (le_cmp99Eq342CommonAmplitude_right hvalueAmplitude hleftAmplitude
+            hrightAmplitude hlaplacianAmplitude)
+          hell.le)
     · exact hownerRate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hlaplacian0
