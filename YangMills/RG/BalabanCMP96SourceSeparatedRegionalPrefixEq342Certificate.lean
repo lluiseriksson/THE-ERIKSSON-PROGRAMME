@@ -173,7 +173,9 @@ theorem cmp96SourceSeparatedRegionalPrefix_eq342SourceLocalizedGreenCertificate
     laplacian_bound := ?_
   }
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hvalue0
-    · simpa only [ell, Nat.cast_pow] using
+    · simpa only [ell, upper, coercivity, rate, ownerRate,
+        valueAmplitude, leftAmplitude, rightAmplitude, laplacianAmplitude,
+        B0, Nat.cast_pow] using
         (mul_le_mul_of_nonneg_right
           (le_cmp99Eq342CommonAmplitude_value hvalueAmplitude hleftAmplitude
             hrightAmplitude hlaplacianAmplitude)
@@ -181,7 +183,9 @@ theorem cmp96SourceSeparatedRegionalPrefix_eq342SourceLocalizedGreenCertificate
     · exact hownerRate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hleft0
-    · simpa only [ell, Nat.cast_pow] using
+    · simpa only [ell, upper, coercivity, rate, ownerRate,
+        valueAmplitude, leftAmplitude, rightAmplitude, laplacianAmplitude,
+        B0, Nat.cast_pow] using
         (mul_le_mul_of_nonneg_right
           (le_cmp99Eq342CommonAmplitude_left hvalueAmplitude hleftAmplitude
             hrightAmplitude hlaplacianAmplitude)
@@ -189,7 +193,9 @@ theorem cmp96SourceSeparatedRegionalPrefix_eq342SourceLocalizedGreenCertificate
     · exact hownerRate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hright0
-    · simpa only [ell, Nat.cast_pow] using
+    · simpa only [ell, upper, coercivity, rate, ownerRate,
+        valueAmplitude, leftAmplitude, rightAmplitude, laplacianAmplitude,
+        B0, Nat.cast_pow] using
         (mul_le_mul_of_nonneg_right
           (le_cmp99Eq342CommonAmplitude_right hvalueAmplitude hleftAmplitude
             hrightAmplitude hlaplacianAmplitude)
