@@ -39521,3 +39521,15 @@ right-adjoint derivative, common CMP99 (3.42) certificate, window-15
 attainment, terminal fields and a `TermSource` inhabitant remain open.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+PRE-VALIDATION source checkpoint
+`df6dbb9e89454e1b49129d9cdd4a878e2af79f68` fixes source/audit Git-blob
+SHA-256 values
+`A32312D7C41BFF040BB9A4708D8FF68F9D39AF1E6E3B0FE82A37C00A4FAF0515`
+and
+`BDB5A594F028E9A3BAFC2F3CB5B5B1887847D07415CC2BF8D9F574DB9FD1EAB4`.
+Runner revision `regional-prefix-laplacian-owner-decay-v1`, SHA-256
+`B6CD7B5322570705DDF98984E4871563B7B221DC92B01B81F134AAFF661F33CA`,
+verifies that exact source and both blobs before one focal build and one
+one-declaration audit.  This preparation is instrumental only and does not
+change the NOT CHECKED status.
