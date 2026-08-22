@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkSourceLocalizedBound
 import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 
 /-!
-# PRE-VALIDATION: physical P8 Laplacian owner decay
-
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the Lean compiler.
+# Physical P8 Laplacian owner decay
 
 It derives the per-depth Laplacian member of CMP99 (3.42) from the sealed
 left-derivative owner bound.
