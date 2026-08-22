@@ -13866,3 +13866,29 @@ contains revision `right-adjoint-owner-prerequisites-v4`, Git-blob SHA-256
 `C67046D56B1D13C9DB3CF2285CCA0C729AF712A2557C4286E1B6ACD209E8FFD2`.
 The v4 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.4d5 first Colab result and v2 repair (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+The first Green block-localized owner-decay Colab Pro+ run stopped at its
+focal after 8,665 jobs and `5222.561` seconds.  In the empty-owner branch the
+proof had already derived `f = 0` and rewritten the linear map at zero; the
+remaining goal was only the evaluation of the zero `PiLp` field at `target`.
+No audit ran and no analytic estimate was refuted.  Runner v1 recorded
+evidence SHA-256
+`B80D7DA0C5245A8E9FAFD9FC596379170DE5CD25CEB5DA736FB7B3FFC5D6FA79`
+and archive SHA-256
+`8094D63B957332E3B608DF170A9B3A7DCB5D1C23C2A0950C99F711098D85ABDA`;
+the browser download failed after runtime release.
+
+Minimal PRE-VALIDATION checkpoint
+`c3d8d338e3bea4f378cca59f5767c616c316feba` closes exactly that residual
+goal with the existing `PiLp.zero_apply` theorem.  The theorem statement,
+empty-fibre argument, amplitude and rate are unchanged.  The corrected
+source Git-blob SHA-256 is
+`7AC800973AD7BBE3B6B2EEB979B082C7D91141B38A7123818E54D2C732882F09`.
+Runner checkpoint `c6fa19e328a022bb7d152388c60c3790184cee27`
+contains revision `regional-prefix-green-block-owner-decay-v2`, Git-blob
+SHA-256
+`4985A0A3DBA6DE714FDA1A4D6DAF953E8BAA424AC770767F9F701B33FAE7998B`.
+The v2 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
