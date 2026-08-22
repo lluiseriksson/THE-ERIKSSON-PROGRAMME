@@ -39504,3 +39504,20 @@ SHA-256
 It verifies the exact source and both blobs before one focal build and one
 one-declaration audit in Colab Pro+.  This preparation is instrumental only
 and does not change the NOT CHECKED status.
+
+## Addendum 903 (2026-08-22, **C6c.4d6 physical P8 Laplacian owner decay PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+The source/audit pair
+`BalabanCMP96SourceSeparatedRegionalPrefixLaplacianOwnerDecay` is present
+with visible PRE-VALIDATION headers.  It derives the fixed-depth Laplacian
+action from the already sealed left-derivative owner estimate through the
+literal four-direction backward-divergence stencil.  The backward endpoint
+pays one named `exp ownerRate`, while `(ell * spacing)⁻¹` cancels the existing
+`ell`; no carrier cardinality or free pointwise Laplacian premise enters.
+
+No Lean/Lake process was run on Windows.  The source and audit are NOT
+CHECKED pending Colab Pro+ validation.  Uniform `B0`/`delta0`, the
+right-adjoint derivative, common CMP99 (3.42) certificate, window-15
+attainment, terminal fields and a `TermSource` inhabitant remain open.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

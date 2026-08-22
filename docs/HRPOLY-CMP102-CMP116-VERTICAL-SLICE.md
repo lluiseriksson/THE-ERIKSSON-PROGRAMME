@@ -13651,3 +13651,22 @@ SHA-256
 `1E239AB30D12ACA72D4C3B89623FD177FCD0A2E3001D57D9D391F41FCF7FAA8E`.
 It pins the source checkpoint and those two Git blobs, then runs exactly the
 focal module and its one-declaration audit in Colab Pro+.
+
+### Step 8b.24/C6c.4d6: physical P8 Laplacian owner decay (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+`BalabanCMP96SourceSeparatedRegionalPrefixLaplacianOwnerDecay` is present
+with an explicit PRE-VALIDATION header.  It applies the literal
+backward-divergence stencil to the sealed left-derivative estimate.  The four
+directions are summed explicitly; the backward endpoint costs one
+`exp ownerRate`, and the terminal factor `(ell * spacing)⁻¹` cancels the
+`ell` in the left-derivative amplitude.  Its displayed normalized amplitude
+is therefore
+`4 * leftAmplitude * ((1 + exp ownerRate) / spacing)`, with no active-carrier
+cardinality and no new analytic hypothesis.
+
+The source and one-declaration audit are not compiler-verified.  This is a
+per-depth Laplacian-action producer only.  It does not produce uniform
+physical `B0`/`delta0`, the right-adjoint derivative, the common CMP99 (3.42)
+certificate, window-15 attainment, a terminal field, or a `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
