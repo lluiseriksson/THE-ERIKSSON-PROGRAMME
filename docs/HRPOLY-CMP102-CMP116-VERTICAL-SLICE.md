@@ -14006,3 +14006,14 @@ parser/import defects.  Instrumental checkpoint
 `134d0f71370fd36c6c1bb8e6554503c658b45c5b` provides runner revision
 `regional-prefix-right-adjoint-owner-decay-v2`.  The repaired pair remains
 PRE-VALIDATION and NOT CHECKED; no counter moves.
+
+A warm Colab diagnostic of the repaired source then found four purely
+elaborational residuals (zero `PiLp` application, product association,
+`sum_filter`, and final nonnegativity association).  Checkpoint
+`0ceff03b509c2b6c85c81631eff494e146719e50` closes them without changing the
+statement or physical constants.  The focal completes 8,697 jobs in the warm
+graph and the audit reports the allowed trio on all five declarations.
+Instrumental checkpoint `4cc92fcd75d39bd6516454718098de421075988f`
+prepares runner revision `regional-prefix-right-adjoint-owner-decay-v3` for
+the required fresh-checkout seal.  Warm green is not a seal: the source and
+audit remain PRE-VALIDATION, and no counter moves.

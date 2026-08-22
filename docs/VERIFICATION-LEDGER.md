@@ -39952,3 +39952,26 @@ Git-blob SHA-256
 `94D93F8AE55E9C0EC1B0EB1ACA578678B8B5ABE94DA1467155124AA75D6BFA6E`.
 The v2 pair remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 920 (2026-08-22, **C6c.4d7c hot v3 diagnostic green; cold seal still pending; 20/41 unchanged**)
+
+The v2 source was checked first against the already materialized Colab graph,
+without treating the warm result as a seal.  That diagnostic exposed four
+elaboration-only residuals: the zero application of a `PiLp` field, product
+association around the exponential comparison, the exact `sum_filter`
+rewrite, and the association of the final nonnegativity proof.  Checkpoint
+`0ceff03b509c2b6c85c81631eff494e146719e50` closes those four goals without
+changing the theorem statement, coefficient `648`, rate or hypotheses.  Its
+source Git-blob SHA-256 is
+`2C0761FEDA7E7DA24DB537B842B4A972F10087637E91E1C778626AB0C3A4630D`.
+
+The repaired focal then completed 8,697 jobs in the warm diagnostic and its
+audit exited zero; all five declarations reported exactly
+`[propext, Classical.choice, Quot.sound]`.  This is diagnostic evidence only.
+Instrumental checkpoint `4cc92fcd75d39bd6516454718098de421075988f`
+provides runner revision `regional-prefix-right-adjoint-owner-decay-v3`,
+Git-blob SHA-256
+`6729CEDF216178BE33D25364370E17F5E9F9BEE885FC7798105723AF50DD7821`.
+The pair remains PRE-VALIDATION until that queue passes in a fresh Colab
+checkout.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
