@@ -13715,6 +13715,28 @@ SHA-256
 and all four blobs, then runs the two focal/audit pairs stop-on-first-error in
 Colab Pro+.
 
+The v1 Colab run stopped at the first focal after `2005.440` seconds.  The
+compiler exposed three missing elaboration bridges in the stencil module:
+the supremum converse lemma and the block-shift geometry theorem were not
+imported, and the forward-owner equality was rewritten in the wrong
+orientation.  No audit or owner-kernel target ran.  The runner recorded
+evidence SHA-256
+`81D0076584A7C0C3CB479DBEF7C997066BD5036E4F142D32766F272E0DDA3627`
+and archive SHA-256
+`7E5654690338F4099BCCBC1DC0FEA2337DD22E0148315BF5AED95B98A8E49432`;
+the browser download failed after runtime release, so the structured
+transcript and digests are incident evidence only.
+
+Corrected PRE-VALIDATION source checkpoint
+`5649812a97254c0f396443095b1667e1f0ce34bf` imports the two existing sealed
+lemmas and derives the active-owner equality explicitly; no statement or
+constant changes.  The corrected stencil Git-blob SHA-256 is
+`3B0D3990740F66AF2A6EAB6E91844E38004E9E1C062AD178E2ACE3589D009F0F`.
+Runner checkpoint `d62c011a0751f66bb9bc66a7683c60084051ce84`
+contains revision `right-adjoint-owner-prerequisites-v2`, Git-blob SHA-256
+`6B2BDB45EBA962C16F5516C8FB88C5AEB0DFBAFC9DF5C8F01B875828396C902F`.
+The corrected queue remains NOT CHECKED.
+
 ### Step 8b.24/C6c.9a-b: CMP99 common scalar prefix (COLAB-VERIFIED; 20/41 unchanged)
 
 The independent scalar prefix for the eventual CMP99 (3.42) constructor is

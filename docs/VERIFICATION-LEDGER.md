@@ -39647,3 +39647,32 @@ it does not produce depth-uniform physical `B0`/`delta0`, the complete CMP99
 (3.42) certificate, window-15 attainment, a terminal field or a `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 908 (2026-08-22, **C6c.4d7 prerequisites first Colab FAIL; minimal retry prepared; 20/41 unchanged**)
+
+The first Colab Pro+ run of the right-adjoint prerequisite queue stopped at
+`BalabanCMP99ActiveRegionSourceCovariantAdjointStencil` after `2005.440`
+seconds.  The compiler reported three exact elaboration defects: unknown
+`finitePiLpSupNorm_le_of_norm_apply_le`, a forward-owner rewrite with no
+matching occurrence, and unknown
+`finBoxDist_blockSite_shiftBack_le_one`.  No audit or owner-kernel target
+ran.  The runner emitted `FINAL_STATUS=FAIL`, evidence SHA-256
+`81D0076584A7C0C3CB479DBEF7C997066BD5036E4F142D32766F272E0DDA3627`
+and archive SHA-256
+`7E5654690338F4099BCCBC1DC0FEA2337DD22E0148315BF5AED95B98A8E49432`.
+The browser download failed after runtime release; those digests and the
+complete structured transcript are incident evidence, not a local archive.
+
+Checkpoint `5649812a97254c0f396443095b1667e1f0ce34bf` repairs only those
+points: it imports the existing sealed supremum-algebra and block-shift
+modules and constructs the active-owner equality in the required direction.
+No theorem statement, hypothesis or constant changes.  The corrected stencil
+Git-blob SHA-256 is
+`3B0D3990740F66AF2A6EAB6E91844E38004E9E1C062AD178E2ACE3589D009F0F`.
+Instrumental checkpoint `d62c011a0751f66bb9bc66a7683c60084051ce84`
+provides runner revision `right-adjoint-owner-prerequisites-v2`, Git-blob
+SHA-256
+`6B2BDB45EBA962C16F5516C8FB88C5AEB0DFBAFC9DF5C8F01B875828396C902F`.
+The corrected queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
