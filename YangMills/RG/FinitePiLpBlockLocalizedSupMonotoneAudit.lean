@@ -1,10 +1,11 @@
 import YangMills.RG.FinitePiLpBlockLocalizedSupMonotone
 
 /-!
-# PRE-VALIDATION audit: monotonicity of block-localized sup bounds
+# Audit: monotonicity of block-localized sup bounds
 
-The source is present, its `.olean` has not yet been materialized, and this
-readout has not yet been executed by Lean.
+Executed in Colab Pro+ at exact source checkpoint
+`9040a8298027c520faec5042a9a03134ac9b782d`; the readout reported exactly
+`[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_mono

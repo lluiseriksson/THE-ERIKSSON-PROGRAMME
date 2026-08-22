@@ -13715,10 +13715,10 @@ SHA-256
 and all four blobs, then runs the two focal/audit pairs stop-on-first-error in
 Colab Pro+.
 
-### Step 8b.24/C6c.9a-b: CMP99 common scalar prefix (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.9a-b: CMP99 common scalar prefix (COLAB-VERIFIED; 20/41 unchanged)
 
 The independent scalar prefix for the eventual CMP99 (3.42) constructor is
-present with visible PRE-VALIDATION headers.  The first module proves the
+compiler-verified.  The first module proves the
 named weakening from amplitude `A`/rate `decay` to `A'`/positive rate
 `rate`, with both inequalities exposed.  The second defines the literal
 common normalized amplitude
@@ -13726,7 +13726,21 @@ common normalized amplitude
 all four component dominations.  It does not receive, construct, or rename
 any of the four physical action estimates.
 
-The four source/audit files are NOT CHECKED.  They do not construct the
+The four source/audit files passed in Colab Pro+ at exact source checkpoint
+`9040a8298027c520faec5042a9a03134ac9b782d`.  The monotonicity focal
+completed 8,173 jobs in `133.816` seconds and its audit completed in `7.030`
+seconds.  The common-amplitude focal completed in `12.832` seconds and its
+audit in `7.402` seconds.  All seven declarations reported only the exact
+allowed trio `[propext, Classical.choice, Quot.sound]`.  The runner recorded
+evidence SHA-256
+`5A18DED659CB6661BA0691BA4231544884840F74C166958ECBD0095278251DAA`
+and archive SHA-256
+`C00E267076224ADBF9B4E28FF0EAB1EA29BEEAA25D2662CCB61D830204A2E303`.
+The browser download failed after the runner had released the runtime, so
+the complete structured transcript and these digests are the retained PASS
+record; no local archive is claimed.
+
+These modules do not construct the
 physical CMP99 (3.42) certificate, uniform `B0`/`delta0`, window-15
 attainment, a terminal field, or a `TermSource`.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
@@ -13755,4 +13769,5 @@ elaboration step; its changed Git-blob SHA-256 is
 Runner checkpoint `2b871fdba6d3b10f3d149f1bea2ec7a73c62bcdb` carries revision
 `cmp99-common-scalar-prefix-v2`, Git-blob SHA-256
 `8BEFE2482124E467B7D89D74F074C33FC098ADC512F884413A3343DD906A4ED2`.
-The corrected queue is still NOT CHECKED; the failed run moves no counter.
+The corrected v2 queue is the successful run recorded above.  The earlier
+failed run moves no counter.

@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpBlockLocalizedSup
 
 /-!
-# PRE-VALIDATION: monotonicity of block-localized sup bounds
+# Monotonicity of block-localized sup bounds
 
-This source is present, its `.olean` has not yet been materialized, and the
-declaration below has not yet been verified by the Lean compiler.
+Compiler-verified in Colab Pro+ at exact source checkpoint
+`9040a8298027c520faec5042a9a03134ac9b782d`.  The focal completed 8,173
+jobs in 133.816 seconds; its audit completed in 7.030 seconds and reported
+exactly `[propext, Classical.choice, Quot.sound]`.
 
 The terminal CMP99 (3.42) assembler needs to enlarge a normalized amplitude
 and retain any smaller positive decay rate.  The change is elementary but is

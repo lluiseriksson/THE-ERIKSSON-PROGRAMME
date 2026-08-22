@@ -6,10 +6,12 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.FinitePiLpBlockLocalizedSup
 
 /-!
-# PRE-VALIDATION: common amplitude for CMP99 (3.42)
+# Common amplitude for CMP99 (3.42)
 
-This source is present, its `.olean` has not yet been materialized, and none
-of the declarations below has yet been verified by the Lean compiler.
+Compiler-verified in Colab Pro+ at exact source checkpoint
+`9040a8298027c520faec5042a9a03134ac9b782d`.  The focal completed in
+12.832 seconds; its audit completed in 7.402 seconds and every declaration
+reported exactly `[propext, Classical.choice, Quot.sound]`.
 
 The final regional Green certificate uses one strictly positive normalized
 amplitude for its value, left derivative, right-adjoint derivative and

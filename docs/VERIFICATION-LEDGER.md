@@ -39621,3 +39621,29 @@ provides runner revision `cmp99-common-scalar-prefix-v2`, Git-blob SHA-256
 The corrected queue remains NOT CHECKED until a new Colab run.  Counters stay
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 907 (2026-08-22, **C6c.9a-b Colab PASS; scalar prefix sealed; 20/41 unchanged**)
+
+The corrected v2 scalar-prefix queue passed in Colab Pro+ at exact source
+checkpoint `9040a8298027c520faec5042a9a03134ac9b782d`.  The
+`FinitePiLpBlockLocalizedSupMonotone` focal completed 8,173 jobs in
+`133.816` seconds and its audit completed in `7.030` seconds.  The
+`BalabanCMP99Eq342CommonAmplitude` focal completed in `12.832` seconds and
+its audit in `7.402` seconds.  All seven audited declarations reported only
+`[propext, Classical.choice, Quot.sound]`.
+
+Runner revision `cmp99-common-scalar-prefix-v2` recorded evidence SHA-256
+`5A18DED659CB6661BA0691BA4231544884840F74C166958ECBD0095278251DAA`
+and archive SHA-256
+`C00E267076224ADBF9B4E28FF0EAB1EA29BEEAA25D2662CCB61D830204A2E303`,
+then emitted `FINAL_STATUS=PASS`.  The browser download failed after runtime
+release with `AttributeError("'NoneType' object has no attribute 'kernel'")`;
+therefore the complete structured transcript and the two digests are the
+retained PASS record, and no local archive is claimed.
+
+PRE-VALIDATION is retired only from the two source/audit pairs certified by
+this run.  This seal proves scalar weakening and a common positive amplitude;
+it does not produce depth-uniform physical `B0`/`delta0`, the complete CMP99
+(3.42) certificate, window-15 attainment, a terminal field or a `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP99Eq342CommonAmplitude
 
 /-!
-# PRE-VALIDATION audit: common amplitude for CMP99 (3.42)
+# Audit: common amplitude for CMP99 (3.42)
 
-The source is present, its `.olean` has not yet been materialized, and these
-readouts have not yet been executed by Lean.
+Executed in Colab Pro+ at exact source checkpoint
+`9040a8298027c520faec5042a9a03134ac9b782d`; all six readouts reported
+exactly `[propext, Classical.choice, Quot.sound]`.
 -/
 
 #print axioms YangMills.RG.cmp99Eq342CommonAmplitude
