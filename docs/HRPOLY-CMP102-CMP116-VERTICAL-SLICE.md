@@ -13639,3 +13639,15 @@ per-depth only and does not supply uniform `B0`/`delta0`, the other three
 CMP99 (3.42) actions, window-15 attainment, a terminal field, or a
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+PRE-VALIDATION source checkpoint
+`d1efcd4c11461ca981db49ea9242874d2dc805d0` fixes source/audit Git-blob
+SHA-256 values
+`C5E13FD42A1AFD5776D8824E7D3143CBB784E1565B837040F73897EB97493865`
+and
+`8C45B8009781C28336DC97E107DAA7FA36F1BEA5718EB7315AC6375E643772D1`.
+Prepared runner revision `regional-prefix-green-block-owner-decay-v1` has
+SHA-256
+`1E239AB30D12ACA72D4C3B89623FD177FCD0A2E3001D57D9D391F41FCF7FAA8E`.
+It pins the source checkpoint and those two Git blobs, then runs exactly the
+focal module and its one-declaration audit in Colab Pro+.
