@@ -39997,3 +39997,21 @@ SHA-256 is
 The source checkpoint remains
 `0ceff03b509c2b6c85c81631eff494e146719e50`; counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 remains compatible but unattained.
+
+## Addendum 922 (2026-08-22, **C6c.4d7c right-adjoint sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Runner revision `regional-prefix-right-adjoint-owner-decay-v4` passed its
+complete queue in a fresh Colab Pro+ checkout.  The focal completed 8,697 jobs
+in `5679.557` seconds; the audit completed in `22.839` seconds and all five
+declarations reported exactly `[propext, Classical.choice, Quot.sound]`.
+The runner emitted `FINAL_STATUS=PASS`, evidence SHA-256
+`BFEB2C99CC8134907CD26EA8FB2AC9D0AAD7A9C026976CBA884EA04224044AF5`
+and archive SHA-256
+`C9BF49E8BF4ECF435FB71609C624E806BE311B41D93DAFCA43043D6B2CC356DE`.
+
+Seal checkpoint `b5a319719fe77aef545373ab1257c285c59d9f5f` retires exactly the two
+right-adjoint PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+This completes the four compiler-verified per-depth physical components but
+does not yet assemble them, produce uniform `B0`/`delta0`, attain window 15,
+produce a terminal field or instantiate `TermSource`.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

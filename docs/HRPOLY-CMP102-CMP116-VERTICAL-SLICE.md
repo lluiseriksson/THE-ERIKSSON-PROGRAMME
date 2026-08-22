@@ -13970,7 +13970,7 @@ Green PRE-VALIDATION marks and imports its audit into `YangMillsCore`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
-### Step 8b.24/C6c.4d7c: physical P8 right-adjoint owner decay (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4d7c: physical P8 right-adjoint owner decay (COLAB-VERIFIED; 20/41 unchanged)
 
 `BalabanCMP96SourceSeparatedRegionalPrefixRightAdjointOwnerDecay` now
 constructs the direct-orientation physical action.  It expands the literal
@@ -14028,3 +14028,16 @@ archive SHA-256 is
 Instrumental checkpoint `3f39344e2a2e7a8ccd8e12114f7c42db6c3c142a`
 changes only the expected block count to five for runner v4.  Source and audit
 remain PRE-VALIDATION until v4 emits PASS; no counter moves.
+
+Runner v4 then passed the same queue in a fresh Colab Pro+ checkout.  The
+focal completed 8,697 jobs in `5679.557` seconds; the audit completed in
+`22.839` seconds and all five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`BFEB2C99CC8134907CD26EA8FB2AC9D0AAD7A9C026976CBA884EA04224044AF5`;
+archive SHA-256 is
+`C9BF49E8BF4ECF435FB71609C624E806BE311B41D93DAFCA43043D6B2CC356DE`.
+Seal checkpoint `b5a319719fe77aef545373ab1257c285c59d9f5f` retires exactly the two
+right-adjoint PRE-VALIDATION marks and imports its audit into `YangMillsCore`.
+This is the fourth per-depth component, not the uniform CMP99 (3.42)
+certificate; counters remain `20/41`, `TermSource = 0`, and window 15 remains
+compatible but unattained.
