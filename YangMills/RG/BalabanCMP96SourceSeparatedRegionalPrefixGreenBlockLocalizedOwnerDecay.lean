@@ -127,7 +127,7 @@ theorem cmp96SourceSeparatedRegionalPrefixGreen_blockLocalizedSupBound
     have hzero :
         Cregional (0 : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
           target = 0 := by
-      rw [map_zero]
+      simpa only [map_zero, PiLp.zero_apply]
     rw [hzero, norm_zero]
     exact mul_nonneg
       (mul_nonneg
