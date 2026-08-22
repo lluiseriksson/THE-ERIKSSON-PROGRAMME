@@ -25,7 +25,7 @@ theorem finitePiLpTypedBlockLocalizedSupBound_comp_of_ownerKernel
     {ι κ ν β g : Type*}
     [Fintype ι] [Nonempty ι]
     [Fintype κ] [Nonempty κ]
-    [Fintype ν]
+    [Fintype ν] [Nonempty ν]
     [Fintype β] [DecidableEq β]
     [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
     (Left : FinitePiLpField κ g →L[ℝ] FinitePiLpField ν g)

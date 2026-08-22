@@ -109,7 +109,7 @@ theorem finitePiLpSupNorm_cmp99ActiveRegionSourceCovariantD0CLM_adjoint_le
           (norm_apply_le_finitePiLpSupNorm f (x.1.shiftBack i, i))
     _ = (2 * d / spacing) * finitePiLpSupNorm f := by
       simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin]
-      field_simp [ne_of_gt hspacing] <;> ring
+      (field_simp [ne_of_gt hspacing]; ring)
 
 private theorem finBoxEquivCast_shiftBack_draft
     {d N M : ℕ} [NeZero N] [NeZero M]
