@@ -11,11 +11,7 @@ import YangMills.RG.BalabanCMP99Eq342CommonAmplitude
 import YangMills.RG.FinitePiLpBlockLocalizedSupMonotone
 
 /-!
-# PRE-VALIDATION: per-depth physical CMP99 (3.42) certificate
-
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the Lean compiler.  It assembles the four
-compiler-verified physical P8 estimates at one fixed depth.
+# Per-depth physical CMP99 (3.42) certificate
 
 The theorem is not the uniform C6c.9 endpoint: its common amplitude and rate
 still depend on `depth`.  In particular it must not be cited as the uniform

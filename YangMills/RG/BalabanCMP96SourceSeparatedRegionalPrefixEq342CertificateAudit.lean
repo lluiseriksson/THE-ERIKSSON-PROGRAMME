@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixEq342Certificate
 
 /-!
-# PRE-VALIDATION: audit for the per-depth CMP99 (3.42) assembler
-
-This audit source is present, its `.olean` has not yet been materialized, and
-its result has not yet been verified by the Lean compiler.
+# Audit for the per-depth CMP99 (3.42) assembler
 -/
 
 #print axioms YangMills.RG.cmp96SourceSeparatedRegionalPrefix_eq342SourceLocalizedGreenCertificate
