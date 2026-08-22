@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "03bfee1e140a81fba8a1d5df112decaacfdae69a"
+SOURCE_SHA = "218207f7c7c6be204e2aaf5b9647747c3489dd2d"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-right-adjoint-owner-decay-v1"
+runner.RUNNER_REV = "regional-prefix-right-adjoint-owner-decay-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-right-adjoint-owner-decay")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixRightAdjointOwnerDecay.lean":
-        "e59b9ed4fe341510c878065e83b777c050845ba87890536f8958e02973eac17f",
+        "08a6f6e9226791312a740c402b355fa78084dab30605f23f722e0e99f3c524e2",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixRightAdjointOwnerDecayAudit.lean":
         "d953a4d79bee36a820fb04ac611b8f779a1e98cc1baba9564dc64dcb4f70db14",
 }
@@ -96,5 +96,4 @@ if __name__ == "__main__":
     except Exception as error:
         print("EVIDENCE_DOWNLOAD_ERROR=" + repr(error), flush=True)
     raise SystemExit(code)
-
 
