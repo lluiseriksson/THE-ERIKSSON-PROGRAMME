@@ -39564,3 +39564,33 @@ SHA-256
 `088422E494DE0944EFC4D7F3A96CEFF460BD0C22AA915303649EB8060CEB210F`, with exact transport and a
 stop-on-first-error queue over the two focal/audit pairs.  This preparation is
 instrumental only and does not change their NOT CHECKED status.
+
+## Addendum 905 (2026-08-22, **C6c.9a-b CMP99 common scalar prefix PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+The source/audit pairs `FinitePiLpBlockLocalizedSupMonotone` and
+`BalabanCMP99Eq342CommonAmplitude` are present with visible PRE-VALIDATION
+headers.  They expose amplitude/rate weakening as a named theorem and define
+the single normalized amplitude
+`1 + Avalue + Aleft + Aright + Alaplacian`, together with positivity and the
+four literal domination inequalities.  No physical Green action or terminal
+certificate is accepted as an input or produced here.
+
+No Lean/Lake process was run on Windows.  The seven declarations are NOT
+CHECKED pending Colab Pro+ validation.  The physical action package, uniform
+`B0`/`delta0`, window-15 attainment, terminal fields and a `TermSource`
+inhabitant remain open.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
+
+PRE-VALIDATION source checkpoint
+`017620f0c5df88c37c1064e02836a72b6ab84780` fixes Git-blob SHA-256 values
+`0F89736B408F317165C5DFE062B45163B2D666281AA181B45ED16A1593C6CFB0`,
+`46D359D508DD759FAE02BC6364485EF1169042A7C9B9FFC98CFA86B56972A3D5`,
+`A81C80181DF498BEB6EF167D190AE85B9EA473E39636C4F819229D925300C449`,
+and
+`6B0CB618AEE7E97FD8E584233CD4680DEFE1E6C1844835BB4F097F65E6BA5A03`.
+Instrumental checkpoint `caa7b0006fa0e2f568f6159fd0cd5d254ecbb22f`
+provides runner revision `cmp99-common-scalar-prefix-v1`, Git-blob SHA-256
+`D256F8BA882C126CD71105B94B5402A1E460594CAF7E8FF78EB936B8A1325339`,
+with exact transport and a stop-on-first-error queue over both focal/audit
+pairs.  This preparation is instrumental only and does not change their NOT
+CHECKED status.

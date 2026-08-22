@@ -13714,3 +13714,33 @@ SHA-256
 `088422E494DE0944EFC4D7F3A96CEFF460BD0C22AA915303649EB8060CEB210F`.  It pins the source checkpoint
 and all four blobs, then runs the two focal/audit pairs stop-on-first-error in
 Colab Pro+.
+
+### Step 8b.24/C6c.9a-b: CMP99 common scalar prefix (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+The independent scalar prefix for the eventual CMP99 (3.42) constructor is
+present with visible PRE-VALIDATION headers.  The first module proves the
+named weakening from amplitude `A`/rate `decay` to `A'`/positive rate
+`rate`, with both inequalities exposed.  The second defines the literal
+common normalized amplitude
+`1 + Avalue + Aleft + Aright + Alaplacian` and proves strict positivity and
+all four component dominations.  It does not receive, construct, or rename
+any of the four physical action estimates.
+
+The four source/audit files are NOT CHECKED.  They do not construct the
+physical CMP99 (3.42) certificate, uniform `B0`/`delta0`, window-15
+attainment, a terminal field, or a `TermSource`.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+PRE-VALIDATION source checkpoint
+`017620f0c5df88c37c1064e02836a72b6ab84780` fixes the four Git-blob
+SHA-256 values
+`0F89736B408F317165C5DFE062B45163B2D666281AA181B45ED16A1593C6CFB0`,
+`46D359D508DD759FAE02BC6364485EF1169042A7C9B9FFC98CFA86B56972A3D5`,
+`A81C80181DF498BEB6EF167D190AE85B9EA473E39636C4F819229D925300C449`,
+and
+`6B0CB618AEE7E97FD8E584233CD4680DEFE1E6C1844835BB4F097F65E6BA5A03`.
+Instrumental checkpoint `caa7b0006fa0e2f568f6159fd0cd5d254ecbb22f`
+contains runner revision `cmp99-common-scalar-prefix-v1`, Git-blob SHA-256
+`D256F8BA882C126CD71105B94B5402A1E460594CAF7E8FF78EB936B8A1325339`.
+It pins the source checkpoint and all four blobs, then runs the two
+focal/audit pairs stop-on-first-error in Colab Pro+.
