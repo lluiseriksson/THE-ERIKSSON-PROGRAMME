@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-eq342-certificate-v2"
+runner.RUNNER_REV = "regional-prefix-eq342-certificate-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-eq342-certificate")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixEq342Certificate.lean":
-        "e32696f76a74bdf57515a4c9a499d34d282c0a56",
+        "ef1c6eb2fec51350259648b7c4ec275af54138fd30038649fc4bff7dfa485e4a",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixEq342CertificateAudit.lean":
         "21fb8f9cca42f15a715bb94917c1f500375be032f6c46acae72ed5c75301c573",
 }
