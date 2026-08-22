@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "2239528498da8413b4fd5adb64e84b0bc7a3dd7b"
+SOURCE_SHA = "957b45f7944ed90bc71aaf63d922e97efee32cf6"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-left-derivative-owner-decay-v1"
+runner.RUNNER_REV = "regional-prefix-left-derivative-owner-decay-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-left-derivative-owner-decay")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixLeftDerivativeOwnerDecay.lean":
-        "8dcb28dd40576b2c94baa9afb26acf850a31c898c3a9ef11e708bfaac91b592a",
+        "c3b10680f3ad55e0ca6f0301642dbe7cb5c8726a",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixLeftDerivativeOwnerDecayAudit.lean":
         "2de7ca9a542cda1eba29560edf39a5610e100f1ba6d6897edefa4ceb8081f116",
 }
