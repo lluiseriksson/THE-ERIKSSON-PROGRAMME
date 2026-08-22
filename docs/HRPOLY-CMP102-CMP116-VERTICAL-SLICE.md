@@ -13835,3 +13835,34 @@ Runner checkpoint `2b871fdba6d3b10f3d149f1bea2ec7a73c62bcdb` carries revision
 `8BEFE2482124E467B7D89D74F074C33FC098ADC512F884413A3343DD906A4ED2`.
 The corrected v2 queue is the successful run recorded above.  The earlier
 failed run moves no counter.
+
+### Step 8b.24/C6c.4d7a-b v3 result and v4 repair (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+The v3 Colab Pro+ queue compiled the corrected stencil in 8,526 jobs and
+`1555.201` seconds; its three-declaration audit completed in `9.467` seconds
+and printed only `[propext, Classical.choice, Quot.sound]`.  The queue then
+stopped at `FinitePiLpBlockLocalizedSupOwnerKernelComposition` after
+`54.681` seconds: the generic composition proof uses a supremum norm on its
+target fibre but its signature omitted the required `[Nonempty ν]` instance.
+The successful stencil focal also exposed one local
+`unnecessarySeqFocus` warning.  Because the stop-on-first-error queue did not
+finish warning-clean, none of its PRE-VALIDATION marks is retired.  Runner
+v3 recorded evidence SHA-256
+`5B7FDDEE0FEEC3EF4693CE84A036300A2BE16F310DD1259D92693F9BB5D23FA7`
+and archive SHA-256
+`2FCA9EB59CDF6E3651161983996738991AC813010D3BBD8DA05973C8B748FDC0`.
+
+Minimal PRE-VALIDATION checkpoint
+`9542adba851dc31d26f30309bf7fefa173e619ca` adds exactly the missing
+nonempty target instance to the generic composition theorem and replaces
+the warned tactic sequencing by its warning-free form.  No operator,
+coefficient, support radius or decay statement changes.  The two changed
+Git-blob SHA-256 values are
+`2A0216E979F67831D93AB4ADA53A36114FAE9D0FAF8990CFF28EDB6DA3FEF64C`
+and
+`398C5BCCF3FF5C4D676756FA729F8CEBADDAD1FA49E6BD3F4CBC4C7D40A2919A`.
+Runner checkpoint `8b2016522d713b8241b57371eef84055cf3ff6ea`
+contains revision `right-adjoint-owner-prerequisites-v4`, Git-blob SHA-256
+`C67046D56B1D13C9DB3CF2285CCA0C729AF712A2557C4286E1B6ACD209E8FFD2`.
+The v4 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

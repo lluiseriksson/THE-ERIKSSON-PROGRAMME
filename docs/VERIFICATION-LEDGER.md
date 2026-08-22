@@ -39741,3 +39741,37 @@ SHA-256
 `17F850E833EB8951B077E55824501959EFFB5CCD9295FBBFD7CC3011C0A3D28F`.
 The v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 911 (2026-08-22, **C6c.4d7 prerequisites third Colab FAIL after partial green; retry v4 prepared; 20/41 unchanged**)
+
+The v3 Colab Pro+ queue compiled
+`BalabanCMP99ActiveRegionSourceCovariantAdjointStencil` in 8,526 jobs and
+`1555.201` seconds.  Its audit completed in `9.467` seconds; all three
+declarations printed only `[propext, Classical.choice, Quot.sound]`.  The
+same focal emitted one local `unnecessarySeqFocus` linter warning.  The
+stop-on-first-error queue then failed at
+`FinitePiLpBlockLocalizedSupOwnerKernelComposition` after `54.681` seconds:
+the proof invokes the already sealed owner-supremum composition machinery,
+which requires `Nonempty ν`, while the new generic wrapper had declared
+only `Fintype ν`.  No physical estimate, radius or constant was refuted.
+
+Runner revision `right-adjoint-owner-prerequisites-v3` emitted
+`FINAL_STATUS=FAIL`, evidence SHA-256
+`5B7FDDEE0FEEC3EF4693CE84A036300A2BE16F310DD1259D92693F9BB5D23FA7`
+and archive SHA-256
+`2FCA9EB59CDF6E3651161983996738991AC813010D3BBD8DA05973C8B748FDC0`.
+No PRE-VALIDATION mark is retired from this incomplete, warning-bearing
+queue.
+
+Checkpoint `9542adba851dc31d26f30309bf7fefa173e619ca` adds the required
+nonempty target instance and replaces only the warned tactic sequencing;
+its two changed Git-blob SHA-256 values are
+`2A0216E979F67831D93AB4ADA53A36114FAE9D0FAF8990CFF28EDB6DA3FEF64C`
+and
+`398C5BCCF3FF5C4D676756FA729F8CEBADDAD1FA49E6BD3F4CBC4C7D40A2919A`.
+Instrumental checkpoint `8b2016522d713b8241b57371eef84055cf3ff6ea`
+provides runner revision `right-adjoint-owner-prerequisites-v4`, Git-blob
+SHA-256
+`C67046D56B1D13C9DB3CF2285CCA0C729AF712A2557C4286E1B6ACD209E8FFD2`.
+The v4 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
