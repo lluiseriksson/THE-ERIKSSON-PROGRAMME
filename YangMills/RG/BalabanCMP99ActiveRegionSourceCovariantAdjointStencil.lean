@@ -4,10 +4,7 @@ import YangMills.RG.BalabanCMP99Eq389BlockShiftGeometry
 import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
 
 /-!
-# PRE-VALIDATION: regional covariant-adjoint stencil and owner support
-
-This source is present, its `.olean` has not yet been materialized, and its
-results have not yet been verified by the Lean compiler.
+# Regional covariant-adjoint stencil and owner support
 
 The literal regional derivative adjoint is identified with the restricted
 backward divergence.  Its finite-supremum budget and radius-one owner support

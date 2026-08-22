@@ -1,10 +1,7 @@
 import YangMills.RG.FinitePiLpOwnerWeightedSupKernelAlgebra
 
 /-!
-# PRE-VALIDATION: owner-kernel composition for localized supremum bounds
-
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the Lean compiler.
+# Owner-kernel composition for localized supremum bounds
 
 A block-localized left factor and an explicit owner-fibre coefficient matrix
 for a right factor compose once their literal owner convolution is bounded.
