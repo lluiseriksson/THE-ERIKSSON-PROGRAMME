@@ -13708,10 +13708,10 @@ SHA-256
 `6AB5FB794DBD2094744E9F4A9CE102624076F9844F99DA8601F5BEC352F83705`.
 The corrected queue remains NOT CHECKED.
 
-### Step 8b.24/C6c.4d7a-b: right-adjoint owner prerequisites (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4d7a-b: right-adjoint owner prerequisites (SEALED in fresh Colab Pro+; 20/41 unchanged)
 
 Two independent prerequisites for the physical right-adjoint action are
-present with visible PRE-VALIDATION headers:
+compiler-verified:
 `BalabanCMP99ActiveRegionSourceCovariantAdjointStencil` exposes the literal
 backward covariant-adjoint stencil and its radius-one owner support, while
 `FinitePiLpBlockLocalizedSupOwnerKernelComposition` composes an already
@@ -13719,7 +13719,7 @@ block-localized left factor with an explicit owner-sup kernel without hiding
 owner radius or cardinality.  Neither module imports the unverified d5/d6
 targets, so this gate does not stack a new producer on an unchecked premise.
 
-The four source/audit files are NOT CHECKED.  They do not yet construct the
+The four source/audit files do not yet construct the
 physical right-adjoint producer, a common CMP99 (3.42) certificate, uniform
 `B0`/`delta0`, window-15 attainment, a terminal field, or a `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
@@ -13777,7 +13777,7 @@ stencil Git-blob SHA-256 is
 Runner checkpoint `208e23b08451056bed539cf07d992d6a2caf072e`
 contains revision `right-adjoint-owner-prerequisites-v3`, Git-blob SHA-256
 `17F850E833EB8951B077E55824501959EFFB5CCD9295FBBFD7CC3011C0A3D28F`.
-The v3 queue remains NOT CHECKED.
+The v3 queue was an incomplete incident and does not seal the pair.
 
 ### Step 8b.24/C6c.9a-b: CMP99 common scalar prefix (COLAB-VERIFIED; 20/41 unchanged)
 
@@ -13836,7 +13836,7 @@ Runner checkpoint `2b871fdba6d3b10f3d149f1bea2ec7a73c62bcdb` carries revision
 The corrected v2 queue is the successful run recorded above.  The earlier
 failed run moves no counter.
 
-### Step 8b.24/C6c.4d7a-b v3 result and v4 repair (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4d7a-b v3 result and v4 seal (COLAB-VERIFIED; 20/41 unchanged)
 
 The v3 Colab Pro+ queue compiled the corrected stencil in 8,526 jobs and
 `1555.201` seconds; its three-declaration audit completed in `9.467` seconds
@@ -13864,8 +13864,19 @@ and
 Runner checkpoint `8b2016522d713b8241b57371eef84055cf3ff6ea`
 contains revision `right-adjoint-owner-prerequisites-v4`, Git-blob SHA-256
 `C67046D56B1D13C9DB3CF2285CCA0C729AF712A2557C4286E1B6ACD209E8FFD2`.
-The v4 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
-`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+The v4 queue passed in Colab Pro+: the stencil focal completed 8,526 jobs in
+`1617.313` seconds and its three-declaration audit in `9.996` seconds; the
+owner-kernel composition focal completed in `47.326` seconds and its audit
+in `6.786` seconds.  All four audited declarations printed only
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`51C6E23672371C01299C5084C83846D561F4605BB276881BE4E0C21E98492FF8`;
+archive SHA-256 is
+`229512A8E2D53B736231555264835FFF3DC357C3C9A8606FCFF728F7BFE52047`.
+Seal checkpoint `4698a1c48deea6a50c6b584835f25a4c932f6789` retires exactly these
+four PRE-VALIDATION marks and imports the two audits into `YangMillsCore`.
+This is prerequisite infrastructure, not the physical right-adjoint
+producer.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
 
 ### Step 8b.24/C6c.4d5 first Colab result and v2 repair (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
 
@@ -13892,3 +13903,30 @@ SHA-256
 `4985A0A3DBA6DE714FDA1A4D6DAF953E8BAA424AC770767F9F701B33FAE7998B`.
 The v2 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.4d6 second Colab result and v3 repair (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+The v2 Laplacian queue reached 8,693 jobs and stopped at its focal after
+`3916.034` seconds.  The remaining goal was purely scalar: the finite
+four-direction sum still exposed `Fintype.card (Fin 4)` and the summands in
+a different commutative order, so the final `ring` invocation did not see
+the normalized expression.  No audit ran; no physical statement, rate,
+support or amplitude was refuted.  Runner v2 emitted evidence SHA-256
+`E85A0D42A3FDBE6A42B2155C74836224E3E20CE1FE4E588DE1C4A27150FE116C`
+and archive SHA-256
+`F5208686CF378BC77F6D52DF48DDC16AE09B08824094ADDF4AD5CA08BB1E5A8A`.
+
+Checkpoint `daca2f5d761e1014ba284b313f487a2b6ebf3528` rewrites the finite
+universe cardinality explicitly before denominator clearing and performs
+the final commutative normalization as one focused tactic block.  Its
+source Git-blob SHA-256 is
+`158B661925D43DF431A82014ECEE11C6CAE6A771C16EFF444CBF17E1A35D407F`;
+the audit blob remains
+`BDB5A594F028E9A3BAFC2F3CB5B5B1887847D07415CC2BF8D9F574DB9FD1EAB4`.
+Instrumental checkpoint `2c1cb493fb944444e2c5769ce31dc6676da56d0f`
+provides runner revision `regional-prefix-laplacian-owner-decay-v3`,
+Git-blob SHA-256
+`8AA5180AA22D83AFAE56B07DD82E440E5AE8B676CC60F13437DD96723DEE3DF8`.
+The v3 queue remains PRE-VALIDATION and NOT CHECKED pending Colab Pro+.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

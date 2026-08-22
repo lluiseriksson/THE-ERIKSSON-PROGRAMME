@@ -39803,3 +39803,49 @@ Git-blob SHA-256
 `4985A0A3DBA6DE714FDA1A4D6DAF953E8BAA424AC770767F9F701B33FAE7998B`.
 The v2 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 913 (2026-08-22, **C6c.4d7 prerequisites sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Runner revision `right-adjoint-owner-prerequisites-v4` passed its complete
+stop-on-first-error queue in Colab Pro+.  The covariant-adjoint stencil focal
+completed 8,526 jobs in `1617.313` seconds and its three-declaration audit in
+`9.996` seconds.  The localized owner-kernel composition focal completed in
+`47.326` seconds and its audit in `6.786` seconds.  Every audited declaration
+reported only `[propext, Classical.choice, Quot.sound]`.
+
+The runner emitted `FINAL_STATUS=PASS`, evidence SHA-256
+`51C6E23672371C01299C5084C83846D561F4605BB276881BE4E0C21E98492FF8`
+and archive SHA-256
+`229512A8E2D53B736231555264835FFF3DC357C3C9A8606FCFF728F7BFE52047`.
+Seal checkpoint `4698a1c48deea6a50c6b584835f25a4c932f6789` retires exactly the four
+certified PRE-VALIDATION headers and imports both audits into
+`YangMillsCore`.  This seal verifies prerequisites only; it does not yet
+construct the physical right-adjoint producer, uniform `B0`/`delta0`, the
+complete CMP99 (3.42) certificate, window-15 attainment, a terminal field
+or a `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
+
+## Addendum 914 (2026-08-22, **C6c.4d6 second Colab FAIL; minimal retry v3 prepared; 20/41 unchanged**)
+
+The v2 physical Laplacian owner-decay queue stopped at its focal after 8,693
+jobs and `3916.034` seconds.  The sole remaining goal was scalar: the finite
+four-direction sum retained `Fintype.card (Fin 4)` and a different
+commutative ordering after denominator clearing.  No audit ran, and no
+physical estimate, hypothesis, rate, support or amplitude was refuted.
+Runner v2 recorded evidence SHA-256
+`E85A0D42A3FDBE6A42B2155C74836224E3E20CE1FE4E588DE1C4A27150FE116C`
+and archive SHA-256
+`F5208686CF378BC77F6D52DF48DDC16AE09B08824094ADDF4AD5CA08BB1E5A8A`.
+
+Checkpoint `daca2f5d761e1014ba284b313f487a2b6ebf3528` explicitly normalizes
+the finite-universe cardinality before the final focused `field_simp; ring`
+block.  Its source Git-blob SHA-256 is
+`158B661925D43DF431A82014ECEE11C6CAE6A771C16EFF444CBF17E1A35D407F`;
+the audit blob remains
+`BDB5A594F028E9A3BAFC2F3CB5B5B1887847D07415CC2BF8D9F574DB9FD1EAB4`.
+Instrumental checkpoint `2c1cb493fb944444e2c5769ce31dc6676da56d0f`
+provides runner revision `regional-prefix-laplacian-owner-decay-v3`,
+Git-blob SHA-256
+`8AA5180AA22D83AFAE56B07DD82E440E5AE8B676CC60F13437DD96723DEE3DF8`.
+The v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
