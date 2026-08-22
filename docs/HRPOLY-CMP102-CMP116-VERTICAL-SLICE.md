@@ -13992,3 +13992,17 @@ Git-blob SHA-256
 The physical source/audit pair remains NOT CHECKED.  It is a per-depth
 component, not a uniform CMP99 (3.42) certificate.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+The v1 fresh-Colab focal subsequently stopped after 8,677 jobs and
+`5656.143` seconds at the first parser error, the unsupported finite-sum
+binder `∑ middle in near`; the transcript also exposed the missing explicit
+import of the physical-background definition.  It emitted
+`FINAL_STATUS=FAIL`, evidence SHA-256
+`1A174152332250F9BDD715D826255053B9DEFBE79AB97042F9387BAA818969E4`
+and archive SHA-256
+`9605922BD1AB361184397CCE65364D0133311A71524B8863E517AB1C370995EF`.
+Repair checkpoint `218207f7c7c6be204e2aaf5b9647747c3489dd2d` fixes only those
+parser/import defects.  Instrumental checkpoint
+`134d0f71370fd36c6c1bb8e6554503c658b45c5b` provides runner revision
+`regional-prefix-right-adjoint-owner-decay-v2`.  The repaired pair remains
+PRE-VALIDATION and NOT CHECKED; no counter moves.

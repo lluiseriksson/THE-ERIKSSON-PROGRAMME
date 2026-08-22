@@ -39929,3 +39929,26 @@ Git-blob SHA-256
 `10CAE3E7F88E63B2B49252EABBD92C9370DD07ABCEE6B23C29B9161ED1937FA3`.
 The pair remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 919 (2026-08-22, **C6c.4d7c v1 parser/import FAIL preserved; v2 prepared; 20/41 unchanged**)
+
+Runner revision `regional-prefix-right-adjoint-owner-decay-v1` stopped at the
+first focal error after 8,677 jobs and `5656.143` seconds.  Lean reported the
+first real error at line 238, where the unsupported `∑ middle in near` syntax
+prevented parsing; the same transcript also exposed the missing direct import
+for `cmp99Eq389SourceSeparatedPhysicalBackground`.  No audit ran.  The runner
+emitted `FINAL_STATUS=FAIL`, evidence SHA-256
+`1A174152332250F9BDD715D826255053B9DEFBE79AB97042F9387BAA818969E4`
+and archive SHA-256
+`9605922BD1AB361184397CCE65364D0133311A71524B8863E517AB1C370995EF`.
+
+Repair checkpoint `218207f7c7c6be204e2aaf5b9647747c3489dd2d` replaces the two
+finite-sum binders by `∑ middle ∈ near` and imports the physical-background
+producer explicitly.  Its corrected source Git-blob SHA-256 is
+`08A6F6E9226791312A740C402B355FA78084DAB30605F23F722E0E99F3C524E2`.
+Instrumental checkpoint `134d0f71370fd36c6c1bb8e6554503c658b45c5b`
+provides runner revision `regional-prefix-right-adjoint-owner-decay-v2`,
+Git-blob SHA-256
+`94D93F8AE55E9C0EC1B0EB1ACA578678B8B5ABE94DA1467155124AA75D6BFA6E`.
+The v2 pair remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
