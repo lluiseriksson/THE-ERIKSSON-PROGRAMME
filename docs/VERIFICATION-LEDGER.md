@@ -40032,3 +40032,59 @@ SHA-256
 The pair remains PRE-VALIDATION and NOT CHECKED.  Its amplitude and rate still
 depend on `depth`; it is not the uniform `B0`/`delta0` producer and does not
 attain window 15.  Counters remain exactly `20/41`, `TermSource = 0`.
+
+## Addendum 924 (2026-08-22, **C6c.9 focal failure and hash-gate incident preserved; 20/41 unchanged**)
+
+Runner revision `regional-prefix-eq342-certificate-v1` stopped at its first
+Lean error after `5691.204` seconds.  The three failing goals were transport
+goals between the local scale alias `ell = L^(depth+1)` and the certificate's
+real-power spelling.  The runner emitted `FINAL_STATUS=FAIL`, evidence
+SHA-256
+`E8CD8318FDD401ED033567AE5B9C75F112C69C80EC96B2FFEFB3A672C12BB279`
+and archive SHA-256
+`A55598EE1193870D69D26B3AF00C289D27BCD16611648CF66985C64D2412BF7C`.
+
+Warm diagnostics at checkpoints `54052b23285ac915986aca8a0e199e3335324ec5`
+and `16a90ccafbdeacea8418953dcd016cc3d1051b53` isolated the distinction
+between `↑(L^(depth+1))` and `(↑L)^(depth+1)` and the remaining local
+amplitude aliases.  Source checkpoint
+`165d6288ede6ae354d8b82c690a9a7ca564ba62e` closes them with the explicit
+`Nat.cast_pow` transport and explicit unfolding of the scalar aliases,
+without changing the theorem, constants or hypotheses.  Its source Git-blob
+SHA-256 is
+`EF1C6EB2FEC51350259648B7C4EC275AF54138FD30038649FC4BFF7DFA485E4A`.
+
+The first fresh v2 attempt stopped before checkout validation because the
+runner metadata accidentally supplied the Git SHA-1 object id where the gate
+requires SHA-256.  The gate correctly rejected it as
+`SOURCE_BLOB_HASH_MISMATCH`; no Lean/Lake target ran.  Evidence SHA-256 is
+`B14CC4E0BD36546CCBE4FA22B4F9C8881FAEBB543EC33FA0CECB29F745944CA1`
+and archive SHA-256 is
+`F04B2DECB8606B3742104E2CBF99DC37A4B85AAC10E5F520A6D3939BD4CDDE94`.
+This is classified as instrumentation failure, not mathematical evidence.
+
+## Addendum 925 (2026-08-23, **C6c.9 per-depth CMP99 (3.42) assembler sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Instrumental checkpoint `d97348a485674c1b5c0d346f673291d9ae012580`
+provides runner revision `regional-prefix-eq342-certificate-v3`, Git-blob
+SHA-256
+`15028DFB0762732CD7F5DFB14BA5CE074DF7FB1452845074CF41E0D9F6C9FF55`.
+It passed its complete queue in a fresh Colab Pro+ CPU/high-RAM checkout at
+source checkpoint `165d6288ede6ae354d8b82c690a9a7ca564ba62e`.
+The focal completed 8,703 jobs in `5362.018` seconds; the audit completed in
+`15.699` seconds and reported exactly
+`[propext, Classical.choice, Quot.sound]`.  The runner emitted
+`FINAL_STATUS=PASS`, evidence SHA-256
+`91B9D9E4766AE7C033A973998B3FA23B476460C6D3CD0EF9ABC3F03A473BD08E`
+and archive SHA-256
+`A771BA8FF9176146912E503DC6C9C3BD6AECA1674F960FA723CF8F57F849EEA8`;
+the downloaded archive was independently re-hashed to the same value on the
+Windows side.
+
+Seal checkpoint `61d0b71323c54a5381a01e2cf8cbe2def80956b9` retires exactly
+the source and audit PRE-VALIDATION marks and imports the audit into
+`YangMillsCore`.  The result is deliberately per-depth: its common amplitude
+and decay rate still depend on `depth`.  It does not provide uniform
+`B0`/`delta0`, attain window 15, construct a terminal field or instantiate
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
