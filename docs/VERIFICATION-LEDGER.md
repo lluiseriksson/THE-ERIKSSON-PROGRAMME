@@ -39676,3 +39676,40 @@ SHA-256
 The corrected queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 909 (2026-08-22, **C6c.4d6 first Colab FAIL; minimal retry prepared; 20/41 unchanged**)
+
+The first Colab Pro+ run of the physical P8 Laplacian owner-decay queue
+stopped at its focal target.  The focal exited `1` after `4765.143` seconds;
+no audit ran.  The compiler exposed two elaboration defects in
+`BalabanCMP96SourceSeparatedRegionalPrefixLaplacianOwnerDecay`: the existing
+backward-owner exponential transport theorem was not imported, and the final
+four-direction scalar normalization left an additional algebraic goal after
+`field_simp`.  The latter also reported the unused simplifier argument
+`Fintype.card_fin`.  No theorem statement, hypothesis, rate or amplitude was
+refuted.
+
+Runner revision `regional-prefix-laplacian-owner-decay-v1` recorded evidence
+SHA-256
+`6A45F065C7C516D9F4C0FDF5857A29C082FA2DED70877EBFCB973EEE8D5A6FBE`
+and archive SHA-256
+`78345F48A5D1D72466C40387C60129528CCDD38C7A2A93E0A8B926A652A44F90`.
+The retained hot-runtime diagnostic reran only the same failed focal and
+recovered the exact compiler messages; its log SHA-256 is
+`8CCBD5F3F697E1FC27824F9F9BF1DBBF459E493C4AA6858C887DECD72EEE5AAB`.
+That diagnostic is incident evidence, not a seal.
+
+Checkpoint `5e1cb84f8ca1c7b47b3af77e252afcac63937b71` imports the already
+sealed owner-transport theorem and applies `ring` to every goal emitted by
+the final denominator clearing.  It also removes the unused simplifier
+argument.  The corrected source Git-blob SHA-256 is
+`BCCD2573B0FD0FFC39FE69A3CE5ABE875C48664FE430FC2580EE698DBF9C9620`;
+the audit blob remains
+`BDB5A594F028E9A3BAFC2F3CB5B5B1887847D07415CC2BF8D9F574DB9FD1EAB4`.
+Instrumental checkpoint `ea8326f75193ddbff818aae638c8ac499e9cf894`
+provides runner revision `regional-prefix-laplacian-owner-decay-v2`, Git-blob
+SHA-256
+`6AB5FB794DBD2094744E9F4A9CE102624076F9844F99DA8601F5BEC352F83705`.
+The corrected queue remains PRE-VALIDATION and NOT CHECKED pending a fresh
+Colab run.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
