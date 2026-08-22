@@ -219,7 +219,7 @@ theorem cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound
   have hleftAmplitude : 0 ≤ leftAmplitude := by
     exact mul_nonneg hownerAmplitude
       (div_nonneg (add_nonneg zero_le_one (Real.exp_pos _).le) hspacing.le)
-  refine ⟨mul_nonneg hleftAmplitude hell.le, hrate, ?_⟩
+  refine ⟨mul_nonneg hleftAmplitude hell.le, mul_pos hell hrate, ?_⟩
   intro owner f hf bond
   by_cases howner : ∃ source : ActiveGaugeRegion.Site Omega,
       cmp99Eq342SourceLocalizedActiveOwner L K Q depth source = owner
@@ -243,15 +243,19 @@ theorem cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound
         simpa [phi, extPhi, Cregional,
           extendZeroZeroCLM_apply_of_mem Omega phi x hx,
           cmp99Eq342SourceLocalizedActiveOwner, target,
-          ell, A, c, rate, ownerRate, ownerAmplitude] using hbase
+          ell, A, c, rate, ownerRate, ownerAmplitude,
+          finBoxDist_comm] using hbase
       · rw [show extPhi x = 0 by
           exact extendZeroZeroCLM_apply_of_not_mem Omega phi x hx, norm_zero]
         exact mul_nonneg
-          (mul_nonneg hownerAmplitude (sq_nonneg _))
-          (mul_nonneg (Real.exp_pos _).le (finitePiLpSupNorm_nonneg f))
+          (mul_nonneg
+            (mul_nonneg hownerAmplitude (sq_nonneg _))
+            (Real.exp_pos _).le)
+          (finitePiLpSupNorm_nonneg f)
     have hshift := hvalue (bond.1.shift bond.2)
     have hshiftExp := exp_neg_sourceLocalizationOwner_shift_le_exp_mul
-      L K Q depth bond.1 owner bond.2 hrate.le
+      L K Q depth bond.1 owner bond.2 (delta := ownerRate)
+        (mul_pos hell hrate).le
     have hshiftValue :
         ‖extPhi (bond.1.shift bond.2)‖ ≤
           (ownerAmplitude * (ell : ℝ) ^ 2) *
@@ -324,7 +328,6 @@ theorem cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound
         dsimp [terminalSpacing, leftAmplitude]
         unfold cmp99Eq342SourceLocalizedBondOwner
         field_simp [ne_of_gt hspacing, ne_of_gt hell]
-        ring
   · have hfzero : f = 0 := by
       apply PiLp.ext
       intro source
@@ -332,7 +335,12 @@ theorem cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound
       intro hsource
       exact howner ⟨source, hsource⟩
     subst f
-    simp
+    rw [map_zero, norm_zero]
+    exact mul_nonneg
+      (mul_nonneg
+        (mul_nonneg hleftAmplitude hell.le)
+        (Real.exp_pos _).le)
+      (finitePiLpSupNorm_nonneg 0)
 
 end
 
