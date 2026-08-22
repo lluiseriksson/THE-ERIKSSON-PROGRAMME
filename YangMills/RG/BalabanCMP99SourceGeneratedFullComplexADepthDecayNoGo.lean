@@ -169,13 +169,19 @@ theorem cmp99SourceGeneratedCanonicalFullComplexA_eventually_lt
       (cmp99SourceGeneratedFullComplexSpacing_pos M 1)
   obtain ⟨steps, hsteps⟩ := exists_pow_lt_of_lt_one
     (div_pos hfloor hA0) (show (1 / 2 : ℝ) < 1 by norm_num)
-  refine ⟨steps, (cmp99SourceGeneratedCanonicalFullComplexA_add_le_div_pow
-    d M 0 steps).trans_lt ?_⟩
+  have hiter :
+      cmp99SourceGeneratedCanonicalFullComplexA d M steps ≤
+        A0 / (2 : ℝ) ^ steps := by
+    simpa only [Nat.zero_add, A0] using
+      (cmp99SourceGeneratedCanonicalFullComplexA_add_le_div_pow
+        d M 0 steps)
+  rw [one_div_pow] at hsteps
   have hmul := mul_lt_mul_of_pos_left hsteps hA0
   have hcancel : A0 * (floor / A0) = floor := by
     field_simp [ne_of_gt hA0]
   rw [hcancel] at hmul
-  simpa [A0, div_eq_mul_inv] using hmul
+  refine ⟨steps, hiter.trans_lt ?_⟩
+  simpa only [div_eq_mul_inv, one_mul] using hmul
 
 /-- The source coefficient and the current Poincare-generated full-complex
 coefficient cannot agree at every depth: eventually the generated coefficient
