@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "d9787e343fb4efe8009aae091def3721e5d2656d"
+SOURCE_SHA = "29973b52ac742641246f60e5c8f69df86d8fde69"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "full-complex-a-depth-decay-nogo-v2"
+runner.RUNNER_REV = "full-complex-a-depth-decay-nogo-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-full-complex-a-depth-decay-nogo")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFullComplexADepthDecayNoGo.lean":
-        "58cda0201c8b8bea0aba48268f1cbfa0366562e9c6985e7781b61b3f7f0a54f9",
+        "4878df0167ec42a9a0593ca3e0b3597d099f75624ce61af8abfc17017b320b64",
     "YangMills/RG/BalabanCMP99SourceGeneratedFullComplexADepthDecayNoGoAudit.lean":
         "b416d389781f72493a959813d6810067a6e2a05b79bf1c67e66521075d811f2a",
 }
