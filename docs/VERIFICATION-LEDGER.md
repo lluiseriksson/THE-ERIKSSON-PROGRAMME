@@ -39742,6 +39742,46 @@ SHA-256
 The v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
 
+## Addendum 915 (2026-08-22, **C6c.4d6 Laplacian sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Runner revision `regional-prefix-laplacian-owner-decay-v3` passed its full
+queue in fresh Colab Pro+.  The focal completed 8,693 jobs in `3885.649`
+seconds; its audit completed in `10.458` seconds and the sole declaration
+reported exactly `[propext, Classical.choice, Quot.sound]`.  The runner
+emitted `FINAL_STATUS=PASS`, evidence SHA-256
+`4227245DE305B1A65CD229773D626DBF467E49F23350C9D32A2232FAB57DEBE8`
+and archive SHA-256
+`93B30FE67301DA85B7E672B7DF93A042BA3D36D9073D23064DC362FF5F2A915D`.
+
+Seal checkpoint `51d1f15918825be004a352690fda40251e1d7bc7` retires exactly the two
+Laplacian PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+This is one per-depth physical component; it does not produce uniform
+`B0`/`delta0`, the complete CMP99 (3.42) certificate, window-15 attainment,
+a terminal field or a `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 916 (2026-08-22, **C6c.4d5 v2 compiler-green but warning-bearing; warning-clean v3 prepared; 20/41 unchanged**)
+
+The v2 Green block-localized queue compiled its focal in 8,665 jobs and
+`5465.687` seconds.  Its audit completed in `16.896` seconds and printed only
+`[propext, Classical.choice, Quot.sound]`.  The new source nevertheless
+emitted one local `unnecessarySimpa` warning in the zero-field branch.
+Runner v2 emitted `FINAL_STATUS=PASS`, evidence SHA-256
+`40EBECAF70E8B54AC463503A57D3AF9C8372A95A442EB9D3A136903F93F1F0E7`
+and archive SHA-256
+`E941214C96B5C5A815CE58FFA80E07305C6033BE3949F2BFC40EA88E0753ABDF`.
+No PRE-VALIDATION mark is retired from this warning-bearing checkpoint.
+
+Checkpoint `9fb016de521a90ddec1fd495a68fa512420713d4` replaces only the warned
+`simpa only` by `simp only`; its corrected source Git-blob SHA-256 is
+`2BEF03A57038913CB05E1782C82EC19569E55D51504B21DD90569FCD18F631E7`.
+Instrumental checkpoint `09abadab38d88b5dacee044e1beab0e539da7e58`
+provides runner revision `regional-prefix-green-block-owner-decay-v3`,
+Git-blob SHA-256
+`BFA75CC45CA4240652530E0A318C81878591C164A10E2452BFB1706D9B277643`.
+The v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
 ## Addendum 911 (2026-08-22, **C6c.4d7 prerequisites third Colab FAIL after partial green; retry v4 prepared; 20/41 unchanged**)
 
 The v3 Colab Pro+ queue compiled

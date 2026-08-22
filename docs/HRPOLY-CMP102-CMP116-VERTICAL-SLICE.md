@@ -13652,10 +13652,10 @@ SHA-256
 It pins the source checkpoint and those two Git blobs, then runs exactly the
 focal module and its one-declaration audit in Colab Pro+.
 
-### Step 8b.24/C6c.4d6: physical P8 Laplacian owner decay (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4d6: physical P8 Laplacian owner decay (SEALED in fresh Colab Pro+; 20/41 unchanged)
 
-`BalabanCMP96SourceSeparatedRegionalPrefixLaplacianOwnerDecay` is present
-with an explicit PRE-VALIDATION header.  It applies the literal
+`BalabanCMP96SourceSeparatedRegionalPrefixLaplacianOwnerDecay` is
+compiler-verified.  It applies the literal
 backward-divergence stencil to the sealed left-derivative estimate.  The four
 directions are summed explicitly; the backward endpoint costs one
 `exp ownerRate`, and the terminal factor `(ell * spacing)⁻¹` cancels the
@@ -13664,8 +13664,7 @@ is therefore
 `4 * leftAmplitude * ((1 + exp ownerRate) / spacing)`, with no active-carrier
 cardinality and no new analytic hypothesis.
 
-The source and one-declaration audit are not compiler-verified.  This is a
-per-depth Laplacian-action producer only.  It does not produce uniform
+This is a per-depth Laplacian-action producer only.  It does not produce uniform
 physical `B0`/`delta0`, the right-adjoint derivative, the common CMP99 (3.42)
 certificate, window-15 attainment, a terminal field, or a `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
@@ -13927,6 +13926,38 @@ Instrumental checkpoint `2c1cb493fb944444e2c5769ce31dc6676da56d0f`
 provides runner revision `regional-prefix-laplacian-owner-decay-v3`,
 Git-blob SHA-256
 `8AA5180AA22D83AFAE56B07DD82E440E5AE8B676CC60F13437DD96723DEE3DF8`.
-The v3 queue remains PRE-VALIDATION and NOT CHECKED pending Colab Pro+.
+The v3 queue passed in fresh Colab Pro+: the focal completed 8,693 jobs in
+`3885.649` seconds and the audit in `10.458` seconds.  Its sole declaration
+printed exactly `[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256
+is `4227245DE305B1A65CD229773D626DBF467E49F23350C9D32A2232FAB57DEBE8`;
+archive SHA-256 is
+`93B30FE67301DA85B7E672B7DF93A042BA3D36D9073D23064DC362FF5F2A915D`.
+Seal checkpoint `51d1f15918825be004a352690fda40251e1d7bc7` retires exactly the two
+Laplacian PRE-VALIDATION marks and imports its audit into `YangMillsCore`.
+This remains a per-depth component, not a uniform CMP99 (3.42) certificate.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+### Step 8b.24/C6c.4d5 second Colab result and warning-clean v3 (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+The v2 Green block-localized queue compiled its focal in 8,665 jobs and
+`5465.687` seconds; the audit completed in `16.896` seconds and printed only
+`[propext, Classical.choice, Quot.sound]`.  The focal nevertheless emitted
+one local `unnecessarySimpa` warning at the newly repaired zero-field branch.
+Runner v2 emitted `FINAL_STATUS=PASS`, evidence SHA-256
+`40EBECAF70E8B54AC463503A57D3AF9C8372A95A442EB9D3A136903F93F1F0E7`
+and archive SHA-256
+`E941214C96B5C5A815CE58FFA80E07305C6033BE3949F2BFC40EA88E0753ABDF`.
+Because the source-local warning remains in that checkpoint, its
+PRE-VALIDATION marks are not retired.
+
+Checkpoint `9fb016de521a90ddec1fd495a68fa512420713d4` changes only the warned
+`simpa only` to `simp only`; its source Git-blob SHA-256 is
+`2BEF03A57038913CB05E1782C82EC19569E55D51504B21DD90569FCD18F631E7`.
+Instrumental checkpoint `09abadab38d88b5dacee044e1beab0e539da7e58`
+provides runner revision `regional-prefix-green-block-owner-decay-v3`,
+Git-blob SHA-256
+`BFA75CC45CA4240652530E0A318C81878591C164A10E2452BFB1706D9B277643`.
+The warning-clean v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
