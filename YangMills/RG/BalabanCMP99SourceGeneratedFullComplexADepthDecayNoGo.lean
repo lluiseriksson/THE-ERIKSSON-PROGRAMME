@@ -1,6 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse
 import YangMills.RG.BalabanCMP99SourceFlatRetainedPhysicalTower
+import YangMills.RG.BalabanCMP85SourceAveragingCoefficientFloor
 
 /-!
 # PRE-VALIDATION: depth decay of the Poincare-generated full-complex coefficient
@@ -90,7 +91,9 @@ theorem cmp99SourceGeneratedCanonicalFullComplexA_succ_le_half
   have hden : 0 < 2 * C * w * EPrev := by positivity
   have hnum :
       0 ≤ C ^ (depth + 2) *
-        cmp99SourceBlockAverageWeight (M ^ (depth + 2)) d := by positivity
+        cmp99SourceBlockAverageWeight (M ^ (depth + 2)) d := by
+    exact mul_nonneg (pow_nonneg hC.le _)
+      (cmp99SourceBlockAverageWeight_nonneg (M ^ (depth + 2)) d)
   have hdiv :
       (C ^ (depth + 2) *
           cmp99SourceBlockAverageWeight (M ^ (depth + 2)) d) / ENext ≤
@@ -124,6 +127,76 @@ theorem cmp99SourceGeneratedCanonicalFullComplexA_succ_le_half
     ← cmp99SourceBlockAverageWeight_pow_eq_oneBlock M d (depth + 1)]
   field_simp [ne_of_gt hC, ne_of_gt hw, ne_of_gt hEPrev]
   ring
+
+/-- Iterating the adjacent-depth estimate exposes the complete geometric
+loss, with no depth-dependent constant hidden in the statement. -/
+theorem cmp99SourceGeneratedCanonicalFullComplexA_add_le_div_pow
+    (d M base steps : ℕ) [NeZero d] [NeZero M] :
+    cmp99SourceGeneratedCanonicalFullComplexA d M (base + steps) ≤
+      cmp99SourceGeneratedCanonicalFullComplexA d M base /
+        (2 : ℝ) ^ steps := by
+  induction steps with
+  | zero => simp
+  | succ steps ih =>
+      calc
+        cmp99SourceGeneratedCanonicalFullComplexA d M
+            (base + (steps + 1)) =
+          cmp99SourceGeneratedCanonicalFullComplexA d M
+            ((base + steps) + 1) := by simp [Nat.add_assoc]
+        _ ≤ cmp99SourceGeneratedCanonicalFullComplexA d M
+              (base + steps) / 2 :=
+          cmp99SourceGeneratedCanonicalFullComplexA_succ_le_half
+            d M (base + steps)
+        _ ≤ (cmp99SourceGeneratedCanonicalFullComplexA d M base /
+              (2 : ℝ) ^ steps) / 2 := by linarith
+        _ = cmp99SourceGeneratedCanonicalFullComplexA d M base /
+              (2 : ℝ) ^ (steps + 1) := by
+          rw [pow_succ]
+          ring
+
+/-- The generated full-complex coefficient has no positive lower floor
+uniform in depth.  This is the terminal no-go for identifying it with the
+positive source coefficient `a_j` without an additional dictionary. -/
+theorem cmp99SourceGeneratedCanonicalFullComplexA_eventually_lt
+    (d M : ℕ) [NeZero d] [NeZero M]
+    {floor : ℝ} (hfloor : 0 < floor) :
+    ∃ depth,
+      cmp99SourceGeneratedCanonicalFullComplexA d M depth < floor := by
+  let A0 := cmp99SourceGeneratedCanonicalFullComplexA d M 0
+  have hA0 : 0 < A0 := by
+    dsimp [A0, cmp99SourceGeneratedCanonicalFullComplexA]
+    exact cmp99SourceGeneratedFullComplexA_pos_succ d M 0
+      (cmp99SourceGeneratedFullComplexSpacing_pos M 1)
+  obtain ⟨steps, hsteps⟩ := exists_pow_lt_of_lt_one
+    (div_pos hfloor hA0) (show (1 / 2 : ℝ) < 1 by norm_num)
+  refine ⟨steps, (cmp99SourceGeneratedCanonicalFullComplexA_add_le_div_pow
+    d M 0 steps).trans_lt ?_⟩
+  have hmul := mul_lt_mul_of_pos_left hsteps hA0
+  have hcancel : A0 * (floor / A0) = floor := by
+    field_simp [ne_of_gt hA0]
+  rw [hcancel] at hmul
+  simpa [A0, div_eq_mul_inv] using hmul
+
+/-- The source coefficient and the current Poincare-generated full-complex
+coefficient cannot agree at every depth: eventually the generated coefficient
+lies strictly below the positive CMP85 source floor, while the source flow
+stays above it. -/
+theorem exists_cmp99SourceGeneratedCanonicalFullComplexA_lt_massParameter
+    (d M : ℕ) [NeZero d] [NeZero M]
+    {a : ℝ} (ha : 0 < a) (hM : 1 < M) :
+    ∃ depth,
+      cmp99SourceGeneratedCanonicalFullComplexA d M depth <
+        cmp99SourceMassParameter a (M : ℝ) depth := by
+  have hMreal : (1 : ℝ) < (M : ℝ) := by exact_mod_cast hM
+  have hfloor :
+      0 < cmp85Eq215SourceAveragingCoefficientFloor a (M : ℝ) :=
+    cmp85Eq215SourceAveragingCoefficientFloor_pos ha hMreal
+  obtain ⟨depth, hgenerated⟩ :=
+    cmp99SourceGeneratedCanonicalFullComplexA_eventually_lt
+      d M hfloor
+  exact ⟨depth, hgenerated.trans_le
+    (cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter
+      ha hMreal depth)⟩
 
 end
 
