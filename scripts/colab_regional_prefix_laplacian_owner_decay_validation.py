@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "df6dbb9e89454e1b49129d9cdd4a878e2af79f68"
+SOURCE_SHA = "5e1cb84f8ca1c7b47b3af77e252afcac63937b71"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-laplacian-owner-decay-v1"
+runner.RUNNER_REV = "regional-prefix-laplacian-owner-decay-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-laplacian-owner-decay")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixLaplacianOwnerDecay.lean":
-        "a32312d7c41bff040bb9a4708d8ff68f9d39af1e6e3b0fe82a37c00a4faf0515",
+        "bccd2573b0fd0ffc39fe69a3ce5abe875c48664fe430fc2580ee698dbf9c9620",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixLaplacianOwnerDecayAudit.lean":
         "bdb5a594f028e9a3bafc2f3cb5b5b1887847d07415cc2bf8d9f574db9fd1eab4",
 }
