@@ -14017,3 +14017,14 @@ Instrumental checkpoint `4cc92fcd75d39bd6516454718098de421075988f`
 prepares runner revision `regional-prefix-right-adjoint-owner-decay-v3` for
 the required fresh-checkout seal.  Warm green is not a seal: the source and
 audit remain PRE-VALIDATION, and no counter moves.
+
+The v3 fresh-checkout run compiled the focal (8,697 jobs, `5548.021` seconds)
+and its five-declaration audit (`21.440` seconds, allowed trio throughout),
+but the sentinel correctly emitted FAIL because the queue metadata expected
+one axiom block.  Evidence SHA-256 is
+`3F3A73D48BC19DE0EEBE7F5F153993AEAD3F2192E0839847AED16BA01820110`;
+archive SHA-256 is
+`3309F915ACB7EAD52CF5FAE574F2A1D12F157FBDA2175FE4224DC77BD9475C64`.
+Instrumental checkpoint `3f39344e2a2e7a8ccd8e12114f7c42db6c3c142a`
+changes only the expected block count to five for runner v4.  Source and audit
+remain PRE-VALIDATION until v4 emits PASS; no counter moves.

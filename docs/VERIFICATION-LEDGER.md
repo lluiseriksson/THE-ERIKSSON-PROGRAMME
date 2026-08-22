@@ -39975,3 +39975,25 @@ Git-blob SHA-256
 The pair remains PRE-VALIDATION until that queue passes in a fresh Colab
 checkout.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 921 (2026-08-22, **C6c.4d7c v3 source/audit cold-green but sentinel FAIL; v4 prepared; 20/41 unchanged**)
+
+The v3 fresh-Colab focal completed 8,697 jobs in `5548.021` seconds and the
+audit exited zero in `21.440` seconds.  All five audited declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.  The runner nevertheless
+emitted `FINAL_STATUS=FAIL` because its queue metadata expected one axiom
+block rather than five: `AXIOM_BLOCK_COUNT=5 EXPECTED=1`.  Evidence SHA-256 is
+`3F3A73D48BC19DE0EEBE7F5F153993AEAD3F2192E0839847AED16BA01820110`;
+archive SHA-256 is
+`3309F915ACB7EAD52CF5FAE574F2A1D12F157FBDA2175FE4224DC77BD9475C64`.
+This is classified as instrumentation failure; the PRE-VALIDATION marks are
+not retired by bypassing the sentinel.
+
+Instrumental checkpoint `3f39344e2a2e7a8ccd8e12114f7c42db6c3c142a`
+changes only the expected audit-block count from one to five and labels runner
+revision `regional-prefix-right-adjoint-owner-decay-v4`.  Its Git-blob
+SHA-256 is
+`2FDB08F71E1704CB15B5CC9345A9C79F74C30495ED89F9E59249917F98E204FF`.
+The source checkpoint remains
+`0ceff03b509c2b6c85c81631eff494e146719e50`; counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 remains compatible but unattained.
