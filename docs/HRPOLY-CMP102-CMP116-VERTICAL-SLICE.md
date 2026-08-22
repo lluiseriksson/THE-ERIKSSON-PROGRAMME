@@ -13682,3 +13682,35 @@ SHA-256
 `B6CD7B5322570705DDF98984E4871563B7B221DC92B01B81F134AAFF661F33CA`.
 It pins that checkpoint and those two blobs, then runs exactly the focal
 module and its one-declaration audit in Colab Pro+.
+
+### Step 8b.24/C6c.4d7a-b: right-adjoint owner prerequisites (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+Two independent prerequisites for the physical right-adjoint action are
+present with visible PRE-VALIDATION headers:
+`BalabanCMP99ActiveRegionSourceCovariantAdjointStencil` exposes the literal
+backward covariant-adjoint stencil and its radius-one owner support, while
+`FinitePiLpBlockLocalizedSupOwnerKernelComposition` composes an already
+block-localized left factor with an explicit owner-sup kernel without hiding
+owner radius or cardinality.  Neither module imports the unverified d5/d6
+targets, so this gate does not stack a new producer on an unchecked premise.
+
+The four source/audit files are NOT CHECKED.  They do not yet construct the
+physical right-adjoint producer, a common CMP99 (3.42) certificate, uniform
+`B0`/`delta0`, window-15 attainment, a terminal field, or a `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
+
+PRE-VALIDATION source checkpoint
+`0fe0b1e4720d0d66112c5220ad2717808d49b760` fixes the four Git-blob
+SHA-256 values
+`8155816C7027AAC8B719456D35CDE14CC17A8AB3DF35E9292ACD0EB525D87D6E`,
+`D396E4E358EA0BC51ACB7500AB6FD4A8703D71876B1188830C78F6562562DD65`,
+`17BAE6CD6703A4C24509337F009E0F4CFD7CA12B8D30147679F9208826A99C4C`,
+and
+`78995AAC2802C769C3A82B77BC06EB79380423E27694B3BE6140B036A7467EFE`.
+Instrumental checkpoint `fa2618d5db65ec45e317d9dec8016077f5fbd352`
+contains runner revision `right-adjoint-owner-prerequisites-v1`, Git-blob
+SHA-256
+`DFA5097E543056C11009EB1048C970107D6C3F8C`.  It pins the source checkpoint
+and all four blobs, then runs the two focal/audit pairs stop-on-first-error in
+Colab Pro+.

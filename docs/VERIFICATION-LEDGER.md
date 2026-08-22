@@ -39533,3 +39533,34 @@ Runner revision `regional-prefix-laplacian-owner-decay-v1`, SHA-256
 verifies that exact source and both blobs before one focal build and one
 one-declaration audit.  This preparation is instrumental only and does not
 change the NOT CHECKED status.
+
+## Addendum 904 (2026-08-22, **C6c.4d7a-b right-adjoint owner prerequisites PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+The source/audit pairs
+`BalabanCMP99ActiveRegionSourceCovariantAdjointStencil` and
+`FinitePiLpBlockLocalizedSupOwnerKernelComposition` are present with visible
+PRE-VALIDATION headers.  The first states the literal covariant-adjoint
+backward stencil, its sup estimate, and radius-one owner support.  The second
+is the generic block-localized composition endpoint needed to combine that
+kernel with a certified Green action.  Both are independent of the unchecked
+d5/d6 modules.
+
+No Lean/Lake process was run on Windows.  The four declarations are NOT
+CHECKED pending Colab Pro+ validation.  The physical right-adjoint producer,
+uniform CMP99 (3.42), window-15 attainment, terminal fields and a
+`TermSource` inhabitant remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
+
+PRE-VALIDATION source checkpoint
+`0fe0b1e4720d0d66112c5220ad2717808d49b760` fixes Git-blob SHA-256 values
+`8155816C7027AAC8B719456D35CDE14CC17A8AB3DF35E9292ACD0EB525D87D6E`,
+`D396E4E358EA0BC51ACB7500AB6FD4A8703D71876B1188830C78F6562562DD65`,
+`17BAE6CD6703A4C24509337F009E0F4CFD7CA12B8D30147679F9208826A99C4C`,
+and
+`78995AAC2802C769C3A82B77BC06EB79380423E27694B3BE6140B036A7467EFE`.
+Instrumental checkpoint `fa2618d5db65ec45e317d9dec8016077f5fbd352`
+provides runner revision `right-adjoint-owner-prerequisites-v1`, Git-blob
+SHA-256
+`DFA5097E543056C11009EB1048C970107D6C3F8C`, with exact transport and a
+stop-on-first-error queue over the two focal/audit pairs.  This preparation is
+instrumental only and does not change their NOT CHECKED status.
