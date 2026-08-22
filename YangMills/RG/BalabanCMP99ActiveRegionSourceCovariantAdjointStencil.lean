@@ -108,9 +108,8 @@ theorem finitePiLpSupNorm_cmp99ActiveRegionSourceCovariantD0CLM_adjoint_le
           (norm_apply_le_finitePiLpSupNorm f (x.1, i))
           (norm_apply_le_finitePiLpSupNorm f (x.1.shiftBack i, i))
     _ = (2 * d / spacing) * finitePiLpSupNorm f := by
-      simp only [Finset.sum_const, Fintype.card_fin]
-      field_simp [ne_of_gt hspacing]
-      ring
+      simp only [Finset.sum_const, Finset.card_univ, Fintype.card_fin]
+      field_simp [ne_of_gt hspacing] <;> ring
 
 private theorem finBoxEquivCast_shiftBack_draft
     {d N M : ℕ} [NeZero N] [NeZero M]
@@ -173,10 +172,17 @@ theorem cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply_eq_zero_of_owner_far
     have hstep := finBoxDist_blockSite_shiftBack_le_one
       (m := L ^ (depth + 1)) (n := 2 * (K * Q))
       (cmp99Eq389SourceLocalizationSiteEquiv L K Q depth x.1) i
-    simpa [cmp99Eq342SourceLocalizedActiveOwner,
-      cmp99Eq342SourceLocalizedBondOwner,
-      cmp99Eq389SourceLocalizationOwner, hcastShiftBack, h,
-      finBoxDist_comm] using hstep
+    have hstep' :
+        finBoxDist
+            (cmp99Eq389SourceLocalizationOwner L K Q depth x.1)
+            (cmp99Eq389SourceLocalizationOwner L K Q depth
+              (x.1.shiftBack i)) ≤ 1 := by
+      simpa [cmp99Eq389SourceLocalizationOwner, hcastShiftBack] using hstep
+    have hbackOwner :
+        cmp99Eq389SourceLocalizationOwner L K Q depth (x.1.shiftBack i) =
+          owner := by
+      simpa [cmp99Eq342SourceLocalizedBondOwner] using h
+    simpa [cmp99Eq342SourceLocalizedActiveOwner, hbackOwner] using hstep'
   rw [hf (x.1, i) hforwardNe, hf (x.1.shiftBack i, i) hbackNe]
   simp
 
