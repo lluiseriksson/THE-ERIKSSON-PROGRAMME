@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "302b4df88a05a63e339a5d16eea2341c849852f9"
+SOURCE_SHA = "165d6288ede6ae354d8b82c690a9a7ca564ba62e"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-eq342-certificate-v1"
+runner.RUNNER_REV = "regional-prefix-eq342-certificate-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-eq342-certificate")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixEq342Certificate.lean":
-        "2efad6d21bb4a4eb514f53f2b35a1c08da31b607acdae6b3adfbeb624e56774c",
+        "e32696f76a74bdf57515a4c9a499d34d282c0a56",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixEq342CertificateAudit.lean":
         "21fb8f9cca42f15a715bb94917c1f500375be032f6c46acae72ed5c75301c573",
 }
