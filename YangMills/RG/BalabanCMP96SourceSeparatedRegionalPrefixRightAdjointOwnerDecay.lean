@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixGreenBlockLocalizedOwnerDecay
 import YangMills.RG.BalabanCMP99ActiveRegionSourceCovariantAdjointStencil
+import YangMills.RG.BalabanCMP99Eq389ThreeSpeciesPhysicalBound
 import YangMills.RG.FinitePiLpBlockLocalizedSupOwnerKernelComposition
 import YangMills.RG.BalabanCMP99SourcePi4Collar
 
@@ -235,13 +236,13 @@ theorem cmp96SourceSeparatedRegionalPrefixRightAdjoint_blockLocalizedSupBound
           (finiteOwnerExponentialCoefficient finBoxDist
             (ownerAmplitude * (ell : ℝ) ^ 2) ownerRate)
           rightCoefficient target source =
-        ∑ middle in near,
+        ∑ middle ∈ near,
           ((ownerAmplitude * (ell : ℝ) ^ 2) *
               Real.exp (-(ownerRate * (finBoxDist target middle : ℝ)))) *
             (8 / terminalSpacing) := by
           simp [finiteOwnerKernelConvolution,
             finiteOwnerExponentialCoefficient, rightCoefficient, near]
-      _ ≤ ∑ _middle in near,
+      _ ≤ ∑ _middle ∈ near,
           ((ownerAmplitude * (ell : ℝ) ^ 2) * Real.exp ownerRate *
               (8 / terminalSpacing)) *
             Real.exp (-(ownerRate * (finBoxDist target source : ℝ))) := by
@@ -277,5 +278,4 @@ theorem cmp96SourceSeparatedRegionalPrefixRightAdjoint_blockLocalizedSupBound
 end
 
 end YangMills.RG
-
 
