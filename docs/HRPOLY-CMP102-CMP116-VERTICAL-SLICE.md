@@ -14057,3 +14057,42 @@ right-adjoint PRE-VALIDATION marks and imports its audit into `YangMillsCore`.
 This is the fourth per-depth component, not the uniform CMP99 (3.42)
 certificate; counters remain `20/41`, `TermSource = 0`, and window 15 remains
 compatible but unattained.
+
+### Step 8b.24/C6c.9c: generated/source coefficient identification no-go (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceGeneratedFullComplexADepthDecayNoGo` separates two
+coefficients that earlier generated Fourier bricks must not identify.  At
+canonical spacing and zero source radius, the coefficient obtained from the
+recursive Poincare ledger loses at least a factor `2` at every extra depth.
+Its iterated bound therefore falls below every positive floor.  CMP85 (2.15),
+by contrast, gives the literal source flow `a_j` the positive uniform floor
+`a * (1 - L^(-2))`.  The terminal theorem constructs a depth at which the
+generated coefficient is strictly smaller than the corresponding source
+coefficient.
+
+This does not retract the sealed per-depth CMP99 (3.42) assembler: that
+assembler uses the source-separated ambient precision with the literal
+source parameter `a_j`.  It does reclassify the older C4b--C6b
+generated-coefficient Fourier route as auxiliary algebra rather than a
+dictionary for the source coefficient.  The admissible continuation is the
+source-specific Fourier branch, using the CMP85 floor to choose a common
+strip and amplitude; its Fourier/operator and regional dictionaries remain
+open.
+
+Fresh Colab Pro+ runner revision
+`full-complex-a-depth-decay-nogo-v3` at instrumental checkpoint
+`d72089f11838c8a720c11a4b77054a73a520419f` validated exact source
+`29973b52ac742641246f60e5c8f69df86d8fde69`.  The focal completed 8,572
+jobs in `1469.914` seconds and the six-declaration audit in `7.241` seconds;
+all six declarations reported exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`AABD4D3197D445AC839D739E5C2A5FCBB2635AA0EC277A4DB4E81C5196169848`;
+archive SHA-256 is
+`6278AA84080F62A7DFD241F337814400529A32BA4A9510AE325245B75CAFF3AF`.
+Seal checkpoint `e377d646a8ed59154b57d1770660e383bfcbd2f6` retires the source
+PRE-VALIDATION mark and imports the audit into `YangMillsCore`.
+
+This is a negative dictionary result, not production of uniform physical
+`B0`/`delta0`, not window-15 attainment and not a terminal field.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

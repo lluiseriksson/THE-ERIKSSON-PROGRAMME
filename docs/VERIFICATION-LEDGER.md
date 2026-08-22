@@ -40088,3 +40088,50 @@ and decay rate still depend on `depth`.  It does not provide uniform
 `B0`/`delta0`, attain window 15, construct a terminal field or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 926 (2026-08-23, **generated/source coefficient identification no-go sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+The first fresh-Colab attempt at source checkpoint
+`bf1b535367279dbc5df8487a1a56e48dccf76eb6` stopped at the explicit
+nonnegativity of the generated numerator after `1361.275` seconds.  No audit
+ran.  The runner emitted evidence SHA-256
+`5AA5248D08F97C7855BC90BBC760607B0487A90D8FA484CBA5849A9B1706E0DA`
+and archive SHA-256
+`6154D8068FA2D1D1C26B43A396979151C8125EF902FAEB72BA38098641FC01EE`.
+The repair names the existing nonnegativity theorem; it changes no statement
+or constant.
+
+The second attempt at source checkpoint
+`d9787e343fb4efe8009aae091def3721e5d2656d` compiled through the adjacent
+and iterated depth estimates, then stopped after `1446.501` seconds because
+the terminal existential witness still exposed `0 + steps`.  No audit ran.
+Evidence SHA-256 is
+`AA838796630D3F110BC4955EFBD6DD19D264AD69ED10010149044D14A3DE2F79`;
+archive SHA-256 is
+`69DE92184F7E96E2A3529F2BA9E089B2271752C0523EDAF0012A3F3BC30CEB1B`.
+The repair performs that definitional transport and the following geometric
+normalization explicitly; again no theorem statement or constant changes.
+
+Runner revision `full-complex-a-depth-decay-nogo-v3` at instrumental
+checkpoint `d72089f11838c8a720c11a4b77054a73a520419f` then passed its complete
+queue in a fresh Colab Pro+ CPU/high-RAM checkout at exact source
+`29973b52ac742641246f60e5c8f69df86d8fde69`.  The focal completed 8,572
+jobs in `1469.914` seconds.  The audit completed in `7.241` seconds and all
+six declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The runner emitted literal
+`FINAL_STATUS=PASS`, evidence SHA-256
+`AABD4D3197D445AC839D739E5C2A5FCBB2635AA0EC277A4DB4E81C5196169848`
+and archive SHA-256
+`6278AA84080F62A7DFD241F337814400529A32BA4A9510AE325245B75CAFF3AF`.
+
+Seal checkpoint `e377d646a8ed59154b57d1770660e383bfcbd2f6` retires the source
+PRE-VALIDATION mark and imports the audit into `YangMillsCore`.  The no-go
+proves that the canonical Poincare-generated full-complex coefficient loses
+at least a factor two per depth and eventually lies below the positive CMP85
+floor of the literal source flow.  It blocks the silent generated/source
+coefficient identification but does not invalidate the per-depth physical
+CMP99 (3.42) assembler, which already uses the literal source precision.
+It does not produce uniform physical `B0`/`delta0`, attain window 15,
+discharge a terminal field or instantiate `TermSource`.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
