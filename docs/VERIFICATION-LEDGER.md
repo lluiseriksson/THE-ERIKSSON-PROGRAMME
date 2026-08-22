@@ -39561,6 +39561,6 @@ and
 Instrumental checkpoint `fa2618d5db65ec45e317d9dec8016077f5fbd352`
 provides runner revision `right-adjoint-owner-prerequisites-v1`, Git-blob
 SHA-256
-`DFA5097E543056C11009EB1048C970107D6C3F8C`, with exact transport and a
+`088422E494DE0944EFC4D7F3A96CEFF460BD0C22AA915303649EB8060CEB210F`, with exact transport and a
 stop-on-first-error queue over the two focal/audit pairs.  This preparation is
 instrumental only and does not change their NOT CHECKED status.

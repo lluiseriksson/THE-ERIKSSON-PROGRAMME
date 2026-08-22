@@ -13711,6 +13711,6 @@ and
 Instrumental checkpoint `fa2618d5db65ec45e317d9dec8016077f5fbd352`
 contains runner revision `right-adjoint-owner-prerequisites-v1`, Git-blob
 SHA-256
-`DFA5097E543056C11009EB1048C970107D6C3F8C`.  It pins the source checkpoint
+`088422E494DE0944EFC4D7F3A96CEFF460BD0C22AA915303649EB8060CEB210F`.  It pins the source checkpoint
 and all four blobs, then runs the two focal/audit pairs stop-on-first-error in
 Colab Pro+.
