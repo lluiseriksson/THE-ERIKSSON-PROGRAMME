@@ -10,10 +10,7 @@ import YangMills.RG.FinitePiLpBlockLocalizedSupOwnerKernelComposition
 import YangMills.RG.BalabanCMP99SourcePi4Collar
 
 /-!
-# PRE-VALIDATION: physical right-adjoint member of CMP99 (3.42)
-
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the Lean compiler.
+# Physical right-adjoint member of CMP99 (3.42)
 
 The input derivative is expanded through the literal regional backward
 divergence.  It is not inferred from the left-derivative estimate by abstract
