@@ -293,7 +293,7 @@ theorem cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound
         calc
           ‖extPhi bond.1 -
               (matrixSUNAdjointModel Nc).adCLM
-                (background (ConcreteEdge.mk bond.1 bond.2 true))
+                (regionalBackground (ConcreteEdge.mk bond.1 bond.2 true))
                 (extPhi (bond.1.shift bond.2))‖ ≤
             ‖extPhi bond.1‖ +
               ‖(matrixSUNAdjointModel Nc).adCLM
