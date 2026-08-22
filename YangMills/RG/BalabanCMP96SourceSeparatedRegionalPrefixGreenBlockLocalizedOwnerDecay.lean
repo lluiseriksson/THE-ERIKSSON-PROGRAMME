@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixRescaledOwnerDecay
 
 /-!
-# PRE-VALIDATION: physical P8 Green block-localized owner decay
-
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the Lean compiler.
+# Physical P8 Green block-localized owner decay
 
 The sealed rescaled-owner theorem accepts a chosen source site representing
 the requested owner.  The source-facing CMP99 (3.42) predicate quantifies
