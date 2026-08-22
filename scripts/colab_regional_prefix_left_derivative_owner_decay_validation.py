@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-left-derivative-owner-decay-v2"
+runner.RUNNER_REV = "regional-prefix-left-derivative-owner-decay-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-left-derivative-owner-decay")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixLeftDerivativeOwnerDecay.lean":
-        "c3b10680f3ad55e0ca6f0301642dbe7cb5c8726a",
+        "c97ceee3da508411bf08342207196179ff7ece6ae6c7643887c7a4772feeff6e",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixLeftDerivativeOwnerDecayAudit.lean":
         "2de7ca9a542cda1eba29560edf39a5610e100f1ba6d6897edefa4ceb8081f116",
 }
