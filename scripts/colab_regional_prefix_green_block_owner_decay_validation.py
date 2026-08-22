@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "c3d8d338e3bea4f378cca59f5767c616c316feba"
+SOURCE_SHA = "9fb016de521a90ddec1fd495a68fa512420713d4"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "regional-prefix-green-block-owner-decay-v2"
+runner.RUNNER_REV = "regional-prefix-green-block-owner-decay-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-regional-prefix-green-block-owner-decay")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixGreenBlockLocalizedOwnerDecay.lean":
-        "7ac800973ad7bbe3b6b2eeb979b082c7d91141b38a7123818e54d2c732882f09",
+        "2bef03a57038913cb05e1782c82ec19569e55d51504b21dd90569fcd18f631e7",
     "YangMills/RG/BalabanCMP96SourceSeparatedRegionalPrefixGreenBlockLocalizedOwnerDecayAudit.lean":
         "8c45b8009781c28336dc97e107daa7fa36f1bea5718eb7315ac6375e643772d1",
 }
