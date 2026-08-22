@@ -1,5 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 import YangMills.RG.BalabanCMP99Eq342SourceLocalizedGreenCertificate
+import YangMills.RG.BalabanCMP99Eq389BlockShiftGeometry
+import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
 
 /-!
 # PRE-VALIDATION: regional covariant-adjoint stencil and owner support
@@ -151,7 +153,10 @@ theorem cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply_eq_zero_of_owner_far
       cmp99Eq342SourceLocalizedBondOwner L K Q depth (x.1, i) ≠ owner := by
     intro h
     apply hfar
-    rw [hforwardOwner, h, finBoxDist_self]
+    have hactive :
+        cmp99Eq342SourceLocalizedActiveOwner L K Q depth x = owner :=
+      hforwardOwner.symm.trans h
+    rw [hactive, finBoxDist_self]
     omega
   have hbackNe :
       cmp99Eq342SourceLocalizedBondOwner L K Q depth
