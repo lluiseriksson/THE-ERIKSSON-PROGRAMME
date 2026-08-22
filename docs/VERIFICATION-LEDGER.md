@@ -37396,6 +37396,23 @@ regional `B0`, attain window 15, discharge a terminal field or inhabit
 NOT CHECKED.  No Lean or Lake ran on Windows.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
 
+## Addendum 923 (2026-08-22, **C6c.9 per-depth CMP99 (3.42) assembler prepared; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `302b4df88a05a63e339a5d16eea2341c849852f9`
+assembles the four sealed physical value, left-derivative, right-adjoint and
+Laplacian owner bounds into one `CMP99Eq342SourceLocalizedGreenCertificate`
+at a fixed `depth`.  Its source/audit Git-blob SHA-256 values are
+`2EFAD6D21BB4A4EB514F53F2B35A1C08DA31B607ACDAE6B3ADFBE624E56774C`
+and
+`21FB8F9CCA42F15A715BB94917C1F500375BE032F6C46ACAE72ED5C75301C573`.
+Instrumental checkpoint `d6f28be579d7dade73fc9a292c68aa163ad8d7a9`
+provides runner revision `regional-prefix-eq342-certificate-v1`, Git-blob
+SHA-256
+`F93AA7F6FDB803A584E7BB15BEB3A0E3BDF71F7ABA8D9C5E05A0781B9C32A9CD`.
+The pair remains PRE-VALIDATION and NOT CHECKED.  Its amplitude and rate still
+depend on `depth`; it is not the uniform `B0`/`delta0` producer and does not
+attain window 15.  Counters remain exactly `20/41`, `TermSource = 0`.
+
 Diagnostic runner checkpoint `7668978b71d900e2b9f85fefda30e39868dfb497`
 has Git-blob SHA-256
 `30bc97fc31ca432ff7bd94ad55b097378b59eea3eb776db3981d8c2def012f42`;

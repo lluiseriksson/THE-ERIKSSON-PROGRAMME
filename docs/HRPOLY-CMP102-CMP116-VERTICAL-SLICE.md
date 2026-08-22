@@ -5115,6 +5115,17 @@ shift or regional-Green transport is claimed here. This is infrastructure
 below window 15: counters remain `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
 
+### Step 8b.24/C6c.9: per-depth physical CMP99 (3.42) assembler (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+Checkpoint `302b4df88a05a63e339a5d16eea2341c849852f9` assembles the four
+sealed per-depth physical components into one literal
+`CMP99Eq342SourceLocalizedGreenCertificate`.  It uses the terminal spacing
+`L^(depth+1) * spacing` and one common amplitude, but both its amplitude and
+rate still depend on `depth`; it is not the source-uniform `B0`/`delta0`
+certificate.  Runner checkpoint `d6f28be579d7dade73fc9a292c68aa163ad8d7a9`
+prepares revision `regional-prefix-eq342-certificate-v1`.  The pair remains
+PRE-VALIDATION and NOT CHECKED; no counter moves.
+
 ### Step 7.5am central-alias stabilization (SEALED; real gap and strip open)
 
 Exact source checkpoint `d44a4877468fb7f3da595d146ad9529ff77c9d1f`
