@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFullComplexADepthDecayNoGo
+
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexSpacing_succ_scale
+#print axioms YangMills.RG.cmp99SourcePoincareEnergyCoeff_canonical_succ
+#print axioms YangMills.RG.cmp99SourceGeneratedCanonicalFullComplexA_succ_le_half
