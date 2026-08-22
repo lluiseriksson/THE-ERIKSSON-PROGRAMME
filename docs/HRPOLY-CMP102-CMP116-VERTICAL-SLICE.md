@@ -11447,6 +11447,7 @@ it gates exactly these two blobs and runs only the focal plus the
 three-declaration audit.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
 
+
 Diagnostic v2 reached the revised focal in one fresh CPU/high-RAM Colab clone
 and stopped at its first real error after `1595.697 s`.  The canonical
 `ZMod.castHom` had already transported the equality to `ZMod N'`; line `58:2`
@@ -13561,3 +13562,63 @@ Uniform physical `B0`/`delta0`, the left-derivative half of C6c.4, CMP96
 (2.44)--(2.67), window-15 attainment, terminal fields and a `TermSource`
 inhabitant remain open.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.4d4: physical P8 left-derivative owner decay (SEALED in fresh Colab Pro+; 20/41 unchanged)
+
+`cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound`
+now supplies the literal terminal-spacing left-derivative estimate at a
+fixed depth.  With `ell = L^(depth+1)`, it uses
+`ownerRate = ell * rate`,
+`ownerAmplitude = (2 / c) * exp (3 * rate * (ell - 1))`, and final
+amplitude
+`ownerAmplitude * ((1 + exp ownerRate) / spacing) * ell`.
+The proof handles an arbitrary source owner.  When the requested owner fibre
+is empty it derives `f = 0` and evaluates the full operator at zero; it does
+not import a hidden represented-owner premise.
+
+The first clean v3 attempt used source checkpoint
+`957b45f7944ed90bc71aaf63d922e97efee32cf6` and failed after the pinned
+prerequisites: the focal ran `5360.798 s`, exit `1`, on a shift-lemma parse,
+a missing `Nonempty` bridge and their cascades.  Its downloaded archive has
+SHA-256
+`D88B930125E94C1817238AD487519A826F67A08E1B52C123AECBF1C759CEC7B2`.
+The clean v4 attempt used source checkpoint
+`a880b6e4d80082cd5df9d2bcc679936f28351bd0`; its focal ran `3468.152 s`,
+exit `1`, leaving only the zero-fibre evaluation of
+`singleFinitePiLp source 0`.  Its downloaded archive has SHA-256
+`0848D5891234CB236F45B9C746B23CD5F923912844B638D8D84105C8FA747FD2`.
+Both are retained as exact failed evidence, not as partial mathematical
+certificates.
+
+Final source checkpoint `af3aa5394162c07bb85f9d6806aa00252d9e5f6d`
+adds the explicit zero evaluation and changes no theorem statement,
+hypothesis, constant or physical operator.  Its source and audit Git-blob
+SHA-256 values are
+`6C13FCDA3FE860B3E79D79BCBFE70DD1BC2850C5C0F93273BD21CB4993FD2636`
+and
+`2DE7CA9A542CDA1EBA29560EDF39A5610E100F1BA6D6897EDEFA4CEB8081F116`.
+Instrumental checkpoint `ee2763a05c285816937502ac47259a86d7592bdc`
+fixes runner revision `regional-prefix-left-derivative-owner-decay-v5`,
+whose SHA-256 is
+`389D1CBE1A4D4E9DC3967DB803C77F90FD8060852F68CE410739BA476F5931FA`.
+
+The terminal run used a fresh Colab Pro+ CPU high-RAM runtime, Lean
+`4.29.0-rc6`, Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and no restored
+`.lake`.  The focal compiled `8690` jobs in `5200.581 s`, exit `0`; the
+two-declaration audit completed in `15.508 s`, exit `0`.  Both declarations
+printed exactly `{propext, Classical.choice, Quot.sound}`.  Runner-reported
+canonical evidence SHA-256 is
+`106ED260FA2EF09DB88E497E1B0197F145227F6B40C26F6C1F8E560BE22C96F2`;
+the downloaded archive was independently verified locally at SHA-256
+`1696F09D78AF508AC9A6C1DBBFDCBD12EB7A8C7D48320644FCAD1FECC3F350AC`.
+The transcript records literal `FINAL_STATUS=PASS` and launcher exit `0`;
+the runtime was then unassigned and verified disconnected.  A preceding hot
+diagnostic at the same source checkpoint was used only to repair elaboration
+and is not the seal.
+
+This is a per-depth left-derivative producer only.  It does not produce a
+depth-uniform `B0`/`delta0`, the right-adjoint derivative, the Laplacian,
+the full CMP99 (3.42) certificate, window-15 attainment, any terminal field,
+or a `TermSource` inhabitant.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

@@ -36385,6 +36385,7 @@ that durable cold evidence.  No counter moves: `20/41`, `TermSource = 0`, and
 window 15 remains compatible but unattained.
 
 
+
 ## Addendum 829 (2026-08-16, **Step 8b.12 repro-only instrumentation failure; source unchanged**)
 
 One fresh Colab Pro+ CPU/high-RAM runtime under visible account
@@ -39419,3 +39420,56 @@ owner decay.  It does not construct a depth-uniform `B0`/`delta0`, the
 left-derivative action, CMP96 (2.44)--(2.67), window-15 attainment, a terminal
 field or a `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 901 (2026-08-22, **C6c.4d4 physical P8 left-derivative owner decay SEALED in fresh Colab Pro+; 20/41 unchanged**)
+
+The fixed-depth theorem
+`cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound`
+is sealed.  It transports the literal left-derivative P8 estimate to terminal
+spacing with `ownerRate = ell * rate` and final amplitude
+`(2 / c) * exp (3 * rate * (ell - 1)) *
+((1 + exp (ell * rate)) / spacing) * ell`.  The empty-owner-fibre branch
+derives `f = 0` and uses an explicit zero evaluation of the full operator;
+no represented-owner assumption is hidden in the contract.
+
+The v3 source checkpoint
+`957b45f7944ed90bc71aaf63d922e97efee32cf6` failed after `5360.798 s`
+(focal exit `1`); downloaded archive SHA-256 is
+`D88B930125E94C1817238AD487519A826F67A08E1B52C123AECBF1C759CEC7B2`.
+The v4 source checkpoint
+`a880b6e4d80082cd5df9d2bcc679936f28351bd0` failed after `3468.152 s`
+(focal exit `1`) on the last zero-fibre evaluation; downloaded archive
+SHA-256 is
+`0848D5891234CB236F45B9C746B23CD5F923912844B638D8D84105C8FA747FD2`.
+They remain failed evidence and carry no partial PASS.
+
+Final source checkpoint `af3aa5394162c07bb85f9d6806aa00252d9e5f6d`
+has source/audit Git-blob SHA-256 values
+`6C13FCDA3FE860B3E79D79BCBFE70DD1BC2850C5C0F93273BD21CB4993FD2636`
+and
+`2DE7CA9A542CDA1EBA29560EDF39A5610E100F1BA6D6897EDEFA4CEB8081F116`.
+Instrumental checkpoint `ee2763a05c285816937502ac47259a86d7592bdc`
+contains runner revision `regional-prefix-left-derivative-owner-decay-v5`,
+SHA-256
+`389D1CBE1A4D4E9DC3967DB803C77F90FD8060852F68CE410739BA476F5931FA`.
+
+The cold terminal run used fresh Colab Pro+ CPU high RAM, Lean
+`4.29.0-rc6`, exact Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and no restored
+`.lake`.  The focal compiled `8690` jobs in `5200.581 s`, exit `0`; the
+two-declaration audit ran `15.508 s`, exit `0`; both printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Runner-reported canonical
+evidence SHA-256 is
+`106ED260FA2EF09DB88E497E1B0197F145227F6B40C26F6C1F8E560BE22C96F2`.
+The evidence archive was downloaded and independently rehashed locally as
+`1696F09D78AF508AC9A6C1DBBFDCBD12EB7A8C7D48320644FCAD1FECC3F350AC`.
+The transcript records `FINAL_STATUS=PASS`, launcher exit `0`, and the
+runtime was explicitly unassigned and verified disconnected.  The preceding
+hot diagnostic is not cited as sealing evidence.
+
+The seal removes PRE-VALIDATION only from the certified source/audit and
+adds that audit to `YangMillsCore`.  It is per-depth only: uniform physical
+`B0`/`delta0`, the right-adjoint derivative, Laplacian, full CMP99 (3.42),
+window-15 attainment, terminal fields and a `TermSource` inhabitant remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

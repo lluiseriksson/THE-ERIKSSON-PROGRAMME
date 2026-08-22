@@ -8,10 +8,7 @@ import YangMills.RG.BalabanCMP99Eq389BlockShiftGeometry
 import YangMills.RG.BalabanCMP99Eq389ThreeSpeciesPhysicalBound
 
 /-!
-# PRE-VALIDATION: physical P8 left-derivative owner decay
-
-This source is present, its `.olean` has not yet been materialized, and its
-result has not yet been verified by the Lean compiler.
+# Physical P8 left-derivative owner decay
 
 CMP99 (3.42) gives the left-derivative Green the scale `ell`, rather than the
 `ell^2` of the Green itself.  Here `ell = L^(depth+1)`.  The reduction is
