@@ -13760,7 +13760,24 @@ constant changes.  The corrected stencil Git-blob SHA-256 is
 Runner checkpoint `d62c011a0751f66bb9bc66a7683c60084051ce84`
 contains revision `right-adjoint-owner-prerequisites-v2`, Git-blob SHA-256
 `6B2BDB45EBA962C16F5516C8FB88C5AEB0DFBAFC9DF5C8F01B875828396C902F`.
-The corrected queue remains NOT CHECKED.
+The v2 queue stopped at the same focal after `1851.031` seconds.  It exposed
+two further elaboration-only defects: the sum over `Fin d` had not rewritten
+`Finset.univ.card` to `d`, and the support proof substituted the backward
+owner before deriving the ordered radius-one distance.  No downstream target
+ran.  The runner recorded evidence SHA-256
+`5C0FA71553BC1EC9A4CB25A69293FEC69DA2CB90EC0ED0BA47C44226AA1753A2`
+and archive SHA-256
+`6E8F23AD5906384B080974AA8DFD615D23D20E27AC588C44A541148E16865380`.
+
+Corrected PRE-VALIDATION checkpoint
+`5dc7c6f70e4413973bb3e0a7a26b8134fc767df6` performs both transports
+explicitly without changing any statement, support radius or constant.  Its
+stencil Git-blob SHA-256 is
+`1E851C4F393AD6F58045D8353ABA54D0BB2892D27FA26D5DBC9CD16D5C498B2B`.
+Runner checkpoint `208e23b08451056bed539cf07d992d6a2caf072e`
+contains revision `right-adjoint-owner-prerequisites-v3`, Git-blob SHA-256
+`17F850E833EB8951B077E55824501959EFFB5CCD9295FBBFD7CC3011C0A3D28F`.
+The v3 queue remains NOT CHECKED.
 
 ### Step 8b.24/C6c.9a-b: CMP99 common scalar prefix (COLAB-VERIFIED; 20/41 unchanged)
 

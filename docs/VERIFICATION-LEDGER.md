@@ -39713,3 +39713,31 @@ SHA-256
 The corrected queue remains PRE-VALIDATION and NOT CHECKED pending a fresh
 Colab run.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 910 (2026-08-22, **C6c.4d7 prerequisites second Colab FAIL; minimal retry v3 prepared; 20/41 unchanged**)
+
+The corrected v2 Colab Pro+ queue again stopped at
+`BalabanCMP99ActiveRegionSourceCovariantAdjointStencil`; the focal exited
+`1` after `1851.031` seconds and no audit or owner-kernel target ran.  The
+compiler isolated two remaining elaboration defects: the finite-direction
+sum still exposed `Finset.univ.card` rather than `d`, and the radius-one
+support proof substituted the backward owner before transporting the exact
+ordered distance.  Runner revision `right-adjoint-owner-prerequisites-v2`
+emitted `FINAL_STATUS=FAIL`, evidence SHA-256
+`5C0FA71553BC1EC9A4CB25A69293FEC69DA2CB90EC0ED0BA47C44226AA1753A2`
+and archive SHA-256
+`6E8F23AD5906384B080974AA8DFD615D23D20E27AC588C44A541148E16865380`.
+
+Checkpoint `5dc7c6f70e4413973bb3e0a7a26b8134fc767df6` makes both transports
+explicit: it rewrites the finite-universe cardinality before scalar
+normalization, and first derives the ordered current-owner/backward-owner
+distance before replacing the latter by the supporting owner.  No theorem
+statement, hypothesis, support radius or constant changes.  The corrected
+stencil Git-blob SHA-256 is
+`1E851C4F393AD6F58045D8353ABA54D0BB2892D27FA26D5DBC9CD16D5C498B2B`.
+Instrumental checkpoint `208e23b08451056bed539cf07d992d6a2caf072e`
+provides runner revision `right-adjoint-owner-prerequisites-v3`, Git-blob
+SHA-256
+`17F850E833EB8951B077E55824501959EFFB5CCD9295FBBFD7CC3011C0A3D28F`.
+The v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
