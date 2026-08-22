@@ -13623,10 +13623,10 @@ the full CMP99 (3.42) certificate, window-15 attainment, any terminal field,
 or a `TermSource` inhabitant.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-### Step 8b.24/C6c.4d5: physical P8 Green block-localized owner decay (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4d5: physical P8 Green block-localized owner decay (SEALED in fresh Colab Pro+; 20/41 unchanged)
 
 `BalabanCMP96SourceSeparatedRegionalPrefixGreenBlockLocalizedOwnerDecay`
-is present with an explicit PRE-VALIDATION header.  It upgrades the sealed
+is compiler-verified.  It upgrades the sealed
 one-represented-owner Green estimate to the literal source-facing
 `FinitePiLpTypedBlockLocalizedSupBound` required by the value field of CMP99
 (3.42).  The arbitrary owner is not assumed represented: an inhabited fibre
@@ -13634,8 +13634,7 @@ constructs its source internally, while an empty fibre forces the supported
 input to be zero.  The displayed amplitude is exactly
 `ownerAmplitude * ell^2` at `ownerRate = ell * rate`.
 
-The source and one-declaration audit are not compiler-verified.  The brick is
-per-depth only and does not supply uniform `B0`/`delta0`, the other three
+The brick is per-depth only and does not supply uniform `B0`/`delta0`, the other three
 CMP99 (3.42) actions, window-15 attainment, a terminal field, or a
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
@@ -13938,7 +13937,7 @@ This remains a per-depth component, not a uniform CMP99 (3.42) certificate.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
-### Step 8b.24/C6c.4d5 second Colab result and warning-clean v3 (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+### Step 8b.24/C6c.4d5 second Colab result and warning-clean v3 seal (COLAB-VERIFIED; 20/41 unchanged)
 
 The v2 Green block-localized queue compiled its focal in 8,665 jobs and
 `5465.687` seconds; the audit completed in `16.896` seconds and printed only
@@ -13958,6 +13957,38 @@ Instrumental checkpoint `09abadab38d88b5dacee044e1beab0e539da7e58`
 provides runner revision `regional-prefix-green-block-owner-decay-v3`,
 Git-blob SHA-256
 `BFA75CC45CA4240652530E0A318C81878591C164A10E2452BFB1706D9B277643`.
-The warning-clean v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters
-remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
-unattained.
+The warning-clean v3 queue passed in fresh Colab Pro+: the focal completed
+8,665 jobs in `5547.571` seconds and its audit in `16.676` seconds.  The
+audited declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`, and the new source emitted no
+local warning.  Evidence SHA-256 is
+`CD37C20017E5DEC98B2B8FC648EA64B2F76F2F24EEFF76DEC5D0C589B72246E9`;
+archive SHA-256 is
+`48B0D5DAE436D93B1401A9F8FAD70D3E2A5639DD996222D3F6262837BC6A58CD`.
+Seal checkpoint `42148f4cc59b36e5536f3c225af5237ed0ead936` retires exactly the two
+Green PRE-VALIDATION marks and imports its audit into `YangMillsCore`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
+
+### Step 8b.24/C6c.4d7c: physical P8 right-adjoint owner decay (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+`BalabanCMP96SourceSeparatedRegionalPrefixRightAdjointOwnerDecay` now
+constructs the direct-orientation physical action.  It expands the literal
+regional backward divergence, proves its owner support lies in the
+radius-one ball, applies the sealed Green bound owner by owner, and pays the
+visible `3^4 * 8 = 648` coefficient plus one `exp ownerRate`.  It does not
+infer the result from abstract adjunction and introduces no fine-fibre
+cardinality.
+
+PRE-VALIDATION checkpoint `03bfee1e140a81fba8a1d5df112decaacfdae69a`
+fixes source/audit Git-blob SHA-256 values
+`E59B9ED4FE341510C878065E83B777C050845BA87890536F8958E02973EAC17F`
+and
+`D953A4D79BEE36A820FB04AC611B8F779A1E98CC1BABA9564DC64DCB4F70DB14`.
+Instrumental checkpoint `324eff90c2d8c1a9e56f70100063baee5e197edc`
+provides runner revision `regional-prefix-right-adjoint-owner-decay-v1`,
+Git-blob SHA-256
+`10CAE3E7F88E63B2B49252EABBD92C9370DD07ABCEE6B23C29B9161ED1937FA3`.
+The physical source/audit pair remains NOT CHECKED.  It is a per-depth
+component, not a uniform CMP99 (3.42) certificate.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

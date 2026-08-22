@@ -39889,3 +39889,43 @@ Git-blob SHA-256
 `BFA75CC45CA4240652530E0A318C81878591C164A10E2452BFB1706D9B277643`.
 The v3 queue remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 917 (2026-08-22, **C6c.4d5 Green owner decay sealed warning-clean in fresh Colab Pro+; 20/41 unchanged**)
+
+Runner revision `regional-prefix-green-block-owner-decay-v3` passed its full
+queue in fresh Colab Pro+.  The focal completed 8,665 jobs in `5547.571`
+seconds; its audit completed in `16.676` seconds and reported exactly
+`[propext, Classical.choice, Quot.sound]`.  The checkpoint-local warning
+reported by v2 is absent.  The runner emitted `FINAL_STATUS=PASS`, evidence
+SHA-256
+`CD37C20017E5DEC98B2B8FC648EA64B2F76F2F24EEFF76DEC5D0C589B72246E9`
+and archive SHA-256
+`48B0D5DAE436D93B1401A9F8FAD70D3E2A5639DD996222D3F6262837BC6A58CD`.
+
+Seal checkpoint `42148f4cc59b36e5536f3c225af5237ed0ead936` retires exactly the two
+Green PRE-VALIDATION marks and imports its audit into `YangMillsCore`.
+This remains a per-depth physical component; it does not produce uniform
+`B0`/`delta0`, the complete CMP99 (3.42) certificate, window-15 attainment,
+a terminal field or a `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 918 (2026-08-22, **C6c.4d7c physical right-adjoint producer prepared; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `03bfee1e140a81fba8a1d5df112decaacfdae69a`
+materializes the direct-orientation physical right-adjoint action after all
+of its premises have been compiler-verified.  The construction uses the
+literal backward-divergence stencil, exact radius-one owner support, the
+sealed Green owner bound, the owner-ball cardinality `3^4 = 81`, and the
+visible coefficient `81 * 8 = 648`.  It does not derive the field from an
+abstract adjunction theorem and does not introduce a fine-fibre cardinality.
+
+The source and audit Git-blob SHA-256 values are
+`E59B9ED4FE341510C878065E83B777C050845BA87890536F8958E02973EAC17F`
+and
+`D953A4D79BEE36A820FB04AC611B8F779A1E98CC1BABA9564DC64DCB4F70DB14`.
+Instrumental checkpoint `324eff90c2d8c1a9e56f70100063baee5e197edc`
+provides runner revision `regional-prefix-right-adjoint-owner-decay-v1`,
+Git-blob SHA-256
+`10CAE3E7F88E63B2B49252EABBD92C9370DD07ABCEE6B23C29B9161ED1937FA3`.
+The pair remains PRE-VALIDATION and NOT CHECKED.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
