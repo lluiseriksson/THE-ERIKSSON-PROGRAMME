@@ -335,7 +335,13 @@ theorem cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound
       intro hsource
       exact howner ⟨source, hsource⟩
     subst f
-    rw [map_zero, norm_zero]
+    have hzero :
+        (((cmp99ActiveRegionSourceCovariantD0CLM Omega
+            (matrixSUNAdjointModel Nc) regionalBackground terminalSpacing).comp
+          Cregional) (0 : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))) bond = 0 := by
+      rw [map_zero]
+      rfl
+    rw [hzero, norm_zero]
     exact mul_nonneg
       (mul_nonneg
         (mul_nonneg hleftAmplitude hell.le)
