@@ -39,7 +39,8 @@ theorem finitePiLpTypedBlockLocalizedSupBound_mono
   have hsource := hC.2.2 owner f hf target
   let distance : ℝ := dist (targetOwner target) owner
   have hdistance : 0 ≤ distance := by
-    exact_mod_cast (Nat.zero_le (dist (targetOwner target) owner))
+    dsimp [distance]
+    positivity
   have hexp :
       Real.exp (-(decay * distance)) ≤
         Real.exp (-(rate * distance)) := by
