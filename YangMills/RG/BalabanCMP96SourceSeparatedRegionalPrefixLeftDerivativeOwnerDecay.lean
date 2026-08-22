@@ -91,7 +91,7 @@ theorem exp_neg_sourceLocalizationOwner_shift_le_exp_mul
       x i
   have hstepBack := finBoxDist_blockSite_shiftBack_le_one
     (m := L ^ (depth + 1)) (n := 2 * (K * Q))
-    (cmp99Eq389SourceLocalizationSiteEquiv L K Q depth x).shift i i
+    ((cmp99Eq389SourceLocalizationSiteEquiv L K Q depth x).shift i) i
   have hstep :
       finBoxDist
           (cmp99Eq389SourceLocalizationOwner L K Q depth x)
@@ -147,6 +147,8 @@ theorem cmp96SourceSeparatedRegionalPrefixLeftDerivative_blockLocalizedSupBound
     (cell : FinBox 4 Q)
     (root : ActiveGaugeRegion.Site
       (cmp96SourceSeparatedRegionalCell P L K Q depth cell)) :
+    letI : Nonempty (ActiveGaugeRegion.Site
+      (cmp96SourceSeparatedRegionalCell P L K Q depth cell)) := ⟨root⟩
     let ell := L ^ (depth + 1)
     let A := cmp89SourceSeparatedPrefixPrecisionUpperBound
         (L := L) (K := K) (Q := Q) (Nc := Nc) hL depth
