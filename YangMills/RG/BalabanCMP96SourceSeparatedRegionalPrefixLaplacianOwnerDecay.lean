@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixLeftDerivativeOwnerDecay
+import YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkSourceLocalizedBound
 import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 
 /-!
@@ -255,10 +256,9 @@ theorem cmp96SourceSeparatedRegionalPrefixLaplacian_blockLocalizedSupBound
           (finBoxDist
             (cmp99Eq342SourceLocalizedActiveOwner L K Q depth target)
             owner : ℝ))) * finitePiLpSupNorm f := by
-      simp only [Finset.sum_const, Fintype.card_fin]
+      simp only [Finset.sum_const]
       dsimp [terminalSpacing, laplacianAmplitude]
-      field_simp [ne_of_gt hspacing, ne_of_gt hell]
-      ring
+      field_simp [ne_of_gt hspacing, ne_of_gt hell] <;> ring
 
 end
 
