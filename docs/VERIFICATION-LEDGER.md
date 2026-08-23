@@ -36384,8 +36384,6 @@ the same raw source checkpoint.  Both PRE-VALIDATION headers remain pending
 that durable cold evidence.  No counter moves: `20/41`, `TermSource = 0`, and
 window 15 remains compatible but unattained.
 
-
-
 ## Addendum 829 (2026-08-16, **Step 8b.12 repro-only instrumentation failure; source unchanged**)
 
 One fresh Colab Pro+ CPU/high-RAM runtime under visible account
@@ -40535,3 +40533,29 @@ not the point-source zero-residue composition, an owner or regional
 `B0`/`delta0` bound, window-15 attainment, rows 23--24, or a `TermSource`
 instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 939 (2026-08-23, **source-flow point-source zero-residue composition sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `5099e6f02d209f4503e2db04a4793048b4a5dcb5`
+introduced the C3 source/audit pair, with Git-blob SHA-256 values
+`16545F173048FDBABA1081FB300CA152A9B524C7B87D8F1DA768793DC1A35004` and
+`B4A8A92348D693AB17514DDD8BB8D3406E60F440D139EBE1DD437CAB4853BCE9`.
+It composes the exact C1b point-source endpoint with the exact C2
+zero-residue aliasing theorem for the literal source-flow coefficient;
+positivity is constructed internally from `ha`.
+
+Runner checkpoint `224684a63e149c6915fa519ba3be6e3a4b464ac5`, revision
+`source-flow-point-source-zero-residue-v1`, validated the exact source in a
+fresh Colab Pro+ CPU/high-RAM checkout.  The focal completed 8,762 jobs in
+`2507.291` seconds and the audit in `16.847` seconds.  The declaration printed
+exactly `[propext, Classical.choice, Quot.sound]`; the runner emitted literal
+`FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`20958A8BE610544F453C5463DF2491A42D87EA68588C10A318755906FB164271`
+and archive SHA-256 is
+`7F0DA1D4E30468B6D3061ABA9087EB7BDE520159DA0249863E7141E4882D6A88`.
+
+Seal checkpoint `f023ac85997016eede1769f72534feeea0f33ff0` retires exactly
+two PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is
+C3 only, not an owner or regional `B0`/`delta0` bound, window-15 attainment,
+rows 23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

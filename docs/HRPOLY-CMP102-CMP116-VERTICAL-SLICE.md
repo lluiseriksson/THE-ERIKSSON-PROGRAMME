@@ -14539,3 +14539,32 @@ C2 only, not the source-flow point-source zero-residue composition, owner
 bounds, regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a
 `TermSource` instance.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9p: source-flow point-source zero-residue composition (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPointSourceZeroResidue`
+composes the sealed C1b point-source endpoint identity with the sealed C2
+zero-residue aliasing identity.  The source coefficient is literally
+`cmp99SourceFlowFlatFullComplexA a L depth`, positivity is constructed from
+`ha : 0 < a`, and the equality is transported through the fixed readout.  No
+generated coefficient or free Green reconstruction is accepted.
+
+PRE-VALIDATION checkpoint `5099e6f02d209f4503e2db04a4793048b4a5dcb5`
+fixed source/audit Git-blob SHA-256 values
+`16545F173048FDBABA1081FB300CA152A9B524C7B87D8F1DA768793DC1A35004` and
+`B4A8A92348D693AB17514DDD8BB8D3406E60F440D139EBE1DD437CAB4853BCE9`.
+Runner checkpoint `224684a63e149c6915fa519ba3be6e3a4b464ac5`, revision
+`source-flow-point-source-zero-residue-v1`, passed in a fresh Colab Pro+
+CPU/high-RAM checkout.  The focal completed 8,762 jobs in `2507.291` seconds
+and the audit in `16.847` seconds.  The declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.  Evidence
+SHA-256 is
+`20958A8BE610544F453C5463DF2491A42D87EA68588C10A318755906FB164271`
+and archive SHA-256 is
+`7F0DA1D4E30468B6D3061ABA9087EB7BDE520159DA0249863E7141E4882D6A88`.
+
+Seal checkpoint `f023ac85997016eede1769f72534feeea0f33ff0` retires exactly
+the two PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This
+seals C3 only, not an owner or regional `B0`/`delta0` bound, window-15
+attainment, rows 23--24, or a `TermSource` instance.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
