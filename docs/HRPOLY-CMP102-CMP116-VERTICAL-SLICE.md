@@ -14132,3 +14132,46 @@ Fourier/operator or physical-regional dictionary.  It therefore does not
 produce the physical `B0`/`delta0` certificate, attain window 15, discharge
 rows 23--24, or inhabit `TermSource`.  The live counters remain exactly
 `20/41` and zero.
+
+### Step 8b.24/C6c.9e: literal source-flow flat ambient inverse pair (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreen` specializes the
+source-separated CMP85/CMP89 prefix precision and Green to canonical fine
+spacing, flat background and zero source radius.  The final positive-prefix
+coefficient is proved equal to the literal source parameter
+`cmp99SourceMassParameter a L depth`.  The precision, its internally
+constructed Green and both inverse laws are therefore available without
+accepting an inverse family or identifying the source coefficient with the
+incompatible Poincare-generated full-complex coefficient.
+
+Runner v1 at instrumental checkpoint
+`c1b14448d103bc2a4babdb21fb9e130f938dbcd0` validated exact source
+`dd188139a03294d95e6c75bb7a9ef222e2e80d6e`: the focal completed 8,644 jobs
+in `2257.221` seconds and the audit in `27.762` seconds.  All five
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`.
+Evidence SHA-256 was
+`B1091E7E51DB007014646710A89354894F286C7DC4A20B7A8106D88E25382A8C`;
+archive SHA-256 was
+`9F776F3E592164D29040FE04857DC4E1186E624A2D866C281AECF98C72BA04B3`.
+That compiler-green checkpoint retained PRE-VALIDATION because the first
+coefficient lemma inherited an unused `[NeZero L]` section variable.
+
+Source checkpoint `65a2f090b211d612fda51ec2bea171bdce99f934` moves the instance
+declarations below that lemma and changes no theorem statement, constant or
+proof.  Runner revision `source-flow-flat-ambient-green-v2` at instrumental
+checkpoint `c7011317bb7b49887f775304c122d2e76b0a30bc` then passed the same
+queue in a fresh Colab Pro+ CPU/high-RAM checkout.  The warning-clean focal
+completed 8,644 jobs in `2444.805` seconds and the audit in `26.173` seconds;
+all five declarations again printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`E4D273F39038FA5E07756FF927614D3AF56472CE3B096E053502316553F34C99`;
+archive SHA-256 is
+`F8C39104DF16877682311A15A1DD3A63A8372E22C882AD53439D82ABDA073A0E`.
+
+Seal checkpoint `f77e8d985dace6120e952befd65e8d100b78de26` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is the
+literal source-flow ambient inverse pair, not yet its complexification or the
+Fourier/operator and regional dictionaries.  It does not produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24 or instantiate
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

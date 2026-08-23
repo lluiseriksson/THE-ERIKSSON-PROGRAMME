@@ -40191,3 +40191,41 @@ source flow.  It does not supply the Fourier/operator or regional dictionary,
 does not produce physical `B0`/`delta0`, attain window 15, discharge rows
 23--24, or instantiate `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 928 (2026-08-23, **literal source-flow flat ambient inverse pair sealed warning-clean in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `dd188139a03294d95e6c75bb7a9ef222e2e80d6e`
+introduced the source-separated flat ambient precision and internally
+constructed Green with the literal coefficient
+`cmp99SourceMassParameter a L depth`, together with both inverse laws.  Runner
+v1 at instrumental checkpoint
+`c1b14448d103bc2a4babdb21fb9e130f938dbcd0` passed 8,644 focal jobs in
+`2257.221` seconds and its five-declaration audit in `27.762` seconds.  Every
+declaration printed exactly `[propext, Classical.choice, Quot.sound]`.
+Evidence SHA-256 was
+`B1091E7E51DB007014646710A89354894F286C7DC4A20B7A8106D88E25382A8C`;
+archive SHA-256 was
+`9F776F3E592164D29040FE04857DC4E1186E624A2D866C281AECF98C72BA04B3`.
+Because the source emitted one new unused-section-variable warning, no
+PRE-VALIDATION mark was retired from that compiler-green checkpoint.
+
+Checkpoint `65a2f090b211d612fda51ec2bea171bdce99f934` removes only that
+unused instance scope.  Runner revision
+`source-flow-flat-ambient-green-v2` at instrumental checkpoint
+`c7011317bb7b49887f775304c122d2e76b0a30bc` passed the corrected exact source
+in a fresh Colab Pro+ CPU/high-RAM checkout.  The warning-clean focal completed
+8,644 jobs in `2444.805` seconds; the audit completed in `26.173` seconds and
+all five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The runner emitted literal
+`FINAL_STATUS=PASS`, evidence SHA-256
+`E4D273F39038FA5E07756FF927614D3AF56472CE3B096E053502316553F34C99`
+and archive SHA-256
+`F8C39104DF16877682311A15A1DD3A63A8372E22C882AD53439D82ABDA073A0E`.
+
+Seal checkpoint `f77e8d985dace6120e952befd65e8d100b78de26` retires exactly the source
+and audit PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+This seals the literal source-flow ambient inverse pair; complexification,
+the Fourier/operator dictionary, the regional `B0`/`delta0` producer and
+window-15 attainment remain open.  It does not discharge rows 23--24 or
+instantiate `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
