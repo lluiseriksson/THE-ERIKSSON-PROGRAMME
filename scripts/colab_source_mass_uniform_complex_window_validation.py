@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "a0727792b0ae8235e13d6f26a874858c63474a1c"
+SOURCE_SHA = "e6ca8f74583f58d0fbc9382181fedd7cd4d5a0ef"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-mass-uniform-complex-window-v1"
+runner.RUNNER_REV = "source-mass-uniform-complex-window-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-mass-uniform-complex-window")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP85SourceMassParameterUniformComplexWindow.lean":
-        "9e53c37555cb9b469355ba41470c8b6be359ff4fd6f0b12bc8b816d8330562d1",
+        "5eb7be7cc1b93cea8801425073bdb9641b56dd1396246f250c170ac8ae57a2b7",
     "YangMills/RG/BalabanCMP85SourceMassParameterUniformComplexWindowAudit.lean":
         "df269b65b8b94bcf29e27b722675c00886f4704c790316f22a4dd6f643e03247",
 }
