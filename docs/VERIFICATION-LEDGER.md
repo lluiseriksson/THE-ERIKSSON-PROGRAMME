@@ -40428,3 +40428,30 @@ PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seal
 does not prove a regional `B0`/`delta0` bound, attain window 15, discharge
 rows 23--24, or instantiate `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 935 (2026-08-23, **source-flow physical Green Fourier endpoint sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `d8309600d4898a5d8ec35bada6130acb1091fd56`
+introduced the source-flow S4 source/audit pair, with Git-blob SHA-256 values
+`6524F6B373D4EC8E8AEBA691086001693F49C2EFE894B8723329F420758653A2` and
+`5FFE59D4ADA76E17981476BA548A208AE9E05FECA02080A326530016E76E6D1B`.
+The four theorems specialize the sealed Fourier algebra to the literal source
+coefficient and derive the one-mode endpoint, selected/off-fibre DFT laws and
+pointwise finite synthesis without accepting an inverse or endpoint equality.
+
+Runner checkpoint `09ffe0c3cb74fdeb8b2001683d95db28fe50bade`, revision
+`source-flow-separated-green-fourier-endpoint-v1`, validated the exact source
+in a fresh Colab Pro+ CPU/high-RAM checkout.  The focal completed 8,680 jobs
+in `2478.307` seconds and the audit in `26.953` seconds.  All four
+declarations printed exactly `[propext, Classical.choice, Quot.sound]`; the
+runner emitted literal `FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`16F871B3FEE08B08EA2C17B3F2FDFC6F8FBA7FCECD9864BBBBF159BD6E965DD5` and
+archive SHA-256 is
+`819062F30D2525742FC93BCBC245069924636FEB968B9D3FF76B39E621A9BCAC`.
+
+Seal checkpoint `9f5b5721a922e72794e7511b1840c47ab457c05e` retires exactly two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seal
+does not prove the source-flow endpoint-integrand bridge, a regional
+`B0`/`delta0` bound, window-15 attainment, rows 23--24, or instantiate
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
