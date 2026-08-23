@@ -41,7 +41,7 @@ theorem cmp89Eq249CentralStabilizedDenominatorVariationBound_eq
 /-- Once the conservative stabilized window holds at one positive source
 coefficient, it keeps holding at every larger coefficient. -/
 theorem CMP89Eq249CentralStabilizedComplexWindow_mono
-    {a b rho : ℝ} (ha : 0 < a) (hab : a ≤ b)
+    {a b rho : ℝ} (ha : 0 < a) (hab : a ≤ b) (hrho : 0 ≤ rho)
     (hwindow : CMP89Eq249CentralStabilizedComplexWindow a rho) :
     CMP89Eq249CentralStabilizedComplexWindow b rho := by
   let fine := cmp89Eq249CentralFineSymbolVerticalBound rho
@@ -49,7 +49,10 @@ theorem CMP89Eq249CentralStabilizedComplexWindow_mono
   let central := ((2 / Real.pi) ^ (4 : ℕ)) ^ 2
   have hfine : 0 ≤ fine := by
     dsimp [fine, cmp89Eq249CentralFineSymbolVerticalBound]
-    positivity
+    have heps : 0 ≤ rho * Real.exp rho :=
+      mul_nonneg hrho (Real.exp_pos rho).le
+    exact mul_nonneg (mul_nonneg (by norm_num) heps)
+      (add_nonneg (mul_nonneg (by norm_num) Real.pi_pos.le) heps)
   have hwindow' : fine + a * slope < a * central := by
     simpa only [CMP89Eq249CentralStabilizedComplexWindow,
       cmp89Eq249CentralStabilizedDenominatorVariationBound_eq,
@@ -73,14 +76,14 @@ theorem CMP89Eq249CentralStabilizedComplexWindow_mono
     _ < a * central + (b - a) * slope :=
       add_lt_add_right hwindow' _
     _ ≤ a * central + (b - a) * central :=
-      add_le_add_left htransport _
+      by linarith
     _ = b * central := by ring
 
 /-- The explicit reciprocal majorant improves when the positive source
 coefficient grows.  Thus its value at the CMP85 floor is a common bound for
 the whole source flow. -/
 theorem cmp89Eq249CentralStabilizedComplexReciprocalBound_antitone
-    {a b rho : ℝ} (ha : 0 < a) (hab : a ≤ b)
+    {a b rho : ℝ} (ha : 0 < a) (hab : a ≤ b) (hrho : 0 ≤ rho)
     (hwindow : CMP89Eq249CentralStabilizedComplexWindow a rho) :
     cmp89Eq249CentralStabilizedComplexReciprocalBound b rho ≤
       cmp89Eq249CentralStabilizedComplexReciprocalBound a rho := by
@@ -91,7 +94,10 @@ theorem cmp89Eq249CentralStabilizedComplexReciprocalBound_antitone
   let marginB := b * central - (fine + b * slope)
   have hfine : 0 ≤ fine := by
     dsimp [fine, cmp89Eq249CentralFineSymbolVerticalBound]
-    positivity
+    have heps : 0 ≤ rho * Real.exp rho :=
+      mul_nonneg hrho (Real.exp_pos rho).le
+    exact mul_nonneg (mul_nonneg (by norm_num) heps)
+      (add_nonneg (mul_nonneg (by norm_num) Real.pi_pos.le) heps)
   have hwindow' : fine + a * slope < a * central := by
     simpa only [CMP89Eq249CentralStabilizedComplexWindow,
       cmp89Eq249CentralStabilizedDenominatorVariationBound_eq,
@@ -113,12 +119,11 @@ theorem cmp89Eq249CentralStabilizedComplexReciprocalBound_antitone
     dsimp [marginA, marginB]
     nlinarith
   have hmarginB : 0 < marginB := hmarginA.trans_le hmargins
-  rw [cmp89Eq249CentralStabilizedComplexReciprocalBound,
-    cmp89Eq249CentralStabilizedComplexReciprocalBound,
+  simpa only [cmp89Eq249CentralStabilizedComplexReciprocalBound,
     cmp89Eq249CentralStabilizedLowerConstant,
-    cmp89Eq249CentralStabilizedDenominatorVariationBound_eq]
-  change marginB⁻¹ ≤ marginA⁻¹
-  exact (inv_le_inv₀ hmarginB hmarginA).2 hmargins
+    cmp89Eq249CentralStabilizedDenominatorVariationBound_eq,
+    marginA, marginB, fine, slope, central] using
+      ((inv_le_inv₀ hmarginB hmarginA).2 hmargins)
 
 theorem cmp89Eq248ComplexGreenNumeratorBound_nonneg
     {rho : ℝ} (hrho : 0 ≤ rho) :
@@ -150,7 +155,7 @@ theorem cmp89Eq248ComplexStabilizedGreenAmplitudeBound_antitone
     cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft]
   exact mul_le_mul_of_nonneg_left
     (cmp89Eq249CentralStabilizedComplexReciprocalBound_antitone
-      ha hab hwindow)
+      ha hab hrho hwindow)
     (cmp89Eq248ComplexGreenNumeratorBound_nonneg hrho)
 
 /-- One radius simultaneously satisfies the three scalar strip conditions
@@ -174,6 +179,7 @@ theorem exists_cmp85SourceMassParameter_uniformComplexRadius
   exact CMP89Eq249CentralStabilizedComplexWindow_mono hfloor
     (cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter
       ha hLreal j)
+    hrho.le
     hwindow
 
 /-- The same source-floor choice supplies one explicit amplitude majorant for
@@ -204,7 +210,7 @@ theorem exists_cmp85SourceMassParameter_uniformComplexRadiusAndAmplitude
     cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter
       ha hLreal j
   refine ⟨CMP89Eq249CentralStabilizedComplexWindow_mono
-    hfloor hfloorLe hwindow, ?_⟩
+    hfloor hfloorLe hrho.le hwindow, ?_⟩
   exact cmp89Eq248ComplexStabilizedGreenAmplitudeBound_antitone
     hfloor hfloorLe hrho.le hwindow
 
