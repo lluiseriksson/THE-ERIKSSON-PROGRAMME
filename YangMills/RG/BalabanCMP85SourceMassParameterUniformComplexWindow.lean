@@ -74,7 +74,7 @@ theorem CMP89Eq249CentralStabilizedComplexWindow_mono
   calc
     fine + b * slope = (fine + a * slope) + (b - a) * slope := by ring
     _ < a * central + (b - a) * slope :=
-      add_lt_add_right hwindow' _
+      by linarith
     _ ≤ a * central + (b - a) * central :=
       by linarith
     _ = b * central := by ring
