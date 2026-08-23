@@ -40595,3 +40595,30 @@ C4 only: it does not transport to the CMP99 source-localization owner,
 construct regional `B0`/`delta0`, attain window 15, close rows 23--24, or
 instantiate `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 941 (2026-08-23, **literal source-flow source-localization owner bound sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `60537615aab13f687253473f988bf5e2a7281c4f`
+introduced the C5 source/audit pair.  Their Git-blob SHA-256 values are
+`79593551380C35C9B023D2CA04303ED758EDF286E4C1AC56AC453AB768174DA0`
+and
+`3D19746D80D46AA84406B1C139CDCBF7C2E038C9FDA06D46E9284F82B263E5DD`.
+Runner checkpoint `86e293e888d3fb1d553ead114357d94d17efafa1`, revision
+`source-flow-source-owner-bound-v1`, with runner SHA-256
+`B6E2D8B8C64590562525E639577D3CD6D30BEDD9B5749AEACC69AC6B2CC02F09`,
+validated the exact source in a fresh Colab Pro+ CPU/high-RAM checkout.  The
+focal completed 8,774 jobs in `2375.691` seconds and the audit in `14.661`
+seconds.  The declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`; the runner emitted literal
+`FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`9F55A6ED2E76644536990C571312892D944C3F1EBE74EB74825EEFDFD993A20F`
+and archive SHA-256 is
+`2A770CF15D9038B58077B3C69A69A17AF1F6A4AA634D8ED1A5E13199A4FC5EC7`.
+
+Seal checkpoint `6543e50187cc671306a0f4cda14cb1b13108df50` removes exactly
+the two C5 PRE-VALIDATION marks and imports its audit into `YangMillsCore`.
+The theorem transports the sealed Unit-F point-source endpoint to the literal
+CMP99 (3.89) source-localization owner while preserving the literal source-flow
+coefficient.  It does not construct a regional or uniform `B0`/`delta0`, attain
+window 15, close rows 23--24, or instantiate `TermSource`.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

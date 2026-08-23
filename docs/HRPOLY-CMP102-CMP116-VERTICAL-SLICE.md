@@ -14610,3 +14610,38 @@ is the Unit-F point-source owner bound, not the CMP99 source-localization
 owner, a regional `B0`/`delta0` bound, window-15 attainment, rows 23--24, or a
 `TermSource` instance.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9r: literal CMP99 source-localization owner bound (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalSourceOwnerBound` evaluates
+the sealed Unit-F point-source endpoint at
+`cmp99Eq389SourceLocalizationSiteEquiv` and rewrites its owner to the literal
+CMP99 (3.89) `cmp99Eq389SourceLocalizationOwner`.  Its coefficient remains
+definitionally `cmp99SourceFlowFlatFullComplexA a L depth`, with positivity
+derived upstream from `ha : 0 < a`.  It supplies neither a generated
+coefficient nor free Green/readout data, regional compression, a uniform
+`B0`/`delta0`, window-15 attainment, or a terminal field.
+
+PRE-VALIDATION checkpoint `60537615aab13f687253473f988bf5e2a7281c4f`
+introduced the source/audit pair.  Runner checkpoint
+`86e293e888d3fb1d553ead114357d94d17efafa1`, revision
+`source-flow-source-owner-bound-v1`, with runner SHA-256
+`B6E2D8B8C64590562525E639577D3CD6D30BEDD9B5749AEACC69AC6B2CC02F09`,
+validated the exact source in a fresh Colab Pro+ CPU/high-RAM checkout.  Source
+and audit Git-blob SHA-256 values were
+`79593551380C35C9B023D2CA04303ED758EDF286E4C1AC56AC453AB768174DA0`
+and
+`3D19746D80D46AA84406B1C139CDCBF7C2E038C9FDA06D46E9284F82B263E5DD`.
+The focal completed 8,774 jobs in `2375.691` seconds and the audit in `14.661`
+seconds.  The audited declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`; the runner emitted literal
+`FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`9F55A6ED2E76644536990C571312892D944C3F1EBE74EB74825EEFDFD993A20F`
+and archive SHA-256 is
+`2A770CF15D9038B58077B3C69A69A17AF1F6A4AA634D8ED1A5E13199A4FC5EC7`.
+
+Seal checkpoint `6543e50187cc671306a0f4cda14cb1b13108df50` retires exactly
+the two PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This
+seals C5 only, not a regional or uniform `B0`/`delta0` bound, window-15
+attainment, rows 23--24, or a `TermSource` instance.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
