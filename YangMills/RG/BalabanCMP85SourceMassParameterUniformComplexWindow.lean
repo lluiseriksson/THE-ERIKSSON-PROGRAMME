@@ -3,10 +3,7 @@ import YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexRadius
 import YangMills.RG.BalabanCMP89Eq248MassUniformGreenBound
 
 /-!
-# PRE-VALIDATION: one complex strip for every source averaging coefficient
-
-Source is present, its `.olean` has not been materialized, and the result has
-not yet been verified by the compiler.
+# One complex strip for every source averaging coefficient
 
 This is the scalar bridge that the generated-coefficient no-go leaves open.
 The radius is chosen once at the positive CMP85 floor and then transported
