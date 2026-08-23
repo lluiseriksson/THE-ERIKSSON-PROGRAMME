@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "db3d96844a1fb1bbda8642632a96f6a359f67ce5"
+SOURCE_SHA = "7344038e2c99fd2ddc679d3a3a4669c0041c9edd"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-flat-precision-scalar-v1"
+runner.RUNNER_REV = "source-flow-flat-precision-scalar-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-flat-precision-scalar")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlowFlatPrecisionScalarDictionary.lean":
-        "942ee1b384c141e79cc60e743b975ad38ab121bcb19c7b54f6cc0c0158b61b9e",
+        "c0efa07994d192d8393557ae47bcafd207ae28cfeb7210c6fb25e8602b3074af",
     "YangMills/RG/BalabanCMP99SourceFlowFlatPrecisionScalarDictionaryAudit.lean":
         "3a12923751851ce4563965e9a35d1573459cc41068ade43910d7643fd08a7cfe",
 }
