@@ -1,8 +1,3 @@
-/-
-PRE-VALIDATION -- source present; `.olean` not yet materialized and the
-result is not yet compiler-verified.
--/
-
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary
 import YangMills.RG.BalabanCMP99SourceFlowFlatQprimeMassComplexDictionary
 import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionFibreAction
