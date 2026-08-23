@@ -40373,3 +40373,32 @@ The seal does not include the Step-7b complex physical action dictionary,
 physical Green identification, regional `B0`/`delta0`, window-15 attainment,
 rows 23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 933 (2026-08-23, **source-separated Step-7b precision dictionary sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `27c05dc43db1b9f311018dba11ed2847e4010dc4`
+introduced the two-file Step-7b precision dictionary unit.  Source/audit
+Git-blob SHA-256 values are
+`FE0F52E67A8606D905AAC86F96C6DE9CFA0F68F958940C2761FAB82936F03EB2` and
+`DD7954FCE9EDB78C3143BEF3AFDD6A790B5DDB074E9A54290C83F39BB5F70656`.
+The operator equality is constructed on real fields from the previously
+sealed physical dictionary and then extended by explicit real/imaginary
+decomposition and complex linearity; no target equality or inverse is an
+input.
+
+Runner checkpoint `3fcda763794b7d40cbda1ed0b28a263f76fb45bc`, revision
+`source-flow-separated-step7b-precision-v1`, validated the exact source in a
+fresh Colab Pro+ CPU/high-RAM checkout.  The focal completed 8,663 jobs in
+`2394.835` seconds and the audit in `19.437` seconds.  Both declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`; the runner emitted
+literal `FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`0DCBE291924B136B9BBDC1E1CE742D0AD55478B5BBC4515EA0445D559C37F988` and
+archive SHA-256 is
+`A1E337E8FFA806E48E60C0B83242019613D9CDBD8805D3B0FFED76B2144A8A85`.
+
+Seal checkpoint `c3c4984abd0c98c0e3b71ef9bafeea26f3b8a339` retires exactly two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seal is
+the Step-7b precision action dictionary, not a physical Green identification,
+regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a `TermSource`
+instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

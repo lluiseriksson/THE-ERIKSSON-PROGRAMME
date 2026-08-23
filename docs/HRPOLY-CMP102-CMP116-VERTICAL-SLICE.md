@@ -14350,3 +14350,36 @@ Green identification, a regional `B0`/`delta0` producer, or window-15
 attainment.  It does not discharge rows 23--24 or instantiate `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+### Step 8b.24/C6c.9j: source-separated Step-7b precision dictionary (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalStep7bPrecisionDictionary`
+identifies the canonical complexification of the literal source-separated
+ambient precision with the full-box Step-7b precision carrying the printed
+coefficient `cmp99SourceFlowFlatFullComplexA a L depth`.  The equality is
+first constructed on ambient real fields from the sealed real physical
+dictionary and the full-box physical complexification, then extended to every
+complex field by the explicit real/imaginary decomposition and complex
+linearity.  No complex precision equality or inverse is accepted as input.
+
+PRE-VALIDATION source checkpoint
+`27c05dc43db1b9f311018dba11ed2847e4010dc4` fixed source/audit Git-blob
+SHA-256 values
+`FE0F52E67A8606D905AAC86F96C6DE9CFA0F68F958940C2761FAB82936F03EB2` and
+`DD7954FCE9EDB78C3143BEF3AFDD6A790B5DDB074E9A54290C83F39BB5F70656`.
+Runner checkpoint `3fcda763794b7d40cbda1ed0b28a263f76fb45bc`, revision
+`source-flow-separated-step7b-precision-v1`, passed in a fresh Colab Pro+
+CPU/high-RAM checkout.  The focal completed 8,663 jobs in `2394.835` seconds
+and the audit in `19.437` seconds.  Both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.  Evidence
+SHA-256 is
+`0DCBE291924B136B9BBDC1E1CE742D0AD55478B5BBC4515EA0445D559C37F988` and
+archive SHA-256 is
+`A1E337E8FFA806E48E60C0B83242019613D9CDBD8805D3B0FFED76B2144A8A85`.
+
+Seal checkpoint `c3c4984abd0c98c0e3b71ef9bafeea26f3b8a339` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is the
+Step-7b precision action dictionary, not yet a physical Green identification,
+regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a `TermSource`
+instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
