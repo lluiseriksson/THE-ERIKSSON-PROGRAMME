@@ -1,8 +1,3 @@
-/-
-PRE-VALIDATION -- source present; `.olean` not yet materialized and the
-result is not yet compiler-verified.
--/
-
 import YangMills.RG.BalabanCMP99SourceFlowFlatPrecisionScalarDictionary
 
 #print axioms YangMills.RG.cmp85LastPositivePrefix_sourceFlow_terminalSpacing_eq_one
