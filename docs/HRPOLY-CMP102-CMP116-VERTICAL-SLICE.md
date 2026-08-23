@@ -14255,3 +14255,40 @@ uniqueness.  It does not yet produce regional `B0`/`delta0`, attain window
 15, discharge rows 23--24 or instantiate `TermSource`.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+### Step 8b.24/C6c.9h: literal source-flow full complex precision dictionary (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceFlowFlatPhysicalPrecisionComplexDictionary` composes the
+two independently sealed summands at each generated active target.  The
+canonical complexification of the literal covariant Laplacian plus the
+source-flow counting-space `Q'^*Q'` mass is identified with the full-box
+complex precision action at bare mass zero and the printed weighted
+coefficient `cmp99SourceFlowFlatFullComplexA a M depth`.  Both summands and
+the scalar normalization are constructed internally; no full precision,
+inverse or Green equality is accepted from the caller.
+
+Source checkpoint `867325d51c978816a58436fcd11675f2a17eea30` fixed the
+source/audit blobs at SHA-256
+`6D261D3083DD99CEA9FC9FC9CA5C146B825D540F70F4F4DFA1762DD65C0A5113`
+and
+`84D5BA1ED00B82AC1E97F0F7922E900BB0262F48FB228C75FA7DE255A7F78B91`.
+Runner revision `source-flow-flat-physical-precision-complex-v1` at
+instrumental checkpoint `5d7034ce630f04d860529b7c40915e87f32835a2` passed in a
+fresh Colab Pro+ CPU/high-RAM checkout with Mathlib pinned at
+`07642720480157414db592fa85b626dafb71355b`.  The focal completed 8,648
+jobs in `2413.757` seconds and the audit in `10.083` seconds.  Its sole
+declaration printed exactly `[propext, Classical.choice, Quot.sound]`; the
+runner emitted literal `FINAL_STATUS=PASS`.
+
+Evidence SHA-256 is
+`00B510E19BDC45798237F8F6C8C8CF356A204230DB2DFA940D0CF055B91AAEC3`;
+archive SHA-256 is
+`2B2272CD3CB3286486280A87EAA65486F934FE4866D977F8F58869B7C21D953A`.
+Seal checkpoint `32d8288fd7cac9963d7b399619cc7a3b72a3a476` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+
+This is the literal full precision dictionary, not yet its separated-carrier
+complex inverse, physical Green identification or a regional
+`B0`/`delta0` producer.  It does not attain window 15, discharge rows 23--24
+or instantiate `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
