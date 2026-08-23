@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalZeroResidue
 /-!
 # Source-flow point-source Green as the zero-residue physical series
 
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler.
-
 C1b identifies the source-flow `G Q'^*` point-source column with the normalized
 finite endpoint-integrand sum.  C2 identifies that scalar sum with the literal
 zero-residue physical Green series.  This module composes those two exact
