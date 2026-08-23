@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "4a5001dd43f06e5fa9a046c480faf828f3f19c8c"
+SOURCE_SHA = "b0f246efd431be26cebf1ac8def17db3bf66c385"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -39,7 +39,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-separated-ambient-dictionaries-v4"
+runner.RUNNER_REV = "source-flow-separated-ambient-dictionaries-v5-physical-resume"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-separated-ambient-dictionaries")
 runner.EVIDENCE = Path(
@@ -57,27 +57,11 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenComplexificationAudit.lean":
         "0423710f52749542013e10bc6e8cf9653352b52dee7610a2d2e7fb6e8dee3901",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionary.lean":
-        "a5a93ce1271691e6dfbe1d245d18f104c047a6ed795bbcff8a29d9d0dc5c16fc",
+        "4497a980e915e437b7fd69119434aa20c1f0aaed9a2c22b75cdf7fc5ce6ae7ad",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionaryAudit.lean":
         "8d39990e1ef73ca4457b14ba09031e427c75dbe468c195d6117459db8562ce19",
 }
 runner.QUEUE = [
-    (
-        "source_flow_separated_ambient_complexification_focal",
-        [
-            "lake", "build",
-            "YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenComplexification",
-        ],
-        None,
-    ),
-    (
-        "source_flow_separated_ambient_complexification_audit",
-        [
-            "lake", "env", "lean",
-            "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenComplexificationAudit.lean",
-        ],
-        2,
-    ),
     (
         "source_flow_separated_physical_precision_dictionary_focal",
         [
@@ -110,6 +94,14 @@ if __name__ == "__main__":
         )
     except ImportError:
         pass
+    print(
+        "RESUME_CERTIFIED_PREFIX="
+        "source_flow_separated_ambient_complexification_focal:0:1971.628,"
+        "source_flow_separated_ambient_complexification_audit:0:16.142 "
+        "SOURCE_SHA=4a5001dd43f06e5fa9a046c480faf828f3f19c8c "
+        "EVIDENCE_SHA256=a3a8ef22cf63e56fefce78ca32ab784999c93bb730eda7097b325807bfc944f2",
+        flush=True,
+    )
     code = runner.main()
     print("EVIDENCE_DOWNLOAD_REQUESTED=1", flush=True)
     try:
