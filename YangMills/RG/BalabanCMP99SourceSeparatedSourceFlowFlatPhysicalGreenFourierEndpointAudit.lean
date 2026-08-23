@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalGreenFourierEndpoint
+
+/-!
+PRE-VALIDATION: source present; `.olean` not yet materialized and the result
+has not yet been verified by the compiler.
+-/
+
+open YangMills.RG
+
+#print axioms cmp99SourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_fourierMode
+#print axioms cmp99FlatPhysicalFibreDFT_sourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_fourierMode
+#print axioms cmp99FlatPhysicalFibreDFT_sourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_fourierMode_eq_zero_of_coarseAlias_ne
+#print axioms cmp99SourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_fourierMode_apply_eq_sum_transposeGreenTerms
