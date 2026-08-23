@@ -167,7 +167,6 @@ theorem cmp89SourceSeparatedFinePrefixPrecision_eq_sourceFlowExplicit
         Fin.last (depth + 1) := rfl
   rw [hlastPrefix, hlast, hcoeff]
   unfold cmp85BareMassPrecision cmp99SourceGaugePrecision
-  simp only [zero_smul, add_zero]
   rw [hmass]
 
 /-- Ambient form of the same real dictionary, through the already sealed
