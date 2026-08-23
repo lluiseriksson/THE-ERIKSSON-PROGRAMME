@@ -23,6 +23,7 @@ inverse identification, regional bound or window-15 attainment is asserted.
 namespace YangMills.RG
 
 open YangMills Matrix
+open scoped Matrix.Norms.L2Operator
 
 noncomputable section
 
