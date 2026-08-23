@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis
 /-!
 # Source-flow separated flat physical Green Fourier endpoint
 
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler.
-
 This is the literal-source-flow counterpart of Step 8b.24/S4.  It specializes
 the generic one-mode and inverse-DFT algebra to fine block side
 `L^(depth+1)` and coarse side `2*(K*Q)`, after the source-flow physical Green
