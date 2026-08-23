@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "e1012622afbbd7ce99f2bafb57d71d33f1c84479"
+SOURCE_SHA = "7146dc7304f89712da6a3558f8daf4ed736d2de5"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -39,7 +39,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-separated-ambient-dictionaries-v2"
+runner.RUNNER_REV = "source-flow-separated-ambient-dictionaries-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-separated-ambient-dictionaries")
 runner.EVIDENCE = Path(
@@ -57,7 +57,7 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenComplexificationAudit.lean":
         "0423710f52749542013e10bc6e8cf9653352b52dee7610a2d2e7fb6e8dee3901",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionary.lean":
-        "802af2b73c9a5626c4bb1b1d9c0d6d9059eeaa4c726f7fc7032ae30461ddc33f",
+        "c0c3a6f1ffa0366b028f7975017a3b0415aba05f787c19b682c4de5893474b48",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionaryAudit.lean":
         "8d39990e1ef73ca4457b14ba09031e427c75dbe468c195d6117459db8562ce19",
 }
