@@ -40508,3 +40508,30 @@ C1b, not source-flow zero-residue aliasing, the point-source zero-residue
 identity, an owner or regional `B0`/`delta0` bound, window-15 attainment, rows
 23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 938 (2026-08-23, **source-flow zero-residue aliasing sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `71c0d7e746e41b67d692d6a4c3da0ff41083ba3c`
+introduced the C2 source/audit pair, with Git-blob SHA-256 values
+`A7407C719DDD225CE5469EF76C71183CE7C599180DBB2FFCE6E29C437E168E1B` and
+`35DDD8676ACA295DC111936FC6FB28A600E3333B7DF53611DB51EAD1634AAAC0`.
+The proof performs both finite reindexings and specializes the physical
+zero-residue theorem to the literal source-flow coefficient.  Its positivity
+is constructed from `ha`; no generated coefficient enters.
+
+Runner checkpoint `458997896a5c37f0b22dce280389368f9ea880fd`, revision
+`source-flow-zero-residue-aliasing-v1`, validated the exact source in a fresh
+Colab Pro+ CPU/high-RAM checkout.  The focal completed 8,730 jobs in
+`1923.260` seconds and the audit in `10.820` seconds.  The declaration printed
+exactly `[propext, Classical.choice, Quot.sound]`; the runner emitted literal
+`FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`EA4F2743BE5FEFB54DB4585C2B8806E9C280C7BA1F78757F2F58652E2E914238` and
+archive SHA-256 is
+`9BF254A69FC50B7994BAA57AA5A613445D41930ED8E974D1DC2A096945B6A4C5`.
+
+Seal checkpoint `a6d12ba3aa5983cc4788a54adec5ab6e6ca64e81` retires exactly two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is C2,
+not the point-source zero-residue composition, an owner or regional
+`B0`/`delta0` bound, window-15 attainment, rows 23--24, or a `TermSource`
+instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

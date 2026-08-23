@@ -14508,3 +14508,34 @@ C1b only, not source-flow zero-residue aliasing, the zero-residue point-source
 identity, owner bounds, regional `B0`/`delta0`, window-15 attainment, rows
 23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9o: source-flow zero-residue aliasing (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalZeroResidueAliasing`
+reindexes the finite endpoint sum through periodic Fourier negation and the
+literal `FinBox`/`ZMod` equivalence, then specializes the sealed physical
+finite-grid aliasing theorem to residue zero.  Its coefficient is literally
+`cmp99SourceFlowFlatFullComplexA a L depth`; positivity is derived internally
+from `ha : 0 < a`.  The module does not import or reuse the generated
+coefficient theorem.
+
+PRE-VALIDATION checkpoint `71c0d7e746e41b67d692d6a4c3da0ff41083ba3c`
+fixed source/audit Git-blob SHA-256 values
+`A7407C719DDD225CE5469EF76C71183CE7C599180DBB2FFCE6E29C437E168E1B` and
+`35DDD8676ACA295DC111936FC6FB28A600E3333B7DF53611DB51EAD1634AAAC0`.
+Runner checkpoint `458997896a5c37f0b22dce280389368f9ea880fd`, revision
+`source-flow-zero-residue-aliasing-v1`, passed in a fresh Colab Pro+
+CPU/high-RAM checkout.  The focal completed 8,730 jobs in `1923.260` seconds
+and the audit in `10.820` seconds.  The declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.  Evidence
+SHA-256 is
+`EA4F2743BE5FEFB54DB4585C2B8806E9C280C7BA1F78757F2F58652E2E914238` and
+archive SHA-256 is
+`9BF254A69FC50B7994BAA57AA5A613445D41930ED8E974D1DC2A096945B6A4C5`.
+
+Seal checkpoint `a6d12ba3aa5983cc4788a54adec5ab6e6ca64e81` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seals
+C2 only, not the source-flow point-source zero-residue composition, owner
+bounds, regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a
+`TermSource` instance.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
