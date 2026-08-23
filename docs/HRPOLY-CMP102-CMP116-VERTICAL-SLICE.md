@@ -14383,3 +14383,36 @@ Step-7b precision action dictionary, not yet a physical Green identification,
 regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a `TermSource`
 instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+### Step 8b.24/C6c.9k: source-separated physical Green identification (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalGreenIdentification`
+transports the internally constructed ambient complex Green to the exact
+Step-7b full-box carrier.  Its inverse law is derived from the sealed ambient
+inverse pair and Step-7b precision dictionary.  Positivity of the literal
+source-flow coefficient is derived from `a > 0`, which discharges the central
+stabilized-denominator nonvanishing; the noncentral denominator theorem is
+then composed to identify the literal stabilized field with `G · Q'^*`.
+Neither a Green equality nor denominator nonvanishing is accepted as input.
+
+PRE-VALIDATION source checkpoint
+`4f6dfcd6179d5460c5cc7abe8abff6a813b4ee73` fixed source/audit Git-blob
+SHA-256 values
+`62562C94BFA2A3552018CA82E159349BFC53512BE543E4F3581FD8C24B9B65C0` and
+`D977621D0F94059362D1D644033B6B31C87495FC5E32F851AAFDF460351EF2DC`.
+Runner checkpoint `16882b517c2fcdb743c290614e25c6ebe53cfa96`, revision
+`source-flow-separated-physical-green-v1`, passed in a fresh Colab Pro+
+CPU/high-RAM checkout.  The focal completed 8,673 jobs in `1740.067` seconds
+and the audit in `14.017` seconds.  All three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.  Evidence
+SHA-256 is
+`250BD910915A3C098D7FE9A7F492F85FAE365CA099EBEF346DE7FCB8DB2E9E93` and
+archive SHA-256 is
+`A97398E0615CFE71389B73235CCC4E2E06F50F781965E6320FB1FD3916CBFF50`.
+
+Seal checkpoint `3bcee58a185ffbbfdf00196960018834417184ef` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seals
+the literal Step-7b Green/endpoint identification, not a regional
+`B0`/`delta0` estimate, window-15 attainment, rows 23--24, or a `TermSource`
+instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

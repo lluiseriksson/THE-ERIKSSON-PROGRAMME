@@ -40402,3 +40402,29 @@ the Step-7b precision action dictionary, not a physical Green identification,
 regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a `TermSource`
 instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 934 (2026-08-23, **source-separated physical Green identification sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `4f6dfcd6179d5460c5cc7abe8abff6a813b4ee73`
+introduced the physical Green source/audit pair, with Git-blob SHA-256 values
+`62562C94BFA2A3552018CA82E159349BFC53512BE543E4F3581FD8C24B9B65C0` and
+`D977621D0F94059362D1D644033B6B31C87495FC5E32F851AAFDF460351EF2DC`.
+The Green is constructed by transporting the sealed ambient inverse; its
+Step-7b inverse law, central denominator nonvanishing, and stabilized
+`G · Q'^*` endpoint are derived internally.
+
+Runner checkpoint `16882b517c2fcdb743c290614e25c6ebe53cfa96`, revision
+`source-flow-separated-physical-green-v1`, validated the exact source in a
+fresh Colab Pro+ CPU/high-RAM checkout.  The focal completed 8,673 jobs in
+`1740.067` seconds and the audit in `14.017` seconds.  All three declarations
+printed exactly `[propext, Classical.choice, Quot.sound]`; the runner emitted
+literal `FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`250BD910915A3C098D7FE9A7F492F85FAE365CA099EBEF346DE7FCB8DB2E9E93` and
+archive SHA-256 is
+`A97398E0615CFE71389B73235CCC4E2E06F50F781965E6320FB1FD3916CBFF50`.
+
+Seal checkpoint `3bcee58a185ffbbfdf00196960018834417184ef` retires exactly two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seal
+does not prove a regional `B0`/`delta0` bound, attain window 15, discharge
+rows 23--24, or instantiate `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
