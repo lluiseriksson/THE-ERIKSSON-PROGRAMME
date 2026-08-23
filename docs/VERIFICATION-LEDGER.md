@@ -40559,3 +40559,39 @@ two PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is
 C3 only, not an owner or regional `B0`/`delta0` bound, window-15 attainment,
 rows 23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 940 (2026-08-23, **literal source-flow point-source owner bound sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `934efa2a281824db90d13724eb143f7df2a7c4db`
+introduced the C4 source/audit pair.  Runner v1 checkpoint
+`f8cc3b8a0ce3188aa8280569c29f310648ba2900` stopped on the first real error:
+after `2132.877` seconds the scalar Green specialization left `NeZero ?m`
+stuck because `Kfine` was not supplied explicitly.  Diagnostic
+evidence/archive SHA-256 values are
+`A1659185736632FF333C7E81F918F371A99809443D0A633E097A525A619D942F`
+and
+`91A05376A833319943BDDC96E9D34AC71DC860B67270282554BFA09C29C0EBD2A`.
+
+Repair checkpoint `8bb90cd1f666ad94eca099ec26cd81d29239f0b8` added exactly
+`(K := Kfine)`.  Final source/audit Git-blob SHA-256 values are
+`0988BE971B058D18E5383F7733B6CB27C9C109B71F69216F51FCECD69F25A2EA`
+and
+`8E9751454782A53562D671A7F7336F7B5B0021BC1AD4D3956C11CE327D196403`.
+Runner checkpoint `9c37609b8cdc2a6172c23fb087e76c8fc7ffab93`, revision
+`source-flow-point-source-owner-bound-v2`, with runner SHA-256
+`B05E4C1551DBC0A1799E96B6FD1203703628C76AB7B5FAA8D398F021B9BB6865`,
+validated the exact source in a fresh Colab Pro+ CPU/high-RAM checkout.  The
+focal completed 8,773 jobs in `2830.365` seconds and the audit in `19.501`
+seconds.  Both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`; the runner emitted literal
+`FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`AA5C556DB3ABA0E293E8C19E7AA41BA24C25BC8877951E22AEFE0081F68109EB`
+and archive SHA-256 is
+`05BCDAAC8CC1A0A6001850A10DA330C7630337B08A9750BA0106419612928B78`.
+
+Seal checkpoint `2e9d6349c83a50e54591d3e571e0e526cff9e128` retires exactly
+two PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is
+C4 only: it does not transport to the CMP99 source-localization owner,
+construct regional `B0`/`delta0`, attain window 15, close rows 23--24, or
+instantiate `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
