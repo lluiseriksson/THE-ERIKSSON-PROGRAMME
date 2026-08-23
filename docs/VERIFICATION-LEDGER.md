@@ -40135,3 +40135,59 @@ It does not produce uniform physical `B0`/`delta0`, attain window 15,
 discharge a terminal field or instantiate `TermSource`.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 927 (2026-08-23, **literal source-flow uniform complex window sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+The first v1 launch was rejected before checkout because Colab assigned a
+standard `12.67 GiB` runtime rather than the required high-RAM CPU runtime.
+No Lean/Lake target ran.  It emitted evidence SHA-256
+`C2782B7E0E42B163C62FD47BCDE325CE47C18FAFB405CAC6F5D3299C6B6FC75A`
+and archive SHA-256
+`720A649A8ACA4558220EB8055BF8F2FF818DA57792AFAB99099B104BC97CF45F`.
+The same runner was then launched once in a `50.99 GiB` CPU runtime.
+
+At exact source `a0727792b0ae8235e13d6f26a874858c63474a1c`, runner v1 stopped
+after `993.289` seconds at four proof obligations: nonnegativity of the fine
+vertical budget, two commutative transports, and explicit unfolding of the
+reciprocal margin.  No audit ran.  Evidence SHA-256 is
+`5A173B0314394C84F564BDD749831A2D15628CBF6EC1A3A144A9F35EC401C3F6`;
+archive SHA-256 is
+`47F32769C84F0F8F94769C61124034B730A18550E3FC5057DF7EF5ED35830E27`.
+The repair adds the necessary visible premise `0 <= rho` to the two
+monotonicity lemmas and changes no source constant or conclusion used by the
+positive-radius existential.
+
+Runner v2 at source `e6ca8f74583f58d0fbc9382181fedd7cd4d5a0ef` reduced the focal to
+one remaining additive normalization at line 77, then stopped after
+`1004.357` seconds; no audit ran.  Evidence SHA-256 is
+`19D725F978EB28E2BE277D2BDB43B7DC5A2978FDFA9921D7469B94518F2A0E2C`;
+archive SHA-256 is
+`11E094071250AD1EAFAC72217BF3129401CAC2F50DB7F89206E8DA5221ACA1A8`.
+Checkpoint `c13d35c28a1116bbc36510f722cccdeac364c562` replaces only that
+commutative transport by `linarith`.  Its source/audit Git-blob SHA-256
+values are
+`B4498770B2576D3300E641FD3BC14A7BCE6A64F1573CBECB828EE8467F7C75A5`
+and
+`DF269B65B8B94BCF29E27B722675C00886F4704C790316F22A4DD6F643E03247`.
+
+Instrumental checkpoint `60060424d7364af4de8bacee50537d9c7a26b34f`
+provides runner revision `source-mass-uniform-complex-window-v3`, Git-blob
+SHA-256
+`5B88B57D5B57E450F9454F84F565DFABF67511E54A6FD466DF0859565F7820D8`.
+The v3 queue passed in a fresh Colab Pro+ CPU/high-RAM checkout: the focal
+completed 8,498 jobs in `1022.382` seconds and the audit in `8.435` seconds.
+All seven declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The runner emitted literal
+`FINAL_STATUS=PASS`, evidence SHA-256
+`A9AA1B0E3D0130856B524E5ADFD2639BBC56D54D5BA8432388940496FDD78F67`
+and archive SHA-256
+`0FF8BE5949374B5821E920F0C9BB37AC402867B5B1E1C53825D6774C63A77CF8`.
+
+Seal checkpoint `c94d655176416de51b89c0f58430145dcef5a0dc` retires exactly the
+source and audit PRE-VALIDATION marks and imports the audit into
+`YangMillsCore`.  The result gives one complex radius and one explicit
+Fourier scalar amplitude majorant for every coefficient of the literal CMP85
+source flow.  It does not supply the Fourier/operator or regional dictionary,
+does not produce physical `B0`/`delta0`, attain window 15, discharge rows
+23--24, or instantiate `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

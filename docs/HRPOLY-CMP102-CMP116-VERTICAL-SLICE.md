@@ -14096,3 +14096,39 @@ This is a negative dictionary result, not production of uniform physical
 `B0`/`delta0`, not window-15 attainment and not a terminal field.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+### Step 8b.24/C6c.9d: source-flow uniform complex window and Fourier amplitude (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP85SourceMassParameterUniformComplexWindow` takes the literal
+CMP85 source flow rather than the incompatible Poincare-generated
+coefficient.  It decomposes the stabilized denominator variation into a
+fine contribution plus a source coefficient times a fixed slope, proves the
+complex-window predicate monotone for positive increasing coefficients, and
+proves the reciprocal and complete explicit Fourier-amplitude majorants
+antitone.  The positive CMP85 floor therefore supplies one `rho` and one
+explicit Fourier scalar amplitude majorant valid for every depth `j`.
+
+The monotonicity statement records `0 <= rho` explicitly; the first compiler
+pass showed that this is a mathematical premise, not elaboration noise,
+because the fine vertical budget need not be nonnegative for an arbitrary
+negative radius.  The source-floor existential supplies the stronger
+`0 < rho` internally.
+
+Fresh Colab Pro+ runner revision
+`source-mass-uniform-complex-window-v3` at instrumental checkpoint
+`60060424d7364af4de8bacee50537d9c7a26b34f` validated exact source
+`c13d35c28a1116bbc36510f722cccdeac364c562`.  The focal completed 8,498
+jobs in `1022.382` seconds and the seven-declaration audit in `8.435`
+seconds; every declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`A9AA1B0E3D0130856B524E5ADFD2639BBC56D54D5BA8432388940496FDD78F67`;
+archive SHA-256 is
+`0FF8BE5949374B5821E920F0C9BB37AC402867B5B1E1C53825D6774C63A77CF8`.
+Seal checkpoint `c94d655176416de51b89c0f58430145dcef5a0dc` retires exactly the
+source/audit PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+
+This is a source-uniform Fourier scalar strip and amplitude, not yet the
+Fourier/operator or physical-regional dictionary.  It therefore does not
+produce the physical `B0`/`delta0` certificate, attain window 15, discharge
+rows 23--24, or inhabit `TermSource`.  The live counters remain exactly
+`20/41` and zero.
