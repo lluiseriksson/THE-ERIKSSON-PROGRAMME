@@ -100,8 +100,10 @@ runner.QUEUE = [
 if __name__ == "__main__":
     real_unassign = None
     try:
+        import importlib
         from google.colab import runtime
 
+        runtime = importlib.reload(runtime)
         real_unassign = runtime.unassign
         runtime.unassign = lambda: print(
             "RUNTIME_UNASSIGN_DEFERRED_TO_LAUNCHER=1", flush=True
