@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99Eq389SourceLocalizationOwner
 /-!
 # Source-localization owner form of the literal source-flow Green bound
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The Unit-F point-source endpoint is evaluated at the sealed source-separated
 site equivalence and its block owner is rewritten to the literal CMP99 (3.89)
 `cmp99Eq389SourceLocalizationOwner`.  The source coefficient remains
