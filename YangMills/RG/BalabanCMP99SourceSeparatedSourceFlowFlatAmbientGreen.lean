@@ -27,7 +27,6 @@ open scoped Matrix.Norms.L2Operator RealInnerProductSpace
 noncomputable section
 
 variable {L K Q Nc : ℕ}
-variable [NeZero L] [NeZero K] [NeZero Q] [NeZero Nc]
 
 /-- The final positive prefix carries exactly the literal source-flow
 coefficient at index `depth`. -/
@@ -38,6 +37,8 @@ theorem cmp85LastPositivePrefix_succ_sourceA_eq_massParameter
       cmp99SourceMassParameter a (L : ℝ) depth := by
   unfold cmp85SourcePrefixA
   rw [cmp85LastPositivePrefix_succ_sourceIndex]
+
+variable [NeZero L] [NeZero K] [NeZero Q] [NeZero Nc]
 
 /-- Literal source-flow precision at flat background, zero radius and
 canonical fine spacing, transported to the separated ambient carrier. -/
