@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "dd188139a03294d95e6c75bb7a9ef222e2e80d6e"
+SOURCE_SHA = "65a2f090b211d612fda51ec2bea171bdce99f934"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,7 +40,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-flat-ambient-green-v1"
+runner.RUNNER_REV = "source-flow-flat-ambient-green-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-flat-ambient-green")
 runner.EVIDENCE = Path(
@@ -54,7 +54,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreen.lean":
-        "69f7162a68cf6115719ef225fb8e153afce677a2d170a5e7e8716de9a33d3a2f",
+        "485d36cfb1b0a3fb43da551887019fe5337d104c0fb43edd5710c0c3500f6612",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenAudit.lean":
         "c4f1e5fe28d8bf30f9a23503c99615f4ab87ca45e31845ff80c1d84c0eb4d0fe",
 }
