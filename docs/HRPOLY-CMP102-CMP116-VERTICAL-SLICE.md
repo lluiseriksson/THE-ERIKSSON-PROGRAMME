@@ -14292,3 +14292,61 @@ complex inverse, physical Green identification or a regional
 `B0`/`delta0` producer.  It does not attain window 15, discharge rows 23--24
 or instantiate `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9i: source-separated ambient inverse pair and real physical precision dictionary (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenComplexification`
+complexifies the already sealed source-separated ambient real inverse pair.
+Its two audited composition laws are constructed from the canonical
+complexification transport; no complex inverse is accepted from the caller.
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionary`
+independently identifies the terminal retained-prefix precision with the
+literal real source-flow precision.  The terminal `Q'` is transported to the
+explicit coordinate operator, the adjoint square is proved by transport, and
+the printed source-flow coefficient is derived internally.  Bare mass is
+literally zero.
+
+The validation was stop-on-first-error and preserved each attributable
+failure.  Checkpoint `c4d287594d95ed4dd1ca13713738246480b268f4` exposed a
+misnamed import (evidence/archive SHA-256
+`135EBC8986D638C370639A155A3F648BF6B6E5C6F1C662CD9A1F4892AAE9C872` /
+`C997926AB4DD15BF84815AE770F01277CEC91F4D34A7C2BC80F2AEF04F04DF93`).
+Checkpoint `e1012622afbbd7ce99f2bafb57d71d33f1c84479` exposed the missing
+matrix-operator norm scope (`FDD86A896575245D7638ED41B1B500E6E7AFB1224C20658F690857FF0C5B5F7C` /
+`61A0D7FEDC55A0930E5925EA397082AA841DA2F485239BFDBAB0385ED61FC5AA`).
+Checkpoint `7146dc7304f89712da6a3558f8daf4ed736d2de5` exposed a redundant
+`simp` (`5FC0F0819E762F2EAFD1B8209146BB354B7879A399E965D5CF18809D045F8A61` /
+`C3BCE08AD20FF32EA09526DAD5A98ECC2B7D8638074C374A72116A742DDE3002`).
+Checkpoint `4a5001dd43f06e5fa9a046c480faf828f3f19c8c` then exposed the remaining
+literal `0 ^ 2` term while also certifying the unchanged ambient prefix
+(`A3A8EF22CF63E56FEFCE78CA32AB784999C93BB730EDA7097B325807BFC944F2` /
+`C00DD7F3BA1AC994AF51D4A14B8BD3BEFBD05F29AD667DF6822B8B84B0249405`).
+
+On that fourth run the ambient focal completed 8,647 jobs in `1971.628`
+seconds and its audit in `16.142` seconds.  Both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The final source checkpoint
+`b0f246efd431be26cebf1ac8def17db3bf66c385` changed only the physical
+dictionary, whose Git-blob SHA-256 became
+`4497A980E915E437B7FD69119434AA20C1F0AAED9A2C22B75CDF7FC5CE6AE7AD`;
+the unchanged ambient source/audit blobs remained
+`16506CBA6C8E9BB4EC5902234D574B164F0B0787512658D2DFC342F83DF54FA1` and
+`0423710F52749542013E10BC6E8CF9653352B52DEE7610A2D2E7FB6E8DEE3901`.
+Runner checkpoint `011c438269e5ccf6e3413868bef1946dd77470d6`, revision
+`source-flow-separated-ambient-dictionaries-v5-physical-resume`, resumed at
+the first failed target while recording the certified prefix.  The physical
+focal completed 8,646 jobs in `1510.459` seconds and its audit in `12.191`
+seconds.  Its two declarations also printed exactly
+`[propext, Classical.choice, Quot.sound]`; the runner emitted literal
+`FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`453ACFEAB4621CC9930797315DC887EF1AD23F2E190E430AD0539073D63E389D` and
+archive SHA-256 is
+`AC0776FFCE6C6C03450E613B7F8112C1426D5613A891976AB0B1C05BB39F7AC0`.
+
+Seal checkpoint `6b63c53d05802b51c36450ddb5130edfb13229b1` retires exactly the four
+PRE-VALIDATION marks and imports exactly the two audits into `YangMillsCore`.
+This seals the ambient complex inverse pair and the real physical precision
+dictionary, not the Step-7b complex physical action dictionary, a physical
+Green identification, a regional `B0`/`delta0` producer, or window-15
+attainment.  It does not discharge rows 23--24 or instantiate `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

@@ -38169,7 +38169,6 @@ unchanged. PRE-VALIDATION remains visible and v2 remains NOT CHECKED.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
 
-
 ## Addendum 868 (2026-08-19, **Step 8b.24/C6c.2 canonical prefix tower P0 sealed in fresh Colab checkout; 20/41 unchanged**)
 
 Fresh Colab Pro+ CPU/high-RAM validation checked exact source
@@ -38544,7 +38543,6 @@ only; it does not construct the physical Fourier-series expansion, regional
 `B0`, attain window 15, discharge a terminal field or inhabit `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
-
 
 ## Addendum 869 (2026-08-20, **Step 8b.23 Units A--E sealed from one cold terminal checkout; 20/41 unchanged**)
 
@@ -40328,3 +40326,50 @@ physical Green identification, regional `B0`/`delta0` producer or window-15
 attainment.  It does not discharge rows 23--24 or instantiate `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 932 (2026-08-23, **source-separated ambient inverse pair and real physical precision dictionary sealed in Colab Pro+; 20/41 unchanged**)
+
+The four-file PRE-VALIDATION unit consists of
+`BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenComplexification`, its
+audit, `BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionary`,
+and its audit.  The ambient module constructs both complex inverse laws from
+the sealed real pair.  The physical module constructs the terminal `Q'`
+transport, adjoint square, source-flow coefficient, and zero-bare-mass
+precision equality internally.
+
+Four stop-on-first-error runs were retained before PASS: the misnamed import
+at source `c4d287594d95ed4dd1ca13713738246480b268f4` (evidence/archive
+`135EBC8986D638C370639A155A3F648BF6B6E5C6F1C662CD9A1F4892AAE9C872` /
+`C997926AB4DD15BF84815AE770F01277CEC91F4D34A7C2BC80F2AEF04F04DF93`),
+the missing matrix-norm scope at `e1012622afbbd7ce99f2bafb57d71d33f1c84479`
+(`FDD86A896575245D7638ED41B1B500E6E7AFB1224C20658F690857FF0C5B5F7C` /
+`61A0D7FEDC55A0930E5925EA397082AA841DA2F485239BFDBAB0385ED61FC5AA`),
+the redundant `simp` at `7146dc7304f89712da6a3558f8daf4ed736d2de5`
+(`5FC0F0819E762F2EAFD1B8209146BB354B7879A399E965D5CF18809D045F8A61` /
+`C3BCE08AD20FF32EA09526DAD5A98ECC2B7D8638074C374A72116A742DDE3002`),
+and the residual `0 ^ 2` at `4a5001dd43f06e5fa9a046c480faf828f3f19c8c`
+(`A3A8EF22CF63E56FEFCE78CA32AB784999C93BB730EDA7097B325807BFC944F2` /
+`C00DD7F3BA1AC994AF51D4A14B8BD3BEFBD05F29AD667DF6822B8B84B0249405`).
+The last run also certified the unchanged ambient prefix: 8,647 jobs in
+`1971.628` seconds and audit in `16.142` seconds, with both named declarations
+printing exactly `[propext, Classical.choice, Quot.sound]`.
+
+Final source checkpoint `b0f246efd431be26cebf1ac8def17db3bf66c385`
+normalizes the literal zero bare mass.  Runner checkpoint
+`011c438269e5ccf6e3413868bef1946dd77470d6`, revision
+`source-flow-separated-ambient-dictionaries-v5-physical-resume`, recorded the
+certified prefix and resumed at the failed physical target.  The physical
+focal completed 8,646 jobs in `1510.459` seconds and the audit in `12.191`
+seconds.  Both declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.  Evidence
+SHA-256 is
+`453ACFEAB4621CC9930797315DC887EF1AD23F2E190E430AD0539073D63E389D` and
+archive SHA-256 is
+`AC0776FFCE6C6C03450E613B7F8112C1426D5613A891976AB0B1C05BB39F7AC0`.
+
+Seal checkpoint `6b63c53d05802b51c36450ddb5130edfb13229b1` retires exactly four
+PRE-VALIDATION marks and imports exactly the two audits into `YangMillsCore`.
+The seal does not include the Step-7b complex physical action dictionary,
+physical Green identification, regional `B0`/`delta0`, window-15 attainment,
+rows 23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
