@@ -11828,7 +11828,6 @@ a Brillouin integral, produce regional `B0`, attain window 15, discharge a
 terminal field or inhabit `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-
 ### Step 8b.12: signed-alias endpoint phase transport (PRE-VALIDATION; NOT CHECKED)
 
 Source checkpoint `1fc19056f0a1fa0782924196687b84b074785679` adds
@@ -14219,3 +14218,40 @@ for this source coefficient.  This scalar seal alone does not complexify the
 ambient inverse, produce regional `B0`/`delta0`, attain window 15, discharge
 rows 23--24 or instantiate `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9g: literal source-flow `Q'^*Q'` complex dictionary (COLD-CI-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceFlowFlatQprimeMassComplexDictionary` separates the
+one-block geometric kernel from the scalar convention.  Its generic theorem
+accepts only the explicit equality between counting and weighted
+coefficients.  The source specialization constructs that equality internally
+from Step C6c.9f, then proves the coordinate-delta and arbitrary-field
+complex dictionaries for the literal source-flow coefficient.  No generated
+Poincare coefficient is substituted for `a_depth`.
+
+Mathematical source checkpoint
+`e70b91c9e131e302519a710e4d5f6b4d56a92c2f` fixed the two source blobs at
+SHA-256 `D02C2C94C167A080C09F21D2B4DF5E831F9D8DB9B20296F50BEAE8948B6AF183`
+and `827C6100E1814DDD48391C96943EB6F52A703C9364EB88053B02E3856192E41C`.
+The terminal cold gate at control checkpoint
+`017905a96c0b0d9ec7af6a6435b25bfe150bc93f` ran as GitHub Actions run
+`32618341133` with no project-graph restoration.  It verified the exact Lean
+toolchain and Mathlib pin `07642720480157414db592fa85b626dafb71355b`, then
+completed the 8,646-job focal in `1664` seconds and the audit in `8` seconds.
+All three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.
+
+The downloaded `SHA256SUMS` file has SHA-256
+`AE0C6286A2CF88BF3F5608A62BF5E427ECFE42A5C7D45DEEC5E0CE517AF00A2D`;
+the deterministic inner archive has SHA-256
+`7AD8C9323B04B78A177314C6CED12E5D598541386F2B3E62A13D102DE466AC22`.
+Seal checkpoint `de2f9f9f904c5dd93f701004043e1b35d3e5f060` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+
+This is the mass summand only.  The next brick composes it with the already
+sealed active Laplacian into the literal full source-flow precision, after
+which the internally constructed source Green can be transported by inverse
+uniqueness.  It does not yet produce regional `B0`/`delta0`, attain window
+15, discharge rows 23--24 or instantiate `TermSource`.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

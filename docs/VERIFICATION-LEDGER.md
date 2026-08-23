@@ -40266,3 +40266,34 @@ dictionary, a regional `B0`/`delta0` producer or window-15 attainment.  It
 does not discharge rows 23--24 or instantiate `TermSource`.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 930 (2026-08-23, **literal source-flow `Q'^*Q'` complex dictionary sealed in a cold GitHub Actions checkout; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `e70b91c9e131e302519a710e4d5f6b4d56a92c2f`
+introduced the source-flow coordinate and arbitrary-field complex
+dictionaries.  The one-block kernel is reused only through a theorem with an
+explicit scalar equality; the literal source specialization discharges that
+equality internally from the sealed counting/weighted normalization.  No
+full precision, inverse or regional bound is asserted.
+
+Control checkpoint `017905a96c0b0d9ec7af6a6435b25bfe150bc93f` executed the
+single terminal cold gate as GitHub Actions run `32618341133`.  The exact
+source SHA and both source-blob hashes passed before checkout materialization;
+the Mathlib pin was exactly `07642720480157414db592fa85b626dafb71355b`.
+The focal completed 8,646 jobs in `1664` seconds.  The audit completed in `8`
+seconds and all three declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The gate emitted literal
+`FINAL_STATUS=PASS`.
+
+The downloaded `SHA256SUMS` file has SHA-256
+`AE0C6286A2CF88BF3F5608A62BF5E427ECFE42A5C7D45DEEC5E0CE517AF00A2D`;
+the deterministic archive has SHA-256
+`7AD8C9323B04B78A177314C6CED12E5D598541386F2B3E62A13D102DE466AC22`.
+Seal checkpoint `de2f9f9f904c5dd93f701004043e1b35d3e5f060` retires exactly the source
+and audit PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+
+This seal is the literal mass summand, not yet the composed source-flow
+precision, complex inverse, regional `B0`/`delta0` producer or window-15
+attainment.  It does not discharge rows 23--24 or instantiate `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
