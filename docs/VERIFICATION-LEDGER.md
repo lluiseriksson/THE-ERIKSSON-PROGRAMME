@@ -40229,3 +40229,40 @@ the Fourier/operator dictionary, the regional `B0`/`delta0` producer and
 window-15 attainment remain open.  It does not discharge rows 23--24 or
 instantiate `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 929 (2026-08-23, **literal source-flow scalar precision dictionary sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `db3d96844a1fb1bbda8642632a96f6a359f67ce5`
+introduced the final-prefix source scalar dictionary: terminal spacing one,
+weighted coefficient `a_depth`, counting coefficient `a_depth * R^d`, and
+the real/complex cancellation
+`(a_depth * R^d) * (R^-d)^2 = a_depth * R^-d`.
+
+Runner v1 at instrumental checkpoint
+`b702186f0b26d14d6bc0b65c61057822eafca21d` stopped after `2357.594`
+seconds on four explicit elaboration inputs: one typed nonzero power, two
+`depth` arguments and `NeZero R`.  No audit ran.  Evidence SHA-256 was
+`9005A288FA123C78D55E6ED12EA3E2F1F6804EF891AA10143C3FB7C51A025CC8`;
+archive SHA-256 was
+`CD9EBB0F56E7174CC9F0C77DF684857B342DDA866F6314FD5C1C01E0B3AC6F10`.
+
+Checkpoint `7344038e2c99fd2ddc679d3a3a4669c0041c9edd` exposes only those
+elaboration inputs and changes no theorem statement, constant or convention.
+Runner revision `source-flow-flat-precision-scalar-v2` at instrumental
+checkpoint `2105cd888d166c07e63a0f1a973fc3bb03e34994` passed the corrected
+source in a fresh Colab Pro+ CPU/high-RAM checkout.  The focal completed
+8,645 jobs in `2349.092` seconds; the audit completed in `12.890` seconds and
+all five declarations printed exactly
+`[propext, Classical.choice, Quot.sound]`.  The runner emitted literal
+`FINAL_STATUS=PASS`, evidence SHA-256
+`405CDFB691F7829C7FC2FD59EB6B499851B9195D84F4DF63397028D27A249EE4`
+and archive SHA-256
+`58E7383C81EFE7C53F4754AC64CD790DED48A2BFE494A240DE4A2EE75C031304`.
+
+Seal checkpoint `c20badbf8b91e4a5c808fa641825bdd5733c2a08` retires exactly the source
+and audit PRE-VALIDATION marks and imports the audit into `YangMillsCore`.
+This is a scalar convention gate, not yet a complex carrier/operator
+dictionary, a regional `B0`/`delta0` producer or window-15 attainment.  It
+does not discharge rows 23--24 or instantiate `TermSource`.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

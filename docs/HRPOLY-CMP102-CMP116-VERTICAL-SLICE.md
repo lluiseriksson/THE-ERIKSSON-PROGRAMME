@@ -14175,3 +14175,47 @@ Fourier/operator and regional dictionaries.  It does not produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24 or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+### Step 8b.24/C6c.9f: literal source-flow scalar precision dictionary (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceFlowFlatPrecisionScalarDictionary` records the exact
+normalization at the final positive prefix.  Canonical fine spacing gives
+terminal spacing one; the printed weighted coefficient is the literal
+`a_depth`, while the counting-Hilbert coefficient is `a_depth * R^d` for
+`R = L^(depth+1)`.  The terminal scalar gate then proves explicitly
+
+`(a_depth * R^d) * (R^-d)^2 = a_depth * R^-d`.
+
+Thus the terminal/fine volume ratio is applied exactly once, and the
+counting mass can feed the coefficient-one weighted complex adjoint without
+repeating the historical `M^-4` normalization error.  The real and complex
+cast forms are both named; no carrier or operator equality is asserted.
+
+Runner v1 at instrumental checkpoint
+`b702186f0b26d14d6bc0b65c61057822eafca21d` stopped at exact source
+`db3d96844a1fb1bbda8642632a96f6a359f67ce5` after `2357.594` seconds.  The
+first errors were missing type annotations for one nonzero power, two
+mis-positioned explicit `depth` arguments and a `NeZero R` instance hidden
+behind a local abbreviation.  No audit ran.  Evidence SHA-256 was
+`9005A288FA123C78D55E6ED12EA3E2F1F6804EF891AA10143C3FB7C51A025CC8`;
+archive SHA-256 was
+`CD9EBB0F56E7174CC9F0C77DF684857B342DDA866F6314FD5C1C01E0B3AC6F10`.
+
+Source checkpoint `7344038e2c99fd2ddc679d3a3a4669c0041c9edd` makes those three
+elaboration inputs explicit and changes no statement or normalization.
+Runner revision `source-flow-flat-precision-scalar-v2` at instrumental
+checkpoint `2105cd888d166c07e63a0f1a973fc3bb03e34994` passed in a fresh Colab
+Pro+ CPU/high-RAM checkout.  The focal completed 8,645 jobs in `2349.092`
+seconds and the audit in `12.890` seconds.  All five declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.  Evidence SHA-256 is
+`405CDFB691F7829C7FC2FD59EB6B499851B9195D84F4DF63397028D27A249EE4`;
+archive SHA-256 is
+`58E7383C81EFE7C53F4754AC64CD790DED48A2BFE494A240DE4A2EE75C031304`.
+
+Seal checkpoint `c20badbf8b91e4a5c808fa641825bdd5733c2a08` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  The next
+open brick is the coordinate/field and full-precision operator dictionary
+for this source coefficient.  This scalar seal alone does not complexify the
+ambient inverse, produce regional `B0`/`delta0`, attain window 15, discharge
+rows 23--24 or instantiate `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
