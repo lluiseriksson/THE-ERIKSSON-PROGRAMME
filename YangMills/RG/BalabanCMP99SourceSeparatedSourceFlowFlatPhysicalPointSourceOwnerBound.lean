@@ -92,6 +92,7 @@ theorem
       0 ≤ cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft weightedA rho := by
     have hpoint :=
       norm_cmp89Eq248PhysicalZeroMassGreen_le_signedLatticeWeight_draft
+        (K := Kfine)
         hweightedA.le hrho.le hamplitude hradius hwindow 0
     simpa [hweightZero] using (le_trans (norm_nonneg _) hpoint)
   have hgeom : 0 ≤ (2 / (1 - Real.exp (-rho))) ^ 4 := by
