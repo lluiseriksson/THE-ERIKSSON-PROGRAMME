@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "934efa2a281824db90d13724eb143f7df2a7c4db"
+SOURCE_SHA = "8bb90cd1f666ad94eca099ec26cd81d29239f0b8"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -39,7 +39,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-point-source-owner-bound-v1"
+runner.RUNNER_REV = "source-flow-point-source-owner-bound-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-point-source-owner-bound")
 runner.EVIDENCE = Path(
@@ -53,7 +53,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPointSourceOwnerBound.lean":
-        "df69bd46f04d6a4a6b185ce59ea99251f99c085061f6f8da076f97b390d95490",
+        "0988be971b058d18e5383f7733b6cb27c9c109b71f69216f51fcecd69f25a2ea",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPointSourceOwnerBoundAudit.lean":
         "8e9751454782a53562d671a7f7336f7b5b0021bc1ad4d3956c11ce327d196403",
 }
