@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalEndpointInt
 /-!
 # Source-flow separated Green on one coarse point source
 
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler.
-
 The exact point-source Fourier reconstruction and the fixed-target source-flow
 C0 endpoint are composed here.  The result is a single normalized finite sum
 of literal CMP89 endpoint-integrand values with `ell`, `x` and `y` kept in one
