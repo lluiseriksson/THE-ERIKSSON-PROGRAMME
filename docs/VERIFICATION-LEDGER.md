@@ -37626,7 +37626,6 @@ pin the repaired source. PRE-VALIDATION remains visible and the result is
 NOT CHECKED. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
-
 Diagnostic runner checkpoint `9a55678052e7c5394ef5c51f5de86f4ab9f8be14`
 has Git-blob SHA-256
 `b6de4efa8f7f20436fa95f9b36395278f3dd043862906ec78214b764f71adbc2`;
@@ -40482,3 +40481,30 @@ not point-source reconstruction, zero-residue aliasing, an owner or regional
 `B0`/`delta0` bound, window-15 attainment, rows 23--24, or a `TermSource`
 instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 937 (2026-08-23, **source-flow point-source endpoint sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `ac04749f4cecc3558bb4c985de5ad313c9526c93`
+introduced the C1b source/audit pair, with Git-blob SHA-256 values
+`3BCB5E592B9D6537E3A215BDB2F05C3C68D179B6721916F377B1B48B49F06727` and
+`999B9B2856371427714CF8CD17A0EA1E8043D270DE312A98E3779A9E18997F61`.
+It feeds the exact coefficient-neutral point-source Fourier reconstruction
+through the sealed source-flow C0 endpoint; `ha : 0 < a` remains the only
+source-coefficient input and no generated coefficient is imported.
+
+Runner checkpoint `b1fb9523c07836a74ace00b4723961fe4f217440`, revision
+`source-flow-separated-point-source-endpoint-v1`, validated the exact source
+in a fresh Colab Pro+ CPU/high-RAM checkout.  The focal completed 8,739 jobs
+in `2150.295` seconds and the audit in `13.329` seconds.  The declaration
+printed exactly `[propext, Classical.choice, Quot.sound]`; the runner emitted
+literal `FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`30C31B93E416EE840B5D45058814125702EA6828909144DF8373DBF3BE4A761D` and
+archive SHA-256 is
+`6363BC45B19851BB710A20D246E556E03163C456AF3D3344CCA4CD130580E15A`.
+
+Seal checkpoint `15dbd83868e90571040c43a9730e12b87e95dc1f` retires exactly two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is
+C1b, not source-flow zero-residue aliasing, the point-source zero-residue
+identity, an owner or regional `B0`/`delta0` bound, window-15 attainment, rows
+23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

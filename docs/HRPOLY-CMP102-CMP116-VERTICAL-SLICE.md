@@ -11463,7 +11463,6 @@ it gates exactly these two blobs and runs only the focal plus the
 three-declaration audit.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
 
-
 Diagnostic v2 reached the revised focal in one fresh CPU/high-RAM Colab clone
 and stopped at its first real error after `1595.697 s`.  The canonical
 `ZMod.castHom` had already transported the equality to `ZMod N'`; line `58:2`
@@ -14479,3 +14478,33 @@ C0 only, not point-source Fourier reconstruction, zero-residue aliasing,
 owner bounds, regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a
 `TermSource` instance.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9n: source-flow point-source endpoint (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPointSourceEndpoint`
+composes the coefficient-neutral inverse DFT of one literal coarse point
+source with the sealed source-flow C0 endpoint.  The source coefficient is
+`cmp99SourceFlowFlatFullComplexA a L depth`, its positivity is constructed
+from `ha : 0 < a`, and the target, coarse source and readout remain fixed
+through the entire normalized finite sum.  No generated coefficient enters.
+
+PRE-VALIDATION checkpoint `ac04749f4cecc3558bb4c985de5ad313c9526c93`
+fixed source/audit Git-blob SHA-256 values
+`3BCB5E592B9D6537E3A215BDB2F05C3C68D179B6721916F377B1B48B49F06727` and
+`999B9B2856371427714CF8CD17A0EA1E8043D270DE312A98E3779A9E18997F61`.
+Runner checkpoint `b1fb9523c07836a74ace00b4723961fe4f217440`, revision
+`source-flow-separated-point-source-endpoint-v1`, passed in a fresh Colab
+Pro+ CPU/high-RAM checkout.  The focal completed 8,739 jobs in `2150.295`
+seconds and the audit in `13.329` seconds.  The declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.  Evidence
+SHA-256 is
+`30C31B93E416EE840B5D45058814125702EA6828909144DF8373DBF3BE4A761D` and
+archive SHA-256 is
+`6363BC45B19851BB710A20D246E556E03163C456AF3D3344CCA4CD130580E15A`.
+
+Seal checkpoint `15dbd83868e90571040c43a9730e12b87e95dc1f` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seals
+C1b only, not source-flow zero-residue aliasing, the zero-residue point-source
+identity, owner bounds, regional `B0`/`delta0`, window-15 attainment, rows
+23--24, or a `TermSource` instance.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
