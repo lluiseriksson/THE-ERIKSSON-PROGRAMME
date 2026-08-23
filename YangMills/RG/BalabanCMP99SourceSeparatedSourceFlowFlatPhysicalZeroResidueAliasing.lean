@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99SourceFlowFlatPrecisionScalarDictionary
 /-!
 # Source-flow endpoint at the zero alias residue
 
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler.
-
 The point-source endpoint produced in C1b is indexed by periodic Fourier
 negation.  This module performs the two exact finite reindexings and then
 specializes physical finite-grid aliasing to the zero residue class with the
