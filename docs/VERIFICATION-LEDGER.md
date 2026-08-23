@@ -40455,3 +40455,30 @@ does not prove the source-flow endpoint-integrand bridge, a regional
 `B0`/`delta0` bound, window-15 attainment, rows 23--24, or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 936 (2026-08-23, **source-flow endpoint-integrand bridge sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `4f78eb77c238c0fb2a3be3b911a685dc575a981b`
+introduced the C0 source/audit pair, with Git-blob SHA-256 values
+`72BB368596E25085FF0FAFE1C824A4925AD1511F77B80395497B7DE9DC54F146` and
+`732C9CB87DC37EC011F634E0FE8B9F8D225FA48F669FB9490CECE720C1D3BDA4`.
+The theorem keeps the common target and readout fixed and composes the sealed
+finite synthesis with the complete-fibre orientation bridge to the literal
+CMP89 endpoint integrand.
+
+Runner checkpoint `05fb0c018d7f73b4b8135fc92ae8b2b569abe67f`, revision
+`source-flow-separated-endpoint-integrand-v1`, validated the exact source in
+a fresh Colab Pro+ CPU/high-RAM checkout.  The focal completed 8,737 jobs in
+`2163.273` seconds and the audit in `13.237` seconds.  The declaration printed
+exactly `[propext, Classical.choice, Quot.sound]`; the runner emitted literal
+`FINAL_STATUS=PASS`.  Evidence SHA-256 is
+`E18C7B5460AD00D54CEDF8875E8AA68E910972620772DE11C7A0063F06B1F437` and
+archive SHA-256 is
+`778B0DB18C92EDDF29985506FEE5E993AEBD9FB7AEDDDA256C5D123307CCD5B1`.
+
+Seal checkpoint `a179b5800a85f2e73562269efc5201f17491fbcb` retires exactly two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This is C0,
+not point-source reconstruction, zero-residue aliasing, an owner or regional
+`B0`/`delta0` bound, window-15 attainment, rows 23--24, or a `TermSource`
+instance.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

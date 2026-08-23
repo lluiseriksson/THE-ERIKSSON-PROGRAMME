@@ -14450,3 +14450,32 @@ the literal source-flow S4 Fourier endpoint, not the subsequent endpoint
 integrand, Fourier reconstruction, regional `B0`/`delta0`, window-15
 attainment, rows 23--24, or a `TermSource` instance.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9m: source-flow endpoint-integrand bridge (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalEndpointIntegrand` keeps
+one coarse mode, fine target and coarse source fixed while converting the
+sealed source-flow S4 finite synthesis into the literal CMP89 stabilized
+endpoint integrand.  Positivity of the source coefficient is constructed from
+`ha : 0 < a`; no generated coefficient or target-dependent readout enters.
+
+PRE-VALIDATION checkpoint `4f78eb77c238c0fb2a3be3b911a685dc575a981b`
+fixed source/audit Git-blob SHA-256 values
+`72BB368596E25085FF0FAFE1C824A4925AD1511F77B80395497B7DE9DC54F146` and
+`732C9CB87DC37EC011F634E0FE8B9F8D225FA48F669FB9490CECE720C1D3BDA4`.
+Runner checkpoint `05fb0c018d7f73b4b8135fc92ae8b2b569abe67f`, revision
+`source-flow-separated-endpoint-integrand-v1`, passed in a fresh Colab Pro+
+CPU/high-RAM checkout.  The focal completed 8,737 jobs in `2163.273` seconds
+and the audit in `13.237` seconds.  The declaration printed exactly
+`[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.  Evidence
+SHA-256 is
+`E18C7B5460AD00D54CEDF8875E8AA68E910972620772DE11C7A0063F06B1F437` and
+archive SHA-256 is
+`778B0DB18C92EDDF29985506FEE5E993AEBD9FB7AEDDDA256C5D123307CCD5B1`.
+
+Seal checkpoint `a179b5800a85f2e73562269efc5201f17491fbcb` retires exactly the two
+PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This seals
+C0 only, not point-source Fourier reconstruction, zero-residue aliasing,
+owner bounds, regional `B0`/`delta0`, window-15 attainment, rows 23--24, or a
+`TermSource` instance.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
