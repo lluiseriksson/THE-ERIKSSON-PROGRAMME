@@ -55,11 +55,15 @@ theorem cmp85LastPositivePrefix_sourceFlow_terminalSpacing_eq_one
     (T.towerAt
       (cmp85LastPositivePrefix (depth + 1) (Nat.succ_pos depth)).1).terminalSpacing =
       1 := by
+  have hL0 : (L : ℝ) ≠ 0 :=
+    Nat.cast_ne_zero.mpr (NeZero.ne L)
+  have hpow : (L : ℝ) ^ (depth + 1) ≠ 0 :=
+    pow_ne_zero _ hL0
   rw [T.towerAt_terminalSpacing]
   simp [cmp85LastPositivePrefix,
     cmp99SourceGeneratedFullComplexSpacing,
     cmp99SourceGeneratedFullComplexBlockSide, Nat.cast_pow,
-    pow_ne_zero _ (Nat.cast_ne_zero.mpr (NeZero.ne L))]
+    hpow]
 
 /-- The final printed weighted coefficient is exactly the literal source
 flow `a_depth`; no generated Poincare coefficient occurs. -/
@@ -73,7 +77,8 @@ theorem cmp85LastPositivePrefix_sourceFlow_weightedCoefficient_eq
       cmp99SourceFlowFlatFullComplexA a L depth := by
   unfold cmp85SourcePrefixWeightedCoefficient
   rw [cmp85LastPositivePrefix_succ_sourceA_eq_massParameter]
-  rw [cmp85LastPositivePrefix_sourceFlow_terminalSpacing_eq_one T]
+  rw [cmp85LastPositivePrefix_sourceFlow_terminalSpacing_eq_one
+    (depth := depth) T]
   simp [cmp99SourceFlowFlatFullComplexA]
 
 /-- Exact counting-Hilbert coefficient at the final source prefix.  The
@@ -88,7 +93,8 @@ theorem cmp85LastPositivePrefix_sourceFlow_countingCoefficient_eq
       cmp99SourceFlowFlatCountingA d a L depth := by
   unfold cmp85SourcePrefixCountingCoefficient cmp85SourcePrefixVolumeRatio
   rw [cmp85LastPositivePrefix_sourceFlow_weightedCoefficient_eq depth a T]
-  rw [cmp85LastPositivePrefix_sourceFlow_terminalSpacing_eq_one T]
+  rw [cmp85LastPositivePrefix_sourceFlow_terminalSpacing_eq_one
+    (depth := depth) T]
   simp [cmp99SourceFlowFlatCountingA,
     cmp99SourceGeneratedFullComplexSpacing,
     cmp99SourceGeneratedFullComplexBlockSide, Nat.cast_pow, ← inv_pow]
@@ -104,6 +110,9 @@ theorem cmp99SourceFlowFlatFullComplexA_mul_weight
         (cmp99SourceBlockAverageWeight
           (cmp99SourceGeneratedFullComplexBlockSide L (depth + 1)) d) ^ 2 := by
   let R := cmp99SourceGeneratedFullComplexBlockSide L (depth + 1)
+  letI : NeZero R := ⟨by
+    dsimp [R, cmp99SourceGeneratedFullComplexBlockSide]
+    exact pow_ne_zero _ (NeZero.ne L)⟩
   let A := cmp99SourceFlowFlatFullComplexA a L depth
   let w := cmp99SourceBlockAverageWeight R d
   have hw : (R : ℝ) ^ d * w = 1 := by
