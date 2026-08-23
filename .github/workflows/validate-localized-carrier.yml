@@ -1,4 +1,4 @@
-name: Validate P0-P9 v62 scratch chain
+name: Validate source-flow flat Qprime mass complex dictionary
 
 on:
   workflow_dispatch:
@@ -13,15 +13,15 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 6a8fae8a9581349aa27583a2e6e9e487cac8303e
+  SOURCE_SHA: e70b91c9e131e302519a710e4d5f6b4d56a92c2f
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  p0-p9-v62:
+  source-flow-flat-qprime-mass-complex:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 180
     steps:
       - name: Require cold terminal mode
         shell: bash
@@ -57,23 +57,14 @@ jobs:
           test "$source_head" = "$SOURCE_SHA"
           test "$(tr -d '\r\n' < source/lean-toolchain)" = \
             'leanprover/lean4:v4.29.0-rc6'
-          sha256sum control/tmp/github_p0_p9_v62_driver.py | \
-            tee evidence/control-driver.sha256
-          python - <<'PY'
-          import importlib.util
-          from pathlib import Path
-          path = Path('control/tmp/github_p0_p9_v62_driver.py')
-          spec = importlib.util.spec_from_file_location('p0_p9_ci_gate', path)
-          if spec is None or spec.loader is None:
-              raise SystemExit('CONTROL_DRIVER_LOAD_FAILED')
-          gate = importlib.util.module_from_spec(spec)
-          spec.loader.exec_module(gate)
-          paths = gate.exact_paths(Path('source').resolve())
-          stages = gate.queue(paths)
-          if len(paths) != 39 or len(stages) != 49:
-              raise SystemExit('P0_P9_CI_SCOPE_DRIFT')
-          print('P0_P9_CI_SOURCE_SCOPE_OK paths=39 stages=49 audits=20 axiom_headers=200')
-          PY
+          printf '%s  %s\n' \
+            d02c2c94c167a080c09f21d2b4df5e831f9d8db9b20296f50beae8948b6af183 \
+            source/YangMills/RG/BalabanCMP99SourceFlowFlatQprimeMassComplexDictionary.lean \
+            | sha256sum -c -
+          printf '%s  %s\n' \
+            827c6100e1814ddd48391c96943eb6f52a703c9364eb88053b02e3856192e41c \
+            source/YangMills/RG/BalabanCMP99SourceFlowFlatQprimeMassComplexDictionaryAudit.lean \
+            | sha256sum -c -
 
       - name: Install exact Lean toolchain
         shell: bash
@@ -114,12 +105,62 @@ jobs:
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee ../evidence/cache-get.log
 
-      - name: Run exact P0-P9 queue stop on first error
+      - name: Run focal queue stop on first error
         shell: bash
+        working-directory: source
         run: |
           set -euo pipefail
-          python control/tmp/github_p0_p9_v62_driver.py \
-            --repo source --evidence evidence
+          start=$SECONDS
+          set +e
+          lake build YangMills.RG.BalabanCMP99SourceFlowFlatQprimeMassComplexDictionary \
+            2>&1 | tee ../evidence/focal.log
+          focal_exit=${PIPESTATUS[0]}
+          set -e
+          elapsed=$((SECONDS - start))
+          printf 'stage=source_flow_flat_qprime_mass_complex_focal exit=%s seconds=%s\n' \
+            "$focal_exit" "$elapsed" | tee ../evidence/focal.status
+          test "$focal_exit" -eq 0
+
+      - name: Run audit and exact axiom gate
+        shell: bash
+        working-directory: source
+        run: |
+          set -euo pipefail
+          start=$SECONDS
+          set +e
+          lake env lean \
+            YangMills/RG/BalabanCMP99SourceFlowFlatQprimeMassComplexDictionaryAudit.lean \
+            2>&1 | tee ../evidence/audit.log
+          audit_exit=${PIPESTATUS[0]}
+          set -e
+          elapsed=$((SECONDS - start))
+          printf 'stage=source_flow_flat_qprime_mass_complex_audit exit=%s seconds=%s\n' \
+            "$audit_exit" "$elapsed" | tee ../evidence/audit.status
+          test "$audit_exit" -eq 0
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          text = Path('../evidence/audit.log').read_text(encoding='utf-8')
+          blocks = re.findall(r"depends on axioms:\s*\[(.*?)\]", text, re.S)
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          if len(blocks) != 3:
+              raise SystemExit(f'AXIOM_HEADER_COUNT_MISMATCH expected=3 actual={len(blocks)}')
+          normalized = []
+          for index, block in enumerate(blocks, start=1):
+              names = {item.strip() for item in block.split(',') if item.strip()}
+              unexpected = names - allowed
+              if unexpected:
+                  raise SystemExit(
+                      f'AXIOM_GATE_FAILED block={index} unexpected={sorted(unexpected)}'
+                  )
+              normalized.append(f"axiom_block_{index}=" + ','.join(sorted(names)))
+          Path('../evidence/axioms.txt').write_text(
+              '\n'.join(normalized) + '\n', encoding='utf-8'
+          )
+          print('\n'.join(normalized))
+          PY
+          printf 'FINAL_STATUS=PASS\n' > ../evidence/FINAL_STATUS
 
       - name: Package deterministic cold evidence
         if: always()
@@ -127,23 +168,25 @@ jobs:
         run: |
           set -euo pipefail
           if test ! -f evidence/FINAL_STATUS; then
-            printf 'FINAL_STATUS=INCOMPLETE\n' > evidence/FINAL_STATUS
+            printf 'FINAL_STATUS=FAIL_OR_INCOMPLETE\n' > evidence/FINAL_STATUS
           fi
           sums="$(mktemp)"
           find evidence -maxdepth 1 -type f ! -name SHA256SUMS -print0 | \
             sort -z | xargs -0 sha256sum > "$sums"
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
-            --numeric-owner -cf - evidence | gzip -n > p0-p9-v62-evidence.tar.gz
-          sha256sum p0-p9-v62-evidence.tar.gz | tee evidence/ARCHIVE_SHA256
+            --numeric-owner -cf - evidence | gzip -n \
+            > source-flow-flat-qprime-mass-complex-evidence.tar.gz
+          sha256sum source-flow-flat-qprime-mass-complex-evidence.tar.gz \
+            | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: p0-p9-v62-${{ env.SOURCE_SHA }}
+          name: source-flow-flat-qprime-mass-complex-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            p0-p9-v62-evidence.tar.gz
+            source-flow-flat-qprime-mass-complex-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
