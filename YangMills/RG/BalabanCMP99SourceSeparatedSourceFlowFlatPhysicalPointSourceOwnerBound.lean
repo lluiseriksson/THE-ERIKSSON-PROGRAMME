@@ -10,9 +10,6 @@ import YangMills.RG.BalabanCMP99PhysicalGreenZeroResidueBound
 /-!
 # Unit-F owner bound for the literal source-flow point-source Green
 
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler.
-
 C3 identifies the literal source-flow `G Q'^*` point-source column with the
 zero-residue physical Green series.  The physical zero-residue theorem bounds
 that series in the centered endpoint weight, and C4a transports that weight
