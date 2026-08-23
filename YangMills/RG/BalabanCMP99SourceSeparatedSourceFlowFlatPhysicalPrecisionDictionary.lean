@@ -1,8 +1,3 @@
-/-
-PRE-VALIDATION -- source present; `.olean` not yet materialized and the
-result is not yet compiler-verified.
--/
-
 /- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
 Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
