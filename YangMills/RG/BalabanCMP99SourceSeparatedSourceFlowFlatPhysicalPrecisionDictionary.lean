@@ -9,7 +9,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceFlowFlatPrecisionScalarDictionary
-import YangMills.RG.BalabanCMP99SourceFlatGeneratedPhysicalPrecisionKernel
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel
 
 /-!
 # Real source-flow flat physical precision dictionary
