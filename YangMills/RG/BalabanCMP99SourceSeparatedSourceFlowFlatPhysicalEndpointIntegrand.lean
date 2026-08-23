@@ -9,9 +9,6 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeCompleteEndpointIntegrand
 /-!
 # Source-flow separated endpoint as the literal CMP89 integrand
 
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler.
-
 For one coarse Fourier source, the source-flow S4 endpoint is the complete
 finite sum of transposed physical Green terms.  Dividing by the same coarse
 character at one fixed source site turns that sum into the sealed row-oriented
