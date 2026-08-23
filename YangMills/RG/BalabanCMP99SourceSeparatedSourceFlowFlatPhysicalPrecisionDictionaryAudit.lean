@@ -1,0 +1,11 @@
+/-
+PRE-VALIDATION -- source present; `.olean` not yet materialized and the
+result is not yet compiler-verified.
+-/
+
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionary
+
+open YangMills.RG
+
+#print axioms cmp89SourceSeparatedFinePrefixPrecision_eq_sourceFlowExplicit
+#print axioms cmp99SourceSeparatedSourceFlowFlatAmbientPrecision_eq_reindexExplicit
