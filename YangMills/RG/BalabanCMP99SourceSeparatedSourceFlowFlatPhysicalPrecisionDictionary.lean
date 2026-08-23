@@ -168,6 +168,7 @@ theorem cmp89SourceSeparatedFinePrefixPrecision_eq_sourceFlowExplicit
   rw [hlastPrefix, hlast, hcoeff]
   unfold cmp85BareMassPrecision cmp99SourceGaugePrecision
   rw [hmass]
+  simp only [pow_two, zero_mul, zero_smul, add_zero]
 
 /-- Ambient form of the same real dictionary, through the already sealed
 source-separated full-site equivalence. -/
