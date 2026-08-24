@@ -86,7 +86,14 @@ theorem cmp99SumIfLt_eq_sumSubtype
     (∑ nu : ι, if hmunu : mu < nu then f nu hmunu else 0) =
       ∑ nu : {nu : ι // mu < nu}, f nu.1 nu.2 := by
   classical
-  rw [Finset.sum_subtype]
+  let g : ι → M := fun nu => if hmunu : mu < nu then f nu hmunu else 0
+  calc
+    _ = ∑ nu in (Finset.univ.filter fun nu => mu < nu), g nu := by
+      rw [Finset.sum_filter]
+      simp [g]
+    _ = ∑ nu : {nu : ι // mu < nu}, g nu := by
+      exact Finset.sum_subtype _ (by simp) g
+    _ = _ := by simp [g]
 
 /-- Source-independent coordinates for a concrete physical plaquette: a site,
 the lower direction, and the upper direction carrying its strict-order proof. -/
@@ -153,8 +160,11 @@ recovers the ordered curl in every orientation. -/
   · simp [cmp99PhysicalOrderedTwoValue, cmp99PhysicalScaledD1OneCochain,
       hmunu]
   · by_cases hnumu : nu < mu
-    · simp [cmp99PhysicalOrderedTwoValue, cmp99PhysicalScaledD1OneCochain,
-        hmunu, hnumu, torusCurl_swap]
+    · simp only [cmp99PhysicalOrderedTwoValue, hmunu, hnumu,
+        dite_false, dite_true]
+      change -(eta⁻¹ • torusCurl (fun y k => A (y, k)) nu mu x) = _
+      rw [torusCurl_swap]
+      simp
     · have hmueqnu : mu = nu :=
         le_antisymm (not_lt.mp hnumu) (not_lt.mp hmunu)
       subst nu
@@ -252,7 +262,7 @@ theorem cmp99PhysicalDStarOneCochain_inner
       · simp [cmp99PhysicalOrderedTwoValue, hmunu, hmunu.asymm]
       · by_cases hnumu : nu < mu
         · simp [cmp99PhysicalOrderedTwoValue, hmunu, hnumu,
-            torusBackwardDiff, smul_sub]
+            torusBackwardDiff, smul_sub, sub_eq_add_neg]
         · simp [cmp99PhysicalOrderedTwoValue, hmunu, hnumu,
             torusBackwardDiff]
     _ = ∑ mu : Fin d, ∑ nu : Fin d,
@@ -266,7 +276,7 @@ theorem cmp99PhysicalDStarOneCochain_inner
                   (eta⁻¹ • torusBackwardDiff nu
                     (fun y => F ⟨y, mu, nu, hmunu⟩) x)
           else 0 := by
-      exact cmp99SumOrderedPairSplit
+      simpa only [if_pos, if_neg] using cmp99SumOrderedPairSplit
         (fun mu nu =>
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
