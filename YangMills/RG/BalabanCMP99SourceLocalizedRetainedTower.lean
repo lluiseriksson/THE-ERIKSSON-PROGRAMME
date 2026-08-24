@@ -264,17 +264,33 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
             = (Tail.canonicalTowerAt s).Qprime.comp
               (cmp99SourceTransportedBlockAverageCLM Omega
                 (cmp99SourceWeightedPhysicalTransport rho canonicalBackground))
-          rw [← cmp99SourceTerminalCLMTransport_comp
-            (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
-            (F := cmp99SourcePhysicalTerminalHilbertSpace Nc
-              (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
-            (G := (Tail.localTowerAt s).TerminalSpace)
-            (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
-            (F' := cmp99SourcePhysicalTerminalHilbertSpace Nc
-              (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
-            (G' := (Tail.canonicalTowerAt s).TerminalSpace)
-            rfl rfl (Tail.prefixTerminalSpace_eq s)]
-          rw [Tail.prefixQprime_eq s, headEq]
+          calc
+            _ = (cmp99SourceTerminalCLMTransport
+                  (E := cmp99SourcePhysicalTerminalHilbertSpace Nc
+                    (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+                  (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+                    (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+                  (F := (Tail.localTowerAt s).TerminalSpace)
+                  (F' := (Tail.canonicalTowerAt s).TerminalSpace)
+                  rfl (Tail.prefixTerminalSpace_eq s)
+                  (Tail.localTowerAt s).Qprime).comp
+                (cmp99SourceTransportedBlockAverageCLM Omega
+                  (cmp99SourceWeightedPhysicalTransport rho localBackground)) := by
+              exact (cmp99SourceTerminalCLMTransport_comp
+                (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+                (F := cmp99SourcePhysicalTerminalHilbertSpace Nc
+                  (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+                (G := (Tail.localTowerAt s).TerminalSpace)
+                (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+                (F' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+                  (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+                (G' := (Tail.canonicalTowerAt s).TerminalSpace)
+                rfl rfl (Tail.prefixTerminalSpace_eq s)
+                (Tail.localTowerAt s).Qprime
+                (cmp99SourceTransportedBlockAverageCLM Omega
+                  (cmp99SourceWeightedPhysicalTransport rho localBackground))).symm
+            _ = _ := by
+              rw [Tail.prefixQprime_eq s, headEq]
       have localDepth : ∀ r, (localTower r).depth = r.val := by
         intro r
         refine Fin.cases ?_ (fun s => ?_) r
