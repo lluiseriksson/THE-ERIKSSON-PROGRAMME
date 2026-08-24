@@ -34,7 +34,8 @@ def cmp99SourcePeriodicAxisCubePoint
 noncomputable def cmp99SourcePeriodicAxisCube
     {N : ℕ} (hN : 0 < N) (base : FinBox 4 N) (side : ℕ) :
     Finset (FinBox 4 N) :=
-  Finset.univ.image (cmp99SourcePeriodicAxisCubePoint hN base)
+  (Finset.univ : Finset (Fin 4 → Fin side)).image
+    (cmp99SourcePeriodicAxisCubePoint (side := side) hN base)
 
 @[simp] theorem mem_cmp99SourcePeriodicAxisCube_iff
     {N : ℕ} (hN : 0 < N) (base : FinBox 4 N) (side : ℕ)
@@ -91,7 +92,6 @@ theorem cmp99SourceExtendedFineStratum_last_eq_terminalRegion
 scale.  The printed convention is `geometryFactor >= 10`; the side in scale
 sites is `geometryFactor * M`. -/
 noncomputable def cmp99SourceRegularCubeBigBlocks
-    {FineSite : Type u} [DecidableEq FineSite]
     {n M : ℕ} {scaleExtent : Fin n → ℕ}
     (scaleExtent_pos : ∀ r, 0 < scaleExtent r)
     (scaleIndex : Fin n) (base : FinBox 4 (scaleExtent scaleIndex))
