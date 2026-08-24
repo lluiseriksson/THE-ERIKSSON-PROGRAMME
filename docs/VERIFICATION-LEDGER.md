@@ -40661,3 +40661,43 @@ not construct a depth-uniform physical `B0`/`delta0`, an arbitrary
 localized-field estimate, regional compression, window-15 attainment, rows
 23--24, a terminal field or a `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 943 (2026-08-24, **physical CMP99 (3.35)-(3.36) regularity chain sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+The source-specific ordinary physical regularity chain was first validated at
+scratch checkpoint `010502d5f48f542856b9c567e97bdc274e65f276` by runner
+checkpoint `aeef04f7ff76d14fdd34ae7585c97c312651140d`, revision
+`c6d-eq336-adjoint-cold-v15`, runner SHA-256
+`E0ED7DE4407CD10670386C1565AF888F434798148D245FB5B5A2085250AC244C`.
+That cold focal and audit passed with canonical evidence SHA-256
+`5D443CD083E2AAB0CAA085E418816A6BFE1682E198F0212383EC67C8F615187C`
+and independently retained archive SHA-256
+`40F74ED1D7599D2E0E9A3C8DABFCDA73C598CA92AD1FB8A9E8766AFB2CE13520`.
+
+The exact ten source/audit modules were then promoted at checkpoint
+`f85f09480ffda5502cbd60884eac387ab646a8b5`; its five audit modules were
+imported by `YangMillsCore`. Runner checkpoint
+`2ef06bdf8667f489aeb2de0a7921cff0d866bc19`, revision
+`c6d-eq336-promoted-cold-v1`, runner Git-blob SHA-256
+`B313217094E663DAAE9BB8F548422676683E614181DE9021BE6690698144C021`,
+validated that promoted graph in a fresh Colab Pro+ CPU/high-RAM checkout with
+Lean `4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`.
+
+The cold `YangMillsCore` root completed 10,907 jobs in `8120.232` seconds,
+exit `0`. The regular-cube, Eq. (3.35) forward, Eq. (3.35) witness, Eq. (3.35)
+class, and Eq. (3.36) audits all exited `0` in respectively `7.330`, `5.997`,
+`12.435`, `10.063`, and `15.157` seconds. Their 37 declarations comprise 36
+exact `[propext, Classical.choice, Quot.sound]` blocks and one stricter
+`[propext, Quot.sound]` block. The runner emitted literal
+`FINAL_STATUS=PASS`. Canonical evidence SHA-256 is
+`0A2D7A57CC681CEDCBB47D6FEC8FFC0CC2114A0B392AEB2A6980AA2207C31851`;
+the archive was downloaded and independently rehashed as
+`FCC92924A3E3DAEDC0363FF94B9FFAC8BCAF15742A3AF78545862917A44E46D8`.
+
+This seal certifies the source-specific ordinary CMP99 (3.35)-(3.36) chain,
+including the factor-two-safe ordered-pair/physical-plaquette proof of
+`cmp99PhysicalDStarOneCochain_inner`. It does not construct a Green family,
+regional `B0` or `delta0`, attain window 15, close rows 23--24, or instantiate
+`TermSource`. Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

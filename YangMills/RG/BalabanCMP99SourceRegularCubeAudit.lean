@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceRegularCube
 
 /-!
-# PRE-VALIDATION: promoted audit awaiting compiler seal
-
-This audit is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and these readouts have not been executed.
+# Axiom audit for the CMP99 physical regular-cube declarations
 -/
 
 #print axioms YangMills.RG.mem_cmp99SourcePeriodicAxisCube_iff

@@ -7,12 +7,6 @@ import YangMills.RG.FiniteTorusCurlDiv
 import YangMills.RG.PhysicalGaugeCochains
 
 /-!
-# PRE-VALIDATION: promoted source awaiting compiler seal
-
-This source is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and no compiler or axiom-oracle verdict
-exists for this promoted module.
-
 # CMP99 (3.35): the fine-lattice first derivative of a one-cochain
 
 Printed p. 396 uses `nabla^eta A` in (3.35).  It does not use the covariant

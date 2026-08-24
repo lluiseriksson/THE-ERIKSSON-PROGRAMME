@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq336PhysicalDStarDRegularityClass
 
 /-!
-# PRE-VALIDATION: promoted audit awaiting compiler seal
-
-This audit is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and these readouts have not been executed.
+# Axiom audit for the CMP99 (3.36) physical `d_eta^* d_eta` class
 -/
 
 #print axioms YangMills.RG.cmp99SumOrderedPairSplit

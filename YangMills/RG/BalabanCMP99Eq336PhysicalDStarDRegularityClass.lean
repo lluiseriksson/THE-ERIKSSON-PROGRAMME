@@ -7,12 +7,6 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClass
 import YangMills.RG.FiniteTorusCurlDiv
 
 /-!
-# PRE-VALIDATION: promoted source awaiting compiler seal
-
-This source is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and no compiler or axiom-oracle verdict
-exists for this promoted module.
-
 # CMP99 (3.36): the ordinary physical `d_eta^* d_eta` condition
 
 Printed p. 396 separates (3.36) from the first-difference condition (3.35).

@@ -6,12 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityWitness
 
 /-!
-# PRE-VALIDATION: promoted source awaiting compiler seal
-
-This source is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and no compiler or axiom-oracle verdict
-exists for this promoted module.
-
 # CMP99 (3.35): the all-admissible-cubes physical regularity class
 
 Printed p. 396 defines the regularity class by requiring that, for an

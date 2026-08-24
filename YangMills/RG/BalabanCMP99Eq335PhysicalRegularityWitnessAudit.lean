@@ -6,12 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityWitness
 
 /-!
-# PRE-VALIDATION: promoted audit awaiting compiler seal
-
-This audit is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and these readouts have not been executed.
-
-Axiom queue for the local CMP99 (3.35) physical regularity witness.
+# Axiom queue for the local CMP99 (3.35) physical regularity witness
 -/
 
 #print axioms YangMills.RG.cmp99SourceLocalGaugeActPositiveBond_apply

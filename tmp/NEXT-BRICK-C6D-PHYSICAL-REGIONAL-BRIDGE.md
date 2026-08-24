@@ -1,0 +1,482 @@
+# C6d static boundary: literal source-flow flat B0 to regional CMP99 (3.42)
+
+Status after the first gate: the uniform ambient point-source and
+localized-field queue stopped at its first focal.  The executed source was
+`f681aacdeab3be53ccb0abb70c93493236515323` and the executed runner was
+`59b2ddf5a34d4cd52dc54a617b53975124ca45f6`.  Lean reported only two
+positivity failures in
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0.lean`
+at `47:4` and `85:40`; no audit or localized-field target ran.  Therefore no
+PRE-VALIDATION mark is retired and no theorem is claimed.
+
+The corrected source checkpoint is
+`73bb1a2008c557840a91e50d8abe6b874947f7ee`; the retry runner checkpoint is
+`a754e28555270ebbdab8bff05f262368a39c43fa`, with runner SHA-256
+`2563BFBA3DE16B09733D2AE751A7F39ED0D29282386857EF51F8ED0767A29021`.
+The fast-forward push succeeded on 2026-08-24 and the remote branch was
+verified at `a754e28555270ebbdab8bff05f262368a39c43fa`.  One Colab Pro+ CPU / high
+RAM retry ran in `Untitled207.ipynb` from source
+`73bb1a2008c557840a91e50d8abe6b874947f7ee`.  Its launcher hash gate printed
+the expected
+`2563bfba3de16b09733d2ae751a7f39ed0d29282386857ef51f8ed0767a29021`,
+`RUNNER_REV=source-flow-uniform-point-source-b0-v3`, `RAM_GIB=50.99`, and the
+exact source blob hashes before entering `cache_get`.  The cell was launched
+once, but its frontend disconnected during the focal.  The runtime later
+unassigned; the durable notebook stops at the focal `CMD`, with no `EXIT`, no
+`FINAL_STATUS`, and no matching local archive.  It is therefore classified
+`INCOMPLETE-RUNTIME-LOSS`, not PASS or FAIL, and all four PRE-VALIDATION marks
+remain.
+
+A single durable cold GitHub terminal gate for the same immutable source is
+prepared locally at control commit
+`ebccd7e8811d639587563fe060705811163e1c57`.  It verifies all four source blob
+hashes, runs the uniform focal/audit followed by the localized focal/audit
+stop-on-first-error, gates exactly five plus two axiom blocks, and uploads an
+artifact even on failure.  It has not been pushed or dispatched: the required
+preflight stopped because `gh auth status` reported the `lluiseriksson` token
+invalid and Git HTTPS returned `Failed to connect to github.com port 443`.
+No fallback, force-push, workflow dispatch, local Lean/Lake or second Colab
+run was attempted.
+
+The fail-closed recovery command is prepared and PowerShell-parse checked:
+
+```text
+5EE72D9E479785911FD3D6BCCD06FB8715FEC0E2FAA95D5C03EDFCC15CA51079
+  tmp/push_and_dispatch_uniform_b0_terminal.ps1
+```
+
+It requires the exact local/control SHA, accepts only the known remote parent
+or the already-published control SHA, proves fast-forward ancestry before the
+push, verifies the remote head, refuses a second dispatch for the same head,
+and then launches exactly one cold terminal workflow.  It must not be run
+until `gh` again authenticates as `lluiseriksson`.
+
+The owner subsequently published and re-verified the retry control
+`a754e28555270ebbdab8bff05f262368a39c43fa`; this does not publish the
+terminal control commit.  The local branch remains exactly one commit ahead
+at `ebccd7e8811d639587563fe060705811163e1c57`, with the large unrelated
+untracked worktree preserved.  No terminal workflow has yet been dispatched
+for that SHA.
+
+The terminal evidence retrieval boundary is now also prepared and tested
+without network or Lean:
+
+```text
+6D6A6082DC81184C86E18D3F1E96C5279541CE40EFE219975FBE04F2FF05203D
+  tmp/audit_uniform_localized_b0_terminal_evidence.py
+41239055ECD306BE864C2DED6D4F0D95B6D42B0D3B994AE210F1CE2DF47AE1C8
+  tmp/test_uniform_localized_b0_terminal_evidence.py
+BF6151533D98C35461C46D9498A12DB367D2998C0E81AFAF6EE8EAC06ADD211B
+  tmp/retrieve_uniform_localized_b0_terminal_evidence.ps1
+```
+
+The synthetic self-test prints
+`UNIFORM_LOCALIZED_B0_TERMINAL_EVIDENCE_SELFTEST_OK` and proves both a PASS
+fixture and fail-closed rejection after tampering with `FINAL_STATUS`.  The
+retriever selects exactly one workflow run by the exact control SHA, downloads
+both the raw GitHub ZIP and its extracted artifact, and accepts it only after
+checking the four zero exits, five plus two measured axiom blocks, exact
+source/control/toolchain/Mathlib pins, `SHA256SUMS`, the deterministic inner
+archive digest, and byte equality of both archive layers.  A GitHub run summary
+alone is never evidence for this gate.
+
+## Fixed input after the current gate
+
+The verified endpoint, if the gate passes, controls only
+
+`G_flat Q'^* : coarse source field -> ambient fine zero-cochain`
+
+with one `rho > 0` and one `B0 > 0` uniform in `depth`.  The arbitrary source
+field is supported at one literal source owner and the estimate has no source
+cardinality factor.  It is complex, ambient and flat; it is not the regional
+Dirichlet Green and gives none of the three derivative actions in (3.42).
+
+## Finite source-faithful chain
+
+1. **CMP99 (3.35) local representative.** Promote the literal ordinary
+   forward derivative and the cube-local regularity witness.  The gauge stays
+   local; no global gauge identity is assumed.  The witness is a cited source
+   output, not a supplied perturbation norm or Green estimate.
+2. **Exact read carrier.** Prove the one-bond collar theorem for the regional
+   covariant Laplacian and discharge its inclusion from the printed
+   `Omega'_0 subset square` dictionary plus the generated retained-carrier
+   endpoint.  The canonical identity extension is only an implementation
+   device; operator equality must be a theorem on the read carrier.
+3. **Literal interacting precision.** Construct the regional/ambient
+   `Delta'_a = Delta_U + Q'^* a Q'` using the retained physical tower.
+   Identify the exact `Q'` by the terminal tower theorem.  Do not use the
+   generated coefficient and do not accept `SmallBackgroundPerturbation`.
+4. **Printed perturbation factorization.** Derive the difference from the
+   exponential representative using the literal CMP99 (3.61)--(3.63)
+   algebra, including the exact three-term `Q'^* a Q'` contribution.  The
+   `O(alpha1)` weighted owner bound must be produced from the (3.35) amplitude
+   and forward-derivative bounds; it cannot be an input named after the
+   desired estimate.
+5. **Dirichlet compression and resolvent.** Compress both literal precisions
+   to the same active region, prove the compressed perturbation identity, and
+   construct the interacting inverse by the first/second resolvent identity
+   from the flat inverse.  The relative weighted norm `< 1` is an attained
+   scalar theorem, not a free hypothesis.  Use the uniform ambient `B0,rho`
+   once; no depth-dependent CT/Poincare coefficient may replace it.
+6. **Four physical actions.** Build value, left derivative, right adjoint
+   derivative and Laplacian estimates for the same canonical regional Green.
+   Derivative spacing is literally `L^(depth+1) * spacing`; operator
+   identities precede estimates.  Combine their amplitudes with
+   `cmp99Eq342CommonAmplitude` only after each action is constructed.
+7. **Uniform certificate.** Produce one
+   `CMP99Eq342SourceLocalizedGreenCertificate` with `B0,delta0` independent
+   of depth.  Nonempty regional carrier must be derived from the physical
+   root/index, not assumed for an arbitrary region.
+8. **Window 15.** Feed the certificate into the direct CMP99 (3.89)
+   correction estimate.  The `K^-1` gain enters before owner/layer summation,
+   overlap remains the single source `16`, and the weighted owner norm is
+   used instead of the sealed generated CT+Schur budget ruled out at depth
+   zero.  Only a proved `norm R' < 1` marks window 15 attained.
+
+## Existing scratch prefix that may be promoted, never presumed verified
+
+- `BalabanCMP99Eq335PhysicalForwardDerivative.draft.lean`
+- `BalabanCMP99Eq335PhysicalRegularityWitness.draft.lean`
+- `BalabanCMP99Eq335PhysicalRegularityLaplacianLocality.draft.lean`
+- `BalabanCMP99Eq335SourceRegionDictionary.draft.lean`
+- `BalabanCMP99Eq335PhysicalLocalizedRetainedTowerOfSourceRegion.draft.lean`
+
+Every one remains scratch/PRE-VALIDATION until a fresh Colab focal and audit
+passes.  The existing per-depth generated
+`BalabanCMP96SourceSeparatedRegionalPrefixEq342Certificate` is not an
+acceptable uniform replacement.
+
+## Atomic promotion boundary before step 1
+
+The five visible endpoints above are not an independently compilable overlay.
+Their exact scratch import closure is the 40-path source/audit list in
+`tmp/C6C8F5B-FULL-SCRATCH-PATHS.txt`.  The current fail-closed promotion
+preview reports
+
+```text
+STEP8B24_C6C8F5B_PROMOTION_PREVIEW_OK
+files=40
+new_declarations=2
+new_audit_readouts=2
+manifest_sha256=7BB90E48BB18EBFE8777F24D5CBEBA71E3B1B980B7E6AAD137207F73E35D1B29
+```
+
+on 2026-08-24 in `0.282` seconds.  This is a Windows-light textual/hash check,
+not compiler evidence.  A later Colab gate must materialize and hash all forty
+paths atomically; compiling only one of the five endpoints against absent or
+stale `.olean` files is not evidence.  The stop-on-first-error order is:
+
+1. retained endpoint geometry plus audit;
+2. source-region dictionary plus audit;
+3. localized retained prefix plus audit;
+4. source-region closure plus audit.
+
+No new overlay is to be launched until the currently running uniform
+point-source/localized-field B0 gate has emitted and preserved its terminal
+verdict.
+
+The fail-closed materializer is prepared but has not been applied:
+
+```text
+tmp/promote_step8b24_c6c8f5b.py
+SHA256=1A72CC711A1D6F181D079F23D1E3B3CBC2E6624A2DFA85B25ED9F815BA5CF668
+C6C8F5B_MATERIALIZATION_PREVIEW_OK files=40
+```
+
+Its default mode is read-only; `--apply` refuses every pre-existing target,
+writes the pinned LF-normalized bytes, rehashes the result and rolls back its
+own partial writes on failure.  It deliberately preserves all forty
+PRE-VALIDATION notices.
+
+### Semantic classification of that overlay
+
+The 40-file closure is **support/interface infrastructure, not by itself the
+complete source regularity interface in step 1**.  Its final public wrapper removes the intermediate
+`hinside : CMP99Eq335RetainedFineReadCarrierInsideRegularCube` premise by
+deriving it from the source-region dictionary, and it exposes no Green or
+four-action bound.  However it still receives
+
+```text
+W : CMP99Eq335PhysicalRegularityWitness ...
+D : CMP99Eq335Corollary36SourceRegionDictionary ...
+chain : CMP99SourceUbarRadiusChain ...
+```
+
+The scalar `chain` is an already sealed no-winding/log-radius regime, and the
+retained carrier inclusion is derived internally.  `W` contains the cube-local
+gauge, logarithmic representative, exponential identity and both literal
+(3.35) bounds.
+
+Visual inspection of CMP99 printed p. 396 fixes the logical status: (3.35) is
+the **definition of the regularity class of configurations**.  It says that
+for an arbitrary cube of the stated class and a configuration `U`, there
+exists a cube-local gauge and representative satisfying the two bounds.  It
+does not assert that every arbitrary `U` has such a witness.  Therefore an
+unconditional producer of `W` would be false; the faithful source premise is
+membership in that regularity class, quantified over every admissible cube,
+and `W` should be derived by specializing that premise to the cube selected
+for the regional argument.  Consequently:
+
+- a green validation of the forty files must be reported as a geometric and
+  interface prefix only;
+- it cannot mark the source regularity dictionary complete or move any
+  physical counter merely because one consumer accepts `W`;
+- the real step-1 endpoint must introduce the source-faithful
+  all-admissible-cubes regularity-class predicate and derive the needed `W`
+  for the selected cube;
+- retaining that named class-membership premise is legitimate source data;
+  replacing it by an arbitrary per-region `W`, or claiming `W` for every `U`,
+  is not.
+
+Printed p. 408 independently confirms the downstream quantifier order in
+Corollary 3.6: `U` satisfies (3.35), `Omega'_0` lies in one admissible cube,
+and `O(1) M alpha0 <= alpha1`; only then do Theorems 3.1--3.3 apply.  The
+source PDF is `cmp99/1103942769.pdf`, SHA-256
+`39F8033B35838C7BDD14F97C7FB1EDB0B35D4190B8B88F31D19D12A72D542861`.
+
+The corrected all-cubes interface is now written in scratch only:
+
+```text
+33767C129BF52C29BA7E1C6B771002C58693E617017D5CF039BDF70AE53B1AEC
+  tmp/BalabanCMP99Eq335PhysicalRegularityClass.draft.lean
+EEFA756993496832AF7CAA4FF322749979C6C133AA9C0CAC8200F1F5001F5BEC
+  tmp/BalabanCMP99Eq335PhysicalRegularityClassAudit.draft.lean
+```
+
+It separates cube data from class membership and derives the old one-cube
+witness only after the cube and Corollary-3.6 scalar gate are supplied.  Its
+two-file textual and import-prefix guards pass; it has not been compiled and
+must not be promoted before the corrected B0/C6b retry passes.
+
+The public regional consumer that removes the arbitrary per-region witness is
+also written in scratch only:
+
+```text
+4BFB3D2748581860A7178795EF3CFE01566D895D7F4C21C667E91303613FD7A0
+  tmp/BalabanCMP99Eq335PhysicalRegularityClassLocalizedRetainedTower.draft.lean
+AEFD4126CF1182F13F2C5D10ADE4D903AD71E63E59C7AABE9924704C491F4896
+  tmp/BalabanCMP99Eq335PhysicalRegularityClassLocalizedRetainedTowerAudit.draft.lean
+```
+
+Its contract receives class membership, the selected regular cube, the
+literal source-region dictionary and the separate Corollary-3.6 scale gate.
+It constructs `W` internally and then calls the geometric prefix.  The
+four-path boundary and both guards are recorded in
+`tmp/C6D-EQ335-REGULARITY-CLASS-CONSUMER-PATHS.txt`.  This is still static
+work: it has no compiler verdict and does not move a counter.
+
+The four-file promotion boundary is now fail-closed and reproducible:
+
+```text
+C6D_EQ335_PROMOTION_PREVIEW_OK files=4 declarations=5 audit_readouts=5
+  manifest_sha256=541381D7C8238DF851A372C0A84489FA96F5709418A8146BAF60811B15EA21AE
+1B5E133889C8CB42DB98F83586B6B8A5B601D87D9176D474E2E43F07FC217C67
+  tmp/audit_c6d_eq335_regularity_class_promotion_preview.py
+9847568F74F0AE6308F2E0219E3F5C0F2D1B79198631B1FC8C47DCFD84F565F2
+  tmp/promote_c6d_eq335_regularity_class.py
+```
+
+The materializer remains read-only by default.  Its `--apply` mode refuses
+to run until the exact regularity-witness and source-region consumer targets
+from the forty-file prefix exist; it then refuses every collision, preserves
+all four PRE-VALIDATION notices and rolls back its own partial writes on
+failure.  It has not been applied.
+
+### Public-input audit of the forty-file prefix
+
+A declaration-by-declaration static scan confirms that `fineSmall` is confined
+to the low-level localized-`Ubar` constructors, and `hinside` is confined to
+the intermediate regularity-witness methods.  Neither survives the
+source-region wrapper, and neither survives the new regularity-class wrapper.
+No value, derivative, Laplacian or Green bound is an input to either final
+endpoint.  The surviving public data are exactly:
+
+- source membership `R : CMP99Eq335PhysicalRegularityClass ...`;
+- the selected regular cube `C` and literal source-region dictionary `D`;
+- the explicit Corollary-3.6 scale inequality `hscale`;
+- the generated region chain and its scalar construction regime
+  (`hM`, `rho`, `halpha1`, `chain`).
+
+`CMP99SourceUbarRadiusChain` is already a purely scalar inductive regime: its
+constructors store nonnegativity, no-winding and logarithmic-radius
+inequalities, but no background field or linkwise estimate.  Thus the prefix
+does not rename a missing physical Green estimate as a hypothesis.  This scan
+is static evidence only and does not replace the pending Colab build.
+
+### Closed promoted boundary between (3.35) and (3.36)
+
+The ordinary physical chain described below is no longer a scratch candidate.
+It was promoted at source checkpoint
+`f85f09480ffda5502cbd60884eac387ab646a8b5` and sealed from a fresh Colab
+Pro+ checkout by runner checkpoint
+`2ef06bdf8667f489aeb2de0a7921cff0d866bc19` (runner Git-blob SHA-256
+`B313217094E663DAAE9BB8F548422676683E614181DE9021BE6690698144C021`).
+The cold root completed 10,907 jobs in `8120.232` seconds; all five direct
+audits passed, covering 37 declarations. Canonical evidence SHA-256 is
+`0A2D7A57CC681CEDCBB47D6FEC8FFC0CC2114A0B392AEB2A6980AA2207C31851`;
+the independently rehashed archive SHA-256 is
+`FCC92924A3E3DAEDC0363FF94B9FFAC8BCAF15742A3AF78545862917A44E46D8`.
+
+The promoted endpoint is the named theorem
+`cmp99PhysicalDStarOneCochain_inner`. Its proof avoids the spurious factor two
+by splitting ordered direction pairs exactly once and transporting the
+concrete plaquette sum through `cmp99PhysicalPlaquetteSigmaEquiv`. The ten
+module-level PRE-VALIDATION notices can therefore be retired by the seal
+commit. The historical pre-seal design record below is retained to make the
+factor-two gate and its resolution auditable; every claim there that the
+ordinary Eq. (3.35)/(3.36) chain is only scratch or unelaborated is superseded
+by this paragraph.
+
+This closure remains deliberately below the regional analytic endpoint: it
+constructs no Green family, regional `B0` or `delta0`, does not attain window
+15, and does not move a terminal counter. Counters remain `20/41`,
+`TermSource = 0`.
+
+#### Historical pre-seal design record
+
+Printed p. 396 states that the operators used up to Theorems 3.1--3.3 need
+only (3.35); the later `G/H` layer additionally needs (3.36).  A repository
+scan finds no current realization of the literal second condition
+`|d_eta^* d_eta A| < O(1) M alpha0 (L^j eta)^-3`.  In particular:
+
+- `BalabanCMP99Eq335PhysicalCovariantDerivative.draft.lean` is already
+  retracted and represents the later covariant tensor `D^U A`, not (3.35) or
+  (3.36);
+- `cmp99PhysicalForwardOneDerivative` is the correct full ordinary
+  first-difference tensor for (3.35), but iterating it generically would not
+  identify the exterior/codifferential composition printed in (3.36);
+- `FiniteTorusCurlDiv.lean` supplies the forward difference, ordered curl,
+  backward difference and summation-by-parts substrate, but no named physical
+  `d_eta^* d_eta` one-cochain operator yet.
+
+Therefore the present C6d `G'` bridge must consume only class membership for
+(3.35).  The later `G/H` bridge needs a separately source-checked (3.36)
+operator and class extension; it must not strengthen this interface now or
+rename (3.36) as an arbitrary second-derivative bound.
+
+A two-file scratch candidate now makes that later boundary concrete:
+
+```text
+7628A08230E67C808C2FEA916D96F64F7D3E8152003F5ECF47DB69690F9B1909
+  tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClass.draft.lean
+7AD3CB30A13016754EAEAA4FCBB08843D4CC48A58AD7DFCA47FDF5158005A781
+  tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClassAudit.draft.lean
+40883BFCD9F13E4D8FD1DCFA9C3FCA405D89FBB821C66EC75E33B00592890131
+  tmp/CMP99DStarPairSummationByPartsRepro.lean
+95930820F739BC294A2B3D9D85C15A6092B95F1DF15730D1F8CD56DA6456E448
+  tmp/C6D-EQ336-ADJOINT-PATHS.txt
+```
+
+It keeps both `eta^-1` factors visible, stores the (3.35) cube datum inside
+the stronger (3.36) datum, and derives the weaker all-cubes class by
+forgetting the `d_eta^* d_eta` bound.  Text and import-prefix guards pass.
+It is deliberately not in either promotion boundary: before promotion its
+negative-backward-difference convention must be tied to the source by a named
+one-/two-cochain adjointness theorem, then compiled and audited.  No present
+counter or C6d `G'` endpoint depends on it.
+
+The static sign/orientation audit now fixes the exact convention that theorem
+must express.  `PhysicalGaugeTwoCochain` is indexed only by concrete
+plaquettes `mu < nu`, while `torusCurl` is defined for every ordered pair and
+is antisymmetric.  For an ordered-plaquette field `F`, extend it by
+
+```text
+F_ord(mu,nu) = F(mu,nu)       when mu < nu,
+              -F(nu,mu)      when nu < mu,
+               0             when mu = nu.
+```
+
+Then finite-torus summation by parts gives, with no factor two,
+
+```text
+(d_eta^* F)_nu = -eta^-1 * sum_mu backward_mu F_ord(mu,nu).
+```
+
+Indeed the `mu < nu` plaquettes contribute the negative-backward term, while
+the `nu < mu` plaquettes contribute the positive term through the
+antisymmetric extension.  Taking
+`F_ord(mu,nu) = eta^-1 * torusCurl A mu nu` is therefore exactly the scratch
+candidate `cmp99PhysicalDStarDOneCochain`.  The missing compiled gate is now
+sharply named: define the antisymmetric extension and the scaled full
+one-to-two differential, then prove that this explicit codifferential equals
+its Hilbert adjoint (equivalently, prove the global inner-product identity).
+Using a sum over all ordered direction pairs without the `mu < nu`
+normalization would introduce a spurious factor two and is rejected.
+The three-file exact path manifest passes the repository's lightweight overlay
+gate (`LEAN_OVERLAY_TEXT_OK files=3`): no `sorry`/`admit`, balanced command
+scope and balanced delimiters.  This remains textual evidence only; all new
+declarations and the pairwise summation-by-parts proof are still awaiting a
+Colab elaboration and axiom audit.  The pairwise proof is duplicated in the
+minimal `FiniteTorusCurlDiv`-only repro so that its first elaboration does not
+pay for the full CMP99 physical import graph.
+
+The scratch boundary now also contains `cmp99SumOrderedPairSplit` (and the
+minimal `_repro` copy).  It proves the finite triangular reindexing directly:
+the diagonal is zero and the two ordered orientations are combined exactly
+once under `mu < nu`.  This is intentionally not phrased through `Sym2`, since
+the lower/upper orientation determines which one-cochain component and which
+backward derivative occur.  Together with the pairwise summation-by-parts
+theorem it removes the combinatorial source of a factor two.  It does not yet
+prove the global `PiLp` adjointness identity: that final composition still has
+to expand the one-cochain inner product, apply the ordered-pair split, and
+identify the concrete-plaquette sum.  No adjointness record or equality is
+assumed in its place.
+
+The concrete-plaquette side is now likewise explicit rather than dependent on
+the repository's internal `Fintype` enumerator.  The scratch equivalence
+`cmp99PhysicalPlaquetteSigmaEquiv` identifies a physical plaquette with
+`Sigma x, Sigma mu, {nu // mu < nu}`, and
+`cmp99SumPhysicalPlaquette_eq_sigma` transports arbitrary additive sums along
+that equivalence.  Both have minimal-repro copies.  The remaining global gate
+is therefore algebraic and finite: expand the one-cochain `PiLp` inner product,
+apply the ordered-pair split plus the pairwise summation-by-parts identity, and
+finish through this explicit plaquette-sum equivalence.  These new declarations
+remain unelaborated PRE-VALIDATION source; the exact-path text guard alone does
+not certify them.
+
+The final theorem is now fixed at statement level, with no adjointness datum as
+an input:
+
+```text
+inner R A (cmp99PhysicalDStarOneCochain eta F)
+  = inner R (cmp99PhysicalScaledD1OneCochain eta A) F.
+```
+
+Its finite normal form is likewise fixed.  Expand the left `PiLp` inner
+product as `sum_x sum_nu`, move the site sum inside, and call the summand
+
+```text
+T(mu,nu) = sum_x inner A(x,nu)
+  ((-eta^-1) * backward_mu (F_ord(mu,nu)) x).
+```
+
+`cmp99SumOrderedPairSplit T (fun mu nu => T nu mu)` changes the unrestricted
+ordered sum into one term for each `mu < nu`.  On that branch the two terms
+are definitionally the negative-backward and positive-backward summands of
+`cmp99PhysicalDStar_pair_inner`; its conclusion is exactly the scaled curl
+paired with the independent plaquette value.  A single elementary helper
+
+```text
+sum_nu (if h : mu < nu then f nu h else 0)
+  = sum_{nu : {nu // mu < nu}} f nu.1 nu.2
+```
+
+then converts the triangular `if` sum to the proof-carrying subtype.  Commuting
+the remaining finite site sum and applying
+`cmp99SumPhysicalPlaquette_eq_sigma` produces the right `PiLp` inner product.
+This pipeline consumes only already named finite identities; it introduces no
+regularity, source dictionary or operator equality as a hypothesis.  The
+subtype helper, the global theorem and their audit readouts must first pass in
+the minimal repro and then in the physical module before any promotion.
+
+## Acceptance invariants
+
+- no free Green family, perturbation norm, relative inverse estimate or
+  regional `B0/delta0`;
+- no identification of generated and source coefficients;
+- no global extension of a cube-local source theorem;
+- no loss of the source-owner orientation;
+- no source-cardinality factor;
+- no generated CT+Schur route declared as physical attainment;
+- counters stay `20/41`, `TermSource = 0` until an actual terminal producer is
+  installed.

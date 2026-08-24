@@ -8,12 +8,6 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalForwardDerivative
 import YangMills.RG.BalabanCMP99SourceRegularCube
 
 /-!
-# PRE-VALIDATION: promoted source awaiting compiler seal
-
-This source is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and no compiler or axiom-oracle verdict
-exists for this promoted module.
-
 # CMP99 (3.35): local physical regularity witness
 
 The gauge furnished by CMP99 is local to one regular cube.  Accordingly this

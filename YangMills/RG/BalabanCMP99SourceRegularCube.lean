@@ -6,12 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceScaledStratification
 
 /-!
-# PRE-VALIDATION: promoted source awaiting compiler seal
-
-This source is present at its promoted repository path. Its `.olean` has not
-yet been materialized for this path, and no compiler or axiom-oracle verdict
-exists for this promoted module.
-
 # CMP99 p. 396: physical regular cubes
 
 The printed cube is not represented by a free finite carrier.  It is generated
