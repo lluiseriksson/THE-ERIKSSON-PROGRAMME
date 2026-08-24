@@ -316,7 +316,8 @@ theorem cmp99PhysicalDStarOneCochain_inner
             apply Fintype.sum_congr
             intro nu
             by_cases hmunu : mu < nu <;>
-              simp only [lower, upper, hmunu, dite_true, dite_false]
+              simp only [lower, upper, hmunu, dite_true, dite_false,
+                if_true, if_false]
     _ = ∑ mu : Fin d, ∑ nu : Fin d,
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
