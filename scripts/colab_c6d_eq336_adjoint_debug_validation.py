@@ -13,7 +13,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "0bb0046ed1a932de4d8b387172de3d808e5186fc"
+SOURCE_SHA = "e98bd2f7f2c81b271eaf24b635cf1af20db5bb51"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -47,14 +47,14 @@ SOURCE_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClass.draft.lean"
 AUDIT_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClassAudit.draft.lean"
 REPRO_PATH = "tmp/CMP99DStarPairSummationByPartsRepro.lean"
 
-runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v3"
+runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v4"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-eq336-adjoint-debug")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-c6d-eq336-adjoint-debug-paths.txt")
 runner.SOURCE_BLOBS = {
-    REGULAR_CUBE_PATH: "99d178132f3869215529c8ec09c980bb2f06112b825a0860f4b442521790527b",
+    REGULAR_CUBE_PATH: "99ecba48e6298980bd6443eb61aa62ec92055c64b262f539bcf4077e74019b10",
     REGULAR_CUBE_AUDIT_PATH: "433de67e650961c902f62b26b12a5ee6646c33b5dbc73c1e3fc42102b6514966",
     FORWARD_PATH: "65634e403fc0cf35029e063cb4ef35d494b653f0ef5eec290bf80dd06caadb6c",
     FORWARD_AUDIT_PATH: "72025c310ac02d756e7c9005fc006aae42ca155d9859b7a36cefa2310705fdf6",
