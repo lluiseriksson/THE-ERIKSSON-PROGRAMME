@@ -5,6 +5,6 @@ PRE-VALIDATION: source is present in scratch only; no `.olean` has been
 materialized and no compiler or axiom-oracle verdict exists for this module.
 -/
 
-#print axioms CMP99SourceLocalizedRetainedTower
-#print axioms cmp99SourceLocalizedRetainedTower
-#print axioms CMP99SourceLocalizedRetainedTower.terminalQprime_eq
+#print axioms YangMills.RG.CMP99SourceLocalizedRetainedTower
+#print axioms YangMills.RG.cmp99SourceLocalizedRetainedTower
+#print axioms YangMills.RG.CMP99SourceLocalizedRetainedTower.terminalQprime_eq
