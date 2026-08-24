@@ -65,7 +65,12 @@ private structure CMP99SourceLocalizedCanonicalRetainedAux
   prefixTerminalSpace_eq : ∀ r,
     (localTowerAt r).TerminalSpace = (canonicalTowerAt r).TerminalSpace
   prefixQprime_eq : ∀ r,
-    cmp99SourceTerminalCLMTransport rfl (prefixTerminalSpace_eq r)
+    cmp99SourceTerminalCLMTransport
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (F := (localTowerAt r).TerminalSpace)
+        (F' := (canonicalTowerAt r).TerminalSpace)
+        rfl (prefixTerminalSpace_eq r)
         (localTowerAt r).Qprime =
       (canonicalTowerAt r).Qprime
   localTerminal_eq_generated :
@@ -111,7 +116,12 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
         subst r
         rfl
       have stopPrefix : ∀ r : Fin 1,
-          cmp99SourceTerminalCLMTransport rfl rfl stopTower.Qprime =
+          cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := stopTower.TerminalSpace)
+              (F' := stopTower.TerminalSpace)
+              rfl rfl stopTower.Qprime =
             stopTower.Qprime := by
         intro _
         rfl
@@ -224,15 +234,29 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
             (Tail.canonicalTowerAt s).TerminalSpace
           exact Tail.prefixTerminalSpace_eq s
       have prefixEq : ∀ r : Fin (tailDepth + 2),
-          cmp99SourceTerminalCLMTransport rfl (prefixSpaceEq r)
+          cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := (localTower r).TerminalSpace)
+              (F' := (canonicalTower r).TerminalSpace)
+              rfl (prefixSpaceEq r)
               (localTower r).Qprime =
             (canonicalTower r).Qprime := by
         intro r
         refine Fin.cases ?_ (fun s => ?_) r
-        · change cmp99SourceTerminalCLMTransport rfl rfl localHead.Qprime =
-            canonicalHead.Qprime
+        · change cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := localHead.TerminalSpace)
+              (F' := canonicalHead.TerminalSpace)
+              rfl rfl localHead.Qprime = canonicalHead.Qprime
           rfl
-        · change cmp99SourceTerminalCLMTransport rfl
+        · change cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := (Tail.localTowerAt s).TerminalSpace)
+              (F' := (Tail.canonicalTowerAt s).TerminalSpace)
+              rfl
               (Tail.prefixTerminalSpace_eq s)
               ((Tail.localTowerAt s).Qprime.comp
               (cmp99SourceTransportedBlockAverageCLM Omega
@@ -240,8 +264,16 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
             = (Tail.canonicalTowerAt s).Qprime.comp
               (cmp99SourceTransportedBlockAverageCLM Omega
                 (cmp99SourceWeightedPhysicalTransport rho canonicalBackground))
-          rw [← cmp99SourceTerminalCLMTransport_comp rfl rfl
-            (Tail.prefixTerminalSpace_eq s)]
+          rw [← cmp99SourceTerminalCLMTransport_comp
+            (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+            (F := cmp99SourcePhysicalTerminalHilbertSpace Nc
+              (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+            (G := (Tail.localTowerAt s).TerminalSpace)
+            (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+            (F' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+              (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+            (G' := (Tail.canonicalTowerAt s).TerminalSpace)
+            rfl rfl (Tail.prefixTerminalSpace_eq s)]
           rw [Tail.prefixQprime_eq s, headEq]
       have localDepth : ∀ r, (localTower r).depth = r.val := by
         intro r
@@ -396,6 +428,7 @@ noncomputable def cmp99SourceLocalizedRetainedTower
     Aux.canonicalTowerAt_depth Aux.localTowerAt_zero
     Aux.canonicalTowerAt_zero (fun r =>
       cmp99SourceHEq_of_terminalCLMTransport_eq
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
         (Aux.prefixTerminalSpace_eq r) (Aux.localTowerAt r).Qprime
         (Aux.canonicalTowerAt r).Qprime (Aux.prefixQprime_eq r))
     Aux.localTerminal_eq_generated Aux.canonicalTerminal_eq_generated
