@@ -14645,3 +14645,37 @@ the two PRE-VALIDATION marks and imports the audit into `YangMillsCore`.  This
 seals C5 only, not a regional or uniform `B0`/`delta0` bound, window-15
 attainment, rows 23--24, or a `TermSource` instance.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6c.9s: literal source-flow point-source B0 (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPointSourceB0` names the
+complete fixed-depth coefficient multiplying the literal source-flow C5
+owner estimate.  It retains explicit dependence on `a`, `L`, `depth` and
+`rho`, proves nonnegativity from the existing physical strip window, and
+restates the point-source estimate with that named coefficient.  It does not
+replace the physical coefficient by its generated analogue.
+
+PRE-VALIDATION checkpoint `ba332c4e3cd21f672be064630ae6f8c7d2aaccd4`
+fixed source/audit Git-blob SHA-256 values
+`7D3FC852D84354547731D714A1D3B72C825E9E619065185D193ED65FCAEA61F7`
+and
+`E5467A95379F8C375C4D6B6DD50D3C69DBA8899C13F02089D2CD0E63D0B637E5`.
+Runner checkpoint `602ab7a3054e1caabd09cccb25beaee11c3f188e`, revision
+`source-flow-point-source-b0-v1`, passed in a fresh Colab Pro+ CPU/high-RAM
+checkout.  The focal compiled `8775` jobs in `1735.290` seconds and the audit
+ran in `13.671` seconds; both exited `0`.  All three declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`; `FINAL_STATUS=PASS`.
+Evidence SHA-256 is
+`DC2E4A8CADA2A0FF518779F3E0B657228E2200C33FE851A2B5041A8B4F3D27B4`;
+runner-reported archive SHA-256 is
+`2147D62DBD29256E6428711A2AB6874DC572CB881DC4EDF0839A8BDC5306E70C`.
+The complete structured transcript remains durable in Drive; no local archive
+rehash is claimed.
+
+Seal checkpoint `175df8ba0342b50e524ac7388dd832754e453a60` retires exactly
+the two PRE-VALIDATION notices and imports the audit into `YangMillsCore`.
+This is fixed-depth ambient point-source C6a only.  Uniform physical
+`B0`/`delta0`, arbitrary localized-field C6b, the regional/Dirichlet Green,
+window-15 attainment, rows 23--24 and a `TermSource` remain open.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

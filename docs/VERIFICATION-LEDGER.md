@@ -40622,3 +40622,42 @@ CMP99 (3.89) source-localization owner while preserving the literal source-flow
 coefficient.  It does not construct a regional or uniform `B0`/`delta0`, attain
 window 15, close rows 23--24, or instantiate `TermSource`.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 942 (2026-08-24, **literal source-flow point-source B0 sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint `ba332c4e3cd21f672be064630ae6f8c7d2aaccd4`
+introduced the fixed-depth source-flow C6a source/audit pair.  Their Git-blob
+SHA-256 values are
+`7D3FC852D84354547731D714A1D3B72C825E9E619065185D193ED65FCAEA61F7`
+and
+`E5467A95379F8C375C4D6B6DD50D3C69DBA8899C13F02089D2CD0E63D0B637E5`.
+Runner checkpoint `602ab7a3054e1caabd09cccb25beaee11c3f188e`, revision
+`source-flow-point-source-b0-v1`, with SHA-256
+`3B48613BFC798AC20437CCBAD4C555CB051C15186C5E141AF84BB3125B554260`,
+validated the exact source in a fresh Colab Pro+ CPU/high-RAM checkout with
+Lean `4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed `8775` jobs in `1735.290` seconds, exit `0`; the audit
+completed in `13.671` seconds, exit `0`.  All three declarations printed
+exactly `[propext, Classical.choice, Quot.sound]`.  The transcript emitted
+literal `FINAL_STATUS=PASS` and requested runtime unassignment.  Canonical
+evidence SHA-256 is
+`DC2E4A8CADA2A0FF518779F3E0B657228E2200C33FE851A2B5041A8B4F3D27B4`;
+runner-reported archive SHA-256 is
+`2147D62DBD29256E6428711A2AB6874DC572CB881DC4EDF0839A8BDC5306E70C`.
+The browser archive transfer was not retained locally, so no independent
+archive rehash is claimed.  The complete executed notebook remains durable
+in Drive as file `1PPBz2AH18pZdgQKDWSaDzMLW6CNDbl8i` (228621 bytes, modified
+`2026-08-23T21:50:43.093Z`); it was re-fetched through the connected Drive
+reader and contains the exact hashes, exits, axioms and sentinel above.
+
+Seal checkpoint `175df8ba0342b50e524ac7388dd832754e453a60` retires exactly
+the two certified PRE-VALIDATION notices and imports the audit into
+`YangMillsCore`.  The theorem names the complete fixed-depth coefficient
+exposed by sealed C5, proves its nonnegativity on the physical strip window,
+and preserves the literal source-flow point-source owner estimate.  It does
+not construct a depth-uniform physical `B0`/`delta0`, an arbitrary
+localized-field estimate, regional compression, window-15 attainment, rows
+23--24, a terminal field or a `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
