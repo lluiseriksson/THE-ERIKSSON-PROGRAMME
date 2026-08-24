@@ -65,7 +65,10 @@ theorem cmp99SumOrderedPairSplit
     _ = ∑ mu : ι, ∑ nu : ι,
           ((if mu < nu then lower mu nu else 0) +
             (if mu < nu then upper mu nu else 0)) := by
-      rw [Finset.sum_add_distrib, Finset.sum_add_distrib]
+      rw [← Finset.sum_add_distrib]
+      apply Finset.sum_congr rfl
+      intro mu _
+      rw [← Finset.sum_add_distrib]
     _ = ∑ mu : ι, ∑ nu : ι,
           if mu < nu then lower mu nu + upper mu nu else 0 := by
       apply Finset.sum_congr rfl
@@ -114,7 +117,7 @@ theorem cmp99SumPhysicalPlaquette_eq_sigma
           f (e.symm q) := by
       exact Fintype.sum_equiv e _ _ (fun p => by simp)
     _ = _ := by
-      rw [Fintype.sum_sigma, Fintype.sum_sigma]
+      simp only [Fintype.sum_sigma]
       rfl
 
 /-- Extend a physical two-cochain from the independent plaquettes `mu < nu`
