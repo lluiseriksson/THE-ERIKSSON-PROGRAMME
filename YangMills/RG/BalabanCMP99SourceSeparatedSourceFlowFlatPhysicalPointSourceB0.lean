@@ -8,9 +8,6 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalSourceOwner
 /-!
 # Ambient point-source coefficient for the literal source-flow Green
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 C5 leaves the complete source-flow coefficient visible in front of the CMP99
 source-owner decay.  This file names that coefficient and restates the C5
 column estimate with it.  Its dependence on the physical source mass `a`,
