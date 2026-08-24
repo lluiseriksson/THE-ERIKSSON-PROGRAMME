@@ -35,9 +35,10 @@ def cmp99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0
       (cmp85Eq215SourceAveragingCoefficientFloor a (L : ℝ)) rho *
     (2 / (1 - Real.exp (-rho))) ^ 4 * Real.exp (2 * rho)
 
-/-- The complete Green numerator is strictly positive: its central
-`exp(rho)^4` summand is positive and the noncentral summand is nonnegative. -/
-theorem cmp89Eq248ComplexGreenNumeratorBound_pos (rho : ℝ) :
+/-- On a nonnegative strip, the complete Green numerator is strictly positive:
+its central `exp(rho)^4` summand is positive and the noncentral summand is
+nonnegative. -/
+theorem cmp89Eq248ComplexGreenNumeratorBound_pos (rho : ℝ) (hrho : 0 ≤ rho) :
     0 < cmp89Eq248ComplexGreenNumeratorBound_draft rho := by
   have hfine :
       0 ≤ cmp89Eq251CentralFineSymbolStripUpperBound rho := by
@@ -80,9 +81,15 @@ theorem cmp99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0_pos
       0 < cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft
         (cmp85Eq215SourceAveragingCoefficientFloor a (L : ℝ)) rho := by
     rw [cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft]
-    exact mul_pos (cmp89Eq248ComplexGreenNumeratorBound_pos rho) hreciprocal
+    exact mul_pos
+      (cmp89Eq248ComplexGreenNumeratorBound_pos rho hrho.le) hreciprocal
+  have hden : 0 < 1 - Real.exp (-rho) := by
+    rw [sub_pos, Real.exp_lt_one_iff]
+    linarith
+  have hgeom : 0 < (2 / (1 - Real.exp (-rho))) ^ 4 :=
+    pow_pos (div_pos (by norm_num) hden) 4
   rw [cmp99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0]
-  exact mul_pos (mul_pos hamplitude (by positivity)) (Real.exp_pos _)
+  exact mul_pos (mul_pos hamplitude hgeom) (Real.exp_pos _)
 
 /-- At every depth, the literal C6a coefficient is bounded by the single
 coefficient evaluated at the CMP85 source-flow floor. -/
