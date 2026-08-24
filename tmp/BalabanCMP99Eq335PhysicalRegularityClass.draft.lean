@@ -71,13 +71,15 @@ noncomputable def CMP99Eq335PhysicalRegularityClass.toCubeWitness
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 : ℝ}
     (R : CMP99Eq335PhysicalRegularityClass
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
+      (Mlarge := Mlarge) (S := S) (scaleExtent_pos := scaleExtent_pos)
+      U eta alpha0)
     (C : CMP99SourceRegularCube (FinBox 4 (L * N')) n Mlarge scaleExtent S
       scaleExtent_pos)
     (alpha1 : ℝ)
     (hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1) :
     CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1 := by
+      (Mlarge := Mlarge) (S := S) (scaleExtent_pos := scaleExtent_pos)
+      U eta alpha0 alpha1 := by
   let D := Classical.choice (R.onCube C)
   exact
     { cube := C
