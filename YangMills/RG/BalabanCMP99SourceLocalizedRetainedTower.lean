@@ -289,8 +289,22 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
                 (Tail.localTowerAt s).Qprime
                 (cmp99SourceTransportedBlockAverageCLM Omega
                   (cmp99SourceWeightedPhysicalTransport rho localBackground))).symm
+            _ = (Tail.canonicalTowerAt s).Qprime.comp
+                (cmp99SourceTransportedBlockAverageCLM Omega
+                  (cmp99SourceWeightedPhysicalTransport rho localBackground)) := by
+              exact congrArg
+                (fun Q : (cmp99SourcePhysicalTerminalHilbertSpace Nc
+                    (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)).carrier
+                    →L[ℝ] (Tail.canonicalTowerAt s).TerminalSpace.carrier =>
+                  Q.comp (cmp99SourceTransportedBlockAverageCLM Omega
+                    (cmp99SourceWeightedPhysicalTransport rho localBackground)))
+                (Tail.prefixQprime_eq s)
             _ = _ := by
-              rw [Tail.prefixQprime_eq s, headEq]
+              exact congrArg
+                (fun H : (cmp99SourcePhysicalTerminalHilbertSpace Nc Omega).carrier
+                    →L[ℝ] (cmp99SourcePhysicalTerminalHilbertSpace Nc
+                      (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)).carrier =>
+                  (Tail.canonicalTowerAt s).Qprime.comp H) headEq
       have localDepth : ∀ r, (localTower r).depth = r.val := by
         intro r
         refine Fin.cases ?_ (fun s => ?_) r
