@@ -261,7 +261,7 @@ theorem cmp99PhysicalDStarOneCochain_inner
                   (eta⁻¹ • torusBackwardDiff nu
                     (fun y => F ⟨y, mu, nu, hmunu⟩) x)
           else 0 := by
-      exact cmp99SumOrderedPairSplit
+      simpa using cmp99SumOrderedPairSplit
         (fun mu nu =>
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
