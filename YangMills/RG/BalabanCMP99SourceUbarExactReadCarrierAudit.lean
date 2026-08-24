@@ -1,0 +1,18 @@
+import YangMills.RG.BalabanCMP99SourceUbarExactReadCarrier
+
+/-!
+PRE-VALIDATION: source is present in scratch only; no `.olean` has been
+materialized and no compiler or axiom-oracle verdict exists for this module.
+
+Axiom queue for the exact one-scale source-Ubar read carrier.
+-/
+
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99PhysicalBondsOfEdgeList
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_base
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma1
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma2
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma3
+#print axioms YangMills.RG.gaugeConfig_apply_eq_of_positivePhysicalBond_eq
+#print axioms YangMills.RG.cmp99SourceBaseCoarseBackground_apply_pos_eq_of_eqOn_readBonds
+#print axioms YangMills.RG.cmp99SourcePhysicalUbar_eq_of_eqOn_readBonds
+#print axioms YangMills.RG.cmp99SourcePhysicalUbar_eq_of_eqOn_selectedReadBonds
