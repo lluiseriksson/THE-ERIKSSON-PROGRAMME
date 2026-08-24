@@ -252,8 +252,9 @@ theorem cmp99PhysicalDStarOneCochain_inner
       · simp [cmp99PhysicalOrderedTwoValue, hmunu, hmunu.asymm]
       · by_cases hnumu : nu < mu
         · simp [cmp99PhysicalOrderedTwoValue, hmunu, hnumu,
+            torusBackwardDiff, smul_sub]
+        · simp [cmp99PhysicalOrderedTwoValue, hmunu, hnumu,
             torusBackwardDiff]
-        · simp [cmp99PhysicalOrderedTwoValue, hmunu, hnumu]
     _ = ∑ mu : Fin d, ∑ nu : Fin d,
           if hmunu : mu < nu then
             (∑ x : FinBox d N,
@@ -265,7 +266,7 @@ theorem cmp99PhysicalDStarOneCochain_inner
                   (eta⁻¹ • torusBackwardDiff nu
                     (fun y => F ⟨y, mu, nu, hmunu⟩) x)
           else 0 := by
-      simpa using cmp99SumOrderedPairSplit
+      exact cmp99SumOrderedPairSplit
         (fun mu nu =>
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
@@ -419,9 +420,11 @@ noncomputable def CMP99Eq336PhysicalRegularityClass.toEq335
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 : ℝ}
     (R : CMP99Eq336PhysicalRegularityClass
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0) :
+      (Mlarge := Mlarge) (S := S) (scaleExtent_pos := scaleExtent_pos)
+      U eta alpha0) :
     CMP99Eq335PhysicalRegularityClass
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 where
+      (Mlarge := Mlarge) (S := S) (scaleExtent_pos := scaleExtent_pos)
+      U eta alpha0 where
   eta_pos := R.eta_pos
   alpha0_pos := R.alpha0_pos
   onCube := fun C => Nonempty.map
