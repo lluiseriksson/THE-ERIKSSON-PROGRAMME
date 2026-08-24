@@ -13,7 +13,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "0e219262b540cac4942da88613094e5bfa4f9564"
+SOURCE_SHA = "ce684e9a695d915b126d38a1a430e056b5679522"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -46,7 +46,7 @@ runner.EVIDENCE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-c6d-eq336-adjoint-debug-paths.txt")
 runner.SOURCE_BLOBS = {
-    SOURCE_PATH: "e228791d5d88c9762f4fb90e3d0c90bb85e8eccb2009fdf988e36a3b7793ef49",
+    SOURCE_PATH: "8813cc3094eef6d2b12431bf33e407c69961b27e94456be343b40988549c9c48",
     AUDIT_PATH: "31df8715d2bbc26bfe013a4a48059876c1d12ac519e3bc6e14576968e5bc121d",
     REPRO_PATH: "40883bfcd9f13e4d8fd1dcfa9c3fca405d89fbb821c66ec75e33b00592890131",
 }
