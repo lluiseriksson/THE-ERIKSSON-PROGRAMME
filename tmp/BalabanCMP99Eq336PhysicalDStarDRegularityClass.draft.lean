@@ -88,7 +88,7 @@ theorem cmp99SumIfLt_eq_sumSubtype
   classical
   let g : ι → M := fun nu => if hmunu : mu < nu then f nu hmunu else 0
   calc
-    _ = ∑ nu in (Finset.univ.filter fun nu => mu < nu), g nu := by
+    _ = ∑ nu ∈ (Finset.univ.filter fun nu => mu < nu), g nu := by
       rw [Finset.sum_filter]
       simp [g]
     _ = ∑ nu : {nu : ι // mu < nu}, g nu := by
@@ -276,7 +276,8 @@ theorem cmp99PhysicalDStarOneCochain_inner
                   (eta⁻¹ • torusBackwardDiff nu
                     (fun y => F ⟨y, mu, nu, hmunu⟩) x)
           else 0 := by
-      simpa only [if_pos, if_neg] using cmp99SumOrderedPairSplit
+      simpa only [if_pos, if_neg, dite_true, dite_false] using
+        cmp99SumOrderedPairSplit
         (fun mu nu =>
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
