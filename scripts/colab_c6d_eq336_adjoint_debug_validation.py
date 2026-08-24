@@ -47,7 +47,7 @@ SOURCE_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClass.draft.lean"
 AUDIT_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClassAudit.draft.lean"
 REPRO_PATH = "tmp/CMP99DStarPairSummationByPartsRepro.lean"
 
-runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v7"
+runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v8"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-eq336-adjoint-debug")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence")
@@ -154,7 +154,7 @@ runner.QUEUE = [
             "lake", "env", "lean", REPRO_PATH, "-o",
             ".lake/build/lib/lean/tmp/CMP99DStarPairSummationByPartsRepro.olean",
         ],
-        4,
+        3,
     ),
     (
         "c6d_eq336_physical_adjoint_source",
