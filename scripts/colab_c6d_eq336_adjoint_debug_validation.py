@@ -13,7 +13,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "a035ce808fc508c1a636de418315c3bf264ffa3d"
+SOURCE_SHA = "6d7377d98d62aba85abab0ce44f9fed6d55f185a"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -47,7 +47,7 @@ SOURCE_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClass.draft.lean"
 AUDIT_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClassAudit.draft.lean"
 REPRO_PATH = "tmp/CMP99DStarPairSummationByPartsRepro.lean"
 
-runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v5"
+runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v6"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-eq336-adjoint-debug")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence")
@@ -62,9 +62,9 @@ runner.SOURCE_BLOBS = {
     WITNESS_AUDIT_PATH: "488a9b0b20f0f67b94a4a3ea1b21bb9a9325e9246512a46c0870e3ed69dbf4e4",
     CLASS_PATH: "d1995928394961cdc8c7b3651a2b304f2a3c01e1017d069ef4a92550bcab0700",
     CLASS_AUDIT_PATH: "eefa756993496832af7caa4ff322749979c6c133aa9c0cac8200f1f5001f5bec",
-    SOURCE_PATH: "8813cc3094eef6d2b12431bf33e407c69961b27e94456be343b40988549c9c48",
+    SOURCE_PATH: "fa3c2249bb1b67d4ae4426c91b1ae13ad365c61a1c5e7d71e8bc21c06544d4f9",
     AUDIT_PATH: "31df8715d2bbc26bfe013a4a48059876c1d12ac519e3bc6e14576968e5bc121d",
-    REPRO_PATH: "40883bfcd9f13e4d8fd1dcfa9c3fca405d89fbb821c66ec75e33b00592890131",
+    REPRO_PATH: "7b9508ec05c7a2169ce97f4d6ac5f73e99b768e1d340b14b576316727ebcc573",
 }
 
 runner.QUEUE = [
