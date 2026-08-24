@@ -311,11 +311,12 @@ theorem cmp99PhysicalDStarOneCochain_inner
               if mu < nu then lower mu nu + upper mu nu else 0 :=
             cmp99SumOrderedPairSplit lower upper
         _ = _ := by
-            apply Finset.sum_congr rfl
-            intro mu _
-            apply Finset.sum_congr rfl
-            intro nu _
-            by_cases hmunu : mu < nu <;> simp [lower, upper, hmunu]
+            apply Fintype.sum_congr
+            intro mu
+            apply Fintype.sum_congr
+            intro nu
+            by_cases hmunu : mu < nu <;>
+              simp only [lower, upper, hmunu, dite_true, dite_false]
     _ = ∑ mu : Fin d, ∑ nu : Fin d,
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
@@ -323,21 +324,21 @@ theorem cmp99PhysicalDStarOneCochain_inner
                 (eta⁻¹ • torusCurl (fun y k => A (y, k)) mu nu x)
                 (F ⟨x, mu, nu, hmunu⟩)
           else 0 := by
-      apply Finset.sum_congr rfl
-      intro mu _
-      apply Finset.sum_congr rfl
-      intro nu _
+      apply Fintype.sum_congr
+      intro mu
+      apply Fintype.sum_congr
+      intro nu
       by_cases hmunu : mu < nu
       · simp only [hmunu, dite_true]
         exact cmp99PhysicalDStar_pair_inner eta A F mu nu hmunu
-      · simp [hmunu]
+      · simp only [hmunu, dite_false]
     _ = ∑ mu : Fin d, ∑ nu : {nu : Fin d // mu < nu},
           ∑ x : FinBox d N,
             inner ℝ
               (eta⁻¹ • torusCurl (fun y k => A (y, k)) mu nu.1 x)
               (F ⟨x, mu, nu.1, nu.2⟩) := by
-      apply Finset.sum_congr rfl
-      intro mu _
+      apply Fintype.sum_congr
+      intro mu
       exact cmp99SumIfLt_eq_sumSubtype mu
         (fun nu hmunu =>
           ∑ x : FinBox d N,
@@ -349,14 +350,20 @@ theorem cmp99PhysicalDStarOneCochain_inner
             inner ℝ
               (eta⁻¹ • torusCurl (fun y k => A (y, k)) mu nu.1 x)
               (F ⟨x, mu, nu.1, nu.2⟩) := by
+      let term : (mu : Fin d) → {nu : Fin d // mu < nu} →
+          FinBox d N → ℝ := fun mu nu x =>
+        inner ℝ
+          (eta⁻¹ • torusCurl (fun y k => A (y, k)) mu nu.1 x)
+          (F ⟨x, mu, nu.1, nu.2⟩)
+      change (∑ mu : Fin d, ∑ nu : {nu : Fin d // mu < nu},
+          ∑ x : FinBox d N, term mu nu x) =
+        ∑ x : FinBox d N, ∑ mu : Fin d,
+          ∑ nu : {nu : Fin d // mu < nu}, term mu nu x
       calc
         _ = ∑ mu : Fin d, ∑ x : FinBox d N,
-              ∑ nu : {nu : Fin d // mu < nu},
-                inner ℝ
-                  (eta⁻¹ • torusCurl (fun y k => A (y, k)) mu nu.1 x)
-                  (F ⟨x, mu, nu.1, nu.2⟩) := by
-            apply Finset.sum_congr rfl
-            intro mu _
+              ∑ nu : {nu : Fin d // mu < nu}, term mu nu x := by
+            apply Fintype.sum_congr
+            intro mu
             rw [Finset.sum_comm]
         _ = _ := by rw [Finset.sum_comm]
     _ = inner ℝ (cmp99PhysicalScaledD1OneCochain eta A) F := by
