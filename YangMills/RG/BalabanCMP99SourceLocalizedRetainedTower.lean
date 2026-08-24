@@ -199,7 +199,8 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
           (localTower r).Qprime = (canonicalTower r).Qprime := by
         intro r
         refine Fin.cases ?_ (fun s => ?_) r
-        · rfl
+        · change localHead.Qprime = canonicalHead.Qprime
+          rfl
         · change (Tail.localTowerAt s).Qprime.comp
               (cmp99SourceTransportedBlockAverageCLM Omega
                 (cmp99SourceWeightedPhysicalTransport rho localBackground)) =
@@ -207,31 +208,32 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
               (cmp99SourceTransportedBlockAverageCLM Omega
                 (cmp99SourceWeightedPhysicalTransport rho canonicalBackground))
           rw [Tail.prefixQprime_eq s, headEq]
-      refine {
-        localTowerAt := localTower
-        canonicalTowerAt := canonicalTower
-        localTowerAt_depth := ?_
-        canonicalTowerAt_depth := ?_
-        localTowerAt_zero := rfl
-        canonicalTowerAt_zero := rfl
-        prefixQprime_eq := prefixEq
-        localTerminal_eq_generated := ?_
-        canonicalTerminal_eq_generated := ?_ }
-      · intro r
+      have localDepth : ∀ r, (localTower r).depth = r.val := by
+        intro r
         refine Fin.cases ?_ (fun s => ?_) r
         · rfl
         · change (localSucc s).depth = s.succ.val
           rw [CMP99SourceWeightedRegionalTower.depth_step,
             Tail.localTowerAt_depth]
           rfl
-      · intro r
+      have canonicalDepth : ∀ r, (canonicalTower r).depth = r.val := by
+        intro r
         refine Fin.cases ?_ (fun s => ?_) r
         · rfl
         · change (canonicalSucc s).depth = s.succ.val
           rw [CMP99SourceWeightedRegionalTower.depth_step,
             Tail.canonicalTowerAt_depth]
           rfl
-      · have hlast : Fin.last (tailDepth + 1) =
+      have localTerminal :
+          localTower (Fin.last (tailDepth + 1)) =
+            CMP99SourceWeightedRegionalTower.step
+              (g := SUNLieCoord Nc) Omega hOmega spacing
+              (cmp99SourceWeightedPhysicalTransport rho localBackground)
+              (tail.localizedWeightedQprimeTower hd hM rho
+                ((M : ℝ) * spacing)
+                (cmp99SourceUbarNextFineRadius d M epsilon) nextLocal chain.tail
+                (fun q _ => nextLocalSmall (positiveEdgeOfPhysicalBond q))) := by
+        have hlast : Fin.last (tailDepth + 1) =
             (Fin.last tailDepth).succ := by
           apply Fin.ext
           simp
@@ -249,7 +251,16 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
             (g := SUNLieCoord Nc) Omega hOmega spacing
             (cmp99SourceWeightedPhysicalTransport rho localBackground))
           Tail.localTerminal_eq_generated
-      · have hlast : Fin.last (tailDepth + 1) =
+      have canonicalTerminal :
+          canonicalTower (Fin.last (tailDepth + 1)) =
+            CMP99SourceWeightedRegionalTower.step
+              (g := SUNLieCoord Nc) Omega hOmega spacing
+              (cmp99SourceWeightedPhysicalTransport rho canonicalBackground)
+              (tail.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+                (cmp99SourceUbarNextFineRadius d M epsilon)
+                CanonicalScale.toSourceScale.data.nextBackground chain.tail
+                nextCanonicalSmall) := by
+        have hlast : Fin.last (tailDepth + 1) =
             (Fin.last tailDepth).succ := by
           apply Fin.ext
           simp
@@ -267,6 +278,16 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
             (g := SUNLieCoord Nc) Omega hOmega spacing
             (cmp99SourceWeightedPhysicalTransport rho canonicalBackground))
           Tail.canonicalTerminal_eq_generated
+      exact {
+        localTowerAt := localTower
+        canonicalTowerAt := canonicalTower
+        localTowerAt_depth := localDepth
+        canonicalTowerAt_depth := canonicalDepth
+        localTowerAt_zero := rfl
+        canonicalTowerAt_zero := rfl
+        prefixQprime_eq := prefixEq
+        localTerminal_eq_generated := localTerminal
+        canonicalTerminal_eq_generated := canonicalTerminal }
 
 /-- Source-facing retained prefix package.  Its canonical side is fixed to
 the internally generated retained identity extension, so no extension or
