@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "f681aacdeab3be53ccb0abb70c93493236515323"
+SOURCE_SHA = "73bb1a2008c557840a91e50d8abe6b874947f7ee"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -39,7 +39,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-uniform-point-source-b0-v2"
+runner.RUNNER_REV = "source-flow-uniform-point-source-b0-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-uniform-point-source-b0")
 runner.EVIDENCE = Path(
@@ -53,7 +53,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0.lean":
-        "8e563c07ed1c7c6681813edf8eb72121689686473b13f074c83ff11f9b65ba98",
+        "8c1c1099dd5043a518df4a89b888548f894b9152a9e3fc85ecec3c9109a5d21e",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0Audit.lean":
         "743a914fd19d68a7aaeecaf61fee2c54e60a2c92ebb96f7d6851fcba37ca954d",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0.lean":
