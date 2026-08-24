@@ -128,7 +128,9 @@ def visible_lines(text: str) -> list[str]:
     return result
 
 
-def check_file(root: Path, path: Path) -> list[str]:
+def check_file(
+    root: Path, path: Path, *, require_prevalidation: bool = False
+) -> list[str]:
     failures: list[str] = []
     try:
         label = path.resolve().relative_to(root.resolve())
@@ -137,9 +139,17 @@ def check_file(root: Path, path: Path) -> list[str]:
     if not path.is_file():
         return [f"{label}: overlay path is missing"]
 
+    text = path.read_text(encoding="utf-8-sig")
+    if require_prevalidation:
+        marker_count = text.count("PRE-VALIDATION:")
+        if marker_count != 1:
+            failures.append(
+                f"{label}: PRE-VALIDATION marker count is {marker_count}; expected 1"
+            )
+
     command_stack: list[tuple[str, str | None, int]] = []
     bracket_stack: list[tuple[str, int, int]] = []
-    lines = visible_lines(path.read_text(encoding="utf-8-sig"))
+    lines = visible_lines(text)
     for line_number, line in enumerate(lines, start=1):
         line = CHAR_LITERAL.sub("", line)
         forbidden = FORBIDDEN.search(line)
@@ -199,6 +209,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     source.add_argument("--paths-from", type=Path)
     source.add_argument("--base", help="base Git object; requires --head")
     parser.add_argument("--head", help="head Git object for --base")
+    parser.add_argument(
+        "--require-prevalidation",
+        action="store_true",
+        help="require exactly one PRE-VALIDATION marker in every selected file",
+    )
     return parser.parse_args(argv)
 
 
@@ -226,11 +241,18 @@ def main(argv: list[str]) -> int:
 
     failures: list[str] = []
     for path in paths:
-        failures.extend(check_file(root, path))
+        failures.extend(
+            check_file(
+                root,
+                path,
+                require_prevalidation=args.require_prevalidation,
+            )
+        )
     if failures:
         print("\n".join(failures), file=sys.stderr)
         return 1
-    print(f"LEAN_OVERLAY_TEXT_OK files={len(paths)} source={source}")
+    suffix = " prevalidation=required" if args.require_prevalidation else ""
+    print(f"LEAN_OVERLAY_TEXT_OK files={len(paths)} source={source}{suffix}")
     return 0
 
 

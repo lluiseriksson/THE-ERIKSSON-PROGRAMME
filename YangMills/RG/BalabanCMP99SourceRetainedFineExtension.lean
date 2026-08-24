@@ -85,14 +85,17 @@ theorem CMP99SourceActiveRegionChain.norm_retainedFineExtension_sub_one_le
         · rw [if_pos hb]
           exact localSmall (y, mu) hb
         · rw [if_neg hb]
-          simpa only [map_one, sub_self, norm_zero] using epsilon_nonneg)
+          simpa using epsilon_nonneg)
   | true =>
+      change ‖(regions.retainedFineExtension background
+          (positiveEdgeOfPhysicalBond (y, mu)) :
+            Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon
       by_cases hb : (y, mu) ∈ regions.retainedFineReadBonds (Nc := Nc)
       · rw [regions.retainedFineExtension_apply_pos_of_mem background (y, mu) hb]
         exact localSmall (y, mu) hb
       · rw [regions.retainedFineExtension_apply_pos_of_not_mem
           background (y, mu) hb]
-        simpa only [map_one, sub_self, norm_zero] using epsilon_nonneg
+        simpa using epsilon_nonneg
 
 /-- The localized tower equals the canonical source tower of the internally
 constructed retained identity extension.  No extension or global-smallness
@@ -110,10 +113,24 @@ theorem CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_Qprime_eq_reta
     let extension := regions.retainedFineExtension background
     let extensionSmall := regions.norm_retainedFineExtension_sub_one_le
       background epsilon chain.epsilon_nonneg localSmall
-    (regions.localizedWeightedQprimeTower hd hM rho spacing epsilon background
-        chain localSmall).Qprime =
-      (regions.weightedQprimeTower hd hM rho spacing epsilon extension chain
-        extensionSmall).Qprime := by
+    let LU := regions.localizedWeightedQprimeTower hd hM rho spacing epsilon
+      background chain localSmall
+    let TE := regions.weightedQprimeTower hd hM rho spacing epsilon extension
+      chain extensionSmall
+    let hLU := regions.localizedWeightedQprimeTower_terminalSpace_eq
+      hd hM rho spacing epsilon background chain localSmall
+    let hTE := regions.weightedQprimeTower_terminalSpace_eq
+      hd hM rho spacing epsilon extension chain extensionSmall
+    cmp99SourceTerminalCLMTransport
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (F := LU.TerminalSpace) (F' := regions.terminalHilbertSpace Nc)
+        rfl hLU LU.Qprime =
+      cmp99SourceTerminalCLMTransport
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (F := TE.TerminalSpace) (F' := regions.terminalHilbertSpace Nc)
+        rfl hTE TE.Qprime := by
   letI : NeZero N := regions.neZero
   dsimp only
   apply regions.localizedWeightedQprimeTower_Qprime_eq_canonicalExtension

@@ -77,7 +77,7 @@ theorem
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) :
     let T := W.localizedRetainedTowerOfSourceRegion
       regions D hM rho halpha1 chain
-    (T.localizedTowerAt (Fin.last depth)).Qprime =
+    HEq (T.localizedTowerAt (Fin.last depth)).Qprime
       (T.canonicalTowerAt (Fin.last depth)).Qprime := by
   exact CMP99SourceLocalizedRetainedTower.terminalQprime_eq
     (W.localizedRetainedTowerOfSourceRegion

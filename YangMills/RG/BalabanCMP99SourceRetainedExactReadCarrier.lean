@@ -22,7 +22,8 @@ claiming locality of the global `nextBackground`.
 
 namespace YangMills.RG
 
-open YangMills
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator BigOperators
 
 noncomputable section
 
@@ -33,20 +34,20 @@ variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 average in a typed retained region chain.  In the successor case the tail
 carrier is pulled back through the exact selected-family Ubar carrier. -/
 noncomputable def CMP99SourceActiveRegionChain.retainedFineReadBonds
-    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    {N depth Nc : ℕ} [NeZero Nc]
+    {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
-    Finset (PhysicalBond d N) := by
+    Finset (@PhysicalBond d N regions.neZero) := by
   induction regions with
   | stop Omega => exact ∅
   | @step N' depth _ Omega hOmega tail ih =>
       exact cmp99SourceTransportedAverageFineReadBonds (Nc := Nc) Omega ∪
         cmp99SourceUbarFineReadBondsOfCoarseBonds (Nc := Nc) ih
 
-omit [NeZero d] [NeZero N] in
 @[simp] theorem CMP99SourceActiveRegionChain.retainedFineReadBonds_stop
     (Omega : ActiveGaugeRegion d N) :
-    (CMP99SourceActiveRegionChain.stop (M := M) Omega).
-        retainedFineReadBonds (Nc := Nc) = ∅ :=
+    CMP99SourceActiveRegionChain.retainedFineReadBonds (Nc := Nc)
+        (CMP99SourceActiveRegionChain.stop (M := M) Omega) = ∅ :=
   rfl
 
 omit [NeZero N] in
@@ -55,24 +56,24 @@ theorem CMP99SourceActiveRegionChain.retainedFineReadBonds_step
     (Omega : ActiveGaugeRegion d (M * N')) (hOmega : Omega.BlockSaturated)
     (tail : CMP99SourceActiveRegionChain d M N'
       (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega) depth) :
-    (CMP99SourceActiveRegionChain.step Omega hOmega tail).
-        retainedFineReadBonds (Nc := Nc) =
+    CMP99SourceActiveRegionChain.retainedFineReadBonds (Nc := Nc)
+        (CMP99SourceActiveRegionChain.step Omega hOmega tail) =
       cmp99SourceTransportedAverageFineReadBonds (Nc := Nc) Omega ∪
         cmp99SourceUbarFineReadBondsOfCoarseBonds (Nc := Nc)
           (tail.retainedFineReadBonds (Nc := Nc)) :=
   rfl
 
+omit [NeZero N] in
 /-- Agreement on the recursive carrier supplies every bond read by the head
 transported average. -/
-omit [NeZero N] in
 theorem eqOn_averageReadBonds_of_eqOn_retainedFineReadBonds
     {N' depth : ℕ} [NeZero N']
     (Omega : ActiveGaugeRegion d (M * N')) (hOmega : Omega.BlockSaturated)
     (tail : CMP99SourceActiveRegionChain d M N'
       (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega) depth)
     (U V : PhysicalGaugeBackground d (M * N') Nc)
-    (hUV : ∀ q ∈ (CMP99SourceActiveRegionChain.step Omega hOmega tail).
-        retainedFineReadBonds (Nc := Nc),
+    (hUV : ∀ q ∈ CMP99SourceActiveRegionChain.retainedFineReadBonds
+        (Nc := Nc) (CMP99SourceActiveRegionChain.step Omega hOmega tail),
       U (positiveEdgeOfPhysicalBond q) =
         V (positiveEdgeOfPhysicalBond q)) :
     ∀ q ∈ cmp99SourceTransportedAverageFineReadBonds (Nc := Nc) Omega,
@@ -83,21 +84,21 @@ theorem eqOn_averageReadBonds_of_eqOn_retainedFineReadBonds
     rw [CMP99SourceActiveRegionChain.retainedFineReadBonds_step]
     exact Finset.mem_union_left _ hq)
 
+omit [NeZero N] in
 /-- Agreement on the recursive carrier also supplies precisely the Ubar
 pullback required to determine every coarse bond read by the tail. -/
-omit [NeZero N] in
 theorem eqOn_tailUbarReadBonds_of_eqOn_retainedFineReadBonds
     {N' depth : ℕ} [NeZero N']
     (Omega : ActiveGaugeRegion d (M * N')) (hOmega : Omega.BlockSaturated)
     (tail : CMP99SourceActiveRegionChain d M N'
       (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega) depth)
     (U V : PhysicalGaugeBackground d (M * N') Nc)
-    (hUV : ∀ q ∈ (CMP99SourceActiveRegionChain.step Omega hOmega tail).
-        retainedFineReadBonds (Nc := Nc),
+    (hUV : ∀ q ∈ CMP99SourceActiveRegionChain.retainedFineReadBonds
+        (Nc := Nc) (CMP99SourceActiveRegionChain.step Omega hOmega tail),
       U (positiveEdgeOfPhysicalBond q) =
         V (positiveEdgeOfPhysicalBond q)) :
     ∀ q ∈ cmp99SourceUbarFineReadBondsOfCoarseBonds (Nc := Nc)
-        (tail.retainedFineReadBonds (Nc := Nc)),
+        (CMP99SourceActiveRegionChain.retainedFineReadBonds (Nc := Nc) tail),
       U (positiveEdgeOfPhysicalBond q) =
         V (positiveEdgeOfPhysicalBond q) := by
   intro q hq
@@ -105,9 +106,9 @@ theorem eqOn_tailUbarReadBonds_of_eqOn_retainedFineReadBonds
     rw [CMP99SourceActiveRegionChain.retainedFineReadBonds_step]
     exact Finset.mem_union_right _ hq)
 
+omit [NeZero N] in
 /-- The current literal one-step average is local on the recursively generated
 carrier.  No transport family or operator equality is accepted as input. -/
-omit [NeZero N] in
 theorem cmp99SourceTransportedBlockAverageCLM_eq_of_eqOn_retainedFineReadBonds
     {N' depth : ℕ} [NeZero N']
     (rho : SUNAdjointModel Nc)
@@ -115,8 +116,8 @@ theorem cmp99SourceTransportedBlockAverageCLM_eq_of_eqOn_retainedFineReadBonds
     (tail : CMP99SourceActiveRegionChain d M N'
       (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega) depth)
     (U V : PhysicalGaugeBackground d (M * N') Nc)
-    (hUV : ∀ q ∈ (CMP99SourceActiveRegionChain.step Omega hOmega tail).
-        retainedFineReadBonds (Nc := Nc),
+    (hUV : ∀ q ∈ CMP99SourceActiveRegionChain.retainedFineReadBonds
+        (Nc := Nc) (CMP99SourceActiveRegionChain.step Omega hOmega tail),
       U (positiveEdgeOfPhysicalBond q) =
         V (positiveEdgeOfPhysicalBond q)) :
     cmp99SourceTransportedBlockAverageCLM Omega
@@ -127,22 +128,23 @@ theorem cmp99SourceTransportedBlockAverageCLM_eq_of_eqOn_retainedFineReadBonds
     (eqOn_averageReadBonds_of_eqOn_retainedFineReadBonds
       Omega hOmega tail U V hUV)
 
+omit [NeZero N] in
 /-- Every raw Ubar value needed by the tail is fixed by the recursively
 generated fine carrier.  This deliberately stops short of equality of the
 complete global next background. -/
-omit [NeZero N] in
 theorem cmp99SourcePhysicalUbar_eq_of_eqOn_retainedTailReadBonds
     {N' depth : ℕ} [NeZero N']
     (Omega : ActiveGaugeRegion d (M * N')) (hOmega : Omega.BlockSaturated)
     (tail : CMP99SourceActiveRegionChain d M N'
       (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega) depth)
     (U V : PhysicalGaugeBackground d (M * N') Nc)
-    (hUV : ∀ q ∈ (CMP99SourceActiveRegionChain.step Omega hOmega tail).
-        retainedFineReadBonds (Nc := Nc),
+    (hUV : ∀ q ∈ CMP99SourceActiveRegionChain.retainedFineReadBonds
+        (Nc := Nc) (CMP99SourceActiveRegionChain.step Omega hOmega tail),
       U (positiveEdgeOfPhysicalBond q) =
         V (positiveEdgeOfPhysicalBond q))
     (b : PhysicalBond d N')
-    (hb : b ∈ tail.retainedFineReadBonds (Nc := Nc)) :
+    (hb : b ∈ CMP99SourceActiveRegionChain.retainedFineReadBonds
+      (Nc := Nc) tail) :
     Ubar (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
         U (cmp99SourceBaseCoarseBackground U) (positiveEdgeOfPhysicalBond b)
         (cmp99SourceUbarGamma1 (G := SUN Nc) b)
@@ -154,7 +156,7 @@ theorem cmp99SourcePhysicalUbar_eq_of_eqOn_retainedTailReadBonds
         (cmp99SourceUbarGamma2 (G := SUN Nc) b)
         (cmp99SourceUbarGamma3 (G := SUN Nc) b) :=
   cmp99SourcePhysicalUbar_eq_of_eqOn_selectedReadBonds U V
-    (tail.retainedFineReadBonds (Nc := Nc))
+    (CMP99SourceActiveRegionChain.retainedFineReadBonds (Nc := Nc) tail)
     (eqOn_tailUbarReadBonds_of_eqOn_retainedFineReadBonds
       Omega hOmega tail U V hUV) b hb
 

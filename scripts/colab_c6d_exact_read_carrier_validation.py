@@ -9,8 +9,12 @@ PRE-VALIDATION notice.
 
 import hashlib
 import importlib.util
+import json
+import os
 from pathlib import Path
 import re
+import subprocess
+import time
 import urllib.request
 
 
@@ -126,6 +130,48 @@ def parse_axioms_including_pure(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_including_pure
+
+
+def run_with_durable_log(
+    stage: str, command: list[str], *, cwd: Path | None = None
+) -> str:
+    """Run one stage and retain its complete output inside the evidence tar."""
+    started = time.perf_counter()
+    print("STAGE=" + stage + " CMD=" + json.dumps(command), flush=True)
+    child = subprocess.run(
+        command,
+        cwd=cwd,
+        env=os.environ.copy(),
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    elapsed = time.perf_counter() - started
+    output = child.stdout
+    print(output, flush=True)
+    runner.EVIDENCE.mkdir(parents=True, exist_ok=True)
+    log_name = stage + ".log"
+    (runner.EVIDENCE / log_name).write_text(output, encoding="utf-8")
+    runner.RECORDS.append(
+        {
+            "stage": stage,
+            "exit": child.returncode,
+            "seconds": elapsed,
+            "output_sha256": hashlib.sha256(output.encode()).hexdigest(),
+            "output_file": log_name,
+        }
+    )
+    print(
+        "STAGE=" + stage + " EXIT=" + str(child.returncode)
+        + " SECONDS=%.3f" % elapsed,
+        flush=True,
+    )
+    if child.returncode != 0:
+        raise RuntimeError("FIRST_ERROR=" + stage)
+    return output
+
+
+runner.run = run_with_durable_log
 runner.QUEUE = [
     ("c6d_read_carrier_root", ["lake", "build", "YangMillsCore"], None),
 ] + [
@@ -135,4 +181,38 @@ runner.QUEUE = [
 
 
 if __name__ == "__main__":
-    raise SystemExit(runner.main())
+    real_unassign = None
+    try:
+        import importlib
+        from google.colab import runtime
+
+        runtime = importlib.reload(runtime)
+        real_unassign = runtime.unassign
+        runtime.unassign = lambda: print(
+            "RUNTIME_UNASSIGN_DEFERRED_TO_LAUNCHER=1", flush=True
+        )
+    except ImportError:
+        pass
+    code = runner.main()
+    print("EVIDENCE_DOWNLOAD_REQUESTED=1", flush=True)
+    try:
+        from google.colab import files
+
+        files.download(str(runner.ARCHIVE))
+    except Exception as exc:
+        print(
+            "EVIDENCE_DOWNLOAD_STATUS=FAILED "
+            + type(exc).__name__ + ": " + str(exc),
+            flush=True,
+        )
+    print("RUNTIME_UNASSIGN_REQUESTED=1", flush=True)
+    try:
+        if real_unassign is not None:
+            real_unassign()
+    except Exception as exc:
+        print(
+            "RUNTIME_UNASSIGN_STATUS=FAILED "
+            + type(exc).__name__ + ": " + str(exc),
+            flush=True,
+        )
+    raise SystemExit(code)

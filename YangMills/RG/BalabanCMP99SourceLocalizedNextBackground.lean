@@ -248,13 +248,29 @@ theorem norm_cmp99SourceLocalizedNextBackground_apply_pos_sub_one_le
       coarseBonds fineSmall b hb]
     apply norm_cmp99SourceLocalizedUbarBlock_sub_one_le
       hd hM background epsilonFine epsilonFine_nonneg noWinding logSmall b
-    intro q hq
-    exact fineSmall q (Finset.mem_biUnion.mpr ⟨b, hb, hq⟩)
   · rw [cmp99SourceLocalizedNextBackground_apply_pos_of_not_mem
       hd hM background epsilonFine epsilonFine_nonneg noWinding
       coarseBonds fineSmall b hb]
-    simp only [map_one, sub_self, norm_zero]
-    exact cmp99SourceUbarNextFineRadius_nonneg d M epsilonFine epsilonFine_nonneg
+    rw [show ‖((1 : SUN Nc) : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ = 0 by simp]
+    let B := cmp99SourceUbarFineNoWindingBudget
+      (d := d) (M := M) (Nc := Nc) epsilonFine noWinding
+    let delta := cmp99SourceUbarFineDeviationRadius d M epsilonFine
+    let theta := delta / (1 - delta)
+    have hdelta : 0 ≤ delta := by
+      dsimp only [delta, cmp99SourceUbarFineDeviationRadius]
+      positivity
+    have hdelta_lt_one : delta < 1 := by
+      simpa only [B, cmp99SourceUbarFineNoWindingBudget_delta, delta] using
+        B.δ_lt_one
+    have hdenDelta : 0 < 1 - delta := sub_pos.mpr hdelta_lt_one
+    have htheta : 0 ≤ theta := div_nonneg hdelta hdenDelta.le
+    have htheta_lt_one : theta < 1 := by
+      simpa only [cmp99UbarLogRadius, B,
+        cmp99SourceUbarFineNoWindingBudget_delta, theta, delta] using logSmall
+    have hdenTheta : 0 < 1 - theta := sub_pos.mpr htheta_lt_one
+    unfold cmp99SourceUbarNextFineRadius
+    change 0 ≤ theta + theta ^ 2 / (1 - theta) + (M : ℝ) * epsilonFine
+    positivity
 
 /-- The completed selected/identity background is globally small at the next
 radius, including reversed oriented edges. -/

@@ -38,7 +38,8 @@ theorem physicalBondOfEdge_mem_cmp99PhysicalBondsOfEdgeList
     (es : List (ConcreteEdge d (L * N'))) (e : ConcreteEdge d (L * N'))
     (he : e ∈ es) :
     physicalBondOfEdge e ∈ cmp99PhysicalBondsOfEdgeList es := by
-  simp [cmp99PhysicalBondsOfEdgeList, he]
+  apply Finset.mem_image.mpr
+  exact ⟨e, by simpa using he, rfl⟩
 
 /-- The three literal fine contours entering the Ubar deviation at `x`. -/
 def cmp99SourceUbarFineContourEdgeList
@@ -57,10 +58,11 @@ def cmp99SourceUbarBaseEdgeList
 /-- Exact fine positive-bond read carrier of one literal source Ubar block. -/
 def cmp99SourceUbarFineReadBonds
     (b : PhysicalBond d N') : Finset (PhysicalBond d (L * N')) :=
-  cmp99PhysicalBondsOfEdgeList (cmp99SourceUbarBaseEdgeList b) ∪
+  cmp99PhysicalBondsOfEdgeList
+      (cmp99SourceUbarBaseEdgeList (Nc := Nc) b) ∪
     (blockOf L N' b.1).biUnion fun x =>
       cmp99PhysicalBondsOfEdgeList
-        (cmp99SourceUbarFineContourEdgeList b x)
+        (cmp99SourceUbarFineContourEdgeList (Nc := Nc) b x)
 
 /-- Exact fine read carrier of a selected finite family of coarse bonds. -/
 def cmp99SourceUbarFineReadBondsOfCoarseBonds

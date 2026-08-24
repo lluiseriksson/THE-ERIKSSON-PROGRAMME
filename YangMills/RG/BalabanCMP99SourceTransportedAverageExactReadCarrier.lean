@@ -85,7 +85,8 @@ theorem cmp99SourceWeightedPhysicalTransport_apply_eq_of_eqOn_readBonds
     (x : FinBox d (M * N')) (hx : x ∈ blockOf M N' y) :
     cmp99SourceWeightedPhysicalTransport rho U y x =
       cmp99SourceWeightedPhysicalTransport rho V y x := by
-  unfold cmp99SourceWeightedPhysicalTransport cmp99ContourHolonomy
+  unfold cmp99SourceWeightedPhysicalTransport cmp99AdjointBlockTransport
+    cmp99ContourHolonomy
   rw [cmp99BlockContainedContourHolonomy_eq_of_eqOn_averageReadBonds
     Omega U V hUV y hy x hx]
 
@@ -107,8 +108,9 @@ theorem cmp99SourceTransportedBlockAverageCLM_eq_of_eqOn_readBonds
   intro phi
   apply PiLp.ext
   intro y
-  rw [cmp99SourceTransportedBlockAverageCLM_apply,
-    cmp99SourceTransportedBlockAverageCLM_apply]
+  unfold cmp99SourceTransportedBlockAverageCLM
+  rw [cmp99TransportedBlockAverageCLM_apply,
+    cmp99TransportedBlockAverageCLM_apply]
   congr 1
   apply Finset.sum_congr rfl
   intro x _hx

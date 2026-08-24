@@ -97,11 +97,11 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    forward derivative and the cube-local regularity witness.  The gauge stays
    local; no global gauge identity is assumed.  The witness is a cited source
    output, not a supplied perturbation norm or Green estimate.
-2. **Exact read carrier.** Prove the one-bond collar theorem for the regional
-   covariant Laplacian and discharge its inclusion from the printed
-   `Omega'_0 subset square` dictionary plus the generated retained-carrier
-   endpoint.  The canonical identity extension is only an implementation
-   device; operator equality must be a theorem on the read carrier.
+2. **Exact read carrier.** Determine the minimal background carrier of the
+   regional covariant Laplacian and discharge its inclusion from the printed
+   `Omega'_0 subset square` dictionary.  The canonical identity extension is
+   only an implementation device; operator equality must be a theorem on the
+   actual read carrier.
 3. **Literal interacting precision.** Construct the regional/ambient
    `Delta'_a = Delta_U + Q'^* a Q'` using the retained physical tower.
    Identify the exact `Q'` by the terminal tower theorem.  Do not use the
@@ -132,6 +132,462 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    overlap remains the single source `16`, and the weighted owner norm is
    used instead of the sealed generated CT+Schur budget ruled out at depth
    zero.  Only a proved `norm R' < 1` marks window 15 attained.
+
+## Static contract for step 3
+
+The first exact-read implementation proves a sufficient one-bond-collar
+locality theorem by identifying the covariant derivative before forming
+`D^*D`.  Static composition shows that this sufficient carrier is too strong
+for the printed dictionary: `Omega'_0 subset square` does not imply that the
+exterior one-bond collar is also contained in the square, and the retained
+average carrier cannot supply the missing implication (at depth zero its
+carrier is empty).
+
+The expected source-faithful repair is sharper rather than stronger.  In the
+quadratic form of the zero-extended Laplacian, a boundary edge with only one
+endpoint in `Omega` contributes the norm square of the interior field; the
+background action cancels by the isometry of the adjoint representation.
+Only bonds with both endpoints in `Omega` should therefore require equality
+of backgrounds.  Since `Omega = Omega'_0` and `Omega'_0 subset square`, that
+minimal internal-bond carrier is discharged by the printed dictionary.  This
+boundary-cancellation theorem must be proved and audited before step 3 may be
+called source-closed.  The currently compiling prefix remains useful
+infrastructure but does not, by itself, establish this sharper equality.
+
+Scope gate: boundary cancellation proves equality of derivative **norms**
+for every zero-extended field, hence equality of the symmetric quadratic
+forms and of `D^*D`.  It does not prove equality of the covariant derivatives
+themselves: on an inward boundary edge the two outputs may differ by distinct
+isometric background actions.  The promoted theorem must therefore end at
+the regional Laplacian.  Any later consumer needing literal derivative
+equality must return to the stronger one-bond-collar carrier rather than cite
+the internal-bond theorem.
+
+The exact-read-carrier prefix returns a
+`CMP99SourceLocalizedRetainedTower`.  It must not be coerced into
+`CMP99SourceRetainedPhysicalScaleIdentification`: the latter is indexed by
+the canonical iterated-lift lattice family and a full scaled stratification,
+whereas the source-region endpoint carries an arbitrary typed active-region
+chain.  Treating those two families as definitionally identical would add a
+false dictionary.
+
+The required literal operator already has the correct generic constructor:
+
+```text
+cmp99SourceGaugePrecision
+  (cmp99ActiveRegionSourceCovariantLaplacian
+    Omega rho transformedBackground spacing)
+  ((localizedTowerAt (Fin.last depth)).Qprime)
+  a_j
+```
+
+Thus the step-3 source endpoint must:
+
+1. construct the localized retained tower internally from the (3.35)
+   regularity class, selected cube, source-region dictionary and scalar
+   regime;
+2. use the original transformed background in the literal regional
+   Laplacian, not the canonical identity extension outside the read carrier;
+3. expose the definitionally literal decomposition
+   `Delta_U + a_j * Q'^* Q'`;
+4. prove equality with the canonical-terminal presentation by the named
+   `CMP99SourceLocalizedRetainedTower.terminalQprime_eq`; and
+5. derive symmetry and the exact quadratic form from the already proved
+   generic theorems, without accepting a precision, a `Qprime`, a coercivity
+   estimate or a Green operator from the caller.
+
+The coefficient `a_j` remains the printed flowing scalar parameter.  This
+brick neither manufactures its positivity nor replaces it by a generated
+coefficient.  Coercivity, inversion and the attained relative-norm gate
+belong to steps 4--5, not to the literal-construction brick.
+
+## Static contract for step 4
+
+CMP99 (3.53), (3.59) and (3.60) fix the real-slice algebra before any
+estimate.  With
+
+```text
+Delta1 = Delta0 - V1,
+Q1 = Q0 + F2,
+```
+
+the literal perturbation is
+
+```text
+V' = V1
+   - a F2^* Q0
+   - a Q0^* F2
+   - a F2^* F2,
+```
+
+and hence `K1 = K0 - V'`.  The three averaging terms must stay separate in
+the public definition: no shared norm budget is allowed to replace their
+operator identity.  The factorization (3.62) is then obtained only after a
+right inverse `G0` of the unperturbed precision has been constructed:
+
+```text
+K1 = (I - V' G0) K0.
+```
+
+The current two-file scratch boundary is
+`tmp/C6D-STEP4-EQ360-PERTURBATION-DRAFT-PATHS.txt`.  It defines exactly this
+real-Hilbert perturbation and the factorization theorem, with no inverse or
+smallness premise hidden in the definition.  Both repository lightweight
+guards pass (`LEAN_OVERLAY_TEXT_OK files=2` and
+`LEAN_IMPORT_PREFIX_OK files=2`), but no `.olean` or axiom verdict exists.
+
+This is deliberately a **real-slice** brick.  The printed source warns that
+the analytically continued `F'_2*(A)` is not the Hilbert adjoint of
+`F'_2(A)` away from the real slice.  A later complexification dictionary must
+therefore construct the starred analytic coefficient independently; this
+scratch theorem must not be reused as that missing identification.
+
+There is a second, independent dictionary boundary at (3.59).  The sealed
+`terminalQprime_eq` family compares a localized retained tower with its
+canonical extension **for the same physical background**.  It is not the
+printed comparison
+
+```text
+Q'(U'U) = Q'(U) + F'_2(A).
+```
+
+The source-specific step 4 must therefore construct two towers on the same
+typed regional spaces: `Q0` from the regular baseline background `U` (or its
+proved gauge-equivalent local representative), and `Q1` from the
+**multiplicatively perturbed** background `U'U`.  Only then may it define the
+real-slice `F2 := Q1 - Q0` and discharge (3.59) definitionally.  Reusing the
+localized-versus-canonical terminal equality as (3.59), or accepting `F2`
+without those two physical towers, is rejected.
+
+This statement splits at the real/complex frontier.  The existing
+`CMP99SourceWeightedRegionalTower.step` requires each transport to be a real
+linear isometry `g ≃ₗᵢ[ℝ] g`; it is valid for the compact `SU(N)` real slice.
+Conjugation by the `SL(N,C)` background produced from complex `A'` is not
+unitary and cannot inhabit that transport type.  Consequently the analytic
+continuation of `Q'(U'U)` needs a separate complex-linear averaging recursion,
+and the printed starred coefficient must be constructed as its analytic
+synthesis rather than Lean's Hilbert adjoint.  Coercing the complex transport
+to an isometry, or reusing `.adjoint` away from the real slice, is rejected.
+This is the type-level form of the printed warning that `F'_2*(A)` is not the
+Hilbert adjoint of `F'_2(A)` after complexification.
+
+The perturbation field `A` in Section B, defined by `U' = exp(i eta A)` in
+(3.37), is not the logarithmic representative used earlier to gauge-fix the
+regular baseline `U` on a source cube.  The step-3
+`localizedRetainedPhysicalPrecision_eq_exponentialSource` theorem isolates
+that earlier baseline gauge representation; it does not construct `U'U`,
+`V'_1(A)` or `F'_2(A)`.  Those are separate source-specific producers for
+step 4.
+
+There is also a gauge-covariance dictionary between those two layers.  The
+printed (3.37) perturbs the original regular background `U`, whereas the
+step-3 regional precision is expressed in the cube's gauge-transformed
+representative.  A source wrapper must therefore either build both towers
+before transport and conjugate them together, or construct the transported
+field `R(u)A'` and prove the literal matrix identity
+
+```text
+exp(i eta R(u)A') U^u = (exp(i eta A') U)^u.
+```
+
+Applying the untransported perturbation `A'` directly to the transformed
+background is a different configuration and is rejected.  The two-file
+PRE-VALIDATION boundary
+`tmp/C6D-STEP4-EQ337-COMPLEX-GAUGE-COVARIANCE-DRAFT-PATHS.txt` now constructs
+the transported one-cochain and states the positive-bond matrix identity.
+It is uncompiled and remains a gate before the two-tower producer.
+
+The multiplicatively perturbed background itself is already a literal object
+in the tree:
+
+```text
+cmp98PhysicalSuLeftVariation U A eta
+```
+
+whose positive-bond value is `cmp98PhysicalSuIncrement A b eta * U b`.
+Step 4 must reuse that definition rather than introduce a free `U1` or a new
+chart convention.  The generic scratch perturbation now determines
+`F2 := Q1 - Q0` internally from its two operator arguments; its future
+source wrapper must construct those arguments from `U` and this exact
+perturbed background.
+
+Visual source check of CMP99 printed p. 396 fixes the perturbation domain
+without the OCR corruption previously visible in extracted text.  Equation
+(3.37) reads, for every `j = 0,...,k` on `Omega_j`,
+
+```text
+|A'| < alpha1 (L^j eta)^-1,
+|nabla^eta_U A'| < alpha1 (L^j eta)^-2.
+```
+
+There is no factor `2d` in the second inequality.  Moreover `A'` is valued in
+the complexified Lie algebra in the printed analytic theorem.  The real-slice
+producer may specialize this datum to a physical one-cochain, but the later
+holomorphic producer must retain the complex type and the covariant
+derivative; neither bound may be replaced by an unstructured sup-norm input.
+Both source-facing scratch domains now fix the adjoint action internally to
+`matrixSUNAdjointModel`; only the leaf derivative constructor remains generic.
+Thus a caller cannot satisfy (3.37) by choosing a different orthogonal model.
+The render hash and exact transcription are recorded in
+`tmp/CMP99-EQ337-SOURCE-CARD.md`.
+
+The apparent conflict with the earlier C6c.8f0a retraction is now resolved
+at source level.  The retraction remains correct for (3.35), whose derivative
+is ordinary and background-free.  But (3.37) explicitly prints
+`nabla_U^eta A'`, and p. 397, (3.39), identifies its norm with the complete
+covariant tensor `(D^U_mu A'_nu)(x)`.  Therefore the valid algebraic core has
+been copied, not resurrected in place, into the two-file scratch boundary
+`tmp/C6D-STEP4-EQ337-REAL-COVARIANT-DERIVATIVE-DRAFT-PATHS.txt`.  It fixes the
+orientation of (3.3), constructs the real-slice tensor internally and leaves
+the complexified producer explicit.  It is PRE-VALIDATION and cannot yet
+discharge item 2 below.
+
+The real-slice source domain is also now explicit in scratch.  The four-file
+boundary `tmp/C6D-STEP4-EQ337-REAL-DOMAIN-DRAFT-PATHS.txt` stores one
+fine-lattice perturbation field and quantifies its two bounds over
+`S.global.regions r.castSucc` for every `r : Fin n`.  Its majorants are
+literally `alpha1 * (L^r * eta)^-1` and
+`alpha1 * ((L^r * eta)^-1)^2`.  It does not replace those regions by the
+coarsened `CMP99SourceActiveRegionChain`, accept a free family of fields, or
+claim the complexified domain.  Its explicit `[NeZero n]` gate prevents the
+all-scales requirement from becoming vacuous.  Textual guards pass; no
+compiler verdict exists.
+
+The finite source-specific chain from the step-3 baseline to (3.60) is now:
+
+1. reuse `cmp98PhysicalSuLeftVariation U A eta` for `U'U`;
+2. encode the two literal (3.37) bounds on the active-region chain, first on
+   the physical real slice and later in the complexified fibre;
+3. derive retained-read-carrier near-identity for `U'U` from the baseline
+   bound and the exponential increment, exposing the enlarged scalar radius;
+4. construct the baseline and perturbed localized towers on the same typed
+   regional chain and define `F2 := Q1 - Q0` internally;
+5. expand the covariant Laplacian difference into the local `V'_1(A)` of
+   (3.51)--(3.54), rather than merely renaming `Delta0 - Delta1`;
+6. assemble the four-term `V'(A)` and prove (3.60) using the generic
+   real-slice algebra brick; and
+7. prove the literal local estimate (3.61), then compose once with the
+   already produced baseline Green to obtain (3.63).
+
+The present generic two-file scratch boundary covers only the algebra in item
+6 (with `F2` computed from `Q0,Q1`) and the formal factorization underlying
+(3.62).  It is not a producer for items 2--5 or either analytic bound.
+
+A second two-file leaf boundary,
+`tmp/C6D-STEP4-EQ337-NEAR-IDENTITY-DRAFT-PATHS.txt`, now implements the
+quantitative product step needed inside item 3:
+
+```text
+norm (exp(eta A_b) U_b - 1) <= 2 (|eta| rA) + rU.
+```
+
+It uses the literal `cmp98PhysicalSuLeftVariation`, the sealed exponential
+deviation estimate and the exact two-factor `SUN` telescoping inequality.
+Both lightweight guards pass.  It remains PRE-VALIDATION and deliberately
+does not claim the scale-indexed (3.37) producer for `rA`.
+
+The amplitude half of that connection is now explicit in the eight-file
+scratch closure
+`tmp/C6D-STEP4-EQ337-REAL-NEAR-IDENTITY-DRAFT-PATHS.txt`.  At a fixed source
+scale it derives the matrix generator radius from the literal (3.37) domain
+and feeds the product lemma for `cmp98PhysicalSuLeftVariation`.  The baseline
+radius and the scalar condition
+`alpha1 <= 1/2` remain named inputs.  The spacing cancellation
+`|eta| * alpha1 * (L^r * eta)^-1 <= alpha1` is proved internally for every
+scale, so no free `hsmall` survives.  Thus this is a real-slice reduction,
+not yet a discharge of the source alpha-window or a complex analytic
+producer.  Textual guards pass; no compiler verdict exists.
+
+The complex half is no longer represented by an arbitrary derivative input.
+The eight-file scratch closure
+`tmp/C6D-STEP4-EQ337-COMPLEX-DOMAIN-DRAFT-PATHS.txt` extends the compact
+background's adjoint action complex-linearly on the explicit
+`SUNLieComplexCoord` fibre, constructs the full `(mu,nu)` tensor with the
+source orientation, and states both (3.37) bounds on the same nonterminal
+fine regions.  The action is theorem-proved to agree with the real physical
+adjoint action on the real slice, and the complete derivative tensor is
+theorem-proved to restrict to the real tensor under coordinatewise
+complexification.  The complex exponential background
+`exp(i eta A') U`, its localized averages and its analytic estimates remain
+open.  Textual guards pass; no compiler verdict exists.
+
+The complete real/complex (3.37) scratch frontier is the ordered sixteen-path
+manifest `tmp/C6D-STEP4-EQ337-PHYSICAL-DOMAIN-DRAFT-PATHS.txt`; the existing
+name is retained to avoid creating a second competing frontier.  At the current
+bytes its SHA-256 is
+`DF99D6FD0415A2E7EC44F4E661BABAEEE7644D4A23885286AC821001A2271088`, and both
+lightweight gates report `files=16`.  It is a
+future focal boundary only: it has not been materialized, promoted, built or
+audited, and it must not be appended to the Colab gate already in flight.
+
+The next source dictionary is now written as the two-file PRE-VALIDATION
+boundary
+`tmp/C6D-STEP4-EQ337-COMPLEX-PERTURBED-BACKGROUND-DRAFT-PATHS.txt`.  It
+constructs the complex-linear matrix realization of `SUNLieComplexCoord`,
+keeps the printed Hermitian convention as an explicit `1/i` normalization,
+forms the literal positive-bond matrix `exp(i eta A') U`, and theorem-proves
+that its real slice agrees with `cmp98PhysicalSuLeftVariation`.  This is not
+yet a compiler-verified dictionary.  Tracelessness and determinant one are
+kept as named theorems, so the positive bonds are packaged in `SL(N,C)` and
+the full oriented background is reconstructed canonically.  Localized
+averages, the two retained towers and their analytic estimates remain open.
+A free complex background, or an asserted real-slice equality, is rejected
+as a substitute.
+
+### Finite contract for the analytic complex tower
+
+The complex continuation is a separate finite construction, not a coercion
+of `CMP99SourceWeightedRegionalTower`.  Its next boundary is fixed as the
+following ordered list.
+
+0. **Complex coordinate equivalence.**  Upgrade
+   `cmp99SUNLieComplexCoordMatrixLM` to a complex-linear equivalence between
+   `SUNLieComplexCoord Nc` and the subtype of traceless complex matrices.
+   Do not postulate surjectivity or use a dimension count.  For a traceless
+   matrix `Z`, construct the inverse explicitly from
+   `A = (Z - Z†)/2` and `B = (Z + Z†)/(2i)`, both skew-Hermitian and
+   traceless, so that `Z = A + i B`; then use `suLieCoordIso` on `A` and `B`.
+   This is the missing typed route by which `SL(N,C)` conjugation acts on the
+   source coordinate fibre.
+
+   Implementation gate: prove injectivity and this explicit surjectivity for
+   the already complex-linear `cmp99SUNLieComplexCoordMatrixLM`, then package
+   it with `LinearEquiv.ofBijective`.  Do not define the inverse first and try
+   to prove its complex linearity through the conjugate-transpose expression;
+   the bijective packaging avoids that artificial elaboration wall.
+
+   Proof contract, fixed before implementation:
+
+   * codomain: the existing Mathlib carrier
+     `LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ`, i.e. the kernel of the complex
+     trace map, not a new predicate-equivalent subtype;
+   * injectivity: if `A + i B = 0` with `A,B ∈ su(N)`, conjugate transpose
+     gives `-A + i B = 0`; adding and subtracting recover `A = B = 0`, and
+     `cmp98AmbientToLieCoordCLM_leftInverse` recovers both coordinate parts;
+   * surjectivity: for traceless `Z`, take
+     `A = (Z-Zᴴ)/2` and `B = (Z+Zᴴ)/(2i)`.  Prove skew-Hermiticity and zero
+     trace of both pieces explicitly, transport them by `suLieCoordIso`, and
+     use the witness `complexify(Acoord) + i • complexify(Bcoord)`;
+   * packaging: `LinearEquiv.ofBijective` only after those two function-level
+     proofs.  No finrank equality, arbitrary inverse, or isometry claim may
+     replace either argument.
+1. **Analytic next-background chain.**  Construct every coarsened background
+   of the explicit `SL(N,C)` configuration `exp(i eta A') U` by the literal
+   complex extension of the CMP98/CMP99 `Ubar` operation.  Printed (3.55)
+   consumes `overline{U'U}, overline{overline{U'U}}, ...`; these backgrounds
+   are not optional indices.  The producer must recurse from the finest
+   background and may not accept a free scale-indexed family.
+
+   Source gate: CMP99 p. 401 attributes the construction and its analytic
+   bounds to CMP98 [5], definitions (52), (53), identity (97), bounds
+   (102), (103), (160)--(162), and Proposition 4.  The source catalog still
+   marks CMP98 as metadata-ready rather than clean-primary-verified (the
+   registered standalone download is an HTML stub).  Obtain and visually
+   register precisely these CMP98 passages before implementing the complex
+   `Ubar` recursion.  Existing Lean reconstructions are not a substitute for
+   that source gate.
+
+   Acquisition correction, 2026-08-24: the authoritative DOI is
+   `10.1007/BF01211042`.  The earlier catalog DOI `10.1007/BF01205787` belongs
+   to an unrelated article in CMP 98 and is retained only as incident
+   provenance.  Springer currently exposes metadata but not the primary PDF
+   without subscription access, so this correction does not weaken the
+   clean-primary requirement.
+2. **One-scale analytic average.**  On each background produced by item 1,
+   construct the literal normalized block average as a
+   complex-linear map.  The normalization remains `M^{-d}` at each scale.
+   The conjugation transport may be a complex-linear equivalence, but no
+   isometry field is permitted.
+3. **Finite analytic recursion.**  Compose those one-scale averages in the
+   printed order `Q_{j-1} ... Q_0`.  The recursion stores the actual
+   scale-indexed backgrounds and regions; it may not accept a free terminal
+   operator called `Qprime`.
+4. **Independent starred synthesis.**  CMP99 does not print a separate
+   one-scale starred formula here.  It prints the finite kernel of `Q'_j(U)`
+   in (3.19), then says that the real adjoint has a similar expansion.  Derive
+   the spacing-weighted algebraic transpose of that finite kernel, verify on
+   the compact real slice that it is the source Hilbert adjoint, and continue
+   its algebraic coefficients complex-linearly without conjugation.  The
+   transpose is characterized by the complex-bilinear extension of the real
+   invariant pairing, not by Lean's sesquilinear Hermitian inner product.
+   Compose those maps in reverse order as their own recursion.  This object
+   is not Lean's Hilbert `.adjoint` away from the real slice.
+5. **Real-slice agreement.**  Prove that the analytic average restricted to
+   coordinatewise complexifications of real fields agrees with the
+   complexification of the existing real retained average.  Prove the
+   analogous statement for the starred synthesis and the real weighted
+   synthesis.  These are theorems about the two internal constructions, not
+   constructor fields supplied by a caller.
+6. **Gauge covariance.**  Transport `U` and `A'` together and prove that the
+   two analytic recursions intertwine the resulting gauge action.  The
+   positive-bond identity in the present scratch frontier is only the leaf
+   input to this tower theorem.
+7. **Printed differences.**  Build the baseline and perturbed analytic
+   towers on identical typed carriers, then define `F'_2(A)` as their
+   difference and `F'_2*(A)` as the difference of the independently built
+   starred syntheses.  Only at this point can (3.59) and its starred partner
+   be discharged definitionally.
+
+The acceptance gate is therefore threefold: no complex transport inhabits a
+real-isometry type, no Hermitian conjugation or `.adjoint` occurs in the
+analytic starred definition, and both real-slice agreements are proved from
+the recursions.  Bounds and holomorphy remain later obligations; this contract
+alone moves no terminal counter.
+
+The normalization of item 4 is already determined by (3.19) and the weighted
+pairing printed immediately below it.  For a `j`-block owner `y = owner_j(x)`,
+the real-slice formulas have the schematic form
+
+```text
+(Q'_j(U) lambda)(y)
+  = sum_{x in B^j(y)} L^{-jd} R(U(Gamma^j_{y,x})) lambda(x),
+
+((Q'_j(U))^star eta)(x)
+  = R(U(Gamma^j_{y,x}))^{-1} eta(y).
+```
+
+Indeed the coarse pairing contributes `(L^j eta)^d`, which cancels the
+`L^{-jd}` row mass against the fine pairing weight `eta^d`.  Therefore the
+analytic starred one-scale constructor must have **unit synthesis mass** and
+algebraic inverse transport.  Adding another `L^{-jd}`, a block-cardinality
+factor, or a conjugate transpose is rejected.  This is a derived dictionary
+lemma whose visual premise is (3.19); it is not being attributed as a second
+displayed formula in CMP99.
+
+The sealed real-slice blueprint already exists as
+`cmp99SourceTransportedBlockWeightedAdjointCLM`: its source comment and
+definition are exactly inverse transport with coefficient one, and its
+pairing theorem accounts for the `M^d` Radon--Nikodym ratio.  The complex leaf
+must complexify this **algebraic formula** and prove restriction to that map;
+it must not complexify the theorem that identifies the real map with a scalar
+multiple of Lean's Hilbert adjoint.
+
+There is also a sealed **flat** complex recursion blueprint:
+
+- `CMP99SourceActiveRegionChain.flatExplicitComplexQprime`;
+- `CMP99SourceActiveRegionChain.flatExplicitComplexWeightedAdjoint`;
+- their two `..._commutes_complexification` theorems; and
+- `cmp99SourceFlatComplexBlockWeightedAdjointCLM_map_complex_smul`.
+
+These already establish the finite recursion order, unit synthesis mass and
+real-slice agreement when every transport is the flat identity.  They do not
+depend on `U'U`, do not encode `SL(N,C)` conjugation and therefore are not the
+regional/interacting producer.  The next implementation should generalize
+their one-scale leaves to algebraic `SL(N,C)` transport and package the
+result as genuinely complex-linear; it must not duplicate the flat induction
+or count the flat theorem as (3.59).
+
+Before that constructor, expose the invariant complex-bilinear pairing `B`
+and prove the leaf identity
+
+```text
+B (R(g) X) Y = B X (R(g^{-1}) Y),       g in SL(N,C).
+```
+
+On `SU(N)` and real Lie coordinates this reduces to the existing orthogonal
+adjoint identity.  Using a Hermitian pairing here would introduce complex
+conjugation, destroy holomorphy in `A'`, and produce precisely the operator
+that CMP99 says is not `F'_2*(A)`.
 
 ## Existing scratch prefix that may be promoted, never presumed verified
 

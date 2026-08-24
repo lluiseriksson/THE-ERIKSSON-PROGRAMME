@@ -71,7 +71,7 @@ theorem CMP99Eq335PhysicalRegularityWitness.localizedRetainedTerminalQprime_eq
     (chain : CMP99SourceUbarRadiusChain 4 M Nc depth
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) :
     let T := W.localizedRetainedTower regions hM rho hinside halpha1 chain
-    (T.localizedTowerAt (Fin.last depth)).Qprime =
+    HEq (T.localizedTowerAt (Fin.last depth)).Qprime
       (T.canonicalTowerAt (Fin.last depth)).Qprime := by
   exact CMP99SourceLocalizedRetainedTower.terminalQprime_eq
     (W.localizedRetainedTower regions hM rho hinside halpha1 chain)

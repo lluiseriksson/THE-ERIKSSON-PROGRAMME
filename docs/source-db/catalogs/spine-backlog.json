@@ -34,15 +34,15 @@
     },
     "cmp98": {
       "short": "Balaban CMP98",
-      "title": "Averaging Operators for Lattice Gauge Field Theories",
+      "title": "Averaging operations for lattice gauge theories",
       "author": "T. Balaban",
       "status": "primary_pdf_metadata_ready",
       "journal": "Communications in Mathematical Physics 98 (1985), 17-51",
       "year": 1985,
-      "bibliography_evidence": "Dimock I reference [8], arXiv:1108.1335, printed page 50.",
-      "doi": "10.1007/BF01205787",
+      "bibliography_evidence": "Springer article record https://doi.org/10.1007/BF01211042; cross-check: Dimock I reference [8], arXiv:1108.1335, printed page 50.",
+      "doi": "10.1007/BF01211042",
       "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
-      "artifact_note": "External repo-ready packet reports a private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md; reported private PDF SHA-256 03409ad81885593d65535550eafac08639e66123d4acf92462847ae2ee4dd7d6. A 2026-08-03 workspace check found that runtime/sources/primary/cmp98-averaging.pdf is actually a 1157-byte Incapsula HTML response, SHA-256 A3F29C49F88B8B4797DF856D8E2B38DF4D2617BE3E15B3243C6948285A762558. A separate extracted text tmp/pdfs/cmp98/cmp98.txt, SHA-256 55276CD61FF200C113E9E85D1BA51EF0246C74C8FCABFC8FB6242FEE4ACC86D0, and two page renders are present, but Proposition 2 has not been visually certified from a registered clean primary PDF in this workspace."
+      "artifact_note": "External repo-ready packet reports a private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md; reported private PDF SHA-256 03409ad81885593d65535550eafac08639e66123d4acf92462847ae2ee4dd7d6. A 2026-08-03 workspace check found that runtime/sources/primary/cmp98-averaging.pdf is actually a 1157-byte Incapsula HTML response, SHA-256 A3F29C49F88B8B4797DF856D8E2B38DF4D2617BE3E15B3243C6948285A762558. A separate extracted text tmp/pdfs/cmp98/cmp98.txt, SHA-256 55276CD61FF200C113E9E85D1BA51EF0246C74C8FCABFC8FB6242FEE4ACC86D0, and two page renders are present, but Proposition 2 has not been visually certified from a registered clean primary PDF in this workspace. Bibliographic incident closed 2026-08-24: the former catalog DOI 10.1007/BF01205787 belongs to Gustavo Ponce, CMP 98, 349-353; Springer verifies Balaban's article at DOI 10.1007/BF01211042, CMP 98, 17-51. The wrong DOI likely explains the failed standalone acquisition but does not itself certify any formula body."
     },
     "cmp122_i": {
       "short": "Balaban CMP122-I",

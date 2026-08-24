@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP99SourceLocalizedWeightedQprimeTower
-import YangMills.RG.BalabanCMP99SourceRetainedQprimeLocality
+import YangMills.RG.BalabanCMP99SourceSelectedNextBackgroundLocality
+import YangMills.RG.BalabanCMP99SourceGeneratedQprimeRowMass
 
 /-!
 PRE-VALIDATION: source is present in scratch only; no `.olean` has been
@@ -22,6 +23,19 @@ noncomputable section
 
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
+
+private theorem cmp99SourceTerminalCLMTransport_eq_of_heq_local
+    {E F G H E' F' : CMP99SourceWeightedTowerHilbertSpace}
+    (hE : E = E') (hF : F = F') (hG : G = E') (hH : H = F')
+    (C : E.carrier →L[ℝ] F.carrier)
+    (D : G.carrier →L[ℝ] H.carrier) (hCD : HEq C D) :
+    cmp99SourceTerminalCLMTransport hE hF C =
+      cmp99SourceTerminalCLMTransport hG hH D := by
+  subst E'
+  subst F'
+  subst G
+  subst H
+  exact eq_of_heq hCD
 
 /-- On a selected positive coarse bond, the localized next background agrees
 with the canonical source next background of a globally small extension.
@@ -54,21 +68,36 @@ theorem cmp99SourceLocalizedNextBackground_apply_pos_eq_sourceOfFineSmall
         noWinding coarseBonds localSmallU (positiveEdgeOfPhysicalBond b) =
       ScaleV.toSourceScale.data.nextBackground
         (positiveEdgeOfPhysicalBond b) := by
-  dsimp only
+  let B_V := cmp99SourceUbarFineNoWindingBudget
+    (d := d) (M := M) (Nc := Nc) epsilon noWinding
+  have hdevV : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
+      x ∈ blockOf M N' b.1 →
+      ‖UbarDeviationLogArg
+          (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
+          V (cmp99SourceBaseCoarseBackground V)
+          (positiveEdgeOfPhysicalBond b) x
+          (cmp99SourceUbarGamma1 (G := SUN Nc) b)
+          (cmp99SourceUbarGamma2 (G := SUN Nc) b)
+          (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ B_V.δ := by
+    intro b x hx
+    simpa only [B_V, cmp99SourceUbarFineNoWindingBudget_delta] using
+      norm_cmp99SourceUbarDeviationLogArg_le_fineRadius
+        hd hM V epsilon epsilon_nonneg fineSmallV b x hx
+  dsimp only [CMP99SourceNormalizedRegionalScale.ofFineSmall,
+    CMP99SourceRegionalScale.ofFineSmall,
+    cmp99SourceRegionalScaleDataOfFineSmall,
+    cmp99SourceRegionalScaleDataOfDeviationBudget]
   rw [cmp99SourceLocalizedNextBackground_apply_pos_of_mem
     hd hM U epsilon epsilon_nonneg noWinding coarseBonds localSmallU b hb]
   apply Subtype.ext
   change
     (cmp99SourceLocalizedUbarBlock hd hM U epsilon epsilon_nonneg
         noWinding b _ : Matrix (Fin Nc) (Fin Nc) ℂ) =
-      (cmp99PhysicalUbarBlockOfDeviationBudget V
-        (cmp99SourceBaseCoarseBackground V)
-        (cmp99SourceUbarGamma1 (G := SUN Nc))
-        (cmp99SourceUbarGamma2 (G := SUN Nc))
-        (cmp99SourceUbarGamma3 (G := SUN Nc)) _ _ b :
+      (cmp99SourcePhysicalUbarBlockOfDeviationBudget
+        (d := d) (M := M) (N' := N') (Nc := Nc) V B_V hdevV b :
           Matrix (Fin Nc) (Fin Nc) ℂ)
   rw [cmp99SourceLocalizedUbarBlock_coe_eq_Ubar,
-    cmp99PhysicalUbarBlockOfDeviationBudget_coe_eq_Ubar]
+    cmp99SourcePhysicalUbarBlockOfDeviationBudget_coe_eq_Ubar]
   exact cmp99SourcePhysicalUbar_eq_of_eqOn_selectedReadBonds
     U V coarseBonds hUV b hb
 
@@ -92,10 +121,24 @@ theorem CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_Qprime_eq_cano
       (∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
         U (positiveEdgeOfPhysicalBond q) =
           V (positiveEdgeOfPhysicalBond q)) →
-      (regions.localizedWeightedQprimeTower hd hM rho spacing epsilon U
-          chain localSmallU).Qprime =
-        (regions.weightedQprimeTower hd hM rho spacing epsilon V chain
-          fineSmallV).Qprime := by
+      let LU := regions.localizedWeightedQprimeTower hd hM rho spacing epsilon U
+        chain localSmallU
+      let TV := regions.weightedQprimeTower hd hM rho spacing epsilon V chain
+        fineSmallV
+      let hLU := regions.localizedWeightedQprimeTower_terminalSpace_eq
+        hd hM rho spacing epsilon U chain localSmallU
+      let hTV := regions.weightedQprimeTower_terminalSpace_eq
+        hd hM rho spacing epsilon V chain fineSmallV
+      cmp99SourceTerminalCLMTransport
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := LU.TerminalSpace) (F' := regions.terminalHilbertSpace Nc)
+          rfl hLU LU.Qprime =
+        cmp99SourceTerminalCLMTransport
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := TV.TerminalSpace) (F' := regions.terminalHilbertSpace Nc)
+          rfl hTV TV.Qprime := by
   letI : NeZero N := regions.neZero
   induction regions with
   | stop Omega =>
@@ -162,19 +205,153 @@ theorem CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_Qprime_eq_cano
         nextU ScaleV.toSourceScale.data.nextBackground chain.tail
         (fun q _ => nextSmallU (positiveEdgeOfPhysicalBond q))
         nextSmallV nextEq
-      change
-        (tail.localizedWeightedQprimeTower hd hM rho ((M : ℝ) * spacing)
-            (cmp99SourceUbarNextFineRadius d M epsilon) nextU chain.tail
-            (fun q _ => nextSmallU (positiveEdgeOfPhysicalBond q))).Qprime.comp
-          (cmp99SourceTransportedBlockAverageCLM Omega
-            (cmp99SourceWeightedPhysicalTransport rho U)) =
-        (tail.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
-            (cmp99SourceUbarNextFineRadius d M epsilon)
-            ScaleV.toSourceScale.data.nextBackground chain.tail
-            nextSmallV).Qprime.comp
-          (cmp99SourceTransportedBlockAverageCLM Omega
-            (cmp99SourceWeightedPhysicalTransport rho V))
-      rw [tailEq, headEq]
+      let LocalTail := tail.localizedWeightedQprimeTower hd hM rho
+        ((M : ℝ) * spacing) (cmp99SourceUbarNextFineRadius d M epsilon)
+        nextU chain.tail (fun q _ =>
+          nextSmallU (positiveEdgeOfPhysicalBond q))
+      let CanonicalTail := tail.weightedQprimeTower hd hM rho
+        ((M : ℝ) * spacing) (cmp99SourceUbarNextFineRadius d M epsilon)
+        ScaleV.toSourceScale.data.nextBackground chain.tail nextSmallV
+      let hLocalTail := tail.localizedWeightedQprimeTower_terminalSpace_eq
+        hd hM rho ((M : ℝ) * spacing)
+        (cmp99SourceUbarNextFineRadius d M epsilon) nextU chain.tail
+        (fun q _ => nextSmallU (positiveEdgeOfPhysicalBond q))
+      let hCanonicalTail := tail.weightedQprimeTower_terminalSpace_eq
+        hd hM rho ((M : ℝ) * spacing)
+        (cmp99SourceUbarNextFineRadius d M epsilon)
+        ScaleV.toSourceScale.data.nextBackground chain.tail nextSmallV
+      let OuterLocal :=
+        CMP99SourceActiveRegionChain.localizedWeightedQprimeTower
+          (CMP99SourceActiveRegionChain.step Omega hOmega tail)
+          hd hM rho spacing epsilon U chain localSmallU
+      let OuterCanonical :=
+        CMP99SourceActiveRegionChain.weightedQprimeTower
+          (CMP99SourceActiveRegionChain.step Omega hOmega tail)
+          hd hM rho spacing epsilon V chain fineSmallV
+      let hOuterLocal :=
+        CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_terminalSpace_eq
+          (CMP99SourceActiveRegionChain.step Omega hOmega tail)
+          hd hM rho spacing epsilon U chain localSmallU
+      let hOuterCanonical :=
+        CMP99SourceActiveRegionChain.weightedQprimeTower_terminalSpace_eq
+          (CMP99SourceActiveRegionChain.step Omega hOmega tail)
+          hd hM rho spacing epsilon V chain fineSmallV
+      let HeadU := cmp99SourceTransportedBlockAverageCLM Omega
+        (cmp99SourceWeightedPhysicalTransport rho U)
+      let HeadV := cmp99SourceTransportedBlockAverageCLM Omega
+        (cmp99SourceWeightedPhysicalTransport rho V)
+      let LocalQ := cmp99SourceTerminalCLMTransport
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc
+          (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+        (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+          (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+        (F := LocalTail.TerminalSpace) (F' := tail.terminalHilbertSpace Nc)
+        rfl hLocalTail LocalTail.Qprime
+      let CanonicalQ := cmp99SourceTerminalCLMTransport
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc
+          (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+        (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+          (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+        (F := CanonicalTail.TerminalSpace) (F' := tail.terminalHilbertSpace Nc)
+        rfl hCanonicalTail CanonicalTail.Qprime
+      have tailEq' : LocalQ = CanonicalQ := tailEq
+      have headEq' : HeadU = HeadV := headEq
+      have composedEq : LocalQ.comp HeadU = CanonicalQ.comp HeadV := by
+        rw [tailEq']
+        exact congrArg
+          (fun h : (cmp99SourcePhysicalTerminalHilbertSpace Nc Omega).carrier
+              →L[ℝ]
+                (cmp99SourcePhysicalTerminalHilbertSpace Nc
+                  (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)).carrier =>
+            CanonicalQ.comp h) headEq'
+      have rawLocal : HEq OuterLocal.Qprime
+          (LocalTail.Qprime.comp HeadU) := by
+        dsimp only [OuterLocal, LocalTail, HeadU]
+        rfl
+      have rawCanonical : HEq OuterCanonical.Qprime
+          (CanonicalTail.Qprime.comp HeadV) := by
+        dsimp only [OuterCanonical, CanonicalTail, HeadV]
+        rfl
+      have leftBridge :
+          cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := OuterLocal.TerminalSpace)
+              (F' := tail.terminalHilbertSpace Nc)
+              rfl hOuterLocal OuterLocal.Qprime =
+            cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := LocalTail.TerminalSpace)
+              (F' := tail.terminalHilbertSpace Nc) rfl hLocalTail
+              (LocalTail.Qprime.comp HeadU) :=
+        cmp99SourceTerminalCLMTransport_eq_of_heq_local
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := OuterLocal.TerminalSpace)
+          (G := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (H := LocalTail.TerminalSpace)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F' := tail.terminalHilbertSpace Nc)
+          rfl hOuterLocal rfl hLocalTail OuterLocal.Qprime
+            (LocalTail.Qprime.comp HeadU) rawLocal
+      have rightBridge :
+          cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := OuterCanonical.TerminalSpace)
+              (F' := tail.terminalHilbertSpace Nc) rfl hOuterCanonical
+              OuterCanonical.Qprime =
+            cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := CanonicalTail.TerminalSpace)
+              (F' := tail.terminalHilbertSpace Nc) rfl hCanonicalTail
+              (CanonicalTail.Qprime.comp HeadV) :=
+        cmp99SourceTerminalCLMTransport_eq_of_heq_local
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := OuterCanonical.TerminalSpace)
+          (G := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (H := CanonicalTail.TerminalSpace)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F' := tail.terminalHilbertSpace Nc)
+          rfl hOuterCanonical rfl hCanonicalTail OuterCanonical.Qprime
+            (CanonicalTail.Qprime.comp HeadV) rawCanonical
+      have leftComp :
+          cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := LocalTail.TerminalSpace)
+              (F' := tail.terminalHilbertSpace Nc) rfl hLocalTail
+              (LocalTail.Qprime.comp HeadU) = LocalQ.comp HeadU := by
+        exact (cmp99SourceTerminalCLMTransport_comp
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := cmp99SourcePhysicalTerminalHilbertSpace Nc
+            (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+          (G := LocalTail.TerminalSpace)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+            (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+          (G' := tail.terminalHilbertSpace Nc)
+          rfl rfl hLocalTail LocalTail.Qprime HeadU).symm
+      have rightComp :
+          cmp99SourceTerminalCLMTransport
+              (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+              (F := CanonicalTail.TerminalSpace)
+              (F' := tail.terminalHilbertSpace Nc) rfl hCanonicalTail
+              (CanonicalTail.Qprime.comp HeadV) = CanonicalQ.comp HeadV := by
+        exact (cmp99SourceTerminalCLMTransport_comp
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := cmp99SourcePhysicalTerminalHilbertSpace Nc
+            (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+          (G := CanonicalTail.TerminalSpace)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F' := cmp99SourcePhysicalTerminalHilbertSpace Nc
+            (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega))
+          (G' := tail.terminalHilbertSpace Nc)
+          rfl rfl hCanonicalTail CanonicalTail.Qprime HeadV).symm
+      exact leftBridge.trans (leftComp.trans
+        (composedEq.trans (rightComp.symm.trans rightBridge.symm)))
 
 end
 

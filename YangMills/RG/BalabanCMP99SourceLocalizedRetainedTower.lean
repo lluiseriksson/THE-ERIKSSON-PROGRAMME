@@ -41,7 +41,7 @@ private structure CMP99SourceLocalizedCanonicalRetainedAux
     (agree : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
       localBackground (positiveEdgeOfPhysicalBond q) =
         canonicalBackground (positiveEdgeOfPhysicalBond q)) where
-  private mk ::
+  mk ::
   localTowerAt : Fin (depth + 1) →
     CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega spacing
   canonicalTowerAt : Fin (depth + 1) →
@@ -207,8 +207,16 @@ private noncomputable def cmp99SourceLocalizedCanonicalRetainedAux
               (cmp99SourceTransportedBlockAverageCLM Omega
                 (cmp99SourceWeightedPhysicalTransport rho canonicalBackground))
           rw [Tail.prefixQprime_eq s, headEq]
-      refine CMP99SourceLocalizedCanonicalRetainedAux.mk
-        localTower canonicalTower ?_ ?_ rfl rfl prefixEq ?_ ?_
+      refine {
+        localTowerAt := localTower
+        canonicalTowerAt := canonicalTower
+        localTowerAt_depth := ?_
+        canonicalTowerAt_depth := ?_
+        localTowerAt_zero := rfl
+        canonicalTowerAt_zero := rfl
+        prefixQprime_eq := prefixEq
+        localTerminal_eq_generated := ?_
+        canonicalTerminal_eq_generated := ?_ }
       · intro r
         refine Fin.cases ?_ (fun s => ?_) r
         · rfl
@@ -286,8 +294,8 @@ structure CMP99SourceLocalizedRetainedTower
   canonicalTowerAt_zero : canonicalTowerAt 0 =
     CMP99SourceWeightedRegionalTower.stop
       (g := SUNLieCoord Nc) Omega spacing
-  prefixQprime_eq : ∀ r,
-    (localizedTowerAt r).Qprime = (canonicalTowerAt r).Qprime
+  prefixQprime_heq : ∀ r,
+    HEq (localizedTowerAt r).Qprime (canonicalTowerAt r).Qprime
   localizedTerminal_eq_generated :
     localizedTowerAt (Fin.last depth) =
       regions.localizedWeightedQprimeTower hd hM rho spacing epsilon
@@ -329,7 +337,7 @@ noncomputable def cmp99SourceLocalizedRetainedTower
   exact CMP99SourceLocalizedRetainedTower.mk
     Aux.localTowerAt Aux.canonicalTowerAt Aux.localTowerAt_depth
     Aux.canonicalTowerAt_depth Aux.localTowerAt_zero
-    Aux.canonicalTowerAt_zero Aux.prefixQprime_eq
+    Aux.canonicalTowerAt_zero (fun r => heq_of_eq (Aux.prefixQprime_eq r))
     Aux.localTerminal_eq_generated Aux.canonicalTerminal_eq_generated
 
 /-- Terminal projection of the internally derived equality of every retained
@@ -346,9 +354,9 @@ theorem CMP99SourceLocalizedRetainedTower.terminalQprime_eq
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon}
     (T : CMP99SourceLocalizedRetainedTower regions hd hM rho spacing epsilon
       background chain localSmall) :
-    (T.localizedTowerAt (Fin.last depth)).Qprime =
+    HEq (T.localizedTowerAt (Fin.last depth)).Qprime
       (T.canonicalTowerAt (Fin.last depth)).Qprime :=
-  T.prefixQprime_eq (Fin.last depth)
+  T.prefixQprime_heq (Fin.last depth)
 
 end
 

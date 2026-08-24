@@ -1,6 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceLocalizedNextBackground
 import YangMills.RG.BalabanCMP99SourceRetainedExactReadCarrier
 import YangMills.RG.BalabanCMP99SourceWeightedRegionalTower
+import YangMills.RG.BalabanCMP99SourceGeneratedTerminalCoordinates
 
 /-!
 PRE-VALIDATION: source is present in scratch only; no `.olean` has been
@@ -25,9 +26,9 @@ noncomputable section
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
+omit [NeZero N] in
 /-- The tail-Ubar part of the recursive carrier inherits any pointwise
 positive-link estimate imposed on the complete current carrier. -/
-omit [NeZero N] in
 theorem boundOn_tailUbarReadBonds_of_boundOn_retainedFineReadBonds
     {N' depth : ℕ} [NeZero N']
     (Omega : ActiveGaugeRegion d (M * N')) (hOmega : Omega.BlockSaturated)
@@ -35,8 +36,8 @@ theorem boundOn_tailUbarReadBonds_of_boundOn_retainedFineReadBonds
       (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega) depth)
     (background : PhysicalGaugeBackground d (M * N') Nc)
     (epsilon : ℝ)
-    (hsmall : ∀ q ∈ (CMP99SourceActiveRegionChain.step Omega hOmega tail).
-        retainedFineReadBonds (Nc := Nc),
+    (hsmall : ∀ q ∈ CMP99SourceActiveRegionChain.retainedFineReadBonds
+        (Nc := Nc) (CMP99SourceActiveRegionChain.step Omega hOmega tail),
       ‖(background (positiveEdgeOfPhysicalBond q) :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     ∀ q ∈ cmp99SourceUbarFineReadBondsOfCoarseBonds (Nc := Nc)
@@ -139,6 +140,59 @@ theorem CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_depth
           nextBackground chain.tail (fun q _ =>
             nextSmall (positiveEdgeOfPhysicalBond q))).depth + 1 = depth + 1
       rw [ih]
+
+omit [NeZero N] in
+/-- The localized tower terminates in the canonical Hilbert bundle of the
+typed region chain.  This is the bundle-level equality needed to compare its
+`Qprime` with a canonical source tower without asking typeclass inference to
+coerce between proof-dependent carriers. -/
+theorem CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_terminalSpace_eq
+    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc) :
+    letI : NeZero N := regions.neZero
+    ∀ (spacing epsilon : ℝ)
+      (background : PhysicalGaugeBackground d N Nc)
+      (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+      (localSmall : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
+        ‖(background (positiveEdgeOfPhysicalBond q) :
+            Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon),
+      (regions.localizedWeightedQprimeTower hd hM rho spacing epsilon
+        background chain localSmall).TerminalSpace =
+          regions.terminalHilbertSpace Nc := by
+  letI : NeZero N := regions.neZero
+  induction regions with
+  | stop Omega =>
+      intro spacing epsilon background chain localSmall
+      rfl
+  | @step N' depth _ Omega hOmega tail ih =>
+      intro spacing epsilon background chain localSmall
+      letI : NeZero (M * N') := inferInstance
+      let tailBonds := tail.retainedFineReadBonds (Nc := Nc)
+      have tailPullSmall : ∀ q ∈
+          cmp99SourceUbarFineReadBondsOfCoarseBonds (Nc := Nc) tailBonds,
+          ‖(background (positiveEdgeOfPhysicalBond q) :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon :=
+        boundOn_tailUbarReadBonds_of_boundOn_retainedFineReadBonds
+          Omega hOmega tail background epsilon localSmall
+      let nextBackground : PhysicalGaugeBackground d N' Nc :=
+        cmp99SourceLocalizedNextBackground hd hM background epsilon
+          chain.epsilon_nonneg chain.head_noWinding tailBonds tailPullSmall
+      have nextSmall : ∀ e : ConcreteEdge d N',
+          ‖(nextBackground e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+            cmp99SourceUbarNextFineRadius d M epsilon := by
+        intro e
+        exact norm_cmp99SourceLocalizedNextBackground_sub_one_le
+          hd hM background epsilon chain.epsilon_nonneg
+          chain.head_noWinding chain.head_logSmall tailBonds tailPullSmall e
+      change (tail.localizedWeightedQprimeTower hd hM rho
+          ((M : ℝ) * spacing) (cmp99SourceUbarNextFineRadius d M epsilon)
+          nextBackground chain.tail (fun q _ =>
+            nextSmall (positiveEdgeOfPhysicalBond q))).TerminalSpace =
+        tail.terminalHilbertSpace Nc
+      exact ih ((M : ℝ) * spacing)
+        (cmp99SourceUbarNextFineRadius d M epsilon) nextBackground chain.tail
+        (fun q _ => nextSmall (positiveEdgeOfPhysicalBond q))
 
 end
 

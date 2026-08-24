@@ -27,13 +27,13 @@ variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 /-- Both sites read by a positive physical-bond coordinate lie in `S`.  The
 second endpoint is the positive shift of the stored source coordinate. -/
 def CMP99PhysicalBondEndpointsIn
-    {N : ℕ} (S : Finset (FinBox d N))
+    {N : ℕ} [NeZero N] (S : Finset (FinBox d N))
     (b : PhysicalBond d N) : Prop :=
   b.1 ∈ S ∧ b.1.shift b.2 ∈ S
 
 /-- Endpoint containment is monotone in its site carrier. -/
 theorem CMP99PhysicalBondEndpointsIn.mono
-    {N : ℕ} {S T : Finset (FinBox d N)}
+    {N : ℕ} [NeZero N] {S T : Finset (FinBox d N)}
     {b : PhysicalBond d N}
     (hST : S ⊆ T) (hb : CMP99PhysicalBondEndpointsIn S b) :
     CMP99PhysicalBondEndpointsIn T b :=
@@ -165,7 +165,7 @@ theorem blockSite_iterate_shift_eq_self_or_shift
           calc
             M * (y mu).val + (r mu).val + k =
                 M * (y mu).val +
-                  (M + ((r mu).val + k - M)) := by rw [hremDecomp]
+                  (M + ((r mu).val + k - M)) := by omega
             _ = M * ((y mu).val + 1) +
                   ((r mu).val + k - M) := by ring
             _ = M * N' + ((r mu).val + k - M) := by rw [hlast]
@@ -175,9 +175,9 @@ theorem blockSite_iterate_shift_eq_self_or_shift
             (Nat.one_le_iff_ne_zero.mpr (NeZero.ne N'))
         have hrem_lt_MN : (r mu).val + k - M < M * N' :=
           lt_of_lt_of_le hrem_lt_M hM_le_MN
-        rw [hsplit, Nat.add_mod, Nat.mod_self, zero_add,
-          Nat.mod_eq_of_lt hrem_lt_MN, Nat.div_eq_of_lt hrem_lt_M,
-          hlast, Nat.mod_self]
+        rw [hsplit, Nat.add_mod, Nat.mod_self, zero_add]
+        simp [Nat.mod_eq_of_lt hrem_lt_MN,
+          Nat.div_eq_of_lt hrem_lt_M, hlast]
     · rw [iterShift_apply_ne _ _ _ hi]
       have hcoord := congrArg Fin.val (congrFun hbase i)
       simpa [FinBox.shift, hi] using hcoord
@@ -235,7 +235,8 @@ theorem cmp99SourceTransportedAverageFineReadBonds_endpointsIn
         (G := SUN Nc) y x hx) he'
   have hblock : blockOf M N' y ⊆ Omega.sites :=
     (mem_cmp99ActiveCoarseRegion_sites_iff Omega y).mp hy
-  exact hendpoints.mono hblock
+  exact CMP99PhysicalBondEndpointsIn.mono
+    (b := physicalBondOfEdge e) hblock hendpoints
 
 /-- The exact fine read carrier of one selected Ubar bond stays inside the
 union of its two active endpoint blocks.  The base path and `Gamma2` use the
@@ -271,27 +272,34 @@ theorem cmp99SourceUbarFineReadBonds_endpointsIn
     have hbasepoint : blockBasepoint M N' b.1 ∈ blockOf M N' b.1 :=
       (mem_blockOf M N' b.1 (blockBasepoint M N' b.1)).2
         (blockSite_blockBasepoint M N' b.1)
-    exact (cmp99SourceParallelTransportPath_endpointsIn_twoBlocks
-      b.1 (blockBasepoint M N' b.1) b.2 hbasepoint e he').mono hblocks
+    exact CMP99PhysicalBondEndpointsIn.mono
+      (b := physicalBondOfEdge e) hblocks
+      (cmp99SourceParallelTransportPath_endpointsIn_twoBlocks
+        b.1 (blockBasepoint M N' b.1) b.2 hbasepoint e he')
   · obtain ⟨x, hx, hcontour⟩ := Finset.mem_biUnion.mp hcontour
     unfold cmp99PhysicalBondsOfEdgeList at hcontour
     obtain ⟨e, he, rfl⟩ := Finset.mem_image.mp hcontour
     have he' : e ∈ cmp99SourceUbarFineContourEdgeList
         (Nc := Nc) b x := by
       simpa using he
-    simp only [cmp99SourceUbarFineContourEdgeList, List.mem_append] at he'
-    rcases he' with hgamma1 | hgamma2 | hgamma3
-    · have hgamma1' : e ∈
+    unfold cmp99SourceUbarFineContourEdgeList at he'
+    rcases List.mem_append.mp he' with hleft | hgamma3
+    · rcases List.mem_append.mp hleft with hgamma1 | hgamma2
+      · have hgamma1' : e ∈
           (cmp99BlockContainedContourSystem (G := SUN Nc) b.1 x).edges := by
-        simpa [cmp99SourceUbarGamma1] using hgamma1
-      exact (physicalBondOfEdge_endpointsIn_of_staysIn
-        (cmp99BlockContainedContourSystem_staysIn
-          (G := SUN Nc) b.1 x hx) hgamma1').mono hsource
-    · have hgamma2' : e ∈
+          simpa [cmp99SourceUbarGamma1] using hgamma1
+        exact CMP99PhysicalBondEndpointsIn.mono
+          (b := physicalBondOfEdge e) hsource
+          (physicalBondOfEdge_endpointsIn_of_staysIn
+            (cmp99BlockContainedContourSystem_staysIn
+              (G := SUN Nc) b.1 x hx) hgamma1')
+      · have hgamma2' : e ∈
           (cmp99SourceParallelTransportPath (G := SUN Nc) x b.2).edges := by
-        simpa [cmp99SourceUbarGamma2] using hgamma2
-      exact (cmp99SourceParallelTransportPath_endpointsIn_twoBlocks
-        b.1 x b.2 hx e hgamma2').mono hblocks
+          simpa [cmp99SourceUbarGamma2] using hgamma2
+        exact CMP99PhysicalBondEndpointsIn.mono
+          (b := physicalBondOfEdge e) hblocks
+          (cmp99SourceParallelTransportPath_endpointsIn_twoBlocks
+            b.1 x b.2 hx e hgamma2')
     · let hx' := cmp99SourceTranslatedSite_mem_targetBlock b.1 b.2 x hx
       have hgamma3' : e ∈
           ((concreteCMP99BlockContour (G := SUN Nc) (b.1.shift b.2)
@@ -304,8 +312,9 @@ theorem cmp99SourceUbarFineReadBonds_endpointsIn
         OrientedLatticePath.StaysIn.symm
           (concreteCMP99BlockContour (G := SUN Nc) (b.1.shift b.2)
             ⟨cmp99SourceTranslatedSite x b.2, hx'⟩).staysInBlock
-      exact (physicalBondOfEdge_endpointsIn_of_staysIn
-        hstay hgamma3').mono htarget
+      exact CMP99PhysicalBondEndpointsIn.mono
+        (b := physicalBondOfEdge e) htarget
+        (physicalBondOfEdge_endpointsIn_of_staysIn hstay hgamma3')
 
 /-- Family form of the one-bond Ubar endpoint theorem.  The premise is itself
 orientation-safe: every selected coarse positive bond carries membership of
@@ -332,11 +341,11 @@ tail induction hypothesis as the two-endpoint active-coarse certificate needed
 by the exact selected-family Ubar pullback; no free carrier map or inclusion is
 accepted. -/
 theorem CMP99SourceActiveRegionChain.retainedFineReadBonds_endpointsIn
-    {N depth : ℕ} [NeZero N] {Omega : ActiveGaugeRegion d N}
+    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
-    (q : PhysicalBond d N)
+    (q : @PhysicalBond d N regions.neZero)
     (hq : q ∈ regions.retainedFineReadBonds (Nc := Nc)) :
-    CMP99PhysicalBondEndpointsIn Omega.sites q := by
+    @CMP99PhysicalBondEndpointsIn d N regions.neZero Omega.sites q := by
   induction regions with
   | stop Omega =>
       simpa using hq

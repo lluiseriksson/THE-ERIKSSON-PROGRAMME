@@ -50,7 +50,10 @@ theorem cmp99ActiveRegionSourceCovariantD0CLM_eq_of_eqOn_readBonds
         V (positiveEdgeOfPhysicalBond b)) :
     cmp99ActiveRegionSourceCovariantD0CLM Omega rho U spacing =
       cmp99ActiveRegionSourceCovariantD0CLM Omega rho V spacing := by
-  ext phi b
+  apply ContinuousLinearMap.ext
+  intro phi
+  apply PiLp.ext
+  intro b
   change spacing⁻¹ •
       (extendZeroZeroCLM Omega phi b.1 -
         rho.adCLM (U (positiveEdgeOfPhysicalBond b))
@@ -106,7 +109,8 @@ def cmp99ExtendRegularCubeLocalGauge
     (u : {x // x ∈ C.carrier} → SUN Nc)
     (x : FinBox 4 (L * N')) (hx : x ∈ C.carrier) :
     cmp99ExtendRegularCubeLocalGauge C u x = u ⟨x, hx⟩ := by
-  simp [cmp99ExtendRegularCubeLocalGauge, hx]
+  unfold cmp99ExtendRegularCubeLocalGauge
+  rw [dif_pos hx]
 
 /-- On an interior positive bond, the global identity extension evaluates to
 the literal local gauge action from the regularity witness. -/
@@ -119,9 +123,16 @@ theorem gaugeAct_cmp99ExtendRegularCubeLocalGauge_apply_interior
     GaugeConfig.gaugeAct (cmp99ExtendRegularCubeLocalGauge C u) U
         (positiveEdgeOfPhysicalBond b.1) =
       cmp99SourceLocalGaugeActPositiveBond C U u b := by
-  simp [GaugeConfig.gaugeAct_apply, cmp99ExtendRegularCubeLocalGauge,
-    cmp99SourceLocalGaugeActPositiveBond, b.2.1, b.2.2,
-    positiveEdgeOfPhysicalBond]
+  rw [GaugeConfig.gaugeAct_apply]
+  change cmp99ExtendRegularCubeLocalGauge C u b.1.1 *
+      U (positiveEdgeOfPhysicalBond b.1) *
+        (cmp99ExtendRegularCubeLocalGauge C u
+          (b.1.1.shift b.1.2))⁻¹ =
+    cmp99SourceLocalGaugeActPositiveBond C U u b
+  rw [cmp99ExtendRegularCubeLocalGauge_apply_of_mem C u b.1.1 b.2.1,
+    cmp99ExtendRegularCubeLocalGauge_apply_of_mem C u
+      (b.1.1.shift b.1.2) b.2.2]
+  rfl
 
 /-- Canonical global exponential background associated with the physical
 one-cochain extension. -/
@@ -148,7 +159,9 @@ theorem CMP99Eq335PhysicalRegularityWitness.gaugeAct_eq_exponential_on_readBonds
     (W : CMP99Eq335PhysicalRegularityWitness
       (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
     (Omega : ActiveGaugeRegion 4 (L * N'))
-    (hread : CMP99Eq335LaplacianReadCarrierInsideRegularCube Omega W.cube) :
+    (hread : CMP99Eq335LaplacianReadCarrierInsideRegularCube
+      (L := L) (N' := N') (Mlarge := Mlarge) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) Omega W.cube) :
     ∀ b ∈ cmp99ActiveRegionCovariantD0ReadBonds Omega,
       GaugeConfig.gaugeAct
           (cmp99ExtendRegularCubeLocalGauge W.cube W.localGauge) U
@@ -182,7 +195,9 @@ theorem CMP99Eq335PhysicalRegularityWitness.regionalLaplacian_eq_exponential
     (W : CMP99Eq335PhysicalRegularityWitness
       (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
     (Omega : ActiveGaugeRegion 4 (L * N'))
-    (hread : CMP99Eq335LaplacianReadCarrierInsideRegularCube Omega W.cube) :
+    (hread : CMP99Eq335LaplacianReadCarrierInsideRegularCube
+      (L := L) (N' := N') (Mlarge := Mlarge) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) Omega W.cube) :
     cmp99ActiveRegionSourceCovariantLaplacian Omega
         (matrixSUNAdjointModel Nc)
         (GaugeConfig.gaugeAct

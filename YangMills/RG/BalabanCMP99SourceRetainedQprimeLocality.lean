@@ -1,5 +1,4 @@
-import YangMills.RG.BalabanCMP99SourceSelectedNextBackgroundLocality
-import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
+import YangMills.RG.BalabanCMP99SourceLocalizedTowerCanonicalExtension
 
 /-!
 PRE-VALIDATION: source is present in scratch only; no `.olean` has been
@@ -22,12 +21,22 @@ open scoped Matrix.Norms.L2Operator
 
 noncomputable section
 
-variable {d M N Nc : ℕ}
-variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
+variable {d M Nc : ℕ}
+variable [NeZero d] [NeZero M] [NeZero Nc]
+
+private theorem cmp99SourceTerminalCLMTransport_right_injective
+    {E F F' : CMP99SourceWeightedTowerHilbertSpace} (hF : F = F') :
+    Function.Injective
+      (cmp99SourceTerminalCLMTransport
+        (E := E) (E' := E) (F := F) (F' := F') rfl hF) := by
+  subst F'
+  intro C D h
+  exact h
 
 /-- Exterior changes away from the recursively generated exact read carrier
-do not change the literal retained physical `Qprime`.  Both towers and every
-next background are constructed internally by the source recursion. -/
+do not change the literal retained physical `Qprime`.  The equality is stated
+after canonical terminal-bundle transport, so it compares the source towers
+without identifying proof-dependent terminal bundles by definition. -/
 theorem CMP99SourceActiveRegionChain.weightedQprimeTower_Qprime_eq_of_eqOn_retainedFineReadBonds
     {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
@@ -43,86 +52,39 @@ theorem CMP99SourceActiveRegionChain.weightedQprimeTower_Qprime_eq_of_eqOn_retai
       (∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
         U (positiveEdgeOfPhysicalBond q) =
           V (positiveEdgeOfPhysicalBond q)) →
-      (regions.weightedQprimeTower hd hM rho spacing epsilon U chain
-          fineSmallU).Qprime =
-        (regions.weightedQprimeTower hd hM rho spacing epsilon V chain
-          fineSmallV).Qprime := by
+      let TU := regions.weightedQprimeTower hd hM rho spacing epsilon U chain
+        fineSmallU
+      let TV := regions.weightedQprimeTower hd hM rho spacing epsilon V chain
+        fineSmallV
+      let hTU := regions.weightedQprimeTower_terminalSpace_eq hd hM rho
+        spacing epsilon U chain fineSmallU
+      let hTV := regions.weightedQprimeTower_terminalSpace_eq hd hM rho
+        spacing epsilon V chain fineSmallV
+      cmp99SourceTerminalCLMTransport
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := TU.TerminalSpace) (F' := regions.terminalHilbertSpace Nc)
+          rfl hTU TU.Qprime =
+        cmp99SourceTerminalCLMTransport
+          (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+          (F := TV.TerminalSpace) (F' := regions.terminalHilbertSpace Nc)
+          rfl hTV TV.Qprime := by
   letI : NeZero N := regions.neZero
-  induction regions with
-  | stop Omega =>
-      intro spacing epsilon U V chain fineSmallU fineSmallV hUV
-      rfl
-  | @step N' depth _ Omega hOmega tail ih =>
-      intro spacing epsilon U V chain fineSmallU fineSmallV hUV
-      letI : NeZero (M * N') := inferInstance
-      let ScaleU : CMP99SourceNormalizedRegionalScale Omega U :=
-        CMP99SourceNormalizedRegionalScale.ofFineSmall hd hM Omega U hOmega
-          epsilon chain.epsilon_nonneg chain.head_noWinding fineSmallU
-      let ScaleV : CMP99SourceNormalizedRegionalScale Omega V :=
-        CMP99SourceNormalizedRegionalScale.ofFineSmall hd hM Omega V hOmega
-          epsilon chain.epsilon_nonneg chain.head_noWinding fineSmallV
-      have nextSmallU : ∀ e : ConcreteEdge d N',
-          ‖(ScaleU.toSourceScale.data.nextBackground e :
-              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-            cmp99SourceUbarNextFineRadius d M epsilon := by
-        intro e
-        simpa [ScaleU, CMP99SourceNormalizedRegionalScale.ofFineSmall,
-          CMP99SourceRegionalScale.ofFineSmall] using
-          norm_cmp99SourceRegionalScaleDataOfFineSmall_nextBackground_sub_one_le
-            hd hM Omega U (cmp99SourceBlockAverageWeight M d)
-            epsilon chain.epsilon_nonneg chain.head_noWinding
-            chain.head_logSmall fineSmallU e
-      have nextSmallV : ∀ e : ConcreteEdge d N',
-          ‖(ScaleV.toSourceScale.data.nextBackground e :
-              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-            cmp99SourceUbarNextFineRadius d M epsilon := by
-        intro e
-        simpa [ScaleV, CMP99SourceNormalizedRegionalScale.ofFineSmall,
-          CMP99SourceRegionalScale.ofFineSmall] using
-          norm_cmp99SourceRegionalScaleDataOfFineSmall_nextBackground_sub_one_le
-            hd hM Omega V (cmp99SourceBlockAverageWeight M d)
-            epsilon chain.epsilon_nonneg chain.head_noWinding
-            chain.head_logSmall fineSmallV e
-      have headEq :
-          cmp99SourceTransportedBlockAverageCLM Omega
-              (cmp99SourceWeightedPhysicalTransport rho U) =
-            cmp99SourceTransportedBlockAverageCLM Omega
-              (cmp99SourceWeightedPhysicalTransport rho V) :=
-        cmp99SourceTransportedBlockAverageCLM_eq_of_eqOn_retainedFineReadBonds
-          rho Omega hOmega tail U V hUV
-      have nextEq : ∀ q ∈ tail.retainedFineReadBonds (Nc := Nc),
-          ScaleU.toSourceScale.data.nextBackground
-              (positiveEdgeOfPhysicalBond q) =
-            ScaleV.toSourceScale.data.nextBackground
-              (positiveEdgeOfPhysicalBond q) := by
-        intro q hq
-        apply cmp99SourceNormalizedRegionalScaleOfFineSmall_nextBackground_apply_pos_eq
-          hd hM Omega hOmega U V epsilon chain.epsilon_nonneg
-            chain.head_noWinding fineSmallU fineSmallV
-            (tail.retainedFineReadBonds (Nc := Nc))
-        · exact eqOn_tailUbarReadBonds_of_eqOn_retainedFineReadBonds
-            Omega hOmega tail U V hUV
-        · exact q
-        · exact hq
-      have tailEq := ih ((M : ℝ) * spacing)
-        (cmp99SourceUbarNextFineRadius d M epsilon)
-        ScaleU.toSourceScale.data.nextBackground
-        ScaleV.toSourceScale.data.nextBackground chain.tail
-        nextSmallU nextSmallV nextEq
-      change
-        (tail.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
-            (cmp99SourceUbarNextFineRadius d M epsilon)
-            ScaleU.toSourceScale.data.nextBackground chain.tail
-            nextSmallU).Qprime.comp
-          (cmp99SourceTransportedBlockAverageCLM Omega
-            (cmp99SourceWeightedPhysicalTransport rho U)) =
-        (tail.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
-            (cmp99SourceUbarNextFineRadius d M epsilon)
-            ScaleV.toSourceScale.data.nextBackground chain.tail
-            nextSmallV).Qprime.comp
-          (cmp99SourceTransportedBlockAverageCLM Omega
-            (cmp99SourceWeightedPhysicalTransport rho V))
-      rw [tailEq, headEq]
+  intro spacing epsilon U V chain fineSmallU fineSmallV hUV
+  have localSmallU : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
+      ‖(U (positiveEdgeOfPhysicalBond q) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon := by
+    intro q _
+    exact fineSmallU (positiveEdgeOfPhysicalBond q)
+  have hUU :=
+    regions.localizedWeightedQprimeTower_Qprime_eq_canonicalExtension
+      hd hM rho spacing epsilon U U chain localSmallU fineSmallU
+      (by intro q hq; rfl)
+  have hUV' :=
+    regions.localizedWeightedQprimeTower_Qprime_eq_canonicalExtension
+      hd hM rho spacing epsilon U V chain localSmallU fineSmallV hUV
+  exact hUU.symm.trans hUV'
 
 end
 
