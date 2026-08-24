@@ -13,7 +13,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "cbb0ee26539feb18df28777c62be45907396aecb"
+SOURCE_SHA = "0bb0046ed1a932de4d8b387172de3d808e5186fc"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -35,6 +35,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
+REGULAR_CUBE_PATH = "tmp/BalabanCMP99SourceRegularCube.draft.lean"
+REGULAR_CUBE_AUDIT_PATH = "tmp/BalabanCMP99SourceRegularCubeAudit.draft.lean"
 FORWARD_PATH = "tmp/BalabanCMP99Eq335PhysicalForwardDerivative.draft.lean"
 FORWARD_AUDIT_PATH = "tmp/BalabanCMP99Eq335PhysicalForwardDerivativeAudit.draft.lean"
 WITNESS_PATH = "tmp/BalabanCMP99Eq335PhysicalRegularityWitness.draft.lean"
@@ -45,13 +47,15 @@ SOURCE_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClass.draft.lean"
 AUDIT_PATH = "tmp/BalabanCMP99Eq336PhysicalDStarDRegularityClassAudit.draft.lean"
 REPRO_PATH = "tmp/CMP99DStarPairSummationByPartsRepro.lean"
 
-runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v2"
+runner.RUNNER_REV = "c6d-eq336-adjoint-hot-debug-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-eq336-adjoint-debug")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-c6d-eq336-adjoint-debug-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-c6d-eq336-adjoint-debug-paths.txt")
 runner.SOURCE_BLOBS = {
+    REGULAR_CUBE_PATH: "99d178132f3869215529c8ec09c980bb2f06112b825a0860f4b442521790527b",
+    REGULAR_CUBE_AUDIT_PATH: "433de67e650961c902f62b26b12a5ee6646c33b5dbc73c1e3fc42102b6514966",
     FORWARD_PATH: "65634e403fc0cf35029e063cb4ef35d494b653f0ef5eec290bf80dd06caadb6c",
     FORWARD_AUDIT_PATH: "72025c310ac02d756e7c9005fc006aae42ca155d9859b7a36cefa2310705fdf6",
     WITNESS_PATH: "14a29ec9fd6a0f75c22f3d38e2f8339ad80a8a2e8bcc732c4536087366a6a59e",
@@ -69,7 +73,7 @@ runner.QUEUE = [
         [
             "lake", "build",
             "YangMills.RG.BalabanCMP98PhysicalSpecialUnitaryChart",
-            "YangMills.RG.BalabanCMP99SourceRegularCube",
+            "YangMills.RG.BalabanCMP99SourceScaledStratification",
             "YangMills.RG.FiniteTorusCurlDiv",
             "YangMills.RG.PhysicalGaugeCochains",
         ],
@@ -79,6 +83,22 @@ runner.QUEUE = [
         "c6d_eq336_prepare_scratch_build_dir",
         ["mkdir", "-p", ".lake/build/lib/lean/YangMills/RG", ".lake/build/lib/lean/tmp"],
         None,
+    ),
+    (
+        "c6d_regular_cube_source",
+        [
+            "lake", "env", "lean", REGULAR_CUBE_PATH, "-o",
+            ".lake/build/lib/lean/YangMills/RG/BalabanCMP99SourceRegularCube.olean",
+        ],
+        None,
+    ),
+    (
+        "c6d_regular_cube_audit",
+        [
+            "lake", "env", "lean", REGULAR_CUBE_AUDIT_PATH, "-o",
+            ".lake/build/lib/lean/tmp/BalabanCMP99SourceRegularCubeAudit.draft.olean",
+        ],
+        7,
     ),
     (
         "c6d_eq335_forward_source",
