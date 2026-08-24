@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0
+
+/-! PRE-VALIDATION: the imported source has not yet been compiler-verified. -/
+
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_localizedField_apply_siteEquiv_le_pointSourceB0
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_localizedField_apply_siteEquiv_le_uniformPointSourceB0
