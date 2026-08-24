@@ -90,10 +90,15 @@ theorem cmp99SumIfLt_eq_sumSubtype
   calc
     _ = ∑ nu ∈ (Finset.univ.filter fun nu => mu < nu), g nu := by
       rw [Finset.sum_filter]
-      simp [g]
+      apply Finset.sum_congr rfl
+      intro nu _
+      by_cases hmunu : mu < nu <;> simp [g, hmunu]
     _ = ∑ nu : {nu : ι // mu < nu}, g nu := by
       exact Finset.sum_subtype _ (by simp) g
-    _ = _ := by simp [g]
+    _ = _ := by
+      apply Finset.sum_congr rfl
+      intro nu _
+      simp [g, nu.2]
 
 /-- Source-independent coordinates for a concrete physical plaquette: a site,
 the lower direction, and the upper direction carrying its strict-order proof. -/
@@ -276,22 +281,41 @@ theorem cmp99PhysicalDStarOneCochain_inner
                   (eta⁻¹ • torusBackwardDiff nu
                     (fun y => F ⟨y, mu, nu, hmunu⟩) x)
           else 0 := by
-      simpa only [if_pos, if_neg, dite_true, dite_false] using
-        cmp99SumOrderedPairSplit
-        (fun mu nu =>
+      let lower : Fin d → Fin d → ℝ := fun mu nu =>
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
               inner ℝ (A (x, nu))
                 ((-eta⁻¹) • torusBackwardDiff mu
                   (fun y => F ⟨y, mu, nu, hmunu⟩) x)
-          else 0)
-        (fun mu nu =>
+          else 0
+      let upper : Fin d → Fin d → ℝ := fun mu nu =>
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
               inner ℝ (A (x, mu))
                 (eta⁻¹ • torusBackwardDiff nu
                   (fun y => F ⟨y, mu, nu, hmunu⟩) x)
-          else 0)
+          else 0
+      calc
+        _ = ∑ nu : Fin d, ∑ mu : Fin d,
+              if mu < nu then lower mu nu
+              else if nu < mu then upper nu mu else 0 := by
+            apply Finset.sum_congr rfl
+            intro nu _
+            apply Finset.sum_congr rfl
+            intro mu _
+            by_cases hmunu : mu < nu
+            · simp [lower, hmunu]
+            · by_cases hnumu : nu < mu <;>
+                simp [lower, upper, hmunu, hnumu]
+        _ = ∑ mu : Fin d, ∑ nu : Fin d,
+              if mu < nu then lower mu nu + upper mu nu else 0 :=
+            cmp99SumOrderedPairSplit lower upper
+        _ = _ := by
+            apply Finset.sum_congr rfl
+            intro mu _
+            apply Finset.sum_congr rfl
+            intro nu _
+            by_cases hmunu : mu < nu <;> simp [lower, upper, hmunu]
     _ = ∑ mu : Fin d, ∑ nu : Fin d,
           if hmunu : mu < nu then
             ∑ x : FinBox d N,
