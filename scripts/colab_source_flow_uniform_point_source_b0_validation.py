@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Colab gate for the depth-uniform literal source-flow point-source B0."""
+"""Colab gate for uniform point-source and localized-field source-flow B0."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "c65d00097e72a3b41022b521b2754f8fe8328eb4"
+SOURCE_SHA = "f681aacdeab3be53ccb0abb70c93493236515323"
 PARENT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -39,7 +39,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-uniform-point-source-b0-v1"
+runner.RUNNER_REV = "source-flow-uniform-point-source-b0-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-uniform-point-source-b0")
 runner.EVIDENCE = Path(
@@ -56,6 +56,10 @@ runner.SOURCE_BLOBS = {
         "8e563c07ed1c7c6681813edf8eb72121689686473b13f074c83ff11f9b65ba98",
     "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0Audit.lean":
         "743a914fd19d68a7aaeecaf61fee2c54e60a2c92ebb96f7d6851fcba37ca954d",
+    "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0.lean":
+        "c083ff9c5693c8e3d35d9b6d7d58d7a0d2e95fd73b443401b9c19dcbf79109b1",
+    "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0Audit.lean":
+        "377312d8a20be16f45434c7a70ecd32516fb5158032cfc50d1e18aa7a92d8bcb",
 }
 runner.QUEUE = [
     (
@@ -73,6 +77,22 @@ runner.QUEUE = [
             "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0Audit.lean",
         ],
         5,
+    ),
+    (
+        "source_flow_localized_field_b0_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0",
+        ],
+        None,
+    ),
+    (
+        "source_flow_localized_field_b0_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0Audit.lean",
+        ],
+        2,
     ),
 ]
 
