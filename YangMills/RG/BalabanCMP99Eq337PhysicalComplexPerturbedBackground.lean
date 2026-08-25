@@ -33,7 +33,7 @@ variable [NeZero d] [NeZero N] [NeZero Nc]
 /-- Canonical complex-linear matrix realization of the repository's
 skew-Hermitian real chart.  Away from the real slice its values need not be
 skew-Hermitian. -/
-noncomputable def cmp99SUNLieComplexCoordMatrixLM (Nc : ℕ) :
+noncomputable def cmp99SUNLieComplexCoordMatrixLM (Nc : ℕ) [NeZero Nc] :
     SUNLieComplexCoord Nc →ₗ[ℂ] Matrix (Fin Nc) (Fin Nc) ℂ where
   toFun Z :=
     cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) +
