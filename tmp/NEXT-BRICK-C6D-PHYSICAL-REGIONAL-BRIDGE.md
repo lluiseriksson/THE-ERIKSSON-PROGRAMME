@@ -1177,3 +1177,39 @@ path-product bound.  The producer must cite the exact contour length lemmas
 and the same source read carrier as the sealed real-slice deviation theorem;
 no global fine-link smallness or unitarity outside the real slice may be
 introduced.
+
+Static inspection now fixes the first-stage constant and removes a possible
+dimension loss.  The already constructed
+`cmp99SUNLieComplexCoordSlEquiv Nc` is an isometric complex-linear
+equivalence, and `cmp99SUNLieComplexCoordToSlLM_val` identifies its value
+with `cmp99SUNLieComplexCoordMatrixLM`.  Consequently the matrix generator
+has exactly the coordinate norm: no `Nc`, Frobenius or cardinality factor is
+permitted in this bridge.  With
+
+```text
+q = |eta| * rA,
+rLink = epsilonU + 2*q,
+q <= 1/2,
+```
+
+`norm_exp_smul_sub_one_le_two_mul` gives the exponential contribution.  On a
+positive bond the literal factorization is `exp(eta*A) * U`; on the reversed
+bond its inverse must be rewritten as `U^-1 * exp(-eta*A)`.  The physical
+`U` factor and its inverse have norm one, so both orientations have the same
+visible `rLink`.  This is a source-specific theorem about the literal
+Eq. (3.37) background, not an abstract inverse estimate on `SL(N,C)`.
+
+After that oriented-link theorem, each path is definitionally an ordered
+product of `1 + (link - 1)`, and
+`norm_orderedOnePlusProduct_sub_one_le` supplies exactly
+
+```text
+path.length * rLink * (1 + rLink)^path.length.
+```
+
+The three named contour length lemmas and the straight-path length then
+produce the four explicit summands consumed by
+`norm_UbarDeviationLogArg_le_four_factors`.  The only remaining scalar gate
+at this layer is that their literal sum is at most `B.delta`; neither a free
+path-product estimate nor a global fine-link hypothesis is an accepted
+substitute.
