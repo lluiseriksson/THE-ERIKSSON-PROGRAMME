@@ -230,7 +230,8 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
     (hlink : ∀ e,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ r)
     (B : MatrixNearLogNoWindingBudget Nc)
-    (hdev : ∀ b x, x ∈ blockOf M N' b.1 →
+    (hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
+      x ∈ blockOf M N' b.1 →
       ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
     (hlog : cmp99UbarLogRadius B < 1)
@@ -303,7 +304,8 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le
     (hlink : ∀ e,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ r)
     (B : MatrixNearLogNoWindingBudget Nc)
-    (hdev : ∀ b x, x ∈ blockOf M N' b.1 →
+    (hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
+      x ∈ blockOf M N' b.1 →
       ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
     (hlog : cmp99UbarLogRadius B < 1)
@@ -328,7 +330,8 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
     (hlink : ∀ e,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ r)
     (B : MatrixNearLogNoWindingBudget Nc)
-    (hdev : ∀ b x, x ∈ blockOf M N' b.1 →
+    (hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
+      x ∈ blockOf M N' b.1 →
       ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
     (hlog : cmp99UbarLogRadius B < 1)
@@ -426,7 +429,8 @@ theorem norm_cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius_sub_one_le
           d M Nc r hnoWinding) := by
   let B := cmp99SourceComplexUbarNoWindingBudget
     d M Nc r hnoWinding
-  let hdev : ∀ b x, x ∈ blockOf M N' b.1 →
+  let hdev : ∀ (b : PhysicalBond d N') (x : FinBox d (M * N')),
+      x ∈ blockOf M N' b.1 →
       ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ := by
     intro b x hx
