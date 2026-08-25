@@ -1,0 +1,24 @@
+import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
+
+/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
+
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_complexification
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_trace
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordToSlLM
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_injective
+#print axioms YangMills.RG.cmp99SlSkewReal
+#print axioms YangMills.RG.cmp99SlSkewImag
+#print axioms YangMills.RG.cmp99SlToSUNLieComplexCoord
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordToSlLM_surjective
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordSlEquiv
+#print axioms YangMills.RG.cmp99Eq337PrintedComplexLieMatrix
+#print axioms YangMills.RG.Complex.I_smul_cmp99Eq337PrintedComplexLieMatrix
+#print axioms YangMills.RG.cmp99Eq337PrintedComplexLieMatrix_complexification
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix
+#print axioms YangMills.RG.cmp99Eq337PrintedComplexGenerator_eq
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_realSlice
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_det
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedPositiveBondSL
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedBackground
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedBackground_apply_pos
