@@ -164,6 +164,12 @@ theorem cmp99SUNLieComplexCoordMatrixLM_injective :
   have hdag := congrArg Matrix.conjTranspose h
   rw [cmp99SUNLieComplexCoordMatrixLM_conjTranspose,
     cmp99SUNLieComplexCoordMatrixLM_conjTranspose] at hdag
+  change
+    cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) +
+        Complex.I • cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z) =
+      cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart W) +
+        Complex.I • cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart W)
+      at h
   have hreMatrix :
       cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) =
         cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart W) := by
@@ -264,6 +270,8 @@ theorem cmp99SUNLieComplexCoordToSlLM_surjective :
   rw [cmp99SUNLieComplexCoordToSlLM_val,
     cmp99SlToSUNLieComplexCoord,
     cmp99SUNLieComplexCoordMatrixLM_ofRealImag]
+  simp only [cmp98LieCoordMatrix,
+    (suLieCoordIso Nc).symm_apply_apply]
   change
     (cmp99SlSkewReal Z).toMatrix +
         Complex.I • (cmp99SlSkewImag Z).toMatrix = Z.1
@@ -280,7 +288,8 @@ noncomputable def cmp99SUNLieComplexCoordSlEquiv (Nc : ℕ) :
       LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ :=
   LinearEquiv.ofBijective (cmp99SUNLieComplexCoordToSlLM Nc)
     ⟨fun _ _ h => cmp99SUNLieComplexCoordMatrixLM_injective
-      (congrArg Subtype.val h),
+      (congrArg
+        (fun Z : LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ => Z.1) h),
       cmp99SUNLieComplexCoordToSlLM_surjective⟩
 
 /-- Hermitian-coordinate convention printed in CMP98/CMP99: repository

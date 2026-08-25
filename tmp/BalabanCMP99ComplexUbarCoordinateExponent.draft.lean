@@ -84,7 +84,8 @@ coordinate or equality is an input. -/
       cmp99UbarSpecialLinearExponent s w D := by
   have h := (cmp99SUNLieComplexCoordSlEquiv Nc).apply_symm_apply
     (cmp99UbarSpecialLinearExponentSl s w D hD hnoWinding)
-  exact congrArg Subtype.val h
+  exact congrArg
+    (fun Z : LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ => Z.1) h
 
 /-- Consequently the existing determinant-one analytic factor is literally
 the matrix exponential of the internally generated physical complex
