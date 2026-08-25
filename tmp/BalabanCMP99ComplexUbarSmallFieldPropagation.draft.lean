@@ -131,7 +131,7 @@ def cmp99SourceComplexUbarNextLinkRadius
 /-- Radius on both orientations after paying the non-unitary inverse loss. -/
 def cmp99SourceComplexUbarNextOrientedLinkRadius
     (M : ℕ) (r : ℝ) (B : MatrixNearLogNoWindingBudget Nc) : ℝ :=
-  let q := cmp99SourceComplexUbarNextLinkRadius M r B
+  let q := cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B
   q / (1 - q)
 
 variable {d M N' : ℕ} [NeZero d] [NeZero M] [NeZero N']
@@ -190,10 +190,10 @@ theorem exists_cmp99SourceComplexUbar_zero_step_gates
       cmp99UbarLogRadius
           (cmp99SourceComplexUbarNoWindingBudget
             d M Nc 0 hnoWinding) < 1 ∧
-      cmp99SourceComplexUbarNextLinkRadius M 0
+      cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M 0
           (cmp99SourceComplexUbarNoWindingBudget
             d M Nc 0 hnoWinding) < 1 ∧
-      cmp99SourceComplexUbarNextOrientedLinkRadius M 0
+      cmp99SourceComplexUbarNextOrientedLinkRadius (Nc := Nc) M 0
           (cmp99SourceComplexUbarNoWindingBudget
             d M Nc 0 hnoWinding) = 0 := by
   have hthreshold : 0 < cmp99UbarNoWindingThreshold Nc := by
@@ -238,7 +238,7 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
         (d := d) (M := M) (N' := N') (Nc := Nc)
         background B hdev b :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-      cmp99SourceComplexUbarNextLinkRadius M r B := by
+      cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B := by
   let S := blockOf M N' b.1
   let D : FinBox d (M * N') →
       Matrix.SpecialLinearGroup (Fin Nc) ℂ :=
@@ -291,7 +291,7 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
         (M : ℝ) * r * (1 + r) ^ M := by
       exact add_le_add
         (mul_le_mul hF hCnorm (norm_nonneg _) hF_nonneg) hCdev
-    _ = cmp99SourceComplexUbarNextLinkRadius M r B := rfl
+    _ = cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B := rfl
 
 /-- The complete positive-bond next complex background inherits the same
 explicit radius.  The negative orientation producer remains a separate gate:
@@ -312,7 +312,7 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le
         (d := d) (M := M) (N' := N') (Nc := Nc) background B hdev
         (positiveEdgeOfPhysicalBond b) :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-      cmp99SourceComplexUbarNextLinkRadius M r B := by
+      cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B := by
   rw [cmp99SourceComplexLocalizedNextBackground_apply_pos]
   exact norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
     (d := d) (M := M) (N' := N') (Nc := Nc)
@@ -332,13 +332,13 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
       ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
     (hlog : cmp99UbarLogRadius B < 1)
-    (hq1 : cmp99SourceComplexUbarNextLinkRadius M r B < 1)
+    (hq1 : cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B < 1)
     (e : ConcreteEdge d N') :
     ‖(cmp99SourceComplexLocalizedNextBackground
         (d := d) (M := M) (N' := N') (Nc := Nc) background B hdev e :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-      cmp99SourceComplexUbarNextOrientedLinkRadius M r B := by
-  let q := cmp99SourceComplexUbarNextLinkRadius M r B
+      cmp99SourceComplexUbarNextOrientedLinkRadius (Nc := Nc) M r B := by
+  let q := cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B
   have hq0 : 0 ≤ q := by
     have hblock := norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
       (d := d) (M := M) (N' := N') (Nc := Nc)
@@ -415,14 +415,14 @@ theorem norm_cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius_sub_one_le
         cmp99UbarNoWindingThreshold Nc)
     (hlog : cmp99UbarLogRadius
       (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding) < 1)
-    (hq1 : cmp99SourceComplexUbarNextLinkRadius M r
+    (hq1 : cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r
       (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding) < 1)
     (e : ConcreteEdge d N') :
     ‖(cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius
         (d := d) (M := M) (N' := N') (Nc := Nc)
         hd hM background r hr hlink hnoWinding e :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-      cmp99SourceComplexUbarNextOrientedLinkRadius M r
+      cmp99SourceComplexUbarNextOrientedLinkRadius (Nc := Nc) M r
         (cmp99SourceComplexUbarNoWindingBudget
           d M Nc r hnoWinding) := by
   let B := cmp99SourceComplexUbarNoWindingBudget
