@@ -13,3 +13,7 @@ PRE-VALIDATION: this scratch audit has no compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.cmp99UbarSpecialLinearFactorOfNearIdentity_coe
 #print axioms YangMills.RG.cmp99UbarSpecialLinearBlockOfNearIdentity
 #print axioms YangMills.RG.cmp99UbarSpecialLinearBlockOfNearIdentity_coe
+#print axioms YangMills.RG.cmp99UbarSpecialLinearFactorOfDeviationBudget
+#print axioms YangMills.RG.cmp99UbarSpecialLinearFactorOfDeviationBudget_coe
+#print axioms YangMills.RG.cmp99UbarSpecialLinearBlockOfDeviationBudget
+#print axioms YangMills.RG.cmp99UbarSpecialLinearBlockOfDeviationBudget_coe

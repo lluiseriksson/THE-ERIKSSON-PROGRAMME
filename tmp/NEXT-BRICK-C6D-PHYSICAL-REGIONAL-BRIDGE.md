@@ -578,7 +578,7 @@ following ordered list.
 
    Its exact two-file overlay passes the repository textual guard
    (`LEAN_OVERLAY_TEXT_OK files=2`, one PRE-VALIDATION marker per file).  The
-   draft exposes nine audit readouts and claims no `.olean`, gauge-background
+   draft exposes thirteen audit readouts and claims no `.olean`, gauge-background
    recursion or source radius producer.  The next module after it is therefore
    not another abstract `Ubar`: it is the positive-bond localized
    `SL(N,C)` block built from the existing group-generic deviation plus an
@@ -673,8 +673,26 @@ real-slice agreement when every transport is the flat identity.  They do not
 depend on `U'U`, do not encode `SL(N,C)` conjugation and therefore are not the
 regional/interacting producer.  The next implementation should generalize
 their one-scale leaves to algebraic `SL(N,C)` transport and package the
-result as genuinely complex-linear; it must not duplicate the flat induction
-or count the flat theorem as (3.59).
+   result as genuinely complex-linear; it must not duplicate the flat induction
+   or count the flat theorem as (3.59).
+
+The first source-localized `SL(N,C)` background step is now also explicit in
+PRE-VALIDATION scratch:
+
+```text
+tmp/BalabanCMP99ComplexLocalizedUbarBackground.draft.lean
+tmp/BalabanCMP99ComplexLocalizedUbarBackgroundAudit.draft.lean
+tmp/CMP99-COMPLEX-LOCALIZED-UBAR-DRAFT-PATHS.txt
+```
+
+It reuses only the group-generic contour/base-background substrate, fixes the
+mass to `M^{-d}`, constructs positive bonds through the determinant-one
+complex Ubar closure, and obtains negative orientations from
+`gaugeConfigOfPositiveBonds`.  It accepts no coarse background or Ubar value.
+Its sole analytic premise is the named uniform deviation estimate on the
+literal `UbarDeviation`; producing that estimate from CMP98 Proposition 4 is
+the next source dictionary.  The four-file cumulative overlay is textual
+evidence only until a Colab compiler/audit gate passes.
 
 Before that constructor, expose the invariant complex-bilinear pairing `B`
 and prove the leaf identity

@@ -149,6 +149,50 @@ noncomputable def cmp99UbarSpecialLinearBlockOfNearIdentity {iota : Type*}
         (coarse : Matrix (Fin Nc) (Fin Nc) ℂ) :=
   rfl
 
+/-- Budget-facing analytic factor.  The scalar budget generates both the
+Mercator-ball and no-winding premises; no logarithm family is caller data. -/
+noncomputable def cmp99UbarSpecialLinearFactorOfDeviationBudget {iota : Type*}
+    (s : Finset iota) (w : iota → ℝ)
+    (D : iota → Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+    (B : MatrixNearLogNoWindingBudget Nc)
+    (hdev : ∀ i ∈ s,
+      ‖(D i : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ) :
+    Matrix.SpecialLinearGroup (Fin Nc) ℂ :=
+  cmp99UbarSpecialLinearFactorOfNearIdentity s w D
+    (fun i hi => B.nearIdentity _ (hdev i hi))
+    (fun i hi => B.nearLog_noWinding _ (hdev i hi))
+
+@[simp] theorem cmp99UbarSpecialLinearFactorOfDeviationBudget_coe
+    {iota : Type*} (s : Finset iota) (w : iota → ℝ)
+    (D : iota → Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+    (B : MatrixNearLogNoWindingBudget Nc) (hdev) :
+    (cmp99UbarSpecialLinearFactorOfDeviationBudget
+        s w D B hdev : Matrix (Fin Nc) (Fin Nc) ℂ) =
+      NormedSpace.exp (cmp99UbarSpecialLinearExponent s w D) :=
+  rfl
+
+/-- Complete budget-facing one-block analytic Ubar value. -/
+noncomputable def cmp99UbarSpecialLinearBlockOfDeviationBudget {iota : Type*}
+    (s : Finset iota) (w : iota → ℝ)
+    (D : iota → Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+    (B : MatrixNearLogNoWindingBudget Nc)
+    (hdev : ∀ i ∈ s,
+      ‖(D i : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
+    (coarse : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+    Matrix.SpecialLinearGroup (Fin Nc) ℂ :=
+  cmp99UbarSpecialLinearFactorOfDeviationBudget s w D B hdev * coarse
+
+@[simp] theorem cmp99UbarSpecialLinearBlockOfDeviationBudget_coe
+    {iota : Type*} (s : Finset iota) (w : iota → ℝ)
+    (D : iota → Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+    (B : MatrixNearLogNoWindingBudget Nc) (hdev)
+    (coarse : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+    (cmp99UbarSpecialLinearBlockOfDeviationBudget
+        s w D B hdev coarse : Matrix (Fin Nc) (Fin Nc) ℂ) =
+      NormedSpace.exp (cmp99UbarSpecialLinearExponent s w D) *
+        (coarse : Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  rfl
+
 end
 
 end YangMills.RG
