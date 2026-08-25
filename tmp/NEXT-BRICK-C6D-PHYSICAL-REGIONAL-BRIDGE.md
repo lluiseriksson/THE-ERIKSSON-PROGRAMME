@@ -1372,3 +1372,18 @@ a free input.  The exact overlay-text gate passes for `2/2` files and the
 audit surface is `10/10`.  This remains static evidence only: no
 `.olean` or axiom-oracle verdict
 exists, and no terminal field or scalar window is discharged.
+
+The diagnostic Colab gate for the complete seven-pair scratch chain is
+prepared but has not been launched:
+
+```text
+SOURCE_CHECKPOINT=b1357760890c9551dd9786da0f691d652bf21eda
+RUNNER_CHECKPOINT=bf081293b9abdd5d7e81485fd456c0de393a027e
+NOTEBOOK_CHECKPOINT=944b2fda6fd745d0a4fa821164a092417fa68af0
+RUNNER_SHA256=B83D7B4EC7F3E78ABD244C236A20544E537CB001B94305F7D0EA1608C76A1F31
+NOTEBOOK_SHA256=0F7EF552E190D27FBC23C1B5111AA02507C8D047428B3569808CC6E7F1CF3E22
+```
+
+It compiles the seven source/audit pairs in dependency order and stops on the
+first error.  A PASS would be diagnostic compiler evidence for the scratch
+chain, not permission to remove PRE-VALIDATION or move a terminal counter.
