@@ -48,7 +48,7 @@ PAIRS = [
 
 PREREQUISITE = ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26)
 
-runner.RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v3"
+runner.RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v4"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-complex-ubar-radius")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-complex-ubar-radius-evidence")
@@ -96,6 +96,16 @@ queue = [
             "YangMills.RG.BalabanCMP99SourceUbarContours",
             "YangMills.RG.BalabanCMP99UbarPhysicalDeviation",
             "YangMills.RG.BalabanCMP116FourFactorLipschitz",
+            "YangMills.RG.BalabanCMP116DeterminantNearLog",
+            "YangMills.RG.MatrixDetExpSkewAdjoint",
+            "YangMills.RG.MatrixRealization",
+            "YangMills.RG.NearLogDeviationBudget",
+            "YangMills.RG.BalabanCMP116WilsonBackgroundFactorBounds",
+            "YangMills.RG.BalabanCMP98GAdConjugation",
+            "YangMills.RG.OrderedExponentialQuadraticBound",
+            "YangMills.RG.OrderedProductQuadraticBound",
+            "YangMills.ClayCore.WilsonLine",
+            "YangMills.RG.Ubar",
         ],
         None,
     ),
