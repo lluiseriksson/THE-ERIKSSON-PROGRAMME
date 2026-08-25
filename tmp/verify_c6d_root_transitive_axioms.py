@@ -23,7 +23,7 @@ from collections import defaultdict
 from pathlib import Path
 
 
-SOURCE_SHA = "c3ad434890d8802a3d0b6ec5697862d488bba60f"
+SOURCE_SHA = "b91d42630efb15f32d4b4ecd242a33238926d4de"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 PRE_MARKER = (
@@ -173,8 +173,8 @@ def main() -> int:
         per_module[module] = declarations
         expected.extend(declarations)
 
-    if len(expected) != 81:
-        raise RuntimeError(f"EXPECTED_DECLARATION_COUNT={len(expected)} WANT=81")
+    if len(expected) != 92:
+        raise RuntimeError(f"EXPECTED_DECLARATION_COUNT={len(expected)} WANT=92")
     if len(set(expected)) != len(expected):
         raise RuntimeError("DUPLICATE_EXPECTED_DECLARATION")
 

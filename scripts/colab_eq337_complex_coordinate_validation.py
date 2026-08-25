@@ -14,7 +14,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "18a92516f17440d7d217acc5d062327367ae132a"
+SOURCE_SHA = "b91d42630efb15f32d4b4ecd242a33238926d4de"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -55,7 +55,7 @@ BACKGROUND_AUDIT = (
     "BalabanCMP99Eq337PhysicalComplexPerturbedBackgroundAudit.lean"
 )
 
-runner.RUNNER_REV = "eq337-complex-coordinate-fresh-v1"
+runner.RUNNER_REV = "eq337-complex-coordinate-fresh-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-complex-coordinate")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-complex-coordinate-evidence")
@@ -67,7 +67,7 @@ runner.SOURCE_BLOBS = {
     COMPLEX: "11986d4d32c0fc1458ac35a9ce52de10afe022823c49287d11360ca1a12d0086",
     COMPLEX_AUDIT: "9ec01c5f72dbc1cf49eabfa3c12a84b8bbd9602950c47b35745352c0c0e1fcb9",
     BACKGROUND: "9554ff658147e02d2b90129551fd9a803ff8ab31b028a1f868531f2103e4e4aa",
-    BACKGROUND_AUDIT: "fb6cff385909573021d346110dec7a7b16af86468c43cf0a773542f6526d4d8e",
+    BACKGROUND_AUDIT: "d85ee70b4d46e9b0993154eb71afddf77b8121b1259c175708445190fbbb7bd9",
 }
 
 runner.QUEUE = [
@@ -111,7 +111,7 @@ runner.QUEUE = [
     (
         "eq337_complex_coordinate_background_audit",
         ["lake", "env", "lean", BACKGROUND_AUDIT],
-        20,
+        26,
     ),
 ]
 
