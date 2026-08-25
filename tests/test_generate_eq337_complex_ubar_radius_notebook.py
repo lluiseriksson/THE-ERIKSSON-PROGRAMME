@@ -24,14 +24,14 @@ def test_reproduces_published_notebook_semantics() -> None:
     generator = load_generator()
     generated = json.loads(
         generator.generate(
-            "b1357760890c9551dd9786da0f691d652bf21eda",
-            "bf081293b9abdd5d7e81485fd456c0de393a027e",
-            "eq337-complex-ubar-radius-debug-v1",
+            "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677",
+            "4a3ac4c0249bfa003abd4fa3e3c69cb2ae298d52",
+            "eq337-complex-ubar-radius-cold-v2",
         )
     )
     published = json.loads(CURRENT_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
-    assert generated["cells"][0]["id"] == "gate-b83d7b4ec7f3e78a"
+    assert generated["cells"][0]["id"] == "gate-62dc1b419fadbf1a"
 
 
 def test_reproduces_published_coordinate_notebook_semantics() -> None:
