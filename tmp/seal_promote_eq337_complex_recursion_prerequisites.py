@@ -29,7 +29,7 @@ RECURSION_VERIFIER = (
 BASE_SEALER = ROOT / "tmp" / "seal_eq337_complex_perturbed_background_prevalidation.py"
 UBAR_PATHS_FILE = ROOT / "tmp" / "EQ337-COMPLEX-UBAR-RADIUS-DRAFT-PATHS.txt"
 CORE = "YangMillsCore.lean"
-UBAR_EXPECTED_DECLARATIONS = 78
+UBAR_EXPECTED_DECLARATIONS = 79
 RECURSION_EXPECTED_DECLARATIONS = 16
 
 
@@ -172,7 +172,7 @@ def sealed_rows(ubar_result: dict, recursion_result: dict) -> list[tuple[str, by
         target = destination(scratch)
         require_clean_existing(target, source_sha)
         data = git_blob(source_sha, target)
-        checked_hash(ubar_result, scratch, data)
+        checked_hash(ubar_result, target, data)
         rows.append((target, sealer.remove_prevalidation_block(data, target)))
 
     for scratch in recursion_paths(recursion_verifier):

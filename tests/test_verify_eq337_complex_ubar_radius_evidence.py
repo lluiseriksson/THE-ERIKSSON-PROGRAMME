@@ -57,10 +57,10 @@ def test_verifier_scope_matches_runner_pair_queue() -> None:
     assert runner_revisions == [verifier.RUNNER_REV]
     assert len(verifier.STAGES) == 18
     assert verifier.STAGES[-1] == "complex_ubar_radius_promoted_root"
-    assert sum(count for _, count in verifier.MODULES) == 52
+    assert sum(count for _, count in verifier.MODULES) == 53
     assert verifier.PREREQUISITE[1] + sum(
         count for _, count in verifier.MODULES
-    ) == 78
+    ) == 79
 
 
 def test_evidence_tools_are_syntax_valid() -> None:
@@ -85,9 +85,9 @@ def synthetic_notebook(verifier, *, forbidden: bool = False) -> dict:
     ).decode()
     declarations.extend(verifier.PRINT_RE.findall(prerequisite_audit))
     for module, _ in verifier.MODULES:
-        audit = verifier.git_blob(ROOT, f"tmp/{module}Audit.draft.lean").decode()
+        audit = verifier.git_blob(ROOT, f"YangMills/RG/{module}Audit.lean").decode()
         declarations.extend(verifier.PRINT_RE.findall(audit))
-    assert len(declarations) == 78
+    assert len(declarations) == 79
     for index, declaration in enumerate(declarations):
         axioms = "sorryAx" if forbidden and index == 0 else "propext, Quot.sound"
         transcript.append(f"'{declaration}' depends on axioms: [{axioms}]\n")

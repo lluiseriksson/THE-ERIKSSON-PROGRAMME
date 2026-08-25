@@ -93,7 +93,7 @@ def require_evidence(path: Path, verifier, paths: list[str]) -> None:
         raise RuntimeError("EQ337_BASE_EVIDENCE_SOURCE_MISMATCH")
     if result.get("runner_revision") != verifier.RUNNER_REV:
         raise RuntimeError("EQ337_BASE_EVIDENCE_RUNNER_MISMATCH")
-    if result.get("expected_declarations") != 78:
+    if result.get("expected_declarations") != 79:
         raise RuntimeError("EQ337_BASE_EVIDENCE_DECLARATION_COUNT_MISMATCH")
     measured = result.get("boundary_blob_sha256")
     wanted = {

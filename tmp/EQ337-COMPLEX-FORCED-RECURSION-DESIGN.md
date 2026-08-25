@@ -243,8 +243,8 @@ The first Eq. (3.37) Ubar-radius gate has one tracked prerequisite pair in
 addition to its seven scratch pairs.  It must compile and audit all `26`
 declarations of
 `BalabanCMP99Eq337PhysicalComplexPerturbedBackground` before auditing the
-`52` declarations in the scratch Ubar boundary.  A successful package thus
-contains exactly `78` readouts.  The same evidence first seals only that
+`53` declarations in the scratch Ubar boundary.  A successful package thus
+contains exactly `79` readouts.  The same evidence first seals only that
 tracked source/audit pair and imports its audit into `YangMillsCore`; only
 then may the fourteen scratch files be promoted, still visibly
 PRE-VALIDATION, for the later prerequisite gate.  Materializing the tracked
@@ -268,7 +268,7 @@ these prerequisites; it does not authorize stacking or promoting the final
 forced recursion, and it leaves `20/41`, `TermSource = 0`, and window 15
 unchanged.
 
-Promotion is deliberately split but evidence-bound.  After the first `78`
+Promotion is deliberately split but evidence-bound.  After the first `79`
 readouts, the tracked perturbed-background pair is sealed and its audit enters
 `YangMillsCore`; the fourteen Ubar files are copied to their public paths while
 retaining `PRE-VALIDATION`.  After the second gate's exact `16` readouts, the

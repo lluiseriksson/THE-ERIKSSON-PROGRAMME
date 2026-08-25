@@ -38,7 +38,7 @@ spec.loader.exec_module(runner)
 
 PAIRS = [
     ("BalabanCMP99ComplexUbarSpecialLinear", 13),
-    ("BalabanCMP99ComplexUbarCoordinateExponent", 8),
+    ("BalabanCMP99ComplexUbarCoordinateExponent", 9),
     ("BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius", 5),
     ("BalabanCMP99ComplexFourFactorDeviation", 2),
     ("BalabanCMP99Eq337PhysicalComplexWilsonLineRadius", 10),
@@ -48,7 +48,7 @@ PAIRS = [
 
 PREREQUISITE = ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26)
 
-runner.RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v4"
+runner.RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v5"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-complex-ubar-radius")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-complex-ubar-radius-evidence")

@@ -13,12 +13,12 @@ from pathlib import Path
 
 
 SOURCE_SHA = "d69356d18c6c2392bc8a9599fd1c398109487f57"
-RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v4"
+RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v5"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99ComplexUbarSpecialLinear", 13),
-    ("BalabanCMP99ComplexUbarCoordinateExponent", 8),
+    ("BalabanCMP99ComplexUbarCoordinateExponent", 9),
     ("BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius", 5),
     ("BalabanCMP99ComplexFourFactorDeviation", 2),
     ("BalabanCMP99Eq337PhysicalComplexWilsonLineRadius", 10),
@@ -166,8 +166,11 @@ def main() -> int:
     declarations_by_module[prerequisite_module] = prerequisite_declarations
     expected.extend(prerequisite_declarations)
     for module, expected_count in MODULES:
-        source_path = f"tmp/{module}.draft.lean"
-        audit_path = f"tmp/{module}Audit.draft.lean"
+        # This gate compiles the promoted public boundary.  Bind the evidence
+        # to those exact blobs, not to the superseded scratch copies: the
+        # promotion may legitimately strengthen an audit before this seal.
+        source_path = f"YangMills/RG/{module}.lean"
+        audit_path = f"YangMills/RG/{module}Audit.lean"
         source_blob = git_blob(repo, source_path)
         audit_blob = git_blob(repo, audit_path)
         boundary_hashes[source_path] = hashlib.sha256(source_blob).hexdigest()
@@ -180,7 +183,7 @@ def main() -> int:
             )
         declarations_by_module[module] = declarations
         expected.extend(declarations)
-    if len(expected) != 78 or len(set(expected)) != 78:
+    if len(expected) != 79 or len(set(expected)) != 79:
         raise RuntimeError(f"EXPECTED_DECLARATION_SCOPE={len(expected)}/{len(set(expected))}")
 
     observed: dict[str, list[frozenset[str]]] = defaultdict(list)
