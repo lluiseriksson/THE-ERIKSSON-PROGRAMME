@@ -139,6 +139,12 @@ runner.SOURCE_BLOBS = {{
 
 runner.QUEUE = [
     (
+        "complex_recursion_prereq_prepare_build_dirs",
+        ["mkdir", "-p", ".lake/build/lib/lean/YangMills/RG",
+         ".lake/build/lib/lean/tmp"],
+        None,
+    ),
+    (
         "complex_inverse_radius_repro",
         [
             "lake", "env", "lean",
@@ -155,12 +161,6 @@ runner.QUEUE = [
             "YangMills.RG.BalabanCMP99SourceUbarSmallFieldPropagation",
             "YangMills.RG.BalabanCMP99ComplexUbarSpecialLinear",
         ],
-        None,
-    ),
-    (
-        "complex_recursion_prereq_prepare_build_dirs",
-        ["mkdir", "-p", ".lake/build/lib/lean/YangMills/RG",
-         ".lake/build/lib/lean/tmp"],
         None,
     ),
     (
