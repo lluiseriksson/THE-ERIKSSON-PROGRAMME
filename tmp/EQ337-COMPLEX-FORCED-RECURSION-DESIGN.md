@@ -150,6 +150,17 @@ The exact scalar shape to elaborate after the prerequisite gate is therefore
 the following (names remain provisional until Lean fixes the implicit
 arguments):
 
+The generated radius itself must be proof-free.  In particular, the recursion
+first defines scalar functions of the literal deviation radius (`log`, `exp`,
+positive-edge `q`, and `q / (1 - q)`) and only afterwards proves that they are
+definitionally or propositionally equal to the values obtained from
+`cmp99SourceComplexUbarNoWindingBudget`.  Recursing directly on a term whose
+value contains the proof `hnoWinding` would make `radiusAt` proof-dependent and
+would obstruct the closed-budget induction for no mathematical reason.  The
+Mathlib-only reproduction
+`tmp/CMP99ComplexClosedRadiusScalar.repro.lean` freezes this proof-free scalar
+boundary before it is imported into project source.
+
 ```lean
 inductive CMP99SourceComplexUbarRadiusChain (d M Nc : ℕ)
     [NeZero d] [NeZero M] [NeZero Nc] : ℕ → ℝ → Prop
