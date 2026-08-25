@@ -23,8 +23,8 @@ from collections import defaultdict
 from pathlib import Path
 
 
-SOURCE_SHA = "d322744f444b87361b1f54bdda3024c8d38b8250"
-RUNNER_REV = "c6d-localized-retained-tower-cold-v7"
+SOURCE_SHA = "e44b164c59aa289bb1ca2995bc71dfe7e5f58ef9"
+RUNNER_REV = "c6d-localized-retained-tower-cold-v8"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 PRE_MARKER = (

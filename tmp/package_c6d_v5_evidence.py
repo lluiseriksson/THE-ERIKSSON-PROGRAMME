@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and preserve one executed C6d-v7 notebook fail-closed."""
+"""Validate and preserve one executed C6d-v8 notebook fail-closed."""
 
 from __future__ import annotations
 
@@ -66,9 +66,9 @@ def main() -> int:
     runner_hashes = {name: exact_marker(text, name) for name in HASH_MARKERS}
 
     destination.parent.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix=".c6d-v7-evidence-", dir=destination.parent))
+    staging = Path(tempfile.mkdtemp(prefix=".c6d-v8-evidence-", dir=destination.parent))
     try:
-        copied = staging / "executed-c6d-v7.ipynb"
+        copied = staging / "executed-c6d-v8.ipynb"
         verifier_json = staging / "c6d-root-transitive-axioms.json"
         shutil.copyfile(notebook, copied)
         child = subprocess.run(
@@ -97,7 +97,7 @@ def main() -> int:
         if verifier_result.get("status") != "C6D_ROOT_TRANSITIVE_AXIOMS_OK":
             raise RuntimeError("C6D_EVIDENCE_VERIFIER_STATUS_MISMATCH")
         manifest = {
-            "status": "C6D_V7_EVIDENCE_PACKAGE_OK",
+            "status": "C6D_V8_EVIDENCE_PACKAGE_OK",
             "source_sha": verifier_result["source_sha"],
             "runner_revision": verifier_result["runner_revision"],
             "runner_hashes": runner_hashes,
@@ -128,9 +128,9 @@ def main() -> int:
         raise
 
     print(
-        "C6D_V7_EVIDENCE_PACKAGE_OK "
+        "C6D_V8_EVIDENCE_PACKAGE_OK "
         f"destination={destination} manifest_sha256={sha256(destination / 'manifest.json')} "
-        f"notebook_sha256={sha256(destination / 'executed-c6d-v7.ipynb')}"
+        f"notebook_sha256={sha256(destination / 'executed-c6d-v8.ipynb')}"
     )
     return 0
 

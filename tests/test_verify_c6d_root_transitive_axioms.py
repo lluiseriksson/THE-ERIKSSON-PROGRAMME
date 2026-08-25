@@ -136,6 +136,6 @@ def test_evidence_packager_preserves_verified_notebook(tmp_path: Path, monkeypat
     )
     assert packager.main() == 0
     manifest = json.loads((destination / "manifest.json").read_text(encoding="utf-8"))
-    assert manifest["status"] == "C6D_V6_EVIDENCE_PACKAGE_OK"
+    assert manifest["status"] == "C6D_V8_EVIDENCE_PACKAGE_OK"
     assert manifest["runner_hashes"]["EVIDENCE_SHA256"] == "A" * 64
     assert (destination / "SHA256SUMS").is_file()
