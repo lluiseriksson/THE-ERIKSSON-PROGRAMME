@@ -288,13 +288,21 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
       ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
     (hlog : cmp99UbarLogRadius B < 1)
-    (hq0 : 0 ≤ cmp99SourceComplexUbarNextLinkRadius M r B)
     (hq1 : cmp99SourceComplexUbarNextLinkRadius M r B < 1)
     (e : ConcreteEdge d N') :
     ‖(cmp99SourceComplexLocalizedNextBackground background B hdev e :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       cmp99SourceComplexUbarNextOrientedLinkRadius M r B := by
   let q := cmp99SourceComplexUbarNextLinkRadius M r B
+  have hq0 : 0 ≤ q := by
+    have hblock := norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
+      background r hr hlink B hdev hlog
+        ((0, 0) : PhysicalBond d N')
+    exact (norm_nonneg
+      ((cmp99SourceComplexLocalizedUbarBlock background B hdev
+        ((0, 0) : PhysicalBond d N') :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1)).trans (by
+            simpa [q] using hblock)
   have hqden : 0 < 1 - q := sub_pos.mpr hq1
   have hq_le : q ≤ q / (1 - q) := by
     rw [le_div_iff₀ hqden]
@@ -355,8 +363,6 @@ theorem norm_cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius_sub_one_le
         cmp99UbarNoWindingThreshold Nc)
     (hlog : cmp99UbarLogRadius
       (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding) < 1)
-    (hq0 : 0 ≤ cmp99SourceComplexUbarNextLinkRadius M r
-      (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding))
     (hq1 : cmp99SourceComplexUbarNextLinkRadius M r
       (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding) < 1)
     (e : ConcreteEdge d N') :
@@ -380,7 +386,7 @@ theorem norm_cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius_sub_one_le
   change ‖(cmp99SourceComplexLocalizedNextBackground background B hdev e :
       Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ _
   exact norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
-    background r hr hlink B hdev hlog hq0 hq1 e
+    background r hr hlink B hdev hlog hq1 e
 
 end
 
