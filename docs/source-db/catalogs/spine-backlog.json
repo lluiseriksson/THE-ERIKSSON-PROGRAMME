@@ -36,13 +36,21 @@
       "short": "Balaban CMP98",
       "title": "Averaging operations for lattice gauge theories",
       "author": "T. Balaban",
-      "status": "primary_pdf_metadata_ready",
+      "status": "visual_confirmed",
       "journal": "Communications in Mathematical Physics 98 (1985), 17-51",
       "year": 1985,
       "bibliography_evidence": "Springer article record https://doi.org/10.1007/BF01211042; cross-check: Dimock I reference [8], arXiv:1108.1335, printed page 50.",
       "doi": "10.1007/BF01211042",
       "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
-      "artifact_note": "External repo-ready packet reports a private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md; reported private PDF SHA-256 03409ad81885593d65535550eafac08639e66123d4acf92462847ae2ee4dd7d6. A 2026-08-03 workspace check found that runtime/sources/primary/cmp98-averaging.pdf is actually a 1157-byte Incapsula HTML response, SHA-256 A3F29C49F88B8B4797DF856D8E2B38DF4D2617BE3E15B3243C6948285A762558. A separate extracted text tmp/pdfs/cmp98/cmp98.txt, SHA-256 55276CD61FF200C113E9E85D1BA51EF0246C74C8FCABFC8FB6242FEE4ACC86D0, and two page renders are present, but Proposition 2 has not been visually certified from a registered clean primary PDF in this workspace. Bibliographic incident closed 2026-08-24: the former catalog DOI 10.1007/BF01205787 belongs to Gustavo Ponce, CMP 98, 349-353; Springer verifies Balaban's article at DOI 10.1007/BF01211042, CMP 98, 17-51. The wrong DOI likely explains the failed standalone acquisition but does not itself certify any formula body."
+      "local_artifacts": {
+        "private_pdf": "tmp/pdfs/cmp98/cmp98-averaging-primary.pdf",
+        "render_printed_26": "tmp/pdfs/cmp98/eq337-renders/printed-26.png",
+        "render_printed_32": "tmp/pdfs/cmp98/eq337-renders/printed-32.png",
+        "render_printed_33": "tmp/pdfs/cmp98/eq337-renders/printed-33.png",
+        "render_printed_38": "tmp/pdfs/cmp98/eq337-renders/printed-38.png",
+        "render_printed_42": "tmp/pdfs/cmp98/eq337-renders/printed-42.png"
+      },
+      "artifact_note": "External repo-ready packet reports a private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md. Authenticated Drive discovery on 2026-08-25 located the clean 2629073-byte paper as `Averaging operations.pdf`, file ID 1MUK4O9gbYz_rI9eSIjEwdajH3vAW17OD, and a same-size `CMP 98.pdf` copy, file ID 11yVLnkAZuZ_FyyqpcOwFuUc7OPHAhfLT. The materialized private PDF has SHA-256 03409AD81885593D65535550EAFAC08639E66123D4ACF92462847AE2EE4DD7D6, exactly matching the prior source packet. Targeted 300-dpi renders visually confirm Proposition 2 and (52)-(53) on printed p. 26, (97) on p. 32, (102)-(103) on p. 33, Proposition 4 on p. 38, and (160)-(162) on p. 42. Render SHA-256 values, in page order 26/32/33/38/42, are 81A7A521B6181E166D419CBE127BE71DF2F4DD5C4EDFAB3CF411D3258C9FCBE4, A190E9C84DD6736E5DE0999A193508F7AA60EFAF7B7CF4ED2D99C07D930471B5, 07FF4EE42AD2039608F57331BB2E4E7D0FC0C0EF933342C40CA2CCC7E47FD2D0, 374FDAC393D190226D7C6E6BF3457E8C1CED5AC45D1467AC4CF2170E322BABD1, and 1AD3D0EF087A8F0ECF44873E300ECC452559854A7D3F51EB1B1B1B350AED92AA. The canonical runtime/sources/primary/cmp98-averaging.pdf remains a 1157-byte Incapsula HTML response, SHA-256 A3F29C49F88B8B4797DF856D8E2B38DF4D2617BE3E15B3243C6948285A762558, and must not be used. A separate extracted text tmp/pdfs/cmp98/cmp98.txt has SHA-256 55276CD61FF200C113E9E85D1BA51EF0246C74C8FCABFC8FB6242FEE4ACC86D0. Bibliographic incident closed 2026-08-24: the former catalog DOI 10.1007/BF01205787 belongs to Gustavo Ponce, CMP 98, 349-353; Springer verifies Balaban's article at DOI 10.1007/BF01211042, CMP 98, 17-51."
     },
     "cmp122_i": {
       "short": "Balaban CMP122-I",

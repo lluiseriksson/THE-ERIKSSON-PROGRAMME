@@ -539,21 +539,24 @@ following ordered list.
    are not optional indices.  The producer must recurse from the finest
    background and may not accept a free scale-indexed family.
 
-   Source gate: CMP99 p. 401 attributes the construction and its analytic
-   bounds to CMP98 [5], definitions (52), (53), identity (97), bounds
-   (102), (103), (160)--(162), and Proposition 4.  The source catalog still
-   marks CMP98 as metadata-ready rather than clean-primary-verified (the
-   registered standalone download is an HTML stub).  Obtain and visually
-   register precisely these CMP98 passages before implementing the complex
-   `Ubar` recursion.  Existing Lean reconstructions are not a substitute for
-   that source gate.
+   Source gate (closed 2026-08-25): CMP99 p. 401 attributes the construction
+   and its analytic bounds to CMP98 [5], definitions (52), (53), identity
+   (97), bounds (102), (103), (160)--(162), and Proposition 4.  The clean
+   2629073-byte primary PDF was materialized from authenticated Drive with
+   SHA-256 `03409AD81885593D65535550EAFAC08639E66123D4ACF92462847AE2EE4DD7D6`,
+   matching the private source packet.  Targeted 300-dpi renders visually
+   confirm each named locator on printed pp. 26, 32, 33, 38 and 42.  The
+   remaining frontier is the finite complex `Ubar` source-to-Lean dictionary;
+   it may not be replaced by an existing reconstruction or a free background
+   family.
 
    Acquisition correction, 2026-08-24: the authoritative DOI is
    `10.1007/BF01211042`.  The earlier catalog DOI `10.1007/BF01205787` belongs
    to an unrelated article in CMP 98 and is retained only as incident
    provenance.  Springer currently exposes metadata but not the primary PDF
-   without subscription access, so this correction does not weaken the
-   clean-primary requirement.
+   without subscription access.  It did not weaken the clean-primary
+   requirement; that requirement was discharged separately by the matching
+   private PDF and targeted renders recorded above.
 2. **One-scale analytic average.**  On each background produced by item 1,
    construct the literal normalized block average as a
    complex-linear map.  The normalization remains `M^{-d}` at each scale.
