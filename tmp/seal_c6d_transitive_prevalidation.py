@@ -79,11 +79,20 @@ def require_exact_checkpoint(paths: list[str], source_sha: str) -> None:
             )
 
 
-def transformed_bytes(relative: str) -> tuple[bytes, bytes]:
+def transformed_bytes(relative: str, source_sha: str) -> tuple[bytes, bytes]:
     path = ROOT / relative
     original = path.read_bytes()
-    newline = "\r\n" if b"\r\n" in original else "\n"
-    text = original.decode("utf-8-sig").replace("\r\n", "\n")
+    blob = run_git("show", f"{source_sha}:{relative}")
+    if blob.returncode != 0:
+        raise RuntimeError(
+            f"C6D_SOURCE_BLOB_READ_FAILED={relative} "
+            f"stderr={blob.stderr.decode(errors='replace')}"
+        )
+    # The seal manifest is defined over canonical Git bytes, not over the
+    # checkout's core.autocrlf-dependent worktree representation.
+    text = blob.stdout.decode("utf-8")
+    if "\r\n" in text:
+        raise RuntimeError(f"C6D_SOURCE_BLOB_CRLF={relative}")
     count = text.count(PRE_MARKER)
     if count != 1:
         raise RuntimeError(f"C6D_PRE_MARKER_COUNT={relative}:{count}")
@@ -93,7 +102,7 @@ def transformed_bytes(relative: str) -> tuple[bytes, bytes]:
         raise RuntimeError(f"C6D_PRE_MARKER_REMAINS={relative}")
     if EMPTY_MODULE_DOC.search(sealed):
         raise RuntimeError(f"C6D_EMPTY_MODULE_DOC_REMAINS={relative}")
-    return original, sealed.replace("\n", newline).encode("utf-8")
+    return original, sealed.encode("utf-8")
 
 
 def digest(rows: list[tuple[str, bytes]]) -> str:
@@ -115,7 +124,7 @@ def main() -> int:
     originals: dict[str, bytes] = {}
     sealed_rows: list[tuple[str, bytes]] = []
     for relative in paths:
-        original, sealed = transformed_bytes(relative)
+        original, sealed = transformed_bytes(relative, verifier.SOURCE_SHA)
         originals[relative] = original
         sealed_rows.append((relative, sealed))
 
