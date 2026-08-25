@@ -72,6 +72,16 @@ runner.SOURCE_BLOBS = {
 
 runner.QUEUE = [
     (
+        "eq337_axiom_readout_coverage",
+        [
+            "python3",
+            "scripts/check_lean_axiom_readout_coverage.py",
+            "--paths-from",
+            "tmp/C6D-EQ337-COMPLEX-COORDINATE-PROMOTION-PATHS.txt",
+        ],
+        None,
+    ),
+    (
         "eq337_real_covariant_derivative_focal",
         [
             "lake",

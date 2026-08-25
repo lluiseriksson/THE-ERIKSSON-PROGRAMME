@@ -55,6 +55,16 @@ runner.SOURCE_BLOBS = {
 
 runner.QUEUE = [
     (
+        "c6d_axiom_readout_coverage",
+        [
+            "python3",
+            "scripts/check_lean_axiom_readout_coverage.py",
+            "--paths-from",
+            "tmp/C6D-TRANSITIVE-PREVALIDATION-PATHS.txt",
+        ],
+        None,
+    ),
+    (
         "c6d_localized_retained_tower_focal",
         ["lake", "build", "YangMills.RG.BalabanCMP99SourceLocalizedRetainedTower"],
         None,
