@@ -235,6 +235,8 @@ real-Hilbert perturbation and the factorization theorem, with no inverse or
 smallness premise hidden in the definition.  Both repository lightweight
 guards pass (`LEAN_OVERLAY_TEXT_OK files=2` and
 `LEAN_IMPORT_PREFIX_OK files=2`), but no `.olean` or axiom verdict exists.
+The scratch audit now also carries the required visible PRE-VALIDATION mark;
+this is governance metadata only and does not promote or validate the brick.
 
 This is deliberately a **real-slice** brick.  The printed source warns that
 the analytically continued `F'_2*(A)` is not the Hilbert adjoint of
@@ -419,6 +421,10 @@ bytes its SHA-256 is
 lightweight gates report `files=16`.  It is a
 future focal boundary only: it has not been materialized, promoted, built or
 audited, and it must not be appended to the Colab gate already in flight.
+The audit surface is now total at the textual level: all 58 public
+definitions/theorems/structures have exactly one matching `#print axioms`
+readout (58/58, including public aliases, with no unknown readout).  This is
+still only a scope gate; none of those readouts has been executed.
 
 The next source dictionary is now written as the two-file PRE-VALIDATION
 boundary
