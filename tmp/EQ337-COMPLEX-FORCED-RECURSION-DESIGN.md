@@ -105,6 +105,13 @@ background (and, if a consumer needs it, private prefixes plus public
 projection lemmas).  It must not accept a background family, a free `hdev`, a
 free next-background smallness proof, or a terminal equality.
 
+This is the low-level recursion interface, not the closed physical endpoint.
+The source-facing endpoint must also construct the finite scalar `chain` from
+the literal initial radius and one named joint scalar-regime witness.  Merely
+accepting `CMP99SourceComplexUbarRadiusChain` from the caller would package the
+per-scale strict gates without discharging them and therefore does not count
+as physical closure.
+
 The exact scalar shape to elaborate after the prerequisite gate is therefore
 the following (names remain provisional until Lean fixes the implicit
 arguments):
@@ -185,12 +192,15 @@ background, would reverse the physical construction.
    scale-indexed background family.
 3. The public recursive constructor has no free `hdev` or per-scale
    small-field hypothesis for internally generated backgrounds.
-4. Both orientations are proved; negative edges are not inherited from the
+4. A closed source-facing producer constructs the scalar radius chain; the
+   existence of the low-level constructor with `chain` as an argument is not
+   a terminal producer and cannot retire this obligation.
+5. Both orientations are proved; negative edges are not inherited from the
    unitary inversion-isometry lemma.
-5. The complex coarse factor pays its explicit norm `(1 + r)^M`.
-6. Every PRE-VALIDATION module is compiled in Colab before promotion; the
+6. The complex coarse factor pays its explicit norm `(1 + r)^M`.
+7. Every PRE-VALIDATION module is compiled in Colab before promotion; the
    diagnostic gate is not permission to remove PRE-VALIDATION.
-7. This work does not move `20/41`, does not instantiate `TermSource`, and
+8. This work does not move `20/41`, does not instantiate `TermSource`, and
    does not declare window 15 attained.
 
 ## Prepared diagnostic boundary
