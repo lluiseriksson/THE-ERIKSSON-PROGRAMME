@@ -113,6 +113,7 @@ def check_surface(paths: list[str]) -> None:
         "Omega.bonds",
         "printed_omegaPrime0_subset_regularCube",
         "cmp99SourceGaugePrecision",
+        "W.transformedBackground eta",
         "localizedTowerAt (Fin.last depth)",
         "canonicalTowerAt (Fin.last depth)",
         "inner_cmp99SourceGaugePrecision",
@@ -127,6 +128,7 @@ def check_surface(paths: list[str]) -> None:
         "(Green :",
         "(coercivity :",
         "(W : CMP99Eq335PhysicalRegularityWitness",
+        "{eta alpha0 alpha1 spacing : ℝ}",
     )
     present = [token for token in forbidden if token in consumer]
     if present:
