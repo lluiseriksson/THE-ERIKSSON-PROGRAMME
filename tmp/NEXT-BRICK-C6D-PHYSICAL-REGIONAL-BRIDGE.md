@@ -430,7 +430,7 @@ source `Ubar` radius chain, source-region dictionary and scalar alpha window
 remain visible inputs, so this is only the real item-4 construction boundary,
 not the analytic complex tower or an attainment result.  The source, audit
 and manifest SHA-256 values are respectively
-`0C0470E0743927FB08571CCEFD234B211A0D615032B58626268932CA074B8CB1`,
+`DF334EC4293E8195A626213385330C84B203FC5E66D1F5EE11C5EC1F6DBAF365`,
 `EF805C112C3C01E2E00188B5D0FB549A0ACE756FAA4901A6A491A1E44CE50CDC`
 and
 `FC3C704EEE907C5AF1BD514293ACDFC76FC3DC6B8080B11BA24B0F1F4DFED660`.

@@ -27,6 +27,7 @@ noncomputable section
 
 variable {L N' M Mlarge Nc n depth : ℕ}
 variable [NeZero L] [NeZero N'] [NeZero M] [NeZero Mlarge] [NeZero Nc]
+variable [NeZero n]
 variable {scaleExtent : Fin n → ℕ}
 variable {S : CMP99SourceScaledStratification (FinBox 4 (L * N')) n
   (fun r ⇒ FinBox 4 (scaleExtent r))}
