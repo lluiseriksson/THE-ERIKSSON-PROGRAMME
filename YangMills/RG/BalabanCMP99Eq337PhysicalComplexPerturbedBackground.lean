@@ -47,10 +47,19 @@ noncomputable def cmp99SUNLieComplexCoordMatrixLM (Nc : ℕ) [NeZero Nc] :
   map_smul' c Z := by
     rw [cmp99SUNLieComplexCoordRealPart_smul,
       cmp99SUNLieComplexCoordImagPart_smul]
-    simp only [cmp98LieCoordMatrix, map_sub, map_add, map_smul]
+    have hneg (X : SUNLieCoord Nc) :
+        cmp98LieCoordMatrix (-X) = -cmp98LieCoordMatrix X := by
+      simpa only [neg_one_smul] using
+        (cmp98LieCoordMatrix_smul (Nc := Nc) (-1) X)
+    have hsub (X Y : SUNLieCoord Nc) :
+        cmp98LieCoordMatrix (X - Y) =
+          cmp98LieCoordMatrix X - cmp98LieCoordMatrix Y := by
+      rw [sub_eq_add_neg, cmp98LieCoordMatrix_add, hneg]
+      rfl
+    simp only [hsub, cmp98LieCoordMatrix_add, cmp98LieCoordMatrix_smul,
+      RingHom.id_apply]
     ext i j
-    simp [Complex.mul_re, Complex.mul_im]
-    ring
+    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
 
 @[simp] theorem cmp99SUNLieComplexCoordMatrixLM_complexification
     (X : SUNLieCoord Nc) :
@@ -65,7 +74,10 @@ is asserted only on the real slice, not after complexification. -/
 theorem cmp99SUNLieComplexCoordMatrixLM_trace
     (Z : SUNLieComplexCoord Nc) :
     Matrix.trace (cmp99SUNLieComplexCoordMatrixLM Nc Z) = 0 := by
-  unfold cmp99SUNLieComplexCoordMatrixLM
+  change Matrix.trace
+      (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) +
+        Complex.I • cmp98LieCoordMatrix
+          (cmp99SUNLieComplexCoordImagPart Z)) = 0
   rw [Matrix.trace_add, Matrix.trace_smul]
   have hre : Matrix.trace
       (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z)) = 0 :=
@@ -86,18 +98,20 @@ decomposition.  No dimension count or arbitrary inverse is used.
 
 /-- The complex matrix realization, with its already proved trace equation,
 as a linear map into Mathlib's literal special-linear Lie algebra. -/
-noncomputable def cmp99SUNLieComplexCoordToSlLM (Nc : ℕ) :
+noncomputable def cmp99SUNLieComplexCoordToSlLM
+    (Nc : ℕ) [NeZero Nc] :
     SUNLieComplexCoord Nc →ₗ[ℂ]
       LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ :=
   (cmp99SUNLieComplexCoordMatrixLM Nc).codRestrict
-    (LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ) fun Z => by
+    (LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ).toSubmodule fun Z => by
       change Matrix.trace (cmp99SUNLieComplexCoordMatrixLM Nc Z) = 0
       exact cmp99SUNLieComplexCoordMatrixLM_trace Z
 
 @[simp] theorem cmp99SUNLieComplexCoordToSlLM_val
     (Z : SUNLieComplexCoord Nc) :
     (cmp99SUNLieComplexCoordToSlLM Nc Z).1 =
-      cmp99SUNLieComplexCoordMatrixLM Nc Z :=
+      cmp99SUNLieComplexCoordMatrixLM Nc Z := by
+  unfold cmp99SUNLieComplexCoordToSlLM
   rfl
 
 /-- Assemble a complex coordinate from two real physical Lie coordinates. -/
@@ -136,19 +150,27 @@ pieces are skew-Hermitian, so the `i B` term is fixed while `A` changes sign.
 This is the separation used in the injectivity proof. -/
 theorem cmp99SUNLieComplexCoordMatrixLM_conjTranspose
     (Z : SUNLieComplexCoord Nc) :
-    (cmp99SUNLieComplexCoordMatrixLM Nc Z)ᴴ =
+    Matrix.conjTranspose (cmp99SUNLieComplexCoordMatrixLM Nc Z) =
       -cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) +
         Complex.I •
           cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z) := by
-  unfold cmp99SUNLieComplexCoordMatrixLM
-  rw [conjTranspose_add, conjTranspose_smul]
+  change Matrix.conjTranspose
+      (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) +
+        Complex.I • cmp98LieCoordMatrix
+          (cmp99SUNLieComplexCoordImagPart Z)) =
+    -cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) +
+      Complex.I •
+        cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z)
+  rw [Matrix.conjTranspose_add, Matrix.conjTranspose_smul]
   have hre :
-      (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z))ᴴ =
+      Matrix.conjTranspose
+          (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z)) =
         -cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z) :=
     ((suLieCoordIso Nc).symm
       (cmp99SUNLieComplexCoordRealPart Z)).property.1
   have him :
-      (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z))ᴴ =
+      Matrix.conjTranspose
+          (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z)) =
         -cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z) :=
     ((suLieCoordIso Nc).symm
       (cmp99SUNLieComplexCoordImagPart Z)).property.1
@@ -183,33 +205,19 @@ theorem cmp99SUNLieComplexCoordMatrixLM_injective :
         cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart W) := by
     ext i j
     have h1 := congrArg (fun M => M i j) h
-    have h2 := congrArg (fun M => M i j) hdag
-    simp only [Matrix.add_apply, Matrix.neg_apply, Matrix.smul_apply] at h1 h2
-    linear_combination (h1 + h2) / (2 * Complex.I)
+    rw [hreMatrix] at h1
+    simp only [Matrix.add_apply, Matrix.smul_apply, smul_eq_mul] at h1
+    exact mul_left_cancel₀ Complex.I_ne_zero (add_left_cancel h1)
   have hre : cmp99SUNLieComplexCoordRealPart Z =
       cmp99SUNLieComplexCoordRealPart W := by
-    calc
-      cmp99SUNLieComplexCoordRealPart Z =
-          cmp98AmbientToLieCoordCLM Nc
-            (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart Z)) :=
-        (cmp98AmbientToLieCoordCLM_leftInverse _).symm
-      _ = cmp98AmbientToLieCoordCLM Nc
-            (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordRealPart W)) := by
-        rw [hreMatrix]
-      _ = cmp99SUNLieComplexCoordRealPart W :=
-        cmp98AmbientToLieCoordCLM_leftInverse _
+    apply (suLieCoordIso Nc).symm.injective
+    apply Subtype.ext
+    exact hreMatrix
   have him : cmp99SUNLieComplexCoordImagPart Z =
       cmp99SUNLieComplexCoordImagPart W := by
-    calc
-      cmp99SUNLieComplexCoordImagPart Z =
-          cmp98AmbientToLieCoordCLM Nc
-            (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z)) :=
-        (cmp98AmbientToLieCoordCLM_leftInverse _).symm
-      _ = cmp98AmbientToLieCoordCLM Nc
-            (cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart W)) := by
-        rw [himMatrix]
-      _ = cmp99SUNLieComplexCoordImagPart W :=
-        cmp98AmbientToLieCoordCLM_leftInverse _
+    apply (suLieCoordIso Nc).symm.injective
+    apply Subtype.ext
+    exact himMatrix
   ext a
   apply Complex.ext
   · exact congrArg (fun X : SUNLieCoord Nc => X a) hre
@@ -218,15 +226,16 @@ theorem cmp99SUNLieComplexCoordMatrixLM_injective :
 /-- Real skew-Hermitian component `(Z-Z†)/2` of a traceless complex matrix. -/
 noncomputable def cmp99SlSkewReal
     (Z : LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ) : SuLie Nc :=
-  (⟨(2 : ℂ)⁻¹ • (Z.1 - Z.1ᴴ), by
+  (⟨(2 : ℂ)⁻¹ • (Z.1 - Matrix.conjTranspose Z.1), by
     rw [mem_suMatrixSubmodule_iff]
     constructor
-    · rw [conjTranspose_smul, conjTranspose_sub,
-        conjTranspose_conjTranspose]
+    · rw [Matrix.conjTranspose_smul, Matrix.conjTranspose_sub,
+        Matrix.conjTranspose_conjTranspose]
       ext i j
       simp [Matrix.smul_apply]
       ring
-    · change Matrix.trace ((2 : ℂ)⁻¹ • (Z.1 - Z.1ᴴ)) = 0
+    · change Matrix.trace
+        ((2 : ℂ)⁻¹ • (Z.1 - Matrix.conjTranspose Z.1)) = 0
       have hz : Matrix.trace Z.1 = 0 := by
         exact LinearMap.mem_ker.mp Z.property
       rw [Matrix.trace_smul, Matrix.trace_sub,
@@ -237,16 +246,18 @@ noncomputable def cmp99SlSkewReal
 matrix.  It satisfies `Z = A + i B` with `A = cmp99SlSkewReal Z`. -/
 noncomputable def cmp99SlSkewImag
     (Z : LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ) : SuLie Nc :=
-  (⟨((2 : ℂ) * Complex.I)⁻¹ • (Z.1 + Z.1ᴴ), by
+  (⟨((2 : ℂ) * Complex.I)⁻¹ •
+      (Z.1 + Matrix.conjTranspose Z.1), by
     rw [mem_suMatrixSubmodule_iff]
     constructor
-    · rw [conjTranspose_smul, conjTranspose_add,
-        conjTranspose_conjTranspose]
+    · rw [Matrix.conjTranspose_smul, Matrix.conjTranspose_add,
+        Matrix.conjTranspose_conjTranspose]
       ext i j
       simp [Matrix.smul_apply]
       ring
     · change Matrix.trace
-        (((2 : ℂ) * Complex.I)⁻¹ • (Z.1 + Z.1ᴴ)) = 0
+        (((2 : ℂ) * Complex.I)⁻¹ •
+          (Z.1 + Matrix.conjTranspose Z.1)) = 0
       have hz : Matrix.trace Z.1 = 0 := by
         exact LinearMap.mem_ker.mp Z.property
       rw [Matrix.trace_smul, Matrix.trace_add,
@@ -272,24 +283,29 @@ theorem cmp99SUNLieComplexCoordToSlLM_surjective :
     cmp99SUNLieComplexCoordMatrixLM_ofRealImag]
   simp only [cmp98LieCoordMatrix,
     (suLieCoordIso Nc).symm_apply_apply]
-  change
-    (cmp99SlSkewReal Z).toMatrix +
-        Complex.I • (cmp99SlSkewImag Z).toMatrix = Z.1
   unfold cmp99SlSkewReal cmp99SlSkewImag SuLie.toMatrix
   ext i j
   simp [Matrix.smul_apply]
+  have hIIhalf :
+      Complex.I * (Complex.I * (2 : ℂ)⁻¹) = -(2 : ℂ)⁻¹ := by
+    rw [← mul_assoc, Complex.I_mul_I]
+    ring
+  rw [← mul_assoc, hIIhalf]
   ring
 
 /-- Literal complex-linear equivalence between the physical complexified Lie
 coordinate fibre and Mathlib's traceless complex matrices.  Its bijectivity
 is the explicit skew decomposition above, not a dimension argument. -/
-noncomputable def cmp99SUNLieComplexCoordSlEquiv (Nc : ℕ) :
+noncomputable def cmp99SUNLieComplexCoordSlEquiv
+    (Nc : ℕ) [NeZero Nc] :
     SUNLieComplexCoord Nc ≃ₗ[ℂ]
       LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ :=
   LinearEquiv.ofBijective (cmp99SUNLieComplexCoordToSlLM Nc)
-    ⟨fun _ _ h => cmp99SUNLieComplexCoordMatrixLM_injective
-      (congrArg
-        (fun Z : LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ => Z.1) h),
+    ⟨fun _ _ h => by
+      apply cmp99SUNLieComplexCoordMatrixLM_injective
+      simpa only [cmp99SUNLieComplexCoordToSlLM_val] using
+        congrArg
+          (fun Z : LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ => Z.1) h,
       cmp99SUNLieComplexCoordToSlLM_surjective⟩
 
 /-- Hermitian-coordinate convention printed in CMP98/CMP99: repository
@@ -337,31 +353,35 @@ theorem cmp99Eq337PrintedComplexGenerator_eq
     (((Complex.I : ℂ) * (eta : ℂ)) •
         cmp99Eq337PrintedComplexLieMatrix Z) =
       (eta : ℂ) • cmp99SUNLieComplexCoordMatrixLM Nc Z := by
-  rw [cmp99Eq337PrintedComplexLieMatrix, smul_smul]
-  simp
-  ring
+  rw [show Complex.I * (eta : ℂ) = (eta : ℂ) * Complex.I by ring,
+    ← smul_smul, Complex.I_smul_cmp99Eq337PrintedComplexLieMatrix]
 
 /-- On the real slice, the printed complex perturbation is exactly the
 matrix underlying the repository's physical `SU(N)` left variation. -/
 theorem cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_realSlice
-    (U : PhysicalGaugeBackground d N Nc)
-    (A : PhysicalGaugeOneCochain d N Nc)
-    (eta : ℝ) (b : PhysicalBond d N) :
+    {M N' : ℕ} [NeZero M] [NeZero N']
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (eta : ℝ) (b : PhysicalBond d (M * N')) :
     cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix U
         (cmp99Eq337PhysicalComplexifyOneCochain A) eta b =
       (cmp98PhysicalSuLeftVariation U A eta
-          (positiveEdgeOfPhysicalBond b) :
-        Matrix (Fin Nc) (Fin Nc) ℂ) := by
+        (positiveEdgeOfPhysicalBond b)).val := by
   rw [cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix,
-    cmp99Eq337PrintedComplexGenerator_eq,
-    cmp99SUNLieComplexCoordMatrixLM_complexification]
+    cmp99Eq337PrintedComplexGenerator_eq]
+  change physicalMatrixExp
+        ((eta : ℂ) • cmp99SUNLieComplexCoordMatrixLM Nc
+          (cmp99SUNLieCoordComplexificationLM Nc (A b))) *
+      (U (positiveEdgeOfPhysicalBond b)).val =
+    (cmp98PhysicalSuLeftVariation U A eta
+      (positiveEdgeOfPhysicalBond b)).val
+  rw [cmp99SUNLieComplexCoordMatrixLM_complexification]
   change physicalMatrixExp
         ((eta : ℂ) • ((suLieCoordIso Nc).symm (A b)).toMatrix) *
       (U (positiveEdgeOfPhysicalBond b)).val =
-    ((physicalLeftVariation U
+    (physicalLeftVariation U
         (fun q t _ => cmp98PhysicalSuIncrement A q t) eta 0
-          (positiveEdgeOfPhysicalBond b) : SUN Nc) :
-      Matrix (Fin Nc) (Fin Nc) ℂ)
+          (positiveEdgeOfPhysicalBond b) : SUN Nc).val
   rw [physicalLeftVariation_apply_pos]
   rfl
 
