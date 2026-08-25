@@ -139,12 +139,15 @@ For `0 ≤ r ≤ R`, the literal four-Wilson-line expression should give
 
 ```text
 K(R)^depth * r0 <
-  min R (min (noWindingThreshold / C_delta(R)) (1 / (2 * C_q(R))))
+  min R (min ((min noWindingThreshold (1/4)) / C_delta(R))
+             (1 / (2 * C_q(R))))
 ```
 
-is the intended closed producer.  The divisions require their own positivity
-lemmas, and the displayed constants are a design target until Lean compiles
-them; they are not evidence or a source claim.
+is the intended closed producer.  The extra `1/4` is not redundant: the
+physical no-winding threshold can be larger, whereas the compiled linear
+exponential estimate uses the stricter quarter-radius regime.  The divisions
+require their own positivity lemmas, and the displayed constants are a design
+target until Lean compiles them; they are not evidence or a source claim.
 
 The exact scalar shape to elaborate after the prerequisite gate is therefore
 the following (names remain provisional until Lean fixes the implicit
