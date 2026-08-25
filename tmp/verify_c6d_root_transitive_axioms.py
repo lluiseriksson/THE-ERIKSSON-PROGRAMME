@@ -23,7 +23,7 @@ from collections import defaultdict
 from pathlib import Path
 
 
-SOURCE_SHA = "16aee829d499c8d83b8ab54b46506b593b7e79e8"
+SOURCE_SHA = "c3ad434890d8802a3d0b6ec5697862d488bba60f"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 PRE_MARKER = (
