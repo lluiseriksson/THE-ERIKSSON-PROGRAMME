@@ -7,7 +7,7 @@ prints literal `FINAL_STATUS=PASS`.
 
 ## Addendum 944 (2026-08-25, **C6d localized retained source tower sealed in fresh Colab Pro+; 20/41 unchanged**)
 
-PRE-VALIDATION checkpoint `b91d42630efb15f32d4b4ecd242a33238926d4de`
+PRE-VALIDATION checkpoint `b70735b82216a0ab1cd9a3bd4e195db1426a83fe`
 fixed the source-facing localized/canonical retained-prefix producer and its
 three-declaration audit.  That immutable graph contains seventeen visibly
 PRE-VALIDATION modules from the retained exact-read/locality substrate through
@@ -19,11 +19,11 @@ Git-blob SHA-256 values are respectively
 and
 `dabba854357f0abf6b2d994e5a96efc8271358d6c45c66dea9a087cfa4bb2479`.
 
-Runner checkpoint `1d306a29935de6a8e02825ee2d0ed4f36ad62e34`,
-notebook checkpoint `0fc811db96087d8968dcadfb6a11aa6317f9e58a`,
-revision `c6d-localized-retained-tower-cold-v5`, and runner Git-blob
+Runner checkpoint `737b7b01badeba5811b1bb7ae557c6ea45c4a79e`,
+notebook checkpoint `d07aa0267c0e5b3a43d8f091a77759da39161fd3`,
+revision `c6d-localized-retained-tower-cold-v6`, and runner Git-blob
 SHA-256
-`c3294530f6027c953d3a86ccb58c1585892ef151bb94a27cc8b97fde1b9736ee`
+`c854661508990dc2f0335699ba6a066f11c22a9be72749bd2fbe825c39a7ac3c`
 pin that source.  The first fresh CPU/high-RAM attempt lost its observable
 runtime before a terminal sentinel and is classified
 `INCOMPLETE-RUNTIME-LOSS`; it supplies neither PASS nor FAIL evidence.
@@ -47,6 +47,13 @@ the fail-closed coverage check now reports `92/92`.  Any green result at the
 earlier `c3ad4348...` graph is retained as compiler evidence for that graph
 but is not sufficient to claim total declaration coverage or retire marks.
 
+Before the corrected gate was launched, static review found the Unicode typo
+`≃₁` in the separately promoted Eq. (3.37) complex-coordinate module.
+Checkpoint `b70735b8...` changes it to the actual `LinearEquiv` notation
+`≃ₗ`; the v5 runner/notebook are superseded and were not reused.  This change
+does not alter any of the 34 C6d boundary blobs, but the cold root and all
+subsequent evidence are pinned to the corrected repository graph.
+
 One controlled repetition checked out the corrected immutable source in a fresh
 Colab Pro+ CPU/high-RAM runtime with Lean `4.29.0-rc6`, toolchain asset
 SHA-256
@@ -63,7 +70,7 @@ archive SHA-256 is `[ARCHIVE_SHA256]`.  [ARCHIVE_RETENTION_SENTENCE]
 
 The executed-notebook root transcript was then checked fail-closed against
 the exact `#print axioms` declarations read from the seventeen audit blobs at
-source checkpoint `b91d4263...`.  The verifier required all 92 distinct
+source checkpoint `b70735b8...`.  The verifier required all 92 distinct
 declarations, rejected `sorryAx`, `ofReduceBool` and every axiom outside
 `{propext, Classical.choice, Quot.sound}`, and emitted
 `C6D_ROOT_TRANSITIVE_AXIOMS_OK`.  The verifier JSON SHA-256 is

@@ -550,6 +550,15 @@ following ordered list.
    three audits.  The earlier 20-readout background queue is superseded and
    cannot be used to claim total oracle coverage.
 
+   Notation correction (2026-08-25): static preflight then found that the
+   return type of `cmp99SUNLieComplexCoordSlEquiv` used `≃₁` (Unicode
+   subscript digit one).  Checkpoint
+   `b70735b82216a0ab1cd9a3bd4e195db1426a83fe` replaces it by the actual
+   algebraic `LinearEquiv` notation `≃ₗ`; runner checkpoint
+   `737b7b01badeba5811b1bb7ae557c6ea45c4a79e` retargets both C6d and Eq337
+   gates to that source.  No isometry or norm-one coordinate bridge follows
+   from this equivalence.
+
    The immediate algebraic consumer is also written as the two-file
    PRE-VALIDATION boundary
    `tmp/C6D-EQ337-COMPLEX-UBAR-COORDINATE-EXPONENT-DRAFT-PATHS.txt`.
@@ -1178,16 +1187,24 @@ and the same source read carrier as the sealed real-slice deviation theorem;
 no global fine-link smallness or unitarity outside the real slice may be
 introduced.
 
-Static inspection now fixes the first-stage constant and removes a possible
-dimension loss.  The already constructed
-`cmp99SUNLieComplexCoordSlEquiv Nc` is an isometric complex-linear
-equivalence, and `cmp99SUNLieComplexCoordToSlLM_val` identifies its value
-with `cmp99SUNLieComplexCoordMatrixLM`.  Consequently the matrix generator
-has exactly the coordinate norm: no `Nc`, Frobenius or cardinality factor is
-permitted in this bridge.  With
+Static inspection fixes the shape of the first-stage constant but also
+exposes one additional norm bridge.  The corrected type of
+`cmp99SUNLieComplexCoordSlEquiv Nc` is an algebraic `LinearEquiv` (`≃ₗ`), not
+an isometric equivalence.  The earlier scratch spelling used the Unicode
+subscript digit one (`≃₁`); treating that typo as an isometry would be both a
+parser error and a false analytic conclusion.  The producer must therefore
+construct a named bound
 
 ```text
-q = |eta| * rA,
+norm (cmp99SUNLieComplexCoordMatrixLM Nc Z) <= Ccoord * norm Z
+```
+
+from the explicit real/imaginary matrix realization.  It may use a proved
+continuous-linear operator norm or a sharper explicit coordinate estimate,
+but it may not silently set `Ccoord = 1`.  With
+
+```text
+q = |eta| * Ccoord * rA,
 rLink = epsilonU + 2*q,
 q <= 1/2,
 ```
