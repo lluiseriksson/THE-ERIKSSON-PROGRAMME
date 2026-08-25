@@ -139,7 +139,7 @@ constructed inside the definition. -/
 noncomputable def
     CMP99Eq335PhysicalRegularityClass.localizedPerturbedRetainedTowerOfSourceRegion
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
-    {eta alpha0 alpha1 spacing : ℝ}
+    {eta alpha0 alpha1 : ℝ}
     (R : CMP99Eq335PhysicalRegularityClass
       (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
       (scaleExtent := scaleExtent) (S := S)
@@ -162,7 +162,7 @@ noncomputable def
     let u := cmp99ExtendRegularCubeLocalGauge W.cube W.localGauge
     let A1 := cmp99Eq337PhysicalGaugeTransformRealOneCochain u A
     CMP99SourceLocalizedRetainedTower regions (by norm_num : 2 ≤ 4) hM
-      (matrixSUNAdjointModel Nc) spacing
+      (matrixSUNAdjointModel Nc) eta
       (cmp99Eq337PhysicalPerturbedRetainedNearIdentityRadius alpha1)
       (cmp98PhysicalSuLeftVariation W.transformedBackground A1 eta) chain
       (R.norm_localizedPhysicalPerturbedBackground_sub_one_le
@@ -171,7 +171,7 @@ noncomputable def
   let u := cmp99ExtendRegularCubeLocalGauge W.cube W.localGauge
   let A1 := cmp99Eq337PhysicalGaugeTransformRealOneCochain u A
   exact cmp99SourceLocalizedRetainedTower regions (by norm_num : 2 ≤ 4) hM
-    (matrixSUNAdjointModel Nc) spacing
+    (matrixSUNAdjointModel Nc) eta
     (cmp99Eq337PhysicalPerturbedRetainedNearIdentityRadius alpha1)
     (cmp98PhysicalSuLeftVariation W.transformedBackground A1 eta) chain
     (R.norm_localizedPhysicalPerturbedBackground_sub_one_le

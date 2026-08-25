@@ -424,13 +424,14 @@ proves that both strata supporting a regular cube lie in the corresponding
 source region, transports the literal (3.37) datum through the constructed
 source-vertex gauge action, and derives the retained-read bound
 `norm (exp(eta A') U - 1) <= 4 alpha1`.  It then constructs the perturbed
-localized retained tower from `cmp98PhysicalSuLeftVariation`; no free `Q1`,
-`F2`, precision, Green operator or operator identity is accepted.  The
+localized retained tower from `cmp98PhysicalSuLeftVariation`, fixing its
+lattice spacing to the same source `eta`; no free spacing, `Q1`, `F2`,
+precision, Green operator or operator identity is accepted.  The
 source `Ubar` radius chain, source-region dictionary and scalar alpha window
 remain visible inputs, so this is only the real item-4 construction boundary,
 not the analytic complex tower or an attainment result.  The source, audit
 and manifest SHA-256 values are respectively
-`DF334EC4293E8195A626213385330C84B203FC5E66D1F5EE11C5EC1F6DBAF365`,
+`73714BF7D3697E3D2EACC6640B1831BEBAD834B49CF9459F51BC57D49EF63548`,
 `EF805C112C3C01E2E00188B5D0FB549A0ACE756FAA4901A6A491A1E44CE50CDC`
 and
 `FC3C704EEE907C5AF1BD514293ACDFC76FC3DC6B8080B11BA24B0F1F4DFED660`.
