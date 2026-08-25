@@ -13,7 +13,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = 'ca3987c23b78e74ed3b0bc6b1eaff321f89f0d37'
+SOURCE_SHA = 'f39b2176e3df3347c9af576ce49ad2e628b0bac6'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -37,7 +37,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = 'eq337-complex-forced-recursion-prereq-v6'
+runner.RUNNER_REV = 'eq337-complex-forced-recursion-prereq-v7'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-complex-recursion-prereq")
 runner.EVIDENCE = Path("/content/hrpoly-complex-recursion-prereq-evidence")
@@ -52,7 +52,7 @@ runner.SOURCE_BLOBS = {
     'tmp/CMP99ComplexInverseRadius.repro.lean': '3e71811abf32f8503db7e1730394a99c1e54531acaf8e375f2afc76f9f383d3f',
     'tmp/BalabanCMP99ComplexInverseRadius.draft.lean': 'ff9943cc7f7a398c9d653bfb2fbc86aa70f9d7e3fbd59c890b68cc5d00218dd9',
     'tmp/BalabanCMP99ComplexInverseRadiusAudit.draft.lean': 'ea2597ee82f20741fc5b1ef18665baf4b8ba47687b6c814f5e83f6d17c590d28',
-    'tmp/BalabanCMP99ComplexUbarSmallFieldPropagation.draft.lean': 'a244224fb09c634188c9028e05a629b9fce401f25e0fc4af50551707df608160',
+    'tmp/BalabanCMP99ComplexUbarSmallFieldPropagation.draft.lean': '117dcd2259971336a524e618618325c63b061cf9df750f9dff7faf37621b69e5',
     'tmp/BalabanCMP99ComplexUbarSmallFieldPropagationAudit.draft.lean': '382ded9f34b3afe26072a120953848325def8d12fd76b3a33dc5e7c273f41e88',
 }
 
