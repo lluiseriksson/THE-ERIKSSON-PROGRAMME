@@ -38,7 +38,7 @@ inhabitant justifies the exact movement.
 | Nontrivial terminal theorem application | **open** | No terminal application exists yet. |
 | Full clean build and complete axiom oracle | **open for final SHA** | Intermediate cold seals do not substitute for the terminal repository-wide build/oracle. |
 | Terminal reproducibility | **open** | Two independent fresh heavy-environment checkouts at the same final SHA, with separate build state and matching output hashes. |
-| Final paper | **open** | Compile, render and verify the final paper against the sealed theorem graph; no stale counters, placeholders or claims beyond compiled evidence. |
+| Final paper | **open** | Update or traceably supersede `papers/hrpoly-cmp116-reduction/hrpoly_cmp116_reduction.tex`, its `README.md`, `CLAIM_MAP.md`, PDF and `output/pdf/hrpoly-cmp116-reduction.pdf` in the terminal SHA.  The current v0.3 artifacts still point to PR #28 and explicitly leave `hRpoly` open.  Compile, render and visually verify the terminal manuscript against the sealed theorem graph; no stale counters, placeholders or claims beyond compiled evidence. |
 | PR #29 governance | **in progress** | PR is draft and tracks the active branch.  Keep draft until the full checklist is complete; use fast-forward publication only. |
 
 Completion is forbidden while any row is open, while any source module still
