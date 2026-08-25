@@ -45,6 +45,7 @@ def cmp99SUNLieComplexCoordImagPart (Z : SUNLieComplexCoord Nc) :
     cmp99SUNLieComplexCoordImagPart
         (cmp99SUNLieCoordComplexificationLM Nc X) = 0 := by
   ext a
+  change ((X a : ℂ)).im = 0
   simp
 
 theorem cmp99SUNLieComplexCoordRealPart_add
