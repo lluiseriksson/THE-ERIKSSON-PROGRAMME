@@ -329,7 +329,6 @@
         "YangMills.RG.cmp99Flat_stdAddChar_eq_exp_discreteMomentum",
         "YangMills.RG.cmp99Flat_stdAddChar_neg_eq_exp_neg_discreteMomentum",
         "YangMills.RG.cmp99Flat_characterPair_eq_entireUnitDifferencePair",
-        "YangMills.RG.cmp89Eq245ScaledLaplacianSymbol_one_eq_unit",
         "YangMills.RG.cmp99FlatPeriodicLaplacianSymbol_eq_cmp89Unit",
         "YangMills.RG.cmp99SUNLieCoordComplexificationLM",
         "YangMills.RG.cmp99SUNLieCoordComplexificationLM_apply",

@@ -93,10 +93,10 @@
     {
       "source_id": "cmp98",
       "importance": "high",
-      "catalog_status": "located-label-map",
-      "artifact_status": "extracted-text-and-two-renders-present; canonical-pdf-path-is-1157-byte-html; repo-clean-primary-missing",
-      "formula_status": "primary metadata and label/page map located for Q_k/block-averaging operations; extracted text is present, but Proposition 2 and formula bodies are not visually certified from a registered clean primary PDF; Gaussian-pushforward dictionary still open and the U_k regularity dictionary remains open",
-      "next_action": "Register a clean CMP98 primary PDF and visually certify Proposition 2. Choose the exact CMP98 theorem/proposition window for Q_k averaging, then map the U_k regularity and gaussian_pushforward conventions to the Lean consumers.",
+      "catalog_status": "visual-confirmed-partial",
+      "artifact_status": "clean-private-pdf-hash-verified; targeted-300dpi-renders-present; canonical-repo-pdf-stub-rejected",
+      "formula_status": "Proposition 2, (52)-(53), (97), (102)-(103), Proposition 4, (134)-(136), and (160)-(162) visually confirmed; analytic Ubar exp/log dictionary and gaussian-pushforward normalization remain open",
+      "next_action": "Construct and compile the finite analytic Ubar recursion from Proposition 4 and (160)-(162), with the exp/log transport to literal UbarDeviation explicit; separately close the Q_k/gaussian-pushforward normalization dictionary.",
       "priority": 8,
       "short": "Balaban CMP98",
       "title": "Averaging Operators for Lattice Gauge Field Theories"

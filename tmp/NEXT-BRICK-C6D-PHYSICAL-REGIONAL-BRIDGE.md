@@ -545,10 +545,14 @@ following ordered list.
    2629073-byte primary PDF was materialized from authenticated Drive with
    SHA-256 `03409AD81885593D65535550EAFAC08639E66123D4ACF92462847AE2EE4DD7D6`,
    matching the private source packet.  Targeted 300-dpi renders visually
-   confirm each named locator on printed pp. 26, 32, 33, 38 and 42.  The
-   remaining frontier is the finite complex `Ubar` source-to-Lean dictionary;
-   it may not be replaced by an existing reconstruction or a free background
-   family.
+   confirm each named locator on printed pp. 26, 32, 33, 38, 39 and 42.
+   Printed p. 39 states that the Proposition-4 constants are independent of
+   `k` and gives the homogeneous expansion (136).  This closes the source
+   uniformity gate but does not itself bound the literal matrix
+   `UbarDeviation`.  The remaining frontier is the finite complex exp/log
+   `Ubar` source-to-Lean dictionary; it may not be replaced by an existing
+   reconstruction, a free background family, or a premise named after the
+   desired deviation estimate.
 
    A declaration-level reuse audit now fixes the first implementation split.
    `UbarDeviation`, `UbarDeviation_gaugeAct` and the path/basepoint geometry in
@@ -690,9 +694,10 @@ mass to `M^{-d}`, constructs positive bonds through the determinant-one
 complex Ubar closure, and obtains negative orientations from
 `gaugeConfigOfPositiveBonds`.  It accepts no coarse background or Ubar value.
 Its sole analytic premise is the named uniform deviation estimate on the
-literal `UbarDeviation`; producing that estimate from CMP98 Proposition 4 is
-the next source dictionary.  The four-file cumulative overlay is textual
-evidence only until a Colab compiler/audit gate passes.
+literal `UbarDeviation`; producing that estimate from CMP98 Proposition 4,
+(134)--(136), and (160)--(162) requires an explicit finite exp/log transport.
+The four-file cumulative overlay is textual evidence only until a Colab
+compiler/audit gate passes.
 
 Before that constructor, expose the invariant complex-bilinear pairing `B`
 and prove the leaf identity
