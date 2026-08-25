@@ -105,6 +105,49 @@ background (and, if a consumer needs it, private prefixes plus public
 projection lemmas).  It must not accept a background family, a free `hdev`, a
 free next-background smallness proof, or a terminal equality.
 
+The exact scalar shape to elaborate after the prerequisite gate is therefore
+the following (names remain provisional until Lean fixes the implicit
+arguments):
+
+```lean
+inductive CMP99SourceComplexUbarRadiusChain (d M Nc : ℕ)
+    [NeZero d] [NeZero M] [NeZero Nc] : ℕ → ℝ → Prop
+  | stop (r : ℝ) (r_nonneg : 0 ≤ r) :
+      CMP99SourceComplexUbarRadiusChain d M Nc 0 r
+  | step {depth : ℕ} (r : ℝ) (r_nonneg : 0 ≤ r)
+      (hnoWinding :
+        cmp99Eq337SourceComplexUbarUniformDeviationRadius d M r <
+          cmp99UbarNoWindingThreshold Nc)
+      (hlog : cmp99UbarLogRadius
+          (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding) < 1)
+      (hq1 : cmp99SourceComplexUbarNextLinkRadius M r
+          (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding) < 1)
+      (tail : CMP99SourceComplexUbarRadiusChain d M Nc depth
+        (cmp99SourceComplexUbarNextOrientedLinkRadius M r
+          (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding))) :
+      CMP99SourceComplexUbarRadiusChain d M Nc (depth + 1) r
+```
+
+Thus `hq1` travels with the flowing radius at the exact step where inversion
+consumes it.  It is neither caller-supplied linkwise smallness nor a field of
+the global fourteen-window compatibility record.
+
+For Eq. (3.37), the public finite constructor must start from the literal
+background
+
+```lean
+cmp99Eq337PhysicalComplexPerturbedBackground U A eta
+```
+
+and the already proved radius
+`cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA`.  The
+perturbed background is built in the body, not exposed as an argument.  A
+private dependent recursion may retain prefixes, but the public output is the
+terminal generated background and its derived all-orientation radius theorem.
+This distinction prevents the generic one-step prerequisite (which correctly
+takes its current background) from leaking a freely selected background into
+the source-facing Eq. (3.37) recursion.
+
 ## Acceptance gates
 
 1. The final source-facing leaf still constructs the first perturbed
