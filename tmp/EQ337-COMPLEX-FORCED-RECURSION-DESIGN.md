@@ -148,6 +148,35 @@ This distinction prevents the generic one-step prerequisite (which correctly
 takes its current background) from leaking a freely selected background into
 the source-facing Eq. (3.37) recursion.
 
+The lattice index should follow the already sealed source recursion exactly:
+an input at
+`cmp99RegionalLatticeSize M N depth` is coarsened once in each `step`, and
+the terminal output lives at `N`.  In particular, the public source-facing
+shape is constrained to
+
+```lean
+noncomputable def cmp99Eq337SourceComplexRecursiveBackground
+    ...
+    (U : PhysicalGaugeBackground d
+      (cmp99RegionalLatticeSize M N depth) Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d
+      (cmp99RegionalLatticeSize M N depth) Nc)
+    (eta epsilonU rA : ℝ)
+    ...
+    (chain : CMP99SourceComplexUbarRadiusChain d M Nc depth
+      (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+        Nc epsilonU eta rA)) :
+    GaugeConfig d N (Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+```
+
+The depth-zero branch returns the internally constructed perturbed
+background after the definitional lattice-size reduction.  The successor
+branch applies `cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius`,
+derives its all-orientation bound from the head of `chain`, and recurses on
+`chain.tail`.  This is the only accepted recursion direction: a terminal
+background lifted back to the fine lattice, or a caller-supplied tail
+background, would reverse the physical construction.
+
 ## Acceptance gates
 
 1. The final source-facing leaf still constructs the first perturbed
