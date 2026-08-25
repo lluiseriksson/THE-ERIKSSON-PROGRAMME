@@ -541,6 +541,17 @@ following ordered list.
    materialized `.olean` and no compiler/oracle verdict; in particular this
    status does not promote the Eq. (3.37) background dictionary or discharge
    any terminal field.
+
+   The immediate algebraic consumer is also written as the two-file
+   PRE-VALIDATION boundary
+   `tmp/C6D-EQ337-COMPLEX-UBAR-COORDINATE-EXPONENT-DRAFT-PATHS.txt`.
+   It packages the already literal normalized sum of determinant-one
+   `nearLog` deviations in `sl(N,C)`, pulls that constructed matrix back
+   through the equivalence, and proves that remapping the coordinate returns
+   the same exponent exactly.  Thus the future recursive `Q_j` coordinate is
+   generated from the Ubar expression and is not caller data.  This boundary
+   has no `.olean` or oracle verdict and proves none of the Proposition-4
+   estimates.
 1. **Analytic next-background chain.**  Construct every coarsened background
    of the explicit `SL(N,C)` configuration `exp(i eta A') U` by the literal
    complex extension of the CMP98/CMP99 `Ubar` operation.  Printed (3.55)
