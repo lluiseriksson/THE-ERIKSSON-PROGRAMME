@@ -532,6 +532,15 @@ following ordered list.
    * packaging: `LinearEquiv.ofBijective` only after those two function-level
      proofs.  No finrank equality, arbitrary inverse, or isometry claim may
      replace either argument.
+
+   Implementation status (PRE-VALIDATION, 2026-08-25): the explicit
+   injectivity/surjectivity construction and the final
+   `LinearEquiv.ofBijective` packaging are written in
+   `BalabanCMP99Eq337PhysicalComplexPerturbedBackground.draft.lean`, with
+   oracle readouts added to its scratch audit.  The source still has no
+   materialized `.olean` and no compiler/oracle verdict; in particular this
+   status does not promote the Eq. (3.37) background dictionary or discharge
+   any terminal field.
 1. **Analytic next-background chain.**  Construct every coarsened background
    of the explicit `SL(N,C)` configuration `exp(i eta A') U` by the literal
    complex extension of the CMP98/CMP99 `Ubar` operation.  Printed (3.55)
