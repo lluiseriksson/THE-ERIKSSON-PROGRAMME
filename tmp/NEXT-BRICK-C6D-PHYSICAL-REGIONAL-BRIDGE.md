@@ -542,6 +542,14 @@ following ordered list.
    status does not promote the Eq. (3.37) background dictionary or discharge
    any terminal field.
 
+   Coverage correction (2026-08-25): the repository declaration/readout
+   gate found six public helper declarations in that module that the first
+   audit list omitted.  Checkpoint `b91d42630efb15f32d4b4ecd242a33238926d4de`
+   adds those exact readouts; the six-file Eq. (3.37) coordinate boundary now
+   reports `57/57`.  The retargeted gate expects 8, 23 and 26 readouts for its
+   three audits.  The earlier 20-readout background queue is superseded and
+   cannot be used to claim total oracle coverage.
+
    The immediate algebraic consumer is also written as the two-file
    PRE-VALIDATION boundary
    `tmp/C6D-EQ337-COMPLEX-UBAR-COORDINATE-EXPONENT-DRAFT-PATHS.txt`.
