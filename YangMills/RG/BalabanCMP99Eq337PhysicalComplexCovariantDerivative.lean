@@ -128,7 +128,17 @@ theorem cmp99SUNAdjointComplexAction_complexification
     cmp99SUNAdjointComplexAction rho g
         (cmp99SUNLieCoordComplexificationLM Nc X) =
       cmp99SUNLieCoordComplexificationLM Nc (rho.adCLM g X) := by
-  simp [cmp99SUNAdjointComplexAction]
+  change
+    cmp99SUNLieCoordComplexificationLM Nc
+          (rho.adCLM g (cmp99SUNLieComplexCoordRealPart
+            (cmp99SUNLieCoordComplexificationLM Nc X))) +
+        Complex.I • cmp99SUNLieCoordComplexificationLM Nc
+          (rho.adCLM g (cmp99SUNLieComplexCoordImagPart
+            (cmp99SUNLieCoordComplexificationLM Nc X))) =
+      cmp99SUNLieCoordComplexificationLM Nc (rho.adCLM g X)
+  rw [cmp99SUNLieComplexCoordRealPart_complexification,
+    cmp99SUNLieComplexCoordImagPart_complexification]
+  simp
 
 /-- One complexified Lie-coordinate value per positive physical bond. -/
 abbrev CMP99Eq337PhysicalComplexOneCochain (d N Nc : ℕ) [NeZero N] :=
