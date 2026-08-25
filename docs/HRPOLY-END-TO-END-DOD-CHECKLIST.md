@@ -27,7 +27,8 @@ inhabitant justifies the exact movement.
 | Eq. (3.37) complex Ubar boundary | **open** | Fourteen-file cold gate prepared.  Promotion requires its own evidence package; no compiler verdict yet. |
 | Complex inverse and all-orientation small-field producer | **open** | PRE-VALIDATION prerequisite gate prepared.  It must prove the explicit `(1+r)^M` costs, `q/(1-q)` inverse loss and the joint zero-radius non-vacuity witness. |
 | Forced finite complex recursion | **open** | Must construct every background internally from literal `U`, `A`, `eta` and a scalar flowing-radius chain.  No background family, free `hdev`, per-scale smallness proof or terminal equality may be an input. |
-| Uniform physical `B0, delta0` and retained-tower transport | **open** | Fixed-depth/source-flow pieces are sealed; the uniform retained-tower producer is not. |
+| Retained-tower/source-region transport of the four physical actions | **open** | The four fixed-depth CMP96 actions and their per-depth CMP99 (3.42) assembler are sealed.  They still must be transported, by named gauge/operator dictionaries, to the selected retained tower and source-region chain; equality of independently chosen operators is not admissible. |
+| Uniform physical `B0, delta0` | **open** | Fixed-depth and source-flow Fourier pieces are sealed, but one positive amplitude/rate pair uniform in depth has not yet been produced for the transported physical actions.  Per-depth or per-action constants do not close this row. |
 | Physical window 15 | **open** | Compatibility is proved; attainment requires the literal regional defect/Neumann estimate, not a renamed `norm R' < 1` hypothesis. |
 | `PreEq136` producers | **open: 20/41** | Every remaining row must have a source-facing producer.  Assemblers do not increment the numerator. |
 | First conditional `TermSource` inhabitant | **open: 0** | Requires `41/41`; a constructor receiving `PreEq136` is not an inhabitant. |
