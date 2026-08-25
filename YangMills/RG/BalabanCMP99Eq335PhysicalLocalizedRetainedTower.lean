@@ -38,7 +38,9 @@ noncomputable def CMP99Eq335PhysicalRegularityWitness.localizedRetainedTower
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 spacing : ℝ}
     (W : CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
     (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
     (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
     (hinside : CMP99Eq335RetainedFineReadCarrierInsideRegularCube
@@ -62,7 +64,9 @@ theorem CMP99Eq335PhysicalRegularityWitness.localizedRetainedTerminalQprime_eq
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 spacing : ℝ}
     (W : CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
     (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
     (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
     (hinside : CMP99Eq335RetainedFineReadCarrierInsideRegularCube
@@ -70,11 +74,13 @@ theorem CMP99Eq335PhysicalRegularityWitness.localizedRetainedTerminalQprime_eq
     (halpha1 : alpha1 ≤ 1 / 2)
     (chain : CMP99SourceUbarRadiusChain 4 M Nc depth
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) :
-    let T := W.localizedRetainedTower regions hM rho hinside halpha1 chain
+    let T := W.localizedRetainedTower (spacing := spacing)
+      regions hM rho hinside halpha1 chain
     HEq (T.localizedTowerAt (Fin.last depth)).Qprime
       (T.canonicalTowerAt (Fin.last depth)).Qprime := by
   exact CMP99SourceLocalizedRetainedTower.terminalQprime_eq
-    (W.localizedRetainedTower regions hM rho hinside halpha1 chain)
+    (W.localizedRetainedTower (spacing := spacing)
+      regions hM rho hinside halpha1 chain)
 
 end
 

@@ -38,7 +38,9 @@ noncomputable def
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 spacing : ℝ}
     (W : CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
     {Omega OmegaPrime0 : ActiveGaugeRegion 4 (L * N')}
     (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
     (D : CMP99Eq335Corollary36SourceRegionDictionary
@@ -51,12 +53,12 @@ noncomputable def
       spacing (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
       W.transformedBackground chain
       (W.retainedFineReadBonds_nearIdentity regions
-        (CMP99Eq335Corollary36SourceRegionDictionary.
-          retainedFineReadCarrierInsideRegularCube W.cube D regions)
+        (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+          W.cube D regions)
         halpha1) :=
-  W.localizedRetainedTower regions hM rho
-    (CMP99Eq335Corollary36SourceRegionDictionary.
-      retainedFineReadCarrierInsideRegularCube W.cube D regions)
+  W.localizedRetainedTower (spacing := spacing) regions hM rho
+    (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+      W.cube D regions)
     halpha1 chain
 
 /-- The terminal retained `Qprime` equality after the source-region
@@ -66,7 +68,9 @@ theorem
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 spacing : ℝ}
     (W : CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
     {Omega OmegaPrime0 : ActiveGaugeRegion 4 (L * N')}
     (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
     (D : CMP99Eq335Corollary36SourceRegionDictionary
@@ -75,12 +79,12 @@ theorem
     (halpha1 : alpha1 ≤ 1 / 2)
     (chain : CMP99SourceUbarRadiusChain 4 M Nc depth
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) :
-    let T := W.localizedRetainedTowerOfSourceRegion
+    let T := W.localizedRetainedTowerOfSourceRegion (spacing := spacing)
       regions D hM rho halpha1 chain
     HEq (T.localizedTowerAt (Fin.last depth)).Qprime
       (T.canonicalTowerAt (Fin.last depth)).Qprime := by
   exact CMP99SourceLocalizedRetainedTower.terminalQprime_eq
-    (W.localizedRetainedTowerOfSourceRegion
+    (W.localizedRetainedTowerOfSourceRegion (spacing := spacing)
       regions D hM rho halpha1 chain)
 
 end

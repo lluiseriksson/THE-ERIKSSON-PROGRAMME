@@ -38,7 +38,9 @@ noncomputable def
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 spacing : ℝ}
     (R : CMP99Eq335PhysicalRegularityClass
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
     (C : CMP99SourceRegularCube (FinBox 4 (L * N')) n Mlarge scaleExtent S
       scaleExtent_pos)
     (hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1)
@@ -54,12 +56,12 @@ noncomputable def
       spacing (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
       W.transformedBackground chain
       (W.retainedFineReadBonds_nearIdentity regions
-        (CMP99Eq335Corollary36SourceRegionDictionary.
-          retainedFineReadCarrierInsideRegularCube C D regions)
+        (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+          C D regions)
         halpha1) := by
   let W := R.toCubeWitness C alpha1 hscale
   exact W.localizedRetainedTowerOfSourceRegion
-    regions D hM rho halpha1 chain
+    (spacing := spacing) regions D hM rho halpha1 chain
 
 /-- The terminal retained `Qprime` identity with the per-region regularity
 witness eliminated from the public contract. -/
@@ -68,7 +70,9 @@ theorem
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 spacing : ℝ}
     (R : CMP99Eq335PhysicalRegularityClass
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
     (C : CMP99SourceRegularCube (FinBox 4 (L * N')) n Mlarge scaleExtent S
       scaleExtent_pos)
     (hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1)
@@ -81,12 +85,12 @@ theorem
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) :
     let W := R.toCubeWitness C alpha1 hscale
     let T := R.localizedRetainedTowerOfSourceRegion
-      C hscale regions D hM rho halpha1 chain
-    (T.localizedTowerAt (Fin.last depth)).Qprime =
+      (spacing := spacing) C hscale regions D hM rho halpha1 chain
+    HEq (T.localizedTowerAt (Fin.last depth)).Qprime
       (T.canonicalTowerAt (Fin.last depth)).Qprime := by
   let W := R.toCubeWitness C alpha1 hscale
   exact W.localizedRetainedTerminalQprime_eq_ofSourceRegion
-    regions D hM rho halpha1 chain
+    (spacing := spacing) regions D hM rho halpha1 chain
 
 end
 
