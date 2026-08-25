@@ -46,8 +46,10 @@ theorem norm_specialLinear_inv_sub_one_le_div
             ((norm_mul_le (1 - A) V).trans
               (mul_le_mul_of_nonneg_right hA (norm_nonneg V)))
     have hden : 0 < 1 - r := sub_pos.mpr hr1
-    exact (le_div_iff₀ hden).2 (by
-      nlinarith [norm_nonneg V])
+    calc
+      ‖V‖ ≤ 1 / (1 - r) := (le_div_iff₀ hden).2 (by
+        nlinarith [norm_nonneg V])
+      _ = (1 - r)⁻¹ := by simp [div_eq_mul_inv]
   have hdevEq : V - 1 = (1 - A) * V := by
     noncomm_ring [hmul]
   change ‖V - 1‖ ≤ r / (1 - r)
