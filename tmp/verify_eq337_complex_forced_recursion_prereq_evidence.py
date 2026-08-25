@@ -14,11 +14,15 @@ import subprocess
 
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
+REPROS = (
+    ("tmp/CMP99ComplexRadiusScalar.repro.lean", 2),
+)
 MODULES = (
     ("BalabanCMP99ComplexInverseRadius", 1),
     ("BalabanCMP99ComplexUbarSmallFieldPropagation", 13),
 )
 SOURCE_PATHS = (
+    *(path for path, _ in REPROS),
     "tmp/CMP99ComplexInverseRadius.repro.lean",
     *(path
       for module, _ in MODULES
@@ -29,6 +33,7 @@ SOURCE_PATHS = (
 )
 STAGES = (
     "complex_recursion_prereq_prepare_build_dirs",
+    "complex_radius_scalar_repro",
     "complex_inverse_radius_repro",
     "complex_recursion_prereq_materialize_dependencies",
     "complex_inverse_radius_source",
@@ -168,6 +173,18 @@ def main() -> int:
         require_once(transcript, f"SOURCE_BLOB={path} SHA256={measured}")
 
     expected: list[str] = []
+    declarations_by_repro: dict[str, list[str]] = {}
+    for repro_path, expected_count in REPROS:
+        declarations = PRINT_RE.findall(
+            git_blob(repo, args.source_sha, repro_path).decode("utf-8")
+        )
+        if len(declarations) != expected_count:
+            raise RuntimeError(
+                f"REPRO_DECLARATION_COUNT={repro_path}:{len(declarations)} "
+                f"WANT={expected_count}"
+            )
+        declarations_by_repro[repro_path] = declarations
+        expected.extend(declarations)
     declarations_by_module: dict[str, list[str]] = {}
     for module, expected_count in MODULES:
         audit_path = f"tmp/{module}Audit.draft.lean"
@@ -181,7 +198,7 @@ def main() -> int:
             )
         declarations_by_module[module] = declarations
         expected.extend(declarations)
-    if len(expected) != 14 or len(set(expected)) != 14:
+    if len(expected) != 16 or len(set(expected)) != 16:
         raise RuntimeError(
             f"EXPECTED_DECLARATION_SCOPE={len(expected)}/{len(set(expected))}"
         )
@@ -221,6 +238,7 @@ def main() -> int:
         "allowed_axioms": sorted(ALLOWED),
         "stage_seconds": stage_seconds,
         "boundary_blob_sha256": boundary_hashes,
+        "declarations_by_repro": declarations_by_repro,
         "declarations_by_module": declarations_by_module,
         "evidence_input_sha256": hashlib.sha256(evidence_bytes).hexdigest(),
     }

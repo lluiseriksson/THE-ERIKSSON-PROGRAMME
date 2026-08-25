@@ -256,9 +256,10 @@ from its own cold evidence, the generator
 `generate_eq337_complex_forced_recursion_prereq_runner.py` freezes a
 stop-on-first-error Colab queue with this order:
 
-1. the Mathlib-only inverse-radius reproduction;
-2. the project inverse-radius theorem and its one-declaration axiom audit;
-3. the complex all-orientation small-field producer and its twelve-declaration
+1. the two-declaration Mathlib-only closed-radius scalar reproduction;
+2. the Mathlib-only inverse-radius reproduction;
+3. the project inverse-radius theorem and its one-declaration axiom audit;
+4. the complex all-orientation small-field producer and its thirteen-declaration
    axiom audit.
 
 The matching notebook generator gives the launcher a stable cell id and pins
@@ -270,13 +271,13 @@ unchanged.
 Promotion is deliberately split but evidence-bound.  After the first `78`
 readouts, the tracked perturbed-background pair is sealed and its audit enters
 `YangMillsCore`; the fourteen Ubar files are copied to their public paths while
-retaining `PRE-VALIDATION`.  After the second gate's exact `14` readouts, the
+retaining `PRE-VALIDATION`.  After the second gate's exact `16` readouts, the
 single atomic helper
 `seal_promote_eq337_complex_recursion_prerequisites.py` checks the promoted
 Ubar blobs against the first package, checks the inverse/small-field scratch
 blobs against the second package, removes the fourteen remaining notices,
 promotes the four later files, and adds exactly nine audit imports to
-`YangMillsCore`.  The Mathlib-only reproduction is never promoted.  Neither
+`YangMillsCore`.  The Mathlib-only reproductions are never promoted.  Neither
 package alone authorizes that final prerequisite seal.
 
 The prerequisite boundary now also contains
@@ -285,5 +286,6 @@ with one common no-winding budget, the strict logarithmic gate, the strict
 positive-link gate, and exact zero all-orientation successor radius.  This is
 the required non-vacuity witness for the scalar interface; it does not weaken
 or replace the flowing physical gates at nonzero radius.  The exact audit
-scope is therefore fourteen declarations in total: one inverse-radius
-declaration plus thirteen small-field declarations.
+scope is therefore sixteen declarations in total: two closed-radius scalar
+declarations, one inverse-radius declaration and thirteen small-field
+declarations.

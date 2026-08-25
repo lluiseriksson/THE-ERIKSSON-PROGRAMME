@@ -45,10 +45,11 @@ def test_runner_freezes_the_exact_stop_on_first_error_queue() -> None:
     generator, text = generated_runner()
     compile(text, "generated_complex_recursion_prereq_runner.py", "exec")
 
-    assert len(generator.PATHS) == 5
+    assert len(generator.PATHS) == 6
     assert text.count("'PRE-VALIDATION'") == 0
     assert text.count(".draft.lean") >= 4
     stages = [
+        "complex_radius_scalar_repro",
         "complex_inverse_radius_repro",
         "complex_recursion_prereq_materialize_dependencies",
         "complex_inverse_radius_source",

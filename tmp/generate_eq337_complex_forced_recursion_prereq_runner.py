@@ -2,7 +2,7 @@
 """Generate the pinned Colab gate for the complex-recursion prerequisites.
 
 The gate is deliberately smaller than the final forced recursion.  It first
-checks the Mathlib-facing inverse-radius reproduction, then materializes and
+checks the two Mathlib-facing scalar reproductions, then materializes and
 audits the project inverse-radius theorem and the all-orientation complex
 small-field producer.  It stops at the first error and never removes
 PRE-VALIDATION or changes the live ``20/41`` counter.
@@ -27,6 +27,7 @@ EXPECTED_BASE_SHA256 = (
     "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 )
 PATHS = (
+    "tmp/CMP99ComplexRadiusScalar.repro.lean",
     "tmp/CMP99ComplexInverseRadius.repro.lean",
     "tmp/BalabanCMP99ComplexInverseRadius.draft.lean",
     "tmp/BalabanCMP99ComplexInverseRadiusAudit.draft.lean",
@@ -88,9 +89,10 @@ def render(source_sha: str, runner_rev: str) -> str:
     return f'''#!/usr/bin/env python3
 """Pinned Colab gate for the complex forced-recursion prerequisites.
 
-This diagnostic compiles the inverse-radius repro, the source theorem and its
-audit, then the all-orientation small-field producer and its audit.  It is
-stop-on-first-error and does not promote source or move ``20/41``.
+This diagnostic compiles the closed-radius scalar repro, the inverse-radius
+repro, the source theorem and its audit, then the all-orientation small-field
+producer and its audit.  It is stop-on-first-error and does not promote source
+or move ``20/41``.
 """
 
 import hashlib
@@ -143,6 +145,15 @@ runner.QUEUE = [
         ["mkdir", "-p", ".lake/build/lib/lean/YangMills/RG",
          ".lake/build/lib/lean/tmp"],
         None,
+    ),
+    (
+        "complex_radius_scalar_repro",
+        [
+            "lake", "env", "lean",
+            "tmp/CMP99ComplexRadiusScalar.repro.lean", "-o",
+            ".lake/build/lib/lean/tmp/CMP99ComplexRadiusScalar.repro.olean",
+        ],
+        2,
     ),
     (
         "complex_inverse_radius_repro",
