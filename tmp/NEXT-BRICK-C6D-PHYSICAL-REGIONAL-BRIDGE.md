@@ -1327,15 +1327,15 @@ still does not identify those paths with the source Ubar contours.  The
 scratch hashes are:
 
 ```text
-DC8B4021877AF05D78C116CB4319AEF08B5A183CDC1EDDC6777CEDCA811D2990
+51909E08C4471D658B3E0F13AA0528480F7E199E70739E932DF9A412DC500AFA
   tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadius.draft.lean
-621E804FC0F10E62E0AC7140609BAA268B3169A8668C2DB94EA4D97468C7286A
+9167F0F8C0ECF3AD2988198DBE42B60AE2580C9B960B35A5ACD24883232F1DF7
   tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadiusAudit.draft.lean
 F590776708CBC62F36EFBC501A871DAE3F88C5BC4BAC53D7EFD06FFD448E8EB2
   tmp/C6D-COMPLEX-WILSON-LINE-RADIUS-DRAFT-PATHS.txt
 ```
 
-The lightweight gates pass for `2/2` files with `8/8` declaration/readout
+The lightweight gates pass for `2/2` files with `10/10` declaration/readout
 coverage.  These theorems are still uncompiled scratch and do not yet install
 the four source contours into the complex Ubar `hdev` field.
 
@@ -1355,14 +1355,17 @@ lemma proves that all four paths, including the reversed fourth path, obey the
 same `d * (M - 1)` source envelope.  Static-only hashes are:
 
 ```text
-C0174643F71AFD11FFAFB281B0FFC4C6F171A19DA8410CC5D768490C8AF0B6C6
+41F7DA89C850F93DCA97131559951A9348A893AB51E8372274511C30C998D635
   tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.draft.lean
-2C14AE02293417F4060710808B6289355B2D4B677184094A6153C05543083601
+237C493E297B392C2E1D526E72DBA142379858142E561583E1B3C162C9FAB648
   tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.draft.lean
 2A881FA25EC08F733B0E17E1CE04317FCD24736F2BBF6969D1A8FD4D4C559088
   tmp/C6D-COMPLEX-UBAR-DEVIATION-RADIUS-DRAFT-PATHS.txt
 ```
 
-The exact overlay-text gate passes for `2/2` files and the audit surface is
-`5/5`.  This remains static evidence only: no `.olean` or axiom-oracle verdict
+The common length envelope is now consumed to produce a single scalar radius
+independent of `b,x`; the remaining scalar gate is its comparison with the
+named no-winding threshold.  The exact overlay-text gate passes for `2/2`
+files and the audit surface is `7/7`.  This remains static evidence only: no
+`.olean` or axiom-oracle verdict
 exists, and no terminal field or scalar window is discharged.

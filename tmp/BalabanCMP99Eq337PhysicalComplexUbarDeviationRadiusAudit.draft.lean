@@ -10,3 +10,5 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.cmp99SourceComplexLocalizedUbarDeviation_coe_eq_fourPathProduct
 #print axioms YangMills.RG.norm_cmp99SourceComplexLocalizedUbarDeviation_le_fourPathBudget
 #print axioms YangMills.RG.norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le
+#print axioms YangMills.RG.cmp99Eq337SourceComplexUbarUniformDeviationRadius
+#print axioms YangMills.RG.norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le_uniformRadius

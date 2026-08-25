@@ -97,6 +97,47 @@ theorem norm_fourSpecialLinearWilsonLineProduct_sub_one_le
   · intro i
     exact norm_cmp99SpecialLinearWilsonLine_le V (paths i) r hr hlink
 
+/-- A single length envelope for all four paths gives a scalar complex Ubar
+radius independent of the individual path family. -/
+def cmp99ComplexFourWilsonUniformDeviationBudget
+    (L : ℕ) (r : ℝ) : ℝ :=
+  cmp99ComplexFourFactorDeviationBudget
+    (fun _ ↦ (L : ℝ) * r * (1 + r) ^ L)
+    (fun _ ↦ (1 + r) ^ L)
+
+/-- Monotonicity from literal path lengths to the common scalar envelope.
+The proof keeps both the path-deviation and path-norm contributions visible. -/
+theorem cmp99ComplexFourWilsonPathDeviationBudget_le_uniform
+    (paths : Fin 4 → List (ConcreteEdge d N))
+    (L : ℕ) (r : ℝ) (hr : 0 ≤ r)
+    (hlen : ∀ i, (paths i).length ≤ L) :
+    cmp99ComplexFourWilsonPathDeviationBudget paths r ≤
+      cmp99ComplexFourWilsonUniformDeviationBudget L r := by
+  have hbase : 1 ≤ 1 + r := by linarith
+  have hpow (i : Fin 4) :
+      (1 + r) ^ (paths i).length ≤ (1 + r) ^ L :=
+    pow_le_pow_right₀ hbase (hlen i)
+  have hdelta (i : Fin 4) :
+      ((paths i).length : ℝ) * r * (1 + r) ^ (paths i).length ≤
+        (L : ℝ) * r * (1 + r) ^ L := by
+    have hcast : ((paths i).length : ℝ) ≤ (L : ℝ) := by
+      exact_mod_cast hlen i
+    gcongr
+  unfold cmp99ComplexFourWilsonPathDeviationBudget
+  unfold cmp99ComplexFourWilsonUniformDeviationBudget
+  unfold cmp99ComplexFourFactorDeviationBudget
+  gcongr
+  · exact hdelta 0
+  · exact hpow 1
+  · exact hpow 2
+  · exact hpow 3
+  · exact hdelta 1
+  · exact hpow 2
+  · exact hpow 3
+  · exact hdelta 2
+  · exact hpow 3
+  · exact hdelta 3
+
 /-- The literal Eq. (3.37) background satisfies the same named radius on
 both orientations of every fine link. -/
 theorem norm_cmp99Eq337PhysicalComplexPerturbedBackground_apply_sub_one_le

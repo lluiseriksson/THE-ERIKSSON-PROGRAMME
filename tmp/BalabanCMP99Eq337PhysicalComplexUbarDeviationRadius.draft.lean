@@ -125,6 +125,51 @@ theorem norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le
     norm_cmp99Eq337PhysicalComplexPerturbedBackground_apply_sub_one_le
       U A eta epsilonU rA hA hsmall hU
 
+/-- The literal scalar radius after replacing all four source-contour lengths
+by the common printed one-block envelope. -/
+def cmp99Eq337SourceComplexUbarUniformDeviationRadius
+    (d M : ℕ) (r : ℝ) : ℝ :=
+  cmp99ComplexFourWilsonUniformDeviationBudget (d * (M - 1)) r
+
+/-- Fully source-facing uniform Ubar-deviation producer.  The output no longer
+depends on the selected coarse bond or fine site. -/
+theorem norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le_uniformRadius
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d (M * N') Nc)
+    (eta epsilonU rA : ℝ)
+    (hr : 0 ≤
+      cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA)
+    (hA : ∀ b, ‖A b‖ ≤ rA)
+    (hsmall : |eta| *
+      (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2)
+    (hU : ∀ b, ‖(U (positiveEdgeOfPhysicalBond b) :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonU)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) :
+    ‖(cmp99SourceComplexLocalizedUbarDeviation
+        (cmp99Eq337PhysicalComplexPerturbedBackground U A eta) b x :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+      cmp99Eq337SourceComplexUbarUniformDeviationRadius d M
+        (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+          Nc epsilonU eta rA) := by
+  calc
+    _ ≤ cmp99ComplexFourWilsonPathDeviationBudget
+        (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x)
+        (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+          Nc epsilonU eta rA) :=
+      norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le
+        U A eta epsilonU rA hr hA hsmall hU b x
+    _ ≤ cmp99Eq337SourceComplexUbarUniformDeviationRadius d M
+        (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+          Nc epsilonU eta rA) := by
+      exact cmp99ComplexFourWilsonPathDeviationBudget_le_uniform
+        (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x)
+        (d * (M - 1))
+        (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+          Nc epsilonU eta rA) hr
+        (cmp99SourceComplexUbarFourPaths_length_le hd hM b x hx)
+
 end
 
 end YangMills.RG
