@@ -97,7 +97,7 @@ def main() -> int:
         if verifier_result.get("status") != "C6D_ROOT_TRANSITIVE_AXIOMS_OK":
             raise RuntimeError("C6D_EVIDENCE_VERIFIER_STATUS_MISMATCH")
         manifest = {
-            "status": "C6D_V6_EVIDENCE_PACKAGE_OK",
+            "status": "C6D_V7_EVIDENCE_PACKAGE_OK",
             "source_sha": verifier_result["source_sha"],
             "runner_revision": verifier_result["runner_revision"],
             "runner_hashes": runner_hashes,
@@ -128,7 +128,7 @@ def main() -> int:
         raise
 
     print(
-        "C6D_V6_EVIDENCE_PACKAGE_OK "
+        "C6D_V7_EVIDENCE_PACKAGE_OK "
         f"destination={destination} manifest_sha256={sha256(destination / 'manifest.json')} "
         f"notebook_sha256={sha256(destination / 'executed-c6d-v7.ipynb')}"
     )
