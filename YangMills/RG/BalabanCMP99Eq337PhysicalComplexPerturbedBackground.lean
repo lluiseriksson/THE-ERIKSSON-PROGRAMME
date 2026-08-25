@@ -284,7 +284,7 @@ theorem cmp99SUNLieComplexCoordToSlLM_surjective :
 coordinate fibre and Mathlib's traceless complex matrices.  Its bijectivity
 is the explicit skew decomposition above, not a dimension argument. -/
 noncomputable def cmp99SUNLieComplexCoordSlEquiv (Nc : ℕ) :
-    SUNLieComplexCoord Nc ≃₁[ℂ]
+    SUNLieComplexCoord Nc ≃ₗ[ℂ]
       LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ :=
   LinearEquiv.ofBijective (cmp99SUNLieComplexCoordToSlLM Nc)
     ⟨fun _ _ h => cmp99SUNLieComplexCoordMatrixLM_injective
