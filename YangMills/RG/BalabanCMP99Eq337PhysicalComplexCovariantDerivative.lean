@@ -79,8 +79,8 @@ theorem cmp99SUNLieComplexCoordImagPart_smul
       c.im • cmp99SUNLieComplexCoordRealPart Z +
         c.re • cmp99SUNLieComplexCoordImagPart Z := by
   ext a
-  simp [cmp99SUNLieComplexCoordImagPart, Complex.mul_im]
-  ring
+  change (c * Z a).im = c.im * (Z a).re + c.re * (Z a).im
+  rw [Complex.mul_im]
 
 /-- Canonical complex-linear extension of the physical adjoint action of
 one compact background link. -/
