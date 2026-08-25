@@ -114,7 +114,10 @@ def test_small_field_radius_keeps_both_physical_costs_literal() -> None:
     start = text.index("def cmp99SourceComplexUbarNextOrientedLinkRadius")
     end = text.index("\n\nvariable {d M N'", start)
     oriented = text[start:end]
-    assert "let q := cmp99SourceComplexUbarNextLinkRadius M r B" in oriented
+    assert (
+        "let q := cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B"
+        in oriented
+    )
     assert "q / (1 - q)" in oriented
 
 
@@ -146,6 +149,9 @@ def test_negative_orientation_pays_the_complex_inverse_radius() -> None:
     )
     end = text.index("\n\n/-- One generic complex source RG step", start)
     theorem = text[start:end]
-    assert "(hq1 : cmp99SourceComplexUbarNextLinkRadius M r B < 1)" in theorem
+    assert (
+        "(hq1 : cmp99SourceComplexUbarNextLinkRadius (Nc := Nc) M r B < 1)"
+        in theorem
+    )
     assert "norm_cmp99SpecialLinear_inv_sub_one_le_div" in theorem
     assert "norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le" in theorem
