@@ -98,7 +98,8 @@ theorem CMP99Eq335PhysicalRegularityClass.norm_localizedPhysicalPerturbedBackgro
   let u := cmp99ExtendRegularCubeLocalGauge W.cube W.localGauge
   let A1 := cmp99Eq337PhysicalGaugeTransformRealOneCochain u A
   have hinside :=
-    Dsource.retainedFineReadCarrierInsideRegularCube C regions
+    CMP99Eq335Corollary36SourceRegionDictionary.
+      retainedFineReadCarrierInsideRegularCube C Dsource regions
   have hqRegion : q.1 ∈ S.global.regions C.scaleIndex.castSucc :=
     C.carrier_subset_globalRegion (hinside q hq).1
   have Dtransported : CMP99Eq337PhysicalRealPerturbationDomain (S := S)
