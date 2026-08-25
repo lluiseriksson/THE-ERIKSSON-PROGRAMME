@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GENERATOR = ROOT / "tmp" / "generate_eq337_complex_ubar_radius_notebook.py"
 CURRENT_NOTEBOOK = ROOT / "scripts" / "colab_eq337_complex_ubar_radius_validation.ipynb"
 COORDINATE_NOTEBOOK = ROOT / "scripts" / "colab_eq337_complex_coordinate_validation.ipynb"
+C6D_NOTEBOOK = ROOT / "scripts" / "colab_c6d_localized_retained_tower_cold_validation.ipynb"
 
 
 def load_generator():
@@ -46,3 +47,12 @@ def test_reproduces_published_coordinate_notebook_semantics() -> None:
     published = json.loads(COORDINATE_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
     assert generated["cells"][0]["id"] == "gate-e88d83c8636fe3b2"
+
+
+def test_c6d_launcher_has_stable_transport_bound_cell_id() -> None:
+    notebook = json.loads(C6D_NOTEBOOK.read_text(encoding="utf-8"))
+    assert len(notebook["cells"]) == 1
+    cell = notebook["cells"][0]
+    assert cell["id"] == "gate-96cc53a1d3f27483"
+    source = "".join(cell["source"])
+    assert 'RUNNER_SHA256 = "96cc53a1d3f27483225d034b0b8a675ce24ee2dd1fedaacc3ab97372450838a7"' in source
