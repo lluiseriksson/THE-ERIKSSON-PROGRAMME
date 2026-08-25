@@ -51,6 +51,9 @@ def write_notebook(tmp_path: Path, transcript: str) -> Path:
 
 def synthetic_transcript(verifier, bad_axiom: bool = False) -> str:
     lines = [
+        f"RUNNER_REV={verifier.RUNNER_REV}",
+        "LEAN_AXIOM_READOUT_COVERAGE_OK files=34 declarations=92 readouts=92",
+        "STAGE=c6d_axiom_readout_coverage EXIT=0 SECONDS=0.1",
         'STAGE=c6d_localized_retained_tower_root CMD=["lake", "build", "YangMillsCore"]'
     ]
     for index, declaration in enumerate(expected_declarations(verifier)):
@@ -94,6 +97,7 @@ def test_complete_root_transcript_passes(tmp_path: Path, monkeypatch) -> None:
     result = json.loads(output.read_text(encoding="utf-8"))
     assert result["status"] == "C6D_ROOT_TRANSITIVE_AXIOMS_OK"
     assert result["expected_declarations"] == 92
+    assert result["runner_revision"] == verifier.RUNNER_REV
 
 
 def test_root_forbidden_axiom_fails(tmp_path: Path, monkeypatch) -> None:

@@ -24,6 +24,7 @@ from pathlib import Path
 
 
 SOURCE_SHA = "b91d42630efb15f32d4b4ecd242a33238926d4de"
+RUNNER_REV = "c6d-localized-retained-tower-cold-v5"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 PRE_MARKER = (
@@ -106,6 +107,25 @@ def main() -> int:
                 elif isinstance(text, str):
                     chunks.append(text)
         transcript = "".join(chunks)
+        if transcript.count(f"RUNNER_REV={RUNNER_REV}") != 1:
+            raise RuntimeError(
+                "RUNNER_REV_COUNT="
+                f"{transcript.count(f'RUNNER_REV={RUNNER_REV}')} WANT=1"
+            )
+        coverage_marker = (
+            "LEAN_AXIOM_READOUT_COVERAGE_OK "
+            "files=34 declarations=92 readouts=92"
+        )
+        if transcript.count(coverage_marker) != 1:
+            raise RuntimeError(
+                f"COVERAGE_MARKER_COUNT={transcript.count(coverage_marker)} WANT=1"
+            )
+        coverage_exit = re.findall(
+            r"STAGE=c6d_axiom_readout_coverage EXIT=(\d+) SECONDS=([0-9.]+)",
+            transcript,
+        )
+        if len(coverage_exit) != 1 or coverage_exit[0][0] != "0":
+            raise RuntimeError(f"COVERAGE_EXIT_RECORD={coverage_exit!r} WANT_ZERO")
         if transcript.count("FINAL_STATUS=PASS") != 1:
             raise RuntimeError(
                 f"FINAL_PASS_COUNT={transcript.count('FINAL_STATUS=PASS')} WANT=1"
@@ -218,6 +238,7 @@ def main() -> int:
     result = {
         "status": "C6D_ROOT_TRANSITIVE_AXIOMS_OK",
         "source_sha": SOURCE_SHA,
+        "runner_revision": RUNNER_REV,
         "module_count": len(MODULES),
         "expected_declarations": len(expected),
         "observed_declaration_names": len(observed),
