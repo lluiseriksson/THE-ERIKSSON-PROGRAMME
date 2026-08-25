@@ -574,6 +574,32 @@ following ordered list.
    reconstruction, a free background family, or a premise named after the
    desired deviation estimate.
 
+   The remaining one-scale estimate is now split into a finite, falsifiable
+   chain rather than one free `hdev` field:
+
+   1. from the literal amplitude bound on `A'`, prove a near-one radius for
+      each oriented link `exp(i eta A') U`; the compact baseline contributes
+      its already named local regularity radius and the exponential
+      contributes the sealed `norm_exp_smul_sub_one_le_two_mul` term;
+   2. identify the three contour holonomies and inverse coarse transport with
+      the single concatenated word `cmp98SourceFourContourEdges`; the group
+      identity `wilsonLine_reverse_list` supplies the inverse, so no
+      complex-adjoint identity is introduced;
+   3. convert the link radii along that one exact word into the literal
+      `cmp99SourceComplexLocalizedUbarDeviation` radius with
+      `norm_orderedOnePlusProduct_sub_one_le`, preserving the source path
+      length and avoiding both a periodic-volume factor and an artificial
+      four-factor constant;
+   4. discharge the Mercator-ball and no-winding gates from that derived
+      radius, then form the trace-zero normalized logarithmic exponent; and
+   5. pull that exponent back through the explicit `sl(N,C)` coordinate
+      equivalence.  The resulting coordinate is the source `Q_j`; it is an
+      output of the preceding four steps, never an input family.
+
+   Each radius in this list is scale-local.  Uniformity in `j` remains the
+   separate Proposition-4 composition problem; proving one link/path radius
+   must not be reported as the uniform analytic recursion.
+
    A declaration-level reuse audit now fixes the first implementation split.
    `UbarDeviation`, `UbarDeviation_gaugeAct` and the path/basepoint geometry in
    `Ubar.lean` are genuinely group-generic and may be specialized to
