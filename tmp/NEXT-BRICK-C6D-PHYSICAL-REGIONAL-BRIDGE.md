@@ -1146,3 +1146,34 @@ uniform deviation bound remain downstream work.  Materializer
 complex perturbed-background source/audit pair still carries PRE-VALIDATION.
 Thus this static boundary cannot be stacked on an unsealed coordinate gate.
 It moves neither `20/41` nor window 15 and does not instantiate `TermSource`.
+
+#### Exact producer still required for `hdev`
+
+Static inspection rules out reusing the sealed special-unitary linear path
+estimate unchanged.  The Eq. (3.37) fine background takes values in
+`SL(N,C)`, so its links are determinant one but are not unitary off the real
+slice.  In particular, `norm_wilsonLine_sub_one_le_length_mul` obtains its
+linear path-length constant from unitary contractivity and is not a producer
+for the complex path product.
+
+The missing producer therefore has three explicit stages:
+
+1. derive one oriented-link radius for
+   `cmp99Eq337PhysicalComplexPerturbedBackground` from the physical link
+   radius and the printed exponential perturbation, including the negative
+   orientation rather than importing unitary inversion;
+2. rewrite each literal Wilson line as the ordered product of its matrix
+   deviations and apply the already sealed generic
+   `norm_orderedOnePlusProduct_sub_one_le`, retaining its visible
+   `length * r * (1+r)^length` cost; and
+3. combine the three contour products and the straight base product in the
+   literal four-factor `UbarDeviation`, then discharge the single comparison
+   with `B.delta`.
+
+This leaves a source-smallness inequality on the physical background and the
+Eq. (3.37) complex coordinate norm as the genuine analytic inputs.  It does
+not accept the finished `hdev`, a preselected complex background or a free
+path-product bound.  The producer must cite the exact contour length lemmas
+and the same source read carrier as the sealed real-slice deviation theorem;
+no global fine-link smallness or unitarity outside the real slice may be
+introduced.
