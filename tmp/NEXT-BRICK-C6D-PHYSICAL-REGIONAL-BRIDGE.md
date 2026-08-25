@@ -550,6 +550,41 @@ following ordered list.
    it may not be replaced by an existing reconstruction or a free background
    family.
 
+   A declaration-level reuse audit now fixes the first implementation split.
+   `UbarDeviation`, `UbarDeviation_gaugeAct` and the path/basepoint geometry in
+   `Ubar.lean` are genuinely group-generic and may be specialized to
+   `Matrix.SpecialLinearGroup (Fin Nc) C`.  By contrast,
+   `cmp99PhysicalUbarBlockOfDeviationBudget` is essentially `SU(N)`-specific:
+   it closes the exponent through skew-adjointness and packages the result in
+   `SUN Nc`.  The analytic constructor must not coerce that physical block.
+
+   The replacement is finite.  First give `SL(N,C)` its defining
+   `MatrixRealization` through `Matrix.SpecialLinearGroup.toGL`.  Then prove
+   directly that `det D = 1`, `norm (D-1) < 1` and the existing no-winding
+   budget imply `trace (nearLog (D-1)) = 0`.  This uses
+   `det(exp X) = exp(trace X)`, `Complex.exp_eq_one_iff`, and the already
+   sealed trace-norm bound; unitarity is neither true nor needed.  A weighted
+   real-mass sum of those logarithms therefore exponentiates into `SL(N,C)`.
+   Only after this one-block closure may the literal path deviations be
+   assembled recursively.
+
+   That algebraic boundary is now written, but not compiler-verified, as:
+
+   ```text
+   tmp/BalabanCMP99ComplexUbarSpecialLinear.draft.lean
+   tmp/BalabanCMP99ComplexUbarSpecialLinearAudit.draft.lean
+   tmp/CMP99-COMPLEX-UBAR-SPECIAL-LINEAR-DRAFT-PATHS.txt
+   ```
+
+   Its exact two-file overlay passes the repository textual guard
+   (`LEAN_OVERLAY_TEXT_OK files=2`, one PRE-VALIDATION marker per file).  The
+   draft exposes nine audit readouts and claims no `.olean`, gauge-background
+   recursion or source radius producer.  The next module after it is therefore
+   not another abstract `Ubar`: it is the positive-bond localized
+   `SL(N,C)` block built from the existing group-generic deviation plus an
+   analytic small-field/no-winding certificate, followed by the forced
+   finite next-background recursion.
+
    Acquisition correction, 2026-08-24: the authoritative DOI is
    `10.1007/BF01211042`.  The earlier catalog DOI `10.1007/BF01205787` belongs
    to an unrelated article in CMP 98 and is retained only as incident
