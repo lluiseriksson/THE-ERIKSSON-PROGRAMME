@@ -12,6 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 VERIFIER = (
     ROOT / "tmp" / "verify_eq337_complex_forced_recursion_prereq_evidence.py"
 )
+PACKAGER = (
+    ROOT / "tmp" / "package_eq337_complex_forced_recursion_prereq_evidence.py"
+)
 REVISION = "complex-recursion-prereq-evidence-test-v1"
 RUNNER_HASH = "a" * 64
 
@@ -57,7 +60,14 @@ def synthetic_notebook(verifier, source_sha: str, *, forbidden: bool = False) ->
     for index, declaration in enumerate(declarations):
         axioms = "sorryAx" if forbidden and index == 0 else "propext, Quot.sound"
         transcript.append(f"'{declaration}' depends on axioms: [{axioms}]\n")
-    transcript.extend(["FINAL_STATUS=PASS\n", "LAUNCHER_EXIT=0\n"])
+    transcript.extend(
+        [
+            "EVIDENCE_SHA256=" + "b" * 64 + "\n",
+            "EVIDENCE_ARCHIVE_SHA256=" + "c" * 64 + "\n",
+            "FINAL_STATUS=PASS\n",
+            "LAUNCHER_EXIT=0\n",
+        ]
+    )
     return {
         "cells": [
             {
@@ -112,6 +122,47 @@ def test_verifier_accepts_the_complete_exact_transcript(tmp_path: Path) -> None:
     assert payload["status"] == "EQ337_COMPLEX_RECURSION_PREREQ_EVIDENCE_OK"
     assert payload["source_sha"] == source_sha
     assert payload["expected_declarations"] == 13
+
+
+def test_packager_binds_the_verified_notebook_and_runner_hashes(
+    tmp_path: Path,
+) -> None:
+    verifier = load_verifier()
+    source_sha = head()
+    notebook = tmp_path / "executed.ipynb"
+    notebook.write_text(
+        json.dumps(synthetic_notebook(verifier, source_sha)), encoding="utf-8"
+    )
+    destination = tmp_path / "package"
+    packaged = subprocess.run(
+        [
+            sys.executable,
+            str(PACKAGER),
+            "--notebook",
+            str(notebook),
+            "--destination",
+            str(destination),
+            "--source-sha",
+            source_sha,
+            "--runner-rev",
+            REVISION,
+        ],
+        cwd=ROOT,
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    assert packaged.returncode == 0, packaged.stderr
+    manifest = json.loads((destination / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["status"] == "EQ337_COMPLEX_RECURSION_PREREQ_PACKAGE_OK"
+    assert manifest["source_sha"] == source_sha
+    assert manifest["runner_revision"] == REVISION
+    assert manifest["runner_hashes"] == {
+        "EVIDENCE_SHA256": "B" * 64,
+        "EVIDENCE_ARCHIVE_SHA256": "C" * 64,
+    }
+    assert (destination / "SHA256SUMS").is_file()
 
 
 def test_verifier_rejects_a_forbidden_axiom(tmp_path: Path) -> None:
