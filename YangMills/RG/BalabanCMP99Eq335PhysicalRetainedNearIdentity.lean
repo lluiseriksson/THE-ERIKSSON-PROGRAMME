@@ -53,7 +53,9 @@ def CMP99Eq335PhysicalRegularityWitness.transformedBackground
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 : ℝ}
     (W : CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1) :
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1) :
     PhysicalGaugeBackground 4 (L * N') Nc :=
   GaugeConfig.gaugeAct
     (cmp99ExtendRegularCubeLocalGauge W.cube W.localGauge) U
@@ -64,7 +66,9 @@ theorem CMP99Eq335PhysicalRegularityWitness.abs_eta_mul_amplitudeMajorant_le
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 : ℝ}
     (W : CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1) :
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1) :
     |eta| * cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0 ≤ alpha1 := by
   have hL : (1 : ℝ) ≤ (L : ℝ) := by
     exact_mod_cast (NeZero.one_le : 1 ≤ L)
@@ -101,7 +105,9 @@ theorem CMP99Eq335PhysicalRegularityWitness.retainedFineReadBonds_nearIdentity
     {U : PhysicalGaugeBackground 4 (L * N') Nc}
     {eta alpha0 alpha1 : ℝ}
     (W : CMP99Eq335PhysicalRegularityWitness
-      (S := S) (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0 alpha1)
     (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
     (hinside : CMP99Eq335RetainedFineReadCarrierInsideRegularCube
       (Nc := Nc) regions W.cube)
