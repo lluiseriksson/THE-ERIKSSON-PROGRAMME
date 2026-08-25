@@ -70,7 +70,8 @@ theorem cmp99SUNLieComplexCoordRealPart_smul
       c.re • cmp99SUNLieComplexCoordRealPart Z -
         c.im • cmp99SUNLieComplexCoordImagPart Z := by
   ext a
-  simp [cmp99SUNLieComplexCoordRealPart, Complex.mul_re]
+  change (c * Z a).re = c.re * (Z a).re - c.im * (Z a).im
+  rw [Complex.mul_re]
 
 theorem cmp99SUNLieComplexCoordImagPart_smul
     (c : ℂ) (Z : SUNLieComplexCoord Nc) :
