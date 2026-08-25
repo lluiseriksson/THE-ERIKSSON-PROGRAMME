@@ -16,7 +16,7 @@ ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99ComplexInverseRadius", 1),
-    ("BalabanCMP99ComplexUbarSmallFieldPropagation", 12),
+    ("BalabanCMP99ComplexUbarSmallFieldPropagation", 13),
 )
 SOURCE_PATHS = (
     "tmp/CMP99ComplexInverseRadius.repro.lean",
@@ -181,7 +181,7 @@ def main() -> int:
             )
         declarations_by_module[module] = declarations
         expected.extend(declarations)
-    if len(expected) != 13 or len(set(expected)) != 13:
+    if len(expected) != 14 or len(set(expected)) != 14:
         raise RuntimeError(
             f"EXPECTED_DECLARATION_SCOPE={len(expected)}/{len(set(expected))}"
         )

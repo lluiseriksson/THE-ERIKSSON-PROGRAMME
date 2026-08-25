@@ -179,6 +179,46 @@ noncomputable def cmp99SourceComplexUbarNoWindingBudget
       cmp99Eq337SourceComplexUbarUniformDeviationRadius d M r := by
   rfl
 
+/-- The three scalar gates needed by one complex recursive step are jointly
+inhabited.  This zero-radius witness is a vacuity check for the future scalar
+chain; it is not a claim that the physical Eq. (3.37) input has zero radius. -/
+theorem exists_cmp99SourceComplexUbar_zero_step_gates
+    (d M Nc : ℕ) [NeZero Nc] :
+    ∃ hnoWinding :
+        cmp99Eq337SourceComplexUbarUniformDeviationRadius d M 0 <
+          cmp99UbarNoWindingThreshold Nc,
+      cmp99UbarLogRadius
+          (cmp99SourceComplexUbarNoWindingBudget
+            d M Nc 0 hnoWinding) < 1 ∧
+      cmp99SourceComplexUbarNextLinkRadius M 0
+          (cmp99SourceComplexUbarNoWindingBudget
+            d M Nc 0 hnoWinding) < 1 ∧
+      cmp99SourceComplexUbarNextOrientedLinkRadius M 0
+          (cmp99SourceComplexUbarNoWindingBudget
+            d M Nc 0 hnoWinding) = 0 := by
+  have hthreshold : 0 < cmp99UbarNoWindingThreshold Nc := by
+    rw [cmp99UbarNoWindingThreshold]
+    positivity
+  have hzero :
+      cmp99Eq337SourceComplexUbarUniformDeviationRadius d M 0 = 0 := by
+    simp [cmp99Eq337SourceComplexUbarUniformDeviationRadius,
+      cmp99ComplexFourWilsonUniformDeviationBudget,
+      cmp99ComplexFourFactorDeviationBudget]
+  have hnoWinding :
+      cmp99Eq337SourceComplexUbarUniformDeviationRadius d M 0 <
+        cmp99UbarNoWindingThreshold Nc := by
+    simpa [hzero] using hthreshold
+  refine ⟨hnoWinding, ?_, ?_, ?_⟩
+  · simp [cmp99UbarLogRadius,
+      cmp99SourceComplexUbarNoWindingBudget_delta, hzero]
+  · simp [cmp99SourceComplexUbarNextLinkRadius, cmp99UbarExpRadius,
+      cmp99UbarLogRadius, cmp99SourceComplexUbarNoWindingBudget_delta,
+      hzero]
+  · simp [cmp99SourceComplexUbarNextOrientedLinkRadius,
+      cmp99SourceComplexUbarNextLinkRadius, cmp99UbarExpRadius,
+      cmp99UbarLogRadius, cmp99SourceComplexUbarNoWindingBudget_delta,
+      hzero]
+
 /-- One literal complex source Ubar block is small at the explicit next
 radius.  The two terms in the conclusion are respectively the exponential
 factor times the coarse-factor norm and the coarse-factor deviation. -/

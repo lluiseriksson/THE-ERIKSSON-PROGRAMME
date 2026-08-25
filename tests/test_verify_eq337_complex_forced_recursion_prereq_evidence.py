@@ -56,7 +56,7 @@ def synthetic_notebook(verifier, source_sha: str, *, forbidden: bool = False) ->
         audit_path = f"tmp/{module}Audit.draft.lean"
         audit = verifier.git_blob(ROOT, source_sha, audit_path).decode()
         declarations.extend(verifier.PRINT_RE.findall(audit))
-    assert len(declarations) == 13
+    assert len(declarations) == 14
     for index, declaration in enumerate(declarations):
         axioms = "sorryAx" if forbidden and index == 0 else "propext, Quot.sound"
         transcript.append(f"'{declaration}' depends on axioms: [{axioms}]\n")
@@ -121,7 +121,7 @@ def test_verifier_accepts_the_complete_exact_transcript(tmp_path: Path) -> None:
     payload = json.loads(result.stdout)
     assert payload["status"] == "EQ337_COMPLEX_RECURSION_PREREQ_EVIDENCE_OK"
     assert payload["source_sha"] == source_sha
-    assert payload["expected_declarations"] == 13
+    assert payload["expected_declarations"] == 14
 
 
 def test_packager_binds_the_verified_notebook_and_runner_hashes(
