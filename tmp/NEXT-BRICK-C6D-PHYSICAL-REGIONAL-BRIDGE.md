@@ -1268,9 +1268,37 @@ The lightweight gates pass at `2/2` files and `3/3` declaration/readout
 coverage.  This is textual/static evidence only; the pair is not promoted,
 compiled or oracle-checked.
 
-The three named contour length lemmas and the straight-path length then
-produce the four explicit summands consumed by
-`norm_UbarDeviationLogArg_le_four_factors`.  The only remaining scalar gate
-at this layer is that their literal sum is at most `B.delta`; neither a free
-path-product estimate nor a global fine-link hypothesis is an accepted
-substitute.
+The physical `SU(N)` endpoint
+`norm_UbarDeviationLogArg_le_four_factors` is **not** a valid consumer for
+the complex continuation: its four bare summands use operator norm one of
+unitary factors.  The literal `SL(N,C)` paths are not unitary.  The replacement
+is the PRE-VALIDATION pair
+
+```text
+tmp/BalabanCMP99ComplexFourFactorDeviation.draft.lean
+tmp/BalabanCMP99ComplexFourFactorDeviationAudit.draft.lean
+```
+
+which specializes `norm_fourMatrixProduct_sub_le_heterogeneous` against four
+identity matrices and retains the three preceding complex factor norms in
+every telescoping summand.  The named contour lengths must therefore feed
+both path deviations and path norm budgets (eventually the visible
+`length * r * (1+r)^length` and `(1+r)^length` bounds).  The fourth factor
+still requires the exact inverse-coarse-path bridge.  Only after those gates
+does the resulting heterogeneous scalar budget face `B.delta`; neither the
+unitary four-summand lemma, a free path-product estimate nor a global
+fine-link hypothesis is an accepted substitute.
+
+Static-only hashes for this PRE-VALIDATION pair are:
+
+```text
+039B6D203ABCB3F834CE7C24B2A8E0F5B8E1F9154A1926371EE6E47C0ED4286F
+  tmp/BalabanCMP99ComplexFourFactorDeviation.draft.lean
+92839A61D39512E60EDFCF79925F80AADDC950BE4EC7056B5E067E532092E751
+  tmp/BalabanCMP99ComplexFourFactorDeviationAudit.draft.lean
+95516C3FCCE3BF942B6A32EEDE80F74B47160389DEDB63A5B39C70BFF4FDFC9B
+  tmp/C6D-COMPLEX-FOUR-FACTOR-DEVIATION-DRAFT-PATHS.txt
+```
+
+The overlay-text and import-prefix gates pass for `2/2` files and the audit
+surface is `2/2`.  This is not compiler or oracle evidence.
