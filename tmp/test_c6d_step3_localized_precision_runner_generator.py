@@ -56,6 +56,7 @@ def main() -> int:
     assert "check_lean_axiom_readout_coverage.py" in text
     assert "c6d-step3-localized-precision-v1" in text
     assert "YangMillsCore" in text
+    assert "files.download(str(runner.ARCHIVE))" in text
 
     original = globals_["blob"]
     first = module["source_paths"]()[0]

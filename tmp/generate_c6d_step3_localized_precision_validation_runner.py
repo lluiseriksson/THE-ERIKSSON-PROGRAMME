@@ -241,7 +241,14 @@ if __name__ == "__main__":
         )
     except ImportError:
         pass
-    raise SystemExit(runner.main())
+    runner_exit = runner.main()
+    try:
+        from google.colab import files
+        files.download(str(runner.ARCHIVE))
+        print("EVIDENCE_DOWNLOAD_REQUESTED=1", flush=True)
+    except Exception as error:
+        print("EVIDENCE_DOWNLOAD_ERROR=" + repr(error), flush=True)
+    raise SystemExit(runner_exit)
 '''
 
 
