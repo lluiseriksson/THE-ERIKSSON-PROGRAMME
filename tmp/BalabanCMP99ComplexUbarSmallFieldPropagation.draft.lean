@@ -392,7 +392,7 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
           (@cmp99SourceComplexLocalizedUbarBlock
             d M N' Nc instD instM instN' instNc background B hdev (y, mu)).property,
           Ring.inverse_one, one_smul]
-      rw [← hinv]
+      rw [Matrix.SpecialLinearGroup.coe_inv, ← hinv]
       simpa [q, cmp99SourceComplexUbarNextOrientedLinkRadius] using
         norm_cmp99SpecialLinear_inv_sub_one_le_div
           (@cmp99SourceComplexLocalizedUbarBlock
