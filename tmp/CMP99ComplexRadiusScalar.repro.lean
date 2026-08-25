@@ -20,6 +20,7 @@ theorem cmp99ComplexRadiusScalar_expRadius_le_four_mul
     theta + theta ^ 2 / (1 - theta) ≤ 4 * delta := by
   dsimp only
   let theta := delta / (1 - delta)
+  change theta + theta ^ 2 / (1 - theta) ≤ 4 * delta
   have hdenDelta : 0 < 1 - delta := by linarith
   have htheta_nonneg : 0 ≤ theta := by
     exact div_nonneg hdelta_nonneg hdenDelta.le
