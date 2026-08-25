@@ -54,6 +54,41 @@ def cmp99ComplexClosedRadiusLinkCoefficient (L M : ℕ) (R : ℝ) : ℝ :=
 def cmp99ComplexClosedRadiusGrowthFactor (L M : ℕ) (R : ℝ) : ℝ :=
   max 1 (2 * cmp99ComplexClosedRadiusLinkCoefficient L M R)
 
+/-- The radius obtained after `k` exact complex source steps. -/
+def cmp99ComplexClosedRadiusAt (L M : ℕ) (r0 : ℝ) : ℕ → ℝ
+  | 0 => r0
+  | k + 1 => cmp99ComplexClosedRadiusNext L M
+      (cmp99ComplexClosedRadiusAt L M r0 k)
+
+@[simp] theorem cmp99ComplexClosedRadiusAt_zero
+    (L M : ℕ) (r0 : ℝ) :
+    cmp99ComplexClosedRadiusAt L M r0 0 = r0 := rfl
+
+@[simp] theorem cmp99ComplexClosedRadiusAt_succ
+    (L M : ℕ) (r0 : ℝ) (k : ℕ) :
+    cmp99ComplexClosedRadiusAt L M r0 (k + 1) =
+      cmp99ComplexClosedRadiusNext L M
+        (cmp99ComplexClosedRadiusAt L M r0 k) := rfl
+
+/-- Restarting the exact scalar recursion after one step shifts the index. -/
+theorem cmp99ComplexClosedRadiusAt_next
+    (L M : ℕ) (r0 : ℝ) (k : ℕ) :
+    cmp99ComplexClosedRadiusAt L M
+        (cmp99ComplexClosedRadiusNext L M r0) k =
+      cmp99ComplexClosedRadiusAt L M r0 (k + 1) := by
+  induction k with
+  | zero => rfl
+  | succ k ih =>
+      calc
+        cmp99ComplexClosedRadiusAt L M
+            (cmp99ComplexClosedRadiusNext L M r0) (k + 1) =
+          cmp99ComplexClosedRadiusNext L M
+            (cmp99ComplexClosedRadiusAt L M
+              (cmp99ComplexClosedRadiusNext L M r0) k) := rfl
+        _ = cmp99ComplexClosedRadiusNext L M
+            (cmp99ComplexClosedRadiusAt L M r0 (k + 1)) := by rw [ih]
+        _ = cmp99ComplexClosedRadiusAt L M r0 (k + 1 + 1) := rfl
+
 /-- The exact path envelope is monotone on nonnegative radii. -/
 theorem cmp99ComplexClosedRadiusFactorEnvelope_mono
     (L : ℕ) {r R : ℝ} (hr : 0 ≤ r) (hrR : r ≤ R) :
@@ -90,6 +125,14 @@ theorem cmp99ComplexClosedRadiusDeviation_le_coefficient_mul
       exact mul_le_mul_of_nonneg_left hs
         (mul_nonneg (Nat.cast_nonneg L) hr)
     _ = (L : ℝ) * (F ^ 4 + F ^ 3 + F ^ 2 + F) * r := by ring
+
+/-- The exact four-path deviation is nonnegative at a nonnegative radius. -/
+theorem cmp99ComplexClosedRadiusDeviation_nonneg
+    (L : ℕ) {r : ℝ} (hr : 0 ≤ r) :
+    0 ≤ cmp99ComplexClosedRadiusDeviation L r := by
+  unfold cmp99ComplexClosedRadiusDeviation
+  dsimp only [cmp99ComplexClosedRadiusFactorEnvelope]
+  positivity
 
 /-- Below `1/4`, the logarithm and exponential remainders cost at most four
 times the literal deviation radius. -/
@@ -167,6 +210,34 @@ theorem cmp99ComplexClosedRadiusNextLink_le_coefficient_mul
       gcongr
     _ = (4 * C + (M : ℝ)) * F * r := by ring
 
+/-- The positive-edge radius is nonnegative in the quarter-deviation regime. -/
+theorem cmp99ComplexClosedRadiusNextLink_nonneg
+    (L M : ℕ) {r : ℝ} (hr : 0 ≤ r)
+    (hdelta_small : cmp99ComplexClosedRadiusDeviation L r < (1 / 4 : ℝ)) :
+    0 ≤ cmp99ComplexClosedRadiusNextLink L M r := by
+  let delta := cmp99ComplexClosedRadiusDeviation L r
+  have hdelta0 : 0 ≤ delta :=
+    cmp99ComplexClosedRadiusDeviation_nonneg L hr
+  have hdenDelta : 0 < 1 - delta := by
+    dsimp only [delta] at hdelta_small ⊢
+    linarith
+  have htheta0 : 0 ≤ cmp99ComplexClosedRadiusLog delta := by
+    unfold cmp99ComplexClosedRadiusLog
+    exact div_nonneg hdelta0 hdenDelta.le
+  have htheta_lt_one : cmp99ComplexClosedRadiusLog delta < 1 := by
+    unfold cmp99ComplexClosedRadiusLog
+    rw [div_lt_one hdenDelta]
+    dsimp only [delta] at hdelta_small ⊢
+    linarith
+  have hexp0 : 0 ≤ cmp99ComplexClosedRadiusExp delta := by
+    unfold cmp99ComplexClosedRadiusExp
+    positivity
+  unfold cmp99ComplexClosedRadiusNextLink
+  exact add_nonneg
+    (mul_nonneg hexp0 (pow_nonneg (by linarith) M))
+    (mul_nonneg (mul_nonneg (Nat.cast_nonneg M) hr)
+      (pow_nonneg (by linarith) M))
+
 /-- Below `1/2`, the all-orientation inverse radius loses at most a factor
 two. -/
 theorem cmp99ComplexClosedRadiusNext_le_two_mul
@@ -181,6 +252,18 @@ theorem cmp99ComplexClosedRadiusNext_le_two_mul
   have hden : 0 < 1 - q := by linarith
   rw [div_le_iff₀ hden]
   nlinarith [sq_nonneg q]
+
+/-- The all-orientation radius remains nonnegative when the positive-edge
+radius is below one. -/
+theorem cmp99ComplexClosedRadiusNext_nonneg
+    (L M : ℕ) {r : ℝ} (hr : 0 ≤ r)
+    (hdelta_small : cmp99ComplexClosedRadiusDeviation L r < (1 / 4 : ℝ))
+    (hq_small : cmp99ComplexClosedRadiusNextLink L M r < 1) :
+    0 ≤ cmp99ComplexClosedRadiusNext L M r := by
+  have hq0 := cmp99ComplexClosedRadiusNextLink_nonneg
+    L M hr hdelta_small
+  unfold cmp99ComplexClosedRadiusNext
+  exact div_nonneg hq0 (sub_nonneg.mpr hq_small.le)
 
 /-- The proof-free one-step radius is bounded by the declared growth factor. -/
 theorem cmp99ComplexClosedRadiusNext_le_growthFactor_mul
@@ -204,10 +287,14 @@ theorem cmp99ComplexClosedRadiusNext_le_growthFactor_mul
       exact mul_le_mul_of_nonneg_right (le_max_right _ _) hr
 
 #print axioms cmp99ComplexClosedRadiusFactorEnvelope_mono
+#print axioms cmp99ComplexClosedRadiusAt_next
 #print axioms cmp99ComplexClosedRadiusDeviation_le_coefficient_mul
+#print axioms cmp99ComplexClosedRadiusDeviation_nonneg
 #print axioms cmp99ComplexClosedRadiusExp_le_four_mul
 #print axioms cmp99ComplexClosedRadiusNextLink_le_coefficient_mul
+#print axioms cmp99ComplexClosedRadiusNextLink_nonneg
 #print axioms cmp99ComplexClosedRadiusNext_le_two_mul
+#print axioms cmp99ComplexClosedRadiusNext_nonneg
 #print axioms cmp99ComplexClosedRadiusNext_le_growthFactor_mul
 
 end YangMills.RG
