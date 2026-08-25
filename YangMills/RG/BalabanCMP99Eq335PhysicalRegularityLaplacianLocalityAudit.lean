@@ -7,9 +7,11 @@ materialized and no compiler or axiom-oracle verdict exists for this module.
 Axiom queue for the exact one-bond collar and the first f2 locality endpoint.
 -/
 
+#print axioms YangMills.RG.cmp99ActiveRegionCovariantD0ReadBonds
 #print axioms YangMills.RG.mem_cmp99ActiveRegionCovariantD0ReadBonds_iff
 #print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantD0CLM_eq_of_eqOn_readBonds
 #print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacian_eq_of_eqOn_readBonds
+#print axioms YangMills.RG.cmp99ExtendRegularCubeLocalGauge
 #print axioms YangMills.RG.cmp99ExtendRegularCubeLocalGauge_apply_of_mem
 #print axioms YangMills.RG.gaugeAct_cmp99ExtendRegularCubeLocalGauge_apply_interior
 #print axioms YangMills.RG.cmp99Eq335PhysicalExponentialBackground

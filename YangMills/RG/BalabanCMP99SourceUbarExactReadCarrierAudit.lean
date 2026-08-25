@@ -7,7 +7,12 @@ materialized and no compiler or axiom-oracle verdict exists for this module.
 Axiom queue for the exact one-scale source-Ubar read carrier.
 -/
 
+#print axioms YangMills.RG.cmp99PhysicalBondsOfEdgeList
 #print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99PhysicalBondsOfEdgeList
+#print axioms YangMills.RG.cmp99SourceUbarBaseEdgeList
+#print axioms YangMills.RG.cmp99SourceUbarFineContourEdgeList
+#print axioms YangMills.RG.cmp99SourceUbarFineReadBonds
+#print axioms YangMills.RG.cmp99SourceUbarFineReadBondsOfCoarseBonds
 #print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_base
 #print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma1
 #print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma2

@@ -6,6 +6,12 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_complexification
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_trace
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordToSlLM
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordToSlLM_val
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordOfRealImag
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordRealPart_ofRealImag
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordImagPart_ofRealImag
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_ofRealImag
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_conjTranspose
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_injective
 #print axioms YangMills.RG.cmp99SlSkewReal
 #print axioms YangMills.RG.cmp99SlSkewImag
