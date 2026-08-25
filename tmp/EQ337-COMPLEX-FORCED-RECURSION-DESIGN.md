@@ -256,6 +256,34 @@ background, would reverse the physical construction.
    `cmp99ComplexClosedRadiusNextLink` and `cmp99ComplexClosedRadiusNext`.
    Componentwise equalities alone do not authorize the recursive constructor.
 
+## Prepared closed physical boundary
+
+The next boundary is frozen by
+`tmp/EQ337-CLOSED-PHYSICAL-RECURSION-DRAFT-PATHS.txt`.  All six files remain
+PRE-VALIDATION and therefore none of the statements below is compiler
+evidence yet.
+
+- `BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridge` identifies the literal
+  deviation, log, exponential, positive-link and all-orientation successor
+  radii.  It also constructs the canonical no-winding record at each
+  nonterminal scale from the single closed scalar budget.
+- `BalabanCMP99Eq337ComplexClosedRadiusPhysicalGates` derives the quarter
+  regime, logarithmic gate and positive-link inverse gate at every scale.
+  No `hlog`, `hq1` or no-winding family is an argument.
+- `BalabanCMP99Eq337ComplexClosedRecursiveBackground` contains one private
+  fine-to-coarse recursion.  Its public constructor starts from the literal
+  `U`, `A` and `eta`, constructs every background internally, and exports
+  only the terminal background plus its generated all-orientation radius
+  theorem.
+
+The fail-closed promoter
+`tmp/promote_eq337_closed_physical_recursion_boundary.py` retains all six
+PRE-VALIDATION notices and retargets only the internal scratch imports.  The
+runner generator
+`tmp/generate_eq337_closed_physical_recursion_runner.py` freezes a fresh
+Colab queue with `7 + 5 + 2 = 14` axiom readouts and a root build.  A green
+queue still leaves `20/41`, `TermSource = 0`, and window 15 unchanged.
+
 ## Prepared diagnostic boundary
 
 The first Eq. (3.37) Ubar-radius gate has one tracked prerequisite pair in
