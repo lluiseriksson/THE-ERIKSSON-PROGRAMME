@@ -223,6 +223,18 @@ these prerequisites; it does not authorize stacking or promoting the final
 forced recursion, and it leaves `20/41`, `TermSource = 0`, and window 15
 unchanged.
 
+Promotion is deliberately split but evidence-bound.  After the first `78`
+readouts, the tracked perturbed-background pair is sealed and its audit enters
+`YangMillsCore`; the fourteen Ubar files are copied to their public paths while
+retaining `PRE-VALIDATION`.  After the second gate's exact `14` readouts, the
+single atomic helper
+`seal_promote_eq337_complex_recursion_prerequisites.py` checks the promoted
+Ubar blobs against the first package, checks the inverse/small-field scratch
+blobs against the second package, removes the fourteen remaining notices,
+promotes the four later files, and adds exactly nine audit imports to
+`YangMillsCore`.  The Mathlib-only reproduction is never promoted.  Neither
+package alone authorizes that final prerequisite seal.
+
 The prerequisite boundary now also contains
 `exists_cmp99SourceComplexUbar_zero_step_gates`.  It proves at radius zero,
 with one common no-winding budget, the strict logarithmic gate, the strict
