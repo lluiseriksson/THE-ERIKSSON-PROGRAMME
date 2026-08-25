@@ -1321,17 +1321,20 @@ norm(path)     <=                  (1 + rLink)^length.
 ```
 
 The second line is portante: it supplies exactly the factor norms retained by
-the heterogeneous four-factor consumer.  The scratch hashes are:
+the heterogeneous four-factor consumer.  The pair now also packages four
+literal complex Wilson paths into the heterogeneous four-factor budget; this
+still does not identify those paths with the source Ubar contours.  The
+scratch hashes are:
 
 ```text
-847A2735FE7E63A292DD81CDBBCDBB14E9A4DBEC3E74F9360B61E18133A1581D
+DC8B4021877AF05D78C116CB4319AEF08B5A183CDC1EDDC6777CEDCA811D2990
   tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadius.draft.lean
-DC566A37E56F5D3B935601FE3E308E70DC579086E9C35A9943A40857651507C7
+621E804FC0F10E62E0AC7140609BAA268B3169A8668C2DB94EA4D97468C7286A
   tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadiusAudit.draft.lean
 F590776708CBC62F36EFBC501A871DAE3F88C5BC4BAC53D7EFD06FFD448E8EB2
   tmp/C6D-COMPLEX-WILSON-LINE-RADIUS-DRAFT-PATHS.txt
 ```
 
-The lightweight gates pass for `2/2` files with `6/6` declaration/readout
+The lightweight gates pass for `2/2` files with `8/8` declaration/readout
 coverage.  These theorems are still uncompiled scratch and do not yet install
 the four source contours into the complex Ubar `hdev` field.

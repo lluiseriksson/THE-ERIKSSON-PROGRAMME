@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius
+import YangMills.RG.BalabanCMP99ComplexFourFactorDeviation
 import YangMills.RG.OrderedProductQuadraticBound
 
 /-!
@@ -69,6 +70,32 @@ theorem norm_cmp99SpecialLinearWilsonLine_le
   intro X hX
   rcases List.mem_map.mp hX with ⟨e, he, rfl⟩
   exact hlink e
+
+/-- Visible four-path budget obtained by combining ordered-product growth
+with heterogeneous four-factor telescoping. -/
+def cmp99ComplexFourWilsonPathDeviationBudget
+    (paths : Fin 4 → List (ConcreteEdge d N)) (r : ℝ) : ℝ :=
+  cmp99ComplexFourFactorDeviationBudget
+    (fun i ↦ (paths i).length * r * (1 + r) ^ (paths i).length)
+    (fun i ↦ (1 + r) ^ (paths i).length)
+
+/-- Four literal complex Wilson paths are controlled without unitary
+weakening.  The cost of every preceding path remains in the conclusion. -/
+theorem norm_fourSpecialLinearWilsonLineProduct_sub_one_le
+    (V : GaugeConfig d N (Matrix.SpecialLinearGroup (Fin Nc) ℂ))
+    (paths : Fin 4 → List (ConcreteEdge d N)) (r : ℝ) (hr : 0 ≤ r)
+    (hlink : ∀ e, ‖(V e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ r) :
+    ‖fourMatrixProduct (fun i ↦
+        ((wilsonLine V (paths i) :
+            Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+              Matrix (Fin Nc) (Fin Nc) ℂ)) - 1‖ ≤
+      cmp99ComplexFourWilsonPathDeviationBudget paths r := by
+  apply norm_fourMatrixProduct_sub_one_le_complexBudget
+  · intro i
+    exact norm_cmp99SpecialLinearWilsonLine_sub_one_le
+      V (paths i) r hr hlink
+  · intro i
+    exact norm_cmp99SpecialLinearWilsonLine_le V (paths i) r hr hlink
 
 /-- The literal Eq. (3.37) background satisfies the same named radius on
 both orientations of every fine link. -/
