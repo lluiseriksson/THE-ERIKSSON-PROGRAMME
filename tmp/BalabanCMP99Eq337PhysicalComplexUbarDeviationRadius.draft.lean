@@ -40,6 +40,27 @@ def cmp99SourceComplexUbarFourPaths
     (cmp99SourceParallelTransportPath (G := SLNc)
       (blockBasepoint M N' b.1) b.2).symm.edges]
 
+/-- All four source contours fit the same printed one-block length envelope.
+The fourth case uses invariance of length under path reversal; no extra coarse
+link is inserted. -/
+theorem cmp99SourceComplexUbarFourPaths_length_le
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) (i : Fin 4) :
+    (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x i).length ≤
+      d * (M - 1) := by
+  fin_cases i
+  · simpa [cmp99SourceComplexUbarFourPaths] using
+      cmp99SourceUbarGamma1_length_le (G := SLNc) b x hx
+  · simpa [cmp99SourceComplexUbarFourPaths] using
+      cmp99SourceUbarGamma2_length_le (G := SLNc) hd hM b x
+  · simpa [cmp99SourceComplexUbarFourPaths] using
+      cmp99SourceUbarGamma3_length_le (G := SLNc) b x hx
+  · simpa [cmp99SourceComplexUbarFourPaths, cmp99SourceUbarGamma2,
+      OrientedLatticePath.symm, reverseLatticePath] using
+      cmp99SourceUbarGamma2_length_le (G := SLNc) hd hM b
+        (blockBasepoint M N' b.1)
+
 /-- Exact four-path identification.  In particular the last factor is not a
 free coarse background and no equality between independently chosen
 precisions or backgrounds is assumed. -/

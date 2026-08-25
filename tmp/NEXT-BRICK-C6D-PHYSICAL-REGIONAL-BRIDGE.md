@@ -1350,18 +1350,19 @@ It fixes the first three factors to `Gamma1`, `Gamma2`, and `Gamma3`, and the
 fourth to the reversed straight representative of the positive coarse bond.
 The exact equality uses `OrientedLatticePath.holonomy_symm`; it does not
 estimate an inverse or accept a free coarse field.  It then specializes the
-complex four-path budget to the literal Eq. (3.37) background.  Static-only
-hashes are:
+complex four-path budget to the literal Eq. (3.37) background.  A separate
+lemma proves that all four paths, including the reversed fourth path, obey the
+same `d * (M - 1)` source envelope.  Static-only hashes are:
 
 ```text
-0BBFD4D44042EF5104DFCF7AC5447BA0B186388593C1276BE2A164FDE7E9EFB1
+C0174643F71AFD11FFAFB281B0FFC4C6F171A19DA8410CC5D768490C8AF0B6C6
   tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.draft.lean
-3217BB3A55737FF7DE1D90FCB102EF002CD7A403F9559FD19B9A7BD89018C437
+2C14AE02293417F4060710808B6289355B2D4B677184094A6153C05543083601
   tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.draft.lean
 2A881FA25EC08F733B0E17E1CE04317FCD24736F2BBF6969D1A8FD4D4C559088
   tmp/C6D-COMPLEX-UBAR-DEVIATION-RADIUS-DRAFT-PATHS.txt
 ```
 
 The exact overlay-text gate passes for `2/2` files and the audit surface is
-`4/4`.  This remains static evidence only: no `.olean` or axiom-oracle verdict
+`5/5`.  This remains static evidence only: no `.olean` or axiom-oracle verdict
 exists, and no terminal field or scalar window is discharged.
