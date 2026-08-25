@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP99ComplexUbarCoordinateExponent
 import YangMills.RG.BalabanCMP116WilsonBackgroundFactorBounds
+import YangMills.RG.BalabanCMP98GAdConjugation
 import YangMills.RG.OrderedExponentialQuadraticBound
 
 /-!
@@ -150,6 +151,75 @@ theorem norm_cmp99Eq337PhysicalComplexPerturbedNegativeBondModel_sub_one_le
     _ = cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA := by
       unfold cmp99Eq337PhysicalComplexPerturbedLinkRadius
       ring
+
+/-- Coercing the inverse positive `SL(N,C)` bond gives the literal reversed
+matrix `U† exp(-eta A)`.  This is an algebraic equality, not an inverse-norm
+estimate. -/
+theorem cmp99Eq337PhysicalComplexPerturbedPositiveBondSL_inv_coe
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (b : PhysicalBond d N) :
+    (((cmp99Eq337PhysicalComplexPerturbedPositiveBondSL U A eta b)⁻¹ :
+        Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) =
+      (U (positiveEdgeOfPhysicalBond b) :
+          Matrix (Fin Nc) (Fin Nc) ℂ)ᴴ *
+        NormedSpace.exp
+          ((-eta) • cmp99SUNLieComplexCoordMatrixLM Nc (A b)) := by
+  let X := cmp99SUNLieComplexCoordMatrixLM Nc (A b)
+  let U0 : Matrix (Fin Nc) (Fin Nc) ℂ :=
+    U (positiveEdgeOfPhysicalBond b)
+  have hexp :
+      NormedSpace.exp ((-eta) • X) * NormedSpace.exp (eta • X) = 1 := by
+    simpa only [neg_smul] using cmp98_exp_neg_mul_exp (eta • X)
+  have hunit : U0ᴴ * U0 = 1 := by
+    simpa only [U0] using
+      su_conjTranspose_mul_self (U (positiveEdgeOfPhysicalBond b))
+  have hinv :
+      (cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix U A eta b)⁻¹ =
+        U0ᴴ * NormedSpace.exp ((-eta) • X) := by
+    apply Matrix.inv_eq_left_inv
+    rw [cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix,
+      cmp99Eq337PrintedComplexGenerator_eq]
+    change (U0ᴴ * NormedSpace.exp ((-eta) • X)) *
+        (NormedSpace.exp (eta • X) * U0) = 1
+    calc
+      (U0ᴴ * NormedSpace.exp ((-eta) • X)) *
+          (NormedSpace.exp (eta • X) * U0) =
+        U0ᴴ *
+          ((NormedSpace.exp ((-eta) • X) *
+            NormedSpace.exp (eta • X)) * U0) := by
+              simp only [mul_assoc]
+      _ = U0ᴴ * U0 := by rw [hexp, one_mul]
+      _ = 1 := hunit
+  have hmatrixInv :
+      (cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix U A eta b)⁻¹ =
+        Matrix.adjugate
+          (cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix U A eta b) := by
+    rw [Matrix.inv_def,
+      cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_det,
+      Ring.inverse_one, one_smul]
+  rw [Matrix.SpecialLinearGroup.coe_inv, ← hmatrixInv]
+  exact hinv
+
+/-- The public negative edge of the reconstructed complex background is the
+same reversed matrix model used by the analytic radius theorem. -/
+theorem cmp99Eq337PhysicalComplexPerturbedBackground_apply_neg_matrix
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (x : FinBox d N) (mu : Fin d) :
+    ((cmp99Eq337PhysicalComplexPerturbedBackground U A eta
+        (ConcreteEdge.mk x mu false) :
+          Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+            Matrix (Fin Nc) (Fin Nc) ℂ) =
+      (U (positiveEdgeOfPhysicalBond (x, mu)) :
+          Matrix (Fin Nc) (Fin Nc) ℂ)ᴴ *
+        NormedSpace.exp
+          ((-eta) • cmp99SUNLieComplexCoordMatrixLM Nc (A (x, mu))) := by
+  rw [cmp99Eq337PhysicalComplexPerturbedBackground,
+    gaugeConfigOfPositiveBonds_apply_neg]
+  exact cmp99Eq337PhysicalComplexPerturbedPositiveBondSL_inv_coe
+    U A eta (x, mu)
 
 end
 

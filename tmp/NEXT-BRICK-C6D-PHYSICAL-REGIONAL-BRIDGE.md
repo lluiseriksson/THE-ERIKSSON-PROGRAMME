@@ -1241,30 +1241,30 @@ epsilonU + 2 * (|eta| * Ccoord * rA)
 ```
 
 for `exp(eta A) U` using the named chart budget and the physical `SU(N)` link
-norm one.  It does not yet claim the reverse-orientation identity or a path
-product estimate; those remain the next gates before this leaf can feed
-`hdev`.
+norm one.  The path-product estimate remains downstream before this leaf can
+feed `hdev`.
 
-The same scratch source now proves the analytic negative-orientation model
-`U dagger * exp(-eta A)` with exactly the same radius.  The public background
-value is not identified with that model by assertion: the outstanding gate
-is the algebraic theorem that coercing the inverse of the positive
-`SL(N,C)` value gives this ordered product.  Keeping that equality separate
-prevents an abstract inverse-norm estimate from replacing the literal source
+The same scratch source proves the analytic negative-orientation model
+`U dagger * exp(-eta A)` with exactly the same radius and now closes the
+previous algebraic gate separately: coercing the inverse positive `SL(N,C)`
+bond is proved equal to that ordered product by a literal left-inverse
+calculation (`exp(-X) exp(X) = 1` and `U dagger * U = 1`).  A second theorem
+identifies the public negative edge of the reconstructed background with the
+same model.  No abstract inverse-norm estimate replaces the source
 orientation.
 
 The exact scratch hashes are:
 
 ```text
-3FAECB6B32B0D37B51004ED3375F61CCF980B987628DB6783E63AAAD779D142C
+AAE17F83297F96C27FE1A44800166C53FA8BD390F2265E7F4D88F67AF9048984
   tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius.draft.lean
-0CDB5DFF310152955C1D56F3B068CA706D3FB2E0A3515471994845B819F28308
+004DEC0C3BA76A6E98E57203BA0B1758761193C40E2ABC907E5BEED30249E4D7
   tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadiusAudit.draft.lean
 0A0A80FEA592B580142360B515E7CDB63410A0AE1CA91AE5B36E5C4761441185
   tmp/C6D-COMPLEX-UBAR-LINK-RADIUS-DRAFT-PATHS.txt
 ```
 
-The lightweight gates pass at `2/2` files and `3/3` declaration/readout
+The lightweight gates pass at `2/2` files and `5/5` declaration/readout
 coverage.  This is textual/static evidence only; the pair is not promoted,
 compiled or oracle-checked.
 
