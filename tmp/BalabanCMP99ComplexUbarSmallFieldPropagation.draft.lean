@@ -261,12 +261,8 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
     change ‖(cmp99SourceBaseCoarseBackground background
       (positiveEdgeOfPhysicalBond b) : Matrix (Fin Nc) (Fin Nc) ℂ)‖ ≤
         (1 + r) ^ M
-    rw [cmp99SourceBaseCoarseBackground_apply_pos]
-    change ‖(wilsonLine background
-      (cmp99SourceParallelTransportPath
-        (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)
-        (blockBasepoint M N' b.1) b.2).edges :
-          Matrix (Fin Nc) (Fin Nc) ℂ)‖ ≤ (1 + r) ^ M
+    rw [cmp99SourceBaseCoarseBackground_apply_pos,
+      OrientedLatticePath.holonomy]
     simpa only [cmp99SourceParallelTransportPath_length] using
       norm_cmp99SpecialLinearWilsonLine_le background
         (cmp99SourceParallelTransportPath
@@ -277,13 +273,8 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
     change ‖(cmp99SourceBaseCoarseBackground background
       (positiveEdgeOfPhysicalBond b) : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
         (M : ℝ) * r * (1 + r) ^ M
-    rw [cmp99SourceBaseCoarseBackground_apply_pos]
-    change ‖(wilsonLine background
-      (cmp99SourceParallelTransportPath
-        (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)
-        (blockBasepoint M N' b.1) b.2).edges :
-          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-        (M : ℝ) * r * (1 + r) ^ M
+    rw [cmp99SourceBaseCoarseBackground_apply_pos,
+      OrientedLatticePath.holonomy]
     simpa only [cmp99SourceParallelTransportPath_length] using
       norm_cmp99SpecialLinearWilsonLine_sub_one_le background
         (cmp99SourceParallelTransportPath
