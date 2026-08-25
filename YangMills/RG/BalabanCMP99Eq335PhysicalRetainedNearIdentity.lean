@@ -33,6 +33,12 @@ variable {S : CMP99SourceScaledStratification (FinBox 4 (L * N')) n
 variable {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
 variable {Omega : ActiveGaugeRegion 4 (L * N')}
 
+local instance cmp99Eq335RetainedNearIdentityMatrixNormOneClass :
+    NormOneClass (Matrix (Fin Nc) (Fin Nc) ℂ) where
+  norm_one := by
+    rw [← Matrix.diagonal_one, Matrix.l2_opNorm_diagonal]
+    simp
+
 /-- Geometric gate required by (3.35): every positive bond read by the retained
 tower has both endpoints inside the regular cube on which the local gauge and
 its exponential representative are identified. -/
@@ -78,7 +84,9 @@ theorem CMP99Eq335PhysicalRegularityWitness.abs_eta_mul_amplitudeMajorant_le
     inv_le_one_of_one_le₀ hpow
   have hcoefficient : 0 ≤
       (W.cube.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 := by
-    positivity
+    exact mul_nonneg
+      (mul_nonneg (Nat.cast_nonneg _) (Nat.cast_nonneg _))
+      W.alpha0_pos.le
   have hcancel :
       |eta| * cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0 =
         ((W.cube.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0) *
