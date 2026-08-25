@@ -39,6 +39,7 @@ def test_verifier_scope_matches_runner_pair_queue() -> None:
     verifier = load_verifier()
     tree = ast.parse(RUNNER.read_text(encoding="utf-8"))
     pairs = literal_assignment(tree, "PAIRS")
+    prerequisite = literal_assignment(tree, "PREREQUISITE")
     source_sha = literal_assignment(tree, "SOURCE_SHA")
     runner_revisions = [
         ast.literal_eval(node.value)
@@ -51,10 +52,14 @@ def test_verifier_scope_matches_runner_pair_queue() -> None:
         and node.targets[0].attr == "RUNNER_REV"
     ]
     assert tuple(map(tuple, pairs)) == verifier.MODULES
+    assert tuple(prerequisite) == verifier.PREREQUISITE
     assert source_sha == verifier.SOURCE_SHA
     assert runner_revisions == [verifier.RUNNER_REV]
-    assert len(verifier.STAGES) == 16
+    assert len(verifier.STAGES) == 17
     assert sum(count for _, count in verifier.MODULES) == 52
+    assert verifier.PREREQUISITE[1] + sum(
+        count for _, count in verifier.MODULES
+    ) == 78
 
 
 def test_evidence_tools_are_syntax_valid() -> None:
@@ -73,10 +78,15 @@ def synthetic_notebook(verifier, *, forbidden: bool = False) -> dict:
     for stage in verifier.STAGES:
         transcript.append(f"STAGE={stage} EXIT=0 SECONDS=1.0\n")
     declarations: list[str] = []
+    prerequisite, _ = verifier.PREREQUISITE
+    prerequisite_audit = verifier.git_blob(
+        ROOT, f"YangMills/RG/{prerequisite}Audit.lean"
+    ).decode()
+    declarations.extend(verifier.PRINT_RE.findall(prerequisite_audit))
     for module, _ in verifier.MODULES:
         audit = verifier.git_blob(ROOT, f"tmp/{module}Audit.draft.lean").decode()
         declarations.extend(verifier.PRINT_RE.findall(audit))
-    assert len(declarations) == 52
+    assert len(declarations) == 78
     for index, declaration in enumerate(declarations):
         axioms = "sorryAx" if forbidden and index == 0 else "propext, Quot.sound"
         transcript.append(f"'{declaration}' depends on axioms: [{axioms}]\n")

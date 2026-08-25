@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Colab diagnostic gate for the literal complex Eq. (3.37) Ubar radius.
 
-The immutable source checkpoint contains scratch PRE-VALIDATION modules.  The
-runner materializes them in dependency order under their intended
-``YangMills.RG`` olean names, audits every public declaration, and stops at the
-first real error.  It does not promote source, remove PRE-VALIDATION, attain a
-terminal scalar window, or move ``20/41``.
+The immutable source checkpoint contains one tracked PRE-VALIDATION
+prerequisite pair plus seven scratch PRE-VALIDATION pairs.  The runner
+materializes them in dependency order under their intended ``YangMills.RG``
+olean names, audits every public declaration, and stops at the first real
+error.  It does not promote source, remove PRE-VALIDATION, attain a terminal
+scalar window, or move ``20/41``.
 """
 
 import hashlib
@@ -45,6 +46,8 @@ PAIRS = [
     ("BalabanCMP99ComplexLocalizedUbarBackground", 4),
     ("BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius", 10),
 ]
+
+PREREQUISITE = ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26)
 
 runner.RUNNER_REV = "eq337-complex-ubar-radius-debug-v1"
 runner.SOURCE_SHA = SOURCE_SHA
@@ -94,6 +97,15 @@ queue = [
             "YangMills.RG.BalabanCMP116FourFactorLipschitz",
         ],
         None,
+    ),
+    (
+        "complex_ubar_radius_perturbed_background_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/"
+            "BalabanCMP99Eq337PhysicalComplexPerturbedBackgroundAudit.lean",
+        ],
+        PREREQUISITE[1],
     ),
     (
         "complex_ubar_radius_prepare_build_dirs",

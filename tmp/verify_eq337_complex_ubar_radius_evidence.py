@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed verifier for the seven-pair Eq. (3.37) complex-Ubar gate."""
+"""Fail-closed verifier for the Eq. (3.37) complex-Ubar prerequisite gate."""
 
 from __future__ import annotations
 
@@ -25,8 +25,10 @@ MODULES = (
     ("BalabanCMP99ComplexLocalizedUbarBackground", 4),
     ("BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius", 10),
 )
+PREREQUISITE = ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26)
 STAGES = (
     "complex_ubar_radius_materialize_prerequisites",
+    "complex_ubar_radius_perturbed_background_audit",
     "complex_ubar_radius_prepare_build_dirs",
     *(
         stage
@@ -141,6 +143,27 @@ def main() -> int:
     expected: list[str] = []
     boundary_hashes: dict[str, str] = {}
     declarations_by_module: dict[str, list[str]] = {}
+    prerequisite_module, prerequisite_count = PREREQUISITE
+    prerequisite_source_path = f"YangMills/RG/{prerequisite_module}.lean"
+    prerequisite_audit_path = f"YangMills/RG/{prerequisite_module}Audit.lean"
+    prerequisite_source_blob = git_blob(repo, prerequisite_source_path)
+    prerequisite_audit_blob = git_blob(repo, prerequisite_audit_path)
+    boundary_hashes[prerequisite_source_path] = hashlib.sha256(
+        prerequisite_source_blob
+    ).hexdigest()
+    boundary_hashes[prerequisite_audit_path] = hashlib.sha256(
+        prerequisite_audit_blob
+    ).hexdigest()
+    prerequisite_declarations = PRINT_RE.findall(
+        prerequisite_audit_blob.decode("utf-8")
+    )
+    if len(prerequisite_declarations) != prerequisite_count:
+        raise RuntimeError(
+            f"AUDIT_DECLARATION_COUNT={prerequisite_audit_path}:"
+            f"{len(prerequisite_declarations)} WANT={prerequisite_count}"
+        )
+    declarations_by_module[prerequisite_module] = prerequisite_declarations
+    expected.extend(prerequisite_declarations)
     for module, expected_count in MODULES:
         source_path = f"tmp/{module}.draft.lean"
         audit_path = f"tmp/{module}Audit.draft.lean"
@@ -156,7 +179,7 @@ def main() -> int:
             )
         declarations_by_module[module] = declarations
         expected.extend(declarations)
-    if len(expected) != 52 or len(set(expected)) != 52:
+    if len(expected) != 78 or len(set(expected)) != 78:
         raise RuntimeError(f"EXPECTED_DECLARATION_SCOPE={len(expected)}/{len(set(expected))}")
 
     observed: dict[str, list[frozenset[str]]] = defaultdict(list)
@@ -182,7 +205,7 @@ def main() -> int:
         "status": "EQ337_COMPLEX_UBAR_RADIUS_EVIDENCE_OK",
         "source_sha": SOURCE_SHA,
         "runner_revision": RUNNER_REV,
-        "module_count": len(MODULES),
+        "module_count": 1 + len(MODULES),
         "expected_declarations": len(expected),
         "allowed_axioms": sorted(ALLOWED),
         "stage_seconds": stage_seconds,
