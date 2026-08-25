@@ -234,7 +234,9 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
     (hlog : cmp99UbarLogRadius B < 1)
     (b : PhysicalBond d N') :
-    ‖(cmp99SourceComplexLocalizedUbarBlock background B hdev b :
+    ‖(cmp99SourceComplexLocalizedUbarBlock
+        (d := d) (M := M) (N' := N') (Nc := Nc)
+        background B hdev b :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       cmp99SourceComplexUbarNextLinkRadius M r B := by
   let S := blockOf M N' b.1
@@ -306,12 +308,14 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
     (hlog : cmp99UbarLogRadius B < 1)
     (b : PhysicalBond d N') :
-    ‖(cmp99SourceComplexLocalizedNextBackground background B hdev
+    ‖(cmp99SourceComplexLocalizedNextBackground
+        (d := d) (M := M) (N' := N') (Nc := Nc) background B hdev
         (positiveEdgeOfPhysicalBond b) :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       cmp99SourceComplexUbarNextLinkRadius M r B := by
   rw [cmp99SourceComplexLocalizedNextBackground_apply_pos]
   exact norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
+    (d := d) (M := M) (N' := N') (Nc := Nc)
     background r hr hlink B hdev hlog b
 
 /-- The complete complex next background is uniformly small on every
@@ -330,16 +334,19 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
     (hlog : cmp99UbarLogRadius B < 1)
     (hq1 : cmp99SourceComplexUbarNextLinkRadius M r B < 1)
     (e : ConcreteEdge d N') :
-    ‖(cmp99SourceComplexLocalizedNextBackground background B hdev e :
+    ‖(cmp99SourceComplexLocalizedNextBackground
+        (d := d) (M := M) (N' := N') (Nc := Nc) background B hdev e :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       cmp99SourceComplexUbarNextOrientedLinkRadius M r B := by
   let q := cmp99SourceComplexUbarNextLinkRadius M r B
   have hq0 : 0 ≤ q := by
     have hblock := norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
+      (d := d) (M := M) (N' := N') (Nc := Nc)
       background r hr hlink B hdev hlog
         ((0, 0) : PhysicalBond d N')
     exact (norm_nonneg
-      ((cmp99SourceComplexLocalizedUbarBlock background B hdev
+      ((cmp99SourceComplexLocalizedUbarBlock
+        (d := d) (M := M) (N' := N') (Nc := Nc) background B hdev
         ((0, 0) : PhysicalBond d N') :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1)).trans (by
             simpa [q] using hblock)
@@ -354,13 +361,17 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
         gaugeConfigOfPositiveBonds_apply_neg]
       simpa [q, cmp99SourceComplexUbarNextOrientedLinkRadius] using
         norm_cmp99SpecialLinear_inv_sub_one_le_div
-          (cmp99SourceComplexLocalizedUbarBlock background B hdev (y, mu))
+          (cmp99SourceComplexLocalizedUbarBlock
+            (d := d) (M := M) (N' := N') (Nc := Nc)
+            background B hdev (y, mu))
           q hq0 hq1
           (norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
+            (d := d) (M := M) (N' := N') (Nc := Nc)
             background r hr hlink B hdev hlog (y, mu))
   | true =>
       simpa [q, cmp99SourceComplexUbarNextOrientedLinkRadius] using
         (norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le
+          (d := d) (M := M) (N' := N') (Nc := Nc)
           background r hr hlink B hdev hlog (y, mu)).trans hq_le
 
 /-- One generic complex source RG step constructed solely from an oriented
@@ -379,7 +390,8 @@ noncomputable def cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius
     GaugeConfig d N' (Matrix.SpecialLinearGroup (Fin Nc) ℂ) := by
   let B := cmp99SourceComplexUbarNoWindingBudget
     d M Nc r hnoWinding
-  exact cmp99SourceComplexLocalizedNextBackground background B (by
+  exact cmp99SourceComplexLocalizedNextBackground
+    (d := d) (M := M) (N' := N') (Nc := Nc) background B (by
     intro b x hx
     change ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
       Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ
@@ -407,6 +419,7 @@ theorem norm_cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius_sub_one_le
       (cmp99SourceComplexUbarNoWindingBudget d M Nc r hnoWinding) < 1)
     (e : ConcreteEdge d N') :
     ‖(cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius
+        (d := d) (M := M) (N' := N') (Nc := Nc)
         hd hM background r hr hlink hnoWinding e :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       cmp99SourceComplexUbarNextOrientedLinkRadius M r
@@ -423,9 +436,11 @@ theorem norm_cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius_sub_one_le
     exact
       norm_cmp99SourceComplexLocalizedUbarDeviation_le_uniformRadius_of_linkRadius
         hd hM background r hr hlink b x hx
-  change ‖(cmp99SourceComplexLocalizedNextBackground background B hdev e :
+  change ‖(cmp99SourceComplexLocalizedNextBackground
+      (d := d) (M := M) (N' := N') (Nc := Nc) background B hdev e :
       Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ _
   exact norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
+    (d := d) (M := M) (N' := N') (Nc := Nc)
     background r hr hlink B hdev hlog hq1 e
 
 end
