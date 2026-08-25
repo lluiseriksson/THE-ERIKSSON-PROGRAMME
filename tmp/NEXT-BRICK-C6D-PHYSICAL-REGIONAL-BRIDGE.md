@@ -239,7 +239,8 @@ V' = V1
 and hence `K1 = K0 - V'`.  The three averaging terms must stay separate in
 the public definition: no shared norm budget is allowed to replace their
 operator identity.  The factorization (3.62) is then obtained only after a
-right inverse `G0` of the unperturbed precision has been constructed:
+left inverse `G0` of the unperturbed precision has been constructed
+(`G0.comp K0 = LinearMap.id`):
 
 ```text
 K1 = (I - V' G0) K0.
@@ -251,6 +252,11 @@ real-Hilbert perturbation and the factorization theorem, with no inverse or
 smallness premise hidden in the definition.  Both repository lightweight
 guards pass (`LEAN_OVERLAY_TEXT_OK files=2` and
 `LEAN_IMPORT_PREFIX_OK files=2`), but no `.olean` or axiom verdict exists.
+The factorization theorem is named
+`cmp99Eq362_precision_eq_one_sub_perturbation_comp_of_leftInverse`; its
+current source/audit SHA-256 values are respectively
+`CFA41D3CE6EC2A6688AE8CE0E722384D7125BB4364F38D61752E907927740A6E`
+and `17650ED48235ECFF5045737C5EF84656FB2EAAC9BB40A34FC8EA3C7E00272945`.
 The scratch audit now also carries the required visible PRE-VALIDATION mark;
 this is governance metadata only and does not promote or validate the brick.
 
