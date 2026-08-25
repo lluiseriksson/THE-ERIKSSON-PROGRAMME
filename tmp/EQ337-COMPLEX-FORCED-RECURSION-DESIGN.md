@@ -120,6 +120,32 @@ literal oriented radius map above.  A replacement record containing
 `∀ k < depth, ...` smallness fields is not accepted; that would only rename the
 per-scale obligations.
 
+One conservative compiler target, to be proved rather than assumed, is as
+follows.  Choose `R > 0`, put `L = d * (M - 1)`,
+
+```text
+F_delta(R) = (1 + R)^L
+C_delta(R) = L * (F_delta(R)^4 + F_delta(R)^3
+                    + F_delta(R)^2 + F_delta(R))
+C_q(R) = (4 * C_delta(R) + M) * (1 + R)^M
+K(R) = max 1 (2 * C_q(R)).
+```
+
+For `0 ≤ r ≤ R`, the literal four-Wilson-line expression should give
+`deviation(r) ≤ C_delta(R) * r`.  Under
+`C_delta(R) * r < 1/4`, the exact logarithm and exponential remainders give
+`q(r) ≤ C_q(R) * r`; under `C_q(R) * r < 1/2`, the oriented inverse loss gives
+`next(r) ≤ K(R) * r`.  Thus one inequality of the form
+
+```text
+K(R)^depth * r0 <
+  min R (min (noWindingThreshold / C_delta(R)) (1 / (2 * C_q(R))))
+```
+
+is the intended closed producer.  The divisions require their own positivity
+lemmas, and the displayed constants are a design target until Lean compiles
+them; they are not evidence or a source claim.
+
 The exact scalar shape to elaborate after the prerequisite gate is therefore
 the following (names remain provisional until Lean fixes the implicit
 arguments):
