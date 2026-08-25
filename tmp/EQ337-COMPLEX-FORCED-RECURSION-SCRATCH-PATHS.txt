@@ -1,3 +1,5 @@
 tmp/BalabanCMP99ComplexUbarSmallFieldPropagation.draft.lean
 tmp/BalabanCMP99ComplexUbarSmallFieldPropagationAudit.draft.lean
+tmp/BalabanCMP99ComplexInverseRadius.draft.lean
+tmp/BalabanCMP99ComplexInverseRadiusAudit.draft.lean
 tmp/CMP99ComplexInverseRadius.repro.lean

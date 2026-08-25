@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius
+import YangMills.RG.BalabanCMP99ComplexInverseRadius
 import YangMills.RG.BalabanCMP99SourceUbarSmallFieldPropagation
 
 /-!
@@ -127,6 +128,12 @@ def cmp99SourceComplexUbarNextLinkRadius
   cmp99UbarExpRadius B * (1 + r) ^ M +
     (M : ℝ) * r * (1 + r) ^ M
 
+/-- Radius on both orientations after paying the non-unitary inverse loss. -/
+def cmp99SourceComplexUbarNextOrientedLinkRadius
+    (M : ℕ) (r : ℝ) (B : MatrixNearLogNoWindingBudget Nc) : ℝ :=
+  let q := cmp99SourceComplexUbarNextLinkRadius M r B
+  q / (1 - q)
+
 variable {d M N' : ℕ} [NeZero d] [NeZero M] [NeZero N']
 
 /-- One literal complex source Ubar block is small at the explicit next
@@ -223,6 +230,47 @@ theorem norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le
   rw [cmp99SourceComplexLocalizedNextBackground_apply_pos]
   exact norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
     background r hr hlink B hdev hlog b
+
+/-- The complete complex next background is uniformly small on every
+oriented link.  The strict positive-edge gate is consumed internally to pay
+the exact inverse radius on negative links. -/
+theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le
+    (background : GaugeConfig d (M * N')
+      (Matrix.SpecialLinearGroup (Fin Nc) ℂ))
+    (r : ℝ) (hr : 0 ≤ r)
+    (hlink : ∀ e,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ r)
+    (B : MatrixNearLogNoWindingBudget Nc)
+    (hdev : ∀ b x, x ∈ blockOf M N' b.1 →
+      ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
+    (hlog : cmp99UbarLogRadius B < 1)
+    (hq0 : 0 ≤ cmp99SourceComplexUbarNextLinkRadius M r B)
+    (hq1 : cmp99SourceComplexUbarNextLinkRadius M r B < 1)
+    (e : ConcreteEdge d N') :
+    ‖(cmp99SourceComplexLocalizedNextBackground background B hdev e :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+      cmp99SourceComplexUbarNextOrientedLinkRadius M r B := by
+  let q := cmp99SourceComplexUbarNextLinkRadius M r B
+  have hqden : 0 < 1 - q := sub_pos.mpr hq1
+  have hq_le : q ≤ q / (1 - q) := by
+    rw [le_div_iff₀ hqden]
+    nlinarith
+  rcases e with ⟨y, mu, orient⟩
+  cases orient with
+  | false =>
+      rw [cmp99SourceComplexLocalizedNextBackground,
+        gaugeConfigOfPositiveBonds_apply_neg]
+      simpa [q, cmp99SourceComplexUbarNextOrientedLinkRadius] using
+        norm_cmp99SpecialLinear_inv_sub_one_le_div
+          (cmp99SourceComplexLocalizedUbarBlock background B hdev (y, mu))
+          q hq0 hq1
+          (norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
+            background r hr hlink B hdev hlog (y, mu))
+  | true =>
+      simpa [q, cmp99SourceComplexUbarNextOrientedLinkRadius] using
+        (norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le
+          background r hr hlink B hdev hlog (y, mu)).trans hq_le
 
 end
 
