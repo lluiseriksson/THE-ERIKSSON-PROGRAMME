@@ -9,6 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 MATERIALIZER = ROOT / "tmp" / "promote_eq337_complex_ubar_radius_boundary.py"
+FINAL_DRAFT = ROOT / "tmp" / "BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.draft.lean"
 
 
 def load_materializer():
@@ -72,3 +73,16 @@ def test_evidence_manifest_is_bound_to_source_and_runner(tmp_path: Path) -> None
         assert str(error) == "UBAR_EVIDENCE_SOURCE_MISMATCH"
     else:
         raise AssertionError("source drift was accepted")
+
+
+def test_final_source_leaf_builds_hdev_and_background_internally() -> None:
+    text = FINAL_DRAFT.read_text(encoding="utf-8")
+    start = text.index("noncomputable def cmp99Eq337SourceComplexLocalizedNextBackground")
+    end = text.index(":\n    GaugeConfig d N' SLNc := by", start)
+    signature = text[start:end]
+    assert "(hdev" not in signature
+    assert "(background" not in signature
+    assert "(hnoWinding" in signature
+    body = text[end : text.index("\n\nend", end)]
+    assert "cmp99SourceComplexLocalizedNextBackground background B" in body
+    assert "norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le_uniformRadius" in body
