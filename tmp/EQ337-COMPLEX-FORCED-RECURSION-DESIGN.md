@@ -211,3 +211,12 @@ the raw runner by commit and SHA-256.  A green diagnostic is evidence only for
 these prerequisites; it does not authorize stacking or promoting the final
 forced recursion, and it leaves `20/41`, `TermSource = 0`, and window 15
 unchanged.
+
+The prerequisite boundary now also contains
+`exists_cmp99SourceComplexUbar_zero_step_gates`.  It proves at radius zero,
+with one common no-winding budget, the strict logarithmic gate, the strict
+positive-link gate, and exact zero all-orientation successor radius.  This is
+the required non-vacuity witness for the scalar interface; it does not weaken
+or replace the flowing physical gates at nonzero radius.  The exact audit
+scope is therefore fourteen declarations in total: one inverse-radius
+declaration plus thirteen small-field declarations.
