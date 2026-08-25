@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate and preserve one executed C6d-v6 notebook fail-closed."""
+"""Validate and preserve one executed C6d-v7 notebook fail-closed."""
 
 from __future__ import annotations
 
@@ -66,9 +66,9 @@ def main() -> int:
     runner_hashes = {name: exact_marker(text, name) for name in HASH_MARKERS}
 
     destination.parent.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix=".c6d-v6-evidence-", dir=destination.parent))
+    staging = Path(tempfile.mkdtemp(prefix=".c6d-v7-evidence-", dir=destination.parent))
     try:
-        copied = staging / "executed-c6d-v6.ipynb"
+        copied = staging / "executed-c6d-v7.ipynb"
         verifier_json = staging / "c6d-root-transitive-axioms.json"
         shutil.copyfile(notebook, copied)
         child = subprocess.run(
@@ -130,7 +130,7 @@ def main() -> int:
     print(
         "C6D_V6_EVIDENCE_PACKAGE_OK "
         f"destination={destination} manifest_sha256={sha256(destination / 'manifest.json')} "
-        f"notebook_sha256={sha256(destination / 'executed-c6d-v6.ipynb')}"
+        f"notebook_sha256={sha256(destination / 'executed-c6d-v7.ipynb')}"
     )
     return 0
 
