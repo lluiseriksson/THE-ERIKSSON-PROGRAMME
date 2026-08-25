@@ -187,7 +187,9 @@ Thus the step-3 source endpoint must:
    regularity class, selected cube, source-region dictionary and scalar
    regime;
 2. use the original transformed background in the literal regional
-   Laplacian, not the canonical identity extension outside the read carrier;
+   Laplacian, not the canonical identity extension outside the read carrier,
+   and fix its derivative spacing to the same source `eta` rather than expose
+   a second free scalar;
 3. expose the definitionally literal decomposition
    `Delta_U + a_j * Q'^* Q'`;
 4. prove equality with the canonical-terminal presentation by the named
@@ -195,6 +197,16 @@ Thus the step-3 source endpoint must:
 5. derive symmetry and the exact quadratic form from the already proved
    generic theorems, without accepting a precision, a `Qprime`, a coercivity
    estimate or a Green operator from the caller.
+
+The exact six-file PRE-VALIDATION scratch package is
+`tmp/C6D-STEP3-LOCALIZED-PRECISION-DRAFT-PATHS.txt`.  Its final source-facing
+wrapper now fixes the regional covariant derivative spacing to the same
+printed `eta`; it does not expose the formerly independent `spacing` scalar.
+The read-only promotion and materialization previews both report six files,
+eleven declarations/readouts and promoted-manifest SHA-256
+`2BECC005430EE05217A39AD08CF127DE9B3519095E26836CB4CC5D718908DFD7`.
+All text/import/readout gates pass, but the files remain scratch-only and have
+no compiler or axiom-oracle verdict until the preceding C6d boundary seals.
 
 The coefficient `a_j` remains the printed flowing scalar parameter.  This
 brick neither manufactures its positivity nor replaces it by a generated
