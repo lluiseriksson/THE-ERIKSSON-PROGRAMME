@@ -41,7 +41,7 @@ SOURCE = "YangMills/RG/BalabanCMP99SourceLocalizedRetainedTower.lean"
 AUDIT = "YangMills/RG/BalabanCMP99SourceLocalizedRetainedTowerAudit.lean"
 ROOT_MODULE = "YangMillsCore.lean"
 
-runner.RUNNER_REV = "c6d-localized-retained-tower-cold-v4"
+runner.RUNNER_REV = "c6d-localized-retained-tower-cold-v5"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-localized-retained-tower")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-localized-retained-tower-evidence")

@@ -55,7 +55,7 @@ BACKGROUND_AUDIT = (
     "BalabanCMP99Eq337PhysicalComplexPerturbedBackgroundAudit.lean"
 )
 
-runner.RUNNER_REV = "eq337-complex-coordinate-fresh-v2"
+runner.RUNNER_REV = "eq337-complex-coordinate-fresh-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-complex-coordinate")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-complex-coordinate-evidence")
