@@ -386,7 +386,10 @@ theorem radiusAt_nonneg_and_le
           ((min_le_right _ _).trans (min_le_left _ _))
       have hterminalQuarter : C * (K ^ depth * r0) < (1 / 4 : ℝ) := by
         have hmul := (lt_div_iff₀ hC).mp hterminalQuarterRatio
-        nlinarith
+        calc
+          C * (K ^ depth * r0) = (K ^ depth * r0) * C := by ring
+          _ < min threshold (1 / 4 : ℝ) := hmul
+          _ ≤ (1 / 4 : ℝ) := min_le_right _ _
       have hdeltaQuarter :
           cmp99ComplexClosedRadiusDeviation L
               (cmp99ComplexClosedRadiusAt L M r0 k) < (1 / 4 : ℝ) := by
@@ -494,4 +497,5 @@ end CMP99ComplexClosedRadiusBudget
 #print axioms CMP99ComplexClosedRadiusBudget.radiusAt_nonneg_and_le
 #print axioms CMP99ComplexClosedRadiusBudget.deviation_lt_threshold
 
+end
 end YangMills.RG
