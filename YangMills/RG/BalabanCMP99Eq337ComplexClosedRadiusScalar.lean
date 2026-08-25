@@ -6,8 +6,8 @@ Authors: Lluis Eriksson -/
 import Mathlib
 
 /-!
-PRE-VALIDATION: project-facing scalar module.  This file has no
-materialized `.olean` and no compiler or axiom-oracle verdict.
+Cold-sealed from source checkpoint `ae676b71f2bae392560db80cbadcd24e6193305a`;
+see `validation-evidence/eq337-complex-closed-radius-module-cold-ae676b71`.
 
 It isolates the proof-free scalar recursion intended for the closed complex
 Eq. (3.37) radius-chain producer.  A separate physical adapter will identify

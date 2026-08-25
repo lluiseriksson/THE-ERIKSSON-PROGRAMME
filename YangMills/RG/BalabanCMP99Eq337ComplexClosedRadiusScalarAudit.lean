@@ -1,8 +1,9 @@
 import YangMills.RG.BalabanCMP99Eq337ComplexClosedRadiusScalar
 
 /-!
-PRE-VALIDATION: the imported source has no materialized `.olean` and this
-axiom audit has not yet received a compiler verdict.
+Cold-sealed with the imported source from checkpoint
+`ae676b71f2bae392560db80cbadcd24e6193305a`; see
+`validation-evidence/eq337-complex-closed-radius-module-cold-ae676b71`.
 -/
 
 #print axioms YangMills.RG.cmp99ComplexClosedRadiusFactorEnvelope_mono
