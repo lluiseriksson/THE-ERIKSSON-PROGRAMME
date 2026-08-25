@@ -103,6 +103,7 @@ if launcher_exit != 0:
             {
                 "cell_type": "code",
                 "execution_count": None,
+                "id": f"gate-{runner_hash[:16]}",
                 "metadata": {},
                 "outputs": [],
                 "source": cell.splitlines(keepends=True),

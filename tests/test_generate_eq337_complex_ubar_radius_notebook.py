@@ -30,6 +30,7 @@ def test_reproduces_published_notebook_semantics() -> None:
     )
     published = json.loads(CURRENT_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
+    assert generated["cells"][0]["id"] == "gate-b83d7b4ec7f3e78a"
 
 
 def test_reproduces_published_coordinate_notebook_semantics() -> None:
@@ -44,3 +45,4 @@ def test_reproduces_published_coordinate_notebook_semantics() -> None:
     )
     published = json.loads(COORDINATE_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
+    assert generated["cells"][0]["id"] == "gate-e88d83c8636fe3b2"
