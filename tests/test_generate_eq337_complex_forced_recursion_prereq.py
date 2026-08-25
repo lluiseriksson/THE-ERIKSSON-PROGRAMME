@@ -15,6 +15,9 @@ RUNNER_GENERATOR = (
 NOTEBOOK_GENERATOR = (
     ROOT / "tmp" / "generate_eq337_complex_forced_recursion_prereq_notebook.py"
 )
+SMALL_FIELD_SOURCE = (
+    ROOT / "tmp" / "BalabanCMP99ComplexUbarSmallFieldPropagation.draft.lean"
+)
 SOURCE = "a" * 40
 REVISION = "complex-recursion-prereq-test-v1"
 
@@ -97,3 +100,50 @@ def test_notebook_binds_the_runner_bytes_and_stable_cell_id() -> None:
     assert "/" + "b" * 40 + "/" + generator.RUNNER_PATH in launcher
     assert "if measured != RUNNER_SHA256" in launcher
     assert "release_runtime()" in launcher
+
+
+def test_small_field_radius_keeps_both_physical_costs_literal() -> None:
+    text = SMALL_FIELD_SOURCE.read_text(encoding="utf-8")
+    start = text.index("def cmp99SourceComplexUbarNextLinkRadius")
+    end = text.index("\n\n/-- Radius on both orientations", start)
+    definition = text[start:end]
+    assert "cmp99UbarExpRadius B * (1 + r) ^ M" in definition
+    assert "+\n    (M : ℝ) * r * (1 + r) ^ M" in definition
+
+    start = text.index("def cmp99SourceComplexUbarNextOrientedLinkRadius")
+    end = text.index("\n\nvariable {d M N'", start)
+    oriented = text[start:end]
+    assert "let q := cmp99SourceComplexUbarNextLinkRadius M r B" in oriented
+    assert "q / (1 - q)" in oriented
+
+
+def test_source_facing_step_discharges_deviation_internally() -> None:
+    text = SMALL_FIELD_SOURCE.read_text(encoding="utf-8")
+    name = "noncomputable def cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius"
+    start = text.index(name)
+    body_start = text.index(":\n    GaugeConfig", start)
+    signature = text[start:body_start]
+    assert "(hdev" not in signature
+    assert "(background" in signature
+    assert "(hnoWinding" in signature
+
+    body_end = text.index("\n\n/-- The generic source step internally", body_start)
+    body = text[body_start:body_end]
+    assert "let B := cmp99SourceComplexUbarNoWindingBudget" in body
+    assert "exact cmp99SourceComplexLocalizedNextBackground background B (by" in body
+    assert (
+        "norm_cmp99SourceComplexLocalizedUbarDeviation_le_uniformRadius_of_linkRadius"
+        in body
+    )
+
+
+def test_negative_orientation_pays_the_complex_inverse_radius() -> None:
+    text = SMALL_FIELD_SOURCE.read_text(encoding="utf-8")
+    start = text.index(
+        "theorem norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le"
+    )
+    end = text.index("\n\n/-- One generic complex source RG step", start)
+    theorem = text[start:end]
+    assert "(hq1 : cmp99SourceComplexUbarNextLinkRadius M r B < 1)" in theorem
+    assert "norm_cmp99SpecialLinear_inv_sub_one_le_div" in theorem
+    assert "norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le" in theorem
