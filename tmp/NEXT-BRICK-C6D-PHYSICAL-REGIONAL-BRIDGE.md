@@ -673,8 +673,8 @@ real-slice agreement when every transport is the flat identity.  They do not
 depend on `U'U`, do not encode `SL(N,C)` conjugation and therefore are not the
 regional/interacting producer.  The next implementation should generalize
 their one-scale leaves to algebraic `SL(N,C)` transport and package the
-   result as genuinely complex-linear; it must not duplicate the flat induction
-   or count the flat theorem as (3.59).
+result as genuinely complex-linear; it must not duplicate the flat induction
+or count the flat theorem as (3.59).
 
 The first source-localized `SL(N,C)` background step is now also explicit in
 PRE-VALIDATION scratch:
