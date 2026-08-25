@@ -12,8 +12,8 @@ from collections import defaultdict
 from pathlib import Path
 
 
-SOURCE_SHA = "b1357760890c9551dd9786da0f691d652bf21eda"
-RUNNER_REV = "eq337-complex-ubar-radius-debug-v1"
+SOURCE_SHA = "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677"
+RUNNER_REV = "eq337-complex-ubar-radius-cold-v2"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (

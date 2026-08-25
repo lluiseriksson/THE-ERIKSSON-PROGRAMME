@@ -15,7 +15,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "b1357760890c9551dd9786da0f691d652bf21eda"
+SOURCE_SHA = "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -49,7 +49,7 @@ PAIRS = [
 
 PREREQUISITE = ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26)
 
-runner.RUNNER_REV = "eq337-complex-ubar-radius-debug-v1"
+runner.RUNNER_REV = "eq337-complex-ubar-radius-cold-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-complex-ubar-radius")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-complex-ubar-radius-evidence")

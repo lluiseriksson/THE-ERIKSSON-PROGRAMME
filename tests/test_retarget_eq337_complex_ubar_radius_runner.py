@@ -26,15 +26,15 @@ def test_current_pin_is_byte_stable() -> None:
     current = RUNNER.read_text(encoding="utf-8")
     retargeted = helper.retarget(
         current,
-        "b1357760890c9551dd9786da0f691d652bf21eda",
-        "eq337-complex-ubar-radius-debug-v1",
+        "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677",
+        "eq337-complex-ubar-radius-cold-v2",
     )
     assert retargeted == current
     verifier = VERIFIER.read_text(encoding="utf-8")
     assert helper.retarget_verifier(
         verifier,
-        "b1357760890c9551dd9786da0f691d652bf21eda",
-        "eq337-complex-ubar-radius-debug-v1",
+        "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677",
+        "eq337-complex-ubar-radius-cold-v2",
     ) == verifier
 
 
