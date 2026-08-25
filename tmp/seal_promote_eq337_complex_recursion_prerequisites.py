@@ -6,7 +6,8 @@ audits the inverse-radius and all-orientation small-field pairs while
 materializing those promoted dependencies.  This helper binds both pieces of
 evidence to exact Git blobs, removes the fourteen promoted Ubar notices,
 promotes the two later pairs directly into their sealed paths, and imports all
-nine audits into ``YangMillsCore``.  It never promotes the Mathlib-only repro.
+nine audits into ``YangMillsCore``.  It never promotes the Mathlib-only
+reproductions.
 """
 
 from __future__ import annotations
@@ -28,6 +29,8 @@ RECURSION_VERIFIER = (
 BASE_SEALER = ROOT / "tmp" / "seal_eq337_complex_perturbed_background_prevalidation.py"
 UBAR_PATHS_FILE = ROOT / "tmp" / "EQ337-COMPLEX-UBAR-RADIUS-DRAFT-PATHS.txt"
 CORE = "YangMillsCore.lean"
+UBAR_EXPECTED_DECLARATIONS = 78
+RECURSION_EXPECTED_DECLARATIONS = 16
 
 
 def load_module(path: Path, name: str):
@@ -219,12 +222,12 @@ def main() -> int:
     ubar_result = read_evidence(
         args.ubar_evidence_json.resolve(),
         "EQ337_COMPLEX_UBAR_RADIUS_EVIDENCE_OK",
-        78,
+        UBAR_EXPECTED_DECLARATIONS,
     )
     recursion_result = read_evidence(
         args.recursion_evidence_json.resolve(),
         "EQ337_COMPLEX_RECURSION_PREREQ_EVIDENCE_OK",
-        14,
+        RECURSION_EXPECTED_DECLARATIONS,
     )
     source_sha = recursion_result["source_sha"]
     require_evidence_lineage(ubar_result["source_sha"], source_sha)

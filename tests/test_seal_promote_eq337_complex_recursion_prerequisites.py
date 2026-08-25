@@ -22,6 +22,8 @@ def load_script():
 
 def test_exact_promotion_scope_excludes_mathlib_repro() -> None:
     script = load_script()
+    assert script.UBAR_EXPECTED_DECLARATIONS == 78
+    assert script.RECURSION_EXPECTED_DECLARATIONS == 16
     verifier = script.load_module(
         script.RECURSION_VERIFIER, "test_eq337_recursion_verifier"
     )
