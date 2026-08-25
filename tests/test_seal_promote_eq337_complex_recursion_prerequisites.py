@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -68,3 +69,20 @@ def test_read_evidence_rejects_nonhex_source_sha(tmp_path: Path) -> None:
     )
     with pytest.raises(RuntimeError, match="EVIDENCE_SOURCE_INVALID"):
         script.read_evidence(evidence, "OK", 1)
+
+
+def test_evidence_lineage_rejects_unrelated_commits(monkeypatch) -> None:
+    script = load_script()
+    older = "1" * 40
+    newer = "2" * 40
+
+    def fake_git(*args: str):
+        if args[:1] == ("rev-parse",):
+            source = args[1].removesuffix("^{commit}")
+            return SimpleNamespace(returncode=0, stdout=(source + "\n").encode())
+        assert args == ("merge-base", "--is-ancestor", older, newer)
+        return SimpleNamespace(returncode=1, stdout=b"")
+
+    monkeypatch.setattr(script, "run_git", fake_git)
+    with pytest.raises(RuntimeError, match="EVIDENCE_LINEAGE_MISMATCH"):
+        script.require_evidence_lineage(older, newer)

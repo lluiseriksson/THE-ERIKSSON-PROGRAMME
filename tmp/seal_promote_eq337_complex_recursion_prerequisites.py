@@ -145,6 +145,18 @@ def checked_hash(result: dict, relative: str, data: bytes) -> None:
         )
 
 
+def require_evidence_lineage(older_sha: str, newer_sha: str) -> None:
+    for label, source_sha in (("UBAR", older_sha), ("RECURSION", newer_sha)):
+        resolved = run_git("rev-parse", f"{source_sha}^{{commit}}")
+        if resolved.returncode != 0 or resolved.stdout.decode().strip() != source_sha:
+            raise RuntimeError(f"EQ337_PREREQ_{label}_SOURCE_COMMIT_MISMATCH")
+    ancestor = run_git("merge-base", "--is-ancestor", older_sha, newer_sha)
+    if ancestor.returncode != 0:
+        raise RuntimeError(
+            f"EQ337_PREREQ_EVIDENCE_LINEAGE_MISMATCH={older_sha}:{newer_sha}"
+        )
+
+
 def sealed_rows(ubar_result: dict, recursion_result: dict) -> list[tuple[str, bytes]]:
     recursion_verifier = load_module(
         RECURSION_VERIFIER, "eq337_recursion_prereq_verifier"
@@ -215,9 +227,7 @@ def main() -> int:
         14,
     )
     source_sha = recursion_result["source_sha"]
-    resolved = run_git("rev-parse", f"{source_sha}^{{commit}}")
-    if resolved.returncode != 0 or resolved.stdout.decode().strip() != source_sha:
-        raise RuntimeError("EQ337_PREREQ_SOURCE_COMMIT_MISMATCH")
+    require_evidence_lineage(ubar_result["source_sha"], source_sha)
     require_clean_existing(CORE, source_sha)
 
     recursion_verifier = load_module(
