@@ -202,6 +202,10 @@ The exact six-file PRE-VALIDATION scratch package is
 `tmp/C6D-STEP3-LOCALIZED-PRECISION-DRAFT-PATHS.txt`.  Its final source-facing
 wrapper now fixes the regional covariant derivative spacing to the same
 printed `eta`; it does not expose the formerly independent `spacing` scalar.
+The reusable leaf remains parameterized by an `SUNAdjointModel`, while the
+source equality fixes that parameter to the canonical
+`matrixSUNAdjointModel Nc`; no source conclusion is obtained from a
+caller-selected action.
 The read-only promotion and materialization previews both report six files,
 eleven declarations/readouts and promoted-manifest SHA-256
 `2BECC005430EE05217A39AD08CF127DE9B3519095E26836CB4CC5D718908DFD7`.

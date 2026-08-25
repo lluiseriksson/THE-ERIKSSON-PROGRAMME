@@ -114,6 +114,7 @@ def check_surface(paths: list[str]) -> None:
         "printed_omegaPrime0_subset_regularCube",
         "cmp99SourceGaugePrecision",
         "W.transformedBackground eta",
+        "(matrixSUNAdjointModel Nc)",
         "localizedTowerAt (Fin.last depth)",
         "canonicalTowerAt (Fin.last depth)",
         "inner_cmp99SourceGaugePrecision",
