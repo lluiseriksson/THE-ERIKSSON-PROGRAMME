@@ -58,7 +58,7 @@ The required producer is source-internal and has four stages.
    so the factor norm and coarse deviation remain separate and visible.
 
 For an oriented-link radius `r` and no-winding budget `B`, the first honest
-candidate recurrence is
+candidate positive-edge recurrence is
 
 ```text
 r_next = cmp99UbarExpRadius(B) * (1 + r)^M
@@ -67,6 +67,22 @@ r_next = cmp99UbarExpRadius(B) * (1 + r)^M
 
 This is a candidate definition to be compiled, not a claimed theorem.  The
 two summands must remain separate in the Lean definition and audit.
+
+This positive-edge radius is not yet an oriented-link radius.  The generated
+configuration reconstructs a negative edge by group inversion, and inversion
+in `SL(N,C)` is not an isometry.  If the positive radius is `q < 1`, the
+Banach-geometric inverse estimate gives the next candidate
+
+```text
+r_oriented_next = q / (1 - q).
+```
+
+The proof must identify the matrix inverse of the determinant-one group
+element with the geometric inverse of `1 - (1 - U)`.  A unitary
+`norm_inv_sub_one = norm_sub_one` lemma is forbidden here.  The strict gate
+`q < 1` is a condition on the flowing radius and belongs in the inductive
+chain itself; it is not to be mislabeled as another freely chosen window in
+the global joint-smallness record.
 
 ## Forced chain after the producer
 
@@ -78,7 +94,8 @@ stop : nonnegative r -> chain 0 r
 step : nonnegative r
     -> literal no-winding gate for r
     -> cmp99UbarLogRadius(B(r)) < 1
-    -> chain depth (r_next r)
+    -> positive_next(r) < 1
+    -> chain depth (positive_next(r) / (1 - positive_next(r)))
     -> chain (depth + 1) r
 ```
 
