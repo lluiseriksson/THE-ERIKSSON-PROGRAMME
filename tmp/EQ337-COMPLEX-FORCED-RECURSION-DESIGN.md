@@ -112,6 +112,14 @@ accepting `CMP99SourceComplexUbarRadiusChain` from the caller would package the
 per-scale strict gates without discharging them and therefore does not count
 as physical closure.
 
+The sealed real-slice template is `CMP99SourceUbarClosedBudget`: it defines the
+generated radius at every depth, proves an explicit one-step growth factor,
+and derives the complete chain from one initial-scale `terminal_small`
+inequality.  The complex producer must have the same closed shape for the
+literal oriented radius map above.  A replacement record containing
+`∀ k < depth, ...` smallness fields is not accepted; that would only rename the
+per-scale obligations.
+
 The exact scalar shape to elaborate after the prerequisite gate is therefore
 the following (names remain provisional until Lean fixes the implicit
 arguments):
