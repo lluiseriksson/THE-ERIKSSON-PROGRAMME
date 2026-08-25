@@ -250,6 +250,11 @@ background, would reverse the physical construction.
    diagnostic gate is not permission to remove PRE-VALIDATION.
 8. This work does not move `20/41`, does not instantiate `TermSource`, and
    does not declare window 15 attained.
+9. The physical closed-radius adapter must identify not only the literal
+   deviation, logarithmic radius and exponential radius, but also the complete
+   positive-edge radius and the all-orientation successor radius with
+   `cmp99ComplexClosedRadiusNextLink` and `cmp99ComplexClosedRadiusNext`.
+   Componentwise equalities alone do not authorize the recursive constructor.
 
 ## Prepared diagnostic boundary
 
