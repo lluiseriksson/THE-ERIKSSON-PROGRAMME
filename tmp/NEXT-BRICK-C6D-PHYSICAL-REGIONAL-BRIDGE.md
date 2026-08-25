@@ -1112,3 +1112,37 @@ the minimal repro and then in the physical module before any promotion.
 - no generated CT+Schur route declared as physical attainment;
 - counters stay `20/41`, `TermSource = 0` until an actual terminal producer is
   installed.
+
+### Post-Eq337 analytic Ubar boundary (STATIC; promotion gated)
+
+The next analytic background boundary is now frozen as exactly three
+source/audit pairs in `tmp/C6D-COMPLEX-UBAR-DRAFT-PATHS.txt`.  The lightweight
+guards report six PRE-VALIDATION files and complete `22/22` public-declaration
+axiom coverage, including the named `MatrixRealization` instance for
+`SL(N,C)`.  Its promoted-byte manifest is
+`5483BD415B9C07B7828E6EA0F8C1945809B3EB6C2E60A8C90023D1C38EEDADDA`.
+
+The boundary constructs internally:
+
+1. tracelessness of the principal Mercator logarithm from determinant one and
+   the explicit no-winding budget;
+2. the determinant-one weighted Ubar factor in `SL(N,C)`;
+3. its exact physical complex coordinate through the Eq. (3.37)
+   `sl(N,C)` equivalence; and
+4. one literal oriented next-background step from the fine background.
+
+It does **not** construct the path-product deviation estimate.  The surviving
+premise
+
+```text
+forall b x, x in blockOf M N' b.1 ->
+  norm (literalUbarDeviation background b x - 1) <= budget.delta
+```
+
+is therefore a named analytic obligation, not a produced theorem and not a
+free next background.  The forced finite recursion and the producer of this
+uniform deviation bound remain downstream work.  Materializer
+`tmp/promote_c6d_complex_ubar.py` refuses `--apply` while the exact Eq. (3.37)
+complex perturbed-background source/audit pair still carries PRE-VALIDATION.
+Thus this static boundary cannot be stacked on an unsealed coordinate gate.
+It moves neither `20/41` nor window 15 and does not instantiate `TermSource`.
