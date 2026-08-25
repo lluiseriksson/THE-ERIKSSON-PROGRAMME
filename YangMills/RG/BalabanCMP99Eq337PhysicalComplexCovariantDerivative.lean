@@ -104,10 +104,15 @@ noncomputable def cmp99SUNAdjointComplexActionLM
       cmp99SUNLieComplexCoordImagPart_smul,
       map_sub, map_add, map_smul, map_smul, map_smul, map_smul]
     ext a
-    apply Complex.ext
-    · simp [Complex.mul_re, Complex.mul_im]
-      ring
-    · simp [Complex.mul_re, Complex.mul_im]
+    let x : ℝ :=
+      rho.adCLM g (cmp99SUNLieComplexCoordRealPart Z) a
+    let y : ℝ :=
+      rho.adCLM g (cmp99SUNLieComplexCoordImagPart Z) a
+    change
+      (((c.re * x - c.im * y : ℝ) : ℂ) +
+        Complex.I * ((c.im * x + c.re * y : ℝ) : ℂ)) =
+      c * (((x : ℝ) : ℂ) + Complex.I * ((y : ℝ) : ℂ))
+    apply Complex.ext <;> simp [Complex.mul_re, Complex.mul_im] <;> ring
 
 /-- Complex-linear extension, written explicitly by real and imaginary
 parts, of the physical adjoint action of one compact background link. -/
