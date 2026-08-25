@@ -49,6 +49,14 @@ def main() -> int:
     ]
     if missing:
         raise SystemExit(f"C6D_STEP3_PREREQUISITES_MISSING={missing!r}")
+    unsealed = [
+        relative
+        for relative in preview.PREREQUISITE_TARGETS
+        if "PRE-VALIDATION:" in
+        (ROOT / relative).read_text(encoding="utf-8-sig")
+    ]
+    if unsealed:
+        raise SystemExit(f"C6D_STEP3_PREREQUISITES_NOT_SEALED={unsealed!r}")
     created: list[Path] = []
     try:
         for relative, data in rows:
