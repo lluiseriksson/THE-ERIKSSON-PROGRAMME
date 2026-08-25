@@ -81,6 +81,7 @@ theorem cmp99SUNLieComplexCoordImagPart_smul
   ext a
   change (c * Z a).im = c.im * (Z a).re + c.re * (Z a).im
   rw [Complex.mul_im]
+  ac_rfl
 
 /-- Canonical complex-linear extension of the physical adjoint action of
 one compact background link. -/
