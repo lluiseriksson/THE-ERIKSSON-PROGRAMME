@@ -299,6 +299,23 @@ PRE-VALIDATION boundary
 the transported one-cochain and states the positive-bond matrix identity.
 It is uncompiled and remains a gate before the two-tower producer.
 
+The corresponding real-domain transport is now a separate two-file
+PRE-VALIDATION boundary,
+`tmp/C6D-STEP4-EQ337-REAL-GAUGE-COVARIANCE-DRAFT-PATHS.txt`.  It fixes the
+source-vertex action to `matrixSUNAdjointModel`, derives the complete
+`(mu,nu)` tensor covariance from `SUNAdjointModel.ad_mul` and inverse
+cancellation, and constructs the transported (3.37) domain witness from the
+original one.  Thus neither the transformed amplitude bound nor the
+transformed covariant-derivative bound is a new caller hypothesis.  The
+source/audit/path-list SHA-256 values are respectively
+`BFBF883A35F637568EA78A06BAA2DF890AD8FAEB34BA441A30FB7B1AE69F2A36`,
+`0B6356476A0D1D7C2FDF67E7B10D9B881AF425E28523BB838875E22672E936D1`,
+and
+`2D086C9EBF05AE9FE8ACAD53E6A04B326E8B86EC7A2B9BD522943D92C96B37B0`.
+The lightweight text/import/readout gates pass at `2/2` and `6/6`, but no
+compiler verdict exists and the boundary is not appended to the C6d gate in
+flight.
+
 The multiplicatively perturbed background itself is already a literal object
 in the tree:
 
