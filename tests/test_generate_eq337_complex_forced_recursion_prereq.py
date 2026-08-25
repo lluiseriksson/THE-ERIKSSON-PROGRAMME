@@ -134,8 +134,8 @@ def test_source_facing_step_discharges_deviation_internally() -> None:
     body_end = text.index("\n\n/-- The generic source step internally", body_start)
     body = text[body_start:body_end]
     assert "let B := cmp99SourceComplexUbarNoWindingBudget" in body
-    assert "exact cmp99SourceComplexLocalizedNextBackground" in body
-    assert "(d := d) (M := M) (N' := N') (Nc := Nc) background B (by" in body
+    assert "exact @cmp99SourceComplexLocalizedNextBackground" in body
+    assert "d M N' Nc instD instM instN' instNc background B (by" in body
     assert (
         "norm_cmp99SourceComplexLocalizedUbarDeviation_le_uniformRadius_of_linkRadius"
         in body
