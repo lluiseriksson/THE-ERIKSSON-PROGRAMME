@@ -4,3 +4,4 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius
 
 #print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedLinkRadius
 #print axioms YangMills.RG.norm_cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_sub_one_le
+#print axioms YangMills.RG.norm_cmp99Eq337PhysicalComplexPerturbedNegativeBondModel_sub_one_le

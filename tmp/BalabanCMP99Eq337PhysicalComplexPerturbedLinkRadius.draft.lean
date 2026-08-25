@@ -88,6 +88,69 @@ theorem norm_cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_sub_one_le
       unfold cmp99Eq337PhysicalComplexPerturbedLinkRadius
       ring
 
+/-- The explicit reverse-orientation matrix model `U† exp(-eta A)` has the
+same radius.  This is the analytic half of the negative-link theorem; the
+separate algebraic bridge to the inverse value of the reconstructed
+`SL(N,C)` background is intentionally not hidden here. -/
+theorem norm_cmp99Eq337PhysicalComplexPerturbedNegativeBondModel_sub_one_le
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta epsilonU rA : ℝ) (b : PhysicalBond d N)
+    (hA : ‖A b‖ ≤ rA)
+    (hsmall : |eta| *
+      (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2)
+    (hU : ‖(U (positiveEdgeOfPhysicalBond b) :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonU) :
+    ‖(U (positiveEdgeOfPhysicalBond b) :
+          Matrix (Fin Nc) (Fin Nc) ℂ)ᴴ *
+        NormedSpace.exp
+          ((-eta) • cmp99SUNLieComplexCoordMatrixLM Nc (A b)) - 1‖ ≤
+      cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA := by
+  let X := cmp99SUNLieComplexCoordMatrixLM Nc (A b)
+  let U0 : Matrix (Fin Nc) (Fin Nc) ℂ :=
+    U (positiveEdgeOfPhysicalBond b)
+  have hbudget : 0 ≤ cmp99SUNLieComplexCoordMatrixNormBudget Nc :=
+    norm_nonneg _
+  have hX : ‖X‖ ≤
+      cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA := by
+    exact (norm_cmp99SUNLieComplexCoordMatrixLM_le (A b)).trans
+      (mul_le_mul_of_nonneg_left hA hbudget)
+  have hexp :
+      ‖NormedSpace.exp ((-eta) • X) - 1‖ ≤
+        2 * (|eta| *
+          (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA)) := by
+    simpa only [abs_neg] using
+      norm_exp_smul_sub_one_le_two_mul (-eta)
+        (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) X hX
+        (by simpa only [abs_neg] using hsmall)
+  have hU0 : ‖U0ᴴ‖ = 1 := by
+    let e : ConcreteEdge d N := ⟨b.1, b.2, true⟩
+    rw [Matrix.l2_opNorm_conjTranspose]
+    simpa [U0, e, orientedWilsonPositiveBase] using
+      norm_orientedWilsonPositiveBase U e
+  have hUdev : ‖U0ᴴ - 1‖ ≤ epsilonU := by
+    calc
+      ‖U0ᴴ - 1‖ = ‖(U0 - 1)ᴴ‖ := by simp
+      _ = ‖U0 - 1‖ := Matrix.l2_opNorm_conjTranspose _
+      _ ≤ epsilonU := hU
+  change ‖U0ᴴ * NormedSpace.exp ((-eta) • X) - 1‖ ≤ _
+  calc
+    ‖U0ᴴ * NormedSpace.exp ((-eta) • X) - 1‖ =
+        ‖U0ᴴ * (NormedSpace.exp ((-eta) • X) - 1) + (U0ᴴ - 1)‖ := by
+          congr 1
+          noncomm_ring
+    _ ≤ ‖U0ᴴ * (NormedSpace.exp ((-eta) • X) - 1)‖ + ‖U0ᴴ - 1‖ :=
+      norm_add_le _ _
+    _ ≤ ‖U0ᴴ‖ * ‖NormedSpace.exp ((-eta) • X) - 1‖ + epsilonU :=
+      add_le_add (norm_mul_le _ _) hUdev
+    _ ≤ 1 * (2 * (|eta| *
+          (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA))) + epsilonU := by
+      exact add_le_add
+        (mul_le_mul hU0.le hexp (norm_nonneg _) (by norm_num)) le_rfl
+    _ = cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA := by
+      unfold cmp99Eq337PhysicalComplexPerturbedLinkRadius
+      ring
+
 end
 
 end YangMills.RG

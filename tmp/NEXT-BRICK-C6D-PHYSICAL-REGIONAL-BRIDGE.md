@@ -1245,18 +1245,26 @@ norm one.  It does not yet claim the reverse-orientation identity or a path
 product estimate; those remain the next gates before this leaf can feed
 `hdev`.
 
+The same scratch source now proves the analytic negative-orientation model
+`U dagger * exp(-eta A)` with exactly the same radius.  The public background
+value is not identified with that model by assertion: the outstanding gate
+is the algebraic theorem that coercing the inverse of the positive
+`SL(N,C)` value gives this ordered product.  Keeping that equality separate
+prevents an abstract inverse-norm estimate from replacing the literal source
+orientation.
+
 The exact scratch hashes are:
 
 ```text
-82C1C81F864AEEBE133AA36D892CE0ACA69025BD2EAA50A0ED3C23BA7510D259
+3FAECB6B32B0D37B51004ED3375F61CCF980B987628DB6783E63AAAD779D142C
   tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius.draft.lean
-FEEEC01AEA16845F355E1B583C126AC083393D7E48AA689B3543AC407EE931F9
+0CDB5DFF310152955C1D56F3B068CA706D3FB2E0A3515471994845B819F28308
   tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadiusAudit.draft.lean
 0A0A80FEA592B580142360B515E7CDB63410A0AE1CA91AE5B36E5C4761441185
   tmp/C6D-COMPLEX-UBAR-LINK-RADIUS-DRAFT-PATHS.txt
 ```
 
-The lightweight gates pass at `2/2` files and `2/2` declaration/readout
+The lightweight gates pass at `2/2` files and `3/3` declaration/readout
 coverage.  This is textual/static evidence only; the pair is not promoted,
 compiled or oracle-checked.
 
