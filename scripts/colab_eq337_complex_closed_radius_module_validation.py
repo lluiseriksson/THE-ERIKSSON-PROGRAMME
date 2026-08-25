@@ -35,7 +35,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "eq337-complex-closed-radius-module-cold-v1"
+runner.RUNNER_REV = "eq337-complex-closed-radius-module-cold-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-complex-closed-radius-module")
 runner.EVIDENCE = Path("/content/hrpoly-complex-closed-radius-module-evidence")
@@ -48,6 +48,11 @@ runner.SOURCE_BLOBS = {
         "ff5a8ea1ae904fce9501fac2bcf8bbd03ff1cdeb76b68457340dc56f30dc096c",
 }
 runner.QUEUE = [
+    (
+        "complex_closed_radius_module_prepare_build_dir",
+        ["mkdir", "-p", ".lake/build/lib/lean/YangMills/RG"],
+        None,
+    ),
     (
         "complex_closed_radius_module",
         [
