@@ -12,8 +12,8 @@ from collections import defaultdict
 from pathlib import Path
 
 
-SOURCE_SHA = "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677"
-RUNNER_REV = "eq337-complex-ubar-radius-cold-v2"
+SOURCE_SHA = "d69356d18c6c2392bc8a9599fd1c398109487f57"
+RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v3"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
@@ -38,6 +38,7 @@ STAGES = (
             f"complex_ubar_radius_{index:02d}_{module.lower()}_audit",
         )
     ),
+    "complex_ubar_radius_promoted_root",
 )
 
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)

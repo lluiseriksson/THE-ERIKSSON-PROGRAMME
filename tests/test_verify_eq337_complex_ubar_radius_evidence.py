@@ -55,7 +55,8 @@ def test_verifier_scope_matches_runner_pair_queue() -> None:
     assert tuple(prerequisite) == verifier.PREREQUISITE
     assert source_sha == verifier.SOURCE_SHA
     assert runner_revisions == [verifier.RUNNER_REV]
-    assert len(verifier.STAGES) == 17
+    assert len(verifier.STAGES) == 18
+    assert verifier.STAGES[-1] == "complex_ubar_radius_promoted_root"
     assert sum(count for _, count in verifier.MODULES) == 52
     assert verifier.PREREQUISITE[1] + sum(
         count for _, count in verifier.MODULES
