@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Colab diagnostic gate for the literal complex Eq. (3.37) Ubar radius.
+"""Cold Colab seal for the promoted literal complex Eq. (3.37) Ubar radius.
 
-The immutable source checkpoint contains one tracked PRE-VALIDATION
-prerequisite pair plus seven scratch PRE-VALIDATION pairs.  The runner
-materializes them in dependency order under their intended ``YangMills.RG``
-olean names, audits every public declaration, and stops at the first real
-error.  It does not promote source, remove PRE-VALIDATION, attain a terminal
-scalar window, or move ``20/41``.
+The immutable source checkpoint contains the seven promoted PRE-VALIDATION
+source/audit pairs.  The runner validates their exact Git blobs in dependency
+order, audits every public declaration, builds ``YangMillsCore`` from the same
+fresh checkout, and stops at the first real error.  It does not remove
+PRE-VALIDATION, attain a terminal scalar window, or move ``20/41``.
 """
 
 import hashlib
@@ -15,7 +14,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677"
+SOURCE_SHA = "d69356d18c6c2392bc8a9599fd1c398109487f57"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -49,40 +48,42 @@ PAIRS = [
 
 PREREQUISITE = ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26)
 
-runner.RUNNER_REV = "eq337-complex-ubar-radius-cold-v2"
+runner.RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v3"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-complex-ubar-radius")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-complex-ubar-radius-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-eq337-complex-ubar-radius-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq337-complex-ubar-radius-paths.txt")
 runner.SOURCE_BLOBS = {
-    "tmp/BalabanCMP99ComplexUbarSpecialLinear.draft.lean":
-        "1b3986d813a17a18378839bfd65d3f7c35f007ffc3b7587dba3571326f3f737c",
-    "tmp/BalabanCMP99ComplexUbarSpecialLinearAudit.draft.lean":
+    "YangMillsCore.lean":
+        "fb3764b0d7bbca999ab78c5334771c1053bd83ab5c75b94bf41858502ffdbf7b",
+    "YangMills/RG/BalabanCMP99ComplexUbarSpecialLinear.lean":
+        "7953e969f37fa64eefbc877a34c8eb22affaa231f1c63f4d56d0019b815451c4",
+    "YangMills/RG/BalabanCMP99ComplexUbarSpecialLinearAudit.lean":
         "46147664fa74ba119a8b4b9ecdfa2a49572c3988e7509c51ad845ca09fb57c37",
-    "tmp/BalabanCMP99ComplexUbarCoordinateExponent.draft.lean":
-        "101ef9c949ecb2a568762236b7daecccb56fab049341a311314bcb115379d7c9",
-    "tmp/BalabanCMP99ComplexUbarCoordinateExponentAudit.draft.lean":
-        "dd4cec0564c8a1b3263113a231ae1a8fd5c365db15db54bf8d638c72e1bc2ad9",
-    "tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius.draft.lean":
-        "aae17f83297f96c27fe1a44800166c53fa8bd390f2265e7f4d88f67af9048984",
-    "tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadiusAudit.draft.lean":
+    "YangMills/RG/BalabanCMP99ComplexUbarCoordinateExponent.lean":
+        "c8b2ad4b2a799d2f87fb1a72fa43cc3c8a1c9cfb51cee64bc15b64a0d4d6ed62",
+    "YangMills/RG/BalabanCMP99ComplexUbarCoordinateExponentAudit.lean":
+        "5a1d613e62fea16d1d22739d161a7c79db139a7a5b1f1dea3305738961edb44e",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius.lean":
+        "67106eb709773bf63bd1945b0326961edde428d15c7164019caf765cbf522420",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadiusAudit.lean":
         "004dec0c3ba76a6e98e57203ba0b1758761193c40e2abc907e5beed30249e4d7",
-    "tmp/BalabanCMP99ComplexFourFactorDeviation.draft.lean":
-        "039b6d203abcb3f834ce7c24b2a8e0f5b8e1f9154a1926371ee6e47c0ed4286f",
-    "tmp/BalabanCMP99ComplexFourFactorDeviationAudit.draft.lean":
+    "YangMills/RG/BalabanCMP99ComplexFourFactorDeviation.lean":
+        "7f19581926f938a55444705181291a93b667a87e3586cc45613a46d0ac9aac7d",
+    "YangMills/RG/BalabanCMP99ComplexFourFactorDeviationAudit.lean":
         "92839a61d39512e60edfcf79925f80aaddc950be4ec7056b5e067e532092e751",
-    "tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadius.draft.lean":
-        "51909e08c4471d658b3e0f13aa0528480f7e199e70739e932df9a412dc500afa",
-    "tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadiusAudit.draft.lean":
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexWilsonLineRadius.lean":
+        "f0eb686a70f94f9aa9b0455a0cf92fd90f129de1c1715e8f28c1fb00de6bddf9",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexWilsonLineRadiusAudit.lean":
         "9167f0f8c0ecf3ad2988198dbe42b60ae2580c9b960b35a5acd24883232f1df7",
-    "tmp/BalabanCMP99ComplexLocalizedUbarBackground.draft.lean":
-        "98f563ea4143314a77088f2110eeb3b14883fee618711dbf1e6fc2d769f07603",
-    "tmp/BalabanCMP99ComplexLocalizedUbarBackgroundAudit.draft.lean":
+    "YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackground.lean":
+        "3fc0016aa1aa488bbdfa44477bbaa75c2a128869475af63b3f32648d7014a960",
+    "YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackgroundAudit.lean":
         "9d4e9aabab9932edef3ef68d5aad1791008dd4a2a618922a01f11843d54dcd04",
-    "tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.draft.lean":
-        "f2ef2fada05612aa372880803c94ef8531a1bba8371580b816ea1c97d1f89e9f",
-    "tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.draft.lean":
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.lean":
+        "a0bd3189b28b9da75f04fab6064b7a0f58823a1306fa6f08ddd40b0d89749892",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.lean":
         "88d8ec2d94567fde7572afdf8c86b343cac53bdb112aa7e67fec40370d255ee9",
 }
 
@@ -115,8 +116,8 @@ queue = [
 ]
 
 for index, (name, expected_axioms) in enumerate(PAIRS, start=1):
-    source = f"tmp/{name}.draft.lean"
-    audit = f"tmp/{name}Audit.draft.lean"
+    source = f"YangMills/RG/{name}.lean"
+    audit = f"YangMills/RG/{name}Audit.lean"
     queue.extend([
         (
             f"complex_ubar_radius_{index:02d}_{name.lower()}_source",
@@ -130,11 +131,17 @@ for index, (name, expected_axioms) in enumerate(PAIRS, start=1):
             f"complex_ubar_radius_{index:02d}_{name.lower()}_audit",
             [
                 "lake", "env", "lean", audit, "-o",
-                f".lake/build/lib/lean/tmp/{name}Audit.draft.olean",
+                f".lake/build/lib/lean/YangMills/RG/{name}Audit.olean",
             ],
             expected_axioms,
         ),
     ])
+
+queue.append((
+    "complex_ubar_radius_promoted_root",
+    ["lake", "build", "YangMillsCore"],
+    None,
+))
 
 runner.QUEUE = queue
 
