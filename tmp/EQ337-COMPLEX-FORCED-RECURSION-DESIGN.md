@@ -195,6 +195,17 @@ background, would reverse the physical construction.
 
 ## Prepared diagnostic boundary
 
+The first Eq. (3.37) Ubar-radius gate has one tracked prerequisite pair in
+addition to its seven scratch pairs.  It must compile and audit all `26`
+declarations of
+`BalabanCMP99Eq337PhysicalComplexPerturbedBackground` before auditing the
+`52` declarations in the scratch Ubar boundary.  A successful package thus
+contains exactly `78` readouts.  The same evidence first seals only that
+tracked source/audit pair and imports its audit into `YangMillsCore`; only
+then may the fourteen scratch files be promoted, still visibly
+PRE-VALIDATION, for the later prerequisite gate.  Materializing the tracked
+source without auditing it is not a promotion precondition.
+
 The next compiler-facing unit is intentionally smaller than the forced
 recursion.  After the fourteen-file Eq. (3.37) Ubar boundary has been promoted
 from its own cold evidence, the generator
