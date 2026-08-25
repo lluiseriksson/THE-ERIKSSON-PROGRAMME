@@ -120,3 +120,22 @@ free next-background smallness proof, or a terminal equality.
    diagnostic gate is not permission to remove PRE-VALIDATION.
 7. This work does not move `20/41`, does not instantiate `TermSource`, and
    does not declare window 15 attained.
+
+## Prepared diagnostic boundary
+
+The next compiler-facing unit is intentionally smaller than the forced
+recursion.  After the fourteen-file Eq. (3.37) Ubar boundary has been promoted
+from its own cold evidence, the generator
+`generate_eq337_complex_forced_recursion_prereq_runner.py` freezes a
+stop-on-first-error Colab queue with this order:
+
+1. the Mathlib-only inverse-radius reproduction;
+2. the project inverse-radius theorem and its one-declaration axiom audit;
+3. the complex all-orientation small-field producer and its twelve-declaration
+   axiom audit.
+
+The matching notebook generator gives the launcher a stable cell id and pins
+the raw runner by commit and SHA-256.  A green diagnostic is evidence only for
+these prerequisites; it does not authorize stacking or promoting the final
+forced recursion, and it leaves `20/41`, `TermSource = 0`, and window 15
+unchanged.
