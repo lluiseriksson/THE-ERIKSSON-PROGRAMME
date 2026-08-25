@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HELPER = ROOT / "tmp" / "retarget_eq337_complex_ubar_radius_runner.py"
 RUNNER = ROOT / "scripts" / "colab_eq337_complex_ubar_radius_validation.py"
+VERIFIER = ROOT / "tmp" / "verify_eq337_complex_ubar_radius_evidence.py"
 COORDINATE_RUNNER = ROOT / "scripts" / "colab_eq337_complex_coordinate_validation.py"
 UBAR_PATHS = ROOT / "tmp" / "EQ337-COMPLEX-UBAR-RADIUS-DRAFT-PATHS.txt"
 
@@ -29,6 +30,12 @@ def test_current_pin_is_byte_stable() -> None:
         "eq337-complex-ubar-radius-debug-v1",
     )
     assert retargeted == current
+    verifier = VERIFIER.read_text(encoding="utf-8")
+    assert helper.retarget_verifier(
+        verifier,
+        "b1357760890c9551dd9786da0f691d652bf21eda",
+        "eq337-complex-ubar-radius-debug-v1",
+    ) == verifier
 
 
 def test_accepts_new_source_only_when_boundary_blobs_are_unchanged() -> None:
@@ -41,6 +48,13 @@ def test_accepts_new_source_only_when_boundary_blobs_are_unchanged() -> None:
     )
     assert 'SOURCE_SHA = "e44b164c59aa289bb1ca2995bc71dfe7e5f58ef9"' in retargeted
     assert 'runner.RUNNER_REV = "eq337-complex-ubar-radius-debug-v2"' in retargeted
+    verifier = helper.retarget_verifier(
+        VERIFIER.read_text(encoding="utf-8"),
+        "e44b164c59aa289bb1ca2995bc71dfe7e5f58ef9",
+        "eq337-complex-ubar-radius-debug-v2",
+    )
+    assert 'SOURCE_SHA = "e44b164c59aa289bb1ca2995bc71dfe7e5f58ef9"' in verifier
+    assert 'RUNNER_REV = "eq337-complex-ubar-radius-debug-v2"' in verifier
 
 
 def test_ubar_manifest_is_exactly_the_runner_hash_gate() -> None:

@@ -13,6 +13,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUNNER = ROOT / "scripts" / "colab_eq337_complex_ubar_radius_validation.py"
+DEFAULT_VERIFIER = ROOT / "tmp" / "verify_eq337_complex_ubar_radius_evidence.py"
 
 
 def git(*args: str, binary: bool = False) -> bytes | str:
@@ -111,22 +112,77 @@ def retarget(text: str, source_sha: str, runner_rev: str) -> str:
     return text
 
 
+def retarget_verifier(text: str, source_sha: str, runner_rev: str) -> str:
+    source_pattern = re.compile(
+        r'(?m)^SOURCE_SHA\s*=\s*["\'][0-9a-f]{40}["\']\s*$'
+    )
+    revision_pattern = re.compile(
+        r'(?m)^RUNNER_REV\s*=\s*["\'][^"\']+["\']\s*$'
+    )
+    if len(source_pattern.findall(text)) != 1:
+        raise SystemExit("VERIFIER_SOURCE_PIN_ASSIGNMENT_COUNT_MISMATCH")
+    if len(revision_pattern.findall(text)) != 1:
+        raise SystemExit("VERIFIER_RUNNER_REV_ASSIGNMENT_COUNT_MISMATCH")
+    text = source_pattern.sub(f'SOURCE_SHA = "{source_sha}"', text)
+    text = revision_pattern.sub(f'RUNNER_REV = "{runner_rev}"', text)
+    compile(text, str(DEFAULT_VERIFIER), "exec")
+    return text
+
+
+def write_pair(
+    runner_output: Path,
+    runner_content: str,
+    verifier_output: Path,
+    verifier_content: str,
+) -> None:
+    originals = {
+        path: path.read_bytes() if path.exists() else None
+        for path in (runner_output, verifier_output)
+    }
+    written: list[Path] = []
+    try:
+        for path, content in (
+            (runner_output, runner_content),
+            (verifier_output, verifier_content),
+        ):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(content, encoding="utf-8", newline="\n")
+            written.append(path)
+    except Exception:
+        for path in reversed(written):
+            original = originals[path]
+            if original is None:
+                path.unlink(missing_ok=True)
+            else:
+                path.write_bytes(original)
+        raise
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--runner-rev", required=True)
     parser.add_argument("--input", type=Path, default=DEFAULT_RUNNER)
     parser.add_argument("--output", type=Path, default=DEFAULT_RUNNER)
+    parser.add_argument("--verifier-input", type=Path, default=DEFAULT_VERIFIER)
+    parser.add_argument("--verifier-output", type=Path, default=DEFAULT_VERIFIER)
     args = parser.parse_args()
     require_commit(args.source_sha)
-    content = retarget(args.input.read_text(encoding="utf-8"), args.source_sha, args.runner_rev)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(content, encoding="utf-8", newline="\n")
+    content = retarget(
+        args.input.read_text(encoding="utf-8"), args.source_sha, args.runner_rev
+    )
+    verifier_content = retarget_verifier(
+        args.verifier_input.read_text(encoding="utf-8"),
+        args.source_sha,
+        args.runner_rev,
+    )
+    write_pair(args.output, content, args.verifier_output, verifier_content)
     print(
         "EQ337_COMPLEX_UBAR_RUNNER_RETARGET_OK "
         f"source_sha={args.source_sha} runner_rev={args.runner_rev} "
-        f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
-        f"output={args.output}"
+        f"runner_sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
+        f"verifier_sha256={hashlib.sha256(verifier_content.encode()).hexdigest().upper()} "
+        f"runner_output={args.output} verifier_output={args.verifier_output}"
     )
     return 0
 
