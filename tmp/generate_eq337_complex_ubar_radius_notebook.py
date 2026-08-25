@@ -47,10 +47,15 @@ def require_commit(sha: str, label: str) -> None:
         raise SystemExit(f"{label}_SHA_MISMATCH={resolved}")
 
 
-def generate(source_sha: str, runner_checkpoint: str, runner_rev: str) -> str:
+def generate(
+    source_sha: str,
+    runner_checkpoint: str,
+    runner_rev: str,
+    runner_path: str = RUNNER_PATH,
+) -> str:
     require_commit(source_sha, "SOURCE")
     require_commit(runner_checkpoint, "RUNNER")
-    runner = blob(runner_checkpoint, RUNNER_PATH)
+    runner = blob(runner_checkpoint, runner_path)
     runner_text = runner.decode("utf-8")
     source_pin = re.search(r'^SOURCE_SHA\s*=\s*["\']([0-9a-f]{40})["\']\s*$', runner_text, re.MULTILINE)
     if source_pin is None or source_pin.group(1) != source_sha:
@@ -63,7 +68,7 @@ def generate(source_sha: str, runner_checkpoint: str, runner_rev: str) -> str:
     if revision_pin is None or revision_pin.group(1) != runner_rev:
         raise SystemExit("EQ337_UBAR_RUNNER_REV_MISMATCH")
     runner_hash = hashlib.sha256(runner).hexdigest()
-    runner_url = f"{REPO_RAW}/{runner_checkpoint}/{RUNNER_PATH}"
+    runner_url = f"{REPO_RAW}/{runner_checkpoint}/{runner_path}"
     cell = f'''import hashlib, urllib.request
 from google.colab import runtime
 RUNNER_URL = {json.dumps(runner_url)}
@@ -119,13 +124,19 @@ def main() -> int:
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--runner-checkpoint", required=True)
     parser.add_argument("--runner-rev", required=True)
+    parser.add_argument("--runner-path", default=RUNNER_PATH)
     parser.add_argument(
         "--output",
         type=Path,
         default=ROOT / "scripts" / "colab_eq337_complex_ubar_radius_validation.ipynb",
     )
     args = parser.parse_args()
-    content = generate(args.source_sha, args.runner_checkpoint, args.runner_rev)
+    content = generate(
+        args.source_sha,
+        args.runner_checkpoint,
+        args.runner_rev,
+        args.runner_path,
+    )
     notebook = json.loads(content)
     compile("".join(notebook["cells"][0]["source"]), str(args.output), "exec")
     args.output.parent.mkdir(parents=True, exist_ok=True)

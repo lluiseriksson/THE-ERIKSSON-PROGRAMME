@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HELPER = ROOT / "tmp" / "retarget_eq337_complex_ubar_radius_runner.py"
 RUNNER = ROOT / "scripts" / "colab_eq337_complex_ubar_radius_validation.py"
+COORDINATE_RUNNER = ROOT / "scripts" / "colab_eq337_complex_coordinate_validation.py"
 
 
 def load_helper():
@@ -39,3 +40,14 @@ def test_accepts_new_source_only_when_boundary_blobs_are_unchanged() -> None:
     assert 'SOURCE_SHA = "e44b164c59aa289bb1ca2995bc71dfe7e5f58ef9"' in retargeted
     assert 'runner.RUNNER_REV = "eq337-complex-ubar-radius-debug-v2"' in retargeted
 
+
+def test_accepts_coordinate_runner_when_its_six_blobs_are_unchanged() -> None:
+    helper = load_helper()
+    current = COORDINATE_RUNNER.read_text(encoding="utf-8")
+    retargeted = helper.retarget(
+        current,
+        "e44b164c59aa289bb1ca2995bc71dfe7e5f58ef9",
+        "eq337-complex-coordinate-fresh-v5",
+    )
+    assert 'SOURCE_SHA = "e44b164c59aa289bb1ca2995bc71dfe7e5f58ef9"' in retargeted
+    assert 'runner.RUNNER_REV = "eq337-complex-coordinate-fresh-v5"' in retargeted

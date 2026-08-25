@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GENERATOR = ROOT / "tmp" / "generate_eq337_complex_ubar_radius_notebook.py"
 CURRENT_NOTEBOOK = ROOT / "scripts" / "colab_eq337_complex_ubar_radius_validation.ipynb"
+COORDINATE_NOTEBOOK = ROOT / "scripts" / "colab_eq337_complex_coordinate_validation.ipynb"
 
 
 def load_generator():
@@ -30,3 +31,16 @@ def test_reproduces_published_notebook_semantics() -> None:
     published = json.loads(CURRENT_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
 
+
+def test_reproduces_published_coordinate_notebook_semantics() -> None:
+    generator = load_generator()
+    generated = json.loads(
+        generator.generate(
+            "b70735b82216a0ab1cd9a3bd4e195db1426a83fe",
+            "737b7b01badeba5811b1bb7ae557c6ea45c4a79e",
+            "eq337-complex-coordinate-fresh-v4",
+            "scripts/colab_eq337_complex_coordinate_validation.py",
+        )
+    )
+    published = json.loads(COORDINATE_NOTEBOOK.read_text(encoding="utf-8"))
+    assert generated == published

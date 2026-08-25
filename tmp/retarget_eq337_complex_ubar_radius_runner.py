@@ -40,7 +40,16 @@ def require_commit(sha: str) -> None:
 
 def source_blobs(tree: ast.Module) -> dict[str, str]:
     matches: list[dict[str, str]] = []
+    string_constants: dict[str, str] = {}
     for node in tree.body:
+        if (
+            isinstance(node, ast.Assign)
+            and len(node.targets) == 1
+            and isinstance(node.targets[0], ast.Name)
+            and isinstance(node.value, ast.Constant)
+            and isinstance(node.value.value, str)
+        ):
+            string_constants[node.targets[0].id] = node.value.value
         if not isinstance(node, ast.Assign) or len(node.targets) != 1:
             continue
         target = node.targets[0]
@@ -50,12 +59,22 @@ def source_blobs(tree: ast.Module) -> dict[str, str]:
             and target.value.id == "runner"
             and target.attr == "SOURCE_BLOBS"
         ):
-            value = ast.literal_eval(node.value)
-            if not isinstance(value, dict) or not all(
-                isinstance(path, str) and isinstance(digest, str)
-                for path, digest in value.items()
-            ):
+            if not isinstance(node.value, ast.Dict):
                 raise SystemExit("SOURCE_BLOBS_LITERAL_INVALID")
+            value: dict[str, str] = {}
+            for key_node, digest_node in zip(node.value.keys, node.value.values, strict=True):
+                if isinstance(key_node, ast.Constant) and isinstance(key_node.value, str):
+                    path = key_node.value
+                elif isinstance(key_node, ast.Name) and key_node.id in string_constants:
+                    path = string_constants[key_node.id]
+                else:
+                    raise SystemExit("SOURCE_BLOBS_PATH_NOT_STATIC_TEXT")
+                if not (
+                    isinstance(digest_node, ast.Constant)
+                    and isinstance(digest_node.value, str)
+                ):
+                    raise SystemExit("SOURCE_BLOBS_DIGEST_NOT_LITERAL_TEXT")
+                value[path] = digest_node.value
             matches.append(value)
     if len(matches) != 1:
         raise SystemExit(f"SOURCE_BLOBS_ASSIGNMENT_COUNT={len(matches)} WANT=1")
