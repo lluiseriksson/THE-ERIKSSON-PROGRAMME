@@ -170,6 +170,72 @@ theorem norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le_uniformRadius
           Nc epsilonU eta rA) hr
         (cmp99SourceComplexUbarFourPaths_length_le hd hM b x hx)
 
+/-- The uniform complex Ubar radius canonically produces the full Mercator
+and no-winding budget once the one visible scalar gate is discharged. -/
+noncomputable def cmp99Eq337SourceComplexUbarNoWindingBudget
+    (d M Nc : ℕ) [NeZero Nc]
+    (epsilonU eta rA : ℝ)
+    (hnoWinding :
+      cmp99Eq337SourceComplexUbarUniformDeviationRadius d M
+          (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+            Nc epsilonU eta rA) <
+        cmp99UbarNoWindingThreshold Nc) :
+    MatrixNearLogNoWindingBudget Nc :=
+  cmp99PhysicalNoWindingBudget
+    (cmp99Eq337SourceComplexUbarUniformDeviationRadius d M
+      (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+        Nc epsilonU eta rA))
+    hnoWinding
+
+@[simp] theorem cmp99Eq337SourceComplexUbarNoWindingBudget_delta
+    (d M Nc : ℕ) [NeZero Nc]
+    (epsilonU eta rA : ℝ) (hnoWinding) :
+    (cmp99Eq337SourceComplexUbarNoWindingBudget
+      d M Nc epsilonU eta rA hnoWinding).δ =
+      cmp99Eq337SourceComplexUbarUniformDeviationRadius d M
+        (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+          Nc epsilonU eta rA) := by
+  rfl
+
+/-- One literal complex source RG step with the deviation certificate built
+internally from Eq. (3.37).  Neither a preselected coarse background nor a
+free Ubar-deviation family is accepted. -/
+noncomputable def cmp99Eq337SourceComplexLocalizedNextBackground
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d (M * N') Nc)
+    (eta epsilonU rA : ℝ)
+    (hr : 0 ≤
+      cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA)
+    (hA : ∀ b, ‖A b‖ ≤ rA)
+    (hsmall : |eta| *
+      (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2)
+    (hU : ∀ b, ‖(U (positiveEdgeOfPhysicalBond b) :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonU)
+    (hnoWinding :
+      cmp99Eq337SourceComplexUbarUniformDeviationRadius d M
+          (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+            Nc epsilonU eta rA) <
+        cmp99UbarNoWindingThreshold Nc) :
+    GaugeConfig d N' SLNc := by
+  let background :=
+    cmp99Eq337PhysicalComplexPerturbedBackground U A eta
+  let B := cmp99Eq337SourceComplexUbarNoWindingBudget
+    d M Nc epsilonU eta rA hnoWinding
+  exact cmp99SourceComplexLocalizedNextBackground background B (by
+    intro b x hx
+    change ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
+      Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ
+    rw [show B.δ =
+        cmp99Eq337SourceComplexUbarUniformDeviationRadius d M
+          (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+            Nc epsilonU eta rA) by
+      exact cmp99Eq337SourceComplexUbarNoWindingBudget_delta
+        d M Nc epsilonU eta rA hnoWinding]
+    exact
+      norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le_uniformRadius
+        hd hM U A eta epsilonU rA hr hA hsmall hU b x hx)
+
 end
 
 end YangMills.RG

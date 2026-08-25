@@ -1355,9 +1355,9 @@ lemma proves that all four paths, including the reversed fourth path, obey the
 same `d * (M - 1)` source envelope.  Static-only hashes are:
 
 ```text
-41F7DA89C850F93DCA97131559951A9348A893AB51E8372274511C30C998D635
+F2EF2FADA05612AA372880803C94EF8531A1BBA8371580B816EA1C97D1F89E9F
   tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.draft.lean
-237C493E297B392C2E1D526E72DBA142379858142E561583E1B3C162C9FAB648
+88D8EC2D94567FDE7572AFDF8C86B343CAC53BDB112AA7E67FEC40370D255EE9
   tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.draft.lean
 2A881FA25EC08F733B0E17E1CE04317FCD24736F2BBF6969D1A8FD4D4C559088
   tmp/C6D-COMPLEX-UBAR-DEVIATION-RADIUS-DRAFT-PATHS.txt
@@ -1365,7 +1365,10 @@ same `d * (M - 1)` source envelope.  Static-only hashes are:
 
 The common length envelope is now consumed to produce a single scalar radius
 independent of `b,x`; the remaining scalar gate is its comparison with the
-named no-winding threshold.  The exact overlay-text gate passes for `2/2`
-files and the audit surface is `7/7`.  This remains static evidence only: no
+named no-winding threshold.  Conditional on that literal inequality, the
+scratch module constructs the `MatrixNearLogNoWindingBudget`, the complete
+`hdev` proof and one complex next background internally; none is accepted as
+a free input.  The exact overlay-text gate passes for `2/2` files and the
+audit surface is `10/10`.  This remains static evidence only: no
 `.olean` or axiom-oracle verdict
 exists, and no terminal field or scalar window is discharged.
