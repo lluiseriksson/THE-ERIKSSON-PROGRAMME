@@ -21,7 +21,7 @@ OVERLAY_GUARD = ROOT / "scripts" / "check_lean_overlay_text.py"
 DECLARATION = re.compile(
     r"(?m)^(?:@\[[^\]\n]+\]\s*)*"
     r"(?:(?:noncomputable|protected)\s+)*"
-    r"(?:def|theorem|lemma|structure|class|inductive|abbrev|opaque)\s+"
+    r"(?:def|theorem|lemma|structure|class|inductive|abbrev|opaque|instance)\s+"
     r"([^\s(:]+)"
 )
 READOUT = re.compile(

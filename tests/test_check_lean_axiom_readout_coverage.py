@@ -69,3 +69,15 @@ noncomputable def complexDatum
         "#print axioms complexDatum\n",
     )
     assert guard.coverage_failures(paths) == []
+
+
+def test_named_public_instance_requires_readout(tmp_path: Path) -> None:
+    guard = load_guard()
+    paths = write_pair(
+        tmp_path,
+        """noncomputable instance instDatum : Inhabited Nat := ⟨1⟩
+local instance : OfNat Nat 2 := ⟨2⟩
+""",
+        "#print axioms instDatum\n",
+    )
+    assert guard.coverage_failures(paths) == []
