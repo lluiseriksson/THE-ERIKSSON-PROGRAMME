@@ -24,14 +24,14 @@ def test_reproduces_published_notebook_semantics() -> None:
     generator = load_generator()
     generated = json.loads(
         generator.generate(
-            "44a0d11aa78b1b6bce9f5bb7f9ab164e45b90677",
-            "4a3ac4c0249bfa003abd4fa3e3c69cb2ae298d52",
-            "eq337-complex-ubar-radius-cold-v2",
+            "d69356d18c6c2392bc8a9599fd1c398109487f57",
+            "8cd79f482b386983cfc17a0c2d7d160f74dee148",
+            "eq337-complex-ubar-radius-promoted-cold-v3",
         )
     )
     published = json.loads(CURRENT_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
-    assert generated["cells"][0]["id"] == "gate-62dc1b419fadbf1a"
+    assert generated["cells"][0]["id"] == "gate-f584e0d59b9a5413"
 
 
 def test_reproduces_published_coordinate_notebook_semantics() -> None:
@@ -55,4 +55,4 @@ def test_c6d_launcher_has_stable_transport_bound_cell_id() -> None:
     cell = notebook["cells"][0]
     assert cell["id"] == "gate-96cc53a1d3f27483"
     source = "".join(cell["source"])
-    assert 'RUNNER_SHA256 = "96cc53a1d3f27483225d034b0b8a675ce24ee2dd1fedaacc3ab97372450838a7"' in source
+    assert 'RUNNER_SHA256 = "a0ca7faccb2e7c7b68d49622343be677c0b41554c9169c30c899a459a2798287"' in source
