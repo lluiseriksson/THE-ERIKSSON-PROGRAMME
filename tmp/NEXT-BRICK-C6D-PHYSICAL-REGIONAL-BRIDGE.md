@@ -1302,3 +1302,36 @@ Static-only hashes for this PRE-VALIDATION pair are:
 
 The overlay-text and import-prefix gates pass for `2/2` files and the audit
 surface is `2/2`.  This is not compiler or oracle evidence.
+
+The next PRE-VALIDATION pair closes the path-level *shape* without importing
+the unitary path lemma:
+
+```text
+tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadius.draft.lean
+tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadiusAudit.draft.lean
+```
+
+It identifies a coerced `SL(N,C)` Wilson line with the ordered product of its
+literal link deviations, combines the positive and negative Eq. (3.37) link
+theorems into one oriented-edge radius, and derives both
+
+```text
+norm(path - 1) <= length * rLink * (1 + rLink)^length
+norm(path)     <=                  (1 + rLink)^length.
+```
+
+The second line is portante: it supplies exactly the factor norms retained by
+the heterogeneous four-factor consumer.  The scratch hashes are:
+
+```text
+847A2735FE7E63A292DD81CDBBCDBB14E9A4DBEC3E74F9360B61E18133A1581D
+  tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadius.draft.lean
+DC566A37E56F5D3B935601FE3E308E70DC579086E9C35A9943A40857651507C7
+  tmp/BalabanCMP99Eq337PhysicalComplexWilsonLineRadiusAudit.draft.lean
+F590776708CBC62F36EFBC501A871DAE3F88C5BC4BAC53D7EFD06FFD448E8EB2
+  tmp/C6D-COMPLEX-WILSON-LINE-RADIUS-DRAFT-PATHS.txt
+```
+
+The lightweight gates pass for `2/2` files with `6/6` declaration/readout
+coverage.  These theorems are still uncompiled scratch and do not yet install
+the four source contours into the complex Ubar `hdev` field.
