@@ -1126,10 +1126,10 @@ the minimal repro and then in the physical module before any promotion.
 
 The next analytic background boundary is now frozen as exactly three
 source/audit pairs in `tmp/C6D-COMPLEX-UBAR-DRAFT-PATHS.txt`.  The lightweight
-guards report six PRE-VALIDATION files and complete `22/22` public-declaration
+guards report six PRE-VALIDATION files and complete `25/25` public-declaration
 axiom coverage, including the named `MatrixRealization` instance for
 `SL(N,C)`.  Its promoted-byte manifest is
-`5483BD415B9C07B7828E6EA0F8C1945809B3EB6C2E60A8C90023D1C38EEDADDA`.
+`EAF815BF6D97C069A1887F755A4DF606B2B890BE910E2533AB716049097CF603`.
 
 The boundary constructs internally:
 
@@ -1223,6 +1223,42 @@ product of `1 + (link - 1)`, and
 ```text
 path.length * rLink * (1 + rLink)^path.length.
 ```
+
+The six-file scratch layer now fixes that bridge concretely by defining
+`cmp99SUNLieComplexCoordMatrixCLM`, taking the visible chart budget to be its
+operator norm, and proving
+`norm_cmp99SUNLieComplexCoordMatrixLM_le` by `le_opNorm`.  This is a finite-
+dimensional existence bound, not an isometry or an optimized coordinate
+constant; it remains PRE-VALIDATION with the rest of the layer.
+
+The positive-orientation consumer is likewise written, but still scratch,
+as the two-file boundary
+`tmp/C6D-COMPLEX-UBAR-LINK-RADIUS-DRAFT-PATHS.txt`.  It derives the literal
+radius
+
+```text
+epsilonU + 2 * (|eta| * Ccoord * rA)
+```
+
+for `exp(eta A) U` using the named chart budget and the physical `SU(N)` link
+norm one.  It does not yet claim the reverse-orientation identity or a path
+product estimate; those remain the next gates before this leaf can feed
+`hdev`.
+
+The exact scratch hashes are:
+
+```text
+82C1C81F864AEEBE133AA36D892CE0ACA69025BD2EAA50A0ED3C23BA7510D259
+  tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius.draft.lean
+FEEEC01AEA16845F355E1B583C126AC083393D7E48AA689B3543AC407EE931F9
+  tmp/BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadiusAudit.draft.lean
+0A0A80FEA592B580142360B515E7CDB63410A0AE1CA91AE5B36E5C4761441185
+  tmp/C6D-COMPLEX-UBAR-LINK-RADIUS-DRAFT-PATHS.txt
+```
+
+The lightweight gates pass at `2/2` files and `2/2` declaration/readout
+coverage.  This is textual/static evidence only; the pair is not promoted,
+compiled or oracle-checked.
 
 The three named contour length lemmas and the straight-path length then
 produce the four explicit summands consumed by

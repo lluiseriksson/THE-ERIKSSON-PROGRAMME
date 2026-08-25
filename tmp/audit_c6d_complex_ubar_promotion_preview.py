@@ -12,8 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PATH_LIST = ROOT / "tmp" / "C6D-COMPLEX-UBAR-DRAFT-PATHS.txt"
 PATH_LIST_SHA256 = "3F97087928E61572A8552A6F6A3D737EEA50BC86BD4D1C4A8863E13B33B6F3EF"
-RAW_AGGREGATE_SHA256 = "31AEF5CF7A1E45FC454885AF621991C7DC51B2E54232090C077983017842A980"
-PROMOTED_MANIFEST_SHA256 = "5483BD415B9C07B7828E6EA0F8C1945809B3EB6C2E60A8C90023D1C38EEDADDA"
+RAW_AGGREGATE_SHA256 = "78A68FAE7A74EBFF6F056756191C19197CA5744670B5A519E795E06D59CCFFCE"
+PROMOTED_MANIFEST_SHA256 = "EAF815BF6D97C069A1887F755A4DF606B2B890BE910E2533AB716049097CF603"
 
 EXPECTED = (
     "instMatrixRealizationSpecialLinear",
@@ -29,6 +29,9 @@ EXPECTED = (
     "cmp99UbarSpecialLinearFactorOfDeviationBudget_coe",
     "cmp99UbarSpecialLinearBlockOfDeviationBudget",
     "cmp99UbarSpecialLinearBlockOfDeviationBudget_coe",
+    "cmp99SUNLieComplexCoordMatrixCLM",
+    "cmp99SUNLieComplexCoordMatrixNormBudget",
+    "norm_cmp99SUNLieComplexCoordMatrixLM_le",
     "cmp99UbarSpecialLinearExponentSl",
     "cmp99UbarSpecialLinearExponentSl_val",
     "cmp99UbarSpecialLinearExponentCoord",
@@ -116,6 +119,8 @@ def check_surface(paths: list[str]) -> None:
         "det_matrix_exp_eq_exp_trace",
         "(cmp99SUNLieComplexCoordSlEquiv Nc).symm",
         "cmp99SUNLieComplexCoordMatrixLM Nc",
+        "cmp99SUNLieComplexCoordMatrixCLM Nc",
+        "cmp99SUNLieComplexCoordMatrixNormBudget Nc",
         "MatrixNearLogNoWindingBudget Nc",
         "(M ^ d : ℝ)⁻¹",
         "gaugeConfigOfPositiveBonds",

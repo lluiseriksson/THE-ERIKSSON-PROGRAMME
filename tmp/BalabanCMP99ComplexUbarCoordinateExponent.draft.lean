@@ -30,6 +30,29 @@ noncomputable section
 
 variable {Nc : ℕ} [NeZero Nc]
 
+/-- The explicit complex-coordinate matrix realization as a continuous
+linear map.  Finite dimensionality supplies continuity, but no isometry is
+asserted: the public norm of this map is the visible chart cost consumed by
+the later analytic Ubar estimate. -/
+noncomputable def cmp99SUNLieComplexCoordMatrixCLM (Nc : ℕ) :
+    SUNLieComplexCoord Nc →L[ℂ] Matrix (Fin Nc) (Fin Nc) ℂ :=
+  ⟨cmp99SUNLieComplexCoordMatrixLM Nc,
+    (cmp99SUNLieComplexCoordMatrixLM Nc).continuous_of_finiteDimensional⟩
+
+/-- Source-visible operator-norm cost of decoding one complex physical Lie
+coordinate to its literal matrix.  This deliberately replaces the invalid
+implicit choice `Ccoord = 1`. -/
+noncomputable def cmp99SUNLieComplexCoordMatrixNormBudget (Nc : ℕ) : ℝ :=
+  ‖cmp99SUNLieComplexCoordMatrixCLM Nc‖
+
+/-- The named complex-coordinate norm bridge required by the first stage of
+the physical complex Ubar deviation estimate. -/
+theorem norm_cmp99SUNLieComplexCoordMatrixLM_le
+    (Z : SUNLieComplexCoord Nc) :
+    ‖cmp99SUNLieComplexCoordMatrixLM Nc Z‖ ≤
+      cmp99SUNLieComplexCoordMatrixNormBudget Nc * ‖Z‖ := by
+  exact (cmp99SUNLieComplexCoordMatrixCLM Nc).le_opNorm Z
+
 /-- The literal determinant-one Ubar exponent in Mathlib's trace-zero
 carrier.  Tracelessness is derived from the same local near-identity and
 no-winding hypotheses that construct the analytic factor. -/
