@@ -263,11 +263,12 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
         (1 + r) ^ M
     rw [cmp99SourceBaseCoarseBackground_apply_pos,
       OrientedLatticePath.holonomy]
-    simpa only [cmp99SourceParallelTransportPath_length] using
-      norm_cmp99SpecialLinearWilsonLine_le background
-        (cmp99SourceParallelTransportPath
-          (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)
-          (blockBasepoint M N' b.1) b.2).edges r hr hlink
+    have h := norm_cmp99SpecialLinearWilsonLine_le background
+      (cmp99SourceParallelTransportPath
+        (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+        (blockBasepoint M N' b.1) b.2).edges r hr hlink
+    rw [cmp99SourceParallelTransportPath_length] at h
+    exact h
   have hCdev : ‖(C : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       (M : ℝ) * r * (1 + r) ^ M := by
     change ‖(cmp99SourceBaseCoarseBackground background
@@ -275,11 +276,12 @@ theorem norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le
         (M : ℝ) * r * (1 + r) ^ M
     rw [cmp99SourceBaseCoarseBackground_apply_pos,
       OrientedLatticePath.holonomy]
-    simpa only [cmp99SourceParallelTransportPath_length] using
-      norm_cmp99SpecialLinearWilsonLine_sub_one_le background
-        (cmp99SourceParallelTransportPath
-          (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)
-          (blockBasepoint M N' b.1) b.2).edges r hr hlink
+    have h := norm_cmp99SpecialLinearWilsonLine_sub_one_le background
+      (cmp99SourceParallelTransportPath
+        (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+        (blockBasepoint M N' b.1) b.2).edges r hr hlink
+    rw [cmp99SourceParallelTransportPath_length] at h
+    exact h
   rw [cmp99SourceComplexLocalizedUbarBlock,
     cmp99UbarSpecialLinearBlockOfDeviationBudget_coe]
   change ‖(F : Matrix (Fin Nc) (Fin Nc) ℂ) *
