@@ -15,7 +15,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "b91d42630efb15f32d4b4ecd242a33238926d4de"
+SOURCE_SHA = "b70735b82216a0ab1cd9a3bd4e195db1426a83fe"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -41,7 +41,7 @@ SOURCE = "YangMills/RG/BalabanCMP99SourceLocalizedRetainedTower.lean"
 AUDIT = "YangMills/RG/BalabanCMP99SourceLocalizedRetainedTowerAudit.lean"
 ROOT_MODULE = "YangMillsCore.lean"
 
-runner.RUNNER_REV = "c6d-localized-retained-tower-cold-v5"
+runner.RUNNER_REV = "c6d-localized-retained-tower-cold-v6"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-localized-retained-tower")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-localized-retained-tower-evidence")
