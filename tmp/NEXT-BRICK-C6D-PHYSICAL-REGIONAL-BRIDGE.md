@@ -417,6 +417,27 @@ scale, so no free `hsmall` survives.  Thus this is a real-slice reduction,
 not yet a discharge of the source alpha-window or a complex analytic
 producer.  Textual guards pass; no compiler verdict exists.
 
+The real perturbed retained-tower boundary is now explicit in the separate
+two-file PRE-VALIDATION manifest
+`tmp/C6D-STEP4-EQ337-PERTURBED-RETAINED-TOWER-DRAFT-PATHS.txt`.  It first
+proves that both strata supporting a regular cube lie in the corresponding
+source region, transports the literal (3.37) datum through the constructed
+source-vertex gauge action, and derives the retained-read bound
+`norm (exp(eta A') U - 1) <= 4 alpha1`.  It then constructs the perturbed
+localized retained tower from `cmp98PhysicalSuLeftVariation`; no free `Q1`,
+`F2`, precision, Green operator or operator identity is accepted.  The
+source `Ubar` radius chain, source-region dictionary and scalar alpha window
+remain visible inputs, so this is only the real item-4 construction boundary,
+not the analytic complex tower or an attainment result.  The source, audit
+and manifest SHA-256 values are respectively
+`EBB7D16775287A27537654FA0557891B10B443ACEFCCF4C9613AD935F6405B56`,
+`EF805C112C3C01E2E00188B5D0FB549A0ACE756FAA4901A6A491A1E44CE50CDC`
+and
+`FC3C704EEE907C5AF1BD514293ACDFC76FC3DC6B8080B11BA24B0F1F4DFED660`.
+The lightweight text/import/readout gates pass at `2/2` and `4/4`; no
+compiler or axiom-oracle verdict exists and this boundary is not part of the
+C6d run already in flight.
+
 The complex half is no longer represented by an arbitrary derivative input.
 The eight-file scratch closure
 `tmp/C6D-STEP4-EQ337-COMPLEX-DOMAIN-DRAFT-PATHS.txt` extends the compact
