@@ -30,7 +30,7 @@ theorem norm_cmp99SpecialLinear_inv_sub_one_le_div
     (U : Matrix.SpecialLinearGroup (Fin Nc) ℂ)
     (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1)
     (hU : ‖(U : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ r) :
-    ‖(U⁻¹ : Matrix.SpecialLinearGroup (Fin Nc) ℂ) - 1‖ ≤
+    ‖(U⁻¹ : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       r / (1 - r) := by
   let A : Matrix (Fin Nc) (Fin Nc) ℂ := U
   let V : Matrix (Fin Nc) (Fin Nc) ℂ := U⁻¹
@@ -55,8 +55,8 @@ theorem norm_cmp99SpecialLinear_inv_sub_one_le_div
             ((norm_mul_le (1 - A) V).trans
               (mul_le_mul_of_nonneg_right hA (norm_nonneg V)))
     have hden : 0 < 1 - r := sub_pos.mpr hr1
-    rw [le_inv_iff₀ hden]
-    nlinarith [norm_nonneg V]
+    exact (le_div_iff₀ hden).2 (by
+      nlinarith [norm_nonneg V])
   have hdevEq : V - 1 = (1 - A) * V := by
     noncomm_ring [hmul]
   change ‖V - 1‖ ≤ r / (1 - r)
