@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Pinned Colab diagnostic for the proof-free closed Eq. (3.37) radius map.
+"""Pinned cold Colab seal for the proof-free closed Eq. (3.37) radius map.
 
-This is a diagnostic-only, stop-on-first-error gate.  It compiles the
+This is a cold, stop-on-first-error gate.  It compiles the
 Mathlib-only scalar reproducer from one exact source checkpoint and audits
-its ten public declarations.  It does not promote source, remove
-PRE-VALIDATION, move ``20/41``, or claim the physical recursion closed.
+its fifteen public declarations.  It does not itself promote project source,
+move ``20/41``, or claim the physical recursion closed.
 """
 
 import hashlib
@@ -13,7 +13,7 @@ from pathlib import Path
 import urllib.request
 
 
-SOURCE_SHA = "c0f711a76b3b01edb21150a4aea02ddabee17c92"
+SOURCE_SHA = "89dd355dc97c2ddac166a8ae5ab1d9d1987ac7c3"
 BASE_PATH = "scripts/colab_qprime_row_validation.py"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
@@ -36,7 +36,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "eq337-complex-closed-radius-scalar-diagnostic-v1"
+runner.RUNNER_REV = "eq337-complex-closed-radius-scalar-cold-v2"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-complex-closed-radius-scalar")
 runner.EVIDENCE = Path("/content/hrpoly-complex-closed-radius-scalar-evidence")
@@ -44,7 +44,7 @@ runner.ARCHIVE = Path("/content/hrpoly-complex-closed-radius-scalar-evidence.tar
 runner.PATH_MANIFEST = Path("/content/hrpoly-complex-closed-radius-scalar-paths.txt")
 runner.SOURCE_BLOBS = {
     "tmp/CMP99ComplexClosedRadiusScalar.repro.lean":
-        "170c58637f6ff88d70e95cf08ebb2073d015a0ea7248e22d71d6282fc3935962",
+        "ec016c7642686947e9ac87ef5cee573d8d2ea85bea046cd365ec21ce6cac2aa9",
 }
 runner.QUEUE = [
     (
@@ -59,7 +59,7 @@ runner.QUEUE = [
             "tmp/CMP99ComplexClosedRadiusScalar.repro.lean", "-o",
             ".lake/build/lib/lean/tmp/CMP99ComplexClosedRadiusScalar.repro.olean",
         ],
-        10,
+        15,
     ),
 ]
 
