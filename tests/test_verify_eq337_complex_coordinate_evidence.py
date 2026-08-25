@@ -11,10 +11,19 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "tmp" / "verify_eq337_complex_coordinate_evidence.py"
+PACKAGER = ROOT / "tmp" / "package_eq337_complex_coordinate_evidence.py"
 
 
 def load_verifier():
     spec = importlib.util.spec_from_file_location("verify_eq337_evidence", SCRIPT)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_packager():
+    spec = importlib.util.spec_from_file_location("package_eq337_evidence", PACKAGER)
     assert spec is not None and spec.loader is not None
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -60,7 +69,14 @@ def synthetic_transcript(verifier, bad_axiom: bool = False) -> str:
         if bad_axiom and index == 0:
             axioms += ", sorryAx"
         lines.append(f"'{declaration}' depends on axioms: [{axioms}]")
-    lines.extend(("FINAL_STATUS=PASS", "LAUNCHER_EXIT=0"))
+    lines.extend(
+        (
+            "FINAL_STATUS=PASS",
+            "LAUNCHER_EXIT=0",
+            "EVIDENCE_SHA256=" + "C" * 64,
+            "EVIDENCE_ARCHIVE_SHA256=" + "D" * 64,
+        )
+    )
     return "\n".join(lines) + "\n"
 
 
@@ -96,3 +112,28 @@ def test_forbidden_axiom_fails(tmp_path: Path, monkeypatch) -> None:
     notebook = write_notebook(tmp_path, synthetic_transcript(verifier, bad_axiom=True))
     with pytest.raises(RuntimeError, match=re.escape("FORBIDDEN_AXIOM=sorryAx")):
         run_main(verifier, monkeypatch, notebook, tmp_path / "result.json")
+
+
+def test_eq337_evidence_packager_preserves_verified_notebook(
+    tmp_path: Path, monkeypatch
+) -> None:
+    verifier = load_verifier()
+    packager = load_packager()
+    notebook = write_notebook(tmp_path, synthetic_transcript(verifier))
+    destination = tmp_path / "package"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            str(PACKAGER),
+            "--notebook",
+            str(notebook),
+            "--destination",
+            str(destination),
+        ],
+    )
+    assert packager.main() == 0
+    manifest = json.loads((destination / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["status"] == "EQ337_EVIDENCE_PACKAGE_OK"
+    assert manifest["runner_hashes"]["EVIDENCE_SHA256"] == "C" * 64
+    assert (destination / "SHA256SUMS").is_file()
