@@ -1338,3 +1338,30 @@ F590776708CBC62F36EFBC501A871DAE3F88C5BC4BAC53D7EFD06FFD448E8EB2
 The lightweight gates pass for `2/2` files with `8/8` declaration/readout
 coverage.  These theorems are still uncompiled scratch and do not yet install
 the four source contours into the complex Ubar `hdev` field.
+
+The source-specific PRE-VALIDATION pair is now written:
+
+```text
+tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.draft.lean
+tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.draft.lean
+```
+
+It fixes the first three factors to `Gamma1`, `Gamma2`, and `Gamma3`, and the
+fourth to the reversed straight representative of the positive coarse bond.
+The exact equality uses `OrientedLatticePath.holonomy_symm`; it does not
+estimate an inverse or accept a free coarse field.  It then specializes the
+complex four-path budget to the literal Eq. (3.37) background.  Static-only
+hashes are:
+
+```text
+0BBFD4D44042EF5104DFCF7AC5447BA0B186388593C1276BE2A164FDE7E9EFB1
+  tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius.draft.lean
+3217BB3A55737FF7DE1D90FCB102EF002CD7A403F9559FD19B9A7BD89018C437
+  tmp/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.draft.lean
+2A881FA25EC08F733B0E17E1CE04317FCD24736F2BBF6969D1A8FD4D4C559088
+  tmp/C6D-COMPLEX-UBAR-DEVIATION-RADIUS-DRAFT-PATHS.txt
+```
+
+The exact overlay-text gate passes for `2/2` files and the audit surface is
+`4/4`.  This remains static evidence only: no `.olean` or axiom-oracle verdict
+exists, and no terminal field or scalar window is discharged.

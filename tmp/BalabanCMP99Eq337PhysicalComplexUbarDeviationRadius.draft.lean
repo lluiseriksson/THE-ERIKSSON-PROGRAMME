@@ -1,0 +1,109 @@
+import YangMills.RG.BalabanCMP99ComplexLocalizedUbarBackground
+import YangMills.RG.BalabanCMP99Eq337PhysicalComplexWilsonLineRadius
+
+/-!
+PRE-VALIDATION: this scratch source has no materialized `.olean` and no
+compiler or axiom-oracle verdict.
+
+# Literal complex Eq. (3.37) radius for the source Ubar deviation
+
+This leaf identifies all four factors of the source Ubar deviation with
+literal Wilson paths.  The inverse coarse factor is not estimated through an
+inverse norm: it is the holonomy of the reversed source parallel-transport
+path by `OrientedLatticePath.holonomy_symm`.
+
+The resulting bound retains the complex norm growth of every preceding
+factor.  It does not import the unitary four-factor estimate.
+-/
+
+namespace YangMills.RG
+
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator
+
+noncomputable section
+
+variable {d M N' Nc : ℕ}
+variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
+
+local notation "SLNc" => Matrix.SpecialLinearGroup (Fin Nc) ℂ
+
+/-- The four literal fine paths in the printed source Ubar deviation.  The
+fourth is the reversed straight fine representative of the positive coarse
+bond. -/
+def cmp99SourceComplexUbarFourPaths
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Fin 4 → List (ConcreteEdge d (M * N')) :=
+  ![cmp99SourceUbarGamma1 (G := SLNc) b x,
+    cmp99SourceUbarGamma2 (G := SLNc) b x,
+    cmp99SourceUbarGamma3 (G := SLNc) b x,
+    (cmp99SourceParallelTransportPath (G := SLNc)
+      (blockBasepoint M N' b.1) b.2).symm.edges]
+
+/-- Exact four-path identification.  In particular the last factor is not a
+free coarse background and no equality between independently chosen
+precisions or backgrounds is assumed. -/
+theorem cmp99SourceComplexLocalizedUbarDeviation_coe_eq_fourPathProduct
+    (background : GaugeConfig d (M * N') SLNc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    (cmp99SourceComplexLocalizedUbarDeviation background b x :
+        Matrix (Fin Nc) (Fin Nc) ℂ) =
+      fourMatrixProduct (fun i ↦
+        ((wilsonLine background
+            (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x i) : SLNc) :
+          Matrix (Fin Nc) (Fin Nc) ℂ)) := by
+  unfold cmp99SourceComplexLocalizedUbarDeviation UbarDeviation
+  dsimp only
+  rw [cmp99SourceBaseCoarseBackground_apply_pos]
+  rw [← OrientedLatticePath.holonomy_symm]
+  simp [cmp99SourceComplexUbarFourPaths, fourMatrixProduct,
+    OrientedLatticePath.holonomy, Matrix.SpecialLinearGroup.coe_mul]
+
+/-- A uniform oriented-link radius produces the literal complex source-Ubar
+budget with every path length and preceding factor norm visible. -/
+theorem norm_cmp99SourceComplexLocalizedUbarDeviation_le_fourPathBudget
+    (background : GaugeConfig d (M * N') SLNc)
+    (r : ℝ) (hr : 0 ≤ r)
+    (hlink : ∀ e,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ r)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+      cmp99ComplexFourWilsonPathDeviationBudget
+        (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x) r := by
+  rw [cmp99SourceComplexLocalizedUbarDeviation_coe_eq_fourPathProduct]
+  exact norm_fourSpecialLinearWilsonLineProduct_sub_one_le
+    background (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x)
+      r hr hlink
+
+/-- Source-facing producer for the literal complex Eq. (3.37) background.
+The only scalar input is the named oriented-link radius already derived from
+the physical background and complex coordinate field. -/
+theorem norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d (M * N') Nc)
+    (eta epsilonU rA : ℝ)
+    (hr : 0 ≤
+      cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA)
+    (hA : ∀ b, ‖A b‖ ≤ rA)
+    (hsmall : |eta| *
+      (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2)
+    (hU : ∀ b, ‖(U (positiveEdgeOfPhysicalBond b) :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonU)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    ‖(cmp99SourceComplexLocalizedUbarDeviation
+        (cmp99Eq337PhysicalComplexPerturbedBackground U A eta) b x :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+      cmp99ComplexFourWilsonPathDeviationBudget
+        (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x)
+        (cmp99Eq337PhysicalComplexPerturbedLinkRadius
+          Nc epsilonU eta rA) := by
+  apply norm_cmp99SourceComplexLocalizedUbarDeviation_le_fourPathBudget
+    _ _ hr
+  exact
+    norm_cmp99Eq337PhysicalComplexPerturbedBackground_apply_sub_one_le
+      U A eta epsilonU rA hA hsmall hU
+
+end
+
+end YangMills.RG
