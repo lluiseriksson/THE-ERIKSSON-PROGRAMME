@@ -183,8 +183,17 @@ def main() -> int:
                 f"REPRO_DECLARATION_COUNT={repro_path}:{len(declarations)} "
                 f"WANT={expected_count}"
             )
-        declarations_by_repro[repro_path] = declarations
-        expected.extend(declarations)
+        # The scalar reproducer prints inside `namespace YangMills.RG` using
+        # short names, while Lean's oracle output reports the fully qualified
+        # declarations.  Compare the semantic declaration names, not the
+        # spelling chosen at the `#print axioms` call site.
+        qualified = [
+            declaration if "." in declaration
+            else f"YangMills.RG.{declaration}"
+            for declaration in declarations
+        ]
+        declarations_by_repro[repro_path] = qualified
+        expected.extend(qualified)
     declarations_by_module: dict[str, list[str]] = {}
     for module, expected_count in MODULES:
         audit_path = f"tmp/{module}Audit.draft.lean"
