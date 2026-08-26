@@ -17,7 +17,7 @@ PATHS_FILE = (
     / "EQ351-EXPONENTIAL-ADJOINT-REMAINDER-COMPILER-GATE-DRAFT-PATHS.txt"
 )
 CORE = "YangMillsCore.lean"
-EXPECTED_PATHS = 8
+EXPECTED_PATHS = 10
 REQUIRED_PREREQUISITES = (
     "YangMills/RG/BalabanCMP98GAdConjugation.lean",
     "YangMills/RG/BalabanCMP99Eq337PhysicalComplexCovariantDerivative.lean",
@@ -91,13 +91,20 @@ def require_clean_blob(source_sha: str, relative: str) -> bytes:
     return data
 
 
-def require_absent(source_sha: str, relative: str) -> None:
+def require_absent_or_identical(
+    source_sha: str, relative: str, expected: bytes
+) -> None:
     status = git("status", "--porcelain=v1", "--", relative)
     if status.returncode != 0 or status.stdout:
         raise RuntimeError(f"EQ351_DESTINATION_DIRTY={relative}")
     probe = git("cat-file", "-e", f"{source_sha}:{relative}")
-    if probe.returncode == 0 or (ROOT / relative).exists():
-        raise RuntimeError(f"EQ351_DESTINATION_EXISTS={relative}")
+    if probe.returncode == 0:
+        if git_blob(source_sha, relative) != expected:
+            raise RuntimeError(f"EQ351_DESTINATION_DIFFERS={relative}")
+        if (ROOT / relative).read_bytes() != expected:
+            raise RuntimeError(f"EQ351_DESTINATION_WORKTREE_DIFFERS={relative}")
+    elif (ROOT / relative).exists():
+        raise RuntimeError(f"EQ351_DESTINATION_UNTRACKED={relative}")
 
 
 def retarget_imports(data: bytes) -> bytes:
@@ -130,15 +137,15 @@ def core_with_audits(data: bytes, selected: list[str]) -> bytes:
         for path in selected
         if Path(path).name.endswith("Audit.draft.lean")
     ]
-    if len(audit_imports) != 4 or len(set(audit_imports)) != 4:
+    if len(audit_imports) != 5 or len(set(audit_imports)) != 5:
         raise RuntimeError("EQ351_CORE_AUDIT_SCOPE")
     text = data.decode("utf-8")
-    present = [line for line in audit_imports if line in text]
-    if present:
-        raise RuntimeError(f"EQ351_CORE_IMPORT_EXISTS={present!r}")
+    if any(text.count(line) > 1 for line in audit_imports):
+        raise RuntimeError("EQ351_CORE_IMPORT_DUPLICATE")
+    missing = [line for line in audit_imports if line not in text]
     if not text.endswith("\n"):
         text += "\n"
-    return (text + "".join(line + "\n" for line in audit_imports)).encode("utf-8")
+    return (text + "".join(line + "\n" for line in missing)).encode("utf-8")
 
 
 def manifest_digest(rows: list[tuple[str, bytes]]) -> str:
@@ -162,8 +169,9 @@ def main() -> int:
     for scratch in selected:
         data = require_clean_blob(args.source_sha, scratch)
         target = destination(scratch)
-        require_absent(args.source_sha, target)
-        rows.append((target, retarget_imports(data)))
+        promoted = retarget_imports(data)
+        require_absent_or_identical(args.source_sha, target, promoted)
+        rows.append((target, promoted))
 
     core_status = git("status", "--porcelain=v1", "--", CORE)
     if core_status.returncode != 0 or core_status.stdout:
