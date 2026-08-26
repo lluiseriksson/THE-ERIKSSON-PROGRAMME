@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative
 import YangMills.RG.BalabanCMP99Eq337PhysicalRealPerturbationDomain
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.37): complex perturbation domain on the source regions
 
 This is the literal complex-fibre counterpart of the physical real domain.

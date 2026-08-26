@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP98GAdConjugation
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # CMP99 (3.51): internal exponential-adjoint remainder
 
 The nonlinear third species in the printed Laplacian expansion is not a free

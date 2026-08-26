@@ -1,0 +1,71 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "boundary_blob_sha256": {
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbationDomain.lean": "80c141368ce88667f863ca2d3633000fbf4a79f97c1a081487e6963ed52e0693",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbationDomainAudit.lean": "6735053257486a5374108f20f3c695a77375efe213ff3f3e26a3c10caa7af507",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalRealPerturbationDomain.lean": "1b9b84a5ef5b87d8af7fb25e6f11ae3a0f4be3045a37c311a23bc30dd92d1a06",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalRealPerturbationDomainAudit.lean": "10da77bf0cae99a37a2156a1704b8358f1af31eae3d3ecd54ebc0d2e15882014",
+    "YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainder.lean": "337663049a34327ea4151a363a6cf33582a8b32951740f4823283fc0e3fb0d78",
+    "YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainderAudit.lean": "f63682f6e174d6cd7a4bc104de99836c18219f4d56d58da2da8f0afb698cea81",
+    "YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainderBound.lean": "44a28e943f490ae28631ac77bf4cb6d256deb77b8fe28c4ac674c200c8605e55",
+    "YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainderBoundAudit.lean": "3c01a91549cb76bd8b03b9bb081b2da14403892a420aa4fc39664f6edcf81cbe",
+    "YangMills/RG/BalabanCMP99Eq351PhysicalComplexOrientedPerturbation.lean": "a612306b460abadaf841fdf9164e7191050d2788257985c9ac42bed4639a4b3b",
+    "YangMills/RG/BalabanCMP99Eq351PhysicalComplexOrientedPerturbationAudit.lean": "e45210b7698120b7768d46a8aa9d16a3b0f2c17ddaf82d75656f675bd3a35da4"
+  },
+  "declarations_by_module": {
+    "BalabanCMP99Eq337PhysicalComplexPerturbationDomain": [
+      "YangMills.RG.CMP99Eq337PhysicalComplexPerturbationDomain"
+    ],
+    "BalabanCMP99Eq337PhysicalRealPerturbationDomain": [
+      "YangMills.RG.cmp99Eq337PhysicalScaleSpacing",
+      "YangMills.RG.cmp99Eq337PhysicalAmplitudeMajorant",
+      "YangMills.RG.cmp99Eq337PhysicalCovariantDerivativeMajorant",
+      "YangMills.RG.CMP99Eq337PhysicalRealPerturbationDomain",
+      "YangMills.RG.CMP99Eq337PhysicalRealPerturbationDomain.abs_eta_mul_amplitudeMajorant_le",
+      "YangMills.RG.CMP99Eq337PhysicalRealPerturbationDomain.amplitude_bound_at",
+      "YangMills.RG.CMP99Eq337PhysicalRealPerturbationDomain.covariant_derivative_bound_at"
+    ],
+    "BalabanCMP99Eq351ExponentialAdjointRemainder": [
+      "YangMills.RG.cmp99Eq351ExponentialAdjointRemainderCLM",
+      "YangMills.RG.cmp99Eq351ExponentialAdjointRemainderCLM_apply",
+      "YangMills.RG.cmp99Eq351_exponentialAdjoint_eq_id_add_ad_add_remainder",
+      "YangMills.RG.cmp99Eq351_exponentialAdjoint_apply_eq_linear_add_remainder"
+    ],
+    "BalabanCMP99Eq351ExponentialAdjointRemainderBound": [
+      "YangMills.RG.cmp99Eq351_expTailMajorant_le_four_thirds_sq",
+      "YangMills.RG.cmp99Eq351_norm_exp_neg_le_four_thirds",
+      "YangMills.RG.norm_cmp99Eq351ExponentialAdjointRemainderCLM_apply_le"
+    ],
+    "BalabanCMP99Eq351PhysicalComplexOrientedPerturbation": [
+      "YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation",
+      "YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_pos",
+      "YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_neg",
+      "YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_realSlice"
+    ]
+  },
+  "evidence_input_sha256": "6ce623e5e73fb5c035fca99ee5808e22e226045fceff7dcb4d5722e8948d45e3",
+  "expected_declarations": 19,
+  "runner_revision": "eq351-exponential-adjoint-remainder-cold-v4",
+  "source_sha": "77c0e4834ce69d8b174d37aeefac56fd5b06b5ad",
+  "stage_seconds": {
+    "eq351_01_balabancmp99eq337physicalrealperturbationdomain_audit": "12.538780146000136",
+    "eq351_01_balabancmp99eq337physicalrealperturbationdomain_source": "7.121051742000191",
+    "eq351_02_balabancmp99eq337physicalcomplexperturbationdomain_audit": "7.369776639000065",
+    "eq351_02_balabancmp99eq337physicalcomplexperturbationdomain_source": "6.537561611000001",
+    "eq351_03_balabancmp99eq351physicalcomplexorientedperturbation_audit": "11.450932558000204",
+    "eq351_03_balabancmp99eq351physicalcomplexorientedperturbation_source": "6.961726882000221",
+    "eq351_04_balabancmp99eq351exponentialadjointremainder_audit": "7.896965322999677",
+    "eq351_04_balabancmp99eq351exponentialadjointremainder_source": "7.251456662999772",
+    "eq351_05_balabancmp99eq351exponentialadjointremainderbound_audit": "7.373951211000076",
+    "eq351_05_balabancmp99eq351exponentialadjointremainderbound_source": "8.795218072999887",
+    "eq351_materialize_dependencies": "1431.156254573",
+    "eq351_prepare_build_dirs": "0.012987953999981983",
+    "eq351_root": "7246.439454685"
+  },
+  "status": "EQ351_EXPONENTIAL_ADJOINT_REMAINDER_EVIDENCE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

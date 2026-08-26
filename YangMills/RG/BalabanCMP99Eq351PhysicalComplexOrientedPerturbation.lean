@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # CMP99 (3.50)--(3.51): canonical oriented complex perturbation
 
 The source field is stored on positive physical bonds, while the printed

@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalRealPerturbationDomain
 
-/-!
-PRE-VALIDATION: this scratch audit has not been executed.  Its source module
-has no materialized `.olean` and no compiler or axiom-oracle verdict.
--/
-
 #print axioms YangMills.RG.cmp99Eq337PhysicalScaleSpacing
 #print axioms YangMills.RG.cmp99Eq337PhysicalAmplitudeMajorant
 #print axioms YangMills.RG.cmp99Eq337PhysicalCovariantDerivativeMajorant

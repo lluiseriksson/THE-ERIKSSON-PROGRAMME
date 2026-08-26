@@ -1,8 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq351ExponentialAdjointRemainder
 
-/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists.
-
-Public axiom oracle for the Eq. (3.51) adjoint remainder.
+/-!Public axiom oracle for the Eq. (3.51) adjoint remainder.
 -/
 
 #print axioms YangMills.RG.cmp99Eq351ExponentialAdjointRemainderCLM

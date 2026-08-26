@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq351ExponentialAdjointRemainder
 import YangMills.RG.NearLog
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # CMP99 (3.54): quadratic bound for the exponential-adjoint remainder
 
 The nonlinear species is the remainder constructed in the preceding algebra

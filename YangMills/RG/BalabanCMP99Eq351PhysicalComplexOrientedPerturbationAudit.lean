@@ -1,7 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq351PhysicalComplexOrientedPerturbation
 
-/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
-
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_pos
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_neg

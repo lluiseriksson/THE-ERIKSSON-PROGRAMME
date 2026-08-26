@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalRealCovariantDerivative
 import YangMills.RG.BalabanCMP99SourceScaledStratification
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.37): physical real-slice perturbation domain
 
 The source field `A'` lives on the fine lattice.  Its bounds are imposed on
