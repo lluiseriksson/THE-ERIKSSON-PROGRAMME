@@ -3,9 +3,16 @@
 Do not copy this text into tracked documentation or remove any
 `PRE-VALIDATION` notice before the exact cold gate and its post-verifier pass.
 
+The six files are still scratch-only.  Their promotion source must be a
+descendant of the verified 34-file C6d dependency-boundary seal; compiling
+them against the currently marked boundary would stack a new source claim on
+unretired PRE-VALIDATION premises.  After the Eq. (3.59) / C6d cross-gate,
+this is the next independent cold compiler boundary, not part of the Eq.
+(3.59) seal itself.
+
 ## Proposed verification-ledger addendum
 
-## Addendum 945 ([SEAL_DATE], **literal localized retained precision sealed in fresh Colab Pro+; 20/41 unchanged**)
+## Addendum 948 ([SEAL_DATE], **literal localized retained precision sealed in fresh Colab Pro+; 20/41 unchanged**)
 
 Promotion checkpoint `[SOURCE_SHA]` materialized exactly three source/audit
 pairs from the fixed scratch manifest:
