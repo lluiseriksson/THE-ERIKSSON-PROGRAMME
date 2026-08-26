@@ -40742,3 +40742,35 @@ forced-recursion and flowing-radius rows of the end-to-end checklist.  It does
 not close Eq. (3.59), Eq. (3.60), a regional `B0`/`delta0`, window 15, rows
 23--24, or a `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 945 (2026-08-26, **Eq. (3.59) complex one-scale average and internally generated two-tower pair sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Exact source checkpoint `5c0dc37146d130f637ee270a55eba6f638b3b64e`
+was validated in a fresh Colab Pro+ CPU/high-RAM checkout with Lean
+`4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  Runner checkpoint
+`a2c3b5d5966a7289414d71282e40a482ea7d4bdc`, revision
+`eq359-complex-one-scale-average-promoted-cold-v4`, compiled the complex
+special-linear adjoint action, the transported complex block average, the
+abstract and physical regional towers, the closed physical tower, and the
+two Eq. (3.59) tower-pair layers.  Every one of the fourteen focal/audit
+stages exited `0`; the cold `YangMillsCore` root completed `10,988` jobs in
+`6026.624` seconds, exit `0`.
+
+The `32` audited declarations use only
+`[propext, Classical.choice, Quot.sound]` or a subset.  The runner emitted
+literal `FINAL_STATUS=PASS`.  Canonical evidence SHA-256 is
+`D81B97C2338AD87436ED0B72272E46F390D2FAF331770D62F49EE375E0FBC111`;
+the downloaded archive independently rehashes to
+`12839E86EE76C8ED817CA8AC6CB3CAB8CEE5989A0649B9AD563B8FDB5644F717`.
+The local evidence package has manifest SHA-256
+`B142397BA334A20E7CC0823EF11687AC35359299B2E62975845ADDDBFD307A7B`.
+
+The selective seal retires exactly fourteen PRE-VALIDATION notices.  It
+certifies the complex Eq. (3.59) tower construction and common one-scale
+average without accepting a free tower, `Qprime`, adjoint tower or tower-pair
+identity.  It does not yet certify the real-slice agreement, Eq. (3.60), the
+regional resolvent, the transported four physical actions, a uniform
+`B0`/`delta0`, window 15, rows 23--24, or a `TermSource`.  Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

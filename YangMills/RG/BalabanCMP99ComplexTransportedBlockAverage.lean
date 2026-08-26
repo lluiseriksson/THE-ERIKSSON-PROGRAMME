@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99ComplexSpecialLinearAdjointAction
 import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjoint
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # One-scale analytic average and printed starred synthesis for CMP99 (3.59)
 
 The analytically continued block average is complex-linear and carries the

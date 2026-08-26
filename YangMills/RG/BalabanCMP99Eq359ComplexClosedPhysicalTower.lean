@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99Eq337ComplexClosedRecursiveBackground
 import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradient
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Closed physical analytic tower feeding CMP99 (3.59)
 
 The recursion follows one typed source-region chain.  At every nonterminal

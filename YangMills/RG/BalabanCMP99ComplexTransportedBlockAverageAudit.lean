@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99ComplexTransportedBlockAverage
 
-/-!
-PRE-VALIDATION: scratch audit. The source has no materialized `.olean` and
-the declarations below have no compiler or axiom-oracle verdict.
--/
-
 #print axioms YangMills.RG.cmp99ComplexTransportedBlockAverageCLM
 #print axioms YangMills.RG.cmp99ComplexTransportedBlockAverageCLM_apply
 #print axioms YangMills.RG.cmp99ComplexTransportedBlockStarSynthesisCLM

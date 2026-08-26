@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Complex adjoint transport for the Eq. (3.59) two-tower bridge
 
 The real retained tower transports `SUNLieCoord` by orthogonal maps.  That

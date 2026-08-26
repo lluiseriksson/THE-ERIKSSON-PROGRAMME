@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99ComplexRegionalTower
 
-/-!
-PRE-VALIDATION: scratch audit. The source has no materialized `.olean` and
-the declarations below have no compiler or axiom-oracle verdict.
--/
-
 #print axioms YangMills.RG.CMP99ComplexRegionalTower.stop
 #print axioms YangMills.RG.CMP99ComplexRegionalTower.step
 #print axioms YangMills.RG.CMP99ComplexRegionalTower.depth_stop

@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99ComplexRegionalTower
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Common-target two-tower algebra for CMP99 (3.59)
 
 Baseline and perturbed recursions share one terminal type by construction.

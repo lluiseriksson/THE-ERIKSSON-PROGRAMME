@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99ComplexRegionalTower
 import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTower
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Background-faithful analytic regional tower for CMP99 (3.59)
 
 Each source step builds its contour holonomies from the background indexing

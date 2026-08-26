@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99Eq337ComplexClosedRecursiveBackground
 import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradient
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Closed source-specific two-tower producer for CMP99 (3.59)
 
 Baseline and perturbed complex backgrounds are advanced together through one

@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99ComplexTransportedBlockAverage
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Finite analytic `Q'`/starred recursion for CMP99 (3.59)
 
 The two operators are composed from the literal one-scale analytic factors.
