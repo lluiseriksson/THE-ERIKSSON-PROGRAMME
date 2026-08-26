@@ -1,0 +1,8 @@
+tmp/BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice.draft.lean
+tmp/BalabanCMP99SpecialUnitaryToSpecialLinearRealSliceAudit.draft.lean
+tmp/BalabanCMP99Eq359OneScaleRealSlice.draft.lean
+tmp/BalabanCMP99Eq359OneScaleRealSliceAudit.draft.lean
+tmp/BalabanCMP99PhysicalBackgroundRealSlice.draft.lean
+tmp/BalabanCMP99PhysicalBackgroundRealSliceAudit.draft.lean
+tmp/BalabanCMP99ComplexUbarSuccessorRealSlice.draft.lean
+tmp/BalabanCMP99ComplexUbarSuccessorRealSliceAudit.draft.lean
