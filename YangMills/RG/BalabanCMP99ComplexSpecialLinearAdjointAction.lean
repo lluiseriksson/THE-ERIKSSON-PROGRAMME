@@ -56,7 +56,7 @@ def cmp99SpecialLinearAdjointSlLM
     simp [Matrix.mul_add, Matrix.add_mul]
   map_smul' c X := by
     apply Subtype.ext
-    simp [Matrix.mul_smul, Matrix.smul_mul]
+    simp
 
 /-- Coordinate form of the literal complex adjoint action. -/
 def cmp99SpecialLinearAdjointCoordLM
