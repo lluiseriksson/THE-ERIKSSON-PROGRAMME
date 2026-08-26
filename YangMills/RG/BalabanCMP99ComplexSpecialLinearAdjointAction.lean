@@ -36,6 +36,10 @@ def cmp99SpecialLinearAdjointSlLM
     refine ⟨(g : Matrix (Fin Nc) (Fin Nc) ℂ) * X.1 *
         ((g⁻¹ : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
           Matrix (Fin Nc) (Fin Nc) ℂ), ?_⟩
+    change Matrix.trace
+      ((g : Matrix (Fin Nc) (Fin Nc) ℂ) * X.1 *
+        ((g⁻¹ : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+          Matrix (Fin Nc) (Fin Nc) ℂ)) = 0
     rw [Matrix.trace_mul_cycle]
     have hg :
         (((g⁻¹ : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
