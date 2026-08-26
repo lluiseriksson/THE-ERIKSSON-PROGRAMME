@@ -23,6 +23,7 @@ FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99Eq337PhysicalRealCovariantDerivative", 8),
     ("BalabanCMP99Eq337PhysicalComplexCovariantDerivative", 23),
+    ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26),
 )
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)
 OUTPUT_RE = re.compile(
@@ -173,7 +174,7 @@ def main() -> int:
             audit_stages.append(
                 f"eq337_covariant_derivative_{index:02d}_{module.lower()}_audit"
             )
-        if len(expected) != 31 or len(set(expected)) != 31:
+        if len(expected) != 57 or len(set(expected)) != 57:
             raise RuntimeError("EQ337_DERIVATIVE_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)
@@ -204,7 +205,7 @@ def main() -> int:
         "status": "EQ337_COVARIANT_DERIVATIVE_EVIDENCE_OK",
         "source_sha": args.source_sha,
         "runner_revision": args.runner_rev,
-        "expected_declarations": 31,
+        "expected_declarations": 57,
         "allowed_axioms": sorted(ALLOWED),
         "stage_seconds": {stage: str(by_stage[stage].get("seconds")) for stage in stages()},
         "boundary_blob_sha256": hashes,

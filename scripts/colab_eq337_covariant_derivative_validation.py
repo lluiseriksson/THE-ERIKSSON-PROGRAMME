@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Cold Colab gate for the remaining Eq. (3.37) derivative boundary.
+"""Cold Colab gate for the remaining Eq. (3.37) coordinate boundary.
 
-The two PRE-VALIDATION source/audit pairs are compiled from one fresh source
-checkpoint, their 31 declarations are audited, and ``YangMillsCore`` is built.
+The three PRE-VALIDATION source/audit pairs are compiled from one fresh source
+checkpoint, their 57 declarations are audited, and ``YangMillsCore`` is built.
 This intermediate gate does not move ``20/41`` or instantiate TermSource.
 """
 
@@ -41,9 +41,10 @@ spec.loader.exec_module(runner)
 MODULES = [
     ('BalabanCMP99Eq337PhysicalRealCovariantDerivative', 8),
     ('BalabanCMP99Eq337PhysicalComplexCovariantDerivative', 23),
+    ('BalabanCMP99Eq337PhysicalComplexPerturbedBackground', 26),
 ]
 
-runner.RUNNER_REV = 'eq337-covariant-derivative-promoted-cold-v1'
+runner.RUNNER_REV = 'eq337-complex-coordinate-promoted-cold-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-covariant-derivative")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-covariant-derivative-evidence")
@@ -55,6 +56,8 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq337PhysicalRealCovariantDerivativeAudit.lean': 'e15b8887cfe9259c8ff44d3cab05d51f110bd0573b1054696b15280b1e48c56f',
     'YangMills/RG/BalabanCMP99Eq337PhysicalComplexCovariantDerivative.lean': '8b2a3830ebd70561b1d08f388c6f8cb5f051b30f5da8d4c521cda84e1123b713',
     'YangMills/RG/BalabanCMP99Eq337PhysicalComplexCovariantDerivativeAudit.lean': '9ec01c5f72dbc1cf49eabfa3c12a84b8bbd9602950c47b35745352c0c0e1fcb9',
+    'YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbedBackground.lean': '7670b8e6ada64aa6f2549af712b20c6e9abefd9ed10beb33d94e166a6c876952',
+    'YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbedBackgroundAudit.lean': 'd85ee70b4d46e9b0993154eb71afddf77b8121b1259c175708445190fbbb7bd9',
 }
 
 

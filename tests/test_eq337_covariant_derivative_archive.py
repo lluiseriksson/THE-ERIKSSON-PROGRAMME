@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VERIFIER = ROOT / "tmp" / "verify_eq337_covariant_derivative_archive.py"
 PACKAGER = ROOT / "tmp" / "package_eq337_covariant_derivative_archive.py"
 SOURCE_SHA = "573d70e09eb3f069cc3e86f43ab76b16a2349163"
-RUNNER_REV = "eq337-covariant-derivative-promoted-cold-v1"
+RUNNER_REV = "eq337-complex-coordinate-promoted-cold-v2"
 
 
 def load_verifier():
@@ -107,7 +107,7 @@ def test_archive_verifier_accepts_exact_scope(tmp_path: Path) -> None:
     assert child.returncode == 0, child.stderr
     result = json.loads(child.stdout)
     assert result["status"] == "EQ337_COVARIANT_DERIVATIVE_EVIDENCE_OK"
-    assert result["expected_declarations"] == 31
+    assert result["expected_declarations"] == 57
 
 
 def test_archive_verifier_rejects_forbidden_axiom(tmp_path: Path) -> None:

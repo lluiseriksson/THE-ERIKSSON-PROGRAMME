@@ -16,6 +16,7 @@ BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
     ("BalabanCMP99Eq337PhysicalRealCovariantDerivative", 8),
     ("BalabanCMP99Eq337PhysicalComplexCovariantDerivative", 23),
+    ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26),
 )
 
 
@@ -68,10 +69,10 @@ def render(source_sha: str, runner_rev: str) -> str:
         f"    ({module!r}, {expected})," for module, expected in MODULES
     )
     return f'''#!/usr/bin/env python3
-"""Cold Colab gate for the remaining Eq. (3.37) derivative boundary.
+"""Cold Colab gate for the remaining Eq. (3.37) coordinate boundary.
 
-The two PRE-VALIDATION source/audit pairs are compiled from one fresh source
-checkpoint, their 31 declarations are audited, and ``YangMillsCore`` is built.
+The three PRE-VALIDATION source/audit pairs are compiled from one fresh source
+checkpoint, their 57 declarations are audited, and ``YangMillsCore`` is built.
 This intermediate gate does not move ``20/41`` or instantiate TermSource.
 """
 

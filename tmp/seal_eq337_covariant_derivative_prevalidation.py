@@ -18,6 +18,7 @@ CORE = "YangMillsCore.lean"
 MODULES = (
     "BalabanCMP99Eq337PhysicalRealCovariantDerivative",
     "BalabanCMP99Eq337PhysicalComplexCovariantDerivative",
+    "BalabanCMP99Eq337PhysicalComplexPerturbedBackground",
 )
 
 
@@ -56,7 +57,7 @@ def paths() -> list[str]:
         for module in MODULES
         for suffix in ("", "Audit")
     ]
-    if len(rows) != 4 or len(set(rows)) != 4:
+    if len(rows) != 6 or len(set(rows)) != 6:
         raise RuntimeError("EQ337_DERIVATIVE_SEAL_SCOPE_INVALID")
     return rows
 
@@ -65,7 +66,7 @@ def read_evidence(path: Path) -> dict:
     result = json.loads(path.read_text(encoding="utf-8"))
     if result.get("status") != "EQ337_COVARIANT_DERIVATIVE_EVIDENCE_OK":
         raise RuntimeError("EQ337_DERIVATIVE_SEAL_STATUS_MISMATCH")
-    if result.get("expected_declarations") != 31:
+    if result.get("expected_declarations") != 57:
         raise RuntimeError("EQ337_DERIVATIVE_SEAL_DECLARATIONS_MISMATCH")
     source_sha = result.get("source_sha")
     if not isinstance(source_sha, str) or re.fullmatch(r"[0-9a-f]{40}", source_sha) is None:
@@ -134,7 +135,7 @@ def main() -> int:
     if not args.apply:
         print(
             "EQ337_COVARIANT_DERIVATIVE_SEAL_PREVIEW_OK "
-            f"files=5 source_sha={result['source_sha']} manifest_sha256={manifest_sha}"
+            f"files=7 source_sha={result['source_sha']} manifest_sha256={manifest_sha}"
         )
         return 0
 
@@ -156,7 +157,7 @@ def main() -> int:
         raise
     print(
         "EQ337_COVARIANT_DERIVATIVE_SEAL_APPLY_OK "
-        f"files=5 source_sha={result['source_sha']} manifest_sha256={manifest_sha}"
+        f"files=7 source_sha={result['source_sha']} manifest_sha256={manifest_sha}"
     )
     return 0
 

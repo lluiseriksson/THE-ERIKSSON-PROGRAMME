@@ -16,14 +16,14 @@ def load_generator():
     return module
 
 
-def test_rendered_runner_has_exact_two_pair_scope(monkeypatch) -> None:
+def test_rendered_runner_has_exact_three_pair_scope(monkeypatch) -> None:
     generator = load_generator()
     monkeypatch.setattr(generator, "digest", lambda _sha, _path: "a" * 64)
     monkeypatch.setattr(generator, "blob", lambda _sha, _path: b"PRE-VALIDATION:")
     rendered = generator.render("1" * 40, "eq337-derivative-test-v1")
     compile(rendered, "generated-eq337-derivative-runner.py", "exec")
-    assert len(generator.MODULES) == 2
-    assert sum(expected for _, expected in generator.MODULES) == 31
+    assert len(generator.MODULES) == 3
+    assert sum(expected for _, expected in generator.MODULES) == 57
     assert "def capturing_run(" in rendered
     assert 'runner.RUNNER_REV = \'eq337-derivative-test-v1\'' in rendered
     assert "eq337_covariant_derivative_root" in rendered
