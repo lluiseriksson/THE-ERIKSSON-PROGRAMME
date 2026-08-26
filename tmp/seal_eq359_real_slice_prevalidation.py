@@ -107,20 +107,26 @@ def main() -> int:
     result = read_evidence(args.evidence_json.resolve())
     remover = load(BASE_SEALER, "eq359_real_slice_notice_remover")
     contract = load(CONTRACT_PATH, "eq359_real_slice_seal_contract")
-    rows = [
-        (
-            relative,
-            remover.remove_prevalidation_block(
-                require_clean_exact(result, relative), relative
-            ),
-        )
+    original_rows = [
+        (relative, require_clean_exact(result, relative))
         for relative in paths(contract)
+    ]
+    notice_count = sum(
+        data.count(b"PRE-VALIDATION:") for _, data in original_rows
+    )
+    if notice_count != 11:
+        raise RuntimeError(
+            f"EQ359_REAL_SLICE_SEAL_NOTICE_COUNT_MISMATCH={notice_count}:11"
+        )
+    rows = [
+        (relative, remover.remove_prevalidation_block(data, relative))
+        for relative, data in original_rows
     ]
     manifest_sha = digest(rows)
     if not args.apply:
         print(
             "EQ359_REAL_SLICE_SEAL_PREVIEW_OK "
-            f"files=12 source_sha={result['source_sha']} "
+            f"files=12 notices={notice_count} source_sha={result['source_sha']} "
             f"manifest_sha256={manifest_sha}"
         )
         return 0
@@ -148,7 +154,7 @@ def main() -> int:
 
     print(
         "EQ359_REAL_SLICE_SEAL_APPLY_OK "
-        f"files=12 source_sha={result['source_sha']} "
+        f"files=12 notices={notice_count} source_sha={result['source_sha']} "
         f"manifest_sha256={manifest_sha}"
     )
     return 0
