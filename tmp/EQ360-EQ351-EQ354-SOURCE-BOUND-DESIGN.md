@@ -98,27 +98,32 @@ The next implementation is finite and should preserve the following phase
 boundaries.  Provisional filenames are descriptive; changing a filename does
 not change the gates.
 
-1. `BalabanCMP99Eq351ComplexLaplacianRegrouping`: construct `U1` with
+1. `BalabanCMP99Eq351ExponentialAdjointRemainder`: define the nonlinear
+   remainder internally as `exp(Y) X exp(-Y) - X - [Y,X]` and prove the exact
+   algebraic decomposition.  This leaf has no physical input and does not
+   claim the quadratic norm bound; that bound remains a named obligation of
+   the source-facing pointwise producer.
+2. `BalabanCMP99Eq351ComplexLaplacianRegrouping`: construct `U1` with
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta`, expand the literal
    regional stencil, and prove the three-species identity.  The nonlinear
-   exponential remainder is defined internally from the same positive-bond
-   exponential.  This module has no norm hypotheses.
-2. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
+   exponential remainder is the specialization of module 1 at the same
+   positive-bond exponential.  This module has no norm hypotheses.
+3. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
    constants `4*d`, `2*d`, `8*d` and the powers `ell^-1`, `ell^-2`.
-3. `BalabanCMP99Eq354ComplexLaplacianOwnerBound`: transport the pointwise
+4. `BalabanCMP99Eq354ComplexLaplacianOwnerBound`: transport the pointwise
    result to the output-fixed / owner-weighted norm used by the regional
    defect.  Any chart conversion and finite-neighbour count are named here;
    the source clauses are not renamed or replaced.
-4. `BalabanCMP99Eq360ComplexSourcePrecisionPerturbation`: combine the
+5. `BalabanCMP99Eq360ComplexSourcePrecisionPerturbation`: combine the
    Eq. (3.59) internally generated forward/starred pair with the Eq. (3.51)--
    (3.54) Laplacian producer.  This is the first module allowed to identify
    the four-term Eq. (3.60) algebra with the physical source perturbation.
 
-The baseline and perturbed Laplacians in all four modules share one active
-carrier and one spacing.  The perturbed background is definitionally the
+The baseline and perturbed Laplacians in the four source-facing modules share
+one active carrier and one spacing.  The perturbed background is definitionally the
 Eq. (3.37) construction above; no equality between a caller-supplied `U1` and
-that background is accepted.  Until modules 1--3 compile and pass their axiom
+that background is accepted.  Until modules 1--4 compile and pass their axiom
 audits, `cmp99Eq360ComplexLocalLaplacianPerturbation` remains valid auxiliary
 algebra but is not a producer of the source bound.
