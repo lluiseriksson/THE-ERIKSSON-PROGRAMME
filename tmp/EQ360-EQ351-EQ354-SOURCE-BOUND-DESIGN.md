@@ -166,6 +166,22 @@ arrow.
    PRE-VALIDATION in `tmp`; it has no `.olean` or axiom verdict.  This leaf
    removes the possibility of a caller-supplied diagonal field, but it does
    not prove the three-species Laplacian identity or any Eq. (3.54) bound.
+
+   Its source-facing real-slice dictionary is fixed as a theorem, not an
+   implicit identification.  For a real physical one-cochain `A` it must
+   identify the complex divergence with
+   `cmp99SUNLieCoordComplexificationLM Nc
+   (gaugeConstraintQCLM (matrixSUNAdjointModel Nc) U A x)`.  This follows
+   pointwise from the already sealed real-slice theorem for the canonical
+   oriented perturbation and the literal backward-divergence stencil.  The
+   regional adjoint theorem
+   `cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply` has the same bracket
+   only after restriction to the active carrier and multiplication by
+   `spacing⁻¹`; it is therefore a downstream scaled corollary, not the
+   definition of the complex diagonal species.  No bridge module is staged
+   until the PRE-VALIDATION divergence pair itself has a compiler/axiom
+   verdict.
+
 3. `BalabanCMP99Eq351ComplexLaplacianRegrouping`: construct `U1` with
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta`, expand the literal
    regional stencil, and prove the three-species identity.  The nonlinear
