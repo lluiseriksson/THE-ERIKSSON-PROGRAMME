@@ -4,9 +4,6 @@ import YangMills.RG.MatrixRealization
 import YangMills.RG.NearLogDeviationBudget
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # The analytic CMP99 Ubar factor in `SL(N,C)`
 
 The lattice deviation and its gauge-covariance law in `Ubar.lean` are already

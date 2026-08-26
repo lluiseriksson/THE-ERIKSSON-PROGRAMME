@@ -1,7 +1,5 @@
 import YangMills.RG.BalabanCMP99ComplexUbarCoordinateExponent
 
-/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
-
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixCLM
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixNormBudget
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixNormBudget_nonneg

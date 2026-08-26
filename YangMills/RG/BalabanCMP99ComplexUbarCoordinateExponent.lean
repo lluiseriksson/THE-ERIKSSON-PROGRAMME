@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
 import Mathlib.Analysis.Normed.Operator.Basic
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # The literal analytic Ubar exponent in physical complex coordinates
 
 The complex Ubar algebra already constructs the exponent as the normalized

@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP116FourFactorLipschitz
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # Four-factor deviation for the complex CMP99 Ubar contour
 
 The physical `SU(N)` estimate may add the four deviations because all four

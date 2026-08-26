@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99ComplexFourFactorDeviation
 
-/-!
-PRE-VALIDATION: this scratch audit has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
--/
+
 
 namespace YangMills.RG
 

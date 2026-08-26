@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99SourceUbarContours
 import YangMills.RG.Ubar
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # One literal analytic CMP99 Ubar background step
 
 The source contours and base coarse background are already group-generic.

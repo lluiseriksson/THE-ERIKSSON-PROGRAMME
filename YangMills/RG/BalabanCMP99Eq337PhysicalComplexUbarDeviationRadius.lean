@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99ComplexLocalizedUbarBackground
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexWilsonLineRadius
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # Literal complex Eq. (3.37) radius for the source Ubar deviation
 
 This leaf identifies all four factors of the source Ubar deviation with

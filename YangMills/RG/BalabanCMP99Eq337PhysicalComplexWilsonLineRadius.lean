@@ -4,9 +4,6 @@ import YangMills.RG.OrderedProductQuadraticBound
 import YangMills.ClayCore.WilsonLine
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # Path radii for the literal complex CMP99 (3.37) background
 
 This leaf turns the two oriented-link estimates into the actual ordered path

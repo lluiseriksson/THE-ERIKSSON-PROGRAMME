@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius
 
-/-!
-PRE-VALIDATION: this scratch audit has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
--/
-
 #print axioms YangMills.RG.cmp99SourceComplexUbarFourPaths
 #print axioms YangMills.RG.cmp99SourceComplexUbarFourPaths_length_le
 #print axioms YangMills.RG.cmp99SourceComplexLocalizedUbarDeviation_coe_eq_fourPathProduct

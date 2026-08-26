@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP98GAdConjugation
 import YangMills.RG.OrderedExponentialQuadraticBound
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # Positive-link radius for the literal complex CMP99 (3.37) background
 
 This leaf consumes the named operator-norm cost of the complex physical Lie
