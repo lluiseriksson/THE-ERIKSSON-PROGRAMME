@@ -11,7 +11,9 @@ def test_source_keeps_prevalidation_and_canonical_boundary():
     text = SOURCE.read_text(encoding="utf-8")
     assert "PRE-VALIDATION" in text
     assert "cmp99SourceComplexLocalizedNextBackground_realSlice" in text
+    assert "cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall" in text
     assert "cmp99PhysicalUbarGaugeConfigOfDeviationBudget" in text
+    assert "cmp99SourceRegionalScaleDataOfFineSmall" in text
     assert "cmp99SourceLocalizedNextBackground" not in text
 
 
@@ -24,7 +26,7 @@ def test_budgets_are_independent_proof_inputs():
 
 def test_audit_and_manifest_cover_exact_draft_pair():
     audit = AUDIT.read_text(encoding="utf-8")
-    assert audit.count("#print axioms") == 6
+    assert audit.count("#print axioms") == 7
     paths = [line for line in MANIFEST.read_text(encoding="utf-8").splitlines()
              if line.strip()]
     assert paths == [
