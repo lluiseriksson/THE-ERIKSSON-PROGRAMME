@@ -35,10 +35,10 @@ CHILDREN = (
         "url": (
             "https://raw.githubusercontent.com/lluiseriksson/"
             "THE-ERIKSSON-PROGRAMME/"
-            "cfcd0d01978ade4ea4ef077d8caa1412b284265a/"
+            "e894eea13ec6a2c48e1153519f5bd213034ba0ee/"
             "tmp/eq359_eq351_negative_bond_warm_debug.py"
         ),
-        "sha256": "D10E102C763E51C49E55B3EC96267B601B22F5DF4C47FC7757183D5FC8C5A118",
+        "sha256": "5E658BDD7AC5AC2877024846BB14E41DE8252616908CC4A4BEA26F1A54677654",
         "sentinel": "WARM_NEGATIVE_BOND_FINAL_STATUS=PASS",
     },
 )
