@@ -109,17 +109,23 @@ noncomputable def cmp99Eq360ComplexRegionalLaplacian
                   (cmp99Eq360ComplexCovariantDifference U spacing extended
                     (x.1.shiftBack i, i)))
       map_add' := fun phi psi => by
-        ext x
+        apply PiLp.ext
+        intro x
         simp only [cmp99Eq360ComplexDirichletExtend_add,
-          cmp99Eq360ComplexCovariantDifference_add, map_add,
-          Finset.sum_add_distrib, smul_add, PiLp.add_apply]
+          cmp99Eq360ComplexCovariantDifference_add, map_add, PiLp.add_apply]
+        rw [← smul_add]
+        apply congrArg (((spacing : ℂ)⁻¹) • ·)
+        rw [← Finset.sum_add_distrib]
+        apply Finset.sum_congr rfl
+        intro i _hi
         module
       map_smul' := fun c phi => by
-        ext x
+        apply PiLp.ext
+        intro x
         simp only [cmp99Eq360ComplexDirichletExtend_smul,
           cmp99Eq360ComplexCovariantDifference_smul, map_smul,
           Finset.smul_sum, smul_sub, smul_smul, PiLp.smul_apply]
-        module }
+        simp only [RingHom.id_apply, mul_comm] }
 
 @[simp] theorem cmp99Eq360ComplexRegionalLaplacian_apply
     (Omega : ActiveGaugeRegion d N)
