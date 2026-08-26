@@ -85,18 +85,35 @@ theorem cmp99SourceBaseCoarseBackground_realSlice
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U) =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
         (cmp99SourceBaseCoarseBackground U) := by
+  have hpos : ∀ b : PhysicalBond d N',
+      cmp99SourceBaseCoarseBackground
+          (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+          (positiveEdgeOfPhysicalBond b) =
+        cmp99SUNToSpecialLinear Nc
+          (cmp99SourceBaseCoarseBackground U
+            (positiveEdgeOfPhysicalBond b)) := by
+    intro b
+    let physical := cmp99SourceParallelTransportPath (G := SUN Nc)
+      (blockBasepoint M N' b.1) b.2
+    change wilsonLine (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+        physical.edges =
+      cmp99SUNToSpecialLinear Nc (wilsonLine U physical.edges)
+    exact wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear
+      U physical.edges
   apply gaugeConfig_ext
   intro e
-  rcases e with ⟨y, mu, orient⟩
-  cases orient
-  · simp [cmp99SourceBaseCoarseBackground,
-      cmp99PhysicalGaugeBackgroundToSpecialLinear,
-      gaugeConfigOfPositiveBonds, map_inv,
-      wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear]
-  · simp [cmp99SourceBaseCoarseBackground,
-      cmp99PhysicalGaugeBackgroundToSpecialLinear,
-      gaugeConfigOfPositiveBonds,
-      wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear]
+  cases e with
+  | mk y mu orient =>
+      cases orient
+      · change
+          (cmp99SourceBaseCoarseBackground
+            (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+              (positiveEdgeOfPhysicalBond (y, mu)))⁻¹ =
+            cmp99SUNToSpecialLinear Nc
+              ((cmp99SourceBaseCoarseBackground U
+                (positiveEdgeOfPhysicalBond (y, mu)))⁻¹)
+        rw [map_inv, hpos]
+      · exact hpos (y, mu)
 
 /-- Each literal four-path deviation commutes with the compact embedding. -/
 theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
@@ -118,6 +135,7 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply,
     map_mul, map_inv]
+  rfl
 
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
@@ -141,6 +159,7 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
           (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ Bphysical.δ)
     (b : PhysicalBond d N') :
     cmp99SourceComplexLocalizedUbarBlock
+        (d := d) (M := M) (N' := N') (Nc := Nc)
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
         Bcomplex hcomplex b =
       cmp99SUNToSpecialLinear Nc
@@ -198,6 +217,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
           (cmp99SourceUbarGamma2 (G := SUN Nc) b)
           (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ Bphysical.δ) :
     cmp99SourceComplexLocalizedNextBackground
+        (d := d) (M := M) (N' := N') (Nc := Nc)
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
         Bcomplex hcomplex =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
@@ -258,6 +278,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ) :
     cmp99SourceComplexLocalizedNextBackground
+        (d := d) (M := M) (N' := N') (Nc := Nc)
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
         Bcomplex hcomplex =
       cmp99PhysicalGaugeBackgroundToSpecialLinear

@@ -49,6 +49,7 @@ theorem cmp99ComplexAdjointBlockAverageCLM_realSlice
           (matrixSUNAdjointModel Nc) holonomy phi) := by
   apply WithLp.ofLp_injective
   funext y
+  unfold cmp99ComplexAdjointBlockAverageCLM
   rw [cmp99ComplexTransportedBlockAverageCLM_apply]
   change
     (cmp99SourceBlockAverageWeight M d : ℂ) •
@@ -88,6 +89,7 @@ theorem cmp99ComplexAdjointBlockStarSynthesisCLM_realSlice
           (matrixSUNAdjointModel Nc) holonomy eta) := by
   apply WithLp.ofLp_injective
   funext x
+  unfold cmp99ComplexAdjointBlockStarSynthesisCLM
   rw [cmp99ComplexTransportedBlockStarSynthesisCLM_apply]
   change cmp99SpecialLinearAdjointCoordLM
       (cmp99SUNToSpecialLinear Nc

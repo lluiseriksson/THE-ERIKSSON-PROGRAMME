@@ -48,7 +48,7 @@ theorem cmp99SUNToSpecialLinear_inv_coe
     (g : SUN Nc) :
     ((((cmp99SUNToSpecialLinear Nc g)⁻¹ :
         Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
-      Matrix (Fin Nc) (Fin Nc) ℂ)) = g.1ᴴ := by
+      Matrix (Fin Nc) (Fin Nc) ℂ)) = Matrix.conjTranspose g.1 := by
   rw [← map_inv]
   rfl
 
