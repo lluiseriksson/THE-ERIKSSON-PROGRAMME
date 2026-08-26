@@ -20,7 +20,7 @@ import time
 ROOT = Path("/content/hrpoly-eq359-real-slice")
 EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence/evidence.json")
 EQ359_SOURCE = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
-EXPECTED_HEAD_BEFORE = "aa3fb845c1b310d413986632b1b647bd9bc6ac5c"
+EXPECTED_HEAD_BEFORE = "f4edf174f4dbb6819dfc75464f639c5a6d5c022e"
 FIX_SOURCE = "f4edf174f4dbb6819dfc75464f639c5a6d5c022e"
 
 REGIONAL_DRAFTS = (
@@ -194,8 +194,9 @@ def main() -> int:
 
 if __name__ == "__main__":
     try:
-        raise SystemExit(main())
-    except BaseException as exc:
+        exit_code = main()
+    except Exception as exc:
         print("WARM_POSITIVE_ADJOINT_RETRY_FINAL_STATUS=FAIL", flush=True)
         print("WARM_POSITIVE_ADJOINT_RETRY_ERROR=" + repr(exc), flush=True)
         raise
+    raise SystemExit(exit_code)
