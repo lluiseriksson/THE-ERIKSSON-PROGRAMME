@@ -16,7 +16,7 @@ namespace YangMills.RG
 
 noncomputable section
 
-variable {d Nc : ℕ} [NeZero Nc]
+variable {d Nc : ℕ} [NeZero d] [NeZero Nc]
 
 /-- The complex contour is the exact physical block contour with only its
 phantom gauge-group parameter changed.  In particular, no second
@@ -85,8 +85,7 @@ noncomputable def CMP99ComplexPhysicalRegionalTower.step
     (Omega : ActiveGaugeRegion d N) (spacing : ℝ)
     (background : GaugeConfig d N
       (Matrix.SpecialLinearGroup (Fin Nc) ℂ)) :
-    (CMP99ComplexPhysicalRegionalTower.stop Omega spacing background).
-        toComplexTower =
+    (CMP99ComplexPhysicalRegionalTower.stop Omega spacing background).toComplexTower =
       CMP99ComplexRegionalTower.stop (Nc := Nc) Omega spacing := rfl
 
 theorem CMP99ComplexPhysicalRegionalTower.Qprime_step
