@@ -73,6 +73,7 @@ theorem cmp99Eq360ComplexCovariantDifference_add
       cmp99Eq360ComplexCovariantDifference U spacing phi b +
         cmp99Eq360ComplexCovariantDifference U spacing psi b := by
   simp [cmp99Eq360ComplexCovariantDifference, smul_sub, smul_add]
+  module
 
 theorem cmp99Eq360ComplexCovariantDifference_smul
     (U : GaugeConfig d N (Matrix.SpecialLinearGroup (Fin Nc) ℂ))
