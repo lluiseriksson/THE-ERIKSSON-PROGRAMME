@@ -3,7 +3,11 @@
 
 The script is a mechanical seal helper.  It refuses to act unless every one
 of the 34 tracked source/audit paths is unchanged from the exact checkpoint
-compiled by the cold C6d runner.  Its default mode is read-only; ``--apply``
+compiled by a verified cold root and its ninety-two-readout axiom gate.  The
+byte-identical Eq359 cross-gate verification is mandatory and is regenerated
+directly from the two
+archives rather than trusted as a caller-supplied claim.  Its default mode is
+read-only; ``--apply``
 removes only the two-line PRE notice and any module-doc block left empty by
 that removal.  On a write or verification failure all touched files are
 restored byte-for-byte.
@@ -14,13 +18,17 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import json
 import re
 import subprocess
+import sys
+import tempfile
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
 VERIFIER = ROOT / "tmp" / "verify_c6d_root_transitive_axioms.py"
+CROSS_VERIFIER = ROOT / "tmp" / "verify_c6d_eq359_cross_archive.py"
 PRE_MARKER = (
     "PRE-VALIDATION: source is present in scratch only; no `.olean` has been\n"
     "materialized and no compiler or axiom-oracle verdict exists for this module."
@@ -79,6 +87,70 @@ def require_exact_checkpoint(paths: list[str], source_sha: str) -> None:
             )
 
 
+def require_verification(
+    eq359_archive: Path,
+    cross_archive: Path,
+    paths: list[str],
+    source_sha: str,
+) -> str:
+    if not eq359_archive.is_file() or not cross_archive.is_file():
+        raise RuntimeError("C6D_VERIFICATION_ARCHIVE_MISSING")
+    with tempfile.TemporaryDirectory(prefix="c6d-seal-") as temp:
+        verification_json = Path(temp) / "verification.json"
+        child = subprocess.run(
+            [
+                sys.executable,
+                str(CROSS_VERIFIER),
+                "--repo",
+                str(ROOT),
+                "--eq359-archive",
+                str(eq359_archive),
+                "--cross-archive",
+                str(cross_archive),
+                "--json-out",
+                str(verification_json),
+            ],
+            cwd=ROOT,
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        if child.returncode != 0:
+            raise RuntimeError("C6D_CROSS_VERIFIER_FAILED=" + child.stdout)
+        result = json.loads(verification_json.read_text(encoding="utf-8"))
+    status = result.get("status")
+    if status != "C6D_EQ359_CROSS_EVIDENCE_OK":
+        raise RuntimeError(f"C6D_VERIFICATION_STATUS={status!r}")
+    measured_source = result.get("c6d_source_sha")
+    if measured_source != source_sha:
+        raise RuntimeError(
+            f"C6D_VERIFICATION_SOURCE={measured_source!r} WANT={source_sha}"
+        )
+    if result.get("boundary_paths") != paths:
+        raise RuntimeError("C6D_VERIFICATION_BOUNDARY_SCOPE")
+    if result.get("expected_declarations") != 92:
+        raise RuntimeError("C6D_VERIFICATION_DECLARATION_COUNT")
+    if set(result.get("allowed_axioms", [])) != {
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+    }:
+        raise RuntimeError("C6D_VERIFICATION_ALLOWED_AXIOMS")
+
+    recorded_hashes = result.get("boundary_blob_sha256")
+    if not isinstance(recorded_hashes, dict) or set(recorded_hashes) != set(paths):
+        raise RuntimeError("C6D_VERIFICATION_BOUNDARY_HASH_SCOPE")
+    for relative in paths:
+        blob = run_git("show", f"{source_sha}:{relative}")
+        if blob.returncode != 0:
+            raise RuntimeError(f"C6D_VERIFICATION_BLOB_READ={relative}")
+        measured = hashlib.sha256(blob.stdout).hexdigest()
+        if recorded_hashes.get(relative) != measured:
+            raise RuntimeError(f"C6D_VERIFICATION_BLOB_HASH={relative}")
+    return status
+
+
 def transformed_bytes(relative: str, source_sha: str) -> tuple[bytes, bytes]:
     path = ROOT / relative
     original = path.read_bytes()
@@ -115,11 +187,19 @@ def digest(rows: list[tuple[str, bytes]]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--eq359-archive", type=Path, required=True)
+    parser.add_argument("--cross-archive", type=Path, required=True)
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
     verifier = load_verifier()
     paths = boundary_paths(verifier)
+    verification_status = require_verification(
+        args.eq359_archive.resolve(),
+        args.cross_archive.resolve(),
+        paths,
+        verifier.SOURCE_SHA,
+    )
     require_exact_checkpoint(paths, verifier.SOURCE_SHA)
     originals: dict[str, bytes] = {}
     sealed_rows: list[tuple[str, bytes]] = []
@@ -133,6 +213,7 @@ def main() -> int:
         print(
             "C6D_TRANSITIVE_SEAL_PREVIEW_OK "
             f"files={len(paths)} source_sha={verifier.SOURCE_SHA} "
+            f"verification_status={verification_status} "
             f"sealed_manifest_sha256={manifest_sha}"
         )
         return 0
@@ -159,6 +240,7 @@ def main() -> int:
     print(
         "C6D_TRANSITIVE_SEAL_APPLY_OK "
         f"files={len(paths)} source_sha={verifier.SOURCE_SHA} "
+        f"verification_status={verification_status} "
         f"sealed_manifest_sha256={manifest_sha}"
     )
     return 0
