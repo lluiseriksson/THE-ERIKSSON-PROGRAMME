@@ -18,6 +18,20 @@ noncomputable section
 
 variable {d Nc : ℕ} [NeZero Nc]
 
+/-- The complex contour is the exact physical block contour with only its
+phantom gauge-group parameter changed.  In particular, no second
+`Classical.choice` may select a different edge list on the complex side. -/
+noncomputable def cmp99SpecialLinearBlockContainedContourSystem
+    {M N' : ℕ} [NeZero M] [NeZero N'] :
+    CMP99ContourSystem d M N'
+      (Matrix.SpecialLinearGroup (Fin Nc) ℂ) :=
+  fun y x ↦
+    let physical :=
+      cmp99BlockContainedContourSystem (G := SUN Nc) y x
+    { edges := physical.edges
+      isPath := physical.isPath
+      ends := physical.ends }
+
 /-- Literal complex block-contour holonomy of one analytically continued
 background. -/
 noncomputable def cmp99ComplexPhysicalBlockHolonomy
@@ -27,8 +41,8 @@ noncomputable def cmp99ComplexPhysicalBlockHolonomy
     FinBox d N' → FinBox d (M * N') →
       Matrix.SpecialLinearGroup (Fin Nc) ℂ :=
   fun y x ↦
-    (cmp99BlockContainedContourSystem
-      (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ) y x).holonomy background
+    (cmp99SpecialLinearBlockContainedContourSystem
+      (d := d) (Nc := Nc) y x).holonomy background
 
 /-- Analytic tower indexed by the physical complex background consumed by
 its first printed average. -/
