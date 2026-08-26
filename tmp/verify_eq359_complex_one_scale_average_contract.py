@@ -14,7 +14,7 @@ MODULES = (
     ("BalabanCMP99ComplexSpecialLinearAdjointAction", 3),
     ("BalabanCMP99ComplexTransportedBlockAverage", 8),
     ("BalabanCMP99ComplexRegionalTower", 6),
-    ("BalabanCMP99ComplexPhysicalRegionalTower", 6),
+    ("BalabanCMP99ComplexPhysicalRegionalTower", 7),
     ("BalabanCMP99Eq359ComplexClosedPhysicalTower", 1),
     ("BalabanCMP99Eq359ComplexRegionalTowerPair", 6),
     ("BalabanCMP99Eq359ComplexClosedPhysicalTowerPair", 1),

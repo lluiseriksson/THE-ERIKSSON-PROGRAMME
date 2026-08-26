@@ -32,6 +32,6 @@ def test_rendered_runner_keeps_seven_pair_scope(monkeypatch) -> None:
     monkeypatch.setattr(generator, "digest", lambda _sha, _path: "b" * 64)
     rendered = generator.render("2" * 40, "eq359-test-v2")
     assert len(generator.MODULES) == 7
-    assert sum(expected for _, expected in generator.MODULES) == 31
+    assert sum(expected for _, expected in generator.MODULES) == 32
     for module, expected in generator.MODULES:
         assert repr((module, expected)) in rendered

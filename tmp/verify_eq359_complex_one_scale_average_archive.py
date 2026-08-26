@@ -135,7 +135,7 @@ def main() -> int:
             declarations_by_module[module] = declarations
             expected.extend(declarations)
             audit_stages.append(f"eq359_{index:02d}_{module.lower()}_audit")
-        if len(expected) != 31 or len(set(expected)) != 31:
+        if len(expected) != 32 or len(set(expected)) != 32:
             raise RuntimeError("EQ359_ARCHIVE_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)

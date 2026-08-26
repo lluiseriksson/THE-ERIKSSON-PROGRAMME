@@ -76,7 +76,7 @@ def render(source_sha: str, runner_rev: str) -> str:
 """Cold Colab validation for the source-specific Eq. (3.59) two-tower pair.
 
 The source checkpoint contains seven promoted PRE-VALIDATION source/audit
-pairs. The queue compiles them in dependency order, audits their thirty-one
+pairs. The queue compiles them in dependency order, audits their thirty-two
 public declarations, builds ``YangMillsCore`` from the same fresh checkout,
 and stops at the first real error. It does not move ``20/41`` or instantiate
 ``TermSource``.
