@@ -64,11 +64,25 @@ theorem cmp99Eq351PhysicalComplexOrientedPerturbation_realSlice
         (orientedOneValue (matrixSUNAdjointModel Nc) U A e) := by
   cases e with
   | mk x i sign =>
-      cases sign <;>
-        simp [cmp99Eq351PhysicalComplexOrientedPerturbation,
-          orientedOneValue,
-          cmp99SUNAdjointComplexAction,
-          cmp99SUNAdjointComplexAction_complexification]
+      cases sign with
+      | false =>
+          simp [cmp99Eq351PhysicalComplexOrientedPerturbation,
+            orientedOneValue]
+          change
+            cmp99SUNAdjointComplexAction (matrixSUNAdjointModel Nc)
+                (U.toFun { source := x, dir := i, sign := false })
+                (cmp99SUNLieCoordComplexificationLM Nc (A.ofLp (x, i))) =
+              cmp99SUNLieCoordComplexificationLM Nc
+                ((matrixSUNAdjointModel Nc).adCLM
+                  (U.toFun { source := x, dir := i, sign := false })
+                  (A.ofLp (x, i)))
+          exact cmp99SUNAdjointComplexAction_complexification
+            (matrixSUNAdjointModel Nc)
+            (U.toFun { source := x, dir := i, sign := false })
+            (A.ofLp (x, i))
+      | true =>
+          simp [cmp99Eq351PhysicalComplexOrientedPerturbation,
+            orientedOneValue]
 
 end
 
