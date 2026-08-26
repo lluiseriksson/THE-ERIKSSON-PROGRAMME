@@ -48,7 +48,7 @@ MODULES = [
     ('BalabanCMP99ComplexUbarSuccessorRealSlice', 9),
 ]
 
-runner.RUNNER_REV = 'eq359-real-slice-promoted-cold-v2'
+runner.RUNNER_REV = 'eq359-real-slice-promoted-cold-v3'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq359-real-slice")
 runner.EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence")
@@ -116,6 +116,7 @@ queue = [
         [
             "lake", "build",
             "YangMills.RG.BalabanCMP99ComplexPhysicalRegionalTower",
+            "YangMills.RG.BalabanCMP99ComplexUbarSpecialLinear",
             "YangMills.RG.BalabanCMP99SourceRegionalScale",
             "YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction",
         ],

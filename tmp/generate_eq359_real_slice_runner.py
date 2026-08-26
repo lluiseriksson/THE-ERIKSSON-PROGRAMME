@@ -172,6 +172,7 @@ queue = [
         [
             "lake", "build",
             "YangMills.RG.BalabanCMP99ComplexPhysicalRegionalTower",
+            "YangMills.RG.BalabanCMP99ComplexUbarSpecialLinear",
             "YangMills.RG.BalabanCMP99SourceRegionalScale",
             "YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction",
         ],
