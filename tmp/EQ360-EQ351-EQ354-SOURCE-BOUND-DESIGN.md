@@ -174,6 +174,21 @@ arrow.
    algebraic prerequisite is the existing PRE-VALIDATION leaf
    `BalabanCMP99ComplexSpecialLinearAdjointComposition`, which must be
    promoted and audited rather than reproved inside the regrouping.
+
+   The source-facing theorem signature is fixed before implementation.  Its
+   data are only `Omega`, the compact physical background `U`, the physical
+   complex one-cochain `A`, `eta`, `spacing`, the Dirichlet field and its
+   active site.  It must instantiate the two analytic backgrounds as
+   `cmp99PhysicalGaugeBackgroundToSpecialLinear U` and
+   `cmp99Eq337PhysicalComplexPerturbedBackground U A eta` inside the
+   statement.  The existing auxiliary local-perturbation operator with free
+   `U0 U1` may be used only after those substitutions; it is not itself the
+   source producer.  Likewise, the oriented `A'`, the diagonal
+   `cmp99Eq351PhysicalComplexCovariantDivergence U A`, and the exponential
+   remainder are named internal expressions.  No equality identifying any
+   of them with caller data is an accepted premise.  The first endpoint is a
+   pointwise three-species equality; an operator wrapper, if useful, is
+   derived from that equality rather than used to hide it.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
