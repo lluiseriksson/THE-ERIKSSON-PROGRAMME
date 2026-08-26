@@ -289,9 +289,9 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
       cmp99SUNToSpecialLinear Nc
         (cmp99SourceBaseCoarseBackground U
           (positiveEdgeOfPhysicalBond b)) := by
-    exact congrFun
+    exact congrArg
+      (fun A ↦ A (positiveEdgeOfPhysicalBond b))
       (cmp99SourceBaseCoarseBackground_realSlice U)
-      (positiveEdgeOfPhysicalBond b)
   unfold cmp99SourceComplexLocalizedUbarBlock
     cmp99PhysicalUbarBlockOfDeviationBudget
   dsimp only
