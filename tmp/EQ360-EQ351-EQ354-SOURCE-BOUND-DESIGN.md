@@ -85,12 +85,12 @@ not yet prove the source decomposition above, the (3.54) pointwise bound, or
 its downstream operator-norm transport.
 
 The aggregate proposition
-`CMP99Eq337PhysicalComplexPerturbationDomain` is itself still a scratch
-PRE-VALIDATION structure even though its two constituent bound predicates are
-sealed.  The source-bound gate must therefore promote and audit that structure
-as an explicit prerequisite (or seal it in an earlier exact gate); it may not
-treat the aggregate domain package as already certified merely because the
-amplitude and covariant-derivative predicates exist in the tree.
+`CMP99Eq337PhysicalComplexPerturbationDomain`, the oriented perturbation and
+the two exponential-adjoint remainder modules are now sealed by exact cold
+evidence at source `77c0e4834ce69d8b174d37aeefac56fd5b06b5ad` and seal
+checkpoint `a5e4d03bbf6fd237fa60d1735ffa442203e791bf`.  The next source-bound
+gate may consume those named declarations, but it may not replace their
+amplitude and covariant-derivative clauses with fresh bounds.
 
 ## Compiler-facing module split
 
@@ -134,8 +134,8 @@ algebra but is not a producer of the source bound.
 
 ## Compiler inventory fixed before promotion
 
-The first gate is deliberately smaller than Eq. (3.60).  It promotes and
-audits exactly the following eight files before any source-bound consumer is
+The first gate was deliberately smaller than Eq. (3.60).  It promoted and
+audited the following eight files before any source-bound consumer was
 allowed to compile:
 
 1. the literal aggregate
@@ -144,7 +144,8 @@ allowed to compile:
 3. `BalabanCMP99Eq351ExponentialAdjointRemainder` and its audit;
 4. `BalabanCMP99Eq351ExponentialAdjointRemainderBound` and its audit.
 
-The domain aggregate carries the already named amplitude and covariant-
+That gate is sealed at `a5e4d03bbf6fd237fa60d1735ffa442203e791bf`.  The
+domain aggregate carries the already named amplitude and covariant-
 derivative predicates as fields; it does not introduce replacement bounds.
 The oriented perturbation is constructed from the physical one-cochain and
 the sealed background transport on each bond orientation; it is not a
