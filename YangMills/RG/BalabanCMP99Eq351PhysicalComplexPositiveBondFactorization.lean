@@ -20,6 +20,16 @@ open Matrix
 
 variable {d N Nc : Nat} [NeZero N] [NeZero Nc]
 
+/-- Literal matrix generator `i eta A'(b)` in the repository's complex
+coordinate convention.  Naming it prevents the later adjoint expansion from
+silently changing the chart or the normalization of `eta`. -/
+def cmp99Eq351PhysicalComplexPositiveGeneratorMatrix
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (b : PhysicalBond d N) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  (((Complex.I : ℂ) * (eta : ℂ)) •
+    cmp99Eq337PrintedComplexLieMatrix (A b))
+
 /-- The determinant-one exponential appearing literally in
 `exp(i eta A'(b)) U(b)`. -/
 def cmp99Eq351PhysicalComplexPositiveExponentSL
@@ -27,8 +37,7 @@ def cmp99Eq351PhysicalComplexPositiveExponentSL
     (eta : ℝ) (b : PhysicalBond d N) :
     Matrix.SpecialLinearGroup (Fin Nc) ℂ := by
   let Y : Matrix (Fin Nc) (Fin Nc) ℂ :=
-    (((Complex.I : ℂ) * (eta : ℂ)) •
-      cmp99Eq337PrintedComplexLieMatrix (A b))
+    cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A eta b
   refine ⟨physicalMatrixExp Y, ?_⟩
   have htrace : Matrix.trace Y = 0 := by
     dsimp [Y]
@@ -44,9 +53,39 @@ def cmp99Eq351PhysicalComplexPositiveExponentSL
         Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
       Matrix (Fin Nc) (Fin Nc) ℂ) =
       physicalMatrixExp
-        ((((Complex.I : ℂ) * (eta : ℂ)) •
-          cmp99Eq337PrintedComplexLieMatrix (A b))) :=
+        (cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A eta b) :=
   rfl
+
+theorem cmp99Eq351PhysicalComplexPositiveGeneratorMatrix_neg
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (b : PhysicalBond d N) :
+    cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A (-eta) b =
+      -cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A eta b := by
+  unfold cmp99Eq351PhysicalComplexPositiveGeneratorMatrix
+  module
+
+/-- The inverse source exponential is the exponential of the negative of the
+same named generator.  This is proved from the exact two-sided exponential
+cancellation, not assumed as an analytic-adjoint identity. -/
+theorem cmp99Eq351PhysicalComplexPositiveExponentSL_inv_coe
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (b : PhysicalBond d N) :
+    (((cmp99Eq351PhysicalComplexPositiveExponentSL A eta b)⁻¹ :
+        Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+      Matrix (Fin Nc) (Fin Nc) ℂ) =
+      physicalMatrixExp
+        (-cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A eta b) := by
+  let Y := cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A eta b
+  have hinv : (physicalMatrixExp Y)⁻¹ = physicalMatrixExp (-Y) := by
+    apply Matrix.inv_eq_left_inv
+    simpa only [physicalMatrixExp] using cmp98_exp_neg_mul_exp Y
+  rw [Matrix.SpecialLinearGroup.coe_inv]
+  change Matrix.adjugate (physicalMatrixExp Y) = physicalMatrixExp (-Y)
+  have hdet : Matrix.det (physicalMatrixExp Y) = 1 :=
+    (cmp99Eq351PhysicalComplexPositiveExponentSL A eta b).property
+  rw [← show (physicalMatrixExp Y)⁻¹ = Matrix.adjugate (physicalMatrixExp Y) by
+    rw [Matrix.inv_def, hdet, Ring.inverse_one, one_smul]]
+  exact hinv
 
 /-- Exact group-level factorization of the canonical perturbed positive
 bond.  This is the source identity used before expanding its adjoint action.
