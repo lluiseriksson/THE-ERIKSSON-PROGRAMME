@@ -26,9 +26,9 @@ noncomputable def cmp99ComplexPhysicalBlockHolonomy
       (Matrix.SpecialLinearGroup (Fin Nc) ℂ)) :
     FinBox d N' → FinBox d (M * N') →
       Matrix.SpecialLinearGroup (Fin Nc) ℂ :=
-  cmp99ContourHolonomy
+  fun y x ↦
     (cmp99BlockContainedContourSystem
-      (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)) background
+      (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ) y x).holonomy background
 
 /-- Analytic tower indexed by the physical complex background consumed by
 its first printed average. -/
