@@ -141,6 +141,14 @@ theorem cmp99SourceBaseCoarseBackground_realSlice
         rw [map_inv, hpos]
       · exact hpos (y, mu)
 
+private theorem cmp99SUNToSpecialLinear_three_mul_inv
+    (a b c d : SUN Nc) :
+    cmp99SUNToSpecialLinear Nc a * cmp99SUNToSpecialLinear Nc b *
+          cmp99SUNToSpecialLinear Nc c *
+          (cmp99SUNToSpecialLinear Nc d)⁻¹ =
+      cmp99SUNToSpecialLinear Nc (a * b * c * d⁻¹) := by
+  simp only [map_mul, map_inv]
+
 /-- Each literal four-path deviation commutes with the compact embedding. -/
 theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
@@ -160,12 +168,18 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear,
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
-  rw [← map_inv, ← map_mul, ← map_mul, ← map_mul]
-  apply congrArg
-  apply Subtype.ext
-  apply Matrix.ext
-  intro i j
-  rfl
+  exact cmp99SUNToSpecialLinear_three_mul_inv _ _ _ _
+
+/-- The analytic deviation bound carried as one proof object.  Packaging the
+dependent premise prevents repeated elaboration of the same large Pi type;
+the physical function remains fixed in the structure parameters. -/
+structure CMP99ComplexLocalizedUbarDeviationCertificate
+    (background : GaugeConfig d (M * N')
+      (Matrix.SpecialLinearGroup (Fin Nc) ℂ))
+    (B : MatrixNearLogNoWindingBudget Nc) where
+  bound : ∀ b x, x ∈ blockOf M N' b.1 →
+    ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ
 
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
@@ -173,10 +187,8 @@ budgets is required. -/
 theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
-    (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
-          (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
-          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ)
+    (hcomplex : CMP99ComplexLocalizedUbarDeviationCertificate
+      (cmp99PhysicalGaugeBackgroundToSpecialLinear U) Bcomplex)
     (hphysical : ∀ b x,
       x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
         (positiveEdgeOfPhysicalBond b)) →
@@ -188,13 +200,9 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
           (cmp99SourceUbarGamma2 (G := SUN Nc) b)
           (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ Bphysical.δ)
     (b : PhysicalBond d N') :
-    let hdev : ∀ b x, x ∈ blockOf M N' b.1 →
-        ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
-            (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
-            Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ := hcomplex
     @cmp99SourceComplexLocalizedUbarBlock d M N' Nc _ _ _ _
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-        Bcomplex hdev b =
+        Bcomplex hcomplex.bound b =
       cmp99SUNToSpecialLinear Nc
         (cmp99PhysicalUbarBlockOfDeviationBudget
           (d := d) (L := M) (N' := N') (Nc := Nc)
@@ -224,7 +232,7 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
     Bcomplex Bphysical
     (by
       intro x hx
-      simpa [D] using hcomplex b x hx)
+      simpa [D] using hcomplex.bound b x hx)
     (by
       intro x hx
       simpa [D, UbarDeviationLogArg] using hphysical b x hx)
@@ -237,10 +245,8 @@ the selected/localized successor, whose values are one outside its carrier. -/
 theorem cmp99SourceComplexLocalizedNextBackground_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
-    (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
-          (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
-          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ)
+    (hcomplex : CMP99ComplexLocalizedUbarDeviationCertificate
+      (cmp99PhysicalGaugeBackgroundToSpecialLinear U) Bcomplex)
     (hphysical : ∀ b x,
       x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
         (positiveEdgeOfPhysicalBond b)) →
@@ -251,13 +257,9 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
           (cmp99SourceUbarGamma1 (G := SUN Nc) b)
           (cmp99SourceUbarGamma2 (G := SUN Nc) b)
           (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ Bphysical.δ) :
-    let hdev : ∀ b x, x ∈ blockOf M N' b.1 →
-        ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
-            (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
-            Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ := hcomplex
     @cmp99SourceComplexLocalizedNextBackground d M N' Nc _ _ _ _
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-        Bcomplex hdev =
+        Bcomplex hcomplex.bound =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
         (cmp99PhysicalUbarGaugeConfigOfDeviationBudget
           (d := d) (L := M) (N' := N') (Nc := Nc)
@@ -274,7 +276,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
   · change
       (@cmp99SourceComplexLocalizedUbarBlock d M N' Nc _ _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-          Bcomplex hcomplex (y, mu))⁻¹ =
+          Bcomplex hcomplex.bound (y, mu))⁻¹ =
         cmp99SUNToSpecialLinear Nc
           ((cmp99PhysicalUbarBlockOfDeviationBudget
             (d := d) (L := M) (N' := N') (Nc := Nc)
@@ -289,7 +291,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
   · change
       @cmp99SourceComplexLocalizedUbarBlock d M N' Nc _ _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-          Bcomplex hcomplex (y, mu) =
+          Bcomplex hcomplex.bound (y, mu) =
         cmp99SUNToSpecialLinear Nc
           (cmp99PhysicalUbarBlockOfDeviationBudget
             (d := d) (L := M) (N' := N') (Nc := Nc)
@@ -317,17 +319,11 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall
     (fineSmall : ∀ e : ConcreteEdge d (M * N'),
       ‖(U e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonFine)
     (Bcomplex : MatrixNearLogNoWindingBudget Nc)
-    (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
-          (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
-          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ) :
-    let hdev : ∀ b x, x ∈ blockOf M N' b.1 →
-        ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
-            (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
-            Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ := hcomplex
+    (hcomplex : CMP99ComplexLocalizedUbarDeviationCertificate
+      (cmp99PhysicalGaugeBackgroundToSpecialLinear U) Bcomplex) :
     @cmp99SourceComplexLocalizedNextBackground d M N' Nc _ _ _ _
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-        Bcomplex hdev =
+        Bcomplex hcomplex.bound =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
         ((cmp99SourceRegionalScaleDataOfFineSmall
           (d := d) (M := M) (N' := N') (Nc := Nc) hd hM Omega U
