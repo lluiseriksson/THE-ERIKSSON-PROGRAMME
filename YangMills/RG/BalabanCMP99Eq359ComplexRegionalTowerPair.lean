@@ -22,9 +22,13 @@ structure CMP99Eq359ComplexRegionalTowerPair
   depth : ℕ
   TerminalSpace : CMP99ComplexTowerHilbertSpace
   terminalSpacing : ℝ
-  Q0 Q1 : ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+  Q0 : ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
     TerminalSpace.carrier
-  starred0 starred1 : TerminalSpace.carrier →L[ℂ]
+  Q1 : ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+    TerminalSpace.carrier
+  starred0 : TerminalSpace.carrier →L[ℂ]
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc)
+  starred1 : TerminalSpace.carrier →L[ℂ]
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc)
 
 /-- Empty pair: both recursions are the identity on the common carrier. -/
