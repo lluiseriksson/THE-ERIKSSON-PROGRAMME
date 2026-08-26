@@ -1,0 +1,17 @@
+import tmp.BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization.draft
+
+/-!
+PRE-VALIDATION: scratch audit. This file has no materialized `.olean` and no
+compiler or axiom-oracle verdict.
+-/
+
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_adjointComplexAction
+#print axioms YangMills.RG.cmp99Eq337PrintedComplexLieMatrix_adjointComplexAction
+#print axioms YangMills.RG.cmp99Eq337PrintedComplexLieMatrix_neg
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedGeneratorMatrix
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedGeneratorMatrix_pos
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedGeneratorMatrix_neg
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedExponentSL
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedExponentSL_coe
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexPerturbedNegativeBondMatrix_eq_mul
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexPerturbedNegativeBondSL_eq_mul
