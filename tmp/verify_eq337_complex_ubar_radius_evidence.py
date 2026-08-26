@@ -16,6 +16,7 @@ SOURCE_SHA = "d69356d18c6c2392bc8a9599fd1c398109487f57"
 RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v6"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
+DECLARATION_NAMESPACE = "YangMills.RG"
 MODULES = (
     ("BalabanCMP99ComplexUbarSpecialLinear", 13),
     ("BalabanCMP99ComplexUbarCoordinateExponent", 9),
@@ -50,6 +51,14 @@ NO_AXIOM_RE = re.compile(
     r"'([^']+)'\s+does\s+not\s+depend\s+on\s+any\s+axioms",
     re.MULTILINE,
 )
+
+
+def resolved_declaration_name(name: str) -> str:
+    """Match Lean's qualified oracle output for names printed inside YangMills.RG."""
+    stripped = name.strip()
+    if "." in stripped:
+        return stripped
+    return f"{DECLARATION_NAMESPACE}.{stripped}"
 
 
 def git_blob(repo: Path, path: str) -> bytes:
@@ -155,9 +164,10 @@ def main() -> int:
     boundary_hashes[prerequisite_audit_path] = hashlib.sha256(
         prerequisite_audit_blob
     ).hexdigest()
-    prerequisite_declarations = PRINT_RE.findall(
-        prerequisite_audit_blob.decode("utf-8")
-    )
+    prerequisite_declarations = [
+        resolved_declaration_name(name)
+        for name in PRINT_RE.findall(prerequisite_audit_blob.decode("utf-8"))
+    ]
     if len(prerequisite_declarations) != prerequisite_count:
         raise RuntimeError(
             f"AUDIT_DECLARATION_COUNT={prerequisite_audit_path}:"
@@ -175,7 +185,10 @@ def main() -> int:
         audit_blob = git_blob(repo, audit_path)
         boundary_hashes[source_path] = hashlib.sha256(source_blob).hexdigest()
         boundary_hashes[audit_path] = hashlib.sha256(audit_blob).hexdigest()
-        declarations = PRINT_RE.findall(audit_blob.decode("utf-8"))
+        declarations = [
+            resolved_declaration_name(name)
+            for name in PRINT_RE.findall(audit_blob.decode("utf-8"))
+        ]
         if len(declarations) != expected_count:
             raise RuntimeError(
                 f"AUDIT_DECLARATION_COUNT={audit_path}:{len(declarations)} "

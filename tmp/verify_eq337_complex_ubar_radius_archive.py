@@ -170,9 +170,12 @@ def main() -> int:
             prereq_source: sha256_bytes(contract.git_blob(repo, prereq_source)),
             prereq_audit: sha256_bytes(contract.git_blob(repo, prereq_audit)),
         }
-        declarations = contract.PRINT_RE.findall(
-            contract.git_blob(repo, prereq_audit).decode("utf-8")
-        )
+        declarations = [
+            contract.resolved_declaration_name(name)
+            for name in contract.PRINT_RE.findall(
+                contract.git_blob(repo, prereq_audit).decode("utf-8")
+            )
+        ]
         if len(declarations) != prereq_count:
             raise RuntimeError("EQ337_UBAR_ARCHIVE_PREREQ_DECLARATION_COUNT")
         declarations_by_module[prereq_module] = declarations
@@ -184,9 +187,12 @@ def main() -> int:
             audit_path = f"YangMills/RG/{module}Audit.lean"
             boundary_hashes[source] = sha256_bytes(contract.git_blob(repo, source))
             boundary_hashes[audit_path] = sha256_bytes(contract.git_blob(repo, audit_path))
-            declarations = contract.PRINT_RE.findall(
-                contract.git_blob(repo, audit_path).decode("utf-8")
-            )
+            declarations = [
+                contract.resolved_declaration_name(name)
+                for name in contract.PRINT_RE.findall(
+                    contract.git_blob(repo, audit_path).decode("utf-8")
+                )
+            ]
             if len(declarations) != count:
                 raise RuntimeError(f"EQ337_UBAR_ARCHIVE_DECLARATION_COUNT={module}")
             declarations_by_module[module] = declarations

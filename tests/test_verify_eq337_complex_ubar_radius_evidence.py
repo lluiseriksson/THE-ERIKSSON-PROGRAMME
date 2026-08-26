@@ -83,10 +83,16 @@ def synthetic_notebook(verifier, *, forbidden: bool = False) -> dict:
     prerequisite_audit = verifier.git_blob(
         ROOT, f"YangMills/RG/{prerequisite}Audit.lean"
     ).decode()
-    declarations.extend(verifier.PRINT_RE.findall(prerequisite_audit))
+    declarations.extend(
+        verifier.resolved_declaration_name(name)
+        for name in verifier.PRINT_RE.findall(prerequisite_audit)
+    )
     for module, _ in verifier.MODULES:
         audit = verifier.git_blob(ROOT, f"YangMills/RG/{module}Audit.lean").decode()
-        declarations.extend(verifier.PRINT_RE.findall(audit))
+        declarations.extend(
+            verifier.resolved_declaration_name(name)
+            for name in verifier.PRINT_RE.findall(audit)
+        )
     assert len(declarations) == 79
     for index, declaration in enumerate(declarations):
         axioms = "sorryAx" if forbidden and index == 0 else "propext, Quot.sound"

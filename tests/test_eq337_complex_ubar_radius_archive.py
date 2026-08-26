@@ -28,17 +28,23 @@ def synthetic_archive(path: Path, *, forbidden: bool = False) -> None:
     contract = load(CONTRACT, "eq337_ubar_archive_test_contract")
     outputs = {stage: "" for stage in contract.STAGES}
     prereq, _ = contract.PREREQUISITE
-    declarations = contract.PRINT_RE.findall(
-        contract.git_blob(ROOT, f"YangMills/RG/{prereq}Audit.lean").decode()
-    )
+    declarations = [
+        contract.resolved_declaration_name(name)
+        for name in contract.PRINT_RE.findall(
+            contract.git_blob(ROOT, f"YangMills/RG/{prereq}Audit.lean").decode()
+        )
+    ]
     outputs["complex_ubar_radius_perturbed_background_audit"] = "".join(
         f"'{name}' depends on axioms: [propext, Quot.sound]\n"
         for name in declarations
     )
     for index, (module, _) in enumerate(contract.MODULES, start=1):
-        declarations = contract.PRINT_RE.findall(
-            contract.git_blob(ROOT, f"YangMills/RG/{module}Audit.lean").decode()
-        )
+        declarations = [
+            contract.resolved_declaration_name(name)
+            for name in contract.PRINT_RE.findall(
+                contract.git_blob(ROOT, f"YangMills/RG/{module}Audit.lean").decode()
+            )
+        ]
         if forbidden and index == 1:
             outputs[
                 f"complex_ubar_radius_{index:02d}_{module.lower()}_audit"
