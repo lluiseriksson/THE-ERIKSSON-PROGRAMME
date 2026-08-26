@@ -93,12 +93,20 @@ theorem cmp99SourceBaseCoarseBackground_realSlice
           (cmp99SourceBaseCoarseBackground U
             (positiveEdgeOfPhysicalBond b)) := by
     intro b
+    let analytic := cmp99SourceParallelTransportPath
+      (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+      (blockBasepoint M N' b.1) b.2
     let physical := cmp99SourceParallelTransportPath (G := SUN Nc)
       (blockBasepoint M N' b.1) b.2
+    have hedges : analytic.edges = physical.edges := rfl
     rw [cmp99SourceBaseCoarseBackground_apply_pos,
       cmp99SourceBaseCoarseBackground_apply_pos]
     unfold OrientedLatticePath.holonomy
-    simpa only [physical] using
+    change wilsonLine (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+        analytic.edges =
+      cmp99SUNToSpecialLinear Nc (wilsonLine U physical.edges)
+    rw [hedges]
+    exact
       wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear
         U physical.edges
   apply gaugeConfig_ext
@@ -134,11 +142,8 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear,
     wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear,
     cmp99SourceBaseCoarseBackground_realSlice]
-  simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply,
-    map_mul, map_inv]
-  apply Matrix.SpecialLinearGroup.ext
-  intro i j
-  rfl
+  simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
+  rw [← map_inv, ← map_mul, ← map_mul, ← map_mul]
 
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
@@ -147,7 +152,7 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(cmp99SourceComplexLocalizedUbarDeviation
+      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ)
     (hphysical : ∀ b x,
@@ -207,7 +212,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(cmp99SourceComplexLocalizedUbarDeviation
+      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ)
     (hphysical : ∀ b x,
@@ -283,7 +288,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall
       ‖(U e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonFine)
     (Bcomplex : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(cmp99SourceComplexLocalizedUbarDeviation
+      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ) :
     @cmp99SourceComplexLocalizedNextBackground d M N' Nc _ _ _ _
