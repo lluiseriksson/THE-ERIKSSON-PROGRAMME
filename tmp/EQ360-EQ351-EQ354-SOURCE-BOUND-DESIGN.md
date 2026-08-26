@@ -159,6 +159,13 @@ arrow.
    `cmp99Eq351PhysicalComplexOrientedPerturbation_neg`.  That factorization
    is a theorem/sublemma of the regrouping path, not a caller-supplied
    equality and not a consequence silently attributed to the positive case.
+2c. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence`: construct the
+   complex `D_U^* A` stencil from the same physical background and one-
+   cochain, and identify it with the sum of the canonical outgoing and
+   incoming oriented values of `A'`.  The scratch source/audit pair is
+   PRE-VALIDATION in `tmp`; it has no `.olean` or axiom verdict.  This leaf
+   removes the possibility of a caller-supplied diagonal field, but it does
+   not prove the three-species Laplacian identity or any Eq. (3.54) bound.
 3. `BalabanCMP99Eq351ComplexLaplacianRegrouping`: construct `U1` with
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta`, expand the literal
    regional stencil, and prove the three-species identity.  The nonlinear
