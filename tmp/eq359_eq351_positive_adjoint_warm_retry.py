@@ -2,9 +2,9 @@
 """Resume the bounded Eq351 warm diagnostic at its first failed target.
 
 Run only in the retained runtime of the Eq359 cold PASS after the first
-positive-adjoint postpass stopped at the regional Laplacian source.  The
-script verifies that exact retained state, fetches the one-line geometry
-repair, and resumes at the failed target.  It neither reruns the Eq359 cold
+positive-adjoint postpass stopped at the regional real-slice source.  The
+script verifies that exact retained state, fetches the compiler-tested
+real-slice normalization repair, and resumes at the failed target.  It neither reruns the Eq359 cold
 gate nor releases the runtime, removes PRE-VALIDATION, commits, or pushes.
 """
 
@@ -20,8 +20,8 @@ import time
 ROOT = Path("/content/hrpoly-eq359-real-slice")
 EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence/evidence.json")
 EQ359_SOURCE = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
-EXPECTED_HEAD_BEFORE = "f8862ca3f320cdd0d193192f022135566618886b"
-FIX_SOURCE = "2e7320a09be8da50d00ef313c04d520241190d64"
+EXPECTED_HEAD_BEFORE = "2e7320a09be8da50d00ef313c04d520241190d64"
+FIX_SOURCE = "aa3fb845c1b310d413986632b1b647bd9bc6ac5c"
 
 REGIONAL_DRAFTS = (
     (
