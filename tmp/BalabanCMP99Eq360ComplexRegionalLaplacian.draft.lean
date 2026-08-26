@@ -24,7 +24,7 @@ open YangMills Matrix
 
 noncomputable section
 
-variable {d N Nc : ℕ} [NeZero N] [NeZero Nc]
+variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
 
 /-- Dirichlet zero extension in the complex Lie-coordinate fibre. -/
 noncomputable def cmp99Eq360ComplexDirichletExtend
