@@ -20,7 +20,15 @@ noncomputable section
 
 open Matrix
 
-variable {d N Nc : Nat} [NeZero N] [NeZero Nc]
+variable {d N Nc : Nat} [NeZero d] [NeZero N] [NeZero Nc]
+
+local instance cmp99Eq351PositiveAdjointMatrixNormedRing :
+    NormedRing (Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  Matrix.frobeniusNormedRing
+
+local instance cmp99Eq351PositiveAdjointMatrixNormedAlgebra :
+    NormedAlgebra ℂ (Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  Matrix.frobeniusNormedAlgebra
 
 /-- Matrix form of the exact positive-bond expansion used in (3.51).
 
