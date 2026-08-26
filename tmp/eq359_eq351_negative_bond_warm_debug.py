@@ -22,7 +22,7 @@ import time
 ROOT = Path("/content/hrpoly-eq359-real-slice")
 EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence/evidence.json")
 EQ359_SOURCE = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
-DEBUG_SOURCE = "6c9c21c379fd496c851cbcd1ce47f40aa070d3e1"
+DEBUG_SOURCE = "db3fb25d6d85c5ff8be7f3e7111f6252ef7bea6d"
 SOURCE_DRAFT = (
     "tmp/BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization.draft.lean"
 )
