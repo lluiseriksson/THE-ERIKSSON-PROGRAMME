@@ -7,8 +7,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "tmp" / "generate_eq351_exponential_adjoint_remainder_runner.py"
-SOURCE_SHA = "3ba3875b01b3c6163e1a1b78f599d98cb1ecb6d5"
-RUNNER_REV = "eq351-exponential-adjoint-remainder-cold-v3"
+SOURCE_SHA = "77c0e4834ce69d8b174d37aeefac56fd5b06b5ad"
+RUNNER_REV = "eq351-exponential-adjoint-remainder-cold-v4"
 SPEC = importlib.util.spec_from_file_location("eq351_runner_generator", SCRIPT)
 assert SPEC is not None and SPEC.loader is not None
 GENERATOR = importlib.util.module_from_spec(SPEC)

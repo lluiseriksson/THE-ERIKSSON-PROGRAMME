@@ -17,7 +17,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = '3ba3875b01b3c6163e1a1b78f599d98cb1ecb6d5'
+SOURCE_SHA = '77c0e4834ce69d8b174d37aeefac56fd5b06b5ad'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -47,7 +47,7 @@ MODULES = [
     ('BalabanCMP99Eq351ExponentialAdjointRemainderBound', 3),
 ]
 
-runner.RUNNER_REV = 'eq351-exponential-adjoint-remainder-cold-v3'
+runner.RUNNER_REV = 'eq351-exponential-adjoint-remainder-cold-v4'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq351-exponential-adjoint-remainder")
 runner.EVIDENCE = Path("/content/hrpoly-eq351-exponential-adjoint-remainder-evidence")
@@ -59,11 +59,11 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq337PhysicalRealPerturbationDomainAudit.lean': '10da77bf0cae99a37a2156a1704b8358f1af31eae3d3ecd54ebc0d2e15882014',
     'YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbationDomain.lean': '80c141368ce88667f863ca2d3633000fbf4a79f97c1a081487e6963ed52e0693',
     'YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbationDomainAudit.lean': '6735053257486a5374108f20f3c695a77375efe213ff3f3e26a3c10caa7af507',
-    'YangMills/RG/BalabanCMP99Eq351PhysicalComplexOrientedPerturbation.lean': 'bf9916731db27d98f59c47822f5461063e9fcca483c0ed359b0bf7b0c34beab4',
+    'YangMills/RG/BalabanCMP99Eq351PhysicalComplexOrientedPerturbation.lean': 'a612306b460abadaf841fdf9164e7191050d2788257985c9ac42bed4639a4b3b',
     'YangMills/RG/BalabanCMP99Eq351PhysicalComplexOrientedPerturbationAudit.lean': 'e45210b7698120b7768d46a8aa9d16a3b0f2c17ddaf82d75656f675bd3a35da4',
     'YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainder.lean': '337663049a34327ea4151a363a6cf33582a8b32951740f4823283fc0e3fb0d78',
     'YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainderAudit.lean': 'f63682f6e174d6cd7a4bc104de99836c18219f4d56d58da2da8f0afb698cea81',
-    'YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainderBound.lean': '11c36e862ad56e2e248afbdcdba9bb5f187ace460ed592d24026b4af5c436e0c',
+    'YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainderBound.lean': '44a28e943f490ae28631ac77bf4cb6d256deb77b8fe28c4ac674c200c8605e55',
     'YangMills/RG/BalabanCMP99Eq351ExponentialAdjointRemainderBoundAudit.lean': '3c01a91549cb76bd8b03b9bb081b2da14403892a420aa4fc39664f6edcf81cbe',
 }
 
