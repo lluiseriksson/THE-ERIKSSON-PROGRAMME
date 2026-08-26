@@ -149,6 +149,26 @@ private theorem cmp99SUNToSpecialLinear_three_mul_inv
       cmp99SUNToSpecialLinear Nc (a * b * c * d⁻¹) := by
   simp only [map_mul, map_inv]
 
+private theorem cmp99SourceUbarDeviationProduct_realSlice
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    cmp99SUNToSpecialLinear Nc
+          (wilsonLine U (cmp99SourceUbarGamma1 (G := SUN Nc) b x)) *
+        cmp99SUNToSpecialLinear Nc
+          (wilsonLine U (cmp99SourceUbarGamma2 (G := SUN Nc) b x)) *
+        cmp99SUNToSpecialLinear Nc
+          (wilsonLine U (cmp99SourceUbarGamma3 (G := SUN Nc) b x)) *
+        (cmp99SUNToSpecialLinear Nc
+          (cmp99SourceBaseCoarseBackground U
+            (positiveEdgeOfPhysicalBond b)))⁻¹ =
+      cmp99SUNToSpecialLinear Nc
+        (wilsonLine U (cmp99SourceUbarGamma1 (G := SUN Nc) b x) *
+          wilsonLine U (cmp99SourceUbarGamma2 (G := SUN Nc) b x) *
+          wilsonLine U (cmp99SourceUbarGamma3 (G := SUN Nc) b x) *
+          (cmp99SourceBaseCoarseBackground U
+            (positiveEdgeOfPhysicalBond b))⁻¹) := by
+  exact cmp99SUNToSpecialLinear_three_mul_inv _ _ _ _
+
 /-- Each literal four-path deviation commutes with the compact embedding. -/
 theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
@@ -168,15 +188,7 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear,
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
-  generalize wilsonLine U
-    (cmp99SourceUbarGamma1 (G := SUN Nc) b x) = a
-  generalize wilsonLine U
-    (cmp99SourceUbarGamma2 (G := SUN Nc) b x) = c
-  generalize wilsonLine U
-    (cmp99SourceUbarGamma3 (G := SUN Nc) b x) = e
-  generalize cmp99SourceBaseCoarseBackground U
-    (positiveEdgeOfPhysicalBond b) = g
-  exact cmp99SUNToSpecialLinear_three_mul_inv a c e g
+  exact cmp99SourceUbarDeviationProduct_realSlice U b x
 
 /-- The analytic deviation bound carried as one proof object.  Packaging the
 dependent premise prevents repeated elaboration of the same large Pi type;
