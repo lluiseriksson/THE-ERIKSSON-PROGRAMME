@@ -98,7 +98,15 @@ theorem cmp99SourceBaseCoarseBackground_realSlice
       (blockBasepoint M N' b.1) b.2
     let physical := cmp99SourceParallelTransportPath (G := SUN Nc)
       (blockBasepoint M N' b.1) b.2
-    have hedges : analytic.edges = physical.edges := rfl
+    have hedges : analytic.edges = physical.edges := by
+      unfold analytic physical cmp99SourceParallelTransportPath
+      induction M with
+      | zero => rfl
+      | succ n ih =>
+          simp only [cmp99StraightPositivePath,
+            OrientedLatticePath.castEnd_edges,
+            OrientedLatticePath.trans]
+          rw [ih]
     rw [cmp99SourceBaseCoarseBackground_apply_pos,
       cmp99SourceBaseCoarseBackground_apply_pos]
     unfold OrientedLatticePath.holonomy
@@ -144,6 +152,8 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
   rw [← map_inv, ← map_mul, ← map_mul, ← map_mul]
+  apply congrArg
+  rfl
 
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
@@ -152,7 +162,7 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _ _
+      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ)
     (hphysical : ∀ b x,
@@ -212,7 +222,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _ _
+      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ)
     (hphysical : ∀ b x,
@@ -288,7 +298,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall
       ‖(U e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonFine)
     (Bcomplex : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : ∀ b x, x ∈ blockOf M N' b.1 →
-      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _ _
+      ‖(@cmp99SourceComplexLocalizedUbarDeviation d M N' Nc _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ) :
     @cmp99SourceComplexLocalizedNextBackground d M N' Nc _ _ _ _
