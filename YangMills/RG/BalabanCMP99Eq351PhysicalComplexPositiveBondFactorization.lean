@@ -17,8 +17,9 @@ namespace YangMills.RG
 noncomputable section
 
 open Matrix
+open scoped Matrix.Norms.L2Operator
 
-variable {d N Nc : Nat} [NeZero N] [NeZero Nc]
+variable {d N Nc : Nat} [NeZero d] [NeZero N] [NeZero Nc]
 
 /-- Literal matrix generator `i eta A'(b)` in the repository's complex
 coordinate convention.  Naming it prevents the later adjoint expansion from
@@ -40,7 +41,7 @@ def cmp99Eq351PhysicalComplexPositiveExponentSL
     cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A eta b
   refine ⟨physicalMatrixExp Y, ?_⟩
   have htrace : Matrix.trace Y = 0 := by
-    dsimp [Y]
+    dsimp [Y, cmp99Eq351PhysicalComplexPositiveGeneratorMatrix]
     rw [cmp99Eq337PrintedComplexGenerator_eq, Matrix.trace_smul,
       cmp99SUNLieComplexCoordMatrixLM_trace, smul_zero]
   simpa [physicalMatrixExp, htrace] using
@@ -100,6 +101,7 @@ theorem cmp99Eq351PhysicalComplexPerturbedPositiveBondSL_eq_mul
   apply Subtype.ext
   simp [cmp99Eq337PhysicalComplexPerturbedPositiveBondSL,
     cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix,
+    cmp99Eq351PhysicalComplexPositiveGeneratorMatrix,
     cmp99SUNToSpecialLinear_coe]
 
 end
