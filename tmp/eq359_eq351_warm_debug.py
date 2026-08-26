@@ -3,10 +3,11 @@
 
 This script is intentionally diagnostic.  It reuses only the retained build
 state of the exact Eq359 checkout, checks out the published Eq351 source
-checkpoint, compiles the two Eq351 source/audit pairs, and then materializes
-temporary public-import versions of the two regional-Laplacian drafts.  It
-does not build terminal evidence, remove PRE-VALIDATION, commit, push, or
-disconnect the runtime.
+checkpoint, first materializes temporary public-import versions of the two
+regional-Laplacian drafts, and only after that prefix compiles the two Eq351
+source/audit pairs.  This preserves the dependency order declared in the
+source-bound map.  It does not build terminal evidence, remove
+PRE-VALIDATION, commit, push, or disconnect the runtime.
 """
 
 from __future__ import annotations
@@ -160,12 +161,6 @@ def main() -> int:
     (ROOT / ".lake/build/lib/lean/YangMills/RG").mkdir(
         parents=True, exist_ok=True
     )
-    for index, module in enumerate(EQ351_MODULES, start=1):
-        compile_module(f"eq351_{index:02d}_{module.lower()}_source", module)
-        compile_module(
-            f"eq351_{index:02d}_{module.lower()}_audit", module + "Audit"
-        )
-
     materialize_regional_drafts()
     for index, module in enumerate(
         (
@@ -177,6 +172,12 @@ def main() -> int:
         compile_module(f"regional_{index:02d}_{module.lower()}_source", module)
         compile_module(
             f"regional_{index:02d}_{module.lower()}_audit", module + "Audit"
+        )
+
+    for index, module in enumerate(EQ351_MODULES, start=1):
+        compile_module(f"eq351_{index:02d}_{module.lower()}_source", module)
+        compile_module(
+            f"eq351_{index:02d}_{module.lower()}_audit", module + "Audit"
         )
 
     print("WARM_FINAL_STATUS=PASS", flush=True)
