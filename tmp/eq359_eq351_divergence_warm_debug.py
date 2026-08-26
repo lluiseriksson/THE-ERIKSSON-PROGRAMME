@@ -157,8 +157,9 @@ def main() -> int:
 
 if __name__ == "__main__":
     try:
-        raise SystemExit(main())
-    except BaseException as exc:
+        exit_code = main()
+    except Exception as exc:
         print("WARM_EQ351_DIVERGENCE_FINAL_STATUS=FAIL", flush=True)
         print("WARM_EQ351_DIVERGENCE_ERROR=" + repr(exc), flush=True)
         raise
+    raise SystemExit(exit_code)
