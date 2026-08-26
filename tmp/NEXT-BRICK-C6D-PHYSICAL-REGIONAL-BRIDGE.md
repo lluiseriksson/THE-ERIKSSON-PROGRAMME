@@ -266,6 +266,23 @@ the analytically continued `F'_2*(A)` is not the Hilbert adjoint of
 therefore construct the starred analytic coefficient independently; this
 scratch theorem must not be reused as that missing identification.
 
+The corresponding exact complex algebra leaf is now separately recorded in
+`tmp/EQ360-COMPLEX-REGIONAL-PRECISION-PERTURBATION-DRAFT-PATHS.txt` at
+checkpoint `a8fc7e966dec97b0c886f91e6ff5066fe70c7d2d`.  It consumes one
+`CMP99Eq359ComplexRegionalTowerPair`, so `F2` and the independently composed
+printed `F2star` are projections of that pair rather than caller inputs.  It
+proves the literal three-term averaging expansion with **no** `.adjoint`.
+The two covariant Laplacians remain visible arguments, and the header states
+that this is not the source-facing producer: the later wrapper must construct
+them from the baseline and perturbed physical backgrounds on the same source
+carrier.  Source, audit and path-list SHA-256 values are respectively
+`38F7133E867C718177313B311B64785ADC88F9A3486B6D718A0A9C19E4C472AE`,
+`5E7217ECCA9530B5E429C9B7C7C3EDFD2A58C016CFFE61CDFBB8FAB6BEB1B5F9`
+and
+`5329375CB14E3655B8C34C161AF97E3AE56EE3BFC3D9755B1583015DF5762225`.
+Only the lightweight text/import guards and three static boundary tests are
+green; no `.olean` or axiom verdict is claimed.
+
 There is a second, independent dictionary boundary at (3.59).  The sealed
 `terminalQprime_eq` family compares a localized retained tower with its
 canonical extension **for the same physical background**.  It is not the
