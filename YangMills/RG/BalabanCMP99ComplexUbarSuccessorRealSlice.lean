@@ -97,6 +97,7 @@ theorem cmp99SourceBaseCoarseBackground_realSlice
       (blockBasepoint M N' b.1) b.2
     rw [cmp99SourceBaseCoarseBackground_apply_pos,
       cmp99SourceBaseCoarseBackground_apply_pos]
+    unfold OrientedLatticePath.holonomy
     exact wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear
       U physical.edges
   apply gaugeConfig_ext
@@ -134,7 +135,7 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply,
     map_mul, map_inv]
-  rfl
+  noncomm_ring
 
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
@@ -159,16 +160,17 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
     (b : PhysicalBond d N') :
     cmp99SourceComplexLocalizedUbarBlock
         (d := d) (M := M) (N' := N') (Nc := Nc)
-        (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-        Bcomplex hcomplex b =
+        (background := cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+        (B := Bcomplex) (hdev := hcomplex) b =
       cmp99SUNToSpecialLinear Nc
         (cmp99PhysicalUbarBlockOfDeviationBudget
-          (d := d) (L := M) (N' := N') (Nc := Nc) U
-          (cmp99SourceBaseCoarseBackground U)
-          (cmp99SourceUbarGamma1 (G := SUN Nc))
-          (cmp99SourceUbarGamma2 (G := SUN Nc))
-          (cmp99SourceUbarGamma3 (G := SUN Nc))
-          Bphysical hphysical b) := by
+          (d := d) (L := M) (N' := N') (Nc := Nc)
+          (A_fine := U)
+          (A_coarse := cmp99SourceBaseCoarseBackground U)
+          (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
+          (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
+          (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
+          (B := Bphysical) (hdev := hphysical) b) := by
   let D : FinBox d (M * N') → SUN Nc := fun x ↦
     UbarDeviation U (cmp99SourceBaseCoarseBackground U)
       (positiveEdgeOfPhysicalBond b) x
@@ -218,46 +220,51 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
           (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ Bphysical.δ) :
     cmp99SourceComplexLocalizedNextBackground
         (d := d) (M := M) (N' := N') (Nc := Nc)
-        (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-        Bcomplex hcomplex =
+        (background := cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+        (B := Bcomplex) (hdev := hcomplex) =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
         (cmp99PhysicalUbarGaugeConfigOfDeviationBudget
-          (d := d) (L := M) (N' := N') (Nc := Nc) U
-          (cmp99SourceBaseCoarseBackground U)
-          (cmp99SourceUbarGamma1 (G := SUN Nc))
-          (cmp99SourceUbarGamma2 (G := SUN Nc))
-          (cmp99SourceUbarGamma3 (G := SUN Nc))
-          Bphysical hphysical) := by
+          (d := d) (L := M) (N' := N') (Nc := Nc)
+          (A_fine := U)
+          (A_coarse := cmp99SourceBaseCoarseBackground U)
+          (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
+          (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
+          (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
+          (B := Bphysical) (hdev := hphysical)) := by
   apply gaugeConfig_ext
   intro e
   rcases e with ⟨y, mu, orient⟩
   cases orient
   · change
       (cmp99SourceComplexLocalizedUbarBlock
-          (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-          Bcomplex hcomplex (y, mu))⁻¹ =
+          (d := d) (M := M) (N' := N') (Nc := Nc)
+          (background := cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+          (B := Bcomplex) (hdev := hcomplex) (y, mu))⁻¹ =
         cmp99SUNToSpecialLinear Nc
           ((cmp99PhysicalUbarBlockOfDeviationBudget
-            (d := d) (L := M) (N' := N') (Nc := Nc) U
-            (cmp99SourceBaseCoarseBackground U)
-            (cmp99SourceUbarGamma1 (G := SUN Nc))
-            (cmp99SourceUbarGamma2 (G := SUN Nc))
-            (cmp99SourceUbarGamma3 (G := SUN Nc))
-            Bphysical hphysical (y, mu))⁻¹)
+            (d := d) (L := M) (N' := N') (Nc := Nc)
+            (A_fine := U)
+            (A_coarse := cmp99SourceBaseCoarseBackground U)
+            (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
+            (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
+            (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
+            (B := Bphysical) (hdev := hphysical) (y, mu))⁻¹)
     rw [map_inv,
       cmp99SourceComplexLocalizedUbarBlock_realSlice]
   · change
       cmp99SourceComplexLocalizedUbarBlock
-          (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-          Bcomplex hcomplex (y, mu) =
+          (d := d) (M := M) (N' := N') (Nc := Nc)
+          (background := cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+          (B := Bcomplex) (hdev := hcomplex) (y, mu) =
         cmp99SUNToSpecialLinear Nc
           (cmp99PhysicalUbarBlockOfDeviationBudget
-            (d := d) (L := M) (N' := N') (Nc := Nc) U
-            (cmp99SourceBaseCoarseBackground U)
-            (cmp99SourceUbarGamma1 (G := SUN Nc))
-            (cmp99SourceUbarGamma2 (G := SUN Nc))
-            (cmp99SourceUbarGamma3 (G := SUN Nc))
-            Bphysical hphysical (y, mu))
+            (d := d) (L := M) (N' := N') (Nc := Nc)
+            (A_fine := U)
+            (A_coarse := cmp99SourceBaseCoarseBackground U)
+            (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
+            (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
+            (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
+            (B := Bphysical) (hdev := hphysical) (y, mu))
     exact cmp99SourceComplexLocalizedUbarBlock_realSlice
       U Bcomplex Bphysical hcomplex hphysical (y, mu)
 
@@ -282,8 +289,8 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ) :
     cmp99SourceComplexLocalizedNextBackground
         (d := d) (M := M) (N' := N') (Nc := Nc)
-        (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
-        Bcomplex hcomplex =
+        (background := cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+        (B := Bcomplex) (hdev := hcomplex) =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
         ((cmp99SourceRegionalScaleDataOfFineSmall
           (d := d) (M := M) (N' := N') (Nc := Nc) hd hM Omega U
