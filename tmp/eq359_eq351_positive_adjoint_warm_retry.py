@@ -20,8 +20,8 @@ import time
 ROOT = Path("/content/hrpoly-eq359-real-slice")
 EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence/evidence.json")
 EQ359_SOURCE = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
-EXPECTED_HEAD_BEFORE = "ad7922c02e6b6196ca4cd7a1d5ca354e46550f8a"
-FIX_SOURCE = "127aa09344ebf95dc3673371c85d0752593b28bc"
+EXPECTED_HEAD_BEFORE = "127aa09344ebf95dc3673371c85d0752593b28bc"
+FIX_SOURCE = "f8862ca3f320cdd0d193192f022135566618886b"
 
 REGIONAL_DRAFTS = (
     (
