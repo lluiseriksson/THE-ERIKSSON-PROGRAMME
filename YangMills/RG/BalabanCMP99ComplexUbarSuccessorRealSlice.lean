@@ -168,11 +168,7 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear,
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
-  exact cmp99SUNToSpecialLinear_three_mul_inv
-    (wilsonLine U (cmp99SourceUbarGamma1 (G := SUN Nc) b x))
-    (wilsonLine U (cmp99SourceUbarGamma2 (G := SUN Nc) b x))
-    (wilsonLine U (cmp99SourceUbarGamma3 (G := SUN Nc) b x))
-    (cmp99SourceBaseCoarseBackground U (positiveEdgeOfPhysicalBond b))
+  apply cmp99SUNToSpecialLinear_three_mul_inv
 
 /-- The analytic deviation bound carried as one proof object.  Packaging the
 dependent premise prevents repeated elaboration of the same large Pi type;
@@ -229,8 +225,8 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
       (cmp99SourceUbarGamma1 (G := SUN Nc) b)
       (cmp99SourceUbarGamma2 (G := SUN Nc) b)
       (cmp99SourceUbarGamma3 (G := SUN Nc) b)
-  have hD : (fun x ↦ cmp99SourceComplexLocalizedUbarDeviation
-        (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b x) =
+  have hD : cmp99SourceComplexLocalizedUbarDeviation
+        (cmp99PhysicalGaugeBackgroundToSpecialLinear U) b =
       fun x ↦ cmp99SUNToSpecialLinear Nc (D x) := by
     funext x
     exact cmp99SourceComplexLocalizedUbarDeviation_realSlice U b x
@@ -288,8 +284,10 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
             (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
             (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
             (B := Bphysical) (hdev := hphysical.bound) (y, mu))⁻¹)
-    rw [map_inv,
-      cmp99SourceComplexLocalizedUbarBlock_realSlice]
+    rw [map_inv]
+    exact congrArg Inv.inv
+      (cmp99SourceComplexLocalizedUbarBlock_realSlice
+        U Bcomplex Bphysical hcomplex hphysical (y, mu))
   · change
       @cmp99SourceComplexLocalizedUbarBlock d M N' Nc _ _ _ _
           (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
