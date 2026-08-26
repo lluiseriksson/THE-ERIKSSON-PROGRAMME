@@ -138,3 +138,29 @@ but it must not accept any of the following as a free input:
 
 Counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained until the corresponding compiled producers exist.
+
+## PRE-VALIDATION implementation frontier (2026-08-26)
+
+The current scratch frontier is enumerated by
+`tmp/EQ359-COMPLEX-ONE-SCALE-AVERAGE-DRAFT-PATHS.txt`.  It contains fourteen
+files (seven source/audit pairs) and has passed only the lightweight text and
+import-prefix guards.  No `.olean` or axiom verdict exists yet.
+
+The frontier now spells out, without closing any analytic bound:
+
+1. literal complex-linear `SL(N,C)` conjugation on the traceless coordinate
+   fibre;
+2. a one-scale `M^{-d}` analytic average;
+3. an independently built unit-mass starred synthesis using inverse
+   algebraic transport, never Lean `.adjoint`;
+4. finite forward/reverse operator recursions;
+5. a background-faithful physical wrapper;
+6. a common-target two-tower object whose `F2` and `F2star` are literal
+   differences; and
+7. a source-facing paired recursion that constructs baseline and perturbed
+   backgrounds internally under one conservative radius envelope.
+
+The source recursion draft now installs both branches into the common-target
+pair.  It does **not** yet prove either real-slice agreement or discharge
+Eq. (3.60).  Those remain the next source-specific gates after the Eq. (3.37)
+prerequisite seals.
