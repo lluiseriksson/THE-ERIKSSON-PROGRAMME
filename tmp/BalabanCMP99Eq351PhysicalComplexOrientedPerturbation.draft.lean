@@ -67,6 +67,7 @@ theorem cmp99Eq351PhysicalComplexOrientedPerturbation_realSlice
       cases sign <;>
         simp [cmp99Eq351PhysicalComplexOrientedPerturbation,
           orientedOneValue,
+          cmp99SUNAdjointComplexAction,
           cmp99SUNAdjointComplexAction_complexification]
 
 end
