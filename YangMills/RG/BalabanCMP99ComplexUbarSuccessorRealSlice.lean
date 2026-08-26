@@ -233,7 +233,10 @@ private theorem cmp99UbarSpecialLinearBlockOfDeviationBudget_congr
         s w E B hE coarse' := by
   subst E
   subst coarse'
-  rfl
+  exact congrArg
+    (fun h ↦ cmp99UbarSpecialLinearBlockOfDeviationBudget
+      s w D B h coarse)
+    (Subsingleton.elim hD hE)
 
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
@@ -273,7 +276,9 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
           Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ := by
     intro x hx
-    simpa [D] using hcomplex.bound b x hx
+    have hxB := hcomplex.bound b x hx
+    rw [hD] at hxB
+    exact hxB
   have hphysicalD : ∀ x ∈ blockOf M N' b.1,
       ‖(D x : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bphysical.δ := by
     intro x hx
