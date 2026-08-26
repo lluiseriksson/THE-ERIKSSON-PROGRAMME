@@ -44,13 +44,13 @@ MODULES = [
     ('BalabanCMP99ComplexSpecialLinearAdjointAction', 3),
     ('BalabanCMP99ComplexTransportedBlockAverage', 8),
     ('BalabanCMP99ComplexRegionalTower', 6),
-    ('BalabanCMP99ComplexPhysicalRegionalTower', 6),
+    ('BalabanCMP99ComplexPhysicalRegionalTower', 7),
     ('BalabanCMP99Eq359ComplexClosedPhysicalTower', 1),
     ('BalabanCMP99Eq359ComplexRegionalTowerPair', 6),
     ('BalabanCMP99Eq359ComplexClosedPhysicalTowerPair', 1),
 ]
 
-runner.RUNNER_REV = 'eq359-complex-one-scale-average-promoted-cold-v1'
+runner.RUNNER_REV = 'eq359-complex-one-scale-average-promoted-cold-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq359-complex-one-scale-average")
 runner.EVIDENCE = Path("/content/hrpoly-eq359-complex-one-scale-average-evidence")
