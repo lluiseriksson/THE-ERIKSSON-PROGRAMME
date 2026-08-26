@@ -150,6 +150,15 @@ arrow.
    pointwise bound.  It is staged at checkpoint
    `b2d482fa40fe1324ae643cec429c8f6f82d82e55` for retained-runtime diagnosis;
    no later module may cite it as sealed before a compiler/axiom gate.
+   This positive-edge leaf does not by itself rewrite the backward term of
+   the regional stencil.  Module 3 must also prove the canonical negative-
+   edge factorization
+   `U'_b = exp(i eta A'(b)) U_b` for the internally constructed oriented
+   `A'`, using `gaugeConfigOfPositiveBonds_apply_neg` and the same background
+   transport as
+   `cmp99Eq351PhysicalComplexOrientedPerturbation_neg`.  That factorization
+   is a theorem/sublemma of the regrouping path, not a caller-supplied
+   equality and not a consequence silently attributed to the positive case.
 3. `BalabanCMP99Eq351ComplexLaplacianRegrouping`: construct `U1` with
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta`, expand the literal
    regional stencil, and prove the three-species identity.  The nonlinear
