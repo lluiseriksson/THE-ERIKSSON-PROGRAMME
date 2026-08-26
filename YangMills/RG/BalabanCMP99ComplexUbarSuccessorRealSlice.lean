@@ -217,6 +217,24 @@ structure CMP99PhysicalUbarDeviationCertificate
         (cmp99SourceUbarGamma2 (G := SUN Nc) b)
         (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ B.δ
 
+private theorem cmp99UbarSpecialLinearBlockOfDeviationBudget_congr
+    {ι : Type*} (s : Finset ι) (w : ι → ℝ)
+    {D E : ι → Matrix.SpecialLinearGroup (Fin Nc) ℂ}
+    (hDE : D = E) (B : MatrixNearLogNoWindingBudget Nc)
+    (hD : ∀ i ∈ s,
+      ‖(D i : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
+    (hE : ∀ i ∈ s,
+      ‖(E i : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ)
+    {coarse coarse' : Matrix.SpecialLinearGroup (Fin Nc) ℂ}
+    (hcoarse : coarse = coarse') :
+    cmp99UbarSpecialLinearBlockOfDeviationBudget
+        s w D B hD coarse =
+      cmp99UbarSpecialLinearBlockOfDeviationBudget
+        s w E B hE coarse' := by
+  subst E
+  subst coarse'
+  rfl
+
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
 budgets is required. -/
@@ -250,21 +268,44 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
       fun x ↦ cmp99SUNToSpecialLinear Nc (D x) := by
     funext x
     exact cmp99SourceComplexLocalizedUbarDeviation_realSlice U b x
+  have hcomplexD : ∀ x ∈ blockOf M N' b.1,
+      ‖((cmp99SUNToSpecialLinear Nc (D x) :
+          Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bcomplex.δ := by
+    intro x hx
+    simpa [D] using hcomplex.bound b x hx
+  have hphysicalD : ∀ x ∈ blockOf M N' b.1,
+      ‖(D x : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ Bphysical.δ := by
+    intro x hx
+    simpa [D, UbarDeviationLogArg] using hphysical.bound b x hx
+  have hcoarse : cmp99SourceBaseCoarseBackground
+        (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
+        (positiveEdgeOfPhysicalBond b) =
+      cmp99SUNToSpecialLinear Nc
+        (cmp99SourceBaseCoarseBackground U
+          (positiveEdgeOfPhysicalBond b)) := by
+    exact congrFun
+      (cmp99SourceBaseCoarseBackground_realSlice U)
+      (positiveEdgeOfPhysicalBond b)
   unfold cmp99SourceComplexLocalizedUbarBlock
     cmp99PhysicalUbarBlockOfDeviationBudget
   dsimp only
-  simp only [hD, cmp99SourceBaseCoarseBackground_realSlice]
-  exact cmp99UbarSpecialLinearBlockOfDeviationBudget_realSlice
-    (blockOf M N' b.1) (fun _ ↦ (M ^ d : ℝ)⁻¹) D
-    Bcomplex Bphysical
-    (by
-      intro x hx
-      simpa [D] using hcomplex.bound b x hx)
-    (by
-      intro x hx
-      simpa [D, UbarDeviationLogArg] using hphysical.bound b x hx)
-    (cmp99SourceBaseCoarseBackground U
-      (positiveEdgeOfPhysicalBond b))
+  calc
+    _ = cmp99UbarSpecialLinearBlockOfDeviationBudget
+          (blockOf M N' b.1) (fun _ ↦ (M ^ d : ℝ)⁻¹)
+          (fun x ↦ cmp99SUNToSpecialLinear Nc (D x))
+          Bcomplex hcomplexD
+          (cmp99SUNToSpecialLinear Nc
+            (cmp99SourceBaseCoarseBackground U
+              (positiveEdgeOfPhysicalBond b))) :=
+      cmp99UbarSpecialLinearBlockOfDeviationBudget_congr
+        (blockOf M N' b.1) (fun _ ↦ (M ^ d : ℝ)⁻¹)
+        hD Bcomplex (hcomplex.bound b) hcomplexD hcoarse
+    _ = _ := cmp99UbarSpecialLinearBlockOfDeviationBudget_realSlice
+      (blockOf M N' b.1) (fun _ ↦ (M ^ d : ℝ)⁻¹) D
+      Bcomplex Bphysical hcomplexD hphysicalD
+      (cmp99SourceBaseCoarseBackground U
+        (positiveEdgeOfPhysicalBond b))
 
 /-- The complete all-bond analytic successor restricts to the complete
 canonical physical successor.  This theorem deliberately does not mention
