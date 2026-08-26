@@ -20,14 +20,14 @@ def load(path: Path, name: str):
     return module
 
 
-def test_contract_has_exact_twenty_declarations_and_terminal_root():
+def test_contract_has_exact_twenty_three_declarations_and_terminal_root():
     contract = load(CONTRACT, "eq359_real_slice_contract_test")
-    assert len(contract.MODULES) == 4
-    assert sum(count for _, count in contract.MODULES) == 20
+    assert len(contract.MODULES) == 5
+    assert sum(count for _, count in contract.MODULES) == 23
     stages = contract.stages()
     assert stages[0] == "eq359_real_slice_materialize_dependencies"
     assert stages[-1] == "eq359_real_slice_root"
-    assert len(stages) == 11
+    assert len(stages) == 13
 
 
 def test_sealer_scope_matches_contract():
@@ -49,7 +49,7 @@ def test_sealer_rejects_wrong_status_and_count(tmp_path):
     bad_count = tmp_path / "bad-count.json"
     bad_count.write_text(json.dumps({
         "status": "EQ359_REAL_SLICE_EVIDENCE_OK",
-        "expected_declarations": 19,
+        "expected_declarations": 22,
     }), encoding="utf-8")
     with pytest.raises(RuntimeError, match="DECLARATIONS_MISMATCH"):
         sealer.read_evidence(bad_count)

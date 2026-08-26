@@ -13,6 +13,7 @@ FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice", 4),
     ("BalabanCMP99Eq359OneScaleRealSlice", 4),
+    ("BalabanCMP99Eq359TowerRealSliceAgreement", 3),
     ("BalabanCMP99PhysicalBackgroundRealSlice", 5),
     ("BalabanCMP99ComplexUbarSuccessorRealSlice", 7),
 )

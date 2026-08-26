@@ -13,7 +13,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 PATHS_FILE = ROOT / "tmp" / "EQ359-REAL-SLICE-COMPILER-GATE-DRAFT-PATHS.txt"
 CORE = "YangMillsCore.lean"
-EXPECTED_PATHS = 8
+EXPECTED_PATHS = 10
 REQUIRED_PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbedBackground.lean",
     "YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackground.lean",
