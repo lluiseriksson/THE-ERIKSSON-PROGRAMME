@@ -25,15 +25,30 @@ variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 
 local notation "SLNc" => Matrix.SpecialLinearGroup (Fin Nc) ℂ
 
+private theorem coe_eq_of_specialLinear_eq
+    {A B : SLNc} (h : A = B) :
+    (A : Matrix (Fin Nc) (Fin Nc) ℂ) =
+      (B : Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  congrArg Subtype.val h
+
+
+private theorem coe_four_specialLinear_product
+    (A : Fin 4 → SLNc) :
+    ((((A 0 * A 1) * A 2) * A 3 : SLNc) :
+        Matrix (Fin Nc) (Fin Nc) ℂ) =
+      fourMatrixProduct (fun i =>
+        (A i : Matrix (Fin Nc) (Fin Nc) ℂ)) := by
+  simp only [fourMatrixProduct, Matrix.SpecialLinearGroup.coe_mul]
+
 /-- The four literal fine paths in the printed source Ubar deviation.  The
 fourth is the reversed straight fine representative of the positive coarse
 bond. -/
 def cmp99SourceComplexUbarFourPaths
     (b : PhysicalBond d N') (x : FinBox d (M * N')) :
     Fin 4 → List (ConcreteEdge d (M * N')) :=
-  ![cmp99SourceUbarGamma1 (G := SLNc) b x,
-    cmp99SourceUbarGamma2 (G := SLNc) b x,
-    cmp99SourceUbarGamma3 (G := SLNc) b x,
+  ![cmp99SourceUbarGamma1 (G := SUN Nc) b x,
+    cmp99SourceUbarGamma2 (G := SUN Nc) b x,
+    cmp99SourceUbarGamma3 (G := SUN Nc) b x,
     (cmp99SourceParallelTransportPath (G := SLNc)
       (blockBasepoint M N' b.1) b.2).symm.edges]
 
@@ -48,11 +63,11 @@ theorem cmp99SourceComplexUbarFourPaths_length_le
       d * (M - 1) := by
   fin_cases i
   · simpa [cmp99SourceComplexUbarFourPaths] using
-      cmp99SourceUbarGamma1_length_le (G := SLNc) b x hx
+      cmp99SourceUbarGamma1_length_le (G := SUN Nc) b x hx
   · simpa [cmp99SourceComplexUbarFourPaths] using
-      cmp99SourceUbarGamma2_length_le (G := SLNc) hd hM b x
+      cmp99SourceUbarGamma2_length_le (G := SUN Nc) hd hM b x
   · simpa [cmp99SourceComplexUbarFourPaths] using
-      cmp99SourceUbarGamma3_length_le (G := SLNc) b x hx
+      cmp99SourceUbarGamma3_length_le (G := SUN Nc) b x hx
   · change
       ((cmp99SourceParallelTransportPath (G := SLNc)
         (blockBasepoint M N' b.1) b.2).symm.edges).length ≤ d * (M - 1)
@@ -73,12 +88,82 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_coe_eq_fourPathProduct
         ((wilsonLine background
             (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x i) : SLNc) :
           Matrix (Fin Nc) (Fin Nc) ℂ)) := by
-  unfold cmp99SourceComplexLocalizedUbarDeviation UbarDeviation
-  dsimp only
-  rw [cmp99SourceBaseCoarseBackground_apply_pos]
-  rw [← OrientedLatticePath.holonomy_symm]
-  simp [cmp99SourceComplexUbarFourPaths, fourMatrixProduct,
-    OrientedLatticePath.holonomy, Matrix.SpecialLinearGroup.coe_mul]
+  have hlast :
+      (cmp99SourceBaseCoarseBackground background
+          (positiveEdgeOfPhysicalBond b))⁻¹ =
+        wilsonLine background
+          (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x 3) := by
+    rw [cmp99SourceBaseCoarseBackground_apply_pos]
+    rw [← OrientedLatticePath.holonomy_symm]
+    simp only [cmp99SourceComplexUbarFourPaths,
+      OrientedLatticePath.holonomy]
+    rfl
+  have hgroupLiteral :
+      cmp99SourceComplexLocalizedUbarDeviation background b x =
+        wilsonLine background
+            (cmp99SourceUbarGamma1 (G := SUN Nc) b x) *
+          wilsonLine background
+            (cmp99SourceUbarGamma2 (G := SUN Nc) b x) *
+          wilsonLine background
+            (cmp99SourceUbarGamma3 (G := SUN Nc) b x) *
+          wilsonLine background
+            (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x 3) := by
+    unfold cmp99SourceComplexLocalizedUbarDeviation UbarDeviation
+    dsimp only
+    exact congrArg (fun z : SLNc =>
+      wilsonLine background
+          (cmp99SourceUbarGamma1 (G := SUN Nc) b x) *
+        wilsonLine background
+          (cmp99SourceUbarGamma2 (G := SUN Nc) b x) *
+        wilsonLine background
+          (cmp99SourceUbarGamma3 (G := SUN Nc) b x) * z) hlast
+  let A : Fin 4 → SLNc := fun i =>
+    wilsonLine background
+      (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x i)
+  have h0 : A 0 =
+      wilsonLine background
+        (cmp99SourceUbarGamma1 (G := SUN Nc) b x) := by
+    change wilsonLine background
+      (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x 0) =
+        wilsonLine background
+          (cmp99SourceUbarGamma1 (G := SUN Nc) b x)
+    apply congrArg (wilsonLine background)
+    simp [cmp99SourceComplexUbarFourPaths]
+  have h1 : A 1 =
+      wilsonLine background
+        (cmp99SourceUbarGamma2 (G := SUN Nc) b x) := by
+    change wilsonLine background
+      (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x 1) =
+        wilsonLine background
+          (cmp99SourceUbarGamma2 (G := SUN Nc) b x)
+    apply congrArg (wilsonLine background)
+    simp [cmp99SourceComplexUbarFourPaths]
+  have h2 : A 2 =
+      wilsonLine background
+        (cmp99SourceUbarGamma3 (G := SUN Nc) b x) := by
+    change wilsonLine background
+      (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x 2) =
+        wilsonLine background
+          (cmp99SourceUbarGamma3 (G := SUN Nc) b x)
+    apply congrArg (wilsonLine background)
+    simp [cmp99SourceComplexUbarFourPaths]
+  have h3 : A 3 =
+      wilsonLine background
+        (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x 3) := by
+    simp [A]
+  have hgroup :
+      cmp99SourceComplexLocalizedUbarDeviation background b x =
+        ((A 0 * A 1) * A 2) * A 3 := by
+    rw [h0, h1, h2, h3]
+    exact hgroupLiteral
+  change
+    (cmp99SourceComplexLocalizedUbarDeviation background b x :
+        Matrix (Fin Nc) (Fin Nc) ℂ) =
+      fourMatrixProduct (fun i =>
+        (A i : Matrix (Fin Nc) (Fin Nc) ℂ))
+  exact (coe_eq_of_specialLinear_eq hgroup).trans
+    (coe_four_specialLinear_product A)
+
 
 /-- A uniform oriented-link radius produces the literal complex source-Ubar
 budget with every path length and preceding factor norm visible. -/
