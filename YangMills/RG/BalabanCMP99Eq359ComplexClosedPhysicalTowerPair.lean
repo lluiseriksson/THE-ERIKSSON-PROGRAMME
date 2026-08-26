@@ -170,7 +170,10 @@ noncomputable def cmp99Eq359SourceComplexClosedPhysicalTowerPair
     unfold cmp99Eq337PhysicalComplexPerturbedLinkRadius
     have hbudget : 0 ≤ cmp99SUNLieComplexCoordMatrixNormBudget Nc :=
       cmp99SUNLieComplexCoordMatrixNormBudget_nonneg
-    positivity
+    simp only [abs_zero, zero_mul, mul_zero, add_zero]
+    exact le_add_of_nonneg_right
+      (mul_nonneg (by norm_num)
+        (mul_nonneg (mul_nonneg (abs_nonneg eta) hbudget) hrA))
   have hbase : ∀ e,
       ‖(background0 e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
         cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA := by
