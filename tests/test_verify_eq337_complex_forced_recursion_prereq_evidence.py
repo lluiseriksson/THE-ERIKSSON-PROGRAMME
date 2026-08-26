@@ -54,7 +54,11 @@ def synthetic_notebook(verifier, source_sha: str, *, forbidden: bool = False) ->
     declarations: list[str] = []
     for repro_path, _ in verifier.REPROS:
         repro = verifier.git_blob(ROOT, source_sha, repro_path).decode()
-        declarations.extend(verifier.PRINT_RE.findall(repro))
+        declarations.extend(
+            declaration if "." in declaration
+            else f"YangMills.RG.{declaration}"
+            for declaration in verifier.PRINT_RE.findall(repro)
+        )
     for module, _ in verifier.MODULES:
         audit_path = f"tmp/{module}Audit.draft.lean"
         audit = verifier.git_blob(ROOT, source_sha, audit_path).decode()
