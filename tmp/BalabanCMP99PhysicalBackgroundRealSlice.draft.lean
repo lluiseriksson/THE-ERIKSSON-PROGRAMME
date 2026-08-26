@@ -72,6 +72,49 @@ theorem cmp99ComplexPhysicalBlockHolonomy_realSlice
     cmp99SUNToSpecialLinear Nc (wilsonLine U physical.edges)
   exact wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear U physical.edges
 
+/-- For a real physical one-cochain and real parameter, the complete
+oriented complex perturbation is exactly the canonical embedding of the
+physical `SU(N)` left variation.  Negative links follow by inversion; no
+second background is supplied by the caller. -/
+theorem cmp99Eq337PhysicalComplexPerturbedBackground_realSlice
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc) (eta : ℝ) :
+    cmp99Eq337PhysicalComplexPerturbedBackground U
+        (cmp99Eq337PhysicalComplexifyOneCochain A) eta =
+      cmp99PhysicalGaugeBackgroundToSpecialLinear
+        (cmp98PhysicalSuLeftVariation U A eta) := by
+  have hpos : ∀ b : PhysicalBond d (M * N'),
+      cmp99Eq337PhysicalComplexPerturbedPositiveBondSL U
+          (cmp99Eq337PhysicalComplexifyOneCochain A) eta b =
+        cmp99SUNToSpecialLinear Nc
+          (cmp98PhysicalSuLeftVariation U A eta
+            (positiveEdgeOfPhysicalBond b)) := by
+    intro b
+    apply Matrix.SpecialLinearGroup.ext
+    intro i j
+    exact congrArg (fun Z ↦ Z i j)
+      (cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_realSlice
+        U A eta b)
+  apply gaugeConfig_ext
+  intro e
+  cases e with
+  | mk x i sign =>
+      cases sign
+      · change
+          (cmp99Eq337PhysicalComplexPerturbedPositiveBondSL U
+              (cmp99Eq337PhysicalComplexifyOneCochain A) eta (x, i))⁻¹ =
+            cmp99SUNToSpecialLinear Nc
+              ((cmp98PhysicalSuLeftVariation U A eta
+                (positiveEdgeOfPhysicalBond (x, i)))⁻¹)
+        rw [map_inv, hpos]
+      · change
+          cmp99Eq337PhysicalComplexPerturbedPositiveBondSL U
+              (cmp99Eq337PhysicalComplexifyOneCochain A) eta (x, i) =
+            cmp99SUNToSpecialLinear Nc
+              (cmp98PhysicalSuLeftVariation U A eta
+                (positiveEdgeOfPhysicalBond (x, i)))
+        exact hpos (x, i)
+
 end
 
 end YangMills.RG
