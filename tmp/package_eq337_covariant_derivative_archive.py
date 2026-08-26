@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify and preserve a durable Eq. (3.37) derivative archive."""
+"""Verify and preserve a durable Eq. (3.37) coordinate-boundary archive."""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the pinned cold gate for the remaining Eq. (3.37) derivatives."""
+"""Generate the pinned cold gate for the remaining Eq. (3.37) coordinate boundary."""
 
 from __future__ import annotations
 

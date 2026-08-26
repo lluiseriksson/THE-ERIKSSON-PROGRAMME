@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Seal only the two remaining Eq. (3.37) derivative source/audit pairs."""
+"""Seal the three remaining Eq. (3.37) coordinate source/audit pairs."""
 
 from __future__ import annotations
 
