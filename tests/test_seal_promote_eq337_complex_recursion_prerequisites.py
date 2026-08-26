@@ -40,12 +40,25 @@ def test_core_import_scope_is_exactly_nine_audits() -> None:
     verifier = script.load_module(
         script.RECURSION_VERIFIER, "test_eq337_recursion_verifier_for_core"
     )
-    sealed = script.sealed_core(b"import Mathlib\n", verifier).decode()
+    ubar_imports, recursion_imports = script.core_audit_imports(verifier)
+    assert len(ubar_imports) == 7
+    assert len(recursion_imports) == 2
+    baseline = "import Mathlib\n" + "".join(line + "\n" for line in ubar_imports)
+    sealed = script.sealed_core(baseline.encode(), verifier).decode()
     imports = [line for line in sealed.splitlines() if line.startswith("import YangMills.RG.")]
     assert len(imports) == 9
     assert len(set(imports)) == 9
     assert all(line.endswith("Audit") for line in imports)
     assert not any("repro" in line.lower() for line in imports)
+
+
+def test_core_requires_the_seven_previously_sealed_ubar_imports() -> None:
+    script = load_script()
+    verifier = script.load_module(
+        script.RECURSION_VERIFIER, "test_eq337_recursion_verifier_missing_ubar"
+    )
+    with pytest.raises(RuntimeError, match="CORE_UBAR_IMPORT_COUNT"):
+        script.sealed_core(b"import Mathlib\n", verifier)
 
 
 def test_destination_maps_only_draft_modules() -> None:

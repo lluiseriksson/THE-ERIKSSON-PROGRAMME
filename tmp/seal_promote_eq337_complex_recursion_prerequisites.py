@@ -185,23 +185,42 @@ def sealed_rows(ubar_result: dict, recursion_result: dict) -> list[tuple[str, by
     return rows
 
 
-def sealed_core(data: bytes, recursion_verifier) -> bytes:
-    modules = [
+def core_audit_imports(recursion_verifier) -> tuple[list[str], list[str]]:
+    ubar_modules = [
         Path(path).name.removesuffix("Audit.draft.lean")
         for path in ubar_paths()
         if path.endswith("Audit.draft.lean")
     ]
-    modules.extend(module for module, _ in recursion_verifier.MODULES)
-    imports = [f"import YangMills.RG.{module}Audit" for module in modules]
-    if len(imports) != 9 or len(set(imports)) != 9:
+    recursion_modules = [module for module, _ in recursion_verifier.MODULES]
+    ubar_imports = [f"import YangMills.RG.{module}Audit" for module in ubar_modules]
+    recursion_imports = [
+        f"import YangMills.RG.{module}Audit" for module in recursion_modules
+    ]
+    imports = [*ubar_imports, *recursion_imports]
+    if (
+        len(ubar_imports) != 7
+        or len(recursion_imports) != 2
+        or len(set(imports)) != 9
+    ):
         raise RuntimeError(f"EQ337_PREREQ_CORE_IMPORT_SCOPE={len(imports)}")
+    return ubar_imports, recursion_imports
+
+
+def sealed_core(data: bytes, recursion_verifier) -> bytes:
+    ubar_imports, recursion_imports = core_audit_imports(recursion_verifier)
     text = data.decode("utf-8")
-    present = [line for line in imports if line in text]
-    if present:
-        raise RuntimeError(f"EQ337_PREREQ_CORE_IMPORT_ALREADY_PRESENT={present!r}")
+    lines = text.splitlines()
+    bad_ubar = {line: lines.count(line) for line in ubar_imports if lines.count(line) != 1}
+    if bad_ubar:
+        raise RuntimeError(f"EQ337_PREREQ_CORE_UBAR_IMPORT_COUNT={bad_ubar!r}")
+    present_recursion = [line for line in recursion_imports if line in lines]
+    if present_recursion:
+        raise RuntimeError(
+            f"EQ337_PREREQ_CORE_RECURSION_IMPORT_ALREADY_PRESENT={present_recursion!r}"
+        )
     if not text.endswith("\n"):
         text += "\n"
-    return (text + "".join(line + "\n" for line in imports)).encode("utf-8")
+    return (text + "".join(line + "\n" for line in recursion_imports)).encode("utf-8")
 
 
 def digest(rows: list[tuple[str, bytes]]) -> str:
