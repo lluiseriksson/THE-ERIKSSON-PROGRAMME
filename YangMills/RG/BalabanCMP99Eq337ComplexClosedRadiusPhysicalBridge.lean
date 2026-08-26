@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq337ComplexClosedRadiusScalar
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius
+import YangMills.RG.BalabanCMP99ComplexUbarSmallFieldPropagation
 
 /-!
 PRE-VALIDATION: scratch physical adapter. This file has no materialized
