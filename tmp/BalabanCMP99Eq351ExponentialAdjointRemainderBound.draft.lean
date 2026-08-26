@@ -127,7 +127,7 @@ theorem norm_cmp99Eq351ExponentialAdjointRemainderCLM_apply_le
               (mul_le_mul_of_nonneg_right htailY (norm_nonneg X)))
             (norm_nonneg _)) |>.trans
           (mul_le_mul
-            (mul_le_mul_of_nonneg_right htailY (norm_nonneg X))
+            (le_refl (((4 / 3 : ℝ) * ‖Y‖ ^ 2) * ‖X‖))
             hexpNeg (norm_nonneg _) (by positivity))
       · exact (norm_mul_le _ _).trans
           (mul_le_mul_of_nonneg_right
@@ -135,7 +135,7 @@ theorem norm_cmp99Eq351ExponentialAdjointRemainderCLM_apply_le
               (mul_le_mul honeY (le_refl ‖X‖) (norm_nonneg X) (by positivity)))
             (norm_nonneg _)) |>.trans
           (mul_le_mul
-            (mul_le_mul honeY (le_refl ‖X‖) (norm_nonneg X) (by positivity))
+            (le_refl ((5 / 4 : ℝ) * ‖X‖))
             htailNeg (norm_nonneg _) (by positivity))
       · exact (norm_mul_le _ _).trans
           (mul_le_mul_of_nonneg_right (norm_mul_le _ _) (norm_nonneg Y))
