@@ -11463,6 +11463,29 @@ it gates exactly these two blobs and runs only the focal plus the
 three-declaration audit.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
 
+### CMP99 (3.37)/(3.51): physical complex perturbation and adjoint remainder (COLAB-VERIFIED; 20/41 unchanged)
+
+The five source/audit pairs from physical real perturbations through the
+exponential-adjoint remainder bound were validated together at exact source
+checkpoint `77c0e4834ce69d8b174d37aeefac56fd5b06b5ad`.  Runner checkpoint
+`e2494735`, revision `eq351-exponential-adjoint-remainder-cold-v4`, and
+notebook checkpoint `31c99eeb` executed in a fresh Colab Pro+ CPU/high-RAM
+checkout.  All ten focal stages exited `0`; the root completed `10998` jobs
+in `7246.439` seconds.  The nineteen audited declarations used only subsets
+of `[propext, Classical.choice, Quot.sound]`, and the runner emitted literal
+`FINAL_STATUS=PASS`.
+
+The downloaded archive SHA-256 is
+`6CE623E5E73FB5C035FCA99EE5808E22E226045FCEFF7DCB4D5722E8948D45E3`;
+the locally verified package manifest SHA-256 is
+`B997C4F02EFAB9F64CA3EA9F90B4FA3C122D4161A5CD097AB0F60B9C9CDA5564`.
+Seal checkpoint `a5e4d03bbf6fd237fa60d1735ffa442203e791bf` retires exactly the ten
+PRE-VALIDATION notices covered by that evidence.  This seals the Eq. (3.51)
+oriented perturbation and remainder ingredients only; it does not establish
+the later Eq. (3.54) source bound, window-15 attainment, rows 23--24, or a
+`TermSource` instance.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
+
 Diagnostic v2 reached the revised focal in one fresh CPU/high-RAM Colab clone
 and stopped at its first real error after `1595.697 s`.  The canonical
 `ZMod.castHom` had already transported the equality to `ZMod N'`; line `58:2`
