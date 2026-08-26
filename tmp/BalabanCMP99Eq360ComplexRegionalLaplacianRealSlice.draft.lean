@@ -51,10 +51,10 @@ theorem cmp99Eq360ComplexCovariantDifference_realSlice
           cmp99SUNLieCoordComplexificationLM Nc (phi x)) b =
       cmp99SUNLieCoordComplexificationLM Nc
         (spacing⁻¹ • covariantD0CLM (matrixSUNAdjointModel Nc) U phi b) := by
-  simp only [cmp99Eq360ComplexCovariantDifference, covariantD0CLM_apply,
-    cmp99PhysicalGaugeBackgroundToSpecialLinear_apply, PiLp.coe_toLp,
+  simp only [cmp99Eq360ComplexCovariantDifference,
+    cmp99PhysicalGaugeBackgroundToSpecialLinear_apply,
     cmp99SpecialLinearAdjointCoordLM_realSlice]
-  rw [map_smul, map_sub]
+  rw [covariantD0CLM_apply, map_smul, map_sub]
   norm_cast
 
 /-- On every compact physical background the complete analytic regional
@@ -79,14 +79,17 @@ theorem cmp99Eq360ComplexRegionalLaplacian_realSlice
       (matrixSUNAdjointModel Nc) U spacing
       (extendZeroZeroCLM Omega phi) x.1)
   rw [cmp99GeneratedAmbientScaledCovariantLaplacian_apply]
-  simp only [PiLp.coe_toLp]
   rw [map_smul, map_sum]
-  apply congrArg (((spacing : ℂ)⁻¹) • ·)
+  have hspacing : ((spacing⁻¹ : ℝ) : ℂ) = (spacing : ℂ)⁻¹ := by
+    norm_cast
+  rw [← hspacing, Complex.coe_smul]
+  apply congrArg ((spacing⁻¹ : ℝ) • ·)
   apply Finset.sum_congr rfl
   intro i _hi
   rw [map_sub]
   rw [cmp99Eq360ComplexCovariantDifference_realSlice]
   rw [cmp99Eq360ComplexCovariantDifference_realSlice]
+  rw [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
   rw [cmp99SpecialLinearAdjointCoordLM_realSlice_inv]
   norm_cast
 
