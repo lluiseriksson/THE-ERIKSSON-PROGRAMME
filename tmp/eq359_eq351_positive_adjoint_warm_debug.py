@@ -21,8 +21,8 @@ import time
 
 ROOT = Path("/content/hrpoly-eq359-real-slice")
 EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence/evidence.json")
-EQ359_SOURCE = "08039bcbc4bc74af072bef0252d7d559cbc80fe5"
-DEBUG_SOURCE = "b2d482fa40fe1324ae643cec429c8f6f82d82e55"
+EQ359_SOURCE = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
+DEBUG_SOURCE = "ad7922c02e6b6196ca4cd7a1d5ca354e46550f8a"
 
 EQ351_MODULES = (
     "BalabanCMP99ComplexSpecialLinearAdjointComposition",
