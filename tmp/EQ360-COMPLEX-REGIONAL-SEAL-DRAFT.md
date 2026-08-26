@@ -7,6 +7,16 @@ literal `FINAL_STATUS=PASS` for the exact checkpoints below and passes
 
 ## Fixed gate
 
+The four regional scratch blobs originate at checkpoint
+`0c88ed3c45626592367e2091a5f54c69cb624e3a`, but that checkpoint is not an
+admissible validation source: it still marks three Eq. (3.59) real-slice
+prerequisites PRE-VALIDATION.  The source checkpoint below must instead be a
+descendant of the independently verified Eq. (3.59) selective seal, produced
+by running `promote_eq360_complex_regional_real_slice.py` against that seal
+SHA.  The promotion script's prerequisite guard is portante; neither the
+draft-origin SHA nor a compile that bypasses this ordering may be cited as
+Eq. (3.60) evidence.
+
 - source checkpoint: `[SOURCE_SHA]`
 - runner checkpoint: `[RUNNER_CHECKPOINT]`
 - notebook checkpoint: `[NOTEBOOK_CHECKPOINT]`
