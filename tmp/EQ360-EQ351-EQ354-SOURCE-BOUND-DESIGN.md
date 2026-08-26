@@ -92,6 +92,25 @@ checkpoint `a5e4d03bbf6fd237fa60d1735ffa442203e791bf`.  The next source-bound
 gate may consume those named declarations, but it may not replace their
 amplitude and covariant-derivative clauses with fresh bounds.
 
+### Static re-audit after the Eq. (3.51) remainder seal
+
+`tmp/EQ360-COMPLEX-PHYSICAL-COMPILER-GATE-DRAFT-PATHS.txt` is an inventory
+of auxiliary algebra drafts, not the next promotable source gate.  In
+particular, the current local-Laplacian draft still receives independent
+`U0 U1`, its expanded stencil does not expose the named diagonal
+`D_U^* A` species, and its so-called source perturbation does not specialize
+the sealed exponential-adjoint remainder at the canonical oriented physical
+field.  Wrapping those objects in `CMP99Eq360ComplexClosedPhysicalInput` does
+not turn the raw stencil difference into the printed (3.51)--(3.54)
+decomposition.
+
+Consequently none of those ten drafts may be promoted as a source-facing
+producer until compiler-facing modules 3--5 below exist and consume the
+already sealed Eq. (3.37) domain and Eq. (3.51) remainder declarations.  A
+green compile of the old ten-path inventory would certify only the auxiliary
+operator algebra and would not advance the source-bound gate, `20/41`, or
+window 15.
+
 ## Compiler-facing module split
 
 The next implementation is finite and should preserve the following phase
