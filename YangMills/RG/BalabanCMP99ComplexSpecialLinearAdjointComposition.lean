@@ -44,7 +44,7 @@ theorem cmp99SpecialLinearAdjointCoordLM_mul
           ((g⁻¹ : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
             Matrix (Fin Nc) (Fin Nc) ℂ)
   simp only [Matrix.SpecialLinearGroup.coe_mul,
-    Matrix.SpecialLinearGroup.coe_inv, Matrix.mul_inv_rev]
+    Matrix.SpecialLinearGroup.coe_inv, Matrix.adjugate_mul_distrib]
   noncomm_ring
 
 end
