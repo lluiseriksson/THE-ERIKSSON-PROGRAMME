@@ -2,7 +2,7 @@
 """Cold Colab validation for the source-specific Eq. (3.59) two-tower pair.
 
 The source checkpoint contains seven promoted PRE-VALIDATION source/audit
-pairs. The queue compiles them in dependency order, audits their thirty-one
+pairs. The queue compiles them in dependency order, audits their thirty-two
 public declarations, builds ``YangMillsCore`` from the same fresh checkout,
 and stops at the first real error. It does not move ``20/41`` or instantiate
 ``TermSource``.
@@ -18,7 +18,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = 'd1864ae0305b87b3a1812be29ca55577b5cd3240'
+SOURCE_SHA = 'de2752a3a2ba053a7015e8616fb8dae81404e112'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -50,7 +50,7 @@ MODULES = [
     ('BalabanCMP99Eq359ComplexClosedPhysicalTowerPair', 1),
 ]
 
-runner.RUNNER_REV = 'eq359-complex-one-scale-average-promoted-cold-v2'
+runner.RUNNER_REV = 'eq359-complex-one-scale-average-promoted-cold-v3'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq359-complex-one-scale-average")
 runner.EVIDENCE = Path("/content/hrpoly-eq359-complex-one-scale-average-evidence")
@@ -58,7 +58,7 @@ runner.ARCHIVE = Path("/content/hrpoly-eq359-complex-one-scale-average-evidence.
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq359-complex-one-scale-average-paths.txt")
 runner.SOURCE_BLOBS = {
     'YangMillsCore.lean': '181aab410c53915b564dc0488c401403a4d3191e3fcca14696cad937ac1371fb',
-    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointAction.lean': '40ff2ba9507704f2c1af31ae0b47b133e04eb28761840ff09c7ed6600b241454',
+    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointAction.lean': '9fbad97ce003f8c9cfe404a7d80f65c70e54cfe489e4388f49d2f173a2345e47',
     'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointActionAudit.lean': 'd11825fb75f15dfb30c5ae46b283e824eb2925f9e5e18f9c7909163797482e1d',
     'YangMills/RG/BalabanCMP99ComplexTransportedBlockAverage.lean': '7b6a53b6a8577b732eeca8c8a25fcba63db14b56d6ca50b9029162bd1d6bba2c',
     'YangMills/RG/BalabanCMP99ComplexTransportedBlockAverageAudit.lean': 'dac59d9638c535f2d8583d8b7168ebb51e09f22bd613e8753ab092fc0bffca30',
