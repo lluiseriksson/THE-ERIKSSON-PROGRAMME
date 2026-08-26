@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the pinned cold runner for the source-specific Eq. (3.60) gate."""
+"""Generate the pinned cold runner for the auxiliary Eq. (3.60) algebra."""
 
 from __future__ import annotations
 
@@ -62,12 +62,14 @@ def render(source_sha: str, runner_rev: str) -> str:
         f"    ({module!r}, {expected})," for module, expected in MODULES
     )
     return f'''#!/usr/bin/env python3
-"""Cold validation of the source-specific complex Eq. (3.60) boundary.
+"""Cold validation of the auxiliary complex Eq. (3.60) algebra.
 
 The queue checks five promoted PRE-VALIDATION source/audit pairs (thirty-one
-public declarations) and YangMillsCore from one exact fresh checkout.  It does
-not assert the real-slice bridge, the local bound, the resolvent, any of the
-four actions, window 15, 20/41, or a TermSource inhabitant.
+public declarations) and YangMillsCore from one exact fresh checkout.  This
+inventory still accepts independent Laplacian backgrounds and does not prove
+the printed (3.51)--(3.54) source decomposition.  It therefore does not assert
+the source-facing Eq. (3.60) producer, the local bound, the resolvent, any of
+the four actions, window 15, 20/41, or a TermSource inhabitant.
 """
 
 import hashlib
@@ -192,7 +194,13 @@ def main() -> int:
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--runner-rev", required=True)
     parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--acknowledge-auxiliary-only", action="store_true")
     args = parser.parse_args()
+    if not args.acknowledge_auxiliary_only:
+        raise RuntimeError(
+            "EQ360_AUXILIARY_ONLY_ACK_REQUIRED: the ten-path inventory is "
+            "not the source-facing (3.51)--(3.54) producer"
+        )
     require_commit(args.source_sha, "SOURCE")
     content = render(args.source_sha, args.runner_rev)
     compile(content, str(args.output), "exec")

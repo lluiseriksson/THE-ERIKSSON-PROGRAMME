@@ -130,7 +130,10 @@ not change the gates.
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta`, expand the literal
    regional stencil, and prove the three-species identity.  The nonlinear
    exponential remainder is the specialization of module 1 at the same
-   positive-bond exponential.  This module has no norm hypotheses.
+   positive-bond exponential.  This module has no norm hypotheses.  Its
+   algebraic prerequisite is the existing PRE-VALIDATION leaf
+   `BalabanCMP99ComplexSpecialLinearAdjointComposition`, which must be
+   promoted and audited rather than reproved inside the regrouping.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
