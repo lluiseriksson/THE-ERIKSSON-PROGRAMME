@@ -141,6 +141,15 @@ arrow.
    `8 * ‖Y‖^2 * ‖X‖` bound from the internally constructed remainder under
    `‖Y‖ ≤ 1/4`.  The physical substitution and the Eq. (3.37) amplitude
    clause are not inputs to this generic algebra leaf.
+2a. `BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion`: combine the
+   canonical positive-bond factorization with the exact exponential-adjoint
+   identity at matrix level.  Its endpoint constructs the baseline-
+   transported field, the named generator `i eta A'(b)`, its commutator and
+   its nonlinear remainder internally.  This is a PRE-VALIDATION algebraic
+   subleaf of module 3, not the three-species regional regrouping and not a
+   pointwise bound.  It is staged at checkpoint
+   `b2d482fa40fe1324ae643cec429c8f6f82d82e55` for retained-runtime diagnosis;
+   no later module may cite it as sealed before a compiler/axiom gate.
 3. `BalabanCMP99Eq351ComplexLaplacianRegrouping`: construct `U1` with
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta`, expand the literal
    regional stencil, and prove the three-species identity.  The nonlinear
