@@ -17,7 +17,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = '6459baccb7d96ed40a0576a362d91a52c1f8888a'
+SOURCE_SHA = '609232f4bc9e57365c51e1398ee235e50ea030ff'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -45,7 +45,7 @@ MODULES = [
     ('BalabanCMP99Eq337ComplexClosedRecursiveBackground', 2),
 ]
 
-runner.RUNNER_REV = 'eq337-closed-physical-recursion-promoted-cold-v1'
+runner.RUNNER_REV = 'eq337-closed-physical-recursion-promoted-cold-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-closed-physical-recursion")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-closed-physical-recursion-evidence")
@@ -53,7 +53,7 @@ runner.ARCHIVE = Path("/content/hrpoly-eq337-closed-physical-recursion-evidence.
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq337-closed-physical-recursion-paths.txt")
 runner.SOURCE_BLOBS = {
     'YangMillsCore.lean': '5283c06603a44906e4765c1c473ba431bbc41a4198e206492f8e015e47372c8e',
-    'YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridge.lean': '856e584a7b8e81544d66314ea68c2cb63cdb0cd2ea7c7658bce46680c228e3ec',
+    'YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridge.lean': '0ddfbec994b54cd2f2a78335e5f13cc7bdb5a68338b37a82dee375603eaf8c2b',
     'YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridgeAudit.lean': '687375fc504a04a9c89a911284d663eaf93ff1724520f0b35335ca1aebcf0485',
     'YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalGates.lean': 'ace4b6000866004fb4a33aec8f9b4cc72829231ba8123917f7ab4e48ee53f851',
     'YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalGatesAudit.lean': 'eb7da0b899bbbb8a99b8df1eba6713e207c47f2bbf71840a0f483bcc3eda6f91',
