@@ -10,6 +10,7 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.cmp99SourceBaseCoarseBackground_realSlice
 #print axioms YangMills.RG.cmp99SourceComplexLocalizedUbarDeviation_realSlice
 #print axioms YangMills.RG.CMP99ComplexLocalizedUbarDeviationCertificate
+#print axioms YangMills.RG.CMP99PhysicalUbarDeviationCertificate
 #print axioms YangMills.RG.cmp99SourceComplexLocalizedUbarBlock_realSlice
 #print axioms YangMills.RG.cmp99SourceComplexLocalizedNextBackground_realSlice
 #print axioms YangMills.RG.cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall

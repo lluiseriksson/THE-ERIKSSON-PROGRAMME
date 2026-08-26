@@ -168,7 +168,11 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear,
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
-  exact cmp99SUNToSpecialLinear_three_mul_inv _ _ _ _
+  exact cmp99SUNToSpecialLinear_three_mul_inv
+    (wilsonLine U (cmp99SourceUbarGamma1 (G := SUN Nc) b x))
+    (wilsonLine U (cmp99SourceUbarGamma2 (G := SUN Nc) b x))
+    (wilsonLine U (cmp99SourceUbarGamma3 (G := SUN Nc) b x))
+    (cmp99SourceBaseCoarseBackground U (positiveEdgeOfPhysicalBond b))
 
 /-- The analytic deviation bound carried as one proof object.  Packaging the
 dependent premise prevents repeated elaboration of the same large Pi type;
@@ -181,6 +185,22 @@ structure CMP99ComplexLocalizedUbarDeviationCertificate
     ‖(cmp99SourceComplexLocalizedUbarDeviation background b x :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ B.δ
 
+/-- The corresponding compact deviation premise, with the source coarse
+transport and the three printed contours fixed by the background. -/
+structure CMP99PhysicalUbarDeviationCertificate
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (B : MatrixNearLogNoWindingBudget Nc) where
+  bound : ∀ b x,
+    x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
+      (positiveEdgeOfPhysicalBond b)) →
+    ‖UbarDeviationLogArg
+        (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
+        U (cmp99SourceBaseCoarseBackground U)
+        (positiveEdgeOfPhysicalBond b) x
+        (cmp99SourceUbarGamma1 (G := SUN Nc) b)
+        (cmp99SourceUbarGamma2 (G := SUN Nc) b)
+        (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ B.δ
+
 /-- One analytic source block is the canonical image of the physical source
 block.  In particular, no equality between the complex and physical scalar
 budgets is required. -/
@@ -189,16 +209,7 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : CMP99ComplexLocalizedUbarDeviationCertificate
       (cmp99PhysicalGaugeBackgroundToSpecialLinear U) Bcomplex)
-    (hphysical : ∀ b x,
-      x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
-        (positiveEdgeOfPhysicalBond b)) →
-      ‖UbarDeviationLogArg
-          (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
-          U (cmp99SourceBaseCoarseBackground U)
-          (positiveEdgeOfPhysicalBond b) x
-          (cmp99SourceUbarGamma1 (G := SUN Nc) b)
-          (cmp99SourceUbarGamma2 (G := SUN Nc) b)
-          (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ Bphysical.δ)
+    (hphysical : CMP99PhysicalUbarDeviationCertificate U Bphysical)
     (b : PhysicalBond d N') :
     @cmp99SourceComplexLocalizedUbarBlock d M N' Nc _ _ _ _
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
@@ -211,7 +222,7 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
           (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
           (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
           (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
-          (B := Bphysical) (hdev := hphysical) b) := by
+          (B := Bphysical) (hdev := hphysical.bound) b) := by
   let D : FinBox d (M * N') → SUN Nc := fun x ↦
     UbarDeviation U (cmp99SourceBaseCoarseBackground U)
       (positiveEdgeOfPhysicalBond b) x
@@ -235,7 +246,7 @@ theorem cmp99SourceComplexLocalizedUbarBlock_realSlice
       simpa [D] using hcomplex.bound b x hx)
     (by
       intro x hx
-      simpa [D, UbarDeviationLogArg] using hphysical b x hx)
+      simpa [D, UbarDeviationLogArg] using hphysical.bound b x hx)
     (cmp99SourceBaseCoarseBackground U
       (positiveEdgeOfPhysicalBond b))
 
@@ -247,16 +258,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
     (Bcomplex Bphysical : MatrixNearLogNoWindingBudget Nc)
     (hcomplex : CMP99ComplexLocalizedUbarDeviationCertificate
       (cmp99PhysicalGaugeBackgroundToSpecialLinear U) Bcomplex)
-    (hphysical : ∀ b x,
-      x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
-        (positiveEdgeOfPhysicalBond b)) →
-      ‖UbarDeviationLogArg
-          (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
-          U (cmp99SourceBaseCoarseBackground U)
-          (positiveEdgeOfPhysicalBond b) x
-          (cmp99SourceUbarGamma1 (G := SUN Nc) b)
-          (cmp99SourceUbarGamma2 (G := SUN Nc) b)
-          (cmp99SourceUbarGamma3 (G := SUN Nc) b)‖ ≤ Bphysical.δ) :
+    (hphysical : CMP99PhysicalUbarDeviationCertificate U Bphysical) :
     @cmp99SourceComplexLocalizedNextBackground d M N' Nc _ _ _ _
         (cmp99PhysicalGaugeBackgroundToSpecialLinear U)
         Bcomplex hcomplex.bound =
@@ -268,7 +270,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
           (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
           (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
           (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
-          (B := Bphysical) (hdev := hphysical)) := by
+          (B := Bphysical) (hdev := hphysical.bound)) := by
   apply gaugeConfig_ext
   intro e
   rcases e with ⟨y, mu, orient⟩
@@ -285,7 +287,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
             (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
             (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
             (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
-            (B := Bphysical) (hdev := hphysical) (y, mu))⁻¹)
+            (B := Bphysical) (hdev := hphysical.bound) (y, mu))⁻¹)
     rw [map_inv,
       cmp99SourceComplexLocalizedUbarBlock_realSlice]
   · change
@@ -300,7 +302,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice
             (Γ_1 := cmp99SourceUbarGamma1 (G := SUN Nc))
             (Γ_2 := cmp99SourceUbarGamma2 (G := SUN Nc))
             (Γ_3 := cmp99SourceUbarGamma3 (G := SUN Nc))
-            (B := Bphysical) (hdev := hphysical) (y, mu))
+            (B := Bphysical) (hdev := hphysical.bound) (y, mu))
     exact cmp99SourceComplexLocalizedUbarBlock_realSlice
       U Bcomplex Bphysical hcomplex hphysical (y, mu)
 
@@ -334,7 +336,7 @@ theorem cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall
     (cmp99SourceBlockAverageWeight M d) epsilonFine
     epsilonFine_nonneg noWinding fineSmall
   exact cmp99SourceComplexLocalizedNextBackground_realSlice U
-    Bcomplex S.deviationBudget hcomplex S.deviation_bound
+    Bcomplex S.deviationBudget hcomplex ⟨S.deviation_bound⟩
 
 end
 
