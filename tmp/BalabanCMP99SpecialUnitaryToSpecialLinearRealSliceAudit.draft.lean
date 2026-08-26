@@ -9,3 +9,4 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.cmp99SUNToSpecialLinear_coe
 #print axioms YangMills.RG.cmp99SUNToSpecialLinear_inv_coe
 #print axioms YangMills.RG.cmp99SpecialLinearAdjointCoordLM_realSlice
+#print axioms YangMills.RG.cmp99SpecialLinearAdjointCoordLM_realSlice_inv

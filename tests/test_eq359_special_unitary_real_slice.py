@@ -25,18 +25,21 @@ def test_real_slice_proves_inverse_and_action_agreement() -> None:
     text = SOURCE.read_text(encoding="utf-8")
     assert "theorem cmp99SUNToSpecialLinear_inv_coe" in text
     assert "theorem cmp99SpecialLinearAdjointCoordLM_realSlice" in text
+    assert "theorem cmp99SpecialLinearAdjointCoordLM_realSlice_inv" in text
     assert "cmp98LieCoordMatrix_adCLM" in text
     assert "cmp99SUNLieComplexCoordMatrixLM_injective" in text
+    assert "(matrixSUNAdjointModel Nc).adCLM g⁻¹ X" in text
 
 
 def test_real_slice_audit_covers_every_public_declaration() -> None:
     text = AUDIT.read_text(encoding="utf-8")
     assert text.count("PRE-VALIDATION:") == 1
-    assert text.count("#print axioms ") == 4
+    assert text.count("#print axioms ") == 5
     for declaration in (
         "cmp99SUNToSpecialLinear",
         "cmp99SUNToSpecialLinear_coe",
         "cmp99SUNToSpecialLinear_inv_coe",
         "cmp99SpecialLinearAdjointCoordLM_realSlice",
+        "cmp99SpecialLinearAdjointCoordLM_realSlice_inv",
     ):
         assert f"#print axioms YangMills.RG.{declaration}" in text

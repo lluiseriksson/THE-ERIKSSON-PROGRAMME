@@ -68,6 +68,18 @@ theorem cmp99SpecialLinearAdjointCoordLM_realSlice
     cmp99SUNToSpecialLinear_coe,
     cmp99SUNToSpecialLinear_inv_coe]
 
+/-- The independently constructed printed-star transport restricts to the
+physical inverse adjoint action on the compact real slice.  This is an
+equality of actions, not merely an equality of norms. -/
+theorem cmp99SpecialLinearAdjointCoordLM_realSlice_inv
+    (g : SUN Nc) (X : SUNLieCoord Nc) :
+    cmp99SpecialLinearAdjointCoordLM (cmp99SUNToSpecialLinear Nc g)⁻¹
+        (cmp99SUNLieCoordComplexificationLM Nc X) =
+      cmp99SUNLieCoordComplexificationLM Nc
+        ((matrixSUNAdjointModel Nc).adCLM g⁻¹ X) := by
+  rw [← map_inv]
+  exact cmp99SpecialLinearAdjointCoordLM_realSlice (g := g⁻¹) X
+
 end
 
 end YangMills.RG
