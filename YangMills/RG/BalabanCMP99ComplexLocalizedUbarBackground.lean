@@ -3,6 +3,9 @@ import YangMills.RG.BalabanCMP99SourceUbarContours
 import YangMills.RG.Ubar
 
 /-!
+PRE-VALIDATION: the canonical contour-instance repair below has not yet been
+re-materialized or checked by the compiler and axiom oracle.
+
 # One literal analytic CMP99 Ubar background step
 
 The source contours and base coarse background are already group-generic.
@@ -34,9 +37,9 @@ def cmp99SourceComplexLocalizedUbarDeviation
     (b : PhysicalBond d N') (x : FinBox d (M * N')) : SLNc :=
   UbarDeviation background (cmp99SourceBaseCoarseBackground background)
     (positiveEdgeOfPhysicalBond b) x
-    (cmp99SourceUbarGamma1 (G := SLNc) b)
-    (cmp99SourceUbarGamma2 (G := SLNc) b)
-    (cmp99SourceUbarGamma3 (G := SLNc) b)
+    (cmp99SourceUbarGamma1 (G := SUN Nc) b)
+    (cmp99SourceUbarGamma2 (G := SUN Nc) b)
+    (cmp99SourceUbarGamma3 (G := SUN Nc) b)
 
 /-- One positive-bond analytic Ubar value with the exact source mass
 `M^{-d}`.  The scalar budget supplies the Mercator and no-winding gates. -/
