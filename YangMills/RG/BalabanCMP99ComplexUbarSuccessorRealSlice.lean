@@ -188,7 +188,7 @@ theorem cmp99SourceComplexLocalizedUbarDeviation_realSlice
     wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear,
     cmp99SourceBaseCoarseBackground_realSlice]
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
-  rw [cmp99SourceUbarDeviationProduct_realSlice]
+  rw [cmp99SourceUbarDeviationProduct_realSlice (U := U) (b := b) (x := x)]
 
 /-- The analytic deviation bound carried as one proof object.  Packaging the
 dependent premise prevents repeated elaboration of the same large Pi type;
