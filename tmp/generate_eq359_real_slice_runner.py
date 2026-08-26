@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "scripts" / "colab_eq359_real_slice_validation.py"
 BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
-    ("BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice", 4),
+    ("BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice", 5),
     ("BalabanCMP99Eq359OneScaleRealSlice", 4),
     ("BalabanCMP99Eq359TowerRealSliceAgreement", 3),
     ("BalabanCMP99PhysicalBackgroundRealSlice", 5),
@@ -74,7 +74,7 @@ def render(source_sha: str, runner_rev: str) -> str:
 """Cold Colab validation for the finite Eq. (3.59) compact real-slice gate.
 
 The queue compiles five promoted PRE-VALIDATION source/audit pairs in
-dependency order, checks twenty-three public declarations, builds YangMillsCore
+dependency order, checks twenty-four public declarations, builds YangMillsCore
 from the same fresh checkout, and stops at the first real error.  It does not
 move 20/41 or instantiate TermSource.
 """
