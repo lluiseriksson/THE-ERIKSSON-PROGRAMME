@@ -7,12 +7,12 @@ Colab archive for the exact source checkpoint below emits literal
 
 ## Fixed gate
 
-- source checkpoint: `08039bcbc4bc74af072bef0252d7d559cbc80fe5`
-- runner checkpoint: `7af24c1a1392c300b42b63437b89d5098c273e2d`
-- notebook checkpoint: `b2da8f7ad919946497ff5965168a69e98ff89711`
-- runner revision: `eq359-real-slice-promoted-cold-v3`
+- source checkpoint: `cd6ff65638f0e09e2533733df2d7176c10714a3a`
+- runner checkpoint: `e01d64ee5b085d3e0449e7182e5f8baaf44900dd`
+- notebook checkpoint: `ad086e94dc5964bdbff1af8a1be4f4ad61a17529`
+- runner revision: `eq359-real-slice-promoted-cold-v4`
 - runner transport SHA-256:
-  `8FA1989137FD558E4EB083BB3D83D529F3DAEA0DBDF3BF030BABE6491EA8404F`
+  `56197F0629DFD22438E853D0C63DACDA136244AEE5B5EC27641279F231FBB927`
 - toolchain: Lean `4.29.0-rc6`
 - Mathlib: `07642720480157414db592fa85b626dafb71355b`
 - runtime class: Colab Pro+ CPU/high RAM
@@ -41,12 +41,12 @@ report `files=12 notices=11` and must reject every other count.
 
 ## Addendum 946 ([SEAL_DATE], **Eq. (3.59) physical real-slice agreement sealed in fresh Colab Pro+; 20/41 unchanged**)
 
-Exact source checkpoint `08039bcbc4bc74af072bef0252d7d559cbc80fe5`
+Exact source checkpoint `cd6ff65638f0e09e2533733df2d7176c10714a3a`
 was validated in a fresh Colab Pro+ CPU/high-RAM checkout with Lean
 `4.29.0-rc6` and Mathlib
 `07642720480157414db592fa85b626dafb71355b`.  Runner checkpoint
-`7af24c1a1392c300b42b63437b89d5098c273e2d`, revision
-`eq359-real-slice-promoted-cold-v3`, compiled the six source/audit pairs that
+`e01d64ee5b085d3e0449e7182e5f8baaf44900dd`, revision
+`eq359-real-slice-promoted-cold-v4`, compiled the six source/audit pairs that
 identify the compact physical background, one-scale average, generated
 tower and successor background with their complex counterparts on the real
 slice.  `[FOCAL_STAGE_SUMMARY]`  The cold `YangMillsCore` root completed
