@@ -9,6 +9,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "tmp" / "verify_eq359_real_slice_contract.py"
+GENERATOR = ROOT / "tmp" / "generate_eq359_real_slice_runner.py"
 SEALER = ROOT / "tmp" / "seal_eq359_real_slice_prevalidation.py"
 
 
@@ -22,6 +23,8 @@ def load(path: Path, name: str):
 
 def test_contract_has_exact_twenty_four_declarations_and_terminal_root():
     contract = load(CONTRACT, "eq359_real_slice_contract_test")
+    generator = load(GENERATOR, "eq359_real_slice_generator_contract_test")
+    assert generator.MODULES == contract.MODULES
     assert len(contract.MODULES) == 5
     assert sum(count for _, count in contract.MODULES) == 24
     stages = contract.stages()
