@@ -20,10 +20,10 @@ def load(path: Path, name: str):
     return module
 
 
-def test_contract_has_exact_twenty_three_declarations_and_terminal_root():
+def test_contract_has_exact_twenty_four_declarations_and_terminal_root():
     contract = load(CONTRACT, "eq359_real_slice_contract_test")
     assert len(contract.MODULES) == 5
-    assert sum(count for _, count in contract.MODULES) == 23
+    assert sum(count for _, count in contract.MODULES) == 24
     stages = contract.stages()
     assert stages[0] == "eq359_real_slice_materialize_dependencies"
     assert stages[-1] == "eq359_real_slice_root"

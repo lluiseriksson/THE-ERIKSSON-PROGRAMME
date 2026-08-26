@@ -145,7 +145,7 @@ def test_archive_verifier_accepts_exact_scope(tmp_path: Path) -> None:
     assert child.returncode == 0, child.stderr
     result = json.loads(child.stdout)
     assert result["status"] == "EQ359_REAL_SLICE_EVIDENCE_OK"
-    assert result["expected_declarations"] == 23
+    assert result["expected_declarations"] == 24
 
 
 def test_archive_verifier_rejects_forbidden_axiom(tmp_path: Path) -> None:

@@ -50,7 +50,7 @@ def read_evidence(path: Path) -> dict:
     result = json.loads(path.read_text(encoding="utf-8"))
     if result.get("status") != "EQ359_REAL_SLICE_EVIDENCE_OK":
         raise RuntimeError("EQ359_REAL_SLICE_SEAL_STATUS_MISMATCH")
-    if result.get("expected_declarations") != 23:
+    if result.get("expected_declarations") != 24:
         raise RuntimeError("EQ359_REAL_SLICE_SEAL_DECLARATIONS_MISMATCH")
     source_sha = result.get("source_sha")
     if not isinstance(source_sha, str) or re.fullmatch(r"[0-9a-f]{40}", source_sha) is None:
