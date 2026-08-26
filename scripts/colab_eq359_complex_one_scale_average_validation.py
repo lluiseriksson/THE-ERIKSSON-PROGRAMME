@@ -18,7 +18,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = 'de2752a3a2ba053a7015e8616fb8dae81404e112'
+SOURCE_SHA = '5c0dc37146d130f637ee270a55eba6f638b3b64e'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -50,7 +50,7 @@ MODULES = [
     ('BalabanCMP99Eq359ComplexClosedPhysicalTowerPair', 1),
 ]
 
-runner.RUNNER_REV = 'eq359-complex-one-scale-average-promoted-cold-v3'
+runner.RUNNER_REV = 'eq359-complex-one-scale-average-promoted-cold-v4'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq359-complex-one-scale-average")
 runner.EVIDENCE = Path("/content/hrpoly-eq359-complex-one-scale-average-evidence")
@@ -64,13 +64,13 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99ComplexTransportedBlockAverageAudit.lean': 'dac59d9638c535f2d8583d8b7168ebb51e09f22bd613e8753ab092fc0bffca30',
     'YangMills/RG/BalabanCMP99ComplexRegionalTower.lean': 'ecbc6808f3e15c83507d212c80c31ab8807c04c58833fcedc75b91b53401f127',
     'YangMills/RG/BalabanCMP99ComplexRegionalTowerAudit.lean': 'f278a5f081415e2737ec2665ceca2d091202ec2e8ba0497e5f06c2893325353e',
-    'YangMills/RG/BalabanCMP99ComplexPhysicalRegionalTower.lean': 'bf81190bbaa90d83f9f06ea600a95a11572a7dea481b293a9fc1d685a1098701',
+    'YangMills/RG/BalabanCMP99ComplexPhysicalRegionalTower.lean': '1c123e4b2bf8ec2ec3a3a4ae0bbafa373b8c9fa64cbdb04b66368005241b9107',
     'YangMills/RG/BalabanCMP99ComplexPhysicalRegionalTowerAudit.lean': '9bb296c9a32a7b0116cb338b53176765d38313ef28de8ef19bcaff4d4a5d6a5b',
     'YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTower.lean': 'd8cc07217f1d4ec7d034c8cbc75e3c1b350da28027e1e147bc17289f8e9fa71e',
     'YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerAudit.lean': 'f3782dea68990ea0469fd72955a70f23ae9bfd4d5fa6c0fc0d3fdfb48ce275a3',
-    'YangMills/RG/BalabanCMP99Eq359ComplexRegionalTowerPair.lean': '1a17756c7177d1361f9feab5ddc2498c0f9b5e5acbef83b63f6ac1e67b6e7a9d',
+    'YangMills/RG/BalabanCMP99Eq359ComplexRegionalTowerPair.lean': '8be59b9e8676b9cea19e9b9814db50eed63c7a03253ea99acd1fd6e024c19f7e',
     'YangMills/RG/BalabanCMP99Eq359ComplexRegionalTowerPairAudit.lean': '9cc2d6a6d3895c00b0987acbef4a5d4b74a7662c38ef65225718598e03bd0a7a',
-    'YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerPair.lean': 'eb3a2465debf42f15a6562cbee02d3a571c41eb700fdebd6205144967aa6f6ec',
+    'YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerPair.lean': 'e702caf207a88aa776d9a822d7fc3c7943fe6c102114ccf884a896ac2916ac2e',
     'YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerPairAudit.lean': 'd92d1e78d4faa06b6722a2f7ab46435ef0e032ef472ad52e7d3a2500bf4f711d',
 }
 
