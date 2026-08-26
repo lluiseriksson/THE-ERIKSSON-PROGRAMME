@@ -84,6 +84,14 @@ two analytic regional Laplacians and the four-term precision algebra.  They do
 not yet prove the source decomposition above, the (3.54) pointwise bound, or
 its downstream operator-norm transport.
 
+The aggregate proposition
+`CMP99Eq337PhysicalComplexPerturbationDomain` is itself still a scratch
+PRE-VALIDATION structure even though its two constituent bound predicates are
+sealed.  The source-bound gate must therefore promote and audit that structure
+as an explicit prerequisite (or seal it in an earlier exact gate); it may not
+treat the aggregate domain package as already certified merely because the
+amplitude and covariant-derivative predicates exist in the tree.
+
 ## Compiler-facing module split
 
 The next implementation is finite and should preserve the following phase
