@@ -63,7 +63,9 @@ theorem cmp99Eq351_norm_exp_neg_le_four_thirds
     ‖(NormedSpace.exp (-Y) - 1 - (-Y)) + 1 + (-Y)‖
         ≤ ‖NormedSpace.exp (-Y) - 1 - (-Y)‖ + ‖(1 : A)‖ + ‖-Y‖ := by
           exact (norm_add_le _ _).trans
-            (add_le_add_right (norm_add_le _ _) _)
+            (by
+              gcongr
+              exact norm_add_le _ _)
     _ ≤ (4 / 3 : ℝ) * ‖Y‖ ^ 2 + 1 + ‖Y‖ := by
       simpa using add_le_add_right (add_le_add_right htail' 1) ‖Y‖
     _ ≤ (4 / 3 : ℝ) := by
@@ -97,7 +99,10 @@ theorem norm_cmp99Eq351ExponentialAdjointRemainderCLM_apply_le
   have honeY : ‖(1 : A) + Y‖ ≤ (5 / 4 : ℝ) := by
     calc
       ‖(1 : A) + Y‖ ≤ ‖(1 : A)‖ + ‖Y‖ := norm_add_le _ _
-      _ ≤ (5 / 4 : ℝ) := by simpa using add_le_add_left hY 1
+      _ ≤ (5 / 4 : ℝ) := by
+        calc
+          ‖(1 : A)‖ + ‖Y‖ = 1 + ‖Y‖ := by rw [norm_one]
+          _ ≤ (5 / 4 : ℝ) := by linarith
   have hexpNeg : ‖NormedSpace.exp (-Y)‖ ≤ (4 / 3 : ℝ) :=
     cmp99Eq351_norm_exp_neg_le_four_thirds hY
   have hdecomp :
@@ -116,7 +121,9 @@ theorem norm_cmp99Eq351ExponentialAdjointRemainderCLM_apply_le
             ‖(1 + Y) * X * (NormedSpace.exp (-Y) - 1 + Y)‖ +
               ‖Y * X * Y‖ := by
           exact (norm_sub_le _ _).trans
-            (add_le_add_right (norm_add_le _ _) _)
+            (by
+              gcongr
+              exact norm_add_le _ _)
     _ ≤ (((4 / 3 : ℝ) * ‖Y‖ ^ 2) * ‖X‖) * (4 / 3 : ℝ) +
           (((5 / 4 : ℝ) * ‖X‖) * ((4 / 3 : ℝ) * ‖Y‖ ^ 2)) +
             ((‖Y‖ * ‖X‖) * ‖Y‖) := by
