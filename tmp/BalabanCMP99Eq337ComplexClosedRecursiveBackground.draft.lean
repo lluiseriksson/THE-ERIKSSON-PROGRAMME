@@ -114,7 +114,8 @@ private noncomputable def cmp99Eq337ComplexClosedRecursiveAux
         background := tail.background
         bound := by
           intro e
-          simpa [Nat.add_assoc] using tail.bound e }
+          simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using
+            tail.bound e }
 
 /-- Literal closed Eq. (3.37) complex recursion. The perturbed fine
 background and every subsequent source background are constructed internally
@@ -172,7 +173,8 @@ theorem norm_cmp99Eq337SourceComplexClosedRecursiveBackground_sub_one_le
       cmp99ComplexClosedRadiusAt (d * (M - 1)) M
         (cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA)
         depth := by
-  exact (cmp99Eq337ComplexClosedRecursiveAux
+  simpa [cmp99Eq337SourceComplexClosedRecursiveBackground] using
+    (cmp99Eq337ComplexClosedRecursiveAux
     (d := d) (M := M) (N := N) (Nc := Nc) (depth := depth)
     hd hM (cmp99Eq337PhysicalComplexPerturbedLinkRadius
       Nc epsilonU eta rA) R B depth 0 (by omega)
