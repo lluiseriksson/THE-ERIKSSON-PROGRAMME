@@ -17,7 +17,7 @@ PATHS_FILE = (
     / "EQ351-EXPONENTIAL-ADJOINT-REMAINDER-COMPILER-GATE-DRAFT-PATHS.txt"
 )
 CORE = "YangMillsCore.lean"
-EXPECTED_PATHS = 6
+EXPECTED_PATHS = 8
 REQUIRED_PREREQUISITES = (
     "YangMills/RG/BalabanCMP98GAdConjugation.lean",
     "YangMills/RG/BalabanCMP99Eq337PhysicalComplexCovariantDerivative.lean",
@@ -130,7 +130,7 @@ def core_with_audits(data: bytes, selected: list[str]) -> bytes:
         for path in selected
         if Path(path).name.endswith("Audit.draft.lean")
     ]
-    if len(audit_imports) != 3 or len(set(audit_imports)) != 3:
+    if len(audit_imports) != 4 or len(set(audit_imports)) != 4:
         raise RuntimeError("EQ351_CORE_AUDIT_SCOPE")
     text = data.decode("utf-8")
     present = [line for line in audit_imports if line in text]

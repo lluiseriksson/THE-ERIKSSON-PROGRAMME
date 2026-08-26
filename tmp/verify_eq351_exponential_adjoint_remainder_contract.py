@@ -12,6 +12,7 @@ ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99Eq337PhysicalComplexPerturbationDomain", 1),
+    ("BalabanCMP99Eq351PhysicalComplexOrientedPerturbation", 4),
     ("BalabanCMP99Eq351ExponentialAdjointRemainder", 4),
     ("BalabanCMP99Eq351ExponentialAdjointRemainderBound", 3),
 )

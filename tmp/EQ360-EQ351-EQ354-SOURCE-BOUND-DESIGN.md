@@ -135,19 +135,22 @@ algebra but is not a producer of the source bound.
 ## Compiler inventory fixed before promotion
 
 The first gate is deliberately smaller than Eq. (3.60).  It promotes and
-audits exactly the following six files before any source-bound consumer is
+audits exactly the following eight files before any source-bound consumer is
 allowed to compile:
 
 1. the literal aggregate
    `CMP99Eq337PhysicalComplexPerturbationDomain` and its audit;
-2. `BalabanCMP99Eq351ExponentialAdjointRemainder` and its audit;
-3. `BalabanCMP99Eq351ExponentialAdjointRemainderBound` and its audit.
+2. the canonical oriented complex perturbation `A'` and its audit;
+3. `BalabanCMP99Eq351ExponentialAdjointRemainder` and its audit;
+4. `BalabanCMP99Eq351ExponentialAdjointRemainderBound` and its audit.
 
 The domain aggregate carries the already named amplitude and covariant-
 derivative predicates as fields; it does not introduce replacement bounds.
-The remainder gate constructs the nonlinear third species internally and
-keeps the constant eight visible.  Its promotion scope, hash gate and pinned
-Colab contract live in
+The oriented perturbation is constructed from the physical one-cochain and
+the sealed background transport on each bond orientation; it is not a
+caller-supplied `A'`.  The remainder gate constructs the nonlinear third
+species internally and keeps the constant eight visible.  Its promotion
+scope, hash gate and pinned Colab contract live in
 `tmp/EQ351-EXPONENTIAL-ADJOINT-REMAINDER-COMPILER-GATE-DRAFT-PATHS.txt`,
 `tmp/promote_eq351_exponential_adjoint_remainder_compiler_gate.py` and
 `tmp/verify_eq351_exponential_adjoint_remainder_contract.py`.

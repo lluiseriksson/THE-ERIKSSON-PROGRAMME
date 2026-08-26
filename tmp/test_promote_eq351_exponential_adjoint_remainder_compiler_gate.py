@@ -16,8 +16,8 @@ SPEC.loader.exec_module(PROMOTER)
 class Eq351PromotionTest(unittest.TestCase):
     def test_scope_is_exact(self) -> None:
         selected = PROMOTER.paths()
-        self.assertEqual(len(selected), 6)
-        self.assertEqual(len(set(selected)), 6)
+        self.assertEqual(len(selected), 8)
+        self.assertEqual(len(set(selected)), 8)
         self.assertTrue(all(path.startswith("tmp/") for path in selected))
 
     def test_destination_strips_draft_suffix(self) -> None:
@@ -45,9 +45,9 @@ class Eq351PromotionTest(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "FORBIDDEN_PLACEHOLDER"):
             PROMOTER.retarget_imports(data)
 
-    def test_core_imports_only_two_audits(self) -> None:
+    def test_core_imports_only_four_audits(self) -> None:
         actual = PROMOTER.core_with_audits(b"import YangMills.RG.Base\n", PROMOTER.paths())
-        self.assertEqual(actual.count(b"Audit\n"), 3)
+        self.assertEqual(actual.count(b"Audit\n"), 4)
 
 
 if __name__ == "__main__":

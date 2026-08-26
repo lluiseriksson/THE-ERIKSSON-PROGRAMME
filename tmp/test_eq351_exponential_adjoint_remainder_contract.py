@@ -14,12 +14,12 @@ SPEC.loader.exec_module(CONTRACT)
 
 
 class Eq351ContractTest(unittest.TestCase):
-    def test_declaration_total_is_eight(self) -> None:
-        self.assertEqual(sum(count for _, count in CONTRACT.MODULES), 8)
+    def test_declaration_total_is_twelve(self) -> None:
+        self.assertEqual(sum(count for _, count in CONTRACT.MODULES), 12)
 
     def test_stage_order_is_finite_and_exact(self) -> None:
         stages = CONTRACT.stages()
-        self.assertEqual(len(stages), 9)
+        self.assertEqual(len(stages), 11)
         self.assertEqual(stages[0], "eq351_materialize_dependencies")
         self.assertEqual(stages[-1], "eq351_root")
         self.assertEqual(len(set(stages)), len(stages))

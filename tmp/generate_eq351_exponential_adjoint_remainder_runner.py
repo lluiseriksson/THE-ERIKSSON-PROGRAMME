@@ -15,6 +15,7 @@ OUTPUT = ROOT / "scripts" / "colab_eq351_exponential_adjoint_remainder_validatio
 BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
     ("BalabanCMP99Eq337PhysicalComplexPerturbationDomain", 1),
+    ("BalabanCMP99Eq351PhysicalComplexOrientedPerturbation", 4),
     ("BalabanCMP99Eq351ExponentialAdjointRemainder", 4),
     ("BalabanCMP99Eq351ExponentialAdjointRemainderBound", 3),
 )
