@@ -28,11 +28,11 @@ def test_rendered_runner_is_exact_and_fail_closed(monkeypatch) -> None:
     assert "eq360_complex_physical_root" in rendered
 
 
-def test_rendered_runner_keeps_four_pair_scope(monkeypatch) -> None:
+def test_rendered_runner_keeps_five_pair_scope(monkeypatch) -> None:
     generator = load_generator()
     monkeypatch.setattr(generator, "digest", lambda _sha, _path: "b" * 64)
     rendered = generator.render("2" * 40, "eq360-test-v2")
-    assert len(generator.MODULES) == 4
-    assert sum(expected for _, expected in generator.MODULES) == 28
+    assert len(generator.MODULES) == 5
+    assert sum(expected for _, expected in generator.MODULES) == 31
     for module, expected in generator.MODULES:
         assert repr((module, expected)) in rendered

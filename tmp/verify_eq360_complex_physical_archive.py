@@ -135,7 +135,7 @@ def main() -> int:
             audit_stages.append(
                 f"eq360_complex_physical_{index:02d}_{module.lower()}_audit"
             )
-        if len(expected) != 28 or len(set(expected)) != 28:
+        if len(expected) != 31 or len(set(expected)) != 31:
             raise RuntimeError("EQ360_COMPLEX_PHYSICAL_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)

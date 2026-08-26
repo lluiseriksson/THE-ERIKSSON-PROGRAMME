@@ -15,6 +15,7 @@ OUTPUT = ROOT / "scripts" / "colab_eq360_complex_physical_validation.py"
 BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
     ("BalabanCMP99Eq360ComplexRegionalLaplacian", 8),
+    ("BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice", 3),
     ("BalabanCMP99Eq360ComplexLocalLaplacianPerturbation", 3),
     ("BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation", 3),
     ("BalabanCMP99Eq360ComplexClosedPhysicalPrecision", 14),
@@ -63,7 +64,7 @@ def render(source_sha: str, runner_rev: str) -> str:
     return f'''#!/usr/bin/env python3
 """Cold validation of the source-specific complex Eq. (3.60) boundary.
 
-The queue checks four promoted PRE-VALIDATION source/audit pairs (twenty-eight
+The queue checks five promoted PRE-VALIDATION source/audit pairs (thirty-one
 public declarations) and YangMillsCore from one exact fresh checkout.  It does
 not assert the real-slice bridge, the local bound, the resolvent, any of the
 four actions, window 15, 20/41, or a TermSource inhabitant.

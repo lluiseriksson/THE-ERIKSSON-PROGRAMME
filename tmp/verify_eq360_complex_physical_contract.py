@@ -12,6 +12,7 @@ ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99Eq360ComplexRegionalLaplacian", 8),
+    ("BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice", 3),
     ("BalabanCMP99Eq360ComplexLocalLaplacianPerturbation", 3),
     ("BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation", 3),
     ("BalabanCMP99Eq360ComplexClosedPhysicalPrecision", 14),

@@ -108,7 +108,7 @@ def run_verifier(repo: Path, archive: Path, source_sha: str):
     )
 
 
-def test_archive_accepts_exact_28_declarations(tmp_path: Path) -> None:
+def test_archive_accepts_exact_31_declarations(tmp_path: Path) -> None:
     repo = tmp_path / "repo"
     repo.mkdir()
     source_sha, files = make_repo(repo)
@@ -118,7 +118,7 @@ def test_archive_accepts_exact_28_declarations(tmp_path: Path) -> None:
     assert child.returncode == 0, child.stderr
     result = json.loads(child.stdout)
     assert result["status"] == "EQ360_COMPLEX_PHYSICAL_EVIDENCE_OK"
-    assert result["expected_declarations"] == 28
+    assert result["expected_declarations"] == 31
 
 
 def test_archive_rejects_sorry_axiom(tmp_path: Path) -> None:

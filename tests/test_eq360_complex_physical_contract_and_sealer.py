@@ -22,11 +22,11 @@ def load(path: Path, name: str):
 
 def test_contract_has_exact_scope_and_terminal_root():
     contract = load(CONTRACT, "eq360_contract_test")
-    assert len(contract.MODULES) == 4
-    assert sum(count for _, count in contract.MODULES) == 28
+    assert len(contract.MODULES) == 5
+    assert sum(count for _, count in contract.MODULES) == 31
     assert contract.stages()[0] == "eq360_complex_physical_materialize_dependencies"
     assert contract.stages()[-1] == "eq360_complex_physical_root"
-    assert len(contract.stages()) == 11
+    assert len(contract.stages()) == 13
 
 
 def test_sealer_scope_matches_contract():
@@ -48,7 +48,7 @@ def test_sealer_rejects_wrong_status_and_count(tmp_path):
     bad_count = tmp_path / "bad-count.json"
     bad_count.write_text(json.dumps({
         "status": "EQ360_COMPLEX_PHYSICAL_EVIDENCE_OK",
-        "expected_declarations": 27,
+        "expected_declarations": 30,
     }), encoding="utf-8")
     with pytest.raises(RuntimeError, match="DECLARATIONS_MISMATCH"):
         sealer.read_evidence(bad_count)

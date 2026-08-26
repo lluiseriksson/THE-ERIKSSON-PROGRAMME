@@ -13,7 +13,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 PATHS_FILE = ROOT / "tmp" / "EQ360-COMPLEX-PHYSICAL-COMPILER-GATE-DRAFT-PATHS.txt"
 CORE = "YangMillsCore.lean"
-EXPECTED_PATHS = 8
+EXPECTED_PATHS = 10
 REQUIRED_PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerPair.lean",
     "YangMills/RG/BalabanCMP99Eq359TowerRealSliceAgreement.lean",
@@ -126,7 +126,7 @@ def core_with_audits(data: bytes, selected: list[str]) -> bytes:
         for path in selected
         if Path(path).name.endswith("Audit.draft.lean")
     ]
-    if len(audit_imports) != 4 or len(set(audit_imports)) != 4:
+    if len(audit_imports) != 5 or len(set(audit_imports)) != 5:
         raise RuntimeError("EQ360_CORE_AUDIT_SCOPE")
     text = data.decode("utf-8")
     present = [line for line in audit_imports if line in text]

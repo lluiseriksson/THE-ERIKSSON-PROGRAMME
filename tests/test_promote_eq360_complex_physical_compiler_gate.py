@@ -18,13 +18,13 @@ def load():
     return module
 
 
-def test_promotion_scope_is_four_source_audit_pairs():
+def test_promotion_scope_is_five_source_audit_pairs():
     promoter = load()
     selected = promoter.paths()
-    assert len(selected) == 8
-    assert len(set(selected)) == 8
+    assert len(selected) == 10
+    assert len(set(selected)) == 10
     destinations = [promoter.destination(path) for path in selected]
-    assert len(set(destinations)) == 8
+    assert len(set(destinations)) == 10
     assert all(path.startswith("YangMills/RG/") for path in destinations)
 
 
@@ -42,15 +42,15 @@ def test_import_retarget_is_exact_and_fail_closed():
         promoter.retarget_imports(b"import tmp.Upstream.draft\n")
 
 
-def test_core_adds_exactly_four_audits():
+def test_core_adds_exactly_five_audits():
     promoter = load()
     result = promoter.core_with_audits(b"import Mathlib\n", promoter.paths()).decode()
     imports = [
         line for line in result.splitlines()
         if line.startswith("import YangMills.RG.")
     ]
-    assert len(imports) == 4
-    assert len(set(imports)) == 4
+    assert len(imports) == 5
+    assert len(set(imports)) == 5
     assert all(line.endswith("Audit") for line in imports)
 
 
