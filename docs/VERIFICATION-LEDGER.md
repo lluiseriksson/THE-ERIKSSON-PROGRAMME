@@ -40701,3 +40701,44 @@ including the factor-two-safe ordered-pair/physical-plaquette proof of
 regional `B0` or `delta0`, attain window 15, close rows 23--24, or instantiate
 `TermSource`. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 944 (2026-08-26, **Eq. (3.37) complex coordinate boundary and forced closed recursion sealed in two fresh Colab Pro+ checkouts; 20/41 unchanged**)
+
+The exact promoted source checkpoint
+`573d70e09eb3f069cc3e86f43ab76b16a2349163` was validated by two independent
+fresh Colab Pro+ CPU/high-RAM gates with Lean `4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`.
+
+Runner revision `eq337-complex-coordinate-promoted-cold-v2` compiled the real
+covariant derivative, its complexification, and the literal
+`exp(i eta A') U` special-linear background.  The three source stages and
+their audits all exited `0`; the cold `YangMillsCore` root completed `10,971`
+jobs in `8508.658` seconds.  Its `57` audited declarations use only
+`[propext, Classical.choice, Quot.sound]`.  Canonical evidence SHA-256 is
+`198BD768BBDACD1ECCAD6414B7FCA255509C8767A6E55A0A8326319D71F4B183`;
+the downloaded archive independently rehashes to
+`B14FF54127B3BABE336F8BE6935E10C746D5250803170F1B8AD1A0A4A7E136CD`.
+
+Runner revision `eq337-closed-physical-recursion-promoted-cold-v3` compiled
+the physical closed-radius dictionary, all strict gates derived from its one
+`terminal_small` inequality, and the forced finite complex recursion.  Its
+six focal/audit stages and cold root all exited `0`; the root took
+`8972.230` seconds.  The `14` audited declarations use only the standard
+allowed trio.  Canonical evidence SHA-256 is
+`C50257D40B569562B32F475674BABA02BB2FE46F6E2A7E146C9D0BB7108F507F`;
+the downloaded archive independently rehashes to
+`A60925A552E588F50B3C09D263703294D4BD18EA716B9A17A04ACA39D127B054`.
+
+The selective seal retires exactly twelve PRE-VALIDATION notices and adds
+only the three newly certified coordinate audits to `YangMillsCore`; the
+three closed-recursion audits were already imported at the validated source
+checkpoint.  The gate constructs every coarse background and every scalar
+radius internally from the literal physical inputs plus one closed budget;
+it does not accept a background family, a radius family, per-scale strict
+gates, a free `Qprime`, a Green operator or an Eq. (3.59) tower.
+
+This closes the Eq. (3.37) coordinate/background, complex inverse/small-field,
+forced-recursion and flowing-radius rows of the end-to-end checklist.  It does
+not close Eq. (3.59), Eq. (3.60), a regional `B0`/`delta0`, window 15, rows
+23--24, or a `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

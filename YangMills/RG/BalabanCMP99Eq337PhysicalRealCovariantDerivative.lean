@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalForwardDerivative
 import YangMills.RG.PhysicalGaugeCochains
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.37): real-slice covariant derivative of the perturbation
 
 Printed p. 396 bounds `nabla_U^eta A'` in (3.37), and printed p. 397 defines

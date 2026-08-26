@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative
 
-/-!
-PRE-VALIDATION: this scratch audit has not been executed.  Its source module
-has no materialized `.olean` and no compiler or axiom-oracle verdict.
--/
-
 #print axioms YangMills.RG.CMP99Eq337PhysicalComplexOneCochain
 #print axioms YangMills.RG.CMP99Eq337PhysicalComplexCovariantDerivativeIndex
 #print axioms YangMills.RG.CMP99Eq337PhysicalComplexCovariantDerivativeSup

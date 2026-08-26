@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalRealCovariantDerivative
 import YangMills.RG.BalabanCMP99PhysicalFibreComplexification
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.37): complexified covariant derivative of the perturbation
 
 The baseline background `U` remains `SUN`-valued in (3.37), while `A'` takes

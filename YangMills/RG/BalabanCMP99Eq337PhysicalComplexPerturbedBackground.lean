@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative
 import YangMills.RG.MatrixDetExponential
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.37): literal complex perturbation of the physical background
 
 CMP99 writes the perturbation as `exp(i eta A') U`, using Hermitian printed

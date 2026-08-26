@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridge
 
 /-!
-PRE-VALIDATION: scratch scalar-gate producer. This file has no materialized
-`.olean` and no compiler or axiom-oracle verdict.
-
 It derives every flowing no-winding, logarithmic and positive-link gate from
 one `CMP99ComplexClosedRadiusBudget`. No per-scale gate is caller data.
 -/

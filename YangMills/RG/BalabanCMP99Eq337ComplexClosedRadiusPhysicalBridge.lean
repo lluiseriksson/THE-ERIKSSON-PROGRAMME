@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius
 import YangMills.RG.BalabanCMP99ComplexUbarSmallFieldPropagation
 
 /-!
-PRE-VALIDATION: scratch physical adapter. This file has no materialized
-`.olean` and no compiler or axiom-oracle verdict.
-
 It identifies the proof-free closed scalar recursion with the literal
 Eq. (3.37) four-Wilson-line radius and with the canonical no-winding record.
 No per-scale gate, radius family or free deviation estimate is introduced.

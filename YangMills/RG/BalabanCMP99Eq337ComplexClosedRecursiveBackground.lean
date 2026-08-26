@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq337ComplexClosedRadiusPhysicalGates
 import YangMills.RG.BalabanCMP99SourceRegionalLiftTower
 
 /-!
-PRE-VALIDATION: scratch closed physical recursion. This file has no
-materialized `.olean` and no compiler or axiom-oracle verdict.
-
 The public constructor starts from the literal Eq. (3.37) `U`, `A` and
 `eta`. A private recursion constructs every coarse background internally and
 returns the terminal background with its generated all-orientation radius.

@@ -1,7 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
 
-/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
-
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_complexification
 #print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_trace
