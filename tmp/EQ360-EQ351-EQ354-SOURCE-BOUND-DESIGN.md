@@ -117,6 +117,21 @@ The next implementation is finite and should preserve the following phase
 boundaries.  Provisional filenames are descriptive; changing a filename does
 not change the gates.
 
+Before module 3 below is promotable, the analytic stencil itself has one
+explicit prerequisite gate.  The scratch files
+`BalabanCMP99Eq360ComplexRegionalLaplacian.draft` and
+`BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.draft` are not theorem
+inputs: they must first become ordinary `YangMills/RG` source/audit pairs and
+pass a fresh compiler/axiom gate.  The real-slice proof must consume the
+sealed Eq. (3.59) real-slice dictionary; it may not assume equality with the
+physical Dirichlet Laplacian.  Separately, the multiplicativity and positive-
+bond factorization gate at source checkpoint
+`0c88ed3c45626592367e2091a5f54c69cb624e3a` remains PRE-VALIDATION until its
+own cold evidence exists.  Thus the dependency order is literal regional
+stencil -> real-slice dictionary -> adjoint composition/positive-bond
+factorization -> source regrouping.  A green prefix does not certify a later
+arrow.
+
 1. `BalabanCMP99Eq351ExponentialAdjointRemainder`: define the nonlinear
    remainder internally as `exp(Y) X exp(-Y) - X - [Y,X]` and prove the exact
    algebraic decomposition.  This leaf has no physical input and does not
