@@ -48,7 +48,9 @@ def cmp99SpecialLinearAdjointSlLM
       change (((g⁻¹ * g : Matrix.SpecialLinearGroup (Fin Nc) ℂ)) :
         Matrix (Fin Nc) (Fin Nc) ℂ) = 1
       simp
-    rw [hg, Matrix.one_mul, X.2]
+    have hX := X.2
+    change Matrix.trace X.1 = 0 at hX
+    rw [hg, Matrix.one_mul, hX]
   map_add' X Y := by
     apply Subtype.ext
     simp [Matrix.mul_add, Matrix.add_mul]
