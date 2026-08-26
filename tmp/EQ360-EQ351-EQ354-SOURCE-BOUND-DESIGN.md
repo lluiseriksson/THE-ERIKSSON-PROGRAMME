@@ -131,3 +131,40 @@ Eq. (3.37) construction above; no equality between a caller-supplied `U1` and
 that background is accepted.  Until modules 1--5 compile and pass their axiom
 audits, `cmp99Eq360ComplexLocalLaplacianPerturbation` remains valid auxiliary
 algebra but is not a producer of the source bound.
+
+## Compiler inventory fixed before promotion
+
+The first gate is deliberately smaller than Eq. (3.60).  It promotes and
+audits exactly the following six files before any source-bound consumer is
+allowed to compile:
+
+1. the literal aggregate
+   `CMP99Eq337PhysicalComplexPerturbationDomain` and its audit;
+2. `BalabanCMP99Eq351ExponentialAdjointRemainder` and its audit;
+3. `BalabanCMP99Eq351ExponentialAdjointRemainderBound` and its audit.
+
+The domain aggregate carries the already named amplitude and covariant-
+derivative predicates as fields; it does not introduce replacement bounds.
+The remainder gate constructs the nonlinear third species internally and
+keeps the constant eight visible.  Its promotion scope, hash gate and pinned
+Colab contract live in
+`tmp/EQ351-EXPONENTIAL-ADJOINT-REMAINDER-COMPILER-GATE-DRAFT-PATHS.txt`,
+`tmp/promote_eq351_exponential_adjoint_remainder_compiler_gate.py` and
+`tmp/verify_eq351_exponential_adjoint_remainder_contract.py`.
+
+The current regional-stencil inventory fixes the next proof boundary:
+
+- `cmp99Eq360ComplexRegionalLaplacian` already supplies the literal analytic
+  Dirichlet stencil on one carrier and one spacing;
+- `cmp99Eq337PhysicalComplexPerturbedBackground_apply_pos` fixes the positive
+  bond as `exp(i eta A_b) U_b`, while the already named negative-bond matrix
+  theorem supplies the same oriented background rather than a second choice;
+- the missing regrouping theorem must expose the source-oriented `A'` and the
+  diagonal `D_U^* A` contribution explicitly.  Neither may be represented by
+  a caller-supplied one-cochain or a free diagonal operator.
+
+Therefore a green compile of the existing four-term Eq. (3.60) algebra cannot
+be cited as evidence for (3.51)--(3.54).  The latter becomes evidence only
+after the canonical orientation dictionary, diagonal term, internal
+remainder, and the printed `4*d`, `2*d`, `8*d` endpoint have all passed their
+own source/audit stages.
