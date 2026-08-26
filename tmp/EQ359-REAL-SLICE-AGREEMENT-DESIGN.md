@@ -43,11 +43,19 @@ the agreement of the forward maps or from a generic `.adjoint` identity.
    `cmp99ComplexAdjointBlockStarSynthesisCLM` and the physical weighted
    synthesis.  The unit synthesis mass and the physical `M^d` adjoint
    convention must be kept visible in this comparison.
-6. **Tower induction.** Induct over the same
+6. **Canonical Ubar successor.** Prove that the all-bond analytic successor
+   of an embedded physical background is the embedding of
+   `CMP99PhysicalRegionalScaleData.nextBackground`.  The comparison is with
+   the canonical global physical successor, not with
+   `cmp99SourceLocalizedNextBackground`, which intentionally inserts one
+   outside its selected carrier.  Complex and physical deviation budgets may
+   differ: they are proof arguments and must not be equated merely to make
+   the theorem definitional.
+7. **Tower induction.** Induct over the same
    `CMP99SourceActiveRegionChain`.  The baseline and perturbed analytic towers
    must be compared to the corresponding physical towers on identical typed
    carriers; no equality of terminal spaces or towers is caller data.
-7. **Eq. (3.59) real slice.** Conclude that analytic `F2` restricts to the
+8. **Eq. (3.59) real slice.** Conclude that analytic `F2` restricts to the
    literal physical `Q1-Q0`, and analytic `F2star` restricts to the physical
    starred coefficient.  Only after this theorem may the complex Eq. (3.60)
    algebra be connected to the real precision producer.
@@ -60,6 +68,10 @@ the agreement of the forward maps or from a generic `.adjoint` identity.
   is insufficient.
 - All sums use the already fixed `M^{-d}` forward mass and unit synthesis
   mass; no unnamed common constant is introduced.
+- The successor theorem targets the canonical global physical Ubar map and
+  obtains its deviation budget and contours from
+  `cmp99SourceRegionalScaleDataOfFineSmall`; it does not silently identify
+  that map with the selected/localized identity extension.
 - The induction consumes one shared region chain and the internally generated
   baseline/perturbed backgrounds.
 - No finished Eq. (3.60) identity, inverse, `B0`, `delta0`, four-action bound
