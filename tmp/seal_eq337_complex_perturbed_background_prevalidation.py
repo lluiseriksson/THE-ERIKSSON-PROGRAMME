@@ -65,24 +65,50 @@ def boundary_paths(verifier) -> list[str]:
     return paths
 
 
-def require_clean_exact(paths: list[str], source_sha: str) -> None:
-    resolved = run_git("rev-parse", f"{source_sha}^{{commit}}")
-    if resolved.returncode != 0 or resolved.stdout.decode().strip() != source_sha:
-        raise RuntimeError("EQ337_BASE_SOURCE_COMMIT_MISMATCH")
-    for relative in [*paths, CORE]:
+def require_clean_exact(
+    paths: list[str], evidence_source_sha: str, current_source_sha: str
+) -> None:
+    for label, source_sha in (
+        ("EVIDENCE", evidence_source_sha),
+        ("CURRENT", current_source_sha),
+    ):
+        resolved = run_git("rev-parse", f"{source_sha}^{{commit}}")
+        if resolved.returncode != 0 or resolved.stdout.decode().strip() != source_sha:
+            raise RuntimeError(f"EQ337_BASE_{label}_SOURCE_COMMIT_MISMATCH")
+    ancestor = run_git(
+        "merge-base", "--is-ancestor", evidence_source_sha, current_source_sha
+    )
+    if ancestor.returncode != 0:
+        raise RuntimeError("EQ337_BASE_SOURCE_LINEAGE_MISMATCH")
+    for relative in paths:
         status = run_git("status", "--porcelain=v1", "--", relative)
         if status.returncode != 0 or status.stdout:
             raise RuntimeError(
                 f"EQ337_BASE_WORKTREE_DIRTY={relative}:"
                 + status.stdout.decode(errors="replace").strip()
             )
-        child = run_git("diff", "--quiet", source_sha, "--", relative)
+        child = run_git("diff", "--quiet", current_source_sha, "--", relative)
         if child.returncode != 0:
             raise RuntimeError(f"EQ337_BASE_BOUNDARY_DIVERGED={relative}")
-        canonical = git_blob(source_sha, relative)
+        canonical = git_blob(current_source_sha, relative)
+        if canonical != git_blob(evidence_source_sha, relative):
+            raise RuntimeError(f"EQ337_BASE_EVIDENCE_BLOB_DRIFT={relative}")
         worktree = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
         if worktree != canonical:
             raise RuntimeError(f"EQ337_BASE_WORKTREE_BYTES_DIVERGED={relative}")
+    status = run_git("status", "--porcelain=v1", "--", CORE)
+    if status.returncode != 0 or status.stdout:
+        raise RuntimeError(
+            f"EQ337_BASE_WORKTREE_DIRTY={CORE}:"
+            + status.stdout.decode(errors="replace").strip()
+        )
+    child = run_git("diff", "--quiet", current_source_sha, "--", CORE)
+    if child.returncode != 0:
+        raise RuntimeError(f"EQ337_BASE_BOUNDARY_DIVERGED={CORE}")
+    canonical = git_blob(current_source_sha, CORE)
+    worktree = (ROOT / CORE).read_bytes().replace(b"\r\n", b"\n")
+    if worktree != canonical:
+        raise RuntimeError(f"EQ337_BASE_WORKTREE_BYTES_DIVERGED={CORE}")
 
 
 def require_evidence(path: Path, verifier, paths: list[str]) -> None:
@@ -161,28 +187,31 @@ def digest(rows: list[tuple[str, bytes]]) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--evidence-json", type=Path, required=True)
+    parser.add_argument("--current-source-sha")
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
     verifier = load_verifier()
     paths = boundary_paths(verifier)
-    require_clean_exact(paths, verifier.SOURCE_SHA)
+    current_source_sha = args.current_source_sha or verifier.SOURCE_SHA
+    require_clean_exact(paths, verifier.SOURCE_SHA, current_source_sha)
     require_evidence(args.evidence_json.resolve(), verifier, paths)
     rows = [
         (
             relative,
             remove_prevalidation_block(
-                git_blob(verifier.SOURCE_SHA, relative), relative
+                git_blob(current_source_sha, relative), relative
             ),
         )
         for relative in paths
     ]
-    rows.append((CORE, sealed_core(git_blob(verifier.SOURCE_SHA, CORE), verifier)))
+    rows.append((CORE, sealed_core(git_blob(current_source_sha, CORE), verifier)))
     manifest_sha = digest(rows)
     if not args.apply:
         print(
             "EQ337_BASE_PREVALIDATION_SEAL_PREVIEW_OK "
-            f"files={len(paths)} source_sha={verifier.SOURCE_SHA} "
+            f"files={len(paths)} evidence_source_sha={verifier.SOURCE_SHA} "
+            f"current_source_sha={current_source_sha} "
             f"sealed_manifest_sha256={manifest_sha}"
         )
         return 0
@@ -212,7 +241,8 @@ def main() -> int:
 
     print(
         "EQ337_BASE_PREVALIDATION_SEAL_APPLY_OK "
-        f"files={len(paths)} source_sha={verifier.SOURCE_SHA} "
+        f"files={len(paths)} evidence_source_sha={verifier.SOURCE_SHA} "
+        f"current_source_sha={current_source_sha} "
         f"sealed_manifest_sha256={manifest_sha}"
     )
     return 0

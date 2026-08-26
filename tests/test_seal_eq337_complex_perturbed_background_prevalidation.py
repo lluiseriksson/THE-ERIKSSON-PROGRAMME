@@ -68,3 +68,10 @@ def test_remove_notice_rejects_missing_or_ambiguous_scope() -> None:
             b"/-! PRE-VALIDATION: one. -/\n/-! PRE-VALIDATION: two. -/\n",
             "ambiguous.lean",
         )
+
+
+def test_current_checkpoint_is_an_explicit_cli_input() -> None:
+    text = SEALER.read_text(encoding="utf-8")
+    assert 'parser.add_argument("--current-source-sha")' in text
+    assert "EQ337_BASE_EVIDENCE_BLOB_DRIFT" in text
+    assert "git_blob(current_source_sha, CORE)" in text
