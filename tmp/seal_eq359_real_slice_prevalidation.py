@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Remove PRE-VALIDATION only after exact Eq. (3.59) real-slice evidence."""
+"""Remove PRE-VALIDATION only after exact Eq. (3.59) archive evidence.
+
+The raw archive is reverified inside this process against the immutable
+source and runner pins.  A caller-supplied verifier JSON is deliberately not
+accepted as authority for the write gate.
+"""
 
 from __future__ import annotations
 
@@ -8,13 +13,17 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
-import re
 import subprocess
+import sys
+import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_SEALER = ROOT / "tmp" / "seal_eq337_complex_perturbed_background_prevalidation.py"
 CONTRACT_PATH = ROOT / "tmp" / "verify_eq359_real_slice_contract.py"
+ARCHIVE_VERIFIER = ROOT / "tmp" / "verify_eq359_real_slice_archive.py"
+SOURCE_SHA = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
+RUNNER_REV = "eq359-real-slice-promoted-cold-v4"
 
 
 def load(path: Path, name: str):
@@ -46,15 +55,46 @@ def git_blob(source_sha: str, relative: str) -> bytes:
     return child.stdout
 
 
-def read_evidence(path: Path) -> dict:
-    result = json.loads(path.read_text(encoding="utf-8"))
+def verify_archive(path: Path) -> dict:
+    if not path.is_file():
+        raise RuntimeError("EQ359_REAL_SLICE_SEAL_ARCHIVE_MISSING")
+    with tempfile.TemporaryDirectory(prefix="eq359-real-slice-seal-") as temp:
+        verification_json = Path(temp) / "verification.json"
+        child = subprocess.run(
+            [
+                sys.executable,
+                str(ARCHIVE_VERIFIER),
+                "--repo",
+                str(ROOT),
+                "--archive",
+                str(path),
+                "--source-sha",
+                SOURCE_SHA,
+                "--runner-rev",
+                RUNNER_REV,
+                "--json-out",
+                str(verification_json),
+            ],
+            cwd=ROOT,
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        if child.returncode != 0:
+            raise RuntimeError(
+                "EQ359_REAL_SLICE_SEAL_ARCHIVE_VERIFIER_FAILED=" + child.stdout
+            )
+        result = json.loads(verification_json.read_text(encoding="utf-8"))
     if result.get("status") != "EQ359_REAL_SLICE_EVIDENCE_OK":
         raise RuntimeError("EQ359_REAL_SLICE_SEAL_STATUS_MISMATCH")
     if result.get("expected_declarations") != 30:
         raise RuntimeError("EQ359_REAL_SLICE_SEAL_DECLARATIONS_MISMATCH")
     source_sha = result.get("source_sha")
-    if not isinstance(source_sha, str) or re.fullmatch(r"[0-9a-f]{40}", source_sha) is None:
-        raise RuntimeError("EQ359_REAL_SLICE_SEAL_SOURCE_INVALID")
+    if source_sha != SOURCE_SHA:
+        raise RuntimeError("EQ359_REAL_SLICE_SEAL_SOURCE_MISMATCH")
+    if result.get("runner_revision") != RUNNER_REV:
+        raise RuntimeError("EQ359_REAL_SLICE_SEAL_RUNNER_MISMATCH")
     if not isinstance(result.get("boundary_blob_sha256"), dict):
         raise RuntimeError("EQ359_REAL_SLICE_SEAL_HASHES_MISSING")
     return result
@@ -100,11 +140,11 @@ def digest(rows: list[tuple[str, bytes]]) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--evidence-json", type=Path, required=True)
+    parser.add_argument("--archive", type=Path, required=True)
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
-    result = read_evidence(args.evidence_json.resolve())
+    result = verify_archive(args.archive.resolve())
     remover = load(BASE_SEALER, "eq359_real_slice_notice_remover")
     contract = load(CONTRACT_PATH, "eq359_real_slice_seal_contract")
     original_rows = [
@@ -118,10 +158,26 @@ def main() -> int:
         raise RuntimeError(
             f"EQ359_REAL_SLICE_SEAL_NOTICE_COUNT_MISMATCH={notice_count}:11"
         )
-    rows = [
-        (relative, remover.remove_prevalidation_block(data, relative))
-        for relative, data in original_rows
-    ]
+    rows: list[tuple[str, bytes]] = []
+    unmarked: list[str] = []
+    for relative, data in original_rows:
+        count = data.count(b"PRE-VALIDATION:")
+        if count == 0:
+            unmarked.append(relative)
+            sealed = data
+        elif count == 1:
+            sealed = remover.remove_prevalidation_block(data, relative)
+        else:
+            raise RuntimeError(
+                f"EQ359_REAL_SLICE_SEAL_PER_FILE_NOTICE_COUNT={relative}:{count}"
+            )
+        rows.append((relative, sealed))
+    if unmarked != [
+        "YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackgroundAudit.lean"
+    ]:
+        raise RuntimeError(
+            "EQ359_REAL_SLICE_SEAL_UNMARKED_SCOPE=" + ",".join(unmarked)
+        )
     manifest_sha = digest(rows)
     if not args.apply:
         print(

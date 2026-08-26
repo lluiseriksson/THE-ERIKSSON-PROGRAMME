@@ -16,6 +16,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 VERIFY = ROOT / "tmp" / "verify_c6d_eq359_cross_archive.py"
 SEAL = ROOT / "tmp" / "seal_c6d_transitive_prevalidation.py"
+EQ359_SEAL = ROOT / "tmp" / "seal_eq359_real_slice_prevalidation.py"
 EQ359_CONTRACT = ROOT / "tmp" / "verify_eq359_real_slice_contract.py"
 EQ359_SOURCE = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
 C6D_SOURCE = "3738ddb64155a2d85f6d3609d05d5b71114ca498"
@@ -72,7 +73,7 @@ def write_archive(path: Path, members: dict[str, bytes]) -> None:
                 archive.add(target, arcname=target.relative_to(staging).as_posix())
 
 
-def eq359_fixture(path: Path) -> tuple[dict, str]:
+def eq359_fixture(path: Path, *, forbidden: bool = False) -> tuple[dict, str]:
     source_paths = {"YangMillsCore.lean"} | {
         relative
         for module, _ in contract.MODULES
@@ -90,7 +91,9 @@ def eq359_fixture(path: Path) -> tuple[dict, str]:
         audit = f"YangMills/RG/{module}Audit.lean"
         names = contract.PRINT_RE.findall(git_blob(EQ359_SOURCE, audit).decode())
         stage = f"eq359_real_slice_{index:02d}_{module.lower()}_audit"
-        audit_outputs[stage] = axiom_output(names)
+        audit_outputs[stage] = axiom_output(
+            names, forbidden=forbidden and index == 1
+        )
 
     records = []
     members: dict[str, bytes] = {}
@@ -189,10 +192,12 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="c6d-cross-test-") as temp:
         root = Path(temp)
         eq359 = root / "eq359.tar.gz"
+        eq359_bad = root / "eq359-bad.tar.gz"
         cross = root / "cross.tar.gz"
         bad = root / "cross-bad.tar.gz"
         output = root / "verified.json"
         root_record, evidence_hash = eq359_fixture(eq359)
+        eq359_fixture(eq359_bad, forbidden=True)
         c6d_fixture(cross, root_record, evidence_hash, forbidden=False)
         c6d_fixture(bad, root_record, evidence_hash, forbidden=True)
 
@@ -212,6 +217,21 @@ def main() -> int:
         result = json.loads(output.read_text(encoding="utf-8"))
         if result.get("status") != "C6D_EQ359_CROSS_EVIDENCE_OK":
             raise RuntimeError("C6D_CROSS_TEST_GOOD_STATUS")
+
+        eq359_preview = run(str(EQ359_SEAL), "--archive", str(eq359))
+        if eq359_preview.returncode != 0:
+            raise RuntimeError(
+                "C6D_CROSS_TEST_EQ359_SEAL_PREVIEW_FAILED="
+                + eq359_preview.stdout
+            )
+        if "EQ359_REAL_SLICE_SEAL_PREVIEW_OK" not in eq359_preview.stdout:
+            raise RuntimeError("C6D_CROSS_TEST_EQ359_SEAL_PREVIEW_SENTINEL")
+        eq359_rejected = run(str(EQ359_SEAL), "--archive", str(eq359_bad))
+        if (
+            eq359_rejected.returncode == 0
+            or "FORBIDDEN" not in eq359_rejected.stdout
+        ):
+            raise RuntimeError("C6D_CROSS_TEST_EQ359_FORBIDDEN_NOT_REJECTED")
 
         rejected = run(
             str(VERIFY),

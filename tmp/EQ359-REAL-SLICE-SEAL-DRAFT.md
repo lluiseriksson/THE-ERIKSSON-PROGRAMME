@@ -37,6 +37,12 @@ the twelve source/audit files fixed by the Eq. (3.59) real-slice contract.
 so the file count and notice count intentionally differ.  The sealer must
 report `files=12 notices=11` and must reject every other count.
 
+The sealer accepts the raw archive, reruns
+`verify_eq359_real_slice_archive.py` internally against the fixed source and
+runner pins, and refuses a caller-supplied verifier JSON.  Its synthetic
+contract test requires the valid preview, rejects a `sorryAx` archive, and
+also exercises the combined Eq359/C6d seal path.
+
 ## Proposed Addendum 946 text
 
 ## Addendum 946 ([SEAL_DATE], **Eq. (3.59) physical real-slice agreement sealed in fresh Colab Pro+; 20/41 unchanged**)
