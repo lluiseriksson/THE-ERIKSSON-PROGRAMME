@@ -46,7 +46,7 @@ MODULES = [
     ('BalabanCMP99Eq351ExponentialAdjointRemainderBound', 3),
 ]
 
-runner.RUNNER_REV = 'eq351-exponential-adjoint-remainder-cold-v1'
+runner.RUNNER_REV = 'eq351-exponential-adjoint-remainder-cold-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq351-exponential-adjoint-remainder")
 runner.EVIDENCE = Path("/content/hrpoly-eq351-exponential-adjoint-remainder-evidence")
@@ -110,6 +110,7 @@ queue = [
         [
             "lake", "build",
             "YangMills.RG.BalabanCMP98GAdConjugation",
+            "YangMills.RG.BalabanCMP99Eq337PhysicalRealPerturbationDomain",
             "YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative",
         ],
         None,
