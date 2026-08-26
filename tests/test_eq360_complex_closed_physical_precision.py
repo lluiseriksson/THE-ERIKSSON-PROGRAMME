@@ -15,6 +15,9 @@ def test_source_precision_constructs_every_operator_internally():
     assert "S.towerPair.Q1" in text
     assert "S.towerPair.starred0" in text
     assert "S.towerPair.starred1" in text
+    assert "cmp99Eq360ComplexLocalLaplacianPerturbation Omega" in text
+    assert "S.localLaplacianPerturbation" in text
+    assert "S.sourcePrecisionPerturbation" in text
 
 
 def test_input_has_no_free_operator_or_finished_identity():
@@ -35,10 +38,14 @@ def test_audit_covers_source_specific_boundary():
         "CMP99Eq360ComplexClosedPhysicalInput.towerPair",
         "CMP99Eq360ComplexClosedPhysicalInput.baselineLaplacian",
         "CMP99Eq360ComplexClosedPhysicalInput.perturbedLaplacian",
+        "CMP99Eq360ComplexClosedPhysicalInput.localLaplacianPerturbation",
         "CMP99Eq360ComplexClosedPhysicalInput.baselinePrecision",
         "CMP99Eq360ComplexClosedPhysicalInput.perturbedPrecision",
         "CMP99Eq360ComplexClosedPhysicalInput.precisionPerturbation",
+        "CMP99Eq360ComplexClosedPhysicalInput.sourcePrecisionPerturbation",
+        "CMP99Eq360ComplexClosedPhysicalInput.precisionPerturbation_eq_sourcePrecisionPerturbation",
         "CMP99Eq360ComplexClosedPhysicalInput.perturbedPrecision_eq_baselinePrecision_sub_perturbation",
+        "CMP99Eq360ComplexClosedPhysicalInput.perturbedPrecision_eq_baselinePrecision_sub_sourcePerturbation",
     ]
     for name in names:
         assert f"#print axioms YangMills.RG.{name}" in audit

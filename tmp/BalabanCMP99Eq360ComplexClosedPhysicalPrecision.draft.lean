@@ -1,5 +1,6 @@
 import tmp.BalabanCMP99Eq359ComplexClosedPhysicalTowerPair.draft
 import tmp.BalabanCMP99Eq360ComplexRegionalLaplacian.draft
+import tmp.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.draft
 import tmp.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.draft
 
 /-!
@@ -92,6 +93,15 @@ noncomputable def perturbedLaplacian
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalLaplacian Omega S.background1 spacing
 
+/-- Local three-species Laplacian perturbation `V'_1(A)`, constructed from
+the two source backgrounds rather than named as their difference. -/
+noncomputable def localLaplacianPerturbation
+    (S : CMP99Eq360ComplexClosedPhysicalInput regions hd hM spacing) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  cmp99Eq360ComplexLocalLaplacianPerturbation Omega
+    S.background0 S.background1 spacing
+
 /-- Complete baseline analytic precision, with the source `Q'` and printed
 starred synthesis from the internally constructed pair. -/
 noncomputable def baselinePrecision
@@ -120,6 +130,28 @@ noncomputable def precisionPerturbation
   cmp99Eq360ComplexRegionalPrecisionPerturbation S.towerPair
     S.baselineLaplacian S.perturbedLaplacian a
 
+/-- Source-expanded `V'(A)`: the local `V'_1(A)` minus the three averaging
+terms of (3.60), with no unexpanded Laplacian difference left. -/
+noncomputable def sourcePrecisionPerturbation
+    (S : CMP99Eq360ComplexClosedPhysicalInput regions hd hM spacing)
+    (a : ℂ) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  S.localLaplacianPerturbation -
+    a • (S.towerPair.F2star.comp S.towerPair.Q0) -
+    a • (S.towerPair.starred0.comp S.towerPair.F2) -
+    a • (S.towerPair.F2star.comp S.towerPair.F2)
+
+/-- The generic four-term algebra specializes exactly to the source-expanded
+perturbation once the local stencil identity (3.53) is inserted. -/
+theorem precisionPerturbation_eq_sourcePrecisionPerturbation
+    (S : CMP99Eq360ComplexClosedPhysicalInput regions hd hM spacing)
+    (a : ℂ) :
+    S.precisionPerturbation a = S.sourcePrecisionPerturbation a := by
+  unfold precisionPerturbation sourcePrecisionPerturbation
+  rw [cmp99Eq360_complexRegionalLaplacian_sub_eq_localPerturbation]
+  rfl
+
 /-- Source-specific exact Eq. (3.60).  Every operator in the equality is
 constructed from `S`; the proof is the already isolated four-term algebra. -/
 theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
@@ -129,6 +161,16 @@ theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
       S.baselinePrecision a - S.precisionPerturbation a := by
   exact cmp99Eq360_complexRegionalPrecision_eq_sub_perturbation
     S.towerPair S.baselineLaplacian S.perturbedLaplacian a
+
+/-- Source-expanded exact Eq. (3.60), whose right-hand perturbation contains
+the local `V'_1(A)` rather than a renamed Laplacian difference. -/
+theorem perturbedPrecision_eq_baselinePrecision_sub_sourcePerturbation
+    (S : CMP99Eq360ComplexClosedPhysicalInput regions hd hM spacing)
+    (a : ℂ) :
+    S.perturbedPrecision a =
+      S.baselinePrecision a - S.sourcePrecisionPerturbation a := by
+  rw [← S.precisionPerturbation_eq_sourcePrecisionPerturbation a]
+  exact S.perturbedPrecision_eq_baselinePrecision_sub_perturbation a
 
 end CMP99Eq360ComplexClosedPhysicalInput
 
