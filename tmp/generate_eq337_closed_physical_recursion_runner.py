@@ -79,7 +79,11 @@ at the first real error. It does not move ``20/41`` or instantiate TermSource.
 
 import hashlib
 import importlib.util
+import json
+import os
 from pathlib import Path
+import subprocess
+import time
 import urllib.request
 
 
@@ -118,6 +122,46 @@ runner.PATH_MANIFEST = Path("/content/hrpoly-eq337-closed-physical-recursion-pat
 runner.SOURCE_BLOBS = {{
 {source_blob_lines}
 }}
+
+
+def capturing_run(stage: str, command: list[str], *, cwd: Path | None = None) -> str:
+    """Persist exact combined stdout for durable archive verification."""
+    started = time.perf_counter()
+    print("STAGE=" + stage + " CMD=" + json.dumps(command), flush=True)
+    child = subprocess.run(
+        command,
+        cwd=cwd,
+        env=os.environ.copy(),
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    elapsed = time.perf_counter() - started
+    output = child.stdout
+    print(output, flush=True)
+    runner.EVIDENCE.mkdir(parents=True, exist_ok=True)
+    (runner.EVIDENCE / f"{{stage}}.stdout").write_text(
+        output, encoding="utf-8", newline="\\n"
+    )
+    runner.RECORDS.append(
+        {{
+            "stage": stage,
+            "exit": child.returncode,
+            "seconds": elapsed,
+            "output_sha256": hashlib.sha256(output.encode()).hexdigest(),
+        }}
+    )
+    print(
+        "STAGE=" + stage + " EXIT=" + str(child.returncode)
+        + " SECONDS=%.3f" % elapsed,
+        flush=True,
+    )
+    if child.returncode != 0:
+        raise RuntimeError("FIRST_ERROR=" + stage)
+    return output
+
+
+runner.run = capturing_run
 
 queue = [
     (
