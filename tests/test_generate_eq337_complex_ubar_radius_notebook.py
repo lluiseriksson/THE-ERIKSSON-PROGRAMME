@@ -27,11 +27,15 @@ def test_reproduces_published_notebook_semantics() -> None:
             "d69356d18c6c2392bc8a9599fd1c398109487f57",
             "ad2be23521f22ab0eadba2fc795698cd6f16e5fc",
             "eq337-complex-ubar-radius-promoted-cold-v5",
+            retain_runtime=True,
         )
     )
     published = json.loads(CURRENT_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
     assert generated["cells"][0]["id"] == "gate-33523514d81937be"
+    source = "".join(generated["cells"][0]["source"])
+    assert "RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1" in source
+    assert "if launcher_exit == 0:\n        release_runtime()" not in source
 
 
 def test_reproduces_published_coordinate_notebook_semantics() -> None:

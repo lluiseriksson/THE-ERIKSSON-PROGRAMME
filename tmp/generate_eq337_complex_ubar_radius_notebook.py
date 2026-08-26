@@ -52,6 +52,7 @@ def generate(
     runner_checkpoint: str,
     runner_rev: str,
     runner_path: str = RUNNER_PATH,
+    retain_runtime: bool = False,
 ) -> str:
     require_commit(source_sha, "SOURCE")
     require_commit(runner_checkpoint, "RUNNER")
@@ -69,6 +70,11 @@ def generate(
         raise SystemExit("EQ337_UBAR_RUNNER_REV_MISMATCH")
     runner_hash = hashlib.sha256(runner).hexdigest()
     runner_url = f"{REPO_RAW}/{runner_checkpoint}/{runner_path}"
+    terminal_runtime_action = (
+        'print("RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1", flush=True)'
+        if retain_runtime
+        else 'release_runtime()'
+    )
     cell = f'''import hashlib, urllib.request
 from google.colab import runtime
 RUNNER_URL = {json.dumps(runner_url)}
@@ -92,7 +98,7 @@ except BaseException as exc:
 finally:
     print(f"LAUNCHER_EXIT={{launcher_exit}}", flush=True)
     if launcher_exit == 0:
-        release_runtime()
+        {terminal_runtime_action}
     else:
         print("RUNTIME_RETAINED_FOR_DEBUG=1", flush=True)
 if launcher_exit != 0:
@@ -127,6 +133,11 @@ def main() -> int:
     parser.add_argument("--runner-rev", required=True)
     parser.add_argument("--runner-path", default=RUNNER_PATH)
     parser.add_argument(
+        "--retain-runtime",
+        action="store_true",
+        help="retain a successful runtime until its evidence archive is downloaded",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=ROOT / "scripts" / "colab_eq337_complex_ubar_radius_validation.ipynb",
@@ -137,6 +148,7 @@ def main() -> int:
         args.runner_checkpoint,
         args.runner_rev,
         args.runner_path,
+        args.retain_runtime,
     )
     notebook = json.loads(content)
     compile("".join(notebook["cells"][0]["source"]), str(args.output), "exec")
