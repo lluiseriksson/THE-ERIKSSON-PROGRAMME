@@ -29,6 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VERIFIER = ROOT / "tmp" / "verify_c6d_root_transitive_axioms.py"
 CROSS_VERIFIER = ROOT / "tmp" / "verify_c6d_eq359_cross_archive.py"
+BOUNDARY_MANIFEST = "tmp/C6D-TRANSITIVE-PREVALIDATION-PATHS.txt"
 PRE_MARKER = (
     "PRE-VALIDATION: source is present in scratch only; no `.olean` has been\n"
     "materialized and no compiler or axiom-oracle verdict exists for this module."
@@ -56,16 +57,35 @@ def run_git(*args: str) -> subprocess.CompletedProcess[bytes]:
 
 
 def boundary_paths(verifier) -> list[str]:
-    paths: list[str] = []
+    module_paths: list[str] = []
     for module in verifier.MODULES:
-        paths.extend(
+        module_paths.extend(
             (
                 f"YangMills/RG/{module}.lean",
                 f"YangMills/RG/{module}Audit.lean",
             )
         )
-    if len(paths) != 34 or len(set(paths)) != 34:
-        raise RuntimeError(f"C6D_BOUNDARY_SCOPE={len(paths)}/{len(set(paths))}")
+
+    manifest = run_git("show", f"{verifier.SOURCE_SHA}:{BOUNDARY_MANIFEST}")
+    if manifest.returncode != 0:
+        raise RuntimeError(
+            "C6D_BOUNDARY_MANIFEST_READ="
+            + manifest.stderr.decode(errors="replace")
+        )
+    paths = [
+        line.strip()
+        for line in manifest.stdout.decode("utf-8").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+    if (
+        len(paths) != 34
+        or len(set(paths)) != 34
+        or set(paths) != set(module_paths)
+    ):
+        raise RuntimeError(
+            "C6D_BOUNDARY_SCOPE="
+            f"manifest={len(paths)}/{len(set(paths))} modules={len(module_paths)}"
+        )
     return paths
 
 
