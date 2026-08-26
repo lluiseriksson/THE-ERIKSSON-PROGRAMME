@@ -7,8 +7,8 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "tmp" / "generate_eq351_exponential_adjoint_remainder_runner.py"
-SOURCE_SHA = "1315643bad6c5176e1696d9e260cc9a43a5f0d3b"
-RUNNER_REV = "eq351-exponential-adjoint-remainder-cold-v1"
+SOURCE_SHA = "3ba3875b01b3c6163e1a1b78f599d98cb1ecb6d5"
+RUNNER_REV = "eq351-exponential-adjoint-remainder-cold-v3"
 SPEC = importlib.util.spec_from_file_location("eq351_runner_generator", SCRIPT)
 assert SPEC is not None and SPEC.loader is not None
 GENERATOR = importlib.util.module_from_spec(SPEC)
@@ -20,6 +20,7 @@ class Eq351RunnerGeneratorTest(unittest.TestCase):
         self.assertEqual(
             GENERATOR.MODULES,
             (
+                ("BalabanCMP99Eq337PhysicalRealPerturbationDomain", 7),
                 ("BalabanCMP99Eq337PhysicalComplexPerturbationDomain", 1),
                 ("BalabanCMP99Eq351PhysicalComplexOrientedPerturbation", 4),
                 ("BalabanCMP99Eq351ExponentialAdjointRemainder", 4),

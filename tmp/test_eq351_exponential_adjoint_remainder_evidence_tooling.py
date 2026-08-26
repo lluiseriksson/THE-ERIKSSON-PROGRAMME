@@ -32,13 +32,13 @@ SEALER = load(
 
 class Eq351EvidenceToolingTest(unittest.TestCase):
     def test_exact_module_and_declaration_scope(self) -> None:
-        self.assertEqual(len(CONTRACT.MODULES), 4)
-        self.assertEqual(sum(count for _, count in CONTRACT.MODULES), 12)
+        self.assertEqual(len(CONTRACT.MODULES), 5)
+        self.assertEqual(sum(count for _, count in CONTRACT.MODULES), 19)
 
     def test_exact_seal_scope(self) -> None:
         paths = SEALER.paths(CONTRACT)
-        self.assertEqual(len(paths), 8)
-        self.assertEqual(len(set(paths)), 8)
+        self.assertEqual(len(paths), 10)
+        self.assertEqual(len(set(paths)), 10)
         self.assertTrue(all(path.startswith("YangMills/RG/") for path in paths))
 
     def test_pin_policy_matches_terminal_contract(self) -> None:
@@ -53,7 +53,7 @@ class Eq351EvidenceToolingTest(unittest.TestCase):
 
     def test_stage_scope_is_finite_and_unique(self) -> None:
         stages = CONTRACT.stages()
-        self.assertEqual(len(stages), 11)
+        self.assertEqual(len(stages), 13)
         self.assertEqual(len(stages), len(set(stages)))
 
 

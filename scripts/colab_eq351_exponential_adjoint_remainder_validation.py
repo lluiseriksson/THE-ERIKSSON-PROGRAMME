@@ -17,7 +17,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = '1315643bad6c5176e1696d9e260cc9a43a5f0d3b'
+SOURCE_SHA = '3ba3875b01b3c6163e1a1b78f599d98cb1ecb6d5'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -40,20 +40,23 @@ runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
 MODULES = [
+    ('BalabanCMP99Eq337PhysicalRealPerturbationDomain', 7),
     ('BalabanCMP99Eq337PhysicalComplexPerturbationDomain', 1),
     ('BalabanCMP99Eq351PhysicalComplexOrientedPerturbation', 4),
     ('BalabanCMP99Eq351ExponentialAdjointRemainder', 4),
     ('BalabanCMP99Eq351ExponentialAdjointRemainderBound', 3),
 ]
 
-runner.RUNNER_REV = 'eq351-exponential-adjoint-remainder-cold-v2'
+runner.RUNNER_REV = 'eq351-exponential-adjoint-remainder-cold-v3'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq351-exponential-adjoint-remainder")
 runner.EVIDENCE = Path("/content/hrpoly-eq351-exponential-adjoint-remainder-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-eq351-exponential-adjoint-remainder-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq351-exponential-adjoint-remainder-paths.txt")
 runner.SOURCE_BLOBS = {
-    'YangMillsCore.lean': '37a0269d0fee02f1bfdd3d4c1c1e095239baba3218b97893ba0a8ca74c19474b',
+    'YangMillsCore.lean': '23a4b0caf8a0246a21eb0538720d555854e651d7cccd3a1aef0b3ab73b02698e',
+    'YangMills/RG/BalabanCMP99Eq337PhysicalRealPerturbationDomain.lean': '1b9b84a5ef5b87d8af7fb25e6f11ae3a0f4be3045a37c311a23bc30dd92d1a06',
+    'YangMills/RG/BalabanCMP99Eq337PhysicalRealPerturbationDomainAudit.lean': '10da77bf0cae99a37a2156a1704b8358f1af31eae3d3ecd54ebc0d2e15882014',
     'YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbationDomain.lean': '80c141368ce88667f863ca2d3633000fbf4a79f97c1a081487e6963ed52e0693',
     'YangMills/RG/BalabanCMP99Eq337PhysicalComplexPerturbationDomainAudit.lean': '6735053257486a5374108f20f3c695a77375efe213ff3f3e26a3c10caa7af507',
     'YangMills/RG/BalabanCMP99Eq351PhysicalComplexOrientedPerturbation.lean': 'bf9916731db27d98f59c47822f5461063e9fcca483c0ed359b0bf7b0c34beab4',
@@ -110,7 +113,6 @@ queue = [
         [
             "lake", "build",
             "YangMills.RG.BalabanCMP98GAdConjugation",
-            "YangMills.RG.BalabanCMP99Eq337PhysicalRealPerturbationDomain",
             "YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative",
         ],
         None,

@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "scripts" / "colab_eq351_exponential_adjoint_remainder_validation.py"
 BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
+    ("BalabanCMP99Eq337PhysicalRealPerturbationDomain", 7),
     ("BalabanCMP99Eq337PhysicalComplexPerturbationDomain", 1),
     ("BalabanCMP99Eq351PhysicalComplexOrientedPerturbation", 4),
     ("BalabanCMP99Eq351ExponentialAdjointRemainder", 4),
@@ -170,7 +171,6 @@ queue = [
         [
             "lake", "build",
             "YangMills.RG.BalabanCMP98GAdConjugation",
-            "YangMills.RG.BalabanCMP99Eq337PhysicalRealPerturbationDomain",
             "YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative",
         ],
         None,
