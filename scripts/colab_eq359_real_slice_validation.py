@@ -17,7 +17,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = '08039bcbc4bc74af072bef0252d7d559cbc80fe5'
+SOURCE_SHA = 'cd6ff65638f0e09e2533733df2d7176c10714a3a'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -48,14 +48,14 @@ MODULES = [
     ('BalabanCMP99ComplexUbarSuccessorRealSlice', 9),
 ]
 
-runner.RUNNER_REV = 'eq359-real-slice-promoted-cold-v3'
+runner.RUNNER_REV = 'eq359-real-slice-promoted-cold-v4'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq359-real-slice")
 runner.EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-eq359-real-slice-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq359-real-slice-paths.txt")
 runner.SOURCE_BLOBS = {
-    'YangMillsCore.lean': 'c3281f3be85744e6066e9c554571162f99cf89ba1549943bd6faf3beb7bed95a',
+    'YangMillsCore.lean': 'eb460cec95fc88f8f751858b30f39c624d42e7bd266cc5942b8b56b7d6548e08',
     'YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice.lean': '0dd35a65c8c21033bb9b851ad48b68162dcb99ae745a8aa8a665faaf10299a27',
     'YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSliceAudit.lean': '36538f496b3941e6a54c4a802303efcdeabdae964579b3eaaa5b48378bf32482',
     'YangMills/RG/BalabanCMP99Eq359OneScaleRealSlice.lean': '0b2033475470d4772cf9ca301f8ddeb4218ce878f493c0d286e087c1388b8a96',
