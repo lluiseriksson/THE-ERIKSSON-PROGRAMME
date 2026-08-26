@@ -30,13 +30,12 @@ variable {Nc : Nat} [NeZero Nc]
 model. -/
 def cmp99SpecialLinearAdjointSlLM
     (g : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
-    {X : Matrix (Fin Nc) (Fin Nc) ℂ // Matrix.trace X = 0} →ₗ[ℂ]
-      {X : Matrix (Fin Nc) (Fin Nc) ℂ // Matrix.trace X = 0} where
+    LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ →ₗ[ℂ]
+      LieAlgebra.SpecialLinear.sl (Fin Nc) ℂ where
   toFun X := by
-    refine <| Subtype.mk
-      ((g : Matrix (Fin Nc) (Fin Nc) ℂ) * X.1 *
+    refine ⟨(g : Matrix (Fin Nc) (Fin Nc) ℂ) * X.1 *
         ((g⁻¹ : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
-          Matrix (Fin Nc) (Fin Nc) ℂ)) ?_
+          Matrix (Fin Nc) (Fin Nc) ℂ), ?_⟩
     rw [Matrix.trace_mul_cycle]
     have hg :
         (((g⁻¹ : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
@@ -56,10 +55,12 @@ def cmp99SpecialLinearAdjointSlLM
 /-- Coordinate form of the literal complex adjoint action. -/
 def cmp99SpecialLinearAdjointCoordLM
     (g : Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
-    SUNLieComplexCoord Nc →ₗ[ℂ] SUNLieComplexCoord Nc :=
-  (cmp99SUNLieComplexCoordSlEquiv Nc).symm.toLinearMap.comp
-    ((cmp99SpecialLinearAdjointSlLM g).comp
-      (cmp99SUNLieComplexCoordSlEquiv Nc).toLinearMap)
+    SUNLieComplexCoord Nc →ₗ[ℂ] SUNLieComplexCoord Nc where
+  toFun Z := (cmp99SUNLieComplexCoordSlEquiv Nc).symm
+    (cmp99SpecialLinearAdjointSlLM g
+      (cmp99SUNLieComplexCoordSlEquiv Nc Z))
+  map_add' X Y := by simp
+  map_smul' c X := by simp
 
 @[simp] theorem cmp99SUNLieComplexCoordMatrixLM_specialLinearAdjoint
     (g : Matrix.SpecialLinearGroup (Fin Nc) ℂ)
