@@ -142,7 +142,7 @@ def capturing_run(stage: str, command: list[str], *, cwd: Path | None = None) ->
     print(output, flush=True)
     runner.EVIDENCE.mkdir(parents=True, exist_ok=True)
     (runner.EVIDENCE / f"{{stage}}.stdout").write_text(
-        output, encoding="utf-8", newline="\n"
+        output, encoding="utf-8", newline="\\n"
     )
     runner.RECORDS.append(
         {{
