@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Cold Colab validation for the finite Eq. (3.59) compact real-slice gate.
 
-The queue compiles five promoted PRE-VALIDATION source/audit pairs in
-dependency order, checks twenty-four public declarations, builds YangMillsCore
+The queue compiles six promoted PRE-VALIDATION source/audit pairs in
+dependency order, checks thirty public declarations, builds YangMillsCore
 from the same fresh checkout, and stops at the first real error.  It does not
 move 20/41 or instantiate TermSource.
 """
@@ -17,7 +17,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = 'e0a2b346ceeb88f476cc80c53df7210b74ae77e0'
+SOURCE_SHA = '08039bcbc4bc74af072bef0252d7d559cbc80fe5'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -44,10 +44,11 @@ MODULES = [
     ('BalabanCMP99Eq359OneScaleRealSlice', 4),
     ('BalabanCMP99Eq359TowerRealSliceAgreement', 3),
     ('BalabanCMP99PhysicalBackgroundRealSlice', 5),
-    ('BalabanCMP99ComplexUbarSuccessorRealSlice', 7),
+    ('BalabanCMP99ComplexLocalizedUbarBackground', 4),
+    ('BalabanCMP99ComplexUbarSuccessorRealSlice', 9),
 ]
 
-runner.RUNNER_REV = 'eq359-real-slice-promoted-cold-v1'
+runner.RUNNER_REV = 'eq359-real-slice-promoted-cold-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq359-real-slice")
 runner.EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence")
@@ -55,16 +56,18 @@ runner.ARCHIVE = Path("/content/hrpoly-eq359-real-slice-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq359-real-slice-paths.txt")
 runner.SOURCE_BLOBS = {
     'YangMillsCore.lean': 'c3281f3be85744e6066e9c554571162f99cf89ba1549943bd6faf3beb7bed95a',
-    'YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice.lean': '49b12079c6882ce8a0269478eaebdfd0dd478bd53e7c2d069f1e95d4970d3929',
+    'YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice.lean': '0dd35a65c8c21033bb9b851ad48b68162dcb99ae745a8aa8a665faaf10299a27',
     'YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSliceAudit.lean': '36538f496b3941e6a54c4a802303efcdeabdae964579b3eaaa5b48378bf32482',
-    'YangMills/RG/BalabanCMP99Eq359OneScaleRealSlice.lean': '39cdaa10036c4f2cdd366711c59499e93b826db8117b66ac08e048a87772f4ff',
+    'YangMills/RG/BalabanCMP99Eq359OneScaleRealSlice.lean': '0b2033475470d4772cf9ca301f8ddeb4218ce878f493c0d286e087c1388b8a96',
     'YangMills/RG/BalabanCMP99Eq359OneScaleRealSliceAudit.lean': 'f94ec4db67ea0cea1e436ec30da66aaa640c7a2e578b15e20afd4f64c68a981b',
     'YangMills/RG/BalabanCMP99Eq359TowerRealSliceAgreement.lean': 'a3168b10ced9316e89b794a5c21abaad1de117c7624bdc284320ad782d8d7655',
     'YangMills/RG/BalabanCMP99Eq359TowerRealSliceAgreementAudit.lean': 'f7335e8c1cd0ddc3a1ab138cf9d2c33f14c247923a9ccdbc97c5753c010b96ed',
     'YangMills/RG/BalabanCMP99PhysicalBackgroundRealSlice.lean': '810d0593173ed6bb39fc74d0885bd882196a68c7a2a83f206708ceeb7ac855f4',
     'YangMills/RG/BalabanCMP99PhysicalBackgroundRealSliceAudit.lean': 'e38343c96d38fe0474c09600cc7e1fbbb27f7c494a7cae3dc17372083c3bcb94',
-    'YangMills/RG/BalabanCMP99ComplexUbarSuccessorRealSlice.lean': '13af40b1e18b78cf0f04f3071a6f5a1fdaae15e2f5d0539ab5f28e85f34dd28b',
-    'YangMills/RG/BalabanCMP99ComplexUbarSuccessorRealSliceAudit.lean': '6bb64575782451ff337693c07acf77331b769d4ce6416d5a325f4a0f9fb07fe5',
+    'YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackground.lean': '8af5790cd28ffb09810ba720f988e345d4de8b7df10b8af8e398fbbf2a0c1dbf',
+    'YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackgroundAudit.lean': '3b9be467c8bdbec0b8d52e15c2eaab433a0771c074631d5aa2f4a553f850f3b1',
+    'YangMills/RG/BalabanCMP99ComplexUbarSuccessorRealSlice.lean': '9aa9f959139d15dad132fbb26893c5fc95b77ec74b0d2c6f0e5841e027143600',
+    'YangMills/RG/BalabanCMP99ComplexUbarSuccessorRealSliceAudit.lean': '8160f2a58d7d1371acde1df6ccc5b944ad6c7ebda66aade43da0ce0f625dc651',
 }
 
 
@@ -114,6 +117,7 @@ queue = [
             "lake", "build",
             "YangMills.RG.BalabanCMP99ComplexPhysicalRegionalTower",
             "YangMills.RG.BalabanCMP99SourceRegionalScale",
+            "YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction",
         ],
         None,
     ),

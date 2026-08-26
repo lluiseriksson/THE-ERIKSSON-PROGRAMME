@@ -145,7 +145,7 @@ def main() -> int:
             audit_stages.append(
                 f"eq359_real_slice_{index:02d}_{module.lower()}_audit"
             )
-        if len(expected) != 24 or len(set(expected)) != 24:
+        if len(expected) != 30 or len(set(expected)) != 30:
             raise RuntimeError("EQ359_REAL_SLICE_ARCHIVE_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)

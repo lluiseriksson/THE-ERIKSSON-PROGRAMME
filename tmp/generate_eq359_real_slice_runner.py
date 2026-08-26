@@ -18,7 +18,8 @@ MODULES = (
     ("BalabanCMP99Eq359OneScaleRealSlice", 4),
     ("BalabanCMP99Eq359TowerRealSliceAgreement", 3),
     ("BalabanCMP99PhysicalBackgroundRealSlice", 5),
-    ("BalabanCMP99ComplexUbarSuccessorRealSlice", 7),
+    ("BalabanCMP99ComplexLocalizedUbarBackground", 4),
+    ("BalabanCMP99ComplexUbarSuccessorRealSlice", 9),
 )
 
 
@@ -73,8 +74,8 @@ def render(source_sha: str, runner_rev: str) -> str:
     return f'''#!/usr/bin/env python3
 """Cold Colab validation for the finite Eq. (3.59) compact real-slice gate.
 
-The queue compiles five promoted PRE-VALIDATION source/audit pairs in
-dependency order, checks twenty-four public declarations, builds YangMillsCore
+The queue compiles six promoted PRE-VALIDATION source/audit pairs in
+dependency order, checks thirty public declarations, builds YangMillsCore
 from the same fresh checkout, and stops at the first real error.  It does not
 move 20/41 or instantiate TermSource.
 """
@@ -172,6 +173,7 @@ queue = [
             "lake", "build",
             "YangMills.RG.BalabanCMP99ComplexPhysicalRegionalTower",
             "YangMills.RG.BalabanCMP99SourceRegionalScale",
+            "YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction",
         ],
         None,
     ),

@@ -15,7 +15,8 @@ MODULES = (
     ("BalabanCMP99Eq359OneScaleRealSlice", 4),
     ("BalabanCMP99Eq359TowerRealSliceAgreement", 3),
     ("BalabanCMP99PhysicalBackgroundRealSlice", 5),
-    ("BalabanCMP99ComplexUbarSuccessorRealSlice", 7),
+    ("BalabanCMP99ComplexLocalizedUbarBackground", 4),
+    ("BalabanCMP99ComplexUbarSuccessorRealSlice", 9),
 )
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)
 OUTPUT_RE = re.compile(
