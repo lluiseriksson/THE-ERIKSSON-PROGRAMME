@@ -25,14 +25,14 @@ def test_reproduces_published_notebook_semantics() -> None:
     generated = json.loads(
         generator.generate(
             "d69356d18c6c2392bc8a9599fd1c398109487f57",
-            "ad2be23521f22ab0eadba2fc795698cd6f16e5fc",
-            "eq337-complex-ubar-radius-promoted-cold-v5",
+            "9eedbbfb91a49f1957ca9f5b0fa86974b5b5203f",
+            "eq337-complex-ubar-radius-promoted-cold-v6",
             retain_runtime=True,
         )
     )
     published = json.loads(CURRENT_NOTEBOOK.read_text(encoding="utf-8"))
     assert generated == published
-    assert generated["cells"][0]["id"] == "gate-33523514d81937be"
+    assert generated["cells"][0]["id"] == "gate-c190cc3060123a1f"
     source = "".join(generated["cells"][0]["source"])
     assert "RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1" in source
     assert "if launcher_exit == 0:\n        release_runtime()" not in source
