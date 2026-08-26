@@ -28,9 +28,38 @@ noncomputable def cmp99SpecialLinearBlockContainedContourSystem
   fun y x ↦
     let physical :=
       cmp99BlockContainedContourSystem (G := SUN Nc) y x
+    let transportPath :
+        ∀ (a : FinBox d (M * N'))
+          (edges : List (ConcreteEdge d (M * N'))),
+          IsPathFrom (G := SUN Nc) a edges →
+            IsPathFrom
+              (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ) a edges := by
+      intro a edges h
+      induction edges generalizing a with
+      | nil => trivial
+      | cons e edges ih =>
+          change e.srcV = a ∧
+            IsPathFrom (G := SUN Nc) e.dstV edges at h
+          change e.srcV = a ∧
+            IsPathFrom
+              (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ) e.dstV edges
+          exact ⟨h.1, ih e.dstV h.2⟩
+    let transportEnd :
+        ∀ (a : FinBox d (M * N'))
+          (edges : List (ConcreteEdge d (M * N'))),
+          pathEnd (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ) a edges =
+            pathEnd (G := SUN Nc) a edges := by
+      intro a edges
+      induction edges generalizing a with
+      | nil => rfl
+      | cons e edges ih =>
+          change pathEnd
+              (G := Matrix.SpecialLinearGroup (Fin Nc) ℂ) e.dstV edges =
+            pathEnd (G := SUN Nc) e.dstV edges
+          exact ih e.dstV
     { edges := physical.edges
-      isPath := physical.isPath
-      ends := physical.ends }
+      isPath := transportPath _ physical.edges physical.isPath
+      ends := (transportEnd _ physical.edges).trans physical.ends }
 
 /-- Literal complex block-contour holonomy of one analytically continued
 background. -/
