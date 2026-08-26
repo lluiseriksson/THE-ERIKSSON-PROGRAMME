@@ -10,7 +10,11 @@ PRE-VALIDATION, attain a terminal scalar window, or move ``20/41``.
 
 import hashlib
 import importlib.util
+import json
+import os
 from pathlib import Path
+import subprocess
+import time
 import urllib.request
 
 
@@ -48,7 +52,7 @@ PAIRS = [
 
 PREREQUISITE = ("BalabanCMP99Eq337PhysicalComplexPerturbedBackground", 26)
 
-runner.RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v5"
+runner.RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v6"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq337-complex-ubar-radius")
 runner.EVIDENCE = Path("/content/hrpoly-eq337-complex-ubar-radius-evidence")
@@ -86,6 +90,46 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99Eq337PhysicalComplexUbarDeviationRadiusAudit.lean":
         "88d8ec2d94567fde7572afdf8c86b343cac53bdb112aa7e67fec40370d255ee9",
 }
+
+
+def capturing_run(stage: str, command: list[str], *, cwd: Path | None = None) -> str:
+    """Run one stage and persist its exact combined stdout before fail-closed exit."""
+    started = time.perf_counter()
+    print("STAGE=" + stage + " CMD=" + json.dumps(command), flush=True)
+    child = subprocess.run(
+        command,
+        cwd=cwd,
+        env=os.environ.copy(),
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    elapsed = time.perf_counter() - started
+    output = child.stdout
+    print(output, flush=True)
+    runner.EVIDENCE.mkdir(parents=True, exist_ok=True)
+    (runner.EVIDENCE / f"{stage}.stdout").write_text(
+        output, encoding="utf-8", newline="\n"
+    )
+    runner.RECORDS.append(
+        {
+            "stage": stage,
+            "exit": child.returncode,
+            "seconds": elapsed,
+            "output_sha256": hashlib.sha256(output.encode()).hexdigest(),
+        }
+    )
+    print(
+        "STAGE=" + stage + " EXIT=" + str(child.returncode)
+        + " SECONDS=%.3f" % elapsed,
+        flush=True,
+    )
+    if child.returncode != 0:
+        raise RuntimeError("FIRST_ERROR=" + stage)
+    return output
+
+
+runner.run = capturing_run
 
 queue = [
     (

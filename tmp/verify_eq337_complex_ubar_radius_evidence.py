@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 SOURCE_SHA = "d69356d18c6c2392bc8a9599fd1c398109487f57"
-RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v5"
+RUNNER_REV = "eq337-complex-ubar-radius-promoted-cold-v6"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
