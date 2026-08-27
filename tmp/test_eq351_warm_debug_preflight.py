@@ -27,7 +27,8 @@ def write(repo: Path, relative: str, text: str) -> None:
 
 def row(source: str) -> tuple[str, str, str]:
     stem = source.removesuffix(".lean")
-    return stem, source, f".lake/build/lib/lean/{stem}.olean"
+    output = ".lake/build/lib/lean/" + stem.replace(".", "/") + ".olean"
+    return stem, source, output
 
 
 def git(repo: Path, *args: str) -> str:
@@ -97,6 +98,20 @@ def test_preflight_rejects_forbidden_proof_placeholder(tmp_path: Path) -> None:
     )
     runner.QUEUE = (row("tmp/A.draft.lean"),)
     with pytest.raises(RuntimeError, match="EQ351_WARM_FORBIDDEN_TOKEN"):
+        runner.preflight(tmp_path)
+
+
+def test_preflight_rejects_module_incompatible_output_path(tmp_path: Path) -> None:
+    runner = load_runner()
+    write(tmp_path, "tmp/A.draft.lean", "/-! PRE-VALIDATION: test. -/\n")
+    runner.QUEUE = (
+        (
+            "bad_output",
+            "tmp/A.draft.lean",
+            ".lake/build/lib/lean/tmp/A.draft.olean",
+        ),
+    )
+    with pytest.raises(RuntimeError, match="EQ351_WARM_OUTPUT_PATH_MISMATCH"):
         runner.preflight(tmp_path)
 
 

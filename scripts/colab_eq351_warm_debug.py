@@ -44,97 +44,97 @@ QUEUE = (
         "eq360_regional_laplacian_source",
         "tmp/BalabanCMP99Eq360ComplexRegionalLaplacian.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq360ComplexRegionalLaplacian.draft.olean",
+        "BalabanCMP99Eq360ComplexRegionalLaplacian/draft.olean",
     ),
     (
         "eq360_regional_laplacian_audit",
         "tmp/BalabanCMP99Eq360ComplexRegionalLaplacianAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq360ComplexRegionalLaplacianAudit.draft.olean",
+        "BalabanCMP99Eq360ComplexRegionalLaplacianAudit/draft.olean",
     ),
     (
         "eq360_regional_laplacian_real_slice_source",
         "tmp/BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.draft.olean",
+        "BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice/draft.olean",
     ),
     (
         "eq360_regional_laplacian_real_slice_audit",
         "tmp/BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.draft.olean",
+        "BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit/draft.olean",
     ),
     (
         "negative_factorization_source",
         "tmp/BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization/draft.olean",
     ),
     (
         "negative_factorization_audit",
         "tmp/BalabanCMP99Eq351PhysicalComplexNegativeBondFactorizationAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexNegativeBondFactorizationAudit.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexNegativeBondFactorizationAudit/draft.olean",
     ),
     (
         "positive_adjoint_source",
         "tmp/BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion/draft.olean",
     ),
     (
         "positive_adjoint_audit",
         "tmp/BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansionAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansionAudit.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansionAudit/draft.olean",
     ),
     (
         "oriented_adjoint_source",
         "tmp/BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansion.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansion.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansion/draft.olean",
     ),
     (
         "oriented_adjoint_audit",
         "tmp/BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansionAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansionAudit.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansionAudit/draft.olean",
     ),
     (
         "covariant_divergence_source",
         "tmp/BalabanCMP99Eq351PhysicalComplexCovariantDivergence.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexCovariantDivergence.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexCovariantDivergence/draft.olean",
     ),
     (
         "covariant_divergence_audit",
         "tmp/BalabanCMP99Eq351PhysicalComplexCovariantDivergenceAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351PhysicalComplexCovariantDivergenceAudit.draft.olean",
+        "BalabanCMP99Eq351PhysicalComplexCovariantDivergenceAudit/draft.olean",
     ),
     (
         "oriented_stencil_source",
         "tmp/BalabanCMP99Eq351ComplexRegionalLaplacianStencil.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351ComplexRegionalLaplacianStencil.draft.olean",
+        "BalabanCMP99Eq351ComplexRegionalLaplacianStencil/draft.olean",
     ),
     (
         "oriented_stencil_audit",
         "tmp/BalabanCMP99Eq351ComplexRegionalLaplacianStencilAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351ComplexRegionalLaplacianStencilAudit.draft.olean",
+        "BalabanCMP99Eq351ComplexRegionalLaplacianStencilAudit/draft.olean",
     ),
     (
         "raw_regrouping_source",
         "tmp/BalabanCMP99Eq351ComplexLaplacianRegroupingRaw.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351ComplexLaplacianRegroupingRaw.draft.olean",
+        "BalabanCMP99Eq351ComplexLaplacianRegroupingRaw/draft.olean",
     ),
     (
         "raw_regrouping_audit",
         "tmp/BalabanCMP99Eq351ComplexLaplacianRegroupingRawAudit.draft.lean",
         ".lake/build/lib/lean/tmp/"
-        "BalabanCMP99Eq351ComplexLaplacianRegroupingRawAudit.draft.olean",
+        "BalabanCMP99Eq351ComplexLaplacianRegroupingRawAudit/draft.olean",
     ),
 )
 
@@ -149,6 +149,10 @@ def source_module(source: str) -> str:
     return source[:-5].replace("/", ".").replace("\\", ".")
 
 
+def expected_output(source: str) -> str:
+    return ".lake/build/lib/lean/" + source_module(source).replace(".", "/") + ".olean"
+
+
 def preflight(repo: Path) -> None:
     sources = [source for _stage, source, _output in QUEUE]
     outputs = [output for _stage, _source, output in QUEUE]
@@ -156,6 +160,12 @@ def preflight(repo: Path) -> None:
         raise RuntimeError("EQ351_WARM_SOURCE_DUPLICATE")
     if len(outputs) != len(set(outputs)):
         raise RuntimeError("EQ351_WARM_OUTPUT_DUPLICATE")
+    for source, output in zip(sources, outputs, strict=True):
+        expected = expected_output(source)
+        if output != expected:
+            raise RuntimeError(
+                f"EQ351_WARM_OUTPUT_PATH_MISMATCH={source}:{output} WANT={expected}"
+            )
 
     positions = {source_module(source): index for index, source in enumerate(sources)}
     for index, source in enumerate(sources):
