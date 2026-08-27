@@ -245,12 +245,15 @@ arrow.
    pointwise from the already sealed real-slice theorem for the canonical
    oriented perturbation and the literal backward-divergence stencil.  The
    regional adjoint theorem
-   `cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply` has the same bracket
-   only after restriction to the active carrier and multiplication by
-   `spacing⁻¹`; it is therefore a downstream scaled corollary, not the
-   definition of the complex diagonal species.  No bridge module is staged
-   until the PRE-VALIDATION divergence pair itself has a compiler/axiom
-   verdict.
+   `cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply` instead audits the
+   repository derivative convention: it is the same unscaled bracket after
+   restriction to the active carrier and multiplication by `spacing⁻¹`.
+   Because the printed derivative (3.3) is the negative of that repository
+   derivative, the printed adjoint has the additional visible minus sign.
+   The regional theorem is therefore not the definition of the source
+   complex diagonal species and cannot justify dropping that sign.  No bridge
+   module is staged until the PRE-VALIDATION divergence pair itself has a
+   compiler/axiom verdict.
 
 3. `BalabanCMP99Eq351ComplexLaplacianRegrouping`: construct `U1` with
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta`, expand the literal
