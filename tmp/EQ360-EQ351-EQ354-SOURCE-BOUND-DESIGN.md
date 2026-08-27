@@ -281,6 +281,13 @@ arrow.
    - `cmp99Eq351ComplexLaplacianRegrouping_of_eta_ne`, the printed
      three-species equality, with the nonzero witness supplied only by the
      source-domain wrapper.
+
+   The first boundary is now materialized in scratch as
+   `BalabanCMP99Eq351ComplexRegionalLaplacianStencil.draft`: it proves the
+   all-spacing `eta⁻¹ • eta⁻¹` stencil identity and separately transports the
+   inverse-positive incoming link to the canonical negative concrete edge.
+   Its companion audit has four readouts.  Both remain PRE-VALIDATION; their
+   presence is implementation progress, not compiler evidence.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
