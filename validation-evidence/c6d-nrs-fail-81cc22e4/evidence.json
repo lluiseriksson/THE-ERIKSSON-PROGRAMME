@@ -1,0 +1,122 @@
+{
+  "closed_utc": "2026-08-27T18:01:52.242077+00:00",
+  "mathlib_sha": "07642720480157414db592fa85b626dafb71355b",
+  "opened_utc": "2026-08-27T17:25:56.639019+00:00",
+  "records": [
+    {
+      "exit": 0,
+      "output_sha256": "a74a968154a20add60a07bd0f2de21a79fba7442893080c75763b93299a82eb6",
+      "seconds": 3.003403536999997,
+      "stage": "download_toolchain"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "d90621fbbebef99d7cc656167901cbea6256057c28edd9a40873a127175f4ad8",
+      "seconds": 6.7978284710000025,
+      "stage": "apt_update"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "42a7d35f4e41287295908b3f51ce92ddec42c21886f5c11595ba57baa32b3b9f",
+      "seconds": 9.344055314000002,
+      "stage": "install_zstd"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 14.63276989800002,
+      "stage": "extract_toolchain"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "ffc062887a88810ba8aa56371c6f0ef93d49dad1c0bc7fe99a8d7b264d3db0b1",
+      "seconds": 0.07210902899998928,
+      "stage": "lean_version"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "9f4a3130a140a735d63f1028a8437b9eb7a7b0fcea54f373c31fadd0fe5f43c6",
+      "seconds": 0.07802986100000453,
+      "stage": "lake_version"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "087198021c4b1b6d442a76ab91784dc3569f075bf664f01c54c589a4231ee9d2",
+      "seconds": 15.66095367699998,
+      "stage": "clone"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "c9e4ae10cd42e7163d3073f75e7c333a6cca3f6d02b0250fc3d25301e428f6ff",
+      "seconds": 0.7765970809999772,
+      "stage": "checkout"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "d48a3a26aea6220f0fc0e641d6fba2158a10dd4706a25d4f1ba6ebe9ff0a0ebe",
+      "seconds": 0.0037634180000054585,
+      "stage": "head"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "2f71e7b412be006bc15b4f4fe0666accd646ffd3c33aa6d267c86aab1e81308b",
+      "seconds": 0.15376412900002379,
+      "stage": "overlay_text_guard"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "11ab735826199e101f3dd031b1e17599f05227bf80cad397489906044581c081",
+      "seconds": 0.08143824499998686,
+      "stage": "import_prefix_guard"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "bd62aed43e006e8454e45d5d931caf9ee505902ad5d31225f67cd09a65299055",
+      "seconds": 123.91259487199997,
+      "stage": "lake_update"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd",
+      "seconds": 0.003367754999999306,
+      "stage": "mathlib_pin"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "18cfb29942326ace51032bafb8c557fb732db93edb34b6930fc372497a2503c1",
+      "seconds": 6.388491857999952,
+      "stage": "cache_get"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "1af9f3cf514df925501c6dd0facbc239d90bfbde7ff1fd3293566734b4c1088d",
+      "seconds": 1971.4079084979999,
+      "stage": "c6d_next_real_slice_materialize_dependencies"
+    },
+    {
+      "exit": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.013483269000062137,
+      "stage": "c6d_next_real_slice_prepare_build_dirs"
+    },
+    {
+      "exit": 1,
+      "output_sha256": "b99d45c3aea836cb5f7d8d084d99a62b089f5eb10ee49a0646e5392a34218e2a",
+      "seconds": 1.2504255190001459,
+      "stage": "c6d_next_real_slice_01_balabancmp99eq337physicalcomplexbaselinerealslice_source"
+    }
+  ],
+  "runner_rev": "c6d-next-real-slice-v1",
+  "source_blobs": {
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexBaselineRealSlice.lean": "6d022ab4f12d979e4cb3a5e90cc04739ebec033487c71c1b4a12056ed0b980e5",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexBaselineRealSliceAudit.lean": "4fd0833d973bc4f4e2b2609486eecfa47e1d25ce9eae346f7d96533cdd017a29",
+    "YangMills/RG/BalabanCMP99SourcePhysicalRealSliceTower.lean": "2865ece151193d233bf9052bb0e35366960d50de0062d38215bb2d22bd9ecc17",
+    "YangMills/RG/BalabanCMP99SourcePhysicalRealSliceTowerAudit.lean": "1c87b64500484f0215f834d9b472c7497e21300d95e98ecab839850acec84dc7",
+    "YangMills/RG/BalabanCMP99SourceRetainedFineOneCochainExtension.lean": "6920eb88698be70cfff2077378a6e197ee553d65ef80cd518fe8a0ba801ae032",
+    "YangMills/RG/BalabanCMP99SourceRetainedFineOneCochainExtensionAudit.lean": "6b589afafedc93478c39cd80cb10b704f467671699b6c43073101a1caef725ff",
+    "YangMillsCore.lean": "41bfd19dffe9995a98fed1b1e633c8e0c4f8d663076ee9b271621ea91ab878a1"
+  },
+  "source_sha": "81cc22e41d46cce150c2a263c85e4acb90087153",
+  "status": "FAIL",
+  "toolchain_asset_sha256": "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
+}
