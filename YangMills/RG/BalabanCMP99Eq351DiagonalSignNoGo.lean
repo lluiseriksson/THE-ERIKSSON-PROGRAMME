@@ -56,7 +56,11 @@ theorem cmp99Eq351RawDiagonalUnit_neg_eq_positive
     (Dstar phi : Matrix (Fin 2) (Fin 2) ℂ) :
     cmp99Eq351RawDiagonalUnit (-Dstar) phi =
       Complex.I • cmp98AdCLM Dstar phi := by
-  simp [cmp99Eq351RawDiagonalUnit, cmp98AdCLM_apply]
+  simp only [cmp99Eq351RawDiagonalUnit, cmp98AdCLM_apply, neg_mul, mul_neg]
+  have hcomm :
+      -(Dstar * phi) + phi * Dstar = -(Dstar * phi - phi * Dstar) := by
+    abel
+  rw [hcomm, smul_neg, neg_neg]
 
 /-- A smallest noncommuting source-adjoint/field pair. -/
 def cmp99Eq351DiagonalSignWitnessDstar : Matrix (Fin 2) (Fin 2) ℂ :=
@@ -78,6 +82,8 @@ theorem cmp99Eq351RawDiagonalUnit_neg_ne_printedDiagonal :
   norm_num [cmp99Eq351RawDiagonalUnit, cmp99Eq351PrintedDiagonal,
     cmp99Eq351DiagonalSignWitnessDstar, cmp99Eq351DiagonalSignWitnessPhi,
     cmp98AdCLM_apply, Matrix.mul_apply] at h00
+  have him := congrArg Complex.im h00
+  norm_num at him
 
 /-- Although the exact signs disagree, the pointwise matrix norm consumed by
 the quantitative estimate (3.54) is unchanged. This permits a corrected raw
