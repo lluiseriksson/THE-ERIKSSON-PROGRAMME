@@ -122,12 +122,41 @@ Eq. (3.60) factorization and resolvent have constructed it.
 There is one further real/complex gate before this target is even well typed.
 The C6d Eq. (3.60) wrapper currently constructs complex `baselinePrecision`
 and `perturbedPrecision`, while the Eq. (3.42) certificate is real.  The
-source-facing specialization must set the complex coefficient from the
-printed real `a_j`, identify its baseline real slice with
+source-facing specialization must identify its baseline real slice with
 `CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision`, and
 derive the physical perturbation equality using
 `cmp99Eq360_sourceGaugePrecision_eq_sub_perturbation`.  It may not accept a
 real precision, its complexification, or their equality as caller data.
+
+The scalar specialization here is not the bare cast `a_j : R -> C`.  The
+analytic tower's `starred_realSlice` theorem lands on the explicitly
+constructed source-weighted adjoint, while C6d.1 is presented with Lean's
+counting-space Hilbert adjoint.  The sealed identity
+
+```text
+T.Qprime.adjoint =
+  (spacing^4 / T.terminalSpacing^4) * T.weightedAdjoint
+```
+
+(`CMP99SourceWeightedRegionalTower.adjoint_eq_spacingRatio_smul_weightedAdjoint`)
+therefore forces the analytic coefficient to be
+
+```text
+((a_j * spacing^4 / T.terminalSpacing^4 : R) : C)
+```
+
+when the real-slice target is the current counting-Hilbert C6d.1 precision.
+The terminal-spacing formula must be derived from the internally generated
+retained tower (ultimately `terminalSpacing = M^depth * spacing`), not supplied
+as a scalar equality.  Omitting this factor would be the same normalization
+class as the earlier double-`M^-4` defect: all operators would typecheck while
+the physical coefficient changed silently.
+
+This also fixes the status of the C6d.1 phrase “printed `a_j`”.  Until the
+weighted/counting dictionary above is installed in the real-slice wrapper,
+the existing sealed module is a correct counting-Hilbert operator endpoint;
+it must not by itself be cited as equality with the printed analytic starred
+presentation.
 
 ## What remains physical
 
