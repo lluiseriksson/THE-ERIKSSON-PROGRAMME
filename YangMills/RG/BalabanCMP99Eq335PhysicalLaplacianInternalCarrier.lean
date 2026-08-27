@@ -42,6 +42,9 @@ theorem norm_covariantD0CLM_extendZero_eq_of_eqOn_internalBonds
   · by_cases hy : x.shift mu ∈ Omega.sites
     · have hbOmega : (x, mu) ∈ Omega.bonds := by
         simp [ActiveGaugeRegion.bonds, hx, hy]
+      simp only [covariantD0CLM_apply,
+        extendZeroZeroCLM_apply_of_mem Omega phi x hx,
+        extendZeroZeroCLM_apply_of_mem Omega phi (x.shift mu) hy]
       rw [show U (ConcreteEdge.mk x mu true) =
           V (ConcreteEdge.mk x mu true) from hUV (x, mu) hbOmega]
     · simp [covariantD0CLM_apply,
@@ -99,13 +102,14 @@ theorem cmp99ActiveRegionSourceCovariantLaplacian_eq_of_eqOn_internalBonds
   have hzero : (KU - KV).toLinearMap = 0 := by
     apply ((hKU.sub hKV).inner_map_self_eq_zero).mp
     intro phi
-    simp only [ContinuousLinearMap.coe_toLinearMap,
-      ContinuousLinearMap.sub_apply, inner_sub_left]
+    change inner ℝ (KU phi - KV phi) phi = 0
+    rw [inner_sub_left]
     rw [hKU phi phi, hKV phi phi, hquad phi]
     exact sub_self _
-  apply ContinuousLinearMap.toLinearMap_injective
   rw [← sub_eq_zero]
-  exact hzero
+  apply ContinuousLinearMap.ext
+  intro phi
+  simpa using congrArg (fun T => T phi) hzero
 
 end
 
