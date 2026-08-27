@@ -140,6 +140,19 @@ commutator is not accepted.  If the two conventions disagree, that is a
 source-dictionary no-go, not permission to flip the adjoint or the oriented
 one-cochain silently.
 
+The visual re-audit makes that gate concrete.  Printed (3.8) defines
+`D_U^* A` as transported incoming minus outgoing, while printed (3.51)
+places `-i[(D_U^* A)(x),phi(x)]` in the Laplacian expansion (equivalently
+the positive diagonal species in `V'_1`).  The repository's proved oriented
+sum is outgoing minus transported incoming.  Substituting only these named
+equalities into the raw commutator expansion therefore currently appears to
+give the opposite diagonal sign.  This is an observed source-consistency
+question, not yet a compiler theorem.  Before the three-species producer is
+written, a standalone matrix-level lemma must either derive the printed sign
+from the exact `ad` convention or seal the mismatch as a source-dictionary
+no-go.  Changing the already fixed derivative, adjoint, or negative-edge
+definitions to make the final display close is not an accepted repair.
+
 ## Printed quantitative endpoint
 
 Let `ell = L^j eta`. Under the source domain (3.37), printed Eq. (3.54) is

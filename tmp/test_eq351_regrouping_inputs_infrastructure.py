@@ -30,6 +30,14 @@ def test_contract_and_generators_share_exact_scope() -> None:
     assert len(contract.stages()) == 9
 
 
+def test_seal_draft_records_the_current_axiom_scope() -> None:
+    text = (ROOT / "tmp/EQ351-REGROUPING-INPUTS-SEAL-DRAFT.md").read_text(
+        encoding="utf-8-sig"
+    )
+    assert "twenty-eight distinct axiom" in text
+    assert "BalabanCMP99Eq351PhysicalComplexCovariantDivergence` — `14`" in text
+
+
 def test_promotion_scope_and_retargeting() -> None:
     promoter = load(
         "tmp/promote_eq351_regrouping_inputs_compiler_gate.py",

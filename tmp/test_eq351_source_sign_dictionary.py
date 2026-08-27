@@ -71,3 +71,5 @@ def test_design_rejects_unscaled_divergence_as_printed_adjoint() -> None:
     assert "may not be replaced by the unscaled divergence" in text
     assert "The oriented endpoint dictionary is a separate gate" in text
     assert "source-dictionary no-go" in text
+    assert "appears to\ngive the opposite diagonal sign" in text
+    assert "a standalone matrix-level lemma" in text

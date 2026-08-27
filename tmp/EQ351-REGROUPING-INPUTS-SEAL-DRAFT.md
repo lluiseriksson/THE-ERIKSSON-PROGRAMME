@@ -12,12 +12,12 @@ eight source/audit files in that gate are present and contain no
 
 ## Exact compiler scope
 
-The gate contains three source/audit pairs and nineteen distinct axiom
+The gate contains three source/audit pairs and twenty-eight distinct axiom
 readouts:
 
 1. `BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion` — `1`;
 2. `BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization` — `13`;
-3. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence` — `5`.
+3. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence` — `14`.
 
 It then builds a cold `YangMillsCore`.  The archive verifier accepts only
 `propext`, `Classical.choice` and `Quot.sound`, rejects `sorryAx` and
