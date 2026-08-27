@@ -331,5 +331,16 @@ This inventory records implementation state, not mathematical credit:
   producers and `BalabanCMP99Eq360ComplexSourcePrecisionPerturbation` are not
   materialized.  They remain the finite source-facing suffix of this chain.
 
+The fail-closed execution order is fixed before another cold run.  First seal
+the already promoted adjoint-composition/positive-bond pair with its dedicated
+four-file gate.  Then promote and cold-seal the ten-file auxiliary Eq. (3.60)
+gate.  Only after both disjoint notice sets are retired may the six-file
+regrouping-input gate be promoted.  The older combined regional runner remains
+a diagnostic inventory; its eight-file sealer overlaps the regional
+Laplacian notices owned by the ten-file Eq. (3.60) gate and therefore must not
+be used as a second notice-removal path.  This ordering changes no theorem and
+grants no mathematical credit; it prevents two evidence tools from claiming
+the same PRE-VALIDATION boundary.
+
 None of these prefix states moves `20/41`, attains window 15 or inhabits
 `TermSource`.
