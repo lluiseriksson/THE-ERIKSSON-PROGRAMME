@@ -21,12 +21,12 @@ import urllib.request
 
 DEBUG_REV = "c6d-terminal-pair-warm-v1"
 BASE_SOURCE_SHA = "81cc22e41d46cce150c2a263c85e4acb90087153"
-SCRATCH_SHA = "63174140d35c1249f7ea8d81af98abbe5310be62"
+SCRATCH_SHA = "f829ddf43c6c618d72bf12caa551e36cf482b4f5"
 ROOT = Path("/content/hrpoly-c6d-next-real-slice")
 EVIDENCE = Path("/content/hrpoly-c6d-terminal-pair-debug")
 FILES = {
     "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPair.draft.lean":
-        "bbb6f058fca14a8840a3462ccf3a60af15126902fae17826650ccc9a657ff740",
+        "f49dcfa2a406cee67f15221c35b68420a839f07922c4ca67ad79e21e0ee97dcd",
     "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPairAudit.draft.lean":
         "fd1a11f5a36934309923c78a226ef02eb269d09c73af38088d4a697b56526e35",
 }
