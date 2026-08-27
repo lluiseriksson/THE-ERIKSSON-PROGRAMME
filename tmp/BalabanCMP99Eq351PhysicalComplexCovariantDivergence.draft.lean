@@ -86,7 +86,7 @@ reverse link; it is not inferred from the positive-bond formula. -/
               (U (ConcreteEdge.mk (x.shiftBack i) i false)))
             (phi (x.shiftBack i)) - phi x) := by
   simp [cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference,
-    ConcreteEdge.srcV, ConcreteEdge.dstV]
+    ConcreteEdge.srcV, ConcreteEdge.dstV, FinBox.shift_shiftBack]
 
 /-- Recovering the transported endpoint from the printed source derivative.
 The nonzero-spacing premise is visible exactly at the cancellation step. -/
