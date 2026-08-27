@@ -164,15 +164,16 @@ the dictionary into a field.
 Neither the tower equality nor equality of the terminal precisions may be
 accepted from the caller.  This gate moves neither `20/41` nor window 15.
 
-The current Eq. (3.60) scratch also still carries the baseline
+An earlier Eq. (3.60) scratch still carried the baseline
 `CMP99SourceUbarRadiusChain` as a parameter of its input type.  Keeping that
-parameter outside the structure does not discharge it: it is still a
-per-scale proof family supplied by the caller.  Before the scratch can become
-the public source-facing consumer, that chain must be constructed internally
-from the already sealed one-budget scalar producer (one initial radius and
-one terminal-smallness gate), or the public theorem must wrap the scratch and
-perform that construction.  A bare chain parameter is not an accepted final
-interface and cannot be hidden by treating it as an implicit argument.
+parameter outside the structure would not have discharged it: it was still a
+per-scale proof family supplied by the caller.  The current PRE-VALIDATION
+source replaces it by `CMP99SourceUbarClosedBudget` (one initial-radius
+nonnegativity proof and one terminal-smallness gate) and constructs
+`toRadiusChain` internally.  This closes the interface defect statically, but
+does not become evidence until the corrected source/audit pair passes its
+compiler gate.  A bare chain parameter remains forbidden in any later public
+wrapper, including as an implicit argument.
 
 There is also a model gate, not a coercible convention.  The sealed analytic
 real-slice step uses `matrixSUNAdjointModel Nc` literally, whereas the C6d
