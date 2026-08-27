@@ -14,6 +14,20 @@ ROOT = Path(__file__).resolve().parents[1]
 PATHS_FILE = ROOT / "tmp" / "EQ360-COMPLEX-PHYSICAL-COMPILER-GATE-DRAFT-PATHS.txt"
 CORE = "YangMillsCore.lean"
 EXPECTED_PATHS = 10
+CLOSED_INPUT_DRAFT = "tmp/BalabanCMP99Eq360ComplexClosedPhysicalPrecision.draft.lean"
+CLOSED_INPUT_FIELDS = {
+    "U",
+    "A",
+    "eta",
+    "epsilonU",
+    "rA",
+    "R",
+    "rA_nonneg",
+    "A_bound",
+    "perturbation_small",
+    "baseline_near_identity",
+    "radiusBudget",
+}
 REQUIRED_PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerPair.lean",
     "YangMills/RG/BalabanCMP99Eq359TowerRealSliceAgreement.lean",
@@ -113,6 +127,33 @@ def retarget_imports(data: bytes) -> bytes:
     return text.encode("utf-8")
 
 
+def require_closed_input_contract(relative: str, data: bytes) -> None:
+    if relative != CLOSED_INPUT_DRAFT:
+        return
+    text = data.decode("utf-8")
+    match = re.search(
+        r"structure CMP99Eq360ComplexClosedPhysicalInput\b[\s\S]*? where\n"
+        r"(?P<body>[\s\S]*?)\n\nnamespace CMP99Eq360ComplexClosedPhysicalInput\b",
+        text,
+    )
+    if match is None:
+        raise RuntimeError("EQ360_CLOSED_INPUT_STRUCTURE_MISSING")
+    body = match.group("body")
+    fields: set[str] = set()
+    for declaration in re.findall(
+        r"(?m)^  ([A-Za-z_][A-Za-z0-9_']*(?: [A-Za-z_][A-Za-z0-9_']*)*)\s*:",
+        body,
+    ):
+        fields.update(declaration.split())
+    if fields != CLOSED_INPUT_FIELDS:
+        raise RuntimeError(
+            "EQ360_CLOSED_INPUT_FIELDS="
+            f"{sorted(fields)!r} WANT={sorted(CLOSED_INPUT_FIELDS)!r}"
+        )
+    if "→L[" in body or re.search(r"(?m)^  .*\s=\s.*$", body):
+        raise RuntimeError("EQ360_CLOSED_INPUT_FREE_OPERATOR_OR_EQUALITY")
+
+
 def require_prerequisites(source_sha: str) -> None:
     for relative in REQUIRED_PREREQUISITES:
         data = git_blob(source_sha, relative)
@@ -157,6 +198,7 @@ def main() -> int:
     rows: list[tuple[str, bytes]] = []
     for scratch in selected:
         data = require_clean_blob(args.source_sha, scratch)
+        require_closed_input_contract(scratch, data)
         target = destination(scratch)
         require_absent(args.source_sha, target)
         rows.append((target, retarget_imports(data)))
