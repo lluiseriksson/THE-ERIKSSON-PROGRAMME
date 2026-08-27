@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hot Colab diagnostic for the C6d regional ambient-completion scratch pair.
+"""Hot Colab diagnostic for the post-Eq360 C6d dictionary scratch pairs.
 
 This is deliberately not seal evidence.  It reuses the `.lake` tree of the
 completed C6d cold checkout only to turn elaboration errors into a short
@@ -20,9 +20,17 @@ import time
 REMOTE = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 COLD_ROOT = Path("/content/hrpoly-c6d-next-real-slice")
 DEBUG_ROOT = Path("/content/hrpoly-c6d-canonical-ambient-completion-debug")
-SOURCE = "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletion.draft.lean"
-AUDIT = "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.draft.lean"
-EXPECTED_AXIOM_HEADERS = 8
+PAIRS = (
+    (
+        "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletion.draft.lean",
+        "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.draft.lean",
+    ),
+    (
+        "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionary.draft.lean",
+        "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionaryAudit.draft.lean",
+    ),
+)
+EXPECTED_AXIOM_HEADERS = 10
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
@@ -88,30 +96,28 @@ def main() -> int:
     head = run(["git", "rev-parse", "HEAD"], cwd=DEBUG_ROOT).strip()
     if head != args.source_sha:
         raise RuntimeError(f"SOURCE_HEAD={head} WANT={args.source_sha}")
-    for relative in (SOURCE, AUDIT):
+    for relative in (item for pair in PAIRS for item in pair):
         if not (DEBUG_ROOT / relative).is_file():
             raise RuntimeError("SOURCE_BLOB_MISSING=" + relative)
 
     run(["cp", "-al", str(COLD_ROOT / ".lake"), str(DEBUG_ROOT / ".lake")])
     (DEBUG_ROOT / ".lake/build/lib/lean/tmp").mkdir(parents=True, exist_ok=True)
 
-    run(
-        [
-            "lake", "env", "lean", SOURCE, "-o",
-            ".lake/build/lib/lean/tmp/"
-            "BalabanCMP99ActiveRegionCanonicalAmbientCompletion.draft.olean",
-        ],
-        cwd=DEBUG_ROOT,
-    )
-    audit_output = run(
-        [
-            "lake", "env", "lean", AUDIT, "-o",
-            ".lake/build/lib/lean/tmp/"
-            "BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.draft.olean",
-        ],
-        cwd=DEBUG_ROOT,
-    )
-    parse_axioms(audit_output)
+    audit_outputs: list[str] = []
+    for source, audit in PAIRS:
+        source_output = ".lake/build/lib/lean/tmp/" + Path(source).stem + ".olean"
+        audit_output = ".lake/build/lib/lean/tmp/" + Path(audit).stem + ".olean"
+        run(
+            ["lake", "env", "lean", source, "-o", source_output],
+            cwd=DEBUG_ROOT,
+        )
+        audit_outputs.append(
+            run(
+                ["lake", "env", "lean", audit, "-o", audit_output],
+                cwd=DEBUG_ROOT,
+            )
+        )
+    parse_axioms("\n".join(audit_outputs))
     print(
         "FINAL_STATUS=PASS "
         f"source_sha={args.source_sha} axiom_headers={EXPECTED_AXIOM_HEADERS} "
