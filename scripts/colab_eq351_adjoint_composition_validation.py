@@ -16,7 +16,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = '0c88ed3c45626592367e2091a5f54c69cb624e3a'
+SOURCE_SHA = 'ca980e1c47adad8fc628af0346bddb07d791bd18'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -43,7 +43,7 @@ MODULES = [
     ('BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization', 6),
 ]
 
-runner.RUNNER_REV = 'eq351-adjoint-composition-cold-v1'
+runner.RUNNER_REV = 'eq351-adjoint-composition-cold-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq351-adjoint-composition")
 runner.EVIDENCE = Path("/content/hrpoly-eq351-adjoint-composition-evidence")
@@ -51,9 +51,9 @@ runner.ARCHIVE = Path("/content/hrpoly-eq351-adjoint-composition-evidence.tar.gz
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq351-adjoint-composition-paths.txt")
 runner.SOURCE_BLOBS = {
     'YangMillsCore.lean': 'eb460cec95fc88f8f751858b30f39c624d42e7bd266cc5942b8b56b7d6548e08',
-    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointComposition.lean': '2e0b2711d43899d58a723aac2a55d0707d32b2ea67435f1cbac88f399bdee33f',
+    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointComposition.lean': '82e35233ddef23f8df9dbfa456fbb08163d284b968c966cdd382baf22b71dc65',
     'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointCompositionAudit.lean': 'bb65505690baeefe1d0e9be0dfbfec4400f8c2080ce8523c8c2fe2cc0554543b',
-    'YangMills/RG/BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization.lean': '455d62543cf2add00dc18258cf0531961eab6c4451398cf0fbabeae594d24e0d',
+    'YangMills/RG/BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization.lean': '2b66901bc4aa32cbba44d8c78009d15f1282bb68fd2c4d551f54ac144c95b43f',
     'YangMills/RG/BalabanCMP99Eq351PhysicalComplexPositiveBondFactorizationAudit.lean': 'a8dd09186034e5984876d908845c50fbe2f405b64b86a453bbc96b1f2ebaa4d1',
 }
 
