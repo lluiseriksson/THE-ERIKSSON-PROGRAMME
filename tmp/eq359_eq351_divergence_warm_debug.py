@@ -21,14 +21,14 @@ import time
 ROOT = Path("/content/hrpoly-eq359-real-slice")
 EVIDENCE = Path("/content/hrpoly-eq359-real-slice-evidence/evidence.json")
 EQ359_SOURCE = "cd6ff65638f0e09e2533733df2d7176c10714a3a"
-DEBUG_SOURCE = "138e430e14a77519ba73143755e82b03fcac3b6e"
+DEBUG_SOURCE = "e87e833bf84e597e99ac7fb171c23046965abb2d"
 SOURCE_DRAFT = (
     "tmp/BalabanCMP99Eq351PhysicalComplexCovariantDivergence.draft.lean"
 )
 AUDIT_DRAFT = (
     "tmp/BalabanCMP99Eq351PhysicalComplexCovariantDivergenceAudit.draft.lean"
 )
-SOURCE_BLOB = "11ff0805cd6ba5c9312417491c6dd40b0012cc7c"
+SOURCE_BLOB = "a24d8ac01ea0aebc9aadcf168c7c838de9b36c58"
 AUDIT_BLOB = "7ec4dd3da539bae6ea34a5003b7d970d3015ebee"
 MANIFEST_BLOB = "a9ef7ddbb466ffb360718a5e0f3e54f5b5217a87"
 TOOLCHAIN_BLOB = "87b20aaf848f44309e4d34c1f941c70a2283f22b"
