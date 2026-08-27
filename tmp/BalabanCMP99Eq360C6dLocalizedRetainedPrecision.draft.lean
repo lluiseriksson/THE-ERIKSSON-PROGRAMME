@@ -1,4 +1,5 @@
-import tmp.BalabanCMP99Eq359SourceRetainedPhysicalTowerPair.draft
+import tmp.BalabanCMP99SourcePhysicalRealSliceTowerPair.draft
+import tmp.BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget.draft
 import tmp.BalabanCMP99Eq360ComplexRegionalLaplacian.draft
 import tmp.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.draft
 import tmp.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.draft
@@ -184,28 +185,68 @@ noncomputable def baselineRetainedTowerRealSliceAgreement
     (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
     retainedU chain retainedUSmall
 
-/-- The Eq. (3.59) pair uses only the canonical retained extensions.  Its
-common target is constructed by the closed paired recursion. -/
+/-- The Eq. (3.59) pair uses only the canonical retained physical extensions.
+The perturbed physical radius chain is derived from the stronger closed
+complex budget; it is not a second caller hypothesis.  Both analytic branches
+are then generated as literal compact real slices on the common terminal
+bundle determined internally by `regions`. -/
 noncomputable def retainedTowerPair
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
       halpha1 chain) :
     CMP99Eq359ComplexRegionalTowerPair (Nc := Nc) Omega eta := by
-  letI : NeZero (4 * (M - 1)) :=
-    cmp99Eq360C6dRadiusDimensionNeZero hM
   let W := R.toCubeWitness C alpha1 hscale
+  let epsilon0 := cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1
+  let epsilon1 := cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc
+    epsilon0 I.z I.rA
+  let retainedU := regions.retainedFineExtension W.transformedBackground
+  let retainedA := regions.retainedFineOneCochainExtension I.A
+  let perturbedU := cmp98PhysicalSuLeftVariation retainedU retainedA I.z
   have hlocal : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
       ‖(W.transformedBackground (positiveEdgeOfPhysicalBond q) :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
-          cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 :=
+          epsilon0 :=
     W.retainedFineReadBonds_nearIdentity regions
       (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
         C D regions)
       halpha1
-  exact regions.retainedComplexClosedPhysicalTowerPair
-    (by norm_num : 2 ≤ 4) hM eta W.transformedBackground I.A I.z
-    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) I.rA I.Rmax
-    chain.epsilon_nonneg I.rA_nonneg I.retainedA_bound
-    I.perturbation_small hlocal I.radiusBudget
+  have retainedU_small : ∀ e : ConcreteEdge 4 (L * N'),
+      ‖(retainedU e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon0 :=
+    regions.norm_retainedFineExtension_sub_one_le
+      W.transformedBackground epsilon0 chain.epsilon_nonneg hlocal
+  have retainedU_positive_small : ∀ b,
+      ‖(retainedU (positiveEdgeOfPhysicalBond b) :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon0 := by
+    intro b
+    exact retainedU_small (positiveEdgeOfPhysicalBond b)
+  have retainedA_bound : ∀ b,
+      ‖cmp99Eq337PhysicalComplexifyOneCochain retainedA b‖ ≤ I.rA := by
+    intro b
+    simpa [retainedA,
+      CMP99SourceActiveRegionChain.retainedFineComplexOneCochain] using
+      I.retainedA_bound b
+  have analyticPerturbedSmall : ∀ b,
+      ‖(cmp99Eq337PhysicalComplexPerturbedBackground retainedU
+          (cmp99Eq337PhysicalComplexifyOneCochain retainedA) I.z b :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon1 := by
+    intro b
+    simpa [epsilon1] using
+      norm_cmp99Eq337PhysicalComplexPerturbedBackground_apply_sub_one_le
+        retainedU (cmp99Eq337PhysicalComplexifyOneCochain retainedA) I.z
+        epsilon0 I.rA retainedA_bound I.perturbation_small
+        retainedU_positive_small b
+  have perturbedU_small : ∀ e : ConcreteEdge 4 (L * N'),
+      ‖(perturbedU e :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon1 := by
+    have hslice := cmp99Eq337PhysicalComplexPerturbedBackground_realSlice
+      retainedU retainedA I.z
+    rw [hslice] at analyticPerturbedSmall
+    intro e
+    simpa [perturbedU] using analyticPerturbedSmall e
+  let chain1 : CMP99SourceUbarRadiusChain 4 M Nc depth epsilon1 :=
+    I.radiusBudget.toSourceUbarRadiusChain (by norm_num : 2 ≤ 4) hM
+  exact regions.physicalRealSliceComplexTowerPair
+    (by norm_num : 2 ≤ 4) hM eta epsilon0 epsilon1 retainedU perturbedU
+    chain chain1 retainedU_small perturbedU_small
 
 /-- Literal full-background baseline regional Laplacian. -/
 noncomputable def baselineLaplacian
