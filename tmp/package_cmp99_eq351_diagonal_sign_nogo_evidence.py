@@ -15,8 +15,8 @@ import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_SHA = "038fc54bd1286f9a48ac6944d9b366569fe651bf"
-RUNNER_REV = "cmp99-eq351-diagonal-sign-nogo-v1"
+SOURCE_SHA = "176c0d46ea91ae2325d2cf26a526d76198ed0fa8"
+RUNNER_REV = "cmp99-eq351-diagonal-sign-nogo-v2"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 ASSET_SHA = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
 SOURCE_PATHS = (
