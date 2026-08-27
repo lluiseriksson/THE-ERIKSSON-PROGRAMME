@@ -57,10 +57,7 @@ theorem cmp99Eq351RawDiagonalUnit_neg_eq_positive
     cmp99Eq351RawDiagonalUnit (-Dstar) phi =
       Complex.I • cmp98AdCLM Dstar phi := by
   simp only [cmp99Eq351RawDiagonalUnit, cmp98AdCLM_apply, neg_mul, mul_neg]
-  have hcomm :
-      -(Dstar * phi) + phi * Dstar = -(Dstar * phi - phi * Dstar) := by
-    abel
-  rw [hcomm, smul_neg, neg_neg]
+  module
 
 /-- A smallest noncommuting source-adjoint/field pair. -/
 def cmp99Eq351DiagonalSignWitnessDstar : Matrix (Fin 2) (Fin 2) ℂ :=
