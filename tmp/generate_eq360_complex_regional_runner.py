@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the pinned cold runner for the Eq. (3.60) regional prefix."""
+"""Generate the pinned cold runner for the Eq. (3.51)/(3.60) regional prefix."""
 
 from __future__ import annotations
 
@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "scripts" / "colab_eq360_complex_regional_validation.py"
 BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
+    ("BalabanCMP99ComplexSpecialLinearAdjointComposition", 1),
+    ("BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization", 6),
     ("BalabanCMP99Eq360ComplexRegionalLaplacian", 8),
     ("BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice", 3),
 )
@@ -66,9 +68,10 @@ def render(source_sha: str, runner_rev: str) -> str:
     return f'''#!/usr/bin/env python3
 """Cold validation of the literal analytic regional-Laplacian prefix.
 
-The queue certifies the source stencil and its compact real-slice dictionary.
-It does not certify the Eq. (3.51)--(3.54) regrouping/bound, the regional
-resolvent, any transported physical action, window 15, 20/41 or TermSource.
+The queue certifies the two exact Eq. (3.51) algebraic prerequisites, the
+source stencil and its compact real-slice dictionary.  It does not certify
+the Eq. (3.51)--(3.54) three-species regrouping/bound, the regional resolvent,
+any transported physical action, window 15, 20/41 or TermSource.
 """
 
 import hashlib

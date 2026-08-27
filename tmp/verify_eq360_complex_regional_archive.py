@@ -137,7 +137,7 @@ def main() -> int:
             audit_stages.append(
                 f"eq360_regional_{index:02d}_{module.lower()}_audit"
             )
-        if len(expected) != 11 or len(set(expected)) != 11:
+        if len(expected) != 18 or len(set(expected)) != 18:
             raise RuntimeError("EQ360_COMPLEX_REGIONAL_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)

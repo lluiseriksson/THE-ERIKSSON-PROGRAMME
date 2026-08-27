@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static contract for the literal Eq. (3.60) regional-stencil prefix."""
+"""Static contract for the literal Eq. (3.51)/(3.60) regional prefix."""
 
 from __future__ import annotations
 
@@ -11,6 +11,8 @@ import subprocess
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
+    ("BalabanCMP99ComplexSpecialLinearAdjointComposition", 1),
+    ("BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization", 6),
     ("BalabanCMP99Eq360ComplexRegionalLaplacian", 8),
     ("BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice", 3),
 )

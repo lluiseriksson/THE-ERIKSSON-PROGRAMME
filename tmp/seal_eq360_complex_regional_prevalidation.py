@@ -50,7 +50,7 @@ def read_evidence(path: Path) -> dict:
     result = json.loads(path.read_text(encoding="utf-8"))
     if result.get("status") != "EQ360_COMPLEX_REGIONAL_EVIDENCE_OK":
         raise RuntimeError("EQ360_COMPLEX_REGIONAL_SEAL_STATUS_MISMATCH")
-    if result.get("expected_declarations") != 11:
+    if result.get("expected_declarations") != 18:
         raise RuntimeError("EQ360_COMPLEX_REGIONAL_SEAL_DECLARATIONS_MISMATCH")
     source_sha = result.get("source_sha")
     if not isinstance(source_sha, str) or re.fullmatch(r"[0-9a-f]{40}", source_sha) is None:
@@ -66,7 +66,7 @@ def paths(contract) -> list[str]:
         for module, _ in contract.MODULES
         for suffix in ("", "Audit")
     ]
-    if len(rows) != 4 or len(set(rows)) != 4:
+    if len(rows) != 8 or len(set(rows)) != 8:
         raise RuntimeError("EQ360_COMPLEX_REGIONAL_SEAL_SCOPE_INVALID")
     return rows
 
@@ -114,9 +114,9 @@ def main() -> int:
     notice_count = sum(
         data.count(b"PRE-VALIDATION:") for _, data in original_rows
     )
-    if notice_count != 4:
+    if notice_count != 8:
         raise RuntimeError(
-            f"EQ360_COMPLEX_REGIONAL_SEAL_NOTICE_COUNT_MISMATCH={notice_count}:4"
+            f"EQ360_COMPLEX_REGIONAL_SEAL_NOTICE_COUNT_MISMATCH={notice_count}:8"
         )
     rows = [
         (relative, remover.remove_prevalidation_block(data, relative))
@@ -126,7 +126,7 @@ def main() -> int:
     if not args.apply:
         print(
             "EQ360_COMPLEX_REGIONAL_SEAL_PREVIEW_OK "
-            f"files=4 notices={notice_count} source_sha={result['source_sha']} "
+            f"files=8 notices={notice_count} source_sha={result['source_sha']} "
             f"manifest_sha256={manifest_sha}"
         )
         return 0
@@ -158,7 +158,7 @@ def main() -> int:
 
     print(
         "EQ360_COMPLEX_REGIONAL_SEAL_APPLY_OK "
-        f"files=4 notices={notice_count} source_sha={result['source_sha']} "
+        f"files=8 notices={notice_count} source_sha={result['source_sha']} "
         f"manifest_sha256={manifest_sha}"
     )
     return 0
