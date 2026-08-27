@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Remove PRE-VALIDATION only after exact Eq. (3.60) regional evidence."""
+"""Legacy regional evidence reader; notice removal is intentionally disabled.
+
+The regional scope overlaps the ten-file physical Eq. (3.60) gate.  The live
+fail-closed route seals the disjoint adjoint-composition pair first and then
+uses ``seal_eq360_complex_physical_prevalidation.py`` for the ten Eq. (3.60)
+files.  Keeping this module readable preserves old evidence tooling without
+leaving a second writer for the same PRE-VALIDATION notices.
+"""
 
 from __future__ import annotations
 
@@ -104,6 +111,11 @@ def main() -> int:
     parser.add_argument("--evidence-json", type=Path, required=True)
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
+    raise RuntimeError(
+        "EQ360_COMPLEX_REGIONAL_SEAL_SUPERSEDED="
+        "seal_eq351_adjoint_composition_prevalidation.py+"
+        "seal_eq360_complex_physical_prevalidation.py"
+    )
     result = read_evidence(args.evidence_json.resolve())
     remover = load(BASE_SEALER, "eq360_complex_regional_notice_remover")
     contract = load(CONTRACT_PATH, "eq360_complex_regional_seal_contract")
