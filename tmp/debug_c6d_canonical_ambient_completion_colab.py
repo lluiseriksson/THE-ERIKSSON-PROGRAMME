@@ -30,7 +30,7 @@ PAIRS = (
         "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionaryAudit.draft.lean",
     ),
 )
-EXPECTED_AXIOM_HEADERS = 10
+EXPECTED_AXIOM_HEADERS = 11
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 

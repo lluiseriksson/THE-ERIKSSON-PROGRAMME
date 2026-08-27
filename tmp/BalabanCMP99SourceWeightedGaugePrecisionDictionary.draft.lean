@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceGaugePrecision
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
 import YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance
 
 /-!
@@ -50,6 +51,29 @@ theorem cmp99SourceGaugePrecision_eq_weightedAdjoint
     ContinuousLinearMap.comp_apply,
     cmp99SourceWeightedAdjointCountingCoefficient]
   module
+
+/-- On the literal source-generated tower the counting coefficient contains
+exactly the terminal-scale ratio `spacing^d / (M^depth * spacing)^d`.  The
+terminal spacing is derived from the generated tower; it is not supplied as a
+free dictionary equality. -/
+theorem CMP99SourceActiveRegionChain.weightedQprimeTower_countingCoefficient
+    {M Nc depth : ℕ} [NeZero d] [NeZero M] [NeZero Nc]
+    {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing epsilon a : ℝ) (background : GaugeConfig d N (SUN Nc))
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d N,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    letI : NeZero N := regions.neZero
+    cmp99SourceWeightedAdjointCountingCoefficient
+        (regions.weightedQprimeTower hd hM rho spacing epsilon background
+          chain fineSmall) a =
+      a * (spacing ^ d / (((M : ℝ) ^ depth * spacing) ^ d)) := by
+  letI : NeZero N := regions.neZero
+  rw [cmp99SourceWeightedAdjointCountingCoefficient,
+    regions.weightedQprimeTower_terminalSpacing hd hM rho spacing epsilon
+      background chain fineSmall]
 
 end
 

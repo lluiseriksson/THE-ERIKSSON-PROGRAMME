@@ -6,5 +6,6 @@ namespace YangMills.RG
 
 #print axioms cmp99SourceWeightedAdjointCountingCoefficient
 #print axioms cmp99SourceGaugePrecision_eq_weightedAdjoint
+#print axioms CMP99SourceActiveRegionChain.weightedQprimeTower_countingCoefficient
 
 end YangMills.RG
