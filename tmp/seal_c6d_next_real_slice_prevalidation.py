@@ -23,7 +23,7 @@ BASE_SEALER = ROOT / "tmp" / "seal_eq337_complex_perturbed_background_prevalidat
 CONTRACT_PATH = ROOT / "tmp" / "verify_c6d_next_real_slice_contract.py"
 ARCHIVE_VERIFIER = ROOT / "tmp" / "verify_c6d_next_real_slice_archive.py"
 SOURCE_SHA = "81cc22e41d46cce150c2a263c85e4acb90087153"
-RUNNER_REV = "c6d-next-real-slice-v1"
+RUNNER_REV = "c6d-next-real-slice-v3"
 
 
 def load(path: Path, name: str):
