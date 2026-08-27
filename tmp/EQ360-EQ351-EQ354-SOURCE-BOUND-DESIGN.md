@@ -183,6 +183,11 @@ arrow.
    `cmp99Eq351PhysicalComplexOrientedPerturbation_neg`.  That factorization
    is a theorem/sublemma of the regrouping path, not a caller-supplied
    equality and not a consequence silently attributed to the positive case.
+   The same leaf exposes the backward-stencil form as a theorem: the inverse
+   of the canonical perturbed positive link is rewritten, by the gauge-config
+   reversal law, to the oriented negative exponential times the compact
+   negative link.  Module 3 may cite that result; it may not receive the
+   inverse-link equality as an input.
 2c. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence`: construct the
    complex `D_U^* A` stencil from the same physical background and one-
    cochain, and identify it with the sum of the canonical outgoing and
@@ -313,7 +318,7 @@ This inventory records implementation state, not mathematical credit:
   been sealed.  This is dependency ordering only, not compiler evidence and
   not mathematical credit.  The cold queue scope is independently fixed by
   `verify_eq351_regrouping_inputs_contract.py`: three source/audit pairs,
-  fifteen axiom readouts and a cold root, generated only after promotion by
+  sixteen axiom readouts and a cold root, generated only after promotion by
   `generate_eq351_regrouping_inputs_runner.py`.  The one-cell launcher,
   durable-archive verifier and six-notice selective sealer are likewise fixed
   by the corresponding `generate_*_notebook`, `verify_*_archive` and

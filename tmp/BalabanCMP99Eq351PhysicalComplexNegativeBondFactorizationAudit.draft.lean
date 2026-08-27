@@ -15,3 +15,4 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedExponentSL_coe
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexPerturbedNegativeBondMatrix_eq_mul
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexPerturbedNegativeBondSL_eq_mul
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexPerturbedPositiveBondSL_inv_eq_oriented_mul

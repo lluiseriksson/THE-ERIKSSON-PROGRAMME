@@ -12,7 +12,7 @@ ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion", 1),
-    ("BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization", 10),
+    ("BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization", 11),
     ("BalabanCMP99Eq351PhysicalComplexCovariantDivergence", 4),
 )
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)

@@ -254,6 +254,34 @@ theorem cmp99Eq351PhysicalComplexPerturbedNegativeBondSL_eq_mul
     cmp99Eq351PhysicalComplexPerturbedNegativeBondMatrix_eq_mul
       U A eta x mu
 
+/-- Backward-stencil form of the same source factorization.
+
+The regional Laplacian reads the inverse of the positive link.  This theorem
+rewrites that inverse to the canonical negative edge by the gauge-config
+reversal law and then applies the internally proved negative factorization.
+No inverse-link equality is supplied by a caller. -/
+theorem cmp99Eq351PhysicalComplexPerturbedPositiveBondSL_inv_eq_oriented_mul
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (x : FinBox d N) (mu : Fin d) :
+    (cmp99Eq337PhysicalComplexPerturbedBackground U A eta
+        (ConcreteEdge.mk x mu true))⁻¹ =
+      cmp99Eq351PhysicalComplexOrientedExponentSL U A eta
+          (ConcreteEdge.mk x mu false) *
+        cmp99SUNToSpecialLinear Nc
+          (U (ConcreteEdge.mk x mu false)) := by
+  have hreverse :=
+    (cmp99Eq337PhysicalComplexPerturbedBackground U A eta).map_reverse
+      (ConcreteEdge.mk x mu true)
+  change
+    cmp99Eq337PhysicalComplexPerturbedBackground U A eta
+        (ConcreteEdge.mk x mu false) =
+      (cmp99Eq337PhysicalComplexPerturbedBackground U A eta
+        (ConcreteEdge.mk x mu true))⁻¹ at hreverse
+  rw [← hreverse]
+  exact cmp99Eq351PhysicalComplexPerturbedNegativeBondSL_eq_mul
+    U A eta x mu
+
 end
 
 end YangMills.RG

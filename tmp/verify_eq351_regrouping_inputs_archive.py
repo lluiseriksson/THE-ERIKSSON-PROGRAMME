@@ -135,7 +135,7 @@ def main() -> int:
             audit_stages.append(
                 f"eq351_regrouping_inputs_{index:02d}_{module.lower()}_audit"
             )
-        if len(expected) != 15 or len(set(expected)) != 15:
+        if len(expected) != 16 or len(set(expected)) != 16:
             raise RuntimeError("EQ351_REGROUPING_INPUTS_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)

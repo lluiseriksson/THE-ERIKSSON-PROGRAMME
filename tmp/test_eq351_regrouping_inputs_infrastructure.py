@@ -26,7 +26,7 @@ def test_contract_and_generators_share_exact_scope() -> None:
         "tmp/generate_eq351_regrouping_inputs_runner.py", "eq351_input_runner_test"
     )
     assert contract.MODULES == runner.MODULES
-    assert sum(count for _, count in contract.MODULES) == 15
+    assert sum(count for _, count in contract.MODULES) == 16
     assert len(contract.stages()) == 9
 
 

@@ -12,11 +12,11 @@ eight source/audit files in that gate are present and contain no
 
 ## Exact compiler scope
 
-The gate contains three source/audit pairs and fifteen distinct axiom
+The gate contains three source/audit pairs and sixteen distinct axiom
 readouts:
 
 1. `BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion` — `1`;
-2. `BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization` — `10`;
+2. `BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization` — `11`;
 3. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence` — `4`.
 
 It then builds a cold `YangMillsCore`.  The archive verifier accepts only
@@ -32,7 +32,8 @@ constructed internally:
 - the positive-bond exponential-adjoint expansion with its named nonlinear
   remainder;
 - the negative-bond factorization using the canonical oriented physical
-  perturbation;
+  perturbation, including the backward-stencil rewrite from the inverse
+  positive link by `GaugeConfig.map_reverse`;
 - the complex covariant divergence built from that same perturbation.
 
 It accepts no caller-supplied perturbed background, oriented field, diagonal
