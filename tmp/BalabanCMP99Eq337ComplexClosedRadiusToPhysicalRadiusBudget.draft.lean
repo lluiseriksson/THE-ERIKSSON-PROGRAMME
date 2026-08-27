@@ -134,8 +134,10 @@ noncomputable def CMP99ComplexClosedRadiusBudget.toSourceUbarRadiusChain
     (hd : 2 ≤ d) (hM : 2 ≤ M) {r0 R : ℝ}
     (B : CMP99ComplexClosedRadiusBudget
       (d * (M - 1)) M depth r0 R (cmp99UbarNoWindingThreshold Nc)) :
-    CMP99SourceUbarRadiusChain d M Nc depth r0 :=
-  (B.toSourceUbarClosedBudget hd hM).toRadiusChain
+    letI : NeZero d := ⟨by omega⟩
+    CMP99SourceUbarRadiusChain d M Nc depth r0 := by
+  letI : NeZero d := ⟨by omega⟩
+  exact (B.toSourceUbarClosedBudget hd hM).toRadiusChain
 
 end
 
