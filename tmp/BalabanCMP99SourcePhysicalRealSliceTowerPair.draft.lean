@@ -84,8 +84,7 @@ noncomputable def cmp99Eq359ComplexTowerQprimeTransport
     (h : T1.TerminalSpace = T0.TerminalSpace) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       T0.TerminalSpace.carrier := by
-  cases h
-  exact T1.Qprime
+  exact h ▸ T1.Qprime
 
 /-- Transport the independently generated printed-starred operator in the
 opposite direction along the same internally proved bundle equality. -/
@@ -95,8 +94,7 @@ noncomputable def cmp99Eq359ComplexTowerStarredTransport
     (h : T1.TerminalSpace = T0.TerminalSpace) :
     T0.TerminalSpace.carrier →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) := by
-  cases h
-  exact T1.starred
+  exact h ▸ T1.starred
 
 /-- Pair two source-generated compact-real-slice towers on the canonical
 target determined by the common region chain.  Radius chains and backgrounds
