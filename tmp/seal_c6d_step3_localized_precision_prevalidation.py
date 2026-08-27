@@ -78,11 +78,18 @@ def require_evidence(path: Path, source_sha: str, paths: list[str], verifier) ->
         raise RuntimeError("C6D_STEP3_EVIDENCE_BOUNDARY_HASH_MISMATCH")
 
 
-def require_clean_exact(paths: list[str], source_sha: str) -> None:
+def require_clean_exact(
+    paths: list[str], source_sha: str, allow_core_worktree_source_bytes: bool
+) -> None:
     resolved = run_git("rev-parse", f"{source_sha}^{{commit}}")
     if resolved.returncode != 0 or resolved.stdout.decode().strip() != source_sha:
         raise RuntimeError("C6D_STEP3_SOURCE_COMMIT_MISMATCH")
     for relative in [*paths, CORE]:
+        worktree = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
+        if relative == CORE and allow_core_worktree_source_bytes:
+            if worktree != git_blob(source_sha, relative):
+                raise RuntimeError("C6D_STEP3_ALLOWED_CORE_BYTES_DIVERGED")
+            continue
         status = run_git("status", "--porcelain=v1", "--", relative)
         if status.returncode != 0 or status.stdout:
             raise RuntimeError(
@@ -92,7 +99,6 @@ def require_clean_exact(paths: list[str], source_sha: str) -> None:
         child = run_git("diff", "--quiet", source_sha, "--", relative)
         if child.returncode != 0:
             raise RuntimeError(f"C6D_STEP3_BOUNDARY_DIVERGED={relative}")
-        worktree = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
         if worktree != git_blob(source_sha, relative):
             raise RuntimeError(f"C6D_STEP3_WORKTREE_BYTES_DIVERGED={relative}")
 
@@ -151,12 +157,15 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--evidence-json", type=Path, required=True)
+    parser.add_argument("--allow-core-worktree-source-bytes", action="store_true")
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
     verifier = load_verifier()
     paths = boundary_paths(verifier)
-    require_clean_exact(paths, args.source_sha)
+    require_clean_exact(
+        paths, args.source_sha, args.allow_core_worktree_source_bytes
+    )
     require_evidence(args.evidence_json, args.source_sha, paths, verifier)
     rows = [
         (relative, remove_prevalidation_block(git_blob(args.source_sha, relative), relative))

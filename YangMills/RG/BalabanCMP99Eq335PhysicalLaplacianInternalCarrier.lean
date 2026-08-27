@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityLaplacianLocality
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.35): minimal internal-bond carrier of the Dirichlet Laplacian
 
 The covariant derivative reads a one-bond collar, but after forming `D^*D`

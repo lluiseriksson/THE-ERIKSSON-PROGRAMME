@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalLaplacianInternalCarrier
 import YangMills.RG.BalabanCMP99Eq335SourceRegionDictionary
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.35): internal-bond Laplacian bridge for Corollary 3.6
 
 The printed inclusion `Omega'_0 subset square` controls both endpoints of

@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourceRetainedFineExtension
 
 /-!
 
-PRE-VALIDATION: the public terminal-bundle transport fields added below have
-not yet received a compiler or axiom-oracle verdict.
-
 
 # Retain every prefix of the localized source tower
 

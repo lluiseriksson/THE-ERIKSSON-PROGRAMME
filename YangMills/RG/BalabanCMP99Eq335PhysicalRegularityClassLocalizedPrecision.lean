@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge
 import YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecision
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # CMP99 (3.35): literal retained regional precision
 
 This candidate installs the printed operator

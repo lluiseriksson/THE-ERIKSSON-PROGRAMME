@@ -40872,3 +40872,42 @@ norm equality survives. This is a negative source-facing result, not a proof
 of Eq. (3.51), Eq. (3.54), the physical source regrouping, a row bound,
 window-15 attainment, rows 23--24, or a `TermSource`. Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 949 (2026-08-27, **C6d.1 literal localized retained precision sealed from one fresh Colab Pro+ root; 20/41 unchanged**)
+
+Exact mathematical source `38c4d4df881c99b5fe1a32e97f98563bb1356c0f`
+was validated in one fresh Colab Pro+ CPU/high-RAM checkout with the pinned
+Lean/Mathlib toolchain. Runner checkpoint
+`50b329574f54683304dfc6570536c46a32de104e`, notebook checkpoint
+`214746e0370af6c348537ac0ab08c2d14392c8ea` and runner revision
+`c6d-step3-localized-precision-v5` compiled the four source/audit pairs
+stop-on-first-error. The four focals completed in `1060.662`, `524.144`,
+`6.317` and `33.815` seconds; their audits completed in `9.080`, `9.735`,
+`19.332` and `27.938` seconds. Every stage exited `0`. The cold
+`YangMillsCore` root completed `11012` jobs in `6674.005` seconds, exit `0`,
+and the runner emitted literal `FINAL_STATUS=PASS`.
+
+The notebook output transport truncated early rows, so no compiler result was
+inferred from that display. The fail-closed package instead verifies the exact
+archived runner JSON, the executed notebook and a same-checkout audit
+supplement that reran only the four audit leaves. All `15` expected axiom
+readouts use only `[propext, Classical.choice, Quot.sound]` or a subset. The
+cold archive SHA-256 is
+`E0B5F4F53AA7C5E875683906D42986FEB9E7A6E061146F61F9D6192052A6E317`;
+the supplement SHA-256 is
+`2566D9AD76FFB702917FF9F101B76491D9427B566963BC95C389439A32964D82`;
+the executed notebook SHA-256 is
+`FEEF8BE58E20C8D23DBAAE93F96F42CFB7F20985BAFD82F7B8ED44BA8BD2871A`;
+and the local evidence manifest SHA-256 is
+`DD22525076B35948B313B1104B43C62B5DEC874559DA3CB43E28E95D5034B3CB`.
+
+The selective seal retires the PRE-VALIDATION notices from exactly the four
+C6d.1 source/audit pairs and imports those audits into `YangMillsCore`. The
+sealed objects construct the literal localized retained precision
+`Delta'_a = Delta_U + a_j Q'^* Q'` from the physical regularity witness and
+internally generated retained tower, with both summands and source spacing
+visible; they accept no free precision, `Qprime`, coercivity estimate, Green
+operator or second spacing. This does not construct Eq. (3.60), a regional
+Green/resolvent, uniform `B0, delta0`, window-15 attainment, rows 23--24 or a
+`TermSource`. Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

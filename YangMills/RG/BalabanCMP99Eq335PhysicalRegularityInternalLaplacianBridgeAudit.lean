@@ -1,6 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge
 
-/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
+
 
 namespace YangMills.RG
 

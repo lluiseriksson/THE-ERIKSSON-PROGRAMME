@@ -1,6 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq335PhysicalLaplacianInternalCarrier
 
-/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
+
 
 namespace YangMills.RG
 

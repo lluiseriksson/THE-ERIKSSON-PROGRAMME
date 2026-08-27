@@ -14744,12 +14744,39 @@ PRE-VALIDATION notices; sealed-manifest SHA-256 is
 `F96401B94D03CD0CBCA386A9D4825AB988DA43A3832276EA1C704B055C427EE3`.
 
 This is the finite C6d prefix and its three Eq. (3.35) physical consumer
-interfaces.  The exact next brick is C6d.1: the literal localized retained
-precision `Delta'_a = Delta_U + a_j Q'^* Q'`, with both summands and source
-spacing visible.  Coercivity, its Green inverse, transport of the four sealed
-fixed-depth CMP96 actions, uniform `B0, delta0`, window 15, rows 23--24 and
-`TermSource` remain open.  Counters stay exactly `20/41`,
-`TermSource = 0`; window 15 remains compatible but unattained.
+interfaces.  C6d.1 is now sealed separately below.  Coercivity, its Green
+inverse, transport of the four sealed fixed-depth CMP96 actions, uniform
+`B0, delta0`, window 15, rows 23--24 and `TermSource` remain open.  Counters
+stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
+
+### Step 8b.24/C6d.1: literal localized retained precision (COLAB-VERIFIED; 20/41 unchanged)
+
+The four C6d.1 source/audit pairs construct the regional
+`Delta'_a = Delta_U + a_j Q'^* Q'` from the physical regularity witness and
+the internally generated retained tower.  The Laplacian and normalized
+averaging summands, the source spacing and their literal sum remain separately
+visible; no free precision, `Qprime`, coercivity estimate, Green operator or
+second spacing is an input.
+
+Fresh source `38c4d4df881c99b5fe1a32e97f98563bb1356c0f` passed all eight
+focal/audit stages and a cold `YangMillsCore` root of `11012` jobs in
+`6674.005` seconds.  The same-checkout audit supplement confirms all `15`
+declarations use only the allowed axiom trio or a subset.  Cold archive,
+supplement and local manifest SHA-256 values are respectively
+`E0B5F4F53AA7C5E875683906D42986FEB9E7A6E061146F61F9D6192052A6E317`,
+`2566D9AD76FFB702917FF9F101B76491D9427B566963BC95C389439A32964D82`
+and
+`DD22525076B35948B313B1104B43C62B5DEC874559DA3CB43E28E95D5034B3CB`.
+
+The next exact boundary is the C6d-specific Eq. (3.60) route: first promote
+the physical zero-parameter baseline, retained one-cochain extension and
+recursive real-slice agreement, then build the wrapper with separate
+Laplacian and averaging backgrounds.  The old one-background Eq. (3.60)
+draft is not a valid C6d consumer.  Regional inversion, uniform
+`B0, delta0`, window 15, rows 23--24 and `TermSource` remain open.  Counters
+stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
 
 ### CMP99 Eq. (3.51) diagonal-sign no-go (COLAB-VERIFIED; 20/41 unchanged)
 
