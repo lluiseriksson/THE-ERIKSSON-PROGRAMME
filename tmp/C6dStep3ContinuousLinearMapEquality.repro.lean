@@ -31,3 +31,4 @@ example (KU KV : E →L[ℝ] E)
   intro phi
   simpa using congrArg (fun T => T phi) hzero
 
+end
