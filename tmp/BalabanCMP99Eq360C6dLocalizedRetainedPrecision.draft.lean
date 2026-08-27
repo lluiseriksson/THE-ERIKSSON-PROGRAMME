@@ -121,6 +121,57 @@ noncomputable def fullBackground1
   cmp99Eq337PhysicalComplexPerturbedBackground W.transformedBackground
     I.fullComplexOneCochain I.z
 
+/-- The full baseline is the canonical compact-real-slice embedding.  This
+named equality prevents the zero branch from becoming a second background
+choice. -/
+theorem fullBackground0_eq_realSlice
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    I.fullBackground0 =
+      cmp99PhysicalGaugeBackgroundToSpecialLinear
+        (R.toCubeWitness C alpha1 hscale).transformedBackground := by
+  exact cmp99Eq337PhysicalComplexPerturbedBackground_zero_realSlice
+    (R.toCubeWitness C alpha1 hscale).transformedBackground I.A
+
+/-- Canonical compact-real-slice agreement for the baseline retained tower.
+The physical tower and the analytic tower are both built internally, at the
+literal matrix `SUN` adjoint model. -/
+noncomputable def baselineRetainedTowerRealSliceAgreement
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) : by
+    let W := R.toCubeWitness C alpha1 hscale
+    let retainedU := regions.retainedFineExtension W.transformedBackground
+    let hlocal := W.retainedFineReadBonds_nearIdentity regions
+      (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+        C D regions)
+      halpha1
+    let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
+      W.transformedBackground
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+      chain.epsilon_nonneg hlocal
+    exact CMP99Eq359TowerRealSliceAgreement
+      (regions.physicalRealSliceComplexTower (by norm_num : 2 ≤ 4) hM eta
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+        retainedU chain retainedUSmall).toComplexTower
+      (regions.weightedQprimeTower (by norm_num : 2 ≤ 4) hM
+        (matrixSUNAdjointModel Nc) eta
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+        retainedU chain retainedUSmall) := by
+  let W := R.toCubeWitness C alpha1 hscale
+  let retainedU := regions.retainedFineExtension W.transformedBackground
+  let hlocal := W.retainedFineReadBonds_nearIdentity regions
+    (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+      C D regions)
+    halpha1
+  let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
+    W.transformedBackground
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    chain.epsilon_nonneg hlocal
+  exact regions.physicalRealSliceTowerAgreement
+    (by norm_num : 2 ≤ 4) hM eta
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    retainedU chain retainedUSmall
+
 /-- The Eq. (3.59) pair uses only the canonical retained extensions.  Its
 common target is constructed by the closed paired recursion. -/
 noncomputable def retainedTowerPair

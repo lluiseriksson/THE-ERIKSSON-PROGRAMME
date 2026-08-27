@@ -9,6 +9,8 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.cmp99Eq360C6dRadiusDimensionNeZero
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullBackground0
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullBackground1
+#print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullBackground0_eq_realSlice
+#print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineRetainedTowerRealSliceAgreement
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.retainedTowerPair
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineLaplacian
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.perturbedLaplacian
