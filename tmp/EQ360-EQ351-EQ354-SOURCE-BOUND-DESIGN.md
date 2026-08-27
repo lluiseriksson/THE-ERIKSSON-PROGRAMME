@@ -153,6 +153,28 @@ from the exact `ad` convention or seal the mismatch as a source-dictionary
 no-go.  Changing the already fixed derivative, adjoint, or negative-edge
 definitions to make the final display close is not an accepted repair.
 
+The convention itself is no longer an open interpretive escape.  Earlier on
+the same primary text CMP99 defines `R(U) X = U X U^-1`, and (3.50) rewrites
+the perturbed transport as
+`R(exp(i eta A')) = exp(i eta ad_{A'})`.  Differentiating this identity at
+zero fixes `ad_A X = A X - X A`, exactly the repository order.  With the
+canonical negative-edge perturbation required by inverse-link
+factorization, the oriented sum is `-eta * D_U^* A`; hence the raw term
+`-eta^-2 [i eta A', R(U) phi]` contributes
+`+i[(D_U^* A)(x), phi(x)]`, not the minus sign printed in (3.51).  The next
+artifact is therefore a standalone matrix-level sign no-go (plus an
+explicit noncommuting witness), followed by a source-dictionary decision.
+Until that artifact has a compiler/axiom verdict, neither printed sign is a
+producer and no Eq. (3.51) regrouping may be promoted.
+
+This exact-sign no-go does not by itself invalidate the quantitative endpoint
+(3.54): the canonical raw term and the printed term are negatives of one
+another, hence have equal pointwise matrix norm.  The no-go artifact also
+records that norm equality.  After it is compiler-verified, the source-facing
+route may use the corrected raw sign for the exact regrouping and the proved
+norm equality for the printed absolute estimate; it may not cite (3.51) as an
+exact identity with the printed diagonal sign.
+
 ## Printed quantitative endpoint
 
 Let `ell = L^j eta`. Under the source domain (3.37), printed Eq. (3.54) is
