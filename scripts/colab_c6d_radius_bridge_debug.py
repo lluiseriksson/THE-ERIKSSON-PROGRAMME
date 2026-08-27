@@ -142,8 +142,10 @@ def main() -> int:
 
 if __name__ == "__main__":
     try:
-        raise SystemExit(main())
+        exit_code = main()
     except BaseException as exc:
         print("FINAL_STATUS=FAIL", flush=True)
         print("FAILURE=" + repr(exc), flush=True)
         raise
+    if exit_code:
+        raise SystemExit(exit_code)
