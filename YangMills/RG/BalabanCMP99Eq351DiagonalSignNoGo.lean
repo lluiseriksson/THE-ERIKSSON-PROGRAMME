@@ -1,5 +1,4 @@
 import YangMills.RG.BalabanCMP98GAdSeries
-import Mathlib.Data.Matrix.Notation
 
 /-!
 # PRE-VALIDATION: CMP99 (3.51) diagonal-sign no-go
@@ -52,11 +51,11 @@ theorem cmp99Eq351RawDiagonalUnit_neg_eq_positive
 
 /-- A smallest noncommuting source-adjoint/field pair. -/
 def cmp99Eq351DiagonalSignWitnessDstar : Matrix (Fin 2) (Fin 2) ℂ :=
-  !![0, 1; 0, 0]
+  fun i j => if i = 0 ∧ j = 1 then 1 else 0
 
 /-- The companion field for the diagonal-sign witness. -/
 def cmp99Eq351DiagonalSignWitnessPhi : Matrix (Fin 2) (Fin 2) ℂ :=
-  !![0, 0; 1, 0]
+  fun i j => if i = 1 ∧ j = 0 then 1 else 0
 
 /-- The canonical raw diagonal and the sign printed in (3.51) are genuinely
 different; the discrepancy is not hidden by commutativity. -/
