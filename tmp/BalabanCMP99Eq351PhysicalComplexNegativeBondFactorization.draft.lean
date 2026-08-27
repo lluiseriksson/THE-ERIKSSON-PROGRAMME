@@ -158,6 +158,31 @@ def cmp99Eq351PhysicalComplexOrientedExponentSL
         (cmp99Eq351PhysicalComplexOrientedGeneratorMatrix U A eta e) :=
   rfl
 
+/-- The inverse of the oriented source exponential is the exponential of the
+negative of the same internally constructed generator.  The later negative-
+edge adjoint expansion cites this theorem rather than treating inversion of
+the exponential as a simplifier convention. -/
+@[simp] theorem cmp99Eq351PhysicalComplexOrientedExponentSL_inv_coe
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (e : ConcreteEdge d N) :
+    (((cmp99Eq351PhysicalComplexOrientedExponentSL U A eta e)⁻¹ :
+        Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
+      Matrix (Fin Nc) (Fin Nc) ℂ) =
+      physicalMatrixExp
+        (-cmp99Eq351PhysicalComplexOrientedGeneratorMatrix U A eta e) := by
+  let Y := cmp99Eq351PhysicalComplexOrientedGeneratorMatrix U A eta e
+  have hinv : (physicalMatrixExp Y)⁻¹ = physicalMatrixExp (-Y) := by
+    apply Matrix.inv_eq_left_inv
+    simpa only [physicalMatrixExp] using cmp98_exp_neg_mul_exp Y
+  rw [Matrix.SpecialLinearGroup.coe_inv]
+  change Matrix.adjugate (physicalMatrixExp Y) = physicalMatrixExp (-Y)
+  have hdet : Matrix.det (physicalMatrixExp Y) = 1 :=
+    (cmp99Eq351PhysicalComplexOrientedExponentSL U A eta e).property
+  rw [← show (physicalMatrixExp Y)⁻¹ = Matrix.adjugate (physicalMatrixExp Y) by
+    rw [Matrix.inv_def, hdet, Ring.inverse_one, one_smul]]
+  exact hinv
+
 /-- Exact matrix factorization of the canonical perturbed negative edge.
 The proof uses physical unitarity to conjugate the same positive-bond
 exponential; the negative field and background are both the canonical

@@ -15,7 +15,7 @@ OUTPUT = ROOT / "scripts" / "colab_eq351_regrouping_inputs_validation.py"
 BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
     ("BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion", 1),
-    ("BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization", 11),
+    ("BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization", 12),
     ("BalabanCMP99Eq351PhysicalComplexCovariantDivergence", 5),
 )
 

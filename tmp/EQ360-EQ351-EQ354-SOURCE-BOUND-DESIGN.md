@@ -262,6 +262,19 @@ arrow.
    factors with the Eq. (3.37) nonzero witness.  This prevents the nested
    `D*D` presentation of the regional operator from hiding the diagonal
    species or creating a caller-supplied oriented field.
+
+   Provisional declaration boundaries (names may change, meanings may not):
+
+   - `cmp99Eq351ComplexRegionalLaplacianStencil` and an application theorem
+     exposing the two oriented neighbours at each site;
+   - `cmp99Eq351PhysicalComplexOrientedAdjointIncrementMatrix_eq`, proved in
+     the positive and negative canonical cases and containing the named
+     exponential remainder;
+   - `cmp99Eq351ComplexLaplacianRegrouping_raw`, with every spacing/generator
+     factor still present and no nonzero premise;
+   - `cmp99Eq351ComplexLaplacianRegrouping_of_eta_ne`, the printed
+     three-species equality, with the nonzero witness supplied only by the
+     source-domain wrapper.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
@@ -347,7 +360,7 @@ This inventory records implementation state, not mathematical credit:
   been sealed.  This is dependency ordering only, not compiler evidence and
   not mathematical credit.  The cold queue scope is independently fixed by
   `verify_eq351_regrouping_inputs_contract.py`: three source/audit pairs,
-  seventeen axiom readouts and a cold root, generated only after promotion by
+  eighteen axiom readouts and a cold root, generated only after promotion by
   `generate_eq351_regrouping_inputs_runner.py`.  The one-cell launcher,
   durable-archive verifier and six-notice selective sealer are likewise fixed
   by the corresponding `generate_*_notebook`, `verify_*_archive` and
