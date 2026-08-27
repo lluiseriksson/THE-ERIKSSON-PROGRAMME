@@ -308,9 +308,12 @@ This inventory records implementation state, not mathematical credit:
   remain `PRE-VALIDATION`; the Eq. (3.60) regional gate must audit them before
   either may be cited as sealed.
 - The positive-adjoint expansion, negative-bond factorization and covariant
-  divergence source/audit pairs are committed scratch files.  Their exact
-  manifests pass the lightweight overlay-text guard, but they have no cold
-  compiler or axiom verdict.
+  divergence source/audit pairs are committed scratch files.  The divergence
+  pair now also states the real-slice dictionary to the literal physical
+  `gaugeConstraintQCLM`; it derives this from the sealed background stencil
+  and coordinate complexification rather than accepting an identifying
+  equality.  Their exact manifests pass the lightweight overlay-text guard,
+  but they have no cold compiler or axiom verdict.
 - Their six-path promotion boundary is now fixed by
   `EQ351-REGROUPING-INPUTS-COMPILER-GATE-DRAFT-PATHS.txt` and the fail-closed
   promoter `promote_eq351_regrouping_inputs_compiler_gate.py`.  The promoter
@@ -318,7 +321,7 @@ This inventory records implementation state, not mathematical credit:
   been sealed.  This is dependency ordering only, not compiler evidence and
   not mathematical credit.  The cold queue scope is independently fixed by
   `verify_eq351_regrouping_inputs_contract.py`: three source/audit pairs,
-  sixteen axiom readouts and a cold root, generated only after promotion by
+  seventeen axiom readouts and a cold root, generated only after promotion by
   `generate_eq351_regrouping_inputs_runner.py`.  The one-cell launcher,
   durable-archive verifier and six-notice selective sealer are likewise fixed
   by the corresponding `generate_*_notebook`, `verify_*_archive` and

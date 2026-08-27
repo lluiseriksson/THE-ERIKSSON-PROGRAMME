@@ -17,7 +17,7 @@ readouts:
 
 1. `BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion` — `1`;
 2. `BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization` — `11`;
-3. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence` — `4`.
+3. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence` — `5`.
 
 It then builds a cold `YangMillsCore`.  The archive verifier accepts only
 `propext`, `Classical.choice` and `Quot.sound`, rejects `sorryAx` and

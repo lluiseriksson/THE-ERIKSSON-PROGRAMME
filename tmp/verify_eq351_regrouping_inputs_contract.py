@@ -13,7 +13,7 @@ FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
     ("BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion", 1),
     ("BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization", 11),
-    ("BalabanCMP99Eq351PhysicalComplexCovariantDivergence", 4),
+    ("BalabanCMP99Eq351PhysicalComplexCovariantDivergence", 5),
 )
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)
 OUTPUT_RE = re.compile(

@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq351PhysicalComplexOrientedPerturbation
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
+import YangMills.RG.BalabanCMP116GaugeFixingMassDefect
 
 /-!
 PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
@@ -71,6 +72,25 @@ theorem cmp99Eq351PhysicalComplexCovariantDivergence_eq_sum_oriented
       (U (ConcreteEdge.mk (x.shiftBack i) i true))⁻¹ at hU
   rw [hU]
   rfl
+
+/-- On the physical real slice the internally constructed complex divergence
+is exactly the coordinate complexification of the sealed physical gauge
+constraint.  No independently chosen complex diagonal field is accepted. -/
+theorem cmp99Eq351PhysicalComplexCovariantDivergence_realSlice
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : PhysicalGaugeOneCochain d N Nc)
+    (x : FinBox d N) :
+    cmp99Eq351PhysicalComplexCovariantDivergence U
+        (cmp99Eq337PhysicalComplexifyOneCochain A) x =
+      cmp99SUNLieCoordComplexificationLM Nc
+        (gaugeConstraintQCLM (matrixSUNAdjointModel Nc) U A x) := by
+  rw [cmp99Eq351PhysicalComplexCovariantDivergence_apply,
+    gaugeConstraintQCLM_apply_background, map_sum]
+  apply Finset.sum_congr rfl
+  intro i _hi
+  rw [map_sub, cmp99Eq337PhysicalComplexifyOneCochain_apply,
+    cmp99Eq337PhysicalComplexifyOneCochain_apply,
+    cmp99SUNAdjointComplexAction_complexification]
 
 /-- Matrix presentation of the same internally constructed diagonal field.
 The source regrouping is first proved at this level; chart-norm conversion is
