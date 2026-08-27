@@ -19,6 +19,11 @@ namespace YangMills.RG
 
 noncomputable section
 
+private theorem d_mul_m_sub_one_ne_zero
+    {d M : ℕ} (hd : 2 ≤ d) (hM : 2 ≤ M) :
+    d * (M - 1) ≠ 0 :=
+  Nat.mul_ne_zero (by omega) (by omega)
+
 /-- The literal real `Ubar` deviation coefficient is bounded by the complex
 four-path coefficient. -/
 theorem cmp99SourceUbarDeviationCoefficient_le_complexClosed
@@ -27,9 +32,17 @@ theorem cmp99SourceUbarDeviationCoefficient_le_complexClosed
       cmp99ComplexClosedRadiusDeviationCoefficient (d * (M - 1)) R := by
   let L := d * (M - 1)
   let F := (1 + R) ^ L
+  have hM_le : M ≤ d * (M - 1) := by
+    calc
+      M ≤ 2 * (M - 1) := by omega
+      _ ≤ d * (M - 1) := Nat.mul_le_mul_right (M - 1) hd
   have hLnat : 3 * d * (M - 1) + M ≤ 4 * L := by
     dsimp only [L]
-    omega
+    calc
+      3 * d * (M - 1) + M ≤
+          3 * d * (M - 1) + d * (M - 1) :=
+        Nat.add_le_add_left hM_le _
+      _ = 4 * (d * (M - 1)) := by ring
   have hsource :
       cmp99SourceUbarDeviationCoefficient d M ≤ 4 * (L : ℝ) := by
     unfold cmp99SourceUbarDeviationCoefficient
@@ -88,11 +101,14 @@ real-slice budget at the same initial radius. -/
 noncomputable def CMP99ComplexClosedRadiusBudget.toSourceUbarClosedBudget
     {d M Nc depth : ℕ} [NeZero M] [NeZero Nc]
     (hd : 2 ≤ d) (hM : 2 ≤ M) {r0 R : ℝ}
-    (B : CMP99ComplexClosedRadiusBudget
-      (d * (M - 1)) M depth r0 R (cmp99UbarNoWindingThreshold Nc)) :
+    (B : @CMP99ComplexClosedRadiusBudget
+      (d * (M - 1)) M depth
+      ⟨d_mul_m_sub_one_ne_zero hd hM⟩ inferInstance
+      r0 R (cmp99UbarNoWindingThreshold Nc)) :
     CMP99SourceUbarClosedBudget d M Nc depth r0 := by
   letI : NeZero d := ⟨by omega⟩
-  letI : NeZero (d * (M - 1)) := ⟨by omega⟩
+  letI : NeZero (d * (M - 1)) :=
+    ⟨d_mul_m_sub_one_ne_zero hd hM⟩
   let Cs := cmp99SourceUbarDeviationCoefficient d M
   let Ks := cmp99SourceUbarRadiusGrowthFactor d M
   let Cc := cmp99ComplexClosedRadiusDeviationCoefficient (d * (M - 1)) R
@@ -132,11 +148,15 @@ radius proof consumed by the compact-real-slice tower. -/
 noncomputable def CMP99ComplexClosedRadiusBudget.toSourceUbarRadiusChain
     {d M Nc depth : ℕ} [NeZero M] [NeZero Nc]
     (hd : 2 ≤ d) (hM : 2 ≤ M) {r0 R : ℝ}
-    (B : CMP99ComplexClosedRadiusBudget
-      (d * (M - 1)) M depth r0 R (cmp99UbarNoWindingThreshold Nc)) :
+    (B : @CMP99ComplexClosedRadiusBudget
+      (d * (M - 1)) M depth
+      ⟨d_mul_m_sub_one_ne_zero hd hM⟩ inferInstance
+      r0 R (cmp99UbarNoWindingThreshold Nc)) :
     letI : NeZero d := ⟨by omega⟩
     CMP99SourceUbarRadiusChain d M Nc depth r0 := by
   letI : NeZero d := ⟨by omega⟩
+  letI : NeZero (d * (M - 1)) :=
+    ⟨d_mul_m_sub_one_ne_zero hd hM⟩
   exact (B.toSourceUbarClosedBudget hd hM).toRadiusChain
 
 end
