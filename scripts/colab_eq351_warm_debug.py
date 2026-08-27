@@ -53,6 +53,18 @@ QUEUE = (
         "BalabanCMP99Eq360ComplexRegionalLaplacianAudit.draft.olean",
     ),
     (
+        "eq360_regional_laplacian_real_slice_source",
+        "tmp/BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.draft.lean",
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.draft.olean",
+    ),
+    (
+        "eq360_regional_laplacian_real_slice_audit",
+        "tmp/BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.draft.lean",
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.draft.olean",
+    ),
+    (
         "negative_factorization_source",
         "tmp/BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization.draft.lean",
         ".lake/build/lib/lean/tmp/"
