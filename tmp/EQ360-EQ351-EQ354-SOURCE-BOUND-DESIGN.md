@@ -311,7 +311,10 @@ This inventory records implementation state, not mathematical credit:
   promoter `promote_eq351_regrouping_inputs_compiler_gate.py`.  The promoter
   refuses to run until all eight Eq. (3.60) regional source/audit notices have
   been sealed.  This is dependency ordering only, not compiler evidence and
-  not mathematical credit.
+  not mathematical credit.  The cold queue scope is independently fixed by
+  `verify_eq351_regrouping_inputs_contract.py`: three source/audit pairs,
+  fifteen axiom readouts and a cold root, generated only after promotion by
+  `generate_eq351_regrouping_inputs_runner.py`.
 - `BalabanCMP99Eq351ComplexLaplacianRegrouping`, both Eq. (3.54) bound
   producers and `BalabanCMP99Eq360ComplexSourcePrecisionPerturbation` are not
   materialized.  They remain the finite source-facing suffix of this chain.
