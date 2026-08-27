@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99ComplexTransportedBlockAverage
 import YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # One-scale real slice of the analytic CMP99 average and printed star
 
 The complex holonomy is constructed pointwise from the supplied physical

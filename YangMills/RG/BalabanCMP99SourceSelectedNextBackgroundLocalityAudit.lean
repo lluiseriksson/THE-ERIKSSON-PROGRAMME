@@ -1,9 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceSelectedNextBackgroundLocality
 
-/-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
--/
 
 #print axioms YangMills.RG.cmp99SourcePhysicalUbarBlockOfDeviationBudget
 #print axioms YangMills.RG.cmp99SourcePhysicalUbarBlockOfDeviationBudget_coe_eq_Ubar

@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99ComplexLocalizedUbarBackground
 import YangMills.RG.BalabanCMP99SourceRegionalScale
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # The complex Ubar successor restricts to the canonical physical successor
 
 The analytic recursion advances every coarse bond.  Its compact real slice

@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99Eq335SourceRegionDictionary
 import YangMills.RG.BalabanCMP99Eq335PhysicalLocalizedRetainedTower
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # CMP99 Corollary 3.6: source-region closure of the retained prefix
 

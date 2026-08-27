@@ -4,8 +4,7 @@ import YangMills.RG.BalabanCMP116WilsonPlaquetteEnergy
 import YangMills.RG.OrderedExponentialQuadraticBound
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # CMP99 (3.35): retained near-identity links from the exponential chart
 

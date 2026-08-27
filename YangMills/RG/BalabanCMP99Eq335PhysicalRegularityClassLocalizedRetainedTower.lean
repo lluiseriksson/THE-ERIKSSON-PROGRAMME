@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClass
 import YangMills.RG.BalabanCMP99Eq335PhysicalLocalizedRetainedTowerOfSourceRegion
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # CMP99 (3.35) class membership to the selected Corollary-3.6 region
 

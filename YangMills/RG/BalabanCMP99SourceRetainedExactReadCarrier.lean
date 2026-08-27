@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99SourceTransportedAverageExactReadCarrier
 import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradient
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Exact fine read carrier of a retained physical tower
 

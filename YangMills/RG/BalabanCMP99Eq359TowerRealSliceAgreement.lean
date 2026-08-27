@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99SourceWeightedRegionalTower
 import YangMills.RG.BalabanCMP99SourceAdjointTransport
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # A compositional real-slice relation for CMP99 (3.59) towers
 
 The complex and real towers have different scalar fields and therefore

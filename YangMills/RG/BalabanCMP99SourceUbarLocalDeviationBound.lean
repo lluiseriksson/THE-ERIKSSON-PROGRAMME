@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99SourceUbarExactReadCarrier
 import YangMills.RG.BalabanCMP99SourceRegionalScale
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Local fine-link bound for the literal Ubar deviation
 

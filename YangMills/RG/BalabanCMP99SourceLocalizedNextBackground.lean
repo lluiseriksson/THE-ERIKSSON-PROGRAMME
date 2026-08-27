@@ -3,8 +3,7 @@ import YangMills.RG.BalabanCMP99SourceSelectedNextBackgroundLocality
 import YangMills.RG.BalabanCMP99SourceUbarSmallFieldPropagation
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Localized source next background
 

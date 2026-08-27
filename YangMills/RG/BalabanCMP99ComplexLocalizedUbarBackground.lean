@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99SourceUbarContours
 import YangMills.RG.Ubar
 
 /-!
-PRE-VALIDATION: the canonical contour-instance repair below has not yet been
-re-materialized or checked by the compiler and axiom oracle.
-
 # One literal analytic CMP99 Ubar background step
 
 The source contours and base coarse background are already group-generic.

@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99SourceUbarExactReadCarrier
 import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTower
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Exact read carrier of one retained transported average
 

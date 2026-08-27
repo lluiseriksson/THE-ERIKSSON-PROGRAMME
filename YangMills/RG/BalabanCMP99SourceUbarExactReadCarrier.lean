@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99SourceUbarContours
 import YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfig
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Exact fine-bond read carrier of the literal CMP99 Ubar block
 

@@ -1,8 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceLocalizedTowerCanonicalExtension
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Canonical global extension of a locally small source background
 

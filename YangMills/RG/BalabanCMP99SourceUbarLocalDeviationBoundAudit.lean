@@ -1,9 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceUbarLocalDeviationBound
 
-/-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
--/
 
 #print axioms YangMills.RG.norm_gaugeConfig_apply_sub_one_le_of_positivePhysicalBond
 #print axioms YangMills.RG.norm_cmp99SourceBaseCoarseBackground_sub_one_le_of_readBonds

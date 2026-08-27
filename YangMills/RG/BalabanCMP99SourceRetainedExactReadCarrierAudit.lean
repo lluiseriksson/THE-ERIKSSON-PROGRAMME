@@ -1,9 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceRetainedExactReadCarrier
 
-/-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
--/
 
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineReadBonds
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineReadBonds_stop

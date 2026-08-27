@@ -3,8 +3,7 @@ import YangMills.RG.BalabanCMP99CovariantPathControl
 import YangMills.RG.BalabanCMP98ContourPivotAvoidance
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Endpoint geometry for the retained CMP99 read carrier
 

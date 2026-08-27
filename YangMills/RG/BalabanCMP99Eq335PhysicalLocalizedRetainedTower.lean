@@ -1,8 +1,7 @@
 import YangMills.RG.BalabanCMP99Eq335PhysicalRetainedNearIdentity
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # CMP99 Corollary 3.6: source-fixed retained input package
 

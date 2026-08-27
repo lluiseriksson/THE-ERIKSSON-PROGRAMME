@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq359OneScaleRealSlice
 import YangMills.RG.BalabanCMP99ComplexPhysicalRegionalTower
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Physical background and contour holonomy on the compact real slice
 
 This leaf embeds a complete physical gauge background into `SL(N,C)` and

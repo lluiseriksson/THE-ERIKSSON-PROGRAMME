@@ -1,8 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceUbarExactReadCarrier
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 Axiom queue for the exact one-scale source-Ubar read carrier.
 -/

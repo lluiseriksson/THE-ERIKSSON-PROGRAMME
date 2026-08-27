@@ -1,8 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceRetainedFineExtension
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # Retain every prefix of the localized source tower
 

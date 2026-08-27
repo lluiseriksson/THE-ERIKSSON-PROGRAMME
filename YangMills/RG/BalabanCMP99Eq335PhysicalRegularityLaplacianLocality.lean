@@ -2,8 +2,7 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityWitness
 import YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecision
 
 /-!
-PRE-VALIDATION: source is present in scratch only; no `.olean` has been
-materialized and no compiler or axiom-oracle verdict exists for this module.
+
 
 # CMP99 (3.35): the exact Dirichlet-Laplacian read carrier
 

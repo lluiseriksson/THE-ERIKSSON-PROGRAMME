@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99ComplexSpecialLinearAdjointAction
 import YangMills.RG.BalabanCMP98OrderedContourTransport
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Compact real slice of the complex adjoint transport
 
 This leaf constructs the canonical inclusion `SU(N) -> SL(N,C)` from the
