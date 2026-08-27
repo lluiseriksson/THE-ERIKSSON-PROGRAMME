@@ -48,7 +48,7 @@ PAIRS = (
         "tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecisionAudit.draft.lean",
     ),
 )
-EXPECTED_AXIOM_HEADERS = 44
+EXPECTED_AXIOM_HEADERS = 48
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 

@@ -219,6 +219,36 @@ noncomputable def baselineRetainedPhysicalTower
     (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
     retainedU I.baselineRadiusChain retainedUSmall
 
+/-- Analytic compact-real-slice tower generated from the same retained
+baseline data as `baselineRetainedPhysicalTower`. -/
+noncomputable def baselineRetainedComplexTower
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    CMP99ComplexRegionalTower (Nc := Nc) Omega eta := by
+  let W := R.toCubeWitness C alpha1 hscale
+  let retainedU := regions.retainedFineExtension W.transformedBackground
+  let hlocal := W.retainedFineReadBonds_nearIdentity regions
+    (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+      C D regions)
+    halpha1
+  let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
+    W.transformedBackground
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    I.baselineRadiusChain.epsilon_nonneg hlocal
+  exact (regions.physicalRealSliceComplexTower (by norm_num : 2 ≤ 4) hM eta
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    retainedU I.baselineRadiusChain retainedUSmall).toComplexTower
+
+/-- Named compact real-slice agreement between the two internally generated
+baseline towers. -/
+noncomputable def baselineRetainedNamedRealSliceAgreement
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    CMP99Eq359TowerRealSliceAgreement I.baselineRetainedComplexTower
+      I.baselineRetainedPhysicalTower := by
+  simpa [baselineRetainedComplexTower, baselineRetainedPhysicalTower] using
+    I.baselineRetainedTowerRealSliceAgreement
+
 /-- Printed weighted-adjoint coefficient induced by the literal C6d.1
 counting coefficient.  The terminal volume ratio is computed from the
 internally generated tower rather than accepted as a scalar dictionary. -/
@@ -315,6 +345,22 @@ noncomputable def retainedTowerPair
   exact regions.physicalRealSliceComplexTowerPair
     (by norm_num : 2 ≤ 4) hM eta epsilon0 epsilon1 retainedU perturbedU
     I.baselineRadiusChain chain1 retainedU_small perturbedU_small
+
+/-- The baseline forward field of the Eq. (3.59) pair is the separately
+named baseline compact-real-slice tower, not another chosen operator. -/
+theorem retainedTowerPair_Q0_eq_baselineRetainedComplexTower
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    I.retainedTowerPair.Q0 = I.baselineRetainedComplexTower.Qprime := by
+  rfl
+
+/-- The baseline printed-starred field of the pair is the independently
+generated starred synthesis of the named baseline tower. -/
+theorem retainedTowerPair_starred0_eq_baselineRetainedComplexTower
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    I.retainedTowerPair.starred0 = I.baselineRetainedComplexTower.starred := by
+  rfl
 
 /-- Literal full-background baseline regional Laplacian. -/
 noncomputable def baselineLaplacian
