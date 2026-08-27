@@ -306,6 +306,12 @@ This inventory records implementation state, not mathematical credit:
   divergence source/audit pairs are committed scratch files.  Their exact
   manifests pass the lightweight overlay-text guard, but they have no cold
   compiler or axiom verdict.
+- Their six-path promotion boundary is now fixed by
+  `EQ351-REGROUPING-INPUTS-COMPILER-GATE-DRAFT-PATHS.txt` and the fail-closed
+  promoter `promote_eq351_regrouping_inputs_compiler_gate.py`.  The promoter
+  refuses to run until all eight Eq. (3.60) regional source/audit notices have
+  been sealed.  This is dependency ordering only, not compiler evidence and
+  not mathematical credit.
 - `BalabanCMP99Eq351ComplexLaplacianRegrouping`, both Eq. (3.54) bound
   producers and `BalabanCMP99Eq360ComplexSourcePrecisionPerturbation` are not
   materialized.  They remain the finite source-facing suffix of this chain.
