@@ -29,8 +29,12 @@ PAIRS = (
         "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionary.draft.lean",
         "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionaryAudit.draft.lean",
     ),
+    (
+        "tmp/BalabanCMP99Eq360WeightedPrecisionRealSlice.draft.lean",
+        "tmp/BalabanCMP99Eq360WeightedPrecisionRealSliceAudit.draft.lean",
+    ),
 )
-EXPECTED_AXIOM_HEADERS = 11
+EXPECTED_AXIOM_HEADERS = 12
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
