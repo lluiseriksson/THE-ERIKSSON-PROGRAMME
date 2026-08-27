@@ -55,8 +55,10 @@ blobs.  Canonical evidence SHA-256 is `[EVIDENCE_SHA256]`, archive SHA-256 is
 `[ARCHIVE_SHA256]`, verifier JSON SHA-256 is `[VERIFIER_JSON_SHA256]`, and the
 executed-notebook SHA-256 is `[NOTEBOOK_EVIDENCE_SHA256]`.
 
-Seal checkpoint `[SEAL_SHA]` retires exactly the eight notices and imports
-exactly the four audits into `YangMillsCore`.  This is the source-faithful
+Seal checkpoint `[SEAL_SHA]` retires exactly the eight notices and ensures
+exactly one import for each of the four audits in `YangMillsCore` (the source
+checkpoint already contains the retained-tower audit import, so the seal adds
+only the other three).  This is the source-faithful
 regional precision entering CMP99 (3.35), not coercivity, a Green inverse,
 uniform `B0, delta0`, window-15 attainment, rows 23--24, or a `TermSource`
 inhabitant.  The hard counters remain exactly `20/41`, `TermSource = 0`, and

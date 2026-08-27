@@ -122,12 +122,16 @@ def remove_prevalidation_block(data: bytes, relative: str) -> bytes:
 def sealed_core(data: bytes, verifier) -> bytes:
     text = data.decode("utf-8")
     imports = [f"import YangMills.RG.{module}Audit" for module, _ in verifier.BRICKS]
-    present = [line for line in imports if line in text]
-    if present:
-        raise RuntimeError(f"C6D_STEP3_CORE_IMPORT_ALREADY_PRESENT={present!r}")
+    duplicate = [line for line in imports if text.splitlines().count(line) > 1]
+    if duplicate:
+        raise RuntimeError(f"C6D_STEP3_CORE_IMPORT_DUPLICATE={duplicate!r}")
+    missing = [line for line in imports if text.splitlines().count(line) == 0]
     if not text.endswith("\n"):
         text += "\n"
-    text += "".join(line + "\n" for line in imports)
+    text += "".join(line + "\n" for line in missing)
+    absent = [line for line in imports if text.splitlines().count(line) != 1]
+    if absent:
+        raise RuntimeError(f"C6D_STEP3_CORE_IMPORT_POSTCONDITION={absent!r}")
     return text.encode("utf-8")
 
 

@@ -55,6 +55,33 @@ def test_remove_prevalidation_block_rejects_ambiguity() -> None:
         sealer.remove_prevalidation_block(b"import Mathlib\n", "missing.lean")
 
 
+def test_sealed_core_preserves_one_existing_import_and_adds_only_missing() -> None:
+    sealer = load_sealer()
+
+    class Verifier:
+        BRICKS = (("First", 1), ("Second", 1), ("Third", 1))
+
+    existing = "import YangMills.RG.SecondAudit"
+    sealed = sealer.sealed_core(
+        ("import Mathlib\n" + existing + "\n").encode(), Verifier
+    ).decode()
+    lines = sealed.splitlines()
+    assert lines.count("import YangMills.RG.FirstAudit") == 1
+    assert lines.count(existing) == 1
+    assert lines.count("import YangMills.RG.ThirdAudit") == 1
+
+
+def test_sealed_core_rejects_duplicate_existing_import() -> None:
+    sealer = load_sealer()
+
+    class Verifier:
+        BRICKS = (("Only", 1),)
+
+    duplicate = "import YangMills.RG.OnlyAudit\n" * 2
+    with pytest.raises(RuntimeError, match="CORE_IMPORT_DUPLICATE"):
+        sealer.sealed_core(duplicate.encode(), Verifier)
+
+
 def test_archive_evidence_requires_exact_hash_and_one_json(tmp_path: Path) -> None:
     package = load_package()
     archive = tmp_path / "evidence.tar.gz"
