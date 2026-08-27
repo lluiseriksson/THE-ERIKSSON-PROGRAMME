@@ -14794,10 +14794,17 @@ counting-to-weighted operator dictionary and derives the generated
 coefficient.  `BalabanCMP99Eq360WeightedPrecisionRealSlice.draft` combines
 that dictionary with the separately constructed Laplacian real slice and
 `CMP99Eq359TowerRealSliceAgreement`.  Both source/audit pairs remain scratch
-PRE-VALIDATION and have no compiler verdict.  The canonical ambient
-completion, regional inverse, uniform `B0, delta0`, window 15, rows 23--24
-and `TermSource` remain open.  Counters stay exactly `20/41`,
-`TermSource = 0`; window 15 remains compatible but unattained.
+PRE-VALIDATION and have no compiler verdict.  The source-facing
+`BalabanCMP99Eq360C6dLocalizedRetainedPrecision.draft` now stores the literal
+counting coefficient `a_j` and derives every analytic precision and all four
+perturbation summands with that weighted coefficient; its former arbitrary
+complex coefficient has been removed.  That wrapper is also PRE-VALIDATION
+and NOT CHECKED.  A retained-runtime hot diagnostic is prepared for the
+finite tower-pair/radius, canonical-completion, weighted-dictionary and C6d
+wrapper queue; hot evidence will remain diagnostic rather than a seal.  The
+regional inverse, uniform `B0, delta0`, window 15, rows 23--24 and
+`TermSource` remain open.  Counters stay exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
 
 ### CMP99 Eq. (3.51) diagonal-sign no-go (COLAB-VERIFIED; 20/41 unchanged)
 
