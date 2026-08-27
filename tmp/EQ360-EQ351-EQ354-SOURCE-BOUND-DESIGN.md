@@ -101,6 +101,45 @@ the latter.  Identifying the unscaled divergence directly with `D_U^* A`
 would lose both a sign and a spacing factor; no caller-supplied equality is an
 accepted repair.
 
+### The oriented endpoint dictionary is a separate gate
+
+The source derivative in (3.3) is defined on an oriented bond, whereas the
+repository stores a complex one-cochain only on positive `PhysicalBond`s.
+Moreover `ConcreteEdge.source` is the anchor of that positive bond, not the
+oriented initial vertex when `sign = false`.  The source-facing derivative is
+therefore constructed separately as
+
+```text
+D_U^eta phi(e) = eta^-1 (R(U_e) phi(e.dstV) - phi(e.srcV)).
+```
+
+For the canonical negative edge leaving `x`, namely
+`ConcreteEdge.mk (x.shiftBack i) i false`, this becomes
+
+```text
+eta^-1 (R(U(x,x-eta e_i)) phi(x-eta e_i) - phi(x)).
+```
+
+The named Lean object is
+`cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference`; its positive
+branch is definitionally the positive-bond derivative and its negative branch
+is a separately stated theorem using `srcV`/`dstV`.  At nonzero spacing the
+named transport identity reconstructs `R(U_e) phi(e.dstV)` from this
+derivative.  The (3.51) regrouping must cite that identity on both branches.
+It may not use `ConcreteEdge.source` as the oriented source, and it may not
+specialize the positive-bond formula by renaming the anchor.
+
+There remains one explicit source-consistency check before the printed
+diagonal sign may be sealed.  The raw stencil expands the exponential with
+the repository commutator order, while printed (3.51) writes both
+`i ad_{A'(b)} D_U phi(b)` and `i[(D_U^* A)(x),phi(x)]`.  The proof must expose
+the precise matrix definition of `ad` and derive the diagonal sign from the
+already fixed equality
+`D_U^* A = -eta^-1 * gaugeConstraintQCLM`; a `ring` proof over an unnamed
+commutator is not accepted.  If the two conventions disagree, that is a
+source-dictionary no-go, not permission to flip the adjoint or the oriented
+one-cochain silently.
+
 ## Printed quantitative endpoint
 
 Let `ell = L^j eta`. Under the source domain (3.37), printed Eq. (3.54) is
@@ -439,7 +478,7 @@ This inventory records implementation state, not mathematical credit:
   been sealed.  This is dependency ordering only, not compiler evidence and
   not mathematical credit.  The cold queue scope is independently fixed by
   `verify_eq351_regrouping_inputs_contract.py`: three source/audit pairs,
-  nineteen axiom readouts and a cold root, generated only after promotion by
+  twenty-eight axiom readouts and a cold root, generated only after promotion by
   `generate_eq351_regrouping_inputs_runner.py`.  The one-cell launcher,
   durable-archive verifier and six-notice selective sealer are likewise fixed
   by the corresponding `generate_*_notebook`, `verify_*_archive` and

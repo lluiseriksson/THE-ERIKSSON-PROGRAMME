@@ -16,7 +16,7 @@ BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
     ("BalabanCMP99Eq351PhysicalComplexPositiveAdjointExpansion", 1),
     ("BalabanCMP99Eq351PhysicalComplexNegativeBondFactorization", 13),
-    ("BalabanCMP99Eq351PhysicalComplexCovariantDivergence", 5),
+    ("BalabanCMP99Eq351PhysicalComplexCovariantDivergence", 14),
 )
 
 

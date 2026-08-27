@@ -6,6 +6,10 @@ compiler or axiom-oracle verdict.
 -/
 
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexSourceCovariantDifference
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference_pos
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference_neg
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedSource_transport
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexSourceCovariantDifference_eq_neg_repository
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexCovariantDivergence
 #print axioms YangMills.RG.cmp99Eq351PhysicalComplexCovariantDivergence_apply

@@ -43,6 +43,66 @@ def cmp99Eq351PhysicalComplexSourceCovariantDifference
           (U (positiveEdgeOfPhysicalBond b)))
         (phi (b.1.shift b.2)) - phi b.1)
 
+/-- Literal source derivative on an arbitrary oriented concrete edge.
+
+Unlike the positive-bond storage type, `ConcreteEdge.source` is the anchor of
+the underlying positive bond; the oriented endpoints are `srcV` and `dstV`.
+Using those endpoints here is portante for the negative branch of the
+two-orientation sum in CMP99 (3.50)--(3.51). -/
+def cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference
+    (U : PhysicalGaugeBackground d N Nc)
+    (eta : ℝ)
+    (phi : GaugeZeroCochain d N (SUNLieComplexCoord Nc))
+    (e : ConcreteEdge d N) : SUNLieComplexCoord Nc :=
+  ((eta : ℂ)⁻¹) •
+    (cmp99SpecialLinearAdjointCoordLM
+        (cmp99SUNToSpecialLinear Nc (U e)) (phi e.dstV) - phi e.srcV)
+
+@[simp] theorem cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference_pos
+    (U : PhysicalGaugeBackground d N Nc)
+    (eta : ℝ)
+    (phi : GaugeZeroCochain d N (SUNLieComplexCoord Nc))
+    (x : FinBox d N) (i : Fin d) :
+    cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference U eta phi
+        (ConcreteEdge.mk x i true) =
+      cmp99Eq351PhysicalComplexSourceCovariantDifference U eta phi (x, i) := by
+  rfl
+
+/-- The canonical negative edge leaving `x` is stored at `x.shiftBack i`.
+This theorem exposes the actual source-facing endpoint order and the compact
+reverse link; it is not inferred from the positive-bond formula. -/
+@[simp] theorem cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference_neg
+    (U : PhysicalGaugeBackground d N Nc)
+    (eta : ℝ)
+    (phi : GaugeZeroCochain d N (SUNLieComplexCoord Nc))
+    (x : FinBox d N) (i : Fin d) :
+    cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference U eta phi
+        (ConcreteEdge.mk (x.shiftBack i) i false) =
+      ((eta : ℂ)⁻¹) •
+        (cmp99SpecialLinearAdjointCoordLM
+            (cmp99SUNToSpecialLinear Nc
+              (U (ConcreteEdge.mk (x.shiftBack i) i false)))
+            (phi (x.shiftBack i)) - phi x) := by
+  simp [cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference,
+    ConcreteEdge.srcV, ConcreteEdge.dstV]
+
+/-- Recovering the transported endpoint from the printed source derivative.
+The nonzero-spacing premise is visible exactly at the cancellation step. -/
+theorem cmp99Eq351PhysicalComplexOrientedSource_transport
+    (U : PhysicalGaugeBackground d N Nc)
+    (eta : ℝ) (heta : eta ≠ 0)
+    (phi : GaugeZeroCochain d N (SUNLieComplexCoord Nc))
+    (e : ConcreteEdge d N) :
+    cmp99SpecialLinearAdjointCoordLM
+        (cmp99SUNToSpecialLinear Nc (U e)) (phi e.dstV) =
+      phi e.srcV + (eta : ℂ) •
+        cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference
+          U eta phi e := by
+  have hetaC : (eta : ℂ) ≠ 0 := by exact_mod_cast heta
+  unfold cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference
+  rw [smul_smul, mul_inv_cancel₀ hetaC, one_smul]
+  module
+
 /-- The analytic Eq360 stencil uses the repository's opposite covariant-
 difference convention.  This named equality is the sign dictionary required
 before its Laplacian expansion can be read as CMP99 (3.51). -/

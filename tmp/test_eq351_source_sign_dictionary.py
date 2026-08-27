@@ -33,11 +33,29 @@ def test_source_adjoint_keeps_negative_inverse_spacing_visible() -> None:
     )
 
 
+def test_oriented_source_derivative_uses_oriented_endpoints() -> None:
+    text = SOURCE.read_text(encoding="utf-8-sig")
+    assert (
+        "def cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference"
+        in text
+    )
+    assert "(phi e.dstV) - phi e.srcV" in text
+    assert (
+        "cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference_neg"
+        in text
+    )
+    assert "cmp99Eq351PhysicalComplexOrientedSource_transport" in text
+
+
 def test_every_sign_dictionary_declaration_is_in_the_axiom_audit() -> None:
     text = AUDIT.read_text(encoding="utf-8-sig")
     declarations = (
         "cmp99Eq351PhysicalComplexSourceCovariantDifference",
         "cmp99Eq351PhysicalComplexSourceCovariantDifference_eq_neg_repository",
+        "cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference",
+        "cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference_pos",
+        "cmp99Eq351PhysicalComplexOrientedSourceCovariantDifference_neg",
+        "cmp99Eq351PhysicalComplexOrientedSource_transport",
         "cmp99Eq351PhysicalComplexSourceCovariantAdjoint",
         "cmp99Eq351PhysicalComplexSourceCovariantAdjoint_apply",
         "cmp99Eq351PhysicalComplexSourceCovariantAdjoint_eq_smul_sum_oriented",
@@ -51,3 +69,5 @@ def test_design_rejects_unscaled_divergence_as_printed_adjoint() -> None:
     assert "The derivative sign dictionary is portante" in text
     assert "would lose both a sign and a spacing factor" in text
     assert "may not be replaced by the unscaled divergence" in text
+    assert "The oriented endpoint dictionary is a separate gate" in text
+    assert "source-dictionary no-go" in text
