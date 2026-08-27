@@ -1,4 +1,4 @@
-import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+import Mathlib
 
 /-!
 PRE-VALIDATION: algebra-only reproducer; no compiler verdict is claimed.
