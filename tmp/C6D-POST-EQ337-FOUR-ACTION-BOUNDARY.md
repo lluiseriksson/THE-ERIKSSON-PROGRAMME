@@ -79,11 +79,10 @@ Thus no theorem should be introduced whose premise is an equality between
 the two independently chosen Green operators or precisions.  Such a premise
 would merely rename the missing source bridge.
 
-## First missing source-specific dictionary
+## Sealed Eq. (3.59) source-specific dictionary
 
-After C6d.1 and the forced Eq. (3.37) background recursion, the first missing
-dictionary is the two-tower Eq. (3.59) construction on the **same typed source
-regions**:
+The two-tower Eq. (3.59) construction on the **same typed source regions** is
+no longer an open dictionary:
 
 ```text
 Q0 := Q'(U)
@@ -93,29 +92,33 @@ F2 := Q1 - Q0
 Q1 = Q0 + F2
 ```
 
-The source wrapper must construct `Q0` and `Q1` internally and transport `U`
-and `A'` together through the cube gauge.  It may not accept `Q0`, `Q1`,
-`F2`, a background family, or the displayed equality as caller data.  In the
-complex continuation, the starred synthesis must be constructed
-independently; it is not Lean's Hilbert adjoint of `F2` away from the real
-slice.
+The source wrapper constructs `Q0` and `Q1` internally and transports `U` and
+`A'` together through the cube gauge; it does not accept `Q0`, `Q1`, `F2`, a
+background family, or the displayed equality as caller data.  The complex
+continuation builds the starred synthesis independently rather than using
+Lean's Hilbert adjoint away from the real slice.  The physical real-slice gate
+passed at source `cd6ff65638f0e09e2533733df2d7176c10714a3a`, and the retained
+C6d cross-gate verified all 34 dependency-boundary blobs.  Seal
+`850fd92911d0f79564718636f3f92a922b0f0e8e` retired those exact notices.
 
-The existing scratch definition
-`cmp99Eq359PhysicalQprimePerturbation Q0 Q1 := Q1 - Q0` is only the algebraic
-leaf.  It becomes source-facing only after both physical towers are internally
-constructed and their real/complex gauge-covariance dictionaries are proved.
+The first open source-specific dictionary is therefore C6d.1 itself: the
+literal localized retained precision on the selected source region.  After
+that precision is sealed, Eq. (3.60) must be instantiated on that same carrier
+before any regional inverse or four-action transport can be claimed.
 
 ## Finite consumer chain after Eq. (3.59)
 
-1. instantiate the literal Eq. (3.60) perturbation with the internally
+1. seal C6d.1, constructing the literal localized retained precision on the
+   selected source region;
+2. instantiate the literal Eq. (3.60) perturbation with the internally
    constructed `Q0`, `Q1`, `F2` and independent starred synthesis;
-2. prove the exact factorization on one active source carrier before taking
+3. prove the exact factorization on one active source carrier before taking
    any norm;
-3. build the interacting regional inverse by the source resolvent/Neumann
+4. build the interacting regional inverse by the source resolvent/Neumann
    route and attain the relative weighted-norm smallness theorem;
-4. instantiate the value, left derivative, right-adjoint derivative and
+5. instantiate the value, left derivative, right-adjoint derivative and
    Laplacian action algebra for that one resulting regional Green;
-5. only then combine the four amplitudes with
+6. only then combine the four amplitudes with
    `cmp99Eq342CommonAmplitude` and produce the uniform source-localized
    `(3.42)` certificate.
 
@@ -139,28 +142,19 @@ but it must not accept any of the following as a free input:
 Counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained until the corresponding compiled producers exist.
 
-## PRE-VALIDATION implementation frontier (2026-08-26)
+## PRE-VALIDATION implementation frontier (2026-08-27)
 
-The current scratch frontier is enumerated by
-`tmp/EQ359-COMPLEX-ONE-SCALE-AVERAGE-DRAFT-PATHS.txt`.  It contains fourteen
-files (seven source/audit pairs) and has passed only the lightweight text and
-import-prefix guards.  No `.olean` or axiom verdict exists yet.
+Eq. (3.59), its physical real slice and the 34-file retained dependency
+boundary are sealed.  The live C6d.1 cold queue is fixed to four source/audit
+pairs (eight files, fifteen declarations) and the canonical one-code-cell
+notebook at checkpoint `214746e0370af6c348537ac0ab08c2d14392c8ea`.
+The first attempt was rejected before checkout because Colab supplied only
+12.67 GiB RAM; that incident is preserved and proves no compiler result.
+All eight notices remain PRE-VALIDATION until a fresh CPU/high-RAM run passes
+the focal/audit queue, the cold `YangMillsCore` root and the post-verifier.
 
-The frontier now spells out, without closing any analytic bound:
-
-1. literal complex-linear `SL(N,C)` conjugation on the traceless coordinate
-   fibre;
-2. a one-scale `M^{-d}` analytic average;
-3. an independently built unit-mass starred synthesis using inverse
-   algebraic transport, never Lean `.adjoint`;
-4. finite forward/reverse operator recursions;
-5. a background-faithful physical wrapper;
-6. a common-target two-tower object whose `F2` and `F2star` are literal
-   differences; and
-7. a source-facing paired recursion that constructs baseline and perturbed
-   backgrounds internally under one conservative radius envelope.
-
-The source recursion draft now installs both branches into the common-target
-pair.  It does **not** yet prove either real-slice agreement or discharge
-Eq. (3.60).  Those remain the next source-specific gates after the Eq. (3.37)
-prerequisite seals.
+The Eq. (3.51) algebra has a separate warm diagnostic PASS at source
+`fab6807d1ddde2e33b5d350a14ba6dd47b61745b`.  Warm evidence is not a cold
+seal and cannot retire any notice or skip C6d.1/Eq. (3.60).  The live frontier
+therefore remains the finite chain above, with no movement of `20/41`,
+`TermSource = 0`, or window 15.
