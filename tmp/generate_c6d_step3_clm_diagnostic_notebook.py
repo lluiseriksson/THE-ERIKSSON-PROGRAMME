@@ -10,11 +10,11 @@ import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_SHA = "1b4eaf235013811886948bb466c4f310d1f0be34"
-RUNNER_CHECKPOINT = "f16687415761e238897b90b7565a0771ae9e6df3"
+SOURCE_SHA = "557a472e96509d3473b925cb07114292fc28587c"
+RUNNER_CHECKPOINT = "0eefbd484993e06293d20032668a61409e72a13d"
 RUNNER_PATH = "scripts/colab_c6d_step3_localized_precision_validation.py"
-RUNNER_REV = "c6d-step3-localized-precision-v3"
-DIAGNOSTIC_REV = "c6d-step3-clm-repro-diagnostic-v1"
+RUNNER_REV = "c6d-step3-localized-precision-v4"
+DIAGNOSTIC_REV = "c6d-step3-clm-repro-diagnostic-v2"
 OUTPUT = ROOT / "scripts" / "colab_c6d_step3_clm_repro_diagnostic.ipynb"
 
 
