@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Warm stop-on-first-error diagnostic for the C6d real-slice gate.
 
-The first cold run proved that the runner omitted one prerequisite `.olean`.
-This script runs only in that retained checkout: it materializes the missing
-module and then executes the three promoted source/audit pairs.  Its output is
+The first cold run proved that the runner omitted a prerequisite `.olean`
+boundary.  This script runs only in that retained checkout: it materializes
+the direct prerequisites of the three promoted modules and then executes their
+source/audit pairs.  Its output is
 diagnostic and cannot replace a fresh cold seal with the corrected runner.
 """
 
@@ -88,11 +89,14 @@ def main() -> int:
 
     output_dir = ROOT / ".lake/build/lib/lean/YangMills/RG"
     output_dir.mkdir(parents=True, exist_ok=True)
-    prerequisite = "BalabanCMP99PhysicalBackgroundRealSlice"
     run(
-        "c6d_next_real_slice_missing_prerequisite",
+        "c6d_next_real_slice_missing_prerequisites",
         [
-            "lake", "build", f"YangMills.RG.{prerequisite}",
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99PhysicalBackgroundRealSlice",
+            "YangMills.RG.BalabanCMP99SourceRetainedFineExtension",
+            "YangMills.RG.BalabanCMP99Eq359TowerRealSliceAgreement",
+            "YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime",
         ],
     )
 
