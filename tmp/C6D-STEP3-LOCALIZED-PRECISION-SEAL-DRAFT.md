@@ -3,7 +3,7 @@
 Do not copy this text into tracked documentation or remove any
 `PRE-VALIDATION` notice before the exact cold gate and its post-verifier pass.
 
-The six files are still scratch-only.  Their promotion source must be a
+The eight boundary files remain marked PRE-VALIDATION.  Their promotion source must be a
 descendant of the verified 34-file C6d dependency-boundary seal; compiling
 them against the currently marked boundary would stack a new source claim on
 unretired PRE-VALIDATION premises.  After the Eq. (3.59) / C6d cross-gate,
@@ -12,17 +12,18 @@ this is the next independent cold compiler boundary, not part of the Eq.
 
 ## Proposed verification-ledger addendum
 
-## Addendum 948 ([SEAL_DATE], **literal localized retained precision sealed in fresh Colab Pro+; 20/41 unchanged**)
+## Addendum [ADDENDUM_NUMBER] ([SEAL_DATE], **literal localized retained precision sealed in fresh Colab Pro+; 20/41 unchanged**)
 
-Promotion checkpoint `[SOURCE_SHA]` materialized exactly three source/audit
-pairs from the fixed scratch manifest:
+Source checkpoint `[SOURCE_SHA]` contains exactly four source/audit pairs in
+the fixed boundary manifest:
 
 - `BalabanCMP99Eq335PhysicalLaplacianInternalCarrier`;
 - `BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge`;
+- `BalabanCMP99SourceLocalizedRetainedTower`;
 - `BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision`.
 
-The promoted six-file manifest SHA-256 is
-`2BECC005430EE05217A39AD08CF127DE9B3519095E26836CB4CC5D718908DFD7`.
+The eight-file boundary manifest SHA-256 is
+`[BOUNDARY_MANIFEST_SHA256]`.
 The first pair proves that the regional Dirichlet Laplacian depends only on
 the background over internal bonds.  The second derives the required internal
 bond equality from the literal Corollary-3.6 source-region dictionary.  The
@@ -39,23 +40,23 @@ exact quadratic form.  No precision, `Qprime`, coercivity estimate, Green
 operator, or second unrelated spacing is accepted as caller data.
 
 Runner checkpoint `[RUNNER_SHA]`, notebook checkpoint `[NOTEBOOK_SHA]`,
-revision `c6d-step3-localized-precision-v1`, and runner Git-blob SHA-256
+revision `c6d-step3-localized-precision-v5`, and runner Git-blob SHA-256
 `[RUNNER_BLOB_SHA256]` pin the immutable source.  One fresh Colab Pro+
-CPU/high-RAM checkout passed the textual `6/11/11` coverage gate and then the
-three focal/audit pairs stop-on-first-error.  Their focal job counts and stage
+CPU/high-RAM checkout passed the textual `8/15/15` coverage gate and then the
+four focal/audit pairs stop-on-first-error.  Their focal job counts and stage
 times are `[FOCAL_AND_AUDIT_TIMINGS]`.  The cold `YangMillsCore` root completed
-`[ROOT_JOBS]` jobs in `[ROOT_SECONDS]` seconds, exit `0`; all eleven direct
+`[ROOT_JOBS]` jobs in `[ROOT_SECONDS]` seconds, exit `0`; all fifteen direct
 readouts were subsets of `{propext, Classical.choice, Quot.sound}` and the
 runner emitted literal `FINAL_STATUS=PASS`.
 
 The downloaded executed notebook passed
-`verify_c6d_step3_localized_precision_evidence.py` against the six exact Git
+`verify_c6d_step3_localized_precision_evidence.py` against the eight exact Git
 blobs.  Canonical evidence SHA-256 is `[EVIDENCE_SHA256]`, archive SHA-256 is
 `[ARCHIVE_SHA256]`, verifier JSON SHA-256 is `[VERIFIER_JSON_SHA256]`, and the
 executed-notebook SHA-256 is `[NOTEBOOK_EVIDENCE_SHA256]`.
 
-Seal checkpoint `[SEAL_SHA]` retires exactly the six notices and imports
-exactly the three audits into `YangMillsCore`.  This is the source-faithful
+Seal checkpoint `[SEAL_SHA]` retires exactly the eight notices and imports
+exactly the four audits into `YangMillsCore`.  This is the source-faithful
 regional precision entering CMP99 (3.35), not coercivity, a Green inverse,
 uniform `B0, delta0`, window-15 attainment, rows 23--24, or a `TermSource`
 inhabitant.  The hard counters remain exactly `20/41`, `TermSource = 0`, and
