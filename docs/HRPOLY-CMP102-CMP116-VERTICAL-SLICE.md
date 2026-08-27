@@ -14778,6 +14778,27 @@ draft is not a valid C6d consumer.  Regional inversion, uniform
 stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
 
+### Step 8b.24/C6d.2: counting-to-weighted Eq. (3.60) normalization gate (PRE-VALIDATION; NOT CHECKED; 20/41 unchanged)
+
+Checkpoint `6d497598867948901c1c24976d1b8a3c5ad5f20f` exposes the
+normalization that the C6d.1 counting-Hilbert precision still needs before it
+can be read as the printed weighted-adjoint Eq. (3.60) precision.  For the
+internally generated retained tower the terminal spacing is
+`M^depth * spacing`, and the printed weighted-adjoint coefficient induced by
+a counting coefficient `a_j` is therefore
+`a_j * spacing^4 / terminalSpacing^4`.  This orientation is derived from the
+existing adjoint identity; it is not accepted as a free scalar equality.
+
+`BalabanCMP99SourceWeightedGaugePrecisionDictionary.draft` states the exact
+counting-to-weighted operator dictionary and derives the generated
+coefficient.  `BalabanCMP99Eq360WeightedPrecisionRealSlice.draft` combines
+that dictionary with the separately constructed Laplacian real slice and
+`CMP99Eq359TowerRealSliceAgreement`.  Both source/audit pairs remain scratch
+PRE-VALIDATION and have no compiler verdict.  The canonical ambient
+completion, regional inverse, uniform `B0, delta0`, window 15, rows 23--24
+and `TermSource` remain open.  Counters stay exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
+
 ### CMP99 Eq. (3.51) diagonal-sign no-go (COLAB-VERIFIED; 20/41 unchanged)
 
 `BalabanCMP99Eq351DiagonalSignNoGo` fixes the repository/source adjoint-action
