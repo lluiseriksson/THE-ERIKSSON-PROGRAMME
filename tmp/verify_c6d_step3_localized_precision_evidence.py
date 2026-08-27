@@ -134,8 +134,13 @@ def main() -> int:
     parser.add_argument("--repo", type=Path, required=True)
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--notebook", type=Path, required=True)
+    parser.add_argument("--runner-evidence", type=Path)
+    parser.add_argument("--axiom-supplement", type=Path)
     parser.add_argument("--json-out", type=Path)
     args = parser.parse_args()
+
+    if (args.runner_evidence is None) != (args.axiom_supplement is None):
+        raise RuntimeError("C6D_STEP3_SPLIT_EVIDENCE_REQUIRES_BOTH_INPUTS")
 
     repo = args.repo.resolve()
     exact_commit(repo, args.source_sha)
@@ -150,35 +155,102 @@ def main() -> int:
         )
     if notebook_code_source(evidence_bytes) != notebook_code_source(expected_notebook):
         raise RuntimeError("C6D_STEP3_NOTEBOOK_CODE_SOURCE_MISMATCH")
-    require_once(transcript, f"RUNNER_REV={RUNNER_REV}")
     require_once(transcript, "FINAL_STATUS=PASS")
     require_once(transcript, "LAUNCHER_EXIT=0")
-    require_once(
-        transcript,
-        "LEAN_AXIOM_READOUT_COVERAGE_OK files=8 declarations=15 readouts=15",
-    )
-    head_lines = re.findall(rf"(?m)^{re.escape(args.source_sha)}\s*$", transcript)
-    if len(head_lines) != 1:
-        raise RuntimeError(
-            f"C6D_STEP3_HEAD_LINE_COUNT={len(head_lines)} WANT=1"
+    stage_seconds: dict[str, str] = {}
+    axiom_transcript = transcript
+    runner_evidence_sha256 = None
+    axiom_supplement_sha256 = None
+    if args.runner_evidence is not None and args.axiom_supplement is not None:
+        runner_evidence_bytes = args.runner_evidence.read_bytes()
+        runner_evidence_sha256 = hashlib.sha256(runner_evidence_bytes).hexdigest()
+        evidence_markers = re.findall(
+            r"(?m)^EVIDENCE_SHA256=([A-Fa-f0-9]+)\s*$", transcript
         )
-    compact = re.sub(r"\s+", "", transcript)
+        if evidence_markers != [runner_evidence_sha256]:
+            raise RuntimeError(
+                "C6D_STEP3_RUNNER_EVIDENCE_SHA256="
+                f"{runner_evidence_sha256} MARKERS={evidence_markers!r}"
+            )
+        runner_evidence = json.loads(runner_evidence_bytes.decode("utf-8"))
+        if runner_evidence.get("status") != "PASS":
+            raise RuntimeError("C6D_STEP3_RUNNER_EVIDENCE_STATUS_NOT_PASS")
+        if runner_evidence.get("source_sha") != args.source_sha:
+            raise RuntimeError("C6D_STEP3_RUNNER_EVIDENCE_SOURCE_MISMATCH")
+        if runner_evidence.get("runner_rev") != RUNNER_REV:
+            raise RuntimeError("C6D_STEP3_RUNNER_EVIDENCE_REV_MISMATCH")
+        records = runner_evidence.get("records")
+        if not isinstance(records, list):
+            raise RuntimeError("C6D_STEP3_RUNNER_EVIDENCE_RECORDS_INVALID")
+        records_by_stage: dict[str, list[dict]] = defaultdict(list)
+        for record in records:
+            if not isinstance(record, dict) or not isinstance(record.get("stage"), str):
+                raise RuntimeError("C6D_STEP3_RUNNER_EVIDENCE_RECORD_INVALID")
+            records_by_stage[record["stage"]].append(record)
+        for stage in STAGES:
+            stage_records = records_by_stage.get(stage, [])
+            if len(stage_records) != 1:
+                raise RuntimeError(
+                    f"C6D_STEP3_RUNNER_RECORD_COUNT={stage}:{len(stage_records)} WANT=1"
+                )
+            record = stage_records[0]
+            if record.get("exit") != 0:
+                raise RuntimeError(
+                    f"C6D_STEP3_RUNNER_RECORD_EXIT={stage}:{record.get('exit')} WANT=0"
+                )
+            stage_seconds[stage] = str(record.get("seconds"))
+        head_records = records_by_stage.get("head", [])
+        expected_head_hash = hashlib.sha256(
+            (args.source_sha + "\n").encode("utf-8")
+        ).hexdigest()
+        if len(head_records) != 1 or head_records[0].get("output_sha256") != expected_head_hash:
+            raise RuntimeError("C6D_STEP3_RUNNER_HEAD_RECORD_MISMATCH")
+
+        axiom_supplement_bytes = args.axiom_supplement.read_bytes()
+        axiom_supplement_sha256 = hashlib.sha256(axiom_supplement_bytes).hexdigest()
+        axiom_transcript = axiom_supplement_bytes.decode("utf-8")
+        require_once(axiom_transcript, f"RUNNER_REV={RUNNER_REV}")
+        require_once(axiom_transcript, "C6D_STEP3_AXIOM_SUPPLEMENT_STATUS=PASS")
+        require_once(
+            axiom_transcript,
+            "LEAN_AXIOM_READOUT_COVERAGE_OK files=8 declarations=15 readouts=15",
+        )
+        head_lines = re.findall(
+            rf"(?m)^{re.escape(args.source_sha)}\s*$", axiom_transcript
+        )
+        if len(head_lines) != 1:
+            raise RuntimeError(
+                f"C6D_STEP3_SUPPLEMENT_HEAD_LINE_COUNT={len(head_lines)} WANT=1"
+            )
+    else:
+        require_once(transcript, f"RUNNER_REV={RUNNER_REV}")
+        require_once(
+            transcript,
+            "LEAN_AXIOM_READOUT_COVERAGE_OK files=8 declarations=15 readouts=15",
+        )
+        head_lines = re.findall(rf"(?m)^{re.escape(args.source_sha)}\s*$", transcript)
+        if len(head_lines) != 1:
+            raise RuntimeError(
+                f"C6D_STEP3_HEAD_LINE_COUNT={len(head_lines)} WANT=1"
+            )
+        for stage in STAGES:
+            matches = re.findall(
+                rf"STAGE={re.escape(stage)} EXIT=(\d+) SECONDS=([0-9.]+)",
+                transcript,
+            )
+            if len(matches) != 1:
+                raise RuntimeError(
+                    f"C6D_STEP3_STAGE_COUNT={stage}:{len(matches)} WANT=1"
+                )
+            exit_code, seconds = matches[0]
+            if exit_code != "0":
+                raise RuntimeError(f"C6D_STEP3_STAGE_EXIT={stage}:{exit_code} WANT=0")
+            stage_seconds[stage] = seconds
+
+    compact = re.sub(r"\s+", "", axiom_transcript)
     for forbidden in FORBIDDEN:
         if forbidden in compact:
             raise RuntimeError(f"C6D_STEP3_FORBIDDEN_AXIOM={forbidden}")
-
-    stage_seconds: dict[str, str] = {}
-    for stage in STAGES:
-        matches = re.findall(
-            rf"STAGE={re.escape(stage)} EXIT=(\d+) SECONDS=([0-9.]+)",
-            transcript,
-        )
-        if len(matches) != 1:
-            raise RuntimeError(f"C6D_STEP3_STAGE_COUNT={stage}:{len(matches)} WANT=1")
-        exit_code, seconds = matches[0]
-        if exit_code != "0":
-            raise RuntimeError(f"C6D_STEP3_STAGE_EXIT={stage}:{exit_code} WANT=0")
-        stage_seconds[stage] = seconds
 
     expected: list[str] = []
     boundary_hashes: dict[str, str] = {}
@@ -202,9 +274,9 @@ def main() -> int:
         raise RuntimeError(f"C6D_STEP3_EXPECTED_SCOPE={len(expected)}/{len(set(expected))}")
 
     observed: dict[str, list[frozenset[str]]] = defaultdict(list)
-    for declaration, body in OUTPUT_RE.findall(transcript):
+    for declaration, body in OUTPUT_RE.findall(axiom_transcript):
         observed[declaration].append(parse_axiom_set(body))
-    for declaration in NO_AXIOM_RE.findall(transcript):
+    for declaration in NO_AXIOM_RE.findall(axiom_transcript):
         observed[declaration].append(frozenset())
     missing = [name for name in expected if not observed.get(name)]
     duplicate = {name: len(observed[name]) for name in expected if len(observed[name]) != 1}
@@ -237,6 +309,8 @@ def main() -> int:
         "boundary_blob_sha256": boundary_hashes,
         "declarations_by_module": declarations_by_module,
         "evidence_input_sha256": hashlib.sha256(evidence_bytes).hexdigest(),
+        "runner_evidence_sha256": runner_evidence_sha256,
+        "axiom_supplement_sha256": axiom_supplement_sha256,
     }
     rendered = json.dumps(result, indent=2, sort_keys=True) + "\n"
     if args.json_out is not None:

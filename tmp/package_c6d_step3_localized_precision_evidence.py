@@ -93,16 +93,20 @@ def main() -> int:
     parser.add_argument("--source-sha", required=True)
     parser.add_argument("--notebook", type=Path, required=True)
     parser.add_argument("--archive", type=Path, required=True)
+    parser.add_argument("--axiom-supplement", type=Path, required=True)
     parser.add_argument("--destination", type=Path, required=True)
     args = parser.parse_args()
 
     notebook = args.notebook.resolve()
     archive = args.archive.resolve()
+    axiom_supplement = args.axiom_supplement.resolve()
     destination = args.destination.resolve()
     if not notebook.is_file():
         raise RuntimeError(f"C6D_STEP3_NOTEBOOK_MISSING={notebook}")
     if not archive.is_file():
         raise RuntimeError(f"C6D_STEP3_ARCHIVE_MISSING={archive}")
+    if not axiom_supplement.is_file():
+        raise RuntimeError(f"C6D_STEP3_AXIOM_SUPPLEMENT_MISSING={axiom_supplement}")
     if destination.exists():
         raise RuntimeError(f"C6D_STEP3_EVIDENCE_DESTINATION_EXISTS={destination}")
     runner_hashes = {name: exact_marker(transcript(notebook), name) for name in HASH_MARKERS}
@@ -116,10 +120,12 @@ def main() -> int:
         copied = staging / "executed-c6d-step3-v5.ipynb"
         copied_archive = staging / "hrpoly-c6d-step3-localized-precision-evidence.tar.gz"
         copied_runner_evidence = staging / "runner-evidence.json"
+        copied_axiom_supplement = staging / "axiom-supplement.txt"
         verifier_json = staging / "c6d-step3-localized-precision-axioms.json"
         shutil.copyfile(notebook, copied)
         shutil.copyfile(archive, copied_archive)
         copied_runner_evidence.write_bytes(runner_evidence_bytes)
+        shutil.copyfile(axiom_supplement, copied_axiom_supplement)
         child = subprocess.run(
             [
                 sys.executable,
@@ -130,6 +136,10 @@ def main() -> int:
                 args.source_sha,
                 "--notebook",
                 str(copied),
+                "--runner-evidence",
+                str(copied_runner_evidence),
+                "--axiom-supplement",
+                str(copied_axiom_supplement),
                 "--json-out",
                 str(verifier_json),
             ],
@@ -184,6 +194,7 @@ def main() -> int:
                 copied.name: sha256(copied),
                 copied_archive.name: sha256(copied_archive),
                 copied_runner_evidence.name: sha256(copied_runner_evidence),
+                copied_axiom_supplement.name: sha256(copied_axiom_supplement),
                 verifier_json.name: sha256(verifier_json),
             },
         }
