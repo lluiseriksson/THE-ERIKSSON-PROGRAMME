@@ -14,8 +14,8 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGER = ROOT / "tmp/package_cmp99_eq351_diagonal_sign_nogo_evidence.py"
-SOURCE = "fa0578e8ab02c5edbee12427c37a01b38ebc32e1"
-RUNNER_REV = "cmp99-eq351-diagonal-sign-nogo-v3"
+SOURCE = "c1e3814bb70036a6d6b61f39e517aab017043a50"
+RUNNER_REV = "cmp99-eq351-diagonal-sign-nogo-v4"
 ASSET_SHA = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 PATHS = (
