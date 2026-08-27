@@ -157,7 +157,8 @@ theorem isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion
 /-- Recompressing the canonical ambient completion recovers the original
 regional precision exactly. -/
 theorem cmp99RegionalDirichletPrecision_canonicalAmbientCompletion_eq
-    (Omega : ActiveGaugeRegion d N)
+    {M Q : ℕ} [NeZero M] [NeZero Q]
+    (Omega : ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalZeroEndomorphism Omega g) :
     cmp99RegionalDirichletPrecision Omega
         (cmp99ActiveRegionCanonicalAmbientCompletion Omega K) = K := by
@@ -177,7 +178,8 @@ the canonical covariance of the original regional precision.  The exterior
 identity is therefore proved irrelevant to every downstream regional action.
 -/
 theorem cmp99RegionalDirichletGreen_canonicalAmbientCompletion_eq
-    (Omega : ActiveGaugeRegion d N)
+    {M Q : ℕ} [NeZero M] [NeZero Q]
+    (Omega : ActiveGaugeRegion 4 (M * (2 * Q)))
     (K : CMP99RegionalZeroEndomorphism Omega g)
     {c : ℝ} (hc : 0 < c) (hK : IsCoerciveCLM K c) :
     cmp99RegionalDirichletGreen Omega
