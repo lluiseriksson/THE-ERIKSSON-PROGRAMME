@@ -164,6 +164,25 @@ the dictionary into a field.
 Neither the tower equality nor equality of the terminal precisions may be
 accepted from the caller.  This gate moves neither `20/41` nor window 15.
 
+There is a second normalization gate at the same boundary.  C6d.1 stores the
+real mass term with Lean's counting-space Hilbert adjoint and coefficient
+`a_j`, whereas printed Eq. (3.60) uses the source-weighted starred synthesis.
+For the internally generated tower the analytic coefficient must therefore
+be derived as
+
+```text
+a_weighted = a_j * eta^4 / terminalSpacing^4,
+terminalSpacing = M^depth * eta.
+```
+
+`BalabanCMP99SourceWeightedGaugePrecisionDictionary.draft` and
+`BalabanCMP99Eq360WeightedPrecisionRealSlice.draft` expose this orientation
+without accepting a scalar equality from the caller.  They remain
+PRE-VALIDATION.  The C6d-specific Eq. (3.60) wrapper must consume this derived
+coefficient; retaining an arbitrary complex parameter `a` in its public
+source-facing theorem would preserve the operator types while failing to
+identify the printed precision.
+
 An earlier Eq. (3.60) scratch still carried the baseline
 `CMP99SourceUbarRadiusChain` as a parameter of its input type.  Keeping that
 parameter outside the structure would not have discharged it: it was still a
