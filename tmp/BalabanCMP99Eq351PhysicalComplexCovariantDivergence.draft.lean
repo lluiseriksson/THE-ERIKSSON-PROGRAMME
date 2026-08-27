@@ -123,6 +123,24 @@ noncomputable def cmp99Eq351PhysicalComplexSourceCovariantAdjoint
         cmp99Eq351PhysicalComplexCovariantDivergence U A x :=
   rfl
 
+/-- Source Eq. (3.8) written with the same two canonical oriented values that
+enter the Laplacian expansion.  The visible negative inverse spacing is the
+dictionary between the repository's oriented sum and the printed adjoint. -/
+theorem cmp99Eq351PhysicalComplexSourceCovariantAdjoint_eq_smul_sum_oriented
+    (eta : ℝ)
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (x : FinBox d N) :
+    cmp99Eq351PhysicalComplexSourceCovariantAdjoint eta U A x =
+      (-((eta : ℂ)⁻¹)) •
+        ∑ i : Fin d,
+          (cmp99Eq351PhysicalComplexOrientedPerturbation U A
+              (ConcreteEdge.mk x i true) +
+            cmp99Eq351PhysicalComplexOrientedPerturbation U A
+              (ConcreteEdge.mk (x.shiftBack i) i false)) := by
+  rw [cmp99Eq351PhysicalComplexSourceCovariantAdjoint_apply,
+    cmp99Eq351PhysicalComplexCovariantDivergence_eq_sum_oriented]
+
 /-- Matrix presentation of the same internally constructed unscaled diagonal
 field.  The source regrouping is first proved at this level; chart-norm
 conversion is reserved for Eq. (3.54). -/
