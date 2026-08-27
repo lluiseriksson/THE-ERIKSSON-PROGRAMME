@@ -288,6 +288,13 @@ arrow.
    inverse-positive incoming link to the canonical negative concrete edge.
    Its companion audit has four readouts.  Both remain PRE-VALIDATION; their
    presence is implementation progress, not compiler evidence.
+
+   The second boundary is likewise materialized in scratch as
+   `BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansion.draft`.  It
+   performs the Boolean orientation split internally and cites the distinct
+   positive and negative expansion theorems; its statement exposes only the
+   canonical edge, generator and named remainder.  Its one-readout audit is
+   also PRE-VALIDATION.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
