@@ -62,7 +62,7 @@ theorem cmp99Eq351ComplexOrientedLaplacianStencil_regrouping_raw
   simp only [cmp99Eq351ComplexRegionalOrientedLaplacianStencil,
     cmp99Eq351PhysicalComplexOrientedStencilIncrementMatrix,
     map_sum, map_add, map_sub]
-  rw [← Finset.sum_sub_distrib]
+  refine Eq.trans ?_ Finset.sum_sub_distrib
   apply Finset.sum_congr rfl
   intro i _hi
   have hpos :=
