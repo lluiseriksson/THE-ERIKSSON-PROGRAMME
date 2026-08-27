@@ -163,7 +163,13 @@ def main() -> int:
     axiom_supplement_sha256 = None
     if args.runner_evidence is not None and args.axiom_supplement is not None:
         runner_evidence_bytes = args.runner_evidence.read_bytes()
-        runner_evidence_sha256 = hashlib.sha256(runner_evidence_bytes).hexdigest()
+        if not runner_evidence_bytes.endswith(b"\n"):
+            raise RuntimeError("C6D_STEP3_RUNNER_EVIDENCE_FINAL_LF_MISSING")
+        # The pinned base runner hashes the compact JSON payload before the
+        # single archival newline is appended to evidence.json.
+        runner_evidence_sha256 = hashlib.sha256(
+            runner_evidence_bytes[:-1]
+        ).hexdigest()
         evidence_markers = re.findall(
             r"(?m)^EVIDENCE_SHA256=([A-Fa-f0-9]+)\s*$", transcript
         )

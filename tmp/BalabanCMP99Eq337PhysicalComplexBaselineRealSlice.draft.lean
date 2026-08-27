@@ -28,7 +28,8 @@ theorem cmp99Eq337PhysicalComplexPerturbedBackground_zero_realSlice
         (cmp99Eq337PhysicalComplexifyOneCochain A) 0 =
       cmp99PhysicalGaugeBackgroundToSpecialLinear U := by
   simpa using
-    (cmp99Eq337PhysicalComplexPerturbedBackground_realSlice U A 0)
+    (cmp99Eq337PhysicalComplexPerturbedBackground_realSlice
+      (d := d) (M := 1) (N' := N) (Nc := Nc) U A 0)
 
 end
 
