@@ -1,0 +1,10 @@
+-- PRE-VALIDATION: audit present; no compiler or axiom-oracle verdict.
+import YangMills.RG.BalabanCMP99SourceRetainedFineOneCochainExtension
+
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineOneCochainExtension
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineOneCochainExtension_apply_of_mem
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineOneCochainExtension_apply_of_not_mem
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.norm_retainedFineOneCochainExtension_le
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineComplexOneCochain
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineComplexOneCochain_apply_of_mem
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineComplexOneCochain_apply_of_not_mem
