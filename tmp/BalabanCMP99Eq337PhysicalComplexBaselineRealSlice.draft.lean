@@ -16,20 +16,20 @@ namespace YangMills.RG
 
 noncomputable section
 
-variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
+variable {d M N' Nc : ℕ}
+variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 
 /-- The baseline analytic background is independent of the physical
 one-cochain at zero parameter.  This is a named composition of the sealed
 real-slice theorem and the sealed zero-variation identity. -/
 theorem cmp99Eq337PhysicalComplexPerturbedBackground_zero_realSlice
-    (U : PhysicalGaugeBackground d N Nc)
-    (A : PhysicalGaugeOneCochain d N Nc) :
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc) :
     cmp99Eq337PhysicalComplexPerturbedBackground U
         (cmp99Eq337PhysicalComplexifyOneCochain A) 0 =
       cmp99PhysicalGaugeBackgroundToSpecialLinear U := by
   simpa using
-    (cmp99Eq337PhysicalComplexPerturbedBackground_realSlice
-      (d := d) (M := N) (N' := 1) (Nc := Nc) U A 0)
+    (cmp99Eq337PhysicalComplexPerturbedBackground_realSlice U A 0)
 
 end
 
