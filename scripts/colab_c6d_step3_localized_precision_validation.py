@@ -30,8 +30,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "c6d-step3-localized-precision-v2"
-runner.SOURCE_SHA = 'a791b59ab91f4902f0369fc00668e8d123bee9ff'
+runner.RUNNER_REV = "c6d-step3-localized-precision-v3"
+runner.SOURCE_SHA = '1b4eaf235013811886948bb466c4f310d1f0be34'
 runner.ROOT = Path("/content/hrpoly-c6d-step3-localized-precision")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence.tar.gz")
@@ -44,7 +44,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision.lean': '5a653d68cb3ca6fdd9ba810cb79c6b8b1b0c3a09b5cf2fe94fc2ead30aa78213',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecisionAudit.lean': '846b1c97488cdfa48fdf1a350ca229f36c0cace7ff649cf0d50639bb74eb92ce',
     'tmp/C6D-STEP3-LOCALIZED-PRECISION-PATHS.txt': '57847259774d3569e7105001b9a01fc4bbdfeae7b5f51045021b569e3ed5caea',
-    'tmp/C6dStep3ContinuousLinearMapEquality.repro.lean': '170e0bfb796f2e86ed97d352e1a9803f8898a0d45d85e9d1e7e941368ca7a10e',
+    'tmp/C6dStep3ContinuousLinearMapEquality.repro.lean': '54edc29c3239f38262afe5883be11a4680a327ec96570ca26505e3e39fc67085',
     'YangMillsCore.lean': 'eb460cec95fc88f8f751858b30f39c624d42e7bd266cc5942b8b56b7d6548e08',
 }
 runner.QUEUE = [

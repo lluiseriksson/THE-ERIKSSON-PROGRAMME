@@ -16,7 +16,7 @@ globals_ = module["generate"].__globals__
 SOURCE = "a" * 40
 RUNNER = "b" * 40
 RUNNER_TEXT = (
-    'runner.RUNNER_REV = "c6d-step3-localized-precision-v2"\n'
+    'runner.RUNNER_REV = "c6d-step3-localized-precision-v3"\n'
     f"runner.SOURCE_SHA = {SOURCE!r}\n"
 ).encode()
 
@@ -48,7 +48,7 @@ def main() -> int:
         raise AssertionError("notebook accepted a runner pinned to another source")
 
     globals_["blob"] = lambda _checkpoint, _path: RUNNER_TEXT.replace(
-        b"c6d-step3-localized-precision-v2", b"c6d-step3-localized-precision-v3"
+        b"c6d-step3-localized-precision-v3", b"c6d-step3-localized-precision-v4"
     )
     try:
         module["generate"](SOURCE, RUNNER)

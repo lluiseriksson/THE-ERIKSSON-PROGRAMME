@@ -65,7 +65,7 @@ def main() -> int:
     destination.parent.mkdir(parents=True, exist_ok=True)
     staging = Path(tempfile.mkdtemp(prefix=".c6d-step3-evidence-", dir=destination.parent))
     try:
-        copied = staging / "executed-c6d-step3-v2.ipynb"
+        copied = staging / "executed-c6d-step3-v3.ipynb"
         verifier_json = staging / "c6d-step3-localized-precision-axioms.json"
         shutil.copyfile(notebook, copied)
         child = subprocess.run(
@@ -131,7 +131,7 @@ def main() -> int:
     print(
         "C6D_STEP3_EVIDENCE_PACKAGE_OK "
         f"destination={destination} manifest_sha256={sha256(destination / 'manifest.json')} "
-        f"notebook_sha256={sha256(destination / 'executed-c6d-step3-v2.ipynb')}"
+        f"notebook_sha256={sha256(destination / 'executed-c6d-step3-v3.ipynb')}"
     )
     return 0
 

@@ -12,7 +12,7 @@ import re
 import subprocess
 
 
-RUNNER_REV = "c6d-step3-localized-precision-v2"
+RUNNER_REV = "c6d-step3-localized-precision-v3"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 BRICKS: tuple[tuple[str, int], ...] = (
