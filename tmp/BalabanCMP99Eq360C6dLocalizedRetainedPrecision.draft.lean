@@ -1,0 +1,195 @@
+import tmp.BalabanCMP99Eq359SourceRetainedPhysicalTowerPair.draft
+import tmp.BalabanCMP99Eq360ComplexRegionalLaplacian.draft
+import tmp.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.draft
+import tmp.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.draft
+import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision
+import YangMills.RG.BalabanCMP99Eq337PhysicalComplexBaselineRealSlice
+
+/-!
+PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
+no compiler or axiom-oracle verdict.
+
+# C6d-specific complex precision identity for CMP99 (3.60)
+
+The Laplacian and averaging backgrounds are deliberately different internal
+objects.  The regional Laplacian consumes the full transformed background
+and the full physical perturbing one-cochain.  The Eq. (3.59) pair consumes
+their canonical retained extensions.  Thus the source carrier distinction
+sealed by C6d.1 is not erased by a single freely supplied background.
+
+No tower, `F2`, starred partner, Laplacian, precision, or equality between
+independently chosen operators is caller data.  This file proves only the
+exact four-term identity.  The local estimates (3.61)--(3.63), inversion and
+the four actions entering (3.42) remain separate downstream obligations.
+-/
+
+namespace YangMills.RG
+
+noncomputable section
+
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator RealInnerProductSpace
+
+variable {L N' M Mlarge Nc n depth : ℕ}
+variable [NeZero L] [NeZero N'] [NeZero M] [NeZero Mlarge] [NeZero Nc]
+variable {scaleExtent : Fin n → ℕ}
+variable {S : CMP99SourceScaledStratification (FinBox 4 (L * N')) n
+  (fun r => FinBox 4 (scaleExtent r))}
+variable {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
+
+/-- Genuine scalar/source gates needed after C6d.1.  The physical background
+is not a field: it is generated below from the regularity-class witness.
+The complex perturbation is likewise generated from the physical `A`, with
+the retained extension chosen internally for the averaging branch. -/
+structure CMP99Eq360C6dLocalizedRetainedInput
+    {U : PhysicalGaugeBackground 4 (L * N') Nc}
+    {eta alpha0 alpha1 : ℝ}
+    (R : CMP99Eq335PhysicalRegularityClass
+      (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
+    (C : CMP99SourceRegularCube (FinBox 4 (L * N')) n Mlarge scaleExtent S
+      scaleExtent_pos)
+    (hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1)
+    {Omega OmegaPrime0 : ActiveGaugeRegion 4 (L * N')}
+    (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
+    (D : CMP99Eq335Corollary36SourceRegionDictionary Omega OmegaPrime0 C)
+    (hM : 2 ≤ M) (halpha1 : alpha1 ≤ 1 / 2)
+    (chain : CMP99SourceUbarRadiusChain 4 M Nc depth
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) where
+  A : PhysicalGaugeOneCochain 4 (L * N') Nc
+  z rA Rmax : ℝ
+  rA_nonneg : 0 ≤ rA
+  retainedA_bound : ∀ b,
+    ‖regions.retainedFineComplexOneCochain A b‖ ≤ rA
+  perturbation_small : |z| *
+    (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2
+  radiusBudget : CMP99ComplexClosedRadiusBudget
+    (4 * (M - 1)) M depth
+    (cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) z rA)
+    Rmax (cmp99UbarNoWindingThreshold Nc)
+
+namespace CMP99Eq360C6dLocalizedRetainedInput
+
+variable {U : PhysicalGaugeBackground 4 (L * N') Nc}
+variable {eta alpha0 alpha1 : ℝ}
+variable {R : CMP99Eq335PhysicalRegularityClass
+  (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+  (scaleExtent := scaleExtent) (S := S)
+  (scaleExtent_pos := scaleExtent_pos) U eta alpha0}
+variable {C : CMP99SourceRegularCube (FinBox 4 (L * N')) n Mlarge scaleExtent S
+  scaleExtent_pos}
+variable {hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1}
+variable {Omega OmegaPrime0 : ActiveGaugeRegion 4 (L * N')}
+variable {regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth}
+variable {D : CMP99Eq335Corollary36SourceRegionDictionary Omega OmegaPrime0 C}
+variable {hM : 2 ≤ M} {halpha1 : alpha1 ≤ 1 / 2}
+variable {chain : CMP99SourceUbarRadiusChain 4 M Nc depth
+  (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)}
+
+/-- The full analytic perturbation used only by the Laplacian branch. -/
+noncomputable def fullComplexOneCochain
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    CMP99Eq337PhysicalComplexOneCochain 4 (L * N') Nc :=
+  cmp99Eq337PhysicalComplexifyOneCochain I.A
+
+/-- Full baseline background for the regional Laplacian. -/
+noncomputable def fullBackground0
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    GaugeConfig 4 (L * N') (Matrix.SpecialLinearGroup (Fin Nc) ℂ) :=
+  let W := R.toCubeWitness C alpha1 hscale
+  cmp99Eq337PhysicalComplexPerturbedBackground W.transformedBackground
+    I.fullComplexOneCochain 0
+
+/-- Full perturbed background for the regional Laplacian. -/
+noncomputable def fullBackground1
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    GaugeConfig 4 (L * N') (Matrix.SpecialLinearGroup (Fin Nc) ℂ) :=
+  let W := R.toCubeWitness C alpha1 hscale
+  cmp99Eq337PhysicalComplexPerturbedBackground W.transformedBackground
+    I.fullComplexOneCochain I.z
+
+/-- The Eq. (3.59) pair uses only the canonical retained extensions.  Its
+common target is constructed by the closed paired recursion. -/
+noncomputable def retainedTowerPair
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    CMP99Eq359ComplexRegionalTowerPair (Nc := Nc) Omega eta := by
+  let W := R.toCubeWitness C alpha1 hscale
+  have hlocal : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
+      ‖(W.transformedBackground (positiveEdgeOfPhysicalBond q) :
+        Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+          cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 :=
+    W.retainedFineReadBonds_nearIdentity regions
+      (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+        C D regions)
+      halpha1
+  exact regions.retainedComplexClosedPhysicalTowerPair
+    (by norm_num : 2 ≤ 4) hM eta W.transformedBackground I.A I.z
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) I.rA I.Rmax
+    chain.epsilon_nonneg I.rA_nonneg I.retainedA_bound
+    I.perturbation_small hlocal I.radiusBudget
+
+/-- Literal full-background baseline regional Laplacian. -/
+noncomputable def baselineLaplacian
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  cmp99Eq360ComplexRegionalLaplacian Omega I.fullBackground0 eta
+
+/-- Literal full-background perturbed regional Laplacian. -/
+noncomputable def perturbedLaplacian
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  cmp99Eq360ComplexRegionalLaplacian Omega I.fullBackground1 eta
+
+/-- Complete baseline analytic precision with the internally built retained
+average and independently built printed-starred synthesis. -/
+noncomputable def baselinePrecision
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) (a : ℂ) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  cmp99Eq360ComplexRegionalPrecision I.baselineLaplacian
+    I.retainedTowerPair.Q0 I.retainedTowerPair.starred0 a
+
+/-- Complete perturbed analytic precision on the same regional carrier. -/
+noncomputable def perturbedPrecision
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) (a : ℂ) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  cmp99Eq360ComplexRegionalPrecision I.perturbedLaplacian
+    I.retainedTowerPair.Q1 I.retainedTowerPair.starred1 a
+
+/-- Literal four-term perturbation with no merged norm budget. -/
+noncomputable def precisionPerturbation
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) (a : ℂ) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  cmp99Eq360ComplexRegionalPrecisionPerturbation I.retainedTowerPair
+    I.baselineLaplacian I.perturbedLaplacian a
+
+/-- Exact C6d specialization of CMP99 (3.60).  The equality is derived from
+the internally constructed operators; none of its two sides is input. -/
+theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) (a : ℂ) :
+    I.perturbedPrecision a =
+      I.baselinePrecision a - I.precisionPerturbation a := by
+  exact cmp99Eq360_complexRegionalPrecision_eq_sub_perturbation
+    I.retainedTowerPair I.baselineLaplacian I.perturbedLaplacian a
+
+end CMP99Eq360C6dLocalizedRetainedInput
+
+end
+
+end YangMills.RG
