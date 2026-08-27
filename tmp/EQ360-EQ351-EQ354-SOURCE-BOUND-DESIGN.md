@@ -67,6 +67,33 @@ specialization is also what converts the matrix generator
 and the raw exponential remainder into the printed `F'_{1,k}` without an
 untracked ratio of scales.
 
+### The derivative sign dictionary is portante
+
+CMP99 (3.3) prints
+
+```text
+D_U^eta lambda = eta^-1 (R(U) lambda_shift - lambda).
+```
+
+The repository convention `covariantD0CLM` is the opposite unscaled
+difference.  This relationship is already sealed in
+`cmp99Eq337PhysicalRealCovariantDerivative`, whose definition is visibly
+`(-eta^-1) • covariantD0CLM`.  Taking the counting-Hilbert adjoint therefore
+fixes the source diagonal as
+
+```text
+(D_U^eta)^* A = (-eta^-1) * gaugeConstraintQCLM(U,A).
+```
+
+Accordingly `cmp99Eq351PhysicalComplexCovariantDivergence` is only the
+internally constructed **unscaled** complexification of
+`gaugeConstraintQCLM`.  The printed diagonal species is the separately named
+`cmp99Eq351PhysicalComplexSourceCovariantAdjoint eta U A`, defined internally
+as `-eta^-1` times that divergence.  The source-facing regrouping must consume
+the latter.  Identifying the unscaled divergence directly with `D_U^* A`
+would lose both a sign and a spacing factor; no caller-supplied equality is an
+accepted repair.
+
 ## Printed quantitative endpoint
 
 Let `ell = L^j eta`. Under the source domain (3.37), printed Eq. (3.54) is
@@ -199,12 +226,16 @@ arrow.
    negative link.  Module 3 may cite that result; it may not receive the
    inverse-link equality as an input.
 2c. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence`: construct the
-   complex `D_U^* A` stencil from the same physical background and one-
-   cochain, and identify it with the sum of the canonical outgoing and
-   incoming oriented values of `A'`.  The scratch source/audit pair is
-   PRE-VALIDATION in `tmp`; it has no `.olean` or axiom verdict.  This leaf
-   removes the possibility of a caller-supplied diagonal field, but it does
-   not prove the three-species Laplacian identity or any Eq. (3.54) bound.
+   unscaled backward-divergence stencil from the same physical background and
+   one-cochain, and identify it with the sum of the canonical outgoing and
+   incoming oriented values of `A'`.  In the same leaf construct the printed
+   source adjoint internally as
+   `cmp99Eq351PhysicalComplexSourceCovariantAdjoint eta U A =
+   -eta^-1 • cmp99Eq351PhysicalComplexCovariantDivergence U A`.  The scratch
+   source/audit pair is PRE-VALIDATION in `tmp`; it has no `.olean` or axiom
+   verdict.  This leaf removes the possibility of a caller-supplied diagonal
+   field while preserving the printed sign and spacing, but it does not prove
+   the three-species Laplacian identity or any Eq. (3.54) bound.
 
    Its source-facing real-slice dictionary is fixed as a theorem, not an
    implicit identification.  For a real physical one-cochain `A` it must
@@ -241,11 +272,13 @@ arrow.
    spacing.  The existing auxiliary local-perturbation operator with free
    `U0 U1` may be used only after those substitutions; it is not itself the
    source producer.  Likewise, the oriented `A'`, the diagonal
-   `cmp99Eq351PhysicalComplexCovariantDivergence U A`, and the exponential
-   remainder are named internal expressions.  No equality identifying any
-   of them with caller data is an accepted premise.  The first endpoint is a
-   pointwise three-species equality; an operator wrapper, if useful, is
-   derived from that equality rather than used to hide it.
+   `cmp99Eq351PhysicalComplexSourceCovariantAdjoint eta U A`, and the
+   exponential remainder are named internal expressions.  The unscaled
+   divergence remains visible only through its proved definition of that
+   source adjoint.  No equality identifying any of them with caller data is
+   an accepted premise.  The first endpoint is a pointwise three-species
+   equality; an operator wrapper, if useful, is derived from that equality
+   rather than used to hide it.
 
    The cancellation of the two spacing factors is not valid at `eta = 0`.
    Indeed, at zero the two regional Laplacians coincide while
@@ -263,11 +296,13 @@ arrow.
    nearest-neighbour stencil.  Next prove one matrix adjoint expansion for
    each canonical orientation, using the positive and negative factorization
    theorems already owned by the input gate.  Only then sum the two branches,
-   replace their common on-site contribution by
-   `cmp99Eq351PhysicalComplexCovariantDivergence`, and simplify the spacing
-   factors with the Eq. (3.37) nonzero witness.  This prevents the nested
-   `D*D` presentation of the regional operator from hiding the diagonal
-   species or creating a caller-supplied oriented field.
+   replace their common on-site contribution by the unscaled divergence,
+   simplify the spacing factors with the Eq. (3.37) nonzero witness, and
+   rewrite the result to
+   `cmp99Eq351PhysicalComplexSourceCovariantAdjoint`.  This prevents the
+   nested `D*D` presentation of the regional operator from hiding the
+   diagonal species or its source sign/spacing, or from creating a
+   caller-supplied oriented field.
 
    Provisional declaration boundaries (names may change, meanings may not):
 
@@ -303,8 +338,9 @@ arrow.
    the negative sum of the two canonical oriented increments, then lifts the
    result to the full regional Laplacians with both inverse-spacing factors
    still explicit.  It deliberately does not yet identify the commutator sum
-   with `D_U^* A` or cancel any spacing factor, so the nonzero-spacing printed
-   corollary remains open.  Its three-readout audit remains PRE-VALIDATION.
+   with the internally scaled `D_U^* A` or cancel any spacing factor, so the
+   nonzero-spacing printed corollary remains open.  Its three-readout audit
+   remains PRE-VALIDATION.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
@@ -357,8 +393,9 @@ The current regional-stencil inventory fixes the next proof boundary:
   bond as `exp(i eta A_b) U_b`, while the already named negative-bond matrix
   theorem supplies the same oriented background rather than a second choice;
 - the missing regrouping theorem must expose the source-oriented `A'` and the
-  diagonal `D_U^* A` contribution explicitly.  Neither may be represented by
-  a caller-supplied one-cochain or a free diagonal operator.
+  internally scaled diagonal `D_U^* A` contribution explicitly.  Neither may
+  be represented by a caller-supplied one-cochain or a free diagonal
+  operator, and the latter may not be replaced by the unscaled divergence.
 
 Therefore a green compile of the existing four-term Eq. (3.60) algebra cannot
 be cited as evidence for (3.51)--(3.54).  The latter becomes evidence only
