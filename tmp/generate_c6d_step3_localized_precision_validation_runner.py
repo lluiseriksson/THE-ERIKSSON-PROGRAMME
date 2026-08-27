@@ -21,6 +21,7 @@ BASE_RUNNER_SHA256 = (
     "d06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee"
 )
 PATH_MANIFEST = "tmp/C6D-STEP3-LOCALIZED-PRECISION-PATHS.txt"
+REPRO_PATH = "tmp/C6dStep3ContinuousLinearMapEquality.repro.lean"
 ROOT_MODULE = "YangMillsCore.lean"
 BRICKS: tuple[tuple[str, tuple[str, ...]], ...] = (
     (
@@ -151,6 +152,7 @@ def generate(source_sha: str) -> str:
         raise SystemExit("C6D_STEP3_AXIOM_TOTAL_MISMATCH")
     for path, data in (
         (PATH_MANIFEST, manifest),
+        (REPRO_PATH, blob(source_sha, REPRO_PATH)),
         (ROOT_MODULE, blob(source_sha, ROOT_MODULE)),
     ):
         rows.append((path, hashlib.sha256(data).hexdigest()))
@@ -158,7 +160,12 @@ def generate(source_sha: str) -> str:
     blob_rows = "\n".join(f"    {q(path)}: {q(digest)}," for path, digest in rows)
     queue_rows: list[str] = [
         "    (\n"
-        "        '00_c6d_step3_axiom_readout_coverage',\n"
+        "        '00_c6d_step3_clm_extensionality_repro',\n"
+        f"        ['lake', 'env', 'lean', {q(REPRO_PATH)}],\n"
+        "        None,\n"
+        "    ),\n"
+        "    (\n"
+        "        '00a_c6d_step3_axiom_readout_coverage',\n"
         "        ['python3', 'scripts/check_lean_axiom_readout_coverage.py', "
         f"'--paths-from', {q(PATH_MANIFEST)}],\n"
         "        None,\n"
@@ -220,7 +227,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "c6d-step3-localized-precision-v1"
+runner.RUNNER_REV = "c6d-step3-localized-precision-v2"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-c6d-step3-localized-precision")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence")
@@ -267,7 +274,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_STEP3_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=8 bricks=3 stages=8 "
+        f"source_sha={args.source_sha} files=9 bricks=3 stages=9 "
         "axiom_blocks=11 root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"

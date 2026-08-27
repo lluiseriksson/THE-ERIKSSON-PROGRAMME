@@ -13,7 +13,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNNER_PATH = "scripts/colab_c6d_step3_localized_precision_validation.py"
-RUNNER_REV = "c6d-step3-localized-precision-v1"
+RUNNER_REV = "c6d-step3-localized-precision-v2"
 REPO_RAW = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME"

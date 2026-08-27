@@ -21,6 +21,8 @@ def good_blob(_sha: str, path: str) -> bytes:
         return ("\n".join(paths) + "\n").encode()
     if path == module["ROOT_MODULE"]:
         return b"import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision\n"
+    if path == module["REPRO_PATH"]:
+        return b"import Mathlib.Analysis.InnerProductSpace.Symmetric\nexample : True := by trivial\n"
     for brick, expected in module["BRICKS"]:
         source, audit = module["pair_paths"](brick)
         if path == source:
@@ -52,9 +54,10 @@ def main() -> int:
     assert len(module["BRICKS"]) == 3
     assert sum(len(names) for _, names in module["BRICKS"]) == 11
     assert text.count("'lake', 'build'") == 4
-    assert text.count("'lake', 'env', 'lean'") == 3
+    assert text.count("'lake', 'env', 'lean'") == 4
+    assert module["REPRO_PATH"] in text
     assert "check_lean_axiom_readout_coverage.py" in text
-    assert "c6d-step3-localized-precision-v1" in text
+    assert "c6d-step3-localized-precision-v2" in text
     assert "YangMillsCore" in text
     assert "files.download(str(runner.ARCHIVE))" in text
 
@@ -84,7 +87,7 @@ def main() -> int:
         raise AssertionError("runner accepted a changed audit surface")
 
     print(
-        "C6D_STEP3_RUNNER_SELFTEST_OK files=8 bricks=3 stages=8 "
+        "C6D_STEP3_RUNNER_SELFTEST_OK files=9 bricks=3 stages=9 "
         "axiom_blocks=11 root=YangMillsCore tamper=fail_closed "
         "generator_sha256=" + hashlib.sha256(MODULE_PATH.read_bytes()).hexdigest().upper()
     )
