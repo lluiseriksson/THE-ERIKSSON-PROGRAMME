@@ -1,6 +1,7 @@
 import tmp.BalabanCMP99SourcePhysicalRealSliceTowerPair.draft
 import tmp.BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget.draft
 import YangMills.RG.BalabanCMP99Eq360ComplexRegionalLaplacian
+import YangMills.RG.BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice
 import YangMills.RG.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation
 import YangMills.RG.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation
 import tmp.BalabanCMP99Eq360WeightedPrecisionRealSlice.draft
@@ -407,6 +408,23 @@ noncomputable def perturbedLaplacian
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalLaplacian Omega I.fullBackground1 eta
+
+/-- The named analytic baseline Laplacian is exactly the compact real slice
+of the literal C6d.1 physical Laplacian. -/
+theorem baselineLaplacian_realSlice
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    I.baselineLaplacian
+        (cmp99ActiveGaugeZeroCochainComplexificationCLM Omega phi) =
+      cmp99ActiveGaugeZeroCochainComplexificationCLM Omega
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega
+          (matrixSUNAdjointModel Nc)
+          (R.toCubeWitness C alpha1 hscale).transformedBackground eta phi) := by
+  ext x
+  rw [baselineLaplacian, I.fullBackground0_eq_realSlice]
+  exact cmp99Eq360ComplexRegionalLaplacian_realSlice Omega
+    (R.toCubeWitness C alpha1 hscale).transformedBackground eta phi x
 
 /-- The full-carrier local three-species term `V'_1(A)` is constructed from
 the two analytic stencils, not accepted as their difference. -/

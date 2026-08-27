@@ -25,6 +25,7 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.retainedTowerPair_starred0_eq_baselineRetainedComplexTower
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineLaplacian
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.perturbedLaplacian
+#print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineLaplacian_realSlice
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.localLaplacianPerturbation
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselinePrecision
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.perturbedPrecision
