@@ -40911,3 +40911,32 @@ operator or second spacing. This does not construct Eq. (3.60), a regional
 Green/resolvent, uniform `B0, delta0`, window-15 attainment, rows 23--24 or a
 `TermSource`. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 950 (2026-08-27, **C6d next real-slice v3 runtime-loss and standard-RAM incidents preserved; no seal; 20/41 unchanged**)
+
+The next C6d real-slice queue remains pinned to exact source
+`81cc22e41d46cce150c2a263c85e4acb90087153`, runner checkpoint
+`300faf158314faa8c360cb4ad8527bf7e1f034a4`, notebook checkpoint
+`8106025057c4fac4e1e59a4e5b594f492ff1af4a` and runner revision
+`c6d-next-real-slice-v3`.
+
+One fresh Colab Pro+ CPU/high-RAM attempt compiled all three promoted
+source/audit pairs with exit code `0`; its ten printed declarations used only
+`propext`, `Classical.choice`, and `Quot.sound` or a subset.  The browser tab
+was then lost while the cold `YangMillsCore` root was active, and the runner
+recorded `KeyboardInterrupt` before a root result existed.  This package is
+classified `INCOMPLETE-RUNTIME-LOSS`, has archive SHA-256
+`304C4AC5F70130F540321069CCD60AC4A0DD2498D5308EA45D43CFC651FDB6B0`,
+and is preserved under
+`validation-evidence/c6d-next-real-slice-v3-runtime-loss-81cc22e4/`.
+
+A subsequent standard-memory CPU allocation measured only `12.67 GiB` and
+was rejected by `HIGH_RAM_REQUIRED` before checkout or Lean/Lake work.  That
+`BLOCKED-HIGH-RAM` package has archive SHA-256
+`8F33E48F87A5F5809C4BF68CCA6B0972A28A146A74A0504972521BE1014D5F32`
+and is preserved under
+`validation-evidence/c6d-next-real-slice-v3-blocked-high-ram-81cc22e4/`.
+
+Neither incident is compiler seal evidence.  All six PRE-VALIDATION notices
+remain, no terminal field is discharged, and the counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

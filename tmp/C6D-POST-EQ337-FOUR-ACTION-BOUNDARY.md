@@ -219,10 +219,15 @@ Eq. (3.59), its physical real slice, the 34-file retained dependency boundary
 and C6d.1 are sealed; C6d.1 is recorded in ledger Addendum 949.  The live
 queue is now the three promoted source/audit pairs in items 1--3 above.  Exact
 source `81cc22e41d46cce150c2a263c85e4acb90087153`, runner
-`25783c187299e4fa2487128f50dc27c023aaa09e` and notebook
-`cc5dd5878f7daf3a87169b20b45a1e64a668f863` are pinned under runner revision
-`c6d-next-real-slice-v1`.  All six notices remain PRE-VALIDATION until that
-fresh CPU/high-RAM focal/audit/root queue and its fail-closed verifier pass.
+`300faf158314faa8c360cb4ad8527bf7e1f034a4` and notebook
+`8106025057c4fac4e1e59a4e5b594f492ff1af4a` are pinned under runner revision
+`c6d-next-real-slice-v3`.  The first v3 attempt is preserved as
+`INCOMPLETE-RUNTIME-LOSS` after all three focal/audit pairs passed but the
+cold root received `KeyboardInterrupt`; a later standard-memory runtime was
+rejected by the fail-closed `HIGH_RAM_REQUIRED` preflight before checkout.
+Neither incident retires a notice.  All six notices remain PRE-VALIDATION
+until one fresh CPU/high-RAM focal/audit/root queue and its fail-closed
+verifier pass.
 
 The Eq. (3.51) algebra has a separate warm diagnostic PASS at source
 `fab6807d1ddde2e33b5d350a14ba6dd47b61745b`.  Warm evidence is not a cold
