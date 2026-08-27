@@ -2,6 +2,9 @@ import YangMills.RG.BalabanCMP99SourceRetainedFineExtension
 
 /-!
 
+PRE-VALIDATION: the public terminal-bundle transport fields added below have
+not yet received a compiler or axiom-oracle verdict.
+
 
 # Retain every prefix of the localized source tower
 
@@ -412,6 +415,17 @@ structure CMP99SourceLocalizedRetainedTower
   canonicalTowerAt_zero : canonicalTowerAt 0 =
     CMP99SourceWeightedRegionalTower.stop
       (g := SUNLieCoord Nc) Omega spacing
+  prefixTerminalSpace_eq : ∀ r,
+    (localizedTowerAt r).TerminalSpace = (canonicalTowerAt r).TerminalSpace
+  prefixQprime_eq : ∀ r,
+    cmp99SourceTerminalCLMTransport
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (F := (localizedTowerAt r).TerminalSpace)
+        (F' := (canonicalTowerAt r).TerminalSpace)
+        rfl (prefixTerminalSpace_eq r)
+        (localizedTowerAt r).Qprime =
+      (canonicalTowerAt r).Qprime
   prefixQprime_heq : ∀ r,
     HEq (localizedTowerAt r).Qprime (canonicalTowerAt r).Qprime
   localizedTerminal_eq_generated :
@@ -455,7 +469,8 @@ noncomputable def cmp99SourceLocalizedRetainedTower
   exact CMP99SourceLocalizedRetainedTower.mk
     Aux.localTowerAt Aux.canonicalTowerAt Aux.localTowerAt_depth
     Aux.canonicalTowerAt_depth Aux.localTowerAt_zero
-    Aux.canonicalTowerAt_zero (fun r =>
+    Aux.canonicalTowerAt_zero Aux.prefixTerminalSpace_eq Aux.prefixQprime_eq
+    (fun r =>
       cmp99SourceHEq_of_terminalCLMTransport_eq
         (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
         (Aux.prefixTerminalSpace_eq r) (Aux.localTowerAt r).Qprime
@@ -479,6 +494,32 @@ theorem CMP99SourceLocalizedRetainedTower.terminalQprime_eq
     HEq (T.localizedTowerAt (Fin.last depth)).Qprime
       (T.canonicalTowerAt (Fin.last depth)).Qprime :=
   T.prefixQprime_heq (Fin.last depth)
+
+/-- Terminal projection of the internally constructed literal equality after
+transporting the localized codomain bundle to the canonical codomain bundle.
+Unlike `terminalQprime_eq`, this theorem is an ordinary equality and can be
+used by consumers without eliminating a heterogeneous carrier equality. -/
+theorem CMP99SourceLocalizedRetainedTower.terminalQprime_transport_eq
+    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    {regions : CMP99SourceActiveRegionChain d M N Omega depth}
+    {hd : 2 ≤ d} {hM : 2 ≤ M} {rho : SUNAdjointModel Nc}
+    {spacing epsilon : ℝ}
+    {background : PhysicalGaugeBackground d N Nc}
+    {chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon}
+    {localSmall : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
+      ‖(background (positiveEdgeOfPhysicalBond q) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon}
+    (T : CMP99SourceLocalizedRetainedTower regions hd hM rho spacing epsilon
+      background chain localSmall) :
+    cmp99SourceTerminalCLMTransport
+        (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (E' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+        (F := (T.localizedTowerAt (Fin.last depth)).TerminalSpace)
+        (F' := (T.canonicalTowerAt (Fin.last depth)).TerminalSpace)
+        rfl (T.prefixTerminalSpace_eq (Fin.last depth))
+        (T.localizedTowerAt (Fin.last depth)).Qprime =
+      (T.canonicalTowerAt (Fin.last depth)).Qprime :=
+  T.prefixQprime_eq (Fin.last depth)
 
 end
 

@@ -30,6 +30,22 @@ variable {S : CMP99SourceScaledStratification (FinBox 4 (L * N')) n
   (fun r => FinBox 4 (scaleExtent r))}
 variable {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
 
+/-- Gauge precision is invariant when the terminal codomain bundle of `Qprime`
+is transported explicitly and the transported map is then identified with the
+canonical map.  The equality of Hilbert bundles is porting data, not a hidden
+identification of two independently chosen precisions. -/
+private theorem cmp99SourceGaugePrecision_eq_of_terminalCLMTransport
+    {E F F' : CMP99SourceWeightedTowerHilbertSpace}
+    (hF : F = F') (Delta : E.carrier →L[ℝ] E.carrier)
+    (Q : E.carrier →L[ℝ] F.carrier)
+    (Q' : E.carrier →L[ℝ] F'.carrier) (a : ℝ)
+    (hQ : cmp99SourceTerminalCLMTransport rfl hF Q = Q') :
+    cmp99SourceGaugePrecision Delta Q a =
+      cmp99SourceGaugePrecision Delta Q' a := by
+  subst F'
+  change Q = Q' at hQ
+  exact congrArg (fun R => cmp99SourceGaugePrecision Delta R a) hQ
+
 /-- The literal regional precision on the terminal localized retained tower.
 The coefficient `a_j` remains the printed flowing scalar. -/
 noncomputable def
@@ -125,8 +141,13 @@ theorem
           Omega rho W.transformedBackground eta)
         (T.canonicalTowerAt (Fin.last depth)).Qprime a_j := by
   dsimp only [CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision]
-  rw [R.localizedRetainedTerminalQprime_eq_ofSourceRegion
-    (spacing := eta) C hscale regions D hM rho halpha1 chain]
+  exact cmp99SourceGaugePrecision_eq_of_terminalCLMTransport
+    (T.prefixTerminalSpace_eq (Fin.last depth))
+    (cmp99ActiveRegionSourceCovariantLaplacian
+      Omega rho W.transformedBackground eta)
+    (T.localizedTowerAt (Fin.last depth)).Qprime
+    (T.canonicalTowerAt (Fin.last depth)).Qprime a_j
+    (T.prefixQprime_eq (Fin.last depth))
 
 /-- Source-closed isolation of the Laplacian background change.  The
 Corollary-3.6 region dictionary replaces the transformed-background
@@ -166,10 +187,9 @@ theorem
           (cmp99Eq335PhysicalExponentialBackground
             W.logarithmicRepresentative eta) eta)
         (T.canonicalTowerAt (Fin.last depth)).Qprime a_j := by
-  dsimp only [CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision]
-  rw [R.localizedRetainedTerminalQprime_eq_ofSourceRegion
+  rw [R.localizedRetainedPhysicalPrecision_eq_canonical
       (spacing := eta) C hscale regions D hM (matrixSUNAdjointModel Nc)
-        halpha1 chain,
+        halpha1 chain a_j,
     (R.toCubeWitness C alpha1 hscale).
       regionalLaplacian_eq_exponential_of_sourceRegionDictionary D]
 
