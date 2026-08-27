@@ -13,6 +13,8 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullBackground0_eq_realSlice
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullBackground1_eq_realSlice
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineRetainedTowerRealSliceAgreement
+#print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineRetainedPhysicalTower
+#print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.weightedPrecisionCoefficient
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.retainedTowerPair
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineLaplacian
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.perturbedLaplacian

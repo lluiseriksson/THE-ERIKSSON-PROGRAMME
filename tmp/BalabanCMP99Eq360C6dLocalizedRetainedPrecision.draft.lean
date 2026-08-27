@@ -3,6 +3,7 @@ import tmp.BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget.draft
 import tmp.BalabanCMP99Eq360ComplexRegionalLaplacian.draft
 import tmp.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.draft
 import tmp.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.draft
+import tmp.BalabanCMP99Eq360WeightedPrecisionRealSlice.draft
 import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexBaselineRealSlice
 import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
@@ -79,6 +80,7 @@ structure CMP99Eq360C6dLocalizedRetainedInput
       (cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc
         (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) z rA)
       Rmax (cmp99UbarNoWindingThreshold Nc)
+  a_j : ℝ
 
 namespace CMP99Eq360C6dLocalizedRetainedInput
 
@@ -195,6 +197,47 @@ noncomputable def baselineRetainedTowerRealSliceAgreement
     (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
     retainedU I.baselineRadiusChain retainedUSmall
 
+/-- Physical weighted tower underlying the C6d.1 counting-Hilbert precision.
+It is regenerated from the same retained background and radius chain used by
+the analytic baseline; no terminal operator is supplied by the caller. -/
+noncomputable def baselineRetainedPhysicalTower
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) : by
+    let W := R.toCubeWitness C alpha1 hscale
+    let retainedU := regions.retainedFineExtension W.transformedBackground
+    let hlocal := W.retainedFineReadBonds_nearIdentity regions
+      (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+        C D regions)
+      halpha1
+    let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
+      W.transformedBackground
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+      I.baselineRadiusChain.epsilon_nonneg hlocal
+    exact CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega eta := by
+  let W := R.toCubeWitness C alpha1 hscale
+  let retainedU := regions.retainedFineExtension W.transformedBackground
+  let hlocal := W.retainedFineReadBonds_nearIdentity regions
+    (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+      C D regions)
+    halpha1
+  let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
+    W.transformedBackground
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    I.baselineRadiusChain.epsilon_nonneg hlocal
+  exact regions.weightedQprimeTower (by norm_num : 2 ≤ 4) hM
+    (matrixSUNAdjointModel Nc) eta
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    retainedU I.baselineRadiusChain retainedUSmall
+
+/-- Printed weighted-adjoint coefficient induced by the literal C6d.1
+counting coefficient.  The terminal volume ratio is computed from the
+internally generated tower rather than accepted as a scalar dictionary. -/
+noncomputable def weightedPrecisionCoefficient
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) : ℝ :=
+  cmp99SourceCountingCoefficientAsWeightedAdjoint
+    I.baselineRetainedPhysicalTower I.a_j
+
 /-- The Eq. (3.59) pair uses only the canonical retained physical extensions.
 The perturbed physical radius chain is derived from the stronger closed
 complex budget; it is not a second caller hypothesis.  Both analytic branches
@@ -289,48 +332,54 @@ noncomputable def localLaplacianPerturbation
 average and independently built printed-starred synthesis. -/
 noncomputable def baselinePrecision
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) (a : ℂ) :
+      halpha1 baselineRadiusBudget) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalPrecision I.baselineLaplacian
-    I.retainedTowerPair.Q0 I.retainedTowerPair.starred0 a
+    I.retainedTowerPair.Q0 I.retainedTowerPair.starred0
+      (I.weightedPrecisionCoefficient : ℂ)
 
 /-- Complete perturbed analytic precision on the same regional carrier. -/
 noncomputable def perturbedPrecision
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) (a : ℂ) :
+      halpha1 baselineRadiusBudget) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalPrecision I.perturbedLaplacian
-    I.retainedTowerPair.Q1 I.retainedTowerPair.starred1 a
+    I.retainedTowerPair.Q1 I.retainedTowerPair.starred1
+      (I.weightedPrecisionCoefficient : ℂ)
 
 /-- Literal four-term perturbation with no merged norm budget. -/
 noncomputable def precisionPerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) (a : ℂ) :
+      halpha1 baselineRadiusBudget) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalPrecisionPerturbation I.retainedTowerPair
-    I.baselineLaplacian I.perturbedLaplacian a
+    I.baselineLaplacian I.perturbedLaplacian
+      (I.weightedPrecisionCoefficient : ℂ)
 
 /-- Source-expanded perturbation: the local `V'_1(A)` and the three
 averaging terms remain four separately inspectable summands. -/
 noncomputable def sourcePrecisionPerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) (a : ℂ) :
+      halpha1 baselineRadiusBudget) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   I.localLaplacianPerturbation -
-    a • (I.retainedTowerPair.F2star.comp I.retainedTowerPair.Q0) -
-    a • (I.retainedTowerPair.starred0.comp I.retainedTowerPair.F2) -
-    a • (I.retainedTowerPair.F2star.comp I.retainedTowerPair.F2)
+    (I.weightedPrecisionCoefficient : ℂ) •
+      (I.retainedTowerPair.F2star.comp I.retainedTowerPair.Q0) -
+    (I.weightedPrecisionCoefficient : ℂ) •
+      (I.retainedTowerPair.starred0.comp I.retainedTowerPair.F2) -
+    (I.weightedPrecisionCoefficient : ℂ) •
+      (I.retainedTowerPair.F2star.comp I.retainedTowerPair.F2)
 
 /-- The literal stencil identity replaces the unexpanded Laplacian
 difference without changing any averaging term. -/
 theorem precisionPerturbation_eq_sourcePrecisionPerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) (a : ℂ) :
-    I.precisionPerturbation a = I.sourcePrecisionPerturbation a := by
+      halpha1 baselineRadiusBudget) :
+    I.precisionPerturbation = I.sourcePrecisionPerturbation := by
   unfold precisionPerturbation sourcePrecisionPerturbation
   rw [cmp99Eq360_complexRegionalLaplacian_sub_eq_localPerturbation]
   rfl
@@ -339,21 +388,22 @@ theorem precisionPerturbation_eq_sourcePrecisionPerturbation
 the internally constructed operators; none of its two sides is input. -/
 theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) (a : ℂ) :
-    I.perturbedPrecision a =
-      I.baselinePrecision a - I.precisionPerturbation a := by
+      halpha1 baselineRadiusBudget) :
+    I.perturbedPrecision =
+      I.baselinePrecision - I.precisionPerturbation := by
   exact cmp99Eq360_complexRegionalPrecision_eq_sub_perturbation
-    I.retainedTowerPair I.baselineLaplacian I.perturbedLaplacian a
+    I.retainedTowerPair I.baselineLaplacian I.perturbedLaplacian
+      (I.weightedPrecisionCoefficient : ℂ)
 
 /-- Source-expanded C6d Eq. (3.60), still before any norm estimate or
 regional inverse is introduced. -/
 theorem perturbedPrecision_eq_baselinePrecision_sub_sourcePerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) (a : ℂ) :
-    I.perturbedPrecision a =
-      I.baselinePrecision a - I.sourcePrecisionPerturbation a := by
-  rw [← I.precisionPerturbation_eq_sourcePrecisionPerturbation a]
-  exact I.perturbedPrecision_eq_baselinePrecision_sub_perturbation a
+      halpha1 baselineRadiusBudget) :
+    I.perturbedPrecision =
+      I.baselinePrecision - I.sourcePrecisionPerturbation := by
+  rw [← I.precisionPerturbation_eq_sourcePrecisionPerturbation]
+  exact I.perturbedPrecision_eq_baselinePrecision_sub_perturbation
 
 end CMP99Eq360C6dLocalizedRetainedInput
 
