@@ -293,8 +293,9 @@ arrow.
    `BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansion.draft`.  It
    performs the Boolean orientation split internally and cites the distinct
    positive and negative expansion theorems; its statement exposes only the
-   canonical edge, generator and named remainder.  Its one-readout audit is
-   also PRE-VALIDATION.
+   canonical edge, generator and named remainder.  The same leaf defines the
+   literal non-baseline increment and proves the exact subtraction theorem.
+   Its three-readout audit is also PRE-VALIDATION.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
