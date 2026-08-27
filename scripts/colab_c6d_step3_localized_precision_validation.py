@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fresh Colab gate for the promoted C6d Step3 localized precision layer.
 
-This runner validates three physical source/audit pairs, all eleven public
+This runner validates four physical source/audit pairs, all fifteen public
 axiom readouts, and every repository consumer through ``YangMillsCore``.  It
 does not attain window 15, move ``20/41`` or inhabit ``TermSource``.
 """
@@ -30,8 +30,8 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "c6d-step3-localized-precision-v4"
-runner.SOURCE_SHA = 'cf18dbf2c3bad4dd70c1a18cf0f5824db2d653e9'
+runner.RUNNER_REV = "c6d-step3-localized-precision-v5"
+runner.SOURCE_SHA = '38c4d4df881c99b5fe1a32e97f98563bb1356c0f'
 runner.ROOT = Path("/content/hrpoly-c6d-step3-localized-precision")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence.tar.gz")
@@ -41,9 +41,11 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq335PhysicalLaplacianInternalCarrierAudit.lean': '3cb31294bd0eecaa3191feaf51636582acc799276b3af8a9772904a2cf9218c4',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge.lean': '621d1abc6b5212492636e8479ece199e12398d10ddf9c7f430705f8967554110',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridgeAudit.lean': 'b5178264197160cbf7382e926f65109657c6c13c5d470388bd781865bf7dfdf5',
-    'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision.lean': '60c29e79e91ee9a1d9b5d492e07f8eb63c94ec040deb7d5eb45c8b3df6eeedc9',
+    'YangMills/RG/BalabanCMP99SourceLocalizedRetainedTower.lean': 'c0fadde15dd9c0b2785ff7a0e56fafbe0eefaa2ee6679b159cdc829fbea8e0a0',
+    'YangMills/RG/BalabanCMP99SourceLocalizedRetainedTowerAudit.lean': '91e25f99a2b175816a71444435f80414d048da5ce15bea4c0cf1c0ce0da2d9bc',
+    'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision.lean': '93edad3cf40610e9bc7d2a4e229644beb09f3cd499e5200aee234f19d78f2e3a',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecisionAudit.lean': '846b1c97488cdfa48fdf1a350ca229f36c0cace7ff649cf0d50639bb74eb92ce',
-    'tmp/C6D-STEP3-LOCALIZED-PRECISION-PATHS.txt': '57847259774d3569e7105001b9a01fc4bbdfeae7b5f51045021b569e3ed5caea',
+    'tmp/C6D-STEP3-LOCALIZED-PRECISION-PATHS.txt': '7543f7686756254763504c5ceb3bfc302dc270c0669f970468df35c9e661dc26',
     'tmp/C6dStep3ContinuousLinearMapEquality.repro.lean': 'ce3e3190800754cd6516a6c5af0b1d165e45374c5c85fa5acf701585050cf81d',
     'YangMillsCore.lean': 'eb460cec95fc88f8f751858b30f39c624d42e7bd266cc5942b8b56b7d6548e08',
 }
@@ -79,17 +81,27 @@ runner.QUEUE = [
         2,
     ),
     (
-        '03_cmp99eq335physicalregularityclasslocalizedprecision_focal',
+        '03_cmp99sourcelocalizedretainedtower_focal',
+        ['lake', 'build', 'YangMills.RG.BalabanCMP99SourceLocalizedRetainedTower'],
+        None,
+    ),
+    (
+        '03_cmp99sourcelocalizedretainedtower_audit',
+        ['lake', 'env', 'lean', 'YangMills/RG/BalabanCMP99SourceLocalizedRetainedTowerAudit.lean'],
+        4,
+    ),
+    (
+        '04_cmp99eq335physicalregularityclasslocalizedprecision_focal',
         ['lake', 'build', 'YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision'],
         None,
     ),
     (
-        '03_cmp99eq335physicalregularityclasslocalizedprecision_audit',
+        '04_cmp99eq335physicalregularityclasslocalizedprecision_audit',
         ['lake', 'env', 'lean', 'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecisionAudit.lean'],
         6,
     ),
     (
-        '04_c6d_step3_yang_mills_core_root',
+        '05_c6d_step3_yang_mills_core_root',
         ['lake', 'build', 'YangMillsCore'],
         None,
     ),

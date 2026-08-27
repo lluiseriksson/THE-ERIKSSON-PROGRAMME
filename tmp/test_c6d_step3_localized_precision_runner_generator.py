@@ -50,14 +50,14 @@ def main() -> int:
     globals_["blob"] = good_blob
     text: str = module["generate"](SOURCE)
     compile(text, "generated_c6d_step3_runner.py", "exec")
-    assert len(module["source_paths"]()) == 6
-    assert len(module["BRICKS"]) == 3
-    assert sum(len(names) for _, names in module["BRICKS"]) == 11
-    assert text.count("'lake', 'build'") == 4
-    assert text.count("'lake', 'env', 'lean'") == 4
+    assert len(module["source_paths"]()) == 8
+    assert len(module["BRICKS"]) == 4
+    assert sum(len(names) for _, names in module["BRICKS"]) == 15
+    assert text.count("'lake', 'build'") == 5
+    assert text.count("'lake', 'env', 'lean'") == 5
     assert module["REPRO_PATH"] in text
     assert "check_lean_axiom_readout_coverage.py" in text
-    assert "c6d-step3-localized-precision-v4" in text
+    assert "c6d-step3-localized-precision-v5" in text
     assert "YangMillsCore" in text
     assert "files.download(str(runner.ARCHIVE))" in text
 
@@ -87,8 +87,8 @@ def main() -> int:
         raise AssertionError("runner accepted a changed audit surface")
 
     print(
-        "C6D_STEP3_RUNNER_SELFTEST_OK files=9 bricks=3 stages=9 "
-        "axiom_blocks=11 root=YangMillsCore tamper=fail_closed "
+        "C6D_STEP3_RUNNER_SELFTEST_OK files=11 bricks=4 stages=11 "
+        "axiom_blocks=15 root=YangMillsCore tamper=fail_closed "
         "generator_sha256=" + hashlib.sha256(MODULE_PATH.read_bytes()).hexdigest().upper()
     )
     return 0

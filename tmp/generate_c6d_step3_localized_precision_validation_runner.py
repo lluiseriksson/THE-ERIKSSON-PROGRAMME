@@ -42,6 +42,15 @@ BRICKS: tuple[tuple[str, tuple[str, ...]], ...] = (
         ),
     ),
     (
+        "BalabanCMP99SourceLocalizedRetainedTower",
+        (
+            "CMP99SourceLocalizedRetainedTower",
+            "cmp99SourceLocalizedRetainedTower",
+            "CMP99SourceLocalizedRetainedTower.terminalQprime_eq",
+            "CMP99SourceLocalizedRetainedTower.terminalQprime_transport_eq",
+        ),
+    ),
+    (
         "BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision",
         (
             "CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision",
@@ -88,7 +97,7 @@ def pair_paths(module: str) -> tuple[str, str]:
 
 def source_paths() -> list[str]:
     paths = [path for module, _ in BRICKS for path in pair_paths(module)]
-    if len(paths) != 6 or len(paths) != len(set(paths)):
+    if len(paths) != 8 or len(paths) != len(set(paths)):
         raise RuntimeError("C6D_STEP3_VALIDATION_SCOPE_MISMATCH")
     return paths
 
@@ -148,7 +157,7 @@ def generate(source_sha: str) -> str:
             )
         )
 
-    if sum(len(expected) for _, expected in BRICKS) != 11:
+    if sum(len(expected) for _, expected in BRICKS) != 15:
         raise SystemExit("C6D_STEP3_AXIOM_TOTAL_MISMATCH")
     for path, data in (
         (PATH_MANIFEST, manifest),
@@ -188,7 +197,7 @@ def generate(source_sha: str) -> str:
         )
     queue_rows.append(
         "    (\n"
-        "        '04_c6d_step3_yang_mills_core_root',\n"
+        "        '05_c6d_step3_yang_mills_core_root',\n"
         "        ['lake', 'build', 'YangMillsCore'],\n"
         "        None,\n"
         "    ),"
@@ -198,7 +207,7 @@ def generate(source_sha: str) -> str:
     return f'''#!/usr/bin/env python3
 """Fresh Colab gate for the promoted C6d Step3 localized precision layer.
 
-This runner validates three physical source/audit pairs, all eleven public
+This runner validates four physical source/audit pairs, all fifteen public
 axiom readouts, and every repository consumer through ``YangMillsCore``.  It
 does not attain window 15, move ``20/41`` or inhabit ``TermSource``.
 """
@@ -227,7 +236,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "c6d-step3-localized-precision-v4"
+runner.RUNNER_REV = "c6d-step3-localized-precision-v5"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-c6d-step3-localized-precision")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence")
@@ -274,8 +283,8 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_STEP3_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=9 bricks=3 stages=9 "
-        "axiom_blocks=11 root=YangMillsCore "
+        f"source_sha={args.source_sha} files=11 bricks=4 stages=11 "
+        "axiom_blocks=15 root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"
     )

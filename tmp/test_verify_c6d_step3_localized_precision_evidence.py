@@ -43,7 +43,7 @@ def synthetic_transcript(verifier, declarations: list[str], source_sha: str) -> 
     lines = [
         f"RUNNER_REV={verifier.RUNNER_REV}",
         source_sha,
-        "LEAN_AXIOM_READOUT_COVERAGE_OK files=6 declarations=11 readouts=11",
+        "LEAN_AXIOM_READOUT_COVERAGE_OK files=8 declarations=15 readouts=15",
     ]
     lines.extend(f"STAGE={stage} EXIT=0 SECONDS=1.0" for stage in verifier.STAGES)
     lines.extend(
@@ -63,7 +63,7 @@ def test_complete_permitted_transcript_passes(tmp_path: Path, monkeypatch) -> No
     verifier = load_verifier()
     source_sha = "a" * 40
     # Use a deterministic replacement surface without reading a future source commit.
-    declarations = [f"YangMills.RG.synthetic_{index}" for index in range(11)]
+    declarations = [f"YangMills.RG.synthetic_{index}" for index in range(15)]
     by_module: dict[str, list[str]] = {}
     cursor = 0
     for module, count in verifier.BRICKS:
@@ -101,7 +101,7 @@ def test_complete_permitted_transcript_passes(tmp_path: Path, monkeypatch) -> No
     assert verifier.main() == 0
     result = json.loads(output.read_text(encoding="utf-8"))
     assert result["status"] == "C6D_STEP3_LOCALIZED_PRECISION_EVIDENCE_OK"
-    assert result["expected_declarations"] == 11
+    assert result["expected_declarations"] == 15
 
     bad = write_notebook(
         tmp_path,

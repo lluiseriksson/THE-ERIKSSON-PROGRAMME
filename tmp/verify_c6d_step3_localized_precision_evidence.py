@@ -12,12 +12,13 @@ import re
 import subprocess
 
 
-RUNNER_REV = "c6d-step3-localized-precision-v4"
+RUNNER_REV = "c6d-step3-localized-precision-v5"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 BRICKS: tuple[tuple[str, int], ...] = (
     ("BalabanCMP99Eq335PhysicalLaplacianInternalCarrier", 3),
     ("BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge", 2),
+    ("BalabanCMP99SourceLocalizedRetainedTower", 4),
     ("BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision", 6),
 )
 STAGES = (
@@ -27,9 +28,11 @@ STAGES = (
     "01_cmp99eq335physicallaplacianinternalcarrier_audit",
     "02_cmp99eq335physicalregularityinternallaplacianbridge_focal",
     "02_cmp99eq335physicalregularityinternallaplacianbridge_audit",
-    "03_cmp99eq335physicalregularityclasslocalizedprecision_focal",
-    "03_cmp99eq335physicalregularityclasslocalizedprecision_audit",
-    "04_c6d_step3_yang_mills_core_root",
+    "03_cmp99sourcelocalizedretainedtower_focal",
+    "03_cmp99sourcelocalizedretainedtower_audit",
+    "04_cmp99eq335physicalregularityclasslocalizedprecision_focal",
+    "04_cmp99eq335physicalregularityclasslocalizedprecision_audit",
+    "05_c6d_step3_yang_mills_core_root",
 )
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)
 OUTPUT_RE = re.compile(
@@ -122,7 +125,7 @@ def main() -> int:
     require_once(transcript, "LAUNCHER_EXIT=0")
     require_once(
         transcript,
-        "LEAN_AXIOM_READOUT_COVERAGE_OK files=6 declarations=11 readouts=11",
+        "LEAN_AXIOM_READOUT_COVERAGE_OK files=8 declarations=15 readouts=15",
     )
     head_lines = re.findall(rf"(?m)^{re.escape(args.source_sha)}\s*$", transcript)
     if len(head_lines) != 1:
@@ -165,7 +168,7 @@ def main() -> int:
             )
         declarations_by_module[module] = declarations
         expected.extend(declarations)
-    if len(expected) != 11 or len(set(expected)) != 11:
+    if len(expected) != 15 or len(set(expected)) != 15:
         raise RuntimeError(f"C6D_STEP3_EXPECTED_SCOPE={len(expected)}/{len(set(expected))}")
 
     observed: dict[str, list[frozenset[str]]] = defaultdict(list)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mechanically seal the six-file C6d Step3 boundary after verified evidence."""
+"""Mechanically seal the eight-file C6d Step3 boundary after verified evidence."""
 
 from __future__ import annotations
 
@@ -53,7 +53,7 @@ def boundary_paths(verifier) -> list[str]:
         paths.extend(
             (f"YangMills/RG/{module}.lean", f"YangMills/RG/{module}Audit.lean")
         )
-    if len(paths) != 6 or len(set(paths)) != 6:
+    if len(paths) != 8 or len(set(paths)) != 8:
         raise RuntimeError(f"C6D_STEP3_BOUNDARY_SCOPE={len(paths)}/{len(set(paths))}")
     return paths
 
@@ -66,7 +66,7 @@ def require_evidence(path: Path, source_sha: str, paths: list[str], verifier) ->
         raise RuntimeError("C6D_STEP3_EVIDENCE_SOURCE_MISMATCH")
     if result.get("runner_revision") != verifier.RUNNER_REV:
         raise RuntimeError("C6D_STEP3_EVIDENCE_RUNNER_MISMATCH")
-    if result.get("expected_declarations") != 11:
+    if result.get("expected_declarations") != 15:
         raise RuntimeError("C6D_STEP3_EVIDENCE_DECLARATION_COUNT_MISMATCH")
     measured = result.get("boundary_blob_sha256")
     wanted = {relative: hashlib.sha256(git_blob(source_sha, relative)).hexdigest() for relative in paths}
