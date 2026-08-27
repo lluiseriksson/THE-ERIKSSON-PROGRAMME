@@ -141,6 +141,17 @@ theorem
           Omega rho W.transformedBackground eta)
         (T.canonicalTowerAt (Fin.last depth)).Qprime a_j := by
   dsimp only [CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision]
+  let W := R.toCubeWitness C alpha1 hscale
+  let T := R.localizedRetainedTowerOfSourceRegion
+    (spacing := eta) C hscale regions D hM rho halpha1 chain
+  change cmp99SourceGaugePrecision
+      (cmp99ActiveRegionSourceCovariantLaplacian
+        Omega rho W.transformedBackground eta)
+      (T.localizedTowerAt (Fin.last depth)).Qprime a_j =
+    cmp99SourceGaugePrecision
+      (cmp99ActiveRegionSourceCovariantLaplacian
+        Omega rho W.transformedBackground eta)
+      (T.canonicalTowerAt (Fin.last depth)).Qprime a_j
   exact cmp99SourceGaugePrecision_eq_of_terminalCLMTransport
     (T.prefixTerminalSpace_eq (Fin.last depth))
     (cmp99ActiveRegionSourceCovariantLaplacian
@@ -188,7 +199,7 @@ theorem
             W.logarithmicRepresentative eta) eta)
         (T.canonicalTowerAt (Fin.last depth)).Qprime a_j := by
   rw [R.localizedRetainedPhysicalPrecision_eq_canonical
-      (spacing := eta) C hscale regions D hM (matrixSUNAdjointModel Nc)
+      C hscale regions D hM (matrixSUNAdjointModel Nc)
         halpha1 chain a_j,
     (R.toCubeWitness C alpha1 hscale).
       regionalLaplacian_eq_exponential_of_sourceRegionDictionary D]
