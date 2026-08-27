@@ -43,6 +43,30 @@ species:
 
 The exact orientation is `Delta_{U'U} = Delta_U - V'_1(A)` as in (3.53).
 
+### One source scale, not two independent parameters
+
+Primary render inspection of CMP99 printed p. 400 / PDF p. 12, from the
+registered primary PDF SHA-256
+`39F8033B35838C7BDD14F97C7FB1EDB0B35D4190B8B88F31D19D12A72D542861`,
+fixes a normalization that the earlier draft interface left too loose.  The
+same source scalar `eta` occurs in all four places:
+
+- `U' = exp(i eta A)`;
+- the `eta^-2` covariant Laplacian stencil in (3.50);
+- the `eta^-1` first-order term before the second equality in (3.51); and
+- `F'_{1,k}(z) = eta^-2 (exp(eta z) - 1 - eta z)`.
+
+Consequently the source-facing regrouping may not receive independent
+`eta` and `spacing` parameters.  It uses `eta` definitionally both in
+`cmp99Eq337PhysicalComplexPerturbedBackground U A eta` and in the two
+`cmp99Eq360ComplexRegionalLaplacian ... eta` terms.  An auxiliary theorem
+with two scales is algebraically legitimate, but it is not the printed
+(3.51)--(3.53) producer and cannot discharge this gate.  This single-scale
+specialization is also what converts the matrix generator
+`i * eta * A'(b)` into the printed first species `i[A'(b), D_U lambda(b)]`
+and the raw exponential remainder into the printed `F'_{1,k}` without an
+untracked ratio of scales.
+
 ## Printed quantitative endpoint
 
 Let `ell = L^j eta`. Under the source domain (3.37), printed Eq. (3.54) is
@@ -193,11 +217,13 @@ arrow.
 
    The source-facing theorem signature is fixed before implementation.  Its
    data are only `Omega`, the compact physical background `U`, the physical
-   complex one-cochain `A`, `eta`, `spacing`, the Dirichlet field and its
-   active site.  It must instantiate the two analytic backgrounds as
+   complex one-cochain `A`, the single source scale `eta`, the Dirichlet
+   field and its active site.  It must instantiate the two analytic
+   backgrounds as
    `cmp99PhysicalGaugeBackgroundToSpecialLinear U` and
    `cmp99Eq337PhysicalComplexPerturbedBackground U A eta` inside the
-   statement.  The existing auxiliary local-perturbation operator with free
+   statement, and both regional Laplacians must use that same `eta` as their
+   spacing.  The existing auxiliary local-perturbation operator with free
    `U0 U1` may be used only after those substitutions; it is not itself the
    source producer.  Likewise, the oriented `A'`, the diagonal
    `cmp99Eq351PhysicalComplexCovariantDivergence U A`, and the exponential
