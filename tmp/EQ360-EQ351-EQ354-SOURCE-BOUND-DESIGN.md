@@ -75,11 +75,18 @@ CMP99 (3.3) prints
 D_U^eta lambda = eta^-1 (R(U) lambda_shift - lambda).
 ```
 
-The repository convention `covariantD0CLM` is the opposite unscaled
-difference.  This relationship is already sealed in
+The repository conventions `covariantD0CLM` and
+`cmp99Eq360ComplexCovariantDifference` are the opposite differences.  This
+relationship is already sealed on the real tensor in
 `cmp99Eq337PhysicalRealCovariantDerivative`, whose definition is visibly
-`(-eta^-1) • covariantD0CLM`.  Taking the counting-Hilbert adjoint therefore
-fixes the source diagonal as
+`(-eta^-1) • covariantD0CLM`.  The complex source-facing leaf records the
+corresponding zero-cochain equality as
+
+```text
+D_U^eta phi = -cmp99Eq360ComplexCovariantDifference(U,eta,phi).
+```
+
+Taking the counting-Hilbert adjoint therefore fixes the source diagonal as
 
 ```text
 (D_U^eta)^* A = (-eta^-1) * gaugeConstraintQCLM(U,A).
@@ -226,10 +233,12 @@ arrow.
    negative link.  Module 3 may cite that result; it may not receive the
    inverse-link equality as an input.
 2c. `BalabanCMP99Eq351PhysicalComplexCovariantDivergence`: construct the
-   unscaled backward-divergence stencil from the same physical background and
-   one-cochain, and identify it with the sum of the canonical outgoing and
-   incoming oriented values of `A'`.  In the same leaf construct the printed
-   source adjoint internally as
+   printed complex zero-cochain derivative and prove that it is the negative
+   of the Eq360 repository difference.  Construct the unscaled backward-
+   divergence stencil from the same physical background and one-cochain, and
+   identify it with the sum of the canonical outgoing and incoming oriented
+   values of `A'`.  In the same leaf construct the printed source adjoint
+   internally as
    `cmp99Eq351PhysicalComplexSourceCovariantAdjoint eta U A =
    -eta^-1 • cmp99Eq351PhysicalComplexCovariantDivergence U A`.  The scratch
    source/audit pair is PRE-VALIDATION in `tmp`; it has no `.olean` or axiom

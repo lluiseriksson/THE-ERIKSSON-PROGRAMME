@@ -1,12 +1,13 @@
 import YangMills.RG.BalabanCMP99Eq351PhysicalComplexOrientedPerturbation
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
 import YangMills.RG.BalabanCMP116GaugeFixingMassDefect
+import tmp.BalabanCMP99Eq360ComplexRegionalLaplacian.draft
 
 /-!
 PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
 no compiler or axiom-oracle verdict.
 
-# CMP99 (3.51): unscaled divergence and source covariant adjoint of `A'`
+# CMP99 (3.51): source covariant derivative and adjoint of `A'`
 
 The diagonal source species is not supplied by a caller.  The unscaled
 backward divergence is constructed from the same physical complex
@@ -27,6 +28,36 @@ namespace YangMills.RG
 noncomputable section
 
 variable {d N Nc : Nat} [NeZero d] [NeZero N] [NeZero Nc]
+
+/-- Literal complex source derivative `D_U^eta` from CMP99 (3.3), specialized
+to the compact physical background.  Its orientation is fixed internally as
+`eta^-1 * (R(U) phi_shift - phi)` rather than accepted from a caller. -/
+def cmp99Eq351PhysicalComplexSourceCovariantDifference
+    (U : PhysicalGaugeBackground d N Nc)
+    (eta : ℝ)
+    (phi : GaugeZeroCochain d N (SUNLieComplexCoord Nc))
+    (b : PhysicalBond d N) : SUNLieComplexCoord Nc :=
+  ((eta : ℂ)⁻¹) •
+    (cmp99SpecialLinearAdjointCoordLM
+        (cmp99SUNToSpecialLinear Nc
+          (U (positiveEdgeOfPhysicalBond b)))
+        (phi (b.1.shift b.2)) - phi b.1)
+
+/-- The analytic Eq360 stencil uses the repository's opposite covariant-
+difference convention.  This named equality is the sign dictionary required
+before its Laplacian expansion can be read as CMP99 (3.51). -/
+theorem cmp99Eq351PhysicalComplexSourceCovariantDifference_eq_neg_repository
+    (U : PhysicalGaugeBackground d N Nc)
+    (eta : ℝ)
+    (phi : GaugeZeroCochain d N (SUNLieComplexCoord Nc))
+    (b : PhysicalBond d N) :
+    cmp99Eq351PhysicalComplexSourceCovariantDifference U eta phi b =
+      -cmp99Eq360ComplexCovariantDifference
+        (cmp99PhysicalGaugeBackgroundToSpecialLinear U) eta phi b := by
+  unfold cmp99Eq351PhysicalComplexSourceCovariantDifference
+    cmp99Eq360ComplexCovariantDifference
+  simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
+  module
 
 /-- Literal unscaled complex backward divergence.  Both orientations are
 constructed from `U` and `A`; the printed source adjoint is defined below. -/
