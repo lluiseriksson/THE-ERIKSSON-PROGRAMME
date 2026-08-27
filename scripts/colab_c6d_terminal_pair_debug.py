@@ -91,6 +91,15 @@ def main() -> int:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
 
+    run(
+        "c6d_terminal_pair_materialize_dependencies",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourcePhysicalRealSliceTower",
+            "YangMills.RG.BalabanCMP99Eq359ComplexRegionalTowerPair",
+        ],
+    )
+
     output_dir = ROOT / ".lake/build/lib/lean/tmp"
     output_dir.mkdir(parents=True, exist_ok=True)
     source = "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPair.draft.lean"
