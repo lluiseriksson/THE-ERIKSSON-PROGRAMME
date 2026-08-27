@@ -43,7 +43,7 @@ theorem cmp99Eq360ComplexRegionalPrecision_realSlice_weighted
     (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
     cmp99Eq360ComplexRegionalPrecision complexDelta complexTower.Qprime
         complexTower.starred
-        (cmp99SourceWeightedAdjointCountingCoefficient physicalTower a : ℂ)
+        (cmp99SourceCountingCoefficientAsWeightedAdjoint physicalTower a : ℂ)
         (cmp99ActiveGaugeZeroCochainComplexificationCLM Omega phi) =
       cmp99ActiveGaugeZeroCochainComplexificationCLM Omega
         (cmp99SourceGaugePrecision physicalDelta physicalTower.Qprime a phi) := by

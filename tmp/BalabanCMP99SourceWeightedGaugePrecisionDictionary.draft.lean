@@ -25,9 +25,9 @@ variable [NormedAddCommGroup g] [InnerProductSpace ℝ g]
 variable [FiniteDimensional ℝ g]
 variable {Omega : ActiveGaugeRegion d N} {spacing : ℝ}
 
-/-- Counting-Hilbert coefficient corresponding to a printed coefficient on
-the source-weighted adjoint. -/
-def cmp99SourceWeightedAdjointCountingCoefficient
+/-- Printed source-weighted-adjoint coefficient induced by a coefficient on
+Lean's counting-space Hilbert adjoint. -/
+def cmp99SourceCountingCoefficientAsWeightedAdjoint
     (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
     (a : ℝ) : ℝ :=
   a * (spacing ^ d / T.terminalSpacing ^ d)
@@ -41,7 +41,7 @@ theorem cmp99SourceGaugePrecision_eq_weightedAdjoint
       ActiveGaugeZeroCochain Omega g)
     (a : ℝ) (hterminal : T.terminalSpacing ≠ 0) :
     cmp99SourceGaugePrecision Delta T.Qprime a =
-      Delta + cmp99SourceWeightedAdjointCountingCoefficient T a •
+      Delta + cmp99SourceCountingCoefficientAsWeightedAdjoint T a •
         (T.weightedAdjoint.comp T.Qprime) := by
   rw [cmp99SourceGaugePrecision,
     T.adjoint_eq_spacingRatio_smul_weightedAdjoint hterminal]
@@ -49,14 +49,14 @@ theorem cmp99SourceGaugePrecision_eq_weightedAdjoint
   intro phi
   simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
     ContinuousLinearMap.comp_apply,
-    cmp99SourceWeightedAdjointCountingCoefficient]
+    cmp99SourceCountingCoefficientAsWeightedAdjoint]
   module
 
 /-- On the literal source-generated tower the counting coefficient contains
 exactly the terminal-scale ratio `spacing^d / (M^depth * spacing)^d`.  The
 terminal spacing is derived from the generated tower; it is not supplied as a
 free dictionary equality. -/
-theorem CMP99SourceActiveRegionChain.weightedQprimeTower_countingCoefficient
+theorem CMP99SourceActiveRegionChain.weightedQprimeTower_countingCoefficient_asWeightedAdjoint
     {M Nc depth : ℕ} [NeZero d] [NeZero M] [NeZero Nc]
     {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
@@ -66,12 +66,12 @@ theorem CMP99SourceActiveRegionChain.weightedQprimeTower_countingCoefficient
     (fineSmall : ∀ e : ConcreteEdge d N,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     letI : NeZero N := regions.neZero
-    cmp99SourceWeightedAdjointCountingCoefficient
+    cmp99SourceCountingCoefficientAsWeightedAdjoint
         (regions.weightedQprimeTower hd hM rho spacing epsilon background
           chain fineSmall) a =
       a * (spacing ^ d / (((M : ℝ) ^ depth * spacing) ^ d)) := by
   letI : NeZero N := regions.neZero
-  rw [cmp99SourceWeightedAdjointCountingCoefficient,
+  rw [cmp99SourceCountingCoefficientAsWeightedAdjoint,
     regions.weightedQprimeTower_terminalSpacing hd hM rho spacing epsilon
       background chain fineSmall]
 
