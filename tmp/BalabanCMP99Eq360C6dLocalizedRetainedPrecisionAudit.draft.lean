@@ -28,6 +28,7 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineLaplacian_realSlice
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.localLaplacianPerturbation
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselinePrecision
+#print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselinePrecision_realSlice
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.perturbedPrecision
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.precisionPerturbation
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.sourcePrecisionPerturbation

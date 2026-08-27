@@ -447,6 +447,31 @@ noncomputable def baselinePrecision
     I.retainedTowerPair.Q0 I.retainedTowerPair.starred0
       (I.weightedPrecisionCoefficient : ℂ)
 
+/-- The analytic baseline precision at the internally derived weighted
+coefficient is exactly the compact real slice of the literal C6d.1 counting
+precision.  This is the normalization-sensitive bridge needed before any
+regional inverse may be identified. -/
+theorem baselinePrecision_realSlice
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    I.baselinePrecision
+        (cmp99ActiveGaugeZeroCochainComplexificationCLM Omega phi) =
+      cmp99ActiveGaugeZeroCochainComplexificationCLM Omega
+        (I.baselinePhysicalPrecision phi) := by
+  rw [baselinePrecision,
+    I.retainedTowerPair_Q0_eq_baselineRetainedComplexTower,
+    I.retainedTowerPair_starred0_eq_baselineRetainedComplexTower,
+    I.baselinePhysicalPrecision_eq_generated]
+  exact cmp99Eq360ComplexRegionalPrecision_realSlice_weighted
+    I.baselineRetainedComplexTower I.baselineRetainedPhysicalTower
+    I.baselineRetainedNamedRealSliceAgreement I.baselineLaplacian
+    (cmp99ActiveRegionSourceCovariantLaplacian Omega
+      (matrixSUNAdjointModel Nc)
+      (R.toCubeWitness C alpha1 hscale).transformedBackground eta)
+    I.baselineLaplacian_realSlice I.a_j
+    I.baselineRetainedPhysicalTower_terminalSpacing_ne_zero phi
+
 /-- Complete perturbed analytic precision on the same regional carrier. -/
 noncomputable def perturbedPrecision
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
