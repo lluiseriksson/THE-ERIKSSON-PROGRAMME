@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP98ContourExponentialTransport
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius
+import YangMills.RG.BalabanCMP99Eq351ExponentialAdjointRemainder
 import YangMills.RG.BalabanCMP99Eq351PhysicalComplexOrientedPerturbation
 import YangMills.RG.BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization
 
@@ -278,6 +279,42 @@ theorem cmp99Eq351PhysicalComplexPerturbedNegativeBondSL_eq_mul
   simpa [cmp99SUNToSpecialLinear_coe] using
     cmp99Eq351PhysicalComplexPerturbedNegativeBondMatrix_eq_mul
       U A eta x mu
+
+/-- Matrix form of the exact negative-bond adjoint expansion used in (3.51).
+
+The oriented generator, the compact baseline transport and the nonlinear
+remainder are all constructed internally from the canonical negative edge.
+In particular, this is not obtained by relabelling the positive-bond theorem
+or by accepting a caller-supplied negative perturbation. -/
+theorem cmp99Eq351PhysicalComplexPerturbedNegativeAdjointMatrix_eq
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ) (x : FinBox d N) (mu : Fin d)
+    (Z : SUNLieComplexCoord Nc) :
+    let e := ConcreteEdge.mk x mu false
+    let Y := cmp99Eq351PhysicalComplexOrientedGeneratorMatrix U A eta e
+    let X := cmp99SUNLieComplexCoordMatrixLM Nc
+      (cmp99SpecialLinearAdjointCoordLM
+        (cmp99SUNToSpecialLinear Nc (U e)) Z)
+    cmp99SUNLieComplexCoordMatrixLM Nc
+        (cmp99SpecialLinearAdjointCoordLM
+          (cmp99Eq337PhysicalComplexPerturbedBackground U A eta e) Z) =
+      X + (Y * X - X * Y) +
+        cmp99Eq351ExponentialAdjointRemainderCLM Y X := by
+  dsimp only
+  rw [cmp99Eq351PhysicalComplexPerturbedNegativeBondSL_eq_mul,
+    cmp99SpecialLinearAdjointCoordLM_mul,
+    cmp99SUNLieComplexCoordMatrixLM_specialLinearAdjoint,
+    cmp99Eq351PhysicalComplexOrientedExponentSL_coe,
+    cmp99Eq351PhysicalComplexOrientedExponentSL_inv_coe]
+  simpa only [physicalMatrixExp] using
+    cmp99Eq351_exponentialAdjoint_apply_eq_linear_add_remainder
+      (cmp99Eq351PhysicalComplexOrientedGeneratorMatrix U A eta
+        (ConcreteEdge.mk x mu false))
+      (cmp99SUNLieComplexCoordMatrixLM Nc
+        (cmp99SpecialLinearAdjointCoordLM
+          (cmp99SUNToSpecialLinear Nc
+            (U (ConcreteEdge.mk x mu false))) Z))
 
 /-- Backward-stencil form of the same source factorization.
 

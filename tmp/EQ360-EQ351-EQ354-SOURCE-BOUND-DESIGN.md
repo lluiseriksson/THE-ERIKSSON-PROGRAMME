@@ -360,7 +360,7 @@ This inventory records implementation state, not mathematical credit:
   been sealed.  This is dependency ordering only, not compiler evidence and
   not mathematical credit.  The cold queue scope is independently fixed by
   `verify_eq351_regrouping_inputs_contract.py`: three source/audit pairs,
-  eighteen axiom readouts and a cold root, generated only after promotion by
+  nineteen axiom readouts and a cold root, generated only after promotion by
   `generate_eq351_regrouping_inputs_runner.py`.  The one-cell launcher,
   durable-archive verifier and six-notice selective sealer are likewise fixed
   by the corresponding `generate_*_notebook`, `verify_*_archive` and
