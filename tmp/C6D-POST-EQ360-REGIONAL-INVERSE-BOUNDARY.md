@@ -76,6 +76,59 @@ tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.draft.lean
 Both lightweight text/import guards pass.  They remain scratch and may not be
 cited until a compiler/audit gate passes and the exact files are promoted.
 
+## Exact Eq. (3.42) target after completion
+
+The two source certificate types were re-read field by field.  The endpoint
+needed by the separated source route is literally
+
+```text
+CMP99Eq342SourceLocalizedGreenCertificate depth Omega
+  (matrixSUNAdjointModel Nc) U spacing A c hc hAcoer B0 delta0
+```
+
+on the carrier
+
+```text
+cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q).
+```
+
+It contains four bounds on the **same**
+`cmp99RegionalDirichletGreen Omega A hc hAcoer`, with owner maps fixed
+definitionally to `cmp99Eq342SourceLocalizedActiveOwner` and
+`cmp99Eq342SourceLocalizedBondOwner` and scale vector
+`[B0 * ell^2, B0 * ell, B0 * ell, B0]`, where
+`ell = L^(depth+1)`.  Thus the canonical completion must instantiate
+
+```text
+A       = cmp99ActiveRegionCanonicalAmbientCompletion Omega K1
+c       = min c1 1
+hc      = lt_min hc1 zero_lt_one
+hAcoer  = isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion ...
+```
+
+and the named inverse-uniqueness theorem then identifies the certificate's
+Green with `covarianceOfIsCoerciveCLM K1 hc1 hK1coer`.
+
+This identification closes only the operator/inverse dictionary.  It does
+**not** transport the existing four CMP96 estimates: those theorems are fixed
+to `cmp96SourceSeparatedRegionalCell` and
+`cmp89SourceSeparatedAmbientPrefixPrecision`, whereas the C6d consumer uses
+the selected source region and the interacting localized retained precision
+`K1`.  Reusing their conclusions by reindexing, direct restriction, or a
+caller-supplied Green equality is forbidden.  The four actions must be
+re-instantiated on the covariance of this exact `K1`, after the physical
+Eq. (3.60) factorization and resolvent have constructed it.
+
+There is one further real/complex gate before this target is even well typed.
+The C6d Eq. (3.60) wrapper currently constructs complex `baselinePrecision`
+and `perturbedPrecision`, while the Eq. (3.42) certificate is real.  The
+source-facing specialization must set the complex coefficient from the
+printed real `a_j`, identify its baseline real slice with
+`CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision`, and
+derive the physical perturbation equality using
+`cmp99Eq360_sourceGaugePrecision_eq_sub_perturbation`.  It may not accept a
+real precision, its complexification, or their equality as caller data.
+
 ## What remains physical
 
 This adapter does not manufacture any of the substantive source inputs.  A
