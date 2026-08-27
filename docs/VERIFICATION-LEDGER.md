@@ -40912,7 +40912,7 @@ Green/resolvent, uniform `B0, delta0`, window-15 attainment, rows 23--24 or a
 `TermSource`. Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
-## Addendum 950 (2026-08-27, **C6d next real-slice v3 runtime-loss and standard-RAM incidents preserved; no seal; 20/41 unchanged**)
+## Addendum 950 (2026-08-27, **C6d next real-slice v3 operator-interrupt and standard-RAM incidents preserved; no seal; 20/41 unchanged**)
 
 The next C6d real-slice queue remains pinned to exact source
 `81cc22e41d46cce150c2a263c85e4acb90087153`, runner checkpoint
@@ -40922,10 +40922,17 @@ The next C6d real-slice queue remains pinned to exact source
 
 One fresh Colab Pro+ CPU/high-RAM attempt compiled all three promoted
 source/audit pairs with exit code `0`; its ten printed declarations used only
-`propext`, `Classical.choice`, and `Quot.sound` or a subset.  The browser tab
-was then lost while the cold `YangMillsCore` root was active, and the runner
-recorded `KeyboardInterrupt` before a root result existed.  This package is
-classified `INCOMPLETE-RUNTIME-LOSS`, has archive SHA-256
+`propext`, `Classical.choice`, and `Quot.sound` or a subset.  The browser lost
+the visible connection while the cold `YangMillsCore` root was active.  A
+read-only diagnostic then inspected a separate standard-memory session; the
+original high-RAM runtime was later found still alive in Colab's active-session
+list and was mistakenly terminated during cleanup.  The runner therefore
+recorded `LAUNCHER_EXCEPTION=KeyboardInterrupt()` and `FINAL_STATUS=FAIL`
+without a root result.  This is classified
+`INCOMPLETE-OPERATOR-INTERRUPT`, not a compiler or mathematical failure.  Its
+internal evidence archive SHA-256 is
+`852FB86ACEF89B0AB186A4DA62BC4755B444805CDD6362E7D8EBA97C8D182ACD`;
+the preserved outer package has SHA-256
 `304C4AC5F70130F540321069CCD60AC4A0DD2498D5308EA45D43CFC651FDB6B0`,
 and is preserved under
 `validation-evidence/c6d-next-real-slice-v3-runtime-loss-81cc22e4/`.
