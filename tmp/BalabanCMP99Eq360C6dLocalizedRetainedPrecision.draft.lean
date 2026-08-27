@@ -5,6 +5,7 @@ import tmp.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.draft
 import tmp.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.draft
 import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexBaselineRealSlice
+import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 
 /-!
 PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
@@ -62,7 +63,7 @@ structure CMP99Eq360C6dLocalizedRetainedInput
     (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
     (D : CMP99Eq335Corollary36SourceRegionDictionary Omega OmegaPrime0 C)
     (hM : 2 ≤ M) (halpha1 : alpha1 ≤ 1 / 2)
-    (chain : CMP99SourceUbarRadiusChain 4 M Nc depth
+    (baselineRadiusBudget : CMP99SourceUbarClosedBudget 4 M Nc depth
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) where
   A : PhysicalGaugeOneCochain 4 (L * N') Nc
   z rA Rmax : ℝ
@@ -94,20 +95,29 @@ variable {Omega OmegaPrime0 : ActiveGaugeRegion 4 (L * N')}
 variable {regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth}
 variable {D : CMP99Eq335Corollary36SourceRegionDictionary Omega OmegaPrime0 C}
 variable {hM : 2 ≤ M} {halpha1 : alpha1 ≤ 1 / 2}
-variable {chain : CMP99SourceUbarRadiusChain 4 M Nc depth
+variable {baselineRadiusBudget : CMP99SourceUbarClosedBudget 4 M Nc depth
   (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)}
+
+/-- The baseline recursive proof object is generated from one closed scalar
+budget.  No per-scale radius family is accepted by the C6d input. -/
+noncomputable def baselineRadiusChain
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    CMP99SourceUbarRadiusChain 4 M Nc depth
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) :=
+  baselineRadiusBudget.toRadiusChain
 
 /-- The full analytic perturbation used only by the Laplacian branch. -/
 noncomputable def fullComplexOneCochain
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     CMP99Eq337PhysicalComplexOneCochain 4 (L * N') Nc :=
   cmp99Eq337PhysicalComplexifyOneCochain I.A
 
 /-- Full baseline background for the regional Laplacian. -/
 noncomputable def fullBackground0
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     GaugeConfig 4 (L * N') (Matrix.SpecialLinearGroup (Fin Nc) ℂ) :=
   let W := R.toCubeWitness C alpha1 hscale
   cmp99Eq337PhysicalComplexPerturbedBackground W.transformedBackground
@@ -116,7 +126,7 @@ noncomputable def fullBackground0
 /-- Full perturbed background for the regional Laplacian. -/
 noncomputable def fullBackground1
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     GaugeConfig 4 (L * N') (Matrix.SpecialLinearGroup (Fin Nc) ℂ) :=
   let W := R.toCubeWitness C alpha1 hscale
   cmp99Eq337PhysicalComplexPerturbedBackground W.transformedBackground
@@ -127,7 +137,7 @@ named equality prevents the zero branch from becoming a second background
 choice. -/
 theorem fullBackground0_eq_realSlice
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     I.fullBackground0 =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
         (R.toCubeWitness C alpha1 hscale).transformedBackground := by
@@ -138,7 +148,7 @@ theorem fullBackground0_eq_realSlice
 canonical complex image of the physical left variation. -/
 theorem fullBackground1_eq_realSlice
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     I.fullBackground1 =
       cmp99PhysicalGaugeBackgroundToSpecialLinear
         (cmp98PhysicalSuLeftVariation
@@ -151,7 +161,7 @@ The physical tower and the analytic tower are both built internally, at the
 literal matrix `SUN` adjoint model. -/
 noncomputable def baselineRetainedTowerRealSliceAgreement
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) : by
+      halpha1 baselineRadiusBudget) : by
     let W := R.toCubeWitness C alpha1 hscale
     let retainedU := regions.retainedFineExtension W.transformedBackground
     let hlocal := W.retainedFineReadBonds_nearIdentity regions
@@ -161,15 +171,15 @@ noncomputable def baselineRetainedTowerRealSliceAgreement
     let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
       W.transformedBackground
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
-      chain.epsilon_nonneg hlocal
+      I.baselineRadiusChain.epsilon_nonneg hlocal
     exact CMP99Eq359TowerRealSliceAgreement
       (regions.physicalRealSliceComplexTower (by norm_num : 2 ≤ 4) hM eta
         (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
-        retainedU chain retainedUSmall).toComplexTower
+        retainedU I.baselineRadiusChain retainedUSmall).toComplexTower
       (regions.weightedQprimeTower (by norm_num : 2 ≤ 4) hM
         (matrixSUNAdjointModel Nc) eta
         (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
-        retainedU chain retainedUSmall) := by
+        retainedU I.baselineRadiusChain retainedUSmall) := by
   let W := R.toCubeWitness C alpha1 hscale
   let retainedU := regions.retainedFineExtension W.transformedBackground
   let hlocal := W.retainedFineReadBonds_nearIdentity regions
@@ -179,11 +189,11 @@ noncomputable def baselineRetainedTowerRealSliceAgreement
   let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
     W.transformedBackground
     (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
-    chain.epsilon_nonneg hlocal
+    I.baselineRadiusChain.epsilon_nonneg hlocal
   exact regions.physicalRealSliceTowerAgreement
     (by norm_num : 2 ≤ 4) hM eta
     (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
-    retainedU chain retainedUSmall
+    retainedU I.baselineRadiusChain retainedUSmall
 
 /-- The Eq. (3.59) pair uses only the canonical retained physical extensions.
 The perturbed physical radius chain is derived from the stronger closed
@@ -192,7 +202,7 @@ are then generated as literal compact real slices on the common terminal
 bundle determined internally by `regions`. -/
 noncomputable def retainedTowerPair
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     CMP99Eq359ComplexRegionalTowerPair (Nc := Nc) Omega eta := by
   let W := R.toCubeWitness C alpha1 hscale
   let epsilon0 := cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1
@@ -212,7 +222,8 @@ noncomputable def retainedTowerPair
   have retainedU_small : ∀ e : ConcreteEdge 4 (L * N'),
       ‖(retainedU e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon0 :=
     regions.norm_retainedFineExtension_sub_one_le
-      W.transformedBackground epsilon0 chain.epsilon_nonneg hlocal
+      W.transformedBackground epsilon0
+        I.baselineRadiusChain.epsilon_nonneg hlocal
   have retainedU_positive_small : ∀ b,
       ‖(retainedU (positiveEdgeOfPhysicalBond b) :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon0 := by
@@ -246,12 +257,12 @@ noncomputable def retainedTowerPair
     I.radiusBudget.toSourceUbarRadiusChain (by norm_num : 2 ≤ 4) hM
   exact regions.physicalRealSliceComplexTowerPair
     (by norm_num : 2 ≤ 4) hM eta epsilon0 epsilon1 retainedU perturbedU
-    chain chain1 retainedU_small perturbedU_small
+    I.baselineRadiusChain chain1 retainedU_small perturbedU_small
 
 /-- Literal full-background baseline regional Laplacian. -/
 noncomputable def baselineLaplacian
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalLaplacian Omega I.fullBackground0 eta
@@ -259,7 +270,7 @@ noncomputable def baselineLaplacian
 /-- Literal full-background perturbed regional Laplacian. -/
 noncomputable def perturbedLaplacian
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalLaplacian Omega I.fullBackground1 eta
@@ -268,7 +279,7 @@ noncomputable def perturbedLaplacian
 the two analytic stencils, not accepted as their difference. -/
 noncomputable def localLaplacianPerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) :
+      halpha1 baselineRadiusBudget) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexLocalLaplacianPerturbation Omega
@@ -278,7 +289,7 @@ noncomputable def localLaplacianPerturbation
 average and independently built printed-starred synthesis. -/
 noncomputable def baselinePrecision
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) (a : ℂ) :
+      halpha1 baselineRadiusBudget) (a : ℂ) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalPrecision I.baselineLaplacian
@@ -287,7 +298,7 @@ noncomputable def baselinePrecision
 /-- Complete perturbed analytic precision on the same regional carrier. -/
 noncomputable def perturbedPrecision
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) (a : ℂ) :
+      halpha1 baselineRadiusBudget) (a : ℂ) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalPrecision I.perturbedLaplacian
@@ -296,7 +307,7 @@ noncomputable def perturbedPrecision
 /-- Literal four-term perturbation with no merged norm budget. -/
 noncomputable def precisionPerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) (a : ℂ) :
+      halpha1 baselineRadiusBudget) (a : ℂ) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalPrecisionPerturbation I.retainedTowerPair
@@ -306,7 +317,7 @@ noncomputable def precisionPerturbation
 averaging terms remain four separately inspectable summands. -/
 noncomputable def sourcePrecisionPerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) (a : ℂ) :
+      halpha1 baselineRadiusBudget) (a : ℂ) :
     ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   I.localLaplacianPerturbation -
@@ -318,7 +329,7 @@ noncomputable def sourcePrecisionPerturbation
 difference without changing any averaging term. -/
 theorem precisionPerturbation_eq_sourcePrecisionPerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) (a : ℂ) :
+      halpha1 baselineRadiusBudget) (a : ℂ) :
     I.precisionPerturbation a = I.sourcePrecisionPerturbation a := by
   unfold precisionPerturbation sourcePrecisionPerturbation
   rw [cmp99Eq360_complexRegionalLaplacian_sub_eq_localPerturbation]
@@ -328,7 +339,7 @@ theorem precisionPerturbation_eq_sourcePrecisionPerturbation
 the internally constructed operators; none of its two sides is input. -/
 theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) (a : ℂ) :
+      halpha1 baselineRadiusBudget) (a : ℂ) :
     I.perturbedPrecision a =
       I.baselinePrecision a - I.precisionPerturbation a := by
   exact cmp99Eq360_complexRegionalPrecision_eq_sub_perturbation
@@ -338,7 +349,7 @@ theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
 regional inverse is introduced. -/
 theorem perturbedPrecision_eq_baselinePrecision_sub_sourcePerturbation
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 chain) (a : ℂ) :
+      halpha1 baselineRadiusBudget) (a : ℂ) :
     I.perturbedPrecision a =
       I.baselinePrecision a - I.sourcePrecisionPerturbation a := by
   rw [← I.precisionPerturbation_eq_sourcePrecisionPerturbation a]

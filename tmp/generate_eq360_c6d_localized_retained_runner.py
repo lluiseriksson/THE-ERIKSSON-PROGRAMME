@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "tmp" / "generate_c6d_next_real_slice_runner.py"
 OUTPUT = ROOT / "scripts" / "colab_eq360_c6d_localized_retained_validation.py"
-MODULES = (("BalabanCMP99Eq360C6dLocalizedRetainedPrecision", 18),)
+MODULES = (("BalabanCMP99Eq360C6dLocalizedRetainedPrecision", 19),)
 
 
 def load_base():
@@ -39,7 +39,7 @@ def render(source_sha: str, runner_rev: str) -> str:
             "from the same fresh checkout, and stops at the first real error.  It does not\n"
             "move 20/41 or instantiate TermSource.",
             "The queue compiles the promoted source-facing C6d Eq. (3.60) source/audit\n"
-            "pair, checks eighteen public declarations, builds YangMillsCore from the\n"
+            "pair, checks nineteen public declarations, builds YangMillsCore from the\n"
             "same fresh checkout, and stops at the first real error.  It does not prove\n"
             "the local estimates (3.61)--(3.63), attain window 15, move 20/41, or\n"
             "instantiate TermSource.",
