@@ -13,6 +13,9 @@ import subprocess
 
 
 RUNNER_REV = "c6d-step3-localized-precision-v5"
+NOTEBOOK_CHECKPOINT = "214746e0370af6c348537ac0ab08c2d14392c8ea"
+NOTEBOOK_PATH = "scripts/colab_c6d_step3_localized_precision_validation.ipynb"
+NOTEBOOK_BLOB_SHA256 = "CB584CFADDFC14A833FDFD342EBF27781A9390C5AFD0AF0140C0124F04E05FF1"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 BRICKS: tuple[tuple[str, int], ...] = (
@@ -95,6 +98,23 @@ def notebook_transcript(path: Path) -> tuple[bytes, str]:
     return payload, "".join(chunks)
 
 
+def notebook_code_source(payload: bytes) -> str:
+    notebook = json.loads(payload.decode("utf-8"))
+    code_cells = [
+        cell for cell in notebook.get("cells", []) if cell.get("cell_type") == "code"
+    ]
+    if len(code_cells) != 1:
+        raise RuntimeError(
+            f"C6D_STEP3_NOTEBOOK_CODE_CELL_COUNT={len(code_cells)} WANT=1"
+        )
+    source = code_cells[0].get("source", "")
+    if isinstance(source, list):
+        return "".join(str(part) for part in source)
+    if isinstance(source, str):
+        return source
+    raise RuntimeError("C6D_STEP3_NOTEBOOK_CODE_SOURCE_INVALID")
+
+
 def parse_axiom_set(body: str) -> frozenset[str]:
     return frozenset(name for name in re.split(r"\s*,\s*", body.strip()) if name)
 
@@ -119,7 +139,17 @@ def main() -> int:
 
     repo = args.repo.resolve()
     exact_commit(repo, args.source_sha)
+    exact_commit(repo, NOTEBOOK_CHECKPOINT)
     evidence_bytes, transcript = notebook_transcript(args.notebook)
+    expected_notebook = git_blob(repo, NOTEBOOK_CHECKPOINT, NOTEBOOK_PATH)
+    expected_notebook_sha = hashlib.sha256(expected_notebook).hexdigest().upper()
+    if expected_notebook_sha != NOTEBOOK_BLOB_SHA256:
+        raise RuntimeError(
+            f"C6D_STEP3_NOTEBOOK_BLOB_SHA256={expected_notebook_sha} "
+            f"WANT={NOTEBOOK_BLOB_SHA256}"
+        )
+    if notebook_code_source(evidence_bytes) != notebook_code_source(expected_notebook):
+        raise RuntimeError("C6D_STEP3_NOTEBOOK_CODE_SOURCE_MISMATCH")
     require_once(transcript, f"RUNNER_REV={RUNNER_REV}")
     require_once(transcript, "FINAL_STATUS=PASS")
     require_once(transcript, "LAUNCHER_EXIT=0")
@@ -198,6 +228,8 @@ def main() -> int:
         "status": "C6D_STEP3_LOCALIZED_PRECISION_EVIDENCE_OK",
         "source_sha": args.source_sha,
         "runner_revision": RUNNER_REV,
+        "notebook_checkpoint": NOTEBOOK_CHECKPOINT,
+        "notebook_blob_sha256": NOTEBOOK_BLOB_SHA256,
         "module_count": len(BRICKS),
         "expected_declarations": len(expected),
         "allowed_axioms": sorted(ALLOWED),

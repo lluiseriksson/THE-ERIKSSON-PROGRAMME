@@ -66,6 +66,10 @@ def require_evidence(path: Path, source_sha: str, paths: list[str], verifier) ->
         raise RuntimeError("C6D_STEP3_EVIDENCE_SOURCE_MISMATCH")
     if result.get("runner_revision") != verifier.RUNNER_REV:
         raise RuntimeError("C6D_STEP3_EVIDENCE_RUNNER_MISMATCH")
+    if result.get("notebook_checkpoint") != verifier.NOTEBOOK_CHECKPOINT:
+        raise RuntimeError("C6D_STEP3_EVIDENCE_NOTEBOOK_CHECKPOINT_MISMATCH")
+    if result.get("notebook_blob_sha256") != verifier.NOTEBOOK_BLOB_SHA256:
+        raise RuntimeError("C6D_STEP3_EVIDENCE_NOTEBOOK_HASH_MISMATCH")
     if result.get("expected_declarations") != 15:
         raise RuntimeError("C6D_STEP3_EVIDENCE_DECLARATION_COUNT_MISMATCH")
     measured = result.get("boundary_blob_sha256")

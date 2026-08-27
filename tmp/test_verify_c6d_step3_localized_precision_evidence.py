@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -21,7 +22,7 @@ def load_verifier():
     return module
 
 
-def write_notebook(tmp_path: Path, transcript: str) -> Path:
+def write_notebook(tmp_path: Path, transcript: str, source: str = "") -> Path:
     path = tmp_path / "step3.ipynb"
     path.write_text(
         json.dumps(
@@ -29,6 +30,7 @@ def write_notebook(tmp_path: Path, transcript: str) -> Path:
                 "cells": [
                     {
                         "cell_type": "code",
+                        "source": [source],
                         "outputs": [{"output_type": "stream", "text": [transcript]}],
                     }
                 ]
@@ -71,7 +73,17 @@ def test_complete_permitted_transcript_passes(tmp_path: Path, monkeypatch) -> No
         cursor += count
 
     monkeypatch.setattr(verifier, "exact_commit", lambda _repo, _sha: None)
+    expected_notebook_blob = json.dumps(
+        {"cells": [{"cell_type": "code", "source": [""]}]}
+    ).encode()
+    monkeypatch.setattr(
+        verifier,
+        "NOTEBOOK_BLOB_SHA256",
+        hashlib.sha256(expected_notebook_blob).hexdigest().upper(),
+    )
     def fake_blob(_repo: Path, _sha: str, path: str) -> bytes:
+        if path == verifier.NOTEBOOK_PATH:
+            return expected_notebook_blob
         if path.endswith("Audit.lean"):
             module = Path(path).name.removesuffix("Audit.lean")
             return ("\n".join(f"#print axioms {name}" for name in by_module[module]) + "\n").encode()
@@ -123,4 +135,25 @@ def test_complete_permitted_transcript_passes(tmp_path: Path, monkeypatch) -> No
         ],
     )
     with pytest.raises(RuntimeError, match=re.escape("C6D_STEP3_FORBIDDEN_AXIOM=sorryAx")):
+        verifier.main()
+
+    wrong_code = write_notebook(
+        tmp_path,
+        synthetic_transcript(verifier, declarations, source_sha),
+        source="print('wrong vehicle')\n",
+    )
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            str(SCRIPT),
+            "--repo",
+            str(ROOT),
+            "--source-sha",
+            source_sha,
+            "--notebook",
+            str(wrong_code),
+        ],
+    )
+    with pytest.raises(RuntimeError, match="C6D_STEP3_NOTEBOOK_CODE_SOURCE_MISMATCH"):
         verifier.main()
