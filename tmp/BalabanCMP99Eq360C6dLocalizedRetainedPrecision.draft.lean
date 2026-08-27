@@ -202,18 +202,8 @@ It is regenerated from the same retained background and radius chain used by
 the analytic baseline; no terminal operator is supplied by the caller. -/
 noncomputable def baselineRetainedPhysicalTower
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
-      halpha1 baselineRadiusBudget) : by
-    let W := R.toCubeWitness C alpha1 hscale
-    let retainedU := regions.retainedFineExtension W.transformedBackground
-    let hlocal := W.retainedFineReadBonds_nearIdentity regions
-      (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
-        C D regions)
-      halpha1
-    let retainedUSmall := regions.norm_retainedFineExtension_sub_one_le
-      W.transformedBackground
-      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
-      I.baselineRadiusChain.epsilon_nonneg hlocal
-    exact CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega eta := by
+      halpha1 baselineRadiusBudget) :
+    CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega eta := by
   let W := R.toCubeWitness C alpha1 hscale
   let retainedU := regions.retainedFineExtension W.transformedBackground
   let hlocal := W.retainedFineReadBonds_nearIdentity regions
