@@ -40,10 +40,16 @@ theorem rawDiagonal_eq_posSourceAdjoint
     (-(eta⁻¹)) • (eta⁻¹ • commutator Ysum Phi) =
       Complex.I • commutator Dstar Phi := by
   dsimp only
-  unfold commutator
-  simp only [smul_mul, mul_smul_comm, smul_sub, smul_smul]
-  have hcancel : eta⁻¹ * eta = 1 := inv_mul_cancel₀ heta
-  rw [mul_assoc, hcancel, mul_one]
-  module
+  have hcomm (c : ℂ) :
+      commutator (c • S) Phi = c • commutator S Phi := by
+    unfold commutator
+    simp only [smul_mul, mul_smul_comm, smul_sub]
+  rw [hcomm, hcomm, smul_smul, smul_smul]
+  have hcoeff :
+      -(eta⁻¹) * (eta⁻¹ * (Complex.I * eta)) =
+        Complex.I * (-(eta⁻¹)) := by
+    field_simp [heta]
+    ring
+  rw [hcoeff]
 
 end Eq351DiagonalSignAlgebra
