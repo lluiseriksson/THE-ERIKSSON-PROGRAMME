@@ -1,71 +1,4 @@
 #!/usr/bin/env python3
-"""Generate the pinned cold runner for the Eq. (3.51)/(3.60) regional prefix."""
-
-from __future__ import annotations
-
-import argparse
-import hashlib
-from pathlib import Path
-import re
-import subprocess
-
-
-ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "scripts" / "colab_eq360_complex_regional_validation.py"
-BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
-MODULES = (
-    ("BalabanCMP99ComplexSpecialLinearAdjointComposition", 1),
-    ("BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization", 6),
-    ("BalabanCMP99Eq360ComplexRegionalLaplacian", 8),
-    ("BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice", 3),
-)
-
-
-def git(*args: str) -> bytes:
-    child = subprocess.run(
-        ["git", "-c", "safe.directory=*", *args],
-        cwd=ROOT,
-        check=False,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
-    if child.returncode != 0:
-        raise RuntimeError(
-            "GIT_FAILED=" + " ".join(args) + ":"
-            + child.stderr.decode(errors="replace")
-        )
-    return child.stdout
-
-
-def require_commit(sha: str, label: str) -> None:
-    if re.fullmatch(r"[0-9a-f]{40}", sha) is None:
-        raise RuntimeError(f"{label}_SHA_INVALID")
-    if git("rev-parse", f"{sha}^{{commit}}").decode().strip() != sha:
-        raise RuntimeError(f"{label}_COMMIT_MISMATCH")
-
-
-def digest(sha: str, relative: str) -> str:
-    return hashlib.sha256(git("cat-file", "blob", f"{sha}:{relative}")).hexdigest()
-
-
-def render(source_sha: str, runner_rev: str) -> str:
-    base_hash = digest(source_sha, BASE_RUNNER)
-    tracked = ["YangMillsCore.lean"]
-    for module, _ in MODULES:
-        tracked.extend(
-            (
-                f"YangMills/RG/{module}.lean",
-                f"YangMills/RG/{module}Audit.lean",
-            )
-        )
-    hashes = {relative: digest(source_sha, relative) for relative in tracked}
-    source_blob_lines = "\n".join(
-        f"    {relative!r}: {value!r}," for relative, value in hashes.items()
-    )
-    module_lines = "\n".join(
-        f"    ({module!r}, {expected})," for module, expected in MODULES
-    )
-    return f'''#!/usr/bin/env python3
 """Cold validation of the literal analytic regional-Laplacian prefix.
 
 The queue certifies the two exact Eq. (3.51) algebraic prerequisites, the
@@ -84,13 +17,13 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = {source_sha!r}
+SOURCE_SHA = 'abb9dd508e28ebc0b30af4da0ee5a0aaf283151c'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    f"{{SOURCE_SHA}}/{BASE_RUNNER}"
+    f"{SOURCE_SHA}/scripts/colab_qprime_row_validation.py"
 )
-BASE_SHA256 = {base_hash!r}
+BASE_SHA256 = 'd06b8a186c9fcefb54d6e21264d2467b6fb723b337be092d4c3380b875e47cee'
 BASE_PATH = Path("/content/colab_qprime_row_validation.py")
 
 with urllib.request.urlopen(BASE_URL) as response:
@@ -107,18 +40,29 @@ runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
 MODULES = [
-{module_lines}
+    ('BalabanCMP99ComplexSpecialLinearAdjointComposition', 1),
+    ('BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization', 6),
+    ('BalabanCMP99Eq360ComplexRegionalLaplacian', 8),
+    ('BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice', 3),
 ]
 
-runner.RUNNER_REV = {runner_rev!r}
+runner.RUNNER_REV = 'eq360-complex-regional-real-slice-v1'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq360-complex-regional")
 runner.EVIDENCE = Path("/content/hrpoly-eq360-complex-regional-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-eq360-complex-regional-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq360-complex-regional-paths.txt")
-runner.SOURCE_BLOBS = {{
-{source_blob_lines}
-}}
+runner.SOURCE_BLOBS = {
+    'YangMillsCore.lean': 'cf95367cb81d3c581b26bb7b336525a365f10ed9ef94e2173d9c0c1430947f75',
+    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointComposition.lean': '8a334334c411bfc846e1aa90e1579c947e2197db8e8614c1041b9e9931e7424b',
+    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointCompositionAudit.lean': '66c8152302c61a4d159aa665d244bdb61fab02da5dbf7f801cb6d9f4e2f61f9d',
+    'YangMills/RG/BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization.lean': '2b66901bc4aa32cbba44d8c78009d15f1282bb68fd2c4d551f54ac144c95b43f',
+    'YangMills/RG/BalabanCMP99Eq351PhysicalComplexPositiveBondFactorizationAudit.lean': 'a8dd09186034e5984876d908845c50fbe2f405b64b86a453bbc96b1f2ebaa4d1',
+    'YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacian.lean': 'c08cf0f95ca2f7d47e3b6c2b20ad30f1236458315aed996624238703d9e7e835',
+    'YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianAudit.lean': 'ee79bde256a3b422c9f4560a361046a7ef715d8298fdf49545f114af77a82310',
+    'YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.lean': '8c4524096bb1f3ecd6b6067646dc0cdbbd66cce886f0efd3963b91f9b5bf4ae8',
+    'YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.lean': '05001a36e478c2dce77508383d902bfd668df6c521869c649c980d1faea83d85',
+}
 
 
 def capturing_run(stage: str, command: list[str], *, cwd: Path | None = None) -> str:
@@ -136,16 +80,16 @@ def capturing_run(stage: str, command: list[str], *, cwd: Path | None = None) ->
     output = child.stdout
     print(output, flush=True)
     runner.EVIDENCE.mkdir(parents=True, exist_ok=True)
-    (runner.EVIDENCE / f"{{stage}}.stdout").write_text(
-        output, encoding="utf-8", newline="\\n"
+    (runner.EVIDENCE / f"{stage}.stdout").write_text(
+        output, encoding="utf-8", newline="\n"
     )
     runner.RECORDS.append(
-        {{
+        {
             "stage": stage,
             "exit": child.returncode,
             "seconds": elapsed,
             "output_sha256": hashlib.sha256(output.encode()).hexdigest(),
-        }}
+        }
     )
     print(
         "STAGE=" + stage + " EXIT=" + str(child.returncode)
@@ -179,22 +123,22 @@ queue = [
 ]
 
 for index, (module, expected_axioms) in enumerate(MODULES, start=1):
-    source = f"YangMills/RG/{{module}}.lean"
-    audit = f"YangMills/RG/{{module}}Audit.lean"
+    source = f"YangMills/RG/{module}.lean"
+    audit = f"YangMills/RG/{module}Audit.lean"
     queue.extend([
         (
-            f"eq360_regional_{{index:02d}}_{{module.lower()}}_source",
+            f"eq360_regional_{index:02d}_{module.lower()}_source",
             [
                 "lake", "env", "lean", source, "-o",
-                f".lake/build/lib/lean/YangMills/RG/{{module}}.olean",
+                f".lake/build/lib/lean/YangMills/RG/{module}.olean",
             ],
             None,
         ),
         (
-            f"eq360_regional_{{index:02d}}_{{module.lower()}}_audit",
+            f"eq360_regional_{index:02d}_{module.lower()}_audit",
             [
                 "lake", "env", "lean", audit, "-o",
-                f".lake/build/lib/lean/YangMills/RG/{{module}}Audit.olean",
+                f".lake/build/lib/lean/YangMills/RG/{module}Audit.olean",
             ],
             expected_axioms,
         ),
@@ -206,28 +150,3 @@ runner.QUEUE = queue
 
 if __name__ == "__main__":
     raise SystemExit(runner.main())
-'''
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--source-sha", required=True)
-    parser.add_argument("--runner-rev", required=True)
-    parser.add_argument("--output", type=Path, default=OUTPUT)
-    args = parser.parse_args()
-    require_commit(args.source_sha, "SOURCE")
-    content = render(args.source_sha, args.runner_rev)
-    compile(content, str(args.output), "exec")
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(content, encoding="utf-8", newline="\n")
-    print(
-        "EQ360_REGIONAL_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} runner_rev={args.runner_rev} "
-        f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
-        f"output={args.output}"
-    )
-    return 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
