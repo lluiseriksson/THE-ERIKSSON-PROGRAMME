@@ -25,6 +25,14 @@ open Matrix
 
 variable {d N Nc : Nat} [NeZero d] [NeZero N] [NeZero Nc]
 
+local instance cmp99Eq351NegativeBondMatrixNormedRing :
+    NormedRing (Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  Matrix.frobeniusNormedRing
+
+local instance cmp99Eq351NegativeBondMatrixNormedAlgebra :
+    NormedAlgebra ℂ (Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  Matrix.frobeniusNormedAlgebra
+
 /-- The explicitly complexified compact adjoint action is literal matrix
 conjugation on every complex coordinate, not only on the real slice. -/
 theorem cmp99SUNLieComplexCoordMatrixLM_adjointComplexAction
@@ -59,7 +67,7 @@ theorem cmp99SUNLieComplexCoordMatrixLM_adjointComplexAction
           Complex.I •
             cmp98LieCoordMatrix (cmp99SUNLieComplexCoordImagPart Z)) *
           Matrix.conjTranspose (g : Matrix (Fin Nc) (Fin Nc) ℂ)
-  module
+  rw [mul_add, add_mul, mul_smul_comm, smul_mul_assoc]
 
 /-- The printed Hermitian-coordinate convention commutes with the same
 compact adjoint transport. -/
@@ -72,7 +80,7 @@ theorem cmp99Eq337PrintedComplexLieMatrix_adjointComplexAction
           Matrix.conjTranspose (g : Matrix (Fin Nc) (Fin Nc) ℂ) := by
   unfold cmp99Eq337PrintedComplexLieMatrix
   rw [cmp99SUNLieComplexCoordMatrixLM_adjointComplexAction]
-  module
+  rw [mul_smul_comm, smul_mul_assoc]
 
 @[simp] theorem cmp99Eq337PrintedComplexLieMatrix_neg
     (Z : SUNLieComplexCoord Nc) :
@@ -122,7 +130,7 @@ theorem cmp99Eq351PhysicalComplexOrientedGeneratorMatrix_neg
     cmp99Eq337PrintedComplexLieMatrix_neg,
     cmp99Eq337PrintedComplexLieMatrix_adjointComplexAction]
   unfold cmp99Eq351PhysicalComplexPositiveGeneratorMatrix
-  module
+  rw [smul_neg, mul_neg, neg_mul, mul_smul_comm, smul_mul_assoc]
 
 /-- Canonical determinant-one exponential of the literal oriented generator. -/
 def cmp99Eq351PhysicalComplexOrientedExponentSL
@@ -204,9 +212,15 @@ theorem cmp99Eq351PhysicalComplexPerturbedNegativeBondMatrix_eq_mul
           ((-eta) • cmp99SUNLieComplexCoordMatrixLM Nc (A (x, mu))) =
         physicalMatrixExp (-Y) := by
     unfold physicalMatrixExp
-    rw [← cmp99Eq337PrintedComplexGenerator_eq (-eta) (A (x, mu)),
-      cmp99Eq351PhysicalComplexPositiveGeneratorMatrix_neg]
-    rfl
+    change NormedSpace.exp
+      (((-eta : ℝ) : ℂ) •
+        cmp99SUNLieComplexCoordMatrixLM Nc (A (x, mu))) =
+      NormedSpace.exp (-Y)
+    rw [← cmp99Eq337PrintedComplexGenerator_eq (-eta) (A (x, mu))]
+    change NormedSpace.exp
+      (cmp99Eq351PhysicalComplexPositiveGeneratorMatrix A (-eta) (x, mu)) =
+      NormedSpace.exp (-Y)
+    rw [cmp99Eq351PhysicalComplexPositiveGeneratorMatrix_neg]
   rw [cmp99Eq337PhysicalComplexPerturbedBackground_apply_neg_matrix,
     cmp99Eq351PhysicalComplexOrientedExponentSL_coe, hgen, hexp,
     hnegexp]
