@@ -45,7 +45,7 @@ MODULES = [
     ('BalabanCMP99SourcePhysicalRealSliceTower', 2),
 ]
 
-runner.RUNNER_REV = 'c6d-next-real-slice-v1'
+runner.RUNNER_REV = 'c6d-next-real-slice-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-next-real-slice")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-next-real-slice-evidence")
@@ -110,6 +110,7 @@ queue = [
             "YangMills.RG.BalabanCMP99ComplexUbarSpecialLinear",
             "YangMills.RG.BalabanCMP99SourceRegionalScale",
             "YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction",
+            "YangMills.RG.BalabanCMP99PhysicalBackgroundRealSlice",
         ],
         None,
     ),

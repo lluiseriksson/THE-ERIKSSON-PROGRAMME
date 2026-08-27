@@ -92,9 +92,7 @@ def main() -> int:
     run(
         "c6d_next_real_slice_missing_prerequisite",
         [
-            "lake", "env", "lean",
-            f"YangMills/RG/{prerequisite}.lean", "-o",
-            f".lake/build/lib/lean/YangMills/RG/{prerequisite}.olean",
+            "lake", "build", f"YangMills.RG.{prerequisite}",
         ],
     )
 
