@@ -100,6 +100,10 @@ The norms on the right involve only nearest neighbours of `x`.
 6. Only after the pointwise source theorem is proved may it be transported to
    the finite-range/output-fixed or owner-weighted norm consumed by the
    Eq360 precision perturbation and the window-15 chain.
+7. Keep the all-`eta` raw identity and the printed nonzero-spacing identity
+   separate.  The latter consumes the existing `eta_pos` field of
+   `CMP99Eq337PhysicalComplexPerturbationDomain`; it must not be stated for
+   `eta = 0` or receive an unrelated nonzero-spacing witness.
 
 ## Current boundary
 
@@ -236,6 +240,28 @@ arrow.
    of them with caller data is an accepted premise.  The first endpoint is a
    pointwise three-species equality; an operator wrapper, if useful, is
    derived from that equality rather than used to hide it.
+
+   The cancellation of the two spacing factors is not valid at `eta = 0`.
+   Indeed, at zero the two regional Laplacians coincide while
+   the printed linear and diagonal species need not vanish.  The compiler
+   module must therefore expose two layers: a raw exact identity, valid for
+   every `eta`, in which the factors `eta⁻¹ * eta` remain visible; and the
+   printed (3.51)--(3.53) corollary, which consumes `eta_pos` (or its derived
+   `eta_ne`) from the already named Eq. (3.37) source domain.  It may not add
+   a fresh smallness or normalization premise, and it may not silently use
+   the zero parameter of the auxiliary baseline constructor to justify the
+   cancellation.
+
+   The implementation order inside this module is also fixed.  First expose
+   the regional Laplacian as `eta⁻¹ • eta⁻¹` times the literal two-orientation
+   nearest-neighbour stencil.  Next prove one matrix adjoint expansion for
+   each canonical orientation, using the positive and negative factorization
+   theorems already owned by the input gate.  Only then sum the two branches,
+   replace their common on-site contribution by
+   `cmp99Eq351PhysicalComplexCovariantDivergence`, and simplify the spacing
+   factors with the Eq. (3.37) nonzero witness.  This prevents the nested
+   `D*D` presentation of the regional operator from hiding the diagonal
+   species or creating a caller-supplied oriented field.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed
