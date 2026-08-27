@@ -164,6 +164,13 @@ the dictionary into a field.
 Neither the tower equality nor equality of the terminal precisions may be
 accepted from the caller.  This gate moves neither `20/41` nor window 15.
 
+There is also a model gate, not a coercible convention.  The sealed analytic
+real-slice step uses `matrixSUNAdjointModel Nc` literally, whereas the C6d
+regularity interface is polymorphic in `rho : SUNAdjointModel Nc`.  The
+source-facing Eq. (3.60) wrapper must instantiate C6d with
+`rho := matrixSUNAdjointModel Nc`; it may not accept an equality identifying
+an arbitrary caller-supplied `rho` with that model.
+
 The finite implementation order for item 2 is therefore:
 
 1. zero-parameter corollary of the sealed analytic-background real-slice
@@ -175,7 +182,11 @@ The finite implementation order for item 2 is therefore:
    (`tmp/BalabanCMP99SourceRetainedFineOneCochainExtension.draft.lean` is
    written PRE-VALIDATION; it is not yet a producer);
 3. recursive source-chain real-slice agreement for the analytic baseline
-   tower and C6d canonical tower;
+   tower and the C6d canonical tower at the literal
+   `matrixSUNAdjointModel Nc`
+   (`tmp/BalabanCMP99SourcePhysicalRealSliceTower.draft.lean` is written
+   PRE-VALIDATION; it constructs both recursions and accepts no terminal
+   equality, but it is not yet a producer);
 4. the C6d-specific Eq. (3.60) wrapper with separate Laplacian and averaging
    backgrounds, followed by its exact factorization theorem.
 
