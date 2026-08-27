@@ -20,12 +20,12 @@ import urllib.request
 
 DEBUG_REV = "c6d-radius-bridge-warm-v1"
 BASE_SOURCE_SHA = "81cc22e41d46cce150c2a263c85e4acb90087153"
-SCRATCH_SHA = "ab0cb7a55841f525cccc184f321e222948f5a968"
+SCRATCH_SHA = "06bbc599a58cacf8637468a5979d9176185704ac"
 ROOT = Path("/content/hrpoly-c6d-next-real-slice")
 EVIDENCE = Path("/content/hrpoly-c6d-radius-bridge-debug")
 FILES = {
     "tmp/BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget.draft.lean":
-        "2db65fccddf23e9a1dc7d4c29819f6de82152132083948d129481d89555888cf",
+        "77f446a97aaccfe8935b80c6d588dca95dfb3f0a0c9a101748a575ba63ae7afd",
     "tmp/BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudgetAudit.draft.lean":
         "7f0da0e8c4b661698c11f0118d094439f05882da77c5a553bb0cd996ceb23446",
 }
