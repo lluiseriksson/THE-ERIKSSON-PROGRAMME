@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Hot Colab diagnostic for the post-Eq360 C6d dictionary scratch pairs.
+"""Hot Colab diagnostic for the finite post-C6d.1 scratch frontier.
 
 This is deliberately not seal evidence.  It reuses the `.lake` tree of the
-completed C6d cold checkout only to turn elaboration errors into a short
-diagnostic cycle.  A later promotion still needs its own fresh cold gate.
+completed C6d cold checkout only to test the tower-pair/radius bridge,
+canonical ambient completion, counting/weighted dictionary and source-facing
+Eq. (3.60) wrapper without another cold dependency bootstrap.  A later
+promotion still needs its own fresh cold gate.
 """
 
 from __future__ import annotations
@@ -22,6 +24,14 @@ COLD_ROOT = Path("/content/hrpoly-c6d-next-real-slice")
 DEBUG_ROOT = Path("/content/hrpoly-c6d-canonical-ambient-completion-debug")
 PAIRS = (
     (
+        "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPair.draft.lean",
+        "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPairAudit.draft.lean",
+    ),
+    (
+        "tmp/BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget.draft.lean",
+        "tmp/BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudgetAudit.draft.lean",
+    ),
+    (
         "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletion.draft.lean",
         "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.draft.lean",
     ),
@@ -33,8 +43,12 @@ PAIRS = (
         "tmp/BalabanCMP99Eq360WeightedPrecisionRealSlice.draft.lean",
         "tmp/BalabanCMP99Eq360WeightedPrecisionRealSliceAudit.draft.lean",
     ),
+    (
+        "tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecision.draft.lean",
+        "tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecisionAudit.draft.lean",
+    ),
 )
-EXPECTED_AXIOM_HEADERS = 12
+EXPECTED_AXIOM_HEADERS = 42
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
