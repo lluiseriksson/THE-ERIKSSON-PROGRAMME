@@ -154,8 +154,14 @@ pass a fresh compiler/axiom gate.  The real-slice proof must consume the
 sealed Eq. (3.59) real-slice dictionary; it may not assume equality with the
 physical Dirichlet Laplacian.  Separately, the multiplicativity and positive-
 bond factorization gate at source checkpoint
-`0c88ed3c45626592367e2091a5f54c69cb624e3a` remains PRE-VALIDATION until its
-own cold evidence exists.  Thus the dependency order is literal regional
+`ca980e1c47adad8fc628af0346bddb07d791bd18` remains PRE-VALIDATION until its
+own cold evidence exists.  Its repinned runner is checkpoint
+`8be42866656b4925c44fc5c4300b2901593f6ee7` with SHA-256
+`42B9C00CE52F3635B220C706CCDDB9FEBA6D8B35FB1F412BFFF5EB0C89ED7E4E`;
+the notebook vehicle is checkpoint
+`e34a7fdb3641475d03a9dc4dc11626ec5a112844` with SHA-256
+`8EC62AE3A985FD820243CB6E573B0C3DDEB0ACB933745433ABA1ECBFEB8E6C1F`.
+Thus the dependency order is literal regional
 stencil -> real-slice dictionary -> adjoint composition/positive-bond
 factorization -> source regrouping.  A green prefix does not certify a later
 arrow.
