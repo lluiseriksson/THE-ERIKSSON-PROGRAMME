@@ -101,6 +101,18 @@ QUEUE = (
         "BalabanCMP99Eq351PhysicalComplexOrientedAdjointExpansionAudit.draft.olean",
     ),
     (
+        "covariant_divergence_source",
+        "tmp/BalabanCMP99Eq351PhysicalComplexCovariantDivergence.draft.lean",
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99Eq351PhysicalComplexCovariantDivergence.draft.olean",
+    ),
+    (
+        "covariant_divergence_audit",
+        "tmp/BalabanCMP99Eq351PhysicalComplexCovariantDivergenceAudit.draft.lean",
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99Eq351PhysicalComplexCovariantDivergenceAudit.draft.olean",
+    ),
+    (
         "oriented_stencil_source",
         "tmp/BalabanCMP99Eq351ComplexRegionalLaplacianStencil.draft.lean",
         ".lake/build/lib/lean/tmp/"
