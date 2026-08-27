@@ -37,6 +37,12 @@ variable {S : CMP99SourceScaledStratification (FinBox 4 (L * N')) n
   (fun r => FinBox 4 (scaleExtent r))}
 variable {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
 
+/-- The auxiliary closed-radius dimension is nonzero for the already printed
+source gate `2 ≤ M`; it is not an additional caller hypothesis. -/
+def cmp99Eq360C6dRadiusDimensionNeZero (hM : 2 ≤ M) :
+    NeZero (4 * (M - 1)) :=
+  ⟨by omega⟩
+
 /-- Genuine scalar/source gates needed after C6d.1.  The physical background
 is not a field: it is generated below from the regularity-class witness.
 The complex perturbation is likewise generated from the physical `A`, with
@@ -64,11 +70,13 @@ structure CMP99Eq360C6dLocalizedRetainedInput
     ‖regions.retainedFineComplexOneCochain A b‖ ≤ rA
   perturbation_small : |z| *
     (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2
-  radiusBudget : CMP99ComplexClosedRadiusBudget
-    (4 * (M - 1)) M depth
-    (cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc
-      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) z rA)
-    Rmax (cmp99UbarNoWindingThreshold Nc)
+  radiusBudget :
+    letI : NeZero (4 * (M - 1)) :=
+      cmp99Eq360C6dRadiusDimensionNeZero hM
+    CMP99ComplexClosedRadiusBudget (4 * (M - 1)) M depth
+      (cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) z rA)
+      Rmax (cmp99UbarNoWindingThreshold Nc)
 
 namespace CMP99Eq360C6dLocalizedRetainedInput
 
@@ -119,6 +127,8 @@ noncomputable def retainedTowerPair
     (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
       halpha1 chain) :
     CMP99Eq359ComplexRegionalTowerPair (Nc := Nc) Omega eta := by
+  letI : NeZero (4 * (M - 1)) :=
+    cmp99Eq360C6dRadiusDimensionNeZero hM
   let W := R.toCubeWitness C alpha1 hscale
   have hlocal : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
       ‖(W.transformedBackground (positiveEdgeOfPhysicalBond q) :

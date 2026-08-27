@@ -6,6 +6,7 @@ compiler or axiom-oracle verdict.
 -/
 
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullComplexOneCochain
+#print axioms YangMills.RG.cmp99Eq360C6dRadiusDimensionNeZero
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullBackground0
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullBackground1
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.retainedTowerPair
