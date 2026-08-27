@@ -1,5 +1,7 @@
 import YangMills.RG.BalabanCMP99Eq351PhysicalComplexOrientedPerturbation
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
+import YangMills.RG.BalabanCMP99PhysicalBackgroundRealSlice
+import YangMills.RG.BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice
 import YangMills.RG.BalabanCMP116GaugeFixingMassDefect
 import tmp.BalabanCMP99Eq360ComplexRegionalLaplacian.draft
 
@@ -187,8 +189,20 @@ theorem cmp99Eq351PhysicalComplexCovariantDivergence_realSlice
   apply Finset.sum_congr rfl
   intro i _hi
   rw [map_sub, cmp99Eq337PhysicalComplexifyOneCochain_apply,
-    cmp99Eq337PhysicalComplexifyOneCochain_apply,
-    cmp99SUNAdjointComplexAction_complexification]
+    cmp99Eq337PhysicalComplexifyOneCochain_apply]
+  congr 1
+  change
+    cmp99SUNAdjointComplexAction (matrixSUNAdjointModel Nc)
+        (U (positiveEdgeOfPhysicalBond ((x.shiftBack i, i) : PhysicalBond d N)))⁻¹
+        (cmp99SUNLieCoordComplexificationLM Nc (A (x.shiftBack i, i))) =
+      cmp99SUNLieCoordComplexificationLM Nc
+        ((matrixSUNAdjointModel Nc).adCLM
+          (U (positiveEdgeOfPhysicalBond ((x.shiftBack i, i) : PhysicalBond d N)))⁻¹
+          (A (x.shiftBack i, i)))
+  exact cmp99SUNAdjointComplexAction_complexification
+    (matrixSUNAdjointModel Nc)
+    (U (positiveEdgeOfPhysicalBond ((x.shiftBack i, i) : PhysicalBond d N)))⁻¹
+    (A (x.shiftBack i, i))
 
 /-- Literal source-facing complex adjoint `D_U^* A` from CMP99 (3.3)/(3.51).
 
