@@ -33,8 +33,9 @@ def main() -> int:
     assert SOURCE not in cell
     assert RUNNER in cell
     assert hashlib.sha256(RUNNER_TEXT).hexdigest() in cell
-    assert "release_runtime()" in cell
-    assert "RUNTIME_UNASSIGN_REQUESTED_BY_LAUNCHER=1" in cell
+    assert "release_runtime" not in cell
+    assert "RUNTIME_UNASSIGN_REQUESTED_BY_LAUNCHER=1" not in cell
+    assert "RUNTIME_RETAINED_FOR_EVIDENCE=1" in cell
 
     globals_["blob"] = lambda _checkpoint, _path: RUNNER_TEXT.replace(
         SOURCE.encode(), ("c" * 40).encode()
@@ -58,7 +59,7 @@ def main() -> int:
 
     print(
         "C6D_STEP3_NOTEBOOK_SELFTEST_OK one_cell=1 transport_hash=exact "
-        "runtime_unassign=always tamper=fail_closed generator_sha256="
+        "runtime_retention=evidence tamper=fail_closed generator_sha256="
         + hashlib.sha256(SCRIPT.read_bytes()).hexdigest().upper()
     )
     return 0

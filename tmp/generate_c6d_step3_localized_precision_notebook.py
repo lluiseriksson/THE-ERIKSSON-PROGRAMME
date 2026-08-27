@@ -72,7 +72,6 @@ measured = hashlib.sha256(runner_source).hexdigest()
 print("RUNNER_TRANSPORT_SHA256=" + measured, flush=True)
 if measured != RUNNER_SHA256:
     raise RuntimeError("RUNNER_TRANSPORT_HASH_MISMATCH")
-release_runtime = runtime.unassign
 runtime.unassign = lambda: print("RUNTIME_UNASSIGN_DEFERRED=1", flush=True)
 launcher_exit = 0
 try:
@@ -84,8 +83,7 @@ except BaseException as exc:
     print("LAUNCHER_EXCEPTION=" + repr(exc), flush=True)
 finally:
     print(f"LAUNCHER_EXIT={{launcher_exit}}", flush=True)
-    release_runtime()
-    print("RUNTIME_UNASSIGN_REQUESTED_BY_LAUNCHER=1", flush=True)
+    print("RUNTIME_RETAINED_FOR_EVIDENCE=1", flush=True)
 if launcher_exit != 0:
     raise RuntimeError(f"RUNNER_EXIT={{launcher_exit}}")
 '''
