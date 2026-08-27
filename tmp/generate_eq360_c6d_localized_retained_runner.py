@@ -67,7 +67,8 @@ def render(source_sha: str, runner_rev: str) -> str:
             "YangMills.RG.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation",
             "YangMills.RG.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation",
             "YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision",
-            "YangMills.RG.BalabanCMP99Eq337PhysicalComplexBaselineRealSlice",'''
+            "YangMills.RG.BalabanCMP99Eq337PhysicalComplexBaselineRealSlice",
+            "YangMills.RG.BalabanCMP99SourceUbarRadiusBudget",'''
     if old_dependencies not in content:
         raise RuntimeError("EQ360_C6D_RUNNER_DEPENDENCY_BLOCK_MISSING")
     return content.replace(old_dependencies, new_dependencies)
