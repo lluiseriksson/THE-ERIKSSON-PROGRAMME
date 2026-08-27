@@ -228,6 +228,19 @@ noncomputable def weightedPrecisionCoefficient
   cmp99SourceCountingCoefficientAsWeightedAdjoint
     I.baselineRetainedPhysicalTower I.a_j
 
+/-- The source regularity spacing is positive, hence the terminal spacing of
+the internally generated physical tower is nonzero.  Eq. (3.60) does not need
+another caller-supplied denominator gate. -/
+theorem baselineRetainedPhysicalTower_terminalSpacing_ne_zero
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    I.baselineRetainedPhysicalTower.terminalSpacing ≠ 0 := by
+  unfold baselineRetainedPhysicalTower
+  rw [regions.weightedQprimeTower_terminalSpacing]
+  have hM0 : (M : ℝ) ≠ 0 := by
+    exact_mod_cast (show M ≠ 0 by omega)
+  exact mul_ne_zero (pow_ne_zero depth hM0) R.eta_pos.ne'
+
 /-- The Eq. (3.59) pair uses only the canonical retained physical extensions.
 The perturbed physical radius chain is derived from the stronger closed
 complex budget; it is not a second caller hypothesis.  Both analytic branches
