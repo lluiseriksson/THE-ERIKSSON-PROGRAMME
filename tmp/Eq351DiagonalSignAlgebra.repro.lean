@@ -26,7 +26,7 @@ open Matrix
 
 variable {n : Nat}
 
-private def commutator
+private noncomputable def commutator
     (X Y : Matrix (Fin n) (Fin n) ℂ) : Matrix (Fin n) (Fin n) ℂ :=
   X * Y - Y * X
 
@@ -44,12 +44,12 @@ theorem rawDiagonal_eq_posSourceAdjoint
       commutator (c • S) Phi = c • commutator S Phi := by
     unfold commutator
     simp only [smul_mul, mul_smul_comm, smul_sub]
-  rw [hcomm, hcomm, smul_smul, smul_smul]
+  rw [hcomm, hcomm]
+  simp only [smul_smul]
   have hcoeff :
-      -(eta⁻¹) * (eta⁻¹ * (Complex.I * eta)) =
+      (-(eta⁻¹) * eta⁻¹) * (Complex.I * eta) =
         Complex.I * (-(eta⁻¹)) := by
     field_simp [heta]
-    ring
   rw [hcoeff]
 
 end Eq351DiagonalSignAlgebra
