@@ -127,6 +127,59 @@ QUEUE = (
 )
 
 
+TMP_IMPORT = re.compile(r"(?m)^import\s+(tmp\.[A-Za-z0-9_.]+)\s*$")
+FORBIDDEN = re.compile(r"\b(?:sorry|admit)\b")
+
+
+def source_module(source: str) -> str:
+    if not source.endswith(".lean"):
+        raise RuntimeError(f"EQ351_WARM_SOURCE_SUFFIX_INVALID={source}")
+    return source[:-5].replace("/", ".").replace("\\", ".")
+
+
+def preflight(repo: Path) -> None:
+    sources = [source for _stage, source, _output in QUEUE]
+    outputs = [output for _stage, _source, output in QUEUE]
+    if len(sources) != len(set(sources)):
+        raise RuntimeError("EQ351_WARM_SOURCE_DUPLICATE")
+    if len(outputs) != len(set(outputs)):
+        raise RuntimeError("EQ351_WARM_OUTPUT_DUPLICATE")
+
+    positions = {source_module(source): index for index, source in enumerate(sources)}
+    for index, source in enumerate(sources):
+        path = repo / source
+        if not path.is_file():
+            raise RuntimeError(f"EQ351_WARM_SOURCE_MISSING={source}")
+        text = path.read_text(encoding="utf-8-sig")
+        if source.startswith("tmp/"):
+            marker_count = text.count("PRE-VALIDATION:")
+            if marker_count != 1:
+                raise RuntimeError(
+                    f"EQ351_WARM_PREVALIDATION_COUNT={source}:{marker_count} WANT=1"
+                )
+            forbidden = FORBIDDEN.search(text)
+            if forbidden is not None:
+                raise RuntimeError(
+                    f"EQ351_WARM_FORBIDDEN_TOKEN={source}:{forbidden.group(0)}"
+                )
+        for imported in TMP_IMPORT.findall(text):
+            dependency = positions.get(imported)
+            if dependency is None:
+                raise RuntimeError(
+                    f"EQ351_WARM_TMP_IMPORT_OUTSIDE_QUEUE={source}:{imported}"
+                )
+            if dependency >= index:
+                raise RuntimeError(
+                    f"EQ351_WARM_TMP_IMPORT_ORDER={source}:{imported}:"
+                    f"dependency={dependency}:consumer={index}"
+                )
+    print(
+        f"EQ351_WARM_PREFLIGHT_OK stages={len(QUEUE)} "
+        f"drafts={sum(source.startswith('tmp/') for source in sources)}",
+        flush=True,
+    )
+
+
 def run(repo: Path, stage: str, source: str, output: str) -> int:
     output_path = repo / output
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -146,6 +199,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", type=Path, required=True)
     parser.add_argument("--source-sha", required=True)
+    parser.add_argument("--preflight-only", action="store_true")
     args = parser.parse_args()
     repo = args.repo.resolve()
     if re.fullmatch(r"[0-9a-f]{40}", args.source_sha) is None:
@@ -158,6 +212,10 @@ def main() -> int:
         raise RuntimeError(
             f"EQ351_WARM_SOURCE_SHA_MISMATCH={head} WANT={args.source_sha}"
         )
+    preflight(repo)
+    if args.preflight_only:
+        print("EQ351_WARM_PREFLIGHT_ONLY_OK", flush=True)
+        return 0
     print(
         f"EQ351_WARM_DEBUG_BEGIN source_sha={args.source_sha} stages={len(QUEUE)}",
         flush=True,
