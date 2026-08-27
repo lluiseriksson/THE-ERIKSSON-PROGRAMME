@@ -104,7 +104,7 @@ theorem cmp99ActiveRegionSourceCovariantLaplacian_eq_of_eqOn_internalBonds
     intro phi
     change inner ℝ (KU phi - KV phi) phi = 0
     rw [inner_sub_left]
-    rw [hKU phi phi, hKV phi phi, hquad phi]
+    rw [hKU.apply_clm phi phi, hKV.apply_clm phi phi, hquad phi]
     exact sub_self _
   rw [← sub_eq_zero]
   apply ContinuousLinearMap.ext
