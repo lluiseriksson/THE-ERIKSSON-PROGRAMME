@@ -55,7 +55,10 @@ def generate(source_sha: str, runner_checkpoint: str) -> str:
     runner_text = runner.decode("utf-8")
     if f'runner.SOURCE_SHA = {source_sha!r}' not in runner_text:
         raise SystemExit("C6D_STEP3_RUNNER_SOURCE_PIN_MISMATCH")
-    if f'runner.RUNNER_REV = {RUNNER_REV!r}' not in runner_text:
+    runner_rev_pattern = re.compile(
+        r"runner\.RUNNER_REV\s*=\s*['\"]" + re.escape(RUNNER_REV) + r"['\"]"
+    )
+    if runner_rev_pattern.search(runner_text) is None:
         raise SystemExit("C6D_STEP3_RUNNER_REV_MISMATCH")
     runner_hash = hashlib.sha256(runner).hexdigest()
     runner_url = f"{REPO_RAW}/{runner_checkpoint}/{RUNNER_PATH}"
