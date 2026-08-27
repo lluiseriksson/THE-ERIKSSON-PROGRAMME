@@ -55,7 +55,7 @@ noncomputable def
       ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
   let W := R.toCubeWitness C alpha1 hscale
   let T := R.localizedRetainedTowerOfSourceRegion
-    C hscale regions D hM rho halpha1 chain
+    (spacing := eta) C hscale regions D hM rho halpha1 chain
   cmp99SourceGaugePrecision
     (cmp99ActiveRegionSourceCovariantLaplacian
       Omega rho W.transformedBackground eta)
@@ -84,7 +84,7 @@ theorem
     (a_j : ℝ) :
     let W := R.toCubeWitness C alpha1 hscale
     let T := R.localizedRetainedTowerOfSourceRegion
-      C hscale regions D hM rho halpha1 chain
+      (spacing := eta) C hscale regions D hM rho halpha1 chain
     R.localizedRetainedPhysicalPrecision C hscale regions D hM rho halpha1
         chain a_j =
       cmp99ActiveRegionSourceCovariantLaplacian
@@ -117,7 +117,7 @@ theorem
     (a_j : ℝ) :
     let W := R.toCubeWitness C alpha1 hscale
     let T := R.localizedRetainedTowerOfSourceRegion
-      C hscale regions D hM rho halpha1 chain
+      (spacing := eta) C hscale regions D hM rho halpha1 chain
     R.localizedRetainedPhysicalPrecision C hscale regions D hM rho halpha1
         chain a_j =
       cmp99SourceGaugePrecision
@@ -126,7 +126,7 @@ theorem
         (T.canonicalTowerAt (Fin.last depth)).Qprime a_j := by
   dsimp only [CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision]
   rw [R.localizedRetainedTerminalQprime_eq_ofSourceRegion
-    C hscale regions D hM rho halpha1 chain]
+    (spacing := eta) C hscale regions D hM rho halpha1 chain]
 
 /-- Source-closed isolation of the Laplacian background change.  The
 Corollary-3.6 region dictionary replaces the transformed-background
@@ -156,7 +156,8 @@ theorem
     (a_j : ℝ) :
     let W := R.toCubeWitness C alpha1 hscale
     let T := R.localizedRetainedTowerOfSourceRegion
-      C hscale regions D hM (matrixSUNAdjointModel Nc) halpha1 chain
+      (spacing := eta) C hscale regions D hM (matrixSUNAdjointModel Nc)
+        halpha1 chain
     R.localizedRetainedPhysicalPrecision C hscale regions D hM
         (matrixSUNAdjointModel Nc) halpha1 chain a_j =
       cmp99SourceGaugePrecision
@@ -167,7 +168,8 @@ theorem
         (T.canonicalTowerAt (Fin.last depth)).Qprime a_j := by
   dsimp only [CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision]
   rw [R.localizedRetainedTerminalQprime_eq_ofSourceRegion
-      C hscale regions D hM (matrixSUNAdjointModel Nc) halpha1 chain,
+      (spacing := eta) C hscale regions D hM (matrixSUNAdjointModel Nc)
+        halpha1 chain,
     (R.toCubeWitness C alpha1 hscale).
       regionalLaplacian_eq_exponential_of_sourceRegionDictionary D]
 
@@ -221,7 +223,7 @@ theorem
     (a_j : ℝ) (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
     let W := R.toCubeWitness C alpha1 hscale
     let T := R.localizedRetainedTowerOfSourceRegion
-      C hscale regions D hM rho halpha1 chain
+      (spacing := eta) C hscale regions D hM rho halpha1 chain
     inner ℝ phi
         (R.localizedRetainedPhysicalPrecision C hscale regions D hM rho
           halpha1 chain a_j phi) =
