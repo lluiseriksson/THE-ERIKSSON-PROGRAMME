@@ -21,6 +21,14 @@ open Matrix
 
 variable {d N Nc : Nat} [NeZero d] [NeZero N] [NeZero Nc]
 
+local instance cmp99Eq351OrientedAdjointMatrixNormedRing :
+    NormedRing (Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  Matrix.frobeniusNormedRing
+
+local instance cmp99Eq351OrientedAdjointMatrixNormedAlgebra :
+    NormedAlgebra ℂ (Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  Matrix.frobeniusNormedAlgebra
+
 /-- The two non-baseline terms of the canonical oriented adjoint expansion.
 This is a definition of the literal commutator plus the already named exact
 exponential remainder, not a caller-supplied increment. -/
