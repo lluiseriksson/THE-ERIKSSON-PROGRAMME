@@ -47,6 +47,28 @@ theorem cmp99SpecialLinearAdjointCoordLM_mul
     Matrix.SpecialLinearGroup.coe_inv, Matrix.adjugate_mul_distrib]
   noncomm_ring
 
+/-- The algebraic complex adjoint action of the identity is the identity.
+This is recorded explicitly so source-facing stencil proofs do not depend on
+an unfolding convention for the transported coordinate model. -/
+@[simp] theorem cmp99SpecialLinearAdjointCoordLM_one
+    (Z : SUNLieComplexCoord Nc) :
+    cmp99SpecialLinearAdjointCoordLM
+        (1 : Matrix.SpecialLinearGroup (Fin Nc) ℂ) Z = Z := by
+  apply cmp99SUNLieComplexCoordMatrixLM_injective
+  simp only [cmp99SUNLieComplexCoordMatrixLM_specialLinearAdjoint]
+  simp
+
+/-- Transport by `g` followed by transport by its inverse cancels exactly.
+This is the cancellation used when the regional `D_U^* D_U` stencil is
+rewritten as a sum over the two canonical bond orientations. -/
+@[simp] theorem cmp99SpecialLinearAdjointCoordLM_inv_apply
+    (g : Matrix.SpecialLinearGroup (Fin Nc) ℂ)
+    (Z : SUNLieComplexCoord Nc) :
+    cmp99SpecialLinearAdjointCoordLM g⁻¹
+        (cmp99SpecialLinearAdjointCoordLM g Z) = Z := by
+  rw [← cmp99SpecialLinearAdjointCoordLM_mul]
+  simp
+
 end
 
 end YangMills.RG
