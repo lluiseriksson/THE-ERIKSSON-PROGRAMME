@@ -100,8 +100,16 @@ def main() -> int:
         ],
     )
 
-    output_dir = ROOT / ".lake/build/lib/lean/tmp"
-    output_dir.mkdir(parents=True, exist_ok=True)
+    source_output_dir = ROOT / (
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99SourcePhysicalRealSliceTowerPair"
+    )
+    audit_output_dir = ROOT / (
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99SourcePhysicalRealSliceTowerPairAudit"
+    )
+    source_output_dir.mkdir(parents=True, exist_ok=True)
+    audit_output_dir.mkdir(parents=True, exist_ok=True)
     source = "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPair.draft.lean"
     audit = "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPairAudit.draft.lean"
     run(
@@ -109,7 +117,7 @@ def main() -> int:
         [
             "lake", "env", "lean", source, "-o",
             ".lake/build/lib/lean/tmp/"
-            "BalabanCMP99SourcePhysicalRealSliceTowerPair.draft.olean",
+            "BalabanCMP99SourcePhysicalRealSliceTowerPair/draft.olean",
         ],
     )
     audit_output = run(
@@ -117,7 +125,7 @@ def main() -> int:
         [
             "lake", "env", "lean", audit, "-o",
             ".lake/build/lib/lean/tmp/"
-            "BalabanCMP99SourcePhysicalRealSliceTowerPairAudit.draft.olean",
+            "BalabanCMP99SourcePhysicalRealSliceTowerPairAudit/draft.olean",
         ],
     )
     compact = re.sub(r"\s+", "", audit_output)

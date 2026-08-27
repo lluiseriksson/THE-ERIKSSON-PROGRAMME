@@ -99,8 +99,16 @@ def main() -> int:
         ],
     )
 
-    output_dir = ROOT / ".lake/build/lib/lean/tmp"
-    output_dir.mkdir(parents=True, exist_ok=True)
+    source_output_dir = ROOT / (
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget"
+    )
+    audit_output_dir = ROOT / (
+        ".lake/build/lib/lean/tmp/"
+        "BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudgetAudit"
+    )
+    source_output_dir.mkdir(parents=True, exist_ok=True)
+    audit_output_dir.mkdir(parents=True, exist_ok=True)
     source = (
         "tmp/"
         "BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget.draft.lean"
@@ -114,7 +122,7 @@ def main() -> int:
         [
             "lake", "env", "lean", source, "-o",
             ".lake/build/lib/lean/tmp/"
-            "BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget."
+            "BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget/"
             "draft.olean",
         ],
     )
@@ -123,7 +131,7 @@ def main() -> int:
         [
             "lake", "env", "lean", audit, "-o",
             ".lake/build/lib/lean/tmp/"
-            "BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudgetAudit."
+            "BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudgetAudit/"
             "draft.olean",
         ],
     )
