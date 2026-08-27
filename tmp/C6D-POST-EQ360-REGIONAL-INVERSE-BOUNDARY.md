@@ -152,6 +152,40 @@ as a scalar equality.  Omitting this factor would be the same normalization
 class as the earlier double-`M^-4` defect: all operators would typecheck while
 the physical coefficient changed silently.
 
+That derivation is now pinned to an existing compiled source theorem rather
+than a planned induction:
+
+```text
+CMP99SourceActiveRegionChain.weightedQprimeTower_terminalSpacing
+```
+
+and the PRE-VALIDATION dictionary
+
+```text
+tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionary.draft.lean
+```
+
+exposes the resulting coefficient as
+
+```text
+a * spacing^d / ((M^depth * spacing)^d).
+```
+
+The next real-slice theorem must therefore have the following orientation:
+the complex printed-star precision is evaluated at
+
+```text
+((a_j * spacing^4 / T.terminalSpacing^4 : R) : C),
+```
+
+and its value on a compact-real-slice field equals the canonical
+complexification of the counting-Hilbert physical precision with coefficient
+`a_j`.  The theorem must derive `T` from
+`baselineRetainedTowerRealSliceAgreement`, rewrite its terminal member through
+`canonicalTerminal_eq_generated`, and use the generated terminal-spacing
+theorem above.  It may not accept `T.terminalSpacing = M^depth * spacing`, the
+real-slice precision, or the final equality from the caller.
+
 This also fixes the status of the C6d.1 phrase “printed `a_j`”.  Until the
 weighted/counting dictionary above is installed in the real-slice wrapper,
 the existing sealed module is a correct counting-Hilbert operator endpoint;
