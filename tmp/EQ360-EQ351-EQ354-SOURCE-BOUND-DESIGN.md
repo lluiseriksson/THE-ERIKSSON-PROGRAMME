@@ -297,13 +297,14 @@ arrow.
    literal non-baseline increment and proves the exact subtraction theorem.
    Its three-readout audit is also PRE-VALIDATION.
 
-   A raw additive precursor to the third boundary is materialized as
+   The all-spacing third boundary is materialized as
    `BalabanCMP99Eq351ComplexLaplacianRegroupingRaw.draft`: at the unscaled
    stencil level it proves that the perturbed-minus-baseline difference is
-   the negative sum of the two canonical oriented increments.  It deliberately
-   does not yet identify the commutator sum with `D_U^* A` or cancel any
-   spacing factor, so it is not yet the full printed three-species identity.
-   Its two-readout audit remains PRE-VALIDATION.
+   the negative sum of the two canonical oriented increments, then lifts the
+   result to the full regional Laplacians with both inverse-spacing factors
+   still explicit.  It deliberately does not yet identify the commutator sum
+   with `D_U^* A` or cancel any spacing factor, so the nonzero-spacing printed
+   corollary remains open.  Its three-readout audit remains PRE-VALIDATION.
 4. `BalabanCMP99Eq354ComplexLaplacianPointwiseBound`: consume one
    `CMP99Eq337PhysicalComplexPerturbationDomain U A eta alpha1`, region
    membership, and the regrouping theorem.  Its endpoint retains the printed

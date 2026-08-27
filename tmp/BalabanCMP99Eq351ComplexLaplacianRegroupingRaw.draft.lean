@@ -76,6 +76,33 @@ theorem cmp99Eq351ComplexOrientedLaplacianStencil_regrouping_raw
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
   module
 
+/-- Full regional-Laplacian form of the raw regrouping.  The two inverse
+spacing factors remain explicit on the canonical oriented increment, so the
+identity remains valid at `eta = 0` and makes no false cancellation. -/
+theorem cmp99Eq351ComplexLaplacianRegrouping_raw
+    (Omega : ActiveGaugeRegion d N)
+    (U : PhysicalGaugeBackground d N Nc)
+    (A : CMP99Eq337PhysicalComplexOneCochain d N Nc)
+    (eta : ℝ)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc))
+    (x : ActiveGaugeRegion.Site Omega) :
+    cmp99SUNLieComplexCoordMatrixLM Nc
+        (cmp99Eq360ComplexRegionalLaplacian Omega
+          (cmp99Eq337PhysicalComplexPerturbedBackground U A eta) eta phi x) =
+      cmp99SUNLieComplexCoordMatrixLM Nc
+          (cmp99Eq360ComplexRegionalLaplacian Omega
+            (cmp99PhysicalGaugeBackgroundToSpecialLinear U) eta phi x) -
+        ((eta : ℂ)⁻¹) • ((eta : ℂ)⁻¹) •
+          cmp99Eq351PhysicalComplexOrientedStencilIncrementMatrix
+            Omega U A eta phi x := by
+  rw [cmp99Eq360ComplexRegionalLaplacian_apply_eq_stencil,
+    cmp99Eq360ComplexRegionalLaplacian_apply_eq_stencil]
+  simp only [map_smul]
+  rw [cmp99Eq351ComplexRegionalLaplacianStencil_eq_oriented,
+    cmp99Eq351ComplexRegionalLaplacianStencil_eq_oriented,
+    cmp99Eq351ComplexOrientedLaplacianStencil_regrouping_raw]
+  module
+
 end
 
 end YangMills.RG
