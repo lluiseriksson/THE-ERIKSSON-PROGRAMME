@@ -180,6 +180,38 @@ def preflight(repo: Path) -> None:
     )
 
 
+def cache_base_preflight(repo: Path, base_sha: str) -> None:
+    if re.fullmatch(r"[0-9a-f]{40}", base_sha) is None:
+        raise RuntimeError("EQ351_WARM_CACHE_BASE_SHA_INVALID")
+    ancestor = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", base_sha, "HEAD"],
+        cwd=repo,
+        check=False,
+    )
+    if ancestor.returncode != 0:
+        raise RuntimeError(f"EQ351_WARM_CACHE_BASE_NOT_ANCESTOR={base_sha}")
+    changed = subprocess.run(
+        ["git", "diff", "--name-only", f"{base_sha}..HEAD", "--", "YangMills"],
+        cwd=repo,
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    ).stdout.splitlines()
+    changed_lean = sorted(path for path in changed if path.endswith(".lean"))
+    queued = {source for _stage, source, _output in QUEUE}
+    outside = [path for path in changed_lean if path not in queued]
+    if outside:
+        raise RuntimeError(
+            "EQ351_WARM_CHANGED_PROJECT_SOURCE_OUTSIDE_QUEUE=" + ",".join(outside)
+        )
+    print(
+        f"EQ351_WARM_CACHE_BASE_OK base_sha={base_sha} "
+        f"changed_project_sources={len(changed_lean)}",
+        flush=True,
+    )
+
+
 def run(repo: Path, stage: str, source: str, output: str) -> int:
     output_path = repo / output
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -199,6 +231,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo", type=Path, required=True)
     parser.add_argument("--source-sha", required=True)
+    parser.add_argument("--cache-base-sha", required=True)
     parser.add_argument("--preflight-only", action="store_true")
     args = parser.parse_args()
     repo = args.repo.resolve()
@@ -213,6 +246,7 @@ def main() -> int:
             f"EQ351_WARM_SOURCE_SHA_MISMATCH={head} WANT={args.source_sha}"
         )
     preflight(repo)
+    cache_base_preflight(repo, args.cache_base_sha)
     if args.preflight_only:
         print("EQ351_WARM_PREFLIGHT_ONLY_OK", flush=True)
         return 0
