@@ -31,7 +31,7 @@ runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
 runner.RUNNER_REV = "c6d-step3-localized-precision-v4"
-runner.SOURCE_SHA = '557a472e96509d3473b925cb07114292fc28587c'
+runner.SOURCE_SHA = 'cf18dbf2c3bad4dd70c1a18cf0f5824db2d653e9'
 runner.ROOT = Path("/content/hrpoly-c6d-step3-localized-precision")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence.tar.gz")
@@ -41,7 +41,7 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq335PhysicalLaplacianInternalCarrierAudit.lean': '3cb31294bd0eecaa3191feaf51636582acc799276b3af8a9772904a2cf9218c4',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge.lean': '621d1abc6b5212492636e8479ece199e12398d10ddf9c7f430705f8967554110',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridgeAudit.lean': 'b5178264197160cbf7382e926f65109657c6c13c5d470388bd781865bf7dfdf5',
-    'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision.lean': '5a653d68cb3ca6fdd9ba810cb79c6b8b1b0c3a09b5cf2fe94fc2ead30aa78213',
+    'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision.lean': '60c29e79e91ee9a1d9b5d492e07f8eb63c94ec040deb7d5eb45c8b3df6eeedc9',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecisionAudit.lean': '846b1c97488cdfa48fdf1a350ca229f36c0cace7ff649cf0d50639bb74eb92ce',
     'tmp/C6D-STEP3-LOCALIZED-PRECISION-PATHS.txt': '57847259774d3569e7105001b9a01fc4bbdfeae7b5f51045021b569e3ed5caea',
     'tmp/C6dStep3ContinuousLinearMapEquality.repro.lean': 'ce3e3190800754cd6516a6c5af0b1d165e45374c5c85fa5acf701585050cf81d',
