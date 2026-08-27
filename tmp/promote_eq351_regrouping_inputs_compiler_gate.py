@@ -122,7 +122,7 @@ def promote(data: bytes) -> bytes:
         raise RuntimeError("EQ351_REGROUPING_INPUTS_TMP_IMPORT_REMAINS")
     if text.count("PRE-VALIDATION:") != 1:
         raise RuntimeError("EQ351_REGROUPING_INPUTS_PREVALIDATION_COUNT")
-    if re.search(r"(?m)^\s*(?:sorry|admit|axiom)\b|\b(?:by\?|exact\?)\b", text):
+    if re.search(r"(?m)^\s*axiom\b|\b(?:sorry|admit|by\?|exact\?)\b", text):
         raise RuntimeError("EQ351_REGROUPING_INPUTS_FORBIDDEN_PLACEHOLDER")
     return text.encode("utf-8")
 

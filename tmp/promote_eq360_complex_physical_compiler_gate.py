@@ -108,7 +108,7 @@ def retarget_imports(data: bytes) -> bytes:
         raise RuntimeError("EQ360_TMP_IMPORT_REMAINS")
     if text.count("PRE-VALIDATION:") != 1:
         raise RuntimeError("EQ360_PREVALIDATION_COUNT_MISMATCH")
-    if re.search(r"(?m)^\s*(?:sorry|admit|axiom)\b|\b(?:by\?|exact\?)\b", text):
+    if re.search(r"(?m)^\s*axiom\b|\b(?:sorry|admit|by\?|exact\?)\b", text):
         raise RuntimeError("EQ360_FORBIDDEN_PLACEHOLDER")
     return text.encode("utf-8")
 
