@@ -35,9 +35,9 @@ noncomputable def CMP99SourceActiveRegionChain.complexTerminalHilbertSpace
         carrier := ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) }
   | step Omega hOmega tail ih => exact ih
 
+omit [NeZero N] in
 /-- The source-generated analytic real-slice tower ends on the canonical
 complex terminal bundle determined only by `regions`. -/
-omit [NeZero N] in
 theorem CMP99SourceActiveRegionChain.physicalRealSliceComplexTower_terminalSpace_eq
     {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
