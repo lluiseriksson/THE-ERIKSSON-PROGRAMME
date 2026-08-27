@@ -1,0 +1,4 @@
+tmp/BalabanCMP99Eq337PhysicalComplexBaselineRealSlice.draft.lean
+tmp/BalabanCMP99Eq337PhysicalComplexBaselineRealSliceAudit.draft.lean
+tmp/BalabanCMP99SourceRetainedFineOneCochainExtension.draft.lean
+tmp/BalabanCMP99SourceRetainedFineOneCochainExtensionAudit.draft.lean

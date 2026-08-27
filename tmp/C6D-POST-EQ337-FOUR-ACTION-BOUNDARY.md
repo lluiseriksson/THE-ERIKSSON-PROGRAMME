@@ -122,6 +122,66 @@ before any regional inverse or four-action transport can be claimed.
    `cmp99Eq342CommonAmplitude` and produce the uniform source-localized
    `(3.42)` certificate.
 
+### Exact real-slice gate before item 2
+
+The baseline in item 2 is source-selected, but it is deliberately not one
+single background in both summands.  C6d.1 uses
+`W.transformedBackground` in the regional Laplacian and uses the canonical
+retained tower generated from
+`regions.retainedFineExtension W.transformedBackground` in the `Qprime`
+summand.  The generic Eq. (3.59) tower pair constructs its analytic `Q0`
+recursively from one full background, while C6d.1 consumes the physical
+`T.canonicalTowerAt (Fin.last depth)`.  The one-scale real-slice theorem, the
+physical-contour holonomy theorem and the complex-Ubar successor real-slice
+theorem are already sealed, but there is currently no source-facing recursive
+assembler identifying these two terminal towers.
+
+The assembler starts from an already sealed leaf equality, not from a new
+dictionary: `cmp99Eq337PhysicalComplexPerturbedBackground_realSlice` proves
+the full real-parameter identity with the canonical `SL(N,C)` image of the
+physical left variation.  At `eta = 0`, the physical variation reduces to
+`U`, independently of `A`, by the already audited
+`cmp98PhysicalSuLeftVariation_zero`; the remaining leaf is therefore only a
+named corollary of two sealed theorems, not a new analytic obligation.  No
+second base background and no equality supplied by the caller are permitted.
+
+Consequently the old scratch
+`BalabanCMP99Eq360ComplexClosedPhysicalPrecision.draft` is algebraically
+reusable but is not itself the C6d consumer: its single `S.U` drives both the
+Laplacian and the tower, which would erase the retained-extension distinction.
+Before it can be promoted, a named recursive real-slice producer must
+construct the agreement between the internally generated analytic baseline
+tower and the C6d canonical physical tower on the same `regions`, spacing and
+retained extension.  The Eq. (3.60) wrapper must then keep the Laplacian and
+averaging backgrounds as two internally constructed objects and cite the
+existing read-carrier/locality theorems wherever their values are compared.
+The perturbed branch has the same split: the Laplacian consumes the full
+complex one-cochain on its regional read bonds, whereas the analytic `Q1`
+tower must be generated from the retained extension of both the baseline
+background and perturbation.  That retained complex one-cochain extension is
+also an internal construction; accepting it as caller data would merely move
+the dictionary into a field.
+Neither the tower equality nor equality of the terminal precisions may be
+accepted from the caller.  This gate moves neither `20/41` nor window 15.
+
+The finite implementation order for item 2 is therefore:
+
+1. zero-parameter corollary of the sealed analytic-background real-slice
+   theorem, including the named reduction of the physical left variation at
+   zero (`tmp/BalabanCMP99Eq337PhysicalComplexBaselineRealSlice.draft.lean`
+   is written PRE-VALIDATION; it is not yet a producer);
+2. source-closed zero extension of the physical one-cochain followed by
+   internal complexification, with support and norm lemmas
+   (`tmp/BalabanCMP99SourceRetainedFineOneCochainExtension.draft.lean` is
+   written PRE-VALIDATION; it is not yet a producer);
+3. recursive source-chain real-slice agreement for the analytic baseline
+   tower and C6d canonical tower;
+4. the C6d-specific Eq. (3.60) wrapper with separate Laplacian and averaging
+   backgrounds, followed by its exact factorization theorem.
+
+Only item 4 is Eq. (3.60); the preceding three are dictionaries needed to
+state it without a hidden operator equality.
+
 The generic regional compression and Neumann infrastructure in
 `BalabanCMP99SourceRegionalGreenNeumann` is reusable, but its own header
 already records the same boundary: the physical `Delta'_a/Q'` dictionary is
