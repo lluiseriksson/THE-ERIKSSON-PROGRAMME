@@ -143,7 +143,7 @@ def main() -> int:
             audit_stages.append(
                 f"eq351_adjoint_{index:02d}_{module.lower()}_audit"
             )
-        if len(expected) != 7 or len(set(expected)) != 7:
+        if len(expected) != 9 or len(set(expected)) != 9:
             raise RuntimeError("EQ351_ADJOINT_ARCHIVE_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)

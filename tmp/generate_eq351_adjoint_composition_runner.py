@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "scripts" / "colab_eq351_adjoint_composition_validation.py"
 BASE_RUNNER = "scripts/colab_qprime_row_validation.py"
 MODULES = (
-    ("BalabanCMP99ComplexSpecialLinearAdjointComposition", 1),
+    ("BalabanCMP99ComplexSpecialLinearAdjointComposition", 3),
     ("BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization", 6),
 )
 

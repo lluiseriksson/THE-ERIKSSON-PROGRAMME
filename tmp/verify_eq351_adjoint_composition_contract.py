@@ -11,7 +11,7 @@ import subprocess
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 MODULES = (
-    ("BalabanCMP99ComplexSpecialLinearAdjointComposition", 1),
+    ("BalabanCMP99ComplexSpecialLinearAdjointComposition", 3),
     ("BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization", 6),
 )
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)

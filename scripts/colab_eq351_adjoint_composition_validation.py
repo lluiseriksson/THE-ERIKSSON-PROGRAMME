@@ -16,7 +16,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = 'ca980e1c47adad8fc628af0346bddb07d791bd18'
+SOURCE_SHA = '7e30329353488c0937aa578088d9939c6ac8f591'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -39,11 +39,11 @@ runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
 MODULES = [
-    ('BalabanCMP99ComplexSpecialLinearAdjointComposition', 1),
+    ('BalabanCMP99ComplexSpecialLinearAdjointComposition', 3),
     ('BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization', 6),
 ]
 
-runner.RUNNER_REV = 'eq351-adjoint-composition-cold-v2'
+runner.RUNNER_REV = 'eq351-adjoint-composition-cold-v3'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-eq351-adjoint-composition")
 runner.EVIDENCE = Path("/content/hrpoly-eq351-adjoint-composition-evidence")
@@ -51,8 +51,8 @@ runner.ARCHIVE = Path("/content/hrpoly-eq351-adjoint-composition-evidence.tar.gz
 runner.PATH_MANIFEST = Path("/content/hrpoly-eq351-adjoint-composition-paths.txt")
 runner.SOURCE_BLOBS = {
     'YangMillsCore.lean': 'eb460cec95fc88f8f751858b30f39c624d42e7bd266cc5942b8b56b7d6548e08',
-    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointComposition.lean': '82e35233ddef23f8df9dbfa456fbb08163d284b968c966cdd382baf22b71dc65',
-    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointCompositionAudit.lean': 'bb65505690baeefe1d0e9be0dfbfec4400f8c2080ce8523c8c2fe2cc0554543b',
+    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointComposition.lean': '8a334334c411bfc846e1aa90e1579c947e2197db8e8614c1041b9e9931e7424b',
+    'YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointCompositionAudit.lean': '66c8152302c61a4d159aa665d244bdb61fab02da5dbf7f801cb6d9f4e2f61f9d',
     'YangMills/RG/BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization.lean': '2b66901bc4aa32cbba44d8c78009d15f1282bb68fd2c4d551f54ac144c95b43f',
     'YangMills/RG/BalabanCMP99Eq351PhysicalComplexPositiveBondFactorizationAudit.lean': 'a8dd09186034e5984876d908845c50fbe2f405b64b86a453bbc96b1f2ebaa4d1',
 }
