@@ -74,6 +74,7 @@ theorem cmp99Eq351ComplexOrientedLaplacianStencil_regrouping_raw
       U A eta (ConcreteEdge.mk (x.1.shiftBack i) i false)
         (cmp99Eq360ComplexDirichletExtend Omega phi (x.1.shiftBack i))
   simp only [cmp99PhysicalGaugeBackgroundToSpecialLinear_apply]
+  rw [← hpos, ← hneg]
   module
 
 /-- Full regional-Laplacian form of the raw regrouping.  The two inverse
