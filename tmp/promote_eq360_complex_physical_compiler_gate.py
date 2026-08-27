@@ -101,13 +101,21 @@ def require_clean_blob(source_sha: str, relative: str) -> bytes:
     return data
 
 
-def require_absent(source_sha: str, relative: str) -> None:
+def require_absent_or_identical(
+    source_sha: str, relative: str, expected: bytes
+) -> None:
     status = git("status", "--porcelain=v1", "--", relative)
     if status.returncode != 0 or status.stdout:
         raise RuntimeError(f"EQ360_DESTINATION_DIRTY={relative}")
     probe = git("cat-file", "-e", f"{source_sha}:{relative}")
-    if probe.returncode == 0 or (ROOT / relative).exists():
-        raise RuntimeError(f"EQ360_DESTINATION_EXISTS={relative}")
+    if probe.returncode == 0:
+        if git_blob(source_sha, relative) != expected:
+            raise RuntimeError(f"EQ360_DESTINATION_DIVERGED={relative}")
+        worktree = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
+        if worktree != expected:
+            raise RuntimeError(f"EQ360_DESTINATION_WORKTREE_DIVERGED={relative}")
+    elif (ROOT / relative).exists():
+        raise RuntimeError(f"EQ360_DESTINATION_UNTRACKED={relative}")
 
 
 def retarget_imports(data: bytes) -> bytes:
@@ -170,12 +178,13 @@ def core_with_audits(data: bytes, selected: list[str]) -> bytes:
     if len(audit_imports) != 5 or len(set(audit_imports)) != 5:
         raise RuntimeError("EQ360_CORE_AUDIT_SCOPE")
     text = data.decode("utf-8")
-    present = [line for line in audit_imports if line in text]
-    if present:
-        raise RuntimeError(f"EQ360_CORE_IMPORT_EXISTS={present!r}")
+    duplicate = [line for line in audit_imports if text.count(line) > 1]
+    if duplicate:
+        raise RuntimeError(f"EQ360_CORE_IMPORT_DUPLICATE={duplicate!r}")
+    missing = [line for line in audit_imports if line not in text]
     if not text.endswith("\n"):
         text += "\n"
-    return (text + "".join(line + "\n" for line in audit_imports)).encode("utf-8")
+    return (text + "".join(line + "\n" for line in missing)).encode("utf-8")
 
 
 def manifest_digest(rows: list[tuple[str, bytes]]) -> str:
@@ -200,8 +209,9 @@ def main() -> int:
         data = require_clean_blob(args.source_sha, scratch)
         require_closed_input_contract(scratch, data)
         target = destination(scratch)
-        require_absent(args.source_sha, target)
-        rows.append((target, retarget_imports(data)))
+        promoted = retarget_imports(data)
+        require_absent_or_identical(args.source_sha, target, promoted)
+        rows.append((target, promoted))
 
     core_status = git("status", "--porcelain=v1", "--", CORE)
     if core_status.returncode != 0 or core_status.stdout:
