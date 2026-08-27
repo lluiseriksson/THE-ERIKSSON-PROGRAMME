@@ -23,6 +23,29 @@ by the printed source-region dictionary; it is not definitionally that
 separated cell, and restriction of an inverse on a larger Dirichlet region is
 not the inverse on a smaller one.
 
+There is also one exact scale specialization before the certificate types
+match.  The current C6d wrapper is intentionally generic in the regularity
+ratio `L`, retained-tower ratio `M`, and residual side `N'`.  The separated
+source consumer must instantiate
+
+```text
+M  = L
+N' = cmp99RegionalLatticeSize L (2 * (K * Q)) depth,
+```
+
+so that its fine side `L * N'` is transported to
+
+```text
+cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)
+```
+
+by the already sealed theorem
+`cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier`.  This cast is a
+named source specialization, not definitional reduction and not a new free
+equality.  The generic C6d theorem remains useful algebra, but it cannot feed
+the source-localized Eq. (3.42) certificate until this specialization is
+written.
+
 ## Accepted adapter
 
 For literal restriction `R`, zero extension `E`, and the regional physical
@@ -59,13 +82,13 @@ This adapter does not manufacture any of the substantive source inputs.  A
 source-facing consumer still has to:
 
 1. construct the real physical Eq. (3.60) precision `K1` on `Omega`;
-2. derive coercivity of `K1` from the baseline gap and the attained relative
+2. specialize its scale/carrier by the existing separated-carrier theorem;
+3. derive coercivity of `K1` from the baseline gap and the attained relative
    perturbation budget;
-3. construct its canonical regional covariance through the adapter above;
-4. prove the four Eq. (3.42) actions on that same covariance;
-5. establish one depth-uniform `B0, delta0` pair and then attain
+4. construct its canonical regional covariance through the adapter above;
+5. prove the four Eq. (3.42) actions on that same covariance;
+6. establish one depth-uniform `B0, delta0` pair and then attain
    `norm R' < 1` by the direct Eq. (3.89) route.
 
 No ambient precision, Green, inverse equality, `B0`, `delta0`, coercivity
 constant or contraction may be accepted as a renamed free input.
-
