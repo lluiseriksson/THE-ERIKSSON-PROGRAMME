@@ -28,6 +28,14 @@ namespace YangMills.RG
 
 noncomputable section
 
+local instance cmp99Eq351DiagonalSignNoGoMatrixNormedRing :
+    NormedRing (Matrix (Fin 2) (Fin 2) ℂ) :=
+  Matrix.frobeniusNormedRing
+
+local instance cmp99Eq351DiagonalSignNoGoMatrixNormedAlgebra :
+    NormedAlgebra ℂ (Matrix (Fin 2) (Fin 2) ℂ) :=
+  Matrix.frobeniusNormedAlgebra
+
 /-- The unit-spacing diagonal contribution obtained from the raw exponential
 stencil after summing the canonical oriented perturbations. -/
 def cmp99Eq351RawDiagonalUnit
