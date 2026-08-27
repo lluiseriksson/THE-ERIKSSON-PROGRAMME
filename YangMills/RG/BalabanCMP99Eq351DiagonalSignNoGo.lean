@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP98GAdSeries
 import Mathlib.Analysis.Normed.Algebra.MatrixExponential
 
 /-!
-# PRE-VALIDATION: CMP99 (3.51) diagonal-sign no-go
-
-Source is present, but its `.olean` has not been materialized and the result
-has not been verified by the compiler.
+# CMP99 (3.51) diagonal-sign no-go
 
 CMP99 fixes `R(U) X = U X U⁻¹` and writes
 `R(exp(i eta A')) = exp(i eta ad_{A'})` in (3.50). Thus the infinitesimal

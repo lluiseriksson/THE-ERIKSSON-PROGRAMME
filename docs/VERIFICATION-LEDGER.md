@@ -40844,3 +40844,31 @@ literal localized retained precision, transport the four fixed-depth CMP96
 actions, produce uniform `B0, delta0`, attain window 15, close rows 23--24,
 or instantiate `TermSource`. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 948 (2026-08-27, **CMP99 Eq. (3.51) diagonal-sign no-go sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Exact source checkpoint `b36fa9758083c2f91d8beff72ec92c18a04ee052`
+was validated in a fresh Colab Pro+ CPU/high-RAM checkout with Lean
+`4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`. Runner checkpoint
+`46d45431c69fe4433d611790b1d5c9aa99c07ca6`, revision
+`cmp99-eq351-diagonal-sign-nogo-v6`, compiled a `2490`-job focal in
+`157.877` seconds and its audit in `4.569` seconds; both exited `0`.
+All three audited declarations use exactly
+`[propext, Classical.choice, Quot.sound]`, and the runner emitted literal
+`FINAL_STATUS=PASS` after `289.685` connected seconds.
+
+The downloaded evidence archive independently rehashes to
+`94FA4E3752D4F64442202127909A047F710ECA7B4289F67A97F2E9143341324F`.
+The executed notebook rehashes to
+`DC55CD5DDEFC2B95E3325AACAF255A2D16325BD690343306E30D0C17B82C526E`,
+and the local fail-closed package manifest to
+`D52BDD3F63D6253BAB49DDB1C8A75227CA1EC8B1DED934EA15AE2EE172F69A82`.
+
+The sealed theorem proves that, under the fixed repository/source convention,
+the raw diagonal sign and the printed Eq. (3.51) sign cannot be identified;
+an explicit two-by-two witness detects the discrepancy, while the associated
+norm equality survives. This is a negative source-facing result, not a proof
+of Eq. (3.51), Eq. (3.54), the physical source regrouping, a row bound,
+window-15 attainment, rows 23--24, or a `TermSource`. Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

@@ -14750,3 +14750,27 @@ spacing visible.  Coercivity, its Green inverse, transport of the four sealed
 fixed-depth CMP96 actions, uniform `B0, delta0`, window 15, rows 23--24 and
 `TermSource` remain open.  Counters stay exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### CMP99 Eq. (3.51) diagonal-sign no-go (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99Eq351DiagonalSignNoGo` fixes the repository/source adjoint-action
+convention and proves that its raw diagonal sign cannot be identified with the
+printed Eq. (3.51) sign.  The obstruction is witnessed by an explicit
+two-by-two example; the norm equality survives, so the no-go isolates the
+sign convention rather than invalidating the norm-level estimate.
+
+Fresh source `b36fa9758083c2f91d8beff72ec92c18a04ee052` passed a
+`2490`-job focal in `157.877` seconds and its audit in `4.569` seconds.
+All three declarations use exactly
+`[propext, Classical.choice, Quot.sound]`; runner revision
+`cmp99-eq351-diagonal-sign-nogo-v6` emitted literal `FINAL_STATUS=PASS`.
+Evidence archive and local manifest SHA-256 values are
+`94FA4E3752D4F64442202127909A047F710ECA7B4289F67A97F2E9143341324F`
+and
+`D52BDD3F63D6253BAB49DDB1C8A75227CA1EC8B1DED934EA15AE2EE172F69A82`.
+
+This seals only the negative sign diagnosis and its norm-preservation
+boundary.  Eq. (3.51)--(3.54), the physical regrouping and row estimate,
+uniform `B0, delta0`, window 15, rows 23--24 and `TermSource` remain open.
+Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.
