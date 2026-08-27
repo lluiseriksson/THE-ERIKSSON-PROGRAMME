@@ -282,6 +282,36 @@ theorem baselineRetainedPhysicalTower_terminalSpacing_ne_zero
     exact_mod_cast (show M ≠ 0 by omega)
   exact mul_ne_zero (pow_ne_zero depth hM0) R.eta_pos.ne'
 
+/-- C6d.1's literal localized counting precision is the source precision on
+the named generated baseline tower.  The equality is obtained from the
+sealed localized/canonical terminal dictionary, not from a caller-supplied
+operator equality. -/
+theorem baselinePhysicalPrecision_eq_generated
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    let W := R.toCubeWitness C alpha1 hscale
+    I.baselinePhysicalPrecision =
+      cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega
+          (matrixSUNAdjointModel Nc) W.transformedBackground eta)
+        I.baselineRetainedPhysicalTower.Qprime I.a_j := by
+  let W := R.toCubeWitness C alpha1 hscale
+  let T := R.localizedRetainedTowerOfSourceRegion
+    (spacing := eta) C hscale regions D hM (matrixSUNAdjointModel Nc)
+      halpha1 I.baselineRadiusChain
+  change R.localizedRetainedPhysicalPrecision C hscale regions D hM
+      (matrixSUNAdjointModel Nc) halpha1 I.baselineRadiusChain I.a_j = _
+  calc
+    _ = cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega
+          (matrixSUNAdjointModel Nc) W.transformedBackground eta)
+        (T.canonicalTowerAt (Fin.last depth)).Qprime I.a_j :=
+      R.localizedRetainedPhysicalPrecision_eq_canonical C hscale regions D
+        hM (matrixSUNAdjointModel Nc) halpha1 I.baselineRadiusChain I.a_j
+    _ = _ := by
+      rw [T.canonicalTerminal_eq_generated]
+      rfl
+
 /-- The Eq. (3.59) pair uses only the canonical retained physical extensions.
 The perturbed physical radius chain is derived from the stronger closed
 complex budget; it is not a second caller hypothesis.  Both analytic branches
