@@ -18,8 +18,8 @@ import tarfile
 import time
 
 
-RUNNER_REV = "cmp99-eq351-diagonal-sign-nogo-v5"
-SOURCE_SHA = "0eba43b922020571637b09e5dd25e3cd89ecbffd"
+RUNNER_REV = "cmp99-eq351-diagonal-sign-nogo-v6"
+SOURCE_SHA = "b36fa9758083c2f91d8beff72ec92c18a04ee052"
 REPO = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
 ASSET_URL = (
     "https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/"
