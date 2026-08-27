@@ -175,18 +175,18 @@ The finite implementation order for item 2 is therefore:
 
 1. zero-parameter corollary of the sealed analytic-background real-slice
    theorem, including the named reduction of the physical left variation at
-   zero (`tmp/BalabanCMP99Eq337PhysicalComplexBaselineRealSlice.draft.lean`
-   is written PRE-VALIDATION; it is not yet a producer);
+   zero (`BalabanCMP99Eq337PhysicalComplexBaselineRealSlice` is promoted
+   PRE-VALIDATION; it is not yet a sealed producer);
 2. source-closed zero extension of the physical one-cochain followed by
    internal complexification, with support and norm lemmas
-   (`tmp/BalabanCMP99SourceRetainedFineOneCochainExtension.draft.lean` is
-   written PRE-VALIDATION; it is not yet a producer);
+   (`BalabanCMP99SourceRetainedFineOneCochainExtension` is promoted
+   PRE-VALIDATION; it is not yet a sealed producer);
 3. recursive source-chain real-slice agreement for the analytic baseline
    tower and the C6d canonical tower at the literal
    `matrixSUNAdjointModel Nc`
-   (`tmp/BalabanCMP99SourcePhysicalRealSliceTower.draft.lean` is written
-   PRE-VALIDATION; it constructs both recursions and accepts no terminal
-   equality, but it is not yet a producer);
+   (`BalabanCMP99SourcePhysicalRealSliceTower` is promoted PRE-VALIDATION;
+   it constructs both recursions and accepts no terminal equality, but it is
+   not yet a sealed producer);
 4. the C6d-specific Eq. (3.60) wrapper with separate Laplacian and averaging
    backgrounds, followed by its exact factorization theorem.
 
@@ -215,17 +215,18 @@ but unattained until the corresponding compiled producers exist.
 
 ## PRE-VALIDATION implementation frontier (2026-08-27)
 
-Eq. (3.59), its physical real slice and the 34-file retained dependency
-boundary are sealed.  The live C6d.1 cold queue is fixed to four source/audit
-pairs (eight files, fifteen declarations) and the canonical one-code-cell
-notebook at checkpoint `214746e0370af6c348537ac0ab08c2d14392c8ea`.
-The first attempt was rejected before checkout because Colab supplied only
-12.67 GiB RAM; that incident is preserved and proves no compiler result.
-All eight notices remain PRE-VALIDATION until a fresh CPU/high-RAM run passes
-the focal/audit queue, the cold `YangMillsCore` root and the post-verifier.
+Eq. (3.59), its physical real slice, the 34-file retained dependency boundary
+and C6d.1 are sealed; C6d.1 is recorded in ledger Addendum 949.  The live
+queue is now the three promoted source/audit pairs in items 1--3 above.  Exact
+source `81cc22e41d46cce150c2a263c85e4acb90087153`, runner
+`25783c187299e4fa2487128f50dc27c023aaa09e` and notebook
+`cc5dd5878f7daf3a87169b20b45a1e64a668f863` are pinned under runner revision
+`c6d-next-real-slice-v1`.  All six notices remain PRE-VALIDATION until that
+fresh CPU/high-RAM focal/audit/root queue and its fail-closed verifier pass.
 
 The Eq. (3.51) algebra has a separate warm diagnostic PASS at source
 `fab6807d1ddde2e33b5d350a14ba6dd47b61745b`.  Warm evidence is not a cold
-seal and cannot retire any notice or skip C6d.1/Eq. (3.60).  The live frontier
+seal and cannot retire any notice or skip the current real-slice/Eq. (3.60)
+boundary.  The live frontier
 therefore remains the finite chain above, with no movement of `20/41`,
 `TermSource = 0`, or window 15.
