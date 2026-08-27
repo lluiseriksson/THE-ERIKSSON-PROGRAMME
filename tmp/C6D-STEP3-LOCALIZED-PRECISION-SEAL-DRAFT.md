@@ -51,7 +51,10 @@ runner emitted literal `FINAL_STATUS=PASS`.
 
 The downloaded executed notebook passed
 `verify_c6d_step3_localized_precision_evidence.py` against the eight exact Git
-blobs.  Canonical evidence SHA-256 is `[EVIDENCE_SHA256]`, archive SHA-256 is
+blobs.  Its sole code cell also matches notebook checkpoint
+`[NOTEBOOK_SHA]` exactly; a browser-edited or stale vehicle cannot inherit
+the checkpoint merely from a successful runner transcript.  Canonical
+evidence SHA-256 is `[EVIDENCE_SHA256]`, archive SHA-256 is
 `[ARCHIVE_SHA256]`, verifier JSON SHA-256 is `[VERIFIER_JSON_SHA256]`, and the
 executed-notebook SHA-256 is `[NOTEBOOK_EVIDENCE_SHA256]`.
 

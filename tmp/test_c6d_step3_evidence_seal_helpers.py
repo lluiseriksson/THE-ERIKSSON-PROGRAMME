@@ -82,6 +82,32 @@ def test_sealed_core_rejects_duplicate_existing_import() -> None:
         sealer.sealed_core(duplicate.encode(), Verifier)
 
 
+def test_require_evidence_requires_pinned_notebook_source(tmp_path: Path) -> None:
+    sealer = load_sealer()
+
+    class Verifier:
+        RUNNER_REV = "runner"
+        NOTEBOOK_CHECKPOINT = "b" * 40
+        NOTEBOOK_BLOB_SHA256 = "C" * 64
+
+    payload = {
+        "status": "C6D_STEP3_LOCALIZED_PRECISION_EVIDENCE_OK",
+        "source_sha": "a" * 40,
+        "runner_revision": Verifier.RUNNER_REV,
+        "expected_declarations": 15,
+        "boundary_blob_sha256": {},
+    }
+    evidence = tmp_path / "evidence.json"
+    evidence.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(RuntimeError, match="NOTEBOOK_CHECKPOINT_MISMATCH"):
+        sealer.require_evidence(evidence, "a" * 40, [], Verifier)
+
+    payload["notebook_checkpoint"] = Verifier.NOTEBOOK_CHECKPOINT
+    payload["notebook_blob_sha256"] = Verifier.NOTEBOOK_BLOB_SHA256
+    evidence.write_text(json.dumps(payload), encoding="utf-8")
+    sealer.require_evidence(evidence, "a" * 40, [], Verifier)
+
+
 def test_archive_evidence_requires_exact_hash_and_one_json(tmp_path: Path) -> None:
     package = load_package()
     archive = tmp_path / "evidence.tar.gz"
