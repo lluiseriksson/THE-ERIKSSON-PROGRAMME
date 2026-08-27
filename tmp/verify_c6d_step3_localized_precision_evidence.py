@@ -12,7 +12,7 @@ import re
 import subprocess
 
 
-RUNNER_REV = "c6d-step3-localized-precision-v1"
+RUNNER_REV = "c6d-step3-localized-precision-v2"
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 BRICKS: tuple[tuple[str, int], ...] = (
@@ -21,7 +21,8 @@ BRICKS: tuple[tuple[str, int], ...] = (
     ("BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision", 6),
 )
 STAGES = (
-    "00_c6d_step3_axiom_readout_coverage",
+    "00_c6d_step3_clm_extensionality_repro",
+    "00a_c6d_step3_axiom_readout_coverage",
     "01_cmp99eq335physicallaplacianinternalcarrier_focal",
     "01_cmp99eq335physicallaplacianinternalcarrier_audit",
     "02_cmp99eq335physicalregularityinternallaplacianbridge_focal",
