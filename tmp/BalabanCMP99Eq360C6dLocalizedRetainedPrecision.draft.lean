@@ -133,6 +133,18 @@ theorem fullBackground0_eq_realSlice
   exact cmp99Eq337PhysicalComplexPerturbedBackground_zero_realSlice
     (R.toCubeWitness C alpha1 hscale).transformedBackground I.A
 
+/-- At a real perturbation parameter the full analytic branch is exactly the
+canonical complex image of the physical left variation. -/
+theorem fullBackground1_eq_realSlice
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    I.fullBackground1 =
+      cmp99PhysicalGaugeBackgroundToSpecialLinear
+        (cmp98PhysicalSuLeftVariation
+          (R.toCubeWitness C alpha1 hscale).transformedBackground I.A I.z) := by
+  exact cmp99Eq337PhysicalComplexPerturbedBackground_realSlice
+    (R.toCubeWitness C alpha1 hscale).transformedBackground I.A I.z
+
 /-- Canonical compact-real-slice agreement for the baseline retained tower.
 The physical tower and the analytic tower are both built internally, at the
 literal matrix `SUN` adjoint model. -/
@@ -211,6 +223,16 @@ noncomputable def perturbedLaplacian
       ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
   cmp99Eq360ComplexRegionalLaplacian Omega I.fullBackground1 eta
 
+/-- The full-carrier local three-species term `V'_1(A)` is constructed from
+the two analytic stencils, not accepted as their difference. -/
+noncomputable def localLaplacianPerturbation
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  cmp99Eq360ComplexLocalLaplacianPerturbation Omega
+    I.fullBackground0 I.fullBackground1 eta
+
 /-- Complete baseline analytic precision with the internally built retained
 average and independently built printed-starred synthesis. -/
 noncomputable def baselinePrecision
@@ -239,6 +261,28 @@ noncomputable def precisionPerturbation
   cmp99Eq360ComplexRegionalPrecisionPerturbation I.retainedTowerPair
     I.baselineLaplacian I.perturbedLaplacian a
 
+/-- Source-expanded perturbation: the local `V'_1(A)` and the three
+averaging terms remain four separately inspectable summands. -/
+noncomputable def sourcePrecisionPerturbation
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) (a : ℂ) :
+    ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) →L[ℂ]
+      ActiveGaugeZeroCochain Omega (SUNLieComplexCoord Nc) :=
+  I.localLaplacianPerturbation -
+    a • (I.retainedTowerPair.F2star.comp I.retainedTowerPair.Q0) -
+    a • (I.retainedTowerPair.starred0.comp I.retainedTowerPair.F2) -
+    a • (I.retainedTowerPair.F2star.comp I.retainedTowerPair.F2)
+
+/-- The literal stencil identity replaces the unexpanded Laplacian
+difference without changing any averaging term. -/
+theorem precisionPerturbation_eq_sourcePrecisionPerturbation
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) (a : ℂ) :
+    I.precisionPerturbation a = I.sourcePrecisionPerturbation a := by
+  unfold precisionPerturbation sourcePrecisionPerturbation
+  rw [cmp99Eq360_complexRegionalLaplacian_sub_eq_localPerturbation]
+  rfl
+
 /-- Exact C6d specialization of CMP99 (3.60).  The equality is derived from
 the internally constructed operators; none of its two sides is input. -/
 theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
@@ -248,6 +292,16 @@ theorem perturbedPrecision_eq_baselinePrecision_sub_perturbation
       I.baselinePrecision a - I.precisionPerturbation a := by
   exact cmp99Eq360_complexRegionalPrecision_eq_sub_perturbation
     I.retainedTowerPair I.baselineLaplacian I.perturbedLaplacian a
+
+/-- Source-expanded C6d Eq. (3.60), still before any norm estimate or
+regional inverse is introduced. -/
+theorem perturbedPrecision_eq_baselinePrecision_sub_sourcePerturbation
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 chain) (a : ℂ) :
+    I.perturbedPrecision a =
+      I.baselinePrecision a - I.sourcePrecisionPerturbation a := by
+  rw [← I.precisionPerturbation_eq_sourcePrecisionPerturbation a]
+  exact I.perturbedPrecision_eq_baselinePrecision_sub_perturbation a
 
 end CMP99Eq360C6dLocalizedRetainedInput
 
