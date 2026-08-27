@@ -265,3 +265,24 @@ be cited as evidence for (3.51)--(3.54).  The latter becomes evidence only
 after the canonical orientation dictionary, diagonal term, internal
 remainder, and the printed `4*d`, `2*d`, `8*d` endpoint have all passed their
 own source/audit stages.
+
+## Materialization inventory (2026-08-27)
+
+This inventory records implementation state, not mathematical credit:
+
+- `BalabanCMP99Eq351ExponentialAdjointRemainder` and
+  `BalabanCMP99Eq351ExponentialAdjointRemainderBound` are promoted and sealed.
+- `BalabanCMP99ComplexSpecialLinearAdjointComposition` and
+  `BalabanCMP99Eq351PhysicalComplexPositiveBondFactorization` are promoted but
+  remain `PRE-VALIDATION`; the Eq. (3.60) regional gate must audit them before
+  either may be cited as sealed.
+- The positive-adjoint expansion, negative-bond factorization and covariant
+  divergence source/audit pairs are committed scratch files.  Their exact
+  manifests pass the lightweight overlay-text guard, but they have no cold
+  compiler or axiom verdict.
+- `BalabanCMP99Eq351ComplexLaplacianRegrouping`, both Eq. (3.54) bound
+  producers and `BalabanCMP99Eq360ComplexSourcePrecisionPerturbation` are not
+  materialized.  They remain the finite source-facing suffix of this chain.
+
+None of these prefix states moves `20/41`, attains window 15 or inhabits
+`TermSource`.
