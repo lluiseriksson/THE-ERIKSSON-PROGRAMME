@@ -40774,3 +40774,73 @@ regional resolvent, the transported four physical actions, a uniform
 `B0`/`delta0`, window 15, rows 23--24, or a `TermSource`.  Counters remain
 exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 946 (2026-08-27, **Eq. (3.59) physical real-slice agreement sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Exact source checkpoint `cd6ff65638f0e09e2533733df2d7176c10714a3a`
+was validated in a fresh Colab Pro+ CPU/high-RAM checkout with Lean
+`4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`. Runner checkpoint
+`e01d64ee5b085d3e0449e7182e5f8baaf44900dd`, revision
+`eq359-real-slice-promoted-cold-v4`, compiled all six real-slice source/audit
+pairs. All twelve focal stages exited `0`; the cold `YangMillsCore` root
+completed `11012` jobs in `10258.181` seconds, exit `0`.
+
+The `30` audited declarations use only
+`[propext, Classical.choice, Quot.sound]` or a subset. The runner emitted
+literal `FINAL_STATUS=PASS`. Canonical evidence SHA-256 is
+`72EBE4960522A6FE6DC2FB1DA586C40AAFB2B595F7515CF72A4037F2B76B7A71`;
+the downloaded archive independently rehashes to
+`F7838E80D698DB73AF7BC480DA8E687E527BB8209D5509CFD3060804B4E7925C`.
+The independent verifier JSON has SHA-256
+`BC4732FC73A15C23DE462E4C6CA2437294B3D1A1E94E6B8ED9B8DA19A5DF8295`.
+
+Seal checkpoint `850fd92911d0f79564718636f3f92a922b0f0e8e` retires exactly
+eleven PRE-VALIDATION notices across the twelve-file scope; the one remaining
+audit was already unmarked. The sealed-manifest SHA-256 is
+`BECDA1423469E9593BB8A03009A2ECCF7CF58E41F1806BAFF6C5EEDFEE30CD9D`.
+This certifies the Eq. (3.59) real-slice dictionaries from the internally
+generated complex tower without accepting a free Laplacian, tower, precision
+or Green equality. It does not certify Eq. (3.60), the Eq. (3.51)--(3.54)
+source regrouping and bound, the regional resolvent, a uniform
+`B0`/`delta0`, window 15, rows 23--24, or a `TermSource`. Counters remain
+exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.
+
+## Addendum 947 (2026-08-27, **C6d localized retained source tower sealed by a byte-identical Eq. (3.59) fresh root plus exact 92-readout retained-runtime audit; 20/41 unchanged**)
+
+All 34 C6d boundary blobs are byte-identical at C6d checkpoint
+`3738ddb64155a2d85f6d3609d05d5b71114ca498` and at the independently
+validated Eq. (3.59) source
+`cd6ff65638f0e09e2533733df2d7176c10714a3a`. The cold `11012`-job
+`YangMillsCore` root from Addendum 946 therefore supplies compiler evidence
+for the exact C6d bytes without weakening the boundary.
+
+On the retained runtime, runner revision `c6d-eq359-cross-postpass-v1`
+executed all seventeen C6d audit files stop-on-first-error. Every stage exited
+`0`; all `92` expected declaration readouts appeared and use only
+`[propext, Classical.choice, Quot.sound]` or a subset. Canonical cross-evidence
+SHA-256 is
+`072714333900FD9D42F476FD364BD7C296E3CD28EE7A625BAA51C3638577338D`;
+the cross archive independently rehashes to
+`4ECF337A69B34EEC124B8D8B0BB18AEC3606FAC3A848B9E2C549510485906C9B`.
+
+The joint fail-closed verifier emitted `C6D_EQ359_CROSS_EVIDENCE_OK`; its JSON
+SHA-256 is
+`344B78D573E440BD96CB18ABA4E4E963D545DBB798C9935C3094351F9D3BE5E4`.
+The two-archive transport bundle independently rehashes to
+`49FCD9A4BE5B3A0086DB651EE3504D879C154343D6B3BEE4A2C080BA674B18EE`.
+Seal checkpoint `850fd92911d0f79564718636f3f92a922b0f0e8e` retires exactly the 34
+PRE-VALIDATION notices in the seventeen source/audit pairs; the sealed
+manifest SHA-256 is
+`F96401B94D03CD0CBCA386A9D4825AB988DA43A3832276EA1C704B055C427EE3`.
+
+The top producer constructs every retained localized/canonical prefix from
+the source region chain, Ubar radius chain and near-identity input, and proves
+the terminal `Qprime` identity by projection from that package. It accepts no
+free tower or operator equality. This is the finite C6d source prefix and its
+three physical Eq. (3.35) consumer interfaces only: it does not construct the
+literal localized retained precision, transport the four fixed-depth CMP96
+actions, produce uniform `B0, delta0`, attain window 15, close rows 23--24,
+or instantiate `TermSource`. Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

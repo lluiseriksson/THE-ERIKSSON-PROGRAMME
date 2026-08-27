@@ -14702,3 +14702,51 @@ This is fixed-depth ambient point-source C6a only.  Uniform physical
 window-15 attainment, rows 23--24 and a `TermSource` remain open.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+### Step 8b.24/C6d.0: Eq. (3.59) physical real-slice boundary (COLAB-VERIFIED; 20/41 unchanged)
+
+The six real-slice source/audit pairs identify the compact physical
+background, one-scale average, generated tower and successor background with
+their complex counterparts.  They are derived from the internally generated
+complex tower; no free Laplacian, tower, precision or Green equality is an
+input.
+
+Fresh source `cd6ff65638f0e09e2533733df2d7176c10714a3a` passed all twelve
+focal stages and a cold `YangMillsCore` root of `11012` jobs in `10258.181`
+seconds.  Its `30` declarations use only the allowed axiom trio or a subset.
+Evidence/archive SHA-256 values are
+`72EBE4960522A6FE6DC2FB1DA586C40AAFB2B595F7515CF72A4037F2B76B7A71`
+and
+`F7838E80D698DB73AF7BC480DA8E687E527BB8209D5509CFD3060804B4E7925C`.
+Seal `850fd92911d0f79564718636f3f92a922b0f0e8e` retired exactly eleven
+marks across the twelve-file scope.  This closes the real-slice boundary, not
+Eq. (3.60), the regional resolvent, the Eq. (3.51)--(3.54) source bound,
+window 15 or a terminal field.
+
+### Step 8b.24/C6d: localized retained Eq. (3.35) dependency boundary (COLAB-VERIFIED; 20/41 unchanged)
+
+`BalabanCMP99SourceLocalizedRetainedTower` constructs every localized and
+canonical retained prefix from the literal source region chain and proves the
+terminal `Qprime` identity by projection.  No tower, small-field family or
+operator equality is accepted as a free input.
+
+All 34 boundary blobs match both C6d checkpoint
+`3738ddb64155a2d85f6d3609d05d5b71114ca498` and the cold Eq. (3.59)
+source above.  The retained-runtime postpass compiled all seventeen audits,
+observed exactly 92/92 declarations and only the allowed axiom trio or a
+subset.  Cross evidence/archive SHA-256 values are
+`072714333900FD9D42F476FD364BD7C296E3CD28EE7A625BAA51C3638577338D`
+and
+`4ECF337A69B34EEC124B8D8B0BB18AEC3606FAC3A848B9E2C549510485906C9B`;
+the joint verifier emitted `C6D_EQ359_CROSS_EVIDENCE_OK`.  Seal
+`850fd92911d0f79564718636f3f92a922b0f0e8e` retired exactly the 34
+PRE-VALIDATION notices; sealed-manifest SHA-256 is
+`F96401B94D03CD0CBCA386A9D4825AB988DA43A3832276EA1C704B055C427EE3`.
+
+This is the finite C6d prefix and its three Eq. (3.35) physical consumer
+interfaces.  The exact next brick is C6d.1: the literal localized retained
+precision `Delta'_a = Delta_U + a_j Q'^* Q'`, with both summands and source
+spacing visible.  Coercivity, its Green inverse, transport of the four sealed
+fixed-depth CMP96 actions, uniform `B0, delta0`, window 15, rows 23--24 and
+`TermSource` remain open.  Counters stay exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
