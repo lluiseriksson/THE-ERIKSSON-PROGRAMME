@@ -47,7 +47,7 @@ theorem rawDiagonal_eq_posSourceAdjoint
   rw [hcomm, hcomm]
   simp only [smul_smul]
   have hcoeff :
-      (-(eta⁻¹) * eta⁻¹) * (Complex.I * eta) =
+      -(eta⁻¹) * (eta⁻¹ * (Complex.I * eta)) =
         Complex.I * (-(eta⁻¹)) := by
     field_simp [heta]
   rw [hcoeff]
