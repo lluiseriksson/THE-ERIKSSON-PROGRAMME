@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP98GAdSeries
+import Mathlib.Analysis.Normed.Algebra.MatrixExponential
 
 /-!
 # PRE-VALIDATION: CMP99 (3.51) diagonal-sign no-go
