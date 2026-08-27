@@ -57,7 +57,7 @@ def main() -> int:
     assert text.count("'lake', 'env', 'lean'") == 4
     assert module["REPRO_PATH"] in text
     assert "check_lean_axiom_readout_coverage.py" in text
-    assert "c6d-step3-localized-precision-v3" in text
+    assert "c6d-step3-localized-precision-v4" in text
     assert "YangMillsCore" in text
     assert "files.download(str(runner.ARCHIVE))" in text
 

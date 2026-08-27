@@ -227,7 +227,7 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "c6d-step3-localized-precision-v3"
+runner.RUNNER_REV = "c6d-step3-localized-precision-v4"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-c6d-step3-localized-precision")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence")

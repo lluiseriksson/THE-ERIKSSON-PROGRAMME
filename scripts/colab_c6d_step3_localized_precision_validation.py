@@ -30,21 +30,21 @@ if spec is None or spec.loader is None:
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
-runner.RUNNER_REV = "c6d-step3-localized-precision-v3"
-runner.SOURCE_SHA = '1b4eaf235013811886948bb466c4f310d1f0be34'
+runner.RUNNER_REV = "c6d-step3-localized-precision-v4"
+runner.SOURCE_SHA = '557a472e96509d3473b925cb07114292fc28587c'
 runner.ROOT = Path("/content/hrpoly-c6d-step3-localized-precision")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence")
 runner.ARCHIVE = Path("/content/hrpoly-c6d-step3-localized-precision-evidence.tar.gz")
 runner.PATH_MANIFEST = Path("/content/hrpoly-c6d-step3-localized-precision-paths.txt")
 runner.SOURCE_BLOBS = {
-    'YangMills/RG/BalabanCMP99Eq335PhysicalLaplacianInternalCarrier.lean': 'f7e9b40f68a578cf7ca262a52afaab1a29dcb58f92be5720ce11e924848db206',
+    'YangMills/RG/BalabanCMP99Eq335PhysicalLaplacianInternalCarrier.lean': '0dfbf51b7a699f2d9033148d68da895961d6329ca06115ba5f18be7fd6d47914',
     'YangMills/RG/BalabanCMP99Eq335PhysicalLaplacianInternalCarrierAudit.lean': '3cb31294bd0eecaa3191feaf51636582acc799276b3af8a9772904a2cf9218c4',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge.lean': '621d1abc6b5212492636e8479ece199e12398d10ddf9c7f430705f8967554110',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridgeAudit.lean': 'b5178264197160cbf7382e926f65109657c6c13c5d470388bd781865bf7dfdf5',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision.lean': '5a653d68cb3ca6fdd9ba810cb79c6b8b1b0c3a09b5cf2fe94fc2ead30aa78213',
     'YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecisionAudit.lean': '846b1c97488cdfa48fdf1a350ca229f36c0cace7ff649cf0d50639bb74eb92ce',
     'tmp/C6D-STEP3-LOCALIZED-PRECISION-PATHS.txt': '57847259774d3569e7105001b9a01fc4bbdfeae7b5f51045021b569e3ed5caea',
-    'tmp/C6dStep3ContinuousLinearMapEquality.repro.lean': '54edc29c3239f38262afe5883be11a4680a327ec96570ca26505e3e39fc67085',
+    'tmp/C6dStep3ContinuousLinearMapEquality.repro.lean': 'ce3e3190800754cd6516a6c5af0b1d165e45374c5c85fa5acf701585050cf81d',
     'YangMillsCore.lean': 'eb460cec95fc88f8f751858b30f39c624d42e7bd266cc5942b8b56b7d6548e08',
 }
 runner.QUEUE = [
