@@ -15,6 +15,7 @@ compiler or axiom-oracle verdict.
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineRetainedTowerRealSliceAgreement
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineRetainedPhysicalTower
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.weightedPrecisionCoefficient
+#print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselinePhysicalPrecision
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineRetainedPhysicalTower_terminalSpacing_ne_zero
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.retainedTowerPair
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.baselineLaplacian

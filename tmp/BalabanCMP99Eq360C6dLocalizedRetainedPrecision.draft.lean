@@ -228,6 +228,17 @@ noncomputable def weightedPrecisionCoefficient
   cmp99SourceCountingCoefficientAsWeightedAdjoint
     I.baselineRetainedPhysicalTower I.a_j
 
+/-- Literal real C6d.1 precision whose counting coefficient is `a_j`.
+Naming this object prevents the compact real slice from targeting a freshly
+chosen real precision with the same type. -/
+noncomputable def baselinePhysicalPrecision
+    (I : CMP99Eq360C6dLocalizedRetainedInput R C hscale regions D hM
+      halpha1 baselineRadiusBudget) :
+    ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
+  R.localizedRetainedPhysicalPrecision C hscale regions D hM
+    (matrixSUNAdjointModel Nc) halpha1 I.baselineRadiusChain I.a_j
+
 /-- The source regularity spacing is positive, hence the terminal spacing of
 the internally generated physical tower is nonzero.  Eq. (3.60) does not need
 another caller-supplied denominator gate. -/
