@@ -153,6 +153,9 @@ theorem
         Omega rho W.transformedBackground eta)
       (T.canonicalTowerAt (Fin.last depth)).Qprime a_j
   exact cmp99SourceGaugePrecision_eq_of_terminalCLMTransport
+    (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+    (F := (T.localizedTowerAt (Fin.last depth)).TerminalSpace)
+    (F' := (T.canonicalTowerAt (Fin.last depth)).TerminalSpace)
     (T.prefixTerminalSpace_eq (Fin.last depth))
     (cmp99ActiveRegionSourceCovariantLaplacian
       Omega rho W.transformedBackground eta)
@@ -198,11 +201,30 @@ theorem
           (cmp99Eq335PhysicalExponentialBackground
             W.logarithmicRepresentative eta) eta)
         (T.canonicalTowerAt (Fin.last depth)).Qprime a_j := by
-  rw [R.localizedRetainedPhysicalPrecision_eq_canonical
-      C hscale regions D hM (matrixSUNAdjointModel Nc)
-        halpha1 chain a_j,
-    (R.toCubeWitness C alpha1 hscale).
-      regionalLaplacian_eq_exponential_of_sourceRegionDictionary D]
+  let W := R.toCubeWitness C alpha1 hscale
+  let T := R.localizedRetainedTowerOfSourceRegion
+    (spacing := eta) C hscale regions D hM (matrixSUNAdjointModel Nc)
+      halpha1 chain
+  change R.localizedRetainedPhysicalPrecision C hscale regions D hM
+      (matrixSUNAdjointModel Nc) halpha1 chain a_j =
+    cmp99SourceGaugePrecision
+      (cmp99ActiveRegionSourceCovariantLaplacian Omega
+        (matrixSUNAdjointModel Nc)
+        (cmp99Eq335PhysicalExponentialBackground
+          W.logarithmicRepresentative eta) eta)
+      (T.canonicalTowerAt (Fin.last depth)).Qprime a_j
+  calc
+    _ = cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega
+          (matrixSUNAdjointModel Nc) W.transformedBackground eta)
+        (T.canonicalTowerAt (Fin.last depth)).Qprime a_j :=
+      R.localizedRetainedPhysicalPrecision_eq_canonical
+        C hscale regions D hM (matrixSUNAdjointModel Nc)
+          halpha1 chain a_j
+    _ = _ := congrArg
+      (fun Delta => cmp99SourceGaugePrecision Delta
+        (T.canonicalTowerAt (Fin.last depth)).Qprime a_j)
+      (W.regionalLaplacian_eq_exponential_of_sourceRegionDictionary D)
 
 /-- Self-adjointness is generated from the literal Laplacian and adjoint
 mass; it is not an input to the source endpoint. -/
