@@ -20,7 +20,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "ec4db69a54e0f47189940086476edf4c47a39abe"
+SOURCE_SHA = "79b424e069b0e425b71eca3b57ffd6d59dba915c"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-ambient-region-hot-evidence")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
@@ -130,9 +130,15 @@ def main() -> int:
             "text_guard_" + Path(manifest).stem,
             ["python3", "scripts/check_lean_overlay_text.py", "--paths-from", manifest],
         )
+    start_index = int(os.environ.get("C6D_AMBIENT_START_INDEX", "1"))
+    if not 1 <= start_index <= len(PAIRS):
+        raise RuntimeError(f"INVALID_C6D_AMBIENT_START_INDEX={start_index}")
+    print(f"C6D_AMBIENT_START_INDEX={start_index}", flush=True)
     for index, (module, source_draft, audit_draft, expected_axioms) in enumerate(
         PAIRS, start=1
     ):
+        if index < start_index:
+            continue
         materialize(source_draft, module + ".lean")
         materialize(audit_draft, module + "Audit.lean")
         run(
