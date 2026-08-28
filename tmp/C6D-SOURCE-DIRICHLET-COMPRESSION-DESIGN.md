@@ -113,6 +113,24 @@ This brick alone does not prove any of the four Eq. (3.42) localized bounds,
 does not produce uniform `B0` or `delta0`, does not attain window 15, does
 not discharge rows 23--24, and does not move `20/41` or instantiate
 `TermSource`.
+
+## Depth-zero boundary
+
+The source coercivity/Green gate and the ambient specialization below consume
+`0 < depth`.  This is not coverage of the `depth = 0` source term.  The generic
+regional theory already proves the honest base case
+`isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision_zero`, where
+the terminal average is the identity and the literal coefficient is
+`spacing^(-2)`, not one.  Before the source-facing Eq. (3.42) family can be
+claimed for every depth, the graph must therefore do exactly one of:
+
+1. construct the depth-zero full-companion ambient precision and canonical
+   Dirichlet Green from that exact base-case theorem; or
+2. prove that the C6d consumer is indexed only by positive depths and connect
+   the separately sealed flat base Green to the `depth = 0` branch.
+
+No positive-depth PASS may discharge this split by inference, and the base
+coefficient may not be normalized to one.
 ## Hot validation queue after the retained cold gate
 
 Published PRE-VALIDATION source head: `76bfe9c8` (with the generic-carrier
