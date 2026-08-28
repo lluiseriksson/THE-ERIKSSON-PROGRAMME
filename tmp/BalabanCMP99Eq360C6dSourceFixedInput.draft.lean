@@ -76,11 +76,12 @@ noncomputable def cmp99Eq360C6dSourcePhysicalCountingCoefficient : ℝ :=
   cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
     (cmp99SourceMassParameter 1 (M : ℝ) depth)
 
+include D halpha1
+
 /-- The same source regularity witness that controls the retained `Qprime`
 carrier also controls every internal bond of the selected Laplacian region.
 The proof uses only the printed region-in-cube dictionary and the existing
 half-unit exponential window. -/
-include D halpha1 in
 theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
     ∀ q ∈ Omega.bonds,
       ‖((R.toCubeWitness C alpha1 hscale).transformedBackground
@@ -132,6 +133,8 @@ theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
       simpa only [physicalMatrixExp] using hexp
     _ ≤ 2 * alpha1 := by gcongr
     _ = cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := rfl
+
+omit D halpha1
 
 /-- Source-specialized union extension used only to prove the physical
 coercivity estimate. -/
