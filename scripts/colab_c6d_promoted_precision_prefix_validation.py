@@ -18,7 +18,7 @@ import time
 import urllib.request
 
 
-SOURCE_SHA = 'fe17c932cd712ba2952c501f7944b9317943af06'
+SOURCE_SHA = '768bca00ba63e52eccacd8226cee91e6cfafd39e'
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
@@ -49,7 +49,7 @@ MODULES = [
     ('BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation', 3),
 ]
 
-runner.RUNNER_REV = 'c6d-promoted-precision-prefix-v1'
+runner.RUNNER_REV = 'c6d-promoted-precision-prefix-v2'
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-promoted-precision-prefix")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-promoted-precision-prefix-evidence")
