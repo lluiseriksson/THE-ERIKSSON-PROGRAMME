@@ -109,6 +109,54 @@ theorem isCoerciveCLM_cmp99Eq360C6dSourceBaselinePrecision
         R C hscale regions D hM halpha1 baselineRadiusBudget)
       hsmall)
 
+/-- The actual source-facing C6d input inherits the constructed baseline
+coercivity.  Its perturbing data do not enter the baseline operator; unfolding
+the constructor exposes exactly the source-fixed tower and coefficient above.
+No equality is requested from the caller. -/
+theorem isCoerciveCLM_cmp99Eq360C6dLocalizedRetainedSourceInput_baselinePhysicalPrecision
+    (hdepth : 0 < depth)
+    (hsmall :
+      cmp99SourcePoincareErrorCoeff 4 M depth eta
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1)
+    (A : PhysicalGaugeOneCochain 4 (L * N') Nc)
+    (z rA Rmax : ℝ) (hrA : 0 ≤ rA)
+    (hretained : ∀ b : PhysicalBond 4 (L * N'),
+      ‖regions.retainedFineComplexOneCochain A b‖ ≤ rA)
+    (hperturbation : |z| *
+      (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2)
+    (perturbationRadiusBudget :
+      letI : NeZero (4 * (M - 1)) :=
+        cmp99Eq360C6dRadiusDimensionNeZero hM
+      CMP99ComplexClosedRadiusBudget (4 * (M - 1)) M depth
+        (cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc
+          (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) z rA)
+        Rmax (cmp99UbarNoWindingThreshold Nc)) :
+    let I := cmp99Eq360C6dLocalizedRetainedSourceInput
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+      A z rA Rmax hrA hretained hperturbation perturbationRadiusBudget
+    IsCoerciveCLM I.baselinePhysicalPrecision
+      (cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+        R C hscale regions D hM halpha1 baselineRadiusBudget) := by
+  dsimp only
+  let I := cmp99Eq360C6dLocalizedRetainedSourceInput
+    R C hscale regions D hM halpha1 baselineRadiusBudget
+    A z rA Rmax hrA hretained hperturbation perturbationRadiusBudget
+  change IsCoerciveCLM I.baselinePhysicalPrecision _
+  rw [I.baselinePhysicalPrecision_eq_generated]
+  change IsCoerciveCLM
+    (cmp99SourceGaugePrecision
+      (cmp99ActiveRegionSourceCovariantLaplacian Omega
+        (matrixSUNAdjointModel Nc)
+        (R.toCubeWitness C alpha1 hscale).transformedBackground eta)
+      (cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+        R C hscale regions D hM halpha1 baselineRadiusBudget).Qprime
+      (cmp99Eq360C6dSourcePhysicalCountingCoefficient
+        R C hscale regions D hM halpha1 baselineRadiusBudget))
+    _
+  exact isCoerciveCLM_cmp99Eq360C6dSourceBaselinePrecision
+    R C hscale regions D hM halpha1 baselineRadiusBudget
+    hdepth R.eta_pos hsmall
+
 end
 
 end YangMills.RG
