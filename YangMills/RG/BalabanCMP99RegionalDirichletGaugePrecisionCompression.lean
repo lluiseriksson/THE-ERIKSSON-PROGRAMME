@@ -12,6 +12,11 @@ This is the algebraic half of the C6d source dictionary.  An active terminal
 average is extended to the ambient field only by first restricting the input
 to the active carrier.  Compressing the resulting ambient adjoint square
 recovers the original active adjoint square exactly.
+
+This algebraic extension is not the physical full-carrier source `Qprime` and
+does not by itself inherit ambient coercivity.  A later source dictionary must
+identify the restriction of the complete generated tower with the active C6d
+terminal average before this lemma can feed Eq. (3.42).
 -/
 
 namespace YangMills.RG
