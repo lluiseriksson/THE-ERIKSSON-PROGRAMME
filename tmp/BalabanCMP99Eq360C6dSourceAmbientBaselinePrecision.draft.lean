@@ -171,13 +171,32 @@ theorem isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselineCompression
     (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
     IsCoerciveCLM
-      (cmp99SourceAmbientDirichletPrecision Omega
+      (cmp99SourceAmbientDirichletPrecision
+        (d := 4) (N := L * N') (g := SUNLieCoord Nc) Omega
         (cmp99Eq360C6dSourceAmbientBaselinePrecision
+          (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+          (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+          (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+          (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+          (OmegaPrime0 := OmegaPrime0)
           R C hscale regions D hM halpha1 baselineRadiusBudget))
       (cmp99Eq360C6dSourceBaselinePhysicalCoercivity
         R C hscale regions D hM halpha1 baselineRadiusBudget) := by
-  exact isCoerciveCLM_cmp99SourceAmbientDirichletPrecision Omega _
+  exact isCoerciveCLM_cmp99SourceAmbientDirichletPrecision
+    (d := 4) (N := L * N') (g := SUNLieCoord Nc) Omega
+    (cmp99Eq360C6dSourceAmbientBaselinePrecision
+      (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+      (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+      (OmegaPrime0 := OmegaPrime0)
+      R C hscale regions D hM halpha1 baselineRadiusBudget)
     (isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselinePrecision
+      (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+      (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+      (OmegaPrime0 := OmegaPrime0)
       R C hscale regions D hM halpha1 baselineRadiusBudget
       hdepth R.eta_pos hsmall)
 
