@@ -39,9 +39,7 @@ theorem cmp99ActiveCoarseRegion_sourceFull_eq
     cmp99ActiveCoarseRegion (M := M) (N' := N')
         (cmp99SourceFullActiveRegion d (M * N')) =
       cmp99SourceFullActiveRegion d N' := by
-  congr 1
-  ext y
-  simp [cmp99SourceFullActiveRegion]
+  simp [cmp99ActiveCoarseRegion, cmp99SourceFullActiveRegion]
 
 /-- A full companion together with the scale-by-scale nesting theorem. -/
 structure CMP99SourceActiveRegionFullCompanion
