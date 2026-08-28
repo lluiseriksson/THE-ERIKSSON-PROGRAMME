@@ -1,5 +1,6 @@
 import tmp.BalabanCMP99Eq360C6dLocalizedRetainedPrecision.draft
 import tmp.BalabanCMP99SourceActiveRegionTerminalCoercivity.draft
+import tmp.BalabanCMP99Eq360C6dLaplacianRetainedExtension.draft
 
 /-!
 PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
@@ -130,6 +131,46 @@ theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
       simpa only [physicalMatrixExp] using hexp
     _ ≤ 2 * alpha1 := by gcongr
     _ = cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := rfl
+
+/-- The source-generated retained tower and the Laplacian-aware global
+extension have the same terminal `Qprime`.  Both operators are constructed
+inside the theorem from the same source background and radius chain. -/
+theorem cmp99Eq360C6dSourceBaselineRetainedPhysicalTower_Qprime_heq_laplacianExtension :
+    let W := R.toCubeWitness C alpha1 hscale
+    let chain := baselineRadiusBudget.toRadiusChain
+    let hretained := W.retainedFineReadBonds_nearIdentity regions
+      (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+        C D regions)
+      halpha1
+    let hlaplacian := cmp99Eq360C6dSource_internalBonds_nearIdentity
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+    let V := cmp99Eq360C6dLaplacianRetainedExtension
+      regions W.transformedBackground
+    let hV := norm_cmp99Eq360C6dLaplacianRetainedExtension_sub_one_le
+      regions W.transformedBackground
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+      chain.epsilon_nonneg hretained hlaplacian
+    HEq
+      (cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+        R C hscale regions D hM halpha1 baselineRadiusBudget).Qprime
+      (regions.weightedQprimeTower (by norm_num : 2 ≤ 4) hM
+        (matrixSUNAdjointModel Nc) eta
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+        V chain hV).Qprime := by
+  dsimp only
+  let W := R.toCubeWitness C alpha1 hscale
+  let chain := baselineRadiusBudget.toRadiusChain
+  let hretained := W.retainedFineReadBonds_nearIdentity regions
+    (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+      C D regions)
+    halpha1
+  let hlaplacian := cmp99Eq360C6dSource_internalBonds_nearIdentity
+    R C hscale regions D hM halpha1 baselineRadiusBudget
+  simpa only [cmp99Eq360C6dSourceBaselineRetainedPhysicalTower] using
+    (cmp99Eq360C6d_retainedFineExtension_Qprime_heq_laplacianExtension
+      regions (by norm_num : 2 ≤ 4) hM (matrixSUNAdjointModel Nc) eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+      W.transformedBackground chain hretained hlaplacian)
 
 /-- Source-facing C6d input.  The perturbing field and its genuine radius
 gates remain caller data, while the averaging coefficient is generated

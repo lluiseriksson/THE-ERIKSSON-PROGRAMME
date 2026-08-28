@@ -12,5 +12,6 @@ namespace YangMills.RG
 #print axioms norm_cmp99Eq360C6dLaplacianRetainedExtension_sub_one_le
 #print axioms cmp99ActiveRegionSourceCovariantLaplacian_eq_laplacianRetainedExtension
 #print axioms cmp99Eq360C6d_retainedFineExtension_Qprime_heq_laplacianExtension
+#print axioms cmp99SourceGaugePrecision_eq_of_laplacian_eq_of_Qprime_heq
 
 end YangMills.RG

@@ -142,6 +142,23 @@ theorem cmp99Eq360C6d_retainedFineExtension_Qprime_heq_laplacianExtension
     cmp99Eq360C6dLaplacianRetainedExtension_apply_pos_of_mem
       regions background q (Finset.mem_union_left _ hq)]
 
+/-- A Laplacian equality and a heterogeneous equality of the terminal
+averages determine the same endomorphism-valued precision.  This is pure
+dependent transport; it adds no analytic hypothesis. -/
+theorem cmp99SourceGaugePrecision_eq_of_laplacian_eq_of_Qprime_heq
+    {E F F' : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E] [CompleteSpace E]
+    [NormedAddCommGroup F] [InnerProductSpace ℝ F] [CompleteSpace F]
+    [NormedAddCommGroup F'] [InnerProductSpace ℝ F'] [CompleteSpace F']
+    (Delta Delta' : E →L[ℝ] E)
+    (Q : E →L[ℝ] F) (Q' : E →L[ℝ] F') (a : ℝ)
+    (hDelta : Delta = Delta') (hQ : HEq Q Q') :
+    cmp99SourceGaugePrecision Delta Q a =
+      cmp99SourceGaugePrecision Delta' Q' a := by
+  subst Delta'
+  cases hQ
+  rfl
+
 end
 
 end YangMills.RG
