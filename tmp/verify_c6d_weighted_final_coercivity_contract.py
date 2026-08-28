@@ -15,7 +15,7 @@ MODULES = (
     ("BalabanCMP99SourceWeightedGaugePrecisionDictionary", 3),
     ("BalabanCMP99Eq360WeightedPrecisionRealSlice", 1),
     ("BalabanCMP99Eq360C6dLocalizedRetainedPrecision", 30),
-    ("BalabanCMP99SourceActiveRegionTerminalCoercivity", 7),
+    ("BalabanCMP99SourceActiveRegionTerminalCoercivity", 8),
 )
 PRINT_RE = re.compile(r"^#print\s+axioms\s+(.+?)\s*$", re.MULTILINE)
 OUTPUT_RE = re.compile(

@@ -164,6 +164,19 @@ theorem cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient_pos
   exact mul_pos (mul_pos ha (pow_pos (inv_pos.mpr hterminal) 2))
     (div_pos (pow_pos hterminal d) (pow_pos hspacing d))
 
+/-- Multiplying the counting coefficient by the exact counting-to-weighted
+adjoint ratio recovers the printed coefficient `a_j * terminalSpacing⁻²`.
+This equality is the scalar convention gate used by the later C6d wrapper. -/
+theorem cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient_toWeighted
+    (T : CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega spacing)
+    (a : ℝ) (hspacing : spacing ≠ 0)
+    (hterminal : T.terminalSpacing ≠ 0) :
+    cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T a *
+        (spacing ^ d / T.terminalSpacing ^ d) =
+      a * T.terminalSpacing⁻¹ ^ 2 := by
+  unfold cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
+  field_simp [hspacing, hterminal] <;> ring
+
 /-- Source-fixed positive-depth floor.  CMP99 Theorem 3.1 fixes the initial
 averaging coefficient to one, Eq. (3.24) generates `a_j`, and the exact
 terminal/fine volume ratio converts its printed weighted coefficient to the

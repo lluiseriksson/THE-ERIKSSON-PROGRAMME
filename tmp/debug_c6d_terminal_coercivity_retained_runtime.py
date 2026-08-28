@@ -20,7 +20,7 @@ PATHS = (
     "tmp/BalabanCMP99SourceActiveRegionTerminalCoercivity.draft.lean",
     "tmp/BalabanCMP99SourceActiveRegionTerminalCoercivityAudit.draft.lean",
 )
-EXPECTED_AXIOM_HEADERS = 7
+EXPECTED_AXIOM_HEADERS = 8
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
 OUTPUT_RE = re.compile(

@@ -17,7 +17,7 @@ MODULES = (
     ("BalabanCMP99SourceWeightedGaugePrecisionDictionary", 3),
     ("BalabanCMP99Eq360WeightedPrecisionRealSlice", 1),
     ("BalabanCMP99Eq360C6dLocalizedRetainedPrecision", 30),
-    ("BalabanCMP99SourceActiveRegionTerminalCoercivity", 7),
+    ("BalabanCMP99SourceActiveRegionTerminalCoercivity", 8),
 )
 
 
@@ -36,7 +36,7 @@ def render(source_sha: str, runner_rev: str) -> str:
     content = base.render(source_sha, runner_rev)
     replacements = (
         ("four promoted PRE-VALIDATION source/audit pairs", "five promoted PRE-VALIDATION source/audit pairs"),
-        ("checks forty-two public declarations", "checks forty-nine public declarations"),
+        ("checks forty-two public declarations", "checks fifty public declarations"),
         ("C6D_WEIGHTED_FINAL_PREFIX", "C6D_WEIGHTED_FINAL_COERCIVITY"),
         ("c6d_weighted_final_prefix", "c6d_weighted_final_coercivity"),
         ("hrpoly-c6d-weighted-final-prefix", "hrpoly-c6d-weighted-final-coercivity"),
