@@ -139,6 +139,46 @@ nonvacuity endpoint and makes the P0--P5 chain genuinely reachable at a
 positive radius.  It does not prove the operator estimates for a non-flat
 background, attain window 15, move `20/41`, or construct `TermSource`.
 
+## Source-regularity integration boundary
+
+The positive interval does **not** by itself discharge the C6d coercivity
+premise for an independently fixed `alpha1`.  The source-facing retained
+background uses the literal radius
+
+```text
+cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 = 2 * alpha1,
+```
+
+while Corollary 3.6 separately requires
+
+```text
+geometryFactor * Mlarge * alpha0 <= alpha1.
+```
+
+Therefore an assembler may consume the admissible interval only after it
+constructs one `alpha1` satisfying both the source lower bound and
+
+```text
+2 * alpha1 < poincareRadius
+alpha1 <= 1 / 2.
+```
+
+Choosing the least admissible value
+`alpha1 = geometryFactor * Mlarge * alpha0` reduces that integration to the
+visible source smallness condition
+
+```text
+geometryFactor * Mlarge * alpha0 < min (poincareRadius / 2) (1 / 2).
+```
+
+This condition controls the original flowing radius `alpha0`; it is not a
+sixteenth free window and may not be replaced by a caller-supplied Poincare
+conclusion.  The eventual physical assembler must construct `alpha1`, the
+closed Ubar budget at `2 * alpha1`, and the Poincare inequality from the one
+admissible interval.  Until that assembler exists, the current C6d
+source-terminal coercivity theorem remains correct intermediate plumbing but
+is not a fully reached physical endpoint.
+
 ## Scratch implementation status
 
 `tmp/PoincarePositiveRadiusReachability.lean` now contains seven proposed
