@@ -48,25 +48,25 @@ except SystemExit as exc:
 Stop at its first real error.  Continue to queue 2 only on literal hot
 `FINAL_STATUS=PASS`.
 
-## Hot queue 2: ambient C6d producer plus active-region transport
+## Hot queue 2: ambient C6d producer plus region/Green transport
 
 Runner object:
-`d2ae1536739da416e0e1200e9cd047222a65fcea:tmp/c6d_ambient_region_hot_diagnostic.py`
+`50eada4059a2c370a4d2aa5d399b84c9c9e9879a:tmp/c6d_ambient_region_hot_diagnostic.py`
 
 SHA-256:
-`39d2b18ef7e5e836406453bd0aa4337fa2d06155d1aaf04de0e93b7ae9d56297`
+`deb609c74a7be535c5fe556b0bf4564b04a14ef352eb3ec101d065830ee2c99a`
 
 The runner checks out exact scratch source
-`a51130ceda1be5c325d8b7211ec2e4b0dfc22a22`, materializes the two source/audit
-pairs under their intended module names, expects 10 carrier-transport and 7
-ambient-producer axiom headers, and rejects anything outside
+`1176948c6a511d017780a54f1cbc8a72b6dea972`, materializes three source/audit
+pairs under their intended module names, expects 10 carrier-transport, 7
+ambient-producer and 4 canonical-Green transport axiom headers, and rejects anything outside
 `{propext, Classical.choice, Quot.sound}`.
 
 ```python
 import hashlib, pathlib, runpy, urllib.request
 
-url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/d2ae1536739da416e0e1200e9cd047222a65fcea/tmp/c6d_ambient_region_hot_diagnostic.py"
-expected = "39d2b18ef7e5e836406453bd0aa4337fa2d06155d1aaf04de0e93b7ae9d56297"
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/50eada4059a2c370a4d2aa5d399b84c9c9e9879a/tmp/c6d_ambient_region_hot_diagnostic.py"
+expected = "deb609c74a7be535c5fe556b0bf4564b04a14ef352eb3ec101d065830ee2c99a"
 payload = urllib.request.urlopen(url, timeout=60).read()
 actual = hashlib.sha256(payload).hexdigest()
 assert actual == expected, (actual, expected)
