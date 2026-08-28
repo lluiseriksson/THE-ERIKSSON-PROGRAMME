@@ -126,7 +126,7 @@ except SystemExit as exc:
         raise
 ```
 
-Preserve all three hot evidence directories before releasing the runtime.  Hot
+Preserve all three hot evidence directories before continuing.  Hot
 PASS authorizes only preparation of corrected PRE-VALIDATION promotion; a
 later cold checkout is required to seal.  No hot queue moves `20/41`,
 attains window 15, or instantiates `TermSource`.
@@ -166,7 +166,71 @@ python tmp/verify_c6d_post_cold_hot_evidence.py \
 
 It requires exactly 34 stage logs, the three pinned source SHAs, all five text
 guards, and exactly 49 allowed axiom headers (`25 + 21 + 3`).  Its result remains
-classified `HOT_DIAGNOSTIC_ONLY`; it is not cold seal evidence.  Disconnect
-and delete the runtime only after the archive and executed notebook are
-preserved.  A missing or mismatched download is an evidence-transport
-failure, not a mathematical FAIL and not permission to rerun either queue.
+classified `HOT_DIAGNOSTIC_ONLY`; it is not cold seal evidence.  Do not
+disconnect yet.  A missing or mismatched download is an evidence-transport
+failure, not a mathematical FAIL and not permission to rerun any queue.
+
+## Hot queue 4: exact depth-zero Dirichlet Green
+
+Run this queue only after queue 3 emitted literal PASS and after the
+three-queue archive above has been created.  It is a separate dependent
+diagnostic because the depth-zero coercivity brick had to receive its own
+verdict first.
+
+Runner object:
+`e1b17096d3e9c5ac2c230a7cf0cfe8005f76583c:tmp/c6d_zero_depth_green_hot_diagnostic.py`
+
+SHA-256:
+`f43eb90eaa59927f163e1ea82c5d435a8b077d641c78526ccce3061857bdd6fb`
+
+The runner checks out exact source
+`be4e66a1262e132cf0721fb0f3768e9e884bb3ad`, rematerializes the already
+green depth-zero coercivity pair and then materializes only the dependent
+depth-zero Green pair.  It expects six axiom headers and rejects anything
+outside `{propext, Classical.choice, Quot.sound}`.
+
+```python
+import hashlib, pathlib, runpy, urllib.request
+
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e1b17096d3e9c5ac2c230a7cf0cfe8005f76583c/tmp/c6d_zero_depth_green_hot_diagnostic.py"
+expected = "f43eb90eaa59927f163e1ea82c5d435a8b077d641c78526ccce3061857bdd6fb"
+payload = urllib.request.urlopen(url, timeout=60).read()
+actual = hashlib.sha256(payload).hexdigest()
+assert actual == expected, (actual, expected)
+path = pathlib.Path("/content/c6d_zero_depth_green_hot_diagnostic.py")
+path.write_bytes(payload)
+try:
+    runpy.run_path(str(path), run_name="__main__")
+except SystemExit as exc:
+    if exc.code not in (None, 0):
+        raise
+```
+
+On literal PASS, package and download its evidence separately:
+
+```python
+import hashlib, pathlib, tarfile
+from google.colab import files
+
+root = pathlib.Path("/content/hrpoly-c6d-zero-depth-green-hot-evidence")
+archive = pathlib.Path("/content/hrpoly-c6d-zero-depth-green-hot-evidence.tar.gz")
+assert root.is_dir(), root
+with tarfile.open(archive, "w:gz") as tar:
+    tar.add(root, arcname=root.name)
+digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+print("ZERO_DEPTH_GREEN_HOT_ARCHIVE_SHA256=" + digest, flush=True)
+files.download(str(archive))
+```
+
+Verify it outside Colab with:
+
+```text
+python tmp/verify_c6d_zero_depth_green_hot_evidence.py \
+  <downloaded-hrpoly-c6d-zero-depth-green-hot-evidence.tar.gz>
+```
+
+The expected result is `C6D_ZERO_DEPTH_GREEN_HOT_EVIDENCE_OK`, seven exact
+archive members and six allowed axiom headers.  This remains
+`HOT_DIAGNOSTIC_ONLY`.  Download the final executed notebook, then disconnect
+and delete the runtime only after both hot archives and both verifier results
+are preserved.

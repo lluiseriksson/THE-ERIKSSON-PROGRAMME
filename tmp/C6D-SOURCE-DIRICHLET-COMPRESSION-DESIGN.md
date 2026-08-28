@@ -154,8 +154,13 @@ compiler verdict must precede any enlargement of that manifest.
 is the next separate scratch brick.  It compresses that one ambient precision,
 derives regional coercivity, and constructs the canonical Green, both inverse
 identities and its inverse-floor norm bound internally.  It is NOT CHECKED and
-is deliberately excluded from the pinned depth-zero queue: the coercivity
-brick must receive its own verdict before this dependent brick is scheduled.
+is deliberately excluded from the pinned depth-zero coercivity queue: that
+brick must receive its own verdict first.  A separate fail-closed dependent
+runner is now pinned at `e1b17096d3e9c5ac2c230a7cf0cfe8005f76583c`
+(`tmp/c6d_zero_depth_green_hot_diagnostic.py`, SHA-256
+`f43eb90eaa59927f163e1ea82c5d435a8b077d641c78526ccce3061857bdd6fb`).
+It may run only after the preceding depth-zero queue emits literal PASS and
+remains diagnostic rather than seal evidence.
 ## Hot validation queue after the retained cold gate
 
 Published PRE-VALIDATION source head: `76bfe9c8` (with the generic-carrier
