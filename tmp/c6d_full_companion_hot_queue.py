@@ -19,7 +19,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "c59a28b553a161afd99d34bc4b0aebbad09b5182"
+SOURCE_SHA = "590e68d35a19987321efc7dbc53755a5e20a5cfa"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-full-companion-hot-evidence")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
@@ -29,7 +29,7 @@ MODULES = [
     ("BalabanCMP99SourceGeneratedMassCompression", 3),
     ("BalabanCMP99SourceGeneratedPhysicalPrecisionCompression", 3),
     ("BalabanCMP99SourceActiveRegionFullCompanionPrecision", 6),
-    ("BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision", 6),
+    ("BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision", 8),
 ]
 
 
