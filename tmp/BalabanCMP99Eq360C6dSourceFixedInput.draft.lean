@@ -157,6 +157,8 @@ noncomputable def cmp99Eq360C6dSourceLaplacianRetainedExtension :
     (R.toCubeWitness C alpha1 hscale).transformedBackground
 
 /-- The source gates generate global smallness of the union extension. -/
+include baselineRadiusBudget
+
 theorem norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le :
     ∀ e : ConcreteEdge 4 (L * N'),
       ‖(cmp99Eq360C6dSourceLaplacianRetainedExtension
@@ -170,7 +172,7 @@ theorem norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le :
       C D regions)
     halpha1
   let hlaplacian := cmp99Eq360C6dSource_internalBonds_nearIdentity
-    R C hscale regions D hM halpha1 baselineRadiusBudget
+    (R := R) (C := C) (hscale := hscale) (D := D) halpha1
   exact norm_cmp99Eq360C6dLaplacianRetainedExtension_sub_one_le
     regions W.transformedBackground
     (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
@@ -186,7 +188,9 @@ noncomputable def cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower :
       (R := R) (C := C) (hscale := hscale) regions)
     baselineRadiusBudget.toRadiusChain
     (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
-      R C hscale regions D hM halpha1 baselineRadiusBudget)
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget))
 
 /-- Both retained constructions end in the same generated terminal Hilbert
 bundle.  This equality is derived from the typed source-region chain; it is
@@ -195,7 +199,9 @@ theorem cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpace_eq :
     (cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
       R C hscale regions D hM halpha1 baselineRadiusBudget).TerminalSpace =
     (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
-      R C hscale regions D hM halpha1 baselineRadiusBudget).TerminalSpace := by
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (hM := hM) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget)).TerminalSpace := by
   unfold cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
   unfold cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
   rw [regions.weightedQprimeTower_terminalSpace_eq,
@@ -204,7 +210,9 @@ theorem cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpace_eq :
 /-- Both technical extensions have the same generated terminal spacing. -/
 theorem cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpacing :
     (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
-      R C hscale regions D hM halpha1 baselineRadiusBudget).terminalSpacing =
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (hM := hM) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget)).terminalSpacing =
       (M : ℝ) ^ depth * eta := by
   unfold cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
   rw [regions.weightedQprimeTower_terminalSpacing]
@@ -216,7 +224,9 @@ theorem cmp99Eq360C6dSourcePhysicalCountingCoefficient_eq_laplacianRetained :
         R C hscale regions D hM halpha1 baselineRadiusBudget =
       cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
         (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
-          R C hscale regions D hM halpha1 baselineRadiusBudget)
+          (R := R) (C := C) (hscale := hscale) (regions := regions)
+          (D := D) (hM := hM) (halpha1 := halpha1)
+          (baselineRadiusBudget := baselineRadiusBudget))
         (cmp99SourceMassParameter 1 (M : ℝ) depth) := by
   unfold cmp99Eq360C6dSourcePhysicalCountingCoefficient
   unfold cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
@@ -239,7 +249,7 @@ theorem cmp99Eq360C6dSourceBaselineRetainedPhysicalTower_Qprime_heq_laplacianExt
         C D regions)
       halpha1
     let hlaplacian := cmp99Eq360C6dSource_internalBonds_nearIdentity
-      R C hscale regions D hM halpha1 baselineRadiusBudget
+      (R := R) (C := C) (hscale := hscale) (D := D) halpha1
     let V := cmp99Eq360C6dLaplacianRetainedExtension
       regions W.transformedBackground
     let hV := norm_cmp99Eq360C6dLaplacianRetainedExtension_sub_one_le
@@ -261,7 +271,7 @@ theorem cmp99Eq360C6dSourceBaselineRetainedPhysicalTower_Qprime_heq_laplacianExt
       C D regions)
     halpha1
   let hlaplacian := cmp99Eq360C6dSource_internalBonds_nearIdentity
-    R C hscale regions D hM halpha1 baselineRadiusBudget
+    (R := R) (C := C) (hscale := hscale) (D := D) halpha1
   simpa only [cmp99Eq360C6dSourceBaselineRetainedPhysicalTower] using
     (cmp99Eq360C6d_retainedFineExtension_Qprime_heq_laplacianExtension
       regions (by norm_num : 2 ≤ 4) hM (matrixSUNAdjointModel Nc) eta
@@ -275,7 +285,9 @@ theorem cmp99Eq360C6dSourceBaselinePrecision_eq_laplacianRetainedPrecision :
     let T0 := cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
       R C hscale regions D hM halpha1 baselineRadiusBudget
     let T1 := cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
-      R C hscale regions D hM halpha1 baselineRadiusBudget
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (hM := hM) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget)
     let b := cmp99Eq360C6dSourcePhysicalCountingCoefficient
       R C hscale regions D hM halpha1 baselineRadiusBudget
     cmp99SourceGaugePrecision
