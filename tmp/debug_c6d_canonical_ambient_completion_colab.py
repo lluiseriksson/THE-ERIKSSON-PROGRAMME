@@ -42,6 +42,18 @@ PAIRS = (
         "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionaryAudit.draft.lean",
     ),
     (
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacian.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianAudit.lean",
+    ),
+    (
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.lean",
+    ),
+    (
+        "YangMills/RG/BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexLocalLaplacianPerturbationAudit.lean",
+    ),
+    (
         "YangMills/RG/BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.lean",
         "YangMills/RG/BalabanCMP99Eq360ComplexRegionalPrecisionPerturbationAudit.lean",
     ),
@@ -54,7 +66,7 @@ PAIRS = (
         "tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecisionAudit.draft.lean",
     ),
 )
-EXPECTED_AXIOM_HEADERS = 54
+EXPECTED_AXIOM_HEADERS = 68
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
