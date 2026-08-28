@@ -1,6 +1,7 @@
 import tmp.BalabanCMP99Eq360C6dLocalizedRetainedPrecision.draft
 import tmp.BalabanCMP99SourceActiveRegionTerminalCoercivity.draft
 import tmp.BalabanCMP99Eq360C6dLaplacianRetainedExtension.draft
+import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge
 
 /-!
 PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
@@ -79,6 +80,7 @@ noncomputable def cmp99Eq360C6dSourcePhysicalCountingCoefficient : ℝ :=
 carrier also controls every internal bond of the selected Laplacian region.
 The proof uses only the printed region-in-cube dictionary and the existing
 half-unit exponential window. -/
+include D halpha1 in
 theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
     ∀ q ∈ Omega.bonds,
       ‖((R.toCubeWitness C alpha1 hscale).transformedBackground
@@ -90,44 +92,43 @@ theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
   have hendpoints :
       q.1 ∈ Omega.sites ∧ q.1.shift q.2 ∈ Omega.sites := by
     simpa [ActiveGaugeRegion.bonds] using hq
-  have hsource : q.1 ∈ C.carrier := by
-    apply D.printed_omegaPrime0_subset_regularCube
+  have hD : CMP99Eq335Corollary36SourceRegionDictionary
+      Omega OmegaPrime0 W.cube := by
+    simpa [W, CMP99Eq335PhysicalRegularityClass.toCubeWitness] using D
+  have hsource : q.1 ∈ W.cube.carrier := by
+    apply hD.printed_omegaPrime0_subset_regularCube
     rw [← D.headRegion_eq_omegaPrime0]
     exact hendpoints.1
-  have htarget : q.1.shift q.2 ∈ C.carrier := by
-    apply D.printed_omegaPrime0_subset_regularCube
-    rw [← D.headRegion_eq_omegaPrime0]
-    exact hendpoints.2
-  let qi : CMP99SourceRegularCubeInteriorPositiveBond C :=
-    ⟨q, hsource, htarget⟩
   let X : SuLie Nc :=
     (suLieCoordIso Nc).symm (W.logarithmicRepresentative q)
   have hX : ‖X.toMatrix‖ ≤
-      cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0 := by
+      cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0 := by
     calc
       ‖X.toMatrix‖ ≤ ‖X‖ := norm_suLie_toMatrix_l2_opNorm_le X
       _ = ‖W.logarithmicRepresentative q‖ := by
         exact (suLieCoordIso Nc).symm.norm_map _
-      _ ≤ cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0 :=
+      _ ≤ cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0 :=
         (W.amplitude_bound q.1 hsource q.2).le
+  have hamplitude : |eta| *
+      cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0 ≤ alpha1 :=
+    W.abs_eta_mul_amplitudeMajorant_le
   have hsmall : |eta| *
-      cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0 ≤ 1 / 2 :=
-    W.abs_eta_mul_amplitudeMajorant_le.trans halpha1
+      cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0 ≤ 1 / 2 :=
+    hamplitude.trans halpha1
   have hexp := norm_exp_smul_sub_one_le_two_mul eta
-    (cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0) X.toMatrix hX hsmall
+    (cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0) X.toMatrix hX hsmall
   have hbackground :
       (W.transformedBackground (positiveEdgeOfPhysicalBond q) :
           Matrix (Fin Nc) (Fin Nc) ℂ) =
         physicalMatrixExp (eta • X.toMatrix) := by
-    unfold CMP99Eq335PhysicalRegularityWitness.transformedBackground
-    rw [gaugeAct_cmp99ExtendRegularCubeLocalGauge_apply_interior
-      C U W.localGauge qi]
-    rw [W.gauge_eq_exp_on_interior qi]
-    rfl
+    have hphysical :=
+      W.transformedBackground_eq_exponential_on_internalBonds hD q hq
+    exact congrArg (fun z : SUN Nc => (z : Matrix (Fin Nc) (Fin Nc) ℂ))
+      hphysical
   rw [hbackground]
   calc
     ‖physicalMatrixExp (eta • X.toMatrix) - 1‖ ≤
-        2 * (|eta| * cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0) := by
+        2 * (|eta| * cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0) := by
       simpa only [physicalMatrixExp] using hexp
     _ ≤ 2 * alpha1 := by gcongr
     _ = cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := rfl
