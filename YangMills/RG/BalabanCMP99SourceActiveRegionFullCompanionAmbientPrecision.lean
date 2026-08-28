@@ -45,9 +45,8 @@ theorem cmp99SourceFullActiveRegion_restrictZero_eq_reindex
     {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
     [FiniteDimensional ℝ g] :
     (restrictZeroCLM (𝔤 := g) (cmp99SourceFullActiveRegion d N)) =
-      ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g
-        (cmp99SourceFullActiveRegionSiteEquiv d N).symm).toContinuousLinearEquiv)
-          .toContinuousLinearMap := by
+      (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g
+        (cmp99SourceFullActiveRegionSiteEquiv d N).symm).toContinuousLinearEquiv := by
   apply ContinuousLinearMap.ext
   intro phi
   apply PiLp.ext
@@ -61,9 +60,8 @@ theorem cmp99SourceFullActiveRegion_extendZero_eq_reindex
     {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
     [FiniteDimensional ℝ g] :
     (extendZeroZeroCLM (𝔤 := g) (cmp99SourceFullActiveRegion d N)) =
-      ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g
-        (cmp99SourceFullActiveRegionSiteEquiv d N)).toContinuousLinearEquiv)
-          .toContinuousLinearMap := by
+      (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g
+        (cmp99SourceFullActiveRegionSiteEquiv d N)).toContinuousLinearEquiv := by
   apply ContinuousLinearMap.ext
   intro phi
   apply PiLp.ext
