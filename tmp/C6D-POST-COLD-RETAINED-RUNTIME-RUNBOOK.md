@@ -70,10 +70,10 @@ default run from index `1` used to assemble queue-1 evidence.
 ## Hot queue 2: ambient C6d producer plus region/Green transport
 
 Runner object:
-`4a47d21c3489f89fed41f91d74a75e466a46e8b6:tmp/c6d_ambient_region_hot_diagnostic.py`
+`9361d3720a481039e88530fcb8332aa08891190c:tmp/c6d_ambient_region_hot_diagnostic.py`
 
 SHA-256:
-`a8a382b6061dd5848291615af04c45c9fe72fdad8160a3ea5808992c2364e458`
+`fa4bed163ee1799b34d882fa97ec83c154e5d3d07c32d2da82c4cedd041a1662`
 
 The runner checks out exact scratch source
 `79b424e069b0e425b71eca3b57ffd6d59dba915c`, materializes three source/audit
@@ -84,8 +84,8 @@ ambient-producer and 4 canonical-Green transport axiom headers, and rejects anyt
 ```python
 import hashlib, pathlib, runpy, urllib.request
 
-url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/4a47d21c3489f89fed41f91d74a75e466a46e8b6/tmp/c6d_ambient_region_hot_diagnostic.py"
-expected = "a8a382b6061dd5848291615af04c45c9fe72fdad8160a3ea5808992c2364e458"
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/9361d3720a481039e88530fcb8332aa08891190c/tmp/c6d_ambient_region_hot_diagnostic.py"
+expected = "fa4bed163ee1799b34d882fa97ec83c154e5d3d07c32d2da82c4cedd041a1662"
 payload = urllib.request.urlopen(url, timeout=60).read()
 actual = hashlib.sha256(payload).hexdigest()
 assert actual == expected, (actual, expected)
