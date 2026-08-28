@@ -1,9 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionTerminalCoercivity
 
-/-!
-PRE-VALIDATION: audit scratch. The imported source has no materialized
-`.olean` and no compiler or axiom-oracle verdict.
--/
 
 namespace YangMills.RG
 

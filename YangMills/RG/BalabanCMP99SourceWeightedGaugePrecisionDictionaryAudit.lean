@@ -1,6 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceWeightedGaugePrecisionDictionary
 
-/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
 
 namespace YangMills.RG
 

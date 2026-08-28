@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceTerminalCoercivity
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # The literal C6d baseline Green is constructed, not supplied
 
 The operator inverted here is exactly the source-fixed C6d baseline precision

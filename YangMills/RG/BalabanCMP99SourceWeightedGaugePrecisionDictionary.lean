@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
 import YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # Counting/weighted coefficient dictionary for the CMP99 precision
 
 The source-weighted tower stores the printed adjoint explicitly, whereas the

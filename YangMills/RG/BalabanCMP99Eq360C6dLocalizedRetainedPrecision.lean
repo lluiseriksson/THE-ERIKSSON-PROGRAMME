@@ -11,9 +11,6 @@ import YangMills.RG.BalabanCMP99Eq337PhysicalComplexBaselineRealSlice
 import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # C6d-specific complex precision identity for CMP99 (3.60)
 
 The Laplacian and averaging backgrounds are deliberately different internal

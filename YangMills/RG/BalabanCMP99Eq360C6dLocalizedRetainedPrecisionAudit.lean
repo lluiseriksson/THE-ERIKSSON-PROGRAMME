@@ -1,9 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq360C6dLocalizedRetainedPrecision
 
-/-!
-PRE-VALIDATION: scratch audit. This file has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
--/
 
 #print axioms YangMills.RG.CMP99Eq360C6dLocalizedRetainedInput.fullComplexOneCochain
 #print axioms YangMills.RG.cmp99Eq360C6dRadiusDimensionNeZero

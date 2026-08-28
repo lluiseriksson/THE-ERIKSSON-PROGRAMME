@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourcePoincarePositiveRadiusReachability
 import YangMills.RG.BalabanCMP99Eq360C6dSourceTerminalCoercivity
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Reachability of the literal C6d source coercivity package
 
 This wrapper constructs one positive `alpha1`, one nonempty `alpha0` interval,

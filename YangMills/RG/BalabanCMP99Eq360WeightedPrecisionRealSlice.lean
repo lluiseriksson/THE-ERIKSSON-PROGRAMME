@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99Eq359TowerRealSliceAgreement
 import YangMills.RG.BalabanCMP99SourceWeightedGaugePrecisionDictionary
 
 /-!
-PRE-VALIDATION: this scratch source has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
-
 # Weighted/counting real slice for the CMP99 (3.60) precision
 
 The analytic tower uses the printed source-weighted starred synthesis.  The

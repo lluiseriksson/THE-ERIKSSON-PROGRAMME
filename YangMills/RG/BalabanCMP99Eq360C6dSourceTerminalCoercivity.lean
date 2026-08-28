@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceFixedInput
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Source-fixed positive-depth coercivity for the literal C6d baseline
 
 The generic source-region coercivity theorem is applied to the canonical

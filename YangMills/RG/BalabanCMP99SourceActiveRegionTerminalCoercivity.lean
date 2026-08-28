@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
 import YangMills.RG.BalabanCMP99SourceMassWeights
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Coercivity of the literal terminal precision on a typed source-region chain
 
 This module closes the positive-depth algebraic part of the regional

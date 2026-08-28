@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99Eq360C6dLaplacianRetainedExtension
 import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Source-fixed C6d input and its exact counting/weighted coefficient
 
 The algebraic C6d input deliberately exposes the coefficient multiplying

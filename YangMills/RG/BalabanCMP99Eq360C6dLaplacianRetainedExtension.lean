@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99Eq335PhysicalLaplacianInternalCarrier
 import YangMills.RG.BalabanCMP99SourceLocalizedRetainedTower
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # One canonical extension for both the retained average and the Laplacian
 
 The original retained extension keeps only the bonds read by the recursive
