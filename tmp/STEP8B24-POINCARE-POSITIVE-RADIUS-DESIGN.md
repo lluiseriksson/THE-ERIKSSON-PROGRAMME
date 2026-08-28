@@ -179,6 +179,22 @@ admissible interval.  Until that assembler exists, the current C6d
 source-terminal coercivity theorem remains correct intermediate plumbing but
 is not a fully reached physical endpoint.
 
+The coefficient multiplying `alpha0` is provably positive without a new
+premise: every regular cube stores `10 <= geometryFactor`, and `[NeZero
+Mlarge]` gives `0 < Mlarge`.  Hence a constructed `alpha1 > 0` determines the
+strictly positive source interval
+
+```text
+0 <= alpha0 <= alpha1 / (geometryFactor * Mlarge).
+```
+
+Every `alpha0` in that interval satisfies the Corollary-3.6 scale gate by
+ordered multiplication.  The next source-level endpoint should expose this
+interval and derive `hscale`; it must not accept `hscale` or `hsmall` as fields
+of a replacement witness.  Existence of a physical background in the CMP99
+regularity class at such an `alpha0` remains the cited source premise and is
+logically distinct from scalar compatibility.
+
 ## Scratch implementation status
 
 `tmp/PoincarePositiveRadiusReachability.lean` now contains eight proposed
