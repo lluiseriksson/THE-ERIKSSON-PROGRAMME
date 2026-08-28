@@ -20,6 +20,9 @@ namespace YangMills.RG
 
 noncomputable section
 
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator
+
 variable {d N : ℕ} {g : Type} [NeZero N]
 variable [NormedAddCommGroup g] [InnerProductSpace ℝ g]
 variable [FiniteDimensional ℝ g]
@@ -71,9 +74,13 @@ theorem CMP99SourceActiveRegionChain.weightedQprimeTower_countingCoefficient_asW
           chain fineSmall) a =
       a * (spacing ^ d / (((M : ℝ) ^ depth * spacing) ^ d)) := by
   letI : NeZero N := regions.neZero
-  rw [cmp99SourceCountingCoefficientAsWeightedAdjoint,
+  have hterminal :
+      (regions.weightedQprimeTower hd hM rho spacing epsilon background chain
+        fineSmall).terminalSpacing = (M : ℝ) ^ depth * spacing :=
     regions.weightedQprimeTower_terminalSpacing hd hM rho spacing epsilon
-      background chain fineSmall]
+      background chain fineSmall
+  unfold cmp99SourceCountingCoefficientAsWeightedAdjoint
+  rw [hterminal]
 
 end
 
