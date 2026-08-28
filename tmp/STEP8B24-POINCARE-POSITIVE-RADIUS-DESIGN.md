@@ -197,36 +197,36 @@ logically distinct from scalar compatibility.
 
 ## Scratch implementation status
 
-`tmp/PoincarePositiveRadiusReachability.lean` now contains eight proposed
-declarations implementing the route above, with an eight-line sibling axiom
+`tmp/PoincarePositiveRadiusReachability.lean` now contains nine proposed
+declarations implementing the route above, with a nine-line sibling axiom
 audit in `tmp/PoincarePositiveRadiusReachabilityAudit.lean`.  The exact text
 guard reports
 
 ```text
 LEAN_OVERLAY_TEXT_OK files=2
-POINCARE_POSITIVE_RADIUS_STATIC source_decls=8 audit_prints=8
+POINCARE_POSITIVE_RADIUS_STATIC source_decls=9 audit_prints=9
 ```
 
 Source SHA-256:
-`5E89500F4A786432F23F10D68540933AD5805CB7ACFD80A558289E18BB18058D`.
+`E4F971ADB1721737D1C25BBFB52729F25495885D2BA93EEF3A9CC56D0DCA567B`.
 Audit SHA-256:
-`91AED2683FD8A9316094684016560D8D084828B95AEB72618144E96985FAAC29`.
+`A7696DFBB6BA8D736B75FC7A800ED7CC7B0C3807A6A095DF57E322512A3387B9`.
 These are static scratch hashes, not compiler evidence.
 
 The deterministic read-only promotion preview additionally reports
 
 ```text
-POINCARE_PROMOTION_PREVIEW_OK files=2 declarations=8 audits=8
+POINCARE_PROMOTION_PREVIEW_OK files=2 declarations=9 audits=9
 promoted_content_manifest_sha256=
-  43235D28E56164C195A1F3F9847BE3AC5F59B32EDAC3B157B9695AD943B7AC77
+  5851D58103C90D6E18191643C3A605D879FD3688287B401BB118BDE65811A73D
 ```
 
 The original preview accidentally retained the scratch status comment before
 the imports, which would violate Lean's import-order rule.  That preview is
 superseded.  The corrected promoted source and audit hashes are respectively
-`CD829E4B733557B1A4C9B17DE4E239B0E78E8FB85C11D2E7780ED1E47F6DD60C`
+`8E3456B89B9F9BA90BBCC2EA1622D2E180ACC4FCA68E4875131D6FA523C46A91`
 and
-`C10DC5576D135F534964BAECF41371B97A63A5B1DB9CAAD6FD3116265ED17FB6`.
+`E2CE07A504BDB44CC71B97D39294AF043E00FA90CF56F10918736C722D198C20`.
 Both put the module docstring after the imports and pass the overlay text gate.
 The preview script SHA-256 is
 `B4F3600B20F64DB3A973985B52DE0B0EB14D7320551939385E1F3D73D1243914`.

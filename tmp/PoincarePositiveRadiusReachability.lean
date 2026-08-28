@@ -338,6 +338,65 @@ theorem scratch_exists_pos_poincare_pivot_alpha1_closedBudget
   · intro e
     simpa only [hradius] using hflat e
 
+/-- The constructed `alpha1` determines a nonempty interval of source
+regularity radii `alpha0` on which the Corollary-3.6 scale gate is derived.
+The cube coefficient is positive by the printed `geometryFactor ≥ 10` law;
+neither `hscale` nor the terminal Poincare inequality is caller data. -/
+theorem scratch_exists_pos_poincare_sourceAlphaInterval
+    {FineSite : Type*} [DecidableEq FineSite]
+    {n Mlarge : ℕ} [NeZero Mlarge]
+    {scaleExtent : Fin n → ℕ}
+    {S : CMP99SourceScaledStratification FineSite n
+      (fun r => FinBox 4 (scaleExtent r))}
+    {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
+    (C : CMP99SourceRegularCube FineSite n Mlarge scaleExtent S
+      scaleExtent_pos)
+    (depth : ℕ) (spacing : ℝ) :
+    ∃ alpha1 alpha0Radius : ℝ,
+      0 < alpha1 ∧
+      alpha1 ≤ 1 / 2 ∧
+      0 < alpha0Radius ∧
+      CMP99SourceUbarClosedBudget d M Nc depth
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) ∧
+      cmp99SourcePoincareErrorCoeff d M depth spacing
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1 ∧
+      cmp99SourceUbarFineDeviationRadius d M
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) ≤ 1 / 3 ∧
+      cmp109PhysicalPivotBackgroundBudget d M Nc
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1 ∧
+      (∀ e : ConcreteEdge d N,
+        ‖(cmp99SourceFlatGaugeConfig d N Nc e :
+            Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+          cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) ∧
+      (∀ {alpha0 : ℝ}, 0 ≤ alpha0 → alpha0 ≤ alpha0Radius →
+        (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1) := by
+  obtain ⟨alpha1, halpha1, halpha1_half, hbudget, hsmall,
+      hpivot_radius, hpivot_budget, hflat⟩ :=
+    scratch_exists_pos_poincare_pivot_alpha1_closedBudget
+      (d := d) (M := M) (N := N) (Nc := Nc) depth spacing
+  let coeff : ℝ := (C.geometryFactor : ℝ) * (Mlarge : ℝ)
+  have hgeometry_nat : 0 < C.geometryFactor :=
+    lt_of_lt_of_le (by norm_num) C.geometryFactor_ge_ten
+  have hgeometry : 0 < (C.geometryFactor : ℝ) := by
+    exact_mod_cast hgeometry_nat
+  have hMlarge_nat : 0 < Mlarge := NeZero.pos Mlarge
+  have hMlarge : 0 < (Mlarge : ℝ) := by
+    exact_mod_cast hMlarge_nat
+  have hcoeff : 0 < coeff := mul_pos hgeometry hMlarge
+  let alpha0Radius : ℝ := alpha1 / coeff
+  have halpha0Radius : 0 < alpha0Radius := div_pos halpha1 hcoeff
+  refine ⟨alpha1, alpha0Radius, halpha1, halpha1_half,
+    halpha0Radius, hbudget, hsmall, hpivot_radius, hpivot_budget, hflat, ?_⟩
+  intro alpha0 halpha0_nonneg halpha0_le
+  calc
+    (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 = coeff * alpha0 := by
+      rfl
+    _ ≤ coeff * alpha0Radius :=
+      mul_le_mul_of_nonneg_left halpha0_le hcoeff.le
+    _ = alpha1 := by
+      dsimp only [alpha0Radius]
+      field_simp [hcoeff.ne']
+
 end
 
 end YangMills.RG
