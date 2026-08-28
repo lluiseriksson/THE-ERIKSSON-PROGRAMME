@@ -55,6 +55,20 @@ noncomputable def cmp99SourceActiveRegionFullCompanionAmbientPrecision
     (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM rho spacing
       epsilon background chain fineSmall)
 
+/-- Dirichlet compression on an arbitrary finite ambient carrier.  The older
+`cmp99RegionalDirichletPrecision` is specialized to the later
+`FinBox 4 (M * (2 * Q))` geometry; the source C6d chain instead lives first
+on `FinBox d N`, so the carrier parameters must remain explicit here. -/
+noncomputable def cmp99SourceAmbientDirichletPrecision
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Omega : ActiveGaugeRegion d N)
+    (K : GaugeZeroCochain d N g →L[ℝ] GaugeZeroCochain d N g) :
+    ActiveGaugeZeroCochain Omega g →L[ℝ]
+      ActiveGaugeZeroCochain Omega g :=
+  (restrictZeroCLM (𝔤 := g) Omega).comp
+    (K.comp (extendZeroZeroCLM (𝔤 := g) Omega))
+
 /-- The ambient reindexing preserves the full-companion coercivity floor
 exactly. -/
 theorem isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision
@@ -83,7 +97,7 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision
 
 /-- Dirichlet compression after the explicit full-site reindexing is exactly
 the regional source precision with its regional source-flow coefficient. -/
-theorem cmp99RegionalDirichletPrecision_fullCompanionAmbient_eq
+theorem cmp99SourceAmbientDirichletPrecision_fullCompanion_eq
     {Omega : ActiveGaugeRegion d N} {depth : ℕ}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
     (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
@@ -93,7 +107,7 @@ theorem cmp99RegionalDirichletPrecision_fullCompanionAmbient_eq
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     let Tregional := regions.weightedQprimeTower hd hM rho spacing epsilon
       background chain fineSmall
-    cmp99RegionalDirichletPrecision Omega
+    cmp99SourceAmbientDirichletPrecision Omega
         (cmp99SourceActiveRegionFullCompanionAmbientPrecision regions hd hM rho
           spacing epsilon background chain fineSmall) =
       cmp99SourceGaugePrecision
@@ -118,7 +132,7 @@ theorem cmp99RegionalDirichletPrecision_fullCompanionAmbient_eq
       (fun A : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
         ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) => A phi)
       hactive)
-  simpa [cmp99RegionalDirichletPrecision,
+  simpa [cmp99SourceAmbientDirichletPrecision,
     cmp99SourceActiveRegionFullCompanionAmbientPrecision,
     finitePiLpTypedKernelReindex, cmp99SourceFullActiveRegionSiteEquiv,
     R, E, Kfull, cmp99NestedActiveRegionRestriction,
