@@ -12,8 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "tmp" / "generate_c6d_source_separated_ambient_green_validation_runner.py"
 OUTPUT = ROOT / "scripts" / "colab_c6d_canonical_ambient_completion_validation.py"
-MODULE = "BalabanCMP99ActiveRegionCanonicalAmbientCompletion"
-DECLARATIONS = (
+GENERIC_MODULE = "BalabanCMP99ActiveRegionCanonicalAmbientCompletion"
+GENERIC_DECLARATIONS = (
     "cmp99ActiveRegionZeroProjection",
     "cmp99ActiveRegionZeroComplementProjection",
     "norm_sq_cmp99ActiveRegionZeroProjection_add_complement",
@@ -23,6 +23,10 @@ DECLARATIONS = (
     "cmp99RegionalDirichletPrecision_canonicalAmbientCompletion_eq",
     "cmp99RegionalDirichletGreen_canonicalAmbientCompletion_eq",
     "cmp99RegionalDirichletGreen_canonicalAmbientCompletion_compressed_eq",
+)
+INTEGRATION_MODULE = "BalabanCMP99Eq360C6dCanonicalAmbientCompletion"
+INTEGRATION_DECLARATIONS = (
+    "cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq",
 )
 
 
@@ -37,7 +41,10 @@ def load_base():
 
 def generate(source_sha: str) -> str:
     base = load_base()
-    base.BRICKS = ((MODULE, DECLARATIONS),)
+    base.BRICKS = (
+        (GENERIC_MODULE, GENERIC_DECLARATIONS),
+        (INTEGRATION_MODULE, INTEGRATION_DECLARATIONS),
+    )
     content = base.generate(source_sha)
     replacements = (
         (
@@ -49,14 +56,15 @@ def generate(source_sha: str) -> str:
             "twenty-five public axiom readouts and every repository consumer through\n"
             "``YangMillsCore``.  Passing\n"
             "does not attain window 15, move ``20/41`` or inhabit ``TermSource``.",
-            "This runner validates one source/audit pair, all nine public axiom\n"
-            "readouts and every repository consumer through ``YangMillsCore``.\n"
-            "Passing closes only the carrier/inverse adapter; it does not prove the\n"
-            "four actions, attain window 15, move ``20/41`` or inhabit ``TermSource``.",
+            "This runner validates the generic and C6d integration source/audit\n"
+            "pairs, all ten public axiom readouts and every repository consumer\n"
+            "through ``YangMillsCore``. Passing closes only the carrier/inverse\n"
+            "adapter; it does not prove the four actions, attain window 15, move\n"
+            "``20/41`` or inhabit ``TermSource``.\n",
         ),
         (
             "c6d-source-separated-ambient-green-v1",
-            "c6d-canonical-ambient-completion-v2",
+            "c6d-canonical-ambient-completion-v3",
         ),
         (
             "hrpoly-c6d-source-separated-ambient-green",
@@ -64,7 +72,7 @@ def generate(source_sha: str) -> str:
         ),
         (
             "03_c6d_source_green_yang_mills_core_root",
-            "02_c6d_canonical_ambient_completion_yang_mills_core_root",
+            "03_c6d_canonical_ambient_completion_yang_mills_core_root",
         ),
     )
     for old, new in replacements:
@@ -85,7 +93,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_CANONICAL_AMBIENT_COMPLETION_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=3 stages=3 axiom_blocks=9 "
+        f"source_sha={args.source_sha} files=5 stages=5 axiom_blocks=10 "
         "root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"
