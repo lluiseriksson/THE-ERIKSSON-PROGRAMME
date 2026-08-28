@@ -135,7 +135,10 @@ theorem isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselinePrecision
   rw [← cmp99SourceActiveRegionFullCompanionPhysicalCoercivity_eq_C6dBaseline
     R C hscale regions D hM halpha1 baselineRadiusBudget]
   exact isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision
-    regions (by norm_num : 2 ≤ 4) hM hdepth (matrixSUNAdjointModel Nc) heta
+    (d := 4) (M := M) (N := L * N') (Nc := Nc) (Omega := Omega)
+    (depth := depth) (spacing := eta)
+    (epsilon := cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    regions (by norm_num : 2 ≤ 4) hM hdepth heta
     (cmp99Eq360C6dSourceLaplacianRetainedExtension
       (R := R) (C := C) (hscale := hscale) regions)
     baselineRadiusBudget.toRadiusChain
