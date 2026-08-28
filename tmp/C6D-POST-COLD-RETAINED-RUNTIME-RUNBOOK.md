@@ -34,20 +34,20 @@ below in order.
 ## Hot queue 1: six full-companion/compression pairs
 
 Runner object:
-`919f10f5bb928d491452c7ba05dce3f39f3d6329:tmp/c6d_full_companion_hot_queue.py`
+`92430501ae917deb11af32483ecc5bb9596bdb5a:tmp/c6d_full_companion_hot_queue.py`
 
 SHA-256:
-`5820d5ad9e0bc0b76d48fe70c400d4d3baac6c9f4bbbbd39e96b2b72d2e7095c`
+`2fcfce126a9f6dff75aea0803d3fb473ebdab4f9737730cf2002a240dcf3f0bf`
 
 The runner itself checks out exact source
-`7361863796ec06b5c23006ed7d527c40031f2fc6` while preserving `.lake`.
+`838e7d9cac08c81c21ed575d484c1409c92962a9` while preserving `.lake`.
 Execute it once in a new Colab cell:
 
 ```python
 import hashlib, pathlib, runpy, urllib.request
 
-url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/919f10f5bb928d491452c7ba05dce3f39f3d6329/tmp/c6d_full_companion_hot_queue.py"
-expected = "5820d5ad9e0bc0b76d48fe70c400d4d3baac6c9f4bbbbd39e96b2b72d2e7095c"
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/92430501ae917deb11af32483ecc5bb9596bdb5a/tmp/c6d_full_companion_hot_queue.py"
+expected = "2fcfce126a9f6dff75aea0803d3fb473ebdab4f9737730cf2002a240dcf3f0bf"
 payload = urllib.request.urlopen(url, timeout=60).read()
 actual = hashlib.sha256(payload).hexdigest()
 assert actual == expected, (actual, expected)
