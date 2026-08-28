@@ -14,6 +14,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import time
 
@@ -21,13 +22,14 @@ import time
 SOURCE_SHA = "76bfe9c82ffd1e409d1c673b68324449171b3318"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-full-companion-hot-evidence")
+ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 MODULES = [
-    "BalabanCMP99RegionalDirichletGaugePrecisionCompression",
-    "BalabanCMP99SourceActiveRegionFullCompanion",
-    "BalabanCMP99SourceGeneratedMassCompression",
-    "BalabanCMP99SourceGeneratedPhysicalPrecisionCompression",
-    "BalabanCMP99SourceActiveRegionFullCompanionPrecision",
-    "BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision",
+    ("BalabanCMP99RegionalDirichletGaugePrecisionCompression", 2),
+    ("BalabanCMP99SourceActiveRegionFullCompanion", 5),
+    ("BalabanCMP99SourceGeneratedMassCompression", 3),
+    ("BalabanCMP99SourceGeneratedPhysicalPrecisionCompression", 3),
+    ("BalabanCMP99SourceActiveRegionFullCompanionPrecision", 6),
+    ("BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision", 6),
 ]
 
 
@@ -59,6 +61,27 @@ def run(stage: str, command: list[str]) -> str:
     return output
 
 
+def verify_axioms(output: str, expected: int, label: str) -> None:
+    dependency_blocks = re.findall(
+        r"depends on axioms:\s*\[(.*?)\]", output, flags=re.DOTALL
+    )
+    pure_count = output.count("does not depend on any axioms")
+    actual = len(dependency_blocks) + pure_count
+    if actual != expected:
+        raise RuntimeError(
+            f"AXIOM_HEADER_COUNT_{label}={actual} EXPECTED={expected}"
+        )
+    for block in dependency_blocks:
+        names = {name.strip() for name in block.replace("\n", " ").split(",")}
+        forbidden = sorted(name for name in names if name not in ALLOWED_AXIOMS)
+        if forbidden:
+            raise RuntimeError(f"FORBIDDEN_AXIOMS_{label}={forbidden!r}")
+    for forbidden in ("sorryAx", "ofReduceBool"):
+        if forbidden in output:
+            raise RuntimeError(f"FORBIDDEN_AXIOM_TOKEN_{label}={forbidden}")
+    print(f"AXIOM_GATE_{label}=PASS DECLARATIONS={actual}", flush=True)
+
+
 def main() -> int:
     print("HOT_DIAGNOSTIC_ONLY=1", flush=True)
     print("SOURCE_SHA=" + SOURCE_SHA, flush=True)
@@ -79,11 +102,11 @@ def main() -> int:
             "--require-prevalidation",
         ],
     )
-    for index, module in enumerate(MODULES, start=1):
+    for index, (module, expected_axioms) in enumerate(MODULES, start=1):
         for suffix in ("", "Audit"):
             target = module + suffix
             stage = f"hot_{index:02d}_{target.lower()}"
-            run(
+            output = run(
                 stage,
                 [
                     "lake",
@@ -94,6 +117,8 @@ def main() -> int:
                     f".lake/build/lib/lean/YangMills/RG/{target}.olean",
                 ],
             )
+            if suffix == "Audit":
+                verify_axioms(output, expected_axioms, module)
     print("FINAL_STATUS=PASS", flush=True)
     print("CLASSIFICATION=HOT_DIAGNOSTIC_ONLY", flush=True)
     return 0
