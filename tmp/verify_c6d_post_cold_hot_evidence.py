@@ -16,8 +16,8 @@ import tarfile
 
 
 FULL_SOURCE_SHA = "ec4db69a54e0f47189940086476edf4c47a39abe"
-AMBIENT_SOURCE_SHA = "58f11d92b49cc5b9334bc46136de0b097175dfe9"
-ZERO_SOURCE_SHA = "4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5"
+AMBIENT_SOURCE_SHA = "976cfc899407a4452a94c6f1a66eafeab2792b27"
+ZERO_SOURCE_SHA = "2c25f7bac370306b6ebbc96e05d048c0b0cf15a9"
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 FULL_MODULES = [
@@ -26,12 +26,12 @@ FULL_MODULES = [
     ("BalabanCMP99SourceGeneratedMassCompression", 3),
     ("BalabanCMP99SourceGeneratedPhysicalPrecisionCompression", 3),
     ("BalabanCMP99SourceActiveRegionFullCompanionPrecision", 6),
-    ("BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision", 6),
+    ("BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision", 8),
 ]
 
 AMBIENT_MODULES = [
     ("BalabanCMP99ActiveGaugeRegionReindex", 10),
-    ("BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision", 7),
+    ("BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision", 8),
     ("BalabanCMP99ActiveGaugeRegionReindexGreen", 4),
 ]
 
