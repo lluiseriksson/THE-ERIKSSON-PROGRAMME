@@ -160,8 +160,11 @@ theorem exists_pos_poincare_admissibleRadius
       {epsilon : ℝ |
         cmp99SourcePoincareErrorCoeff d M depth spacing epsilon < 1} ∈
         𝓝 0 := by
-    have h := hPcont.eventually_lt_const (by
-      simpa using (show (0 : ℝ) < 1 by norm_num))
+    have hzero :
+        cmp99SourcePoincareErrorCoeff d M depth spacing 0 < 1 := by
+      simp only [cmp99SourcePoincareErrorCoeff_zero]
+      norm_num
+    have h := hPcont.eventually_lt_const hzero
     simpa only [cmp99SourcePoincareErrorCoeff_zero] using h
   obtain ⟨rP, hrP, hPball⟩ := Metric.mem_nhds_iff.mp hPevent
 
@@ -289,9 +292,10 @@ theorem exists_pos_poincare_pivot_closedBudget
           cmp109PhysicalPivotBackgroundBudget d M Nc 1 * pivot.epsilon0 :=
         mul_le_mul_of_nonneg_left hepsilon_pivot
           (cmp109PhysicalPivotBackgroundBudget_nonneg (by norm_num))
-      _ < 1 := by
-        simpa only [cmp109PhysicalPivotBackgroundBudget_eq_at_one_mul]
-          using pivot.pivot_budget
+      _ = cmp109PhysicalPivotBackgroundBudget d M Nc pivot.epsilon0 :=
+        (cmp109PhysicalPivotBackgroundBudget_eq_at_one_mul
+          d M Nc pivot.epsilon0).symm
+      _ < 1 := pivot.pivot_budget
   refine ⟨epsilon, hepsilon, hepsilon_one, hbudget, hsmall, hpivot_radius,
     hpivot_budget, ?_⟩
   intro e
