@@ -518,6 +518,62 @@ theorem CMP99SourceLocalizedRetainedTower.terminalQprime_transport_eq
       (T.canonicalTowerAt (Fin.last depth)).Qprime :=
   T.prefixQprime_eq (Fin.last depth)
 
+/-- PRE-VALIDATION declaration: two globally small canonical backgrounds
+that agree on the exact retained read carrier generate heterogeneously equal
+terminal `Qprime` operators.  This exposes the locality already proved by the
+private paired recursion; it does not accept a tower or operator equality
+from the caller. -/
+theorem cmp99SourceWeightedQprimeTower_Qprime_heq_of_eqOn_retainedFineReadBonds
+    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing epsilon : ℝ)
+    (U V : PhysicalGaugeBackground d N Nc)
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (hU : ∀ e : ConcreteEdge d N,
+      ‖(U e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hV : ∀ e : ConcreteEdge d N,
+      ‖(V e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hUV : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
+      U (positiveEdgeOfPhysicalBond q) =
+        V (positiveEdgeOfPhysicalBond q)) :
+    HEq
+      (regions.weightedQprimeTower hd hM rho spacing epsilon U chain hU).Qprime
+      (regions.weightedQprimeTower hd hM rho spacing epsilon V chain hV).Qprime := by
+  letI : NeZero N := regions.neZero
+  let hUlocal : ∀ q ∈ regions.retainedFineReadBonds (Nc := Nc),
+      ‖(U (positiveEdgeOfPhysicalBond q) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon := by
+    intro q _hq
+    exact hU (positiveEdgeOfPhysicalBond q)
+  let AuxUU := cmp99SourceLocalizedCanonicalRetainedAux regions hd hM rho
+    spacing epsilon U U chain hUlocal hU (by simp)
+  let AuxUV := cmp99SourceLocalizedCanonicalRetainedAux regions hd hM rho
+    spacing epsilon U V chain hUlocal hV hUV
+  have hUU : HEq
+      (AuxUU.localTowerAt (Fin.last depth)).Qprime
+      (AuxUU.canonicalTowerAt (Fin.last depth)).Qprime :=
+    cmp99SourceHEq_of_terminalCLMTransport_eq
+      (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+      (AuxUU.prefixTerminalSpace_eq (Fin.last depth))
+      (AuxUU.localTowerAt (Fin.last depth)).Qprime
+      (AuxUU.canonicalTowerAt (Fin.last depth)).Qprime
+      (AuxUU.prefixQprime_eq (Fin.last depth))
+  have hUV' : HEq
+      (AuxUV.localTowerAt (Fin.last depth)).Qprime
+      (AuxUV.canonicalTowerAt (Fin.last depth)).Qprime :=
+    cmp99SourceHEq_of_terminalCLMTransport_eq
+      (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+      (AuxUV.prefixTerminalSpace_eq (Fin.last depth))
+      (AuxUV.localTowerAt (Fin.last depth)).Qprime
+      (AuxUV.canonicalTowerAt (Fin.last depth)).Qprime
+      (AuxUV.prefixQprime_eq (Fin.last depth))
+  rw [AuxUU.localTerminal_eq_generated,
+    AuxUU.canonicalTerminal_eq_generated] at hUU
+  rw [AuxUV.localTerminal_eq_generated,
+    AuxUV.canonicalTerminal_eq_generated] at hUV'
+  exact hUU.symm.trans hUV'
+
 end
 
 end YangMills.RG
