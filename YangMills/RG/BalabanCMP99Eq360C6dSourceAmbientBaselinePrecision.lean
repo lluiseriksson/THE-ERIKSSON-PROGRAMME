@@ -1,11 +1,6 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision
 import YangMills.RG.BalabanCMP99Eq360C6dSourceBaselineGreen
 
-/-!
-PRE-VALIDATION: source present; `.olean` not yet materialized in a fresh cold checkout, and the result is not compiler-verified for sealing.  This draft depends on the unvalidated full-companion
-compression chain and must not enter `YangMillsCore` before that chain has a
-compiler and axiom-oracle verdict.
--/
 
 namespace YangMills.RG
 

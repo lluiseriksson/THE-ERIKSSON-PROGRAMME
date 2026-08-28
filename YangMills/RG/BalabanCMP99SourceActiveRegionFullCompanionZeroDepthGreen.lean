@@ -1,10 +1,6 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionZeroDepth
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized in a fresh cold checkout, and the result is not compiler-verified for sealing.  Exact depth-zero Dirichlet Green for the internally
-constructed full-companion ambient precision.  This source has no compiler
-or axiom-oracle verdict.
-
 The Green is not caller data.  It is the canonical covariance of the
 Dirichlet compression of the one full-companion ambient precision, using the
 literal positive depth-zero counting coefficient `spacing^(-2)` transported

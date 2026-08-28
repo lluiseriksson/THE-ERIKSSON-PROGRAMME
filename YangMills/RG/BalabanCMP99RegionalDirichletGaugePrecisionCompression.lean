@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
 import YangMills.RG.BalabanCMP99SourceEq395LocalInverse
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler or axiom oracle.
-
 # Dirichlet compression of the canonical ambient `Qprime` extension
 
 This is the algebraic half of the C6d source dictionary.  An active terminal

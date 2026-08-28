@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionPrecision
 import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler or axiom oracle.
-
 # Ambient realization of the canonical full-companion precision
 
 The full active carrier is explicitly equivalent to the ordinary ambient

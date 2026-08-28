@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedMassTransition
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler or axiom oracle.
-
 # Canonical full companion of an arbitrary source-region chain
 
 Every typed C6d region chain is embedded, scale by scale, in a chain whose

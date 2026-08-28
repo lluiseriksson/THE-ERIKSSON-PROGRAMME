@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedMassCompression
 import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler or axiom oracle.
-
 # Exact compression of the generated source precision
 
 The two species of the source precision remain separate until the endpoint.

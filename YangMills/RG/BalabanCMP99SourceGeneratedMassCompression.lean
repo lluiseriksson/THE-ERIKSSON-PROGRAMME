@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanion
 import YangMills.RG.BalabanCMP99SourceGeneratedNestedRestrictionAdjoint
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler or axiom oracle.
-
 # Exact Dirichlet compression of the generated counting mass
 
 For nested typed source-region chains, restriction followed by literal zero

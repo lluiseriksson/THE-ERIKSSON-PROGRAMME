@@ -1,11 +1,6 @@
 import YangMills.RG.BalabanCMP99ActiveGaugeRegionReindex
 import YangMills.RG.FinitePiLpTypedKernelReindexAlgebra
 
-/-!
-PRE-VALIDATION: source present; `.olean` not yet materialized in a fresh cold checkout, and the result is not compiler-verified for sealing.  Canonical Green transport across the explicit ambient
-and localized carrier equivalences.  No compiler or axiom-oracle verdict is
-claimed.
--/
 
 namespace YangMills.RG
 

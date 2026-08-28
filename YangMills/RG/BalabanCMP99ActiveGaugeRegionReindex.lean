@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision
 
-/-!
-PRE-VALIDATION: source present; `.olean` not yet materialized in a fresh cold checkout, and the result is not compiler-verified for sealing.  Generic active-region transport needed after the C6d
-ambient Green is specialized to the source-separated Step-7b carrier.  No
-compiler or axiom-oracle verdict is claimed.
--/
 
 namespace YangMills.RG
 

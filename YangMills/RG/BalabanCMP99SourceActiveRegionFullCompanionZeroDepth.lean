@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized in a fresh cold checkout, and the result is not compiler-verified for sealing.  Exact depth-zero companion coercivity.  This source
-has no compiler or axiom-oracle verdict.
-
 The positive-depth Poincare floor vanishes at depth zero and is not used
 here.  The terminal average is the identity, while the literal physical
 counting coefficient remains `spacing^(-2)` after the source normalization.

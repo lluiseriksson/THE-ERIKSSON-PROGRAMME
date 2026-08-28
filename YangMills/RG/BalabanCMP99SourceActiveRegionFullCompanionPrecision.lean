@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionCompression
 import YangMills.RG.BalabanCMP99SourceActiveRegionTerminalCoercivity
 
 /-!
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the compiler or axiom oracle.
-
 # Physical precision on the canonical full companion chain
 
 Starting from an arbitrary typed source-region chain, this file constructs
