@@ -24,7 +24,7 @@ open scoped Matrix.Norms.L2Operator RealInnerProductSpace
 
 noncomputable section
 
-variable {d M N Nc : ℕ} [NeZero M] [NeZero N]
+variable {d M N Nc : ℕ} [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
 /-- Restriction from a larger active region followed by literal zero
 extension from a nested smaller region is the identity on the smaller
@@ -49,7 +49,6 @@ theorem cmp99NestedActiveRegionRestriction_comp_extension_eq_id
       (if hSmall : x.1 ∈ OmegaSmall.sites then phi ⟨x.1, hSmall⟩ else 0)
     else 0) = phi x
   rw [dif_pos (hsub x.2), dif_pos x.2]
-  rfl
 
 /-- Exact compression of the complete recursively generated counting mass
 along any typed nesting of source-region chains. -/
