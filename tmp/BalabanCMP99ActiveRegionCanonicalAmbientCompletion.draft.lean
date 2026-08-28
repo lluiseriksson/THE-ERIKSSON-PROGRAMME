@@ -150,7 +150,8 @@ theorem isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion
     _ = min c 1 * ‖P x‖ ^ 2 + min c 1 * ‖Q x‖ ^ 2 := by ring
     _ ≤ c * ‖R x‖ ^ 2 + 1 * ‖Q x‖ ^ 2 := add_le_add hPc hQ1
     _ ≤ inner ℝ (R x) (K (R x)) + ‖Q x‖ ^ 2 := by
-      simpa using add_le_add hKRx le_rfl
+      have hQrefl : (1 : ℝ) * ‖Q x‖ ^ 2 ≤ ‖Q x‖ ^ 2 := by simp
+      exact add_le_add hKRx hQrefl
     _ = inner ℝ x
         (cmp99ActiveRegionCanonicalAmbientCompletion Omega K x) := hquad.symm
 
@@ -166,12 +167,15 @@ theorem cmp99RegionalDirichletPrecision_canonicalAmbientCompletion_eq
   let R := restrictZeroCLM (𝔤 := g) Omega
   have hRE : R.comp E = ContinuousLinearMap.id ℝ _ :=
     activeGaugeRegion_restrictZero_comp_extendZero Omega
+  have hRE_apply (psi : ActiveGaugeZeroCochain Omega g) : R (E psi) = psi := by
+    change (R.comp E) psi = psi
+    rw [hRE]
+    rfl
   apply ContinuousLinearMap.ext
   intro phi
-  have hREphi := DFunLike.congr_fun hRE phi
-  have hREKphi := DFunLike.congr_fun hRE (K phi)
   change R (E (K (R (E phi))) + (E phi - E (R (E phi)))) = K phi
-  rw [map_add, map_sub, hREphi, hREKphi, hREphi, sub_self, add_zero]
+  rw [map_add, map_sub]
+  simp only [hRE_apply, sub_self, add_zero]
 
 /-- The regional Green generated from the canonical ambient completion is
 the canonical covariance of the original regional precision.  The exterior
