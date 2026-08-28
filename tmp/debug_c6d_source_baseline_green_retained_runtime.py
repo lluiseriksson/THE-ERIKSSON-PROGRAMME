@@ -49,9 +49,13 @@ def git(repo: Path, *args: str) -> bytes:
 
 
 def compile_one(repo: Path, relative: str) -> tuple[int, float, str]:
+    module = Path(relative).with_suffix("")
+    module_output = Path(
+        *module.parts[:-1], *module.name.split(".")
+    ).with_suffix(".olean")
     output = (
         repo / ".lake" / "build" / "lib" / "lean" /
-        Path(relative).with_suffix(".olean")
+        module_output
     )
     output.parent.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
