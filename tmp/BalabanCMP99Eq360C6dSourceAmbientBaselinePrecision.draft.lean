@@ -107,6 +107,7 @@ theorem cmp99SourceActiveRegionFullCompanionPhysicalCoercivity_eq_C6dBaseline :
         (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) =
       cmp99Eq360C6dSourceBaselinePhysicalCoercivity
         R C hscale regions D hM halpha1 baselineRadiusBudget := by
+  dsimp only
   unfold cmp99Eq360C6dSourceBaselinePhysicalCoercivity
   unfold cmp99SourceActiveRegionTerminalPhysicalCoercivity
   rw [cmp99SourceActiveRegionFullCompanionCountingCoefficient_eq_regional]
