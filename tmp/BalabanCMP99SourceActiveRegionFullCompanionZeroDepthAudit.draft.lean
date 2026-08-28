@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionZeroDepth
+
+/-! SCRATCH / NOT SHIPPED. No compiler or axiom-oracle verdict. -/
+
+namespace YangMills.RG
+
+#print axioms isCoerciveCLM_cmp99SourceActiveRegionFullCompanionPrecision_zero
+#print axioms cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
+#print axioms isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision_zero
+
+end YangMills.RG

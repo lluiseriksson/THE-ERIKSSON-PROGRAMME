@@ -131,6 +131,14 @@ claimed for every depth, the graph must therefore do exactly one of:
 
 No positive-depth PASS may discharge this split by inference, and the base
 coefficient may not be normalized to one.
+
+`tmp/BalabanCMP99SourceActiveRegionFullCompanionZeroDepth.draft.lean`
+implements the first algebraic half of option 1: it transports the existing
+exact regional base-case coercivity to the internally generated full
+companion and then to the ordinary ambient carrier, retaining the literal
+physical counting coefficient.  It is scratch/NOT CHECKED and is not part of
+either currently pinned hot queue or the nine-pair cold manifest.  Its later
+compiler verdict must precede any enlargement of that manifest.
 ## Hot validation queue after the retained cold gate
 
 Published PRE-VALIDATION source head: `76bfe9c8` (with the generic-carrier
