@@ -70,6 +70,9 @@ theorem cmp99SourceFullActiveRegion_extendZero_eq_reindex
       phi ⟨x, hx⟩ else 0) =
     phi ((cmp99SourceFullActiveRegionSiteEquiv d N).symm x)
   simp [cmp99SourceFullActiveRegion, cmp99SourceFullActiveRegionSiteEquiv]
+  congr 1
+  apply Subtype.ext
+  rfl
 
 /-- Ambient reindexing of the internally constructed full-companion source
 precision. -/
