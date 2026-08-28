@@ -66,10 +66,12 @@ theorem cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
   exact cmp99SourceActiveRegionTerminalPhysicalCoercivity_pos
     regions (by norm_num : 2 ≤ 4) hM hdepth heta
     (cmp99Eq360C6dSourceLaplacianRetainedExtension
-      R C hscale regions D hM halpha1 baselineRadiusBudget)
+      (R := R) (C := C) (hscale := hscale) regions)
     baselineRadiusBudget.toRadiusChain
     (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
-      R C hscale regions D hM halpha1 baselineRadiusBudget)
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget))
     hsmall
 
 /-- The literal source C6d baseline precision is coercive with the internally
@@ -103,10 +105,12 @@ theorem isCoerciveCLM_cmp99Eq360C6dSourceBaselinePrecision
     (isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision
       regions (by norm_num : 2 ≤ 4) hM hdepth heta
       (cmp99Eq360C6dSourceLaplacianRetainedExtension
-        R C hscale regions D hM halpha1 baselineRadiusBudget)
+        (R := R) (C := C) (hscale := hscale) regions)
       baselineRadiusBudget.toRadiusChain
       (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
-        R C hscale regions D hM halpha1 baselineRadiusBudget)
+        (R := R) (C := C) (hscale := hscale) (regions := regions)
+        (D := D) (halpha1 := halpha1)
+        (baselineRadiusBudget := baselineRadiusBudget))
       hsmall)
 
 /-- The actual source-facing C6d input inherits the constructed baseline
