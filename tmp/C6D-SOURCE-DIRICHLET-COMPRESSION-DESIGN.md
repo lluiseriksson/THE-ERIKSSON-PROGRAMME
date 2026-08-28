@@ -132,6 +132,16 @@ claimed for every depth, the graph must therefore do exactly one of:
 No positive-depth PASS may discharge this split by inference, and the base
 coefficient may not be normalized to one.
 
+Static consumer audit fixes the conservative branch of this split.  Both
+`CMP99Eq342SourceLocalizedGreenCertificate` and
+`cmp96SourceSeparatedRegionalPrefix_eq342SourceLocalizedGreenCertificate`
+are parameterized by an arbitrary `depth : Nat`; neither carries a proof that
+the depth is positive.  The downstream three-species and localized-defect
+interfaces preserve that unrestricted depth.  Therefore the current graph
+cannot use option 2 by type-level reduction: the explicit depth-zero
+full-companion coercivity and Green remain required unless a later
+source-facing theorem proves a genuinely positive-depth indexing boundary.
+
 `tmp/BalabanCMP99SourceActiveRegionFullCompanionZeroDepth.draft.lean`
 implements the first algebraic half of option 1: it transports the existing
 exact regional base-case coercivity to the internally generated full
