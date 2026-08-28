@@ -44,10 +44,13 @@ theorem cmp99NestedActiveRegionExtension_extendZero_eq
   intro x
   by_cases hxSmall : x ∈ OmegaSmall.sites
   · have hxLarge : x ∈ OmegaLarge.sites := hsub hxSmall
-    simp [cmp99NestedActiveRegionExtension, hxSmall, hxLarge]
+    simp [cmp99NestedActiveRegionExtension, restrictZeroCLM,
+      extendZeroZeroCLM, hxSmall, hxLarge]
   · by_cases hxLarge : x ∈ OmegaLarge.sites
-    · simp [cmp99NestedActiveRegionExtension, hxSmall, hxLarge]
-    · simp [cmp99NestedActiveRegionExtension, hxSmall, hxLarge]
+    · simp [cmp99NestedActiveRegionExtension, restrictZeroCLM,
+        extendZeroZeroCLM, hxSmall, hxLarge]
+    · simp [cmp99NestedActiveRegionExtension, restrictZeroCLM,
+        extendZeroZeroCLM, hxSmall, hxLarge]
 
 /-- The regional covariant Laplacian is the exact nested Dirichlet
 compression of the same larger-region Laplacian. -/
@@ -92,7 +95,16 @@ theorem cmp99ActiveRegionSourceCovariantLaplacian_nested_compression_eq
       spacing (E phi) xLarge =
     cmp99ActiveRegionSourceCovariantLaplacian OmegaSmall rho background
       spacing phi x
-  rw [hLarge, hSmall, hExt]
+  calc
+    _ = (restrictZeroCLM OmegaLarge)
+        (cmp99GeneratedAmbientScaledCovariantLaplacian rho background spacing
+          (extendZeroZeroCLM OmegaLarge (E phi))) xLarge := hLarge
+    _ = (restrictZeroCLM OmegaSmall)
+        (cmp99GeneratedAmbientScaledCovariantLaplacian rho background spacing
+          (extendZeroZeroCLM OmegaSmall phi)) x := by
+      rw [hExt]
+      simp [restrictZeroCLM]
+    _ = _ := hSmall.symm
 
 /-- Exact nested compression of the complete generated source precision.
 The Laplacian and mass equalities are invoked independently before their
@@ -152,10 +164,19 @@ theorem CMP99SourceNestedRegionChains.sourceGaugePrecision_compression
   have hQphi := congrArg
     (fun A : ActiveGaugeZeroCochain OmegaSmall (SUNLieCoord Nc) →L[ℝ]
         ActiveGaugeZeroCochain OmegaSmall (SUNLieCoord Nc) => A phi) hQ
+  have hLphi' : R (Llarge (E phi)) = Lsmall phi := by
+    simpa [ContinuousLinearMap.comp_apply] using hLphi
+  have hQphi' :
+      R (Tlarge.Qprime.adjoint (Tlarge.Qprime (E phi))) =
+        Tsmall.Qprime.adjoint (Tsmall.Qprime phi) := by
+    simpa [ContinuousLinearMap.comp_apply] using hQphi
   simp only [cmp99SourceGaugePrecision, ContinuousLinearMap.comp_apply,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply, map_add,
     map_smul]
-  rw [hLphi, hQphi]
+  change R (Llarge (E phi)) +
+      a • R (Tlarge.Qprime.adjoint (Tlarge.Qprime (E phi))) =
+    Lsmall phi + a • Tsmall.Qprime.adjoint (Tsmall.Qprime phi)
+  rw [hLphi', hQphi']
 
 end
 
