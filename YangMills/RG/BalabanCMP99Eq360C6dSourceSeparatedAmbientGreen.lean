@@ -345,7 +345,8 @@ theorem cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_ambient
   unfold cmp99RegionalDirichletGreen
     cmp99Eq360C6dSourceSeparatedAmbientGreen
     cmp99SourceAmbientDirichletGreen
-  rw [cmp99Eq360C6dSourceSeparatedRegionalDirichletPrecision_eq_ambient]
+  simp only [
+    cmp99Eq360C6dSourceSeparatedRegionalDirichletPrecision_eq_ambient]
 
 /-- The source-separated Dirichlet precision is a left inverse of the
 internally generated source Green.  This is the exact inverse identity used
