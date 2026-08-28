@@ -21,7 +21,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
-import re
 import subprocess
 import sys
 from pathlib import Path
@@ -30,14 +29,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VERIFIER_PATH = ROOT / "tmp" / "verify_c6d_source_coercivity_green_evidence.py"
 PATH_MANIFEST = ROOT / "tmp" / "c6d-source-coercivity-green-seal-paths.txt"
-
-PRE_NOTICE = re.compile(
-    rb"/-!\n"
-    rb"PRE-VALIDATION: this module's source is present, its `\.olean` has not yet\n"
-    rb"been materialized, and its result has not yet been verified by the compiler\.\n"
-    rb"-/\n"
-)
-
 
 def load_verifier():
     spec = importlib.util.spec_from_file_location("c6d_cold_verifier", VERIFIER_PATH)
@@ -131,10 +122,36 @@ def transformed_bytes(relative: str, source_sha: str) -> tuple[bytes, bytes]:
     canonical = blob.stdout
     if b"\r\n" in canonical:
         raise RuntimeError(f"C6D_SEAL_SOURCE_BLOB_CRLF={relative}")
-    matches = list(PRE_NOTICE.finditer(canonical))
-    if len(matches) != 1:
-        raise RuntimeError(f"C6D_SEAL_PRE_NOTICE_COUNT={relative}:{len(matches)}")
-    sealed = PRE_NOTICE.sub(b"", canonical, count=1)
+    if canonical.count(b"PRE-VALIDATION") != 1:
+        raise RuntimeError(
+            "C6D_SEAL_PRE_NOTICE_COUNT="
+            f"{relative}:{canonical.count(b'PRE-VALIDATION')}"
+        )
+
+    lines = canonical.splitlines(keepends=True)
+    marker_index = next(
+        (index for index, line in enumerate(lines) if b"PRE-VALIDATION" in line),
+        None,
+    )
+    if marker_index is None:
+        raise RuntimeError(f"C6D_SEAL_PRE_NOTICE_NOT_FOUND={relative}")
+
+    marker_line = lines[marker_index]
+    if b"/-!" in marker_line and b"-/" in marker_line:
+        del lines[marker_index]
+    else:
+        end = marker_index + 1
+        while end < len(lines):
+            stripped = lines[end].strip()
+            if stripped == b"" or stripped.startswith(b"-/"):
+                break
+            end += 1
+        del lines[marker_index:end]
+        if marker_index < len(lines) and lines[marker_index].strip() == b"":
+            del lines[marker_index]
+
+    sealed = b"".join(lines)
+    sealed = sealed.replace(b"/-!\n-/\n", b"", 1)
     if b"PRE-VALIDATION" in sealed:
         raise RuntimeError(f"C6D_SEAL_PRE_NOTICE_REMAINS={relative}")
     return original, sealed
