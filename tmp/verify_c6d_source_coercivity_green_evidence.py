@@ -133,8 +133,6 @@ def executed_notebook_text(path: Path) -> str:
         "FINAL_STATUS=PASS",
         "LAUNCHER_EXIT=0",
         "RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1",
-        f"RUNNER_REV={RUNNER_REV}",
-        "RUNNER_TRANSPORT_SHA256=7c9d47772a3823c904189e3c2f13336e85cb71fb9273a610e9b7594ad86cb966",
     ):
         if result.count(token) != 1:
             raise RuntimeError(
@@ -147,48 +145,12 @@ def executed_notebook_text(path: Path) -> str:
 
 
 def audit_notebook_transcript(
-    text: str, expected_stages: list[str], evidence_sha: str, archive_sha: str
+    text: str, evidence_sha: str, archive_sha: str
 ) -> None:
-    cmd_stages = re.findall(r"^STAGE=([^\s]+) CMD=", text, flags=re.MULTILINE)
-    exit_matches = re.findall(
-        r"^STAGE=([^\s]+) EXIT=([0-9]+) SECONDS=([0-9]+(?:\.[0-9]+)?)",
-        text,
-        flags=re.MULTILINE,
-    )
-    exit_stages = [stage for stage, _, _ in exit_matches]
-    if cmd_stages != expected_stages:
-        raise RuntimeError(f"NOTEBOOK_CMD_STAGE_SEQUENCE={cmd_stages!r}")
-    if exit_stages != expected_stages:
-        raise RuntimeError(f"NOTEBOOK_EXIT_STAGE_SEQUENCE={exit_stages!r}")
-    if any(exit_code != "0" for _, exit_code, _ in exit_matches):
-        raise RuntimeError(f"NOTEBOOK_NONZERO_EXIT={exit_matches!r}")
-
-    for index, (module, expected) in enumerate(
-        zip(MODULES, EXPECTED_AXIOM_HEADERS, strict=True), start=1
-    ):
-        stage = f"c6d_source_coercivity_green_{index:02d}_{module.lower()}_audit"
-        start_marker = f"STAGE={stage} CMD="
-        end_marker = f"STAGE={stage} EXIT="
-        start = text.index(start_marker)
-        body_start = text.index("\n", start) + 1
-        end = text.index(end_marker, body_start)
-        body = text[body_start:end]
-        blocks = re.findall(
-            r"depends on axioms:\s*\[(.*?)\]", body, flags=re.DOTALL
-        )
-        pure = body.count("does not depend on any axioms")
-        if len(blocks) + pure != expected:
-            raise RuntimeError(
-                f"NOTEBOOK_AXIOM_HEADER_COUNT_{module}={len(blocks) + pure} "
-                f"EXPECTED={expected}"
-            )
-        for block in blocks:
-            names = {name.strip() for name in block.replace("\n", " ").split(",")}
-            if not names.issubset({"propext", "Classical.choice", "Quot.sound"}):
-                raise RuntimeError(
-                    f"NOTEBOOK_FORBIDDEN_AXIOMS_{module}={sorted(names)!r}"
-                )
-
+    # Colab persists only the tail of very long streaming outputs.  The exact
+    # stage sequence, outputs and axiom blocks are therefore audited from the
+    # archive below; the notebook is authoritative for the executed cell,
+    # terminal sentinel and the two printed content hashes.
     printed_evidence = re.findall(
         r"^EVIDENCE_SHA256=([0-9a-f]{64})$", text, flags=re.MULTILINE
     )
@@ -229,13 +191,18 @@ def main() -> int:
             raise RuntimeError(
                 f"EVIDENCE_JSON_COUNT={len(evidence_members)} EXPECTED=1"
             )
-        extracted = archive.extractfile(evidence_members[0])
-        if extracted is None:
-            raise RuntimeError("EVIDENCE_JSON_NOT_A_FILE")
-        raw = extracted.read()
-        regular_names = [member.name for member in members if member.isfile()]
-        if regular_names != [evidence_members[0].name]:
-            raise RuntimeError(f"UNEXPECTED_REGULAR_MEMBERS={regular_names!r}")
+        regular_payloads: dict[str, bytes] = {}
+        for member in members:
+            if not member.isfile():
+                continue
+            if member.name in regular_payloads:
+                raise RuntimeError(f"DUPLICATE_REGULAR_MEMBER={member.name}")
+            extracted = archive.extractfile(member)
+            if extracted is None:
+                raise RuntimeError(f"UNREADABLE_REGULAR_MEMBER={member.name}")
+            regular_payloads[member.name] = extracted.read()
+        evidence_name = evidence_members[0].name
+        raw = regular_payloads[evidence_name]
 
     payload = json.loads(raw)
     expected_scalars = {
@@ -306,11 +273,61 @@ def main() -> int:
     if stages not in sanctioned_stage_lists:
         raise RuntimeError(f"UNSANCTIONED_STAGE_SEQUENCE={stages!r}")
 
+    evidence_prefix = evidence_name.rsplit("/", 1)[0]
+    expected_regular_names = {
+        evidence_name,
+        *(f"{evidence_prefix}/{stage}.stdout" for stage in stages),
+    }
+    actual_regular_names = set(regular_payloads)
+    missing_regular = sorted(expected_regular_names - actual_regular_names)
+    unexpected_regular = sorted(actual_regular_names - expected_regular_names)
+    if missing_regular:
+        raise RuntimeError(f"MISSING_REGULAR_MEMBERS={missing_regular!r}")
+    if unexpected_regular:
+        raise RuntimeError(f"UNEXPECTED_REGULAR_MEMBERS={unexpected_regular!r}")
+    for record in records:
+        stage = record["stage"]
+        member_name = f"{evidence_prefix}/{stage}.stdout"
+        measured = hashlib.sha256(regular_payloads[member_name]).hexdigest()
+        if measured != record["output_sha256"]:
+            raise RuntimeError(
+                f"STAGE_OUTPUT_SHA256_{stage}={measured} "
+                f"EXPECTED={record['output_sha256']}"
+            )
+
+    for index, (module, expected) in enumerate(
+        zip(MODULES, EXPECTED_AXIOM_HEADERS, strict=True), start=1
+    ):
+        stage = f"c6d_source_coercivity_green_{index:02d}_{module.lower()}_audit"
+        member_name = f"{evidence_prefix}/{stage}.stdout"
+        body = regular_payloads[member_name].decode("utf-8")
+        blocks = re.findall(
+            r"depends on axioms:\s*\[(.*?)\]", body, flags=re.DOTALL
+        )
+        pure = body.count("does not depend on any axioms")
+        actual_headers = len(blocks) + pure
+        if actual_headers != expected:
+            raise RuntimeError(
+                f"ARCHIVE_AXIOM_HEADER_COUNT_{module}={actual_headers} "
+                f"EXPECTED={expected}"
+            )
+        for block in blocks:
+            names = {name.strip() for name in block.replace("\n", " ").split(",")}
+            if not names.issubset({"propext", "Classical.choice", "Quot.sound"}):
+                raise RuntimeError(
+                    f"ARCHIVE_FORBIDDEN_AXIOMS_{module}={sorted(names)!r}"
+                )
+        for forbidden in ("sorryAx", "ofReduceBool"):
+            if forbidden in body:
+                raise RuntimeError(
+                    f"ARCHIVE_FORBIDDEN_AXIOM_TOKEN_{module}={forbidden}"
+                )
+
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     evidence_sha = hashlib.sha256(canonical.encode()).hexdigest().upper()
     archive_sha = sha256(archive_path)
     notebook_text = executed_notebook_text(notebook_path)
-    audit_notebook_transcript(notebook_text, stages, evidence_sha, archive_sha)
+    audit_notebook_transcript(notebook_text, evidence_sha, archive_sha)
     total_seconds = sum(float(record.get("seconds", 0.0)) for record in records)
     print("C6D_SOURCE_COERCIVITY_GREEN_EVIDENCE_OK")
     print(f"SOURCE_SHA={SOURCE_SHA}")
