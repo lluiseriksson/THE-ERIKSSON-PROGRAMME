@@ -18,6 +18,7 @@ VERIFIER_PATH = (
 PATH_MANIFEST = (
     ROOT / "tmp" / "c6d-source-separated-ambient-green-seal-paths.txt"
 )
+EXPECTED_EVIDENCE_SENTINEL = "C6D_SOURCE_SEPARATED_AMBIENT_GREEN_EVIDENCE_OK"
 
 
 def load_verifier():
@@ -50,7 +51,7 @@ def scoped_paths(verifier) -> list[str]:
         expected.extend(
             [f"YangMills/RG/{module}.lean", f"YangMills/RG/{module}Audit.lean"]
         )
-    if paths != expected or len(set(paths)) != 4:
+    if paths != expected or len(set(paths)) != len(expected):
         raise RuntimeError(f"C6D_SOURCE_GREEN_SEAL_SCOPE={paths!r}")
     return paths
 
@@ -66,7 +67,7 @@ def require_evidence(verifier, archive: Path, notebook: Path) -> None:
     )
     if child.returncode != 0:
         raise RuntimeError("C6D_SOURCE_GREEN_SEAL_EVIDENCE_FAILED=\n" + child.stdout)
-    if "C6D_SOURCE_SEPARATED_AMBIENT_GREEN_EVIDENCE_OK" not in child.stdout:
+    if EXPECTED_EVIDENCE_SENTINEL not in child.stdout:
         raise RuntimeError("C6D_SOURCE_GREEN_SEAL_EVIDENCE_SENTINEL_MISSING")
     if f"SOURCE_SHA={verifier.SOURCE_SHA}" not in child.stdout:
         raise RuntimeError("C6D_SOURCE_GREEN_SEAL_EVIDENCE_SOURCE_MISSING")
@@ -145,7 +146,7 @@ def main() -> int:
     if not args.apply:
         print(
             "C6D_SOURCE_SEPARATED_AMBIENT_GREEN_SEAL_PREVIEW_OK "
-            f"files=4 source_sha={verifier.SOURCE_SHA} "
+            f"files={len(paths)} source_sha={verifier.SOURCE_SHA} "
             f"sealed_manifest_sha256={expected_digest}"
         )
         return 0
@@ -170,7 +171,7 @@ def main() -> int:
 
     print(
         "C6D_SOURCE_SEPARATED_AMBIENT_GREEN_SEAL_APPLY_OK "
-        f"files=4 source_sha={verifier.SOURCE_SHA} "
+        f"files={len(paths)} source_sha={verifier.SOURCE_SHA} "
         f"sealed_manifest_sha256={expected_digest}"
     )
     return 0

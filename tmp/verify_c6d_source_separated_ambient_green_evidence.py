@@ -24,6 +24,7 @@ SOURCE_BLOBS_SHA256 = (
 NOTEBOOK_CELL_SOURCE_SHA256 = (
     "CD21D14AFE31FD30BE168FCB1D74570D791279455C5330EE4236872FA2706B7C"
 )
+SUCCESS_SENTINEL = "C6D_SOURCE_SEPARATED_AMBIENT_GREEN_EVIDENCE_OK"
 
 MODULES = [
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen",
@@ -294,7 +295,7 @@ def main() -> int:
     notebook_text = executed_notebook_text(notebook_path)
     audit_notebook_transcript(notebook_text, evidence_sha, archive_sha)
     total_seconds = sum(float(record["seconds"]) for record in records)
-    print("C6D_SOURCE_SEPARATED_AMBIENT_GREEN_EVIDENCE_OK")
+    print(SUCCESS_SENTINEL)
     print(f"SOURCE_SHA={SOURCE_SHA}")
     print(f"RUNNER_REV={RUNNER_REV}")
     print(f"RECORDS={len(records)}")
