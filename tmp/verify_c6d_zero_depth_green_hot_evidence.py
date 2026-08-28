@@ -10,7 +10,7 @@ import re
 import tarfile
 
 
-SOURCE_SHA = "be4e66a1262e132cf0721fb0f3768e9e884bb3ad"
+SOURCE_SHA = "2c25f7bac370306b6ebbc96e05d048c0b0cf15a9"
 ROOT = "hrpoly-c6d-zero-depth-green-hot-evidence"
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 EXPECTED_AXIOM_HEADERS = 6
