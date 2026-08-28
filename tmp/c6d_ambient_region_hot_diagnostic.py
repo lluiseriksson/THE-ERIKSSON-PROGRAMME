@@ -20,7 +20,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "fb23a5ad61848e887609f12130fc28f020b143e2"
+SOURCE_SHA = "fb23a5ad4c15a21d3905b5e66ff1628891340361"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-ambient-region-hot-evidence")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
