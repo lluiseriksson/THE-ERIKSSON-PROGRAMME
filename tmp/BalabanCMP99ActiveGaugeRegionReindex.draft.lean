@@ -188,6 +188,27 @@ theorem finitePiLpTypedKernelReindex_sourceAmbientDirichletPrecision
   rw [cmp99GaugeZeroCochainReindex_symm_extendZero]
   rw [cmp99ActiveGaugeZeroCochainReindex_restrictZero]
 
+/-- Pulling the transported Dirichlet compression back through the restricted
+site equivalence recovers the original compression.  This is the exact
+inverse-orientation statement consumed by the source-separated carrier. -/
+theorem finitePiLpTypedKernelReindex_symm_sourceAmbientDirichletPrecision
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (e : FinBox d N ≃ FinBox d N') (Omega : ActiveGaugeRegion d N)
+    (K : GaugeZeroCochain d N g →L[ℝ] GaugeZeroCochain d N g) :
+    finitePiLpTypedKernelReindex
+        (cmp99ActiveGaugeRegionSiteReindexEquiv e Omega).symm
+        (cmp99ActiveGaugeRegionSiteReindexEquiv e Omega).symm
+        (cmp99SourceAmbientDirichletPrecision
+          (cmp99ActiveGaugeRegionReindex e Omega)
+          (finitePiLpTypedKernelReindex e e K)) =
+      cmp99SourceAmbientDirichletPrecision Omega K := by
+  rw [← finitePiLpTypedKernelReindex_sourceAmbientDirichletPrecision
+    e Omega K]
+  exact finitePiLpTypedKernelReindex_symm_reindex
+    (cmp99ActiveGaugeRegionSiteReindexEquiv e Omega)
+    (cmp99SourceAmbientDirichletPrecision Omega K)
+
 end
 
 end YangMills.RG

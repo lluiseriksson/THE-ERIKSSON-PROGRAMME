@@ -177,9 +177,12 @@ is the conjugate of that producer by `e.symm`; its local compression is the
 conjugate of the C6d local compression by the restricted site equivalence.
 Neither `OmegaSource = reindex e.symm OmegaC6d` nor cancellation of the two
 operator reindexings is definitional.  The former must cite
-`cmp99ActiveGaugeRegionReindex_symm_reindex_eq`; the latter needs its own
-named inverse-reindex lemma before the final Green equality can be read on
-the source carrier.
+`cmp99ActiveGaugeRegionReindex_symm_reindex_eq`.  The scratch dictionary now
+supplies the latter as `finitePiLpTypedKernelReindex_symm_reindex`, together
+with the derived inverse-orientation compression theorem
+`finitePiLpTypedKernelReindex_symm_sourceAmbientDirichletPrecision`.  Both
+still await a compiler/audit verdict before the final Green equality can be
+read on the source carrier.
 
 The generic scratch dictionary now proves the two unconditional support
 facts separately: ambient/local reindexing commutes with zero extension and

@@ -14,3 +14,4 @@ localized carrier transport.  No compiler or axiom-oracle verdict is claimed.
 #print axioms YangMills.RG.cmp99ActiveGaugeZeroCochainReindex_restrictZero
 #print axioms YangMills.RG.cmp99GaugeZeroCochainReindex_symm_extendZero
 #print axioms YangMills.RG.finitePiLpTypedKernelReindex_sourceAmbientDirichletPrecision
+#print axioms YangMills.RG.finitePiLpTypedKernelReindex_symm_sourceAmbientDirichletPrecision
