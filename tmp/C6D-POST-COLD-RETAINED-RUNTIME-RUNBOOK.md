@@ -1,6 +1,6 @@
 # C6d retained-runtime post-cold runbook
 
-Status: execution instructions only.  Neither hot queue is seal evidence.
+Status: execution instructions only.  None of the three hot queues is seal evidence.
 
 ## Entry gate
 
@@ -24,7 +24,7 @@ from google.colab import files
 files.download("/content/hrpoly-c6d-source-coercivity-green-evidence.tar.gz")
 ```
 
-Keep the runtime assigned after the download and execute the two hot queues
+Keep the runtime assigned after the download and execute the three hot queues
 below in order.
 
 ## Hot queue 1: six full-companion/compression pairs
@@ -90,14 +90,46 @@ except SystemExit as exc:
         raise
 ```
 
-Preserve both hot evidence directories before releasing the runtime.  Hot
+Continue to queue 3 only on literal hot `FINAL_STATUS=PASS`.
+
+## Hot queue 3: exact depth-zero full companion and ambient coercivity
+
+Runner object:
+`32155c5ae3cd30a931483eaecc6278c565e0ddaa:tmp/c6d_zero_depth_hot_diagnostic.py`
+
+SHA-256:
+`bdd1c1cd2d3b6dc3f5b0b4ce53829545499c01854b94491ba0d6f1d06a57a3fd`
+
+The runner checks out exact scratch source
+`4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5`, materializes the exact
+depth-zero full-companion source/audit pair, expects three axiom headers, and
+rejects anything outside `{propext, Classical.choice, Quot.sound}`.
+
+```python
+import hashlib, pathlib, runpy, urllib.request
+
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/32155c5ae3cd30a931483eaecc6278c565e0ddaa/tmp/c6d_zero_depth_hot_diagnostic.py"
+expected = "bdd1c1cd2d3b6dc3f5b0b4ce53829545499c01854b94491ba0d6f1d06a57a3fd"
+payload = urllib.request.urlopen(url, timeout=60).read()
+actual = hashlib.sha256(payload).hexdigest()
+assert actual == expected, (actual, expected)
+path = pathlib.Path("/content/c6d_zero_depth_hot_diagnostic.py")
+path.write_bytes(payload)
+try:
+    runpy.run_path(str(path), run_name="__main__")
+except SystemExit as exc:
+    if exc.code not in (None, 0):
+        raise
+```
+
+Preserve all three hot evidence directories before releasing the runtime.  Hot
 PASS authorizes only preparation of corrected PRE-VALIDATION promotion; a
-later cold checkout is required to seal.  Neither queue moves `20/41`,
+later cold checkout is required to seal.  No hot queue moves `20/41`,
 attains window 15, or instantiates `TermSource`.
 
-## Exit gate: package the two hot diagnostics
+## Exit gate: package the three hot diagnostics
 
-Only after both hot queues emit literal PASS, create one archive and print its
+Only after all three hot queues emit literal PASS, create one archive and print its
 digest before requesting the browser download:
 
 ```python
@@ -108,6 +140,7 @@ archive = pathlib.Path("/content/hrpoly-c6d-post-cold-hot-evidence.tar.gz")
 roots = [
     pathlib.Path("/content/hrpoly-c6d-full-companion-hot-evidence"),
     pathlib.Path("/content/hrpoly-c6d-ambient-region-hot-evidence"),
+    pathlib.Path("/content/hrpoly-c6d-zero-depth-hot-evidence"),
 ]
 for root in roots:
     assert root.is_dir(), root
@@ -127,8 +160,8 @@ python tmp/verify_c6d_post_cold_hot_evidence.py \
   <downloaded-hrpoly-c6d-post-cold-hot-evidence.tar.gz>
 ```
 
-It requires exactly 28 stage logs, the two pinned source SHAs, all four text
-guards, and exactly 46 allowed axiom headers (`25 + 21`).  Its result remains
+It requires exactly 34 stage logs, the three pinned source SHAs, all five text
+guards, and exactly 49 allowed axiom headers (`25 + 21 + 3`).  Its result remains
 classified `HOT_DIAGNOSTIC_ONLY`; it is not cold seal evidence.  Disconnect
 and delete the runtime only after the archive and executed notebook are
 preserved.  A missing or mismatched download is an evidence-transport

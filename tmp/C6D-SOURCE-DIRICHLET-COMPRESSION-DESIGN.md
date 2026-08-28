@@ -229,9 +229,9 @@ with restriction.  The inverse zero-extension statement is obtained by
 applying the actual inverse equivalence and then reversing the resulting
 equality; no `simp`-only identification of the two carriers is accepted.
 
-## Finite cold-seal boundary after both hot queues
+## Finite cold-seal boundary after the retained-runtime hot queues
 
-If and only if both retained-runtime queues emit literal PASS, promote the
+If and only if the first two retained-runtime queues emit literal PASS, promote the
 three scratch source/audit pairs under their intended module names and add
 the nine audit imports to `YangMillsCore`:
 
@@ -254,8 +254,13 @@ check that object rather than maintain an independent copy of the nine paths
 or their readout counts.
 
 The retained-runtime transport is checked independently by
-`tmp/verify_c6d_post_cold_hot_evidence.py`.  It requires the exact 28 stage
-logs from both hot queues, the two pinned source SHAs, four successful text
-guards and all `25 + 21 = 46` expected axiom headers.  Even a verifier PASS is
+`tmp/verify_c6d_post_cold_hot_evidence.py`.  The retained runtime must also run
+the exact depth-zero diagnostic pinned at
+`32155c5ae3cd30a931483eaecc6278c565e0ddaa` (blob SHA-256
+`bdd1c1cd2d3b6dc3f5b0b4ce53829545499c01854b94491ba0d6f1d06a57a3fd`)
+against source `4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5`.  The verifier therefore
+requires the exact 34 stage logs from all three hot queues, the three pinned
+source SHAs, five successful text guards and all `25 + 21 + 3 = 49` expected
+axiom headers.  Even a verifier PASS is
 still diagnostic evidence only; its purpose is to make the later nine-pair
 cold boundary finite and reproducible, not to weaken that boundary.

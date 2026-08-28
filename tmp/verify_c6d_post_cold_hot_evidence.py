@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed verifier for the two retained-runtime C6d hot queues.
+"""Fail-closed verifier for the three retained-runtime C6d hot queues.
 
 The verified archive is diagnostic evidence only.  It can authorize promotion
 of the exact PRE-VALIDATION sources to a later cold queue, but it is not cold
@@ -17,6 +17,7 @@ import tarfile
 
 FULL_SOURCE_SHA = "76bfe9c82ffd1e409d1c673b68324449171b3318"
 AMBIENT_SOURCE_SHA = "1176948c6a511d017780a54f1cbc8a72b6dea972"
+ZERO_SOURCE_SHA = "4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5"
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 FULL_MODULES = [
@@ -36,6 +37,7 @@ AMBIENT_MODULES = [
 
 FULL_ROOT = "hrpoly-c6d-full-companion-hot-evidence"
 AMBIENT_ROOT = "hrpoly-c6d-ambient-region-hot-evidence"
+ZERO_ROOT = "hrpoly-c6d-zero-depth-hot-evidence"
 
 
 def sha256(path: Path) -> str:
@@ -116,6 +118,17 @@ def ambient_expected_paths() -> set[str]:
     return paths
 
 
+def zero_expected_paths() -> set[str]:
+    return {
+        f"{ZERO_ROOT}/zero_depth_fetch_exact_sha.stdout",
+        f"{ZERO_ROOT}/zero_depth_checkout_exact_sha.stdout",
+        f"{ZERO_ROOT}/zero_depth_verify_head.stdout",
+        f"{ZERO_ROOT}/zero_depth_text_guard.stdout",
+        f"{ZERO_ROOT}/zero_depth_source.stdout",
+        f"{ZERO_ROOT}/zero_depth_audit.stdout",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("archive", type=Path)
@@ -127,7 +140,7 @@ def main() -> int:
     with tarfile.open(archive_path, "r:gz") as archive:
         members = safe_regular_members(archive)
 
-    expected = full_expected_paths() | ambient_expected_paths()
+    expected = full_expected_paths() | ambient_expected_paths() | zero_expected_paths()
     actual = set(members)
     missing = sorted(expected - actual)
     unexpected = sorted(actual - expected)
@@ -148,6 +161,11 @@ def main() -> int:
         raise RuntimeError(
             f"AMBIENT_SOURCE_SHA={ambient_head!r} EXPECTED={AMBIENT_SOURCE_SHA!r}"
         )
+    zero_head = members[f"{ZERO_ROOT}/zero_depth_verify_head.stdout"].decode().strip()
+    if zero_head != ZERO_SOURCE_SHA:
+        raise RuntimeError(
+            f"ZERO_SOURCE_SHA={zero_head!r} EXPECTED={ZERO_SOURCE_SHA!r}"
+        )
 
     for index, (module, count) in enumerate(FULL_MODULES, start=1):
         path = f"{FULL_ROOT}/hot_{index:02d}_{(module + 'Audit').lower()}.stdout"
@@ -155,12 +173,18 @@ def main() -> int:
     for index, (module, count) in enumerate(AMBIENT_MODULES, start=1):
         path = f"{AMBIENT_ROOT}/ambient_region_{index:02d}_{module.lower()}_audit.stdout"
         audit_axioms(members[path], count, module)
+    audit_axioms(
+        members[f"{ZERO_ROOT}/zero_depth_audit.stdout"],
+        3,
+        "BalabanCMP99SourceActiveRegionFullCompanionZeroDepth",
+    )
 
     for guard in (
         f"{FULL_ROOT}/hot_text_guard.stdout",
         f"{AMBIENT_ROOT}/text_guard_c6d-active-region-reindex-draft-paths.stdout",
         f"{AMBIENT_ROOT}/text_guard_c6d-ambient-baseline-draft-paths.stdout",
         f"{AMBIENT_ROOT}/text_guard_c6d-active-region-reindex-green-draft-paths.stdout",
+        f"{ZERO_ROOT}/zero_depth_text_guard.stdout",
     ):
         if "LEAN_OVERLAY_TEXT_OK" not in members[guard].decode("utf-8"):
             raise RuntimeError(f"TEXT_GUARD_NOT_GREEN={guard}")
@@ -168,8 +192,9 @@ def main() -> int:
     print("C6D_POST_COLD_HOT_EVIDENCE_OK")
     print(f"FULL_SOURCE_SHA={FULL_SOURCE_SHA}")
     print(f"AMBIENT_SOURCE_SHA={AMBIENT_SOURCE_SHA}")
+    print(f"ZERO_SOURCE_SHA={ZERO_SOURCE_SHA}")
     print(f"ARCHIVE_MEMBERS={len(members)}")
-    print(f"AXIOM_HEADERS={sum(n for _, n in FULL_MODULES + AMBIENT_MODULES)}")
+    print(f"AXIOM_HEADERS={sum(n for _, n in FULL_MODULES + AMBIENT_MODULES) + 3}")
     print(f"ARCHIVE_SHA256={sha256(archive_path)}")
     print("CLASSIFICATION=HOT_DIAGNOSTIC_ONLY")
     return 0
