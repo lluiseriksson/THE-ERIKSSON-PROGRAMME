@@ -111,9 +111,9 @@ theorem cmp99GaugeZeroCochainReindex_extendZero
   · have hx : e.symm y ∈ Omega.sites :=
       (mem_cmp99ActiveGaugeRegionReindex_iff e Omega y).mp hy
     rw [dif_pos hx, dif_pos hy]
-    rw [cmp99ActiveGaugeZeroCochainReindex,
-      LinearIsometryEquiv.piLpCongrLeft_apply]
-    rfl
+    simp [cmp99ActiveGaugeZeroCochainReindex,
+      LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft',
+      cmp99ActiveGaugeRegionSiteReindexEquiv]
   · have hx : e.symm y ∉ Omega.sites := by
       intro hx
       exact hy ((mem_cmp99ActiveGaugeRegionReindex_iff e Omega y).mpr hx)
@@ -131,11 +131,11 @@ theorem cmp99ActiveGaugeZeroCochainReindex_restrictZero
         (cmp99GaugeZeroCochainReindex e phi) := by
   apply PiLp.ext
   intro y
-  rw [cmp99ActiveGaugeZeroCochainReindex,
+  simp [cmp99ActiveGaugeZeroCochainReindex,
     cmp99GaugeZeroCochainReindex,
     LinearIsometryEquiv.piLpCongrLeft_apply,
-    LinearIsometryEquiv.piLpCongrLeft_apply]
-  rfl
+    Equiv.piCongrLeft', cmp99ActiveGaugeRegionSiteReindexEquiv,
+    restrictZeroCLM]
 
 /-- The inverse ambient transport of a zero extension is the zero extension
 of the inverse localized transport. -/
@@ -181,14 +181,6 @@ theorem finitePiLpTypedKernelReindex_sourceAmbientDirichletPrecision
   simp only [finitePiLpTypedKernelReindex,
     cmp99SourceAmbientDirichletPrecision,
     ContinuousLinearMap.comp_apply]
-  change cmp99ActiveGaugeZeroCochainReindex e Omega
-      (restrictZeroCLM Omega
-        (K ((cmp99GaugeZeroCochainReindex e).symm
-          (extendZeroZeroCLM (cmp99ActiveGaugeRegionReindex e Omega) phi)))) =
-    restrictZeroCLM (cmp99ActiveGaugeRegionReindex e Omega)
-      (cmp99GaugeZeroCochainReindex e
-        (K ((cmp99GaugeZeroCochainReindex e).symm
-          (extendZeroZeroCLM (cmp99ActiveGaugeRegionReindex e Omega) phi))))
   rw [cmp99GaugeZeroCochainReindex_symm_extendZero]
   rw [cmp99ActiveGaugeZeroCochainReindex_restrictZero]
 
