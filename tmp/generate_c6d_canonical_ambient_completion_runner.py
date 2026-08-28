@@ -63,7 +63,7 @@ def generate(source_sha: str) -> str:
             "``20/41`` or inhabit ``TermSource``.\n",
         ),
         (
-            "c6d-source-separated-ambient-green-v2",
+            "c6d-source-separated-ambient-green-v3",
             "c6d-canonical-ambient-completion-v4",
         ),
         (
