@@ -12,3 +12,4 @@ been materialized, and its result has not yet been verified by the compiler.
 #print axioms YangMills.RG.exists_pos_poincare_admissibleRadius
 #print axioms YangMills.RG.exists_pos_poincare_closedBudget
 #print axioms YangMills.RG.exists_pos_poincare_pivot_closedBudget
+#print axioms YangMills.RG.exists_pos_poincare_pivot_alpha1_closedBudget

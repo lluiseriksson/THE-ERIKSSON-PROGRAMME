@@ -181,37 +181,38 @@ is not a fully reached physical endpoint.
 
 ## Scratch implementation status
 
-`tmp/PoincarePositiveRadiusReachability.lean` now contains seven proposed
-declarations implementing the route above, with a seven-line sibling axiom
+`tmp/PoincarePositiveRadiusReachability.lean` now contains eight proposed
+declarations implementing the route above, with an eight-line sibling axiom
 audit in `tmp/PoincarePositiveRadiusReachabilityAudit.lean`.  The exact text
 guard reports
 
 ```text
 LEAN_OVERLAY_TEXT_OK files=2
-POINCARE_POSITIVE_RADIUS_STATIC source_decls=7 audit_prints=7
+POINCARE_POSITIVE_RADIUS_STATIC source_decls=8 audit_prints=8
 ```
 
 Source SHA-256:
-`5659CCC5C4FEA43794AE57E399B195961A9662A47B1E5F032471E14B17BC9FAC`.
+`5E89500F4A786432F23F10D68540933AD5805CB7ACFD80A558289E18BB18058D`.
 Audit SHA-256:
-`2EB33641451CFF2F25D0685E9634FCA2DECED191BFF8D06B02AAEF34B3C961B7`.
+`91AED2683FD8A9316094684016560D8D084828B95AEB72618144E96985FAAC29`.
 These are static scratch hashes, not compiler evidence.
 
 The deterministic read-only promotion preview additionally reports
 
 ```text
-POINCARE_PROMOTION_PREVIEW_OK files=2 declarations=7 audits=7
+POINCARE_PROMOTION_PREVIEW_OK files=2 declarations=8 audits=8
 promoted_content_manifest_sha256=
-  C020325705C5AB758EF91FBFEA4E4F3573EBD94C1F9B57F1DBD27F5E8107D508
+  43235D28E56164C195A1F3F9847BE3AC5F59B32EDAC3B157B9695AD943B7AC77
 ```
 
 The original preview accidentally retained the scratch status comment before
 the imports, which would violate Lean's import-order rule.  That preview is
 superseded.  The corrected promoted source and audit hashes are respectively
-`08FAB284B35B6175441A17FFA67F2F7F9FC29EC350CE8233357A998316CBFDA8`
+`CD829E4B733557B1A4C9B17DE4E239B0E78E8FB85C11D2E7780ED1E47F6DD60C`
 and
-`D570CC0A30ADCC0C9A828FC0503002C5F320633B202FD5F05DFFAB29F80EED7F`.
+`C10DC5576D135F534964BAECF41371B97A63A5B1DB9CAAD6FD3116265ED17FB6`.
 Both put the module docstring after the imports and pass the overlay text gate.
 The preview script SHA-256 is
-`12053074C788AD994288EFC7394AB7FECB485CB8BBEECCD8945EA7D7EC779EB6`.
-No target file was written.
+`B4F3600B20F64DB3A973985B52DE0B0EB14D7320551939385E1F3D73D1243914`.
+The target pair is present in the tree as PRE-VALIDATION source; no `.olean`
+or compiler/oracle verdict exists yet.

@@ -18,7 +18,7 @@ import time
 
 STAGES = (
     ("YangMills/RG/BalabanCMP99SourcePoincarePositiveRadiusReachability.lean", None),
-    ("YangMills/RG/BalabanCMP99SourcePoincarePositiveRadiusReachabilityAudit.lean", 7),
+    ("YangMills/RG/BalabanCMP99SourcePoincarePositiveRadiusReachabilityAudit.lean", 8),
 )
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN = {"sorryAx", "ofReduceBool"}
@@ -130,7 +130,7 @@ def main() -> int:
         raise RuntimeError("POINCARE_RADIUS_DEBUG_HEAD_MOVED")
     print(f"DEBUG_ORIGINAL_HEAD={original_head}", flush=True)
     print(f"DEBUG_SOURCE_SHA={args.source_sha}", flush=True)
-    print("DEBUG_AXIOM_HEADERS=7", flush=True)
+    print("DEBUG_AXIOM_HEADERS=8", flush=True)
     print("DEBUG_FINAL_STATUS=PASS", flush=True)
     return 0
 

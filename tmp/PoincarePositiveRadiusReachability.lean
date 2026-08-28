@@ -4,6 +4,7 @@ has been verified by the Lean compiler. -/
 
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreen
 import YangMills.RG.BalabanCMP109PhysicalPivotSmallnessCompatibility
+import YangMills.RG.BalabanCMP99Eq335PhysicalRetainedNearIdentity
 
 namespace YangMills.RG
 
@@ -231,6 +232,7 @@ theorem scratch_exists_pos_poincare_pivot_closedBudget
     (depth : ℕ) (spacing : ℝ) :
     ∃ epsilon : ℝ,
       0 < epsilon ∧
+      epsilon ≤ 1 ∧
       CMP99SourceUbarClosedBudget d M Nc depth epsilon ∧
       cmp99SourcePoincareErrorCoeff d M depth spacing epsilon < 1 ∧
       cmp99SourceUbarFineDeviationRadius d M epsilon ≤ 1 / 3 ∧
@@ -242,18 +244,27 @@ theorem scratch_exists_pos_poincare_pivot_closedBudget
     scratch_exists_pos_poincare_admissibleRadius
       (d := d) (M := M) (Nc := Nc) depth spacing
   let pivot := cmp109PhysicalPivotSmallnessRegimeWitness d M Nc
-  let epsilon : ℝ := min radius pivot.epsilon0 / 2
+  let epsilon : ℝ := min radius (min pivot.epsilon0 1) / 2
   have hpivot_pos : 0 < pivot.epsilon0 := pivot.epsilon0_pos
   have hepsilon : 0 < epsilon := by
     dsimp only [epsilon]
-    exact div_pos (lt_min hradius hpivot_pos) (by norm_num)
+    exact div_pos (lt_min hradius (lt_min hpivot_pos (by norm_num)))
+      (by norm_num)
+  have hepsilon_one : epsilon ≤ 1 := by
+    dsimp only [epsilon]
+    have hmin : min radius (min pivot.epsilon0 1) ≤ 1 :=
+      (min_le_right radius (min pivot.epsilon0 1)).trans
+        (min_le_right pivot.epsilon0 1)
+    linarith
   have hepsilon_radius : epsilon < radius := by
     dsimp only [epsilon]
-    have hmin := min_le_left radius pivot.epsilon0
+    have hmin := min_le_left radius (min pivot.epsilon0 1)
     linarith
   have hepsilon_pivot : epsilon ≤ pivot.epsilon0 := by
     dsimp only [epsilon]
-    have hmin := min_le_right radius pivot.epsilon0
+    have hmin : min radius (min pivot.epsilon0 1) ≤ pivot.epsilon0 :=
+      (min_le_right radius (min pivot.epsilon0 1)).trans
+        (min_le_left pivot.epsilon0 1)
     linarith
   obtain ⟨hbudget, hsmall⟩ :=
     hrange hepsilon.le hepsilon_radius
@@ -279,11 +290,53 @@ theorem scratch_exists_pos_poincare_pivot_closedBudget
       _ < 1 := by
         simpa only [cmp109PhysicalPivotBackgroundBudget_eq_at_one_mul]
           using pivot.pivot_budget
-  refine ⟨epsilon, hepsilon, hbudget, hsmall, hpivot_radius,
+  refine ⟨epsilon, hepsilon, hepsilon_one, hbudget, hsmall, hpivot_radius,
     hpivot_budget, ?_⟩
   intro e
   exact (cmp99SourceFlatGaugeConfig_zero_small
     (d := d) (Nc := Nc) (N := N) e).trans hepsilon.le
+
+/-- The common positive source radius can be expressed in the literal
+Corollary-3.6 convention `epsilon = 2 * alpha1`.  Thus `alpha1` is constructed,
+is bounded by the half-unit chart window, and all radius-dependent conclusions
+refer definitionally to the same retained near-identity radius. -/
+theorem scratch_exists_pos_poincare_pivot_alpha1_closedBudget
+    (depth : ℕ) (spacing : ℝ) :
+    ∃ alpha1 : ℝ,
+      0 < alpha1 ∧
+      alpha1 ≤ 1 / 2 ∧
+      CMP99SourceUbarClosedBudget d M Nc depth
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) ∧
+      cmp99SourcePoincareErrorCoeff d M depth spacing
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1 ∧
+      cmp99SourceUbarFineDeviationRadius d M
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) ≤ 1 / 3 ∧
+      cmp109PhysicalPivotBackgroundBudget d M Nc
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1 ∧
+      (∀ e : ConcreteEdge d N,
+        ‖(cmp99SourceFlatGaugeConfig d N Nc e :
+            Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+          cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) := by
+  obtain ⟨epsilon, hepsilon, hepsilon_one, hbudget, hsmall,
+      hpivot_radius, hpivot_budget, hflat⟩ :=
+    scratch_exists_pos_poincare_pivot_closedBudget
+      (d := d) (M := M) (N := N) (Nc := Nc) depth spacing
+  let alpha1 : ℝ := epsilon / 2
+  have halpha1 : 0 < alpha1 := div_pos hepsilon (by norm_num)
+  have halpha1_half : alpha1 ≤ 1 / 2 := by
+    dsimp only [alpha1]
+    linarith
+  have hradius : cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 =
+      epsilon := by
+    dsimp only [alpha1, cmp99Eq335PhysicalRetainedNearIdentityRadius]
+    ring
+  refine ⟨alpha1, halpha1, halpha1_half, ?_, ?_, ?_, ?_, ?_⟩
+  · simpa only [hradius] using hbudget
+  · simpa only [hradius] using hsmall
+  · simpa only [hradius] using hpivot_radius
+  · simpa only [hradius] using hpivot_budget
+  · intro e
+    simpa only [hradius] using hflat e
 
 end
 
