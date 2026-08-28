@@ -23,21 +23,21 @@ def load_base():
 def main() -> int:
     base = load_base()
     module = "BalabanCMP99ActiveRegionCanonicalAmbientCompletion"
-    base.SOURCE_SHA = "4b52bea54b5928139614fe842a2736b296358808"
-    base.RUNNER_REV = "c6d-canonical-ambient-completion-v1"
+    base.SOURCE_SHA = "f987504bb338c1366691facf9ab6ce4ddaec1c60"
+    base.RUNNER_REV = "c6d-canonical-ambient-completion-v2"
     base.SOURCE_BLOBS_COUNT = 3
     base.SOURCE_BLOBS_SHA256 = (
-        "7D142C6E70FB4D2B5B9AE5667F00EC0A6776B581D8F5997CA665041392C72B53"
+        "8458C1D3FFC60C16A4BAAE5A72BA2A736FFB4A58DB6939AC48D3FEC1496B97F2"
     )
     base.NOTEBOOK_CELL_SOURCE_SHA256 = (
-        "5BE4E50F77DEF9DEE3C744B2D4334330849407A0B0453F400D7FC97BDC9A86FB"
+        "2EC8F3446376123ACEF55FD3D052A424BB8C353497586DEE3BFAA1FC03666B46"
     )
     base.SUCCESS_SENTINEL = "C6D_CANONICAL_AMBIENT_COMPLETION_EVIDENCE_OK"
     base.MODULES = [module]
     base.AUDIT_STAGES = {
         module: "01_cmp99activeregioncanonicalambientcompletion_audit"
     }
-    base.EXPECTED_AXIOM_HEADERS = {module: 8}
+    base.EXPECTED_AXIOM_HEADERS = {module: 9}
     base.QUEUE_STAGES = [
         "01_cmp99activeregioncanonicalambientcompletion_focal",
         "01_cmp99activeregioncanonicalambientcompletion_audit",
