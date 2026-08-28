@@ -60,9 +60,15 @@ theorem cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq :
       R C hscale regions D hM halpha1 baselineRadiusBudget
     let b := cmp99Eq360C6dSourcePhysicalCountingCoefficient
       R C hscale regions D hM halpha1 baselineRadiusBudget
-    cmp99SourceAmbientDirichletPrecision Omega
-        (cmp99Eq360C6dSourceAmbientBaselinePrecision R C hscale regions D hM
-          halpha1 baselineRadiusBudget) =
+    cmp99SourceAmbientDirichletPrecision
+        (d := 4) (N := L * N') (g := SUNLieCoord Nc) Omega
+        (cmp99Eq360C6dSourceAmbientBaselinePrecision
+          (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+          (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+          (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+          (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+          (OmegaPrime0 := OmegaPrime0)
+          R C hscale regions D hM halpha1 baselineRadiusBudget) =
       cmp99SourceGaugePrecision
         (cmp99ActiveRegionSourceCovariantLaplacian Omega
           (matrixSUNAdjointModel Nc) W.transformedBackground eta)
