@@ -248,6 +248,22 @@ an arbitrary positive `a_j` as its final public input.  The current C6d
 Eq. (3.60) wrapper remains valid algebra parametrized by a coefficient, but
 the outer physical inversion wrapper must perform this source specialization.
 
+The flow coefficient itself is not a remaining uniformity mystery.  The
+already cold-sealed theorem
+`cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter`, specialized to
+`a = 1`, gives the depth-independent bound
+
+```text
+1 - L^(-2) <= cmp99SourceMassParameter 1 L depth,
+```
+
+and `cmp85Eq215SourceAveragingCoefficientFloor_pos` makes the left-hand side
+strictly positive for `1 < L`.  Thus the averaging part of the baseline gap
+does not collapse along the RG flow.  This does **not** by itself make the
+full Poincare floor uniform: the generated `A_j`, `B_j`, and `CP^j` factors
+remain visible and must be handled by the exact source estimates rather than
+hidden inside the coefficient recurrence.
+
 ## What remains physical
 
 This adapter does not manufacture any of the substantive source inputs.  A
