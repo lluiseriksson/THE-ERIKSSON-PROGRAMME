@@ -94,10 +94,16 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision_zero
       (cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
         (cmp99SourceMassParameter 1 (M : ℝ) 0)) := by
   exact isCoerciveCLM_finitePiLpTypedKernelReindex
+    (ι := ActiveGaugeRegion.Site (cmp99SourceFullActiveRegion d N))
+    (ι' := FinBox d N)
+    (g := SUNLieCoord Nc)
     (cmp99SourceFullActiveRegionSiteEquiv d N)
-    (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM
-      (matrixSUNAdjointModel Nc) spacing epsilon background chain fineSmall)
+    (cmp99SourceActiveRegionFullCompanionPrecision
+      (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega) (depth := 0)
+      regions hd hM (matrixSUNAdjointModel Nc) spacing epsilon background chain
+      fineSmall)
     (isCoerciveCLM_cmp99SourceActiveRegionFullCompanionPrecision_zero
+      (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
       regions hd hM background chain fineSmall)
 
 end
