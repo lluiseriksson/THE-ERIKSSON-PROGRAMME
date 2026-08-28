@@ -73,6 +73,7 @@ theorem cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq :
         (cmp99ActiveRegionSourceCovariantLaplacian Omega
           (matrixSUNAdjointModel Nc) W.transformedBackground eta)
         T0.Qprime b := by
+  dsimp only
   rw [cmp99Eq360C6dSourceBaselinePrecision_eq_laplacianRetainedPrecision
     R C hscale regions D hM halpha1 baselineRadiusBudget]
   rw [cmp99Eq360C6dSourcePhysicalCountingCoefficient_eq_laplacianRetained
