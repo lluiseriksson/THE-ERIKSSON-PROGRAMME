@@ -116,8 +116,12 @@ not discharge rows 23--24, and does not move `20/41` or instantiate
 ## Hot validation queue after the retained cold gate
 
 Published PRE-VALIDATION source head: `76bfe9c8` (with the generic-carrier
-compression and coercivity bridge).  The pinned hot runner is published at
-`3b2c3858` and checks out that exact source object while preserving `.lake`.
+compression and coercivity bridge).  The hardened hot runner is pinned at
+`56e06b46494301cb416266c81946f5388959b2a3` with SHA-256
+`f06bd515b0d640ab813d8919723aa7e7f189fd0e9beea56467bc76383a8e8fba`.
+It checks out that exact source object while preserving `.lake`, requires the
+expected `2/5/3/3/6/6` audit headers and rejects axioms outside the standard
+allowed trio.
 
 Run stop-on-first-error in the retained Colab clone, preserving the already
 materialized `.lake` graph:
