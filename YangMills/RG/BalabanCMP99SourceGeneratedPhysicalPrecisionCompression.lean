@@ -104,6 +104,7 @@ theorem cmp99ActiveRegionSourceCovariantLaplacian_nested_compression_eq
           (extendZeroZeroCLM OmegaSmall phi)) x := by
       rw [hExt]
       simp [restrictZeroCLM]
+      rfl
     _ = _ := hSmall.symm
 
 /-- Exact nested compression of the complete generated source precision.
