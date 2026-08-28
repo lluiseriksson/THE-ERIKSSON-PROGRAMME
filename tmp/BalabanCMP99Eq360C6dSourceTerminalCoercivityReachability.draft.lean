@@ -40,6 +40,8 @@ variable (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
 variable (D : CMP99Eq335Corollary36SourceRegionDictionary Omega OmegaPrime0 C)
 variable (hM : 2 ≤ M) (hdepth : 0 < depth)
 
+include hdepth
+
 /-- A single constructed scalar package makes the literal positive-depth C6d
 baseline precision coercive for every physical CMP99 regularity witness in the
 resulting `alpha0` interval.  The operator, coefficient and coercivity floor are
