@@ -41035,3 +41035,43 @@ Poincare-radius reachability, scalar reachability wrapper or baseline Green;
 it does not produce uniform `B0, delta0`, attain window 15, close rows
 23--24, or instantiate `TermSource`. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 953 (2026-08-28, **C6d source coercivity and baseline Green sealed by a fresh 11060-job Colab Pro+ root; 20/41 unchanged**)
+
+Exact mathematical source
+`2bb3eb7325b621954a7132d0a8bab3ce2c1bdf24` was validated in one fresh
+Colab Pro+ CPU/high-RAM checkout with Lean `4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`. Runner revision
+`c6d-source-coercivity-green-v1` compiled the positive-radius Poincare
+prerequisite and nine C6d source/audit pairs, then built `YangMillsCore` in
+the same checkout. All 37 recorded stages exited zero; the root completed
+`11060` jobs in `8843.896` seconds. The ten audits printed exactly 80 public
+declarations and only `{propext, Classical.choice, Quot.sound}` or a subset.
+
+The independently downloaded archive and original one-code-cell executed
+notebook rehash respectively to
+`6109193619251FD704C96FDCA52526E02F597F86CE005C45937EED00D3C98357`
+and
+`AE0CC6083767BA2120FD7933E16F622742398F3C455CFF1888790E1779051B19`.
+The canonical evidence JSON has SHA-256
+`AA4A747F01008F68BC7AA413949BF0A189542C296D4A556CF38B7FB14234BBEA`.
+The hardened external verifier checks the archive's exact 37-log topology,
+stage order, per-stage output hashes and axiom blocks, while the notebook
+supplies the original executed cell, final sentinel and printed content
+hashes; it emitted `C6D_SOURCE_COERCIVITY_GREEN_EVIDENCE_OK`.
+
+Selective seal `52e16b65a70a0a59ab0f91b1142bb79fa064ab03` retires exactly the twenty
+PRE-VALIDATION notices from those ten source/audit pairs without changing a
+theorem statement. Its sealed-manifest SHA-256 is
+`9E2BFFCB5D4F54E1464566C00CBA5F89FCC823D43A75D305F71303D876F1D80D`.
+The durable package is preserved at
+`validation-evidence/c6d-source-coercivity-green-pass-2bb3eb73-20260828/`.
+
+This seals the positive-depth source-generated coercivity, its scalar
+reachability interval and the internally constructed baseline Green with
+both inverse identities and norm bound. It does not yet construct the
+full-companion ambient precision, reindex the active region, transport the
+four fixed-depth CMP96 actions, cover the exact `depth = 0` companion/Green,
+produce uniform `B0, delta0`, attain window 15, close rows 23--24 or
+instantiate `TermSource`. Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

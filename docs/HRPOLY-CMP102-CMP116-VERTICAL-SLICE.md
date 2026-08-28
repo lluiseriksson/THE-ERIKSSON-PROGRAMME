@@ -14829,3 +14829,29 @@ boundary.  Eq. (3.51)--(3.54), the physical regrouping and row estimate,
 uniform `B0, delta0`, window 15, rows 23--24 and `TermSource` remain open.
 Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+### Step 8b.24/C6d.3: source coercivity and baseline Green (COLAB-VERIFIED; 20/41 unchanged)
+
+Fresh source `2bb3eb7325b621954a7132d0a8bab3ce2c1bdf24` passed the
+positive-radius Poincare prerequisite, nine dependent C6d source/audit pairs
+and a cold `YangMillsCore` root of `11060` jobs. All 37 stages exited zero;
+the root took `8843.896` seconds. The ten audits expose 80 declarations and
+use only `{propext, Classical.choice, Quot.sound}` or a subset.
+
+Archive, original executed-notebook and canonical evidence SHA-256 values are
+respectively
+`6109193619251FD704C96FDCA52526E02F597F86CE005C45937EED00D3C98357`,
+`AE0CC6083767BA2120FD7933E16F622742398F3C455CFF1888790E1779051B19`
+and
+`AA4A747F01008F68BC7AA413949BF0A189542C296D4A556CF38B7FB14234BBEA`.
+External verification emitted `C6D_SOURCE_COERCIVITY_GREEN_EVIDENCE_OK`.
+Seal `52e16b65a70a0a59ab0f91b1142bb79fa064ab03` removes exactly twenty
+PRE-VALIDATION notices; sealed-manifest SHA-256 is
+`9E2BFFCB5D4F54E1464566C00CBA5F89FCC823D43A75D305F71303D876F1D80D`.
+
+This closes the positive-depth source-generated coercivity/reachability and
+baseline Green only. Full-companion ambient compression, explicit active
+region reindexing, transport of the four fixed-depth CMP96 actions and the
+exact depth-zero companion/Green remain open. Uniform `B0, delta0`, window
+15, rows 23--24 and `TermSource` also remain open. Counters stay exactly
+`20/41`, `TermSource = 0`; window 15 is compatible but unattained.
