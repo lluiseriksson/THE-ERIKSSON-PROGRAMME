@@ -521,7 +521,6 @@ theorem precisionPerturbation_eq_sourcePrecisionPerturbation
     baselineLaplacian perturbedLaplacian localLaplacianPerturbation
     cmp99Eq360ComplexRegionalPrecisionPerturbation
   rw [cmp99Eq360_complexRegionalLaplacian_sub_eq_localPerturbation]
-  rfl
 
 /-- Exact C6d specialization of CMP99 (3.60).  The equality is derived from
 the internally constructed operators; none of its two sides is input. -/
