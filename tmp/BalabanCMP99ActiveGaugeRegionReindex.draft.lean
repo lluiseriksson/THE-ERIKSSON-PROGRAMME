@@ -181,14 +181,22 @@ theorem finitePiLpTypedKernelReindex_sourceAmbientDirichletPrecision
   simp only [finitePiLpTypedKernelReindex,
     cmp99SourceAmbientDirichletPrecision,
     ContinuousLinearMap.comp_apply]
-  have htransport := cmp99ActiveGaugeZeroCochainReindex_restrictZero e Omega
+  have hrestrict := cmp99ActiveGaugeZeroCochainReindex_restrictZero e Omega
     (K (extendZeroZeroCLM Omega
       ((cmp99ActiveGaugeZeroCochainReindex e Omega).symm phi)))
-  rw [← cmp99GaugeZeroCochainReindex_symm_extendZero e Omega phi] at htransport
-  simpa only [cmp99ActiveGaugeZeroCochainReindex,
-    cmp99GaugeZeroCochainReindex,
-    ← LinearIsometryEquiv.toContinuousLinearEquiv_symm,
-    LinearIsometryEquiv.piLpCongrLeft_symm] using htransport
+  have hext := cmp99GaugeZeroCochainReindex_symm_extendZero e Omega phi
+  calc
+    _ = restrictZeroCLM (cmp99ActiveGaugeRegionReindex e Omega)
+        (cmp99GaugeZeroCochainReindex e
+          (K (extendZeroZeroCLM Omega
+            ((cmp99ActiveGaugeZeroCochainReindex e Omega).symm phi)))) := by
+      simpa only [cmp99ActiveGaugeZeroCochainReindex,
+        cmp99GaugeZeroCochainReindex,
+        ← LinearIsometryEquiv.toContinuousLinearEquiv_symm,
+        LinearIsometryEquiv.piLpCongrLeft_symm] using hrestrict
+    _ = _ := by
+      rw [← hext]
+      rfl
 
 /-- Pulling the transported Dirichlet compression back through the restricted
 site equivalence recovers the original compression.  This is the exact
