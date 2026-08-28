@@ -1,0 +1,19 @@
+import YangMills.RG.BalabanCMP99SourceActiveRegionTerminalCoercivity
+
+/-!
+PRE-VALIDATION: audit scratch. The imported source has no materialized
+`.olean` and no compiler or axiom-oracle verdict.
+-/
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceActiveRegionTerminalCoercivity_pos
+#print axioms isCoerciveCLM_cmp99SourceActiveRegionTerminalPrecision_zero
+#print axioms isCoerciveCLM_cmp99SourceActiveRegionTerminalPrecision
+#print axioms cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient_pos
+#print axioms cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient_toWeighted
+#print axioms cmp99SourceActiveRegionTerminalPhysicalCoercivity_pos
+#print axioms isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision_zero
+#print axioms isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision
+
+end YangMills.RG

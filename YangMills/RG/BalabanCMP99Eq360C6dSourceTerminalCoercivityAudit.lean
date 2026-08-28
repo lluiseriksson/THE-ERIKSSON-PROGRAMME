@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceTerminalCoercivity
+
+/-!
+PRE-VALIDATION: audit scratch. The imported source has no materialized
+`.olean` and no compiler or axiom-oracle verdict.
+-/
+
+namespace YangMills.RG
+
+#print axioms cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+#print axioms isCoerciveCLM_cmp99Eq360C6dSourceBaselinePrecision
+#print axioms isCoerciveCLM_cmp99Eq360C6dLocalizedRetainedSourceInput_baselinePhysicalPrecision
+
+end YangMills.RG
