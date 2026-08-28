@@ -69,6 +69,26 @@ noncomputable def cmp99SourceAmbientDirichletPrecision
   (restrictZeroCLM (𝔤 := g) Omega).comp
     (K.comp (extendZeroZeroCLM (𝔤 := g) Omega))
 
+/-- Ambient coercivity descends to the generic Dirichlet compression without
+changing its floor. -/
+theorem isCoerciveCLM_cmp99SourceAmbientDirichletPrecision
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Omega : ActiveGaugeRegion d N)
+    (K : GaugeZeroCochain d N g →L[ℝ] GaugeZeroCochain d N g)
+    {c : ℝ} (hK : IsCoerciveCLM K c) :
+    IsCoerciveCLM (cmp99SourceAmbientDirichletPrecision Omega K) c := by
+  intro phi
+  let E := extendZeroZeroCLM (𝔤 := g) Omega
+  let R := restrictZeroCLM (𝔤 := g) Omega
+  have hR : R = E.adjoint :=
+    cmp99ActiveRegion_restrictZero_eq_extendZero_adjoint Omega
+  have hambient := hK (E phi)
+  rw [norm_extendZeroZeroCLM_eq Omega phi] at hambient
+  change c * ‖phi‖ ^ 2 ≤ inner ℝ phi (R (K (E phi)))
+  rw [hR, ContinuousLinearMap.adjoint_inner_right]
+  exact hambient
+
 /-- The ambient reindexing preserves the full-companion coercivity floor
 exactly. -/
 theorem isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision
