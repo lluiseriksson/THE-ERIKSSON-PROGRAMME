@@ -54,6 +54,7 @@ theorem cmp99Eq360ComplexRegionalPrecision_realSlice_weighted
     ContinuousLinearMap.comp_apply]
   rw [hDelta, agreement.Qprime_realSlice, agreement.starred_realSlice,
     map_add, map_smul, Complex.coe_smul]
+  rfl
 
 end
 
