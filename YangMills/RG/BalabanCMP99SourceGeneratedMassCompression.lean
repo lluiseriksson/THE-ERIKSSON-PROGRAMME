@@ -29,6 +29,7 @@ variable {d M N Nc : ℕ} [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 /-- Restriction from a larger active region followed by literal zero
 extension from a nested smaller region is the identity on the smaller
 counting-Hilbert space. -/
+omit [NeZero d] in
 theorem cmp99NestedActiveRegionRestriction_comp_extension_eq_id
     {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
     [FiniteDimensional ℝ g]
@@ -123,6 +124,7 @@ theorem CMP99SourceNestedRegionChains.QprimeMass_compression
       OmegaSmall OmegaLarge
     R.comp ((Tlarge.Qprime.adjoint.comp Tlarge.Qprime).comp E) =
       Tsmall.Qprime.adjoint.comp Tsmall.Qprime := by
+  simp only
   rw [← regionsLarge.generatedCountingMass_eq_QprimeMass hd hM rho spacing
       epsilon background chain fineSmall,
     ← regionsSmall.generatedCountingMass_eq_QprimeMass hd hM rho spacing
