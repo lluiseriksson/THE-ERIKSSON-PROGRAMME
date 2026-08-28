@@ -18,7 +18,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5"
+SOURCE_SHA = "976cfc899407a4452a94c6f1a66eafeab2792b27"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-zero-depth-hot-evidence")
 MODULE = "BalabanCMP99SourceActiveRegionFullCompanionZeroDepth"
