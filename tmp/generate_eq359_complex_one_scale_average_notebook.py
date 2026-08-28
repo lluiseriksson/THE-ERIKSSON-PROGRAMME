@@ -59,7 +59,7 @@ def generate(
     runner = blob(runner_checkpoint, runner_path)
     runner_text = runner.decode("utf-8")
     source_pin = re.search(
-        r'^SOURCE_SHA\s*=\s*["\']([0-9a-f]{40})["\']\s*$',
+        r'^(?:runner\.)?SOURCE_SHA\s*=\s*["\']([0-9a-f]{40})["\']\s*$',
         runner_text,
         re.MULTILINE,
     )
