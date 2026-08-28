@@ -70,13 +70,13 @@ default run from index `1` used to assemble queue-1 evidence.
 ## Hot queue 2: ambient C6d producer plus region/Green transport
 
 Runner object:
-`c07b5b911323e487af02b9c27dc4a9ed2ce4e053:tmp/c6d_ambient_region_hot_diagnostic.py`
+`4a47d21c3489f89fed41f91d74a75e466a46e8b6:tmp/c6d_ambient_region_hot_diagnostic.py`
 
 SHA-256:
-`271c8919f5dbcc2b16b4c3a4bf92161d6ecd6dc4dc12c338766950804a22e0eb`
+`a8a382b6061dd5848291615af04c45c9fe72fdad8160a3ea5808992c2364e458`
 
 The runner checks out exact scratch source
-`ec4db69a54e0f47189940086476edf4c47a39abe`, materializes three source/audit
+`79b424e069b0e425b71eca3b57ffd6d59dba915c`, materializes three source/audit
 pairs under their intended module names, expects 10 carrier-transport, 7
 ambient-producer and 4 canonical-Green transport axiom headers, and rejects anything outside
 `{propext, Classical.choice, Quot.sound}`.
@@ -84,8 +84,8 @@ ambient-producer and 4 canonical-Green transport axiom headers, and rejects anyt
 ```python
 import hashlib, pathlib, runpy, urllib.request
 
-url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/c07b5b911323e487af02b9c27dc4a9ed2ce4e053/tmp/c6d_ambient_region_hot_diagnostic.py"
-expected = "271c8919f5dbcc2b16b4c3a4bf92161d6ecd6dc4dc12c338766950804a22e0eb"
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/4a47d21c3489f89fed41f91d74a75e466a46e8b6/tmp/c6d_ambient_region_hot_diagnostic.py"
+expected = "a8a382b6061dd5848291615af04c45c9fe72fdad8160a3ea5808992c2364e458"
 payload = urllib.request.urlopen(url, timeout=60).read()
 actual = hashlib.sha256(payload).hexdigest()
 assert actual == expected, (actual, expected)
@@ -99,6 +99,10 @@ except SystemExit as exc:
 ```
 
 Continue to queue 3 only on literal hot `FINAL_STATUS=PASS`.
+
+For a measured failure in ambient pair `n`, diagnostic retries may set
+`C6D_AMBIENT_START_INDEX=n`.  The evidence-producing run still uses the
+default index `1` after all three pairs are green.
 
 ## Hot queue 3: exact depth-zero full companion and ambient coercivity
 
