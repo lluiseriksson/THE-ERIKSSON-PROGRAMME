@@ -13,7 +13,7 @@ open YangMills
 
 noncomputable section
 
-variable {d N N' : ℕ} [NeZero N] [NeZero N']
+variable {d N N' : ℕ} [NeZero d] [NeZero N] [NeZero N']
 
 /-- Canonical Green of the generic ambient Dirichlet compression.  The Green
 is generated from ambient coercivity; it is not caller data. -/
