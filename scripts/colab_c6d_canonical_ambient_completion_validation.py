@@ -85,7 +85,7 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-canonical-ambient-completion-v1"
+runner.RUNNER_REV = "c6d-canonical-ambient-completion-v2"
 runner.SOURCE_SHA = 'f987504bb338c1366691facf9ab6ce4ddaec1c60'
 runner.ROOT = Path("/content/hrpoly-c6d-canonical-ambient-completion")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-canonical-ambient-completion-evidence")

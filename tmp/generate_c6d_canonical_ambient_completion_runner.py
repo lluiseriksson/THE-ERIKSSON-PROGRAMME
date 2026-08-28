@@ -56,7 +56,7 @@ def generate(source_sha: str) -> str:
         ),
         (
             "c6d-source-separated-ambient-green-v1",
-            "c6d-canonical-ambient-completion-v1",
+            "c6d-canonical-ambient-completion-v2",
         ),
         (
             "hrpoly-c6d-source-separated-ambient-green",
