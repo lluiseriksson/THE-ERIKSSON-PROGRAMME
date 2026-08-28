@@ -13,7 +13,7 @@ open YangMills
 
 noncomputable section
 
-variable {d N N' : ℕ}
+variable {d N N' : ℕ} [NeZero N] [NeZero N']
 
 /-- Canonical Green of the generic ambient Dirichlet compression.  The Green
 is generated from ambient coercivity; it is not caller data. -/
@@ -26,8 +26,11 @@ noncomputable def cmp99SourceAmbientDirichletGreen
     ActiveGaugeZeroCochain Omega g →L[ℝ]
       ActiveGaugeZeroCochain Omega g :=
   covarianceOfIsCoerciveCLM
-    (cmp99SourceAmbientDirichletPrecision Omega K) hc
-    (isCoerciveCLM_cmp99SourceAmbientDirichletPrecision Omega K hK)
+    (E := ActiveGaugeZeroCochain Omega g)
+    (cmp99SourceAmbientDirichletPrecision
+      (d := d) (N := N) (g := g) Omega K) hc
+    (isCoerciveCLM_cmp99SourceAmbientDirichletPrecision
+      (d := d) (N := N) (g := g) Omega K hK)
 
 /-- The internally generated generic Dirichlet Green is a left inverse. -/
 theorem cmp99SourceAmbientDirichletGreen_comp_precision
