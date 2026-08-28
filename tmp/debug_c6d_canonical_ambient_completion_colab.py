@@ -4,8 +4,10 @@
 This is deliberately not seal evidence.  It reuses the `.lake` tree of the
 completed C6d cold checkout only to test the tower-pair/radius bridge,
 canonical ambient completion, counting/weighted dictionary and source-facing
-Eq. (3.60) wrapper without another cold dependency bootstrap.  A later
-promotion still needs its own fresh cold gate.
+Eq. (3.60) wrapper without another cold dependency bootstrap.  The tracked
+analytic Eq. (3.60) algebraic leaf is compiled and audited explicitly because
+it postdates the retained cold checkout.  A later promotion still needs its
+own fresh cold gate.
 """
 
 from __future__ import annotations
@@ -40,6 +42,10 @@ PAIRS = (
         "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionaryAudit.draft.lean",
     ),
     (
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalPrecisionPerturbationAudit.lean",
+    ),
+    (
         "tmp/BalabanCMP99Eq360WeightedPrecisionRealSlice.draft.lean",
         "tmp/BalabanCMP99Eq360WeightedPrecisionRealSliceAudit.draft.lean",
     ),
@@ -48,7 +54,7 @@ PAIRS = (
         "tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecisionAudit.draft.lean",
     ),
 )
-EXPECTED_AXIOM_HEADERS = 51
+EXPECTED_AXIOM_HEADERS = 54
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
