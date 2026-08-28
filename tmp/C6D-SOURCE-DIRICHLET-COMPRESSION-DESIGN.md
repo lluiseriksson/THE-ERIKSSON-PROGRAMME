@@ -139,6 +139,13 @@ companion and then to the ordinary ambient carrier, retaining the literal
 physical counting coefficient.  It is scratch/NOT CHECKED and is not part of
 either currently pinned hot queue or the nine-pair cold manifest.  Its later
 compiler verdict must precede any enlargement of that manifest.
+
+`tmp/BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreen.draft.lean`
+is the next separate scratch brick.  It compresses that one ambient precision,
+derives regional coercivity, and constructs the canonical Green, both inverse
+identities and its inverse-floor norm bound internally.  It is NOT CHECKED and
+is deliberately excluded from the pinned depth-zero queue: the coercivity
+brick must receive its own verdict before this dependent brick is scheduled.
 ## Hot validation queue after the retained cold gate
 
 Published PRE-VALIDATION source head: `76bfe9c8` (with the generic-carrier
