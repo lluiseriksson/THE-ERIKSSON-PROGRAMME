@@ -199,6 +199,7 @@ theorem finitePiLpTypedKernelReindex_sourceAmbientDirichletPrecision
       simp only [cmp99GaugeZeroCochainReindex,
         ← LinearIsometryEquiv.toContinuousLinearEquiv_symm,
         LinearIsometryEquiv.piLpCongrLeft_symm]
+      rfl
 
 /-- Pulling the transported Dirichlet compression back through the restricted
 site equivalence recovers the original compression.  This is the exact
