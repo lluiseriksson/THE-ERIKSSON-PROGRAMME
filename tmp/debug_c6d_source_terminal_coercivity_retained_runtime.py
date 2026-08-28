@@ -20,6 +20,10 @@ import time
 STAGES = (
     ("YangMills/RG/BalabanCMP99SourceLocalizedRetainedTower.lean", None),
     ("YangMills/RG/BalabanCMP99SourceLocalizedRetainedTowerAudit.lean", 5),
+    ("tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionary.draft.lean", None),
+    ("tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionaryAudit.draft.lean", 3),
+    ("tmp/BalabanCMP99Eq360WeightedPrecisionRealSlice.draft.lean", None),
+    ("tmp/BalabanCMP99Eq360WeightedPrecisionRealSliceAudit.draft.lean", 1),
     ("tmp/BalabanCMP99SourceActiveRegionTerminalCoercivity.draft.lean", None),
     ("tmp/BalabanCMP99SourceActiveRegionTerminalCoercivityAudit.draft.lean", 8),
     ("tmp/BalabanCMP99Eq360C6dLaplacianRetainedExtension.draft.lean", None),
@@ -151,7 +155,7 @@ def main() -> int:
         raise RuntimeError("C6D_SOURCE_COERCIVITY_DEBUG_HEAD_MOVED")
     print(f"DEBUG_ORIGINAL_HEAD={original_head}", flush=True)
     print(f"DEBUG_SOURCE_SHA={args.source_sha}", flush=True)
-    print("DEBUG_AXIOM_HEADERS=32", flush=True)
+    print("DEBUG_AXIOM_HEADERS=36", flush=True)
     print("DEBUG_FINAL_STATUS=PASS", flush=True)
     return 0
 
