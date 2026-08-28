@@ -85,8 +85,8 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-source-separated-ambient-green-v1"
-runner.SOURCE_SHA = 'bb51db164adb7840c383a7bf2d43d42b5494588e'
+runner.RUNNER_REV = "c6d-source-separated-ambient-green-v2"
+runner.SOURCE_SHA = 'dda48fb5645d890198d07456ff9dbb5abd28368f'
 runner.ROOT = Path("/content/hrpoly-c6d-source-separated-ambient-green")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-source-separated-ambient-green-evidence")
 runner.ARCHIVE = Path(
@@ -96,11 +96,11 @@ runner.PATH_MANIFEST = Path(
     "/content/hrpoly-c6d-source-separated-ambient-green-paths.txt"
 )
 runner.SOURCE_BLOBS = {
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen.lean': '29b8995b64df70ece6b674f2bc89586f9ed50fb91efa6e152adbb7042c7d45df',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen.lean': 'eaf8561ebd61df8332b1bfa30d5ef524a8fe2065eb781cad6205a152cba972e7',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenAudit.lean': '7713f038fd95e52cfe694c23770912d2498ff7222bc935f91f03f6a9865c0893',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth.lean': '20349fa9c5ec3262fa1765e56e3d98e9c2d53218dbb86d49d78c0343af56bfb2',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth.lean': 'dc0fecada8760df9ecd2e42629d07098aac7dea10a16cf4ad17771b4ad69c089',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthAudit.lean': '621e01eda7ad5a74d120da2cad97d11fb076a76aed1f89bb6b7cc4f4f0bd82c4',
-    'YangMillsCore.lean': 'c66b6439e808a0e51ca22262bcdf0e7ce5ce73010efc12e6844a7abb29037243',
+    'YangMillsCore.lean': '3b15cc9a0fd1bea54af635f6af3a41100feb11993f893793a69b9e723bfeee1d',
 }
 runner.QUEUE = [
     (
