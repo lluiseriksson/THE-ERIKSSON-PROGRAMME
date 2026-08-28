@@ -16,7 +16,7 @@ import tarfile
 
 
 FULL_SOURCE_SHA = "ec4db69a54e0f47189940086476edf4c47a39abe"
-AMBIENT_SOURCE_SHA = "228ff08ded55d87956266e9fca2dca0f9dce1796"
+AMBIENT_SOURCE_SHA = "58f11d92b49cc5b9334bc46136de0b097175dfe9"
 ZERO_SOURCE_SHA = "4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5"
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
