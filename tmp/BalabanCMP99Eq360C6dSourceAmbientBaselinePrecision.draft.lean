@@ -1,0 +1,192 @@
+import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision
+import YangMills.RG.BalabanCMP99Eq360C6dSourceBaselineGreen
+
+/-!
+SCRATCH / NOT SHIPPED.  This draft depends on the unvalidated full-companion
+compression chain and must not enter `YangMillsCore` before that chain has a
+compiler and axiom-oracle verdict.
+-/
+
+namespace YangMills.RG
+
+noncomputable section
+
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator RealInnerProductSpace
+
+variable {L N' M Mlarge Nc n depth : ℕ}
+variable [NeZero L] [NeZero N'] [NeZero M] [NeZero Mlarge] [NeZero Nc]
+variable {scaleExtent : Fin n → ℕ}
+variable {S : CMP99SourceScaledStratification (FinBox 4 (L * N')) n
+  (fun r => FinBox 4 (scaleExtent r))}
+variable {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
+variable {U : PhysicalGaugeBackground 4 (L * N') Nc}
+variable {eta alpha0 alpha1 : ℝ}
+variable (R : CMP99Eq335PhysicalRegularityClass
+  (L := L) (N' := N') (Mlarge := Mlarge) (Nc := Nc) (n := n)
+  (scaleExtent := scaleExtent) (S := S)
+  (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
+variable (C : CMP99SourceRegularCube (FinBox 4 (L * N')) n Mlarge
+  scaleExtent S scaleExtent_pos)
+variable (hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1)
+variable {Omega OmegaPrime0 : ActiveGaugeRegion 4 (L * N')}
+variable (regions : CMP99SourceActiveRegionChain 4 M (L * N') Omega depth)
+variable (D : CMP99Eq335Corollary36SourceRegionDictionary Omega OmegaPrime0 C)
+variable (hM : 2 ≤ M) (halpha1 : alpha1 ≤ 1 / 2)
+variable (baselineRadiusBudget : CMP99SourceUbarClosedBudget 4 M Nc depth
+  (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1))
+
+/-- The one full-carrier precision whose Dirichlet compression is intended to
+be the literal C6d baseline precision. -/
+noncomputable def cmp99Eq360C6dSourceAmbientBaselinePrecision :
+    PhysicalGaugeZeroCochain 4 (L * N') Nc →L[ℝ]
+      PhysicalGaugeZeroCochain 4 (L * N') Nc :=
+  cmp99SourceActiveRegionFullCompanionAmbientPrecision regions
+    (by norm_num : 2 ≤ 4) hM (matrixSUNAdjointModel Nc) eta
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    (cmp99Eq360C6dSourceLaplacianRetainedExtension
+      (R := R) (C := C) (hscale := hscale) regions)
+    baselineRadiusBudget.toRadiusChain
+    (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget))
+
+/-- Its literal Dirichlet compression is the already defined C6d baseline
+precision, with no ambient or regional operator accepted from the caller. -/
+theorem cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq :
+    let W := R.toCubeWitness C alpha1 hscale
+    let T0 := cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+    let b := cmp99Eq360C6dSourcePhysicalCountingCoefficient
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+    cmp99SourceAmbientDirichletPrecision Omega
+        (cmp99Eq360C6dSourceAmbientBaselinePrecision R C hscale regions D hM
+          halpha1 baselineRadiusBudget) =
+      cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega
+          (matrixSUNAdjointModel Nc) W.transformedBackground eta)
+        T0.Qprime b := by
+  rw [cmp99Eq360C6dSourceBaselinePrecision_eq_laplacianRetainedPrecision
+    R C hscale regions D hM halpha1 baselineRadiusBudget]
+  rw [cmp99Eq360C6dSourcePhysicalCountingCoefficient_eq_laplacianRetained
+    R C hscale regions D hM halpha1 baselineRadiusBudget]
+  exact cmp99SourceAmbientDirichletPrecision_fullCompanion_eq regions
+    (by norm_num : 2 ≤ 4) hM (matrixSUNAdjointModel Nc) eta
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    (cmp99Eq360C6dSourceLaplacianRetainedExtension
+      (R := R) (C := C) (hscale := hscale) regions)
+    baselineRadiusBudget.toRadiusChain
+    (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget))
+
+/-- The full-companion coercivity floor is literally the C6d baseline floor.
+The only non-definitional ingredient is the already named equality between
+the full and regional source-flow counting coefficients. -/
+theorem cmp99SourceActiveRegionFullCompanionPhysicalCoercivity_eq_C6dBaseline :
+    let Tfull := cmp99SourceActiveRegionFullCompanionTower regions
+      (by norm_num : 2 ≤ 4) hM (matrixSUNAdjointModel Nc) eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+      (cmp99Eq360C6dSourceLaplacianRetainedExtension
+        (R := R) (C := C) (hscale := hscale) regions)
+      baselineRadiusBudget.toRadiusChain
+      (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
+        (R := R) (C := C) (hscale := hscale) (regions := regions)
+        (D := D) (halpha1 := halpha1)
+        (baselineRadiusBudget := baselineRadiusBudget))
+    cmp99SourceActiveRegionTerminalPhysicalCoercivity Tfull M depth
+        (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) =
+      cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+        R C hscale regions D hM halpha1 baselineRadiusBudget := by
+  unfold cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+  unfold cmp99SourceActiveRegionTerminalPhysicalCoercivity
+  rw [cmp99SourceActiveRegionFullCompanionCountingCoefficient_eq_regional]
+  rfl
+
+/-- Positive-depth coercivity of the same ambient precision. -/
+theorem isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselinePrecision
+    (hdepth : 0 < depth) (heta : 0 < eta)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
+    let Tfull := cmp99SourceActiveRegionFullCompanionTower regions
+      (by norm_num : 2 ≤ 4) hM (matrixSUNAdjointModel Nc) eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+      (cmp99Eq360C6dSourceLaplacianRetainedExtension
+        (R := R) (C := C) (hscale := hscale) regions)
+      baselineRadiusBudget.toRadiusChain
+      (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
+        (R := R) (C := C) (hscale := hscale) (regions := regions)
+        (D := D) (halpha1 := halpha1)
+        (baselineRadiusBudget := baselineRadiusBudget))
+    IsCoerciveCLM
+      (cmp99Eq360C6dSourceAmbientBaselinePrecision R C hscale regions D hM
+        halpha1 baselineRadiusBudget)
+      (cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+        R C hscale regions D hM halpha1 baselineRadiusBudget) := by
+  rw [← cmp99SourceActiveRegionFullCompanionPhysicalCoercivity_eq_C6dBaseline
+    R C hscale regions D hM halpha1 baselineRadiusBudget]
+  exact isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision
+    regions (by norm_num : 2 ≤ 4) hM hdepth (matrixSUNAdjointModel Nc) heta
+    (cmp99Eq360C6dSourceLaplacianRetainedExtension
+      (R := R) (C := C) (hscale := hscale) regions)
+    baselineRadiusBudget.toRadiusChain
+    (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget)) hsmall
+
+/-- The generic Dirichlet compression of the source ambient precision is
+coercive with the same literal C6d baseline floor. -/
+theorem isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselineCompression
+    (hdepth : 0 < depth)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
+    IsCoerciveCLM
+      (cmp99SourceAmbientDirichletPrecision Omega
+        (cmp99Eq360C6dSourceAmbientBaselinePrecision
+          R C hscale regions D hM halpha1 baselineRadiusBudget))
+      (cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+        R C hscale regions D hM halpha1 baselineRadiusBudget) := by
+  exact isCoerciveCLM_cmp99SourceAmbientDirichletPrecision Omega _
+    (isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselinePrecision
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+      hdepth R.eta_pos hsmall)
+
+/-- The canonical Green of the literal ambient precision after Dirichlet
+compression.  No regional inverse or operator equality is caller data. -/
+noncomputable def cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+    (hdepth : 0 < depth)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
+    ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
+  covarianceOfIsCoerciveCLM
+    (cmp99SourceAmbientDirichletPrecision Omega
+      (cmp99Eq360C6dSourceAmbientBaselinePrecision
+        R C hscale regions D hM halpha1 baselineRadiusBudget))
+    (cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+      hdepth R.eta_pos hsmall)
+    (isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselineCompression
+      R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
+
+/-- Uniqueness of the inverse identifies the ambiently generated Dirichlet
+Green with the already constructed literal C6d baseline Green. -/
+theorem cmp99Eq360C6dSourceAmbientBaselineDirichletGreen_eq_baseline
+    (hdepth : 0 < depth)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
+    cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+      R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall =
+      cmp99Eq360C6dSourceBaselinePhysicalGreen
+        R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall := by
+  unfold cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+  unfold cmp99Eq360C6dSourceBaselinePhysicalGreen
+  rw [cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq
+    R C hscale regions D hM halpha1 baselineRadiusBudget]
+
+end
+
+end YangMills.RG
