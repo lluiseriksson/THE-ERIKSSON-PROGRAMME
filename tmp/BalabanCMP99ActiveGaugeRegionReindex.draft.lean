@@ -104,8 +104,6 @@ theorem cmp99GaugeZeroCochainReindex_extendZero
         (cmp99ActiveGaugeZeroCochainReindex e Omega phi) := by
   apply PiLp.ext
   intro y
-  rw [cmp99GaugeZeroCochainReindex,
-    LinearIsometryEquiv.piLpCongrLeft_apply]
   change (if hx : e.symm y ∈ Omega.sites then phi ⟨e.symm y, hx⟩ else 0) =
     (if hy : y ∈ (cmp99ActiveGaugeRegionReindex e Omega).sites then
       cmp99ActiveGaugeZeroCochainReindex e Omega phi ⟨y, hy⟩ else 0)
