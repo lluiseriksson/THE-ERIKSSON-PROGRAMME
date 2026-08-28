@@ -193,3 +193,22 @@ facts separately: ambient/local reindexing commutes with zero extension and
 with restriction.  The inverse zero-extension statement is obtained by
 applying the actual inverse equivalence and then reversing the resulting
 equality; no `simp`-only identification of the two carriers is accepted.
+
+## Finite cold-seal boundary after both hot queues
+
+If and only if both retained-runtime queues emit literal PASS, promote the
+three scratch source/audit pairs under their intended module names and add
+the nine audit imports to `YangMillsCore`:
+
+1. the six full-companion/compression pairs already present as
+   PRE-VALIDATION source;
+2. `BalabanCMP99ActiveGaugeRegionReindex`;
+3. `BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision`;
+4. `BalabanCMP99ActiveGaugeRegionReindexGreen`.
+
+The cold queue therefore has exactly nine source/audit pairs and 46 expected
+axiom readouts: `2+5+3+3+6+6+10+7+4`.  It must run from a fresh checkout with
+no restored `.lake/build`, then build `YangMillsCore` in the same checkout.
+PRE-VALIDATION is removed only in the later evidence-seal commit and without
+changing any theorem statement.  A hot PASS, a green prefix, or the existence
+of generated `.olean` files is not seal evidence.
