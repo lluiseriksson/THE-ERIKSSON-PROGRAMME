@@ -74,6 +74,63 @@ noncomputable def cmp99Eq360C6dSourcePhysicalCountingCoefficient : ℝ :=
   cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
     (cmp99SourceMassParameter 1 (M : ℝ) depth)
 
+/-- The same source regularity witness that controls the retained `Qprime`
+carrier also controls every internal bond of the selected Laplacian region.
+The proof uses only the printed region-in-cube dictionary and the existing
+half-unit exponential window. -/
+theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
+    ∀ q ∈ Omega.bonds,
+      ‖((R.toCubeWitness C alpha1 hscale).transformedBackground
+          (positiveEdgeOfPhysicalBond q) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+        cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := by
+  intro q hq
+  let W := R.toCubeWitness C alpha1 hscale
+  have hendpoints :
+      q.1 ∈ Omega.sites ∧ q.1.shift q.2 ∈ Omega.sites := by
+    simpa [ActiveGaugeRegion.bonds] using hq
+  have hsource : q.1 ∈ C.carrier := by
+    apply D.printed_omegaPrime0_subset_regularCube
+    rw [← D.headRegion_eq_omegaPrime0]
+    exact hendpoints.1
+  have htarget : q.1.shift q.2 ∈ C.carrier := by
+    apply D.printed_omegaPrime0_subset_regularCube
+    rw [← D.headRegion_eq_omegaPrime0]
+    exact hendpoints.2
+  let qi : CMP99SourceRegularCubeInteriorPositiveBond C :=
+    ⟨q, hsource, htarget⟩
+  let X : SuLie Nc :=
+    (suLieCoordIso Nc).symm (W.logarithmicRepresentative q)
+  have hX : ‖X.toMatrix‖ ≤
+      cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0 := by
+    calc
+      ‖X.toMatrix‖ ≤ ‖X‖ := norm_suLie_toMatrix_l2_opNorm_le X
+      _ = ‖W.logarithmicRepresentative q‖ := by
+        exact (suLieCoordIso Nc).symm.norm_map _
+      _ ≤ cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0 :=
+        (W.amplitude_bound q.1 hsource q.2).le
+  have hsmall : |eta| *
+      cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0 ≤ 1 / 2 :=
+    W.abs_eta_mul_amplitudeMajorant_le.trans halpha1
+  have hexp := norm_exp_smul_sub_one_le_two_mul eta
+    (cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0) X.toMatrix hX hsmall
+  have hbackground :
+      (W.transformedBackground (positiveEdgeOfPhysicalBond q) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) =
+        physicalMatrixExp (eta • X.toMatrix) := by
+    unfold CMP99Eq335PhysicalRegularityWitness.transformedBackground
+    rw [gaugeAct_cmp99ExtendRegularCubeLocalGauge_apply_interior
+      C U W.localGauge qi]
+    rw [W.gauge_eq_exp_on_interior qi]
+    rfl
+  rw [hbackground]
+  calc
+    ‖physicalMatrixExp (eta • X.toMatrix) - 1‖ ≤
+        2 * (|eta| * cmp99Eq335PhysicalAmplitudeMajorant C eta alpha0) := by
+      simpa only [physicalMatrixExp] using hexp
+    _ ≤ 2 * alpha1 := by gcongr
+    _ = cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := rfl
+
 /-- Source-facing C6d input.  The perturbing field and its genuine radius
 gates remain caller data, while the averaging coefficient is generated
 internally from CMP99's recurrence and the retained tower. -/
