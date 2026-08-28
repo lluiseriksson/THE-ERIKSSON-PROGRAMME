@@ -64,8 +64,8 @@ theorem cmp99Eq360_complexRegionalPrecision_eq_sub_perturbation
   intro phi
   simp only [cmp99Eq360ComplexRegionalPrecision,
     cmp99Eq360ComplexRegionalPrecisionPerturbation,
-    CMP99Eq359ComplexRegionalTowerPair.F2,
-    CMP99Eq359ComplexRegionalTowerPair.F2star,
+    T.Q1_eq_Q0_add_F2,
+    T.starred1_eq_starred0_add_F2star,
     ContinuousLinearMap.add_apply, ContinuousLinearMap.sub_apply,
     ContinuousLinearMap.smul_apply, ContinuousLinearMap.comp_apply]
   module
