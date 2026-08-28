@@ -110,6 +110,7 @@ theorem cmp99SourceActiveRegionFullCompanionPhysicalCoercivity_eq_C6dBaseline :
   dsimp only
   unfold cmp99Eq360C6dSourceBaselinePhysicalCoercivity
   unfold cmp99SourceActiveRegionTerminalPhysicalCoercivity
+  fold cmp99SourceActiveRegionFullCompanionCountingCoefficient
   rw [cmp99SourceActiveRegionFullCompanionCountingCoefficient_eq_regional]
   rfl
 
