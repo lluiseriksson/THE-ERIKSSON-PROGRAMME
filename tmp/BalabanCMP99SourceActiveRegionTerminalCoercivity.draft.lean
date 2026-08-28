@@ -35,6 +35,7 @@ noncomputable section
 
 variable {d M N Nc depth : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
+variable {Omega : ActiveGaugeRegion d N} {spacing : ℝ}
 
 /-- Exact positive-depth floor produced by the absorbed source Poincare
 inequality for a literal counting-Hilbert coefficient `b`. -/
