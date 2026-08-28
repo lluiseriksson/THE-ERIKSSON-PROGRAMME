@@ -253,7 +253,7 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-source-separated-ambient-green-v2"
+runner.RUNNER_REV = "c6d-source-separated-ambient-green-v3"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-c6d-source-separated-ambient-green")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-source-separated-ambient-green-evidence")
