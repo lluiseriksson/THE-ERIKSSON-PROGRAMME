@@ -66,9 +66,10 @@ theorem cmp99SourceFullActiveRegion_extendZero_eq_reindex
   intro phi
   apply PiLp.ext
   intro x
-  simp [extendZeroZeroCLM, cmp99SourceFullActiveRegion,
-    cmp99SourceFullActiveRegionSiteEquiv,
-    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
+  change (if hx : x ∈ (cmp99SourceFullActiveRegion d N).sites then
+      phi ⟨x, hx⟩ else 0) =
+    phi ((cmp99SourceFullActiveRegionSiteEquiv d N).symm x)
+  simp [cmp99SourceFullActiveRegion, cmp99SourceFullActiveRegionSiteEquiv]
 
 /-- Ambient reindexing of the internally constructed full-companion source
 precision. -/
