@@ -209,7 +209,7 @@ def streaming_run(stage, command, cwd=None):
     stdout_path = runner.EVIDENCE / (
         f"{{len(runner.RECORDS):03d}}-{{stage}}.stdout"
     )
-    with stdout_path.open("w", encoding="utf-8", newline="\n") as stream:
+    with stdout_path.open("w", encoding="utf-8", newline="\\n") as stream:
         child = subprocess.Popen(
             command,
             cwd=cwd,
