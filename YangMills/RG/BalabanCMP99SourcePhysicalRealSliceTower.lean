@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99Eq359TowerRealSliceAgreement
 import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
 
 /-!
-PRE-VALIDATION: source present; This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # A source-generated CMP99 (3.59) tower on the physical real slice
 
 This recursion constructs the analytic tower from the canonical complex

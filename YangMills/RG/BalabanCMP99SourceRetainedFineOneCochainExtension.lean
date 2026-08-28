@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourceRetainedFineExtension
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative
 
 /-!
-PRE-VALIDATION: source present; This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Canonical retained extension of a physical perturbing one-cochain
 
 The real physical perturbation is kept on the exact retained fine read

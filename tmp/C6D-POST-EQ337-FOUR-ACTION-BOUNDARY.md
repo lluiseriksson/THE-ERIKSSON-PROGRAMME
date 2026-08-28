@@ -243,25 +243,24 @@ but it must not accept any of the following as a free input:
 Counters remain exactly `20/41`, `TermSource = 0`, and window 15 compatible
 but unattained until the corresponding compiled producers exist.
 
-## PRE-VALIDATION implementation frontier (2026-08-27)
+## Implementation frontier (2026-08-28)
 
 Eq. (3.59), its physical real slice, the 34-file retained dependency boundary
-and C6d.1 are sealed; C6d.1 is recorded in ledger Addendum 949.  The live
-queue is now the three promoted source/audit pairs in items 1--3 above.  Exact
-source `81cc22e41d46cce150c2a263c85e4acb90087153`, runner
-`300faf158314faa8c360cb4ad8527bf7e1f034a4` and notebook
-`8106025057c4fac4e1e59a4e5b594f492ff1af4a` are pinned under runner revision
-`c6d-next-real-slice-v3`.  The first v3 attempt is preserved as
-`INCOMPLETE-RUNTIME-LOSS` after all three focal/audit pairs passed but the
-cold root received `KeyboardInterrupt`; a later standard-memory runtime was
-rejected by the fail-closed `HIGH_RAM_REQUIRED` preflight before checkout.
-Neither incident retires a notice.  All six notices remain PRE-VALIDATION
-until one fresh CPU/high-RAM focal/audit/root queue and its fail-closed
-verifier pass.
+and C6d.1 are sealed. The three real-slice prerequisite pairs in items 1--3
+are now also sealed by ledger Addendum 951 from exact source
+`81cc22e41d46cce150c2a263c85e4acb90087153`: all three focal/audit pairs and
+the `11026`-job cold root passed, the downloaded archive matched the emitted
+hash, and the fail-closed verifier/package gate passed. The earlier
+operator-interrupted attempt and standard-memory rejection remain preserved
+as non-evidence incidents; they do not qualify or weaken the later cold PASS.
+
+The next finite gate is the terminal two-tower pair plus the bridge deriving
+the physical radius chain from the stronger closed complex budget. After
+that pair is sealed, promote the source-facing C6d Eq. (3.60) wrapper with
+separate Laplacian and averaging backgrounds.
 
 The Eq. (3.51) algebra has a separate warm diagnostic PASS at source
 `fab6807d1ddde2e33b5d350a14ba6dd47b61745b`.  Warm evidence is not a cold
-seal and cannot retire any notice or skip the current real-slice/Eq. (3.60)
-boundary.  The live frontier
-therefore remains the finite chain above, with no movement of `20/41`,
-`TermSource = 0`, or window 15.
+seal and cannot retire any notice or skip the terminal-pair/Eq. (3.60)
+boundary. The live frontier remains the finite chain above, with no movement
+of `20/41`, `TermSource = 0`, or window 15.

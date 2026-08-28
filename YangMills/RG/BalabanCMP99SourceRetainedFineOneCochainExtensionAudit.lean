@@ -1,4 +1,3 @@
--- PRE-VALIDATION: audit present; no compiler or axiom-oracle verdict.
 import YangMills.RG.BalabanCMP99SourceRetainedFineOneCochainExtension
 
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineOneCochainExtension

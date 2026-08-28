@@ -138,6 +138,24 @@ def digest(rows: list[tuple[str, bytes]]) -> str:
     return hashlib.sha256(payload).hexdigest().upper()
 
 
+def remove_prevalidation_notice(remover, data: bytes, relative: str) -> bytes:
+    """Remove the single source doc-block or audit line notice, and nothing else."""
+    if relative.endswith("Audit.lean"):
+        marker = b"-- PRE-VALIDATION: audit present; no compiler or axiom-oracle verdict.\n"
+        if data.count(marker) != 1:
+            raise RuntimeError(
+                f"C6D_NEXT_REAL_SLICE_AUDIT_NOTICE_COUNT={relative}:"
+                f"{data.count(marker)}"
+            )
+        sealed = data.replace(marker, b"", 1)
+        if b"PRE-VALIDATION:" in sealed:
+            raise RuntimeError(
+                f"C6D_NEXT_REAL_SLICE_AUDIT_PREVALIDATION_REMAINS={relative}"
+            )
+        return sealed
+    return remover.remove_prevalidation_block(data, relative)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--archive", type=Path, required=True)
@@ -166,7 +184,7 @@ def main() -> int:
             unmarked.append(relative)
             sealed = data
         elif count == 1:
-            sealed = remover.remove_prevalidation_block(data, relative)
+            sealed = remove_prevalidation_notice(remover, data, relative)
         else:
             raise RuntimeError(
                 f"C6D_NEXT_REAL_SLICE_SEAL_PER_FILE_NOTICE_COUNT={relative}:{count}"

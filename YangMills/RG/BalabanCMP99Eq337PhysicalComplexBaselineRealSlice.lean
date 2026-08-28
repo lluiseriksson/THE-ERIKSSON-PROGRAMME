@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99PhysicalBackgroundRealSlice
 
 /-!
-PRE-VALIDATION: source present; This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # The zero-parameter baseline in the CMP99 (3.59)--(3.60) real slice
 
 The analytic perturbation constructor at parameter zero is exactly the

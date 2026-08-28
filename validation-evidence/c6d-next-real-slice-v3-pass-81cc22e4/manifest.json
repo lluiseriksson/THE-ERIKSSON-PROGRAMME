@@ -1,0 +1,10 @@
+{
+  "files": {
+    "c6d-next-real-slice-axioms.json": "43E2286C89155A52F2557EE767FBE14CC6C2881B20E6C590D5600E00E8B4FB1E",
+    "hrpoly-c6d-next-real-slice-evidence.tar.gz": "B1D967CECA887CBF37D1F0DDF019BA66C6896C259BACF34CBD00782CA45C73F4"
+  },
+  "runner_revision": "c6d-next-real-slice-v3",
+  "source_sha": "81cc22e41d46cce150c2a263c85e4acb90087153",
+  "status": "C6D_NEXT_REAL_SLICE_ARCHIVE_PACKAGE_OK",
+  "transport": "durable-stage-stdout-archive"
+}
