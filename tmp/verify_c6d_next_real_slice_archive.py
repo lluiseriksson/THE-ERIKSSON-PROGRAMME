@@ -126,8 +126,12 @@ def main() -> int:
         expected: list[str] = []
         boundary_hashes: dict[str, str] = {}
         declarations_by_module: dict[str, list[str]] = {}
-        audit_stages: list[str] = []
-        for index, (module, expected_count) in enumerate(contract.MODULES, start=1):
+        audit_stages = [
+            stage for stage in contract.stages() if stage.endswith("_audit")
+        ]
+        if len(audit_stages) != len(contract.MODULES):
+            raise RuntimeError("C6D_NEXT_REAL_SLICE_ARCHIVE_AUDIT_STAGE_SCOPE")
+        for module, expected_count in contract.MODULES:
             source_path = f"YangMills/RG/{module}.lean"
             audit_path = f"YangMills/RG/{module}Audit.lean"
             source_blob = contract.git_blob(repo, args.source_sha, source_path)
@@ -142,9 +146,6 @@ def main() -> int:
                 )
             declarations_by_module[module] = declarations
             expected.extend(declarations)
-            audit_stages.append(
-                f"c6d_next_real_slice_{index:02d}_{module.lower()}_audit"
-            )
         expected_total = sum(count for _, count in contract.MODULES)
         if len(expected) != expected_total or len(set(expected)) != expected_total:
             raise RuntimeError("C6D_NEXT_REAL_SLICE_ARCHIVE_DECLARATION_SCOPE")
