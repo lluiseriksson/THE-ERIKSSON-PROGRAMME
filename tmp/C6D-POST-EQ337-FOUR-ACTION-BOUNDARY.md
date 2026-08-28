@@ -264,3 +264,60 @@ The Eq. (3.51) algebra has a separate warm diagnostic PASS at source
 seal and cannot retire any notice or skip the terminal-pair/Eq. (3.60)
 boundary. The live frontier remains the finite chain above, with no movement
 of `20/41`, `TermSource = 0`, or window 15.
+
+## Source-carrier inverse frontier (2026-08-28)
+
+The exact C6d source-carrier precision and its positive/zero-depth canonical
+Greens have now been promoted under PRE-VALIDATION.  The current cold gate
+uses exact source `bb51db164adb7840c383a7bf2d43d42b5494588e`; no PASS is
+claimed in this note while that gate is running.
+
+The next prepared checkpoint closes only the carrier round trip.  At source
+`4dc3a90e0b8516baae16568889832d0e15b6cd72`, the generic construction
+
+```text
+E K R + (I - E R)
+```
+
+is specialized to the literal regional compression of the C6d ambient
+precision.  The theorem
+
+```text
+cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq
+```
+
+constructs both ambient operators and both regional Greens internally.  Its
+equality is derived by recompression followed by inverse uniqueness; no
+precision equality or Green equality is caller data.  The corresponding v3
+cold runner is checkpoint `6054a185ea08cfbb102cac3f933dc2656a13bc19`
+and the one-cell notebook is checkpoint
+`94ea57a56d20afd9a880a26b14c9bedfd913219a`.  These checkpoints remain
+PRE-VALIDATION until their own compiler/oracle/root gate passes.
+
+This completion does **not** transport the older P8 four-action producer.
+The already sealed assembler
+
+```text
+cmp96SourceSeparatedRegionalPrefix_eq342SourceLocalizedGreenCertificate
+```
+
+is definitionally tied to `cmp89SourceSeparatedAmbientPrefixPrecision` on
+`cmp96SourceSeparatedRegionalCell`.  The C6d Green is tied instead to the
+selected C6d source region and
+`cmp99Eq360C6dSourceSeparatedAmbientPrecision`.  Equality of those inverses
+cannot be inferred from a carrier inclusion and is not introduced as a new
+hypothesis.
+
+Consequently the remaining analytic endpoint is still exactly four actions
+of the **same** C6d regional Green, with scale vector
+`[ell^2, ell, ell, 1]`, one positive `B0`, and one positive `delta0`:
+
+1. value;
+2. left covariant derivative;
+3. right adjoint derivative, in its literal orientation;
+4. covariant Laplacian.
+
+The canonical completion makes the ambient/regional operator consumed by
+future localization machinery unique.  It supplies none of these four
+bounds.  Counters therefore remain exactly `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
