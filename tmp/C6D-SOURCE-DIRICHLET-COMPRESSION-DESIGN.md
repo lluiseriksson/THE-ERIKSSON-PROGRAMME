@@ -137,6 +137,15 @@ The queue is diagnostic only.  A hot PASS does not remove PRE-VALIDATION and
 does not move `20/41`; a later cold checkout must seal the exact corrected
 SHA.  On failure, preserve the first real error and repair only that target.
 
+Static acceptance before execution is complete but is not a compiler
+verdict.  The exact twelve-file overlay passes the lightweight text guard;
+the six audits contain `2/5/3/3/6/6` readouts.  Inspection confirms that the
+full companion is constructed recursively, the Laplacian and normalized
+`Q'^*Q'` compression budgets remain separate until the literal sum, and the
+regional/full coefficient equality is proved rather than supplied.  These
+facts explain why the queue is admissible; only its retained-runtime output
+can decide whether the Lean elaboration succeeds.
+
 ## Physical specialization after the generic queue
 
 Instantiate the full-companion ambient precision with the C6d
