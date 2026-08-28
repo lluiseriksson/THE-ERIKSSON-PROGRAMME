@@ -268,6 +268,21 @@ earlier double-`M^-4` defect.  The current C6d Eq. (3.60) wrapper remains
 valid algebra parametrized by a counting coefficient, but the outer physical
 inversion wrapper must perform this source specialization.
 
+That outer specialization now has an explicit PRE-VALIDATION constructor:
+
+```text
+tmp/BalabanCMP99Eq360C6dSourceFixedInput.draft.lean
+```
+
+It factors the retained physical tower before assembling the algebraic C6d
+input, computes the counting coefficient from the source recurrence and the
+generated terminal spacing, and places that value in the `a_j` field.  Its
+scalar theorem recovers the printed weighted coefficient after multiplication
+by the exact counting-to-weighted ratio.  No coefficient or convention
+equality is caller data.  The module has passed only the lightweight textual
+and import-prefix guards; it has no Lean or axiom-oracle verdict and is not a
+producer until a later cold gate certifies it.
+
 The raw flow coefficient itself is not a remaining uniformity mystery.  The
 already cold-sealed theorem
 `cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter`, specialized to
