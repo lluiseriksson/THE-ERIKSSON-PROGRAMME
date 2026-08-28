@@ -101,6 +101,16 @@ def parse_axioms(output: str) -> None:
             raise RuntimeError(f"AXIOM_BLOCK_{index}_FORBIDDEN={sorted(extra)}")
 
 
+def olean_output(relative: str) -> Path:
+    """Map a Lean module path, including `.draft`, to its importable olean path."""
+    if not relative.endswith(".lean"):
+        raise RuntimeError("LEAN_SOURCE_SUFFIX_INVALID=" + relative)
+    module_name = relative.removesuffix(".lean").replace("/", ".")
+    return Path(".lake/build/lib/lean") / Path(*module_name.split(".")).with_suffix(
+        ".olean"
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-sha", required=True, type=require_source_sha)
@@ -123,15 +133,17 @@ def main() -> int:
 
     audit_outputs: list[str] = []
     for source, audit in PAIRS:
-        source_output = ".lake/build/lib/lean/tmp/" + Path(source).stem + ".olean"
-        audit_output = ".lake/build/lib/lean/tmp/" + Path(audit).stem + ".olean"
+        source_output = olean_output(source)
+        audit_output = olean_output(audit)
+        (DEBUG_ROOT / source_output).parent.mkdir(parents=True, exist_ok=True)
+        (DEBUG_ROOT / audit_output).parent.mkdir(parents=True, exist_ok=True)
         run(
-            ["lake", "env", "lean", source, "-o", source_output],
+            ["lake", "env", "lean", source, "-o", str(source_output)],
             cwd=DEBUG_ROOT,
         )
         audit_outputs.append(
             run(
-                ["lake", "env", "lean", audit, "-o", audit_output],
+                ["lake", "env", "lean", audit, "-o", str(audit_output)],
                 cwd=DEBUG_ROOT,
             )
         )
