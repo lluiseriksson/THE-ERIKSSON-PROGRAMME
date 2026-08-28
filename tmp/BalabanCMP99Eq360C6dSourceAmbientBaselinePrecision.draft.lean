@@ -110,9 +110,24 @@ theorem cmp99SourceActiveRegionFullCompanionPhysicalCoercivity_eq_C6dBaseline :
   dsimp only
   unfold cmp99Eq360C6dSourceBaselinePhysicalCoercivity
   unfold cmp99SourceActiveRegionTerminalPhysicalCoercivity
-  fold cmp99SourceActiveRegionFullCompanionCountingCoefficient
-  rw [cmp99SourceActiveRegionFullCompanionCountingCoefficient_eq_regional]
-  rfl
+  have hcoeff := cmp99SourceActiveRegionFullCompanionCountingCoefficient_eq_regional
+    (d := 4) (M := M) (N := L * N') (Nc := Nc) (Omega := Omega)
+    (depth := depth) regions (by norm_num : 2 ≤ 4) hM
+    (matrixSUNAdjointModel Nc) eta
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    (cmp99Eq360C6dSourceLaplacianRetainedExtension
+      (R := R) (C := C) (hscale := hscale) regions)
+    baselineRadiusBudget.toRadiusChain
+    (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget))
+  exact congrArg
+    (cmp99SourceActiveRegionTerminalCoercivity 4 M depth eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1))
+    (by
+      simpa only [cmp99SourceActiveRegionFullCompanionCountingCoefficient,
+        cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower] using hcoeff)
 
 /-- Positive-depth coercivity of the same ambient precision. -/
 theorem isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselinePrecision
