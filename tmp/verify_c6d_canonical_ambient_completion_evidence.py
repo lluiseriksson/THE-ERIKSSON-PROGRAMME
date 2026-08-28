@@ -22,26 +22,30 @@ def load_base():
 
 def main() -> int:
     base = load_base()
-    module = "BalabanCMP99ActiveRegionCanonicalAmbientCompletion"
-    base.SOURCE_SHA = "f987504bb338c1366691facf9ab6ce4ddaec1c60"
-    base.RUNNER_REV = "c6d-canonical-ambient-completion-v2"
-    base.SOURCE_BLOBS_COUNT = 3
+    generic = "BalabanCMP99ActiveRegionCanonicalAmbientCompletion"
+    integration = "BalabanCMP99Eq360C6dCanonicalAmbientCompletion"
+    base.SOURCE_SHA = "4dc3a90e0b8516baae16568889832d0e15b6cd72"
+    base.RUNNER_REV = "c6d-canonical-ambient-completion-v3"
+    base.SOURCE_BLOBS_COUNT = 5
     base.SOURCE_BLOBS_SHA256 = (
-        "8458C1D3FFC60C16A4BAAE5A72BA2A736FFB4A58DB6939AC48D3FEC1496B97F2"
+        "5EEC561C45051147ADBD93B576D3E20C2C79D454F030F1F8FE2024A9146B4528"
     )
     base.NOTEBOOK_CELL_SOURCE_SHA256 = (
-        "2EC8F3446376123ACEF55FD3D052A424BB8C353497586DEE3BFAA1FC03666B46"
+        "76C27FFF7009BA723E8AE48181D4EB2326DBFF292A15921941FEBEE439955717"
     )
     base.SUCCESS_SENTINEL = "C6D_CANONICAL_AMBIENT_COMPLETION_EVIDENCE_OK"
-    base.MODULES = [module]
+    base.MODULES = [generic, integration]
     base.AUDIT_STAGES = {
-        module: "01_cmp99activeregioncanonicalambientcompletion_audit"
+        generic: "01_cmp99activeregioncanonicalambientcompletion_audit",
+        integration: "02_cmp99eq360c6dcanonicalambientcompletion_audit",
     }
-    base.EXPECTED_AXIOM_HEADERS = {module: 9}
+    base.EXPECTED_AXIOM_HEADERS = {generic: 9, integration: 1}
     base.QUEUE_STAGES = [
         "01_cmp99activeregioncanonicalambientcompletion_focal",
         "01_cmp99activeregioncanonicalambientcompletion_audit",
-        "02_c6d_canonical_ambient_completion_yang_mills_core_root",
+        "02_cmp99eq360c6dcanonicalambientcompletion_focal",
+        "02_cmp99eq360c6dcanonicalambientcompletion_audit",
+        "03_c6d_canonical_ambient_completion_yang_mills_core_root",
     ]
     return base.main()
 
