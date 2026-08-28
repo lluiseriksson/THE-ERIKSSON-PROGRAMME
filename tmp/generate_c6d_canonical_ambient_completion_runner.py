@@ -22,6 +22,7 @@ DECLARATIONS = (
     "isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion",
     "cmp99RegionalDirichletPrecision_canonicalAmbientCompletion_eq",
     "cmp99RegionalDirichletGreen_canonicalAmbientCompletion_eq",
+    "cmp99RegionalDirichletGreen_canonicalAmbientCompletion_compressed_eq",
 )
 
 
@@ -48,7 +49,7 @@ def generate(source_sha: str) -> str:
             "twenty-five public axiom readouts and every repository consumer through\n"
             "``YangMillsCore``.  Passing\n"
             "does not attain window 15, move ``20/41`` or inhabit ``TermSource``.",
-            "This runner validates one source/audit pair, all eight public axiom\n"
+            "This runner validates one source/audit pair, all nine public axiom\n"
             "readouts and every repository consumer through ``YangMillsCore``.\n"
             "Passing closes only the carrier/inverse adapter; it does not prove the\n"
             "four actions, attain window 15, move ``20/41`` or inhabit ``TermSource``.",
@@ -84,7 +85,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_CANONICAL_AMBIENT_COMPLETION_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=3 stages=3 axiom_blocks=8 "
+        f"source_sha={args.source_sha} files=3 stages=3 axiom_blocks=9 "
         "root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"

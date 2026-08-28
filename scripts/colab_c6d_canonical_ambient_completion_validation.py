@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fresh Colab gate for canonical regional ambient completion.
 
-This runner validates one source/audit pair, all eight public axiom
+This runner validates one source/audit pair, all nine public axiom
 readouts and every repository consumer through ``YangMillsCore``.
 Passing closes only the carrier/inverse adapter; it does not prove the
 four actions, attain window 15, move ``20/41`` or inhabit ``TermSource``.
@@ -86,7 +86,7 @@ def streaming_run(stage, command, cwd=None):
 runner.run = streaming_run
 
 runner.RUNNER_REV = "c6d-canonical-ambient-completion-v1"
-runner.SOURCE_SHA = '4b52bea54b5928139614fe842a2736b296358808'
+runner.SOURCE_SHA = 'f987504bb338c1366691facf9ab6ce4ddaec1c60'
 runner.ROOT = Path("/content/hrpoly-c6d-canonical-ambient-completion")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-canonical-ambient-completion-evidence")
 runner.ARCHIVE = Path(
@@ -96,8 +96,8 @@ runner.PATH_MANIFEST = Path(
     "/content/hrpoly-c6d-canonical-ambient-completion-paths.txt"
 )
 runner.SOURCE_BLOBS = {
-    'YangMills/RG/BalabanCMP99ActiveRegionCanonicalAmbientCompletion.lean': '07463d0ba9a2dd6d13ddbd977052fbc2a1ae8c6e0c3c8db2045d01d6d7dae73d',
-    'YangMills/RG/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.lean': '8a11d5bde3e19e254f6d710edd4ad0b27b7632a50a5156f7b7a5353d8420e921',
+    'YangMills/RG/BalabanCMP99ActiveRegionCanonicalAmbientCompletion.lean': 'acd97361c19ed9ffff3c5d040d6a52bf3ecf478849c9d13629d863cc5ceb28eb',
+    'YangMills/RG/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.lean': 'ae2fe1641304bfa87933e40681075631bf986e54a2e5dc6ce3b0acf499d037c6',
     'YangMillsCore.lean': 'd84dbb8897ee2086004bad4d37eecfa035ba3e17a7106e0f45bd348dcb147471',
 }
 runner.QUEUE = [
@@ -109,7 +109,7 @@ runner.QUEUE = [
     (
         '01_cmp99activeregioncanonicalambientcompletion_audit',
         ['lake', 'env', 'lean', 'YangMills/RG/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.lean'],
-        8,
+        9,
     ),
     (
         '02_c6d_canonical_ambient_completion_yang_mills_core_root',
