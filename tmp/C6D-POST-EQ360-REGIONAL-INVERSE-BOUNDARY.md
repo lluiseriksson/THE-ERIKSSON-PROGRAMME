@@ -192,6 +192,62 @@ the existing sealed module is a correct counting-Hilbert operator endpoint;
 it must not by itself be cited as equality with the printed analytic starred
 presentation.
 
+## Baseline coercivity is generated, but the source coefficient is not free
+
+A static re-read of the compiled Poincare tower and CMP99 pp. 394, 397 fixes
+the next coercivity boundary.  For positive retained depth, the exact same
+typed `regions`, physical background and generated terminal `Qprime` already
+give
+
+```text
+(1 - B_j) ||phi||^2 <= A_j <phi, Delta_U phi> + CP^j ||Q'_j phi||^2.
+```
+
+Therefore the literal counting-Hilbert baseline precision is coercive with
+the explicit floor
+
+```text
+(1 - B_j) * min (A_j)^(-1) (a_j * (CP^j)^(-1)),
+```
+
+using `isCoerciveCLM_of_twoWeightPoincare`.  No separate `hDelta`, regional
+Green or coercivity witness is needed.  The PRE-VALIDATION scratch pair
+
+```text
+tmp/BalabanCMP99SourceActiveRegionTerminalCoercivity.draft.lean
+tmp/BalabanCMP99SourceActiveRegionTerminalCoercivityAudit.draft.lean
+```
+
+records that positive-depth producer against already sealed generic
+substrate only.  It has passed the lightweight overlay-text gate but has no
+Lean or axiom-oracle verdict.  Depth zero is intentionally not smuggled into
+the formula: `A_0 = 0`, while the stop-tower `Qprime` is the identity, so the
+base case needs its own exact theorem.
+
+This does not duplicate the already sealed
+`BalabanCMP99SourceGeneratedPhysicalPrecision`.  That module proves
+coercivity and constructs a Green operator for the canonical iterated-lift
+region after normalizing the derivative coefficient to one.  C6d instead
+selects an arbitrary typed source-region chain and must preserve the literal
+Eq. (3.60) counting coefficient through the weighted/counting real-slice
+dictionary.  The new scratch theorem is precisely that missing generality;
+the existing canonical theorem remains the reference specialization and a
+useful consistency check.
+
+The scalar `a_j` in the Eq. (3.60) algebra is still not source closure.
+CMP99 (3.24) fixes it recursively from `a_0 = a > 0`, and Theorem 3.1 then
+specializes the physical Green statement to `a = 1`.  After the required
+source specialization `M = L`, the Green consumer must therefore instantiate
+
+```text
+a_j = cmp99SourceMassParameter 1 L depth
+```
+
+and derive positivity from `cmp99SourceMassParameter_pos`; it may not expose
+an arbitrary positive `a_j` as its final public input.  The current C6d
+Eq. (3.60) wrapper remains valid algebra parametrized by a coefficient, but
+the outer physical inversion wrapper must perform this source specialization.
+
 ## What remains physical
 
 This adapter does not manufacture any of the substantive source inputs.  A
