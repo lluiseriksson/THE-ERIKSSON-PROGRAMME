@@ -81,7 +81,17 @@ def materialize(source_relative: str, destination_name: str) -> None:
         raise RuntimeError("SCRATCH_SOURCE_MISSING=" + source_relative)
     payload = source.read_bytes()
     if destination.exists() and destination.read_bytes() != payload:
-        raise RuntimeError("DESTINATION_COLLISION=" + str(destination))
+        relative = str(destination.relative_to(ROOT))
+        tracked = subprocess.run(
+            ["git", "ls-files", "--error-unmatch", relative],
+            cwd=ROOT,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        if tracked.returncode == 0:
+            raise RuntimeError("TRACKED_DESTINATION_COLLISION=" + str(destination))
+        destination.unlink()
+        print("REPLACED_UNTRACKED_DESTINATION=" + relative, flush=True)
     destination.write_bytes(payload)
     print(
         "MATERIALIZED=" + str(destination.relative_to(ROOT))
