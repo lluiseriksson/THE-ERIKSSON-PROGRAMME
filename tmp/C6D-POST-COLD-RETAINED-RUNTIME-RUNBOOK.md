@@ -18,8 +18,10 @@ The verifier cross-checks the exact executed cell, stage sequence, axiom
 sections and printed evidence/archive hashes.  The cold source must be
 `2bb3eb7325b621954a7132d0a8bab3ce2c1bdf24`.
 
-Trigger the cold-archive download from a separate cell only after the literal
-PASS; do not rerun the gate cell:
+Download the executed notebook from Colab **before adding another cell**.  The
+external verifier deliberately requires the original one-code-cell topology.
+Then trigger the cold-archive download from a separate cell only after the
+literal PASS; do not rerun the gate cell:
 
 ```python
 from google.colab import files
