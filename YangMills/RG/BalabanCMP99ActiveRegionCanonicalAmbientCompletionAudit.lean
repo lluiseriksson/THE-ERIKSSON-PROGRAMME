@@ -15,5 +15,6 @@ namespace YangMills.RG
 #print axioms isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion
 #print axioms cmp99RegionalDirichletPrecision_canonicalAmbientCompletion_eq
 #print axioms cmp99RegionalDirichletGreen_canonicalAmbientCompletion_eq
+#print axioms cmp99RegionalDirichletGreen_canonicalAmbientCompletion_compressed_eq
 
 end YangMills.RG

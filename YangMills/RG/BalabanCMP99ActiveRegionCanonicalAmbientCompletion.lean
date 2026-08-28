@@ -212,6 +212,30 @@ theorem cmp99RegionalDirichletGreen_canonicalAmbientCompletion_eq
     _ = Gcan.comp (ContinuousLinearMap.id ℝ _) := by rw [hKGext]
     _ = Gcan := by simp
 
+/-- Completing the literal Dirichlet compression of an ambient precision and
+then recompressing does not change its generated regional Green.  This is the
+round-trip form consumed by the C6d source carrier: it derives both regional
+operators from the same ambient precision and does not accept an equality of
+Greens from the caller. -/
+theorem cmp99RegionalDirichletGreen_canonicalAmbientCompletion_compressed_eq
+    {M Q : ℕ} [NeZero M] [NeZero Q]
+    (Omega : ActiveGaugeRegion 4 (M * (2 * Q)))
+    (A : GaugeZeroCochain 4 (M * (2 * Q)) g →L[ℝ]
+      GaugeZeroCochain 4 (M * (2 * Q)) g)
+    {c : ℝ} (hc : 0 < c) (hA : IsCoerciveCLM A c) :
+    let K := cmp99RegionalDirichletPrecision Omega A
+    cmp99RegionalDirichletGreen Omega
+        (cmp99ActiveRegionCanonicalAmbientCompletion Omega K)
+        (lt_min hc zero_lt_one)
+        (isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion Omega K
+          (isCoerciveCLM_cmp99RegionalDirichletPrecision Omega A hA)) =
+      cmp99RegionalDirichletGreen Omega A hc hA := by
+  dsimp only
+  simpa [cmp99RegionalDirichletGreen] using
+    (cmp99RegionalDirichletGreen_canonicalAmbientCompletion_eq
+      Omega (cmp99RegionalDirichletPrecision Omega A) hc
+      (isCoerciveCLM_cmp99RegionalDirichletPrecision Omega A hA))
+
 end
 
 end YangMills.RG
