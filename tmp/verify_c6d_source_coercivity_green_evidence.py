@@ -288,7 +288,20 @@ def main() -> int:
     for record in records:
         stage = record["stage"]
         member_name = f"{evidence_prefix}/{stage}.stdout"
-        measured = hashlib.sha256(regular_payloads[member_name]).hexdigest()
+        # `capturing_run` records the digest after `Path.read_text`, whose
+        # universal-newline mode maps both CRLF and bare CR to LF.  Curl's
+        # progress meter uses bare CR, so hashing the raw tar member would
+        # disagree even though the archived bytes are exactly the bytes that
+        # the runner subsequently read and recorded.  Mirror the runner's
+        # text read before checking its digest.
+        normalized = (
+            regular_payloads[member_name]
+            .decode("utf-8")
+            .replace("\r\n", "\n")
+            .replace("\r", "\n")
+            .encode("utf-8")
+        )
+        measured = hashlib.sha256(normalized).hexdigest()
         if measured != record["output_sha256"]:
             raise RuntimeError(
                 f"STAGE_OUTPUT_SHA256_{stage}={measured} "
@@ -298,7 +311,15 @@ def main() -> int:
     for index, (module, expected) in enumerate(
         zip(MODULES, EXPECTED_AXIOM_HEADERS, strict=True), start=1
     ):
-        stage = f"c6d_source_coercivity_green_{index:02d}_{module.lower()}_audit"
+        audit_suffix = f"_{module.lower()}_audit"
+        matching_audits = [
+            stage for stage in queue_stages if stage.endswith(audit_suffix)
+        ]
+        if len(matching_audits) != 1:
+            raise RuntimeError(
+                f"AUDIT_STAGE_MATCHES_{module}={matching_audits!r} EXPECTED_ONE"
+            )
+        stage = matching_audits[0]
         member_name = f"{evidence_prefix}/{stage}.stdout"
         body = regular_payloads[member_name].decode("utf-8")
         blocks = re.findall(

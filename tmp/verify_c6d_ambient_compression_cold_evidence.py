@@ -43,6 +43,12 @@ base.MODULES = [
 ]
 base.EXPECTED_AXIOM_HEADERS = [2, 5, 3, 3, 6, 8, 10, 8, 4, 3, 6]
 
+# The selective seal helper imports this wrapper and intentionally reads the
+# gate-specific scope from its public surface.  Re-export only the two values
+# that helper needs; verification itself continues to run through `base.main`.
+SOURCE_SHA = base.SOURCE_SHA
+MODULES = base.MODULES
+
 
 def expected_queue_stages() -> list[str]:
     result = [
