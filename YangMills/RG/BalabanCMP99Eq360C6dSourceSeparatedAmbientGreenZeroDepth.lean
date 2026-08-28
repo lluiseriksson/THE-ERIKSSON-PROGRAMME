@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreen
+import YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
 
 /-!
 PRE-VALIDATION: scratch source only; no `.olean` has been materialized for
