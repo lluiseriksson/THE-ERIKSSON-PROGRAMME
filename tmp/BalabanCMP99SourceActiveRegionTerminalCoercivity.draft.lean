@@ -161,10 +161,13 @@ theorem cmp99SourceActiveRegionTerminalPhysicalCoercivity_pos
       cmp99SourcePoincareErrorCoeff d M depth spacing epsilon < 1) :
     0 < cmp99SourceActiveRegionTerminalPhysicalCoercivity
       d M depth spacing epsilon := by
+  have hMreal : (0 : ℝ) < M := by
+    exact_mod_cast (NeZero.pos M)
+  have haj : 0 < cmp99SourceMassParameter 1 (M : ℝ) depth :=
+    cmp99SourceMassParameter_pos (by norm_num) hMreal depth
   unfold cmp99SourceActiveRegionTerminalPhysicalCoercivity
-  apply cmp99SourceActiveRegionTerminalCoercivity_pos hdepth hspacing
-    (cmp99SourceMassParameter_pos (by norm_num) ?_ depth) hsmall
-  exact_mod_cast (NeZero.pos M)
+  exact cmp99SourceActiveRegionTerminalCoercivity_pos
+    hdepth hspacing haj hsmall
 
 /-- At depth zero the source recurrence gives `a_0 = 1`, so the exact stop
 tower theorem also has no free counting coefficient. -/
@@ -211,11 +214,12 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision
         T.Qprime (cmp99SourceMassParameter 1 (M : ℝ) depth))
       (cmp99SourceActiveRegionTerminalPhysicalCoercivity
         d M depth spacing epsilon) := by
-  apply isCoerciveCLM_cmp99SourceActiveRegionTerminalPrecision regions hd hM
-    hdepth hspacing
-    (cmp99SourceMassParameter_pos (by norm_num) ?_ depth)
-    background chain fineSmall hsmall
-  exact_mod_cast (NeZero.pos M)
+  have hMreal : (0 : ℝ) < M := by
+    exact_mod_cast (NeZero.pos M)
+  have haj : 0 < cmp99SourceMassParameter 1 (M : ℝ) depth :=
+    cmp99SourceMassParameter_pos (by norm_num) hMreal depth
+  exact isCoerciveCLM_cmp99SourceActiveRegionTerminalPrecision regions hd hM
+    hdepth hspacing haj background chain fineSmall hsmall
 
 end
 
