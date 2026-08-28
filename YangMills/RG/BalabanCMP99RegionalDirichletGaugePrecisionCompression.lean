@@ -78,9 +78,9 @@ theorem cmp99RegionalDirichletPrecision_sourceGaugePrecision_eq
     ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply,
     ContinuousLinearMap.adjoint_comp]
   rw [hRadj]
-  change R (Delta (E phi) + a • E (Qprime.adjoint (Qprime phi))) =
+  change R (Delta (E phi) + a • E (Qprime.adjoint (Qprime (R (E phi))))) =
     R (Delta (E phi)) + a • Qprime.adjoint (Qprime phi)
-  rw [map_add, map_smul, hRE_apply]
+  rw [map_add, map_smul, hRE_apply, hRE_apply]
 
 end
 
