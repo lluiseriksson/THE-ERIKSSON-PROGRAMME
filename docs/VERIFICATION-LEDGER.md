@@ -41110,3 +41110,39 @@ This promotion does not yet re-instantiate the four fixed-depth CMP96 actions,
 produce uniform `B0, delta0`, attain window 15, close rows 23--24 or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 955 (2026-08-28, **C6d ambient/full-companion and exact depth-zero boundary sealed from a fresh cold checkout; 20/41 unchanged**)
+
+The finite boundary from Addendum 954 passed its mandatory cold gate at exact
+source SHA `89cb81e0416e6a6fbc66540a8019471bbbcafed5`, using Lean
+`v4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  All eleven source/audit pairs
+exited zero; the audits produced all 58 expected readouts with axioms confined
+to `{propext, Classical.choice, Quot.sound}` or a subset.  The same checkout
+then built `YangMillsCore` successfully.  The gate recorded 39 successful
+stages and `8665.754` aggregate stage seconds before emitting literal
+`FINAL_STATUS=PASS`.
+
+Independent local verification emitted
+`C6D_SOURCE_COERCIVITY_GREEN_EVIDENCE_OK`.  Evidence-manifest SHA-256 is
+`1B06647F2CCC01FCE8D18A7E0ADC2F3C68659447E378A60CB73598B04A5B97CF`;
+the evidence archive SHA-256 is
+`8FF1D8FD065D8EA4E3E12F6F942984093F8439E34C234F7BB983CB984B4CC162`;
+the executed-notebook SHA-256 is
+`9836EA485543A8D4127F34EDAD8F12BE943141569FC729EF858B411B2A9555E3`.
+The durable package is preserved at
+`validation-evidence/c6d-ambient-compression-cold-pass-89cb81e0-20260828/`.
+
+Seal `6d2b2709` retires exactly the 22 PRE-VALIDATION notices belonging to the
+eleven-pair boundary.  Its sealed-manifest SHA-256 is
+`BAA19CD6948940DC7640B462E3C504825270072A4909F1B02BED94D25CDC6DFA`.
+Verifier normalization and audit-stage discovery were then aligned with the
+runner's recorded-byte convention in the separate instrumentation commit
+`2374e721`; this changes no mathematical source.
+
+This closes the ambient full-companion precision, explicit active-region
+reindexing, canonical Green transport and exact `depth = 0` companion/Green
+boundary.  It still does not re-instantiate the four fixed-depth CMP96 actions,
+produce uniform `B0, delta0`, attain window 15, close rows 23--24 or instantiate
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

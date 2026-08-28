@@ -14856,7 +14856,7 @@ exact depth-zero companion/Green remain open. Uniform `B0, delta0`, window
 15, rows 23--24 and `TermSource` also remain open. Counters stay exactly
 `20/41`, `TermSource = 0`; window 15 is compatible but unattained.
 
-### Step 8b.24/C6d.4: full-companion ambient compression and depth-zero Green (PRE-VALIDATION; hot-verified; cold seal pending; 20/41 unchanged)
+### Step 8b.24/C6d.4: full-companion ambient compression and depth-zero Green (cold-sealed; 20/41 unchanged)
 
 Retained-runtime diagnostics passed the six full-companion/compression pairs,
 the explicit active-region reindexing, the C6d ambient baseline precision,
@@ -14869,11 +14869,22 @@ and
 The executed-notebook bundle is preserved with SHA-256
 `908ED97FDDD58BC218A39E2DF5B5BE2CCFAECE0B5B8018CC45DFE27154CD3CD1`.
 
-The five scratch pairs are promoted under their intended module names with
-PRE-VALIDATION still visible.  Together with the six already promoted pairs,
-the finite cold boundary is exactly eleven source/audit pairs and 58 axiom
-readouts, followed by a same-checkout `YangMillsCore` build.  Hot evidence is
-diagnostic only: no mark is retired until that fresh cold gate passes.
+The five scratch pairs were promoted under their intended module names.
+Together with the six already promoted pairs, the finite cold boundary is
+exactly eleven source/audit pairs and 58 axiom readouts, followed by a
+same-checkout `YangMillsCore` build.
+
+That mandatory gate passed from fresh source SHA
+`89cb81e0416e6a6fbc66540a8019471bbbcafed5` with no restored
+`.lake/build`.  All eleven pairs and the root exited zero, and all 58 readouts
+used only `{propext, Classical.choice, Quot.sound}` or a subset.  The evidence
+archive SHA-256 is
+`8FF1D8FD065D8EA4E3E12F6F942984093F8439E34C234F7BB983CB984B4CC162`;
+the evidence-manifest SHA-256 is
+`1B06647F2CCC01FCE8D18A7E0ADC2F3C68659447E378A60CB73598B04A5B97CF`.
+Seal `6d2b2709` retires exactly the 22 PRE-VALIDATION notices; its
+sealed-manifest SHA-256 is
+`BAA19CD6948940DC7640B462E3C504825270072A4909F1B02BED94D25CDC6DFA`.
 
 This boundary constructs the ambient full-companion precision, explicit
 localized-carrier transport, canonical Green transport and the exact
