@@ -225,8 +225,18 @@ theorem cmp99Eq360C6dSourceAmbientBaselineDirichletGreen_eq_baseline
     (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
     cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+      (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+      (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+      (OmegaPrime0 := OmegaPrime0)
       R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall =
       cmp99Eq360C6dSourceBaselinePhysicalGreen
+        (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+        (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+        (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+        (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+        (OmegaPrime0 := OmegaPrime0)
         R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall := by
   let A := cmp99Eq360C6dSourceBaselinePhysicalPrecision
     R C hscale regions D hM halpha1 baselineRadiusBudget
