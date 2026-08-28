@@ -145,32 +145,73 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionTerminalPrecision
       (isCoerciveCLM_of_twoWeightPoincare D T.Qprime hA hC hb
         hDnonneg hraw)
 
+/-- Counting-Hilbert coefficient corresponding to the printed weighted
+coefficient `a_j * terminalSpacing⁻²`.  The terminal/fine volume ratio is
+mandatory: omitting it is the same convention error as applying `M⁻⁴`
+twice. -/
+noncomputable def cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
+    (T : CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega spacing)
+    (a : ℝ) : ℝ :=
+  a * T.terminalSpacing⁻¹ ^ 2 *
+    (T.terminalSpacing ^ d / spacing ^ d)
+
+theorem cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient_pos
+    (T : CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega spacing)
+    {a : ℝ} (ha : 0 < a) (hspacing : 0 < spacing)
+    (hterminal : 0 < T.terminalSpacing) :
+    0 < cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T a := by
+  unfold cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
+  exact mul_pos (mul_pos ha (pow_pos (inv_pos.mpr hterminal) 2))
+    (div_pos (pow_pos hterminal d) (pow_pos hspacing d))
+
 /-- Source-fixed positive-depth floor.  CMP99 Theorem 3.1 fixes the initial
-averaging coefficient to one, while Eq. (3.24) generates the coefficient at
-the retained depth.  This definition therefore has no free `a_j`. -/
+averaging coefficient to one, Eq. (3.24) generates `a_j`, and the exact
+terminal/fine volume ratio converts its printed weighted coefficient to the
+counting-Hilbert coefficient used by the regional precision. -/
 noncomputable def cmp99SourceActiveRegionTerminalPhysicalCoercivity
-    (d M depth : ℕ) (spacing epsilon : ℝ) : ℝ :=
+    (T : CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega spacing)
+    (M depth : ℕ) (epsilon : ℝ) : ℝ :=
   cmp99SourceActiveRegionTerminalCoercivity d M depth spacing epsilon
-    (cmp99SourceMassParameter 1 (M : ℝ) depth)
+    (cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
+      (cmp99SourceMassParameter 1 (M : ℝ) depth))
 
 /-- The source-fixed floor is strictly positive at positive depth. -/
 theorem cmp99SourceActiveRegionTerminalPhysicalCoercivity_pos
-    (hdepth : 0 < depth) {spacing epsilon : ℝ}
-    (hspacing : 0 < spacing)
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (hdepth : 0 < depth)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig d N (SUN Nc))
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d N,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall :
       cmp99SourcePoincareErrorCoeff d M depth spacing epsilon < 1) :
+    let T := regions.weightedQprimeTower hd hM
+      (matrixSUNAdjointModel Nc) spacing epsilon background chain fineSmall
     0 < cmp99SourceActiveRegionTerminalPhysicalCoercivity
-      d M depth spacing epsilon := by
+      T M depth epsilon := by
+  dsimp only
+  let T := regions.weightedQprimeTower hd hM
+    (matrixSUNAdjointModel Nc) spacing epsilon background chain fineSmall
   have hMreal : (0 : ℝ) < M := by
     exact_mod_cast (NeZero.pos M)
   have haj : 0 < cmp99SourceMassParameter 1 (M : ℝ) depth :=
     cmp99SourceMassParameter_pos (by norm_num) hMreal depth
+  have hterminal : 0 < T.terminalSpacing := by
+    rw [regions.weightedQprimeTower_terminalSpacing]
+    exact mul_pos (pow_pos hMreal depth) hspacing
+  have hb :
+      0 < cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
+        (cmp99SourceMassParameter 1 (M : ℝ) depth) :=
+    cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient_pos
+      T haj hspacing hterminal
   unfold cmp99SourceActiveRegionTerminalPhysicalCoercivity
   exact cmp99SourceActiveRegionTerminalCoercivity_pos
-    hdepth hspacing haj hsmall
+    hdepth hspacing hb hsmall
 
-/-- At depth zero the source recurrence gives `a_0 = 1`, so the exact stop
-tower theorem also has no free counting coefficient. -/
+/-- At depth zero the source recurrence gives `a_0 = 1`, but the printed
+coefficient is still `spacing⁻²`.  The volume ratio is one; the coefficient
+must not be silently replaced by one. -/
 theorem isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision_zero
     (regions : CMP99SourceActiveRegionChain d M N Omega 0)
     (hd : 2 ≤ d) (hM : 2 ≤ M)
@@ -185,11 +226,19 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision_zero
       (cmp99SourceGaugePrecision
         (cmp99ActiveRegionSourceCovariantLaplacian Omega
           (matrixSUNAdjointModel Nc) background spacing)
-        T.Qprime (cmp99SourceMassParameter 1 (M : ℝ) 0))
-      1 := by
-  simpa using
+        T.Qprime
+        (cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
+          (cmp99SourceMassParameter 1 (M : ℝ) 0)))
+      (cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
+        (cmp99SourceMassParameter 1 (M : ℝ) 0)) := by
+  dsimp only
+  exact
     (isCoerciveCLM_cmp99SourceActiveRegionTerminalPrecision_zero
-      regions hd hM background chain fineSmall (b := (1 : ℝ)))
+      regions hd hM background chain fineSmall
+      (b := cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
+        (regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
+          spacing epsilon background chain fineSmall)
+        (cmp99SourceMassParameter 1 (M : ℝ) 0)))
 
 /-- Source-facing positive-depth coercivity producer.  The regional chain,
 background, terminal average, and coefficient are all literal source data;
@@ -211,15 +260,29 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionTerminalPhysicalPrecision
       (cmp99SourceGaugePrecision
         (cmp99ActiveRegionSourceCovariantLaplacian Omega
           (matrixSUNAdjointModel Nc) background spacing)
-        T.Qprime (cmp99SourceMassParameter 1 (M : ℝ) depth))
+        T.Qprime
+        (cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
+          (cmp99SourceMassParameter 1 (M : ℝ) depth)))
       (cmp99SourceActiveRegionTerminalPhysicalCoercivity
-        d M depth spacing epsilon) := by
+        T M depth epsilon) := by
+  dsimp only
+  let T := regions.weightedQprimeTower hd hM
+    (matrixSUNAdjointModel Nc) spacing epsilon background chain fineSmall
   have hMreal : (0 : ℝ) < M := by
     exact_mod_cast (NeZero.pos M)
   have haj : 0 < cmp99SourceMassParameter 1 (M : ℝ) depth :=
     cmp99SourceMassParameter_pos (by norm_num) hMreal depth
+  have hterminal : 0 < T.terminalSpacing := by
+    rw [regions.weightedQprimeTower_terminalSpacing]
+    exact mul_pos (pow_pos hMreal depth) hspacing
+  have hb :
+      0 < cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient T
+        (cmp99SourceMassParameter 1 (M : ℝ) depth) :=
+    cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient_pos
+      T haj hspacing hterminal
+  unfold cmp99SourceActiveRegionTerminalPhysicalCoercivity
   exact isCoerciveCLM_cmp99SourceActiveRegionTerminalPrecision regions hd hM
-    hdepth hspacing haj background chain fineSmall hsmall
+    hdepth hspacing hb background chain fineSmall hsmall
 
 end
 

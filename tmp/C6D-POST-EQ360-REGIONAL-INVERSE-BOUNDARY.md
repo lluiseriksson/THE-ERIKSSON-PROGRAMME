@@ -234,21 +234,41 @@ dictionary.  The new scratch theorem is precisely that missing generality;
 the existing canonical theorem remains the reference specialization and a
 useful consistency check.
 
-The scalar `a_j` in the Eq. (3.60) algebra is still not source closure.
-CMP99 (3.24) fixes it recursively from `a_0 = a > 0`, and Theorem 3.1 then
-specializes the physical Green statement to `a = 1`.  After the required
-source specialization `M = L`, the Green consumer must therefore instantiate
+The scalar field called `a_j` in the current C6d structure is the coefficient
+of Lean's **counting-Hilbert** adjoint.  It is not the raw source recurrence
+coefficient with the same printed name.  CMP99 (3.24) fixes the raw source
+coefficient recursively from `a_0 = a > 0`, and Theorem 3.1 specializes the
+physical Green statement to `a = 1`.  The printed weighted coefficient is
+`a_j * terminalSpacing^(-2)`, whereas
+`cmp99SourceCountingCoefficientAsWeightedAdjoint` multiplies a counting
+coefficient by `spacing^d / terminalSpacing^d`.  Therefore, after the source
+specialization `M = L`, the C6d input must instantiate
 
 ```text
-a_j = cmp99SourceMassParameter 1 L depth
+C6d.a_j = cmp99SourceMassParameter 1 L depth
+  * terminalSpacing^(d - 2) / spacing^d
 ```
 
-and derive positivity from `cmp99SourceMassParameter_pos`; it may not expose
-an arbitrary positive `a_j` as its final public input.  The current C6d
-Eq. (3.60) wrapper remains valid algebra parametrized by a coefficient, but
-the outer physical inversion wrapper must perform this source specialization.
+and in the present `d = 4` specialization this is
 
-The flow coefficient itself is not a remaining uniformity mystery.  The
+```text
+C6d.a_j = cmp99SourceMassParameter 1 L depth
+  * terminalSpacing^2 / spacing^4.
+```
+
+The PRE-VALIDATION coercivity scratch keeps the equivalent unsimplified
+formula `a_j * terminalSpacing^(-2) *
+(terminalSpacing^d / spacing^d)`, so the two volume factors remain visible.
+It derives positivity from the generated terminal-spacing identity and
+`cmp99SourceMassParameter_pos`; it does not expose an arbitrary positive
+coefficient as its source-facing input.  Replacing `C6d.a_j` by the raw
+recurrence value would typecheck but would lose the factor
+`terminalSpacing^(d-2) / spacing^d`--the exact normalization class of the
+earlier double-`M^-4` defect.  The current C6d Eq. (3.60) wrapper remains
+valid algebra parametrized by a counting coefficient, but the outer physical
+inversion wrapper must perform this source specialization.
+
+The raw flow coefficient itself is not a remaining uniformity mystery.  The
 already cold-sealed theorem
 `cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter`, specialized to
 `a = 1`, gives the depth-independent bound
