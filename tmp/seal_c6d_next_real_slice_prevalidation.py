@@ -144,12 +144,15 @@ def remove_prevalidation_notice(remover, data: bytes, relative: str) -> bytes:
     """Remove the single source doc-block or audit line notice, and nothing else."""
     if relative.endswith("Audit.lean"):
         marker = b"-- PRE-VALIDATION: audit present; no compiler or axiom-oracle verdict.\n"
-        if data.count(marker) != 1:
+        if data.count(marker) == 1:
+            sealed = data.replace(marker, b"", 1)
+        elif data.count(marker) == 0:
+            sealed = remover.remove_prevalidation_block(data, relative)
+        else:
             raise RuntimeError(
                 f"C6D_NEXT_REAL_SLICE_AUDIT_NOTICE_COUNT={relative}:"
                 f"{data.count(marker)}"
             )
-        sealed = data.replace(marker, b"", 1)
         if b"PRE-VALIDATION:" in sealed:
             raise RuntimeError(
                 f"C6D_NEXT_REAL_SLICE_AUDIT_PREVALIDATION_REMAINS={relative}"
