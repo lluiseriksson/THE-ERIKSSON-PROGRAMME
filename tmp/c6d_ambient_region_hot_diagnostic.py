@@ -20,7 +20,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "a51130ceda1be5c325d8b7211ec2e4b0dfc22a22"
+SOURCE_SHA = "1176948c6a511d017780a54f1cbc8a72b6dea972"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-ambient-region-hot-evidence")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
@@ -36,6 +36,12 @@ PAIRS = [
         "tmp/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision.draft.lean",
         "tmp/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecisionAudit.draft.lean",
         7,
+    ),
+    (
+        "BalabanCMP99ActiveGaugeRegionReindexGreen",
+        "tmp/BalabanCMP99ActiveGaugeRegionReindexGreen.draft.lean",
+        "tmp/BalabanCMP99ActiveGaugeRegionReindexGreenAudit.draft.lean",
+        4,
     ),
 ]
 
@@ -118,6 +124,7 @@ def main() -> int:
     for manifest in (
         "tmp/c6d-active-region-reindex-draft-paths.txt",
         "tmp/c6d-ambient-baseline-draft-paths.txt",
+        "tmp/c6d-active-region-reindex-green-draft-paths.txt",
     ):
         run(
             "text_guard_" + Path(manifest).stem,
