@@ -519,6 +519,7 @@ theorem precisionPerturbation_eq_sourcePrecisionPerturbation
     I.precisionPerturbation = I.sourcePrecisionPerturbation := by
   unfold precisionPerturbation sourcePrecisionPerturbation
     baselineLaplacian perturbedLaplacian localLaplacianPerturbation
+    cmp99Eq360ComplexRegionalPrecisionPerturbation
   rw [cmp99Eq360_complexRegionalLaplacian_sub_eq_localPerturbation]
   rfl
 
