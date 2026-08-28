@@ -187,6 +187,7 @@ theorem finitePiLpTypedKernelReindex_sourceAmbientDirichletPrecision
   rw [← cmp99GaugeZeroCochainReindex_symm_extendZero e Omega phi] at htransport
   simpa only [cmp99ActiveGaugeZeroCochainReindex,
     cmp99GaugeZeroCochainReindex,
+    ← LinearIsometryEquiv.toContinuousLinearEquiv_symm,
     LinearIsometryEquiv.piLpCongrLeft_symm] using htransport
 
 /-- Pulling the transported Dirichlet compression back through the restricted
