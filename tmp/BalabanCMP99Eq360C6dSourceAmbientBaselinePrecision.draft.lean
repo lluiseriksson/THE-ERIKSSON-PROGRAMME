@@ -228,10 +228,59 @@ theorem cmp99Eq360C6dSourceAmbientBaselineDirichletGreen_eq_baseline
       R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall =
       cmp99Eq360C6dSourceBaselinePhysicalGreen
         R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall := by
-  unfold cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
-  unfold cmp99Eq360C6dSourceBaselinePhysicalGreen
-  rw [cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq
-    R C hscale regions D hM halpha1 baselineRadiusBudget]
+  let A := cmp99Eq360C6dSourceBaselinePhysicalPrecision
+    R C hscale regions D hM halpha1 baselineRadiusBudget
+  let Gambient := cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+    R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
+  let Gbaseline := cmp99Eq360C6dSourceBaselinePhysicalGreen
+    R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
+  let c := cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+    R C hscale regions D hM halpha1 baselineRadiusBudget
+  change Gambient = Gbaseline
+  have hc : 0 < c := by
+    simpa only [c] using
+      cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+        R C hscale regions D hM halpha1 baselineRadiusBudget
+        hdepth R.eta_pos hsmall
+  have hA : IsCoerciveCLM A c := by
+    simpa only [A, c] using
+      isCoerciveCLM_cmp99Eq360C6dSourceBaselinePhysicalPrecision
+        R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
+  have hEq :
+      cmp99SourceAmbientDirichletPrecision Omega
+          (cmp99Eq360C6dSourceAmbientBaselinePrecision
+            R C hscale regions D hM halpha1 baselineRadiusBudget) = A := by
+    simpa only [A] using
+      cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq
+        R C hscale regions D hM halpha1 baselineRadiusBudget
+  have hambient :
+      (cmp99SourceAmbientDirichletPrecision Omega
+        (cmp99Eq360C6dSourceAmbientBaselinePrecision
+          R C hscale regions D hM halpha1 baselineRadiusBudget)).comp
+          Gambient = ContinuousLinearMap.id ℝ _ := by
+    simpa only [Gambient,
+      cmp99Eq360C6dSourceAmbientBaselineDirichletGreen] using
+      precision_comp_covarianceOfIsCoerciveCLM
+        (cmp99SourceAmbientDirichletPrecision Omega
+          (cmp99Eq360C6dSourceAmbientBaselinePrecision
+            R C hscale regions D hM halpha1 baselineRadiusBudget))
+        hc
+        (isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselineCompression
+          R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
+  have h₁ : A.comp Gambient = ContinuousLinearMap.id ℝ _ := by
+    rw [← hEq]
+    exact hambient
+  have h₂ : A.comp Gbaseline = ContinuousLinearMap.id ℝ _ := by
+    simpa only [A, Gbaseline] using
+      cmp99Eq360C6dSourceBaselinePhysicalPrecision_comp_green
+        R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
+  apply ContinuousLinearMap.ext
+  intro x
+  apply isCoerciveCLM_injective A hc hA
+  have h₁x := congrArg (fun T => T x) h₁
+  have h₂x := congrArg (fun T => T x) h₂
+  simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.id_apply]
+    using h₁x.trans h₂x.symm
 
 end
 
