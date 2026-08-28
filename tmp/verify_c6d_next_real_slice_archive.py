@@ -145,7 +145,8 @@ def main() -> int:
             audit_stages.append(
                 f"c6d_next_real_slice_{index:02d}_{module.lower()}_audit"
             )
-        if len(expected) != 10 or len(set(expected)) != 10:
+        expected_total = sum(count for _, count in contract.MODULES)
+        if len(expected) != expected_total or len(set(expected)) != expected_total:
             raise RuntimeError("C6D_NEXT_REAL_SLICE_ARCHIVE_DECLARATION_SCOPE")
 
         audit_text = "\n".join(outputs[stage] for stage in audit_stages)

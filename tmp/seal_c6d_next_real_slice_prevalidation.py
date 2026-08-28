@@ -24,6 +24,7 @@ CONTRACT_PATH = ROOT / "tmp" / "verify_c6d_next_real_slice_contract.py"
 ARCHIVE_VERIFIER = ROOT / "tmp" / "verify_c6d_next_real_slice_archive.py"
 SOURCE_SHA = "81cc22e41d46cce150c2a263c85e4acb90087153"
 RUNNER_REV = "c6d-next-real-slice-v3"
+EXPECTED_DECLARATIONS = 10
 
 
 def load(path: Path, name: str):
@@ -88,7 +89,7 @@ def verify_archive(path: Path) -> dict:
         result = json.loads(verification_json.read_text(encoding="utf-8"))
     if result.get("status") != "C6D_NEXT_REAL_SLICE_EVIDENCE_OK":
         raise RuntimeError("C6D_NEXT_REAL_SLICE_SEAL_STATUS_MISMATCH")
-    if result.get("expected_declarations") != 10:
+    if result.get("expected_declarations") != EXPECTED_DECLARATIONS:
         raise RuntimeError("C6D_NEXT_REAL_SLICE_SEAL_DECLARATIONS_MISMATCH")
     source_sha = result.get("source_sha")
     if source_sha != SOURCE_SHA:
@@ -106,7 +107,8 @@ def paths(contract) -> list[str]:
         for module, _ in contract.MODULES
         for suffix in ("", "Audit")
     ]
-    if len(rows) != 6 or len(set(rows)) != 6:
+    expected_files = 2 * len(contract.MODULES)
+    if len(rows) != expected_files or len(set(rows)) != expected_files:
         raise RuntimeError("C6D_NEXT_REAL_SLICE_SEAL_SCOPE_INVALID")
     return rows
 
@@ -172,9 +174,11 @@ def main() -> int:
     notice_count = sum(
         data.count(b"PRE-VALIDATION:") for _, data in original_rows
     )
-    if notice_count != 6:
+    expected_notices = len(original_rows)
+    if notice_count != expected_notices:
         raise RuntimeError(
-            f"C6D_NEXT_REAL_SLICE_SEAL_NOTICE_COUNT_MISMATCH={notice_count}:6"
+            "C6D_NEXT_REAL_SLICE_SEAL_NOTICE_COUNT_MISMATCH="
+            f"{notice_count}:{expected_notices}"
         )
     rows: list[tuple[str, bytes]] = []
     unmarked: list[str] = []
@@ -198,7 +202,8 @@ def main() -> int:
     if not args.apply:
         print(
             "C6D_NEXT_REAL_SLICE_SEAL_PREVIEW_OK "
-            f"files=6 notices={notice_count} source_sha={result['source_sha']} "
+            f"files={len(rows)} notices={notice_count} "
+            f"source_sha={result['source_sha']} "
             f"manifest_sha256={manifest_sha}"
         )
         return 0
@@ -226,7 +231,8 @@ def main() -> int:
 
     print(
         "C6D_NEXT_REAL_SLICE_SEAL_APPLY_OK "
-        f"files=6 notices={notice_count} source_sha={result['source_sha']} "
+        f"files={len(rows)} notices={notice_count} "
+        f"source_sha={result['source_sha']} "
         f"manifest_sha256={manifest_sha}"
     )
     return 0
