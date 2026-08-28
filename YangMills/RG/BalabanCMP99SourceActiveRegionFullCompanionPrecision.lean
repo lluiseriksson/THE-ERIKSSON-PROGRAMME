@@ -137,10 +137,11 @@ theorem cmp99SourceActiveRegionFullCompanionPrecision_compression
     (cmp99SourceActiveRegionFullCompanionCountingCoefficient regions hd hM rho
       spacing epsilon background chain fineSmall)
     background chain fineSmall
-  rw [cmp99SourceActiveRegionFullCompanionCountingCoefficient_eq_regional
-    regions hd hM rho spacing epsilon background chain fineSmall]
+  have hcoefficient :=
+    cmp99SourceActiveRegionFullCompanionCountingCoefficient_eq_regional
+      regions hd hM rho spacing epsilon background chain fineSmall
   simpa [companion, cmp99SourceActiveRegionFullCompanionPrecision,
-    cmp99SourceActiveRegionFullCompanionTower] using hcompression
+    cmp99SourceActiveRegionFullCompanionTower, hcoefficient] using hcompression
 
 /-- At positive depth the constructed full companion precision is coercive
 with the exact source terminal floor. -/
