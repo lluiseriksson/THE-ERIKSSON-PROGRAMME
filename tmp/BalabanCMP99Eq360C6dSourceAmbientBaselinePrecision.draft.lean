@@ -218,6 +218,40 @@ noncomputable def cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
     (isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselineCompression
       R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
 
+/-- The literal compressed ambient precision is a left inverse of its
+internally constructed Green. -/
+theorem cmp99Eq360C6dSourceAmbientBaselinePrecision_comp_dirichletGreen
+    (hdepth : 0 < depth)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
+    (cmp99SourceAmbientDirichletPrecision Omega
+      (cmp99Eq360C6dSourceAmbientBaselinePrecision
+        R C hscale regions D hM halpha1 baselineRadiusBudget)).comp
+        (cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+          R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall) =
+      ContinuousLinearMap.id ℝ
+        (ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) := by
+  exact precision_comp_covarianceOfIsCoerciveCLM _
+    (cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+      hdepth R.eta_pos hsmall) _
+
+private theorem rightInverse_unique_of_operator_eq
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    (A₁ A₂ G₁ G₂ : E →L[ℝ] E) {c : ℝ} (hc : 0 < c)
+    (hA₂ : IsCoerciveCLM A₂ c) (hA : A₁ = A₂)
+    (h₁ : A₁.comp G₁ = ContinuousLinearMap.id ℝ E)
+    (h₂ : A₂.comp G₂ = ContinuousLinearMap.id ℝ E) :
+    G₁ = G₂ := by
+  apply ContinuousLinearMap.ext
+  intro x
+  apply isCoerciveCLM_injective A₂ hc hA₂
+  have h₁x := congrArg (fun T : E →L[ℝ] E => T x) h₁
+  have h₂x := congrArg (fun T : E →L[ℝ] E => T x) h₂
+  rw [hA] at h₁x
+  simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.id_apply]
+    using h₁x.trans h₂x.symm
+
 /-- Uniqueness of the inverse identifies the ambiently generated Dirichlet
 Green with the already constructed literal C6d baseline Green. -/
 theorem cmp99Eq360C6dSourceAmbientBaselineDirichletGreen_eq_baseline
@@ -238,59 +272,27 @@ theorem cmp99Eq360C6dSourceAmbientBaselineDirichletGreen_eq_baseline
         (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
         (OmegaPrime0 := OmegaPrime0)
         R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall := by
-  let A := cmp99Eq360C6dSourceBaselinePhysicalPrecision
-    R C hscale regions D hM halpha1 baselineRadiusBudget
-  let Gambient := cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
-    R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
-  let Gbaseline := cmp99Eq360C6dSourceBaselinePhysicalGreen
-    R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
-  let c := cmp99Eq360C6dSourceBaselinePhysicalCoercivity
-    R C hscale regions D hM halpha1 baselineRadiusBudget
-  change Gambient = Gbaseline
-  have hc : 0 < c := by
-    simpa only [c] using
-      cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
-        R C hscale regions D hM halpha1 baselineRadiusBudget
-        hdepth R.eta_pos hsmall
-  have hA : IsCoerciveCLM A c := by
-    simpa only [A, c] using
-      isCoerciveCLM_cmp99Eq360C6dSourceBaselinePhysicalPrecision
-        R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
-  have hEq :
-      cmp99SourceAmbientDirichletPrecision Omega
-          (cmp99Eq360C6dSourceAmbientBaselinePrecision
-            R C hscale regions D hM halpha1 baselineRadiusBudget) = A := by
-    simpa only [A] using
-      cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq
-        R C hscale regions D hM halpha1 baselineRadiusBudget
-  have hambient :
-      (cmp99SourceAmbientDirichletPrecision Omega
-        (cmp99Eq360C6dSourceAmbientBaselinePrecision
-          R C hscale regions D hM halpha1 baselineRadiusBudget)).comp
-          Gambient = ContinuousLinearMap.id ℝ _ := by
-    simpa only [Gambient,
-      cmp99Eq360C6dSourceAmbientBaselineDirichletGreen] using
-      precision_comp_covarianceOfIsCoerciveCLM
-        (cmp99SourceAmbientDirichletPrecision Omega
-          (cmp99Eq360C6dSourceAmbientBaselinePrecision
-            R C hscale regions D hM halpha1 baselineRadiusBudget))
-        hc
-        (isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselineCompression
-          R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
-  have h₁ : A.comp Gambient = ContinuousLinearMap.id ℝ _ := by
-    rw [← hEq]
-    exact hambient
-  have h₂ : A.comp Gbaseline = ContinuousLinearMap.id ℝ _ := by
-    simpa only [A, Gbaseline] using
-      cmp99Eq360C6dSourceBaselinePhysicalPrecision_comp_green
-        R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall
-  apply ContinuousLinearMap.ext
-  intro x
-  apply isCoerciveCLM_injective A hc hA
-  have h₁x := congrArg (fun T => T x) h₁
-  have h₂x := congrArg (fun T => T x) h₂
-  simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.id_apply]
-    using h₁x.trans h₂x.symm
+  exact rightInverse_unique_of_operator_eq
+    (cmp99SourceAmbientDirichletPrecision Omega
+      (cmp99Eq360C6dSourceAmbientBaselinePrecision
+        R C hscale regions D hM halpha1 baselineRadiusBudget))
+    (cmp99Eq360C6dSourceBaselinePhysicalPrecision
+      R C hscale regions D hM halpha1 baselineRadiusBudget)
+    (cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+      R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
+    (cmp99Eq360C6dSourceBaselinePhysicalGreen
+      R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
+    (cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+      hdepth R.eta_pos hsmall)
+    (isCoerciveCLM_cmp99Eq360C6dSourceBaselinePhysicalPrecision
+      R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
+    (cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq
+      R C hscale regions D hM halpha1 baselineRadiusBudget)
+    (cmp99Eq360C6dSourceAmbientBaselinePrecision_comp_dirichletGreen
+      R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
+    (cmp99Eq360C6dSourceBaselinePhysicalPrecision_comp_green
+      R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall)
 
 end
 

@@ -12,4 +12,5 @@ verdict.
 #print axioms YangMills.RG.isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselinePrecision
 #print axioms YangMills.RG.isCoerciveCLM_cmp99Eq360C6dSourceAmbientBaselineCompression
 #print axioms YangMills.RG.cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+#print axioms YangMills.RG.cmp99Eq360C6dSourceAmbientBaselinePrecision_comp_dirichletGreen
 #print axioms YangMills.RG.cmp99Eq360C6dSourceAmbientBaselineDirichletGreen_eq_baseline
