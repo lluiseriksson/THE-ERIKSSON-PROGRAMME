@@ -234,6 +234,30 @@ dictionary.  The new scratch theorem is precisely that missing generality;
 the existing canonical theorem remains the reference specialization and a
 useful consistency check.
 
+There is a further locality boundary before that generic coercivity theorem
+can be cited for the literal C6d baseline.  The C6d Laplacian is built from
+the complete transformed background, whereas its retained `Qprime` tower is
+built from the canonical identity extension of the exact recursive read
+carrier in order to obtain global smallness.  The extension is proved equal
+to the complete background on `retainedFineReadBonds`; that carrier is
+exactly sufficient for the transported averages, but no theorem states that
+it contains every internal bond read by the regional Laplacian.  Therefore
+`cmp99ActiveRegionSourceCovariantLaplacian_eq_of_eqOn_internalBonds` cannot be
+applied from the present hypotheses, and the two backgrounds may not be
+identified definitionally.  The source-facing coercivity endpoint still
+needs one of the following source-faithful constructions:
+
+1. a localized absorbed-Poincare theorem whose gradient uses the complete
+   background while its terminal average uses the carrier-localized tower;
+   or
+2. a proved enlargement of the retained carrier that includes the internal
+   Laplacian bonds, followed by a proof that the enlarged extension leaves
+   the terminal `Qprime` unchanged.
+
+Until one of these is constructed, the generic coercivity scratch is valid
+algebra and the source-fixed coefficient constructor is valid convention
+data, but neither is a producer of C6d baseline coercivity.
+
 The scalar field called `a_j` in the current C6d structure is the coefficient
 of Lean's **counting-Hilbert** adjoint.  It is not the raw source recurrence
 coefficient with the same printed name.  CMP99 (3.24) fixes the raw source
