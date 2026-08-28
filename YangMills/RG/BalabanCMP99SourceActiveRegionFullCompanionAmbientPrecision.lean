@@ -37,6 +37,41 @@ noncomputable def cmp99SourceFullActiveRegionSiteEquiv (d N : ℕ) :
     rfl
   right_inv _x := rfl
 
+/-- Reindexing an ambient field to the literal full active carrier is exactly
+restriction to that carrier.  This is the source-leg bridge used by the
+ambient full-companion compression; it is not left to definitional
+reduction. -/
+theorem cmp99SourceFullActiveRegion_restrictZero_eq_reindex
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g] :
+    (restrictZeroCLM (𝔤 := g) (cmp99SourceFullActiveRegion d N)) =
+      ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g
+        (cmp99SourceFullActiveRegionSiteEquiv d N).symm).toContinuousLinearEquiv)
+          .toContinuousLinearMap := by
+  apply ContinuousLinearMap.ext
+  intro phi
+  apply PiLp.ext
+  intro x
+  rfl
+
+/-- Reindexing a field from the literal full active carrier to the ambient
+box is exactly zero extension.  Fullness discharges the only support branch
+explicitly. -/
+theorem cmp99SourceFullActiveRegion_extendZero_eq_reindex
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g] :
+    (extendZeroZeroCLM (𝔤 := g) (cmp99SourceFullActiveRegion d N)) =
+      ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g
+        (cmp99SourceFullActiveRegionSiteEquiv d N)).toContinuousLinearEquiv)
+          .toContinuousLinearMap := by
+  apply ContinuousLinearMap.ext
+  intro phi
+  apply PiLp.ext
+  intro x
+  simp [extendZeroZeroCLM, cmp99SourceFullActiveRegion,
+    cmp99SourceFullActiveRegionSiteEquiv,
+    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
+
 /-- Ambient reindexing of the internally constructed full-companion source
 precision. -/
 noncomputable def cmp99SourceActiveRegionFullCompanionAmbientPrecision
@@ -173,6 +208,8 @@ theorem cmp99SourceAmbientDirichletPrecision_fullCompanion_eq
   simpa [cmp99SourceAmbientDirichletPrecision,
     cmp99SourceActiveRegionFullCompanionAmbientPrecision,
     finitePiLpTypedKernelReindex, cmp99SourceFullActiveRegionSiteEquiv,
+    cmp99SourceFullActiveRegion_restrictZero_eq_reindex,
+    cmp99SourceFullActiveRegion_extendZero_eq_reindex,
     R, E, Kfull, cmp99NestedActiveRegionRestriction,
     cmp99NestedActiveRegionExtension,
     LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft'] using hpoint
