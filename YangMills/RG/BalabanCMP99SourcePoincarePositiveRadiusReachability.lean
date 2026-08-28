@@ -10,6 +10,7 @@ been materialized, and its result has not yet been verified by the compiler.
 namespace YangMills.RG
 
 open YangMills Matrix
+open scoped Matrix.Norms.L2Operator Topology
 
 noncomputable section
 
@@ -118,7 +119,7 @@ theorem continuousAt_cmp99SourcePoincareErrorCoeff_zero
             (fun epsilon : ℝ =>
               cmp99SourcePoincareErrorCoeff d M depth
                 ((M : ℝ) * spacing) (next epsilon)) 0 :=
-        herrorBase.comp 0 hnext
+        herrorBase.comp hnext
       have henergy :
           ContinuousAt
             (fun epsilon : ℝ =>
