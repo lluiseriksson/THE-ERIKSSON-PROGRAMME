@@ -44,7 +44,7 @@ variable {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
 
 /-- The auxiliary closed-radius dimension is nonzero for the already printed
 source gate `2 ≤ M`; it is not an additional caller hypothesis. -/
-def cmp99Eq360C6dRadiusDimensionNeZero (hM : 2 ≤ M) :
+@[reducible] def cmp99Eq360C6dRadiusDimensionNeZero (hM : 2 ≤ M) :
     NeZero (4 * (M - 1)) :=
   ⟨by omega⟩
 
@@ -69,9 +69,11 @@ structure CMP99Eq360C6dLocalizedRetainedInput
     (baselineRadiusBudget : CMP99SourceUbarClosedBudget 4 M Nc depth
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)) where
   A : PhysicalGaugeOneCochain 4 (L * N') Nc
-  z rA Rmax : ℝ
+  z : ℝ
+  rA : ℝ
+  Rmax : ℝ
   rA_nonneg : 0 ≤ rA
-  retainedA_bound : ∀ b,
+  retainedA_bound : ∀ b : PhysicalBond 4 (L * N'),
     ‖regions.retainedFineComplexOneCochain A b‖ ≤ rA
   perturbation_small : |z| *
     (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2
@@ -422,7 +424,8 @@ theorem baselineLaplacian_realSlice
         (cmp99ActiveRegionSourceCovariantLaplacian Omega
           (matrixSUNAdjointModel Nc)
           (R.toCubeWitness C alpha1 hscale).transformedBackground eta phi) := by
-  ext x
+  apply PiLp.ext
+  intro x
   rw [baselineLaplacian, I.fullBackground0_eq_realSlice]
   exact cmp99Eq360ComplexRegionalLaplacian_realSlice Omega
     (R.toCubeWitness C alpha1 hscale).transformedBackground eta phi x
@@ -515,6 +518,7 @@ theorem precisionPerturbation_eq_sourcePrecisionPerturbation
       halpha1 baselineRadiusBudget) :
     I.precisionPerturbation = I.sourcePrecisionPerturbation := by
   unfold precisionPerturbation sourcePrecisionPerturbation
+    baselineLaplacian perturbedLaplacian localLaplacianPerturbation
   rw [cmp99Eq360_complexRegionalLaplacian_sub_eq_localPerturbation]
   rfl
 
