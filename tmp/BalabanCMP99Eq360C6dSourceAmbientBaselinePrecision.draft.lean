@@ -224,10 +224,21 @@ theorem cmp99Eq360C6dSourceAmbientBaselinePrecision_comp_dirichletGreen
     (hdepth : 0 < depth)
     (hsmall : cmp99SourcePoincareErrorCoeff 4 M depth eta
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
-    (cmp99SourceAmbientDirichletPrecision Omega
+    (cmp99SourceAmbientDirichletPrecision
+      (d := 4) (N := L * N') (g := SUNLieCoord Nc) Omega
       (cmp99Eq360C6dSourceAmbientBaselinePrecision
+        (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+        (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+        (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+        (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+        (OmegaPrime0 := OmegaPrime0)
         R C hscale regions D hM halpha1 baselineRadiusBudget)).comp
         (cmp99Eq360C6dSourceAmbientBaselineDirichletGreen
+          (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+          (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+          (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+          (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+          (OmegaPrime0 := OmegaPrime0)
           R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall) =
       ContinuousLinearMap.id ℝ
         (ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) := by
@@ -273,8 +284,14 @@ theorem cmp99Eq360C6dSourceAmbientBaselineDirichletGreen_eq_baseline
         (OmegaPrime0 := OmegaPrime0)
         R C hscale regions D hM halpha1 baselineRadiusBudget hdepth hsmall := by
   exact rightInverse_unique_of_operator_eq
-    (cmp99SourceAmbientDirichletPrecision Omega
+    (cmp99SourceAmbientDirichletPrecision
+      (d := 4) (N := L * N') (g := SUNLieCoord Nc) Omega
       (cmp99Eq360C6dSourceAmbientBaselinePrecision
+        (L := L) (N' := N') (M := M) (Mlarge := Mlarge) (Nc := Nc)
+        (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+        (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+        (alpha0 := alpha0) (alpha1 := alpha1) (Omega := Omega)
+        (OmegaPrime0 := OmegaPrime0)
         R C hscale regions D hM halpha1 baselineRadiusBudget))
     (cmp99Eq360C6dSourceBaselinePhysicalPrecision
       R C hscale regions D hM halpha1 baselineRadiusBudget)
