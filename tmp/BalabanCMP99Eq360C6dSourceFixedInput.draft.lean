@@ -46,6 +46,16 @@ variable (hM : 2 ≤ M) (halpha1 : alpha1 ≤ 1 / 2)
 variable (baselineRadiusBudget : CMP99SourceUbarClosedBudget 4 M Nc depth
   (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1))
 
+-- The fixed-input source estimate uses the same `L2Operator` matrix norm as
+-- the sealed Eq. (3.35) near-identity producer.  Mathlib does not provide the
+-- corresponding `NormOneClass` instance globally, so keep the exact audited
+-- local instance visible here rather than changing norms implicitly.
+local instance cmp99Eq360C6dSourceFixedInputMatrixNormOneClass :
+    NormOneClass (Matrix (Fin Nc) (Fin Nc) ℂ) where
+  norm_one := by
+    rw [← Matrix.diagonal_one, Matrix.l2_opNorm_diagonal]
+    simp
+
 /-- The generated physical retained tower, factored before an algebraic C6d
 input is assembled.  In particular it cannot depend on the coefficient that
 will later multiply its terminal averaging operator. -/
