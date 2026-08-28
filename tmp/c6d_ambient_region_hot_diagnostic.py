@@ -20,7 +20,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "17bdcbbd027d895100d74fd3c07192cdf21f5232"
+SOURCE_SHA = "ca38feabb6430177a4b3dbd942893ca929983064"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-ambient-region-hot-evidence")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
@@ -35,7 +35,7 @@ PAIRS = [
         "BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision",
         "tmp/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision.draft.lean",
         "tmp/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecisionAudit.draft.lean",
-        7,
+        8,
     ),
     (
         "BalabanCMP99ActiveGaugeRegionReindexGreen",
