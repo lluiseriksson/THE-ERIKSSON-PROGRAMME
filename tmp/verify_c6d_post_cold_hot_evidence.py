@@ -15,7 +15,7 @@ import re
 import tarfile
 
 
-FULL_SOURCE_SHA = "54233ee7c907cf8cb95787f34985476727e99d3c"
+FULL_SOURCE_SHA = "ce38d5563ee83ee0bb4a91097319fa625eea4c3b"
 AMBIENT_SOURCE_SHA = "1176948c6a511d017780a54f1cbc8a72b6dea972"
 ZERO_SOURCE_SHA = "4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5"
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
