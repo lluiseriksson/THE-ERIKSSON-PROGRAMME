@@ -21,6 +21,9 @@ SOURCE_BLOBS_COUNT = 21
 SOURCE_BLOBS_SHA256 = (
     "77E278086CC1F952F5C1855D88E1CE7EC4A51725F219F93D900856B51A301D66"
 )
+NOTEBOOK_CELL_SOURCE_SHA256 = (
+    "E841A3887E4F71426E22FC890101C9CF3AE04F4BCB2171B3B7D626A24C9C64D4"
+)
 
 MODULES = [
     "BalabanCMP99SourcePoincarePositiveRadiusReachability",
@@ -34,6 +37,7 @@ MODULES = [
     "BalabanCMP99Eq360C6dSourceTerminalCoercivityReachability",
     "BalabanCMP99Eq360C6dSourceBaselineGreen",
 ]
+EXPECTED_AXIOM_HEADERS = [9, 3, 1, 8, 6, 30, 11, 3, 1, 8]
 
 BOOTSTRAP_STAGES = [
     "download_toolchain",
@@ -82,14 +86,139 @@ def expected_queue_stages() -> list[str]:
     return result
 
 
+def executed_notebook_text(path: Path) -> str:
+    if not path.is_file():
+        raise RuntimeError(f"NOTEBOOK_NOT_FOUND={path}")
+    notebook = json.loads(path.read_text(encoding="utf-8"))
+    cells = notebook.get("cells")
+    if not isinstance(cells, list):
+        raise RuntimeError("NOTEBOOK_CELLS_NOT_LIST")
+    code_cells = [cell for cell in cells if cell.get("cell_type") == "code"]
+    if len(code_cells) != 1:
+        raise RuntimeError(f"NOTEBOOK_CODE_CELL_COUNT={len(code_cells)}")
+    cell = code_cells[0]
+    source = cell.get("source")
+    if isinstance(source, list):
+        source_text = "".join(source)
+    elif isinstance(source, str):
+        source_text = source
+    else:
+        raise RuntimeError("NOTEBOOK_CELL_SOURCE_INVALID")
+    source_sha = hashlib.sha256(source_text.encode()).hexdigest().upper()
+    if source_sha != NOTEBOOK_CELL_SOURCE_SHA256:
+        raise RuntimeError(
+            f"NOTEBOOK_CELL_SOURCE_SHA256={source_sha} "
+            f"EXPECTED={NOTEBOOK_CELL_SOURCE_SHA256}"
+        )
+    if cell.get("execution_count") is None:
+        raise RuntimeError("NOTEBOOK_CELL_NOT_EXECUTED")
+    chunks: list[str] = []
+    for index, output in enumerate(cell.get("outputs", [])):
+        output_type = output.get("output_type")
+        if output_type == "error":
+            raise RuntimeError(f"NOTEBOOK_ERROR_OUTPUT_{index}={output!r}")
+        if output_type != "stream":
+            raise RuntimeError(
+                f"NOTEBOOK_OUTPUT_TYPE_{index}={output_type!r} EXPECTED='stream'"
+            )
+        text = output.get("text")
+        if isinstance(text, list):
+            chunks.append("".join(text))
+        elif isinstance(text, str):
+            chunks.append(text)
+        else:
+            raise RuntimeError(f"NOTEBOOK_STREAM_TEXT_{index}_INVALID")
+    result = "".join(chunks)
+    for token in (
+        "FINAL_STATUS=PASS",
+        "LAUNCHER_EXIT=0",
+        "RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1",
+        f"RUNNER_REV={RUNNER_REV}",
+        "RUNNER_TRANSPORT_SHA256=7c9d47772a3823c904189e3c2f13336e85cb71fb9273a610e9b7594ad86cb966",
+    ):
+        if result.count(token) != 1:
+            raise RuntimeError(
+                f"NOTEBOOK_TOKEN_COUNT_{token}={result.count(token)} EXPECTED=1"
+            )
+    for forbidden in ("FINAL_STATUS=FAIL", "sorryAx", "ofReduceBool"):
+        if forbidden in result:
+            raise RuntimeError(f"NOTEBOOK_FORBIDDEN_TOKEN={forbidden}")
+    return result
+
+
+def audit_notebook_transcript(
+    text: str, expected_stages: list[str], evidence_sha: str, archive_sha: str
+) -> None:
+    cmd_stages = re.findall(r"^STAGE=([^\s]+) CMD=", text, flags=re.MULTILINE)
+    exit_matches = re.findall(
+        r"^STAGE=([^\s]+) EXIT=([0-9]+) SECONDS=([0-9]+(?:\.[0-9]+)?)",
+        text,
+        flags=re.MULTILINE,
+    )
+    exit_stages = [stage for stage, _, _ in exit_matches]
+    if cmd_stages != expected_stages:
+        raise RuntimeError(f"NOTEBOOK_CMD_STAGE_SEQUENCE={cmd_stages!r}")
+    if exit_stages != expected_stages:
+        raise RuntimeError(f"NOTEBOOK_EXIT_STAGE_SEQUENCE={exit_stages!r}")
+    if any(exit_code != "0" for _, exit_code, _ in exit_matches):
+        raise RuntimeError(f"NOTEBOOK_NONZERO_EXIT={exit_matches!r}")
+
+    for index, (module, expected) in enumerate(
+        zip(MODULES, EXPECTED_AXIOM_HEADERS, strict=True), start=1
+    ):
+        stage = f"c6d_source_coercivity_green_{index:02d}_{module.lower()}_audit"
+        start_marker = f"STAGE={stage} CMD="
+        end_marker = f"STAGE={stage} EXIT="
+        start = text.index(start_marker)
+        body_start = text.index("\n", start) + 1
+        end = text.index(end_marker, body_start)
+        body = text[body_start:end]
+        blocks = re.findall(
+            r"depends on axioms:\s*\[(.*?)\]", body, flags=re.DOTALL
+        )
+        pure = body.count("does not depend on any axioms")
+        if len(blocks) + pure != expected:
+            raise RuntimeError(
+                f"NOTEBOOK_AXIOM_HEADER_COUNT_{module}={len(blocks) + pure} "
+                f"EXPECTED={expected}"
+            )
+        for block in blocks:
+            names = {name.strip() for name in block.replace("\n", " ").split(",")}
+            if not names.issubset({"propext", "Classical.choice", "Quot.sound"}):
+                raise RuntimeError(
+                    f"NOTEBOOK_FORBIDDEN_AXIOMS_{module}={sorted(names)!r}"
+                )
+
+    printed_evidence = re.findall(
+        r"^EVIDENCE_SHA256=([0-9a-f]{64})$", text, flags=re.MULTILINE
+    )
+    printed_archive = re.findall(
+        r"^EVIDENCE_ARCHIVE_SHA256=([0-9a-f]{64})$",
+        text,
+        flags=re.MULTILINE,
+    )
+    if printed_evidence != [evidence_sha.lower()]:
+        raise RuntimeError(
+            f"NOTEBOOK_EVIDENCE_SHA256={printed_evidence!r} "
+            f"EXPECTED={[evidence_sha.lower()]!r}"
+        )
+    if printed_archive != [archive_sha.lower()]:
+        raise RuntimeError(
+            f"NOTEBOOK_ARCHIVE_SHA256={printed_archive!r} "
+            f"EXPECTED={[archive_sha.lower()]!r}"
+        )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("archive", type=Path)
+    parser.add_argument("notebook", type=Path)
     args = parser.parse_args()
 
     archive_path = args.archive.resolve()
     if not archive_path.is_file():
         raise RuntimeError(f"ARCHIVE_NOT_FOUND={archive_path}")
+    notebook_path = args.notebook.resolve()
 
     with tarfile.open(archive_path, "r:gz") as archive:
         members = safe_members(archive)
@@ -180,6 +309,8 @@ def main() -> int:
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     evidence_sha = hashlib.sha256(canonical.encode()).hexdigest().upper()
     archive_sha = sha256(archive_path)
+    notebook_text = executed_notebook_text(notebook_path)
+    audit_notebook_transcript(notebook_text, stages, evidence_sha, archive_sha)
     total_seconds = sum(float(record.get("seconds", 0.0)) for record in records)
     print("C6D_SOURCE_COERCIVITY_GREEN_EVIDENCE_OK")
     print(f"SOURCE_SHA={SOURCE_SHA}")
@@ -188,6 +319,7 @@ def main() -> int:
     print(f"TOTAL_STAGE_SECONDS={total_seconds:.3f}")
     print(f"EVIDENCE_SHA256={evidence_sha}")
     print(f"ARCHIVE_SHA256={archive_sha}")
+    print(f"NOTEBOOK_SHA256={sha256(notebook_path)}")
     return 0
 
 

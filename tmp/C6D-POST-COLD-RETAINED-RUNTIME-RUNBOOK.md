@@ -13,7 +13,9 @@ preserve and download:
 - the printed archive hash and final sentinel.
 
 Verify the archive locally with
-`tmp/verify_c6d_source_coercivity_green_evidence.py`.  The cold source must be
+`tmp/verify_c6d_source_coercivity_green_evidence.py <archive> <executed-ipynb>`.
+The verifier cross-checks the exact executed cell, stage sequence, axiom
+sections and printed evidence/archive hashes.  The cold source must be
 `2bb3eb7325b621954a7132d0a8bab3ce2c1bdf24`.
 
 Trigger the cold-archive download from a separate cell only after the literal
