@@ -16,6 +16,17 @@ Verify the archive locally with
 `tmp/verify_c6d_source_coercivity_green_evidence.py`.  The cold source must be
 `2bb3eb7325b621954a7132d0a8bab3ce2c1bdf24`.
 
+Trigger the cold-archive download from a separate cell only after the literal
+PASS; do not rerun the gate cell:
+
+```python
+from google.colab import files
+files.download("/content/hrpoly-c6d-source-coercivity-green-evidence.tar.gz")
+```
+
+Keep the runtime assigned after the download and execute the two hot queues
+below in order.
+
 ## Hot queue 1: six full-companion/compression pairs
 
 Runner object:
@@ -83,3 +94,32 @@ Preserve both hot evidence directories before releasing the runtime.  Hot
 PASS authorizes only preparation of corrected PRE-VALIDATION promotion; a
 later cold checkout is required to seal.  Neither queue moves `20/41`,
 attains window 15, or instantiates `TermSource`.
+
+## Exit gate: package the two hot diagnostics
+
+Only after both hot queues emit literal PASS, create one archive and print its
+digest before requesting the browser download:
+
+```python
+import hashlib, pathlib, tarfile
+from google.colab import files
+
+archive = pathlib.Path("/content/hrpoly-c6d-post-cold-hot-evidence.tar.gz")
+roots = [
+    pathlib.Path("/content/hrpoly-c6d-full-companion-hot-evidence"),
+    pathlib.Path("/content/hrpoly-c6d-ambient-region-hot-evidence"),
+]
+for root in roots:
+    assert root.is_dir(), root
+with tarfile.open(archive, "w:gz") as tar:
+    for root in roots:
+        tar.add(root, arcname=root.name)
+digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+print("POST_COLD_HOT_ARCHIVE_SHA256=" + digest, flush=True)
+files.download(str(archive))
+```
+
+Verify the downloaded digest outside Colab.  Download the executed notebook,
+then disconnect and delete the runtime.  A missing or mismatched download is
+an evidence-transport failure, not a mathematical FAIL and not permission to
+rerun either queue.
