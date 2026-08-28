@@ -116,8 +116,13 @@ theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
   have hsmall : |eta| *
       cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0 ≤ 1 / 2 :=
     hamplitude.trans halpha1
-  have hexp := norm_exp_smul_sub_one_le_two_mul eta
-    (cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0) X.toMatrix hX hsmall
+  have hexp :
+      ‖NormedSpace.exp (eta • X.toMatrix) - 1‖ ≤
+        2 * (|eta| *
+          cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0) :=
+    norm_exp_smul_sub_one_le_two_mul eta
+      (cmp99Eq335PhysicalAmplitudeMajorant W.cube eta alpha0)
+      X.toMatrix hX hsmall
   have hbackground :
       (W.transformedBackground (positiveEdgeOfPhysicalBond q) :
           Matrix (Fin Nc) (Fin Nc) ℂ) =
@@ -133,8 +138,6 @@ theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
       simpa only [physicalMatrixExp] using hexp
     _ ≤ 2 * alpha1 := by gcongr
     _ = cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := rfl
-
-omit D halpha1
 
 /-- Source-specialized union extension used only to prove the physical
 coercivity estimate. -/
