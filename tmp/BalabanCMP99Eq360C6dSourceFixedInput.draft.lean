@@ -156,9 +156,9 @@ noncomputable def cmp99Eq360C6dSourceLaplacianRetainedExtension :
   cmp99Eq360C6dLaplacianRetainedExtension regions
     (R.toCubeWitness C alpha1 hscale).transformedBackground
 
-/-- The source gates generate global smallness of the union extension. -/
 include baselineRadiusBudget
 
+/-- The source gates generate global smallness of the union extension. -/
 theorem norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le :
     ∀ e : ConcreteEdge 4 (L * N'),
       ‖(cmp99Eq360C6dSourceLaplacianRetainedExtension
@@ -230,6 +230,7 @@ theorem cmp99Eq360C6dSourcePhysicalCountingCoefficient_eq_laplacianRetained :
         (cmp99SourceMassParameter 1 (M : ℝ) depth) := by
   unfold cmp99Eq360C6dSourcePhysicalCountingCoefficient
   unfold cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
+  dsimp only
   rw [show
       (cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
         R C hscale regions D hM halpha1 baselineRadiusBudget).terminalSpacing =
@@ -302,6 +303,13 @@ theorem cmp99Eq360C6dSourceBaselinePrecision_eq_laplacianRetainedPrecision :
         T1.Qprime b := by
   dsimp only
   apply cmp99SourceGaugePrecision_eq_of_laplacian_eq_of_Qprime_heq
+    (E := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega)
+    (F := (cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+      R C hscale regions D hM halpha1 baselineRadiusBudget).TerminalSpace)
+    (F' := (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
+      (R := R) (C := C) (hscale := hscale) (regions := regions)
+      (D := D) (hM := hM) (halpha1 := halpha1)
+      (baselineRadiusBudget := baselineRadiusBudget)).TerminalSpace)
   · exact
       cmp99ActiveRegionSourceCovariantLaplacian_eq_laplacianRetainedExtension
         regions (matrixSUNAdjointModel Nc)
