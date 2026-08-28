@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99SourceFlatPhysicalComplexModeAction
 import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Compact real slice of the analytic regional Laplacian
 
 The analytic stencil of CMP99 (3.51)--(3.54) is compared with the literal

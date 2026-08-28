@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq360ComplexRegionalLaplacian
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # CMP99 (3.51)--(3.54): local analytic Laplacian perturbation
 
 The source term `V'_1(A)` is not accepted as an operator parameter.  It is

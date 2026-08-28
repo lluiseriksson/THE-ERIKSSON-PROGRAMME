@@ -1,10 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq360ComplexClosedPhysicalPrecision
 
-/-!
-PRE-VALIDATION: scratch audit. This file has no materialized `.olean` and no
-compiler or axiom-oracle verdict.
--/
-
 #print axioms YangMills.RG.CMP99Eq360ComplexClosedPhysicalInput
 #print axioms YangMills.RG.CMP99Eq360ComplexClosedPhysicalInput.background0
 #print axioms YangMills.RG.CMP99Eq360ComplexClosedPhysicalInput.background1

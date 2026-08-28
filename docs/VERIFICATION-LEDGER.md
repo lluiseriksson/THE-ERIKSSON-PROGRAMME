@@ -40991,3 +40991,47 @@ regional Green/resolvent, transport the four fixed-depth CMP96 actions,
 produce uniform `B0, delta0`, attain window 15, close rows 23--24, or
 instantiate `TermSource`. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 952 (2026-08-28, **C6d promoted precision prefix and closed physical precision sealed in fresh Colab Pro+; 20/41 unchanged**)
+
+Exact mathematical source
+`768bca00ba63e52eccacd8226cee91e6cfafd39e` was validated in one fresh
+Colab Pro+ CPU/high-RAM checkout with Lean `4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`. Runner checkpoint
+`1a8aa0725e69962a8cd3b10548d5e26a03a569a1`, notebook checkpoint
+`3653b89668cce0e116c3064ecb2f3a1dc44f77ab`, runner revision
+`c6d-promoted-precision-prefix-v2` and runner SHA-256
+`8211BCEAF8D52EA3DB98C38873F8E5C28C54559033E9BB50F089D73692754B42`
+pin the exact queue.
+
+The prerequisite materialization completed in `1555.466` seconds. All six
+promoted source/audit pairs completed with real exit code zero, and their 27
+printed declarations used only `[propext, Classical.choice, Quot.sound]` or
+a subset. The cold `YangMillsCore` root then completed `11040` jobs in
+`7077.136` seconds, exit `0`, and the runner emitted literal
+`FINAL_STATUS=PASS` with launcher exit `0`. The root also materialized the
+closed physical precision and its audit; the independent promoted-root
+verifier found all 14 expected declarations with the same allowed axiom set.
+
+The downloaded evidence archive independently rehashes to
+`7051B8E602117510A82440FB65EA6AEAD12B7DDE68E74A5286E1EC7806E5CA2E`;
+the internal evidence payload has SHA-256
+`2414FDA6D0630618C3F042E359626EE194B4BB30667A071E5E78D9E089EBE86A`.
+Both repository verifiers accepted the source SHA, runner revision, boundary
+blob hashes, stage exit codes, declaration counts and axiom blocks. The
+durable archive is preserved under
+`validation-evidence/c6d-promoted-precision-prefix-pass-768bca00-20260828/`.
+
+The selective seal retires exactly the PRE-VALIDATION notices in the twelve
+promoted prefix source/audit files and the two closed-physical-precision
+source/audit files. It changes no theorem statement. This evidence certifies
+the real-slice tower pair, closed-radius-to-physical-radius budget, complex
+regional Laplacian and real slice, local Laplacian perturbation, regional
+precision perturbation, and the closed physical precision assembled from
+that prefix.
+
+This seal does not certify the scratch source-terminal coercivity,
+Poincare-radius reachability, scalar reachability wrapper or baseline Green;
+it does not produce uniform `B0, delta0`, attain window 15, close rows
+23--24, or instantiate `TermSource`. Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

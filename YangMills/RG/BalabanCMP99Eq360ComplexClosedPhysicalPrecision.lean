@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99Eq360ComplexLocalLaplacianPerturbation
 import YangMills.RG.BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # Source-specific complex precision identity for CMP99 (3.60)
 
 This producer constructs both analytic backgrounds, both regional covariant

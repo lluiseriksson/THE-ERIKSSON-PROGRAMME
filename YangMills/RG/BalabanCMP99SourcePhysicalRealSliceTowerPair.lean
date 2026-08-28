@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99SourcePhysicalRealSliceTower
 import YangMills.RG.BalabanCMP99Eq359ComplexRegionalTowerPair
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # A common-target pair of source-generated physical real-slice towers
 
 The terminal complex Hilbert bundle of the source recursion depends only on

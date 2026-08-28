@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99ComplexSpecialLinearAdjointAction
 import YangMills.RG.PhysicalGaugeOperator
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # CMP99 (3.51)--(3.54): analytic regional covariant Laplacian
 
 The analytically continued background is `SL(N,C)`-valued, so the physical

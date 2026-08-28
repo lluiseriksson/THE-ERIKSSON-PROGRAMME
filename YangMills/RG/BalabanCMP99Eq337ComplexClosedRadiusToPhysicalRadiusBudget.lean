@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridge
 import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 
 /-!
-PRE-VALIDATION: scratch source. This file has no materialized `.olean` and
-no compiler or axiom-oracle verdict.
-
 # A closed complex radius budget dominates the physical real-slice budget
 
 The complex Eq. (3.37) recursion pays the four-path envelope and the
