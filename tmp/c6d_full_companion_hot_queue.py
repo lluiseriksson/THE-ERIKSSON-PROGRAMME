@@ -19,7 +19,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "590e68d35a19987321efc7dbc53755a5e20a5cfa"
+SOURCE_SHA = "7361863796ec06b5c23006ed7d527c40031f2fc6"
 ROOT = Path("/content/hrpoly-c6d-source-coercivity-green")
 EVIDENCE = Path("/content/hrpoly-c6d-full-companion-hot-evidence")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
@@ -102,7 +102,13 @@ def main() -> int:
             "--require-prevalidation",
         ],
     )
+    start_index = int(os.environ.get("C6D_START_INDEX", "1"))
+    if not 1 <= start_index <= len(MODULES):
+        raise RuntimeError(f"INVALID_C6D_START_INDEX={start_index}")
+    print(f"C6D_START_INDEX={start_index}", flush=True)
     for index, (module, expected_axioms) in enumerate(MODULES, start=1):
+        if index < start_index:
+            continue
         for suffix in ("", "Audit"):
             target = module + suffix
             stage = f"hot_{index:02d}_{target.lower()}"
