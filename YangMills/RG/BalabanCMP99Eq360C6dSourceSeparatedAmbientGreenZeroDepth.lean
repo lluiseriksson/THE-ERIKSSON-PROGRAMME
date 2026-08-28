@@ -24,6 +24,19 @@ noncomputable section
 variable {L K Q Nc : ℕ}
 variable [NeZero L] [NeZero K] [NeZero Q] [NeZero Nc]
 
+private instance instNeZeroEq360C6dSourceSeparatedLargeBlockSideZero
+    (L K : ℕ) [NeZero L] [NeZero K] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K 0) :=
+  ⟨(Nat.mul_pos (NeZero.pos K)
+    (pow_pos (NeZero.pos L) (0 + 1))).ne'⟩
+
+private instance instNeZeroEq360C6dSourceSeparatedAmbientSideZero
+    (L K Q : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) :=
+  ⟨(Nat.mul_pos
+    (Nat.mul_pos (NeZero.pos K) (pow_pos (NeZero.pos L) (0 + 1)))
+    (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
+
 variable (OmegaSource : ActiveGaugeRegion 4
   (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)))
 variable (regions : CMP99SourceActiveRegionChain 4 L
