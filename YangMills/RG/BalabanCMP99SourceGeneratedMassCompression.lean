@@ -26,10 +26,10 @@ noncomputable section
 
 variable {d M N Nc : ℕ} [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
+omit [NeZero d] in
 /-- Restriction from a larger active region followed by literal zero
 extension from a nested smaller region is the identity on the smaller
 counting-Hilbert space. -/
-omit [NeZero d] in
 theorem cmp99NestedActiveRegionRestriction_comp_extension_eq_id
     {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
     [FiniteDimensional ℝ g]
