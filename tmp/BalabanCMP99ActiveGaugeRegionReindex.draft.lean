@@ -12,7 +12,7 @@ open YangMills
 
 noncomputable section
 
-variable {d N N' : ℕ}
+variable {d N N' : ℕ} [NeZero N] [NeZero N']
 
 /-- Reindexing a square finite counting-Hilbert kernel forward and then
 through the explicit inverse recovers the original kernel.  Carrier
@@ -67,7 +67,8 @@ theorem cmp99ActiveGaugeRegionReindex_symm_reindex_eq
     (e : FinBox d N ≃ FinBox d N') (Omega : ActiveGaugeRegion d N) :
     cmp99ActiveGaugeRegionReindex e.symm
         (cmp99ActiveGaugeRegionReindex e Omega) = Omega := by
-  apply ActiveGaugeRegion.ext
+  rcases Omega with ⟨sites⟩
+  apply congrArg ActiveGaugeRegion.mk
   ext x
   simp [cmp99ActiveGaugeRegionReindex]
 
