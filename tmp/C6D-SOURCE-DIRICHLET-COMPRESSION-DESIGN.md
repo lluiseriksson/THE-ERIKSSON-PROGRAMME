@@ -222,6 +222,11 @@ PRE-VALIDATION is removed only in the later evidence-seal commit and without
 changing any theorem statement.  A hot PASS, a green prefix, or the existence
 of generated `.olean` files is not seal evidence.
 
+`tmp/c6d-ambient-compression-cold-boundary.json` is the single machine-readable
+manifest for that boundary.  The future runner and verifier must consume or
+check that object rather than maintain an independent copy of the nine paths
+or their readout counts.
+
 The retained-runtime transport is checked independently by
 `tmp/verify_c6d_post_cold_hot_evidence.py`.  It requires the exact 28 stage
 logs from both hot queues, the two pinned source SHAs, four successful text

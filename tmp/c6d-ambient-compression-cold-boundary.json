@@ -1,0 +1,63 @@
+{
+  "classification": "PRE_VALIDATION_COLD_BOUNDARY",
+  "seal_evidence_required": "fresh_checkout_no_lake_restore_plus_same_checkout_YangMillsCore",
+  "terminal_counters_move": false,
+  "pairs": [
+    {
+      "module": "BalabanCMP99RegionalDirichletGaugePrecisionCompression",
+      "source": "YangMills/RG/BalabanCMP99RegionalDirichletGaugePrecisionCompression.lean",
+      "audit": "YangMills/RG/BalabanCMP99RegionalDirichletGaugePrecisionCompressionAudit.lean",
+      "expected_axiom_headers": 2
+    },
+    {
+      "module": "BalabanCMP99SourceActiveRegionFullCompanion",
+      "source": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanion.lean",
+      "audit": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionAudit.lean",
+      "expected_axiom_headers": 5
+    },
+    {
+      "module": "BalabanCMP99SourceGeneratedMassCompression",
+      "source": "YangMills/RG/BalabanCMP99SourceGeneratedMassCompression.lean",
+      "audit": "YangMills/RG/BalabanCMP99SourceGeneratedMassCompressionAudit.lean",
+      "expected_axiom_headers": 3
+    },
+    {
+      "module": "BalabanCMP99SourceGeneratedPhysicalPrecisionCompression",
+      "source": "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionCompression.lean",
+      "audit": "YangMills/RG/BalabanCMP99SourceGeneratedPhysicalPrecisionCompressionAudit.lean",
+      "expected_axiom_headers": 3
+    },
+    {
+      "module": "BalabanCMP99SourceActiveRegionFullCompanionPrecision",
+      "source": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionPrecision.lean",
+      "audit": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionPrecisionAudit.lean",
+      "expected_axiom_headers": 6
+    },
+    {
+      "module": "BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision",
+      "source": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision.lean",
+      "audit": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecisionAudit.lean",
+      "expected_axiom_headers": 6
+    },
+    {
+      "module": "BalabanCMP99ActiveGaugeRegionReindex",
+      "source": "YangMills/RG/BalabanCMP99ActiveGaugeRegionReindex.lean",
+      "audit": "YangMills/RG/BalabanCMP99ActiveGaugeRegionReindexAudit.lean",
+      "expected_axiom_headers": 10
+    },
+    {
+      "module": "BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision",
+      "source": "YangMills/RG/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision.lean",
+      "audit": "YangMills/RG/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecisionAudit.lean",
+      "expected_axiom_headers": 7
+    },
+    {
+      "module": "BalabanCMP99ActiveGaugeRegionReindexGreen",
+      "source": "YangMills/RG/BalabanCMP99ActiveGaugeRegionReindexGreen.lean",
+      "audit": "YangMills/RG/BalabanCMP99ActiveGaugeRegionReindexGreenAudit.lean",
+      "expected_axiom_headers": 4
+    }
+  ],
+  "expected_pairs": 9,
+  "expected_axiom_headers": 46
+}
