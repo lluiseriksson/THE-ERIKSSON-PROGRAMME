@@ -84,6 +84,11 @@ structure CMP99Eq360C6dLocalizedRetainedInput
       (cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc
         (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) z rA)
       Rmax (cmp99UbarNoWindingThreshold Nc)
+  /-- Coefficient of Lean's counting-Hilbert `Qprime.adjoint * Qprime` term.
+  It is intentionally algebraic here.  A source-facing constructor must not
+  set it to the raw recurrence coefficient: it must include the exact
+  terminal/fine volume conversion that makes the printed weighted coefficient
+  `a_j * terminalSpacing⁻²`. -/
   a_j : ℝ
 
 namespace CMP99Eq360C6dLocalizedRetainedInput
