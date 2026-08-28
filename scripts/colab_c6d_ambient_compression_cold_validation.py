@@ -56,7 +56,7 @@ MODULES = [
     ("BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreen", 6),
 ]
 
-runner.RUNNER_REV = "c6d-ambient-compression-cold-v1"
+runner.RUNNER_REV = "c6d-ambient-compression-cold-v2-streaming-heartbeat"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-c6d-ambient-compression-cold")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-ambient-compression-cold-evidence")
@@ -93,28 +93,42 @@ runner.SOURCE_BLOBS = {
 def capturing_run(stage: str, command: list[str], *, cwd: Path | None = None) -> str:
     started = time.perf_counter()
     print("STAGE=" + stage + " CMD=" + json.dumps(command), flush=True)
-    child = subprocess.run(
-        command, cwd=cwd, env=os.environ.copy(), text=True,
-        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-    )
-    elapsed = time.perf_counter() - started
-    output = child.stdout
-    print(output, flush=True)
     runner.EVIDENCE.mkdir(parents=True, exist_ok=True)
-    (runner.EVIDENCE / f"{stage}.stdout").write_text(
-        output, encoding="utf-8", newline="\n"
-    )
+    stdout_path = runner.EVIDENCE / f"{stage}.stdout"
+    with stdout_path.open("w", encoding="utf-8", newline="\n") as stream:
+        child = subprocess.Popen(
+            command, cwd=cwd, env=os.environ.copy(), text=True,
+            stdout=stream, stderr=subprocess.STDOUT,
+        )
+        next_heartbeat = started + 30
+        while True:
+            try:
+                returncode = child.wait(timeout=1)
+                break
+            except subprocess.TimeoutExpired:
+                now = time.perf_counter()
+                if now >= next_heartbeat:
+                    stream.flush()
+                    print(
+                        "STAGE=" + stage + " HEARTBEAT_SECONDS=%.3f"
+                        % (now - started),
+                        flush=True,
+                    )
+                    next_heartbeat = now + 30
+    elapsed = time.perf_counter() - started
+    output = stdout_path.read_text(encoding="utf-8")
+    print(output, flush=True)
     runner.RECORDS.append({
         "stage": stage,
-        "exit": child.returncode,
+        "exit": returncode,
         "seconds": elapsed,
         "output_sha256": hashlib.sha256(output.encode()).hexdigest(),
     })
     print(
-        "STAGE=" + stage + " EXIT=" + str(child.returncode)
+        "STAGE=" + stage + " EXIT=" + str(returncode)
         + " SECONDS=%.3f" % elapsed, flush=True,
     )
-    if child.returncode != 0:
+    if returncode != 0:
         raise RuntimeError("FIRST_ERROR=" + stage)
     return output
 
