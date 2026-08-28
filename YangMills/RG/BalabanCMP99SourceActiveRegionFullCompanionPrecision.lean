@@ -149,18 +149,17 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionFullCompanionPrecision
     {Omega : ActiveGaugeRegion d N} {depth : ℕ}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
     (hd : 2 ≤ d) (hM : 2 ≤ M) (hdepth : 0 < depth)
-    (rho : SUNAdjointModel Nc) {spacing epsilon : ℝ}
-    (hspacing : 0 < spacing)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
     (background : GaugeConfig d N (SUN Nc))
     (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge d N,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff d M depth spacing epsilon < 1) :
-    let T := cmp99SourceActiveRegionFullCompanionTower regions hd hM rho
-      spacing epsilon background chain fineSmall
+    let T := cmp99SourceActiveRegionFullCompanionTower regions hd hM
+      (matrixSUNAdjointModel Nc) spacing epsilon background chain fineSmall
     IsCoerciveCLM
-      (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM rho spacing
-        epsilon background chain fineSmall)
+      (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM
+        (matrixSUNAdjointModel Nc) spacing epsilon background chain fineSmall)
       (cmp99SourceActiveRegionTerminalPhysicalCoercivity T M depth epsilon) := by
   let companion := cmp99SourceActiveRegionFullCompanion regions
   simpa [companion, cmp99SourceActiveRegionFullCompanionPrecision,
