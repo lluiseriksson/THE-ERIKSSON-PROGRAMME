@@ -328,3 +328,23 @@ this exact Green: value, left derivative, right adjoint derivative and
 Laplacian.  In particular a successful compiler/audit verdict for the first
 post-seal brick still leaves `20/41`, window 15 and `TermSource = 0`
 unchanged.
+
+### Positive-depth boundary and required total split
+
+The provisional source-carrier module above consumes `0 < depth`, because
+its C6d coercivity floor is the positive-depth producer.  It must therefore
+be reported and named as the positive-depth branch even if the carrier and
+Green definitions themselves are meaningful at every natural depth.
+`CMP99Eq342SourceLocalizedGreenCertificate` does not carry that restriction.
+
+The exact `depth = 0` branch is not an additional analytic hypothesis.  The
+sealed prerequisite
+`cmp99SourceActiveRegionFullCompanionDirichletGreen_zero` already constructs
+the canonical Green on an arbitrary ambient carrier and arbitrary active
+region from the literal coefficient `spacing^(-2)`.  The next finite branch
+must instantiate it directly at
+`cmp99SourceSeparatedLargeBlockSide L K 0 * (2*Q)`, expose the same regional
+notation bridge used by Eq. (3.42), and retain its two inverse identities and
+norm bound.  Only after both branches compile may a source-facing family
+split on `depth = 0` versus `0 < depth`.  No positive-depth PASS may claim
+coverage of the unrestricted Eq. (3.42) family.
