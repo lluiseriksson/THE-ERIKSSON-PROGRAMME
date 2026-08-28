@@ -37,7 +37,7 @@
       "module": "BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision",
       "source": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision.lean",
       "audit": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecisionAudit.lean",
-      "expected_axiom_headers": 6
+      "expected_axiom_headers": 8
     },
     {
       "module": "BalabanCMP99ActiveGaugeRegionReindex",
@@ -49,15 +49,27 @@
       "module": "BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision",
       "source": "YangMills/RG/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision.lean",
       "audit": "YangMills/RG/BalabanCMP99Eq360C6dSourceAmbientBaselinePrecisionAudit.lean",
-      "expected_axiom_headers": 7
+      "expected_axiom_headers": 8
     },
     {
       "module": "BalabanCMP99ActiveGaugeRegionReindexGreen",
       "source": "YangMills/RG/BalabanCMP99ActiveGaugeRegionReindexGreen.lean",
       "audit": "YangMills/RG/BalabanCMP99ActiveGaugeRegionReindexGreenAudit.lean",
       "expected_axiom_headers": 4
+    },
+    {
+      "module": "BalabanCMP99SourceActiveRegionFullCompanionZeroDepth",
+      "source": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionZeroDepth.lean",
+      "audit": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionZeroDepthAudit.lean",
+      "expected_axiom_headers": 3
+    },
+    {
+      "module": "BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreen",
+      "source": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreen.lean",
+      "audit": "YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreenAudit.lean",
+      "expected_axiom_headers": 6
     }
   ],
-  "expected_pairs": 9,
-  "expected_axiom_headers": 46
+  "expected_pairs": 11,
+  "expected_axiom_headers": 58
 }

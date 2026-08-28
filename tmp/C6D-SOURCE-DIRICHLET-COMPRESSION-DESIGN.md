@@ -253,18 +253,21 @@ equality; no `simp`-only identification of the two carriers is accepted.
 
 ## Finite cold-seal boundary after the retained-runtime hot queues
 
-If and only if the first two retained-runtime queues emit literal PASS, promote the
-three scratch source/audit pairs under their intended module names and add
-the nine audit imports to `YangMillsCore`:
+If and only if all retained-runtime queues and both external evidence
+verifiers emit literal PASS, promote the five scratch source/audit pairs
+under their intended module names and add the eleven audit imports to
+`YangMillsCore`:
 
 1. the six full-companion/compression pairs already present as
    PRE-VALIDATION source;
 2. `BalabanCMP99ActiveGaugeRegionReindex`;
 3. `BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision`;
-4. `BalabanCMP99ActiveGaugeRegionReindexGreen`.
+4. `BalabanCMP99ActiveGaugeRegionReindexGreen`;
+5. `BalabanCMP99SourceActiveRegionFullCompanionZeroDepth`;
+6. `BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreen`.
 
-The cold queue therefore has exactly nine source/audit pairs and 46 expected
-axiom readouts: `2+5+3+3+6+6+10+7+4`.  It must run from a fresh checkout with
+The cold queue therefore has exactly eleven source/audit pairs and 58
+expected axiom readouts: `2+5+3+3+6+8+10+8+4+3+6`.  It must run from a fresh checkout with
 no restored `.lake/build`, then build `YangMillsCore` in the same checkout.
 PRE-VALIDATION is removed only in the later evidence-seal commit and without
 changing any theorem statement.  A hot PASS, a green prefix, or the existence
@@ -272,17 +275,16 @@ of generated `.olean` files is not seal evidence.
 
 `tmp/c6d-ambient-compression-cold-boundary.json` is the single machine-readable
 manifest for that boundary.  The future runner and verifier must consume or
-check that object rather than maintain an independent copy of the nine paths
+check that object rather than maintain an independent copy of the eleven paths
 or their readout counts.
 
 The retained-runtime transport is checked independently by
-`tmp/verify_c6d_post_cold_hot_evidence.py`.  The retained runtime must also run
-the exact depth-zero diagnostic pinned at
-`32155c5ae3cd30a931483eaecc6278c565e0ddaa` (blob SHA-256
-`bdd1c1cd2d3b6dc3f5b0b4ce53829545499c01854b94491ba0d6f1d06a57a3fd`)
-against source `4cd9364e64fa039878ccfcb20a1dbb64b02cb5f5`.  The verifier therefore
-requires the exact 34 stage logs from all three hot queues, the three pinned
-source SHAs, five successful text guards and all `25 + 21 + 3 = 49` expected
-axiom headers.  Even a verifier PASS is
-still diagnostic evidence only; its purpose is to make the later nine-pair
-cold boundary finite and reproducible, not to weaken that boundary.
+`tmp/verify_c6d_post_cold_hot_evidence.py`.  The retained runtime also checks
+the exact depth-zero coercivity and Green against source
+`2c25f7bac370306b6ebbc96e05d048c0b0cf15a9`.  The first verifier requires the
+exact 34 stage logs from all three hot queues, the three pinned source SHAs,
+five successful text guards and all `27 + 22 + 3 = 52` expected axiom headers.
+The separate Green verifier requires seven logs and six further axiom headers
+from the same depth-zero source.  Even both verifier passes remain diagnostic
+evidence only; their purpose is to make the later eleven-pair cold boundary
+finite and reproducible, not to weaken that boundary.

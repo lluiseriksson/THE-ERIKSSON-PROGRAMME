@@ -14855,3 +14855,30 @@ region reindexing, transport of the four fixed-depth CMP96 actions and the
 exact depth-zero companion/Green remain open. Uniform `B0, delta0`, window
 15, rows 23--24 and `TermSource` also remain open. Counters stay exactly
 `20/41`, `TermSource = 0`; window 15 is compatible but unattained.
+
+### Step 8b.24/C6d.4: full-companion ambient compression and depth-zero Green (PRE-VALIDATION; hot-verified; cold seal pending; 20/41 unchanged)
+
+Retained-runtime diagnostics passed the six full-companion/compression pairs,
+the explicit active-region reindexing, the C6d ambient baseline precision,
+the canonical Green transport and both exact depth-zero pairs.  The verified
+packages contain 34 + 7 stage logs and respectively 52 + 6 allowed axiom
+readouts.  Their archive SHA-256 values are
+`8CF761C459B22CE44A7CB1DE41EC50E30BE0F88998DE29B4E2D8AE707BBB8522`
+and
+`38D222A230F245CFDC8BA980AE62DFAD6FFFBEA77631AFD33633199E15D617B5`.
+The executed-notebook bundle is preserved with SHA-256
+`908ED97FDDD58BC218A39E2DF5B5BE2CCFAECE0B5B8018CC45DFE27154CD3CD1`.
+
+The five scratch pairs are promoted under their intended module names with
+PRE-VALIDATION still visible.  Together with the six already promoted pairs,
+the finite cold boundary is exactly eleven source/audit pairs and 58 axiom
+readouts, followed by a same-checkout `YangMillsCore` build.  Hot evidence is
+diagnostic only: no mark is retired until that fresh cold gate passes.
+
+This boundary constructs the ambient full-companion precision, explicit
+localized-carrier transport, canonical Green transport and the exact
+`depth = 0` coercivity/Green branch.  It still does not re-instantiate all four
+fixed-depth CMP96 actions on the selected source carrier, produce uniform
+`B0, delta0`, attain window 15, close rows 23--24 or instantiate `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.

@@ -41075,3 +41075,38 @@ four fixed-depth CMP96 actions, cover the exact `depth = 0` companion/Green,
 produce uniform `B0, delta0`, attain window 15, close rows 23--24 or
 instantiate `TermSource`. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 954 (2026-08-28, **C6d ambient/full-companion and exact depth-zero boundary promoted PRE-VALIDATION after verified hot diagnostics; cold seal pending; 20/41 unchanged**)
+
+The retained Colab Pro+ runtime completed four stop-on-first-error queues.
+The six full-companion/compression pairs, three ambient/reindex pairs, exact
+depth-zero coercivity and canonical depth-zero Green all compiled, and their
+audits emitted 58 declarations using only
+`{propext, Classical.choice, Quot.sound}` or a subset.  The first three queues
+are bound to source SHAs `ec4db69a54e0f47189940086476edf4c47a39abe`,
+`976cfc899407a4452a94c6f1a66eafeab2792b27` and
+`2c25f7bac370306b6ebbc96e05d048c0b0cf15a9`; the Green queue uses the same
+depth-zero source.
+
+The independently verified evidence archives have SHA-256
+`8CF761C459B22CE44A7CB1DE41EC50E30BE0F88998DE29B4E2D8AE707BBB8522`
+and
+`38D222A230F245CFDC8BA980AE62DFAD6FFFBEA77631AFD33633199E15D617B5`.
+The outer session bundle, including the original executed notebook, rehashes
+locally to
+`908ED97FDDD58BC218A39E2DF5B5BE2CCFAECE0B5B8018CC45DFE27154CD3CD1`
+and is preserved under
+`validation-evidence/c6d-post-cold-hot-2c25f7ba-20260828/`.
+
+The five scratch pairs are promoted under their intended `YangMills.RG`
+module names, their audits are imported by `YangMillsCore`, and every new or
+previously promoted member of the eleven-pair boundary retains exactly one
+visible PRE-VALIDATION notice.  The machine-readable boundary fixes 11 pairs
+and 58 readouts.  No promotion is counted as a seal: a fresh checkout without
+restored `.lake/build`, all eleven focal/audit pairs and the same-checkout
+`YangMillsCore` root remain mandatory.
+
+This promotion does not yet re-instantiate the four fixed-depth CMP96 actions,
+produce uniform `B0, delta0`, attain window 15, close rows 23--24 or instantiate
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
