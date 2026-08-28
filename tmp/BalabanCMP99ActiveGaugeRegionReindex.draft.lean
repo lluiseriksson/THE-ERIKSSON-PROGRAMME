@@ -29,8 +29,13 @@ theorem finitePiLpTypedKernelReindex_symm_reindex
   intro phi
   apply PiLp.ext
   intro x
+  have hcancel :
+      (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e.symm)
+          ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e) phi) = phi := by
+    simpa only [LinearIsometryEquiv.piLpCongrLeft_symm] using
+      (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e).symm_apply_apply phi
   simp [finitePiLpTypedKernelReindex,
-    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
+    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft', hcancel]
 
 /-- Transport an active region through one explicit equivalence of ambient
 finite periodic carriers. -/
