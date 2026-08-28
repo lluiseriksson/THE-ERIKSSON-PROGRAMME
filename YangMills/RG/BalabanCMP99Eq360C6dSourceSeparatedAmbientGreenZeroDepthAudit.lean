@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth
+
+/-!
+PRE-VALIDATION: audit draft only; no compiler or axiom-oracle verdict is
+claimed.
+-/
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+#print axioms YangMills.RG.isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedDirichletPrecision_zero
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedRegionalDirichletPrecision_eq_zero
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedDirichletPrecision_comp_green_zero
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_comp_precision_zero
+#print axioms YangMills.RG.norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_le
