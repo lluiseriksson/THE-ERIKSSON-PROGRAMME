@@ -171,6 +171,19 @@ noncomputable def cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower :
     (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
       R C hscale regions D hM halpha1 baselineRadiusBudget)
 
+/-- Both retained constructions end in the same generated terminal Hilbert
+bundle.  This equality is derived from the typed source-region chain; it is
+not an identification supplied by the caller. -/
+theorem cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpace_eq :
+    (cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+      R C hscale regions D hM halpha1 baselineRadiusBudget).TerminalSpace =
+    (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
+      R C hscale regions D hM halpha1 baselineRadiusBudget).TerminalSpace := by
+  unfold cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+  unfold cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
+  rw [regions.weightedQprimeTower_terminalSpace_eq,
+    regions.weightedQprimeTower_terminalSpace_eq]
+
 /-- Both technical extensions have the same generated terminal spacing. -/
 theorem cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpacing :
     (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
@@ -264,6 +277,8 @@ theorem cmp99Eq360C6dSourceBaselinePrecision_eq_laplacianRetainedPrecision :
       cmp99ActiveRegionSourceCovariantLaplacian_eq_laplacianRetainedExtension
         regions (matrixSUNAdjointModel Nc)
         (R.toCubeWitness C alpha1 hscale).transformedBackground eta
+  · exact cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpace_eq
+      R C hscale regions D hM halpha1 baselineRadiusBudget
   · exact
       cmp99Eq360C6dSourceBaselineRetainedPhysicalTower_Qprime_heq_laplacianExtension
         R C hscale regions D hM halpha1 baselineRadiusBudget

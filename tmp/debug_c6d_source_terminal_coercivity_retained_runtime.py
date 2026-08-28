@@ -26,7 +26,7 @@ STAGES = (
     ("tmp/BalabanCMP99Eq360C6dLaplacianRetainedExtensionAudit.draft.lean", 6),
     ("tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecision.draft.lean", None),
     ("tmp/BalabanCMP99Eq360C6dSourceFixedInput.draft.lean", None),
-    ("tmp/BalabanCMP99Eq360C6dSourceFixedInputAudit.draft.lean", 10),
+    ("tmp/BalabanCMP99Eq360C6dSourceFixedInputAudit.draft.lean", 11),
     ("tmp/BalabanCMP99Eq360C6dSourceTerminalCoercivity.draft.lean", None),
     ("tmp/BalabanCMP99Eq360C6dSourceTerminalCoercivityAudit.draft.lean", 3),
 )

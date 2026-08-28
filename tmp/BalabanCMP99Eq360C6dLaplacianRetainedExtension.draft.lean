@@ -17,8 +17,6 @@ between independently chosen operators.
 
 namespace YangMills.RG
 
-universe u
-
 open YangMills YangMills.GaugeConfig Matrix
 open scoped Matrix.Norms.L2Operator
 
@@ -148,18 +146,17 @@ theorem cmp99Eq360C6d_retainedFineExtension_Qprime_heq_laplacianExtension
 averages determine the same endomorphism-valued precision.  This is pure
 dependent transport; it adds no analytic hypothesis. -/
 theorem cmp99SourceGaugePrecision_eq_of_laplacian_eq_of_Qprime_heq
-    {E : Type*} {F F' : Type u}
-    [NormedAddCommGroup E] [InnerProductSpace ℝ E] [CompleteSpace E]
-    [NormedAddCommGroup F] [InnerProductSpace ℝ F] [CompleteSpace F]
-    [NormedAddCommGroup F'] [InnerProductSpace ℝ F'] [CompleteSpace F']
-    (Delta Delta' : E →L[ℝ] E)
-    (Q : E →L[ℝ] F) (Q' : E →L[ℝ] F') (a : ℝ)
-    (hDelta : Delta = Delta') (hQ : HEq Q Q') :
+    {E F F' : CMP99SourceWeightedTowerHilbertSpace}
+    (Delta Delta' : E.carrier →L[ℝ] E.carrier)
+    (Q : E.carrier →L[ℝ] F.carrier)
+    (Q' : E.carrier →L[ℝ] F'.carrier) (a : ℝ)
+    (hDelta : Delta = Delta') (hF : F = F') (hQ : HEq Q Q') :
     cmp99SourceGaugePrecision Delta Q a =
       cmp99SourceGaugePrecision Delta' Q' a := by
   subst Delta'
-  cases hQ
-  rfl
+  subst F'
+  exact congrArg (fun R => cmp99SourceGaugePrecision Delta R a)
+    (eq_of_heq hQ)
 
 end
 
