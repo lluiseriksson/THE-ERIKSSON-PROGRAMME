@@ -28,6 +28,7 @@ REQUIRED_SEALED_PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.lean",
     "YangMills/RG/BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.lean",
     "YangMills/RG/BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.lean",
+    "YangMills/RG/BalabanCMP99Eq360ComplexClosedPhysicalPrecision.lean",
     "YangMills/RG/BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision.lean",
     "YangMills/RG/BalabanCMP99Eq337PhysicalComplexBaselineRealSlice.lean",
     "YangMills/RG/BalabanCMP99SourceUbarRadiusBudget.lean",
