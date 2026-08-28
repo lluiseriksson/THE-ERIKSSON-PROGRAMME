@@ -74,10 +74,10 @@ noncomputable def cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero :
 theorem isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero :
     IsCoerciveCLM
       (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-        (Nc := Nc) (OmegaSource := OmegaSource)
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
         regions hL background chain fineSmall)
       (cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-        (Nc := Nc) (OmegaSource := OmegaSource)
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
         regions hL background chain fineSmall) := by
   simpa [cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero,
     cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity] using
@@ -98,10 +98,10 @@ theorem cmp99Eq360C6dSourceSeparatedRegionalDirichletPrecision_eq_zero :
         (M := cmp99SourceSeparatedLargeBlockSide L K 0) (Q := Q)
         OmegaSource
         (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-          (Nc := Nc) (OmegaSource := OmegaSource)
+          (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
           regions hL background chain fineSmall) =
       cmp99Eq360C6dSourceSeparatedDirichletPrecision_zero
-        (Nc := Nc) (OmegaSource := OmegaSource)
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
         regions hL background chain fineSmall := by
   rfl
 
@@ -121,27 +121,27 @@ theorem cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
         (M := cmp99SourceSeparatedLargeBlockSide L K 0) (Q := Q)
         OmegaSource
         (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-          (Nc := Nc) (OmegaSource := OmegaSource)
+          (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
           regions hL background chain fineSmall)
         (cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
           regions (by norm_num) hL hspacing background chain fineSmall)
         (isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-          (Nc := Nc) (OmegaSource := OmegaSource)
+          (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
           regions hL background chain fineSmall) =
       cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-        (Nc := Nc) (OmegaSource := OmegaSource)
-        regions hL hspacing background chain fineSmall := by
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing := by
   rfl
 
 /-- The exact base precision is a left inverse of the base Green. -/
 theorem cmp99Eq360C6dSourceSeparatedDirichletPrecision_comp_green_zero
     (hspacing : 0 < spacing) :
     (cmp99Eq360C6dSourceSeparatedDirichletPrecision_zero
-      (Nc := Nc) (OmegaSource := OmegaSource)
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
       regions hL background chain fineSmall).comp
       (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-        (Nc := Nc) (OmegaSource := OmegaSource)
-        regions hL hspacing background chain fineSmall) =
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing) =
       ContinuousLinearMap.id ℝ
         (ActiveGaugeZeroCochain OmegaSource (SUNLieCoord Nc)) := by
   exact
@@ -152,10 +152,10 @@ theorem cmp99Eq360C6dSourceSeparatedDirichletPrecision_comp_green_zero
 theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_comp_precision_zero
     (hspacing : 0 < spacing) :
     (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-      (Nc := Nc) (OmegaSource := OmegaSource)
-      regions hL hspacing background chain fineSmall).comp
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall hspacing).comp
       (cmp99Eq360C6dSourceSeparatedDirichletPrecision_zero
-        (Nc := Nc) (OmegaSource := OmegaSource)
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
         regions hL background chain fineSmall) =
       ContinuousLinearMap.id ℝ
         (ActiveGaugeZeroCochain OmegaSource (SUNLieCoord Nc)) := by
@@ -167,10 +167,10 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_comp_precision_zero
 theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_le
     (hspacing : 0 < spacing) :
     ‖cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-      (Nc := Nc) (OmegaSource := OmegaSource)
-      regions hL hspacing background chain fineSmall‖ ≤
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall hspacing‖ ≤
       (cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-        (Nc := Nc) (OmegaSource := OmegaSource)
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
         regions hL background chain fineSmall)⁻¹ := by
   exact norm_cmp99SourceActiveRegionFullCompanionDirichletGreen_zero_le
     regions (by norm_num) hL hspacing background chain fineSmall
