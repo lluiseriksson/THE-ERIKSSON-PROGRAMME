@@ -120,6 +120,16 @@ files.download(str(archive))
 ```
 
 Verify the downloaded digest outside Colab.  Download the executed notebook,
-then disconnect and delete the runtime.  A missing or mismatched download is
-an evidence-transport failure, not a mathematical FAIL and not permission to
-rerun either queue.
+then run the fail-closed external verifier:
+
+```text
+python tmp/verify_c6d_post_cold_hot_evidence.py \
+  <downloaded-hrpoly-c6d-post-cold-hot-evidence.tar.gz>
+```
+
+It requires exactly 28 stage logs, the two pinned source SHAs, all four text
+guards, and exactly 46 allowed axiom headers (`25 + 21`).  Its result remains
+classified `HOT_DIAGNOSTIC_ONLY`; it is not cold seal evidence.  Disconnect
+and delete the runtime only after the archive and executed notebook are
+preserved.  A missing or mismatched download is an evidence-transport
+failure, not a mathematical FAIL and not permission to rerun either queue.

@@ -221,3 +221,10 @@ no restored `.lake/build`, then build `YangMillsCore` in the same checkout.
 PRE-VALIDATION is removed only in the later evidence-seal commit and without
 changing any theorem statement.  A hot PASS, a green prefix, or the existence
 of generated `.olean` files is not seal evidence.
+
+The retained-runtime transport is checked independently by
+`tmp/verify_c6d_post_cold_hot_evidence.py`.  It requires the exact 28 stage
+logs from both hot queues, the two pinned source SHAs, four successful text
+guards and all `25 + 21 = 46` expected axiom headers.  Even a verifier PASS is
+still diagnostic evidence only; its purpose is to make the later nine-pair
+cold boundary finite and reproducible, not to weaken that boundary.
