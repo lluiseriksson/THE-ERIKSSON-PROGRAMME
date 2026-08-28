@@ -28,6 +28,19 @@ noncomputable section
 variable {L K Q Mlarge Nc n depth : ℕ}
 variable [NeZero L] [NeZero K] [NeZero Q] [NeZero Mlarge] [NeZero Nc]
 
+private instance instNeZeroEq360C6dSourceSeparatedLargeBlockSide
+    (L K depth : ℕ) [NeZero L] [NeZero K] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth) :=
+  ⟨(Nat.mul_pos (NeZero.pos K)
+    (pow_pos (NeZero.pos L) (depth + 1))).ne'⟩
+
+private instance instNeZeroEq360C6dSourceSeparatedAmbientSide
+    (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+  ⟨(Nat.mul_pos
+    (Nat.mul_pos (NeZero.pos K) (pow_pos (NeZero.pos L) (depth + 1)))
+    (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
+
 /-- The one named source-to-C6d full-site equivalence.  Its implementation
 already contains the source theorem
 `cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier`; this alias keeps
