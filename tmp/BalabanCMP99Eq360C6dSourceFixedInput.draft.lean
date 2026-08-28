@@ -160,7 +160,7 @@ noncomputable def cmp99Eq360C6dSourceLaplacianRetainedExtension :
 theorem norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le :
     ∀ e : ConcreteEdge 4 (L * N'),
       ‖(cmp99Eq360C6dSourceLaplacianRetainedExtension
-          R C hscale regions D hM halpha1 baselineRadiusBudget e :
+          (R := R) (C := C) (hscale := hscale) regions e :
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
         cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := by
   let W := R.toCubeWitness C alpha1 hscale
@@ -183,7 +183,7 @@ noncomputable def cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower :
     (matrixSUNAdjointModel Nc) eta
     (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
     (cmp99Eq360C6dSourceLaplacianRetainedExtension
-      R C hscale regions D hM halpha1 baselineRadiusBudget)
+      (R := R) (C := C) (hscale := hscale) regions)
     baselineRadiusBudget.toRadiusChain
     (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
       R C hscale regions D hM halpha1 baselineRadiusBudget)
@@ -286,7 +286,7 @@ theorem cmp99Eq360C6dSourceBaselinePrecision_eq_laplacianRetainedPrecision :
         (cmp99ActiveRegionSourceCovariantLaplacian Omega
           (matrixSUNAdjointModel Nc)
           (cmp99Eq360C6dSourceLaplacianRetainedExtension
-            R C hscale regions D hM halpha1 baselineRadiusBudget) eta)
+            (R := R) (C := C) (hscale := hscale) regions) eta)
         T1.Qprime b := by
   dsimp only
   apply cmp99SourceGaugePrecision_eq_of_laplacian_eq_of_Qprime_heq
