@@ -39,7 +39,7 @@ theorem cmp99ActiveCoarseRegion_sourceFull_eq
     cmp99ActiveCoarseRegion (M := M) (N' := N')
         (cmp99SourceFullActiveRegion d (M * N')) =
       cmp99SourceFullActiveRegion d N' := by
-  apply ActiveGaugeRegion.ext
+  congr 1
   ext y
   simp [cmp99SourceFullActiveRegion]
 
@@ -77,7 +77,7 @@ noncomputable def cmp99SourceActiveRegionFullCompanion
       have hTail : CMP99SourceNestedRegionChains d M tail tailLarge := by
         exact CMP99SourceNestedRegionChains.cast_regions rfl hCoarse.symm
           ih.nested
-      refine ⟨.CMP99SourceActiveRegionChain.step OmegaFull hFull tailLarge, ?_⟩
+      refine ⟨CMP99SourceActiveRegionChain.step OmegaFull hFull tailLarge, ?_⟩
       exact .step Omega OmegaFull hOmega hFull (by
         intro x _
         exact Finset.mem_univ x) tail tailLarge hTail
