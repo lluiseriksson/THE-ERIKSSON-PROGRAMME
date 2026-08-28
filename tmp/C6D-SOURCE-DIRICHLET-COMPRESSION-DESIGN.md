@@ -288,3 +288,43 @@ The separate Green verifier requires seven logs and six further axiom headers
 from the same depth-zero source.  Even both verifier passes remain diagnostic
 evidence only; their purpose is to make the later eleven-pair cold boundary
 finite and reproducible, not to weaken that boundary.
+
+## First post-seal brick: exact source-carrier Green
+
+The first dependent brick after the eleven-pair cold seal is finite.  Its
+provisional module name is
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen`; it may be promoted only
+after the cold boundary above is sealed.  It must construct, in this order:
+
+1. `cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv`, obtained from
+   `cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv L K Q depth` and the
+   named `cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier` cast;
+2. the target region
+   `OmegaC6d := cmp99ActiveGaugeRegionReindex e OmegaSource` and its restricted
+   site equivalence;
+3. the literal C6d ambient baseline precision on `OmegaC6d`, with
+   `M = L` and the exact residual side fixed by the source recurrence;
+4. its pullback to the source-separated carrier by `e.symm`, together with
+   coercivity transported by
+   `isCoerciveCLM_finitePiLpTypedKernelReindex`;
+5. an equality between the source Dirichlet compression and the inverse
+   reindex of the C6d Dirichlet compression, citing
+   `finitePiLpTypedKernelReindex_symm_sourceAmbientDirichletPrecision` and
+   `cmp99ActiveGaugeRegionReindex_symm_reindex_eq` explicitly;
+6. the canonical source Green generated from that pulled-back ambient
+   precision, and the theorem identifying it with the pulled-back C6d Green
+   by `finitePiLpTypedKernelReindex_sourceAmbientDirichletGreen` plus inverse
+   uniqueness.
+
+The brick must not accept any of the following as caller data: a source
+ambient precision, a source regional precision, either Green, an equality
+between Greens, an equality between regions, or an equality between the two
+carrier presentations.  The only non-definitional equalities are the named
+source casts and transport theorems above.
+
+This brick closes only the operator/carrier dictionary.  The four fields in
+`CMP99Eq342SourceLocalizedGreenCertificate` remain separate later bricks on
+this exact Green: value, left derivative, right adjoint derivative and
+Laplacian.  In particular a successful compiler/audit verdict for the first
+post-seal brick still leaves `20/41`, window 15 and `TermSource = 0`
+unchanged.
