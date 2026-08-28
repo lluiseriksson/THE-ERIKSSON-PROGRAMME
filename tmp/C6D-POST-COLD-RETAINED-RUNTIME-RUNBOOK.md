@@ -34,20 +34,20 @@ below in order.
 ## Hot queue 1: six full-companion/compression pairs
 
 Runner object:
-`224853a1e495ffdc27b08b80c391cf46c5ae8631:tmp/c6d_full_companion_hot_queue.py`
+`919f10f5bb928d491452c7ba05dce3f39f3d6329:tmp/c6d_full_companion_hot_queue.py`
 
 SHA-256:
-`a72bb325b6d0c2c87bcf467f6d26923ed5f37564c826f28e1c5b0eadd6ebda81`
+`5820d5ad9e0bc0b76d48fe70c400d4d3baac6c9f4bbbbd39e96b2b72d2e7095c`
 
 The runner itself checks out exact source
-`590e68d35a19987321efc7dbc53755a5e20a5cfa` while preserving `.lake`.
+`7361863796ec06b5c23006ed7d527c40031f2fc6` while preserving `.lake`.
 Execute it once in a new Colab cell:
 
 ```python
 import hashlib, pathlib, runpy, urllib.request
 
-url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/224853a1e495ffdc27b08b80c391cf46c5ae8631/tmp/c6d_full_companion_hot_queue.py"
-expected = "a72bb325b6d0c2c87bcf467f6d26923ed5f37564c826f28e1c5b0eadd6ebda81"
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/919f10f5bb928d491452c7ba05dce3f39f3d6329/tmp/c6d_full_companion_hot_queue.py"
+expected = "5820d5ad9e0bc0b76d48fe70c400d4d3baac6c9f4bbbbd39e96b2b72d2e7095c"
 payload = urllib.request.urlopen(url, timeout=60).read()
 actual = hashlib.sha256(payload).hexdigest()
 assert actual == expected, (actual, expected)
@@ -62,6 +62,10 @@ except SystemExit as exc:
 
 Stop at its first real error.  Continue to queue 2 only on literal hot
 `FINAL_STATUS=PASS`.
+
+For a diagnostic retry after a measured failure in pair `n`, the same runner
+may be invoked with `C6D_START_INDEX=n`; this does not replace the final
+default run from index `1` used to assemble queue-1 evidence.
 
 ## Hot queue 2: ambient C6d producer plus region/Green transport
 
