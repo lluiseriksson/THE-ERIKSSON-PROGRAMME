@@ -132,6 +132,72 @@ theorem cmp99Eq360C6dSource_internalBonds_nearIdentity :
     _ ≤ 2 * alpha1 := by gcongr
     _ = cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := rfl
 
+/-- Source-specialized union extension used only to prove the physical
+coercivity estimate. -/
+noncomputable def cmp99Eq360C6dSourceLaplacianRetainedExtension :
+    PhysicalGaugeBackground 4 (L * N') Nc :=
+  cmp99Eq360C6dLaplacianRetainedExtension regions
+    (R.toCubeWitness C alpha1 hscale).transformedBackground
+
+/-- The source gates generate global smallness of the union extension. -/
+theorem norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le :
+    ∀ e : ConcreteEdge 4 (L * N'),
+      ‖(cmp99Eq360C6dSourceLaplacianRetainedExtension
+          R C hscale regions D hM halpha1 baselineRadiusBudget e :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+        cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1 := by
+  let W := R.toCubeWitness C alpha1 hscale
+  let chain := baselineRadiusBudget.toRadiusChain
+  let hretained := W.retainedFineReadBonds_nearIdentity regions
+    (CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube
+      C D regions)
+    halpha1
+  let hlaplacian := cmp99Eq360C6dSource_internalBonds_nearIdentity
+    R C hscale regions D hM halpha1 baselineRadiusBudget
+  exact norm_cmp99Eq360C6dLaplacianRetainedExtension_sub_one_le
+    regions W.transformedBackground
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    chain.epsilon_nonneg hretained hlaplacian
+
+/-- Physical retained tower generated from the union extension. -/
+noncomputable def cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower :
+    CMP99SourceWeightedRegionalTower (g := SUNLieCoord Nc) Omega eta :=
+  regions.weightedQprimeTower (by norm_num : 2 ≤ 4) hM
+    (matrixSUNAdjointModel Nc) eta
+    (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
+    (cmp99Eq360C6dSourceLaplacianRetainedExtension
+      R C hscale regions D hM halpha1 baselineRadiusBudget)
+    baselineRadiusBudget.toRadiusChain
+    (norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le
+      R C hscale regions D hM halpha1 baselineRadiusBudget)
+
+/-- Both technical extensions have the same generated terminal spacing. -/
+theorem cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpacing :
+    (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
+      R C hscale regions D hM halpha1 baselineRadiusBudget).terminalSpacing =
+      (M : ℝ) ^ depth * eta := by
+  unfold cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
+  rw [regions.weightedQprimeTower_terminalSpacing]
+
+/-- Consequently the source-fixed counting coefficient is identical whether
+computed with the original retained extension or the Laplacian-aware one. -/
+theorem cmp99Eq360C6dSourcePhysicalCountingCoefficient_eq_laplacianRetained :
+    cmp99Eq360C6dSourcePhysicalCountingCoefficient
+        R C hscale regions D hM halpha1 baselineRadiusBudget =
+      cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
+        (cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
+          R C hscale regions D hM halpha1 baselineRadiusBudget)
+        (cmp99SourceMassParameter 1 (M : ℝ) depth) := by
+  unfold cmp99Eq360C6dSourcePhysicalCountingCoefficient
+  unfold cmp99SourceActiveRegionTerminalPhysicalCountingCoefficient
+  rw [show
+      (cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+        R C hscale regions D hM halpha1 baselineRadiusBudget).terminalSpacing =
+          (M : ℝ) ^ depth * eta by
+        unfold cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+        rw [regions.weightedQprimeTower_terminalSpacing],
+    cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpacing]
+
 /-- The source-generated retained tower and the Laplacian-aware global
 extension have the same terminal `Qprime`.  Both operators are constructed
 inside the theorem from the same source background and radius chain. -/
@@ -171,6 +237,36 @@ theorem cmp99Eq360C6dSourceBaselineRetainedPhysicalTower_Qprime_heq_laplacianExt
       regions (by norm_num : 2 ≤ 4) hM (matrixSUNAdjointModel Nc) eta
       (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1)
       W.transformedBackground chain hretained hlaplacian)
+
+/-- Exact equality between the literal C6d baseline precision and the
+precision generated with the Laplacian-aware extension. -/
+theorem cmp99Eq360C6dSourceBaselinePrecision_eq_laplacianRetainedPrecision :
+    let W := R.toCubeWitness C alpha1 hscale
+    let T0 := cmp99Eq360C6dSourceBaselineRetainedPhysicalTower
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+    let T1 := cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+    let b := cmp99Eq360C6dSourcePhysicalCountingCoefficient
+      R C hscale regions D hM halpha1 baselineRadiusBudget
+    cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega
+          (matrixSUNAdjointModel Nc) W.transformedBackground eta)
+        T0.Qprime b =
+      cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega
+          (matrixSUNAdjointModel Nc)
+          (cmp99Eq360C6dSourceLaplacianRetainedExtension
+            R C hscale regions D hM halpha1 baselineRadiusBudget) eta)
+        T1.Qprime b := by
+  dsimp only
+  apply cmp99SourceGaugePrecision_eq_of_laplacian_eq_of_Qprime_heq
+  · exact
+      cmp99ActiveRegionSourceCovariantLaplacian_eq_laplacianRetainedExtension
+        regions (matrixSUNAdjointModel Nc)
+        (R.toCubeWitness C alpha1 hscale).transformedBackground eta
+  · exact
+      cmp99Eq360C6dSourceBaselineRetainedPhysicalTower_Qprime_heq_laplacianExtension
+        R C hscale regions D hM halpha1 baselineRadiusBudget
 
 /-- Source-facing C6d input.  The perturbing field and its genuine radius
 gates remain caller data, while the averaging coefficient is generated
