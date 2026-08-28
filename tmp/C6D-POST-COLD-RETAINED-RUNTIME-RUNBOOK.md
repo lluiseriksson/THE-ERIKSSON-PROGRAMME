@@ -19,7 +19,7 @@ Verify the archive locally with
 ## Hot queue 1: six full-companion/compression pairs
 
 Runner object:
-`56e06b46:tmp/c6d_full_companion_hot_queue.py`
+`56e06b46494301cb416266c81946f5388959b2a3:tmp/c6d_full_companion_hot_queue.py`
 
 SHA-256:
 `f06bd515b0d640ab813d8919723aa7e7f189fd0e9beea56467bc76383a8e8fba`
@@ -31,7 +31,7 @@ Execute it once in a new Colab cell:
 ```python
 import hashlib, pathlib, runpy, urllib.request
 
-url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/56e06b46/tmp/c6d_full_companion_hot_queue.py"
+url = "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/56e06b46494301cb416266c81946f5388959b2a3/tmp/c6d_full_companion_hot_queue.py"
 expected = "f06bd515b0d640ab813d8919723aa7e7f189fd0e9beea56467bc76383a8e8fba"
 payload = urllib.request.urlopen(url, timeout=60).read()
 actual = hashlib.sha256(payload).hexdigest()
