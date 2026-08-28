@@ -95,25 +95,33 @@ theorem isCoerciveCLM_cmp99SourceActiveRegionFullCompanionAmbientPrecision
     {Omega : ActiveGaugeRegion d N} {depth : ℕ}
     (regions : CMP99SourceActiveRegionChain d M N Omega depth)
     (hd : 2 ≤ d) (hM : 2 ≤ M) (hdepth : 0 < depth)
-    (rho : SUNAdjointModel Nc) {spacing epsilon : ℝ}
+    {spacing epsilon : ℝ}
     (hspacing : 0 < spacing)
     (background : GaugeConfig d N (SUN Nc))
     (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge d N,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff d M depth spacing epsilon < 1) :
-    let T := cmp99SourceActiveRegionFullCompanionTower regions hd hM rho
-      spacing epsilon background chain fineSmall
+    let T := cmp99SourceActiveRegionFullCompanionTower
+      (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
+      (depth := depth) regions hd hM (matrixSUNAdjointModel Nc) spacing epsilon
+      background chain fineSmall
     IsCoerciveCLM
-      (cmp99SourceActiveRegionFullCompanionAmbientPrecision regions hd hM rho
-        spacing epsilon background chain fineSmall)
+      (cmp99SourceActiveRegionFullCompanionAmbientPrecision
+        (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
+        (depth := depth) regions hd hM (matrixSUNAdjointModel Nc) spacing epsilon
+        background chain fineSmall)
       (cmp99SourceActiveRegionTerminalPhysicalCoercivity T M depth epsilon) := by
   exact isCoerciveCLM_finitePiLpTypedKernelReindex
-    (cmp99SourceFullActiveRegionSiteEquiv d N)
-    (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM rho spacing
-      epsilon background chain fineSmall)
-    (isCoerciveCLM_cmp99SourceActiveRegionFullCompanionPrecision regions hd hM
-      hdepth rho hspacing background chain fineSmall hsmall)
+    (e := cmp99SourceFullActiveRegionSiteEquiv d N)
+    (A := cmp99SourceActiveRegionFullCompanionPrecision
+      (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
+      (depth := depth) regions hd hM (matrixSUNAdjointModel Nc) spacing epsilon
+      background chain fineSmall)
+    (isCoerciveCLM_cmp99SourceActiveRegionFullCompanionPrecision
+      (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
+      (depth := depth) regions hd hM hdepth hspacing background chain fineSmall
+      hsmall)
 
 /-- Dirichlet compression after the explicit full-site reindexing is exactly
 the regional source precision with its regional source-flow coefficient. -/
@@ -128,8 +136,10 @@ theorem cmp99SourceAmbientDirichletPrecision_fullCompanion_eq
     let Tregional := regions.weightedQprimeTower hd hM rho spacing epsilon
       background chain fineSmall
     cmp99SourceAmbientDirichletPrecision Omega
-        (cmp99SourceActiveRegionFullCompanionAmbientPrecision regions hd hM rho
-          spacing epsilon background chain fineSmall) =
+        (cmp99SourceActiveRegionFullCompanionAmbientPrecision
+          (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
+          (depth := depth) regions hd hM rho spacing epsilon background chain
+          fineSmall) =
       cmp99SourceGaugePrecision
         (cmp99ActiveRegionSourceCovariantLaplacian Omega rho background spacing)
         Tregional.Qprime
@@ -139,10 +149,18 @@ theorem cmp99SourceAmbientDirichletPrecision_fullCompanion_eq
     (cmp99SourceFullActiveRegion d N)
   let E := cmp99NestedActiveRegionExtension (g := SUNLieCoord Nc) Omega
     (cmp99SourceFullActiveRegion d N)
-  let Kfull := cmp99SourceActiveRegionFullCompanionPrecision regions hd hM rho
-    spacing epsilon background chain fineSmall
+  let Kfull : ActiveGaugeZeroCochain (cmp99SourceFullActiveRegion d N)
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain (cmp99SourceFullActiveRegion d N)
+        (SUNLieCoord Nc) :=
+    cmp99SourceActiveRegionFullCompanionPrecision
+      (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
+      (depth := depth) regions hd hM rho spacing epsilon background chain
+      fineSmall
   have hactive := cmp99SourceActiveRegionFullCompanionPrecision_compression
-    regions hd hM rho spacing epsilon background chain fineSmall
+    (d := d) (M := M) (N := N) (Nc := Nc) (Omega := Omega)
+    (depth := depth) regions hd hM rho spacing epsilon background chain
+    fineSmall
   apply ContinuousLinearMap.ext
   intro phi
   apply PiLp.ext
