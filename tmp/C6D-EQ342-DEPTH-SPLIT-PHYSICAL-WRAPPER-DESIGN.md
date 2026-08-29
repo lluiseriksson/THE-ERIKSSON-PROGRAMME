@@ -47,9 +47,35 @@ remain separate.
   base background, spacing `spacing`, and the zero-depth full-companion
   coercivity producer.
 
-The wrapper is proved by cases on `depth`.  It may not coerce the base branch
-through a false `0 < depth`, nor may it multiply the base spacing by another
-RG block length.
+The first implementation therefore consists of two branch-specific physical
+wrappers, each eliminating its caller-visible `root`.  A later single-family
+dispatcher, if required by the consumer, must take a genuinely dependent
+branch-data object and prove its result by cases on `depth`.  It may not fake
+one common list of source inputs: the positive branch carries the retained
+regularity/dictionary data, whereas the base branch carries
+`background`, `chain`, and `fineSmall`.
+
+Neither wrapper may coerce the base branch through a false `0 < depth`, nor
+may it multiply the base spacing by another RG block length.
+
+## Exact branch boundary
+
+For both wrappers, define the literal regional carrier from `Z0` with
+
+`M := cmp99SourceSeparatedLargeBlockSide L K depth` and `N' := 2*Q`,
+
+then obtain its `Nonempty` instance from `Z0.2`.  The positive wrapper invokes
+`cmp99Eq360C6dSourceSeparatedAmbientGreen_perDepthCertificate`; the base
+wrapper invokes
+`cmp99Eq360C6dSourceSeparatedAmbientGreen_zeroDepthCertificate`.  The
+`root` argument required by those lower-level assemblers is selected
+internally from the derived instance and must disappear from the public
+signature.
+
+The fact that the lower C6d construction sometimes factors the same ambient
+size as `L^(depth+1) * (2*(K*Q))` does not license changing the raw localized
+carrier.  Any necessary equality of total ambient sizes is a named arithmetic
+transport at the operator boundary; it is not a redefinition of `Z0`.
 
 ## What this wrapper may conclude
 
