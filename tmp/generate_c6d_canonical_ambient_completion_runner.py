@@ -27,6 +27,7 @@ GENERIC_DECLARATIONS = (
 INTEGRATION_MODULE = "BalabanCMP99Eq360C6dCanonicalAmbientCompletion"
 INTEGRATION_DECLARATIONS = (
     "cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq",
+    "cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq_zero",
 )
 
 
@@ -57,7 +58,7 @@ def generate(source_sha: str) -> str:
             "``YangMillsCore``.  Passing\n"
             "does not attain window 15, move ``20/41`` or inhabit ``TermSource``.",
             "This runner validates the generic and C6d integration source/audit\n"
-            "pairs, all ten public axiom readouts and every repository consumer\n"
+            "pairs, all eleven public axiom readouts and every repository consumer\n"
             "through ``YangMillsCore``. Passing closes only the carrier/inverse\n"
             "adapter; it does not prove the four actions, attain window 15, move\n"
             "``20/41`` or inhabit ``TermSource``.\n",
@@ -93,7 +94,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_CANONICAL_AMBIENT_COMPLETION_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=5 stages=5 axiom_blocks=10 "
+        f"source_sha={args.source_sha} files=5 stages=5 axiom_blocks=11 "
         "root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"

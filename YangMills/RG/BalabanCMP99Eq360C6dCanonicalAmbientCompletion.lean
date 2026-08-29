@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP99ActiveRegionCanonicalAmbientCompletion
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth
 
 /-!
 PRE-VALIDATION: scratch source only; no `.olean` has been materialized for
@@ -136,6 +137,65 @@ theorem cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq
         (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
         OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
         hdepth hsmall
+
+/-- The same canonical carrier round trip at exact retained depth zero.
+This branch constructs the full-companion ambient precision, its coercivity
+floor and its regional Green internally; in particular, no equality between
+the positive-depth and zero-depth operators is assumed. -/
+theorem
+    cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq_zero
+    (OmegaZero : ActiveGaugeRegion 4
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)))
+    (regionsZero : CMP99SourceActiveRegionChain 4 L
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) OmegaZero 0)
+    (hLZero : 2 ≤ L)
+    {spacingZero epsilonZero : ℝ}
+    (backgroundZero : GaugeConfig 4
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) (SUN Nc))
+    (chainZero : CMP99SourceUbarRadiusChain 4 L Nc 0 epsilonZero)
+    (fineSmallZero : ∀ e : ConcreteEdge 4
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)),
+      ‖(backgroundZero e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonZero)
+    (hspacingZero : 0 < spacingZero) :
+    let A := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+      (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+      regionsZero hLZero backgroundZero chainZero fineSmallZero
+    let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
+      (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+      regionsZero hLZero backgroundZero chainZero fineSmallZero
+    let hc : 0 < c := by
+      simpa [c, cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity] using
+        (cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
+          regionsZero (by norm_num) hLZero hspacingZero backgroundZero
+          chainZero fineSmallZero)
+    let hA : IsCoerciveCLM A c :=
+      isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+    cmp99RegionalDirichletGreen OmegaZero
+        (cmp99ActiveRegionCanonicalAmbientCompletion OmegaZero
+          (cmp99RegionalDirichletPrecision OmegaZero A))
+        (lt_min hc zero_lt_one)
+        (isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion
+          OmegaZero (cmp99RegionalDirichletPrecision OmegaZero A)
+          (isCoerciveCLM_cmp99RegionalDirichletPrecision OmegaZero A hA)) =
+      cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+        hspacingZero := by
+  dsimp only
+  calc
+    _ = cmp99RegionalDirichletGreen OmegaZero A hc hA :=
+      cmp99RegionalDirichletGreen_canonicalAmbientCompletion_compressed_eq
+        OmegaZero A hc hA
+    _ = cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+        hspacingZero :=
+      cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+        hspacingZero
 
 end
 
