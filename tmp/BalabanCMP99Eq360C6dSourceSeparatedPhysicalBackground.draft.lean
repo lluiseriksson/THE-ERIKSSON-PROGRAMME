@@ -1,5 +1,4 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
-import YangMills.RG.BalabanCMP99Eq389ThreeSpeciesPhysicalBound
 
 /-!
 SCRATCH ONLY: this file is neither imported nor compiler-verified and is not
@@ -41,7 +40,9 @@ theorem finBoxCast_shift_c6d
   rfl
 
 /-- The unique source-carrier background used by the derived Eq. (3.42)
-actions for the literal C6d precision. -/
+actions for the literal C6d precision.  It is the direct pullback through the
+same Step-7b equivalence that defines the ambient precision; no parallel
+regional-size cast is substituted. -/
 noncomputable def cmp99Eq360C6dSourceSeparatedPhysicalBackground
     (R : CMP99Eq335PhysicalRegularityClass
       (L := L ^ (depth + 1)) (N' := 2 * (K * Q))
@@ -54,8 +55,21 @@ noncomputable def cmp99Eq360C6dSourceSeparatedPhysicalBackground
     (hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1) :
     PhysicalGaugeBackground 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) Nc :=
-  cmp99Eq389SourceSeparatedPhysicalBackground L K Q depth Nc
-    (R.toCubeWitness C alpha1 hscale).transformedBackground
+  let e := cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+    (L := L) (K := K) (Q := Q) (depth := depth)
+  let background := (R.toCubeWitness C alpha1 hscale).transformedBackground
+  { toFun := fun edge => background
+      { source := e edge.source
+        dir := edge.dir
+        sign := edge.sign }
+    map_reverse := by
+      intro edge
+      cases edge with
+      | mk source dir sign =>
+          exact background.map_reverse
+            { source := e source
+              dir := dir
+              sign := sign } }
 
 /-- The value-level transport is exposed so later stencil proofs cannot
 silently switch to the technical retained extension or to a free background.
@@ -75,25 +89,33 @@ theorem cmp99Eq360C6dSourceSeparatedPhysicalBackground_apply
     cmp99Eq360C6dSourceSeparatedPhysicalBackground R C hscale edge =
       (R.toCubeWitness C alpha1 hscale).transformedBackground
         { source :=
-            (cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
-              L K Q depth).symm ▸ edge.source
+            cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+              (L := L) (K := K) (Q := Q) (depth := depth) edge.source
           dir := edge.dir
           sign := edge.sign } := by
   rfl
 
-/-- The exact carrier transport used by the C6d background preserves a
-positive fine step. -/
-theorem cmp99Eq360C6dSourceSeparatedPhysicalBackground_cast_shift
+/-- The exact Step-7b site equivalence preserves a positive fine step.  This
+is the geometric input needed to transport the literal covariant stencil. -/
+theorem cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
     (x : FinBox 4
       (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
     (i : Fin 4) :
-    (cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
-        L K Q depth).symm ▸ (x.shift i) =
-      ((cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
-        L K Q depth).symm ▸ x).shift i := by
-  exact finBoxCast_shift_c6d
-    (cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
-      L K Q depth).symm x i
+    cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+        (L := L) (K := K) (Q := Q) (depth := depth) (x.shift i) =
+      (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+        (L := L) (K := K) (Q := Q) (depth := depth) x).shift i := by
+  let hsize :=
+    cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier L K Q depth
+  change cmp99GeneratedFineBoxOneBlockEquiv
+      (d := 4) L (2 * (K * Q)) (depth + 1)
+        (hsize.symm ▸ (x.shift i)) =
+    (cmp99GeneratedFineBoxOneBlockEquiv
+      (d := 4) L (2 * (K * Q)) (depth + 1)
+        (hsize.symm ▸ x)).shift i
+  rw [finBoxCast_shift_c6d hsize.symm x i]
+  exact cmp99GeneratedFineBoxOneBlockEquiv_shift
+    (M := L) (N := 2 * (K * Q)) (depth + 1) (hsize.symm ▸ x) i
 
 end
 
