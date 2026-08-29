@@ -159,6 +159,15 @@ Two inputs remain visible and must not be mistaken for the uniform endpoint:
    an arbitrary nonempty regional carrier would merely rename that remaining
    geometric obligation.
 
+The scalar specialization is exact and leaves no parameter dictionary open:
+instantiate the reachability theorem with fine side
+`L^(depth+1)`, coarse side `2*(K*Q)`, Poincare ratio `M := L`, and ambient
+region `cmp99Eq360C6dSourceSeparatedAmbientRegion OmegaSource`.  Its witnesses
+are precisely the `alpha1`, `halpha1`, `baselineRadiusBudget`, `hsmall` and
+`hscale` consumed by the four C6d action wrappers.  A future assembler must
+project those witnesses from this one existential package; repeating any of
+them as independent hypotheses would destroy the proved joint compatibility.
+
 A scratch leaf now makes the geometric route finite without assuming a
 nonempty region.  `cmp116RegionSites_nonempty_of_sourcePhysicalLocalizedCoordinates`
 extracts the source endpoint of an interior physical bond from a nonempty
