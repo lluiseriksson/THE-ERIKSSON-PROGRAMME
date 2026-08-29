@@ -17,6 +17,18 @@ noncomputable section
 
 universe u v w u' v' w' z
 
+/-- The middle rectangular carrier is reindexed out and back through the
+same explicit equivalence. -/
+private theorem piLpCongrLeft_inverse_apply_rect
+    {ι : Type u} {ι' : Type u'} {g : Type z}
+    [Fintype ι] [Fintype ι']
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (e : ι ≃ ι') (phi : FinitePiLpField ι g) :
+    (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e.symm)
+        ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e) phi) = phi := by
+  simpa only [LinearIsometryEquiv.piLpCongrLeft_symm] using
+    (LinearIsometryEquiv.piLpCongrLeft 2 ℝ g e).symm_apply_apply phi
+
 /-- Rectangular reindexing preserves an ordered composition when the middle
 carrier uses the same explicit equivalence on both sides. -/
 theorem finitePiLpTypedKernelReindex_rect_comp
@@ -36,7 +48,8 @@ theorem finitePiLpTypedKernelReindex_rect_comp
   apply PiLp.ext
   intro x
   simp [finitePiLpTypedKernelReindex,
-    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
+    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft',
+    piLpCongrLeft_inverse_apply_rect]
 
 /-- Taking the adjoint swaps the two explicit coordinate equivalences. -/
 theorem finitePiLpTypedKernelReindex_adjoint
