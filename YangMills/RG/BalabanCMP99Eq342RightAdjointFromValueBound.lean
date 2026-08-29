@@ -124,7 +124,7 @@ theorem cmp99Eq342_rightAdjoint_blockLocalizedSupBound_of_value
           Real.exp (-(rate * (finBoxDist target source : ℝ))) := by
     intro target source
     let near : Finset (FinBox 4 (2 * (K * Q))) :=
-      Finset.univ.filter fun middle ⇒ finBoxDist middle source ≤ 1
+      Finset.univ.filter fun middle => finBoxDist middle source ≤ 1
     have hcard : near.card ≤ 81 := by
       have hball := finBoxDist_ball_card_le_two_mul_add_one_pow source 1
       have : near.card ≤ (2 * 1 + 1) ^ 4 := by
