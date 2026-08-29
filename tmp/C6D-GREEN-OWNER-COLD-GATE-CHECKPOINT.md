@@ -34,3 +34,23 @@ diagnostic at most once in the retained runtime using
 `tmp/C6D-D2-HOT-DIAGNOSTIC-LAUNCH.md`.  On terminal FAIL, preserve the first
 real error and repair only that error.  In either case, do not move `20/41`,
 do not claim window 15, and do not count a `TermSource` inhabitant.
+
+## Static continuation prepared while the gate runs
+
+The branch head has advanced through documentation and scratch-only commits;
+the object under validation remains exactly source SHA `86d9f0e4...` above.
+At head `aa7316e32b8889a59615bea7bbae625536e08e01` the following continuation is
+durably pinned without entering the project import graph:
+
+- corrected physical convention:
+  `M = cmp99SourceSeparatedLargeBlockSide L K depth`, `N' = 2*Q`;
+- a draft literal physical region/root producer;
+- separate positive-depth and zero-depth physical-localized certificate
+  wrappers, with no caller-visible `root` or arbitrary `Nonempty`;
+- lightweight text gate over all six draft paths;
+- one retained-runtime hot diagnostic, pinned by Git commit/blob in
+  `tmp/C6D-PHYSICAL-LOCALIZED-CERTIFICATES-HOT-LAUNCH.md`.
+
+The existing spacing/fibre hot diagnostic remains first after preservation of
+a cold PASS.  The new physical-certificate diagnostic may run afterwards in
+the same retained runtime, once only.  Neither hot result is seal evidence.
