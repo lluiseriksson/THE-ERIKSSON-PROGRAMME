@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hot-only diagnostic for the two literal spacing losses in CMP99 (3.89).
+"""Hot-only diagnostic for two spacing losses and the typed-chain fibre.
 
 Run only after the retained-runtime C6d D2 cold queue emits literal PASS and
 its cold evidence has been downloaded.  The existing `.lake` graph is reused.
@@ -20,10 +20,11 @@ import time
 
 
 DEFAULT_ROOT = Path("/content/hrpoly-c6d-d2-owner-rescaling")
-EVIDENCE_NAME = "hrpoly-c6d-eq389-physical-spacing-hot-evidence"
+EVIDENCE_NAME = "hrpoly-c6d-eq389-spacing-and-fibre-hot-evidence"
 FIRST = "BalabanCMP99Eq389CovariantLinkPhysicalSpacing.draft"
 SECOND = "BalabanCMP99Eq389CutoffLaplacianPhysicalSpacing.draft"
-EXPECTED_AXIOM_HEADERS = 5
+THIRD = "BalabanCMP99SourceGeneratedCountingMassArbitraryChainVaryingOutput.draft"
+EXPECTED_AXIOM_HEADERS = 7
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
@@ -106,6 +107,7 @@ def main() -> int:
     for manifest in (
         "tmp/c6d-eq389-physical-spacing-draft-paths.txt",
         "tmp/c6d-eq389-physical-spacing-second-species-draft-paths.txt",
+        "tmp/c6d-eq389-arbitrary-chain-varying-output-draft-paths.txt",
     ):
         stem = Path(manifest).stem
         run(root, evidence, "spacing_text_guard_" + stem, [
@@ -116,6 +118,8 @@ def main() -> int:
         f"tmp/{FIRST}Audit.lean",
         f"tmp/{SECOND}.lean",
         f"tmp/{SECOND}Audit.lean",
+        f"tmp/{THIRD}.lean",
+        f"tmp/{THIRD}Audit.lean",
     ]
     run(root, evidence, "spacing_import_prefix_guard", [
         "python3", "scripts/check_lean_import_prefix.py", *all_paths,
@@ -132,7 +136,13 @@ def main() -> int:
     second_audit = run(root, evidence, "spacing_second_species_audit", [
         "lake", "env", "lean", f"tmp/{SECOND}Audit.lean",
     ])
-    verify_axioms(first_audit + "\n" + second_audit)
+    run(root, evidence, "typed_chain_fibre_focal", [
+        "lake", "env", "lean", f"tmp/{THIRD}.lean",
+    ])
+    third_audit = run(root, evidence, "typed_chain_fibre_audit", [
+        "lake", "env", "lean", f"tmp/{THIRD}Audit.lean",
+    ])
+    verify_axioms(first_audit + "\n" + second_audit + "\n" + third_audit)
     print("FINAL_STATUS=PASS", flush=True)
     print("CLASSIFICATION=HOT_DIAGNOSTIC_ONLY", flush=True)
     return 0

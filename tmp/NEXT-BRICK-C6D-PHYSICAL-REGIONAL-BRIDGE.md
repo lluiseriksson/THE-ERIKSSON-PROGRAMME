@@ -250,6 +250,12 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    already cold-sealed canonical module merely to broaden its quantifiers.
    The new leaf remains a generic typed-chain theorem, while the subsequent
    C6d module performs the only source specialization.
+   That leaf now exists as the isolated scratch pair
+   `tmp/BalabanCMP99SourceGeneratedCountingMassArbitraryChainVaryingOutput.draft.lean`
+   plus its audit.  It is **NOT CHECKED**, is not imported by the project, and
+   is appended as the last target of the retained-runtime hot diagnostic so a
+   failure cannot erase the separately recorded outcomes of the two spacing
+   pairs.
 9. **Window 15.** Feed that C6d-specific (3.89) correction estimate into the
    weighted-owner contraction.  The `K^-1` gain enters before owner/layer
    summation, overlap remains the single source `16`, and the weighted owner
