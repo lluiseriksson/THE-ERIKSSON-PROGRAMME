@@ -1,9 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
--/
-
 #print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanionPrecisionUpperBound
 #print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanionPrecisionUpperBound_pos
 #print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanion_QprimeMass_finiteRange

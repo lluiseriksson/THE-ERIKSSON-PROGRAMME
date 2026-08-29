@@ -1,13 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionAmbientPrecision
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-Named metric transport for the two exact reindexing legs consumed by the
-C6d Green-decay producer.
--/
-
 namespace YangMills.RG
 
 open YangMills

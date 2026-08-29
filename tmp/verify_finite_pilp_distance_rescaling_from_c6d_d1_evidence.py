@@ -32,6 +32,7 @@ ROOT_STAGE = "03_c6d_post_green_decay_prefix_yang_mills_core_root"
 D1_SENTINEL = "C6D_POST_GREEN_DECAY_PREFIX_EVIDENCE_OK"
 SUCCESS_SENTINEL = "DISTANCE_RESCALING_FROM_C6D_D1_EVIDENCE_OK"
 MODULE = "FinitePiLpTypedKernelDistanceRescaling"
+MODULES = [MODULE]
 DECLARATION = "finitePiLpTypedExponentialKernelBound_rescale_dist"
 PATHS = [
     f"YangMills/RG/{MODULE}.lean",

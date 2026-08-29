@@ -41353,3 +41353,43 @@ retired.  No failed or focal-only evidence can trigger that seal.
 
 No PRE-VALIDATION notice is retired by this addendum.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 962 (2026-08-29, **corrected C6d-D1 decay/ambient metric and byte-identical distance rescaling sealed from one fresh cold root; 20/41 unchanged**)
+
+Fresh source `acc5064072a1e5c42eb74735b56b9fc7b465545c` ran the
+`c6d-post-green-decay-prefix-v3` stop-on-first-error queue with Lean
+`4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  All nineteen recorded stages
+exited zero.  In particular, the corrected full-companion precision-decay
+pair and the source-separated ambient-metric pair compiled and emitted their
+allowed axiom readouts, and the same-checkout `YangMillsCore` root exited zero
+after `8238.835` seconds.  The complete queue consumed `11135.021` recorded
+stage-seconds.
+
+The verifier emitted `C6D_POST_GREEN_DECAY_PREFIX_EVIDENCE_OK`.  The evidence
+payload SHA-256 is
+`1E8FA3E4811921E7B6659DEC6B830CB4B62E12785E26385F1BD6023A39D0CCD6`;
+the downloaded archive independently rehashes to
+`FA1F4A9A01F9D2C0EB35DC4F7F9098DC04A6E5F4A697C6D4493FC7E265B5C78D`;
+the executed notebook rehashes to
+`696B8C06189D58F7EB24DA891BC9C4081E5362A9268359B482E4789FE16F8488`.
+The package is preserved under
+`validation-evidence/c6d-post-green-decay-prefix-pass-acc50640-20260829/`.
+
+The fail-closed D1 sealer retired exactly the four notices in
+`BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay{,Audit}` and
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric{,Audit}`; its sealed scope
+manifest hashes to
+`0467090943363F5E2D7CF632B259527E488255F8E536E193D3044293EE29A04F`.
+The independent distance-rescaling cross-verifier then required the complete
+D1 verifier, the successful same-checkout cold root, byte identity with the
+original rescaling gate and its exact axiom readout.  It emitted
+`DISTANCE_RESCALING_FROM_C6D_D1_EVIDENCE_OK`, and the cross-sealer retired
+exactly the two notices in `FinitePiLpTypedKernelDistanceRescaling{,Audit}`;
+that sealed scope manifest hashes to
+`2B3F0F18F5D4A27ACCFCB7DA805D3FA0500907FA2F952D552AC570E5E03E0C59`.
+
+This is prefix infrastructure for the transported fixed-depth actions.  It
+does not produce a depth-uniform physical `B0, delta0`, attain window 15 or
+discharge a terminal producer.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

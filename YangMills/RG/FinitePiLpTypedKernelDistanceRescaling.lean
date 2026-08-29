@@ -1,23 +1,5 @@
 import YangMills.RG.FinitePiLpTypedKernel
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact distance rescaling for rectangular exponential kernels
-
-If a coarse distance satisfies
-
-`ell * coarseDist <= fineDist + boundary`,
-
-then fine-distance decay at rate `rate` gives coarse-distance decay at rate
-`ell * rate`.  The block-boundary loss stays visible as the single amplitude
-factor `exp (rate * boundary)`.
-
-This is only the algebraic distance bridge.  It does not construct a C6d
-Green, any of the four CMP99 (3.42) actions, uniform `B0`/`delta0`, window 15,
-or a terminal `TermSource` field.
--/
-
 namespace YangMills.RG
 
 noncomputable section

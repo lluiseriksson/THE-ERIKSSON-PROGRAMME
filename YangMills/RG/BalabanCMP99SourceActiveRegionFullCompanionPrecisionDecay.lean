@@ -2,14 +2,6 @@ import YangMills.RG.BalabanCMP99SourceActiveRegionTerminalBlockDiameter
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionPrecision
 import YangMills.RG.BalabanCMP99SourceGeneratedCombesThomas
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-Exact finite-range and exponential-kernel budget for the literal
-full-companion precision.  The counting coefficient remains literal and is
-not identified with the generated-physical mass parameter.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix
