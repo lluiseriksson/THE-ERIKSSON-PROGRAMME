@@ -62,6 +62,20 @@ def main() -> int:
         ROOT / "tmp" / "generate_c6d_green_owner_prefix_verifier.py",
     )
     head = git("rev-parse", "HEAD").decode().strip()
+    manifest_paths = tuple(
+        row.strip()
+        for row in (
+            ROOT / "tmp" / "c6d-green-owner-prefix-prevalidation-paths.txt"
+        ).read_text(encoding="utf-8").splitlines()
+        if row.strip()
+    )
+    promoted_paths = tuple(promotion.destination(relative) for relative in promotion.SOURCES)
+    if len(manifest_paths) != 20 or len(set(manifest_paths)) != 20:
+        raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_MANIFEST_CARDINALITY")
+    if set(manifest_paths) != set(promoted_paths):
+        raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_MANIFEST_SCOPE")
+    if len(promotion.AUDIT_IMPORTS) != 10:
+        raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_CORE_IMPORT_SCOPE")
 
     with tempfile.TemporaryDirectory(prefix="c6d-green-owner-prefix-") as folder:
         env = os.environ.copy()
@@ -100,8 +114,11 @@ def main() -> int:
         queue_match = re.search(
             r"(?ms)^runner\.QUEUE = (\[.*?\])\n\nif __name__", runner_text
         )
-        if blobs_match is None or len(ast.literal_eval(blobs_match.group(1))) != 21:
+        if blobs_match is None:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_SOURCE_BLOBS")
+        source_blobs = ast.literal_eval(blobs_match.group(1))
+        if set(source_blobs) != set(manifest_paths) | {"YangMillsCore.lean"}:
+            raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_SOURCE_BLOB_SCOPE")
         if queue_match is None:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_QUEUE_MISSING")
         queue = ast.literal_eval(queue_match.group(1))
