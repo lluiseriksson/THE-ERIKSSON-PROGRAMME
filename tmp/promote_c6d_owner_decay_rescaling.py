@@ -22,6 +22,10 @@ SOURCES = (
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedOwnerDecayRescaling.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedOwnerDecayRescalingAudit.draft.lean",
 )
+PREREQUISITES = (
+    "YangMills/RG/FinitePiLpTypedKernelDistanceRescaling.lean",
+    "YangMills/RG/FinitePiLpTypedKernelDistanceRescalingAudit.lean",
+)
 
 
 def git(*args: str) -> subprocess.CompletedProcess[bytes]:
@@ -109,6 +113,10 @@ def main() -> int:
     resolved = git("rev-parse", f"{args.source_sha}^{{commit}}")
     if resolved.returncode != 0 or resolved.stdout.decode().strip() != args.source_sha:
         raise RuntimeError("C6D_OWNER_RESCALING_SOURCE_COMMIT_MISMATCH")
+
+    for relative in PREREQUISITES:
+        if b"PRE-VALIDATION:" in blob(args.source_sha, relative):
+            raise RuntimeError(f"C6D_OWNER_RESCALING_PREREQ_UNSEALED={relative}")
 
     rows: list[tuple[str, bytes]] = []
     for relative in SOURCES:
