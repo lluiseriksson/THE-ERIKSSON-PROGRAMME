@@ -5,9 +5,9 @@ and executed notebook have been preserved.  It reuses that retained Colab
 checkout/build.  It is diagnostic evidence only and cannot seal source, move
 `20/41`, or attain window 15.
 
-- transport commit: `01598e065f54852a9189266a3e3277c030c20b17`
+- transport commit: `68ec707fd1ba0ce3cf1758a639ef673ee6a8cc7f`
 - runner path: `tmp/c6d_physical_localized_certificates_hot_diagnostic.py`
-- runner Git blob: `4b373a222d1b2ed7ea2a0b58c347e120cf388765`
+- runner Git blob: `10ee4f0308b1146775a52db9f17590debe319cea`
 - promoted draft source commit pinned inside runner:
   `4d0340fb794ca0194711d0084ca5aa86a83aa2ce`
 - retained checkout: `/content/hrpoly-c6d-green-owner-prefix`
@@ -18,9 +18,9 @@ Execute one new cell exactly once:
 import pathlib, subprocess
 
 repo = pathlib.Path('/content/hrpoly-c6d-green-owner-prefix')
-transport = '01598e065f54852a9189266a3e3277c030c20b17'
+transport = '68ec707fd1ba0ce3cf1758a639ef673ee6a8cc7f'
 runner_rel = 'tmp/c6d_physical_localized_certificates_hot_diagnostic.py'
-expected_blob = '4b373a222d1b2ed7ea2a0b58c347e120cf388765'
+expected_blob = '10ee4f0308b1146775a52db9f17590debe319cea'
 
 subprocess.run(
     ['git', 'fetch', '--no-tags', 'origin', transport],
