@@ -283,3 +283,19 @@ the old action theorem is not: it hard-codes
 The C6d action brick must therefore rerun the action argument with D2's
 canonical `OmegaSource` Green while citing this same bridge; it must not cite
 the old theorem by pretending the two regions or inverses coincide.
+
+There is also a normalization gate on that rerun.  Expanding the D2 Green
+against coordinate probes and summing the one-owner fibre would pay its full
+cardinality `ell^4`, whereas the printed value action pays `ell^2`.  The
+accepted route is the already sealed arbitrary-input one:
+
+1. instantiate
+   `isCoerciveCLM_finitePiLpTiltConj_inverse_canonical` with D2's exact
+   precision bound, exact coercivity and exact inverse;
+2. feed that named tilted coercivity to
+   `norm_finitePiLpInverse_apply_le_of_tilted_coercive`;
+3. spend `norm_cmp99Eq342_sourceLocalizedTilt_le_sourceScale` exactly once.
+
+Thus the action proof retains the counting-L2 norm until the final
+`ell^2 * supNorm` conversion.  A coordinate-probe proof that produces
+`ell^4` is valid auxiliary algebra but is not the physical item-1 producer.
