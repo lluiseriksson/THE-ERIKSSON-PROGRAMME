@@ -58,13 +58,20 @@ covariant derivative on the named transported background. -/
 theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
     let e := cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
       (L := L) (K := K) (Q := Q) (depth := depth)
+    let OmegaTarget := cmp99Eq360C6dSourceSeparatedAmbientRegion
+      (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource
     let E := cmp99ActiveGaugeRegionSiteReindexEquiv e OmegaSource
     let B := cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv
       (L := L) (K := K) (Q := Q) (depth := depth)
-    finitePiLpTypedKernelReindex E.symm B.symm
+    finitePiLpTypedKernelReindex
+        (ι := ActiveGaugeRegion.Site OmegaTarget)
+        (κ := PhysicalBond 4 (L ^ (depth + 1) * (2 * (K * Q))))
+        (ι' := ActiveGaugeRegion.Site OmegaSource)
+        (κ' := PhysicalBond 4
+          (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+        (g := SUNLieCoord Nc) E.symm B.symm
         (cmp99ActiveRegionSourceCovariantD0CLM
-          (cmp99Eq360C6dSourceSeparatedAmbientRegion
-            (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource)
+          OmegaTarget
           (matrixSUNAdjointModel Nc)
           (R.toCubeWitness C alpha1 hscale).transformedBackground eta) =
       cmp99ActiveRegionSourceCovariantD0CLM OmegaSource
@@ -102,11 +109,17 @@ literal source-carrier Laplacian on the transported background. -/
 theorem cmp99Eq360C6dSourceSeparatedCovariantLaplacian_reindex_eq :
     let e := cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
       (L := L) (K := K) (Q := Q) (depth := depth)
+    let OmegaTarget := cmp99Eq360C6dSourceSeparatedAmbientRegion
+      (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource
     let E := cmp99ActiveGaugeRegionSiteReindexEquiv e OmegaSource
-    finitePiLpTypedKernelReindex E.symm E.symm
+    finitePiLpTypedKernelReindex
+        (ι := ActiveGaugeRegion.Site OmegaTarget)
+        (κ := ActiveGaugeRegion.Site OmegaTarget)
+        (ι' := ActiveGaugeRegion.Site OmegaSource)
+        (κ' := ActiveGaugeRegion.Site OmegaSource)
+        (g := SUNLieCoord Nc) E.symm E.symm
         (cmp99ActiveRegionSourceCovariantLaplacian
-          (cmp99Eq360C6dSourceSeparatedAmbientRegion
-            (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource)
+          OmegaTarget
           (matrixSUNAdjointModel Nc)
           (R.toCubeWitness C alpha1 hscale).transformedBackground eta) =
       cmp99ActiveRegionSourceCovariantLaplacian OmegaSource
