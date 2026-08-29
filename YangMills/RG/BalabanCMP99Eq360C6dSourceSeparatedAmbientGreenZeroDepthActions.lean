@@ -107,7 +107,7 @@ theorem
     dsimp [leftAmplitude]
     ring
   rw [hleft_normalize] at hleft
-  simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude] using hleft
+  exact hleft
 
 /-- The exact depth-zero Green composed with the literal right-adjoint
 derivative at terminal spacing `spacing`. -/
