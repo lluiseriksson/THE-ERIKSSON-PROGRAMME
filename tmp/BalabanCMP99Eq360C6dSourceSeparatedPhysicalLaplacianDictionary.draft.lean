@@ -113,17 +113,47 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
     exact hext.symm
   have hshift := cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
     (L := L) (K := K) (Q := Q) (depth := depth) x i
+  let targetMap :=
+    (LinearIsometryEquiv.piLpCongrLeft 2 ℝ (SUNLieCoord Nc)
+      (cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv
+        (L := L) (K := K) (Q := Q) (depth := depth)).symm).toContinuousLinearEquiv
+  let covDtarget :=
+    covariantD0CLM (matrixSUNAdjointModel Nc)
+      (R.toCubeWitness C alpha1 hscale).transformedBackground
+  have hevaluated :
+      (targetMap (eta⁻¹ • covDtarget
+        ((extendZeroZeroCLM
+          (cmp99Eq360C6dSourceSeparatedAmbientRegion
+            (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource))
+          ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ (SUNLieCoord Nc)
+            (cmp99ActiveGaugeRegionSiteReindexEquiv
+              (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+                (L := L) (K := K) (Q := Q) (depth := depth))
+              OmegaSource).symm.symm).toContinuousLinearEquiv phi))) ⟨x, i⟩ =
+        (targetMap (eta⁻¹ • covDtarget
+          (cmp99GaugeZeroCochainReindex
+            (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+              (L := L) (K := K) (Q := Q) (depth := depth))
+            (extendZeroZeroCLM OmegaSource phi)))) ⟨x, i⟩ := by
+    exact congrArg
+      (fun z => (targetMap (eta⁻¹ • covDtarget z)) ⟨x, i⟩) htransported
   simp only [finitePiLpTypedKernelReindex,
     cmp99ActiveRegionSourceCovariantD0CLM,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply]
-  simp only [htransported]
-  simp [B, E, e, covariantD0CLM_apply,
-    cmp99GaugeZeroCochainReindex,
-    cmp99ActiveGaugeZeroCochainReindex,
-    cmp99ActiveGaugeRegionSiteReindexEquiv,
-    cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv,
-    cmp99Eq360C6dSourceSeparatedPhysicalBackground_apply,
-    hshift]
+  calc
+    _ = (targetMap (eta⁻¹ • covDtarget
+        (cmp99GaugeZeroCochainReindex
+          (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+            (L := L) (K := K) (Q := Q) (depth := depth))
+          (extendZeroZeroCLM OmegaSource phi)))) ⟨x, i⟩ := hevaluated
+    _ = _ := by
+      simp [targetMap, covDtarget, B, E, e, covariantD0CLM_apply,
+        cmp99GaugeZeroCochainReindex,
+        cmp99ActiveGaugeZeroCochainReindex,
+        cmp99ActiveGaugeRegionSiteReindexEquiv,
+        cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv,
+        cmp99Eq360C6dSourceSeparatedPhysicalBackground_apply,
+        hshift]
 
 /-- Consequently the inverse reindex of the literal C6d Laplacian is the
 literal source-carrier Laplacian on the transported background. -/
