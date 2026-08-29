@@ -157,7 +157,7 @@ def main() -> int:
         notebook_text = notebook_gen.load_base().generate(
             source_commit,
             runner_commit,
-            "c6d-d2-owner-rescaling-v1",
+            "c6d-d2-owner-rescaling-v2",
             runner_path=notebook_gen.RUNNER_PATH,
             retain_runtime=True,
         )

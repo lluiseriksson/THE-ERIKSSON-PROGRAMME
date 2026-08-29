@@ -66,7 +66,7 @@ def generate(source_sha: str) -> str:
             "not prove uniform regional B0/delta0, attain window 15, move ``20/41``\n"
             "or inhabit ``TermSource``.",
         ),
-        ("c6d-source-separated-ambient-green-v3", "c6d-d2-owner-rescaling-v1"),
+        ("c6d-source-separated-ambient-green-v3", "c6d-d2-owner-rescaling-v2"),
         (
             "hrpoly-c6d-source-separated-ambient-green",
             "hrpoly-c6d-d2-owner-rescaling",

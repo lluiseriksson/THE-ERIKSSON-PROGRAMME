@@ -87,8 +87,8 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-d2-owner-rescaling-v1"
-runner.SOURCE_SHA = 'd8724c85fb2b4f8722cf63089ffea4910f45f623'
+runner.RUNNER_REV = "c6d-d2-owner-rescaling-v2"
+runner.SOURCE_SHA = '1d7b33059eb3964a3ff99003869be84ec0806288'
 runner.ROOT = Path("/content/hrpoly-c6d-d2-owner-rescaling")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-d2-owner-rescaling-evidence")
 runner.ARCHIVE = Path(
@@ -100,7 +100,7 @@ runner.PATH_MANIFEST = Path(
 runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay.lean': '24beedc31cde0d95f4f9c0fcf54ef4b4f38f55caa98826b371729d5e5e3ef451',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayAudit.lean': '0328820a3cdb271ce02311680b8e3e61e74f78053fbf1f19b11df75c792d9d68',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepth.lean': 'defd8b535db04370e0f99d40f7161d26440a8c39a47c7ca4194b2663993826b2',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepth.lean': '12696180fa988e28b180cfa348e0f924e1fdfb4685de0d8358863e8ba3911544',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepthAudit.lean': 'ed649d48e21d67acca1b23f1941b1192cbebfce8c0e0262d3d37034013ec9677',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedOwnerDecayRescaling.lean': '7e38fb2c178e29982cea2f68ed6724dff2d75d08ee1fd1f2bdae37890e021ec6',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedOwnerDecayRescalingAudit.lean': '76e58c5dc425fa2acc368c0dcc3138e59d06d8a3cf6f8d75935595689c39f63d',
