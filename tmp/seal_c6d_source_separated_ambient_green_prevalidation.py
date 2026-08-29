@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed selective seal for the four C6d source Green modules."""
+"""Fail-closed selective seal for the six C6d source Green modules."""
 
 from __future__ import annotations
 

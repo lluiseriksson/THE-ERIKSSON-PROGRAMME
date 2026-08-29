@@ -11,30 +11,32 @@ import re
 import tarfile
 
 
-SOURCE_SHA = "0ea023c1a3589365dcc41a89514d1bff26c01080"
-RUNNER_REV = "c6d-source-separated-ambient-green-v3"
+SOURCE_SHA = "7e90203e8bfd1deb58d998fb5cdad0baab925af5"
+RUNNER_REV = "c6d-source-separated-ambient-green-v4"
 MATHLIB_SHA = "07642720480157414db592fa85b626dafb71355b"
 TOOLCHAIN_SHA256 = (
     "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
 )
-SOURCE_BLOBS_COUNT = 5
+SOURCE_BLOBS_COUNT = 7
 SOURCE_BLOBS_SHA256 = (
-    "F7C1FFDB3A1DE5F7F5A352B535F9530C5E160890114016E2939033608B0878C5"
+    "7F508F25E1C8C3656CCC923A69E190B5C6C14BD13DEC6FFD5EFDBBA75D0F3559"
 )
 NOTEBOOK_CELL_SOURCE_SHA256 = (
-    "5218CB04B49BFC832E28944D0F563BECD950AA43C5195D8CC6C3E68D0CEA16B0"
+    "151D99D83F444D9F6662003C3FF3BF0B4A655E8842A2FEB97B5FAC665EBF4264"
 )
 SUCCESS_SENTINEL = "C6D_SOURCE_SEPARATED_AMBIENT_GREEN_EVIDENCE_OK"
 
 MODULES = [
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth",
+    "BalabanCMP99Eq360C6dCanonicalAmbientCompletion",
 ]
 AUDIT_STAGES = {
     MODULES[0]: "01_cmp99eq360c6dsourceseparatedambientgreen_audit",
     MODULES[1]: "02_cmp99eq360c6dsourceseparatedambientgreenzerodepth_audit",
+    MODULES[2]: "03_cmp99eq360c6dcanonicalambientcompletion_audit",
 }
-EXPECTED_AXIOM_HEADERS = {MODULES[0]: 15, MODULES[1]: 10}
+EXPECTED_AXIOM_HEADERS = {MODULES[0]: 15, MODULES[1]: 10, MODULES[2]: 2}
 
 BOOTSTRAP_STAGES = [
     "download_toolchain",
@@ -55,7 +57,9 @@ QUEUE_STAGES = [
     "01_cmp99eq360c6dsourceseparatedambientgreen_audit",
     "02_cmp99eq360c6dsourceseparatedambientgreenzerodepth_focal",
     "02_cmp99eq360c6dsourceseparatedambientgreenzerodepth_audit",
-    "03_c6d_source_green_yang_mills_core_root",
+    "03_cmp99eq360c6dcanonicalambientcompletion_focal",
+    "03_cmp99eq360c6dcanonicalambientcompletion_audit",
+    "04_c6d_source_green_yang_mills_core_root",
 ]
 
 
