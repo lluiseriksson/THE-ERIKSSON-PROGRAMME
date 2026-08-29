@@ -228,6 +228,23 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    `cmp99SourceGeneratedPhysicalMass` or the operator by
    `cmp99SourceSeparatedGeneratedCountingMass`.  The already assembled
    generated-mass correction remains the wrong source object.
+
+   The bridge is accepted only in the following proof-producing form (names
+   provisional, shapes binding):
+
+   ```text
+   regions.card_sameTerminalBlock_le target :
+     card {source | regions.SameTerminalBlock source target} <= (M^depth)^d
+
+   regions.sum_norm_generatedCountingMass_varying_le ... phi C
+     (forall source in the same terminal block, norm (phi source) <= C) :
+     sum_source norm (regions.generatedCountingMass ...
+       (single source (phi source)) target)
+       <= (cmp99SourceBlockAverageWeight M d)^depth * C
+   ```
+
+   Neither statement may accept the cardinality bound, the cancellation
+   equality, or the generated-mass conclusion as caller data.
 9. **Window 15.** Feed that C6d-specific (3.89) correction estimate into the
    weighted-owner contraction.  The `K^-1` gain enters before owner/layer
    summation, overlap remains the single source `16`, and the weighted owner
