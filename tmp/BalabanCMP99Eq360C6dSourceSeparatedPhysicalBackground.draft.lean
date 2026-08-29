@@ -107,12 +107,15 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
         (L := L) (K := K) (Q := Q) (depth := depth) x).shift i := by
   let hsize :=
     cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier L K Q depth
-  change cmp99GeneratedFineBoxOneBlockEquiv
-      (d := 4) L (2 * (K * Q)) (depth + 1)
-        (Equiv.cast (congrArg (FinBox 4) hsize.symm) (x.shift i)) =
-    (cmp99GeneratedFineBoxOneBlockEquiv
-      (d := 4) L (2 * (K * Q)) (depth + 1)
-        (Equiv.cast (congrArg (FinBox 4) hsize.symm) x)).shift i
+  have happly (y : FinBox 4
+      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q))) :
+      cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+          (L := L) (K := K) (Q := Q) (depth := depth) y =
+        cmp99GeneratedFineBoxOneBlockEquiv
+          (d := 4) L (2 * (K * Q)) (depth + 1)
+            (Equiv.cast (congrArg (FinBox 4) hsize.symm) y) := by
+    rfl
+  rw [happly (x.shift i), happly x]
   rw [finBoxCast_shift_c6d hsize.symm x i]
   exact cmp99GeneratedFineBoxOneBlockEquiv_shift
     (M := L) (N := 2 * (K * Q)) (depth + 1) (hsize.symm ▸ x) i
