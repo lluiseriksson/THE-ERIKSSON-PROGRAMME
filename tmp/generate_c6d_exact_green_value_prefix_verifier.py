@@ -22,9 +22,8 @@ MODULES = [
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionZeroDepth",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayZeroDepth",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth",
-    "BalabanCMP99Eq360C6dSourceSeparatedPhysicalBackground",
 ]
-EXPECTED_AXIOM_HEADERS = dict(zip(MODULES, (1, 1, 1, 1, 1, 1, 3), strict=True))
+EXPECTED_AXIOM_HEADERS = dict(zip(MODULES, (1, 1, 1, 1, 1, 1), strict=True))
 
 
 def notebook_cell_source(path: Path) -> str:
@@ -72,7 +71,7 @@ def generated_text(source_sha: str, runner: Path, notebook: Path) -> str:
     for index, module in enumerate(MODULES, start=1):
         stem = module.removeprefix("Balaban").lower()
         queue_stages.extend([f"{index:02d}_{stem}_focal", f"{index:02d}_{stem}_audit"])
-    queue_stages.append("08_c6d_exact_green_value_prefix_yang_mills_core_root")
+    queue_stages.append("07_c6d_exact_green_value_prefix_yang_mills_core_root")
     return f'''#!/usr/bin/env python3
 """Fail-closed verifier specialization for the exact C6d value prefix."""
 

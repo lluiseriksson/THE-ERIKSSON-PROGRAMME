@@ -37,14 +37,6 @@ BRICKS = (
         "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth",
         ("cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_blockLocalizedSupBound",),
     ),
-    (
-        "BalabanCMP99Eq360C6dSourceSeparatedPhysicalBackground",
-        (
-            "cmp99Eq360C6dSourceSeparatedPhysicalBackground",
-            "cmp99Eq360C6dSourceSeparatedPhysicalBackground_apply",
-            "cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift",
-        ),
-    ),
 )
 
 
@@ -72,8 +64,9 @@ def generate(source_sha: str) -> str:
             "``YangMillsCore``.  Passing\n"
             "does not attain window 15, move ``20/41`` or inhabit ``TermSource``.",
             "This runner validates six exact positive/zero-depth value-action branches,\n"
-            "the physical source-background dictionary, all nine public axiom readouts\n"
-            "and every repository consumer through ``YangMillsCore``. Passing does not\n"
+            "all six public axiom readouts and every repository consumer through\n"
+            "``YangMillsCore``. The physical source-background dictionary is a sealed\n"
+            "prerequisite. Passing does not\n"
             "prove the three derived actions, uniform B0/delta0, attain window 15,\n"
             "move ``20/41`` or inhabit ``TermSource``.",
         ),
@@ -81,7 +74,7 @@ def generate(source_sha: str) -> str:
         ("hrpoly-c6d-source-separated-ambient-green", "hrpoly-c6d-exact-green-value-prefix"),
         (
             "03_c6d_source_green_yang_mills_core_root",
-            "08_c6d_exact_green_value_prefix_yang_mills_core_root",
+            "07_c6d_exact_green_value_prefix_yang_mills_core_root",
         ),
     )
     for old, new in replacements:
@@ -102,7 +95,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_VALUE_PREFIX_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=15 stages=15 axiom_blocks=9 "
+        f"source_sha={args.source_sha} files=13 stages=13 axiom_blocks=6 "
         "root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"

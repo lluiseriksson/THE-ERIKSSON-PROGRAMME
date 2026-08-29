@@ -82,6 +82,14 @@ def main() -> int:
             if relative.endswith("Audit.draft.lean"):
                 d2_audits.append("import YangMills.RG." + Path(target).stem)
 
+        for relative in promotion.PREREQUISITES[4:]:
+            data = git("cat-file", "blob", f"{head}:{relative}")
+            if b"PRE-VALIDATION:" not in data:
+                raise RuntimeError(
+                    f"C6D_VALUE_PREFIX_TEST_BACKGROUND_NOT_PRE={relative}"
+                )
+            rows.append((relative, data.replace(b"PRE-VALIDATION:", b"SEALED:", 1)))
+
         value_audits: list[str] = []
         for relative in promotion.source_paths():
             data = git("cat-file", "blob", f"{head}:{relative}")
@@ -119,12 +127,12 @@ def main() -> int:
         queue_match = re.search(
             r"(?ms)^runner\.QUEUE = (\[.*?\])\n\nif __name__", runner_text
         )
-        if blobs_match is None or len(ast.literal_eval(blobs_match.group(1))) != 15:
+        if blobs_match is None or len(ast.literal_eval(blobs_match.group(1))) != 13:
             raise RuntimeError("C6D_VALUE_PREFIX_TEST_SOURCE_BLOBS")
         if queue_match is None:
             raise RuntimeError("C6D_VALUE_PREFIX_TEST_QUEUE_MISSING")
         queue = ast.literal_eval(queue_match.group(1))
-        if len(queue) != 15 or sum(row[2] is not None for row in queue) != 7:
+        if len(queue) != 13 or sum(row[2] is not None for row in queue) != 6:
             raise RuntimeError("C6D_VALUE_PREFIX_TEST_QUEUE_SCOPE")
 
         git("read-tree", source_commit, env=env)

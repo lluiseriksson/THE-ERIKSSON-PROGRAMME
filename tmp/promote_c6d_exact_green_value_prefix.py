@@ -2,8 +2,8 @@
 """Fail-closed promotion of the exact C6d Green value-action prefix.
 
 This script performs text transport only.  It never runs Lean and never
-removes PRE-VALIDATION.  The exact D2 positive- and zero-depth pairs must be
-sealed first.
+removes PRE-VALIDATION.  The exact D2 positive- and zero-depth pairs and the
+physical source-background dictionary must be sealed first.
 """
 
 from __future__ import annotations
@@ -23,6 +23,8 @@ PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayAudit.lean",
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepth.lean",
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepthAudit.lean",
+    "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedPhysicalBackground.lean",
+    "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedPhysicalBackgroundAudit.lean",
 )
 
 
@@ -52,8 +54,8 @@ def source_paths() -> tuple[str, ...]:
         for line in MANIFEST.read_text(encoding="utf-8").splitlines()
         if line.strip() and not line.lstrip().startswith("#")
     )
-    if len(rows) != 14 or len(set(rows)) != len(rows):
-        raise RuntimeError(f"C6D_VALUE_PREFIX_MANIFEST_COUNT={len(rows)} EXPECTED=14")
+    if len(rows) != 12 or len(set(rows)) != len(rows):
+        raise RuntimeError(f"C6D_VALUE_PREFIX_MANIFEST_COUNT={len(rows)} EXPECTED=12")
     return rows
 
 
@@ -144,7 +146,7 @@ def main() -> int:
         for relative in sources
         if relative.endswith("Audit.draft.lean")
     )
-    if len(audit_imports) != 7:
+    if len(audit_imports) != 6:
         raise RuntimeError("C6D_VALUE_PREFIX_AUDIT_IMPORT_COUNT")
     for line in audit_imports:
         if line in core:
