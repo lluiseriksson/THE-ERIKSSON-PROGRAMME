@@ -26,9 +26,9 @@ This draft PR carries the source-specific CMP89/CMP95/CMP96/CMP99/CMP102/CMP116 
 
 ### Active frontier
 
-Exact source `2bb3eb7325b621954a7132d0a8bab3ce2c1bdf24` is running one fresh Colab Pro+ cold gate for the source-generated positive-depth coercivity and internally constructed literal C6d baseline Green. All ten source/audit pairs have exited zero with the allowed axiom set; the cold `YangMillsCore` root is still in flight. This prefix is **not sealed** unless the runner emits literal `FINAL_STATUS=PASS`, its archive verifies externally and the PRE-VALIDATION notices are retired by a later selective commit.
+Addendum 958 seals exact source `7e90203e8bfd1deb58d998fb5cdad0baab925af5`: the source-separated positive-depth and zero-depth ambient Green pairs, canonical ambient completion, terminal-block diameter and the same-checkout `YangMillsCore` root all passed in one fresh Colab Pro+ checkout. The root completed 11085 jobs in `8077.992` seconds; both independent evidence verifiers passed, and exactly eight PRE-VALIDATION notices were retired. This seal is retained-tower/source-region infrastructure and does **not** move `20/41`.
 
-After that cold result, the retained runtime is reserved for two stop-on-first-error hot diagnostics: the six-pair full-companion/Dirichlet-compression chain and the three-pair ambient precision plus active-region/Green transport. Hot PASS is diagnostic only. The finite later seal boundary is one fresh checkout containing nine source/audit pairs, exactly 46 axiom readouts and a same-checkout `YangMillsCore` root.
+The next finite boundary is the exact physical background/Laplacian/precision dictionary already green in a retained-runtime diagnostic. It remains unsealed until promotion under PRE-VALIDATION and one fresh cold checkout containing its eight source/audit modules and same-checkout `YangMillsCore` root.
 
 The next explicit gates are:
 

@@ -1,17 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedWeightedAdjointRange
 
-/-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result is not yet compiler-verified.
-
-# Terminal-block diameter for a typed source-region chain
-
-This module derives the intrinsic terminal-block radius for an arbitrary
-typed source-region chain.  It discharges the geometric input of
-`CMP99SourceActiveRegionChain.generatedCountingMass_finiteRange` internally;
-no identification with the canonical iterated-lift chain is used.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

@@ -41202,3 +41202,44 @@ The package is preserved under
 
 No PRE-VALIDATION notice is retired.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 958 (2026-08-29, **source-separated ambient Green, canonical completion and terminal-block diameter sealed from one fresh cold root; 20/41 unchanged**)
+
+Fresh source `7e90203e8bfd1deb58d998fb5cdad0baab925af5` ran the
+`c6d-source-separated-ambient-green-v4` stop-on-first-error queue with Lean
+`4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  The positive-depth ambient
+Green, exact `depth = 0` ambient Green and canonical ambient completion
+source/audit pairs all exited zero.  Their audits emitted exactly 27 readouts,
+each confined to `{propext, Classical.choice, Quot.sound}` or a subset.
+
+The same fresh checkout then built `YangMillsCore` successfully: 11085 jobs,
+exit zero, `8077.992` seconds.  That root also built the byte-identical
+terminal-block diameter source/audit pair and emitted the four expected
+allowed-axiom readouts.  The runner emitted literal `FINAL_STATUS=PASS`; total
+recorded stage time was `10658.302` seconds.
+
+Independent verification emitted both
+`C6D_SOURCE_SEPARATED_AMBIENT_GREEN_EVIDENCE_OK` and
+`C6D_TERMINAL_BLOCK_DIAMETER_FROM_GREEN_V4_EVIDENCE_OK`.  Evidence-manifest
+SHA-256 is
+`C26A539CED7033A08073CB431512A4F5B0E7E13CB3ECC3590FB9887F90632760`;
+archive SHA-256 is
+`F0B700A325F084C369E6E5DB0564AB836C169FB2A1348CF04157737794BB694F`;
+executed-notebook SHA-256 is
+`CE38FCDA4AD3B5F93980559EE15FA5481CD7079F26CEA8FB74D69D6DB257F84B`.
+The durable package is preserved at
+`validation-evidence/c6d-source-separated-ambient-green-pass-7e90203e-20260829-v4/`.
+
+The fail-closed Green sealer retired exactly six PRE-VALIDATION notices with
+sealed-manifest SHA-256
+`7821339C79BC04422F97E09275DEBB11E92F3905D4215DCAE58AA72675B92472`.
+The cross-sealer retired exactly the two terminal-block diameter notices with
+sealed-manifest SHA-256
+`B7AD4392BD7201D2D25139EDDC1FD59B7C795D12D77EE3E859E6BF1F51EA28DF`.
+
+This is infrastructure for the retained-tower/source-region transport and its
+finite-range bookkeeping.  It does not instantiate the four physical actions,
+produce uniform `B0, delta0`, attain window 15, close rows 23--24 or instantiate
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

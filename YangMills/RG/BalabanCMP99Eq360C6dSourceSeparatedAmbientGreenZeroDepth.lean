@@ -1,19 +1,6 @@
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionZeroDepthGreen
 import YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
 
-/-!
-PRE-VALIDATION: scratch source only; no `.olean` has been materialized for
-this file and no compiler or axiom-oracle verdict is claimed.
-
-# Exact depth-zero Green on the source-separated carrier
-
-This is the missing base branch of the unrestricted Eq. (3.42) family.  It
-specializes the already constructed full-companion ambient precision and
-canonical depth-zero Green directly to the source-separated carrier.  The
-literal coefficient remains `spacing^(-2)` through the existing producer;
-no precision, Green, equality or coercivity floor is caller data.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

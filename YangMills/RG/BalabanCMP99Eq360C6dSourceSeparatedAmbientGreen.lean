@@ -2,22 +2,6 @@ import YangMills.RG.BalabanCMP99ActiveGaugeRegionReindexGreen
 import YangMills.RG.BalabanCMP99Eq360C6dSourceAmbientBaselinePrecision
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bCarrier
 
-/-!
-PRE-VALIDATION: scratch source only; no `.olean` has been materialized for
-this file and no compiler or axiom-oracle verdict is claimed.
-
-# Exact C6d ambient Green on the source-separated carrier
-
-The C6d ambient precision is constructed on its literal
-`L^(depth+1) * (2*(K*Q))` carrier.  The source-facing precision and Green are
-then pulled back through the named Step-7b carrier equivalence.  Neither an
-ambient precision, a regional precision, a Green, nor an equality between
-them is caller data.  The Green and coercivity conclusions in this module
-are explicitly the `0 < depth` branch; the separately constructed depth-zero
-branch must be composed later before claiming the unrestricted Eq. (3.42)
-family.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

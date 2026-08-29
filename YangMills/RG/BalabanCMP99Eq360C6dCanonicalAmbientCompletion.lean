@@ -2,23 +2,6 @@ import YangMills.RG.BalabanCMP99ActiveRegionCanonicalAmbientCompletion
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth
 
-/-!
-PRE-VALIDATION: scratch source only; no `.olean` has been materialized for
-this file and no compiler or axiom-oracle verdict is claimed.
-
-# Canonical ambient completion of the exact C6d source Green
-
-This source-facing composition closes the carrier round trip without taking
-an ambient completion or an equality of Greens from the caller.  It first
-compresses the one C6d source ambient precision, completes that regional
-operator by the canonical exterior identity, and then proves that the Green
-generated from the completion is the already constructed C6d source Green.
-
-The statement is only an inverse/carrier dictionary.  It does not produce
-any of the four physical Eq. (3.42) action bounds or the constants `B0` and
-`delta0`.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

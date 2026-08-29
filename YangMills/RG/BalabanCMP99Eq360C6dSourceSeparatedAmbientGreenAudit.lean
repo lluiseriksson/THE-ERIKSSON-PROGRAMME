@@ -1,9 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
 
-/-!
-PRE-VALIDATION: audit draft only; no compiler or axiom-oracle verdict is
-claimed.
--/
 #print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
 #print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientRegion
 #print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientRegion_symm_eq
