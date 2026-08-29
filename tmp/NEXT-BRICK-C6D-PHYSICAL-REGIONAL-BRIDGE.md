@@ -149,6 +149,13 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    `cmp99SourceSeparatedGeneratedCountingMass`, so the retained-tower mass
    action needs its own C6d theorem or an exact source dictionary.  These are
    three finite operator obligations, not one definitional cast.
+   The third obligation can reuse the existing row theorem without a new
+   analytic estimate only after specializing it to the retained extension
+   and `baselineRadiusBudget.toRadiusChain` used by
+   `cmp99Eq360C6dSourceBaselineRetainedPhysicalTower` (which is constructed
+   from `regions.weightedQprimeTower`) and transporting through the named
+   counting-to-weighted coefficient identity.  The already assembled
+   generated-mass correction remains the wrong source object.
 9. **Window 15.** Feed that C6d-specific (3.89) correction estimate into the
    weighted-owner contraction.  The `K^-1` gain enters before owner/layer
    summation, overlap remains the single source `16`, and the weighted owner
