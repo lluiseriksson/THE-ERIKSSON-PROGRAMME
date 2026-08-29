@@ -200,7 +200,11 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    arbitrary `CMP99SourceActiveRegionChain`.  The analytic cancellation is
    still reusable, but the missing bridge is now explicit: first generalize
    `card_cmp99SourceIteratedLift_sameTerminalBlock_le` to an arbitrary typed
-   chain using the already sealed
+   chain.  The existing `cmp99GeneratedTerminalBlockResidue` is itself typed
+   at the canonical `cmp99RegionalLatticeSize`, so this generalization must
+   define the literal coordinatewise residue modulo `M^depth` on the ambient
+   `FinBox d N`; it may not cast an arbitrary C6d carrier to the canonical
+   size.  Its fibre injectivity follows from the already sealed
    `CMP99SourceActiveRegionChain.div_pow_eq_of_sameTerminalBlock`, then derive
    the corresponding chain-parametric varying-value row theorem.  Only that
    theorem may be specialized to the retained extension and
