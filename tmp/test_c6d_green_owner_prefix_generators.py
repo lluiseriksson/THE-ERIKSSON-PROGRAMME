@@ -70,11 +70,11 @@ def main() -> int:
         if row.strip()
     )
     promoted_paths = tuple(promotion.destination(relative) for relative in promotion.SOURCES)
-    if len(manifest_paths) != 20 or len(set(manifest_paths)) != 20:
+    if len(manifest_paths) != 26 or len(set(manifest_paths)) != 26:
         raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_MANIFEST_CARDINALITY")
     if set(manifest_paths) != set(promoted_paths):
         raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_MANIFEST_SCOPE")
-    if len(promotion.AUDIT_IMPORTS) != 10:
+    if len(promotion.AUDIT_IMPORTS) != 13:
         raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_CORE_IMPORT_SCOPE")
 
     with tempfile.TemporaryDirectory(prefix="c6d-green-owner-prefix-") as folder:
@@ -106,6 +106,25 @@ def main() -> int:
             input_bytes=b"synthetic C6d Green owner prefix source\n",
         ).decode().strip()
 
+        # Fail before Colab if a promoted module imports another scratch module
+        # that the promotion manifest forgot to materialize.  This is a closure
+        # check over exact Git blobs, not over the CRLF-sensitive worktree.
+        promoted_data = {
+            relative: data for relative, data in rows
+            if relative.startswith("YangMills/RG/")
+        }
+        checked_imports = 0
+        for relative, data in promoted_data.items():
+            for imported in re.findall(
+                r"(?m)^import YangMills\.RG\.([A-Za-z0-9_]+)$",
+                data.decode(),
+            ):
+                imported_path = f"YangMills/RG/{imported}.lean"
+                git("cat-file", "-e", f"{source_commit}:{imported_path}")
+                checked_imports += 1
+        if checked_imports == 0:
+            raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_IMPORT_CLOSURE_EMPTY")
+
         runner_text = runner_gen.generate(source_commit)
         compile(runner_text, "synthetic-c6d-green-owner-prefix-runner.py", "exec")
         blobs_match = re.search(
@@ -122,7 +141,7 @@ def main() -> int:
         if queue_match is None:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_QUEUE_MISSING")
         queue = ast.literal_eval(queue_match.group(1))
-        if len(queue) != 21 or sum(row[2] is not None for row in queue) != 10:
+        if len(queue) != 27 or sum(row[2] is not None for row in queue) != 13:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_QUEUE_SCOPE")
 
         runner_path = Path(folder) / "runner.py"
@@ -167,7 +186,7 @@ def main() -> int:
         print(
             "C6D_GREEN_OWNER_PREFIX_GENERATORS_OK "
             f"synthetic_source={source_commit} source_rows={len(rows)} "
-            f"queue={len(queue)} axiom_blocks=12 "
+            f"queue={len(queue)} axiom_blocks=15 checked_imports={checked_imports} "
             f"verifier_sha256={hashlib.sha256(verifier_text.encode()).hexdigest().upper()}"
         )
     return 0

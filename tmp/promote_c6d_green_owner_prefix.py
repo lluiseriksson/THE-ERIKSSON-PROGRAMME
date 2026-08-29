@@ -21,6 +21,12 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE = "YangMillsCore.lean"
 PROMOTION_SENTINEL = "C6D_GREEN_OWNER_PREFIX"
 SOURCES = (
+    "tmp/BalabanCMP99Eq342LeftDerivativeFromValueBound.draft.lean",
+    "tmp/BalabanCMP99Eq342LeftDerivativeFromValueBoundAudit.draft.lean",
+    "tmp/BalabanCMP99Eq342RightAdjointFromValueBound.draft.lean",
+    "tmp/BalabanCMP99Eq342RightAdjointFromValueBoundAudit.draft.lean",
+    "tmp/BalabanCMP99Eq342LaplacianFromLeftDerivativeBound.draft.lean",
+    "tmp/BalabanCMP99Eq342LaplacianFromLeftDerivativeBoundAudit.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputAction.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionAudit.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionZeroDepth.draft.lean",
@@ -49,6 +55,9 @@ PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepthAudit.lean",
 )
 AUDIT_IMPORTS = (
+    "import YangMills.RG.BalabanCMP99Eq342LeftDerivativeFromValueBoundAudit",
+    "import YangMills.RG.BalabanCMP99Eq342RightAdjointFromValueBoundAudit",
+    "import YangMills.RG.BalabanCMP99Eq342LaplacianFromLeftDerivativeBoundAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionZeroDepthAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayAudit",

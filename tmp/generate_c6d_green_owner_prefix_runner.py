@@ -14,6 +14,18 @@ BASE = ROOT / "tmp" / "generate_c6d_source_separated_ambient_green_validation_ru
 OUTPUT = ROOT / "scripts" / "colab_c6d_green_owner_prefix_validation.py"
 BRICKS = (
     (
+        "BalabanCMP99Eq342LeftDerivativeFromValueBound",
+        ("cmp99Eq342_leftDerivative_blockLocalizedSupBound_of_value",),
+    ),
+    (
+        "BalabanCMP99Eq342RightAdjointFromValueBound",
+        ("cmp99Eq342_rightAdjoint_blockLocalizedSupBound_of_value",),
+    ),
+    (
+        "BalabanCMP99Eq342LaplacianFromLeftDerivativeBound",
+        ("cmp99Eq342_laplacian_blockLocalizedSupBound_of_leftDerivative",),
+    ),
+    (
         "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputAction",
         ("norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale",),
     ),
@@ -85,9 +97,10 @@ def generate(source_sha: str) -> str:
             "does not attain window 15, move ``20/41`` or inhabit ``TermSource``.",
             "This runner validates six positive/zero-depth source/audit pairs from\n"
             "owner-input action through owner-distance decay and block-localized value,\n"
-            "plus the literal localized-coordinate-to-regional-site bridge and the\n"
-            "three physical derivative actions completing the four-action prefix, all\n"
-            "twelve public axiom readouts and every repository consumer through\n"
+            "plus the three reusable literal stencil transports, the localized-\n"
+            "coordinate-to-regional-site bridge and the three physical derivative\n"
+            "actions completing the four-action prefix, all fifteen public axiom\n"
+            "readouts and every repository consumer through\n"
             "``YangMillsCore``. Passing remains per-depth: it does not prove uniform\n"
             "B0/delta0, attain window 15, move ``20/41`` or inhabit ``TermSource``.",
         ),
@@ -101,7 +114,7 @@ def generate(source_sha: str) -> str:
         ),
         (
             "03_c6d_source_green_yang_mills_core_root",
-            "11_c6d_green_owner_prefix_yang_mills_core_root",
+            "14_c6d_green_owner_prefix_yang_mills_core_root",
         ),
     )
     for old, new in replacements:
@@ -122,7 +135,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_GREEN_OWNER_PREFIX_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=21 stages=21 axiom_blocks=12 "
+        f"source_sha={args.source_sha} files=27 stages=27 axiom_blocks=15 "
         "root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"
