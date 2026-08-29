@@ -210,9 +210,37 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zeroDepthCertificate
   have hlaplacianAmplitude : 0 ≤ laplacianAmplitude := by
     dsimp [laplacianAmplitude]
     positivity
+  have hvalue' : FinitePiLpTypedBlockLocalizedSupBound
+      (cmp99RegionalDirichletGreen OmegaSource AP hc hAP)
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
+      finBoxDist (valueAmplitude * (L ^ (0 + 1) : ℝ) ^ 2) ownerRate := by
+    simpa [ell] using hvalue
+  have hleft' : FinitePiLpTypedBlockLocalizedSupBound
+      ((cmp99ActiveRegionSourceCovariantD0CLM OmegaSource
+          (matrixSUNAdjointModel Nc) background spacing).comp
+        (cmp99RegionalDirichletGreen OmegaSource AP hc hAP))
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
+      (cmp99Eq342SourceLocalizedBondOwner L K Q 0)
+      finBoxDist (leftAmplitude * (L ^ (0 + 1) : ℝ)) ownerRate := by
+    simpa [ell] using hleft
+  have hright' : FinitePiLpTypedBlockLocalizedSupBound
+      ((cmp99RegionalDirichletGreen OmegaSource AP hc hAP).comp
+        (cmp99ActiveRegionSourceCovariantD0CLM OmegaSource
+          (matrixSUNAdjointModel Nc) background spacing).adjoint)
+      (cmp99Eq342SourceLocalizedBondOwner L K Q 0)
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
+      finBoxDist (rightAmplitude * (L ^ (0 + 1) : ℝ)) ownerRate := by
+    simpa [ell] using hright
   exact cmp99Eq342SourceLocalizedGreenCertificate_of_actionBounds
+    (Omega := OmegaSource) (rho := matrixSUNAdjointModel Nc)
+    (U := background) (spacing := spacing)
+    (A := AP) (c := c) (hc := hc) (hAcoer := hAP)
+    (Avalue := valueAmplitude) (Aleft := leftAmplitude)
+    (Aright := rightAmplitude) (Alaplacian := laplacianAmplitude)
+    (rate := ownerRate)
     hvalueAmplitude hleftAmplitude hrightAmplitude hlaplacianAmplitude
-    hownerRate hvalue hleft hright hlaplacian
+    hownerRate hvalue' hleft' hright' hlaplacian
 
 end
 
