@@ -175,6 +175,7 @@ theorem cmp99SourceActiveRegionFullCompanionPrecision_finiteRange
         regions hd hM rho spacing epsilon background chain fineSmall)
       (fun x y => finBoxDist x.1 y.1) (M ^ depth) := by
   intro source target v hfar
+  change M ^ depth < finBoxDist target.1 source.1 at hfar
   have hpowPos : 0 < M ^ depth := pow_pos (NeZero.pos M) _
   have hlapFar : 1 < finBoxDist target.1 source.1 := by omega
   have hlap := cmp99ActiveRegionSourceCovariantLaplacian_finiteRange_one
@@ -188,6 +189,17 @@ theorem cmp99SourceActiveRegionFullCompanionPrecision_finiteRange
       source target v hmassFar
   rw [cmp99SourceActiveRegionFullCompanionPrecision, cmp99SourceGaugePrecision]
   simp only [ContinuousLinearMap.add_apply, ContinuousLinearMap.smul_apply]
+  change
+    ((cmp99ActiveRegionSourceCovariantLaplacian
+        (cmp99SourceFullActiveRegion d N) rho background spacing
+          (singleFinitePiLp source v)).ofLp target) +
+      (_ : ℝ) •
+        (((ContinuousLinearMap.adjoint
+              (cmp99SourceActiveRegionFullCompanionTower regions hd hM rho
+                spacing epsilon background chain fineSmall).Qprime).comp
+            (cmp99SourceActiveRegionFullCompanionTower regions hd hM rho
+              spacing epsilon background chain fineSmall).Qprime)
+          (singleFinitePiLp source v)).ofLp target = 0
   rw [hlap, hmass]
   simp
 
