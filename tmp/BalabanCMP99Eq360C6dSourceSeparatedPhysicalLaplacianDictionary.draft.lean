@@ -89,13 +89,18 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
   intro bond
   rcases bond with ⟨x, i⟩
   have hext := cmp99GaugeZeroCochainReindex_extendZero e OmegaSource phi
+  have hlocalized :
+      (LinearIsometryEquiv.piLpCongrLeft 2 ℝ (SUNLieCoord Nc)
+          E.symm.symm).toContinuousLinearEquiv phi =
+        cmp99ActiveGaugeZeroCochainReindex e OmegaSource phi := by
+    simp [E, cmp99ActiveGaugeZeroCochainReindex]
   have hshift := cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
     (L := L) (K := K) (Q := Q) (depth := depth) x i
   simp only [finitePiLpTypedKernelReindex,
     cmp99ActiveRegionSourceCovariantD0CLM,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply,
     LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
-  rw [← hext]
+  rw [hlocalized, ← hext]
   simp [B, E, e, covariantD0CLM_apply,
     cmp99GaugeZeroCochainReindex,
     cmp99ActiveGaugeZeroCochainReindex,
@@ -145,7 +150,8 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantLaplacian_reindex_eq :
       (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
       (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
       (alpha0 := alpha0) (alpha1 := alpha1) OmegaSource R C hscale
-  unfold cmp99ActiveRegionSourceCovariantLaplacian
+  change finitePiLpTypedKernelReindex E.symm E.symm
+      (Dtarget.adjoint.comp Dtarget) = Dsource.adjoint.comp Dsource
   rw [finitePiLpTypedKernelReindex_adjoint_comp_self E.symm B.symm Dtarget]
   rw [hD]
 
