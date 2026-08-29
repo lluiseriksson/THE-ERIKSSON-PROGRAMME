@@ -92,15 +92,31 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
   have hlocalized :
       (LinearIsometryEquiv.piLpCongrLeft 2 ℝ (SUNLieCoord Nc)
           E.symm.symm).toContinuousLinearEquiv phi =
-        cmp99ActiveGaugeZeroCochainReindex e OmegaSource phi := by
+      cmp99ActiveGaugeZeroCochainReindex e OmegaSource phi := by
     simp [E, cmp99ActiveGaugeZeroCochainReindex]
+  dsimp only [E, e] at hlocalized
+  dsimp only [e] at hext
+  have htransported :
+      (extendZeroZeroCLM
+          (cmp99Eq360C6dSourceSeparatedAmbientRegion
+            (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource))
+          ((LinearIsometryEquiv.piLpCongrLeft 2 ℝ (SUNLieCoord Nc)
+              (cmp99ActiveGaugeRegionSiteReindexEquiv
+                (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+                  (L := L) (K := K) (Q := Q) (depth := depth))
+                OmegaSource).symm.symm).toContinuousLinearEquiv phi) =
+        cmp99GaugeZeroCochainReindex
+          (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+            (L := L) (K := K) (Q := Q) (depth := depth))
+          (extendZeroZeroCLM OmegaSource phi) := by
+    rw [hlocalized]
+    exact hext.symm
   have hshift := cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
     (L := L) (K := K) (Q := Q) (depth := depth) x i
   simp only [finitePiLpTypedKernelReindex,
     cmp99ActiveRegionSourceCovariantD0CLM,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply]
-  dsimp only [E, e] at hlocalized
-  rw [hlocalized, ← hext]
+  rw [htransported]
   simp [B, E, e, covariantD0CLM_apply,
     cmp99GaugeZeroCochainReindex,
     cmp99ActiveGaugeZeroCochainReindex,
