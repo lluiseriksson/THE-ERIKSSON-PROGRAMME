@@ -41243,3 +41243,43 @@ finite-range bookkeeping.  It does not instantiate the four physical actions,
 produce uniform `B0, delta0`, attain window 15, close rows 23--24 or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 959 (2026-08-29, **C6d exact physical Laplacian/precision dictionary sealed from a fresh cold root; 20/41 unchanged**)
+
+Fresh source `deeabe2074d571c62d9229e56eecc6242fa6ad1f` ran the
+`c6d-physical-precision-dictionary-v1` stop-on-first-error queue with Lean
+`4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  The rectangular typed-kernel
+algebra, literal source-separated physical background, exact physical
+Laplacian dictionary and exact physical precision dictionary source/audit
+pairs all exited zero.  Their audits emitted exactly ten readouts, each
+confined to `{propext, Classical.choice, Quot.sound}` or a subset.
+
+The same fresh checkout then built `YangMillsCore` successfully: exit zero,
+`6505.931` seconds.  The complete 23-record gate accumulated `8853.144`
+stage seconds and emitted literal `FINAL_STATUS=PASS` with launcher exit zero.
+Independent verification emitted
+`C6D_PHYSICAL_PRECISION_DICTIONARY_EVIDENCE_OK`.
+
+Evidence-manifest SHA-256 is
+`754F8B6835CDD89A46B4C9C2DD07E67344F6D7ADF0C68DF031D6090E6A461FDD`;
+archive SHA-256 is
+`ACE0743E418B8F5E60DA6BDD96144752979AB0ED3BA88718F4DD1361F3173D98`;
+executed-notebook SHA-256 is
+`ACE42881D1F54F24A550E4EF03E073E2CCA2CE9C2DAE195E7B225DF57EC2B724`.
+The durable package is preserved at
+`validation-evidence/c6d-physical-precision-dictionary-cold-deeabe20-20260829/`.
+
+The fail-closed selective sealer retired exactly eight PRE-VALIDATION notices
+with sealed-manifest SHA-256
+`3998F900EDB8E236297402B52356A4ED3C385BA259E8A62D42FF1B621D86EF56`.
+Its shared parser was extended to recognize the already sanctioned single-line
+audit notice as well as module docstrings; this instrumentation change removes
+no mathematical premise and was exercised first in preview mode on the same
+verified evidence.
+
+This closes the exact physical Laplacian/precision dictionary boundary.  It
+does not yet re-instantiate the four fixed-depth CMP96 actions, produce uniform
+`B0, delta0`, attain window 15, close rows 23--24 or instantiate `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.

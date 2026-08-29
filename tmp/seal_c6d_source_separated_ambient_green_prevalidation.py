@@ -104,11 +104,18 @@ def transformed_bytes(relative: str, source_sha: str) -> tuple[bytes, bytes]:
             f"{canonical.count(b'PRE-VALIDATION')}"
         )
     marker = canonical.index(b"PRE-VALIDATION")
-    start = canonical.rfind(b"/-!", 0, marker)
-    end = canonical.find(b"-/", marker)
-    if start < 0 or end < 0:
+    doc_start = canonical.rfind(b"/-!", 0, marker)
+    doc_end = canonical.find(b"-/", marker)
+    line_start = canonical.rfind(b"\n", 0, marker) + 1
+    line_end = canonical.find(b"\n", marker)
+    if doc_start >= 0 and doc_end >= 0:
+        start = doc_start
+        end = doc_end + 2
+    elif canonical[line_start:marker].strip() == b"--":
+        start = line_start
+        end = len(canonical) if line_end < 0 else line_end + 1
+    else:
         raise RuntimeError(f"C6D_SOURCE_GREEN_SEAL_NOTICE_BOUNDS={relative}")
-    end += 2
     while end < len(canonical) and canonical[end:end + 1] in {b"\r", b"\n"}:
         end += 1
     sealed = canonical[:start] + canonical[end:]

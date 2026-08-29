@@ -1,15 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Literal C6d background on the source-separated carrier
-
-The regional C6d precision uses the transformed background produced by the
-regular-cube witness.  This module transports exactly that background across
-the printed carrier equality.  No independent background is caller data.
--/
-
 namespace YangMills.RG
 
 open YangMills

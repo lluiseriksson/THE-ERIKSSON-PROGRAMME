@@ -1,23 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact source-carrier form of the literal C6d precision
-
-The existing ambient C6d producer already identifies its Dirichlet
-compression with the literal source gauge precision.  The existing carrier
-dictionary already proves that source-region compression is the inverse
-reindex of that C6d compression.  This file composes those two named facts.
-
-The result keeps the covariant Laplacian, retained `Qprime` and literal
-counting coefficient visible under one isometric reindex.  It accepts no
-operator equality from the caller.  A later, separate stencil theorem must
-still identify the reindexed Laplacian with the literal source-carrier
-Laplacian on the transported physical background; that theorem is not
-claimed here.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

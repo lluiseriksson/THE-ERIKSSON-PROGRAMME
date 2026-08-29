@@ -1,15 +1,5 @@
 import YangMills.RG.FinitePiLpTypedKernelReindexAlgebra
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Rectangular algebra for finite kernel reindexing
-
-The existing sealed algebra treats square operators.  Covariant derivatives
-are rectangular (sites to bonds), so the physical C6d dictionary needs the
-same composition and adjoint laws with three independently pinned carriers.
--/
-
 namespace YangMills.RG
 
 noncomputable section

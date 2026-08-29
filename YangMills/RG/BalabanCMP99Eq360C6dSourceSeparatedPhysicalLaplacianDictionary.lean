@@ -1,17 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedPhysicalBackground
 import YangMills.RG.FinitePiLpTypedKernelReindexRectangularAlgebra
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Physical C6d derivative and Laplacian carrier dictionary
-
-The source and C6d site fields are related by the same Step-7b equivalence
-used by the ambient precision.  This file lifts it to positive physical
-bonds, transports the literal covariant derivative, and then obtains the
-Laplacian transport from rectangular adjoint/composition algebra.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix
