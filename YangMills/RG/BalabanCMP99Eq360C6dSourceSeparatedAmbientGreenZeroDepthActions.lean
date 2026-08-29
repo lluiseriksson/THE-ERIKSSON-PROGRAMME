@@ -197,6 +197,10 @@ theorem
     let laplacianAmplitude := 4 * leftAmplitude * (ell : ℝ) *
       ((1 + Real.exp ownerRate) / spacing)
     FinitePiLpTypedBlockLocalizedSupBound
+      (ι := ActiveGaugeRegion.Site OmegaSource)
+      (κ := ActiveGaugeRegion.Site OmegaSource)
+      (β := FinBox 4 (2 * (K * Q)))
+      (g := SUNLieCoord Nc)
       ((cmp99ActiveRegionSourceCovariantLaplacian OmegaSource
           (matrixSUNAdjointModel Nc) background spacing).comp
         (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
