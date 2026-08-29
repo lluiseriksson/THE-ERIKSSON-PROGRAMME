@@ -41146,3 +41146,32 @@ boundary.  It still does not re-instantiate the four fixed-depth CMP96 actions,
 produce uniform `B0, delta0`, attain window 15, close rows 23--24 or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 956 (2026-08-29, **source-separated ambient Green focals green; cold root failed in a superseded consumer; no seal; 20/41 unchanged**)
+
+Fresh source `0ea023c1a3589365dcc41a89514d1bff26c01080` ran the
+`c6d-source-separated-ambient-green-v3` stop-on-first-error queue.  The
+positive-depth Green focal exited zero after `8757` jobs and `2757.210`
+seconds; its audit emitted 15 allowed axiom readouts.  The exact depth-zero
+Green focal then exited zero after `8552` jobs and `55.076` seconds; its audit
+emitted 10 allowed readouts.  All readouts are confined to
+`{propext, Classical.choice, Quot.sound}` or a subset.
+
+The mandatory same-checkout `YangMillsCore` root exited `1` after `9061.410`
+seconds while building the older
+`BalabanCMP99Eq360C6dCanonicalAmbientCompletion` consumer.  The first real
+errors are unknown identifiers `A`, `hc` and `hA` at lines 122 and 124; later
+`whnf`/`isDefEq` timeouts are downstream noise.  The tested source predates
+the already published scope repair in `04da977a`, so this failure does not
+refute either focal, but the focal-only prefix cannot seal them.
+
+The downloaded archive matches the runner's printed SHA-256
+`B8F21A6ADFF0944B542F35933D7D87BCEE3D510AA2A9281CF52AA3521EEAECEE`.
+All 19 newline-normalized stage outputs match their `evidence.json` hashes;
+the executed-notebook SHA-256 is
+`3ECB2174343D524741AAEB8AA66E07BCFD87A4A1672A6BFD4DCD2608F987CD0B`.
+The package is preserved under
+`validation-evidence/c6d-source-separated-ambient-green-fail-0ea023c1-20260829-v3/`.
+
+No PRE-VALIDATION notice is retired.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

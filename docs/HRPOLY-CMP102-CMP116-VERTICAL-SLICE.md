@@ -14893,3 +14893,26 @@ fixed-depth CMP96 actions on the selected source carrier, produce uniform
 `B0, delta0`, attain window 15, close rows 23--24 or instantiate `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+### Step 8b.24/C6d.5: source-separated ambient Green cold gate (focal prefix green; root failed; not sealed; 20/41 unchanged)
+
+At exact source `0ea023c1a3589365dcc41a89514d1bff26c01080`, both
+source-separated Green branches and their audits passed: positive depth
+(`8757` jobs, 15 readouts) and exact depth zero (`8552` jobs, 10 readouts).
+The queue nevertheless emitted `FINAL_STATUS=FAIL` because its mandatory
+same-checkout root reached a superseded
+`BalabanCMP99Eq360C6dCanonicalAmbientCompletion` whose proof referred to
+`A`, `hc` and `hA` outside their elaboration scope.  The tested source predates
+the named repair already present from `04da977a` onward.
+
+The full failure package is preserved at
+`validation-evidence/c6d-source-separated-ambient-green-fail-0ea023c1-20260829-v3/`;
+archive and executed-notebook SHA-256 values are respectively
+`B8F21A6ADFF0944B542F35933D7D87BCEE3D510AA2A9281CF52AA3521EEAECEE`
+and
+`3ECB2174343D524741AAEB8AA66E07BCFD87A4A1672A6BFD4DCD2608F987CD0B`.
+
+This records a passing focal prefix and a failing root, not a seal.  The next
+cold source must include the repaired consumer and rerun the complete queue.
+No PRE-VALIDATION notice is retired; counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
