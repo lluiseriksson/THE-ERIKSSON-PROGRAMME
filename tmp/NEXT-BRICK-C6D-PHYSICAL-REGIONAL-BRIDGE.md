@@ -193,12 +193,16 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    cold gate reaches a terminal verdict.  Until that diagnostic itself emits
    a preserved PASS, neither spacing budget is compiler evidence and neither
    may move the terminal counter or Window 15.
-   The third obligation can reuse the existing row theorem without a new
-   analytic estimate only after specializing it to the retained extension
+   The third obligation can reuse the existing row theorem
+   `cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le`
+   without a new analytic estimate only after specializing it to the retained extension
    and `baselineRadiusBudget.toRadiusChain` used by
    `cmp99Eq360C6dSourceBaselineRetainedPhysicalTower` (which is constructed
    from `regions.weightedQprimeTower`) and transporting through the named
-   counting-to-weighted coefficient identity.  The exact scalar objects are
+   counting-to-weighted coefficient identity.  Its input bound is only on the
+   actual `SameTerminalBlock` fibre and its conclusion is the exact
+   `(cmp99SourceBlockAverageWeight M d)^depth` counting mass; neither side may
+   be replaced by a uniform all-source bound.  The exact scalar objects are
    already named:
    `cmp99Eq360C6dSourcePhysicalCountingCoefficient`,
    `cmp99Eq360C6dSourcePhysicalCountingCoefficient_pos` and
