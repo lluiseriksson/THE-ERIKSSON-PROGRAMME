@@ -159,6 +159,20 @@ Two inputs remain visible and must not be mistaken for the uniform endpoint:
    an arbitrary nonempty regional carrier would merely rename that remaining
    geometric obligation.
 
+A scratch leaf now makes the geometric route finite without assuming a
+nonempty region.  `cmp116RegionSites_nonempty_of_sourcePhysicalLocalizedCoordinates`
+extracts the source endpoint of an interior physical bond from a nonempty
+localized Lie-coordinate carrier;
+`nonempty_cmp116SourcePhysicalLocalizedActiveRegion` transports that witness
+to the exact active zero-cochain carrier; and
+`nonempty_cmp99OmegaActiveGaugeRegion_of_sourcePhysicalLocalizedCoordinates`
+specializes it to the literal CMP99 `Omega_r` region.  The leaf remains
+uncompiled scratch and therefore does not discharge this item yet.  Its pair
+is included in the same future cold queue as the exact value/owner prefix and
+the three derivative actions: ten source/audit pairs, twelve axiom readouts
+and one `YangMillsCore` root.  A green prefix still remains per-depth and does
+not by itself construct the uniform certificate.
+
 All amplitudes in this prefix are explicitly per-depth: they contain the
 precision amplitude, coercivity floor, owner rescaling and boundary payments.
 Even a complete cold seal of the prefix therefore proves neither a common
