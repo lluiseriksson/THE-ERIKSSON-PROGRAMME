@@ -18,7 +18,7 @@ open YangMills
 
 noncomputable section
 
-variable {d M N : ℕ} [NeZero M]
+variable {d M N : ℕ} [NeZero d] [NeZero M] [NeZero N]
 
 /-- Equal terminal owners force equality of every order-`M^depth` coordinate
 quotient. -/
@@ -102,7 +102,7 @@ theorem CMP99SourceActiveRegionChain.sameTerminalBlock_finBoxDist_le
       _ ≤ (target.1 i).val + (M ^ depth - 1) :=
         Nat.add_le_add_left hsmod _
 
-variable {Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
+variable {Nc : ℕ} [NeZero Nc]
 
 /-- The recursive counting mass of any typed chain has its intrinsic
 terminal-block radius. -/
