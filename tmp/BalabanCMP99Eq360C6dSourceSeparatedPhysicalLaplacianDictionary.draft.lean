@@ -155,10 +155,8 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
             (L := L) (K := K) (Q := Q) (depth := depth))
           (extendZeroZeroCLM OmegaSource phi)))) (x, i) := hevaluated
     _ = _ := by
-      simp [targetMap, covDtarget, B, E, e, covariantD0CLM_apply,
+      simp [targetMap, covDtarget, covariantD0CLM_apply,
         cmp99GaugeZeroCochainReindex,
-        cmp99ActiveGaugeZeroCochainReindex,
-        cmp99ActiveGaugeRegionSiteReindexEquiv,
         cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv,
         cmp99Eq360C6dSourceSeparatedPhysicalBackground_apply,
         hshift_symm]
