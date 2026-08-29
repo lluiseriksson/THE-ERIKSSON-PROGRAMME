@@ -54,6 +54,29 @@ The subsequent uniform bridge must instead exhibit fixed scalars
 dominances needed to weaken the branch certificate to those same scalars.
 That is item 7 and the first possible window-15 attainment point.
 
+## Flat uniform bound is not the C6d certificate
+
+The sealed theorem
+`exists_cmp99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0`
+does produce one positive strip radius and one point-source coefficient for
+all depths.  Its operator, however, is the literal flat source-flow Green
+with `QprimeStar`; it is not the non-flat canonical regional inverse appearing
+in `CMP99Eq342SourceLocalizedGreenCertificate`.
+
+Consequently item 7 may use that theorem only after a source-specific bridge
+has done one of the following:
+
+1. constructed the C6d regional Green from the flat Green by the physical
+   defect/Neumann series and transported the owner bounds with its attained
+   contraction; or
+2. proved a literal equality between the two operator expressions from the
+   same precision and inverse uniqueness.
+
+An arbitrary equality, a caller-supplied Green dictionary, or direct reuse of
+the flat `B0` against the C6d certificate is not accepted.  This is also why
+the per-depth CT certificate by itself does not prove uniformity: its explicit
+coercivity/amplitude/rate remain depth-dependent.
+
 ## Acceptance gates
 
 1. The region equality is definitional or proved by a named dictionary lemma;
