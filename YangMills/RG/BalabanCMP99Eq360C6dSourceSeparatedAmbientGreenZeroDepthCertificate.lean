@@ -45,17 +45,25 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zeroDepthCertificate
     let ell := L ^ (0 + 1)
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall decay
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall decay
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-      (Nc := Nc) regions hL background chain fineSmall
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
     let hc :=
       cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
         regions (by norm_num : 2 ≤ 4) hL hspacing background chain fineSmall
     let AP := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-      (Nc := Nc) regions hL background chain fineSmall
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
     let hAP :=
       isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-        (Nc := Nc) regions hL background chain fineSmall
+        (L := L) (K := K) (Q := Q) (Nc := Nc)
+        (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall
     let rate := finitePiLpExponentialInverseDecayRate A decay
       (cmp99OmegaSiteExpSumBound (decay / 4)) c
     let ownerRate := (ell : ℝ) * rate
@@ -77,17 +85,25 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zeroDepthCertificate
   let ell := L ^ (0 + 1)
   let A :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-      (Nc := Nc) regions hL background chain fineSmall decay
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall decay
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-    (Nc := Nc) regions hL background chain fineSmall
+    (L := L) (K := K) (Q := Q) (Nc := Nc)
+    (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let hc :=
     cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
       regions (by norm_num : 2 ≤ 4) hL hspacing background chain fineSmall
   let AP := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-    (Nc := Nc) regions hL background chain fineSmall
+    (L := L) (K := K) (Q := Q) (Nc := Nc)
+    (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let hAP :=
     isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-      (Nc := Nc) regions hL background chain fineSmall
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
   let rate := finitePiLpExponentialInverseDecayRate A decay
     (cmp99OmegaSiteExpSumBound (decay / 4)) c
   let ownerRate := (ell : ℝ) * rate
@@ -102,11 +118,15 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zeroDepthCertificate
   let B0 := cmp99Eq342CommonAmplitude valueAmplitude leftAmplitude
     rightAmplitude laplacianAmplitude
   let G := cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-    (Nc := Nc) regions hL hspacing background chain fineSmall
+    (L := L) (K := K) (Q := Q) (Nc := Nc)
+    (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL hspacing background chain fineSmall
   letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
   have hgreen : cmp99RegionalDirichletGreen OmegaSource AP hc hAP = G := by
     exact cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
-      (Nc := Nc) regions hL background chain fineSmall hspacing
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall hspacing
   have hvalue0 :=
     cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_blockLocalizedSupBound
       (L := L) (K := K) (Q := Q) (Nc := Nc)
@@ -166,7 +186,9 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zeroDepthCertificate
       leftAmplitude, laplacianAmplitude] using hlaplacian0
   have hA_nonneg : 0 ≤ A :=
     (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero_exponentialKernelBound
-      (Nc := Nc) regions hL background chain fineSmall
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
       hspacing hdecay).1
   have hrow : 0 ≤ cmp99OmegaSiteExpSumBound (decay / 4) := by
     unfold cmp99OmegaSiteExpSumBound
