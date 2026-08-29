@@ -100,7 +100,8 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
       regions hL background chain fineSmall
     FinitePiLpExponentialKernelBound
       (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-        (Nc := Nc) regions hL hspacing background chain fineSmall)
+        (Nc := Nc) (spacing := spacing)
+        regions hL hspacing background chain fineSmall)
       (fun target source : ActiveGaugeRegion.Site OmegaSource =>
         finBoxDist target.1 source.1)
       (2 / c)
@@ -122,11 +123,13 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
       regions hL background chain fineSmall
   have hK :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero_exponentialKernelBound
-      (Nc := Nc) regions hL background chain fineSmall hspacing hrate
+      (Nc := Nc) (spacing := spacing)
+      regions hL background chain fineSmall hspacing hrate
   have hG := cmp99RegionalDirichletGreen_exponentialKernelBound
     OmegaSource Ksource hc hcoer hK
   rw [cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
-    (Nc := Nc) regions hL hspacing background chain fineSmall] at hG
+    (Nc := Nc) (spacing := spacing)
+    regions hL hspacing background chain fineSmall] at hG
   simpa [Ksource, c] using hG
 
 end
