@@ -19,6 +19,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 CORE = "YangMillsCore.lean"
+PROMOTION_SENTINEL = "C6D_GREEN_OWNER_PREFIX"
 SOURCES = (
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputAction.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionAudit.draft.lean",
@@ -171,7 +172,7 @@ def main() -> int:
     manifest = digest(rows)
     if not args.apply:
         print(
-            "C6D_GREEN_OWNER_PREFIX_PROMOTION_PREVIEW_OK "
+            f"{PROMOTION_SENTINEL}_PROMOTION_PREVIEW_OK "
             f"files={len(rows)} promoted={len(SOURCES)} "
             f"source_sha={args.source_sha} manifest_sha256={manifest}"
         )
@@ -205,7 +206,7 @@ def main() -> int:
         raise
 
     print(
-        "C6D_GREEN_OWNER_PREFIX_PROMOTION_APPLY_OK "
+        f"{PROMOTION_SENTINEL}_PROMOTION_APPLY_OK "
         f"files={len(rows)} promoted={len(SOURCES)} "
         f"source_sha={args.source_sha} manifest_sha256={manifest}"
     )
