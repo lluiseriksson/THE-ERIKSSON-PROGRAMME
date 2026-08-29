@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+"""Lightweight synthetic-commit test for the C6d four-action runner."""
+
+from __future__ import annotations
+
+import ast
+import importlib.util
+import os
+from pathlib import Path
+import re
+import subprocess
+import tempfile
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"C6D_FOUR_ACTION_PREFIX_TEST_IMPORT_FAILED={path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def git(*args: str, input_bytes: bytes | None = None, env=None) -> bytes:
+    child = subprocess.run(
+        ["git", "-c", "safe.directory=*", *args],
+        cwd=ROOT,
+        env=env,
+        input=input_bytes,
+        check=False,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    if child.returncode != 0:
+        raise RuntimeError(
+            "C6D_FOUR_ACTION_PREFIX_TEST_GIT_FAILED=" + " ".join(args) + "\n"
+            + child.stderr.decode(errors="replace")
+        )
+    return child.stdout
+
+
+def main() -> int:
+    contract = load(
+        "c6d_four_action_prefix_contract_test",
+        ROOT / "tmp" / "promote_c6d_four_action_prefix.py",
+    )
+    promotion = load(
+        "c6d_four_action_prefix_promotion_test",
+        ROOT / "tmp" / "promote_c6d_green_owner_prefix.py",
+    )
+    promotion.SOURCES = contract.SOURCES
+    promotion.PREREQUISITES = contract.PREREQUISITES
+    promotion.AUDIT_IMPORTS = contract.AUDIT_IMPORTS
+    promotion.PROMOTION_SENTINEL = "C6D_FOUR_ACTION_PREFIX"
+    runner_gen = load(
+        "c6d_four_action_prefix_runner_test",
+        ROOT / "tmp" / "generate_c6d_four_action_prefix_runner.py",
+    )
+    head = git("rev-parse", "HEAD").decode().strip()
+
+    with tempfile.TemporaryDirectory(prefix="c6d-four-action-prefix-") as folder:
+        env = os.environ.copy()
+        env["GIT_INDEX_FILE"] = str(Path(folder) / "index")
+        git("read-tree", head, env=env)
+        rows: list[tuple[str, bytes]] = []
+        for relative in promotion.PREREQUISITES:
+            rows.append((relative, b"-- synthetic sealed prerequisite\n"))
+        for relative in promotion.SOURCES:
+            data = git("cat-file", "blob", f"{head}:{relative}")
+            rows.append((promotion.destination(relative), promotion.promote_text(data)))
+
+        core = git("cat-file", "blob", f"{head}:YangMillsCore.lean").decode()
+        if not core.endswith("\n"):
+            core += "\n"
+        rows.append(("YangMillsCore.lean", (core + "\n".join(promotion.AUDIT_IMPORTS) + "\n").encode()))
+
+        for relative, data in rows:
+            oid = git("hash-object", "-w", "--stdin", input_bytes=data).decode().strip()
+            git("update-index", "--add", "--cacheinfo", "100644", oid, relative, env=env)
+        tree = git("write-tree", env=env).decode().strip()
+        source_commit = git(
+            "commit-tree", tree, "-p", head,
+            input_bytes=b"synthetic C6d four-action prefix source\n",
+        ).decode().strip()
+
+        runner_text = runner_gen.generate(source_commit)
+        compile(runner_text, "synthetic-c6d-four-action-prefix-runner.py", "exec")
+        blobs_match = re.search(
+            r"(?ms)^runner\.SOURCE_BLOBS = (\{.*?\})\nrunner\.QUEUE =", runner_text
+        )
+        queue_match = re.search(
+            r"(?ms)^runner\.QUEUE = (\[.*?\])\n\nif __name__", runner_text
+        )
+        if blobs_match is None or len(ast.literal_eval(blobs_match.group(1))) != 13:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_SOURCE_BLOBS")
+        if queue_match is None:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_QUEUE_MISSING")
+        queue = ast.literal_eval(queue_match.group(1))
+        if len(queue) != 13 or sum(row[2] is not None for row in queue) != 6:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_QUEUE_SCOPE")
+        if "c6d-four-action-prefix-v1" not in runner_text:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_RUNNER_REV")
+        if "07_c6d_four_action_prefix_yang_mills_core_root" not in runner_text:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_ROOT_STAGE")
+        print(
+            "C6D_FOUR_ACTION_PREFIX_RUNNER_OK "
+            f"synthetic_source={source_commit} source_rows={len(rows)} "
+            f"queue={len(queue)} axiom_blocks=6"
+        )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
