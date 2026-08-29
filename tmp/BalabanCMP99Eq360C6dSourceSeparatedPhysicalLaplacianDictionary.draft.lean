@@ -129,14 +129,14 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
             (cmp99ActiveGaugeRegionSiteReindexEquiv
               (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
                 (L := L) (K := K) (Q := Q) (depth := depth))
-              OmegaSource).symm.symm).toContinuousLinearEquiv phi))) ⟨x, i⟩ =
+              OmegaSource).symm.symm).toContinuousLinearEquiv phi))) (x, i) =
         (targetMap (eta⁻¹ • covDtarget
           (cmp99GaugeZeroCochainReindex
             (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
               (L := L) (K := K) (Q := Q) (depth := depth))
-            (extendZeroZeroCLM OmegaSource phi)))) ⟨x, i⟩ := by
+            (extendZeroZeroCLM OmegaSource phi)))) (x, i) := by
     exact congrArg
-      (fun z => (targetMap (eta⁻¹ • covDtarget z)) ⟨x, i⟩) htransported
+      (fun z => (targetMap (eta⁻¹ • covDtarget z)) (x, i)) htransported
   simp only [finitePiLpTypedKernelReindex,
     cmp99ActiveRegionSourceCovariantD0CLM,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply]
@@ -145,7 +145,7 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
         (cmp99GaugeZeroCochainReindex
           (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
             (L := L) (K := K) (Q := Q) (depth := depth))
-          (extendZeroZeroCLM OmegaSource phi)))) ⟨x, i⟩ := hevaluated
+          (extendZeroZeroCLM OmegaSource phi)))) (x, i) := hevaluated
     _ = _ := by
       simp [targetMap, covDtarget, B, E, e, covariantD0CLM_apply,
         cmp99GaugeZeroCochainReindex,
