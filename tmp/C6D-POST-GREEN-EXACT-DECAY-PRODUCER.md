@@ -254,7 +254,9 @@ The finite post-D2 chain is therefore:
 
 1. convert the exact Green value decay from fine `finBoxDist` to the source
    owner/block metric and prove the block-localized value bound;
-2. construct the literal left covariant derivative at terminal spacing and
+2. construct the source-carrier background dictionary for the literal C6d
+   precision, then construct the literal left covariant derivative at the
+   exact C6d spacing and
    prove its owner bound from the two endpoint values;
 3. expand the literal right adjoint stencil and prove its owner bound without
    appealing to abstract adjoint symmetry;
@@ -307,6 +309,43 @@ OmegaSource)` from the chosen physical source-region data.  Supplying a
 free `root` merely relocates the obligation and is not the item-6 producer;
 if the chosen region can be empty, that case must remain a separately named
 branch rather than being silently excluded.
+
+### Derived-action background gate (static audit, 2026-08-29)
+
+The exact D2 Green alone does not identify the three derived actions in the
+Eq. (3.42) record.  The source certificate fixes those actions to
+`cmp99ActiveRegionSourceCovariantD0CLM` and
+`cmp99ActiveRegionSourceCovariantLaplacian`, so their background and spacing
+must be the same physical data used by the literal C6d precision.
+
+On the pre-reindex carrier the named theorem
+`cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq` exposes the
+regional precision as the source gauge precision whose Laplacian uses
+
+- `(R.toCubeWitness C alpha1 hscale).transformedBackground`, and
+- the literal C6d spacing `eta`.
+
+After the Step-7b reindex, no theorem currently names the corresponding
+source-carrier background or identifies the compressed precision with that
+literal covariant Laplacian plus the transported retained `Qprime` mass.
+Using an arbitrary `PhysicalGaugeBackground`, or silently substituting the
+technical retained extension, would therefore construct a different action.
+
+Before items 2--4 above, add one source-facing dictionary brick that:
+
+1. defines the source-carrier background by the printed carrier transport
+   (the existing `cmp99Eq389SourceSeparatedPhysicalBackground` is the
+   intended value-level transport template);
+2. proves the transport commutes with positive fine shifts/physical bonds;
+3. proves the regional derivative and Laplacian are the reindexes of the
+   literal pre-Step-7b operators; and
+4. states the exact compressed-precision equality with the transported
+   `Qprime` mass.
+
+Only after this dictionary is named may the left, right-adjoint and
+Laplacian actions cite the background and spacing.  This is a new explicit
+prerequisite inside item 2, not a new terminal field and not progress on the
+uniform `B0/delta0` endpoint.
 
 The current Corollary-3.6 dictionary does not discharge this gate: it states
 `OmegaPrime0.sites \subseteq C.carrier`, not the reverse inclusion.  Hence the
