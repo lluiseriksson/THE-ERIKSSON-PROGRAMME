@@ -41473,3 +41473,46 @@ This is measured positive evidence for the positive-depth branch and a
 measured elaboration failure for the zero-depth branch, not a unified D2 seal.
 All D2 PRE-VALIDATION notices remain. Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 965 (2026-08-29, **positive-depth and exact depth-zero C6d D2 Green decay plus owner rescaling sealed in one fresh Colab Pro+ checkout; 20/41 unchanged**)
+
+The repaired unified C6d D2 owner-rescaling cold gate ran from exact source
+checkpoint `1d7b33059eb3964a3ff99003869be84ec0806288`, with runner checkpoint
+`e1bd70c229829128beec611247ad1e65fe1bb607`, launch checkpoint
+`1c74535ebdceb5d451c3ab438bdbab0ffea2dd1a`, runner revision
+`c6d-d2-owner-rescaling-v2`, and runner SHA-256
+`4577CD0702C0F297C69540185630477C8D3540B28D395F5BA7B24555E90EADF7`.
+
+Every stop-on-first-error stage passed in the same fresh checkout:
+
+- positive-depth D2 Green focal: `5081.960` seconds, exit zero;
+- positive-depth audit: `25.172` seconds, exit zero;
+- exact depth-zero D2 Green focal: `58.981` seconds, exit zero;
+- exact depth-zero audit: `18.319` seconds, exit zero;
+- owner-distance decay rescaling focal: `116.142` seconds, exit zero;
+- owner-rescaling audit: `7.668` seconds, exit zero;
+- same-checkout `YangMillsCore` root: `7375.285` seconds, exit zero,
+  `11105` jobs.
+
+All eight audit readouts are contained in the allowed trio
+`{propext, Classical.choice, Quot.sound}`.  The full stage total is
+`12834.722` seconds.  The canonical evidence SHA-256 is
+`3DCA69BFD20714FEF801DD9F6E78C3984194B954A5A791C99CB589958CC11EC5`;
+the downloaded archive and executed-notebook SHA-256 values are respectively
+`FDFD5C24E91CB3EC4242714E7EFA547BD9B34E899B25D68C97EF738A11054306`
+and
+`CD71FA4CB87B296FBE116C2306753A4E5CD1AE9386231C25172FDE04A6187DBD`.
+The independent verifier emitted
+`C6D_D2_OWNER_RESCALING_EVIDENCE_OK`.  Evidence is preserved under
+`validation-evidence/c6d-d2-owner-rescaling-pass-1d7b3305-20260829/`.
+
+The selective sealer retired exactly the six D2/owner-rescaling
+PRE-VALIDATION notices.  Its sealed-manifest SHA-256 is
+`49E8BBAA207432BBFDCC712D7482CF38441A633F2C546E6800B34AC9DC1EE0EE`.
+This seal establishes the positive-depth and exact depth-zero D2 decay
+branches and the explicit conversion from physical distance to owner
+distance.  It does not yet instantiate the four fixed-depth CMP96 actions on
+one common transported Green, produce uniform physical `B0, delta0`, attain
+window 15, discharge rows 23--24, or construct a `TermSource`.  Counters
+remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
+unattained.

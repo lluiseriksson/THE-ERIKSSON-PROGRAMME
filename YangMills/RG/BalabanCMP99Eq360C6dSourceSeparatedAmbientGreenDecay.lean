@@ -3,18 +3,6 @@ import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay
 import YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact positive-depth C6d Green decay
-
-The proof keeps all three transports explicit.  It first reindexes the
-literal full-companion precision to the C6d ambient box, then pulls that same
-operator to the source-separated carrier, and finally applies the canonical
-regional inverse theorem.  No precision, Green, inverse equality, metric
-equality or coercivity certificate is caller data.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

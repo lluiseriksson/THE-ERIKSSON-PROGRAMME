@@ -3,14 +3,6 @@ import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay
 import YangMills.RG.BalabanCMP99SourceGeneratedRegionalCorrectionDecay
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-The theorem uses the literal zero-depth full-companion coefficient and the
-internally constructed zero-depth Green.  No positive-depth Poincare premise
-is introduced and no unrestricted Eq. (3.42) claim is made here.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

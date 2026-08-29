@@ -26,36 +26,28 @@ This draft PR carries the source-specific CMP89/CMP95/CMP96/CMP99/CMP102/CMP116 
 
 ### Active frontier
 
-Addendum 958 seals exact source `7e90203e8bfd1deb58d998fb5cdad0baab925af5`: the source-separated positive-depth and zero-depth ambient Green pairs, canonical ambient completion, terminal-block diameter and the same-checkout `YangMillsCore` root all passed in one fresh Colab Pro+ checkout. The root completed 11085 jobs in `8077.992` seconds; both independent evidence verifiers passed, and exactly eight PRE-VALIDATION notices were retired. This seal is retained-tower/source-region infrastructure and does **not** move `20/41`.
+Addendum 965 seals exact source
+`1d7b33059eb3964a3ff99003869be84ec0806288`: the positive-depth and exact
+depth-zero C6d D2 Green-decay branches, their audits, explicit owner-distance
+rescaling and a same-checkout `11105`-job `YangMillsCore` root all passed in
+one fresh Colab Pro+ checkout.  The independent verifier accepted canonical
+evidence SHA-256 `3DCA69BF...`, archive `FDFD5C24...` and executed notebook
+`CD71FA4C...`; exactly six PRE-VALIDATION notices were retired.  This seal
+closes per-depth D2 and owner rescaling but does **not** produce one common
+four-action physical Green, uniform physical `B0, delta0`, window-15
+attainment, a terminal producer or a `TermSource`.
 
-The exact physical background/Laplacian/precision dictionary is now present
-under PRE-VALIDATION at source checkpoint
-`deeabe2074d571c62d9229e56eecc6242fa6ad1f`.  Its fresh Colab gate has
-already passed all four source/audit pairs; the same-checkout cold
-`YangMillsCore` root is still running, so no mark has been retired and no
-seal is claimed yet.
-
-The next D1 prefix is also visible under PRE-VALIDATION at source checkpoint
-`a554cba0c398e816316e53d76a4fe08bf379d931`.  It contains only the literal
-full-companion precision localization and the three named metric transports.
-Runner checkpoint `7113816d39b10d2772a576a82dbb60d90166e250` and notebook/verifier
-checkpoint `c7f56d5efcf04412567c4d86540d94698aa14169` pin its independent cold
-gate, which is currently running.  D1 is not D2, does not provide a uniform
-Eq. (3.42) pair and does not move `20/41`.
-
-An independent post-D2 algebraic bridge is present under PRE-VALIDATION at
-checkpoint `ebeea96235ac89a0a9598593855119d4bfe3ea04`.  It converts an exact
-fine-distance rectangular kernel bound through
-`ell * coarseDist <= fineDist + boundary`, retaining the literal amplitude
-payment `exp (rate * boundary)` and the rescaled rate `ell * rate`.  It has
-only textual/import-prefix evidence: no `.olean`, axiom-oracle verdict, C6d
-specialization, four-action producer, uniform `B0, delta0`, window-15
-attainment or counter movement is claimed.
+The retained runtime disappeared after producing and downloading the cold
+archive, before the independent spacing/fibre hot diagnostic could be run.
+That diagnostic remains explicitly hot-only and cannot alter a seal or a hard
+counter.  Its pinned runner is
+`c5a8738d044fd9dd1c5120b2b355c723de6dc6ff` with SHA-256
+`B62BF2946229E5A13DCEA667141102DD3082C3449F0D5E93F751C6B350436F3B`.
 
 The next explicit gates are:
 
-1. preserve, independently verify and selectively seal the physical dictionary and D1 cold gates;
-2. promote and cold-seal the positive-depth and exact depth-zero D2 Green-decay conclusions separately;
+1. run the pinned spacing/fibre diagnostic in Colab and preserve its hot-only verdict;
+2. promote and cold-validate the fixed Green-owner prefix without weakening its literal physical spacing or counting-mass obligations;
 3. reinstantiate the four physical actions on that one source-region Green, produce one uniform physical `B0, delta0` and attain window 15;
 4. install the remaining `PreEq136` producers and construct the first conditional `TermSource`;
 5. prove the physical Lemma-1 certificate, make `TermSource` unconditional, close `hraw -> H# -> hprofile`, the terminal application, full reproducibility and the final compiled manuscript.

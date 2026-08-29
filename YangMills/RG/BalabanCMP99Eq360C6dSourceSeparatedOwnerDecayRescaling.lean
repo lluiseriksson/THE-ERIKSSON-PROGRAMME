@@ -1,22 +1,6 @@
 import YangMills.RG.FinitePiLpTypedKernelDistanceRescaling
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact fine-to-owner decay rescaling on the C6d source carrier
-
-This specializes the algebraic distance-rescaling lemma to the literal C6d
-source-separated carrier and the already sealed source-localization owner.
-The boundary payment remains exactly `2 * (ell - 1)` and the output rate is
-exactly `ell * rate`, where `ell = L^(depth+1)`.
-
-The theorem still accepts an already proved kernel bound.  It does not choose
-a Green, identify two inverses, construct any of the four CMP99 (3.42)
-actions, prove uniform `B0`/`delta0`, attain window 15, move `20/41`, or
-inhabit `TermSource`.
--/
-
 namespace YangMills.RG
 
 open YangMills

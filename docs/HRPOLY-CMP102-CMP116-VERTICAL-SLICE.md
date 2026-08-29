@@ -14916,3 +14916,29 @@ This records a passing focal prefix and a failing root, not a seal.  The next
 cold source must include the repaired consumer and rerun the complete queue.
 No PRE-VALIDATION notice is retired; counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+### Step 8b.24/C6d.6: exact D2 Green decay and owner-distance rescaling (COLAB-VERIFIED; 20/41 unchanged)
+
+Exact source `1d7b33059eb3964a3ff99003869be84ec0806288` passed the repaired
+unified cold gate in one fresh Colab Pro+ checkout.  Positive-depth D2 Green,
+exact depth-zero D2 Green and owner-distance rescaling all passed with their
+audits; the same checkout then completed the `YangMillsCore` root with
+`11105` jobs in `7375.285` seconds.  All eight axiom readouts are contained
+in `{propext, Classical.choice, Quot.sound}`.
+
+The canonical evidence, archive and executed-notebook SHA-256 values are
+respectively
+`3DCA69BFD20714FEF801DD9F6E78C3984194B954A5A791C99CB589958CC11EC5`,
+`FDFD5C24E91CB3EC4242714E7EFA547BD9B34E899B25D68C97EF738A11054306`
+and
+`CD71FA4CB87B296FBE116C2306753A4E5CD1AE9386231C25172FDE04A6187DBD`.
+The independent verifier emitted
+`C6D_D2_OWNER_RESCALING_EVIDENCE_OK`; the selective seal retires exactly six
+PRE-VALIDATION notices and has sealed-manifest SHA-256
+`49E8BBAA207432BBFDCC712D7482CF38441A633F2C546E6800B34AC9DC1EE0EE`.
+
+This closes the per-depth D2 branches and the literal owner-distance
+rescaling.  It does not construct the common four-action physical Green,
+uniform `B0, delta0`, window-15 attainment, rows 23--24, or a `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
