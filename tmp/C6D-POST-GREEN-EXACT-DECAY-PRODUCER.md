@@ -389,3 +389,13 @@ That compressed-precision equality is the remaining semantic gate.  The
 three action specializations construct literal operators, but they must not
 be reported as actions of the D2 precision until this equality is named and
 compiled.
+
+The depth-zero action branch has a separate normalization gate.  Its exact
+ambient precision accepts a parameter named `spacing` directly and its
+counting coefficient is `spacing^(-2)`, while the positive-depth action
+specializations use terminal spacing `L^(depth+1) * eta`.  Before reusing the
+generic two-endpoint action lemmas at depth zero, the dictionary must state
+whether the zero-depth `spacing` is already terminal or is the unscaled
+`eta`.  Substituting `ell * spacing` without that theorem would risk applying
+the RG scale twice; substituting `spacing` would risk dropping it.  No
+zero-depth derived-action scratch is claimed until this convention is named.
