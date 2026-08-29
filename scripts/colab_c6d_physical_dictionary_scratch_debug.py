@@ -69,7 +69,7 @@ def streaming_run(stage, command, cwd=None):
 
 
 runner.run = streaming_run
-runner.RUNNER_REV = "c6d-physical-dictionary-scratch-debug-v1"
+runner.RUNNER_REV = "c6d-physical-dictionary-scratch-debug-v2"
 runner.SOURCE_SHA = 'b2ad8e04d50f7f4bdb5e5df914ba4a54571a5dc6'
 runner.ROOT = Path("/content/hrpoly-c6d-physical-dictionary-debug")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-physical-dictionary-debug-evidence")
@@ -82,7 +82,16 @@ runner.SOURCE_BLOBS = {
 }
 runner.QUEUE = [
     (
-        "01_c6d_physical_dictionary_warm_debug",
+        "01_c6d_physical_dictionary_prerequisites",
+        [
+            "lake", "build",
+            "YangMills.RG.FinitePiLpTypedKernelReindexAlgebra",
+            "YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen",
+        ],
+        runner.ROOT,
+    ),
+    (
+        "02_c6d_physical_dictionary_warm_debug",
         [
             "python3", "tmp/run_c6d_physical_precision_dictionary_warm_debug.py",
             "--repo", str(runner.ROOT), "--source-sha", runner.SOURCE_SHA,

@@ -127,7 +127,7 @@ def streaming_run(stage, command, cwd=None):
 
 
 runner.run = streaming_run
-runner.RUNNER_REV = "c6d-physical-dictionary-scratch-debug-v1"
+runner.RUNNER_REV = "c6d-physical-dictionary-scratch-debug-v2"
 runner.SOURCE_SHA = {q(source_sha)}
 runner.ROOT = Path("/content/hrpoly-c6d-physical-dictionary-debug")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-physical-dictionary-debug-evidence")
@@ -138,7 +138,16 @@ runner.SOURCE_BLOBS = {{
 }}
 runner.QUEUE = [
     (
-        "01_c6d_physical_dictionary_warm_debug",
+        "01_c6d_physical_dictionary_prerequisites",
+        [
+            "lake", "build",
+            "YangMills.RG.FinitePiLpTypedKernelReindexAlgebra",
+            "YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen",
+        ],
+        runner.ROOT,
+    ),
+    (
+        "02_c6d_physical_dictionary_warm_debug",
         [
             "python3", "tmp/run_c6d_physical_precision_dictionary_warm_debug.py",
             "--repo", str(runner.ROOT), "--source-sha", runner.SOURCE_SHA,
@@ -173,7 +182,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_PHYSICAL_DICTIONARY_DEBUG_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} blobs={len(PREFLIGHT_BLOBS)} stages=1 "
+        f"source_sha={args.source_sha} blobs={len(PREFLIGHT_BLOBS)} stages=2 "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"
     )
