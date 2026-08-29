@@ -6,6 +6,9 @@ downloaded.  The retained checkout is intentionally older than the diagnostic,
 so do not invoke a path from that checkout.  Insert one new Colab cell and run
 the following transport exactly once:
 
+The published raw URL was fetched independently on 2026-08-29: 5711 bytes,
+SHA-256 `B62BF2946229E5A13DCEA667141102DD3082C3449F0D5E93F751C6B350436F3B`.
+
 ```python
 import hashlib, sys, urllib.request
 
