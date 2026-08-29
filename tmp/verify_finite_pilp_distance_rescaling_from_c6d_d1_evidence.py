@@ -5,8 +5,9 @@ The original distance-rescaling gate proved its focal and audit, but its root
 ran at an older source and failed only in two later C6d-D1 modules.  This
 cross-verifier accepts no partial root: it first requires the complete
 corrected D1 evidence verifier to pass, then checks byte identity of the
-distance-rescaling pair and requires the corrected cold root to have built the
-pair and printed its allowed axiom readout.
+distance-rescaling pair, requires the corrected cold gate to have built the
+pair and printed its allowed axiom readout, and independently requires its
+same-checkout root to have exited zero.
 """
 
 from __future__ import annotations
@@ -84,7 +85,9 @@ def require_blob_identity() -> None:
             raise RuntimeError(f"DISTANCE_RESCALING_PREVALIDATION_COUNT={relative}")
 
 
-def root_output(archive_path: Path, base) -> tuple[str, dict[str, object]]:
+def verified_gate_outputs(
+    archive_path: Path, base
+) -> tuple[str, dict[str, object]]:
     with tarfile.open(archive_path, "r:gz") as archive:
         members = base.safe_members(archive)
         evidence_members = [m for m in members if m.name.endswith("/evidence.json")]
@@ -105,26 +108,36 @@ def root_output(archive_path: Path, base) -> tuple[str, dict[str, object]]:
     if not isinstance(records, list):
         raise RuntimeError("RECORDS_NOT_LIST")
     prefix = evidence_name.rsplit("/", 1)[0]
+    texts: list[str] = []
+    root_record: dict[str, object] | None = None
     for index, record in enumerate(records):
-        if isinstance(record, dict) and record.get("stage") == ROOT_STAGE:
+        if not isinstance(record, dict):
+            raise RuntimeError(f"RECORD_NOT_OBJECT={index}")
+        stage = record.get("stage")
+        if not isinstance(stage, str):
+            raise RuntimeError(f"RECORD_STAGE_NOT_STRING={index}")
+        member = f"{prefix}/{index:03d}-{stage}.stdout"
+        raw = payloads.get(member)
+        if raw is None:
+            raise RuntimeError(f"STAGE_LOG_MISSING={member}")
+        normalized = raw.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        measured = hashlib.sha256(normalized.encode()).hexdigest()
+        if measured != record.get("output_sha256"):
+            raise RuntimeError(f"STAGE_LOG_HASH_MISMATCH={stage}")
+        texts.append(normalized)
+        if stage == ROOT_STAGE:
             if record.get("exit") != 0:
                 raise RuntimeError(f"ROOT_EXIT={record.get('exit')!r}")
-            member = f"{prefix}/{index:03d}-{ROOT_STAGE}.stdout"
-            raw = payloads.get(member)
-            if raw is None:
-                raise RuntimeError(f"ROOT_LOG_MISSING={member}")
-            normalized = raw.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
-            measured = hashlib.sha256(normalized.encode()).hexdigest()
-            if measured != record.get("output_sha256"):
-                raise RuntimeError("ROOT_LOG_HASH_MISMATCH")
-            return normalized, record
-    raise RuntimeError("ROOT_STAGE_MISSING")
+            root_record = record
+    if root_record is None:
+        raise RuntimeError("ROOT_STAGE_MISSING")
+    return "\n".join(texts), root_record
 
 
-def require_pair_in_root(text: str) -> None:
+def require_pair_in_gate(text: str) -> None:
     for module in (MODULE, MODULE + "Audit"):
         if not re.search(rf"(?:Built|Replayed) YangMills\.RG\.{re.escape(module)}(?:\s|$)", text):
-            raise RuntimeError(f"ROOT_DISTANCE_RESCALING_MODULE_MISSING={module}")
+            raise RuntimeError(f"GATE_DISTANCE_RESCALING_MODULE_MISSING={module}")
     compact = re.sub(r"\s+", "", text)
     pattern = (
         re.escape("'YangMills.RG." + DECLARATION + "'dependsonaxioms:[")
@@ -133,14 +146,14 @@ def require_pair_in_root(text: str) -> None:
     matches = re.findall(pattern, compact)
     if len(matches) != 1:
         raise RuntimeError(
-            f"ROOT_AXIOM_READOUT_COUNT_{DECLARATION}={len(matches)} EXPECTED=1"
+            f"GATE_AXIOM_READOUT_COUNT_{DECLARATION}={len(matches)} EXPECTED=1"
         )
     names = {name for name in matches[0].split(",") if name}
     if not names.issubset({"propext", "Classical.choice", "Quot.sound"}):
-        raise RuntimeError(f"ROOT_FORBIDDEN_AXIOMS_{DECLARATION}={sorted(names)!r}")
+        raise RuntimeError(f"GATE_FORBIDDEN_AXIOMS_{DECLARATION}={sorted(names)!r}")
     for forbidden in ("sorryAx", "ofReduceBool"):
         if forbidden in text:
-            raise RuntimeError(f"ROOT_FORBIDDEN_AXIOM_TOKEN={forbidden}")
+            raise RuntimeError(f"GATE_FORBIDDEN_AXIOM_TOKEN={forbidden}")
 
 
 def main() -> int:
@@ -153,8 +166,8 @@ def main() -> int:
     base = load_common_base()
     require_d1_verifier(archive, notebook)
     require_blob_identity()
-    text, record = root_output(archive, base)
-    require_pair_in_root(text)
+    text, record = verified_gate_outputs(archive, base)
+    require_pair_in_gate(text)
     print(SUCCESS_SENTINEL)
     print(f"SOURCE_SHA={SOURCE_SHA}")
     print(f"ORIGINAL_SOURCE_SHA={ORIGINAL_SOURCE_SHA}")

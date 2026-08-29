@@ -41346,7 +41346,8 @@ and corrected D1 source: source blob
 `2eb40f6517f9b9687366aae84bb271be52987e90`, audit blob
 `bea35e40cfc19fe0f5b5256339e71cb7b395501e`.  A fail-closed cross-verifier now
 requires the complete corrected D1 evidence verifier, a successful cold root,
-both modules built by that root, the exact audit readout, the allowed axiom
+both modules built somewhere in that same cold gate, the exact audit readout,
+the allowed axiom
 set and absence of `sorryAx`/`ofReduceBool` before the rescaling notices may be
 retired.  No failed or focal-only evidence can trigger that seal.
 
