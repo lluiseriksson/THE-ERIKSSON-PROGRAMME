@@ -133,6 +133,37 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    used instead of the sealed generated CT+Schur budget ruled out at depth
    zero.  Only a proved `norm R' < 1` marks window 15 attained.
 
+## Static audit of the prepared D2/action prefix (2026-08-29)
+
+The prepared positive/zero-depth D2 pair, owner-input action, owner-distance
+transport and the four-action prefix do **not** accept a precision, Green,
+inverse identity or physical action bound from the caller.  The C6d
+specializations name the literal source-separated Green and the literal
+covariant derivative/Laplacian built from
+`cmp99Eq360C6dSourceSeparatedPhysicalBackground`; terminal spacing is fixed
+to `L^(depth+1) * eta`.  The generic left/right/Laplacian lemmas remain
+operator-parametric leaves, but each physical wrapper installs those objects
+definitionally.
+
+Two inputs remain visible and must not be mistaken for the uniform endpoint:
+
+1. `cmp99SourcePoincareErrorCoeff ... < 1` is a scalar gate, not a renamed
+   Green estimate.  Its nonempty physical interval is already constructed by
+   `exists_pos_cmp99Eq360C6dSourceTerminalCoercivityInterval`; the eventual
+   source wrapper must consume that constructed package rather than expose a
+   second unrelated `hsmall`.
+2. `root : ActiveGaugeRegion.Site OmegaSource` supplies the `Nonempty`
+   instance used by the owner/action predicates.  It is not discharged by the
+   action lemmas themselves.  The uniform regional certificate must derive it
+   from the physical root/index dictionary, as required in step 7; accepting
+   an arbitrary nonempty regional carrier would merely rename that remaining
+   geometric obligation.
+
+All amplitudes in this prefix are explicitly per-depth: they contain the
+precision amplitude, coercivity floor, owner rescaling and boundary payments.
+Even a complete cold seal of the prefix therefore proves neither a common
+`B0,delta0` nor Eq. (3.42), window 15, rows 23--24, `41/41` or `TermSource`.
+
 ## Static contract for step 3
 
 The first exact-read implementation proves a sufficient one-bond-collar
