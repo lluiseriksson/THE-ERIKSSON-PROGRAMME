@@ -137,14 +137,24 @@ theorem cmp99SourceActiveRegionFullCompanionPrecision_kernelBound
     (fineSmall : ∀ e : ConcreteEdge d N,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     FinitePiLpKernelBound
-      (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM rho spacing
-        epsilon background chain fineSmall)
+      (ι := ActiveGaugeRegion.Site (cmp99SourceFullActiveRegion d N))
+      (g := SUNLieCoord Nc)
+      (cmp99SourceActiveRegionFullCompanionPrecision
+        (d := d) (M := M) (N := N) (Nc := Nc)
+        (Omega := Omega) (depth := depth)
+        regions hd hM rho spacing epsilon background chain fineSmall)
       (fun _ _ =>
-        cmp99SourceActiveRegionFullCompanionPrecisionUpperBound regions hd hM
-          rho spacing epsilon background chain fineSmall) := by
+        cmp99SourceActiveRegionFullCompanionPrecisionUpperBound
+          (d := d) (M := M) (N := N) (Nc := Nc)
+          (Omega := Omega) (depth := depth)
+          regions hd hM rho spacing epsilon background chain fineSmall) := by
   apply finitePiLpKernelBound_of_opNorm_le
-  exact norm_cmp99SourceActiveRegionFullCompanionPrecision_le regions hd hM
-    rho hspacing background chain fineSmall
+    (iota := ActiveGaugeRegion.Site (cmp99SourceFullActiveRegion d N))
+    (g := SUNLieCoord Nc)
+  exact norm_cmp99SourceActiveRegionFullCompanionPrecision_le
+    (d := d) (M := M) (N := N) (Nc := Nc)
+    (Omega := Omega) (depth := depth)
+    regions hd hM rho hspacing background chain fineSmall
 
 /-- The literal full-companion precision has the conservative common radius
 `M^depth`, dominating the one-link Laplacian and terminal-block mass. -/
@@ -157,8 +167,12 @@ theorem cmp99SourceActiveRegionFullCompanionPrecision_finiteRange
     (fineSmall : ∀ e : ConcreteEdge d N,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     FinitePiLpFiniteRange
-      (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM rho spacing
-        epsilon background chain fineSmall)
+      (ι := ActiveGaugeRegion.Site (cmp99SourceFullActiveRegion d N))
+      (g := SUNLieCoord Nc)
+      (cmp99SourceActiveRegionFullCompanionPrecision
+        (d := d) (M := M) (N := N) (Nc := Nc)
+        (Omega := Omega) (depth := depth)
+        regions hd hM rho spacing epsilon background chain fineSmall)
       (fun x y => finBoxDist x.1 y.1) (M ^ depth) := by
   intro source target v hfar
   have hpowPos : 0 < M ^ depth := pow_pos (NeZero.pos M) _
@@ -168,6 +182,8 @@ theorem cmp99SourceActiveRegionFullCompanionPrecision_finiteRange
     hlapFar
   have hmassFar : M ^ depth - 1 < finBoxDist target.1 source.1 := by omega
   have hmass := cmp99SourceActiveRegionFullCompanion_QprimeMass_finiteRange
+    (d := d) (M := M) (N := N) (Nc := Nc)
+    (Omega := Omega) (depth := depth)
     regions hd hM rho spacing epsilon background chain fineSmall
       source target v hmassFar
   rw [cmp99SourceActiveRegionFullCompanionPrecision, cmp99SourceGaugePrecision]
@@ -187,24 +203,41 @@ theorem cmp99SourceActiveRegionFullCompanionPrecision_exponentialKernelBound
     (fineSmall : ∀ e : ConcreteEdge d N,
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
     FinitePiLpExponentialKernelBound
-      (cmp99SourceActiveRegionFullCompanionPrecision regions hd hM rho spacing
-        epsilon background chain fineSmall)
+      (ι := ActiveGaugeRegion.Site (cmp99SourceFullActiveRegion d N))
+      (g := SUNLieCoord Nc)
+      (cmp99SourceActiveRegionFullCompanionPrecision
+        (d := d) (M := M) (N := N) (Nc := Nc)
+        (Omega := Omega) (depth := depth)
+        regions hd hM rho spacing epsilon background chain fineSmall)
       (fun x y => finBoxDist x.1 y.1)
-      (cmp99SourceActiveRegionFullCompanionPrecisionUpperBound regions hd hM
-          rho spacing epsilon background chain fineSmall *
+      (cmp99SourceActiveRegionFullCompanionPrecisionUpperBound
+          (d := d) (M := M) (N := N) (Nc := Nc)
+          (Omega := Omega) (depth := depth)
+          regions hd hM rho spacing epsilon background chain fineSmall *
         Real.exp (rate * (M ^ depth : ℕ)))
       rate := by
   apply finitePiLpTypedExponentialKernelBound_of_finiteRange
-    (beta := cmp99SourceActiveRegionFullCompanionPrecisionUpperBound regions
-      hd hM rho spacing epsilon background chain fineSmall)
+    (ι := ActiveGaugeRegion.Site (cmp99SourceFullActiveRegion d N))
+    (κ := ActiveGaugeRegion.Site (cmp99SourceFullActiveRegion d N))
+    (g := SUNLieCoord Nc)
+    (beta := cmp99SourceActiveRegionFullCompanionPrecisionUpperBound
+      (d := d) (M := M) (N := N) (Nc := Nc)
+      (Omega := Omega) (depth := depth)
+      regions hd hM rho spacing epsilon background chain fineSmall)
     (R := M ^ depth)
-  · exact (cmp99SourceActiveRegionFullCompanionPrecisionUpperBound_pos regions
-      hd hM rho hspacing background chain fineSmall).le
+  · exact (cmp99SourceActiveRegionFullCompanionPrecisionUpperBound_pos
+      (d := d) (M := M) (N := N) (Nc := Nc)
+      (Omega := Omega) (depth := depth)
+      regions hd hM rho hspacing background chain fineSmall).le
   · exact hrate
-  · exact cmp99SourceActiveRegionFullCompanionPrecision_finiteRange regions hd
-      hM rho spacing epsilon background chain fineSmall
-  · exact cmp99SourceActiveRegionFullCompanionPrecision_kernelBound regions hd
-      hM rho hspacing background chain fineSmall
+  · exact cmp99SourceActiveRegionFullCompanionPrecision_finiteRange
+      (d := d) (M := M) (N := N) (Nc := Nc)
+      (Omega := Omega) (depth := depth)
+      regions hd hM rho spacing epsilon background chain fineSmall
+  · exact cmp99SourceActiveRegionFullCompanionPrecision_kernelBound
+      (d := d) (M := M) (N := N) (Nc := Nc)
+      (Omega := Omega) (depth := depth)
+      regions hd hM rho hspacing background chain fineSmall
 
 end
 
