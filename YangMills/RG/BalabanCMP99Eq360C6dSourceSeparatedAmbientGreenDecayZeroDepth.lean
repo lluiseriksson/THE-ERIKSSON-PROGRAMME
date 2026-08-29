@@ -135,6 +135,7 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
       regions hL background chain fineSmall hspacing hrate
   have hG := cmp99RegionalDirichletGreen_exponentialKernelBound
     OmegaSource Ksource hc hcoer hK
+  simp only [Ksource, c] at hG
   rw [cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
     (Nc := Nc) (spacing := spacing)
     (OmegaSource := OmegaSource)
