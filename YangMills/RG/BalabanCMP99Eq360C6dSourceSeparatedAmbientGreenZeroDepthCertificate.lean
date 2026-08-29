@@ -120,7 +120,7 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zeroDepthCertificate
   let G := cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
     (L := L) (K := K) (Q := Q) (Nc := Nc)
     (OmegaSource := OmegaSource) (spacing := spacing)
-    regions hL hspacing background chain fineSmall
+    regions hL background chain fineSmall hspacing
   letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
   have hgreen : cmp99RegionalDirichletGreen OmegaSource AP hc hAP = G := by
     exact cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
