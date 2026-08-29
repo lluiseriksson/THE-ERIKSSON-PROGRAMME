@@ -109,10 +109,10 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
     cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier L K Q depth
   change cmp99GeneratedFineBoxOneBlockEquiv
       (d := 4) L (2 * (K * Q)) (depth + 1)
-        (hsize.symm ▸ (x.shift i)) =
+        (Equiv.cast (congrArg (FinBox 4) hsize.symm) (x.shift i)) =
     (cmp99GeneratedFineBoxOneBlockEquiv
       (d := 4) L (2 * (K * Q)) (depth + 1)
-        (hsize.symm ▸ x)).shift i
+        (Equiv.cast (congrArg (FinBox 4) hsize.symm) x)).shift i
   rw [finBoxCast_shift_c6d hsize.symm x i]
   exact cmp99GeneratedFineBoxOneBlockEquiv_shift
     (M := L) (N := 2 * (K * Q)) (depth + 1) (hsize.symm ▸ x) i
