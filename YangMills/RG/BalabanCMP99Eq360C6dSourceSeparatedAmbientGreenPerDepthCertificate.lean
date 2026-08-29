@@ -275,7 +275,7 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_perDepthCertificate
         (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
         (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
         OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
-        hdepth hsmall hdecay).1
+        hdecay).1
   have hc_pos : 0 < c := hc
   have hrow : 0 ≤ cmp99OmegaSiteExpSumBound (decay / 4) := by
     unfold cmp99OmegaSiteExpSumBound
@@ -283,19 +283,30 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_perDepthCertificate
   have hrate : 0 < rate :=
     finitePiLpExponentialInverseDecayRate_pos hA_nonneg hdecay hrow hc_pos
   have hownerRate : 0 < ownerRate := mul_pos hell hrate
+  have heta_pos : 0 < eta := R.eta_pos
   have hvalueAmplitude : 0 ≤ valueAmplitude := by
     dsimp [valueAmplitude]
-    positivity
+    exact mul_nonneg (div_nonneg (by norm_num) hc_pos.le) (Real.exp_pos _).le
   have hleftAmplitude : 0 ≤ leftAmplitude := by
     dsimp [leftAmplitude]
-    positivity
+    exact mul_nonneg hvalueAmplitude
+      (div_nonneg (add_nonneg zero_le_one (Real.exp_pos _).le) heta_pos.le)
   have hrightAmplitude : 0 ≤ rightAmplitude := by
     dsimp [rightAmplitude]
-    positivity
+    exact div_nonneg
+      (mul_nonneg (mul_nonneg (by norm_num) hvalueAmplitude) (Real.exp_pos _).le)
+      heta_pos.le
   have hlaplacianAmplitude : 0 ≤ laplacianAmplitude := by
     dsimp [laplacianAmplitude]
-    positivity
+    exact mul_nonneg (mul_nonneg (by norm_num) hleftAmplitude)
+      (div_nonneg (add_nonneg zero_le_one (Real.exp_pos _).le) heta_pos.le)
   exact cmp99Eq342SourceLocalizedGreenCertificate_of_actionBounds
+    (Omega := OmegaSource) (rho := matrixSUNAdjointModel Nc)
+    (U := background) (spacing := (ell : ℝ) * eta)
+    (A := AP) (c := c) (hc := hc) (hAcoer := hAP)
+    (Avalue := valueAmplitude) (Aleft := leftAmplitude)
+    (Aright := rightAmplitude) (Alaplacian := laplacianAmplitude)
+    (rate := ownerRate)
     hvalueAmplitude hleftAmplitude hrightAmplitude hlaplacianAmplitude
     hownerRate hvalue hleft hright hlaplacian
 
