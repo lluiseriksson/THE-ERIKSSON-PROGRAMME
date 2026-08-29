@@ -1,6 +1,6 @@
 # C6d D2 retained-runtime hot diagnostic launch
 
-Use this only after the running cold D2 gate has emitted literal
+Use this only after the running Green-owner cold gate has emitted literal
 `FINAL_STATUS=PASS` and its cold archive plus executed notebook have been
 downloaded.  The retained checkout is intentionally older than the diagnostic,
 so do not invoke a path from that checkout.  Insert one new Colab cell and run
@@ -30,7 +30,7 @@ if measured != RUNNER_SHA256:
 sys.argv = [
     RUNNER_URL,
     "--source-sha", SOURCE_SHA,
-    "--root", "/content/hrpoly-c6d-d2-owner-rescaling",
+    "--root", "/content/hrpoly-c6d-green-owner-prefix",
 ]
 exec(compile(runner_source, RUNNER_URL, "exec"), {"__name__": "__main__"})
 ```
