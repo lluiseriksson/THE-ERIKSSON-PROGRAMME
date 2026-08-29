@@ -127,11 +127,33 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    `CMP99Eq342SourceLocalizedGreenCertificate` with `B0,delta0` independent
    of depth.  Nonempty regional carrier must be derived from the physical
    root/index, not assumed for an arbitrary region.
-8. **Window 15.** Feed the certificate into the direct CMP99 (3.89)
-   correction estimate.  The `K^-1` gain enters before owner/layer summation,
-   overlap remains the single source `16`, and the weighted owner norm is
-   used instead of the sealed generated CT+Schur budget ruled out at depth
-   zero.  Only a proved `norm R' < 1` marks window 15 attained.
+8. **C6d specialization of CMP99 (3.89).** Rebuild the three displayed
+   correction species on the same literal C6d background, retained-tower
+   precision, coercivity witness and spacing used by the certificate from
+   step 7.  The already sealed
+   `cmp99Eq389SourceSeparatedPhysicalBackground/Precision` consumer is not
+   this specialization: it fixes a transported generated background,
+   spacing `1` and the generated coefficient.  No theorem currently
+   identifies those objects with
+   `cmp99Eq360C6dSourceSeparatedPhysicalBackground` or the retained C6d
+   precision, and such an identification is not expected definitionally.
+   Reuse the operator-parametric species leaves, but assemble a new
+   source-facing C6d correction theorem; do not postulate equality of the two
+   physical precisions or feed a C6d certificate to the generated consumer.
+   The reuse boundary is not uniform across the three species:
+   `cmp99Eq389SignedCovariantLinkRegionalCorrection_blockLocalizedSupBound`
+   fixes derivative spacing `1`, so it must first be generalized or
+   re-specialized to the literal C6d terminal spacing; the signed cutoff
+   Laplacian leaf is already parameterized by the Green/precision certificate;
+   and the third leaf fixes
+   `cmp99SourceSeparatedGeneratedCountingMass`, so the retained-tower mass
+   action needs its own C6d theorem or an exact source dictionary.  These are
+   three finite operator obligations, not one definitional cast.
+9. **Window 15.** Feed that C6d-specific (3.89) correction estimate into the
+   weighted-owner contraction.  The `K^-1` gain enters before owner/layer
+   summation, overlap remains the single source `16`, and the weighted owner
+   norm is used instead of the sealed generated CT+Schur budget ruled out at
+   depth zero.  Only a proved `norm R' < 1` marks window 15 attained.
 
 ## Static audit of the prepared D2/action prefix (2026-08-29)
 
@@ -1192,6 +1214,9 @@ the minimal repro and then in the physical module before any promotion.
 - no free Green family, perturbation norm, relative inverse estimate or
   regional `B0/delta0`;
 - no identification of generated and source coefficients;
+- no identification of the generated (3.89) background/precision with the
+  literal C6d background/retained precision; the three species must be
+  re-specialized to the latter objects;
 - no global extension of a cube-local source theorem;
 - no loss of the source-owner orientation;
 - no source-cardinality factor;
