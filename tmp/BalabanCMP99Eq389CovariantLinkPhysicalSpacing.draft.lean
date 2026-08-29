@@ -75,8 +75,7 @@ theorem norm_cmp99CovariantCutoffLinkDerivative_spacing_le
             ‖covariantD0CLM rho U phi
               ((FinBox.shiftBack x i, i) :
                 PhysicalBond 4 (m * (2 * q)))‖)) := by
-      exact mul_le_mul_of_nonneg_left
-        (mul_le_mul_of_nonneg_left hunit hinv) hinv
+      exact mul_le_mul_of_nonneg_left hunit (mul_nonneg hinv hinv)
     _ = spacing⁻¹ * slope * ∑ i : Fin 4,
         (‖spacing⁻¹ • covariantD0CLM rho U phi
             ((x, i) : PhysicalBond 4 (m * (2 * q)))‖ +
