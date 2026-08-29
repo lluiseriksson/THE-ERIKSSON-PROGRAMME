@@ -56,6 +56,15 @@ def must_reject(verifier, path: Path) -> None:
 
 def main() -> int:
     verifier = load_verifier()
+    assert verifier.PACKAGE_MATERIALIZATION_NAMES == [
+        "mathlib", "plausible", "LeanSearchClient", "importGraph",
+        "proofwidgets", "aesop", "Qq", "batteries", "Cli",
+    ]
+    assert verifier.MODE_RECORDS == {
+        "lake_update": "pinned_manifest_materialization"
+    }
+    assert verifier.PAYLOAD_ONLY_ARCHIVE is True
+    assert verifier.TRANSCRIPT_HASH_STAGES == verifier.QUEUE_STAGES
     output = (
         f"RUNNER_TRANSPORT_SHA256={verifier.RUNNER_TRANSPORT_SHA256.lower()}\n"
         "FINAL_STATUS=PASS\n"

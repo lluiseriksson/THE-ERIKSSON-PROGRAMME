@@ -6,24 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0
 import YangMills.RG.FinitePiLpBlockLocalizedSup
 
-/-!
-# Localized coarse-field bound for the literal source-flow Green
-
-PRE-VALIDATION: source is present, but its `.olean` has not been materialized
-and no result in this file has yet been compiler-verified.
-
-C6a controls one coarse point source.  On the coarse source carrier the owner
-map is the identity, so an arbitrary field supported in one owner fibre is
-definitionally supported at one point.  This file proves that reduction
-inside the physical theorem and upgrades C6a to the literal localized-field
-sup-norm quantifier without a source-cardinality factor.
-
-The conclusion still concerns the ambient complex operator `G Q'^*`.  It is
-not the canonical real regional Dirichlet Green and supplies none of its three
-derivative actions.  Thus it is C6b, not the regional (3.42) certificate,
-window-15 attainment or a terminal field.
--/
-
 namespace YangMills.RG
 
 open YangMills

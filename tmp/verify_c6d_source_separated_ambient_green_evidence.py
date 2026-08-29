@@ -62,6 +62,14 @@ QUEUE_STAGES = [
     "04_c6d_source_green_yang_mills_core_root",
 ]
 
+# Optional, fail-closed extensions used by wrappers that replace ``lake update``
+# with exact package materialization.  The default verifier accepts neither
+# extra package stages nor records without a stdout digest.
+PACKAGE_MATERIALIZATION_NAMES: list[str] = []
+MODE_RECORDS: dict[str, str] = {}
+PAYLOAD_ONLY_ARCHIVE = False
+TRANSCRIPT_HASH_STAGES: list[str] = []
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -80,6 +88,34 @@ def safe_members(archive: tarfile.TarFile) -> list[tarfile.TarInfo]:
         if not member.isdir() and not member.isfile():
             raise RuntimeError(f"NONREGULAR_ARCHIVE_MEMBER={member.name}")
     return members
+
+
+def transcript_stage_output(transcript: str, stage: str) -> bytes:
+    """Recover one child stdout exactly from the runner's streamed transcript."""
+    command_marker = f"STAGE={stage} CMD="
+    exit_marker = f"STAGE={stage} EXIT=0 SECONDS="
+    if transcript.count(command_marker) != 1:
+        raise RuntimeError(
+            f"TRANSCRIPT_STAGE_COMMAND_COUNT_{stage}="
+            f"{transcript.count(command_marker)} EXPECTED=1"
+        )
+    if transcript.count(exit_marker) != 1:
+        raise RuntimeError(
+            f"TRANSCRIPT_STAGE_EXIT_COUNT_{stage}="
+            f"{transcript.count(exit_marker)} EXPECTED=1"
+        )
+    start = transcript.index(command_marker)
+    start = transcript.find("\n", start)
+    if start < 0:
+        raise RuntimeError(f"TRANSCRIPT_STAGE_COMMAND_UNTERMINATED={stage}")
+    start += 1
+    end = transcript.index(exit_marker, start)
+    streamed = transcript[start:end]
+    # ``run`` emits child stdout with ``print(output)``.  Remove exactly the
+    # newline added by print, retaining any newline already present in output.
+    if not streamed.endswith("\n"):
+        raise RuntimeError(f"TRANSCRIPT_STAGE_OUTPUT_UNTERMINATED={stage}")
+    return streamed[:-1].encode("utf-8")
 
 
 def executed_notebook_text(path: Path) -> str:
@@ -222,33 +258,62 @@ def main() -> int:
     for index, record in enumerate(records):
         if not isinstance(record, dict):
             raise RuntimeError(f"RECORD_{index}_NOT_DICT")
-        if set(record) != {"stage", "exit", "seconds", "output_sha256"}:
+        stage = record.get("stage")
+        expected_mode = MODE_RECORDS.get(stage) if isinstance(stage, str) else None
+        expected_keys = (
+            {"stage", "exit", "seconds", "mode"}
+            if expected_mode is not None
+            else {"stage", "exit", "seconds", "output_sha256"}
+        )
+        if set(record) != expected_keys:
             raise RuntimeError(f"RECORD_{index}_KEYS={sorted(record)!r}")
         if type(record["exit"]) is not int or record["exit"] != 0:
             raise RuntimeError(f"RECORD_{index}_EXIT={record['exit']!r}")
         if not isinstance(record["seconds"], (int, float)) or record["seconds"] < 0:
             raise RuntimeError(f"RECORD_{index}_SECONDS={record['seconds']!r}")
-        if not re.fullmatch(r"[0-9a-f]{64}", record["output_sha256"]):
+        if expected_mode is not None:
+            if record["mode"] != expected_mode:
+                raise RuntimeError(
+                    f"RECORD_{index}_MODE={record['mode']!r} EXPECTED={expected_mode!r}"
+                )
+        elif not re.fullmatch(r"[0-9a-f]{64}", record["output_sha256"]):
             raise RuntimeError(f"RECORD_{index}_OUTPUT_SHA256_INVALID")
 
     stages = [record["stage"] for record in records]
-    sanctioned = [
-        BOOTSTRAP_STAGES + QUEUE_STAGES,
+    bootstrap_variants = [
+        BOOTSTRAP_STAGES,
         BOOTSTRAP_STAGES[:1]
         + ["apt_update", "install_zstd"]
-        + BOOTSTRAP_STAGES[1:]
-        + QUEUE_STAGES,
+        + BOOTSTRAP_STAGES[1:],
     ]
+    if PACKAGE_MATERIALIZATION_NAMES:
+        package_stages = [
+            f"package_{operation}_{name}"
+            for name in PACKAGE_MATERIALIZATION_NAMES
+            for operation in ("init", "remote", "fetch", "checkout", "pin")
+        ]
+        expanded: list[list[str]] = []
+        for bootstrap in bootstrap_variants:
+            lake_update_index = bootstrap.index("lake_update")
+            expanded.append(
+                bootstrap[:lake_update_index]
+                + package_stages
+                + bootstrap[lake_update_index:]
+            )
+        bootstrap_variants.extend(expanded)
+    sanctioned = [bootstrap + QUEUE_STAGES for bootstrap in bootstrap_variants]
     if stages not in sanctioned:
         raise RuntimeError(f"UNSANCTIONED_STAGE_SEQUENCE={stages!r}")
 
+    notebook_text = executed_notebook_text(notebook_path)
     prefix = evidence_name.rsplit("/", 1)[0]
     expected_names = {evidence_name}
     stage_members: dict[str, str] = {}
-    for index, stage in enumerate(stages):
-        name = f"{prefix}/{index:03d}-{stage}.stdout"
-        expected_names.add(name)
-        stage_members[stage] = name
+    if not PAYLOAD_ONLY_ARCHIVE:
+        for index, stage in enumerate(stages):
+            name = f"{prefix}/{index:03d}-{stage}.stdout"
+            expected_names.add(name)
+            stage_members[stage] = name
     actual_names = set(regular_payloads)
     if actual_names != expected_names:
         raise RuntimeError(
@@ -256,24 +321,36 @@ def main() -> int:
             f"UNEXPECTED={sorted(actual_names-expected_names)!r}"
         )
 
+    transcript_bodies: dict[str, bytes] = {}
     for record in records:
-        body = regular_payloads[stage_members[record["stage"]]]
-        normalized = (
-            body.decode("utf-8")
-            .replace("\r\n", "\n")
-            .replace("\r", "\n")
-            .encode("utf-8")
-        )
-        measured = hashlib.sha256(normalized).hexdigest()
-        if measured != record["output_sha256"]:
+        stage = record["stage"]
+        if PAYLOAD_ONLY_ARCHIVE:
+            if stage not in TRANSCRIPT_HASH_STAGES:
+                continue
+            body = transcript_stage_output(notebook_text, stage)
+            transcript_bodies[stage] = body
+        else:
+            body = regular_payloads[stage_members[stage]]
+            body = (
+                body.decode("utf-8")
+                .replace("\r\n", "\n")
+                .replace("\r", "\n")
+                .encode("utf-8")
+            )
+        measured = hashlib.sha256(body).hexdigest()
+        if "output_sha256" in record and measured != record["output_sha256"]:
             raise RuntimeError(
-                f"STAGE_OUTPUT_SHA256_{record['stage']}={measured} "
+                f"STAGE_OUTPUT_SHA256_{stage}={measured} "
                 f"EXPECTED={record['output_sha256']}"
             )
 
     for module in MODULES:
         stage = AUDIT_STAGES[module]
-        body = regular_payloads[stage_members[stage]].decode("utf-8")
+        body = (
+            transcript_bodies[stage]
+            if PAYLOAD_ONLY_ARCHIVE
+            else regular_payloads[stage_members[stage]]
+        ).decode("utf-8")
         compact = re.sub(r"\s+", "", body)
         blocks = re.findall(r"dependsonaxioms:\[([^\]]*)\]", compact)
         expected = EXPECTED_AXIOM_HEADERS[module]
@@ -296,7 +373,6 @@ def main() -> int:
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     evidence_sha = hashlib.sha256(canonical.encode()).hexdigest().upper()
     archive_sha = sha256(archive_path)
-    notebook_text = executed_notebook_text(notebook_path)
     audit_notebook_transcript(notebook_text, evidence_sha, archive_sha)
     total_seconds = sum(float(record["seconds"]) for record in records)
     print(SUCCESS_SENTINEL)

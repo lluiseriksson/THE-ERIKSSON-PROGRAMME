@@ -1,7 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0
 
-/-! PRE-VALIDATION: the imported source has not yet been compiler-verified. -/
-
 #print axioms YangMills.RG.cmp99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0
 #print axioms YangMills.RG.cmp89Eq248ComplexGreenNumeratorBound_pos
 #print axioms YangMills.RG.cmp99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0_pos

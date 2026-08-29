@@ -6,23 +6,6 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP85SourceMassParameterUniformComplexWindow
 import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPointSourceB0
 
-/-!
-# One physical point-source B0 for the complete CMP85 source flow
-
-PRE-VALIDATION: source is present, but its `.olean` has not been materialized
-and no result in this file has yet been compiler-verified.
-
-C6a names the complete point-source coefficient at one fixed RG depth.  The
-CMP85 coefficient floor supplies one positive complex-strip radius and one
-amplitude majorant for every depth.  This file composes those two statements
-without replacing the literal source-flow coefficient by its generated
-analogue.
-
-The resulting `B0` is still an ambient point-source constant.  It is not the
-arbitrary localized-field estimate, a regional/Dirichlet Green certificate,
-window-15 attainment, rows 23--24 or a terminal field.
--/
-
 namespace YangMills.RG
 
 noncomputable section

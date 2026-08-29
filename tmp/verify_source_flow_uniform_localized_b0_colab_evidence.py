@@ -33,6 +33,20 @@ QUEUE_STAGES = [
     "source_flow_localized_field_b0_focal",
     "source_flow_localized_field_b0_audit",
 ]
+PACKAGE_MATERIALIZATION_NAMES = [
+    "mathlib",
+    "plausible",
+    "LeanSearchClient",
+    "importGraph",
+    "proofwidgets",
+    "aesop",
+    "Qq",
+    "batteries",
+    "Cli",
+]
+MODE_RECORDS = {"lake_update": "pinned_manifest_materialization"}
+PAYLOAD_ONLY_ARCHIVE = True
+TRANSCRIPT_HASH_STAGES = QUEUE_STAGES
 
 
 def load_base():
@@ -89,7 +103,6 @@ def executed_notebook_text(path: Path) -> str:
     result = "".join(chunks)
     required = (
         "FINAL_STATUS=PASS",
-        f"RUNNER_TRANSPORT_SHA256={RUNNER_TRANSPORT_SHA256.lower()}",
         "EVIDENCE_DOWNLOAD_REQUESTED=1",
         "RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1",
     )
@@ -98,6 +111,19 @@ def executed_notebook_text(path: Path) -> str:
             raise RuntimeError(
                 f"NOTEBOOK_TOKEN_COUNT_{token}={result.count(token)} EXPECTED=1"
             )
+    transport_token = f"RUNNER_TRANSPORT_SHA256={RUNNER_TRANSPORT_SHA256.lower()}"
+    transport_count = result.count(transport_token)
+    if transport_count == 0:
+        truncation_marker = "streaming har trunkerats till de sista 5000 raderna."
+        source_pin = f'RUNNER_SHA256 = "{RUNNER_TRANSPORT_SHA256.lower()}"'
+        if result.count(truncation_marker) != 1 or source_text.count(source_pin) != 1:
+            raise RuntimeError(
+                "NOTEBOOK_TRANSPORT_TOKEN_TRUNCATED_WITHOUT_EXACT_SOURCE_PIN"
+            )
+    elif transport_count != 1:
+        raise RuntimeError(
+            f"NOTEBOOK_TOKEN_COUNT_{transport_token}={transport_count} EXPECTED=1"
+        )
     for forbidden in ("FINAL_STATUS=FAIL", "sorryAx", "ofReduceBool"):
         if forbidden in result:
             raise RuntimeError(f"NOTEBOOK_FORBIDDEN_TOKEN={forbidden}")
@@ -115,6 +141,10 @@ def main() -> int:
     base.AUDIT_STAGES = AUDIT_STAGES
     base.EXPECTED_AXIOM_HEADERS = EXPECTED_AXIOM_HEADERS
     base.QUEUE_STAGES = QUEUE_STAGES
+    base.PACKAGE_MATERIALIZATION_NAMES = PACKAGE_MATERIALIZATION_NAMES
+    base.MODE_RECORDS = MODE_RECORDS
+    base.PAYLOAD_ONLY_ARCHIVE = PAYLOAD_ONLY_ARCHIVE
+    base.TRANSCRIPT_HASH_STAGES = TRANSCRIPT_HASH_STAGES
     base.executed_notebook_text = executed_notebook_text
     return base.main()
 

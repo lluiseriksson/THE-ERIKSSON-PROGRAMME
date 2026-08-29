@@ -41393,3 +41393,48 @@ This is prefix infrastructure for the transported fixed-depth actions.  It
 does not produce a depth-uniform physical `B0, delta0`, attain window 15 or
 discharge a terminal producer.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 963 (2026-08-29, **uniform literal source-flow flat B0 and localized-field reduction sealed; regional B0 still open; 20/41 unchanged**)
+
+Fresh source `73bb1a2008c557840a91e50d8abe6b874947f7ee` ran the
+`source-flow-uniform-point-source-b0-v4` stop-on-first-error queue with Lean
+`4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  All 63 recorded stages exited
+zero.  The uniform point-source focal compiled `8777` jobs in `1881.497`
+seconds and its audit exited zero in `8.857` seconds with five allowed axiom
+readouts.  The arbitrary localized-field reduction then compiled `8778` jobs
+in `33.495` seconds and its audit exited zero in `16.281` seconds with two
+allowed axiom readouts.
+
+Colab retained only the last 5000 streamed lines and the runner's archive
+contains the canonical evidence payload rather than separate stdout members.
+The fail-closed verifier therefore accepts exactly the nine pinned-manifest
+package groups and the declared
+`lake_update = pinned_manifest_materialization` record, cross-binds the four
+mathematical child outputs byte-for-byte to their recorded SHA-256 values in
+the executed notebook, checks all seven axiom blocks, and requires the exact
+hash-pinned launcher source when the early transport line was truncated.  It
+emitted `SOURCE_FLOW_UNIFORM_LOCALIZED_B0_COLAB_EVIDENCE_OK`.
+
+The canonical evidence payload SHA-256 is
+`84470C643124D49E247BA6436AD5EFED6BB56724ED75043A7DB3D5E3E6E1830A`;
+the downloaded archive independently rehashes to
+`E0283AA929B10B596B79ED2D0C480228FFE57E9C858ED4D324D63D1FD0455E7E`;
+the executed notebook rehashes to
+`9A34D1BB19EF2BCE3248BB1A6A9FB7B9951D27050B2101FFB905B16273D08252`.
+The package is preserved under
+`validation-evidence/source-flow-uniform-localized-b0-pass-73bb1a20-20260829/`.
+
+The selective sealer retired exactly the four notices in
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0{,Audit}`
+and
+`BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0{,Audit}`;
+its sealed scope manifest hashes to
+`E6E65D0A01CA9C3B959B3E621BADA1DB540227240FD5F7DDCE5A89EB01AF115C`.
+
+This closes a uniform ambient/source-flow flat `B0` and the reduction from a
+point source to an arbitrary localized coarse field.  It is not the canonical
+regional/Dirichlet Green bound for the transported physical actions, does not
+produce the regional `delta0`, and does not attain window 15 or discharge a
+terminal producer.  Counters remain exactly `20/41`, `TermSource = 0`;
+window 15 remains compatible but unattained.
