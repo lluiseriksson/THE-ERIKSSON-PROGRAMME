@@ -116,7 +116,7 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
   simp only [finitePiLpTypedKernelReindex,
     cmp99ActiveRegionSourceCovariantD0CLM,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply]
-  rw [htransported]
+  simp only [htransported]
   simp [B, E, e, covariantD0CLM_apply,
     cmp99GaugeZeroCochainReindex,
     cmp99ActiveGaugeZeroCochainReindex,
