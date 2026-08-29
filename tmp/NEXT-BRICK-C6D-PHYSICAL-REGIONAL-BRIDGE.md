@@ -255,7 +255,12 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    plus its audit.  It is **NOT CHECKED**, is not imported by the project, and
    is appended as the last target of the retained-runtime hot diagnostic so a
    failure cannot erase the separately recorded outcomes of the two spacing
-   pairs.
+   pairs.  Because the retained cold checkout predates that diagnostic, the
+   one-cell transport is pinned separately in
+   `tmp/C6D-D2-HOT-DIAGNOSTIC-LAUNCH.md` to source
+   `c5a8738d044fd9dd1c5120b2b355c723de6dc6ff` and runner SHA-256
+   `B62BF2946229E5A13DCEA667141102DD3082C3449F0D5E93F751C6B350436F3B`;
+   executing a path from the old checkout is not an accepted launch.
 9. **Window 15.** Feed that C6d-specific (3.89) correction estimate into the
    weighted-owner contraction.  The `K^-1` gain enters before owner/layer
    summation, overlap remains the single source `16`, and the weighted owner
