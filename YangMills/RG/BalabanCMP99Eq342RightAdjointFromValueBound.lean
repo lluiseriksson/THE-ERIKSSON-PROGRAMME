@@ -55,7 +55,7 @@ theorem cmp99Eq342_rightAdjoint_blockLocalizedSupBound_of_value
     (matrixSUNAdjointModel Nc) background terminalSpacing
   let rightCoefficient :
       FinBox 4 (2 * (K * Q)) → FinBox 4 (2 * (K * Q)) → ℝ :=
-    fun middle source ⇒
+    fun middle source =>
       if finBoxDist middle source ≤ 1 then 8 / terminalSpacing else 0
   let rightAmplitude := 648 * A * Real.exp rate / spacing
   have hrate : 0 < rate := hG.2.1
