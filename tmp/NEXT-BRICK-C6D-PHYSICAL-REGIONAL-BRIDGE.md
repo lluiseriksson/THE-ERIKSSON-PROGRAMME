@@ -155,7 +155,19 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    and `baselineRadiusBudget.toRadiusChain` used by
    `cmp99Eq360C6dSourceBaselineRetainedPhysicalTower` (which is constructed
    from `regions.weightedQprimeTower`) and transporting through the named
-   counting-to-weighted coefficient identity.  The already assembled
+   counting-to-weighted coefficient identity.  The exact scalar objects are
+   already named:
+   `cmp99Eq360C6dSourcePhysicalCountingCoefficient`,
+   `cmp99Eq360C6dSourcePhysicalCountingCoefficient_pos` and
+   `cmp99Eq360C6dSourcePhysicalCountingCoefficient_toWeighted`.  The terminal
+   spacing is likewise fixed by
+   `cmp99Eq360C6dSourceLaplacianRetainedPhysicalTower_terminalSpacing`, and
+   the baseline/Laplacian retained towers have named terminal-space and
+   terminal-`Qprime` identifications in
+   `BalabanCMP99Eq360C6dSourceFixedInput`.  The C6d third-species theorem must
+   cite those gates; it must not replace the coefficient by
+   `cmp99SourceGeneratedPhysicalMass` or the operator by
+   `cmp99SourceSeparatedGeneratedCountingMass`.  The already assembled
    generated-mass correction remains the wrong source object.
 9. **Window 15.** Feed that C6d-specific (3.89) correction estimate into the
    weighted-owner contraction.  The `K^-1` gain enters before owner/layer
