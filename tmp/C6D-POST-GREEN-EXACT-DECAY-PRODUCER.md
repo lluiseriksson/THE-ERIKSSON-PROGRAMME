@@ -147,6 +147,46 @@ prefix alone is not sufficient: the diameter module and audit must pass, its
 root must pass, and the exact pair must be selectively sealed before the
 full-companion finite-range proof is promoted.
 
+### Exact D2 instantiation (static, not compiler evidence)
+
+The full-companion theorem must be instantiated with the literal C6d data,
+not a parallel generated tower:
+
+- `d := 4`, `M := L`;
+- `rho := matrixSUNAdjointModel Nc`;
+- `spacing := eta`;
+- `epsilon := cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1`;
+- `background := cmp99Eq360C6dSourceLaplacianRetainedExtension ...`;
+- `chain := baselineRadiusBudget.toRadiusChain`;
+- `fineSmall :=
+  norm_cmp99Eq360C6dSourceLaplacianRetainedExtension_sub_one_le ...`.
+
+The proof sequence is fixed as follows.
+
+1. Apply
+   `cmp99SourceActiveRegionFullCompanionPrecision_exponentialKernelBound`
+   to the active full companion with the data above.
+2. Reindex by `cmp99SourceFullActiveRegionSiteEquiv 4 N` and rewrite the
+   pulled-back metric only with
+   `finBoxDist_cmp99SourceFullActiveRegionSiteEquiv`.
+3. Unfold only the endpoint definition
+   `cmp99Eq360C6dSourceAmbientBaselinePrecision`; do not unfold the retained
+   tower or replace its counting coefficient.
+4. Reindex by
+   `cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv.symm` and rewrite the metric
+   with `finBoxDist_cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv`.
+5. Apply `cmp99RegionalDirichletGreen_exponentialKernelBound` using the exact
+   source precision, the already compiled physical coercivity floor and its
+   coercivity witness.
+6. Rewrite the canonical regional inverse to
+   `cmp99Eq360C6dSourceSeparatedAmbientGreen` only through
+   `cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_ambient`.
+
+This sequence leaves no caller-supplied precision, Green, inverse equality,
+metric equality or coercivity certificate.  The only choices left to the
+consumer are the positive CT rate and the physical C6d data already present
+in the source constructor.
+
 At positive depth the literal constants should remain visible as
 
 - precision amplitude:
