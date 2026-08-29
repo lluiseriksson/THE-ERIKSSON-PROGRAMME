@@ -11,19 +11,9 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 VERIFIER = ROOT / "tmp" / "verify_source_flow_uniform_localized_b0_colab_evidence.py"
-CELL_SOURCE = (
-    "import urllib.request, hashlib\n"
-    "URL = 'https://raw.githubusercontent.com/lluiseriksson/"
-    "THE-ERIKSSON-PROGRAMME/a754e28555270ebbdab8bff05f262368a39c43fa/"
-    "scripts/colab_source_flow_uniform_point_source_b0_validation.py'\n"
-    "EXPECTED = '2563bfba3de16b09733d2ae751a7f39ed0d29282386857ef51f8ed0767a29021'\n"
-    "payload = urllib.request.urlopen(URL, timeout=60).read()\n"
-    "measured = hashlib.sha256(payload).hexdigest()\n"
-    "print('LAUNCHER_SHA256=' + measured, flush=True)\n"
-    "if measured != EXPECTED:\n"
-    "    raise RuntimeError('LAUNCHER_HASH_MISMATCH')\n"
-    "exec(compile(payload, URL, 'exec'), {'__name__': '__main__'})\n"
-)
+NOTEBOOK = ROOT / "scripts" / "colab_source_flow_uniform_point_source_b0_validation.ipynb"
+_notebook_payload = json.loads(NOTEBOOK.read_text(encoding="utf-8"))
+CELL_SOURCE = "".join(_notebook_payload["cells"][0]["source"])
 
 
 def load_verifier():
@@ -67,10 +57,10 @@ def must_reject(verifier, path: Path) -> None:
 def main() -> int:
     verifier = load_verifier()
     output = (
-        f"LAUNCHER_SHA256={verifier.LAUNCHER_SHA256}\n"
+        f"RUNNER_TRANSPORT_SHA256={verifier.RUNNER_TRANSPORT_SHA256.lower()}\n"
         "FINAL_STATUS=PASS\n"
         "EVIDENCE_DOWNLOAD_REQUESTED=1\n"
-        "RUNTIME_UNASSIGN_REQUESTED=1\n"
+        "RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1\n"
     )
     with tempfile.TemporaryDirectory() as directory:
         path = Path(directory) / "executed.ipynb"
