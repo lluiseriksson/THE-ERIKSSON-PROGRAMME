@@ -70,11 +70,11 @@ def main() -> int:
         if row.strip()
     )
     promoted_paths = tuple(promotion.destination(relative) for relative in promotion.SOURCES)
-    if len(manifest_paths) != 38 or len(set(manifest_paths)) != 38:
+    if len(manifest_paths) != 40 or len(set(manifest_paths)) != 40:
         raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_MANIFEST_CARDINALITY")
     if set(manifest_paths) != set(promoted_paths):
         raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_MANIFEST_SCOPE")
-    if len(promotion.AUDIT_IMPORTS) != 19:
+    if len(promotion.AUDIT_IMPORTS) != 20:
         raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_CORE_IMPORT_SCOPE")
 
     with tempfile.TemporaryDirectory(prefix="c6d-green-owner-prefix-") as folder:
@@ -141,7 +141,7 @@ def main() -> int:
         if queue_match is None:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_QUEUE_MISSING")
         queue = ast.literal_eval(queue_match.group(1))
-        if len(queue) != 39 or sum(row[2] is not None for row in queue) != 19:
+        if len(queue) != 41 or sum(row[2] is not None for row in queue) != 20:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_QUEUE_SCOPE")
 
         runner_path = Path(folder) / "runner.py"
@@ -186,7 +186,7 @@ def main() -> int:
         print(
             "C6D_GREEN_OWNER_PREFIX_GENERATORS_OK "
             f"synthetic_source={source_commit} source_rows={len(rows)} "
-            f"queue={len(queue)} axiom_blocks=23 checked_imports={checked_imports} "
+            f"queue={len(queue)} axiom_blocks=24 checked_imports={checked_imports} "
             f"verifier_sha256={hashlib.sha256(verifier_text.encode()).hexdigest().upper()}"
         )
     return 0
