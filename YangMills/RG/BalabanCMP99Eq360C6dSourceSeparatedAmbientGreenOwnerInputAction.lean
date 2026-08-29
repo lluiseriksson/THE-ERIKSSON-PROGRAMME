@@ -213,18 +213,23 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale
         Real.exp (rate * ((L ^ (depth + 1) - 1 : ℕ) : ℝ)) *
           ((L : ℝ) ^ (depth + 1)) ^ 2 * finitePiLpSupNorm f := by
     simpa [dist] using hinput
-  calc
-    ‖G f target‖ ≤
+  have hfinal :
+      ‖G f target‖ ≤
         (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
-          ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ :=
-      haction
-    _ ≤ (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
-        (Real.exp (rate * ((L ^ (depth + 1) - 1 : ℕ) : ℝ)) *
-          ((L : ℝ) ^ (depth + 1)) ^ 2 * finitePiLpSupNorm f) := by
-      simpa [c, rate, A, rowSum, dist] using
-        mul_le_mul_of_nonneg_left hinput'
+          (Real.exp (rate * ((L ^ (depth + 1) - 1 : ℕ) : ℝ)) *
+            ((L : ℝ) ^ (depth + 1)) ^ 2 * finitePiLpSupNorm f) := by
+    calc
+      ‖G f target‖ ≤
+          (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
+            ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ :=
+        haction
+      _ ≤ (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
+          (Real.exp (rate * ((L ^ (depth + 1) - 1 : ℕ) : ℝ)) *
+            ((L : ℝ) ^ (depth + 1)) ^ 2 * finitePiLpSupNorm f) := by
+        exact mul_le_mul_of_nonneg_left hinput'
           (mul_nonneg (div_nonneg (by positivity) hc.le)
             (Real.exp_pos _).le)
+  simpa [G, c, rate, A, rowSum, dist] using hfinal
 
 end
 
