@@ -70,6 +70,38 @@ def main() -> int:
         env = os.environ.copy()
         env["GIT_INDEX_FILE"] = str(folder_path / "index")
         git("read-tree", head, env=env)
+        # The synthetic prerequisite checkpoint models the state immediately
+        # before promotion even when this test runs from a later, promoted
+        # branch.  Remove only the six generated targets from the temporary
+        # index; the real worktree and index remain untouched.
+        for relative in (*decay.SOURCES, *owner.SOURCES):
+            target = (
+                decay.destination(relative)
+                if relative in decay.SOURCES
+                else owner.destination(relative)
+            )
+            git("update-index", "--force-remove", "--", target, env=env)
+        audit_imports = {
+            "import YangMills.RG." + Path(
+                decay.destination(relative)
+                if relative in decay.SOURCES
+                else owner.destination(relative)
+            ).stem
+            for relative in (*decay.SOURCES, *owner.SOURCES)
+            if relative.endswith("Audit.draft.lean")
+        }
+        core = git("cat-file", "blob", f"{head}:YangMillsCore.lean").decode()
+        prepromotion_core = "\n".join(
+            line for line in core.splitlines() if line not in audit_imports
+        ) + "\n"
+        core_oid = git(
+            "hash-object", "-w", "--stdin",
+            input_bytes=prepromotion_core.encode(),
+        ).decode().strip()
+        git(
+            "update-index", "--add", "--cacheinfo", "100644", core_oid,
+            "YangMillsCore.lean", env=env,
+        )
         prerequisites = tuple(dict.fromkeys((*decay.PREREQUISITES, *owner.PREREQUISITES)))
         for relative in prerequisites:
             data = git("cat-file", "blob", f"{head}:{relative}")
