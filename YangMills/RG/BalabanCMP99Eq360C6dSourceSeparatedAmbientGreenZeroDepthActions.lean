@@ -179,7 +179,7 @@ theorem
     dsimp [rightAmplitude]
     ring
   rw [hright_normalize] at hright
-  simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude] using hright
+  exact hright
 
 /-- The literal depth-zero covariant Laplacian action.  The two derivative
 factors leave `ell^2 / spacing^2` visible in the amplitude. -/
