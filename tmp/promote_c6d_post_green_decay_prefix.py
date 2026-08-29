@@ -61,7 +61,20 @@ def promote_text(data: bytes) -> bytes:
     text = data.decode("utf-8")
     if text.count("SCRATCH ONLY:") != 1:
         raise RuntimeError("C6D_POST_GREEN_SCRATCH_MARKER_COUNT")
-    text = text.replace("SCRATCH ONLY:", "PRE-VALIDATION:", 1)
+    standard = (
+        "PRE-VALIDATION: source present; its `.olean` is not yet materialized "
+        "and the result is not compiler-verified."
+    )
+    scratch_markers = (
+        "SCRATCH ONLY: not imported, not compiler-verified, and not evidence.",
+        "SCRATCH ONLY: the promoted import does not exist yet.  This audit is not\n"
+        "compiler evidence until a Colab focal and axiom gate pass.",
+        "SCRATCH ONLY: not compiler evidence.",
+    )
+    matches = [marker for marker in scratch_markers if marker in text]
+    if len(matches) != 1:
+        raise RuntimeError("C6D_POST_GREEN_SCRATCH_PROSE_UNRECOGNIZED")
+    text = text.replace(matches[0], standard, 1)
     text = re.sub(
         r"^import tmp\.([A-Za-z0-9_]+)\.draft$",
         r"import YangMills.RG.\1",
