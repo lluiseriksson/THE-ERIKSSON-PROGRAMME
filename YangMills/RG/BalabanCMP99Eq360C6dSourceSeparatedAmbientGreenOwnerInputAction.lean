@@ -71,6 +71,7 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale
     (hf : FinitePiLpSupportedInOwner
       (cmp99Eq342SourceLocalizedActiveOwner L K Q depth) owner f)
     (target : ActiveGaugeRegion.Site OmegaSource) :
+    letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
     let ell := L ^ (depth + 1)
     let A := cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude
       (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
