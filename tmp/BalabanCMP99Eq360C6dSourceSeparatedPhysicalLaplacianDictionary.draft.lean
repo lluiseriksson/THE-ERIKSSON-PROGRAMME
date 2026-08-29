@@ -129,7 +129,7 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
             (cmp99ActiveGaugeRegionSiteReindexEquiv
               (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
                 (L := L) (K := K) (Q := Q) (depth := depth))
-              OmegaSource).symm.symm).toContinuousLinearEquiv phi))) (x, i) =
+              OmegaSource).symm.symm).toContinuousLinearEquiv phi)))) (x, i) =
         (targetMap (eta⁻¹ • covDtarget
           (cmp99GaugeZeroCochainReindex
             (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
