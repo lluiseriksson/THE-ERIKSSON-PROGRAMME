@@ -245,6 +245,11 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
 
    Neither statement may accept the cardinality bound, the cancellation
    equality, or the generated-mass conclusion as caller data.
+   Implement them in a new leaf module and its audit, importing
+   `BalabanCMP99SourceGeneratedCountingMassVaryingOutput`; do not edit the
+   already cold-sealed canonical module merely to broaden its quantifiers.
+   The new leaf remains a generic typed-chain theorem, while the subsequent
+   C6d module performs the only source specialization.
 9. **Window 15.** Feed that C6d-specific (3.89) correction estimate into the
    weighted-owner contraction.  The `K^-1` gain enters before owner/layer
    summation, overlap remains the single source `16`, and the weighted owner
