@@ -3,7 +3,8 @@
 
 This runner validates the positive- and zero-depth source/audit pairs, all
 twenty-five public axiom readouts and every repository consumer through
-``YangMillsCore``.  Passing
+the repaired canonical-completion consumer and every remaining repository
+consumer through ``YangMillsCore``.  Passing
 does not attain window 15, move ``20/41`` or inhabit ``TermSource``.
 """
 
@@ -85,8 +86,8 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-source-separated-ambient-green-v3"
-runner.SOURCE_SHA = '0ea023c1a3589365dcc41a89514d1bff26c01080'
+runner.RUNNER_REV = "c6d-source-separated-ambient-green-v4"
+runner.SOURCE_SHA = '7e90203e8bfd1deb58d998fb5cdad0baab925af5'
 runner.ROOT = Path("/content/hrpoly-c6d-source-separated-ambient-green")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-source-separated-ambient-green-evidence")
 runner.ARCHIVE = Path(
@@ -100,7 +101,9 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenAudit.lean': '7713f038fd95e52cfe694c23770912d2498ff7222bc935f91f03f6a9865c0893',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth.lean': '6ca49eff15ce182b89dd515eb742fcd9cd2c6b5f094a964b0e778a8acdd430cb',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthAudit.lean': '621e01eda7ad5a74d120da2cad97d11fb076a76aed1f89bb6b7cc4f4f0bd82c4',
-    'YangMillsCore.lean': '3b15cc9a0fd1bea54af635f6af3a41100feb11993f893793a69b9e723bfeee1d',
+    'YangMills/RG/BalabanCMP99Eq360C6dCanonicalAmbientCompletion.lean': 'c93a2dc1485bdaef6c3ba039250412cfc64314b369112e21d89eaa3870b099ea',
+    'YangMills/RG/BalabanCMP99Eq360C6dCanonicalAmbientCompletionAudit.lean': '9c83decedb2f05184b23344694978314da26350ccdd670ded383b27c80c6ccda',
+    'YangMillsCore.lean': '1f3a1dc00cfb8705d2abb803e2ff2718bcd45bdd136b93e013034a075b890434',
 }
 runner.QUEUE = [
     (
@@ -124,7 +127,17 @@ runner.QUEUE = [
         10,
     ),
     (
-        '03_c6d_source_green_yang_mills_core_root',
+        '03_cmp99eq360c6dcanonicalambientcompletion_focal',
+        ['lake', 'build', 'YangMills.RG.BalabanCMP99Eq360C6dCanonicalAmbientCompletion'],
+        None,
+    ),
+    (
+        '03_cmp99eq360c6dcanonicalambientcompletion_audit',
+        ['lake', 'env', 'lean', 'YangMills/RG/BalabanCMP99Eq360C6dCanonicalAmbientCompletionAudit.lean'],
+        2,
+    ),
+    (
+        '04_c6d_source_green_yang_mills_core_root',
         ['lake', 'build', 'YangMillsCore'],
         None,
     ),
