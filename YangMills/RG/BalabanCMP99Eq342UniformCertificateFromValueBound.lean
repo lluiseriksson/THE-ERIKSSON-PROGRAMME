@@ -91,9 +91,15 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound
       (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
       (cmp99Eq342SourceLocalizedBondOwner L K Q depth)
       finBoxDist (leftAmplitude * ell) rate := by
-    convert hleft0 using 1 <;>
-      field_simp [ne_of_gt hell, ne_of_gt heta] <;>
-      simp [leftAmplitude] <;> ring
+    have hnormalize :
+        valueAmplitude * ell ^ 2 *
+            ((1 + Real.exp rate) / (ell * eta)) =
+          leftAmplitude * ell := by
+      dsimp [leftAmplitude]
+      field_simp [ne_of_gt hell, ne_of_gt heta]
+      ring
+    rw [hnormalize] at hleft0
+    exact hleft0
   have hright0 :=
     cmp99Eq342_rightAdjoint_blockLocalizedSupBound_at_terminalSpacing
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := depth)
@@ -106,9 +112,14 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound
       (cmp99Eq342SourceLocalizedBondOwner L K Q depth)
       (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
       finBoxDist (rightAmplitude * ell) rate := by
-    convert hright0 using 1 <;>
-      field_simp [ne_of_gt hell, ne_of_gt heta] <;>
-      simp [rightAmplitude] <;> ring
+    have hnormalize :
+        648 * valueAmplitude * Real.exp rate * ell ^ 2 / (ell * eta) =
+          rightAmplitude * ell := by
+      dsimp [rightAmplitude]
+      field_simp [ne_of_gt hell, ne_of_gt heta]
+      ring
+    rw [hnormalize] at hright0
+    exact hright0
   have hlaplacian0 :=
     cmp99Eq342_laplacian_blockLocalizedSupBound_at_terminalSpacing
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := depth)
@@ -121,9 +132,15 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound
       (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
       (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
       finBoxDist laplacianAmplitude rate := by
-    convert hlaplacian0 using 1 <;>
-      field_simp [ne_of_gt hell, ne_of_gt heta] <;>
-      simp [laplacianAmplitude] <;> ring
+    have hnormalize :
+        4 * leftAmplitude * ell *
+            ((1 + Real.exp rate) / (ell * eta)) =
+          laplacianAmplitude := by
+      dsimp [laplacianAmplitude]
+      field_simp [ne_of_gt hell, ne_of_gt heta]
+      ring
+    rw [hnormalize] at hlaplacian0
+    exact hlaplacian0
   have hleftAmplitude : 0 ≤ leftAmplitude := by
     dsimp [leftAmplitude]
     positivity
