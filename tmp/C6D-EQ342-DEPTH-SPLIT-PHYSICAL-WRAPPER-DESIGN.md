@@ -72,10 +72,14 @@ wrapper invokes
 internally from the derived instance and must disappear from the public
 signature.
 
-The fact that the lower C6d construction sometimes factors the same ambient
-size as `L^(depth+1) * (2*(K*Q))` does not license changing the raw localized
-carrier.  Any necessary equality of total ambient sizes is a named arithmetic
-transport at the operator boundary; it is not a redefinition of `Z0`.
+The fact that the lower C6d construction factors the same ambient size as
+`L^(depth+1) * (2*(K*Q))` does not license changing the raw localized carrier.
+The size equality is already named
+`cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier`, and the exact
+site/region transports are
+`cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv` and
+`cmp99Eq360C6dSourceSeparatedAmbientRegion`.  The wrappers must cite that
+chain at the operator boundary; it is not a redefinition of `Z0`.
 
 ## What this wrapper may conclude
 
