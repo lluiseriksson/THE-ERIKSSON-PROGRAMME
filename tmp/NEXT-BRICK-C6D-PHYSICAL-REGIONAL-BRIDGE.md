@@ -91,6 +91,42 @@ field is supported at one literal source owner and the estimate has no source
 cardinality factor.  It is complex, ambient and flat; it is not the regional
 Dirichlet Green and gives none of the three derivative actions in (3.42).
 
+## One-input boundary after the owner/action prefix
+
+The terminal-spacing cancellation has now been isolated in the PRE-VALIDATION
+pair
+
+```text
+BalabanCMP99Eq342UniformCertificateFromValueBound
+BalabanCMP99Eq342UniformCertificateFromValueBoundAudit
+```
+
+at overlay checkpoint
+`737e2f8149cde16a9d0ea876009f9c83dd144dea`.  The intended theorem consumes
+one source-localized value estimate for the canonical regional Green with
+amplitude `A * L^(2*(depth+1))`, one positive owner rate, and the literal
+terminal spacing `L^(depth+1) * eta`.  It derives the three remaining actions
+with depth-independent normalized amplitudes
+
+```text
+left      = A * (1 + exp rate) / eta
+right     = 648 * A * exp rate / eta
+laplacian = 4 * left * (1 + exp rate) / eta.
+```
+
+Thus the four-action uniform boundary is not four independent analytic
+debts: after this adapter is compiler-verified, it is exactly one uniform
+regional value estimate plus its positive rate.  The adapter does not
+construct either input and is not a physical producer.  Both source files
+retain PRE-VALIDATION, are absent from `YangMillsCore`, and do not move
+`20/41`, attain window 15 or instantiate a `TermSource`.
+
+The retained-runtime diagnostic is independently pinned in
+`tmp/C6D-UNIFORM-CERTIFICATE-FROM-VALUE-HOT-LAUNCH.md`.  It may run only
+after the current cold archive and executed notebook have been downloaded
+and verified.  A hot PASS will still require a later fresh-checkout seal
+before either PRE-VALIDATION mark can be retired.
+
 ## Finite source-faithful chain
 
 1. **CMP99 (3.35) local representative.** Promote the literal ordinary
