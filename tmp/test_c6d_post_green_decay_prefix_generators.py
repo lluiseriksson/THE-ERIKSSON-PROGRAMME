@@ -124,7 +124,7 @@ def main() -> int:
         notebook_text = notebook_gen.load_base().generate(
             source_commit,
             runner_commit,
-            "c6d-post-green-decay-prefix-v2",
+            "c6d-post-green-decay-prefix-v3",
             runner_path=notebook_gen.RUNNER_PATH,
             retain_runtime=True,
         )

@@ -87,8 +87,8 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-post-green-decay-prefix-v2"
-runner.SOURCE_SHA = 'b38b52851acbfead98c8bc2d5ec0048135210ed3'
+runner.RUNNER_REV = "c6d-post-green-decay-prefix-v3"
+runner.SOURCE_SHA = 'acc5064072a1e5c42eb74735b56b9fc7b465545c'
 runner.ROOT = Path("/content/hrpoly-c6d-post-green-decay-prefix")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-post-green-decay-prefix-evidence")
 runner.ARCHIVE = Path(
@@ -100,7 +100,7 @@ runner.PATH_MANIFEST = Path(
 runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay.lean': 'bdc60f7fd5d997b5e3f1451ddc60b29923fb3b6f99e5ab3e65a31f96b9d26ddd',
     'YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecayAudit.lean': 'd1d6a72f3b7d1cf0aabe0c02de6e94c614a30e6c765c90cfaf6680706ed09f4b',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric.lean': 'e91471c2ae3d4c4e5784d1019c53a2455db1e8511ab9f98a9974d0799f2baf0c',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric.lean': 'f21fe7a1c48ec69ef91a8b14fe382e6fc13cddcfed7f229a17392629af2fe545',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientMetricAudit.lean': '112366cc294f363d1eaeeb497ffa2976225112f088b57b62718c1051191ef8d1',
     'YangMillsCore.lean': '35c2f137d26219612850d9a03679ef2c50dad3ededa9fdb05a32021d3405c7f6',
 }
