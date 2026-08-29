@@ -48,9 +48,11 @@ theorem
     let ell := L ^ (0 + 1)
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall decay
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall decay
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
     let rate := finitePiLpExponentialInverseDecayRate A decay
       (cmp99OmegaSiteExpSumBound (decay / 4)) c
     let ownerRate := (ell : ℝ) * rate
@@ -62,7 +64,8 @@ theorem
       ((cmp99ActiveRegionSourceCovariantD0CLM OmegaSource
           (matrixSUNAdjointModel Nc) background spacing).comp
         (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-          (Nc := Nc) regions hL hspacing background chain fineSmall))
+          (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+          regions hL background chain fineSmall hspacing))
       (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
       (cmp99Eq342SourceLocalizedBondOwner L K Q 0)
       finBoxDist (leftAmplitude * (ell : ℝ)) ownerRate := by
@@ -70,9 +73,11 @@ theorem
   let ell := L ^ (0 + 1)
   let A :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-      (Nc := Nc) regions hL background chain fineSmall decay
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall decay
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let rate := finitePiLpExponentialInverseDecayRate A decay
     (cmp99OmegaSiteExpSumBound (decay / 4)) c
   let ownerRate := (ell : ℝ) * rate
@@ -81,7 +86,8 @@ theorem
   let leftAmplitude := ownerAmplitude * (ell : ℝ) *
     ((1 + Real.exp ownerRate) / spacing)
   let G := cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-    (Nc := Nc) regions hL hspacing background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall hspacing
   letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
   have hell : 0 < (ell : ℝ) := by
     exact_mod_cast pow_pos (NeZero.pos L) (0 + 1)
@@ -108,9 +114,11 @@ theorem
     let ell := L ^ (0 + 1)
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall decay
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall decay
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
     let rate := finitePiLpExponentialInverseDecayRate A decay
       (cmp99OmegaSiteExpSumBound (decay / 4)) c
     let ownerRate := (ell : ℝ) * rate
@@ -120,7 +128,8 @@ theorem
       (ell : ℝ) / spacing
     FinitePiLpTypedBlockLocalizedSupBound
       ((cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-          (Nc := Nc) regions hL hspacing background chain fineSmall).comp
+          (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+          regions hL background chain fineSmall hspacing).comp
         (cmp99ActiveRegionSourceCovariantD0CLM OmegaSource
           (matrixSUNAdjointModel Nc) background spacing).adjoint)
       (cmp99Eq342SourceLocalizedBondOwner L K Q 0)
@@ -130,9 +139,11 @@ theorem
   let ell := L ^ (0 + 1)
   let A :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-      (Nc := Nc) regions hL background chain fineSmall decay
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall decay
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let rate := finitePiLpExponentialInverseDecayRate A decay
     (cmp99OmegaSiteExpSumBound (decay / 4)) c
   let ownerRate := (ell : ℝ) * rate
@@ -141,7 +152,8 @@ theorem
   let rightAmplitude := 648 * ownerAmplitude * Real.exp ownerRate *
     (ell : ℝ) / spacing
   let G := cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-    (Nc := Nc) regions hL hspacing background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall hspacing
   letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
   have hell : 0 < (ell : ℝ) := by
     exact_mod_cast pow_pos (NeZero.pos L) (0 + 1)
@@ -168,9 +180,11 @@ theorem
     let ell := L ^ (0 + 1)
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall decay
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall decay
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
     let rate := finitePiLpExponentialInverseDecayRate A decay
       (cmp99OmegaSiteExpSumBound (decay / 4)) c
     let ownerRate := (ell : ℝ) * rate
@@ -184,7 +198,8 @@ theorem
       ((cmp99ActiveRegionSourceCovariantLaplacian OmegaSource
           (matrixSUNAdjointModel Nc) background spacing).comp
         (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-          (Nc := Nc) regions hL hspacing background chain fineSmall))
+          (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+          regions hL background chain fineSmall hspacing))
       (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
       (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
       finBoxDist laplacianAmplitude ownerRate := by
@@ -192,9 +207,11 @@ theorem
   let ell := L ^ (0 + 1)
   let A :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-      (Nc := Nc) regions hL background chain fineSmall decay
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall decay
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let rate := finitePiLpExponentialInverseDecayRate A decay
     (cmp99OmegaSiteExpSumBound (decay / 4)) c
   let ownerRate := (ell : ℝ) * rate
@@ -205,7 +222,8 @@ theorem
   let laplacianAmplitude := 4 * leftAmplitude * (ell : ℝ) *
     ((1 + Real.exp ownerRate) / spacing)
   let G := cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-    (Nc := Nc) regions hL hspacing background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall hspacing
   letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
   have hell : 0 < (ell : ℝ) := by
     exact_mod_cast pow_pos (NeZero.pos L) (0 + 1)
