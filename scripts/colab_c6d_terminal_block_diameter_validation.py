@@ -2,7 +2,7 @@
 """Fresh Colab gate for the typed terminal-block diameter producer.
 
 This runner validates the typed terminal-block diameter source/audit pair,
-all five public axiom readouts and every repository consumer through
+all four public axiom readouts and every repository consumer through
 ``YangMillsCore``. Passing closes only the geometric finite-range input;
 it does not produce Green decay, attain window 15, move ``20/41`` or
 inhabit ``TermSource``.
@@ -86,8 +86,8 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-terminal-block-diameter-v1"
-runner.SOURCE_SHA = 'dc227762c8873441f5865d4b51f831f9dd017ae9'
+runner.RUNNER_REV = "c6d-terminal-block-diameter-v2"
+runner.SOURCE_SHA = '1b9944b21f434a770215b74d285521238eb1dc14'
 runner.ROOT = Path("/content/hrpoly-c6d-terminal-block-diameter")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-terminal-block-diameter-evidence")
 runner.ARCHIVE = Path(
@@ -97,8 +97,8 @@ runner.PATH_MANIFEST = Path(
     "/content/hrpoly-c6d-terminal-block-diameter-paths.txt"
 )
 runner.SOURCE_BLOBS = {
-    'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameter.lean': '7ab9d5ccab0c119be0e2222659dd0064fc6c22b8b932fcd4fb11e9b0bf010d43',
-    'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameterAudit.lean': 'b9b4a2fa08707a221961a720aed8839bddbb9102782b220f6a56d6268e457997',
+    'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameter.lean': '12ec8c03e35103c57c52dbd8e0ff8ab5319880e84d723e8b990d560effaa3cd6',
+    'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameterAudit.lean': 'cfafab6ac336824872f077dc58507a826d2cfe37958b9071ffb5b62611b822e4',
     'YangMillsCore.lean': '1f3a1dc00cfb8705d2abb803e2ff2718bcd45bdd136b93e013034a075b890434',
 }
 runner.QUEUE = [
@@ -110,7 +110,7 @@ runner.QUEUE = [
     (
         '01_cmp99sourceactiveregionterminalblockdiameter_audit',
         ['lake', 'env', 'lean', 'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameterAudit.lean'],
-        5,
+        4,
     ),
     (
         '02_c6d_terminal_block_diameter_yang_mills_core_root',

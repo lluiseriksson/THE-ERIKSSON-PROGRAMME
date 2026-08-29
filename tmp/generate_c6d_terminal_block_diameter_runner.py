@@ -14,7 +14,6 @@ BASE = ROOT / "tmp" / "generate_c6d_source_separated_ambient_green_validation_ru
 OUTPUT = ROOT / "scripts" / "colab_c6d_terminal_block_diameter_validation.py"
 MODULE = "BalabanCMP99SourceActiveRegionTerminalBlockDiameter"
 DECLARATIONS = (
-    "CMP99SourceActiveRegionChain.terminalSiteOfFine_val_eq_div_pow",
     "CMP99SourceActiveRegionChain.div_pow_eq_of_sameTerminalBlock",
     "CMP99SourceActiveRegionChain.sameTerminalBlock_finBoxDist_le",
     "CMP99SourceActiveRegionChain.generatedCountingMass_finiteRange_terminalBlock",
@@ -46,14 +45,14 @@ def generate(source_sha: str) -> str:
             "``YangMillsCore``.  Passing\n"
             "does not attain window 15, move ``20/41`` or inhabit ``TermSource``.",
             "This runner validates the typed terminal-block diameter source/audit pair,\n"
-            "all five public axiom readouts and every repository consumer through\n"
+            "all four public axiom readouts and every repository consumer through\n"
             "``YangMillsCore``. Passing closes only the geometric finite-range input;\n"
             "it does not produce Green decay, attain window 15, move ``20/41`` or\n"
             "inhabit ``TermSource``.",
         ),
         (
             "c6d-source-separated-ambient-green-v3",
-            "c6d-terminal-block-diameter-v1",
+            "c6d-terminal-block-diameter-v2",
         ),
         (
             "hrpoly-c6d-source-separated-ambient-green",
@@ -82,7 +81,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_TERMINAL_BLOCK_DIAMETER_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=3 stages=3 axiom_blocks=5 "
+        f"source_sha={args.source_sha} files=3 stages=3 axiom_blocks=4 "
         "root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"
