@@ -9,9 +9,9 @@ param(
 $ErrorActionPreference = 'Stop'
 
 $Repo = Split-Path -Parent $PSScriptRoot
-$SourceSha = '86d9f0e44a17e6f80667257e4ecfd814a67adaed'
+$SourceSha = '77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92'
 $ExpectedSentinel = 'C6D_GREEN_OWNER_PREFIX_EVIDENCE_OK'
-$Destination = Join-Path $Repo 'validation-evidence\c6d-green-owner-prefix-pass-86d9f0e4-20260829'
+$Destination = Join-Path $Repo 'validation-evidence\c6d-green-owner-prefix-pass-77d9f4b4-20260830'
 $Verifier = Join-Path $Repo 'tmp\verify_c6d_green_owner_prefix_evidence.py'
 
 foreach ($Path in @($Archive, $ExecutedNotebook, $Verifier)) {
