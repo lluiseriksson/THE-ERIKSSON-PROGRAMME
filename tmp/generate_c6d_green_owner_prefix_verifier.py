@@ -22,6 +22,7 @@ MODULES = [
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayZeroDepth",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecay",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth",
+    "BalabanCMP99SourcePhysicalLocalizedRegionNonempty",
 ]
 
 
@@ -70,7 +71,9 @@ def generated_text(source_sha: str, runner: Path, notebook: Path) -> str:
     for index, module in enumerate(MODULES, start=1):
         stem = f"{index:02d}_{module.lower()}"
         queue_stages.extend((stem + "_focal", stem + "_audit"))
-    queue_stages.append("07_c6d_green_owner_prefix_yang_mills_core_root")
+    queue_stages.append("08_c6d_green_owner_prefix_yang_mills_core_root")
+    expected_axiom_headers = {module: 1 for module in MODULES}
+    expected_axiom_headers["BalabanCMP99SourcePhysicalLocalizedRegionNonempty"] = 3
     return f'''#!/usr/bin/env python3
 """Fail-closed verifier specialization for the C6d Green owner prefix."""
 
@@ -90,7 +93,7 @@ NOTEBOOK_CELL_SOURCE_SHA256 = "{cell_sha}"
 SUCCESS_SENTINEL = "C6D_GREEN_OWNER_PREFIX_EVIDENCE_OK"
 MODULES = {MODULES!r}
 AUDIT_STAGES = {audit_stages!r}
-EXPECTED_AXIOM_HEADERS = {{module: 1 for module in MODULES}}
+EXPECTED_AXIOM_HEADERS = {expected_axiom_headers!r}
 QUEUE_STAGES = {queue_stages!r}
 
 

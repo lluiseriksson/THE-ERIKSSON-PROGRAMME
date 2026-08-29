@@ -33,6 +33,8 @@ SOURCES = (
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayAudit.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepthAudit.draft.lean",
+    "tmp/BalabanCMP99SourcePhysicalLocalizedRegionNonempty.draft.lean",
+    "tmp/BalabanCMP99SourcePhysicalLocalizedRegionNonemptyAudit.draft.lean",
 )
 PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay.lean",
@@ -47,6 +49,7 @@ AUDIT_IMPORTS = (
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayZeroDepthAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepthAudit",
+    "import YangMills.RG.BalabanCMP99SourcePhysicalLocalizedRegionNonemptyAudit",
 )
 
 
@@ -91,10 +94,15 @@ def promote_text(data: bytes) -> bytes:
         text, count = source_pattern.subn(standard, text, count=1)
     else:
         audit = "-- SCRATCH ONLY: no compiler or axiom-oracle verdict is claimed."
-        if text.count(audit) != 1:
+        audit_doc = "/-! SCRATCH ONLY: no compiler or axiom-oracle verdict is claimed. -/"
+        if text.count(audit) == 1:
+            text = text.replace(audit, "-- " + standard, 1)
+            count = 1
+        elif text.count(audit_doc) == 1:
+            text = text.replace(audit_doc, "/-! " + standard + " -/", 1)
+            count = 1
+        else:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_SCRATCH_PROSE_UNRECOGNIZED")
-        text = text.replace(audit, "-- " + standard, 1)
-        count = 1
     if count != 1:
         raise RuntimeError("C6D_GREEN_OWNER_PREFIX_SCRATCH_REPLACE_COUNT")
     text = re.sub(
