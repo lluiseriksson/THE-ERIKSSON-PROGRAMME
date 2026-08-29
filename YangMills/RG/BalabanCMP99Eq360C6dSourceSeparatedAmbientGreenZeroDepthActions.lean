@@ -100,9 +100,14 @@ theorem
     cmp99Eq342_leftDerivative_blockLocalizedSupBound_at_terminalSpacing
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := 0)
       OmegaSource background G hspacing hell hvalue
-  simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude,
-    leftAmplitude, pow_two, div_eq_mul_inv, mul_assoc, mul_left_comm,
-    mul_comm] using hleft
+  have hleft_normalize :
+      ownerAmplitude * (ell : ℝ) ^ 2 *
+          ((1 + Real.exp ownerRate) / spacing) =
+        leftAmplitude * (ell : ℝ) := by
+    dsimp [leftAmplitude]
+    ring
+  rw [hleft_normalize] at hleft
+  simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude] using hleft
 
 /-- The exact depth-zero Green composed with the literal right-adjoint
 derivative at terminal spacing `spacing`. -/
@@ -167,9 +172,14 @@ theorem
     cmp99Eq342_rightAdjoint_blockLocalizedSupBound_at_terminalSpacing
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := 0)
       OmegaSource background G hspacing hell hvalue
-  simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude,
-    rightAmplitude, pow_two, div_eq_mul_inv, mul_assoc, mul_left_comm,
-    mul_comm] using hright
+  have hright_normalize :
+      648 * ownerAmplitude * Real.exp ownerRate *
+          (ell : ℝ) ^ 2 / spacing =
+        rightAmplitude * (ell : ℝ) := by
+    dsimp [rightAmplitude]
+    ring
+  rw [hright_normalize] at hright
+  simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude] using hright
 
 /-- The literal depth-zero covariant Laplacian action.  The two derivative
 factors leave `ell^2 / spacing^2` visible in the amplitude. -/
@@ -243,8 +253,7 @@ theorem
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := 0)
       OmegaSource background G hspacing hell hleft
   simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude,
-    leftAmplitude, laplacianAmplitude, pow_two, div_eq_mul_inv, mul_assoc,
-    mul_left_comm, mul_comm] using hlaplacian
+    leftAmplitude, laplacianAmplitude] using hlaplacian
 
 end
 
