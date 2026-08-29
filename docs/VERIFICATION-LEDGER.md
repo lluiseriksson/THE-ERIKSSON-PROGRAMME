@@ -41283,3 +41283,32 @@ does not yet re-instantiate the four fixed-depth CMP96 actions, produce uniform
 `B0, delta0`, attain window 15, close rows 23--24 or instantiate `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+## Addendum 960 (2026-08-29, **D1 decay green; ambient metric failed at an explicit carrier cast; no seal; 20/41 unchanged**)
+
+Fresh source `b38b52851acbfead98c8bc2d5ec0048135210ed3` ran the
+`c6d-post-green-decay-prefix-v2` stop-on-first-error queue with Lean
+`4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  The full-companion precision
+decay focal exited zero after `1971.568` seconds, and its audit exited zero
+after `37.477` seconds.  The next focal stopped at the first real error after
+`1027.162` seconds:
+
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric.lean:44:2` attempted a
+`change` from the named generated active-site equivalence directly to a
+carrier cast, but that reduction is not definitional.  The metric statement
+itself is unchanged; the repair makes the intermediate cast equality explicit
+and transports it through the named equivalence.
+
+The runner emitted literal `FINAL_STATUS=FAIL` and launcher exit one.  Its
+evidence payload SHA-256 is
+`129BEA5F820B90808E05A94A0C97F43DCA8E442AF6F545DFDD7547E515BB78DF`;
+the downloaded archive independently rehashes to
+`A9B0287F1C14162E08BB912956BC9A8E5FB0ED75440C102483C3D54FE1334279`;
+the executed notebook rehashes to
+`35580159D295AB7214384BA4A8EFA2C5DE6606245AAD67C7E4FFC9FAC4C8DA41`.
+The package is preserved under
+`validation-evidence/c6d-post-green-decay-prefix-fail-b38b5285-20260829/`.
+
+No PRE-VALIDATION notice is retired.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
