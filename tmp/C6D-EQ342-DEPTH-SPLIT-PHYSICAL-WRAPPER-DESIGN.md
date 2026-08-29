@@ -16,7 +16,15 @@ Its source index is a literal
 `cmp116SourcePhysicalLocalizedCoordinates Dict Z0.1`, and the active region is
 definitionally the one whose sites are
 
-`cmp116RegionSites (M := L^(depth+1)) (N' := 2*(K*Q)) Z0.1`.
+`cmp116RegionSites
+  (M := cmp99SourceSeparatedLargeBlockSide L K depth)
+  (N' := 2*Q) Z0.1`.
+
+Here `cmp99SourceSeparatedLargeBlockSide L K depth = K*L^(depth+1)`.
+The factor `K` belongs to the physical block size `M`; it must not be moved
+into `N'`.  Although both placements can give the same total ambient product,
+they give different raw block carriers and therefore different localization
+geometry.
 
 The instance required by `CMP99Eq342SourceLocalizedGreenCertificate` must be
 constructed internally by the named theorem
