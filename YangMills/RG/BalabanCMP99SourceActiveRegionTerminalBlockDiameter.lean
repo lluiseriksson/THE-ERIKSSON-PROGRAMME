@@ -14,7 +14,8 @@ no identification with the canonical iterated-lift chain is used.
 
 namespace YangMills.RG
 
-open YangMills
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator
 
 noncomputable section
 
@@ -119,7 +120,6 @@ theorem CMP99SourceActiveRegionChain.generatedCountingMass_finiteRange_terminalB
       (regions.generatedCountingMass hd hM rho spacing epsilon background
         chain fineSmall)
       (fun x y => finBoxDist x.1 y.1) (M ^ depth - 1) := by
-  letI : NeZero N := regions.neZero
   apply regions.generatedCountingMass_finiteRange
     hd hM rho spacing epsilon background chain fineSmall
   intro source target hsame
@@ -141,7 +141,6 @@ theorem CMP99SourceActiveRegionChain.QprimeMass_finiteRange_terminalBlock
       (ι := ActiveGaugeRegion.Site Omega) (g := SUNLieCoord Nc)
       (T.Qprime.adjoint.comp T.Qprime)
       (fun x y => finBoxDist x.1 y.1) (M ^ depth - 1) := by
-  letI : NeZero N := regions.neZero
   let T := regions.weightedQprimeTower hd hM rho spacing epsilon
     background chain fineSmall
   change FinitePiLpFiniteRange
