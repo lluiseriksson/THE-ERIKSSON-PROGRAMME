@@ -92,8 +92,8 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-green-owner-prefix-v2"
-runner.SOURCE_SHA = '4a5eef674bbf341d73fedcdf835b8bcd98ec9804'
+runner.RUNNER_REV = "c6d-green-owner-prefix-v3"
+runner.SOURCE_SHA = '77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92'
 runner.ROOT = Path("/content/hrpoly-c6d-green-owner-prefix")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-green-owner-prefix-evidence")
 runner.ARCHIVE = Path(
@@ -121,13 +121,13 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionAudit.lean': '4b6e8b8a11f4b334961ffb55b1399c142acdd78dc202f8358303044dfa315462',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionZeroDepth.lean': '16630dea14a8364c13136a3ceddee79042fc3dda83a4e8b735d839f61c1f0213',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionZeroDepthAudit.lean': '28b280d97c58f9ffe93202fdb39eff4d110a85a5149baa5cf39d65d159a6b159',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecay.lean': 'e0a3150f1e2dd2b6cdc2bf8f74041a7de8fbdb314ddb0c439a19a1b402873bcd',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecay.lean': '0bceb17b0bdc67a2b14b9d91c449d05bb9187db5adeb16f137c6004f723a5d4f',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayAudit.lean': '690717ad8a208684f6e7aaac53a87654a86d5377a1d9acf2ca48a8d6cf83b84d',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayZeroDepth.lean': 'd0ed1817a128ef41139e85e39e1b87437620f8aa83407fae567abf5fafd3f6f0',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayZeroDepth.lean': 'e0065b58a28aa1d962f16e263c13fa892086dbbb5e26dae0bd60e308e27df0d1',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayZeroDepthAudit.lean': 'be83694f60544d7e712013b763ae765120d1119a6aa587f0c109bc6bb8852523',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecay.lean': '03eac11132ca9565aac55236a7f6db1046b5f692e13006368c7e369458d4c167',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayAudit.lean': 'b163b664967bf2e8e3a0982d32f39e1365b625761835f29268fa879136dc243f',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth.lean': '8d4f7677ec09fe2eb9ced539fe97775cb21f7edf20885087d766789161bc231c',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth.lean': '3abe496ec13de3e88652c6570f8c5b70454d3dc56ca398680a69a375304d51e2',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepthAudit.lean': '64ba4671c1053cf5692a906cb1266cbb6325b2aed1366be8ef3643d803a7b0f3',
     'YangMills/RG/BalabanCMP99SourcePhysicalLocalizedRegionNonempty.lean': '8a0a19722df99ab1d07953176e7ef8f2e6a40b80566d025c46d3f7761d05a2ba',
     'YangMills/RG/BalabanCMP99SourcePhysicalLocalizedRegionNonemptyAudit.lean': '22868aa23a5c54d7f478b7e90b860310af88cb7b2e6e8b37e983c900614e06f5',
@@ -137,11 +137,11 @@ runner.SOURCE_BLOBS = {
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjointAudit.lean': '511f11f803ebca30a1aa8c6920b2a3b57cad07063b30ae8d0397d16ef6e956ab',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian.lean': '8f428ff5bf107329cfb92c8c048811d911d9a13f1c0643c3f61e5c83383f47c0',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacianAudit.lean': '1d6081e13f1f2997f9eed0d1cd63d5b0e8eade5479b068bbf3c27ccf22169d6a',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions.lean': '71c6d7618cd1fcab6757a44ae2e45bc212c8700d5ebc674c9121e4838650f3c8',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions.lean': '4bb87415eb3ce2bd094074512dbd234cbe2379567fc4eb0334800d49ae1cb16e',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActionsAudit.lean': '766859128a41e2d930935ab70d849981dadb8aac3012a798341c95e613fdcd1f',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificate.lean': '3b973f31240e5118db067dd8f3e57128cb58ac7ab34d822ec4e07fe92d4a8d3b',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificate.lean': 'b657c0e715b5d0d7a2b8054980abceae9375f647b33b34e81c3e3e6ef9937b4d',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificateAudit.lean': '11b75e297925513364fba75a08bfd986e4d6b4a8e8d8d786ef4cfef6984fecf2',
-    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthCertificate.lean': 'aa4cd444b66fb2c8d094d0d032798d0d1677746a3e2a4e266ef9831a60f56dd7',
+    'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthCertificate.lean': 'eb625ce04ef6196364e982d3a68396e5937de3ab941498944e4a55ab3d04ded7',
     'YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthCertificateAudit.lean': 'd252f6213f6dabb1a0403b7ad924f2aed17cd891ea8ff5042819cdb632bd71f6',
     'YangMillsCore.lean': '12fa5fb7dd1eb2bd33be5d5dbc621640ee165f845ab243ed8efa4849044905a0',
 }
