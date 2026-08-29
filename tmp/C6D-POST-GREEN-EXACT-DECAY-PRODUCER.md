@@ -428,3 +428,10 @@ corresponding scratch consumer.  It fixes the literal depth-zero spacing to
 the action amplitudes.  It remains uncompiled and is not part of the current
 Green-owner promotion until its adapters and the zero-depth value action have
 passed together.
+
+The scalar part of item 5 is now isolated in the scratch-only theorem
+`cmp99Eq342SourceLocalizedGreenCertificate_of_actionBounds`.  Its four inputs
+are the literal, definitionally fixed certificate actions; it merely enlarges
+their four normalized amplitudes to `cmp99Eq342CommonAmplitude`.  It is an
+assembler, not a producer, and therefore neither discharges a physical bound
+nor changes the counter.
