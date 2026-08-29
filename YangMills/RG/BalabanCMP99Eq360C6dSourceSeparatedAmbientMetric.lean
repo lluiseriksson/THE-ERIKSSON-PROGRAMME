@@ -44,9 +44,26 @@ theorem finBoxDist_cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv
   have hcast :
       finBoxDist (hsize ▸ x.1) (hsize ▸ y.1) = finBoxDist x.1 y.1 :=
     finBoxDist_cast_size hsize x.1 y.1
-  simpa only [
-    cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv,
-    cmp99GeneratedFineBoxOneBlockEquiv] using hcast
+  have hx :
+      cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv
+          L K Q depth x = hsize ▸ x.1 := by
+    funext i
+    apply Fin.ext
+    simp only [
+      cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv,
+      cmp99GeneratedFineBoxOneBlockEquiv_apply_val,
+      finBox_cast_apply_val]
+  have hy :
+      cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv
+          L K Q depth y = hsize ▸ y.1 := by
+    funext i
+    apply Fin.ext
+    simp only [
+      cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv,
+      cmp99GeneratedFineBoxOneBlockEquiv_apply_val,
+      finBox_cast_apply_val]
+  rw [hx, hy]
+  exact hcast
 
 /-- The exact source-separated Step-7b carrier equivalence preserves the
 periodic metric.  Both the generated one-block cast and separated carrier
