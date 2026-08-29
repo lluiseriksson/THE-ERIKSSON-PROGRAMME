@@ -80,6 +80,10 @@ theorem CMP99SourceActiveRegionChain.sameTerminalBlock_finBoxDist_le
       M ^ depth * ((target.1 i).val / M ^ depth) +
         (target.1 i).val % M ^ depth :=
     (Nat.div_add_mod _ _).symm
+  have hsmodLt : (source.1 i).val % M ^ depth < M ^ depth :=
+    Nat.mod_lt _ hpowPos
+  have htmodLt : (target.1 i).val % M ^ depth < M ^ depth :=
+    Nat.mod_lt _ hpowPos
   have hsmod : (source.1 i).val % M ^ depth ≤ M ^ depth - 1 := by
     omega
   have htmod : (target.1 i).val % M ^ depth ≤ M ^ depth - 1 := by
