@@ -39,6 +39,13 @@ theorem finBoxCast_shift_c6d
   subst M
   rfl
 
+private theorem finBoxTransport_shift_c6d
+    {d N M : ℕ} [NeZero N] [NeZero M]
+    (h : N = M) (x : FinBox d N) (i : Fin d) :
+    h ▸ (x.shift i) = (h ▸ x).shift i := by
+  subst M
+  rfl
+
 /-- The unique source-carrier background used by the derived Eq. (3.42)
 actions for the literal C6d precision.  It is the direct pullback through the
 same Step-7b equivalence that defines the ambient precision; no parallel
@@ -113,10 +120,10 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
           (L := L) (K := K) (Q := Q) (depth := depth) y =
         cmp99GeneratedFineBoxOneBlockEquiv
           (d := 4) L (2 * (K * Q)) (depth + 1)
-            (Equiv.cast (congrArg (FinBox 4) hsize.symm) y) := by
+            (hsize.symm ▸ y) := by
     rfl
   rw [happly (x.shift i), happly x]
-  rw [finBoxCast_shift_c6d hsize.symm x i]
+  rw [finBoxTransport_shift_c6d hsize.symm x i]
   exact cmp99GeneratedFineBoxOneBlockEquiv_shift
     (M := L) (N := 2 * (K * Q)) (depth + 1) (hsize.symm ▸ x) i
 
