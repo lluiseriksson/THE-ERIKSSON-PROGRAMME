@@ -49,19 +49,29 @@ theorem finBoxDist_cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv
           L K Q depth x = hsize ▸ x.1 := by
     funext i
     apply Fin.ext
-    simp only [
-      cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv,
-      cmp99GeneratedFineBoxOneBlockEquiv_apply_val,
-      finBox_cast_apply_val]
+    change
+      ((cmp99GeneratedFineBoxOneBlockEquiv
+          (d := 4) L (2 * (K * Q)) (depth + 1) x.1) i).val =
+        (((hsize ▸ x.1) i).val : ℕ)
+    calc
+      _ = (x.1 i).val :=
+        cmp99GeneratedFineBoxOneBlockEquiv_apply_val
+          L (2 * (K * Q)) (depth + 1) x.1 i
+      _ = _ := (finBox_cast_apply_val hsize x.1 i).symm
   have hy :
       cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv
           L K Q depth y = hsize ▸ y.1 := by
     funext i
     apply Fin.ext
-    simp only [
-      cmp99SourceSeparatedGeneratedPhysicalStep7bActiveSiteEquiv,
-      cmp99GeneratedFineBoxOneBlockEquiv_apply_val,
-      finBox_cast_apply_val]
+    change
+      ((cmp99GeneratedFineBoxOneBlockEquiv
+          (d := 4) L (2 * (K * Q)) (depth + 1) y.1) i).val =
+        (((hsize ▸ y.1) i).val : ℕ)
+    calc
+      _ = (y.1 i).val :=
+        cmp99GeneratedFineBoxOneBlockEquiv_apply_val
+          L (2 * (K * Q)) (depth + 1) y.1 i
+      _ = _ := (finBox_cast_apply_val hsize y.1 i).symm
   rw [hx, hy]
   exact hcast
 
