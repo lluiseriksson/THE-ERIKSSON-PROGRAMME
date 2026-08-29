@@ -172,7 +172,7 @@ theorem cmp99Eq342_laplacian_blockLocalizedSupBound_of_leftDerivative
                 (cmp99Eq342SourceLocalizedActiveOwner L K Q depth target)
                 owner : ℝ)))) * finitePiLpSupNorm f) := by
       apply mul_le_mul_of_nonneg_left _ (inv_nonneg.mpr hterminal.le)
-      exact Finset.sum_le_sum fun i _ ⇒ add_le_add (hforward i) (hback i)
+      exact Finset.sum_le_sum fun i _ => add_le_add (hforward i) (hback i)
     _ = laplacianAmplitude *
         Real.exp (-(rate *
           (finBoxDist
