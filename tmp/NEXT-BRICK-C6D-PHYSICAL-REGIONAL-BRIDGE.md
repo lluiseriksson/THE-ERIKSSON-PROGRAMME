@@ -193,16 +193,24 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    cold gate reaches a terminal verdict.  Until that diagnostic itself emits
    a preserved PASS, neither spacing budget is compiler evidence and neither
    may move the terminal counter or Window 15.
-   The third obligation can reuse the existing row theorem
-   `cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le`
-   without a new analytic estimate only after specializing it to the retained extension
-   and `baselineRadiusBudget.toRadiusChain` used by
+   The third obligation cannot directly reuse
+   `cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le`: that
+   theorem is specialized to the canonical
+   `cmp99SourceIteratedLiftActiveRegionChain`, whereas C6d receives an
+   arbitrary `CMP99SourceActiveRegionChain`.  The analytic cancellation is
+   still reusable, but the missing bridge is now explicit: first generalize
+   `card_cmp99SourceIteratedLift_sameTerminalBlock_le` to an arbitrary typed
+   chain using the already sealed
+   `CMP99SourceActiveRegionChain.div_pow_eq_of_sameTerminalBlock`, then derive
+   the corresponding chain-parametric varying-value row theorem.  Only that
+   theorem may be specialized to the retained extension and
+   `baselineRadiusBudget.toRadiusChain` used by
    `cmp99Eq360C6dSourceBaselineRetainedPhysicalTower` (which is constructed
-   from `regions.weightedQprimeTower`) and transporting through the named
-   counting-to-weighted coefficient identity.  Its input bound is only on the
-   actual `SameTerminalBlock` fibre and its conclusion is the exact
-   `(cmp99SourceBlockAverageWeight M d)^depth` counting mass; neither side may
-   be replaced by a uniform all-source bound.  The exact scalar objects are
+   from `regions.weightedQprimeTower`) and transported through the named
+   counting-to-weighted coefficient identity.  Its input bound must remain on
+   the actual `SameTerminalBlock` fibre and its conclusion must remain the
+   exact `(cmp99SourceBlockAverageWeight M d)^depth` counting mass; neither
+   side may be replaced by a uniform all-source bound.  The exact scalar objects are
    already named:
    `cmp99Eq360C6dSourcePhysicalCountingCoefficient`,
    `cmp99Eq360C6dSourcePhysicalCountingCoefficient_pos` and
