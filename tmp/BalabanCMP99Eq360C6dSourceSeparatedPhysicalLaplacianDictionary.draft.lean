@@ -98,9 +98,8 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
     (L := L) (K := K) (Q := Q) (depth := depth) x i
   simp only [finitePiLpTypedKernelReindex,
     cmp99ActiveRegionSourceCovariantD0CLM,
-    ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply,
-    LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
-  dsimp only [E] at hlocalized
+    ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply]
+  dsimp only [E, e] at hlocalized
   rw [hlocalized, ← hext]
   simp [B, E, e, covariantD0CLM_apply,
     cmp99GaugeZeroCochainReindex,
