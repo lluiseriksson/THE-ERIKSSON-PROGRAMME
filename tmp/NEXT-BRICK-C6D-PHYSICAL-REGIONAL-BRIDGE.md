@@ -147,12 +147,37 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    obligation needs a spacing-parametric operator/correction and its action
    identity, not merely a generalized certificate wrapper; it must then be
    specialized to the literal C6d terminal spacing.  The signed cutoff
+   link correction has two explicit factors of `spacing^-1`, whereas the
+   derivative component of the Eq. (3.42) certificate controls the already
+   scaled derivative `D^spacing = spacing^-1 D`.  Consequently the direct
+   pointwise reduction must expose the remaining factor
+
+   ```text
+   spacing^-1 * slope * (B0 * ell)
+   ```
+
+   before the four-direction sum and the one-step `exp(delta0)` payment.
+   At the literal positive-depth C6d spacing
+   `spacing = (L^(depth+1) : R) * eta`, this is not the unit-spacing budget
+   from the generated consumer.  The equality eliminating one, and only
+   one, spacing factor must be a named algebraic lemma; hiding it in a
+   shared constant would erase the physical scale convention.
+   The signed cutoff
    Laplacian leaf is also a unit-spacing specialization: its action theorem
    cites `cmp99CutoffLaplacianCorrection_one_eq_sourceSeparatedSignedCoefficient`,
    whereas the general correction contains the two explicit
    `spacing⁻¹` factors.  Its operator and budget must therefore be rescaled,
    not just its certificate wrapper (the bound proof itself consumes only
-   `value_bound` after that rescaling is exposed).  The third leaf fixes
+   `value_bound` after that rescaling is exposed).  In particular, the
+   unit-spacing budget
+
+   ```text
+   12 * B0 * secondDerivBound / K^2
+   ```
+
+   becomes the literal arbitrary-spacing budget obtained by multiplying it
+   by `spacing^-2`; both inverse-spacing factors belong to the operator
+   identity and may not be absorbed into `B0`.  The third leaf fixes
    `cmp99SourceSeparatedGeneratedCountingMass`, so the retained-tower mass
    action needs its own C6d theorem or an exact source dictionary.  These are
    three finite operator obligations, not one definitional cast.
