@@ -45,6 +45,18 @@ BRICKS = (
             "nonempty_cmp99OmegaActiveGaugeRegion_of_sourcePhysicalLocalizedCoordinates",
         ),
     ),
+    (
+        "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivative",
+        ("cmp99Eq360C6dSourceSeparatedAmbientGreen_leftDerivative_blockLocalizedSupBound",),
+    ),
+    (
+        "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjoint",
+        ("cmp99Eq360C6dSourceSeparatedAmbientGreen_rightAdjoint_blockLocalizedSupBound",),
+    ),
+    (
+        "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian",
+        ("cmp99Eq360C6dSourceSeparatedAmbientGreen_laplacian_blockLocalizedSupBound",),
+    ),
 )
 
 
@@ -73,8 +85,9 @@ def generate(source_sha: str) -> str:
             "does not attain window 15, move ``20/41`` or inhabit ``TermSource``.",
             "This runner validates six positive/zero-depth source/audit pairs from\n"
             "owner-input action through owner-distance decay and block-localized value,\n"
-            "plus the literal localized-coordinate-to-regional-site bridge, all nine\n"
-            "public axiom readouts and every repository consumer through\n"
+            "plus the literal localized-coordinate-to-regional-site bridge and the\n"
+            "three physical derivative actions completing the four-action prefix, all\n"
+            "twelve public axiom readouts and every repository consumer through\n"
             "``YangMillsCore``. Passing remains per-depth: it does not prove uniform\n"
             "B0/delta0, attain window 15, move ``20/41`` or inhabit ``TermSource``.",
         ),
@@ -88,7 +101,7 @@ def generate(source_sha: str) -> str:
         ),
         (
             "03_c6d_source_green_yang_mills_core_root",
-            "08_c6d_green_owner_prefix_yang_mills_core_root",
+            "11_c6d_green_owner_prefix_yang_mills_core_root",
         ),
     )
     for old, new in replacements:
@@ -109,7 +122,7 @@ def main() -> int:
     args.output.write_text(content, encoding="utf-8", newline="\n")
     print(
         "C6D_GREEN_OWNER_PREFIX_RUNNER_GENERATED "
-        f"source_sha={args.source_sha} files=15 stages=15 axiom_blocks=9 "
+        f"source_sha={args.source_sha} files=21 stages=21 axiom_blocks=12 "
         "root=YangMillsCore "
         f"sha256={hashlib.sha256(content.encode()).hexdigest().upper()} "
         f"output={args.output}"

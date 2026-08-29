@@ -35,6 +35,12 @@ SOURCES = (
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepthAudit.draft.lean",
     "tmp/BalabanCMP99SourcePhysicalLocalizedRegionNonempty.draft.lean",
     "tmp/BalabanCMP99SourcePhysicalLocalizedRegionNonemptyAudit.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivative.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivativeAudit.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjoint.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjointAudit.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacianAudit.draft.lean",
 )
 PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay.lean",
@@ -50,6 +56,9 @@ AUDIT_IMPORTS = (
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepthAudit",
     "import YangMills.RG.BalabanCMP99SourcePhysicalLocalizedRegionNonemptyAudit",
+    "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivativeAudit",
+    "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjointAudit",
+    "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacianAudit",
 )
 
 

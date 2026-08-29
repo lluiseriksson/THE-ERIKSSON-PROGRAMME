@@ -100,12 +100,12 @@ def main() -> int:
         queue_match = re.search(
             r"(?ms)^runner\.QUEUE = (\[.*?\])\n\nif __name__", runner_text
         )
-        if blobs_match is None or len(ast.literal_eval(blobs_match.group(1))) != 15:
+        if blobs_match is None or len(ast.literal_eval(blobs_match.group(1))) != 21:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_SOURCE_BLOBS")
         if queue_match is None:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_QUEUE_MISSING")
         queue = ast.literal_eval(queue_match.group(1))
-        if len(queue) != 15 or sum(row[2] is not None for row in queue) != 7:
+        if len(queue) != 21 or sum(row[2] is not None for row in queue) != 10:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_QUEUE_SCOPE")
 
         runner_path = Path(folder) / "runner.py"
@@ -150,7 +150,7 @@ def main() -> int:
         print(
             "C6D_GREEN_OWNER_PREFIX_GENERATORS_OK "
             f"synthetic_source={source_commit} source_rows={len(rows)} "
-            f"queue={len(queue)} axiom_blocks=9 "
+            f"queue={len(queue)} axiom_blocks=12 "
             f"verifier_sha256={hashlib.sha256(verifier_text.encode()).hexdigest().upper()}"
         )
     return 0

@@ -23,6 +23,9 @@ MODULES = [
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecay",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth",
     "BalabanCMP99SourcePhysicalLocalizedRegionNonempty",
+    "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivative",
+    "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjoint",
+    "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian",
 ]
 
 
@@ -71,7 +74,7 @@ def generated_text(source_sha: str, runner: Path, notebook: Path) -> str:
     for index, module in enumerate(MODULES, start=1):
         stem = f"{index:02d}_{module.lower()}"
         queue_stages.extend((stem + "_focal", stem + "_audit"))
-    queue_stages.append("08_c6d_green_owner_prefix_yang_mills_core_root")
+    queue_stages.append("11_c6d_green_owner_prefix_yang_mills_core_root")
     expected_axiom_headers = {module: 1 for module in MODULES}
     expected_axiom_headers["BalabanCMP99SourcePhysicalLocalizedRegionNonempty"] = 3
     return f'''#!/usr/bin/env python3
