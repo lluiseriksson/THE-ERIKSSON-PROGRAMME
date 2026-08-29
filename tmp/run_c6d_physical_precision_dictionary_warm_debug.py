@@ -110,7 +110,11 @@ def main() -> int:
                     f"{actual} EXPECTED={expected}"
                 )
         stage = f"{index + 1:02d}_{path.stem.lower()}"
-        command = ["lake", "env", "lean", relative]
+        if index % 2 == 0:
+            module = "YangMills.RG." + path.stem
+            command = ["lake", "build", module]
+        else:
+            command = ["lake", "env", "lean", relative]
         print(f"STAGE={stage} CMD={command!r}", flush=True)
         started = time.perf_counter()
         child = run(command, repo)
