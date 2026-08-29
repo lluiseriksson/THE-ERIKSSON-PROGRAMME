@@ -81,6 +81,12 @@ reuse, not an operator identification.
 
 ## Brick D2: exact C6d Green decay
 
+Implementation status: no D2 Green-decay theorem exists yet.  The current
+post-Green promotion/gate covers D1 and the three named metric equalities
+only.  A green D1/metric prefix must not be reported as D2 or as Eq. (3.42).
+The source-facing D2 theorem is a separate subsequent brick that instantiates
+the inverse theorem below for the literal C6d precision and canonical Green.
+
 Transport the D1 exponential precision bound through:
 
 1. `cmp99SourceFullActiveRegionSiteEquiv`;
