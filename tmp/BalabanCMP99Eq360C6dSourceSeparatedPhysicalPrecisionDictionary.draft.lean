@@ -98,6 +98,7 @@ theorem
     (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
     (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
     OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget]
+  unfold cmp99Eq360C6dSourceSeparatedC6dAmbientPrecision
   rw [cmp99RegionalDirichletPrecision_C6dSourceAmbientBaseline_eq
     (L := L ^ (depth + 1)) (N' := 2 * (K * Q)) (M := L)
     (Mlarge := Mlarge) (Nc := Nc) (n := n) (depth := depth)
