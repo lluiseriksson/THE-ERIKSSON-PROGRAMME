@@ -86,8 +86,8 @@ def streaming_run(stage, command, cwd=None):
 
 runner.run = streaming_run
 
-runner.RUNNER_REV = "c6d-terminal-block-diameter-v2"
-runner.SOURCE_SHA = '1b9944b21f434a770215b74d285521238eb1dc14'
+runner.RUNNER_REV = "c6d-terminal-block-diameter-v3"
+runner.SOURCE_SHA = '6f45a2975771b20795456d5c9a98d5f702b254fe'
 runner.ROOT = Path("/content/hrpoly-c6d-terminal-block-diameter")
 runner.EVIDENCE = Path("/content/hrpoly-c6d-terminal-block-diameter-evidence")
 runner.ARCHIVE = Path(
@@ -97,7 +97,7 @@ runner.PATH_MANIFEST = Path(
     "/content/hrpoly-c6d-terminal-block-diameter-paths.txt"
 )
 runner.SOURCE_BLOBS = {
-    'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameter.lean': '12ec8c03e35103c57c52dbd8e0ff8ab5319880e84d723e8b990d560effaa3cd6',
+    'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameter.lean': '9231570b6aa1f57ee69d91f01086e9f15f37d5c429654d262b2bd715dd9435a0',
     'YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameterAudit.lean': 'cfafab6ac336824872f077dc58507a826d2cfe37958b9071ffb5b62611b822e4',
     'YangMillsCore.lean': '1f3a1dc00cfb8705d2abb803e2ff2718bcd45bdd136b93e013034a075b890434',
 }
