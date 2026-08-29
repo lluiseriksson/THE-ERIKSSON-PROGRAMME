@@ -181,6 +181,18 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    `cmp99SourceSeparatedGeneratedCountingMass`, so the retained-tower mass
    action needs its own C6d theorem or an exact source dictionary.  These are
    three finite operator obligations, not one definitional cast.
+   The first two spacing obligations now have explicit scratch statements in
+   `tmp/BalabanCMP99Eq389CovariantLinkPhysicalSpacing.draft.lean` and
+   `tmp/BalabanCMP99Eq389CutoffLaplacianPhysicalSpacing.draft.lean`, together
+   with their scratch audits.  They expose, respectively, the remaining
+   `spacing^-1` factor and the full `spacing^-2` factor.  These files are
+   **NOT CHECKED**, are not imported by `YangMillsCore`, and are not physical
+   producers.  The hot diagnostic published at source checkpoint
+   `055d6514c86800a4a9dc2dbfa5078a1816f5c48f` is prepared to compile exactly
+   those two scratch pairs in the retained Colab runtime after the current
+   cold gate reaches a terminal verdict.  Until that diagnostic itself emits
+   a preserved PASS, neither spacing budget is compiler evidence and neither
+   may move the terminal counter or Window 15.
    The third obligation can reuse the existing row theorem without a new
    analytic estimate only after specializing it to the retained extension
    and `baselineRadiusBudget.toRadiusChain` used by
