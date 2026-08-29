@@ -105,7 +105,7 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
       (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
         (Nc := Nc) (spacing := spacing)
         (OmegaSource := OmegaSource)
-        regions hL hspacing background chain fineSmall)
+        regions hL background chain fineSmall hspacing)
       (fun target source : ActiveGaugeRegion.Site OmegaSource =>
         finBoxDist target.1 source.1)
       (2 / c)
@@ -138,7 +138,7 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
   rw [cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
     (Nc := Nc) (spacing := spacing)
     (OmegaSource := OmegaSource)
-    regions hL hspacing background chain fineSmall] at hG
+    regions hL background chain fineSmall hspacing] at hG
   simpa [Ksource, c] using hG
 
 end
