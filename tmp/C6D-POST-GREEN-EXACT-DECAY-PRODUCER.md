@@ -299,3 +299,20 @@ accepted route is the already sealed arbitrary-input one:
 Thus the action proof retains the counting-L2 norm until the final
 `ell^2 * supNorm` conversion.  A coordinate-probe proof that produces
 `ell^4` is valid auxiliary algebra but is not the physical item-1 producer.
+
+Finally, D2 itself does not require a nonempty active carrier, while
+`CMP99Eq342SourceLocalizedGreenCertificate` does.  The per-depth family
+brick must therefore construct `Nonempty (ActiveGaugeRegion.Site
+OmegaSource)` from the chosen physical source-region data.  Supplying a
+free `root` merely relocates the obligation and is not the item-6 producer;
+if the chosen region can be empty, that case must remain a separately named
+branch rather than being silently excluded.
+
+The current Corollary-3.6 dictionary does not discharge this gate: it states
+`OmegaPrime0.sites \subseteq C.carrier`, not the reverse inclusion.  Hence the
+nonempty regular-cube carrier does not force the selected source region to be
+nonempty.  At the type level the empty source region, empty head region and
+their empty active-region chain satisfy that inclusion.  This is presently a
+static countermodel, not compiler evidence; item 6 must either construct the
+physical nonempty source subtype or seal the corresponding empty-region
+no-go before choosing the family index.
