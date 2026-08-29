@@ -45,8 +45,12 @@ def git(*args: str, input_bytes: bytes | None = None, env=None) -> bytes:
 
 
 def main() -> int:
-    decay = load("c6d_d2_owner_decay_promotion", ROOT / "tmp" / "promote_c6d_exact_green_decay.py")
-    owner = load("c6d_d2_owner_rescale_promotion", ROOT / "tmp" / "promote_c6d_owner_decay_rescaling.py")
+    promotion = load(
+        "c6d_d2_owner_promotion_test",
+        ROOT / "tmp" / "promote_c6d_exact_green_decay_owner_rescaling.py",
+    )
+    decay = promotion.load("c6d_d2_owner_decay_promotion", promotion.DECAY_PROMOTER)
+    owner = promotion.load("c6d_d2_owner_rescale_promotion", promotion.OWNER_PROMOTER)
     runner_gen = load(
         "c6d_d2_owner_runner_test",
         ROOT / "tmp" / "generate_c6d_exact_green_decay_owner_rescaling_runner.py",
@@ -66,25 +70,27 @@ def main() -> int:
         env = os.environ.copy()
         env["GIT_INDEX_FILE"] = str(folder_path / "index")
         git("read-tree", head, env=env)
-        promoted: list[tuple[str, bytes]] = []
-        imports: list[str] = []
-        for promotion in (decay, owner):
-            for relative in promotion.SOURCES:
-                data = git("cat-file", "blob", f"{head}:{relative}")
-                target = promotion.destination(relative)
-                promoted.append((target, promotion.promote_text(data)))
-                if target.endswith("Audit.lean"):
-                    imports.append("import YangMills.RG." + Path(target).stem)
-        core = git("cat-file", "blob", f"{head}:YangMillsCore.lean").decode()
-        if not core.endswith("\n"):
-            core += "\n"
-        promoted.append(("YangMillsCore.lean", (core + "\n".join(imports) + "\n").encode()))
+        prerequisites = tuple(dict.fromkeys((*decay.PREREQUISITES, *owner.PREREQUISITES)))
+        for relative in prerequisites:
+            data = git("cat-file", "blob", f"{head}:{relative}")
+            if b"PRE-VALIDATION:" not in data:
+                continue
+            sealed = data.replace(b"PRE-VALIDATION:", b"SEALED:", 1)
+            oid = git("hash-object", "-w", "--stdin", input_bytes=sealed).decode().strip()
+            git("update-index", "--add", "--cacheinfo", "100644", oid, relative, env=env)
+        prerequisite_tree = git("write-tree", env=env).decode().strip()
+        prerequisite_commit = git(
+            "commit-tree", prerequisite_tree, "-p", head,
+            input_bytes=b"synthetic sealed D2 prerequisites\n",
+        ).decode().strip()
+
+        promoted = promotion.collect_rows(prerequisite_commit, check_worktree=False)
         for relative, data in promoted:
             oid = git("hash-object", "-w", "--stdin", input_bytes=data).decode().strip()
             git("update-index", "--add", "--cacheinfo", "100644", oid, relative, env=env)
         tree = git("write-tree", env=env).decode().strip()
         source_commit = git(
-            "commit-tree", tree, "-p", head,
+            "commit-tree", tree, "-p", prerequisite_commit,
             input_bytes=b"synthetic unified C6d D2 source\n",
         ).decode().strip()
 
