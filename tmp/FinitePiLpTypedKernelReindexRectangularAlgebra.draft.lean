@@ -20,17 +20,17 @@ universe u v w u' v' w' z
 /-- Rectangular reindexing preserves an ordered composition when the middle
 carrier uses the same explicit equivalence on both sides. -/
 theorem finitePiLpTypedKernelReindex_rect_comp
-    {ι : Type u} {κ : Type v} {λ : Type w}
-    {ι' : Type u'} {κ' : Type v'} {λ' : Type w'} {g : Type z}
-    [Fintype ι] [Fintype κ] [Fintype λ]
-    [Fintype ι'] [Fintype κ'] [Fintype λ']
+    {ι : Type u} {κ : Type v} {τ : Type w}
+    {ι' : Type u'} {κ' : Type v'} {τ' : Type w'} {g : Type z}
+    [Fintype ι] [Fintype κ] [Fintype τ]
+    [Fintype ι'] [Fintype κ'] [Fintype τ']
     [NormedAddCommGroup g] [NormedSpace ℝ g]
-    (eι : ι ≃ ι') (eκ : κ ≃ κ') (eλ : λ ≃ λ')
-    (S : FinitePiLpField κ g →L[ℝ] FinitePiLpField λ g)
+    (eι : ι ≃ ι') (eκ : κ ≃ κ') (eτ : τ ≃ τ')
+    (S : FinitePiLpField κ g →L[ℝ] FinitePiLpField τ g)
     (T : FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g) :
-    (finitePiLpTypedKernelReindex eκ eλ S).comp
+    (finitePiLpTypedKernelReindex eκ eτ S).comp
         (finitePiLpTypedKernelReindex eι eκ T) =
-      finitePiLpTypedKernelReindex eι eλ (S.comp T) := by
+      finitePiLpTypedKernelReindex eι eτ (S.comp T) := by
   apply ContinuousLinearMap.ext
   intro phi
   apply PiLp.ext
@@ -50,6 +50,7 @@ theorem finitePiLpTypedKernelReindex_adjoint
   unfold finitePiLpTypedKernelReindex
   simp only [ContinuousLinearMap.adjoint_comp]
   simp
+  exact ContinuousLinearMap.comp_assoc _ _ _
 
 /-- The Gram operator of a rectangular kernel transports as a square
 operator on its source carrier. -/
