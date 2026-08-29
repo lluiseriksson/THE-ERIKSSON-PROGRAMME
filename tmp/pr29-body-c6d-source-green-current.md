@@ -43,6 +43,15 @@ checkpoint `c7f56d5efcf04412567c4d86540d94698aa14169` pin its independent cold
 gate, which is currently running.  D1 is not D2, does not provide a uniform
 Eq. (3.42) pair and does not move `20/41`.
 
+An independent post-D2 algebraic bridge is present under PRE-VALIDATION at
+checkpoint `ebeea96235ac89a0a9598593855119d4bfe3ea04`.  It converts an exact
+fine-distance rectangular kernel bound through
+`ell * coarseDist <= fineDist + boundary`, retaining the literal amplitude
+payment `exp (rate * boundary)` and the rescaled rate `ell * rate`.  It has
+only textual/import-prefix evidence: no `.olean`, axiom-oracle verdict, C6d
+specialization, four-action producer, uniform `B0, delta0`, window-15
+attainment or counter movement is claimed.
+
 The next explicit gates are:
 
 1. preserve, independently verify and selectively seal the physical dictionary and D1 cold gates;
