@@ -86,6 +86,18 @@ post-Green promotion/gate covers D1 and the three named metric equalities
 only.  A green D1/metric prefix must not be reported as D2 or as Eq. (3.42).
 The source-facing D2 theorem is a separate subsequent brick that instantiates
 the inverse theorem below for the literal C6d precision and canonical Green.
+Its provisional module boundary is
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay` plus its audit; this
+name is not part of the D1/metric promotion manifest.
+
+The corresponding scratch implementation now lives at
+`tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay.draft.lean` and its
+audit.  It is deliberately outside the D1/metric manifest and remains
+non-evidence.  The draft exposes three separate conclusions: the exact C6d
+ambient precision bound, the source-separated precision bound after the
+named metric reindex, and the canonical positive-depth Green bound obtained
+from the generic inverse theorem.  The two scratch paths pass the lightweight
+overlay text guard, but no Lean/Lake or axiom verdict is claimed.
 
 Transport the D1 exponential precision bound through:
 
