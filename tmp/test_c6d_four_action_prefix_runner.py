@@ -155,6 +155,26 @@ def main() -> int:
         compile(verifier_text, "synthetic-c6d-four-action-prefix-verifier.py", "exec")
         if "C6D_FOUR_ACTION_PREFIX_EVIDENCE_OK" not in verifier_text:
             raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_VERIFIER_SENTINEL")
+        verifier_queue_match = re.search(
+            r"(?m)^QUEUE_STAGES = (\[.*\])$", verifier_text
+        )
+        audit_stages_match = re.search(
+            r"(?m)^AUDIT_STAGES = (\{.*\})$", verifier_text
+        )
+        if verifier_queue_match is None or audit_stages_match is None:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_VERIFIER_MAP_MISSING")
+        verifier_queue = ast.literal_eval(verifier_queue_match.group(1))
+        audit_stages = ast.literal_eval(audit_stages_match.group(1))
+        runner_queue = [row[0] for row in queue]
+        modules = [module for module, _ in runner_gen.BRICKS]
+        expected_audit_stages = {
+            module: queue[2 * index + 1][0]
+            for index, module in enumerate(modules)
+        }
+        if verifier_queue != runner_queue:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_VERIFIER_QUEUE_DIVERGED")
+        if audit_stages != expected_audit_stages:
+            raise RuntimeError("C6D_FOUR_ACTION_PREFIX_TEST_VERIFIER_AUDIT_MAP_DIVERGED")
         print(
             "C6D_FOUR_ACTION_PREFIX_RUNNER_OK "
             f"synthetic_source={source_commit} source_rows={len(rows)} "

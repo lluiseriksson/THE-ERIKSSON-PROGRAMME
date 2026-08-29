@@ -63,12 +63,12 @@ def generated_text(source_sha: str, runner: Path, notebook: Path) -> str:
     blobs_sha = hashlib.sha256(canonical.encode()).hexdigest().upper()
     cell_sha = hashlib.sha256(notebook_cell_source(notebook).encode()).hexdigest().upper()
     audit_stages = {
-        module: f"{index:02d}_{module.lower()}_audit"
+        module: f"{index:02d}_{module.removeprefix('Balaban').lower()}_audit"
         for index, module in enumerate(MODULES, start=1)
     }
     queue_stages: list[str] = []
     for index, module in enumerate(MODULES, start=1):
-        stem = f"{index:02d}_{module.lower()}"
+        stem = f"{index:02d}_{module.removeprefix('Balaban').lower()}"
         queue_stages.extend((stem + "_focal", stem + "_audit"))
     queue_stages.append("07_c6d_four_action_prefix_yang_mills_core_root")
     return f'''#!/usr/bin/env python3
