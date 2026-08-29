@@ -41175,3 +41175,30 @@ The package is preserved under
 
 No PRE-VALIDATION notice is retired.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 957 (2026-08-29, **terminal-block diameter focal green; cold root failed in the superseded canonical-completion consumer; no seal; 20/41 unchanged**)
+
+Fresh source `a2715bf8cdae841dfc313ea9f34a23fe1d2bdd35` ran the
+`c6d-terminal-block-diameter-v4` gate with Lean `4.29.0-rc6` and pinned
+Mathlib `07642720480157414db592fa85b626dafb71355b`.  The terminal-block
+diameter focal and audit completed successfully.  The mandatory
+same-checkout `YangMillsCore` root then exited `1` after `7091.866` seconds.
+
+The first real error is in the unrelated older
+`BalabanCMP99Eq360C6dCanonicalAmbientCompletion` consumer: proof-local names
+`A`, `hc`, and `hA` are out of scope.  Later deterministic `whnf`/`isDefEq`
+timeouts are downstream noise.  Source `7e90203e8bfd1deb58d998fb5cdad0baab925af5`
+contains the explicit-local repair.  The two terminal-block diameter blobs
+are byte-identical between the failed source and that repair commit.
+
+Evidence payload SHA-256 is
+`4F7C8606C9A497141BA8AEC433D0CFAC8B6EEFDDDCC43867D8EA55B02A93CB87`;
+the downloaded archive independently rehashes to
+`0723B11FE2CB06DB7E56890C2678936EC4884D4BA06CADFD4B2F583CFE5B22B7`;
+the executed notebook rehashes to
+`1E1C20A84F458A1680F5F451BA606DA548409EC7BB781B0B5B7CDBA3A59936D7`.
+The package is preserved under
+`validation-evidence/c6d-terminal-block-diameter-root-fail-a2715bf8-20260829-v4/`.
+
+No PRE-VALIDATION notice is retired.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
