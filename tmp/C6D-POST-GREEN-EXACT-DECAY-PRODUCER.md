@@ -421,3 +421,10 @@ depth-zero physical specializations, their exact amplitudes and all three
 audits remain open until a Colab queue promotes and compiles them.  In
 particular, the adapters do not identify the two physical spacing conventions
 and do not alter `20/41`.
+
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions` is the
+corresponding scratch consumer.  It fixes the literal depth-zero spacing to
+`spacing` in all three operators and keeps the residual `L` powers visible in
+the action amplitudes.  It remains uncompiled and is not part of the current
+Green-owner promotion until its adapters and the zero-depth value action have
+passed together.
