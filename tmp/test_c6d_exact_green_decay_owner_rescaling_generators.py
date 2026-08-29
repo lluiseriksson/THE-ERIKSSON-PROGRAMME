@@ -144,6 +144,16 @@ def main() -> int:
         paths = [line for line in manifest.read_text(encoding="utf-8").splitlines() if line]
         if len(paths) != 6 or len(set(paths)) != 6:
             raise RuntimeError("C6D_D2_OWNER_TEST_MANIFEST_SCOPE")
+        component_paths: list[str] = []
+        for component in (
+            ROOT / "tmp" / "c6d-exact-green-decay-prevalidation-paths.txt",
+            ROOT / "tmp" / "c6d-owner-decay-rescaling-prevalidation-paths.txt",
+        ):
+            component_paths.extend(
+                line for line in component.read_text(encoding="utf-8").splitlines() if line
+            )
+        if paths != component_paths:
+            raise RuntimeError("C6D_D2_OWNER_TEST_MANIFEST_NOT_EXACT_UNION")
         print(
             "C6D_D2_OWNER_GENERATORS_OK "
             f"synthetic_source={source_commit} promoted_files={len(promoted)} "
