@@ -208,6 +208,11 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale
   have hinput := norm_cmp99Eq342_sourceLocalizedTilt_le_sourceScale
     (L := L) (K := K) (Q := Q) (Nc := Nc)
     depth OmegaSource owner root hroot hrate.le f hf
+  have hinput' :
+      ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ ≤
+        Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
+          (ell : ℝ) ^ 2 * finitePiLpSupNorm f := by
+    simpa [ell, dist] using hinput
   calc
     ‖G f target‖ ≤
         (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
@@ -216,7 +221,7 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale
     _ ≤ (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
         (Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
           (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
-      exact mul_le_mul_of_nonneg_left hinput
+      exact mul_le_mul_of_nonneg_left hinput'
         (mul_nonneg (div_nonneg (by positivity) hc.le)
           (Real.exp_pos _).le)
 
