@@ -61,7 +61,7 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_ownerScale
       Real.exp (3 * rate * ((ell - 1 : ℕ) : ℝ))
     ‖cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
         (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
-        regions hL hspacing background chain fineSmall f target‖ ≤
+        regions hL background chain fineSmall hspacing f target‖ ≤
       (ownerAmplitude * (ell : ℝ) ^ 2) *
         Real.exp (-(ownerRate *
           (finBoxDist owner
@@ -140,7 +140,7 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_ownerScale
   calc
     ‖cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
         (OmegaSource := OmegaSource) (spacing := spacing)
-        regions hL hspacing background chain fineSmall f target‖ ≤
+        regions hL background chain fineSmall hspacing f target‖ ≤
       (2 / c) * Real.exp (-(rate * fineDist)) *
         (Real.exp (rate * boundary) *
           (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
