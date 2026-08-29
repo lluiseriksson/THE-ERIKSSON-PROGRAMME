@@ -79,6 +79,18 @@ def main() -> int:
         print(f"FINAL_STATUS=FAIL STAGE=fetch EXIT={fetched.returncode}", flush=True)
         return fetched.returncode
 
+    checked_out = run(["git", "checkout", "--detach", SOURCE_SHA])
+    if checked_out.returncode != 0:
+        print(
+            f"FINAL_STATUS=FAIL STAGE=checkout EXIT={checked_out.returncode}",
+            flush=True,
+        )
+        return checked_out.returncode
+    head = run(["git", "rev-parse", "HEAD"], capture=True)
+    if head.returncode != 0 or head.stdout.decode().strip() != SOURCE_SHA:
+        print("FINAL_STATUS=FAIL STAGE=head_gate", flush=True)
+        return 4
+
     for source, expected_blob, destination in PROMOTIONS:
         actual = run(["git", "rev-parse", f"{SOURCE_SHA}:{source}"], capture=True)
         if actual.returncode != 0:
