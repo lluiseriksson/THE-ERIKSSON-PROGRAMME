@@ -113,6 +113,14 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
     exact hext.symm
   have hshift := cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv_shift
     (L := L) (K := K) (Q := Q) (depth := depth) x i
+  have hshift_symm :
+      (cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+        (L := L) (K := K) (Q := Q) (depth := depth)).symm
+          ((cmp99Eq360C6dSourceSeparatedAmbientSiteEquiv
+            (L := L) (K := K) (Q := Q) (depth := depth) x).shift i) =
+        x.shift i := by
+    rw [← hshift]
+    exact Equiv.symm_apply_apply _ (x.shift i)
   let targetMap :=
     (LinearIsometryEquiv.piLpCongrLeft 2 ℝ (SUNLieCoord Nc)
       (cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv
@@ -153,7 +161,7 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
         cmp99ActiveGaugeRegionSiteReindexEquiv,
         cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv,
         cmp99Eq360C6dSourceSeparatedPhysicalBackground_apply,
-        hshift]
+        hshift_symm]
 
 /-- Consequently the inverse reindex of the literal C6d Laplacian is the
 literal source-carrier Laplacian on the transported background. -/
