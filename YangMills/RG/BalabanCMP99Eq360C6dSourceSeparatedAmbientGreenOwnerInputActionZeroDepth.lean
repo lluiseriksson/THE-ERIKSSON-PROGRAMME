@@ -47,31 +47,39 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_sourceScale
     (hf : FinitePiLpSupportedInOwner
       (cmp99Eq342SourceLocalizedActiveOwner L K Q 0) owner f)
     (target : ActiveGaugeRegion.Site OmegaSource) :
+    letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
     let ell := L ^ (0 + 1)
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall decay
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall decay
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
     let rate := finitePiLpExponentialInverseDecayRate A decay
       (cmp99OmegaSiteExpSumBound (decay / 4)) c
     ‖cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-        (Nc := Nc) regions hL hspacing background chain fineSmall f target‖ ≤
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL hspacing background chain fineSmall f target‖ ≤
       (2 / c) * Real.exp (-(rate * (finBoxDist root.1 target.1 : ℝ))) *
         (Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
           (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
   dsimp only
   let ell := L ^ (0 + 1)
   let Kambient := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let Kregional := cmp99SourceAmbientDirichletPrecision OmegaSource Kambient
   let G := cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-    (Nc := Nc) regions hL hspacing background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL hspacing background chain fineSmall
   let A :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-      (Nc := Nc) regions hL background chain fineSmall decay
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall decay
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let rowSum := cmp99OmegaSiteExpSumBound (decay / 4)
   let rate := finitePiLpExponentialInverseDecayRate A decay rowSum c
   let dist := fun target source : ActiveGaugeRegion.Site OmegaSource =>
@@ -82,7 +90,8 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_sourceScale
       regions (by norm_num : 2 ≤ 4) hL hspacing background chain fineSmall
   have hambientCoer : IsCoerciveCLM Kambient c := by
     exact isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
   have hregionalCoer : IsCoerciveCLM Kregional c := by
     exact isCoerciveCLM_cmp99SourceAmbientDirichletPrecision
       OmegaSource Kambient hambientCoer
@@ -94,7 +103,8 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_sourceScale
       A decay := by
     exact
       cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero_exponentialKernelBound
-        (Nc := Nc) regions hL background chain fineSmall hspacing hdecay
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing hdecay
   have hKregional : FinitePiLpExponentialKernelBound Kregional dist A decay := by
     exact cmp99RegionalDirichletPrecision_exponentialKernelBound
       OmegaSource Kambient hKambient
@@ -113,7 +123,8 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_sourceScale
       hKregional.1 hdecay hrow hc
   have hKC : Kregional.comp G = ContinuousLinearMap.id ℝ _ := by
     exact cmp99Eq360C6dSourceSeparatedDirichletPrecision_comp_green_zero
-      (Nc := Nc) regions hL hspacing background chain fineSmall
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL hspacing background chain fineSmall
   have htilt : IsCoerciveCLM
       (finitePiLpTiltConjCLM dist rate root Kregional) (c / 2) := by
     exact isCoerciveCLM_finitePiLpTiltConj_inverse_canonical
