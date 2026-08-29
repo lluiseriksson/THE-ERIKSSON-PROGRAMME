@@ -101,7 +101,6 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale
         (Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
           (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
   dsimp only
-  let ell := L ^ (depth + 1)
   let Kambient := cmp99Eq360C6dSourceSeparatedAmbientPrecision
     (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
     (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
@@ -210,17 +209,17 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale
     depth OmegaSource owner root hroot hrate.le f hf
   have hinput' :
       ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ ≤
-        Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
-          (ell : ℝ) ^ 2 * finitePiLpSupNorm f := by
-    simpa [ell, dist] using hinput
+        Real.exp (rate * ((L ^ (depth + 1) - 1 : ℕ) : ℝ)) *
+          ((L : ℝ) ^ (depth + 1)) ^ 2 * finitePiLpSupNorm f := by
+    simpa [dist] using hinput
   calc
     ‖G f target‖ ≤
         (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
           ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ :=
       haction
     _ ≤ (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
-        (Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
-          (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
+        (Real.exp (rate * ((L ^ (depth + 1) - 1 : ℕ) : ℝ)) *
+          ((L : ℝ) ^ (depth + 1)) ^ 2 * finitePiLpSupNorm f) := by
       exact mul_le_mul_of_nonneg_left hinput'
         (mul_nonneg (div_nonneg (by positivity) hc.le)
           (Real.exp_pos _).le)
