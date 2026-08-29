@@ -7,7 +7,8 @@ There is deliberately no whole-tree default: a green result must describe the
 same files that the remote validation will compile.
 
 This is not a Lean parser.  It removes comments and string literals, then
-rejects ``sorry``/``admit`` tokens and checks the command-level balance of
+rejects ``sorry``/``admit`` tokens and the invalid ``fun ... ⇒`` lambda
+separator, then checks the command-level balance of
 ``namespace``/``section`` (including ``noncomputable section``) against
 ``end``.  It also checks properly nested ``()``, ``[]``, ``{}``, and ``⟨⟩``
 delimiters after comments, strings, and character literals have been removed.
@@ -25,6 +26,7 @@ from pathlib import Path
 
 
 FORBIDDEN = re.compile(r"\b(?:sorry|admit)\b")
+INVALID_LAMBDA_SEPARATOR = re.compile(r"\bfun\b[^\n]*⇒")
 OPEN = re.compile(r"^\s*(?:(?:noncomputable|private|protected)\s+)?(namespace|section)\b(?:\s+([^\s]+))?")
 CLOSE = re.compile(r"^\s*end(?:\s+([^\s]+))?\s*$")
 CHAR_LITERAL = re.compile(r"'(?:\\.|[^\\'\r\n])'")
@@ -155,6 +157,10 @@ def check_file(
         forbidden = FORBIDDEN.search(line)
         if forbidden:
             failures.append(f"{label}:{line_number}: forbidden token: {forbidden.group(0)}")
+        if INVALID_LAMBDA_SEPARATOR.search(line):
+            failures.append(
+                f"{label}:{line_number}: invalid lambda separator ⇒; use => or ↦"
+            )
 
         for column, token in enumerate(line, start=1):
             if token in OPEN_BRACKETS:
