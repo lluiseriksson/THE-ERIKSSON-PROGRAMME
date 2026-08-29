@@ -355,3 +355,37 @@ their empty active-region chain satisfy that inclusion.  This is presently a
 static countermodel, not compiler evidence; item 6 must either construct the
 physical nonempty source subtype or seal the corresponding empty-region
 no-go before choosing the family index.
+
+### Exact action prefix (scratch only, 2026-08-29)
+
+The value-to-action algebra has now been separated from the physical
+specialization in six scratch modules:
+
+- `BalabanCMP99Eq342LeftDerivativeFromValueBound` spends the two value
+  endpoints and produces the exact `(1 + exp rate) / spacing` factor;
+- `BalabanCMP99Eq342RightAdjointFromValueBound` expands the backward stencil,
+  keeps the owner-radius-one ball `3^4 = 81` visible and produces `8 * 81 =
+  648`, without abstract adjoint symmetry;
+- `BalabanCMP99Eq342LaplacianFromLeftDerivativeBound` expands the four signed
+  directions and cancels the remaining terminal `ell` explicitly;
+- the three `BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen{LeftDerivative,
+  RightAdjoint,Laplacian}` specializations fix the canonical D2 Green, the
+  named transported C6d background and spacing `L^(depth+1) * eta`.
+
+All six remain `SCRATCH ONLY`: none is compiler evidence, none changes
+`20/41`, and none attains the uniform `B0/delta0` endpoint.  Their promotion
+must remain downstream of a sealed exact value action and sealed physical
+background dictionary.
+
+The background dictionary itself is still incomplete in one precise place.
+`cmp99Eq360C6dSourceSeparatedPhysicalBackground` fixes the value transport
+and positive shift, but no current theorem identifies the source-reindexed
+D2 compression with the literal
+
+`cmp99SourceGaugePrecision (cmp99ActiveRegionSourceCovariantLaplacian ...
+  cmp99Eq360C6dSourceSeparatedPhysicalBackground ... eta) Qprime b`.
+
+That compressed-precision equality is the remaining semantic gate.  The
+three action specializations construct literal operators, but they must not
+be reported as actions of the D2 precision until this equality is named and
+compiled.
