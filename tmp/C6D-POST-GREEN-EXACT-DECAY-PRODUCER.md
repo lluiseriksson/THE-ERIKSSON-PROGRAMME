@@ -270,3 +270,16 @@ The finite post-D2 chain is therefore:
 
 Only item 7 is the uniform Eq. (3.42) endpoint.  Items 1--6 may be sealed and
 reused, but none of them alone attains window 15 or changes `20/41`.
+
+For item 1 the already sealed geometric bridge is
+`cmp99Eq389SourceLocalizationOwner_mul_dist_le_fineDist_add_boundary`:
+
+`ell * ownerDist <= fineDist + 2 * (ell - 1)`.
+
+It gives owner rate `ell * rate` and the explicit boundary payment used by
+the existing fixed-cell proof.  The reusable geometry is source-wide, but
+the old action theorem is not: it hard-codes
+`cmp96SourceSeparatedRegionalCell` and its independently generated Green.
+The C6d action brick must therefore rerun the action argument with D2's
+canonical `OmegaSource` Green while citing this same bridge; it must not cite
+the old theorem by pretending the two regions or inverses coincide.
