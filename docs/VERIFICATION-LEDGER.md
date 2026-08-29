@@ -41312,3 +41312,43 @@ The package is preserved under
 
 No PRE-VALIDATION notice is retired.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 961 (2026-08-29, **distance-rescaling focal/audit green; cold root failed only in superseded C6d-D1 consumers; cross-seal prepared; 20/41 unchanged**)
+
+Fresh source `ebeea96235ac89a0a9598593855119d4bfe3ea04` ran the
+`finite-pilp-distance-rescaling-v1` stop-on-first-error queue with Lean
+`4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  The exact typed-kernel
+distance-rescaling focal exited zero after `161.908` seconds; its audit exited
+zero after `7.369` seconds and printed the permitted axiom readout.  The
+same-checkout `YangMillsCore` root then exited one after `11260.141` seconds.
+
+The root's first failures are not in the rescaling pair.  They are three
+deterministic `whnf` timeouts in the older
+`BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay` specialization and
+the already measured non-definitional carrier cast in
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric:44:2`.  Both consumers have
+subsequent explicit repairs in source `acc5064072a1e5c42eb74735b56b9fc7b465545c`;
+the corrected D1 cold root is running separately and remains authoritative for
+those repairs.
+
+The downloaded evidence archive rehashes to
+`8BDD16EF32BE62A61B82A8A90D266B641A4F169C8D95143694F2F8D0A508CD68`;
+its `evidence.json` rehashes to
+`FD57D33E6088B488B98203DA3F747F325DB1C930C410DE57EF2AF10E0A8D6358`;
+the executed notebook rehashes to
+`A24508AC64382BDF195CA423DA8E3497081CCEB24133305140C4B167C77FD183`.
+The package is preserved at
+`validation-evidence/finite-pilp-distance-rescaling-fail-ebeea962-20260829/`.
+
+Git blob identity is exact for both rescaling files between the failed source
+and corrected D1 source: source blob
+`2eb40f6517f9b9687366aae84bb271be52987e90`, audit blob
+`bea35e40cfc19fe0f5b5256339e71cb7b395501e`.  A fail-closed cross-verifier now
+requires the complete corrected D1 evidence verifier, a successful cold root,
+both modules built by that root, the exact audit readout, the allowed axiom
+set and absence of `sorryAx`/`ofReduceBool` before the rescaling notices may be
+retired.  No failed or focal-only evidence can trigger that seal.
+
+No PRE-VALIDATION notice is retired by this addendum.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
