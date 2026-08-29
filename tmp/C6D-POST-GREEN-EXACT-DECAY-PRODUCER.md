@@ -435,3 +435,11 @@ are the literal, definitionally fixed certificate actions; it merely enlarges
 their four normalized amplitudes to `cmp99Eq342CommonAmplitude`.  It is an
 assembler, not a producer, and therefore neither discharges a physical bound
 nor changes the counter.
+
+The positive-depth physical specialization is now written, still scratch
+only, in
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificate`.  It
+uses the named equality between the canonical regional Green and the exact
+D2 Green before invoking the assembler.  Its `B0` and `ownerRate` remain
+depth-dependent, so even a future green seal would close item 5 only, not the
+uniform item 7.
