@@ -29,6 +29,17 @@ variable {U : PhysicalGaugeBackground 4
   (L ^ (depth + 1) * (2 * (K * Q))) Nc}
 variable {eta alpha0 alpha1 : ℝ}
 
+/-- Casting a finite torus across an equality of side lengths commutes with
+one positive lattice step.  This is exposed publicly for the C6d background
+stencil instead of relying on an incidental simplifier reduction. -/
+theorem finBoxCast_shift_c6d
+    {d N M : ℕ} [NeZero N] [NeZero M]
+    (h : N = M) (x : FinBox d N) (i : Fin d) :
+    Equiv.cast (congrArg (FinBox d) h) (x.shift i) =
+      (Equiv.cast (congrArg (FinBox d) h) x).shift i := by
+  subst M
+  rfl
+
 /-- The unique source-carrier background used by the derived Eq. (3.42)
 actions for the literal C6d precision. -/
 noncomputable def cmp99Eq360C6dSourceSeparatedPhysicalBackground
@@ -69,6 +80,20 @@ theorem cmp99Eq360C6dSourceSeparatedPhysicalBackground_apply
           dir := edge.dir
           sign := edge.sign } := by
   rfl
+
+/-- The exact carrier transport used by the C6d background preserves a
+positive fine step. -/
+theorem cmp99Eq360C6dSourceSeparatedPhysicalBackground_cast_shift
+    (x : FinBox 4
+      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+    (i : Fin 4) :
+    (cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
+        L K Q depth).symm ▸ (x.shift i) =
+      ((cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
+        L K Q depth).symm ▸ x).shift i := by
+  exact finBoxCast_shift_c6d
+    (cmp99RegionalLatticeSize_sourceSeparatedLargeBlockCarrier
+      L K Q depth).symm x i
 
 end
 
