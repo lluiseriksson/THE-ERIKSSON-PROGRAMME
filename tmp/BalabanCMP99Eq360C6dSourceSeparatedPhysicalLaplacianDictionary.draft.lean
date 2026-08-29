@@ -100,6 +100,7 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq :
     cmp99ActiveRegionSourceCovariantD0CLM,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.smul_apply,
     LinearIsometryEquiv.piLpCongrLeft_apply, Equiv.piCongrLeft']
+  dsimp only [E] at hlocalized
   rw [hlocalized, ← hext]
   simp [B, E, e, covariantD0CLM_apply,
     cmp99GaugeZeroCochainReindex,
@@ -152,8 +153,11 @@ theorem cmp99Eq360C6dSourceSeparatedCovariantLaplacian_reindex_eq :
       (alpha0 := alpha0) (alpha1 := alpha1) OmegaSource R C hscale
   change finitePiLpTypedKernelReindex E.symm E.symm
       (Dtarget.adjoint.comp Dtarget) = Dsource.adjoint.comp Dsource
-  rw [finitePiLpTypedKernelReindex_adjoint_comp_self E.symm B.symm Dtarget]
-  rw [hD]
+  calc
+    _ = (finitePiLpTypedKernelReindex E.symm B.symm Dtarget).adjoint.comp
+        (finitePiLpTypedKernelReindex E.symm B.symm Dtarget) :=
+      finitePiLpTypedKernelReindex_adjoint_comp_self E.symm B.symm Dtarget
+    _ = Dsource.adjoint.comp Dsource := by rw [hD]
 
 end
 
