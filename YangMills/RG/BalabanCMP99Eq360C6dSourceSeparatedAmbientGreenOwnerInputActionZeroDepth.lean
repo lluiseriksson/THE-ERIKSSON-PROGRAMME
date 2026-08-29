@@ -65,7 +65,6 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_sourceScale
         (Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
           (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
   dsimp only
-  let ell := L ^ (0 + 1)
   let Kambient := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
     (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
     regions hL background chain fineSmall
@@ -137,17 +136,28 @@ theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_sourceScale
   have hinput := norm_cmp99Eq342_sourceLocalizedTilt_le_sourceScale
     (L := L) (K := K) (Q := Q) (Nc := Nc)
     0 OmegaSource owner root hroot hrate.le f hf
-  calc
-    ‖G f target‖ ≤
+  have hinput' :
+      ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ ≤
+        Real.exp (rate * ((L ^ (0 + 1) - 1 : ℕ) : ℝ)) *
+          ((L : ℝ) ^ (0 + 1)) ^ 2 * finitePiLpSupNorm f := by
+    simpa [dist] using hinput
+  have hfinal :
+      ‖G f target‖ ≤
         (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
-          ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ :=
-      haction
-    _ ≤ (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
-        (Real.exp (rate * ((ell - 1 : ℕ) : ℝ)) *
-          (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
-      exact mul_le_mul_of_nonneg_left hinput
-        (mul_nonneg (div_nonneg (by positivity) hc.le)
-          (Real.exp_pos _).le)
+          (Real.exp (rate * ((L ^ (0 + 1) - 1 : ℕ) : ℝ)) *
+            ((L : ℝ) ^ (0 + 1)) ^ 2 * finitePiLpSupNorm f) := by
+    calc
+      ‖G f target‖ ≤
+          (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
+            ‖finitePiLpTiltCLM (g := SUNLieCoord Nc) dist rate root f‖ :=
+        haction
+      _ ≤ (2 / c) * Real.exp (-(rate * (dist root target : ℝ))) *
+          (Real.exp (rate * ((L ^ (0 + 1) - 1 : ℕ) : ℝ)) *
+            ((L : ℝ) ^ (0 + 1)) ^ 2 * finitePiLpSupNorm f) := by
+        exact mul_le_mul_of_nonneg_left hinput'
+          (mul_nonneg (div_nonneg (by positivity) hc.le)
+            (Real.exp_pos _).le)
+  simpa [G, c, rate, A, rowSum, dist] using hfinal
 
 end
 
