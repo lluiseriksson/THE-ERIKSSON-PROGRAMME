@@ -70,8 +70,6 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_actionBounds
       (L := L) (K := K) (Q := Q) (Nc := Nc)
       depth Omega rho U spacing A c hc hAcoer
       (cmp99Eq342CommonAmplitude Avalue Aleft Aright Alaplacian) rate := by
-  let ell : ℝ := (L ^ (depth + 1) : ℕ)
-  have hell : 0 ≤ ell := by positivity
   have hB0 : 0 < cmp99Eq342CommonAmplitude
       Avalue Aleft Aright Alaplacian :=
     cmp99Eq342CommonAmplitude_pos hvalue_nonneg hleft_nonneg
@@ -87,19 +85,20 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_actionBounds
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hvalue
     · exact mul_le_mul_of_nonneg_right
         (le_cmp99Eq342CommonAmplitude_value hvalue_nonneg hleft_nonneg
-          hright_nonneg hlaplacian_nonneg) (sq_nonneg ell)
+          hright_nonneg hlaplacian_nonneg)
+        (sq_nonneg (L ^ (depth + 1) : ℝ))
     · exact hrate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hleft
     · exact mul_le_mul_of_nonneg_right
         (le_cmp99Eq342CommonAmplitude_left hvalue_nonneg hleft_nonneg
-          hright_nonneg hlaplacian_nonneg) hell
+          hright_nonneg hlaplacian_nonneg) (by positivity)
     · exact hrate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hright
     · exact mul_le_mul_of_nonneg_right
         (le_cmp99Eq342CommonAmplitude_right hvalue_nonneg hleft_nonneg
-          hright_nonneg hlaplacian_nonneg) hell
+          hright_nonneg hlaplacian_nonneg) (by positivity)
     · exact hrate
     · exact le_rfl
   · apply finitePiLpTypedBlockLocalizedSupBound_mono hlaplacian
