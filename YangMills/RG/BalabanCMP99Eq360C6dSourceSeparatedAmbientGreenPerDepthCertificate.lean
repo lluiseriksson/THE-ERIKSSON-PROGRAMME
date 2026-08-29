@@ -300,6 +300,28 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_perDepthCertificate
     dsimp [laplacianAmplitude]
     exact mul_nonneg (mul_nonneg (by norm_num) hleftAmplitude)
       (div_nonneg (add_nonneg zero_le_one (Real.exp_pos _).le) heta_pos.le)
+  have hvalue' : FinitePiLpTypedBlockLocalizedSupBound
+      (cmp99RegionalDirichletGreen OmegaSource AP hc hAP)
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
+      finBoxDist (valueAmplitude * (L ^ (depth + 1) : ℝ) ^ 2) ownerRate := by
+    simpa [ell] using hvalue
+  have hleft' : FinitePiLpTypedBlockLocalizedSupBound
+      ((cmp99ActiveRegionSourceCovariantD0CLM OmegaSource
+          (matrixSUNAdjointModel Nc) background ((ell : ℝ) * eta)).comp
+        (cmp99RegionalDirichletGreen OmegaSource AP hc hAP))
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
+      (cmp99Eq342SourceLocalizedBondOwner L K Q depth)
+      finBoxDist (leftAmplitude * (L ^ (depth + 1) : ℝ)) ownerRate := by
+    simpa [ell] using hleft
+  have hright' : FinitePiLpTypedBlockLocalizedSupBound
+      ((cmp99RegionalDirichletGreen OmegaSource AP hc hAP).comp
+        (cmp99ActiveRegionSourceCovariantD0CLM OmegaSource
+          (matrixSUNAdjointModel Nc) background ((ell : ℝ) * eta)).adjoint)
+      (cmp99Eq342SourceLocalizedBondOwner L K Q depth)
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q depth)
+      finBoxDist (rightAmplitude * (L ^ (depth + 1) : ℝ)) ownerRate := by
+    simpa [ell] using hright
   exact cmp99Eq342SourceLocalizedGreenCertificate_of_actionBounds
     (Omega := OmegaSource) (rho := matrixSUNAdjointModel Nc)
     (U := background) (spacing := (ell : ℝ) * eta)
@@ -308,7 +330,7 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_perDepthCertificate
     (Aright := rightAmplitude) (Alaplacian := laplacianAmplitude)
     (rate := ownerRate)
     hvalueAmplitude hleftAmplitude hrightAmplitude hlaplacianAmplitude
-    hownerRate hvalue hleft hright hlaplacian
+    hownerRate hvalue' hleft' hright' hlaplacian
 
 end
 
