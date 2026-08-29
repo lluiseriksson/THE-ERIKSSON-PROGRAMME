@@ -52,13 +52,15 @@ theorem
     (hspacing : 0 < spacing) {rate : ℝ} (hrate : 0 < rate) :
     FinitePiLpExponentialKernelBound
       (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-        (Nc := Nc) regions hL background chain fineSmall)
+        (Nc := Nc) (spacing := spacing)
+        regions hL background chain fineSmall)
       (finBoxDist : FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) →
         FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) → ℕ)
       (cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall rate)
+        (Nc := Nc) (spacing := spacing)
+        regions hL background chain fineSmall rate)
       rate := by
   let N := cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)
   let e := cmp99SourceFullActiveRegionSiteEquiv 4 N
@@ -91,9 +93,11 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
     (hspacing : 0 < spacing) {rate : ℝ} (hrate : 0 < rate) :
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall rate
+        (Nc := Nc) (spacing := spacing)
+        regions hL background chain fineSmall rate
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (spacing := spacing)
+      regions hL background chain fineSmall
     FinitePiLpExponentialKernelBound
       (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
         (Nc := Nc) regions hL hspacing background chain fineSmall)
@@ -104,15 +108,18 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
         (cmp99OmegaSiteExpSumBound (rate / 4)) c) := by
   dsimp only
   let Ksource := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (spacing := spacing)
+    regions hL background chain fineSmall
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (spacing := spacing)
+    regions hL background chain fineSmall
   have hc : 0 < c := by
     exact cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
       regions (by norm_num : 2 ≤ 4) hL hspacing background chain fineSmall
   have hcoer : IsCoerciveCLM Ksource c := by
     exact isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (spacing := spacing)
+      regions hL background chain fineSmall
   have hK :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero_exponentialKernelBound
       (Nc := Nc) regions hL background chain fineSmall hspacing hrate
