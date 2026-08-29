@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Fail-closed promotion of the exact per-depth C6d Green-decay pair.
+"""Fail-closed promotion of the exact positive/zero-depth C6d Green decay.
 
-This script performs only textual promotion.  It never runs Lean and never
-removes PRE-VALIDATION.
+This promotes only the two D2 source/audit pairs.  It never runs Lean and
+never removes PRE-VALIDATION.  The D1 precision-localization and named metric
+prefix must already be sealed in the selected source commit.
 """
 
 from __future__ import annotations
@@ -23,8 +24,6 @@ SOURCES = (
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepthAudit.draft.lean",
 )
 PREREQUISITES = (
-    "YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameter.lean",
-    "YangMills/RG/BalabanCMP99SourceActiveRegionTerminalBlockDiameterAudit.lean",
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen.lean",
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenAudit.lean",
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth.lean",
@@ -69,14 +68,19 @@ def promote_text(data: bytes) -> bytes:
         "PRE-VALIDATION: source present; its `.olean` is not yet materialized "
         "and the result is not compiler-verified."
     )
-    text, count = re.subn(
-        r"SCRATCH ONLY:[^\n]*(?:\n(?:evidence\.|The theorem[^\n]*|It may[^\n]*))?",
-        standard,
-        text,
-        count=1,
+    markers = (
+        "SCRATCH ONLY: this file is neither imported nor compiler-verified and is not\n"
+        "evidence.  It may be promoted only after the Green, terminal-block diameter,\n"
+        "full-companion precision-decay and metric prefixes have independent verdicts.",
+        "SCRATCH ONLY: this file is neither imported nor compiler-verified and is not\n"
+        "evidence.  It is the depth-zero companion of the positive-depth D2 draft.",
+        "-- SCRATCH ONLY: no compiler or axiom-oracle verdict is claimed.",
     )
-    if count != 1:
+    matches = [marker for marker in markers if marker in text]
+    if len(matches) != 1:
         raise RuntimeError("C6D_EXACT_GREEN_DECAY_SCRATCH_PROSE_UNRECOGNIZED")
+    replacement = standard if not matches[0].startswith("-- ") else "-- " + standard
+    text = text.replace(matches[0], replacement, 1)
     text = re.sub(
         r"^import tmp\.([A-Za-z0-9_]+)\.draft$",
         r"import YangMills.RG.\1",
@@ -130,7 +134,9 @@ def main() -> int:
         target = destination(relative)
         if git("cat-file", "-e", f"{args.source_sha}:{target}").returncode == 0:
             raise RuntimeError(f"C6D_EXACT_GREEN_DECAY_TARGET_EXISTS={target}")
-        if (ROOT / target).exists() or git("status", "--porcelain=v1", "--", target).stdout:
+        if (ROOT / target).exists() or git(
+            "status", "--porcelain=v1", "--", target
+        ).stdout:
             raise RuntimeError(f"C6D_EXACT_GREEN_DECAY_TARGET_DIRTY={target}")
         rows.append((target, promote_text(require_clean_blob(args.source_sha, relative))))
 
@@ -169,7 +175,9 @@ def main() -> int:
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(data)
             written.append(relative)
-        actual = digest([(relative, (ROOT / relative).read_bytes()) for relative, _ in rows])
+        actual = digest(
+            [(relative, (ROOT / relative).read_bytes()) for relative, _ in rows]
+        )
         if actual != manifest:
             raise RuntimeError(
                 f"C6D_EXACT_GREEN_DECAY_POSTWRITE={actual} EXPECTED={manifest}"
