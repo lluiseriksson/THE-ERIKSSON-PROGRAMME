@@ -101,7 +101,8 @@ theorem
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := 0)
       OmegaSource background G hspacing hell hvalue
   simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude,
-    leftAmplitude] using hleft
+    leftAmplitude, pow_two, div_eq_mul_inv, mul_assoc, mul_left_comm,
+    mul_comm] using hleft
 
 /-- The exact depth-zero Green composed with the literal right-adjoint
 derivative at terminal spacing `spacing`. -/
@@ -238,7 +239,8 @@ theorem
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := 0)
       OmegaSource background G hspacing hell hleft
   simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude,
-    leftAmplitude, laplacianAmplitude] using hlaplacian
+    leftAmplitude, laplacianAmplitude, pow_two, div_eq_mul_inv, mul_assoc,
+    mul_left_comm, mul_comm] using hlaplacian
 
 end
 
