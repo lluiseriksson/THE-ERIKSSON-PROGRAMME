@@ -167,7 +167,8 @@ theorem
       (L := L) (K := K) (Q := Q) (Nc := Nc) (depth := 0)
       OmegaSource background G hspacing hell hvalue
   simpa [G, ell, A, c, rate, ownerRate, ownerAmplitude,
-    rightAmplitude] using hright
+    rightAmplitude, pow_two, div_eq_mul_inv, mul_assoc, mul_left_comm,
+    mul_comm] using hright
 
 /-- The literal depth-zero covariant Laplacian action.  The two derivative
 factors leave `ell^2 / spacing^2` visible in the amplitude. -/
