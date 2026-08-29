@@ -52,6 +52,7 @@ theorem
     FinitePiLpExponentialKernelBound
       (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
         (Nc := Nc) (spacing := spacing)
+        (OmegaSource := OmegaSource)
         regions hL background chain fineSmall)
       (finBoxDist : FinBox 4
           (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) →
@@ -59,6 +60,7 @@ theorem
           (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) → ℕ)
       (cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
         (Nc := Nc) (spacing := spacing)
+        (OmegaSource := OmegaSource)
         regions hL background chain fineSmall rate)
       rate := by
   let N := cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)
@@ -93,13 +95,16 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
         (Nc := Nc) (spacing := spacing)
+        (OmegaSource := OmegaSource)
         regions hL background chain fineSmall rate
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
       (Nc := Nc) (spacing := spacing)
+      (OmegaSource := OmegaSource)
       regions hL background chain fineSmall
     FinitePiLpExponentialKernelBound
       (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
         (Nc := Nc) (spacing := spacing)
+        (OmegaSource := OmegaSource)
         regions hL hspacing background chain fineSmall)
       (fun target source : ActiveGaugeRegion.Site OmegaSource =>
         finBoxDist target.1 source.1)
@@ -109,9 +114,11 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
   dsimp only
   let Ksource := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
     (Nc := Nc) (spacing := spacing)
+    (OmegaSource := OmegaSource)
     regions hL background chain fineSmall
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
     (Nc := Nc) (spacing := spacing)
+    (OmegaSource := OmegaSource)
     regions hL background chain fineSmall
   have hc : 0 < c := by
     exact cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
@@ -119,15 +126,18 @@ theorem cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_exponentialKernelBound
   have hcoer : IsCoerciveCLM Ksource c := by
     exact isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
       (Nc := Nc) (spacing := spacing)
+      (OmegaSource := OmegaSource)
       regions hL background chain fineSmall
   have hK :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero_exponentialKernelBound
       (Nc := Nc) (spacing := spacing)
+      (OmegaSource := OmegaSource)
       regions hL background chain fineSmall hspacing hrate
   have hG := cmp99RegionalDirichletGreen_exponentialKernelBound
     OmegaSource Ksource hc hcoer hK
   rw [cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
     (Nc := Nc) (spacing := spacing)
+    (OmegaSource := OmegaSource)
     regions hL hspacing background chain fineSmall] at hG
   simpa [Ksource, c] using hG
 

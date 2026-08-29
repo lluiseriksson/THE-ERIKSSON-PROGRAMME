@@ -41438,3 +41438,38 @@ regional/Dirichlet Green bound for the transported physical actions, does not
 produce the regional `delta0`, and does not attain window 15 or discharge a
 terminal producer.  Counters remain exactly `20/41`, `TermSource = 0`;
 window 15 remains compatible but unattained.
+
+## Addendum 964 (2026-08-29, **positive-depth C6d D2 green; zero-depth focal stopped on one explicit carrier argument; no seal; 20/41 unchanged**)
+
+The unified exact C6d D2 owner-rescaling cold gate ran from source checkpoint
+`d8724c85fb2b4f8722cf63089ffea4910f45f623` with runner checkpoint
+`f532c26799fd304ec10cb5ac67c7fd71f94a3afe`, runner revision
+`c6d-d2-owner-rescaling-v1`, and runner SHA-256
+`0DFFEABD20596C7510DA8DA1311CDB35AEFFAE6CDB779315709B8C533D223DF1`.
+
+The positive-depth focal compiled `8784` jobs in `3927.489` seconds with exit
+code zero. Its audit completed in `21.724` seconds with exit code zero and
+four axiom readouts, each contained in the allowed trio
+`{propext, Classical.choice, Quot.sound}`.
+
+The stop-on-first-error queue then reached the zero-depth focal and stopped
+after `50.478` seconds. The first real error was an omitted explicit physical
+carrier argument `(OmegaSource := OmegaSource)` in
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepth.lean`; Lean
+therefore attempted to consume `hL` as the region chain. The same omission
+accounted for the downstream elaboration errors. No zero-depth audit, owner
+rescaling stage, root build, or seal was claimed.
+
+The canonical failure payload SHA-256 is
+`CFAF70C1305970236CB551F1B30E294FACB5FB3EEAA7E32D5A38F80D2F346CD1`;
+the downloaded archive independently rehashes to
+`E8FC2A70CE901ADF03CB8E5668F72E023DCA08B3B23CC709F4EFFCAE1ECAB714`;
+the executed notebook rehashes to
+`A50C57FB453FADE9CFFDDD015A35E314707679217F2ED21D0210AB0700C00C38`.
+The evidence is preserved under
+`validation-evidence/c6d-d2-owner-rescaling-fail-d8724c85-20260829/`.
+
+This is measured positive evidence for the positive-depth branch and a
+measured elaboration failure for the zero-depth branch, not a unified D2 seal.
+All D2 PRE-VALIDATION notices remain. Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
