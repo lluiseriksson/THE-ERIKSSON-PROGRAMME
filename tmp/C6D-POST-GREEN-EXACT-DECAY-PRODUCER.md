@@ -223,9 +223,50 @@ Positive depth consumes the C6d source Poincare coercivity producer.  Depth
 zero must use the exact zero-depth Green branch already constructed; do not
 smuggle `0 < depth` into an unrestricted Eq. (3.42) family.
 
+The zero-depth D2 scratch is now separate at
+`tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDepth.draft.lean`
+plus its audit.  It instantiates D1 at `depth = 0`, transports through the
+full-carrier metric equivalence and applies the canonical inverse theorem
+with the literal zero-depth counting coefficient as coercivity floor.  It is
+outside the positive-depth D2 module and remains non-evidence until compiled.
+
 ## Downstream delimiter
 
 D1+D2 produce value-kernel decay for the exact Green.  They do not yet produce
 the four Eq. (3.42) actions (value, left derivative, right adjoint derivative,
 covariant Laplacian), the common `[ell^2, ell, ell, 1]` scaling, or one uniform
 `B0/delta0`.  Those remain the next source-facing action brick.
+
+The scalar assembly pattern is already compiler-sealed in
+`BalabanCMP96SourceSeparatedRegionalPrefixEq342Certificate`: it combines the
+four literal action bounds through `cmp99Eq342CommonAmplitude` and preserves
+the displayed `[ell^2, ell, ell, 1]` factors.  It is a template only, not the
+C6d producer.  Its Green and region are the fixed
+`cmp96SourceSeparatedRegionalCell`, whereas D2 produces the canonical inverse
+on the selected `OmegaSource`.  The next brick must reinstantiate the four
+actions on that exact transported Green; it may not restrict the old Green or
+postulate equality of the two Dirichlet inverses.  The reusable downstream
+lemmas are grouped in the existing value, left-derivative,
+right-adjoint-derivative and Laplacian owner-decay modules, but each action
+must be checked against the C6d carrier and terminal spacing before reuse.
+
+The finite post-D2 chain is therefore:
+
+1. convert the exact Green value decay from fine `finBoxDist` to the source
+   owner/block metric and prove the block-localized value bound;
+2. construct the literal left covariant derivative at terminal spacing and
+   prove its owner bound from the two endpoint values;
+3. expand the literal right adjoint stencil and prove its owner bound without
+   appealing to abstract adjoint symmetry;
+4. construct the literal covariant Laplacian action and prove its owner bound
+   from the signed forward/backward link terms;
+5. assemble those four bounds into
+   `CMP99Eq342RegionalGreenCertificate` with one common per-depth amplitude
+   and rate and the exact `[ell^2, ell, ell, 1]` scale vector;
+6. combine the positive- and zero-depth branches without imposing
+   `0 < depth` on the family;
+7. prove the separate scale-uniform inequalities that dominate the per-depth
+   amplitude and rate by one physical `B0 > 0` and `delta0 > 0`.
+
+Only item 7 is the uniform Eq. (3.42) endpoint.  Items 1--6 may be sealed and
+reused, but none of them alone attains window 15 or changes `20/41`.
