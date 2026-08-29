@@ -195,6 +195,29 @@ def main() -> int:
                 "C6D_GREEN_OWNER_PREFIX_TEST_VERIFIER_QUEUE_DIVERGED="
                 f"{verifier_queue!r} EXPECTED={runner_queue!r}"
             )
+        audit_stages_match = re.search(
+            r"(?m)^AUDIT_STAGES = (\{.*\})$", verifier_text
+        )
+        axiom_headers_match = re.search(
+            r"(?m)^EXPECTED_AXIOM_HEADERS = (\{.*\})$", verifier_text
+        )
+        if audit_stages_match is None or axiom_headers_match is None:
+            raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_VERIFIER_AUDIT_MAP_MISSING")
+        audit_stages = ast.literal_eval(audit_stages_match.group(1))
+        axiom_headers = ast.literal_eval(axiom_headers_match.group(1))
+        modules = [module for module, _ in runner_gen.BRICKS]
+        expected_audit_stages = {
+            module: queue[2 * index + 1][0]
+            for index, module in enumerate(modules)
+        }
+        expected_axiom_headers = {
+            module: queue[2 * index + 1][2]
+            for index, module in enumerate(modules)
+        }
+        if audit_stages != expected_audit_stages:
+            raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_VERIFIER_AUDIT_MAP_DIVERGED")
+        if axiom_headers != expected_axiom_headers:
+            raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_VERIFIER_AXIOM_MAP_DIVERGED")
         print(
             "C6D_GREEN_OWNER_PREFIX_GENERATORS_OK "
             f"synthetic_source={source_commit} source_rows={len(rows)} "
