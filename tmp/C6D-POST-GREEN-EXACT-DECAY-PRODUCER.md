@@ -407,3 +407,17 @@ source-faithful zero-depth consumer.  The next reusable interface should
 accept an explicit `terminalSpacing`, with positive depth instantiated by
 `L^(depth+1) * eta` and depth zero by `spacing`.  No zero-depth derived-action
 scratch is claimed until that explicit-spacing interface is compiled.
+
+Three scratch adapters now make that interface explicit without changing any
+compiled claim:
+
+- `BalabanCMP99Eq342LeftDerivativeAtTerminalSpacing`;
+- `BalabanCMP99Eq342RightAdjointAtTerminalSpacing`;
+- `BalabanCMP99Eq342LaplacianAtTerminalSpacing`.
+
+Each adapter rewrites the older auxiliary scale as
+`terminalSpacing / ell`.  This is algebra only: the positive-depth and
+depth-zero physical specializations, their exact amplitudes and all three
+audits remain open until a Colab queue promotes and compiles them.  In
+particular, the adapters do not identify the two physical spacing conventions
+and do not alter `20/41`.
