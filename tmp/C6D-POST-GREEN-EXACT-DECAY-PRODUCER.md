@@ -443,3 +443,9 @@ uses the named equality between the canonical regional Green and the exact
 D2 Green before invoking the assembler.  Its `B0` and `ownerRate` remain
 depth-dependent, so even a future green seal would close item 5 only, not the
 uniform item 7.
+
+The matching base specialization is written, also scratch only, in
+`BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthCertificate`.  Its
+literal action spacing is `spacing`, and its explicit amplitudes retain the
+remaining `L` powers.  Positive and zero depth are therefore separate
+producers; combining them without a false `0 < depth` premise remains item 6.
