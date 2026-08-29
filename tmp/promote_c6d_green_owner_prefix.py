@@ -57,6 +57,8 @@ SOURCES = (
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacianAudit.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions.draft.lean",
     "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActionsAudit.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificate.draft.lean",
+    "tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificateAudit.draft.lean",
 )
 PREREQUISITES = (
     "YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay.lean",
@@ -83,6 +85,7 @@ AUDIT_IMPORTS = (
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjointAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacianAudit",
     "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActionsAudit",
+    "import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificateAudit",
 )
 
 
