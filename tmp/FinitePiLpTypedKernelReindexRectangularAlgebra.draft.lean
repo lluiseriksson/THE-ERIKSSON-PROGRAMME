@@ -42,7 +42,7 @@ theorem finitePiLpTypedKernelReindex_rect_comp
 theorem finitePiLpTypedKernelReindex_adjoint
     {ι : Type u} {κ : Type v} {ι' : Type u'} {κ' : Type v'} {g : Type z}
     [Fintype ι] [Fintype κ] [Fintype ι'] [Fintype κ']
-    [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [NormedAddCommGroup g] [InnerProductSpace ℝ g] [CompleteSpace g]
     (eι : ι ≃ ι') (eκ : κ ≃ κ')
     (T : FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g) :
     (finitePiLpTypedKernelReindex eι eκ T).adjoint =
@@ -56,7 +56,7 @@ operator on its source carrier. -/
 theorem finitePiLpTypedKernelReindex_adjoint_comp_self
     {ι : Type u} {κ : Type v} {ι' : Type u'} {κ' : Type v'} {g : Type z}
     [Fintype ι] [Fintype κ] [Fintype ι'] [Fintype κ']
-    [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [NormedAddCommGroup g] [InnerProductSpace ℝ g] [CompleteSpace g]
     (eι : ι ≃ ι') (eκ : κ ≃ κ')
     (T : FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g) :
     finitePiLpTypedKernelReindex eι eι (T.adjoint.comp T) =
