@@ -39,7 +39,7 @@ parent = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(parent)
 
 runner = parent.runner
-runner.RUNNER_REV = "source-flow-uniform-point-source-b0-v3"
+runner.RUNNER_REV = "source-flow-uniform-point-source-b0-v4"
 runner.SOURCE_SHA = SOURCE_SHA
 runner.ROOT = Path("/content/hrpoly-source-flow-uniform-point-source-b0")
 runner.EVIDENCE = Path(
@@ -122,14 +122,5 @@ if __name__ == "__main__":
             + type(exc).__name__ + ": " + str(exc),
             flush=True,
         )
-    print("RUNTIME_UNASSIGN_REQUESTED=1", flush=True)
-    try:
-        if real_unassign is not None:
-            real_unassign()
-    except Exception as exc:
-        print(
-            "RUNTIME_UNASSIGN_STATUS=FAILED "
-            + type(exc).__name__ + ": " + str(exc),
-            flush=True,
-        )
+    print("RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1", flush=True)
     raise SystemExit(code)
