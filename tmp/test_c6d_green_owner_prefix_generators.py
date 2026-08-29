@@ -183,6 +183,18 @@ def main() -> int:
         compile(verifier_text, "synthetic-c6d-green-owner-prefix-verifier.py", "exec")
         if "C6D_GREEN_OWNER_PREFIX_EVIDENCE_OK" not in verifier_text:
             raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_VERIFIER_SENTINEL")
+        verifier_queue_match = re.search(
+            r"(?m)^QUEUE_STAGES = (\[.*\])$", verifier_text
+        )
+        if verifier_queue_match is None:
+            raise RuntimeError("C6D_GREEN_OWNER_PREFIX_TEST_VERIFIER_QUEUE_MISSING")
+        verifier_queue = ast.literal_eval(verifier_queue_match.group(1))
+        runner_queue = [row[0] for row in queue]
+        if verifier_queue != runner_queue:
+            raise RuntimeError(
+                "C6D_GREEN_OWNER_PREFIX_TEST_VERIFIER_QUEUE_DIVERGED="
+                f"{verifier_queue!r} EXPECTED={runner_queue!r}"
+            )
         print(
             "C6D_GREEN_OWNER_PREFIX_GENERATORS_OK "
             f"synthetic_source={source_commit} source_rows={len(rows)} "

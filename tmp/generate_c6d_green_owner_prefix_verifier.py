@@ -16,6 +16,13 @@ DEFAULT_RUNNER = ROOT / "scripts" / "colab_c6d_green_owner_prefix_validation.py"
 DEFAULT_NOTEBOOK = ROOT / "scripts" / "colab_c6d_green_owner_prefix_validation.ipynb"
 DEFAULT_OUTPUT = ROOT / "tmp" / "verify_c6d_green_owner_prefix_evidence.py"
 MODULES = [
+    "BalabanCMP99Eq342LeftDerivativeFromValueBound",
+    "BalabanCMP99Eq342RightAdjointFromValueBound",
+    "BalabanCMP99Eq342LaplacianFromLeftDerivativeBound",
+    "BalabanCMP99Eq342LeftDerivativeAtTerminalSpacing",
+    "BalabanCMP99Eq342RightAdjointAtTerminalSpacing",
+    "BalabanCMP99Eq342LaplacianAtTerminalSpacing",
+    "BalabanCMP99Eq342SourceLocalizedCertificateAssembler",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputAction",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionZeroDepth",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecay",
@@ -26,6 +33,9 @@ MODULES = [
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivative",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjoint",
     "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian",
+    "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions",
+    "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenPerDepthCertificate",
+    "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthCertificate",
 ]
 
 
@@ -67,16 +77,19 @@ def generated_text(source_sha: str, runner: Path, notebook: Path) -> str:
     blobs_sha = hashlib.sha256(canonical.encode()).hexdigest().upper()
     cell_sha = hashlib.sha256(notebook_cell_source(notebook).encode()).hexdigest().upper()
     audit_stages = {
-        module: f"{index:02d}_{module.lower()}_audit"
+        module: f"{index:02d}_{module.removeprefix('Balaban').lower()}_audit"
         for index, module in enumerate(MODULES, start=1)
     }
     queue_stages: list[str] = []
     for index, module in enumerate(MODULES, start=1):
-        stem = f"{index:02d}_{module.lower()}"
+        stem = f"{index:02d}_{module.removeprefix('Balaban').lower()}"
         queue_stages.extend((stem + "_focal", stem + "_audit"))
-    queue_stages.append("11_c6d_green_owner_prefix_yang_mills_core_root")
+    queue_stages.append("21_c6d_green_owner_prefix_yang_mills_core_root")
     expected_axiom_headers = {module: 1 for module in MODULES}
     expected_axiom_headers["BalabanCMP99SourcePhysicalLocalizedRegionNonempty"] = 3
+    expected_axiom_headers[
+        "BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions"
+    ] = 3
     return f'''#!/usr/bin/env python3
 """Fail-closed verifier specialization for the C6d Green owner prefix."""
 
