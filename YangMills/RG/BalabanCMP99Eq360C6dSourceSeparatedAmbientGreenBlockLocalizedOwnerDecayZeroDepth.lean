@@ -42,9 +42,11 @@ theorem
     let ell := L ^ (0 + 1)
     let A :=
       cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-        (Nc := Nc) regions hL background chain fineSmall decay
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall decay
     let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-      (Nc := Nc) regions hL background chain fineSmall
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
     let rate := finitePiLpExponentialInverseDecayRate A decay
       (cmp99OmegaSiteExpSumBound (decay / 4)) c
     let ownerRate := (ell : ℝ) * rate
@@ -52,7 +54,8 @@ theorem
       Real.exp (3 * rate * ((ell - 1 : ℕ) : ℝ))
     FinitePiLpTypedBlockLocalizedSupBound
       (cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-        (Nc := Nc) regions hL hspacing background chain fineSmall)
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing)
       (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
       (cmp99Eq342SourceLocalizedActiveOwner L K Q 0)
       finBoxDist (ownerAmplitude * (ell : ℝ) ^ 2) ownerRate := by
@@ -60,21 +63,25 @@ theorem
   let ell := L ^ (0 + 1)
   let A :=
     cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
-      (Nc := Nc) regions hL background chain fineSmall decay
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall decay
   let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
-    (Nc := Nc) regions hL background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
   let rate := finitePiLpExponentialInverseDecayRate A decay
     (cmp99OmegaSiteExpSumBound (decay / 4)) c
   let ownerRate := (ell : ℝ) * rate
   let ownerAmplitude := (2 / c) *
     Real.exp (3 * rate * ((ell - 1 : ℕ) : ℝ))
   let G := cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
-    (Nc := Nc) regions hL hspacing background chain fineSmall
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall hspacing
   letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
   have hA : 0 ≤ A := by
     exact
       (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero_exponentialKernelBound
-        (Nc := Nc) regions hL background chain fineSmall hspacing hdecay).1
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing hdecay).1
   have hc : 0 < c := by
     exact cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
       regions (by norm_num : 2 ≤ 4) hL hspacing background chain fineSmall
