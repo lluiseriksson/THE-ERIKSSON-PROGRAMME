@@ -1,0 +1,4 @@
+tmp/BalabanCMP99Eq342LaplacianFromLeftDerivativeBound.draft.lean
+tmp/BalabanCMP99Eq342LaplacianFromLeftDerivativeBoundAudit.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacianAudit.draft.lean
