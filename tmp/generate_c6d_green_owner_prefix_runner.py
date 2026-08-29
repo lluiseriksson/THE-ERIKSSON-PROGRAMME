@@ -141,7 +141,7 @@ def generate(source_sha: str) -> str:
         ),
         (
             "c6d-source-separated-ambient-green-v3",
-            "c6d-green-owner-prefix-v1",
+            "c6d-green-owner-prefix-v2",
         ),
         (
             "hrpoly-c6d-source-separated-ambient-green",
