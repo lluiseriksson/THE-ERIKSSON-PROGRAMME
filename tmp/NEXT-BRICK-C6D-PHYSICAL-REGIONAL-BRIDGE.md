@@ -142,11 +142,17 @@ Dirichlet Green and gives none of the three derivative actions in (3.42).
    physical precisions or feed a C6d certificate to the generated consumer.
    The reuse boundary is not uniform across the three species:
    `cmp99Eq389SignedCovariantLinkRegionalCorrection_blockLocalizedSupBound`
-   fixes derivative spacing `1`, so it must first be generalized or
-   re-specialized to the literal C6d terminal spacing.  The signed cutoff
-   Laplacian operator is spacing-independent, but its current localized-bound
-   wrapper still fixes the certificate spacing to `1`; that interface must be
-   generalized too (the proof consumes only `value_bound`).  The third leaf fixes
+   fixes derivative spacing `1`, and so does the underlying
+   `cmp99Eq389SignedCovariantLinkAmbientOperator` itself.  Therefore the first
+   obligation needs a spacing-parametric operator/correction and its action
+   identity, not merely a generalized certificate wrapper; it must then be
+   specialized to the literal C6d terminal spacing.  The signed cutoff
+   Laplacian leaf is also a unit-spacing specialization: its action theorem
+   cites `cmp99CutoffLaplacianCorrection_one_eq_sourceSeparatedSignedCoefficient`,
+   whereas the general correction contains the two explicit
+   `spacing⁻¹` factors.  Its operator and budget must therefore be rescaled,
+   not just its certificate wrapper (the bound proof itself consumes only
+   `value_bound` after that rescaling is exposed).  The third leaf fixes
    `cmp99SourceSeparatedGeneratedCountingMass`, so the retained-tower mass
    action needs its own C6d theorem or an exact source dictionary.  These are
    three finite operator obligations, not one definitional cast.
