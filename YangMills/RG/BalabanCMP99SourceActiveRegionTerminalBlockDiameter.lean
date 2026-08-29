@@ -20,41 +20,35 @@ noncomputable section
 
 variable {d M N : ℕ} [NeZero M]
 
-/-- The numerical terminal coordinate is the iterated integer quotient of
-the fine coordinate.  This statement is independent of which active sites
-survive at intermediate scales. -/
-theorem CMP99SourceActiveRegionChain.terminalSiteOfFine_val_eq_div_pow
-    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
-    (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
-    ∀ (source : ActiveGaugeRegion.Site Omega) (i : Fin d),
-      ((regions.terminalSiteOfFine source).1 i).val =
-        (source.1 i).val / M ^ depth := by
-  induction regions with
-  | stop Omega =>
-      intro source i
-      simp [CMP99SourceActiveRegionChain.terminalSiteOfFine]
-  | @step N' depth _ Omega hOmega tail ih =>
-      intro source i
-      rw [CMP99SourceActiveRegionChain.terminalSiteOfFine_step]
-      rw [ih]
-      simp only [cmp99ActiveCoarseSiteOfFine, blockSite_val]
-      rw [Nat.div_div_eq_div_mul]
-      congr 1
-      rw [pow_succ]
-      exact Nat.mul_comm _ _
-
 /-- Equal terminal owners force equality of every order-`M^depth` coordinate
 quotient. -/
 theorem CMP99SourceActiveRegionChain.div_pow_eq_of_sameTerminalBlock
     {depth : ℕ} {Omega : ActiveGaugeRegion d N}
-    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
-    (source target : ActiveGaugeRegion.Site Omega)
-    (hsame : regions.SameTerminalBlock source target) (i : Fin d) :
-    (source.1 i).val / M ^ depth = (target.1 i).val / M ^ depth := by
-  have howner :=
-    (regions.sameTerminalBlock_iff_terminalSiteOfFine_eq source target).1 hsame
-  have hi := congrArg (fun z => (z.1 i).val) howner
-  simpa only [regions.terminalSiteOfFine_val_eq_div_pow] using hi
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth) :
+    ∀ (source target : ActiveGaugeRegion.Site Omega),
+      regions.SameTerminalBlock source target →
+      ∀ i : Fin d,
+        (source.1 i).val / M ^ depth = (target.1 i).val / M ^ depth := by
+  induction regions with
+  | stop Omega =>
+      intro source target hsame i
+      have hst : source = target :=
+        (CMP99SourceActiveRegionChain.sameTerminalBlock_stop
+          (M := M) Omega source target).1 hsame
+      subst target
+      rfl
+  | @step N' depth _ Omega hOmega tail ih =>
+      intro source target hsame i
+      have htail : tail.SameTerminalBlock
+          (cmp99ActiveCoarseSiteOfFine Omega hOmega source)
+          (cmp99ActiveCoarseSiteOfFine Omega hOmega target) :=
+        (CMP99SourceActiveRegionChain.sameTerminalBlock_step
+          (M := M) Omega hOmega tail source target).1 hsame
+      have hq := ih
+        (cmp99ActiveCoarseSiteOfFine Omega hOmega source)
+        (cmp99ActiveCoarseSiteOfFine Omega hOmega target) htail i
+      simpa only [cmp99ActiveCoarseSiteOfFine, blockSite_val,
+        Nat.div_div_eq_div_mul, pow_succ, Nat.mul_comm] using hq
 
 /-- Every terminal block of an arbitrary typed source-region chain has the
 same literal order-`M^depth` diameter as the canonical iterated-lift chain.
@@ -108,7 +102,7 @@ theorem CMP99SourceActiveRegionChain.sameTerminalBlock_finBoxDist_le
       _ ≤ (target.1 i).val + (M ^ depth - 1) :=
         Nat.add_le_add_left hsmod _
 
-variable {Nc : ℕ} [NeZero d] [NeZero Nc]
+variable {Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
 
 /-- The recursive counting mass of any typed chain has its intrinsic
 terminal-block radius. -/
