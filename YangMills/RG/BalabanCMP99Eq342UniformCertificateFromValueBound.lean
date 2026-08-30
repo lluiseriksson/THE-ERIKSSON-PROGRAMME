@@ -9,8 +9,6 @@ import YangMills.RG.BalabanCMP99Eq342RightAdjointAtTerminalSpacing
 import YangMills.RG.BalabanCMP99Eq342LaplacianAtTerminalSpacing
 
 /-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
 # Uniform CMP99 (3.42) certificate from one value estimate
 
 At the literal terminal spacing `L^(depth+1) * eta`, the powers of the block

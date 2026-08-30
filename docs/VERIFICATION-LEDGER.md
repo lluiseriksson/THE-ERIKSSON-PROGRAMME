@@ -42011,10 +42011,10 @@ mismatches.  The two PRE-VALIDATION notices are therefore retired.  This
 seal still does not construct CMP89 (2.42), produce CMP99 (3.42), attain
 window 15, move `20/41`, or instantiate `TermSource`.
 
-## Addendum 979 (2026-08-30, **uniform CMP99 (3.42) value-to-four-actions adapter integrated PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+## Addendum 979 (2026-08-30, **uniform CMP99 (3.42) value-to-four-actions adapter cold-sealed; 20/41 unchanged**)
 
-`BalabanCMP99Eq342UniformCertificateFromValueBound{,Audit}` is now imported
-by `YangMillsCore` with both PRE-VALIDATION notices intact.  Its theorem takes
+`BalabanCMP99Eq342UniformCertificateFromValueBound{,Audit}` is imported by
+`YangMillsCore`.  Its theorem takes
 one literal source-localized bound for the canonical regional Dirichlet Green
 with amplitude `valueAmplitude * L^(2*(depth+1))` and a rate independent of
 `depth`.  At terminal spacing `L^(depth+1) * eta`, the three sealed derivative
@@ -42024,10 +42024,8 @@ the four CMP99 (3.42) actions with one depth-independent common amplitude.
 This unit is an adapter, not the missing producer: the regional value bound,
 its uniform amplitude and rate, and the regional inverse/operator dictionary
 remain explicit inputs.  No scalar pointwise probe is identified with an
-arbitrary-field action.  Until a fresh Colab Pro+ gate passes and its exact
-audit is independently preserved, no PRE-VALIDATION mark is retired.  The
-unit cannot by itself attain window 15, move `20/41`, or instantiate
-`TermSource`.
+arbitrary-field action.  The unit cannot by itself attain window 15, move
+`20/41`, or instantiate `TermSource`.
 
 The source checkpoint is
 `d8db241ce99ef37ceecc14afefc3a19b88ed5f20`.  The self-contained fresh-gate
@@ -42036,7 +42034,23 @@ runner
 has SHA-256
 `19F0500157DF61C73D0CF2EC7DB59C70A21784562CCE6A3FF1B19A2F0808101E`
 and pins the two Lean blobs plus `YangMillsCore.lean` by their exact Git-object
-bytes.  It requires a new Colab Pro+ CPU/high-RAM directory, exact toolchain
-and Mathlib pins, stop-on-first-error focal/audit stages and the one exact
-axiom declaration.  Passing this runner is still required before the two
-notices can be retired.
+bytes.  Exact source `d8db241ce99ef37ceecc14afefc3a19b88ed5f20`
+then passed one fresh Colab Pro+ CPU/high-RAM checkout with no restored
+project `.lake/build`: the focal compiled `8707/8707` jobs in `5229.215`
+seconds and the exact audit exited zero in `10.071` seconds.  The declaration
+`cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound` uses exactly
+`{propext, Classical.choice, Quot.sound}`.  The independently verified JSON,
+manifest and archive SHA-256 values are respectively
+`EAD3CA3367EA134C836F11696BF024403B647A22AAE1B83CBCE63FEB4213DC2D`,
+`51D620EE6DF9DE936233108687AE27C59640024769CB223B9AD4A494CB5CC566`,
+and
+`7C403B4DEF7531C84F866F9345D5E0FA0A024A20FBCFE4AD9BA167A40715305B`.
+All 17 manifest members rehashed locally with zero mismatches, so exactly the
+two PRE-VALIDATION notices are retired.
+
+A retained-checkout diagnostic also compiled the separate CMP89 Neumann
+regional precision and the Neumann-versus-zero-extension-Dirichlet boundary
+no-go (`8456/8456`, `NOGO_HOT_EXIT=0`).  That result is diagnostic only: its
+four PRE-VALIDATION notices remain until an independent cold seal.  It fixes
+the next dictionary boundary by ruling out the convenient but false
+identification of the two regional Green conventions.
