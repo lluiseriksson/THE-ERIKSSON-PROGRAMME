@@ -22,7 +22,7 @@ namespace YangMills.RG
 
 noncomputable section
 
-variable {d : ℕ} {E : Type*} [NormedAddCommGroup E] [CompleteSpace E]
+variable {d : ℕ} {E : Type*} [NormedAddCommGroup E]
 
 /-- A point of the source block rectangle, using the half-open convention
 fixed by CMP89 (1.1). -/
