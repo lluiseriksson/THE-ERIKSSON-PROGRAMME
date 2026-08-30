@@ -96,21 +96,21 @@ def streaming_run(stage, command, cwd=None):
 
 
 runner.run = streaming_run
-runner.RUNNER_REV = "cmp89-neumann-centered-rectangular-v1"
-runner.SOURCE_SHA = "5b6e0b6d661f5b0b0fdf9bad851d6cfbf522be11"
-runner.ROOT = Path("/content/hrpoly-cmp89-neumann-centered-rectangular")
+runner.RUNNER_REV = "cmp89-neumann-centered-rectangular-v2"
+runner.SOURCE_SHA = "e7f38ed24b249ad08a5a829545abed0a05ff379c"
+runner.ROOT = Path("/content/hrpoly-cmp89-neumann-centered-rectangular-cold-v2")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp89-neumann-centered-rectangular-evidence"
+    "/content/hrpoly-cmp89-neumann-centered-rectangular-cold-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp89-neumann-centered-rectangular-evidence.tar.gz"
+    "/content/hrpoly-cmp89-neumann-centered-rectangular-cold-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp89-neumann-centered-rectangular-paths.txt"
+    "/content/hrpoly-cmp89-neumann-centered-rectangular-cold-v2-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89NeumannCenteredRectangularRepresentative.lean":
-        "68065abe412aebf34e6020d4bd92a73233c2111c740880ac817088ccd4079b22",
+        "bf6d6977cbb2736a6ba835851d96402b7a18c99fa99d3ddea491e90e80abfeef",
     "YangMills/RG/BalabanCMP89NeumannCenteredRectangularRepresentativeAudit.lean":
         "f05bcb77249ccd0e53c7dde66b6908fd2b3a9564220902850a922b1e2664a645",
 }
