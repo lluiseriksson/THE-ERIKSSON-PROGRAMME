@@ -29009,7 +29009,6 @@ run `31221320009` retained the first elaboration errors; cached run
 live counters remain exactly `20/41`, `TermSource = 0`, and window 15
 compatible but unattained.
 
-
 ## Addendum 602 (2026-08-08, **CMP99 (3.42) producer boundary fixed from primary source; documentation only**)
 
 Direct inspection of the local primary extraction fixes the dependency chain
@@ -41865,4 +41864,32 @@ rectangle embedding, period-floor producer and CMP99 owner metric remain the
 next dictionary boundary.  The CMP89 (2.42) representation producer,
 uniform-in-depth physical `B0, delta0`, window 15 and `TermSource` remain
 open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
+
+## Addendum 975 (2026-08-30, **CMP89 physical rectangle period/owner geometry promoted PRE-VALIDATION after hot PASS; cold seal pending; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`1b9979c1371c68b6aaa9722afaa1314c41adfa49` promotes the literal reflection
+period floor, the canonical embedding of the half-open CMP89 rectangle into
+the finite physical carrier, and the resulting CMP99 localization-owner
+metric bridge.  Four new Lean files carry visible PRE-VALIDATION notices and
+their two audits are imported into `YangMillsCore`.  No owner map, volume
+factor or common-period replacement is accepted as input.
+
+After Addendum 974 evidence was downloaded and verified, a retained-checkout
+diagnostic compiled the period floor `8562/8562` jobs in `6.6` seconds and its
+one-declaration audit exited zero.  The first geometry attempt reached one
+cast/unfold mismatch at the final `l1` bridge.  Repair checkpoint
+`9040969ed21ccf0f06463a493a6ed4dd6693bc54` separated the natural-to-real
+cast from the literal `cmp89Eq251LatticeL1Length` unfolding; no statement or
+constant changed.  The repaired geometry then compiled `8661/8661` jobs in
+`6.6` seconds and its five-declaration audit exited zero.  All six readouts
+use exactly `[propext, Classical.choice, Quot.sound]`.
+
+These results are diagnostic only.  The prepared fail-closed Colab runner
+`scripts/colab_cmp89_neumann_rectangular_physical_owner_geometry_validation.py`
+is fixed to the source checkpoint and five exact blob hashes, and will use a
+new directory without restored project `.lake/build`.  Until that cold gate
+passes and its archive is locally verified, all four PRE-VALIDATION notices
+remain.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.

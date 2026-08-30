@@ -15123,3 +15123,12 @@ The CMP89 (2.42) representation certificate construction, the final physical
 pair uniform in depth, window 15, rows 23--24 and `TermSource` remain open.
 Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+The next source-facing geometry unit is present at PRE-VALIDATION checkpoint
+`1b9979c1371c68b6aaa9722afaa1314c41adfa49`.  Retained-checkout diagnostics
+passed the reflection-period floor (`8562/8562`, one exact audit readout) and,
+after one explicit cast/unfold repair, the canonical rectangle embedding and
+CMP99 owner bridge (`8661/8661`, five exact audit readouts).  All six readouts
+use exactly the allowed axiom trio.  This is not seal authority: its four
+marks remain until the prepared fresh-directory Colab gate passes and its
+durable evidence is locally verified.  No counter moves.
