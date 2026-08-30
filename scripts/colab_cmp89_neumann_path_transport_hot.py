@@ -15,8 +15,8 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-path-transport-hot-v1"
-SOURCE_SHA = "f86edf07b32ab9dc960b97cc1b39e8d6745dadb2"
+RUNNER_REV = "cmp89-neumann-path-transport-hot-v2"
+SOURCE_SHA = "497fc544078f4a3c6daf665a3b5814c429afafb6"
 BASE_SHA = "b3b3c59b941e8b7f881428586542c061b7d14e5a"
 ROOT = Path("/content/hrpoly-cmp89-neumann-source-chain-cold")
 SOURCE_BLOBS = {
@@ -25,7 +25,7 @@ SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannInternalBondTransportAudit.lean":
         "7b339d2fd3aeb5f965fc5985ed01b504d6a1684e0cb246897d164427e11c5320",
     "YangMills/RG/BalabanCMP89SourceNeumannPathTransport.lean":
-        "108da0f2ad06ae0cff4086fee51276a6ead1aee1b5460733788baf062f75cbfd",
+        "16b6720ecf5b20c21ec63c81a63c4ee6e36faa1aa82f8eeeef96bc70f65e0a3e",
     "YangMills/RG/BalabanCMP89SourceNeumannPathTransportAudit.lean":
         "342404b048690f783be814ee49d823236938d41b6a3f875687c1d70767444670",
 }
