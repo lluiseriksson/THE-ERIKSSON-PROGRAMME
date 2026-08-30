@@ -78,9 +78,12 @@ theorem norm_cmp99BlockContainedContour_defect_sq_le_neumannInternalBlockEnergy
   change ‖phi base - rho.adCLM (Gamma.holonomy U) (phi xa)‖ ^ 2 ≤ _
   calc
     ‖phi base - rho.adCLM (Gamma.holonomy U) (phi xa)‖ ^ 2 ≤
-        (Gamma.edges.length : ℝ) *
+      (Gamma.edges.length : ℝ) *
           covariantPathEnergy rho U psi Gamma.edges := by
-            simpa [hpsiBase, hpsiX] using hsq
+            change ‖psi base.1 -
+              rho.adCLM (Gamma.holonomy U) (psi xa.1)‖ ^ 2 ≤ _ at hsq
+            rw [hpsiBase, hpsiX] at hsq
+            exact hsq
     _ ≤ (Gamma.edges.length : ℝ) ^ 2 *
         cmp89SourceNeumannInternalBlockEnergy Omega rho U phi y := by
       calc
@@ -214,7 +217,6 @@ theorem sum_norm_sq_active_block_le_neumannEnergy_add_average
           (cmp99SourceWeightedPhysicalTransport rho U) phi y := by
     rw [cmp99SourceTransportedBlockAverageCLM,
       cmp99TransportedBlockAverageCLM_apply]
-    rfl
   rw [hleft]
   calc
     ∑ x : I, ‖v x‖ ^ 2 ≤
