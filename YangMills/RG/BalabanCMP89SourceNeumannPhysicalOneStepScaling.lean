@@ -62,7 +62,7 @@ theorem cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling
           (2 ^ 2 *
             (spacing ^ 2 *
               ((((2 * d * (M - 1) + M : ℕ) : ℝ) * etaFine +
-                (M : ℝ) * etaCoarse) ^ 2)) *
+                (M : ℝ) * etaCoarse) ^ 2))) *
           (d : ℝ) =
         ‖(M : ℝ)⁻¹‖ ^ 2 *
           (‖spacing⁻¹‖ ^ 2 * spacing ^ 2) *
