@@ -7,14 +7,15 @@ object and SHA-256, runs them in dependency order, and stops on first error.
 Hot evidence cannot retire PRE-VALIDATION.
 
 ```text
-suite runner object: 18bb269ce3dcfb5d3e14919791ebef1040b29190
-suite runner SHA-256: fe351b26eb7ded96abf0036ec3c7d6c10427d9e7152259ef39aa9f930c472186
+suite runner object: f698d7a67de8ec402c2a66992689e1f62c740a0d
+suite runner SHA-256: 3f68d161979bdca2a8c741205b03788a6949875e5e42f578037819f356483eb8
 success sentinel: HOT_C6D_POST_COLD_DIAGNOSTIC_SUITE_PASS
 ```
 
-This supersedes suite objects `01fc252a068b76aae94e7d7beb45cc089b5eb69d`
-and `a273c601e197622ecdf5f660839e03a51dda5dcb`; both predate the final
-half-open representation-carrier correction.
+This supersedes suite objects `01fc252a068b76aae94e7d7beb45cc089b5eb69d`,
+`a273c601e197622ecdf5f660839e03a51dda5dcb`, and
+`18bb269ce3dcfb5d3e14919791ebef1040b29190`. The current suite is the first
+one whose representation contract is both half-open and nonvacuous.
 
 ```python
 import hashlib, urllib.request
@@ -22,10 +23,10 @@ import hashlib, urllib.request
 url = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "18bb269ce3dcfb5d3e14919791ebef1040b29190/"
+    "f698d7a67de8ec402c2a66992689e1f62c740a0d/"
     "tmp/run_c6d_post_cold_hot_suite.py"
 )
-expected = "fe351b26eb7ded96abf0036ec3c7d6c10427d9e7152259ef39aa9f930c472186"
+expected = "3f68d161979bdca2a8c741205b03788a6949875e5e42f578037819f356483eb8"
 with urllib.request.urlopen(url) as response:
     payload = response.read()
 actual = hashlib.sha256(payload).hexdigest()
