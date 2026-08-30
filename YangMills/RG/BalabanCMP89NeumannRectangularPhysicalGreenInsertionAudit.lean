@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalGreenInsertion
+
+/-!
+PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
+and no result in this module is compiler-verified.
+
+Axiom audit for the physical full-lattice Green insertion.
+-/
+
+#print axioms YangMills.RG.CMP89FullLatticeGreenDecayCertificate
+#print axioms YangMills.RG.summable_cmp89NeumannRectangularBranchFullGreen
+#print axioms YangMills.RG.summable_cmp89NeumannRectangularFullGreen_sum
+#print axioms YangMills.RG.norm_cmp89NeumannReflectionSeries_le_of_fullGreenDecay
+#print axioms YangMills.RG.cmp89Eq248PhysicalFullLatticeGreen
+#print axioms YangMills.RG.cmp89Eq248PhysicalFullLatticeGreenDecayCertificate_draft
+#print axioms YangMills.RG.norm_cmp89Eq248PhysicalNeumannReflectionSeries_le_draft
+
