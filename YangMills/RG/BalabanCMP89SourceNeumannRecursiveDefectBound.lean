@@ -49,6 +49,24 @@ noncomputable def cmp99SourceCoarseTransportRemainderCochain
     cmp99SourceCoarseTransportRemainderCochain rho U V phi b =
       cmp99SourceCoarseTransportRemainder rho U V phi b.1 b.2 := rfl
 
+/-- Restriction to an active positive-bond subtype does not increase the
+counting `L²` norm.  This is stated with all physical indices pinned so later
+source specializations do not ask typeclass inference to unfold the whole
+regional tower. -/
+theorem norm_restrictOneCLM_sq_le_sun
+    (Omega : ActiveGaugeRegion d N')
+    (A : GaugeOneCochain d N' (SUNLieCoord Nc)) :
+    ‖restrictOneCLM Omega A‖ ^ 2 ≤ ‖A‖ ^ 2 := by
+  rw [PiLp.norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2]
+  calc
+    (∑ b : ActiveGaugeRegion.Bond Omega,
+        ‖restrictOneCLM Omega A b‖ ^ 2) =
+      ∑ b ∈ Omega.bonds, ‖A b‖ ^ 2 := by
+      exact Finset.sum_subtype _ (fun b => Iff.rfl) _
+    _ ≤ ∑ b : PositiveBond d N', ‖A b‖ ^ 2 :=
+      Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _)
+        (fun b _ _ => sq_nonneg _)
+
 /-- On the fine regional Neumann kernel, restriction of the literal coarse
 derivative to active coarse bonds equals restriction of the explicit `Ubar`
 transport remainder. -/
@@ -110,34 +128,29 @@ theorem norm_restrictOne_cmp99SourceCoarseTransportRemainderCochain_sq_le
         (2 * (cmp99SourceTripleHolonomyRadius d M epsilonFine +
           epsilonCoarse)) ^ 2 * (d : ℝ) * ‖phi‖ ^ 2 := by
   dsimp only
-  rw [PiLp.norm_sq_eq_of_L2]
   calc
-    (∑ b : ActiveGaugeRegion.Bond
-        (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega),
-        ‖restrictOneCLM
-          (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
-          (cmp99SourceCoarseTransportRemainderCochain
-            rho U V (extendZeroZeroCLM Omega phi)) b‖ ^ 2) =
-      ∑ b ∈ (cmp99ActiveCoarseRegion
-          (M := M) (N' := N') Omega).bonds,
-        ‖cmp99SourceCoarseTransportRemainderCochain
-          rho U V (extendZeroZeroCLM Omega phi) b‖ ^ 2 := by
-      exact Finset.sum_subtype _ (fun b => Iff.rfl) _
-    _ ≤ ∑ b : PositiveBond d N',
-        ‖cmp99SourceCoarseTransportRemainderCochain
-          rho U V (extendZeroZeroCLM Omega phi) b‖ ^ 2 := by
-      exact Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _)
-        (fun b _ _ => sq_nonneg _)
+    ‖restrictOneCLM
+        (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
+        (cmp99SourceCoarseTransportRemainderCochain
+          rho U V (extendZeroZeroCLM Omega phi))‖ ^ 2 ≤
+      ‖cmp99SourceCoarseTransportRemainderCochain
+        rho U V (extendZeroZeroCLM Omega phi)‖ ^ 2 :=
+      norm_restrictOneCLM_sq_le_sun
+        (d := d) (N' := N') (Nc := Nc)
+        (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
+        (cmp99SourceCoarseTransportRemainderCochain
+          rho U V (extendZeroZeroCLM Omega phi))
     _ = ∑ y : FinBox d N', ∑ mu : Fin d,
         ‖cmp99SourceCoarseTransportRemainder rho U V
           (extendZeroZeroCLM Omega phi) y mu‖ ^ 2 := by
-      rw [Fintype.sum_prod_type]
+      rw [PiLp.norm_sq_eq_of_L2, Fintype.sum_prod_type]
       rfl
     _ ≤ cmp99SourceBlockAverageWeight M d *
         (2 * (cmp99SourceTripleHolonomyRadius d M epsilonFine +
           epsilonCoarse)) ^ 2 * (d : ℝ) *
           ‖extendZeroZeroCLM Omega phi‖ ^ 2 :=
       sum_norm_cmp99SourceCoarseTransportRemainder_sq_le
+        (d := d) (M := M) (N' := N') (Nc := Nc)
         U V (extendZeroZeroCLM Omega phi) epsilonFine epsilonCoarse
         epsilonFine_nonneg epsilonCoarse_nonneg fine_small coarse_small
     _ = _ := by rw [norm_extendZeroZeroCLM_eq]
