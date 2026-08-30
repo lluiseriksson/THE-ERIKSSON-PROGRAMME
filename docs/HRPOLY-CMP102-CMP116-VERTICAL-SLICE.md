@@ -14942,3 +14942,35 @@ rescaling.  It does not construct the common four-action physical Green,
 uniform `B0, delta0`, window-15 attainment, rows 23--24, or a `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+### Step 8b.24/C6d.7: fixed-depth physical Green actions and certificates (COLAB-VERIFIED; 20/41 unchanged)
+
+Exact source `77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92` passed the
+`c6d-green-owner-prefix-v3` cold gate in one fresh Colab Pro+ checkout.  The
+queue materialized the Eq. (3.42) value-to-action adapters, localized
+certificate assembler, positive- and zero-depth owner actions/decay,
+localized-owner decay, localized-region nonemptiness, the three physical
+actions and both per-depth certificates.  All 55 stages exited zero; the
+same-checkout `YangMillsCore` root compiled `11145` jobs in `6978.938`
+seconds.  All axiom readouts are contained in
+`{propext, Classical.choice, Quot.sound}`.
+
+The canonical evidence, archive and executed cold-notebook SHA-256 values are
+respectively
+`B5332D68E7BDA06D695A5D0F3CD07611FC53AAB7727B4DB9CA4A548596F2A527`,
+`2B05F3B9AD1D47CEE0499312C328CBE581E42CE4649723049C7247707B6E2B51`
+and
+`56315FAB8FBF68B8664179257B1B3DB8DC8C315238AE7DBDE21B4C5618B008D2`.
+The verifier emitted `C6D_GREEN_OWNER_PREFIX_EVIDENCE_OK`; the selective seal
+retires exactly 40 notices and has sealed-manifest SHA-256
+`365C74705013F342C6A99FA68079A1C81815ECE59FC020F63E859AF45322CD32`.
+
+A subsequent retained-runtime suite passed eight CMP89/C6d diagnostic pairs;
+its executed-notebook SHA-256 is
+`E8A6D7A302A4250D737872B033466E8C72654AF5BCA6C073BFA153F15C8AEFBE`.
+That PASS is diagnostic only and did not authorize the seal.
+
+This closes the finite fixed-depth action/certificate prefix.  It does not
+produce a physical `B0, delta0` pair uniform in depth, attain window 15,
+discharge rows 23--24 or construct a `TermSource`.  Counters remain exactly
+`20/41`, `TermSource = 0`; window 15 remains compatible but unattained.

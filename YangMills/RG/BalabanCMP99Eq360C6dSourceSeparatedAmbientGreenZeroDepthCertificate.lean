@@ -2,17 +2,6 @@ import YangMills.RG.BalabanCMP99Eq342SourceLocalizedCertificateAssembler
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact depth-zero C6d CMP99 (3.42) certificate
-
-The base branch uses its internally generated full-companion precision and
-Green, with literal derivative spacing `spacing`.  The common amplitude is
-still the explicit per-branch majorant; this is not a uniform-in-depth (3.42)
-certificate.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

@@ -2,17 +2,6 @@ import YangMills.RG.BalabanCMP99Eq342RightAdjointFromValueBound
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecay
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedPhysicalBackground
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-dictionary, and literal backward-stencil transport.
-
-# Exact positive-depth C6d right-adjoint action
-
-The action is the canonical exact D2 Green composed with the adjoint of the
-literal C6d covariant derivative at spacing `L^(depth+1) * eta`.  Neither the
-Green, background nor operator equality is caller data.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

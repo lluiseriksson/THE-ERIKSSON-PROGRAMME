@@ -2,18 +2,6 @@ import YangMills.RG.BalabanCMP99ActiveRegionSourceCovariantAdjointStencil
 import YangMills.RG.FinitePiLpBlockLocalizedSupOwnerKernelComposition
 import YangMills.RG.BalabanCMP99SourcePi4Collar
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Localized right-adjoint derivative from a Green value bound
-
-This is the reusable algebraic/stencil step behind the third CMP99 (3.42)
-action.  It expands the literal backward divergence and never infers the
-result from abstract adjoint symmetry.  Its radius-one owner ball has the
-visible bound `3^4 = 81`; together with the eight stencil terms this gives
-the displayed coefficient `648`.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

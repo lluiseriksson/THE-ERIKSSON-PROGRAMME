@@ -2,16 +2,6 @@ import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecayZeroDept
 import YangMills.RG.BalabanCMP99Eq342SourceOwnerTiltedInput
 import YangMills.RG.FinitePiLpTiltedInverseAction
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact depth-zero C6d Green action on one source-owner input
-
-The depth-zero precision, Green, inverse identity and coercivity are all
-constructed internally.  This is not obtained by specializing a theorem
-whose hypotheses contain `0 < depth`.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

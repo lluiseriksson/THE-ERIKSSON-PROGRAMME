@@ -1,18 +1,6 @@
 import YangMills.RG.BalabanCMP116SourcePhysicalCoordinateDictionary
 import YangMills.RG.BalabanCMP99SourceDirichletProblem
 
-/-!
-# Scratch: localized CMP116 coordinates give a literal CMP99 regional site
-
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-This leaf removes the free `root : ActiveGaugeRegion.Site Omega` used by the
-prepared owner/action prefix when `Omega` is the literal fine-site realization
-of a proof-carrying physical localization region.  It uses the source endpoint
-of the interior physical bond already carried by a localized Lie coordinate;
-it does not assume a nonempty region, selected bond set or regional Green.
--/
-
 namespace YangMills.RG
 
 open Finset

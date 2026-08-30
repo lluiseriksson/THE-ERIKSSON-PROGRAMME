@@ -1,20 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputAction
 import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact C6d Green decay in source-owner distance
-
-The fine-lattice rate is transported through the sealed inverse-scale bridge
-
-`ell * ownerDist <= fineDist + 2 * (ell - 1)`.
-
-Together with the one source-fibre payment already present in the exact input
-action, this leaves the three boundary payments visible as
-`exp (3 * rate * (ell - 1))`.  No uniform-in-depth conclusion is claimed.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

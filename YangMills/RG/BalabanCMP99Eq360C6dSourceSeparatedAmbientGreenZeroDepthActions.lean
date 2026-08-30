@@ -3,18 +3,6 @@ import YangMills.RG.BalabanCMP99Eq342RightAdjointAtTerminalSpacing
 import YangMills.RG.BalabanCMP99Eq342LaplacianAtTerminalSpacing
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact depth-zero C6d Green actions at the literal source spacing
-
-The depth-zero full-companion precision uses `spacing` itself in the literal
-covariant derivative.  It must not inherit the positive-depth spelling
-`ell * spacing`.  These three specializations consume the explicit-terminal-
-spacing Eq342 adapters and keep the remaining powers of `ell = L` visible in
-their amplitudes.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

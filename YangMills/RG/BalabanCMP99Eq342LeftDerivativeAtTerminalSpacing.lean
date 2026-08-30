@@ -1,17 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq342LeftDerivativeFromValueBound
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Localized left derivative at an explicit terminal spacing
-
-The positive-depth and depth-zero physical precisions use different names
-for the scale entering the literal covariant derivative.  This adapter keeps
-that terminal spacing explicit.  It derives the result from the existing
-two-endpoint estimate by writing the latter's scale parameter as
-`terminalSpacing / ell`; no RG normalization is inferred here.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

@@ -1,17 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq389SignedCovariantLinkSourceLocalizedBound
 import YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Localized Laplacian from a localized left-derivative bound
-
-The literal backward-divergence stencil has four directions.  Its forward
-bond keeps the target owner and its backward bond pays exactly `exp rate`.
-The terminal factor `(ell * spacing)⁻¹` cancels the remaining `ell` from
-the left action, with no carrier cardinality.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

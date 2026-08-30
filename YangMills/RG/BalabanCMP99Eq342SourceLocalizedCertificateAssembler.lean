@@ -2,17 +2,6 @@ import YangMills.RG.BalabanCMP99Eq342CommonAmplitude
 import YangMills.RG.BalabanCMP99Eq342SourceLocalizedGreenCertificate
 import YangMills.RG.FinitePiLpBlockLocalizedSupMonotone
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Scalar assembler for a source-localized CMP99 (3.42) certificate
-
-This theorem only assembles four already-proved literal action bounds.  It
-does not produce any action, Green, coercivity estimate or scale-uniform
-constant.  Keeping it generic makes the positive- and zero-depth physical
-branches share exactly one amplitude-enlargement argument.
--/
-
 namespace YangMills.RG
 
 open YangMills

@@ -1,17 +1,6 @@
 import YangMills.RG.BalabanCMP99Eq342LaplacianFromLeftDerivativeBound
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivative
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-literal backward-divergence transport.
-
-# Exact positive-depth C6d Laplacian action
-
-The action is the literal regional covariant Laplacian at spacing
-`L^(depth+1) * eta`, composed with the canonical exact D2 Green.  Its bound
-has no remaining power of `ell`.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

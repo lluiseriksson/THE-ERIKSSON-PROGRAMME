@@ -41516,3 +41516,47 @@ one common transported Green, produce uniform physical `B0, delta0`, attain
 window 15, discharge rows 23--24, or construct a `TermSource`.  Counters
 remain exactly `20/41`, `TermSource = 0`; window 15 remains compatible but
 unattained.
+
+## Addendum 966 (2026-08-30, **C6d fixed-depth Green action/certificate prefix cold-sealed; uniform B0/delta0 still open; 20/41 unchanged**)
+
+The `c6d-green-owner-prefix-v3` stop-on-first-error gate ran from exact source
+checkpoint `77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92`, with runner checkpoint
+`b7c6a5284df3a7427d5cebb6e7ec27ebcd19cbc9` and notebook checkpoint
+`6e808720773258ced7805f81d0818d925094988f`.  The fresh Colab Pro+ checkout
+used Lean `4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  All 55 recorded stages exited
+zero; the same-checkout `YangMillsCore` root compiled `11145` jobs in
+`6978.938` seconds.  The full stage total is `14152.785` seconds.  Every audit
+readout is contained in `{propext, Classical.choice, Quot.sound}` or a subset,
+and the runner emitted literal `FINAL_STATUS=PASS`.
+
+The canonical evidence SHA-256 is
+`B5332D68E7BDA06D695A5D0F3CD07611FC53AAB7727B4DB9CA4A548596F2A527`;
+the downloaded archive and executed cold-notebook SHA-256 values are
+respectively
+`2B05F3B9AD1D47CEE0499312C328CBE581E42CE4649723049C7247707B6E2B51`
+and
+`56315FAB8FBF68B8664179257B1B3DB8DC8C315238AE7DBDE21B4C5618B008D2`.
+The independent verifier emitted `C6D_GREEN_OWNER_PREFIX_EVIDENCE_OK`.
+Evidence is preserved under
+`validation-evidence/c6d-green-owner-prefix-pass-77d9f4b4-20260830/`.
+
+The fail-closed selective sealer retired exactly the 40 notices listed in
+`tmp/c6d-green-owner-prefix-prevalidation-paths.txt`: twenty source/audit pairs
+covering the Eq. (3.42) value-to-action adapters, localized certificate
+assembler, positive- and zero-depth owner input actions/decay, localized-owner
+decay, localized-region nonemptiness, the three physical actions and the two
+per-depth certificates.  Its sealed-manifest SHA-256 is
+`365C74705013F342C6A99FA68079A1C81815ECE59FC020F63E859AF45322CD32`.
+
+After the cold artifact was preserved, one retained-runtime diagnostic suite
+passed eight additional CMP89/C6d focal-and-audit stages and emitted
+`HOT_C6D_POST_COLD_DIAGNOSTIC_SUITE_PASS`.  Its executed-notebook SHA-256 is
+`E8A6D7A302A4250D737872B033466E8C72654AF5BCA6C073BFA153F15C8AEFBE`.
+That hot result is diagnostic only and is not seal authority.
+
+This establishes fixed-depth C6d action/certificate infrastructure on the
+selected owner-decaying Green.  It does not produce one depth-uniform physical
+`B0, delta0`, attain window 15, discharge rows 23--24 or construct a
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.

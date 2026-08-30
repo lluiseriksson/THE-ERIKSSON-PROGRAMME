@@ -2,18 +2,6 @@ import YangMills.RG.BalabanCMP99Eq342LeftDerivativeFromValueBound
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecay
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedPhysicalBackground
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-dictionary, and generic two-endpoint transport.
-
-# Exact positive-depth C6d left-derivative action
-
-The action is not caller data.  It is the literal covariant derivative at
-spacing `L^(depth+1) * eta`, on the named transported C6d background, composed
-with the canonical exact D2 Green.  The value amplitude loses exactly one
-power of `ell`.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

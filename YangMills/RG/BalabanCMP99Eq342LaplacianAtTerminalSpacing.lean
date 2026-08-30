@@ -1,16 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq342LaplacianFromLeftDerivativeBound
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Localized covariant Laplacian at an explicit terminal spacing
-
-This adapter keeps the spacing of the literal covariant Laplacian explicit.
-It derives the result from the reusable four-direction stencil estimate by
-using auxiliary scale `terminalSpacing / ell`; consequently the depth-zero
-consumer may pass its literal source spacing without an additional RG factor.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

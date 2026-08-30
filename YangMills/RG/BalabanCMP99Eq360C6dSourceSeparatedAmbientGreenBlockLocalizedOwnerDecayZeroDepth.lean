@@ -1,14 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecayZeroDepth
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact depth-zero block-localized Green value bound
-
-Every owner is covered: a represented fibre uses the exact zero-depth decay,
-and an empty fibre forces the supported input to vanish.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

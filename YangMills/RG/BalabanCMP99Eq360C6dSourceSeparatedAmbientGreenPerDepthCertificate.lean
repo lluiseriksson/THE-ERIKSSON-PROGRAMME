@@ -4,18 +4,6 @@ import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLeftDerivativ
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjoint
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact positive-depth C6d CMP99 (3.42) certificate
-
-This is the item-5 per-depth assembler.  It fixes the ambient precision,
-coercivity proof, canonical Green, transported background and terminal
-spacing internally, then packs the four previously derived action bounds.
-Its amplitude and rate still depend on `depth`; it is not the uniform (3.42)
-endpoint and does not attain window 15.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

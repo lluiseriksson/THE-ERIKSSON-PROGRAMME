@@ -1,21 +1,5 @@
 import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixLeftDerivativeOwnerDecay
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Localized left derivative from a localized Green value bound
-
-This is the reusable algebraic step behind the second post-D2 action.  It
-does not choose a background or a Green.  The physical specialization must
-still instantiate both with the named C6d source-carrier objects.
-
-The result spends the value estimate at the two endpoints of one fine bond.
-The shifted endpoint costs exactly `exp rate`; the terminal spacing is
-`ell * spacing`.  Thus an input amplitude `A * ell^2` becomes
-
-`A * ((1 + exp rate) / spacing) * ell`.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

@@ -1,17 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq342RightAdjointFromValueBound
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Localized right-adjoint derivative at an explicit terminal spacing
-
-The positive-depth and depth-zero physical precisions do not share the same
-RG expression for the spacing used by the literal covariant derivative.  This
-adapter therefore receives that spacing explicitly.  It invokes the existing
-stencil estimate with auxiliary scale `terminalSpacing / ell`; no extra block
-factor is inferred for the depth-zero branch.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

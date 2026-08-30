@@ -2,17 +2,6 @@ import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay
 import YangMills.RG.BalabanCMP99Eq342SourceOwnerTiltedInput
 import YangMills.RG.FinitePiLpTiltedInverseAction
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact C6d Green action on one source-owner input
-
-The proof does not expand the input into coordinate probes.  It reconstructs
-the canonical rooted tilted coercivity for the literal C6d Dirichlet
-precision, applies the arbitrary-input inverse lemma, and spends the sealed
-`ell^2 * supNorm` source conversion exactly once.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix

@@ -1,16 +1,5 @@
 import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerDecay
 
-/-!
-PRE-VALIDATION: source present; its `.olean` is not yet materialized and the result is not compiler-verified.
-
-# Exact C6d block-localized Green value bound
-
-The source-facing predicate quantifies over every owner.  If an owner fibre is
-empty, its support hypothesis forces the input to vanish.  Otherwise the
-representing source site is constructed internally and the exact owner-decay
-theorem is applied.  This remains per-depth.
--/
-
 namespace YangMills.RG
 
 open YangMills Matrix
