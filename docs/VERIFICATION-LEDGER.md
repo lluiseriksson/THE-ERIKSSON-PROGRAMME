@@ -41971,3 +41971,29 @@ printed `[ell^2, ell, ell, 1]` scale vector.
 The endpoint does not attain window 15, discharge rows 23--24 or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 978 (2026-08-30, **CMP89 uniform owner-kernel certificate promoted PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+PRE-VALIDATION checkpoint
+`40f025a2cfc080b7ae2db85c780f68d931c37d25` packages the cold-sealed scalar
+regional estimate into `CMP89RegionalOwnerKernelDecayCertificate`.  Its
+explicit depth-free amplitude retains the `2^4` reflection branches, the
+coordinatewise period product and the exact `exp(2*rho)` boundary payment.
+The kernel, owner map, metric, amplitude and rate are all parameters of the
+certificate proposition; no hidden family or constant is selected.
+
+The module deliberately remains below CMP99 (3.42).  It still consumes the
+named CMP89 (2.42) reflection representation certificate, and it does not
+convert the scalar pointwise kernel into an arbitrary-field localized action.
+Such a conversion must preserve the regional inverse identity and the
+printed `[ell^2, ell, ell, 1]` scale vector; summing coordinate probes over a
+fine owner fibre is explicitly not accepted.
+
+Fresh-gate runner
+`scripts/colab_cmp89_neumann_rectangular_physical_uniform_owner_certificate_validation.py`
+is pinned to the source checkpoint, three exact Git-blob SHA-256 values,
+Lean `4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  Until that gate passes and its
+evidence is independently verified, both new Lean files retain visible
+PRE-VALIDATION notices.  No counter moves: `20/41`, `TermSource = 0`, and
+window 15 remains compatible but unattained.
