@@ -122,7 +122,11 @@ def main() -> None:
         ],
     )
     normalized = "".join(audit.split())
-    if audit.count("depends on axioms:") != 9:
+    axiom_headers = (
+        audit.count("depends on axioms:")
+        + audit.count("does not depend on any axioms")
+    )
+    if axiom_headers != 9:
         raise RuntimeError("HOT_AXIOM_HEADER_COUNT_MISMATCH")
     for forbidden in ("sorryAx", "ofReduceBool"):
         if forbidden in normalized:
