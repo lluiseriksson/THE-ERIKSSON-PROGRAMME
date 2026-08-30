@@ -15,12 +15,12 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-canonical-neumann-reflection-hot-v2"
-SOURCE_SHA = "0b7a6e1edd7e2a7e4829b178367f682dd9b02b0e"
+RUNNER_REV = "cmp89-canonical-neumann-reflection-hot-v3"
+SOURCE_SHA = "a1fe7d151400d99fe0d89e5d430ddb992a6168b8"
 ROOT = Path("/content/hrpoly-cmp89-neumann-dirichlet-boundary-nogo")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89CanonicalNeumannReflectionRepresentation.lean":
-        "23be18721002861803c5115eb2bb1fa245a0ab38ee28b1597063a6f53623c26d",
+        "d606f4180d293cb9e1976190333b2736b729006c4c90ed65c678c4e388c6c277",
     "YangMills/RG/BalabanCMP89CanonicalNeumannReflectionRepresentationAudit.lean":
         "bb4f46522fbdc47c705b1b4b00fa53e5d6f6be170c4872210f9d509a9e745df7",
 }
