@@ -42010,3 +42010,21 @@ Local fail-closed verification rehashed all 17 manifest members with zero
 mismatches.  The two PRE-VALIDATION notices are therefore retired.  This
 seal still does not construct CMP89 (2.42), produce CMP99 (3.42), attain
 window 15, move `20/41`, or instantiate `TermSource`.
+
+## Addendum 979 (2026-08-30, **uniform CMP99 (3.42) value-to-four-actions adapter integrated PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+
+`BalabanCMP99Eq342UniformCertificateFromValueBound{,Audit}` is now imported
+by `YangMillsCore` with both PRE-VALIDATION notices intact.  Its theorem takes
+one literal source-localized bound for the canonical regional Dirichlet Green
+with amplitude `valueAmplitude * L^(2*(depth+1))` and a rate independent of
+`depth`.  At terminal spacing `L^(depth+1) * eta`, the three sealed derivative
+adapters cancel the remaining powers of the block side exactly and assemble
+the four CMP99 (3.42) actions with one depth-independent common amplitude.
+
+This unit is an adapter, not the missing producer: the regional value bound,
+its uniform amplitude and rate, and the regional inverse/operator dictionary
+remain explicit inputs.  No scalar pointwise probe is identified with an
+arbitrary-field action.  Until a fresh Colab Pro+ gate passes and its exact
+audit is independently preserved, no PRE-VALIDATION mark is retired.  The
+unit cannot by itself attain window 15, move `20/41`, or instantiate
+`TermSource`.

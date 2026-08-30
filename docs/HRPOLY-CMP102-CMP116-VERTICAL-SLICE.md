@@ -15175,3 +15175,12 @@ pointwise probe bound to an arbitrary-field localized action.  CMP89 (2.42),
 the regional inverse/operator dictionary and the literal CMP99 (3.42)
 `[ell^2, ell, ell, 1]` package remain open.  Counters therefore remain
 exactly `20/41`, `TermSource = 0`, and window 15 remains unattained.
+
+The next finite adapter is integrated at PRE-VALIDATION: a single uniform
+localized value bound for the canonical regional Green is sufficient to
+assemble all four CMP99 (3.42) actions.  At terminal spacing
+`L^(depth+1)*eta`, the value, left-derivative, right-adjoint and Laplacian
+amplitudes reduce exactly to a common depth-independent maximum.  This
+removes three independent analytic targets but does not construct the one
+remaining value bound or its regional inverse dictionary.  It is therefore
+not yet seal authority and does not move `20/41`.
