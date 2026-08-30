@@ -6,7 +6,7 @@ import YangMills.RG.BalabanCMP89NeumannReflectionOrbitAlgebra
 PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
 and no result in this module is compiler-verified.
 
-CMP89 printed page 584 writes the source rectangle as
+CMP89 printed page 584 writes the geometric rectangle as
 
 `{x in xi Z^d : 0 <= x_mu <= M_mu}`
 
@@ -15,25 +15,50 @@ and displays the first reflected coordinates `-x'_mu-xi` and
 the integer reflections `-n-1` and `2*m-1-n` recorded by the orbit-algebra
 module.
 
-This file records that scaling identity and the literal inclusive integer
-rectangle only.  It does not infer the period of the ellipsis in (2.42),
-identify the Green image series, or resolve whether a later finite-index
-implementation should count `m` or `m+1` sites.
+CMP89 Eq. (1.1), printed page 572, defines every constituent block by the
+half-open convention `y_mu <= x_mu < y_mu+1`.  Hence a rectangle built of
+unit blocks has integer sites `0 <= n_mu < m_mu`; the inclusive typography on
+page 584 is its geometric envelope, not an additional endpoint site.  This
+file records both predicates and their inclusion, so no consumer can silently
+turn the envelope into `m+1` lattice sites.
+
+It does not identify the Green image series or derive any decay bound.
 -/
 
 namespace YangMills.RG
 
-/-- The literal inclusive integer rectangle obtained from the printed
-condition `0 <= x_mu <= M_mu` after writing `x = xi*n`, `M = xi*m`. -/
-def cmp89SourceNeumannIntegerRectangle {d : ℕ} (m : Fin d → ℤ) :
+/-- The literal inclusive geometric envelope written on page 584. -/
+def cmp89SourceNeumannPrintedInclusiveIntegerRectangle {d : ℕ}
+    (m : Fin d → ℤ) :
     Set (Fin d → ℤ) :=
   {n | ∀ mu, 0 ≤ n mu ∧ n mu ≤ m mu}
 
-theorem mem_cmp89SourceNeumannIntegerRectangle_iff {d : ℕ}
+theorem mem_cmp89SourceNeumannPrintedInclusiveIntegerRectangle_iff {d : ℕ}
     {m n : Fin d → ℤ} :
-    n ∈ cmp89SourceNeumannIntegerRectangle m ↔
+    n ∈ cmp89SourceNeumannPrintedInclusiveIntegerRectangle m ↔
       ∀ mu, 0 ≤ n mu ∧ n mu ≤ m mu := by
   rfl
+
+/-- The source-faithful lattice carrier inherited from the half-open block
+definition (1.1): exactly `m_mu` sites in coordinate `mu`. -/
+def cmp89SourceNeumannBlockIntegerRectangle {d : ℕ} (m : Fin d → ℤ) :
+    Set (Fin d → ℤ) :=
+  {n | ∀ mu, 0 ≤ n mu ∧ n mu < m mu}
+
+theorem mem_cmp89SourceNeumannBlockIntegerRectangle_iff {d : ℕ}
+    {m n : Fin d → ℤ} :
+    n ∈ cmp89SourceNeumannBlockIntegerRectangle m ↔
+      ∀ mu, 0 ≤ n mu ∧ n mu < m mu := by
+  rfl
+
+/-- Every actual block site lies in the printed inclusive envelope; the
+converse would add the spurious upper-endpoint site. -/
+theorem cmp89SourceNeumannBlockIntegerRectangle_subset_printedInclusive
+    {d : ℕ} {m : Fin d → ℤ} :
+    cmp89SourceNeumannBlockIntegerRectangle m ⊆
+      cmp89SourceNeumannPrintedInclusiveIntegerRectangle m := by
+  intro n hn mu
+  exact ⟨(hn mu).1, (hn mu).2.le⟩
 
 /-- The lower integer reflection is exactly the printed physical coordinate
 `-x'-xi`. -/

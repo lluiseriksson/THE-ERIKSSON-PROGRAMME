@@ -162,12 +162,13 @@ discovered.  The construction must expose coordinate intervals and block
 units; an arbitrary equivalence onto `ActiveGaugeRegion.Site` is not an
 acceptable rectangle dictionary.
 
-The reflection period must not be frozen from memory.  The two printed
-one-coordinate maps above determine the lattice-index convention, but the
-inclusive-looking upper-bound typography and the `-xi` shift must first be
-reconciled explicitly (equivalently: specify which lattice sites are inside
-the last unit block).  Until that lemma exists, neither `2 M_mu/xi` nor
-`2 (M_mu/xi + 1)` may be installed silently as the translation period.
+The endpoint convention is fixed by the same primary source, not by memory.
+CMP89 Eq. (1.1), printed page 572, defines every unit block by
+`y_mu <= x_mu < y_mu+1`; the large blocks are defined identically with `M`
+in place of one.  Thus a rectangle built of unit blocks has lattice sites
+`0 <= n_mu < m_mu`, while the inclusive typography on page 584 is the
+geometric envelope.  This agrees with the printed images `-n-1` and
+`2*m-1-n` and fixes the translation period at `2*m`, without an `m+1` site.
 
 ### Exact PRE-VALIDATION source gate now present
 
@@ -178,16 +179,16 @@ The following modules were added without claiming compiler verification:
   translation laws;
 - `BalabanCMP89NeumannReflectionScaleDictionary` proves that, under the
   visible dictionaries `x'=xi*n` and `M=xi*m`, those maps are exactly
-  `-x'-xi` and `2*M-xi-x'`, while retaining the literal inclusive rectangle;
+  `-x'-xi` and `2*M-xi-x'`; it keeps the printed inclusive envelope separate
+  from the source-faithful half-open block carrier and proves their inclusion;
 - `BalabanCMP89NeumannReflectionRepresentation` defines the infinite
   `Int^d x Bool^d` image series and packages precisely two obligations:
   summability and equality with the explicitly parameterized regional Green.
 
-These modules deliberately do not resolve the endpoint convention.  In
-particular, the printed upper image sends the formal endpoint `n=m` to
-`m-1`; therefore it cannot be described as an outward reflection of the
-literal inclusive integer carrier without an additional source dictionary.
-That observation is a design gate, not yet a compiler-verified no-go.
+The endpoint convention is therefore no longer open at this layer.  The
+remaining source gate is analytic: prove summability and the exact regional
+Green equality for the half-open block carrier, then transport its distance
+and constants to the later physical region.
 
 ## Alternative repair (new analysis, not source transcription)
 

@@ -24,10 +24,10 @@ noncomputable section
 
 variable {d : ℕ} {E : Type*} [NormedAddCommGroup E] [CompleteSpace E]
 
-/-- A point of the literal inclusive integer rectangle printed above (2.42).
--/
+/-- A point of the source block rectangle, using the half-open convention
+fixed by CMP89 (1.1). -/
 abbrev CMP89SourceNeumannIntegerRectanglePoint (m : Fin d → ℤ) :=
-  {n : Fin d → ℤ // n ∈ cmp89SourceNeumannIntegerRectangle m}
+  {n : Fin d → ℤ // n ∈ cmp89SourceNeumannBlockIntegerRectangle m}
 
 /-- The source-shaped multiple-reflection series: an infinite integer
 translation vector and one of the `2^d` parity branches. -/
