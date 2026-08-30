@@ -64,6 +64,42 @@ until that dictionary and audit pass in the retained Colab runtime.
    recorded explicitly; no mental identification of fine distance, block
    distance and owner distance is accepted.
 
+## Measured implementation anchors
+
+The next two bricks do not require a second quotient construction.
+`BalabanCMP99CenteredPeriodicEndpointDictionary` already constructs, for one
+positive natural period `P`, the canonical representative, its integer carry,
+the exact reconstruction equality, the half-period bound and the affine
+translation equivalence.  The rectangular specialization must apply those
+objects coordinatewise with
+
+```text
+P_mu := natAbs (2 * m_mu).
+```
+
+Under `0 < m_mu`, the cast of `P_mu` is literally `2 * m_mu`; that equality
+must be exposed before any reindexing.  The vector carry equivalence is then
+the coordinatewise translation `k |-> carry + k`.  It is not a new
+injectivity hypothesis.
+
+The finite-product infrastructure required by step 4 is also already sealed:
+`summable_pi_int_prod_nonneg` and `tsum_pi_int_prod_nonneg` factor a
+nonnegative family over `Fin d -> Int`.  The missing wrapper is only the
+varying-period specialization of the existing one-dimensional centered
+periodic estimate, keeping the factor
+
+```text
+product_mu 2 / (1 - exp (-delta * P_mu)).
+```
+
+One source-specific bridge remains open and must be named in the next brick:
+the magnitude of the canonical representative of the reflected base residue
+modulo `2*m_mu` must be identified with (or bounded below by) the printed
+two-endpoint quantity
+`min (x_mu+n_mu+1) (2*m_mu-x_mu-n_mu-1)`.  The already written direct-distance
+lemma targets that quantity, not the canonical representative, so silently
+identifying the two is rejected.
+
 ## Acceptance gates
 
 - `side_pos` constructs a nonempty carrier; empty rectangles cannot discharge
