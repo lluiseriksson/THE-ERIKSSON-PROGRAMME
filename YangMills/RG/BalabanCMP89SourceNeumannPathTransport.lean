@@ -73,14 +73,16 @@ theorem cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_pathTransport
   rw [Gamma.ends] at hpath
   have hsum :
       (Gamma.edges.map (fun e => ‖covariantEdgeDefect rho U psi e‖)).sum = 0 := by
-    induction Gamma.edges with
-    | nil => rfl
-    | cons e es ih =>
-        simp only [List.map_cons, List.sum_cons]
-        rw [hedge e (by simp), ih]
-        · simp
-        · intro f hf
-          exact hedge f (by simp [hf])
+    have aux : ∀ es : List (ConcreteEdge d (M * N')),
+        (∀ e ∈ es, ‖covariantEdgeDefect rho U psi e‖ = 0) →
+          (es.map (fun e => ‖covariantEdgeDefect rho U psi e‖)).sum = 0 := by
+      intro es hes
+      induction es with
+      | nil => rfl
+      | cons e es ih =>
+          simp only [List.map_cons, List.sum_cons]
+          rw [hes e (by simp), ih (fun f hf => hes f (by simp [hf])), zero_add]
+    exact aux Gamma.edges hedge
   rw [hsum] at hpath
   have hnorm :
       ‖psi a - rho.adCLM (Gamma.holonomy U) (psi b)‖ = 0 :=
