@@ -10,18 +10,19 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-recursive-defect-hot-v2"
-SOURCE_SHA = "b82d65be54166db01c154031263cc018307bbaed"
+RUNNER_REV = "cmp89-neumann-recursive-defect-hot-v3"
+SOURCE_SHA = "3676245afe6a7d5513cdb8abde901f573e77b1b8"
 BASE_SHA = "6a1f71c4a0ab1ac6c7160c087720d6b681377a22"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannRecursiveDefectBound.lean":
-        "b097d05f557904a3b16a456afec029c5bdca147933a925d679b8f5c4e920bd37",
+        "58ff6d5db335b164aeca3f0b066c3a102e1415d0da61819f3ec3fc7f80344553",
     "YangMills/RG/BalabanCMP89SourceNeumannRecursiveDefectBoundAudit.lean":
-        "5d4ca0c3fef0577ce31d59a1a62423300cfeaec5a6205375ff769cac98c1feb7",
+        "adf038d13550bc6098d27b5521960ed4cd218cd6f878d50d43561560368e778e",
 }
 EXPECTED_DECLARATIONS = {
     "YangMills.RG.cmp99SourceCoarseTransportRemainderCochain_apply",
+    "YangMills.RG.norm_restrictOneCLM_sq_le_sun",
     "YangMills.RG.restrictOne_covariantD0_cmp99FullSourceBlockAverage_eq_remainder_of_neumannKernel",
     "YangMills.RG.norm_restrictOne_cmp99SourceCoarseTransportRemainderCochain_sq_le",
 }
