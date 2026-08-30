@@ -1,0 +1,18 @@
+import YangMills.RG.BalabanCMP89NeumannRectangularBranchResidueSum
+
+/-!
+PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
+and the readouts have not yet been verified by the Lean compiler.
+
+Axiom audit for the rectangular Neumann branch residue sum.
+-/
+
+#print axioms YangMills.RG.cmp89NeumannRectangularBranchImageWeight
+#print axioms YangMills.RG.cmp89NeumannRectangularBranchImageWeight_reindex
+#print axioms YangMills.RG.summable_cmp89NeumannRectangularBranchImageWeight
+#print axioms YangMills.RG.summable_cmp89NeumannRectangularBranchImageWeight_sum
+#print axioms YangMills.RG.tsum_sum_cmp89NeumannRectangularBranchImageWeight_eq_sum_tsum
+#print axioms YangMills.RG.tsum_cmp89NeumannRectangularBranchImageWeight_eq_centered
+#print axioms YangMills.RG.tsum_cmp89NeumannRectangularBranchImageWeight_le
+#print axioms YangMills.RG.sum_tsum_cmp89NeumannRectangularBranchImageWeight_le
+#print axioms YangMills.RG.tsum_sum_cmp89NeumannRectangularBranchImageWeight_le

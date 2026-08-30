@@ -50,7 +50,7 @@ compiler verified.
    multiplying the retained direct weight. Replacing it by a ball count or by
    the number of sites in the rectangle is rejected.
 
-5. **Reflection branch sum (open; distance-retention prerequisite cold-sealed).**
+5. **Reflection branch sum (PRE-VALIDATION; distance-retention prerequisite cold-sealed).**
    Sum the `2^d` Boolean branches literally. The
    only branch multiplicity is the visible factor `2^d`; it is independent of
    every `m_mu` and of the rectangle volume.
@@ -99,8 +99,8 @@ product_mu 2 / (1 - exp (-delta * P_mu)).
 
 The next unsealed boundary is the literal finite reflection-branch sum.  Its
 source-specific branch-distance prerequisite is cold-sealed from exact source
-`dfb6f7443c6f3245443753336b51ad5f85104300`; the finite sum itself remains
-open.
+`dfb6f7443c6f3245443753336b51ad5f85104300`; the finite sum source and audit
+are now present as PRE-VALIDATION and do not count until their own gate passes.
 
 One source-specific bridge remains open and must be named in the next brick:
 the magnitude of the canonical representative of the reflected base residue
