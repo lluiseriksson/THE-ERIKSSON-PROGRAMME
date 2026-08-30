@@ -1,6 +1,9 @@
 # CMP89 (2.42): regional value-bound consumer design
 
-Status: design only.  This note is not compiler or seal authority.
+Status: cold-sealed at source checkpoint
+`466b9de31df1fd65ec86092908746a250edb5b4b` by the fail-closed
+same-checkout supplement recorded in Ledger Addendum 973.  This note remains
+design context; the ledger and evidence package are seal authority.
 
 ## Exact boundary
 
@@ -56,3 +59,12 @@ constant.
   fine-to-owner scale transport, uniform-in-depth `B0, delta0`, window 15,
   rows 23--24 and `TermSource` remain open.
 - This brick does not move `20/41`.
+
+## Sealed result
+
+The consumer and its audit compile in the fresh cold-origin checkout.  The
+single theorem rewrites through the named CMP89 (2.42) representation
+certificate and applies the already sealed source-order image-series bound.
+It introduces no regional constant, rectangle cardinality, common-period
+replacement or owner-metric identification.  The certificate construction,
+fine-to-owner transport and uniform-in-depth pair remain open.

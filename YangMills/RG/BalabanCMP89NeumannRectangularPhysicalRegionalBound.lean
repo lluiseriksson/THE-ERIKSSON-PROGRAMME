@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalGreenInsertion
 /-!
 # CMP89 (2.42): physical regional Green value bound
 
-PRE-VALIDATION: draft source is present, its `.olean` has not yet been
-materialized, and no result in this module is compiler-verified.
-
 This consumer keeps the exact CMP89 (2.42) representation certificate visible
 and rewrites the regional Green to the already bounded source-order image
 series.  It does not construct the representation certificate.

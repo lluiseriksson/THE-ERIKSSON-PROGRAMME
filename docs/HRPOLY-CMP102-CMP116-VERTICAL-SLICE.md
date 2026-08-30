@@ -15084,7 +15084,14 @@ branch factor, coordinatewise varying-period product and direct signed-`l1`
 weight.  No rectangle cardinality or independently chosen regional constant
 is introduced.
 
-The next boundary is a regional value-bound consumer of the named CMP89
-(2.42) representation certificate.  The certificate itself, fine-to-owner
-transport, uniform-in-depth `B0, delta0`, window 15 and `TermSource` remain
-open.  Counters stay exactly `20/41`, `TermSource = 0`.
+The regional value-bound consumer of the named CMP89 (2.42) representation
+certificate is cold-sealed at source `466b9de31df1fd65ec86092908746a250edb5b4b`
+(Ledger Addendum 973).  It rewrites the regional kernel through the exact
+certificate and preserves the literal amplitude, fine rate, varying-period
+product and direct signed-`l1` weight.  It neither constructs the certificate
+nor identifies fine distance with an owner metric.
+
+The next boundary is the explicit fine-to-owner transport, including the
+period floor and physical owner-map/metric bridge.  The CMP89 (2.42)
+certificate construction, uniform-in-depth `B0, delta0`, window 15 and
+`TermSource` remain open.  Counters stay exactly `20/41`, `TermSource = 0`.

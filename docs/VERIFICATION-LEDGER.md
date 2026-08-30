@@ -41786,3 +41786,49 @@ It does not construct the CMP89 (2.42) representation certificate, transport
 fine distance to the owner metric, produce a pair uniform in depth, attain
 window 15 or instantiate `TermSource`.  Counters remain exactly `20/41`,
 `TermSource = 0`.
+
+## Addendum 973 (2026-08-30, **CMP89 physical regional value-bound consumer cold-sealed by a same-checkout fail-closed supplement; 20/41 unchanged**)
+
+Exact source checkpoint
+`466b9de31df1fd65ec86092908746a250edb5b4b` ran in a fresh Colab Pro+
+CPU/high-RAM checkout without restoration of project `.lake/build`.  Lean
+`4.29.0-rc6`, Lake `5.0.0`, pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` and all three source blob hashes
+were verified before the queue.  The original cold focal compiled
+`8612/8612` jobs with exit zero in `1526.632` seconds and its audit exited
+zero in `9.721` seconds.  The exact declaration depends only on
+`[propext, Classical.choice, Quot.sound]`.
+
+After that PASS, replacing the same notebook cell with a download-only cell
+triggered the known Colab stale-cell defect: the editor displayed the new
+text but the old runner executed and stopped before Lean at
+`FRESH_PATH_ALREADY_EXISTS`, overwriting the canonical wrapper files.  Both
+instrumentation FAIL packages were retained.  They are not mathematical or
+seal evidence.
+
+Fail-closed supplement runner commit
+`d12199f269c08dcaa8fd4fad07d83e2821320fb3` stayed in the same cold-origin
+checkout, restored no build state and reverified source HEAD, Mathlib and the
+three source blobs.  It reran the regional focal incrementally and the audit;
+the audit exited zero in `8.719` seconds and the exact axiom set remained
+`{propext, Classical.choice, Quot.sound}`.  The supplement evidence JSON,
+manifest and archive SHA-256 values are respectively
+`20B4A7AA94096739D40535D7083059CA41D779006CBA364564A56F154A3B2953`,
+`3426DAE5713A5E3B0ED79D8AAAF049D2F52C29839D346864AC0B36136C915FB2`
+and
+`9B916A336C224E32A6C0E384CAAA9EFF82148B774E04943A0FDEF14748C6A18F`.
+All seven manifest entries were rehashed locally with zero mismatches.  The
+composite package, which additionally retains both instrumentation FAIL
+packages, has SHA-256
+`2CB83632AA30985784A4DB7E2C6A50A0718B4D3CF6CC2B4E16EB6B82CE6E8971`.
+
+The selective seal retires exactly the two PRE-VALIDATION notices in
+`BalabanCMP89NeumannRectangularPhysicalRegionalBound` and its audit.  It
+proves the regional value estimate by consuming the named CMP89 (2.42)
+representation certificate; it does not construct that certificate.  The
+literal amplitude, fine rate, coordinatewise period product and direct
+signed-`l1` weight are unchanged, with no independent regional constant or
+rectangle cardinality.  Fine-to-owner transport, the physical owner metric,
+uniform-in-depth `B0, delta0`, window 15 and `TermSource` remain open.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.
