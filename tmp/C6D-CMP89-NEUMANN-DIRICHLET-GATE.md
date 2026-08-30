@@ -190,6 +190,35 @@ remaining source gate is analytic: prove summability and the exact regional
 Green equality for the half-open block carrier, then transport its distance
 and constants to the later physical region.
 
+### Exact residue bridge after the representation gate
+
+For one coordinate with `0 <= x,n < m`, subtracting a reflection image from
+the observation point gives exactly two affine residue fibres of period
+`2*m`:
+
+```text
+x - (2*k*m + n)       = (x-n)   + 2*m*(-k)
+x - (2*k*m - n - 1)  = (x+n+1) + 2*m*(-k).
+```
+
+The direct residue `x-n` is already centered.  The centered magnitude of the
+reflected residue is
+
+```text
+min (x+n+1) (2*m-x-n-1),
+```
+
+and both entries are at least `|x-n|` on the half-open carrier.  Therefore
+every reflection-parity branch retains the same decay in the physical
+endpoint separation.  Summing the branches costs exactly the already named
+`2^d` budget, with no rectangle-cardinality factor and no extra `exp rho`
+loss.  The next analytic brick should instantiate the existing centered
+periodic endpoint/carry machinery coordinatewise at period `2*m_mu`, prove
+these two inequalities, and only then consume the full-lattice Green bound.
+
+This is a design derivation, not compiler evidence.  It neither proves the
+multiple-reflection identity nor produces uniform `B0`/`delta0`.
+
 ## Alternative repair (new analysis, not source transcription)
 
 A Dirichlet route remains possible only by proving an independent estimate
