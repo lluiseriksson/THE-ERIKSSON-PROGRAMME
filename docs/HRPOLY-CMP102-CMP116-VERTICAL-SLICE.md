@@ -15039,3 +15039,24 @@ and the retained direct `l1` distance.  It does not yet perform the finite
 `2^4` branch sum, insert the physical Green, consume CMP89 (2.42), produce a
 uniform regional `B0, delta0` pair or attain window 15.  Counters remain
 exactly `20/41`, `TermSource = 0`.
+
+### CMP89 rectangular Neumann finite branch sum (cold-sealed; 20/41 unchanged)
+
+Exact source `d741c5b8e4aa2b57b56621e03e175db840233b72` passed a fresh Colab
+CPU/high-RAM checkout with no restored `.lake/build`.  The focal compiled
+`8565/8565` jobs in `1555` seconds and the audit exited zero in `40` seconds.
+All nine exact declaration readouts are contained in
+`{propext, Classical.choice, Quot.sound}` with no forbidden axiom token.
+The archive and manifest SHA-256 values are respectively
+`66E7C9254F251C089076B3722979A4106E02E2B5ECAC7638C5427025CFE6B0AF`
+and
+`8C32A6E08363D1F4EF3DD5F476EBB7D1124587A07769E138D23BE2609FE516FD`;
+all nine manifest entries rehashed locally with zero mismatches.
+
+The source-order theorem keeps `tsum k (sum branch ...)` literal and proves
+branchwise plus finite-sum summability before the exchange.  Its only branch
+multiplicity is exactly `2^d`; the varying-period coordinate product and the
+retained direct `l1` weight remain visible, with no rectangle-volume factor.
+Physical Green insertion, CMP89 (2.42), uniform regional `B0, delta0` and
+window-15 attainment remain open.  Counters stay exactly `20/41`,
+`TermSource = 0`.

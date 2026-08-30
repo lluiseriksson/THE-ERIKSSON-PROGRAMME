@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP89CenteredRectangularL1ResidueSum
 import YangMills.RG.BalabanCMP89NeumannRectangularBranchDistance
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 Exact affine reindexing, varying-period residue estimate and finite
 reflection-branch sum for the positive CMP89 Neumann image series.  The final
 multiplicity is the literal `2^d`; no rectangle-volume factor is admitted.

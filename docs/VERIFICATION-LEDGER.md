@@ -41702,3 +41702,32 @@ retain the direct source-site distance after internal centering.  The finite
 `2^4` branch sum, physical Green insertion, CMP89 (2.42), uniform regional
 `B0, delta0` and window 15 remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 971 (2026-08-30, **CMP89 finite rectangular Neumann branch sum cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint
+`d741c5b8e4aa2b57b56621e03e175db840233b72` ran in a fresh Colab Pro+
+CPU/high-RAM checkout without restoring `.lake/build`.  Lean
+`4.29.0-rc6`, Lake `5.0.0` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` were verified before the focal.
+The source compiled `8565/8565` jobs in `1555` seconds and the audit exited
+zero in `40` seconds.
+
+The fail-closed audit gate is keyed to the nine exact target declarations.
+Every readout is contained in `[propext, Classical.choice, Quot.sound]`, with
+no `sorryAx`, `ofReduceBool` or `Lean.ofReduceBool`.  The downloaded archive
+SHA-256 is
+`66E7C9254F251C089076B3722979A4106E02E2B5ECAC7638C5427025CFE6B0AF`;
+the internal manifest SHA-256 is
+`8C32A6E08363D1F4EF3DD5F476EBB7D1124587A07769E138D23BE2609FE516FD`.
+All nine manifest entries rehashed locally with zero mismatches.
+
+The selective seal retires exactly the two PRE-VALIDATION notices in
+`BalabanCMP89NeumannRectangularBranchResidueSum` and its audit and imports the
+audit into `YangMillsCore`.  The source-order endpoint establishes the needed
+summability before exchanging the finite branch sum with the integer `tsum`.
+The only branch multiplicity is the literal `2^d`; the exact coordinatewise
+geometric product and direct `l1` weight are unchanged.  Physical Green
+insertion, CMP89 (2.42), uniform regional `B0, delta0` and window 15 remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

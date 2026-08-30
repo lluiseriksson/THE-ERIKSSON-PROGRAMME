@@ -1,13 +1,14 @@
 # CMP89 rectangular Neumann residues: finite continuation after the hot gate
 
-Status: steps 1--4 are cold-sealed.  The reflection dictionaries and canonical
+Status: steps 1--5 are cold-sealed.  The reflection dictionaries and canonical
 representative were sealed from source
 `e7f38ed24b249ad08a5a829545abed0a05ff379c`; the exact rectangular affine
 fibre was then sealed independently from source
 `fd34e0e7228474cc738162ac332d1bdd7028f5e9`; the varying-period product
 residue sum was cold-sealed from
-`ea23b78023446c38b00f0387b475103d13b14c3e`.  Step 5, the literal finite
-branch sum, is the next promotion boundary.  No later draft counts as
+`ea23b78023446c38b00f0387b475103d13b14c3e`; the literal finite branch sum was
+cold-sealed from `d741c5b8e4aa2b57b56621e03e175db840233b72`.  Step 6, physical
+Green insertion, is the next promotion boundary.  No later draft counts as
 compiler verified.
 
 ## Source-fixed conventions
@@ -50,7 +51,7 @@ compiler verified.
    multiplying the retained direct weight. Replacing it by a ball count or by
    the number of sites in the rectangle is rejected.
 
-5. **Reflection branch sum (PRE-VALIDATION; distance-retention prerequisite cold-sealed).**
+5. **Reflection branch sum (cold-sealed).**
    Sum the `2^d` Boolean branches literally. The
    only branch multiplicity is the visible factor `2^d`; it is independent of
    every `m_mu` and of the rectangle volume.
@@ -97,10 +98,11 @@ while `BalabanCMP89CenteredRectangularL1ResidueSum` retains the exact factor
 product_mu 2 / (1 - exp (-delta * P_mu)).
 ```
 
-The next unsealed boundary is the literal finite reflection-branch sum.  Its
-source-specific branch-distance prerequisite is cold-sealed from exact source
-`dfb6f7443c6f3245443753336b51ad5f85104300`; the finite sum source and audit
-are now present as PRE-VALIDATION and do not count until their own gate passes.
+The literal finite reflection-branch sum is cold-sealed from exact source
+`d741c5b8e4aa2b57b56621e03e175db840233b72`.  Its source-order endpoint proves
+summability before exchanging the integer `tsum` with the finite parity sum,
+and the only multiplicity is the visible `2^d`.  The next unsealed boundary is
+physical full-lattice Green insertion.
 
 One source-specific bridge remains open and must be named in the next brick:
 the magnitude of the canonical representative of the reflected base residue
