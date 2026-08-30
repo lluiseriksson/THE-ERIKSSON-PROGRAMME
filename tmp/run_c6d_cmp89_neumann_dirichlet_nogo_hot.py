@@ -17,11 +17,11 @@ import urllib.request
 
 
 BASE_SOURCE = "77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92"
-OVERLAY_SOURCE = "66ec112e8b25b3db92b38bcc5c3ae36c7d6c4f48"
+OVERLAY_SOURCE = "71299fb335c8682b0d3c403d0b6566847fde1900"
 ROOT = Path("/content/hrpoly-c6d-green-owner-prefix/repo")
 FILES = {
     "YangMills/RG/BalabanCMP89NeumannDirichletBoundaryNoGo.lean":
-        "cfe3f284bd0bf7ea6b6cdce9cb13e9c1d2e4b93649259ae6b6c9dd5d64c125bb",
+        "b499f7aba1d39a66ca95efb78cb6277702aff4b72e435e58c9e20d761449b6f1",
     "YangMills/RG/BalabanCMP89NeumannDirichletBoundaryNoGoAudit.lean":
         "d3465d86f9eea7c76655df7575e5daecb2633b3e877d1e9851dcb7bd2b14ca8b",
 }
