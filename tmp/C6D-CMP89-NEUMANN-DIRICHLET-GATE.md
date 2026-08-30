@@ -123,10 +123,13 @@ sealed.
    geometric-series constant and the distance comparison explicit.  No
    finite reflection multiplicity may be substituted for that series.  This
    is the producer of a regional value bound.  Reuse the already cold-sealed
-   `BalabanCMP89SignedLatticeL1ExponentialSum`: it evaluates the full signed
-   `Int^d` exponential sum with the exact product constant.  The remaining
-   work is the injection/multiplicity and distance dictionary from reflection
-   words to that signed lattice, not a new summability theorem.
+   `BalabanCMP89SignedLatticeL1TotalSum`: it evaluates the full signed `Int^d`
+   exponential sum with the exact product constant.  The cold-sealed
+   `BalabanCMP89CenteredPeriodicL1ResidueSum` additionally retains decay in a
+   centered residue representative, which is the right substrate for each
+   image branch.  The remaining work is the centering/distance dictionary
+   from reflection images to the physical source separation, not a new
+   summability theorem.
 
    In lattice units, one coordinate of the printed reflection orbit has the
    two branches
@@ -165,6 +168,26 @@ inclusive-looking upper-bound typography and the `-xi` shift must first be
 reconciled explicitly (equivalently: specify which lattice sites are inside
 the last unit block).  Until that lemma exists, neither `2 M_mu/xi` nor
 `2 (M_mu/xi + 1)` may be installed silently as the translation period.
+
+### Exact PRE-VALIDATION source gate now present
+
+The following modules were added without claiming compiler verification:
+
+- `BalabanCMP89NeumannReflectionOrbitAlgebra` records the two printed integer
+  reflections, their two parity branches, and the exact alternating
+  translation laws;
+- `BalabanCMP89NeumannReflectionScaleDictionary` proves that, under the
+  visible dictionaries `x'=xi*n` and `M=xi*m`, those maps are exactly
+  `-x'-xi` and `2*M-xi-x'`, while retaining the literal inclusive rectangle;
+- `BalabanCMP89NeumannReflectionRepresentation` defines the infinite
+  `Int^d x Bool^d` image series and packages precisely two obligations:
+  summability and equality with the explicitly parameterized regional Green.
+
+These modules deliberately do not resolve the endpoint convention.  In
+particular, the printed upper image sends the formal endpoint `n=m` to
+`m-1`; therefore it cannot be described as an outward reflection of the
+literal inclusive integer carrier without an additional source dictionary.
+That observation is a design gate, not yet a compiler-verified no-go.
 
 ## Alternative repair (new analysis, not source transcription)
 
