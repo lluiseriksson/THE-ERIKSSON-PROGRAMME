@@ -10,13 +10,13 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-internal-block-energy-hot-v2"
-SOURCE_SHA = "3c552b5ab785aa1b8259b1fb1c0c79b3be2f1524"
-BASE_SHA = "3cc2e66e0731033e1cd2636064be240237d1e469"
+RUNNER_REV = "cmp89-neumann-internal-block-energy-hot-v3"
+SOURCE_SHA = "f7c8191112dda9b12bfdce1af8e4bd6fefc99ed2"
+BASE_SHA = "3c552b5ab785aa1b8259b1fb1c0c79b3be2f1524"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannInternalBlockEnergy.lean":
-        "0be480dcf59bb750b270a3929edd3d42323ce66539de57ec00bc4500291ea648",
+        "2313898cec0e9d2b8f4cd641a6a8978baae1bc2963a4820108edf4fc3104e073",
     "YangMills/RG/BalabanCMP89SourceNeumannInternalBlockEnergyAudit.lean":
         "c997a94ee5aa21e2270f7536fd5cef1343760615bc187d7367e654f61f8d5481",
 }
