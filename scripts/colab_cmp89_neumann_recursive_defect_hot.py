@@ -10,13 +10,13 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-recursive-defect-hot-v1"
-SOURCE_SHA = "960c53c6997a43741565ac5f9710cde7e29612aa"
+RUNNER_REV = "cmp89-neumann-recursive-defect-hot-v2"
+SOURCE_SHA = "b82d65be54166db01c154031263cc018307bbaed"
 BASE_SHA = "6a1f71c4a0ab1ac6c7160c087720d6b681377a22"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannRecursiveDefectBound.lean":
-        "2392030002a9657c81b5bee4a06408b8aecbcc5ff1c69ddf6098fa8ee952ae41",
+        "b097d05f557904a3b16a456afec029c5bdca147933a925d679b8f5c4e920bd37",
     "YangMills/RG/BalabanCMP89SourceNeumannRecursiveDefectBoundAudit.lean":
         "5d4ca0c3fef0577ce31d59a1a62423300cfeaec5a6205375ff769cac98c1feb7",
 }
