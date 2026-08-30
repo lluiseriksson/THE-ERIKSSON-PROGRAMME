@@ -41972,7 +41972,7 @@ The endpoint does not attain window 15, discharge rows 23--24 or instantiate
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
 
-## Addendum 978 (2026-08-30, **CMP89 uniform owner-kernel certificate promoted PRE-VALIDATION; NOT CHECKED; 20/41 unchanged**)
+## Addendum 978 (2026-08-30, **CMP89 uniform owner-kernel certificate cold-sealed; 20/41 unchanged**)
 
 PRE-VALIDATION checkpoint
 `40f025a2cfc080b7ae2db85c780f68d931c37d25` packages the cold-sealed scalar
@@ -41993,7 +41993,20 @@ Fresh-gate runner
 `scripts/colab_cmp89_neumann_rectangular_physical_uniform_owner_certificate_validation.py`
 is pinned to the source checkpoint, three exact Git-blob SHA-256 values,
 Lean `4.29.0-rc6` and Mathlib
-`07642720480157414db592fa85b626dafb71355b`.  Until that gate passes and its
-evidence is independently verified, both new Lean files retain visible
-PRE-VALIDATION notices.  No counter moves: `20/41`, `TermSource = 0`, and
-window 15 remains compatible but unattained.
+`07642720480157414db592fa85b626dafb71355b`.  Source
+`40f025a2cfc080b7ae2db85c780f68d931c37d25` passed that fresh Colab Pro+
+CPU/high-RAM gate with no restored project `.lake/build`: `8664/8664` focal
+jobs in `1529.386` seconds and an exact `10.168`-second audit of all three
+declarations.  Each audit readout is exactly
+`{propext, Classical.choice, Quot.sound}`.
+
+The downloaded archive has SHA-256
+`248BC1911BBB92FFBC275129C7A17D8D5275F97430C337AB796D0416FF24A569`;
+its evidence JSON and internal manifest have SHA-256
+`E960D57CC2AF1AB8150E9B5438370E5B1CCE1AD618E7378D408D20100C7E137D`
+and
+`2E60FB57AF5A8644FDB7A9DD912659BF69CDA6547E27C733085987B999E3E2CD`.
+Local fail-closed verification rehashed all 17 manifest members with zero
+mismatches.  The two PRE-VALIDATION notices are therefore retired.  This
+seal still does not construct CMP89 (2.42), produce CMP99 (3.42), attain
+window 15, move `20/41`, or instantiate `TermSource`.

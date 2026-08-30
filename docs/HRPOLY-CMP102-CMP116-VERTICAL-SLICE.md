@@ -15161,3 +15161,17 @@ the common word `Green`.
 
 The final physical (3.42) package, window 15 and rows 23--24 remain open; live
 counters stay exactly `20/41`, `TermSource = 0`.
+
+The named scalar certificate at source
+`40f025a2cfc080b7ae2db85c780f68d931c37d25` is also cold-sealed.  A fresh
+Colab Pro+ CPU/high-RAM checkout compiled `8664/8664` focal jobs and its exact
+three-declaration audit uses only
+`{propext, Classical.choice, Quot.sound}`.  The independently verified
+archive SHA-256 is
+`248BC1911BBB92FFBC275129C7A17D8D5275F97430C337AB796D0416FF24A569`.
+This packages the already sealed physical owner estimate with a single
+explicit depth-free `B0` and owner rate `rho`; it does not promote a
+pointwise probe bound to an arbitrary-field localized action.  CMP89 (2.42),
+the regional inverse/operator dictionary and the literal CMP99 (3.42)
+`[ell^2, ell, ell, 1]` package remain open.  Counters therefore remain
+exactly `20/41`, `TermSource = 0`, and window 15 remains unattained.

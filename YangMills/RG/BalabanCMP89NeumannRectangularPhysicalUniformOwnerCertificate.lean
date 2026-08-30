@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalUniformOwnerBound
 /-!
 # CMP89 rectangular regional Green: uniform owner-kernel certificate
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 This packages the cold-sealed physical owner estimate into one explicit,
 depth-independent amplitude and owner rate.  It remains a scalar pointwise
 kernel certificate.  In particular it is not the arbitrary-field localized
