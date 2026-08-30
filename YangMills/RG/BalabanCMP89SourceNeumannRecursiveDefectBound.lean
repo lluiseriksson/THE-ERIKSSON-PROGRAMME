@@ -62,7 +62,8 @@ theorem norm_restrictOneCLM_sq_le_sun
     (∑ b : ActiveGaugeRegion.Bond Omega,
         ‖restrictOneCLM (𝔤 := SUNLieCoord Nc) Omega A b‖ ^ 2) =
       ∑ b ∈ Omega.bonds, ‖A b‖ ^ 2 := by
-      exact Finset.sum_subtype _ (fun b => Iff.rfl) _
+      exact (Finset.sum_subtype Omega.bonds (fun b => Iff.rfl)
+        (fun b : PositiveBond d N' => ‖A b‖ ^ 2)).symm
     _ ≤ ∑ b : PositiveBond d N', ‖A b‖ ^ 2 :=
       Finset.sum_le_sum_of_subset_of_nonneg (Finset.subset_univ _)
         (fun b _ _ => sq_nonneg _)
@@ -110,7 +111,6 @@ defect.  The only multiplicity is the physical number of directions; no
 cardinality of the active region appears. -/
 theorem norm_restrictOne_cmp99SourceCoarseTransportRemainderCochain_sq_le
     (Omega : ActiveGaugeRegion d (M * N'))
-    (rho : SUNAdjointModel Nc)
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (V : PhysicalGaugeBackground d N' Nc)
     (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
@@ -125,7 +125,7 @@ theorem norm_restrictOne_cmp99SourceCoarseTransportRemainderCochain_sq_le
     ‖restrictOneCLM (𝔤 := SUNLieCoord Nc)
         (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
         (cmp99SourceCoarseTransportRemainderCochain
-          rho U V
+          (matrixSUNAdjointModel Nc) U V
             (extendZeroZeroCLM (𝔤 := SUNLieCoord Nc) Omega phi))‖ ^ 2 ≤
       cmp99SourceBlockAverageWeight M d *
         (2 * (cmp99SourceTripleHolonomyRadius d M epsilonFine +
@@ -134,19 +134,19 @@ theorem norm_restrictOne_cmp99SourceCoarseTransportRemainderCochain_sq_le
     ‖restrictOneCLM (𝔤 := SUNLieCoord Nc)
         (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
         (cmp99SourceCoarseTransportRemainderCochain
-          rho U V
+          (matrixSUNAdjointModel Nc) U V
             (extendZeroZeroCLM (𝔤 := SUNLieCoord Nc) Omega phi))‖ ^ 2 ≤
       ‖cmp99SourceCoarseTransportRemainderCochain
-        rho U V
+        (matrixSUNAdjointModel Nc) U V
           (extendZeroZeroCLM (𝔤 := SUNLieCoord Nc) Omega phi)‖ ^ 2 :=
       norm_restrictOneCLM_sq_le_sun
         (d := d) (N' := N') (Nc := Nc)
         (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
         (cmp99SourceCoarseTransportRemainderCochain
-          rho U V
+          (matrixSUNAdjointModel Nc) U V
             (extendZeroZeroCLM (𝔤 := SUNLieCoord Nc) Omega phi))
     _ = ∑ y : FinBox d N', ∑ mu : Fin d,
-        ‖cmp99SourceCoarseTransportRemainder rho U V
+        ‖cmp99SourceCoarseTransportRemainder (matrixSUNAdjointModel Nc) U V
           (extendZeroZeroCLM (𝔤 := SUNLieCoord Nc) Omega phi) y mu‖ ^ 2 := by
       rw [PiLp.norm_sq_eq_of_L2, Fintype.sum_prod_type]
       rfl
