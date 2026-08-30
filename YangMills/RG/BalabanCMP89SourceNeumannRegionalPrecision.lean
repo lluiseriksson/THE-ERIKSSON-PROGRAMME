@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecision
 
 /-!
-# CMP89 source-faithful regional Neumann precision
+# CMP89 boundary-faithful normalized regional Neumann precision
 
 PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
 and no result in this module is compiler-verified.
@@ -12,10 +12,15 @@ endpoints lie in the region.  This differs from the existing CMP99 regional
 Dirichlet operator, which applies the ambient derivative to a zero extension
 before taking its adjoint and therefore charges boundary-crossing bonds.
 
-This module introduces only the source-faithful internal-bond operator and
-its exact algebraic laws.  It does not identify the source rectangle with a
-CMP96 support thickening, construct the Green, or claim the uniform bounds of
-CMP89 Lemma 2.4.
+This module introduces only the normalized internal-bond operator matching
+the source boundary convention and stencil, together with its exact algebraic
+laws.  CMP89 (1.3) writes a common `eta^d` measure in the site and bond
+quadratic forms; identifying the present unweighted `PiLp` normalization with
+that convention is a separate open dictionary (the common factor should
+cancel in the induced operator, but that cancellation is not asserted here).
+The module also does not identify the source rectangle with a CMP96 support
+thickening, construct the Green, or claim the uniform bounds of CMP89 Lemma
+2.4.
 -/
 
 namespace YangMills.RG

@@ -54,6 +54,11 @@ compression.  Two independent dictionaries are therefore open:
    Dirichlet compression;
 2. **carrier:** printed rectangular parallelepiped/cube versus an arbitrary
    support thickening, for which no rectangle equality is currently proved.
+3. **measure convention:** CMP89 (1.3) uses the common lattice factor `eta^d`
+   in the site/bond quadratic form, while the present `PiLp` spaces use
+   counting measure.  Prove the common-factor cancellation for the induced
+   normalized operator and track its effect on every norm before calling the
+   objects identical.
 
 The file name `BalabanCMP99SourceRegionalGreenNeumann.lean` does not discharge
 either dictionary: its implemented operator is Dirichlet.
@@ -79,16 +84,18 @@ Acceptance test for the no-go brick:
 
 1. Define the rectangular active region used by CMP89/CMP96, with its side
    lengths and block units explicit.
-2. Define the Neumann/free regional precision by the internal-bond quadratic
+2. Prove the `eta^d` weighted-to-counting normalization dictionary, including
+   which operator and kernel norms are invariant and which amplitudes rescale.
+3. Define the Neumann/free regional precision by the internal-bond quadratic
    form, not by zero extension.
-3. Add the positive term `m^2 + a P_k` (or the exact source specialization)
+4. Add the positive term `m^2 + a P_k` (or the exact source specialization)
    and prove the resulting regional precision coercive.  The Neumann
    Laplacian alone has constant modes and must not be declared coercive.
-4. Construct its inverse internally.
-5. Formalize the positive multiple-reflection representation of CMP89
+5. Construct its inverse internally.
+6. Formalize the positive multiple-reflection representation of CMP89
    Eq. (2.42), including the infinite continuation denoted by the printed
    `+ ...`; it is not a finite `2^d` image sum.
-6. Transfer the already proved full-lattice analytic bound to the rectangular
+7. Transfer the already proved full-lattice analytic bound to the rectangular
    box, proving summability of the reflected image lattice and keeping its
    geometric-series constant and the distance comparison explicit.  No
    finite reflection multiplicity may be substituted for that series.  This
@@ -97,13 +104,28 @@ Acceptance test for the no-go brick:
    `Int^d` exponential sum with the exact product constant.  The remaining
    work is the injection/multiplicity and distance dictionary from reflection
    words to that signed lattice, not a new summability theorem.
-7. Derive the three action bounds and the common Eq. (3.42) certificate from
+
+   In lattice units, one coordinate of the printed reflection orbit has the
+   two branches
+
+   ```text
+   2*k*m + x'              and              2*k*m - x' - 1,
+   k : Int.
+   ```
+
+   The `-1` is the printed `-xi` after rescaling by `xi`.  Thus there are
+   `2^d` parity branches, but every branch still contains an infinite
+   `Int^d` translation sum.  A valid endpoint is a `2^d` factor multiplying
+   the sealed signed-lattice geometric sum (or a sharper disjoint-orbit
+   theorem); `2^d` alone is not the image-series cost.  The odd/even identity
+   in the cross-branch equation is the natural duplicate guard.
+8. Derive the three action bounds and the common Eq. (3.42) certificate from
    that one value bound.
-8. Supply an exact carrier dictionary from the source rectangles/cubes to the
+9. Supply an exact carrier dictionary from the source rectangles/cubes to the
    cells used by the CMP96 parametrix.  If the current support thickening is
    retained, prove a comparison theorem; do not call it a rectangle by name.
 
-Only after steps 1--8 may CMP89 Lemma 2.4 or Eq. (2.42) feed the physical
+Only after steps 1--9 may CMP89 Lemma 2.4 or Eq. (2.42) feed the physical
 regional certificate.
 
 ## Alternative repair (new analysis, not source transcription)
