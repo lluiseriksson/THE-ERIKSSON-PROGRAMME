@@ -9,12 +9,12 @@ import subprocess
 import time
 from pathlib import Path
 
-RUNNER_REV = "cmp89-neumann-two-scale-physical-absorption-hot-v4"
-SOURCE_SHA = "729afcdc361860a1c0d00230296c1a01650d52e4"
+RUNNER_REV = "cmp89-neumann-two-scale-physical-absorption-hot-v5"
+SOURCE_SHA = "8c03a9e58f3195b54176f483aee2543343c0e88f"
 ROOT = Path("/content/hrpoly-cmp89-neumann-quantitative-poincare-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannTwoScalePhysicalAbsorption.lean":
-        "b6b5c5f0e93c6fb3330cd449009c14e3a6c68da02dfc0c9abdd996838f8d639d",
+        "ccbcdc5b50ce8b1d80e7d4c79fa4686aab0a16eb113911e60c16821c25841ebb",
     "YangMills/RG/BalabanCMP89SourceNeumannTwoScalePhysicalAbsorptionAudit.lean":
         "530395fbfa1f3d79260c487585adf16fb754c5bed1ccf164b11327c12b858fd3",
     "YangMills/RG/BalabanCMP89SourceNeumannPhysicalGateWitness.lean":
