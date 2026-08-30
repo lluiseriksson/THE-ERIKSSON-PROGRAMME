@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99CoarseDerivativeDecomposition
 /-!
 # The straight CMP99 defect vanishes on the CMP89 Neumann kernel
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 For an internal coarse bond, the literal length-`M` fine path stays in the
 union of the two complete endpoint blocks. Hence a field in the regional
 Neumann kernel transports exactly along that path, and the straight defect

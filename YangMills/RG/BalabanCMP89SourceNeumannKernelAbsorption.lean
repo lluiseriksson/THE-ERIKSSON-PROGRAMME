@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalGaugePrecision
 /-!
 # Quantitative absorption of the CMP89 Neumann joint kernel
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 This leaf isolates the exact scalar endpoint of the recursive Neumann
 argument.  A regional Poincare estimate absorbs an approximate derivative
 kernel whenever the averaging component vanishes and the visible product

@@ -15242,3 +15242,18 @@ while keeping the `Ubar` correction visible and then prove a quantitative
 Neumann recurrence/absorption.  No exact propagation through
 `nextBackground` is inferred.  The live counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+The next four focal/audit pairs are now cold-sealed at exact source
+`93c98c4facfa98ec772ee81b8f9498a7ada59e4c`.  They prove the fixed one-scale
+joint-kernel Poincare gate, exact vanishing of the straight parallel defect,
+the no-volume-loss `Ubar` transport remainder bound, and a generic scalar
+absorption theorem under the visible inequality `CP * kappa < 1`.  The fresh
+Colab Pro+ checkout restored no project `.lake/build`; all 20 ordered stages
+exited zero.  The locally verified archive SHA-256 is
+`6CB9F6F319C8807B47F1EBDF32ED285E58A91C14B70675C8DB2511FB0226C367`.
+
+This closes the reusable leaves, not the source-specific recursion.  The
+retained-tower dictionary, a depth-uniform Neumann Poincare producer and the
+joint smallness proof remain explicit.  No propagation through
+`nextBackground` is inferred.  Counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.

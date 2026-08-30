@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalPoincareExistence
 /-!
 # One-scale CMP89 Neumann Poincare producer
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The exact range identity for the source-normalized physical block average
 closes the literal one-scale joint kernel.  Finite-dimensional compactness
 then produces a positive Neumann Poincare constant for that same average.

@@ -42181,3 +42181,36 @@ Neumann joint-kernel gate through `nextBackground`, absorb the explicit
 `Ubar` remainder, establish a depth-uniform Neumann Poincare constant or
 construct CMP89 (2.42).  It therefore does not attain window 15, move
 `20/41`, or instantiate `TermSource`.
+
+## Addendum 984 (2026-08-30, **CMP89 Neumann recursion leaves and scalar absorption cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `93c98c4facfa98ec772ee81b8f9498a7ada59e4c`,
+driven by runner commit `616f6ca334dceed629bb78cdbc1efbe80af65854`
+(runner SHA-256
+`E7CFFED9B11FE0333ECC76E7757472FE23F0F3776263A5D231A67EE35CF1EE27`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`.  The ordered queue recorded exits zero for all 20 stages:
+
+- one-scale Neumann Poincare focal/audit: `1115.187 s` / `9.442 s`;
+- exact parallel-defect focal/audit: `27.187 s` / `8.080 s`;
+- quantitative recursive `Ubar`-remainder focal/audit: `12.544 s` / `10.407 s`;
+- generic scalar Poincare absorption focal/audit: `17.888 s` / `14.103 s`.
+
+The downloaded archive SHA-256 is
+`6CB9F6F319C8807B47F1EBDF32ED285E58A91C14B70675C8DB2511FB0226C367`;
+its evidence JSON SHA-256 is
+`87BB7E1AC12C092C7AF2C6DC5DF2AD9D34C9901CED84BC6E9EF28FDD8C49778D`.
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-recursive-absorption-cold-93c98c4f-20260830/`.
+The fail-closed verifier rehashes the archive, JSON, 20 ordered stage records,
+eight source blobs and exact runner blob.  Exactly the eight PRE-VALIDATION
+notices in these four focal/audit pairs are retired.
+
+The seal proves a fixed one-scale joint-kernel Poincare constant, exact
+vanishing of the straight parallel defect, a no-volume-loss bound for the
+remaining `Ubar` transport term, and the generic scalar inequality that
+absorbs a derivative-square defect when `CP * kappa < 1`.  It does **not**
+install the source-specific retained-tower dictionary, prove uniformity of
+`CP`, or establish the joint smallness inequality through every depth.  It
+therefore does not construct CMP89 (2.42), attain window 15, move `20/41`, or
+instantiate `TermSource`.

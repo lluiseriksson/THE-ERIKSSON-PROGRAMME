@@ -5,9 +5,6 @@ import YangMills.RG.BalabanCMP99OneScaleRegionalPoincare
 /-!
 # Quantitative CMP89 Neumann recursion defect
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The exact straight component of the CMP99 coarse derivative vanishes on the
 CMP89 regional Neumann kernel.  This leaf packages the remaining `Ubar`
 transport mismatch as a literal one-cochain and bounds its restriction to

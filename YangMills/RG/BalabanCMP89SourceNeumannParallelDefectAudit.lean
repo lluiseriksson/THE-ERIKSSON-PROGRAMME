@@ -1,7 +1,5 @@
 import YangMills.RG.BalabanCMP89SourceNeumannParallelDefect
 
--- PRE-VALIDATION: declarations below are not yet compiler-verified.
-
 #print axioms YangMills.RG.OrientedLatticePath.staysIn_of_physicalBondEndpointsIn
 #print axioms YangMills.RG.cmp99SourceParallelTransportPath_staysIn_of_coarseEndpoints
 #print axioms YangMills.RG.cmp99SourceParallelAverageDefectValue_extendZero_eq_zero
