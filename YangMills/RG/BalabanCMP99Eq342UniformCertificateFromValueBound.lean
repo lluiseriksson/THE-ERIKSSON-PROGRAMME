@@ -77,7 +77,7 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound
     4 * leftAmplitude * ((1 + Real.exp rate) / eta)
   have hell : 0 < ell := by
     dsimp [ell]
-    positivity
+    exact pow_pos (Nat.cast_pos.mpr (Nat.pos_of_ne_zero (NeZero.ne L))) _
   have hterminal : 0 < ell * eta := mul_pos hell heta
   have hleft0 :=
     cmp99Eq342_leftDerivative_blockLocalizedSupBound_at_terminalSpacing
@@ -97,7 +97,6 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound
           leftAmplitude * ell := by
       dsimp [leftAmplitude]
       field_simp [ne_of_gt hell, ne_of_gt heta]
-      ring
     rw [hnormalize] at hleft0
     exact hleft0
   have hright0 :=
@@ -117,7 +116,6 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound
           rightAmplitude * ell := by
       dsimp [rightAmplitude]
       field_simp [ne_of_gt hell, ne_of_gt heta]
-      ring
     rw [hnormalize] at hright0
     exact hright0
   have hlaplacian0 :=
@@ -138,7 +136,6 @@ theorem cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound
           laplacianAmplitude := by
       dsimp [laplacianAmplitude]
       field_simp [ne_of_gt hell, ne_of_gt heta]
-      ring
     rw [hnormalize] at hlaplacian0
     exact hlaplacian0
   have hleftAmplitude : 0 ≤ leftAmplitude := by
