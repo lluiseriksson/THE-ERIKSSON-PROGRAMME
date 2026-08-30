@@ -41671,3 +41671,34 @@ count or common-period replacement is introduced.  The literal `2^4` branch
 sum, physical Green insertion, CMP89 (2.42), uniform regional `B0, delta0`
 and window 15 remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 970 (2026-08-30, **CMP89 rectangular Neumann branch distance cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint
+`dfb6f7443c6f3245443753336b51ad5f85104300` ran in a fresh Colab Pro+
+CPU/high-RAM checkout without restoring `.lake/build`.  Lean
+`4.29.0-rc6`, Lake `5.0.0` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` were recorded before the focal.
+The branch-distance target compiled `8563/8563` jobs in `1576` seconds; its
+audit exited zero in `47` seconds.
+
+The audit exposes exactly two named declarations and both depend on exactly
+`[propext, Classical.choice, Quot.sound]`.  The first post-build parser had a
+malformed Python string and the next version counted 35 dependency readouts
+from the cold log.  These are preserved as `BLOCKED-INSTRUMENTATION`
+incidents.  Lean was not rerun: the final fail-closed gate selected the two
+exact target declaration names from the already complete audit log.
+
+The downloaded archive SHA-256 is
+`53DCFF0CA4CB6679CF51E1F2D80919977C9BDCCFCAB1F006D23A72EF6B8A0D5B`;
+the internal manifest SHA-256 is
+`CDD415BF3529B684A9AE804501BCA15940CA096F8A8F56762F3503C4F72347E1`.
+All ten manifest entries were rehashed locally with zero mismatches.
+
+The selective seal retires exactly the two PRE-VALIDATION notices in
+`BalabanCMP89NeumannRectangularBranchDistance` and its audit and imports the
+audit into `YangMillsCore`.  It proves that both literal reflection branches
+retain the direct source-site distance after internal centering.  The finite
+`2^4` branch sum, physical Green insertion, CMP89 (2.42), uniform regional
+`B0, delta0` and window 15 remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

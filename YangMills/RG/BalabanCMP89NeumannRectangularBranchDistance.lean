@@ -2,9 +2,6 @@ import YangMills.RG.BalabanCMP89NeumannRectangularAffineFibre
 import YangMills.RG.BalabanCMP89SignedLatticeL1ExponentialSum
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 Direct-distance retention across both CMP89 Neumann reflection branches.
 This is the source-specific monotonicity bridge needed before the finite
 `2^d` branch sum.  It does not sum image fibres, insert a Green bound, or

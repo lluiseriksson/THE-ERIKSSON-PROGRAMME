@@ -15015,3 +15015,27 @@ ball count or common scalar period.  The next boundary is the literal finite
 `2^4` reflection-branch sum.  Physical Green insertion, CMP89 (2.42), uniform
 regional `B0, delta0` and window-15 attainment remain open.  The counters
 remain exactly `20/41`, `TermSource = 0`.
+
+### CMP89 rectangular Neumann branch-distance retention (cold-sealed; 20/41 unchanged)
+
+Exact source `dfb6f7443c6f3245443753336b51ad5f85104300` passed an independent
+fresh-Colab CPU/high-RAM gate without restoration of `.lake/build`.  The focal
+compiled `8563/8563` jobs in `1576` seconds and the audit exited zero in `47`
+seconds.  The two named readouts use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The first post-build axiom parser was syntactically malformed and a second
+global-header parser counted dependency readouts.  Both are retained as
+instrumentation incidents; neither caused Lean to rerun.  The final gate is
+keyed to the two exact target declaration names.  The downloaded archive and
+manifest SHA-256 values are respectively
+`53DCFF0CA4CB6679CF51E1F2D80919977C9BDCCFCAB1F006D23A72EF6B8A0D5B`
+and
+`CDD415BF3529B684A9AE804501BCA15940CA096F8A8F56762F3503C4F72347E1`;
+all ten internal entries rehashed locally with zero mismatches.
+
+This seals the comparison between each internally centered reflection branch
+and the retained direct `l1` distance.  It does not yet perform the finite
+`2^4` branch sum, insert the physical Green, consume CMP89 (2.42), produce a
+uniform regional `B0, delta0` pair or attain window 15.  Counters remain
+exactly `20/41`, `TermSource = 0`.
