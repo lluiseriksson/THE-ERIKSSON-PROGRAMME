@@ -14,8 +14,8 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-one-scale-poincare-hot-v1"
-SOURCE_SHA = "7917c71f311133d41c02996333bc4b71967292c2"
+RUNNER_REV = "cmp89-neumann-poincare-defect-hot-v2"
+SOURCE_SHA = "d28e922b7f1b476114630814150790f1449fe0d3"
 BASE_SHA = "8953e2941c96011abf3237bbe856c1a52f604d2e"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
@@ -23,10 +23,18 @@ SOURCE_BLOBS = {
         "ddb5b7fe7f0206ce4518ae1710b5451817b8d54dc9269a2c163cd1c7022ae0a9",
     "YangMills/RG/BalabanCMP89SourceNeumannOneScalePoincareAudit.lean":
         "b6734a94fd9c11d59215f6a026da087723c70cd65b8cc5e9f7016459f77332da",
+    "YangMills/RG/BalabanCMP89SourceNeumannParallelDefect.lean":
+        "578edab68673d95a288a6573cb8b4384c31f096149ac86e33fb6c13c5a033815",
+    "YangMills/RG/BalabanCMP89SourceNeumannParallelDefectAudit.lean":
+        "12895bbf9e064c553808dc6331f52ead552b1b6ba97216317f9d7a7cc643cd43",
 }
 EXPECTED_DECLARATIONS = {
     "YangMills.RG.cmp89SourceNeumann_oneScale_jointKernel",
     "YangMills.RG.exists_cmp89SourceNeumann_oneScale_poincare",
+    "YangMills.RG.OrientedLatticePath.staysIn_of_physicalBondEndpointsIn",
+    "YangMills.RG.cmp99SourceParallelTransportPath_staysIn_of_coarseEndpoints",
+    "YangMills.RG.cmp99SourceParallelAverageDefectValue_extendZero_eq_zero",
+    "YangMills.RG.covariantD0_cmp99FullSourceBlockAverage_eq_remainder_of_neumannKernel",
 }
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 FORBIDDEN_TOKENS = {"sorryAx", "ofReduceBool", "Lean.ofReduceBool"}
@@ -137,6 +145,19 @@ def main() -> int:
             "env",
             "lean",
             "YangMills/RG/BalabanCMP89SourceNeumannOneScalePoincareAudit.lean",
+        ],
+    )
+    run(
+        "cmp89_neumann_parallel_defect_focal",
+        ["lake", "build", "YangMills.RG.BalabanCMP89SourceNeumannParallelDefect"],
+    )
+    audit += run(
+        "cmp89_neumann_parallel_defect_audit",
+        [
+            "lake",
+            "env",
+            "lean",
+            "YangMills/RG/BalabanCMP89SourceNeumannParallelDefectAudit.lean",
         ],
     )
     audit_axioms(audit)
