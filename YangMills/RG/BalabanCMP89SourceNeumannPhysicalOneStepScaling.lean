@@ -58,11 +58,11 @@ theorem cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling
     rw [Real.norm_eq_abs, sq_abs, inv_pow]
     field_simp
   calc
-    (‖(M : ℝ)⁻¹‖ * ‖spacing⁻¹‖) ^ 2 *
+    (‖spacing⁻¹‖ * ‖(M : ℝ)⁻¹‖) ^ 2 *
           (2 ^ 2 *
-            (spacing ^ 2 *
+            (spacing *
               ((((2 * d * (M - 1) + M : ℕ) : ℝ) * etaFine +
-                (M : ℝ) * etaCoarse) ^ 2))) *
+                (M : ℝ) * etaCoarse)) ^ 2) *
           (d : ℝ) =
         ‖(M : ℝ)⁻¹‖ ^ 2 *
           (‖spacing⁻¹‖ ^ 2 * spacing ^ 2) *
@@ -87,6 +87,7 @@ theorem cmp89SourceNeumannOneScalePoincare_mul_defect_physical_scaling
         cmp89SourceNeumannPhysicalOneStepDefectCoefficient
           d M etaFine etaCoarse := by
   have hsq : ((M : ℝ) * spacing) ^ 2 ≤ 1 := by
+    have habs_nonneg : 0 ≤ |(M : ℝ) * spacing| := abs_nonneg _
     nlinarith [sq_abs ((M : ℝ) * spacing)]
   rw [cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling
     (d := d) (M := M) hspacing]
