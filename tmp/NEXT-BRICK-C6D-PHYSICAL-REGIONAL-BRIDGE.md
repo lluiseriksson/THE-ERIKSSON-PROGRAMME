@@ -121,13 +121,12 @@ construct either input and is not a physical producer.  Both source files
 retain PRE-VALIDATION, are absent from `YangMillsCore`, and do not move
 `20/41`, attain window 15 or instantiate a `TermSource`.
 
-This reduction is internal to the current
-`FinitePiLpTypedBlockLocalizedSupBound` certificate, hence to its
-coordinate-probe interface.  It does **not** upgrade that interface to the
-printed arbitrary localized-source statement of CMP96 (2.67) / CMP99
-(3.42), and it supplies no terminal-owner summation theorem.  The latter
-source-facing strengthening remains part of the one regional value producer;
-it may not be inferred from the adapter's eventual compiler green.
+Here `FinitePiLpTypedBlockLocalizedSupBound` already quantifies an arbitrary
+field supported in one complete source-owner fibre and uses its finite
+supremum norm.  Thus the reduction is at the printed arbitrary-source level,
+not merely at coordinate probes.  The remaining input is genuinely the one
+uniform regional value estimate; no hidden fine-fibre cardinality conversion
+or additional owner-action theorem remains between it and the four fields.
 
 The retained-runtime diagnostic is independently pinned in
 `tmp/C6D-UNIFORM-CERTIFICATE-FROM-VALUE-HOT-LAUNCH.md`.  It may run only

@@ -16,16 +16,11 @@ Dirichlet Green on an arbitrary field supported in one localization block:
 measured between source-localization owners rather than the coarser separated
 regional cells.
 
-The present Lean certificate fixes all four operators definitionally to the
-canonical regional Green and the literal regional covariant
-derivative/Laplacian, but its stored
-`FinitePiLpTypedBlockLocalizedSupBound` fields quantify over coordinate
-probes rather than an arbitrary supported field.  It therefore records the
-coordinate-kernel part of the printed statement; it is not by itself a proof
-of the full arbitrary-source inequality.  It does not accept a freely chosen
-Green family.  The four source estimates are named source inputs; this module
-does not prove CMP99 Theorem 3.1, equation (3.42), the three-species estimate
-(3.89), or the defect contraction.
+This certificate fixes all four operators definitionally to the canonical
+regional Green and the literal regional covariant derivative/Laplacian.  It
+does not accept a freely chosen Green family.  The four source estimates are
+named source inputs; this module does not prove CMP99 Theorem 3.1, equation
+(3.42), the three-species estimate (3.89), or the defect contraction.
 -/
 
 namespace YangMills.RG
@@ -66,15 +61,12 @@ noncomputable def cmp99Eq342SourceLocalizedBondOwner
     FinBox 4 (2 * (K * Q)) :=
   cmp99Eq389SourceLocalizationOwner L K Q depth b.1
 
-/-- Coordinate-kernel certificate for the four actions appearing in CMP99
-(3.42).
+/-- Source-facing certificate for the four estimates in CMP99 (3.42).
 
 The carrier nonemptiness is an explicit parameter because the finite
 supremum norm is only defined on a nonempty source index.  Every bound is on
 the same canonical regional Dirichlet Green and uses the exact source
-localization owners at scale `L^(depth+1)`.  A separate owner-input theorem
-is still required to recover the printed arbitrary supported source without
-a fine-fibre cardinality loss. -/
+localization owners at scale `L^(depth+1)`. -/
 structure CMP99Eq342SourceLocalizedGreenCertificate
     (depth : ℕ)
     (Omega : ActiveGaugeRegion 4

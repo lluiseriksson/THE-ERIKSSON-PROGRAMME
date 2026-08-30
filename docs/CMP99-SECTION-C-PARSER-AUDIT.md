@@ -357,14 +357,16 @@ gauge-covariant transport to the canonical regional Green.  The sealed
 source-input L2 conversion supplies only the `ell^2` input-size factor for
 that route.
 
-The current Lean certificate
-`CMP99Eq342RegionalGreenCertificate` does not yet implement this accepted
-interface.  Its four fields use
-`FinitePiLpTypedExponentialKernelBound`, which quantifies only coordinate
-probes `singleFinitePiLp source v` in the stored finite `L^2` field.  The
-three-species physical specialization also infers the metric divisor
-`K * L^(depth+1)` from the separated regional-cell carrier, whereas (3.89)
-uses the localization scale `L^(depth+1)`.  Supplying
+The older `CMP99Eq342RegionalGreenCertificate` remains an entrywise
+coordinate-probe package.  The current source-facing replacement
+`CMP99Eq342SourceLocalizedGreenCertificate` stores
+`FinitePiLpTypedBlockLocalizedSupBound`, which quantifies an arbitrary field
+supported in one complete owner fibre and measures it in the finite supremum
+norm.  Thus the arbitrary-source quantifier has been repaired; the remaining
+open work is production of its four physical bounds with common constants
+uniform in depth.  The three-species physical specialization also infers the
+metric divisor `K * L^(depth+1)` from the separated regional-cell carrier,
+whereas (3.89) uses the localization scale `L^(depth+1)`.  Supplying
 `ell = L^(depth+1)` changes the amplitude vector but not that divisor.
 
 Consequently the separately sealed component bounds and their literal sum
