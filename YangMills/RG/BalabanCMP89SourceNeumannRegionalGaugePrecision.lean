@@ -217,6 +217,127 @@ theorem cmp89SourceNeumannRegionalGreen_comp_gaugePrecision
   exact covarianceOfIsCoerciveCLM_comp_precision _
     (div_pos (lt_min zero_lt_one ha) hCP) _
 
+/-! ## Retained physical prefix specialization -/
+
+variable {M depth : ℕ} [NeZero M]
+variable {Omega : ActiveGaugeRegion d N}
+variable {rho : SUNAdjointModel Nc} {spacing : ℝ}
+variable {background : GaugeConfig d N (SUN Nc)}
+
+/-- Source-facing specialization: `Q_j` and its counting-Hilbert coefficient
+are generated from one retained physical background tower. -/
+noncomputable def cmp89SourceRetainedNeumannPrefixGaugePrecision
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (mass a : ℝ) :
+    ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
+  cmp89SourceNeumannRegionalGaugePrecision Omega rho background
+    (T.towerAt r.1).Qprime spacing mass
+    (cmp85SourcePrefixCountingCoefficient T a r)
+
+/-- Exact retained-prefix quadratic form.  The source coefficient and its
+counting-volume conversion remain printed in the conclusion. -/
+theorem inner_cmp89SourceRetainedNeumannPrefixGaugePrecision
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (mass a : ℝ)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    inner ℝ phi
+        (cmp89SourceRetainedNeumannPrefixGaugePrecision
+          T r mass a phi) =
+      ‖cmp89SourceNeumannRegionalCovariantD0CLM
+          Omega rho background spacing phi‖ ^ 2 +
+        mass ^ 2 * ‖phi‖ ^ 2 +
+          cmp85SourcePrefixCountingCoefficient T a r *
+            ‖(T.towerAt r.1).Qprime phi‖ ^ 2 := by
+  exact inner_cmp89SourceNeumannRegionalGaugePrecision
+    Omega rho background (T.towerAt r.1).Qprime spacing mass
+      (cmp85SourcePrefixCountingCoefficient T a r) phi
+
+/-- Symmetry of the retained physical prefix precision is generated from the
+same background tower. -/
+theorem cmp89SourceRetainedNeumannPrefixGaugePrecision_isSymmetric
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (mass a : ℝ) :
+    (cmp89SourceRetainedNeumannPrefixGaugePrecision
+      T r mass a).IsSymmetric := by
+  exact cmp89SourceNeumannRegionalGaugePrecision_isSymmetric
+    Omega rho background (T.towerAt r.1).Qprime spacing mass
+      (cmp85SourcePrefixCountingCoefficient T a r)
+
+/-- Named physical Poincare gate for the retained prefix.  No arbitrary
+average operator can be substituted into this proposition. -/
+def CMP89SourceRetainedNeumannPrefixPoincare
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (CP : ℝ) : Prop :=
+  CMP89SourceNeumannRegionalPoincare Omega rho background
+    (T.towerAt r.1).Qprime spacing CP
+
+/-- Coercivity of the retained prefix, with the exact counting-Hilbert
+coefficient generated internally and no lower bound borrowed from the bare
+mass. -/
+theorem isCoerciveCLM_cmp89SourceRetainedNeumannPrefixGaugePrecision
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (mass : ℝ)
+    {a CP : ℝ} (ha : 0 < a) (hspacing : 0 < spacing) (hCP : 0 < CP)
+    (hP : CMP89SourceRetainedNeumannPrefixPoincare T r CP) :
+    IsCoerciveCLM
+      (cmp89SourceRetainedNeumannPrefixGaugePrecision T r mass a)
+      (min 1 (cmp85SourcePrefixCountingCoefficient T a r) / CP) := by
+  exact isCoerciveCLM_cmp89SourceNeumannRegionalGaugePrecision
+    Omega rho background (T.towerAt r.1).Qprime spacing mass
+      (cmp85SourcePrefixCountingCoefficient_pos T ha hspacing r).le
+      hCP hP
+
+/-- Canonical Green for the retained physical Neumann prefix. -/
+noncomputable def cmp89SourceRetainedNeumannPrefixGreen
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (mass : ℝ)
+    {a CP : ℝ} (ha : 0 < a) (hspacing : 0 < spacing) (hCP : 0 < CP)
+    (hP : CMP89SourceRetainedNeumannPrefixPoincare T r CP) :
+    ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
+  cmp89SourceNeumannRegionalGreen Omega rho background
+    (T.towerAt r.1).Qprime spacing mass
+    (cmp85SourcePrefixCountingCoefficient_pos T ha hspacing r) hCP hP
+
+/-- Right inverse law for the retained physical Neumann prefix. -/
+theorem cmp89SourceRetainedNeumannPrefixGaugePrecision_comp_green
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (mass : ℝ)
+    {a CP : ℝ} (ha : 0 < a) (hspacing : 0 < spacing) (hCP : 0 < CP)
+    (hP : CMP89SourceRetainedNeumannPrefixPoincare T r CP) :
+    (cmp89SourceRetainedNeumannPrefixGaugePrecision T r mass a).comp
+        (cmp89SourceRetainedNeumannPrefixGreen
+          T r mass ha hspacing hCP hP) =
+      ContinuousLinearMap.id ℝ
+        (ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) := by
+  exact cmp89SourceNeumannRegionalGaugePrecision_comp_green
+    Omega rho background (T.towerAt r.1).Qprime spacing mass
+      (cmp85SourcePrefixCountingCoefficient_pos T ha hspacing r) hCP hP
+
+/-- Left inverse law for the same retained physical Neumann prefix. -/
+theorem cmp89SourceRetainedNeumannPrefixGreen_comp_gaugePrecision
+    (T : CMP99SourceRetainedPhysicalTower
+      rho Omega M spacing background depth)
+    (r : CMP85PositivePrefix depth) (mass : ℝ)
+    {a CP : ℝ} (ha : 0 < a) (hspacing : 0 < spacing) (hCP : 0 < CP)
+    (hP : CMP89SourceRetainedNeumannPrefixPoincare T r CP) :
+    (cmp89SourceRetainedNeumannPrefixGreen
+      T r mass ha hspacing hCP hP).comp
+        (cmp89SourceRetainedNeumannPrefixGaugePrecision T r mass a) =
+      ContinuousLinearMap.id ℝ
+        (ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) := by
+  exact cmp89SourceNeumannRegionalGreen_comp_gaugePrecision
+    Omega rho background (T.towerAt r.1).Qprime spacing mass
+      (cmp85SourcePrefixCountingCoefficient_pos T ha hspacing r) hCP hP
+
 end
 
 end YangMills.RG
