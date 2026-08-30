@@ -42104,3 +42104,46 @@ Neither file has been checked by Lean.  This brick does not prove the
 Neumann Poincare gate, identify the half-open source rectangle, establish
 CMP89 (2.42), supply an arbitrary-field CMP99 (3.42) value action, attain
 window 15, move `20/41`, or instantiate `TermSource`.
+
+## Addendum 982 (2026-08-30, **CMP89 Neumann source-chain leaf quartet cold-sealed; 20/41 unchanged**)
+
+The PRE-VALIDATION state recorded by Addendum 981 is superseded for exactly
+four focal/audit pairs.  Source checkpoint
+`a1fe7d151400d99fe0d89e5d430ddb992a6168b8`, driven by runner commit
+`e1f0e13c31eee784e4c5e46eafa32da6621e0912` (runner SHA-256
+`679D7F0A8438C40BCF5BDB4B6989927AB7835DFDA416DED9CD6B90C7AAE0193F`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`:
+
+- literal three-term Neumann gauge precision focal: `1177.295 s`;
+- its exact ten-declaration audit: `17.218 s`;
+- fixed-region Poincare-existence reduction focal: `31.377 s`;
+- its exact four-declaration audit: `9.896 s`;
+- source/counting-weight dictionary focal: `14.018 s`;
+- its exact four-declaration audit: `9.426 s`;
+- canonical Neumann reflection-entry gate focal: `49.809 s`;
+- its exact five-declaration audit: `9.757 s`.
+
+All 23 declarations are checked against the sanctioned axiom set
+`{propext, Classical.choice, Quot.sound}`; the runner rejects missing or extra
+declarations and explicitly rejects `sorryAx` and `ofReduceBool`.  Mathlib is
+pinned at `07642720480157414db592fa85b626dafb71355b`, and the Lean toolchain
+asset SHA-256 is
+`BF3E0A4025E47A0BEA9ED907D12DCCD3D3590B1D8AD6C55A915298B01AD9D3E`.
+
+The downloaded archive SHA-256 is
+`68645D70BE9046D230B6FCA7503D4011B807E9A7EB7B203AE385E7166099C69F`;
+its evidence JSON SHA-256 is
+`6B7FA19D2D4D2C0ADF9D9A563C9F888CB803FDFFB2854FA202C69556092D0A2A`.
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-source-chain-cold-a1fe7d15-20260830/`.
+Exactly the eight PRE-VALIDATION notices in those four pairs are retired.
+
+This seal constructs the literal precision and its canonical inverse from a
+named Poincare input, proves only existence of a fixed-region Poincare
+constant from an explicit joint-kernel gate, verifies the source/counting
+coefficient dictionary, and removes the free regional kernel from the
+reflection certificate.  It does **not** prove the joint-kernel gate,
+uniformity of `CP`, the rectangle/full-lattice dictionaries or CMP89 (2.42).
+It therefore does not attain window 15, move `20/41`, or instantiate
+`TermSource`.

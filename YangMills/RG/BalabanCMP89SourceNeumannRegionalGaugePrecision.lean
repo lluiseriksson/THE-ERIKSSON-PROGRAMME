@@ -4,8 +4,8 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalPrecision
 /-!
 # CMP89 regional Neumann gauge precision and canonical Green
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
+Compiler-verified in a fresh Colab checkout at source checkpoint
+`a1fe7d151400d99fe0d89e5d430ddb992a6168b8`.
 
 This module keeps the three terms of the operator printed in CMP89 (2.44)
 separate:

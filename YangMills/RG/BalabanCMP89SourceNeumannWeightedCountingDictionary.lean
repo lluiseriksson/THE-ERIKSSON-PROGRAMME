@@ -3,8 +3,8 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalGaugePrecision
 /-!
 # CMP89 Neumann source-weighted/counting dictionary
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
+Compiler-verified in a fresh Colab checkout at source checkpoint
+`a1fe7d151400d99fe0d89e5d430ddb992a6168b8`.
 
 CMP89 (1.3) uses the same `spacing^d` factor in the site and internal-bond
 pairings. Consequently the counting-Hilbert adjoint used by the literal

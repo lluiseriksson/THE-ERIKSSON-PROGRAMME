@@ -4,8 +4,8 @@ import YangMills.RG.PhysicalGaugeFlatPoincare
 /-!
 # Fixed-region existence gate for the CMP89 Neumann Poincare constant
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no declaration below is compiler-verified.
+Compiler-verified in a fresh Colab checkout at source checkpoint
+`a1fe7d151400d99fe0d89e5d430ddb992a6168b8`.
 
 This brick reduces existence of a finite-volume Neumann Poincare constant to
 the exact joint-kernel statement for the same internal-bond derivative and the

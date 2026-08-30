@@ -1,8 +1,7 @@
 import YangMills.RG.BalabanCMP89CanonicalNeumannReflectionRepresentation
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and the declarations below have not been checked by the compiler.
+Compiler-verified in the same fresh Colab checkout as the focal module.
 -/
 
 namespace YangMills.RG

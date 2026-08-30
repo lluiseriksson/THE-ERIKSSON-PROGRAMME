@@ -15207,7 +15207,7 @@ rather than reuse the canonical CMP99 Dirichlet Green by definition.  This
 seal does not move `20/41`, attain window 15, or supply the missing
 arbitrary-field value action in CMP99 (3.42).
 
-The first constructive response is present at PRE-VALIDATION in
+The first constructive response is cold-sealed in
 `BalabanCMP89SourceNeumannRegionalGaugePrecision`.  It fixes the literal
 three-term operator
 
@@ -15218,7 +15218,9 @@ internal-bond Neumann Laplacian + mass^2 id + a Qprime^* Qprime
 and constructs its Green internally from a named Neumann block-Poincare
 gate.  The resulting coercivity floor is `min 1 a / CP`, so it does not use
 the bare mass to hide the massless gauge problem.  This is still an algebraic
-layer: the physical retained `Q_j`, the counting/source-weight coefficient,
-the Neumann Poincare proof, rectangle dictionary and CMP89 (2.42)
-representation all remain open.  Both new files are NOT CHECKED; counters
-remain exactly `20/41`, `TermSource = 0`, and window 15 remains unattained.
+layer: the physical retained `Q_j`, the uniform Neumann Poincare producer,
+rectangle dictionary and CMP89 (2.42) representation all remain open.  The
+precision, fixed-region existence reduction, source/counting dictionary and
+canonical reflection-entry gate are cold-sealed at source checkpoint
+`a1fe7d1514`; this still leaves counters exactly `20/41`, `TermSource = 0`,
+and window 15 unattained.

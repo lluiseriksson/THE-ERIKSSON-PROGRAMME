@@ -5,8 +5,8 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalGaugePrecision
 /-!
 # Canonical-inverse gate for the CMP89 Neumann reflection representation
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
+Compiler-verified in a fresh Colab checkout at source checkpoint
+`a1fe7d151400d99fe0d89e5d430ddb992a6168b8`.
 
 The existing CMP89 (2.42) certificate accepts a regional kernel as a
 parameter. This source-facing gate removes that freedom: the regional entry

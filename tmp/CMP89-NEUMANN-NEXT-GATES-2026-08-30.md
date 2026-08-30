@@ -1,12 +1,16 @@
 # CMP89 Neumann next gates — static checkpoint
 
-Status: design-only checkpoint.  The boundary no-go is cold-sealed at
+Status: design checkpoint with four promoted PRE-VALIDATION pairs.  The
+boundary no-go is cold-sealed at
 `1721fb8b8655e4e6f9bb15fc0e0440750ff013d9`, with durable evidence recorded
-by sealing commit `6d48122b`.  The first three-term precision hot diagnostic
-failed only at the two local-let rewrites in the coercivity proof; the exact
-error is preserved and the two normalizations are repaired for a retained
-runtime retry.  Neither a hot PASS nor this checkpoint is seal authority.  No
-counter moves.
+by sealing commit `6d48122b`.  Hot Colab diagnostics have passed for the
+literal three-term precision, fixed-region Poincare existence reduction,
+source/counting weight dictionary, and canonical reflection representation.
+Their combined cold seal passed against source checkpoint
+`a1fe7d151400d99fe0d89e5d430ddb992a6168b8`; the downloaded archive rehashed
+locally to
+`68645D70BE9046D230B6FCA7503D4011B807E9A7EB7B203AE385E7166099C69F`.
+Exactly those eight PRE-VALIDATION marks are retired.  No counter moves.
 
 ## What is fixed
 
@@ -59,6 +63,32 @@ Therefore the missing content is precisely that the internal-bond
 covariantly-constant subspace meets this kernel only at zero.  Any future
 proof must use the geometry/background transport of that subspace, rather
 than citing tower normalization alone.
+
+There is a type-boundary constraint on the missing producer.  The public
+`CMP99SourceRetainedPhysicalTower` remembers the generated prefix operators
+but erases the `BlockSaturated` geometry used by its private recursive
+constructor.  Therefore the joint-kernel theorem must not be stated for an
+arbitrary retained tower merely because its `towerAt` fields have the right
+types.  The faithful route specializes to
+`cmp99SourceGeneratedRetainedPhysicalTower` and rewrites each prefix with
+`cmp99SourceGeneratedRetainedPhysicalTower_towerAt_eq_take`; alternatively it
+must accept a named carrier/connectivity certificate.  A free geometric
+hypothesis hidden behind an arbitrary `T` is not an accepted producer.
+
+The next leaf lemma is exact evaluation, not a Poincare inequality.  Assuming
+`spacing != 0`, vanishing of
+`cmp89SourceNeumannRegionalCovariantD0CLM` must imply on every
+`b : ActiveGaugeRegion.Bond Omega` the literal transported equality
+
+```text
+phi source(b) = ad(U(b)) (phi target(b)).
+```
+
+Only after that evaluation is sealed should block-contained path control and
+the generated `Q'_r` recursion be used to prove the joint-kernel statement.
+The nonzero-spacing premise is porting content: it must be supplied by the
+physical source data and cannot be recovered from the current proposition,
+which merely carries `spacing : R`.
 
 The existing source-generated regional Poincare chain is also not this
 producer.  Its one-scale theorem is explicitly Dirichlet: it applies the full

@@ -3,8 +3,7 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalGaugePrecision
 /-!
 # Axiom audit for the CMP89 regional Neumann gauge precision
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this audit module is compiler-verified.
+Compiler-verified in the same fresh Colab checkout as the focal module.
 -/
 
 namespace YangMills.RG

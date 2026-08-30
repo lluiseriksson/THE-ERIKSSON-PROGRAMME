@@ -3,8 +3,7 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalPoincareExistence
 /-!
 # Axiom audit for fixed-region CMP89 Neumann Poincare existence
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no declaration below is compiler-verified.
+Compiler-verified in the same fresh Colab checkout as the focal module.
 -/
 
 namespace YangMills.RG
