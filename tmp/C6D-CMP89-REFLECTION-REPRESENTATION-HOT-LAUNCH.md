@@ -6,16 +6,16 @@ PRE-VALIDATION.
 
 ```text
 cold base: 77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92
-overlay: 2a3b3ddcf1d69a77b4844c0e3f9c3d9e901b71a4
-runner: d2b5912890a0d8f099778a356a0a622e26c14d34
-runner SHA-256: 5103fe04ea947f0ac3516ab157bc5ad41e5bf0c0406069b89768fac757836c28
+overlay: f3550512d25ad7a76071a38c421a8c0863986624
+runner: 71230763a73301fd5ac3d37e3ed593b2be163f2f
+runner SHA-256: d9efb339ebf25acfe64830f3f8dfa071b9e86a787419c6bab6a75f4717979c60
 sentinel: HOT_C6D_CMP89_REFLECTION_REPRESENTATION_PASS
 ```
 
-This supersedes runners `9e936ef29cbcca1ebbb8668845180a65917e3d34`
-and `46273b1824bb7a9d045edccebf7a33edb751dff4`. The first still used the
-printed inclusive envelope; the second predated the final header correction
-that states the half-open carrier without leaving a false site-count debt.
+This supersedes runners `9e936ef29cbcca1ebbb8668845180a65917e3d34`,
+`46273b1824bb7a9d045edccebf7a33edb751dff4`, and
+`d2b5912890a0d8f099778a356a0a622e26c14d34`. The current contract also
+requires positive side lengths and derives carrier nonemptiness.
 
 Execute exactly once:
 
@@ -25,10 +25,10 @@ import hashlib, urllib.request
 url = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "d2b5912890a0d8f099778a356a0a622e26c14d34/"
+    "71230763a73301fd5ac3d37e3ed593b2be163f2f/"
     "tmp/run_c6d_cmp89_reflection_representation_hot.py"
 )
-expected = "5103fe04ea947f0ac3516ab157bc5ad41e5bf0c0406069b89768fac757836c28"
+expected = "d9efb339ebf25acfe64830f3f8dfa071b9e86a787419c6bab6a75f4717979c60"
 with urllib.request.urlopen(url) as response:
     payload = response.read()
 actual = hashlib.sha256(payload).hexdigest()

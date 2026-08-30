@@ -6,16 +6,15 @@ diagnostic evidence and cannot retire PRE-VALIDATION.
 
 ```text
 cold base source: 77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92
-scale overlay: afae28a60fdedc960b4a284b1781f2ba292464f3
-runner object: 46273b1824bb7a9d045edccebf7a33edb751dff4
-runner SHA-256: 407d728b59e9f2e2f0cf5a34e2a478f4b09a752206158b9069049806d447d901
+scale overlay: f3550512d25ad7a76071a38c421a8c0863986624
+runner object: 71230763a73301fd5ac3d37e3ed593b2be163f2f
+runner SHA-256: d8b33f5eac95db31034dba05c7bdd835aed910d180a9c28be6834fc71352969e
 sentinel: HOT_C6D_CMP89_REFLECTION_SCALE_PASS
 ```
 
-This supersedes runner `f443e7145fbbb004de236993c5e298ea176eba0c`
-and SHA-256
-`e81d19d273edf5f3876a15d2178ce26cd0f92a3c8943f0edc136393d10c64190`,
-which predated the half-open block-carrier correction.
+This supersedes runners `f443e7145fbbb004de236993c5e298ea176eba0c`
+and `46273b1824bb7a9d045edccebf7a33edb751dff4`; the current runner also
+checks the explicit zero-site witness under positive side lengths.
 
 Execute exactly once in a new cell:
 
@@ -25,10 +24,10 @@ import hashlib, urllib.request
 url = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "46273b1824bb7a9d045edccebf7a33edb751dff4/"
+    "71230763a73301fd5ac3d37e3ed593b2be163f2f/"
     "tmp/run_c6d_cmp89_reflection_scale_hot.py"
 )
-expected = "407d728b59e9f2e2f0cf5a34e2a478f4b09a752206158b9069049806d447d901"
+expected = "d8b33f5eac95db31034dba05c7bdd835aed910d180a9c28be6834fc71352969e"
 with urllib.request.urlopen(url) as response:
     payload = response.read()
 actual = hashlib.sha256(payload).hexdigest()
