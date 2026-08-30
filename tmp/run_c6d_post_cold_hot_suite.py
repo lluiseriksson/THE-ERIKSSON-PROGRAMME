@@ -45,15 +45,15 @@ RUNNERS = [
     ),
     (
         "reflection_scale",
-        "f443e7145fbbb004de236993c5e298ea176eba0c",
+        "46273b1824bb7a9d045edccebf7a33edb751dff4",
         "tmp/run_c6d_cmp89_reflection_scale_hot.py",
-        "e81d19d273edf5f3876a15d2178ce26cd0f92a3c8943f0edc136393d10c64190",
+        "407d728b59e9f2e2f0cf5a34e2a478f4b09a752206158b9069049806d447d901",
     ),
     (
         "reflection_representation",
-        "9e936ef29cbcca1ebbb8668845180a65917e3d34",
+        "46273b1824bb7a9d045edccebf7a33edb751dff4",
         "tmp/run_c6d_cmp89_reflection_representation_hot.py",
-        "ff3f5462e1ce0057ad555e221c4484c054fdb4fa3732c645c613a29770d1ba8f",
+        "4661fc67d222de5d72605c857f3e055ec3e0df8481c0befe0e221657ac61dadd",
     ),
 ]
 
