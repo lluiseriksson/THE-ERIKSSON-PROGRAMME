@@ -121,6 +121,14 @@ construct either input and is not a physical producer.  Both source files
 retain PRE-VALIDATION, are absent from `YangMillsCore`, and do not move
 `20/41`, attain window 15 or instantiate a `TermSource`.
 
+This reduction is internal to the current
+`FinitePiLpTypedBlockLocalizedSupBound` certificate, hence to its
+coordinate-probe interface.  It does **not** upgrade that interface to the
+printed arbitrary localized-source statement of CMP96 (2.67) / CMP99
+(3.42), and it supplies no terminal-owner summation theorem.  The latter
+source-facing strengthening remains part of the one regional value producer;
+it may not be inferred from the adapter's eventual compiler green.
+
 The retained-runtime diagnostic is independently pinned in
 `tmp/C6D-UNIFORM-CERTIFICATE-FROM-VALUE-HOT-LAUNCH.md`.  It may run only
 after the current cold archive and executed notebook have been downloaded
