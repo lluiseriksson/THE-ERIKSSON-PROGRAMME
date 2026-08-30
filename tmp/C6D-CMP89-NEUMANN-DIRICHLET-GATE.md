@@ -85,10 +85,14 @@ Acceptance test for the no-go brick:
    and prove the resulting regional precision coercive.  The Neumann
    Laplacian alone has constant modes and must not be declared coercive.
 4. Construct its inverse internally.
-5. Formalize the positive-reflection representation of CMP89 Eq. (2.42).
+5. Formalize the positive multiple-reflection representation of CMP89
+   Eq. (2.42), including the infinite continuation denoted by the printed
+   `+ ...`; it is not a finite `2^d` image sum.
 6. Transfer the already proved full-lattice analytic bound to the rectangular
-   box, keeping the finite reflection multiplicity and the distance
-   comparison explicit.  This is the producer of a regional value bound.
+   box, proving summability of the reflected image lattice and keeping its
+   geometric-series constant and the distance comparison explicit.  No
+   finite reflection multiplicity may be substituted for that series.  This
+   is the producer of a regional value bound.
 7. Derive the three action bounds and the common Eq. (3.42) certificate from
    that one value bound.
 8. Supply an exact carrier dictionary from the source rectangles/cubes to the
