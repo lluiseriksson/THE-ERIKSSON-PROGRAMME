@@ -114,6 +114,7 @@ theorem cmp89NeumannFineWeight_le_ownerWeight_of_metric_bridge_draft
     _ = Real.exp ((rho / (ell : ℝ)) * boundary) *
         Real.exp (-rho * ownerDist) := by
       rw [sub_eq_add_neg, Real.exp_add]
+      rw [neg_mul]
 
 /-- The regional CMP89 (2.42) value estimate at fine rate `rho / L^j`
 transports to one fixed owner rate `rho` once the two source-facing geometric
