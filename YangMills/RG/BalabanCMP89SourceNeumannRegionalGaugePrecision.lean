@@ -130,7 +130,8 @@ theorem isCoerciveCLM_cmp89SourceNeumannRegionalGaugePrecision
   let K := cmp85BareMassPrecision D mass
   have hKnonneg : ∀ phi, 0 ≤ inner ℝ phi (K phi) := by
     intro phi
-    rw [K, inner_cmp85BareMassPrecision, D,
+    simp only [K, D]
+    rw [inner_cmp85BareMassPrecision,
       inner_cmp89SourceNeumannRegionalLaplacian]
     positivity
   have hP' : ∀ phi, ‖phi‖ ^ 2 ≤
@@ -142,7 +143,8 @@ theorem isCoerciveCLM_cmp89SourceNeumannRegionalGaugePrecision
               Omega rho U spacing phi‖ ^ 2 + ‖Qprime phi‖ ^ 2) := hP phi
       _ ≤ CP * (inner ℝ phi (K phi) + ‖Qprime phi‖ ^ 2) := by
         apply mul_le_mul_of_nonneg_left _ hCP.le
-        rw [K, inner_cmp85BareMassPrecision, D,
+        simp only [K, D]
+        rw [inner_cmp85BareMassPrecision,
           inner_cmp89SourceNeumannRegionalLaplacian]
         gcongr
         exact le_add_of_nonneg_right
