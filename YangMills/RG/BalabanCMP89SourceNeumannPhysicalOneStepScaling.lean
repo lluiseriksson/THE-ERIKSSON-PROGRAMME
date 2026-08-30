@@ -59,17 +59,17 @@ theorem cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling
     field_simp
   calc
     (‖spacing⁻¹‖ * ‖(M : ℝ)⁻¹‖) ^ 2 *
-          (2 ^ 2 *
-            (spacing *
-              ((((2 * d * (M - 1) + M : ℕ) : ℝ) * etaFine +
-                (M : ℝ) * etaCoarse)) ^ 2) *
-          (d : ℝ) =
-        ‖(M : ℝ)⁻¹‖ ^ 2 *
-          (‖spacing⁻¹‖ ^ 2 * spacing ^ 2) *
-          (2 *
-            ((((2 * d * (M - 1) + M : ℕ) : ℝ) * etaFine) +
-              (M : ℝ) * etaCoarse)) ^ 2 *
-          (d : ℝ) := by ring
+        (2 ^ 2 *
+          (spacing *
+            (((2 * d * (M - 1) + M : ℕ) : ℝ) * etaFine +
+              (M : ℝ) * etaCoarse)) ^ 2) *
+        (d : ℝ) =
+      ‖(M : ℝ)⁻¹‖ ^ 2 *
+        (‖spacing⁻¹‖ ^ 2 * spacing ^ 2) *
+        (2 *
+          (((2 * d * (M - 1) + M : ℕ) : ℝ) * etaFine +
+            (M : ℝ) * etaCoarse)) ^ 2 *
+        (d : ℝ) := by ring
     _ = _ := by rw [hinv]; ring
 
 /-- Under the next-scale spacing window, the full Poincare-times-defect
