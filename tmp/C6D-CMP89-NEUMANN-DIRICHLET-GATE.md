@@ -80,6 +80,23 @@ Acceptance test for the no-go brick:
 - keep the conclusion at the exact level proved (operator/energy inequality,
   not a claim about every region).
 
+### Derivative-level prefix now prepared
+
+`BalabanCMP89NeumannDirichletBoundaryNoGo.lean` is a PRE-VALIDATION prefix
+to this acceptance test.  On a witnessed boundary-crossing bond it proves
+that the internal-bond Neumann derivative, after ambient extension, is zero,
+whereas the trivial-background zero-extension Dirichlet derivative is
+`spacing⁻¹ • phi(x)` and hence nonzero when the endpoint value and spacing
+are nonzero.  This is already enough to prohibit identifying the two
+derivatives.
+
+It is deliberately not yet the full no-go above: it does not prove that a
+single explicit constant regional field has zero Neumann *energy* and
+positive Dirichlet *energy*, nor does it compare the Laplacians or their
+Greens.  A future hot PASS of that prefix remains diagnostic evidence only;
+the four-item acceptance test stays open until the energy-level witness is
+sealed.
+
 ## Source-faithful repair (preferred)
 
 1. Define the rectangular active region used by CMP89/CMP96, with its side
@@ -127,6 +144,14 @@ Acceptance test for the no-go brick:
 
 Only after steps 1--9 may CMP89 Lemma 2.4 or Eq. (2.42) feed the physical
 regional certificate.
+
+A repository search at the 2026-08-30 checkpoint found no existing
+source-facing CMP89 rectangular active-region type: the current occurrences
+of `rectangle` concern unrelated rectangular linear maps or potentials.
+Consequently step 1 is a real construction task, not an adapter waiting to be
+discovered.  The construction must expose coordinate intervals and block
+units; an arbitrary equivalence onto `ActiveGaugeRegion.Site` is not an
+acceptable rectangle dictionary.
 
 ## Alternative repair (new analysis, not source transcription)
 
