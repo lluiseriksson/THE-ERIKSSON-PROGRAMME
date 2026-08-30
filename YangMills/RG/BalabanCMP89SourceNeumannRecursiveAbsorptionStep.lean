@@ -24,6 +24,7 @@ one-step statement.
 namespace YangMills.RG
 
 open YangMills
+open scoped Matrix.Norms.L2Operator
 
 noncomputable section
 
