@@ -68,4 +68,3 @@ explicit equality rather than silently setting the origin to zero.
   embedding.
 - The result does not construct CMP89 (2.42), claim uniformity in depth,
   attain window 15, move `20/41`, or instantiate `TermSource`.
-

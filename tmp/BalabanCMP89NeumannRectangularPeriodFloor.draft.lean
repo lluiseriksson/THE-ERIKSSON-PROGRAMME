@@ -28,4 +28,3 @@ theorem cmp89NeumannReflectionPeriodNat_ge_scale_of_side_floor_draft
   exact_mod_cast hperiodLower
 
 end YangMills.RG
-

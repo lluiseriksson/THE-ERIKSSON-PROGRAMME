@@ -149,4 +149,3 @@ theorem cmp89RectanglePhysicalOwner_mul_dist_le_l1_add_boundary_draft
 end
 
 end YangMills.RG
-
