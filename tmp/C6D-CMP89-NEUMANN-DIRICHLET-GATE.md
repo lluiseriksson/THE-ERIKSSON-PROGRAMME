@@ -19,6 +19,12 @@ carrier dictionary has been supplied.
 - CMP89 Eq. (2.42), printed p. 584, represents the rectangular-box Green by
   **positive multiple reflections** of the full-lattice propagator.  This is
   the image formula for the printed free/Neumann boundary problem.
+- On that page the rectangle is written literally as
+  `box = {x in xi Z^d : 0 <= x_mu <= M_mu}`, with `xi = L^(-j)`.  The first
+  reflected coordinates printed in (2.42) are `-x'_mu-xi` and
+  `2 M_mu-xi-x'_mu`.  Thus the source-facing rectangle must expose the scaled
+  integer lattice and the physical endpoint parameters `M_mu`; an arbitrary
+  finite-site carrier is not the printed object.
 - CMP96 Eq. (2.40) allows a local inverse with specified boundary conditions
   and names Neumann boundary conditions as the source example.  It does not
   identify a zero-extension Dirichlet compression with the CMP89 operator.
@@ -152,6 +158,13 @@ Consequently step 1 is a real construction task, not an adapter waiting to be
 discovered.  The construction must expose coordinate intervals and block
 units; an arbitrary equivalence onto `ActiveGaugeRegion.Site` is not an
 acceptable rectangle dictionary.
+
+The reflection period must not be frozen from memory.  The two printed
+one-coordinate maps above determine the lattice-index convention, but the
+inclusive-looking upper-bound typography and the `-xi` shift must first be
+reconciled explicitly (equivalently: specify which lattice sites are inside
+the last unit block).  Until that lemma exists, neither `2 M_mu/xi` nor
+`2 (M_mu/xi + 1)` may be installed silently as the translation period.
 
 ## Alternative repair (new analysis, not source transcription)
 
