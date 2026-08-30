@@ -15207,3 +15207,19 @@ the next producer must construct the internal-bond Neumann inverse and an
 explicit source-to-consumer dictionary.  No prefix of this gate moves
 `20/41`, attains window 15, or supplies the missing arbitrary-field value
 action in CMP99 (3.42).
+
+The first constructive response is present at PRE-VALIDATION in
+`BalabanCMP89SourceNeumannRegionalGaugePrecision`.  It fixes the literal
+three-term operator
+
+```text
+internal-bond Neumann Laplacian + mass^2 id + a Qprime^* Qprime
+```
+
+and constructs its Green internally from a named Neumann block-Poincare
+gate.  The resulting coercivity floor is `min 1 a / CP`, so it does not use
+the bare mass to hide the massless gauge problem.  This is still an algebraic
+layer: the physical retained `Q_j`, the counting/source-weight coefficient,
+the Neumann Poincare proof, rectangle dictionary and CMP89 (2.42)
+representation all remain open.  Both new files are NOT CHECKED; counters
+remain exactly `20/41`, `TermSource = 0`, and window 15 remains unattained.

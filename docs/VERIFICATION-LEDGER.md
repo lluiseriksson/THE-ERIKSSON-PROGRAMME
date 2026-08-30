@@ -42068,3 +42068,26 @@ no-go is stated only at the derivative boundary: it does not compare Green
 norms and does not construct CMP89 (2.42).  A cold PASS may retire exactly
 these four notices, but cannot produce the uniform regional value action,
 attain window 15, move `20/41`, or instantiate `TermSource`.
+
+## Addendum 981 (2026-08-30, **CMP89 three-term Neumann precision and canonical inverse PRE-VALIDATION; 20/41 unchanged**)
+
+The next two-file brick is present with visible PRE-VALIDATION notices.  It
+forms the internal-bond Neumann Laplacian, independent bare-mass square and
+one `Qprime.adjoint.comp Qprime` term as a single literal precision.  Its
+quadratic form keeps all three contributions separate, and the proposed
+Green is constructed canonically from that same precision rather than
+accepted as a free family.
+
+The sole analytic gate is the named
+`CMP89SourceNeumannRegionalPoincare`, quantified over the same internal-bond
+derivative and the same `Qprime`.  Coercivity is derived with constant
+`min 1 a / CP`, independent of the bare mass, so this layer cannot obtain
+fake scale uniformity by assuming positive physical mass.  `Qprime` and the
+coefficient `a` remain algebraic inputs: the future source-facing producer
+must install the retained physical `Q_j` and the exact
+source-weighted/counting-volume coefficient dictionary.
+
+Neither file has been checked by Lean.  This brick does not prove the
+Neumann Poincare gate, identify the half-open source rectangle, establish
+CMP89 (2.42), supply an arbitrary-field CMP99 (3.42) value action, attain
+window 15, move `20/41`, or instantiate `TermSource`.
