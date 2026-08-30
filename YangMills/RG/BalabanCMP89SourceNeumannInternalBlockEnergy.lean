@@ -47,11 +47,13 @@ noncomputable def cmp89SourceNeumannInternalBlockEnergy
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
     (y : ActiveGaugeRegion.Site
-      (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)) : ℝ :=
-  ∑ b : ActiveGaugeRegion.Bond Omega,
-    if CMP99PhysicalBondEndpointsIn (blockOf M N' y.1) b.1 then
-      ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi b‖ ^ 2
-    else 0
+      (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)) : ℝ := by
+  classical
+  exact
+    ∑ b : ActiveGaugeRegion.Bond Omega,
+      if CMP99PhysicalBondEndpointsIn (blockOf M N' y.1) b.1 then
+        ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi b‖ ^ 2
+      else 0
 
 theorem cmp89SourceNeumannInternalBlockEnergy_nonneg
     (Omega : ActiveGaugeRegion d (M * N'))
