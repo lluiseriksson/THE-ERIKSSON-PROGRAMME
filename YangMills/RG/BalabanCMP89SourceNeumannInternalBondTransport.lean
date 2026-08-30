@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalPrecision
 /-!
 # Exact internal-bond transport from the CMP89 Neumann derivative
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 This leaf isolates the first non-scalar fact needed by the physical Neumann
 joint-kernel producer.  Vanishing of the normalized regional derivative,
 together with nonzero lattice spacing, gives the literal covariant transport

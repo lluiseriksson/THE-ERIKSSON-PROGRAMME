@@ -15224,3 +15224,21 @@ precision, fixed-region existence reduction, source/counting dictionary and
 canonical reflection-entry gate are cold-sealed at source checkpoint
 `a1fe7d1514`; this still leaves counters exactly `20/41`, `TermSource = 0`,
 and window 15 unattained.
+
+The first three constructive leaves below the still-open recursive Neumann
+joint-kernel gate are also cold-sealed at source checkpoint `fd4ca187d4`.
+They turn zero regional Neumann derivative into exact transport on each
+internal bond, compose that transport along a retained oriented path, and
+prove the literal one-scale normalized-average/synthesis range identity.
+The fresh Colab checkout restored no project `.lake/build`; all focal/audit
+stages exited zero and all six declaration readouts lie in
+`{propext, Classical.choice, Quot.sound}`.  The locally verified archive
+SHA-256 is
+`D9AFF02BAC5576C4B4C93621AC26E0396C9D4D77E39EC2EDC20019DA41975712`.
+
+This is a kernel/range leaf seal, not the recursive joint-kernel producer.
+The next source-facing step must preserve the exact straight parallel part
+while keeping the `Ubar` correction visible and then prove a quantitative
+Neumann recurrence/absorption.  No exact propagation through
+`nextBackground` is inferred.  The live counters remain exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.

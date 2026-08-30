@@ -42147,3 +42147,37 @@ reflection certificate.  It does **not** prove the joint-kernel gate,
 uniformity of `CP`, the rectangle/full-lattice dictionaries or CMP89 (2.42).
 It therefore does not attain window 15, move `20/41`, or instantiate
 `TermSource`.
+
+## Addendum 983 (2026-08-30, **CMP89 Neumann kernel/range leaves cold-sealed; 20/41 unchanged**)
+
+Source checkpoint `fd4ca187d4e943c446177ec26d920f6740a87dab`, driven by
+runner commit `8953e2941c96011abf3237bbe856c1a52f604d2e` (runner
+SHA-256
+`44F98982B28F66C81195AAFDCE4ECA95A64F4C5AE616CBB4DB57FF172A7F40A5`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`.  The queue sealed, in order:
+
+- exact internal-bond transport from the vanishing regional Neumann
+  derivative (`907.320 s` focal, `6.217 s` audit);
+- exact transport along any retained oriented path (`176.491 s` focal,
+  `5.934 s` audit);
+- the literal one-scale normalized average and synthesis/range identity
+  (`10.018 s` focal, `6.698 s` audit).
+
+All six declaration readouts lie in the sanctioned axiom set
+`{propext, Classical.choice, Quot.sound}`.  The downloaded archive SHA-256
+is
+`D9AFF02BAC5576C4B4C93621AC26E0396C9D4D77E39EC2EDC20019DA41975712`;
+its evidence JSON SHA-256 is
+`BFE6DDF235F01FD481E549B75A6C3EB7DE17743EE33B154F897D20EFAAAE580E`.
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-kernel-range-cold-fd4ca187-20260830/`,
+and the fail-closed verifier rehashes the archive, JSON, 18 ordered stage
+records, six source blobs and the exact runner blob.  Exactly these six
+PRE-VALIDATION notices are retired.
+
+This seal is deliberately one-scale.  It does not prove the recursive
+Neumann joint-kernel gate through `nextBackground`, absorb the explicit
+`Ubar` remainder, establish a depth-uniform Neumann Poincare constant or
+construct CMP89 (2.42).  It therefore does not attain window 15, move
+`20/41`, or instantiate `TermSource`.

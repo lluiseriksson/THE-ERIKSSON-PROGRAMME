@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTower
 /-!
 # Exact one-scale range identity for the CMP89 Neumann kernel
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 A field in the kernel of the normalized regional Neumann derivative is
 parallel along every block-contained source contour.  Consequently the
 literal `M^{-d}` transported average is its value at the block basepoint,

@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99SourceRetainedCarrierEndpointGeometry
 /-!
 # Exact path transport from the CMP89 Neumann derivative
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 This leaf promotes the internal-bond equality to a literal Wilson-line
 transport along any oriented path whose edges stay inside the regional site
 carrier.  It does not assume global connectivity, identify a retained
