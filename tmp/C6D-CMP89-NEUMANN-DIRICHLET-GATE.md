@@ -92,7 +92,11 @@ Acceptance test for the no-go brick:
    box, proving summability of the reflected image lattice and keeping its
    geometric-series constant and the distance comparison explicit.  No
    finite reflection multiplicity may be substituted for that series.  This
-   is the producer of a regional value bound.
+   is the producer of a regional value bound.  Reuse the already cold-sealed
+   `BalabanCMP89SignedLatticeL1ExponentialSum`: it evaluates the full signed
+   `Int^d` exponential sum with the exact product constant.  The remaining
+   work is the injection/multiplicity and distance dictionary from reflection
+   words to that signed lattice, not a new summability theorem.
 7. Derive the three action bounds and the common Eq. (3.42) certificate from
    that one value bound.
 8. Supply an exact carrier dictionary from the source rectangles/cubes to the
