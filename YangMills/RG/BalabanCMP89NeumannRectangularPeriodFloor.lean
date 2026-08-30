@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannCenteredRectangularRepresentative
 /-!
 # CMP89 rectangular reflection period floor
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized
-in a fresh checkout, and no result in this module is cold-sealed.
-
 The physical side floor is kept distinct from mere side positivity.  No
 common-period replacement is introduced.
 -/

@@ -41893,3 +41893,43 @@ new directory without restored project `.lake/build`.  Until that cold gate
 passes and its archive is locally verified, all four PRE-VALIDATION notices
 remain.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 976 (2026-08-30, **CMP89 physical rectangle period/owner geometry cold-sealed; uniform physical owner bound hot-green; 20/41 unchanged**)
+
+Exact source checkpoint
+`1b9979c1371c68b6aaa9722afaa1314c41adfa49` passed in a fresh Colab Pro+
+CPU/high-RAM directory without restoration of project `.lake/build`.  Runner
+checkpoint `f773c8cd67b3161ae4ddda393834a3ed5a5932e5` verified Lean
+`4.29.0-rc6`, Lake `5.0.0`, pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` and all five exact source blobs.
+The reflection-period focal compiled `8562/8562` jobs with exit zero in
+`1316.813` seconds and audited in `6.118` seconds.  The physical owner
+geometry compiled `8661/8661` jobs with exit zero in `394.266` seconds and
+audited in `6.567` seconds.  All six exact readouts are contained in
+`{propext, Classical.choice, Quot.sound}` with no forbidden axiom token.
+
+The evidence JSON, internal manifest and downloaded archive SHA-256 values
+are respectively
+`8F30E9263C3CC82912B85809512EE6DC7F94E7524653A048513F0F97A6E67E6F`,
+`29E39E4EBCC004752C9BBAE0177C478C68B6A91B65EB791C192E1F8AD0B311FB`
+and
+`6AB36EA5A11D6120544204B2E70A4D1680998872C6002B84E167D5B3B477AF08`.
+The local fail-closed verifier emitted
+`CMP89_PHYSICAL_OWNER_GEOMETRY_EVIDENCE_OK`; all 15 manifest entries rehashed
+with zero mismatches.  The selective seal retires exactly the four
+PRE-VALIDATION notices in the period-floor and owner-geometry modules and
+their audits.
+
+The sealed dictionary constructs the literal reflection-period floor, the
+canonical half-open rectangle embedding and the CMP99 owner metric, with the
+exact boundary `2*(L^(depth+1)-1)` visible.  It introduces neither a free
+owner map nor a rectangle-volume factor.  A retained-checkout diagnostic then
+compiled the next physical uniform-owner theorem `8663/8663` jobs after one
+`Nat.cast_pow` normalization and its exact audit used only the allowed trio.
+That diagnostic proves the boundary payment is at most `exp(2*rho)` and keeps
+owner rate `rho`, but is not cold seal authority.
+
+The CMP89 (2.42) representation certificate remains a named analytic input;
+the final physical pair uniform in depth, window 15, rows 23--24 and a
+`TermSource` inhabitant remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

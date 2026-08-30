@@ -15132,3 +15132,23 @@ CMP99 owner bridge (`8661/8661`, five exact audit readouts).  All six readouts
 use exactly the allowed axiom trio.  This is not seal authority: its four
 marks remain until the prepared fresh-directory Colab gate passes and its
 durable evidence is locally verified.  No counter moves.
+
+### CMP89 physical rectangle/owner geometry (cold-sealed; uniform owner endpoint hot-green)
+
+Source `1b9979c1371c68b6aaa9722afaa1314c41adfa49` passed a fresh Colab
+CPU/high-RAM gate with no restored project build.  The period floor compiled
+`8562/8562` jobs and the canonical rectangle-to-CMP99-owner geometry compiled
+`8661/8661`; their exact one plus five declaration audits use only
+`{propext, Classical.choice, Quot.sound}`.  Ledger Addendum 976 records the
+timings and locally verified evidence hashes.
+
+The sealed source-facing bridge constructs the owner map internally and pays
+the exact fine/owner boundary `2*(L^(depth+1)-1)`.  On the retained checkout,
+the next theorem is hot-green (`8663/8663`, exact one-declaration audit): it
+turns the fine rate `rho/L^(depth+1)` into owner rate `rho` and bounds the
+boundary payment by the explicit depth-free factor `exp(2*rho)`.  That theorem
+remains PRE-VALIDATION until its own fresh gate passes.
+
+Neither endpoint constructs the CMP89 (2.42) representation certificate.
+The final physical uniform pair, window 15 and rows 23--24 remain open; live
+counters stay exactly `20/41`, `TermSource = 0`.

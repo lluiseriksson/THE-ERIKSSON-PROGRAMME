@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
 /-!
 # CMP89 rectangular points in the physical CMP99 owner geometry
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized
-in a fresh checkout, and no result in this module is cold-sealed.
-
 The source rectangle starts at the origin in the coordinates used by the
 multiple-reflection certificate.  The embedding into the actual finite fine
 carrier and the CMP99 `blockSite` owner are constructed internally.  There is
