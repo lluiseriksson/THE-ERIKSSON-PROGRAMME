@@ -181,12 +181,20 @@ theorem tsum_cmp89NeumannRectangularBranchImageWeight_le
         cmp89SignedLatticeL1ExponentialWeight delta
           (cmp89NeumannCenteredRectangularRepresentative m hm
             (cmp89NeumannReflectionBaseResidue x n branch)) := by
+      have hcenter : ∀ mu,
+          2 * ((cmp89NeumannCenteredRectangularRepresentative m hm
+            (cmp89NeumannReflectionBaseResidue x n branch) mu).natAbs : ℝ) ≤
+            (cmp89NeumannReflectionPeriodNat m mu : ℝ) := by
+        intro mu
+        have h := cmp89NeumannCenteredRectangular_two_natAbs_le
+          m hm (cmp89NeumannReflectionBaseResidue x n branch) mu
+        rw [← cmp89NeumannReflectionPeriodNat_cast hm mu] at h
+        exact_mod_cast h
       exact tsum_cmp89CenteredRectangularL1ResidueWeight_le
         hdelta (cmp89NeumannReflectionPeriodNat_pos hm)
         (cmp89NeumannCenteredRectangularRepresentative m hm
           (cmp89NeumannReflectionBaseResidue x n branch))
-        (cmp89NeumannCenteredRectangular_two_natAbs_le m hm
-          (cmp89NeumannReflectionBaseResidue x n branch))
+        hcenter
     _ ≤ (∏ mu,
           2 / (1 - Real.exp
             (-delta * (cmp89NeumannReflectionPeriodNat m mu : ℝ)))) *
