@@ -42055,18 +42055,31 @@ four PRE-VALIDATION notices remain until an independent cold seal.  It fixes
 the next dictionary boundary by ruling out the convenient but false
 identification of the two regional Green conventions.
 
-## Addendum 980 (2026-08-30, **CMP89 Neumann/Dirichlet boundary no-go prepared for cold seal; 20/41 unchanged**)
+## Addendum 980 (2026-08-30, **CMP89 Neumann/Dirichlet boundary no-go cold-sealed; 20/41 unchanged**)
 
-The two exact audits are now imported by `YangMillsCore`, while all four
-PRE-VALIDATION notices remain.  The prepared cold queue compiles the
-source-faithful internal-bond Neumann precision, its exact energy and
-self-adjointness laws, the boundary-crossing no-go, both audits, and the root
-aggregator from one fresh checkout without restored project `.lake/build`.
+Source checkpoint `1721fb8b8655e4e6f9bb15fc0e0440750ff013d9`, driven by
+runner commit `8e3e8a6fef9a812546e6550fa432507697fe78a6`, passed in one
+fresh Colab Pro+ checkout without restored project `.lake/build`.  The
+source-faithful internal-bond Neumann precision focal passed in `849.965 s`,
+its two-declaration audit in `6.809 s`, the boundary-crossing no-go focal in
+`10.173 s`, its three-declaration audit in `9.467 s`, and the same-checkout
+`YangMillsCore` root in `6704.031 s` (`11185/11185` jobs).
 
-The hot diagnostic is not promoted by this checkpoint.  In particular, the
-no-go is stated only at the derivative boundary: it does not compare Green
-norms and does not construct CMP89 (2.42).  A cold PASS may retire exactly
-these four notices, but cannot produce the uniform regional value action,
+The five declaration gates use only the sanctioned axiom set.  The compact
+evidence payload SHA-256 is
+`A7CAEEAD64CE2E13137341FCEE3D153D3C78BBFD4109537AB12EEE8F6B23AC34`,
+the downloaded evidence archive SHA-256 is
+`BAB070FCFC2A6C5AE4E5ACAC72E4E2DE68F1E6D21C4F84AE30D586BE0926198C`,
+and the executed notebook SHA-256 is
+`15716AF9AC6FECDDF0463C9AB9233542F6AA1F3E2588607AAF1AE14EA8031434`.
+The fail-closed local verifier pinned the five exact stage-output hashes and
+emitted `CMP89_NEUMANN_DIRICHLET_BOUNDARY_NOGO_EVIDENCE_OK`; the durable
+package is preserved under
+`validation-evidence/cmp89-neumann-dirichlet-boundary-nogo-cold-1721fb8b-20260830-verified-v4/`.
+
+Exactly these four PRE-VALIDATION notices are retired.  The no-go remains
+deliberately limited to the derivative boundary: it does not compare Green
+norms, construct CMP89 (2.42), produce the uniform regional value action,
 attain window 15, move `20/41`, or instantiate `TermSource`.
 
 ## Addendum 981 (2026-08-30, **CMP89 three-term Neumann precision and canonical inverse PRE-VALIDATION; 20/41 unchanged**)

@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecision
 /-!
 # CMP89 boundary-faithful normalized regional Neumann precision
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 CMP89 defines its rectangular local Green with Neumann/free boundary
 conditions: the covariant derivative is read only on bonds whose two
 endpoints lie in the region.  This differs from the existing CMP99 regional

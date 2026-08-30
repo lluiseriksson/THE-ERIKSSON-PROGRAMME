@@ -15193,20 +15193,19 @@ remaining value bound or its regional inverse dictionary.  It is therefore
 infrastructure below window 15 and does not move `20/41`, instantiate a
 `TermSource`, or attain window 15.
 
-The retained checkout also confirmed, diagnostically, the source Neumann
-regional precision and a boundary no-go: an internal-bond Neumann derivative
-cannot be identified with the existing zero-extension Dirichlet derivative
-on a boundary-crossing bond.  This is not cold seal authority; those four
-PRE-VALIDATION notices remain.  The regional value producer must therefore
-construct the CMP89 Neumann Green and a faithful operator dictionary rather
-than reuse the canonical CMP99 Dirichlet Green by definition.
+Fresh-checkout cold evidence now seals the source Neumann regional precision
+and the boundary no-go: an internal-bond Neumann derivative cannot be
+identified with the existing zero-extension Dirichlet derivative on a
+boundary-crossing bond.  Source checkpoint `1721fb8b8655e4e6f9bb15fc0e0440750ff013d9`
+passed both focal/audit pairs and the same-checkout `YangMillsCore` root
+(`11185/11185` jobs); all five declaration gates remain within the sanctioned
+axiom set.  The four PRE-VALIDATION notices are retired.
 
-The four-module no-go unit is now root-imported at PRE-VALIDATION for a
-single fresh-checkout cold seal.  Its endpoint remains deliberately negative:
-the next producer must construct the internal-bond Neumann inverse and an
-explicit source-to-consumer dictionary.  No prefix of this gate moves
-`20/41`, attains window 15, or supplies the missing arbitrary-field value
-action in CMP99 (3.42).
+The endpoint remains deliberately negative.  The regional value producer
+must construct the CMP89 Neumann Green and a faithful operator dictionary
+rather than reuse the canonical CMP99 Dirichlet Green by definition.  This
+seal does not move `20/41`, attain window 15, or supply the missing
+arbitrary-field value action in CMP99 (3.42).
 
 The first constructive response is present at PRE-VALIDATION in
 `BalabanCMP89SourceNeumannRegionalGaugePrecision`.  It fixes the literal

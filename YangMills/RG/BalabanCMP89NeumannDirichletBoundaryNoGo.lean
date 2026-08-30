@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalPrecision
 /-!
 # CMP89 Neumann versus zero-extension Dirichlet: boundary no-go
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 CMP89's regional Neumann derivative retains only bonds whose two endpoints
 belong to the source rectangle.  The existing retained CMP99 derivative first
 extends a site field by zero and then evaluates the ambient derivative on all
