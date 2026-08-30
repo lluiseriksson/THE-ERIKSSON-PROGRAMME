@@ -15,8 +15,8 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-one-scale-range-hot-v1"
-SOURCE_SHA = "5d298e8b0c407da06d1319df9fe804489005d0d3"
+RUNNER_REV = "cmp89-neumann-one-scale-range-hot-v2"
+SOURCE_SHA = "5d492a36de21542f55e04711b2901a3040532461"
 BASE_SHA = "1851c69a"
 ROOT = Path("/content/hrpoly-cmp89-neumann-source-chain-cold")
 SOURCE_BLOBS = {
@@ -29,7 +29,7 @@ SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannPathTransportAudit.lean":
         "342404b048690f783be814ee49d823236938d41b6a3f875687c1d70767444670",
     "YangMills/RG/BalabanCMP89SourceNeumannOneScaleRange.lean":
-        "3ce75e06dae15b451a9cd7fbd894beac0295feacb354f4cb551019db294547d5",
+        "eec35e8f0fe2a273b36ca5db49fd428aaba40ecafdfe487282493a78547a9fc3",
     "YangMills/RG/BalabanCMP89SourceNeumannOneScaleRangeAudit.lean":
         "5672fb425b1693f45d93c303fad125cfbf491e8d788a0999e5e44af9661bee94",
 }
