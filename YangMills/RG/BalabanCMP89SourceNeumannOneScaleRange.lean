@@ -102,7 +102,8 @@ theorem cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_weightedAdjoint_average
         (cmp99SourceTransportedBlockAverageCLM Omega
           (cmp99SourceWeightedPhysicalTransport rho U) phi) =
       phi := by
-  ext x
+  apply PiLp.ext
+  intro x
   rw [cmp99SourceTransportedBlockWeightedAdjointCLM,
     cmp99TransportedBlockSynthesisCLM_apply, one_smul]
   let y : ActiveGaugeRegion.Site
