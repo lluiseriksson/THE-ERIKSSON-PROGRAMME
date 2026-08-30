@@ -17,8 +17,8 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-poincare-existence-hot-v1"
-SOURCE_SHA = "0e9ffd41a4fc48ba6117ab58c1fc0c9d440f1ec2"
+RUNNER_REV = "cmp89-neumann-poincare-existence-hot-v2"
+SOURCE_SHA = "8cf3bfe7d1e83524d1a395ceaba56a7f388c90c6"
 ROOT = Path("/content/hrpoly-cmp89-neumann-dirichlet-boundary-nogo")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannRegionalPoincareExistence.lean":
@@ -146,6 +146,6 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except BaseException as error:
+    except Exception as error:
         print(f"HOT_DIAGNOSTIC_STATUS=FAIL ERROR={error!r}", flush=True)
         raise

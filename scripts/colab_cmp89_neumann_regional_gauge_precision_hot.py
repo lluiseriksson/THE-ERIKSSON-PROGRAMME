@@ -17,7 +17,7 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-regional-gauge-precision-hot-v2"
+RUNNER_REV = "cmp89-neumann-regional-gauge-precision-hot-v3"
 SOURCE_SHA = "8cf3bfe7d1e83524d1a395ceaba56a7f388c90c6"
 ROOT = Path("/content/hrpoly-cmp89-neumann-dirichlet-boundary-nogo")
 SOURCE_BLOBS = {
@@ -155,6 +155,6 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except BaseException as error:
+    except Exception as error:
         print(f"HOT_DIAGNOSTIC_STATUS=FAIL ERROR={error!r}", flush=True)
         raise
