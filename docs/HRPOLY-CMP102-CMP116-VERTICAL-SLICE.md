@@ -14994,3 +14994,24 @@ physical full-lattice Green insertion with one common `B0, delta0`, CMP89
 (2.42), regional/owner transport and window-15 attainment remain open.
 Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
 but unattained.
+
+### CMP89 rectangular Neumann residue route, step 4 (cold-sealed; 20/41 unchanged)
+
+Exact source `ea23b78023446c38b00f0387b475103d13b14c3e` passed an independent
+fresh-Colab gate for the varying-period product estimate: `3285/3285` focal
+jobs in `45` seconds and a `5`-second audit.  Its four declarations use
+exactly `[propext, Classical.choice, Quot.sound]`.  The archive and internal
+manifest SHA-256 values are respectively
+`1701A0AB016431FE35AED5B061B7F35B111109F15982547C6F8060E47FE2CE76`
+and
+`546D74A74F619CFFD21C0E6949FE1252FCA5E0A5B505403EAFC83B9021FD2789`;
+local rehashing found zero mismatches.  The sole worktree status line was the
+generated untracked `scripts/__pycache__/`, with no toolchain or manifest
+drift.
+
+This closes the exact coordinatewise product
+`product_mu 2 / (1-exp(-delta*P_mu))` without a rectangle-cardinality factor,
+ball count or common scalar period.  The next boundary is the literal finite
+`2^4` reflection-branch sum.  Physical Green insertion, CMP89 (2.42), uniform
+regional `B0, delta0` and window-15 attainment remain open.  The counters
+remain exactly `20/41`, `TermSource = 0`.

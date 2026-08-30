@@ -5,9 +5,10 @@ and this file is not seal authority.
 
 ## Boundary
 
-This is step 6 of `CMP89-NEUMANN-RECTANGULAR-RESIDUE-DESIGN.md`.  It starts
-only after the exact affine fibre, varying-period residue product and literal
-`2^d` branch sum are sealed.  It ends before the CMP89 (2.42) representation
+This is step 6 of `CMP89-NEUMANN-RECTANGULAR-RESIDUE-DESIGN.md`.  The exact
+affine fibre and varying-period residue product are cold-sealed; the literal
+`2^d` branch sum remains open.  Physical Green insertion starts only after
+that branch sum is sealed, and ends before the CMP89 (2.42) representation
 certificate is consumed.
 
 ## One common decay object

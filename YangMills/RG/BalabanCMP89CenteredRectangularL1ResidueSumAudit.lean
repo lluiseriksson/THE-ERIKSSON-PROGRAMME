@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP89CenteredRectangularL1ResidueSum
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the readouts have not yet been verified by the Lean compiler.
-
 Axiom audit for the varying-period rectangular residue estimate.
 -/
 

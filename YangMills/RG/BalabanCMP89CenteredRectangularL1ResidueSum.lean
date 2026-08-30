@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP89CenteredPeriodicL1ResidueSum
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 Varying-period product estimate for the rectangular CMP89 image fibre.  Each
 coordinate retains its literal period; no rectangle-cardinality factor and no
 replacement by a common scalar period are admitted.

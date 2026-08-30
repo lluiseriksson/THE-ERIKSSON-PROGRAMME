@@ -41639,3 +41639,35 @@ cardinality factor.  The varying-period product sum, literal `2^4` branch
 sum, physical Green insertion, CMP89 (2.42), uniform regional `B0, delta0`
 and window 15 remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 969 (2026-08-30, **CMP89 varying-period rectangular product cold-sealed; step 4 complete; 20/41 unchanged**)
+
+Exact source checkpoint
+`ea23b78023446c38b00f0387b475103d13b14c3e` ran in a fresh Colab Pro+
+CPU/high-RAM checkout without restoring `.lake/build`.  Lean
+`4.29.0-rc6`, Lake `5.0.0` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` were recorded before the focal.
+The varying-period rectangular product target compiled `3285/3285` jobs in
+`45` seconds; its audit exited zero in `5` seconds.
+
+The audit exposes four declarations.  Every readout is exactly
+`[propext, Classical.choice, Quot.sound]`; no `sorryAx`, `ofReduceBool` or
+`Lean.ofReduceBool` occurs.  The only post-run worktree status line was the
+untracked generated directory `scripts/__pycache__/`; `lean-toolchain` and
+`lake-manifest.json` had no diff.  The downloaded archive and internal
+manifest SHA-256 values are respectively
+`1701A0AB016431FE35AED5B061B7F35B111109F15982547C6F8060E47FE2CE76`
+and
+`546D74A74F619CFFD21C0E6949FE1252FCA5E0A5B505403EAFC83B9021FD2789`.
+All seven internal manifest entries were rehashed locally with zero
+mismatches.
+
+The selective seal retires exactly the two PRE-VALIDATION notices in
+`BalabanCMP89CenteredRectangularL1ResidueSum` and its audit, and imports the
+audit into `YangMillsCore`.  It establishes step 4 of the finite rectangular
+Neumann route while retaining the literal coordinatewise product
+`product_mu 2 / (1 - exp (-delta * P_mu))`; no rectangle cardinality, ball
+count or common-period replacement is introduced.  The literal `2^4` branch
+sum, physical Green insertion, CMP89 (2.42), uniform regional `B0, delta0`
+and window 15 remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.

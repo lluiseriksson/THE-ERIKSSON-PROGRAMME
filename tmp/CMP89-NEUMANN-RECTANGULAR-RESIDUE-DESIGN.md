@@ -1,12 +1,14 @@
 # CMP89 rectangular Neumann residues: finite continuation after the hot gate
 
-Status: steps 1--3 are cold-sealed.  The reflection dictionaries and canonical
+Status: steps 1--4 are cold-sealed.  The reflection dictionaries and canonical
 representative were sealed from source
 `e7f38ed24b249ad08a5a829545abed0a05ff379c`; the exact rectangular affine
 fibre was then sealed independently from source
-`fd34e0e7228474cc738162ac332d1bdd7028f5e9`.  Step 4, the varying-period
-product residue sum, is the next promotion boundary.  No later draft counts
-as compiler verified.
+`fd34e0e7228474cc738162ac332d1bdd7028f5e9`; the varying-period product
+residue sum was cold-sealed from
+`ea23b78023446c38b00f0387b475103d13b14c3e`.  Step 5, the literal finite
+branch sum, is the next promotion boundary.  No later draft counts as
+compiler verified.
 
 ## Source-fixed conventions
 
@@ -37,7 +39,7 @@ as compiler verified.
    on `Fin d -> Int`; no injectivity hypothesis or finite-cardinality factor is
    admitted.
 
-4. **Product residue sum with varying periods.** Generalize the sealed
+4. **Product residue sum with varying periods (cold-sealed).** Generalize the sealed
    one-dimensional geometric estimate coordinatewise. The endpoint must keep
    the exact product
 
@@ -48,7 +50,7 @@ as compiler verified.
    multiplying the retained direct weight. Replacing it by a ball count or by
    the number of sites in the rectangle is rejected.
 
-5. **Reflection branch sum.** Sum the `2^d` Boolean branches literally. The
+5. **Reflection branch sum (open).** Sum the `2^d` Boolean branches literally. The
    only branch multiplicity is the visible factor `2^d`; it is independent of
    every `m_mu` and of the rectangle volume.
 
@@ -85,15 +87,18 @@ must be exposed before any reindexing.  The vector carry equivalence is then
 the coordinatewise translation `k |-> carry + k`.  It is not a new
 injectivity hypothesis.
 
-The finite-product infrastructure required by step 4 is also already sealed:
-`summable_pi_int_prod_nonneg` and `tsum_pi_int_prod_nonneg` factor a
-nonnegative family over `Fin d -> Int`.  The missing wrapper is only the
-varying-period specialization of the existing one-dimensional centered
-periodic estimate, keeping the factor
+The finite-product infrastructure required by step 4 and its varying-period
+specialization are now cold-sealed.  `summable_pi_int_prod_nonneg` and
+`tsum_pi_int_prod_nonneg` factor a nonnegative family over `Fin d -> Int`,
+while `BalabanCMP89CenteredRectangularL1ResidueSum` retains the exact factor
 
 ```text
 product_mu 2 / (1 - exp (-delta * P_mu)).
 ```
+
+The next unsealed boundary is the literal finite reflection-branch sum.  The
+already promoted branch-distance module remains PRE-VALIDATION until its own
+focal, audit and cold evidence pass.
 
 One source-specific bridge remains open and must be named in the next brick:
 the magnitude of the canonical representative of the reflected base residue
