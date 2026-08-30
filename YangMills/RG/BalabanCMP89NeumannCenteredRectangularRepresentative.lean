@@ -49,6 +49,7 @@ theorem cmp89NeumannReflectionPeriodNat_cast {d : ℕ} {m : Fin d → ℤ}
       cmp89NeumannReflectionPeriod m mu := by
   rw [cmp89NeumannReflectionPeriodNat, Int.natCast_natAbs]
   exact abs_of_pos (by
+    have hmu := hm mu
     rw [cmp89NeumannReflectionPeriod]
     omega)
 
@@ -132,7 +133,10 @@ theorem cmp89NeumannCenteredRectangular_reflected_natAbs_eq
   have hu0 : 0 ≤ u := by omega
   have huP : u < (P : ℤ) := by rw [hperiod]; omega
   have hutoNat : (u.toNat : ℤ) = u := Int.toNat_of_nonneg hu0
-  have hutoNat_lt : u.toNat < P := by exact_mod_cast huP
+  have hutoNat_lt_int : (u.toNat : ℤ) < (P : ℤ) := by
+    rw [hutoNat]
+    exact huP
+  have hutoNat_lt : u.toNat < P := by exact_mod_cast hutoNat_lt_int
   letI : NeZero P := ⟨Nat.ne_of_gt (by exact_mod_cast (show 0 < (P : ℤ) by
     rw [hperiod]
     omega))⟩
@@ -140,7 +144,9 @@ theorem cmp89NeumannCenteredRectangular_reflected_natAbs_eq
     cmp99CenteredPeriodicEndpointRepresentative_natAbs_eq_valMinAbs P u
   rw [ZMod.valMinAbs_natAbs_eq_min] at hmag
   have hval : (((u : ℤ) : ZMod P)).val = u.toNat := by
-    rw [← hutoNat]
+    have hcast : ((u : ℤ) : ZMod P) = (u.toNat : ZMod P) := by
+      rw [← hutoNat]
+    rw [hcast]
     exact ZMod.val_natCast_of_lt hutoNat_lt
   rw [hval] at hmag
   have hsubcast : ((P - u.toNat : ℕ) : ℤ) = 2 * m - u := by
