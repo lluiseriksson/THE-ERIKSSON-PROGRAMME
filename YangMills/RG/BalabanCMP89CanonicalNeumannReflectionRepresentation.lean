@@ -20,7 +20,7 @@ namespace YangMills.RG
 
 noncomputable section
 
-variable {d N : ℕ} [NeZero N]
+variable {d N : ℕ} [NeZero d] [NeZero N]
 variable {g : Type*}
 variable [NormedAddCommGroup g] [InnerProductSpace ℝ g]
 variable [FiniteDimensional ℝ g]
