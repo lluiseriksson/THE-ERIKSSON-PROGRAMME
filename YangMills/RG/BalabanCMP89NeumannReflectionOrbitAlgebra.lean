@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannReflectionBranchSum
 /-!
 # CMP89 (2.42): algebra of the one-coordinate reflection orbit
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 After division by the printed lattice spacing `xi`, the two reflected
 coordinates in CMP89 (2.42) are
 

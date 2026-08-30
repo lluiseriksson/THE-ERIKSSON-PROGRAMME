@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SignedLatticeL1ExponentialSum
 /-!
 # CMP89 Neumann reflection-branch counting budget
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 CMP89 (2.42) expands the rectangular free/Neumann Green into positive
 reflections.  In `d` coordinates there are `2^d` parity branches, while each
 branch still carries an infinite signed translation lattice.  This module

@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99CenteredPeriodicEndpointDictionary
 /-!
 # CMP89 (2.42): canonical centered rectangular representatives
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 This module specializes the sealed one-period endpoint dictionary to the
 coordinatewise Neumann periods `2 * m_mu`.  The representative and its carry
 are constructed internally.  In particular, no caller-selected family of

@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannReflectionOrbitAlgebra
 /-!
 # CMP89 (2.42): lattice-spacing dictionary for the first reflected images
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 CMP89 printed page 584 writes the geometric rectangle as
 
 `{x in xi Z^d : 0 <= x_mu <= M_mu}`

@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP89NeumannReflectionResidueDictionary
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 Axiom audit for the rectangular reflection dictionary.
 -/
 

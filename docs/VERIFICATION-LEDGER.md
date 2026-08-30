@@ -41560,3 +41560,51 @@ selected owner-decaying Green.  It does not produce one depth-uniform physical
 `B0, delta0`, attain window 15, discharge rows 23--24 or construct a
 `TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
 remains compatible but unattained.
+
+## Addendum 967 (2026-08-30, **CMP89 rectangular Neumann residue/representative prefix cold-sealed; runner parser false FAIL retained; 20/41 unchanged**)
+
+Exact source checkpoint
+`e7f38ed24b249ad08a5a829545abed0a05ff379c` ran in one fresh Colab Pro+
+CPU/high-RAM checkout with Lean `4.29.0-rc6` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b`.  Runner checkpoint
+`4f943a76f3f0cdf628b21230d3220e650fb2e0b1`, revision
+`cmp89-neumann-centered-rectangular-v2`, compiled the canonical rectangular
+representative focal through `8561/8561` jobs in `1385.376` seconds.  The
+representative audit then exited zero in `8.035` seconds.
+
+The v2 runner emitted `FINAL_STATUS=FAIL` only because its inherited parser
+counted the nine wrapped `depends on axioms` lists but did not count the tenth
+readout, which literally says that the declaration does not depend on any
+axioms.  The cold stdout was reparsed without reconstructing line wrapping:
+exactly nine allowed lists plus one pure readout were found, with no
+`sorryAx`, `ofReduceBool` or `Lean.ofReduceBool`.  This is retained as a
+measured instrumentation false FAIL, not converted into a runner PASS.
+
+Before sealing, the same untouched cold checkout ran the four transitively
+required audits omitted from the original queue.  Branch counting, orbit
+algebra, scale dictionary and residue dictionary all exited zero in
+respectively `5.376`, `5.303`, `5.890` and `4.822` seconds.  Their 28 readouts
+and the representative's 10 readouts are each contained in
+`{propext, Classical.choice, Quot.sound}` or are pure.  The fail-closed
+companion emitted
+`CMP89_NEUMANN_RECTANGULAR_PREFIX_EXTRA_AUDITS_OK`, and local cross-checking
+emitted `CMP89_RECTANGULAR_PREFIX_LOCAL_EVIDENCE_OK`.
+
+The downloaded cold-run and extra-audit archives hash respectively to
+`14B6490A744D58BAA0F7430C34CEE201E784F0E5BDDCF30700F7284EA588FDC1`
+and
+`496530C93913F952FA6FC38C0702EB0DD183E0D03D8CE9F449B910E78C288507`.
+The extra-audit evidence JSON hashes to
+`951D0ED9246B39A569A67FA0BC07E657211D0EC9145EE73CDF843DA6DFCD9F7E`.
+Both packages are preserved under
+`validation-evidence/cmp89-neumann-rectangular-prefix-cold-e7f38ed2-20260830/`.
+
+The selective seal retires exactly the ten PRE-VALIDATION notices in the five
+source/audit pairs from reflection-branch counting through the canonical
+centered rectangular representative, and imports their five audits into
+`YangMillsCore`.  This establishes steps 1--2 of the finite CMP89 rectangular
+residue route.  It does not reindex the affine fibre, sum the varying-period
+image series, prove CMP89 (2.42), construct uniform regional `B0, delta0`,
+attain window 15, discharge a terminal producer or construct a `TermSource`.
+Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

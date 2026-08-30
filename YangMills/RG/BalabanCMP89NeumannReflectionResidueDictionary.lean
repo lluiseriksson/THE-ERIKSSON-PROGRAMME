@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannReflectionScaleDictionary
 /-!
 # CMP89 (2.42): rectangular reflection residues
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 For a half-open source rectangle `0 <= x_mu,n_mu < m_mu`, the two branches of
 the multiple-reflection expansion have exact displacements
 

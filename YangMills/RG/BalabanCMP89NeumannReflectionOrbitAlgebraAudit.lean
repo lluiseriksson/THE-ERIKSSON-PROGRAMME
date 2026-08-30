@@ -1,8 +1,6 @@
 import YangMills.RG.BalabanCMP89NeumannReflectionOrbitAlgebra
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this audit module is compiler-verified.
 -/
 
 namespace YangMills.RG
