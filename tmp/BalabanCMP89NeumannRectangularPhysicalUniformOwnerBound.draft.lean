@@ -70,7 +70,7 @@ theorem norm_cmp89Eq248PhysicalRegionalGreen_le_physicalOwner_uniform_draft
         (cmp99Eq389SourceLocalizationOwner L K Q depth
           (cmp89SourceNeumannRectanglePointToFinBox_draft hfit n)) : ℝ)
       (2 * (L ^ (depth + 1) - 1) : ℕ)
-      hperiod hmetric
+      hperiod (by simpa [Nat.cast_pow] using hmetric)
   have hboundaryNat : 2 * (ell - 1) ≤ 2 * ell := by omega
   have hboundaryReal :
       ((2 * (ell - 1) : ℕ) : ℝ) ≤ 2 * (ell : ℝ) := by
