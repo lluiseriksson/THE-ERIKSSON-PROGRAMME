@@ -15060,3 +15060,31 @@ retained direct `l1` weight remain visible, with no rectangle-volume factor.
 Physical Green insertion, CMP89 (2.42), uniform regional `B0, delta0` and
 window-15 attainment remain open.  Counters stay exactly `20/41`,
 `TermSource = 0`.
+
+### CMP89 rectangular Neumann physical Green insertion (cold-sealed; 20/41 unchanged)
+
+Exact source `e4834fe7fda3a272391323030c3e8e2f7c13a0c8` was built from a fresh
+Colab Pro+ CPU/high-RAM checkout without restoration of project
+`.lake/build`.  The initial physical focal reached
+`Build completed successfully (8611 jobs)` but an evidence-path readback
+incident prevented its exit record from becoming seal authority.  A
+fail-closed same-checkout supplement reverified HEAD, Mathlib and all five
+source blobs, then recorded exit zero for the `3287/3287` representation
+focal, its five-declaration audit, the `8611/8611` physical focal and its
+seven-declaration audit.  All twelve exact readouts are contained in
+`{propext, Classical.choice, Quot.sound}`.  Ledger Addendum 972 records the
+incident, timings and evidence hashes.
+
+The sealed endpoint constructs the common decay certificate internally for
+the literal normalized CMP89 (2.48) Fourier Green, with
+`B0 = cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft a rho` and
+`delta0 = rho / L^j`.  It proves branchwise and finite-branch absolute
+summability before the source-order series and retains exactly the `2^d`
+branch factor, coordinatewise varying-period product and direct signed-`l1`
+weight.  No rectangle cardinality or independently chosen regional constant
+is introduced.
+
+The next boundary is a regional value-bound consumer of the named CMP89
+(2.42) representation certificate.  The certificate itself, fine-to-owner
+transport, uniform-in-depth `B0, delta0`, window 15 and `TermSource` remain
+open.  Counters stay exactly `20/41`, `TermSource = 0`.

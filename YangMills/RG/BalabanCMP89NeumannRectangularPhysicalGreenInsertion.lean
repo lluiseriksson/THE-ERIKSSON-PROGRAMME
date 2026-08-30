@@ -6,9 +6,6 @@ import YangMills.RG.BalabanCMP85SourceMassParameterUniformComplexWindow
 /-!
 # CMP89 (2.42): full-lattice Green insertion into the Neumann image series
 
-PRE-VALIDATION: draft source is present, its `.olean` has not yet been
-materialized, and no result in this module is compiler-verified.
-
 This module inserts one explicit full-lattice Green into the already sealed
 rectangular reflection-image sum.  A single pair `(B0, delta0)` controls every
 integer image and every reflection branch.  Absolute summability is proved
@@ -203,4 +200,3 @@ theorem norm_cmp89Eq248PhysicalNeumannReflectionSeries_le_draft
 end
 
 end YangMills.RG
-

@@ -1,15 +1,17 @@
 # CMP89 rectangular Neumann residues: finite continuation after the hot gate
 
-Status: steps 1--5 are cold-sealed.  The reflection dictionaries and canonical
+Status: steps 1--6 are cold-sealed.  The reflection dictionaries and canonical
 representative were sealed from source
 `e7f38ed24b249ad08a5a829545abed0a05ff379c`; the exact rectangular affine
 fibre was then sealed independently from source
 `fd34e0e7228474cc738162ac332d1bdd7028f5e9`; the varying-period product
 residue sum was cold-sealed from
 `ea23b78023446c38b00f0387b475103d13b14c3e`; the literal finite branch sum was
-cold-sealed from `d741c5b8e4aa2b57b56621e03e175db840233b72`.  Step 6, physical
-Green insertion, is the next promotion boundary.  No later draft counts as
-compiler verified.
+cold-sealed from `d741c5b8e4aa2b57b56621e03e175db840233b72`; physical Green insertion
+was cold-sealed from exact source
+`e4834fe7fda3a272391323030c3e8e2f7c13a0c8`.  Step 7, the regional
+representation consumer, is the next promotion boundary.  No later draft
+counts as compiler verified.
 
 ## Source-fixed conventions
 
@@ -56,7 +58,7 @@ compiler verified.
    only branch multiplicity is the visible factor `2^d`; it is independent of
    every `m_mu` and of the rectangle volume.
 
-6. **Full-lattice Green insertion.** Consume the already constructed physical
+6. **Full-lattice Green insertion (cold-sealed).** Consume the already constructed physical
    full-lattice Green bound termwise. The common `B0` and `delta0` must be the
    same objects for every image and branch. No independently chosen family of
    image bounds is accepted.
@@ -101,8 +103,14 @@ product_mu 2 / (1 - exp (-delta * P_mu)).
 The literal finite reflection-branch sum is cold-sealed from exact source
 `d741c5b8e4aa2b57b56621e03e175db840233b72`.  Its source-order endpoint proves
 summability before exchanging the integer `tsum` with the finite parity sum,
-and the only multiplicity is the visible `2^d`.  The next unsealed boundary is
-physical full-lattice Green insertion.
+and the only multiplicity is the visible `2^d`.
+
+The physical full-lattice Green insertion is cold-sealed from exact source
+`e4834fe7fda3a272391323030c3e8e2f7c13a0c8`.  It constructs one common
+decay certificate for the literal normalized CMP89 (2.48) Fourier Green,
+proves branch and finite-sum summability, and retains the exact `2^d`,
+varying-period product and direct `l1` weight.  The next unsealed boundary is
+the regional value-bound consumer of the named CMP89 (2.42) certificate.
 
 One source-specific bridge remains open and must be named in the next brick:
 the magnitude of the canonical representative of the reflected base residue

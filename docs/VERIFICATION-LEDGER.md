@@ -41731,3 +41731,58 @@ geometric product and direct `l1` weight are unchanged.  Physical Green
 insertion, CMP89 (2.42), uniform regional `B0, delta0` and window 15 remain
 open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 972 (2026-08-30, **CMP89 physical full-lattice Green insertion cold-sealed by a same-checkout fail-closed supplement; 20/41 unchanged**)
+
+Exact source checkpoint
+`e4834fe7fda3a272391323030c3e8e2f7c13a0c8` ran in a fresh Colab Pro+
+CPU/high-RAM checkout without restoration of project `.lake/build`.  Lean
+`4.29.0-rc6`, Lake `5.0.0`, pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` and all five source blob hashes
+were verified before the queue.  The representation focal compiled
+`3287/3287` jobs in `41.977` seconds and its five-declaration audit exited
+zero in `5.368` seconds.  The physical focal log then reached
+`Build completed successfully (8611 jobs)` after the recorded `1500`-second
+heartbeat.
+
+The browser temporarily lost its Colab attachment while that terminal child
+continued on the same VM.  A mistakenly attempted cell launcher stopped
+before Lean at `FRESH_PATH_ALREADY_EXISTS`; its FAIL evidence was preserved.
+Renaming that evidence directory while the original child still held its
+focal log open caused the original wrapper, after the successful build, to
+fail while rereading the canonical path.  This is retained as an
+instrumentation incident: the first physical focal exit record is not used as
+seal authority.
+
+A fail-closed supplement from runner commit
+`11974318a37526da57582783ae9190bb6f143867` then stayed in that same fresh
+checkout and restored no build state.  It reverified HEAD, Mathlib and every
+source blob, then reran the complete focal/audit boundary.  Representation
+compiled `3287/3287` jobs with exit zero in `4.010` seconds and audited in
+`5.518` seconds; physical Green insertion compiled `8611/8611` jobs with exit
+zero in `23.973` seconds and audited in `14.921` seconds.  The exact five plus
+seven declaration readouts are all contained in
+`{propext, Classical.choice, Quot.sound}`, with no forbidden axiom token.
+
+The supplement evidence JSON, manifest and archive SHA-256 values are
+respectively
+`BC835F557FDB87DF89801AA80148DFE00C019766590E8CE3F869DCA16E9C8938`,
+`60908DFDC600ACCC07A6F8DE51727AE07C7446B60F8F1CD88AD348A0D83FD4A8`
+and
+`0224D34C9F6E3BF619B6A2C3E3D3262EFC4D49B2A444321DFF17B1D1C912290`.
+The composite package, which also retains the full initial transcript and
+both instrumentation FAIL packages, has SHA-256
+`CD3CD74497456FA6B64A27A2FE439814E41B8D5EE129124B929DEAD1CB07F3B5`.
+It was downloaded and rehashed locally; the supplement manifest has zero
+mismatches across all entries.
+
+The selective seal retires exactly the four PRE-VALIDATION notices in the
+representation interface/audit and physical Green insertion/audit.  It fixes
+one literal normalized CMP89 (2.48) full-lattice Green and one common
+`B0, delta0` for every rectangular image, proves absolute summability before
+the source-order `tsum`, and retains the exact `2^d`, coordinatewise
+geometric product and direct `l1` weight without a rectangle-volume factor.
+It does not construct the CMP89 (2.42) representation certificate, transport
+fine distance to the owner metric, produce a pair uniform in depth, attain
+window 15 or instantiate `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`.

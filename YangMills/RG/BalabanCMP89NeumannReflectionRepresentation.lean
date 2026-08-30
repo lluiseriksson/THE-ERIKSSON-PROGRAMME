@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannReflectionScaleDictionary
 /-!
 # CMP89 (2.42): explicit interface for the multiple-reflection representation
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 The printed ellipsis in CMP89 (2.42) is represented by one integer translation
 index and one reflection parity per coordinate.  This module defines that
 series and makes its two actual analytic obligations visible: summability and

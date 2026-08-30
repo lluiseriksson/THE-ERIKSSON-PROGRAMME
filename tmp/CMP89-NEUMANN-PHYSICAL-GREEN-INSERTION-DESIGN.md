@@ -1,15 +1,17 @@
 # CMP89 rectangular Neumann series: physical Green insertion design
 
-Status: design only.  No Lean declaration in this note is compiler-verified
-and this file is not seal authority.
+Status: cold-sealed from exact source
+`e4834fe7fda3a272391323030c3e8e2f7c13a0c8`; ledger Addendum 972 is seal
+authority.  This note remains a design boundary rather than independent
+evidence.
 
 ## Boundary
 
 This is step 6 of `CMP89-NEUMANN-RECTANGULAR-RESIDUE-DESIGN.md`.  The exact
 affine fibre, varying-period residue product, branch-distance retention and
-literal `2^d` branch sum are cold-sealed.  Physical Green insertion is now the
-active boundary and ends before the CMP89 (2.42) representation certificate
-is consumed.
+literal `2^d` branch sum are cold-sealed.  Physical Green insertion is also
+cold-sealed and ends before the CMP89 (2.42) representation certificate is
+consumed.
 
 ## One common decay object
 
@@ -59,6 +61,11 @@ visible until the later fine-to-owner scale dictionary is applied.
    ball count or independently chosen image constant is admitted.
 4. Only after these outputs exist may the CMP89 (2.42) representation
    certificate replace the regional kernel by the series.
+
+All three outputs above and the literal physical specialization are now
+cold-sealed.  The next boundary is the regional value-bound consumer: it must
+rewrite by the named CMP89 (2.42) certificate and may not construct or hide
+that source equality.
 
 ## Acceptance gates
 
