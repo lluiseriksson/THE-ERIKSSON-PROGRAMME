@@ -9,13 +9,13 @@ import subprocess
 import time
 from pathlib import Path
 
-RUNNER_REV = "cmp89-neumann-physical-one-step-scaling-hot-v2"
-SOURCE_SHA = "ce8bc262452f33906a8f34112810cfb15637820a"
-BASE_SHA = "f48c7eeb7af46c708e94301a2529d632f584c7d5"
+RUNNER_REV = "cmp89-neumann-physical-one-step-scaling-hot-v3"
+SOURCE_SHA = "3982806d4e542957e70ff4418d2bf43601555c0f"
+BASE_SHA = "3e842e91587bffb6c0cf5daef26fd94400a84bdd"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannPhysicalOneStepScaling.lean":
-        "f3d9e397a126bd305d9cbabdb24b3dcd2f150ccfa7324d677773f131c838f205",
+        "814c7b1e5258196fe76dd48381f2962f52d2958b8b3d97e4d297df58bedd446b",
     "YangMills/RG/BalabanCMP89SourceNeumannPhysicalOneStepScalingAudit.lean":
         "167a36ddafefcfcdd4791e17874eef013179b751d37e0bf8a415c07608e53042",
 }
