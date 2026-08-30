@@ -9,6 +9,7 @@ is hot diagnostic evidence only and cannot retire PRE-VALIDATION.
 from __future__ import annotations
 
 import hashlib
+from pathlib import Path
 import urllib.request
 
 
@@ -63,8 +64,24 @@ RUNNERS = [
     ),
 ]
 
+HOT_ROOT = Path("/content/hrpoly-c6d-green-owner-prefix")
+LEGACY_CHILD_ROOT = HOT_ROOT / "repo"
+
+
+def ensure_child_root() -> None:
+    """Expose the cold checkout at the path pinned by the child runners."""
+    if not HOT_ROOT.is_dir():
+        raise RuntimeError(f"HOT_REPO_MISSING={HOT_ROOT}")
+    if not LEGACY_CHILD_ROOT.exists():
+        LEGACY_CHILD_ROOT.symlink_to(HOT_ROOT, target_is_directory=True)
+    if LEGACY_CHILD_ROOT.resolve() != HOT_ROOT.resolve():
+        raise RuntimeError(
+            f"HOT_REPO_ALIAS_MISMATCH={LEGACY_CHILD_ROOT.resolve()}"
+        )
+
 
 def main() -> None:
+    ensure_child_root()
     for index, (name, commit, path, expected) in enumerate(RUNNERS, start=1):
         url = (
             "https://raw.githubusercontent.com/lluiseriksson/"
