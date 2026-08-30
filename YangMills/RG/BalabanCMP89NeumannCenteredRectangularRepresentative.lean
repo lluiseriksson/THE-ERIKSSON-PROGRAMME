@@ -38,6 +38,7 @@ def cmp89NeumannReflectionPeriodNat {d : ℕ} (m : Fin d → ℤ)
 theorem cmp89NeumannReflectionPeriodNat_pos {d : ℕ} {m : Fin d → ℤ}
     (hm : ∀ mu, 0 < m mu) (mu : Fin d) :
     0 < cmp89NeumannReflectionPeriodNat m mu := by
+  have hmu := hm mu
   rw [cmp89NeumannReflectionPeriodNat, cmp89NeumannReflectionPeriod]
   exact Int.natAbs_pos.mpr (by omega)
 
@@ -144,8 +145,12 @@ theorem cmp89NeumannCenteredRectangular_reflected_natAbs_eq
     cmp99CenteredPeriodicEndpointRepresentative_natAbs_eq_valMinAbs P u
   rw [ZMod.valMinAbs_natAbs_eq_min] at hmag
   have hval : (((u : ℤ) : ZMod P)).val = u.toNat := by
-    have hcast : ((u : ℤ) : ZMod P) = (u.toNat : ZMod P) :=
+    have hcastInt : ((u : ℤ) : ZMod P) = ((u.toNat : ℤ) : ZMod P) :=
       (congrArg (fun z : ℤ => (z : ZMod P)) hutoNat).symm
+    have hcastNat : (((u.toNat : ℕ) : ℤ) : ZMod P) =
+        (u.toNat : ZMod P) := by norm_num
+    have hcast : ((u : ℤ) : ZMod P) = (u.toNat : ZMod P) :=
+      hcastInt.trans hcastNat
     rw [hcast]
     exact ZMod.val_natCast_of_lt hutoNat_lt
   rw [hval] at hmag
