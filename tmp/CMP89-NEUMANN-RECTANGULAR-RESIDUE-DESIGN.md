@@ -100,6 +100,14 @@ two-endpoint quantity
 lemma targets that quantity, not the canonical representative, so silently
 identifying the two is rejected.
 
+The fixed Mathlib already exposes the intended proof route as
+`ZMod.valMinAbs_natAbs_eq_min`.  The half-open carrier gives
+`1 <= x_mu+n_mu+1 < 2*m_mu`, so the `ZMod (2*m_mu)` value is the literal first
+endpoint distance; the complementary term in that lemma is the literal
+second endpoint distance.  This calculation must still appear as a theorem
+in the source-specific brick, including the even-seam case; the design note
+does not discharge it.
+
 ## Acceptance gates
 
 - `side_pos` constructs a nonempty carrier; empty rectangles cannot discharge
