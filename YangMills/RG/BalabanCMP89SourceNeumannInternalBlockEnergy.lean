@@ -84,6 +84,7 @@ theorem norm_covariantEdgeDefect_sq_le_neumannInternalBlockEnergy
     {e : ConcreteEdge d (M * N')} (he : e ∈ Gamma.edges) :
     ‖covariantEdgeDefect rho U (extendZeroZeroCLM Omega phi) e‖ ^ 2 ≤
       cmp89SourceNeumannInternalBlockEnergy Omega rho U phi y := by
+  classical
   have hendsBlock :
       CMP99PhysicalBondEndpointsIn (blockOf M N' y.1)
         (physicalBondOfEdge e) :=
