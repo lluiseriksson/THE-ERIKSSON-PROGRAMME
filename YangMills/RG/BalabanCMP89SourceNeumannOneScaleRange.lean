@@ -56,8 +56,16 @@ theorem cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_blockAverage
           (phi (cmp99ActiveFineSiteOfBlock Omega y x)) =
         phi base := by
     intro x
-    have hstay := cmp99BlockContainedContourSystem_staysIn
+    have hstayBlock := cmp99BlockContainedContourSystem_staysIn
       (G := SUN Nc) y.1 x.1 x.2
+    have hblock : blockOf M N' y.1 ⊆ Omega.sites :=
+      (mem_cmp99ActiveCoarseRegion_sites_iff
+        (M := M) (N' := N') Omega y.1).mp y.2
+    have hstay :
+        (cmp99BlockContainedContourSystem (G := SUN Nc) y.1 x.1).StaysIn
+          Omega.sites := by
+      intro e he
+      exact ⟨hblock (hstayBlock e he).1, hblock (hstayBlock e he).2⟩
     have hxOmega : x.1 ∈ Omega.sites :=
       (mem_cmp99ActiveCoarseRegion_sites_iff
         (M := M) (N' := N') Omega y.1).mp y.2 x.2
@@ -107,8 +115,16 @@ theorem cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_weightedAdjoint_average
     Omega rho U hspacing phi hD y]
   have hxBlock : x.1 ∈ blockOf M N' y.1 :=
     (mem_blockOf M N' y.1 x.1).2 rfl
-  have hstay := cmp99BlockContainedContourSystem_staysIn
+  have hstayBlock := cmp99BlockContainedContourSystem_staysIn
     (G := SUN Nc) y.1 x.1 hxBlock
+  have hblock : blockOf M N' y.1 ⊆ Omega.sites :=
+    (mem_cmp99ActiveCoarseRegion_sites_iff
+      (M := M) (N' := N') Omega y.1).mp y.2
+  have hstay :
+      (cmp99BlockContainedContourSystem (G := SUN Nc) y.1 x.1).StaysIn
+        Omega.sites := by
+    intro e he
+    exact ⟨hblock (hstayBlock e he).1, hblock (hstayBlock e he).2⟩
   let base : ActiveGaugeRegion.Site Omega :=
     ⟨blockBasepoint M N' y.1,
       (mem_cmp99ActiveCoarseRegion_sites_iff
