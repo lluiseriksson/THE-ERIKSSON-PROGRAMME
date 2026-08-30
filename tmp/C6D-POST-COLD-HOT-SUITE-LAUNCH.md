@@ -7,12 +7,13 @@ object and SHA-256, runs them in dependency order, and stops on first error.
 Hot evidence cannot retire PRE-VALIDATION.
 
 ```text
-suite runner object: 34d8379ae2d68aaba06adee82feaf0bbb245048b
-suite runner SHA-256: cf88febe4edcd99ebdfc942bb4175294946fa6c2b8d31c28211386fe01051239
+suite runner object: 9d160015fe9fbf3fd4a60d763dcec27187ac7743
+suite runner SHA-256: adc5a819f3a04d69dc9c9b1e035131db0fa48e4723ad15ec26e62d13fdec0200
 success sentinel: HOT_C6D_POST_COLD_DIAGNOSTIC_SUITE_PASS
 ```
 
-This supersedes suite objects `030bd9e062be9b56d891c7990a9f94cda42cbd40`,
+This supersedes suite objects `34d8379ae2d68aaba06adee82feaf0bbb245048b`,
+`030bd9e062be9b56d891c7990a9f94cda42cbd40`,
 `47f7c82da0427b3b098b7b1b90ded151538e6908`,
 `7ff3c5e47e96adc2bfd6ac3ceff92efc0eb4beee`,
 `415a19f4d42336c6bd1310081abe82a2ad41a937`,
@@ -32,10 +33,10 @@ import hashlib, urllib.request
 url = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "34d8379ae2d68aaba06adee82feaf0bbb245048b/"
+    "9d160015fe9fbf3fd4a60d763dcec27187ac7743/"
     "tmp/run_c6d_post_cold_hot_suite.py"
 )
-expected = "cf88febe4edcd99ebdfc942bb4175294946fa6c2b8d31c28211386fe01051239"
+expected = "adc5a819f3a04d69dc9c9b1e035131db0fa48e4723ad15ec26e62d13fdec0200"
 with urllib.request.urlopen(url) as response:
     payload = response.read()
 actual = hashlib.sha256(payload).hexdigest()
