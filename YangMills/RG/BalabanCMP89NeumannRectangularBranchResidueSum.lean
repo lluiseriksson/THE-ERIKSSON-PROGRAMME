@@ -182,14 +182,14 @@ theorem tsum_cmp89NeumannRectangularBranchImageWeight_le
           (cmp89NeumannCenteredRectangularRepresentative m hm
             (cmp89NeumannReflectionBaseResidue x n branch)) := by
       have hcenter : ∀ mu,
-          2 * ((cmp89NeumannCenteredRectangularRepresentative m hm
-            (cmp89NeumannReflectionBaseResidue x n branch) mu).natAbs : ℝ) ≤
-            (cmp89NeumannReflectionPeriodNat m mu : ℝ) := by
+          (2 : ℤ) * (cmp89NeumannCenteredRectangularRepresentative m hm
+            (cmp89NeumannReflectionBaseResidue x n branch) mu).natAbs ≤
+            (cmp89NeumannReflectionPeriodNat m mu : ℤ) := by
         intro mu
         have h := cmp89NeumannCenteredRectangular_two_natAbs_le
           m hm (cmp89NeumannReflectionBaseResidue x n branch) mu
         rw [← cmp89NeumannReflectionPeriodNat_cast hm mu] at h
-        exact_mod_cast h
+        exact h
       exact tsum_cmp89CenteredRectangularL1ResidueWeight_le
         hdelta (cmp89NeumannReflectionPeriodNat_pos hm)
         (cmp89NeumannCenteredRectangularRepresentative m hm
