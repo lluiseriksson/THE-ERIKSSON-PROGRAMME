@@ -183,7 +183,10 @@ The following modules were added without claiming compiler verification:
   from the source-faithful half-open block carrier and proves their inclusion;
 - `BalabanCMP89NeumannReflectionRepresentation` defines the infinite
   `Int^d x Bool^d` image series and packages precisely two obligations:
-  summability and equality with the explicitly parameterized regional Green.
+  summability and equality with the explicitly parameterized regional Green;
+  positive side lengths are a third, geometric field and construct an
+  explicit zero-site witness, so the two analytic obligations cannot be
+  discharged over an empty rectangle.
 
 The endpoint convention is therefore no longer open at this layer.  The
 remaining source gate is analytic: prove summability and the exact regional

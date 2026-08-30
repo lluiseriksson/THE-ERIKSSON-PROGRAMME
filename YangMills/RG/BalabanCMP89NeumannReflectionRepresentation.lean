@@ -46,6 +46,7 @@ structure CMP89NeumannReflectionRepresentationCertificate
     (regionalGreen : CMP89SourceNeumannIntegerRectanglePoint m →
       CMP89SourceNeumannIntegerRectanglePoint m → E)
     (fullGreen : (Fin d → ℤ) → (Fin d → ℤ) → E) where
+  side_pos : ∀ mu, 0 < m mu
   summable : ∀ x n : CMP89SourceNeumannIntegerRectanglePoint m,
     Summable (fun k : Fin d → ℤ =>
       ∑ branch : CMP89NeumannReflectionBranch d,
@@ -53,6 +54,18 @@ structure CMP89NeumannReflectionRepresentationCertificate
   representation : ∀ x n : CMP89SourceNeumannIntegerRectanglePoint m,
     regionalGreen x n =
       cmp89NeumannReflectionSeries fullGreen m x.1 n.1
+
+/-- The representation certificate cannot be discharged on an empty
+rectangle: its positive side lengths construct the zero site internally. -/
+theorem CMP89NeumannReflectionRepresentationCertificate.carrier_nonempty
+    {m : Fin d → ℤ}
+    {regionalGreen : CMP89SourceNeumannIntegerRectanglePoint m →
+      CMP89SourceNeumannIntegerRectanglePoint m → E}
+    {fullGreen : (Fin d → ℤ) → (Fin d → ℤ) → E}
+    (C : CMP89NeumannReflectionRepresentationCertificate
+      m regionalGreen fullGreen) :
+    Nonempty (CMP89SourceNeumannIntegerRectanglePoint m) :=
+  ⟨⟨0, cmp89SourceNeumannBlockIntegerRectangle_zero_mem C.side_pos⟩⟩
 
 /-- Projection of the exact printed representation with both kernels visible
 in the theorem signature. -/

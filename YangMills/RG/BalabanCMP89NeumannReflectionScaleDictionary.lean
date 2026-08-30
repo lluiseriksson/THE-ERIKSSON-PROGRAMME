@@ -51,6 +51,14 @@ theorem mem_cmp89SourceNeumannBlockIntegerRectangle_iff {d : ℕ}
       ∀ mu, 0 ≤ n mu ∧ n mu < m mu := by
   rfl
 
+/-- Positive side lengths make the half-open source carrier genuinely
+inhabited; the zero lattice site is an explicit witness. -/
+theorem cmp89SourceNeumannBlockIntegerRectangle_zero_mem
+    {d : ℕ} {m : Fin d → ℤ} (hm : ∀ mu, 0 < m mu) :
+    (0 : Fin d → ℤ) ∈ cmp89SourceNeumannBlockIntegerRectangle m := by
+  intro mu
+  exact ⟨le_rfl, hm mu⟩
+
 /-- Every actual block site lies in the printed inclusive envelope; the
 converse would add the spurious upper-endpoint site. -/
 theorem cmp89SourceNeumannBlockIntegerRectangle_subset_printedInclusive
