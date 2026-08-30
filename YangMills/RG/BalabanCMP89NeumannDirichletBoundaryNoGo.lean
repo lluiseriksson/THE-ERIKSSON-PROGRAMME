@@ -79,6 +79,12 @@ theorem cmp89SourceNeumannRegionalCovariantD0CLM_ne_dirichlet_of_boundary
         (trivialPhysicalGaugeBackground d N Nc) spacing phi := by
   intro hEq
   have hAt := congrArg (fun A => A (x, i)) hEq
+  change
+    extendZeroOneCLM Omega
+        (cmp89SourceNeumannRegionalCovariantD0CLM Omega rho
+          (trivialPhysicalGaugeBackground d N Nc) spacing phi) (x, i) =
+      cmp99ActiveRegionSourceCovariantD0CLM Omega rho
+        (trivialPhysicalGaugeBackground d N Nc) spacing phi (x, i) at hAt
   rw [cmp89SourceNeumannRegionalCovariantD0CLM_boundary_eq_zero
         Omega rho (trivialPhysicalGaugeBackground d N Nc) spacing phi
         x i hx hy,
