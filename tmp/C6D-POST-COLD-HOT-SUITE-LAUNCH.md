@@ -7,15 +7,18 @@ object and SHA-256, runs them in dependency order, and stops on first error.
 Hot evidence cannot retire PRE-VALIDATION.
 
 ```text
-suite runner object: f698d7a67de8ec402c2a66992689e1f62c740a0d
-suite runner SHA-256: 3f68d161979bdca2a8c741205b03788a6949875e5e42f578037819f356483eb8
+suite runner object: 37640a20c256a267eb625d235a9f5ce4af6e2362
+suite runner SHA-256: 2804df15e82e8d037cb18ba2ea1ceaa47550a7ddebebbf2ae57aeb44a54820ee
 success sentinel: HOT_C6D_POST_COLD_DIAGNOSTIC_SUITE_PASS
 ```
 
 This supersedes suite objects `01fc252a068b76aae94e7d7beb45cc089b5eb69d`,
 `a273c601e197622ecdf5f660839e03a51dda5dcb`, and
-`18bb269ce3dcfb5d3e14919791ebef1040b29190`. The current suite is the first
-one whose representation contract is both half-open and nonvacuous.
+`18bb269ce3dcfb5d3e14919791ebef1040b29190`, and
+`f698d7a67de8ec402c2a66992689e1f62c740a0d`. The current suite is the first
+one whose representation contract is both half-open and nonvacuous and whose
+axiom parser accepts both pure and permitted-axiom declarations without
+depending on line wrapping.
 
 ```python
 import hashlib, urllib.request
@@ -23,10 +26,10 @@ import hashlib, urllib.request
 url = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "f698d7a67de8ec402c2a66992689e1f62c740a0d/"
+    "37640a20c256a267eb625d235a9f5ce4af6e2362/"
     "tmp/run_c6d_post_cold_hot_suite.py"
 )
-expected = "3f68d161979bdca2a8c741205b03788a6949875e5e42f578037819f356483eb8"
+expected = "2804df15e82e8d037cb18ba2ea1ceaa47550a7ddebebbf2ae57aeb44a54820ee"
 with urllib.request.urlopen(url) as response:
     payload = response.read()
 actual = hashlib.sha256(payload).hexdigest()
