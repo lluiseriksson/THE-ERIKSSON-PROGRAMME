@@ -42028,3 +42028,15 @@ arbitrary-field action.  Until a fresh Colab Pro+ gate passes and its exact
 audit is independently preserved, no PRE-VALIDATION mark is retired.  The
 unit cannot by itself attain window 15, move `20/41`, or instantiate
 `TermSource`.
+
+The source checkpoint is
+`d8db241ce99ef37ceecc14afefc3a19b88ed5f20`.  The self-contained fresh-gate
+runner
+`scripts/colab_cmp99_eq342_uniform_certificate_from_value_bound_validation.py`
+has SHA-256
+`19F0500157DF61C73D0CF2EC7DB59C70A21784562CCE6A3FF1B19A2F0808101E`
+and pins the two Lean blobs plus `YangMillsCore.lean` by their exact Git-object
+bytes.  It requires a new Colab Pro+ CPU/high-RAM directory, exact toolchain
+and Mathlib pins, stop-on-first-error focal/audit stages and the one exact
+axiom declaration.  Passing this runner is still required before the two
+notices can be retired.
