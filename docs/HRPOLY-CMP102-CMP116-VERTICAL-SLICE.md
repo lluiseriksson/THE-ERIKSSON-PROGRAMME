@@ -14974,3 +14974,23 @@ This closes the finite fixed-depth action/certificate prefix.  It does not
 produce a physical `B0, delta0` pair uniform in depth, attain window 15,
 discharge rows 23--24 or construct a `TermSource`.  Counters remain exactly
 `20/41`, `TermSource = 0`; window 15 remains compatible but unattained.
+
+### CMP89 rectangular Neumann residue route, steps 1--3 (cold-sealed; 20/41 unchanged)
+
+The source-fixed branch/orbit/scale/residue dictionaries and canonical
+centered rectangular representative are sealed from exact source
+`e7f38ed24b249ad08a5a829545abed0a05ff379c`.  Exact source
+`fd34e0e7228474cc738162ac332d1bdd7028f5e9` then passed the independent cold
+affine-fibre gate: `8562/8562` jobs in `1451` seconds plus a `7`-second audit
+of four declarations, all using exactly the allowed axiom trio.
+
+The resulting equivalence reindexes every integer image fibre by its
+internally constructed coordinatewise carry followed by negation.  It
+introduces neither a free injectivity hypothesis nor a finite-cardinality
+factor.  The next exact boundary is the varying-period product estimate,
+which must retain
+`product_mu 2/(1-exp(-delta*(2*m_mu)))`.  The literal `2^4` branch sum,
+physical full-lattice Green insertion with one common `B0, delta0`, CMP89
+(2.42), regional/owner transport and window-15 attainment remain open.
+Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.

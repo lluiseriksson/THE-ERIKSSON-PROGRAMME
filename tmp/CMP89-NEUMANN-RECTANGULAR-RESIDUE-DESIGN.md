@@ -1,9 +1,12 @@
 # CMP89 rectangular Neumann residues: finite continuation after the hot gate
 
-Status: design only. The exact displacement and distance dictionary is
-PRE-VALIDATION at source object
-`dd27cd6081b0e276d3059a7fdcfb36fb0f634178`. No module below may be promoted
-until that dictionary and audit pass in the retained Colab runtime.
+Status: steps 1--3 are cold-sealed.  The reflection dictionaries and canonical
+representative were sealed from source
+`e7f38ed24b249ad08a5a829545abed0a05ff379c`; the exact rectangular affine
+fibre was then sealed independently from source
+`fd34e0e7228474cc738162ac332d1bdd7028f5e9`.  Step 4, the varying-period
+product residue sum, is the next promotion boundary.  No later draft counts
+as compiler verified.
 
 ## Source-fixed conventions
 

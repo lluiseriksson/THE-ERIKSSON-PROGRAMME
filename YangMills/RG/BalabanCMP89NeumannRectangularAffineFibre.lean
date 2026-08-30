@@ -1,9 +1,6 @@
 import YangMills.RG.BalabanCMP89NeumannCenteredRectangularRepresentative
 
 /-!
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 Exact rectangular affine-fibre reindexing for CMP89 (2.42).
 
 The equivalence is the internally constructed carry followed by negation.  No

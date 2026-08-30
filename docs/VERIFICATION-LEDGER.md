@@ -41608,3 +41608,34 @@ image series, prove CMP89 (2.42), construct uniform regional `B0, delta0`,
 attain window 15, discharge a terminal producer or construct a `TermSource`.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 968 (2026-08-30, **CMP89 rectangular affine fibre cold-sealed; steps 1--3 complete; 20/41 unchanged**)
+
+Exact source checkpoint
+`fd34e0e7228474cc738162ac332d1bdd7028f5e9` ran in a fresh Colab Pro+
+CPU/high-RAM checkout without restoring `.lake/build`.  Lean
+`4.29.0-rc6`, Lake `5.0.0` and pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` were recorded before the
+focal.  The exact affine-fibre target compiled `8562/8562` jobs in `1451`
+seconds; its audit exited zero in `7` seconds.
+
+The audit exposes four declarations.  Every readout is exactly
+`[propext, Classical.choice, Quot.sound]`; no `sorryAx`, `ofReduceBool` or
+`Lean.ofReduceBool` occurs.  The cold checkout was clean.  The downloaded
+archive and internal manifest SHA-256 values are respectively
+`0E01D9FCFF1C0520D94721504F2EF25E596E8AAE14E534FFAC1FEE3D597CA0B5`
+and
+`07422E0F5FF4B434BC7D208176AA9129042E005DB76843CE70494709FF2139FF`.
+Local re-verification emitted `CMP89_AFFINE_LOCAL_EVIDENCE_OK`; the package is
+preserved under
+`validation-evidence/cmp89-neumann-rectangular-affine-fibre-cold-fd34e0e7-20260830/`.
+
+The selective seal retires exactly the two PRE-VALIDATION notices in
+`BalabanCMP89NeumannRectangularAffineFibre` and its audit, and imports that
+audit into `YangMillsCore`.  It establishes step 3 of the finite rectangular
+Neumann route: the integer image fibre is reindexed by the internally
+constructed carry/negation equivalence, with no injectivity premise or
+cardinality factor.  The varying-period product sum, literal `2^4` branch
+sum, physical Green insertion, CMP89 (2.42), uniform regional `B0, delta0`
+and window 15 remain open.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
