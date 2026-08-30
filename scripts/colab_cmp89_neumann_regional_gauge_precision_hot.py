@@ -17,12 +17,12 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-regional-gauge-precision-hot-v1"
-SOURCE_SHA = "fe57f6a22f83ccf3fe9dc9333fa284590a4f5f3d"
+RUNNER_REV = "cmp89-neumann-regional-gauge-precision-hot-v2"
+SOURCE_SHA = "8cf3bfe7d1e83524d1a395ceaba56a7f388c90c6"
 ROOT = Path("/content/hrpoly-cmp89-neumann-dirichlet-boundary-nogo")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannRegionalGaugePrecision.lean":
-        "4a75e6c23e08e465d0de5881b47c14f6af4b706f58d8564014663a90756aa23d",
+        "dfef4cef851c6062632098b3ab49971c0bf9cb6fe6ec9f2219f961cff4706a73",
     "YangMills/RG/BalabanCMP89SourceNeumannRegionalGaugePrecisionAudit.lean":
         "3dff5e6ea6a93f743820b9710ac10e295e55587194e7bb826a7580e9c9051e1f",
 }
