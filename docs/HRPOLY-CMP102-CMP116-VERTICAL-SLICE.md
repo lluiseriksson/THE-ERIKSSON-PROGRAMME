@@ -15133,7 +15133,7 @@ use exactly the allowed axiom trio.  This is not seal authority: its four
 marks remain until the prepared fresh-directory Colab gate passes and its
 durable evidence is locally verified.  No counter moves.
 
-### CMP89 physical rectangle/owner geometry (cold-sealed; uniform owner endpoint hot-green)
+### CMP89 physical rectangle/owner geometry and uniform owner endpoint (cold-sealed)
 
 Source `1b9979c1371c68b6aaa9722afaa1314c41adfa49` passed a fresh Colab
 CPU/high-RAM gate with no restored project build.  The period floor compiled
@@ -15143,12 +15143,21 @@ CPU/high-RAM gate with no restored project build.  The period floor compiled
 timings and locally verified evidence hashes.
 
 The sealed source-facing bridge constructs the owner map internally and pays
-the exact fine/owner boundary `2*(L^(depth+1)-1)`.  On the retained checkout,
-the next theorem is hot-green (`8663/8663`, exact one-declaration audit): it
-turns the fine rate `rho/L^(depth+1)` into owner rate `rho` and bounds the
-boundary payment by the explicit depth-free factor `exp(2*rho)`.  That theorem
-remains PRE-VALIDATION until its own fresh gate passes.
+the exact fine/owner boundary `2*(L^(depth+1)-1)`.  The following endpoint at
+source `389d2626250f4b729253e74e6bc885166cb795fc` also passed a fresh Colab
+CPU/high-RAM gate without restored project `.lake/build`: `8663/8663` focal
+jobs in `1466.427` seconds and an `8.116`-second exact audit using only
+`{propext, Classical.choice, Quot.sound}`.  The locally verified evidence
+archive has SHA-256
+`C021549A7C1D65D1928EF5B27AA817270F9E782CC88764E3770E74A9C4E8B3BA`.
 
-Neither endpoint constructs the CMP89 (2.42) representation certificate.
-The final physical uniform pair, window 15 and rows 23--24 remain open; live
+This endpoint turns the fine rate `rho/L^(depth+1)` into owner rate `rho` and
+bounds the boundary payment by the explicit depth-free factor `exp(2*rho)`.
+It still consumes the CMP89 (2.42) representation certificate, and its scalar
+pointwise kernel bound is not the localized operator-action package CMP99
+(3.42).  The remaining bridge must preserve the regional inverse identity
+and the printed `[ell^2, ell, ell, 1]` scale vector; neither is inferred from
+the common word `Green`.
+
+The final physical (3.42) package, window 15 and rows 23--24 remain open; live
 counters stay exactly `20/41`, `TermSource = 0`.

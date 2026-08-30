@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalOwnerGeometry
 /-!
 # CMP89 rectangular regional Green: physical fixed owner rate
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized
-in a fresh checkout, and no result in this module is cold-sealed.
-
 The physical half-open rectangle, its reflection periods and the canonical
 CMP99 localization owners are constructed by the preceding dictionaries.
 The exact boundary `2*(L^(depth+1)-1)` is paid visibly by `exp (2*rho)`;

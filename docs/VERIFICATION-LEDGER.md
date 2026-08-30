@@ -41934,31 +41934,40 @@ the final physical pair uniform in depth, window 15, rows 23--24 and a
 `TermSource` inhabitant remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
 
-## Addendum 977 (2026-08-30, **CMP89 physical uniform-owner endpoint promoted PRE-VALIDATION after hot PASS; cold seal pending; 20/41 unchanged**)
+## Addendum 977 (2026-08-30, **CMP89 physical uniform-owner endpoint cold-sealed; 20/41 unchanged**)
 
-PRE-VALIDATION source checkpoint
-`389d2626250f4b729253e74e6bc885166cb795fc` promotes the physical endpoint
-that combines the cold-sealed reflection-period floor and canonical CMP99
-owner geometry with the cold-sealed regional value-bound consumer.  Its
-statement keeps the literal CMP89 (2.42) representation certificate as a
-named analytic input, fixes owner rate `rho`, and pays the exact boundary
-`2*(L^(depth+1)-1)` by the visible depth-free factor `exp(2*rho)`.
+Exact source checkpoint
+`389d2626250f4b729253e74e6bc885166cb795fc` passed in a fresh Colab Pro+
+CPU/high-RAM directory without restoration of project `.lake/build`.  Runner
+checkpoint `d210408ffdfcf16d54127a37e6ac81c2618129cd` verified Lean
+`4.29.0-rc6`, Lake `5.0.0`, pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` and all three exact source blobs.
+The focal compiled `8663/8663` jobs with exit zero in `1466.427` seconds and
+the exact one-declaration audit exited zero in `8.116` seconds.  Its axiom
+readout is contained in `{propext, Classical.choice, Quot.sound}` with no
+forbidden axiom token.
 
-On the retained cold-origin checkout, the first focal stopped only at the
-propositional normalization `((L^n : Nat) : Real) = (L : Real)^n`.  Repair
-checkpoint `e1e3d62750b301f9dc63dcda2c5b2d62ec00abc6` supplied
-`Nat.cast_pow` without changing the statement, hypotheses or constants.  The
-repaired focal then compiled `8663/8663` jobs in `6.6` seconds and its exact
-one-declaration audit depended only on
-`{propext, Classical.choice, Quot.sound}`.
+The evidence JSON, internal manifest and downloaded archive SHA-256 values
+are respectively
+`43D183781033C646ABE3C715BD4C3B9478ADE96233AADF884CE95405BBC9F81A`,
+`9838D6723307E038D5FF538B31553C13BEC3B8E0708F3E98FDCA11DFB03ACFF6`
+and
+`C021549A7C1D65D1928EF5B27AA817270F9E782CC88764E3770E74A9C4E8B3BA`.
+The local fail-closed verifier emitted
+`CMP89_PHYSICAL_UNIFORM_OWNER_EVIDENCE_OK`; all 13 manifest entries rehashed
+with zero mismatches.  The selective seal retires exactly the two
+PRE-VALIDATION notices in the endpoint and its audit.
 
-These results are diagnostic only.  The fail-closed fresh-directory runner
-`scripts/colab_cmp89_neumann_rectangular_physical_uniform_owner_validation.py`
-is fixed to the source checkpoint and three exact blob hashes; its own
-SHA-256 is
-`19E2F8898121EC49107EA2D3D6AA3569C78F698B8D98DF273562646B7AA64500`.
-Until that gate passes and its archive is locally verified, the source and
-audit retain their PRE-VALIDATION notices.  The endpoint still consumes,
-rather than constructs, CMP89 (2.42); it does not attain window 15, discharge
-rows 23--24 or instantiate `TermSource`.  Counters remain exactly `20/41`,
-`TermSource = 0`; window 15 remains compatible but unattained.
+The theorem combines the sealed reflection-period floor, canonical CMP99
+owner geometry and regional value-bound consumer.  It turns the fine rate
+`rho/L^(depth+1)` into owner rate `rho` and pays the exact boundary
+`2*(L^(depth+1)-1)` by the visible depth-free factor `exp(2*rho)`.  It still
+consumes, rather than constructs, the literal CMP89 (2.42) reflection
+representation certificate.  Moreover this scalar pointwise kernel estimate
+is not silently identified with the four localized-action bounds of CMP99
+(3.42): that requires the regional inverse/operator dictionary and the
+printed `[ell^2, ell, ell, 1]` scale vector.
+
+The endpoint does not attain window 15, discharge rows 23--24 or instantiate
+`TermSource`.  Counters remain exactly `20/41`, `TermSource = 0`; window 15
+remains compatible but unattained.
