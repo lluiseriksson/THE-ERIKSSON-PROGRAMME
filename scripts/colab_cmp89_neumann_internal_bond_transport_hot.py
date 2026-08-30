@@ -15,12 +15,12 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-internal-bond-transport-hot-v1"
-SOURCE_SHA = "5e5cf3088c7d8bcdfa442436734c4c20ae49b11b"
+RUNNER_REV = "cmp89-neumann-internal-bond-transport-hot-v2"
+SOURCE_SHA = "38dd683975b46beda7528f08e332e6895de4e489"
 ROOT = Path("/content/hrpoly-cmp89-neumann-source-chain-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannInternalBondTransport.lean":
-        "bfb09c340c801a0a7ab9f3a3e754aaeecfed8ba173e49d213c2c5eba3298e93f",
+        "3ca601ce233d3c5da92572058677b71a3a4e5d97ce92c50fe3999f1715270913",
     "YangMills/RG/BalabanCMP89SourceNeumannInternalBondTransportAudit.lean":
         "7b339d2fd3aeb5f965fc5985ed01b504d6a1684e0cb246897d164427e11c5320",
 }
