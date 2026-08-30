@@ -11,13 +11,13 @@ import urllib.request
 
 
 BASE_SOURCE = "77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92"
-OVERLAY_SOURCE = "2a3b3ddcf1d69a77b4844c0e3f9c3d9e901b71a4"
+OVERLAY_SOURCE = "f3550512d25ad7a76071a38c421a8c0863986624"
 ROOT = Path("/content/hrpoly-c6d-green-owner-prefix/repo")
 FILES = {
     "YangMills/RG/BalabanCMP89NeumannReflectionRepresentation.lean":
-        "c89026d13ee14b32fc03711aee63936acc6ee162c3c0a2a85d0e6bf910ccf97e",
+        "223db013a610a96287450c8eed356e58f14b647cbb7285449b7df7829ae3a903",
     "YangMills/RG/BalabanCMP89NeumannReflectionRepresentationAudit.lean":
-        "a0d09542e4125cfd262e775d20e7e6c7cacb76369a28fe6869dae3a9e6736573",
+        "a0ede4a62753ff5b49dfa5033d66d22b3565b8cbcf2b24a433524251269fd216",
 }
 
 
@@ -115,7 +115,7 @@ def main() -> None:
         ],
     )
     normalized = "".join(audit.split())
-    if audit.count("depends on axioms:") != 3:
+    if audit.count("depends on axioms:") != 5:
         raise RuntimeError("HOT_AXIOM_HEADER_COUNT_MISMATCH")
     for forbidden in ("sorryAx", "ofReduceBool"):
         if forbidden in normalized:
