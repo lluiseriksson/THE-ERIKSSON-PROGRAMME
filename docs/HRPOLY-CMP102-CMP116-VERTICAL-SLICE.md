@@ -15200,3 +15200,10 @@ on a boundary-crossing bond.  This is not cold seal authority; those four
 PRE-VALIDATION notices remain.  The regional value producer must therefore
 construct the CMP89 Neumann Green and a faithful operator dictionary rather
 than reuse the canonical CMP99 Dirichlet Green by definition.
+
+The four-module no-go unit is now root-imported at PRE-VALIDATION for a
+single fresh-checkout cold seal.  Its endpoint remains deliberately negative:
+the next producer must construct the internal-bond Neumann inverse and an
+explicit source-to-consumer dictionary.  No prefix of this gate moves
+`20/41`, attains window 15, or supplies the missing arbitrary-field value
+action in CMP99 (3.42).

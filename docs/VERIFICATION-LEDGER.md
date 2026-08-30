@@ -42054,3 +42054,17 @@ no-go (`8456/8456`, `NOGO_HOT_EXIT=0`).  That result is diagnostic only: its
 four PRE-VALIDATION notices remain until an independent cold seal.  It fixes
 the next dictionary boundary by ruling out the convenient but false
 identification of the two regional Green conventions.
+
+## Addendum 980 (2026-08-30, **CMP89 Neumann/Dirichlet boundary no-go prepared for cold seal; 20/41 unchanged**)
+
+The two exact audits are now imported by `YangMillsCore`, while all four
+PRE-VALIDATION notices remain.  The prepared cold queue compiles the
+source-faithful internal-bond Neumann precision, its exact energy and
+self-adjointness laws, the boundary-crossing no-go, both audits, and the root
+aggregator from one fresh checkout without restored project `.lake/build`.
+
+The hot diagnostic is not promoted by this checkpoint.  In particular, the
+no-go is stated only at the derivative boundary: it does not compare Green
+norms and does not construct CMP89 (2.42).  A cold PASS may retire exactly
+these four notices, but cannot produce the uniform regional value action,
+attain window 15, move `20/41`, or instantiate `TermSource`.
