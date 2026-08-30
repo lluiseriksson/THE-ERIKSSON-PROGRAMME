@@ -106,7 +106,7 @@ theorem cmp89NeumannFineWeight_le_ownerWeight_of_metric_bridge_draft
     calc
       rho * ownerDist =
           (rho / (ell : ℝ)) * ((ell : ℝ) * ownerDist) := by
-        rw [mul_assoc, hscale]
+        rw [← mul_assoc, hscale]
       _ ≤ (rho / (ell : ℝ)) *
           (cmp89Eq251LatticeL1Length u + boundary) := hmul
       _ = (rho / (ell : ℝ)) * cmp89Eq251LatticeL1Length u +
