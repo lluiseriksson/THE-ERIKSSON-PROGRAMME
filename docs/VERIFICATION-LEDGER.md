@@ -42290,3 +42290,33 @@ and exhibits one compatible scalar source gate.  It remains a depth-two
 producer: it does **not** establish the generated retained-tower recursion,
 a depth-uniform Poincare constant, CMP89 (2.42), or window 15.  The live
 counters therefore remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 987 (2026-08-31, **generated two-scale Neumann absorption cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `3213c3615d9432ee778560093303a834b0c7abe2`,
+driven by runner commit `b925f07ac14dcc521ffa3bcb9e5ac9100e307686`
+(runner SHA-256
+`0C164BDCABBF4EE91E42F36FBF3D82C1386F96309B89DAC98554318956BEF1A2`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`.  The focal completed `8495/8495` jobs in `1129.107 s`; its
+exact one-declaration audit exited zero in `9.650 s` and uses only
+`{propext, Classical.choice, Quot.sound}`.  All 14 recorded commands exited
+zero.  Mathlib is pinned at
+`07642720480157414db592fa85b626dafb71355b`, and the toolchain asset SHA-256
+is `BF3E0A4025E47A0BEA9ED907D12DCCD3D3590B1D8AD6C55A915298B01AD9D3E`.
+
+The downloaded archive SHA-256 is
+`37165FA28B61EFBEB8BE9D4114327F3FA4B2E69B7204662AEF12A1B3FB9F4C84`;
+the stored evidence JSON SHA-256 is
+`D9777C4D8E3F34E18C3B3C4D71376D3C145AE2DCC362FFBFD26D51B844E83BBF`
+(the runner's canonical no-trailing-newline payload hash is
+`94C54C88BCE1403B64614315E03F93C6DD7B5898C696F4C581A1CF86BCC60E23`).
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-generated-two-scale-absorption-cold-3213c361-20260831/`.
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired.
+
+The sealed adapter fixes the literal source lift and the first generated
+`Ubar` background internally, rather than accepting an independently chosen
+coarse background.  It is still a depth-two theorem.  It does **not** prove
+a full retained-tower Neumann Poincare theorem, CMP89 (2.42), or window 15.
+The live counters therefore remain exactly `20/41` and `TermSource = 0`.
