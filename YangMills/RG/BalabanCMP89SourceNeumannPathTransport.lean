@@ -56,7 +56,14 @@ theorem cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_pathTransport
     have hcov :
         covariantD0CLM rho U psi (physicalBondOfEdge e) = 0 := by
       have hsub := sub_eq_zero.mpr htransport
-      simpa [psi, covariantD0CLM_apply,
+      change
+        psi (physicalBondOfEdge e).1 -
+            rho.adCLM
+              (U (ConcreteEdge.mk (physicalBondOfEdge e).1
+                (physicalBondOfEdge e).2 true))
+              (psi ((physicalBondOfEdge e).1.shift
+                (physicalBondOfEdge e).2)) = 0
+      simpa [psi,
         extendZeroZeroCLM_apply_of_mem Omega phi _ hends.1,
         extendZeroZeroCLM_apply_of_mem Omega phi _ hends.2,
         be] using hsub
