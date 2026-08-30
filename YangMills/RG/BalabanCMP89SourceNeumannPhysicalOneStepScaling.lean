@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRecursiveAbsorptionStep
 /-!
 # Physical scaling of one CMP89 Neumann absorption step
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The normalized derivative contributes `((M * spacing)⁻¹)²`.  Physical link
 deviations at the fine and coarse scales carry respectively `spacing` and
 `M * spacing`.  This leaf proves that those factors cancel exactly, rather
@@ -58,7 +55,7 @@ theorem cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling
     rw [Real.norm_eq_abs, sq_abs, inv_pow]
     field_simp
   calc
-    (‖(M : ℝ)⁻¹‖ * ‖spacing⁻¹‖) ^ 2 *
+    (‖spacing⁻¹‖ * ‖(M : ℝ)⁻¹‖) ^ 2 *
         (2 ^ 2 *
           (spacing *
             (((2 * d * (M - 1) + M : ℕ) : ℝ) * etaFine +
@@ -88,8 +85,7 @@ theorem cmp89SourceNeumannOneScalePoincare_mul_defect_physical_scaling
           d M etaFine etaCoarse := by
   have hsq : ((M : ℝ) * spacing) ^ 2 ≤ 1 := by
     have habs_nonneg : 0 ≤ |(M : ℝ) * spacing| := abs_nonneg _
-    nlinarith [sq_abs ((M : ℝ) * spacing),
-      sq_nonneg (1 - |(M : ℝ) * spacing|)]
+    nlinarith [sq_abs ((M : ℝ) * spacing)]
   rw [cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling
     (d := d) (M := M) hspacing]
   unfold cmp89SourceNeumannOneScalePoincareConstant

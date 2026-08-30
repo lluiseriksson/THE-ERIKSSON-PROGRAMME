@@ -5,9 +5,6 @@ import YangMills.RG.BalabanCMP99SourceRegionalCoarseAverage
 /-!
 # Internal-block energy for the CMP89 Neumann derivative
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The existing CMP99 block energy assigns every positive bond by its source
 site.  That convention is correct for the ambient/Dirichlet derivative but
 also charges bonds leaving an active block.  CMP89 uses a Neumann rectangle:

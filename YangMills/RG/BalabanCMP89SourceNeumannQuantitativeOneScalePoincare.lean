@@ -6,9 +6,6 @@ import YangMills.RG.BalabanCMP99OneScaleBlockPoincare
 /-!
 # Quantitative one-scale CMP89 Neumann Poincare producer
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The active fine region is reindexed by its complete owner blocks.  Every
 same-block positive bond is charged at most once, while cross-block bonds are
 discarded rather than turned into a Dirichlet boundary term.  This gives a

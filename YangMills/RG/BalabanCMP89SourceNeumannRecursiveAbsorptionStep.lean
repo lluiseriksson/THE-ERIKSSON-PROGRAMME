@@ -6,9 +6,6 @@ import YangMills.RG.BalabanCMP99OneScaleRegionalPoincare
 /-!
 # One quantitative CMP89 Neumann recursion step
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 On the fine Neumann kernel, the source-normalized average is reconstructed by
 the unit synthesis.  Its counting norm therefore pays exactly `M^d`, while
 the quantitative transport defect pays `M^{-d}`.  This leaf exposes their

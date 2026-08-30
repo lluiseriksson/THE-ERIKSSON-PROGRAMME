@@ -15257,3 +15257,16 @@ retained-tower dictionary, a depth-uniform Neumann Poincare producer and the
 joint smallness proof remain explicit.  No propagation through
 `nextBackground` is inferred.  Counters remain exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+Fresh-checkout evidence at exact source `3982806d4e542957e70ff4418d2bf43601555c0f`
+now cold-seals the quantitative one-scale Neumann Poincare producer and the
+exact physical-spacing cancellation used by one recursive absorption step.
+All five focal/audit pairs exited zero; the locally verified archive SHA-256
+is `50F036659AC478236084BC6766ABA38460D73CF2D6915CF8D3592EC395DEB0B3`.
+The spacing-dependent derivative and link radii reduce to one explicit
+dimensionless scalar gate, without hiding an `M^{-d}` or spacing convention.
+
+This is infrastructure for the source-specific retained-tower recursion,
+not that recursion itself.  A depth-uniform joint-kernel contraction and
+CMP89 (2.42) remain open.  The live counters stay exactly `20/41`,
+`TermSource = 0`, and window 15 remains compatible but unattained.

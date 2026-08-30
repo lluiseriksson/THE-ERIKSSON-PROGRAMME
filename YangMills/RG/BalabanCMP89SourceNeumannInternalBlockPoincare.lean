@@ -5,9 +5,6 @@ import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTower
 /-!
 # One-block Poincare estimate for the CMP89 Neumann derivative
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 This leaf combines the literal block-contained contours with the same-block
 Neumann energy.  It proves the quantitative estimate on one active complete
 block only.  Summation over the active region and the explicit lattice-

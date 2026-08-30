@@ -3,7 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannQuantitativeOneScalePoincare
 /-!
 # Axiom audit for the quantitative one-scale CMP89 Neumann Poincare producer
 
-PRE-VALIDATION: the imported producer has not yet been compiler-verified.
 -/
 
 namespace YangMills.RG

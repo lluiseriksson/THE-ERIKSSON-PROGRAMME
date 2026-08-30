@@ -42214,3 +42214,40 @@ install the source-specific retained-tower dictionary, prove uniformity of
 `CP`, or establish the joint smallness inequality through every depth.  It
 therefore does not construct CMP89 (2.42), attain window 15, move `20/41`, or
 instantiate `TermSource`.
+
+## Addendum 985 (2026-08-31, **quantitative one-scale Neumann Poincare and physical spacing cancellation cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `3982806d4e542957e70ff4418d2bf43601555c0f`,
+driven by runner commit `5e83f665a0fec3dd2a780a6d4e2b1575f57a1d5d`
+(runner SHA-256
+`5D43CF97358973500F0AC649589E9994E806C9F307918315FF760E6D724A2A9A`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`.  All 22 recorded commands exited zero.  The five focal/audit
+pairs took, respectively:
+
+- recursive one-step absorption: `1160.035 s` / `9.001 s`;
+- internal-block energy: `21.484 s` / `7.761 s`;
+- internal-block Poincare: `11.248 s` / `7.573 s`;
+- quantitative one-scale Poincare: `19.765 s` / `8.844 s`;
+- exact physical spacing cancellation: `9.960 s` / `5.929 s`.
+
+The runner checked 17 exact declaration readouts against
+`{propext, Classical.choice, Quot.sound}` and rejected missing declarations,
+`sorryAx` and `ofReduceBool`.  Mathlib is pinned at
+`07642720480157414db592fa85b626dafb71355b`; the toolchain asset SHA-256 is
+`BF3E0A4025E47A0BEA9ED907D12DCCD3D3590B1D8AD6C55A915298B01AD9D3E`.
+The downloaded archive SHA-256 is
+`50F036659AC478236084BC6766ABA38460D73CF2D6915CF8D3592EC395DEB0B3`;
+its evidence JSON SHA-256 is
+`91CB18454A3981D0F5D5880D7F2F92E46D53D1B9D420B1FF648E5567C6410FB3`.
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-quantitative-poincare-cold-3982806d-20260831/`.
+Exactly the ten PRE-VALIDATION notices in these five focal/audit pairs are
+retired.
+
+This seal proves a quantitative one-scale regional Poincare producer and
+the exact cancellation of the physical lattice spacing in one absorption
+budget.  It does **not** iterate that budget through the source-retained
+background tower, prove a depth-uniform contraction, construct CMP89 (2.42),
+or attain window 15.  It is therefore infrastructure below the terminal
+consumer: `20/41` and `TermSource = 0` remain unchanged.
