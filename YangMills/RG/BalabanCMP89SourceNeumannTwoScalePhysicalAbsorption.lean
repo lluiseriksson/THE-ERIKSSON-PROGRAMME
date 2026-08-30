@@ -21,6 +21,7 @@ uniform Poincare theorem and does not by itself attain window 15.
 namespace YangMills.RG
 
 open YangMills
+open scoped Matrix.Norms.L2Operator
 
 noncomputable section
 
