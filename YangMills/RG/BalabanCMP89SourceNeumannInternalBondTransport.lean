@@ -37,17 +37,17 @@ theorem cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_internalBond
     phi ⟨b.1.1, (by
       have hb : b.1.1 ∈ Omega.sites ∧
           b.1.1.shift b.1.2 ∈ Omega.sites := by
-        simpa [ActiveGaugeRegion.bonds] using b.2
+        exact (Finset.mem_filter.mp b.2).2
       exact hb.1)⟩ =
       rho.adCLM (U (ConcreteEdge.mk b.1.1 b.1.2 true))
         (phi ⟨b.1.1.shift b.1.2, (by
           have hb : b.1.1 ∈ Omega.sites ∧
               b.1.1.shift b.1.2 ∈ Omega.sites := by
-            simpa [ActiveGaugeRegion.bonds] using b.2
+            exact (Finset.mem_filter.mp b.2).2
           exact hb.2)⟩) := by
   rcases b with ⟨⟨x, i⟩, hb⟩
   have hb' : x ∈ Omega.sites ∧ x.shift i ∈ Omega.sites := by
-    simpa [ActiveGaugeRegion.bonds] using hb
+    exact (Finset.mem_filter.mp hb).2
   have hx : x ∈ Omega.sites := hb'.1
   have hy : x.shift i ∈ Omega.sites := hb'.2
   have hAt := congrArg
