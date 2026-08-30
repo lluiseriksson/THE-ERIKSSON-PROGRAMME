@@ -7,8 +7,8 @@ PRE-VALIDATION.
 ```text
 cold base: 77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92
 overlay: f3550512d25ad7a76071a38c421a8c0863986624
-runner: 71230763a73301fd5ac3d37e3ed593b2be163f2f
-runner SHA-256: d9efb339ebf25acfe64830f3f8dfa071b9e86a787419c6bab6a75f4717979c60
+runner: 8323dc229d7b2c8169b85a0b134844fb1e3d0025
+runner SHA-256: f4f5e577a13ffd3dfe6ae2a024429455509a9151c89e6671fe50f7e82e73af49
 sentinel: HOT_C6D_CMP89_REFLECTION_REPRESENTATION_PASS
 ```
 
@@ -25,10 +25,10 @@ import hashlib, urllib.request
 url = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "71230763a73301fd5ac3d37e3ed593b2be163f2f/"
+    "8323dc229d7b2c8169b85a0b134844fb1e3d0025/"
     "tmp/run_c6d_cmp89_reflection_representation_hot.py"
 )
-expected = "d9efb339ebf25acfe64830f3f8dfa071b9e86a787419c6bab6a75f4717979c60"
+expected = "f4f5e577a13ffd3dfe6ae2a024429455509a9151c89e6671fe50f7e82e73af49"
 with urllib.request.urlopen(url) as response:
     payload = response.read()
 actual = hashlib.sha256(payload).hexdigest()

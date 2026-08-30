@@ -7,8 +7,8 @@ diagnostic evidence and cannot retire PRE-VALIDATION.
 ```text
 cold base source: 77d9f4b4d923ab1c804ca9dd6679ea304a9d3a92
 scale overlay: f3550512d25ad7a76071a38c421a8c0863986624
-runner object: 71230763a73301fd5ac3d37e3ed593b2be163f2f
-runner SHA-256: d8b33f5eac95db31034dba05c7bdd835aed910d180a9c28be6834fc71352969e
+runner object: 8323dc229d7b2c8169b85a0b134844fb1e3d0025
+runner SHA-256: 8a05126a7a32f8813eaf83323611483afb7af522aec6ee28a5e1ec961bcdb5c7
 sentinel: HOT_C6D_CMP89_REFLECTION_SCALE_PASS
 ```
 
@@ -24,10 +24,10 @@ import hashlib, urllib.request
 url = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "71230763a73301fd5ac3d37e3ed593b2be163f2f/"
+    "8323dc229d7b2c8169b85a0b134844fb1e3d0025/"
     "tmp/run_c6d_cmp89_reflection_scale_hot.py"
 )
-expected = "d8b33f5eac95db31034dba05c7bdd835aed910d180a9c28be6834fc71352969e"
+expected = "8a05126a7a32f8813eaf83323611483afb7af522aec6ee28a5e1ec961bcdb5c7"
 with urllib.request.urlopen(url) as response:
     payload = response.read()
 actual = hashlib.sha256(payload).hexdigest()
