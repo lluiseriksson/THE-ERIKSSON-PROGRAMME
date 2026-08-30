@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP89NeumannReflectionResidueDictionary
+
+/-!
+PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
+and no result in this module is compiler-verified.
+
+Axiom audit for the rectangular reflection dictionary.
+-/
+
+#print axioms YangMills.RG.cmp89NeumannReflectionBaseResidue
+#print axioms YangMills.RG.cmp89NeumannReflectionPeriod
+#print axioms YangMills.RG.cmp89NeumannReflection_displacement_apply
+#print axioms YangMills.RG.cmp89NeumannReflection_displacement
+#print axioms YangMills.RG.cmp89NeumannReflectedCenteredMagnitude
+#print axioms YangMills.RG.cmp89Neumann_direct_natAbs_le_reflected_distances
+#print axioms YangMills.RG.cmp89Neumann_direct_natAbs_le_reflectedCenteredMagnitude
+#print axioms YangMills.RG.cmp89Neumann_direct_natAbs_le_reflectedCenteredMagnitude_apply
