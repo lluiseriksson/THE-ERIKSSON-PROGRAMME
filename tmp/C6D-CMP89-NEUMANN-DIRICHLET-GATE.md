@@ -1,0 +1,116 @@
+# C6d source gate: CMP89 Neumann Green versus the current Dirichlet compression
+
+Status: **OPEN SOURCE DICTIONARY / PHYSICAL IDENTIFICATION PROHIBITED**.
+
+This note records a source-level mismatch found before constructing the
+uniform regional `B0`/`delta0` producer.  It does not retract the already
+proved Dirichlet algebra.  It prevents that algebra from being cited as the
+local Green estimate printed in CMP89 until an exact boundary-condition and
+carrier dictionary has been supplied.
+
+## Primary-source evidence
+
+- CMP89 printed p. 572 defines `-Delta_{A,Omega}^{eta,N}` with **Neumann
+  boundary conditions** on `partial Omega`; its quadratic form sums bonds
+  whose two endpoints lie in `Omega`.  The local Green is
+  `G_k(Omega,A) = (-Delta_{A,Omega}^{eta,N} + m^2 + a P_k(A))^{-1}`.
+- CMP89 Lemma 2.4, printed p. 582, gives the uniform local Green bounds used
+  downstream.
+- CMP89 Eq. (2.42), printed p. 584, represents the rectangular-box Green by
+  **positive multiple reflections** of the full-lattice propagator.  This is
+  the image formula for the printed free/Neumann boundary problem.
+- CMP96 Eq. (2.40) allows a local inverse with specified boundary conditions
+  and names Neumann boundary conditions as the source example.  It does not
+  identify a zero-extension Dirichlet compression with the CMP89 operator.
+
+Local visual evidence used for this reading:
+
+- `tmp/cmp89-p-02.png` (printed p. 572)
+- `tmp/cmp89-p-12.png` (printed p. 582)
+- `tmp/cmp89-p-14.png` (printed p. 584)
+- `tmp/cmp96-primary.txt` (the local-Green discussion surrounding Eq. (2.40))
+
+No OCR-only constant or boundary-condition reading is accepted here.
+
+## Current Lean object
+
+`BalabanCMP99SourceRegionalGreenNeumann.lean` defines
+
+```lean
+cmp99RegionalDirichletPrecision Omega K =
+  restrictZeroCLM Omega ∘L K ∘L extendZeroZeroCLM Omega
+```
+
+This is compression by zero extension.  Boundary-crossing bonds of the
+ambient operator see zero outside the carrier, so the operator is not the
+printed Neumann quadratic form that simply omits bonds leaving `Omega`.
+
+`BalabanCMP96SourceSeparatedRegionalPrefixGreen.lean` then defines
+`cmp96SourceSeparatedRegionalCell` as the finite-range thickening of a cutoff
+support and constructs its local Green as the inverse of that Dirichlet
+compression.  Two independent dictionaries are therefore open:
+
+1. **boundary condition:** printed Neumann/free operator versus zero-extension
+   Dirichlet compression;
+2. **carrier:** printed rectangular parallelepiped/cube versus an arbitrary
+   support thickening, for which no rectangle equality is currently proved.
+
+The file name `BalabanCMP99SourceRegionalGreenNeumann.lean` does not discharge
+either dictionary: its implemented operator is Dirichlet.
+
+## Semantic no-go to seal
+
+On a proper region with a boundary, a constant field has zero energy for the
+internal-bond Neumann Laplacian, while zero extension generally creates
+nonzero boundary-edge energy for the Dirichlet compression.  Therefore the
+two Laplacians are not definitionally equal and cannot be identified merely
+by reindexing or inverse uniqueness.
+
+Acceptance test for the no-go brick:
+
+- choose one explicit nonempty proper region with a boundary edge;
+- choose a nonzero constant regional zero-cochain;
+- prove the internal-bond Neumann Laplacian/energy vanishes;
+- prove the zero-extension Dirichlet Laplacian/energy does not vanish;
+- keep the conclusion at the exact level proved (operator/energy inequality,
+  not a claim about every region).
+
+## Source-faithful repair (preferred)
+
+1. Define the rectangular active region used by CMP89/CMP96, with its side
+   lengths and block units explicit.
+2. Define the Neumann/free regional precision by the internal-bond quadratic
+   form, not by zero extension.
+3. Add the positive term `m^2 + a P_k` (or the exact source specialization)
+   and prove the resulting regional precision coercive.  The Neumann
+   Laplacian alone has constant modes and must not be declared coercive.
+4. Construct its inverse internally.
+5. Formalize the positive-reflection representation of CMP89 Eq. (2.42).
+6. Transfer the already proved full-lattice analytic bound to the rectangular
+   box, keeping the finite reflection multiplicity and the distance
+   comparison explicit.  This is the producer of a regional value bound.
+7. Derive the three action bounds and the common Eq. (3.42) certificate from
+   that one value bound.
+8. Supply an exact carrier dictionary from the source rectangles/cubes to the
+   cells used by the CMP96 parametrix.  If the current support thickening is
+   retained, prove a comparison theorem; do not call it a rectangle by name.
+
+Only after steps 1--8 may CMP89 Lemma 2.4 or Eq. (2.42) feed the physical
+regional certificate.
+
+## Alternative repair (new analysis, not source transcription)
+
+A Dirichlet route remains possible only by proving an independent estimate
+for the zero-extension compression, for example an alternating-image or
+killed-Green representation with its own constants.  Such a theorem may not
+cite the positive-reflection formula (2.42) as though it were the same
+operator.  It must be labelled as a new analytic result.
+
+## Accounting
+
+- The running C6d cold gate, if green, certifies per-depth Dirichlet
+  four-action/certificate **infrastructure only**.
+- It does not produce uniform `B0`, uniform `delta0`, the physical CMP89 local
+  Green, or attainment of window 15.
+- Counters remain `20/41`; `TermSource = 0`; window 15 remains compatible but
+  not attained.
