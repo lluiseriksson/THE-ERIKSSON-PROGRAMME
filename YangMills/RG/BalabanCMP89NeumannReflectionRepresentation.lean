@@ -13,9 +13,9 @@ equality with the regional Green on the literal source rectangle.
 
 The regional and full-lattice kernels are parameters of the certificate type,
 not hidden fields.  Consequently a physical consumer must expose the exact
-kernels it identifies.  This interface does not construct either kernel,
-prove the equality, choose a finite site count for the inclusive rectangle,
-or derive any decay bound.
+kernels it identifies.  The finite carrier is the half-open block rectangle
+fixed by CMP89 (1.1).  This interface does not construct either kernel, prove
+the equality, or derive any decay bound.
 -/
 
 namespace YangMills.RG
