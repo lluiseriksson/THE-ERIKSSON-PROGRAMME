@@ -9,11 +9,15 @@ import subprocess
 import time
 from pathlib import Path
 
-RUNNER_REV = "cmp89-neumann-two-scale-physical-absorption-hot-v2"
-SOURCE_SHA = "763d8b5804bf6ea987eb098ad4a3e1a51bd71ced"
+RUNNER_REV = "cmp89-neumann-two-scale-physical-absorption-hot-v3"
+SOURCE_SHA = "dd0030677c5036331343a98bc5e4df653209f39f"
 BASE_SHA = "5e83f665a0fec3dd2a780a6d4e2b1575f57a1d5d"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
+    "YangMills/RG/BalabanCMP89SourceNeumannPhysicalOneStepScaling.lean":
+        "2c87edc4cabc0483f3e20328843647c2518b1fd98c6bf3d5b3396371160b5b9f",
+    "YangMills/RG/BalabanCMP89SourceNeumannPhysicalOneStepScalingAudit.lean":
+        "167a36ddafefcfcdd4791e17874eef013179b751d37e0bf8a415c07608e53042",
     "YangMills/RG/BalabanCMP89SourceNeumannTwoScalePhysicalAbsorption.lean":
         "b6b5c5f0e93c6fb3330cd449009c14e3a6c68da02dfc0c9abdd996838f8d639d",
     "YangMills/RG/BalabanCMP89SourceNeumannTwoScalePhysicalAbsorptionAudit.lean":
@@ -24,6 +28,9 @@ SOURCE_BLOBS = {
         "8026566164e40f2dd797bb6031f2c6b97a367a27c3d340d96315809e93dea901",
 }
 EXPECTED_DECLARATIONS = {
+    "YangMills.RG.cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling",
+    "YangMills.RG.cmp89SourceNeumannOneScalePoincare_mul_defect_physical_scaling",
+    "YangMills.RG.cmp89SourceNeumannOneScalePoincare_mul_defect_lt_one_iff",
     "YangMills.RG.eq_zero_of_cmp89SourceNeumann_twoScale_physical_absorption",
     "YangMills.RG.cmp89SourceNeumannPhysicalOneStepGate_d4_M4_q8_eq",
     "YangMills.RG.cmp89SourceNeumannPhysicalOneStepGate_d4_M4_q8_lt_one",
@@ -96,6 +103,11 @@ def main() -> int:
         "--base", BASE_SHA, "--head", SOURCE_SHA, "--require-prevalidation"])
     run("import_prefix_guard", ["python3", "scripts/check_lean_import_prefix.py",
                                  *SOURCE_BLOBS])
+    physical = run("cmp89_neumann_physical_one_step_scaling_focal", ["lake", "build",
+        "YangMills.RG.BalabanCMP89SourceNeumannPhysicalOneStepScaling"])
+    del physical
+    physical_audit = run("cmp89_neumann_physical_one_step_scaling_audit", ["lake", "env",
+        "lean", "YangMills/RG/BalabanCMP89SourceNeumannPhysicalOneStepScalingAudit.lean"])
     run("cmp89_neumann_two_scale_physical_absorption_focal", ["lake", "build",
         "YangMills.RG.BalabanCMP89SourceNeumannTwoScalePhysicalAbsorption"])
     audit = run("cmp89_neumann_two_scale_physical_absorption_audit", ["lake", "env",
@@ -105,7 +117,7 @@ def main() -> int:
     del witness
     witness_audit = run("cmp89_neumann_physical_gate_witness_audit", ["lake", "env",
         "lean", "YangMills/RG/BalabanCMP89SourceNeumannPhysicalGateWitnessAudit.lean"])
-    audit_axioms(audit + "\n" + witness_audit)
+    audit_axioms(physical_audit + "\n" + audit + "\n" + witness_audit)
     print("HOT_DIAGNOSTIC_STATUS=PASS", flush=True)
     print("COLD_SEAL_AUTHORITY=0", flush=True)
     return 0
