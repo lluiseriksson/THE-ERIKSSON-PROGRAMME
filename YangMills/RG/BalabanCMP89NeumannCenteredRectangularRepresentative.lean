@@ -144,8 +144,8 @@ theorem cmp89NeumannCenteredRectangular_reflected_natAbs_eq
     cmp99CenteredPeriodicEndpointRepresentative_natAbs_eq_valMinAbs P u
   rw [ZMod.valMinAbs_natAbs_eq_min] at hmag
   have hval : (((u : ℤ) : ZMod P)).val = u.toNat := by
-    have hcast : ((u : ℤ) : ZMod P) = (u.toNat : ZMod P) := by
-      rw [← hutoNat]
+    have hcast : ((u : ℤ) : ZMod P) = (u.toNat : ZMod P) :=
+      (congrArg (fun z : ℤ => (z : ZMod P)) hutoNat).symm
     rw [hcast]
     exact ZMod.val_natCast_of_lt hutoNat_lt
   rw [hval] at hmag
