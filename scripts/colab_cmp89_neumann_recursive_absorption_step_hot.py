@@ -10,9 +10,9 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-recursive-absorption-step-hot-v2"
+RUNNER_REV = "cmp89-neumann-recursive-absorption-step-hot-v3"
 SOURCE_SHA = "d8456316c91acb5d63edc55df5654a48d9ab457c"
-BASE_SHA = "93c98c4facfa98ec772ee81b8f9498a7ada59e4c"
+BASE_SHA = "bdfad8a16a57b7280110fdd0996112c2cd1b81ec"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannRecursiveAbsorptionStep.lean":
