@@ -101,8 +101,13 @@ def CMP89SourceRetainedCanonicalNeumannReflectionRepresentation
     (fullGreenAction :
       (Fin d → ℤ) → (Fin d → ℤ) → SUNLieCoord Nc → SUNLieCoord Nc) :
     Prop :=
-  CMP89CanonicalNeumannReflectionRepresentation siteEquiv
+  CMP89CanonicalNeumannReflectionRepresentation
+    (d := d) (N := N) (g := SUNLieCoord Nc)
+    (Omega := Omega) (m := m) siteEquiv
     (cmp89SourceRetainedNeumannPrefixGreen
+      (d := d) (N := N) (Nc := Nc) (M := M) (depth := depth)
+      (Omega := Omega) (rho := rho) (spacing := spacing)
+      (background := background)
       T r mass ha hspacing hCP hP)
     fullGreenAction
 
@@ -126,12 +131,24 @@ theorem cmp89SourceRetainedCanonicalNeumannReflectionRepresentation_eq_series
     (v : SUNLieCoord Nc)
     (x n : CMP89SourceNeumannIntegerRectanglePoint m) :
     cmp89FinitePiLpGreenEntryAt
+        (d := d) (N := N) (g := SUNLieCoord Nc) (Omega := Omega)
         (cmp89SourceRetainedNeumannPrefixGreen
+          (d := d) (N := N) (Nc := Nc) (M := M) (depth := depth)
+          (Omega := Omega) (rho := rho) (spacing := spacing)
+          (background := background)
           T r mass ha hspacing hCP hP)
         (siteEquiv x) (siteEquiv n) v =
       cmp89NeumannReflectionSeries
         (fun y z ↦ fullGreenAction y z v) m x.1 n.1 :=
-  cmp89CanonicalNeumannReflectionRepresentation_eq_series C v x n
+  cmp89CanonicalNeumannReflectionRepresentation_eq_series
+    (d := d) (N := N) (g := SUNLieCoord Nc)
+    (Omega := Omega) (m := m) (siteEquiv := siteEquiv)
+    (green := cmp89SourceRetainedNeumannPrefixGreen
+      (d := d) (N := N) (Nc := Nc) (M := M) (depth := depth)
+      (Omega := Omega) (rho := rho) (spacing := spacing)
+      (background := background)
+      T r mass ha hspacing hCP hP)
+    (fullGreenAction := fullGreenAction) C v x n
 
 end
 
