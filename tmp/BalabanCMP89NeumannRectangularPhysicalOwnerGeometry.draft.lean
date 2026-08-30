@@ -107,7 +107,13 @@ theorem finBoxDist_cmp89RectangleEmbedding_le_l1_draft
       finTorusDist_cmp89RectangleEmbedding_le_natAbs_sub_draft
         hfit x n mu
   have hnat := hbox.trans hsum
-  exact_mod_cast hnat
+  have hnatReal :
+      (finBoxDist
+          (cmp89SourceNeumannRectanglePointToFinBox_draft hfit x)
+          (cmp89SourceNeumannRectanglePointToFinBox_draft hfit n) : ℝ) ≤
+        ∑ mu, ((x.1 mu - n.1 mu).natAbs : ℝ) := by
+    exact_mod_cast hnat
+  simpa [cmp89Eq251LatticeL1Length] using hnatReal
 
 /-- The canonical CMP99 localization owners of the embedded rectangle points
 satisfy the exact inverse-scale bridge consumed by the owner-rate theorem. -/
