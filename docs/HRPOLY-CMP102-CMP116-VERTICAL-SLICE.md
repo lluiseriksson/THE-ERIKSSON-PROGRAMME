@@ -15270,3 +15270,16 @@ This is infrastructure for the source-specific retained-tower recursion,
 not that recursion itself.  A depth-uniform joint-kernel contraction and
 CMP89 (2.42) remain open.  The live counters stay exactly `20/41`,
 `TermSource = 0`, and window 15 remains compatible but unattained.
+
+The literal two-scale physical adapter and its concrete source-regime gate
+are cold-sealed at exact source
+`8c03a9e58f3195b54176f483aee2543343c0e88f`.  The producer constructs the
+coarse Poincare input internally from the exact next active region and next
+physical background, and keeps both lattice-spacing normalizations visible.
+Its fresh-checkout evidence archive has SHA-256
+`6D93F66DDFF2187F1C676409C4A8EF99DD245FE797862FB0C603701F14E3D570`.
+
+This is the first sealed two-scale physical absorption theorem, not a
+depth-uniform retained-tower induction.  The generated specialization,
+uniformity through arbitrary depth and CMP89 (2.42) remain open.  It does not
+move `20/41`, instantiate `TermSource`, or attain window 15.

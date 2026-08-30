@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannPhysicalOneStepScaling
 /-!
 # A concrete source-regime witness for the physical Neumann gate
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 At the source dimension `d = 4`, block ratio `M = 4`, and the printed lower
 power `q = 8`, choose both dimensionless deviation coefficients to be
 `M^-q`.  The explicit one-scale Poincare constant times the spacing-free

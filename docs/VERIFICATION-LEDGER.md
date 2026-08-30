@@ -42251,3 +42251,42 @@ budget.  It does **not** iterate that budget through the source-retained
 background tower, prove a depth-uniform contraction, construct CMP89 (2.42),
 or attain window 15.  It is therefore infrastructure below the terminal
 consumer: `20/41` and `TermSource = 0` remain unchanged.
+
+## Addendum 986 (2026-08-31, **two-scale physical Neumann absorption and explicit source gate cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `8c03a9e58f3195b54176f483aee2543343c0e88f`,
+driven by runner commit `16c4190f29c213484e818f0b325a1590d807dc8d`
+(runner SHA-256
+`00033B7F21770CFDA9D7C6DCD77A620E608E3D32FD57A0714E8A3BF9418CFEE1`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`.  All 16 recorded commands exited zero.  The two focal/audit
+pairs took, respectively:
+
+- literal two-scale physical absorption: `1061.748 s` / `7.323 s`;
+- concrete `d = 4`, `M = 4`, `q = 8` physical gate witness:
+  `25.723 s` / `5.767 s`.
+
+Both focals completed at `8494/8494` jobs.  The runner checked the three
+exact declaration readouts against
+`{propext, Classical.choice, Quot.sound}` and rejected missing declarations,
+`sorryAx` and `ofReduceBool`.  Mathlib is pinned at
+`07642720480157414db592fa85b626dafb71355b`; the toolchain asset SHA-256 is
+`BF3E0A4025E47A0BEA9ED907D12DCCD3D3590B1D8AD6C55A915298B01AD9D3E`.
+The downloaded archive SHA-256 is
+`6D93F66DDFF2187F1C676409C4A8EF99DD245FE797862FB0C603701F14E3D570`;
+the stored evidence JSON SHA-256 is
+`7491383E72889D794D32A2084D858EEF52614B5F8CE0EE6213C5BBB35BBD6AB1`
+(the runner's canonical no-trailing-newline payload hash is
+`B5F7FF8AC77B629E072B931A218ACF6349B0D830F2E7239BCF461E64CE169402`).
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-two-scale-physical-absorption-cold-8c03a9e5-20260831/`.
+Exactly the four PRE-VALIDATION notices in these two focal/audit pairs are
+retired.
+
+This seal constructs the coarse Poincare package from the literal next
+active region and next physical background, proves the two-scale joint-kernel
+absorption theorem with explicit fine/coarse lattice-spacing conventions,
+and exhibits one compatible scalar source gate.  It remains a depth-two
+producer: it does **not** establish the generated retained-tower recursion,
+a depth-uniform Poincare constant, CMP89 (2.42), or window 15.  The live
+counters therefore remain exactly `20/41` and `TermSource = 0`.

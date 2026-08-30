@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannPhysicalOneStepScaling
 /-!
 # Two-scale physical CMP89 Neumann absorption
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The coarse Poincare package is constructed internally from the literal next
 active region, its block-saturation certificate, and the next physical
 background.  Thus the caller supplies only the fine Neumann-kernel equation
