@@ -41832,3 +41832,37 @@ rectangle cardinality.  Fine-to-owner transport, the physical owner metric,
 uniform-in-depth `B0, delta0`, window 15 and `TermSource` remain open.
 Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
 compatible but unattained.
+
+## Addendum 974 (2026-08-30, **CMP89 regional fine-to-owner transport cold-sealed; physical owner geometry open; 20/41 unchanged**)
+
+Exact source checkpoint
+`b9561132d1eaa2e55d4638bf42f1632effd64d68` passed in a fresh Colab Pro+
+CPU/high-RAM directory without restoration of project `.lake/build`.  Runner
+commit `bcbfe31b3959b556ad5ac647bb81a546c5756a76` verified Lean
+`4.29.0-rc6`, Lake `5.0.0`, pinned Mathlib
+`07642720480157414db592fa85b626dafb71355b` and the three exact source blobs
+before building.  The focal compiled `8613/8613` jobs with exit zero in
+`1574.486` seconds; its exact three-declaration audit exited zero in `11.118`
+seconds.  Every readout is contained in
+`{propext, Classical.choice, Quot.sound}` and contains no forbidden axiom.
+
+The evidence JSON, internal manifest and downloaded archive SHA-256 values
+are respectively
+`3A04462D61145070AAB05D5CD78137CFEA266D467BA98276FCBB32C5F2946CB6`,
+`5FDBAB1F1532E2F90C7D70894F836434D4A18EBC74749005EC284E53A8C350E8`
+and
+`E35EDC4732BA9C30B10A59FC71B31F786FE21DD563EE3944A445DE873691E6A4`.
+The local fail-closed verifier emitted `CMP89_REGIONAL_OWNER_EVIDENCE_OK`;
+all 13 manifest entries rehashed with zero mismatches.
+
+The selective seal retires exactly the two PRE-VALIDATION notices in
+`BalabanCMP89NeumannRectangularRegionalOwnerTransport` and its audit.  It
+removes the varying reflection-period denominators using the coordinatewise
+period floor and transports the fine signed-`l1` decay to one fixed owner
+rate through the explicit inverse-scale metric inequality.  It introduces no
+rectangle-cardinality factor and accepts no owner map.  The physical
+rectangle embedding, period-floor producer and CMP99 owner metric remain the
+next dictionary boundary.  The CMP89 (2.42) representation producer,
+uniform-in-depth physical `B0, delta0`, window 15 and `TermSource` remain
+open.  Counters remain exactly `20/41`, `TermSource = 0`; window 15 remains
+compatible but unattained.

@@ -15095,3 +15095,31 @@ The next boundary is the explicit fine-to-owner transport, including the
 period floor and physical owner-map/metric bridge.  The CMP89 (2.42)
 certificate construction, uniform-in-depth `B0, delta0`, window 15 and
 `TermSource` remain open.  Counters stay exactly `20/41`, `TermSource = 0`.
+
+### CMP89 rectangular Neumann fine-to-owner transport (cold-sealed; physical geometry open; 20/41 unchanged)
+
+Exact source `b9561132d1eaa2e55d4638bf42f1632effd64d68` passed a fresh
+Colab Pro+ CPU/high-RAM gate without restored project `.lake/build`.  The
+focal compiled `8613/8613` jobs in `1574.486` seconds and the exact
+three-declaration audit exited zero in `11.118` seconds.  All readouts are
+contained in `{propext, Classical.choice, Quot.sound}`.  The downloaded
+archive and internal manifest SHA-256 values are respectively
+`E35EDC4732BA9C30B10A59FC71B31F786FE21DD563EE3944A445DE873691E6A4`
+and
+`5FDBAB1F1532E2F90C7D70894F836434D4A18EBC74749005EC284E53A8C350E8`;
+all 13 internal entries rehashed locally with zero mismatches.
+
+The sealed algebra removes every varying period denominator by an explicit
+coordinatewise floor and transports
+`exp(-(rho/L^j)*fineL1)` to `exp(-rho*ownerDist)` with the boundary payment
+kept literal.  It introduces neither an owner map nor a rectangle-volume
+factor.  The next source-facing brick constructs the actual half-open CMP89
+rectangle embedding, its reflection-period floor and the CMP99 localization
+owner metric.  At `ell = L^(depth+1)`, the exact boundary
+`2*(ell-1)` must be shown to cost at most `exp(2*rho)`, yielding a depth-free
+amplitude rather than hiding the payment in a new constant.
+
+The CMP89 (2.42) representation certificate construction, the final physical
+pair uniform in depth, window 15, rows 23--24 and `TermSource` remain open.
+Counters stay exactly `20/41`, `TermSource = 0`; window 15 remains compatible
+but unattained.

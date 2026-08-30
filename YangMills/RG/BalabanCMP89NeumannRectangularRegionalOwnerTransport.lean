@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalRegionalBound
 /-!
 # CMP89 regional Green: fixed-rate owner transport
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no result in this module is compiler-verified.
-
 This module transports the physical CMP89 (2.42) regional value estimate to
 one fixed owner rate.  The period floor and metric bridge remain explicit;
 it does not manufacture an owner map or a physical rectangle dictionary.

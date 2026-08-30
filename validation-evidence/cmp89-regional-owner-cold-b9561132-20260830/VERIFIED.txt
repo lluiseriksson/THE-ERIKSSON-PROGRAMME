@@ -1,0 +1,32 @@
+CMP89 regional fine-to-owner transport — cold evidence verification
+
+Status: PASS
+Source SHA: b9561132d1eaa2e55d4638bf42f1632effd64d68
+Runner commit: bcbfe31b3959b556ad5ac647bb81a546c5756a76
+Runner revision: cmp89-neumann-regional-owner-transport-v1
+Runner raw SHA-256: 0FE4DC6B6140896D2B2750356F820018213FCA6020A1A8EFFEB3DD8B24447102
+
+Fresh Colab Pro+ CPU/high-RAM checkout; no project .lake/build restoration.
+Lean: 4.29.0-rc6
+Lake: 5.0.0
+Mathlib: 07642720480157414db592fa85b626dafb71355b
+
+Focal: exit 0; 8613 jobs; 1574.486 seconds
+Focal stdout SHA-256: 1B7FF8EF6F7B5B5893966E82448613D54A6FEF05EDBCC84FEB71BCC95A5ED626
+Audit: exit 0; 11.118 seconds
+Audit stdout SHA-256: 9F02CCB5A2BF844E9C28C8F8E74D8D9C6312ECBDDA504523B08A7CA52AE84A9E
+
+The three exact target declarations were found.  Every readout is contained
+in {propext, Classical.choice, Quot.sound}; sorryAx and ofReduceBool are absent.
+
+Evidence JSON SHA-256: 3A04462D61145070AAB05D5CD78137CFEA266D467BA98276FCBB32C5F2946CB6
+Internal manifest SHA-256: 5FDBAB1F1532E2F90C7D70894F836434D4A18EBC74749005EC284E53A8C350E8
+Archive SHA-256: E35EDC4732BA9C30B10A59FC71B31F786FE21DD563EE3944A445DE873691E6A4
+Manifest entries rehashed locally: 13; mismatches: 0
+
+Local verifier: CMP89_REGIONAL_OWNER_EVIDENCE_OK
+
+Scope: this seals the generic fine-rate to fixed-owner-rate transport.  It
+does not construct the physical rectangle/owner geometry, the CMP89 (2.42)
+representation certificate, a depth-uniform physical B0/delta0 pair, window
+15 attainment, rows 23--24, or a TermSource.  Counters remain 20/41 and 0.

@@ -1,6 +1,9 @@
 # CMP89 regional Green: scale/owner transport after (2.42)
 
-Status: design only.  This note is not compiler or seal authority.
+Status: algebraic transport cold-sealed at source
+`b9561132d1eaa2e55d4638bf42f1632effd64d68`; physical owner geometry still
+design-only.  Ledger Addendum 974 and its locally verified archive are seal
+authority, not this note.
 
 ## Input already constructed
 
@@ -60,3 +63,27 @@ Until those facts are constructed for the literal regional carrier, this
 brick is infrastructure only.  It does not produce uniform physical
 `B0, delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 instantiate `TermSource`.
+
+## Planned physical endpoint after the geometry gate
+
+The literal CMP99 localization scale is `ell = L^(depth+1)`.  Its sealed
+fine-to-owner bridge pays the exact boundary `2*(ell-1)`.  The final physical
+consumer must therefore prove, rather than hide in a constant,
+
+```text
+(rho/ell) * (2*(ell-1)) <= 2*rho.
+```
+
+After this single calculation, the owner-rate endpoint has the depth-free
+amplitude
+
+```text
+2^4 * B0(a,rho)
+  * (2/(1-exp(-rho)))^4
+  * exp(2*rho)
+```
+
+and owner rate `rho`.  The side/period floor and the rectangle fit into the
+literal CMP99 carrier remain source-facing dictionary facts.  In particular,
+the endpoint may not infer them from positivity of the side vector or replace
+the varying rectangle by an arbitrary owner map.
