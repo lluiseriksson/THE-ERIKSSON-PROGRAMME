@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
+import re
 import subprocess
 import time
 import urllib.request
@@ -115,11 +116,22 @@ def main() -> None:
         ],
     )
     normalized = "".join(audit.split())
-    if audit.count("depends on axioms:") != 9:
+    readout_count = (
+        normalized.count("dependsonaxioms:[")
+        + normalized.count("doesnotdependonanyaxioms")
+    )
+    if readout_count != 9:
         raise RuntimeError("HOT_AXIOM_HEADER_COUNT_MISMATCH")
     for forbidden in ("sorryAx", "ofReduceBool"):
         if forbidden in normalized:
             raise RuntimeError(f"HOT_FORBIDDEN_AXIOM={forbidden}")
+    allowed = {"propext", "Classical.choice", "Quot.sound"}
+    for body in re.findall(r"dependsonaxioms:\[([^]]*)\]", normalized):
+        unexpected = {name for name in body.split(",") if name} - allowed
+        if unexpected:
+            raise RuntimeError(
+                "HOT_UNEXPECTED_AXIOMS=" + ",".join(sorted(unexpected))
+            )
     print("HOT_C6D_CMP89_REFLECTION_SCALE_PASS", flush=True)
 
 
