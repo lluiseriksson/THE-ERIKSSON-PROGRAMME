@@ -105,10 +105,12 @@ theorem cmp89NeumannFineWeight_le_ownerWeight_of_metric_bridge_draft
   rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
   calc
     Real.exp
-        (-(rho / (ell : ℝ) * cmp89Eq251LatticeL1Length u)) ≤
+        (-(rho / (ell : ℝ)) * ∑ mu, ((u mu).natAbs : ℝ)) ≤
       Real.exp
         ((rho / (ell : ℝ)) * boundary - rho * ownerDist) :=
-      Real.exp_le_exp.mpr hexponent
+      by
+        simpa [cmp89Eq251LatticeL1Length] using
+          (Real.exp_le_exp.mpr hexponent)
     _ = Real.exp ((rho / (ell : ℝ)) * boundary) *
         Real.exp (-rho * ownerDist) := by
       rw [sub_eq_add_neg, Real.exp_add]
@@ -153,6 +155,7 @@ theorem norm_cmp89Eq248PhysicalRegionalGreen_le_owner_of_geometry_draft
   have hB0 : 0 ≤
       cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft a rho :=
     (cmp89Eq248PhysicalFullLatticeGreenDecayCertificate_draft
+      (L := L) (j := j)
       ha hrho hamplitude hradius hwindow hmass).B0_nonneg
   have hA : 0 ≤ (2 : ℝ) ^ 4 *
       cmp89Eq248ComplexStabilizedGreenAmplitudeBound_draft a rho :=
