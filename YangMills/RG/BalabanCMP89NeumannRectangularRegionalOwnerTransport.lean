@@ -75,7 +75,9 @@ theorem cmp89NeumannReflectionPeriodProduct_uniform_le_draft
               (-(rho / (ell : ℝ)) *
                 (cmp89NeumannReflectionPeriodNat m mu : ℝ)) := by
           rw [sub_nonneg]
-          exact Real.exp_le_one_iff.mpr (by positivity)
+          exact Real.exp_le_one_iff.mpr
+            (mul_nonpos_of_nonpos_of_nonneg
+              (neg_nonpos.mpr hdelta.le) hP.le)
         exact div_nonneg (by norm_num) hden
       · intro mu _
         exact hcoord mu
@@ -97,11 +99,22 @@ theorem cmp89NeumannFineWeight_le_ownerWeight_of_metric_bridge_draft
   have hscale : (rho / (ell : ℝ)) * (ell : ℝ) = rho := by
     field_simp [ne_of_gt hellReal]
   have hmul := mul_le_mul_of_nonneg_left hmetric hrate
+  have hmetricScaled :
+      rho * ownerDist ≤
+        (rho / (ell : ℝ)) * cmp89Eq251LatticeL1Length u +
+          (rho / (ell : ℝ)) * boundary := by
+    calc
+      rho * ownerDist =
+          (rho / (ell : ℝ)) * ((ell : ℝ) * ownerDist) := by
+        rw [mul_assoc, hscale]
+      _ ≤ (rho / (ell : ℝ)) *
+          (cmp89Eq251LatticeL1Length u + boundary) := hmul
+      _ = (rho / (ell : ℝ)) * cmp89Eq251LatticeL1Length u +
+          (rho / (ell : ℝ)) * boundary := by ring
   have hexponent :
       -(rho / (ell : ℝ) * cmp89Eq251LatticeL1Length u) ≤
         (rho / (ell : ℝ)) * boundary - rho * ownerDist := by
-    rw [← hscale]
-    nlinarith
+    linarith
   rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs]
   calc
     Real.exp
