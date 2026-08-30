@@ -55,6 +55,12 @@ RUNNERS = [
         "tmp/run_c6d_cmp89_reflection_representation_hot.py",
         "f4f5e577a13ffd3dfe6ae2a024429455509a9151c89e6671fe50f7e82e73af49",
     ),
+    (
+        "reflection_residue",
+        "3ece7761e8c52afd0265f9374fa2feecfa00cdee",
+        "tmp/run_c6d_cmp89_reflection_residue_hot.py",
+        "99f22c996c8a0ae7707ca8de3e696ae1fbc21456ccb398a38322caa4d9e8bdab",
+    ),
 ]
 
 
