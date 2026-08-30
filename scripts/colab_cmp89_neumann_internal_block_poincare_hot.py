@@ -9,13 +9,13 @@ import subprocess
 import time
 from pathlib import Path
 
-RUNNER_REV = "cmp89-neumann-internal-block-poincare-hot-v1"
-SOURCE_SHA = "82f934ef4bea0cd18a1b468e2dae92da94156af8"
-BASE_SHA = "594e33346dc4767517954c05f8f49283e2900eae"
+RUNNER_REV = "cmp89-neumann-internal-block-poincare-hot-v2"
+SOURCE_SHA = "302eb35cf0666be931c6277253eb8c179922b6cc"
+BASE_SHA = "82f934ef4bea0cd18a1b468e2dae92da94156af8"
 ROOT = Path("/content/hrpoly-cmp89-neumann-kernel-range-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannInternalBlockPoincare.lean":
-        "638654b498c51c1d33f43fae17729717ff4d6293369fe685951a48e4ac4738f9",
+        "aef04eab49ddde0f7bd79a12019c640f88ec554c8894f7d5938792d2cea0dffa",
     "YangMills/RG/BalabanCMP89SourceNeumannInternalBlockPoincareAudit.lean":
         "92ee18cade0091792d0128a65d7908bae846989efb50b6ba210c6a99863f3f6c",
 }
