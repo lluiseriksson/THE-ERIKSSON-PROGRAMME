@@ -41933,3 +41933,32 @@ The CMP89 (2.42) representation certificate remains a named analytic input;
 the final physical pair uniform in depth, window 15, rows 23--24 and a
 `TermSource` inhabitant remain open.  Counters remain exactly `20/41`,
 `TermSource = 0`; window 15 remains compatible but unattained.
+
+## Addendum 977 (2026-08-30, **CMP89 physical uniform-owner endpoint promoted PRE-VALIDATION after hot PASS; cold seal pending; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`389d2626250f4b729253e74e6bc885166cb795fc` promotes the physical endpoint
+that combines the cold-sealed reflection-period floor and canonical CMP99
+owner geometry with the cold-sealed regional value-bound consumer.  Its
+statement keeps the literal CMP89 (2.42) representation certificate as a
+named analytic input, fixes owner rate `rho`, and pays the exact boundary
+`2*(L^(depth+1)-1)` by the visible depth-free factor `exp(2*rho)`.
+
+On the retained cold-origin checkout, the first focal stopped only at the
+propositional normalization `((L^n : Nat) : Real) = (L : Real)^n`.  Repair
+checkpoint `e1e3d62750b301f9dc63dcda2c5b2d62ec00abc6` supplied
+`Nat.cast_pow` without changing the statement, hypotheses or constants.  The
+repaired focal then compiled `8663/8663` jobs in `6.6` seconds and its exact
+one-declaration audit depended only on
+`{propext, Classical.choice, Quot.sound}`.
+
+These results are diagnostic only.  The fail-closed fresh-directory runner
+`scripts/colab_cmp89_neumann_rectangular_physical_uniform_owner_validation.py`
+is fixed to the source checkpoint and three exact blob hashes; its own
+SHA-256 is
+`19E2F8898121EC49107EA2D3D6AA3569C78F698B8D98DF273562646B7AA64500`.
+Until that gate passes and its archive is locally verified, the source and
+audit retain their PRE-VALIDATION notices.  The endpoint still consumes,
+rather than constructs, CMP89 (2.42); it does not attain window 15, discharge
+rows 23--24 or instantiate `TermSource`.  Counters remain exactly `20/41`,
+`TermSource = 0`; window 15 remains compatible but unattained.
