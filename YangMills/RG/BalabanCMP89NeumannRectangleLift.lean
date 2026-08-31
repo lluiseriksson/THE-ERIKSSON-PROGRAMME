@@ -35,7 +35,13 @@ theorem cmp99LiftActiveRegion_cmp89Rectangle_eq
         (cmp89SourceNeumannRectangleActiveRegion (N := N) m) =
       cmp89SourceNeumannRectangleActiveRegion (N := M * N)
         (cmp89SourceNeumannScaleRectangleSide M m) := by
-  apply ActiveGaugeRegion.ext
+  change ActiveGaugeRegion.mk
+      (cmp116RegionSites (M := M) (N' := N)
+        (cmp89SourceNeumannRectangleActiveRegion (N := N) m).sites) =
+    ActiveGaugeRegion.mk
+      (cmp89SourceNeumannRectangleActiveRegion (N := M * N)
+        (cmp89SourceNeumannScaleRectangleSide M m)).sites
+  apply congrArg ActiveGaugeRegion.mk
   ext x
   rw [mem_cmp99LiftActiveRegion_sites_iff]
   rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
