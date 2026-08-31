@@ -42768,3 +42768,39 @@ the componentwise full-space Green action and the exact multiple-reflection
 identity remain explicit inputs. It does not produce uniform `B0`/`delta0`,
 attain window 15, discharge a terminal field, move `20/41` or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1001 (2026-08-31, **canonical CMP89 Neumann rectangle active region cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `0900460f6c2b00e4a86b4797090f66078a9c5ad3`,
+driven by runner commit `a39910356755d71516e492cbf3741713c5d71f83`
+(runner blob SHA-256
+`C528B46EBD27333EF818DE6E47DEE0308CEDB7E2B64C31B1D0BF4F464C7FE885`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`. The focal completed `8662/8662`
+jobs in `2148.011 s`; the exact five-declaration audit exited zero in
+`7.812 s`. Every declaration uses only
+`{propext, Classical.choice, Quot.sound}`, and all 14 ordered stage records
+exited zero with Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The downloaded archive SHA-256 is
+`C4FDFBD6065A5B8CE493FEAC31F7822BD4BBC34F27098067953C96A33FDDF61C`;
+the stored evidence JSON SHA-256 is
+`D05A7FBFD3FAB0DCAFBC74F4EA3C0F8DD4A157FFA381F54F536ADB241BF15E0E`
+(canonical payload hash
+`4DCDA52D14907988470324528932F01DA5E83234737D4081DEFE923A32A588A0`).
+The executed notebook SHA-256 is
+`FBEFF0D20859FDFA327A643AD52050F7C8A88E9D742554CA8625440A475E3FDD`.
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-rectangle-active-region-cold-0900460f/`
+and
+`tmp/verify_cmp89_neumann_rectangle_active_region_cold_evidence.ps1`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+This seal constructs the literal half-open rectangular active region and its
+site equivalence internally. It does not identify that rectangle with the
+generated tower's terminal active region, define the componentwise full-space
+Green action or prove the exact reflection equality. Those remain explicit
+source-facing obligations. It does not produce uniform `B0`/`delta0`, attain
+window 15, discharge a terminal field, move `20/41` or construct a
+`TermSource`; `TermSource = 0` remains exact.

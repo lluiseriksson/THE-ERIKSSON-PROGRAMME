@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalOwnerGeometry
 /-!
 # Canonical active region for the CMP89 half-open Neumann rectangle
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
-
 The source rectangle is embedded in the finite carrier by the already audited
 nonnegative-coordinate map.  This module defines the active region to be
 exactly its half-open coordinate image and constructs the site equivalence

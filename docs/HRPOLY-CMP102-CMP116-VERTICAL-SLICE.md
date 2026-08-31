@@ -15527,3 +15527,20 @@ terminal region; fix the componentwise full-space Green action; and prove the
 reflection identity for that literal inverse. Only then may the already
 sealed regional/owner and uniform-`B0` consumers be invoked. The gate does
 not move `20/41`, attain window 15 or construct a `TermSource`.
+
+The canonical CMP89 Neumann half-open rectangle active region is now
+cold-sealed at exact source
+`0900460f6c2b00e4a86b4797090f66078a9c5ad3`. A fresh Colab Pro+
+CPU/high-RAM checkout with no restored project `.lake/build` completed
+`8662/8662` focal jobs in `2148.011 s`; the exact five-declaration audit
+exited zero in `7.812 s` with only
+`{propext, Classical.choice, Quot.sound}`. Ledger Addendum 1001 records the
+independently verified archive, canonical payload, stored JSON, notebook and
+source-blob hashes.
+
+This brick removes the free half-open rectangle site equivalence from the
+source-facing gate. The exact complete-block lift from that rectangle to the
+generated terminal region remains the next finite dictionary; the
+componentwise full-space Green action and printed reflection equality remain
+open after it. This infrastructure does not move `20/41`, attain window 15
+or construct a `TermSource`.
