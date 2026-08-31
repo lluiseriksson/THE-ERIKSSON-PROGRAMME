@@ -15434,3 +15434,22 @@ remainder nor applies the inverse coarse spacing.  The next promoted producer
 must perform exactly that combination and exhibit its physical smallness gate.
 No arbitrary-depth CMP89 (2.42), window-15 attainment or terminal obligation
 follows here; counters remain exactly `20/41` and `TermSource = 0`.
+
+The literal physical derivative-feedback producer is now cold-sealed at
+repaired source `5833be0088379c5b702a760969feef31386e74e2`.  Its fresh Colab
+Pro+ CPU/high-RAM checkout shared no project `.lake/build`; the focal completed
+`8722/8722` jobs in `2259.291 s`, and the exact eleven-declaration audit exited
+zero in `16.670 s`, with every readout contained in
+`{propext, Classical.choice, Quot.sound}`.  Ledger Addendum 996 records the
+independently verified archive, canonical payload, stored JSON and exact
+source-blob hashes.
+
+The theorem now performs the full depth-two physical combination: restricted
+straight parallel defect plus `Ubar` remainder, followed by exact cancellation
+of the inverse coarse spacing.  It reaches a nonempty scalar gate at
+`d = 4`, `M = 4`, `q = 10` and returns the corresponding quantitative
+depth-two Neumann Poincare certificate.  The source-generated specialization
+must still construct the first coarse background, region and radius internally;
+arbitrary-depth recursion then requires a recursive Neumann coefficient and a
+single terminal record of all adjacent contractions.  Nothing here proves
+CMP89 (2.42), attains window 15, moves `20/41` or constructs a `TermSource`.

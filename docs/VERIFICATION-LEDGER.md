@@ -42579,3 +42579,44 @@ and no zero-extension boundary energy enter.  It does not combine the
 (2.42), attain window 15, discharge a terminal field or construct a
 `TermSource`.  The live counters therefore remain exactly `20/41` and
 `TermSource = 0`.
+
+## Addendum 996 (2026-08-31, **literal physical Neumann derivative feedback and depth-two quantitative Poincare gate cold-sealed; 20/41 unchanged**)
+
+Exact repaired source checkpoint `5833be0088379c5b702a760969feef31386e74e2`,
+driven by runner commit `b380ba046a731bb7c41e2f2409ed5558ad5ea824`
+(Git-blob SHA-256
+`9E06B2E7EBD33EB13133F5F00E9FDE313491E9D311A0FAB673270E244AB21A2E`;
+transport SHA-256
+`D06B8A186C9FCEFB54D6E21264D2467B6FB723B337BE092D4C3380B875E47CEE`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no shared or
+restored project `.lake/build`.  The focal completed `8722/8722` jobs in
+`2259.291 s`; its exact eleven-declaration audit exited zero in `16.670 s`.
+Every readout uses only `{propext, Classical.choice, Quot.sound}`, and all 16
+ordered stage records exited zero.
+
+The downloaded archive SHA-256 is
+`BED9C0671DDE6C1C269D12D2D74223364A3B5333851F52980AF1DB03734C9F41`;
+the stored evidence JSON SHA-256 is
+`8B3DC571B5DF161564E7A99FF0A0F5C872D018291FE2EFCC1CD7AD3CEDCAD4E3`
+(canonical payload hash
+`E8A38B8D0D8BB819C37CDC3FB89F04C30AC5837DC950EB0A92E21688F207C869`).
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-physical-feedback-5833be00/` and
+`tmp/verify_physical_derivative_feedback_cold_evidence.ps1`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The first hot elaboration attempt stopped at the unreduced local `psi` in the
+physical derivative-feedback conclusion.  Replacing the broad reduction by
+the explicit `dsimp only` repair changed no theorem statement, hypothesis or
+coefficient.  The sealed producer combines the straight parallel defect and
+the `Ubar` transport remainder, then cancels the inverse coarse spacing
+against the physical scale.  The derivative coefficient remains literally
+`2 * M^{-d}` and the field coefficient remains the same block-average mass
+times the named one-step physical defect budget.
+
+At `d = 4`, `M = 4`, `q = 10` it also proves a strict positive-radius scalar
+gate and feeds that gate into the quantitative depth-two regional Neumann
+Poincare composition.  It does not iterate arbitrary depth, establish CMP89
+(2.42), attain window 15, discharge a terminal field, move a terminal
+obligation or construct a `TermSource`.  The live counters therefore remain
+exactly `20/41` and `TermSource = 0`.

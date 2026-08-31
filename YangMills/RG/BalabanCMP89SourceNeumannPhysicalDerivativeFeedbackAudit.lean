@@ -2,10 +2,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannPhysicalDerivativeFeedback
 
 /-!
 # Axiom audit: literal physical CMP89 Neumann derivative feedback
-
-PRE-VALIDATION: audit prepared outside the tracked Lean tree; `.olean` has
-not yet been materialized and the declarations have not yet been verified by
-the Lean compiler.
 -/
 
 namespace YangMills.RG

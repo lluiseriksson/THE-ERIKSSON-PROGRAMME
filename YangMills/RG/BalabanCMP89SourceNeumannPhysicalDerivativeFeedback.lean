@@ -7,10 +7,6 @@ import YangMills.RG.BalabanCMP99SourcePoincarePositiveRadiusReachability
 /-!
 # Literal physical CMP89 Neumann derivative feedback
 
-PRE-VALIDATION: source prepared outside the tracked Lean tree; `.olean` has
-not yet been materialized and the result has not yet been verified by the
-Lean compiler.
-
 This module combines the two source-printed derivative species without a
 boundary or carrier-cardinality term, then cancels the fine/coarse
 lattice-spacing conventions exactly.
