@@ -33,7 +33,10 @@ noncomputable def finitePiLpScalarKernelOperator
       map_add' := fun f h => by
         apply PiLp.ext
         intro target
-        simp only [Pi.add_apply]
+        change
+          (∑ source, kernel target source • (f source + h source)) =
+            (∑ source, kernel target source • f source) +
+              ∑ source, kernel target source • h source
         rw [← Finset.sum_add_distrib]
         apply Finset.sum_congr rfl
         intro source _
@@ -41,7 +44,9 @@ noncomputable def finitePiLpScalarKernelOperator
       map_smul' := fun c f => by
         apply PiLp.ext
         intro target
-        simp only [RingHom.id_apply, Pi.smul_apply]
+        change
+          (∑ source, kernel target source • (c • f source)) =
+            c • ∑ source, kernel target source • f source
         rw [Finset.smul_sum]
         apply Finset.sum_congr rfl
         intro source _
@@ -55,7 +60,10 @@ kernel. -/
         (singleFinitePiLp source v) target =
       kernel target source • v := by
   classical
-  simp [finitePiLpScalarKernelOperator]
+  change
+    (∑ x, kernel target x • (if x = source then v else 0)) =
+      kernel target source • v
+  simp
 
 variable {d : ℕ}
 
