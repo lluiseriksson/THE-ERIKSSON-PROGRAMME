@@ -42732,3 +42732,39 @@ seal does not prove CMP89 (2.42), produce uniform `B0`/`delta0`, attain window
 15, discharge a terminal field, move a terminal obligation or construct a
 `TermSource`.  The live counters therefore remain exactly `20/41` and
 `TermSource = 0`.
+
+## Addendum 1000 (2026-08-31, **flat generated finite-depth canonical CMP89 reflection gate cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `240551d41e880176df77d507b0e1a8a5dc7d3163`,
+driven by runner commit `11ced6650640c5ce64bdec05c91f3620040433ee`
+(runner transport SHA-256
+`A364B6704085A6AEACD9A24A059116E2078796DAAC16DB5CF8ACC15304AD8D2F`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`. The focal completed `8731/8731`
+jobs in `2238.570 s`; the exact three-declaration audit exited zero in
+`21.125 s`. Every declaration uses only
+`{propext, Classical.choice, Quot.sound}`, and all 16 ordered stage records
+exited zero with Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The downloaded archive SHA-256 is
+`3F1147D4BC63837B9F2DFAD4913878E814D88E34B00A41D1A06644CAA3F6EA97`;
+the stored evidence JSON SHA-256 is
+`8415AE138B7944257A5A3BBC92D365431C3F5E6E066C5D118F88AF4DE2C231BE`
+(canonical payload hash
+`770CB8BA28FDAE35E95D5AC4CB7124D85E0CFC03A9DB34B49252AB40E0C5E62F`).
+The executed notebook SHA-256 is
+`AF23AE3905F5612539228A00ACC9E78CC545FAFED3FC2277275E5B15EC03B555`.
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-flat-generated-finite-depth-reflection-cold-240551d4/`
+and
+`tmp/verify_cmp89_flat_generated_finite_depth_reflection_cold_evidence.ps1`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+This seal removes the free retained tower, radius chain and Poincare
+certificate from the flat finite-depth canonical regional Green. It is a
+source-facing gate, not CMP89 (2.42): the half-open rectangle equivalence,
+the componentwise full-space Green action and the exact multiple-reflection
+identity remain explicit inputs. It does not produce uniform `B0`/`delta0`,
+attain window 15, discharge a terminal field, move `20/41` or construct a
+`TermSource`; `TermSource = 0` remains exact.

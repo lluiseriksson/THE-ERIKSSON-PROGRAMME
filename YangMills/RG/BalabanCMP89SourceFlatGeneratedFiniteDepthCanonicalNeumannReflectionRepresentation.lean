@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannFiniteDepthPhysicalPoincare
 /-!
 # Flat generated finite-depth canonical CMP89 (2.42) gate
 
-PRE-VALIDATION: source present; `.olean` not yet materialized in a fresh
-checkout, and the result has not yet been verified by the compiler.
-
 This module removes the free retained tower and free Poincare certificate from
 the canonical Neumann reflection gate at the literal flat background. The
 half-open rectangle equivalence, full-space Green action, and exact reflection

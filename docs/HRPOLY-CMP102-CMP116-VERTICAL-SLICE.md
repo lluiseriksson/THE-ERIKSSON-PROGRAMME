@@ -15506,3 +15506,24 @@ retained/generated terminal bridge supplies the exact endpoint equality.
 CMP89 (2.42), the uniform `B0`/`delta0` producer and window-15 attainment are
 still open.  This infrastructure does not move `20/41` and does not construct
 a `TermSource`.
+
+The flat generated finite-depth canonical CMP89 reflection gate is now
+cold-sealed at exact source
+`240551d41e880176df77d507b0e1a8a5dc7d3163`. A fresh Colab Pro+
+CPU/high-RAM checkout with no restored project `.lake/build` completed
+`8731/8731` focal jobs in `2238.570 s`; the exact three-declaration audit
+exited zero in `21.125 s` with only
+`{propext, Classical.choice, Quot.sound}`. Ledger Addendum 1000 records the
+independently verified archive, canonical payload, stored JSON, notebook and
+source-blob hashes.
+
+The gate constructs the flat background, zero-radius chain, generated
+finite-depth retained tower, terminal positive prefix, recursive Poincare
+constant and canonical regional inverse internally. It deliberately does
+not assert the printed method-of-images formula. The remaining finite route
+is: construct the canonical half-open rectangular active region and its site
+equivalence; prove its exact complete-block alignment with the generated
+terminal region; fix the componentwise full-space Green action; and prove the
+reflection identity for that literal inverse. Only then may the already
+sealed regional/owner and uniform-`B0` consumers be invoked. The gate does
+not move `20/41`, attain window 15 or construct a `TermSource`.
