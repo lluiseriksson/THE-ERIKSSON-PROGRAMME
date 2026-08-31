@@ -42421,3 +42421,33 @@ identify the four literal physical maps, prove the retained-prefix derivative
 transport bound, iterate through arbitrary depth, construct CMP89 (2.42), or
 attain window 15.  The live counters therefore remain exactly `20/41` and
 `TermSource = 0`.
+
+## Addendum 991 (2026-08-31, **regional two-level Poincare composition cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `1709d97d9e787ff1cd84717945c9e3b299dac6f7`,
+driven by runner commit `249aef359f2260dd13330a7befcc9976b493337d`
+(runner SHA-256
+`AEC8548621D1A5DE70660BC9BC605A077845B6AAF16B1F1B0CB13ED3A498B8CC`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no shared or
+restored project `.lake/build`.  The focal completed `8471/8471` jobs in
+`1045.723 s`; its two-declaration audit exited zero in `6.353 s`.  Both exact
+readouts use only `{propext, Classical.choice, Quot.sound}`, and all 14
+ordered stage records exited zero.
+
+The downloaded archive SHA-256 is
+`076833371621FEDAC9E6660762F5F58922DD253967961691B3E509646BCA60DE`;
+the stored evidence JSON SHA-256 is
+`5555B8384290F7A3491B43A3BBEAF3ACA46609D5D2E4AECDACF5808FF4FB1D03`
+(canonical payload hash
+`6CC603601AED92A047840C578385E948F7551595C2CD99A287FE6C3B7C3FFF5A`).
+The durable package and its fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-two-level-poincare-composition-cold-1709d97d-20260831/`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The seal fixes the fine derivative, fine average, coarse derivative and
+terminal average as separately typed regional maps and returns the literal
+composition `Qnext.comp Qfine`.  The denominator remains exactly
+`1 - C_f * C_c * B`; no generated background, physical derivative-feedback
+coefficient, arbitrary-depth induction, CMP89 (2.42), window-15 attainment
+or terminal producer is claimed.  The live counters therefore remain exactly
+`20/41` and `TermSource = 0`.

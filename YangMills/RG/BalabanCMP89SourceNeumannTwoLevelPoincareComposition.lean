@@ -4,8 +4,8 @@ import YangMills.RG.BalabanCMP89SourceNeumannTwoLevelPoincareAlgebra
 /-!
 # Regional two-level Neumann Poincare composition
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
+Compiler-verified in a fresh Colab checkout at source checkpoint
+`1709d97d9e787ff1cd84717945c9e3b299dac6f7`.
 
 This adapter packages the sealed two-level feedback algebra as the literal
 regional Poincare proposition consumed by the CMP89 Neumann precision.  The

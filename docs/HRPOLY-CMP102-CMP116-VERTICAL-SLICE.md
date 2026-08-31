@@ -15347,3 +15347,21 @@ derivative and retained terminal average, then prove the physical derivative
 feedback coefficient `B`.  No exact-kernel propagation is inferred, and the
 seal does not move `20/41`, instantiate `TermSource`, prove CMP89 (2.42), or
 attain window 15.
+
+The regional composition of that algebra is now cold-sealed at exact source
+`1709d97d9e787ff1cd84717945c9e3b299dac6f7`.  A fresh Colab Pro+ CPU/high-RAM
+checkout with no restored project `.lake/build` compiled `8471/8471` focal
+jobs in `1045.723 s`; the exact two-declaration audit exited zero in `6.353 s`
+and both readouts use only `{propext, Classical.choice, Quot.sound}`.  Ledger
+Addendum 991 records the independently verified archive, canonical payload,
+stored JSON and exact source-blob hashes.
+
+This adapter makes all four regional maps explicit and concludes with the
+literal terminal composition `Qnext.comp Qfine`.  It does not manufacture the
+physical feedback inequality.  The next physical adapter fixes the two
+transported source averages and constructs both one-scale Poincare inputs
+internally; after that, the exact Neumann coarse derivative must be bounded
+through its straight parallel component plus the `Ubar` remainder.  The
+Dirichlet zero-extension estimate is not an accepted substitute.  No terminal
+field is discharged: counters remain exactly `20/41`, `TermSource = 0`, and
+window 15 remains compatible but unattained.
