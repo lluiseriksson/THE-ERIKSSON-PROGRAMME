@@ -21,7 +21,7 @@ open scoped Matrix.Norms.L2Operator
 noncomputable section
 
 variable {d Nfine Ncoarse Nc : ℕ}
-  [NeZero Nfine] [NeZero Ncoarse] [NeZero Nc]
+  [NeZero d] [NeZero Nfine] [NeZero Ncoarse] [NeZero Nc]
 
 /-- A deliberately explicit common coefficient dominating the fine-energy
 and terminal-average coefficients after feedback absorption. -/
