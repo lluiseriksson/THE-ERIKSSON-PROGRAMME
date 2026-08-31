@@ -45,8 +45,14 @@ def cmp89SourceNeumannRectangleSite
     intro mu
     have hx0 : 0 ≤ x.1 mu := (x.2 mu).1
     have hm0 : 0 ≤ m mu := le_trans (x.2 mu).1 (x.2 mu).2.le
+    have hxcast : (Int.toNat (x.1 mu) : ℤ) = x.1 mu :=
+      Int.toNat_of_nonneg hx0
+    have hmcast : (Int.toNat (m mu) : ℤ) = m mu :=
+      Int.toNat_of_nonneg hm0
+    have hcast : (Int.toNat (x.1 mu) : ℤ) < (Int.toNat (m mu) : ℤ) := by
+      simpa only [hxcast, hmcast] using (x.2 mu).2
     rw [cmp89SourceNeumannRectanglePointToFinBox_val_draft]
-    omega⟩
+    exact_mod_cast hcast⟩
 
 /-- Every site of the canonical rectangular region has a unique literal
 integer representative in the source half-open rectangle. -/
