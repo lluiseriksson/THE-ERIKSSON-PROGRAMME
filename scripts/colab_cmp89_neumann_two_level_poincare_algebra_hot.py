@@ -9,12 +9,12 @@ import subprocess
 import time
 
 
-RUNNER_REV = "cmp89-neumann-two-level-poincare-algebra-hot-v1"
-SOURCE_SHA = "e1e13510f5e8ea9b522f74ec010e3f4f16bc4d7e"
+RUNNER_REV = "cmp89-neumann-two-level-poincare-algebra-hot-v2"
+SOURCE_SHA = "3d23e4036b9260b24b7e7a5106c8dad9b2e94b28"
 ROOT = Path("/content/hrpoly-cmp89-neumann-generated-two-scale-gate-cold")
 EXPECTED_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannTwoLevelPoincareAlgebra.lean":
-        "d99fd8c8a4d90db773ed386319957c5cd2d14cb3",
+        "39c1ef2e2c1965155bc4ad4a57a28d3e8af51f3e",
     "YangMills/RG/BalabanCMP89SourceNeumannTwoLevelPoincareAlgebraAudit.lean":
         "d214c3092675f75132aacafee1e3a5519836be99",
 }
