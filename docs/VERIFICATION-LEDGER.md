@@ -42541,3 +42541,41 @@ Neumann energy.  No active-volume factor or zero-extension boundary energy
 enters.  It is not yet the combined derivative-feedback estimate and does
 not prove arbitrary-depth recursion, CMP89 (2.42), window-15 attainment or a
 terminal producer.  Counters remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 995 (2026-08-31, **restricted Neumann parallel-defect bound cold-sealed; 20/41 unchanged**)
+
+Exact repaired source checkpoint `d70be29966b63b3a598bf70ce8f32d1afea687ad`,
+driven by runner commit `4b5c17fe973d6a124eb9c93536a40f45791e8e47`
+(runner SHA-256
+`DA2AB48B7F98D9CBDFCD3F4AE8575447355290D5A5A128A7007F1A9099490DC7`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no shared or
+restored project `.lake/build`.  The focal completed `8475/8475` jobs in
+`1499.209 s`; its exact audit exited zero in `8.948 s` and uses only
+`{propext, Classical.choice, Quot.sound}`.  All 16 ordered stage records,
+including the explicit `apt`/`zstd` bootstrap stages, exited zero.
+
+The downloaded archive SHA-256 is
+`2708186FB48F8A6C604A833D39AE397F56EC6DBECA6BEC2BC7499B1DD1E6CD7C`;
+the stored evidence JSON SHA-256 is
+`92E5576CA5715782A77CEC89074F70246D3EB9FE8CF4D6CAFDFEFF472DF997B5`
+(canonical payload hash
+`A3F4CB0EC437BC67B14C2A55F9C69A486008507D0631A36ADBA2A1E2A951C891`).
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-rpdb-d70be299/`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The first cold attempt at source `e869e83b` is retained as negative evidence:
+Lean rejected an over-eager `gcongr` step at the nonnegative multiplier.  The
+repair makes the multiplication monotonicity and the literal nonnegative
+block-average weight explicit; no mathematical statement, coefficient or
+hypothesis changed.
+
+The sealed producer combines one physical factor `M` from the pointwise
+straight-transport defect with the independently sealed factor `M` from the
+restricted path-layer count.  The resulting `M^2` bound is volume-free and
+uses only the literal regional Neumann energy: no active-cardinality factor
+and no zero-extension boundary energy enter.  It does not combine the
+`Ubar` remainder or coarse spacing, iterate arbitrary depth, prove CMP89
+(2.42), attain window 15, discharge a terminal field or construct a
+`TermSource`.  The live counters therefore remain exactly `20/41` and
+`TermSource = 0`.

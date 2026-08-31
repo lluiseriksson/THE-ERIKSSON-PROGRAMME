@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRestrictedStraightPathEnergy
 /-!
 # Restricted parallel-defect bound for the CMP89 Neumann recursion
 
-PRE-VALIDATION: source present; `.olean` not yet materialized and the result
-has not yet been verified by the Lean compiler.
-
 The pointwise CMP99 straight-transport estimate pays one factor `M` for the
 length of each path.  The restricted straight-path theorem pays the second
 factor `M` when all path layers are summed against the literal regional

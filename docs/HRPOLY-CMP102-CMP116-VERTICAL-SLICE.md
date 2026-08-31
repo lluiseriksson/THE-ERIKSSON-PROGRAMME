@@ -15416,3 +15416,21 @@ straight-defect coefficient with the existing `Ubar` remainder coefficient
 and the explicit coarse-spacing normalization.  The current seal itself does
 not move `20/41`, instantiate `TermSource`, prove CMP89 (2.42), or attain
 window 15.
+
+The restricted parallel-defect estimate built on that path energy is now
+cold-sealed at repaired source
+`d70be29966b63b3a598bf70ce8f32d1afea687ad`.  Its fresh Colab Pro+
+CPU/high-RAM checkout shared no project `.lake/build`; the focal completed
+`8475/8475` jobs in `1499.209 s`, and its exact audit exited zero in
+`8.948 s` with only `{propext, Classical.choice, Quot.sound}`.  Ledger
+Addendum 995 records the independently verified archive, canonical payload,
+stored JSON and exact source-blob hashes, together with the preserved failed
+first cold attempt and its purely elaborational repair.
+
+This seal exposes the literal volume-free `M^2` coefficient: one `M` is the
+length of each physical straight path and the other is the injective sum over
+its retained layers.  It neither absorbs the separate `Ubar` transport
+remainder nor applies the inverse coarse spacing.  The next promoted producer
+must perform exactly that combination and exhibit its physical smallness gate.
+No arbitrary-depth CMP89 (2.42), window-15 attainment or terminal obligation
+follows here; counters remain exactly `20/41` and `TermSource = 0`.
