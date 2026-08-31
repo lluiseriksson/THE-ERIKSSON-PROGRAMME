@@ -43,7 +43,7 @@ theorem cmp99LiftActiveRegion_cmp89Rectangle_eq
         (cmp89SourceNeumannScaleRectangleSide M m)).sites
   apply congrArg ActiveGaugeRegion.mk
   ext x
-  rw [mem_cmp99LiftActiveRegion_sites_iff]
+  rw [mem_cmp116RegionSites_iff]
   rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
   rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
   apply forall_congr'
