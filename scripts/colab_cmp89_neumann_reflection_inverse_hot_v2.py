@@ -10,8 +10,8 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-reflection-inverse-hot-v2"
-SOURCE_SHA = "700818adb4eb1a1a4ace8bafe17b983ef1e835e0"
+RUNNER_REV = "cmp89-neumann-reflection-inverse-hot-v3"
+SOURCE_SHA = "27f8972e1ca55da5227e57cabd29e643784b2014"
 ROOT = Path("/content/hrpoly-cmp89-neumann-rectangle-lift-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89NeumannScalarReflectionOperator.lean":
@@ -19,7 +19,7 @@ SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89NeumannScalarReflectionOperatorAudit.lean":
         "a0a0fbebbefa2833c9435afd822ea76d35e331f30a45762b2469cbde4d085d73",
     "YangMills/RG/BalabanCMP89CanonicalNeumannReflectionInverseProducer.lean":
-        "37e558f391f286d3dd8f7c1050e957483a4c8e7a675b2450948592925cb63bf5",
+        "62bcfd6336e1a8582393acc38f0fb9153a9c54bfc5d59c291b523a1f52e1d9d7",
     "YangMills/RG/BalabanCMP89CanonicalNeumannReflectionInverseProducerAudit.lean":
         "44882d0ec10fe5cfa6fa156acb2a5551e8156cbdd46a3c94c951a5984e03fdfe",
 }
@@ -100,7 +100,7 @@ def main() -> int:
         print(f"SOURCE_BLOB={path} SHA256={measured}", flush=True)
         if measured != expected:
             raise RuntimeError(f"SOURCE_BLOB_HASH_MISMATCH={path}")
-    paths = Path("/content/cmp89-neumann-reflection-inverse-hot-v2-paths.txt")
+    paths = Path("/content/cmp89-neumann-reflection-inverse-hot-v3-paths.txt")
     paths.write_text("\n".join(SOURCE_BLOBS) + "\n", encoding="utf-8")
     run("overlay_text_guard", ["python3", "scripts/check_lean_overlay_text.py",
         "--paths-from", str(paths), "--require-prevalidation"])
