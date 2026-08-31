@@ -3,8 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannGeneratedTwoScalePhysicalPoincare
 /-!
 # Axiom audit: generated depth-two physical CMP89 Neumann Poincare producer
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the declarations below have not yet been verified by the Lean compiler.
 -/
 
 namespace YangMills.RG

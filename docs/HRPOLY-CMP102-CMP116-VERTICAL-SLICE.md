@@ -15453,3 +15453,20 @@ must still construct the first coarse background, region and radius internally;
 arbitrary-depth recursion then requires a recursive Neumann coefficient and a
 single terminal record of all adjacent contractions.  Nothing here proves
 CMP89 (2.42), attains window 15, moves `20/41` or constructs a `TermSource`.
+
+That source-generated specialization is now cold-sealed at exact source
+`774112fb02778c084f846b7e6fbf4fdd9d0af904`.  The producer constructs the
+first coarse active region, normalized source scale, generated `Ubar`
+background and both normalized radii internally, then consumes the literal
+physical derivative-feedback gate.  Its fresh Colab Pro+ CPU/high-RAM focal
+completed `8723/8723` jobs in `2325.848 s`; the exact two-declaration audit
+exited zero in `17.161 s` with only
+`{propext, Classical.choice, Quot.sound}`.
+
+The complete executed notebook is preserved and independently checked under
+`validation-evidence/cmp89-generated-two-scale-physical-poincare-774112fb/`;
+Ledger Addendum 997 records its SHA-256 and the hashes emitted for the canonical
+payload and tar archive.  This seals one generated depth-two endpoint only.
+It does not provide the recursive coefficient or the single proof-carrying
+record of every adjacent contraction at arbitrary finite depth, prove CMP89
+(2.42), attain window 15, move `20/41`, or construct a `TermSource`.

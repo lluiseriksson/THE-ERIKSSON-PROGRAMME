@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99SourceRetainedPhysicalTower
 /-!
 # Generated depth-two physical CMP89 Neumann Poincare producer
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no declaration below has yet been verified by the Lean compiler.
-
 This module installs the literal physical derivative-feedback estimate on the
 first two members of the source-generated `Ubar` tower.  The next background,
 region and deviation radius are constructed internally.  The result remains

@@ -42620,3 +42620,43 @@ Poincare composition.  It does not iterate arbitrary depth, establish CMP89
 (2.42), attain window 15, discharge a terminal field, move a terminal
 obligation or construct a `TermSource`.  The live counters therefore remain
 exactly `20/41` and `TermSource = 0`.
+
+## Addendum 997 (2026-08-31, **generated depth-two physical Neumann Poincare producer cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `774112fb02778c084f846b7e6fbf4fdd9d0af904`,
+driven by runner commit `5b3290dc6e90443a30ec3b3a77c1192e2a308ce8`
+(Git-blob/transport SHA-256
+`D02A3B9520EFBAFED3CE4368D1FF20DA9A0DC0A504402E95F7F589F79F56488A`;
+base-runner transport SHA-256
+`D06B8A186C9FCEFB54D6E21264D2467B6FB723B337BE092D4C3380B875E47CEE`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`.  The focal completed `8723/8723`
+jobs in `2325.848 s`; its exact two-declaration audit exited zero in
+`17.161 s`.  Both readouts use only
+`{propext, Classical.choice, Quot.sound}`, and all 16 ordered stage records
+exited zero.
+
+The Drive-backed executed notebook is preserved at
+`validation-evidence/cmp89-generated-two-scale-physical-poincare-774112fb/`
+with SHA-256
+`6CD1CDADFE6D04B20F021DE9ACC565DB1A25A912F284035F90DC222592B0F165`.
+The fail-closed verifier
+`tmp/verify_cmp89_neumann_generated_two_scale_physical_poincare_executed_notebook.py`
+checks the exact cell, runner/source/toolchain/Mathlib gates, both source blobs,
+ordered zero-exit stages, focal job count, exact axiom sets and unique terminal
+PASS.  The transcript emits canonical evidence SHA-256
+`082EFFF7E4A260115713889B37A0571B40BA5AAD7BE36E6008FCFEB2D7EF7808`
+and archive SHA-256
+`EF83AC9FF62200A071278F4A278AE17E6A01A94B5EE07118952B5AB249814F18`.
+The tar bytes themselves were not preserved after the completed runtime was
+automatically released; this addendum therefore cites the independently
+hashed executed notebook, not a locally rehashed tar.  Exactly the two
+PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The producer now constructs `Omega2`, the normalized first coarse source
+scale, its generated `Ubar` background and the two physical radii internally,
+then consumes the already sealed derivative-feedback inequality.  It returns
+one positive common source radius at `d = 4`, `M = 4`, depth two.  It does not
+iterate arbitrary depth, prove CMP89 (2.42), attain window 15, discharge a
+terminal field, move a terminal obligation or construct a `TermSource`.  The
+live counters therefore remain exactly `20/41` and `TermSource = 0`.
