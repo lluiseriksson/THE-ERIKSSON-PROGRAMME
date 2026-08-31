@@ -65,8 +65,8 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-neumann-restricted-parallel-defect-bound-cold-v1"
-runner.SOURCE_SHA = "e869e83b0043b246f1e84accfb7c2e4900ed6807"
+runner.RUNNER_REV = "cmp89-neumann-restricted-parallel-defect-bound-cold-v2"
+runner.SOURCE_SHA = "d70be29966b63b3a598bf70ce8f32d1afea687ad"
 runner.ROOT = Path(
     "/content/hrpoly-cmp89-neumann-restricted-parallel-defect-bound-cold"
 )
@@ -81,7 +81,7 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannRestrictedParallelDefectBound.lean":
-        "665ec747a19d4126c539ca801d3ef22f55529e9fecfb4f43feb2019a8973eb19",
+        "8499d9df4c0ea835396da2a6b1a9c8e02c9b555ee7766c26f276393745fb988b",
     "YangMills/RG/BalabanCMP89SourceNeumannRestrictedParallelDefectBoundAudit.lean":
         "c34c1ef72c0f1dde781a519087b722703562bc3cd43f858938955696cddb365a",
 }
