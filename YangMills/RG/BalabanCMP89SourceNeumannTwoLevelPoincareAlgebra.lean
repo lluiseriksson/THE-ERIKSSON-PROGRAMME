@@ -85,7 +85,7 @@ theorem norm_sq_le_twoLevelPoincare_of_derivative_feedback
               feedbackCoeff * ‖phi‖ ^ 2) +
             ‖terminalAverage (fineAverage phi)‖ ^ 2) := by
         apply mul_le_mul_of_nonneg_left _ coarseCoeff_nonneg
-        exact add_le_add_right (derivative_bound phi) _
+        nlinarith [derivative_bound phi]
       _ = _ := by ring
   exact le_twoLevelPoincare_of_feedback_lt_one
     (‖phi‖ ^ 2) (‖fineDerivative phi‖ ^ 2) (‖fineAverage phi‖ ^ 2)
