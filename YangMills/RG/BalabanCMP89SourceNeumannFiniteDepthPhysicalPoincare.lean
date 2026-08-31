@@ -230,7 +230,7 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
                                 Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
                               nextSpacing * (nextRadius / nextSpacing)
                           rw [hcoarseRadius]
-                          exact nextSmall (positiveEdgeOfPhysicalBond b))
+                          exact nextSmall (positiveEdgeOfPhysicalBond b)))
                   · exact feedback_small
 
 /-- Canonical finite-depth endpoint: the internally generated terminal
