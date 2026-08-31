@@ -43,6 +43,7 @@ def cmp89SourceNeumannRectangleSite
   ⟨cmp89SourceNeumannRectanglePointToFinBox_draft hfit x, by
     rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
     intro mu
+    have hx0 : 0 ≤ x.1 mu := (x.2 mu).1
     have hm0 : 0 ≤ m mu := le_trans (x.2 mu).1 (x.2 mu).2.le
     rw [cmp89SourceNeumannRectanglePointToFinBox_val_draft]
     omega⟩
