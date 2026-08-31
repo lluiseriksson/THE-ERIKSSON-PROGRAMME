@@ -35,7 +35,7 @@ theorem cmp99LiftActiveRegion_cmp89Rectangle_eq
         (cmp89SourceNeumannRectangleActiveRegion (N := N) m) =
       cmp89SourceNeumannRectangleActiveRegion (N := M * N)
         (cmp89SourceNeumannScaleRectangleSide M m) := by
-  apply congrArg ActiveGaugeRegion.mk
+  apply ActiveGaugeRegion.ext
   ext x
   rw [mem_cmp99LiftActiveRegion_sites_iff]
   rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
@@ -76,7 +76,11 @@ theorem cmp99IteratedLiftActiveRegion_cmp89Rectangle_eq
         (cmp89SourceNeumannScaleRectangleSidePow M depth m) := by
   induction depth with
   | zero =>
-      simp [cmp89SourceNeumannScaleRectangleSidePow]
+      have hside : cmp89SourceNeumannScaleRectangleSidePow M 0 m = m := by
+        funext mu
+        simp [cmp89SourceNeumannScaleRectangleSidePow]
+      exact (congrArg
+        (cmp89SourceNeumannRectangleActiveRegion (N := N)) hside).symm
   | succ depth ih =>
       rw [cmp99IteratedLiftActiveRegion_succ, ih]
       have hM : 0 < M := Nat.pos_of_ne_zero (NeZero.ne M)
