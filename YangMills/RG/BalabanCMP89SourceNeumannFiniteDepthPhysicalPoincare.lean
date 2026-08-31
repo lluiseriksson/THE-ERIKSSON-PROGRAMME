@@ -87,7 +87,6 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
     {N steps : ℕ} [NeZero N] {Omega : ActiveGaugeRegion d N}
     (regions : CMP99SourceActiveRegionChain d M N Omega (steps + 1))
     (hd : 2 ≤ d) (hM : 2 ≤ M)
-    (rho : SUNAdjointModel Nc)
     {spacing epsilon : ℝ} (hspacing : 0 < spacing)
     (level : ℕ)
     (background : PhysicalGaugeBackground d N Nc)
@@ -98,8 +97,8 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
         cmp99SourceUbarRadiusAt d M epsilon level)
     (budget : CMP89SourceNeumannPhysicalRecursiveContractionBudget
       d M spacing epsilon level steps) :
-    CMP89SourceNeumannRegionalPoincare Omega rho background
-      (regions.weightedQprimeTower hd hM rho
+    CMP89SourceNeumannRegionalPoincare Omega (matrixSUNAdjointModel Nc) background
+      (regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
         (cmp89SourceNeumannPhysicalSpacingAt M spacing level)
         (cmp99SourceUbarRadiusAt d M epsilon level)
         background chain fineSmall).Qprime
@@ -124,7 +123,8 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
                 cmp89SourceNeumannRecursivePoincareCoefficient,
                 cmp89SourceNeumannPhysicalOneScaleCoefficientAt] using
                 (cmp89SourceNeumann_oneScale_quantitativePoincare
-                  Omega hOmega rho background hcurrentSpacing)
+                  Omega hOmega (matrixSUNAdjointModel Nc) background
+                  hcurrentSpacing)
   | succ steps ih =>
       cases regions with
       | @step N' depth _ Omega hOmega tail =>
@@ -169,16 +169,18 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
                     div_nonneg currentRadius_nonneg hcurrentSpacing_pos.le
                   have hcoarseNonneg : 0 ≤ nextRadius / nextSpacing :=
                     div_nonneg tailChain.epsilon_nonneg hnextSpacing_pos.le
-                  have coarsePoincare := ih tail hd hM rho hspacing (level + 1)
+                  have coarsePoincare := ih tail hd hM hspacing (level + 1)
                     nextBackground tailChain nextSmall tailBudget
                   apply cmp89SourceNeumannRegionalPoincare_twoLevel_of_derivative_feedback
                     Omega
                     (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
-                    rho background nextBackground
+                    (matrixSUNAdjointModel Nc) background nextBackground
                     (cmp99SourceTransportedBlockAverageCLM Omega
-                      (cmp99SourceWeightedPhysicalTransport rho background))
-                    (tail.weightedQprimeTower hd hM rho nextSpacing nextRadius
-                      nextBackground tailChain nextSmall).Qprime
+                      (cmp99SourceWeightedPhysicalTransport
+                        (matrixSUNAdjointModel Nc) background))
+                    (tail.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
+                      nextSpacing nextRadius nextBackground tailChain
+                      nextSmall).Qprime
                     currentSpacing nextSpacing
                     (cmp89SourceNeumannPhysicalOneScaleCoefficientAt
                       d M spacing level)
@@ -199,7 +201,7 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
                   · simpa [currentSpacing,
                       cmp89SourceNeumannPhysicalOneScaleCoefficientAt] using
                       (cmp89SourceNeumann_oneScale_quantitativePoincare
-                        Omega hOmega rho background
+                        Omega hOmega (matrixSUNAdjointModel Nc) background
                         (ne_of_gt hcurrentSpacing_pos))
                   · simpa [currentSpacing, nextSpacing, nextRadius,
                       cmp89SourceNeumannPhysicalSpacingAt_succ,
@@ -230,7 +232,7 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
 average is the same `Q'` as the last retained physical prefix. -/
 theorem cmp89SourceNeumann_generatedRetainedFiniteDepthPhysicalPoincare
     (hd : 2 ≤ d) (hM : 2 ≤ M)
-    (rho : SUNAdjointModel Nc) (Omega : ActiveGaugeRegion d N)
+    (Omega : ActiveGaugeRegion d N)
     (steps : ℕ) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
     (background : PhysicalGaugeBackground d
       (cmp99RegionalLatticeSize M N (steps + 1)) Nc)
@@ -240,11 +242,13 @@ theorem cmp89SourceNeumann_generatedRetainedFiniteDepthPhysicalPoincare
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (budget : CMP89SourceNeumannPhysicalRecursiveContractionBudget
       d M spacing epsilon 0 steps) :
-    let T := cmp99SourceGeneratedRetainedPhysicalTower hd hM rho Omega
+    let T := cmp99SourceGeneratedRetainedPhysicalTower hd hM
+      (matrixSUNAdjointModel Nc) Omega
       (steps + 1) spacing epsilon background chain fineSmall
     CMP89SourceNeumannRegionalPoincare
       (cmp99IteratedLiftActiveRegion (M := M) Omega (steps + 1))
-      rho background (T.towerAt (Fin.last (steps + 1))).Qprime spacing
+      (matrixSUNAdjointModel Nc) background
+      (T.towerAt (Fin.last (steps + 1))).Qprime spacing
       (cmp89SourceNeumannRecursivePoincareCoefficient
         (cmp89SourceNeumannPhysicalOneScaleCoefficientAt d M spacing)
         (cmp89SourceNeumannPhysicalDerivativeCoefficientAt d M)
@@ -252,11 +256,12 @@ theorem cmp89SourceNeumann_generatedRetainedFiniteDepthPhysicalPoincare
         0 steps) := by
   dsimp only
   rw [cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower
-    hd hM rho Omega (steps + 1) spacing epsilon background chain fineSmall]
+    hd hM (matrixSUNAdjointModel Nc) Omega (steps + 1) spacing epsilon
+      background chain fineSmall]
   simpa using
     (CMP99SourceActiveRegionChain.neumannPhysicalPoincare
       (cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega (steps + 1))
-      hd hM rho hspacing 0 background chain fineSmall budget)
+      hd hM hspacing 0 background chain fineSmall budget)
 
 end
 
