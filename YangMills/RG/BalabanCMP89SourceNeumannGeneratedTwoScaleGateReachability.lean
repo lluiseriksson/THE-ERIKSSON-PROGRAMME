@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannPhysicalGateReachability
 /-!
 # Reached generated two-scale CMP89 Neumann gate
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The positive-radius scalar witness is consumed by the generated two-scale
 physical absorption theorem.  The result remains depth two: it does not
 construct a depth-uniform retained-tower Poincare theorem, CMP89 (2.42), or

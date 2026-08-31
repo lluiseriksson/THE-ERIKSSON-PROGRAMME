@@ -42359,3 +42359,36 @@ scalar reachability theorem.  It does **not** construct the arbitrary-depth
 retained Neumann Poincare induction, CMP89 (2.42), window 15, or a
 `TermSource` inhabitant.  The live counters therefore remain exactly
 `20/41` and `TermSource = 0`.
+
+## Addendum 989 (2026-08-31, **generated depth-two Neumann gate reached at positive radius and cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `8f03fc36022487e7fff32a2989055ad36b628de2`,
+driven by runner commit `032749d6e855c35d02c796d9d35b5cd5dc62b45b`
+(runner SHA-256
+`201FD142645C9C4DB38C2F52CA51FB9115C97C7A1C3DD075CA46BBA79CDD3F38`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`.  The focal completed `8719/8719` jobs in `1684.436 s`; its
+exact one-declaration audit exited zero in `16.611 s` and uses only
+`{propext, Classical.choice, Quot.sound}`.  All 14 ordered stage records
+exited zero.  Mathlib is pinned at
+`07642720480157414db592fa85b626dafb71355b`; the toolchain asset SHA-256 is
+`BF3E0A4025E47A0BEA9ED907D12DCCD3D3590B1D8AD6C55A915298B01AD9D3E`.
+
+The downloaded archive SHA-256 is
+`62E1BD00745EED6B5252BEBD7EC75A61F1E78A37D271E878760FE39E36AAB291`;
+the stored evidence JSON SHA-256 is
+`BD8F845F5C4AE6252FF758B111A8260C488C33D2DC3BD3DAC3F1A209033BC8A7`
+(the runner's canonical no-trailing-newline payload hash is
+`8F4CDDAB8C01157397C9EEAE656128418E845B470C00EE739BDF36C3E2323060`).
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-generated-two-scale-gate-reachability-cold-8f03fc36-20260831-verified/`.
+The fail-closed verifier checks the archive, canonical JSON, exact ordered
+stage list and both source blobs.  Exactly the two PRE-VALIDATION notices in
+this focal/audit pair are retired.
+
+The seal combines the positive-radius physical gate witness with the same
+closed generated `Ubar` radius chain consumed by the depth-two absorption
+theorem.  It fixes `d = 4`, `M = 4` and depth two; it does **not** construct
+an arbitrary-depth retained-tower Poincare induction, CMP89 (2.42), window
+15, or a `TermSource` inhabitant.  The live counters therefore remain
+exactly `20/41` and `TermSource = 0`.

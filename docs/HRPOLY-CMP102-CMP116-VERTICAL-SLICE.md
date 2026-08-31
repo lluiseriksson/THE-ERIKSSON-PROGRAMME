@@ -15314,3 +15314,20 @@ This removes the scalar nonemptiness question for the literal `d = 4`,
 `M = 4`, `q = 8`, depth-two gate.  It does not promote that gate to a
 depth-uniform retained-tower theorem, prove CMP89 (2.42), attain window 15,
 move `20/41`, or instantiate `TermSource`.
+
+The generated depth-two endpoint is now cold-sealed at exact source
+`8f03fc36022487e7fff32a2989055ad36b628de2`.  In a fresh Colab Pro+ CPU/high-
+RAM checkout with no restored project `.lake/build`, its focal completed
+`8719/8719` jobs in `1684.436` seconds and its exact audit exited zero in
+`16.611` seconds with only `{propext, Classical.choice, Quot.sound}`.  Ledger
+Addendum 989 records the independently verified archive, canonical payload,
+stored JSON and exact source-blob hashes.
+
+This endpoint returns one positive source radius and a literal closed
+two-step `Ubar` budget, then consumes the physical kernel equations through
+that same generated chain.  It is still fixed at `d = 4`, `M = 4` and depth
+two.  It does not establish the quantitative retained-prefix induction at
+arbitrary depth, CMP89 (2.42), window 15, `41/41`, or a `TermSource`
+inhabitant.  The next source-facing brick is therefore the explicit
+two-level Poincare feedback absorption with a visible condition
+`C_f * C_c * B < 1`, not an exact-kernel shortcut.
