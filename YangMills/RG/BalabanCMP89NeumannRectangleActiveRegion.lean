@@ -1,0 +1,86 @@
+import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalOwnerGeometry
+
+/-!
+# Canonical active region for the CMP89 half-open Neumann rectangle
+
+PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
+and the result has not yet been verified by the Lean compiler.
+
+The source rectangle is embedded in the finite carrier by the already audited
+nonnegative-coordinate map.  This module defines the active region to be
+exactly its half-open coordinate image and constructs the site equivalence
+internally.  It does not identify this region with the terminal region of a
+generated CMP99 tower; that remaining block-alignment dictionary stays
+visible to the next specialization.
+-/
+
+namespace YangMills.RG
+
+noncomputable section
+
+/-- The literal half-open source rectangle as an active region of the finite
+fine carrier. -/
+def cmp89SourceNeumannRectangleActiveRegion
+    {N : ℕ} [NeZero N] (m : Fin 4 → ℤ) : ActiveGaugeRegion 4 N :=
+  ⟨Finset.univ.filter fun y =>
+    ∀ mu, (y mu).val < Int.toNat (m mu)⟩
+
+/-- The canonical embedding lands in the literal rectangular active region.
+No free site map is supplied. -/
+def cmp89SourceNeumannRectangleSite
+    {N : ℕ} [NeZero N] {m : Fin 4 → ℤ}
+    (hfit : ∀ mu, m mu ≤ (N : ℤ))
+    (x : CMP89SourceNeumannIntegerRectanglePoint m) :
+    ActiveGaugeRegion.Site (cmp89SourceNeumannRectangleActiveRegion m) :=
+  ⟨cmp89SourceNeumannRectanglePointToFinBox_draft hfit x, by
+    simp only [cmp89SourceNeumannRectangleActiveRegion, Finset.mem_filter,
+      Finset.mem_univ, true_and]
+    intro mu
+    have hm0 : 0 ≤ m mu := le_trans (x.2 mu).1 (x.2 mu).2.le
+    have hxcast : (Int.toNat (x.1 mu) : ℤ) = x.1 mu :=
+      Int.toNat_of_nonneg (x.2 mu).1
+    have hmcast : (Int.toNat (m mu) : ℤ) = m mu :=
+      Int.toNat_of_nonneg hm0
+    exact_mod_cast (show x.1 mu < m mu from (x.2 mu).2)⟩
+
+/-- Every site of the canonical rectangular region has a unique literal
+integer representative in the source half-open rectangle. -/
+def cmp89SourceNeumannRectangleSiteEquiv
+    {N : ℕ} [NeZero N] {m : Fin 4 → ℤ}
+    (hm : ∀ mu, 0 < m mu)
+    (hfit : ∀ mu, m mu ≤ (N : ℤ)) :
+    CMP89SourceNeumannIntegerRectanglePoint m ≃
+      ActiveGaugeRegion.Site (cmp89SourceNeumannRectangleActiveRegion m) where
+  toFun := cmp89SourceNeumannRectangleSite hfit
+  invFun y :=
+    ⟨fun mu => ((y.1 mu).val : ℤ), by
+      intro mu
+      constructor
+      · exact Int.ofNat_zero_le _
+      · have hy := (Finset.mem_filter.mp y.2).2 mu
+        have hm0 : 0 ≤ m mu := (hm mu).le
+        have hmcast : (Int.toNat (m mu) : ℤ) = m mu :=
+          Int.toNat_of_nonneg hm0
+        exact_mod_cast hy⟩
+  left_inv x := by
+    apply Subtype.ext
+    funext mu
+    exact Int.toNat_of_nonneg (x.2 mu).1
+  right_inv y := by
+    apply Subtype.ext
+    funext mu
+    rfl
+
+@[simp]
+theorem cmp89SourceNeumannRectangleSiteEquiv_apply
+    {N : ℕ} [NeZero N] {m : Fin 4 → ℤ}
+    (hm : ∀ mu, 0 < m mu)
+    (hfit : ∀ mu, m mu ≤ (N : ℤ))
+    (x : CMP89SourceNeumannIntegerRectanglePoint m) :
+    (cmp89SourceNeumannRectangleSiteEquiv hm hfit x).1 =
+      cmp89SourceNeumannRectanglePointToFinBox_draft hfit x :=
+  rfl
+
+end
+
+end YangMills.RG
