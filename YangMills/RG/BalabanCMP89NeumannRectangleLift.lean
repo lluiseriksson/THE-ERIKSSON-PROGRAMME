@@ -4,8 +4,8 @@ import YangMills.RG.BalabanCMP99SourceRegionalLiftTower
 /-!
 # Complete-block lift of the CMP89 half-open rectangle
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+Compiler-verified in a fresh Colab Pro+ checkout at source checkpoint
+`66ac2a94835de099070055d9e0bc18ab40fcab6f`.
 
 This module proves that the generated regional lift preserves the literal
 half-open rectangular shape and constructs its terminal site equivalence

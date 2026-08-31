@@ -3,8 +3,8 @@ import YangMills.RG.BalabanCMP89NeumannRectangleLift
 /-!
 # Axiom audit: exact complete-block lift of the CMP89 rectangle
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the Lean compiler.
+Compiler-verified in a fresh Colab Pro+ checkout at source checkpoint
+`66ac2a94835de099070055d9e0bc18ab40fcab6f`.
 -/
 
 namespace YangMills.RG

@@ -42804,3 +42804,40 @@ Green action or prove the exact reflection equality. Those remain explicit
 source-facing obligations. It does not produce uniform `B0`/`delta0`, attain
 window 15, discharge a terminal field, move `20/41` or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1002 (2026-09-01, **exact complete-block lift of the CMP89 Neumann rectangle cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `66ac2a94835de099070055d9e0bc18ab40fcab6f`,
+driven by runner commit `1a240fe89658083333f8b3a6e859115f88c79ca3`
+(runner blob SHA-256
+`4C3C4F730C64795E9E82C3FCD3A0266CC6A3F69379C06A7B20A663B3BE7F50AD`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`. The focal completed `8663/8663`
+jobs in `2068.437 s`; the exact six-declaration audit exited zero in
+`8.907 s`. Every declaration uses a subset of
+`{propext, Classical.choice, Quot.sound}`, and all 16 ordered stage records
+exited zero with Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The downloaded archive SHA-256 is
+`1E33BD41AFBA6368133D47083849AE21AE790B92B0B540C640F4BB48546B6670`;
+the stored evidence JSON SHA-256 is
+`A0FEC4F12CA6FEBA3A442C767C31F046F1198D19B8B864F356DE3D5A1F013249`
+(canonical payload hash
+`B7A30E5A7FD2D280E7086F77874F1F7451B47AD6C2EBC57F2D338C1668CD5237`).
+The executed notebook SHA-256 is
+`81441340CDB229EC2323D407E9B92BBC398729E337E7B6F18C50F0789B2F8808`.
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-rectangle-lift-cold-66ac2a94835de099070055d9e0bc18ab40fcab6f/`
+and
+`tmp/verify_cmp89_neumann_rectangle_lift_cold_evidence.ps1`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired,
+and the audit is imported by `YangMillsCore.lean`.
+
+The seal proves that repeated complete-block lifting preserves the literal
+half-open rectangle and constructs the terminal site equivalence internally.
+It removes the free geometric dictionary from the next CMP89 (2.42) gate,
+but does not prove the multiple-reflection identity, identify the literal
+full-space Green with the regional inverse, produce uniform `B0`/`delta0`,
+attain window 15, discharge a terminal field, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.
