@@ -170,7 +170,7 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
                     div_nonneg currentRadius_nonneg hcurrentSpacing_pos.le
                   have hcoarseNonneg : 0 ≤ nextRadius / nextSpacing :=
                     div_nonneg tailChain.epsilon_nonneg hnextSpacing_pos.le
-                  have coarsePoincare := ih tail hd hM hspacing (level + 1)
+                  have coarsePoincare := ih tail (level + 1)
                     nextBackground tailChain nextSmall tailBudget
                   apply cmp89SourceNeumannRegionalPoincare_twoLevel_of_derivative_feedback
                     Omega
