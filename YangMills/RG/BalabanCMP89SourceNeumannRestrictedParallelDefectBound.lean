@@ -74,9 +74,10 @@ theorem norm_restrictOne_cmp99SourceParallelAverageDefectCochain_sq_le_raw
     _ ≤ cmp99SourceBlockAverageWeight M d * (M : ℝ) *
         ((M : ℝ) *
           ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi‖ ^ 2) := by
-      gcongr
-      exact sum_cmp89SourceNeumannParallelPathEnergy_le_raw
-        Omega rho U phi
+      apply mul_le_mul_of_nonneg_left
+        (sum_cmp89SourceNeumannParallelPathEnergy_le_raw Omega rho U phi)
+      unfold cmp99SourceBlockAverageWeight
+      positivity
     _ = cmp99SourceBlockAverageWeight M d * (M : ℝ) ^ 2 *
         ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi‖ ^ 2 := by
       ring
