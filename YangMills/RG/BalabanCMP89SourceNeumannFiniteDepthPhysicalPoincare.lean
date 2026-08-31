@@ -68,6 +68,7 @@ abbrev CMP89SourceNeumannPhysicalRecursiveContractionBudget
     (cmp89SourceNeumannPhysicalFeedbackCoefficientAt d M spacing epsilon)
     level steps
 
+omit [NeZero M] in
 /-- Positivity of every physical spacing generated from a positive initial
 spacing. -/
 theorem cmp89SourceNeumannPhysicalSpacingAt_pos
