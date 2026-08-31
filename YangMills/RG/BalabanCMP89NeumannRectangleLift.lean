@@ -67,6 +67,7 @@ theorem cmp99LiftActiveRegion_cmp89Rectangle_eq
         (Int.toNat ((M : ℤ) * m mu) : ℤ) = (M : ℤ) * m mu := hscaledcast
         _ = (M : ℤ) * (Int.toNat (m mu) : ℤ) := by rw [hmcast]
         _ = ((M * Int.toNat (m mu) : ℕ) : ℤ) := by norm_num)
+  simp only [cmp89SourceNeumannScaleRectangleSide]
   rw [hscalednat, Nat.div_lt_iff_lt_mul hM]
   simp only [Nat.mul_comm]
 
