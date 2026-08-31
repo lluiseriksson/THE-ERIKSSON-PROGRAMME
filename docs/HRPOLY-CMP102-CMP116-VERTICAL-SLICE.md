@@ -15470,3 +15470,20 @@ payload and tar archive.  This seals one generated depth-two endpoint only.
 It does not provide the recursive coefficient or the single proof-carrying
 record of every adjacent contraction at arbitrary finite depth, prove CMP89
 (2.42), attain window 15, move `20/41`, or construct a `TermSource`.
+
+The recursive scalar coefficient and its single proof-carrying contraction
+budget are now cold-sealed at exact source
+`fc954c42a5385c0c705b1d8ace4df66d82a46e0b`.  A fresh Colab Pro+
+CPU/high-RAM checkout with no restored project `.lake/build` completed the
+focal in `1513.709 s`; the exact three-declaration audit exited zero in
+`8.566 s` with only `{propext, Classical.choice, Quot.sound}`.  Ledger
+Addendum 998 records the independently verified archive, canonical payload,
+stored JSON, notebook and exact source-blob hashes.
+
+This seals the recurrence and the one-record contraction interface, not the
+physical finite-depth induction that consumes it.  The next promoted module
+must construct every intermediate background, active region, radius,
+operator and Poincare certificate internally and identify its terminal tower
+with the retained physical tower by the already sealed bridge.  CMP89 (2.42),
+uniform `B0`/`delta0`, window 15, `20/41` and `TermSource = 0` remain open and
+unchanged.

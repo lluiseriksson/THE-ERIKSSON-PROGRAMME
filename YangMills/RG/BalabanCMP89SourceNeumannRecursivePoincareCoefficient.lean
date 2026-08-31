@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannTwoLevelPoincareComposition
 /-!
 # Recursive CMP89 Neumann Poincare coefficient
 
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and no declaration below has yet been verified by the Lean compiler.
-
 This module records the exact scalar recurrence required to extend the sealed
 two-scale Neumann Poincare argument through a finite retained prefix.  A single
 inductive budget contains every adjacent feedback contraction.  It does not

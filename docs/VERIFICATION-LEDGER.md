@@ -42660,3 +42660,37 @@ one positive common source radius at `d = 4`, `M = 4`, depth two.  It does not
 iterate arbitrary depth, prove CMP89 (2.42), attain window 15, discharge a
 terminal field, move a terminal obligation or construct a `TermSource`.  The
 live counters therefore remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 998 (2026-08-31, **recursive finite-depth Neumann Poincare coefficient cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `fc954c42a5385c0c705b1d8ace4df66d82a46e0b`,
+driven by runner commit `bce6786673a5066d175df87c7a9d782fc6a4c75d`
+(runner Git-blob/transport SHA-256
+`FB95F6EB530F1C2C18F52B61148CCF706FD3FCA48C53C5DC1C2E74C1E1E7965A`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`.  The focal completed in
+`1513.709 s`; its exact three-declaration audit exited zero in `8.566 s`.
+The audit readouts use only `{propext, Classical.choice, Quot.sound}`, and all
+16 ordered stage records exited zero with Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The downloaded archive SHA-256 is
+`E0BD84A5B470D612E32596E39B4F670DD34D12D5494713A6AA075239EAEE302B`;
+the stored evidence JSON SHA-256 is
+`8AD18B21D993B476CC6DEE8FEEDE486F6FA8D712A650A0674AC458A538D23B65`
+(canonical payload hash
+`FE457F55F5C98ECA5A5E6380F2601FA5B949DA8037932599BB98018EC4E16753`).
+The executed notebook SHA-256 is
+`E6917C52087862946D7AE9ABEDADC43721847B5261336B88C7F6863D5675E70C`.
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-recursive-poincare-coefficient-fc954c42/`
+and `tmp/verify_cmp89_neumann_recursive_poincare_coefficient_cold_evidence.ps1`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The seal records the exact scalar recurrence and one proof-carrying inductive
+budget for every adjacent contraction.  It does not accept a family of
+Poincare certificates, backgrounds or averaging operators.  It does not yet
+construct the full finite-depth physical tower, prove CMP89 (2.42), produce
+the uniform `B0`/`delta0`, attain window 15, move a terminal obligation or
+construct a `TermSource`.  The live counters therefore remain exactly
+`20/41` and `TermSource = 0`.
