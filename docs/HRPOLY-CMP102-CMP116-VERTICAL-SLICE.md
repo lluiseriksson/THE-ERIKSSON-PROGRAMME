@@ -15331,3 +15331,19 @@ arbitrary depth, CMP89 (2.42), window 15, `41/41`, or a `TermSource`
 inhabitant.  The next source-facing brick is therefore the explicit
 two-level Poincare feedback absorption with a visible condition
 `C_f * C_c * B < 1`, not an exact-kernel shortcut.
+
+The scalar and normed-space forms of that feedback absorption are now
+cold-sealed at exact source
+`3d23e4036b9260b24b7e7a5106c8dad9b2e94b28`.  The fresh checkout shared no
+project `.lake/build`; its focal completed `8158/8158` jobs in `10.315`
+seconds, and both exact declaration audits passed in `5.881` seconds with
+only `{propext, Classical.choice, Quot.sound}`.  Ledger Addendum 990 records
+the archive, JSON and exact source-blob hashes.
+
+This closes only the algebra of a two-level recursion.  The denominator
+`1 - C_f * C_c * B` remains literal.  A source-facing specialization must
+still identify the fine derivative, transported one-step average, coarse
+derivative and retained terminal average, then prove the physical derivative
+feedback coefficient `B`.  No exact-kernel propagation is inferred, and the
+seal does not move `20/41`, instantiate `TermSource`, prove CMP89 (2.42), or
+attain window 15.

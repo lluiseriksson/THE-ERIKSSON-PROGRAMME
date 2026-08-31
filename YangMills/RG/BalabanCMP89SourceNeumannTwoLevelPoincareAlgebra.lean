@@ -3,9 +3,6 @@ import Mathlib
 /-!
 # Two-level quantitative Poincare absorption
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 This leaf isolates the scalar algebra required to compose a fine one-scale
 Poincare estimate with a coarse retained-prefix estimate when the transported
 coarse derivative contains a nonzero multiple of the original fine norm.

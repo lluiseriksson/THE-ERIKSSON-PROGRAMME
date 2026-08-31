@@ -42392,3 +42392,32 @@ theorem.  It fixes `d = 4`, `M = 4` and depth two; it does **not** construct
 an arbitrary-depth retained-tower Poincare induction, CMP89 (2.42), window
 15, or a `TermSource` inhabitant.  The live counters therefore remain
 exactly `20/41` and `TermSource = 0`.
+
+## Addendum 990 (2026-08-31, **two-level quantitative Poincare feedback algebra cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `3d23e4036b9260b24b7e7a5106c8dad9b2e94b28`,
+driven by runner commit `4b91bcd45757e0269739573c1f1bc8ab9af22d60`
+(runner SHA-256
+`BB7E1D23848F3606208502EAE7C9FBE6CAC44239A8535B11B0232FC3E52E278A`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no shared or
+restored project `.lake/build`.  The focal completed `8158/8158` jobs in
+`10.315 s`; its two-declaration audit exited zero in `5.881 s`.  Both exact
+readouts use only `{propext, Classical.choice, Quot.sound}`, and all 14
+ordered stage records exited zero.
+
+The downloaded archive SHA-256 is
+`BB70A76D4E1FD77734EE3997858BD30E8D43B99899E18E4063FB90FCB3D8AFA2`;
+the stored evidence JSON SHA-256 is
+`55BC1B5543D7C694A354C2B405C84DA1F8D3FD79F9ACB3CD74D5C8963A867567`
+(canonical payload hash
+`13C8B6DD63055D42253C307AEE0C6EFED94845608859E762BF5705DF0DA8552F`).
+The durable package and its fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-two-level-poincare-cold-3d23e403-20260831/`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The seal proves the exact scalar absorption denominator
+`1 - C_f * C_c * B` and its normed-space composition corollary.  It does not
+identify the four literal physical maps, prove the retained-prefix derivative
+transport bound, iterate through arbitrary depth, construct CMP89 (2.42), or
+attain window 15.  The live counters therefore remain exactly `20/41` and
+`TermSource = 0`.
