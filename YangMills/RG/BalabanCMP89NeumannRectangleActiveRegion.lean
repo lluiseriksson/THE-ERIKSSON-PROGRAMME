@@ -44,11 +44,8 @@ def cmp89SourceNeumannRectangleSite
     rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
     intro mu
     have hm0 : 0 ≤ m mu := le_trans (x.2 mu).1 (x.2 mu).2.le
-    have hxcast : (Int.toNat (x.1 mu) : ℤ) = x.1 mu :=
-      Int.toNat_of_nonneg (x.2 mu).1
-    have hmcast : (Int.toNat (m mu) : ℤ) = m mu :=
-      Int.toNat_of_nonneg hm0
-    exact_mod_cast (show x.1 mu < m mu from (x.2 mu).2)⟩
+    rw [cmp89SourceNeumannRectanglePointToFinBox_val_draft]
+    omega⟩
 
 /-- Every site of the canonical rectangular region has a unique literal
 integer representative in the source half-open rectangle. -/
@@ -64,13 +61,16 @@ def cmp89SourceNeumannRectangleSiteEquiv
     ⟨fun mu => ((y.1 mu).val : ℤ), by
       intro mu
       constructor
-      · exact Int.ofNat_zero_le _
+      · exact Int.natCast_nonneg _
       · have hy :=
           (mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff y.1).mp y.2 mu
         have hm0 : 0 ≤ m mu := (hm mu).le
         have hmcast : (Int.toNat (m mu) : ℤ) = m mu :=
           Int.toNat_of_nonneg hm0
-        exact_mod_cast hy⟩
+        calc
+          ((y.1 mu).val : ℤ) < (Int.toNat (m mu) : ℤ) := by
+            exact_mod_cast hy
+          _ = m mu := hmcast⟩
   left_inv x := by
     apply Subtype.ext
     funext mu
