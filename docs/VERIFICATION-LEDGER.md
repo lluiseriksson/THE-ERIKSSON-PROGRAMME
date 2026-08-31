@@ -42320,3 +42320,42 @@ The sealed adapter fixes the literal source lift and the first generated
 coarse background.  It is still a depth-two theorem.  It does **not** prove
 a full retained-tower Neumann Poincare theorem, CMP89 (2.42), or window 15.
 The live counters therefore remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 988 (2026-08-31, **positive-radius physical Neumann gate cold-sealed at depth two; 20/41 unchanged**)
+
+Exact source checkpoint `b85e7f8a401e82971889eebe50b5a10875c2046b`,
+driven by runner commit `1e151ae7816986422774d73cb47173f8d1bd143d`
+(runner SHA-256
+`F5DD5E1FA76F92ED4598FE452056F70472B05DB5F8806CE5581DB7032BD36748`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no restored project
+`.lake/build`.  All 16 recorded commands exited zero.  The focal/audit pairs
+took, respectively:
+
+- physical-gate monotonicity: `1106.501 s` / `6.505 s`, with `8495` focal jobs;
+- positive-radius reachability: `740.542 s` / `6.535 s`, with `8716` focal jobs.
+
+The exact four declaration readouts all use only
+`{propext, Classical.choice, Quot.sound}`.  The runner rejects missing
+declarations, `sorryAx` and `ofReduceBool`.  Mathlib is pinned at
+`07642720480157414db592fa85b626dafb71355b`; the toolchain asset SHA-256 is
+`BF3E0A4025E47A0BEA9ED907D12DCCD3D3590B1D8AD6C55A915298B01AD9D3E`.
+
+The downloaded archive SHA-256 is
+`C8418BF93B70A10A10519E9E184CEAC718606BEC4862947785E111C82AF3CF23`;
+the stored evidence JSON SHA-256 is
+`652F70D69C908E60E554261C3B501EB44FEC1051F095C7A5AD665C1843FD1971`
+(the runner's canonical no-trailing-newline payload hash is
+`E71C923C5EF292D5B1A84A9EDB95EDC72FF9AC57066E4F6C13676DB69A5848C1`).
+The durable package is preserved under
+`validation-evidence/cmp89-neumann-physical-gate-reachability-cold-b85e7f8a-20260831/`.
+Exactly the four PRE-VALIDATION notices in these two focal/audit pairs are
+retired.
+
+The seal proves monotone consumption of the exact `d = 4`, `M = 4`, `q = 8`
+gate and, at every fixed positive physical spacing, constructs a nonempty
+positive interval of literal two-step `Ubar` radii satisfying both the closed
+source budget and the contraction inequality.  It remains a fixed-depth
+scalar reachability theorem.  It does **not** construct the arbitrary-depth
+retained Neumann Poincare induction, CMP89 (2.42), window 15, or a
+`TermSource` inhabitant.  The live counters therefore remain exactly
+`20/41` and `TermSource = 0`.

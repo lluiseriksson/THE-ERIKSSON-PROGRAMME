@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannPhysicalGateWitness
 /-!
 # Monotone consumption of the physical Neumann gate witness
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The exact `27/512` witness is useful only after the two physical deviation
 coefficients are compared with its common target `4^-8`.  This leaf performs
 that monotone comparison and then rewrites the coefficient bounds as literal

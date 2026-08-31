@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP99SourcePoincarePositiveRadiusReachability
 /-!
 # Positive-radius reachability of the two-scale physical Neumann gate
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 At fixed positive physical spacing, continuity of the literal first `Ubar`
 radius at zero and the existing closed-budget neighborhood produce one common
 positive radius satisfying both source-ratio targets of the `27/512` gate.

@@ -15300,3 +15300,17 @@ machinery cannot be reused by definition because its zero-extension
 derivative includes boundary-crossing bonds whereas the sealed Neumann
 derivative uses internal bonds only.  CMP89 (2.42) and window 15 remain open;
 the live counters stay exactly `20/41` and `TermSource = 0`.
+
+The exact depth-two physical gate is now reached on a nonempty positive
+source-radius interval at exact source
+`b85e7f8a401e82971889eebe50b5a10875c2046b`.  In a fresh Colab Pro+ CPU/high-
+RAM checkout with no restored project `.lake/build`, the monotonicity and
+positive-radius focals completed `8495` and `8716` jobs in `1106.501` and
+`740.542` seconds; both exact audits exited zero and all four declaration
+readouts lie in `{propext, Classical.choice, Quot.sound}`.  Ledger Addendum
+988 records the independently verified archive and evidence hashes.
+
+This removes the scalar nonemptiness question for the literal `d = 4`,
+`M = 4`, `q = 8`, depth-two gate.  It does not promote that gate to a
+depth-uniform retained-tower theorem, prove CMP89 (2.42), attain window 15,
+move `20/41`, or instantiate `TermSource`.
