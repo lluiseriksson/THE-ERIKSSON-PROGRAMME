@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP89SourceNeumannCoarseDerivativeDecomposition
+import YangMills.RG.BalabanCMP89SourceNeumannInternalBlockEnergy
 
 /-!
 # Restricted straight-path energy for the CMP89 Neumann derivative
@@ -59,7 +60,6 @@ theorem cmp89SourceNeumannParallelFineBondAt_injective
   subst mu'
   have hx : x.1 = x'.1 :=
     (iterShift_bijective (M * N') mu k).injective hshift
-  have hxx : x = x' := Subtype.ext hx
   have hy : y = y' := by
     calc
       y = blockSite M N' x.1 :=
@@ -67,6 +67,7 @@ theorem cmp89SourceNeumannParallelFineBondAt_injective
       _ = blockSite M N' x'.1 := by rw [hx]
       _ = y' := (mem_blockOf M N' y' x'.1).mp x'.2
   subst y'
+  have hxx : x = x' := Subtype.ext hx
   subst x'
   rfl
 
@@ -118,9 +119,9 @@ theorem sum_covariantPathEnergy_cmp99StraightPositivePath_le_neumannRaw
     (start : I → FinBox d (M * N')) (direction : I → Fin d)
     (n : ℕ)
     (hinjective : ∀ k < n, Function.Injective fun i : I =>
-      (((fun z => FinBox.shift z (direction i))^[k] start i), direction i))
+      (((fun z => FinBox.shift z (direction i))^[k] (start i)), direction i))
     (hinternal : ∀ i k, k < n →
-      (((fun z => FinBox.shift z (direction i))^[k] start i), direction i) ∈
+      (((fun z => FinBox.shift z (direction i))^[k] (start i)), direction i) ∈
         Omega.bonds) :
     (∑ i : I,
       covariantPathEnergy rho U (extendZeroZeroCLM Omega phi)
@@ -138,11 +139,11 @@ theorem sum_covariantPathEnergy_cmp99StraightPositivePath_le_neumannRaw
       have hlayer :
           (∑ i : I,
             ‖covariantD0CLM rho U (extendZeroZeroCLM Omega phi)
-              (((fun z => FinBox.shift z (direction i))^[n] start i),
+              (((fun z => FinBox.shift z (direction i))^[n] (start i)),
                 direction i)‖ ^ 2) ≤
             ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi‖ ^ 2 := by
         let f : I → ActiveGaugeRegion.Bond Omega := fun i =>
-          ⟨(((fun z => FinBox.shift z (direction i))^[n] start i), direction i),
+          ⟨(((fun z => FinBox.shift z (direction i))^[n] (start i)), direction i),
             hinternal i n (Nat.lt_succ_self n)⟩
         have hf : Function.Injective f := by
           intro i j hij
@@ -152,7 +153,7 @@ theorem sum_covariantPathEnergy_cmp99StraightPositivePath_le_neumannRaw
         calc
           (∑ i : I,
               ‖covariantD0CLM rho U (extendZeroZeroCLM Omega phi)
-                (((fun z => FinBox.shift z (direction i))^[n] start i),
+                (((fun z => FinBox.shift z (direction i))^[n] (start i)),
                   direction i)‖ ^ 2) =
             ∑ b ∈ Finset.univ.image f,
               ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi b‖ ^ 2 := by
@@ -172,7 +173,7 @@ theorem sum_covariantPathEnergy_cmp99StraightPositivePath_le_neumannRaw
                 (start i) (direction i) n).edges) +
             ∑ i : I,
               ‖covariantD0CLM rho U (extendZeroZeroCLM Omega phi)
-                (((fun z => FinBox.shift z (direction i))^[n] start i),
+                (((fun z => FinBox.shift z (direction i))^[n] (start i)),
                   direction i)‖ ^ 2 ≤
           (n : ℝ) * ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi‖ ^ 2 +
             ‖cmp89SourceNeumannRegionalRawD0 Omega rho U phi‖ ^ 2 :=
