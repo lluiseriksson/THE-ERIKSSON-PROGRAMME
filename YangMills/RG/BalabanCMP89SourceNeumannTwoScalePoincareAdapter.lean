@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannTwoLevelPoincareComposition
 /-!
 # Physical two-scale Neumann Poincare adapter
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 This adapter fixes both one-step averages, both active regions and both
 physical backgrounds before invoking the sealed two-level feedback algebra.
 The one-scale Poincare inputs are constructed internally.  The only analytic

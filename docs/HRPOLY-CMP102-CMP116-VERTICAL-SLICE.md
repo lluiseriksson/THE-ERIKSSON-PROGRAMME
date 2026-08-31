@@ -15365,3 +15365,20 @@ through its straight parallel component plus the `Ubar` remainder.  The
 Dirichlet zero-extension estimate is not an accepted substitute.  No terminal
 field is discharged: counters remain exactly `20/41`, `TermSource = 0`, and
 window 15 remains compatible but unattained.
+
+The literal physical two-scale Poincare adapter is now cold-sealed at exact
+source `a220888f02f0458b7c380c7ee920224daeeae86c`.  A fresh Colab Pro+
+CPU/high-RAM checkout with no restored project `.lake/build` compiled
+`8478/8478` focal jobs in `1215.175 s`; its exact audit exited zero in
+`6.919 s` with only `{propext, Classical.choice, Quot.sound}`.  Ledger
+Addendum 992 records the independently verified archive, canonical payload,
+stored JSON and exact source-blob hashes.
+
+This seal constructs both one-scale Poincare estimates for the literal
+physical fine and coarse source averages.  Its remaining analytic input is
+the exact Neumann derivative feedback inequality for the transported
+one-step average.  The next bricks split that derivative into the straight
+parallel defect and the `Ubar` remainder, then bound the straight paths using
+only internal Neumann bonds.  No Dirichlet boundary energy is admitted.  The
+seal does not move `20/41`, instantiate `TermSource`, prove CMP89 (2.42), or
+attain window 15.

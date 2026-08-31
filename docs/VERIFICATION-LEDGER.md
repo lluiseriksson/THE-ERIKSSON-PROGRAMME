@@ -42451,3 +42451,33 @@ composition `Qnext.comp Qfine`.  The denominator remains exactly
 coefficient, arbitrary-depth induction, CMP89 (2.42), window-15 attainment
 or terminal producer is claimed.  The live counters therefore remain exactly
 `20/41` and `TermSource = 0`.
+
+## Addendum 992 (2026-08-31, **physical two-scale Neumann Poincare adapter cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `a220888f02f0458b7c380c7ee920224daeeae86c`,
+driven by runner commit `95ca669ce1f256cdf1f06b08875171a269fc0599`
+(runner SHA-256
+`68C81EA92C193AEDF55B03DA891404692F8620B692171DEC41DE83879B2E61CE`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no shared or
+restored project `.lake/build`.  The focal completed `8478/8478` jobs in
+`1215.175 s`; its exact one-declaration audit exited zero in `6.919 s` and
+uses only `{propext, Classical.choice, Quot.sound}`.  All 14 ordered stage
+records exited zero.
+
+The downloaded archive SHA-256 is
+`BEA8310A7B469878AA9D6416145595726908B77B9AA8413A8EF715F51E1E3FA2`;
+the stored evidence JSON SHA-256 is
+`2476B5A2DCAF2F4778A8AA9815EF6C2BF9E7434470B3CE99352018F888A339B2`
+(canonical payload hash
+`CE49979688BB3EEEF78A9B10046FC02025A8D838E29A85E2AB935148A94937BE`).
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-two-scale-poincare-adapter-cold-a220888f-20260831/`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The adapter fixes the two physical transported averages and constructs both
+one-scale regional Poincare inputs internally.  It deliberately leaves the
+literal Neumann coarse-derivative feedback inequality visible; the
+zero-extension Dirichlet estimate is not substituted.  It does not prove
+that feedback inequality, iterate arbitrary depth, establish CMP89 (2.42),
+attain window 15, discharge a terminal field or construct a `TermSource`.
+The live counters therefore remain exactly `20/41` and `TermSource = 0`.
