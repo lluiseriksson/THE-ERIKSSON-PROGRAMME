@@ -41,7 +41,7 @@ theorem summable_cmp89Eq248PhysicalRealNeumannReflection_sum
   intro k
   rw [Real.norm_eq_abs]
   rw [← Complex.re_sum]
-  exact abs_re_le_norm _
+  exact Complex.abs_re_le_norm _
 
 end
 
