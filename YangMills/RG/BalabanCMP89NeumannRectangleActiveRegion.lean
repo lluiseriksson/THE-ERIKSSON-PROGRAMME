@@ -28,7 +28,7 @@ def cmp89SourceNeumannRectangleActiveRegion
 @[simp]
 theorem mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff
     {N : ℕ} [NeZero N] {m : Fin 4 → ℤ} (y : FinBox 4 N) :
-    y ∈ (cmp89SourceNeumannRectangleActiveRegion m).sites ↔
+    y ∈ (cmp89SourceNeumannRectangleActiveRegion (N := N) m).sites ↔
       ∀ mu, (y mu).val < Int.toNat (m mu) := by
   simp [cmp89SourceNeumannRectangleActiveRegion]
 
@@ -38,7 +38,8 @@ def cmp89SourceNeumannRectangleSite
     {N : ℕ} [NeZero N] {m : Fin 4 → ℤ}
     (hfit : ∀ mu, m mu ≤ (N : ℤ))
     (x : CMP89SourceNeumannIntegerRectanglePoint m) :
-    ActiveGaugeRegion.Site (cmp89SourceNeumannRectangleActiveRegion m) :=
+    ActiveGaugeRegion.Site
+      (cmp89SourceNeumannRectangleActiveRegion (N := N) m) :=
   ⟨cmp89SourceNeumannRectanglePointToFinBox_draft hfit x, by
     rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
     intro mu
@@ -56,8 +57,9 @@ def cmp89SourceNeumannRectangleSiteEquiv
     (hm : ∀ mu, 0 < m mu)
     (hfit : ∀ mu, m mu ≤ (N : ℤ)) :
     CMP89SourceNeumannIntegerRectanglePoint m ≃
-      ActiveGaugeRegion.Site (cmp89SourceNeumannRectangleActiveRegion m) where
-  toFun := cmp89SourceNeumannRectangleSite hfit
+      ActiveGaugeRegion.Site
+        (cmp89SourceNeumannRectangleActiveRegion (N := N) m) where
+  toFun := cmp89SourceNeumannRectangleSite (N := N) hfit
   invFun y :=
     ⟨fun mu => ((y.1 mu).val : ℤ), by
       intro mu
@@ -84,7 +86,7 @@ theorem cmp89SourceNeumannRectangleSiteEquiv_apply
     (hm : ∀ mu, 0 < m mu)
     (hfit : ∀ mu, m mu ≤ (N : ℤ))
     (x : CMP89SourceNeumannIntegerRectanglePoint m) :
-    (cmp89SourceNeumannRectangleSiteEquiv hm hfit x).1 =
+    (cmp89SourceNeumannRectangleSiteEquiv (N := N) hm hfit x).1 =
       cmp89SourceNeumannRectanglePointToFinBox_draft hfit x :=
   rfl
 
