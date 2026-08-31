@@ -225,8 +225,12 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
                           simpa [hfineRadius] using fineSmall e)
                         (by
                           intro b
-                          simpa [hcoarseRadius] using
-                            nextSmall (positiveEdgeOfPhysicalBond b)))
+                          change
+                            ‖(nextBackground (positiveEdgeOfPhysicalBond b) :
+                                Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+                              nextSpacing * (nextRadius / nextSpacing)
+                          rw [hcoarseRadius]
+                          exact nextSmall (positiveEdgeOfPhysicalBond b))
                   · exact feedback_small
 
 /-- Canonical finite-depth endpoint: the internally generated terminal
