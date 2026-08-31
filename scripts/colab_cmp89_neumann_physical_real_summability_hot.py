@@ -10,12 +10,12 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-physical-real-summability-hot-v1"
-SOURCE_SHA = "ef7a933ea3a363e07c149f66f6ab52f21f0d5dae"
+RUNNER_REV = "cmp89-neumann-physical-real-summability-hot-v2"
+SOURCE_SHA = "cdd859ba99671e83a1ef2b3d8119a4e376a97ced"
 ROOT = Path("/content/hrpoly-cmp89-neumann-rectangle-lift-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89NeumannPhysicalRealReflectionSummability.lean":
-        "54fd8dc5a4d70d1e0bd6e6dfbd16deb7177c5a3b031cee6cf9f2f2354957ca79",
+        "d5b982f8f5715a42f56f9f3b57df334deb33c37dd6aed048840e5c18137d8312",
     "YangMills/RG/BalabanCMP89NeumannPhysicalRealReflectionSummabilityAudit.lean":
         "c950ba2f4ca36bc88c8d8ef8846a2cf600af7040cbe65d88191753ae01584a12",
 }
