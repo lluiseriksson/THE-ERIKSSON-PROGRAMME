@@ -19,8 +19,8 @@ namespace YangMills.RG
 
 noncomputable section
 
-variable {d : ℕ} {ι g : Type*}
-variable [Fintype ι] [DecidableEq ι]
+variable {d N : ℕ} [NeZero d] [NeZero N]
+variable {Omega : ActiveGaugeRegion d N} {g : Type*}
 variable [NormedAddCommGroup g] [InnerProductSpace ℝ g]
 variable [FiniteDimensional ℝ g]
 
@@ -30,24 +30,27 @@ internally constructed image operator; the target representation equality is
 derived. -/
 theorem cmp89CanonicalNeumannReflectionRepresentation_of_rightInverse
     {m : Fin d → ℤ}
-    (siteEquiv : CMP89SourceNeumannIntegerRectanglePoint m ≃ ι)
-    (precision green : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (siteEquiv : CMP89SourceNeumannIntegerRectanglePoint m ≃
+      ActiveGaugeRegion.Site Omega)
+    (precision green : ActiveGaugeZeroCochain Omega g →L[ℝ]
+      ActiveGaugeZeroCochain Omega g)
     (fullGreen : (Fin d → ℤ) → (Fin d → ℤ) → ℝ)
     {c : ℝ} (hc : 0 < c) (hcoercive : IsCoerciveCLM precision c)
     (hgreen : precision.comp green =
-      ContinuousLinearMap.id ℝ (FinitePiLpField ι g))
+      ContinuousLinearMap.id ℝ (ActiveGaugeZeroCochain Omega g))
     (himage : precision.comp
         (cmp89NeumannScalarReflectionOperator
           (g := g) siteEquiv fullGreen) =
-      ContinuousLinearMap.id ℝ (FinitePiLpField ι g))
+      ContinuousLinearMap.id ℝ (ActiveGaugeZeroCochain Omega g))
     (hside : ∀ mu, 0 < m mu)
     (hsummable : ∀ x n : CMP89SourceNeumannIntegerRectanglePoint m,
       Summable (fun k : Fin d → ℤ =>
         ∑ branch : CMP89NeumannReflectionBranch d,
           fullGreen x.1
             (cmp89NeumannReflectionImage m n.1 k branch))) :
-    CMP89CanonicalNeumannReflectionRepresentation siteEquiv green
-      (fun x y v => fullGreen x y • v) := by
+    CMP89CanonicalNeumannReflectionRepresentation
+      (d := d) (N := N) (Omega := Omega) siteEquiv green
+        (fun x y v => fullGreen x y • v) := by
   let imageGreen :=
     cmp89NeumannScalarReflectionOperator (g := g) siteEquiv fullGreen
   have heq : imageGreen = green :=
@@ -77,7 +80,8 @@ theorem cmp89CanonicalNeumannReflectionRepresentation_of_rightInverse
         imageGreen (singleFinitePiLp (siteEquiv n) v) (siteEquiv x) =
           green (singleFinitePiLp (siteEquiv n) v) (siteEquiv x) := by
       have happ := congrArg
-        (fun T : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g =>
+        (fun T : ActiveGaugeZeroCochain Omega g →L[ℝ]
+            ActiveGaugeZeroCochain Omega g =>
           T (singleFinitePiLp (siteEquiv n) v) (siteEquiv x)) heq
       exact happ
     calc
