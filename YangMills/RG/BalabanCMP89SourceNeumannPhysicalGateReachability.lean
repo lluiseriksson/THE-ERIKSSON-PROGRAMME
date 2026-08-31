@@ -44,7 +44,7 @@ theorem exists_pos_cmp89SourceNeumann_twoScale_physical_gate_radius
   have hnextEvent :
       {epsilon : ℝ |
         cmp99SourceUbarNextFineRadius 4 4 epsilon <
-          (4 : ℝ) * spacing * q} ∈ ᵊ 0 := by
+          (4 : ℝ) * spacing * q} ∈ 𝓝 0 := by
     have hcont :=
       continuousAt_cmp99SourceUbarNextFineRadius_zero
         (d := 4) (M := 4)
