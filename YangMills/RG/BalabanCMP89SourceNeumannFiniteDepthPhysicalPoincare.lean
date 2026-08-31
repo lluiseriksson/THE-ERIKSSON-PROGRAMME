@@ -129,9 +129,10 @@ theorem CMP99SourceActiveRegionChain.neumannPhysicalPoincare
       cases regions with
       | @step N' depth _ Omega hOmega tail =>
           cases chain with
-          | @step _ currentRadius currentRadius_nonneg noWinding logSmall tailChain =>
+          | step _ currentRadius_nonneg noWinding logSmall tailChain =>
               cases budget with
               | step _ _ fine_pos derivative_nonneg feedback_small tailBudget =>
+                  let currentRadius := cmp99SourceUbarRadiusAt d M epsilon level
                   let currentSpacing :=
                     cmp89SourceNeumannPhysicalSpacingAt M spacing level
                   let nextSpacing := (M : ℝ) * currentSpacing
