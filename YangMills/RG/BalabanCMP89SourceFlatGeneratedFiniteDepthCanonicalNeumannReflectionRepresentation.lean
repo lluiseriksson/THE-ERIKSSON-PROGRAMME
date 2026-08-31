@@ -53,7 +53,8 @@ noncomputable def cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen
   let T := cmp99SourceGeneratedRetainedPhysicalTower hd hM
     (matrixSUNAdjointModel Nc) Omega (steps + 1) spacing 0
     background chain fineSmall
-  let r := cmp85LastPositivePrefix (steps + 1) (Nat.succ_pos steps)
+  let r : CMP85PositivePrefix (steps + 1) :=
+    ⟨Fin.last (steps + 1), Nat.succ_pos steps⟩
   let CP := cmp89SourceNeumannRecursivePoincareCoefficient
     (cmp89SourceNeumannPhysicalOneScaleCoefficientAt d M spacing)
     (cmp89SourceNeumannPhysicalDerivativeCoefficientAt d M)
@@ -66,6 +67,11 @@ noncomputable def cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen
       (cmp89SourceNeumann_generatedRetainedFiniteDepthPhysicalPoincare
         hd hM Omega steps hspacing background chain fineSmall budget)
   exact cmp89SourceRetainedNeumannPrefixGreen
+    (d := d) (N := cmp99RegionalLatticeSize M N (steps + 1))
+    (Nc := Nc) (M := M) (depth := steps + 1)
+    (Omega := cmp99IteratedLiftActiveRegion (M := M) Omega (steps + 1))
+    (rho := matrixSUNAdjointModel Nc) (spacing := spacing)
+    (background := background)
     T r mass ha hspacing hCP hP
 
 /-- Canonical CMP89 (2.42) proposition at the last positive prefix of one
@@ -87,8 +93,13 @@ noncomputable def
     (fullGreenAction :
       (Fin d → ℤ) → (Fin d → ℤ) → SUNLieCoord Nc → SUNLieCoord Nc) :
     Prop :=
-  CMP89CanonicalNeumannReflectionRepresentation siteEquiv
+  CMP89CanonicalNeumannReflectionRepresentation
+    (d := d) (N := cmp99RegionalLatticeSize M N (steps + 1))
+    (g := SUNLieCoord Nc)
+    (Omega := cmp99IteratedLiftActiveRegion (M := M) Omega (steps + 1))
+    (m := m) siteEquiv
     (cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen
+      (d := d) (M := M) (N := N) (Nc := Nc)
       hd hM Omega steps hspacing budget mass a ha)
     fullGreenAction
 
@@ -113,12 +124,24 @@ theorem
     (v : SUNLieCoord Nc)
     (x n : CMP89SourceNeumannIntegerRectanglePoint m) :
     cmp89FinitePiLpGreenEntryAt
+        (d := d) (N := cmp99RegionalLatticeSize M N (steps + 1))
+        (g := SUNLieCoord Nc)
+        (Omega := cmp99IteratedLiftActiveRegion (M := M) Omega (steps + 1))
         (cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen
+          (d := d) (M := M) (N := N) (Nc := Nc)
           hd hM Omega steps hspacing budget mass a ha)
         (siteEquiv x) (siteEquiv n) v =
       cmp89NeumannReflectionSeries
         (fun y z ↦ fullGreenAction y z v) m x.1 n.1 :=
-  cmp89CanonicalNeumannReflectionRepresentation_eq_series C v x n
+  cmp89CanonicalNeumannReflectionRepresentation_eq_series
+    (d := d) (N := cmp99RegionalLatticeSize M N (steps + 1))
+    (g := SUNLieCoord Nc)
+    (Omega := cmp99IteratedLiftActiveRegion (M := M) Omega (steps + 1))
+    (m := m) (siteEquiv := siteEquiv)
+    (green := cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen
+      (d := d) (M := M) (N := N) (Nc := Nc)
+      hd hM Omega steps hspacing budget mass a ha)
+    (fullGreenAction := fullGreenAction) C v x n
 
 end
 
