@@ -25,6 +25,13 @@ def cmp89SourceNeumannRectangleActiveRegion
   ⟨Finset.univ.filter fun y =>
     ∀ mu, (y mu).val < Int.toNat (m mu)⟩
 
+@[simp]
+theorem mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff
+    {N : ℕ} [NeZero N] {m : Fin 4 → ℤ} (y : FinBox 4 N) :
+    y ∈ (cmp89SourceNeumannRectangleActiveRegion m).sites ↔
+      ∀ mu, (y mu).val < Int.toNat (m mu) := by
+  simp [cmp89SourceNeumannRectangleActiveRegion]
+
 /-- The canonical embedding lands in the literal rectangular active region.
 No free site map is supplied. -/
 def cmp89SourceNeumannRectangleSite
@@ -33,8 +40,7 @@ def cmp89SourceNeumannRectangleSite
     (x : CMP89SourceNeumannIntegerRectanglePoint m) :
     ActiveGaugeRegion.Site (cmp89SourceNeumannRectangleActiveRegion m) :=
   ⟨cmp89SourceNeumannRectanglePointToFinBox_draft hfit x, by
-    simp only [cmp89SourceNeumannRectangleActiveRegion, Finset.mem_filter,
-      Finset.mem_univ, true_and]
+    rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
     intro mu
     have hm0 : 0 ≤ m mu := le_trans (x.2 mu).1 (x.2 mu).2.le
     have hxcast : (Int.toNat (x.1 mu) : ℤ) = x.1 mu :=
@@ -57,7 +63,8 @@ def cmp89SourceNeumannRectangleSiteEquiv
       intro mu
       constructor
       · exact Int.ofNat_zero_le _
-      · have hy := (Finset.mem_filter.mp y.2).2 mu
+      · have hy :=
+          (mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff y.1).mp y.2 mu
         have hm0 : 0 ≤ m mu := (hm mu).le
         have hmcast : (Int.toNat (m mu) : ℤ) = m mu :=
           Int.toNat_of_nonneg hm0
