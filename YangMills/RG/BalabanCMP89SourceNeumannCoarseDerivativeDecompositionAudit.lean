@@ -3,8 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannCoarseDerivativeDecomposition
 /-!
 # Axiom audit: exact regional Neumann coarse-derivative decomposition
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
 -/
 
 #print axioms YangMills.RG.cmp99SourceParallelAverageDefectCochain

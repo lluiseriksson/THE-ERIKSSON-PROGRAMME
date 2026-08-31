@@ -42481,3 +42481,33 @@ zero-extension Dirichlet estimate is not substituted.  It does not prove
 that feedback inequality, iterate arbitrary depth, establish CMP89 (2.42),
 attain window 15, discharge a terminal field or construct a `TermSource`.
 The live counters therefore remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 993 (2026-08-31, **exact regional Neumann coarse-derivative split cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `138b265386fcdc2216746737ef4dee5f4da87f27`,
+driven by runner commit `dd21f4be538acf8b528bef968c5406688a0f9aac`
+(runner SHA-256
+`D5A566BFC85BF70217ECBC2AD89A7937770EFFCAE621152A875FC6227B04161C`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no shared or
+restored project `.lake/build`.  The focal completed in `1172.321 s`; its
+exact four-declaration audit exited zero in `9.355 s`.  Every readout uses
+only `{propext, Classical.choice, Quot.sound}`, and all 14 ordered stage
+records exited zero.
+
+The downloaded archive SHA-256 is
+`17F040F583A1CC1C875BEAA9F725049CE01A0587AD4EE2F008B7570D980039A6`;
+the stored evidence JSON SHA-256 is
+`36715DEDD214F3EAEA236640E49A0C017782ECE1E7D6646EC0C9D6579671C997`
+(canonical payload hash
+`ABB2DD4F96BF09EFA74C3782D29C6E1524C04030A3971896B902BDA87C95CB48`).
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-coarse-derivative-decomposition-cold-138b2653-20260831/`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The seal identifies the normalized regional coarse derivative of the
+literal transported average with the restriction of the exact straight
+parallel defect plus the explicit `Ubar` transport remainder.  The coarse
+spacing remains outside that sum.  No norm estimate, smallness assertion,
+Dirichlet boundary energy, arbitrary-depth recursion, CMP89 (2.42),
+window-15 attainment or terminal producer is claimed.  The live counters
+remain exactly `20/41` and `TermSource = 0`.

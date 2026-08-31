@@ -3,9 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRecursiveDefectBound
 /-!
 # Exact regional Neumann coarse-derivative decomposition
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The full CMP99 coarse derivative already splits into a straight transported
 defect and the explicit `Ubar` mismatch.  This file restricts that identity to
 the active coarse Neumann bonds and restores the printed coarse lattice

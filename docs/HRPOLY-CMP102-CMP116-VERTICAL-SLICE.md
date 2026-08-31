@@ -15382,3 +15382,19 @@ parallel defect and the `Ubar` remainder, then bound the straight paths using
 only internal Neumann bonds.  No Dirichlet boundary energy is admitted.  The
 seal does not move `20/41`, instantiate `TermSource`, prove CMP89 (2.42), or
 attain window 15.
+
+The exact regional split of that derivative is now cold-sealed at source
+`138b265386fcdc2216746737ef4dee5f4da87f27`.  Its fresh Colab Pro+
+CPU/high-RAM checkout shared no project `.lake/build`; the focal completed in
+`1172.321 s`, and the exact four-declaration audit exited zero in `9.355 s`
+with only `{propext, Classical.choice, Quot.sound}`.  Ledger Addendum 993
+records the independently verified archive, canonical payload, stored JSON
+and exact source-blob hashes.
+
+This brick is an identity, not the feedback estimate: it keeps the straight
+parallel defect and the `Ubar` remainder as separately visible species and
+keeps the inverse coarse spacing outside their sum.  The next brick bounds
+the straight species by paths that lie entirely in the Neumann internal-bond
+carrier; the already sealed remainder bound then supplies the second species.
+No boundary-crossing Dirichlet term is accepted.  Counters remain exactly
+`20/41`, `TermSource = 0`, and window 15 remains compatible but unattained.
