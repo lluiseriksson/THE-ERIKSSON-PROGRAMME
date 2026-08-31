@@ -15487,3 +15487,22 @@ operator and Poincare certificate internally and identify its terminal tower
 with the retained physical tower by the already sealed bridge.  CMP89 (2.42),
 uniform `B0`/`delta0`, window 15, `20/41` and `TermSource = 0` remain open and
 unchanged.
+
+The arbitrary finite-depth physical Neumann Poincare induction is now
+cold-sealed at exact source
+`4778206bb3523dda5cbcb56cfee93d9492d61c92`.  A fresh Colab Pro+
+CPU/high-RAM checkout with no restored project `.lake/build` completed
+`8724/8724` focal jobs in `1577.644 s`; the exact three-declaration audit
+exited zero in `12.602 s` with only
+`{propext, Classical.choice, Quot.sound}`.  Ledger Addendum 999 records the
+independently verified archive, canonical payload, stored JSON, notebook and
+source-blob hashes.
+
+The sealed producer constructs all intermediate backgrounds, active regions,
+radii, operators and Poincare certificates internally from one typed chain
+and one scalar recursive contraction record; it neither accepts those objects
+as a free family nor identifies the generated endpoint by assumption.  The
+retained/generated terminal bridge supplies the exact endpoint equality.
+CMP89 (2.42), the uniform `B0`/`delta0` producer and window-15 attainment are
+still open.  This infrastructure does not move `20/41` and does not construct
+a `TermSource`.

@@ -5,9 +5,6 @@ import YangMills.RG.BalabanCMP99SourceRetainedGeneratedTerminalBridge
 /-!
 # Finite-depth physical CMP89 Neumann Poincare induction
 
-PRE-VALIDATION: source present; `.olean` not yet materialized in a fresh
-checkout, and the result has not yet been verified by the compiler.
-
 This module installs the one-scale Neumann Poincare producer and the literal
 physical derivative-feedback estimate at every member of one typed generated
 `Ubar` chain.  The caller supplies one recursive scalar contraction budget,

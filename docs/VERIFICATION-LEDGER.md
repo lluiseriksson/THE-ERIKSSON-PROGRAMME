@@ -42694,3 +42694,41 @@ construct the full finite-depth physical tower, prove CMP89 (2.42), produce
 the uniform `B0`/`delta0`, attain window 15, move a terminal obligation or
 construct a `TermSource`.  The live counters therefore remain exactly
 `20/41` and `TermSource = 0`.
+
+## Addendum 999 (2026-08-31, **finite-depth physical Neumann Poincare induction cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `4778206bb3523dda5cbcb56cfee93d9492d61c92`,
+driven by runner commit `21307ff1b43d754bde6f84ba4fbe40900f3a2e1b`
+(runner transport SHA-256
+`DBFD717E3FDB45FAE6B149D77F27EB73895A30E9E63EC4872E8070EC4D145270`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`.  The focal completed `8724/8724`
+jobs in `1577.644 s`; its exact three-declaration audit exited zero in
+`12.602 s`.  Every audit readout uses only
+`{propext, Classical.choice, Quot.sound}`, and all 16 ordered stage records
+exited zero with Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The downloaded archive SHA-256 is
+`950B83A0421D50CC7CF669BB610ED48FBCE263EC196B01B51B7C963B95044426`;
+the stored evidence JSON SHA-256 is
+`EA8D18383286F9EABF834CC8AAD2605845FA2F575E8EB9130EDE6FFC09C6C3BF`
+(canonical payload hash
+`EA721D74A705970208613A91530C4D0248DC8D3C44B32674FEEBD7E2884A962C`).
+The executed notebook SHA-256 is
+`23182D84A4676E53D84C89F2441184F522C95F44C9E0C8E808089EA603AE8691`.
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-finite-depth-physical-poincare-4778206b/`
+and
+`tmp/verify_cmp89_neumann_finite_depth_physical_poincare_cold_evidence.ps1`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The producer constructs every intermediate generated background, active
+region, normalized radius and Poincare certificate internally from one typed
+finite chain and one recursive scalar contraction budget.  It accepts no
+family of Poincare certificates, backgrounds or averaging operators, and it
+uses the sealed retained/generated terminal equality at its endpoint.  This
+seal does not prove CMP89 (2.42), produce uniform `B0`/`delta0`, attain window
+15, discharge a terminal field, move a terminal obligation or construct a
+`TermSource`.  The live counters therefore remain exactly `20/41` and
+`TermSource = 0`.
