@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalGreenInsertion
 
 /-!
-# PRE-VALIDATION: summability of the real-slice CMP89 reflection series
+# Compiler-verified summability of the real-slice CMP89 reflection series
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold-sealed at source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`;
+see Verification Ledger Addendum 1003.
 
 This module transports the already sealed complex full-space Green
 summability to the literal real scalar used by the regional real-fibre

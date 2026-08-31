@@ -2,10 +2,10 @@ import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalGreenInsertion
 import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectangleReflectionRepresentation
 
 /-!
-# PRE-VALIDATION: physical full-space action in the canonical CMP89 rectangle gate
+# Compiler-verified physical full-space action in the canonical CMP89 rectangle gate
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold-sealed at source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`;
+see Verification Ledger Addendum 1003.
 
 This module fixes the remaining full-space action to the real slice of the
 literal normalized CMP89 (2.48) Fourier Green. It does not assert that the

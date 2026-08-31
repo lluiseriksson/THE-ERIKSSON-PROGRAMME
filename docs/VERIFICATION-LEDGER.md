@@ -42841,3 +42841,45 @@ but does not prove the multiple-reflection identity, identify the literal
 full-space Green with the regional inverse, produce uniform `B0`/`delta0`,
 attain window 15, discharge a terminal field, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1003 (2026-09-01, **CMP89 Neumann reflection inverse scaffolding cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`,
+driven by runner commit `59e62594bc8499ca72458c5254237518fe4e9ca2`
+(runner blob SHA-256
+`FFFAEC62177EC931D2DB0B93A6C77ECF22D3F0B407B1F4DAB090003247D025C7`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`. The initial graph build completed
+in `2425.547 s`; the remaining focal stages completed in `39.141 s`,
+`18.168 s`, `179.022 s`, and `14.836 s`. Their five exact audits completed
+in `17.384 s`, `16.360 s`, `12.014 s`, `7.945 s`, and `10.042 s`.
+All 13 declarations use a subset of
+`{propext, Classical.choice, Quot.sound}`, and all 24 ordered stage records
+exited zero with Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The downloaded archive SHA-256 is
+`35517565DB479A332FDDDC295D38939641205B0C92C70E668B3856AD1817B7C6`;
+the stored evidence JSON SHA-256 is
+`B97C733B0AE9FC248B4152DBFC47DD01420DFE73864F66D6AE13CC35FA2BCB88`
+(canonical payload hash
+`E8A95941A7A8A78FA377D728F0DD19329E378CBFBB330F1F98C1E36424B17C92`).
+The executed notebook SHA-256 is
+`92277EAB4D0578051337172E007BD52B443B00475AFA9045AD25B69E64717E10`.
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-reflection-inverse-cold-cdd859ba99671e83a1ef2b3d8119a4e376a97ced/`
+and
+`tmp/verify_cmp89_neumann_reflection_inverse_cold_evidence.ps1`.
+Exactly the ten PRE-VALIDATION notices in the five focal/audit pairs are
+retired, and all five audits are imported by `YangMillsCore.lean`.
+
+This seal constructs the literal complete-block rectangle, fixes the
+full-space action to the real slice of the normalized CMP89 (2.48) Green,
+assembles the scalar reflection kernel as a finite-carrier continuous linear
+operator, proves summability of the real-slice series, and derives the
+canonical reflection representation from a supplied literal right-inverse
+law by uniqueness. It does **not** prove that the physical regional precision
+composed with this Green is the identity; that three-species right-inverse
+law remains the load-bearing CMP89 (2.42) endpoint. It does not produce
+uniform `B0`/`delta0`, attain window 15, discharge a terminal field, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

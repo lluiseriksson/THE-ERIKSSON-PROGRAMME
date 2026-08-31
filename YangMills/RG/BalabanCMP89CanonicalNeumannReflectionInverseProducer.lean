@@ -3,10 +3,10 @@ import YangMills.RG.BalabanCMP89NeumannScalarReflectionOperator
 import YangMills.RG.BalabanCMP99SourcePi4WeakenedCoarseMiddle
 
 /-!
-# PRE-VALIDATION: produce CMP89 (2.42) by inverse uniqueness
+# Compiler-verified conditional CMP89 (2.42) producer by inverse uniqueness
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold-sealed at source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`;
+see Verification Ledger Addendum 1003.
 
 This module does not accept the printed reflection equality. Instead it
 constructs the finite reflection-series operator internally and asks for the

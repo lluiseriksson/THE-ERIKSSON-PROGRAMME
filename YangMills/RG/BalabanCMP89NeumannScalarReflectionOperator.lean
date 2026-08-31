@@ -2,10 +2,10 @@ import YangMills.RG.BalabanCMP89NeumannReflectionRepresentation
 import YangMills.RG.FinitePiLpCombesThomas
 
 /-!
-# PRE-VALIDATION: operator assembled from the CMP89 scalar reflection kernel
+# Compiler-verified operator assembled from the CMP89 scalar reflection kernel
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold-sealed at source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`;
+see Verification Ledger Addendum 1003.
 
 This module turns the literal scalar multiple-reflection series into a
 finite-carrier continuous linear operator. The construction is internal: a

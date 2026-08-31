@@ -2,10 +2,10 @@ import YangMills.RG.BalabanCMP89NeumannRectangleLift
 import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannReflectionRepresentation
 
 /-!
-# PRE-VALIDATION: canonical generated CMP89 gate on the literal Neumann rectangle
+# Compiler-verified canonical generated CMP89 gate on the literal Neumann rectangle
 
-Source is present at this checkpoint, but its `.olean` has not yet been
-materialized and the result has not yet been verified by the compiler.
+Cold-sealed at source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`;
+see Verification Ledger Addendum 1003.
 
 This module removes the free source-site equivalence from the already sealed
 generated reflection gate by constructing the terminal complete-block
