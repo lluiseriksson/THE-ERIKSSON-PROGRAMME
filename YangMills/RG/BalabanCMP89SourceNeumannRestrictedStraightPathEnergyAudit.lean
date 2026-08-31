@@ -3,8 +3,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannRestrictedStraightPathEnergy
 /-!
 # Axiom audit: restricted CMP89 Neumann straight-path energy
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
 -/
 
 #print axioms YangMills.RG.cmp89SourceNeumannParallelFineBondAt_injective

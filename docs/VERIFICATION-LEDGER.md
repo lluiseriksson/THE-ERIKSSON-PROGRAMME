@@ -42511,3 +42511,33 @@ spacing remains outside that sum.  No norm estimate, smallness assertion,
 Dirichlet boundary energy, arbitrary-depth recursion, CMP89 (2.42),
 window-15 attainment or terminal producer is claimed.  The live counters
 remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 994 (2026-08-31, **restricted Neumann straight-path energy cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `928d3b8f8c62df8590687a3ee9edc58459386ad6`,
+driven by runner commit `e39d0d3e7c6d34ff52ffcae62afba9ba233fb339`
+(runner SHA-256
+`EA44AA822B3BF7C3D791BEB083F8679787EB9DF7637F8157AE44C0B4C6D1D7EE`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with no shared or
+restored project `.lake/build`.  The focal completed in `1157.201 s`; its
+exact four-declaration audit exited zero in `8.406 s`.  Every readout uses
+only `{propext, Classical.choice, Quot.sound}`, and all 14 ordered stage
+records exited zero.
+
+The downloaded archive SHA-256 is
+`0C92F33D209D61B0DE7915B19A960E2B241AC8728A9550654DB3C8F189F42E55`;
+the stored evidence JSON SHA-256 is
+`AAFBF42FEBE7C3B3574786C1C596C78598811D9675A912B5EB0287B827168F80`
+(canonical payload hash
+`3BCB4463CBC4D0FCADB1C684D4CEA0488EAF9112827E126AB797E28744497365`).
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-neumann-restricted-straight-path-energy-cold-928d3b8f-20260831/`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired.
+
+The seal proves that every layer of every active coarse straight path embeds
+injectively into the literal Neumann internal-bond carrier, so the full path
+family costs exactly the physical length factor `M` against the raw regional
+Neumann energy.  No active-volume factor or zero-extension boundary energy
+enters.  It is not yet the combined derivative-feedback estimate and does
+not prove arbitrary-depth recursion, CMP89 (2.42), window-15 attainment or a
+terminal producer.  Counters remain exactly `20/41` and `TermSource = 0`.

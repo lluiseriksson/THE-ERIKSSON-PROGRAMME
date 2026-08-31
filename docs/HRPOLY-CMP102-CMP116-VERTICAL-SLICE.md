@@ -15398,3 +15398,21 @@ the straight species by paths that lie entirely in the Neumann internal-bond
 carrier; the already sealed remainder bound then supplies the second species.
 No boundary-crossing Dirichlet term is accepted.  Counters remain exactly
 `20/41`, `TermSource = 0`, and window 15 remains compatible but unattained.
+
+The restricted straight-path energy needed by that first species is now
+cold-sealed at source `928d3b8f8c62df8590687a3ee9edc58459386ad6`.
+Its fresh Colab Pro+ CPU/high-RAM checkout shared no project `.lake/build`;
+the focal completed in `1157.201 s`, and the exact four-declaration audit
+exited zero in `8.406 s` with only
+`{propext, Classical.choice, Quot.sound}`.  Ledger Addendum 994 records the
+independently verified archive, canonical payload, stored JSON and exact
+source-blob hashes.
+
+At every layer the active coarse-bond/start index injects into retained fine
+positive bonds, so the complete family pays exactly `M` times the raw
+Neumann energy.  This is the boundary-free replacement for the global
+zero-extension estimate.  The next producer must combine the resulting
+straight-defect coefficient with the existing `Ubar` remainder coefficient
+and the explicit coarse-spacing normalization.  The current seal itself does
+not move `20/41`, instantiate `TermSource`, prove CMP89 (2.42), or attain
+window 15.

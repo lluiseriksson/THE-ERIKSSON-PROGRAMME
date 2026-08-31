@@ -4,9 +4,6 @@ import YangMills.RG.BalabanCMP89SourceNeumannInternalBlockEnergy
 /-!
 # Restricted straight-path energy for the CMP89 Neumann derivative
 
-PRE-VALIDATION: source is present, its `.olean` has not been materialized,
-and no declaration below is compiler-verified.
-
 The ambient straight-path identity sums over every starting point and hence
 sees zero-extension boundary bonds.  The physical feedback estimate instead
 sums only the straight paths attached to active coarse bonds.  At each path
