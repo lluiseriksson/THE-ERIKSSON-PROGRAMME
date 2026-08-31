@@ -10,8 +10,8 @@ import time
 from pathlib import Path
 
 
-RUNNER_REV = "cmp89-neumann-physical-gate-reachability-hot-v1"
-SOURCE_SHA = "866455f7c467caf057561b43e1165b8189ed895e"
+RUNNER_REV = "cmp89-neumann-physical-gate-reachability-hot-v2"
+SOURCE_SHA = "4ff17264401050c9ce9194410d00cc1a8fc793ea"
 ROOT = Path("/content/hrpoly-cmp89-neumann-generated-two-scale-absorption-cold")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannPhysicalGateMonotonicity.lean":
@@ -19,7 +19,7 @@ SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannPhysicalGateMonotonicityAudit.lean":
         "15b27529a20769cd9b10f3170b462d71232fe025838970e1dbd357ceae13fe55",
     "YangMills/RG/BalabanCMP89SourceNeumannPhysicalGateReachability.lean":
-        "bcceb9079750672fd7023a93fc65b6d9f27b45e475ce2e2964e204848a5163e7",
+        "4f3e26a51465020986cd90e1d1ccf7d0144e0647bed3ddab033bdce99a1f04f8",
     "YangMills/RG/BalabanCMP89SourceNeumannPhysicalGateReachabilityAudit.lean":
         "c122ee5f3dead42e76ef8dafcf17d87db3eb3a267aa19130cc97ac7dd6f437f4",
 }
