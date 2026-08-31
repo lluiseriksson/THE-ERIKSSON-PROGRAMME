@@ -55,6 +55,11 @@ theorem exists_pos_cmp89SourceNeumann_twoScale_physical_gate_radius
   let epsilon : ℝ := min radius (min rNext (spacing * q)) / 2
   have hmin_pos : 0 < min radius (min rNext (spacing * q)) :=
     lt_min hradius (lt_min hrNext (mul_pos hspacing hq))
+  have hhalf_lt :
+      min radius (min rNext (spacing * q)) / 2 <
+        min radius (min rNext (spacing * q)) := by
+    rw [div_lt_iff₀ (by norm_num : (0 : ℝ) < 2)]
+    nlinarith [hmin_pos]
   have hepsilon : 0 < epsilon := by
     dsimp only [epsilon]
     exact div_pos hmin_pos (by norm_num)
@@ -62,19 +67,19 @@ theorem exists_pos_cmp89SourceNeumann_twoScale_physical_gate_radius
     dsimp only [epsilon]
     calc
       min radius (min rNext (spacing * q)) / 2 <
-          min radius (min rNext (spacing * q)) := by linarith
+          min radius (min rNext (spacing * q)) := hhalf_lt
       _ ≤ radius := min_le_left _ _
   have hepsilon_next : epsilon < rNext := by
     dsimp only [epsilon]
     calc
       min radius (min rNext (spacing * q)) / 2 <
-          min radius (min rNext (spacing * q)) := by linarith
+          min radius (min rNext (spacing * q)) := hhalf_lt
       _ ≤ rNext := (min_le_right _ _).trans (min_le_left _ _)
   have hepsilon_fine : epsilon ≤ spacing * q := by
     dsimp only [epsilon]
     calc
       min radius (min rNext (spacing * q)) / 2 ≤
-          min radius (min rNext (spacing * q)) := by linarith
+          min radius (min rNext (spacing * q)) := hhalf_lt.le
       _ ≤ spacing * q := (min_le_right _ _).trans (min_le_right _ _)
   obtain ⟨hbudget, _hPoincare⟩ :=
     hrange hepsilon.le hepsilon_radius
