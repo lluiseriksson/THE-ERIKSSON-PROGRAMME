@@ -301,6 +301,7 @@ theorem norm_cmp89SourceNeumannRegionalCovariantD0CLM_oneScaleAverage_sq_le_raw_
       norm_restrictOne_cmp99SourceCoarseTransportRemainderCochain_sq_le
         Omega U V phi epsilonFine epsilonCoarse epsilonFine_nonneg
           epsilonCoarse_nonneg fine_small coarse_small
+  dsimp only
   rw [cmp89SourceNeumannRegionalCovariantD0CLM_oneScaleAverage_eq_twoSpecies
     Omega hOmega (matrixSUNAdjointModel Nc) U V spacing phi]
   rw [map_add]
