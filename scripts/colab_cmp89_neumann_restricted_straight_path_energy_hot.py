@@ -9,12 +9,12 @@ import subprocess
 import time
 
 
-RUNNER_REV = "cmp89-neumann-restricted-straight-path-energy-hot-v1"
-SOURCE_SHA = "dfa6ecc286a31f2180a509268f7caa6253e84672"
+RUNNER_REV = "cmp89-neumann-restricted-straight-path-energy-hot-v2"
+SOURCE_SHA = "928d3b8f8c62df8590687a3ee9edc58459386ad6"
 ROOT = Path("/content/hrpoly-cmp89-neumann-two-level-poincare-composition-cold")
 EXPECTED_BLOBS = {
     "YangMills/RG/BalabanCMP89SourceNeumannRestrictedStraightPathEnergy.lean":
-        "56e757e207eea92cbd88438e66d5b5e6f0a853a2",
+        "353c8a34a7adf6bc12d1e3d551f0e0d1c7ce691d",
     "YangMills/RG/BalabanCMP89SourceNeumannRestrictedStraightPathEnergyAudit.lean":
         "d7081cfef1135157aae80dd09307e4e967db394c",
 }
