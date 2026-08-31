@@ -53,24 +53,29 @@ theorem exists_pos_cmp89SourceNeumann_twoScale_physical_gate_radius
     simpa only [cmp99SourceUbarNextFineRadius_zero] using h
   obtain ⟨rNext, hrNext, hNextBall⟩ := Metric.mem_nhds_iff.mp hnextEvent
   let epsilon : ℝ := min radius (min rNext (spacing * q)) / 2
+  have hmin_pos : 0 < min radius (min rNext (spacing * q)) :=
+    lt_min hradius (lt_min hrNext (mul_pos hspacing hq))
   have hepsilon : 0 < epsilon := by
     dsimp only [epsilon]
-    exact div_pos (lt_min hradius (lt_min hrNext (mul_pos hspacing hq)))
-      (by norm_num)
+    exact div_pos hmin_pos (by norm_num)
   have hepsilon_radius : epsilon < radius := by
     dsimp only [epsilon]
-    have hmin := min_le_left radius (min rNext (spacing * q))
-    linarith
+    calc
+      min radius (min rNext (spacing * q)) / 2 <
+          min radius (min rNext (spacing * q)) := by linarith
+      _ ≤ radius := min_le_left _ _
   have hepsilon_next : epsilon < rNext := by
     dsimp only [epsilon]
-    have hmin := (min_le_right radius (min rNext (spacing * q))).trans
-      (min_le_left rNext (spacing * q))
-    linarith
+    calc
+      min radius (min rNext (spacing * q)) / 2 <
+          min radius (min rNext (spacing * q)) := by linarith
+      _ ≤ rNext := (min_le_right _ _).trans (min_le_left _ _)
   have hepsilon_fine : epsilon ≤ spacing * q := by
     dsimp only [epsilon]
-    have hmin := (min_le_right radius (min rNext (spacing * q))).trans
-      (min_le_right rNext (spacing * q))
-    linarith
+    calc
+      min radius (min rNext (spacing * q)) / 2 ≤
+          min radius (min rNext (spacing * q)) := by linarith
+      _ ≤ spacing * q := (min_le_right _ _).trans (min_le_right _ _)
   obtain ⟨hbudget, _hPoincare⟩ :=
     hrange hepsilon.le hepsilon_radius
   have hepsilon_mem : epsilon ∈ Metric.ball (0 : ℝ) rNext := by
