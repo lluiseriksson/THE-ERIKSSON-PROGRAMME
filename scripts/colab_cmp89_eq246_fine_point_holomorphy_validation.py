@@ -39,9 +39,11 @@ spec.loader.exec_module(runner)
 
 
 EXPECTED_BY_COUNT = {
-    10: {
+    12: {
         "YangMills.RG.differentiable_cmp89Eq246FinePointSourceAliasVector_component",
         "YangMills.RG.differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment",
+        "YangMills.RG.cmp89Eq246StabilizedFinePointSourceSolutionMoment",
+        "YangMills.RG.cmp89Eq246StabilizedFinePointSourceSolutionMoment_eq",
         "YangMills.RG.differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment",
         "YangMills.RG.differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component",
         "YangMills.RG.differentiableAt_cmp89Eq246StabilizedFineToFineGreenIntegrand",
@@ -81,8 +83,8 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-fine-point-holomorphy-cold-v2"
-runner.SOURCE_SHA = "2522d03fe2255f64ddf8513e267efd54e8f36136"
+runner.RUNNER_REV = "cmp89-eq246-fine-point-holomorphy-cold-v3"
+runner.SOURCE_SHA = "147e2e2197d57f8f5bc3bb85ebccb0bbaa7f8e06"
 runner.ROOT = Path("/content/hrpoly-cmp89-eq246-fine-point-holomorphy-cold-v2")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp89-eq246-fine-point-holomorphy-cold-v2-evidence"
@@ -95,9 +97,9 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceHolomorphy.lean":
-        "3a82ad645d24263422ed47954226cb2fe1364324db434f98c2b756fb0a343bc8",
+        "407a55fbec233d3475899830cf484ebe85006f306405cf1d25ced7bb8925840e",
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceHolomorphyAudit.lean":
-        "918a8a223732384815da1e295cf2158b6e79814de7f3d87ef59e1b87585dc03c",
+        "3ad677ecbfbb60d7757f2afb742343fdbb0c8c4e03bd46360e83ff58df109b50",
 }
 runner.QUEUE = [
     (
@@ -113,7 +115,7 @@ runner.QUEUE = [
             "lean",
             "YangMills/RG/BalabanCMP89Eq246FinePointSourceHolomorphyAudit.lean",
         ],
-        10,
+        12,
     ),
 ]
 
