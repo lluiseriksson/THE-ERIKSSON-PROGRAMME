@@ -38,7 +38,7 @@ theorem cmp89Eq251HalfAliasIntegral_eq (N : ℕ) :
     rw [add_comm]]
   rw [intervalIntegral.integral_comp_add_right
     (fun x : ℝ => x ^ (-(1 / 2 : ℝ))) 1]
-  rw [intervalIntegral.integral_rpow (Or.inl (by norm_num))]
+  rw [integral_rpow (Or.inl (by norm_num))]
   rw [show -(1 / 2 : ℝ) + 1 = 1 / 2 by ring]
   simp only [zero_add, Nat.cast_add, Nat.cast_one, one_add_one_eq_two,
     Real.sqrt_eq_rpow, Real.one_rpow]
