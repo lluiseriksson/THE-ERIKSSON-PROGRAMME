@@ -171,7 +171,7 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_sum_smul_ful
       ell mass a (fun k => source k A) hfine hstabilized hpair) output
   simpa only [Matrix.mulVec, dotProduct,
     cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeFullVectorSolution,
-    WithLp.ofLp_sum, PiLp.smul_apply, smul_eq_mul] using hscalar
+    WithLp.ofLp_sum, Finset.sum_apply, PiLp.smul_apply, smul_eq_mul] using hscalar
 
 end
 
