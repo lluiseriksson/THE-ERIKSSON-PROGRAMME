@@ -72,9 +72,8 @@ theorem sum_norm_cmp89Eq246FinePointSourceBareDiagonal_le
       (∑ m : CMP89Eq246AliasIndex 4 L j, weight m) =
         cmp89Eq251CenteredMultidimensionalAliasSum 4 (L ^ j)
           (1 / 2 : ℝ) := by
-    rw [Finset.sum_subtype
-      (cmp89Eq245CenteredAliasVectors 4 (L ^ j)) (fun _ => Iff.rfl)]
-    rfl
+    simp [weight, CMP89Eq246AliasIndex,
+      cmp89Eq251CenteredMultidimensionalAliasSum]
   have hseries :=
     cmp89Eq251CenteredFourDimensionalAliasSum_half_le (L ^ j)
   calc
@@ -95,6 +94,7 @@ theorem sum_norm_cmp89Eq246FinePointSourceBareDiagonal_le
     _ ≤ growth * (amplitude *
         (256 * ((L ^ j + 1 : ℕ) : ℝ) ^ 2)) := by
       gcongr
+      simpa only [Nat.cast_add, Nat.cast_one] using hseries
     _ = cmp89Eq246FinePointSourceBareDiagonalSumBound
         L j rho sourceEndpoint := by
       rfl
