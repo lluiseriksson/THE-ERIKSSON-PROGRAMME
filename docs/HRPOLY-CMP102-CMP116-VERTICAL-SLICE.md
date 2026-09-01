@@ -15714,3 +15714,18 @@ Eq. (2.46) source moment. It does not yet bound the stabilized fibre solution,
 construct the continuous Green kernel, prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+### Eq. (2.46) scale-uniform point-source moment bound (PRE-VALIDATION)
+
+Source checkpoint `2cfd2c534bae969e4b9bb349b8da05b2c169b5c4` adds the
+second post-synthesis analytic brick. It proves the opposite-alias amplitude
+bound directly at `(-p,-m)`, builds the noncentral row quotient with the
+sealed summable source weight, sums over the finite alias subtype without an
+alias-cardinality factor, and combines the central and noncentral pieces into
+an explicit scale-uniform source-moment coefficient.
+
+Both new modules carry visible PRE-VALIDATION notices and remain outside
+`YangMillsCore.lean` until compiler and axiom evidence exists. The brick does
+not construct the continuous Green kernel, prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge a terminal field,
+move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

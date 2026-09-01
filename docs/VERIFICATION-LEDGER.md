@@ -43460,3 +43460,21 @@ strip-growth input. It does not yet bound the stabilized source moment,
 construct the continuous Green kernel, prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1021 (2026-09-01, **CMP89 (2.46) scale-uniform point-source moment bound promoted PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`2cfd2c534bae969e4b9bb349b8da05b2c169b5c4` adds the focal/audit pair
+`BalabanCMP89Eq246FinePointSourceMomentBound`. The focal derives the
+opposite-alias source amplitude at the literal negated momentum, combines it
+with the already sealed noncentral denominator gap and `alpha = -1` summable
+weight, and proves the complete stabilized source moment without a finite
+alias-cardinality factor. The exact audit names four declarations.
+
+The two modules pass the local textual and import-prefix guards and each
+retains one visible PRE-VALIDATION notice. They remain outside
+`YangMillsCore.lean` until compiler and axiom evidence is preserved. This
+checkpoint does not construct the continuous Green kernel, prove CMP89
+(2.42), produce uniform physical `B0`/`delta0`, attain window 15, discharge a
+terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
+remains exact.
