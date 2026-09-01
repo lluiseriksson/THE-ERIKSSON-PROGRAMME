@@ -6,16 +6,13 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99FlatComplexFibrePointSourceFourierReconstruction
 
 /-!
-# PRE-VALIDATION: exact DFT of a full-box physical point source
+# Exact DFT of a full-box physical point source
 
 The literal point source is sent by the sealed negative-character physical
 DFT to the inverse source character. This is the source vector consumed by
 the arbitrary-source transposed Eq. (2.46) solution. No Green, inverse or
 periodization identity is used.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler. It remains outside the project
-import graph until its own compiler and axiom gates pass.
 -/
 
 namespace YangMills.RG

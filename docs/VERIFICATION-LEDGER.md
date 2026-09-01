@@ -43289,3 +43289,44 @@ that Green by inverse uniqueness, prove the multiple-reflection formula
 (2.42), produce uniform physical `B0`/`delta0`, attain window 15, discharge a
 terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
 remains exact.
+
+## Addendum 1015 (2026-09-01, **physical Eq. (2.46) pullback and point-source DFT cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `76d8aa0c083dd1061ea50580889d0316bc0cad3d`,
+driven by runner checkpoint `97eac47551e0930dfa64ee9b511d60499ece0923`
+and launcher checkpoint `9bd227f7cd8a542d39e64833555adbbea35ba80e`,
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+restored project `.lake/build`. The runner revision was
+`cmp99-physical-eq246-next-cold-v1`; its Git-blob byte SHA-256 was
+`9F03CC7183E537910FAFE5FFD849E3F3A1E933F8188391C6649F374FCC38B9D5`,
+and Mathlib was fixed at `07642720480157414db592fa85b626dafb71355b`.
+
+The physical pullback focal completed `8584/8584` jobs in `1536.299 s`; its
+exact four-declaration audit exited zero in `10.105 s`. The independent
+point-source DFT focal completed `8492/8492` jobs in `58.007 s`; its exact
+one-declaration audit exited zero in `7.517 s`. Every declaration uses only
+`{propext, Classical.choice, Quot.sound}`. All eighteen unique
+stop-on-first-error stage records exited zero.
+
+The fail-closed verifier checked the exact source and all four source-blob
+hashes, runner revision, official toolchain asset, Mathlib pin, stage scope,
+durations, output hashes and terminal PASS. The canonical evidence payload
+SHA-256 is
+`3C172A52A498B03B3CB4E1A84EE5BFA1FD08785E7CAAF5E405B33CC4DF363F0C`;
+the downloaded archive SHA-256 is
+`4E7DAE0D94C407ADFE54CA3B9665F8219815F8C2D372FB36FF04D6D1B01503C0`;
+the executed notebook SHA-256 is
+`2C57B332586F5859636B338E13F64F8CA429E866237A71EE1B24EB06C8620F2F`.
+They are preserved under
+`validation-evidence/cmp99-physical-eq246-next-cold-76d8aa0c-20260901/`.
+
+Exactly the four PRE-VALIDATION notices in the two focal/audit pairs are
+retired, and both audits are imported by `YangMillsCore.lean`. The physical
+pair reindexes the cold-sealed arbitrary-source transposed solution through
+the named signed fixed-coarse-fibre equivalence and proves the literal complex
+Lie-fibre equation. The DFT pair proves the exact full-box physical point-
+source transform. This seal does **not** yet sum the fixed-coarse fibres,
+construct or identify the full periodic point-source Green, prove the
+multiple-reflection formula (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge a terminal field, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.

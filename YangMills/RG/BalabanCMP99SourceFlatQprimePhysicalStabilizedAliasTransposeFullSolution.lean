@@ -8,17 +8,13 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution
 
 /-!
-# PRE-VALIDATION: physical arbitrary-source transposed Eq. (2.46) solution
+# Physical arbitrary-source transposed Eq. (2.46) solution
 
-This draft pulls the internally constructed arbitrary-source solution of the
+This module pulls the internally constructed arbitrary-source solution of the
 transposed CMP89 alias matrix through the sealed signed fixed-fibre dictionary.
 The source is reindexed explicitly and the literal physical matrix equation is
 proved by reindexing the finite sum; no self-adjointness or inverse equality is
 assumed.
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler. It remains outside the project
-import graph until its own compiler and axiom gates pass.
 -/
 
 namespace YangMills.RG

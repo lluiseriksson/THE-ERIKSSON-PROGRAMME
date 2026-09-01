@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeFullSolution
 
 /-!
-# PRE-VALIDATION: audit of the physical arbitrary-source transposed Eq. (2.46) solution
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+# Axiom audit: physical arbitrary-source transposed Eq. (2.46) solution
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeFullSolution
