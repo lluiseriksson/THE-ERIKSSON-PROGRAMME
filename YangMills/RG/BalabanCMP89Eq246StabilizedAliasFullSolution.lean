@@ -6,7 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq249StabilizedAliasColumnSolution
 
 /-!
-# PRE-VALIDATION: stabilized full alias-fibre solution for CMP89 (2.46)
+# Stabilized full alias-fibre solution for CMP89 (2.46)
 
 CMP89 (2.46) solves the finite alias system for an arbitrary fine-lattice
 source before the specialization `f = Q_j^* g` that leads to (2.48).  This
@@ -23,8 +23,10 @@ kernel at a Dirichlet boundary, or attain window 15.
 
 Source catalog key: `cmp89.local-green.fourier.2.34-2.51`.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler evidence for exact source checkpoint
+`febce96d017f4ec8494354656f88b0dca56c1854` is recorded in Verification
+Ledger Addendum 1008. The focal and its exact two-declaration axiom audit
+passed in GitHub Actions run `33470345841` without restoring a project graph.
 -/
 
 namespace YangMills.RG

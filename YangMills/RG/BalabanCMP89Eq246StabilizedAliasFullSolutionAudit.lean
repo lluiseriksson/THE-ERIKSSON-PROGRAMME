@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullSolution
 
 /-!
-# PRE-VALIDATION audit: stabilized full alias-fibre solution
+# Audit: stabilized full alias-fibre solution
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler evidence for exact source checkpoint
+`febce96d017f4ec8494354656f88b0dca56c1854` is recorded in Verification
+Ledger Addendum 1008. Both declarations below passed the exact axiom gate in
+GitHub Actions run `33470345841`.
 -/
 
 #print axioms YangMills.RG.sum_row_mul_cmp89Eq246StabilizedAliasFullSolution_eq

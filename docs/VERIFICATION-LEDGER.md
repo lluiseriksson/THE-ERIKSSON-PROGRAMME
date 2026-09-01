@@ -43036,3 +43036,45 @@ seal establishes the three-species algebra, the endpoint no-go and the typed
 Green of (2.46), prove the reflection identity (2.42), establish uniform
 `B0`/`delta0`, attain window 15, discharge a terminal field, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1008 (2026-09-01, **complete arbitrary-source CMP89 (2.46) alias solution cold-sealed; 20/41 unchanged**)
+
+Exact mathematical source checkpoint
+`febce96d017f4ec8494354656f88b0dca56c1854` was validated from control
+checkpoint `6f1f0d646933fad80c4208868b9c926aa78f0d6f` by the single cold terminal
+GitHub Actions run `33470345841` (artifact `9786607750`). The run used two
+separate exact checkouts, restored no project `.lake/build`, fixed Mathlib at
+`07642720480157414db592fa85b626dafb71355b`, and verified the official Lean
+`v4.29.0-rc6` asset SHA-256
+`BF3E0A4025E47A0BEA9ED907D12DCCCD3D3590B1D8AD6C55A915298B01AD9D3E`.
+The exact source and audit blobs had SHA-256
+`396B2827D694662B915BAD20C62C71BFBB3493AF136B9B52CD86538B389467B2`
+and
+`D586FB4FF1C7DDEE39D12B8133A7CFDC1879D37B0E9FB3609C191E15BC3C6310`.
+
+The focal built `8496/8496` jobs and exited zero in `788 s`; the exact audit
+exited zero in `5 s`. Its two declarations,
+`sum_row_mul_cmp89Eq246StabilizedAliasFullSolution_eq` and
+`cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution`, use only
+`{propext, Classical.choice, Quot.sound}`. The build emitted two nonsemantic
+linter warnings (`unusedSimpArgs` and `unnecessarySeqFocus`); neither is a
+compiler error or an additional axiom, and the certified source SHA is left
+unchanged rather than spending another cold run on cosmetic normalization.
+
+The downloaded artifact was checked fail-closed against its checkpoint,
+stage records, pines, exact axiom names, eleven-entry internal manifest and
+thirteen-member deterministic tar. The inner archive SHA-256 is
+`E3AFFC21AFC82BD5B4E473A3C9199B8EF9BD84022A6B2FAED2948A67BA9A62E8`;
+the raw GitHub artifact ZIP SHA-256 is
+`FC6C15B7676D172D7B01AB77990763F50CA00C0F3DB7F84FC204321A6AD5426B`.
+The preserved evidence is under `validation-evidence/run-33470345841/`.
+
+Exactly the remaining PRE-VALIDATION notices in the focal/audit pair are
+retired and the audit is imported by `YangMillsCore.lean`. This seal proves
+the internally constructed solution of the complete finite alias system
+(2.46) for an arbitrary source. It does **not** yet identify that source with
+the normalized fine delta of (2.43), synthesize or invert the full
+fine-to-fine Fourier kernel, prove the reflection representation (2.42),
+establish uniform physical `B0`/`delta0`, attain window 15, discharge a
+terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
+remains exact.
