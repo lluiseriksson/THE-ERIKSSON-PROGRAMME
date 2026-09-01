@@ -27,6 +27,7 @@ theorem cmp89Eq251BareInverseLaplacian_le_nine_mul_halfWeight
   have hredistributed :=
     cmp89Eq251AliasExcessProduct_div_euclideanNorm_rpow_le
       (d := 4) (alpha := (-1 : ℝ)) (by norm_num) (by norm_num) hm0 hp
+  norm_num [Real.rpow_two] at hredistributed
   have hproductPos : 0 < product := by
     dsimp [product]
     exact Finset.prod_pos fun mu _ => Real.rpow_pos_of_pos (by positivity) _
