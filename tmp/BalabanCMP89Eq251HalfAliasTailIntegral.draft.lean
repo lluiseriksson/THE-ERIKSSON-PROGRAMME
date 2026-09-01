@@ -24,16 +24,18 @@ theorem cmp89Eq251HalfAliasPositiveTail_le_integral (N : ℕ) :
       AntitoneOn (fun x : ℝ => (1 + x) ^ (-(1 / 2 : ℝ)))
         (Set.Icc 0 (0 + (N : ℝ))) := by
     intro x hx y hy hxy
-    exact Real.rpow_le_rpow_of_nonpos (by linarith) (by linarith) (by norm_num)
+    exact Real.rpow_le_rpow_of_nonpos
+      (by linarith [hx.1]) (by linarith) (by norm_num)
   simpa [Nat.cast_add, Nat.cast_one] using hanti.sum_le_integral
 
 /-- Exact value of the shifted half-exponent integral. -/
 theorem cmp89Eq251HalfAliasIntegral_eq (N : ℕ) :
     (∫ x in (0 : ℝ)..N, (1 + x) ^ (-(1 / 2 : ℝ))) =
       2 * (Real.sqrt (N + 1) - 1) := by
-  conv_lhs =>
-    enter [2, x]
-    rw [add_comm]
+  rw [show (fun x : ℝ => (1 + x) ^ (-(1 / 2 : ℝ))) =
+      fun x : ℝ => (x + 1) ^ (-(1 / 2 : ℝ)) by
+    funext x
+    rw [add_comm]]
   rw [intervalIntegral.integral_comp_add_right
     (fun x : ℝ => x ^ (-(1 / 2 : ℝ))) 1]
   rw [intervalIntegral.integral_rpow (Or.inl (by norm_num))]
