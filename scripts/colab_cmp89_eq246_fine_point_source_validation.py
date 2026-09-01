@@ -83,23 +83,23 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-fine-point-source-debug-v1"
-runner.SOURCE_SHA = "4035d105e264464248aed499e1686e83e320ac50"
-runner.ROOT = Path("/content/hrpoly-cmp89-eq246-fine-point-source-debug-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp89-eq246-fine-point-source-debug-v1-evidence")
+runner.RUNNER_REV = "cmp89-eq246-fine-point-source-cold-v2"
+runner.SOURCE_SHA = "754bf12fd82d6d8b509a2d391ee5b51eb1b9f26a"
+runner.ROOT = Path("/content/hrpoly-cmp89-eq246-fine-point-source-cold-v2")
+runner.EVIDENCE = Path("/content/hrpoly-cmp89-eq246-fine-point-source-cold-v2-evidence")
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp89-eq246-fine-point-source-debug-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp89-eq246-fine-point-source-cold-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp89-eq246-fine-point-source-debug-v1-paths.txt"
+    "/content/hrpoly-cmp89-eq246-fine-point-source-cold-v2-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq249CentralAveragePairComplexNonzero.lean":
-        "4d2e8b25b323872822f8b9136fb9fe22a46bcd5e53595620075935eb1bb4f4c2",
+        "418b042fa9b321d5623677fe3772442dba473fdb70cbfb5b1d73d638c9b07794",
     "YangMills/RG/BalabanCMP89Eq249CentralAveragePairComplexNonzeroAudit.lean":
         "24de9d4a0bfe0082671cb88a08f2dd039135405997f9c8410b8d8ab6ff1c1c42",
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceFibreGreen.lean":
-        "bc4a56d0694001d2bf811623d96a2f84fd9fd807db4f5b4014506fd4785b7343",
+        "4cd7ca13bcea2a79bc4d9527f0f26a89e15b6c4ca994bceab9d3383bfb17b826",
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceFibreGreenAudit.lean":
         "82e1d65b3747860dcd068b1a094818aa1665f4f4569191784109549b1fe44a64",
 }
