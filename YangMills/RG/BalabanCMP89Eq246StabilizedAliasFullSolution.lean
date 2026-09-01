@@ -120,7 +120,7 @@ theorem sum_row_mul_cmp89Eq246StabilizedAliasFullSolution_eq
     simp [cmp89Eq246StabilizedAliasFullSolution, central, fine, column,
       row, moment, noncentralSolution, hnc]
   rw [hnoncentral]
-  rw [mul_div_cancel_left₀ _ hrow]
+  rw [← mul_div_assoc, mul_div_cancel_left₀ _ hrow]
   ring
 
 /-- The internally constructed full solution solves the literal alias matrix
@@ -193,15 +193,19 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
   have hstabilizedEq :
       stabilized = fine central + (a : ℂ) * centralPair +
         (a : ℂ) * fine central * noncentral := by
-    dsimp only [stabilized, centralPair, noncentral]
-    rw [hcentralFine]
+    simpa only [stabilized, centralPair, noncentral, hcentralFine] using
+      (rfl : cmp89Eq249CentralStabilizedAliasDenominator d L j mass a z =
+        cmp89Eq249CentralEntireFineSymbol d L j mass z +
+          (a : ℂ) * cmp89Eq249CentralEntireAveragePair d L j z +
+          (a : ℂ) * cmp89Eq249CentralEntireFineSymbol d L j mass z *
+            cmp89Eq249ComplexNoncentralAliasSum d L j mass z)
   have hmomentEq :
       moment * stabilized = row central * source central +
         fine central * base := by
     change
       ((row central * source central + fine central * base) / stabilized) *
           stabilized = _
-    field_simp [hstabilized]
+    exact div_mul_cancel₀ _ hstabilized
   have hnoncentralExplicitSum :
       (∑ n ∈ Finset.univ.erase central,
         row n * (source n / fine n -
@@ -218,6 +222,7 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
           (∑ n ∈ Finset.univ.erase central,
             row n * (source n / fine n -
               (a : ℂ) * column n * moment / fine n)) = _
+        simp_rw [mul_sub]
         rw [Finset.sum_sub_distrib]
         change base - _ = _
         congr 1
@@ -243,6 +248,7 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
         fine, column, row, moment, if_pos]
       rw [hnoncentralExplicitSum]
     rw [hcentralSolution]
+    apply (mul_left_cancel₀ hrow)
     field_simp [hrow]
     rw [hpair]
     have hmom := hmomentEq
