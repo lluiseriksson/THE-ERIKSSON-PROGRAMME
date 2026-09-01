@@ -124,6 +124,53 @@ theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_fullS
       exact congrFun hgeneric (e k)
     _ = source k := by simp [aliasSource, e]
 
+/-- Coordinatewise lift of the scalar fixed-fibre construction to the
+literal complexified Lie fibre. Every Lie coordinate consumes the same
+physical precision matrix and no norm conversion is introduced. -/
+def cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeFullVectorSolution
+    {d M N' Nc : ℕ} [NeZero M] [NeZero N'] (ell : FinBox d N')
+    (mass a : ℝ)
+    (source : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell →
+      SUNLieComplexCoord Nc) :
+    CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell →
+      SUNLieComplexCoord Nc :=
+  fun k => WithLp.toLp 2 fun A =>
+    cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeFullSolution
+      ell mass a (fun n => source n A) k
+
+/-- The coordinatewise vector solution satisfies the literal transposed
+fixed-fibre equation. The conclusion is kept as the exact sum consumed by
+the physical DFT action, rather than hidden behind a new matrix API. -/
+theorem cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_sum_smul_fullVectorSolution
+    {d M N' Nc : ℕ} [NeZero M] [NeZero N'] (ell : FinBox d N')
+    (mass a : ℝ)
+    (source : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell →
+      SUNLieComplexCoord Nc)
+    (hfine : ∀ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
+      k ≠ cmp99SourceFlatQprimePhysicalCentralAliasIndex
+          (d := d) (M := M) (N' := N') ell →
+        cmp99SourceFlatQprimePhysicalFineSymbol mass k.1 ≠ 0)
+    (hstabilized :
+      cmp89Eq249CentralStabilizedAliasDenominator d M 1 mass a
+        (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) ≠ 0)
+    (hpair :
+      cmp89Eq249CentralEntireAveragePair d M 1
+        (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) ≠ 0)
+    (output : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell) :
+    (∑ input,
+        (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix
+          (d := d) (M := M) (N' := N') ell mass a).transpose output input •
+          cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeFullVectorSolution
+            ell mass a source input) =
+      source output := by
+  ext A
+  have hscalar := congrFun
+    (cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_fullSolution
+      ell mass a (fun k => source k A) hfine hstabilized hpair) output
+  simpa only [Matrix.mulVec, dotProduct,
+    cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeFullVectorSolution,
+    WithLp.ofLp_sum, PiLp.smul_apply, smul_eq_mul] using hscalar
+
 end
 
 end YangMills.RG
