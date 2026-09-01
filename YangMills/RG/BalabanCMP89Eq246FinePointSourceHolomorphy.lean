@@ -138,10 +138,18 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
         intro hmc
         subst m
         simpa using hm)
-  simpa only [cmp89Eq246StabilizedAliasFullSolutionMoment, central] using
-    differentiableAt_div_complex
-      (((hrow z).mul (hsource z)).add ((hfineCentral z).mul hbase))
-      hden hstabilized
+  change DifferentiableAt ℂ (fun w : Fin d → ℂ =>
+    (cmp89Eq246EntireAliasAverageRow d L j w central *
+          cmp89Eq246FinePointSourceAliasVector
+            d L j w sourceEndpoint central +
+        cmp89Eq246EntireAliasFineSymbol d L j mass w central *
+          cmp89Eq246StabilizedAliasNoncentralSourceMoment d L j mass w
+            (cmp89Eq246FinePointSourceAliasVector
+              d L j w sourceEndpoint)) /
+      cmp89Eq249CentralStabilizedAliasDenominator d L j mass a w) z
+  exact differentiableAt_div_complex
+    (((hrow z).mul (hsource z)).add ((hfineCentral z).mul hbase))
+    hden hstabilized
 
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
     {d L j : ℕ} [NeZero L] {mass a : ℝ} {z : Fin d → ℂ}
