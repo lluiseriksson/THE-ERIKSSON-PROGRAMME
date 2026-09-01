@@ -106,6 +106,16 @@ theorem differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
   exact differentiableAt_div_complex
     ((hrow z).mul (hsource z)) (hden z) (hfine m hmc)
 
+/-- The exact stabilized row moment specialized to one literal fine point
+source.  Naming this physical specialization keeps the multivariable
+differentiability interface from unfolding the full alias solution in its
+theorem header. -/
+def cmp89Eq246StabilizedFinePointSourceSolutionMoment
+    (d L j : ℕ) [NeZero L] (mass a : ℝ)
+    (sourceEndpoint : Fin d → ℝ) (z : Fin d → ℂ) : ℂ :=
+  cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a z
+    (cmp89Eq246FinePointSourceAliasVector d L j z sourceEndpoint)
+
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
     {d L j : ℕ} [NeZero L] {mass a : ℝ} {z : Fin d → ℂ}
     {sourceEndpoint : Fin d → ℝ}
@@ -114,10 +124,10 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
         cmp89Eq246EntireAliasFineSymbol d L j mass z m ≠ 0)
     (hstabilized :
       cmp89Eq249CentralStabilizedAliasDenominator d L j mass a z ≠ 0) :
-    DifferentiableAt ℂ (fun w : Fin d → ℂ =>
-      cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a w
-        (cmp89Eq246FinePointSourceAliasVector
-          d L j w sourceEndpoint)) z := by
+    DifferentiableAt ℂ
+      (cmp89Eq246StabilizedFinePointSourceSolutionMoment
+        d L j mass a sourceEndpoint) z := by
+  unfold cmp89Eq246StabilizedFinePointSourceSolutionMoment
   let central : CMP89Eq246AliasIndex d L j :=
     cmp89Eq249CentralAliasIndex d L j
   have hrow : Differentiable ℂ (fun w : Fin d → ℂ =>
@@ -179,6 +189,7 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
   have hmoment :=
     differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
       (z := z) (sourceEndpoint := sourceEndpoint) hfine hstabilized
+  unfold cmp89Eq246StabilizedFinePointSourceSolutionMoment at hmoment
   have hsource :=
     differentiable_cmp89Eq246FinePointSourceAliasVector_component
       d L j sourceEndpoint
