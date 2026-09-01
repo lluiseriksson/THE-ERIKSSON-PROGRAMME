@@ -1,4 +1,4 @@
-name: Validate source-flow uniform and localized B0
+name: Validate CMP89 Eq246 full solution
 
 on:
   workflow_dispatch:
@@ -13,13 +13,13 @@ permissions:
   contents: read
 
 env:
-  SOURCE_SHA: 73bb1a2008c557840a91e50d8abe6b874947f7ee
+  SOURCE_SHA: febce96d017f4ec8494354656f88b0dca56c1854
   EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
   TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
   TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
 
 jobs:
-  source-flow-uniform-localized-b0:
+  cmp89-eq246-full-solution:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
@@ -58,20 +58,12 @@ jobs:
           test "$(tr -d '\r\n' < source/lean-toolchain)" = \
             'leanprover/lean4:v4.29.0-rc6'
           printf '%s  %s\n' \
-            8c1c1099dd5043a518df4a89b888548f894b9152a9e3fc85ecec3c9109a5d21e \
-            source/YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0.lean \
+            396b2827d694662b915bad20c62c71bfbb3493af136b9b52cd86538b389467b2 \
+            source/YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolution.lean \
             | sha256sum -c -
           printf '%s  %s\n' \
-            743a914fd19d68a7aaeecaf61fee2c54e60a2c92ebb96f7d6851fcba37ca954d \
-            source/YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0Audit.lean \
-            | sha256sum -c -
-          printf '%s  %s\n' \
-            c083ff9c5693c8e3d35d9b6d7d58d7a0d2e95fd73b443401b9c19dcbf79109b1 \
-            source/YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0.lean \
-            | sha256sum -c -
-          printf '%s  %s\n' \
-            377312d8a20be16f45434c7a70ecd32516fb5158032cfc50d1e18aa7a92d8bcb \
-            source/YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0Audit.lean \
+            d586fb4ff1c7ddee39d12b8133a7cfdc1879d37b0e9fb3609c191e15bc3c6310 \
+            source/YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolutionAudit.lean \
             | sha256sum -c -
 
       - name: Install exact Lean toolchain
@@ -113,23 +105,23 @@ jobs:
           test "$mathlib" = "$EXPECTED_MATHLIB"
           lake exe cache get 2>&1 | tee ../evidence/cache-get.log
 
-      - name: Run uniform B0 focal
+      - name: Run Eq246 focal
         shell: bash
         working-directory: source
         run: |
           set -euo pipefail
           start=$SECONDS
           set +e
-          lake build YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0 \
+          lake build YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullSolution \
             2>&1 | tee ../evidence/focal.log
           focal_exit=${PIPESTATUS[0]}
           set -e
           elapsed=$((SECONDS - start))
-          printf 'stage=source_flow_uniform_point_source_b0_focal exit=%s seconds=%s\n' \
+          printf 'stage=eq246_full_solution_focal exit=%s seconds=%s\n' \
             "$focal_exit" "$elapsed" | tee ../evidence/focal.status
           test "$focal_exit" -eq 0
 
-      - name: Run uniform B0 audit and exact axiom gate
+      - name: Run Eq246 audit and exact axiom gate
         shell: bash
         working-directory: source
         run: |
@@ -137,92 +129,48 @@ jobs:
           start=$SECONDS
           set +e
           lake env lean \
-            YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalUniformPointSourceB0Audit.lean \
-            2>&1 | tee ../evidence/uniform-audit.log
+            YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolutionAudit.lean \
+            2>&1 | tee ../evidence/audit.log
           audit_exit=${PIPESTATUS[0]}
           set -e
           elapsed=$((SECONDS - start))
-          printf 'stage=source_flow_uniform_point_source_b0_audit exit=%s seconds=%s\n' \
-            "$audit_exit" "$elapsed" | tee ../evidence/uniform-audit.status
+          printf 'stage=eq246_full_solution_audit exit=%s seconds=%s\n' \
+            "$audit_exit" "$elapsed" | tee ../evidence/audit.status
           test "$audit_exit" -eq 0
           python - <<'PY'
           import re
           from pathlib import Path
 
-          text = Path('../evidence/uniform-audit.log').read_text(encoding='utf-8')
-          blocks = re.findall(r"depends on axioms:\s*\[(.*?)\]", text, re.S)
+          text = Path('../evidence/audit.log').read_text(encoding='utf-8')
+          compact = re.sub(r'\s+', '', text)
+          for forbidden in ('sorryAx', 'ofReduceBool', 'Lean.ofReduceBool'):
+              if forbidden in compact:
+                  raise SystemExit('FORBIDDEN_AXIOM=' + forbidden)
+          with_axioms = re.findall(r"'([^']+)'dependsonaxioms:\[([^\]]*)\]", compact)
+          without_axioms = re.findall(r"'([^']+)'doesnotdependonanyaxioms", compact)
+          expected = {
+              'YangMills.RG.sum_row_mul_cmp89Eq246StabilizedAliasFullSolution_eq',
+              'YangMills.RG.cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution',
+          }
+          names = {name for name, _ in with_axioms} | set(without_axioms)
+          if len(with_axioms) + len(without_axioms) != 2:
+              raise SystemExit('AXIOM_HEADER_COUNT_MISMATCH')
+          if names != expected:
+              raise SystemExit('AXIOM_DECLARATION_MISMATCH=' + repr(sorted(names)))
           allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          if len(blocks) != 5:
-              raise SystemExit(f'AXIOM_HEADER_COUNT_MISMATCH expected=5 actual={len(blocks)}')
-          normalized = []
-          for index, block in enumerate(blocks, start=1):
-              names = {item.strip() for item in block.split(',') if item.strip()}
-              unexpected = names - allowed
+          lines = []
+          for name, raw in with_axioms:
+              axioms = {item for item in raw.split(',') if item}
+              unexpected = axioms - allowed
               if unexpected:
-                  raise SystemExit(
-                      f'AXIOM_GATE_FAILED block={index} unexpected={sorted(unexpected)}'
-                  )
-              normalized.append(f"uniform_axiom_block_{index}=" + ','.join(sorted(names)))
-          Path('../evidence/uniform-axioms.txt').write_text(
-              '\n'.join(normalized) + '\n', encoding='utf-8'
+                  raise SystemExit(f'AXIOM_GATE_FAILED {name} {sorted(unexpected)}')
+              lines.append(name + '=' + ','.join(sorted(axioms)))
+          for name in without_axioms:
+              lines.append(name + '=')
+          Path('../evidence/axioms.txt').write_text(
+              '\n'.join(sorted(lines)) + '\n', encoding='utf-8'
           )
-          print('\n'.join(normalized))
-          PY
-
-      - name: Run localized-field B0 focal
-        shell: bash
-        working-directory: source
-        run: |
-          set -euo pipefail
-          start=$SECONDS
-          set +e
-          lake build YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0 \
-            2>&1 | tee ../evidence/localized-focal.log
-          focal_exit=${PIPESTATUS[0]}
-          set -e
-          elapsed=$((SECONDS - start))
-          printf 'stage=source_flow_localized_field_b0_focal exit=%s seconds=%s\n' \
-            "$focal_exit" "$elapsed" | tee ../evidence/localized-focal.status
-          test "$focal_exit" -eq 0
-
-      - name: Run localized-field B0 audit and exact axiom gate
-        shell: bash
-        working-directory: source
-        run: |
-          set -euo pipefail
-          start=$SECONDS
-          set +e
-          lake env lean \
-            YangMills/RG/BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalLocalizedFieldB0Audit.lean \
-            2>&1 | tee ../evidence/localized-audit.log
-          audit_exit=${PIPESTATUS[0]}
-          set -e
-          elapsed=$((SECONDS - start))
-          printf 'stage=source_flow_localized_field_b0_audit exit=%s seconds=%s\n' \
-            "$audit_exit" "$elapsed" | tee ../evidence/localized-audit.status
-          test "$audit_exit" -eq 0
-          python - <<'PY'
-          import re
-          from pathlib import Path
-
-          text = Path('../evidence/localized-audit.log').read_text(encoding='utf-8')
-          blocks = re.findall(r"depends on axioms:\s*\[(.*?)\]", text, re.S)
-          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
-          if len(blocks) != 2:
-              raise SystemExit(f'AXIOM_HEADER_COUNT_MISMATCH expected=2 actual={len(blocks)}')
-          normalized = []
-          for index, block in enumerate(blocks, start=1):
-              names = {item.strip() for item in block.split(',') if item.strip()}
-              unexpected = names - allowed
-              if unexpected:
-                  raise SystemExit(
-                      f'AXIOM_GATE_FAILED block={index} unexpected={sorted(unexpected)}'
-                  )
-              normalized.append(f"localized_axiom_block_{index}=" + ','.join(sorted(names)))
-          Path('../evidence/localized-axioms.txt').write_text(
-              '\n'.join(normalized) + '\n', encoding='utf-8'
-          )
-          print('\n'.join(normalized))
+          print('\n'.join(sorted(lines)))
           PY
           printf 'FINAL_STATUS=PASS\n' > ../evidence/FINAL_STATUS
 
@@ -240,17 +188,17 @@ jobs:
           mv "$sums" evidence/SHA256SUMS
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
             --numeric-owner -cf - evidence | gzip -n \
-            > source-flow-uniform-localized-b0-evidence.tar.gz
-          sha256sum source-flow-uniform-localized-b0-evidence.tar.gz \
+            > cmp89-eq246-full-solution-evidence.tar.gz
+          sha256sum cmp89-eq246-full-solution-evidence.tar.gz \
             | tee evidence/ARCHIVE_SHA256
 
       - name: Upload durable evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: source-flow-uniform-localized-b0-${{ env.SOURCE_SHA }}
+          name: cmp89-eq246-full-solution-${{ env.SOURCE_SHA }}
           path: |
             evidence
-            source-flow-uniform-localized-b0-evidence.tar.gz
+            cmp89-eq246-full-solution-evidence.tar.gz
           if-no-files-found: error
           retention-days: 14
