@@ -77,10 +77,10 @@ theorem sub_variation_le_norm_cmp89Eq249CentralEntireAveragePair
     change floor ≤ ‖cmp89Eq249CentralEntireAveragePair 4 L j z0‖
     rw [hz0]
     rw [cmp89Eq249CentralEntireAveragePair_ofReal_eq hp]
-    simpa only [Complex.norm_real, Real.norm_eq_abs,
-      abs_of_nonneg (sq_nonneg
-        ‖cmp89Eq245ComplexAverageAmplitude
-          4 (((L : ℝ) ^ j)⁻¹) p‖)] using hfloorReal
+    simpa only [norm_pow, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (norm_nonneg
+        (cmp89Eq245ComplexAverageAmplitude
+          4 (((L : ℝ) ^ j)⁻¹) p))] using hfloorReal
   have htriangle : ‖pair0‖ ≤ ‖pair‖ + ‖pair - pair0‖ := by
     calc
       ‖pair0‖ = ‖pair - (pair - pair0)‖ := by
