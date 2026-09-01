@@ -71,12 +71,14 @@ theorem cmp89Eq251CenteredOneDimensionalAliasSum_half_le
     have htail :
         (∑ i ∈ Finset.range N, weight (i + 1)) ≤ tail := by
       exact Finset.sum_le_sum fun i _ => by
-        have hnonneg : 0 ≤ ((((i + 1 : ℕ) : ℤ) : ℝ)) := by positivity
-        simpa [weight, abs_of_nonneg hnonneg]
+        have hi : 0 ≤ (i : ℝ) + 1 := by positivity
+        simpa [weight, abs_of_nonneg hi]
           using cmp89Eq251OneDimensionalAliasWeight_half_le_shiftedAbs
             ((i + 1 : ℕ) : ℤ)
-    simpa [weight, cmp89Eq251OneDimensionalAliasWeight, tail] using
-      add_le_add_right htail 1
+    have h0 : weight 0 = 1 := by
+      simp [weight, cmp89Eq251OneDimensionalAliasWeight]
+    rw [h0]
+    linarith
   have htailIntegral :
       tail ≤ ∫ x in (0 : ℝ)..N, (1 + x) ^ (-(1 / 2 : ℝ)) := by
     simpa [tail] using cmp89Eq251HalfAliasPositiveTail_le_integral N
@@ -91,7 +93,10 @@ theorem cmp89Eq251CenteredOneDimensionalAliasSum_half_le
       simp [weight, cmp89Eq251OneDimensionalAliasWeight]
     rw [h0, nsmul_eq_mul]
     have hdouble := mul_le_mul_of_nonneg_left hrange (by norm_num : (0 : ℝ) ≤ 2)
-    linarith
+    calc
+      (2 : ℝ) * (∑ m ∈ Finset.range (N + 1), weight m) - 1
+          ≤ 2 * (1 + tail) - 1 := sub_le_sub_right hdouble 1
+      _ = 1 + 2 * tail := by ring
   have hsqrt : 1 ≤ Real.sqrt (N + 1) := by
     rw [← Real.sqrt_one]
     exact Real.sqrt_le_sqrt (by norm_num)
