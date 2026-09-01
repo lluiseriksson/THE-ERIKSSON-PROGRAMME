@@ -43,16 +43,13 @@ theorem cmp99FlatPhysicalFibreDFT_pointSource
     rw [if_pos hey]
     rw [cmp99FlatZModFourierCharacter_neg_left]
     rw [cmp99FlatFourierMode_eq_finBoxFourierCharacter]
-    rfl
   · intro x _ hx
     have hxy : (cmp99FinBoxZModEquiv d N).symm x ≠ y := by
       intro h
       apply hx
       rw [← h]
       exact (e.apply_symm_apply x).symm
-    right
-    rw [if_neg hxy]
-    rfl
+    simp only [if_neg hxy, WithLp.ofLp_zero, mul_zero]
   · intro hy
     exact (hy (Finset.mem_univ (e y))).elim
 
