@@ -43356,3 +43356,30 @@ the particular CMP89 (2.48) solution, perform regional periodization, prove
 the multiple-reflection formula (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge a terminal field, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1017 (2026-09-01, **full periodic Eq. (2.46) point-source solution cold-sealed; 20/41 unchanged**)
+
+Cold Colab Pro+ runner `cmp99-full-point-source-solution-cold-v2` checked out
+source checkpoint `a819e5074a9f58fb7ae7b93c6369a186956419a2`, verified the four exact
+Git-blob hashes and Mathlib pin `07642720480157414db592fa85b626dafb71355b`,
+then completed the 8600-job focal graph. `FibreAction` compiled in 1303.011 s
+and its exact six-declaration audit in 9.685 s; the full point-source solution
+compiled incrementally in 169.021 s and its exact six-declaration audit in
+9.544 s. Every child exit code is zero and every audited declaration depends
+only on a subset of `propext`, `Classical.choice`, and `Quot.sound`.
+
+The executed one-cell notebook contains one execution, one
+`FINAL_STATUS=PASS`, no `FINAL_STATUS=FAIL`, and no `sorryAx` or
+`ofReduceBool`. Independent verification preserved the evidence under
+`validation-evidence/cmp99-full-point-source-solution-cold-a819e507-20260901/`.
+The evidence archive SHA-256 is
+`6FD29196320213E76F8E3A4C40CF855019EC861C611DCC06479E32086AEB63FF`;
+the executed-notebook SHA-256 is
+`341B3F0E84061E0342FE86C79B82A93073062CE8D8D83215A244B3EFA11B884B`.
+
+The two point-source files therefore lose PRE-VALIDATION and their audit
+enters `YangMillsCore.lean`. This seal does not yet identify the constructed
+solution with a generated Green by inverse uniqueness, prove CMP89 (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
+field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.

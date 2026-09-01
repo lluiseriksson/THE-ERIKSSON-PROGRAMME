@@ -9,7 +9,7 @@ import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionParticularSolution
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeFullSolution
 
 /-!
-# PRE-VALIDATION: full periodic Eq. (2.46) solution on a physical point source
+# Full periodic Eq. (2.46) solution on a physical point source
 
 Each coarse reciprocal fibre consumes the exact point-source DFT through the
 arbitrary-source transposed Eq. (2.46) solution. The fibre fields are then
@@ -17,9 +17,11 @@ summed and the literal full-box precision equation is proved by DFT
 injectivity. This is the finite full-`G` lane; it does not insert `Q'^*`, use
 the particular Eq. (2.48) solution, or assume an inverse equality.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler. It remains outside the project
-import graph until its own compiler and axiom gates pass.
+Compiler verification: source checkpoint
+`a819e5074a9f58fb7ae7b93c6369a186956419a2`, cold Colab Pro+ run
+`cmp99-full-point-source-solution-cold-v2` (8600 jobs; focal and exact
+six-declaration axiom audit exit zero). Evidence archive SHA-256:
+`6FD29196320213E76F8E3A4C40CF855019EC861C611DCC06479E32086AEB63FF`.
 -/
 
 namespace YangMills.RG

@@ -15649,20 +15649,26 @@ a full periodic point-source Green, invoke inverse uniqueness, prove CMP89
 terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
 remains exact.
 
-### Full periodic Eq. (2.46) point-source solution promoted PRE-VALIDATION
+### Full periodic Eq. (2.46) point-source solution cold-sealed
 
-Source checkpoint `f78d8b41193b1f1872c8736f56e66996abd286a6`
-promotes one focal/audit pair on the two cold-sealed physical inputs above.
+Source checkpoint `a819e5074a9f58fb7ae7b93c6369a186956419a2`
+cold-seals one focal/audit pair on the two cold-sealed physical inputs above.
 For each coarse reciprocal fibre it internally feeds the exact point-source
 DFT character to the arbitrary-source transposed solution, performs the
 inverse physical DFT, proves zero Fourier support away from the selected
 fibre, and proves the selected-fibre precision equation. It then sums all
 coarse fibres and reduces the literal full-box precision equation to DFT
-injectivity. Both files retain one visible PRE-VALIDATION notice and remain
-outside `YangMillsCore.lean` until their compiler and exact axiom gates pass.
+injectivity. Cold Colab Pro+ runner
+`cmp99-full-point-source-solution-cold-v2` built the 8600-job focal graph and
+both exact six-declaration audits. The evidence archive and executed notebook
+are preserved under
+`validation-evidence/cmp99-full-point-source-solution-cold-a819e507-20260901/`;
+their SHA-256 values are `6FD29196320213E76F8E3A4C40CF855019EC861C611DCC06479E32086AEB63FF`
+and `341B3F0E84061E0342FE86C79B82A93073062CE8D8D83215A244B3EFA11B884B`.
+The audit depends only on `propext`, `Classical.choice`, and `Quot.sound`.
 
-This checkpoint is source, not compiler evidence. It constructs the finite
-full-periodic point-source solution but does not identify it with a named
+This seal constructs the finite full-periodic point-source solution but does
+not identify it with a named
 Green by inverse uniqueness, insert `Q'^*`, use the particular CMP89 (2.48)
 solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
