@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannPrecision
+
+/-!
+# PRE-VALIDATION: axiom audit for the canonical Neumann precision/Green pair
+
+The source is present, but its `.olean` has not yet been materialized and the
+result has not yet been verified by the compiler.
+-/
+
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannTower
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannLastPrefix
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPoincareCoefficient
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPrecision
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPoincare
+#print axioms YangMills.RG.isCoerciveCLM_cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPrecision
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPrecision_comp_green
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen_comp_precision
