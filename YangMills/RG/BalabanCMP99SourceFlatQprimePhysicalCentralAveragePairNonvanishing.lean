@@ -7,15 +7,16 @@ import YangMills.RG.BalabanCMP89Eq249CentralStabilizedRealLower
 import YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary
 
 /-!
-# PRE-VALIDATION: physical central averaging pair is nonzero
+# Cold-sealed physical central averaging pair is nonzero
 
 The literal uncentered coarse representative lies in the strict interval
 `(-2*pi, 0]` coordinatewise. Its finite geometric average cannot vanish: for
 a nonzero coordinate the terminal power is a nontrivial `N'`-th root of
 unity, while at the zero coordinate the normalized sum is exactly one.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold Colab Pro+ runner `cmp99-generated-point-source-green-v3-standard-ram-fallback`
+verified exact source checkpoint `d9a14b9c8705dd709712e7baba68b82e3b15435a`;
+see Verification Ledger Addendum 1019.
 -/
 
 namespace YangMills.RG

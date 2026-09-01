@@ -8,15 +8,16 @@ import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionPointSourceInverse
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalCentralAveragePairNonvanishing
 
 /-!
-# PRE-VALIDATION: generated flat physical Green on a literal point source
+# Cold-sealed generated flat physical Green on a literal point source
 
 The full-periodic Eq. (2.46) point-source solution is identified with the
 internally generated Step-7b Green. The inverse law, noncentral fine-symbol
 family, stabilized denominator, and central averaging-pair nonvanishing are
 all constructed in the proof.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold Colab Pro+ runner `cmp99-generated-point-source-green-v3-standard-ram-fallback`
+verified exact source checkpoint `d9a14b9c8705dd709712e7baba68b82e3b15435a`;
+see Verification Ledger Addendum 1019.
 -/
 
 namespace YangMills.RG

@@ -1,10 +1,9 @@
 import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionPointSourceInverseUniqueness
 
 /-!
-# PRE-VALIDATION: axiom audit of point-source inverse uniqueness
+# Cold-sealed axiom audit of point-source inverse uniqueness
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler evidence is recorded in Verification Ledger Addendum 1019.
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply

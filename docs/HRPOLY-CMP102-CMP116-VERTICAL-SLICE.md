@@ -15674,7 +15674,7 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Generated physical point-source Green endpoint promoted PRE-VALIDATION
+### Generated physical point-source Green endpoint cold-sealed
 
 Three focal/audit pairs now form a finite source-specific bridge from the
 cold-sealed periodic point-source solution to the internally generated
@@ -15686,8 +15686,12 @@ The endpoint supplies the existing generated inverse law, noncentral
 fine-symbol producer, stabilized-denominator producer, and the new central
 pair producer internally.
 
-All six files retain visible PRE-VALIDATION notices and remain outside
-`YangMillsCore.lean` until their compiler and exact axiom gates pass. This
-bridge does not prove the multiple-reflection formula (2.42), produce uniform
+Exact source checkpoint `d9a14b9c8705dd709712e7baba68b82e3b15435a`
+passed all six focal/audit stages in a fresh Colab Pro+ CPU checkout. Every
+exit code is zero, all three audited declarations use only
+`{propext, Classical.choice, Quot.sound}`, the six PRE-VALIDATION notices are
+retired, and the three audits enter `YangMillsCore.lean`. Verification Ledger
+Addendum 1019 records the durable evidence hashes. This bridge does not prove
+the multiple-reflection formula (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

@@ -7,15 +7,16 @@ import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionInverseUniqueness
 import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionPointSourceSolution
 
 /-!
-# PRE-VALIDATION: point-source solution identified by inverse uniqueness
+# Cold-sealed point-source solution identified by inverse uniqueness
 
 The internally constructed Eq. (2.46) point-source field is identified with
 the action of any left inverse of the same literal full-box precision. The
 inverse law is the only Green input; the desired point-source equality is
 derived from the already proved precision equation.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold Colab Pro+ runner `cmp99-generated-point-source-green-v3-standard-ram-fallback`
+verified exact source checkpoint `d9a14b9c8705dd709712e7baba68b82e3b15435a`;
+see Verification Ledger Addendum 1019.
 -/
 
 namespace YangMills.RG

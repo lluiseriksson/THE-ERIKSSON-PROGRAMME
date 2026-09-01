@@ -43402,3 +43402,32 @@ guards. This is source, not compiler evidence. It does not prove CMP89 (2.42),
 produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
 field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
+
+## Addendum 1019 (2026-09-01, **generated physical point-source Green endpoint cold-sealed; 20/41 unchanged**)
+
+Cold Colab Pro+ CPU runner
+`cmp99-generated-point-source-green-v3-standard-ram-fallback` checked out exact
+source checkpoint `d9a14b9c8705dd709712e7baba68b82e3b15435a` without restoring a
+project `.lake/build`, verified the six Git-blob gates and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and completed all six
+stop-on-first-error stages. Focal/audit times were respectively
+`6266.250/17.565`, `50.454/10.201`, and `2649.380/21.255` seconds; all 18
+recorded child exit codes are zero. The three exact audit declarations use only
+subsets of `propext`, `Classical.choice`, and `Quot.sound`.
+
+The preserved archive is
+`validation-evidence/cmp99-generated-point-source-green-v3-d9a14b9c-20260901/evidence.tar.gz`.
+Its SHA-256 is
+`4CD2C5244821838F122BFEA1A344269DE126B4465777CF5614D565A64CC20477`;
+the extracted evidence JSON SHA-256 is
+`CCB9703D4CE885C4AA9488C1317ED2D06D8D66D486C5D943CCA603A6080FFBEF`;
+and the runner's canonical payload SHA-256 is
+`96B874B94E7DA8523CE539AE9756F2059E28D2DF68ADB088DEFBC7639579318F`.
+
+Exactly six PRE-VALIDATION marks are retired and their three audits enter
+`YangMillsCore.lean`. This identifies the finite periodic Eq. (2.46)
+point-source solution with the generated Step-7b Green on the literal source.
+It does not prove CMP89 (2.42), construct the continuous fine-to-fine kernel,
+produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
+field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.
