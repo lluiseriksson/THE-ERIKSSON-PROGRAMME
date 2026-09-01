@@ -15544,3 +15544,33 @@ generated terminal region remains the next finite dictionary; the
 componentwise full-space Green action and printed reflection equality remain
 open after it. This infrastructure does not move `20/41`, attain window 15
 or construct a `TermSource`.
+
+### CMP89 (2.48) source-role correction: typed `G_j Q_j^*`, not full `G_j`
+
+Primary-source inspection at printed CMP89 pp. 584--585 separates two
+operators that an earlier untyped wrapper had conflated.  Equation (2.42)
+reflects the full fine-to-fine Green `G_j`.  Equations (2.44)--(2.46) first
+solve the arbitrary fine-source problem; only afterwards does the source set
+`f = Q_j^* g` and derive (2.47)--(2.48).  Thus (2.48) is `G_j Q_j^*`, with a
+fine target and a unit/coarse source.
+
+The same-scale wrapper `cmp89Eq248PhysicalFullLatticeGreen` uses `x-y`
+after erasing both endpoints to `Fin 4 → ℤ`.  It is no longer an accepted
+physical producer for (2.42).  The PRE-VALIDATION checkpoint
+`d64413c0168aecd85ce44133d850e439586e8ca9` records a concrete arithmetic
+counterexample at block factor two.  The PRE-VALIDATION checkpoint
+`90e220356f5b70a166f067581cb1da7facf62d77` introduces
+`cmp89Eq248PhysicalFineToCoarseGreenQprimeStar`; its endpoint types force
+the literal `x-L^j y` displacement already used by the generated flat
+`G_j Q_j^*` lane.  Neither checkpoint counts as compiler evidence until the
+focal and audit modules are materialized.
+
+The valid prefix is retained: generic reflection algebra, inverse uniqueness,
+generated canonical precision/Green construction, and the full generated
+`G_j Q_j^*` Fourier/endpoint/point-source/`B0` lane.  The invalid edge is
+only the specialization `Eq. (2.48) = full G_j`.  The replacement route is
+now explicit: construct full `G_j` from (2.46) before applying (2.42), then
+compose with `Q_j^*`; alternatively prove the direct reflected-`G_j Q_j^*`
+identity plus its reflection/averaging compatibility dictionary.  This
+correction does not move `20/41`, instantiate `TermSource`, or attain
+window 15.

@@ -42954,3 +42954,42 @@ source. It does not prove any CMP89 reflection equation, the Laplacian or
 `Q′*Q′` species, the complete physical right inverse, uniform
 `B0`/`delta0`, or window 15. It does not discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1006 (2026-09-01, **CMP89 (2.48) source role corrected statically; compiler seal pending; 20/41 unchanged**)
+
+Direct inspection of the local primary CMP89 render at printed pp. 584--585
+shows that (2.42) is the rectangular reflection formula for the full
+fine-to-fine Green `G_j`, while (2.48) is introduced only after setting the
+fine source in (2.44)--(2.46) to `Q_j^* g`.  Therefore (2.48) is the kernel
+of `G_j Q_j^*`: its output endpoint is fine and its input endpoint is on the
+unit/coarse lattice.
+
+The previous physical wrapper
+`cmp89Eq248PhysicalFullLatticeGreen` erased that distinction by giving both
+endpoints type `Fin 4 → ℤ` and using the same-scale displacement `x-y`.
+The downstream right-inverse theorem remained conditional, so no false
+right-inverse law was proved, but Addendum 1003's description of (2.48) as
+the literal full-space Green is withdrawn.  Its generic inverse-uniqueness
+scaffolding remains valid; only this physical specialization is no longer
+accepted as a source-faithful producer for (2.42).
+
+Source checkpoint `d64413c0168aecd85ce44133d850e439586e8ca9`
+adds the PRE-VALIDATION theorem
+`cmp89Eq248_sameScaleEndpoint_ne_fineToCoarseEndpoint_example`, a concrete
+block-factor-two counterexample to the endpoint identification.  Checkpoint
+`90e220356f5b70a166f067581cb1da7facf62d77` adds the typed replacement
+`cmp89Eq248PhysicalFineToCoarseGreenQprimeStar`, whose fine and coarse
+endpoint types force the literal `x - L^j y` displacement through the
+already sealed `cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement`.
+Both new focal/audit pairs remain PRE-VALIDATION until their `.olean` files
+and axiom readouts are materialized; this addendum records a primary-source
+role correction, not compiler evidence.
+
+The source-faithful continuation is finite and explicit: either construct
+the full fine-to-fine Green from CMP89 (2.46), prove the reflection formula
+(2.42), and compose with `Q_j^*`; or prove a direct regional reflected
+`G_j Q_j^*` theorem together with the required reflection/averaging
+compatibility dictionary.  The existing generated `G_j Q_j^*` Fourier,
+endpoint, point-source and uniform-`B0` lane remains valid.  No terminal
+field is discharged, window 15 is not attained, `20/41` does not move, and
+`TermSource = 0` remains exact.
