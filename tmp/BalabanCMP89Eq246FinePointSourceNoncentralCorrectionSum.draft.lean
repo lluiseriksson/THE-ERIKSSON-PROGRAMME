@@ -86,9 +86,11 @@ theorem sum_norm_cmp89Eq246FinePointSourceNoncentralCorrection_le
       (∑ m : CMP89Eq246AliasIndex 4 L j, weight m) =
         cmp89Eq251CenteredMultidimensionalAliasSum 4 (L ^ j)
           (cmp89Eq251AliasSeriesExponent 4 (-1)) := by
-    rw [Finset.sum_subtype
-      (cmp89Eq245CenteredAliasVectors 4 (L ^ j)) (fun _ => Iff.rfl)]
-    rfl
+    simpa [weight, CMP89Eq246AliasIndex,
+      cmp89Eq251CenteredMultidimensionalAliasSum] using
+      (Finset.sum_attach (cmp89Eq245CenteredAliasVectors 4 (L ^ j))
+        (fun m => cmp89Eq251MultidimensionalAliasWeight
+          (cmp89Eq251AliasSeriesExponent 4 (-1)) m))
   have hfinite :=
     cmp89Eq251CenteredOneDimensionalAliasSum_source_le_tsum
       (d := 4) (L ^ j) (alpha := (-1 : ℝ)) (by norm_num) (by norm_num)
