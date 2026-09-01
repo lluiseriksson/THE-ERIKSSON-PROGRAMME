@@ -113,8 +113,27 @@ theorem header. -/
 def cmp89Eq246StabilizedFinePointSourceSolutionMoment
     (d L j : ℕ) [NeZero L] (mass a : ℝ)
     (sourceEndpoint : Fin d → ℝ) (z : Fin d → ℂ) : ℂ :=
-  cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a z
-    (cmp89Eq246FinePointSourceAliasVector d L j z sourceEndpoint)
+  let central := cmp89Eq249CentralAliasIndex d L j
+  (cmp89Eq246EntireAliasAverageRow d L j z central *
+        cmp89Eq246FinePointSourceAliasVector
+          d L j z sourceEndpoint central +
+      cmp89Eq246EntireAliasFineSymbol d L j mass z central *
+        cmp89Eq246StabilizedAliasNoncentralSourceMoment d L j mass z
+          (cmp89Eq246FinePointSourceAliasVector
+            d L j z sourceEndpoint)) /
+    cmp89Eq249CentralStabilizedAliasDenominator d L j mass a z
+
+/-- The literal fine-point specialization is definitionally the generic
+stabilized row moment evaluated on the physical source vector. -/
+theorem cmp89Eq246StabilizedFinePointSourceSolutionMoment_eq
+    (d L j : ℕ) [NeZero L] (mass a : ℝ)
+    (sourceEndpoint : Fin d → ℝ) (z : Fin d → ℂ) :
+    cmp89Eq246StabilizedFinePointSourceSolutionMoment
+        d L j mass a sourceEndpoint z =
+      cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a z
+        (cmp89Eq246FinePointSourceAliasVector
+          d L j z sourceEndpoint) := by
+  rfl
 
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
     {d L j : ℕ} [NeZero L] {mass a : ℝ} {z : Fin d → ℂ}

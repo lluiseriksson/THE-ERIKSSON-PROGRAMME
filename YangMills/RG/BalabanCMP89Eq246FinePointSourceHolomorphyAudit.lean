@@ -10,6 +10,7 @@ has not yet been verified by the compiler.
 #print axioms YangMills.RG.differentiable_cmp89Eq246FinePointSourceAliasVector_component
 #print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
 #print axioms YangMills.RG.cmp89Eq246StabilizedFinePointSourceSolutionMoment
+#print axioms YangMills.RG.cmp89Eq246StabilizedFinePointSourceSolutionMoment_eq
 #print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
 #print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
 #print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedFineToFineGreenIntegrand
