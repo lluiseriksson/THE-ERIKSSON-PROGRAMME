@@ -179,3 +179,57 @@ nonvanishing of `u_c v_c`; it does not introduce a sixteenth window.  The
 existing row lemma proves the `v_c` projection, so the transpose brick must
 add the symmetric column projection explicitly rather than reuse the row
 statement by name.
+
+## Post-synthesis analytic chain (2026-09-01)
+
+The neutral transpose algebra, physical pullback, finite point-source DFT,
+full periodic point-source solution and inverse-uniqueness endpoint have now
+all been constructed.  Their final generated-Green gate is running as the
+single cold Colab v3 seal at source checkpoint
+`d9a14b9c8705dd709712e7baba68b82e3b15435a`; until its terminal evidence is
+verified these last three endpoint files remain PRE-VALIDATION.
+
+Even a green v3 endpoint does **not** prove the continuous fine-to-fine
+kernel or CMP89 (2.42).  The remaining bridge is the following finite chain:
+
+1. **Physical point-source phase bound.**  On the full common polistrip,
+   bound every component of
+   `cmp89Eq246FinePointSourceAliasVector` at the physical source endpoint.
+   The reciprocal alias shifts are real, so the modulus depends only on the
+   common imaginary part and the source coordinate.  No false claim that
+   individual aliases have identical phase is allowed: the shift is `2*pi*m`
+   while the fine endpoint is scaled by `(L^j)^-1`.
+2. **Moment bound.**  Bound
+   `cmp89Eq246StabilizedAliasFullSolutionMoment` from the sealed
+   noncentral-fine-symbol estimates, central averaging factors and the named
+   stabilized reciprocal.  The finite alias cardinality may not appear as
+   `(L^j)^4`; it must be absorbed by the existing radial/source-weight sums.
+3. **Full solution bound.**  Bound both the central and noncentral branches
+   of `cmp89Eq246StabilizedFinePointSourceSolution`, then sum the target
+   synthesis over aliases.  The central row lower bound and the
+   stabilized-denominator window stay distinct and visible.
+4. **Relative endpoint decay.**  Multiply the target phase by the source
+   bound and shift each complex coordinate with the sign of
+   `target-source`.  Because all alias shifts are real, the exponential
+   modulus is the single physical factor
+   `exp (-rho * xi * ||target-source||_1)`.  This is a joint endpoint
+   argument, not two incompatible contour shifts.
+5. **Continuous Green certificate.**  Iterate the one-coordinate contour
+   theorem over all four coordinates, retain the literal normalized
+   Brillouin factor, and obtain an explicit `B0` and fine rate
+   `delta0 = rho / L^j` for
+   `cmp89Eq246NormalizedPhysicalFineToFineGreen`.
+6. **Summability and finite-grid periodization.**  Use the resulting l1
+   exponential bound to prove absolute summability, then apply the sealed
+   generic finite-grid aliasing theorem.  Only here may the periodization of
+   the continuous kernel be identified with the finite periodic point-source
+   Green certified by the v3 endpoint.
+7. **Neumann continuation.**  Feed that fine-to-fine kernel into the
+   Laplacian, retained-`Q'`, mass and operator/sum reflection chain.  The
+   typed CMP89 (2.48) `G_j Q_j^*` object remains a separate downstream
+   composition and is never substituted for this kernel.
+
+The old PRE-VALIDATION module
+`BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducer`
+uses the withdrawn same-scale (2.48) wrapper and is retained only as
+conditional algebra.  It is not a target of the next compiler queue.
