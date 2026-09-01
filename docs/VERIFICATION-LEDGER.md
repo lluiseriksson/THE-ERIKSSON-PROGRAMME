@@ -43530,7 +43530,7 @@ discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 ## Addendum 1024 (2026-09-01, **CMP89 (2.46) central-row reciprocal budget promoted PRE-VALIDATION; 20/41 unchanged**)
 
 PRE-VALIDATION source checkpoint
-`4584f4c9e89555f97ebfb8edc7563750a582b4c6` adds the focal/audit pair
+`4584f4c9d2cebe4f61a1ec48681256260deb7090` adds the focal/audit pair
 `BalabanCMP89Eq246CentralAverageRowReciprocalBound`. The focal converts the
 sealed lower floor for the central averaging pair and the strip upper bound
 for its column factor into a literal upper bound for the reciprocal of the

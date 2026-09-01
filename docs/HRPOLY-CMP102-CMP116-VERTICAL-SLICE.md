@@ -15757,7 +15757,7 @@ discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
-Source checkpoint `4584f4c9e89555f97ebfb8edc7563750a582b4c6` adds one
+Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one
 quantitative leaf needed by the central branch of the complete point-source
 solution. It derives a scale-uniform reciprocal bound for the literal central
 opposite-momentum row from the already sealed central-pair floor and the
