@@ -92,12 +92,13 @@ theorem differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
       d L j sourceEndpoint m
   have hden :=
     differentiable_cmp89Eq246EntireAliasFineSymbol_component d L j mass m
-  -- Pin the reducible fine-symbol wrapper on both sides before applying the
-  -- quotient rule.  Otherwise elaboration unfolds only the expected
-  -- denominator and leaves the named differentiability theorem wrapped.
-  unfold cmp89Eq246EntireAliasFineSymbol
-    cmp89Eq245EntireScaledLaplacianSymbol at hfine hden
+  -- Pin the quotient functions explicitly.  Leaving them to inference makes
+  -- elaboration unfold the reducible denominator on only one side.
   exact DifferentiableAt.div (𝕜 := ℂ)
+    (c := fun w =>
+      cmp89Eq246EntireAliasAverageRow d L j w m *
+        cmp89Eq246FinePointSourceAliasVector d L j w sourceEndpoint m)
+    (d := fun w => cmp89Eq246EntireAliasFineSymbol d L j mass w m)
     ((hrow z).mul (hsource z)) (hden z) (hfine m hmc)
 
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
@@ -161,10 +162,6 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
       d L j sourceEndpoint
   have hfineDiff :=
     differentiable_cmp89Eq246EntireAliasFineSymbol_component d L j mass
-  -- The solution unfolds this reducible wrapper inside both branches.  Pin
-  -- the hypotheses to the same normal form before building the quotients.
-  unfold cmp89Eq246EntireAliasFineSymbol
-    cmp89Eq245EntireScaledLaplacianSymbol at hfine hfineDiff
   have hcolumn :=
     differentiable_cmp89Eq246EntireAliasAverageColumn_component d L j
   by_cases hm : m = central
@@ -180,8 +177,6 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
                   (cmp89Eq246FinePointSourceAliasVector
                     d L j w sourceEndpoint) /
                 cmp89Eq246EntireAliasFineSymbol d L j mass w n)) z := by
-      unfold cmp89Eq246EntireAliasFineSymbol
-        cmp89Eq245EntireScaledLaplacianSymbol
       apply DifferentiableAt.fun_sum
       intro n hn
       have hnc : n ≠ central := (Finset.mem_erase.mp hn).1
@@ -192,29 +187,51 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
       have hcN := hcolumn n
       exact (hrowN z).mul
         ((DifferentiableAt.div (𝕜 := ℂ)
-            (hsN z) (hfN z) (hfine n hnc)).sub
-          (DifferentiableAt.div (𝕜 := ℂ)
-            (((hcN z).const_mul (a : ℂ)).mul hmoment)
-            (hfN z) (hfine n hnc)))
+            (c := fun w =>
+              cmp89Eq246FinePointSourceAliasVector
+                d L j w sourceEndpoint n)
+            (d := fun w =>
+              cmp89Eq246EntireAliasFineSymbol d L j mass w n)
+             (hsN z) (hfN z) (hfine n hnc)).sub
+           (DifferentiableAt.div (𝕜 := ℂ)
+            (c := fun w =>
+              (a : ℂ) * cmp89Eq246EntireAliasAverageColumn d L j w n *
+                cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a w
+                  (cmp89Eq246FinePointSourceAliasVector
+                    d L j w sourceEndpoint))
+            (d := fun w =>
+              cmp89Eq246EntireAliasFineSymbol d L j mass w n)
+             (((hcN z).const_mul (a : ℂ)).mul hmoment)
+             (hfN z) (hfine n hnc)))
     have hrowDiff :=
       differentiable_cmp89Eq246EntireAliasAverageRow_component
         d L j central
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
-      cmp89Eq246EntireAliasFineSymbol,
-      cmp89Eq245EntireScaledLaplacianSymbol,
       cmp89Eq246StabilizedAliasFullSolution, central] using
         DifferentiableAt.div (𝕜 := ℂ)
+          (d := fun w =>
+            cmp89Eq246EntireAliasAverageRow d L j w central)
           (hmoment.sub hsum) (hrowDiff z) hrow
   · have hsM := hsource m
     have hfM := hfineDiff m
     have hcM := hcolumn m
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
-      cmp89Eq246EntireAliasFineSymbol,
-      cmp89Eq245EntireScaledLaplacianSymbol,
       cmp89Eq246StabilizedAliasFullSolution, central, hm] using
         (DifferentiableAt.div (𝕜 := ℂ)
+          (c := fun w =>
+            cmp89Eq246FinePointSourceAliasVector
+              d L j w sourceEndpoint m)
+          (d := fun w =>
+            cmp89Eq246EntireAliasFineSymbol d L j mass w m)
           (hsM z) (hfM z) (hfine m hm)).sub
           (DifferentiableAt.div (𝕜 := ℂ)
+            (c := fun w =>
+              (a : ℂ) * cmp89Eq246EntireAliasAverageColumn d L j w m *
+                cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a w
+                  (cmp89Eq246FinePointSourceAliasVector
+                    d L j w sourceEndpoint))
+            (d := fun w =>
+              cmp89Eq246EntireAliasFineSymbol d L j mass w m)
             (((hcM z).const_mul (a : ℂ)).mul hmoment)
             (hfM z) (hfine m hm))
 
