@@ -259,18 +259,10 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
             row central =
           source central - (a : ℂ) * column central * moment := by
       apply (div_eq_iff hrow).2
-      have hweightedPair :
-          (a : ℂ) * column central * moment * row central =
-            (a : ℂ) * centralPair * moment := by
-        calc
-          (a : ℂ) * column central * moment * row central =
-              (a : ℂ) * (column central * row central) * moment := by ring
-          _ = (a : ℂ) * centralPair * moment := by rw [hpair]
-      rw [hweightedPair]
       have hmom := hmomentEq
-      rw [hstabilizedEq] at hmom
+      rw [hstabilizedEq, ← hpair] at hmom
       linear_combination hmom
-    exact eq_sub_iff_add_eq.mp hdiv
+    simpa [div_eq_mul_inv] using eq_sub_iff_add_eq.mp hdiv
   · have hsolution :
         solution m = source m / fine m -
           (a : ℂ) * column m * moment / fine m := by
