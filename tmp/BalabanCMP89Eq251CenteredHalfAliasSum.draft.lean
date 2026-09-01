@@ -27,7 +27,7 @@ theorem cmp89Eq251OneDimensionalAliasWeight_half_le_shiftedAbs
       abs_of_pos Real.pi_pos]
     nlinarith [Real.pi_gt_three, abs_nonneg (m : ℝ)]
   have hbase : 1 + |(m : ℝ)| ≤ 1 + |2 * Real.pi * (m : ℝ)| :=
-    add_le_add_left hscale 1
+    add_le_add_right hscale 1
   rw [cmp89Eq251OneDimensionalAliasWeight, one_div,
     ← Real.rpow_neg (by positivity : 0 ≤ 1 + |2 * Real.pi * (m : ℝ)|) (1 / 2 : ℝ)]
   exact Real.rpow_le_rpow_of_nonpos (by positivity) hbase (by norm_num)
@@ -71,11 +71,12 @@ theorem cmp89Eq251CenteredOneDimensionalAliasSum_half_le
     have htail :
         (∑ i ∈ Finset.range N, weight (i + 1)) ≤ tail := by
       exact Finset.sum_le_sum fun i _ => by
-        simpa [weight, abs_of_nonneg (by positivity : 0 ≤ ((i + 1 : ℕ) : ℝ))]
+        have hnonneg : 0 ≤ ((((i + 1 : ℕ) : ℤ) : ℝ)) := by positivity
+        simpa [weight, abs_of_nonneg hnonneg]
           using cmp89Eq251OneDimensionalAliasWeight_half_le_shiftedAbs
             ((i + 1 : ℕ) : ℤ)
     simpa [weight, cmp89Eq251OneDimensionalAliasWeight, tail] using
-      add_le_add_left htail 1
+      add_le_add_right htail 1
   have htailIntegral :
       tail ≤ ∫ x in (0 : ℝ)..N, (1 + x) ^ (-(1 / 2 : ℝ)) := by
     simpa [tail] using cmp89Eq251HalfAliasPositiveTail_le_integral N
@@ -89,10 +90,11 @@ theorem cmp89Eq251CenteredOneDimensionalAliasSum_half_le
     have h0 : weight 0 = 1 := by
       simp [weight, cmp89Eq251OneDimensionalAliasWeight]
     rw [h0, nsmul_eq_mul]
-    nlinarith
+    have hdouble := mul_le_mul_of_nonneg_left hrange (by norm_num : (0 : ℝ) ≤ 2)
+    linarith
   have hsqrt : 1 ≤ Real.sqrt (N + 1) := by
     rw [← Real.sqrt_one]
-    exact Real.sqrt_le_sqrt (by positivity)
+    exact Real.sqrt_le_sqrt (by norm_num)
   calc
     cmp89Eq251CenteredOneDimensionalAliasSum N (1 / 2 : ℝ)
         ≤ ∑ m ∈ Finset.Icc (-(N : ℤ)) (N : ℤ), weight m := hwindow
