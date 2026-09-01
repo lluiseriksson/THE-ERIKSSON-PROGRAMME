@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Colab debug gate for point-source reduction and the physical CMP89 inverse producer."""
+"""Colab debug gate for the finite CMP89 physical right-inverse interface."""
 
 from __future__ import annotations
 
@@ -46,6 +46,11 @@ EXPECTED_MASS_DECLARATIONS = {
     "YangMills.RG.mass_sq_comp_cmp89NeumannScalarReflectionOperator",
 }
 
+EXPECTED_THREE_SPECIES_DECLARATIONS = {
+    "YangMills.RG.cmp89SourceNeumannRegionalGaugePrecision_eq_threeSpecies",
+    "YangMills.RG.cmp89SourceNeumannRegionalGaugePrecision_comp_eq_threeSpecies",
+}
+
 EXPECTED_PHYSICAL_DECLARATIONS = {
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalSpacing",
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannFourierCoefficient",
@@ -56,16 +61,15 @@ EXPECTED_PHYSICAL_DECLARATIONS = {
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalRepresentation_of_rightInverse",
 }
 
+EXPECTED_DECLARATION_SETS = (
+    EXPECTED_POINT_SOURCE_DECLARATIONS,
+    EXPECTED_MASS_DECLARATIONS,
+    EXPECTED_THREE_SPECIES_DECLARATIONS,
+    EXPECTED_PHYSICAL_DECLARATIONS,
+)
+
 
 def parse_axioms_exact(output: str, expected: int) -> None:
-    if expected == len(EXPECTED_POINT_SOURCE_DECLARATIONS):
-        expected_declarations = EXPECTED_POINT_SOURCE_DECLARATIONS
-    elif expected == len(EXPECTED_MASS_DECLARATIONS):
-        expected_declarations = EXPECTED_MASS_DECLARATIONS
-    elif expected == len(EXPECTED_PHYSICAL_DECLARATIONS):
-        expected_declarations = EXPECTED_PHYSICAL_DECLARATIONS
-    else:
-        raise RuntimeError("UNEXPECTED_AXIOM_GATE=" + str(expected))
     compact = re.sub(r"\s+", "", output)
     for forbidden in ("sorryAx", "ofReduceBool", "Lean.ofReduceBool"):
         if forbidden in compact:
@@ -82,7 +86,12 @@ def parse_axioms_exact(output: str, expected: int) -> None:
             "AXIOM_BLOCK_COUNT_MISMATCH="
             + repr((with_axioms, without_axioms))
         )
-    if names != expected_declarations:
+    matching_declaration_sets = [
+        declarations
+        for declarations in EXPECTED_DECLARATION_SETS
+        if len(declarations) == expected and names == declarations
+    ]
+    if len(matching_declaration_sets) != 1:
         raise RuntimeError("AXIOM_DECLARATION_MISMATCH=" + repr(sorted(names)))
     for name, raw_axioms in with_axioms:
         axioms = {item for item in raw_axioms.split(",") if item}
@@ -97,8 +106,8 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v3"
-runner.SOURCE_SHA = "c236799bd3714aa8a882140034c20b11a41ba9b2"
+runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v4"
+runner.SOURCE_SHA = "d3e7242619117043aa65347f4c5ee817436bd75f"
 runner.ROOT = Path("/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-evidence"
@@ -118,6 +127,10 @@ runner.SOURCE_BLOBS = {
         "6c0ecf2c227cdf55165a506871e1d0b01dd5ed6ba64dbffbeba6f9aac484f5c9",
     "YangMills/RG/BalabanCMP89NeumannMassReflectionAudit.lean":
         "497467b74e145744482674dc59b5138661d37c7ec565675fe7c8909b87d9c095",
+    "YangMills/RG/BalabanCMP89NeumannPrecisionThreeSpecies.lean":
+        "282a68fb3f578d739f4a6ac8d659f16debd57f2b3377f90c9fb1bf55ec754074",
+    "YangMills/RG/BalabanCMP89NeumannPrecisionThreeSpeciesAudit.lean":
+        "4404349c64655597ec26bffe759d114671fd9a0a8fdcc710682bdfa2009073e1",
     "YangMills/RG/BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducer.lean":
         "920f03c5e4c811d7f59c2b64fa4c50b41347a3b957aad72e72701e98ac800f97",
     "YangMills/RG/BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducerAudit.lean":
@@ -153,6 +166,22 @@ runner.QUEUE = [
         [
             "lake", "env", "lean",
             "YangMills/RG/BalabanCMP89NeumannMassReflectionAudit.lean",
+        ],
+        2,
+    ),
+    (
+        "neumann_precision_three_species_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP89NeumannPrecisionThreeSpecies",
+        ],
+        None,
+    ),
+    (
+        "neumann_precision_three_species_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP89NeumannPrecisionThreeSpeciesAudit.lean",
         ],
         2,
     ),
