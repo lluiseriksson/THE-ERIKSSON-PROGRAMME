@@ -34,7 +34,7 @@ theorem cmp89Eq251BareInverseLaplacian_le_nine_mul_halfWeight
     exact Real.pi_pos.trans_le (pi_le_cmp89Eq251EuclideanNorm_shift hm0 hp)
   have hscaled :
       1 / cmp89Eq251EuclideanNorm q ^ 2 ≤ 9 / product := by
-    apply (div_le_iff₀ hproductPos).2
+    apply (le_div_iff₀ hproductPos).2
     simpa [q, product, div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm] using
       hredistributed
   have hweight :
@@ -43,7 +43,8 @@ theorem cmp89Eq251BareInverseLaplacian_le_nine_mul_halfWeight
       cmp89Eq251OneDimensionalAliasWeight, product, one_div,
       Finset.prod_inv_distrib]
   rw [Real.rpow_neg hnormPos.le, Real.rpow_two]
-  simpa [q, hweight, div_eq_mul_inv, mul_assoc] using hscaled
+  rw [hweight]
+  simpa [q, div_eq_mul_inv, mul_assoc] using hscaled
 
 end
 
