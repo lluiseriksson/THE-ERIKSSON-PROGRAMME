@@ -66,6 +66,8 @@ QUEUE = [
 
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 RECORDS: list[dict[str, object]] = []
+MIN_RAM_GIB = 40.0
+ALLOW_GPU_RUNTIME = False
 
 
 def utc_now() -> str:
@@ -145,6 +147,8 @@ def make_evidence(status: str, opened: str) -> tuple[str, str]:
             "source_blobs": SOURCE_BLOBS,
             "mathlib_sha": EXPECTED_MATHLIB,
             "toolchain_asset_sha256": TOOLCHAIN_SHA256,
+            "minimum_ram_gib": MIN_RAM_GIB,
+            "gpu_runtime_authorized": ALLOW_GPU_RUNTIME,
             "status": status,
             "opened_utc": opened,
             "closed_utc": utc_now(),
@@ -171,10 +175,17 @@ def main() -> int:
         import psutil
 
         ram_gib = psutil.virtual_memory().total / 2**30
-        print("RUNTIME=CPU RAM_GIB=%.2f" % ram_gib, flush=True)
-        if Path("/dev/nvidia0").exists():
+        has_gpu = Path("/dev/nvidia0").exists()
+        runtime_kind = "GPU" if has_gpu else "CPU"
+        print(
+            "RUNTIME=" + runtime_kind
+            + " RAM_GIB=%.2f" % ram_gib
+            + " MIN_RAM_GIB=%.2f" % MIN_RAM_GIB,
+            flush=True,
+        )
+        if has_gpu and not ALLOW_GPU_RUNTIME:
             raise RuntimeError("GPU_RUNTIME_NOT_AUTHORIZED")
-        if ram_gib < 40:
+        if ram_gib < MIN_RAM_GIB:
             raise RuntimeError("HIGH_RAM_REQUIRED")
 
         for path in (ROOT, EVIDENCE, TOOLROOT):
