@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Colab debug gate for the source-faithful physical CMP89 inverse producer."""
+"""Colab debug gate for point-source reduction and the physical CMP89 inverse producer."""
 
 from __future__ import annotations
 
@@ -37,7 +37,11 @@ runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
 
-EXPECTED_DECLARATIONS = {
+EXPECTED_POINT_SOURCE_DECLARATIONS = {
+    "YangMills.RG.finitePiLp_comp_eq_id_iff_pointSources",
+}
+
+EXPECTED_PHYSICAL_DECLARATIONS = {
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalSpacing",
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannFourierCoefficient",
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannTerminalSpacing_eq_one",
@@ -49,7 +53,11 @@ EXPECTED_DECLARATIONS = {
 
 
 def parse_axioms_exact(output: str, expected: int) -> None:
-    if expected != len(EXPECTED_DECLARATIONS):
+    if expected == len(EXPECTED_POINT_SOURCE_DECLARATIONS):
+        expected_declarations = EXPECTED_POINT_SOURCE_DECLARATIONS
+    elif expected == len(EXPECTED_PHYSICAL_DECLARATIONS):
+        expected_declarations = EXPECTED_PHYSICAL_DECLARATIONS
+    else:
         raise RuntimeError("UNEXPECTED_AXIOM_GATE=" + str(expected))
     compact = re.sub(r"\s+", "", output)
     for forbidden in ("sorryAx", "ofReduceBool", "Lean.ofReduceBool"):
@@ -67,7 +75,7 @@ def parse_axioms_exact(output: str, expected: int) -> None:
             "AXIOM_BLOCK_COUNT_MISMATCH="
             + repr((with_axioms, without_axioms))
         )
-    if names != EXPECTED_DECLARATIONS:
+    if names != expected_declarations:
         raise RuntimeError("AXIOM_DECLARATION_MISMATCH=" + repr(sorted(names)))
     for name, raw_axioms in with_axioms:
         axioms = {item for item in raw_axioms.split(",") if item}
@@ -82,8 +90,8 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v1"
-runner.SOURCE_SHA = "136e456db2ee85769fb24dc6380787b336d19432"
+runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v2"
+runner.SOURCE_SHA = "7648e39ae985d13d68b281f682d3044352eb073b"
 runner.ROOT = Path("/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-evidence"
@@ -95,12 +103,32 @@ runner.PATH_MANIFEST = Path(
     "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-paths.txt"
 )
 runner.SOURCE_BLOBS = {
+    "YangMills/RG/FinitePiLpPointSourceRightInverse.lean":
+        "053d196a2910d50313e664a3476235d0e73b4d1efbe1af69f06dbe7afca4f5ff",
+    "YangMills/RG/FinitePiLpPointSourceRightInverseAudit.lean":
+        "d75d99129a4c12e9f7e0a87e28d81130ec4be2c736330f0bbfcea608e5e9154a",
     "YangMills/RG/BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducer.lean":
         "920f03c5e4c811d7f59c2b64fa4c50b41347a3b957aad72e72701e98ac800f97",
     "YangMills/RG/BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducerAudit.lean":
         "f76816c437267de73c6e10f6eaacdd80e2d5fcf3cfdd9d97fe2ee94c34595a21",
 }
 runner.QUEUE = [
+    (
+        "finite_point_source_right_inverse_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.FinitePiLpPointSourceRightInverse",
+        ],
+        None,
+    ),
+    (
+        "finite_point_source_right_inverse_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/FinitePiLpPointSourceRightInverseAudit.lean",
+        ],
+        1,
+    ),
     (
         "physical_neumann_inverse_producer_focal",
         [
