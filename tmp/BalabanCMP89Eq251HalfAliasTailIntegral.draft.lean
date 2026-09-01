@@ -40,8 +40,7 @@ theorem cmp89Eq251HalfAliasIntegral_eq (N : ℕ) :
     (fun x : ℝ => x ^ (-(1 / 2 : ℝ))) 1]
   rw [integral_rpow (Or.inl (by norm_num))]
   rw [show -(1 / 2 : ℝ) + 1 = 1 / 2 by ring]
-  simp only [zero_add, Nat.cast_add, Nat.cast_one, one_add_one_eq_two,
-    Real.sqrt_eq_rpow, Real.one_rpow]
+  simp only [zero_add, Real.sqrt_eq_rpow, Real.one_rpow]
   ring
 
 end
