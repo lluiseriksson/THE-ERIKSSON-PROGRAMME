@@ -247,7 +247,6 @@ theorem cmp99SourceFlatFullComplexPrecisionAction_finset_sum
       rw [Finset.sum_insert hi, Finset.sum_insert hi,
         cmp99SourceFlatFullComplexPrecisionAction_add, ih]
 
-omit [NeZero d] [NeZero Nc] in
 /-- Arbitrary fixed-fibre coefficient action of the literal full-box
 precision.  The output is the transpose alias matrix applied entrywise to the
 Lie-fibre coefficient vector; the DFT volume cancels internally. -/
