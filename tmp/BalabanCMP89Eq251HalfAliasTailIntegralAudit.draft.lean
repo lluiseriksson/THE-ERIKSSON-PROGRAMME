@@ -1,0 +1,6 @@
+import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
+import Mathlib.Analysis.SumIntegralComparisons
+import YangMills.RG.BalabanCMP89Eq251HalfAliasTailIntegral
+
+#print axioms YangMills.RG.cmp89Eq251HalfAliasPositiveTail_le_integral
+#print axioms YangMills.RG.cmp89Eq251HalfAliasIntegral_eq

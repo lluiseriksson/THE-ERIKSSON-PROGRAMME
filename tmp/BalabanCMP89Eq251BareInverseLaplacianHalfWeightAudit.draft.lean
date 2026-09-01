@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq251BareInverseLaplacianHalfWeight
+
+#print axioms YangMills.RG.cmp89Eq251BareInverseLaplacian_le_nine_mul_halfWeight

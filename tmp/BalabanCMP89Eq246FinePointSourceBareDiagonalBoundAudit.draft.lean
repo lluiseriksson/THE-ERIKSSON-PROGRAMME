@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246FinePointSourceBareDiagonalBound
+
+#print axioms YangMills.RG.cmp89Eq246FinePointSourceBareDiagonalAmplitudeBound
+#print axioms YangMills.RG.norm_cmp89Eq246FinePointSourceBareDiagonal_le

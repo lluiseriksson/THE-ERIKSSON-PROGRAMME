@@ -1,0 +1,47 @@
+import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
+import Mathlib.Analysis.SumIntegralComparisons
+
+/-!
+# Draft: the finite half-exponent alias tail
+
+This scratch leaf isolates the only analytic estimate needed for the bare
+diagonal branch below CMP89 (2.46).  It is deliberately independent of the
+project index dictionaries, so elaboration failures can be reproduced against
+the pinned Mathlib alone before the physical finite alias window is attached.
+-/
+
+namespace YangMills.RG
+
+noncomputable section
+
+/-- The positive half-exponent tail is bounded by its shifted antitone
+integral.  The shift by one avoids the artificial `0 ^ (-1/2)` endpoint. -/
+theorem cmp89Eq251HalfAliasPositiveTail_le_integral (N : ℕ) :
+    (∑ i ∈ Finset.range N,
+        (1 + ((i + 1 : ℕ) : ℝ)) ^ (-(1 / 2 : ℝ))) ≤
+      ∫ x in (0 : ℝ)..N, (1 + x) ^ (-(1 / 2 : ℝ)) := by
+  have hanti :
+      AntitoneOn (fun x : ℝ => (1 + x) ^ (-(1 / 2 : ℝ)))
+        (Set.Icc 0 (0 + (N : ℝ))) := by
+    intro x hx y hy hxy
+    exact Real.rpow_le_rpow_of_nonpos (by linarith) (by linarith) (by norm_num)
+  simpa [Nat.cast_add, Nat.cast_one] using hanti.sum_le_integral
+
+/-- Exact value of the shifted half-exponent integral. -/
+theorem cmp89Eq251HalfAliasIntegral_eq (N : ℕ) :
+    (∫ x in (0 : ℝ)..N, (1 + x) ^ (-(1 / 2 : ℝ))) =
+      2 * (Real.sqrt (N + 1) - 1) := by
+  conv_lhs =>
+    enter [2, x]
+    rw [add_comm]
+  rw [intervalIntegral.integral_comp_add_right
+    (fun x : ℝ => x ^ (-(1 / 2 : ℝ))) 1]
+  rw [intervalIntegral.integral_rpow (Or.inl (by norm_num))]
+  rw [show -(1 / 2 : ℝ) + 1 = 1 / 2 by ring]
+  simp only [zero_add, Nat.cast_add, Nat.cast_one, one_add_one_eq_two,
+    Real.sqrt_eq_rpow, Real.one_rpow]
+  ring
+
+end
+
+end YangMills.RG
