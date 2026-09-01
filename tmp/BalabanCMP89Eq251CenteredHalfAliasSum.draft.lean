@@ -77,7 +77,11 @@ theorem cmp89Eq251CenteredOneDimensionalAliasSum_half_le
             ((i + 1 : ℕ) : ℤ)
     have h0 : weight 0 = 1 := by
       simp [weight, cmp89Eq251OneDimensionalAliasWeight]
-    rw [h0]
+    have h0Nat : weight ((0 : ℕ) : ℤ) = 1 := by simpa using h0
+    have htailNat :
+        (∑ i ∈ Finset.range N, weight ((i + 1 : ℕ) : ℤ)) ≤ tail := by
+      simpa using htail
+    rw [h0Nat]
     linarith
   have htailIntegral :
       tail ≤ ∫ x in (0 : ℝ)..N, (1 + x) ^ (-(1 / 2 : ℝ)) := by
