@@ -49,7 +49,7 @@ theorem cmp99FlatPhysicalFibreDFT_pointSource
       apply hx
       rw [← h]
       exact (e.apply_symm_apply x).symm
-    simp only [if_neg hxy, WithLp.ofLp_zero, mul_zero]
+    simp only [if_neg hxy, WithLp.ofLp_zero, Pi.zero_apply, mul_zero]
   · intro hy
     exact (hy (Finset.mem_univ (e y))).elim
 
