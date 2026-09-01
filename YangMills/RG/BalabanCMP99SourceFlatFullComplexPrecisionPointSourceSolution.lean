@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99FlatPhysicalFibrePointSourceDFT
 import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionFibreAction
+import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionParticularSolution
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeFullSolution
 
 /-!
@@ -119,6 +120,7 @@ theorem cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_pointSourceFibr
         (cmp99FlatComplexFibrePointSource y v) output.1 := by
   rw [cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution]
   rw [cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fixedCoarseFibre]
+  unfold cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients
   rw [cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_sum_smul_fullVectorSolution
     ell mass a (fun k => (cmp99FlatFourierMode k.1 y)⁻¹ • v)
     hfine hstabilized hpair output]
