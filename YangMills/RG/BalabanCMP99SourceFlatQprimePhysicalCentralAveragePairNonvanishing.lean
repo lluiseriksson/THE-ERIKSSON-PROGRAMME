@@ -126,8 +126,8 @@ theorem cmp89Eq249CentralEntireAveragePair_physicalCoarse_ne_zero
         (M := M) (N' := N') (ell mu))
   rw [hbase, cmp89Eq249CentralEntireAveragePair, pow_one,
     cmp89Eq245EntireAveragePair_ofReal_eq]
-  exact Complex.ofReal_ne_zero.mpr
-    (pow_ne_zero 2 (norm_ne_zero_iff.mpr hamp))
+  exact pow_ne_zero 2
+    (Complex.ofReal_ne_zero.mpr (norm_ne_zero_iff.mpr hamp))
 
 end
 
