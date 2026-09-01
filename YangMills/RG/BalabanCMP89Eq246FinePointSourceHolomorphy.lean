@@ -95,7 +95,8 @@ theorem differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
   -- Pin the reducible fine-symbol wrapper on both sides before applying the
   -- quotient rule.  Otherwise elaboration unfolds only the expected
   -- denominator and leaves the named differentiability theorem wrapped.
-  unfold cmp89Eq246EntireAliasFineSymbol at hfine hden
+  unfold cmp89Eq246EntireAliasFineSymbol
+    cmp89Eq245EntireScaledLaplacianSymbol at hfine hden
   exact DifferentiableAt.div (𝕜 := ℂ)
     ((hrow z).mul (hsource z)) (hden z) (hfine m hmc)
 
@@ -162,7 +163,8 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
     differentiable_cmp89Eq246EntireAliasFineSymbol_component d L j mass
   -- The solution unfolds this reducible wrapper inside both branches.  Pin
   -- the hypotheses to the same normal form before building the quotients.
-  unfold cmp89Eq246EntireAliasFineSymbol at hfine hfineDiff
+  unfold cmp89Eq246EntireAliasFineSymbol
+    cmp89Eq245EntireScaledLaplacianSymbol at hfine hfineDiff
   have hcolumn :=
     differentiable_cmp89Eq246EntireAliasAverageColumn_component d L j
   by_cases hm : m = central
@@ -179,6 +181,7 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
                     d L j w sourceEndpoint) /
                 cmp89Eq246EntireAliasFineSymbol d L j mass w n)) z := by
       unfold cmp89Eq246EntireAliasFineSymbol
+        cmp89Eq245EntireScaledLaplacianSymbol
       apply DifferentiableAt.fun_sum
       intro n hn
       have hnc : n ≠ central := (Finset.mem_erase.mp hn).1
@@ -198,6 +201,7 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
         d L j central
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
       cmp89Eq246EntireAliasFineSymbol,
+      cmp89Eq245EntireScaledLaplacianSymbol,
       cmp89Eq246StabilizedAliasFullSolution, central] using
         DifferentiableAt.div (𝕜 := ℂ)
           (hmoment.sub hsum) (hrowDiff z) hrow
@@ -206,6 +210,7 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
     have hcM := hcolumn m
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
       cmp89Eq246EntireAliasFineSymbol,
+      cmp89Eq245EntireScaledLaplacianSymbol,
       cmp89Eq246StabilizedAliasFullSolution, central, hm] using
         (DifferentiableAt.div (𝕜 := ℂ)
           (hsM z) (hfM z) (hfine m hm)).sub
