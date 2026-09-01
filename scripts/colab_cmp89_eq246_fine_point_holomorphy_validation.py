@@ -81,21 +81,21 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-fine-point-holomorphy-debug-v1"
-runner.SOURCE_SHA = "73dec7a5f4ae7efaaf9a28ee38df5e7e0c5d6f0d"
-runner.ROOT = Path("/content/hrpoly-cmp89-eq246-fine-point-holomorphy-debug-v1")
+runner.RUNNER_REV = "cmp89-eq246-fine-point-holomorphy-cold-v2"
+runner.SOURCE_SHA = "2522d03fe2255f64ddf8513e267efd54e8f36136"
+runner.ROOT = Path("/content/hrpoly-cmp89-eq246-fine-point-holomorphy-cold-v2")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp89-eq246-fine-point-holomorphy-debug-v1-evidence"
+    "/content/hrpoly-cmp89-eq246-fine-point-holomorphy-cold-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp89-eq246-fine-point-holomorphy-debug-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp89-eq246-fine-point-holomorphy-cold-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp89-eq246-fine-point-holomorphy-debug-v1-paths.txt"
+    "/content/hrpoly-cmp89-eq246-fine-point-holomorphy-cold-v2-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceHolomorphy.lean":
-        "9e6c6d1fbb444291a6797b36d80e71a346bfcd0966f8a9793821fd4eec48d114",
+        "3a82ad645d24263422ed47954226cb2fe1364324db434f98c2b756fb0a343bc8",
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceHolomorphyAudit.lean":
         "918a8a223732384815da1e295cf2158b6e79814de7f3d87ef59e1b87585dc03c",
 }
