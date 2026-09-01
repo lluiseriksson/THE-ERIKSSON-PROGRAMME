@@ -118,19 +118,28 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
       cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a w
         (cmp89Eq246FinePointSourceAliasVector
           d L j w sourceEndpoint)) z := by
-  let central := cmp89Eq249CentralAliasIndex d L j
-  have hrow :=
+  let central : CMP89Eq246AliasIndex d L j :=
+    cmp89Eq249CentralAliasIndex d L j
+  have hrow : Differentiable ℂ (fun w : Fin d → ℂ =>
+      cmp89Eq246EntireAliasAverageRow d L j w central) :=
     differentiable_cmp89Eq246EntireAliasAverageRow_component d L j central
-  have hsource :=
+  have hsource : Differentiable ℂ (fun w : Fin d → ℂ =>
+      cmp89Eq246FinePointSourceAliasVector
+        d L j w sourceEndpoint central) :=
     differentiable_cmp89Eq246FinePointSourceAliasVector_component
       d L j sourceEndpoint central
-  have hfineCentral :=
+  have hfineCentral : Differentiable ℂ (fun w : Fin d → ℂ =>
+      cmp89Eq246EntireAliasFineSymbol d L j mass w central) :=
     differentiable_cmp89Eq246EntireAliasFineSymbol_component
       d L j mass central
-  have hbase :=
+  have hbase : DifferentiableAt ℂ (fun w : Fin d → ℂ =>
+      cmp89Eq246StabilizedAliasNoncentralSourceMoment d L j mass w
+        (cmp89Eq246FinePointSourceAliasVector
+          d L j w sourceEndpoint)) z :=
     differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
       (z := z) (sourceEndpoint := sourceEndpoint) hfine
-  have hden :=
+  have hden : DifferentiableAt ℂ (fun w : Fin d → ℂ =>
+      cmp89Eq249CentralStabilizedAliasDenominator d L j mass a w) z :=
     differentiableAt_cmp89Eq249CentralStabilizedAliasDenominator
       (mass := mass) (a := a) (z := z) (by
         intro m hm
