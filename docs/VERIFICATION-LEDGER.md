@@ -43152,3 +43152,31 @@ transform, identify a regional Green, prove the reflection formula (2.42),
 produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
 field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
+
+## Addendum 1011 (2026-09-01, **CMP89 (2.46) fine-point holomorphy and normalized inverse transform promoted PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`73dec7a5f4ae7efaaf9a28ee38df5e7e0c5d6f0d` adds exactly one focal/audit
+pair. The focal constructs componentwise holomorphy for the internally fixed
+fine-point solution, discharges all denominator and central-row gates from
+the already named common-radius data, proves real-slice integrability on the
+literal Brillouin cube, integrates the exact pointwise fibre equation, and
+defines the normalized fine-to-fine inverse transform with distinct target
+and source endpoints. It also exposes a literal unfolding theorem for that
+definition.
+
+The source and audit Git-blob byte SHA-256 values are
+`9E6C6D1FBB444291A6797B36D80E71A346BFCD0966F8A9793821FD4EEC48D114`
+and
+`918A8A223732384815DA1E295CF2158B6E79814DE7F3D87EF59E1B87585DC03C`.
+Runner checkpoint `af8f2173565a75af541ac3e3dd751517c3a0172f`
+fixes the exact source SHA, those two blobs, the ten-declaration audit and a
+stop-on-first-error focal/audit queue. Its runner blob SHA-256 is
+`04494858E777AA90F88262D4E775ED0461A85D61FCBC69A8900F143566CF16C2`.
+
+Both modules retain a visible PRE-VALIDATION notice and remain outside
+`YangMillsCore.lean`. This checkpoint is not compiler evidence. It does not
+identify the normalized integral with a regional Green, prove the
+multiple-reflection formula (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge a terminal field, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.
