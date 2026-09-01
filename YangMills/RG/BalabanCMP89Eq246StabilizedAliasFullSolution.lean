@@ -262,7 +262,8 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
       have hmom := hmomentEq
       rw [hstabilizedEq, ← hpair] at hmom
       linear_combination hmom
-    simpa [div_eq_mul_inv] using eq_sub_iff_add_eq.mp hdiv
+    have hadded := eq_sub_iff_add_eq.mp hdiv
+    convert hadded using 1 <;> ring
   · have hsolution :
         solution m = source m / fine m -
           (a : ℂ) * column m * moment / fine m := by
