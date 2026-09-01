@@ -27,7 +27,7 @@ theorem norm_cmp89Eq246FinePointSourceBareDiagonal_le
     {L j : ℕ} [NeZero L] {mass rho : ℝ}
     (hrho : 0 ≤ rho)
     (hradius : CMP89Eq249UniformNoncentralComplexRadiusCondition rho)
-    (hamplitude : rho * Real.exp rho ≤ 1 / 6)
+    (_hamplitude : rho * Real.exp rho ≤ 1 / 6)
     {p : Fin 4 → ℝ} (hp : ∀ mu, |p mu| ≤ Real.pi)
     {z : Fin 4 → ℂ}
     (hreal : ∀ mu, (z mu).re = p mu)
