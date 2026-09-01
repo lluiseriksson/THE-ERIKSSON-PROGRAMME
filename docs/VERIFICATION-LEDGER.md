@@ -43078,3 +43078,33 @@ fine-to-fine Fourier kernel, prove the reflection representation (2.42),
 establish uniform physical `B0`/`delta0`, attain window 15, discharge a
 terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
 remains exact.
+
+## Addendum 1009 (2026-09-01, **fine-point specialization of CMP89 (2.46) promoted PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`4035d105e264464248aed499e1686e83e320ac50` adds four files in one ordered
+source unit: a scale-uniform strip floor and nonvanishing theorem for the
+literal central opposite-momentum averaging pair, its audit, the normalized
+fine-delta specialization of the complete (2.46) alias solution, and its
+audit. The latter fixes the CMP89 (2.43) Fourier convention, proves the
+normalized point source transforms to the named source phase, discharges the
+central-row premise from the pair rather than accepting `hrow` freely, and
+keeps target and source endpoints separate in the fine-to-fine integrand.
+No `Q_j^*` factor is inserted into the fine point source.
+
+All four files carry one visible PRE-VALIDATION notice and are excluded from
+`YangMillsCore.lean`. Their Git-blob byte SHA-256 values are, in validation
+order,
+`4D2E8B25B323872822F8B9136FB9FE22A46BCD5E53595620075935EB1BB4F4C2`,
+`24DE9D4A0BFE0082671CB88A08F2DD039135405997F9C8410B8D8AB6FF1C1C42`,
+`BC4A56D0694001D2BF811623D96A2F84FD9FD807DB4F5B4014506FD4785B7343`
+and
+`82E1D65B3747860DCD068B1A094818AA1665F4F4569191784109549B1FE44A64`.
+The stop-on-first-error Colab runner validates the central pair before the
+fine source and applies exact three- and nine-declaration axiom gates.
+
+This checkpoint is not compiler evidence. It does not yet prove
+integrability, the normalized inverse Fourier transform, the multiple
+reflection identity (2.42), uniform physical `B0`/`delta0`, window 15, a
+terminal field or a `TermSource`. Counters remain exactly `20/41` and
+`TermSource = 0`.
