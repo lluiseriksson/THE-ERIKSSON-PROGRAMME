@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannReflectionRepresentation
 
 /-!
-# PRE-VALIDATION: generated flat finite-depth canonical Neumann precision
+# Generated flat finite-depth canonical Neumann precision
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+Cold compiler evidence and the exact axiom audit for this module are recorded
+in Verification Ledger Addendum 1004.
 
 This module exposes the exact precision paired with
 `cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen`.  The flat

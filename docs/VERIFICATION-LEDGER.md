@@ -42883,3 +42883,39 @@ composed with this Green is the identity; that three-species right-inverse
 law remains the load-bearing CMP89 (2.42) endpoint. It does not produce
 uniform `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1004 (2026-09-01, **generated canonical Neumann precision/Green pair cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `bf678d9d25c504bc2d012794634b8941b62fef8e`,
+driven by runner commit `bef9e52819c5bb28664b4bdc5a90e77ac7d6c73a`
+(runner blob SHA-256
+`717BFAD3C55E1EF2928D402C95593C6410A1058E18F812A4F9B94B7CA896F598`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+shared or restored project `.lake/build`. The focal completed `8732/8732`
+jobs in `2224.152 s`; the exact eight-declaration audit exited zero in
+`32.252 s`. Every declaration uses a subset of
+`{propext, Classical.choice, Quot.sound}`, and all 16 ordered stage records
+exited zero with Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The downloaded archive SHA-256 is
+`C525FF4EF5E4992834D4AC21832DE5BBF5143E9A660C9D425E182A9109AAC4ED`;
+the stored evidence JSON SHA-256 is
+`5B9DE912FADD30F903A927BB028125DCC5A78C741F6422E9EBE9B9820205871B`
+(canonical payload hash
+`A7A29323DC3BE0810724CA47EECA2C6FD8A49DC45EDA8E131AC7E5CF3D8FF48C`).
+The executed notebook SHA-256 is
+`626682E7494337D17A8CCFE76A831137556F42837E06FB45B8687DAB3A8EF7FD`.
+The durable package and fail-closed verifier are preserved under
+`validation-evidence/cmp89-generated-canonical-neumann-precision-cold-bf678d9d-20260901/`
+and
+`tmp/verify_cmp89_generated_canonical_neumann_precision_cold_evidence.ps1`.
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired,
+and the audit is imported by `YangMillsCore.lean`.
+
+This seal constructs the generated flat finite-depth canonical Neumann
+precision, its coercivity certificate and both inverse laws for the one
+internally fixed precision/Green pair. It does **not** prove the reflected
+full-lattice right-inverse identity CMP89 (2.42), a Green-kernel bound,
+uniform `B0`/`delta0`, or window 15. It does not discharge a terminal field,
+move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

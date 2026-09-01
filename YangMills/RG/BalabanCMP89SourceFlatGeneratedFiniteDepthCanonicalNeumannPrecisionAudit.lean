@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannPrecision
 
 /-!
-# PRE-VALIDATION: axiom audit for the canonical Neumann precision/Green pair
+# Axiom audit for the canonical Neumann precision/Green pair
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+Cold compiler evidence for this audit is recorded in Verification Ledger
+Addendum 1004.
 -/
 
 #print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannTower
