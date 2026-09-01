@@ -41,6 +41,11 @@ EXPECTED_POINT_SOURCE_DECLARATIONS = {
     "YangMills.RG.finitePiLp_comp_eq_id_iff_pointSources",
 }
 
+EXPECTED_MASS_DECLARATIONS = {
+    "YangMills.RG.mass_sq_mul_cmp89NeumannReflectionSeries",
+    "YangMills.RG.mass_sq_comp_cmp89NeumannScalarReflectionOperator",
+}
+
 EXPECTED_PHYSICAL_DECLARATIONS = {
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalSpacing",
     "YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannFourierCoefficient",
@@ -55,6 +60,8 @@ EXPECTED_PHYSICAL_DECLARATIONS = {
 def parse_axioms_exact(output: str, expected: int) -> None:
     if expected == len(EXPECTED_POINT_SOURCE_DECLARATIONS):
         expected_declarations = EXPECTED_POINT_SOURCE_DECLARATIONS
+    elif expected == len(EXPECTED_MASS_DECLARATIONS):
+        expected_declarations = EXPECTED_MASS_DECLARATIONS
     elif expected == len(EXPECTED_PHYSICAL_DECLARATIONS):
         expected_declarations = EXPECTED_PHYSICAL_DECLARATIONS
     else:
@@ -90,8 +97,8 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v2"
-runner.SOURCE_SHA = "7648e39ae985d13d68b281f682d3044352eb073b"
+runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v3"
+runner.SOURCE_SHA = "c236799bd3714aa8a882140034c20b11a41ba9b2"
 runner.ROOT = Path("/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug")
 runner.EVIDENCE = Path(
     "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-evidence"
@@ -107,6 +114,10 @@ runner.SOURCE_BLOBS = {
         "053d196a2910d50313e664a3476235d0e73b4d1efbe1af69f06dbe7afca4f5ff",
     "YangMills/RG/FinitePiLpPointSourceRightInverseAudit.lean":
         "d75d99129a4c12e9f7e0a87e28d81130ec4be2c736330f0bbfcea608e5e9154a",
+    "YangMills/RG/BalabanCMP89NeumannMassReflection.lean":
+        "6c0ecf2c227cdf55165a506871e1d0b01dd5ed6ba64dbffbeba6f9aac484f5c9",
+    "YangMills/RG/BalabanCMP89NeumannMassReflectionAudit.lean":
+        "497467b74e145744482674dc59b5138661d37c7ec565675fe7c8909b87d9c095",
     "YangMills/RG/BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducer.lean":
         "920f03c5e4c811d7f59c2b64fa4c50b41347a3b957aad72e72701e98ac800f97",
     "YangMills/RG/BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducerAudit.lean":
@@ -128,6 +139,22 @@ runner.QUEUE = [
             "YangMills/RG/FinitePiLpPointSourceRightInverseAudit.lean",
         ],
         1,
+    ),
+    (
+        "neumann_mass_reflection_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP89NeumannMassReflection",
+        ],
+        None,
+    ),
+    (
+        "neumann_mass_reflection_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP89NeumannMassReflectionAudit.lean",
+        ],
+        2,
     ),
     (
         "physical_neumann_inverse_producer_focal",
