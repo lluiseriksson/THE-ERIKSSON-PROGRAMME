@@ -74,6 +74,7 @@ theorem sub_variation_le_norm_cmp89Eq249CentralEntireAveragePair
     dsimp [floor, cmp89Eq249CentralAveragePairLowerConstant]
     exact (sq_le_sq₀ hbase (norm_nonneg _)).2 hamp
   have hfloorNorm : floor ≤ ‖pair0‖ := by
+    change floor ≤ ‖cmp89Eq249CentralEntireAveragePair 4 L j z0‖
     rw [hz0]
     rw [cmp89Eq249CentralEntireAveragePair_ofReal_eq hp]
     simpa [abs_of_nonneg (sq_nonneg _)] using hfloorReal
