@@ -54,13 +54,25 @@ theorem sum_norm_cmp89Eq246FinePointSourceNoncentralCorrection_le
     dsimp [growth, cmp89Eq251ContourPhaseGrowth]
     positivity
   have hcoefficient : 0 ≤ coefficient := by
+    have hreciprocal :
+        0 ≤ cmp89Eq249CentralStabilizedComplexReciprocalBound a rho := by
+      rw [cmp89Eq249CentralStabilizedComplexReciprocalBound]
+      exact inv_nonneg.mpr (sub_nonneg.mpr hwindow.le)
+    have hmoment :
+        0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound a rho := by
+      rw [cmp89Eq246FinePointSourceMomentAmplitudeBound]
+      apply mul_nonneg
+      · positivity
+      · exact hreciprocal
     dsimp [coefficient,
-      cmp89Eq246FinePointSourceNoncentralCorrectionAmplitudeBound,
-      cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft,
-      cmp89Eq248ComplexNoncentralGreenRadialConstant_draft,
-      cmp89Eq245EntireAverageAliasStripConstant,
-      cmp89Eq246FinePointSourceMomentAmplitudeBound]
-    positivity
+      cmp89Eq246FinePointSourceNoncentralCorrectionAmplitudeBound]
+    apply mul_nonneg
+    · apply mul_nonneg (abs_nonneg a)
+      dsimp [cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft,
+        cmp89Eq248ComplexNoncentralGreenRadialConstant_draft,
+        cmp89Eq245EntireAverageAliasStripConstant]
+      positivity
+    · exact hmoment
   have hpoint : ∀ m ∈ (Finset.univ :
       Finset (CMP89Eq246AliasIndex 4 L j)).erase central,
       ‖(a : ℂ) * cmp89Eq246EntireAliasAverageColumn 4 L j z m *
