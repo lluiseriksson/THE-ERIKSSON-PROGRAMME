@@ -54,6 +54,26 @@ theorem sum_norm_cmp89Eq246FinePointSourceNoncentralCorrection_le
     dsimp [growth, cmp89Eq251ContourPhaseGrowth]
     positivity
   have hcoefficient : 0 ≤ coefficient := by
+    have hquotient :
+        0 ≤ cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho := by
+      dsimp [cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft,
+        cmp89Eq248ComplexNoncentralGreenRadialConstant_draft,
+        cmp89Eq245EntireAverageAliasStripConstant]
+      positivity
+    have hseries :
+        0 ≤ ∑' n : ℤ, cmp89Eq251OneDimensionalAliasWeight
+          (cmp89Eq251AliasSeriesExponent 4 (-1)) n := by
+      exact tsum_nonneg fun n =>
+        cmp89Eq251OneDimensionalAliasWeight_nonneg _ n
+    have hgreenSum :
+        0 ≤ cmp89Eq248ComplexNoncentralGreenSumBound_draft rho := by
+      rw [cmp89Eq248ComplexNoncentralGreenSumBound_draft]
+      exact mul_nonneg hquotient (pow_nonneg hseries 4)
+    have hstrip : 0 ≤ cmp89Eq251CentralFineSymbolStripUpperBound rho := by
+      dsimp [cmp89Eq251CentralFineSymbolStripUpperBound,
+        cmp89Eq249CentralFineSymbolVerticalBound,
+        cmp89Eq249CentralFineSymbolRealBound]
+      positivity
     have hreciprocal :
         0 ≤ cmp89Eq249CentralStabilizedComplexReciprocalBound a rho := by
       rw [cmp89Eq249CentralStabilizedComplexReciprocalBound]
@@ -61,17 +81,14 @@ theorem sum_norm_cmp89Eq246FinePointSourceNoncentralCorrection_le
     have hmoment :
         0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound a rho := by
       rw [cmp89Eq246FinePointSourceMomentAmplitudeBound]
-      apply mul_nonneg
-      · positivity
-      · exact hreciprocal
+      exact mul_nonneg
+        (add_nonneg (pow_nonneg (Real.exp rho) 4)
+          (mul_nonneg hstrip hgreenSum))
+        hreciprocal
     dsimp [coefficient,
       cmp89Eq246FinePointSourceNoncentralCorrectionAmplitudeBound]
     apply mul_nonneg
-    · apply mul_nonneg (abs_nonneg a)
-      dsimp [cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft,
-        cmp89Eq248ComplexNoncentralGreenRadialConstant_draft,
-        cmp89Eq245EntireAverageAliasStripConstant]
-      positivity
+    · exact mul_nonneg (abs_nonneg a) hquotient
     · exact hmoment
   have hpoint : ∀ m ∈ (Finset.univ :
       Finset (CMP89Eq246AliasIndex 4 L j)).erase central,
