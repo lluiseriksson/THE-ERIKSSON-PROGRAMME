@@ -96,4 +96,20 @@ runner.QUEUE = [
 
 
 if __name__ == "__main__":
-    raise SystemExit(runner.main())
+    saved_unassign = None
+    try:
+        from google.colab import runtime
+
+        saved_unassign = runtime.unassign
+        runtime.unassign = lambda: print(
+            "RUNTIME_UNASSIGN_DEFERRED_TO_LAUNCHER=1", flush=True
+        )
+    except ImportError:
+        pass
+    try:
+        raise SystemExit(runner.main())
+    finally:
+        if saved_unassign is not None:
+            from google.colab import runtime
+
+            runtime.unassign = saved_unassign
