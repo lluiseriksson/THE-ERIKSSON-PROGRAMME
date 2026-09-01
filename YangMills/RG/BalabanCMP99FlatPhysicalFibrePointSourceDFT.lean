@@ -35,7 +35,7 @@ theorem cmp99FlatPhysicalFibreDFT_pointSource
   ext A
   simp only [cmp99FlatPhysicalFibreDFT_apply, cmp99FlatFinBoxDFT,
     cmp99FlatZModDFT, cmp99FlatComplexFibrePointSource,
-    PiLp.smul_apply, smul_eq_mul]
+    ite_apply, WithLp.ofLp_zero, PiLp.smul_apply, smul_eq_mul]
   rw [Finset.sum_eq_single (e y)]
   · simp only [Equiv.symm_apply_apply, if_pos]
     rw [cmp99FlatZModFourierCharacter_neg_left]
@@ -46,7 +46,7 @@ theorem cmp99FlatPhysicalFibreDFT_pointSource
       intro h
       apply hx
       rw [← h]
-      exact e.apply_symm_apply x
+      exact (e.apply_symm_apply x).symm
     simp [hxy]
   · intro hy
     exact (hy (Finset.mem_univ (e y))).elim
