@@ -71,7 +71,16 @@ theorem cmp89Eq243FineLatticeFourierTransform_normalizedPointSource
             (cmp89Eq249PhysicalFineLatticeDisplacement xi source)) := by
   rw [cmp89Eq243FineLatticeFourierTransform, tsum_eq_single source]
   · have hxiC : (xi : ℂ) ≠ 0 := Complex.ofReal_ne_zero.mpr hxi
-    simp [cmp89Eq243NormalizedFinePointSource, hxiC]
+    have hpow : (xi : ℂ) ^ d ≠ 0 := pow_ne_zero d hxiC
+    simp only [cmp89Eq243NormalizedFinePointSource, if_pos]
+    calc
+      _ = (((xi : ℂ) ^ d) * (((xi : ℂ) ^ d)⁻¹)) *
+          Complex.exp
+            (-Complex.I *
+              cmp89Eq251EntirePhase p
+                (cmp89Eq249PhysicalFineLatticeDisplacement xi source)) := by
+            ring
+      _ = _ := by rw [mul_inv_cancel₀ hpow, one_mul]
   · intro x hx
     simp [cmp89Eq243NormalizedFinePointSource, hx]
 
