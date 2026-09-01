@@ -7,7 +7,7 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceFibreGreen
 import YangMills.RG.BalabanCMP89Eq251ComplexContourPhase
 
 /-!
-# PRE-VALIDATION: source-endpoint phase bound for CMP89 (2.46)
+# Source-endpoint phase bound for CMP89 (2.46)
 
 The normalized fine point source in (2.46) carries the negative Fourier
 phase.  This module derives its strip growth from the already sealed
@@ -15,13 +15,15 @@ alias-independent contour-phase estimate by applying that estimate to the
 negated source displacement.  Reciprocal aliases are real, so no alias
 cardinality enters the bound.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
-
 This is only the first item of the post-synthesis Eq. (2.46) bridge.  It does
 not bound the stabilized fibre solution, construct the continuous Green
 kernel, prove CMP89 (2.42), produce uniform `B0`/`delta0`, attain window 15,
 move `20/41`, or construct a `TermSource`.
+
+Cold compiler evidence for exact source checkpoint
+`00ca45e5544f44566bdf7d3e9339b813774f4e2b` is recorded in Verification
+Ledger Addendum 1020. The focal and its exact axiom audit passed in a fresh
+Colab Pro+ CPU checkout without restoring a project `.lake/build`.
 -/
 
 namespace YangMills.RG

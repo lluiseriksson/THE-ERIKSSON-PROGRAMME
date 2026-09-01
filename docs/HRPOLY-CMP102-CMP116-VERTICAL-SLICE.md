@@ -15695,3 +15695,22 @@ Addendum 1019 records the durable evidence hashes. This bridge does not prove
 the multiple-reflection formula (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+### Eq. (2.46) fine-point source strip bound cold-sealed
+
+Exact source checkpoint `00ca45e5544f44566bdf7d3e9339b813774f4e2b`
+is cold-sealed in a fresh Colab Pro+ CPU checkout. The focal completed
+`8499/8499` jobs in `4747.999 s`; its exact one-declaration audit exited zero
+in `13.858 s` and depends only on
+`{propext, Classical.choice, Quot.sound}`. The two PRE-VALIDATION notices are
+retired and the audit enters `YangMillsCore.lean`. Verification Ledger
+Addendum 1020 records the exact runner, blob gates, and independently checked
+archive hashes.
+
+The sealed lemma bounds the literal negative Fourier phase of the normalized
+fine point source uniformly over the complex strip, without reciprocal-alias
+cardinality loss. It is the first post-synthesis analytic input for the
+Eq. (2.46) source moment. It does not yet bound the stabilized fibre solution,
+construct the continuous Green kernel, prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

@@ -43431,3 +43431,32 @@ It does not prove CMP89 (2.42), construct the continuous fine-to-fine kernel,
 produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
 field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
+
+## Addendum 1020 (2026-09-01, **CMP89 (2.46) fine-point source strip bound cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU runner
+`cmp89-eq246-point-source-strip-bound-cold-v1` checked out exact source
+checkpoint `00ca45e5544f44566bdf7d3e9339b813774f4e2b`, verified the two exact
+Git-blob hashes and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and completed every recorded
+stage with exit code zero. The `8499/8499`-job focal completed in `4747.999 s`;
+its exact one-declaration audit completed in `13.858 s` and reports only
+`{propext, Classical.choice, Quot.sound}`.
+
+The independently checked evidence is preserved under
+`validation-evidence/cmp89-eq246-point-source-strip-bound-cold-00ca45e5-20260901/`.
+The archive SHA-256 is
+`784650D81C94C212AB9D1627203C5F59C45445D10F589867FAF1F62B44BBA31E`;
+the extracted evidence JSON SHA-256 is
+`A38C190E1B9C2E98D05C39AC2B84CA253A7E9470ED8FA8F506F56D37D90ACB5B`;
+the focal output SHA-256 is
+`0BEC6D82F343E6CF17082EC0EB915A5A21834E6338757F5178296B60CDAADEB4`;
+and the audit output SHA-256 is
+`FD1D9D982334C43241C8CE5B788951A31C97674BB5122256579306251029738D`.
+
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired and
+the audit enters `YangMillsCore.lean`. This seals only the source-endpoint
+strip-growth input. It does not yet bound the stabilized source moment,
+construct the continuous Green kernel, prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
