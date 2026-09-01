@@ -15648,3 +15648,22 @@ a full periodic point-source Green, invoke inverse uniqueness, prove CMP89
 (2.42), produce uniform physical `B0`/`delta0`, attain window 15, discharge a
 terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
 remains exact.
+
+### Full periodic Eq. (2.46) point-source solution promoted PRE-VALIDATION
+
+Source checkpoint `f78d8b41193b1f1872c8736f56e66996abd286a6`
+promotes one focal/audit pair on the two cold-sealed physical inputs above.
+For each coarse reciprocal fibre it internally feeds the exact point-source
+DFT character to the arbitrary-source transposed solution, performs the
+inverse physical DFT, proves zero Fourier support away from the selected
+fibre, and proves the selected-fibre precision equation. It then sums all
+coarse fibres and reduces the literal full-box precision equation to DFT
+injectivity. Both files retain one visible PRE-VALIDATION notice and remain
+outside `YangMillsCore.lean` until their compiler and exact axiom gates pass.
+
+This checkpoint is source, not compiler evidence. It constructs the finite
+full-periodic point-source solution but does not identify it with a named
+Green by inverse uniqueness, insert `Q'^*`, use the particular CMP89 (2.48)
+solution, perform regional periodization, prove (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

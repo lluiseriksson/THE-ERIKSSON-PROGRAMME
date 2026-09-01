@@ -43330,3 +43330,29 @@ construct or identify the full periodic point-source Green, prove the
 multiple-reflection formula (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge a terminal field, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1016 (2026-09-01, **full periodic Eq. (2.46) point-source solution promoted PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`f78d8b41193b1f1872c8736f56e66996abd286a6` promotes one focal/audit pair
+whose Git-blob byte SHA-256 values are, respectively,
+`93AB1A79CC4DA4CFAA9AE252F72EA60B16D31CAF12973455FD92F1665309071E`
+and
+`409AB4C249DA54C62B29CA8F8B57DC7A0ABA21B1BFA26920335FEF2E0B494CB1`.
+Each file carries exactly one visible PRE-VALIDATION notice and remains
+outside `YangMillsCore.lean`.
+
+The source internally applies the cold-sealed exact physical point-source DFT
+to the cold-sealed arbitrary-source transposed Eq. (2.46) solver on every
+coarse reciprocal fibre. It proves the off-fibre Fourier support is zero, the
+selected-fibre precision equation, and the literal full-box point-source
+precision equation after summing every coarse fibre and invoking only the
+already sealed DFT injectivity. No abstract self-adjointness, inverse equality,
+free coefficient family or free solution field is accepted.
+
+This checkpoint is source, not compiler evidence. It does not yet identify the
+constructed field with a named Green by inverse uniqueness, insert `Q'^*`, use
+the particular CMP89 (2.48) solution, perform regional periodization, prove
+the multiple-reflection formula (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge a terminal field, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
