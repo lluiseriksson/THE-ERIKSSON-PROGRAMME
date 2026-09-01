@@ -3,17 +3,19 @@ import YangMills.RG.BalabanCMP89NeumannPhysicalRealReflectionSummability
 import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannPrecision
 
 /-!
-# PRE-VALIDATION: source-faithful physical CMP89 Neumann reflection producer
+# PRE-VALIDATION WITHDRAWN AS PHYSICAL PRODUCER: conditional Neumann scaffold
 
 The source is present, but its `.olean` has not yet been materialized and the
 result has not yet been verified by the compiler.
 
-This draft fixes the two scalar dictionaries that the earlier physical
-proposition left implicit.  The retained regional precision is built at the
-canonical generated spacing from the source coefficient `aSource`, whereas
-the literal CMP89 (2.48) Fourier Green uses the corresponding weighted
-coefficient.  The only remaining analytic equality is the right-inverse law
-for the internally constructed reflection operator.
+This draft fixes the two scalar dictionaries that the earlier conditional
+proposition left implicit.  Its final kernel, however, is the withdrawn
+same-scale wrapper around CMP89 (2.48).  The cold-sealed source-role
+correction proves that (2.48) is `G_j Q_j^*`, not the full fine-to-fine Green
+used by CMP89 (2.42).  Consequently the theorem below remains valid
+conditional algebra but is not accepted as a source-faithful physical
+producer and must not be compiler-sealed as that endpoint.  The replacement
+must use the arbitrary-fine-source (2.46) Green.
 
 This file is not imported by `YangMillsCore` before its cold gate passes.
 -/
@@ -94,7 +96,8 @@ theorem
   rw [cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannTerminalSpacing_eq_one]
   norm_num
 
-/-- Literal real scalar kernel used by the source-faithful image operator. -/
+/-- Withdrawn same-scale (2.48) scalar retained only for the conditional
+algebraic scaffold.  It is not the fine-to-fine kernel of (2.42). -/
 def cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalFullGreen
     (hM : 2 ≤ M) (Omega : ActiveGaugeRegion 4 N)
     (steps : ℕ) (mass aSource : ℝ)
@@ -130,9 +133,9 @@ def CMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalRightInverse
         (cmp99IteratedLiftActiveRegion (M := M) Omega (steps + 1))
         (SUNLieCoord Nc))
 
-/-- Conditional source-faithful CMP89 (2.42) producer.  The target
-representation is derived by inverse uniqueness; it is not accepted as an
-input. -/
+/-- Conditional inverse-uniqueness scaffold.  The target representation is
+derived rather than accepted as input, but the current kernel is not the
+source-faithful fine-to-fine Green of CMP89 (2.42). -/
 theorem
     cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalRepresentation_of_rightInverse
     {m : Fin 4 → ℤ}

@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducer
 
 /-!
-# PRE-VALIDATION axiom audit: source-faithful physical CMP89 reflection producer
+# PRE-VALIDATION WITHDRAWN: audit of the conditional Neumann scaffold
 
 The source is present, but its `.olean` has not yet been materialized and the
 result has not yet been verified by the compiler. This file is not imported
