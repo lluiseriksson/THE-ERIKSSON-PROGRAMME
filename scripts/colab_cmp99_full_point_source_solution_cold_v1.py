@@ -83,15 +83,15 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-full-point-source-solution-cold-v1"
-runner.SOURCE_SHA = "7b9d0f9b9e292d48c479477aa336a353a3bb10ea"
-runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v1-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v1-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v1-paths.txt")
+runner.RUNNER_REV = "cmp99-full-point-source-solution-cold-v2"
+runner.SOURCE_SHA = "a819e5074a9f58fb7ae7b93c6369a186956419a2"
+runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v2")
+runner.EVIDENCE = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v2-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v2-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp99-full-point-source-solution-cold-v2-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionFibreAction.lean":
-        "68e51fb1899d4c5c4225a95179a390e3bacb91cd64828400c548d9ba0a95449f",
+        "090e1da43fa16a6d59b1b08c9a035a4261b6323e1c2a1048c1c2a175351037fd",
     "YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionFibreActionAudit.lean":
         "c6d028aec740d08f8c53e99ffffed234a33062c2ba755ce93e079b17cc3f04c0",
     "YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionPointSourceSolution.lean":
