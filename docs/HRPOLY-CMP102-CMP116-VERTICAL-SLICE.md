@@ -15715,7 +15715,7 @@ construct the continuous Green kernel, prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Eq. (2.46) scale-uniform point-source moment bound (PRE-VALIDATION)
+### Eq. (2.46) scale-uniform point-source moment bound (PRE-VALIDATION; diagnostic PASS)
 
 Source checkpoint `2cfd2c534bae969e4b9bb349b8da05b2c169b5c4` adds the
 second post-synthesis analytic brick. It proves the opposite-alias amplitude
@@ -15729,3 +15729,9 @@ Both new modules carry visible PRE-VALIDATION notices and remain outside
 not construct the continuous Green kernel, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge a terminal field,
 move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+Retained-runtime source checkpoint
+`a645d2b833979360f4c62c2b67a34fbec9d3704e` passes the focal in `24.137 s`
+and its exact four-declaration audit in `22.574 s`; all four declarations use
+only `{propext, Classical.choice, Quot.sound}`. This is diagnostic evidence,
+not a cold seal, so both PRE-VALIDATION notices remain.

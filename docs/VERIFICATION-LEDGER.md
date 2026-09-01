@@ -43478,3 +43478,21 @@ checkpoint does not construct the continuous Green kernel, prove CMP89
 (2.42), produce uniform physical `B0`/`delta0`, attain window 15, discharge a
 terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
 remains exact.
+
+## Addendum 1022 (2026-09-01, **CMP89 (2.46) point-source moment diagnostic PASS after one mechanical repair; cold seal pending; 20/41 unchanged**)
+
+The first retained-runtime diagnostic of checkpoint
+`2cfd2c534bae969e4b9bb349b8da05b2c169b5c4` stopped at the first real error:
+an association mismatch between `a * (b / c)` and `(a * b) / c` at the
+pointwise source/Green product. Two trailing `rfl` steps were also unreachable
+because their preceding rewrites already closed the goals. No theorem
+statement, bound, constant, or hypothesis changed.
+
+Corrected source checkpoint `a645d2b833979360f4c62c2b67a34fbec9d3704e`
+passed in the retained Colab Pro+ runtime: focal exit zero in `24.137 s` and
+the exact four-declaration audit exit zero in `22.574 s`. Every declaration
+uses only `{propext, Classical.choice, Quot.sound}`. Cold runner
+`cmp89-eq246-point-source-moment-bound-cold-v1` is pinned to that source and
+to the two exact Git-blob hashes. This diagnostic does not retire either
+PRE-VALIDATION notice, move `20/41`, attain window 15, or construct a
+`TermSource`; `TermSource = 0` remains exact.
