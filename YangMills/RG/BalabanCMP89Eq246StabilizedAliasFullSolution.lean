@@ -120,7 +120,8 @@ theorem sum_row_mul_cmp89Eq246StabilizedAliasFullSolution_eq
     simp [cmp89Eq246StabilizedAliasFullSolution, central, fine, column,
       row, moment, noncentralSolution, hnc]
   rw [hnoncentral]
-  field_simp [hrow] <;> ring
+  rw [mul_div_cancel_left₀ _ hrow]
+  ring
 
 /-- The internally constructed full solution solves the literal alias matrix
 for an arbitrary fine source.  This is the finite-dimensional content of
@@ -171,6 +172,11 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
       simp [cmp89Eq248EntireAliasMomentum, cmp89Eq249ZeroAlias,
         cmp89Eq245AliasShift]
     rw [hz]
+  have hcentralFine :
+      fine central = cmp89Eq249CentralEntireFineSymbol d L j mass z := by
+    simp [fine, central, cmp89Eq246EntireAliasFineSymbol,
+      cmp89Eq249CentralEntireFineSymbol,
+      cmp89Eq248EntireAliasMomentum_zero]
   have hnoncentral :
       (∑ n ∈ Finset.univ.erase central,
         row n * column n / fine n) = noncentral := by
@@ -186,7 +192,9 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
         cmp89Eq249AliasSubtypeNoncentralSum_eq d L j mass z
   have hstabilizedEq :
       stabilized = fine central + (a : ℂ) * centralPair +
-        (a : ℂ) * fine central * noncentral := rfl
+        (a : ℂ) * fine central * noncentral := by
+    dsimp only [stabilized, centralPair, noncentral]
+    rw [hcentralFine]
   have hmomentEq :
       moment * stabilized = row central * source central +
         fine central * base := by
