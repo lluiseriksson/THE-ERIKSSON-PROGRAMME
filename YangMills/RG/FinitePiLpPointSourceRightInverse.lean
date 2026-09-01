@@ -1,10 +1,7 @@
 import YangMills.RG.FinitePiLpCombesThomas
 
 /-!
-# PRE-VALIDATION: point-source criterion for a finite right inverse
-
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+# Point-source criterion for a finite right inverse
 
 This finite-dimensional algebraic layer reduces an operator right-inverse
 identity to the corresponding identities on the literal coordinate point

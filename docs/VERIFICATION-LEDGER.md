@@ -42919,3 +42919,38 @@ internally fixed precision/Green pair. It does **not** prove the reflected
 full-lattice right-inverse identity CMP89 (2.42), a Green-kernel bound,
 uniform `B0`/`delta0`, or window 15. It does not discharge a terminal field,
 move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1005 (2026-09-01, **finite point-source right-inverse criterion selectively sealed; 20/41 unchanged**)
+
+Exact source checkpoint `d3e7242619117043aa65347f4c5ee817436bd75f`,
+driven by runner commit `c8c2a40ffa46e1625529df73e328bff875c3d22c`
+(runner blob SHA-256
+`21A0A7BED9D5A96BCA4EAAD47383F4AF49859BB24055840C3A0C74DE7C1DA5C0`),
+materialized the finite point-source criterion in one fresh Colab Pro+
+CPU/high-RAM checkout with `50.99 GiB` and no restored project
+`.lake/build`. The focal completed `8171/8171` jobs in `134.327 s`; its exact
+one-declaration audit exited zero in `7.557 s` with axioms exactly
+`{propext, Classical.choice, Quot.sound}` and Mathlib fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The same stop-on-first-error queue then stopped at the first downstream
+target, `BalabanCMP89NeumannMassReflection.lean:35:6`, because
+`tsum_mul_left` had been invoked in the wrong rewrite direction. No result is
+inferred for that target or the later three-species/physical-producer targets.
+The downloaded FAIL archive SHA-256 is
+`249B8AA1EE315B85FC702573D486EF1E70286D22BC5F6686C3134509FCA95DF7`;
+the stored evidence JSON SHA-256 is
+`4DD43D60A0874B0D7462DFFFF392374449A0A26F80DF3E0B98FCB76DF7BC5DC5`;
+the executed notebook SHA-256 is
+`F045F03FEF7C3105E200A1BC661BEABF6202AD7A6898ACA2C1C70BD5CF80BA69`.
+They are preserved under
+`validation-evidence/cmp89-physical-neumann-inverse-producer-debug-v4-fail-d3e72426-20260901/`.
+Only the two PRE-VALIDATION notices in the point-source focal/audit pair are
+retired, and its audit is imported by `YangMillsCore.lean`.
+
+This seal proves an exact iff: a finite linear operator is a right inverse
+precisely when it is a right inverse on every literal coordinate point
+source. It does not prove any CMP89 reflection equation, the Laplacian or
+`Q′*Q′` species, the complete physical right inverse, uniform
+`B0`/`delta0`, or window 15. It does not discharge a terminal field, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
