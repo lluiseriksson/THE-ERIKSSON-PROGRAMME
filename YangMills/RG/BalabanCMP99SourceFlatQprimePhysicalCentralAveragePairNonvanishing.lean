@@ -55,6 +55,8 @@ private theorem cmp89Eq245EntireAverageFactor_physicalCoarse_ne_zero
   · let z : ℂ := -((2 * Real.pi : ℂ) * (k.val : ℂ) / (N' : ℂ))
     let x : ℂ := cmp89Eq245EntireAverageBase M z
     have hM0 : (0 : ℝ) < M := by exact_mod_cast NeZero.pos M
+    have hM1 : (1 : ℝ) ≤ M := by
+      exact_mod_cast (Nat.one_le_iff_ne_zero.mpr (NeZero.ne M))
     have hN0 : (0 : ℝ) < N' := by exact_mod_cast NeZero.pos N'
     have hk0 : (0 : ℝ) < k.val := by exact_mod_cast Nat.pos_of_ne_zero hk
     have hkN : (k.val : ℝ) < N' := by exact_mod_cast k.isLt
@@ -63,7 +65,8 @@ private theorem cmp89Eq245EntireAverageFactor_physicalCoarse_ne_zero
       apply (div_lt_one (mul_pos hM0 hN0)).2
       calc
         (k.val : ℝ) < N' := hkN
-        _ ≤ (M : ℝ) * N' := by nlinarith
+        _ ≤ (M : ℝ) * N' := by
+          nlinarith [mul_nonneg (sub_nonneg.mpr hM1) hN0.le]
     have htCoarse0 : 0 < (k.val : ℝ) / N' := by positivity
     have htCoarse1 : (k.val : ℝ) / N' < 1 :=
       (div_lt_one hN0).2 hkN
