@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasTransposeFullSolution
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix
+import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution
 
 /-!
 # DRAFT: physical arbitrary-source transposed Eq. (2.46) solution
