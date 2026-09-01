@@ -43221,3 +43221,43 @@ target and source endpoints. It does **not** identify that integral with the
 regional Green, prove the multiple-reflection formula (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1013 (2026-09-01, **arbitrary-source transposed CMP89 (2.46) solution cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `a6b1e7eec7bb555ae4f34724732a4e3d39c77d14`,
+driven by runner checkpoint `108b0d633289ddb112fb1a8dc204cd4c2c5be787`
+and launcher checkpoint `63dae1cea1a6ea40fc817b775f1cd24f7b4bbec9`,
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+restored project `.lake/build`. The runner revision was
+`cmp89-eq246-transpose-full-solution-cold-v1`, its Git-blob byte SHA-256 was
+`F859E4F16EB1F0C622B8A1ADA950953AAB01A5239E52D740BB4C41FBC1E346E7`,
+and Mathlib was fixed at `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed `8497/8497` jobs in `996.855 s`; the exact
+six-declaration audit exited zero in `8.993 s`. Every declaration uses only
+`{propext, Classical.choice, Quot.sound}`. All sixteen unique
+stop-on-first-error stage records exited zero.
+
+The fail-closed verifier checked the exact source and both source-blob hashes,
+runner revision, official toolchain asset, Mathlib pin, stage scope, durations,
+output hashes and terminal PASS. The canonical evidence payload SHA-256 is
+`9912DB1F4A4DAAC350D9DD683AB19076B0E43A17ADD492A5B4D5B7EC7BD3574A`;
+the downloaded archive SHA-256 is
+`2F71F4E91C1DD72AA9E8C9CC70592ACBEA36620F8650CA04FDE5EBA0BAA149F6`;
+the executed notebook SHA-256 is
+`3ED44E173A9E944362A23F4213BCCDB30C7A23DF4951D02AC3BF7DACD6FABFB5`.
+They are preserved under
+`validation-evidence/cmp89-eq246-transpose-full-solution-cold-a6b1e7ee-20260901/`,
+with the independent verifier beside them.
+
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired,
+and the audit is imported by `YangMillsCore.lean`. This seal proves the
+internally constructed solution of the literal **transposed** complete finite
+alias system for an arbitrary source. The central column nonvanishing premise
+is derived from the named central opposite-momentum pair; no abstract
+self-adjointness or inverse equality is used. It does **not** yet perform the
+signed physical-fibre reindexing, identify the source with the physical
+point-source DFT, synthesize the full periodic point-source Green, prove the
+multiple-reflection formula (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge a terminal field, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.

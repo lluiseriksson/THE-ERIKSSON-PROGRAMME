@@ -6,7 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullSolution
 
 /-!
-# PRE-VALIDATION: arbitrary-source solution of the transposed CMP89 (2.46) fibre
+# Arbitrary-source solution of the transposed CMP89 (2.46) fibre
 
 This module swaps the printed column/row roles in the already sealed complete
 alias solution and keeps the central removable singularity cancelled before
@@ -14,9 +14,6 @@ division. The central branch is constructed from the exact column moment, so
 the theorem proves the literal transposed matrix equation rather than
 appealing to abstract self-adjointness.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler. This file remains outside the
-import graph until its own compiler and axiom gate passes.
 -/
 
 namespace YangMills.RG

@@ -15607,3 +15607,23 @@ transposition is forced by the already sealed physical DFT action and may not
 be replaced by abstract self-adjointness. The reflection formula (2.42),
 uniform physical `B0`/`delta0`, window 15, terminal fields, `20/41` and
 `TermSource = 0` remain unchanged.
+
+### CMP89 (2.46) arbitrary-source transposed fibre solution cold-sealed
+
+Exact source checkpoint `a6b1e7eec7bb555ae4f34724732a4e3d39c77d14`
+is cold-sealed in a fresh Colab Pro+ CPU/high-RAM checkout. The focal completed
+`8497/8497` jobs in `996.855 s`; the exact six-declaration audit exited zero in
+`8.993 s`, and every declaration uses only
+`{propext, Classical.choice, Quot.sound}`. Verification Ledger Addendum 1013
+records the runner, the independently verified archive and the executed
+notebook hashes.
+
+The sealed construction solves the literal transpose of the complete finite
+alias matrix for an arbitrary source. The central column gate is derived from
+the named central opposite-momentum pair, and no abstract self-adjointness or
+inverse equality is assumed. This is the orientation consumed by the already
+sealed physical DFT action. It does not yet perform the signed physical-fibre
+reindexing, identify the source with a physical point-source character,
+synthesize the full periodic point-source Green, prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge a terminal field,
+move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

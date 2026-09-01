@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasTransposeFullSolution
 
 /-!
-# PRE-VALIDATION: audit of the arbitrary-source transposed Eq. (2.46) fibre
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+# Axiom audit: arbitrary-source transposed Eq. (2.46) fibre
 -/
 
 #print axioms YangMills.RG.cmp89Eq246CentralAverageColumn_ne_zero_of_pair_ne_zero
