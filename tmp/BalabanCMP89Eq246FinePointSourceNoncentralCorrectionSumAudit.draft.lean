@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralCorrectionSum
+
+#print axioms YangMills.RG.cmp89Eq246FinePointSourceNoncentralCorrectionSumBound
+#print axioms YangMills.RG.sum_norm_cmp89Eq246FinePointSourceNoncentralCorrection_le

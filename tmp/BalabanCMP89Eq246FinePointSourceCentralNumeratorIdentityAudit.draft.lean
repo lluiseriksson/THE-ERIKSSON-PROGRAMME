@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralNumeratorIdentity
+
+#print axioms YangMills.RG.cmp89Eq246FinePointSourceCentralNumerator_eq

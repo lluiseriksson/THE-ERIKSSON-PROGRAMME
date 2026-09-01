@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralComponentBound
+
+#print axioms YangMills.RG.cmp89Eq246FinePointSourceCentralComponentAmplitudeBound
+#print axioms YangMills.RG.norm_cmp89Eq246FinePointSourceCentralComponent_le

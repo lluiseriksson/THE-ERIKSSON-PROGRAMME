@@ -41,6 +41,8 @@ theorem cmp89Eq245CenteredAliasIntegers_subset_Icc_radius (N : ℕ) :
   rw [Finset.mem_Icc]
   have hwidth :=
     two_mul_abs_int_le_of_mem_cmp89Eq245CenteredAliasIntegers hm
+  have hlower : -|m| ≤ m := neg_abs_le m
+  have hupper : m ≤ |m| := le_abs_self m
   constructor <;> omega
 
 /-- The literal centered one-dimensional alias sum at exponent `1/2` grows
@@ -86,7 +88,7 @@ theorem cmp89Eq251CenteredOneDimensionalAliasSum_half_le
     rw [Finset.sum_Icc_of_even_eq_range heven]
     have h0 : weight 0 = 1 := by
       simp [weight, cmp89Eq251OneDimensionalAliasWeight]
-    rw [h0]
+    rw [h0, nsmul_eq_mul]
     nlinarith
   have hsqrt : 1 ≤ Real.sqrt (N + 1) := by
     rw [← Real.sqrt_one]
