@@ -106,25 +106,21 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v4"
-runner.SOURCE_SHA = "d3e7242619117043aa65347f4c5ee817436bd75f"
-runner.ROOT = Path("/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug")
+runner.RUNNER_REV = "cmp89-physical-neumann-inverse-producer-debug-v5"
+runner.SOURCE_SHA = "27cb70c3e4a8dd556aea65343c599d1e5df8d708"
+runner.ROOT = Path("/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-v5")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-evidence"
+    "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-v5-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-evidence.tar.gz"
+    "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-v5-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-paths.txt"
+    "/content/hrpoly-cmp89-physical-neumann-inverse-producer-debug-v5-paths.txt"
 )
 runner.SOURCE_BLOBS = {
-    "YangMills/RG/FinitePiLpPointSourceRightInverse.lean":
-        "053d196a2910d50313e664a3476235d0e73b4d1efbe1af69f06dbe7afca4f5ff",
-    "YangMills/RG/FinitePiLpPointSourceRightInverseAudit.lean":
-        "d75d99129a4c12e9f7e0a87e28d81130ec4be2c736330f0bbfcea608e5e9154a",
     "YangMills/RG/BalabanCMP89NeumannMassReflection.lean":
-        "6c0ecf2c227cdf55165a506871e1d0b01dd5ed6ba64dbffbeba6f9aac484f5c9",
+        "a5e5f55e7b5cc5f0a8580b9de05c3c3c3ce0fb5b126abdfc5c94ae21d1c9753f",
     "YangMills/RG/BalabanCMP89NeumannMassReflectionAudit.lean":
         "497467b74e145744482674dc59b5138661d37c7ec565675fe7c8909b87d9c095",
     "YangMills/RG/BalabanCMP89NeumannPrecisionThreeSpecies.lean":
@@ -137,22 +133,6 @@ runner.SOURCE_BLOBS = {
         "f76816c437267de73c6e10f6eaacdd80e2d5fcf3cfdd9d97fe2ee94c34595a21",
 }
 runner.QUEUE = [
-    (
-        "finite_point_source_right_inverse_focal",
-        [
-            "lake", "build",
-            "YangMills.RG.FinitePiLpPointSourceRightInverse",
-        ],
-        None,
-    ),
-    (
-        "finite_point_source_right_inverse_audit",
-        [
-            "lake", "env", "lean",
-            "YangMills/RG/FinitePiLpPointSourceRightInverseAudit.lean",
-        ],
-        1,
-    ),
     (
         "neumann_mass_reflection_focal",
         [
