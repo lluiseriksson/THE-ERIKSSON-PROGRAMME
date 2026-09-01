@@ -76,7 +76,6 @@ private theorem cmp89Eq245EntireAverageFactor_physicalCoarse_ne_zero
       push_cast
       field_simp [show (M : ℂ) ≠ 0 by exact_mod_cast NeZero.ne M,
         show (N' : ℂ) ≠ 0 by exact_mod_cast NeZero.ne N']
-      ring
     have hx : x ≠ 1 := by
       rw [hxExp]
       exact complex_exp_two_pi_I_mul_ne_one_of_mem_Ioo htSmall0 htSmall1
@@ -87,9 +86,8 @@ private theorem cmp89Eq245EntireAverageFactor_physicalCoarse_ne_zero
       rw [hxExp, ← Complex.exp_nat_mul]
       congr 1
       push_cast
-      field_simp [show (M : ℝ) ≠ 0 by exact_mod_cast NeZero.ne M,
-        show (N' : ℝ) ≠ 0 by exact_mod_cast NeZero.ne N']
-      ring
+      field_simp [show (M : ℂ) ≠ 0 by exact_mod_cast NeZero.ne M,
+        show (N' : ℂ) ≠ 0 by exact_mod_cast NeZero.ne N']
     have hxPow : x ^ M ≠ 1 := by
       rw [hxPowExp]
       exact complex_exp_two_pi_I_mul_ne_one_of_mem_Ioo htCoarse0 htCoarse1
@@ -114,12 +112,10 @@ theorem cmp89Eq249CentralEntireAveragePair_physicalCoarse_ne_zero
         fun mu => (p mu : ℂ) := by
     funext mu
     simp [p, cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum]
-    push_cast
-    ring
   have hamp :
       cmp89Eq245EntireAverageAmplitude d M (fun mu => (p mu : ℂ)) ≠ 0 := by
     rw [cmp89Eq245EntireAverageAmplitude]
-    apply Finset.prod_ne_zero
+    refine Finset.prod_ne_zero_iff.mpr ?_
     intro mu _
     simpa [p] using
       (cmp89Eq245EntireAverageFactor_physicalCoarse_ne_zero
