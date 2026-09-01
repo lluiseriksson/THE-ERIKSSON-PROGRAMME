@@ -67,7 +67,6 @@ theorem cmp89SourceNeumannRegionalGaugePrecision_comp_eq_threeSpecies
   simp only [cmp89SourceNeumannRegionalGaugePrecision,
     cmp99SourceGaugePrecision, cmp85BareMassPrecision,
     ContinuousLinearMap.comp_apply, ContinuousLinearMap.add_apply]
-  rfl
 
 end
 
