@@ -15715,7 +15715,7 @@ construct the continuous Green kernel, prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Eq. (2.46) scale-uniform point-source moment bound (PRE-VALIDATION; diagnostic PASS)
+### Eq. (2.46) scale-uniform point-source moment bound (cold-sealed)
 
 Source checkpoint `2cfd2c534bae969e4b9bb349b8da05b2c169b5c4` adds the
 second post-synthesis analytic brick. It proves the opposite-alias amplitude
@@ -15734,4 +15734,23 @@ Retained-runtime source checkpoint
 `a645d2b833979360f4c62c2b67a34fbec9d3704e` passes the focal in `24.137 s`
 and its exact four-declaration audit in `22.574 s`; all four declarations use
 only `{propext, Classical.choice, Quot.sound}`. This is diagnostic evidence,
-not a cold seal, so both PRE-VALIDATION notices remain.
+not seal authority by itself.
+
+The same exact source then passed runner
+`cmp89-eq246-point-source-moment-bound-cold-v1` in a fresh Colab Pro+ CPU
+checkout without restored project `.lake/build`. The cold focal completed
+`8506/8506` jobs in `4093.406 s`; the exact audit exited zero in `18.002 s`,
+and all four declarations use only
+`{propext, Classical.choice, Quot.sound}`. The independently verified archive
+SHA-256 is
+`599BD58B632F71982503F723E84FA0E209D54D581FDF3FCBF4D27D62DF71ED45`.
+Both PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`.
+
+This seal controls the source moment without reciprocal-alias cardinality
+loss. It does not yet bound the complete solution: the bare diagonal branch
+retains the physical inverse-Laplacian value scale rather than the summable
+averaging weight. It therefore does not construct the continuous Green,
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.

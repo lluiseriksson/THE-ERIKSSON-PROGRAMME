@@ -43496,3 +43496,33 @@ uses only `{propext, Classical.choice, Quot.sound}`. Cold runner
 to the two exact Git-blob hashes. This diagnostic does not retire either
 PRE-VALIDATION notice, move `20/41`, attain window 15, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1023 (2026-09-01, **CMP89 (2.46) scale-uniform point-source moment bound cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU runner
+`cmp89-eq246-point-source-moment-bound-cold-v1` checked out exact source
+checkpoint `a645d2b833979360f4c62c2b67a34fbec9d3704e`, verified the two exact
+Git-blob hashes and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and restored no project
+`.lake/build`. The focal completed `8506/8506` jobs in `4093.406 s`; its exact
+four-declaration audit exited zero in `18.002 s`. Every declaration uses only
+`{propext, Classical.choice, Quot.sound}`.
+
+The independently verified evidence is preserved under
+`validation-evidence/cmp89-eq246-point-source-moment-bound-cold-a645d2b8-20260901/`.
+The archive SHA-256 is
+`599BD58B632F71982503F723E84FA0E209D54D581FDF3FCBF4D27D62DF71ED45`;
+the extracted evidence JSON SHA-256 is
+`C912E0C37AF2DFB716BFB94553437AFE9557326CCA70E2239F0FD35DEBD69746`;
+the focal output SHA-256 is
+`AECEA3B186EE996F955611009108A0F0B8248320725B954C99EDD3BE3D70D589`;
+and the audit output SHA-256 is
+`C013F8606D7E00F67AD30F9135296949CB69DBE9F771C2945A281014074B8CFC`.
+
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired and
+the audit enters `YangMillsCore.lean`. This seals the scale-uniform source
+moment and its reciprocal-alias summation, not the complete point-source
+solution or its bare diagonal inverse-Laplacian branch. It does not prove
+CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.

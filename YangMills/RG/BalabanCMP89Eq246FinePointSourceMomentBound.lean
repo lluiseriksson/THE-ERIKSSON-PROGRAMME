@@ -9,7 +9,7 @@ import YangMills.RG.BalabanCMP89Eq248MassUniformGreenBound
 import YangMills.RG.BalabanCMP89Eq245EntireAverageAliasWeightedVariation
 
 /-!
-# PRE-VALIDATION: scale-uniform point-source moment bound for CMP89 (2.46)
+# Scale-uniform point-source moment bound for CMP89 (2.46)
 
 The source phase is kept separate from the target phase.  The noncentral row
 quotient uses the same strictly summable `alpha = -1` weight as the sealed
@@ -17,8 +17,10 @@ Green quotient, but its opposite-momentum averaging factor is bounded
 directly at `(-p,-m)` after exposing the coordinate zone.  No negation
 closure of the half-open alias carrier is assumed.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler evidence for exact source checkpoint
+`a645d2b833979360f4c62c2b67a34fbec9d3704e` is recorded in Verification
+Ledger Addendum 1023. The focal and its exact four-declaration audit passed in
+a fresh Colab Pro+ CPU checkout without restoring project `.lake/build`.
 
 This is only the second item of the post-synthesis Eq. (2.46) bridge. It does
 not bound the full stabilized solution, construct the continuous Green

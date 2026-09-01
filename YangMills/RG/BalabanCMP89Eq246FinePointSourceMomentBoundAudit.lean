@@ -6,10 +6,11 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 
 /-!
-# PRE-VALIDATION: axiom audit of the Eq. (2.46) fine point-source moment bound
+# Axiom audit of the Eq. (2.46) fine point-source moment bound
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler evidence for exact source checkpoint
+`a645d2b833979360f4c62c2b67a34fbec9d3704e` is recorded in Verification
+Ledger Addendum 1023.
 -/
 
 #print axioms YangMills.RG.norm_cmp89Eq245EntireAverageAmplitude_neg_alias_le
