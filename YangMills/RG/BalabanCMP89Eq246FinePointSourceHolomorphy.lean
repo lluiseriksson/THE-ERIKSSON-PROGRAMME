@@ -92,6 +92,10 @@ theorem differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
       d L j sourceEndpoint m
   have hden :=
     differentiable_cmp89Eq246EntireAliasFineSymbol_component d L j mass m
+  -- Pin the reducible fine-symbol wrapper on both sides before applying the
+  -- quotient rule.  Otherwise elaboration unfolds only the expected
+  -- denominator and leaves the named differentiability theorem wrapped.
+  unfold cmp89Eq246EntireAliasFineSymbol at hfine hden
   exact DifferentiableAt.div (𝕜 := ℂ)
     ((hrow z).mul (hsource z)) (hden z) (hfine m hmc)
 
