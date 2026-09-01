@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Colab validation for the generated physical point-source Green bridge."""
+"""Cold Colab validation for the generated physical point-source Green bridge.
+
+This revision is the explicit standard-RAM CPU fallback for periods when the
+Colab Pro+ allocator ignores the high-RAM selector.  The imported base runner
+keeps 40 GiB as its default; this queue lowers its declared gate to 11 GiB and
+records that choice in the evidence JSON.  GPU runtimes remain forbidden.
+"""
 
 from __future__ import annotations
 
@@ -11,28 +17,27 @@ import hashlib
 
 
 HERE = Path("/content")
-PARENT = HERE / "colab_cmp99_full_point_source_solution_cold_v1.py"
-PARENT_URL = (
+BASE_RUNNER = HERE / "colab_qprime_row_validation.py"
+BASE_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "83a7d485f1cf9898e3014efcb6a1a43da4e9d386/"
-    "scripts/colab_cmp99_full_point_source_solution_cold_v1.py"
+    "2dfaa8634203470608cc341d36e5d1fab4a546c4/"
+    "scripts/colab_qprime_row_validation.py"
 )
-PARENT_SHA256 = "efe15c9e952445a70e698c8d84b5f779763e10c174055c20111efb55a64315e7"
+BASE_RUNNER_SHA256 = "2f097a374361bd8e4c0f53220ffeeeb22fc06d6ccca5179aebda468d1aebee8e"
 
-with urllib.request.urlopen(PARENT_URL, timeout=60) as response:
-    parent_source = response.read()
-parent_hash = hashlib.sha256(parent_source).hexdigest()
-print("PARENT_RUNNER_TRANSPORT_SHA256=" + parent_hash, flush=True)
-if parent_hash != PARENT_SHA256:
-    raise RuntimeError("PARENT_RUNNER_TRANSPORT_HASH_MISMATCH")
-PARENT.write_bytes(parent_source)
-spec = importlib.util.spec_from_file_location("cmp99_point_source_parent", PARENT)
+with urllib.request.urlopen(BASE_RUNNER_URL, timeout=60) as response:
+    base_runner_source = response.read()
+base_runner_hash = hashlib.sha256(base_runner_source).hexdigest()
+print("BASE_RUNNER_TRANSPORT_SHA256=" + base_runner_hash, flush=True)
+if base_runner_hash != BASE_RUNNER_SHA256:
+    raise RuntimeError("BASE_RUNNER_TRANSPORT_HASH_MISMATCH")
+BASE_RUNNER.write_bytes(base_runner_source)
+spec = importlib.util.spec_from_file_location("cmp99_point_source_base", BASE_RUNNER)
 if spec is None or spec.loader is None:
-    raise RuntimeError(f"cannot load parent runner: {PARENT}")
-parent = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(parent)
-runner = parent.runner
+    raise RuntimeError(f"cannot load base runner: {BASE_RUNNER}")
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
 
 
 EXPECTED = {
@@ -73,12 +78,14 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-generated-point-source-green-v1"
+runner.RUNNER_REV = "cmp99-generated-point-source-green-v2-standard-ram-fallback"
 runner.SOURCE_SHA = "bd89724bbb926da4af507690773f32a84a657ccf"
-runner.ROOT = Path("/content/hrpoly-cmp99-generated-point-source-green-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp99-generated-point-source-green-v1-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp99-generated-point-source-green-v1-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp99-generated-point-source-green-v1-paths.txt")
+runner.MIN_RAM_GIB = 11.0
+runner.ALLOW_GPU_RUNTIME = False
+runner.ROOT = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback")
+runner.EVIDENCE = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionPointSourceInverseUniqueness.lean":
         "896874e6bb5bf520c45c00f2276e4a7e94716bda38f54e2d3634e13e1fac540f",
