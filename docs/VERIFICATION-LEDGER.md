@@ -43261,3 +43261,31 @@ point-source DFT, synthesize the full periodic point-source Green, prove the
 multiple-reflection formula (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge a terminal field, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1014 (2026-09-01, **physical Eq. (2.46) pullback and point-source DFT promoted PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`a95979683880c2ce88c95791d470e14bbc4ce48e` adds exactly two independent
+focal/audit pairs. The physical pullback reindexes the cold-sealed arbitrary-
+source transposed alias solution through the named signed fixed-coarse-fibre
+equivalence, proves the literal physical transposed matrix equation and lifts
+it coordinatewise to `SUNLieComplexCoord`. The point-source brick proves the
+exact full-box physical DFT formula directly from the sealed negative
+character convention. No abstract self-adjointness, inverse equality or
+periodization theorem is accepted.
+
+The four Git-blob byte SHA-256 values, in validation order, are
+`B46858C3A901000973B976FFC96D8C26E920F52D5C37C79A254F60606B2B8AC1`,
+`2AFA20A4A147C36E7C474BAD0DF1F33C814B5A7814ED33F4EB50CA1ED6A7D4BD`,
+`CF4DD09D9F3278A73E933BF65B9335A4BE2597DD1353CAB6A400AD6F1CAED509`
+and
+`9A04DD238D71FB1A73043CCEA31930D0AAC7EB177A016724C3F43F0516E81221`.
+Each file carries exactly one visible PRE-VALIDATION notice and remains
+outside `YangMillsCore.lean`.
+
+This checkpoint is source, not compiler evidence. It does not yet sum the
+fixed-coarse fibres, construct the full periodic point-source Green, identify
+that Green by inverse uniqueness, prove the multiple-reflection formula
+(2.42), produce uniform physical `B0`/`delta0`, attain window 15, discharge a
+terminal field, move `20/41`, or construct a `TermSource`; `TermSource = 0`
+remains exact.

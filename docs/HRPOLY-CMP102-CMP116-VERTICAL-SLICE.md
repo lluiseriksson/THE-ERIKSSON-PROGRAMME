@@ -15627,3 +15627,20 @@ reindexing, identify the source with a physical point-source character,
 synthesize the full periodic point-source Green, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge a terminal field,
 move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+### Physical Eq. (2.46) fibre pullback and point-source DFT promoted PRE-VALIDATION
+
+Source checkpoint `a95979683880c2ce88c95791d470e14bbc4ce48e`
+promotes two independent focal/audit pairs. The first transports the sealed
+arbitrary-source transposed alias solution through the signed fixed-coarse
+physical equivalence and lifts it coordinatewise to the literal complex Lie
+fibre. The second proves directly that the sealed negative-character physical
+DFT sends one full-box point source to the inverse source character. Neither
+pair is imported by `YangMillsCore.lean`; all four files retain one visible
+PRE-VALIDATION notice until their own compiler and exact axiom gates pass.
+
+This checkpoint does not yet sum the fixed-coarse fibres, construct a full
+periodic point-source Green, invoke inverse uniqueness, prove CMP89 (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
+field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.
