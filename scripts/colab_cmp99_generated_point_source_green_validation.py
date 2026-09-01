@@ -78,21 +78,21 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-generated-point-source-green-v2-standard-ram-fallback"
-runner.SOURCE_SHA = "bd89724bbb926da4af507690773f32a84a657ccf"
+runner.RUNNER_REV = "cmp99-generated-point-source-green-v3-standard-ram-fallback"
+runner.SOURCE_SHA = "d9a14b9c8705dd709712e7baba68b82e3b15435a"
 runner.MIN_RAM_GIB = 11.0
 runner.ALLOW_GPU_RUNTIME = False
-runner.ROOT = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback")
-runner.EVIDENCE = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp99-generated-point-source-green-v2-standard-ram-fallback-paths.txt")
+runner.ROOT = Path("/content/hrpoly-cmp99-generated-point-source-green-v3-standard-ram-fallback")
+runner.EVIDENCE = Path("/content/hrpoly-cmp99-generated-point-source-green-v3-standard-ram-fallback-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp99-generated-point-source-green-v3-standard-ram-fallback-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp99-generated-point-source-green-v3-standard-ram-fallback-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionPointSourceInverseUniqueness.lean":
         "896874e6bb5bf520c45c00f2276e4a7e94716bda38f54e2d3634e13e1fac540f",
     "YangMills/RG/BalabanCMP99SourceFlatFullComplexPrecisionPointSourceInverseUniquenessAudit.lean":
         "d05c02dd3fd4c4f1ed213813acabefd834b9cf63c69183e5efb4d0d4291f2a96",
     "YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalCentralAveragePairNonvanishing.lean":
-        "dbf8ddc6bb2984d834a9cbbd79381437b60cab3300eda0119bb72c284656e59f",
+        "b055d8c352738a173bc2fed484945bedf0e7f5ef32692424dc5d90effc16e8aa",
     "YangMills/RG/BalabanCMP99SourceFlatQprimePhysicalCentralAveragePairNonvanishingAudit.lean":
         "9eb6620f67393812cda5de77c89ae0c8d860dd731b38ba72ac32d9b67d23ec4b",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPointSourceGreenIdentification.lean":
