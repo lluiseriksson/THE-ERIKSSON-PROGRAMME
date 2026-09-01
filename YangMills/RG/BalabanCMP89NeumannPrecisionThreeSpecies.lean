@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89SourceNeumannRegionalGaugePrecision
 
 /-!
-# PRE-VALIDATION: literal three-species split of the CMP89 Neumann precision
+# Cold-sealed literal three-species split of the CMP89 Neumann precision
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+The source and its two-declaration audit were materialized from exact source
+checkpoint `342c232fbbbb961ea8df3b8620e7681a7b557215` in a fresh Colab
+CPU/high-RAM checkout on 2026-09-01.  The focal completed `8470/8470` jobs
+and the audit used only `{propext, Classical.choice, Quot.sound}`.
 
 This module exposes, as an operator equality, the three separately budgeted
 parts of the precision printed in CMP89 (2.44): the internal-bond Neumann

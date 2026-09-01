@@ -2,10 +2,12 @@ import YangMills.RG.BalabanCMP89Eq248FineLatticeNormalizedFourierGreen
 import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointPhase
 
 /-!
-# PRE-VALIDATION: source-faithful typed CMP89 (2.48) kernel
+# Cold-sealed source-faithful typed CMP89 (2.48) kernel
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+The source and its two-declaration audit were materialized from exact source
+checkpoint `342c232fbbbb961ea8df3b8620e7681a7b557215` in a fresh Colab
+CPU/high-RAM checkout on 2026-09-01.  The focal completed `8575/8575` jobs
+and the audit used only `{propext, Classical.choice, Quot.sound}`.
 
 CMP89 (2.48) is the kernel of `G_j Q_j^*`, not the full fine-to-fine Green
 kernel used in CMP89 (2.42).  Its output endpoint is on the fine lattice and

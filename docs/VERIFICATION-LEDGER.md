@@ -42993,3 +42993,46 @@ compatibility dictionary.  The existing generated `G_j Q_j^*` Fourier,
 endpoint, point-source and uniform-`B0` lane remains valid.  No terminal
 field is discharged, window 15 is not attained, `20/41` does not move, and
 `TermSource = 0` remains exact.
+
+## Addendum 1007 (2026-09-01, **CMP89 (2.48) source-role correction cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `342c232fbbbb961ea8df3b8620e7681a7b557215`,
+driven by runner commit `3ac847fdbaeb831a695503a7c1983f222755a220`
+(runner SHA-256
+`F0A6E4B2007C23C07AC840B73CC74FDF3C6F1D8100C87BA2B4A6928FC1AAEB89`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+restored project `.lake/build`. Mathlib was fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The stop-on-first-error queue closed as follows:
+
+- `BalabanCMP89NeumannPrecisionThreeSpecies`: `8470/8470` jobs,
+  `1287.161 s`; its two-declaration audit exited zero in `9.947 s`;
+- `BalabanCMP89Eq248SameScaleEndpointNoGo`: `8533/8533` jobs,
+  `257.723 s`; its one-declaration audit exited zero in `6.853 s`;
+- `BalabanCMP89Eq248FineToCoarseGreenQprimeStar`: `8575/8575` jobs,
+  `164.883 s`; its two-declaration audit exited zero in `10.062 s`.
+
+All five declarations use only
+`{propext, Classical.choice, Quot.sound}`. The runner emitted evidence
+payload SHA-256
+`FE31501243D85927A227213C137CD69D47538857593EAA15EA60F44CD3454D2F`
+and archive SHA-256
+`8A741422013C412C059DCBB996CEE93BDE82E40FE0942B29D6808DC684A9C15E`,
+then `FINAL_STATUS=PASS` and requested runtime unassignment. The browser's
+automatic tar download did not arrive in the Windows download directory
+before the runtime was released; no local tar verification is claimed. The
+complete executed notebook was downloaded separately, has SHA-256
+`F07789589B1103E689349F79D1B6C7B59BAC5D8F2B590C7EFE67CF05507A6C0F`,
+and is preserved under
+`validation-evidence/cmp89-eq248-source-role-cold-342c232f-20260901/`.
+It contains the exact checkout, toolchain/pin, complete stage transcript,
+axiom readouts and final hashes.
+
+Exactly the remaining PRE-VALIDATION notices in the three focal/audit pairs
+are retired, and their audits are imported by `YangMillsCore.lean`. This
+seal establishes the three-species algebra, the endpoint no-go and the typed
+`G_j Q_j^*` replacement. It does **not** construct the arbitrary-fine-source
+Green of (2.46), prove the reflection identity (2.42), establish uniform
+`B0`/`delta0`, attain window 15, discharge a terminal field, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.

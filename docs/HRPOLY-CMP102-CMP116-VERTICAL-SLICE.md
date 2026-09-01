@@ -15556,14 +15556,22 @@ fine target and a unit/coarse source.
 
 The same-scale wrapper `cmp89Eq248PhysicalFullLatticeGreen` uses `x-y`
 after erasing both endpoints to `Fin 4 → ℤ`.  It is no longer an accepted
-physical producer for (2.42).  The PRE-VALIDATION checkpoint
+physical producer for (2.42).  Checkpoint
 `d64413c0168aecd85ce44133d850e439586e8ca9` records a concrete arithmetic
-counterexample at block factor two.  The PRE-VALIDATION checkpoint
+counterexample at block factor two.  Checkpoint
 `90e220356f5b70a166f067581cb1da7facf62d77` introduces
 `cmp89Eq248PhysicalFineToCoarseGreenQprimeStar`; its endpoint types force
 the literal `x-L^j y` displacement already used by the generated flat
-`G_j Q_j^*` lane.  Neither checkpoint counts as compiler evidence until the
-focal and audit modules are materialized.
+`G_j Q_j^*` lane.
+
+Both replacements, together with the literal three-species precision split,
+were cold-sealed from exact source checkpoint
+`342c232fbbbb961ea8df3b8620e7681a7b557215`.  The three focals completed
+`8470`, `8533` and `8575` jobs with exit zero; the three audits covered five
+declarations and used only `{propext, Classical.choice, Quot.sound}`.
+Ledger Addendum 1007 records the runner, timings and evidence hashes.  This
+seal validates the source-role correction; it still does not turn (2.48)
+into the full fine-to-fine Green required by (2.42).
 
 The valid prefix is retained: generic reflection algebra, inverse uniqueness,
 generated canonical precision/Green construction, and the full generated
@@ -15574,3 +15582,8 @@ compose with `Q_j^*`; alternatively prove the direct reflected-`G_j Q_j^*`
 identity plus its reflection/averaging compatibility dictionary.  This
 correction does not move `20/41`, instantiate `TermSource`, or attain
 window 15.
+
+The next PRE-VALIDATION brick is the separate arbitrary-fine-source solution
+of the literal diagonal-plus-rank-one matrix (2.46), checkpoint
+`3ff1731cd3c936612b3f2a4acb0c543a748159b4`.  It is intentionally not
+imported here and does not count until its own compiler and axiom gates pass.

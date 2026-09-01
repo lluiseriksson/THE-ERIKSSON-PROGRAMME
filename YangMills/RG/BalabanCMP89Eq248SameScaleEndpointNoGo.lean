@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointPhase
 
 /-!
-# PRE-VALIDATION: CMP89 (2.48) is not a same-scale endpoint kernel
+# Cold-sealed no-go: CMP89 (2.48) is not a same-scale endpoint kernel
 
-The source is present, but its `.olean` has not yet been materialized and the
-result has not yet been verified by the compiler.
+The source and its one-declaration audit were materialized from exact source
+checkpoint `342c232fbbbb961ea8df3b8620e7681a7b557215` in a fresh Colab
+CPU/high-RAM checkout on 2026-09-01.  The audit used only
+`{propext, Classical.choice, Quot.sound}`.
 
 CMP89 (2.48) is the kernel of `G_j Q_j^*`: its target is a fine-lattice site
 and its source is a unit/coarse-lattice site.  The sealed source dictionary
