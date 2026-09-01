@@ -258,7 +258,7 @@ theorem norm_cmp89Eq246StabilizedAliasNoncentralFinePointSourceMoment_le
     have hmul := mul_le_mul hsource hquot (norm_nonneg _) hgrowth
     simpa [cmp89Eq246EntireAliasAverageRow,
       cmp89Eq246EntireAliasFineSymbol, weight, growth, constant,
-      mul_assoc, mul_left_comm, mul_comm] using hmul
+      div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm] using hmul
   have heraseWeight :
       (∑ n ∈ Finset.univ.erase central, weight n) ≤ ∑ n, weight n := by
     exact Finset.sum_le_sum_of_subset_of_nonneg
@@ -271,7 +271,6 @@ theorem norm_cmp89Eq246StabilizedAliasNoncentralFinePointSourceMoment_le
             (cmp89Eq251AliasSeriesExponent 4 (-1)) m := by
     rw [Finset.sum_subtype
       (cmp89Eq245CenteredAliasVectors 4 (L ^ j)) (fun _ => Iff.rfl)]
-    rfl
   have hseries :
       (∑ n : CMP89Eq246AliasIndex 4 L j, weight n) ≤
         (∑' n : ℤ, cmp89Eq251OneDimensionalAliasWeight
@@ -305,7 +304,6 @@ theorem norm_cmp89Eq246StabilizedAliasNoncentralFinePointSourceMoment_le
     _ = cmp89Eq251ContourPhaseGrowth rho sourceEndpoint *
         cmp89Eq248ComplexNoncentralGreenSumBound_draft rho := by
       rw [cmp89Eq248ComplexNoncentralGreenSumBound_draft]
-      rfl
 
 /-- Explicit scale-uniform coefficient for the exact source moment. -/
 def cmp89Eq246FinePointSourceMomentAmplitudeBound
