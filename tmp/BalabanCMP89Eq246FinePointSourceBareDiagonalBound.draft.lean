@@ -68,8 +68,9 @@ theorem norm_cmp89Eq246FinePointSourceBareDiagonal_le
       ((1 / (3 * Real.pi)) ^ 2 * cmp89Eq251MomentumSquare q) / 2 ≤
         ‖cmp89Eq245EntireScaledLaplacianSymbol
           4 ((L ^ j : ℝ))⁻¹ mass aliasZ‖ := by
-    simpa only [q] using
+    simpa only [q, Nat.cast_pow] using
       half_momentum_gap_le_norm_cmp89Eq245EntireScaledLaplacianSymbol_of_uniformRadius
+        (mass := mass)
         (pow_pos (Nat.pos_of_ne_zero (NeZero.ne L)) j)
         hrho hradius m.2 hm0 hp haliasReal haliasImag
   have hqNorm : 0 < cmp89Eq251EuclideanNorm q :=
@@ -116,7 +117,7 @@ theorem norm_cmp89Eq246FinePointSourceBareDiagonal_le
       _ = cmp89Eq246FinePointSourceBareDiagonalAmplitudeBound * weight := by
         rw [cmp89Eq246FinePointSourceBareDiagonalAmplitudeBound]
         ring
-  rw [cmp89Eq246EntireAliasFineSymbol, Nat.cast_pow, norm_div,
+  rw [cmp89Eq246EntireAliasFineSymbol, norm_div,
     div_eq_mul_inv]
   change ‖cmp89Eq246FinePointSourceAliasVector
       4 L j z sourceEndpoint m‖ *
