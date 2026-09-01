@@ -15587,3 +15587,23 @@ The next PRE-VALIDATION brick is the separate arbitrary-fine-source solution
 of the literal diagonal-plus-rank-one matrix (2.46), checkpoint
 `3ff1731cd3c936612b3f2a4acb0c543a748159b4`.  It is intentionally not
 imported here and does not count until its own compiler and axiom gates pass.
+
+### CMP89 (2.46) fine-point holomorphy and normalized inverse transform sealed
+
+Exact source checkpoint `147e2e2197d57f8f5bc3bb85ebccb0bbaa7f8e06`
+is cold-sealed in a fresh Colab Pro+ CPU/high-RAM checkout. The focal completed
+`8499/8499` jobs and the exact twelve-declaration audit used only
+`{propext, Classical.choice, Quot.sound}`. Verification Ledger Addendum 1012
+records the runner, timings and independently verified archive/notebook
+hashes.
+
+The seal constructs holomorphy for the internally fixed fine-point solution,
+real-slice integrability, the integrated literal fibre equation and the
+normalized fine-to-fine inverse transform. It does not identify that
+continuous integral with the generated periodic or regional Green. The next
+finite dictionary remains the arbitrary-source **transposed** Eq. (2.46)
+solution followed by the fixed-fibre Fourier/physical reindexing; the
+transposition is forced by the already sealed physical DFT action and may not
+be replaced by abstract self-adjointness. The reflection formula (2.42),
+uniform physical `B0`/`delta0`, window 15, terminal fields, `20/41` and
+`TermSource = 0` remain unchanged.

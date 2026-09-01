@@ -43180,3 +43180,44 @@ identify the normalized integral with a regional Green, prove the
 multiple-reflection formula (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge a terminal field, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1012 (2026-09-01, **CMP89 (2.46) fine-point holomorphy and normalized inverse transform cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `147e2e2197d57f8f5bc3bb85ebccb0bbaa7f8e06`,
+driven by runner checkpoint `fd033766628262107045ac43a0cd9b060466fdd3`
+and launcher checkpoint `d8066d0154715783069a8dd41481ccc996a585d5`,
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+restored project `.lake/build`. The runner revision was
+`cmp89-eq246-fine-point-holomorphy-cold-v3`, its Git-blob byte SHA-256 was
+`D5E34BE43FA6D9077AF1106B02CEA566CFBFF43B85889140EB254FD4ECEFE64D`,
+and Mathlib was fixed at `07642720480157414db592fa85b626dafb71355b`.
+
+The focal completed `8499/8499` jobs in `1317.985 s`; the exact
+twelve-declaration audit exited zero in `28.195 s`. Every declaration uses
+only `{propext, Classical.choice, Quot.sound}`. All sixteen unique
+stop-on-first-error stage records exited zero.
+
+The fail-closed verifier checked the exact source and both source-blob hashes,
+runner revision, official toolchain asset, Mathlib pin, stage scope,
+durations, output hashes and terminal PASS. The canonical evidence payload
+SHA-256 is
+`5A67290E61816E0B1FF114E09FE8E552B75FDA52887F8DB4ECADD8ECFC56035F`;
+the downloaded archive SHA-256 is
+`D2734F29EC454C27121F4123B09EF885BCB44D693E80EA9DE034EEDCF370FFA4`;
+the executed notebook SHA-256 is
+`E8943ECF4963FFDA4102DB322232EEA8514178C532738C56482627F72C477DF7`.
+They are preserved under
+`validation-evidence/cmp89-eq246-fine-point-holomorphy-cold-147e2e21-20260901/`,
+with the independent verifier beside them. The earlier stop-on-first-error
+failure archive at source checkpoint `2522d03f...` remains preserved
+separately and is not seal evidence.
+
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired,
+and the audit is imported by `YangMillsCore.lean`. This seal proves
+componentwise holomorphy for the internally constructed fine-point solution,
+real-slice integrability, the integrated literal fibre equation and the
+normalized fine-to-fine inverse-transform definition with distinct fine
+target and source endpoints. It does **not** identify that integral with the
+regional Green, prove the multiple-reflection formula (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

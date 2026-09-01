@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceHolomorphy
 
 /-!
-# PRE-VALIDATION: audit of CMP89 (2.46) fine-point holomorphy and inverse transform
+# Audit of CMP89 (2.46) fine-point holomorphy and inverse transform
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler evidence for exact source checkpoint
+`147e2e2197d57f8f5bc3bb85ebccb0bbaa7f8e06` is recorded in Verification
+Ledger Addendum 1012.
 -/
 
 #print axioms YangMills.RG.differentiable_cmp89Eq246FinePointSourceAliasVector_component

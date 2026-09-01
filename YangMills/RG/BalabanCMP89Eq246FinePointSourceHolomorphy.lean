@@ -8,7 +8,7 @@ import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound
 import YangMills.RG.BalabanCMP89Eq251StabilizedIntegrandHolomorphy
 
 /-!
-# PRE-VALIDATION: holomorphy and normalized inverse transform for CMP89 (2.46)
+# Holomorphy and normalized inverse transform for CMP89 (2.46)
 
 This module derives holomorphy and real-slice integrability for the complete
 fine-point-source solution already constructed from the literal finite alias
@@ -20,9 +20,11 @@ operator, prove the multiple-reflection identity (2.42), produce uniform
 `B0`/`delta0`, attain window 15, discharge terminal rows, or inhabit a
 `TermSource`.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler. This file remains outside the
-import graph until its own compiler and axiom gate passes.
+Cold compiler evidence for exact source checkpoint
+`147e2e2197d57f8f5bc3bb85ebccb0bbaa7f8e06` is recorded in Verification
+Ledger Addendum 1012. The focal and its exact twelve-declaration axiom audit
+passed in a fresh Colab Pro+ CPU/high-RAM checkout without restoring a project
+`.lake/build`.
 -/
 
 namespace YangMills.RG
