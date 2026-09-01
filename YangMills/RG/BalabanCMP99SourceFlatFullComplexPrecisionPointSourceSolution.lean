@@ -29,7 +29,7 @@ open YangMills Matrix
 noncomputable section
 
 variable {d M N' Nc : ℕ}
-variable [NeZero M] [NeZero N']
+variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 
 /-- Exact fixed-fibre frequency coefficients for the periodic point-source
 solution. The source character remains visible inside the transposed solve. -/
