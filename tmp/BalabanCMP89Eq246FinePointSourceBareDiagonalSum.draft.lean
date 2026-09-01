@@ -72,8 +72,10 @@ theorem sum_norm_cmp89Eq246FinePointSourceBareDiagonal_le
       (∑ m : CMP89Eq246AliasIndex 4 L j, weight m) =
         cmp89Eq251CenteredMultidimensionalAliasSum 4 (L ^ j)
           (1 / 2 : ℝ) := by
-    simp [weight, CMP89Eq246AliasIndex,
-      cmp89Eq251CenteredMultidimensionalAliasSum]
+    simpa [weight, CMP89Eq246AliasIndex,
+      cmp89Eq251CenteredMultidimensionalAliasSum] using
+      (Finset.sum_attach (cmp89Eq245CenteredAliasVectors 4 (L ^ j))
+        (fun m => cmp89Eq251MultidimensionalAliasWeight (1 / 2 : ℝ) m))
   have hseries :=
     cmp89Eq251CenteredFourDimensionalAliasSum_half_le (L ^ j)
   calc
