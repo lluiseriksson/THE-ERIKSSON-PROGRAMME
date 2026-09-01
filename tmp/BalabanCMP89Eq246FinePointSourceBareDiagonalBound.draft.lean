@@ -123,9 +123,11 @@ theorem norm_cmp89Eq246FinePointSourceBareDiagonal_le
       4 L j z sourceEndpoint m‖ *
       ‖cmp89Eq245EntireScaledLaplacianSymbol
         4 ((L ^ j : ℝ))⁻¹ mass aliasZ‖⁻¹ ≤ _
-  exact (mul_le_mul hsource hinverse (norm_nonneg _)
-    (by positivity : 0 ≤ growth)).trans_eq (by
-      simp [growth, weight, mul_assoc])
+  have hgrowthNonneg : 0 ≤ growth := by
+    exact (Real.exp_pos _).le
+  exact (mul_le_mul hsource hinverse (inv_nonneg.mpr (norm_nonneg _))
+    hgrowthNonneg).trans_eq (by
+      simp [growth, weight])
 
 end
 
