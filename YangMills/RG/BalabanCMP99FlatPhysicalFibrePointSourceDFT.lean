@@ -33,11 +33,9 @@ theorem cmp99FlatPhysicalFibreDFT_pointSource
   classical
   let e := cmp99FinBoxZModEquiv d N
   ext A
-  change
-    (∑ x : CMP99FlatZModBox d N,
-        cmp99FlatZModFourierCharacter (-(e k)) x *
-          (if e.symm x = y then v A else 0)) =
-      (cmp99FlatFourierMode k y)⁻¹ * v A
+  simp only [cmp99FlatPhysicalFibreDFT_apply, cmp99FlatFinBoxDFT,
+    cmp99FlatZModDFT, cmp99FlatComplexFibrePointSource,
+    PiLp.smul_apply, smul_eq_mul]
   rw [Finset.sum_eq_single (e y)]
   · simp only [Equiv.symm_apply_apply, if_pos]
     rw [cmp99FlatZModFourierCharacter_neg_left]
