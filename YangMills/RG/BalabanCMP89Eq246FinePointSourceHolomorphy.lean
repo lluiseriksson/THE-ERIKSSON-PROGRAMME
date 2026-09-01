@@ -165,20 +165,23 @@ private theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceMomentNumera
       (z := z) (sourceEndpoint := sourceEndpoint) hfine
   exact ((hrow z).mul (hsource z)).add ((hfineCentral z).mul hbase)
 
-private theorem cmp89Eq249NoncentralFineDenominators_of_aliasFine
+private theorem cmp89Eq249RawNoncentralFineDenominator_of_aliasFine
     {d L j : ℕ} [NeZero L] {mass : ℝ} {z : Fin d → ℂ}
     (hfine : ∀ m : CMP89Eq246AliasIndex d L j,
       m ≠ cmp89Eq249CentralAliasIndex d L j →
-        cmp89Eq246EntireAliasFineSymbol d L j mass z m ≠ 0) :
-    ∀ m ∈ (cmp89Eq245CenteredAliasVectors d (L ^ j)).erase
-        (cmp89Eq249ZeroAlias d),
-      cmp89Eq245EntireScaledLaplacianSymbol d (((L : ℝ) ^ j)⁻¹) mass
-          (cmp89Eq248EntireAliasMomentum z m) ≠ 0 := by
-  intro m hm
-  apply hfine
-  intro hmc
-  subst m
-  simpa using hm
+        cmp89Eq246EntireAliasFineSymbol d L j mass z m ≠ 0)
+    (m : Fin d → ℤ)
+    (hm : m ∈ (cmp89Eq245CenteredAliasVectors d (L ^ j)).erase
+      (cmp89Eq249ZeroAlias d)) :
+    cmp89Eq245EntireScaledLaplacianSymbol d (((L : ℝ) ^ j)⁻¹) mass
+        (cmp89Eq248EntireAliasMomentum z m) ≠ 0 := by
+  let mi : CMP89Eq246AliasIndex d L j :=
+    ⟨m, (Finset.mem_erase.mp hm).2⟩
+  have hmi : mi ≠ cmp89Eq249CentralAliasIndex d L j := by
+    intro h
+    apply (Finset.mem_erase.mp hm).1
+    simpa [mi] using congrArg Subtype.val h
+  simpa [cmp89Eq246EntireAliasFineSymbol, mi] using hfine mi hmi
 
 private theorem differentiableAt_cmp89Eq249CentralStabilizedAliasDenominator_of_fine
     {d L j : ℕ} [NeZero L] {mass a : ℝ} {z : Fin d → ℂ}
@@ -187,8 +190,9 @@ private theorem differentiableAt_cmp89Eq249CentralStabilizedAliasDenominator_of_
         cmp89Eq246EntireAliasFineSymbol d L j mass z m ≠ 0) :
     DifferentiableAt ℂ (fun w : Fin d → ℂ =>
       cmp89Eq249CentralStabilizedAliasDenominator d L j mass a w) z := by
-  exact differentiableAt_cmp89Eq249CentralStabilizedAliasDenominator
-    (cmp89Eq249NoncentralFineDenominators_of_aliasFine hfine)
+  apply differentiableAt_cmp89Eq249CentralStabilizedAliasDenominator
+  intro m hm
+  exact cmp89Eq249RawNoncentralFineDenominator_of_aliasFine hfine m hm
 
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
     {d L j : ℕ} [NeZero L] {mass a : ℝ} {z : Fin d → ℂ}
