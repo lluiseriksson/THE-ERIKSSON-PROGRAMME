@@ -43108,3 +43108,47 @@ integrability, the normalized inverse Fourier transform, the multiple
 reflection identity (2.42), uniform physical `B0`/`delta0`, window 15, a
 terminal field or a `TermSource`. Counters remain exactly `20/41` and
 `TermSource = 0`.
+
+## Addendum 1010 (2026-09-01, **central-pair strip gate and normalized fine-point CMP89 (2.46) specialization cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `754bf12fd82d6d8b509a2d391ee5b51eb1b9f26a`,
+driven by runner commit `c4a4341e3ac28bfe00d2ee1cd4364063ae68332b`
+(runner blob SHA-256
+`828D178E0DDDA08D3162EDE28AA2F539FB31D1A1215B2061FF2E481D403BBBF1`),
+passed in one fresh Colab Pro+ CPU/high-RAM checkout with `50.99 GiB` and no
+restored project `.lake/build`. Mathlib was fixed at
+`07642720480157414db592fa85b626dafb71355b`.
+
+The central-pair focal completed `8442/8442` jobs in `903.246 s`; its exact
+three-declaration audit exited zero in `8.539 s`. The fine-point-source focal
+completed `8498/8498` jobs in `166.584 s`; its exact nine-declaration audit
+exited zero in `10.925 s`. All twelve declarations use only
+`{propext, Classical.choice, Quot.sound}`. All 18 unique stop-on-first-error
+stage records exited zero.
+
+The fail-closed archive verifier checked the exact source and four source
+blob hashes, runner revision, toolchain asset, Mathlib pin, stage scope,
+durations, output hashes and terminal PASS. The evidence payload SHA-256 is
+`D811D83DF74C4F98644A6385B4A62E000D162D5018703BBFC72DB167E37F31E0`;
+the downloaded archive SHA-256 is
+`602A1D1EDC6FFCCF4D65190744C73E8F8AD1121C6932C09999BD600A332A859F`;
+the executed notebook SHA-256 is
+`0492C2C43E3A7E6FD46FD1F0E84505BA3F96E55698C654633D48E5E850CA9DDD`.
+They are preserved under
+`validation-evidence/cmp89-eq246-fine-point-source-cold-754bf12f-20260901/`,
+with the verifier at
+`tmp/audit_cmp89_eq246_fine_point_source_colab_evidence.py`. The original
+stop-on-first-error debugging archive at source checkpoint `4035d105...` is
+retained separately under
+`validation-evidence/cmp89-eq246-fine-point-source-fail-4035d105-20260901/`.
+
+Exactly the four PRE-VALIDATION notices in the two focal/audit pairs are
+retired, and both audits are imported by `YangMillsCore.lean`. This seal
+constructs the central-pair strip gate and the complete normalized fine-point
+source solution of the literal finite alias system (2.46), with distinct fine
+target and source endpoints and no hidden `Q_j^*` factor. It does **not** yet
+prove real-slice integrability, construct the normalized inverse Fourier
+transform, identify a regional Green, prove the reflection formula (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
+field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.

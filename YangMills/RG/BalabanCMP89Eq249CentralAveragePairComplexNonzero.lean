@@ -6,7 +6,10 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexRadius
 
 /-!
-# PRE-VALIDATION: nonvanishing central averaging pair on the CMP89 strip
+# Compiler-verified nonvanishing central averaging pair on the CMP89 strip
+
+Cold-sealed at source checkpoint `754bf12fd82d6d8b509a2d391ee5b51eb1b9f26a`;
+see Verification Ledger Addendum 1010.
 
 The complete solution of (2.46) must not accept nonvanishing of its central
 row as an unrelated physical hypothesis.  The row is one factor of the named
@@ -18,8 +21,6 @@ This is a scalar reduction.  A later joint-radius producer must make this
 window hold together with the existing amplitude, noncentral-gap and
 stabilized-denominator windows.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
 -/
 
 namespace YangMills.RG

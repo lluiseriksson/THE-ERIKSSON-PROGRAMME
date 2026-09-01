@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq249CentralAveragePairComplexNonzero
 
 /-!
-# PRE-VALIDATION: audit of nonvanishing central averaging pair
+# Compiler-verified audit of nonvanishing central averaging pair
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold-sealed at source checkpoint `754bf12fd82d6d8b509a2d391ee5b51eb1b9f26a`;
+see Verification Ledger Addendum 1010.
 -/
 
 /-! Axiom audit for the central averaging-pair strip floor. -/

@@ -9,7 +9,10 @@ import YangMills.RG.BalabanCMP89Eq249CentralAveragePairComplexNonzero
 import YangMills.RG.BalabanCMP89Eq251CommonStripHolomorphy
 
 /-!
-# PRE-VALIDATION: fine-point-source specialization of CMP89 (2.46)
+# Compiler-verified fine-point-source specialization of CMP89 (2.46)
+
+Cold-sealed at source checkpoint `754bf12fd82d6d8b509a2d391ee5b51eb1b9f26a`;
+see Verification Ledger Addendum 1010.
 
 CMP89 (2.43) uses the Fourier convention
 
@@ -27,10 +30,7 @@ distinction between the full `G_j` needed in (2.42) and the typed
 
 This module does not yet prove integrability, the normalized inverse
 transform, the multiple-reflection formula (2.42), a regional Green identity,
-or window 15.  It must not enter the root graph before its own compiler gate.
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+or window 15.
 -/
 
 namespace YangMills.RG
