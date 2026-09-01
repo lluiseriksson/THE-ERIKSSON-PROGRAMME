@@ -193,12 +193,8 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
   have hstabilizedEq :
       stabilized = fine central + (a : ℂ) * centralPair +
         (a : ℂ) * fine central * noncentral := by
-    simpa only [stabilized, centralPair, noncentral, hcentralFine] using
-      (rfl : cmp89Eq249CentralStabilizedAliasDenominator d L j mass a z =
-        cmp89Eq249CentralEntireFineSymbol d L j mass z +
-          (a : ℂ) * cmp89Eq249CentralEntireAveragePair d L j z +
-          (a : ℂ) * cmp89Eq249CentralEntireFineSymbol d L j mass z *
-            cmp89Eq249ComplexNoncentralAliasSum d L j mass z)
+    dsimp only [stabilized, centralPair, noncentral]
+    rw [cmp89Eq249CentralStabilizedAliasDenominator, hcentralFine]
   have hmomentEq :
       moment * stabilized = row central * source central +
         fine central * base := by
@@ -211,27 +207,36 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
         row n * (source n / fine n -
           (a : ℂ) * column n * moment / fine n)) =
         base - (a : ℂ) * moment * noncentral := by
+    have hsource :
+        (∑ n ∈ Finset.univ.erase central,
+          row n * (source n / fine n)) = base := by
+      dsimp only [base, cmp89Eq246StabilizedAliasNoncentralSourceMoment]
+      apply Finset.sum_congr rfl
+      intro n _
+      ring
+    have hcorrection :
+        (∑ n ∈ Finset.univ.erase central,
+          row n * ((a : ℂ) * column n * moment / fine n)) =
+          (a : ℂ) * moment *
+            (∑ n ∈ Finset.univ.erase central,
+              row n * column n / fine n) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro n _
+      ring
     calc
       (∑ n ∈ Finset.univ.erase central,
           row n * (source n / fine n -
             (a : ℂ) * column n * moment / fine n)) =
-        base - (a : ℂ) * moment *
-          (∑ n ∈ Finset.univ.erase central,
-            row n * column n / fine n) := by
-        change
-          (∑ n ∈ Finset.univ.erase central,
-            row n * (source n / fine n -
-              (a : ℂ) * column n * moment / fine n)) = _
+        (∑ n ∈ Finset.univ.erase central,
+          row n * (source n / fine n)) -
+          ∑ n ∈ Finset.univ.erase central,
+            row n * ((a : ℂ) * column n * moment / fine n) := by
         simp_rw [mul_sub]
         rw [Finset.sum_sub_distrib]
-        change base - _ = _
-        congr 1
-        rw [Finset.mul_sum]
-        apply Finset.sum_congr rfl
-        intro n hn
-        have hfn : fine n ≠ 0 := hfine n (Finset.mem_erase.mp hn).1
-        field_simp [hfn]
-        ring
+      _ = base - (a : ℂ) * moment *
+          (∑ n ∈ Finset.univ.erase central,
+            row n * column n / fine n) := by rw [hsource, hcorrection]
       _ = base - (a : ℂ) * moment * noncentral := by rw [hnoncentral]
   funext m
   rw [cmp89Eq246EntireAliasPrecisionMatrix_mulVec, hsum]
@@ -248,12 +253,24 @@ theorem cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution
         fine, column, row, moment, if_pos]
       rw [hnoncentralExplicitSum]
     rw [hcentralSolution]
-    apply (mul_left_cancel₀ hrow)
-    field_simp [hrow]
-    rw [hpair]
-    have hmom := hmomentEq
-    rw [hstabilizedEq] at hmom
-    linear_combination hmom
+    have hdiv :
+        fine central *
+              (moment - (base - (a : ℂ) * moment * noncentral)) /
+            row central =
+          source central - (a : ℂ) * column central * moment := by
+      apply (div_eq_iff hrow).2
+      have hweightedPair :
+          (a : ℂ) * column central * moment * row central =
+            (a : ℂ) * centralPair * moment := by
+        calc
+          (a : ℂ) * column central * moment * row central =
+              (a : ℂ) * (column central * row central) * moment := by ring
+          _ = (a : ℂ) * centralPair * moment := by rw [hpair]
+      rw [hweightedPair]
+      have hmom := hmomentEq
+      rw [hstabilizedEq] at hmom
+      linear_combination hmom
+    exact eq_sub_iff_add_eq.mp hdiv
   · have hsolution :
         solution m = source m / fine m -
           (a : ℂ) * column m * moment / fine m := by
