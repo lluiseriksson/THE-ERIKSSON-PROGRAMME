@@ -36,6 +36,17 @@ attribute [local fun_prop]
   differentiable_cmp89Eq248EntireAliasMomentum
   differentiable_cmp89Eq251EntirePhase
 
+/-- Multivariable quotient rule for complex-valued maps.  Mathlib's static
+`DifferentiableAt.div` theorem is one-dimensional; the product-by-inverse
+form keeps the ambient normed complex vector space explicit. -/
+private theorem differentiableAt_div_complex
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
+    {f g : E → ℂ} {z : E}
+    (hf : DifferentiableAt ℂ f z) (hg : DifferentiableAt ℂ g z)
+    (hne : g z ≠ 0) :
+    DifferentiableAt ℂ (fun w => f w / g w) z := by
+  simpa only [div_eq_mul_inv] using hf.mul (hg.inv hne)
+
 private theorem differentiable_cmp89Eq246EntireAliasFineSymbol_component
     (d L j : ℕ) (mass : ℝ) (m : CMP89Eq246AliasIndex d L j) :
     Differentiable ℂ (fun z : Fin d → ℂ =>
@@ -92,13 +103,7 @@ theorem differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
       d L j sourceEndpoint m
   have hden :=
     differentiable_cmp89Eq246EntireAliasFineSymbol_component d L j mass m
-  -- Pin the quotient functions explicitly.  Leaving them to inference makes
-  -- elaboration unfold the reducible denominator on only one side.
-  exact DifferentiableAt.div (𝕜 := ℂ)
-    (c := fun w =>
-      cmp89Eq246EntireAliasAverageRow d L j w m *
-        cmp89Eq246FinePointSourceAliasVector d L j w sourceEndpoint m)
-    (d := fun w => cmp89Eq246EntireAliasFineSymbol d L j mass w m)
+  exact differentiableAt_div_complex
     ((hrow z).mul (hsource z)) (hden z) (hfine m hmc)
 
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
@@ -134,7 +139,7 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
         subst m
         simpa using hm)
   simpa only [cmp89Eq246StabilizedAliasFullSolutionMoment, central] using
-    DifferentiableAt.div (𝕜 := ℂ)
+    differentiableAt_div_complex
       (((hrow z).mul (hsource z)).add ((hfineCentral z).mul hbase))
       hden hstabilized
 
@@ -186,21 +191,9 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
       have hfN := hfineDiff n
       have hcN := hcolumn n
       exact (hrowN z).mul
-        ((DifferentiableAt.div (𝕜 := ℂ)
-            (c := fun w =>
-              cmp89Eq246FinePointSourceAliasVector
-                d L j w sourceEndpoint n)
-            (d := fun w =>
-              cmp89Eq246EntireAliasFineSymbol d L j mass w n)
+        ((differentiableAt_div_complex
              (hsN z) (hfN z) (hfine n hnc)).sub
-           (DifferentiableAt.div (𝕜 := ℂ)
-            (c := fun w =>
-              (a : ℂ) * cmp89Eq246EntireAliasAverageColumn d L j w n *
-                cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a w
-                  (cmp89Eq246FinePointSourceAliasVector
-                    d L j w sourceEndpoint))
-            (d := fun w =>
-              cmp89Eq246EntireAliasFineSymbol d L j mass w n)
+           (differentiableAt_div_complex
              (((hcN z).const_mul (a : ℂ)).mul hmoment)
              (hfN z) (hfine n hnc)))
     have hrowDiff :=
@@ -208,30 +201,16 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
         d L j central
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
       cmp89Eq246StabilizedAliasFullSolution, central] using
-        DifferentiableAt.div (𝕜 := ℂ)
-          (d := fun w =>
-            cmp89Eq246EntireAliasAverageRow d L j w central)
+        differentiableAt_div_complex
           (hmoment.sub hsum) (hrowDiff z) hrow
   · have hsM := hsource m
     have hfM := hfineDiff m
     have hcM := hcolumn m
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
       cmp89Eq246StabilizedAliasFullSolution, central, hm] using
-        (DifferentiableAt.div (𝕜 := ℂ)
-          (c := fun w =>
-            cmp89Eq246FinePointSourceAliasVector
-              d L j w sourceEndpoint m)
-          (d := fun w =>
-            cmp89Eq246EntireAliasFineSymbol d L j mass w m)
+        (differentiableAt_div_complex
           (hsM z) (hfM z) (hfine m hm)).sub
-          (DifferentiableAt.div (𝕜 := ℂ)
-            (c := fun w =>
-              (a : ℂ) * cmp89Eq246EntireAliasAverageColumn d L j w m *
-                cmp89Eq246StabilizedAliasFullSolutionMoment d L j mass a w
-                  (cmp89Eq246FinePointSourceAliasVector
-                    d L j w sourceEndpoint))
-            (d := fun w =>
-              cmp89Eq246EntireAliasFineSymbol d L j mass w m)
+          (differentiableAt_div_complex
             (((hcM z).const_mul (a : ℂ)).mul hmoment)
             (hfM z) (hfine m hm))
 
