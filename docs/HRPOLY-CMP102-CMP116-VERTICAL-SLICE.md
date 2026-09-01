@@ -15754,3 +15754,21 @@ averaging weight. It therefore does not construct the continuous Green,
 prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
+
+Source checkpoint `4584f4c9e89555f97ebfb8edc7563750a582b4c6` adds one
+quantitative leaf needed by the central branch of the complete point-source
+solution. It derives a scale-uniform reciprocal bound for the literal central
+opposite-momentum row from the already sealed central-pair floor and the
+strip upper bound for the matching column. Nonvanishing is not accepted as a
+quantitative substitute.
+
+Both modules retain visible PRE-VALIDATION notices and remain outside
+`YangMillsCore.lean` pending compiler and axiom gates. The next complete-
+solution bound must keep the bare diagonal inverse-Laplacian branch separate
+from the summable rank-one correction: the former carries the printed
+`ell^2` value scale and cannot be assigned the averaging quotient's summable
+alias weight. This checkpoint does not prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

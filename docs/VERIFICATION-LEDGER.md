@@ -43526,3 +43526,22 @@ solution or its bare diagonal inverse-Laplacian branch. It does not prove
 CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1024 (2026-09-01, **CMP89 (2.46) central-row reciprocal budget promoted PRE-VALIDATION; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`4584f4c9e89555f97ebfb8edc7563750a582b4c6` adds the focal/audit pair
+`BalabanCMP89Eq246CentralAverageRowReciprocalBound`. The focal converts the
+sealed lower floor for the central averaging pair and the strip upper bound
+for its column factor into a literal upper bound for the reciprocal of the
+opposite-momentum row used by the central full-solution branch.
+
+The two files pass the local textual and import-prefix guards and each keeps
+one visible PRE-VALIDATION notice. They remain outside `YangMillsCore.lean`
+until compiler and exact axiom evidence exists. The source-facing design map
+also records the separate acceptance gate for the next solution bound: the
+bare diagonal inverse-Laplacian branch retains the physical `ell^2` scale and
+must not be assigned the summable averaging quotient weight. This checkpoint
+does not prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
+window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.

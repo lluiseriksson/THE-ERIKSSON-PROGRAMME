@@ -229,6 +229,40 @@ kernel or CMP89 (2.42).  The remaining bridge is the following finite chain:
    typed CMP89 (2.48) `G_j Q_j^*` object remains a separate downstream
    composition and is never substituted for this kernel.
 
+### Acceptance gate after the source-moment brick
+
+The scale-uniform source moment controls only the rank-one correction.  It
+does not make the bare diagonal branch
+
+```text
+source_m / fine_m
+```
+
+summable with the reciprocal-alias weight used for the averaging quotients.
+In four dimensions its absolute alias sum has the physical inverse-Laplacian
+scale `O((L^j)^2)`, rather than a scale-independent constant.  The next
+solution theorem must therefore split the two species explicitly:
+
+1. the diagonal branch carries the visible value scale `(L^j)^2` (or an
+   equivalent normalized Brillouin integral bound);
+2. the rank-one branch consumes the scale-uniform moment and the already
+   summable averaging-column quotient;
+3. the central branch consumes a named quantitative reciprocal bound for the
+   central row, derived from the central-pair floor and the column upper
+   bound, not merely its nonvanishing.
+
+No theorem may claim a scale-uniform absolute alias sum for the bare diagonal
+branch.  Such a claim would erase the first entry of the printed CMP99 (3.42)
+scale vector `[ell^2, ell, ell, 1]`.
+
+Likewise, the absolute strip estimate
+`exp(rho * ||sourceEndpoint||_1)` is only a uniform holomorphic majorant.  It
+cannot by itself be multiplied by the target phase to infer translation-
+invariant decay.  The relative endpoint phase must be combined algebraically
+before taking norms (or the kernel must first be reduced by a proved
+translation-covariance theorem).  The later contour theorem must expose
+`targetEndpoint - sourceEndpoint` literally.
+
 The old PRE-VALIDATION module
 `BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalInverseProducer`
 uses the withdrawn same-scale (2.48) wrapper and is retained only as
