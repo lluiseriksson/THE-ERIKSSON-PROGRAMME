@@ -82,7 +82,7 @@ theorem sum_norm_cmp89Eq246FinePointSourceNoncentralCorrection_le
         0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound a rho := by
       rw [cmp89Eq246FinePointSourceMomentAmplitudeBound]
       exact mul_nonneg
-        (add_nonneg (pow_nonneg (Real.exp rho) 4)
+        (add_nonneg (pow_nonneg (Real.exp_pos rho).le 4)
           (mul_nonneg hstrip hgreenSum))
         hreciprocal
     dsimp [coefficient,
