@@ -32,7 +32,7 @@ theorem mass_sq_mul_cmp89NeumannReflectionSeries
       cmp89NeumannReflectionSeries
         (fun y z => mass ^ 2 * fullGreen y z) m x n := by
   unfold cmp89NeumannReflectionSeries
-  rw [tsum_mul_left]
+  rw [← tsum_mul_left]
   apply tsum_congr
   intro k
   rw [Finset.mul_sum]
