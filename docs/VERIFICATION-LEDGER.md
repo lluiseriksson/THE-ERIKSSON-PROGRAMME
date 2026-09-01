@@ -43383,3 +43383,22 @@ solution with a generated Green by inverse uniqueness, prove CMP89 (2.42),
 produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
 field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
+
+## Addendum 1018 (2026-09-01, **generated physical point-source Green endpoint promoted PRE-VALIDATION; 20/41 unchanged**)
+
+Six PRE-VALIDATION files promote three focal/audit pairs. The generic bridge
+accepts only a left inverse law for the same literal full-box precision and
+derives the desired point-source equality from the cold-sealed precision
+equation. A separate physical producer proves the central opposite-momentum
+averaging pair nonzero directly from its finite geometric sum at every literal
+uncentered coarse representative. The generated endpoint then supplies the
+existing Step-7b inverse law, noncentral fine-symbol family, stabilized
+denominator, and central-pair producer internally; it accepts none of their
+conclusions as free hypotheses.
+
+All six files carry one visible PRE-VALIDATION notice and remain outside
+`YangMillsCore.lean`. The exact overlay passes the textual and import-prefix
+guards. This is source, not compiler evidence. It does not prove CMP89 (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge a terminal
+field, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.

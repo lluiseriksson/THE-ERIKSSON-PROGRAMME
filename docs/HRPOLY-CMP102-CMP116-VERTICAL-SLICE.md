@@ -15673,3 +15673,21 @@ Green by inverse uniqueness, insert `Q'^*`, use the particular CMP89 (2.48)
 solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+### Generated physical point-source Green endpoint promoted PRE-VALIDATION
+
+Three focal/audit pairs now form a finite source-specific bridge from the
+cold-sealed periodic point-source solution to the internally generated
+Step-7b Green. The first derives point-source inverse uniqueness from a left
+inverse law for the same literal precision. The second constructs the missing
+central averaging-pair nonvanishing directly from the finite geometric sum at
+the literal uncentered physical momentum; no free nonvanishing family enters.
+The endpoint supplies the existing generated inverse law, noncentral
+fine-symbol producer, stabilized-denominator producer, and the new central
+pair producer internally.
+
+All six files retain visible PRE-VALIDATION notices and remain outside
+`YangMillsCore.lean` until their compiler and exact axiom gates pass. This
+bridge does not prove the multiple-reflection formula (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
