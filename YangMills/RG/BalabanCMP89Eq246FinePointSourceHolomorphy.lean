@@ -83,8 +83,6 @@ theorem differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
   unfold cmp89Eq246StabilizedAliasNoncentralSourceMoment
   apply DifferentiableAt.fun_sum
   intro m hm
-  apply DifferentiableAt.fun_sum
-  intro _ _
   have hmc : m ≠ cmp89Eq249CentralAliasIndex d L j :=
     (Finset.mem_erase.mp hm).1
   have hrow :=
@@ -94,7 +92,8 @@ theorem differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
       d L j sourceEndpoint m
   have hden :=
     differentiable_cmp89Eq246EntireAliasFineSymbol_component d L j mass m
-  exact ((hrow z).mul (hsource z)).div (hden z) (hfine m hmc)
+  exact DifferentiableAt.div (𝕜 := ℂ)
+    ((hrow z).mul (hsource z)) (hden z) (hfine m hmc)
 
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
     {d L j : ℕ} [NeZero L] {mass a : ℝ} {z : Fin d → ℂ}
@@ -129,7 +128,8 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
         subst m
         simpa using hm)
   simpa only [cmp89Eq246StabilizedAliasFullSolutionMoment, central] using
-    (((hrow z).mul (hsource z)).add ((hfineCentral z).mul hbase)).div
+    DifferentiableAt.div (𝕜 := ℂ)
+      (((hrow z).mul (hsource z)).add ((hfineCentral z).mul hbase))
       hden hstabilized
 
 theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
@@ -173,8 +173,6 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
                 cmp89Eq246EntireAliasFineSymbol d L j mass w n)) z := by
       apply DifferentiableAt.fun_sum
       intro n hn
-      apply DifferentiableAt.fun_sum
-      intro _ _
       have hnc : n ≠ central := (Finset.mem_erase.mp hn).1
       have hrowN :=
         differentiable_cmp89Eq246EntireAliasAverageRow_component d L j n
@@ -182,22 +180,27 @@ theorem differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
       have hfN := hfineDiff n
       have hcN := hcolumn n
       exact (hrowN z).mul
-        (((hsN z).div (hfN z) (hfine n hnc)).sub
-          ((((hcN z).const_mul (a : ℂ)).mul hmoment).div
+        ((DifferentiableAt.div (𝕜 := ℂ)
+            (hsN z) (hfN z) (hfine n hnc)).sub
+          (DifferentiableAt.div (𝕜 := ℂ)
+            (((hcN z).const_mul (a : ℂ)).mul hmoment)
             (hfN z) (hfine n hnc)))
     have hrowDiff :=
       differentiable_cmp89Eq246EntireAliasAverageRow_component
         d L j central
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
       cmp89Eq246StabilizedAliasFullSolution, central] using
-        (hmoment.sub hsum).div (hrowDiff z) hrow
+        DifferentiableAt.div (𝕜 := ℂ)
+          (hmoment.sub hsum) (hrowDiff z) hrow
   · have hsM := hsource m
     have hfM := hfineDiff m
     have hcM := hcolumn m
     simpa [cmp89Eq246StabilizedFinePointSourceSolution,
       cmp89Eq246StabilizedAliasFullSolution, central, hm] using
-        ((hsM z).div (hfM z) (hfine m hm)).sub
-          ((((hcM z).const_mul (a : ℂ)).mul hmoment).div
+        (DifferentiableAt.div (𝕜 := ℂ)
+          (hsM z) (hfM z) (hfine m hm)).sub
+          (DifferentiableAt.div (𝕜 := ℂ)
+            (((hcM z).const_mul (a : ℂ)).mul hmoment)
             (hfM z) (hfine m hm))
 
 theorem differentiableAt_cmp89Eq246StabilizedFineToFineGreenIntegrand
