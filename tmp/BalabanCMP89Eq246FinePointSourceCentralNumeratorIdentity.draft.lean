@@ -53,17 +53,22 @@ theorem cmp89Eq246FinePointSourceCentralNumerator_eq
   have hsource :
       (∑ n ∈ Finset.univ.erase central,
         row n * (source n / fine n)) = sourceMoment := by
-    rfl
+    dsimp only [sourceMoment,
+      cmp89Eq246StabilizedAliasNoncentralSourceMoment]
+    apply Finset.sum_congr rfl
+    intro n _
+    ring
   have hcorrection :
       (∑ n ∈ Finset.univ.erase central,
         row n * ((a : ℂ) * column n * moment / fine n)) =
           (a : ℂ) * moment * aliasSum := by
+    dsimp only [aliasSum]
     rw [← cmp89Eq249AliasSubtypeNoncentralSum_eq
       (d := 4) (L := L) (j := j) mass z]
     rw [Finset.mul_sum]
     apply Finset.sum_congr rfl
     intro n _
-    dsimp [row, column, fine, aliasSum]
+    dsimp only [row, column, fine]
     ring
   simp_rw [mul_sub]
   rw [Finset.sum_sub_distrib, hsource, hcorrection]
