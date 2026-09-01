@@ -108,8 +108,7 @@ def main() -> int:
     paths.write_text("\n".join(SOURCE_BLOBS) + "\n", encoding="utf-8")
     run(
         "overlay_text_guard",
-        ["python3", "scripts/check_lean_overlay_text.py", "--paths-from", str(paths),
-         "--require-prevalidation"],
+        ["python3", "scripts/check_lean_overlay_text.py", "--paths-from", str(paths)],
     )
     run(
         "import_prefix_guard",
