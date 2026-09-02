@@ -44833,3 +44833,20 @@ abbreviation to `aliasIndex`; it changes no statement, Fourier character,
 endpoint orientation, normalization, source vector, hypothesis or constant.
 No PRE-VALIDATION notice is retired, the target-character focal has not run,
 and the counters remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 1072 (2026-09-02, **source-character hot retry exposed one folded local abbreviation; no seal**)
+
+The retained-runtime retry fetched exact repaired source
+`efb7ab16f47ea3419dc28b12efd01c18dc872765` and resumed directly at the
+source-character focal.  It stopped after `18.171 s` at the final
+commutative-ring normalization of the fixed-fibre coefficient theorem.  Both
+linearity rewrites had succeeded, but the left side still displayed the local
+abbreviation `coarseCharacter` while the right side displayed its defining
+inverse Fourier mode, so `ring` correctly left one goal.
+
+The repair unfolds exactly the local abbreviations `coarseCharacter`,
+`owner`, `z`, `sourceEndpoint` and `e` before the unchanged ring
+normalization.  It changes no theorem statement, endpoint orientation,
+Fourier normalization, source vector, hypothesis or constant.  This remains
+hot diagnostic work: no PRE-VALIDATION notice is retired, the target pair has
+not run, and counters remain exactly `20/41` and `TermSource = 0`.

@@ -150,7 +150,8 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq
     d M 1 mass a z (fun n => pointSource n * v A) coarseCharacter (e k)]
   rw [cmp89Eq246StabilizedAliasTransposeFullSolution_mul_right
     d M 1 mass a z pointSource (v A) (e k)]
-  simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource]
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
+    coarseCharacter, owner, z, sourceEndpoint, e]
   ring
 
 end
