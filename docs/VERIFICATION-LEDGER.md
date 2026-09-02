@@ -44084,3 +44084,20 @@ directed Fourier synthesis only.  It does not identify the integral with the
 physical generated Green, prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1045 (2026-09-02, **directed full-integrand dictionary promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes
+`BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary` and its exact audit.
+The module proves that the cold-sealed directed central-plus-noncentral sum is
+the complete fine-to-fine point-source integrand on the selected signed
+contour.  It then records the corresponding normalized contour integral and
+its radius-zero real-slice equality.
+
+Both files pass the lightweight overlay and import-prefix guards and carry
+exactly one PRE-VALIDATION notice.  No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`.  These are algebraic dictionary
+equalities only: no contour deformation or inverse-uniqueness bridge is
+smuggled into the promotion.  It does not prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

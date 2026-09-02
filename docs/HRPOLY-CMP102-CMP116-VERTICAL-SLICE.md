@@ -15987,6 +15987,22 @@ does not prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
 window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
 
+### Eq. (2.46) directed full-integrand dictionary (PRE-VALIDATION)
+
+The promoted source proves algebraically that the cold-sealed directed
+central-plus-noncentral sum is the already constructed complete fine-to-fine
+point-source integrand evaluated on the endpoint-selected signed contour.  It
+also exposes the normalized signed-contour integral and the radius-zero
+real-slice presentation as explicit equalities.
+
+Both modules pass the lightweight overlay guard and carry one visible
+PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending
+compiler validation.  This dictionary performs no contour deformation and
+does not identify either integral with the finite periodic/generated Green.
+It therefore does not prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one
