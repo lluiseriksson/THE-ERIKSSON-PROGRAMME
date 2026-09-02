@@ -2,14 +2,14 @@ import YangMills.RG.BalabanCMP89Eq246DirectedCentralComponent
 import YangMills.RG.BalabanCMP89Eq246DirectedNoncentralSum
 
 /-!
-# PRE-VALIDATION: complete directed Fourier sum below CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been cold-verified by the compiler.
+# Complete directed Fourier sum below CMP89 (2.46)
 
 The central alias and the literal noncentral alias sum share the same source
 and target endpoints. Their two amplitude budgets remain separate until the
 last addition.
+
+This module and its audit were cold-verified from exact source checkpoint
+`a95ed996f0a60ed7101e7b99dbe8bf998da21c7d` in a fresh Colab Pro+ checkout.
 -/
 
 namespace YangMills.RG

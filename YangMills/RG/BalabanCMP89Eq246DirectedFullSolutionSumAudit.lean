@@ -1,8 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionSum
 
-/-! PRE-VALIDATION: source is present, its promoted `.olean` has not yet been
-materialized in a fresh checkout, and the audit has not yet been cold-verified
-by the compiler. -/
+/-! Cold-sealed exact axiom audit for the complete directed Fourier sum at
+source checkpoint `a95ed996f0a60ed7101e7b99dbe8bf998da21c7d`. -/
 
 #print axioms YangMills.RG.cmp89Eq246DirectedFullSolutionSum
 #print axioms YangMills.RG.cmp89Eq246DirectedFullSolutionSumBound

@@ -15938,7 +15938,7 @@ integrand, construct the continuous Green, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Eq. (2.46) complete directed Fourier sum (PRE-VALIDATION)
+### Eq. (2.46) complete directed Fourier sum (cold-sealed)
 
 The promoted source combines the cold-sealed central component and literal
 noncentral alias sum at one common source and target endpoint.  Its bound
@@ -15947,13 +15947,20 @@ last addition.  In particular, the `(L^j+1)^2` factor remains the value
 component of the printed CMP99 (3.42) scale vector; it is not misreported as
 part of the scale-uniform coefficient.
 
-Both new modules pass the lightweight overlay guard and carry one visible
-PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending
-compiler validation.  This brick does not yet perform the normalized
-Brillouin synthesis, identify the resulting integral with the physical
-generated Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
-attain window 15, discharge rows 23--24, move `20/41`, or construct a
-`TermSource`; `TermSource = 0` remains exact.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-full-solution-sum-cold-v1` checked out exact source
+checkpoint `a95ed996f0a60ed7101e7b99dbe8bf998da21c7d`, verified the official
+toolchain asset and exact Mathlib pin, restored no project `.lake/build`
+graph, and passed the source focal in `1402.362 s` and exact audit in
+`11.734 s`.  The runner's exact three-declaration axiom gate passed and the
+fail-closed local verifier accepted the source pin, source blobs, two-stage
+queue, environment pins, evidence JSON and archive hash.  Both
+PRE-VALIDATION notices are retired and the audit enters `YangMillsCore.lean`.
+This brick does not yet perform the normalized Brillouin synthesis, identify
+the resulting integral with the physical generated Green, prove CMP89 (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
+23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 

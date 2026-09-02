@@ -68,6 +68,19 @@ EXPECTED_CONFIGS = {
             "directed_noncentral_sum_audit",
         ],
     },
+    "cmp89-eq246-directed-full-solution-sum-cold-v1": {
+        "source_sha": "a95ed996f0a60ed7101e7b99dbe8bf998da21c7d",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionSum.lean":
+                "0bb4f3f0e621a50b2d752fc92dba8f111da58b7a5c29f27d2413d09493607553",
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionSumAudit.lean":
+                "4b4ebee0f230d169200a9d784aeec1764beab7c4f31eae74fa8fd602c2e5e171",
+        },
+        "queue": [
+            "directed_full_solution_sum_focal",
+            "directed_full_solution_sum_audit",
+        ],
+    },
 }
 
 
