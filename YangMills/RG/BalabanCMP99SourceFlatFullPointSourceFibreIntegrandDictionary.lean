@@ -69,11 +69,7 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_int
         d M 1 mass a (-z) reflectedSourceEndpoint n
   rw [cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution,
     cmp99SourceFlatFixedCoarseFibreFourierSynthesis_eq_sum]
-  change (∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
-      (cmp99FlatComplexFibreFourierMode k.1
-        (((((M * N' : ℕ) : ℂ) ^ d)⁻¹ •
-          cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients
-            ell mass a source v k)) target A)) = _
+  simp only [WithLp.ofLp_sum, Finset.sum_apply]
   calc
     _ = ∑ k : CMP99SourceFlatQprimeFixedCoarseFibre d M N' ell,
         common * (term (er k) * v A) := by

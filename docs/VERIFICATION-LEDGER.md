@@ -44963,3 +44963,20 @@ yet been compiled.  They do not identify the outer coarse Fourier sum,
 periodize the Green function, prove a uniform physical bound, attain window
 15, discharge a terminal field or inhabit `TermSource`.  Counters remain
 exactly `20/41` and `TermSource = 0`.
+
+## Addendum 1078 (2026-09-02, **reflected one-fibre first hot attempt stopped at PiLp sum evaluation; no seal**)
+
+The retained-runtime hot gate fetched exact source
+`b52b7332c467ce1f17aa302fe1b0952b6d595c50`, verified the runner hash and
+checkout, and stopped after `16.873 s` at the first proof-shape boundary in
+the new one-fibre theorem.  Rewriting the physical synthesis exposed a
+finite sum of `SUNLieComplexCoord` values; the attempted `change` incorrectly
+treated evaluation through `WithLp` and the coordinate function as
+definitional.
+
+The repair replaces that `change` with the two existing evaluation lemmas
+`WithLp.ofLp_sum` and `Finset.sum_apply`.  It changes no theorem statement,
+momentum sign, half-open reflection, endpoint, Fourier normalization,
+hypothesis or constant.  The reflected equality itself has not yet been
+exercised, this is `HOT_DEBUG_NOT_EVIDENCE`, every PRE-VALIDATION notice
+remains, counters stay exactly `20/41`, and `TermSource = 0` remains exact.
