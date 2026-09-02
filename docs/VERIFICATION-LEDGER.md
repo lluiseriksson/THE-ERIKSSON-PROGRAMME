@@ -45094,3 +45094,21 @@ affine residue sum, produce a uniform physical bound, attain window 15,
 discharge any terminal field or construct a `TermSource`; counters remain
 exactly `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
+
+## Addendum 1085 (2026-09-02, **reflected owner-character orientation promoted PRE-VALIDATION; no seal**)
+
+The next finite reindexing gate is now explicit: after periodic Fourier
+negation, the target coarse mode times the inverse source coarse mode is the
+negative DFT character at the literal difference of the two owner classes.
+The theorem is purely finite-character algebra and invokes no Green,
+periodization, carry or analytic bound.
+
+The focal module and its one-declaration audit pass the lightweight
+import-prefix and bad-marker checks and carry visible PRE-VALIDATION notices.
+They have not been compiler- or axiom-verified and remain outside
+`YangMillsCore.lean`.  This does not yet identify the Fourier-negated full
+two-endpoint torus sample with the reflected physical integrand, prove the
+full vector carry, produce a uniform physical bound, attain window 15,
+discharge a terminal field or construct a `TermSource`; counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.
