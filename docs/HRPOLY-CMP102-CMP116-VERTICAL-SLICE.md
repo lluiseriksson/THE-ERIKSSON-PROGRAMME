@@ -15674,6 +15674,24 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) finite alias-precision uniqueness (PRE-VALIDATION)
+
+The promoted source turns the already constructed explicit full solution for
+every finite alias source into injectivity of the literal square precision
+matrix.  It first obtains surjectivity from the explicit solver and then uses
+finite-dimensional equality of source and target finranks.  The three
+nonvanishing gates remain the literal fine-symbol, stabilized-denominator and
+central-row conditions; no inverse family or uniqueness equation is accepted
+from the caller.
+
+Both modules pass the lightweight textual guards and carry one visible
+PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
+compiler and exact axiom gate.  This uniqueness leaf does not yet prove
+precision covariance under the alias cycle, periodicity of the complete
+integrand, contour deformation, CMP89 (2.42), uniform physical
+`B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
+`TermSource = 0`.
+
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an

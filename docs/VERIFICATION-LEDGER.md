@@ -44217,3 +44217,20 @@ precision-action covariance, finite-solver uniqueness, complete-integrand
 periodicity, contour deformation, CMP89 (2.42), uniform physical
 `B0`/`delta0`, or attainment of window 15.  It discharges no terminal field:
 counters remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 1051 (2026-09-02, **finite CMP89 (2.46) alias-precision uniqueness promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes `BalabanCMP89Eq246AliasPrecisionUniqueness` and
+its exact audit.  From the literal explicit stabilized solution for every
+source, the theorem derives surjectivity of the square finite alias precision
+and converts it to injectivity through equality of finite dimensions.  It
+accepts only the three nonvanishing gates already exposed by the solver
+domain; it accepts neither an inverse family nor a uniqueness statement.
+
+Both files pass the lightweight overlay and import-prefix guards and carry
+exactly one PRE-VALIDATION notice.  No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`.  This promotion does not yet prove
+alias-cycle covariance of the precision action, periodicity of the complete
+integrand, contour deformation, CMP89 (2.42), uniform physical
+`B0`/`delta0`, or attainment of window 15.  It discharges no terminal field:
+counters remain exactly `20/41` and `TermSource = 0`.
