@@ -44404,3 +44404,42 @@ complete integrand, contour deformation, CMP89 (2.42), uniform physical
 `B0`/`delta0`, attainment of window 15, a new terminal field, or a
 `TermSource`.  Counters remain exactly `20/41`, window 15 remains compatible
 but unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1057 (2026-09-02, **CMP89 finite precision and solved point-source cycles cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-solution-cycle-cold-v1`, published at runner commit
+`2cdc9b070b6b28f098f81c2bd0a36d5e6d3915bd` and launcher commit
+`0aa5975c28beeb282eb70b8d27143d0bf72a7371`, checked out exact source
+checkpoint `e9f8f326262588c2c12ee98daa8e276cb0b63001`.  It verified the official
+Lean `v4.29.0-rc6` asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, all four source blobs and both
+textual guards, without restoring a project `.lake/build` graph.
+
+The four stop-on-first-error stages all exited zero:
+
+- finite alias-precision cycle focal `1328.153 s`, audit `8.551 s`;
+- solved fine-point-source cycle focal `56.970 s`, audit `7.658 s`.
+
+The strict audits covered the expected three declarations and accepted only
+the allowlist `{propext, Classical.choice, Quot.sound}`.  Colab recorded the
+canonical payload SHA-256
+`A60A01F48BF9583E2770BF693CC3A72A5A0A7FDA6EE7DB48DEA71035572E061A`;
+the downloaded newline-terminated `evidence.json` has SHA-256
+`24E07B3051D4A0F79C7FC7935CA9C12D0F00D7E943270A111D7501905ABA1D56`,
+and the archive has SHA-256
+`48B80CF2BBF344EE28FB5CC70E59078ECE4B1A5E8851C3900D9EDF1E0A38A22E`.
+The executed notebook has SHA-256
+`D690DA6D5811BA3D0637EADF305FDA7776E0034F19EBB5FA4A8A9591EDFB88EA`.
+The local fail-closed verifier accepts every environment/source pin, all
+eighteen records and the exact four-stage queue.  Evidence is preserved under
+`validation-evidence/cmp89-solution-cycle-cold-e9f8f326-20260902/`.
+
+Exactly the four PRE-VALIDATION notices in these two focal/audit pairs are
+retired and both audits enter `YangMillsCore.lean`.  This seal proves finite
+precision covariance and the corresponding solved point-source cycle only.
+It does not prove periodicity of the complete integrand, the boundary seam,
+contour deformation, CMP89 (2.42), uniform physical `B0`/`delta0`, attainment
+of window 15, a new terminal field, or a `TermSource`.  Counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.

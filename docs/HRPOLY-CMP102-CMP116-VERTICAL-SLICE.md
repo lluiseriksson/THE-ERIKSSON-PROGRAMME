@@ -15699,7 +15699,7 @@ cycle, periodicity of the complete integrand, contour deformation, CMP89
 (2.42), uniform physical `B0`/`delta0`, or attainment of window 15.  Counters
 remain `20/41` and `TermSource = 0`.
 
-### Eq. (2.46) finite alias-precision cycle (PRE-VALIDATION)
+### Eq. (2.46) finite alias-precision cycle (cold-sealed)
 
 The promoted source composes the five cold-sealed factorwise alias-cycle
 identities into entrywise covariance of the literal diagonal-plus-rank-one
@@ -15707,15 +15707,25 @@ precision matrix.  It then reindexes the finite dot product to derive
 covariance of the matrix action.  Neither matrix periodicity nor a transported
 solution is accepted from the caller.
 
-The focal and its exact two-declaration audit pass the lightweight textual
-guards and retain visible PRE-VALIDATION notices.  They remain outside
-`YangMillsCore.lean` until a compiler and strict axiom gate pass.  This leaf
-does not yet prove covariance of the solved point-source fibre, periodicity of
-the complete integrand, contour deformation, CMP89 (2.42), uniform physical
-`B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
-`TermSource = 0`.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-solution-cycle-cold-v1` checked out exact source
+`e9f8f326262588c2c12ee98daa8e276cb0b63001`, verified all four source blobs,
+the official Lean `v4.29.0-rc6` asset and exact Mathlib pin, and restored no
+project `.lake/build` graph.  This focal completed `8504/8504` jobs in
+`1328.153 s`; its exact two-declaration audit exited zero in `8.551 s`.
+The strict axiom gate accepted only
+`{propext, Classical.choice, Quot.sound}`.  The downloaded archive passed the
+fail-closed local verifier with archive SHA-256
+`48B80CF2BBF344EE28FB5CC70E59078ECE4B1A5E8851C3900D9EDF1E0A38A22E`.
+The two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`.
 
-### Eq. (2.46) solved fine-point-source cycle (PRE-VALIDATION)
+This leaf does not yet prove covariance of the solved point-source fibre,
+periodicity of the complete integrand, contour deformation, CMP89 (2.42),
+uniform physical `B0`/`delta0`, or attainment of window 15.  Counters remain
+`20/41` and `TermSource = 0`.
+
+### Eq. (2.46) solved fine-point-source cycle (cold-sealed)
 
 The promoted source transports the shifted explicit solution through the
 centered alias cycle, proves that it solves the unshifted point-source
@@ -15724,11 +15734,15 @@ identify it with the base solution.  The source endpoint is the literal
 fine-lattice displacement, so the phase wrap is discharged by the existing
 lattice theorem rather than by an assumed periodicity.
 
-The focal and its exact one-declaration audit pass the lightweight textual
-guards and retain visible PRE-VALIDATION notices.  They remain outside
-`YangMillsCore.lean` until a compiler and strict axiom gate pass.  This leaf
-does not yet prove periodicity of the assembled physical kernel or complete
-integrand, contour deformation, CMP89 (2.42), uniform physical
+The same fresh-checkout runner compiled this focal in `56.970 s` and its exact
+one-declaration audit in `7.658 s`.  The axiom gate again accepted only
+`{propext, Classical.choice, Quot.sound}`.  The shared archive and source pins
+are recorded in the preceding section; evidence is preserved under
+`validation-evidence/cmp89-solution-cycle-cold-e9f8f326-20260902/`.  The two
+PRE-VALIDATION notices are retired and the audit enters `YangMillsCore.lean`.
+
+This leaf does not yet prove periodicity of the assembled physical kernel or
+complete integrand, contour deformation, CMP89 (2.42), uniform physical
 `B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
 `TermSource = 0`.
 

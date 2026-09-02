@@ -3,10 +3,7 @@ import YangMills.RG.BalabanCMP89Eq246AliasPrecisionUniqueness
 import YangMills.RG.BalabanCMP89Eq246FullSolutionDomain
 
 /-!
-# PRE-VALIDATION: covariance of the solved CMP89 (2.46) point-source fibre
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Covariance of the solved CMP89 (2.46) point-source fibre
 
 The shifted explicit solution is transported to the unshifted alias fibre,
 shown to solve the same source equation, and identified by the finite-system

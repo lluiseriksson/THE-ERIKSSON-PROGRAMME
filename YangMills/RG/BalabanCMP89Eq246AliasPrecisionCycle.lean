@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq246AliasCycleTransport
 
 /-!
-# PRE-VALIDATION: covariance of the finite CMP89 (2.46) precision under alias cycling
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Covariance of the finite CMP89 (2.46) precision under alias cycling
 
 The physical `2*pi` shift of one coarse-momentum coordinate is transported
 through the literal diagonal-plus-rank-one precision by the centered alias

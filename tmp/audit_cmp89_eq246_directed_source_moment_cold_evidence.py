@@ -236,6 +236,25 @@ EXPECTED_CONFIGS = {
             "alias_precision_uniqueness_audit",
         ],
     },
+    "cmp89-eq246-solution-cycle-cold-v1": {
+        "source_sha": "e9f8f326262588c2c12ee98daa8e276cb0b63001",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionCycle.lean":
+                "7f921295a0130adae8ae099b256ce251b3340bfd75cf5de755e07b9cafa98f48",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionCycleAudit.lean":
+                "22d58cb00ecf947e7c90e7e172300fcd43bd3c90e605b2b400255ea60b52050f",
+            "YangMills/RG/BalabanCMP89Eq246FinePointSourceSolutionCycle.lean":
+                "b8101d95a2bd66657ab58974ccf0eb2b22b685de219bfbd516bf973cc7e1130c",
+            "YangMills/RG/BalabanCMP89Eq246FinePointSourceSolutionCycleAudit.lean":
+                "85f20825891ebd6da1bc3603d26c9c026898b3ac3e565a64a4020dfc38472ebc",
+        },
+        "queue": [
+            "alias_precision_cycle_focal",
+            "alias_precision_cycle_audit",
+            "fine_point_source_solution_cycle_focal",
+            "fine_point_source_solution_cycle_audit",
+        ],
+    },
 }
 
 
