@@ -98,7 +98,7 @@ theorem norm_cmp89Eq246TargetPhase_mul_stabilizedSourceMoment_signedContour_le
             displacement sourceEndpoint)) *
         cmp89Eq246FinePointSourceMomentAmplitudeBound a rho := by
           rw [htarget]
-          rfl
+          simpa only [g, mul_assoc]
     _ = Real.exp (-(rho * cmp89Eq251DisplacementL1 displacement)) *
         cmp89Eq246FinePointSourceMomentAmplitudeBound a rho := by
           rw [cmp89Eq246_targetDecay_mul_sourceGrowth]
