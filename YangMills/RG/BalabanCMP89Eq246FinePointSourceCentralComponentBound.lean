@@ -3,7 +3,10 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralNumeratorIdentity
 import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasSumBound
 
 /-!
-# Draft: scale-uniform central component below CMP89 (2.46)
+# PRE-VALIDATION: scale-uniform central component below CMP89 (2.46)
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 The central branch is controlled without charging it the quadratic bare
 diagonal alias budget.  Its noncentral terms retain the row factor and reduce

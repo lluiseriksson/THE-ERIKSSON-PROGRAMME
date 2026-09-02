@@ -2,7 +2,10 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 import YangMills.RG.BalabanCMP89Eq249StabilizedAliasTransposeSolution
 
 /-!
-# Draft: exact numerator identity for the central Eq. (2.46) component
+# PRE-VALIDATION: exact numerator identity for the central Eq. (2.46) component
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 The row factor must remain inside the noncentral sum until the literal
 noncentral source moment and the printed row-column alias sum have been

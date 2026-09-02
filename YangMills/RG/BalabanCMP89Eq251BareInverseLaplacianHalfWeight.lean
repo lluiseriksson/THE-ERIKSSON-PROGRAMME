@@ -1,7 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq251AliasWeightRedistribution
 
 /-!
-# Draft: bare inverse-Laplacian redistribution at exponent one half
+# PRE-VALIDATION: bare inverse-Laplacian redistribution at exponent one half
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 This is the pointwise bridge for the unsmoothed diagonal branch below CMP89
 (2.46).  Unlike the already sealed source-weight bridge, it does not assume an

@@ -2,7 +2,10 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 import YangMills.RG.BalabanCMP89Eq251BareInverseLaplacianHalfWeight
 
 /-!
-# Draft: the bare diagonal branch below CMP89 (2.46)
+# PRE-VALIDATION: the bare diagonal branch below CMP89 (2.46)
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 The normalized fine-point source has unit phase modulus.  Away from the
 central alias, the complex fine symbol therefore leaves two inverse momentum

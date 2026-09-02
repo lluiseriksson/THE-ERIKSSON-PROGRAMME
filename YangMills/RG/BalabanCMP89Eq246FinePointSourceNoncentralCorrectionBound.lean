@@ -6,7 +6,10 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 
 /-!
-# Draft: noncentral rank-one correction below CMP89 (2.46)
+# PRE-VALIDATION: noncentral rank-one correction below CMP89 (2.46)
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 This leaf bounds only the rank-one correction in a noncentral component of
 the fine-point-source solution.  It deliberately does not bound the bare

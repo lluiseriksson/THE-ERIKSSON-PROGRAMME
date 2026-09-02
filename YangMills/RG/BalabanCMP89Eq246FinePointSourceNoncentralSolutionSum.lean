@@ -2,7 +2,10 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceBareDiagonalSum
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralCorrectionSum
 
 /-!
-# Draft: complete noncentral fine-point-source solution sum
+# PRE-VALIDATION: complete noncentral fine-point-source solution sum
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 This leaf recombines the two branches only after their different scaling has
 been exposed: the bare diagonal contribution is quadratic in the finite alias

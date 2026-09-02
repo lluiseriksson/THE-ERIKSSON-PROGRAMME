@@ -1,7 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralCorrectionBound
 
 /-!
-# Draft: uniformly summable noncentral rank-one correction
+# PRE-VALIDATION: uniformly summable noncentral rank-one correction
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 Unlike the unsmoothed bare diagonal branch, the rank-one correction contains
 the averaging-column quotient and therefore uses the already sealed strictly

@@ -5,7 +5,10 @@ import YangMills.RG.BalabanCMP89Eq251MultidimensionalAliasProduct
 import YangMills.RG.BalabanCMP89Eq251OneDimensionalAliasSeries
 
 /-!
-# Draft: the centered finite alias sum at exponent one half
+# PRE-VALIDATION: the centered finite alias sum at exponent one half
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 This scratch leaf combines the half-tail integral estimate with the literal
 centered alias window.  Its target retains the sharp square-root scale in the

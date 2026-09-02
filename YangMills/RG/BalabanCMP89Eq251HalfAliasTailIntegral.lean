@@ -2,7 +2,10 @@ import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 import Mathlib.Analysis.SumIntegralComparisons
 
 /-!
-# Draft: the finite half-exponent alias tail
+# PRE-VALIDATION: the finite half-exponent alias tail
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 This scratch leaf isolates the only analytic estimate needed for the bare
 diagonal branch below CMP89 (2.46).  It is deliberately independent of the

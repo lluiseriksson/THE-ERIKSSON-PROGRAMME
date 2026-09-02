@@ -2,7 +2,10 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceBareDiagonalBound
 import YangMills.RG.BalabanCMP89Eq251CenteredHalfAliasSum
 
 /-!
-# Draft: finite sum of the bare diagonal branch below CMP89 (2.46)
+# PRE-VALIDATION: finite sum of the bare diagonal branch below CMP89 (2.46)
+
+Source is present, its `.olean` has not yet been materialized, and the result
+has not yet been verified by the compiler.
 
 This is the quantitative endpoint forced by the unsmoothed fine-point source:
 the rank-one correction is uniformly summable, whereas the literal diagonal
