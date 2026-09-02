@@ -15674,6 +15674,31 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) finite diagonal and full-solution chain (PRE-VALIDATION)
+
+Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an
+eleven-focal, eleven-audit chain. It separates the literal noncentral bare
+diagonal inverse-Laplacian branch from the rank-one correction, proves the
+finite exponent-`1/2` alias-tail estimate used only by the former, keeps its
+visible `O((L^j+1)^2)` value scale, and recombines it with the uniformly
+summable correction. The central component is controlled independently by
+the sealed reciprocal row budget and an exact numerator identity, so the
+quadratic bare-diagonal loss is not charged to the central branch.
+
+All twenty-two modules carry one visible PRE-VALIDATION notice and remain
+outside `YangMillsCore.lean`. In the retained Colab runtime, the eleven
+focals and their exact audits exited zero; a strict multiline axiom readout
+found exactly twenty-two declaration blocks and only
+`{propext, Classical.choice, Quot.sound}`. This is warm diagnostic evidence,
+not seal authority. A fresh cold checkout of this checkpoint is still
+required before any notice is retired.
+
+The chain bounds the complete finite-fibre solution while preserving the
+physical inverse-Laplacian scale. It does not yet construct the continuous
+Green kernel, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.
+
 ### Generated physical point-source Green endpoint cold-sealed
 
 Three focal/audit pairs now form a finite source-specific bridge from the

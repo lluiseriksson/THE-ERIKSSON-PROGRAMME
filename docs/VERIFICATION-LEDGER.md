@@ -43574,3 +43574,29 @@ reciprocal budget for the central averaging row. It does not yet seal the
 finite diagonal/full-solution chain, prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1026 (2026-09-02, **CMP89 finite diagonal/full-solution chain promoted PRE-VALIDATION after exact warm diagnostic PASS; 20/41 unchanged**)
+
+PRE-VALIDATION source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes eleven source modules
+and their eleven exact audit modules. The chain proves the half-exponent
+tail bound, the corresponding centered finite alias sum, the literal bare
+diagonal value bound and sum, the uniformly summable noncentral correction,
+their noncentral recombination, the exact central numerator identity, the
+scale-uniform central bound, and the final finite-fibre solution budget. The
+bare diagonal contribution retains the visible `O((L^j+1)^2)` physical
+inverse-Laplacian scale and is never assigned the correction branch's
+summable averaging weight.
+
+The exact twenty-two-file overlay passes the local textual and import-prefix
+guards. In the retained Colab Pro+ runtime, all eleven focal builds and all
+eleven audits exited zero. The final focal completed `8518/8518` jobs; the
+strict audit parser found exactly twenty-two declaration blocks and every
+block uses only `{propext, Classical.choice, Quot.sound}`. Because this run
+reused the retained project build graph, it is diagnostic evidence only.
+
+Every promoted file keeps one visible PRE-VALIDATION notice, and none of the
+new audits enters `YangMillsCore.lean` before a fresh cold checkout seals the
+same source. This checkpoint does not prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
