@@ -83,6 +83,7 @@ theorem cmp89_mFourier_mul_centeredFullGreen_physicalBrillouin_massUniform
     target source t
   rw [← cmp89CenteredRepresentative_toTorus x hx, hcover]
   unfold cmp89Eq246CenteredFullGreenCube
+  rw [cmp89CenteredRepresentative_momentum]
   have htorus :
       (fun mu => (((t mu).1 : ℝ) : UnitAddCircle)) =
         cmp89CenteredUnitCubeToTorus t := by

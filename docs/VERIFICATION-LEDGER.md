@@ -44663,3 +44663,26 @@ the physical reflection/carry reindexing and inverse-uniqueness dictionary
 remain open and named. It therefore does not prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1065 (2026-09-02, **mass-uniform full-G hot diagnostic stopped at coefficient dictionary; one rewrite repaired; no seal**)
+
+The retained Colab Pro+ high-RAM checkout moved to exact PRE-VALIDATION source
+`54331e1a4a9b1d832fdfaba70d43a9642edf9bb5` while preserving its project
+build graph.  The diagnostic is explicitly `HOT_DEBUG_NOT_EVIDENCE` and ran
+stop-on-first-error.  The analytic-domain, its audit, the four-coordinate
+physical contour and its audit all exited zero.  The centered-torus focal
+also exited zero; its audit had not yet run because the later coefficient
+dictionary stopped first.
+
+The first real error was at
+`BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionary.lean:115`:
+after descending through the torus covering, the proof had not rewritten the
+centered representative's momentum to the literal physical Brillouin
+parameter before applying the already sealed affine-target phase identity.
+The repair adds that one named rewrite.  It changes no theorem statement,
+hypothesis, radius, rate, coefficient, endpoint or summation convention.
+
+No PRE-VALIDATION notice is retired from this hot diagnostic.  It does not
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
