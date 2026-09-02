@@ -16007,8 +16007,9 @@ The first fresh Colab gate stopped at `8523/8523`: both applications of
 `integral_congr_ae` saw the still-folded normalized-integral wrapper.  The
 failure is preserved under
 `validation-evidence/cmp89-directed-full-solution-integral-dictionary-cold-3b71da75-20260902-fail/`.
-The repair unfolds only that wrapper at the two sites; statements, constants
-and hypotheses are unchanged.  PRE-VALIDATION remains until a fresh seal.
+The repair unfolds only that wrapper and exposes the common scalar factor by
+`congr 1` at the two sites; statements, constants and hypotheses are
+unchanged.  PRE-VALIDATION remains until a fresh seal.
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 

@@ -44120,8 +44120,9 @@ archive SHA-256 is
 the evidence payload SHA-256 is
 `678DCC81F3F4D49BC2DBA7E9D51DAA508A9491F08540250B5CDFED293FC5E6F5`.
 
-The repair unfolds only the normalized-integral wrapper immediately before
-the two applications.  It changes no theorem statement, constant or
-hypothesis.  The audit did not run, PRE-VALIDATION remains, and this failure
-is not evidence for the repair.  Counters remain `20/41`, window 15 remains
-compatible but unattained, and `TermSource = 0` remains exact.
+The repair unfolds only the normalized-integral wrapper and exposes its
+common scalar factor by `congr 1` immediately before the two applications.
+It changes no theorem statement, constant or hypothesis.  The audit did not
+run, PRE-VALIDATION remains, and this failure is not evidence for the repair.
+Counters remain `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.

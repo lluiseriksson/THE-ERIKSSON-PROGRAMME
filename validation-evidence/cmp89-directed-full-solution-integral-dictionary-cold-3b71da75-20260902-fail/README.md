@@ -19,9 +19,10 @@ its audit did not run.
 The exact Lean errors were at lines 70 and 91: `integral_congr_ae` could not
 match a goal still wrapped by
 `cmp89Eq249NormalizedFourDimensionalBrillouinIntegral`. The repair unfolds
-that wrapper immediately before the two applications. No statement,
-constant or hypothesis changes. PRE-VALIDATION remains in force and this
-archive is not compiler evidence for the repair.
+that wrapper and exposes its common scalar factor by `congr 1` immediately
+before the two applications. No statement, constant or hypothesis changes.
+PRE-VALIDATION remains in force and this archive is not compiler evidence
+for the repair.
 
 Counters remain `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
