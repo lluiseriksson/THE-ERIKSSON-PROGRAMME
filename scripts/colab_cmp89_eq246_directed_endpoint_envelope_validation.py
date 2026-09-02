@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fresh-checkout Colab diagnostic for the directed CMP89 endpoint envelope."""
+"""Fresh-checkout Colab retry for the directed CMP89 endpoint envelope."""
 
 from __future__ import annotations
 
@@ -73,17 +73,17 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-directed-endpoint-envelope-diagnostic-v1"
-runner.SOURCE_SHA = "abc24550519829f7e2c276e2510afbb277f0ec4b"
+runner.RUNNER_REV = "cmp89-eq246-directed-endpoint-envelope-diagnostic-v2"
+runner.SOURCE_SHA = "ef8bf1eab26821c0575cb00701ec0ce804628d4e"
 runner.MIN_RAM_GIB = 11.0
 runner.ALLOW_GPU_RUNTIME = False
-runner.ROOT = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v1-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v1-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v1-paths.txt")
+runner.ROOT = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v2")
+runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v2-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v2-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-endpoint-envelope-v2-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq246DirectedEndpointPhase.lean":
-        "83fb277c074bc713901e6fa6d30738d07a1c2823d40513b5939d76db55f81228",
+        "8c4c11639e95a2b50d21055985c85ed7cbd228cf1b754e205eeb334600e88751",
     "YangMills/RG/BalabanCMP89Eq246DirectedEndpointPhaseAudit.lean":
         "446cdb707c10779c92ad6bc662bc0f795b5f4c0c8bae22beb3c623cd49cac4f1",
     "YangMills/RG/BalabanCMP89Eq246SourceEnvelopeMoment.lean":
