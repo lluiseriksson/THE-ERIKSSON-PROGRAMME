@@ -15786,6 +15786,21 @@ This leaf does not yet perform a one-coordinate contour shift, telescope four
 coordinates, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or
 attain window 15.  Counters remain `20/41` and `TermSource = 0`.
 
+### Eq. (2.46) complete-integrand one-coordinate contour shift (PRE-VALIDATION)
+
+The promoted source specializes the generic rectangular Cauchy theorem to
+one coordinate of the complete physical fine-to-fine integrand.  Common-strip
+holomorphy is produced from the literal finite solver, and the vertical sides
+cancel through the cold-sealed boundary seam.  Global periodicity of an
+arbitrary extension is not accepted as an input.
+
+The source and its exact one-declaration audit carry visible PRE-VALIDATION
+notices and remain outside `YangMillsCore.lean` pending compiler and strict
+axiom gates.  This leaf does not yet telescope four coordinates, identify the
+normalized synthesis with the generated Green, prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, or attain window 15.  Counters remain `20/41`
+and `TermSource = 0`.
+
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an
