@@ -15864,6 +15864,27 @@ separate.  Hence this seal does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge a terminal field, or construct a
 `TermSource`.  Counters remain exactly `20/41` and `TermSource = 0`.
 
+### Eq. (2.46) mass-uniform full-G periodization chain (PRE-VALIDATION)
+
+Six promoted focal/audit pairs remove the obsolete strict-positive-mass
+premise from the already constructed full-G contour route, descend the
+literal two-endpoint kernel to the centered torus, identify its actual
+Fourier coefficients, prove their exact signed-`l1` summability, and
+instantiate finite-grid aliasing.  The central stabilized denominator uses
+the existing mass-uniform floor, so the physical specialization `mass = 0`
+is admitted.  Target and source remain distinct throughout; the affine
+residue fibre shifts only the target, and no spurious `(L^j)^4` fine-volume
+factor is introduced.
+
+All twelve files pass the exact lightweight overlay and import-prefix guards
+and carry visible PRE-VALIDATION notices.  None has yet been compiler- or
+axiom-verified.  The endpoint still does not identify the torus sample with
+the generated CMP99 regional Green: the reflection/carry reindexing and
+inverse-uniqueness dictionary remain separate named obligations.  Therefore
+this promotion does not yet prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an

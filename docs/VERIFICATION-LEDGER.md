@@ -44635,3 +44635,31 @@ gate. It does not identify the continuous synthesis with the finite generated
 periodic Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge rows 23--24, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1064 (2026-09-02, **CMP89 mass-uniform full-G periodization chain promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes six source/audit pairs:
+
+- `BalabanCMP89Eq246MassUniformAnalyticDomain` threads the already sealed
+  mass-uniform central floor through the literal full-solver domain, seam,
+  holomorphy and one-coordinate contour shift;
+- `BalabanCMP89Eq246MassUniformPhysicalContour` telescopes all four physical
+  momentum coordinates and obtains the full-G decay estimate at `mass = 0`;
+- `BalabanCMP89Eq246MassUniformCenteredGreenTorus` descends the separate
+  target/source kernel to the centered four-torus;
+- `BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionary` identifies
+  the actual negative-character Fourier coefficient on the affine target
+  fibre, leaving the source fixed;
+- `BalabanCMP89Eq246MassUniformCenteredGreenFourierSummability` sums the
+  exact signed-`l1` decay without a false fine-volume factor;
+- `BalabanCMP99FullGreenFiniteGridAliasing` instantiates the generic exact
+  finite-grid identity with those literal full-G coefficients.
+
+All twelve files pass the exact lightweight overlay and import-prefix gates
+and carry visible PRE-VALIDATION notices. No compiler result is claimed and
+all six audits remain outside `YangMillsCore.lean`. The promoted endpoint
+does not identify the torus sample with the generated CMP99 regional Green;
+the physical reflection/carry reindexing and inverse-uniqueness dictionary
+remain open and named. It therefore does not prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
