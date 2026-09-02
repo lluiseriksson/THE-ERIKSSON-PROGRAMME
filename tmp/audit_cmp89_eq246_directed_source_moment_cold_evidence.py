@@ -145,6 +145,7 @@ EXPECTED_CONFIGS = {
             "directed_normalized_physical_fine_kernel_focal",
             "directed_normalized_physical_fine_kernel_audit",
         ],
+        "prequeue_failure_stage": "lake_update",
     },
     "cmp89-eq246-full-solution-domain-cold-v1": {
         "source_sha": "03dd11dac7be29e786261ef14683796099747231",
@@ -253,8 +254,18 @@ def main() -> None:
     try:
         queue_start = record_stages.index(expected_queue[0])
     except ValueError as error:
-        raise RuntimeError("QUEUE_START_MISSING") from error
-    queue_records = records[queue_start:]
+        allowed_prequeue = config.get("prequeue_failure_stage")
+        if not (
+            status == "FAIL"
+            and allowed_prequeue is not None
+            and record_stages[-1] == allowed_prequeue
+            and records[-1].get("exit") != 0
+            and all(record.get("exit") == 0 for record in records[:-1])
+        ):
+            raise RuntimeError("QUEUE_START_MISSING") from error
+        queue_records = []
+    else:
+        queue_records = records[queue_start:]
     if len(queue_records) > len(expected_queue):
         raise RuntimeError(f"QUEUE_HAS_EXTRA_RECORDS={queue_records!r}")
     stages = [record.get("stage") for record in queue_records]
@@ -263,8 +274,8 @@ def main() -> None:
     exits = [record.get("exit") for record in queue_records]
     if status == "PASS" and (stages != expected_queue or any(code != 0 for code in exits)):
         raise RuntimeError(f"PASS_QUEUE_INCOMPLETE stages={stages!r} exits={exits!r}")
-    if status == "FAIL" and (
-        not exits or exits[-1] == 0 or any(code != 0 for code in exits[:-1])
+    if status == "FAIL" and queue_records and (
+        exits[-1] == 0 or any(code != 0 for code in exits[:-1])
     ):
         raise RuntimeError(f"FAIL_STOP_GATE_MISMATCH exits={exits!r}")
     print("CMP89_EQ246_DIRECTED_SOURCE_MOMENT_COLD_EVIDENCE_OK")

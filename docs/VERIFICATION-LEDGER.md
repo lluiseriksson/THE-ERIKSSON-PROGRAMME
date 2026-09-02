@@ -44264,3 +44264,30 @@ rewrites.  It changes no theorem statement, constant, rate or hypothesis.
 PRE-VALIDATION remains and the failed archive is not compiler evidence for
 the repair.  Counters remain exactly `20/41`, window 15 remains compatible
 but unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1053 (2026-09-02, **physical fine-kernel v2 blocked before Lean by Mathlib clone failure**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v2`, at runner
+commit `8de7bbc980f58a6ab7152537a701251138cae4b7` and launcher commit
+`d2569b2ae3bd5126048aed70337458c29e73d9c7`, checked out exact source
+`1a53d2755b05419f2401c5d839fc9a6cffdd0c2d`.  Runner transport, toolchain
+asset, checkout, both source blobs and both textual guards passed.  The run
+then stopped at `lake_update`: Mathlib's external `git` clone exited `128`
+after `0.999 s`.  No focal or audit target ran.
+
+The archive SHA-256 is
+`D244E2A9BF746D3922784846FF11BCA1998F4CE53054ABA45AA37174D371C58A`, the
+evidence payload SHA-256 is
+`A6D67110C4F8A2FFF19569765B7F1A2C0FB6218341303267DDB9EBB02AFA3157`, and the
+executed notebook SHA-256 is
+`CE30844213781B5BD53317FA61593F051910600F608BC16C6666E54002090A93`.
+The fail-closed verifier accepts the exact successful prequeue prefix and its
+single terminal nonzero `lake_update` record.  Evidence is preserved under
+`validation-evidence/cmp89-physical-fine-kernel-v2-infra-fail-1a53d275-20260902/`.
+
+This is infrastructure evidence only and does not test the source repair.
+PRE-VALIDATION remains; retrying the same source and runner in a fresh Colab
+session requires no mathematical change.  Counters remain exactly `20/41`,
+window 15 remains compatible but unattained, and `TermSource = 0` remains
+exact.

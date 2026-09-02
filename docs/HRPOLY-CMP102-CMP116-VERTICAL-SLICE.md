@@ -16073,6 +16073,12 @@ same two rewrites, with no change to the theorem statement, rate, constant or
 hypotheses.  PRE-VALIDATION remains until a separate cold gate verifies this
 repair.
 
+A subsequent v2 cold retry checked the repaired source SHA and both textual
+guards but failed at `lake update` when Mathlib's external `git` clone exited
+`128`, before any focal or audit target ran.  It is classified as an
+infrastructure-only failure and contributes no compiler evidence.  The same
+source and runner remain the exact retry target.
+
 ### Eq. (2.46) complete finite-solver domain (PRE-VALIDATION)
 
 The promoted package names exactly the three nonvanishing facts consumed by
