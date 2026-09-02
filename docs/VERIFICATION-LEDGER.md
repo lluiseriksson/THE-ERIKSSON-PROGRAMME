@@ -43635,3 +43635,23 @@ the eleven audits enter `YangMillsCore.lean`. The seal preserves the literal
 Green kernel, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge rows 23--24, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1028 (2026-09-02, **directed endpoint phase/common source envelope promoted PRE-VALIDATION; 20/41 unchanged**)
+
+Four PRE-VALIDATION modules begin the post-finite-solution contour bridge:
+`BalabanCMP89Eq246DirectedEndpointPhase` and
+`BalabanCMP89Eq246SourceEnvelopeMoment`, with their exact audits. The first
+keeps the same-alias phase identity distinct from the two alias-independent
+directed scalar factors needed by the rank-one branch. The second transports
+an arbitrary common nonnegative source envelope through the stabilized
+source moments without assigning the absolute strip norm as the physical
+endpoint decay.
+
+The exact four-file overlay passes the local textual and import-prefix
+guards. No Lean or Lake ran on Windows. All four files retain one visible
+PRE-VALIDATION notice and remain outside `YangMillsCore.lean` pending Colab
+compiler and axiom evidence. This checkpoint does not yet transport the
+envelope through the complete solution, specialize the directed physical
+source, construct the continuous Green kernel, prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24,
+move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

@@ -15795,6 +15795,27 @@ prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
 
+### Eq. (2.46) directed endpoint phase and common source envelope (PRE-VALIDATION)
+
+The next finite chain is present but not compiler-verified. The directed
+phase module separates three facts that must not be conflated: exact
+same-alias target/source phase multiplication, alias-independent directed
+growth of the literal source on the common signed contour, and the matching
+alias-independent target decay. Their scalar recombination displays
+`targetEndpoint - sourceEndpoint` literally. This separation is porting:
+the rank-one branch mixes alias indices, so the same-alias identity alone
+cannot certify it.
+
+The companion source-envelope module takes one named nonnegative scalar
+`g` and a pointwise bound for every source alias, and transports that same
+envelope through the noncentral and full stabilized source moments without
+an alias-cardinality loss. It does not yet specialize `g` to the directed
+physical source phase or transport it through the complete diagonal,
+rank-one and central solution branches. All four files retain visible
+PRE-VALIDATION notices and remain outside `YangMillsCore.lean` pending Colab
+compiler and exact axiom gates. Counters remain `20/41`, window 15 remains
+compatible but unattained, and `TermSource = 0` remains exact.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one

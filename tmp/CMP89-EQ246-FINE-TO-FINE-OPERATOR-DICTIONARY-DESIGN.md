@@ -214,6 +214,31 @@ kernel or CMP89 (2.42).  The remaining bridge is the following finite chain:
    modulus is the single physical factor
    `exp (-rho * xi * ||target-source||_1)`.  This is a joint endpoint
    argument, not two incompatible contour shifts.
+
+   This item is a finite four-brick chain.  The existing absolute source
+   estimate `exp (rho * ||source||_1)` is intentionally not an input to its
+   last step, because taking that norm first destroys translation-invariant
+   decay.
+
+   1. Prove the exact algebraic product of the target synthesis phase and
+      the literal fine-point-source phase.  On the signed contour selected
+      by `targetEndpoint - sourceEndpoint`, its norm is exactly the relative
+      `ell^1` exponential.  Because the rank-one branch mixes alias indices,
+      also expose the target decay and source growth as two alias-independent
+      directed scalar factors and prove their exact recombination.  A
+      same-alias phase identity alone is not a producer for that branch.
+   2. State the source estimates with an arbitrary nonnegative common
+      envelope `g`, supplied pointwise for every alias.  Transport that same
+      `g` through the noncentral source moment and stabilized solution
+      moment; do not replace it by an absolute endpoint norm.
+   3. Transport the common envelope through the bare diagonal, rank-one and
+      central branches.  The bare branch must retain the literal
+      `256 * (L^j + 1)^2` loss, while the other two branches remain
+      scale-uniform.
+   4. Specialize `g` to the directed source phase on the signed contour and
+      combine it with the target phase before the final norm.  The theorem
+      delivered to the contour telescope must display
+      `targetEndpoint - sourceEndpoint` literally.
 5. **Continuous Green certificate.**  Iterate the one-coordinate contour
    theorem over all four coordinates, retain the literal normalized
    Brillouin factor, and obtain an explicit `B0` and fine rate
