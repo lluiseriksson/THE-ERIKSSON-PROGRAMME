@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceTargetCharacterDictionary
 
 /-!
-# PRE-VALIDATION: one-fibre dictionary for the literal full CMP89 (2.46) integrand
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# One-fibre dictionary for the literal full CMP89 (2.46) integrand
 
 This module keeps the target and source coarse Fourier characters visible and
 identifies only the finite alias sum inside one coarse reciprocal fibre.  The

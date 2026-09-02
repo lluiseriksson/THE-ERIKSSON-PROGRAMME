@@ -45112,3 +45112,65 @@ full vector carry, produce a uniform physical bound, attain window 15,
 discharge a terminal field or construct a `TermSource`; counters remain
 exactly `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
+
+## Addendum 1086 (2026-09-02, **four full point-source dictionaries cold-sealed; no terminal-field movement**)
+
+Exact source checkpoint `ea72912edf9fd40121589ed89854a9bc9ebf02bb`
+passed runner `full-point-source-character-dictionaries-cold-v1` in a fresh
+Colab Pro+ CPU/high-RAM checkout without restored `.lake/build` state.  The
+source-character focal built the cold graph in `2448.218 s`; the subsequent
+target-character, one-fibre-integrand and outer-synthesis focals completed in
+`37.366 s`, `21.268 s` and `16.012 s`.  Their four audits exited zero in
+`11.205 s`, `18.128 s`, `8.290 s` and `9.000 s`.  The final graph reached
+`8716/8716` jobs.
+
+The strict audit parser found exactly eight expected declaration blocks.
+Each uses only a subset of
+`{propext, Classical.choice, Quot.sound}`; neither `sorryAx` nor
+`ofReduceBool` appears.  All eight source/audit PRE-VALIDATION notices are
+retired and the four exact audits enter `YangMillsCore.lean`.
+
+Colab emitted payload SHA-256
+`D8AD7E67E686D6F5C9EA97C01813C245D4A42F8D18FF468B1151FCAA362EF73C`
+and archive SHA-256
+`2700E766328B1095960EB254F041C2ACF6723D553E633C2E974341D288AAC2E2`.
+The archive downloaded and independently re-hashed on Windows to the same
+value.  Its extracted newline-terminated `evidence.json` hashes to
+`5230A7D2503DCDD41D3C3111234F26D998442CE8BB30D1CFFC10C02527B52202`;
+the payload hash printed by the runner excludes that final newline.  The
+archive, extracted JSON and README are preserved under
+`validation-evidence/cmp99-full-point-source-dictionaries-cold-ea72912e-20260902/`.
+
+This seal stops at the exact reflected outer finite synthesis.  It does not
+identify that synthesis with the full-G torus DFT or affine residue sum,
+transport the full two-endpoint Eq. (2.46) centered sample to physical
+momenta, identify the periodic solution with the generated regional Green,
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
+
+## Addendum 1087 (2026-09-02, **generated outer composition and reflected owner character passed hot; no seal**)
+
+After Addendum 1086 completed and its archive was downloaded, the retained
+runtime was used only for the next bounded diagnostic.  At source
+`83de6050ee4109d897d5af8511e06362463d76c5`, the generated-G/outer-synthesis
+composition built in `34.176 s` and its one-declaration audit exited zero in
+`13.842 s` with exactly
+`{propext, Classical.choice, Quot.sound}`.
+
+The same run then stopped on the owner-character proof because a broad
+rewrite could not orient the inverse source character.  The first repair at
+`fef6a25c031539bc84dea4c4e075cd5195ef26bf` exposed the missing middle
+identity: after inversion the two character orientations differ by the
+existing `cmp99FlatZModFourierCharacter_neg_swap`, not by commutativity
+alone.  At source `d8b4d1a0c43d72ad90c709e5049972b2279cb2a1`, a three-line
+`calc` makes inverse, negative swap and final commutation explicit.  The
+owner-character focal then completed in `16.855 s`; its audit exited zero in
+`7.993 s` with exactly
+`{propext, Classical.choice, Quot.sound}`.
+
+Both results remain `HOT_DEBUG_NOT_EVIDENCE`.  Their PRE-VALIDATION notices
+remain and neither audit enters `YangMillsCore.lean`.  They do not establish
+the exact two-endpoint centered-to-physical Eq. (2.46) transport or any
+analytic bound.  Counters remain exactly `20/41`, window 15 remains
+compatible but unattained, and `TermSource = 0` remains exact.

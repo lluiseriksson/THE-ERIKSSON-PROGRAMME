@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceCharacterDictionary
 
 /-!
-# PRE-VALIDATION: physical target character inside one reciprocal fibre
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Physical target character inside one reciprocal fibre
 
 This is the target-side companion of the source-character dictionary. It
 keeps the positive Eq. (2.46) output phase and the common coarse Fourier

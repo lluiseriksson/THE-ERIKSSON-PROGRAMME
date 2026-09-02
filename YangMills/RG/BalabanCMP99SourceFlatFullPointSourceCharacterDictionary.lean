@@ -6,10 +6,7 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointAliasPhase
 import YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection
 
 /-!
-# PRE-VALIDATION: physical point-source character inside one reciprocal fibre
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Physical point-source character inside one reciprocal fibre
 
 This module isolates the source-side dictionary needed to compare the
 periodic point-source construction with the literal full Eq. (2.46)

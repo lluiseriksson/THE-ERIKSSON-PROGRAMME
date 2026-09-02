@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary
 
 /-!
-# PRE-VALIDATION: reflected outer synthesis of the literal full CMP89 (2.46) kernel
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Reflected outer synthesis of the literal full CMP89 (2.46) kernel
 
 This module sums the already separated one-fibre identity over the coarse
 reciprocal box.  It preserves the opposite base momentum and the two

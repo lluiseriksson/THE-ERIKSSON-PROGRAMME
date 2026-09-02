@@ -15903,27 +15903,45 @@ this seal does not yet prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Full Eq. (2.46) point-source endpoint-character dictionaries (PRE-VALIDATION)
+### Full Eq. (2.46) point-source endpoint-character dictionaries cold-sealed
 
-Three promoted focal/audit pairs prepare the source-specific bridge from the
-finite periodic CMP99 point-source construction to the literal two-endpoint
-CMP89 (2.46) integrand.  The first proves scalar linearity of the internally
-constructed transposed alias solve.  The second factors the inverse fine
-source character into the literal (2.46) point-source alias vector and one
-common inverse coarse character, then applies that factorization inside the
-actual fixed-fibre coefficients.  The third keeps the positive target alias
-phase and its common coarse target character separate.  Target and source
-orientations are proved independently; no abstract self-adjointness bridge is
-used.
+Four focal/audit pairs form the source-specific bridge from the finite
+periodic CMP99 point-source construction to the literal two-endpoint CMP89
+(2.46) integrand.  The source pair factors the inverse fine character into
+the literal point-source alias vector and one common inverse coarse character,
+then applies it inside the actual fixed-fibre coefficients.  The target pair
+keeps the positive target alias phase and its common coarse character
+separate.  The one-fibre pair combines those independently oriented factors
+with the internally constructed transposed solve.  The outer pair sums that
+identity over the coarse reciprocal box while preserving the opposite base
+momentum and both reflected physical endpoints.  No abstract
+self-adjointness bridge is used.
 
-All six files pass the exact lightweight overlay and import-prefix guards and
-carry visible PRE-VALIDATION notices.  None has yet been compiler- or
-axiom-verified, and their audits remain outside `YangMillsCore.lean`.  This
-promotion does not yet prove the one-fibre synthesis equality, perform the
-outer coarse-momentum sum, identify the periodic solution with the generated
-regional Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
-attain window 15, discharge rows 23--24, move `20/41`, or construct a
-`TermSource`; `TermSource = 0` remains exact.
+Exact source checkpoint `ea72912edf9fd40121589ed89854a9bc9ebf02bb`
+passed a fresh Colab Pro+ CPU/high-RAM checkout with no restored project build
+graph.  The terminal focal reached `8716/8716` jobs; all eight stages exited
+zero, and the four audits exposed exactly eight declaration blocks, each
+using a subset of `{propext, Classical.choice, Quot.sound}`.  The eight
+PRE-VALIDATION notices are retired and all four audits enter
+`YangMillsCore.lean`.
+
+Colab emitted payload SHA-256
+`D8AD7E67E686D6F5C9EA97C01813C245D4A42F8D18FF468B1151FCAA362EF73C`
+and archive SHA-256
+`2700E766328B1095960EB254F041C2ACF6723D553E633C2E974341D288AAC2E2`.
+The archive downloaded successfully and independently re-hashed on Windows
+to the same value.  Its extracted newline-terminated `evidence.json` hashes
+to `5230A7D2503DCDD41D3C3111234F26D998442CE8BB30D1CFFC10C02527B52202`;
+the runner's payload hash excludes that final newline.  Evidence is preserved
+under
+`validation-evidence/cmp99-full-point-source-dictionaries-cold-ea72912e-20260902/`.
+
+This seal does not yet identify the finite outer synthesis with the full-G
+torus DFT or its affine residue sum, transport the full two-endpoint Eq.
+(2.46) sample from centered to uncentered momenta, identify the periodic
+solution with the generated regional Green, prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
