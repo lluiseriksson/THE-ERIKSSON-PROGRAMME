@@ -44199,3 +44199,21 @@ domain for the future alias-cycle uniqueness chain; it proves no contour
 deformation, CMP89 (2.42), uniform physical `B0`/`delta0`, or attainment of
 window 15.  It discharges no terminal field: counters remain exactly `20/41`
 and `TermSource = 0`.
+
+## Addendum 1050 (2026-09-02, **CMP89 (2.46) alias-cycle factor transport promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes `BalabanCMP89Eq246AliasCycleTransport` and its
+exact audit.  Five pointwise identities transport the literal diagonal fine
+symbol, averaging column, opposite-momentum row, physical fine-point source,
+and inverse-transform target phase through the centered alias permutation.
+The endpoint phases use integer fine-site data and derive the physical-period
+wrap from the sealed lattice-phase theorem; periodicity of the solved Green is
+not accepted as input.
+
+Both files pass the lightweight overlay and import-prefix guards and carry
+exactly one PRE-VALIDATION notice.  No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`.  This promotion does not yet prove
+precision-action covariance, finite-solver uniqueness, complete-integrand
+periodicity, contour deformation, CMP89 (2.42), uniform physical
+`B0`/`delta0`, or attainment of window 15.  It discharges no terminal field:
+counters remain exactly `20/41` and `TermSource = 0`.

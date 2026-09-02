@@ -16064,6 +16064,22 @@ deformation, CMP89 (2.42), uniform physical `B0`/`delta0`, attainment of
 window 15, rows 23--24, or a `TermSource`.  Counters remain `20/41` and
 `TermSource = 0`.
 
+### Eq. (2.46) alias-cycle factor transport (PRE-VALIDATION)
+
+The promoted source derives five pointwise covariance identities under the
+centered alias permutation: the fine diagonal symbol, averaging column,
+opposite-momentum row, normalized fine-point source, and inverse-transform
+target phase.  The two phase identities consume literal integer endpoint data,
+so the `2*pi*(L^j)` wrap cancels by a proved lattice phase rather than by an
+assumed periodicity of the solved Green.
+
+Both modules pass the lightweight textual guards and carry one visible
+PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
+compiler and exact axiom gate.  These factorwise identities do not yet prove
+covariance of the precision action, uniqueness of the finite solver,
+periodicity of the complete integrand, contour deformation, CMP89 (2.42), or
+window 15.  Counters remain `20/41` and `TermSource = 0`.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one
