@@ -44850,3 +44850,19 @@ normalization.  It changes no theorem statement, endpoint orientation,
 Fourier normalization, source vector, hypothesis or constant.  This remains
 hot diagnostic work: no PRE-VALIDATION notice is retired, the target pair has
 not run, and counters remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 1073 (2026-09-02, **source-character second hot retry reduced the endpoint to pure factor permutation; no seal**)
+
+The retained-runtime retry at exact source
+`5f4ef8c777b66960f058b10154671fb4caa3b5fc` stopped after `19.590 s` at the
+same final line, now with every local abbreviation exposed.  The residual
+goal was literally the factor permutation
+`G * v * coarseCharacter = v * coarseCharacter * G`; no Fourier,
+inverse, endpoint or normalization identity remained.
+
+The repair replaces the overly general `ring` call with `ac_rfl`, expressing
+exactly associativity and commutativity of scalar multiplication.  It changes
+no statement, hypothesis, value, rate, normalization or endpoint convention.
+This remains hot diagnostic work: no PRE-VALIDATION notice is retired, the
+target pair has not run, and counters remain exactly `20/41` and
+`TermSource = 0`.

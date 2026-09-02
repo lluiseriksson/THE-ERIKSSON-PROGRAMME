@@ -152,7 +152,7 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq
     d M 1 mass a z pointSource (v A) (e k)]
   simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
     coarseCharacter, owner, z, sourceEndpoint, e]
-  ring
+  ac_rfl
 
 end
 
