@@ -67,17 +67,17 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-directed-full-solution-integral-dictionary-cold-v1"
-runner.SOURCE_SHA = "3b71da757fa69acfeb02312882b4d147fe1ff972"
+runner.RUNNER_REV = "cmp89-eq246-directed-full-solution-integral-dictionary-cold-v2"
+runner.SOURCE_SHA = "7de43366df46de3cbfa7878ab42a63696796ab76"
 runner.MIN_RAM_GIB = 11.0
 runner.ALLOW_GPU_RUNTIME = False
-runner.ROOT = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v1-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v1-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v1-paths.txt")
+runner.ROOT = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v2")
+runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v2-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v2-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-full-solution-integral-dictionary-cold-v2-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean":
-        "7ba05690763cb42ab595f92df5263ca9c8d44c90b570ed2d494c96791848bb80",
+        "d45e9207dc5a8bfdc93278cd07b3229715e1bcd1c507b658a657f5176fe61806",
     "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionaryAudit.lean":
         "345947c2ffbc27ccf55a3e2a002008b54341282459a842a6457560b186a097cd",
 }
