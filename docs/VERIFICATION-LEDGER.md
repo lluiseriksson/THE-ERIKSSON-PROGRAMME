@@ -44916,3 +44916,25 @@ half-open alias reflection, normalization, hypothesis or constant.  This is
 still `HOT_DEBUG_NOT_EVIDENCE`: no PRE-VALIDATION notice is retired, no cold
 seal is claimed, and counters remain exactly `20/41`; window 15 remains
 compatible but unattained and `TermSource = 0` remains exact.
+
+## Addendum 1076 (2026-09-02, **reflected source-character pair passed hot; target factorization stopped at one redundant reassociation; no seal**)
+
+The retained-runtime retry fetched exact source
+`e9c8e14970a491e7f013b31e07f0edd2e694eceb`.  The source-character focal
+and its audit completed successfully, so the explicit point-source
+reflection involution and the corrected opposite-momentum direct endpoint
+both survive elaboration.  This is retained-runtime hot evidence only; it is
+not a cold seal and does not retire PRE-VALIDATION.
+
+The stop-on-first-error queue then reached the target-character focal and
+stopped after `14.424 s` at line 45.  The displayed goal was exactly
+`exp phase = exp phase * (coarseMode * coarseMode⁻¹)`, with
+`hcoarse : coarseMode ≠ 0` already in context.  The preceding rewrite had
+already associated the product, so a second `rw [mul_assoc]` correctly found
+no matching term.  The repair deletes only that redundant reassociation and
+uses the explicit `mul_inv_cancel₀ hcoarse` followed by `mul_one`.
+
+No theorem statement, phase, endpoint, Fourier normalization, hypothesis or
+constant changes.  The target-character module and audit remain unverified;
+counters remain exactly `20/41`, window 15 remains compatible but unattained,
+and `TermSource = 0` remains exact.

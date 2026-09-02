@@ -42,7 +42,7 @@ theorem cmp99FlatFourierMode_eq_fineTargetAliasPhase_mul_coarseMode
     exact Complex.exp_ne_zero _
   apply (mul_right_cancel₀ (inv_ne_zero hcoarse))
   rw [mul_assoc, hphase]
-  rw [mul_assoc, mul_inv_cancel₀ hcoarse, mul_one]
+  rw [mul_inv_cancel₀ hcoarse, mul_one]
 
 /-- Canonical target specialization: the coarse endpoint is the actual block
 owner of the fine target site. -/
