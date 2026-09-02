@@ -65,17 +65,17 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-directed-source-moment-cold-v1"
-runner.SOURCE_SHA = "6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9"
+runner.RUNNER_REV = "cmp89-eq246-directed-source-moment-cold-v2"
+runner.SOURCE_SHA = "e8a1b6be6862256a75cf34f55dae94a48b2e1a37"
 runner.MIN_RAM_GIB = 11.0
 runner.ALLOW_GPU_RUNTIME = False
-runner.ROOT = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v1-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v1-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v1-paths.txt")
+runner.ROOT = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v2")
+runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v2-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v2-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-source-moment-cold-v2-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq246DirectedSourceMoment.lean":
-        "8ad29f284e6e0a321e55a4a607c8741549a52a60073a33e690a43f3365392300",
+        "4becef682d69d45714e70848afe7a561b287d42716ffc30972dfca4f0d8ece46",
     "YangMills/RG/BalabanCMP89Eq246DirectedSourceMomentAudit.lean":
         "d6d92c3806739f36efed59ac8c49d86563ea90e8fd64314ab34b13379143e497",
 }

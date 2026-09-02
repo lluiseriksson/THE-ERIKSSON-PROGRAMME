@@ -15819,7 +15819,7 @@ retired and both exact audits enter `YangMillsCore.lean`. Counters remain
 `20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
 remains exact.
 
-### Eq. (2.46) directed common source moment (PRE-VALIDATION)
+### Eq. (2.46) directed common source moment (cold retry pending)
 
 Source checkpoint `6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9` adds the
 first joint consumer of the two cold-sealed modules above. It specializes the
@@ -15828,11 +15828,19 @@ contour selected by `targetEndpoint - sourceEndpoint`, transports it through
 the exact stabilized source moment, multiplies by the matching target phase,
 and recombines the two scalar factors to the relative `ell^1` endpoint decay.
 
-The focal and its exact audit each retain one visible PRE-VALIDATION notice
-and remain outside `YangMillsCore.lean`. This checkpoint controls only the
-common scalar moment; it does not yet bind the separate bare-diagonal and
-central branches into the Fourier integrand, construct the continuous Green,
-prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+The first cold gate on exact source `6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9`
+stopped at the focal after `1500.562 s`: every dependency reached
+`8508/8509`, while line 101 used `rfl` across a multiplication-associativity
+normalization. The exact FAIL archive is retained under
+`validation-evidence/cmp89-directed-source-moment-cold-6ae9648a-20260902-fail/`.
+Repair checkpoint `e8a1b6be6862256a75cf34f55dae94a48b2e1a37` changes only
+that step to `simpa only [g, mul_assoc]`; its cold retry remains pending.
+
+The focal and audit therefore retain their visible PRE-VALIDATION notices and
+remain outside `YangMillsCore.lean`. This checkpoint controls only the common
+scalar moment; it does not yet bind the separate bare-diagonal and central
+branches into the Fourier integrand, construct the continuous Green, prove
+CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`.
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)

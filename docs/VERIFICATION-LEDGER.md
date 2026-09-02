@@ -43772,3 +43772,38 @@ the Fourier integrand, construct the continuous Green, prove CMP89 (2.42),
 produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
+
+## Addendum 1033 (2026-09-02, **directed source-moment cold FAIL preserved; mechanical retry prepared; 20/41 unchanged**)
+
+The fresh Colab Pro+ CPU/high-RAM gate used runner revision
+`cmp89-eq246-directed-source-moment-cold-v1`, runner commit
+`d90d208a3889a0dde5576b87fa9aace6cc2363b0`, notebook commit
+`0b920c3ebe3398b7c1a8d1a2cdbc2547580ee5cc`, and exact source
+`6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9`. Toolchain, Mathlib pin,
+both source-blob hashes and textual guards passed. No project `.lake/build`
+graph was restored.
+
+The focal stopped at `8509/8509` with exit one after `1500.562 s`; all
+dependencies had reached `8508/8509`. The first and only Lean error is
+`BalabanCMP89Eq246DirectedSourceMoment.lean:101:10`: tactic `rfl` did not
+cross the associativity difference between `A * (g * C)` and
+`(A * exp(...) ) * C`. The audit did not run. The runner emitted
+`FINAL_STATUS=FAIL` and respected stop-on-first-error.
+
+The durable archive SHA-256 is
+`974151A9C568DB8BFFE335AD86C89174DE875AB8AF784B792D6D653F0AD543B3`;
+the runner payload hash is
+`30403A35C91A199A684252EA2CDB9DC6DBF3CDC2BA68FFBB59F7FF50D13F082B`,
+and the archived `evidence.json` hashes to
+`10AC2673C529C57E248C22DB3D3881A9EE8FC18F4EF11496B79B1FFE1D06B8AD`.
+The fail-closed local verifier accepts the exact single-stage FAIL prefix.
+The runtime was disconnected and deleted after archive verification.
+
+Repair checkpoint `e8a1b6be6862256a75cf34f55dae94a48b2e1a37` changes only
+the failed normalization to `simpa only [g, mul_assoc]`. Runner revision
+`cmp89-eq246-directed-source-moment-cold-v2` pins that source for a fresh
+retry. Both PRE-VALIDATION notices remain and no audit enters
+`YangMillsCore.lean` before that gate passes. This failure and repair do not
+construct the continuous Green, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
