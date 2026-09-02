@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceSolutionCycle
 
 /-!
-# PRE-VALIDATION: physical periodicity of the complete CMP89 (2.46) integrand
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Physical periodicity of the complete CMP89 (2.46) integrand
 
 The full fine-to-fine point-source integrand is periodic in each physical
 Brillouin coordinate.  The proof transports both the solved source fibre and

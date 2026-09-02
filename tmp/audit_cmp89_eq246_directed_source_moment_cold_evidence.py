@@ -255,6 +255,25 @@ EXPECTED_CONFIGS = {
             "fine_point_source_solution_cycle_audit",
         ],
     },
+    "cmp89-eq246-integrand-periodicity-seam-cold-v1": {
+        "source_sha": "dec1cb163d7d0d2dd5d79270f6591db68a17ec5f",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicity.lean":
+                "3f44af581856e4d0ebeb39a5e3ae5d90b46a87bf71f011c48f7c972c0a755e57",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicityAudit.lean":
+                "26773a4fe09cca26982b033d2f00ff86e02cd4a377777baf167d34892a874e2c",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeam.lean":
+                "244112db1c86da0719e5e1bb2fc2966ab32a3a362c5d1828294007de665a3d80",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeamAudit.lean":
+                "df9e4ae804d6a9d43bb8739d3cef355e39b50de41c7da3fba2334e2e9c214184",
+        },
+        "queue": [
+            "integrand_periodicity_focal",
+            "integrand_periodicity_audit",
+            "boundary_seam_focal",
+            "boundary_seam_audit",
+        ],
+    },
 }
 
 

@@ -15746,33 +15746,45 @@ complete integrand, contour deformation, CMP89 (2.42), uniform physical
 `B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
 `TermSource = 0`.
 
-### Eq. (2.46) complete-integrand periodicity (PRE-VALIDATION)
+### Eq. (2.46) complete-integrand periodicity (cold-sealed)
 
 The promoted leaf combines the cold-sealed precision and solved-source cycles
 with the already proved target-phase cycle, then reindexes the literal finite
 alias sum.  Periodicity is derived for the complete physical fine-to-fine
 integrand; it is not accepted as a property of an arbitrary extension.
 
-The focal and its one-declaration audit pass the lightweight textual guards
-and retain visible PRE-VALIDATION notices.  They remain outside
-`YangMillsCore.lean` pending compiler and strict axiom gates.  This leaf does
-not yet prove the boundary seam, contour deformation, CMP89 (2.42), uniform
-physical `B0`/`delta0`, or attainment of window 15.  Counters remain `20/41`
-and `TermSource = 0`.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-integrand-periodicity-seam-cold-v1` checked out exact source
+`dec1cb163d7d0d2dd5d79270f6591db68a17ec5f`, verified all four source blobs,
+the official Lean `v4.29.0-rc6` asset and exact Mathlib pin, and restored no
+project `.lake/build` graph.  This focal completed in `1399.116 s`; its exact
+one-declaration audit exited zero in `8.770 s`.  The runner's strict axiom
+gate passed, the two PRE-VALIDATION notices are retired, and the audit enters
+`YangMillsCore.lean`.
 
-### Eq. (2.46) complete-integrand boundary seam (PRE-VALIDATION)
+This leaf does not yet prove the boundary seam, contour deformation, CMP89
+(2.42), uniform physical `B0`/`delta0`, or attainment of window 15.  Counters
+remain `20/41` and `TermSource = 0`.
+
+### Eq. (2.46) complete-integrand boundary seam (cold-sealed)
 
 The promoted source constructs the finite-solver domains independently on the
 two opposite Brillouin faces from the common-polistrip windows and applies the
 complete-integrand period shift.  It proves only the seam needed by contour
 deformation; it does not assume global periodicity of the rational extension.
 
-The focal and its one-declaration audit pass the lightweight textual guards
-and retain visible PRE-VALIDATION notices.  They remain outside
-`YangMillsCore.lean` pending compiler and strict axiom gates.  This leaf does
-not yet perform a one-coordinate contour shift, telescope four coordinates,
-prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or attain window
-15.  Counters remain `20/41` and `TermSource = 0`.
+The same fresh-checkout runner compiled this focal in `30.956 s` and its exact
+one-declaration audit in `9.023 s`.  The shared archive passed the fail-closed
+local verifier with SHA-256
+`2E3C1A82D9A274539FFD2D17A6A72B75E1A7D6A9E888AAE10454663DD2A244A3`;
+evidence is preserved under
+`validation-evidence/cmp89-integrand-periodicity-seam-cold-dec1cb16-20260902/`.
+The two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`.
+
+This leaf does not yet perform a one-coordinate contour shift, telescope four
+coordinates, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or
+attain window 15.  Counters remain `20/41` and `TermSource = 0`.
 
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 

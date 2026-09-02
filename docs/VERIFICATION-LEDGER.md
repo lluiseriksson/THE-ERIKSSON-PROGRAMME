@@ -44443,3 +44443,43 @@ contour deformation, CMP89 (2.42), uniform physical `B0`/`delta0`, attainment
 of window 15, a new terminal field, or a `TermSource`.  Counters remain
 exactly `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
+
+## Addendum 1058 (2026-09-02, **CMP89 complete-integrand periodicity and boundary seam cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-integrand-periodicity-seam-cold-v1`, published at runner commit
+`81ddb7749aaf4b79275c2a870a43d03ecda11337` and launcher commit
+`e58f3b31d905dbb14545d033a8951153daaa691e`, checked out exact source
+checkpoint `dec1cb163d7d0d2dd5d79270f6591db68a17ec5f`.  It verified the official
+Lean `v4.29.0-rc6` asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, all four source blobs and both
+textual guards, without restoring a project `.lake/build` graph.
+
+The four stop-on-first-error stages all exited zero:
+
+- complete physical integrand periodicity focal `1399.116 s`, audit `8.770 s`;
+- physical Brillouin-face boundary seam focal `30.956 s`, audit `9.023 s`.
+
+The runner's strict audit gate passed.  The canonical evidence JSON has
+SHA-256
+`51AAB3A1C51923212D1D64CE00298E4A979C93344F7116733FC47BBBA65347D7`,
+and the downloaded archive re-hashed on Windows to
+`2E3C1A82D9A274539FFD2D17A6A72B75E1A7D6A9E888AAE10454663DD2A244A3`.
+The fail-closed local verifier accepts every environment/source pin, all
+sixteen records and the exact four-stage queue.  Evidence is preserved under
+`validation-evidence/cmp89-integrand-periodicity-seam-cold-dec1cb16-20260902/`.
+
+The original browser cell holding the runner transcript was lost when its tab
+closed while the runtime remained alive.  The preserved recovery notebook
+(SHA-256
+`B942B13247230607C80CF66999909AC959FB70CDCD74468D49B5AB4A7FFB2B64`)
+records the read-only recovery of `FINAL_STATUS=PASS`, every exit code and the
+archive hash; it is not misreported as the missing original transcript.
+
+Exactly the four PRE-VALIDATION notices in these two focal/audit pairs are
+retired and both audits enter `YangMillsCore.lean`.  This seal proves complete
+integrand periodicity and its boundary seam only.  It does not prove a
+one-coordinate contour shift, the four-coordinate telescope, CMP89 (2.42),
+uniform physical `B0`/`delta0`, attainment of window 15, a terminal field, or
+a `TermSource`.  Counters remain exactly `20/41`, window 15 remains compatible
+but unattained, and `TermSource = 0` remains exact.

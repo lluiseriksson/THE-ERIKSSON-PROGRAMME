@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicity
 import YangMills.RG.BalabanCMP89Eq246FullSolutionDomain
 
 /-!
-# PRE-VALIDATION: boundary seam for the complete CMP89 (2.46) point-source integrand
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Boundary seam for the complete CMP89 (2.46) point-source integrand
 
 Only the two opposite Brillouin faces are compared.  The common-polistrip
 windows construct the finite-solver domain independently at the lower and
