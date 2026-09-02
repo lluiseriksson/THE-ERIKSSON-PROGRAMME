@@ -2,9 +2,9 @@ import YangMills.RG.BalabanCMP89Eq246FineToFineGreenBoundarySeam
 import YangMills.RG.HolomorphicVerticalShiftBoundary
 
 /-!
-# PRE-VALIDATION: one-coordinate contour shift for the complete CMP89 (2.46) kernel
+# One-coordinate contour shift for the complete CMP89 (2.46) kernel
 
-Source is present, its promoted `.olean` has not yet been materialized, and\nthe result has not yet been compiler-verified.\n\nThe physical fine-to-fine integrand is shifted through one coordinate of the
+The physical fine-to-fine integrand is shifted through one coordinate of the
 common polistrip.  Holomorphy is produced from the literal full alias solver,
 and the two vertical sides are cancelled by the constructed boundary seam.
 No global periodicity premise is accepted.
@@ -137,5 +137,4 @@ theorem intervalIntegral_cmp89Eq246PhysicalFineToFineGreenIntegrand_coordinateSh
 end
 
 end YangMills.RG
-
 

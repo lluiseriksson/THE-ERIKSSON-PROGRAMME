@@ -274,6 +274,19 @@ EXPECTED_CONFIGS = {
             "boundary_seam_audit",
         ],
     },
+    "cmp89-eq246-integrand-one-coordinate-shift-cold-v1": {
+        "source_sha": "881a6de1c6c945161c65f9d9966319b17e386e4c",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean":
+                "884b451741bc5c8bb4ae3c03e074d1bfb53a08078a3bc20868e893e624a67899",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShiftAudit.lean":
+                "8cb5cfd2b83cd08b5dba38cce758b4978752fb6136154821e8d49cef88af1214",
+        },
+        "queue": [
+            "integrand_one_coordinate_shift_focal",
+            "integrand_one_coordinate_shift_audit",
+        ],
+    },
 }
 
 

@@ -44483,3 +44483,44 @@ one-coordinate contour shift, the four-coordinate telescope, CMP89 (2.42),
 uniform physical `B0`/`delta0`, attainment of window 15, a terminal field, or
 a `TermSource`.  Counters remain exactly `20/41`, window 15 remains compatible
 but unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1059 (2026-09-02, **CMP89 complete-integrand one-coordinate contour shift cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-integrand-one-coordinate-shift-cold-v1`, published at runner
+commit `71fd94dd1afef8fe5657c3c6dcb3a5c709ad64f6` and launcher commit
+`da52b3a91de748042171e0e7d9624c8d9c827484`, checked out exact source
+checkpoint `881a6de1c6c945161c65f9d9966319b17e386e4c`.  It verified the official
+Lean `v4.29.0-rc6` asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, both source blobs and both
+textual guards, without restoring a project `.lake/build` graph.
+
+The stop-on-first-error focal and audit stages both exited zero:
+
+- complete-integrand one-coordinate shift focal `1388.804 s`;
+- exact one-declaration audit `11.124 s`.
+
+The runner's strict audit gate passed.  The canonical evidence JSON has
+SHA-256
+`1C313B1B51EC84DF22FCFF706D2299DFE377309F7B491E41D82CDD19B1B771DE`,
+and the downloaded archive re-hashed on Windows to
+`0B7267C0851EFA5C6C8F904B4C5AD33F7A1A757723D6DA19427FAC055852FDE0`.
+The fail-closed local verifier accepts every environment/source pin, all
+sixteen records and the exact two-stage queue.  Evidence is preserved under
+`validation-evidence/cmp89-integrand-one-coordinate-shift-cold-881a6de1-20260902/`.
+
+The original browser cell holding the runner transcript was lost when its tab
+closed while the runtime remained alive.  The preserved recovery notebook
+(SHA-256
+`636852CE9E3DDF672D36D445BA187A4E1BEB3408422FE81EA04E865FD61A9335`)
+records the read-only recovery of `FINAL_STATUS=PASS`, both exit codes and the
+archive hash; it is not misreported as the missing original transcript.
+
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired,
+and the audit enters `YangMillsCore.lean`.  This seal proves one coordinate of
+the complete physical fine-to-fine contour shift only.  It does not prove the
+four-coordinate telescope, identify the normalized synthesis with the
+generated Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge a terminal field, or construct a `TermSource`.
+Counters remain exactly `20/41`, window 15 remains compatible but unattained,
+and `TermSource = 0` remains exact.

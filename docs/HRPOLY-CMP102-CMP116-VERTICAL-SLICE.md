@@ -15786,7 +15786,7 @@ This leaf does not yet perform a one-coordinate contour shift, telescope four
 coordinates, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or
 attain window 15.  Counters remain `20/41` and `TermSource = 0`.
 
-### Eq. (2.46) complete-integrand one-coordinate contour shift (PRE-VALIDATION)
+### Eq. (2.46) complete-integrand one-coordinate contour shift (cold-sealed)
 
 The promoted source specializes the generic rectangular Cauchy theorem to
 one coordinate of the complete physical fine-to-fine integrand.  Common-strip
@@ -15794,12 +15794,24 @@ holomorphy is produced from the literal finite solver, and the vertical sides
 cancel through the cold-sealed boundary seam.  Global periodicity of an
 arbitrary extension is not accepted as an input.
 
-The source and its exact one-declaration audit carry visible PRE-VALIDATION
-notices and remain outside `YangMillsCore.lean` pending compiler and strict
-axiom gates.  This leaf does not yet telescope four coordinates, identify the
-normalized synthesis with the generated Green, prove CMP89 (2.42), produce
-uniform physical `B0`/`delta0`, or attain window 15.  Counters remain `20/41`
-and `TermSource = 0`.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-integrand-one-coordinate-shift-cold-v1` checked out exact source
+checkpoint `881a6de1c6c945161c65f9d9966319b17e386e4c`, without restoring a
+project `.lake/build` graph.  The focal and exact audit exited zero in
+`1388.804 s` and `11.124 s`.  The fail-closed verifier accepted all sixteen
+records, both source blobs and the exact two-stage queue.  The canonical
+evidence JSON has SHA-256
+`1C313B1B51EC84DF22FCFF706D2299DFE377309F7B491E41D82CDD19B1B771DE`;
+the downloaded archive re-hashed on Windows to
+`0B7267C0851EFA5C6C8F904B4C5AD33F7A1A757723D6DA19427FAC055852FDE0`.
+Evidence is preserved under
+`validation-evidence/cmp89-integrand-one-coordinate-shift-cold-881a6de1-20260902/`.
+
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired,
+and the audit enters `YangMillsCore.lean`.  This leaf does not yet telescope
+four coordinates, identify the normalized synthesis with the generated
+Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or attain
+window 15.  Counters remain `20/41` and `TermSource = 0`.
 
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
