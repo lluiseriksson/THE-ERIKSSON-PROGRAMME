@@ -43752,3 +43752,23 @@ envelope inside the joint directed moment, construct the continuous Green,
 prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1032 (2026-09-02, **directed common source moment promoted PRE-VALIDATION; 20/41 unchanged**)
+
+Exact source checkpoint `6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9`
+adds `BalabanCMP89Eq246DirectedSourceMoment` and its exact audit. The theorem
+is the first joint consumer of the directed endpoint phase and the abstract
+source-envelope transport cold-sealed by Addendum 1031. It chooses the
+literal fine-point source internally, proves its common envelope on the
+signed contour selected by `targetEndpoint - sourceEndpoint`, transports the
+envelope through the stabilized full-solution moment, and recombines the
+target/source scalar factors to the exact relative `ell^1` decay.
+
+Both files pass the local overlay and import-prefix guards, carry exactly one
+visible PRE-VALIDATION notice, and remain outside `YangMillsCore.lean`.
+No Lean or Lake ran on Windows and compiler status is **NOT CHECKED**. This
+checkpoint does not yet bind the separate diagonal and central branches into
+the Fourier integrand, construct the continuous Green, prove CMP89 (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
+23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.

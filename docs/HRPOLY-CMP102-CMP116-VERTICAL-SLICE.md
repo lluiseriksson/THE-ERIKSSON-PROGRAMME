@@ -15819,6 +15819,22 @@ retired and both exact audits enter `YangMillsCore.lean`. Counters remain
 `20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
 remains exact.
 
+### Eq. (2.46) directed common source moment (PRE-VALIDATION)
+
+Source checkpoint `6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9` adds the
+first joint consumer of the two cold-sealed modules above. It specializes the
+abstract common envelope to the literal fine-point-source phase on the signed
+contour selected by `targetEndpoint - sourceEndpoint`, transports it through
+the exact stabilized source moment, multiplies by the matching target phase,
+and recombines the two scalar factors to the relative `ell^1` endpoint decay.
+
+The focal and its exact audit each retain one visible PRE-VALIDATION notice
+and remain outside `YangMillsCore.lean`. This checkpoint controls only the
+common scalar moment; it does not yet bind the separate bare-diagonal and
+central branches into the Fourier integrand, construct the continuous Green,
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one
