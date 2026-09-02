@@ -12,7 +12,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "4905c757729cd040898dc943b835b80e284e76e8"
+SOURCE_SHA = "82f7b49d3d556735154a482563432874c0d381ad"
 REPO = Path("/content/hrpoly-cmp89-mass-uniform-final-aliasing-cold-v1")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
@@ -34,6 +34,7 @@ QUEUE = (
         {
             "YangMills.RG.cmp99FlatFourierMode_inv_eq_finePointSourceAliasVector_mul_coarseMode_inv",
             "YangMills.RG.cmp99FlatFourierMode_inv_eq_owned_finePointSourceAliasVector_mul_coarseMode_inv",
+            "YangMills.RG.cmp89Eq246FinePointSourceAliasVector_comp_reflection_eq_neg",
             "YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq",
         },
     ),
