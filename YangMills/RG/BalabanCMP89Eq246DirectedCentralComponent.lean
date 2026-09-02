@@ -2,11 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246DirectedSourceMoment
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralComponentBound
 
 /-!
-# PRE-VALIDATION: directed central component below CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been cold-verified by the compiler.
-The exact draft passed one retained-runtime focal/audit diagnostic only.
+# Directed central component below CMP89 (2.46)
 
 This draft keeps the two directed inputs to the central numerator separate:
 the stabilized full-solution moment and the noncentral source moment.  It

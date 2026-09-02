@@ -15848,7 +15848,7 @@ branches into the Fourier integrand, construct the continuous Green, prove
 CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`.
 
-### Eq. (2.46) directed central component (PRE-VALIDATION; hot diagnostic PASS)
+### Eq. (2.46) directed central component (cold-sealed)
 
 Exact promoted source checkpoint
 `76b64ebc1307c1445136941bdcf1c01ace2f4995` adds the two directed central
@@ -15860,11 +15860,16 @@ sealed central-row reciprocal estimate.
 
 Before promotion, the byte-identical drafts passed in the retained Colab
 runtime: focal `8513/8513`, exit zero in `22.129 s`; audit exit zero in
-`9.757 s`; both declarations used exactly
-`{propext, Classical.choice, Quot.sound}`. This is diagnostic evidence, not a
-cold seal. Both promoted modules therefore retain one visible PRE-VALIDATION
-notice and remain outside `YangMillsCore.lean` pending a fresh exact-source
-checkout with no project build restoration.
+`9.757 s`.  The independent cold runner
+`cmp89-eq246-directed-central-component-cold-v1` then checked out the exact
+source above in a fresh Colab Pro+ CPU/high-RAM runtime with no restoration of
+the project `.lake/build` graph.  Its focal exited zero in `1072.171 s` and
+its exact audit exited zero in `8.233 s`; both declarations passed the axiom
+allowlist `{propext, Classical.choice, Quot.sound}`.  The locally verified
+archive SHA-256 is
+`C6CB43993204335C5D4DD34F7FFE27C598793D18D846CCF77F14C226B1B0E02B`.
+The two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`.
 
 This brick still does not combine the bare diagonal and central components
 into the full Fourier integrand, construct the continuous Green, prove CMP89
