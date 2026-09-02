@@ -76,21 +76,21 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-domain-cycle-uniqueness-cold-v1"
-runner.SOURCE_SHA = "b78bbe6f8ae609f88c7396e58a6a4527945f427f"
+runner.RUNNER_REV = "cmp89-eq246-domain-cycle-uniqueness-cold-v2"
+runner.SOURCE_SHA = "df364a3c629004ff7ca1062247cfe488b0579f2e"
 runner.MIN_RAM_GIB = 11.0
 runner.ALLOW_GPU_RUNTIME = False
-runner.ROOT = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v1-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v1-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v1-paths.txt")
+runner.ROOT = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v2")
+runner.EVIDENCE = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v2-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v2-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-eq246-domain-cycle-uniqueness-cold-v2-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq246FullSolutionDomain.lean":
         "daf253d68199083ed3a71e2890db08b94d782222c9dfd69b28ff004c62bd60e2",
     "YangMills/RG/BalabanCMP89Eq246FullSolutionDomainAudit.lean":
         "12d9c9525e0b2fbff6454a85288e8b025b2346319ca6c988f017f9e028181738",
     "YangMills/RG/BalabanCMP89Eq246AliasCycleTransport.lean":
-        "215c664842abca04c0ee068a0d9949a03bee3db141e6160ea6a71da3f8264946",
+        "8f6ffae2b417589d4c61aa00320666bd72fd1be0b4756580afb8508304ce13f7",
     "YangMills/RG/BalabanCMP89Eq246AliasCycleTransportAudit.lean":
         "69f73e6d66806fea6aa538a3d2cb4d26ce9158a2c7b162a0ff5ae0eb3fe4cb88",
     "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniqueness.lean":
