@@ -44724,3 +44724,22 @@ No PRE-VALIDATION notice is retired from this partial cold gate.  It does not
 prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1067 (2026-09-02, **finite-grid hot retry exposed the affine-map presentation; second definitional repair; no seal**)
+
+The retained high-RAM Colab checkout fetched exact repair checkpoint
+`1235ad0f395992962216d5ac5abd60e45d596413`, preserved its project build
+graph and reran only `BalabanCMP99FullGreenFiniteGridAliasing`.  This was
+explicitly `HOT_DEBUG_NOT_EVIDENCE`.  It stopped in `14.457 s` at the same
+termwise Fourier identity after the preceding named-coefficient unfold had
+worked: the remaining two sides presented the target residue respectively
+as the pointwise lambda
+`target mu + (L^j : Z) * n mu` and the named definition
+`cmp89SignedLatticeResidueAffineMap (L^j) target n`.
+
+The second repair unfolds exactly that affine-map definition before the
+unchanged ring normalization.  It changes no theorem statement, hypothesis,
+Fourier normalization, residue orientation, target/source endpoint or
+summation convention.  No PRE-VALIDATION notice is retired from this hot
+diagnostic.  Counters remain exactly `20/41`, window 15 remains compatible
+but unattained, and `TermSource = 0` remains exact.
