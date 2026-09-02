@@ -6,7 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 
 /-!
-# PRE-VALIDATION: scale-uniform reciprocal bound for the central Eq. (2.46) row
+# Scale-uniform reciprocal bound for the central Eq. (2.46) row
 
 The central branch of the full fine-point-source solution divides by the
 central opposite-momentum averaging row. Nonvanishing alone is not enough for
@@ -14,8 +14,10 @@ the subsequent quantitative solution bound. This module derives the literal
 reciprocal estimate from the already named lower floor of the central
 averaging pair and the strip upper bound for its column factor.
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold Colab evidence for source checkpoint
+`4584f4c9d2cebe4f61a1ec48681256260deb7090` is recorded in Verification
+Ledger Addendum 1025. The focal and its exact axiom audit passed without a
+restored project build graph.
 
 This is a quantitative leaf below the full-solution bound. It makes no claim
 about CMP89 (2.42), uniform physical `B0`/`delta0`, window 15, terminal rows,

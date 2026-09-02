@@ -43545,3 +43545,32 @@ must not be assigned the summable averaging quotient weight. This checkpoint
 does not prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
 window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1025 (2026-09-02, **CMP89 (2.46) central-row reciprocal budget cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU runner
+`cmp89-eq246-central-row-reciprocal-cold-v1` checked out exact source
+checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090`, verified the two exact
+Git-blob hashes and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and restored no project
+`.lake/build`. The `8507/8507`-job focal completed in `2852.214 s`; its exact
+two-declaration audit exited zero in `10.911 s`. Both declarations use only
+`{propext, Classical.choice, Quot.sound}`.
+
+The preserved archive is
+`validation-evidence/cmp89-eq246-central-row-reciprocal-cold-4584f4c9-20260901/evidence.tar.gz`.
+Its SHA-256 is
+`7A9ACEB02F2B0822BED3182EC927C88524FA324C1286B11BE2B83E151367E7C7`;
+the extracted evidence JSON SHA-256 is
+`F86B74AFE4A7FA4C7FF22B74B2E74BA59CE5846FD2C1D5C4B51266E6234BFC4D`;
+the focal output SHA-256 is
+`88F2F7FA34C2B3E6ED1B87DF4C91E43405F2970D99787B8330727D26BD9A823E`;
+and the audit output SHA-256 is
+`7E62FB554DCE45DAB1A15D93CF0800BBC7738AE227C7893EAC9B49DD76825F32`.
+
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired
+and the audit enters `YangMillsCore.lean`. This seals only the literal
+reciprocal budget for the central averaging row. It does not yet seal the
+finite diagonal/full-solution chain, prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP89Eq246CentralAverageRowReciprocalBound
 
 /-!
-# PRE-VALIDATION: audit of the central Eq. (2.46) row reciprocal bound
+# Audit of the central Eq. (2.46) row reciprocal bound
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold Colab evidence for source checkpoint
+`4584f4c9d2cebe4f61a1ec48681256260deb7090` is recorded in Verification
+Ledger Addendum 1025.
 -/
 
 #print axioms YangMills.RG.cmp89Eq246CentralAverageRowReciprocalBound
