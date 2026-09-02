@@ -71,6 +71,7 @@ theorem cmp89Eq246EntireAliasAverageRow_physicalShift_eq_cycle
   unfold cmp89Eq246EntireAliasAverageRow
   apply cmp89Eq248AliasFactor_physicalShift_eq_cycle
     (cmp89Eq246AliasCount_pos L j) mu z
+    (F := fun q => cmp89Eq245EntireAverageAmplitude d (L ^ j) (-q))
   intro q
   exact cmp89Eq245EntireAverageAmplitude_neg_coordinateAliasPeriodShift
     (cmp89Eq246AliasCount_pos L j) mu q
@@ -93,6 +94,9 @@ theorem cmp89Eq246FinePointSourceAliasVector_physicalShift_eq_cycle
   unfold cmp89Eq246FinePointSourceAliasVector
   apply cmp89Eq248AliasFactor_physicalShift_eq_cycle
     (cmp89Eq246AliasCount_pos L j) mu z
+    (F := fun q => Complex.exp (-Complex.I * cmp89Eq251EntirePhase q
+      (cmp89Eq249PhysicalFineLatticeDisplacement
+        (((L ^ j : ℕ) : ℝ)⁻¹) source)))
   intro q
   have h :=
     exp_I_cmp89Eq251EntirePhase_coordinateAliasPeriodShift_physicalFine
@@ -118,6 +122,9 @@ theorem exp_I_cmp89Eq246TargetPhase_physicalShift_eq_cycle
           (((L ^ j : ℕ) : ℝ)⁻¹) target)) := by
   apply cmp89Eq248AliasFactor_physicalShift_eq_cycle
     (cmp89Eq246AliasCount_pos L j) mu z
+    (F := fun q => Complex.exp (Complex.I * cmp89Eq251EntirePhase q
+      (cmp89Eq249PhysicalFineLatticeDisplacement
+        (((L ^ j : ℕ) : ℝ)⁻¹) target)))
   intro q
   exact exp_I_cmp89Eq251EntirePhase_coordinateAliasPeriodShift_physicalFine
     (L ^ j) mu q target

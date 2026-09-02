@@ -44321,3 +44321,39 @@ does not identify the real-slice synthesis with the generated finite
 periodic Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge rows 23--24, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1055 (2026-09-02, **CMP89 domain/cycle/uniqueness queue failed closed at alias transport; explicit-factor repair only**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-domain-cycle-uniqueness-cold-v1`, published at runner commit
+`f864062e68e1be501f684ce82c4941437390679f` and launched from commit
+`1ca9849ae4d84eb036910d0fd8bec5df2c3fc25f`, checked out exact source
+`b78bbe6f8ae609f88c7396e58a6a4527945f427f`.  It verified the official
+toolchain, exact Mathlib pin, all six source blobs and both textual guards,
+without restoring a project `.lake/build` graph.
+
+`BalabanCMP89Eq246FullSolutionDomain` compiled in `1099.528 s` and its exact
+audit passed in `8.279 s`.  The queue then stopped on the first failing
+target, `BalabanCMP89Eq246AliasCycleTransport`, after `33.455 s`; its audit
+and the uniqueness focal/audit did not run.  The canonical runner archive
+passes the fail-closed verifier with `STATUS=FAIL`, payload SHA-256
+`4F49B1054E29FE03E8B3EABD572F90567E5B2E4598024BD6A787E0DE65BBFB8C`, and
+archive SHA-256
+`208CAE8E85FF947308CDDBF3722AADFF73D25C0DB3C3672125596C37874DC254`.
+
+Because the original browser transcript was lost when the tab closed, the
+same retained runtime reran only the failed target.  The preserved debug
+notebook (SHA-256
+`E24369FFF299384B5BAE2DD911CFD6CE740409B12556D6A0FFE9EA1FC2F2E3B4`)
+records exit code `1` after `11.606 s` and the exact three elaboration
+failures: Lean could not infer the factor `F` of
+`cmp89Eq248AliasFactor_physicalShift_eq_cycle` through the row negation or
+the source/target exponentials.  Evidence is preserved under
+`validation-evidence/cmp89-domain-cycle-uniqueness-cold-b78bbe6f-20260902-fail/`.
+
+The repair supplies those three already literal factors explicitly.  It
+changes no theorem statement, source identity, constant or hypothesis.
+All six PRE-VALIDATION notices remain, and the successful domain prefix is
+not promoted separately from the failed consolidated queue.  Counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.
