@@ -2,10 +2,12 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceFibreGreen
 import YangMills.RG.BalabanCMP89Eq251SignedContourPhase
 
 /-!
-# PRE-VALIDATION: directed endpoint phase below CMP89 (2.46)
+# Cold-sealed: directed endpoint phase below CMP89 (2.46)
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`06e6be132c5e7742bb60102e890814d4961b5d2a` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1031.
 
 This module records the algebraic gate needed after the finite diagonal
 solution estimate.  The target synthesis phase must be combined with the

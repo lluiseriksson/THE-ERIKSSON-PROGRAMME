@@ -43718,3 +43718,37 @@ The result does not construct the continuous Green, prove CMP89 (2.42),
 produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
+
+## Addendum 1031 (2026-09-02, **directed endpoint/common envelope cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-endpoint-envelope-cold-v1`, published at runner commit
+`1428ffd8a8f7c576612d3f71a6a8d9cbcdad25d5`, checked out exact source
+checkpoint `06e6be132c5e7742bb60102e890814d4961b5d2a`. It verified the official
+Lean toolchain asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, all four Git-blob hashes, and
+both textual guards. No project `.lake/build` graph was restored.
+
+The directed phase focal completed `8499/8499` jobs with exit zero in
+`1486.845 s`; its exact audit exited zero in `10.511 s`. The source-envelope
+focal completed `8507/8507` jobs with exit zero in `75.617 s`; its audit
+exited zero in `10.602 s`. All seven declaration blocks use exactly
+`{propext, Classical.choice, Quot.sound}`. The runner emitted
+`FINAL_STATUS=PASS` and launcher exit zero.
+
+The durable archive SHA-256 is
+`76A4480CFF8F3061E00FB0DBACBBA11D3FED9AEECB4AE06B052F7A8DB86DAE87`.
+The runner's payload hash, computed before its serialized trailing newline,
+is `A3C3E64F2BA6F3AD04FDA5DE53CE95885F44F6B1A14169B056B1A5768768E451`;
+the archived `evidence.json` including that one newline hashes to
+`4934889AFD8E8BD273534CE640B41002B25B03C12BBBE056858C1920D8A9C821`.
+The fail-closed local verifier accepts the complete four-stage PASS queue,
+the four exact source blobs, runner/source pins and environment pins. The
+runtime was disconnected and deleted after archive verification.
+
+Exactly these four PRE-VALIDATION notices are retired and the two audits
+enter `YangMillsCore.lean`. This seal does not yet specialize the source
+envelope inside the joint directed moment, construct the continuous Green,
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.

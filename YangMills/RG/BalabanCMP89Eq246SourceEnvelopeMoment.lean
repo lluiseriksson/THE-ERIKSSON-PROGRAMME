@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 
 /-!
-# PRE-VALIDATION: common source-envelope transport below CMP89 (2.46)
+# Cold-sealed: common source-envelope transport below CMP89 (2.46)
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`06e6be132c5e7742bb60102e890814d4961b5d2a` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1031.
 
 The absolute point-source strip bound is too coarse for the later relative
 endpoint contour.  This draft isolates the actual input used by the moment

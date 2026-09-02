@@ -15795,9 +15795,12 @@ prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
 
-### Eq. (2.46) directed endpoint phase and common source envelope (PRE-VALIDATION)
+### Eq. (2.46) directed endpoint phase and common source envelope (cold-sealed)
 
-The next finite chain is present but not compiler-verified. The directed
+Exact source checkpoint `06e6be132c5e7742bb60102e890814d4961b5d2a`
+passed a fresh Colab Pro+ CPU/high-RAM checkout, both focal builds and both
+exact axiom gates; Verification Ledger Addendum 1031 records the durable
+evidence. The directed
 phase module separates three facts that must not be conflated: exact
 same-alias target/source phase multiplication, alias-independent directed
 growth of the literal source on the common signed contour, and the matching
@@ -15811,10 +15814,10 @@ The companion source-envelope module takes one named nonnegative scalar
 envelope through the noncentral and full stabilized source moments without
 an alias-cardinality loss. It does not yet specialize `g` to the directed
 physical source phase or transport it through the complete diagonal,
-rank-one and central solution branches. All four files retain visible
-PRE-VALIDATION notices and remain outside `YangMillsCore.lean` pending Colab
-compiler and exact axiom gates. Counters remain `20/41`, window 15 remains
-compatible but unattained, and `TermSource = 0` remains exact.
+rank-one and central solution branches. The four PRE-VALIDATION notices are
+retired and both exact audits enter `YangMillsCore.lean`. Counters remain
+`20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
+remains exact.
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
