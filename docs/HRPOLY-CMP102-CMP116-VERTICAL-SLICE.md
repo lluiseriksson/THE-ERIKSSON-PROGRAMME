@@ -16003,6 +16003,13 @@ It therefore does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
 
+The first fresh Colab gate stopped at `8523/8523`: both applications of
+`integral_congr_ae` saw the still-folded normalized-integral wrapper.  The
+failure is preserved under
+`validation-evidence/cmp89-directed-full-solution-integral-dictionary-cold-3b71da75-20260902-fail/`.
+The repair unfolds only that wrapper at the two sites; statements, constants
+and hypotheses are unchanged.  PRE-VALIDATION remains until a fresh seal.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one

@@ -44101,3 +44101,27 @@ equalities only: no contour deformation or inverse-uniqueness bridge is
 smuggled into the promotion.  It does not prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1046 (2026-09-02, **first dictionary cold gate failed closed; wrapper repair only**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-full-solution-integral-dictionary-cold-v1`, at runner
+commit `8ca9407146aa775c05301278ec43a7e33eec13ca`, checked out exact source
+`3b71da757fa69acfeb02312882b4d147fe1ff972`.  It verified the pinned
+toolchain, exact Mathlib pin, source blobs and textual guards, restored no
+project `.lake/build`, and reached `8522/8523` before stopping on the first
+focal error after `1336.262 s`.
+
+Lean reported two instances of the same elaboration failure: at lines 70 and
+91, `integral_congr_ae` could not see through
+`cmp89Eq249NormalizedFourDimensionalBrillouinIntegral`.  The durable FAIL
+archive SHA-256 is
+`67060BAD796D13D6D95731075EA5E838B0EAB073DC942B0B1B966DDF7B6C66A9`;
+the evidence payload SHA-256 is
+`678DCC81F3F4D49BC2DBA7E9D51DAA508A9491F08540250B5CDFED293FC5E6F5`.
+
+The repair unfolds only the normalized-integral wrapper immediately before
+the two applications.  It changes no theorem statement, constant or
+hypothesis.  The audit did not run, PRE-VALIDATION remains, and this failure
+is not evidence for the repair.  Counters remain `20/41`, window 15 remains
+compatible but unattained, and `TermSource = 0` remains exact.

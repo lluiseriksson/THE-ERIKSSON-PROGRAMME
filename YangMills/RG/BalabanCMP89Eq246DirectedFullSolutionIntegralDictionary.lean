@@ -67,6 +67,7 @@ theorem cmp89Eq246DirectedNormalizedFullSolutionIntegral_eq_signedContour
             (fun mu => targetEndpoint mu - sourceEndpoint mu))
           targetEndpoint sourceEndpoint := by
   unfold cmp89Eq246DirectedNormalizedFullSolutionIntegral
+  unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
   apply integral_congr_ae
   filter_upwards [] with x
   exact cmp89Eq246DirectedFullSolutionSum_eq_signedContourIntegrand
@@ -88,6 +89,7 @@ theorem cmp89Eq246DirectedNormalizedFullSolutionIntegral_zero_eq_realSlice
             (cmp89Eq251PhysicalBrillouinParameter x mu : ℂ))
           targetEndpoint sourceEndpoint := by
   rw [cmp89Eq246DirectedNormalizedFullSolutionIntegral_eq_signedContour]
+  unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
   apply integral_congr_ae
   filter_upwards [] with x
   congr 1
