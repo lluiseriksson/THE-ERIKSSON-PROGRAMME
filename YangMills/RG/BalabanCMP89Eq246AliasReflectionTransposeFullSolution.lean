@@ -121,12 +121,18 @@ theorem cmp89Eq246StabilizedAliasTransposeFullSolutionMoment_neg_reflection
     cmp89Eq246EntireAliasFineSymbol_neg_reflection_eq
       (d := d) (M := M) mass z central
   rw [hreflectCentral] at hfine
+  have hreflectCentralSymm :
+      (cmp99SourceAliasIndexOneReflection d M).symm
+          (cmp89Eq249CentralAliasIndex d M 1) =
+        cmp89Eq249CentralAliasIndex d M 1 := by
+    apply (cmp99SourceAliasIndexOneReflection d M).injective
+    simp [cmp99SourceAliasIndexOneReflection_central]
   rw [cmp89Eq246StabilizedAliasTransposeFullSolutionMoment,
     cmp89Eq246StabilizedAliasFullSolutionMoment,
     cmp89Eq246StabilizedAliasTransposeNoncentralSourceMoment_neg_reflection,
     cmp89Eq249CentralStabilizedAliasDenominator_neg,
     hcolumn, hfine]
-  simp [central, reflect, cmp89Eq246AliasReflectionSource]
+  simp [central, cmp89Eq246AliasReflectionSource, hreflectCentralSymm]
 
 /-- The arbitrary-source transposed solution at opposite momentum is the
 direct solution with both its source and output alias transported by the
@@ -204,9 +210,8 @@ theorem cmp89Eq246StabilizedAliasTransposeFullSolution_neg_reflection
         ring
   by_cases hm : m = central
   · subst m
-    rw [show reflect central = central by exact hreflectCentral]
     simp only [cmp89Eq246StabilizedAliasTransposeFullSolution,
-      cmp89Eq246StabilizedAliasFullSolution, if_pos]
+      cmp89Eq246StabilizedAliasFullSolution, central, if_pos]
     change
       (momentT - ∑ n ∈ Finset.univ.erase central, transposeCorrection n) /
           cmp89Eq246EntireAliasAverageColumn d M 1 (-z) central =
@@ -223,10 +228,21 @@ theorem cmp89Eq246StabilizedAliasTransposeFullSolution_neg_reflection
       apply reflect.injective
       rw [h]
       exact hreflectCentral.symm
+    have hreflectNe' :
+        cmp99SourceAliasIndexOneReflection d M m ≠
+          cmp89Eq249CentralAliasIndex d M 1 := by
+      simpa only [reflect, central] using hreflectNe
+    have hm' : m ≠ cmp89Eq249CentralAliasIndex d M 1 := by
+      simpa only [central] using hm
+    have hmoment' :
+        cmp89Eq246StabilizedAliasTransposeFullSolutionMoment
+            d M 1 mass a (-z) (cmp89Eq246AliasReflectionSource d M source) =
+          cmp89Eq246StabilizedAliasFullSolutionMoment d M 1 mass a z source := by
+      simpa only [momentT, moment, sourceR] using hmoment
     simp only [cmp89Eq246StabilizedAliasTransposeFullSolution,
-      cmp89Eq246StabilizedAliasFullSolution, hreflectNe, hm, if_false]
+      cmp89Eq246StabilizedAliasFullSolution, hreflectNe', hm', if_false]
     rw [cmp89Eq246EntireAliasFineSymbol_neg_reflection_eq,
-      cmp89Eq246EntireAliasAverageRow_neg_reflection_eq_column, hmoment]
+      cmp89Eq246EntireAliasAverageRow_neg_reflection_eq_column, hmoment']
     simp [reflect, sourceR, cmp89Eq246AliasReflectionSource]
 
 end
