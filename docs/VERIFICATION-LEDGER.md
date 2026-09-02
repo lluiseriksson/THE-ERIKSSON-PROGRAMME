@@ -44039,3 +44039,21 @@ normalized Brillouin synthesis, identify the resulting integral with the
 physical generated Green, prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1043 (2026-09-02, **normalized directed Fourier synthesis promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes
+`BalabanCMP89Eq246DirectedNormalizedFullSolutionIntegral` and its exact audit.
+The object integrates the cold-sealed complete directed alias sum with the
+literal four-dimensional `(2*pi)^(-4)` source normalization.  Its theorem
+uses the exact Brillouin-cube volume cancellation and retains the printed
+`(L^j+1)^2` value scale from CMP99 (3.42); it does not rename that scale as a
+uniform coefficient.
+
+Both files pass the lightweight overlay and import-prefix guards and carry
+exactly one PRE-VALIDATION notice.  No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`.  The inverse-uniqueness
+identification with the physical generated Green remains a named open
+dictionary.  This promotion does not prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
