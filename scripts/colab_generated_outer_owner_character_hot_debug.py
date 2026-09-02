@@ -12,7 +12,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "fef6a25c031539bc84dea4c4e075cd5195ef26bf"
+SOURCE_SHA = "d8b4d1a0c43d72ad90c709e5049972b2279cb2a1"
 REPO = Path("/content/hrpoly-full-point-source-dictionaries-cold-v1")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
