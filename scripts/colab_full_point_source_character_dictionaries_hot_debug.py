@@ -12,7 +12,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "973dc76539d7c872813542fab0bb652b94ed819b"
+SOURCE_SHA = "b52b7332c467ce1f17aa302fe1b0952b6d595c50"
 REPO = Path("/content/hrpoly-cmp89-mass-uniform-final-aliasing-cold-v1")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
@@ -47,11 +47,19 @@ QUEUE = (
             "YangMills.RG.cmp99FlatFourierMode_eq_owned_fineTargetAliasPhase_mul_coarseMode",
         },
     ),
+    (
+        "fibre_integrand",
+        "YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary",
+        "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionaryAudit.lean",
+        {
+            "YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_integrand",
+        },
+    ),
 )
 
-# The first pair already passed in the preceding retained-runtime attempt.
-# Resume stop-on-first-error at the repaired source-character focal.
-QUEUE = QUEUE[1:]
+# The first three pairs passed in the preceding retained-runtime attempt.
+# Resume stop-on-first-error at the newly promoted one-fibre integrand.
+QUEUE = QUEUE[3:]
 
 env = os.environ.copy()
 env["PATH"] = "/content/lean-4.29.0-rc6-linux/bin:" + env.get("PATH", "")
