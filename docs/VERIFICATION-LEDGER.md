@@ -45018,3 +45018,26 @@ momentum sign, alias convention, endpoint, normalization, hypothesis or
 constant.  The focal and audit remain PRE-VALIDATION and this remains
 `HOT_DEBUG_NOT_EVIDENCE`; counters remain exactly `20/41`, window 15 remains
 compatible but unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1081 (2026-09-02, **reflected one-fibre integrand passed hot; reflected outer synthesis promoted PRE-VALIDATION; no seal**)
+
+At exact source `172533cffc48fd7a48936850fcc605fd691d2287`, the
+retained Colab Pro+ runtime completed the reflected one-fibre focal in
+`16.565 s` and its one-declaration audit in `8.634 s`.  The declaration uses
+exactly `{propext, Classical.choice, Quot.sound}`.  This is retained-runtime
+hot evidence, not a cold seal; PRE-VALIDATION remains.
+
+Static review then rejected the older outer-synthesis draft because it had
+silently returned to the unreflected base momentum and positive endpoint
+displacements.  The promoted outer theorem instead sums the compiled
+one-fibre equality literally: coarse characters remain indexed by `ell`,
+while the CMP89 (2.46) integrand remains at the opposite base momentum and
+the two reflected physical endpoints.  No coarse reflection, continuous
+integral, periodization or generated-Green identity is claimed.
+
+The outer-synthesis module and audit are PRE-VALIDATION and have not yet been
+compiled.  They do not prove finite-grid aliasing, identify the generated
+regional Green, establish a uniform physical bound, attain window 15,
+discharge a terminal field or inhabit `TermSource`.  Counters remain exactly
+`20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
+remains exact.

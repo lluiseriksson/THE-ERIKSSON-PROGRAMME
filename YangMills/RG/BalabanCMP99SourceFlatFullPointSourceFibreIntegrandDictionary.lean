@@ -94,7 +94,7 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_int
       simp only [cmp99FlatComplexFibreFourierMode, PiLp.smul_apply, smul_eq_mul]
       rw [htarget, hsource, htargetReflection]
       rw [her]
-      simp only [common, term, er, e, reflect, z, targetOwner, sourceOwner,
+      simp only [common, term, e, reflect, z, targetOwner, sourceOwner,
         reflectedTargetEndpoint, reflectedSourceEndpoint]
       ring
     _ = ∑ n : CMP89Eq246AliasIndex d M 1,
