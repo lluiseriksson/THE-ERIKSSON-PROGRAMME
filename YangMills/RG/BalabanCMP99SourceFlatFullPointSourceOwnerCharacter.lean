@@ -31,8 +31,7 @@ theorem cmp99FlatFourierMode_target_mul_source_inv_eq_ownerDifferenceCharacter
     cmp99FlatFourierMode_eq_finBoxFourierCharacter]
   rw [sub_eq_add_neg, cmp99FlatZModFourierCharacter_add_right]
   congr 1
-  rw [cmp99FlatZModFourierCharacter_comm,
-    cmp99FlatZModFourierCharacter_neg_left,
+  rw [← cmp99FlatZModFourierCharacter_neg_left,
     cmp99FlatZModFourierCharacter_comm]
 
 end
