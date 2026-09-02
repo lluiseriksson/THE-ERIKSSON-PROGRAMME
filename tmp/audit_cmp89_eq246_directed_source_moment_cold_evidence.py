@@ -133,6 +133,19 @@ EXPECTED_CONFIGS = {
             "directed_normalized_physical_fine_kernel_audit",
         ],
     },
+    "cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v2": {
+        "source_sha": "1a53d2755b05419f2401c5d839fc9a6cffdd0c2d",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel.lean":
+                "c5c2ac76669a10dcb1e983d7f85fed7efb145787b7c8a348107586bbb4200d32",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernelAudit.lean":
+                "efe636469898034e98c75c01a622f4fbf53efcaeef66e172c496820d61759d56",
+        },
+        "queue": [
+            "directed_normalized_physical_fine_kernel_focal",
+            "directed_normalized_physical_fine_kernel_audit",
+        ],
+    },
     "cmp89-eq246-full-solution-domain-cold-v1": {
         "source_sha": "03dd11dac7be29e786261ef14683796099747231",
         "source_blobs": {

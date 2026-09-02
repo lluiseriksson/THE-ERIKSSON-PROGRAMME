@@ -68,17 +68,17 @@ def parse_axioms_exact(output: str, expected_key: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v1"
-runner.SOURCE_SHA = "98c8ba6e6a53c01442f6b43bd69bd82d81a746df"
+runner.RUNNER_REV = "cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v2"
+runner.SOURCE_SHA = "1a53d2755b05419f2401c5d839fc9a6cffdd0c2d"
 runner.MIN_RAM_GIB = 11.0
 runner.ALLOW_GPU_RUNTIME = False
-runner.ROOT = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v1")
-runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v1-evidence")
-runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v1-evidence.tar.gz")
-runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v1-paths.txt")
+runner.ROOT = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v2")
+runner.EVIDENCE = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v2-evidence")
+runner.ARCHIVE = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v2-evidence.tar.gz")
+runner.PATH_MANIFEST = Path("/content/hrpoly-cmp89-directed-normalized-physical-fine-kernel-cold-v2-paths.txt")
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel.lean":
-        "5a0de3e0a1704d2dfca40550c7cbcb4249423a6fa36b2fc952f802c38512b982",
+        "c5c2ac76669a10dcb1e983d7f85fed7efb145787b7c8a348107586bbb4200d32",
     "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernelAudit.lean":
         "efe636469898034e98c75c01a622f4fbf53efcaeef66e172c496820d61759d56",
 }
