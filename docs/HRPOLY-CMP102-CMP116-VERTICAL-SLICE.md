@@ -15746,6 +15746,34 @@ complete integrand, contour deformation, CMP89 (2.42), uniform physical
 `B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
 `TermSource = 0`.
 
+### Eq. (2.46) complete-integrand periodicity (PRE-VALIDATION)
+
+The promoted leaf combines the cold-sealed precision and solved-source cycles
+with the already proved target-phase cycle, then reindexes the literal finite
+alias sum.  Periodicity is derived for the complete physical fine-to-fine
+integrand; it is not accepted as a property of an arbitrary extension.
+
+The focal and its one-declaration audit pass the lightweight textual guards
+and retain visible PRE-VALIDATION notices.  They remain outside
+`YangMillsCore.lean` pending compiler and strict axiom gates.  This leaf does
+not yet prove the boundary seam, contour deformation, CMP89 (2.42), uniform
+physical `B0`/`delta0`, or attainment of window 15.  Counters remain `20/41`
+and `TermSource = 0`.
+
+### Eq. (2.46) complete-integrand boundary seam (PRE-VALIDATION)
+
+The promoted source constructs the finite-solver domains independently on the
+two opposite Brillouin faces from the common-polistrip windows and applies the
+complete-integrand period shift.  It proves only the seam needed by contour
+deformation; it does not assume global periodicity of the rational extension.
+
+The focal and its one-declaration audit pass the lightweight textual guards
+and retain visible PRE-VALIDATION notices.  They remain outside
+`YangMillsCore.lean` pending compiler and strict axiom gates.  This leaf does
+not yet perform a one-coordinate contour shift, telescope four coordinates,
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or attain window
+15.  Counters remain `20/41` and `TermSource = 0`.
+
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an
