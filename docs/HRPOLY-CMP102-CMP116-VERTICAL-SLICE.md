@@ -15674,7 +15674,7 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Eq. (2.46) finite alias-precision uniqueness (PRE-VALIDATION)
+### Eq. (2.46) finite alias-precision uniqueness (cold-sealed)
 
 The promoted source turns the already constructed explicit full solution for
 every finite alias source into injectivity of the literal square precision
@@ -15684,13 +15684,20 @@ nonvanishing gates remain the literal fine-symbol, stabilized-denominator and
 central-row conditions; no inverse family or uniqueness equation is accepted
 from the caller.
 
-Both modules pass the lightweight textual guards and carry one visible
-PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
-compiler and exact axiom gate.  This uniqueness leaf does not yet prove
-precision covariance under the alias cycle, periodicity of the complete
-integrand, contour deformation, CMP89 (2.42), uniform physical
-`B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
-`TermSource = 0`.
+The shared fresh-checkout runner
+`cmp89-eq246-domain-cycle-uniqueness-cold-v2` compiled this focal with exit
+zero in `10.918 s` and its exact audit with exit zero in `6.398 s`.  The
+runner checked source `df364a3c629004ff7ca1062247cfe488b0579f2e`, all six
+source blobs, the exact Mathlib pin and the official Lean toolchain asset,
+without restoring a project `.lake/build` graph.  The strict axiom gate
+accepted the expected declaration, and the downloaded archive passed the
+fail-closed local verifier.  The two PRE-VALIDATION notices are retired and
+the audit enters `YangMillsCore.lean`.
+
+This uniqueness leaf does not yet prove precision covariance under the alias
+cycle, periodicity of the complete integrand, contour deformation, CMP89
+(2.42), uniform physical `B0`/`delta0`, or attainment of window 15.  Counters
+remain `20/41` and `TermSource = 0`.
 
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
@@ -16087,7 +16094,7 @@ guards but failed at `lake update` when Mathlib's external `git` clone exited
 infrastructure-only failure and contributes no compiler evidence.  The later
 successful retry above supersedes that incident without erasing it.
 
-### Eq. (2.46) complete finite-solver domain (PRE-VALIDATION)
+### Eq. (2.46) complete finite-solver domain (cold-sealed)
 
 The promoted package names exactly the three nonvanishing facts consumed by
 the explicit finite alias solver: every noncentral fine symbol, the stabilized
@@ -16096,15 +16103,23 @@ four-dimensional constructor derives all three internally from the existing
 common-polistrip windows.  It accepts neither an arbitrary solved Green nor an
 inverse identity from the caller.
 
-Both modules pass the lightweight textual guards and carry one visible
-PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
-compiler and exact axiom gate.  This domain package is a prerequisite for the
-alias-cycle uniqueness bridge; it does not itself prove periodicity, contour
-deformation, CMP89 (2.42), uniform physical `B0`/`delta0`, attainment of
-window 15, rows 23--24, or a `TermSource`.  Counters remain `20/41` and
-`TermSource = 0`.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-domain-cycle-uniqueness-cold-v2` checked out exact source
+`df364a3c629004ff7ca1062247cfe488b0579f2e`, restored no project
+`.lake/build` graph, and verified all six source blobs plus both textual
+guards.  This focal exited zero in `1106.121 s`; its exact two-declaration
+audit exited zero in `8.169 s`.  The shared six-stage archive passed the
+fail-closed local verifier and has SHA-256
+`2E6DE0A469FD2770D39BA05732A835F848288E59FA1BE5B9BE13195038F48226`.
+The two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`.
 
-### Eq. (2.46) alias-cycle factor transport (PRE-VALIDATION)
+This domain package is a prerequisite for the alias-cycle uniqueness bridge;
+it does not itself prove periodicity, contour deformation, CMP89 (2.42),
+uniform physical `B0`/`delta0`, attainment of window 15, rows 23--24, or a
+`TermSource`.  Counters remain `20/41` and `TermSource = 0`.
+
+### Eq. (2.46) alias-cycle factor transport (cold-sealed)
 
 The promoted source derives five pointwise covariance identities under the
 centered alias permutation: the fine diagonal symbol, averaging column,
@@ -16113,12 +16128,23 @@ target phase.  The two phase identities consume literal integer endpoint data,
 so the `2*pi*(L^j)` wrap cancels by a proved lattice phase rather than by an
 assumed periodicity of the solved Green.
 
-Both modules pass the lightweight textual guards and carry one visible
-PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
-compiler and exact axiom gate.  These factorwise identities do not yet prove
-covariance of the precision action, uniqueness of the finite solver,
-periodicity of the complete integrand, contour deformation, CMP89 (2.42), or
-window 15.  Counters remain `20/41` and `TermSource = 0`.
+The first shared cold gate stopped only at elaboration of the three generic
+factor applications: Lean could not infer `F`.  Repair checkpoint
+`df364a3c629004ff7ca1062247cfe488b0579f2e` supplies those three explicit
+factor functions without changing a statement, constant or hypothesis.  A
+retained-runtime diagnostic then passed the focal and audit, but did not seal.
+
+The independent fresh-checkout v2 runner above compiled this focal with exit
+zero in `36.883 s` and its exact five-declaration audit with exit zero in
+`7.980 s`.  Its strict parser accepted only
+`{propext, Classical.choice, Quot.sound}`.  The shared archive and verifier
+hash are recorded in the domain section above.  The two PRE-VALIDATION notices
+are retired and the audit enters `YangMillsCore.lean`.
+
+These factorwise identities do not yet prove covariance of the precision
+action, uniqueness of the finite solver, periodicity of the complete
+integrand, contour deformation, CMP89 (2.42), or window 15.  Counters remain
+`20/41` and `TermSource = 0`.
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 

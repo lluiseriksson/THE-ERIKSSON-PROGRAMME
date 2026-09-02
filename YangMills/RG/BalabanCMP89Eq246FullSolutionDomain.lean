@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceHolomorphy
 
 /-!
-# PRE-VALIDATION: constructed domain for the complete CMP89 (2.46) alias solver
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been compiler-verified.
+# Constructed domain for the complete CMP89 (2.46) alias solver
 
 The explicit finite solver needs three literal nonvanishing facts.  This
 package names those facts, while `of_commonRadius` constructs all three from

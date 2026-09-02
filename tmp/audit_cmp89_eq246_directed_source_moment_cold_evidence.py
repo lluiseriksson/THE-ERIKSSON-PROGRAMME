@@ -211,6 +211,31 @@ EXPECTED_CONFIGS = {
             "alias_precision_uniqueness_audit",
         ],
     },
+    "cmp89-eq246-domain-cycle-uniqueness-cold-v2": {
+        "source_sha": "df364a3c629004ff7ca1062247cfe488b0579f2e",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomain.lean":
+                "daf253d68199083ed3a71e2890db08b94d782222c9dfd69b28ff004c62bd60e2",
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomainAudit.lean":
+                "12d9c9525e0b2fbff6454a85288e8b025b2346319ca6c988f017f9e028181738",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransport.lean":
+                "8f6ffae2b417589d4c61aa00320666bd72fd1be0b4756580afb8508304ce13f7",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransportAudit.lean":
+                "69f73e6d66806fea6aa538a3d2cb4d26ce9158a2c7b162a0ff5ae0eb3fe4cb88",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniqueness.lean":
+                "2f3c56ca5fc423d2ffb0d1d42f6e5f67b9a6fb220da4422fe706381771127411",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniquenessAudit.lean":
+                "34f662592715346047d55a979e77ccf8d9dab5fe94078ee546b3be7625793bf9",
+        },
+        "queue": [
+            "full_solution_domain_focal",
+            "full_solution_domain_audit",
+            "alias_cycle_transport_focal",
+            "alias_cycle_transport_audit",
+            "alias_precision_uniqueness_focal",
+            "alias_precision_uniqueness_audit",
+        ],
+    },
 }
 
 

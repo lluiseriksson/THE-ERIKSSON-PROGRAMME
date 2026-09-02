@@ -44357,3 +44357,50 @@ All six PRE-VALIDATION notices remain, and the successful domain prefix is
 not promoted separately from the failed consolidated queue.  Counters remain
 exactly `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
+
+## Addendum 1056 (2026-09-02, **CMP89 complete domain, alias-cycle transport and finite uniqueness cold-sealed; 20/41 unchanged**)
+
+Repair checkpoint `df364a3c629004ff7ca1062247cfe488b0579f2e`
+supplies the three explicit factor functions whose inference stopped the v1
+queue.  No theorem statement, source identity, constant or hypothesis
+changes.  A retained-runtime diagnostic passed the repaired alias-cycle
+focal/audit and the downstream uniqueness focal/audit, but did not seal.
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-domain-cycle-uniqueness-cold-v2`, published at runner commit
+`928f59ee5c27e1bf9c1679b58a1a6be48eae75b5` and launched from commit
+`8c9faa77`, then checked out that exact source in a new project directory.
+It verified the official Lean `v4.29.0-rc6` asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, all six source blobs and both
+textual guards, without restoring a project `.lake/build` graph.
+
+The six stop-on-first-error stages all exited zero:
+
+- complete finite-solver domain focal `1106.121 s`, audit `8.169 s`;
+- alias-cycle factor transport focal `36.883 s`, audit `7.980 s`;
+- finite alias-precision uniqueness focal `10.918 s`, audit `6.398 s`.
+
+The strict audits covered the expected eight declarations and accepted only
+the allowlist `{propext, Classical.choice, Quot.sound}`.  The canonical
+payload SHA-256 is
+`04D9B70CDC8896198DC9AF8E5EBC374AA8C6A08F32FC85B0D7B94EB5C916E067` and
+the archive SHA-256 is
+`2E6DE0A469FD2770D39BA05732A835F848288E59FA1BE5B9BE13195038F48226`.
+The fail-closed local verifier accepts all environment/source pins, records,
+queue stages and hashes.  Evidence is preserved under
+`validation-evidence/cmp89-domain-cycle-uniqueness-cold-df364a3c-20260902/`.
+
+The ephemeral browser tab holding the executed launcher cell was lost while
+Colab reconnected to the still-running runtime.  The executed notebook was
+therefore not preserved and is not silently replaced by an unexecuted source
+notebook; the downloaded fail-closed archive and extracted payload are the
+cold evidence retained.  The runtime was disconnected and deleted only after
+local verification.
+
+Exactly the six PRE-VALIDATION notices in these three focal/audit pairs are
+retired and all three audits enter `YangMillsCore.lean`.  This seal does not
+prove precision covariance of the assembled finite system, periodicity of the
+complete integrand, contour deformation, CMP89 (2.42), uniform physical
+`B0`/`delta0`, attainment of window 15, a new terminal field, or a
+`TermSource`.  Counters remain exactly `20/41`, window 15 remains compatible
+but unattained, and `TermSource = 0` remains exact.

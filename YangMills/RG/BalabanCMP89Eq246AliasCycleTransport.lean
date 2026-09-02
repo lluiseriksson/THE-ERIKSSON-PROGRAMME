@@ -5,10 +5,7 @@ import YangMills.RG.BalabanCMP89Eq245EntireScaledLaplacianPeriodicity
 import YangMills.RG.BalabanCMP89Eq251FineLatticePhasePeriodicity
 
 /-!
-# PRE-VALIDATION: source-faithful alias-cycle transport for CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Source-faithful alias-cycle transport for CMP89 (2.46)
 
 These are the pointwise covariance identities needed before transporting the
 complete finite alias system.  Every identity is derived from the centered

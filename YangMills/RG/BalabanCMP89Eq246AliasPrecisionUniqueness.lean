@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceFibreGreen
 import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 
 /-!
-# PRE-VALIDATION: uniqueness of the finite CMP89 (2.46) alias system
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Uniqueness of the finite CMP89 (2.46) alias system
 
 The explicit stabilized solver already produces a solution for every source.
 Because the alias fibre is finite and the precision is a square linear map,
