@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift
 import YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniform
 
 /-!
-# PRE-VALIDATION: mass-uniform analytic domain for the full CMP89 (2.46) kernel
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Mass-uniform analytic domain for the full CMP89 (2.46) kernel
 
 The already sealed central-denominator floor is uniform on the literal mass
 window and does not require `0 < mass`.  This module threads that stronger

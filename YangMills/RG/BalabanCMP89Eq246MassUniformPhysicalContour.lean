@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246DirectedPhysicalFineContourDictionary
 import YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain
 
 /-!
-# PRE-VALIDATION: mass-uniform physical contour for the full CMP89 (2.46) kernel
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Mass-uniform physical contour for the full CMP89 (2.46) kernel
 
 This module telescopes the mass-uniform one-coordinate contour shift through
 all four physical momentum coordinates and obtains the literal full-G decay

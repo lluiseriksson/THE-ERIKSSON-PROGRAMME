@@ -3,10 +3,7 @@ import YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain
 import YangMills.RG.BalabanCMP89Eq248CenteredGreenTorus
 
 /-!
-# PRE-VALIDATION: mass-uniform centered-torus model of the full CMP89 (2.46) Green
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Mass-uniform centered-torus model of the full CMP89 (2.46) Green
 
 This module descends the literal two-endpoint (2.46) fine-to-fine integrand
 to the centered four-torus on the whole printed mass window, including

@@ -3,10 +3,7 @@ import YangMills.RG.BalabanCMP99PhysicalGreenFiniteGridAliasing
 import YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenFourierSummability
 
 /-!
-# PRE-VALIDATION: finite-grid aliasing for the literal full CMP89 (2.46) Green
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Finite-grid aliasing for the literal full CMP89 (2.46) Green
 
 The generic finite-grid Fourier identity is instantiated with the actual
 two-endpoint full-G torus coefficients.  Fourier reconstruction comes from

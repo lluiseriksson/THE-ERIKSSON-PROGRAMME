@@ -1,7 +1,6 @@
 import YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain
 
-/-! PRE-VALIDATION: source is present, its promoted `.olean` has not yet been
-materialized, and this exact audit has not yet been compiler-verified. -/
+/-! Axiom audit for the mass-uniform analytic domain. -/
 
 #print axioms YangMills.RG.cmp89Eq246FullSolutionDomain_of_commonRadius_massUniform
 #print axioms YangMills.RG.cmp89Eq246PhysicalFineToFineGreenIntegrand_boundarySeam_massUniform

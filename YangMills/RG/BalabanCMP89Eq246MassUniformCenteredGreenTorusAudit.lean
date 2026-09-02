@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenTorus
 
 /-!
-# PRE-VALIDATION: audit for the mass-uniform full-G centered-torus descent
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Axiom audit for the mass-uniform full-G centered-torus descent
 -/
 
 #print axioms YangMills.RG.continuous_cmp89Eq246CenteredFullGreenCube_massUniform

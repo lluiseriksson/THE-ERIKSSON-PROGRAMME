@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99FullGreenFiniteGridAliasing
 
 /-!
-# PRE-VALIDATION: audit for literal full-G finite-grid aliasing
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Axiom audit for literal full-G finite-grid aliasing
 -/
 
 #print axioms YangMills.RG.cmp99FlatFiniteGridFourierSeriesSample_fullGreen_eq_torusSample_massUniform

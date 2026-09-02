@@ -15864,7 +15864,7 @@ separate.  Hence this seal does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge a terminal field, or construct a
 `TermSource`.  Counters remain exactly `20/41` and `TermSource = 0`.
 
-### Eq. (2.46) mass-uniform full-G periodization chain (PRE-VALIDATION)
+### Eq. (2.46) mass-uniform full-G periodization chain (cold-sealed)
 
 Six promoted focal/audit pairs remove the obsolete strict-positive-mass
 premise from the already constructed full-G contour route, descend the
@@ -15876,12 +15876,30 @@ is admitted.  Target and source remain distinct throughout; the affine
 residue fibre shifts only the target, and no spurious `(L^j)^4` fine-volume
 factor is introduced.
 
-All twelve files pass the exact lightweight overlay and import-prefix guards
-and carry visible PRE-VALIDATION notices.  None has yet been compiler- or
-axiom-verified.  The endpoint still does not identify the torus sample with
-the generated CMP99 regional Green: the reflection/carry reindexing and
+The seal is composite but byte-exact.  Fresh Colab Pro+ CPU/high-RAM source
+checkpoint `d773e70906ae74620b5f3ce2218e0f736541a60c` cold-validated the first
+five focal/audit pairs before stopping at the final finite-grid focal
+(Addendum 1066).  Those ten source blobs are unchanged at repaired source
+checkpoint `286719b94b6cfcf9b2ea45a02951277149f2f065`.  A second fresh checkout,
+runner `cmp89-mass-uniform-final-aliasing-cold-v1`, restored no project
+`.lake/build` graph and then completed the repaired final focal in `8694`
+jobs and `2268.027 s`; its exact audit exited zero in `16.901 s`.  Both
+declarations use only `{propext, Classical.choice, Quot.sound}`.
+
+The final-pair evidence JSON has canonical SHA-256
+`A67AEC675B859F7453E28BA674FBB1BD5993989B942ABECADF8EF14B6326528F`.
+The downloaded archive independently re-hashed on Windows to
+`EBE816ACBBFB53E298F7C3C21172DD7263D5EB2095BC0FE3655FA377A982CF67`;
+its extracted newline-terminated `evidence.json` hashes to
+`FBB46500BED94D41461427AB93571DBB2CFC41E24CD092360D6094F10059321B`.
+Evidence is preserved under
+`validation-evidence/cmp89-mass-uniform-final-aliasing-cold-286719b9-20260902/`.
+
+All twelve PRE-VALIDATION notices are retired and all six exact audits enter
+`YangMillsCore.lean`.  The endpoint still does not identify the torus sample
+with the generated CMP99 regional Green: the reflection/carry reindexing and
 inverse-uniqueness dictionary remain separate named obligations.  Therefore
-this promotion does not yet prove CMP89 (2.42), produce uniform physical
+this seal does not yet prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
 

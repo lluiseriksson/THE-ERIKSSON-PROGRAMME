@@ -1,7 +1,6 @@
 import YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour
 
-/-! PRE-VALIDATION: source is present, its promoted `.olean` has not yet been
-materialized, and this exact audit has not yet been compiler-verified. -/
+/-! Axiom audit for the mass-uniform physical contour. -/
 
 #print axioms YangMills.RG.integrable_cmp89Eq246PhysicalFineToFineGreenPartialProductIntegrand_massUniform
 #print axioms YangMills.RG.integral_cmp89Eq246PhysicalFineToFineGreenPartialProductIntegrand_stage_succ_massUniform

@@ -3,10 +3,7 @@ import YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour
 import YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionary
 
 /-!
-# PRE-VALIDATION: absolute summability of full CMP89 (2.46) torus coefficients
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Absolute summability of full CMP89 (2.46) torus coefficients
 
 The coefficient is the literal normalized two-endpoint Green with only the
 target moving in the affine residue fibre.  Its mass-uniform full-G contour

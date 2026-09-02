@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenTorus
 import YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientDictionary
 
 /-!
-# PRE-VALIDATION: full CMP89 (2.46) centered-torus coefficient dictionary
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Full CMP89 (2.46) centered-torus coefficient dictionary
 
 This module keeps the two fine endpoints of the full (2.46) Green separate.
 The negative torus character is pushed through the literal output-alias sum,

@@ -44757,3 +44757,40 @@ graph of the preceding cold failure and therefore does not retire either
 PRE-VALIDATION notice.  A fresh-checkout runner is prepared for this repaired
 pair.  Counters remain exactly `20/41`, window 15 remains compatible but
 unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1069 (2026-09-02, **mass-uniform full-G periodization chain cold-sealed by byte-exact composite evidence; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-mass-uniform-final-aliasing-cold-v1` checked out exact repaired source
+`286719b94b6cfcf9b2ea45a02951277149f2f065`, verified Lean
+`4.29.0-rc6`, Mathlib `07642720480157414db592fa85b626dafb71355b`,
+both source blobs and both textual guards, and restored no project
+`.lake/build` graph.  The repaired `BalabanCMP99FullGreenFiniteGridAliasing`
+focal completed `8694` jobs in `2268.027 s`; its exact audit exited zero in
+`16.901 s`.  Both declarations used only
+`{propext, Classical.choice, Quot.sound}` and the blacklist was empty.
+
+Colab printed canonical evidence JSON SHA-256
+`A67AEC675B859F7453E28BA674FBB1BD5993989B942ABECADF8EF14B6326528F`
+and archive SHA-256
+`EBE816ACBBFB53E298F7C3C21172DD7263D5EB2095BC0FE3655FA377A982CF67`.
+The downloaded archive independently re-hashed on Windows to the same value;
+its extracted newline-terminated `evidence.json` hashes to
+`FBB46500BED94D41461427AB93571DBB2CFC41E24CD092360D6094F10059321B`.
+The JSON records sixteen zero-exit stages, the exact source/toolchain/pin and
+terminal status `PASS`.  Evidence is preserved under
+`validation-evidence/cmp89-mass-uniform-final-aliasing-cold-286719b9-20260902/`.
+
+The preceding fresh checkout at source
+`d773e70906ae74620b5f3ce2218e0f736541a60c` had already cold-validated the
+analytic-domain, physical-contour, centered-torus, coefficient-dictionary and
+Fourier-summability focal/audit pairs before stopping at this final focal
+(Addendum 1066).  An exact Git object comparison confirms that all ten of
+those source/audit blobs are unchanged at `286719b9`.  The two fresh gates
+therefore form byte-exact composite evidence for the complete six-pair chain.
+
+Exactly the twelve PRE-VALIDATION notices are retired and all six audits enter
+`YangMillsCore.lean`.  This seal does not identify the torus sample with the
+generated CMP99 regional Green, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
