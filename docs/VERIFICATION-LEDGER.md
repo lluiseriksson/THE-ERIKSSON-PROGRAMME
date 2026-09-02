@@ -44743,3 +44743,17 @@ Fourier normalization, residue orientation, target/source endpoint or
 summation convention.  No PRE-VALIDATION notice is retired from this hot
 diagnostic.  Counters remain exactly `20/41`, window 15 remains compatible
 but unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1068 (2026-09-02, **repaired full-G finite-grid pair hot-green; cold seal pending; 20/41 unchanged**)
+
+The retained high-RAM checkout then fetched exact repair checkpoint
+`286719b94b6cfcf9b2ea45a02951277149f2f065` and reran only the final
+finite-grid focal and audit.  The focal completed in `12.838 s`; the exact
+two-declaration audit completed in `14.081 s`.  Both declarations used only
+`{propext, Classical.choice, Quot.sound}` and the blacklist was empty.
+
+This result is explicitly hot diagnostic evidence: it preserves the build
+graph of the preceding cold failure and therefore does not retire either
+PRE-VALIDATION notice.  A fresh-checkout runner is prepared for this repaired
+pair.  Counters remain exactly `20/41`, window 15 remains compatible but
+unattained, and `TermSource = 0` remains exact.
