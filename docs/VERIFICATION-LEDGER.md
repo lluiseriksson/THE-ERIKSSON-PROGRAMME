@@ -44566,3 +44566,30 @@ CMP89 (2.42), uniform physical `B0`/`delta0`, window-15 attainment, terminal
 fields and a `TermSource` remain open. Counters remain exactly `20/41`,
 window 15 remains compatible but unattained, and `TermSource = 0` remains
 exact.
+
+## Addendum 1062 (2026-09-02, **CMP89 four-coordinate telescope cold-green; physical dictionary stopped on definitional mismatch; no seal; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-product-telescope-dictionary-cold-v1` checked out exact source
+`0f7a9292fe43e118c1ad56fdaebc7d41622c6cd0`, verified Lean
+`4.29.0-rc6`, Mathlib `07642720480157414db592fa85b626dafb71355b`,
+all four source hashes and both textual guards, and restored no project
+`.lake/build` graph. The four-coordinate telescope focal passed in
+`1356.178 s`; its exact five-declaration audit passed in `19.108 s`. The
+stop-on-first-error queue then stopped at the physical contour dictionary
+focal, exit `1`, after `133.249 s`; its audit did not run.
+
+The first real error is a definitional mismatch between the literal product
+measure and its named alias, together with the equal presentations
+`xi * (target-source)` and `xi*target-xi*source`. The repair unfolds the
+measure alias and proves the scaled-displacement equality explicitly. It
+changes no theorem statement, hypothesis, radius, rate or constant.
+
+The downloaded evidence archive independently rehashes to
+`63974E5EE0E2034716EEF4C461010B7D5F9BC6927E582D9EF2D9A63AC355D4E9`
+and is preserved under
+`validation-evidence/cmp89-product-telescope-dictionary-partial-fail-0f7a9292-20260902/`.
+This evidence cold-validates only the telescope pair. PRE-VALIDATION remains
+on all four modules until a later cold gate seals the repaired dictionary;
+the live counters remain exactly `20/41`, window 15 remains compatible but
+unattained, and `TermSource = 0` remains exact.

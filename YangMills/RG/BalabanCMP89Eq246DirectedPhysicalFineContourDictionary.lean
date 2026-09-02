@@ -45,7 +45,21 @@ theorem cmp89Eq246DirectedNormalizedFullSolutionIntegral_physicalFine_eq_zero
     cmp89Eq246DirectedNormalizedFullSolutionIntegral_zero_eq_realSlice]
   unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
   congr 1
-  simpa [cmp89Eq246PhysicalFineToFineGreenIntegrand] using
+  have hdisplacement :
+      cmp89Eq249PhysicalFineLatticeDisplacement
+          (cmp89Eq249FineLatticeSpacing L j)
+          (fun mu => target mu - source mu) =
+        fun mu =>
+          cmp89Eq249PhysicalFineLatticeDisplacement
+              (cmp89Eq249FineLatticeSpacing L j) target mu -
+            cmp89Eq249PhysicalFineLatticeDisplacement
+              (cmp89Eq249FineLatticeSpacing L j) source mu := by
+    funext mu
+    unfold cmp89Eq249PhysicalFineLatticeDisplacement
+    push_cast
+    ring
+  unfold cmp89Eq249FourDimensionalBrillouinMeasure
+  simpa [cmp89Eq246PhysicalFineToFineGreenIntegrand, hdisplacement] using
     (integral_cmp89Eq246PhysicalFineToFineGreenIntegrand_eq_signed
       (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
       ha hmassPos hrho hamplitude hradius hdenWindow hpairWindow hmass
