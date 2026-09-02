@@ -3,11 +3,7 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceBareDiagonalBound
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralCorrectionBound
 
 /-!
-# PRE-VALIDATION: directed noncentral component below CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been cold-verified by the compiler.
-The exact source passed one retained-runtime focal/audit diagnostic only.
+# Directed noncentral component below CMP89 (2.46)
 
 The target phase is combined with the literal fine point source before norms
 are taken.  The bare inverse-Laplacian and rank-one correction retain their

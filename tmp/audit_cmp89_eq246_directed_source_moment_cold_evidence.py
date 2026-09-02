@@ -42,6 +42,19 @@ EXPECTED_CONFIGS = {
         },
         "queue": ["directed_central_component_focal", "directed_central_component_audit"],
     },
+    "cmp89-eq246-directed-noncentral-component-cold-v1": {
+        "source_sha": "b90a58ddc8893f081ffccb1b6ad8409226075972",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralComponent.lean":
+                "6a1ecbb36d702026168529fb76916276a743acf3c974ff1b014a6be97e00e2a8",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralComponentAudit.lean":
+                "293053d7ad17ee38e220b26a3187c5eea9f40ab69fbc00961045cbf5c9c8e075",
+        },
+        "queue": [
+            "directed_noncentral_component_focal",
+            "directed_noncentral_component_audit",
+        ],
+    },
 }
 
 

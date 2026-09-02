@@ -15877,7 +15877,7 @@ into the full Fourier integrand, construct the continuous Green, prove CMP89
 rows 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0`
 remains exact.
 
-### Eq. (2.46) directed noncentral component (PRE-VALIDATION; hot diagnostic PASS)
+### Eq. (2.46) directed noncentral component (cold-sealed)
 
 Exact promoted source checkpoint
 `b90a58ddc8893f081ffccb1b6ad8409226075972` adds four bounds for one
@@ -15894,9 +15894,15 @@ The only repair makes `cmp89Eq251EntirePhase` and
 completed `8513/8513` jobs with exit zero in `14.684 s`; the exact four-line
 audit exited zero in `10.413 s`, and all four declarations use exactly
 `{propext, Classical.choice, Quot.sound}`.  This reused the materialized graph
-and is diagnostic evidence only.  Both promoted files retain one visible
-PRE-VALIDATION notice and remain outside `YangMillsCore.lean` pending an
-independent cold checkout.
+and remains diagnostic evidence only.  The independent cold runner
+`cmp89-eq246-directed-noncentral-component-cold-v1` then checked out that
+exact source in a fresh Colab Pro+ CPU/high-RAM runtime without restoring the
+project `.lake/build` graph.  Its focal exited zero in `1031.439 s` and the
+exact audit exited zero in `10.051 s`; all four declarations passed the same
+axiom allowlist.  The locally verified archive SHA-256 is
+`1FD7A474FFB503943AE9C12914EFBB240B0614660B137608E45975A1A87B8594`.
+The two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`.
 
 This brick does not yet sum the noncentral aliases or combine their total
 with the cold-sealed central component into the full Fourier integrand.  It

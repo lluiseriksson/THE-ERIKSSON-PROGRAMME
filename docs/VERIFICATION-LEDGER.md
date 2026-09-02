@@ -43914,3 +43914,31 @@ noncentral aliases or combine them with the central component, construct the
 continuous Green, prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1038 (2026-09-02, **directed noncentral component cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-noncentral-component-cold-v1`, published at runner
+commit `889c2238a123b526dc6119b7bb7146a7b091a8de`, checked out exact source
+checkpoint `b90a58ddc8893f081ffccb1b6ad8409226075972`.  It verified the official
+Lean toolchain asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, both source-blob hashes and the
+textual guards.  No project `.lake/build` graph was restored.
+
+The focal exited zero in `1031.439 s`; the exact audit exited zero in
+`10.051 s`.  All four declarations passed the exact axiom allowlist
+`{propext, Classical.choice, Quot.sound}`.  The runner recorded
+`status = PASS`.  The archived `evidence.json` SHA-256 is
+`FA7F2A525B9469F17E492C933CE4A113FBDC86A6A86C4DBEA83CD07697C432E8`;
+the durable archive SHA-256 is
+`1FD7A474FFB503943AE9C12914EFBB240B0614660B137608E45975A1A87B8594`.
+The fail-closed local verifier accepts the complete two-stage PASS queue,
+source and environment pins, source blobs and archive hash.
+
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired,
+and its audit enters `YangMillsCore.lean`.  This seal does not yet sum the
+noncentral aliases or combine their total with the central component into the
+full Fourier integrand, construct the continuous Green, prove CMP89 (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
+23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.
