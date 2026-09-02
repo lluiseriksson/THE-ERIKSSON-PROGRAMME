@@ -16065,6 +16065,14 @@ prove CMP89 (2.42).  It produces no uniform physical `B0`/`delta0`, does not
 attain window 15, discharge rows 23--24, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
 
+The first fresh Colab gate stopped at the final focal target because the
+bound retained its statement-local `let displacement := ...`; the subsequent
+`rw` could not expose the already proved displacement-scaling equality.  The
+audit did not run.  The repair performs only `dsimp only at hbound` before the
+same two rewrites, with no change to the theorem statement, rate, constant or
+hypotheses.  PRE-VALIDATION remains until a separate cold gate verifies this
+repair.
+
 ### Eq. (2.46) complete finite-solver domain (PRE-VALIDATION)
 
 The promoted package names exactly the three nonvanishing facts consumed by

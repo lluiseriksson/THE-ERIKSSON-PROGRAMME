@@ -67,6 +67,7 @@ theorem norm_cmp89Eq246DirectedNormalizedPhysicalFineKernel_le
       ha hrho hradius hmass hstabilized hpair hamplitude
       (cmp89Eq249PhysicalFineLatticeDisplacement xi target)
       (cmp89Eq249PhysicalFineLatticeDisplacement xi source)
+  dsimp only at hbound
   rw [cmp89Eq246PhysicalFineEndpointDifference_eq,
     cmp89Eq251DisplacementL1_physicalFineLatticeDisplacement hxi] at hbound
   simpa [cmp89Eq246DirectedNormalizedPhysicalFineKernel, xi, mul_assoc]

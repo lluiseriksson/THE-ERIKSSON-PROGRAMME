@@ -120,6 +120,58 @@ EXPECTED_CONFIGS = {
             "directed_full_solution_integral_dictionary_audit",
         ],
     },
+    "cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v1": {
+        "source_sha": "98c8ba6e6a53c01442f6b43bd69bd82d81a746df",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel.lean":
+                "5a0de3e0a1704d2dfca40550c7cbcb4249423a6fa36b2fc952f802c38512b982",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernelAudit.lean":
+                "efe636469898034e98c75c01a622f4fbf53efcaeef66e172c496820d61759d56",
+        },
+        "queue": [
+            "directed_normalized_physical_fine_kernel_focal",
+            "directed_normalized_physical_fine_kernel_audit",
+        ],
+    },
+    "cmp89-eq246-full-solution-domain-cold-v1": {
+        "source_sha": "03dd11dac7be29e786261ef14683796099747231",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomain.lean":
+                "daf253d68199083ed3a71e2890db08b94d782222c9dfd69b28ff004c62bd60e2",
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomainAudit.lean":
+                "12d9c9525e0b2fbff6454a85288e8b025b2346319ca6c988f017f9e028181738",
+        },
+        "queue": [
+            "full_solution_domain_focal",
+            "full_solution_domain_audit",
+        ],
+    },
+    "cmp89-eq246-alias-cycle-transport-cold-v1": {
+        "source_sha": "e8383c00d2cba1c9a704be1d1293e0f5c2ea13ec",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransport.lean":
+                "215c664842abca04c0ee068a0d9949a03bee3db141e6160ea6a71da3f8264946",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransportAudit.lean":
+                "69f73e6d66806fea6aa538a3d2cb4d26ce9158a2c7b162a0ff5ae0eb3fe4cb88",
+        },
+        "queue": [
+            "alias_cycle_transport_focal",
+            "alias_cycle_transport_audit",
+        ],
+    },
+    "cmp89-eq246-alias-precision-uniqueness-cold-v1": {
+        "source_sha": "23be18e4fa7628ff553c9dc7d80d9a6dc5462c98",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniqueness.lean":
+                "2f3c56ca5fc423d2ffb0d1d42f6e5f67b9a6fb220da4422fe706381771127411",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniquenessAudit.lean":
+                "34f662592715346047d55a979e77ccf8d9dab5fe94078ee546b3be7625793bf9",
+        },
+        "queue": [
+            "alias_precision_uniqueness_focal",
+            "alias_precision_uniqueness_audit",
+        ],
+    },
 }
 
 

@@ -44234,3 +44234,33 @@ alias-cycle covariance of the precision action, periodicity of the complete
 integrand, contour deformation, CMP89 (2.42), uniform physical
 `B0`/`delta0`, or attainment of window 15.  It discharges no terminal field:
 counters remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 1052 (2026-09-02, **physical fine-site cold gate failed closed; local-let exposure repair only**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v1`, published at
+runner commit `313d0b572f6cdf7a2a3ec06788a168e0a589c556` and launched from commit
+`e34d2839c06bc04b71494c2585455d0e84acfb66`, checked out exact source
+checkpoint `98c8ba6e6a53c01442f6b43bd69bd82d81a746df`.  It verified the official
+toolchain, exact Mathlib pin, both source blobs and textual guards, restored
+no project `.lake/build` graph, and reached `8523/8524` before stopping on the
+first focal error after `965.589 s`.
+
+At line 71, the rewrite for
+`cmp89Eq251DisplacementL1_physicalFineLatticeDisplacement` could not see
+through the statement-local `let displacement := ...` retained in `hbound`.
+The audit did not run.  The archive SHA-256 is
+`380DD0572D6FEFCE406B0A7401F71763314E6D7A3E84488A245B84F778C6A1C9`, the
+raw evidence payload SHA-256 is
+`91D76B27C5C892029468A413AD15BD09DA491F5D10909477A48D4E04A5384ED7`, and the
+executed notebook SHA-256 is
+`6C7B18B010C8C37626C4425E99213FA1009464F654B24FAE352B74CD7D8F3170`.
+The fail-closed local verifier accepts all pins, blobs, records and hashes;
+evidence is preserved under
+`validation-evidence/cmp89-directed-normalized-physical-fine-kernel-cold-98c8ba6e-20260902-fail/`.
+
+The repair adds only `dsimp only at hbound` immediately before the unchanged
+rewrites.  It changes no theorem statement, constant, rate or hypothesis.
+PRE-VALIDATION remains and the failed archive is not compiler evidence for
+the repair.  Counters remain exactly `20/41`, window 15 remains compatible
+but unattained, and `TermSource = 0` remains exact.
