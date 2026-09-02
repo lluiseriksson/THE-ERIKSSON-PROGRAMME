@@ -71,6 +71,7 @@ theorem cmp99FlatFiniteGridFourierSeriesSample_fullGreen_eq_torusSample_massUnif
       ha hrho.le hamplitude hradius hdenWindow hpairWindow hmass
       target source n]
     rw [cmp89UnitAddTorus_mFourier_flatZModSample_eq_character_draft]
+    unfold cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient
     ring
   have hseries' : HasSum (fun n : Fin 4 → ℤ =>
       cmp99FlatZModFourierCharacter k

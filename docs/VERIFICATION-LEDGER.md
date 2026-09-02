@@ -44686,3 +44686,41 @@ No PRE-VALIDATION notice is retired from this hot diagnostic.  It does not
 prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1066 (2026-09-02, **mass-uniform full-G cold gate stopped at final finite-grid focal; one folded-definition repair; no seal; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-mass-uniform-full-g-cold-v1` checked out exact source
+`d773e70906ae74620b5f3ce2218e0f736541a60c`, verified Lean
+`4.29.0-rc6`, Mathlib `07642720480157414db592fa85b626dafb71355b`,
+all twelve source blobs and both textual guards, and restored no project
+`.lake/build` graph.  Five focal/audit pairs exited zero: analytic domain,
+physical contour, centered Green torus, centered coefficient dictionary and
+centered Fourier summability.  Their strict audit blocks used only
+`{propext, Classical.choice, Quot.sound}` (with one declaration using the
+smaller `{propext, Quot.sound}` subset).
+
+The stop-on-first-error queue then stopped at
+`BalabanCMP99FullGreenFiniteGridAliasing`, exit `1`, after `509.778 s`; its
+audit did not run.  The first real goal had already identified the literal
+shifted physical Green coefficient on one side and retained the named
+definition `cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient` on the
+other.  The repair unfolds exactly that definition before the existing
+commutative-ring normalization.  It changes no theorem statement,
+hypothesis, mass/radius window, Fourier character, residue class,
+normalization or summation convention.
+
+Colab printed evidence JSON SHA-256
+`FC616C9BAD687203DAD288899A8F5357B6902680A47CD737881F40D31FD94FD9`
+and archive SHA-256
+`F5AB4DB56BD0872FA76CD1F2EE540E2DB9092E25A15FC2F3987B7F4C82CC73B5`.
+The downloaded archive independently re-hashed to the same value; its
+extracted `evidence.json` hashes to
+`CE5D96BDD3AFA67A5F9CFE62C4D4E9415A8C009123FA7C70F2C91E0F6837609C`.
+Evidence is preserved under
+`validation-evidence/cmp89-mass-uniform-full-g-cold-fail-d773e709-20260902/`.
+
+No PRE-VALIDATION notice is retired from this partial cold gate.  It does not
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
