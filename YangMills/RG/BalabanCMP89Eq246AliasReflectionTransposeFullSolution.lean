@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceAliasReflectionStabilizedSolution
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasTransposeFullSolution
 
 /-!
-# Draft: reflection of the arbitrary-source transposed CMP89 (2.46) solve
-
-PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the result has not yet been verified by the compiler.
+# Reflection of the arbitrary-source transposed CMP89 (2.46) solve
 
 This is the missing orientation gate between the continuous full-point-source
 kernel and the finite physical DFT.  It transports the arbitrary source by

@@ -15674,7 +15674,7 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Eq. (2.46) arbitrary-source full-solution reflection (PRE-VALIDATION)
+### Eq. (2.46) arbitrary-source full-solution reflection (cold-sealed)
 
 The next orientation bridge reflects an arbitrary source through the actual
 half-open alias equivalence, proves equality of the noncentral and complete
@@ -15683,9 +15683,17 @@ solution at `-z` with the direct solution at `z`. Its central branch
 reindexes the erased finite correction sum explicitly; it does not infer the
 result from abstract self-adjointness or from equality of block norms.
 
-The source and exact three-declaration audit retain visible PRE-VALIDATION
-notices and remain outside `YangMillsCore.lean`. This bridge is the named
-orientation gate before finite-grid periodization. It does not yet prove the
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-dictionary-reflection-cold-v1` checked out exact source
+`147c161879c26c504afda1e123298a269d891f39` without restoring a project
+`.lake/build` graph.  The reflection focal completed `8593` jobs in
+`535.406 s`; its exact three-declaration audit exited zero in `7.738 s`.
+The strict axiom gate accepted only
+`{propext, Classical.choice, Quot.sound}`.  The two PRE-VALIDATION notices
+are retired and the audit enters `YangMillsCore.lean`.
+
+This bridge is the named orientation gate before finite-grid periodization.
+It does not yet prove the
 periodized physical Green equality, CMP89 (2.42), uniform physical
 `B0`/`delta0`, attainment of window 15, a terminal field, or a `TermSource`.
 Counters remain exactly `20/41`, window 15 remains compatible but unattained,
@@ -15830,7 +15838,7 @@ four coordinates, identify the normalized synthesis with the generated
 Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or attain
 window 15.  Counters remain `20/41` and `TermSource = 0`.
 
-### Eq. (2.46) four-coordinate telescope and physical contour dictionary (PRE-VALIDATION)
+### Eq. (2.46) four-coordinate telescope and physical contour dictionary (cold-sealed)
 
 The promoted telescope proves integrability at every partial signed-contour
 stage and composes four literal one-coordinate transitions.  Its sign is
@@ -15840,11 +15848,19 @@ accepted.  The accompanying dictionary identifies the directed normalized
 physical synthesis at radius `rho` with its real-slice value and transfers
 the already explicit exponential estimate.
 
-Both focal/audit pairs carry visible PRE-VALIDATION notices and remain outside
-`YangMillsCore.lean` pending compiler and exact axiom gates.  The dictionary
-explicitly does not identify the Fourier synthesis with the finite generated
-periodic Green: that inverse-uniqueness bridge remains separate.  Hence this
-promotion does not prove CMP89 (2.42), produce uniform physical
+The telescope pair first passed a fresh checkout at source
+`0f7a9292fe43e118c1ad56fdaebc7d41622c6cd0`; the same telescope also compiled
+transitively in the later dictionary checkout.  Fresh Colab Pro+ CPU/high-RAM
+runner `cmp89-eq246-dictionary-reflection-cold-v1` then checked out exact
+source `147c161879c26c504afda1e123298a269d891f39`.  The dictionary focal
+completed `8534` jobs in `1166.839 s`, and its exact three-declaration audit
+exited zero in `15.002 s`.  Every stage exited zero and the strict axiom gate
+accepted only `{propext, Classical.choice, Quot.sound}`.  All four
+PRE-VALIDATION notices are retired and both audits enter `YangMillsCore.lean`.
+
+The dictionary explicitly does not identify the Fourier synthesis with the
+finite generated periodic Green: that inverse-uniqueness bridge remains
+separate.  Hence this seal does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge a terminal field, or construct a
 `TermSource`.  Counters remain exactly `20/41` and `TermSource = 0`.
 

@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift
 import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductIntegrability
 
 /-!
-# PRE-VALIDATION: four-coordinate contour telescope for the complete CMP89 (2.46) kernel
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Four-coordinate contour telescope for the complete CMP89 (2.46) kernel
 
 The literal fine-to-fine point-source integrand is shifted one coordinate at
 a time through the common polistrip.  Each transition consumes the constructed

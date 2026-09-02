@@ -44593,3 +44593,45 @@ This evidence cold-validates only the telescope pair. PRE-VALIDATION remains
 on all four modules until a later cold gate seals the repaired dictionary;
 the live counters remain exactly `20/41`, window 15 remains compatible but
 unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1063 (2026-09-02, **CMP89 telescope, physical contour dictionary and arbitrary-source reflection cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-dictionary-reflection-cold-v1`, published at runner commit
+`1ddb07a1f0c3e22892c7cc8fa04d50af5cddd295` and launcher commit
+`6520cc6465abe7f26cdb766ef6d3ca2b4e017e69`, checked out exact source
+checkpoint `147c161879c26c504afda1e123298a269d891f39`. It verified Lean
+`4.29.0-rc6`, the exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, every source blob and the
+textual guards, without restoring a project `.lake/build` graph.
+
+The stop-on-first-error queue exited zero throughout:
+
+- directed physical contour dictionary focal: `8534` jobs, `1166.839 s`;
+- its exact three-declaration audit: `15.002 s`;
+- arbitrary-source reflection focal: `8593` jobs, `535.406 s`;
+- its exact three-declaration audit: `7.738 s`.
+
+The strict axiom gate accepted exactly
+`{propext, Classical.choice, Quot.sound}` in all six declaration blocks. The
+four-coordinate telescope pair had already passed a cold checkout at source
+`0f7a9292fe43e118c1ad56fdaebc7d41622c6cd0` (Addendum 1062) and compiled
+again transitively in this fresh dictionary checkout.
+
+The canonical evidence payload printed SHA-256
+`03CCC07C879E286CB0B064E4D318EAA0F6777E3264BE473DDC329772E4D71F1B`.
+The downloaded archive independently re-hashed on Windows to
+`FFC93D5615D0B31F09E897A21AB548CC350C4014AE8E45E9E27C21527123CC47`;
+its extracted `evidence.json` file (including its terminal newline) hashes to
+`6A7ACBA831982DAB22C20A1135558FA7D3985199FB9F2457BAD0911CA3F2C324`.
+Evidence is preserved under
+`validation-evidence/cmp89-eq246-dictionary-reflection-cold-147c1618-20260902/`.
+
+Exactly the six PRE-VALIDATION notices in the telescope, dictionary and
+reflection focal/audit pairs are retired, and all three audits enter
+`YangMillsCore.lean`. This seal proves the complete contour telescope, its
+directed physical real-slice dictionary and the arbitrary-source orientation
+gate. It does not identify the continuous synthesis with the finite generated
+periodic Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.

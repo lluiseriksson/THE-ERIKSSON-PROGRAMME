@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel
 import YangMills.RG.BalabanCMP89Eq246FineToFineGreenProductContourTelescope
 
 /-!
-# PRE-VALIDATION: contour dictionary for the directed physical CMP89 (2.46) synthesis
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Contour dictionary for the directed physical CMP89 (2.46) synthesis
 
 The complete point-source telescope identifies the endpoint-selected directed
 synthesis at radius `rho` with its real-slice value.  The consequence is an
