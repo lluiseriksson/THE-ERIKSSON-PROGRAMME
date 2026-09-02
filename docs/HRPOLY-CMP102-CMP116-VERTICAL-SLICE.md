@@ -15962,7 +15962,7 @@ produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
 
-### Eq. (2.46) normalized directed Fourier synthesis (PRE-VALIDATION)
+### Eq. (2.46) normalized directed Fourier synthesis (cold-sealed)
 
 The promoted source integrates the cold-sealed complete directed alias sum
 against the literal four-dimensional `(2*pi)^(-4)` normalization.  Its
@@ -15970,13 +15970,22 @@ pointwise common endpoint decay survives integration without an additional
 volume factor.  The bound deliberately retains the `(L^j+1)^2` value scale
 from CMP99 (3.42); only its coefficient is intended to become uniform.
 
-Both modules pass the lightweight overlay guard and carry one visible
-PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending
-compiler validation.  Identification of this normalized integral with the
-physical generated periodic Green is still a separate inverse-uniqueness
-dictionary.  This brick does not prove CMP89 (2.42), produce uniform physical
-`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
-construct a `TermSource`; `TermSource = 0` remains exact.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-normalized-full-solution-integral-cold-v1` checked out
+exact source checkpoint `887a726b4dc2d79925a67d16e9be4db935139e4d`,
+verified the official toolchain asset and exact Mathlib pin, restored no
+project `.lake/build` graph, and passed the source focal in `1390.672 s` and
+exact audit in `11.809 s`.  Both audited declarations reported exactly
+`{propext, Classical.choice, Quot.sound}`.  The fail-closed local verifier
+accepted the source pin, both source blobs, complete two-stage PASS queue,
+environment pins, evidence JSON and archive hash.  Both PRE-VALIDATION notices
+are retired and the audit enters `YangMillsCore.lean`.
+
+Identification of this normalized integral with the physical generated
+periodic Green is still a separate inverse-uniqueness dictionary.  This brick
+does not prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
+window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 

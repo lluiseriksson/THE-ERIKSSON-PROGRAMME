@@ -44057,3 +44057,30 @@ identification with the physical generated Green remains a named open
 dictionary.  This promotion does not prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1044 (2026-09-02, **normalized directed Fourier synthesis cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-normalized-full-solution-integral-cold-v1`, published at
+runner commit `88884c9e1b7bd18b94ee6768acbf2ad68a0d05d7`, checked out exact source
+checkpoint `887a726b4dc2d79925a67d16e9be4db935139e4d`.  It verified the official
+Lean toolchain asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, both source-blob hashes and the
+textual guards.  No project `.lake/build` graph was restored.
+
+The focal materialized `8522` jobs and exited zero in `1390.672 s`; the exact
+audit exited zero in `11.809 s`.  Both declarations reported exactly
+`{propext, Classical.choice, Quot.sound}`, and the runner recorded
+`status = PASS`.  The archived `evidence.json` SHA-256 is
+`579087ACAF8DC2C5C257AF56D92669BB458FA0849E941B67DE05BA46282F9B84`;
+the durable archive SHA-256 is
+`DC5F0645D13F381B2EE27C41EE8590022AD476BA3FA6E4A8F7A59CB578944DE2`.
+The fail-closed local verifier accepts the complete two-stage PASS queue,
+source and environment pins, source blobs, axiom gate and archive hash.
+
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired,
+and its audit enters `YangMillsCore.lean`.  This seal certifies normalized
+directed Fourier synthesis only.  It does not identify the integral with the
+physical generated Green, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.

@@ -2,16 +2,16 @@ import YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionSum
 import YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound
 
 /-!
-# PRE-VALIDATION: normalized directed Fourier synthesis below CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been cold-verified by the compiler.
+# Normalized directed Fourier synthesis below CMP89 (2.46)
 
 This integrates the complete directed finite-alias solution with the literal
 four-dimensional `(2*pi)^(-4)` normalization. The value bound deliberately
 retains the `(L^j+1)^2` scale from the first component of CMP99 (3.42); only
 its coefficient is meant to become uniform. Identification with the
 generated periodic Green remains a separate inverse-uniqueness dictionary.
+
+This module and its exact audit were cold-verified from source checkpoint
+`887a726b4dc2d79925a67d16e9be4db935139e4d` in a fresh Colab Pro+ checkout.
 -/
 
 namespace YangMills.RG
