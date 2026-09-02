@@ -10,15 +10,9 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "54331e1a4a9b1d832fdfaba70d43a9642edf9bb5"
+SOURCE_SHA = "d773e70906ae74620b5f3ce2218e0f736541a60c"
 REPO = Path("/content/hrpoly-cmp89-eq246-dictionary-reflection-cold-v1")
 TARGETS = (
-    "YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain",
-    "YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomainAudit",
-    "YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour",
-    "YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContourAudit",
-    "YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenTorus",
-    "YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenTorusAudit",
     "YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionary",
     "YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionaryAudit",
     "YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenFourierSummability",
