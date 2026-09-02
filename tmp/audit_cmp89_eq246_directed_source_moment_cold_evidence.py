@@ -30,9 +30,19 @@ EXPECTED_CONFIGS = {
             "YangMills/RG/BalabanCMP89Eq246DirectedSourceMomentAudit.lean":
                 "d6d92c3806739f36efed59ac8c49d86563ea90e8fd64314ab34b13379143e497",
         },
+        "queue": ["directed_source_moment_focal", "directed_source_moment_audit"],
+    },
+    "cmp89-eq246-directed-central-component-cold-v1": {
+        "source_sha": "76b64ebc1307c1445136941bdcf1c01ace2f4995",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedCentralComponent.lean":
+                "5242d30e29b7b2d0a16b8e35058cc7d84ca2411c78e34a99583ac8e93bb9c887",
+            "YangMills/RG/BalabanCMP89Eq246DirectedCentralComponentAudit.lean":
+                "a7f1ca53cca8f1d528a33b95eba5adcc2f51f795b75424dcddfa177d7bc79e58",
+        },
+        "queue": ["directed_central_component_focal", "directed_central_component_audit"],
     },
 }
-EXPECTED_QUEUE = ["directed_source_moment_focal", "directed_source_moment_audit"]
 
 
 def file_sha256(path: Path) -> str:
@@ -64,6 +74,9 @@ def main() -> None:
         raise RuntimeError(f"RUNNER_REV_MISMATCH={runner_rev!r}")
     expected_source = config["source_sha"]
     expected_blobs = config["source_blobs"]
+    expected_queue = config.get(
+        "queue", ["directed_source_moment_focal", "directed_source_moment_audit"]
+    )
     required = {
         "runner_rev": runner_rev,
         "source_sha": expected_source,
@@ -95,17 +108,17 @@ def main() -> None:
             raise RuntimeError(f"INVALID_DURATION={record!r}")
     record_stages = [record.get("stage") for record in records]
     try:
-        queue_start = record_stages.index(EXPECTED_QUEUE[0])
+        queue_start = record_stages.index(expected_queue[0])
     except ValueError as error:
         raise RuntimeError("QUEUE_START_MISSING") from error
     queue_records = records[queue_start:]
-    if len(queue_records) > len(EXPECTED_QUEUE):
+    if len(queue_records) > len(expected_queue):
         raise RuntimeError(f"QUEUE_HAS_EXTRA_RECORDS={queue_records!r}")
     stages = [record.get("stage") for record in queue_records]
-    if stages != EXPECTED_QUEUE[: len(queue_records)]:
+    if stages != expected_queue[: len(queue_records)]:
         raise RuntimeError(f"QUEUE_STAGE_MISMATCH={stages!r}")
     exits = [record.get("exit") for record in queue_records]
-    if status == "PASS" and (stages != EXPECTED_QUEUE or any(code != 0 for code in exits)):
+    if status == "PASS" and (stages != expected_queue or any(code != 0 for code in exits)):
         raise RuntimeError(f"PASS_QUEUE_INCOMPLETE stages={stages!r} exits={exits!r}")
     if status == "FAIL" and (
         not exits or exits[-1] == 0 or any(code != 0 for code in exits[:-1])
