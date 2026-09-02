@@ -15910,6 +15910,25 @@ does not construct the continuous Green, prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) directed noncentral alias sum (PRE-VALIDATION; NOT CHECKED)
+
+Exact source checkpoint
+`1f3bc9b0bb85016d1ebb96514b4da54f5e32b754` adds the literal target-phased
+sum over all noncentral aliases and a single directed bound.  The summand
+keeps the target phase inside the sum.  Its majorant retains two separate
+terms: the visible `256 * (L^j + 1)^2` four-dimensional half-weight loss for
+the bare inverse Laplacian and the scale-uniform `alpha = -1` product series
+for the rank-one correction.  No alias-cardinality estimate is hidden in the
+second term.
+
+Both files pass the local overlay and import-prefix guards, retain exactly one
+visible PRE-VALIDATION notice, and remain outside `YangMillsCore.lean`.  No
+Lean/Lake run has checked this checkpoint yet.  This brick still does not
+combine the noncentral sum with the central component into the full Fourier
+integrand, construct the continuous Green, prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one

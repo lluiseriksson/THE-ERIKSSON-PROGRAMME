@@ -43942,3 +43942,24 @@ full Fourier integrand, construct the continuous Green, prove CMP89 (2.42),
 produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
+
+## Addendum 1039 (2026-09-02, **directed noncentral alias sum promoted PRE-VALIDATION; 20/41 unchanged**)
+
+Exact source checkpoint `1f3bc9b0bb85016d1ebb96514b4da54f5e32b754`
+adds `BalabanCMP89Eq246DirectedNoncentralSum` and its exact audit.  The literal
+sum keeps the target phase inside each noncentral summand.  Its bound exposes
+the bare half-weight budget `256 * (L^j + 1)^2` and the independently
+summable rank-one `alpha = -1` product series as separate terms.  Thus the
+unavoidable finite alias-size loss remains visible and no cardinality factor
+is charged to the scale-uniform correction.
+
+The two files pass the lightweight overlay and import-prefix guards and each
+retains exactly one PRE-VALIDATION notice.  They remain outside
+`YangMillsCore.lean`.  No compiler or axiom result is claimed for this source
+checkpoint yet.
+
+This promotion does not combine the noncentral sum with the cold-sealed
+central component into the full Fourier integrand, construct the continuous
+Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
+window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
