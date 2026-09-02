@@ -5,10 +5,12 @@ import YangMills.RG.BalabanCMP89Eq251MultidimensionalAliasProduct
 import YangMills.RG.BalabanCMP89Eq251OneDimensionalAliasSeries
 
 /-!
-# PRE-VALIDATION: the centered finite alias sum at exponent one half
+# Cold-sealed: the centered finite alias sum at exponent one half
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 This scratch leaf combines the half-tail integral estimate with the literal
 centered alias window.  Its target retains the sharp square-root scale in the

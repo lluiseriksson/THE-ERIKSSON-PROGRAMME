@@ -2,10 +2,12 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceBareDiagonalBound
 import YangMills.RG.BalabanCMP89Eq251CenteredHalfAliasSum
 
 /-!
-# PRE-VALIDATION: finite sum of the bare diagonal branch below CMP89 (2.46)
+# Cold-sealed: finite sum of the bare diagonal branch below CMP89 (2.46)
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 This is the quantitative endpoint forced by the unsmoothed fine-point source:
 the rank-one correction is uniformly summable, whereas the literal diagonal

@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralCorrectionBound
 
 /-!
-# PRE-VALIDATION: uniformly summable noncentral rank-one correction
+# Cold-sealed: uniformly summable noncentral rank-one correction
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 Unlike the unsmoothed bare diagonal branch, the rank-one correction contains
 the averaging-column quotient and therefore uses the already sealed strictly

@@ -43600,3 +43600,38 @@ new audits enters `YangMillsCore.lean` before a fresh cold checkout seals the
 same source. This checkpoint does not prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1027 (2026-09-02, **CMP89 finite diagonal/full-solution chain cold-sealed with explicit transport exception; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-finite-diagonal-chain-cold-v1` checked out exact source
+checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35`, verified all twenty-two
+Git-blob hashes and Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, and restored no project build
+graph. The `8518/8518`-job focal completed in `1453.718 s`. All eleven exact
+audits exited zero; their twenty-two declaration blocks use only
+`{propext, Classical.choice, Quot.sound}`. The runner reported
+`FINAL_STATUS=PASS` and launcher exit zero.
+
+The runner printed evidence JSON SHA-256
+`B3BE67F3016962FD564222F82174AF0A2F44C7C2A9277E6011A558BE9203946C`
+and archive SHA-256
+`E73CF275BB3A0D2141005540F45D5A3610884BC56C3A4AA5FE28231BEB496BD1`.
+The in-app browser showed `files.download` in progress but no local archive
+materialized after runtime release. Therefore no archive audit is claimed.
+Instead, before the Colab tab was closed, the complete visible structured
+terminal transcript was independently parsed and preserved as
+`validation-evidence/cmp89-eq246-finite-diagonal-chain-cold-c1cdd849-visible-transcript.json`.
+That durable record contains the twelve zero-exit focal/audit stages, all
+twenty-two allowed axiom blocks, and all twenty-two source-blob hashes; its
+SHA-256 is
+`CD794B2A39B62517EA0FE96567F3F120ABFD5D5269D28CE240809ACB2C62C646`.
+This addendum records an explicit evidence-transport exception, not a false
+claim that the archive was downloaded.
+
+Exactly the twenty-two PRE-VALIDATION notices in this chain are retired and
+the eleven audits enter `YangMillsCore.lean`. The seal preserves the literal
+`O((L^j+1)^2)` bare-diagonal scale and does not yet construct the continuous
+Green kernel, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.

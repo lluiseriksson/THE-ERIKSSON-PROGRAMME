@@ -2,10 +2,12 @@ import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
 import Mathlib.Analysis.SumIntegralComparisons
 
 /-!
-# PRE-VALIDATION: the finite half-exponent alias tail
+# Cold-sealed: the finite half-exponent alias tail
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 This scratch leaf isolates the only analytic estimate needed for the bare
 diagonal branch below CMP89 (2.46).  It is deliberately independent of the

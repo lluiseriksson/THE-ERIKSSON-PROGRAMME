@@ -2,10 +2,12 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 import YangMills.RG.BalabanCMP89Eq249StabilizedAliasTransposeSolution
 
 /-!
-# PRE-VALIDATION: exact numerator identity for the central Eq. (2.46) component
+# Cold-sealed: exact numerator identity for the central Eq. (2.46) component
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 The row factor must remain inside the noncentral sum until the literal
 noncentral source moment and the printed row-column alias sum have been

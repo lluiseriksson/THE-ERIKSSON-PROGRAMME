@@ -3,10 +3,12 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralNumeratorIdentity
 import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasSumBound
 
 /-!
-# PRE-VALIDATION: scale-uniform central component below CMP89 (2.46)
+# Cold-sealed: scale-uniform central component below CMP89 (2.46)
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 The central branch is controlled without charging it the quadratic bare
 diagonal alias budget.  Its noncentral terms retain the row factor and reduce

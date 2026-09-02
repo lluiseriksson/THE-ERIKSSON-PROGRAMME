@@ -15674,7 +15674,7 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Eq. (2.46) finite diagonal and full-solution chain (PRE-VALIDATION)
+### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an
 eleven-focal, eleven-audit chain. It separates the literal noncentral bare
@@ -15685,13 +15685,28 @@ summable correction. The central component is controlled independently by
 the sealed reciprocal row budget and an exact numerator identity, so the
 quadratic bare-diagonal loss is not charged to the central branch.
 
-All twenty-two modules carry one visible PRE-VALIDATION notice and remain
-outside `YangMillsCore.lean`. In the retained Colab runtime, the eleven
-focals and their exact audits exited zero; a strict multiline axiom readout
-found exactly twenty-two declaration blocks and only
-`{propext, Classical.choice, Quot.sound}`. This is warm diagnostic evidence,
-not seal authority. A fresh cold checkout of this checkpoint is still
-required before any notice is retired.
+The retained-runtime diagnostic first passed all eleven focals and their
+exact audits, but moved no status. The same source checkpoint then passed a
+fresh Colab Pro+ CPU/high-RAM checkout without a restored project build
+graph. The terminal focal completed `8518/8518` jobs in `1453.718 s`; all
+eleven audits exited zero, and a strict transcript parse found exactly
+twenty-two declaration blocks using only
+`{propext, Classical.choice, Quot.sound}`. The twenty-two PRE-VALIDATION
+notices are retired and all eleven audits enter `YangMillsCore.lean`.
+
+Colab printed evidence JSON SHA-256
+`B3BE67F3016962FD564222F82174AF0A2F44C7C2A9277E6011A558BE9203946C`
+and archive SHA-256
+`E73CF275BB3A0D2141005540F45D5A3610884BC56C3A4AA5FE28231BEB496BD1`.
+The in-app browser displayed the `files.download` progress bar but did not
+materialize the archive locally. Before closing the tab, the complete
+visible structured transcript was parsed into the durable 22-blob/12-stage/
+22-axiom-gate record
+`validation-evidence/cmp89-eq246-finite-diagonal-chain-cold-c1cdd849-visible-transcript.json`,
+whose independently checked SHA-256 is
+`CD794B2A39B62517EA0FE96567F3F120ABFD5D5269D28CE240809ACB2C62C646`.
+This is an explicit transport exception: no local archive verification is
+claimed.
 
 The chain bounds the complete finite-fibre solution while preserving the
 physical inverse-Laplacian scale. It does not yet construct the continuous

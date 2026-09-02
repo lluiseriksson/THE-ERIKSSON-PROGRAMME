@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP89Eq251AliasWeightRedistribution
 
 /-!
-# PRE-VALIDATION: bare inverse-Laplacian redistribution at exponent one half
+# Cold-sealed: bare inverse-Laplacian redistribution at exponent one half
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 This is the pointwise bridge for the unsmoothed diagonal branch below CMP89
 (2.46).  Unlike the already sealed source-weight bridge, it does not assume an

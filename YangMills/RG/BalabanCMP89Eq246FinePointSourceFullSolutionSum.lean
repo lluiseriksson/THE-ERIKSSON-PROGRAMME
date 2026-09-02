@@ -2,10 +2,12 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralComponentBound
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralSolutionSum
 
 /-!
-# PRE-VALIDATION: complete finite-fibre fine-point-source solution budget
+# Cold-sealed: complete finite-fibre fine-point-source solution budget
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 This is the final finite-dimensional estimate below the Fourier synthesis.
 It keeps the one physical volume loss visible: `O((L^j+1)^2)` from the

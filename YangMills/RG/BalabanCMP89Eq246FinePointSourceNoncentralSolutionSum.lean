@@ -2,10 +2,12 @@ import YangMills.RG.BalabanCMP89Eq246FinePointSourceBareDiagonalSum
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralCorrectionSum
 
 /-!
-# PRE-VALIDATION: complete noncentral fine-point-source solution sum
+# Cold-sealed: complete noncentral fine-point-source solution sum
 
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM focal and exact axiom gate recorded in Verification Ledger
+Addendum 1027.
 
 This leaf recombines the two branches only after their different scaling has
 been exposed: the bare diagonal contribution is quadratic in the finite alias

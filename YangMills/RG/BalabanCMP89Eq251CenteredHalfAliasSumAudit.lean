@@ -1,7 +1,8 @@
 import YangMills.RG.BalabanCMP89Eq251CenteredHalfAliasSum
 
-/-! PRE-VALIDATION: source is present, its `.olean` has not yet been materialized,
-and the audit has not yet been verified by the compiler. -/
+/-! Cold compiler validation: exact source checkpoint
+`c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` passed the fresh Colab Pro+
+CPU/high-RAM audit recorded in Verification Ledger Addendum 1027. -/
 
 #print axioms YangMills.RG.cmp89Eq251OneDimensionalAliasWeight_half_le_shiftedAbs
 #print axioms YangMills.RG.cmp89Eq245CenteredAliasIntegers_subset_Icc_radius
