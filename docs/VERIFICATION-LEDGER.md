@@ -43835,3 +43835,26 @@ separate diagonal and central branches into the Fourier integrand, construct
 the continuous Green, prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1035 (2026-09-02, **directed central component promoted PRE-VALIDATION after retained-runtime PASS; 20/41 unchanged**)
+
+Exact promoted source checkpoint
+`76b64ebc1307c1445136941bdcf1c01ace2f4995` adds
+`BalabanCMP89Eq246DirectedCentralComponent` and its exact audit. It exposes
+two declarations: directed decay for the noncentral source moment at the
+central alias, and directed decay for the complete central component after
+the literal three-term numerator and central-row reciprocal are installed.
+
+The byte-identical drafts passed in the retained Colab Pro+ CPU/high-RAM
+runtime: focal `8513/8513`, exit zero in `22.129 s`; audit exit zero in
+`9.757 s`. Both declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`. Because this reused the already
+materialized project graph, it is diagnostic evidence only. Both promoted
+files carry exactly one visible PRE-VALIDATION notice and remain outside
+`YangMillsCore.lean` pending an independent cold checkout.
+
+This promotion does not combine the bare diagonal and central branches into
+the full Fourier integrand, construct the continuous Green, prove CMP89
+(2.42), produce uniform physical `B0`/`delta0`, attain window 15, discharge
+rows 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0`
+remains exact.

@@ -15848,6 +15848,30 @@ branches into the Fourier integrand, construct the continuous Green, prove
 CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`.
 
+### Eq. (2.46) directed central component (PRE-VALIDATION; hot diagnostic PASS)
+
+Exact promoted source checkpoint
+`76b64ebc1307c1445136941bdcf1c01ace2f4995` adds the two directed central
+component bounds and their exact audit. The first recombines the target phase
+with the noncentral source moment. The second expands the literal central
+numerator into the stabilized moment, common source moment and rank-one alias
+correction, keeps their three budgets explicit, and only then applies the
+sealed central-row reciprocal estimate.
+
+Before promotion, the byte-identical drafts passed in the retained Colab
+runtime: focal `8513/8513`, exit zero in `22.129 s`; audit exit zero in
+`9.757 s`; both declarations used exactly
+`{propext, Classical.choice, Quot.sound}`. This is diagnostic evidence, not a
+cold seal. Both promoted modules therefore retain one visible PRE-VALIDATION
+notice and remain outside `YangMillsCore.lean` pending a fresh exact-source
+checkout with no project build restoration.
+
+This brick still does not combine the bare diagonal and central components
+into the full Fourier integrand, construct the continuous Green, prove CMP89
+(2.42), produce uniform physical `B0`/`delta0`, attain window 15, discharge
+rows 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0`
+remains exact.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one
