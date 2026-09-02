@@ -16029,6 +16029,24 @@ The repair unfolded only that wrapper and exposed the common scalar factor by
 unchanged.  The independent v2 cold seal above supersedes that failed attempt
 without erasing its evidence.
 
+### Eq. (2.46) directed physical fine-site specialization (PRE-VALIDATION)
+
+The promoted wrapper evaluates the cold-sealed normalized directed synthesis
+at literal sites of the fine lattice with spacing `(L^j)^(-1)`.  It proves the
+endpoint-difference scaling identity, transports the exponential bound with
+the rate unit displayed as `rho * (L^j)^(-1)`, and identifies the zero-radius
+wrapper with the already constructed real-slice normalized fine-to-fine
+synthesis.
+
+Both modules pass the lightweight textual guards and carry one visible
+PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
+fresh Colab compiler and axiom gate.  The wrapper does not identify the
+real-slice synthesis with the finite periodic/generated Green, prove a
+point-source inverse equation, periodize the infinite-lattice synthesis, or
+prove CMP89 (2.42).  It produces no uniform physical `B0`/`delta0`, does not
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one

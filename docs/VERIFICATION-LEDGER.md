@@ -44164,3 +44164,21 @@ deformation, inverse-uniqueness identification, CMP89 (2.42), uniform physical
 `B0`/`delta0`, or attainment of window 15.  It discharges neither rows 23--24
 nor any new terminal field: counters remain exactly `20/41` and
 `TermSource = 0`.
+
+## Addendum 1048 (2026-09-02, **directed physical fine-site specialization promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes
+`BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel` and its exact audit.
+The wrapper evaluates the cold-sealed normalized directed Fourier synthesis
+at literal fine-lattice sites, proves the endpoint-difference scaling identity,
+and keeps the decay-rate conversion visible as `rho * (L^j)^(-1)`.  Its
+zero-radius theorem reaches the existing real-slice normalized fine-to-fine
+synthesis without claiming the generated finite periodic Green.
+
+Both files pass the lightweight overlay and import-prefix guards and carry
+exactly one PRE-VALIDATION notice.  No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`.  This promotion proves neither a
+point-source inverse equation nor the finite-periodic/infinite-lattice
+dictionary, CMP89 (2.42), uniform physical `B0`/`delta0`, or attainment of
+window 15.  It discharges no terminal field: counters remain exactly `20/41`
+and `TermSource = 0`.
