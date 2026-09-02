@@ -210,13 +210,9 @@ theorem cmp89Eq246StabilizedAliasTransposeFullSolution_neg_reflection
         ring
   by_cases hm : m = central
   · subst m
-    have hreflectCentral' :
-        cmp99SourceAliasIndexOneReflection d M
-            (cmp89Eq249CentralAliasIndex d M 1) =
-          cmp89Eq249CentralAliasIndex d M 1 :=
-      cmp99SourceAliasIndexOneReflection_central d M
+    rw [show reflect central = central by exact hreflectCentral]
     simp only [cmp89Eq246StabilizedAliasTransposeFullSolution,
-      cmp89Eq246StabilizedAliasFullSolution, hreflectCentral', if_pos]
+      cmp89Eq246StabilizedAliasFullSolution, central, if_pos]
     change
       (momentT - ∑ n ∈ Finset.univ.erase central, transposeCorrection n) /
           cmp89Eq246EntireAliasAverageColumn d M 1 (-z) central =
