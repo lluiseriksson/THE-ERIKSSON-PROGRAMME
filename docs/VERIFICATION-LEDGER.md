@@ -43684,3 +43684,37 @@ The fail-closed verifier accepts status FAIL, the one-stage queue prefix and
 all four source hashes. The runtime was disconnected and deleted after the
 archive was verified. All four Lean files retain PRE-VALIDATION, no audit is
 promoted, `20/41` is unchanged, and `TermSource = 0` remains exact.
+
+## Addendum 1030 (2026-09-02, **directed endpoint/envelope v2 FAIL preserved; retained-runtime queue PASS; cold seal pending; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-endpoint-envelope-diagnostic-v2` checked out exact
+source `ef8bf1eab26821c0575cb00701ec0ce804628d4e`, verified the official
+toolchain, exact Mathlib pin and all four Git-blob hashes, and stopped at the
+first focal error after `1004.629 s`. The three defects from Addendum 1029
+were gone; the remaining error was only the transport of one real subtraction
+through its complex coercion. Neither audit nor source-envelope stage ran.
+
+The independently verified FAIL archive SHA-256 is
+`39053ECA523A81FEC9C15F333EF46BD88A646C607E80879332CEB52D5BB23A28`;
+its embedded JSON SHA-256 is
+`6609B52D1B6327AFA1FA452AA6EF946E4392D0472B898AC8D192AD8A8E59872A`.
+The fail-closed v2 verifier accepts the exact source, four blobs and one-stage
+nonzero queue prefix.
+
+The same retained runtime then checked out exact repaired source
+`06e6be132c5e7742bb60102e890814d4961b5d2a`. The changed phase blob was
+hash-gated before the complete queue ran. The phase focal/audit passed in
+`11.570 s`/`7.581 s`; the envelope focal/audit passed in
+`38.613 s`/`7.892 s`. All seven exact declarations use only
+`{propext, Classical.choice, Quot.sound}`. The structured visible transcript
+SHA-256 is
+`46A6EF2743CA3898C331104FC1F297DC3DA41A1299641D986B8AC2FB4EF425E7`.
+
+This second result reused the project build graph and is diagnostic, not seal
+authority. All four Lean files retain PRE-VALIDATION and remain outside
+`YangMillsCore.lean` pending a fresh cold checkout of exact source `06e6be13`.
+The result does not construct the continuous Green, prove CMP89 (2.42),
+produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
+23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
+exact.
