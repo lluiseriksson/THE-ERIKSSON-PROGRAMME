@@ -1,4 +1,4 @@
-"""Retained-runtime diagnostic for generated outer synthesis and owner character.
+"""Retained-runtime diagnostic retry for the reflected owner character.
 
 This reuses the cold eight-file dictionary graph only after that gate has
 finished.  It is hot diagnostic output, not sealing evidence: it must not
@@ -12,19 +12,11 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "83de6050ee4109d897d5af8511e06362463d76c5"
+SOURCE_SHA = "fef6a25c031539bc84dea4c4e075cd5195ef26bf"
 REPO = Path("/content/hrpoly-full-point-source-dictionaries-cold-v1")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 QUEUE = (
-    (
-        "generated_outer_synthesis",
-        "YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary",
-        "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionaryAudit.lean",
-        {
-            "YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_outerIntegrandSum",
-        },
-    ),
     (
         "owner_character",
         "YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerCharacter",
