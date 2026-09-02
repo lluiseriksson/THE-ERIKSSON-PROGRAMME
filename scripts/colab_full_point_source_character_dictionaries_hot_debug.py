@@ -12,7 +12,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "bb29ece68f4f2dd117425443ab5dcaa5220938b9"
+SOURCE_SHA = "efb7ab16f47ea3419dc28b12efd01c18dc872765"
 REPO = Path("/content/hrpoly-cmp89-mass-uniform-final-aliasing-cold-v1")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
@@ -47,6 +47,10 @@ QUEUE = (
         },
     ),
 )
+
+# The first pair already passed in the preceding retained-runtime attempt.
+# Resume stop-on-first-error at the repaired source-character focal.
+QUEUE = QUEUE[1:]
 
 env = os.environ.copy()
 env["PATH"] = "/content/lean-4.29.0-rc6-linux/bin:" + env.get("PATH", "")
