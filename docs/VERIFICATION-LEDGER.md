@@ -42994,6 +42994,23 @@ endpoint, point-source and uniform-`B0` lane remains valid.  No terminal
 field is discharged, window 15 is not attained, `20/41` does not move, and
 `TermSource = 0` remains exact.
 
+## Addendum 1083 (2026-09-02, **reflected outer point-source synthesis passed hot; cold seal required**)
+
+At exact source `37d3bc6a7708014d2117b1ae84b67dd052db9ff4`, the
+retained Colab Pro+ runtime completed the reflected outer-synthesis focal in
+`15.957 s` and its one-declaration audit in `8.065 s`.  The declaration uses
+exactly `{propext, Classical.choice, Quot.sound}`.  Together with Addenda
+1077 and 1081 this makes the four endpoint/source/fibre/outer dictionary
+pairs hot-green, but retained-runtime output is not sealing evidence.
+
+The next atomic unit is one cold checkout of the exact eight-file chain with
+no `.lake/build` restoration.  Until that gate passes, all PRE-VALIDATION
+notices remain.  The chain still stops before finite-grid aliasing,
+continuous periodization, generated-regional identification, uniform `B0`,
+window-15 attainment, every terminal field and `TermSource`; counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.
+
 ## Addendum 1007 (2026-09-01, **CMP89 (2.48) source-role correction cold-sealed; 20/41 unchanged**)
 
 Exact source checkpoint `342c232fbbbb961ea8df3b8620e7681a7b557215`,
