@@ -44291,3 +44291,33 @@ PRE-VALIDATION remains; retrying the same source and runner in a fresh Colab
 session requires no mathematical change.  Counters remain exactly `20/41`,
 window 15 remains compatible but unattained, and `TermSource = 0` remains
 exact.
+
+## Addendum 1054 (2026-09-02, **directed physical fine-site specialization cold-sealed; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v2`, published at
+runner commit `8de7bbc980f58a6ab7152537a701251138cae4b7`, checked out exact source
+checkpoint `1a53d2755b05419f2401c5d839fc9a6cffdd0c2d`.  It verified the official
+Lean `v4.29.0-rc6` asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, both source blobs and both textual
+guards, without restoring a project `.lake/build` graph.
+
+The focal materialized successfully in `1116.921 s`; the exact audit exited
+zero in `11.069 s`.  All four audited declarations passed the fail-closed
+axiom gate, whose allowed set is exactly
+`{propext, Classical.choice, Quot.sound}`.  The runner recorded
+`FINAL_STATUS=PASS`, canonical evidence payload SHA-256
+`11AA8B5808C4553EDF33C28B72CE6C5EE9C1B263895E9E143409765B74B0A0F9`, and
+archive SHA-256
+`7FF8BECE1CE3DC04080CDC1E38F35525099479D2C837D6039941212C0C4ECB8F`.
+The local fail-closed verifier accepts all source/environment pins, the exact
+two-stage queue, axiom gate and archive hash.  Evidence is preserved under
+`validation-evidence/cmp89-directed-normalized-physical-fine-kernel-cold-1a53d275-20260902/`.
+
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired,
+and its audit enters `YangMillsCore.lean`.  This seal certifies the physical
+fine-site specialization and its explicit rate-unit conversion only.  It
+does not identify the real-slice synthesis with the generated finite
+periodic Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.

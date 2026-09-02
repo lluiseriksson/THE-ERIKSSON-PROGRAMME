@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary
 import YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegral
 
 /-!
-# PRE-VALIDATION: physical fine-site specialization of directed CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been cold-verified by the compiler.
+# Physical fine-site specialization of directed CMP89 (2.46)
 
 This wrapper inserts the literal fine-lattice spacing at both endpoints and
 keeps the conversion from physical displacement to integer lattice distance

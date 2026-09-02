@@ -16047,7 +16047,7 @@ The repair unfolded only that wrapper and exposed the common scalar factor by
 unchanged.  The independent v2 cold seal above supersedes that failed attempt
 without erasing its evidence.
 
-### Eq. (2.46) directed physical fine-site specialization (PRE-VALIDATION)
+### Eq. (2.46) directed physical fine-site specialization (SEALED)
 
 The promoted wrapper evaluates the cold-sealed normalized directed synthesis
 at literal sites of the fine lattice with spacing `(L^j)^(-1)`.  It proves the
@@ -16056,28 +16056,36 @@ the rate unit displayed as `rho * (L^j)^(-1)`, and identifies the zero-radius
 wrapper with the already constructed real-slice normalized fine-to-fine
 synthesis.
 
-Both modules pass the lightweight textual guards and carry one visible
-PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
-fresh Colab compiler and axiom gate.  The wrapper does not identify the
-real-slice synthesis with the finite periodic/generated Green, prove a
-point-source inverse equation, periodize the infinite-lattice synthesis, or
-prove CMP89 (2.42).  It produces no uniform physical `B0`/`delta0`, does not
-attain window 15, discharge rows 23--24, move `20/41`, or construct a
-`TermSource`; `TermSource = 0` remains exact.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v2`, at runner
+commit `8de7bbc980f58a6ab7152537a701251138cae4b7`, checked out exact source
+`1a53d2755b05419f2401c5d839fc9a6cffdd0c2d`.  It restored no project
+`.lake/build` graph, materialized the focal in `1116.921 s`, and passed the
+exact audit in `11.069 s`.  The fail-closed verifier accepts the toolchain and
+Mathlib pins, both source blobs, both queue stages, the exact axiom gate and
+the archive hash.  Evidence is preserved under
+`validation-evidence/cmp89-directed-normalized-physical-fine-kernel-cold-1a53d275-20260902/`.
+
+Exactly the two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`.  The wrapper does not identify the real-slice synthesis
+with the finite periodic/generated Green, prove a point-source inverse
+equation, periodize the infinite-lattice synthesis, or prove CMP89 (2.42).  It
+produces no uniform physical `B0`/`delta0`, does not attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
 
 The first fresh Colab gate stopped at the final focal target because the
 bound retained its statement-local `let displacement := ...`; the subsequent
 `rw` could not expose the already proved displacement-scaling equality.  The
 audit did not run.  The repair performs only `dsimp only at hbound` before the
 same two rewrites, with no change to the theorem statement, rate, constant or
-hypotheses.  PRE-VALIDATION remains until a separate cold gate verifies this
-repair.
+hypotheses.  The independent v2 seal above verifies that repair.
 
 A subsequent v2 cold retry checked the repaired source SHA and both textual
 guards but failed at `lake update` when Mathlib's external `git` clone exited
 `128`, before any focal or audit target ran.  It is classified as an
-infrastructure-only failure and contributes no compiler evidence.  The same
-source and runner remain the exact retry target.
+infrastructure-only failure and contributes no compiler evidence.  The later
+successful retry above supersedes that incident without erasing it.
 
 ### Eq. (2.46) complete finite-solver domain (PRE-VALIDATION)
 
