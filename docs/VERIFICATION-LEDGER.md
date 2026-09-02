@@ -45074,3 +45074,23 @@ continuous periodization, generated-regional identification, uniform `B0`,
 window-15 attainment, every terminal field and `TermSource`; counters remain
 exactly `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
+
+## Addendum 1084 (2026-09-02, **generated full-G/outer-synthesis composition promoted PRE-VALIDATION; no seal**)
+
+Static composition now rewrites the already constructed generated Step-7b
+point-source Green by the sealed inverse-uniqueness identification and then
+uses the reflected outer Eq. (2.46) synthesis literally.  The theorem keeps
+the opposite coarse momentum, both reflected within-block endpoints, both
+coarse owner characters and the exact full-volume normalization visible.
+It accepts no Green family, inverse law, Fourier reconstruction or
+periodization equality from the caller.
+
+Both the focal module and its one-declaration audit pass the lightweight
+import-prefix check, contain no `sorry`, `admit` or `trace_state`, and carry
+visible PRE-VALIDATION notices.  They have not been compiler- or
+axiom-verified and remain outside `YangMillsCore.lean`.  This composition
+does not yet identify the finite synthesis with the full-G torus DFT or its
+affine residue sum, produce a uniform physical bound, attain window 15,
+discharge any terminal field or construct a `TermSource`; counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.
