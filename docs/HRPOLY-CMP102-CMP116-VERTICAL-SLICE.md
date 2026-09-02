@@ -16047,6 +16047,23 @@ prove CMP89 (2.42).  It produces no uniform physical `B0`/`delta0`, does not
 attain window 15, discharge rows 23--24, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) complete finite-solver domain (PRE-VALIDATION)
+
+The promoted package names exactly the three nonvanishing facts consumed by
+the explicit finite alias solver: every noncentral fine symbol, the stabilized
+central denominator, and the central averaging row.  Its physical
+four-dimensional constructor derives all three internally from the existing
+common-polistrip windows.  It accepts neither an arbitrary solved Green nor an
+inverse identity from the caller.
+
+Both modules pass the lightweight textual guards and carry one visible
+PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending a
+compiler and exact axiom gate.  This domain package is a prerequisite for the
+alias-cycle uniqueness bridge; it does not itself prove periodicity, contour
+deformation, CMP89 (2.42), uniform physical `B0`/`delta0`, attainment of
+window 15, rows 23--24, or a `TermSource`.  Counters remain `20/41` and
+`TermSource = 0`.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one

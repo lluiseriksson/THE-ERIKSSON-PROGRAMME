@@ -44182,3 +44182,20 @@ point-source inverse equation nor the finite-periodic/infinite-lattice
 dictionary, CMP89 (2.42), uniform physical `B0`/`delta0`, or attainment of
 window 15.  It discharges no terminal field: counters remain exactly `20/41`
 and `TermSource = 0`.
+
+## Addendum 1049 (2026-09-02, **complete CMP89 (2.46) finite-solver domain promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes `BalabanCMP89Eq246FullSolutionDomain` and its
+exact audit.  The Prop-valued package exposes the three literal nonvanishing
+gates required by the complete finite alias solver, while its
+`of_commonRadius` theorem constructs those gates from the already sealed
+common-polistrip hypotheses.  No solved Green or inverse equality is accepted
+as input.
+
+Both files pass the lightweight overlay and import-prefix guards and carry
+exactly one PRE-VALIDATION notice.  No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`.  This promotion supplies only the
+domain for the future alias-cycle uniqueness chain; it proves no contour
+deformation, CMP89 (2.42), uniform physical `B0`/`delta0`, or attainment of
+window 15.  It discharges no terminal field: counters remain exactly `20/41`
+and `TermSource = 0`.
