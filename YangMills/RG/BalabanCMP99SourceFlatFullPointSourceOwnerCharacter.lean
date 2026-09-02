@@ -31,8 +31,22 @@ theorem cmp99FlatFourierMode_target_mul_source_inv_eq_ownerDifferenceCharacter
     cmp99FlatFourierMode_eq_finBoxFourierCharacter]
   rw [sub_eq_add_neg, cmp99FlatZModFourierCharacter_add_right]
   congr 1
-  rw [← cmp99FlatZModFourierCharacter_neg_left,
-    cmp99FlatZModFourierCharacter_comm]
+  calc
+    (cmp99FlatZModFourierCharacter
+        (cmp99FinBoxZModEquiv d N ell)
+        (cmp99FinBoxZModEquiv d N sourceOwner))⁻¹ =
+        cmp99FlatZModFourierCharacter
+          (-(cmp99FinBoxZModEquiv d N ell))
+          (cmp99FinBoxZModEquiv d N sourceOwner) :=
+      (cmp99FlatZModFourierCharacter_neg_left _ _).symm
+    _ = cmp99FlatZModFourierCharacter
+          (-(cmp99FinBoxZModEquiv d N sourceOwner))
+          (cmp99FinBoxZModEquiv d N ell) :=
+      cmp99FlatZModFourierCharacter_neg_swap _ _
+    _ = cmp99FlatZModFourierCharacter
+          (cmp99FinBoxZModEquiv d N ell)
+          (-(cmp99FinBoxZModEquiv d N sourceOwner)) :=
+      cmp99FlatZModFourierCharacter_comm _ _
 
 end
 
