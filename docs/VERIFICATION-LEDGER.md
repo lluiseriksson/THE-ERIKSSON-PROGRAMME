@@ -44524,3 +44524,25 @@ generated Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge a terminal field, or construct a `TermSource`.
 Counters remain exactly `20/41`, window 15 remains compatible but unattained,
 and `TermSource = 0` remains exact.
+
+## Addendum 1060 (2026-09-02, **CMP89 four-coordinate contour telescope and physical dictionary promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes two source/audit pairs:
+
+- `BalabanCMP89Eq246FineToFineGreenProductContourTelescope` constructs
+  integrability at every partial stage and composes four cold-sealed
+  one-coordinate shifts, with the sign derived from the literal
+  target-source displacement;
+- `BalabanCMP89Eq246DirectedPhysicalFineContourDictionary` identifies the
+  directed normalized physical synthesis at radius `rho` with its real-slice
+  value and transfers the existing fine-lattice exponential bound.
+
+All four files pass the exact lightweight overlay and import-prefix guards and
+carry exactly one PRE-VALIDATION notice each.  No compiler result is claimed,
+and both audits remain outside `YangMillsCore.lean`.  The dictionary does not
+identify the real Fourier synthesis with the finite generated periodic Green;
+that inverse-uniqueness bridge remains a named separate obligation.  This
+promotion therefore does not prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge a terminal field, or construct a
+`TermSource`.  Counters remain exactly `20/41`, window 15 remains compatible
+but unattained, and `TermSource = 0` remains exact.

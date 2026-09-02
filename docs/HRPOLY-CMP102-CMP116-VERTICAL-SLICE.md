@@ -15813,6 +15813,24 @@ four coordinates, identify the normalized synthesis with the generated
 Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, or attain
 window 15.  Counters remain `20/41` and `TermSource = 0`.
 
+### Eq. (2.46) four-coordinate telescope and physical contour dictionary (PRE-VALIDATION)
+
+The promoted telescope proves integrability at every partial signed-contour
+stage and composes four literal one-coordinate transitions.  Its sign is
+constructed from the physical target-source displacement; neither an
+independent sign vector nor global periodicity of an arbitrary extension is
+accepted.  The accompanying dictionary identifies the directed normalized
+physical synthesis at radius `rho` with its real-slice value and transfers
+the already explicit exponential estimate.
+
+Both focal/audit pairs carry visible PRE-VALIDATION notices and remain outside
+`YangMillsCore.lean` pending compiler and exact axiom gates.  The dictionary
+explicitly does not identify the Fourier synthesis with the finite generated
+periodic Green: that inverse-uniqueness bridge remains separate.  Hence this
+promotion does not prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge a terminal field, or construct a
+`TermSource`.  Counters remain exactly `20/41` and `TermSource = 0`.
+
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an
