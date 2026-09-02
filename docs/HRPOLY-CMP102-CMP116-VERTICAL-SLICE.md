@@ -15938,6 +15938,23 @@ integrand, construct the continuous Green, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) complete directed Fourier sum (PRE-VALIDATION)
+
+The promoted source combines the cold-sealed central component and literal
+noncentral alias sum at one common source and target endpoint.  Its bound
+keeps the two amplitude budgets as separate visible summands through the
+last addition.  In particular, the `(L^j+1)^2` factor remains the value
+component of the printed CMP99 (3.42) scale vector; it is not misreported as
+part of the scale-uniform coefficient.
+
+Both new modules pass the lightweight overlay guard and carry one visible
+PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending
+compiler validation.  This brick does not yet perform the normalized
+Brillouin synthesis, identify the resulting integral with the physical
+generated Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one

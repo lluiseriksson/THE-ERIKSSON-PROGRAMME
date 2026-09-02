@@ -43995,3 +43995,21 @@ noncentral sum with the cold-sealed central component into the full Fourier
 integrand, construct the continuous Green, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1041 (2026-09-02, **complete directed Fourier sum promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes `BalabanCMP89Eq246DirectedFullSolutionSum` and
+its exact audit.  The object is the literal sum of the cold-sealed central
+alias component and cold-sealed noncentral alias sum with a common source and
+target endpoint.  The theorem combines their common endpoint decay while
+retaining their two amplitude budgets as separate summands.  The visible
+`(L^j+1)^2` factor is explicitly classified as the value component of CMP99
+(3.42), not part of the scale-uniform coefficient.
+
+Both files pass the lightweight overlay and import-prefix guards and carry
+exactly one PRE-VALIDATION notice.  No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`.  This promotion does not yet
+perform normalized Fourier synthesis, identify the integral with the
+physical generated Green, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
