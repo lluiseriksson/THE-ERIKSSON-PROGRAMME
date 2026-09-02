@@ -46,7 +46,7 @@ theorem cmp99FlatFourierMode_inv_eq_finePointSourceAliasVector_mul_coarseMode_in
   let sourceEndpoint :=
     cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
       (cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x y)
-  let alias :=
+  let aliasIndex :=
     cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell k
   have hphase :=
     cmp99FlatFourierMode_div_coarseMode_eq_exp_entireAlias_endpoint
@@ -58,7 +58,7 @@ theorem cmp99FlatFourierMode_inv_eq_finePointSourceAliasVector_mul_coarseMode_in
       (cmp99FlatFourierMode k.1 x)⁻¹ * cmp99FlatFourierMode ell y =
         cmp89Eq246FinePointSourceAliasVector d M 1
           (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
-          sourceEndpoint alias := by
+          sourceEndpoint aliasIndex := by
     calc
       (cmp99FlatFourierMode k.1 x)⁻¹ * cmp99FlatFourierMode ell y =
           (cmp99FlatFourierMode k.1 x *
@@ -67,13 +67,13 @@ theorem cmp99FlatFourierMode_inv_eq_finePointSourceAliasVector_mul_coarseMode_in
               ring
       _ = (Complex.exp (Complex.I * cmp89Eq251EntirePhase
           (cmp89Eq248EntireAliasMomentum
-            (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) alias.1)
+            (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell) aliasIndex.1)
           sourceEndpoint))⁻¹ := by
-            simpa only [sourceEndpoint, alias] using
+            simpa only [sourceEndpoint, aliasIndex] using
               congrArg (fun w : ℂ => w⁻¹) hphase
       _ = cmp89Eq246FinePointSourceAliasVector d M 1
           (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
-          sourceEndpoint alias := by
+          sourceEndpoint aliasIndex := by
             rw [← Complex.exp_neg]
             rfl
   apply (mul_right_cancel₀ hcoarse)

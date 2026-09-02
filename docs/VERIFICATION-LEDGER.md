@@ -44816,3 +44816,20 @@ coarse endpoint characters and inverse full-volume normalization visible.
 This promotion does not prove that equality, the outer coarse sum, CMP89
 (2.42), uniform physical `B0`/`delta0`, attainment of window 15, a terminal
 row or a `TermSource`; counters remain exactly `20/41` and `TermSource = 0`.
+
+## Addendum 1071 (2026-09-02, **endpoint-character hot diagnostic stopped at a reserved local name; one lexical repair; no seal**)
+
+The retained Colab Pro+ high-RAM checkout fetched exact PRE-VALIDATION source
+`bb29ece68f4f2dd117425443ab5dcaa5220938b9` while preserving the preceding
+cold build graph.  The run was explicitly `HOT_DEBUG_NOT_EVIDENCE` and
+stop-on-first-error.  Scalar linearity of the full transposed alias solution
+completed in `54.889 s`; its three-declaration audit completed in `9.012 s`
+and used only `{propext, Classical.choice, Quot.sound}`.
+
+The source-character focal then stopped before elaboration because the local
+binder name `alias` is a reserved Lean command token.  The parser reported the
+first errors at lines 49 and 61.  The repair renames only that local
+abbreviation to `aliasIndex`; it changes no statement, Fourier character,
+endpoint orientation, normalization, source vector, hypothesis or constant.
+No PRE-VALIDATION notice is retired, the target-character focal has not run,
+and the counters remain exactly `20/41` and `TermSource = 0`.
