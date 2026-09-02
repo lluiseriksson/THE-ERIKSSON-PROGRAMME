@@ -12,7 +12,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "172533cffc48fd7a48936850fcc605fd691d2287"
+SOURCE_SHA = "6a13c192956322fdb358c5da1449644b596fc617"
 REPO = Path("/content/hrpoly-cmp89-mass-uniform-final-aliasing-cold-v1")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
@@ -55,11 +55,19 @@ QUEUE = (
             "YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_integrand",
         },
     ),
+    (
+        "outer_synthesis",
+        "YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionary",
+        "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionaryAudit.lean",
+        {
+            "YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceSolution_apply_eq_outerIntegrandSum",
+        },
+    ),
 )
 
-# The first three pairs passed in the preceding retained-runtime attempt.
-# Resume stop-on-first-error at the newly promoted one-fibre integrand.
-QUEUE = QUEUE[3:]
+# The four preceding pairs have passed in the retained runtime.  Resume
+# stop-on-first-error at the newly promoted reflected outer synthesis.
+QUEUE = QUEUE[4:]
 
 env = os.environ.copy()
 env["PATH"] = "/content/lean-4.29.0-rc6-linux/bin:" + env.get("PATH", "")
