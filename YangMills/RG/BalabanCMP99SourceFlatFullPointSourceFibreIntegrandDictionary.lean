@@ -88,10 +88,12 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_int
             M target targetOwner)
       have hreflect : reflect (reflect.symm (e k)) = e k :=
         Equiv.apply_symm_apply reflect (e k)
+      have her : er k = reflect.symm (e k) := rfl
       rw [hreflect] at htargetReflection
       simp only [neg_neg] at htargetReflection
       simp only [cmp99FlatComplexFibreFourierMode, PiLp.smul_apply, smul_eq_mul]
       rw [htarget, hsource, htargetReflection]
+      rw [her]
       simp only [common, term, er, e, reflect, z, targetOwner, sourceOwner,
         reflectedTargetEndpoint, reflectedSourceEndpoint]
       ring
@@ -108,7 +110,7 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_int
     _ = _ := by
       simp only [common, z, targetOwner, sourceOwner,
         reflectedTargetEndpoint, reflectedSourceEndpoint]
-      rw [mul_assoc]
+      ring
 
 end
 

@@ -45000,3 +45000,21 @@ normalization, hypothesis or constant changes.  The focal and audit remain
 PRE-VALIDATION and this is `HOT_DEBUG_NOT_EVIDENCE`; counters remain exactly
 `20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
 remains exact.
+
+## Addendum 1080 (2026-09-02, **reflected one-fibre third hot attempt reduced to equivalence application and product normalization; no seal**)
+
+The retained-runtime retry fetched exact source
+`295b482d51aa3ea7fdeeea70d86dabe51da11af2`.  The explicit alias
+involution, endpoint reflection and finite-sum factorization all elaborated.
+The focal stopped after `20.884 s` on two residual normalization goals.  In
+the per-fibre summand Lean still displayed `(e.trans reflect.symm) k` on one
+side and `reflect.symm (e k)` on the other; in the terminal line it displayed
+the same five complex factors with different parentheses.
+
+The repair names the definitional application equality `er k =
+reflect.symm (e k)` before ring normalization and uses ring normalization for
+the final reassociation.  This changes no statement, physical object,
+momentum sign, alias convention, endpoint, normalization, hypothesis or
+constant.  The focal and audit remain PRE-VALIDATION and this remains
+`HOT_DEBUG_NOT_EVIDENCE`; counters remain exactly `20/41`, window 15 remains
+compatible but unattained, and `TermSource = 0` remains exact.
