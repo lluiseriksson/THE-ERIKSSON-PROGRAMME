@@ -15903,6 +15903,28 @@ this seal does not yet prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Full Eq. (2.46) point-source endpoint-character dictionaries (PRE-VALIDATION)
+
+Three promoted focal/audit pairs prepare the source-specific bridge from the
+finite periodic CMP99 point-source construction to the literal two-endpoint
+CMP89 (2.46) integrand.  The first proves scalar linearity of the internally
+constructed transposed alias solve.  The second factors the inverse fine
+source character into the literal (2.46) point-source alias vector and one
+common inverse coarse character, then applies that factorization inside the
+actual fixed-fibre coefficients.  The third keeps the positive target alias
+phase and its common coarse target character separate.  Target and source
+orientations are proved independently; no abstract self-adjointness bridge is
+used.
+
+All six files pass the exact lightweight overlay and import-prefix guards and
+carry visible PRE-VALIDATION notices.  None has yet been compiler- or
+axiom-verified, and their audits remain outside `YangMillsCore.lean`.  This
+promotion does not yet prove the one-fibre synthesis equality, perform the
+outer coarse-momentum sum, identify the periodic solution with the generated
+regional Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an

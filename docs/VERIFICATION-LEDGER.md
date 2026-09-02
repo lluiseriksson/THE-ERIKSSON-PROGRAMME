@@ -44794,3 +44794,25 @@ Exactly the twelve PRE-VALIDATION notices are retired and all six audits enter
 generated CMP99 regional Green, prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1070 (2026-09-02, **full-G point-source endpoint-character dictionaries promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes three source/audit pairs.  The first proves scalar
+linearity of the internally constructed arbitrary-source transposed alias
+solve.  The second derives the source orientation from the exact fine/coarse
+Fourier quotient: the inverse fine character is the literal CMP89 (2.46)
+point-source alias vector times one common inverse coarse character, which is
+pulled through the solve only by the preceding linearly proved theorem.  The
+third independently factors the positive fine target character into its
+literal alias phase and common coarse target character.  No family of
+solutions, inverse identity, self-adjointness or target/source identification
+is accepted from the caller.
+
+All six files pass the exact lightweight overlay and import-prefix guards and
+carry visible PRE-VALIDATION notices.  No compiler result is claimed and all
+three audits remain outside `YangMillsCore.lean`.  The next named obligation
+is the one-fibre synthesis equality to the literal (2.46) integrand with both
+coarse endpoint characters and inverse full-volume normalization visible.
+This promotion does not prove that equality, the outer coarse sum, CMP89
+(2.42), uniform physical `B0`/`delta0`, attainment of window 15, a terminal
+row or a `TermSource`; counters remain exactly `20/41` and `TermSource = 0`.
