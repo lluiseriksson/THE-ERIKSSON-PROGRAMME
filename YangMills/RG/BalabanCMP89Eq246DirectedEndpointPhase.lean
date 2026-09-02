@@ -41,10 +41,16 @@ theorem norm_cmp89Eq246FinePointSourceAliasVector_signedContour
         sourceEndpoint m‖ =
       Real.exp (rho *
         cmp89Eq246SignedEndpointPairing displacement sourceEndpoint) := by
-  rw [cmp89Eq246FinePointSourceAliasVector, Complex.norm_exp,
-    Complex.neg_mul_re, Complex.I_mul_re,
-    cmp89Eq251EntireAliasPhase_signedContour_im]
-  rfl
+  have hnegI (w : ℂ) : (-Complex.I * w).re = w.im := by
+    simp [Complex.mul_re]
+  rw [cmp89Eq246FinePointSourceAliasVector, Complex.norm_exp, hnegI,
+    cmp89Eq251EntireAliasPhase_im]
+  congr 1
+  rw [cmp89Eq246SignedEndpointPairing, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro mu _
+  rw [cmp89Eq251SignedContourMomentum_im]
+  ring
 
 /-- Every target synthesis phase has the matching exact directed decay,
 again independently of its reciprocal alias. -/
@@ -59,8 +65,7 @@ theorem norm_cmp89Eq246TargetPhase_signedContour
           targetEndpoint)‖ =
       Real.exp (-(rho *
         cmp89Eq246SignedEndpointPairing displacement targetEndpoint)) := by
-  rw [norm_exp_I_cmp89Eq251EntireAliasPhase,
-    cmp89Eq251EntireAliasPhase_im]
+  rw [norm_exp_I_cmp89Eq251EntireAliasPhase]
   congr 2
   rw [cmp89Eq246SignedEndpointPairing, Finset.mul_sum]
   apply Finset.sum_congr rfl
@@ -78,14 +83,32 @@ theorem cmp89Eq246_targetDecay_mul_sourceGrowth
           (fun mu => targetEndpoint mu - sourceEndpoint mu) sourceEndpoint) =
       Real.exp (-(rho * cmp89Eq251DisplacementL1
         (fun mu => targetEndpoint mu - sourceEndpoint mu))) := by
+  have hsum :
+      (∑ mu, (SignType.sign
+          (targetEndpoint mu - sourceEndpoint mu) : ℝ) * targetEndpoint mu) -
+        (∑ mu, (SignType.sign
+          (targetEndpoint mu - sourceEndpoint mu) : ℝ) * sourceEndpoint mu) =
+      ∑ mu, |targetEndpoint mu - sourceEndpoint mu| := by
+    rw [← Finset.sum_sub_distrib]
+    apply Finset.sum_congr rfl
+    intro mu _
+    rw [← sign_mul_self (targetEndpoint mu - sourceEndpoint mu)]
+    ring
   rw [← Real.exp_add]
   congr 1
   rw [cmp89Eq246SignedEndpointPairing, cmp89Eq246SignedEndpointPairing,
-    cmp89Eq251DisplacementL1, ← Finset.sum_sub_distrib, Finset.mul_sum]
-  apply Finset.sum_congr rfl
-  intro mu _
-  rw [← sign_mul_self (targetEndpoint mu - sourceEndpoint mu)]
-  ring
+    cmp89Eq251DisplacementL1]
+  calc
+    -(rho * ∑ mu, (SignType.sign
+          (targetEndpoint mu - sourceEndpoint mu) : ℝ) * targetEndpoint mu) +
+        rho * ∑ mu, (SignType.sign
+          (targetEndpoint mu - sourceEndpoint mu) : ℝ) * sourceEndpoint mu =
+      -(rho * ((∑ mu, (SignType.sign
+          (targetEndpoint mu - sourceEndpoint mu) : ℝ) * targetEndpoint mu) -
+        ∑ mu, (SignType.sign
+          (targetEndpoint mu - sourceEndpoint mu) : ℝ) * sourceEndpoint mu)) := by
+          ring
+    _ = _ := by rw [hsum]
 
 /-- The target synthesis phase and the literal point-source phase combine
 exactly into the relative endpoint phase, before norms are taken. -/
@@ -103,7 +126,7 @@ theorem cmp89Eq246TargetPhase_mul_finePointSourceAliasVector
         (fun mu => targetEndpoint mu - sourceEndpoint mu)) := by
   rw [cmp89Eq246FinePointSourceAliasVector, ← Complex.exp_add]
   congr 1
-  simp only [cmp89Eq251EntirePhase, Finset.sum_sub_distrib, mul_sub]
+  simp only [cmp89Eq251EntirePhase, map_sub, Finset.sum_sub_distrib]
   ring
 
 /-- On the signed contour chosen by the literal endpoint difference, the

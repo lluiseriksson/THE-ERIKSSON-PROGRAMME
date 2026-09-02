@@ -43655,3 +43655,32 @@ envelope through the complete solution, specialize the directed physical
 source, construct the continuous Green kernel, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24,
 move `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1029 (2026-09-02, **directed endpoint phase diagnostic FAIL preserved; mechanical repair promoted; 20/41 unchanged**)
+
+The exact source checkpoint
+`abc24550519829f7e2c276e2510afbb277f0ec4b` ran once in a fresh Colab Pro+
+CPU/high-RAM runtime through runner `779e4089897d5ddb8a153063a46ce21945770ac2`.
+Toolchain, Mathlib pin, four Git-blob hashes and both textual guards passed.
+The stop-on-first-error queue then stopped at
+`directed_endpoint_phase_focal` with exit `1` after `1019.689` seconds;
+neither its audit nor the two source-envelope stages ran.
+
+The compiler exposed four elaboration defects in the first module: the
+nonexistent name `Complex.neg_mul_re`, one redundant rewrite after the phase
+had already been expanded, one finite-sum difference that needed an explicit
+intermediate equality, and one real-to-complex subtraction cast that needed
+normalization. No theorem statement, constant or hypothesis changed. The
+repair replaces those steps by coordinatewise identities and explicit
+finite-sum algebra.
+
+The FAIL archive is preserved under
+`validation-evidence/cmp89-directed-endpoint-envelope-fail-abc24550-20260902/`.
+Its SHA-256 is
+`880195bdde528447a07b4a573c6aab3e541ef172bca51b400528d6fad093dd83`;
+the embedded JSON SHA-256 is
+`ce06e8f16966d77c2bf5f19af4c2ef323bfcfdb8b6ba9f0187c017506e4649f9`.
+The fail-closed verifier accepts status FAIL, the one-stage queue prefix and
+all four source hashes. The runtime was disconnected and deleted after the
+archive was verified. All four Lean files retain PRE-VALIDATION, no audit is
+promoted, `20/41` is unchanged, and `TermSource = 0` remains exact.
