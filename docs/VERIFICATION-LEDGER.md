@@ -44892,3 +44892,27 @@ This remains hot diagnostic work: the replacement has not yet been compiled,
 no PRE-VALIDATION notice is retired, the target pair has not run, and counters
 remain exactly `20/41`; window 15 remains compatible but unattained and
 `TermSource = 0` remains exact.
+
+## Addendum 1075 (2026-09-02, **reflected source-character hot retry reached the exact involution boundary; two proof repairs; no seal**)
+
+The retained-runtime retry fetched exact source
+`82f7b49d3d556735154a482563432874c0d381ad`.  Because the new reflection
+imports crossed an unmaterialized `.olean` boundary, the stop-on-first-error
+source-character focal took `722.172 s`; it then stopped on two explicit
+proof-shape errors and did not run either audit or the target-character pair.
+
+The first error was the non-definitional normalization
+`exp (-(I * phase)) = exp (-I * phase)` after inversion of the Fourier
+character.  The repair unfolds the literal point-source vector and proves
+the exponent equality by ring normalization.  The second error showed that
+the reflection theorem had been simplified before exposing the involution:
+its left source remained `AliasReflectionSource (pointSource ∘ reflect)`
+instead of `pointSource`.  The repair proves that equality separately from
+the actual equivalence involution and rewrites it before consuming the
+sealed transpose/direct reflection theorem.
+
+Neither repair changes a statement, momentum sign, physical endpoint,
+half-open alias reflection, normalization, hypothesis or constant.  This is
+still `HOT_DEBUG_NOT_EVIDENCE`: no PRE-VALIDATION notice is retired, no cold
+seal is claimed, and counters remain exactly `20/41`; window 15 remains
+compatible but unattained and `TermSource = 0` remains exact.

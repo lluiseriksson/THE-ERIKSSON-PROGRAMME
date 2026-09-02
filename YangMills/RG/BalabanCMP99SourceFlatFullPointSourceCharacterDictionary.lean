@@ -77,7 +77,9 @@ theorem cmp99FlatFourierMode_inv_eq_finePointSourceAliasVector_mul_coarseMode_in
           (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
           sourceEndpoint aliasIndex := by
             rw [← Complex.exp_neg]
-            rfl
+            simp only [cmp89Eq246FinePointSourceAliasVector]
+            congr 2
+            ring
   apply (mul_right_cancel₀ hcoarse)
   rw [hinv, mul_assoc, inv_mul_cancel₀ hcoarse, mul_one]
 
@@ -207,13 +209,18 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq
   have htranspose :=
     cmp89Eq246StabilizedAliasTransposeFullSolution_neg_reflection
       d M mass a (-z) reflectedPointSource (reflect.symm (e k))
+  have hreflectionSource :
+      cmp89Eq246AliasReflectionSource d M reflectedPointSource = pointSource := by
+    funext n
+    simp only [cmp89Eq246AliasReflectionSource, reflectedPointSource, reflect,
+      Equiv.apply_symm_apply]
   have htranspose' :
       cmp89Eq246StabilizedAliasTransposeFullSolution
           d M 1 mass a z pointSource (e k) =
         cmp89Eq246StabilizedAliasFullSolution
           d M 1 mass a (-z) reflectedPointSource (reflect.symm (e k)) := by
-    simpa only [neg_neg, reflectedPointSource, pointSource, reflect,
-      cmp89Eq246AliasReflectionSource, Equiv.apply_symm_apply] using htranspose
+    rw [neg_neg, hreflectionSource, Equiv.apply_symm_apply] at htranspose
+    exact htranspose
   rw [htranspose']
   have hreflectedPointSource :
       reflectedPointSource =
