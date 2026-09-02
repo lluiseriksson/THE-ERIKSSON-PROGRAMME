@@ -2,15 +2,15 @@ import YangMills.RG.BalabanCMP89Eq246DirectedNoncentralComponent
 import YangMills.RG.BalabanCMP89Eq251CenteredHalfAliasSum
 
 /-!
-# PRE-VALIDATION: directed noncentral alias sum below CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been cold-verified by the compiler.
+# Directed noncentral alias sum below CMP89 (2.46)
 
 The target phase remains inside every summand.  The bare inverse-Laplacian
 half-weight and the strictly summable rank-one weight are accumulated
 separately, so the visible quadratic alias-size loss cannot be confused with
 the scale-uniform correction budget.
+
+This module and its audit were cold-verified from exact source checkpoint
+`1f3bc9b0bb85016d1ebb96514b4da54f5e32b754` in a fresh Colab Pro+ checkout.
 -/
 
 namespace YangMills.RG

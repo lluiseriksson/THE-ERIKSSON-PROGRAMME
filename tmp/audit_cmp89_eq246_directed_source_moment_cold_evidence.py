@@ -55,6 +55,19 @@ EXPECTED_CONFIGS = {
             "directed_noncentral_component_audit",
         ],
     },
+    "cmp89-eq246-directed-noncentral-sum-cold-v1": {
+        "source_sha": "1f3bc9b0bb85016d1ebb96514b4da54f5e32b754",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralSum.lean":
+                "fee3a497bdfc100f93f77c4345cfd08bf54de0c124784067682b0d5b7ed9c938",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralSumAudit.lean":
+                "198162274f4f4178c4fef00cd611848fde7dc945edbaf1e7ad6b5e04b3f2ba74",
+        },
+        "queue": [
+            "directed_noncentral_sum_focal",
+            "directed_noncentral_sum_audit",
+        ],
+    },
 }
 
 
