@@ -42994,23 +42994,6 @@ endpoint, point-source and uniform-`B0` lane remains valid.  No terminal
 field is discharged, window 15 is not attained, `20/41` does not move, and
 `TermSource = 0` remains exact.
 
-## Addendum 1083 (2026-09-02, **reflected outer point-source synthesis passed hot; cold seal required**)
-
-At exact source `37d3bc6a7708014d2117b1ae84b67dd052db9ff4`, the
-retained Colab Pro+ runtime completed the reflected outer-synthesis focal in
-`15.957 s` and its one-declaration audit in `8.065 s`.  The declaration uses
-exactly `{propext, Classical.choice, Quot.sound}`.  Together with Addenda
-1077 and 1081 this makes the four endpoint/source/fibre/outer dictionary
-pairs hot-green, but retained-runtime output is not sealing evidence.
-
-The next atomic unit is one cold checkout of the exact eight-file chain with
-no `.lake/build` restoration.  Until that gate passes, all PRE-VALIDATION
-notices remain.  The chain still stops before finite-grid aliasing,
-continuous periodization, generated-regional identification, uniform `B0`,
-window-15 attainment, every terminal field and `TermSource`; counters remain
-exactly `20/41`, window 15 remains compatible but unattained, and
-`TermSource = 0` remains exact.
-
 ## Addendum 1007 (2026-09-01, **CMP89 (2.48) source-role correction cold-sealed; 20/41 unchanged**)
 
 Exact source checkpoint `342c232fbbbb961ea8df3b8620e7681a7b557215`,
@@ -45018,22 +45001,6 @@ PRE-VALIDATION and this is `HOT_DEBUG_NOT_EVIDENCE`; counters remain exactly
 `20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
 remains exact.
 
-## Addendum 1082 (2026-09-02, **reflected outer synthesis first hot attempt stopped at PiLp sum evaluation; no seal**)
-
-The retained-runtime gate fetched exact source
-`6a13c192956322fdb358c5da1449644b596fc617` and stopped after
-`22.183 s` before consuming the already compiled one-fibre theorem.  The
-attempted `change` again treated evaluation of a finite `PiLp` sum through
-the target and Lie coordinate as definitional.
-
-The repair uses the same explicit evaluation lemmas already exercised by the
-one-fibre proof, `WithLp.ofLp_sum` and `Finset.sum_apply`, before applying
-`Finset.sum_congr`.  No statement, reflected base momentum, endpoint,
-normalization, hypothesis or constant changes.  The outer focal and audit
-remain PRE-VALIDATION and this is `HOT_DEBUG_NOT_EVIDENCE`; counters remain
-exactly `20/41`, window 15 remains compatible but unattained, and
-`TermSource = 0` remains exact.
-
 ## Addendum 1080 (2026-09-02, **reflected one-fibre third hot attempt reduced to equivalence application and product normalization; no seal**)
 
 The retained-runtime retry fetched exact source
@@ -45074,3 +45041,36 @@ regional Green, establish a uniform physical bound, attain window 15,
 discharge a terminal field or inhabit `TermSource`.  Counters remain exactly
 `20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
 remains exact.
+
+## Addendum 1082 (2026-09-02, **reflected outer synthesis first hot attempt stopped at PiLp sum evaluation; no seal**)
+
+The retained-runtime gate fetched exact source
+`6a13c192956322fdb358c5da1449644b596fc617` and stopped after
+`22.183 s` before consuming the already compiled one-fibre theorem.  The
+attempted `change` again treated evaluation of a finite `PiLp` sum through
+the target and Lie coordinate as definitional.
+
+The repair uses the same explicit evaluation lemmas already exercised by the
+one-fibre proof, `WithLp.ofLp_sum` and `Finset.sum_apply`, before applying
+`Finset.sum_congr`.  No statement, reflected base momentum, endpoint,
+normalization, hypothesis or constant changes.  The outer focal and audit
+remain PRE-VALIDATION and this is `HOT_DEBUG_NOT_EVIDENCE`; counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.
+
+## Addendum 1083 (2026-09-02, **reflected outer point-source synthesis passed hot; cold seal required**)
+
+At exact source `37d3bc6a7708014d2117b1ae84b67dd052db9ff4`, the
+retained Colab Pro+ runtime completed the reflected outer-synthesis focal in
+`15.957 s` and its one-declaration audit in `8.065 s`.  The declaration uses
+exactly `{propext, Classical.choice, Quot.sound}`.  Together with Addenda
+1077 and 1081 this makes the four endpoint/source/fibre/outer dictionary
+pairs hot-green, but retained-runtime output is not sealing evidence.
+
+The next atomic unit is one cold checkout of the exact eight-file chain with
+no `.lake/build` restoration.  Until that gate passes, all PRE-VALIDATION
+notices remain.  The chain still stops before finite-grid aliasing,
+continuous periodization, generated-regional identification, uniform `B0`,
+window-15 attainment, every terminal field and `TermSource`; counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.
