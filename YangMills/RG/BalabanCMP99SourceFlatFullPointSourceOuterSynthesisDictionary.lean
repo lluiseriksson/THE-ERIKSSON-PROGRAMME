@@ -46,9 +46,7 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceSolution_apply_eq_outerInt
           v A := by
   classical
   rw [cmp99SourceFlatFullComplexPrecisionPointSourceSolution]
-  change (∑ ell : FinBox d N',
-      cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution
-        ell mass a source v target A) = _
+  simp only [WithLp.ofLp_sum, Finset.sum_apply]
   apply Finset.sum_congr rfl
   intro ell _
   exact

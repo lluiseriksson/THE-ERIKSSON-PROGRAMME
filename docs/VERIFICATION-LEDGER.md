@@ -45001,6 +45001,22 @@ PRE-VALIDATION and this is `HOT_DEBUG_NOT_EVIDENCE`; counters remain exactly
 `20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
 remains exact.
 
+## Addendum 1082 (2026-09-02, **reflected outer synthesis first hot attempt stopped at PiLp sum evaluation; no seal**)
+
+The retained-runtime gate fetched exact source
+`6a13c192956322fdb358c5da1449644b596fc617` and stopped after
+`22.183 s` before consuming the already compiled one-fibre theorem.  The
+attempted `change` again treated evaluation of a finite `PiLp` sum through
+the target and Lie coordinate as definitional.
+
+The repair uses the same explicit evaluation lemmas already exercised by the
+one-fibre proof, `WithLp.ofLp_sum` and `Finset.sum_apply`, before applying
+`Finset.sum_congr`.  No statement, reflected base momentum, endpoint,
+normalization, hypothesis or constant changes.  The outer focal and audit
+remain PRE-VALIDATION and this is `HOT_DEBUG_NOT_EVIDENCE`; counters remain
+exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.
+
 ## Addendum 1080 (2026-09-02, **reflected one-fibre third hot attempt reduced to equivalence application and product normalization; no seal**)
 
 The retained-runtime retry fetched exact source
