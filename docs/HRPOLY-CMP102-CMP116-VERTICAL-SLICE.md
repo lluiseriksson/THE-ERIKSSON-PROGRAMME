@@ -15674,6 +15674,23 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) arbitrary-source full-solution reflection (PRE-VALIDATION)
+
+The next orientation bridge reflects an arbitrary source through the actual
+half-open alias equivalence, proves equality of the noncentral and complete
+scalar moments, and then compares every component of the complete transposed
+solution at `-z` with the direct solution at `z`. Its central branch
+reindexes the erased finite correction sum explicitly; it does not infer the
+result from abstract self-adjointness or from equality of block norms.
+
+The source and exact three-declaration audit retain visible PRE-VALIDATION
+notices and remain outside `YangMillsCore.lean`. This bridge is the named
+orientation gate before finite-grid periodization. It does not yet prove the
+periodized physical Green equality, CMP89 (2.42), uniform physical
+`B0`/`delta0`, attainment of window 15, a terminal field, or a `TermSource`.
+Counters remain exactly `20/41`, window 15 remains compatible but unattained,
+and `TermSource = 0` remains exact.
+
 ### Eq. (2.46) finite alias-precision uniqueness (cold-sealed)
 
 The promoted source turns the already constructed explicit full solution for

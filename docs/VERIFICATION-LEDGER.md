@@ -44546,3 +44546,23 @@ promotion therefore does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge a terminal field, or construct a
 `TermSource`.  Counters remain exactly `20/41`, window 15 remains compatible
 but unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1061 (2026-09-02, **CMP89 arbitrary-source full-solution reflection promoted PRE-VALIDATION; 20/41 unchanged**)
+
+The working branch promotes
+`BalabanCMP89Eq246AliasReflectionTransposeFullSolution` and its exact
+three-declaration audit. The source transports an arbitrary alias source by
+the actual half-open reflection, proves equality of the noncentral and full
+source moments, and proves the reflected componentwise equality between the
+complete transposed solution at `-z` and the direct solution at `z`. The
+central correction sum is reindexed explicitly, so no unsupported
+self-adjointness or fixed-vector adjoint norm argument enters the proof.
+
+Both files pass the lightweight textual and import-prefix gates and carry one
+visible PRE-VALIDATION notice each. No compiler result is claimed and the
+audit remains outside `YangMillsCore.lean`. This is only the orientation gate
+required before finite-grid periodization; the periodized Green equality,
+CMP89 (2.42), uniform physical `B0`/`delta0`, window-15 attainment, terminal
+fields and a `TermSource` remain open. Counters remain exactly `20/41`,
+window 15 remains compatible but unattained, and `TermSource = 0` remains
+exact.

@@ -254,6 +254,49 @@ kernel or CMP89 (2.42).  The remaining bridge is the following finite chain:
    typed CMP89 (2.48) `G_j Q_j^*` object remains a separate downstream
    composition and is never substituted for this kernel.
 
+### Orientation gate before periodization (2026-09-02)
+
+The continuous full-point-source object currently used by the contour lane
+is built from `cmp89Eq246StabilizedAliasFullSolution`; its defining fibre
+equation is
+
+```text
+K.mulVec solution = source.
+```
+
+The finite physical point-source construction is deliberately built from
+`cmp89Eq246StabilizedAliasTransposeFullSolution`, because the sealed physical
+DFT action is the transpose of the printed alias matrix:
+
+```text
+K.transpose.mulVec solutionT = source.
+```
+
+Consequently the continuous/discrete bridge in item 6 must not identify the
+two solutions by notation, abstract self-adjointness, or equality of block
+norms.  Before finite-grid periodization is allowed to consume the continuous
+kernel, the tree must construct one of the following equivalent source-facing
+facts:
+
+1. a cross-fibre Fourier-negation theorem carrying the complete transposed
+   point-source solution to the complete non-transposed solution, with the
+   target/source swap and every endpoint phase written literally; or
+2. an equality between the periodized continuous kernel with the explicitly
+   swapped endpoint orientation and the finite physical point-source
+   solution.
+
+The already sealed `cmp99SourceCenteredAliasVectorReflection` and
+`cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv` provide the carrier
+permutations, while the existing cross-fibre quotient bridge is precedent
+only for the special Eq. (2.47) row/column solution.  It is not a proof for
+the arbitrary-source full solution.  The new gate must cover the central
+branch as well as every noncentral alias and must derive the source phase
+transport from the literal fine endpoint.
+
+Until this gate is proved, the exponential bound for
+`cmp89Eq246NormalizedPhysicalFineToFineGreen` is a valid continuous-kernel
+estimate but is not yet a bound for the generated finite periodic Green.
+
 ### Acceptance gate after the source-moment brick
 
 The scale-uniform source moment controls only the rank-one correction.  It
