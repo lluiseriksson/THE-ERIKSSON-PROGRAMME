@@ -43943,7 +43943,7 @@ produce uniform physical `B0`/`delta0`, attain window 15, discharge rows
 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0` remains
 exact.
 
-## Addendum 1039 (2026-09-02, **directed noncentral alias sum promoted PRE-VALIDATION; 20/41 unchanged**)
+## Addendum 1039 (2026-09-02, **directed noncentral alias sum hot diagnostic PASS; cold seal pending; 20/41 unchanged**)
 
 Exact source checkpoint `1f3bc9b0bb85016d1ebb96514b4da54f5e32b754`
 adds `BalabanCMP89Eq246DirectedNoncentralSum` and its exact audit.  The literal
@@ -43955,8 +43955,12 @@ is charged to the scale-uniform correction.
 
 The two files pass the lightweight overlay and import-prefix guards and each
 retains exactly one PRE-VALIDATION notice.  They remain outside
-`YangMillsCore.lean`.  No compiler or axiom result is claimed for this source
-checkpoint yet.
+`YangMillsCore.lean`.  On the retained Colab Pro+ high-RAM graph, the exact
+source focal exited zero in `8.310 s`; `lake build` materialized the complete
+module through `8516` jobs and exited zero in `29.309 s`; the exact audit then
+exited zero in `8.440 s`.  All three audited declarations reported exactly
+`{propext, Classical.choice, Quot.sound}`.  This is a hot diagnostic only, not
+a cold seal.  The PRE-VALIDATION notices therefore remain in place.
 
 This promotion does not combine the noncentral sum with the cold-sealed
 central component into the full Fourier integrand, construct the continuous

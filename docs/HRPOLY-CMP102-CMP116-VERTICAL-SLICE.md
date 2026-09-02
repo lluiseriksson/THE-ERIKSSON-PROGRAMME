@@ -15910,7 +15910,7 @@ does not construct the continuous Green, prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
-### Eq. (2.46) directed noncentral alias sum (PRE-VALIDATION; NOT CHECKED)
+### Eq. (2.46) directed noncentral alias sum (PRE-VALIDATION; hot diagnostic PASS only)
 
 Exact source checkpoint
 `1f3bc9b0bb85016d1ebb96514b4da54f5e32b754` adds the literal target-phased
@@ -15922,8 +15922,13 @@ for the rank-one correction.  No alias-cardinality estimate is hidden in the
 second term.
 
 Both files pass the local overlay and import-prefix guards, retain exactly one
-visible PRE-VALIDATION notice, and remain outside `YangMillsCore.lean`.  No
-Lean/Lake run has checked this checkpoint yet.  This brick still does not
+visible PRE-VALIDATION notice, and remain outside `YangMillsCore.lean`.  On
+the retained Colab Pro+ high-RAM graph, the exact source checkpoint passed a
+hot diagnostic: the source focal exited zero in `8.310 s`, materializing the
+full module required `8516` jobs and exited zero in `29.309 s`, and the exact
+audit exited zero in `8.440 s`; all three audited declarations reported
+exactly `{propext, Classical.choice, Quot.sound}`.  This is diagnostic evidence
+only, not a cold seal; both PRE-VALIDATION notices remain.  This brick still does not
 combine the noncentral sum with the central component into the full Fourier
 integrand, construct the continuous Green, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
