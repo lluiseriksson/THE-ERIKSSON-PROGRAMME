@@ -15877,6 +15877,33 @@ into the full Fourier integrand, construct the continuous Green, prove CMP89
 rows 23--24, move `20/41`, or construct a `TermSource`; `TermSource = 0`
 remains exact.
 
+### Eq. (2.46) directed noncentral component (PRE-VALIDATION; hot diagnostic PASS)
+
+Exact promoted source checkpoint
+`b90a58ddc8893f081ffccb1b6ad8409226075972` adds four bounds for one
+noncentral alias: the source-independent reciprocal fine-symbol half-weight,
+the directed bare diagonal, the directed rank-one correction, and their
+literal difference in the complete noncentral solution.  The two alias
+weights stay separate; no finite alias-cardinality factor is hidden.
+
+The first retained-runtime focal stopped at the new module after `39.262 s`:
+specializing the existing bare-diagonal theorem to source endpoint zero did
+not definitionally reduce the norm-one phase and zero displacement growth.
+The only repair makes `cmp89Eq251EntirePhase` and
+`cmp89Eq251DisplacementL1` explicit in that `simpa`.  The corrected focal then
+completed `8513/8513` jobs with exit zero in `14.684 s`; the exact four-line
+audit exited zero in `10.413 s`, and all four declarations use exactly
+`{propext, Classical.choice, Quot.sound}`.  This reused the materialized graph
+and is diagnostic evidence only.  Both promoted files retain one visible
+PRE-VALIDATION notice and remain outside `YangMillsCore.lean` pending an
+independent cold checkout.
+
+This brick does not yet sum the noncentral aliases or combine their total
+with the cold-sealed central component into the full Fourier integrand.  It
+does not construct the continuous Green, prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 
 Source checkpoint `4584f4c9d2cebe4f61a1ec48681256260deb7090` adds one

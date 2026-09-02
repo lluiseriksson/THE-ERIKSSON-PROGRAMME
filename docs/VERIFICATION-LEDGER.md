@@ -43887,3 +43887,30 @@ central branches into the full Fourier integrand, construct the continuous
 Green, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
 window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1037 (2026-09-02, **directed noncentral component promoted PRE-VALIDATION after corrected hot PASS; 20/41 unchanged**)
+
+Exact source checkpoint `b90a58ddc8893f081ffccb1b6ad8409226075972`
+adds `BalabanCMP89Eq246DirectedNoncentralComponent` and its exact audit.  The
+four declarations expose the reciprocal fine-symbol half-weight, directed
+bare diagonal, directed noncentral rank-one correction, and the complete
+noncentral solution component.  The bare and correction branches retain
+their different alias weights and share only the exact directed endpoint
+decay.
+
+The first retained-runtime focal stopped at line 37 after `39.262 s`: the
+zero-source specialization left a norm-one phase and zero displacement
+growth unreduced.  The sole repair adds
+`cmp89Eq251DisplacementL1` and `cmp89Eq251EntirePhase` to that `simpa`.  The
+corrected focal completed `8513/8513` jobs with exit zero in `14.684 s`; the
+exact audit exited zero in `10.413 s`.  All four declarations printed exactly
+`{propext, Classical.choice, Quot.sound}`.  Because this reused the already
+materialized project graph, it is diagnostic evidence only.
+
+Both files pass the local overlay and import-prefix guards, retain exactly one
+visible PRE-VALIDATION notice, and remain outside `YangMillsCore.lean` pending
+an independent cold checkout.  This promotion does not yet sum the
+noncentral aliases or combine them with the central component, construct the
+continuous Green, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
