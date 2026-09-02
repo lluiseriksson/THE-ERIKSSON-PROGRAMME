@@ -126,8 +126,8 @@ theorem cmp89Eq246TargetPhase_mul_finePointSourceAliasVector
         (fun mu => targetEndpoint mu - sourceEndpoint mu)) := by
   rw [cmp89Eq246FinePointSourceAliasVector, ← Complex.exp_add]
   congr 1
-  simp only [cmp89Eq251EntirePhase, map_sub, Finset.sum_sub_distrib]
-  ring
+  simp only [cmp89Eq251EntirePhase]
+  ring_nf
 
 /-- On the signed contour chosen by the literal endpoint difference, the
 combined target/source phase has exact alias-independent `ell^1` decay. -/
