@@ -15699,6 +15699,39 @@ cycle, periodicity of the complete integrand, contour deformation, CMP89
 (2.42), uniform physical `B0`/`delta0`, or attainment of window 15.  Counters
 remain `20/41` and `TermSource = 0`.
 
+### Eq. (2.46) finite alias-precision cycle (PRE-VALIDATION)
+
+The promoted source composes the five cold-sealed factorwise alias-cycle
+identities into entrywise covariance of the literal diagonal-plus-rank-one
+precision matrix.  It then reindexes the finite dot product to derive
+covariance of the matrix action.  Neither matrix periodicity nor a transported
+solution is accepted from the caller.
+
+The focal and its exact two-declaration audit pass the lightweight textual
+guards and retain visible PRE-VALIDATION notices.  They remain outside
+`YangMillsCore.lean` until a compiler and strict axiom gate pass.  This leaf
+does not yet prove covariance of the solved point-source fibre, periodicity of
+the complete integrand, contour deformation, CMP89 (2.42), uniform physical
+`B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
+`TermSource = 0`.
+
+### Eq. (2.46) solved fine-point-source cycle (PRE-VALIDATION)
+
+The promoted source transports the shifted explicit solution through the
+centered alias cycle, proves that it solves the unshifted point-source
+equation, and invokes the cold-sealed finite precision injectivity theorem to
+identify it with the base solution.  The source endpoint is the literal
+fine-lattice displacement, so the phase wrap is discharged by the existing
+lattice theorem rather than by an assumed periodicity.
+
+The focal and its exact one-declaration audit pass the lightweight textual
+guards and retain visible PRE-VALIDATION notices.  They remain outside
+`YangMillsCore.lean` until a compiler and strict axiom gate pass.  This leaf
+does not yet prove periodicity of the assembled physical kernel or complete
+integrand, contour deformation, CMP89 (2.42), uniform physical
+`B0`/`delta0`, or attainment of window 15.  Counters remain `20/41` and
+`TermSource = 0`.
+
 ### Eq. (2.46) finite diagonal and full-solution chain cold-sealed
 
 Source checkpoint `c1cdd849d0117cdf18724ac076cd4a5bbfd67b35` promotes an
