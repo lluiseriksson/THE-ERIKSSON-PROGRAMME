@@ -44938,3 +44938,28 @@ No theorem statement, phase, endpoint, Fourier normalization, hypothesis or
 constant changes.  The target-character module and audit remain unverified;
 counters remain exactly `20/41`, window 15 remains compatible but unattained,
 and `TermSource = 0` remains exact.
+
+## Addendum 1077 (2026-09-02, **endpoint-character pairs passed hot; reflected one-fibre integrand promoted PRE-VALIDATION; no seal**)
+
+At exact source `973dc76539d7c872813542fab0bb652b94ed819b`, the retained
+Colab Pro+ runtime completed the source-character focal in `9.537 s`, its
+four-declaration audit in `10.571 s`, the target-character focal in
+`15.440 s`, and its two-declaration audit in `8.714 s`.  Every declaration
+used exactly `{propext, Classical.choice, Quot.sound}`.  This is hot debug
+evidence, not a cold seal; the six existing PRE-VALIDATION notices remain.
+
+Static review then rejected the older same-momentum one-fibre draft.  The
+compiled source dictionary shows that the periodic DFT construction solves
+the transposed fibre system, so its direct CMP89 endpoint is necessarily at
+opposite base momentum, opposite source displacement and reflected alias.
+The replacement reindexes the finite alias sum by the actual half-open
+reflection and uses the sealed endpoint-phase reflection to move the target
+displacement as well.  Thus both reflected endpoints and the reflected base
+momentum are visible in the promoted statement; no self-adjointness or
+same-momentum identification is assumed.
+
+The new one-fibre integrand module and audit are PRE-VALIDATION and have not
+yet been compiled.  They do not identify the outer coarse Fourier sum,
+periodize the Green function, prove a uniform physical bound, attain window
+15, discharge a terminal field or inhabit `TermSource`.  Counters remain
+exactly `20/41` and `TermSource = 0`.
