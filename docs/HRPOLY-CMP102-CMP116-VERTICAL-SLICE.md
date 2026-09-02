@@ -15987,7 +15987,7 @@ does not prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
 window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
 
-### Eq. (2.46) directed full-integrand dictionary (PRE-VALIDATION)
+### Eq. (2.46) directed full-integrand dictionary (SEALED)
 
 The promoted source proves algebraically that the cold-sealed directed
 central-plus-noncentral sum is the already constructed complete fine-to-fine
@@ -15995,21 +15995,39 @@ point-source integrand evaluated on the endpoint-selected signed contour.  It
 also exposes the normalized signed-contour integral and the radius-zero
 real-slice presentation as explicit equalities.
 
-Both modules pass the lightweight overlay guard and carry one visible
-PRE-VALIDATION notice.  They remain outside `YangMillsCore.lean` pending
-compiler validation.  This dictionary performs no contour deformation and
-does not identify either integral with the finite periodic/generated Green.
-It therefore does not prove CMP89 (2.42), produce uniform physical
-`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
-construct a `TermSource`; `TermSource = 0` remains exact.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-full-solution-integral-dictionary-cold-v2`, published at
+runner commit `7520f2c5c39ae3d390171adcb801d92610b5a0a3`, checked out exact source
+checkpoint `7de43366df46de3cbfa7878ab42a63696796ab76`.  It verified the official
+Lean toolchain asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, both source-blob hashes and the
+textual guards.  No project `.lake/build` graph was restored.
+
+The focal materialized `8523` jobs and exited zero in `1496.275 s`; the exact
+audit exited zero in `12.217 s`.  All three declarations reported exactly
+`{propext, Classical.choice, Quot.sound}`, and the runner recorded
+`FINAL_STATUS=PASS`.  The durable archive SHA-256 is
+`1136DB626ADA2DD9131907D81688AF94811A45F4A900C261AC15C4CE495C1A25`; the
+executed notebook SHA-256 is
+`0D9CB63A7C520951CB0E06D2DFCEB807F2101291929A4A7C22794FB0F26294E4`.
+Evidence is preserved under
+`validation-evidence/cmp89-directed-full-solution-integral-dictionary-cold-7de43366-20260902/`.
+
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired,
+and its audit enters `YangMillsCore.lean`.  This dictionary performs no
+contour deformation and does not identify either integral with the finite
+periodic/generated Green.  It therefore does not prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
 The first fresh Colab gate stopped at `8523/8523`: both applications of
 `integral_congr_ae` saw the still-folded normalized-integral wrapper.  The
 failure is preserved under
 `validation-evidence/cmp89-directed-full-solution-integral-dictionary-cold-3b71da75-20260902-fail/`.
-The repair unfolds only that wrapper and exposes the common scalar factor by
-`congr 1` at the two sites; statements, constants and hypotheses are
-unchanged.  PRE-VALIDATION remains until a fresh seal.
+The repair unfolded only that wrapper and exposed the common scalar factor by
+`congr 1` at the two sites; statements, constants and hypotheses were
+unchanged.  The independent v2 cold seal above supersedes that failed attempt
+without erasing its evidence.
 
 ### Eq. (2.46) central-row reciprocal budget (PRE-VALIDATION)
 

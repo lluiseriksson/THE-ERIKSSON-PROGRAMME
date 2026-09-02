@@ -2,16 +2,16 @@ import YangMills.RG.BalabanCMP89Eq246DirectedNormalizedFullSolutionIntegral
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceHolomorphy
 
 /-!
-# PRE-VALIDATION: directed CMP89 (2.46) synthesis dictionary
-
-Source is present, its promoted `.olean` has not yet been materialized in a
-fresh checkout, and the result has not yet been cold-verified by the compiler.
+# Directed CMP89 (2.46) synthesis dictionary
 
 The central-plus-noncentral directed sum is identified algebraically with the
 already constructed complete fine-point-source integrand evaluated on its
 endpoint-selected signed contour.  This is not a contour-deformation theorem:
 it does not yet identify the signed-contour integral with the real-slice
 physical Green, a finite periodic Green, or a generated regional Green.
+
+This module and its exact audit were cold-verified from source checkpoint
+`7de43366df46de3cbfa7878ab42a63696796ab76` in a fresh Colab Pro+ checkout.
 -/
 
 namespace YangMills.RG

@@ -44126,3 +44126,41 @@ It changes no theorem statement, constant or hypothesis.  The audit did not
 run, PRE-VALIDATION remains, and this failure is not evidence for the repair.
 Counters remain `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
+
+## Addendum 1047 (2026-09-02, **directed full-integrand dictionary cold-sealed after wrapper-only repair; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-full-solution-integral-dictionary-cold-v2`, published at
+runner commit `7520f2c5c39ae3d390171adcb801d92610b5a0a3` and launched from commit
+`a78becd26a5f499bfc9498c54625396986fe2292`, checked out exact source
+checkpoint `7de43366df46de3cbfa7878ab42a63696796ab76`.  It verified the official
+Lean `v4.29.0-rc6` asset, exact Mathlib pin
+`07642720480157414db592fa85b626dafb71355b`, the two source blobs
+`d45e9207dc5a8bfdc93278cd07b3229715e1bcd1c507b658a657f5176fe61806` and
+`345947c2ffbc27ccf55a3e2a002008b54341282459a842a6457560b186a097cd`, and
+the textual guards.  No project `.lake/build` graph was restored.
+
+The focal materialized `8523` jobs and exited zero in `1496.275 s`; the exact
+audit exited zero in `12.217 s`.  The three audited declarations each report
+exactly `{propext, Classical.choice, Quot.sound}`.  The runner recorded
+`FINAL_STATUS=PASS`, canonical evidence payload SHA-256
+`0E87E5B8D346A29B86D5E161C59323EF7368932A3CE7DB28B318EF91C94F5CAC`, and
+archive SHA-256
+`1136DB626ADA2DD9131907D81688AF94811A45F4A900C261AC15C4CE495C1A25`.
+The preserved raw `evidence.json` (including its terminal newline) has
+SHA-256 `4A03C5EAD19C4020C0A3A60E627823835F06D6B0F4F314588FEE80B8B5CE4890`;
+the executed notebook has SHA-256
+`0D9CB63A7C520951CB0E06D2DFCEB807F2101291929A4A7C22794FB0F26294E4`.
+The local fail-closed verifier accepts the source/environment pins, exact
+two-stage queue, three axiom blocks and archive hash.  Evidence is preserved
+under
+`validation-evidence/cmp89-directed-full-solution-integral-dictionary-cold-7de43366-20260902/`.
+
+Exactly the two PRE-VALIDATION notices in the focal/audit pair are retired and
+the audit enters `YangMillsCore.lean`.  This seal certifies the algebraic
+dictionary between the directed complete sum, the signed-contour integrand,
+its normalized integral and the radius-zero real slice.  It proves no contour
+deformation, inverse-uniqueness identification, CMP89 (2.42), uniform physical
+`B0`/`delta0`, or attainment of window 15.  It discharges neither rows 23--24
+nor any new terminal field: counters remain exactly `20/41` and
+`TermSource = 0`.

@@ -94,6 +94,32 @@ EXPECTED_CONFIGS = {
             "directed_normalized_full_solution_integral_audit",
         ],
     },
+    "cmp89-eq246-directed-full-solution-integral-dictionary-cold-v1": {
+        "source_sha": "3b71da757fa69acfeb02312882b4d147fe1ff972",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean":
+                "7ba05690763cb42ab595f92df5263ca9c8d44c90b570ed2d494c96791848bb80",
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionaryAudit.lean":
+                "345947c2ffbc27ccf55a3e2a002008b54341282459a842a6457560b186a097cd",
+        },
+        "queue": [
+            "directed_full_solution_integral_dictionary_focal",
+            "directed_full_solution_integral_dictionary_audit",
+        ],
+    },
+    "cmp89-eq246-directed-full-solution-integral-dictionary-cold-v2": {
+        "source_sha": "7de43366df46de3cbfa7878ab42a63696796ab76",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean":
+                "d45e9207dc5a8bfdc93278cd07b3229715e1bcd1c507b658a657f5176fe61806",
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionaryAudit.lean":
+                "345947c2ffbc27ccf55a3e2a002008b54341282459a842a6457560b186a097cd",
+        },
+        "queue": [
+            "directed_full_solution_integral_dictionary_focal",
+            "directed_full_solution_integral_dictionary_audit",
+        ],
+    },
 }
 
 
