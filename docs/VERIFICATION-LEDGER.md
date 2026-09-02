@@ -44866,3 +44866,29 @@ no statement, hypothesis, value, rate, normalization or endpoint convention.
 This remains hot diagnostic work: no PRE-VALIDATION notice is retired, the
 target pair has not run, and counters remain exactly `20/41` and
 `TermSource = 0`.
+
+## Addendum 1074 (2026-09-02, **source-character third hot retry refuted the same-momentum direct endpoint; statement withdrawn; no seal**)
+
+The retained-runtime retry at exact source
+`4905c757729cd040898dc943b835b80e284e76e8` stopped after `17.261 s` at the
+final fixed-fibre coefficient equality.  Every scalar factor and local
+abbreviation had normalized, exposing a substantive orientation mismatch:
+the physical periodic point-source construction contains
+`cmp89Eq246StabilizedAliasTransposeFullSolution`, whereas the proposed right
+side contained the direct
+`cmp89Eq246StabilizedAliasFullSolution` at the same base momentum, source and
+alias.  No abstract self-adjointness theorem identifies their action on a
+fixed source vector, so the proposed statement was false and is withdrawn.
+
+The replacement uses the already cold-sealed half-open residue reflection.
+It transports the direct endpoint simultaneously to opposite base momentum,
+opposite physical source displacement and reflected alias output.  A new
+source-specific lemma identifies the reflected literal fine-point-source
+vector before the arbitrary-source transpose/direct reflection theorem is
+applied.  No inverse equality, self-adjointness hypothesis or free family of
+solutions is introduced.
+
+This remains hot diagnostic work: the replacement has not yet been compiled,
+no PRE-VALIDATION notice is retired, the target pair has not run, and counters
+remain exactly `20/41`; window 15 remains compatible but unattained and
+`TermSource = 0` remains exact.

@@ -1,7 +1,9 @@
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceFibreGreen
+import YangMills.RG.BalabanCMP89Eq246AliasReflectionTransposeFullSolution
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasTransposeFullSolutionLinearity
 import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionPointSourceSolution
 import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointAliasPhase
+import YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection
 
 /-!
 # PRE-VALIDATION: physical point-source character inside one reciprocal fibre
@@ -99,11 +101,58 @@ theorem cmp99FlatFourierMode_inv_eq_owned_finePointSourceAliasVector_mul_coarseM
     cmp99FlatFourierMode_inv_eq_finePointSourceAliasVector_mul_coarseMode_inv
       ell k x (blockSite M N' x)
 
+/-- Reflecting the literal fine-point-source vector changes both the base
+momentum and the physical endpoint sign.  The half-open alias endpoint is
+handled by the sealed residue reflection; no pointwise integer negation of
+the printed carrier is assumed. -/
+theorem cmp89Eq246FinePointSourceAliasVector_comp_reflection_eq_neg
+    {d M : ℕ} [NeZero M] (z : Fin d → ℂ) (u : Fin d → ℤ) :
+    (fun m : CMP89Eq246AliasIndex d M 1 =>
+      cmp89Eq246FinePointSourceAliasVector d M 1 z
+        (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹) u)
+        (cmp99SourceAliasIndexOneReflection d M m)) =
+      cmp89Eq246FinePointSourceAliasVector d M 1 (-z)
+        (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
+          (fun mu => -u mu)) := by
+  funext m
+  have hphase :=
+    cmp99SourceAliasIndexOneReflection_endpointPhase_eq_negDisplacement
+      (-z) m u
+  have hinv := congrArg (fun w : ℂ => w⁻¹) hphase
+  change
+    Complex.exp (-Complex.I * cmp89Eq251EntirePhase
+      (cmp89Eq248EntireAliasMomentum z
+        (cmp99SourceAliasIndexOneReflection d M m).1)
+      (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹) u)) =
+    Complex.exp (-Complex.I * cmp89Eq251EntirePhase
+      (cmp89Eq248EntireAliasMomentum (-z) m.1)
+      (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
+        (fun mu => -u mu)))
+  calc
+    _ = (Complex.exp (Complex.I * cmp89Eq251EntirePhase
+        (cmp89Eq248EntireAliasMomentum z
+          (cmp99SourceAliasIndexOneReflection d M m).1)
+        (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹) u)))⁻¹ := by
+          rw [← Complex.exp_neg]
+          congr 2
+          ring
+    _ = (Complex.exp (Complex.I * cmp89Eq251EntirePhase
+        (cmp89Eq248EntireAliasMomentum (-z) m.1)
+        (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
+          (fun mu => -u mu))))⁻¹ := by
+          simpa only [neg_neg] using hinv
+    _ = _ := by
+      rw [← Complex.exp_neg]
+      congr 2
+      ring
+
 /-- Coordinatewise factorization of the fixed-fibre point-source
-coefficients. After the source endpoint is split into its coarse owner and
-within-block displacement, the only remaining coarse dependence is one
-common Fourier character. Both uses of scalar linearity are explicit: first
-the coarse character, then the Lie-coordinate amplitude. -/
+coefficients.  The physical construction solves the transposed fibre system;
+the sealed half-open alias reflection therefore moves the final direct CMP89
+solution to opposite base momentum, opposite source displacement and the
+reflected output alias.  The common inverse coarse character and the
+Lie-coordinate amplitude are then pulled out only by proved scalar
+linearity. -/
 theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq
     {d M N' Nc : ℕ} [NeZero M] [NeZero N'] [NeZero Nc]
     (ell : FinBox d N') (mass a : ℝ)
@@ -114,12 +163,14 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq
         ell mass a x v k A =
       (cmp99FlatFourierMode ell (blockSite M N' x))⁻¹ *
         (cmp89Eq246StabilizedFinePointSourceSolution d M 1 mass a
-            (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+            (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
             (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
-              (cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x
-                (blockSite M N' x)))
-            (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
-              d M N' ell k) * v A) := by
+              (fun mu =>
+                -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x
+                  (blockSite M N' x) mu))
+            ((cmp99SourceAliasIndexOneReflection d M).symm
+              (cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv
+                d M N' ell k)) * v A) := by
   classical
   let e := cmp99SourceFlatQprimeFixedCoarseSignedAliasIndexEquiv d M N' ell
   let z := cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell
@@ -129,6 +180,9 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq
       (cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x owner)
   let coarseCharacter := (cmp99FlatFourierMode ell owner)⁻¹
   let pointSource := cmp89Eq246FinePointSourceAliasVector d M 1 z sourceEndpoint
+  let reflect := cmp99SourceAliasIndexOneReflection d M
+  let reflectedPointSource := fun n : CMP89Eq246AliasIndex d M 1 =>
+    pointSource (reflect n)
   have hsource :
       (fun n : CMP89Eq246AliasIndex d M 1 =>
         (((cmp99FlatFourierMode (e.symm n).1 x)⁻¹ • v) A)) =
@@ -150,8 +204,31 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients_apply_eq
     d M 1 mass a z (fun n => pointSource n * v A) coarseCharacter (e k)]
   rw [cmp89Eq246StabilizedAliasTransposeFullSolution_mul_right
     d M 1 mass a z pointSource (v A) (e k)]
+  have htranspose :=
+    cmp89Eq246StabilizedAliasTransposeFullSolution_neg_reflection
+      d M mass a (-z) reflectedPointSource (reflect.symm (e k))
+  have htranspose' :
+      cmp89Eq246StabilizedAliasTransposeFullSolution
+          d M 1 mass a z pointSource (e k) =
+        cmp89Eq246StabilizedAliasFullSolution
+          d M 1 mass a (-z) reflectedPointSource (reflect.symm (e k)) := by
+    simpa only [neg_neg, reflectedPointSource, pointSource, reflect,
+      cmp89Eq246AliasReflectionSource, Equiv.apply_symm_apply] using htranspose
+  rw [htranspose']
+  have hreflectedPointSource :
+      reflectedPointSource =
+        cmp89Eq246FinePointSourceAliasVector d M 1 (-z)
+          (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
+            (fun mu =>
+              -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+                M x owner mu)) := by
+    simpa only [reflectedPointSource, pointSource, reflect, sourceEndpoint]
+      using
+        (cmp89Eq246FinePointSourceAliasVector_comp_reflection_eq_neg
+          z (cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement M x owner))
+  rw [hreflectedPointSource]
   simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
-    coarseCharacter, owner, z, sourceEndpoint, e]
+    coarseCharacter, owner, z, sourceEndpoint, e, reflect]
   ac_rfl
 
 end
