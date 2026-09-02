@@ -16,7 +16,7 @@ name: CI – Epistemic Honesty Enforcement
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 'paper/**' ]
   pull_request:
     branches: [ main ]
 

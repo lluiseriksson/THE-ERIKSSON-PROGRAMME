@@ -147,6 +147,62 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.catalanScaledClosedMajorant_barrier
 #print axioms YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed
 
+/-! ## The KP engine paper (`papers/kp-engine`): Penrose tree-graph inequality,
+tree-walk bounds, sharp Kotecký–Preiss, Mayer–Ursell inversion, restriction,
+tails, and the volume-uniform lattice criterion.  Every declaration below is
+cited by name in that paper; each must print exactly
+`[propext, Classical.choice, Quot.sound]`. -/
+-- substrate (KP0–KP2a)
+#print axioms YangMills.KP.partition_union
+#print axioms YangMills.KP.ursell_eq_zero_of_not_isCluster
+#print axioms YangMills.KP.ursellComplete_recurrence
+#print axioms YangMills.KP.ursellComplete_eq
+#print axioms YangMills.KP.partition_singlePolymer_eq_exp
+-- the Penrose tree-graph inequality (partition scheme + greedy BFS scheme)
+#print axioms YangMills.KP.interval_signed_sum
+#print axioms YangMills.KP.abs_signedSum_le_of_scheme
+#print axioms YangMills.KP.penroseTree_mem_spanningTrees
+#print axioms YangMills.KP.penrose_hfiber
+#print axioms YangMills.KP.abs_ursell_le_card_spanningTrees
+#print axioms YangMills.KP.abs_ursell_le_treeCount
+#print axioms YangMills.KP.treeCount_le_pow
+#print axioms YangMills.KP.succ_pow_le_exp_mul_factorial
+-- the criterion and the tree-walk bounds
+#print axioms YangMills.KP.kp_activity_le
+#print axioms YangMills.KP.kp_neighbor_sum_le
+#print axioms YangMills.KP.tree_walk_bound
+#print axioms YangMills.KP.tree_walk_bound_pinned
+-- the uniform-majorant KP bound (Target B)
+#print axioms YangMills.KP.kp_per_size_bound
+#print axioms YangMills.KP.kp_convergence
+#print axioms YangMills.KP.kp_norm_clusterSum_le
+-- the sharp (weight-respecting) KP bound
+#print axioms YangMills.KP.clusterWeight_eq_sum_pinned
+#print axioms YangMills.KP.kpMajorant_le_exp
+#print axioms YangMills.KP.pinnedClusterWeight_le_treeSumRaw
+#print axioms YangMills.KP.treeSumB_succ_le
+#print axioms YangMills.KP.treeSumB_le_kpMajorant
+#print axioms YangMills.KP.kp_pinned_cluster_bound
+#print axioms YangMills.KP.pinned_cluster_summable_sharp
+#print axioms YangMills.KP.kp_clusterWeight_summable_sharp
+#print axioms YangMills.KP.kp_convergence_sharp
+#print axioms YangMills.KP.kp_norm_clusterSum_le_sharp
+-- the Mayer–Ursell inversion (partition identity)
+#print axioms YangMills.KP.ursell_partition_identity
+-- tails, restriction, Z-ratio
+#print axioms YangMills.KP.kp_pinned_cluster_tail_bound
+#print axioms YangMills.KP.pinned_cluster_tail_summable
+#print axioms YangMills.KP.KPCriterion.restrict
+#print axioms YangMills.KP.partition_eq_exp_clusterSum_restrict
+#print axioms YangMills.KP.norm_clusterSum_sub_restrict_le
+#print axioms YangMills.KP.tsum_offRegionClusterWeight_le
+-- the volume-uniform criterion for the connected lattice gas
+#print axioms YangMills.card_connectedPolymers_le
+#print axioms YangMills.connectedLatticePolymerSystem_kpCriterion_volumeUniform
+#print axioms YangMills.connectedLatticeClusterSum_summable_volumeUniform
+#print axioms YangMills.connectedLatticeClusterSum_norm_le_volumeUniform
+#print axioms YangMills.connectedLattice_pinned_tail_volumeUniform
+
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound
 #print axioms YangMills.gibbs_truncated_correlation_bound

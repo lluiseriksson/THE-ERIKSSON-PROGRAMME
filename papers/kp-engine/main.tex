@@ -1,0 +1,1260 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\emergencystretch=1.5em
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Every non-ASCII character that appears inside a listing must be declared
+% here (pdflatex + listings); papers/kp-engine/check_listings_unicode.py
+% audits the file against this table.
+\lstset{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  breakatwhitespace=true,
+  literate={∑}{{$\sum$}}1
+           {∏}{{$\prod$}}1
+           {≤}{{$\le$}}1
+           {≥}{{$\ge$}}1
+           {≠}{{$\ne$}}1
+           {‖}{{$\|$}}1
+           {ℝ}{{$\mathbb{R}$}}1
+           {ℂ}{{$\mathbb{C}$}}1
+           {ℕ}{{$\mathbb{N}$}}1
+           {ℤ}{{$\mathbb{Z}$}}1
+           {→}{{$\to$}}1
+           {↔}{{$\leftrightarrow$}}1
+           {∀}{{$\forall$}}1
+           {∃}{{$\exists$}}1
+           {∈}{{$\in$}}1
+           {∉}{{$\notin$}}1
+           {⊆}{{$\subseteq$}}1
+           {∧}{{$\land$}}1
+           {¬}{{$\lnot$}}1
+           {φ}{{$\varphi$}}1
+           {σ}{{$\sigma$}}1
+           {Λ}{{$\Lambda$}}1
+           {ε}{{$\varepsilon$}}1
+           {β}{{$\beta$}}1
+           {Δ}{{$\Delta$}}1
+           {μ}{{$\mu$}}1
+           {⁻}{{$^{-}$}}1
+           {¹}{{$^{1}$}}1
+           {'}{{'}}1
+           {⊤}{{$\top$}}1
+           {∅}{{$\emptyset$}}1
+           {⟨}{{$\langle$}}1
+           {⟩}{{$\rangle$}}1
+           {·}{{$\cdot$}}1
+           {↑}{{$\uparrow$}}1
+           {₀}{{$_0$}}1
+           {ᶜ}{{$^{c}$}}1,
+}
+
+\newcommand{\lc}[1]{{\normalfont\path{#1}}}
+\newcommand{\file}[1]{{\normalfont\path{#1}}}
+\newcommand{\lcmath}[1]{\text{\texttt{\detokenize{#1}}}}
+\newcommand{\Pol}{\mathcal{P}}
+\newcommand{\incomp}{\not\sim}
+\newcommand{\Ur}{\varphi}
+\newcommand{\Trees}{\mathcal{T}}
+\newcommand{\oracle}{\texttt{[propext, Classical.choice, Quot.sound]}}
+
+\title{A Machine-Checked Tree-Graph Inequality and\\
+Koteck\'y--Preiss Cluster-Expansion Engine in Lean~4}
+\author{Lluis Eriksson}
+\date{September 2, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We describe a complete, \texttt{sorry}-free formalization in Lean~4 over
+Mathlib of the core analytic--combinatorial engine of abstract polymer
+cluster expansions: the Penrose tree-graph inequality
+$|\Ur(X)| \le \#\{\text{spanning trees of the incompatibility graph of }X\}$,
+proved by a partition scheme built on a greedy breadth-first Penrose map with
+Boolean-interval fibers; a family of tree-walk (leaf-removal) bounds; the
+Koteck\'y--Preiss convergence theorem in both its uniform-majorant form and its
+sharp, weight-respecting form
+$\sum_n \bigl(\text{pinned cluster weights}\bigr) \le \|z(c)\|\,e^{a(c)}$ under
+the bare criterion $\sum_{Y \incomp X}\|z(Y)\|e^{a(Y)} \le a(X)$; the
+Mayer--Ursell inversion $\Xi = \exp(\text{cluster sum})$ for every finite polymer
+system with absolutely convergent cluster series; and the consequences the
+programme consumes --- restriction to sub-volumes and $Z$-ratio bounds,
+activity tilting and exponential size tails, a zero-free activity polydisc,
+and two lattice-animal counting theorems.  The development is a 35-module,
+14{,}441-line layer (\file{YangMills/KP/}) plus its lattice-side consumers;
+every theorem stated here depends on exactly Lean's three standard axioms,
+\oracle{}, as recorded in the repository's verification ledger and committed
+oracle transcripts, and no theorem carries a project axiom.  We state each
+result in ordinary notation next to its Lean declaration, explain the design
+decisions (finite polymer types, coordinate-pinned clusters, admissible
+parent/level structures as the tree index, exponentials of \texttt{tsum}s
+regrouped through a sigma type, volume-uniformity through per-polymer
+bounds), tabulate the axiom oracle, and list what is \emph{not} formalized.
+To our knowledge --- after a literature and library search --- this is the
+first machine-checked proof of the Penrose tree-graph inequality and of the
+Koteck\'y--Preiss criterion in any proof assistant; the companion papers on
+the volume-uniform area law and on the thermodynamic limit are its first
+consumers.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Cluster expansions are the workhorse of rigorous statistical mechanics in
+perturbative regimes.  Given a family of \emph{polymers} with a hard-core
+incompatibility relation and small complex \emph{activities}, the polymer
+partition function $\Xi$ is a finite sum over compatible families, and the
+cluster expansion expresses $\log \Xi$ as an absolutely convergent series
+indexed by \emph{clusters}: tuples of polymers whose incompatibility graph is
+connected, weighted by the Ursell (Mayer) coefficient $\Ur$.  Three results
+carry the whole theory.  The \emph{tree-graph inequality} of
+Penrose~\cite{Penrose1967} bounds $|\Ur|$ by a count of spanning trees; the
+\emph{Koteck\'y--Preiss criterion}~\cite{KoteckyPreiss1986} turns that
+combinatorial bound into absolute convergence with explicit, per-polymer
+constants; and the \emph{Mayer--Ursell inversion} identifies the sum of the
+series with $\log \Xi$.  Modern expositions --- Brydges' lectures~\cite{Brydges1986},
+Ueltschi's review~\cite{Ueltschi2004}, the sharpened criteria of
+Fern\'andez--Procacci~\cite{FernandezProcacci2007} and
+Bissacot--Fern\'andez--Procacci~\cite{BFP2010}, Faris' combinatorial
+account~\cite{Faris2010}, and Chapter~5 of Friedli--Velenik's
+textbook~\cite{FriedliVelenik2017} --- present the material as a small number
+of clean theorems.  The proofs, however, are exactly the kind of mathematics
+in which errors hide in bookkeeping rather than in ideas: sign-reversing
+involutions on edge sets, symmetry factors between ordered tuples and
+multisets, factorial weights cancelling against tree counts, and the
+interchange of an exponential with an infinite sum.  That makes them a natural
+target for machine verification, and also a genuine test of whether current
+proof assistants can absorb a piece of constructive statistical mechanics
+end to end.
+
+This paper reports such a verification.  Within the author's Lean~4
+programme on lattice Yang--Mills theory (repository
+\texttt{THE-ERIKSSON-PROGRAMME}; see~\cite{Eriksson2026Master,Eriksson2026Audit}),
+the directory \file{YangMills/KP/} contains a 35-module, 14{,}441-line
+formalization of the abstract polymer cluster expansion, built over
+Mathlib~\cite{mathlib} on Lean~4~\cite{Lean4}.  Two earlier papers in the
+programme are \emph{consumers} of this layer: the volume-uniform Wilson-loop
+area law~\cite{Eriksson2026AreaLaw} (viXra 2607.0005) and the thermodynamic
+limit of local Gibbs states~\cite{Eriksson2026ThermoLimit} (viXra 2607.0091).
+Both describe the engine only in passing.  The present paper is the missing
+account of the engine itself: precise statements, the design decisions that
+made the formalization tractable, and the axiom oracle.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+\item \textbf{The Penrose tree-graph inequality, machine-checked}
+  (\lc{abs_ursell_le_card_spanningTrees}, Section~\ref{sec:penrose}): for every
+  polymer system and every tuple $X$, $|\Ur(X)| \le \#\Trees(G_X)$.  The proof
+  formalizes the partition-scheme mechanism (Boolean-interval fibers telescope)
+  and the concrete greedy breadth-first Penrose scheme, including the fiber
+  characterization that is usually left to the reader.
+\item \textbf{Tree-walk bounds} (Section~\ref{sec:walk}): an abstract
+  leaf-removal lemma \lc{tree_walk_bound} and its vertexwise and root-pinned
+  variants, which convert per-tree sums of pair kernels into products of
+  one-step budgets.
+\item \textbf{Koteck\'y--Preiss convergence in two strengths}
+  (Sections~\ref{sec:walk}--\ref{sec:sharp}): the uniform-majorant bound
+  $\mathrm{clusterWeight}_n \le (\sum\|z\|)(eA)^n$, and the sharp, per-polymer
+  bound $\sum_{n \le N}\mathrm{pinnedClusterWeight}(c,n) \le \|z(c)\|e^{a(c)}$
+  under the bare criterion (\lc{kp_pinned_cluster_bound}).  The latter is the
+  form that survives the infinite-volume limit.
+\item \textbf{The Mayer--Ursell inversion} (\lc{partition_eq_exp_clusterSum},
+  Section~\ref{sec:mayer}): $\Xi = \exp(\text{clusterSum})$ for every finite
+  polymer system whose cluster series is absolutely convergent, hence under the
+  KP criterion; and, as a corollary, non-vanishing of $\Xi$ on a closed activity
+  polydisc (\lc{partition_withActivity_ne_zero_of_kp}).
+\item \textbf{The volume-uniform toolkit} (Section~\ref{sec:restrict}):
+  restriction of a polymer system to a sub-volume with the $Z$-ratio exponent
+  bound, activity tilting with exponential size tails, and two lattice-animal
+  counting theorems (\lc{card_connectedPolymers_le} for plaquette polymers,
+  \lc{animal_card_le} for bounded-degree graphs) that make the criterion's
+  smallness window depend only on the dimension.
+\end{enumerate}
+
+\paragraph{What is claimed and what is not.}
+Everything stated as a theorem below is a Lean declaration whose axiom
+oracle prints \oracle{} in the repository's records
+(Section~\ref{sec:oracle}); no theorem carries a \texttt{sorry} or a
+project axiom.  The mathematics is classical; the contribution is the
+mechanization and the explicitness.  Section~\ref{sec:not} lists what is not
+formalized: infinite polymer systems, the Fern\'andez--Procacci
+sharpening, the Brydges--Kennedy / Abdesselam--Rivasseau tree identities,
+the exact Cayley count, and the correlation-function cluster expansion.
+
+\section{Related work}\label{sec:related}
+
+\paragraph{Mathematics.}
+Penrose's partition scheme~\cite{Penrose1967} (see also~\cite{Penrose1963})
+is the source of the tree-graph inequality in the form used here; the
+Boolean-interval formulation follows the modern presentations
+in~\cite{FernandezProcacci2007,Faris2010,Scott2005}.  Koteck\'y and
+Preiss~\cite{KoteckyPreiss1986} proved convergence by induction on cluster
+size under the criterion $\sum_{Y\incomp X}\|z(Y)\|e^{a(Y)} \le a(X)$;
+Dobrushin~\cite{Dobrushin1996} and Miracle-Sol\'e~\cite{MiracleSole2000} gave
+alternative proofs, Ueltschi~\cite{Ueltschi2004} an efficient one, and
+Fern\'andez--Procacci~\cite{FernandezProcacci2007} and
+Bissacot--Fern\'andez--Procacci~\cite{BFP2010} sharper criteria.  Brydges'
+lectures~\cite{Brydges1986} and Friedli--Velenik~\cite{FriedliVelenik2017}
+(Theorem~5.4, Proposition~5.3) are the expository references whose statements
+the formalization tracks most closely.  The connection between the polymer
+gas and the Lov\'asz local lemma~\cite{ScottSokal2005} is relevant to the
+formalization landscape below.
+
+\paragraph{Formalizations.}
+We searched (September 2026) the Lean Mathlib library, the Isabelle
+Archive of Formal Proofs, the Coq/Rocq opam ecosystem, and the general
+literature for a formalization of the tree-graph inequality, the
+Koteck\'y--Preiss theorem, the Mayer expansion, or an abstract polymer model.
+We found none.  The repository's own planning document
+(\file{docs/kp-cluster-expansion-plan.md}, May 2026) already recorded that
+Mathlib contains no polymer model, no Ursell coefficient and no cluster
+expansion; that remains the case at the pinned Mathlib revision.  The
+closest neighbours are formalizations of the probabilistic method and of the
+Lov\'asz local lemma (in Isabelle/HOL, Edmonds~\cite{Edmonds2023}), which
+share the combinatorial flavour of the independent-set polynomial but do not
+touch Ursell coefficients, tree-graph bounds or convergence criteria.  We
+therefore believe --- with the usual caveat that absence of evidence in a
+search is not proof of absence --- that the results of
+Sections~\ref{sec:penrose}--\ref{sec:mayer} are the first machine-checked
+proofs of these theorems in any proof assistant.  Within the programme
+itself, the Catalan/rooted-tree majorant material of
+\cite{Eriksson2026Catalan,Eriksson2026C1} is a separate, already documented
+lane (\file{YangMills/KP/RootedCatalan*.lean},
+\file{PlaneTreeCatalan.lean}, \file{LabeledPlaneTreeCatalan.lean}); it is
+not re-described here.
+
+\section{The abstract polymer system in Lean}\label{sec:setting}
+
+All definitions live in \texttt{namespace YangMills.KP}.  We write $\Pol$ for
+the polymer type, $X \incomp Y$ for incompatibility and $z$ for the activity.
+
+\begin{definition}[polymer system; \file{YangMills/KP/Basic.lean}]
+A \emph{polymer system} is a structure
+\begin{lstlisting}
+structure PolymerSystem where
+  Polymer : Type*
+  incomp : Polymer → Polymer → Prop
+  incomp_symm : ∀ X Y, incomp X Y → incomp Y X
+  incomp_self : ∀ X, incomp X X
+  activity : Polymer → ℂ
+\end{lstlisting}
+A finite family $S$ is \emph{admissible} (\lc{Admissible}) if no two distinct
+members are incompatible, and the \emph{partition function} of a finite region
+$\Lambda \subseteq \Pol$ is
+\[
+  \Xi(\Lambda) \;=\; \sum_{\substack{S \subseteq \Lambda\\ S \text{ admissible}}}
+  \;\prod_{X \in S} z(X)
+  \qquad (\lcmath{partition}).
+\]
+\end{definition}
+
+The hard core is built in as reflexivity of $\incomp$; this is the
+Koteck\'y--Preiss convention $\gamma \incomp \gamma$ and it is what makes the
+criterion sum below contain the $X$-term.  The first nontrivial fact is the
+factorization $\Xi(\Lambda_1 \cup \Lambda_2) = \Xi(\Lambda_1)\Xi(\Lambda_2)$ over
+disjoint, mutually compatible regions (\lc{partition_union}), proved by an
+explicit bijection $S \mapsto (S\cap\Lambda_1, S\cap\Lambda_2)$.
+
+\begin{definition}[clusters and the Ursell coefficient;
+\file{Cluster.lean}, \file{Ursell.lean}]
+For an $n$-tuple $X : \mathrm{Fin}\,n \to \Pol$ the \emph{incompatibility graph}
+$G_X$ (\lc{incompGraph}) is the simple graph on $\mathrm{Fin}\,n$ with
+$i \sim j$ iff $i \ne j$ and $X_i \incomp X_j$; $X$ is a \emph{cluster}
+(\lc{IsCluster}) iff $G_X$ is connected.  The \emph{Ursell coefficient} is the
+signed count of connected spanning subgraphs,
+\[
+  \Ur(X) \;=\; \sum_{\substack{E \subseteq E(G_X)\\ (\mathrm{Fin}\,n,\,E)\ \text{connected}}}
+  (-1)^{|E|} \;\in\; \mathbb{Z}
+  \qquad (\lcmath{ursell}).
+\]
+\end{definition}
+
+\begin{lstlisting}
+noncomputable def ursell {n : ℕ} (X : Fin n → P.Polymer) : ℤ := by
+  classical
+  exact ∑ E ∈ (incompGraph P X).edgeFinset.powerset.filter
+      (fun E : Finset (Sym2 (Fin n)) =>
+        (SimpleGraph.fromEdgeSet (↑E : Set (Sym2 (Fin n)))).Connected),
+    (-1 : ℤ) ^ E.card
+\end{lstlisting}
+
+Spanning subgraphs are represented as \texttt{Finset}s of edges
+$E \subseteq E(G_X)$, and the graph they span is Mathlib's
+\lc{SimpleGraph.fromEdgeSet}.  This choice --- edge finsets on a fixed vertex
+type $\mathrm{Fin}\,n$ rather than Mathlib's \texttt{Subgraph} --- is used
+consistently through the Penrose scheme and the Mayer inversion, and it is the
+single most consequential representation decision in the layer: Boolean
+intervals $\{E : T \subseteq E \subseteq R\}$, sign-reversing edge toggles, and
+component partitions are all \texttt{Finset} operations.  Sanity checks
+proved on the definition: $\Ur = 1$ on singletons, $-1$ on an incompatible
+pair, $+2$ on a triangle (\lc{ursell_fin_one}, \lc{ursell_fin_two},
+\lc{ursell_fin_three}, the last by kernel \texttt{decide} over the eight
+spanning subgraphs), and $\Ur(X) = 0$ whenever $X$ is not a cluster
+(\lc{ursell_eq_zero_of_not_isCluster}).  On the complete graph the recurrence
+$d(n+1) = -n\,d(n)$ and the closed form $\Ur(K_{n+1}) = (-1)^n n!$ are
+theorems (\lc{ursellComplete_recurrence}, \lc{ursellComplete_eq},
+\file{UrsellRecurrence.lean}), proved by fibering the vanishing all-subgraphs
+sum by the component of vertex~$0$ and killing the large fibers with a
+sign-reversing edge-toggle involution.
+
+\begin{definition}[cluster sum, weights, criterion;
+\file{Expansion.lean}, \file{ClusterWeight.lean}, \file{PinnedCluster.lean},
+\file{Criterion.lean}]
+For a \emph{finite} polymer type ($[\texttt{Fintype P.Polymer}]$):
+\begin{align}
+  \mathrm{clusterSum}(P) &= \sum_{n=0}^{\infty} \frac{1}{(n+1)!}
+    \sum_{X : \mathrm{Fin}(n+1) \to \Pol} \Ur(X) \prod_{i} z(X_i)
+    \;\in\;\mathbb{C},\label{eq:clustersum}\\
+  \mathrm{clusterWeight}(P,n) &= \frac{1}{(n+1)!}
+    \sum_{X : \mathrm{Fin}(n+1) \to \Pol} |\Ur(X)| \prod_i \|z(X_i)\|
+    ,\\
+  \mathrm{pinnedClusterWeight}(P,c,n) &= \frac{1}{(n+1)!}
+    \sum_{\substack{X : \mathrm{Fin}(n+1) \to \Pol\\ X_0 = c}}
+    |\Ur(X)| \prod_i \|z(X_i)\| .
+\end{align}
+(in Lean: \lc{clusterSum}, \lc{clusterWeight}, \lc{pinnedClusterWeight}).  A weight $a : \Pol \to \mathbb{R}$ satisfies the \emph{Koteck\'y--Preiss
+criterion} (\lc{KPCriterion}) if $a \ge 0$ and
+\begin{equation}\label{eq:kp}
+  \sum_{Y \,:\, X \incomp Y} \|z(Y)\| \, e^{a(Y)} \;\le\; a(X)
+  \qquad \text{for every } X \in \Pol .
+\end{equation}
+\end{definition}
+
+Three design decisions are visible here.  (i)~\emph{Finite polymer types.}
+The outer sum in~\eqref{eq:clustersum} is a genuine \texttt{tsum} over the
+cluster size, but every inner sum is a \texttt{Finset} sum; there is no
+infinite polymer set anywhere in the engine.  Volume-uniformity is obtained
+not by working in infinite volume but by proving bounds whose shape does not
+mention $\#\Pol$ (Sections~\ref{sec:sharp} and~\ref{sec:restrict}).
+(ii)~\emph{Ordered tuples, not multisets.}  Clusters are functions
+$\mathrm{Fin}(n+1) \to \Pol$ with the symmetry factor $1/(n+1)!$; this avoids
+multiset combinatorics entirely and makes the Ursell coefficient
+relabeling-invariant by a transported graph isomorphism
+(\lc{ursell_comp_equiv}).  (iii)~\emph{Coordinate pinning.}  A pinned cluster
+is one with $X_0 = c$, not one containing $c$; pinning is then an exact
+fiberwise decomposition, $\mathrm{clusterWeight}(P,n) = \sum_c
+\mathrm{pinnedClusterWeight}(P,c,n)$ (\lc{clusterWeight_eq_sum_pinned}), with
+no overcounting.  (Paper-level remark, not formalized: by symmetry the
+coordinate-pinned sum equals the sum over tuples \emph{containing} $c$ weighted
+by the fraction of coordinates equal to $c$, so the two conventions differ
+only by that fraction.)  Two elementary consequences of the criterion are
+recorded once and reused: $\|z(X)\| \le a(X)$ (\lc{kp_activity_le}) and the
+unweighted neighbour bound $\sum_{Y\incomp X}\|z(Y)\| \le a(X)$
+(\lc{kp_neighbor_sum_le}), both because the $X$-term is in the sum and
+$e^{a} \ge 1$.
+
+\section{The Penrose tree-graph inequality}\label{sec:penrose}
+
+\subsection{Statement}
+
+Let $\Trees(G)$ (\lc{spanningTrees}, \file{PenrosePrep.lean}) be the finset of
+edge subsets $E \subseteq E(G)$ such that $\mathrm{fromEdgeSet}\,E$ is a tree
+on the full vertex set $\mathrm{Fin}\,n$.
+
+\begin{theorem}[Penrose tree-graph inequality]\label{thm:penrose}
+\textup{[\lc{abs_ursell_le_card_spanningTrees}, \file{KP/PenroseFiber.lean}]}
+For every polymer system $P$, every $n$ and every $X : \mathrm{Fin}\,n \to \Pol$,
+\[
+  |\Ur(X)| \;\le\; \#\Trees(G_X).
+\]
+\end{theorem}
+\begin{lstlisting}
+theorem abs_ursell_le_card_spanningTrees (P : PolymerSystem) {n : ℕ}
+    (X : Fin n → P.Polymer) [Fintype (incompGraph P X).edgeSet] :
+    |ursell P X| ≤ ((spanningTrees (incompGraph P X)).card : ℤ)
+\end{lstlisting}
+
+Two uniform corollaries follow (same file).  With $\mathrm{treeCount}(n)$ the
+number of diagonal-free edge sets that are trees on $\mathrm{Fin}\,n$
+(\lc{treeCount}), $|\Ur(X)| \le \mathrm{treeCount}(n)$
+(\lc{abs_ursell_le_treeCount}), and
+$\mathrm{treeCount}(m+1) \le (m+1)^{m+1}$ (\lc{treeCount_le_pow}), hence
+$|\Ur(X)| \le (m+1)^{m+1}$ for every $(m+1)$-tuple
+(\lc{abs_ursell_le_succ_pow}).  The tree count is \emph{not} Cayley's
+$(m+1)^{m-1}$: the injection used is the greedy-parent map
+$T \mapsto \mathrm{bfsParent}\,T$ into $\mathrm{Fin}(m+1) \to \mathrm{Fin}(m+1)$,
+which is trivial to verify once one knows that a spanning tree is recovered
+from its parent function (\lc{penroseTree_of_spanningTree}).  The lost
+factor $(m+1)^2$ is absorbed by the analytic inequality
+$(n+1)^n \le e^n\, n!$ (\lc{succ_pow_le_exp_mul_factorial},
+\file{PenrosePrep.lean}, an induction from $(1+1/k)^k \le e$), which is all
+the convergence argument needs.
+
+\subsection{Proof architecture: partition schemes}
+
+The proof is Penrose's, in the Boolean-interval formulation.
+
+\begin{lemma}[interval signed sum]
+\textup{[\lc{interval_signed_sum}, \file{PenroseScheme.lean}]}
+For finsets $T \subseteq R$,
+$\sum_{T \subseteq E \subseteq R} (-1)^{|E|} = (-1)^{|T|}\,[R = T]$.
+\end{lemma}
+
+\begin{lemma}[abstract partition scheme]
+\textup{[\lc{abs_signedSum_le_of_scheme}]}
+Let $S$ be a finset of finsets, $\mathrm{Tr}$ a finset (the ``trees''), and
+$\pi, R$ maps of finsets with $\pi(S) \subseteq \mathrm{Tr}$ and, for every
+$T \in \mathrm{Tr}$ and every $E$,
+$(E \in S \wedge \pi E = T) \iff (T \subseteq E \subseteq R\,T)$.
+Then $|\sum_{E \in S} (-1)^{|E|}| \le \#\mathrm{Tr}$.
+\end{lemma}
+
+The graph-level statement \lc{abs_ursell_le_card_spanningTrees_of_scheme}
+instantiates $S$ to the connected spanning edge subsets of $G_X$ and
+$\mathrm{Tr}$ to $\Trees(G_X)$, carrying the scheme $(\pi,R)$ and its two
+properties \texttt{hmaps}/\texttt{hfiber} as explicit hypotheses.  This
+separation --- an abstract telescoping lemma plus a concrete scheme --- is
+what made the development incremental: the abstract half was proved and
+oracle-checked weeks before the scheme existed, and the scheme's two
+obligations were closed one at a time.
+
+\subsection{The greedy BFS scheme and its fibers}
+
+The concrete scheme (\file{PenroseBFS.lean}, \file{PenroseFiber.lean}) is the
+classical greedy breadth-first construction on the vertex set
+$\mathrm{Fin}(m+1)$ rooted at $0$:
+\begin{itemize}
+\item $\mathrm{bfsLevel}\,E\,v$ is the graph distance from $0$ in
+  $\mathrm{fromEdgeSet}\,E$ (Mathlib's \lc{SimpleGraph.dist});
+\item $\mathrm{bfsParent}\,E\,v$ is the \emph{least} neighbour of $v$ one
+  level closer to the root (\lc{Finset.min'} over the candidate set);
+\item $\pi(E) = \mathrm{penroseTree}\,E = \{\,\{\mathrm{bfsParent}\,E\,v, v\} : v \ne 0\,\}$;
+\item $R(T) = \mathrm{penroseEnvelope}\,H\,T$ is the set of edges $\{u,v\}$ of
+  the ambient graph $H$ whose endpoints lie on the same $T$-level, or on
+  adjacent levels with the lower endpoint not smaller than the greedy parent
+  of the upper one (\lc{penroseRel}).
+\end{itemize}
+Property \texttt{hmaps} is \lc{penroseTree_mem_spanningTrees}: for connected
+$E$ supported on $H$, $\pi(E)$ is connected (induction on the level), has
+exactly $m$ edges (the child is the higher endpoint, so $v \mapsto
+\{\mathrm{parent}\,v, v\}$ is injective), hence is a tree by Mathlib's
+\lc{isTree_iff_connected_and_card}.  Property \texttt{hfiber} is the theorem
+usually stated without proof:
+
+\begin{theorem}[Penrose fiber characterization]
+\textup{[\lc{penrose_hfiber}]}
+For a spanning tree $T$ of $H$ and any edge finset $E$: $E$ is a connected
+spanning subgraph of $H$ with $\pi(E) = T$ if and only if
+$T \subseteq E \subseteq R(T)$.
+\end{theorem}
+
+The proof needs four facts about trees and BFS levels that Mathlib did not
+supply directly: distances only shrink in a supergraph
+(\lc{dist_le_dist_of_le}); a function that changes by at most one across
+edges grows at most by the length along any walk (\lc{level_le_of_walk});
+in a tree every path realizes the distance
+(\lc{isTree_path_length_eq_dist}, via path uniqueness and the geodesic's
+bypass); and adjacent tree vertices lie on consecutive levels
+(\lc{isTree_adj_level}).  From these: on the interval $T \subseteq E
+\subseteq R(T)$ the BFS levels of $E$ equal those of $T$
+(\lc{bfsLevel_eq_of_interval}), the greedy parents agree
+(\lc{bfsParent_eq_of_interval}), and $\pi$ fixes spanning trees
+(\lc{penroseTree_of_spanningTree}, by parent uniqueness
+\lc{isTree_parent_unique}); conversely $\pi$ preserves levels and parents
+(\lc{bfsLevel_penroseTree_eq}, \lc{bfsParent_penroseTree_eq}), which places
+every edge of a connected $E$ in $R(\pi E)$.  The $n = 0$ case of
+Theorem~\ref{thm:penrose} is handled separately ($\Ur = 0$ because no graph
+on an empty vertex type is connected in Mathlib's sense).
+
+\section{Tree-walk bounds and the uniform Koteck\'y--Preiss bound}\label{sec:walk}
+
+The bridge from tree counting to activity sums is the leaf-removal induction.
+It is stated once, abstractly, over an arbitrary finite vertex type so that
+removing a leaf is a plain induction on $n$ (function spaces split at a
+coordinate via \lc{Equiv.funSplitAt}) rather than a $\mathrm{Fin}$-reindexing.
+
+\begin{theorem}[tree-walk bound]\label{thm:walk}
+\textup{[\lc{tree_walk_bound}, \file{KP/WalkBound.lean}]}
+Let $V$ be a finite type with $\#V = n+1$, $r \in V$, $p : V \to V$ a parent
+map and $\mathrm{lev} : V \to \mathbb{N}$ with $\mathrm{lev}(p\,v) < \mathrm{lev}(v)$
+for $v \ne r$.  Let $\beta$ be a finite type, $I : \beta \to \beta \to
+\mathbb{R}_{\ge 0}$, $w : \beta \to \mathbb{R}_{\ge 0}$ and $A \ge 0$ with
+$\sum_y I(x,y)\,w(y) \le A$ for all $x$.  Then
+\[
+  \sum_{X : V \to \beta} \Bigl(\prod_{v \ne r} I(X_{p v}, X_v)\, w(X_v)\Bigr)\, w(X_r)
+  \;\le\; A^{n} \sum_{y} w(y).
+\]
+\end{theorem}
+\begin{lstlisting}
+theorem tree_walk_bound (n : ℕ) :
+    ∀ (V : Type) [Fintype V] [DecidableEq V] (β : Type*) [Fintype β]
+      (r : V) (p : V → V) (lev : V → ℕ)
+      (I : β → β → ℝ) (w : β → ℝ) (A : ℝ),
+      Fintype.card V = n + 1 →
+      (∀ v, v ≠ r → lev (p v) < lev v) →
+      (∀ x y, 0 ≤ I x y) → (∀ y, 0 ≤ w y) → 0 ≤ A →
+      (∀ x : β, ∑ y, I x y * w y ≤ A) →
+      ∑ X : V → β,
+        (∏ v ∈ Finset.univ.filter (fun v => v ≠ r),
+          I (X (p v)) (X v) * w (X v)) * w (X r)
+        ≤ A ^ n * ∑ y, w y
+\end{lstlisting}
+
+Two variants are proved in the same style.  \lc{tree_walk_bound_vertexwise}
+lets the kernel $I_v$ and the budget $A_v$ depend on the child vertex,
+concluding $\le (\prod_{v\ne r} A_v)\sum_y w_{\mathrm{root}}(y)$; it is the
+form consumed by degree-sensitive leaf summations in the programme's
+renormalization-group lane (\file{YangMills/RG/AppendixFSecondUrsellLeafSummation.lean}).
+\lc{tree_walk_bound_pinned} (\file{PinnedWalk.lean}) fixes the root value
+$X_r = x_0$ and concludes $\le A^n$ with \emph{no} extensive factor
+$\sum_y w(y)$.  Its proof is a small trick worth recording: rather than
+re-running the induction, extend $\beta$ by a marker \texttt{none} of weight
+$T$ that interacts like $x_0$ and can never sit at a non-root vertex; the free
+bound gives $T\cdot(\text{pinned sum}) \le A^n (T + \sum w)$ for every
+$T \ge 0$, and one large $T$ forces the claim without any limit.
+
+\begin{theorem}[uniform-majorant KP bound]
+\textup{[\lc{kp_per_size_bound}, \lc{kp_convergence}, \lc{kp_norm_clusterSum_le}, \file{KPBound.lean}]}
+If $a$ satisfies the criterion~\eqref{eq:kp} and $a \le A$ pointwise, then
+for every $n$
+\[
+  \mathrm{clusterWeight}(P,n) \;\le\; \Bigl(\sum_{y}\|z(y)\|\Bigr)\,(eA)^n ,
+\]
+so for $eA < 1$ the cluster series converges absolutely and
+$\|\mathrm{clusterSum}(P)\| \le (\sum_y \|z(y)\|)/(1-eA)$.
+\end{theorem}
+
+The proof composes Theorem~\ref{thm:penrose} (expanding $|\Ur(X)|$ over trees
+$T$ and dominating $\#\{T \subseteq E(G_X)\}$ by an indicator product over the
+edges of $T$), the parent-indexed form of a tree product
+(\lc{prod_tree_eq_prod_parents}: $\prod_{e \in T} f(e) = \prod_{v \ne 0}
+f(\{\mathrm{parent}\,v, v\})$), the per-tree assignment bound
+\lc{tree_assignment_sum_le} obtained from Theorem~\ref{thm:walk} with
+$I(x,y) = [x \incomp y]$, $w = \|z\|$ and the budget from
+\lc{kp_neighbor_sum_le}, and finally $\mathrm{treeCount}(n+1)/(n+1)! \le e^n$.
+This is the Koteck\'y--Preiss theorem in the form ``smallness $eA<1$'', with
+$A$ a uniform majorant of the weight.  For a lattice gas with $a(c) = t|c|$ the
+only uniform majorant is $A = t\cdot\#\Pol$, which is volume-dependent; the
+sharp form of the next section removes $A$ altogether.  A pinned version with
+the same defect, $\mathrm{pinnedClusterWeight}(P,c,n) \le \|z(c)\|(eA)^n$
+(\lc{kp_pinned_per_size_bound}, \file{PinnedBound.lean}), served as the
+stepping stone.
+
+\section{The sharp Koteck\'y--Preiss bound}\label{sec:sharp}
+
+\begin{theorem}[sharp pinned bound]\label{thm:sharp}
+\textup{[\lc{kp_pinned_cluster_bound}, \file{KP/SharpShell.lean}]}
+If $a$ satisfies the criterion~\eqref{eq:kp}, then for every polymer $c$ and
+every truncation $N$,
+\[
+  \sum_{n=0}^{N} \mathrm{pinnedClusterWeight}(P,c,n) \;\le\; \|z(c)\|\,e^{a(c)} .
+\]
+Consequently (\lc{pinned_cluster_summable_sharp}) the pinned series is
+summable, with sum at most $\|z(c)\|e^{a(c)}$;
+the total weights are summable (\lc{kp_clusterWeight_summable_sharp});
+the cluster series converges absolutely (\lc{kp_convergence_sharp},
+\file{SharpKP.lean}); and
+$\|\mathrm{clusterSum}(P)\| \le \sum_c \|z(c)\|e^{a(c)}$
+(\lc{kp_norm_clusterSum_le_sharp}).
+\end{theorem}
+\begin{lstlisting}
+theorem kp_pinned_cluster_bound (P : PolymerSystem) [Fintype P.Polymer]
+    {a : P.Polymer → ℝ} (h : KPCriterion P a) (c : P.Polymer) (N : ℕ) :
+    ∑ n ∈ Finset.range (N + 1), pinnedClusterWeight P c n
+    ≤ ‖P.activity c‖ * Real.exp (a c)
+\end{lstlisting}
+
+No uniform majorant, no geometric smallness hypothesis, and no quantity of
+the shape $\#\Pol$ appears: the right-hand side is a per-polymer quantity.
+This is the statement that Friedli--Velenik's Theorem~5.4 and Ueltschi's
+review deliver; the formalized route is neither the original
+Koteck\'y--Preiss induction on cluster size nor Ueltschi's, but a
+\emph{shell decomposition} of rooted trees, chosen (in
+\file{docs/SHARP-KP-PLAN.md}) because it reuses Theorem~\ref{thm:penrose} only
+through rooted-tree data and keeps every sum finite.
+
+\paragraph{The analytic half (\texttt{SharpMajorant.lean}).}
+Define the depth-$D$ majorant by the recursion
+\[
+  \Phi_0(c) = 1, \qquad
+  \Phi_{D+1}(c) = \exp\Bigl(\sum_{c' \,:\, c \incomp c'} \|z(c')\|\,\Phi_D(c')\Bigr)
+  \qquad (\lcmath{kpMajorant}).
+\]
+Under the criterion, $\Phi_D(c) \le e^{a(c)}$ for every depth
+(\lc{kpMajorant_le_exp}): induction on $D$, the criterion absorbing one shell
+per step.  This is the only place the criterion is used.
+
+\paragraph{The combinatorial half (\texttt{SharpShell.lean}, 3{,}079 lines).}
+An \emph{admissible structure} on $\mathrm{Fin}(n+1)$ is a pair $(p,\mathrm{lev})$
+of a parent map and a level map into $\mathrm{Fin}(D+1)$ with
+$\mathrm{lev}(0) = 0$ and $\mathrm{lev}(p\,v) + 1 = \mathrm{lev}(v)$ for $v \ne 0$
+(\lc{IsAdmissible}).  The \emph{raw rooted tree-sum} pinned at $c$ is
+\[
+  \mathrm{treeSumRaw}(c,D,n) \;=\; \sum_{(p,\mathrm{lev})\ \text{admissible},\ p(0)=0}
+  \;\sum_{X : X_0 = c}\;\prod_{v \ne 0} [X_{p v} \incomp X_v]\,\|z(X_v)\| .
+\]
+Step C2 (\lc{pinnedClusterWeight_le_treeSumRaw}) dominates
+$\mathrm{pinnedClusterWeight}(P,c,n)$ by
+$\frac{1}{(n+1)!}\|z(c)\|\,\mathrm{treeSumRaw}(c,n,n)$: expand $|\Ur|$ over
+spanning trees by Theorem~\ref{thm:penrose}, and embed each tree injectively
+into admissible structures via its BFS parent and level maps (levels fit into
+$\mathrm{Fin}(n+1)$ by \lc{connected_dist_lt_card}).  The master shell
+recursion is then a statement about truncated Borel sums
+$B_D^N(c) = \sum_{n \le N} \mathrm{treeSumRaw}(c,D,n)/n!$
+(\lc{treeSumB}):
+\[
+  B_{D+1}^N(c) \;\le\; \exp\Bigl(\sum_{c'} [c \incomp c']\,\|z(c')\|\,B_D^N(c')\Bigr)
+  \qquad (\lcmath{treeSumB_succ_le}),
+\]
+proved by cutting each admissible structure at the first shell (the children
+of the root), factorizing the assignment sum over the subtrees hanging off
+the shell (\lc{inner_factorization}, \lc{master_partition}), pricing the
+enumeration of shells by multinomial coefficients
+(\lc{card_blockData_mul_le}, \lc{per_k_bound}, \lc{rho_sum_le_price}), and
+recognizing the exponential series in the $1/k!$-weighted size-vector sums
+(\lc{treeSumRaw_succ_le}).  Induction on $D$ gives
+$B_D^N(c) \le \Phi_D(c) \le e^{a(c)}$ (\lc{treeSumB_le_kpMajorant},
+\lc{treeSumB_le_exp}); depth monotonicity of \lc{treeSumRaw} and the
+factorial comparison $1/(n+1)! \le 1/n!$ assemble Theorem~\ref{thm:sharp}.
+
+Why admissible parent/level pairs rather than trees?  Because they are a
+\emph{decidable, finite, product-shaped} index (a filter on
+$(\mathrm{Fin}(n+1)\to\mathrm{Fin}(n+1)) \times (\mathrm{Fin}(n+1)\to\mathrm{Fin}(D+1))$),
+over-counting trees harmlessly (the inequality only needs an injection
+from trees), while making ``the first shell'' and ``the subtree rooted at
+$s$'' definable by simple arithmetic on levels (\lc{shellRoot},
+\lc{shellFiber}, \lc{subtreeParent}, \lc{subtreeLev}).  Nothing in the
+recursion manipulates a graph.
+
+\section{The Mayer--Ursell inversion}\label{sec:mayer}
+
+\begin{theorem}[Mayer--Ursell inversion]\label{thm:mayer}
+\textup{[\lc{partition_eq_exp_clusterSum}, \file{KP/MayerInversion.lean}]}
+Let $P$ be a finite polymer system whose cluster series is absolutely
+convergent, i.e.\ $\sum_n \bigl\|\frac{1}{(n+1)!}\sum_X \Ur(X)\prod_i z(X_i)\bigr\|
+< \infty$.  Then
+\[
+  \Xi(\Pol) \;=\; \exp\bigl(\mathrm{clusterSum}(P)\bigr).
+\]
+In particular (\lc{partition_eq_exp_clusterSum_of_kp}) this holds under the
+criterion~\eqref{eq:kp}, and then $\Xi(\Pol) \ne 0$.
+\end{theorem}
+\begin{lstlisting}
+theorem partition_eq_exp_clusterSum [Fintype P.Polymer]
+    (hA : Summable fun n : ℕ => ‖(((n + 1).factorial : ℂ))⁻¹ *
+      ∑ X : Fin (n + 1) → P.Polymer,
+        (ursell P X : ℂ) * ∏ i, P.activity (X i)‖) :
+    partition P (Finset.univ : Finset P.Polymer)
+    = Complex.exp (clusterSum P)
+\end{lstlisting}
+
+This is the fundamental theorem of cluster expansions
+(Friedli--Velenik Proposition~5.3, in the ``$\Xi = \exp$'' rather than
+``$\log\Xi = $'' form, which avoids any branch of the complex logarithm).
+Its formalization has a finite combinatorial heart and an analytic shell.
+
+\paragraph{The partition identity.}
+For a tuple $X$, call $X$ \emph{pairwise compatible}
+(\lc{PairwiseCompatible}) if no two distinct coordinates are incompatible.
+The indicator identity
+$\sum_{E \subseteq E(G_X)} (-1)^{|E|} = [X\ \text{pairwise compatible}]$
+(\lc{sum_neg_one_pow_eq_indicator}) is Mathlib's
+\lc{Finset.sum_powerset_neg_one_pow_card}.  Grouping edge sets by the
+partition of $\mathrm{Fin}\,n$ into connected components
+(\lc{componentPartition}, a \lc{Finpartition} obtained from Mathlib's
+reachability setoid) and factorizing each fiber over its blocks
+(\lc{fiber_cp_factorization}) yields
+\begin{equation}\label{eq:partition-identity}
+  \sum_{\pi \,\in\, \mathrm{Finpartition}(\mathrm{Fin}\,n)}\;
+  \prod_{B \in \pi} \Ur\bigl(X|_B\bigr) \;=\; [X\ \text{pairwise compatible}]
+  \qquad (\lcmath{ursell_partition_identity}),
+\end{equation}
+where $X|_B$ is $X$ restricted to the block $B$ via Mathlib's order
+isomorphism $\mathrm{Fin}\,|B| \simeq B$.  Summing~\eqref{eq:partition-identity}
+against $\prod_j z(X_j)$ over all $N$-tuples, converting unordered partitions
+into ordered ones with a $1/k!$ (\lc{sum_finpartition_eq_ordPartitions},
+\lc{IsOrdPartition}) and counting the tuples with prescribed block sizes by
+multinomials (\lc{card_ordPartition_mul}, \lc{sum_ordp_fiber_sizes}), one
+arrives at the \emph{fully finite cluster form} of $\Xi$
+(\lc{partition_univ_eq_cluster_layers}): $\Xi(\Pol)$ equals a finite sum over
+total sizes $N \le \#\Pol$ of $1/k!$-weighted sums over size vectors
+$(m_1,\dots,m_k)$, $\sum m_i = N$, $m_i \ge 1$, of products of normalized
+per-block cluster weights $\frac{1}{m_i!}\sum_{Y:\mathrm{Fin}\,m_i\to\Pol}
+\Ur(Y)\prod z(Y_l)$.  This is where the injectivity of pairwise compatible
+tuples (\lc{PairwiseCompatible.injective}, from the hard core) turns the
+tuple sum into the admissible-set sum $\Xi$.
+
+\paragraph{The exponential of a \texttt{tsum}.}
+Write $a_n$ for the $n$-th term of~\eqref{eq:clustersum}, so
+$\mathrm{clusterSum} = \sum' a_n$.  Under absolute convergence,
+\[
+  \exp\Bigl(\sum'_n a_n\Bigr)
+  \;=\; \sum'_{(k,f)\,\in\,\Sigma_k (\mathrm{Fin}\,k \to \mathbb{N})}
+  \frac{1}{k!}\prod_{i} a_{f(i)}
+  \qquad (\lcmath{exp_tsum_eq_tsum_H}),
+\]
+by Mathlib's power series for $\exp$ (\lc{NormedSpace.exp_eq_tsum_div}), the
+identity $(\sum' a)^k = \sum'_{f}\prod_i a_{f(i)}$ (\lc{tsum_pow_eq_tsum_pi},
+by induction on $k$ through \lc{tsum_mul_tsum_of_summable_norm}) and
+\lc{Summable.tsum_sigma}.  The master family on the sigma type is absolutely
+summable by comparison with the exponential series (\lc{summable_H}), and
+regrouping it by total size $N = \sum_i (f(i)+1)$ (\lc{tsum_H_eq_tsum_layers})
+produces exactly the finite layers of the cluster form, term by term
+(\lc{layer_shift}).  Since the layers vanish for $N > \#\Pol$, the
+\texttt{tsum} over $N$ is a finite sum and Theorem~\ref{thm:mayer} follows.
+This is how the ``restricted'' inversion avoids infinite sums on the
+partition-function side: $\Xi$ is a polynomial in the activities, the only
+infinite object is $\mathrm{clusterSum}$, and absolute convergence is used
+exactly once, to justify the sigma-type regrouping.
+
+\paragraph{A consistency check.}
+On the single-polymer system with $\|z\|<1$ the theorem specializes, via
+$\Ur(K_{n+1}) = (-1)^n n!$ and the Mercator series
+(\lc{mayer_log_series_complex}, from Mathlib's
+\lc{Complex.hasSum_taylorSeries_log}), to $\mathrm{clusterSum} = \log(1+z)$
+and $\Xi = 1 + z$ (\lc{clusterSum_singlePolymer_eq_log},
+\lc{partition_singlePolymer_eq_exp}, \file{UrsellRecurrence.lean}).  This was
+proved before the general theorem and served as the normalization check
+between \lc{partition} and \lc{clusterSum}.
+
+\paragraph{Zero-free polydisc (\texttt{ActivityDomain.lean}).}
+The criterion reads $z$ only through $\|z\|$, so it is monotone under
+pointwise domination (\lc{kpCriterion_withActivity_of_le}), and
+Theorem~\ref{thm:mayer} gives:
+
+\begin{corollary}
+\textup{[\lc{partition_withActivity_ne_zero_of_kp}, \lc{partition_diskFamily_ne_zero_of_kp}]}
+If $a$ satisfies~\eqref{eq:kp} for $P$ and $z'$ is any activity with
+$\|z'(X)\| \le \|z(X)\|$ for all $X$, then $\Xi_{z'}(\Pol) \ne 0$.  In particular
+$\Xi_{w z}(\Pol) \ne 0$ for all complex $w$ with $\|w\| \le 1$, and
+$w \mapsto \Xi_{wz}(\Pol)$ is the explicit polynomial
+$\sum_{S\ \mathrm{admissible}} w^{|S|}\prod_{X\in S} z(X)$
+(\lc{partition_diskFamily_eq}).
+\end{corollary}
+
+\section{Restriction, tilting, tails, and animals}\label{sec:restrict}
+
+The consumers need the engine in finite volume $\Lambda \subseteq \Pol$ and
+need estimates whose constants do not see $\#\Pol$.  Four small modules
+provide this.
+
+\paragraph{Restriction (\texttt{Restriction.lean}).}
+$P.\mathrm{restrict}\,\Lambda$ is the polymer system on the subtype
+$\{X \,//\, X \in \Lambda\}$ with inherited incompatibility and activity.  Then
+$\Xi_P(\Lambda) = \Xi_{P.\mathrm{restrict}\,\Lambda}(\mathrm{univ})$
+(\lc{partition_restrict}), the criterion restricts with the restricted weight
+(\lc{KPCriterion.restrict}, because the restricted criterion sums are
+sub-sums), and hence \emph{every} finite-volume partition function is an
+exponential: $\Xi_P(\Lambda) = \exp(\mathrm{clusterSum}(P.\mathrm{restrict}\,\Lambda))$
+(\lc{partition_eq_exp_clusterSum_restrict}).  The ratio of two partition
+functions is therefore $\exp$ of a \emph{difference} of cluster sums, and the
+difference is exactly the tuple sum over clusters meeting $\Lambda^{c}$
+(\lc{clusterSum_sub_restrict}), whose norm is bounded by the off-region
+weight $\sum_n \mathrm{offRegionClusterWeight}(P,\Lambda,n)$
+(\lc{norm_clusterSum_sub_restrict_le}).
+
+\begin{theorem}[volume-free $Z$-ratio exponent]
+\textup{[\lc{tsum_offRegionClusterWeight_le}]}
+If $t > 0$ and $a$ satisfies the criterion for the $e^t$-scaled activities
+$P.\mathrm{scaleActivity}(e^t)$, then
+\[
+  \sum_{n} \mathrm{offRegionClusterWeight}(P,\Lambda,n)
+  \;\le\; t^{-1}\sum_{c \notin \Lambda} e^{t}\,\|z(c)\|\,e^{a(c)} .
+\]
+\end{theorem}
+The proof pins each off-region cluster at a coordinate outside $\Lambda$
+(\lc{offRegionClusterWeight_le_pinned}), pays the order factor $n+1$ by the
+tilt $e^{t(n+1)} \ge t(n+1)$ (\lc{orderFactor_pinnedClusterWeight_le_tilt}),
+and applies Theorem~\ref{thm:sharp} to the scaled system.  The algebra of the
+cancellation, $\|\mathrm{Num}/Z\| \le \sum_i a_i e^{C_i}$ when
+$Z = e^{\zeta}$ and $\|\zeta - \zeta_i\| \le C_i$ (\lc{norm_div_le_pinned_sum_exp}),
+is stated separately so that the area-law gate can use it verbatim.
+
+\paragraph{Tilting and size tails (\texttt{ClusterTail.lean}).}
+$P.\mathrm{tilt}\,w$ rescales activities by $e^{w(c)}$ without touching
+$\Ur$ (\lc{tilt_ursell} is \texttt{rfl}).  For a size function
+$\mathrm{sz} : \Pol \to \mathbb{N}$ and the pinned weight restricted to
+clusters of total size $\ge L$ (\lc{pinnedClusterWeightGE}):
+
+\begin{theorem}[exponential size tail]
+\textup{[\lc{kp_pinned_cluster_tail_bound}, \lc{pinned_cluster_tail_summable}]}
+If $\varepsilon \ge 0$ and $a$ satisfies the criterion for
+$P.\mathrm{tilt}(\varepsilon\,\mathrm{sz})$, then for all $c$, $L$, $N$
+\[
+  \sum_{n \le N} \mathrm{pinnedClusterWeightGE}(P,\mathrm{sz},c,L,n)
+  \;\le\; e^{-\varepsilon L}\; e^{\varepsilon\,\mathrm{sz}(c)}\,\|z(c)\|\,e^{a(c)} .
+\]
+\end{theorem}
+This is the decay mechanism behind the correlator and thermodynamic-limit
+consumers: clusters connecting two distant regions are large.
+
+\paragraph{Lattice animals, twice.}
+The criterion~\eqref{eq:kp} for a lattice gas needs an entropy bound on
+connected polymers.  Two independent theorems supply it, in different
+generality.
+\begin{itemize}
+\item \lc{card_connectedPolymers_le} (\file{YangMills/L1_GibbsMeasure/ConnectedEntropy.lean}):
+  on the periodic $d$-dimensional lattice of any size $N$, the number of
+  connected plaquette sets of cardinality $n+1$ through a fixed plaquette is
+  at most $(16d+1)^{2n}$ --- every such set is the range of a lazy closed
+  walk of length $2n$ (\lc{exists_covering_lazyWalk}), and there are at most
+  $(16d+1)^{2n}$ such walks because a plaquette touches at most $16d$ others
+  (\lc{card_plaquettesTouching_le}).  The constant does not depend on $N$.
+\item \lc{animal_card_le} (\file{YangMills/RG/AnimalTour.lean}): on any
+  simple graph of maximum degree $\le \Delta$, any family of $S$-connected
+  vertex sets of size $n$ containing a root has at most $\Delta^{2(n-1)}$
+  members.  The proof peels the farthest vertex (\lc{exists_peel}: a
+  max-distance vertex is never a cut vertex), builds a spanning closed walk of
+  length $2(n-1)$ by splicing detours (\lc{exists_spanning_closed_walk},
+  \lc{exists_detour_walk}), and counts walks by
+  \lc{card_walks_length_le_degree_pow} (at most $\Delta^{\ell}$ walks of
+  length $\ell$ from a vertex, from Mathlib's recursive
+  \lc{finsetWalkLength}).  The cardinal form
+  \lc{rooted_connected_card_le_pow} gives $c_n \le (\Delta^2)^n$ and feeds the
+  geometric summability \lc{rooted_connected_weight_summable}.
+\end{itemize}
+\begin{lstlisting}
+theorem animal_card_le [Fintype V] [DecidableRel G.Adj] (A : Finset (Finset V))
+    {Δ n : ℕ} (hΔ : ∀ w, G.degree w ≤ Δ)
+    (hA : ∀ S ∈ A, r ∈ S ∧ S.card = n ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w) :
+    A.card ≤ Δ ^ (2 * (n - 1))
+\end{lstlisting}
+
+\section{How volume-uniformity is achieved, and the consumers}\label{sec:consumers}
+
+The engine never leaves finite volume; volume-uniformity is a property of
+the \emph{shape} of the bounds.  Concretely, for the connected lattice gas of
+the strong-coupling expansion --- polymers are nonempty connected plaquette
+sets, incompatibility is edge-support overlap, activities are gauge
+expectations of $\prod_{p}(e^{-\beta\,\mathrm{pe}(\mathrm{hol}_p)}-1)$
+(\lc{connectedLatticePolymerSystem}, \file{LatticePolymerSystem.lean}) ---
+the chain is:
+
+\begin{theorem}[volume-uniform criterion]
+\textup{[\lc{connectedLatticePolymerSystem_kpCriterion_volumeUniform}, \file{ConnectedEntropy.lean}]}
+Let $|\mathrm{pe}| \le B$, $t \ge 0$, $x = (e^{|\beta| B}-1)e^{t}$, and suppose
+$(16d+1)^2 x < 1$ and $16d\cdot x/(1-(16d+1)^2 x) \le t$.  Then the weight
+$a(c) = t\,|c|$ satisfies the criterion~\eqref{eq:kp} for the connected
+lattice gas on the lattice of every linear size $N$.
+\end{theorem}
+
+The hypotheses mention $d$, $B$, $\beta$ and $t$ only.  The proof steers
+every polymer $Y$ incompatible with $c$ through a plaquette $p \in Y$ touching
+$c$ --- at most $16d$ per plaquette of $c$ (\lc{card_plaquettesTouching_le}),
+hence at most $16d\,|c|$ in all --- and bounds each per-plaquette sum
+$\sum_{Y \ni p} x^{|Y|}$ by the geometric series
+$x/(1-(16d+1)^2x)$ using \lc{card_connectedPolymers_le}
+(\lc{sum_connectedPolymers_through_le}).  Composed with
+Theorem~\ref{thm:sharp} this gives absolute convergence of the cluster series
+(\lc{connectedLatticeClusterSum_summable_volumeUniform}) and
+$\|\mathrm{clusterSum}\| \le \sum_c \|z(c)\|e^{t|c|}$
+(\lc{connectedLatticeClusterSum_norm_le_volumeUniform}) with no hypothesis on
+$N$; the earlier uniform-majorant route needed $e\,t\,\#\{\text{plaquettes}\} < 1$
+(\lc{connectedLatticeClusterSum_summable}), which is visible in the code as
+the hypothesis the sharp version deleted.  The tilted criterion
+(\lc{connectedLatticePolymerSystem_tilt_kpCriterion_volumeUniform}) and the
+tail theorem give the volume-uniform size tail
+\lc{connectedLattice_pinned_tail_volumeUniform}.
+
+The three documented consumers are, briefly:
+\begin{itemize}
+\item \textbf{Area law} \cite{Eriksson2026AreaLaw}
+  (\file{YangMills/L1_GibbsMeasure/RestrictedGate.lean}).  The region-restricted
+  partition function of a weighted gas is written, by the truncation device
+  $w \mapsto w\mathbf{1}_F$ and \lc{partition_eq_of_activity_eq_zero}, as a full
+  partition function; \lc{partition_eq_exp_clusterSum_of_kp} and
+  \lc{partition_eq_exp_clusterSum_restrict} turn $Z$ and each far factor into
+  exponentials; \lc{norm_clusterSum_sub_restrict_le},
+  \lc{tsum_offRegionClusterWeight_le} and \lc{norm_div_le_pinned_sum_exp}
+  cancel $Z$ at a cost charged to the loop's perimeter; the pinned dichotomy
+  is resummed by \lc{sum_pinned_dichotomy_le} using the area-extraction split
+  \lc{sum_ite_pow_le}.  The headline
+  \lc{normalized_exp_wilson_loop_area_law} is volume-uniform because every
+  constant it inherits from the engine has the per-polymer shape above.
+\item \textbf{Exponential clustering} (\file{TwoPlaquetteCorrelator.lean}).
+  \lc{sun_two_plaquette_correlator_bound} bounds the normalized truncated
+  two-plaquette correlation of $SU(N_c)$ lattice gauge theory by
+  $e^{-\varepsilon k}$ for plaquettes at touching-graph distance $\ge 2k$,
+  with constants in $d, N_c, \beta, s, t, \varepsilon$ only, through the
+  size-tail theorem applied to the marked gas.
+\item \textbf{Thermodynamic limit} \cite{Eriksson2026ThermoLimit}.  The Cauchy
+  modulus of the finite-volume local expectations is the volume-uniform
+  pinned tail (\file{ThermodynamicLimit.lean}); a genuine free-boundary
+  exhaustion is compared with the periodic sequence through the same tails
+  (\file{FreeBoundaryThermodynamicLimit.lean}); and the endpoint theorem
+  \lc{tendsto_integerFreeBoundary}\hspace{0pt}\lc{ThermodynamicExpectation}
+  (\file{IntegerThermodynamicLimit.lean}) converges the free-boundary
+  exhaustion to the periodic infinite-volume state.
+\end{itemize}
+These papers document their own statements and windows; we list them only to
+make precise which engine theorems they consume.
+
+\section{The axiom oracle}\label{sec:oracle}
+
+The repository's verification discipline is a per-theorem
+\texttt{\#print axioms}.  Table~\ref{tab:oracle} lists every declaration
+cited above that we treat as a headline, its file, and where its verbatim
+oracle output is recorded.  Three record types occur: the verification
+ledger \file{docs/VERIFICATION-LEDGER.md} (verbatim batch outputs at dated
+checkpoints; the KP/Penrose release audit of 2026-06-10 at 8{,}209 jobs and
+its Addenda~5--7 and~59 cover most of the table), the committed transcripts
+\file{docs/oracle-transcripts/ORACLE-2026072*.txt} (about 4{,}600 lines each, one
+entry per headline of \file{oracle_check.lean} at that date), and \file{oracle_check.lean}
+itself.  Every recorded output is \oracle{}.
+
+The revision of \file{oracle_check.lean} accompanying this paper (branch
+\texttt{paper/kp-engine}) adds a section that prints the axioms of forty-two
+further declarations from the table --- among them
+\lc{abs_ursell_le_card_spanningTrees}, \lc{penrose_hfiber},
+\lc{tree_walk_bound}, \lc{kp_pinned_cluster_bound}, \lc{kp_convergence_sharp},
+\lc{ursell_partition_identity} and the volume-uniform lattice criterion ---
+which were previously recorded only in the ledger.  For full disclosure: the
+additions were made by static inspection of the sources (every name was
+checked to exist at the cited file and line) and have \emph{not} yet been
+re-run through the compiler on this machine; their oracle outputs in the
+table are those recorded in the ledger at earlier checkpoints, and the
+continuous-integration workflow does not compile Lean (it enforces the
+zero-\texttt{sorry}, zero-axiom source invariants; see
+Section~\ref{sec:repro}).  Re-running \texttt{lake env lean oracle\_check.lean}
+at the current checkpoint is the one-line check that closes this gap.
+
+\begin{footnotesize}
+\begin{longtable}{@{}p{0.45\textwidth}p{0.30\textwidth}p{0.18\textwidth}@{}}
+\caption{Headline declarations, files (under \texttt{YangMills/}; \texttt{L1} abbreviates \texttt{L1\_GibbsMeasure}), and oracle
+records.  ``L'' = verification ledger (verbatim), ``T'' = committed oracle
+transcripts of 2026-07-13/27, ``O'' = present in \texttt{oracle\_check.lean}
+before this revision, ``O$^{+}$'' = added on branch \texttt{paper/kp-engine},
+``R'' = batch statement in \texttt{REPRODUCIBILITY.md} (merged oracle script run
+to exit~0 on \texttt{main} checkpoint \texttt{f0720ba7}; no per-declaration
+line quoted).  Every recorded output is \oracle{}.}\label{tab:oracle}\\
+\toprule
+Declaration (\texttt{YangMills.} prefix omitted) & File & Record\\
+\midrule
+\endfirsthead
+\toprule
+Declaration & File & Record\\
+\midrule
+\endhead
+\multicolumn{3}{l}{\emph{Substrate}}\\
+\lc{KP.partition_union} & \file{KP/Basic.lean} & O$^{+}$\\
+\lc{KP.ursell_eq_zero_of_not_isCluster} & \file{KP/Ursell.lean} & O$^{+}$\\
+\lc{KP.ursellComplete_recurrence} & \file{KP/UrsellRecurrence.lean} & L (2026-06-10), O$^{+}$\\
+\lc{KP.ursellComplete_eq} & \file{KP/UrsellRecurrence.lean} & L, O$^{+}$\\
+\lc{KP.partition_singlePolymer_eq_exp} & \file{KP/UrsellRecurrence.lean} & L, O$^{+}$\\
+\lc{KP.kp_activity_le}, \lc{KP.kp_neighbor_sum_le} & \file{KP/Criterion.lean} & O$^{+}$\\
+\midrule
+\multicolumn{3}{l}{\emph{Penrose tree-graph inequality}}\\
+\lc{KP.interval_signed_sum} & \file{KP/PenroseScheme.lean} & L, O$^{+}$\\
+\lc{KP.abs_signedSum_le_of_scheme} & \file{KP/PenroseScheme.lean} & L, O$^{+}$\\
+\lc{KP.penroseTree_mem_spanningTrees} & \file{KP/PenroseBFS.lean} & L, O$^{+}$\\
+\lc{KP.penrose_hfiber} & \file{KP/PenroseFiber.lean} & L, O$^{+}$\\
+\lc{KP.abs_ursell_le_card_spanningTrees} & \file{KP/PenroseFiber.lean} & L, O$^{+}$\\
+\lc{KP.abs_ursell_le_treeCount}, \lc{KP.treeCount_le_pow} & \file{KP/PenroseFiber.lean} & L, O$^{+}$\\
+\lc{KP.succ_pow_le_exp_mul_factorial} & \file{KP/PenrosePrep.lean} & L, O$^{+}$\\
+\midrule
+\multicolumn{3}{l}{\emph{Tree-walk bounds and uniform KP}}\\
+\lc{KP.tree_walk_bound} & \file{KP/WalkBound.lean} & L, O$^{+}$\\
+\lc{KP.tree_walk_bound_vertexwise} & \file{KP/WalkBound.lean} & T, O\\
+\lc{KP.tree_walk_bound_pinned} & \file{KP/PinnedWalk.lean} & O$^{+}$\\
+\lc{KP.kp_per_size_bound}, \lc{KP.kp_convergence}, \lc{KP.kp_norm_clusterSum_le} & \file{KP/KPBound.lean} & L, O$^{+}$\\
+\midrule
+\multicolumn{3}{l}{\emph{Sharp KP}}\\
+\lc{KP.clusterWeight_eq_sum_pinned} & \file{KP/PinnedCluster.lean} & O$^{+}$\\
+\lc{KP.kpMajorant_le_exp} & \file{KP/SharpMajorant.lean} & O$^{+}$\\
+\lc{KP.pinnedClusterWeight_le_treeSumRaw} & \file{KP/SharpShell.lean} & O$^{+}$\\
+\lc{KP.treeSumB_succ_le}, \lc{KP.treeSumB_le_kpMajorant} & \file{KP/SharpShell.lean} & L (Add.~6), O$^{+}$\\
+\lc{KP.kp_pinned_cluster_bound} & \file{KP/SharpShell.lean} & L (Add.~6), O$^{+}$\\
+\lc{KP.pinned_cluster_summable_sharp} & \file{KP/SharpShell.lean} & L (Add.~6), O$^{+}$\\
+\lc{KP.kp_clusterWeight_summable_sharp}, \lc{KP.kp_convergence_sharp}, \lc{KP.kp_norm_clusterSum_le_sharp} & \file{KP/SharpKP.lean} & L (Add.~6), O$^{+}$\\
+\midrule
+\multicolumn{3}{l}{\emph{Mayer--Ursell inversion and activity domain}}\\
+\lc{KP.ursell_partition_identity} & \file{KP/MayerInversion.lean} & L (Add.~7), O$^{+}$\\
+\lc{KP.partition_eq_exp_clusterSum} & \file{KP/MayerInversion.lean} & L (Add.~7), T, O\\
+\lc{KP.partition_eq_exp_clusterSum_of_kp} & \file{KP/MayerInversion.lean} & L (Add.~7), T, O\\
+\lc{KP.kpCriterion_withActivity_of_le} & \file{KP/ActivityDomain.lean} & T, O\\
+\lc{KP.partition_withActivity_ne_zero_of_kp} & \file{KP/ActivityDomain.lean} & T, O\\
+\lc{KP.partition_diskFamily_ne_zero_of_kp}, \lc{KP.partition_diskFamily_eq} & \file{KP/ActivityDomain.lean} & T, O\\
+\midrule
+\multicolumn{3}{l}{\emph{Restriction, tails}}\\
+\lc{KP.KPCriterion.restrict}, \lc{KP.partition_eq_exp_clusterSum_restrict} & \file{KP/Restriction.lean} & L (8{,}237 jobs), O$^{+}$\\
+\lc{KP.norm_clusterSum_sub_restrict_le}, \lc{KP.tsum_offRegionClusterWeight_le} & \file{KP/Restriction.lean} & L (8{,}237 jobs), O$^{+}$\\
+\lc{KP.orderFactor_pinnedClusterWeight_le_tilt}, \lc{KP.tsum_finset_pinnedClusterWeight_le} & \file{KP/Restriction.lean} & T, O\\
+\lc{KP.kp_pinned_cluster_tail_bound}, \lc{KP.pinned_cluster_tail_summable} & \file{KP/ClusterTail.lean} & O$^{+}$\\
+\midrule
+\multicolumn{3}{l}{\emph{Lattice animals and the volume-uniform criterion}}\\
+\lc{card_connectedPolymers_le} & \file{L1/ConnectedEntropy.lean} & L (Add.~5), O$^{+}$\\
+\lc{connectedLatticePolymerSystem_kpCriterion_volumeUniform} & \file{L1/ConnectedEntropy.lean} & L (Add.~5), O$^{+}$\\
+\lc{connectedLatticeClusterSum_summable_volumeUniform} & \file{L1/ConnectedEntropy.lean} & L (Add.~6), O$^{+}$\\
+\lc{connectedLatticeClusterSum_norm_le_volumeUniform} & \file{L1/ConnectedEntropy.lean} & L (Add.~6), O$^{+}$\\
+\lc{connectedLattice_pinned_tail_volumeUniform} & \file{L1/ConnectedEntropy.lean} & O$^{+}$\\
+\lc{RG.card_walks_length_le_degree_pow} & \file{RG/AnimalCount.lean} & T, O\\
+\lc{RG.animal_card_le} & \file{RG/AnimalTour.lean} & L (Add.~59), T, O\\
+\lc{RG.rooted_connected_card_le_pow} & \file{RG/AnimalTour.lean} & T, O\\
+\midrule
+\multicolumn{3}{l}{\emph{Consumers (documented elsewhere)}}\\
+\lc{normalized_exp_wilson_loop_area_law} & \file{L1/RestrictedGate.lean} & L, T, O\\
+\lc{sun_two_plaquette_correlator_bound} & \file{L1/TwoPlaquetteCorrelator.lean} & T, O\\
+\lc{tendsto_integerFreeBoundary}\allowbreak\lc{ThermodynamicExpectation} & \file{L1/IntegerThermodynamicLimit.lean} & R, O\\
+\bottomrule
+\end{longtable}
+\end{footnotesize}
+
+For the declarations marked only O$^{+}$ (eleven of them:
+\lc{partition_union}, \lc{ursell_eq_zero_of_not_isCluster},
+\lc{kp_activity_le}, \lc{kp_neighbor_sum_le}, \lc{tree_walk_bound_pinned},
+\lc{clusterWeight_eq_sum_pinned}, \lc{kpMajorant_le_exp},
+\lc{pinnedClusterWeight_le_treeSumRaw}, \lc{kp_pinned_cluster_tail_bound},
+\lc{pinned_cluster_tail_summable} and
+\lc{connectedLattice_pinned_tail_volumeUniform}) we have no verbatim
+per-declaration transcript; what is recorded for them is that they compile
+inside the sorry-free, axiom-free \texttt{YangMillsCore} build (latest recorded
+green build: 8{,}463 jobs), and they are consumed by declarations whose oracle
+\emph{is} recorded (a declaration depending on an extra axiom would propagate
+it to every consumer).  We state this rather than assert a transcript we do
+not have.
+
+\section{What is not formalized}\label{sec:not}
+
+In the author's usual convention, the following are explicitly \emph{not}
+claimed.
+\begin{itemize}
+\item \textbf{Infinite polymer systems.}  Every theorem carries
+  \texttt{[Fintype P.Polymer]}.  The infinite-volume statements of
+  \cite{KoteckyPreiss1986,FriedliVelenik2017} for countable polymer sets are
+  not formalized; volume-uniformity is achieved by the shape of finite-volume
+  bounds and by the consumers' Cauchy arguments, not by an infinite-volume
+  cluster expansion.
+\item \textbf{The sharp criteria of Fern\'andez--Procacci and
+  Bissacot--Fern\'andez--Procacci}~\cite{FernandezProcacci2007,BFP2010}, and
+  the Dobrushin form of the criterion.  Only the Koteck\'y--Preiss form
+  \eqref{eq:kp} is proved.
+\item \textbf{Tree-graph identities} (Brydges--Kennedy, Brydges--Federbush,
+  Abdesselam--Rivasseau) and the Penrose \emph{identity} (as opposed to
+  inequality).  The formalized statement is the inequality
+  $|\Ur| \le \#\Trees$, which suffices for convergence.
+\item \textbf{Cayley's formula.}  The tree count used is
+  $\mathrm{treeCount}(m+1) \le (m+1)^{m+1}$, not $(m+1)^{m-1}$; the exact
+  child-factorial Catalan identity over spanning trees of the complete graph
+  is a separate, documented result of the programme~\cite{Eriksson2026Catalan}
+  and is not used by the engine.
+\item \textbf{The correlation-function cluster expansion} (the cluster
+  representation of truncated correlations, Ueltschi's Theorem~2).  The
+  consumers obtain correlation decay through marked gases and the size-tail
+  theorem instead.
+\item \textbf{The $\log$ form.}  The inversion is stated as
+  $\Xi = \exp(\mathrm{clusterSum})$; no statement selects a branch of
+  $\log \Xi$.
+\item \textbf{Analytic continuation in the fugacity.}  The zero-free polydisc
+  is proved; that $w \mapsto \Xi(wz)$ is entire and that $\log \Xi$ is analytic
+  on the polydisc are on the frontier of the satellite
+  \texttt{lean-zero-free-regions}, not in this layer.
+\item \textbf{Cluster expansions with holes / renormalization-group inputs.}
+  The RG lane (\file{YangMills/RG/}) consumes the vertexwise walk bound and the
+  animal count, but its Ba\l{}aban--Dimock source estimates are carried as
+  explicit theorem hypotheses (\file{HYPOTHESIS_FRONTIER.md}) and are not
+  claimed here.
+\item \textbf{Nothing about the continuum.}  As every status document of the
+  repository states, no continuum limit, no Osterwalder--Schrader
+  reconstruction and no continuum mass gap is formalized or claimed.
+\end{itemize}
+
+\section{Reproduction}\label{sec:repro}
+
+All artifacts are in the public repository
+\begin{center}
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}
+\end{center}
+The engine is \file{YangMills/KP/} (35 modules); its lattice-side consumers
+are under \file{YangMills/L1_GibbsMeasure/}; the graph-theoretic animal count
+is \file{YangMills/RG/AnimalCount.lean} and \file{YangMills/RG/AnimalTour.lean}.
+The toolchain is pinned: Lean \texttt{v4.29.0-rc6} (\file{lean-toolchain}) and
+the Mathlib commit
+\begin{center}\texttt{07642720480157414db592fa85b626dafb71355b}\end{center}
+(\file{lakefile.lean} and \file{lake-manifest.json} agree; see
+\file{REPRODUCIBILITY.md}).  To rebuild the verified core and print the
+oracle:
+\begin{lstlisting}
+lake exe cache get                # prebuilt Mathlib oleans
+lake build YangMillsCore          # latest recorded: 8463 jobs, green
+lake env lean oracle_check.lean   # prints the axioms of every headline
+python scripts/check_consistency.py   # zero sorry, zero core axioms
+\end{lstlisting}
+A full core build exceeds the free continuous-integration tier, so the
+repository's CI workflow (\file{.github/workflows/ci.yml}) does \emph{not}
+compile Lean; it runs the comment-aware scanner
+\file{scripts/check_consistency.py}, which fails on any \texttt{sorry} in the
+proof tree or any \texttt{axiom} declaration in the verified-core tree.  The
+compiler builds and oracle runs are performed locally and recorded verbatim
+in \file{docs/VERIFICATION-LEDGER.md} and \file{docs/oracle-transcripts/}.
+This paper's sources are \file{papers/kp-engine/main.tex}; the branch
+\texttt{paper/kp-engine} carries the paper, the \file{oracle_check.lean}
+additions of Section~\ref{sec:oracle}, and (only on that branch) a
+one-line change to the CI trigger so that the scanner also runs on
+\texttt{paper/**} branches.  The document compiles with
+\texttt{latexmk -pdf -interaction=nonstopmode main.tex}; the script
+\file{check_listings_unicode.py} audits the Lean listings against the
+\texttt{literate} table.
+
+\section{Conclusion}\label{sec:conclusion}
+
+The Penrose tree-graph inequality, the Koteck\'y--Preiss criterion in its
+sharp per-polymer form, and the Mayer--Ursell inversion are now theorems of
+Lean~4 over Mathlib, with the standard three-axiom oracle and no
+\texttt{sorry}.  The formalization is faithful to the textbook mathematics
+but not to its usual presentation: ordered tuples replace multisets,
+coordinate pinning replaces membership pinning, admissible parent/level
+pairs replace trees inside the shell recursion, and the exponential of the
+cluster series is handled by a sigma-type regrouping rather than by
+$\log$.  Each of these choices traded a conceptual step for a bookkeeping
+step that Mathlib's \texttt{Finset} and \texttt{tsum} libraries could
+discharge, and together they kept a 14{,}441-line development
+oracle-clean at every checkpoint.  The layer is already load-bearing: the
+volume-uniform area law and the thermodynamic limit of the programme are
+its consumers.  Natural next steps are the infinite-polymer version of the
+criterion, the Fern\'andez--Procacci sharpening, and extraction of the
+abstract polymer model, the Ursell coefficient and Theorems~\ref{thm:penrose}
+and~\ref{thm:mayer} into Mathlib-style generic contributions.
+
+\subsection*{Acknowledgments}
+The Lean formalization was developed interactively with Anthropic's Claude,
+in accordance with the ACM authorship policy on AI-assisted work; every
+theorem stated here was checked by the Lean~4 kernel, with the axiom oracle
+outputs archived in the repository ledger and transcripts.
+
+\begin{thebibliography}{99}
+
+\bibitem{Penrose1963}
+O.~Penrose,
+\emph{Convergence of fugacity expansions for fluids and lattice gases},
+J.~Math.\ Phys.\ \textbf{4} (1963), 1312--1320.
+
+\bibitem{Penrose1967}
+O.~Penrose,
+\emph{Convergence of fugacity expansions for classical systems},
+in: T.~A.~Bak (ed.), \emph{Statistical Mechanics: Foundations and
+Applications}, Benjamin, New York, 1967, 101--109.
+
+\bibitem{KoteckyPreiss1986}
+R.~Koteck\'y and D.~Preiss,
+\emph{Cluster expansion for abstract polymer models},
+Comm.\ Math.\ Phys.\ \textbf{103} (1986), 491--498.
+
+\bibitem{Brydges1986}
+D.~C.~Brydges,
+\emph{A short course on cluster expansions},
+in: K.~Osterwalder and R.~Stora (eds.), \emph{Critical Phenomena, Random
+Systems, Gauge Theories} (Les Houches 1984), North-Holland, 1986, 129--183.
+
+\bibitem{Dobrushin1996}
+R.~L.~Dobrushin,
+\emph{Estimates of semi-invariants for the Ising model at low temperatures},
+in: \emph{Topics in Statistical and Theoretical Physics}, Amer.\ Math.\ Soc.\
+Transl.\ (2) \textbf{177} (1996), 59--81.
+
+\bibitem{MiracleSole2000}
+S.~Miracle-Sol\'e,
+\emph{On the convergence of cluster expansions},
+Physica A \textbf{279} (2000), 244--249.
+
+\bibitem{Ueltschi2004}
+D.~Ueltschi,
+\emph{Cluster expansions and correlation functions},
+Moscow Math.\ J.\ \textbf{4} (2004), 511--522.
+
+\bibitem{Scott2005}
+A.~D.~Scott and A.~D.~Sokal,
+\emph{The repulsive lattice gas, the independent-set polynomial, and the
+Lov\'asz local lemma},
+J.~Stat.\ Phys.\ \textbf{118} (2005), 1151--1261.
+
+\bibitem{ScottSokal2005}
+A.~D.~Scott and A.~D.~Sokal,
+\emph{On dependency graphs and the lattice gas},
+Combin.\ Probab.\ Comput.\ \textbf{15} (2006), 253--279.
+
+\bibitem{FernandezProcacci2007}
+R.~Fern\'andez and A.~Procacci,
+\emph{Cluster expansion for abstract polymer models.\ New bounds from an old
+approach},
+Comm.\ Math.\ Phys.\ \textbf{274} (2007), 123--140.
+
+\bibitem{BFP2010}
+R.~Bissacot, R.~Fern\'andez and A.~Procacci,
+\emph{On the convergence of cluster expansions for polymer gases},
+J.~Stat.\ Phys.\ \textbf{139} (2010), 598--617.
+
+\bibitem{Faris2010}
+W.~G.~Faris,
+\emph{Combinatorics and cluster expansions},
+Probab.\ Surv.\ \textbf{7} (2010), 157--206.
+
+\bibitem{FriedliVelenik2017}
+S.~Friedli and Y.~Velenik,
+\emph{Statistical Mechanics of Lattice Systems: A Concrete Mathematical
+Introduction},
+Cambridge University Press, 2017 (Chapter~5).
+
+\bibitem{Edmonds2023}
+C.~Edmonds,
+\emph{Formal probabilistic methods for combinatorial structures using the
+Lov\'asz local lemma},
+in: CPP 2024, ACM, 2024; arXiv:2310.00513.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+in: Automated Deduction -- CADE 28, LNCS 12699, Springer, 2021, 625--635.
+
+\bibitem{mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+in: CPP 2020, ACM, 2020, 367--381.
+
+\bibitem{Eriksson2026Master}
+L.~Eriksson,
+\emph{The Master Map: An Audit-First, Attack-Resistant Navigation Guide to
+the Unconditional Solution of the 4D $SU(N)$ Yang--Mills Existence and Mass
+Gap Problem},
+ai.viXra:2602.0096, 2026.
+
+\bibitem{Eriksson2026Audit}
+L.~Eriksson,
+\emph{Mechanical Audit Experiments and Reproducibility Appendix for a
+Companion-Paper Programme on 4D $SU(N)$ Yang--Mills Existence and Mass Gap},
+ai.viXra:2602.0117, 2026.
+
+\bibitem{Eriksson2026Catalan}
+L.~Eriksson,
+\emph{A Machine-Verified Bijective Proof of the Rooted Child-Factorial
+Catalan Identity over Spanning Trees of the Complete Graph},
+ai.viXra:2607.0001, 2026.
+
+\bibitem{Eriksson2026AreaLaw}
+L.~Eriksson,
+\emph{A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized
+Cluster Expansion},
+ai.viXra:2607.0005, 2026; repository \file{paper/area-law/}.
+
+\bibitem{Eriksson2026ThermoLimit}
+L.~Eriksson,
+\emph{A Machine-Checked Thermodynamic Limit for Local Lattice Gauge Gibbs
+States},
+ai.viXra:2607.0091, 2026; repository \file{papers/thermodynamic-limit-kp/}.
+
+\bibitem{Eriksson2026C1}
+L.~Eriksson,
+\emph{Rooted-tree majorants for cluster expansions with holes} (C1 paper),
+repository \file{papers/c1-rooted-tree-majorants/}, 2026.
+
+\end{thebibliography}
+
+\end{document}
