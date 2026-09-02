@@ -63,8 +63,29 @@ theorem norm_cmp89Eq246FinePointSourceCentralComponent_le
     dsimp [growth, cmp89Eq251ContourPhaseGrowth]
     positivity
   have hmomentBound : 0 ≤ momentBound := by
+    have hrecip :
+        0 ≤ cmp89Eq249CentralStabilizedComplexReciprocalBound a rho := by
+      rw [cmp89Eq249CentralStabilizedComplexReciprocalBound]
+      have hgap :
+          0 < cmp89Eq249CentralStabilizedLowerConstant 4 a -
+            cmp89Eq249CentralStabilizedDenominatorVariationBound a rho := by
+        simpa [CMP89Eq249CentralStabilizedComplexWindow] using hstabilized
+      exact inv_nonneg.mpr hgap.le
+    have hfine :
+        0 ≤ cmp89Eq251CentralFineSymbolStripUpperBound rho := by
+      rw [cmp89Eq251CentralFineSymbolStripUpperBound,
+        cmp89Eq249CentralFineSymbolVerticalBound,
+        cmp89Eq249CentralFineSymbolRealBound]
+      positivity
+    have hsum :
+        0 ≤ cmp89Eq248ComplexNoncentralGreenSumBound_draft rho := by
+      rw [cmp89Eq248ComplexNoncentralGreenSumBound_draft,
+        cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft,
+        cmp89Eq248ComplexNoncentralGreenRadialConstant_draft,
+        cmp89Eq245EntireAverageAliasStripConstant]
+      positivity
     dsimp [momentBound, cmp89Eq246FinePointSourceMomentAmplitudeBound]
-    positivity
+    exact mul_nonneg (add_nonneg (by positivity) (mul_nonneg hfine hsum)) hrecip
   have hsourceMomentBound : 0 ≤ sourceMomentBound := by
     dsimp [sourceMomentBound, cmp89Eq248ComplexNoncentralGreenSumBound_draft,
       cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft,
@@ -133,7 +154,6 @@ theorem norm_cmp89Eq246FinePointSourceCentralComponent_le
     simp only [if_pos]
     rw [← cmp89Eq246StabilizedFinePointSourceSolutionMoment_eq]
     rw [cmp89Eq246FinePointSourceCentralNumerator_eq]
-    rfl
   rw [show cmp89Eq249CentralAliasIndex 4 L j = central by rfl, hsolution,
     norm_div, div_eq_mul_inv, ← norm_inv]
   have hmul := mul_le_mul hnumerator hrowInv (norm_nonneg _)
