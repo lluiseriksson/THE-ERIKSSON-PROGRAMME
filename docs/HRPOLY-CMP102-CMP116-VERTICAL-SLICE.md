@@ -15819,7 +15819,7 @@ retired and both exact audits enter `YangMillsCore.lean`. Counters remain
 `20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
 remains exact.
 
-### Eq. (2.46) directed common source moment (cold retry pending)
+### Eq. (2.46) directed common source moment (cold-sealed)
 
 Source checkpoint `6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9` adds the
 first joint consumer of the two cold-sealed modules above. It specializes the
@@ -15834,10 +15834,15 @@ stopped at the focal after `1500.562 s`: every dependency reached
 normalization. The exact FAIL archive is retained under
 `validation-evidence/cmp89-directed-source-moment-cold-6ae9648a-20260902-fail/`.
 Repair checkpoint `e8a1b6be6862256a75cf34f55dae94a48b2e1a37` changes only
-that step to `simpa only [g, mul_assoc]`; its cold retry remains pending.
+that step to `simpa only [g, mul_assoc]`. A second fresh Colab Pro+ CPU/high-RAM
+checkout, with no project build restoration, completed the focal at
+`8509/8509` with exit zero in `1294.027 s` and the audit with exit zero in
+`8.651 s`. The theorem uses exactly
+`{propext, Classical.choice, Quot.sound}`. The verified archive SHA-256 is
+`FCFB5EE4DB11BB2B2E783EC38F26E2B8D3D7E1724FDF75182642765557BEE7BF`.
 
-The focal and audit therefore retain their visible PRE-VALIDATION notices and
-remain outside `YangMillsCore.lean`. This checkpoint controls only the common
+The two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`. This checkpoint controls only the common
 scalar moment; it does not yet bind the separate bare-diagonal and central
 branches into the Fourier integrand, construct the continuous Green, prove
 CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,

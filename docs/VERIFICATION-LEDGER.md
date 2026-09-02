@@ -43807,3 +43807,31 @@ retry. Both PRE-VALIDATION notices remain and no audit enters
 construct the continuous Green, prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1034 (2026-09-02, **directed common source moment cold-sealed after exact retry; 20/41 unchanged**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp89-eq246-directed-source-moment-cold-v2` checked out exact repaired source
+`e8a1b6be6862256a75cf34f55dae94a48b2e1a37`, verified the official Lean
+toolchain, exact Mathlib pin, both source-blob hashes and textual guards, and
+restored no project `.lake/build` graph.
+
+The focal completed `8509/8509` jobs with exit zero in `1294.027 s`; the
+audit exited zero in `8.651 s`. The exact theorem uses only
+`{propext, Classical.choice, Quot.sound}`. The runner emitted
+`FINAL_STATUS=PASS`. Its payload SHA-256 is
+`D0DACC31DC5A527C692F6C4C8CC851FAD376D0AC23963A33FDB50AFB1FD01DC3`;
+the archived `evidence.json` SHA-256 is
+`5BC7C13B61E799E5A2DAF37D87028B1F80FC42DA1C082E36345016D96E4E6BB7`,
+and the durable archive SHA-256 is
+`FCFB5EE4DB11BB2B2E783EC38F26E2B8D3D7E1724FDF75182642765557BEE7BF`.
+The fail-closed local verifier accepts the complete two-stage PASS queue and
+all pins. The runtime was disconnected and deleted after evidence verification
+and one separately labelled hot diagnostic for the next brick.
+
+Exactly the two PRE-VALIDATION notices in this focal/audit pair are retired,
+and its audit enters `YangMillsCore.lean`. This seal still does not bind the
+separate diagonal and central branches into the Fourier integrand, construct
+the continuous Green, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.

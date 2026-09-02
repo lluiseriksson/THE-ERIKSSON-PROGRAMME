@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246DirectedEndpointPhase
 import YangMills.RG.BalabanCMP89Eq246SourceEnvelopeMoment
 
 /-!
-# PRE-VALIDATION: directed common-moment decay below CMP89 (2.46)
-
-Source is present, its `.olean` has not yet been materialized, and the result
-has not yet been verified by the compiler.
+# Directed common-moment decay below CMP89 (2.46)
 
 This leaf is the first joint consumer of the directed endpoint phase and the
 common source-envelope transport.  It specializes the abstract envelope to
