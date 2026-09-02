@@ -86,7 +86,10 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_int
           (-z) (reflect.symm (e k))
           (cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
             M target targetOwner)
-      simp only [neg_neg, Equiv.apply_symm_apply] at htargetReflection
+      have hreflect : reflect (reflect.symm (e k)) = e k :=
+        Equiv.apply_symm_apply reflect (e k)
+      rw [hreflect] at htargetReflection
+      simp only [neg_neg] at htargetReflection
       simp only [cmp99FlatComplexFibreFourierMode, PiLp.smul_apply, smul_eq_mul]
       rw [htarget, hsource, htargetReflection]
       simp only [common, term, er, e, reflect, z, targetOwner, sourceOwner,
@@ -96,7 +99,7 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_int
         common * (term n * v A) := by
       exact Equiv.sum_comp er (fun n => common * (term n * v A))
     _ = common * ((∑ n : CMP89Eq246AliasIndex d M 1, term n) * v A) := by
-      rw [Finset.mul_sum, Finset.sum_mul]
+      rw [← Finset.mul_sum, Finset.sum_mul]
     _ = common *
         (cmp89Eq246StabilizedFineToFineGreenIntegrand
           d M 1 mass a (-z) reflectedTargetEndpoint reflectedSourceEndpoint *
@@ -105,6 +108,7 @@ theorem cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_int
     _ = _ := by
       simp only [common, z, targetOwner, sourceOwner,
         reflectedTargetEndpoint, reflectedSourceEndpoint]
+      rw [mul_assoc]
 
 end
 

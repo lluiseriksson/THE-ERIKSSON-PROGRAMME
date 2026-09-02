@@ -44980,3 +44980,23 @@ momentum sign, half-open reflection, endpoint, Fourier normalization,
 hypothesis or constant.  The reflected equality itself has not yet been
 exercised, this is `HOT_DEBUG_NOT_EVIDENCE`, every PRE-VALIDATION notice
 remains, counters stay exactly `20/41`, and `TermSource = 0` remains exact.
+
+## Addendum 1079 (2026-09-02, **reflected one-fibre second hot attempt reached three explicit algebraic boundaries; no seal**)
+
+The retained-runtime retry fetched exact source
+`33a275e29b4aba46a8286d2e1c814540069b4c59` and crossed the PiLp sum
+evaluation repaired in Addendum 1078.  It stopped after `17.710 s` on three
+proof-shape obligations: the alias-reflection involution had not yet been
+rewritten into the endpoint-phase lemma, the common scalar was factored from
+the finite sum in the wrong rewrite direction, and the final displayed
+product differed only by associativity.
+
+The repair now names `reflect (reflect.symm (e k)) = e k` explicitly before
+using the sealed endpoint reflection, factors the common scalar with
+`Finset.mul_sum` in the reverse direction while distributing the terminal
+coordinate by `Finset.sum_mul`, and closes the last product with `mul_assoc`.
+No statement, base-momentum sign, half-open alias reflection, endpoint,
+normalization, hypothesis or constant changes.  The focal and audit remain
+PRE-VALIDATION and this is `HOT_DEBUG_NOT_EVIDENCE`; counters remain exactly
+`20/41`, window 15 remains compatible but unattained, and `TermSource = 0`
+remains exact.
