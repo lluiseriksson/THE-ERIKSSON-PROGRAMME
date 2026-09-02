@@ -12,7 +12,7 @@ import subprocess
 import time
 
 
-SOURCE_SHA = "82f7b49d3d556735154a482563432874c0d381ad"
+SOURCE_SHA = "e9c8e14970a491e7f013b31e07f0edd2e694eceb"
 REPO = Path("/content/hrpoly-cmp89-mass-uniform-final-aliasing-cold-v1")
 ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
