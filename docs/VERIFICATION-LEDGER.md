@@ -45224,8 +45224,9 @@ zero coarse representative discharged by exact equality.
 The two promoted modules pass the lightweight overlay-text and import-prefix
 guards and carry visible PRE-VALIDATION notices.  They have not been compiler-
 or axiom-verified and remain outside `YangMillsCore.lean`.  Retained-runtime
-runner `cmp99-full-point-source-mixed-domain-retained-hot-v1` is diagnostic
-only; even a PASS cannot retire those notices.
+runner `cmp99-full-point-source-mixed-domain-retained-hot-v2` is diagnostic
+only; it executes this focal/audit before the physical-aliasing pair, and even
+a PASS cannot retire those notices.
 
 This checkpoint does not prove CMP89 (2.42), identify the periodic solution
 with the generated regional Green, produce uniform physical `B0`/`delta0`,
@@ -45243,7 +45244,10 @@ no one-displacement reduction or arbitrary periodic quotient is introduced.
 
 The focal and one-declaration audit pass both lightweight textual guards and
 carry visible PRE-VALIDATION notices.  They have not been compiler- or
-axiom-verified and remain outside `YangMillsCore.lean`.
+axiom-verified and remain outside `YangMillsCore.lean`.  Retained-runtime
+runner `cmp99-full-point-source-mixed-domain-retained-hot-v2` stops on the
+first error across the mixed-domain and physical-aliasing pairs; it remains
+diagnostic rather than seal authority.
 
 This checkpoint does not identify the periodic solution with the internally
 generated regional Green, prove CMP89 (2.42), produce uniform physical

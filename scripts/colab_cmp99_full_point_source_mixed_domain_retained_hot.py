@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Retained-runtime diagnostic for mixed Eq. (2.46) endpoint domains.
+"""Retained-runtime diagnostic for mixed and physical Eq. (2.46) aliasing.
 
 This runner reuses only the already verified cold checkout and its build graph.
 It fetches and hash-gates one immutable PRE-VALIDATION source checkpoint,
@@ -45,11 +45,15 @@ runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
 
 
-EXPECTED_DECLARATIONS = {
+MIXED_DECLARATIONS = {
     "YangMills.RG.cmp99SourceFlatQprime_centered_eq_physical_or_add_period",
     "YangMills.RG.cmp89Eq249CentralEntireAveragePair_mixedCoarse_ne_zero",
     "YangMills.RG.cmp99SourceFlatFullPointSourceSolutionDomain_mixed",
     "YangMills.RG.cmp89Eq246PhysicalFineToFineGreenIntegrand_centered_eq_physical",
+}
+
+PHYSICAL_ALIAS_DECLARATIONS = {
+    "YangMills.RG.cmp99Flat_normalizedFiniteGridFullPhysicalGreenSample_eq_residueClass",
 }
 
 
@@ -65,7 +69,13 @@ def parse_axioms_exact(output: str, expected: int) -> None:
         raise RuntimeError(
             "AXIOM_BLOCK_COUNT_MISMATCH=" + repr((with_axioms, without_axioms))
         )
-    if names != EXPECTED_DECLARATIONS:
+    expected_names = {
+        4: MIXED_DECLARATIONS,
+        1: PHYSICAL_ALIAS_DECLARATIONS,
+    }.get(expected)
+    if expected_names is None:
+        raise RuntimeError("UNREGISTERED_AXIOM_BLOCK_COUNT=" + str(expected))
+    if names != expected_names:
         raise RuntimeError("AXIOM_DECLARATION_MISMATCH=" + repr(sorted(names)))
     for name, raw_axioms in with_axioms:
         axioms = {item for item in raw_axioms.split(",") if item}
@@ -77,25 +87,29 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v1"
-runner.SOURCE_SHA = "e64616a0209f71644e28fcf1d568aba5128e2b4a"
+runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v2"
+runner.SOURCE_SHA = "f9f3b385cd84eb5820d628481bc86d2e48cc216a"
 runner.ROOT = Path(
     "/content/hrpoly-cmp99-full-point-source-solution-domain-cold-v1"
 )
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v1-evidence"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v1-paths.txt"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v2-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean":
         "faef89f4e34061de0111c3cca4f82859569fdcee984a67be1596c3eaabcbaf26",
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomainAudit.lean":
         "fe0a22fe2d046fbc1b105a32bcf2c687e7c40e63f55b46b56a47aa7df19aec38",
+    "YangMills/RG/BalabanCMP99FullGreenPhysicalFiniteGridAliasing.lean":
+        "a7b745946fc3f72f8ea58e0983dc884e41084568f423288c88dbb4ece10a7b85",
+    "YangMills/RG/BalabanCMP99FullGreenPhysicalFiniteGridAliasingAudit.lean":
+        "ae2f0ed9096cd50f5db0833b741a35c4e6263b9f0183eb3129255f16cbc48112",
 }
 runner.QUEUE = [
     (
@@ -113,6 +127,22 @@ runner.QUEUE = [
             "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomainAudit.lean",
         ],
         4,
+    ),
+    (
+        "full_physical_finite_grid_aliasing_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing",
+        ],
+        None,
+    ),
+    (
+        "full_physical_finite_grid_aliasing_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99FullGreenPhysicalFiniteGridAliasingAudit.lean",
+        ],
+        1,
     ),
 ]
 
