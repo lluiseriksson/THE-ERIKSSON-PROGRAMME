@@ -66,6 +66,11 @@ REFLECTION_INVOLUTION_DECLARATIONS = {
     "YangMills.RG.cmp99SourceAliasIndexOneReflection_apply_apply",
 }
 
+TARGET_DUALITY_DECLARATIONS = {
+    "YangMills.RG.cmp89Eq246FinePointSourceAliasVector_negEndpoint_eq_targetPhase",
+    "YangMills.RG.cmp89Eq246FinePointSourceAliasVector_negPhysicalEndpoint_eq_targetPhase",
+}
+
 TRANSPOSE_PAIRING_REPRO = r'''import Mathlib.LinearAlgebra.Matrix.ToLin
 
 open Matrix
@@ -111,19 +116,19 @@ def parse_axioms_exact(output: str, expected: frozenset[str]) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v5"
-runner.SOURCE_SHA = "2338239c8468deaf2b129b9dacdf83f32b4c2c84"
+runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v6"
+runner.SOURCE_SHA = "f7c1174b843f63e4435b69f940c58f26a0ad621d"
 runner.ROOT = Path(
     "/content/hrpoly-cmp99-full-point-source-solution-domain-cold-v1"
 )
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v5-evidence"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v6-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v5-evidence.tar.gz"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v6-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v5-paths.txt"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v6-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean":
@@ -142,6 +147,10 @@ runner.SOURCE_BLOBS = {
         "583c12919bece2337b9e4b0d1e2a9887e4c4724e7f2f1af34705c08b10bf374a",
     "YangMills/RG/BalabanCMP99SourceAliasReflectionInvolutiveAudit.lean":
         "bba1fe8f1349a2217f83fbd87139aa1996fed2973ca46c9d33ff61be291011ec",
+    "YangMills/RG/BalabanCMP89Eq246FinePointSourceTargetDuality.lean":
+        "0ae45d6fe6cb6fe99cf130f34af2e1b0491504bf83bcfc753fb7a6e24796a2eb",
+    "YangMills/RG/BalabanCMP89Eq246FinePointSourceTargetDualityAudit.lean":
+        "1189fb9642da9c352d1dd1469205ec2f59c96495166869e53478a0213d32a1c9",
 }
 runner.QUEUE = [
     (
@@ -207,6 +216,22 @@ runner.QUEUE = [
             "YangMills/RG/BalabanCMP99SourceAliasReflectionInvolutiveAudit.lean",
         ],
         frozenset(REFLECTION_INVOLUTION_DECLARATIONS),
+    ),
+    (
+        "fine_point_source_target_duality_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP89Eq246FinePointSourceTargetDuality",
+        ],
+        None,
+    ),
+    (
+        "fine_point_source_target_duality_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP89Eq246FinePointSourceTargetDualityAudit.lean",
+        ],
+        frozenset(TARGET_DUALITY_DECLARATIONS),
     ),
 ]
 
