@@ -60,6 +60,12 @@ TRANSPOSE_PAIRING_DECLARATIONS = {
     "YangMills.RG.cmp89Eq246StabilizedAliasFullSolution_transpose_pairing",
 }
 
+REFLECTION_INVOLUTION_DECLARATIONS = {
+    "YangMills.RG.cmp99SourceCenteredAliasReflection_apply_apply",
+    "YangMills.RG.cmp99SourceCenteredAliasVectorReflection_apply_apply",
+    "YangMills.RG.cmp99SourceAliasIndexOneReflection_apply_apply",
+}
+
 
 def parse_axioms_exact(output: str, expected: frozenset[str]) -> None:
     compact = re.sub(r"\s+", "", output)
@@ -85,19 +91,19 @@ def parse_axioms_exact(output: str, expected: frozenset[str]) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v3"
-runner.SOURCE_SHA = "63267d726d20158953aef4a85909f052533b99cb"
+runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v4"
+runner.SOURCE_SHA = "2338239c8468deaf2b129b9dacdf83f32b4c2c84"
 runner.ROOT = Path(
     "/content/hrpoly-cmp99-full-point-source-solution-domain-cold-v1"
 )
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v3-evidence"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v4-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v3-evidence.tar.gz"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v4-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v3-paths.txt"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v4-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean":
@@ -112,6 +118,10 @@ runner.SOURCE_BLOBS = {
         "073d5af16e7ce73cd2fe657be5ad7dc0d264a0abc5966dd311a4dd9aa3aa3fd1",
     "YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullTransposePairingAudit.lean":
         "d4eb6582ed6b91af3a8f23420ae5a8c8308d3010fb81eedc6486cd4b0fe2b101",
+    "YangMills/RG/BalabanCMP99SourceAliasReflectionInvolutive.lean":
+        "583c12919bece2337b9e4b0d1e2a9887e4c4724e7f2f1af34705c08b10bf374a",
+    "YangMills/RG/BalabanCMP99SourceAliasReflectionInvolutiveAudit.lean":
+        "bba1fe8f1349a2217f83fbd87139aa1996fed2973ca46c9d33ff61be291011ec",
 }
 runner.QUEUE = [
     (
@@ -161,6 +171,22 @@ runner.QUEUE = [
             "YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullTransposePairingAudit.lean",
         ],
         frozenset(TRANSPOSE_PAIRING_DECLARATIONS),
+    ),
+    (
+        "alias_reflection_involution_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP99SourceAliasReflectionInvolutive",
+        ],
+        None,
+    ),
+    (
+        "alias_reflection_involution_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP99SourceAliasReflectionInvolutiveAudit.lean",
+        ],
+        frozenset(REFLECTION_INVOLUTION_DECLARATIONS),
     ),
 ]
 
