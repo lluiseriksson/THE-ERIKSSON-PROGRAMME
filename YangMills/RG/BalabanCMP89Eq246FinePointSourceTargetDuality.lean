@@ -60,9 +60,15 @@ theorem cmp89Eq246FinePointSourceAliasVector_negPhysicalEndpoint_eq_targetPhase
         (Complex.I * cmp89Eq251EntirePhase
           (cmp89Eq248EntireAliasMomentum z m.1)
           (cmp89Eq249PhysicalFineLatticeDisplacement xi endpoint)) := by
-  simpa [cmp89Eq249PhysicalFineLatticeDisplacement] using
-    (cmp89Eq246FinePointSourceAliasVector_negEndpoint_eq_targetPhase
-      z m (cmp89Eq249PhysicalFineLatticeDisplacement xi endpoint))
+  have hneg :
+      cmp89Eq249PhysicalFineLatticeDisplacement xi (fun mu => -endpoint mu) =
+        fun mu => -cmp89Eq249PhysicalFineLatticeDisplacement xi endpoint mu := by
+    funext mu
+    simp only [cmp89Eq249PhysicalFineLatticeDisplacement, Int.cast_neg]
+    ring
+  rw [hneg]
+  exact cmp89Eq246FinePointSourceAliasVector_negEndpoint_eq_targetPhase
+    z m (cmp89Eq249PhysicalFineLatticeDisplacement xi endpoint)
 
 end
 
