@@ -15717,6 +15717,22 @@ seal.  This checkpoint does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) full physical finite-grid aliasing (PRE-VALIDATION)
+
+Source checkpoint `f9f3b385cd84eb5820d628481bc86d2e48cc216a` replaces the
+centered full-G torus sample by the literal uncentered CMP99 momentum inside
+the complete two-endpoint finite-grid aliasing identity.  The proof first
+pulls the descended torus Green back to its centered representative and then
+consumes the mixed-domain telescope; it never declares the central quotient
+periodic outside a constructed solver domain.
+
+Both modules carry visible PRE-VALIDATION notices and remain outside
+`YangMillsCore.lean` pending compiler and exact-axiom evidence.  This is still
+a finite-grid identity, not the inverse-uniqueness bridge to the internally
+generated regional Green.  It does not prove CMP89 (2.42), produce uniform
+physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) arbitrary-source full-solution reflection (cold-sealed)
 
 The next orientation bridge reflects an arbitrary source through the actual

@@ -45231,3 +45231,21 @@ This checkpoint does not prove CMP89 (2.42), identify the periodic solution
 with the generated regional Green, produce uniform physical `B0`/`delta0`,
 attain window 15, discharge rows 23--24, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1090 (2026-09-03, **full physical finite-grid aliasing promoted PRE-VALIDATION; no seal**)
+
+Source checkpoint `f9f3b385cd84eb5820d628481bc86d2e48cc216a` removes the
+centered torus from the public two-endpoint finite-grid aliasing conclusion.
+It pulls the descended full Green back to the centered representative, then
+uses the mixed-domain telescope from Addendum 1089 to replace that momentum
+by the literal uncentered CMP99 sample.  Target and source remain separate;
+no one-displacement reduction or arbitrary periodic quotient is introduced.
+
+The focal and one-declaration audit pass both lightweight textual guards and
+carry visible PRE-VALIDATION notices.  They have not been compiler- or
+axiom-verified and remain outside `YangMillsCore.lean`.
+
+This checkpoint does not identify the periodic solution with the internally
+generated regional Green, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
