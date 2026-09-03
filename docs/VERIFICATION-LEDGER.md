@@ -45210,3 +45210,24 @@ their mixed-coordinate transport, identify the centered torus sample with the
 physical sample, prove CMP89 (2.42), produce uniform physical `B0` or
 `delta0`, attain window 15, discharge rows 23--24, move `20/41`, or construct
 a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1089 (2026-09-03, **mixed endpoint domain transport promoted PRE-VALIDATION; no seal**)
+
+Source checkpoint `e64616a0209f71644e28fcf1d568aba5128e2b4a` adds the
+factorwise domain needed to change the four coarse-momentum coordinates one
+at a time between the centered and literal physical representatives.  The
+central averaging pair is reconstructed from nonzero endpoint factors; it is
+not declared periodic.  The final telescope constructs both adjacent full
+Eq. (2.46) domains before invoking each coordinate period theorem, with the
+zero coarse representative discharged by exact equality.
+
+The two promoted modules pass the lightweight overlay-text and import-prefix
+guards and carry visible PRE-VALIDATION notices.  They have not been compiler-
+or axiom-verified and remain outside `YangMillsCore.lean`.  Retained-runtime
+runner `cmp99-full-point-source-mixed-domain-retained-hot-v1` is diagnostic
+only; even a PASS cannot retire those notices.
+
+This checkpoint does not prove CMP89 (2.42), identify the periodic solution
+with the generated regional Green, produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.

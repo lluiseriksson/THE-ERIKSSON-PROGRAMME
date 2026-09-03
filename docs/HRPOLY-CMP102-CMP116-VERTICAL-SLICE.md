@@ -15700,6 +15700,23 @@ does not prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
 window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
 
+### Eq. (2.46) mixed centered/physical domain transport (PRE-VALIDATION)
+
+Source checkpoint `e64616a0209f71644e28fcf1d568aba5128e2b4a` constructs
+the complete finite-solver domain for every coordinatewise mixture of the
+centered and literal physical coarse representatives.  The central averaging
+pair is proved nonzero factor by factor from the two endpoint products; no
+periodicity of that pair is assumed.  A four-coordinate telescope then
+changes one coordinate only after constructing both adjacent domains.  The
+zero coarse representative is treated by exact equality.
+
+Both modules retain visible PRE-VALIDATION notices and remain outside
+`YangMillsCore.lean`.  The retained-runtime hot runner is diagnostic only;
+fresh-checkout compiler and exact-axiom evidence is still required for a
+seal.  This checkpoint does not prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
+
 ### Eq. (2.46) arbitrary-source full-solution reflection (cold-sealed)
 
 The next orientation bridge reflects an arbitrary source through the actual
