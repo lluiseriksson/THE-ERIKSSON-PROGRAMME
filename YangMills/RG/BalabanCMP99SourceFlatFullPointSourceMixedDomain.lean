@@ -69,7 +69,7 @@ theorem cmp99SourceFlatQprime_centered_eq_physical_or_add_period
     exact div_nonneg
       (mul_nonneg (mul_nonneg (by norm_num) Real.pi_pos.le) hk0) hN.le
   have hphysicalGt :
-      -2 * Real.pi <
+      -(2 * Real.pi) <
         - (2 * Real.pi * ((ell mu).val : ℝ) / (N' : ℝ)) := by
     have hratio : ((ell mu).val : ℝ) / (N' : ℝ) < 1 :=
       (div_lt_one hN).2 hkN
@@ -79,10 +79,10 @@ theorem cmp99SourceFlatQprime_centered_eq_physical_or_add_period
           2 * Real.pi := by
       calc
         2 * Real.pi * (((ell mu).val : ℝ) / (N' : ℝ)) <
-            2 * Real.pi * 1 := (mul_lt_mul_left htwoPi).2 hratio
+            2 * Real.pi * 1 := mul_lt_mul_of_pos_left hratio htwoPi
         _ = 2 * Real.pi := mul_one _
     calc
-      -2 * Real.pi <
+      -(2 * Real.pi) <
           -(2 * Real.pi * (((ell mu).val : ℝ) / (N' : ℝ))) :=
         neg_lt_neg hscaled
       _ = - (2 * Real.pi * ((ell mu).val : ℝ) / (N' : ℝ)) := by
@@ -253,8 +253,9 @@ theorem cmp99SourceFlatFullPointSourceSolutionDomain_mixed
     let m' : {m : Fin 4 → ℤ //
         m ∈ cmp89Eq245CenteredAliasVectors 4 M} :=
       ⟨m.1, by
-        change m.1 ∈ cmp89Eq245CenteredAliasVectors 4 (M ^ 1) at m.property
-        simpa only [pow_one] using m.property⟩
+        have hmProperty := m.property
+        change m.1 ∈ cmp89Eq245CenteredAliasVectors 4 (M ^ 1) at hmProperty
+        simpa only [pow_one] using hmProperty⟩
     simpa [cmp89Eq246EntireAliasFineSymbol, pow_one, m'] using
       hmixedFine m'
   have hcentralFine :
