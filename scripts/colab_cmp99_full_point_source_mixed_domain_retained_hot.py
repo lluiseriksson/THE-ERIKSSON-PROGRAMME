@@ -66,6 +66,26 @@ REFLECTION_INVOLUTION_DECLARATIONS = {
     "YangMills.RG.cmp99SourceAliasIndexOneReflection_apply_apply",
 }
 
+TRANSPOSE_PAIRING_REPRO = r'''import Mathlib.LinearAlgebra.Matrix.ToLin
+
+open Matrix
+
+example {ι : Type*} [Fintype ι]
+    (A : Matrix ι ι ℂ) (x y source target : ι → ℂ)
+    (hx : A.mulVec x = source)
+    (hy : A.transpose.mulVec y = target) :
+    dotProduct target x = dotProduct source y := by
+  classical
+  calc
+    dotProduct target x = dotProduct (A.transpose.mulVec y) x := by rw [hy]
+    _ = dotProduct x (A.transpose.mulVec y) := dotProduct_comm _ _
+    _ = dotProduct (A.mulVec x) y := by
+      rw [Matrix.dotProduct_mulVec, Matrix.vecMul_transpose]
+    _ = dotProduct y (A.mulVec x) := dotProduct_comm _ _
+    _ = dotProduct y source := by rw [hx]
+    _ = dotProduct source y := dotProduct_comm _ _
+'''
+
 
 def parse_axioms_exact(output: str, expected: frozenset[str]) -> None:
     compact = re.sub(r"\s+", "", output)
@@ -91,19 +111,19 @@ def parse_axioms_exact(output: str, expected: frozenset[str]) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v4"
+runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v5"
 runner.SOURCE_SHA = "2338239c8468deaf2b129b9dacdf83f32b4c2c84"
 runner.ROOT = Path(
     "/content/hrpoly-cmp99-full-point-source-solution-domain-cold-v1"
 )
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v4-evidence"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v5-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v4-evidence.tar.gz"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v5-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v4-paths.txt"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v5-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean":
@@ -238,6 +258,14 @@ def retained_main() -> int:
                 "python3", "scripts/check_lean_import_prefix.py",
                 *runner.SOURCE_BLOBS.keys(),
             ],
+            cwd=runner.ROOT,
+        )
+        repro = runner.ROOT / "tmp" / "CMP89FullTransposePairingRepro.lean"
+        repro.parent.mkdir(parents=True, exist_ok=True)
+        repro.write_text(TRANSPOSE_PAIRING_REPRO, encoding="utf-8")
+        runner.run(
+            "full_transpose_pairing_mathlib_repro",
+            ["lake", "env", "lean", str(repro.relative_to(runner.ROOT))],
             cwd=runner.ROOT,
         )
         for stage, command, expected_axioms in runner.QUEUE:
