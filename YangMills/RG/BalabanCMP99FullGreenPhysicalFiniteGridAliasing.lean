@@ -76,8 +76,19 @@ theorem cmp99Flat_normalizedFiniteGridFullPhysicalGreenSample_eq_residueClass
     have htorus :=
       cmp89CenteredUnitCubeToTorus_centeredRepresentative_eq_sample ell
     rw [htorus] at hcover
-    have hmom :=
-      cmp89Eq248NegativeTwoPiTorusMomentum_centeredRepresentative ell
+    have hmom :
+        (fun mu => (cmp89Eq248CenteredCubeMomentum t mu : ℂ)) =
+          fun mu =>
+            (cmp99SourceFlatQprimeCenteredCoarseBaseMomentum ell mu : ℂ) := by
+      have hnegative :=
+        cmp89Eq248NegativeTwoPiTorusMomentum_centeredRepresentative ell
+      funext mu
+      rw [← congrFun hnegative mu]
+      simp only [t]
+      unfold cmp89Eq248CenteredCubeMomentum
+        cmp89Eq248NegativeTwoPiTorusMomentum
+      push_cast
+      ring
     rw [cmp89Eq246CenteredFullGreenCube, hmom] at hcover
     calc
       cmp89Eq246CenteredFullGreenTorus
