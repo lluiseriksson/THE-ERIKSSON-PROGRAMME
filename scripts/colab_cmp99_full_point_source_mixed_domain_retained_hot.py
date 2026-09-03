@@ -116,8 +116,8 @@ def parse_axioms_exact(output: str, expected: frozenset[str]) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v6"
-runner.SOURCE_SHA = "f7c1174b843f63e4435b69f940c58f26a0ad621d"
+runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v7"
+runner.SOURCE_SHA = "6d847ab0e386b091e8ab9843d615c39bd3b41939"
 runner.ROOT = Path(
     "/content/hrpoly-cmp99-full-point-source-solution-domain-cold-v1"
 )
@@ -132,11 +132,11 @@ runner.PATH_MANIFEST = Path(
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean":
-        "85d758f867e2b9d48efaf5c6b24eb83fca2431a23cf0ef99d4919ee396f84c09",
+        "38072a32c67ab366e5754382e2568a60b6a3c24ab2ebebc33641abd31eb0fd82",
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomainAudit.lean":
         "572e7657ca326375a4f082ae7be0492db7dec8b84a80357a71d7a0abfab45c41",
     "YangMills/RG/BalabanCMP99FullGreenPhysicalFiniteGridAliasing.lean":
-        "0ee088a3974e602aaeaec7cb332cd13c1c6f06a5f0b4dc9df7a0e0a22b008ecd",
+        "9e8cdbfb4c5f56ce0b66f8b48035bfcc8bb3f5516ca4044ca670d352942c3825",
     "YangMills/RG/BalabanCMP99FullGreenPhysicalFiniteGridAliasingAudit.lean":
         "1ea4a05cbf74806be1cf6da268e148a595bf33aa25e466e3aad94a0d865aa629",
     "YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullTransposePairing.lean":
@@ -148,7 +148,7 @@ runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceAliasReflectionInvolutiveAudit.lean":
         "bba1fe8f1349a2217f83fbd87139aa1996fed2973ca46c9d33ff61be291011ec",
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceTargetDuality.lean":
-        "0ae45d6fe6cb6fe99cf130f34af2e1b0491504bf83bcfc753fb7a6e24796a2eb",
+        "b27f0d52f0aee0f34d4ece07c2887c96c07695374b33051e399604b2903dcd3c",
     "YangMills/RG/BalabanCMP89Eq246FinePointSourceTargetDualityAudit.lean":
         "1189fb9642da9c352d1dd1469205ec2f59c96495166869e53478a0213d32a1c9",
 }
