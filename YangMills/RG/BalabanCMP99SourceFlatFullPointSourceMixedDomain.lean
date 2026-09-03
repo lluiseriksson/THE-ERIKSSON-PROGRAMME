@@ -65,13 +65,28 @@ theorem cmp99SourceFlatQprime_centered_eq_physical_or_add_period
     ⟨hcenteredLower, hcenteredUpper⟩
   have hphysicalLe :
       - (2 * Real.pi * ((ell mu).val : ℝ) / (N' : ℝ)) ≤ 0 := by
-    positivity
+    apply neg_nonpos.mpr
+    exact div_nonneg
+      (mul_nonneg (mul_nonneg (by norm_num) Real.pi_pos.le) hk0) hN.le
   have hphysicalGt :
       -2 * Real.pi <
         - (2 * Real.pi * ((ell mu).val : ℝ) / (N' : ℝ)) := by
     have hratio : ((ell mu).val : ℝ) / (N' : ℝ) < 1 :=
       (div_lt_one hN).2 hkN
-    nlinarith [Real.pi_pos]
+    have htwoPi : 0 < 2 * Real.pi := mul_pos (by norm_num) Real.pi_pos
+    have hscaled :
+        2 * Real.pi * (((ell mu).val : ℝ) / (N' : ℝ)) <
+          2 * Real.pi := by
+      calc
+        2 * Real.pi * (((ell mu).val : ℝ) / (N' : ℝ)) <
+            2 * Real.pi * 1 := (mul_lt_mul_left htwoPi).2 hratio
+        _ = 2 * Real.pi := mul_one _
+    calc
+      -2 * Real.pi <
+          -(2 * Real.pi * (((ell mu).val : ℝ) / (N' : ℝ))) :=
+        neg_lt_neg hscaled
+      _ = - (2 * Real.pi * ((ell mu).val : ℝ) / (N' : ℝ)) := by
+        ring
   have hwReal' :
       - (2 * Real.pi * ((ell mu).val : ℝ) / (N' : ℝ)) =
         cmp99SourceFlatQprimeCenteredCoarseBaseMomentum ell mu +
@@ -114,7 +129,7 @@ theorem cmp89Eq249CentralEntireAveragePair_mixedCoarse_ne_zero
       hrho hpairWindow
       (fun mu => abs_cmp99SourceFlatQprimeCenteredCoarseBaseMomentum_le_pi ell mu)
       (by intro mu; rfl)
-      (by intro mu; simpa using hrho)
+      (by intro mu; simpa [centered] using hrho)
   have hphysical :
       cmp89Eq249CentralEntireAveragePair 4 M 1 physical ≠ 0 := by
     exact cmp89Eq249CentralEntireAveragePair_physicalCoarse_ne_zero ell
@@ -237,7 +252,9 @@ theorem cmp99SourceFlatFullPointSourceSolutionDomain_mixed
     intro m hm
     let m' : {m : Fin 4 → ℤ //
         m ∈ cmp89Eq245CenteredAliasVectors 4 M} :=
-      ⟨m.1, by simpa only [pow_one] using m.2⟩
+      ⟨m.1, by
+        change m.1 ∈ cmp89Eq245CenteredAliasVectors 4 (M ^ 1) at m.property
+        simpa only [pow_one] using m.property⟩
     simpa [cmp89Eq246EntireAliasFineSymbol, pow_one, m'] using
       hmixedFine m'
   have hcentralFine :
@@ -343,9 +360,6 @@ theorem cmp89Eq246PhysicalFineToFineGreenIntegrand_centered_eq_physical
       induction s using Finset.induction_on with
       | empty =>
           congr 1
-          funext mu
-          simp [cmp99SourceFlatFullPointSourceMixedMomentumOn,
-            cmp99SourceFlatFullPointSourceMixedMomentum, centered]
       | @insert mu s hmu ih =>
           let zPhysical :=
             cmp99SourceFlatFullPointSourceMixedMomentumOn ell (insert mu s)
@@ -374,8 +388,8 @@ theorem cmp89Eq246PhysicalFineToFineGreenIntegrand_centered_eq_physical
               · simp [zPhysical, zCentered,
                   cmp99SourceFlatFullPointSourceMixedMomentumOn,
                   cmp99SourceFlatFullPointSourceMixedMomentum, hk]
-            rw [hz]
-            exact ih
+            change F zPhysical = F centered
+            exact (congrArg F hz).trans ih
           · have hz :
                 cmp89Eq248PhysicalCoordinatePeriodShift mu zPhysical =
                   zCentered := by

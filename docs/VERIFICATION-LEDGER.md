@@ -45253,3 +45253,37 @@ This checkpoint does not identify the periodic solution with the internally
 generated regional Green, prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1091 (2026-09-03, **orientation queue cold FAIL at mixed-domain focal; bounded repair prepared**)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-full-point-source-orientation-cold-v2` checked out exact source
+`f7c1174b843f63e4435b69f940c58f26a0ad621d`, restored no project
+`.lake/build` graph, verified all ten source/audit Git blobs and the exact
+Mathlib pin, and then stopped at the first focal.  The graph prefix reached
+`8657/8658`; `BalabanCMP99SourceFlatFullPointSourceMixedDomain` exited one
+after `2245.940 s`, so no audit or later target ran.
+
+The six reported goals are elaboration boundaries inside the one module: an
+unsupported `positivity` call for a negated nonnegative quotient, a product
+inequality not exposed to `linarith`, the zero imaginary part of a real cast,
+the depth-one alias-carrier coercion, one tactic after `congr` had already
+closed the base case, and a rewrite hidden behind local abbreviations.  The
+bounded repair replaces them respectively by explicit sign lemmas, positive
+scaling, a named simplification, a `change` on the carrier, removal of the
+dead tactic, and `congrArg F`.  Statements, hypotheses, constants, domains
+and the rest of the queue are unchanged.
+
+The emitted evidence payload and archive SHA-256 are
+`69BEB5CF89ECCE6BE6A126BDC0B536396DA62466B9DE38CFE8D9B085378400DE`
+and
+`A09AFE888BDAAEA2DE0F36CA487A80654414558D7B5D4362B71F579768CDBD5F`.
+The archive downloaded and independently re-hashed on Windows to the latter;
+its extracted `evidence.json` hashes to
+`2A644F5BC221B96E530E01EADCFBBC1D2A86A8DD9EB1821F190735CB30FBB05E`.
+Both are preserved under
+`validation-evidence/cmp99-full-point-source-orientation-cold-fail-f7c1174b-20260903/`.
+The retained runtime is kept only for the bounded retry.  PRE-VALIDATION
+remains visible, no seal is inferred from the successful prefix, counters
+remain exactly `20/41`, window 15 remains compatible but unattained, and
+`TermSource = 0` remains exact.

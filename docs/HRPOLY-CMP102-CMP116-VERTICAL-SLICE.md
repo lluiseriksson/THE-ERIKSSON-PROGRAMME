@@ -15746,6 +15746,14 @@ seal.  This checkpoint does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
 
+The first fresh-checkout orientation queue stopped at this focal after
+building its entire dependency prefix.  Its six goals were confined to
+explicit sign arithmetic, the depth-one carrier coercion and local
+abbreviation transport; no statement or physical dictionary failed.  The
+bounded repair is recorded with the exact FAIL evidence in Verification
+Ledger Addendum 1091.  It remains PRE-VALIDATION until a compiler and exact
+axiom retry pass.
+
 ### Eq. (2.46) full physical finite-grid aliasing (PRE-VALIDATION)
 
 Source checkpoint `f9f3b385cd84eb5820d628481bc86d2e48cc216a` replaces the
