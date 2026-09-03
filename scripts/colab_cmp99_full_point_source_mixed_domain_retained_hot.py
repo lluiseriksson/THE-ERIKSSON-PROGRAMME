@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Retained-runtime diagnostic for mixed and physical Eq. (2.46) aliasing.
+"""Retained-runtime diagnostic for mixed/physical Eq. (2.46) orientation.
 
 This runner reuses only the already verified cold checkout and its build graph.
 It fetches and hash-gates one immutable PRE-VALIDATION source checkpoint,
@@ -56,8 +56,12 @@ PHYSICAL_ALIAS_DECLARATIONS = {
     "YangMills.RG.cmp99Flat_normalizedFiniteGridFullPhysicalGreenSample_eq_residueClass",
 }
 
+TRANSPOSE_PAIRING_DECLARATIONS = {
+    "YangMills.RG.cmp89Eq246StabilizedAliasFullSolution_transpose_pairing",
+}
 
-def parse_axioms_exact(output: str, expected: int) -> None:
+
+def parse_axioms_exact(output: str, expected: frozenset[str]) -> None:
     compact = re.sub(r"\s+", "", output)
     for forbidden in ("sorryAx", "ofReduceBool", "Lean.ofReduceBool"):
         if forbidden in compact:
@@ -65,17 +69,11 @@ def parse_axioms_exact(output: str, expected: int) -> None:
     with_axioms = re.findall(r"'([^']+)'dependsonaxioms:\[([^\]]*)\]", compact)
     without_axioms = re.findall(r"'([^']+)'doesnotdependonanyaxioms", compact)
     names = {name for name, _ in with_axioms} | set(without_axioms)
-    if len(with_axioms) + len(without_axioms) != expected:
+    if len(with_axioms) + len(without_axioms) != len(expected):
         raise RuntimeError(
             "AXIOM_BLOCK_COUNT_MISMATCH=" + repr((with_axioms, without_axioms))
         )
-    expected_names = {
-        4: MIXED_DECLARATIONS,
-        1: PHYSICAL_ALIAS_DECLARATIONS,
-    }.get(expected)
-    if expected_names is None:
-        raise RuntimeError("UNREGISTERED_AXIOM_BLOCK_COUNT=" + str(expected))
-    if names != expected_names:
+    if names != expected:
         raise RuntimeError("AXIOM_DECLARATION_MISMATCH=" + repr(sorted(names)))
     for name, raw_axioms in with_axioms:
         axioms = {item for item in raw_axioms.split(",") if item}
@@ -87,19 +85,19 @@ def parse_axioms_exact(output: str, expected: int) -> None:
 
 
 runner.parse_axioms = parse_axioms_exact
-runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v2"
-runner.SOURCE_SHA = "f9f3b385cd84eb5820d628481bc86d2e48cc216a"
+runner.RUNNER_REV = "cmp99-full-point-source-mixed-domain-retained-hot-v3"
+runner.SOURCE_SHA = "63267d726d20158953aef4a85909f052533b99cb"
 runner.ROOT = Path(
     "/content/hrpoly-cmp99-full-point-source-solution-domain-cold-v1"
 )
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v2-evidence"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v3-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v2-evidence.tar.gz"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v3-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v2-paths.txt"
+    "/content/hrpoly-cmp99-full-point-source-mixed-domain-retained-hot-v3-paths.txt"
 )
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean":
@@ -110,6 +108,10 @@ runner.SOURCE_BLOBS = {
         "a7b745946fc3f72f8ea58e0983dc884e41084568f423288c88dbb4ece10a7b85",
     "YangMills/RG/BalabanCMP99FullGreenPhysicalFiniteGridAliasingAudit.lean":
         "ae2f0ed9096cd50f5db0833b741a35c4e6263b9f0183eb3129255f16cbc48112",
+    "YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullTransposePairing.lean":
+        "073d5af16e7ce73cd2fe657be5ad7dc0d264a0abc5966dd311a4dd9aa3aa3fd1",
+    "YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullTransposePairingAudit.lean":
+        "d4eb6582ed6b91af3a8f23420ae5a8c8308d3010fb81eedc6486cd4b0fe2b101",
 }
 runner.QUEUE = [
     (
@@ -126,7 +128,7 @@ runner.QUEUE = [
             "lake", "env", "lean",
             "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomainAudit.lean",
         ],
-        4,
+        frozenset(MIXED_DECLARATIONS),
     ),
     (
         "full_physical_finite_grid_aliasing_focal",
@@ -142,7 +144,23 @@ runner.QUEUE = [
             "lake", "env", "lean",
             "YangMills/RG/BalabanCMP99FullGreenPhysicalFiniteGridAliasingAudit.lean",
         ],
-        1,
+        frozenset(PHYSICAL_ALIAS_DECLARATIONS),
+    ),
+    (
+        "full_direct_transpose_pairing_focal",
+        [
+            "lake", "build",
+            "YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullTransposePairing",
+        ],
+        None,
+    ),
+    (
+        "full_direct_transpose_pairing_audit",
+        [
+            "lake", "env", "lean",
+            "YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullTransposePairingAudit.lean",
+        ],
+        frozenset(TRANSPOSE_PAIRING_DECLARATIONS),
     ),
 ]
 
