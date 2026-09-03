@@ -22,11 +22,11 @@ HOT_RUNNER = HERE / "colab_cmp99_full_point_source_orientation_hot_v6.py"
 HOT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "8bc10499f0777dc0efa605179093329402efdf35/"
+    "0a8d75cdcf3e2d17779bb8661b8b9e50dd04a819/"
     "scripts/colab_cmp99_full_point_source_mixed_domain_retained_hot.py"
 )
 HOT_RUNNER_SHA256 = (
-    "ebcc393282e0075d32ac6b2167bea9dcd82728f95a970c9b72bbd7ccaf5c4d0f"
+    "a45b8af72656116d518cfc7c8bcf97fee17e5a00a3958e3841f056130a6a9dbd"
 )
 
 with urllib.request.urlopen(HOT_RUNNER_URL, timeout=60) as response:
@@ -46,16 +46,16 @@ hot = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(hot)
 runner = hot.runner
 
-runner.RUNNER_REV = "cmp99-full-point-source-orientation-cold-v1"
-runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-orientation-cold-v1")
+runner.RUNNER_REV = "cmp99-full-point-source-orientation-cold-v2"
+runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-orientation-cold-v2")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v1-evidence"
+    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v1-paths.txt"
+    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v2-paths.txt"
 )
 
 
