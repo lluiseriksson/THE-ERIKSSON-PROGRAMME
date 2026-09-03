@@ -15674,6 +15674,35 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Declared finite route from the reflected full Eq. (2.46) synthesis to physical finite-grid aliasing
+
+The next orientation bridge is a finite chain, not an unnamed appeal to
+self-adjointness.  Its live status is:
+
+| step | exact output | status |
+|---:|---|---|
+| 0 | complete solver domains at the centered and physical coarse representatives | **cold-sealed** at source `e4f2bbc33599da7b0f7ff91deeb5307719616a25` (Ledger Addendum 1088) |
+| 1 | generated periodic Green equals the reflected outer Eq. (2.46) synthesis | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary`, **PRE-VALIDATION** |
+| 2 | target-owner mode times inverse source-owner mode equals the literal negative DFT character | `BalabanCMP99SourceFlatFullPointSourceOwnerCharacter`, **PRE-VALIDATION** |
+| 3 | both adjacent centered/physical solver domains used by one period shift | `BalabanCMP99SourceFlatFullPointSourceMixedDomain`, **PRE-VALIDATION** at `e64616a0209f781a86a3622860f28e60c867d35d` |
+| 4 | normalized physical finite DFT equals the affine residue-class sum | `BalabanCMP99FullGreenPhysicalFiniteGridAliasing`, **PRE-VALIDATION** at `f9f3b385cd84eb5820d628481bc86d2e48cc216a` |
+| 5 | exact bilinear pairing of the internally constructed direct and transposed full solves | `BalabanCMP89Eq246StabilizedAliasFullTransposePairing`, **PRE-VALIDATION** at `63267d726d20158953aef4a85909f052533b99cb` |
+| 6 | the actual half-open depth-one alias reflection is involutive | `BalabanCMP99SourceAliasReflectionInvolutive`, **PRE-VALIDATION** at `2338239c8468deaf2b129b9dacdf83f32b4c2c84` |
+| 7 | a positive target phase is the normalized point-source vector at the negated endpoint | `BalabanCMP89Eq246FinePointSourceTargetDuality`, **PRE-VALIDATION** at `f7c1174b843f63e4435b69f940c58f26a0ad621d` |
+| 8 | full endpoint-reflection identity `F(-z,-t,-s) = F(z,-s,-t)` under the already named complete solver domain | **open; next theorem** |
+| 9 | Fourier-negate the outer coarse fibre, rewrite its owner character, and instantiate step 4 at the swapped within-block endpoints | **open composition gate** |
+| 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | **open endpoint of this chain** |
+
+Steps 5--7 are intentionally separate.  Step 5 uses the two literal matrix
+equations and assumes no matrix symmetry; step 6 handles the exceptional
+endpoint of the half-open alias carrier; step 7 accounts for the sign change
+between output synthesis and normalized point-source Fourier conventions.
+Only their proved composition may establish step 8.  A prefix green through
+any earlier step is not physical finite-grid aliasing and moves neither live
+counter.  Until the PRE-VALIDATION queue and its exact axiom audits pass,
+the live state remains `20/41`, `TermSource = 0`, and window 15 compatible
+but unattained.
+
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
 The centered and literal physical finite-grid representatives now each carry
