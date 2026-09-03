@@ -18,15 +18,15 @@ import urllib.request
 
 
 HERE = Path("/content")
-HOT_RUNNER = HERE / "colab_cmp99_full_point_source_orientation_hot_v6.py"
+HOT_RUNNER = HERE / "colab_cmp99_full_point_source_orientation_hot_v7.py"
 HOT_RUNNER_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "0a8d75cdcf3e2d17779bb8661b8b9e50dd04a819/"
+    "61e6e1c3c9c0d2ee9a0451ff5fafc880522607bd/"
     "scripts/colab_cmp99_full_point_source_mixed_domain_retained_hot.py"
 )
 HOT_RUNNER_SHA256 = (
-    "a45b8af72656116d518cfc7c8bcf97fee17e5a00a3958e3841f056130a6a9dbd"
+    "cac78a2294d410915023ef7942de1e98f89955ebab462626106ac558c1aa3042"
 )
 
 with urllib.request.urlopen(HOT_RUNNER_URL, timeout=60) as response:
@@ -38,7 +38,7 @@ if hot_runner_hash != HOT_RUNNER_SHA256:
 HOT_RUNNER.write_bytes(hot_runner_source)
 
 spec = importlib.util.spec_from_file_location(
-    "cmp99_full_point_source_orientation_hot_v6", HOT_RUNNER
+    "cmp99_full_point_source_orientation_hot_v7", HOT_RUNNER
 )
 if spec is None or spec.loader is None:
     raise RuntimeError(f"cannot load hot runner: {HOT_RUNNER}")
@@ -46,16 +46,16 @@ hot = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(hot)
 runner = hot.runner
 
-runner.RUNNER_REV = "cmp99-full-point-source-orientation-cold-v2"
-runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-orientation-cold-v2")
+runner.RUNNER_REV = "cmp99-full-point-source-orientation-cold-v3"
+runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-orientation-cold-v3")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v2-evidence"
+    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v3-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v2-evidence.tar.gz"
+    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v3-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v2-paths.txt"
+    "/content/hrpoly-cmp99-full-point-source-orientation-cold-v3-paths.txt"
 )
 
 
