@@ -9,10 +9,12 @@ import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNon
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalCentralAveragePairNonvanishing
 
 /-!
-# PRE-VALIDATION: full Eq. (2.46) domains at the two finite-grid representatives
+# Cold-sealed full Eq. (2.46) domains at the two finite-grid representatives
 
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-full-point-source-solution-domain-cold-v1` verified exact source
+checkpoint `e4f2bbc33599da7b0f7ff91deeb5307719616a25`; see Verification Ledger
+Addendum 1088.
 
 The centered and literal uncentered coarse momenta used by the finite-grid
 dictionary both satisfy the complete nonvanishing contract of the stabilized

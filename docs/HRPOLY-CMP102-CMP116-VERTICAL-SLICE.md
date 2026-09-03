@@ -15674,6 +15674,32 @@ solution, perform regional periodization, prove (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge a terminal field, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 
+### Eq. (2.46) full endpoint solution domains (cold-sealed)
+
+The centered and literal physical finite-grid representatives now each carry
+the complete nonvanishing domain consumed by the explicit Eq. (2.46) solver.
+The centered branch is built from the common polistrip.  The physical branch
+separates the complete fine fibre, stabilized denominator and central row;
+the zero representative is discharged directly by the common-polistrip
+theorem rather than by an assumed period identity.
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-full-point-source-solution-domain-cold-v1` checked out exact source
+`e4f2bbc33599da7b0f7ff91deeb5307719616a25`, restored no project
+`.lake/build` graph, and verified both source blobs plus both textual guards.
+The focal completed `8638/8638` jobs with exit zero in `1456.104 s`; the exact
+two-declaration audit exited zero in `8.335 s`.  Its strict parser accepted
+exactly `{propext, Classical.choice, Quot.sound}` for both declarations.  The
+archive independently re-hashed on Windows to
+`2F3CC61B8A3A8EC374419E67463559400EED3DC88125B192BEC850274B493D7C`.
+Exactly the two PRE-VALIDATION notices are retired and the audit enters
+`YangMillsCore.lean`; see Verification Ledger Addendum 1088.
+
+This is a domain producer, not the mixed centered-to-physical transport.  It
+does not prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain
+window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
+
 ### Eq. (2.46) arbitrary-source full-solution reflection (cold-sealed)
 
 The next orientation bridge reflects an arbitrary source through the actual

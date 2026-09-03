@@ -45174,3 +45174,39 @@ remain and neither audit enters `YangMillsCore.lean`.  They do not establish
 the exact two-endpoint centered-to-physical Eq. (2.46) transport or any
 analytic bound.  Counters remain exactly `20/41`, window 15 remains
 compatible but unattained, and `TermSource = 0` remains exact.
+
+## Addendum 1088 (2026-09-03, **full point-source endpoint domains cold-sealed; no terminal-field movement**)
+
+Exact source checkpoint `e4f2bbc33599da7b0f7ff91deeb5307719616a25`
+passed fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-full-point-source-solution-domain-cold-v1`.  Runner checkpoint
+`386c3c7e15702b56f82e29b227d9d3601d1feb89` has SHA-256
+`81F5BF48421204246BCE75A23FA774CE9F28F39DC8F383639C6F013EE4043267`.
+The checkout restored no project `.lake/build` graph, used Lean
+`v4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and verified both source blobs
+before running the textual guards.
+
+The focal completed `8638/8638` jobs with exit zero in `1456.104 s`; the
+exact two-declaration audit exited zero in `8.335 s`.  The strict parser found
+exactly the centered and physical declarations, each using precisely
+`{propext, Classical.choice, Quot.sound}`.  Neither `sorryAx` nor
+`ofReduceBool` appears.  Exactly these two PRE-VALIDATION notices are retired
+and the audit enters `YangMillsCore.lean`.
+
+Colab emitted payload SHA-256
+`3F64FA6E28984057809743C31FDF6A45C8BFC7F4482F37A600A5DCC4FF2A98AF`
+and archive SHA-256
+`2F3CC61B8A3A8EC374419E67463559400EED3DC88125B192BEC850274B493D7C`.
+The downloaded archive independently re-hashed to the same value.  Its
+extracted newline-terminated `evidence.json` hashes to
+`634DCDDE18DB8E60DA2E82782ADE21D2C17515BA2BDA039C7BA69C08CA471D84`;
+the archive and JSON are preserved under
+`validation-evidence/cmp99-full-point-source-solution-domain-cold-e4f2bbc3-20260903/`.
+
+This seal establishes only the complete Eq. (2.46) solver domains at the
+centered and literal physical finite-grid representatives.  It does not prove
+their mixed-coordinate transport, identify the centered torus sample with the
+physical sample, prove CMP89 (2.42), produce uniform physical `B0` or
+`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or construct
+a `TermSource`; `TermSource = 0` remains exact.
