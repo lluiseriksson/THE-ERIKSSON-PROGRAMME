@@ -40,7 +40,7 @@ def main():
         '016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2',
         'owner_consumers_exact_gate')
     runner = base.runner
-    runner.RUNNER_REV = 'cmp99-full-green-owner-consumers-v1'
+    runner.RUNNER_REV = 'cmp99-full-green-owner-consumers-v2'
     runner.SOURCE_SHA = SOURCE
     base.SOURCE = SOURCE
     runner.ROOT = Path('/content/hrpoly-' + runner.RUNNER_REV)
@@ -81,7 +81,12 @@ def main():
     ]
 
     def parse_axioms(output, expected):
-        result = gate.exact_axioms(output, expected)
+        try:
+            result = gate.exact_axioms(output, expected)
+        except ValueError as error:
+            # The pinned base preflight expects RuntimeError on deliberate
+            # invalid-axiom fixtures; preserve the strict gate's rejection.
+            raise RuntimeError(str(error)) from error
         print('AXIOM_GATE=PASS ' + json.dumps(result, sort_keys=True), flush=True)
 
     runner.parse_axioms = parse_axioms
