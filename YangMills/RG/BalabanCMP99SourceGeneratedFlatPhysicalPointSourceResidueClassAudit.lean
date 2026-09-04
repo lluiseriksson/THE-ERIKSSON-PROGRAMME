@@ -8,4 +8,5 @@ materialized, and the result has not yet been compiler-verified.
 -/
 
 #print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
 #print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueClass

@@ -51,6 +51,18 @@ def cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
             K target (blockSite K N target) mu)
         n)
 
+/-- The generated physical point-source Green evaluated at one target and one
+matrix coordinate. Naming this scalar prevents the terminal identity from
+re-elaborating the complete specialized operator in its theorem header. -/
+def cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
+    {M Q Nc : ℕ} [NeZero M] [NeZero Q] [NeZero Nc]
+    (hM : 2 ≤ M) (depth : ℕ)
+    (source target : FinBox 4 (M ^ (depth + 1) * (2 * (M * Q))))
+    (v : SUNLieComplexCoord Nc) (A : Fin (Nc ^ 2 - 1)) : ℂ :=
+  (cmp99SourceGeneratedFlatPhysicalStep7bGreenCLM
+      (M := M) (Q := Q) (Nc := Nc) hM depth
+      (cmp99FlatComplexFibrePointSource source v)) target A
+
 /-- The generated full periodic point-source Green is the affine residue
 sum selected by the reversed endpoint-owner difference, with the remaining
 fine-block normalization shown literally. -/
@@ -66,9 +78,8 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
     (hpairWindow : CMP89Eq249CentralAveragePairComplexWindow rho)
     (source target : FinBox 4 (M ^ (depth + 1) * (2 * (M * Q))))
     (v : SUNLieComplexCoord Nc) (A : Fin (Nc ^ 2 - 1)) :
-    (cmp99SourceGeneratedFlatPhysicalStep7bGreenCLM
-        (M := M) (Q := Q) (Nc := Nc) hM depth
-        (cmp99FlatComplexFibrePointSource source v)) target A =
+    cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
+        (M := M) (Q := Q) (Nc := Nc) hM depth source target v A =
       cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
         (M := M) (Q := Q) depth
         (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
@@ -145,6 +156,7 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
       (K := Kfine) (N := N) (a := a) (rho := rho)
       ha hrho hamplitude hradius hdenWindow hpairWindow
       (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu) r
+  unfold cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
   rw [cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_outerIntegrandSum
     (M := M) (Q := Q) (Nc := Nc) hM depth source target v A]
   change (∑ ell : FinBox 4 N,
