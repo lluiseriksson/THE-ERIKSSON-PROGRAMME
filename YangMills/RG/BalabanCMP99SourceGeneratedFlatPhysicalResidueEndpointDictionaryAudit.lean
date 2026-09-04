@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary
+
+/-!
+# PRE-VALIDATION: audit for the physical arbitrary-residue endpoint dictionary
+
+This audit has not yet passed a fresh-checkout compiler and exact-axiom gate.
+-/
+
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalResidueEndpointBase
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalResidueEndpointBase_cast
+#print axioms YangMills.RG.cmp89Eq251LatticeL1Length_centered_generatedPhysicalResidueEndpoint_eq
+#print axioms YangMills.RG.cmp89SignedLatticeL1ExponentialWeight_centered_generatedPhysicalResidueEndpoint_eq
+#print axioms YangMills.RG.cmp89SignedLatticeL1ExponentialWeight_centered_generatedPhysicalResidueEndpoint_le_owner

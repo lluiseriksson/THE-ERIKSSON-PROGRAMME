@@ -45552,3 +45552,22 @@ identify the centered affine base with the literal fine-site displacement,
 prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1101 (2026-09-04, **physical arbitrary-residue endpoint dictionary promoted PRE-VALIDATION; no seal**)
+
+`BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary` combines
+the arbitrary coarse-owner residue with the two literal within-block endpoint
+displacements.  It proves that the resulting affine base casts to the literal
+`source-target` residue modulo the complete physical period `K*N`, compares
+the exact centered `l1` magnitude without identifying signed representatives
+at the even antipodal seam, and transports the resulting exponential weight
+to the already sealed diagonal owner bound without a residue-cardinality
+factor.
+
+The focal and five-declaration audit each carry one visible PRE-VALIDATION
+notice.  The exact two-file overlay passes the lightweight delimiter,
+forbidden-token and import-prefix gates, but it has not yet passed Lean or the
+axiom gate and remains outside `YangMillsCore.lean`.  It does not prove CMP89
+(2.42), produce a uniform physical `B0` or `delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.

@@ -15693,6 +15693,7 @@ self-adjointness.  Its live status is:
 | 9 | rewrite the reflected owner coefficient as the negative DFT character and instantiate step 4 at the swapped within-block endpoints | reversed-owner helper, negative physical domain and physical reflection, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
 | 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass`, **cold-sealed** at source `440afa7b0883cc77a30f2457c879b025dcde32f1` (Ledger Addendum 1097) |
 | 11 | reindex an arbitrary selected residue as the canonical `valMinAbs` representative plus the zero residue fibre, then center at the full physical period | `BalabanCMP99FlatIntegerResidueClassDictionary`, **cold-sealed** at source `ac83083f89969d147505332ea6b7ab9bbb56f2cd` (Ledger Addendum 1100) |
+| 12 | combine the selected owner residue with both within-block endpoint displacements, identify its full-period residue with literal `source-target`, and transport the exact centered `l1` weight to the diagonal owner bound | `BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary`, **PRE-VALIDATION** (Ledger Addendum 1101) |
 
 Steps 5--7 are intentionally separate.  Step 5 uses the two literal matrix
 equations and assumes no matrix symmetry; step 6 handles the exceptional
@@ -15732,6 +15733,15 @@ gate at source `ac83083f89969d147505332ea6b7ab9bbb56f2cd` seals the same focal a
 audit after the v1 source-hash instrumentation defect was corrected.  The
 seal changes no counter and does not yet provide the physical fine-endpoint
 identification required by the next consumer.
+
+Step 12 is that physical fine-endpoint identification.  It fixes the affine
+base in the source/target orientation used by step 10, proves equality only
+after casting to the complete period `K*N`, and then compares exact `l1`
+magnitudes so that the even antipodal seam is not silently assigned a signed
+representative.  The final theorem reuses the sealed diagonal owner bound and
+introduces no residue-cardinality factor.  This pair remains PRE-VALIDATION
+and outside `YangMillsCore.lean` until its focal and five-declaration audit
+pass; it proves neither CMP89 (2.42) nor a Green coefficient bound.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
