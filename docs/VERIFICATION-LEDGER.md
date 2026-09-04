@@ -45679,3 +45679,36 @@ PRE-VALIDATION; its single bounded hot diagnostic runs in the older retained
 checkout, leaving the cold checkout unchanged. No uniform B0, attainment of
 window 15, terminal obligation, or TermSource instance is claimed.
 Counters remain `20/41`, `TermSource = 0`.
+
+## Addendum 1106 (2026-09-04, full-G arbitrary-residue hot diagnosis; NOT a cold seal)
+
+Step 13 hot v1, source `c771ef4622e5dd62135ccb0a873ecf98a241f94f`,
+failed at `BalabanCMP99FullGreenArbitraryResidueBound.lean:96:39` with
+the final coordinate equality against `cmp89SignedLatticeResidueAffineMap`
+still folded. Focal exit 1 in 231.346234883 s; audit was not run.
+The failed archive is preserved unchanged, SHA256
+`B20BA767A2B805F4D9B7CB520ABB7483F4A4C2FB7CAFC97363F8DC314883E6EB`.
+
+Source-only repair `eef777d32878297d9e143cbfaff82c290fbb9be1` adds that
+definition to the existing `simp only` list. No statement, constant or
+hypothesis changed. Runner `04fba888fe51605c970dbe9ebe4822aa1d026cfb`
+(Git-blob SHA256 `6C5B28724A54AE56D0916FF6148075CBA0384BB6B3092D13BDEE05D874591BBD`)
+ran once in the older retained diagnostic checkout, leaving the preceding
+physical-endpoint cold checkout unchanged.
+
+Hot v2 PASS: focal 8639 jobs, exit 0, 23.775265417 s; audit exit 0,
+22.686177701 s. All four exact declarations use precisely
+`{propext, Classical.choice, Quot.sound}`. This is not a warning-free claim:
+the focal includes replayed dependency warnings and a `ring_nf` suggestion.
+Downloaded archive SHA256:
+`9FA8334DBE2B1C16CF3E4267E4C4EC0616D8A99C4D25EF691C18FE8E66FC6F57`.
+All six child-log hashes, source fields and zero exits were checked locally;
+all five v1 child-log hashes were checked too. Durable packages are under
+`validation-evidence/cmp99-full-green-residue-hot-v1-fail-c771ef46-20260904/`
+and `validation-evidence/cmp99-full-green-residue-hot-v2-pass-eef777d3-20260904/`.
+
+The Colab runtime was disconnected and deleted at approximately 20:47 UTC
+after downloads and hash verification. PRE-VALIDATION stays on both step-13
+modules; no root import or cold-seal claim is added. Next: a fresh-checkout
+step-13 focal/audit gate with complete child logs packaged directly.
+Counters stay `20/41`, `TermSource = 0`; window 15 remains unattained.
