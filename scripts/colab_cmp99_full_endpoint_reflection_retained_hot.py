@@ -42,6 +42,13 @@ hot = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(hot)
 runner = hot.runner
 
+# `Matrix.ToLin` exposes the complex type but not its algebra instances in the
+# pinned Mathlib graph.  Keep the inherited repro, but make its standalone
+# import boundary explicit before any project focal is attempted.
+hot.TRANSPOSE_PAIRING_REPRO = (
+    "import Mathlib.Data.Complex.Basic\n" + hot.TRANSPOSE_PAIRING_REPRO
+)
+
 runner.RUNNER_REV = "cmp99-full-endpoint-reflection-retained-hot-v1"
 runner.SOURCE_SHA = "5e515584cf1975c947424945bc8cc587192bcf57"
 runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-orientation-cold-v3")
