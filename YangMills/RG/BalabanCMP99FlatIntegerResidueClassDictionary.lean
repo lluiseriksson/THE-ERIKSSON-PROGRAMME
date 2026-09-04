@@ -45,18 +45,22 @@ def cmp99FlatIntegerResidueClassTranslationEquiv
     funext mu
     have hn := congrFun n.property mu
     change (((n.1 mu : ℤ) : ZMod N)) = 0 at hn
+    have hr := congrFun (cmp99FlatIntegerResidue_representative r) mu
+    change (((cmp99FlatIntegerResidueRepresentative r mu : ℤ) : ZMod N)) = r mu at hr
     change
       (((cmp99FlatIntegerResidueRepresentative r mu + n.1 mu : ℤ) :
           ZMod N)) = r mu
-    simpa only [Int.cast_add, hn, ZMod.coe_valMinAbs, add_zero]⟩
+    simpa only [Int.cast_add, hn, add_zero] using hr⟩
   invFun n := ⟨n.1 - cmp99FlatIntegerResidueRepresentative r, by
     funext mu
     have hn := congrFun n.property mu
     change (((n.1 mu : ℤ) : ZMod N)) = r mu at hn
+    have hr := congrFun (cmp99FlatIntegerResidue_representative r) mu
+    change (((cmp99FlatIntegerResidueRepresentative r mu : ℤ) : ZMod N)) = r mu at hr
     change
       (((n.1 mu - cmp99FlatIntegerResidueRepresentative r mu : ℤ) :
           ZMod N)) = 0
-    simpa only [Int.cast_sub, hn, ZMod.coe_valMinAbs, sub_self]⟩
+    simpa only [Int.cast_sub, hn, hr, sub_self]⟩
   left_inv n := by
     apply Subtype.ext
     funext mu
