@@ -15682,16 +15682,16 @@ self-adjointness.  Its live status is:
 | step | exact output | status |
 |---:|---|---|
 | 0 | complete solver domains at the centered and physical coarse representatives | **cold-sealed** at source `e4f2bbc33599da7b0f7ff91deeb5307719616a25` (Ledger Addendum 1088) |
-| 1 | generated periodic Green equals the reflected outer Eq. (2.46) synthesis | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary`, **PRE-VALIDATION** |
-| 2 | target-owner mode times inverse source-owner mode equals the literal negative DFT character | `BalabanCMP99SourceFlatFullPointSourceOwnerCharacter`, **PRE-VALIDATION** |
+| 1 | generated periodic Green equals the reflected outer Eq. (2.46) synthesis | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary`, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
+| 2 | target-owner mode times inverse source-owner mode equals the literal negative DFT character | `BalabanCMP99SourceFlatFullPointSourceOwnerCharacter`, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
 | 3 | both adjacent centered/physical solver domains used by one period shift | `BalabanCMP99SourceFlatFullPointSourceMixedDomain`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
 | 4 | normalized physical finite DFT equals the affine residue-class sum | `BalabanCMP99FullGreenPhysicalFiniteGridAliasing`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
 | 5 | exact bilinear pairing of the internally constructed direct and transposed full solves | `BalabanCMP89Eq246StabilizedAliasFullTransposePairing`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
 | 6 | the actual half-open depth-one alias reflection is involutive | `BalabanCMP99SourceAliasReflectionInvolutive`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
 | 7 | a positive target phase is the normalized point-source vector at the negated endpoint | `BalabanCMP89Eq246FinePointSourceTargetDuality`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
-| 8 | full endpoint-reflection identity `F(-z,-t,-s) = F(z,-s,-t)` under the already named complete solver domains | `BalabanCMP89Eq246FullEndpointReflection`, **PRE-VALIDATION** |
-| 9 | rewrite the reflected owner coefficient as the negative DFT character and instantiate step 4 at the swapped within-block endpoints | reversed-owner helper `BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter` **PRE-VALIDATION**; composition gate open |
-| 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | **open endpoint of this chain** |
+| 8 | full endpoint-reflection identity `F(-z,-t,-s) = F(z,-s,-t)` under the already named complete solver domains | `BalabanCMP89Eq246FullEndpointReflection`, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
+| 9 | rewrite the reflected owner coefficient as the negative DFT character and instantiate step 4 at the swapped within-block endpoints | reversed-owner helper, negative physical domain and physical reflection, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
+| 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass`, **PRE-VALIDATION** |
 
 Steps 5--7 are intentionally separate.  Step 5 uses the two literal matrix
 equations and assumes no matrix symmetry; step 6 handles the exceptional
@@ -15699,20 +15699,22 @@ endpoint of the half-open alias carrier; step 7 accounts for the sign change
 between output synthesis and normalized point-source Fourier conventions.
 Only their proved composition may establish step 8.  A prefix green through
 any earlier step is not physical finite-grid aliasing and moves neither live
-counter.  The fresh-checkout queue through step 7 and all five exact audits
-passed at source `6d847ab0e386b091e8ab9843d615c39bd3b41939`; the retained
-evidence is recorded in Ledger Addendum 1093.  This verified prefix does not
-complete steps 8--10: the live state remains `20/41`, `TermSource = 0`, and
-window 15 compatible but unattained.
+counter.  Steps 8--9 and the required source-specific compositions passed at
+source `4d61fbd43d48887da9009ba92941b83673acfaa0`; the retained evidence is
+recorded in Ledger Addendum 1094.  Step 10 is now promoted separately and
+remains PRE-VALIDATION.  The live state remains `20/41`, `TermSource = 0`,
+and window 15 compatible but unattained.
 
-The promoted step-8 theorem composes the direct/transpose pairing, the actual
+The sealed step-8 theorem composes the direct/transpose pairing, the actual
 half-open alias involution and the fine-point-source target dictionary.  It
 accepts only the two already named complete solver domains at `z` and `-z`;
 no Green symmetry or inverse identity is supplied as a premise.  The adjacent
 step-9 helper rewrites the target-owner/source-owner coefficient in the exact
 negative-character orientation without identifying half-open natural
-representatives.  Both source/audit pairs remain PRE-VALIDATION and outside
-`YangMillsCore.lean` until compiler and exact-axiom checks pass.  This
+representatives.  Step 10 composes these sealed identities with physical
+finite-grid aliasing and keeps the fine-block normalization `Kfine^-4`
+literal.  Its source and audit remain PRE-VALIDATION and outside
+`YangMillsCore.lean` until a fresh compiler and exact-axiom gate passes.  This
 promotion does not move `20/41`, attain window 15 or construct a `TermSource`.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)

@@ -1,0 +1,153 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary
+import YangMills.RG.BalabanCMP99SourceFlatFullPointSourcePhysicalEndpointReflection
+import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter
+import YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing
+
+/-!
+# PRE-VALIDATION: generated point-source Green as one affine residue-class sum
+
+This is route step 10.  It composes the cold-sealed outer
+synthesis, endpoint reflection and character dictionaries with the literal
+physical finite-grid aliasing theorem.  The fine-block normalization
+`Kfine⁻⁴` remains visible; it is not absorbed into a constant.
+
+This finite identity does not prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge a terminal field, move `20/41`,
+or construct a `TermSource`.
+-/
+
+namespace YangMills.RG
+
+open scoped BigOperators
+
+noncomputable section
+
+/-- The generated full periodic point-source Green is the affine residue
+sum selected by the reversed endpoint-owner difference, with the remaining
+fine-block normalization shown literally. -/
+theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueClass
+    {M Q Nc : ℕ} [NeZero M] [NeZero Q] [NeZero Nc]
+    (hM : 2 ≤ M) (depth : ℕ) {rho : ℝ}
+    (hrho : 0 < rho)
+    (hamplitude : rho * Real.exp rho ≤ 1 / 6)
+    (hradius : CMP89Eq249UniformNoncentralComplexRadiusCondition rho)
+    (hdenWindow : CMP89Eq249CentralStabilizedComplexWindow
+      (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
+        (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0) rho)
+    (hpairWindow : CMP89Eq249CentralAveragePairComplexWindow rho)
+    (source target : FinBox 4 (M ^ (depth + 1) * (2 * (M * Q))))
+    (v : SUNLieComplexCoord Nc) (A : Fin (Nc ^ 2 - 1)) :
+    (cmp99SourceGeneratedFlatPhysicalStep7bGreenCLM
+        (M := M) (Q := Q) (Nc := Nc) hM depth
+        (cmp99FlatComplexFibrePointSource source v)) target A =
+      ((((M ^ (depth + 1) : ℕ) : ℂ) ^ 4)⁻¹) *
+        (∑' n : CMP99FlatIntegerResidueClass 4 (2 * (M * Q))
+            (cmp99FinBoxZModEquiv 4 (2 * (M * Q))
+                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) source) -
+              cmp99FinBoxZModEquiv 4 (2 * (M * Q))
+                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) target)),
+          cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient
+            (M ^ (depth + 1)) 1 0
+            (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
+              (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0)
+            (fun mu =>
+              -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+                (M ^ (depth + 1)) source
+                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) source) mu)
+            (fun mu =>
+              -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+                (M ^ (depth + 1)) target
+                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) target) mu)
+            n) * v A := by
+  let Kfine : ℕ := M ^ (depth + 1)
+  let N : ℕ := 2 * (M * Q)
+  let a : ℝ :=
+    cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
+      (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0
+  let targetOwner : FinBox 4 N := blockSite Kfine N target
+  let sourceOwner : FinBox 4 N := blockSite Kfine N source
+  let targetDisp : Fin 4 → ℤ := fun mu =>
+    cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+      Kfine target targetOwner mu
+  let sourceDisp : Fin 4 → ℤ := fun mu =>
+    cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+      Kfine source sourceOwner mu
+  let r : CMP99FlatZModBox 4 N :=
+    cmp99FinBoxZModEquiv 4 N sourceOwner -
+      cmp99FinBoxZModEquiv 4 N targetOwner
+  letI : NeZero Kfine := by
+    dsimp [Kfine]
+    infer_instance
+  letI : NeZero N := by
+    dsimp [N]
+    infer_instance
+  have ha : 0 < a := by
+    simpa [a] using cmp99SourceGeneratedFullComplexA_pos_physical M depth
+  have hreflect : ∀ ell : FinBox 4 N,
+      cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+          (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+          (fun mu => -targetDisp mu) (fun mu => -sourceDisp mu) =
+        cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+          (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+          (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu) := by
+    intro ell
+    exact cmp99SourceFlatFullPointSourcePhysicalFineToFineGreenIntegrand_neg_swap
+      ha hrho.le hamplitude hradius hdenWindow hpairWindow
+      ell targetDisp sourceDisp
+  have hchar : ∀ ell : FinBox 4 N,
+      cmp99FlatFourierMode ell targetOwner *
+          (cmp99FlatFourierMode ell sourceOwner)⁻¹ =
+        cmp99FlatZModFourierCharacter
+          (-(cmp99FinBoxZModEquiv 4 N ell)) r := by
+    intro ell
+    simpa [r] using
+      cmp99FlatFourierMode_target_mul_source_inv_eq_reversedOwnerDifferenceCharacter
+        ell targetOwner sourceOwner
+  let endpoint : FinBox 4 N → ℂ := fun ell =>
+    cmp99FlatZModFourierCharacter
+        (-(cmp99FinBoxZModEquiv 4 N ell)) r *
+      cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+        (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+        (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu)
+  have hbox :
+      (∑ ell : FinBox 4 N, endpoint ell) =
+        ∑ k : CMP99FlatZModBox 4 N,
+          cmp99FlatZModFourierCharacter (-k) r *
+            cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+              (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
+                ((cmp99FinBoxZModEquiv 4 N).symm k))
+              (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu) := by
+    simpa [endpoint] using
+      (Equiv.sum_comp (cmp99FinBoxZModEquiv 4 N)
+        (fun k : CMP99FlatZModBox 4 N =>
+          cmp99FlatZModFourierCharacter (-k) r *
+            cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+              (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
+                ((cmp99FinBoxZModEquiv 4 N).symm k))
+              (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu)))
+  have halias :=
+    cmp99Flat_normalizedFiniteGridFullPhysicalGreenSample_eq_residueClass
+      (K := Kfine) (N := N) (a := a) (rho := rho)
+      ha hrho hamplitude hradius hdenWindow hpairWindow
+      (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu) r
+  rw [cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_outerIntegrandSum
+    (M := M) (Q := Q) (Nc := Nc) hM depth source target v A]
+  change (∑ ell : FinBox 4 N,
+      ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) *
+          cmp99FlatFourierMode ell targetOwner *
+          (cmp99FlatFourierMode ell sourceOwner)⁻¹) *
+        cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+          (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+          (fun mu => -targetDisp mu) (fun mu => -sourceDisp mu)) * v A) = _
+  simp_rw [hchar, hreflect]
+  change (∑ ell : FinBox 4 N,
+      ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) * endpoint ell) * v A)) = _
+  rw [← Finset.sum_mul, ← Finset.mul_sum, hbox]
+  rw [← halias]
+  dsimp [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp, r]
+  push_cast
+  ring
+
+end
+
+end YangMills.RG

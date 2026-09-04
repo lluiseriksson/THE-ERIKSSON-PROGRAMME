@@ -45382,3 +45382,18 @@ audits enter `YangMillsCore.lean`. This seal does not compose the affine
 residue classes, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
 attain window 15, discharge rows 23--24, move `20/41`, or construct a
 `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1095 (2026-09-04, **generated physical residue-class composition promoted PRE-VALIDATION; no seal**)
+
+`BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass` composes the
+cold-sealed generated outer synthesis, endpoint reflection, reversed-owner
+character and physical finite-grid aliasing into one source-specific affine
+residue-class identity. The fine-block normalization `Kfine^-4` remains
+literal and is not absorbed into a constant. The theorem accepts no free
+solved Green or endpoint-reflection equality.
+
+The source and one-declaration audit carry visible PRE-VALIDATION notices and
+remain outside `YangMillsCore.lean` pending a fresh compiler and exact-axiom
+gate. This promotion does not prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
