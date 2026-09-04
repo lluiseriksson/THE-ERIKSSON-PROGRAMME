@@ -4,7 +4,7 @@ import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter
 import YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing
 
 /-!
-# PRE-VALIDATION: generated point-source Green as one affine residue-class sum
+# Generated point-source Green as one affine residue-class sum
 
 This is route step 10.  It composes the cold-sealed outer
 synthesis, endpoint reflection and character dictionaries with the literal

@@ -45413,3 +45413,72 @@ gate.  This promotion does not yet identify the centered affine base with
 the literal source-target fine displacement, prove CMP89 (2.42), produce
 uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1097 (2026-09-04, **generated physical residue-class composition cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `440afa7b0883cc77a30f2457c879b025dcde32f1`
+passed the fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-generated-residue-class-cold-v3`.  The runner was published at
+`2d17cb5bc2517a642af3617ca598fb38cdc27112`; its Git-blob SHA-256 was
+`92895A02D1B09BB981E64255BD78779AF6034EC9FEA7CCEA49E543A7CC39F979`.
+Lean `4.29.0-rc6` came from the pinned Linux asset with SHA-256
+`BF3E0A4025E47A0BEA9ED907D12DCCCD3D3590B1D8AD6C55A915298B01AD9D3E`,
+and Mathlib resolved exactly to
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal exited zero in `2464.928 s` with output SHA-256
+`B5B2FB9CA1485E580E2BFFA548764E00DC445206BBE0058888734C66EC513A7B`.
+The four-declaration audit exited zero in `23.404 s` with output SHA-256
+`50CE6588CA0870EE81D274B1452726AB823CE6869502DF2987F67FF785C78772`.
+Every printed axiom block was a subset of
+`{propext, Classical.choice, Quot.sound}`; neither `sorryAx` nor
+`ofReduceBool` appeared.  The evidence JSON hashes to
+`95BE3E9EAAB2A7D8022D09C25EE296415402B3018C9DE1A51517FD2B621229B2`,
+and the downloaded archive independently re-hashed on Windows to
+`422A0E19ED0C52A2EEEEB5AC64796FCA71B65CCB54994B603DE850FE770EA19B`.
+Both are preserved under
+`validation-evidence/cmp99-generated-residue-class-cold-440afa7b-20260904/`.
+
+The earlier v2 run is retained separately as `BLOCKED-INSTRUMENTATION`: its
+focal and audit subprocesses exited zero, but the sentinel expected one
+axiom declaration while the audit contains four.  Its failure archive SHA-256
+is `DCB77B86489709AE7EE494F5EA5531968C3B00A04E46990173E98EDB4D190CF6`;
+v3 corrects only that instrumentation contract.
+
+Exactly the two PRE-VALIDATION notices in the generated-residue-class
+focal/audit pair are retired and the audit enters `YangMillsCore.lean`.
+This seal proves only route step 10.  It does not seal the arbitrary-residue
+dictionary of step 11, prove CMP89 (2.42), produce uniform physical
+`B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
+construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1098 (2026-09-04, **arbitrary residue-class dictionary exact hot PASS; PRE-VALIDATION retained**)
+
+The retained Colab Pro+ high-RAM checkout tested exact PRE-VALIDATION source
+`9c9b461ba55fe918c3e402744600e365a04c2312` with runner
+`cmp99-arbitrary-residue-dictionary-hot-v7`, published at
+`3cb7a526b18d6566bf2621d0a3aeacc9130e3406` with Git-blob SHA-256
+`B017C953D851A5BC0EE5CA997A8355F9C533069FBF4DCDC5FE140F6C01A80A23`.
+The focal exited zero in `17.208 s`; the audit exited zero in `9.761 s`.
+Its eight axiom blocks were, in audit order:
+
+1. `{propext}`;
+2. `{propext, Quot.sound}`;
+3. `{propext, Quot.sound}`;
+4. through 8. `{propext, Classical.choice, Quot.sound}`.
+
+The first launch was `BLOCKED-INSTRUMENTATION` because the terminal process
+did not inherit the already installed pinned toolchain in `PATH`.  The
+subsequent bounded iterations exposed only elaboration defects in the new
+equivalence proof: a proof after `congr` whose goal was already closed, then
+casts hidden behind `cmp99FlatIntegerResidue`, and finally the canonical
+representative equality not named explicitly.  The passing source fixes
+those sites by citing `cmp99FlatIntegerResidue_representative` coordinatewise;
+it changes no statement, bound or convention.
+
+This is `HOT_DEBUG_NOT_EVIDENCE`, not a cold seal.  Both PRE-VALIDATION
+notices remain and the audit stays outside `YangMillsCore.lean`.  It does not
+identify the centered affine base with the literal fine displacement, prove
+CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.

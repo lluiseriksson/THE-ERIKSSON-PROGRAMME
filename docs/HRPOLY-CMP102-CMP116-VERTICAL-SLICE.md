@@ -15691,8 +15691,8 @@ self-adjointness.  Its live status is:
 | 7 | a positive target phase is the normalized point-source vector at the negated endpoint | `BalabanCMP89Eq246FinePointSourceTargetDuality`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
 | 8 | full endpoint-reflection identity `F(-z,-t,-s) = F(z,-s,-t)` under the already named complete solver domains | `BalabanCMP89Eq246FullEndpointReflection`, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
 | 9 | rewrite the reflected owner coefficient as the negative DFT character and instantiate step 4 at the swapped within-block endpoints | reversed-owner helper, negative physical domain and physical reflection, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
-| 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass`, **PRE-VALIDATION** |
-| 11 | reindex an arbitrary selected residue as the canonical `valMinAbs` representative plus the zero residue fibre, then center at the full physical period | `BalabanCMP99FlatIntegerResidueClassDictionary`, **PRE-VALIDATION** |
+| 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass`, **cold-sealed** at source `440afa7b0883cc77a30f2457c879b025dcde32f1` (Ledger Addendum 1097) |
+| 11 | reindex an arbitrary selected residue as the canonical `valMinAbs` representative plus the zero residue fibre, then center at the full physical period | `BalabanCMP99FlatIntegerResidueClassDictionary`, exact hot diagnostic PASS at source `9c9b461ba55fe918c3e402744600e365a04c2312`; **PRE-VALIDATION remains** (Ledger Addendum 1098) |
 
 Steps 5--7 are intentionally separate.  Step 5 uses the two literal matrix
 equations and assumes no matrix symmetry; step 6 handles the exceptional
@@ -15702,9 +15702,10 @@ Only their proved composition may establish step 8.  A prefix green through
 any earlier step is not physical finite-grid aliasing and moves neither live
 counter.  Steps 8--9 and the required source-specific compositions passed at
 source `4d61fbd43d48887da9009ba92941b83673acfaa0`; the retained evidence is
-recorded in Ledger Addendum 1094.  Steps 10--11 are now promoted separately
-and remain PRE-VALIDATION.  The live state remains `20/41`, `TermSource = 0`,
-and window 15 compatible but unattained.
+recorded in Ledger Addendum 1094.  Step 10 is cold-sealed separately at
+source `440afa7b0883cc77a30f2457c879b025dcde32f1` (Ledger Addendum 1097);
+step 11 remains PRE-VALIDATION.  The live state remains `20/41`,
+`TermSource = 0`, and window 15 compatible but unattained.
 
 The sealed step-8 theorem composes the direct/transpose pairing, the actual
 half-open alias involution and the fine-point-source target dictionary.  It
@@ -15714,14 +15715,18 @@ step-9 helper rewrites the target-owner/source-owner coefficient in the exact
 negative-character orientation without identifying half-open natural
 representatives.  Step 10 composes these sealed identities with physical
 finite-grid aliasing and keeps the fine-block normalization `Kfine^-4`
-literal.  Its source and audit remain PRE-VALIDATION and outside
-`YangMillsCore.lean` until a fresh compiler and exact-axiom gate passes.  This
-promotion does not move `20/41`, attain window 15 or construct a `TermSource`.
+literal.  At source `440afa7b0883cc77a30f2457c879b025dcde32f1` its fresh
+compiler and exact-axiom gate passed, so its audit enters
+`YangMillsCore.lean`; this seal does not move `20/41`, attain window 15 or
+construct a `TermSource`.
 Step 11 makes the arbitrary-residue convention explicit: the signed lift is
 `ZMod.valMinAbs`, residue zero is reused through an exact translation
 equivalence, and only the existing magnitude theorem may erase the even
 antipodal sign.  It is a reindexing/bound dictionary, not the physical
-fine-endpoint identification required by the next consumer.
+fine-endpoint identification required by the next consumer.  Its focal and
+eight-declaration audit pass in the retained runtime at source
+`9c9b461ba55fe918c3e402744600e365a04c2312`, but this is hot diagnostic
+evidence only: PRE-VALIDATION remains until a fresh-checkout seal.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 

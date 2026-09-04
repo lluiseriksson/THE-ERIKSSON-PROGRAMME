@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass
 
 /-!
-# PRE-VALIDATION: audit of generated physical point-source residue class
+# Audit of generated physical point-source residue class
 
-The source draft is present, its promoted `.olean` has not yet been
-materialized, and the result has not yet been compiler-verified.
+Fresh-checkout compiler verification of this four-declaration audit is
+recorded in `docs/VERIFICATION-LEDGER.md`, Addendum 1097.
 -/
 
 #print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
