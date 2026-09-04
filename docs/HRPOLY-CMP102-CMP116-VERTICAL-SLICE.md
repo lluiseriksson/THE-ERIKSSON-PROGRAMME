@@ -15768,6 +15768,16 @@ The existing arbitrary-residue theorem therefore has precisely the needed
 input. For the norm of the complex sum, use the already sealed full-G
 summability theorem and its restriction to the residue subtype.
 
+For step 14, instantiate those two integer endpoints exactly as they occur
+in `cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum`: the Green's
+target argument is `-sourceDisp`, and its source argument is `-targetDisp`.
+Their difference is `targetDisp - sourceDisp`, so its affine residue base is
+the base in step 12 by pointwise integer arithmetic. This is an equality of
+the displacement used by the bound, not an identification of two Greens
+from equal displacements. Do not replace the reflected/swapped pair by
+`(targetDisp, sourceDisp)` using an unproved translation-invariance claim.
+The existing literal two-endpoint bound already applies to the correct pair.
+
 The expected output of step 15 is the literal coefficient
 `K^-4 * D * (2 / (1 - exp(-rho)))^4 * exp(2*rho)` multiplying
 `exp(-rho * ownerDistance) * norm(v A)`. Every factor remains visible.
