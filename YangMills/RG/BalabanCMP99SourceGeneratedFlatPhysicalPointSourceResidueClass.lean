@@ -238,11 +238,23 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
     push_cast
     rw [mul_pow, mul_inv_rev]
     ring
-  rw [hscale, mul_assoc, halias]
-  unfold cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
-  dsimp [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp, r]
-  push_cast
-  ring
+  rw [hscale]
+  calc
+    _ = (((Kfine : ℂ) ^ 4)⁻¹) *
+          ((((N : ℂ) ^ 4)⁻¹) *
+            ∑ k : CMP99FlatZModBox 4 N,
+              cmp99FlatZModFourierCharacter (-k) r *
+                cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+                  (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum
+                    ((cmp99FinBoxZModEquiv 4 N).symm k))
+                  (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu)) * v A := by
+            ring
+    _ = _ := by
+      rw [halias]
+      unfold cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
+      dsimp [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp, r]
+      push_cast
+      ring
 
 end
 
