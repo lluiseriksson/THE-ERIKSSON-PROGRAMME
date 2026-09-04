@@ -3,10 +3,10 @@ import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionPointSourceInverse
 import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalCentralAveragePairNonvanishing
 
 /-!
-# PRE-VALIDATION: source-flow full Green on a fine point source
+# Cold-sealed source-flow full Green on a fine point source
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This source is not yet imported by the root aggregator.
+Cold-verified in Colab at source 098cf3dfad1095c57bdc1d1dc5bc6b13252174d5.
+The 8724-job focal and exact audit passed; see Ledger Addendum 1109.
 
 F1 uses the already constructed source-flow left inverse of the literal
 full-box precision. No generated coefficient is identified with a source

@@ -15832,10 +15832,10 @@ coefficient additionally contains `R^4`. Do not apply that factor twice.
 
 | next gate | exact output | available input / remaining work |
 |---|---|---|
-| F1 | the full Eq. (2.46) fine point-source solution equals the internally constructed source-flow Green on the same carrier | specialize `cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply` with `cmp99SourceSeparatedSourceFlowFlatPhysicalStep7bGreenCLM_comp_precision`; noncentral mass-zero, stabilized-denominator and central averaging-pair nonvanishing are already named lemmas. Do not use the final `StabilizedFieldCLM_eq_green_comp`, whose endpoint contains `Q'^*`. |
+| F1 | the full Eq. (2.46) fine point-source solution equals the internally constructed source-flow Green on the same carrier | **Cold-sealed**, source `098cf3df`, Ledger Addendum 1109: `cmp99SourceFlowFullPointSourceSolution_eq_green_apply`, by inverse uniqueness with internally supplied nonvanishing. No `Q'^*`, generated/source coefficient identification, or supplied point-source equality. |
 | F2 | source-flow full Green equals `R^-4` times the literal reflected/swapped affine residue sum | reuse the generic outer synthesis, endpoint reflection, owner character and finite-grid aliasing; retain independent `L,Kloc,Q,j`. The generated residue-class certificate fixes `N=2*(M*Q)` and is not an independent-scale source-flow certificate. |
 | F3 | a literal source-flow full-G point-source owner bound | apply cold-sealed generic step 14 at `K=R,N=2*(Kloc*Q)` to F2 and keep the source-vector norm, `R^-4`, geometric fourth power and `exp(2*rho)` exactly once. F2 remains open. |
-| F4 | one positive radius and one amplitude for all source depths, for the **full** coefficient in F3 | combine the positive CMP85 floor with a source-coefficient upper bound, central-pair window and normalized bare diagonal estimate; a complete proof is still required. The old uniform `G Q'^*` amplitude is not this coefficient. |
+| F4 | one positive radius and one amplitude for all source depths, for the **full** coefficient in F3 | Scalar foundations **cold-sealed** at `098cf3df`: recurrence upper bound, moment antitonicity and one radius satisfying all four windows. The complete hybrid amplitude estimate and physical normalization remain open; the old uniform `G Q'^*` amplitude is not this coefficient. |
 | F5 | transfer the full bound to the literal source-localized/regional consumer and the required derivative species | consume F3/F4 through the existing source/retained-carrier dictionaries with physical norm and spacing factors exposed. No regional, derivative or window-15 claim follows from a point-source value estimate alone. |
 
 The scalar obligation in F4 can be read directly from
@@ -15850,25 +15850,34 @@ bound, and both contain a term with `abs(a_j)` multiplying that bound.
 Thus antitonicity of the reciprocal alone does **not** justify replacing
 every occurrence of `a_j` by its lower floor. The proposed proof bounds
 the moment using the positive floor, and the positive coefficient factor
-using `a_j <= a`; the latter is to be derived from the literal recurrence,
-not assumed as a new physical input. For `R>=1`, the proposed scalar
+using `a_j <= a`; the latter is now derived from the literal recurrence
+in `cmp85SourceFullGreen_massParameter_le_initial`, not assumed as a new
+physical input. For `R>=1`, the proposed scalar
 normalization uses `R^-4*(R+1)^2 <= 4*R^-2`. This algebraic target is not
 yet a sealed theorem in this continuation, and does not erase the printed
 scale vector or any later physical Green normalization.
 
-The source-flow radius theorem already in the tree supplies amplitude,
-noncentral and stabilized-denominator windows; its statement does not
-include `CMP89Eq249CentralAveragePairComplexWindow`. F4 must choose a common
-radius satisfying that extra window too, before claiming full-G uniformity.
+The earlier source-flow radius theorem supplies three windows. The newly
+cold-sealed `exists_cmp85SourceFullGreen_uniformRadiusAndMoment` also
+constructs `CMP89Eq249CentralAveragePairComplexWindow` at that same radius,
+for fixed initial coefficient and RG ratio. This is not yet the full-G
+uniform amplitude bound or a physical norm/spacing conversion.
 Counters remain `20/41`, `TermSource = 0`, window 15 unattained.
 
-F1 and the scalar foundations of F4 are PRE-VALIDATION at source
-`098cf3dfad1095c57bdc1d1dc5bc6b13252174d5`, in one fresh Colab queue.
+F1 and the scalar foundations of F4 are cold-sealed at source
+`098cf3dfad1095c57bdc1d1dc5bc6b13252174d5`, in one fresh Colab queue,
+with no restored project build graph (Ledger Addendum 1109).
 The scalar pair proves only the recurrence upper bound, equality of scalar
 moment budgets, its antitonicity, and one radius with all four windows.
 It does not yet bound the complete amplitude. Runner/verifier checkpoint:
 `3dd028d371761e0080fe9573bf750c055fdaae7a`; one-shot launcher:
-`c62a2d364dd41655f3960f012b9b19d80701ddf3`. No compiler verdict is claimed here.
+`c62a2d364dd41655f3960f012b9b19d80701ddf3`. Both focals and exact four plus
+one axiom audits passed, all five with the allowed trio. The complete archive
+was independently verified and downloaded before any hot checkout change.
+The separate elementary normalization repro passed in the retained runtime
+at `995370c16`; its first error and corrected result are preserved under
+`validation-evidence/f4-normalization-repro-20260904/`. That auxiliary
+repro and the uncompiled hybrid draft are not a seal of F4.
 
 F2's finite-sum algebra can be proved first for the generic full point-source
 solution with arbitrary `R,N,a`, using
@@ -15878,6 +15887,13 @@ The generic theorem must retain the same reflected/swapped endpoints and
 Green is required in that algebra. Only its final source-flow specialization
 uses F1 at `R=L^(j+1), N=2*(Kloc*Q), a=a_j`. This is a design route, not an
 extra supplied inverse/reconstruction hypothesis or a new verified brick.
+
+The generic F2 theorem `cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerResidue`
+has now passed a retained-runtime **hot diagnostic**, source `b536a216`,
+focal156.532s/audit8.369s, exact allowed trio (Ledger Addendum1110).
+Its notices remain PRE-VALIDATION pending a cold seal; its final source-flow
+specialization and F3 are still open. The preceding cold archive was
+preserved before checkout and rechecked unchanged after this diagnostic.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 

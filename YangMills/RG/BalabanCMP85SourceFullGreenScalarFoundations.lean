@@ -3,10 +3,10 @@ import YangMills.RG.BalabanCMP89Eq249CentralAveragePairComplexNonzero
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound
 
 /-!
-# PRE-VALIDATION: scalar source-flow inputs for full G
+# Cold-sealed scalar source-flow inputs for full G
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This source is not yet imported by the root aggregator.
+Cold-verified in Colab at source 098cf3dfad1095c57bdc1d1dc5bc6b13252174d5.
+Focal and exact four-declaration audit passed; see Ledger Addendum 1109.
 
 Only the literal recurrence, the equality of two scalar budget expressions,
 and a joint strip choice are composed here. Equality of scalar budgets does

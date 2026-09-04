@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations
 
 /-!
-# PRE-VALIDATION: full-source scalar foundations audit
+# Cold-sealed full-source scalar foundations audit
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This audit is not yet imported by the root aggregator.
+Cold-verified in Colab at source 098cf3dfad1095c57bdc1d1dc5bc6b13252174d5.
+All four declarations use the exact allowed trio; see Ledger Addendum 1109.
 -/
 
 #print axioms YangMills.RG.cmp85SourceFullGreen_massParameter_le_initial

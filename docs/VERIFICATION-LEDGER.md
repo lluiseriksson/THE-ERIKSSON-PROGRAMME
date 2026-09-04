@@ -45822,3 +45822,115 @@ attain window 15, produce a terminal field or instantiate TermSource.
 Counters remain `20/41`, `TermSource = 0`. The next finite continuation is
 F1--F5 in the map, starting with source-flow inverse uniqueness and the
 common scalar radius; its current drafts are not compiler evidence.
+
+## Addendum 1109 (2026-09-04 UTC, source-flow full-G foundations cold seal)
+
+Fresh Colab Pro+ CPU/high-RAM runtime `bc8fae8b949d` (50.99 GiB), account
+`lluiseriksson@gmail.com`, opened approximately 22:36 UTC, compiled exact
+source `098cf3dfad1095c57bdc1d1dc5bc6b13252174d5`. Runner/verifier checkpoint
+`3dd028d371761e0080fe9573bf750c055fdaae7a`; one-shot launcher checkpoint
+`c62a2d364dd41655f3960f012b9b19d80701ddf3`. Runner SHA256:
+`E4DBB6E9205C241A0388F9DF7656C39149A2E143C03FA5AC94734819FB1A9D81`.
+No project `.lake/build` was restored. Both focals shared this one fresh
+checkout; the official pinned Mathlib cache is not a restored project graph.
+Lean 4.29.0-rc6 official asset hash and Mathlib
+`07642720480157414db592fa85b626dafb71355b` were checked.
+
+| stage | jobs | exit | seconds |
+|---|---:|---:|---:|
+| source_scalar_focal | 8508 | 0 | 1043.026295328 |
+| source_scalar_audit | -- | 0 | 7.110386595000136 |
+| source_inverse_focal | 8724 | 0 | 927.7169169240001 |
+| source_inverse_audit | -- | 0 | 10.182952140999987 |
+
+`FINAL_STATUS=PASS`, actual shell `RUNNER_EXIT=0`. The exact four plus one
+audit declarations all printed `{propext, Classical.choice, Quot.sound}`.
+The logs retain dependency warnings; no warning-free claim is made.
+
+Read-only verifier SHA256:
+`EE0270AAE66BD98A19E22FE4294F44B35AFD8D7CFE26F2F3367D51398728506C`.
+Its preflight rejected six synthetic corrupt fixtures and the axiom parser
+accepted two/rejected nine fixtures. The actual verifier checked safe
+archive structure, exact source/blob manifest, both contracts, 0/7 portable
+preflight, all eighteen stages, commands, real exits, finite durations,
+full raw-log hashes and the exact five audited declarations. It returned
+`SOURCE_FLOW_FULL_GREEN_COLD_EVIDENCE_VERIFIED`, exit0 in0.070908598s.
+
+Archive SHA256:
+`AE15445E78008AB2BFC6BA11E2A74B545C2EABA512100589F94AF19C4D1326B7`.
+Actual `evidence.json` file SHA256 including LF:
+`A6EF9DB9545D2A8EFED047ED233D960AD5BA477622ED7CA95BAE8A9CD5A86C8D`.
+Runner payload SHA256 excluding LF:
+`63005A80777439ADD7936E8A479D47EE0DFE024C5D8A3F134F59C4CD7731EAD0`.
+Full console SHA256:
+`71644E9AECFE7D3E60E62F47F05EAF0099DA87B81CE3D4F6545D522F90086AEC`.
+Exit file SHA256:
+`92FA48783974CB041FF4AC4DEA12CE713DC121A8E7109E7A2F5A6E722B9E30CF`.
+Verification report SHA256:
+`489A38EDE7C5913988F0188F51E6C33F22D848DC48A8CE714D3D98C76055343D`.
+All four files were downloaded and independently hashed in Windows before
+the checkout was changed for hot F2. Durable directory:
+`validation-evidence/cmp99-source-flow-foundations-cold-098cf3df-20260904/`.
+
+The cold queue ended before the bounded F2 hot diagnostic, which started
+at about23:16 UTC in the retained runtime. Its runner re-verifies the cold
+archive before checkout and records `HOT_DEBUG_STATUS`, never a cold seal.
+The separate F4 Mathlib-only normalization repro, including the measured
+first additive-orientation error and corrected exit0, is preserved in
+`validation-evidence/f4-normalization-repro-20260904/`; it did not change
+the active cold checkout. It is auxiliary algebra, not a full-G producer.
+
+Only the two cold-certified source/audit pairs lose PRE-VALIDATION notices.
+Their audits are added to the root aggregator without a new root-build claim.
+F1 identifies the internally solved full fine point-source solution with the
+actual source-flow Green by inverse uniqueness, not with `G Q'^*` or a
+generated-coefficient surrogate. The scalar pair gives the literal recurrence
+upper bound, moment-budget identity and antitonicity, and a radius satisfying
+all four windows for fixed initial coefficient and RG ratio. It does not
+yet bound the complete full-G amplitude or supply physical units/norms,
+regional/derivative estimates, uniform physical B0, or window15.
+Counters remain `20/41`, `TermSource = 0`.
+
+Runtime closure: `pgrep -ax lake` and `pgrep -ax lean` returned no processes
+at23:20:45 UTC. After both cold and hot packages were downloaded and hashed,
+the runtime was disconnected/deleted at approximately23:21 UTC; the UI
+confirmed reconnect/high-RAM. About45 minutes connected in total. The
+completed `monitor-source-flow-full-g-foundations` automation was deleted.
+
+## Addendum 1110 (2026-09-04 UTC, generic F2 hot diagnostic only)
+
+The retained runtime from Addendum1109 ran one bounded diagnostic at source
+`b536a21679ff811ceee9bf24452fa20dd866b166`. Its only mathematical delta
+from the preceding cold source was the generic full point-source residue
+identity and audit. Runner v2 checkpoint
+`e9ede104c5f0d3fb5cc0de16ab56a894a5b68c1b`, SHA256
+`36032AC8BB14BBF4A3A991C4AC394D0620AADCF1DD6F38E0749672F3E658C8A2`.
+V1 was superseded before execution after an auxiliary launch found that
+the official asset bin lives inside two nested directories. No toolchain,
+source theorem, constant or hypothesis was changed for that repair.
+
+Before checkout, the runner independently reverified the cold archive and
+required its observed hash. Both packages remain distinct. The full hot
+command exited0 in166.241932071s; focal exit0 in156.531894852s and audit
+exit0 in8.369206640s. Exactly
+`cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerResidue` printed
+`{propext, Classical.choice, Quot.sound}`. `HOT_DEBUG_STATUS=PASS COLD_SEAL=0`.
+
+Archive SHA256:
+`75D1697DAA8088CDD497A94E3E555369047E36DEB510E4B456C341E5085FAACA`.
+Verification report SHA256:
+`CF7DDC3E950F7ACA9FD8E21F7F7649C853B08D1181008D44C7CBC22265F6A072`.
+Console SHA256:
+`4C84E78711111A95D9A019F7EFC7C563ACC89D24158E116179993C41A7FD78BA`.
+Exit record SHA256:
+`2B9CC901CB5460BD49204C2715B1426075C1209A4000DE539EBDD0C598D8485F`.
+The read-only package check verified28 files,12 stage records, each raw-log
+hash/record/zero exit, the exact axiom declaration, and the unchanged prior
+cold archive. All four downloaded file hashes matched Colab. Durable folder:
+`validation-evidence/cmp99-generic-full-point-residue-hot-b536a216-20260904/`.
+
+F2's PRE-VALIDATION notices remain. This hot result is not its cold seal,
+its final source-flow specialization, a physical B0 bound or a terminal
+producer. F3--F5 remain open. The elementary F4 repro is separately archived
+with its first failure; the hybrid amplitude draft remains uncompiled.
+Counters remain `20/41`, `TermSource = 0`, window15 unattained.
