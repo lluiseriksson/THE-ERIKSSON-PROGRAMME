@@ -15694,6 +15694,9 @@ self-adjointness.  Its live status is:
 | 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass`, **cold-sealed** at source `440afa7b0883cc77a30f2457c879b025dcde32f1` (Ledger Addendum 1097) |
 | 11 | reindex an arbitrary selected residue as the canonical `valMinAbs` representative plus the zero residue fibre, then center at the full physical period | `BalabanCMP99FlatIntegerResidueClassDictionary`, **cold-sealed** at source `ac83083f89969d147505332ea6b7ab9bbb56f2cd` (Ledger Addendum 1100) |
 | 12 | combine the selected owner residue with both within-block endpoint displacements, identify its full-period residue with literal `source-target`, and transport the exact centered `l1` weight to the diagonal owner bound | `BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary`, **PRE-VALIDATION** (Ledger Addendum 1101) |
+| 13 | apply the literal full two-endpoint Green contour estimate to an arbitrary selected residue class, retaining `cmp89Eq246DirectedFullSolutionSumBound K 1 a rho` and the exact geometric factor `(2 / (1 - exp(-rho)))^4` | planned full-G residue majorant; use the source-fixed coefficient construction below, no caller-supplied coefficient family |
+| 14 | specialize step 13 to the two within-block endpoint displacements and apply step 12 to its combined affine base | planned scalar physical owner bound, with explicit amplitude, geometric factor and `exp(2*rho)` |
+| 15 | compose step 14 with step 10's constructed residue-class certificate | planned generated full point-source bound, retaining the literal `K^-4` normalization and `norm(v A)`; not yet a depth-uniform source-flow or regional bound |
 
 Steps 5--7 are intentionally separate.  Step 5 uses the two literal matrix
 equations and assumes no matrix symmetry; step 6 handles the exceptional
@@ -15745,6 +15748,39 @@ introduces no residue-cardinality factor. At source
 This pair remains PRE-VALIDATION and outside `YangMillsCore.lean` until
 the fresh-checkout gate passes; it proves neither CMP89 (2.42) nor a Green
 coefficient bound.
+
+#### Next full-G majorant: exact source and amplitude contract (2026-09-04)
+
+For step 13 fix `source : Fin 4 → ℤ` and define the coefficient internally by
+`f(v) = cmp89Eq246NormalizedPhysicalFineToFineGreen K 1 0 a (v + source) source`.
+The sealed `norm_cmp89Eq246NormalizedPhysicalFineToFineGreen_le_massUniform`
+then gives `norm(f(v)) ≤ D * weight(rho/K, v)`, where
+`D = cmp89Eq246DirectedFullSolutionSumBound K 1 a rho`. This construction
+requires no translation-invariance assertion: both arguments are supplied to
+the existing literal two-endpoint theorem, and their difference simplifies
+exactly to `v`. Nonnegativity of `D` follows by applying this bound at `v=0`.
+
+In the residue sum, `v = target - source + K*n`. The equality
+`(target - source + K*n) + source = target + K*n` is pointwise integer
+arithmetic; it identifies the coefficient with
+`cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient K 1 0 a target source n`.
+The existing arbitrary-residue theorem therefore has precisely the needed
+input. For the norm of the complex sum, use the already sealed full-G
+summability theorem and its restriction to the residue subtype.
+
+The expected output of step 15 is the literal coefficient
+`K^-4 * D * (2 / (1 - exp(-rho)))^4 * exp(2*rho)` multiplying
+`exp(-rho * ownerDistance) * norm(v A)`. Every factor remains visible.
+In particular, `D` retains the central budget, the bare `(K+1)^2` term and
+the noncentral correction budget. None is declared scale-uniform here.
+
+The generated coefficient supplied by step 10 is
+`cmp99SourceGeneratedFullComplexA`; the existing depth-decay no-go forbids
+identifying it with the source-flow averaging coefficient. Thus steps
+13--15 close a finite, fixed-coefficient bound and still require the faithful
+source-flow full-G dictionary and uniform scalar estimates before producing
+regional `B0`/`delta0`. The separate source-flow `G Q'^*` owner bound already
+in the tree is not the full `G` identity. These endpoints must not be exchanged.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
