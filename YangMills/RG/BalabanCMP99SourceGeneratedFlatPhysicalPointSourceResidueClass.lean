@@ -63,28 +63,44 @@ def cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
       (M := M) (Q := Q) (Nc := Nc) hM depth
       (cmp99FlatComplexFibrePointSource source v)) target A
 
+/-- The complete source and analytic-window data consumed by the physical
+residue-class identity. Every former theorem argument remains a visible field;
+the record only prevents the elaborator from normalizing one long dependent
+Pi-header at once. -/
+structure CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData
+    (M Q Nc : ℕ) [NeZero M] [NeZero Q] [NeZero Nc] where
+  hM : 2 ≤ M
+  depth : ℕ
+  rho : ℝ
+  hrho : 0 < rho
+  hamplitude : rho * Real.exp rho ≤ 1 / 6
+  hradius : CMP89Eq249UniformNoncentralComplexRadiusCondition rho
+  hdenWindow : CMP89Eq249CentralStabilizedComplexWindow
+    (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
+      (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0) rho
+  hpairWindow : CMP89Eq249CentralAveragePairComplexWindow rho
+  source : FinBox 4 (M ^ (depth + 1) * (2 * (M * Q)))
+  target : FinBox 4 (M ^ (depth + 1) * (2 * (M * Q)))
+  v : SUNLieComplexCoord Nc
+  A : Fin (Nc ^ 2 - 1)
+
 /-- The generated full periodic point-source Green is the affine residue
 sum selected by the reversed endpoint-owner difference, with the remaining
 fine-block normalization shown literally. -/
 theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueClass
     {M Q Nc : ℕ} [NeZero M] [NeZero Q] [NeZero Nc]
-    (hM : 2 ≤ M) (depth : ℕ) {rho : ℝ}
-    (hrho : 0 < rho)
-    (hamplitude : rho * Real.exp rho ≤ 1 / 6)
-    (hradius : CMP89Eq249UniformNoncentralComplexRadiusCondition rho)
-    (hdenWindow : CMP89Eq249CentralStabilizedComplexWindow
-      (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
-        (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0) rho)
-    (hpairWindow : CMP89Eq249CentralAveragePairComplexWindow rho)
-    (source target : FinBox 4 (M ^ (depth + 1) * (2 * (M * Q))))
-    (v : SUNLieComplexCoord Nc) (A : Fin (Nc ^ 2 - 1)) :
+    (data : CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData M Q Nc) :
     cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
-        (M := M) (Q := Q) (Nc := Nc) hM depth source target v A =
+        (M := M) (Q := Q) (Nc := Nc) data.hM data.depth
+        data.source data.target data.v data.A =
       cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
-        (M := M) (Q := Q) depth
-        (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
-          (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0)
-        source target * v A := by
+        (M := M) (Q := Q) data.depth
+        (cmp99SourceGeneratedFullComplexA 4 M (data.depth + 1)
+          (cmp99SourceGeneratedFullComplexSpacing M (data.depth + 1)) 0)
+        data.source data.target * data.v data.A := by
+  rcases data with
+    ⟨hM, depth, rho, hrho, hamplitude, hradius, hdenWindow, hpairWindow,
+      source, target, v, A⟩
   let Kfine : ℕ := M ^ (depth + 1)
   let N : ℕ := 2 * (M * Q)
   let a : ℝ :=
