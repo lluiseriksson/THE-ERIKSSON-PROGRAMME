@@ -69,22 +69,22 @@ theorem cmp99SourceGeneratedFlatPhysicalResidueEndpointBase_cast
     ring
   rw [ZMod.intCast_eq_intCast_iff_dvd_sub]
   rcases hdvd with ⟨q, hq⟩
-  refine ⟨q, ?_⟩
+  refine ⟨-q, ?_⟩
   simp only [cmp99SourceGeneratedFlatPhysicalResidueEndpointBase,
     cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement]
   push_cast
   change
-    ((K : ℤ) * (targetOwner mu).val - (target mu).val -
+    ((source mu).val - (target mu).val) -
+      ((K : ℤ) * (targetOwner mu).val - (target mu).val -
           ((K : ℤ) * (sourceOwner mu).val - (source mu).val) +
-          (K : ℤ) * cmp99FlatIntegerResidueRepresentative residue mu) -
-        ((source mu).val - (target mu).val) =
-      ((K * N : ℕ) : ℤ) * q
+          (K : ℤ) * cmp99FlatIntegerResidueRepresentative residue mu) =
+      ((K * N : ℕ) : ℤ) * (-q)
   calc
-    _ = (K : ℤ) *
+    _ = -(K : ℤ) *
         (cmp99FlatIntegerResidueRepresentative residue mu -
           ((sourceOwner mu).val : ℤ) + ((targetOwner mu).val : ℤ)) := by ring
-    _ = (K : ℤ) * ((N : ℤ) * q) := by rw [hq]
-    _ = ((K * N : ℕ) : ℤ) * q := by push_cast; ring
+    _ = -(K : ℤ) * ((N : ℤ) * q) := by rw [hq]
+    _ = ((K * N : ℕ) : ℤ) * (-q) := by push_cast; ring
 
 /-- Centering the combined arbitrary-residue base preserves exactly the
 `l1` length of the shortest periodic fine-site displacement. -/
