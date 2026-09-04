@@ -45756,3 +45756,69 @@ claiming a new root build. Steps 14--15 remain local drafts. This seals the
 fixed-coefficient arbitrary-residue bound, not a uniform source-flow or
 regional B0, window-15 attainment, a terminal field, or a TermSource.
 Counters remain `20/41`, `TermSource = 0`.
+
+## Addendum 1108 (2026-09-04 UTC, steps 14--15 full-G owner cold seal)
+
+Fresh Colab Pro+ CPU/high-RAM runtime `2a5234e831ca` (50.99 GiB), account
+`lluiseriksson@gmail.com`, compiled source
+`ea524400bbf59777d461e8d04790516771258988` with runner v2 at
+`46825e3723bbab7c22966c0d55c1a91904834f35` (runner SHA256
+`BB8D74699319D1C6BC24E68AFEFA57A078066F6852303A4804D82EFF6740D164`).
+No project `.lake/build` was restored. The two focal steps shared this one
+fresh checkout. Official Lean 4.29.0-rc6 asset/hash and Mathlib
+`07642720480157414db592fa85b626dafb71355b` were checked. Instrumental v1
+failed before checkout/Lean because its preflight caught the wrong exception
+class; it is preserved separately at commit `df5e3991`, not scientific FAIL.
+V2 changes the exception adapter, not the source or axiom acceptance set.
+
+The runner executed from 21:42:46 to approximately 22:21:18 UTC, once:
+
+| stage | jobs | exit | seconds |
+|---|---:|---:|---:|
+| owner_residue_focal | 8696 | 0 | 1616.681783452 |
+| owner_residue_audit | -- | 0 | 10.568492332999995 |
+| generated_owner_focal | 8808 | 0 | 543.1177627040001 |
+| generated_owner_audit | -- | 0 | 18.310657450000235 |
+
+`FINAL_STATUS=PASS`, actual shell `RUNNER_EXIT=0`. The three plus five exact
+audit declarations all printed `{propext, Classical.choice, Quot.sound}`.
+Warnings from dependencies remain visible; no warning-free claim is made.
+
+Read-only verifier commit `1c15c08902829f03fb1a0987f3d14c97bc08e33d`, SHA256
+`760EA7AB87A6B22628F22BDB985EA894FFE9BD5779E76DCC123CB9B47FBE75D3`,
+checked the safe archive, exact source/blob manifest, both gate contracts,
+0/7 preflight, all eighteen stages, actual child exits, commands, durations,
+complete log hashes and exact axiom names. It returned
+`FULL_GREEN_OWNER_COLD_EVIDENCE_VERIFIED`, exit 0. Its prior synthetic
+self-test is preserved with the v1 incident and is not mathematical evidence.
+
+Archive SHA256:
+`12BC8B02448BD041879CD36A247CBFACFDB58B72C160697AE5E7787086BC86C5`.
+Actual `evidence.json` file SHA256 including final LF:
+`0D658B7525A1914C7A604AC56DE5B9610F1E545F8F41ABE7B67172A7E1D5E25D`.
+Runner payload SHA256 excluding LF:
+`F348D486DD18981EA1A525456784BC20D41849CF4D948B21685010AB6FB013AD`.
+Full console SHA256:
+`6C8EE9E17B39BC2A16A672825B13A0A6C7F218C193CAFF215FE778C5830F155E`.
+Exit file SHA256:
+`92FA48783974CB041FF4AC4DEA12CE713DC121A8E7109E7A2F5A6E722B9E30CF`.
+Verification report SHA256:
+`888E24F50FB3A1CB3B0B488539007150E8A2BDB1035FDFAAD044889718ADBB94`.
+All four downloaded files matched the Colab hashes locally using light I/O.
+Durable evidence: `validation-evidence/cmp99-full-green-owner-cold-ea524400-20260904/`.
+
+No Lean/Lake process remained at 22:26:40 UTC. After download verification,
+the runtime was disconnected/deleted at approximately 22:28 UTC (about
+51 minutes connected including instrumental preflight and preservation).
+The UI confirmed reconnect/high-RAM; the completed monitor was deleted.
+
+Only the two source/audit pairs lose PRE-VALIDATION notices. Both audits are
+added to the root aggregator without claiming a new root build. The seal
+constructs the fixed-coefficient physical owner residue bound and its
+generated point-source consumer, retaining `K^-4` exactly once and the
+literal generated coefficient. It does not identify that coefficient with
+the source flow, prove uniform physical B0, close regional/derivative gates,
+attain window 15, produce a terminal field or instantiate TermSource.
+Counters remain `20/41`, `TermSource = 0`. The next finite continuation is
+F1--F5 in the map, starting with source-flow inverse uniqueness and the
+common scalar radius; its current drafts are not compiler evidence.

@@ -2,11 +2,11 @@ import YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass
 
 /-!
-# PRE-VALIDATION: generated full point-source bound, fixed coefficient
+# Generated full point-source bound, fixed coefficient
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This consumer and its step-14 dependency are PRE-VALIDATION.
-They are not imported into the verified root.
+Cold-verified in Colab at source ea524400bbf59777d461e8d04790516771258988.
+This consumer, its step-14 dependency and both exact audits passed;
+see Verification Ledger Addendum 1108. No new root build is claimed.
 
 Fine-block K^-4 is paid exactly once. The point-source reconstruction is
 obtained by the existing theorem, not supplied as a free equality. The

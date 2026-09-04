@@ -2,10 +2,10 @@ import YangMills.RG.BalabanCMP99FullGreenArbitraryResidueBound
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary
 
 /-!
-# PRE-VALIDATION: full Green residue bound at the physical endpoints
+# Full Green residue bound at the physical endpoints
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. The step-13 dependency is cold-sealed; this consumer remains unverified.
+Cold-verified in Colab at source ea524400bbf59777d461e8d04790516771258988.
+Focal and exact audit passed; see Verification Ledger Addendum 1108.
 
 The target argument is minus the source displacement; the source argument
 is minus the target displacement, exactly as in the sealed point-source

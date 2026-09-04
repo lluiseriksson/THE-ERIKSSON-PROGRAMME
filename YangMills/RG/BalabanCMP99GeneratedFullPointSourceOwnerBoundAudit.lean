@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound
 
 /-!
-# PRE-VALIDATION: audit for the generated full point-source owner bound
+# Audit for the generated full point-source owner bound
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. Not imported into the verified root.
+Cold-verified in Colab at source ea524400bbf59777d461e8d04790516771258988.
+Five exact declarations passed the allowed-axiom gate; Ledger Addendum 1108.
 -/
 
 #print axioms YangMills.RG.cmp99PhysicalFullGreenOwnerAmplitude

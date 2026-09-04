@@ -15695,8 +15695,8 @@ self-adjointness.  Its live status is:
 | 11 | reindex an arbitrary selected residue as the canonical `valMinAbs` representative plus the zero residue fibre, then center at the full physical period | `BalabanCMP99FlatIntegerResidueClassDictionary`, **cold-sealed** at source `ac83083f89969d147505332ea6b7ab9bbb56f2cd` (Ledger Addendum 1100) |
 | 12 | combine the selected owner residue with both within-block endpoint displacements, identify its full-period residue with literal `source-target`, and transport the exact centered `l1` weight to the diagonal owner bound | `BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary`, **cold-sealed** at source `c9f4b725313dd879ae3ce6e99c844ce1d2f8b968` (Ledger Addendum 1105) |
 | 13 | apply the literal full two-endpoint Green contour estimate to an arbitrary selected residue class, retaining `cmp89Eq246DirectedFullSolutionSumBound K 1 a rho` and the exact geometric factor `(2 / (1 - exp(-rho)))^4` | `BalabanCMP99FullGreenArbitraryResidueBound`, **cold-sealed** at source `eef777d32878297d9e143cbfaff82c290fbb9be1` (Ledger Addendum 1107); source-fixed coefficient constructed internally |
-| 14 | specialize step 13 to the two within-block endpoint displacements and apply step 12 to its combined affine base | `BalabanCMP99PhysicalFullGreenOwnerResidueBound`, **PRE-VALIDATION**, scalar physical owner bound with explicit amplitude, geometric factor and `exp(2*rho)` |
-| 15 | compose step 14 with step 10's constructed residue-class certificate | `BalabanCMP99GeneratedFullPointSourceOwnerBound`, **PRE-VALIDATION**, retaining literal `K^-4` normalization and `norm(v A)`; not a depth-uniform source-flow or regional bound |
+| 14 | specialize step 13 to the two within-block endpoint displacements and apply step 12 to its combined affine base | `BalabanCMP99PhysicalFullGreenOwnerResidueBound`, **cold-sealed** at source `ea524400bbf59777d461e8d04790516771258988` (Ledger Addendum 1108), scalar physical owner bound with explicit amplitude, geometric factor and `exp(2*rho)` |
+| 15 | compose step 14 with step 10's constructed residue-class certificate | `BalabanCMP99GeneratedFullPointSourceOwnerBound`, **cold-sealed** at source `ea524400bbf59777d461e8d04790516771258988` (Ledger Addendum 1108), retaining literal `K^-4` normalization and `norm(v A)`; not a depth-uniform source-flow or regional bound |
 
 Steps 5--7 are intentionally separate.  Step 5 uses the two literal matrix
 equations and assumes no matrix symmetry; step 6 handles the exceptional
@@ -15779,9 +15779,15 @@ checkout with no restored project build: 8639 jobs, focal exit 0 in
 The complete archive and all sixteen child-log hashes were verified in Colab
 and again after download (Ledger Addendum 1107). Only the source/audit notices
 are retired and that audit is added to the root; no new root build is claimed.
-Steps 14--15 and their exact audits are now PRE-VALIDATION source modules,
-not installed producers or root imports. Their frozen statements retain all
-analytic windows and construct the physical reconstruction via step 10.
+Steps 14--15 and their exact audits passed the fresh-checkout v2 gate at
+source `ea524400bbf59777d461e8d04790516771258988`: focal 8696 jobs / 1616.682 s,
+audit 10.568 s; then focal 8808 jobs / 543.118 s, audit 18.311 s, all exit zero.
+The eight exact declarations use the allowed trio. The archive, all eighteen
+stage records and downloaded hashes were verified (Ledger Addendum 1108).
+Only these four notices are retired; their audits enter the aggregator with
+no new root-build claim. The frozen statements retain all analytic windows
+and construct the physical reconstruction via step 10. This is a fixed-
+coefficient full-G bound, not a uniform physical B0 or window-15 attainment.
 The audit parser's two accepted and nine rejected synthetic cases passed in
 Colab before shipment, including the empty-axiom certificate projection.
 
