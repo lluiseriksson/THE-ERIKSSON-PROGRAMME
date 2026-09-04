@@ -1,9 +1,11 @@
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary
 
 /-!
-# PRE-VALIDATION: audit for the physical arbitrary-residue endpoint dictionary
+# Audit for the physical arbitrary-residue endpoint dictionary
 
-This audit has not yet passed a fresh-checkout compiler and exact-axiom gate.
+Fresh-checkout source `c9f4b725313dd879ae3ce6e99c844ce1d2f8b968` passed
+the compiler and all five exact axiom checks; each uses precisely
+`propext`, `Classical.choice`, and `Quot.sound` (Ledger Addendum 1105).
 -/
 
 #print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalResidueEndpointBase

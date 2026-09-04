@@ -3,7 +3,11 @@ import YangMills.RG.BalabanCMP99FlatFinBoxDFT
 import YangMills.RG.BalabanCMP99SourceFineToCoarseCenteredOwnerDictionary
 
 /-!
-# PRE-VALIDATION: physical endpoint carried by an arbitrary residue fibre
+# Physical endpoint carried by an arbitrary residue fibre
+
+Cold-verified at source `c9f4b725313dd879ae3ce6e99c844ce1d2f8b968`:
+8652 focal jobs and the exact five-declaration axiom audit passed.
+See Verification Ledger Addendum 1105 for the preserved child-output hashes.
 
 The affine residue selected by the two coarse owners must be recombined with
 the two within-block endpoint displacements before the centered full-period
@@ -12,7 +16,7 @@ representatives can disagree at an even antipodal seam, so this dictionary
 proves equality of the residue and of the exact `l1` length, not equality of
 signed vectors.
 
-This draft does not prove CMP89 (2.42), produce uniform physical `B0` or
+This dictionary does not prove CMP89 (2.42), produce uniform physical `B0` or
 `delta0`, attain window 15, move `20/41`, or construct a `TermSource`.
 -/
 

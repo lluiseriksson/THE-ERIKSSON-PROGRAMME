@@ -45638,3 +45638,44 @@ yet for this pair. It remains outside `YangMillsCore.lean`. The amplitude
 depends explicitly on `K`, `a`, and `rho`; no scale-uniform B0 or terminal
 field is claimed. The current cold gate for step 12 continues separately.
 Counters stay `20/41`, `TermSource = 0`, window 15 unattained.
+
+## Addendum 1105 (2026-09-04, **physical arbitrary-residue endpoint cold-sealed**)
+
+The unique fresh-checkout gate `cmp99-physical-residue-endpoint-dictionary-cold-v1`
+compiled source `c9f4b725313dd879ae3ce6e99c844ce1d2f8b968`, launched by
+runner checkpoint `aa8127a37f2748a819892d0eb7907659469ae4f9`. It opened
+at 19:50:17 UTC and emitted PASS at 20:32:08 UTC. No project build graph was
+restored into its fresh checkout. Lean 4.29.0-rc6 and Mathlib
+`07642720480157414db592fa85b626dafb71355b` remained pinned.
+
+- Focal: 8652 jobs, exit 0, 2323.183229867 s; output SHA256
+  `70A0FC5DD5D69AA6FFE91A9562A7644487176EE1F8F0C1C4C0E601085654C1F9`.
+- Audit: exit 0, 10.048493061 s; output SHA256
+  `B51AA80EC74EA0D1B880CF0FBDE1EE76B019E97E5D7E93632A0FFBFE5569C34A`.
+- All five exact named declarations use precisely
+  `{propext, Classical.choice, Quot.sound}`.
+- Original runner archive SHA256:
+  `7CD43D3A9DF295734BBDFE0D4F3988960F0341AE24C423A9A01D37F4EABB4879`.
+- Exact evidence.json file SHA256 (including its trailing newline):
+  `4596627BEC456104722735CECACE9C28B3D3148219B037B8BEBE9935FF01BBB8`.
+- Supplemental verified bundle SHA256:
+  `88D9058E82AC576098962B3F421B3E6AF24B7DAD04D248F67A4C7FB84ACEB4DA`.
+
+The original runner archived metadata and output hashes, not child logs.
+Before the focal printed its buffered output, a passive tmux capture was
+attached. Verifier `e1df55792cd36655bb80c90a36a84be4abcbb2ee` recovered the
+exact focal/audit output bytes, matched both recorded hashes, and checked
+source, pins, exits and exact axiom names. Its positive byte-recovery and
+wrong-hash rejection tests passed in Colab. The supplemental archive retains
+the original archive unchanged, raw capture, both logs, metadata and a manifest.
+Download SHA256 and every manifest member were independently checked locally;
+the local copy is under
+`validation-evidence/cmp99-physical-residue-endpoint-cold-c9f4b725-20260904/`.
+
+The selective seal retires PRE-VALIDATION only from the physical endpoint
+dictionary and its audit and adds that audit to the root aggregator. This
+is not a new root build. The next full-G arbitrary-residue pair remains
+PRE-VALIDATION; its single bounded hot diagnostic runs in the older retained
+checkout, leaving the cold checkout unchanged. No uniform B0, attainment of
+window 15, terminal obligation, or TermSource instance is claimed.
+Counters remain `20/41`, `TermSource = 0`.

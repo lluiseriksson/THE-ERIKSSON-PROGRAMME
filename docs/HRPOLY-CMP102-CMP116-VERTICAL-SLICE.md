@@ -15693,7 +15693,7 @@ self-adjointness.  Its live status is:
 | 9 | rewrite the reflected owner coefficient as the negative DFT character and instantiate step 4 at the swapped within-block endpoints | reversed-owner helper, negative physical domain and physical reflection, **cold-sealed** at source `4d61fbd43d48887da9009ba92941b83673acfaa0` (Ledger Addendum 1094) |
 | 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass`, **cold-sealed** at source `440afa7b0883cc77a30f2457c879b025dcde32f1` (Ledger Addendum 1097) |
 | 11 | reindex an arbitrary selected residue as the canonical `valMinAbs` representative plus the zero residue fibre, then center at the full physical period | `BalabanCMP99FlatIntegerResidueClassDictionary`, **cold-sealed** at source `ac83083f89969d147505332ea6b7ab9bbb56f2cd` (Ledger Addendum 1100) |
-| 12 | combine the selected owner residue with both within-block endpoint displacements, identify its full-period residue with literal `source-target`, and transport the exact centered `l1` weight to the diagonal owner bound | `BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary`, **PRE-VALIDATION** (Ledger Addendum 1101) |
+| 12 | combine the selected owner residue with both within-block endpoint displacements, identify its full-period residue with literal `source-target`, and transport the exact centered `l1` weight to the diagonal owner bound | `BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary`, **cold-sealed** at source `c9f4b725313dd879ae3ce6e99c844ce1d2f8b968` (Ledger Addendum 1105) |
 | 13 | apply the literal full two-endpoint Green contour estimate to an arbitrary selected residue class, retaining `cmp89Eq246DirectedFullSolutionSumBound K 1 a rho` and the exact geometric factor `(2 / (1 - exp(-rho)))^4` | `BalabanCMP99FullGreenArbitraryResidueBound`, PRE-VALIDATION; source-fixed coefficient constructed internally; imports only previously sealed contour/summability and residue-class modules |
 | 14 | specialize step 13 to the two within-block endpoint displacements and apply step 12 to its combined affine base | planned scalar physical owner bound, with explicit amplitude, geometric factor and `exp(2*rho)` |
 | 15 | compose step 14 with step 10's constructed residue-class certificate | planned generated full point-source bound, retaining the literal `K^-4` normalization and `norm(v A)`; not yet a depth-uniform source-flow or regional bound |
@@ -15745,9 +15745,14 @@ representative.  The final theorem reuses the sealed diagonal owner bound and
 introduces no residue-cardinality factor. At source
 `c9f4b725313dd879ae3ce6e99c844ce1d2f8b968` the retained-runtime focal
 (8652 jobs, 17.325 s) and five-declaration audit (9.960 s) passed.
-This pair remains PRE-VALIDATION and outside `YangMillsCore.lean` until
-the fresh-checkout gate passes; it proves neither CMP89 (2.42) nor a Green
-coefficient bound.
+The fresh-checkout gate subsequently passed: 8652 jobs, focal exit 0 in
+2323.183 s, audit exit 0 in 10.048 s, five exact allowed-trio declarations.
+Both child outputs were recovered from the terminal stream and verified
+against the original runner hashes; the downloaded evidence bundle was
+verified again locally (Ledger Addendum 1105). Only this pair's notices are
+retired, and its audit is installed in `YangMillsCore.lean`. This is a focal
+cold seal, not a new root build. It proves neither CMP89 (2.42) nor a Green
+coefficient bound; `20/41`, `TermSource = 0`, and window 15 remain unchanged.
 
 #### Next full-G majorant: exact source and amplitude contract (2026-09-04)
 
