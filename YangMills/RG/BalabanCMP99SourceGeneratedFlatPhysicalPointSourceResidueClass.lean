@@ -156,6 +156,21 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
     simpa [r] using
       cmp99FlatFourierMode_target_mul_source_inv_eq_reversedOwnerDifferenceCharacter
         ell targetOwner sourceOwner
+  have hphysical : ∀ ell : FinBox 4 N,
+      cmp89Eq246StabilizedFineToFineGreenIntegrand 4 Kfine 1 0 a
+          (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+          (cmp89Eq249PhysicalFineLatticeDisplacement ((Kfine : ℝ)⁻¹)
+            (fun mu => -targetDisp mu))
+          (cmp89Eq249PhysicalFineLatticeDisplacement ((Kfine : ℝ)⁻¹)
+            (fun mu => -sourceDisp mu)) =
+        cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+          (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+          (fun mu => -targetDisp mu) (fun mu => -sourceDisp mu) := by
+    intro ell
+    simpa [cmp89Eq249FineLatticeSpacing] using
+      (cmp89Eq246PhysicalFineToFineGreenIntegrand_eq Kfine 1 0 a
+        (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+        (fun mu => -targetDisp mu) (fun mu => -sourceDisp mu)).symm
   let endpoint : FinBox 4 N → ℂ := fun ell =>
     cmp99FlatZModFourierCharacter
         (-(cmp99FinBoxZModEquiv 4 N ell)) r *
@@ -186,13 +201,7 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
   unfold cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
   rw [cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_outerIntegrandSum
     (M := M) (Q := Q) (Nc := Nc) hM depth source target v A]
-  change (∑ ell : FinBox 4 N,
-      ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) *
-          cmp99FlatFourierMode ell targetOwner *
-          (cmp99FlatFourierMode ell sourceOwner)⁻¹) *
-        cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
-          (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
-          (fun mu => -targetDisp mu) (fun mu => -sourceDisp mu)) * v A) = _
+  simp_rw [hphysical]
   simp_rw [hchar, hreflect]
   change (∑ ell : FinBox 4 N,
       ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) * endpoint ell) * v A)) = _
