@@ -15809,6 +15809,53 @@ source-flow full-G dictionary and uniform scalar estimates before producing
 regional `B0`/`delta0`. The separate source-flow `G Q'^*` owner bound already
 in the tree is not the full `G` identity. These endpoints must not be exchanged.
 
+#### Full-G source-flow continuation: static contract after steps 14--15
+
+This is a finite design checklist, not a compiler seal or an additional
+producer count. The steps 14--15 queue is still pending. Do not identify
+its generated coefficient with the source coefficient, or inherit the
+existing `G Q'^*` uniform coefficient for full `G`.
+
+Keep three independent scale names: RG ratio `L`, localization size `Kloc`,
+and depth `j`. Write `R = L^(j+1)` for the fine sites per block and
+`N = 2*(Kloc*Q)` for the coarse period. In the generic step-14 signature its
+parameter named `K` means `R`, **not** `Kloc`. The scalar dictionary
+`cmp99SourceFlowFlatFullComplexA a L j` is definitionally
+`cmp99SourceMassParameter a (L : Real) j`, whereas the counting-Hilbert
+coefficient additionally contains `R^4`. Do not apply that factor twice.
+
+| next gate | exact output | available input / remaining work |
+|---|---|---|
+| F1 | the full Eq. (2.46) fine point-source solution equals the internally constructed source-flow Green on the same carrier | specialize `cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply` with `cmp99SourceSeparatedSourceFlowFlatPhysicalStep7bGreenCLM_comp_precision`; noncentral mass-zero, stabilized-denominator and central averaging-pair nonvanishing are already named lemmas. Do not use the final `StabilizedFieldCLM_eq_green_comp`, whose endpoint contains `Q'^*`. |
+| F2 | source-flow full Green equals `R^-4` times the literal reflected/swapped affine residue sum | reuse the generic outer synthesis, endpoint reflection, owner character and finite-grid aliasing; retain independent `L,Kloc,Q,j`. The generated residue-class certificate fixes `N=2*(M*Q)` and is not an independent-scale source-flow certificate. |
+| F3 | a literal source-flow full-G point-source owner bound | apply generic step 14 at `K=R,N=2*(Kloc*Q)` to F2 and keep the source-vector norm, `R^-4`, geometric fourth power and `exp(2*rho)` exactly once. Depends on the pending step-14 seal. |
+| F4 | one positive radius and one amplitude for all source depths, for the **full** coefficient in F3 | combine the positive CMP85 floor with a source-coefficient upper bound, central-pair window and normalized bare diagonal estimate; a complete proof is still required. The old uniform `G Q'^*` amplitude is not this coefficient. |
+| F5 | transfer the full bound to the literal source-localized/regional consumer and the required derivative species | consume F3/F4 through the existing source/retained-carrier dictionaries with physical norm and spacing factors exposed. No regional, derivative or window-15 claim follows from a point-source value estimate alone. |
+
+The scalar obligation in F4 can be read directly from
+`cmp89Eq246DirectedFullSolutionSumBound R 1 a_j rho`:
+
+`D = Central(a_j,rho) + 256*Bare*(R+1)^2 + Correction(a_j,rho)*AliasSeries^4`.
+
+Here `AliasSeries` is the already fixed one-dimensional power-weight sum
+with exponent `cmp89Eq251AliasSeriesExponent 4 (-1)`; it is not a new
+rho-dependent series. Both `Central` and `Correction` contain the moment
+bound, and both contain a term with `abs(a_j)` multiplying that bound.
+Thus antitonicity of the reciprocal alone does **not** justify replacing
+every occurrence of `a_j` by its lower floor. The proposed proof bounds
+the moment using the positive floor, and the positive coefficient factor
+using `a_j <= a`; the latter is to be derived from the literal recurrence,
+not assumed as a new physical input. For `R>=1`, the proposed scalar
+normalization uses `R^-4*(R+1)^2 <= 4*R^-2`. This algebraic target is not
+yet a sealed theorem in this continuation, and does not erase the printed
+scale vector or any later physical Green normalization.
+
+The source-flow radius theorem already in the tree supplies amplitude,
+noncentral and stabilized-denominator windows; its statement does not
+include `CMP89Eq249CentralAveragePairComplexWindow`. F4 must choose a common
+radius satisfying that extra window too, before claiming full-G uniformity.
+Counters remain `20/41`, `TermSource = 0`, window 15 unattained.
+
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
 The centered and literal physical finite-grid representatives now each carry
