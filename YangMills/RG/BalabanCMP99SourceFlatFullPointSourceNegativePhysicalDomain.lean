@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP99SourceAliasReflectionStabilizedSolution
+import YangMills.RG.BalabanCMP89Eq246StabilizedAliasTransposeFullSolution
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain
 
 /-!
