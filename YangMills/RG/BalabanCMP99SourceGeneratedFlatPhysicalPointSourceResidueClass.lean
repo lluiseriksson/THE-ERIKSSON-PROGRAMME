@@ -84,20 +84,29 @@ structure CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData
   v : SUNLieComplexCoord Nc
   A : Fin (Nc ^ 2 - 1)
 
+/-- The exact physical residue-class proposition attached to one explicit data
+record. Naming the proposition keeps the theorem declaration opaque while the
+proof still unfolds and establishes the literal equality below. -/
+def CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData.statement
+    {M Q Nc : ℕ} [NeZero M] [NeZero Q] [NeZero Nc]
+    (data : CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData M Q Nc) : Prop :=
+  cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
+      (M := M) (Q := Q) (Nc := Nc) data.hM data.depth
+      data.source data.target data.v data.A =
+    cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
+      (M := M) (Q := Q) data.depth
+      (cmp99SourceGeneratedFullComplexA 4 M (data.depth + 1)
+        (cmp99SourceGeneratedFullComplexSpacing M (data.depth + 1)) 0)
+      data.source data.target * data.v data.A
+
 /-- The generated full periodic point-source Green is the affine residue
 sum selected by the reversed endpoint-owner difference, with the remaining
 fine-block normalization shown literally. -/
 theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueClass
     {M Q Nc : ℕ} [NeZero M] [NeZero Q] [NeZero Nc]
     (data : CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData M Q Nc) :
-    cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
-        (M := M) (Q := Q) (Nc := Nc) data.hM data.depth
-        data.source data.target data.v data.A =
-      cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
-        (M := M) (Q := Q) data.depth
-        (cmp99SourceGeneratedFullComplexA 4 M (data.depth + 1)
-          (cmp99SourceGeneratedFullComplexSpacing M (data.depth + 1)) 0)
-        data.source data.target * data.v data.A := by
+    data.statement := by
+  unfold CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData.statement
   rcases data with
     ⟨hM, depth, rho, hrho, hamplitude, hradius, hdenWindow, hpairWindow,
       source, target, v, A⟩
