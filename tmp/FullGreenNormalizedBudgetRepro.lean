@@ -21,7 +21,7 @@ theorem split {r C D : ℝ} (hr : 1 ≤ r) (hD : 0 ≤ D) :
   calc
     _ = (r ^ 4)⁻¹ * C + (r ^ 4)⁻¹ * (D * (r + 1) ^ 2) := by ring
     _ ≤ (r ^ 4)⁻¹ * C + (r ^ 4)⁻¹ * (D * (4 * r ^ 2)) :=
-      add_le_add_left hs _
+      add_le_add (le_refl _) hs
     _ = _ := by field_simp [ne_of_gt hr0] <;> ring
 
 theorem retain_inverse_square {r C D : ℝ}
