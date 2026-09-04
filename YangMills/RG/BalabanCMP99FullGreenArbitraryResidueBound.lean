@@ -99,7 +99,7 @@ theorem tsum_norm_cmp89Eq246FullGreen_arbitraryResidue_le_centeredPeriodic
       cmp89SignedLatticeResidueAffineMap, pow_one]
     congr 1
     funext mu
-    simp only [Pi.add_apply, base]
+    simp only [Pi.add_apply, base, cmp89SignedLatticeResidueAffineMap]
     ring
   simpa only [hterm, base] using hsum
 
