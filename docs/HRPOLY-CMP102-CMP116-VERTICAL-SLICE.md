@@ -15739,9 +15739,12 @@ base in the source/target orientation used by step 10, proves equality only
 after casting to the complete period `K*N`, and then compares exact `l1`
 magnitudes so that the even antipodal seam is not silently assigned a signed
 representative.  The final theorem reuses the sealed diagonal owner bound and
-introduces no residue-cardinality factor.  This pair remains PRE-VALIDATION
-and outside `YangMillsCore.lean` until its focal and five-declaration audit
-pass; it proves neither CMP89 (2.42) nor a Green coefficient bound.
+introduces no residue-cardinality factor. At source
+`c9f4b725313dd879ae3ce6e99c844ce1d2f8b968` the retained-runtime focal
+(8652 jobs, 17.325 s) and five-declaration audit (9.960 s) passed.
+This pair remains PRE-VALIDATION and outside `YangMillsCore.lean` until
+the fresh-checkout gate passes; it proves neither CMP89 (2.42) nor a Green
+coefficient bound.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 

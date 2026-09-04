@@ -45593,3 +45593,26 @@ The preceding hot-v1 attempt stopped before Lean because its terminal PATH
 did not include Lake; hot-v2 uses the exact verified official toolchain bin.
 Neither diagnostic is a cold seal. `20/41`, `TermSource = 0`, and the open
 window-15 attainment obligation are unchanged.
+
+## Addendum 1103 (2026-09-04, **physical endpoint hot-v4 PASS; cold seal pending**)
+
+Hot-v3 at source `222e482ac3745aa38f6b22c8d32695d9b2751e1c` reduced
+the failure to one `change` at line 76, exit 1 in 29.469 s. The pinned
+Mathlib theorem `ZMod.intCast_eq_intCast_iff_dvd_sub` uses `b-a`; the
+source proof had prepared `a-b`. Source
+`c9f4b725313dd879ae3ce6e99c844ce1d2f8b968` supplies the negated
+divisibility witness without changing the statement.
+
+Hot-v4, runner `e62d365fe388f509a65e45a52f830b3800bc612f`, passed
+the focal at 8652 jobs with exit 0 in 17.325 s, and the audit with exit 0
+in 9.960 s. All five printed declarations use
+`{propext, Classical.choice, Quot.sound}`. Stage logs and JSON records
+with real exit codes, timings and SHA-256 hashes are retained in Colab
+under `/content/cmp99-physical-residue-endpoint-dictionary-hot-v4-logs`;
+the failed hot-v3 logs remain in their separate v3 directory.
+
+The fresh-checkout runner is pinned to the same source and the two raw
+Git-blob SHA-256 values `6B6E760A4AF04BD0F0B6438051F7922E956F3B7142DABE464785BF8EAEA9E0C7`
+and `8FABE6F585EAEEC19D292695596DDC0B2C468D72CC304EA07E75E8D86DBBD109`.
+No PRE-VALIDATION notice is retired from hot evidence. The live counters
+remain `20/41`, `TermSource = 0`; window 15 remains unattained.
