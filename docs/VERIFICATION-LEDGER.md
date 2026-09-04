@@ -45712,3 +45712,47 @@ after downloads and hash verification. PRE-VALIDATION stays on both step-13
 modules; no root import or cold-seal claim is added. Next: a fresh-checkout
 step-13 focal/audit gate with complete child logs packaged directly.
 Counters stay `20/41`, `TermSource = 0`; window 15 remains unattained.
+
+## Addendum 1107 (2026-09-04, full-G arbitrary-residue cold seal; 20/41 unchanged)
+
+Fresh Colab Pro+ CPU/high-RAM runtime `b0ae24db7ef6` (50.99 GiB) ran
+`cmp99-full-green-arbitrary-residue-cold-v1` once, exact source
+`eef777d32878297d9e143cbfaff82c290fbb9be1`, runner commit
+`ddf6fdc1882edddbf063389aab4d455a8ed30801`. No project `.lake/build` was
+restored. Official Lean 4.29.0-rc6 asset and Mathlib
+`07642720480157414db592fa85b626dafb71355b` were hash/pin checked.
+
+Execution ran from 20:56:44.954 to 21:24:04.472 UTC. Focal: 8639 jobs,
+exit 0, 1484.136832827 s. Audit: exit 0, 18.888008283 s; the four exact
+declarations each printed `{propext, Classical.choice, Quot.sound}`.
+`FINAL_STATUS=PASS`. Dependency warnings and the focal's `ring_nf` suggestion
+remain in the raw log; this is not a warning-free claim.
+
+Archive SHA256:
+`DC43EE7113DD5606EE25CD4EFAFC42ACE997BCF70A195CBE3010DF8475F604CF`.
+Evidence JSON payload SHA256 (runner convention: without its final LF):
+`8F92E6644BA42FCEA37E8ABF048323BD557F9A161E740F6C0B118B63036EECB0`.
+Actual archived `evidence.json` file SHA256 (including final LF):
+`8E0E68451F273C0027BBB7F112A0517FC126A5D0AB7FBA789DEC9AFB821B4AA0`.
+Both were measured; the base runner hashes `payload` but writes `payload + LF`.
+Focal log SHA256:
+`4F8EBFAEC1899F1D0467D1D2187E92DA4BDA18B72B15C487A2E49CE3FC35D308`.
+Audit log SHA256:
+`F189DC1E494BE08A1EB0B2112777A9693EAF7B41C560DB7DD5F4A7188E704719`.
+
+The read-only verifier at commit `111fd1102a41cb603d1a7ac19b6a9069d4634eb5`
+checked the archive structure, exact source/blob manifest, pins, preflight,
+all sixteen stages, commands, zero exits, finite durations, complete raw-log
+hashes and exact axiom blocks in Colab. Downloaded archive hash and sixteen
+child-log hashes were independently matched in Windows using only light I/O.
+Durable evidence:
+`validation-evidence/cmp99-full-green-residue-cold-eef777d3-20260904/`.
+
+The runtime was disconnected/deleted at approximately 21:27 UTC after
+preservation; UI showed reconnect/high-RAM. The completed step-13 monitor was
+deleted. No rerun or CI was launched. Only this source/audit pair loses its
+PRE-VALIDATION notices; the audit is added to the root aggregator without
+claiming a new root build. Steps 14--15 remain local drafts. This seals the
+fixed-coefficient arbitrary-residue bound, not a uniform source-flow or
+regional B0, window-15 attainment, a terminal field, or a TermSource.
+Counters remain `20/41`, `TermSource = 0`.

@@ -2,10 +2,13 @@ import YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenFourierSummability
 import YangMills.RG.BalabanCMP99FlatIntegerResidueClassDictionary
 
 /-!
-# PRE-VALIDATION: full two-endpoint Green on an arbitrary residue class
+# Cold-sealed full two-endpoint Green on an arbitrary residue class
 
-Source is present; the `.olean` is not yet materialized and this result is
-not yet verified by the compiler. The coefficient is constructed from the
+Fresh Colab Pro+ focal and exact four-declaration audit passed at source
+`eef777d32878297d9e143cbfaff82c290fbb9be1` (8639 jobs; Ledger Addendum 1107).
+Evidence archive SHA256:
+`DC43EE7113DD5606EE25CD4EFAFC42ACE997BCF70A195CBE3010DF8475F604CF`.
+The coefficient is constructed from the
 literal full Green with a fixed source endpoint. Its displacement bound is
 the sealed mass-uniform contour estimate. No translation-invariance or
 caller-supplied coefficient family is assumed.

@@ -1,0 +1,1 @@
+{"command": ["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1", "exit": 0, "log_file": "mathlib_pin.log", "output_sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd", "seconds": 0.005215368999870407, "stage": "mathlib_pin"}

@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP99FullGreenArbitraryResidueBound
 
 /-!
-# PRE-VALIDATION: audit of the full-G arbitrary-residue bound
+# Cold-sealed audit of the full-G arbitrary-residue bound
 
-Source is present; the `.olean` is not yet materialized and the result has
-not yet been verified by the compiler.
+All four exact declarations were compiler-verified at source
+`eef777d32878297d9e143cbfaff82c290fbb9be1` in a fresh Colab Pro+ checkout;
+each printed exactly `{propext, Classical.choice, Quot.sound}`.
+See Verification Ledger Addendum 1107 for the retained cold evidence.
 -/
 
 #print axioms YangMills.RG.norm_cmp89Eq246PhysicalZeroMassGreen_le_signedLatticeWeight

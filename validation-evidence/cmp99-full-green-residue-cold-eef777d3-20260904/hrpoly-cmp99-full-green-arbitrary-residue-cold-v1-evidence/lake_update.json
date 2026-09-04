@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "8cbc4185f431ba769a04ca063af2786f7ba9053fc77233b5f1c827d7086df4a4", "seconds": 90.57283361400005, "stage": "lake_update"}

@@ -15694,7 +15694,7 @@ self-adjointness.  Its live status is:
 | 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass`, **cold-sealed** at source `440afa7b0883cc77a30f2457c879b025dcde32f1` (Ledger Addendum 1097) |
 | 11 | reindex an arbitrary selected residue as the canonical `valMinAbs` representative plus the zero residue fibre, then center at the full physical period | `BalabanCMP99FlatIntegerResidueClassDictionary`, **cold-sealed** at source `ac83083f89969d147505332ea6b7ab9bbb56f2cd` (Ledger Addendum 1100) |
 | 12 | combine the selected owner residue with both within-block endpoint displacements, identify its full-period residue with literal `source-target`, and transport the exact centered `l1` weight to the diagonal owner bound | `BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary`, **cold-sealed** at source `c9f4b725313dd879ae3ce6e99c844ce1d2f8b968` (Ledger Addendum 1105) |
-| 13 | apply the literal full two-endpoint Green contour estimate to an arbitrary selected residue class, retaining `cmp89Eq246DirectedFullSolutionSumBound K 1 a rho` and the exact geometric factor `(2 / (1 - exp(-rho)))^4` | `BalabanCMP99FullGreenArbitraryResidueBound`, hot focal/audit PASS at source `eef777d32878297d9e143cbfaff82c290fbb9be1` (Ledger Addendum 1106); PRE-VALIDATION retained pending cold gate; source-fixed coefficient constructed internally |
+| 13 | apply the literal full two-endpoint Green contour estimate to an arbitrary selected residue class, retaining `cmp89Eq246DirectedFullSolutionSumBound K 1 a rho` and the exact geometric factor `(2 / (1 - exp(-rho)))^4` | `BalabanCMP99FullGreenArbitraryResidueBound`, **cold-sealed** at source `eef777d32878297d9e143cbfaff82c290fbb9be1` (Ledger Addendum 1107); source-fixed coefficient constructed internally |
 | 14 | specialize step 13 to the two within-block endpoint displacements and apply step 12 to its combined affine base | planned scalar physical owner bound, with explicit amplitude, geometric factor and `exp(2*rho)` |
 | 15 | compose step 14 with step 10's constructed residue-class certificate | planned generated full point-source bound, retaining the literal `K^-4` normalization and `norm(v A)`; not yet a depth-uniform source-flow or regional bound |
 
@@ -15772,6 +15772,14 @@ arithmetic; it identifies the coefficient with
 The existing arbitrary-residue theorem therefore has precisely the needed
 input. For the norm of the complex sum, use the already sealed full-G
 summability theorem and its restriction to the residue subtype.
+
+Step 13 passed a fresh Colab Pro+
+checkout with no restored project build: 8639 jobs, focal exit 0 in
+1484.137 s, audit exit 0 in 18.888 s, four exact allowed-trio declarations.
+The complete archive and all sixteen child-log hashes were verified in Colab
+and again after download (Ledger Addendum 1107). Only the source/audit notices
+are retired and that audit is added to the root; no new root build is claimed.
+Steps 14--15 remain uncompiled local drafts, not installed producers.
 
 For step 14, instantiate those two integer endpoints exactly as they occur
 in `cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum`: the Green's

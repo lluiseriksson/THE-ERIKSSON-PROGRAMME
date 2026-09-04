@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "af9c62a85ec5080953d5038b615257c5f185f53834966787093450dad5901463", "seconds": 10.241253433999873, "stage": "clone"}

@@ -1,0 +1,1 @@
+{"command": ["lake", "exe", "cache", "get"], "cwd": "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1", "exit": 0, "log_file": "cache_get.log", "output_sha256": "18cfb29942326ace51032bafb8c557fb732db93edb34b6930fc372497a2503c1", "seconds": 7.974342747000037, "stage": "cache_get"}
