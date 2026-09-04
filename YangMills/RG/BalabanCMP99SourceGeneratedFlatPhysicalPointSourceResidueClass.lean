@@ -233,7 +233,12 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
     at hterm
   simp_rw [hterm]
   rw [← Finset.sum_mul, ← Finset.mul_sum, hbox]
-  rw [halias]
+  have hscale : ((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) =
+      (((Kfine : ℂ) ^ 4)⁻¹) * (((N : ℂ) ^ 4)⁻¹) := by
+    push_cast
+    rw [mul_pow, mul_inv_rev]
+    ring
+  rw [hscale, mul_assoc, halias]
   unfold cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
   dsimp [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp, r]
   push_cast
