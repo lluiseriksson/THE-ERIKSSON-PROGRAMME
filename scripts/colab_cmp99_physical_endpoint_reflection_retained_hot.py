@@ -16,15 +16,15 @@ import urllib.request
 
 
 HERE = Path("/content")
-BASE = HERE / "colab_cmp99_negative_physical_domain_retained_hot_v1.py"
+BASE = HERE / "colab_cmp99_negative_physical_domain_retained_hot_v2.py"
 BASE_URL = (
     "https://raw.githubusercontent.com/lluiseriksson/"
     "THE-ERIKSSON-PROGRAMME/"
-    "993b010b/"
+    "f59173b1/"
     "scripts/colab_cmp99_negative_physical_domain_retained_hot.py"
 )
 BASE_SHA256 = (
-    "8e70e44b6faf7ea0c167d8b1962d8e7d53f48c0a72055de068eac81ee6aebadf"
+    "21ff6063a43dc8dc463c88b2d39e09947e6144f6bf7a39d8ea667f7381968712"
 )
 
 with urllib.request.urlopen(BASE_URL, timeout=60) as response:
@@ -42,17 +42,17 @@ negative = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(negative)
 runner = negative.runner
 
-runner.RUNNER_REV = "cmp99-physical-endpoint-reflection-retained-hot-v1"
-runner.SOURCE_SHA = "04fed2066498200fd951b365aecb6144fd46c302"
+runner.RUNNER_REV = "cmp99-physical-endpoint-reflection-retained-hot-v2"
+runner.SOURCE_SHA = "4d61fbd43d48887da9009ba92941b83673acfaa0"
 runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-orientation-cold-v3")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-physical-endpoint-reflection-retained-hot-v1-evidence"
+    "/content/hrpoly-cmp99-physical-endpoint-reflection-retained-hot-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-physical-endpoint-reflection-retained-hot-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp99-physical-endpoint-reflection-retained-hot-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-physical-endpoint-reflection-retained-hot-v1-paths.txt"
+    "/content/hrpoly-cmp99-physical-endpoint-reflection-retained-hot-v2-paths.txt"
 )
 
 runner.SOURCE_BLOBS = {
