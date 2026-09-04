@@ -20,9 +20,11 @@ SOURCE = 'b536a21679ff811ceee9bf24452fa20dd866b166'
 COLD_SOURCE = '098cf3dfad1095c57bdc1d1dc5bc6b13252174d5'
 ROOT = Path('/content/hrpoly-cmp99-source-flow-full-green-foundations-v1')
 COLD_ARCHIVE = Path(str(ROOT) + '-evidence.tar.gz')
-REV = 'cmp99-generic-full-point-source-residue-hot-v1'
+REV = 'cmp99-generic-full-point-source-residue-hot-v2'
 LOGS = Path('/content') / (REV + '-logs')
-TOOLCHAIN = Path('/content/lean-4.29.0-rc6-linux/bin')
+# The pinned extractor uses an outer directory containing the asset's own
+# top-level directory. Measured via /proc/<cold-lake-pid>/exe in this runtime.
+TOOLCHAIN = Path('/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/bin')
 BLOBS = {
     'YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity.lean':
         'a6c552d832c83c0d2a230eb4257b57a5b175c0313c554c9de304cd9987cbd99a',
