@@ -1,7 +1,7 @@
 import YangMills.RG.BalabanCMP99CenteredPeriodicEndpointDictionary
 
 /-!
-# PRE-VALIDATION: arbitrary finite-grid residue classes as centered affine fibres
+# Arbitrary finite-grid residue classes as centered affine fibres
 
 The finite-grid selector returns an arbitrary residue class, not only residue
 zero.  This draft fixes the coordinatewise `ZMod.valMinAbs` representative,

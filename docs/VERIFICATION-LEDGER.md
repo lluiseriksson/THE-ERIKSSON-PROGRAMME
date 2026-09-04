@@ -45516,3 +45516,39 @@ Both are retained under
 Classification: `BLOCKED-INSTRUMENTATION`, not compiler evidence.  Step 11
 remains PRE-VALIDATION and outside `YangMillsCore.lean`; this incident does
 not move `20/41`, instantiate a `TermSource`, or attain window 15.
+
+## Addendum 1100 (2026-09-04, **arbitrary residue-class dictionary cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `ac83083f89969d147505332ea6b7ab9bbb56f2cd`
+passed the fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-arbitrary-residue-dictionary-cold-v2`.  The corrected runner was
+published at `858cd226915177a559db1a62eb670d9c60c3d5db`; its Git-blob SHA-256
+was `ADA1A01809CED1901991386C66FCA7F31D88CF30806300E7EB6903989F2CD8C8`.
+Lean `4.29.0-rc6` came from the pinned Linux asset with SHA-256
+`BF3E0A4025E47A0BEA9ED907D12DCCCD3D3590B1D8AD6C55A915298B01AD9D3E`,
+and Mathlib resolved exactly to
+`07642720480157414db592fa85b626dafb71355b`.
+
+The focal exited zero in `1840.712 s` with output SHA-256
+`47DE569DC610BEF230EAEFBD3FC3EC083812E2FFCA3E6684D679F64D694CBBD0`.
+The exact eight-declaration audit exited zero in `10.242 s` with output
+SHA-256
+`DA669EB804946D0FC8D5427AB553CD5413847C9C019A6F05657085B04659B64F`.
+The fail-closed axiom gate accepted every declaration as a subset of
+`{propext, Classical.choice, Quot.sound}`; neither `sorryAx` nor
+`ofReduceBool` appeared.
+
+The evidence archive was downloaded from the retained runtime and
+independently re-hashed on Windows to
+`DFEA26CBB69CE76A85C490B59DAA87C14AF0A35D64D722DB1C0CE547588BEBF8`.
+Its extracted `evidence.json` hashes to
+`A08366D319C8A2BD3E5CDF5339DD6121147D0DE540291D01521AD23351EC3CA6`.
+Both are preserved under
+`validation-evidence/cmp99-arbitrary-residue-dictionary-cold-ac83083f-20260904/`.
+
+Exactly the source PRE-VALIDATION notice is retired and the audit enters
+`YangMillsCore.lean`.  This seal closes only route step 11.  It does not
+identify the centered affine base with the literal fine-site displacement,
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
