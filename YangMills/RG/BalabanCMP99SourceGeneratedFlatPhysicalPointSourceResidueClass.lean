@@ -22,6 +22,27 @@ open scoped BigOperators
 
 noncomputable section
 
+/-- The literal affine residue-class coefficient selected by the two
+fine-site owners. Naming this scalar keeps the physical theorem signature
+small while preserving the displayed `K⁻⁴` normalization and every endpoint
+displacement definitionally. -/
+def cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
+    {K N : ℕ} [NeZero K] [NeZero N] (a : ℝ)
+    (source target : FinBox 4 (K * N)) : ℂ :=
+  (((K : ℂ) ^ 4)⁻¹) *
+    (∑' n : CMP99FlatIntegerResidueClass 4 N
+        (cmp99FinBoxZModEquiv 4 N (blockSite K N source) -
+          cmp99FinBoxZModEquiv 4 N (blockSite K N target)),
+      cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient
+        K 1 0 a
+        (fun mu =>
+          -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+            K source (blockSite K N source) mu)
+        (fun mu =>
+          -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+            K target (blockSite K N target) mu)
+        n)
+
 /-- The generated full periodic point-source Green is the affine residue
 sum selected by the reversed endpoint-owner difference, with the remaining
 fine-block normalization shown literally. -/
@@ -40,25 +61,11 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
     (cmp99SourceGeneratedFlatPhysicalStep7bGreenCLM
         (M := M) (Q := Q) (Nc := Nc) hM depth
         (cmp99FlatComplexFibrePointSource source v)) target A =
-      ((((M ^ (depth + 1) : ℕ) : ℂ) ^ 4)⁻¹) *
-        (∑' n : CMP99FlatIntegerResidueClass 4 (2 * (M * Q))
-            (cmp99FinBoxZModEquiv 4 (2 * (M * Q))
-                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) source) -
-              cmp99FinBoxZModEquiv 4 (2 * (M * Q))
-                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) target)),
-          cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient
-            (M ^ (depth + 1)) 1 0
-            (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
-              (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0)
-            (fun mu =>
-              -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
-                (M ^ (depth + 1)) source
-                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) source) mu)
-            (fun mu =>
-              -cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
-                (M ^ (depth + 1)) target
-                (blockSite (M ^ (depth + 1)) (2 * (M * Q)) target) mu)
-            n) * v A := by
+      cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
+        (K := M ^ (depth + 1)) (N := 2 * (M * Q))
+        (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
+          (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0)
+        source target * v A := by
   let Kfine : ℕ := M ^ (depth + 1)
   let N : ℕ := 2 * (M * Q)
   let a : ℝ :=
@@ -144,6 +151,7 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
       ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) * endpoint ell) * v A)) = _
   rw [← Finset.sum_mul, ← Finset.mul_sum, hbox]
   rw [← halias]
+  unfold cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
   dsimp [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp, r]
   push_cast
   ring
