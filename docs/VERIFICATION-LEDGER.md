@@ -45616,3 +45616,25 @@ Git-blob SHA-256 values `6B6E760A4AF04BD0F0B6438051F7922E956F3B7142DABE464785BF8
 and `8FABE6F585EAEEC19D292695596DDC0B2C468D72CC304EA07E75E8D86DBBD109`.
 No PRE-VALIDATION notice is retired from hot evidence. The live counters
 remain `20/41`, `TermSource = 0`; window 15 remains unattained.
+
+## Addendum 1104 (2026-09-04, **full-G arbitrary-residue bound written; compiler check pending**)
+
+The step-13 pair `BalabanCMP99FullGreenArbitraryResidueBound` and its
+four-declaration audit carry visible PRE-VALIDATION notices. They import
+only the sealed full-G contour/summability modules and the sealed arbitrary
+residue-class dictionary; the physical endpoint module currently in its
+cold gate is not a dependency.
+
+The draft derives the literal two-endpoint zero-mass Green bound, obtains
+nonnegativity of its full amplitude from the same bound at coincident zero
+endpoints, and constructs `coefficient(v) = Green(v + source, source)`
+internally. The arbitrary residue majorant is then applied with base
+`target-source`; full-G summability justifies passing from the absolute sum
+to the norm of the complex sum. No translation invariance, arbitrary
+coefficient family, or Green reconstruction equality is assumed.
+
+Both exact-file textual guards pass. No Lean, audit or cold evidence exists
+yet for this pair. It remains outside `YangMillsCore.lean`. The amplitude
+depends explicitly on `K`, `a`, and `rho`; no scale-uniform B0 or terminal
+field is claimed. The current cold gate for step 12 continues separately.
+Counters stay `20/41`, `TermSource = 0`, window 15 unattained.
