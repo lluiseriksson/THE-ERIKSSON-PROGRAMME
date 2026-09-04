@@ -16,12 +16,12 @@ import sys
 import time
 
 
-RUNNER_REV = "cmp99-arbitrary-residue-dictionary-hot-v6"
-SOURCE_SHA = "dccdecfb318c1edb8e27732bf657217a0783167e"
+RUNNER_REV = "cmp99-arbitrary-residue-dictionary-hot-v7"
+SOURCE_SHA = "9c9b461ba55fe918c3e402744600e365a04c2312"
 ROOT = Path("/content/hrpoly-cmp99-generated-residue-class-cold-v3")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99FlatIntegerResidueClassDictionary.lean":
-        "ce488ccc2b0619c6f1fee8192c2aff8f465d0679",
+        "312019010a8a36bcfcafda6fedbc61d4c275a008",
     "YangMills/RG/BalabanCMP99FlatIntegerResidueClassDictionaryAudit.lean":
         "2866cbd7542babb479b9ebb0e84497974edcadf7",
 }
@@ -60,7 +60,7 @@ def main() -> int:
         print(f"SOURCE_BLOB={path} OID={actual}", flush=True)
         if actual != expected:
             raise RuntimeError(f"SOURCE_BLOB_MISMATCH={path}")
-    manifest = Path("/content/cmp99-arbitrary-residue-dictionary-hot-v6-paths.txt")
+    manifest = Path("/content/cmp99-arbitrary-residue-dictionary-hot-v7-paths.txt")
     manifest.write_text("\n".join(SOURCE_BLOBS) + "\n", encoding="utf-8")
     run(
         "overlay_text_guard",
