@@ -45287,3 +45287,25 @@ The retained runtime is kept only for the bounded retry.  PRE-VALIDATION
 remains visible, no seal is inferred from the successful prefix, counters
 remain exactly `20/41`, window 15 remains compatible but unattained, and
 `TermSource = 0` remains exact.
+
+## Addendum 1092 (2026-09-04, **full endpoint reflection promoted PRE-VALIDATION; no seal**)
+
+Checkpoint `14b1802a` promotes the finite composition immediately after the
+orientation queue.  `BalabanCMP89Eq246FullEndpointReflection` composes the
+literal direct/transpose pairing, the actual half-open alias involution and
+the fine-point-source target dictionary to prove
+`F(-z,-t,-s) = F(z,-s,-t)`.  The only analytic inputs are the two already
+named complete solver domains at `z` and `-z`; no Green symmetry, solved
+inverse or physical bound is assumed.  The adjacent
+`BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter` rewrites the
+target-owner/source-owner coefficient into the exact negative DFT character
+at the reversed owner difference without identifying half-open natural
+representatives.
+
+Both source/audit pairs pass the lightweight overlay-text and import-prefix
+guards, carry visible PRE-VALIDATION notices and remain outside
+`YangMillsCore.lean`.  They have not been compiler- or axiom-verified.  This
+promotion does not identify the reflected outer synthesis with an affine
+residue sum, produce CMP89 (2.42), uniform physical `B0`/`delta0`, attain
+window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.
