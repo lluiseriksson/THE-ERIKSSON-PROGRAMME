@@ -84,20 +84,22 @@ structure CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData
   v : SUNLieComplexCoord Nc
   A : Fin (Nc ^ 2 - 1)
 
-/-- The exact physical residue-class proposition attached to one explicit data
-record. Naming the proposition keeps the theorem declaration opaque while the
-proof still unfolds and establishes the literal equality below. -/
-def CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData.statement
+/-- A proposition-valued certificate whose field is the exact physical
+residue-class equality. Unlike a reducible `Prop` definition, the structure
+type lets the terminal theorem remain opaque during header elaboration while
+the named projection exposes the literal equality to consumers. -/
+structure CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassCertificate
     {M Q Nc : ℕ} [NeZero M] [NeZero Q] [NeZero Nc]
-    (data : CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData M Q Nc) : Prop :=
-  cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
+    (data : CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData M Q Nc) : Prop where
+  eq_scaledResidueClass :
+    cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
       (M := M) (Q := Q) (Nc := Nc) data.hM data.depth
       data.source data.target data.v data.A =
-    cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
-      (M := M) (Q := Q) data.depth
-      (cmp99SourceGeneratedFullComplexA 4 M (data.depth + 1)
-        (cmp99SourceGeneratedFullComplexSpacing M (data.depth + 1)) 0)
-      data.source data.target * data.v data.A
+      cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
+        (M := M) (Q := Q) data.depth
+        (cmp99SourceGeneratedFullComplexA 4 M (data.depth + 1)
+          (cmp99SourceGeneratedFullComplexSpacing M (data.depth + 1)) 0)
+        data.source data.target * data.v data.A
 
 /-- The generated full periodic point-source Green is the affine residue
 sum selected by the reversed endpoint-owner difference, with the remaining
@@ -105,8 +107,8 @@ fine-block normalization shown literally. -/
 theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueClass
     {M Q Nc : ℕ} [NeZero M] [NeZero Q] [NeZero Nc]
     (data : CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData M Q Nc) :
-    data.statement := by
-  unfold CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassData.statement
+    CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassCertificate data := by
+  constructor
   rcases data with
     ⟨hM, depth, rho, hrho, hamplitude, hradius, hdenWindow, hpairWindow,
       source, target, v, A⟩
