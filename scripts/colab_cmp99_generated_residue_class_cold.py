@@ -45,17 +45,17 @@ base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
 runner = base.runner
 
-runner.RUNNER_REV = "cmp99-generated-residue-class-cold-v2"
+runner.RUNNER_REV = "cmp99-generated-residue-class-cold-v3"
 runner.SOURCE_SHA = "440afa7b0883cc77a30f2457c879b025dcde32f1"
-runner.ROOT = Path("/content/hrpoly-cmp99-generated-residue-class-cold-v2")
+runner.ROOT = Path("/content/hrpoly-cmp99-generated-residue-class-cold-v3")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-generated-residue-class-cold-v2-evidence"
+    "/content/hrpoly-cmp99-generated-residue-class-cold-v3-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-generated-residue-class-cold-v2-evidence.tar.gz"
+    "/content/hrpoly-cmp99-generated-residue-class-cold-v3-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-generated-residue-class-cold-v2-paths.txt"
+    "/content/hrpoly-cmp99-generated-residue-class-cold-v3-paths.txt"
 )
 
 runner.SOURCE_BLOBS = {
@@ -84,7 +84,10 @@ runner.QUEUE = [
             "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClassAudit.lean",
         ],
         frozenset({
-            "YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueClass"
+            "YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum",
+            "YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue",
+            "YangMills.RG.CMP99SourceGeneratedFlatPhysicalPointSourceResidueClassCertificate.eq_scaledResidueClass",
+            "YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueClass",
         }),
     ),
 ]
