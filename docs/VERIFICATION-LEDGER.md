@@ -45397,3 +45397,19 @@ remain outside `YangMillsCore.lean` pending a fresh compiler and exact-axiom
 gate. This promotion does not prove CMP89 (2.42), produce uniform physical
 `B0`/`delta0`, attain window 15, discharge rows 23--24, move `20/41`, or
 construct a `TermSource`; `TermSource = 0` remains exact.
+
+## Addendum 1096 (2026-09-04, **arbitrary residue-class dictionary promoted PRE-VALIDATION; no seal**)
+
+`BalabanCMP99FlatIntegerResidueClassDictionary` fixes the coordinatewise
+`ZMod.valMinAbs` lift of an arbitrary finite-grid residue, translates that
+class to the already sealed zero class by an exact equivalence, and reuses
+the centered full-period affine-fibre estimate.  The even antipodal seam is
+not identified by signed equality: only the pre-existing equality of
+magnitudes is available to later exponential bounds.
+
+The source and eight-declaration audit retain visible PRE-VALIDATION notices
+and remain outside `YangMillsCore.lean` pending a compiler and exact-axiom
+gate.  This promotion does not yet identify the centered affine base with
+the literal source-target fine displacement, prove CMP89 (2.42), produce
+uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
