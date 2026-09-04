@@ -15818,8 +15818,8 @@ in the tree is not the full `G` identity. These endpoints must not be exchanged.
 #### Full-G source-flow continuation: static contract after steps 14--15
 
 This is a finite design checklist, not a compiler seal or an additional
-producer count. The steps 14--15 queue is still pending. Do not identify
-its generated coefficient with the source coefficient, or inherit the
+producer count. Steps 14--15 are cold-sealed in Ledger Addendum 1108.
+Do not identify their generated coefficient with the source coefficient, or inherit the
 existing `G Q'^*` uniform coefficient for full `G`.
 
 Keep three independent scale names: RG ratio `L`, localization size `Kloc`,
@@ -15834,7 +15834,7 @@ coefficient additionally contains `R^4`. Do not apply that factor twice.
 |---|---|---|
 | F1 | the full Eq. (2.46) fine point-source solution equals the internally constructed source-flow Green on the same carrier | specialize `cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply` with `cmp99SourceSeparatedSourceFlowFlatPhysicalStep7bGreenCLM_comp_precision`; noncentral mass-zero, stabilized-denominator and central averaging-pair nonvanishing are already named lemmas. Do not use the final `StabilizedFieldCLM_eq_green_comp`, whose endpoint contains `Q'^*`. |
 | F2 | source-flow full Green equals `R^-4` times the literal reflected/swapped affine residue sum | reuse the generic outer synthesis, endpoint reflection, owner character and finite-grid aliasing; retain independent `L,Kloc,Q,j`. The generated residue-class certificate fixes `N=2*(M*Q)` and is not an independent-scale source-flow certificate. |
-| F3 | a literal source-flow full-G point-source owner bound | apply generic step 14 at `K=R,N=2*(Kloc*Q)` to F2 and keep the source-vector norm, `R^-4`, geometric fourth power and `exp(2*rho)` exactly once. Depends on the pending step-14 seal. |
+| F3 | a literal source-flow full-G point-source owner bound | apply cold-sealed generic step 14 at `K=R,N=2*(Kloc*Q)` to F2 and keep the source-vector norm, `R^-4`, geometric fourth power and `exp(2*rho)` exactly once. F2 remains open. |
 | F4 | one positive radius and one amplitude for all source depths, for the **full** coefficient in F3 | combine the positive CMP85 floor with a source-coefficient upper bound, central-pair window and normalized bare diagonal estimate; a complete proof is still required. The old uniform `G Q'^*` amplitude is not this coefficient. |
 | F5 | transfer the full bound to the literal source-localized/regional consumer and the required derivative species | consume F3/F4 through the existing source/retained-carrier dictionaries with physical norm and spacing factors exposed. No regional, derivative or window-15 claim follows from a point-source value estimate alone. |
 
@@ -15861,6 +15861,23 @@ noncentral and stabilized-denominator windows; its statement does not
 include `CMP89Eq249CentralAveragePairComplexWindow`. F4 must choose a common
 radius satisfying that extra window too, before claiming full-G uniformity.
 Counters remain `20/41`, `TermSource = 0`, window 15 unattained.
+
+F1 and the scalar foundations of F4 are PRE-VALIDATION at source
+`098cf3dfad1095c57bdc1d1dc5bc6b13252174d5`, in one fresh Colab queue.
+The scalar pair proves only the recurrence upper bound, equality of scalar
+moment budgets, its antitonicity, and one radius with all four windows.
+It does not yet bound the complete amplitude. Runner/verifier checkpoint:
+`3dd028d371761e0080fe9573bf750c055fdaae7a`; one-shot launcher:
+`c62a2d364dd41655f3960f012b9b19d80701ddf3`. No compiler verdict is claimed here.
+
+F2's finite-sum algebra can be proved first for the generic full point-source
+solution with arbitrary `R,N,a`, using
+`cmp99SourceFlatFullComplexPrecisionPointSourceSolution_apply_eq_outerIntegrandSum`.
+The generic theorem must retain the same reflected/swapped endpoints and
+`R^-4` times `cmp99PhysicalFullGreenUnscaledOwnerResidueSum`; no generated
+Green is required in that algebra. Only its final source-flow specialization
+uses F1 at `R=L^(j+1), N=2*(Kloc*Q), a=a_j`. This is a design route, not an
+extra supplied inverse/reconstruction hypothesis or a new verified brick.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
