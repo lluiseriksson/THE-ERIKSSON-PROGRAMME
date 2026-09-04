@@ -45,24 +45,24 @@ base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
 runner = base.runner
 
-runner.RUNNER_REV = "cmp99-generated-residue-class-cold-v1"
-runner.SOURCE_SHA = "4fb48ac006a3817b1382184dbcd4c94232ad678a"
-runner.ROOT = Path("/content/hrpoly-cmp99-generated-residue-class-cold-v1")
+runner.RUNNER_REV = "cmp99-generated-residue-class-cold-v2"
+runner.SOURCE_SHA = "440afa7b0883cc77a30f2457c879b025dcde32f1"
+runner.ROOT = Path("/content/hrpoly-cmp99-generated-residue-class-cold-v2")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-generated-residue-class-cold-v1-evidence"
+    "/content/hrpoly-cmp99-generated-residue-class-cold-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-generated-residue-class-cold-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp99-generated-residue-class-cold-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-generated-residue-class-cold-v1-paths.txt"
+    "/content/hrpoly-cmp99-generated-residue-class-cold-v2-paths.txt"
 )
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass.lean":
-        "637f579145e3c230c79cd378a911c6fc307e0f31193731a927ecb0180a946ba2",
+        "90a7f6c6b29f0dd9c2c260d199c62e03f62f000bef2f9b8b82dce1d35814da1a",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClassAudit.lean":
-        "e1e4afa23f2825a4202782ab174076fbbfcb82c601cc8029246314a308c031ee",
+        "b9f6fcee2fc3760ab7893f0836c8e566cdd4f0847b7fb6a2a2f5356e50f66732",
 }
 
 runner.QUEUE = [
