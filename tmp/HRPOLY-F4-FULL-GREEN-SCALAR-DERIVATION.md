@@ -62,3 +62,14 @@ project-free R-power inequality in a minimal Mathlib repro; then prove the
 hybrid coefficient inequalities against the literal definitions; only then
 instantiate the common source-flow radius. No compiler execution is claimed
 for any part of this note.
+
+## Auxiliary normalization checked, 2026-09-04 UTC
+
+The elementary R-power inequalities alone passed the Colab Mathlib repro
+at source 995370c162c80694029242785925e7bae08476f4, exit0/11.700545847s,
+two exact allowed-trio declarations. The first additive-orientation error
+is preserved beside the corrected run under
+validation-evidence/f4-normalization-repro-20260904/. This is hot auxiliary
+evidence, not a cold seal and not a proof of the hybrid amplitude bound above.
+The original final sentence refers to the derivation when first written;
+only these two elementary inequalities now have compiler evidence.
