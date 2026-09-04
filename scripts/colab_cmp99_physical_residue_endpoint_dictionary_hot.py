@@ -11,21 +11,24 @@ PRE-VALIDATION notice.
 from __future__ import annotations
 
 import os
+import hashlib
+import json
 from pathlib import Path
 import subprocess
 import sys
 import time
 
 
-RUNNER_REV = "cmp99-physical-residue-endpoint-dictionary-hot-v2"
-SOURCE_SHA = "b72c6d4ae9e174bf8d003d9fc0747d4bbd1151f1"
+RUNNER_REV = "cmp99-physical-residue-endpoint-dictionary-hot-v3"
+SOURCE_SHA = "222e482ac3745aa38f6b22c8d32695d9b2751e1c"
+LOG_DIR = Path("/content") / (RUNNER_REV + "-logs")
 ROOT = Path("/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v2")
 TOOLCHAIN_BIN = Path(
     "/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/bin"
 )
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary.lean":
-        "1353ece31405b5ea18a76b163651f2d0fc484d2a",
+        "54379bd3cae184a9edc363bc58ec86b8a674b306",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionaryAudit.lean":
         "639be11b08b488f64fb414038b9e627eb92f9f2b",
 }
@@ -34,8 +37,21 @@ SOURCE_BLOBS = {
 def run(stage: str, command: list[str], cwd: Path = ROOT) -> None:
     started = time.perf_counter()
     print(f"STAGE={stage} CMD={command!r}", flush=True)
-    result = subprocess.run(command, cwd=cwd, env=os.environ.copy())
+    LOG_DIR.mkdir(exist_ok=True)
+    log = LOG_DIR / (stage + ".log")
+    with log.open("wb") as stream:
+        result = subprocess.run(command, cwd=cwd, env=os.environ.copy(),
+                                stdout=stream, stderr=subprocess.STDOUT)
     elapsed = time.perf_counter() - started
+    content = log.read_bytes()
+    print(content.decode("utf-8", errors="replace"), end="", flush=True)
+    record = {"stage": stage, "exit": result.returncode, "seconds": elapsed,
+              "source_sha": SOURCE_SHA, "runner_rev": RUNNER_REV,
+              "log_sha256": hashlib.sha256(content).hexdigest()}
+    record_path = LOG_DIR / (stage + ".json")
+    temporary = record_path.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(record_path)
     print(
         f"STAGE={stage} EXIT={result.returncode} SECONDS={elapsed:.3f}",
         flush=True,
