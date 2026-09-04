@@ -16,14 +16,14 @@ import sys
 import time
 
 
-RUNNER_REV = "cmp99-generated-residue-class-timeout-repair-hot-v2"
-SOURCE_SHA = "bee89cdf0e156b66c4c14109b78888f48119d08d"
+RUNNER_REV = "cmp99-generated-residue-class-timeout-repair-hot-v3"
+SOURCE_SHA = "eab174fd349950fa7dedd1ad9c2f2813bc4b3493"
 ROOT = Path("/content/hrpoly-cmp99-generated-residue-class-cold-v1")
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass.lean":
-        "bac9140b8e6223a40a59d404f48bd4bdbe8a26a0",
+        "fcbff1ea72dbfaf88a8894ee027bf3e746e1b808",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClassAudit.lean":
-        "8bd065250969b23333e88af39686019bfcc4de25",
+        "905fa26eeca9418c6975fb89adeea2e7769a2451",
 }
 
 
@@ -61,7 +61,7 @@ def main() -> int:
         if actual != expected:
             raise RuntimeError(f"SOURCE_BLOB_MISMATCH={path}")
     manifest = Path(
-        "/content/cmp99-generated-residue-class-timeout-repair-hot-v2-paths.txt"
+        "/content/cmp99-generated-residue-class-timeout-repair-hot-v3-paths.txt"
     )
     manifest.write_text("\n".join(SOURCE_BLOBS) + "\n", encoding="utf-8")
     run(
