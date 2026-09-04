@@ -45309,3 +45309,46 @@ promotion does not identify the reflected outer synthesis with an affine
 residue sum, produce CMP89 (2.42), uniform physical `B0`/`delta0`, attain
 window 15, discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1093 (2026-09-04, **orientation prefix through physical finite-grid aliasing cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `6d847ab0e386b091e8ab9843d615c39bd3b41939`
+passed fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-full-point-source-orientation-cold-v3`.  The immutable runner vehicle
+is `e33a91bdfb5a4e066e1df4aaf4673424111afac5`; its SHA-256 is
+`608EE112C08C579B9FDF89A2E6BC36D4C4D91E0C68D70449E1D676B67C5494D6`.
+The checkout restored no project `.lake/build` graph, used Lean
+`v4.29.0-rc6` and Mathlib
+`07642720480157414db592fa85b626dafb71355b`, verified all ten Git source
+blobs, and passed the overlay-text and import-prefix guards before Lean.
+
+The stop-on-first-error queue completed every focal/audit pair:
+
+- mixed centered/physical domains: focal `2371.639 s`, audit `15.158 s`;
+- full physical finite-grid aliasing: focal `186.646 s`, audit `12.818 s`;
+- direct/transpose full-solution pairing: focal `28.659 s`, audit `8.595 s`;
+- half-open alias-reflection involution: focal `17.574 s`, audit `8.344 s`;
+- fine point-source target duality: focal `16.583 s`, audit `9.238 s`.
+
+Every command exited zero.  The strict audit gate found exactly eleven
+declarations; every declaration used a subset of
+`{propext, Classical.choice, Quot.sound}`, and neither `sorryAx` nor
+`ofReduceBool` appears.  Exactly the seven visible PRE-VALIDATION notices in
+this queue are retired and the five audits enter `YangMillsCore.lean`.
+
+Colab emitted evidence payload SHA-256
+`0E754D605D4A1BCE109003EDD006766945557E8D76F8EB43BA8AFB9D4A523C96`
+and archive SHA-256
+`B32D0F56F1B2A5AFBDC46B4483055F3F6B7384428E8853E7C0A787FDD61F9036`.
+The downloaded archive independently re-hashed to the same value; its
+extracted `evidence.json` hashes to
+`87C229609971A531DC502D2F502E7256E7759887F7A98C05FDD7A31FDADE6388`.
+Both are preserved under
+`validation-evidence/cmp99-full-point-source-orientation-cold-6d847ab0-20260904/`.
+
+This seal establishes the finite orientation prefix only.  It does not yet
+seal the full endpoint-reflection composition, the reversed-owner helper or
+the final source-specific generated-Green identification; it also does not
+prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
+discharge rows 23--24, move `20/41`, or construct a `TermSource`;
+`TermSource = 0` remains exact.

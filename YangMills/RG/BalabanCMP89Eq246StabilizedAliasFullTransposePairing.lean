@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasTransposeFullSolution
 
 /-!
-# PRE-VALIDATION: direct/transpose pairing for the full CMP89 (2.46) solve
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Direct/transpose pairing for the full CMP89 (2.46) solve
 
 The direct and transposed arbitrary-source solvers already satisfy the two
 literal finite matrix equations.  This module records the exact bilinear

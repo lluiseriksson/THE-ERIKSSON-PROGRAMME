@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceCenteredAliasReflection
 
 /-!
-# PRE-VALIDATION: involutivity of the printed half-open alias reflection
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Involutivity of the printed half-open alias reflection
 
 The printed centered alias interval is not closed under literal integer
 negation.  Its already sealed reflection is residue negation conjugated by

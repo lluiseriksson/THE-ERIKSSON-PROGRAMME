@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99FullGreenFiniteGridAliasing
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceMixedDomain
 
 /-!
-# PRE-VALIDATION: physical finite-grid aliasing for the full Eq. (2.46) Green
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Physical finite-grid aliasing for the full Eq. (2.46) Green
 
 The centered full-G torus sample is replaced by the literal uncentered CMP99
 coarse momentum in the complete two-endpoint finite-grid aliasing identity.

@@ -6,10 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP89Eq246DirectedEndpointPhase
 
 /-!
-# PRE-VALIDATION: target/source phase duality below CMP89 (2.46)
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Target/source phase duality below CMP89 (2.46)
 
 The positive Fourier phase used to synthesize an output endpoint is exactly
 the normalized fine-point-source vector evaluated at the negated endpoint.

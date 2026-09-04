@@ -6,10 +6,9 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceMixedDomain
 
 /-!
-# PRE-VALIDATION audit: mixed centered/physical full Eq. (2.46) domains
+# Audit: mixed centered/physical full Eq. (2.46) domains
 
-Source is present; its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.  The audit checks the four
+The audit checks the four
 proof-bearing declarations; the two mixed momentum objects are definitions
 and do not enlarge the audit denominator.
 -/

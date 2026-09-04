@@ -15684,11 +15684,11 @@ self-adjointness.  Its live status is:
 | 0 | complete solver domains at the centered and physical coarse representatives | **cold-sealed** at source `e4f2bbc33599da7b0f7ff91deeb5307719616a25` (Ledger Addendum 1088) |
 | 1 | generated periodic Green equals the reflected outer Eq. (2.46) synthesis | `BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary`, **PRE-VALIDATION** |
 | 2 | target-owner mode times inverse source-owner mode equals the literal negative DFT character | `BalabanCMP99SourceFlatFullPointSourceOwnerCharacter`, **PRE-VALIDATION** |
-| 3 | both adjacent centered/physical solver domains used by one period shift | `BalabanCMP99SourceFlatFullPointSourceMixedDomain`, **PRE-VALIDATION** at `e64616a0209f781a86a3622860f28e60c867d35d` |
-| 4 | normalized physical finite DFT equals the affine residue-class sum | `BalabanCMP99FullGreenPhysicalFiniteGridAliasing`, **PRE-VALIDATION** at `f9f3b385cd84eb5820d628481bc86d2e48cc216a` |
-| 5 | exact bilinear pairing of the internally constructed direct and transposed full solves | `BalabanCMP89Eq246StabilizedAliasFullTransposePairing`, **PRE-VALIDATION** at `63267d726d20158953aef4a85909f052533b99cb` |
-| 6 | the actual half-open depth-one alias reflection is involutive | `BalabanCMP99SourceAliasReflectionInvolutive`, **PRE-VALIDATION** at `2338239c8468deaf2b129b9dacdf83f32b4c2c84` |
-| 7 | a positive target phase is the normalized point-source vector at the negated endpoint | `BalabanCMP89Eq246FinePointSourceTargetDuality`, **PRE-VALIDATION** at `f7c1174b843f63e4435b69f940c58f26a0ad621d` |
+| 3 | both adjacent centered/physical solver domains used by one period shift | `BalabanCMP99SourceFlatFullPointSourceMixedDomain`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
+| 4 | normalized physical finite DFT equals the affine residue-class sum | `BalabanCMP99FullGreenPhysicalFiniteGridAliasing`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
+| 5 | exact bilinear pairing of the internally constructed direct and transposed full solves | `BalabanCMP89Eq246StabilizedAliasFullTransposePairing`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
+| 6 | the actual half-open depth-one alias reflection is involutive | `BalabanCMP99SourceAliasReflectionInvolutive`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
+| 7 | a positive target phase is the normalized point-source vector at the negated endpoint | `BalabanCMP89Eq246FinePointSourceTargetDuality`, **cold-sealed** at source `6d847ab0e386b091e8ab9843d615c39bd3b41939` (Ledger Addendum 1093) |
 | 8 | full endpoint-reflection identity `F(-z,-t,-s) = F(z,-s,-t)` under the already named complete solver domains | `BalabanCMP89Eq246FullEndpointReflection`, **PRE-VALIDATION** |
 | 9 | rewrite the reflected owner coefficient as the negative DFT character and instantiate step 4 at the swapped within-block endpoints | reversed-owner helper `BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter` **PRE-VALIDATION**; composition gate open |
 | 10 | identify the resulting affine residue sum with the source-specific periodic/generated point-source Green consumed by the regional image formula | **open endpoint of this chain** |
@@ -15699,9 +15699,11 @@ endpoint of the half-open alias carrier; step 7 accounts for the sign change
 between output synthesis and normalized point-source Fourier conventions.
 Only their proved composition may establish step 8.  A prefix green through
 any earlier step is not physical finite-grid aliasing and moves neither live
-counter.  Until the PRE-VALIDATION queue and its exact axiom audits pass,
-the live state remains `20/41`, `TermSource = 0`, and window 15 compatible
-but unattained.
+counter.  The fresh-checkout queue through step 7 and all five exact audits
+passed at source `6d847ab0e386b091e8ab9843d615c39bd3b41939`; the retained
+evidence is recorded in Ledger Addendum 1093.  This verified prefix does not
+complete steps 8--10: the live state remains `20/41`, `TermSource = 0`, and
+window 15 compatible but unattained.
 
 The promoted step-8 theorem composes the direct/transpose pairing, the actual
 half-open alias involution and the fine-point-source target dictionary.  It
@@ -15764,7 +15766,7 @@ bounded repair is recorded with the exact FAIL evidence in Verification
 Ledger Addendum 1091.  It remains PRE-VALIDATION until a compiler and exact
 axiom retry pass.
 
-### Eq. (2.46) full physical finite-grid aliasing (PRE-VALIDATION)
+### Eq. (2.46) full physical finite-grid aliasing (cold-sealed)
 
 Source checkpoint `f9f3b385cd84eb5820d628481bc86d2e48cc216a` replaces the
 centered full-G torus sample by the literal uncentered CMP99 momentum inside
@@ -15773,10 +15775,11 @@ pulls the descended torus Green back to its centered representative and then
 consumes the mixed-domain telescope; it never declares the central quotient
 periodic outside a constructed solver domain.
 
-Both modules carry visible PRE-VALIDATION notices and remain outside
-`YangMillsCore.lean` pending compiler and exact-axiom evidence.  This is still
-a finite-grid identity, not the inverse-uniqueness bridge to the internally
-generated regional Green.  It does not prove CMP89 (2.42), produce uniform
+The focal and exact audit passed in the fresh-checkout orientation gate at
+source `6d847ab0e386b091e8ab9843d615c39bd3b41939`; both modules now enter
+`YangMillsCore.lean`.  This is still a finite-grid identity, not the
+inverse-uniqueness bridge to the internally generated regional Green.  It
+does not prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
 

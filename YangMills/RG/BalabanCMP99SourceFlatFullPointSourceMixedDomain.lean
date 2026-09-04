@@ -7,10 +7,7 @@ import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain
 import YangMills.RG.BalabanCMP99CenteredTorusPhysicalGreenSampleTransport
 
 /-!
-# PRE-VALIDATION: mixed centered/physical domains for the full Eq. (2.46) solver
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Mixed centered/physical domains for the full Eq. (2.46) solver
 
 This module isolates the only non-periodic ingredient needed while
 changing the four coarse-momentum coordinates one at a time: the central
