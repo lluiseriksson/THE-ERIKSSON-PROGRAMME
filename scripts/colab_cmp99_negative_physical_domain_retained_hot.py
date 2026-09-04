@@ -42,22 +42,22 @@ endpoint = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(endpoint)
 runner = endpoint.runner
 
-runner.RUNNER_REV = "cmp99-negative-physical-domain-retained-hot-v1"
-runner.SOURCE_SHA = "d5414bb4b3c89946662b12be51da641a614d3cab"
+runner.RUNNER_REV = "cmp99-negative-physical-domain-retained-hot-v2"
+runner.SOURCE_SHA = "4d61fbd43d48887da9009ba92941b83673acfaa0"
 runner.ROOT = Path("/content/hrpoly-cmp99-full-point-source-orientation-cold-v3")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-negative-physical-domain-retained-hot-v1-evidence"
+    "/content/hrpoly-cmp99-negative-physical-domain-retained-hot-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-negative-physical-domain-retained-hot-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp99-negative-physical-domain-retained-hot-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-negative-physical-domain-retained-hot-v1-paths.txt"
+    "/content/hrpoly-cmp99-negative-physical-domain-retained-hot-v2-paths.txt"
 )
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain.lean":
-        "15afb0ea67d2b0a29240cae1be31f457622036dc60ce8550a8e5deb570758d47",
+        "f30658af067eeaaf942f4d143e95757680118a62f9bad76d01cb77bad7efc74c",
     "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomainAudit.lean":
         "cd257952fd0e9c1d25ab09e1b619ecdf5f2db38588c16543231e57edd1dff6c4",
 }
