@@ -253,8 +253,6 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
       rw [halias]
       unfold cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
       dsimp [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp, r]
-      push_cast
-      ring
 
 end
 
