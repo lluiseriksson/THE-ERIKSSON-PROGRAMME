@@ -3,10 +3,7 @@ import YangMills.RG.BalabanCMP89Eq246StabilizedAliasTransposeFullSolution
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain
 
 /-!
-# PRE-VALIDATION: complete solver domain at the negated physical momentum
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Complete solver domain at the negated physical momentum
 
 The endpoint-reflection theorem needs the complete finite solver domain at
 both `z` and `-z`.  This module constructs the second domain from the sealed

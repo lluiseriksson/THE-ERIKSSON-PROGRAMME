@@ -45352,3 +45352,33 @@ the final source-specific generated-Green identification; it also does not
 prove CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1094 (2026-09-04, **endpoint-reflection composition chain cold-sealed; 20/41 unchanged**)
+
+Exact source checkpoint `4d61fbd43d48887da9009ba92941b83673acfaa0`
+passed fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-endpoint-reflection-chain-cold-v2` with Mathlib pinned to
+`07642720480157414db592fa85b626dafb71355b`. The queue compiled the six exact
+source/audit pairs for generated outer synthesis, owner character, full
+endpoint reflection, reversed-owner character, the negative physical solver
+domain and physical endpoint reflection. Every focal and audit exited zero;
+the generated-outer-synthesis focal was the longest stage at `2258.208 s`,
+and the final physical endpoint-reflection focal/audit took `14.159 s` and
+`8.353 s`. The exact axiom gate found only subsets of
+`{propext, Classical.choice, Quot.sound}`.
+
+The downloaded archive independently re-hashed to
+`6FB44AE7A473CAB29F7C5256D2BBD8A289CEE522BDAEBBA1EB7C7FE43A927E43`.
+The executed notebook hashes to
+`A1AB9355722DD32B2666529F4FDC2CD70630F646F3965F6F89CFDF0AD862B9F6`,
+and the extracted evidence payload hashes to
+`F5900CAFB172D1C4AAFA50CE18489DC5D2B5EF93FEA50A623281EDE9214EDE9C`.
+They are preserved under
+`validation-evidence/cmp99-endpoint-reflection-chain-cold-4d61fbd4-20260904/`.
+The runtime was then disconnected and deleted.
+
+Exactly the twelve certified PRE-VALIDATION notices are retired and the six
+audits enter `YangMillsCore.lean`. This seal does not compose the affine
+residue classes, prove CMP89 (2.42), produce uniform physical `B0`/`delta0`,
+attain window 15, discharge rows 23--24, move `20/41`, or construct a
+`TermSource`; `TermSource = 0` remains exact.

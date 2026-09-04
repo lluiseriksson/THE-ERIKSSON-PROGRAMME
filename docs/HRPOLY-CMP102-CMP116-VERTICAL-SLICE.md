@@ -16516,3 +16516,31 @@ from the summable rank-one correction: the former carries the printed
 alias weight. This checkpoint does not prove CMP89 (2.42), produce uniform
 physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
 `20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.
+
+### Eq. (2.46) endpoint-reflection composition chain (cold-sealed)
+
+Fresh Colab Pro+ CPU/high-RAM runner
+`cmp99-endpoint-reflection-chain-cold-v2` checked out exact source
+`4d61fbd43d48887da9009ba92941b83673acfaa0`, used Mathlib
+`07642720480157414db592fa85b626dafb71355b`, and completed the six exact
+source/audit pairs for generated outer synthesis, owner character, full
+endpoint reflection, reversed-owner character, the negative physical solver
+domain and the final physical endpoint reflection. Every focal and audit
+exited zero. The strict axiom blocks use only
+`{propext, Classical.choice, Quot.sound}`.
+
+The downloaded evidence archive has SHA-256
+`6FB44AE7A473CAB29F7C5256D2BBD8A289CEE522BDAEBBA1EB7C7FE43A927E43`;
+the executed notebook has SHA-256
+`A1AB9355722DD32B2666529F4FDC2CD70630F646F3965F6F89CFDF0AD862B9F6`;
+and the extracted `evidence.json` has SHA-256
+`F5900CAFB172D1C4AAFA50CE18489DC5D2B5EF93FEA50A623281EDE9214EDE9C`.
+All three are preserved under
+`validation-evidence/cmp99-endpoint-reflection-chain-cold-4d61fbd4-20260904/`.
+Exactly the twelve certified PRE-VALIDATION notices are retired and the six
+audits enter `YangMillsCore.lean`.
+
+This seal fixes the endpoint orientation and reflection composition. It does
+not yet compose the affine residue classes, prove CMP89 (2.42), construct a
+uniform physical `B0`/`delta0`, attain window 15, discharge rows 23--24, move
+`20/41`, or construct a `TermSource`; `TermSource = 0` remains exact.

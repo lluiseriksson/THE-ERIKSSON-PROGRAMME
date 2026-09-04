@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP89Eq246FullEndpointReflection
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain
 
 /-!
-# PRE-VALIDATION: physical endpoint reflection with domains built internally
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Physical endpoint reflection with domains built internally
 
 This specialization supplies both complete Eq. (2.46) solver domains from
 the physical source producers.  The statement has no free inverse, no free

@@ -2,10 +2,7 @@ import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionar
 import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceGreenIdentification
 
 /-!
-# PRE-VALIDATION: generated full Green as the reflected CMP89 (2.46) outer synthesis
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Generated full Green as the reflected CMP89 (2.46) outer synthesis
 
 This is the exact composition gate after the four endpoint-character
 dictionaries.  It rewrites the internally constructed periodic point-source

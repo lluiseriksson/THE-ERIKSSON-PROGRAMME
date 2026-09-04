@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerCharacter
 
 /-!
-# PRE-VALIDATION: reversed-owner character below the reflected outer synthesis
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Reversed-owner character below the reflected outer synthesis
 
 This helper rewrites the already named target/source owner
 coefficient in the exact orientation consumed by physical finite-grid

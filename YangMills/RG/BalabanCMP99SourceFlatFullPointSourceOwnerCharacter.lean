@@ -1,10 +1,7 @@
 import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing
 
 /-!
-# PRE-VALIDATION: owner character for the reflected full-G synthesis
-
-Source is present, its promoted `.olean` has not yet been materialized, and
-the result has not yet been compiler-verified.
+# Owner character for the reflected full-G synthesis
 
 Periodic Fourier negation turns the product of the target coarse mode and
 the inverse source coarse mode into the negative DFT character at the literal
