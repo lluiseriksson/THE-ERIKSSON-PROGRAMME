@@ -25,12 +25,12 @@ if digest != 'dfd2cf633019ae6866e74cdbf6fe0633f4cd222d767fee4b4f55f96c05eaeff7':
     raise RuntimeError('BASE_RUNNER_HASH_MISMATCH')
 runner = types.ModuleType('full_green_residue_stage_runner')
 exec(compile(blob, URL, 'exec'), runner.__dict__)
-runner.RUNNER_REV = 'cmp99-full-green-arbitrary-residue-hot-v1'
-runner.SOURCE_SHA = 'c771ef4622e5dd62135ccb0a873ecf98a241f94f'
+runner.RUNNER_REV = 'cmp99-full-green-arbitrary-residue-hot-v2'
+runner.SOURCE_SHA = 'eef777d32878297d9e143cbfaff82c290fbb9be1'
 runner.LOG_DIR = Path('/content') / (runner.RUNNER_REV + '-logs')
 PATHS = {
     'YangMills/RG/BalabanCMP99FullGreenArbitraryResidueBound.lean':
-        '0ecaad27224a9d0c5d25e3ea42bed73d5f6db6fb',
+        'bd41415d3b02c157e22018c2c2f914dc3f6b6099',
     'YangMills/RG/BalabanCMP99FullGreenArbitraryResidueBoundAudit.lean':
         'cf7b4d19a26d6f53513df00fba8250c3d1d36487',
 }
@@ -59,7 +59,7 @@ def main() -> None:
         if runner.output(['git', 'rev-parse', 'HEAD:' + path]) != oid:
             raise RuntimeError('SOURCE_BLOB_MISMATCH=' + path)
         print('SOURCE_BLOB=' + path + ' OID=' + oid, flush=True)
-    manifest = Path('/content/full-green-arbitrary-residue-hot-v1-paths.txt')
+    manifest = Path('/content') / (runner.RUNNER_REV + '-paths.txt')
     manifest.write_text('\n'.join(PATHS) + '\n')
     runner.run('overlay_guard', ['python3', 'scripts/check_lean_overlay_text.py',
         '--paths-from', str(manifest), '--require-prevalidation'])
