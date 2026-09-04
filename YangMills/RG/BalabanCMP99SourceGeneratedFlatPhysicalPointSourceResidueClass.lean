@@ -201,10 +201,37 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
   unfold cmp99SourceGeneratedFlatPhysicalPointSourceGreenValue
   rw [cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_outerIntegrandSum
     (M := M) (Q := Q) (Nc := Nc) hM depth source target v A]
+  dsimp only [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp]
+    at hphysical
   simp_rw [hphysical]
-  simp_rw [hchar, hreflect]
-  change (∑ ell : FinBox 4 N,
-      ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) * endpoint ell) * v A)) = _
+  have hterm : ∀ ell : FinBox 4 N,
+      ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) *
+            cmp99FlatFourierMode ell targetOwner *
+            (cmp99FlatFourierMode ell sourceOwner)⁻¹) *
+          cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+            (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+            (fun mu => -targetDisp mu) (fun mu => -sourceDisp mu)) * v A =
+        ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) * endpoint ell) * v A) := by
+    intro ell
+    calc
+      _ = ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) *
+            ((cmp99FlatFourierMode ell targetOwner *
+              (cmp99FlatFourierMode ell sourceOwner)⁻¹) *
+              cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+                (-cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+                (fun mu => -targetDisp mu) (fun mu => -sourceDisp mu))) * v A) := by
+          ring
+      _ = ((((((Kfine * N : ℕ) : ℂ) ^ 4)⁻¹) *
+            (cmp99FlatZModFourierCharacter
+                (-(cmp99FinBoxZModEquiv 4 N ell)) r *
+              cmp89Eq246PhysicalFineToFineGreenIntegrand Kfine 1 0 a
+                (cmp99SourceFlatQprimeCoarseAmplitudeBaseMomentum ell)
+                (fun mu => -sourceDisp mu) (fun mu => -targetDisp mu))) * v A) := by
+          rw [hchar ell, hreflect ell]
+      _ = _ := by rfl
+  dsimp only [Kfine, N, a, targetOwner, sourceOwner, targetDisp, sourceDisp]
+    at hterm
+  simp_rw [hterm]
   rw [← Finset.sum_mul, ← Finset.mul_sum, hbox]
   rw [← halias]
   unfold cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
