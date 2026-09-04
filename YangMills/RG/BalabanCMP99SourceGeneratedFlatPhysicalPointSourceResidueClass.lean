@@ -27,8 +27,16 @@ fine-site owners. Naming this scalar keeps the physical theorem signature
 small while preserving the displayed `K⁻⁴` normalization and every endpoint
 displacement definitionally. -/
 def cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
-    {K N : ℕ} [NeZero K] [NeZero N] (a : ℝ)
-    (source target : FinBox 4 (K * N)) : ℂ :=
+    {M Q : ℕ} [NeZero M] [NeZero Q] (depth : ℕ) (a : ℝ)
+    (source target : FinBox 4 (M ^ (depth + 1) * (2 * (M * Q)))) : ℂ :=
+  let K : ℕ := M ^ (depth + 1)
+  let N : ℕ := 2 * (M * Q)
+  letI : NeZero K := by
+    dsimp [K]
+    infer_instance
+  letI : NeZero N := by
+    dsimp [N]
+    infer_instance
   (((K : ℂ) ^ 4)⁻¹) *
     (∑' n : CMP99FlatIntegerResidueClass 4 N
         (cmp99FinBoxZModEquiv 4 N (blockSite K N source) -
@@ -62,7 +70,7 @@ theorem cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_scaledResidueC
         (M := M) (Q := Q) (Nc := Nc) hM depth
         (cmp99FlatComplexFibrePointSource source v)) target A =
       cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum
-        (K := M ^ (depth + 1)) (N := 2 * (M * Q))
+        (M := M) (Q := Q) depth
         (cmp99SourceGeneratedFullComplexA 4 M (depth + 1)
           (cmp99SourceGeneratedFullComplexSpacing M (depth + 1)) 0)
         source target * v A := by
