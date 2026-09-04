@@ -45482,3 +45482,37 @@ identify the centered affine base with the literal fine displacement, prove
 CMP89 (2.42), produce uniform physical `B0`/`delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1099 (2026-09-04, **arbitrary residue cold v1 blocked by hash instrumentation; no Lean run**)
+
+Colab Pro+ CPU/high-RAM (`50.99 GiB`) launched the immutable runner
+`cmp99-arbitrary-residue-dictionary-cold-v1` from
+`9690568835d4cb0a8c68d5b4aaa964df1c591022`, Git-blob SHA-256
+`305307E736C14DDF294B903DB9053812FE53FD465C5061AA70212683B2323AB5`,
+against exact detached source
+`ac83083f89969d147505332ea6b7ab9bbb56f2cd`.  Toolchain acquisition,
+pin verification, clone and checkout passed; the run then stopped before
+dependency materialization or Lean at the first source-blob gate:
+
+```text
+SOURCE_BLOB_HASH_MISMATCH=YangMills/RG/BalabanCMP99FlatIntegerResidueClassDictionary.lean
+```
+
+The runner had put Git SHA-1 object identifiers in a field whose inherited
+verifier expects raw-file SHA-256.  The exact raw Git blobs hash to
+`980F5C4F6F36388F28BA2C2D64442E595AF571DE2952511EFD2BD836C9BA84D8`
+for the focal and
+`4D88A364A652C3DB43A7CC01E064B173F874BA992E6E86F9B8DDD1426E65CD54`
+for the audit.  Runner v2 changes only those two expected digests and its
+run/output names.
+
+The downloaded failure archive independently re-hashed on Windows to
+`FC47B70D37D56F15A849679E7AB3435D2034C04F685A99B236E9884ED547CA2C`;
+the extracted final `evidence.json` hashes to
+`6809DCAB2CF1E08742AB6897DFF2807FD116181CF60716A2513AE97EB22CC6B1`.
+Both are retained under
+`validation-evidence/cmp99-arbitrary-residue-dictionary-cold-ac83083f-20260904-fail/`.
+
+Classification: `BLOCKED-INSTRUMENTATION`, not compiler evidence.  Step 11
+remains PRE-VALIDATION and outside `YangMillsCore.lean`; this incident does
+not move `20/41`, instantiate a `TermSource`, or attain window 15.

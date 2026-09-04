@@ -45,24 +45,24 @@ base = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(base)
 runner = base.runner
 
-runner.RUNNER_REV = "cmp99-arbitrary-residue-dictionary-cold-v1"
+runner.RUNNER_REV = "cmp99-arbitrary-residue-dictionary-cold-v2"
 runner.SOURCE_SHA = "ac83083f89969d147505332ea6b7ab9bbb56f2cd"
-runner.ROOT = Path("/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v1")
+runner.ROOT = Path("/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v2")
 runner.EVIDENCE = Path(
-    "/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v1-evidence"
+    "/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v2-evidence"
 )
 runner.ARCHIVE = Path(
-    "/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v1-evidence.tar.gz"
+    "/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v2-evidence.tar.gz"
 )
 runner.PATH_MANIFEST = Path(
-    "/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v1-paths.txt"
+    "/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v2-paths.txt"
 )
 
 runner.SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99FlatIntegerResidueClassDictionary.lean":
-        "312019010a8a36bcfcafda6fedbc61d4c275a008",
+        "980f5c4f6f36388f28ba2c2d64442e595af571de2952511efd2bd836c9ba84d8",
     "YangMills/RG/BalabanCMP99FlatIntegerResidueClassDictionaryAudit.lean":
-        "2866cbd7542babb479b9ebb0e84497974edcadf7",
+        "4d88a364a652c3db43a7cc01e064b173f874ba992e6e86f9b8ddd1426e65cd54",
 }
 
 runner.QUEUE = [
