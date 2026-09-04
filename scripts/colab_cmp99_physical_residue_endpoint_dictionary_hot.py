@@ -19,8 +19,8 @@ import sys
 import time
 
 
-RUNNER_REV = "cmp99-physical-residue-endpoint-dictionary-hot-v3"
-SOURCE_SHA = "222e482ac3745aa38f6b22c8d32695d9b2751e1c"
+RUNNER_REV = "cmp99-physical-residue-endpoint-dictionary-hot-v4"
+SOURCE_SHA = "c9f4b725313dd879ae3ce6e99c844ce1d2f8b968"
 LOG_DIR = Path("/content") / (RUNNER_REV + "-logs")
 ROOT = Path("/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v2")
 TOOLCHAIN_BIN = Path(
@@ -28,7 +28,7 @@ TOOLCHAIN_BIN = Path(
 )
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary.lean":
-        "54379bd3cae184a9edc363bc58ec86b8a674b306",
+        "5e2e231b293dfeb16d2e9c6f3f4852012e1977a9",
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionaryAudit.lean":
         "639be11b08b488f64fb414038b9e627eb92f9f2b",
 }
