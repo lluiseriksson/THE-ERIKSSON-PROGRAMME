@@ -45571,3 +45571,25 @@ axiom gate and remains outside `YangMillsCore.lean`.  It does not prove CMP89
 (2.42), produce a uniform physical `B0` or `delta0`, attain window 15,
 discharge rows 23--24, move `20/41`, or construct a `TermSource`;
 `TermSource = 0` remains exact.
+
+## Addendum 1102 (2026-09-04, **physical endpoint hot-v2 failure preserved; correction PRE-VALIDATION**)
+
+Source `b72c6d4ae9e174bf8d003d9fc0747d4bbd1151f1`, run by hot-v2
+at runner checkpoint `3cbfd3076b9c319e421513caeee1a8c88af66259`, failed
+the focal with exit `1` after `658.739 s`. The first compiler error is
+`BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary.lean:30:4:
+Unknown identifier cmp99FinBoxZModEquiv`. The missing direct import also
+affected lines 31, 51 and 52 and the residue proof. Further diagnostics
+reported `dsimp made no progress` at 72:2 and a centered-versus-literal
+periodic weight mismatch at 160:2. The audit was not run.
+
+The correction imports `BalabanCMP99FlatFinBoxDFT`, exposes the residue
+cast without broad simplification, factors the integer divisibility identity
+before rewriting it, and cites the existing centered-diagonal length identity
+in the final owner bound. Statements and constants are unchanged. The
+correction remains PRE-VALIDATION pending Colab; no source notice is retired.
+
+The preceding hot-v1 attempt stopped before Lean because its terminal PATH
+did not include Lake; hot-v2 uses the exact verified official toolchain bin.
+Neither diagnostic is a cold seal. `20/41`, `TermSource = 0`, and the open
+window-15 attainment obligation are unchanged.

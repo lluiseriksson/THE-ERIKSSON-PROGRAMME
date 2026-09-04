@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP99FlatIntegerResidueClassDictionary
+import YangMills.RG.BalabanCMP99FlatFinBoxDFT
 import YangMills.RG.BalabanCMP99SourceFineToCoarseCenteredOwnerDictionary
 
 /-!
@@ -56,7 +57,9 @@ theorem cmp99SourceGeneratedFlatPhysicalResidueEndpointBase_cast
       ((cmp99FlatIntegerResidueRepresentative residue mu : ℤ) : ZMod N) =
         (((sourceOwner mu).val : ZMod N) -
           ((targetOwner mu).val : ZMod N)) := by
-    simpa [residue] using hresidue
+    change ((cmp99FlatIntegerResidueRepresentative residue mu : ℤ) : ZMod N) =
+      residue mu at hresidue
+    exact hresidue
   have hdvd : (N : ℤ) ∣
       cmp99FlatIntegerResidueRepresentative residue mu -
         ((sourceOwner mu).val : ℤ) + ((targetOwner mu).val : ℤ) := by
@@ -69,7 +72,6 @@ theorem cmp99SourceGeneratedFlatPhysicalResidueEndpointBase_cast
   refine ⟨q, ?_⟩
   simp only [cmp99SourceGeneratedFlatPhysicalResidueEndpointBase,
     cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement]
-  dsimp only
   push_cast
   change
     ((K : ℤ) * (targetOwner mu).val - (target mu).val -
@@ -77,12 +79,12 @@ theorem cmp99SourceGeneratedFlatPhysicalResidueEndpointBase_cast
           (K : ℤ) * cmp99FlatIntegerResidueRepresentative residue mu) -
         ((source mu).val - (target mu).val) =
       ((K * N : ℕ) : ℤ) * q
-  rw [show
-    cmp99FlatIntegerResidueRepresentative residue mu -
-          ((sourceOwner mu).val : ℤ) + ((targetOwner mu).val : ℤ) =
-        (N : ℤ) * q from hq]
-  push_cast
-  ring
+  calc
+    _ = (K : ℤ) *
+        (cmp99FlatIntegerResidueRepresentative residue mu -
+          ((sourceOwner mu).val : ℤ) + ((targetOwner mu).val : ℤ)) := by ring
+    _ = (K : ℤ) * ((N : ℤ) * q) := by rw [hq]
+    _ = ((K * N : ℕ) : ℤ) * q := by push_cast; ring
 
 /-- Centering the combined arbitrary-residue base preserves exactly the
 `l1` length of the shortest periodic fine-site displacement. -/
@@ -157,8 +159,14 @@ theorem
           (finBoxDist (blockSite K N source) (blockSite K N target) : ℝ)) := by
   rw [
     cmp89SignedLatticeL1ExponentialWeight_centered_generatedPhysicalResidueEndpoint_eq]
-  exact cmp89SignedLatticeL1ExponentialWeight_centeredDiagonal_le_owner
+  have hcenter := cmp89SignedLatticeL1ExponentialWeight_centeredDiagonal_le_owner
     hrho source target
+  rw [cmp89SignedLatticeL1ExponentialWeight_eq_exp_sum_natAbs] at hcenter ⊢
+  change Real.exp (-(rho / (K : ℝ)) * cmp89Eq251LatticeL1Length
+    (cmp99CenteredPeriodicEndpointVectorRepresentative (K * N)
+      (cmp99DiagonalPeriodicDisplacement source target))) ≤ _ at hcenter
+  rw [cmp89Eq251LatticeL1Length_centeredDiagonalPeriodicDisplacement_eq] at hcenter
+  exact hcenter
 
 end
 
