@@ -17,9 +17,12 @@ import sys
 import time
 
 
-RUNNER_REV = "cmp99-physical-residue-endpoint-dictionary-hot-v1"
+RUNNER_REV = "cmp99-physical-residue-endpoint-dictionary-hot-v2"
 SOURCE_SHA = "b72c6d4ae9e174bf8d003d9fc0747d4bbd1151f1"
 ROOT = Path("/content/hrpoly-cmp99-arbitrary-residue-dictionary-cold-v2")
+TOOLCHAIN_BIN = Path(
+    "/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/bin"
+)
 SOURCE_BLOBS = {
     "YangMills/RG/BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary.lean":
         "1353ece31405b5ea18a76b163651f2d0fc484d2a",
@@ -50,6 +53,10 @@ def main() -> int:
     print(f"RUNNER_REV={RUNNER_REV}", flush=True)
     if not ROOT.is_dir():
         raise RuntimeError(f"RETAINED_ROOT_MISSING={ROOT}")
+    if not (TOOLCHAIN_BIN / "lake").is_file():
+        raise RuntimeError(f"PINNED_LAKE_MISSING={TOOLCHAIN_BIN / 'lake'}")
+    os.environ["PATH"] = str(TOOLCHAIN_BIN) + os.pathsep + os.environ["PATH"]
+    print(f"PINNED_TOOLCHAIN_BIN={TOOLCHAIN_BIN}", flush=True)
     run("fetch_source", ["git", "fetch", "--no-tags", "origin", SOURCE_SHA])
     run("checkout_source", ["git", "checkout", "--detach", SOURCE_SHA])
     head = output(["git", "rev-parse", "HEAD"])
@@ -62,7 +69,7 @@ def main() -> int:
         if actual != expected:
             raise RuntimeError(f"SOURCE_BLOB_MISMATCH={path}")
     manifest = Path(
-        "/content/cmp99-physical-residue-endpoint-dictionary-hot-v1-paths.txt"
+        "/content/cmp99-physical-residue-endpoint-dictionary-hot-v2-paths.txt"
     )
     manifest.write_text("\n".join(SOURCE_BLOBS) + "\n", encoding="utf-8")
     run(
