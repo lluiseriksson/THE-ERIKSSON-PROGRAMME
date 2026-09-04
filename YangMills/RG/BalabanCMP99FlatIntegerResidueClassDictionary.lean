@@ -100,7 +100,6 @@ theorem tsum_cmp99FlatIntegerResidueClass_eq_affine
   apply tsum_congr
   intro m
   congr 1
-  exact cmp99FlatIntegerResidueClassEquiv_apply_coe r m
 
 /-- After an outer affine scale `K`, an arbitrary selected residue class is
 exactly one centered fibre of full physical period `K*N`. -/
