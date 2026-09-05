@@ -1412,3 +1412,22 @@ cold gate from an immutable source SHA. Do not rerun retained-runtime v3:
 that runtime was deliberately deleted. Keep actual physical real-Green
 transport, owner-fibre R^4 count, regional inverse and derivative bounds
 as separate named debts. 20/41,TermSource0,window15 not attained.
+
+## 2026-09-05 11:46 UTC — F5 promoted cold gate actually started
+
+Source A: `6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4`.
+Published notebook/HEAD: `a730e16ee61962773e3d1e6fb95862fe4d342934`.
+Launcher: `beb1d1e00ad3fdc894d0705883e66765df558ae9`, SHA256
+`d0424a920099ec2c30822b04392c9b6ad8e5a339cba80597cab1bfeffe7342b8`.
+Runner/verifier checkpoint: `4a08173f79d4fab73b524605339c41085a9ae26b`.
+Single existing Colab tab9; account lluiseriksson@gmail.com, CPU/high RAM
+50.99GB. One cell request and one security confirmation, no reexecution.
+Observed HASH_GATE=PASS START_UTC=2026-09-05T11:46:36.071267+00:00,
+LAUNCH_PID=8932; still running at first post-compaction inspection.
+
+Revision `cmp99-point-fibre-promoted-cold-v1`; six focal/audit stages,
+seven exact public axiom names. No project build restoration, no CI.
+Expected preservation `/content/f5-promoted-cold-preservation-20260905.tar.gz`.
+Inspect existing process/logs only; do not reexecute the cell. On result,
+download and independently verify evidence before selective PRE retirement.
+Nothing here proves regional B0 or window15; counters remain20/41,TermSource0.

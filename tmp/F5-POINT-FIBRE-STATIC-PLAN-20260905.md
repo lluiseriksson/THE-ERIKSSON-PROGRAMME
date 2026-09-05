@@ -63,3 +63,26 @@ axiom declarations in separate audits. Compare mathematical text under an
 explicit finite renaming table; no constants, hypotheses or scope changes.
 Then prepare a fresh immutable-source cold graph, not a retained-runtime
 retry. The 2026-09-05 runtime was deleted after archive verification.
+
+## Physical real-slice draft prepared during the promoted cold gate
+
+The promoted source is now `6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4`;
+its fresh cold gate started 2026-09-05 11:46:36 UTC. No result is inferred
+from that start. The new source below is NOT part of that cold checkpoint.
+
+`tmp/SourceFlowPhysicalGreenRealSliceDraft.lean` contains four proposed
+theorems: literal ambient real-slice identity, evaluation of the existing
+carrier permutation, literal Step-7b real-slice identity, and exact output
+fibre norm. Every operator is the existing source-flow Green; no arbitrary
+Green or assumed intertwining identity occurs in their hypotheses.
+
+`tmp/SourceFlowPhysicalCarrierRepro.lean` isolates the two Mathlib-only
+steps (piCongrLeft evaluation and cancellation under conjugation). It must
+run first, then the physical draft, and only after the F5 cold gate passes.
+Both files remain PRE-VALIDATION, with no compiled claim or root import.
+Overlay textual and import-prefix checks passed the exact two-file list;
+the import check used 0.038 seconds and 17,563,648 bytes peak RSS locally.
+No Windows Lean/Lake was used.
+
+This does not discharge the owner-cardinality action, proper regional
+inverse, derivative actions, regional B0 or window15. Counters unchanged.
