@@ -1,5 +1,28 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Live counting-reflection diagnostic — 2026-09-05 19:47:36UTC
+
+Exactly one cell started, source dc00d3fe4a583da601820605a98644e1fbc0245d,
+runner60276b1c680f93f232e80b725093f733741d5900, notebook
+47b75ecb1da2ce31f0d258a480cb20edcf21e679. GitHub identity lluiseriksson
+verified before fast-forward push. Source hashes are binary Git blob hashes.
+RUNNER_REV=neumann-generated-counting-reflection-diagnostic-v1.
+HASH_GATE=PASS at2026-09-05T19:47:36.461033+00:00, PID3798,
+CPU50.99028778076172GiB,noGPU, accountlluiseriksson@gmail.com. Sole browser
+tab3, immutable notebook scripts/colab_neumann_generated_counting_reflection_diagnostic.ipynb.
+No final verdict yet. No CI or local Lean. Do not rerun this cell.
+
+Read-only status in the existing Colab terminal:
+`ps -p 3798 -o pid,etime,stat,args; tail -n 12 /content/neumann-generated-counting-reflection-diagnostic-v1-launch/diagnostic.log`
+Outer: /content/neumann-generated-counting-reflection-diagnostic-v1-preservation-20260905.tar.gz.
+Inner: /content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1-evidence.tar.gz.
+Status: /content/neumann-generated-counting-reflection-diagnostic-v1-launch/launch-final-status.json.
+Queue: geometry_leaf -> counting_reflection_repro -> physical_prerequisites
+-> counting_reflection_draft. Preserve first error and use the same retained
+runtime for a bounded HOT correction; no fresh bootstrap per erratum.
+Even PASS is diagnostic only until independent evidence verification and
+selective promotion.20/41,TermSource0,window15 unattained. No monitor created.
+
 ## Prepared next diagnostic — after seal81260f49, 2026-09-05
 
 No active runtime or monitor at preparation. Two PRE-VALIDATION files target
