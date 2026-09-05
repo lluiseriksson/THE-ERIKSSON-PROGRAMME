@@ -135,3 +135,49 @@ The exact two-file textual/import guards passed, respectively0.0673s/
 Do not silently append these files to the running cold gate or the already
 published four-theorem physical hot runner. They form the next separately
 prepared unit after the current evidence is preserved.
+
+## Point-probe transport acceptance gate (static review, 2026-09-05)
+
+The next point-probe lemma must identify the entire transported input,
+not merely its norm: the physical carrier map applied to the outer
+complexification of `singleFinitePiLp source v` equals
+`cmp99FlatComplexFibrePointSource (siteEquiv source)
+  (cmp99SUNLieCoordComplexificationLM Nc v)`.
+The point-source definition is in
+`BalabanCMP99FlatComplexFibrePointSourceFourierReconstruction.lean`;
+it is exactly `fun x => if x = source then v else 0`.
+
+Proof route: evaluate at an arbitrary transported site, use the named
+carrier evaluation theorem, then split equality with the source and use
+coordinate extensionality inside the Lie fibre. Pin carrier and fibre
+types explicitly. Do not assume this equality from the existing Green
+intertwining theorem. The already cold-sealed
+`norm_cmp99SUNLieCoordComplexificationLM` then preserves the same whole
+Lie-vector norm without a dimension factor. No outer norm equivalence
+is needed or asserted.
+
+This is a static acceptance plan only, not a new compiled declaration.
+The active retry-v2 queue is unchanged. At the read-only probe around
+13:29 UTC, launcher PID615 remained active and prerequisites had reached
+8521/8674; the carrier repro had exit0. The physical four-theorem draft
+had not yet produced a verdict. Counters remain20/41 and TermSource0.
+
+The exact input transport is now written separately in
+`tmp/SourceFlowPhysicalPointProbeDraft.lean`: canonical complexification of
+a real single-site probe, then transport by the physical Step-7b site map.
+Only sealed dependencies are imported; the pending physical Green draft
+is not imported. Both declarations remain PRE-VALIDATION and uncompiled.
+The exact one-file manifest is `tmp/f5_point_probe_paths.txt`. Text guard
+passed in0.03108s/20,639,744 peak bytes, import-prefix guard in0.01284s/
+20,017,152 peak bytes, each one local process and no Lean. These are only
+textual checks, not evidence of elaboration or mathematical correctness.
+No active runner, source pin or queue changed. Before a remote diagnostic,
+the new reindexing/conditional proof must have its Mathlib-only repro
+prepared and run first; do not pay a new project bootstrap to test it.
+
+That repro is now prepared in `tmp/SourceFlowPointProbeRepro.lean` with
+only `Mathlib.Analysis.InnerProductSpace.PiL2`: conditional point-source
+transport under piCongrLeft and coordinatewise real-to-complex conditional
+transport. It remains uncompiled. The manifest now covers BOTH files;
+rerun text guard PASS0.02255s/20,647,936 peak bytes and import-prefix
+guard PASS0.01435s/19,693,568 peak bytes. Neither was added to retry-v2.
