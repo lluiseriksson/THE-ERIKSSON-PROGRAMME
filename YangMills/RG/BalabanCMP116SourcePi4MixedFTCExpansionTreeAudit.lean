@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116SourcePi4MixedFTCExpansionTree
+
+#print axioms YangMills.RG.cmp116SetWeakeningList_cons_of_not_mem
+#print axioms YangMills.RG.cmp116SetWeakeningList_update_of_not_mem
+#print axioms YangMills.RG.cmp116SourcePi4MixedCovarianceFTCExpansionTree_coupledEndpoint
+#print axioms YangMills.RG.cmp116SourcePi4MixedCovarianceFTCExpansionTree_valid

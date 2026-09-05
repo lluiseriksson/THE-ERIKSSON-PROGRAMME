@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246FullSolutionDomain
+
+#print axioms YangMills.RG.CMP89Eq246FullSolutionDomain
+#print axioms YangMills.RG.cmp89Eq246FullSolutionDomain_of_commonRadius

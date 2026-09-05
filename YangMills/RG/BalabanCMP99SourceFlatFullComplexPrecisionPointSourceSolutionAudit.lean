@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionPointSourceSolution
+
+/-!
+# Axiom audit of the full periodic Eq. (2.46) point-source solution
+
+Cold compiler verification is recorded in the imported source module.
+-/
+
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceFibreCoefficients
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fixedCoarseFibreSolution_eq_zero_of_coarseAlias_ne
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_pointSourceFibreSolution
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceSolution
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionAction_pointSourceSolution

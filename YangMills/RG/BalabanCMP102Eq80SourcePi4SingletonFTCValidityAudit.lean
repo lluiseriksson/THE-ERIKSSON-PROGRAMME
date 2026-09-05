@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4SingletonFTCValidity
+
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80SourcePi4RealWeakeningCoordinateDerivative
+#print axioms YangMills.RG.continuous_cmp102Eq80SourcePi4RealWeakeningCoordinateDerivative
+#print axioms YangMills.RG.cmp116RealWeakeningFTCExpansionTree_valid_singleton_of
+#print axioms YangMills.RG.cmp102Eq80SourcePi4MixedPotentialFTCExpansionTree_valid_singleton

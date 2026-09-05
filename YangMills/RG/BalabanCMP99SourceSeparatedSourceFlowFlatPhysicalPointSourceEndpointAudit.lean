@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPointSourceEndpoint
+
+#print axioms YangMills.RG.cmp99SourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_pointSource_apply_eq_normalized_sum_endpointIntegrand

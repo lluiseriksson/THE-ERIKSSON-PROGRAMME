@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99ComplexFineHeadTailLocalization
+
+#print axioms YangMills.RG.cmp99DependentOrderedProduct_congr
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_eq_of_eqOn
+#print axioms YangMills.RG.cmp99SourcePi4ComplexFineWalkTerm_eq_of_eqOn_active
+#print axioms YangMills.RG.cmp99SourcePi4ComplexCoarseFineWalkDefectTerm_eq_of_eqOn_active
+#print axioms YangMills.RG.cmp99SourcePi4ComplexCoarseFineWalkWordTerm_eq_of_eqOn_active
+#print axioms YangMills.RG.cmp99SourcePi4ComplexFineHeadTailWordTerm_eq_of_eqOn_active

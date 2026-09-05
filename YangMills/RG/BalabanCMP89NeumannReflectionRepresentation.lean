@@ -1,0 +1,83 @@
+import YangMills.RG.BalabanCMP89NeumannReflectionScaleDictionary
+
+/-!
+# CMP89 (2.42): explicit interface for the multiple-reflection representation
+
+The printed ellipsis in CMP89 (2.42) is represented by one integer translation
+index and one reflection parity per coordinate.  This module defines that
+series and makes its two actual analytic obligations visible: summability and
+equality with the regional Green on the literal source rectangle.
+
+The regional and full-lattice kernels are parameters of the certificate type,
+not hidden fields.  Consequently a physical consumer must expose the exact
+kernels it identifies.  The finite carrier is the half-open block rectangle
+fixed by CMP89 (1.1).  This interface does not construct either kernel, prove
+the equality, or derive any decay bound.
+-/
+
+namespace YangMills.RG
+
+noncomputable section
+
+variable {d : ℕ} {E : Type*} [NormedAddCommGroup E]
+
+/-- A point of the source block rectangle, using the half-open convention
+fixed by CMP89 (1.1). -/
+abbrev CMP89SourceNeumannIntegerRectanglePoint (m : Fin d → ℤ) :=
+  {n : Fin d → ℤ // n ∈ cmp89SourceNeumannBlockIntegerRectangle m}
+
+/-- The source-shaped multiple-reflection series: an infinite integer
+translation vector and one of the `2^d` parity branches. -/
+def cmp89NeumannReflectionSeries
+    (fullGreen : (Fin d → ℤ) → (Fin d → ℤ) → E)
+    (m x n : Fin d → ℤ) : E :=
+  ∑' k : Fin d → ℤ,
+    ∑ branch : CMP89NeumannReflectionBranch d,
+      fullGreen x (cmp89NeumannReflectionImage m n k branch)
+
+/-- Named source gate for CMP89 (2.42).  It ties one explicit regional kernel
+to one explicit full-lattice kernel and keeps absolute convergence visible.
+-/
+structure CMP89NeumannReflectionRepresentationCertificate
+    (m : Fin d → ℤ)
+    (regionalGreen : CMP89SourceNeumannIntegerRectanglePoint m →
+      CMP89SourceNeumannIntegerRectanglePoint m → E)
+    (fullGreen : (Fin d → ℤ) → (Fin d → ℤ) → E) where
+  side_pos : ∀ mu, 0 < m mu
+  summable : ∀ x n : CMP89SourceNeumannIntegerRectanglePoint m,
+    Summable (fun k : Fin d → ℤ =>
+      ∑ branch : CMP89NeumannReflectionBranch d,
+        fullGreen x.1 (cmp89NeumannReflectionImage m n.1 k branch))
+  representation : ∀ x n : CMP89SourceNeumannIntegerRectanglePoint m,
+    regionalGreen x n =
+      cmp89NeumannReflectionSeries fullGreen m x.1 n.1
+
+/-- The representation certificate cannot be discharged on an empty
+rectangle: its positive side lengths construct the zero site internally. -/
+theorem CMP89NeumannReflectionRepresentationCertificate.carrier_nonempty
+    {m : Fin d → ℤ}
+    {regionalGreen : CMP89SourceNeumannIntegerRectanglePoint m →
+      CMP89SourceNeumannIntegerRectanglePoint m → E}
+    {fullGreen : (Fin d → ℤ) → (Fin d → ℤ) → E}
+    (C : CMP89NeumannReflectionRepresentationCertificate
+      m regionalGreen fullGreen) :
+    Nonempty (CMP89SourceNeumannIntegerRectanglePoint m) :=
+  ⟨⟨0, cmp89SourceNeumannBlockIntegerRectangle_zero_mem C.side_pos⟩⟩
+
+/-- Projection of the exact printed representation with both kernels visible
+in the theorem signature. -/
+theorem CMP89NeumannReflectionRepresentationCertificate.eq_series
+    {m : Fin d → ℤ}
+    {regionalGreen : CMP89SourceNeumannIntegerRectanglePoint m →
+      CMP89SourceNeumannIntegerRectanglePoint m → E}
+    {fullGreen : (Fin d → ℤ) → (Fin d → ℤ) → E}
+    (C : CMP89NeumannReflectionRepresentationCertificate
+      m regionalGreen fullGreen)
+    (x n : CMP89SourceNeumannIntegerRectanglePoint m) :
+    regionalGreen x n =
+      cmp89NeumannReflectionSeries fullGreen m x.1 n.1 :=
+  C.representation x n
+
+end
+
+end YangMills.RG

@@ -1,0 +1,10 @@
+import YangMills.RG.NoncommutativePowerLipschitz
+
+#print axioms YangMills.RG.norm_pow_sub_pow_le
+#print axioms YangMills.RG.norm_pow_mul_mul_pow_sub_pow_mul_mul_pow_le
+#print axioms YangMills.RG.norm_nearLogTermFDeriv_sub_apply_le
+#print axioms YangMills.RG.norm_nearLogTermFDeriv_sub_le
+#print axioms YangMills.RG.summable_nearLogSecondDerivativeMajorant
+#print axioms YangMills.RG.nearLogSecondDerivativeBudget_nonneg
+#print axioms YangMills.RG.norm_fderiv_nearLog_sub_le_secondDerivativeBudget
+#print axioms YangMills.RG.norm_nearLog_sub_nearLog_sub_fderiv_le

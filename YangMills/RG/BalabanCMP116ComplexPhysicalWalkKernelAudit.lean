@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116ComplexPhysicalWalkKernel
+
+#print axioms YangMills.RG.cmp116PhysicalOperatorCoefficient
+#print axioms YangMills.RG.cmp116ComplexPhysicalOperatorCoefficient
+#print axioms YangMills.RG.abs_cmp116PhysicalOperatorCoefficient_le_norm
+#print axioms YangMills.RG.norm_cmp116ComplexPhysicalOperatorCoefficient_le_norm
+#print axioms YangMills.RG.norm_cmp116ComplexPhysicalOperatorCoefficient_le_targetValue
+#print axioms YangMills.RG.summable_cmp116ComplexPhysicalCoefficient_radialMajorant
+#print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_of_physicalWalkKernel

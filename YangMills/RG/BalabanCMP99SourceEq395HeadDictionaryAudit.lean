@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99SourceEq395HeadDictionary
+
+open YangMills.RG
+
+#print axioms finitePiLpScalarMultiplier_comp_extendZeroZeroCLM
+#print axioms restrictZeroCLM_comp_finitePiLpScalarMultiplier
+#print axioms norm_extendZeroZeroCLM_operator_le_one
+#print axioms norm_restrictZeroCLM_operator_le_one
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalHead
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalHead_eq_extend_localHead_restrict
+#print axioms CMP99SourceDependentOmegaGeometry.norm_cmp99Eq395PhysicalHead_le_localHead
+#print axioms CMP99SourceDependentOmegaGeometry.norm_cmp99Eq395PhysicalHead_le

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP98Eq123QuadraticFrontier
+
+#print axioms YangMills.RG.cmp98Eq122NonlinearLogRemainder_eq_nearLogCorrection_add_physicalRemainder
+#print axioms YangMills.RG.cmp98Eq119NonlinearRelativeDeviation_isBigO_id
+#print axioms YangMills.RG.cmp98Eq122NearLogCorrection_isBigO_sq
+#print axioms YangMills.RG.cmp98Eq122NonlinearLogRemainder_isBigO_sq_iff_physicalBlockRemainder

@@ -1,0 +1,14 @@
+tmp/FullGreenNormalizedBudgetRepro.lean:25:46: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+tmp/FullGreenNormalizedBudgetRepro.lean:25:46: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+tmp/FullGreenNormalizedBudgetRepro.lean:44:46: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+tmp/FullGreenNormalizedBudgetRepro.lean:44:46: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'FullGreenNormalizedBudgetRepro.split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FullGreenNormalizedBudgetRepro.retain_inverse_square' depends on axioms: [propext, Classical.choice, Quot.sound]

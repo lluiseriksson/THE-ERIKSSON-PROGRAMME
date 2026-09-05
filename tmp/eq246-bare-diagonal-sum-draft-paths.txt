@@ -1,0 +1,6 @@
+tmp/BalabanCMP89Eq251HalfAliasTailIntegral.draft.lean
+tmp/BalabanCMP89Eq251CenteredHalfAliasSum.draft.lean
+tmp/BalabanCMP89Eq251BareInverseLaplacianHalfWeight.draft.lean
+tmp/BalabanCMP89Eq246FinePointSourceBareDiagonalBound.draft.lean
+tmp/BalabanCMP89Eq246FinePointSourceBareDiagonalSum.draft.lean
+tmp/BalabanCMP89Eq246FinePointSourceBareDiagonalSumAudit.draft.lean

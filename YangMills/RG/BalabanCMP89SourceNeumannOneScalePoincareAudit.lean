@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89SourceNeumannOneScalePoincare
+
+#print axioms YangMills.RG.cmp89SourceNeumann_oneScale_jointKernel
+#print axioms YangMills.RG.exists_cmp89SourceNeumann_oneScale_poincare

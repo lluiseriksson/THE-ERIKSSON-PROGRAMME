@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99SourceFlatPhysicalTransport
+
+#print axioms YangMills.RG.cmp99SourceFlatGaugeConfig_apply
+#print axioms YangMills.RG.wilsonLine_cmp99SourceFlatGaugeConfig
+#print axioms YangMills.RG.cmp99ContourHolonomy_flat
+#print axioms YangMills.RG.cmp99SourceWeightedPhysicalTransport_flat_apply
+#print axioms YangMills.RG.cmp99SourceWeightedPhysicalTransport_flat_eq_refl
+#print axioms YangMills.RG.cmp99SourceTransportedBlockAverageCLM_flat_apply
+#print axioms YangMills.RG.cmp99SourceTransportedBlockWeightedAdjointCLM_flat_apply

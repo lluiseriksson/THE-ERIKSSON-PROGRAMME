@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116FiniteAlphabetWalkSummability
+
+#print axioms YangMills.RG.cmp116ListWalkActive
+#print axioms YangMills.RG.card_cmp116ListWalkActive_le_length
+#print axioms YangMills.RG.summable_listWalk_pow_length
+#print axioms YangMills.RG.summable_cmp116ListWalk_radialMajorant
+#print axioms YangMills.RG.summable_cmp116WeakenedListWalkSeries_of_geometricDecay
+#print axioms YangMills.RG.tendstoUniformlyOn_cmp116WeakenedListWalkSeries_of_geometricDecay
+#print axioms YangMills.RG.cmp116WeakenedListWalkSeries_ftcStep_of_geometricDecay

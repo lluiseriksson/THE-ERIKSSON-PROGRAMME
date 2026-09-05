@@ -1,0 +1,26 @@
+import YangMills.RG.BalabanCMP99SourceCoarseCovariance
+
+/-! Public oracle for the symmetric CMP99 middle operator and its inverse. -/
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceGaugePrecision_isSymmetric
+#print axioms cmp99SourceGaugePrecision_adjoint_eq
+#print axioms cmp99OmegaDirichletZeroPrecision_isSymmetric
+#print axioms cmp99OmegaDirichletZeroPrecision_adjoint_eq
+#print axioms covarianceOfIsCoerciveCLM_isSymmetric
+#print axioms covarianceOfIsCoerciveCLM_adjoint_eq
+#print axioms cmp99OmegaSourceGaugeDirichletGreen_isSymmetric
+#print axioms cmp99OmegaSourceGaugeDirichletGreen_adjoint_eq
+#print axioms cmp99OmegaSourceRegionalAverage
+#print axioms cmp99SourceCoarseCovarianceMiddle
+#print axioms cmp99OmegaSourceGaugeCoarseCovarianceMiddle
+#print axioms inner_cmp99SourceCoarseCovarianceMiddle
+#print axioms inner_cmp99OmegaSourceGaugeCoarseCovarianceMiddle
+#print axioms norm_le_mul_norm_covarianceOfIsCoerciveCLM
+#print axioms isCoerciveCLM_cmp99SourceCoarseCovarianceMiddle
+#print axioms cmp99SourceCoarseCovariance
+#print axioms cmp99SourceCoarseCovariance_comp_middle
+#print axioms cmp99SourceCoarseCovariance_middle_comp
+
+end YangMills.RG

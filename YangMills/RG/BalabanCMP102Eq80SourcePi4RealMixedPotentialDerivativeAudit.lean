@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4RealMixedPotentialDerivative
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RealMixedPotential
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RealMixedPotentialDerivative
+#print axioms YangMills.RG.CMP116SourcePi4RealMixedEq80DerivativeStatement
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RealMixedPotentialCurve
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RealMixedPotentialCurveDerivative
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RealMixedPotentialCurve_eq
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RealMixedPotentialCurveDerivative_eq
+#print axioms YangMills.RG.CMP116SourcePi4RealMixedDerivativeCertificate.hasDerivAt_eq80Potential
+#print axioms YangMills.RG.continuous_cmp102Eq80SourcePi4RealMixedPotentialCurveDerivative

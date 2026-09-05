@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP95PeriodicSquarePartition
+
+open YangMills.RG
+
+#print axioms cmp95PeriodicSquareWeight
+#print axioms cmp95PeriodicSquareWeight_add_period
+#print axioms summable_cmp95SourceSquareTranslate
+#print axioms sum_cmp95PeriodicSquareWeight
+#print axioms cmp95PeriodicSquareWeight_nonneg
+#print axioms cmp95PeriodicTensorSquareWeight
+#print axioms cmp95PeriodicTensorSquareWeight_nonneg
+#print axioms sum_cmp95PeriodicTensorSquareWeight
+#print axioms cmp95PeriodicTensorCutoff
+#print axioms cmp95PeriodicTensorCutoff_sq
+#print axioms cmp95SourcePeriodicCoarseSquarePartition

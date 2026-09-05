@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246AliasPrecisionCycle
+
+#print axioms YangMills.RG.cmp89Eq246EntireAliasPrecisionMatrix_physicalShift_eq_cycle
+#print axioms YangMills.RG.cmp89Eq246EntireAliasPrecisionMatrix_mulVec_physicalShift_eq_cycle

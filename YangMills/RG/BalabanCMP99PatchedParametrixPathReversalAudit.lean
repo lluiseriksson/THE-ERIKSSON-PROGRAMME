@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixPathReversal
+
+#print axioms YangMills.RG.cmp99PhysicalPatchStepsOfDomains
+#print axioms YangMills.RG.map_domain_cmp99PhysicalPatchStepsOfDomains
+#print axioms YangMills.RG.cmp99PhysicalPatchStepsOfDomains_map_domain
+#print axioms YangMills.RG.cmp99ReversePhysicalPointedTail
+#print axioms YangMills.RG.getLast?_physicalPath_eq_terminalDomain
+#print axioms YangMills.RG.physicalPath_reversePointedTail
+#print axioms YangMills.RG.terminalDomain_reversePhysicalPointedTail
+#print axioms YangMills.RG.reversePhysicalPointedTail_involutive
+#print axioms YangMills.RG.cmp99ReversePhysicalPointedTail_mem_reverseAdmissibleTails

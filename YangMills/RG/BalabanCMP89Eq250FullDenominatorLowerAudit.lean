@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89Eq250FullDenominatorLower
+
+#print axioms YangMills.RG.zero_mem_cmp89Eq245CenteredAliasIntegers
+#print axioms YangMills.RG.zero_mem_cmp89Eq245CenteredAliasVectors_pow
+#print axioms YangMills.RG.cmp89Eq250AliasDenominatorSummand_nonneg
+#print axioms YangMills.RG.cmp89Eq250AliasDenominatorSummand_zero
+#print axioms YangMills.RG.cmp89Eq250LiteralCentralAliasContribution_le_full_denominator
+#print axioms YangMills.RG.cmp89Eq250CentralAliasLowerConstant_le_full_denominator

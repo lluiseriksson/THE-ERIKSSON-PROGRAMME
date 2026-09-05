@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedDomainDictionary
+
+#print axioms YangMills.RG.CMP116Eq80Lemma1CombinedDomainCount
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainSupport
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainMetric
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainCard
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainSupport_direct
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainSupport_native
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainMetric_direct
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainMetric_native
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainCard_direct
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainCard_native
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainMetric_nonneg
+#print axioms YangMills.RG.cmp102Eq80SourcePi4IndexedDomainBlocks_subset_combinedCenteredRegion
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainSupport_nonempty
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedDomainSupport_subset_combinedCenteredRegion

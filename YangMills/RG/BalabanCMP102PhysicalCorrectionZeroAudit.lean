@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP102PhysicalCorrectionZero
+
+#print axioms YangMills.RG.orientedWilsonFactor_zero_field
+#print axioms YangMills.RG.cmp98ContourMatrixCurve_zero_field
+#print axioms YangMills.RG.cmp98Eq119NonlinearBlockCurve_zero_field
+#print axioms YangMills.RG.cmp98Eq119NonlinearRightVariation_zero_field
+#print axioms YangMills.RG.cmp98Eq119NonlinearRelativeDeviation_zero_field
+#print axioms YangMills.RG.cmp98Eq122NonlinearLogRemainder_zero_field
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionOfBudget_zero
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionOfBudget_eq_zero_of_eq_zero

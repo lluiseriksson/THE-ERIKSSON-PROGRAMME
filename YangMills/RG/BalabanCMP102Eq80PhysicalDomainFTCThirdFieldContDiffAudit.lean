@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCThirdFieldContDiff
+
+#print axioms
+  YangMills.RG.continuous_cmp102AffinePropagatorJetFTCThirdFieldDerivative
+#print axioms YangMills.RG.contDiff_three_cmp102AffinePropagatorJetFTC
+#print axioms
+  YangMills.RG.contDiff_three_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution

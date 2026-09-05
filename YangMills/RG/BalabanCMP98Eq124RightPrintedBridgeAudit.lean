@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP98Eq124RightPrintedBridge
+
+#print axioms YangMills.RG.cmp98Eq119RightFourSourcePhysicalVariation_eq_regrouped
+#print axioms YangMills.RG.cmp98Eq120RightAssembledPhysicalVariation_eq_fourLine
+#print axioms YangMills.RG.deriv_cmp98Eq120SourceCurve_zero_eq_fourLine

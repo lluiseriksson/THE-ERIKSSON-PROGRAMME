@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116Eq226PhysicalContourToKP
+
+#print axioms YangMills.RG.cmp116Eq226PhysicalContour_KPCriterion_boundedHoles_of_boundaries
+#print axioms YangMills.RG.cmp116Eq226PhysicalContour_singleScaleUVDecay_boundedHoles_of_boundaries

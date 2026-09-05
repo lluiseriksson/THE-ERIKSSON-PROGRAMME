@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeAdjointDictionary
+
+#print axioms YangMills.RG.cmp99SourceFlatRealBlockAverageCLM_adjoint_eq_weight_smul
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_eq_weight_pow_smul
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_adjoint_comp_eq

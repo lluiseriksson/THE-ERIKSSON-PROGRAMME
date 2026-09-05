@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedAmbientLaplacian
+
+#print axioms YangMills.RG.CMP99SourceGeneratedTerminalComplexFieldData.generatedAmbientLaplacian_apply_eq_flatStencil

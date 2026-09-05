@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116Eq226DomainDictionary
+
+#print axioms YangMills.RG.mem_cmp116Eq226SourceDomainParts_iff
+#print axioms YangMills.RG.card_cmp116Eq226SourceDomainParts
+#print axioms YangMills.RG.cmp116Eq226DomainProduct_eq_sourceDomainParts
+#print axioms YangMills.RG.cmp116Eq226DomainProduct_eq_of_sourceDomainDictionary

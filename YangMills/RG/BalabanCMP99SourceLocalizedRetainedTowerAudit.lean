@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceLocalizedRetainedTower
+
+#print axioms YangMills.RG.CMP99SourceLocalizedRetainedTower
+#print axioms YangMills.RG.cmp99SourceLocalizedRetainedTower
+#print axioms YangMills.RG.CMP99SourceLocalizedRetainedTower.terminalQprime_eq
+#print axioms YangMills.RG.CMP99SourceLocalizedRetainedTower.terminalQprime_transport_eq
+#print axioms YangMills.RG.cmp99SourceWeightedQprimeTower_Qprime_heq_of_eqOn_retainedFineReadBonds

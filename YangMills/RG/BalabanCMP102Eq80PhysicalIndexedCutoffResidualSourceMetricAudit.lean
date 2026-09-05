@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalIndexedCutoffResidualSourceMetric
+
+#print axioms
+  YangMills.RG.abs_half_inner_cmp116RadialTaylorResidualOperator_eq80IndexedPhysicalDomain_le_centeredEnergy_of_sourceMetric

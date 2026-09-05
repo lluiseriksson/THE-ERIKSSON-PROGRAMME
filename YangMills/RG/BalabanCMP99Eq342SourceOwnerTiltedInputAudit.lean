@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99Eq342SourceOwnerTiltedInput
+
+#print axioms YangMills.RG.norm_finitePiLpTiltCLM_le_exp_diameter_mul_norm_of_supportedInOwner
+#print axioms YangMills.RG.norm_cmp99Eq342_sourceLocalizedTilt_le_sourceScale

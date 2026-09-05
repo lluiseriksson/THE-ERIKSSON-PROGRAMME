@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116RestrictedWalkFiniteRankFactorization
+
+#print axioms YangMills.RG.cmp116PhysicalPatchWalk_matrix_eq_firstHit_finiteCarrierFactors

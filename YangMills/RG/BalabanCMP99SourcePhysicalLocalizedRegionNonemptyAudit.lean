@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourcePhysicalLocalizedRegionNonempty
+
+#print axioms YangMills.RG.cmp116RegionSites_nonempty_of_sourcePhysicalLocalizedCoordinates
+#print axioms YangMills.RG.nonempty_cmp116SourcePhysicalLocalizedActiveRegion
+#print axioms YangMills.RG.nonempty_cmp99OmegaActiveGaugeRegion_of_sourcePhysicalLocalizedCoordinates

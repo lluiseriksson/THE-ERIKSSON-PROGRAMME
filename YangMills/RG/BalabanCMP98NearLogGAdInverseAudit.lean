@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98NearLogGAdInverse
+
+#print axioms YangMills.RG.fderiv_exp_nearLog_comp_fderiv_nearLog_eq_id
+#print axioms YangMills.RG.cmp98GAd_nearLog_fderiv_apply
+#print axioms YangMills.RG.nearLog_fderiv_apply_eq_cmp98GAdInv
+#print axioms YangMills.RG.norm_nearLog_le_half_of_norm_le_third
+#print axioms YangMills.RG.nearLog_fderiv_apply_eq_cmp98GAdInv_of_norm_le_third

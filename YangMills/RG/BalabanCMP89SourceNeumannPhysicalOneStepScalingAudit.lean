@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89SourceNeumannPhysicalOneStepScaling
+
+/-!
+-/
+
+#print axioms YangMills.RG.cmp89SourceNeumannOneStepDefectCoefficient_physical_scaling
+#print axioms YangMills.RG.cmp89SourceNeumannOneScalePoincare_mul_defect_physical_scaling
+#print axioms YangMills.RG.cmp89SourceNeumannOneScalePoincare_mul_defect_lt_one_iff

@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionDirectWeightedRow
+
+#print axioms YangMills.RG.finitePiLpTypedWeightedRowKernelBound_smul
+#print axioms YangMills.RG.finitePiLpTypedWeightedRowKernelBound_add
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacianWeightedRowAmplitude
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacian_weightedRow
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalPrecisionDirectWeightedRowAmplitude
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalPrecision_directWeightedRow

@@ -1,0 +1,8 @@
+YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice.lean:51:40: error: unexpected token 'ᴴ'; expected ':=', 'where' or '|'
+YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice.lean:62:50: error: unsolved goals
+case a
+Nc : ℕ
+inst✝ : NeZero Nc
+g : SUN Nc
+X : SUNLieCoord Nc
+⊢ ↑g * cmp98LieCoordMatrix X * ↑g = ↑g * cmp98LieCoordMatrix X * (↑g).conjTranspose

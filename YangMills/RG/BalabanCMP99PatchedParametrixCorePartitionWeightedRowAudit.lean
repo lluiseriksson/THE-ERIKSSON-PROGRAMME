@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixCorePartitionWeightedRow
+
+#print axioms YangMills.RG.CMP99PhysicalCorePartition.subtype_univ
+#print axioms YangMills.RG.physicalCovarianceWeightedRowKernelBound_sum_of_corePartition

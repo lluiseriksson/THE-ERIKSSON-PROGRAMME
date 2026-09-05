@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89SourceNeumannRecursiveAbsorptionStep
+
+/-!
+-/
+
+#print axioms YangMills.RG.cmp89SourceNeumannOneStepDefectCoefficient
+#print axioms YangMills.RG.norm_cmp89SourceNeumannRegionalCovariantD0CLM_oneScaleAverage_sq_le
+#print axioms YangMills.RG.eq_zero_of_cmp89SourceNeumann_oneStep_absorption

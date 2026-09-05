@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourceComplexCauchyWalkKernel
+
+#print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_sourceSigmaZeroPi4PhysicalWalkKernel
+#print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_sourceSigmaZeroPi4PhysicalWalkKernel_fixedRate
+#print axioms YangMills.RG.tsum_sourceSigmaZeroPi4PhysicalWalkCoefficient_le_fixedRate

@@ -1,0 +1,18 @@
+import YangMills.RG.BalabanCMP116CMP89PhysicalSiteTransportDictionary
+
+/-!
+# Cold-sealed audit: CMP116/CMP89 fine-site transport dictionary
+
+Compiler-verified with the source at checkpoint
+`b98845a20c2b3869a9e656d28ca8a8f21a26ea63` by cold GitHub Actions run
+`31306842747`.
+-/
+
+#print axioms YangMills.RG.cmp116CMP89PeriodicCoordinateDisplacement_cast
+#print axioms YangMills.RG.natAbs_cmp116CMP89PeriodicCoordinateDisplacement_eq_finTorusDist
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_cast
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondHolderDisplacement_cast
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondFirstEndpointDisplacement_cast
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_realL1_eq
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondTransportDisplacement_realL1_le_four_finBoxDist
+#print axioms YangMills.RG.cmp116CMP89PhysicalBondFirstEndpointDisplacement_realL1_le_add_one

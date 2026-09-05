@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceRetainedFineExtension
+
+
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineExtension
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineExtension_apply_pos_of_mem
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineExtension_apply_pos_of_not_mem
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.norm_retainedFineExtension_sub_one_le
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_Qprime_eq_retainedFineExtension

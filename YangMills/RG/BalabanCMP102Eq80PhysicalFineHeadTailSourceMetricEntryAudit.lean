@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailSourceMetricEntry
+
+#print axioms YangMills.RG.norm_rectangular_matrix_entry_le_linfty_opNorm
+#print axioms YangMills.RG.norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient_entry_le_sourceMetricDecay

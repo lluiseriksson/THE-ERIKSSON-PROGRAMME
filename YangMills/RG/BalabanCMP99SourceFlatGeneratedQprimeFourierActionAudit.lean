@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeFourierAction
+
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockAverageCLM_map_complex_smul
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockWeightedAdjointCLM_map_complex_smul
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitComplexQprime_map_complex_smul
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitComplexWeightedAdjoint_map_complex_smul
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatFourierAmplitude
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatFourierTerminalMode
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitComplexQprime_fourierMode

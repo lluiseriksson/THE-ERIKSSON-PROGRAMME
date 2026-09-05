@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89SourceNeumannInternalBondTransport
+
+#print axioms YangMills.RG.cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_internalBond

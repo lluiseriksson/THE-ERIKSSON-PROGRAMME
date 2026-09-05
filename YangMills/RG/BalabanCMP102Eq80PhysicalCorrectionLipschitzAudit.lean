@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCorrectionLipschitz
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_supNorm_sub_le
+#print axioms YangMills.RG.lipschitzWith_cmp102Eq80PhysicalBackgroundCorrection_sup
+#print axioms YangMills.RG.continuous_cmp102Eq80PhysicalBackgroundCorrection_sup

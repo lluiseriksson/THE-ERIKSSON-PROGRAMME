@@ -1,0 +1,4 @@
+YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay.lean
+YangMills/RG/BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecayAudit.lean
+YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric.lean
+YangMills/RG/BalabanCMP99Eq360C6dSourceSeparatedAmbientMetricAudit.lean

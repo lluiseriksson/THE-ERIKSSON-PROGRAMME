@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99ComplexUbarCoordinateExponent
+
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixCLM
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixNormBudget
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixNormBudget_nonneg
+#print axioms YangMills.RG.norm_cmp99SUNLieComplexCoordMatrixLM_le
+#print axioms YangMills.RG.cmp99UbarSpecialLinearExponentSl
+#print axioms YangMills.RG.cmp99UbarSpecialLinearExponentSl_val
+#print axioms YangMills.RG.cmp99UbarSpecialLinearExponentCoord
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_exponentCoord
+#print axioms YangMills.RG.cmp99UbarSpecialLinearFactorOfNearIdentity_coe_eq_exp_coord

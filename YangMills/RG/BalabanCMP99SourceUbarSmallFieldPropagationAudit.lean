@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99SourceUbarSmallFieldPropagation
+
+namespace YangMills.RG
+
+#print axioms cmp99UbarLogRadius
+#print axioms cmp99UbarExpRadius
+#print axioms norm_cmp99UbarSpecialUnitaryExponent_le_logRadius
+#print axioms norm_cmp99UbarSpecialUnitaryFactorOfDeviationBudget_sub_one_le
+#print axioms norm_cmp99UbarSpecialUnitaryBlockOfDeviationBudget_sub_one_le
+#print axioms cmp99SourceUbarNextFineRadius
+#print axioms sum_cmp99SourceBlockAverageWeight_blockOf
+#print axioms norm_cmp99PhysicalUbarBlockOfFineSmall_sub_one_le
+#print axioms norm_cmp99SourceRegionalScaleDataOfFineSmall_nextBackground_sub_one_le
+
+end YangMills.RG

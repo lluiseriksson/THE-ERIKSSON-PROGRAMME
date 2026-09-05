@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP98GAdInverse
+
+#print axioms YangMills.RG.cmp98GAd_comp_cmp98GAdInv
+#print axioms YangMills.RG.cmp98GAd_sub_id_eq_tsum_succ
+#print axioms YangMills.RG.norm_cmp98GAd_sub_id_le_exp_sub_one
+#print axioms YangMills.RG.norm_cmp98GAd_sub_id_lt_one_of_exp_lt_two
+#print axioms YangMills.RG.cmp98GAdInv_comp_cmp98GAd
+#print axioms YangMills.RG.cmp98GAd_cmp98GAdInv_apply
+#print axioms YangMills.RG.cmp98GAdInv_cmp98GAd_apply
+#print axioms YangMills.RG.cmp98GAd_cmp98GAdInv_apply_of_exp_lt_two
+#print axioms YangMills.RG.cmp98GAdInv_cmp98GAd_apply_of_exp_lt_two
+#print axioms YangMills.RG.norm_cmp98GAdTerm_le_succFactorial
+#print axioms YangMills.RG.norm_cmp98GAd_sub_id_le_shiftedTail
+#print axioms YangMills.RG.norm_cmp98GAd_sub_id_lt_one_of_norm_le_half
+#print axioms YangMills.RG.cmp98GAdInv_cmp98GAd_apply_of_norm_le_half

@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102PhysicalBackgroundBallSourceNorm
+
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_sub_le
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_physicalBackgroundShift_le

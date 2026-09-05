@@ -1,0 +1,13 @@
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicity.lean
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicityAudit.lean
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeam.lean
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeamAudit.lean
+YangMillsCore.lean
+docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md
+docs/VERIFICATION-LEDGER.md
+tmp/audit_cmp89_eq246_directed_source_moment_cold_evidence.py
+tmp/cmp89-integrand-periodicity-seam-seal-paths.txt
+validation-evidence/cmp89-integrand-periodicity-seam-cold-dec1cb16-20260902/README.md
+validation-evidence/cmp89-integrand-periodicity-seam-cold-dec1cb16-20260902/colab_cmp89_eq246_integrand_periodicity_seam_recovery-executed.ipynb
+validation-evidence/cmp89-integrand-periodicity-seam-cold-dec1cb16-20260902/hrpoly-cmp89-eq246-integrand-periodicity-seam-cold-v1-evidence.tar.gz
+validation-evidence/cmp89-integrand-periodicity-seam-cold-dec1cb16-20260902/hrpoly-cmp89-eq246-integrand-periodicity-seam-cold-v1-evidence/evidence.json

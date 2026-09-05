@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98ContourFirstVariation
+
+#print axioms YangMills.RG.cmp98ContourMatrixCurve
+#print axioms YangMills.RG.cmp98ContourFirstVariation
+#print axioms YangMills.RG.hasDerivAt_cmp98ContourMatrixCurve
+#print axioms YangMills.RG.cmp98AmbientWilsonLineMatrix_line_eq_contourMatrixCurve
+#print axioms YangMills.RG.fderiv_cmp98AmbientWilsonLineMatrix_zero_apply_physical

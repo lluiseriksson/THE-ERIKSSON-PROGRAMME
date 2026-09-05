@@ -1,0 +1,243 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import YangMills.RG.BalabanCMP99SourceCovariantLaplacianCutoffIdentity
+import YangMills.RG.BalabanCMP99SourceGeneratedQprimeMassCutoffIdentity
+import YangMills.RG.BalabanCMP99SourceEq395HeadDictionary
+
+/-!
+# Complete generated physical cutoff identity in CMP99 (3.88)
+
+Compiler-verified at exact source checkpoint
+`39905a39f58a7e039ebaf17420393a57871e3dac` in cold GitHub Actions run
+`30990024776`.  The focal completed 8,509 jobs and all seven audited
+declarations use exactly `[propext, Classical.choice, Quot.sound]`.
+
+This file combines the three literal algebraic species in CMP99 (3.88): the
+covariant link derivative, the scalar cutoff-Laplacian correction and the
+normalized `Q'^* Q'` kernel sum.  Extension and restriction are kept visible
+until the ambient product rule has been transported to the active region.
+No finite-range collar, overlap estimate or contraction hypothesis is used in
+the exact identity; those belong to the subsequent estimate of `norm R'`.
+-/
+
+namespace YangMills.RG
+
+open YangMills Matrix
+open scoped BigOperators Matrix.Norms.L2Operator RealInnerProductSpace
+
+noncomputable section
+
+variable {d M N Nc : ℕ}
+variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
+
+/-- Pointwise form of an arbitrary scalar commutator.  Keeping the operator
+abstract here prevents later physical specializations from unfolding their
+entire generated towers merely to expose the outer subtraction. -/
+theorem finitePiLpScalarCommutator_apply_eq
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (h : ι → ℝ)
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (phi : FinitePiLpField ι g) (target : ι) :
+    finitePiLpScalarCommutator h A phi target =
+      h target • A phi target -
+        A (finitePiLpScalarMultiplier (g := g) h phi) target := by
+  rfl
+
+/-- Restriction of the ambient link-derivative species to one active
+Dirichlet carrier. -/
+noncomputable def cmp99ActiveCovariantCutoffLinkDerivative
+    (Omega : ActiveGaugeRegion d N) (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc) (spacing : ℝ)
+    (h : FinBox d N → ℝ)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
+  restrictZeroCLM Omega
+    (WithLp.toLp 2 fun x : FinBox d N =>
+      cmp99CovariantCutoffLinkDerivative rho U spacing h
+        (extendZeroZeroCLM Omega phi) x)
+
+/-- Restriction of the ambient scalar cutoff-Laplacian species to one active
+Dirichlet carrier. -/
+noncomputable def cmp99ActiveCutoffLaplacianCorrection
+    (Omega : ActiveGaugeRegion d N) (spacing : ℝ)
+    (h : FinBox d N → ℝ)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) :=
+  restrictZeroCLM Omega
+    (WithLp.toLp 2 fun x : FinBox d N =>
+      cmp99CutoffLaplacianCorrection spacing h
+        (extendZeroZeroCLM Omega phi) x)
+
+/-- The ambient two-species product rule descends exactly to an arbitrary
+active region.  The multiplier intertwiners need no support hypothesis. -/
+theorem cmp99ActiveRegionSourceCovariantLaplacian_scalarMultiplier_apply
+    (Omega : ActiveGaugeRegion d N) (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc) (spacing : ℝ)
+    (h : FinBox d N → ℝ)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    (target : ActiveGaugeRegion.Site Omega) :
+    cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing
+        (finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+          (fun x : ActiveGaugeRegion.Site Omega => h x.1) phi) target =
+      h target.1 •
+          cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing phi target -
+        cmp99ActiveCovariantCutoffLinkDerivative Omega rho U spacing h phi target +
+        cmp99ActiveCutoffLaplacianCorrection Omega spacing h phi target := by
+  let E := extendZeroZeroCLM (𝔤 := SUNLieCoord Nc) Omega
+  let Hambient := finitePiLpScalarMultiplier (g := SUNLieCoord Nc) h
+  let Hlocal := finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+    (fun x : ActiveGaugeRegion.Site Omega => h x.1)
+  have hHE : Hambient.comp E = E.comp Hlocal := by
+    exact finitePiLpScalarMultiplier_comp_extendZeroZeroCLM Omega h
+  have hHEphi : Hambient (E phi) = E (Hlocal phi) := by
+    simpa [ContinuousLinearMap.comp_apply] using
+      congrArg (fun A => A phi) hHE
+  rw [cmp99ActiveRegionSourceCovariantLaplacian_apply_eq_compression,
+    cmp99ActiveRegionSourceCovariantLaplacian_apply_eq_compression]
+  simp only [cmp99ActiveCovariantCutoffLinkDerivative,
+    cmp99ActiveCutoffLaplacianCorrection, restrictZeroCLM]
+  change
+    cmp99GeneratedAmbientScaledCovariantLaplacian rho U spacing
+        (E (Hlocal phi)) target.1 =
+      h target.1 •
+          cmp99GeneratedAmbientScaledCovariantLaplacian rho U spacing
+            (E phi) target.1 -
+        cmp99CovariantCutoffLinkDerivative rho U spacing h
+          (E phi) target.1 +
+        cmp99CutoffLaplacianCorrection spacing h (E phi) target.1
+  rw [← hHEphi]
+  exact cmp99GeneratedAmbientScaledCovariantLaplacian_scalarMultiplier
+    rho U spacing h (E phi) target.1
+
+/-- Active-region first-two-species formula in the literal commutator
+orientation `h Delta_U - Delta_U h` used by `K(h)` in CMP99 (3.88). -/
+theorem cmp99ActiveRegionSourceCovariantLaplacian_cutoffCommutator_apply_eq
+    (Omega : ActiveGaugeRegion d N) (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc) (spacing : ℝ)
+    (h : FinBox d N → ℝ)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    (target : ActiveGaugeRegion.Site Omega) :
+    h target.1 •
+        cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing phi target -
+      cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing
+        (finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+          (fun x : ActiveGaugeRegion.Site Omega => h x.1) phi) target =
+      cmp99ActiveCovariantCutoffLinkDerivative Omega rho U spacing h phi target -
+        cmp99ActiveCutoffLaplacianCorrection Omega spacing h phi target := by
+  rw [cmp99ActiveRegionSourceCovariantLaplacian_scalarMultiplier_apply]
+  module
+
+/-- Exact three-species split for an active source precision whose
+Laplacian is the literal covariant one.  The two differential species and
+the normalized mass kernel sum remain separately visible. -/
+theorem cmp99ActiveSourceGaugePrecision_cutoffCommutator_apply_eq
+    {F : Type*} [NormedAddCommGroup F] [InnerProductSpace ℝ F]
+    [CompleteSpace F]
+    (Omega : ActiveGaugeRegion d N) (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground d N Nc) (spacing : ℝ)
+    (h : FinBox d N → ℝ)
+    (Qprime : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ] F)
+    (a : ℝ) (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    (target : ActiveGaugeRegion.Site Omega) :
+    h target.1 •
+        cmp99SourceGaugePrecision
+          (cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing)
+          Qprime a phi target -
+      cmp99SourceGaugePrecision
+        (cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing)
+        Qprime a
+        (finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+          (fun x : ActiveGaugeRegion.Site Omega => h x.1) phi) target =
+      cmp99ActiveCovariantCutoffLinkDerivative Omega rho U spacing h phi target -
+        cmp99ActiveCutoffLaplacianCorrection Omega spacing h phi target +
+        a • ∑ source : ActiveGaugeRegion.Site Omega,
+          (h target.1 - h source.1) •
+            (Qprime.adjoint.comp Qprime)
+              (singleFinitePiLp source (phi source)) target := by
+  let hlocal := fun x : ActiveGaugeRegion.Site Omega => h x.1
+  let L := cmp99ActiveRegionSourceCovariantLaplacian Omega rho U spacing
+  let Qmass := Qprime.adjoint.comp Qprime
+  have hL : h target.1 • L phi target -
+      L (finitePiLpScalarMultiplier (g := SUNLieCoord Nc) hlocal phi) target =
+        cmp99ActiveCovariantCutoffLinkDerivative Omega rho U spacing h phi target -
+          cmp99ActiveCutoffLaplacianCorrection Omega spacing h phi target := by
+    exact cmp99ActiveRegionSourceCovariantLaplacian_cutoffCommutator_apply_eq
+      Omega rho U spacing h phi target
+  have hQsum := finitePiLpScalarCommutator_apply_eq_sum
+    hlocal Qmass phi target
+  have hQ : h target.1 • Qmass phi target -
+      Qmass (finitePiLpScalarMultiplier (g := SUNLieCoord Nc) hlocal phi) target =
+        ∑ source : ActiveGaugeRegion.Site Omega,
+          (h target.1 - h source.1) •
+            Qmass (singleFinitePiLp source (phi source)) target := by
+    simpa [hlocal, finitePiLpScalarCommutator_apply_eq] using hQsum
+  calc
+    _ = (h target.1 • L phi target -
+          L (finitePiLpScalarMultiplier (g := SUNLieCoord Nc) hlocal phi)
+            target) +
+        a • (h target.1 • Qmass phi target -
+          Qmass (finitePiLpScalarMultiplier (g := SUNLieCoord Nc) hlocal phi)
+            target) := by
+      simp only [cmp99SourceGaugePrecision, ContinuousLinearMap.add_apply,
+        ContinuousLinearMap.smul_apply, PiLp.add_apply, PiLp.smul_apply]
+      module
+    _ = _ := by rw [hL, hQ]
+
+/-- Literal generated-precision specialization of all three species in
+CMP99 (3.88).  The tower `Q'`, its adjoint mass and its scalar coefficient
+are constructed internally from the source data. -/
+theorem cmp99SourceGeneratedPhysicalPrecision_cutoffCommutator_apply_eq
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
+    (depth : ℕ) (spacing epsilon : ℝ)
+    (background : GaugeConfig d
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget d M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (h : FinBox d (cmp99RegionalLatticeSize M N (depth + 1)) → ℝ)
+    (phi : ActiveGaugeZeroCochain
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+      (SUNLieCoord Nc))
+    (target : ActiveGaugeRegion.Site
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))) :
+    let OmegaFine := cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)
+    let regions := cmp99SourceIteratedLiftActiveRegionChain
+      (M := M) Omega (depth + 1)
+    let T := regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
+      spacing epsilon background budget.toRadiusChain fineSmall
+    let mass := cmp99SourceGeneratedPhysicalMass
+      d M (depth + 1) spacing epsilon
+    h target.1 •
+        cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing epsilon
+          background budget fineSmall phi target -
+      cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing epsilon
+        background budget fineSmall
+        (finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+          (fun x : ActiveGaugeRegion.Site OmegaFine => h x.1) phi) target =
+      cmp99ActiveCovariantCutoffLinkDerivative OmegaFine
+          (matrixSUNAdjointModel Nc) background spacing h phi target -
+        cmp99ActiveCutoffLaplacianCorrection OmegaFine spacing h phi target +
+        mass • ∑ source : ActiveGaugeRegion.Site OmegaFine,
+          (h target.1 - h source.1) •
+            (T.Qprime.adjoint.comp T.Qprime)
+              (singleFinitePiLp source (phi source)) target := by
+  dsimp only
+  rw [cmp99SourceGeneratedPhysicalPrecision_eq_sourceGaugePrecision]
+  exact cmp99ActiveSourceGaugePrecision_cutoffCommutator_apply_eq
+    (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+    (matrixSUNAdjointModel Nc) background spacing h
+    ((cmp99SourceIteratedLiftActiveRegionChain
+      (M := M) Omega (depth + 1)).weightedQprimeTower hd hM
+        (matrixSUNAdjointModel Nc) spacing epsilon background
+        budget.toRadiusChain fineSmall).Qprime
+    (cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon)
+    phi target
+
+end
+
+end YangMills.RG

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel
+
+#print axioms YangMills.RG.cmp89Eq246DirectedNormalizedPhysicalFineKernel
+#print axioms YangMills.RG.cmp89Eq246PhysicalFineEndpointDifference_eq
+#print axioms YangMills.RG.norm_cmp89Eq246DirectedNormalizedPhysicalFineKernel_le
+#print axioms YangMills.RG.cmp89Eq246DirectedNormalizedPhysicalFineKernel_zero_eq_realGreenSynthesis

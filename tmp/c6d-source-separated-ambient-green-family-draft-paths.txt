@@ -1,0 +1,4 @@
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenAudit.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthAudit.draft.lean

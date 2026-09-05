@@ -1,0 +1,5 @@
+import YangMills.RG.QuantitativeFixedPointDerivativeStability
+
+#print axioms YangMills.RG.norm_fixedPointGraphDerivative_le
+#print axioms YangMills.RG.norm_sub_le_of_fixedPointDerivativeEquations
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_fixedPoint_le

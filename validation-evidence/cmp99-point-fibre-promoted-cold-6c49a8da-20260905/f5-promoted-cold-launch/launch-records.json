@@ -1,0 +1,41 @@
+[
+  {
+    "command": [
+      "/usr/bin/python3",
+      "/content/f5-promoted-cold-launch/verify_cmp99_point_fibre_promoted_cold.py",
+      "--helpers",
+      "/content/f5-promoted-cold-launch",
+      "--self-test"
+    ],
+    "exit": 0,
+    "log_sha256": "5a0ac1ca2b27ce65a6c7af50c8911f00cb0cacd5b4be727d52ccadfdbe39e998",
+    "seconds": 0.0810797639996963,
+    "stage": "verifier_self_test"
+  },
+  {
+    "command": [
+      "/usr/bin/python3",
+      "/content/f5-promoted-cold-launch/colab_cmp99_point_fibre_promoted_cold.py"
+    ],
+    "exit": 0,
+    "log_sha256": "9409024bd80d04a79bd9956fc8f18830d0478596337ce73464582ba53aca5914",
+    "seconds": 3041.139172147,
+    "stage": "cold_graph"
+  },
+  {
+    "command": [
+      "/usr/bin/python3",
+      "/content/f5-promoted-cold-launch/verify_cmp99_point_fibre_promoted_cold.py",
+      "--helpers",
+      "/content/f5-promoted-cold-launch",
+      "--archive",
+      "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1-evidence.tar.gz",
+      "--sha256",
+      "97192a7e32c99c02e7663808019f9be149a075f24112ee4848d3af5b060fd18d"
+    ],
+    "exit": 0,
+    "log_sha256": "1c1d88d572709696fd6e3e1980ad43c1738b01ef91e749b1348cc31e870ac22f",
+    "seconds": 0.15702614600013476,
+    "stage": "archive_verifier"
+  }
+]

@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102AmbientNonlinearBlockThirdJetBound
+
+#print axioms YangMills.RG.cmp102SourceExpAverageOrderThreeJetBudget
+#print axioms YangMills.RG.cmp102SourceAmbientNonlinearBlockThirdJetBudget
+#print axioms YangMills.RG.cmp102SourceExpAverageOrderThreeJetBudget_nonneg
+#print axioms YangMills.RG.norm_iteratedFDeriv_cmp102AmbientNonlinearBlock_le_orderThreeBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_cmp102AmbientNonlinearBlock_le_sourceBudget

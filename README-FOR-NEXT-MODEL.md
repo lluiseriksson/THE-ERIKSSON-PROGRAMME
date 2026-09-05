@@ -1,5 +1,18 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest hRpoly update2026-09-05: ledger1118 seals F5 point/fibre prefix at
+source6c49a8da (20 independently verified cold stages,7 exact axioms).
+Ledger1119 records four physical real-slice draft theorems PASS at59f9f522,
+with downloaded evidence verified; this is not a promoted production seal.
+Ledger1120 preserves a valid three-theorem owner-dictionary HOT prefix and
+the subsequent point-probe NeZero failure. No declaration of that failed
+module is accepted. The focused repair91cc4dd5 passed its two declarations
+and all18 recorded stages (ledger1121); downloaded archive hashes match.
+This is a diagnostic PASS, not a promoted production seal. Runtime deleted,
+monitor deleted, browser tabs closed. See the continuity file for the next
+finite nine-declaration promotion. Do not rerun historical notebooks. No Windows Lean.
+20/41,TermSource0,window15 compatible but unattained.
+
 You are a (more powerful) AI being handed this Lean 4 / Mathlib repository to advance. This
 single file is self-contained: it gives you the project's purpose, the build/verify loop,
 the iron rules, the complete map of what is proved, and the exact open targets. Read it once,
@@ -453,3 +466,72 @@ lemmas without breaking §3. And keep `~0% to Clay` honest — a model that clai
 prize by adding an axiom or a vacuous target has failed the actual test, which is integrity.
 
 — The Eriksson Programme. Build truthfully.
+
+## Live handoff — 2026-08-01
+
+The current hRpoly branch retains each literal CMP109 Lemma-1 native domain as
+a distinct finite index, maps only its support to the terminal coarse lattice,
+and derives the complete centered rooted-residual sum with explicit
+`64 * exp(-rate/24) < 1` windows.  Do not quotient coincident coarse supports:
+that would reintroduce a fibre-multiplicity obligation.  The combined
+`domain_nonempty`, `domain_subset`, `domainMetric_nonneg`, `rooted_residual`,
+and `volume_budget` fields are now derived, as is the combined physical
+equation-(1.43) field.
+
+The mixed-sector equation-(1.36) producer is now also green on the corrected
+source carrier `cmp116Eq80Lemma1CombinedSourceSmallFieldCarrier`. The cutoff
+carrier is disjoint from every source-admissible `P`, while the residual is
+still evaluated on the terminal projection `P_Z0 B`. The bridge uses
+monotonicity of the source sup norm under an additional coordinate projection;
+it does not claim that every native source bond is interior with its full
+stencil, and it does not localize the global correction `D(B)`. Headline:
+`abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136`.
+
+Do not reuse the retracted all-interior route: because
+`cmp116LocalizationCore` makes every bond in `P` interior, that small-field
+cutoff and the complementary large-field cutoff are incompatible for nonempty
+`P`. The formal no-go theorem remains
+`cmp116Eq80Lemma1CombinedInteriorSignedCutoff_eq_zero`.
+
+The public partial constructor
+`cmp116Eq226CenteredConditionedCombinedPartialTermSourceOfPreEq136` is now
+compiler- and oracle-verified in a fresh Colab clone.  It generates the final
+equation-(1.36) field from the direct producer and the strictly positive,
+source-pinned `CMP109Lemma1Eq136SourceCertificate.bound`; do not count that
+certificate as a proof of Lemma 1.  The constructor still receives an already
+inhabited `PreEq136`, so it is not a terminal inhabitant and does not reduce
+the remaining input telescope by itself.
+
+The live denominator is now explicit: 17 of the 41 pre-(1.36) obligations
+have independent source-specific producers.  The next milestone is a genuine
+source-specific `PreEq136` assembler that omits those seventeen conclusions
+from its inputs, rather than accepting a completed pre-record plus ledger
+equalities.  The physical covariance/parametrix data, conditioned covariance
+lower certificate, contour contractions, Cauchy normalizations, and joint
+scalar windows must remain visible until they are separately discharged.
+
+## Focused hRpoly handoff — 2026-09-05
+
+The preceding August denominator is historical: the current count is
+20/41, TermSource=0, window15 compatible but not attained. Clay remains
+<0.1%. The current branch is codex/cmp116-interacting-wilson-hessian.
+
+F4's promoted uniform scalar full-Green owner-amplitude graph is cold
+verified at source5138e9bd4bc88797c91c21df5bb5c630c71600ca and selectively
+sealed in47848fb0f21f495e956cab35dbbee3d706cdfe0f (ledger Addendum1116).
+Three production modules, three audits, eight exact allowed trios;
+downloaded archives independently verified. The theorem chooses rho,C
+before all depths j for fixed a,L and retains C R^-2. It does not give
+regional/derivative B0 or window15. No new aggregate root build is claimed.
+
+F5 must separately bundle the common scalar over the Lie fibre, transport
+the actual real operator, pay only one owner-fibre's R^4 cardinality, then
+address the canonical regional inverse and its three derivative actions.
+Do not identify restriction of an ambient inverse with inversion of a
+compressed precision. Read docs/F4-UNIFORM-AMPLITUDE-PROMOTION.md and the
+F5 acceptance gates in docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md.
+
+Current bounded hot diagnostic status is recorded in
+tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md. Its cache is
+diagnostic only, never the basis for a cold seal. Heavy work remains in
+Colab, not Windows; Fable is unavailable and exploratory CI is forbidden.

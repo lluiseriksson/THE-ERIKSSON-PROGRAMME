@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99ComplexFineHeadTailMultiplicitySeries
+
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_nestedMultiplicitySeries_of_source

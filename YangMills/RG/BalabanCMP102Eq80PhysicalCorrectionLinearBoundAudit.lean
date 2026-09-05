@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCorrectionLinearBound
+
+#print axioms YangMills.RG.cmp102PhysicalCorrectionContractionRate_nonneg
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_supNorm_le

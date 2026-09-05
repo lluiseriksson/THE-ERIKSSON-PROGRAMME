@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullTransposePairing
+
+#print axioms YangMills.RG.cmp89Eq246StabilizedAliasFullSolution_transpose_pairing

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq342SourceLocalizedCertificateAssembler
+
+#print axioms YangMills.RG.cmp99Eq342SourceLocalizedGreenCertificate_of_actionBounds

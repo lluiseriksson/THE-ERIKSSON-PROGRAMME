@@ -1,0 +1,26 @@
+import YangMills.RG.BalabanCMP99SourceRegionTransition
+
+namespace YangMills.RG
+
+#print axioms cmp99OmegaTransitionRestriction
+#print axioms cmp99OmegaTransitionExtension
+#print axioms cmp99OmegaTransition_region_subset
+#print axioms cmp99OmegaTransitionRestriction_comp_extension
+#print axioms norm_cmp99OmegaTransitionExtension
+#print axioms inner_cmp99OmegaTransitionRestriction_eq_extension
+#print axioms cmp99OmegaTransitionExtension_eq_adjoint
+#print axioms opNorm_le_one_of_norm_map_eq
+#print axioms norm_cmp99OmegaTransitionRestriction_le_one
+#print axioms cmp99OmegaCoarseTransitionRestriction
+#print axioms cmp99SourceTransportedBlockAverage_transition
+#print axioms cmp99SourceTransportedBlockAverage_adjoint_transition
+#print axioms cmp99SourceTransportedBlockMass_transition
+#print axioms cmp99OmegaSourcePhysicalOneStepQ_transition
+#print axioms cmp99OmegaSourcePhysicalOneStepMass_transition
+#print axioms cmp99TypedPrecisionDefect
+#print axioms cmp99TypedPrecisionDefect_add_mass_eq
+#print axioms cmp99OmegaSourcePhysicalOneStepPrecisionDefect_eq_laplacianDefect
+#print axioms typedGreen_transition_resolvent
+#print axioms cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent
+
+end YangMills.RG

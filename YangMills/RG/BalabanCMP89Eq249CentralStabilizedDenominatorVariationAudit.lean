@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89Eq249CentralStabilizedDenominatorVariation
+
+#print axioms YangMills.RG.cmp89Eq245EntireScaledLaplacianVerticalBudget_le_centralBound
+#print axioms YangMills.RG.norm_cmp89Eq249CentralEntireFineSymbol_realSlice_le
+#print axioms YangMills.RG.norm_cmp89Eq249CentralStabilizedAliasDenominator_sub_realSlice_le

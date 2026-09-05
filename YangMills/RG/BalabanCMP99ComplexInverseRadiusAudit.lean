@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99ComplexInverseRadius
+
+#print axioms YangMills.RG.norm_cmp99SpecialLinear_inv_sub_one_le_div

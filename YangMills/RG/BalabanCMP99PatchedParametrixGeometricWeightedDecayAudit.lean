@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixGeometricWeightedDecay
+
+#print axioms YangMills.RG.cmp99PhysicalBondGeometricRowSum
+#print axioms YangMills.RG.cmp99PhysicalBondGeometricRowSum_nonneg
+#print axioms YangMills.RG.physicalBondDist_exp_sum_le_cmp99GeometricRowSum
+#print axioms YangMills.RG.cmp99PhysicalPatchWeightedCertificate_of_geometricPhysicalData
+#print axioms YangMills.RG.cmp99PhysicalPatchOrderedProduct_exponentialKernelBound_geometric

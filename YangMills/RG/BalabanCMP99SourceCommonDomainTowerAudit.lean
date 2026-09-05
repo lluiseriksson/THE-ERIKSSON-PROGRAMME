@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99SourceCommonDomainTower
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceCommonDomainTower.levelSpace
+#print axioms CMP99SourceCommonDomainTower.Qprime
+#print axioms CMP99SourceCommonDomainTower.levelSpace_zero
+#print axioms CMP99SourceCommonDomainTower.Qprime_zero
+#print axioms CMP99SourceCommonDomainTower.levelSpace_succ
+#print axioms CMP99SourceCommonDomainTower.Qprime_succ
+#print axioms CMP99SourceCommonDomainTower.Qprime_one
+
+end YangMills.RG

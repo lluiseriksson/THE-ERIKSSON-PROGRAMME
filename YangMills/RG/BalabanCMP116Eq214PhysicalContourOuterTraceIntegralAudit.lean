@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116Eq214PhysicalContourOuterTraceIntegral
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.integral_norm_outerWeight_eq
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.integral_norm_outerWeight_le_of_determinantDensity_of_trace

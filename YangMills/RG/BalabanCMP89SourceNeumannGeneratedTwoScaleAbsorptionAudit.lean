@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89SourceNeumannGeneratedTwoScaleAbsorption
+
+#print axioms YangMills.RG.eq_zero_of_cmp89SourceNeumann_generatedTwoScale_physical_absorption

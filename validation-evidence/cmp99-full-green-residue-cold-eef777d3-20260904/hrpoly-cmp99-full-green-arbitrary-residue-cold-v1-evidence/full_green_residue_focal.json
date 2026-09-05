@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.BalabanCMP99FullGreenArbitraryResidueBound"], "cwd": "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1", "exit": 0, "log_file": "full_green_residue_focal.log", "output_sha256": "4f8ebfaec1899f1d0467d1d2187e92da4bda18b72b15c487a2e49ce3fc35d308", "seconds": 1484.136832827, "stage": "full_green_residue_focal"}

@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89Eq251OneDimensionalAliasSeries
+
+#print axioms YangMills.RG.one_lt_cmp89Eq251AliasSeriesExponent
+#print axioms YangMills.RG.cmp89Eq251OneDimensionalAliasWeight_nonneg
+#print axioms YangMills.RG.cmp89Eq251OneDimensionalAliasWeight_le_abs_int_rpow
+#print axioms YangMills.RG.summable_cmp89Eq251OneDimensionalAliasWeight
+#print axioms YangMills.RG.cmp89Eq251CenteredOneDimensionalAliasSum_le_tsum
+#print axioms YangMills.RG.cmp89Eq251CenteredOneDimensionalAliasSum_source_le_tsum

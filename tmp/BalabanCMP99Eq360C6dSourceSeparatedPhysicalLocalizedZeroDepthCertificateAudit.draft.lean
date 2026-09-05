@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedPhysicalLocalizedZeroDepthCertificate
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedPhysicalLocalized_zeroDepthCertificate

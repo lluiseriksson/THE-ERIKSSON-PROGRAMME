@@ -1,0 +1,2 @@
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepthAudit.draft.lean

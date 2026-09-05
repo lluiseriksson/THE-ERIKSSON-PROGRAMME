@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq251UnitLatticeHolderNormalization
+
+#print axioms YangMills.RG.cmp89Eq251DisplacementL1_latticeDisplacement
+#print axioms YangMills.RG.cmp89Eq251DisplacementL1_latticeDisplacement_eq_one_of_unit
+#print axioms YangMills.RG.cmp89Eq251MomentumSquare_latticeDisplacement_eq_one_of_unit
+#print axioms YangMills.RG.cmp89Eq251EuclideanNorm_latticeDisplacement_eq_one_of_unit
+#print axioms YangMills.RG.cmp89Eq251EuclideanNorm_latticeDisplacement_rpow_eq_one_of_unit

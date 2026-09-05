@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP116Eq229ShiftedCardMetric
+
+#print axioms YangMills.RG.cmp116Eq229ShiftedCardMetric
+#print axioms YangMills.RG.card_div_twentyFour_le_shiftedCardMetric_add_one
+#print axioms YangMills.RG.shiftedCardMetric_add_one_eq_cardMetric
+#print axioms YangMills.RG.cmp116Eq229ShiftedCardMetric_eq227
+#print axioms YangMills.RG.cmp116Eq229Weight_le_shiftedCardMetricWeight_of_eq230Shifted
+#print axioms YangMills.RG.cmp116Eq229HalfFugacityWeight_le_cardWeight_shifted
+#print axioms YangMills.RG.cmp116Eq229_localHalfFugacitySum_le_shifted
+#print axioms YangMills.RG.cmp116Eq229_shifted_localSmallness_of_uniform
+#print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_shiftedCardMetric_uniform
+#print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_of_eq230Shifted_uniform
+#print axioms YangMills.RG.CMP116Eq229Summability.of_exactUnion_fourDimensional_eq230Shifted_uniform

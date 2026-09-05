@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4QuadraticMixedLocalization
+
+#print axioms YangMills.RG.cmp102Eq80QuadraticMixedPairTerm_sum_sum
+#print axioms YangMills.RG.cmp102Eq80SourcePi4QuadraticMixedDomainCoefficient_eq_zero_of_not_subset
+#print axioms YangMills.RG.cmp102Eq80SourcePi4QuadraticMixedDomainCoefficient_eq_zero_of_not_walkConnected
+#print axioms YangMills.RG.cmp102Eq80QuadraticMixedPairTerm_fullRealMixed_eq_sum_pi4Domains

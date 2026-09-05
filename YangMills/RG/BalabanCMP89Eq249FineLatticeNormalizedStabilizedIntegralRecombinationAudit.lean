@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedIntegralRecombination
+
+/-!
+# Cold-sealed audit: normalized physical fine-lattice recombination
+-/
+
+#print axioms YangMills.RG.cmp89Eq249PhysicalFineLatticeDisplacement_add
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedSignedEndpointIntegral
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedEndpointIntegral_eq_signedEndpoint
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedIntegral
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedIntegral_eq_sub_signedEndpoints
+#print axioms YangMills.RG.norm_cmp89Eq249NormalizedFineLatticeStabilizedIntegral_le
+#print axioms YangMills.RG.cmp89Eq249PhysicalFineEndpointWeights_add_le

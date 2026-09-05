@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalOuterNeumannSourceMetricFTC
+
+#print axioms YangMills.RG.exists_uniform_bound_cmp102Eq80SourcePi4PhysicalOuterNeumannDomainFTC
+#print axioms YangMills.RG.exists_uniform_bound_cmp102Eq80SourcePi4PhysicalCompleteDomainFTC

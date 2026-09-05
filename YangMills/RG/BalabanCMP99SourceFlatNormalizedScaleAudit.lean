@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceFlatNormalizedScale
+
+#print axioms YangMills.RG.cmp99UbarNoWindingThreshold_pos
+#print axioms YangMills.RG.cmp99SourceFlatNormalizedRegionalScale
+#print axioms YangMills.RG.cmp99SourceFlatNormalizedRegionalScale_nextBackground

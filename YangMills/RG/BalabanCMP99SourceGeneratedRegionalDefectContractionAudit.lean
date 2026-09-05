@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedRegionalDefectContraction
+
+/-!
+# Axiom audit: physical regional defect contraction
+-/
+
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalDefect
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalDefectAmplitude
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalDefectRate
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalDefectBudget
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalDefect_exponentialKernelBound
+#print axioms YangMills.RG.norm_cmp99SourceGeneratedPhysicalRegionalDefect_le_budget
+#print axioms YangMills.RG.norm_cmp99SourceGeneratedPhysicalRegionalDefect_lt_one_of_budget

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalOuterCardinality
+
+#print axioms YangMills.RG.cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost
+#print axioms YangMills.RG.cmp116SourceRestrictedConditionedPhysicalOuterBoundary_le_exp_card
+#print axioms YangMills.RG.cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost_nonneg

@@ -6788,7 +6788,7 @@ def test_blocker_matrix_keeps_core_source_pending_gates() -> None:
         "Which CMP98 theorem/proposition supplies the exact Q_k averaging operator"
     )
     assert (
-        "| 7 | `cmp98.eq14-15-source-target` | `located` | Balaban CMP98 |"
+        "| 9 | `cmp98.eq14-15-source-target` | `located` | Balaban CMP98 |"
         in blocker_md
     )
 
@@ -6841,6 +6841,33 @@ def test_paper_coverage_matrix_keeps_cmp122_pipeline_gates() -> None:
     assert "dictionary still open | local-pdf-text-renders-present" in coverage_md
     assert "without promoting it to RawYMActivityDecay" in coverage_md
     assert "`cmp98` — Balaban CMP98 | located-label-map |" in coverage_md
+
+
+def test_cmp102_volume_disambiguation_and_eq78_dictionary_are_visible() -> None:
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "spine-backlog.json")
+        .read_text(encoding="utf-8")
+    )
+    assert catalog["sources"]["cmp102_uv3d"]["journal"].endswith("255-275")
+    assert catalog["sources"]["cmp102_variational"]["journal"].endswith(
+        "277-309"
+    )
+
+    by_key = {item["key"]: item for item in catalog["citations"]}
+    uv3d = by_key["cmp102.uv3d-volume-disambiguation"]
+    assert uv3d["source_id"] == "cmp102_uv3d"
+    assert uv3d["locator"]["equations"] == ["1-71"]
+
+    variational = by_key["cmp102.variational-hessian-expansion-source-target"]
+    formulas = {item["id"]: item for item in variational["formulas"]}
+    eq78 = formulas["cmp102.eq78.D3-remainder-decomposition"]
+    assert eq78["source_verified"] is True
+    assert "<H D(A'),J>" in eq78["ascii"]
+
+    links = {item["id"]: item for item in variational["dictionary_links"]}
+    d3_link = links["cmp102.eq78.D3-equals-D-minus-C2"]
+    assert d3_link["status"] == "dictionary_open"
+    assert "D = C^(2) + D₃" in d3_link["statement"]
 
 
 def test_coverage_filter_finds_cmp122_pipeline_gates(tmp_path: Path, capsys) -> None:

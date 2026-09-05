@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceEq395CovarianceOnSourceDecay
+
+#print axioms YangMills.RG.isCoerciveCLM_cmp99SourceTerminalCLMTransport
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalCovarianceOnSource
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddleDirect_eq_onSource
+#print axioms YangMills.RG.isCoerciveCLM_cmp99Eq395GeneratedPhysicalMiddleOnSource
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddleOnSource_comp_covariance
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalCovarianceOnSource_exponentialKernelBound

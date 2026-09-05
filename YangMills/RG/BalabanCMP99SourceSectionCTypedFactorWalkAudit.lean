@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceSectionCTypedFactorWalk
+
+#print axioms YangMills.RG.CMP99SectionCTypedFactorLabel
+#print axioms YangMills.RG.cmp99SectionCSourceCutLabelTower
+#print axioms YangMills.RG.cmp99SectionCSourceCutLabelTower_length
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceCutLabelOperator
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceCutLabeledOperatorWalk
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceCutLabeledOperatorWalk_eq_factorTower

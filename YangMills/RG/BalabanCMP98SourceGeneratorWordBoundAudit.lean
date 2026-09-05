@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP98SourceGeneratorWordBound
+
+#print axioms YangMills.RG.norm_of_mem_cmp98SourceFourContourGenerators_le
+#print axioms YangMills.RG.norm_cmp98SourceFourContourOrderedExp_sub_linear_le
+#print axioms YangMills.RG.norm_cmp98SourceFourContourOrderedExp_sub_linear_le_sourceScale

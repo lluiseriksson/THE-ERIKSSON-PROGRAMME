@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceCoarseFibreFourierNegQuotientCarry
+
+#print axioms YangMills.RG.cmp99FinBoxFourierNeg_apply_val
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv_quotient_val
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFixedCoarseFibreFourierNegEquiv_quotient_cast

@@ -1,0 +1,8 @@
+import YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport
+
+#print axioms YangMills.RG.finitePiLpComplexOuterEquiv
+#print axioms YangMills.RG.finitePiLpComplexOuterEquiv_apply
+#print axioms YangMills.RG.finitePiLpCanonicalComplexificationOuterCLM
+#print axioms YangMills.RG.finitePiLpCanonicalComplexificationOuterCLM_comp
+#print axioms YangMills.RG.finitePiLpCanonicalComplexificationOuterCLM_id
+#print axioms YangMills.RG.finitePiLpCanonicalComplexificationOuterCLM_comp_eq_id

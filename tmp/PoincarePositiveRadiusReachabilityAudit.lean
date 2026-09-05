@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99SourcePoincarePositiveRadiusReachability
+
+#print axioms YangMills.RG.cmp99SourcePoincareEnergyCoeff_eq_zeroRadius
+#print axioms YangMills.RG.continuousAt_cmp99SourceUbarNextFineRadius_zero
+#print axioms YangMills.RG.continuousAt_cmp99SourceScaledGradientStepError_zero
+#print axioms YangMills.RG.continuousAt_cmp99SourcePoincareErrorCoeff_zero
+#print axioms YangMills.RG.exists_pos_poincare_admissibleRadius
+#print axioms YangMills.RG.exists_pos_poincare_closedBudget
+#print axioms YangMills.RG.exists_pos_poincare_pivot_closedBudget
+#print axioms YangMills.RG.exists_pos_poincare_pivot_alpha1_closedBudget
+#print axioms YangMills.RG.exists_pos_poincare_sourceAlphaInterval

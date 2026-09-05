@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP89NeumannRectangleActiveRegion
+
+namespace YangMills.RG
+
+#print axioms cmp89SourceNeumannRectangleActiveRegion
+#print axioms mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff
+#print axioms cmp89SourceNeumannRectangleSite
+#print axioms cmp89SourceNeumannRectangleSiteEquiv
+#print axioms cmp89SourceNeumannRectangleSiteEquiv_apply
+
+end YangMills.RG

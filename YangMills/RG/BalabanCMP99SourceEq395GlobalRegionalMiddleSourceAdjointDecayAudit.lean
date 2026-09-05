@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceEq395GlobalRegionalMiddleSourceAdjointDecay
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGlobalRegionalMiddleDefectOnSource_adjoint_exponentialKernelBound

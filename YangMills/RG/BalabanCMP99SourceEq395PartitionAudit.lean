@@ -1,0 +1,19 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import YangMills.RG.BalabanCMP99SourceEq395Partition
+
+open YangMills.RG
+
+#print axioms finitePiLpScalarMultiplier_comp
+#print axioms finitePiLpScalarMultiplier_comp_eq_of_pointwise_mul
+#print axioms cmp95PeriodicCoordinateSupport_displacement01
+#print axioms cmp95SourcePeriodicCoarseCellSupport_mem_sourceBaseCell
+#print axioms card_cmp95SourcePeriodicCoarseCellSupportFinset_le_sixteen
+#print axioms cmp95SourcePeriodicCoarseSquarePartition_mul_piCharacteristic
+#print axioms cmp95SourcePeriodicCoarseSquarePartition_mul_pi4Characteristic
+#print axioms cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_characteristic
+#print axioms cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_pi4
+#print axioms sum_cmp99SourceSquarePartition_multiplier_sq_eq_id

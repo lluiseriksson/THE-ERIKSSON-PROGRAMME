@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq246FinePointSourceSolutionCycle
+
+#print axioms YangMills.RG.cmp89Eq246StabilizedFinePointSourceSolution_physicalShift_eq_cycle

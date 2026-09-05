@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedPhysicalLaplacianDictionary
+
+-- SCRATCH ONLY: the imported module is not compiler evidence.
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedPhysicalBondEquiv
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedCovariantD0_reindex_eq
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedCovariantLaplacian_reindex_eq

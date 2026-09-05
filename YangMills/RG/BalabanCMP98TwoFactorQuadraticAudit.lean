@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP98TwoFactorQuadratic
+
+#print axioms YangMills.RG.cmp98_twoFactor_sub_zero_sub_first_eq
+#print axioms YangMills.RG.norm_twoFactor_sub_zero_sub_first_le

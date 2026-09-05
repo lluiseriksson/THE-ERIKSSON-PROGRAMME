@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq237ComponentFiberEncoding
+
+#print axioms YangMills.RG.cmp116Eq237_fiber_card_le_prod_componentChoice_card
+#print axioms YangMills.RG.cmp116Eq237_fiberEntropy_of_componentEncoding
+#print axioms YangMills.RG.CMP116Eq237ComponentFiberEncoding.fiberEntropy

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq231PBondFactorBridge
+
+#print axioms YangMills.RG.cmp116Eq226PSourceRate_nonneg_of_sourceBracket
+#print axioms YangMills.RG.cmp116Eq226PBondFactor_le_eq231PWeight_of_gapMass_le_two_mul_card
+#print axioms YangMills.RG.cmp116Eq226PBondFactor_le_eq231PWeight_of_endpointCover

@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4AnchoredDomainUnion
+
+#print axioms YangMills.RG.walkConnected_anchor_union_biUnion
+#print axioms YangMills.RG.cmp102Eq80SourcePi4AnchorCarrier_subset_anchoredDomainUnion
+#print axioms YangMills.RG.subset_cmp102Eq80SourcePi4AnchoredDomainUnion
+#print axioms YangMills.RG.walkConnected_cmp102Eq80SourcePi4AnchoredDomainUnion
+#print axioms YangMills.RG.cmp102Eq80SourcePi4AnchorCarrier_subset_anchoredPairDomain
+#print axioms YangMills.RG.pair_subset_cmp102Eq80SourcePi4AnchoredPairDomain
+#print axioms YangMills.RG.walkConnected_cmp102Eq80SourcePi4AnchoredPairDomain
+#print axioms YangMills.RG.sum_cmp102Eq80SourcePi4AnchoredPairFiber

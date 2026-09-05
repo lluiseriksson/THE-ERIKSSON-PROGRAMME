@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexR1
+
+#print axioms YangMills.RG.cmp116SourcePi4PhysicalBaseCovarianceMatrix
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1Matrix
+#print axioms YangMills.RG.Matrix.transpose_mul_cov_mul_sub_eq_telescope
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1Matrix_eq_telescope
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1Matrix_one_eq_zero

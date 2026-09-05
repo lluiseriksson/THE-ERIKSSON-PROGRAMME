@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceAliasReflectionCoefficients
+
+#print axioms YangMills.RG.cmp89Eq245EntireScaledLaplacianSymbol_neg
+#print axioms YangMills.RG.cmp89Eq248EntireAliasMomentum_aliasIndexOneReflection
+#print axioms YangMills.RG.cmp89Eq246EntireAliasAverageColumn_neg_reflection_eq_row
+#print axioms YangMills.RG.cmp89Eq246EntireAliasAverageRow_neg_reflection_eq_column
+#print axioms YangMills.RG.cmp89Eq246EntireAliasFineSymbol_neg_reflection_eq

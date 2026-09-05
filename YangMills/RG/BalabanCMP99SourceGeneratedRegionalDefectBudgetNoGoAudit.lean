@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedRegionalDefectBudgetNoGo
+
+#print axioms YangMills.RG.CMP95SourceSmoothPartitionProfile.three_le_derivBound
+#print axioms YangMills.RG.cmp99SourceGeneratedCoercivity_depth_zero
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalRegionalDefectBudget_depth_zero_lower_bound
+#print axioms YangMills.RG.not_cmp99SourceGeneratedPhysicalRegionalDefectBudget_lt_one_depth_zero

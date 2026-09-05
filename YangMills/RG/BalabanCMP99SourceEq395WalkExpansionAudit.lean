@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99SourceEq395WalkExpansion
+
+open YangMills.RG
+
+#print axioms CMP99Eq395CorrectionSpecies
+#print axioms cmp99Eq395RAtom
+#print axioms sum_cmp99Eq395RAtom_eq_R
+#print axioms cmp99Eq395R_pow_eq_sum_ordered_atoms
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalRAtom
+#print axioms CMP99SourceDependentOmegaGeometry.sum_cmp99Eq395PhysicalRAtom_eq_correction
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalCorrection_pow_eq_sum_ordered_atoms
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalCorrectedCovariance_eq_tsum_ordered_atom_layers

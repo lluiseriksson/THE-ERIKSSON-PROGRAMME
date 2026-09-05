@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99ComplexTransportedBlockAverage
+
+#print axioms YangMills.RG.cmp99ComplexTransportedBlockAverageCLM
+#print axioms YangMills.RG.cmp99ComplexTransportedBlockAverageCLM_apply
+#print axioms YangMills.RG.cmp99ComplexTransportedBlockStarSynthesisCLM
+#print axioms YangMills.RG.cmp99ComplexTransportedBlockStarSynthesisCLM_apply
+#print axioms YangMills.RG.cmp99ComplexAdjointBlockTransport
+#print axioms YangMills.RG.cmp99ComplexAdjointBlockStarTransport
+#print axioms YangMills.RG.cmp99ComplexAdjointBlockAverageCLM
+#print axioms YangMills.RG.cmp99ComplexAdjointBlockStarSynthesisCLM

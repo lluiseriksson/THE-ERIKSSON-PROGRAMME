@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceEq395GlobalMiddleTransport
+
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle_transport_eq

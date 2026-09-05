@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay
+
+/-!
+SCRATCH ONLY: the promoted import does not exist yet.  This audit is not
+compiler evidence until a Colab focal and axiom gate pass.
+-/
+
+#print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanionPrecisionUpperBound
+#print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanionPrecisionUpperBound_pos
+#print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanion_QprimeMass_finiteRange
+#print axioms YangMills.RG.norm_cmp99SourceActiveRegionFullCompanionPrecision_le
+#print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanionPrecision_kernelBound
+#print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanionPrecision_finiteRange
+#print axioms YangMills.RG.cmp99SourceActiveRegionFullCompanionPrecision_exponentialKernelBound

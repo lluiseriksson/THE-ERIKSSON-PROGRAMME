@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99Eq337ComplexClosedRadiusPhysicalGates
+
+#print axioms YangMills.RG.CMP99ComplexClosedRadiusBudget.deviation_lt_quarter
+#print axioms YangMills.RG.CMP99ComplexClosedRadiusBudget.nextLink_lt_half
+#print axioms YangMills.RG.CMP99ComplexClosedRadiusBudget.closedLog_lt_one
+#print axioms YangMills.RG.CMP99ComplexClosedRadiusBudget.physicalLog_lt_one
+#print axioms YangMills.RG.CMP99ComplexClosedRadiusBudget.physicalNextLink_lt_one

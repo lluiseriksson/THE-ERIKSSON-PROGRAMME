@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99PivotedGeneratedWalk
+
+#print axioms YangMills.RG.CMP99GeneratedWalkAtLength.toGeneralizedWalk
+#print axioms YangMills.RG.CMP99GeneratedWalkAtLength.toGeneralizedWalk_length
+#print axioms YangMills.RG.cmp99GeneratedWalksActivating
+#print axioms YangMills.RG.mem_cmp99GeneratedWalksActivating_iff
+#print axioms YangMills.RG.CMP99GeneratedWalkAtLength.firstActiveIndex
+#print axioms YangMills.RG.CMP99GeneratedWalkAtLength.mem_domainActive_firstActiveIndex

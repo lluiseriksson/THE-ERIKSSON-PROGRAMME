@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246FinePointSourceTargetDuality
+
+#print axioms YangMills.RG.cmp89Eq246FinePointSourceAliasVector_negEndpoint_eq_targetPhase
+#print axioms YangMills.RG.cmp89Eq246FinePointSourceAliasVector_negPhysicalEndpoint_eq_targetPhase

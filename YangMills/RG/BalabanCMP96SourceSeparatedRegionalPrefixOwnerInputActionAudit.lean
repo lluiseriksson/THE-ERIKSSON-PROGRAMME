@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixOwnerInputAction
+
+#print axioms YangMills.RG.norm_cmp96SourceSeparatedRegionalPrefixGreen_apply_le_sourceScale

@@ -1,0 +1,18 @@
+import YangMills.RG.BalabanCMP99SourceOmegaTerminalRegion
+
+/-! Public oracle for the literal CMP99 terminal local region. -/
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceOmegaTerminalRegion
+#print axioms mem_cmp99SourceOmegaTerminalRegion_iff
+#print axioms cmp99SourceOmegaTerminalRegion_subset_pi3
+#print axioms cmp99SourceOmegaTerminalRegion_subset_pi4
+#print axioms card_cmp99SourceOmegaTerminalRegion_le
+#print axioms CMP99SourceOmegaGeometry.ofTerminal
+#print axioms CMP99SourceOmegaGeometry.ofGlobalStratification
+#print axioms CMP99SourceOmegaGeometry.ofTerminal_last_region
+#print axioms CMP99SourceOmegaGeometry.ofGlobalStratification_last_region
+#print axioms CMP99SourceOmegaGeometry.ofGlobalStratification_terminalTransitionShell
+
+end YangMills.RG

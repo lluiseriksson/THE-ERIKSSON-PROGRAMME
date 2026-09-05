@@ -1,0 +1,31 @@
+{
+  "axiom_blocks": [
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  "files": {
+    "executed-eq351-diagonal-sign-nogo.ipynb": "DC55CD5DDEFC2B95E3325AACAF255A2D16325BD690343306E30D0C17B82C526E",
+    "hrpoly-cmp99-eq351-diagonal-sign-nogo-evidence (5).tar.gz": "94FA4E3752D4F64442202127909A047F710ECA7B4289F67A97F2E9143341324F"
+  },
+  "runner_rev": "cmp99-eq351-diagonal-sign-nogo-v6",
+  "source_blob_sha256": {
+    "YangMills/RG/BalabanCMP99Eq351DiagonalSignNoGo.lean": "BAA62E4E3D8C66D82479CC4669FB45708B7040CF73C94CD7992354C38E8A490D",
+    "YangMills/RG/BalabanCMP99Eq351DiagonalSignNoGoAudit.lean": "ABFCB56BBB3978D638787EB1EB1B00C454BF00D82CD9410AD2F6D9C95AAAA707",
+    "tmp/CMP99-EQ351-DIAGONAL-SIGN-NOGO-PREVALIDATION-PATHS.txt": "3A26B6DB8059A009E8FBCAD6937D2294D50DF5F088A3BD87BF97457CD3BC4677"
+  },
+  "source_sha": "b36fa9758083c2f91d8beff72ec92c18a04ee052",
+  "status": "EQ351_DIAGONAL_SIGN_NOGO_EVIDENCE_PACKAGE_OK"
+}

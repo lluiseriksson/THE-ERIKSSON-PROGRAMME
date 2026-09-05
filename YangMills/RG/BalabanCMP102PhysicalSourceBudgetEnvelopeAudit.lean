@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP102PhysicalSourceBudgetEnvelope
+
+#print axioms YangMills.RG.cmp98SourceContourDisplacementBudget_le_envelope
+#print axioms YangMills.RG.cmp98SourceCoarseContourDisplacementBudget_le_envelope
+#print axioms YangMills.RG.cmp98SourceContourQuadraticBudget_le_envelope
+#print axioms YangMills.RG.cmp98SourceCoarseContourQuadraticBudget_le_envelope
+#print axioms YangMills.RG.cmp98SourceOuterExpDisplacementBudget_le_envelope
+#print axioms YangMills.RG.cmp98SourcePhysicalBlockDisplacementBudget_le_envelope
+#print axioms YangMills.RG.cmp102PhysicalCorrectionSourceBudget_le_envelope

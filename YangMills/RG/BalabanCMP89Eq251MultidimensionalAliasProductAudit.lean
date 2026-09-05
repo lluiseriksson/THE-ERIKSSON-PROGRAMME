@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP89Eq251MultidimensionalAliasProduct
+
+#print axioms YangMills.RG.cmp89Eq251MultidimensionalAliasWeight_nonneg
+#print axioms YangMills.RG.cmp89Eq251CenteredMultidimensionalAliasSum_eq_pow
+#print axioms YangMills.RG.cmp89Eq251CenteredMultidimensionalAliasSum_le_tsum_pow
+#print axioms YangMills.RG.cmp89Eq251CenteredMultidimensionalAliasSum_source_le_tsum_pow

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq226PhysicalContourCutoffSupportResidualLedger
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_cutoffSupport_residualLedger

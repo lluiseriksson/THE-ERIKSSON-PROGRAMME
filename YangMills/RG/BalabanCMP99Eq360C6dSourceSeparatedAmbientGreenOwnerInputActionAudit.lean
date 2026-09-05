@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputAction
+
+#print axioms YangMills.RG.norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_apply_le_sourceScale

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP95SourceSignedPeriodicTensorSecondDifference
+
+#print axioms YangMills.RG.norm_periodic_fin_centeredSecondDifference_le
+#print axioms YangMills.RG.norm_cmp95RescaledSourcePeriodicSignedTensorCutoff_centeredShift_le
+#print axioms YangMills.RG.cmp95RescaledSourcePeriodicSignedTensorCutoffLaplacianCoefficient
+#print axioms YangMills.RG.norm_cmp95RescaledSourcePeriodicSignedTensorCutoffLaplacianCoefficient_le

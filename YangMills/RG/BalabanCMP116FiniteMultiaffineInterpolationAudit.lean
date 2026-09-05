@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116FiniteMultiaffineInterpolation
+
+#print axioms YangMills.RG.contDiff_cmp116FiniteMultiaffineInterpolation
+#print axioms YangMills.RG.cmp116FiniteMultiaffineInterpolation_update_eq_affine
+#print axioms YangMills.RG.cmp116FiniteMultiaffineInterpolation_eq_of_coordinateAffine
+#print axioms YangMills.RG.contDiff_of_coordinateAffine

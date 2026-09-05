@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalEndpointIntegrand
+
+open YangMills.RG
+
+#print axioms cmp99SourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_fourierMode_coarseInv_apply_eq_endpointIntegrand_smul

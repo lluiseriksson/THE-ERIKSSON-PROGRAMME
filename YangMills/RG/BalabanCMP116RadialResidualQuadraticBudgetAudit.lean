@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116RadialResidualQuadraticBudget
+
+#print axioms YangMills.RG.cubic_le_threshold_mul_sq
+#print axioms YangMills.RG.abs_half_inner_cmp116RadialTaylorResidualOperator_le_quadratic_of_norm_le

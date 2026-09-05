@@ -1,0 +1,18 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import YangMills.RG.BalabanCMP99SourceEq395LocalInverse
+
+open YangMills.RG
+
+#print axioms cmp99SourceTerminalCLMTransport_id
+#print axioms activeGaugeRegion_restrictZero_comp_extendZero
+#print axioms activeGaugeRegion_extendZero_comp_restrict_eq_multiplier
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceMiddleCoordinates
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceMiddleCoordinates_comp_covariance
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceMiddleAmbient
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceAmbient
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceMiddleAmbient_comp_covarianceAmbient
+#print axioms CMP99SourceDependentOmegaGeometry.cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_pi4RegionProjector

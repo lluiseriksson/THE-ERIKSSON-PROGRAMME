@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalPointSourceZeroResidue
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_pointSource_apply_eq_zeroResidue_smul

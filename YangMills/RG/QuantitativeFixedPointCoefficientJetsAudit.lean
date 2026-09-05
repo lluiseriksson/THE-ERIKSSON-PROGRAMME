@@ -1,0 +1,8 @@
+import YangMills.RG.QuantitativeFixedPointCoefficientJets
+
+#print axioms YangMills.RG.norm_iteratedFDeriv_one_fixedPointCoefficientInput_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_fixedPointCoefficientInput_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_one_fixedPointDerivativeCoefficient_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_fixedPointDerivativeCoefficient_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_fixedPointDerivativeCoefficient_le_of_jets
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_fixedPointFirstDerivativeMap_le_of_jets

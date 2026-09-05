@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116RestrictedActiveStateCardinality
+
+#print axioms YangMills.RG.cmp116RestrictedTransferTargetActiveEquiv
+#print axioms YangMills.RG.card_cmp116RestrictedTransferTargetActive
+#print axioms YangMills.RG.card_cmp116SourceRestrictedActiveDeterminantState

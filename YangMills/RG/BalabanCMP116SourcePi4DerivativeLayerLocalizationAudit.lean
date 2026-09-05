@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourcePi4DerivativeLayerLocalization
+
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceLayerDerivative_eq_sum_anchoredFiber

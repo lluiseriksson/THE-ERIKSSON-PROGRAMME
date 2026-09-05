@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalGroupedWeightedRow
+
+#print axioms YangMills.RG.cmp116SourcePi4QuotientGeneratedWalkLayer_weightedRow_of_terminalGroups

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimeComplexFibreModeAction
+
+#print axioms YangMills.RG.cmp99FlatComplexFibreFourierMode_blockBasepoint_eq_coarseAlias
+#print axioms YangMills.RG.cmp99SourceFlatQprimeWeightedBlockSum_complexFibreFourierMode_eq_coarseAlias
+#print axioms YangMills.RG.cmp99SourceFlatQprimeWeightedBlockSum_complexifiedPhysicalMode_eq_coarseAlias

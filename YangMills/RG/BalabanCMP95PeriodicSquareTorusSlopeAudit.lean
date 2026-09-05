@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP95PeriodicSquareTorusSlope
+
+#print axioms YangMills.RG.finTorusDist_eq_min_sub_of_lt
+#print axioms YangMills.RG.norm_periodic_fin_value_sub_le_finTorusDist
+#print axioms YangMills.RG.norm_cmp95RescaledPeriodicSquareWeight_finTorus_sub_le
+#print axioms YangMills.RG.norm_cmp95RescaledPeriodicTensorSquareWeight_finBox_sub_le
+#print axioms YangMills.RG.norm_cmp99SourceGeneratedFineCellSquareWeight_finBox_sub_le

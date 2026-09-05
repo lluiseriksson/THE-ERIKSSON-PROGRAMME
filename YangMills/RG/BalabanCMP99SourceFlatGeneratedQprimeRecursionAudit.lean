@@ -1,0 +1,18 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeRecursion
+
+#print axioms YangMills.RG.cmp99SourceFlatRealTransport
+#print axioms YangMills.RG.cmp99SourceFlatGaugeConfig_zero_small
+#print axioms YangMills.RG.cmp99SourceNormalizedRegionalScale_ofFineSmall_flat_nextBackground
+#print axioms YangMills.RG.cmp99SourceWeightedPhysicalTransport_flat_eq_explicit
+#print axioms YangMills.RG.cmp99SourceFlatRealBlockAverageCLM
+#print axioms YangMills.RG.cmp99SourceFlatRealBlockWeightedAdjointCLM
+#print axioms YangMills.RG.cmp99SourceTransportedBlockAverageCLM_flat_eq_explicit
+#print axioms YangMills.RG.cmp99SourceTransportedBlockWeightedAdjointCLM_flat_eq_explicit
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalQprime
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.physicalQprime_congr_data
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.physicalWeightedAdjoint_congr_data
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatPhysicalWeightedAdjoint_eq_explicit

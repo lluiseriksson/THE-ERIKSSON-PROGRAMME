@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceFlatRetainedPhysicalTower
+
+#print axioms YangMills.RG.cmp99SourceUbarNextFineRadius_zero
+#print axioms YangMills.RG.cmp99SourceUbarRadiusAt_zero_radius
+#print axioms YangMills.RG.cmp99SourceFlatZeroClosedBudget
+#print axioms YangMills.RG.cmp99SourceFlatZeroRadiusChain
+#print axioms YangMills.RG.cmp99SourceFlatRetainedPhysicalTower

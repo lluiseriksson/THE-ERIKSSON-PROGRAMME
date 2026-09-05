@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116RestrictedTransferActiveTarget
+
+#print axioms YangMills.RG.Matrix.predicateColumnRestriction
+#print axioms YangMills.RG.Matrix.predicateColumnInclusion
+#print axioms YangMills.RG.Matrix.eq_predicateColumnRestriction_mul_inclusion
+#print axioms YangMills.RG.cmp116RestrictedTransferTargetActive
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_sub_one_eq_zero_of_not_targetActive
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_sub_one_eq_activeTargetFactorization

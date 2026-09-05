@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceEq395LocalizedAtomWeightedRow
+
+open YangMills.RG
+
+#print axioms cmp99Eq395LocalizedAtomWeightedRowAmplitude
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalRAtom_weightedRow_of_ne_first

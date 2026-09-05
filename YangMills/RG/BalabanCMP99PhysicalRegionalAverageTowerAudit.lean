@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99PhysicalRegionalAverageTower
+
+namespace YangMills.RG
+
+#print axioms CMP99PhysicalRegionalScaleData
+#print axioms CMP99PhysicalRegionalScaleData.nextBackground
+#print axioms CMP99PhysicalRegionalAverageTower
+#print axioms CMP99PhysicalRegionalAverageTower.stop
+#print axioms CMP99PhysicalRegionalAverageTower.step
+#print axioms CMP99PhysicalRegionalAverageTower.toRegionalAverageTower_stop
+#print axioms CMP99PhysicalRegionalAverageTower.toRegionalAverageTower_step
+#print axioms CMP99PhysicalRegionalAverageTower.Qprime_step
+#print axioms CMP99PhysicalRegionalAverageTower.normalization_step
+
+end YangMills.RG

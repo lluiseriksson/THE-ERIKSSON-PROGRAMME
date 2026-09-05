@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99SourceLocalizedNextBackground
+
+
+#print axioms YangMills.RG.cmp99SourceLocalizedUbarBlock
+#print axioms YangMills.RG.cmp99SourceLocalizedUbarBlock_coe_eq_Ubar
+#print axioms YangMills.RG.norm_cmp99SourceLocalizedUbarBlock_sub_one_le
+#print axioms YangMills.RG.cmp99SourceLocalizedNextBackground
+#print axioms YangMills.RG.cmp99SourceLocalizedNextBackground_apply_pos_of_mem
+#print axioms YangMills.RG.cmp99SourceLocalizedNextBackground_apply_pos_of_not_mem
+#print axioms YangMills.RG.norm_cmp99SourceLocalizedNextBackground_apply_pos_sub_one_le
+#print axioms YangMills.RG.norm_cmp99SourceLocalizedNextBackground_sub_one_le
