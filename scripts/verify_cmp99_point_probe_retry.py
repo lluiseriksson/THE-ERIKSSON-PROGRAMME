@@ -198,7 +198,11 @@ def main():
     # Expected command paths describe Linux even when the verifier runs on Windows.
     # Evidence bytes and recorded commands are never normalized.
     def posix(s):
-        return s.replace('\\\\','/') if s.startswith('\\\\content\\\\') else s
+        return s.replace(chr(92),'/') if s.startswith(chr(92)+'content'+chr(92)) else s
+    require(posix(chr(92)+'content'+chr(92)+'test.olean') == '/content/test.olean',
+            'EXPECTED_WINDOWS_PATH_PREFLIGHT')
+    require(posix('/content/test.olean') == '/content/test.olean',
+            'EXPECTED_LINUX_PATH_PREFLIGHT')
     spec.COMMANDS={stage:[posix(arg) for arg in cmd] for stage,cmd in spec.COMMANDS.items()}
     for attr in ('ROOT','EVIDENCE'):
         setattr(spec,attr,PurePosixPath(posix(str(getattr(spec,attr)))))
