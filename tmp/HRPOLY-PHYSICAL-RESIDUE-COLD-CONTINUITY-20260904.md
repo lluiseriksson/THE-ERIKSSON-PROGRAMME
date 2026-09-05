@@ -12,6 +12,15 @@ CPU50.99028778076172GiB,noGPU, accountlluiseriksson@gmail.com. Sole browser
 tab3, immutable notebook scripts/colab_neumann_generated_counting_reflection_diagnostic.ipynb.
 No final verdict yet. No CI or local Lean. Do not rerun this cell.
 
+Host99176a0ef4c0. Read-only observation at elapsed03:21: source guards passed,
+lake_update exit0/104.632s, exact Mathlib pin0764272048 confirmed, cache_get
+exit0/7.138s (8142 decompressed files); geometry_leaf was running. No result
+for the new repro or physical draft was available at that observation.
+Independent diagnostic verifier prepared in commit1b6dab169; AST-only local
+check exit0/0.0803279s/13881344 observed bytes. Not yet exercised on evidence.
+Use its exact axiom helper from the preserved LF-byte archive, not a CRLF
+worktree copy. A future PASS still has cold_seal=false and cannot retire marks.
+
 Read-only status in the existing Colab terminal:
 `ps -p 3798 -o pid,etime,stat,args; tail -n 12 /content/neumann-generated-counting-reflection-diagnostic-v1-launch/diagnostic.log`
 Outer: /content/neumann-generated-counting-reflection-diagnostic-v1-preservation-20260905.tar.gz.
