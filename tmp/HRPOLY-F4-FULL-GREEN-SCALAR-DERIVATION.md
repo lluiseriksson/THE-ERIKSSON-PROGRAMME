@@ -138,3 +138,21 @@ part gives the corresponding real scalar action. This is a prospective
 proof route, not a compiled norm or regional theorem. In particular none of
 these exact complexification identities imply equality of a compressed
 ambient inverse and a Dirichlet inverse on a proper regional carrier.
+
+## F4 composition draft prepared while the bounded diagnostic runs
+
+`tmp/SourceFullGreenUniformAmplitudeDraft.lean` is now a separate
+PRE-VALIDATION draft, not in the running source/queue. It states five exact
+audit endpoints: positivity of the contour factor, nonnegativity of the
+hybrid constant, the sharper normalized split, the retained inverse-square
+bound, and one radius/amplitude chosen before the universal source depth.
+The positive bare coefficient supplies strict positivity; no +1 padding is
+introduced. The imported generated module is used only for its existing
+scalar amplitude definition, never for its generated physical coefficient.
+
+Before any later diagnostic, materialize the two temporary imports explicitly:
+the hybrid draft and the already checked elementary normalization repro.
+Their current `lake env lean` checks do not produce `.olean` files. This is
+a future prerequisite, not a missing import to work around during the live
+queue. The one-file text/import guards passed locally in0.533459s; no Lean
+or new remote target was executed for this composition draft.
