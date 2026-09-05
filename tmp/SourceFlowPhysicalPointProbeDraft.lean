@@ -55,6 +55,13 @@ theorem cmp99PhysicalStep7b_complexSingle_eq_pointSource_draft
         (cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv L K Q depth source)
         (cmp99SUNLieCoordComplexificationLM Nc v) := by
   classical
+  letI : NeZero
+      (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+    ⟨by
+      unfold cmp99SourceSeparatedLargeBlockSide
+      exact mul_ne_zero
+        (mul_ne_zero (NeZero.ne K) (pow_ne_zero _ (NeZero.ne L)))
+        (mul_ne_zero (by decide) (NeZero.ne Q))⟩
   rw [cmp99ComplexOuter_singleFinitePiLp_eq_pointSource_draft]
   let e := cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv L K Q depth
   funext y

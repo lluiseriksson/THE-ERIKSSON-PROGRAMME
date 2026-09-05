@@ -9,6 +9,12 @@ Run before the physical point-probe draft; no project imports.
 
 noncomputable section
 
+example {L K Q : ℕ} [NeZero L] [NeZero K] [NeZero Q] (depth : ℕ) :
+    NeZero ((K * L ^ (depth + 1)) * (2 * Q)) :=
+  ⟨mul_ne_zero
+    (mul_ne_zero (NeZero.ne K) (pow_ne_zero _ (NeZero.ne L)))
+    (mul_ne_zero (by decide) (NeZero.ne Q))⟩
+
 example {ι κ ξ : Type*} [Fintype ι] [Fintype κ] [Fintype ξ]
     [DecidableEq ι] [DecidableEq κ]
     (e : ι ≃ κ) (source : ι) (v : EuclideanSpace ℂ ξ) :
