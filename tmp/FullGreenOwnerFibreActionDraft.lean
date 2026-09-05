@@ -81,7 +81,10 @@ theorem fullGreenOwnerFibreActionDraft
       intro source hs
       have howner : sourceOwner source = owner := by
         simpa [supported] using hs
-      have hk := hkernel source target (f source)
+      have hk : ‖C (singleFinitePiLp source (f source)) target‖ ≤
+          (A * Real.exp (-(rate *
+            (dist (targetOwner target) (sourceOwner source) : ℝ)))) * ‖f source‖ :=
+        hkernel source target (f source)
       rw [howner] at hk
       exact hk.trans (mul_le_mul_of_nonneg_left
         (norm_apply_le_finitePiLpSupNorm f source)
