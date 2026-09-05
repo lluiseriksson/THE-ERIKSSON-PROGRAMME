@@ -43,3 +43,19 @@ regional-inverse gates remain independent, visible work.
 Until this separate cold gate passes: no PRE-VALIDATION retirement,
 root-build claim, physical B0 claim, window-15 attainment or terminal
 counter movement. Counters remain 20/41 and TermSource=0.
+
+## Prepared cold runner
+
+Source checkpoint: `5138e9bd4bc88797c91c21df5bb5c630c71600ca`.
+`scripts/colab_cmp85_uniform_full_green_promoted_cold.py` fixes that
+source SHA and six SHA-256 values obtained from binary `git cat-file blob`,
+not worktree text. Its six-stage queue alternates each focal and its audit.
+The existing pinned durable runner and exact axiom parser are reused.
+
+`scripts/verify_cmp85_uniform_full_green_promoted_cold.py` independently
+checks source, toolchain, Mathlib, source blobs, archive membership, queue,
+child commands/exits/times, raw-log hashes and all eight public axiom blocks.
+The read-only synthetic self-test passed (six rejected corrupted fixtures,
+plus the underlying parser's two accepted/nine rejected fixtures). This is
+instrument validation only, not Lean evidence. The launcher must run it
+before the cold queue. Python AST parsing of both new scripts also passed.
