@@ -1,5 +1,4 @@
 import Mathlib.Data.Fin.Basic
-import Mathlib.Tactic.Omega
 
 /-!
 PRE-VALIDATION: arithmetic reproducer; source present, no .olean materialized,

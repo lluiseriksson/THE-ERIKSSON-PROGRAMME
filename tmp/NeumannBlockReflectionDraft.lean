@@ -1,5 +1,4 @@
 import YangMills.RG.BlockLattice
-import Mathlib.Tactic.Omega
 
 /-!
 PRE-VALIDATION: geometry draft; source present, no .olean materialized,
