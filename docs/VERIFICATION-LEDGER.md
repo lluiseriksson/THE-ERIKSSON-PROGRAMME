@@ -45934,3 +45934,88 @@ its final source-flow specialization, a physical B0 bound or a terminal
 producer. F3--F5 remain open. The elementary F4 repro is separately archived
 with its first failure; the hybrid amplitude draft remains uncompiled.
 Counters remain `20/41`, `TermSource = 0`, window15 unattained.
+
+## Addendum 1111 (2026-09-05 UTC, F2/F3 source-flow full-G cold seal)
+
+Source checkpoint `bab82db79c118ef64259bc50627170f11c2e187e` passed one
+fresh Colab CPU/high-RAM queue, with no restored project build graph.
+Runner/verifier checkpoint `dcbac7ff2f8436f7f6facd8cedff0bc0da4361f1`;
+one-shot launcher `4736269dd2a840565c046c4a69dba9a0ab51f49e`.
+Runtime `b52ea23cad85` opened04:52:52 UTC,50.99GiB. Official Lean4.29.0-rc6
+asset SHA256 `bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e`;
+Mathlib exact `07642720480157414db592fa85b626dafb71355b`. The same checkout
+and build directory served both focals; no duplicate compilation/runtime.
+
+- Generic residue focal:8804 jobs, exit0/2177.693150862s.
+- Generic residue audit:exit0/10.955616057s, exactly one declaration.
+- Source-flow owner focal:8841 jobs, exit0/277.240595103s.
+- Source-flow owner audit:exit0/16.377200641s, exactly three declarations.
+- FINAL_STATUS=PASS; real runner exit0. Exact audits all use only
+  `{propext, Classical.choice, Quot.sound}`.
+
+The independent verifier checked18 stages, exact commands/source/blob pins,
+all raw-log hashes, zero exits, exact named audit sets and archive contents.
+Its exit was0. Durable directory:
+`validation-evidence/cmp99-source-flow-owner-cold-bab82db7-20260905/`.
+Archive SHA256:
+`E8835534A3D6E5790B1405378BC15ECFAF8177C63F90AFA3A84D91FA19418025`.
+Evidence JSON file (with newline):
+`7F1463A7DB4024A06ADC5CBADE6D0769273FB7789BFB3B3F7C308A39F6620ADC`.
+Evidence JSON payload (without newline):
+`22C5065663CDBD720078771FA395E97A39DD504EB59B0209C4CB31F3D072BFDF`.
+Verification report:
+`0E4A52C024377C1FD9B2F5E3A0C56260EED67FD65F0B6ED7B55C63998F82CC16`.
+Console: `F81B05023DBDD4EF67B4D01D9BEAA258FE8CA2707E6C0F1D61FFB854FF21BB16`.
+Outer durable bundle, downloaded and matched in Windows:
+`1B700C5934782648FBCF38A1D8803313B92EF69227B5FF8011DC1D58D0D0609D`.
+The extracted inner archive and report also matched their Colab hashes.
+
+Only the generic F2 and source-flow F3 source/audit pairs lose their
+PRE-VALIDATION notices. Their proofs are unchanged. The two audits enter
+the root aggregator; this is not a claim of a new root build.
+F2/F3 concern the actual source-flow full Green, via F1 inverse uniqueness,
+with independent RG/localization/period parameters. They retain the literal
+R^-4 normalization and source coefficient/depth-dependent amplitude.
+They do not prove the complete uniform amplitude, physical B0, regional or
+derivative estimates, or window15. Counters remain20/41 and TermSource0.
+
+The cold package was preserved before the bounded hot F4 diagnostic below.
+After both packages were downloaded and hashed, no Lake/Lean processes
+remained at05:47:28 UTC. The runtime was disconnected/deleted at about05:48
+UTC (UI showed reconnect), about55 minutes connected. The finished monitor
+`retomar-validaci-n-hrpoly` was deleted and the auxiliary browser tab closed.
+
+## Addendum 1112 (2026-09-05 UTC, F4 hybrid hot FAIL preserved)
+
+One bounded warm diagnostic used runner checkpoint
+`e33737c68c4b54d898187e07cf12ad6263561cb6`, runner SHA256
+`A588498A646130B6C1B80485FD315509AD5556A38C7E69D45AE14647B29FA998`.
+Draft source `16e95f064febb67b29b797648a38f3cb27e8c502`,
+`tmp/SourceFullGreenHybridAmplitudeDraft.lean`, SHA256
+`01D8599984547801CB2E11990BFE08BD5103B10F08FA209ECA9A59B5133EA7C8`.
+It reverified the preceding cold archive, preserved its checkout, fetched
+the external draft by immutable hash and used the existing build cache.
+An observer binding reset occurred before the launch command; no command
+was sent by that failed UI call. The same runtime was recovered and the
+diagnostic ran once, not twice.
+
+First real error:
+`SourceFullGreenHybridAmplitudeDraft.lean:83:19: error: don't know how to synthesize implicit argument c`.
+Draft elaboration exit1/6.481660774s; HOT_DEBUG_STATUS=FAIL COLD_SEAL=0.
+The unresolved intermediate inequality generated a rejected `sorryAx` in
+the later printed declaration. This is not a successful axiom audit or a
+source-text `sorry` accepted by the guard. No proof/constant/statement was
+changed during this bounded unit and no retry was chained.
+
+Durable directory:
+`validation-evidence/cmp85-full-green-hybrid-hot-v1-fail-20260905/`.
+Hot inner archive:
+`B6F909CE6597D4D39D33E67B767AF72FE24DE888927EDA2A490401A3BFC4FD31`.
+Outer bundle:
+`7DA8740153BC5740AE8E429261401E2A65B5348D375F816539A42122D17C412A`.
+Both hashes matched the downloaded Windows files. A read-only Colab check
+verified18 files,7 records, every recorded file/raw-log hash, FAIL and final
+hybrid_draft exit1. The cold archive remained exactly E8835534...19418025.
+Next repair is limited to the missing intermediate-inequality arguments;
+the project-free repro gate must precede another full project attempt.
+F4 remains PRE-VALIDATION, F5 unverified;20/41, TermSource0, window15 open.

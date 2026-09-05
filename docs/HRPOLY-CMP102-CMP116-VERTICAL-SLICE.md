@@ -15833,8 +15833,8 @@ coefficient additionally contains `R^4`. Do not apply that factor twice.
 | next gate | exact output | available input / remaining work |
 |---|---|---|
 | F1 | the full Eq. (2.46) fine point-source solution equals the internally constructed source-flow Green on the same carrier | **Cold-sealed**, source `098cf3df`, Ledger Addendum 1109: `cmp99SourceFlowFullPointSourceSolution_eq_green_apply`, by inverse uniqueness with internally supplied nonvanishing. No `Q'^*`, generated/source coefficient identification, or supplied point-source equality. |
-| F2 | source-flow full Green equals `R^-4` times the literal reflected/swapped affine residue sum | reuse the generic outer synthesis, endpoint reflection, owner character and finite-grid aliasing; retain independent `L,Kloc,Q,j`. The generated residue-class certificate fixes `N=2*(M*Q)` and is not an independent-scale source-flow certificate. |
-| F3 | a literal source-flow full-G point-source owner bound | apply cold-sealed generic step 14 at `K=R,N=2*(Kloc*Q)` to F2 and keep the source-vector norm, `R^-4`, geometric fourth power and `exp(2*rho)` exactly once. F2 remains open. |
+| F2 | source-flow full Green equals `R^-4` times the literal reflected/swapped affine residue sum | **Cold-sealed**, source `bab82db79`, Ledger Addendum1111: generic residue identity plus the actual source-flow specialization via F1. Independent `L,Kloc,Q,j`; no generated/source coefficient identification or supplied reconstruction equation. |
+| F3 | a literal source-flow full-G point-source owner bound | **Cold-sealed**, source `bab82db79`, Ledger Addendum1111. Source-vector norm, `R^-4`, geometric fourth power and `exp(2*rho)` remain literal. Its amplitude still depends on the source coefficient and depth; F4/F5 remain open. |
 | F4 | one positive radius and one amplitude for all source depths, for the **full** coefficient in F3 | Scalar foundations **cold-sealed** at `098cf3df`: recurrence upper bound, moment antitonicity and one radius satisfying all four windows. The complete hybrid amplitude estimate and physical normalization remain open; the old uniform `G Q'^*` amplitude is not this coefficient. |
 | F5 | transfer the full bound to the literal source-localized/regional consumer and the required derivative species | consume F3/F4 through the existing source/retained-carrier dictionaries with physical norm and spacing factors exposed. No regional, derivative or window-15 claim follows from a point-source value estimate alone. |
 
@@ -15906,6 +15906,22 @@ The cold four-stage queue started in Colab CPU/50.99 GiB at
 Transport and portable preflight passed; this entry records launch only,
 not a compiler verdict. Both exact audits (one and three declarations)
 must pass before any selective seal. F4/F5 and window15 remain open.
+
+That cold queue completed PASS on 2026-09-05: generic focal8804 jobs,
+exit0/2177.693s; audit exit0/10.956s; source-flow focal8841 jobs,
+exit0/277.241s; audit exit0/16.377s. The independent verifier checked18
+stages and the exact one-plus-three declarations, all with the allowed trio.
+Archive `E8835534A3D6E5790B1405378BC15ECFAF8177C63F90AFA3A84D91FA19418025`
+was downloaded and rehashed before the separate F4 hot diagnostic.
+Only these four source/audit notices were retired; root audit imports do
+not assert a new root build. See Ledger Addendum1111 for durable evidence.
+
+The bounded F4 hybrid draft then failed at83:19 in6.482s on an unresolved
+implicit argument `c` in the intermediate inequality. The raw error and
+nonzero exit are preserved (Addendum1112); its printed `sorryAx` is rejected,
+not an accepted audit. No F4/F5 seal follows. The existing Mathlib-only
+normalization repro remains auxiliary, and the full physical B0/derivative
+and regional bridges remain open. Counters stay20/41 and TermSource0.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 

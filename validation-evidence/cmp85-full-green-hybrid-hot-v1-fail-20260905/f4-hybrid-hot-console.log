@@ -1,0 +1,264 @@
+PRECEDING_COLD_PASS_VERIFIED=1
+HOT_STAGE=head CMD=["git", "rev-parse", "HEAD"]
+bab82db79c118ef64259bc50627170f11c2e187e
+
+HOT_STAGE_RESULT={"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1", "exit": 0, "log": "head.log", "seconds": 0.002889809999942372, "sha256": "c80edf56c1477e3ffd5cfa5ad8df483b3c1bcd4e4304a2ae21df6eb428d6a530", "stage": "head"}
+HOT_STAGE=clean CMD=["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"]
+
+HOT_STAGE_RESULT={"command": ["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1", "exit": 0, "log": "clean.log", "seconds": 0.9011331299998346, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "clean"}
+HOT_STAGE=mathlib CMD=["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"]
+07642720480157414db592fa85b626dafb71355b
+
+HOT_STAGE_RESULT={"command": ["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1", "exit": 0, "log": "mathlib.log", "seconds": 0.002166418999877351, "sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd", "stage": "mathlib"}
+HOT_STAGE=text_guard CMD=["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/cmp85-full-green-hybrid-draft-hot-v1-logs/source-paths.txt", "--require-prevalidation"]
+LEAN_OVERLAY_TEXT_OK files=1 source=paths:/content/cmp85-full-green-hybrid-draft-hot-v1-logs/source-paths.txt prevalidation=required
+
+HOT_STAGE_RESULT={"command": ["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/cmp85-full-green-hybrid-draft-hot-v1-logs/source-paths.txt", "--require-prevalidation"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1", "exit": 0, "log": "text_guard.log", "seconds": 0.06682172799992259, "sha256": "8bc889593a682231128b78bcb13b5238ac97241bea68498988c6f21af16652bb", "stage": "text_guard"}
+HOT_STAGE=import_guard CMD=["python3", "scripts/check_lean_import_prefix.py", "/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean"]
+LEAN_IMPORT_PREFIX_OK files=1
+
+HOT_STAGE_RESULT={"command": ["python3", "scripts/check_lean_import_prefix.py", "/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1", "exit": 0, "log": "import_guard.log", "seconds": 0.03756152299956739, "sha256": "450487bd23a4173a8ddcff04a0c57c2d01d6be980cc1ed73b77dde899b3ef485", "stage": "import_guard"}
+HOT_STAGE=materialize_sealed_imports CMD=["lake", "build", "YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations", "YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound"]
+, restrictZeroCLM,
+  ̵  ̵ ̵ ̵ ̵ ̵extendZeroZeroCLM, htargetLarge,
+  ̲  ̲ ̲ ̲ ̲ ̲singleFinitePiLp, hl̵a̵r̵g̵e̵E̵q̵,̵ ̵h̵smallEq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedGreenTransitionDecay.lean:61:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99NestedActiveRegionRestriction_single_of_not_mem`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8651/8698] Replayed YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann
+warning: YangMills/RG/BalabanCMP99SourceRegionalGreenNeumann.lean:172:2: Try `simp at himpossible` instead of `simpa using himpossible`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8653/8698] Replayed YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition
+warning: YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartition.lean:153:28: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartition.lean:153:28: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8661/8698] Replayed YangMills.RG.BalabanCMP89Eq246DirectedSourceMoment
+warning: YangMills/RG/BalabanCMP89Eq246DirectedSourceMoment.lean:98:10: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8665/8698] Replayed YangMills.RG.BalabanCMP89Eq246DirectedCentralComponent
+warning: YangMills/RG/BalabanCMP89Eq246DirectedCentralComponent.lean:89:10: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8672/8698] Replayed YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary
+warning: YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean:54:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8680/8698] Replayed YangMills.RG.BalabanCMP89Eq246FineToFineGreenBoundarySeam
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeam.lean:48:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hreal nu, hface]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeam.lean:51:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8681/8698] Replayed YangMills.RG.BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean:64:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean:65:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8684/8698] Replayed YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:93:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hreal nu, hface]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:96:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:189:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:190:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ℹ [8689/8698] Replayed YangMills.RG.BalabanCMP99FullGreenArbitraryResidueBound
+info: YangMills/RG/BalabanCMP99FullGreenArbitraryResidueBound.lean:106:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [8697/8698] Built YangMills.RG.BalabanCMP85SourceMassParameterUniformComplexWindow (6.1s)
+✔ [8698/8698] Built YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations (5.0s)
+Build completed successfully (8698 jobs).
+
+HOT_STAGE_RESULT={"command": ["lake", "build", "YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations", "YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1", "exit": 0, "log": "materialize_sealed_imports.log", "seconds": 18.32003845899999, "sha256": "2dcf0ea1d813fcbd8506b49afe1340e3e8ad3123de570c905875b11b25467a71", "stage": "materialize_sealed_imports"}
+HOT_STAGE=hybrid_draft CMD=["lake", "env", "lean", "/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean"]
+e_refl ?m.188)) (mul_le_mul_of_nonneg_right hcoef hT)
+context:
+lower current upper rho : ℝ
+hlower : 0 < lower
+hlc : lower ≤ current
+hcu : current ≤ upper
+hrho : 0 ≤ rho
+hw : CMP89Eq249CentralStabilizedComplexWindow lower rho
+hpair : CMP89Eq249CentralAveragePairComplexWindow rho
+K : ℕ
+hc : 0 < current
+hu : 0 < upper
+hwc : CMP89Eq249CentralStabilizedComplexWindow current rho
+hPc : 0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound current rho
+hmoment :
+  cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hcoef :
+  current * cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤
+    upper * cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hrow : 0 ≤ cmp89Eq246CentralAverageRowReciprocalBound rho
+hT : 0 ≤ cmp89Eq249ComplexNoncentralAliasSumBound rho
+hQ : 0 ≤ cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho
+⊢ ℝ
+/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean:84:17: error: don't know how to synthesize implicit argument `d`
+  @add_le_add ℝ Real.instAdd Real.instPreorder IsOrderedAddMonoid.toAddLeftMono
+    (covariant_swap_add_of_covariant_add ℝ fun x1 x2 => x1 ≤ x2)
+    (cmp89Eq246FinePointSourceMomentAmplitudeBound current rho)
+    (cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho) ?m.188 ?m.188 hmoment (le_refl ?m.188)
+context:
+lower current upper rho : ℝ
+hlower : 0 < lower
+hlc : lower ≤ current
+hcu : current ≤ upper
+hrho : 0 ≤ rho
+hw : CMP89Eq249CentralStabilizedComplexWindow lower rho
+hpair : CMP89Eq249CentralAveragePairComplexWindow rho
+K : ℕ
+hc : 0 < current
+hu : 0 < upper
+hwc : CMP89Eq249CentralStabilizedComplexWindow current rho
+hPc : 0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound current rho
+hmoment :
+  cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hcoef :
+  current * cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤
+    upper * cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hrow : 0 ≤ cmp89Eq246CentralAverageRowReciprocalBound rho
+hT : 0 ≤ cmp89Eq249ComplexNoncentralAliasSumBound rho
+hQ : 0 ≤ cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho
+⊢ ℝ
+/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean:84:17: error: don't know how to synthesize implicit argument `c`
+  @add_le_add ℝ Real.instAdd Real.instPreorder IsOrderedAddMonoid.toAddLeftMono
+    (covariant_swap_add_of_covariant_add ℝ fun x1 x2 => x1 ≤ x2)
+    (cmp89Eq246FinePointSourceMomentAmplitudeBound current rho)
+    (cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho) ?m.188 ?m.188 hmoment (le_refl ?m.188)
+context:
+lower current upper rho : ℝ
+hlower : 0 < lower
+hlc : lower ≤ current
+hcu : current ≤ upper
+hrho : 0 ≤ rho
+hw : CMP89Eq249CentralStabilizedComplexWindow lower rho
+hpair : CMP89Eq249CentralAveragePairComplexWindow rho
+K : ℕ
+hc : 0 < current
+hu : 0 < upper
+hwc : CMP89Eq249CentralStabilizedComplexWindow current rho
+hPc : 0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound current rho
+hmoment :
+  cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hcoef :
+  current * cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤
+    upper * cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hrow : 0 ≤ cmp89Eq246CentralAverageRowReciprocalBound rho
+hT : 0 ≤ cmp89Eq249ComplexNoncentralAliasSumBound rho
+hQ : 0 ≤ cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho
+⊢ ℝ
+/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean:84:45: error: don't know how to synthesize placeholder for argument `a`
+context:
+lower current upper rho : ℝ
+hlower : 0 < lower
+hlc : lower ≤ current
+hcu : current ≤ upper
+hrho : 0 ≤ rho
+hw : CMP89Eq249CentralStabilizedComplexWindow lower rho
+hpair : CMP89Eq249CentralAveragePairComplexWindow rho
+K : ℕ
+hc : 0 < current
+hu : 0 < upper
+hwc : CMP89Eq249CentralStabilizedComplexWindow current rho
+hPc : 0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound current rho
+hmoment :
+  cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hcoef :
+  current * cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤
+    upper * cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hrow : 0 ≤ cmp89Eq246CentralAverageRowReciprocalBound rho
+hT : 0 ≤ cmp89Eq249ComplexNoncentralAliasSumBound rho
+hQ : 0 ≤ cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho
+⊢ ℝ
+/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean:83:7: error: failed to infer `have` declaration type
+/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean:58:43: error: unsolved goals
+lower current upper rho : ℝ
+hlower : 0 < lower
+hlc : lower ≤ current
+hcu : current ≤ upper
+hrho : 0 ≤ rho
+hw : CMP89Eq249CentralStabilizedComplexWindow lower rho
+hpair : CMP89Eq249CentralAveragePairComplexWindow rho
+K : ℕ
+hc : 0 < current
+hu : 0 < upper
+hwc : CMP89Eq249CentralStabilizedComplexWindow current rho
+hPc : 0 ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound current rho
+hmoment :
+  cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤ cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hcoef :
+  current * cmp89Eq246FinePointSourceMomentAmplitudeBound current rho ≤
+    upper * cmp89Eq246FinePointSourceMomentAmplitudeBound lower rho
+hrow : 0 ≤ cmp89Eq246CentralAverageRowReciprocalBound rho
+hT : 0 ≤ cmp89Eq249ComplexNoncentralAliasSumBound rho
+hQ : 0 ≤ cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho
+⊢ cmp89Eq246DirectedFullSolutionSumBound K 1 current rho ≤
+    cmp85SourceFullGreenHybridAmplitudeConstantDraft lower upper rho +
+      cmp89Eq246FinePointSourceBareDiagonalAmplitudeBound * (256 * ↑(K + 1) ^ 2)
+'YangMills.RG.cmp85SourceFullGreen_fullBudget_le_hybrid_draft' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+
+HOT_STAGE_RESULT={"command": ["lake", "env", "lean", "/content/cmp85-full-green-hybrid-draft-hot-v1-logs/SourceFullGreenHybridAmplitudeDraft.lean"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1", "exit": 1, "log": "hybrid_draft.log", "seconds": 6.481660774000375, "sha256": "e9f8fd4e52f9c54aa7e11c766ca9d9e4636294d61f7a117f19bc17aff34907b6", "stage": "hybrid_draft"}
+HOT_FIRST_ERROR=RuntimeError('FIRST_ERROR=hybrid_draft')
+HOT_ARCHIVE=/content/cmp85-full-green-hybrid-draft-hot-v1-logs.tar.gz
+HOT_ARCHIVE_SHA256=b6f909ce6597d4d39d33e67b767af72fe24de888927eda2a490401a3bfc4fd31
+HOT_DEBUG_STATUS=FAIL COLD_SEAL=0
+RUNTIME_RETAINED_FOR_EVIDENCE=1

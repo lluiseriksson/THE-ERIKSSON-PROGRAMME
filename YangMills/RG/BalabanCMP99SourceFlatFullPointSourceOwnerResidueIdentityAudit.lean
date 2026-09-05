@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity
 
 /-!
-# PRE-VALIDATION: generic full point-source residue audit
+# Generic full point-source residue audit
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This source is not yet imported by the root aggregator.
+Cold-verified at source `bab82db79c118ef64259bc50627170f11c2e187e`,
+2026-09-05: exactly one declaration, allowed trio (Ledger Addendum 1111).
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerResidue

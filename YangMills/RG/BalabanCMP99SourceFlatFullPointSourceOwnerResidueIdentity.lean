@@ -5,16 +5,16 @@ import YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing
 import YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound
 
 /-!
-# PRE-VALIDATION: generic full point-source affine residue identity
+# Generic full point-source affine residue identity
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This source is not yet imported by the root aggregator.
+Cold-verified at source `bab82db79c118ef64259bc50627170f11c2e187e`,
+2026-09-05, with its exact axiom audit (Ledger Addendum 1111).
 
 F2 algebra before choosing a physical inverse: the literal internally solved
 full point-source field equals Kfine^-4 times the reflected/swapped residue.
 Kfine and N are independent. No generated/source coefficient identification,
 Green reconstruction hypothesis, translation invariance or Q'^* is used.
-The future source-flow consumer must use F1 by name at Kfine=L^(depth+1).
+The source-flow consumer uses F1 by name at Kfine=L^(depth+1).
 This is not a uniform physical B0 or window-15 attainment; counters unchanged.
 -/
 

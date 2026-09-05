@@ -3,10 +3,10 @@ import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity
 import YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound
 
 /-!
-# PRE-VALIDATION: literal source-flow full point-source owner bound
+# Literal source-flow full point-source owner bound
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This source is not imported by the root aggregator.
+Cold-verified at source `bab82db79c118ef64259bc50627170f11c2e187e`,
+2026-09-05, with its exact three-declaration audit (Ledger Addendum 1111).
 
 F3 uses the generic residue identity and F1 inverse uniqueness, not a supplied
 Green equality. The generated-owner module contributes only the already

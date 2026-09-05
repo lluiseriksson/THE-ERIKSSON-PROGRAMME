@@ -1,10 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceFlowFullPointSourceOwnerBound
 
 /-!
-# PRE-VALIDATION: source-flow full point-source owner audit
+# Source-flow full point-source owner audit
 
-Source is present; the `.olean` is not materialized and this result is not
-verified by the compiler. This audit is not imported by the root aggregator.
+Cold-verified at source `bab82db79c118ef64259bc50627170f11c2e187e`,
+2026-09-05: exactly three declarations, allowed trio (Ledger Addendum 1111).
 -/
 
 #print axioms YangMills.RG.norm_cmp99PhysicalFullGreenScaledOwnerResidue_le_owner
