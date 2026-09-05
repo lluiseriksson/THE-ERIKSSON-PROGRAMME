@@ -6,6 +6,7 @@ only control flow, first-error preservation and evidence bookkeeping.
 """
 from __future__ import annotations
 import contextlib
+import copy
 import ctypes
 import hashlib
 import importlib.util
@@ -37,8 +38,9 @@ def one_case(case):
     spec.loader.exec_module(runner)
     with tempfile.TemporaryDirectory(prefix='f5-synthetic-') as temporary:
         base = Path(temporary)
-        runner.ROOT, runner.LOGS = base / 'root', base / 'logs'
-        runner.HELPERS, runner.COLD_ARCHIVE = base / 'helpers', base / 'cold.tar.gz'
+        runner.ROOT, runner.LOGS = base / 'root', base / (runner.REV + '-logs')
+        runner.HELPERS = base / 'helpers'
+        runner.COLD_ARCHIVE = Path(str(runner.ROOT) + '-evidence.tar.gz')
         runner.ROOT.mkdir()
         runner.HELPERS.mkdir()
         cold = b'SYNTHETIC_COLD_ARCHIVE_NOT_COMPILATION_EVIDENCE'
@@ -130,7 +132,8 @@ def one_case(case):
             assert sha((runner.LOGS / name).read_bytes()) == digest
         with tarfile.open(str(runner.LOGS) + '.tar.gz') as archive:
             names = {m.name for m in archive.getmembers() if m.isfile()}
-            assert names == {'logs/' + n for n in evidence['files']} | {'logs/debug-evidence.json'}
+            prefix = runner.LOGS.name + '/'
+            assert names == {prefix + n for n in evidence['files']} | {prefix + 'debug-evidence.json'}
         if case == 'pass':
             assert calls == QUEUE and len(evidence['axioms']) == 4
             assert len(evidence['compiled_output_hashes']) == 2
@@ -145,6 +148,66 @@ def one_case(case):
         elif case in ('forbidden_axiom', 'missing_output'):
             assert calls == QUEUE[:9]
             assert 'HOT_DEBUG_STATUS=PASS' not in capture.getvalue()
+
+        vspec = importlib.util.spec_from_file_location('synthetic_verifier_' + case,
+            HERE / 'verify_cmp99_physical_real_slice_hot.py')
+        verifier = importlib.util.module_from_spec(vspec)
+        vspec.loader.exec_module(verifier)
+        verifier.ROOT, verifier.LOGS, verifier.HELPERS = map(str,
+            (runner.ROOT, runner.LOGS, runner.HELPERS))
+        verifier.PYTHON = sys.executable
+        verifier.BLOBS, verifier.HELPER_HASHES = runner.BLOBS, runner.HELPER_HASHES
+        real_commands = verifier.commands
+        def fixture_commands(cold_hash):
+            # Production records are Linux paths; fixtures use native temp
+            # paths. Normalize only that substituted absolute temp prefix.
+            return {stage: [str(Path(arg)) if arg.startswith(str(base)) else arg
+                            for arg in command]
+                    for stage, command in real_commands(cold_hash).items()}
+        verifier.commands = fixture_commands
+        gspec = importlib.util.spec_from_file_location('synthetic_gate_' + case,
+            HERE / 'full_green_owner_exact_axiom_gate.py')
+        gate = importlib.util.module_from_spec(gspec)
+        gspec.loader.exec_module(gate)
+        archive_path = Path(str(runner.LOGS) + '.tar.gz')
+        files = verifier.read_archive(archive_path, sha(archive_path.read_bytes()))
+        report = verifier.verify(files, evidence['cold_archive_sha256'], gate)
+        assert report['status'] == evidence['status'] and report['cold_seal'] is False
+        if case == 'pass':
+            bads = []
+            for field, value in [('draft_source', 'wrong'), ('cold_seal', True),
+                                 ('cold_archive_sha256', 'wrong')]:
+                bad = dict(files)
+                changed = copy.deepcopy(evidence)
+                changed[field] = value
+                bad['debug-evidence.json'] = json.dumps(changed).encode()
+                bads.append(bad)
+            bad = dict(files)
+            bad['retained_head.log'] += b'corrupt'
+            bads.append(bad)
+            for mutation in ('forbidden', 'command', 'output', 'extra'):
+                bad, changed = dict(files), copy.deepcopy(evidence)
+                if mutation == 'forbidden':
+                    name = 'physical_real_slice_draft.log'
+                    bad[name] = bad[name].replace(b'Quot.sound', b'Other.axiom', 1)
+                    changed['records'][8]['sha256'] = sha(bad[name])
+                elif mutation == 'command':
+                    changed['records'][6]['command'][0] = 'not-lake'
+                elif mutation == 'output':
+                    bad['SourceFlowPhysicalGreenRealSliceDraft.olean'] += b'corrupt'
+                else:
+                    bad['unregistered.txt'] = b'extra'
+                bad['records.json'] = json.dumps(changed['records']).encode()
+                changed['files'] = {n: sha(b) for n, b in bad.items() if n != 'debug-evidence.json'}
+                bad['debug-evidence.json'] = json.dumps(changed).encode()
+                bads.append(bad)
+            for bad in bads:
+                try:
+                    verifier.verify(bad, evidence['cold_archive_sha256'], gate)
+                except ValueError:
+                    continue
+                raise AssertionError('CORRUPTED_PACKAGE_ACCEPTED')
+            print('PHYSICAL_REAL_SLICE_VERIFIER_SYNTHETIC_TEST=PASS rejected=' + str(len(bads)))
 
 
 def main():

@@ -1456,3 +1456,22 @@ The previously obsolete paused monitor `monitor-recursive-poincare-colab`
 was updated to this exact F5 gate plus bounded continuation, every10min,
 quiet on unchanged progress; delete it after evidence/runtime cleanup.
 No additional Colab, CI or Windows scientific process was launched.
+
+## 2026-09-05 12:13 UTC — frontend recovered, same running process
+
+Tab9 disappeared from the browser inventory. No runtime failure was inferred.
+Opened only the same pinned notebook frontend (now tab10), without clicking
+Run or allocating a new runtime. Colab resumed the existing terminal.
+Read-back verified host03e06e1ceab8 and original launcherPID8932 elapsed26:54.
+The real_slice_focal raw log showed dependency elaboration; no final verdict.
+This is an observation-channel recovery, not a retry or new cold run.
+
+The bounded physical hot runner remains byte-identical at5e65c2d0e.
+Its independent verifier is now prepared as
+`scripts/verify_cmp99_physical_real_slice_hot.py`: exact package/source/helper
+pins, stage prefix and commands, real exits/durations, raw hashes, outputs,
+and four named axioms on PASS. Failed prefixes are preserved, never sealed.
+Synthetic runner8 cases and verifier8 corruptions passed in0.4045s with
+32,649,216 bytes peak RSS. No actual network/subprocess/Lean calls occurred.
+The fixture first needed native-Windows temp path normalization; production
+Linux command expectations and the published runner were not changed.
