@@ -52,3 +52,16 @@ three derivative actions with their literal spacing. This prefix alone
 cannot construct regional/derivative B0 or attain window15.
 Counters20/41,TermSource0,window15 unattained; Clay<0.1%.
 
+## Prepared source and instrumentation
+
+Promoted source checkpoint: `6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4`.
+The finite mathematical-text comparison matched all three modules under
+the seven-name map above and checked the seven relocated public prints.
+Textual overlay and import-prefix guards passed all six shipped files.
+
+The cold runner and independent read-only verifier fix six SHA256 values
+from binary Git blobs, the exact six-stage focal/audit queue, and all seven
+public names. Synthetic verifier tests passed, including rejection of
+corrupted metadata/logs and forbidden axioms. These are instrumentation
+checks, not Lean evidence for the promoted graph. No runtime is opened
+until source, runner, verifier and launcher have immutable published pins.
