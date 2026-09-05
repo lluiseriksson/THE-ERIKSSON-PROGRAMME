@@ -10,15 +10,16 @@ import time
 import types
 import urllib.request
 
-SOURCE = '47e975611f59ee8d95ec39317d4731918fe3b1bd'
+SOURCE = '3918b24e4e78c2dafccc0062f0b62becbdd9fd66'
 BASE = '10437a1a824bdd920282778cabe2f3da6c40ce4e'
 ROOT = Path('/content/hrpoly-cmp99-physical-value-action-promoted-cold-v1')
-WORK = Path('/content/neumann-block-reflection-hot-v2')
+WORK = Path('/content/neumann-block-reflection-hot-v3')
+INPUT = ROOT/'tmp'/'neumann_block_reflection_v3'
 PRIOR = Path(str(ROOT) + '-evidence.tar.gz')
 PRIOR_HASH = '0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901'
 BLOBS = {
-    'NeumannBlockReflectionRepro.lean': '86f454067865f3b7eac480a6c59d127cc0dc7c21a9010ccbaa387d9b79417926',
-    'NeumannBlockReflectionDraft.lean': 'facb070b5e6ad9b78e96850d3b86394de6c582928d8b1f9cd5b4405b8788b216',
+    'NeumannBlockReflectionRepro.lean': '7e8a9816b91bf68f4bef5814fc434720fe811347b5e33d916e92f0903931c7c9',
+    'NeumannBlockReflectionDraft.lean': '9ab31397702dc27b0a01f18bdd3fc0a26f323be9ef88b84fe7a441b258b25728',
 }
 NAMES = {
     'NeumannBlockReflectionRepro.lean': {'neumannBlockReflection_div_repro'},
@@ -46,19 +47,20 @@ def main():
     records = []
     status, error = 'FAIL', None
     try:
+        INPUT.mkdir(parents=True, exist_ok=False)
         for name,digest in BLOBS.items():
             url = 'https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'+SOURCE+'/tmp/'+name
             with urllib.request.urlopen(url,timeout=60) as response:
                 payload = response.read()
             assert hashlib.sha256(payload).hexdigest() == digest, 'SOURCE_HASH='+name
             (WORK/name).write_bytes(payload)
-            destination = ROOT/'tmp'/name
+            destination = INPUT/name
             assert not destination.exists() or destination.read_bytes() == payload, 'EXISTING_SOURCE_DIFFERS='+name
             if not destination.exists():
                 destination.write_bytes(payload)
         for name in BLOBS:
             log = WORK/(name+'.log')
-            command = ['lake','env','lean','-o',str(WORK/(name+'.olean')),'tmp/'+name]
+            command = ['lake','env','lean','-o',str(WORK/(name+'.olean')),str((INPUT/name).relative_to(ROOT))]
             started = time.perf_counter()
             timed_out = False
             with log.open('xb') as out:
