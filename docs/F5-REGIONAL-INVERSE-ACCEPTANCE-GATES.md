@@ -17,7 +17,9 @@ obligations. A two-theorem leaf repro isolates the dependent finite-box cast
 and the injective if-congruence before the physical dependency graph builds.
 Files: tmp/NeumannGeneratedCountingMassReflectionRepro.lean and
 tmp/NeumannGeneratedCountingMassReflectionDraft.lean. They have not been
-compiled; no marker is retired and counters20/41,TermSource0 are unchanged.
+fully validated: the two-name repro has now passed in the live diagnostic,
+but the physical prerequisites/draft have no final verdict yet. No marker
+is retired and counters20/41,TermSource0 are unchanged.
 
 The user-supplied physical-cold/HOT ZIP was reidentified by exact SHA256
 69f0b70a76fe636c1e9745c2b3307ad55ddaab99dce838616037e370217e573d,
@@ -37,10 +39,24 @@ have concrete existing endpoints:
 2. The Neumann consumer uses a retained terminal prefix, not merely that
    coordinate-exposed recursion. The existing
    `cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower`
-   identifies the retained *tower* with `weightedQprimeTower`. Transport of
-   its counting mass to the coordinate-exposed probe result must still be
-   written and proved; the two terminal codomain presentations must not be
-   declared definitionally equal without a type-checked bridge.
+   identifies the retained *tower* with `weightedQprimeTower`. The exact
+   existing bridge `CMP99SourceActiveRegionChain.physicalQprime_eq_transported`
+   in BalabanCMP99SourceGeneratedQprimeRowMass identifies the physical map
+   with that tower's map transported along equality of complete Hilbert
+   bundles. BalabanCMP99SourceGeneratedTerminalCoordinates already proves
+   `cmp99SourceTerminalCLMTransport_adjoint` and
+   `cmp99SourceTerminalCLMTransport_comp`, as well as isometry of this
+   transport. Thus no new free equality or carrier-only identification is
+   needed. Moreover, BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel
+   already exports `cmp99SourceTerminalCLMTransport_adjoint_comp_self` and
+   proves the physical counting-mass equality as the local `hmass` in
+   `cmp99SourceGeneratedFlatPhysicalPrecision_eq_explicit`. Reuse that exact
+   argument rather than inventing a new mass normalization. What remains
+   is its specialization to the retained Neumann prefix and the reflected
+   field-map consumer, not a missing generic adjoint transport theorem.
+   The exported physical-precision equality itself is not a Neumann
+   boundary dictionary: its Laplacian is the compressed covariant one.
+   Do not conflate this adjoint with the scale-weighted synthesis map.
 3. `cmp99IteratedLiftActiveRegion_cmp89Rectangle_eq` and
    `cmp89SourceNeumannIteratedLiftedRectangleSiteEquiv` already build the
    literal lifted rectangular carrier, with sides `(M^depth)*m`. They do
