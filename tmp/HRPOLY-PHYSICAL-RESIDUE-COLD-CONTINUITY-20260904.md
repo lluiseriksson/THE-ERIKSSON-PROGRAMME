@@ -1,5 +1,43 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Live point-probe retry — 2026-09-05 14:21 UTC
+
+One Colab CPU/high-RAM runtime (50.99 GB), account lluiseriksson@gmail.com,
+host8f59de7fdfaa, browser tab13, one running cell. HASH_GATE=PASS at
+2026-09-05T14:21:22.908259+00:00; launcher PID1199.
+SOURCE=91cc4dd5d6133e0eb0fc59279d58a71487caa6c7.
+Notebook vehicle=0f7a16f8f156ecd93324c2fa75a90606caf8d32b,
+scripts/colab_cmp99_point_probe_retry.ipynb.
+Launcher=90465dc1d24469e1fe2cfe124f4014d46f292c32,
+SHA256=c6a949c3543cfe8edbafc79f878b731c31ad6bb77475b388eb4aad6016afd3df.
+Runner=2f4c5f4d79172319a99d782c4165035b0dd1d0a7;
+corrected verifier=388892e5b8ac817d3143958dcd5c0cd0eec00600.
+The superseded notebook a2f80ceff was canceled BEFORE runtime connection
+to correct verifier Windows-path escaping; no Lean ran in that attempt.
+The corrected verifier explicitly tests both Windows and POSIX paths.
+Only the current tab remains. No Windows Lean/Lake, CI, or Fable.
+
+Queue: pinned bootstrap/cache, Mathlib-only NeZero repro, necessary physical
+prerequisites, two point-probe draft declarations, final source-clean gate.
+Stop on first error. Preserve the previously verified owner HOT prefix;
+do not rerun it and do not call it a cold production seal.
+
+Read-only status probes in the existing Colab terminal:
+```
+ps -p 1199 -o pid,stat,etime,args
+tail -n 8 /content/point-probe-retry-v1-console.log
+tail -n 8 /content/point-probe-retry-v1-launch/physical_diagnostic.log
+```
+DO NOT reexecute the notebook cell. At completion preserve and hash
+/content/point-probe-retry-v1-preservation-20260905.tar.gz and the inner
+/content/hrpoly-cmp99-point-probe-retry-v1-evidence.tar.gz; verify using
+the pinned corrected verifier, then cleanly disconnect/delete the runtime.
+No mathematical PASS claimed yet. 20/41, TermSource=0, window15 unattained.
+At 14:23 UTC the corrected verifier self-test passed (exit0,0.106509101s),
+exact two-file text/import guards passed, and lake_update was running.
+Thread heartbeat monitor-point-probe-retry-v1 is ACTIVE every10minutes,
+quiet unless actionable. Delete after evidence preservation and cleanup.
+
 ## Latest safe checkpoint — 2026-09-05 13:57 UTC
 
 NO runtime/process/monitor remains. Physical retry-v2 PASS preserved,
