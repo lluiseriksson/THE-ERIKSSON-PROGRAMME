@@ -1,12 +1,12 @@
 import Mathlib
 
 /-!
-# PRE-VALIDATION: Inverse-fourth normalization with the inverse-square scale retained.
+# Inverse-fourth normalization with the inverse-square scale retained.
 
-Source present; this promoted module's `.olean` is not yet materialized,
-and this promoted graph is not yet compiler-verified. The corresponding
-draft passed diagnostic v3 at be4e73409ac444d23e95c2eae2584fece5882f98;
-that diagnostic is not a cold seal of this module.
+Compiler-verified and materialized in the fresh Colab F4 graph at source
+5138e9bd4bc88797c91c21df5bb5c630c71600ca on 2026-09-05.
+Downloaded evidence independently verified; see ledger Addendum 1116.
+The earlier draft diagnostic is preserved separately, not used as this seal.
 
 Only names, imports and audit placement change in this promotion. The
 mathematical statements, constants and hypotheses are preserved. No

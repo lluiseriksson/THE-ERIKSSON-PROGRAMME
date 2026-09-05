@@ -1,4 +1,4 @@
-# F4 uniform scalar amplitude: promoted graph, PRE-VALIDATION
+# F4 uniform scalar amplitude: promoted graph, cold verified
 
 The draft diagnostic at source
 `be4e73409ac444d23e95c2eae2584fece5882f98` passed; its durable evidence
@@ -11,8 +11,10 @@ The finite queue is:
 2. `BalabanCMP85SourceFullGreenHybridAmplitude` and Audit (1 declaration).
 3. `BalabanCMP85SourceFullGreenUniformAmplitude` and Audit (5 declarations).
 
-All six files are under `YangMills/RG/`. They remain outside the root
-aggregator and retain PRE-VALIDATION. No source/audit is already sealed.
+All six files are under `YangMills/RG/`. Their separate cold gate passed at
+source `5138e9bd4bc88797c91c21df5bb5c630c71600ca`. Selective retirement and
+three audit imports now register that evidence; no aggregate root build
+is claimed by adding those imports.
 The pure power repro is diagnostic scaffolding, not a production dependency.
 
 Promotion changes only the three module paths, the normalization namespace,
@@ -40,9 +42,10 @@ Do not replace R^-2 by one. This is neither a regional inverse
 identification nor a derivative estimate. F5's physical-spacing and
 regional-inverse gates remain independent, visible work.
 
-Until this separate cold gate passes: no PRE-VALIDATION retirement,
-root-build claim, physical B0 claim, window-15 attainment or terminal
-counter movement. Counters remain 20/41 and TermSource=0.
+The separate cold gate and downloaded evidence verification now passed.
+No root-build claim, regional/derivative physical B0 claim, window-15
+attainment or terminal counter movement follows. Counters remain 20/41
+and TermSource=0.
 
 ## Prepared cold runner
 
@@ -59,3 +62,20 @@ The read-only synthetic self-test passed (six rejected corrupted fixtures,
 plus the underlying parser's two accepted/nine rejected fixtures). This is
 instrument validation only, not Lean evidence. The launcher must run it
 before the cold queue. Python AST parsing of both new scripts also passed.
+
+## Cold evidence accepted on 2026-09-05
+
+Fresh CPU/high-RAM Colab graph, no project build restoration: all six
+focal/audit children exited 0, 20 recorded stages verified, eight public
+declarations each with exactly {Classical.choice, Quot.sound, propext}.
+The three production modules materialized; audits ran with `lake env lean`
+without `-o`, so no audit `.olean` materialization is claimed.
+
+Evidence: `validation-evidence/cmp85-uniform-full-green-promoted-cold-5138e9bd-20260905/README.md`.
+Inner archive SHA256:
+`763b8dd2c621de31c9c2f828266226f394f99e058251f9356a30cb8a97e6488a`.
+Outer preservation tar SHA256:
+`31210e330e32f5a361a67d2fb7840f6371dc9bbe2aa6d1d720a7b0d10fd698c5`.
+The pinned independent local verifier returned exit0 after download.
+See ledger Addendum 1116. F5 point-to-fibre, physical-spacing and regional
+inverse/derivative obligations remain separate from this scalar F4 seal.

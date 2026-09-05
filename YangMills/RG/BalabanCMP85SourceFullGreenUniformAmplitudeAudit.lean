@@ -1,10 +1,12 @@
 import YangMills.RG.BalabanCMP85SourceFullGreenUniformAmplitude
 
 /-!
-# PRE-VALIDATION: BalabanCMP85SourceFullGreenUniformAmplitude exact public audit
+# BalabanCMP85SourceFullGreenUniformAmplitude exact public audit
 
-Source present; this audit's `.olean` is not yet materialized and its
-promoted result is not yet compiler-verified. A cold graph gate is required.
+Compiler-checked by lake env lean in the fresh Colab F4 graph at source
+5138e9bd4bc88797c91c21df5bb5c630c71600ca on 2026-09-05.
+Exact public axiom gate passed; see ledger Addendum 1116.
+This audit run did not request or claim an audit .olean output.
 -/
 
 #print axioms YangMills.RG.cmp85SourceFullGreenContourFactor_pos

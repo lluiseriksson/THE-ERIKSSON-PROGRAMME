@@ -46144,3 +46144,33 @@ not a regional/derivative B0 result or window15 producer.
 `COLD_SEAL=0`: no PRE-VALIDATION retirement, no root-build claim.
 The next step is promotion followed by a separate exact cold graph gate.
 20/41,TermSource0,window15 remains unattained.
+
+## Addendum 1116 — F4 promoted uniform scalar amplitude, cold PASS
+
+2026-09-05 UTC. Fresh source5138e9bd4bc88797c91c21df5bb5c630c71600ca,
+runner96fa32b3dcb6b4bbf6a9eedc40f12c8f5c178450,
+launcher63374ffc7e910d56ceb5eefb54779a4be0662556. CPU/high-RAM Colab,
+hostd478f8d6ded8; exact Lean4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b.
+No project-build restoration. All six focal/audit exits0; cold graph
+2947.9569665789995s. Pinned independent verifier checks20 recorded stages,
+source blobs, toolchain/pin, raw-log hashes and eight exact allowed trios.
+The same independent verifier passed locally after downloading raw bytes.
+
+Durable package:
+validation-evidence/cmp85-uniform-full-green-promoted-cold-5138e9bd-20260905/README.md.
+Inner archive763b8dd2c621de31c9c2f828266226f394f99e058251f9356a30cb8a97e6488a.
+Outer tar31210e330e32f5a361a67d2fb7840f6371dc9bbe2aa6d1d720a7b0d10fd698c5.
+Evidence JSON8ebd2808b8d67de3e7d9fde4340d85200d5442012f55848352d8483e3c888090.
+Initial stale frontend downloads did not reach disk. A fresh frontend on
+the same runtime recovered the download; no cold calculation was repeated.
+
+Selective PRE-VALIDATION retirement: three production modules materialized,
+three audits compiler-checked without -o. Audit .olean outputs are NOT claimed.
+Three audit imports added to the aggregate; no aggregate root-build claim.
+The source changes in these six modules are provenance comments only.
+
+Scope is the depth-uniform scalar full-Green owner amplitude C R^-2 for
+fixed a,L. Neither regional inverse identification, derivative B0 nor
+window15 attainment follows. F5 remains a separate diagnostic. Runtime
+temporarily retained for that bounded hot unit and evidence transfer.
+20/41,TermSource0,window15 remains unattained.

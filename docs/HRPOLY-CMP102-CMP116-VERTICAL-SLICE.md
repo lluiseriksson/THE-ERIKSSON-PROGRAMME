@@ -15944,6 +15944,17 @@ hashed before runtime deletion. Runner v2 appends the temporary source root
 after Lake's paths; this instrumental correction is not compiler-verified.
 No mathematical source/hash, PRE-VALIDATION status or counter changed.
 
+F4 promoted cold update, 2026-09-05 (Ledger Addendum1116): the three
+production modules and three audits at5138e9bd4bc88797c91c21df5bb5c630c71600ca
+passed in a fresh Colab graph with no project build restoration. Six child
+exits0, eight exact allowed trios, 20 recorded stages independently checked
+again after download. Inner archive763b8dd2c621de31c9c2f828266226f394f99e058251f9356a30cb8a97e6488a.
+The common scalar owner amplitude C R^-2 is now cold verified, not merely
+planned; the three promoted audits are registered in the aggregate without
+claiming a new aggregate build. This supersedes the pending F4 labels above,
+not their historical diagnostic evidence. F5 and regional/derivative B0
+remain open. 20/41,TermSource0,window15 remains unattained; Clay <0.1%.
+
 F5 is not a single reindexing. Reading the literal
 `CMP99Eq342SourceLocalizedGreenCertificate` gives these separate acceptance
 gates (static decomposition, not new producer counts):
