@@ -1,5 +1,41 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## LIVE physical nine-name cold gate — 2026-09-05 15:33 UTC
+
+Supersedes the no-runtime state below. One CPU/high-RAM Colab50.99GB,
+noGPU, accountlluiseriksson@gmail.com. One cell[1], PID3227.
+HASH_GATE=PASS START_UTC=2026-09-05T15:33:25.369921+00:00.
+SOURCE=b2d5df8ad6d600317b267bf87522a8bf472e9ea0.
+Vehicle2a8e8d50ad852d92dd478543b24ab66d71e26962:
+scripts/colab_cmp99_physical_prefix_promoted_cold.ipynb.
+Browseriab1 tab14. The external-notebook warning was confirmed once;
+the evidence clock starts at the printed hash gate, not the click.
+
+Runner/verifier047995c6c17f045235044bb58f4bcf392f96c3c8:
+runner SHA256aa21ca83496681c55276fbe3f71cba3d0f17f3ae05f931abcb3d71d2ad336681;
+verifier SHA2560736f672ff3aa13464a8cd167d834d93db6175ece21abc1c48bfc8807bf869cc.
+Launcher c288fcd9f6c01895a2d651d1a06979db9804de3d:
+scripts/launch_cmp99_physical_prefix_promoted_cold.py,
+SHA256ea651b87ce97f47dce9ffc0df926ce5c13474852148425e896cdd36894bd9ecc.
+All published fast-forward, gh identitylluiseriksson verified.
+
+DO NOT REEXECUTE. Three focal/audit pairs (4+3+2 names), no project cache
+restoration. Runtime retained for evidence at completion, not a second cell.
+Read-only terminal checks:
+```text
+ps -p 3227 -o pid,stat,etime,args
+tail -n 12 /content/physical-prefix-promoted-cold-v1-console.log
+tail -n 12 /content/physical-prefix-promoted-cold-v1-launch/physical_cold_graph.log
+```
+At PASS/FAIL preserve and verify:
+/content/physical-prefix-promoted-cold-v1-preservation-20260905.tar.gz
+/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1-evidence.tar.gz.
+The independent verifier checks nine exact public names, raw child exits,
+logs and three actual production .olean outputs. No audit .olean/root claim.
+The arithmetic repro569256476 remains separate/uncompiled; only reuse this
+runtime for a separately prepared bounded diagnostic after verified PASS.
+No PRE-VALIDATION retirement yet.20/41,TermSource0,window15 unattained.
+
 ## Current safe checkpoint — 2026-09-05, point-probe PASS preserved
 
 Supersedes all live/pending descriptions below. Source91cc4dd5d6133e0eb0fc59279d58a71487caa6c7
