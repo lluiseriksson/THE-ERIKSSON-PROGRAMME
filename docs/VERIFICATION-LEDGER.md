@@ -46356,3 +46356,42 @@ No free Green family, outer-norm isometry or count of all owners is used.
 Proper regional inverse/reflection and derivative B0 remain open.
 Runtime deleted about17:59UTC after local preservation; disconnected state
 checked and sole tab closed before18:00:30UTC.20/41,TermSource0 unchanged.
+
+## Addendum 1124 — literal ambient physical value action cold seal (2026-09-05)
+
+Exact source10437a1a824bdd920282778cabe2f3da6c40ce4e, notebook884a1d305,
+host b77933b9aa81, CPU/high RAM50.99GB, no GPU. One launch at18:14:29UTC;
+all16 recorded stages passed, no project output cache restoration.
+Focal exit0/1723.83378737s; audit exit0/16.06608803800009s. Three exact
+public names each use Classical.choice, Quot.sound, propext. No root claim.
+Launcher graph exit0/1899.586243275s; archive verifier exit0/0.070465798s.
+
+Outer archive SHA256:
+a9d45101d602321fb86d7268815ebd4bade2ed6a51b2432bcaeb664b1fbd1614.
+Inner archive SHA256:
+0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901.
+Production BalabanCMP99SourceFlowPhysicalValueAction.olean SHA256:
+e2a1cb80e799f19a98699c2699613a955bd4c1d6688b96cda5e3bdb22196fbaa.
+Evidence JSON file SHA256:
+1a8280d5f23914c71b36c394ff5ccb38ad097d35775bf7c860bfc62d87823570.
+
+Downloaded outer152264bytes independently verified locally under the
+30s/512MiB guard: exit0/0.3658742s, observed20893696bytes, no Lean/network.
+Report SHA256 fb64945f7b8388ce962bbe4145261e781bfe7dc88cdfa84b633079d4c14a7a87.
+Durable folder validation-evidence/physical-value-action-cold-20260905.
+Two initial PRE-VALIDATION headers retired after2/2 comparisons outside
+the initial module comment against the exact cold Git source. Imports,
+proofs, constants and hypotheses unchanged. No audit .olean claim.
+
+At18:52UTC the browser binding/tab had disappeared. The session manager
+initially showed disconnected state. Opening the exact existing notebook
+recovered the same host and preserved PASS/archive; no cell was rerun and
+no runtime-loss verdict is assigned. Transfer-only cell downloaded the
+immutable outer archive successfully to C:/Users/lluis/Downloads.
+The runtime is temporarily retained for a separate bounded geometry repro;
+its outputs cannot alter this cold evidence or inherit its seal.
+
+This closes only the full ambient C*R^2 value action: rho,C precede depth,
+K,Q,Nc, with exactly one source fibre R^4 and point amplitude R^-2. Proper
+regional inverse/reflection, derivative B0 and window15 remain open.
+20/41,TermSource0 unchanged; Clay <0.1%.

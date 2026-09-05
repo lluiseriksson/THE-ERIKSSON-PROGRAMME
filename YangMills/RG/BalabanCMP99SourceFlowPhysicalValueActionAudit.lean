@@ -1,11 +1,12 @@
 import YangMills.RG.BalabanCMP99SourceFlowPhysicalValueAction
 
 /-!
-# PRE-VALIDATION: physical value-action exact public audit
+# Cold-verified physical value-action exact public audit
 
-Source present; .olean not yet materialized and result not compiler-verified
-for this promoted object. This audit and its production module require a
-fresh exact-source cold gate; the earlier HOT draft is not that gate.
+Executed at source 10437a1a824bdd920282778cabe2f3da6c40ce4e in the same
+fresh Colab checkout as its production focal. All three exact names use only
+Classical.choice, Quot.sound, propext. Downloaded evidence independently
+verified; see ledger Addendum 1124. No separate audit .olean is claimed.
 -/
 
 #print axioms YangMills.RG.cmp99SourceFlowPhysicalRealGreen_typedKernel

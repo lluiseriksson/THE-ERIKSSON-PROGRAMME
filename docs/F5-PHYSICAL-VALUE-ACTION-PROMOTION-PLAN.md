@@ -1,4 +1,10 @@
-# Physical value-action promotion — written PRE-VALIDATION, cold gate pending
+# Physical value-action promotion — cold verified, ledger1124
+
+Source10437a1a824bdd920282778cabe2f3da6c40ce4e passed the fresh gate and
+independent downloaded archive verification. Both source/audit initial
+headers retired after2/2 mathematical-text comparisons against the cold
+Git source. No imports, proofs, constants or hypotheses changed. This
+supersedes the PRE-VALIDATION planning status below, retained as provenance.
 
 Prerequisite satisfied by ledger1122/1123: both immutable downloaded
 archives passed pinned independent verification. The exact two-file

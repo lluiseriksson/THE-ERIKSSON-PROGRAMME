@@ -1,5 +1,33 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Cold value-action PASS preserved — 2026-09-05 19:02 UTC
+
+This supersedes the running/pending status below. Exact source10437a1a8
+passed16 stages, focal0/1723.83378737s and three-name audit0/16.066088038s.
+Downloaded outer152264bytes SHA256a9d45101d602321fb86d7268815ebd4bade2ed6a51b2432bcaeb664b1fbd1614;
+inner0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901.
+Independent local verification passed0.3658742s/20893696observed bytes,
+reportfb64945f7b8388ce962bbe4145261e781bfe7dc88cdfa84b633079d4c14a7a87.
+Durable folder validation-evidence/physical-value-action-cold-20260905.
+Ledger1124 selective two-header seal;2/2 mathematical-text comparisons pass.
+
+Browser session recovery at18:53 found the SAME hostb77933b9aa81 and its
+PASS artifacts after tab binding disappeared. No calculation rerun or
+runtime-loss claim. Current sole tab1, notebook884a1d305. Runtime retained
+for a distinct bounded geometry diagnostic, never part of the cold seal.
+
+Geometry source47e975611, first runnerbb93a1f41, repair runnera4d9740cf.
+HOT v1 stopped before elaboration because input was outside project root;
+archive44dffcda0ce7c6295b743d5261c30eb8f483bb3a9158ac114c3a19d06cab3544.
+HOT v2 stopped at missing/nonexistent Mathlib.Tactic.Omega import;
+archive4ccd1e23eee9e6aee3034944c367c3eb14c52266bc3cf1e1392822e6f34c4a47.
+Neither is mathematical evidence; each completed in about one second.
+No Lean/Lake process remains from either attempt. Next: remove that import
+(Mathlib.Data.Fin.Basic already imports the common tactics), run minimal
+repro before draft, preserve both failed archives and any retry separately,
+then delete the runtime. No new cold clone or exploratory CI.
+20/41,TermSource0,window15 unattained remain literal.
+
 ## Current live gate — physical value action, 2026-09-05
 
 This supersedes the next-promotion instruction immediately below.

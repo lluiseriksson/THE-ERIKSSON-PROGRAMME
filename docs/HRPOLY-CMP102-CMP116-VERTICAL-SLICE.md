@@ -1,5 +1,16 @@
 # hRpoly CMP102 → CMP116 vertical slice
 
+## 2026-09-05 — full ambient physical value action cold seal
+
+Ledger1124 seals source10437a1a8 after16 independently checked stages,
+focal exit0, three exact axiom readouts and downloaded archive verification.
+The production .olean is preserved. Only the two initial source/audit
+headers change; no constants, hypotheses, proofs or imports change.
+This is the C*R^2 ambient action, not proper regional/derivative B0.
+The next source-object gates are in F5-REGIONAL-INVERSE-ACCEPTANCE-GATES.md;
+its geometry draft is PRE-VALIDATION and has no inherited cold evidence.
+20/41,TermSource0,window15 unattained remain unchanged.
+
 ## 2026-09-05 — physical prefix cold PASS and value-action HOT PASS
 
 Fresh source b2d5df8ad passed three focal/audit pairs and all nine named

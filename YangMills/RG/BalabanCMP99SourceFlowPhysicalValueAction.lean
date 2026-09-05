@@ -9,12 +9,12 @@ import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Positivity
 
 /-!
-# PRE-VALIDATION: literal full ambient Green owner-fibre value action
+# Cold-verified literal full ambient Green owner-fibre value action
 
-Source present; production .olean not yet materialized and this promoted
-object not yet compiler-verified. Draft source 7bdc0fa1e passed HOT with
-three exact axiom readouts; see ledger Addendum 1123. Promotion changes
-only public names, provenance and audit placement. It needs its own cold gate.
+Cold source 10437a1a824bdd920282778cabe2f3da6c40ce4e passed all 16 stages,
+the focal and exact three-name audit. Downloaded evidence independently
+verified; production .olean preserved. See ledger Addendum 1124. The earlier
+draft HOT result in Addendum 1123 remains separately classified.
 
 The physical prefix is cold sealed by Addendum 1122. The action retains
 C*R^2 from one source fibre R^4 and point amplitude R^-2. Constants rho,C

@@ -14,7 +14,9 @@ downloaded archive verification and the six-file selective seal are complete
 (ledger1122). No new root validation is claimed.
 Draft7bdc0fa1e composes the literal flat full-ambient value action at C R^2,
 and passed its three-name HOT diagnostic in the same retained runtime.
-This is not its promoted cold seal. Proper regional inverse/reflection identification and
+Its exact three-name promotion10437a1a8 is now independently cold verified
+(ledger1124), with production .olean and downloaded archives preserved.
+Proper regional inverse/reflection identification and
 the derivative bounds still prevent completion of the B0 row.
 See docs/F5-PHYSICAL-PREFIX-PROMOTION.md and
 docs/F5-PHYSICAL-VALUE-ACTION-HOT-RUNBOOK.md for the finite next gates.
