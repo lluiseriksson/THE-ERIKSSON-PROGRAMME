@@ -1,12 +1,11 @@
 import YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport
 
 /-!
-# PRE-VALIDATION: Real-slice norm and operator transport at a single output fibre
+# Real-slice norm and operator transport at a single output fibre
 
-Source present; this promoted module's .olean is not yet materialized and
-its promoted result is not yet compiler-verified. The corresponding draft
-passed the bounded F5 hot diagnostics recorded in ledger Addendum 1117;
-that diagnostic is not a cold seal of this module.
+Cold-verified and .olean materialized at source 6c49a8da on 2026-09-05.
+Downloaded evidence independently verified; see ledger Addendum 1118.
+The selective seal changes provenance comments only, not the mathematics.
 
 These generic statements preserve the fibre norm and intertwine canonical
 complexification with the real operator. The outer PiLp/function equivalence
@@ -68,4 +67,3 @@ theorem norm_finitePiLpCanonicalComplexificationOuterCLM_ofReal_apply
 
 end
 end YangMills.RG
-

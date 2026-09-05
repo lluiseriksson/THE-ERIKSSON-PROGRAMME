@@ -1,12 +1,11 @@
 import YangMills.RG.BalabanCMP99SourceFlowFullPointSourceOwnerBound
 
 /-!
-# PRE-VALIDATION: Literal source-flow point-source Green bound in the complete Lie fibre
+# Literal source-flow point-source Green bound in the complete Lie fibre
 
-Source present; this promoted module's .olean is not yet materialized and
-its promoted result is not yet compiler-verified. The corresponding draft
-passed the bounded F5 hot diagnostics recorded in ledger Addendum 1117;
-that diagnostic is not a cold seal of this module.
+Cold-verified and .olean materialized at source 6c49a8da on 2026-09-05.
+Downloaded evidence independently verified; see ledger Addendum 1118.
+The selective seal changes provenance comments only, not the mathematics.
 
 The sealed F3 equality gives one common scalar on the entire Lie fibre,
 so the norm bound pays no Nc^2-1 factor. This is a point-source value bound,
@@ -78,4 +77,3 @@ theorem norm_cmp99SourceFlowFullPointSourceGreen_fibre_le_owner
 
 end
 end YangMills.RG
-

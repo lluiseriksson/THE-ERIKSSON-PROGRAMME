@@ -1,11 +1,18 @@
-# F5 point/fibre prefix — promoted graph, PRE-VALIDATION
+# F5 point/fibre prefix — promoted graph, cold verified
 
-This is a finite promotion of the seven HOT-verified draft declarations
-recorded in ledger Addendum 1117, not a new physical bound or a cold seal.
+2026-09-05: source6c49a8da cold PASS, six exits0, seven exact allowed
+axiom trios,20 independently verified stages. See ledger1118 and evidence
+directory cmp99-point-fibre-promoted-cold-6c49a8da-20260905.
+Subsequent physical HOT repro failed in4.967s; actual physical target NOT
+CHECKED. Runtime and monitor now closed. Historical preparation below.
+
+This finite promotion of the seven HOT-verified draft declarations
+recorded in ledger Addendum 1117 is now cold verified (Addendum 1118).
 Draft source snapshot: `cee1f6d36ea8d81c5f301860f0a349b14efac47d`.
 The six prefix declarations passed v2; the final owner action passed v3.
-All six promoted module/audit files retain PRE-VALIDATION and stay outside
-YangMillsCore until their own cold evidence is downloaded and verified.
+The six promoted module/audit files retire their PRE-VALIDATION marks only
+after independent verification of downloaded evidence. Three audit imports
+enter YangMillsCore; no new aggregate build is claimed.
 
 ## Exact renaming table
 

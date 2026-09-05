@@ -1,5 +1,15 @@
 # hRpoly CMP102 → CMP116 vertical slice
 
+## 2026-09-05 — F5 prefix cold seal, not regional B0
+
+Ledger1118 seals source6c49a8da after downloaded cold verification:
+20 stages,7 exact axioms. Whole-fibre point bound pays no Lie dimension;
+generic action pays one owner-fibre cardinality. Physical R^4 counting
+must combine literally with scalar R^-2, retaining R^2. Physical real-slice
+HOT repro failed before the actual target. Coordinate/owner dictionary,
+regional inverse and derivative B0 remain open. No root-build claim.
+20/41,TermSource0,window15 compatible but unattained.
+
 **Date:** 2026-07-28  
 **Branch:** `codex/cmp116-interacting-wilson-hessian`  
 **Baseline audited:** `d8856a76`

@@ -46213,3 +46213,29 @@ explicit; no outer-norm isometry, regional inverse or derivative B0 is inferred.
 Next: promote this finite prefix and prepare its cold gate; keep the physical
 real-Green/owner dictionary and regional derivative obligations separate.
 20/41,TermSource0,window15 remains unattained; Clay <0.1%.
+
+## Addendum 1118 — F5 promoted point/fibre graph, cold PASS
+
+2026-09-05, source6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4.
+Fresh CPU/high-RAM Colab, no project-build restoration, exact toolchain/pin.
+Cold graph3041.139s; all six focal/audit exits0; seven exact allowed trios.
+Downloaded independent verifier passed20 stages, source/output/raw hashes.
+Durable evidence and full timings:
+validation-evidence/cmp99-point-fibre-promoted-cold-6c49a8da-20260905/README.md.
+Inner97192a7e32c99c02e7663808019f9be149a075f24112ee4848d3af5b060fd18d;
+outer8226baa539d500d4876575b16ef540519b601dd5f6cabb4566b0a060131dccad.
+Retire only six certified provenance headers, add three audit imports.
+Three production .olean outputs; audit .olean and root-build NOT claimed.
+Statements, hypotheses, constants and proofs unchanged.
+
+Same-runtime bounded physical real-slice HOT stopped at Mathlib repro
+exit1/4.967s: non-definitional piCongrLeft unfolding under change, line15:2.
+Physical draft NOT CHECKED. Independently verified FAIL archive:
+15017c71e8b58582af23503bfde8b414af00fdddd1a097bd1eb417df8cbbf620,
+in validation-evidence/cmp99-physical-real-slice-hot-v1-fail-e833ec7e-20260905.
+No repeated cold run. No processes at12:46:19UTC; runtime deleted about
+12:47UTC (~61min connected), tab closed, monitor deleted.
+
+The generic action pays one owner-fibre cardinality. Physical real-Green/
+owner dictionary, R^4 against F4 R^-2 (retaining R^2), regional inverse and
+derivative B0 remain.20/41,TermSource0,window15 unattained.

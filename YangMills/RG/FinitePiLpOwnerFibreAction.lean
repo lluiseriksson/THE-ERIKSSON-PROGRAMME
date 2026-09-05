@@ -1,12 +1,11 @@
 import YangMills.RG.FinitePiLpBlockLocalizedSup
 
 /-!
-# PRE-VALIDATION: Supported-field action with one owner-fibre cardinality
+# Supported-field action with one owner-fibre cardinality
 
-Source present; this promoted module's .olean is not yet materialized and
-its promoted result is not yet compiler-verified. The corresponding draft
-passed the bounded F5 hot diagnostics recorded in ledger Addendum 1117;
-that diagnostic is not a cold seal of this module.
+Cold-verified and .olean materialized at source 6c49a8da on 2026-09-05.
+Downloaded evidence independently verified; see ledger Addendum 1118.
+The selective seal changes provenance comments only, not the mathematics.
 
 The output/source orientation is fixed explicitly. The supported-source
 sum pays only the cardinality of one owner fibre. A physical R^4 bound and
@@ -107,4 +106,3 @@ theorem finitePiLpTypedBlockLocalizedSupBound_of_kernel_fibre_card
 
 end
 end YangMills.RG
-

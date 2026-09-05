@@ -1,5 +1,25 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Latest checkpoint — 2026-09-05 12:47 UTC
+
+F5 cold source6c49a8da PASS;20 stages/7 exact allowed axioms independently
+verified from downloaded archives. Outer8226baa539d500d4876575b16ef540519b601dd5f6cabb4566b0a060131dccad;
+inner97192a7e32c99c02e7663808019f9be149a075f24112ee4848d3af5b060fd18d.
+Full evidence README under cmp99-point-fibre-promoted-cold-6c49a8da-20260905.
+The only HOT continuation, script5e65c2d0e with observed cold hash, launched
+PID32696 at12:44:45.646877UTC. Mathlib carrier repro failed line15:2
+(change cannot unfold piCongrLeft),exit1/4.967s. Physical target NOT RUN.
+FAIL archive15017c71e8b58582af23503bfde8b414af00fdddd1a097bd1eb417df8cbbf620
+downloaded and independently verified (12 files,7 stages,0publicaxioms).
+No Lean/Lake/launcher at12:46:19UTC. Runtime deleted about12:47UTC;
+sole tab closed, monitor-recursive-poincare-colab deleted. No remote job.
+
+Next: preserve selective cold seal1118, repair only repro/evaluation
+unfolding using the existing Step7b module's explicit simp definitions;
+prepare a new remote diagnostic before connecting. Owner dictionary draft
+cb34a8e46 remains separate PRE-VALIDATION. Never rerun historical notebook.
+20/41,TermSource0,window15 unattained; goal remains active.
+
 Current objective remains active. Counters: 20/41, TermSource = 0,
 window 15 compatible but unattained.
 

@@ -1,5 +1,12 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest hRpoly update2026-09-05: ledger1118 seals F5 point/fibre prefix at
+source6c49a8da (20 independently verified cold stages,7 exact axioms).
+Subsequent physical HOT Mathlib repro failed on piCongrLeft unfolding;
+actual physical target NOT CHECKED. See docs/F5-POINT-FIBRE-PROMOTION.md.
+Runtime deleted, browser tabs0, monitor removed. No Windows Lean.
+20/41,TermSource0,window15 compatible but unattained.
+
 You are a (more powerful) AI being handed this Lean 4 / Mathlib repository to advance. This
 single file is self-contained: it gives you the project's purpose, the build/verify loop,
 the iron rules, the complete map of what is proved, and the exact open targets. Read it once,

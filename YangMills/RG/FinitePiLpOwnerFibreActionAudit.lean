@@ -1,11 +1,11 @@
 import YangMills.RG.FinitePiLpOwnerFibreAction
 
 /-!
-# PRE-VALIDATION: FinitePiLpOwnerFibreAction exact public audit
+# FinitePiLpOwnerFibreAction exact public audit
 
-Source present; this audit has not yet been compiler-checked in the
-promoted cold graph. No audit .olean is materialized or claimed.
+Compiler-checked in the fresh F5 cold graph at source 6c49a8da,
+2026-09-05; exact public axioms verified (ledger Addendum 1118).
+No audit .olean is materialized or claimed.
 -/
 
 #print axioms YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_of_kernel_fibre_card
-
