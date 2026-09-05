@@ -15970,6 +15970,35 @@ gates (static decomposition, not new producer counts):
 The standalone owner-fibre action draft addresses only part of gate1;
 it is still uncompiled and is not added to the current F4 diagnostic queue.
 
+Static signature audit, 2026-09-05 (not a compiler seal): gate1 can preserve
+the Lie-fibre norm without a dimension factor. The F3 theorem
+`cmp99SourceFlowFullPointSourceGreen_apply_eq_scaledOwnerResidue` uses the
+same scalar residue for every Lie coordinate. First bundle the equality
+as `G(delta_source v)(target) = scalar • v`, then take the fibre norm.
+Do not sum coordinatewise upper bounds. The real-slice norm transport uses
+the coordinatewise isometry of the real-to-complex embedding, not an
+isometry claim about the outer continuous linear equivalence. No proof
+that the scalar residue itself is real is needed for this norm transport.
+Reversing the displayed owner-distance order uses `finBoxDist_comm` only;
+it is not a transport of operator row orientation by adjunction.
+
+Gate3 has a separate, explicit spacing obligation. In
+`BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary.lean`,
+`cmp99SourceGeneratedFullComplexSpacing L (depth+1)` is definitionally
+`R^-1`, where `R = L^(depth+1)`. The literal source-flow physical precision
+uses that spacing. In contrast,
+`cmp99Eq342SourceLocalizedGreenCertificate_of_uniformValueBound` produces
+derivative actions at spacing `R * eta`. Matching the two requires
+`eta = R^-2`, not a fixed positive eta. Direct substitution in that
+adapter makes its left/right amplitudes grow as `R^2`, and its Laplacian
+amplitude as `R^4`, relative to a fixed valueAmplitude. Thus its abstract
+uniform-in-depth conclusion at fixed eta cannot be transferred to this
+physical specialization by notation alone. This is a static limitation
+of that value-only adapter, not a no-go for the physical derivative
+estimates. A genuine rescaling dictionary with all operator factors, or
+direct derivative cancellation estimates at the literal spacing, remains
+required. No source theorem is retracted and no counter moves here.
+
 The source route for gates2--3 is already recorded in
 `CMP99-SECTION-C-PARSER-AUDIT.md`, under "Direct Eq. (3.42) to Eq. (3.89)
 gate": CMP96 Proposition2.2 / (2.67) supplies the zero-background local
