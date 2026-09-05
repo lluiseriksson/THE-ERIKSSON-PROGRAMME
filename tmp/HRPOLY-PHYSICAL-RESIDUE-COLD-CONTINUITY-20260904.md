@@ -36,6 +36,14 @@ The arithmetic repro569256476 remains separate/uncompiled; only reuse this
 runtime for a separately prepared bounded diagnostic after verified PASS.
 No PRE-VALIDATION retirement yet.20/41,TermSource0,window15 unattained.
 
+Prepared while the cold gate runs: source7bdc0fa1e, three new physical value-action
+draft declarations plus the Mathlib-only arithmetic repro. NOT CHECKED.
+Exact post-PASS command/pins: docs/F5-PHYSICAL-VALUE-ACTION-HOT-RUNBOOK.md.
+Launcher35ddd6d6a can reuse this runtime only after independent cold PASS
+verification; no change to the active queue or repeated historical cell.
+Host observedaa59ca737da9, PID3227 alive at15:35:34UTC. Remote verifier
+self-test exit0/0.072686154s and both six-file guards passed before lake_update.
+
 ## Current safe checkpoint — 2026-09-05, point-probe PASS preserved
 
 Supersedes all live/pending descriptions below. Source91cc4dd5d6133e0eb0fc59279d58a71487caa6c7
