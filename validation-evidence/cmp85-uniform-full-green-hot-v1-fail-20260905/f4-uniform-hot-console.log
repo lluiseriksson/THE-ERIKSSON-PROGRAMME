@@ -1,0 +1,109 @@
+HOT_STAGE=original_head CMD=["git", "rev-parse", "HEAD"]
+9dafedaa1bfc08daa258c75a41b27672b9087bb8
+
+HOT_STAGE_RESULT={"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 0, "log": "original_head.log", "seconds": 0.0025365369997416565, "sha256": "933aff2490265136cb2c7ef0ee375836ae4f89a704b05a4f9b846bfae1bb7592", "stage": "original_head"}
+HOT_STAGE=original_clean CMD=["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"]
+
+HOT_STAGE_RESULT={"command": ["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 0, "log": "original_clean.log", "seconds": 1.0208647149997887, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "original_clean"}
+HOT_STAGE=mathlib CMD=["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"]
+07642720480157414db592fa85b626dafb71355b
+
+HOT_STAGE_RESULT={"command": ["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 0, "log": "mathlib.log", "seconds": 0.0020861930001956352, "sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd", "stage": "mathlib"}
+HOT_STAGE=text_guard CMD=["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/cmp85-uniform-full-green-hot-v1-logs/paths.txt"]
+LEAN_OVERLAY_TEXT_OK files=3 source=paths:/content/cmp85-uniform-full-green-hot-v1-logs/paths.txt
+
+HOT_STAGE_RESULT={"command": ["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/cmp85-uniform-full-green-hot-v1-logs/paths.txt"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 0, "log": "text_guard.log", "seconds": 0.06760919099997409, "sha256": "199a17c37bb80d50b9b9764a0fbeea286cc2cc7413afd0ef1f48bcc9759ee06d", "stage": "text_guard"}
+HOT_STAGE=import_guard CMD=["python3", "scripts/check_lean_import_prefix.py", "tmp/SourceFullGreenHybridAmplitudeDraft.lean", "tmp/FullGreenNormalizedBudgetRepro.lean", "tmp/SourceFullGreenUniformAmplitudeDraft.lean"]
+LEAN_IMPORT_PREFIX_OK files=3
+
+HOT_STAGE_RESULT={"command": ["python3", "scripts/check_lean_import_prefix.py", "tmp/SourceFullGreenHybridAmplitudeDraft.lean", "tmp/FullGreenNormalizedBudgetRepro.lean", "tmp/SourceFullGreenUniformAmplitudeDraft.lean"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 0, "log": "import_guard.log", "seconds": 0.05051868200007448, "sha256": "760fd7227f853a0f47ffcb02b595f9d4caf7ba9e566f9288f3546f218d2f5bab", "stage": "import_guard"}
+HOT_STAGE=materialize_scalar_definition CMD=["lake", "build", "YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound"]
+.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse (8.4s)
+✔ [8763/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary (6.5s)
+✔ [8764/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalLargeBlockCutoff (7.8s)
+✔ [8765/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel (23s)
+✔ [8766/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary (9.4s)
+✔ [8767/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary (10s)
+✔ [8768/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalComplexZeroExtensionDictionary (6.9s)
+✔ [8769/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary (32s)
+✔ [8770/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalComplexFieldData (7.2s)
+✔ [8771/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedBackgroundDictionary (6.0s)
+✔ [8772/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedAmbientLaplacian (6.0s)
+✔ [8773/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedComplexStencilDictionary (6.4s)
+✔ [8774/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary (6.6s)
+✔ [8775/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedPhysicalPrecisionComplexDictionary (7.7s)
+✔ [8776/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreen (7.4s)
+✔ [8777/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive (6.2s)
+✔ [8778/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen (7.5s)
+✔ [8779/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing (6.6s)
+✔ [8780/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification (8.8s)
+✔ [8781/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain (6.6s)
+✔ [8782/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient (6.8s)
+✔ [8783/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain (6.8s)
+✔ [8784/8808] Built YangMills.RG.BalabanCMP99CenteredTorusPhysicalGreenSampleTransport (9.1s)
+✔ [8785/8808] Built YangMills.RG.BalabanCMP99PhysicalGreenFiniteGridAliasing (6.9s)
+⚠ [8786/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceMixedDomain (9.2s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:200:5: unused variable `hamplitude`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:201:5: unused variable `hradius`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:202:5: unused variable `hdenWindow`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8787/8808] Built YangMills.RG.BalabanCMP99FullGreenFiniteGridAliasing (6.8s)
+✔ [8788/8808] Built YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing (8.3s)
+✔ [8789/8808] Built YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing (6.4s)
+✔ [8790/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerCharacter (6.1s)
+✔ [8791/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary (36s)
+✔ [8792/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter (6.1s)
+✔ [8793/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenIdentification (7.4s)
+✔ [8794/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceGreenIdentification (6.4s)
+✔ [8795/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode (7.1s)
+✔ [8796/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis (6.5s)
+✔ [8797/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeTransposeEndpointSample (6.1s)
+✔ [8798/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase (6.3s)
+✔ [8799/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection (6.6s)
+⚠ [8800/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceCharacterDictionary (7.9s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:234:58: This simp argument is unused:
+  pointSource
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, p̵o̵i̵n̵t̵S̵o̵u̵r̵ce̵,̵
+  ̵ ̵ ̵ ̵ ̵c̵oarseCharacter, owner, z, sourceEndpoint,
+  ̲  ̲ ̲ ̲e, reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:235:31: This simp argument is unused:
+  sourceEndpoint
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
+  ̵  ̵ ̵ ̵coarseCharacter, owner, z, s̵o̵u̵r̵c̵eE̵n̵d̵p̵o̵i̵n̵t̵,
+  ̲ e̵,̵  ̲ ̲reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8801/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceTargetCharacterDictionary (6.1s)
+✔ [8802/8808] Built YangMills.RG.BalabanCMP89Eq246FullEndpointReflection (6.6s)
+✔ [8803/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourcePhysicalEndpointReflection (5.9s)
+✔ [8804/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary (6.6s)
+✔ [8805/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionary (6.1s)
+✔ [8806/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary (6.3s)
+✔ [8807/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass (7.7s)
+✔ [8808/8808] Built YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound (6.5s)
+Build completed successfully (8808 jobs).
+
+HOT_STAGE_RESULT={"command": ["lake", "build", "YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 0, "log": "materialize_scalar_definition.log", "seconds": 676.7753899510003, "sha256": "35314b44e48c66f48f31cbf38face0d2576b1574fddf812e4c40fe236ba858f9", "stage": "materialize_scalar_definition"}
+HOT_STAGE=lean_path CMD=["lake", "env", "printenv", "LEAN_PATH"]
+/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/Cli/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/batteries/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/Qq/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/aesop/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/importGraph/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/plausible/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/mathlib/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/build/lib/lean:/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/lib/lean
+
+HOT_STAGE_RESULT={"command": ["lake", "env", "printenv", "LEAN_PATH"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 0, "log": "lean_path.log", "seconds": 0.8924162830003297, "sha256": "b42b4a4b920de060772aa8b012130eebee3f1534ecdf9204332432bb41b5ffd7", "stage": "lean_path"}
+HOT_STAGE=hybrid_import CMD=["env", "LEAN_PATH=/content/hrpoly-cmp85-full-green-hybrid-repro-v2:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/Cli/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/batteries/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/Qq/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/aesop/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/importGraph/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/plausible/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/mathlib/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/build/lib/lean:/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/lib/lean", "/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/bin/lean", "-o", "tmp/SourceFullGreenHybridAmplitudeDraft.olean", "tmp/SourceFullGreenHybridAmplitudeDraft.lean"]
+tmp/SourceFullGreenHybridAmplitudeDraft.lean:1:0: error: object file '/content/hrpoly-cmp85-full-green-hybrid-repro-v2/YangMills/RG/BalabanCMP85SourceFullGreenScalarFoundations.olean' of module YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations does not exist
+
+HOT_STAGE_RESULT={"command": ["env", "LEAN_PATH=/content/hrpoly-cmp85-full-green-hybrid-repro-v2:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/Cli/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/batteries/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/Qq/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/aesop/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/importGraph/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/plausible/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/packages/mathlib/.lake/build/lib/lean:/content/hrpoly-cmp85-full-green-hybrid-repro-v2/.lake/build/lib/lean:/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/lib/lean", "/content/lean-4.29.0-rc6-linux/lean-4.29.0-rc6-linux/bin/lean", "-o", "tmp/SourceFullGreenHybridAmplitudeDraft.olean", "tmp/SourceFullGreenHybridAmplitudeDraft.lean"], "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2", "exit": 1, "log": "hybrid_import.log", "seconds": 0.17141661100004058, "sha256": "5b3bf0730cef61f427a8d0482bbf84879ee765838f0f23720b144aeda8ab6c7b", "stage": "hybrid_import"}
+HOT_FIRST_ERROR=RuntimeError('FIRST_ERROR=hybrid_import')
+HOT_ARCHIVE=/content/cmp85-uniform-full-green-hot-v1-logs.tar.gz
+HOT_ARCHIVE_SHA256=883faf9b55671396b42f941e798ad89a8d0da6e71a92c849ec9fb062b3e7406b
+HOT_DEBUG_STATUS=FAIL COLD_SEAL=0

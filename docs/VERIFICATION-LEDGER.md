@@ -46063,3 +46063,50 @@ after this archive was independently verified and downloaded was that
 prepared bounded hot diagnostic allowed to reuse the runtime/cache.
 The hybrid interval inequality is not the full uniform amplitude theorem,
 nor a regional/derivative B0 estimate.20/41,TermSource0,window15 unchanged.
+
+## Addendum 1114 — F4 composition stopped on LEAN_PATH namespace shadowing
+
+2026-09-05 UTC. Mathematical draft checkpoint
+`5d6f85e8787ad29ab0f4f6539d9b7ff5ab29b062`; runner checkpoint
+`47d507dc88a033dfa3127ad3ad577c5bcb6bb323`, runner blob SHA256
+`71D2CEB11BE9A1B77366B76D6104D7D5FFFCBFA6818587AE72E722387E654FAE`.
+Single hot composition, retained CPU/high-RAM runtime bd080359d13c.
+Started06:41:56UTC, actual exit1 at06:53:16UTC. No retry in that unit.
+
+- Materialize scalar definition:8808 jobs, exit0/676.775389951s.
+- First failed child: hybrid_import, exit1/0.171416611s.
+- Exact first error: `tmp/SourceFullGreenHybridAmplitudeDraft.lean:1:0:
+  error: object file '/content/hrpoly-cmp85-full-green-hybrid-repro-v2/YangMills/RG/BalabanCMP85SourceFullGreenScalarFoundations.olean'
+  of module YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations does not exist`.
+- Read-only inspection confirmed the78512-byte .olean exists in
+  `.lake/build/lib/lean/YangMills/RG/`, produced06:27UTC. The runner placed
+  ROOT before Lake's paths, so its source YangMills directory shadowed that
+  compiled namespace. This is runner import resolution, not a failed theorem.
+- normalization_import/uniform_draft NOT RUN; no new axiom audit passed.
+
+Durable directory:
+`validation-evidence/cmp85-uniform-full-green-hot-v1-fail-20260905/`.
+Inner archive SHA256:
+`883FAF9B55671396B42F941E798AD89A8D0DA6E71A92C849EC9FB062B3E7406B`.
+Outer five-file bundle SHA256:
+`4E947E1A3FEDE04943EF5DC65EE1C2A5387D2AE90DB52FE4005B7FD7E6FA6765`.
+Independent report SHA256:
+`1804858D501C723740C677A0162963278949B44ECB328ABB2B7E0012E4D618DA`.
+Raw runner console SHA256:
+`734F40177368BE483249C04EC76E8DE97A75CFBF17317E807F33D2C22E554D82`.
+The read-only Colab verifier checked22 files, exact eight-stage ordering,
+recorded exits/raw-log hashes, source hashes and unchanged preceding PASS
+archive5718CBE2...65BD04. Its initial two invocations failed on newline
+escaping before execution; the corrected verifier passed. These observer
+errors neither reran Lean nor replaced the diagnostic's actual exit1.
+The outer file set was inspected before local extraction; all four hashes
+matched downloaded Windows files. Processes19619/19657 were gone06:54UTC.
+
+Runtime disconnected/deleted06:56:59UTC (opened06:00:40UTC, about56m19s
+connected across the hybrid and composition units), reconnect state verified,
+only browser tab closed, completed monitor deleted. No Windows Lean/Lake/CI.
+Runner v2 now appends ROOT after Lake's paths and uses a new logs directory;
+only this import-precedence repair is prepared. Local AST parse0.003836s,
+not a Lean validation. Mathematical source remains byte-identical to5d6.
+No PRE-VALIDATION retirement, F4 seal, B0 claim or counter movement:
+20/41,TermSource0,window15 remains unattained.

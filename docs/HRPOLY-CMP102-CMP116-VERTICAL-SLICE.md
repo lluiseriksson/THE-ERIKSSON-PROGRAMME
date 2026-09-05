@@ -15933,6 +15933,17 @@ not the common full owner amplitude. The separate uniform-amplitude draft
 at5d6f85e87 retains R^-2 and remains PRE-VALIDATION; no F4/F5 seal or
 counter movement follows from the hybrid diagnostic alone.
 
+The bounded composition diagnostic at the same draft source5d6f85e87
+stopped before the new proofs (Ledger1114). The scalar-definition import
+built8808 jobs/exit0/676.775s, then hybrid_import exited1/0.171s because
+the runner prepended the source root to LEAN_PATH, shadowing the compiled
+YangMills namespace. The supposedly missing .olean was confirmed present
+under .lake/build/lib/lean. Uniform/normalization stages were NOT RUN.
+Evidence was independently checked (22 files/eight stages), downloaded and
+hashed before runtime deletion. Runner v2 appends the temporary source root
+after Lake's paths; this instrumental correction is not compiler-verified.
+No mathematical source/hash, PRE-VALIDATION status or counter changed.
+
 F5 is not a single reindexing. Reading the literal
 `CMP99Eq342SourceLocalizedGreenCertificate` gives these separate acceptance
 gates (static decomposition, not new producer counts):

@@ -18,7 +18,7 @@ SOURCE = '5d6f85e8787ad29ab0f4f6539d9b7ff5ab29b062'
 PREVIOUS_SOURCE = '9dafedaa1bfc08daa258c75a41b27672b9087bb8'
 ROOT = Path('/content/hrpoly-cmp85-full-green-hybrid-repro-v2')
 PREVIOUS_ARCHIVE = Path(str(ROOT) + '-evidence.tar.gz')
-REV = 'cmp85-uniform-full-green-hot-v2'
+REV = 'cmp85-uniform-full-green-hot-v1'
 LOGS = Path('/content') / (REV + '-logs')
 BLOBS = {
     'tmp/SourceFullGreenHybridAmplitudeDraft.lean':
@@ -110,12 +110,9 @@ def main():
         lean_path = base.run('lean_path', ['lake', 'env', 'printenv', 'LEAN_PATH']).strip()
         if not lean_path or '\n' in lean_path:
             raise RuntimeError('LEAN_PATH_FORMAT')
-        # Lake's compiled YangMills namespace must win over ROOT/YangMills.
-        # ROOT is appended only to resolve the temporary tmp.* modules.
-        draft_lean_path = lean_path + os.pathsep + str(ROOT)
         output_hashes = {}
         for stage, path in zip(AUDITS, BLOBS):
-            output = base.run(stage, ['env', 'LEAN_PATH=' + draft_lean_path,
+            output = base.run(stage, ['env', 'LEAN_PATH=' + str(ROOT) + ':' + lean_path,
                 str(base.TOOLCHAIN / 'lean'), '-o', str(Path(path).with_suffix('.olean')), path])
             axioms = gate.exact_axioms(output, AUDITS[stage])
             (LOGS / (stage + '-axioms.json')).write_text(json.dumps(axioms, sort_keys=True) + '\n')
