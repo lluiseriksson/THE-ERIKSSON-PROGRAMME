@@ -2,6 +2,15 @@
 
 ## Latest checkpoint — 2026-09-05 12:47 UTC
 
+Selective cold seal commit92713ecf0b3b508ac7ccbe9efeaff9c7ef8a3939.
+Subsequent repair changes only the carrier repro and corresponding physical
+evaluation proof: explicit simp unfolding of ContinuousLinearEquiv,
+Homeomorph and Equiv.piCongrLeft, exactly the pattern already present in
+BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bCarrier:154.
+The physical draft stays PRE-VALIDATION. Old hot runner5e65 and verifier
+remain immutable; a new runner/source pin must be prepared before retry.
+Do not launch the old runner against revised source bytes.
+
 F5 cold source6c49a8da PASS;20 stages/7 exact allowed axioms independently
 verified from downloaded archives. Outer8226baa539d500d4876575b16ef540519b601dd5f6cabb4566b0a060131dccad;
 inner97192a7e32c99c02e7663808019f9be149a075f24112ee4848d3af5b060fd18d.

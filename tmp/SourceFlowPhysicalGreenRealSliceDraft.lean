@@ -6,7 +6,8 @@ import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalGreenIdenti
 
 Source present; .olean not materialized; result not compiler-verified.
 This draft is outside the promoted F5 cold checkpoint and outside the root.
-It depends on the F5 generic real-slice module whose cold gate is pending.
+It depends on the F5 generic real-slice module cold-verified in ledger1118.
+This physical specialization itself is not yet compiler-verified.
 
 The operator in every endpoint is the internally constructed source-flow
 Green. The carrier map is the existing physical Step-7b site permutation.
@@ -53,10 +54,9 @@ theorem cmp99SourceFlowPhysicalStep7bFieldEquiv_apply_site_draft
     cmp99SourceSeparatedGeneratedPhysicalStep7bFieldEquiv L K Q Nc depth f
         (cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv L K Q depth x) =
       f x := by
-  change f ((cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv
-    L K Q depth).symm
-      (cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv L K Q depth x)) = f x
-  rw [Equiv.symm_apply_apply]
+  simp [cmp99SourceSeparatedGeneratedPhysicalStep7bFieldEquiv,
+    ContinuousLinearEquiv.piCongrLeft,
+    Homeomorph.piCongrLeft, Equiv.piCongrLeft]
 
 /-- Conjugating the literal complex Green and transporting a real input
 gives the transported output of the literal real Green. -/

@@ -12,8 +12,8 @@ noncomputable section
 example {ι κ : Type*} [Fintype ι] [Fintype κ]
     (e : ι ≃ κ) (f : ι → ℂ) (x : ι) :
     ContinuousLinearEquiv.piCongrLeft ℂ (fun _ : κ => ℂ) e f (e x) = f x := by
-  change f (e.symm (e x)) = f x
-  rw [Equiv.symm_apply_apply]
+  simp [ContinuousLinearEquiv.piCongrLeft,
+    Homeomorph.piCongrLeft, Equiv.piCongrLeft]
 
 example {ι κ : Type*} [Fintype ι] [Fintype κ]
     (U : (ι → ℂ) ≃L[ℂ] (κ → ℂ))
