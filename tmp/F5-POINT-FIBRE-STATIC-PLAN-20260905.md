@@ -42,6 +42,17 @@ No all-owner count (2*K*Q)^4 enters. Required evidence: the two point-probe
 declarations first; then the exact finite promotion/assembly with separate
 audits and preserved source hashes. Counters remain20/41,TermSource0.
 
+The next Mathlib-only arithmetic repro is prepared separately as
+tmp/SourceFlowPhysicalValueActionRepro.lean (four examples: real R^4/R^2,
+the natural-cardinality cast, nonnegative normalized amplitude, and bound
+transport with nonnegative factors). It is NOT in the live retry and has
+no compiler evidence. Import targets were checked in the pinned local
+Mathlib source; no local Lean was run. Exact one-file text guard PASS
+(0.18s; this invocation did not return an RSS reading); import guard PASS
+(0.09s, observed peak working set14,196,736bytes, single Python process).
+Use tmp/f5_physical_value_action_repro_paths.txt as the explicit manifest.
+Do not call this a physical producer or silently add it to the active queue.
+
 F4 cold source remains `5138e9bd4bc88797c91c21df5bb5c630c71600ca`.
 Nothing in this plan changes the graph being compiled or its acceptance gate.
 
