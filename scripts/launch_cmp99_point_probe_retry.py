@@ -24,8 +24,8 @@ FILES = {
         '2f4c5f4d79172319a99d782c4165035b0dd1d0a7',
         '2e4d0f3a32a72d1a3a8bdcd80bd5a5cc676541adb24b787df6004fab29789826'),
     'verify_cmp99_point_probe_retry.py': (
-        'c5064438b45afa85f7020da25d1dd060c3845bbd',
-        '906bd12b616e077f4277a349498c9a93709f19affad650147f02945857ddd87b'),
+        '388892e5b8ac817d3143958dcd5c0cd0eec00600',
+        '49fe9095784b34cebd6a06f47170a9cb02bb675bbfc947cada1d3c3c3e9fad28'),
     'verify_cmp99_full_green_residue_cold.py': (SOURCE,
         '558295bb43e74bdae3eb6508656e7b8cde756cb393376320d0c197347396a02c'),
     'full_green_owner_exact_axiom_gate.py': (SOURCE,
