@@ -48,6 +48,16 @@ output/log hashes and independently verified downloaded preservation archive.
 A single checkout serves all stages; no exploratory CI and no Windows Lean.
 The separate value-action arithmetic repro is not silently part of this gate.
 
+Source checkpoint: b2d5df8ad6d600317b267bf87522a8bf472e9ea0.
+Runner/verifier: scripts/colab_cmp99_physical_prefix_promoted_cold.py and
+scripts/verify_cmp99_physical_prefix_promoted_cold.py. Both pin the six
+SHA256 values computed from binary git cat-file blob output, never worktree
+EOL bytes. The archive includes the three actual production .olean files
+and their hashes; audit .olean and root validation are not claimed.
+Verifier synthetic tests passed eight corruptions, including missing/corrupt
+production output, plus the pinned helper tests:0.180s, observed18903040bytes,
+one Python process. This is instrumentation evidence only.
+
 ## Endpoint
 
 Only the literal full ambient real-Green embedding, physical owner map/cardinality

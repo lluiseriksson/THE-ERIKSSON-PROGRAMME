@@ -17,7 +17,7 @@ hashes, copied here. The calculation cell was not reexecuted.
 
 Pinned verifier388892e5b8ac817d3143958dcd5c0cd0eec00600:
 verify_cmp99_point_probe_retry.py SHA256
-49fe9095784b34cebd6a06f47170a9cb02bb675bbfc947cada1d3c3e9fad28.
+49fe9095784b34cebd6a06f47170a9cb02bb675bbfc947cada1d3c3c3e9fad28.
 Helpers, launcher, raw logs, transport and recorded exits remain in the outer
 archive and its extracted directory. The inner archive is authoritative.
 
