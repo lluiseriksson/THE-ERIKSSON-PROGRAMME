@@ -2,6 +2,20 @@
 
 ## Latest checkpoint — 2026-09-05 12:47 UTC
 
+Prepared next diagnostic v2, source59f9f522f3f731ac8a6270ac5c3ae719b1b201f6.
+Runner950b3cbeb28eba207b17fed16d4efbdc441216c4 / SHA256
+968ecbb45914a88114fcf341280c3e52594bf4872bed010d68fc3225d06b7846.
+Verifier2140c64c362738f70a257612cd91ad82e2b07f59 / SHA256
+072c4a6691f0c58eddc1933390e21677e9f8f6f5ef579b3d49719133c6e20a98.
+Launcher7f3cc35e329b9f94ea432d861d78e54a56f8a005 / SHA256
+c9bb2647c4206b4ea263b0d94936dde9495a7ab2c53ff472d06e7b1f1497a0b9.
+New notebook scripts/colab_cmp99_physical_real_slice_retry.ipynb.
+Mathlib repro precedes project build. Four draft axioms, two actual draft
+.olean outputs preserved with hashes; cold_seal=false even on PASS.
+No owner-dictionary expansion. Synthetic verifier acceptsPASS andFAIL
+prefix and rejects7corruptions; local0.09725s, peak26,103,808bytes RSS,
+single process, no Lean/network/subprocess. No runtime opened during prep.
+
 Selective cold seal commit92713ecf0b3b508ac7ccbe9efeaff9c7ef8a3939.
 Subsequent repair changes only the carrier repro and corresponding physical
 evaluation proof: explicit simp unfolding of ContinuousLinearEquiv,
