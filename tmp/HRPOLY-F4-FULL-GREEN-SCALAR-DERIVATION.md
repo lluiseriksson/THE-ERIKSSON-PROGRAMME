@@ -104,3 +104,11 @@ the source supremum norm; and transport the real/complex and regional
 objects through their named dictionaries. A compressed ambient inverse is
 not asserted to be the regional Dirichlet inverse. The derivative species
 retain the separate `[R, R, 1]` scales and are not implied by the value bound.
+
+The generic single-fibre action step is now drafted separately in
+`tmp/FullGreenOwnerFibreActionDraft.lean`. Its signature explicitly pays N,
+the upper bound on one owner fibre, and concludes amplitude N*A at the same
+rate. It keeps output fixed while summing sources and uses the existing
+point-probe decomposition rather than an adjoint row conversion. Its text
+and import guards passed in0.2564642s; there is no compiler evidence and it
+is not included in the current cold queue or the prepared F4 diagnostic.
