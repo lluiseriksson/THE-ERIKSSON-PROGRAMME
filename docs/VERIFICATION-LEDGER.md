@@ -46110,3 +46110,37 @@ only this import-precedence repair is prepared. Local AST parse0.003836s,
 not a Lean validation. Mathematical source remains byte-identical to5d6.
 No PRE-VALIDATION retirement, F4 seal, B0 claim or counter movement:
 20/41,TermSource0,window15 remains unattained.
+
+## Addendum 1115 — F4 uniform scalar amplitude diagnostic PASS, recovered after pause
+
+2026-09-05 UTC. Exact source `be4e73409ac444d23e95c2eae2584fece5882f98`,
+runner `53b5c926ef7bde68c2a9deedd6d40924a16cfbc7`, runner SHA256
+`4FC9CEF403406F8011EC4D0DF0F8E500A88667AA526023F1A1C1D634F007C881`.
+The single diagnostic launched at07:10:45UTC, host9fb273ff477c, CPU/high
+RAM50.99GiB. After the explicit human resume, reconnect recovered that
+same host and its completed exit0; no Lean/Lake job or notebook cell was
+reexecuted. The independent archive verifier passed22 stages. Downloaded
+outer/inner/report hashes and all22 raw child-log hashes matched locally.
+
+Power repro exit0/36.920s; normalization import0/8.175s; sealed prerequisites
+0/1749.420s; hybrid draft0/6.890s; uniform draft0/8.634s. Nine audited
+declarations: eight allowed trios and the pure power repro's
+{propext,Quot.sound}. Linter warnings remain in the original bytes.
+Source-root LEAN_PATH shadowing is rejected by the synthetic import-path
+preflight; temporary objects now live under Lake's compiled tmp namespace.
+
+Durable package and exact hashes:
+`validation-evidence/cmp85-uniform-full-green-diagnostic-v3-20260905/README.md`.
+Inner archive:
+`822844A908B0EA3A888AC1A03E9BB14908DFB6B24B53AE8F42EFF0C793710EEF`.
+Outer tar:
+`8A5819F5336BB11E16FF4FBB5EE4899BD809F9F780D6288C04A49F61A94102F6`.
+Runtime disconnected/deleted only after preserving and checking the download;
+reconnect state verified. No local Lean/Lake or exploratory CI.
+
+This verifies the draft uniform-in-depth scalar full owner amplitude,
+with fixed initial a,L and the inverse-square R scale retained. It is
+not a regional/derivative B0 result or window15 producer.
+`COLD_SEAL=0`: no PRE-VALIDATION retirement, no root-build claim.
+The next step is promotion followed by a separate exact cold graph gate.
+20/41,TermSource0,window15 remains unattained.

@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "17abcafcfeec22d16142bf49c213c7495d5e1cf93973433c21fae6cd88a4517b", "seconds": 10.094403578999845, "stage": "clone"}
