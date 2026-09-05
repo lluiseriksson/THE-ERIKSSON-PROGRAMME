@@ -496,3 +496,29 @@ from its inputs, rather than accepting a completed pre-record plus ledger
 equalities.  The physical covariance/parametrix data, conditioned covariance
 lower certificate, contour contractions, Cauchy normalizations, and joint
 scalar windows must remain visible until they are separately discharged.
+
+## Focused hRpoly handoff — 2026-09-05
+
+The preceding August denominator is historical: the current count is
+20/41, TermSource=0, window15 compatible but not attained. Clay remains
+<0.1%. The current branch is codex/cmp116-interacting-wilson-hessian.
+
+F4's promoted uniform scalar full-Green owner-amplitude graph is cold
+verified at source5138e9bd4bc88797c91c21df5bb5c630c71600ca and selectively
+sealed in47848fb0f21f495e956cab35dbbee3d706cdfe0f (ledger Addendum1116).
+Three production modules, three audits, eight exact allowed trios;
+downloaded archives independently verified. The theorem chooses rho,C
+before all depths j for fixed a,L and retains C R^-2. It does not give
+regional/derivative B0 or window15. No new aggregate root build is claimed.
+
+F5 must separately bundle the common scalar over the Lie fibre, transport
+the actual real operator, pay only one owner-fibre's R^4 cardinality, then
+address the canonical regional inverse and its three derivative actions.
+Do not identify restriction of an ambient inverse with inversion of a
+compressed precision. Read docs/F4-UNIFORM-AMPLITUDE-PROMOTION.md and the
+F5 acceptance gates in docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md.
+
+Current bounded hot diagnostic status is recorded in
+tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md. Its cache is
+diagnostic only, never the basis for a cold seal. Heavy work remains in
+Colab, not Windows; Fable is unavailable and exploratory CI is forbidden.

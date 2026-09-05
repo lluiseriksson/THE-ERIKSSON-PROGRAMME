@@ -15978,8 +15978,12 @@ gates (static decomposition, not new producer counts):
    Only then construct the source-localized certificate and continue the
    three-species defect budget. F4 scalar uniformity alone is not (3.42).
 
-The standalone owner-fibre action draft addresses only part of gate1;
-it is still uncompiled and is not added to the current F4 diagnostic queue.
+The standalone owner-fibre action draft addresses only part of gate1.
+Update2026-09-05: it and the real-slice/point-fibre prefix passed the separate
+F5 HOT diagnostic (seven exact allowed-trio declarations, Ledger1117).
+Two first errors were archived and repaired without changing statements.
+This supersedes its uncompiled label, not the regional/derivative gates.
+PRE-VALIDATION remains until promoted cold validation; no F5 cold seal.
 
 Static signature audit, 2026-09-05 (not a compiler seal): gate1 can preserve
 the Lie-fibre norm without a dimension factor. The F3 theorem

@@ -46174,3 +46174,42 @@ fixed a,L. Neither regional inverse identification, derivative B0 nor
 window15 attainment follows. F5 remains a separate diagnostic. Runtime
 temporarily retained for that bounded hot unit and evidence transfer.
 20/41,TermSource0,window15 remains unattained.
+
+## Addendum 1117 — F5 point/fibre hot prefix, two measured errors then PASS
+
+2026-09-05. Same retained F4 runtime, production source5138e9bd, no new
+cold checkout and no source/build replacement. V1 stopped at the Mathlib-only
+repro: WithLp.toLp_apply is unknown, exit1/6.991s. Its original archive is
+180ee030bd3dffda8dc964582e05bd1c4fa7b81b8cd7836b86657d636f5011ec.
+The single namespace repair is sourcea289ee24dc41c25f2480c408de45b3105b09ce71.
+
+V2 runnerc8e1bbacd4447034c3ce124d455a4e2a74b1b450: repro0/6.624s;
+prerequisites0/331.387s; real-slice transport0/13.370s; point-fibre0/15.315s.
+Six public declarations have exactly the allowed trio. The final owner-action
+draft failed85:10/exit1/9.902s on beta-unreduced kernel weight under rewrite.
+Its error-recovery sorryAx is retained in the raw log and REJECTED, not a
+passed oracle. V2 archive966eaa348af6724008e8b3710d9b3836fa203f967fbb50a23d206ba53231b876.
+
+The local hk type was exposed explicitly in sourcecee1f6d36ea8d81c5f301860f0a349b14efac47d;
+statement, constant and hypotheses unchanged. V3 runnere78cf7b565b86f3c1d73ad43a3d43680a6cd476a
+verified the prior prefix and six raw axiom blocks, then ran ONLY its new
+Mathlib beta repro0/4.725s and failed owner target0/10.716s. Owner oracle now
+has exactly {propext,Classical.choice,Quot.sound}. HOT_DEBUG_STATUS=PASS,
+COLD_SEAL=0. Archive32db6f6e1e2c260f4014397084693ecb8b727ebfcc4af2cbcd469fc13ff063df.
+All three downloaded archives matched their remote hashes. Independent local
+checks verified v2's33 and v3's25 files, log/output hashes, exact child stage
+ordering/exits and the seven successful raw public axiom blocks. No local Lean.
+
+Durable packages: validation-evidence/cmp99-full-green-fibre-prefix-hot-v1-20260905,
+validation-evidence/cmp99-full-green-fibre-prefix-hot-v2-20260905,
+validation-evidence/cmp99-full-green-owner-action-hot-v3-20260905.
+At11:30:56UTC no Lean/Lake/launcher remained. Disconnected/deleted Colab about
+11:31UTC, about1h54m connected since09:37:49UTC; reconnect state verified.
+Closed both browser tabs (one duplicate earlier, last tab after shutdown).
+
+This is a seven-declaration diagnostic prefix, not a promoted F5 cold graph.
+No F5 PRE-VALIDATION retirement. One owner fibre's cardinality remains
+explicit; no outer-norm isometry, regional inverse or derivative B0 is inferred.
+Next: promote this finite prefix and prepare its cold gate; keep the physical
+real-Green/owner dictionary and regional derivative obligations separate.
+20/41,TermSource0,window15 remains unattained; Clay <0.1%.

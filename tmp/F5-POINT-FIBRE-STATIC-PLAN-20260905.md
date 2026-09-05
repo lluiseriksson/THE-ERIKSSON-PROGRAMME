@@ -21,9 +21,12 @@ Nothing in this plan changes the graph being compiled or its acceptance gate.
    inequality already exists as
    `card_cmp99Eq342SourceLocalizedActiveOwner_fiber_le`.
 
-All draft declarations remain PRE-VALIDATION. No new mathematical theorem
-has yet passed Lean. The first three files depend only on already sealed
-F3 or generic imports, not on an unverified F4 result.
+All draft declarations remain PRE-VALIDATION pending promoted cold validation.
+The seven declarations passed HOT diagnostics v2/v3 on 2026-09-05 (ledger1117):
+six in the real-slice/point-fibre files, one in the corrected owner action.
+Both repro errors and their raw evidence remain archived. The first three
+files depend only on already sealed F3 or generic imports, not on an
+unverified F4 result. F4 itself is now separately cold sealed (ledger1116).
 
 ## Physical composition still required
 
@@ -51,4 +54,12 @@ The existing derivative adapter uses spacing `R*eta`; actual fine spacing
 `R^-1` requires `eta=R^-2`, whose costs must not be suppressed.
 
 Counters: 20/41, TermSource=0. No PRE retirement, root claim, regional B0,
-uniform derivative estimate, or contraction follows from textual guards.
+uniform derivative estimate, or contraction follows from this hot prefix.
+
+## Next finite checkpoint
+
+Promote the real-slice, point-fibre and owner-action drafts with seven public
+axiom declarations in separate audits. Compare mathematical text under an
+explicit finite renaming table; no constants, hypotheses or scope changes.
+Then prepare a fresh immutable-source cold graph, not a retained-runtime
+retry. The 2026-09-05 runtime was deleted after archive verification.
