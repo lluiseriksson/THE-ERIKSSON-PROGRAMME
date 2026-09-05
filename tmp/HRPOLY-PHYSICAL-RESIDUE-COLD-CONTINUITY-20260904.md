@@ -1,5 +1,33 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Bounded HOT continuation started — 2026-09-05 16:36:58 UTC
+
+User resumed explicitly. The two cold archives remain immutable in Colab;
+local download is still unresolved after files.download (outer and inner),
+file-pane Download, and an explicit Blob download link. The inner transfer
+cell independently confirmed its expected hash and size 205932 bytes.
+No calculation was repeated and no PRE-VALIDATION mark was retired.
+
+The published HOT runbook requires preserved cold archives and independent
+verification before touching the retained checkout; it does not require
+the independent verifier to run on Windows. Its pinned verify_prior stage
+provides that gate in Colab, while local preservation remains mandatory
+before selective sealing. Therefore the prepared diagnostic can proceed
+without weakening any mathematical or cold-seal acceptance condition.
+This supersedes the earlier operational stop waiting for the download.
+
+Exactly one new diagnostic launched in the same host aa59ca737da9:
+HASH_GATE=PASS START_UTC=2026-09-05T16:36:58.619888+00:00,
+PID 26352, source 7bdc0fa1e76b3e2d3d64d1822bb30459d6697979.
+Launcher 35ddd6d6a4a612f7b1891a2b8032aad45ca6c64e, exact hash and
+--prior-archive-sha256 d09d7ea9f43027ea203a674a56a4fe4326ad1741cbef00020d38141dfcda9601.
+The original cold PID 3227 was required absent before launch.
+No new runtime, clone, Windows Lean or CI. Do not reexecute cell [5].
+Read /content/physical-value-action-hot-v1-console.log and
+/content/physical-value-action-hot-v1-launch/physical_value_action_diagnostic.log.
+First-error-only queue and unchanged-prior-archive gate remain intact.
+20/41, TermSource0, window15 unattained; no HOT result inferred from launch.
+
 ## Cold execution PASS; local preservation pending — 2026-09-05 16:26 UTC
 
 The original cold launcher PID 3227 is terminal (absent at 16:22:07 UTC).
