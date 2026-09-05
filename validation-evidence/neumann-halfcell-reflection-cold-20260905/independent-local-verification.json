@@ -1,0 +1,106 @@
+{
+  "cold": {
+    "audits": {
+      "reflection_audit": {
+        "YangMills.RG.blockSite_neumannHalfCellReflection": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannHalfCellReflection_involutive": [
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannHalfCellReflection_sameOwner_iff": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "83c179e47a2eb4d2291b3c5032a25b8bd4ffc88ce6b9c94e1df4b5ea44cac349",
+    "evidence_json_payload_sha256": "298c612222a81f276b1d50967cb18056e33881346ecf41330c9912006563f914",
+    "production_outputs": {
+      "NeumannHalfCellBlockReflection.olean": "0290a27970b8da0c61e4c7240a47d4c2c0a554be8073d439fa335bb0d188d36b"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannHalfCellBlockReflection"
+        ],
+        "cwd": "/content/hrpoly-neumann-halfcell-block-reflection-cold-v1",
+        "exit": 0,
+        "log_file": "reflection_focal.log",
+        "output_sha256": "b866c51961b835ea5b8d094042c6f51b54993e9ec0445c6f4fe949470ee23031",
+        "seconds": 45.326127272999884,
+        "stage": "reflection_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannHalfCellBlockReflectionAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-halfcell-block-reflection-cold-v1",
+        "exit": 0,
+        "log_file": "reflection_audit.log",
+        "output_sha256": "b47d8977ae40e5457893122a3bdac797427e19b749d9afe8b13e1042bbf9cd6a",
+        "seconds": 4.568481815000041,
+        "stage": "reflection_audit"
+      }
+    ],
+    "runner_rev": "neumann-halfcell-block-reflection-cold-v1",
+    "source_sha": "59160603dda023d9f577ea7edc96f24995de1ac5",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "inner_sha256": "666c4a0af756a962dc64a388bc6fd3793947d09195ebbd08ab27a49e6753d2ed",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-halfcell-block-reflection-cold-v1-launch/verify_neumann_halfcell_reflection_cold.py",
+        "--helpers",
+        "/content/neumann-halfcell-block-reflection-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "bb32f3ae704751ec015ee6e9866b774400176b58ab728153ce4ae9eb7afbbacb",
+      "seconds": 0.04471944099987013,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-halfcell-block-reflection-cold-v1-launch/colab_neumann_halfcell_reflection_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "7319b4ee563cda8dfbf8c1b87b816e7c05666b411de749c204ff311d155a0ea3",
+      "seconds": 167.30617846600012,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-halfcell-block-reflection-cold-v1-launch/verify_neumann_halfcell_reflection_cold.py",
+        "--helpers",
+        "/content/neumann-halfcell-block-reflection-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-halfcell-block-reflection-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "666c4a0af756a962dc64a388bc6fd3793947d09195ebbd08ab27a49e6753d2ed"
+      ],
+      "exit": 0,
+      "log_sha256": "8f9131258f3d5b464d509e88e585eb4a307888ab1c0540cc1ddda4674ba54d23",
+      "seconds": 0.06388936899998043,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "14e00f7755b2e5694da34ce942d6e8c2ffc33dbb291dfe2abf97fc6760c4299e",
+  "scope": "half-cell block geometry only; not Q intertwining or regional inverse",
+  "source": "59160603dda023d9f577ea7edc96f24995de1ac5",
+  "status": "PASS"
+}

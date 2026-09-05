@@ -46434,3 +46434,33 @@ then disconnected/deleted, UI confirmed disconnected, sole tab closed.
 Total session approximately60 minutes including cold gate and bounded HOT.
 Next: promote only this geometry after an exact cold gate; separately produce
 the actual Q*Q reflection law and regional right-inverse identity (R2/R3).
+
+## Addendum 1126 — half-cell block reflection cold seal (2026-09-05)
+
+Exact source59160603dda023d9f577ea7edc96f24995de1ac5, notebooka6098119b,
+host29f256073fc7, CPU/highRAM50.99GB,noGPU, accountlluiseriksson@gmail.com.
+One launch19:22:51.352330UTC, PID4917. All16 stages passed with no project
+output restoration. Focal exit0/45.326127273s; audit exit0/4.568481815s.
+Full graph exit0/167.306178466s; independent archive verifier exit0/0.063889369s.
+Three exact names: involutivity uses propext,Quot.sound; blockSite commutation
+and same-owner equivalence use the allowed trio. No root or audit .olean claim.
+
+Downloaded outer83523bytes SHA256:
+14e00f7755b2e5694da34ce942d6e8c2ffc33dbb291dfe2abf97fc6760c4299e.
+Inner SHA256666c4a0af756a962dc64a388bc6fd3793947d09195ebbd08ab27a49e6753d2ed.
+NeumannHalfCellBlockReflection.olean SHA256:
+0290a27970b8da0c61e4c7240a47d4c2c0a554be8073d439fa335bb0d188d36b.
+Evidence JSON file SHA25683c179e47a2eb4d2291b3c5032a25b8bd4ffc88ce6b9c94e1df4b5ea44cac349.
+Independent local verification exit0/0.1910952s, observed19648512peak bytes,
+under30s/512MiB watchdog, no Lean/network/pool. Report SHA256:
+2e22f2a600af0b2392f5d4ffafe66822faa718a6bd420f2996b0a21b9d7af642.
+Durable folder validation-evidence/neumann-halfcell-reflection-cold-20260905.
+Only two initial provenance headers retired, after exact mathematical-text
+comparison with the cold Git source. No statement, import or proof changed.
+
+At19:28:02UTC launch PID and Lean/Lake processes were absent; outer hash
+unchanged. Runtime then disconnected/deleted, UI confirmed disconnected,
+sole tab closed and monitor-half-cell-reflection-cold-gate deleted.
+This seals geometry only. Active-carrier invariance, physical Q*Q reflection,
+regional right inverse and derivative B0 remain separate R2/R3/R4 gates.
+20/41,TermSource0,window15 unattained; Clay <0.1% remain unchanged.

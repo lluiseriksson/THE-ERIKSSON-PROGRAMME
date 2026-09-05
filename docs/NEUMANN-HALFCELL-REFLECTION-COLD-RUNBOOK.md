@@ -1,5 +1,9 @@
 # Half-cell block reflection: finite promoted geometry gate
 
+COMPLETED PASS: ledger1126. Exact source59160603d,16 stages, focal and
+three-name audit verified; downloaded outer/inner independently verified.
+Runtime deleted and monitor removed after19:28UTC. Do not rerun this notebook.
+
 Source59160603dda023d9f577ea7edc96f24995de1ac5; runner/verifierab13c0e75;
 launcher9d6b2f2e8. Promotion reverses exactly to HOT sourcee46c93e3a after
 public/private name mapping and removing only provenance/audit placement.

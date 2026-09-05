@@ -1,5 +1,20 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Current checkpoint — geometry cold PASS, 2026-09-05 after19:28UTC
+
+Ledger1126 supersedes the live state below: source59160603d passed all16
+stages; focal45.3261s,audit4.5685s, all three exact axioms allowed.
+Downloaded outer14e00f7755b2e5694da34ce942d6e8c2ffc33dbb291dfe2abf97fc6760c4299e
+and inner666c4a0af756a962dc64a388bc6fd3793947d09195ebbd08ab27a49e6753d2ed
+independently verified locally; durable folder
+validation-evidence/neumann-halfcell-reflection-cold-20260905.
+Runtime29f256073fc7 deleted, sole tab closed, monitor deleted. No live job.
+Next: actual generated Q*Q reflection with explicit active-carrier transport;
+same-owner geometry alone is not the operator identity. See R2 boundary in
+docs/F5-REGIONAL-INVERSE-ACCEPTANCE-GATES.md. Do not reuse the old Eq248
+physical reflection producer as a full fine-to-fine Green.
+20/41,TermSource0,window15 unattained. No Windows Lean or exploratory CI.
+
 ## Live promoted geometry cold gate — 2026-09-05 19:22:51UTC
 
 This supersedes the no-runtime/next-promotion state below. Source59160603d

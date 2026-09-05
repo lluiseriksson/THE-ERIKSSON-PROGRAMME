@@ -3,10 +3,10 @@ import YangMills.RG.BlockLattice
 /-!
 # Half-cell reflection and the literal block-owner map
 
-PRE-VALIDATION: source present, production .olean not yet materialized;
-this promoted module is not compiler verified. The exact scratch mathematics
-passed the bounded HOT diagnostic at e46c93e3a (ledger1125). A distinct cold
-focal and three-name audit are required before retiring this marker.
+Cold-verified at source59160603dda023d9f577ea7edc96f24995de1ac5: all16
+stages, the production focal and exact three-name audit passed. Downloaded
+archives and production .olean were independently verified; see ledger1126.
+The earlier scratch HOT diagnostic remains separately recorded in ledger1125.
 
 Coordinatewise Fin.rev is the half-cell reflection -n-1 modulo the side.
 Only geometry is proved: involution, blockSite intertwining, same-owner
@@ -66,4 +66,3 @@ theorem neumannHalfCellReflection_sameOwner_iff
   exact (neumannHalfCellReflection_involutive branch).injective.eq_iff
 
 end YangMills.RG
-

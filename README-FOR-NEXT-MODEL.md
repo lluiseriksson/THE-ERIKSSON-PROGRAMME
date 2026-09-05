@@ -1,5 +1,11 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest focused seal2026-09-05: ledger1126 certifies half-cell block reflection
+geometry at59160603d,16 cold stages, downloaded evidence independently verified.
+Runtime deleted, monitor removed, zero tabs after19:28UTC. Next gate is actual
+generated Q*Q reflection with a constructed active-carrier map, not the already
+proved same-owner geometry alone.20/41,TermSource0,window15 unattained.
+
 Latest focused update2026-09-05: ledger1124 seals the three-name literal
 full ambient physical value action at10437a1a8, with downloaded archives
 independently verified. Ledger1122 already seals the nine-name physical

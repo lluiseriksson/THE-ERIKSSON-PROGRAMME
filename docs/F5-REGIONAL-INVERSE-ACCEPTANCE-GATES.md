@@ -2,7 +2,8 @@
 
 Initial static type review at source10437a1a824bdd920282778cabe2f3da6c40ce4e.
 Value-action is now cold-sealed in ledger1124. Half-cell block geometry
-passed a separate HOT diagnostic (ledger1125), not a production seal.
+passed a separate HOT diagnostic (ledger1125) and its exact promoted cold
+gate at59160603d (ledger1126), with downloaded evidence independently verified.
 No regional estimate is claimed. 20/41, TermSource=0,
 window15 unattained; Clay <0.1% remain unchanged.
 

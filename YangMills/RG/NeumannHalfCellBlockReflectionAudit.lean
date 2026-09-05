@@ -1,9 +1,9 @@
 import YangMills.RG.NeumannHalfCellBlockReflection
 
 /-!
-PRE-VALIDATION: source present, audit not yet executed against the promoted
-production module. The scratch HOT result is not its cold seal. Exactly
-three public names, no Q*Q or regional inverse assertion.
+Cold-verified exact three-name audit at source59160603dda023d9f577ea7edc96f24995de1ac5.
+Downloaded evidence independently verified; see ledger1126. No separate
+audit .olean claim, no Q*Q or regional inverse assertion.
 -/
 
 #print axioms YangMills.RG.neumannHalfCellReflection_involutive
