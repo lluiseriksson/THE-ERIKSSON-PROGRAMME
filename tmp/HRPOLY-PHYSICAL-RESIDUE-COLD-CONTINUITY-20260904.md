@@ -1,5 +1,30 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Latest safe checkpoint — 2026-09-05 13:57 UTC
+
+NO runtime/process/monitor remains. Physical retry-v2 PASS preserved,
+ledger1119. Bounded same-runtime owner/pointHOT stopped in64.321s:
+two MathlibreprosPASS, prerequisitesPASS, ownerdictionary3axiomsPASS,
+pointprobeFAILmissingNeZero ambientcarriersize. See ledger1120 and
+validation-evidence/cmp99-owner-point-hot-v1-fail-6f20ead4-20260905/README.md.
+Both packages independently verified after browser downloads.
+SourcePointProbe firsterror58:6; no source sorry, but error recovery printed
+sorryAx and no declaration from the failed module is accepted.
+
+Repair changes only the point-probe proof: explicit local NeZero derived
+from K,L,Q nonzero, plus that arithmetic in the Mathlib-only repro.
+Statements/constants/hypotheses unchanged. Text/import guards on exact
+two-file manifestPASS (0.02329s/20,602,880bytes and0.01313s/19,947,520bytes).
+Repair UNCOMPILED. Do not relaunch historical retry-v2 or HOTv1 scripts.
+
+Next: checkpoint the repair and prepare source-pinned remote validation
+starting with the updated tiny repro. Preserve the valid owner-dictionary
+HOT prefix; do not count it as a cold production seal. Physical real-slice
+four-draft PASS is also not yet promoted. After the repaired point identity
+passes, assemble the real pointwise bound with exact owner map/cardinality,
+retaining R^4 times F4 R^-2 = R^2. Regional inverse and derivativeB0 remain.
+20/41,TermSource0,window15 unattained; full goal remains active.
+
 ## Current continuation — 2026-09-05 13:52 UTC
 
 Physical retry-v2 finished PASS and was downloaded/verified locally;

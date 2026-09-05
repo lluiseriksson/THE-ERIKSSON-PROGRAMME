@@ -46266,3 +46266,27 @@ requires verified current PASS before reuse. Verifier synthetic tests passed
 8corruptions plus valid FAILprefix (0.07990s,25,604,096peakbytes,noLean).
 Runtime retained for this bounded prepared continuation, not idle monitoring.
 20/41,TermSource0,window15 compatible but unattained.
+
+## Addendum 1120 — bounded HOT owner prefix PASS, point-probe FAIL (2026-09-05)
+
+Same retained runtime685dabaa0a79 after verified1119, source6f20ead45.
+Start13:51:54.819662UTC PID18947; diagnostic exit1/64.321446626s.
+Two Mathlib repros and incremental prerequisites passed. Owner dictionary
+exit0/7.713s,3exact allowed axiom sets: explicit site-map equality, owner
+equality and exactR^4 fibre cardinality. One unused-section-variable warning
+remains; no cold seal or PRE-VALIDATION removal.
+
+First error point-probe:58:6, missing inferred
+NeZero(cmp99SourceSeparatedLargeBlockSide L K depth*(2*Q)).
+Childexit1/8.763s; downstream sorryAx from error recovery is NOT accepted.
+No continuation after failure. A repair derives the local instance from
+K!=0,L!=0,Q!=0 and adds the arithmetic to the minimal repro; no statement,
+constant or hypothesis changes. Repair remains uncompiled PRE-VALIDATION.
+
+Outer977381b2359725c471b9c80401eccd933fdb162928126ce9f34f8aca20602b19;
+innercea5571fea96a7ce138184cffddbca13dc724a0a1441de06f5f242ab3b79e01a.
+Downloaded and independently verified FAILprefix11stages/3axioms/3outputs;
+see evidence foldercmp99-owner-point-hot-v1-fail-6f20ead4-20260905.
+No Lean/Lake/launcher at13:56:06UTC; disconnected/deleted about13:57UTC,
+reconnect state checked, tab closed and monitor deleted. No job remains.
+Both raw archives preserved.20/41,TermSource0,window15 unattained.
