@@ -2,6 +2,14 @@
 
 ## LIVE physical nine-name cold gate — 2026-09-05 15:33 UTC
 
+Observer recovery 16:16 UTC: this continuation again started with an empty
+browser inventory. Reopened the exact immutable notebook URL only; automatic
+reconnection recovered host aa59ca737da9 and original PID 3227. At 16:16:41 UTC
+the PID was live (elapsed 43:15), real_slice_focal at 8652/8675; no final-status
+file yet. Current browser 1, tab 1; marked for handoff. No original-cell
+execution, runtime restart, duplicate job, or new mathematical verdict.
+This observation supersedes the tab IDs below, not the source or run identity.
+
 Observer recovery15:57UTC: tab14 disappeared from the browser inventory.
 Opened Colab home and selected this exact notebook from Recents, without
 executing any cell or requesting a new runtime. Tab15 recovered the same
