@@ -5,6 +5,7 @@ is not a regional inverse. Every successful child, log, axiom and output is
 checked; failed attempts remain evidence of failure, not successful prefixes.
 """
 import argparse
+import copy
 import hashlib
 import io
 import json
@@ -119,6 +120,11 @@ def verify_inner(files, gate):
     require(set(contract['outputs']) == expected_outputs, 'OUTPUT_SET')
     for name, digest in contract['outputs'].items():
         require(sha(files[name]) == digest, 'OUTPUT_HASH=' + name)
+    expected_files = {'evidence.json', 'diagnostic-contract.json',
+        'gate-contract.json', 'preflight.json', *expected_outputs,
+        *(PurePosixPath(p).name for p in BLOBS),
+        *(s + suffix for s in stages for suffix in ('.log', '.json'))}
+    require(set(files) == expected_files, 'INNER_FILE_SET')
     audits = {stage: gate.exact_axioms(files[stage + '.log'].decode(), names)
               for stage, names in NAMES.items()}
     require(audits == contract['recorded_axioms'], 'RECORDED_AXIOMS')
@@ -126,17 +132,96 @@ def verify_inner(files, gate):
         queue=[indexed[s] for s in COMMANDS], axioms=audits, outputs=contract['outputs'])
 
 
+def self_test(gate):
+    """Synthetic metadata checks only; never compiler evidence."""
+    global BLOBS
+    saved = BLOBS
+    try:
+        BLOBS = {p: sha(p.encode()) for p in saved}
+        files = {PurePosixPath(p).name: p.encode() for p in BLOBS}
+        records = []
+        for stage in REQUIRED:
+            text = 'synthetic output'
+            command = COMMANDS.get(stage, ['synthetic', stage])
+            if stage == 'head': text = SOURCE
+            if stage == 'mathlib_pin': text = MATHLIB
+            if stage in ('lean_version', 'lake_version'): text = '4.29.0-rc6'
+            if stage == 'checkout': command = ['git', 'checkout', '--detach', SOURCE]
+            if stage in NAMES:
+                text = '\n'.join("'" + n + "' depends on axioms: [propext,\n Classical.choice, Quot.sound]"
+                    for n in sorted(NAMES[stage]))
+            files[stage + '.log'] = text.encode()
+            r = dict(stage=stage, command=command, cwd=ROOT, seconds=.01, exit=0,
+                log_file=stage + '.log', output_sha256=sha(text.encode()))
+            records.append(r)
+            files[stage + '.json'] = json.dumps(r).encode()
+        data = dict(source_sha=SOURCE, runner_rev=REV, status='PASS', source_blobs=BLOBS,
+            mathlib_sha=MATHLIB, toolchain_asset_sha256=ASSET, minimum_ram_gib=40.0,
+            gpu_runtime_authorized=False, records=records)
+        outputs = {}
+        for p in BLOBS:
+            name = PurePosixPath(p).stem + '.olean'
+            files[name] = ('synthetic NOT an olean ' + name).encode()
+            outputs[name] = sha(files[name])
+        contract = dict(source_sha=SOURCE, revision=REV, cold_seal=False,
+            project_build_cache_restored=False, source_blobs=BLOBS,
+            expected_axioms={k: sorted(v) for k, v in NAMES.items()}, queue=list(COMMANDS),
+            recorded_axioms={s: gate.exact_axioms(files[s + '.log'].decode(), n) for s, n in NAMES.items()},
+            outputs=outputs)
+        files['evidence.json'] = json.dumps(data).encode()
+        files['diagnostic-contract.json'] = json.dumps(contract).encode()
+        files['gate-contract.json'] = json.dumps(dict(source_sha=SOURCE,
+            project_build_cache_restored=False,
+            base_runner_sha256='2f097a374361bd8e4c0f53220ffeeeb22fc06d6ccca5179aebda468d1aebee8e',
+            expected_axiom_names=sorted(set.union(*NAMES.values())))).encode()
+        files['preflight.json'] = json.dumps([dict(expected_exit=c, actual_exit=c, seconds=.01)
+            for c in (0, 7)]).encode()
+        verify_inner(files, gate)
+        bads = []
+        for field, value in [('status', 'FAIL'), ('source_sha', 'wrong'), ('mathlib_sha', 'wrong')]:
+            bad = dict(files); changed = copy.deepcopy(data); changed[field] = value
+            bad['evidence.json'] = json.dumps(changed).encode(); bads.append(bad)
+        bad = dict(files); bad[next(iter(outputs))] += b'corrupt'; bads.append(bad)
+        bad = dict(files); bad['unregistered.log'] = b'extra'; bads.append(bad)
+        bad = dict(files); del bad['physical_prerequisites.log']; bads.append(bad)
+        for field, value in [('exit', 1), ('seconds', float('nan')), ('command', ['wrong'])]:
+            bad = dict(files); changed = copy.deepcopy(data); changed['records'][-1][field] = value
+            bad['evidence.json'] = json.dumps(changed).encode()
+            bad['counting_reflection_draft.json'] = json.dumps(changed['records'][-1]).encode()
+            bads.append(bad)
+        for word in (b'sorryAx', b'ofReduceBool', b'Other.axiom'):
+            bad = dict(files); changed = copy.deepcopy(data)
+            bad['counting_reflection_draft.log'] = bad['counting_reflection_draft.log'].replace(b'Quot.sound', word)
+            changed['records'][-1]['output_sha256'] = sha(bad['counting_reflection_draft.log'])
+            bad['counting_reflection_draft.json'] = json.dumps(changed['records'][-1]).encode()
+            bad['evidence.json'] = json.dumps(changed).encode(); bads.append(bad)
+        for bad in bads:
+            try:
+                verify_inner(bad, gate)
+            except (ValueError, KeyError):
+                continue
+            raise ValueError('BAD_SYNTHETIC_EVIDENCE_ACCEPTED')
+        print('COUNTING_DIAGNOSTIC_VERIFIER_SELF_TEST=PASS synthetic=1 rejected=' + str(len(bads)))
+    finally:
+        BLOBS = saved
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--archive', type=Path, required=True)
-    parser.add_argument('--sha256', required=True)
+    parser.add_argument('--archive', type=Path)
+    parser.add_argument('--sha256')
     parser.add_argument('--axiom-helper', type=Path, required=True)
+    parser.add_argument('--self-test', action='store_true')
     args = parser.parse_args()
     helper = args.axiom_helper.read_bytes()
     require(sha(helper) == GATE_HASH, 'HELPER_HASH')
     gate = types.ModuleType('trusted_pinned_axiom_gate')
     exec(compile(helper, str(args.axiom_helper), 'exec'), gate.__dict__)
     gate.self_test()
+    if args.self_test:
+        self_test(gate)
+        return
+    require(args.archive is not None and args.sha256, 'ARCHIVE_AND_HASH_REQUIRED')
     blob = args.archive.read_bytes()
     require(sha(blob) == args.sha256.lower(), 'OUTER_HASH')
     outer = unpack(blob)

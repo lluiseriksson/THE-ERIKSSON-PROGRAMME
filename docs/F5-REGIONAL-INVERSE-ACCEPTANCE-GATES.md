@@ -24,6 +24,39 @@ The user-supplied physical-cold/HOT ZIP was reidentified by exact SHA256
 matching the already preserved, independently verified ledger1122/1123
 artifact. It is not a new run and is not evidence for this new draft.
 
+### Physical consumer route checked while the diagnostic builds
+
+Do not stop R2 at the new probe theorem. The next physical identifications
+have concrete existing endpoints:
+
+1. `CMP99SourceActiveRegionChain.flatPhysicalQprime_eq_explicit` in
+   BalabanCMP99SourceFlatGeneratedQprimeRecursion identifies the internally
+   built physical average, including its recursively generated Ubar
+   backgrounds, with the explicit recursion. This is an exact theorem, not
+   a family of flatness hypotheses supplied to the new reflection proof.
+2. The Neumann consumer uses a retained terminal prefix, not merely that
+   coordinate-exposed recursion. The existing
+   `cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower`
+   identifies the retained *tower* with `weightedQprimeTower`. Transport of
+   its counting mass to the coordinate-exposed probe result must still be
+   written and proved; the two terminal codomain presentations must not be
+   declared definitionally equal without a type-checked bridge.
+3. `cmp99IteratedLiftActiveRegion_cmp89Rectangle_eq` and
+   `cmp89SourceNeumannIteratedLiftedRectangleSiteEquiv` already build the
+   literal lifted rectangular carrier, with sides `(M^depth)*m`. They do
+   not state reflection invariance or doubling of that region. The current
+   full-box reflection cannot be silently reused as a permutation of an
+   arbitrary rectangle. In particular, `Fin.rev` uses the ambient side,
+   whereas the upper printed reflection uses each rectangle side `m mu`.
+4. The regional precision remains the literal Neumann Laplacian plus bare
+   mass plus the counting-coefficient-weighted retained Q'*Q'. Only after
+   the corresponding field-map/precision intertwiners and the image
+   right-inverse law are proved may inverse uniqueness be used in R3.
+
+These are static type/source-object checks, not newly compiled claims or a
+new closure of R1/R2. They keep the next finite endpoints tied to the actual
+regional consumer instead of treating a full-ambient symmetry as its inverse.
+
 Initial static type review at source10437a1a824bdd920282778cabe2f3da6c40ce4e.
 Value-action is now cold-sealed in ledger1124. Half-cell block geometry
 passed a separate HOT diagnostic (ledger1125) and its exact promoted cold

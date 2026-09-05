@@ -12,6 +12,14 @@ CPU50.99028778076172GiB,noGPU, accountlluiseriksson@gmail.com. Sole browser
 tab3, immutable notebook scripts/colab_neumann_generated_counting_reflection_diagnostic.ipynb.
 No final verdict yet. No CI or local Lean. Do not rerun this cell.
 
+Later observation at elapsed04:51: geometry_leaf exit0/60.747s;
+counting_reflection_repro exit0/6.915s with both exact standard trios;
+physical_prerequisites running. Do not turn this live prefix into a seal.
+The independent verifier now passes a synthetic valid fixture and rejects12
+corrupt metadata/output/axiom fixtures, plus the pinned helper's9 negative
+tests; local exit0/0.152614s/18223104 observed bytes under the resource gate.
+Those tests validate instrumentation only, not the running mathematical draft.
+
 Host99176a0ef4c0. Read-only observation at elapsed03:21: source guards passed,
 lake_update exit0/104.632s, exact Mathlib pin0764272048 confirmed, cache_get
 exit0/7.138s (8142 decompressed files); geometry_leaf was running. No result
