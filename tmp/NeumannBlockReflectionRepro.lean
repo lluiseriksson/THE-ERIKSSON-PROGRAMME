@@ -22,4 +22,11 @@ theorem neumannBlockReflection_div_repro
   · rw [Nat.succ_mul, Nat.mul_comm (N - 1 - x / M) M]
     omega
 
+theorem neumannBlockReflection_finrev_repro
+    (M N x : ℕ) (hM : 0 < M) (hx : x < M * N) :
+    (M * N - (x + 1)) / M = N - (x / M + 1) := by
+  simpa only [Nat.sub_sub, Nat.add_comm] using
+    neumannBlockReflection_div_repro M N x hM hx
+
 #print axioms neumannBlockReflection_div_repro
+#print axioms neumannBlockReflection_finrev_repro

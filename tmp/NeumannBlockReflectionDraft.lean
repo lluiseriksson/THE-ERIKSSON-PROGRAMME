@@ -45,9 +45,9 @@ theorem blockSite_neumannBlockReflectionDraft {d M N : ℕ} [NeZero M]
   apply Fin.ext
   cases h : branch mu
   · simp [neumannBlockReflectionDraft, h, blockSite_val]
-  · simp only [neumannBlockReflectionDraft, h, Bool.true_eq, if_true,
+  · simp only [neumannBlockReflectionDraft, h, if_true,
       blockSite_val, Fin.val_rev]
-    exact reflected_block_div M N (x mu).val
+    simpa only [Nat.sub_sub, Nat.add_comm] using reflected_block_div M N (x mu).val
       (Nat.pos_of_ne_zero (NeZero.ne M)) (x mu).isLt
 
 theorem neumannBlockReflectionDraft_sameOwner_iff
