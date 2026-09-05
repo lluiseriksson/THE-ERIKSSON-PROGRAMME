@@ -15923,6 +15923,16 @@ not an accepted audit. No F4/F5 seal follows. The existing Mathlib-only
 normalization repro remains auxiliary, and the full physical B0/derivative
 and regional bridges remain open. Counters stay20/41 and TermSource0.
 
+The minimal explicit-summand repair subsequently passed the bounded F4
+diagnostic at source9dafedaa1 (Ledger Addendum1113): Mathlib-only repro
+exit0/2.779s first, sealed imports8698 jobs/2056.036s, then hybrid draft
+exit0/8.739s; both exact audits have the allowed trio. The independent
+archive verifier checked17 stages and the downloaded hashes matched.
+This establishes compiler evidence for the hybrid interval inequality,
+not the common full owner amplitude. The separate uniform-amplitude draft
+at5d6f85e87 retains R^-2 and remains PRE-VALIDATION; no F4/F5 seal or
+counter movement follows from the hybrid diagnostic alone.
+
 F5 is not a single reindexing. Reading the literal
 `CMP99Eq342SourceLocalizedGreenCertificate` gives these separate acceptance
 gates (static decomposition, not new producer counts):

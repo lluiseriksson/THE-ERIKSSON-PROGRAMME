@@ -46019,3 +46019,47 @@ hybrid_draft exit1. The cold archive remained exactly E8835534...19418025.
 Next repair is limited to the missing intermediate-inequality arguments;
 the project-free repro gate must precede another full project attempt.
 F4 remains PRE-VALIDATION, F5 unverified;20/41, TermSource0, window15 open.
+
+## Addendum 1113 — F4 hybrid diagnostic PASS; not the uniform physical producer
+
+2026-09-05 UTC. Exact source `9dafedaa1bfc08daa258c75a41b27672b9087bb8`,
+runner/verifier `950ff77bcf022d6da2a0809543f1ecc652e6cc44`.
+The only repair to the hybrid proof made the common intermediate summand
+explicit; its Mathlib-only repro ran before any project build.
+
+One fresh Colab CPU/high-RAM checkout, runtime `bd080359d13c`, exact
+Lean4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b.
+No restored project build graph. This run was deliberately contracted as
+diagnostic-only; freshness does not promote its scope to the full F4 endpoint.
+
+- Mathlib-only repro: exit0/2.778746269s, exact one allowed-trio declaration.
+- Materialize the two sealed imports:8698 jobs, exit0/2056.036446404s.
+- Hybrid draft: exit0/8.738731309s, exact one allowed-trio declaration,
+  `YangMills.RG.cmp85SourceFullGreen_fullBudget_le_hybrid_draft`.
+- `DIAGNOSTIC_FINAL_STATUS=PASS COLD_SEAL=0`; real runner exit0.
+- Independent offline verifier: exit0,17 stages, exact commands/pins,
+  complete file set, per-stage raw-log hashes and the two exact audits.
+
+Durable directory:
+`validation-evidence/cmp85-full-green-hybrid-repro-v2-20260905/`.
+Inner archive SHA256:
+`5718CBE2364451A649C8F6A2F62D9F241BAF1D38C06C59DC23C434A1FA65BD04`.
+Downloaded seven-member outer bundle SHA256:
+`41E3378203B5CABAA3A64BF6E65C64FDAD82FB8E4564A9ED58EDCA547D0ED7CD`.
+Independent report SHA256:
+`37C8ED040810E022843673970881D4FA4778459231966BAE4DD53B3ADB9BB5A7`.
+Console SHA256:
+`E7C28662B89408818326D83DFA863DD5AEFA796F63403044CDDF438FD0493EF0`.
+All four were rechecked against the downloaded Windows files before reuse.
+Raw dependency linter warnings are preserved, not suppressed or described
+as zero warnings. The earlier failed draft and its rejected sorryAx remain
+preserved in Addendum1112; this later allowed-trio audit supersedes that
+failed proof attempt, not its historical evidence.
+
+No PRE-VALIDATION notice was retired and no root import/build is claimed.
+`lake env lean` checked the draft but did not emit its `.olean`. The separate
+composition draft must materialize its temporary imports explicitly. Only
+after this archive was independently verified and downloaded was that
+prepared bounded hot diagnostic allowed to reuse the runtime/cache.
+The hybrid interval inequality is not the full uniform amplitude theorem,
+nor a regional/derivative B0 estimate.20/41,TermSource0,window15 unchanged.

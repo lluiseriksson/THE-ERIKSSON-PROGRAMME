@@ -1,0 +1,68 @@
+{
+  "audits": {
+    "hybrid_draft": {
+      "YangMills.RG.cmp85SourceFullGreen_fullBudget_le_hybrid_draft": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "mathlib_only_repro": {
+      "fullGreenHybridIntermediateInequalityRepro": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "cold_seal": false,
+  "diagnostic_only": true,
+  "evidence_json_file_sha256": "e0a95f7ed371c60b463c7f30910fadd62f4c6c54e6012af4c46376d13bb59ff8",
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "tmp/FullGreenHybridIntermediateInequalityRepro.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2",
+      "exit": 0,
+      "log_file": "mathlib_only_repro.log",
+      "output_sha256": "51e119da0f6e7aac0775e9f9869e4d60d81b8e3261e02b8ad1532f2c8f03330b",
+      "seconds": 2.778746268999953,
+      "stage": "mathlib_only_repro"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations",
+        "YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound"
+      ],
+      "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2",
+      "exit": 0,
+      "log_file": "materialize_sealed_imports.log",
+      "output_sha256": "fb0cd077348c8a6b8af54fb36b8c0820ba9adfd7bd62295b80401bf39f287fd7",
+      "seconds": 2056.036446404,
+      "stage": "materialize_sealed_imports"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "tmp/SourceFullGreenHybridAmplitudeDraft.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp85-full-green-hybrid-repro-v2",
+      "exit": 0,
+      "log_file": "hybrid_draft.log",
+      "output_sha256": "999cc494db6dc29eca3ca3f460e41ef487f24ca522740d8d73cbd07d9770fd93",
+      "seconds": 8.738731308999832,
+      "stage": "hybrid_draft"
+    }
+  ],
+  "source_sha": "9dafedaa1bfc08daa258c75a41b27672b9087bb8",
+  "stages_verified": 17,
+  "status": "PASS"
+}
