@@ -20,6 +20,6 @@ example {ι : Type*} [Fintype ι] (c : ℂ)
 
 example {ι : Type*} [Fintype ι] (v : EuclideanSpace ℝ ι) :
     ‖(WithLp.toLp 2 (fun i => (v i : ℂ)) : EuclideanSpace ℂ ι)‖ = ‖v‖ := by
-  simp only [PiLp.norm_eq_of_L2, WithLp.toLp_apply, Complex.norm_real]
+  simp only [PiLp.norm_eq_of_L2, PiLp.toLp_apply, Complex.norm_real]
 
 end
