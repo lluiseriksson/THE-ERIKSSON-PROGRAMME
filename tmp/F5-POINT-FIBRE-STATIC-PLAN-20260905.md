@@ -5,8 +5,9 @@
 F5 generic prefix is already cold sealed (ledger1118). Four physical
 real-slice draft results passed at59f9f522 (ledger1119); three owner-map
 draft results passed as a HOT prefix at6f20ead4 (ledger1120). Neither draft
-group has a promoted production seal. Point-probe repair91cc4dd5 is in
-flight; do not add dependent Lean modules to its immutable queue.
+group has a promoted production seal. Point-probe repair91cc4dd5 passed
+two declarations (ledger1121); runtime and monitor are removed. The finite
+nine-declaration promotion is specified in docs/F5-PHYSICAL-PREFIX-PROMOTION.md.
 
 The source-signature review fixes a finite next composition, conditional
 on acceptance of that point-probe gate, not a new analytic assumption:
