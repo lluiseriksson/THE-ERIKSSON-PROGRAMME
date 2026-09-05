@@ -10,7 +10,9 @@ output hashes. It has not been promoted or selectively cold sealed.
 The owner dictionary then passed three HOT declarations before the point
 probe failed on a missing derived NeZero instance (ledger1120). No result
 from that failed module is accepted. Focused point-probe repair91cc4dd5
-is pending; live handles are only in the continuity file, not this seal.
+passed two declarations and18 stages (ledger1121), with downloaded evidence
+independently verified. Runtime and monitor removed. The physical nine-name
+promotion remains PRE-VALIDATION; draft PASS is not its production seal.
 Historical preparation below refers to the already sealed seven-name graph.
 
 This finite promotion of the seven HOT-verified draft declarations

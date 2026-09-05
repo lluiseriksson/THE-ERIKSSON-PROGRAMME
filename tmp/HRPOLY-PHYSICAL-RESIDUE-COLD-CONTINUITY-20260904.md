@@ -1,5 +1,24 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Current safe checkpoint — 2026-09-05, point-probe PASS preserved
+
+Supersedes all live/pending descriptions below. Source91cc4dd5d6133e0eb0fc59279d58a71487caa6c7
+passed the NeZero repro, physical prerequisites and two point-probe declarations.
+LAUNCH_FINAL_STATUS=PASS, COLD_SEAL=0;18 verified stages, two exact allowed trios.
+Evidence: validation-evidence/cmp99-point-probe-retry-v1-91cc4dd5-20260905/README.md,
+ledger1121. Downloaded outer and inner hashes match Colab; pinned local verifier PASS.
+No Lean/Lake/launcher at15:08:52UTC; runtime disconnected/deleted about15:09UTC.
+Monitor monitor-point-probe-retry-v1 deleted; final disconnected tab closed.
+No remote job or task browser tab remains. Do not rerun the historical cell.
+
+Next finite unit: promote four real-slice, three owner and two point-probe
+declarations with exact rename-only mathematical comparison; separate audits.
+All promoted headers remain PRE-VALIDATION until their own cold evidence.
+Then assemble real pointwise/owner action, retaining R^4 times R^-2 = R^2.
+Mathlib-only arithmetic repro is checkpoint569256476, still NOT CHECKED.
+No regional inverse, derivative B0 or window15 attainment inferred.
+Counters20/41,TermSource0 unchanged.
+
 ## Live point-probe retry — 2026-09-05 14:21 UTC
 
 One Colab CPU/high-RAM runtime (50.99 GB), account lluiseriksson@gmail.com,

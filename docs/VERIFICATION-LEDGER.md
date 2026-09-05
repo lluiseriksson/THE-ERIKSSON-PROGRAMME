@@ -46290,3 +46290,25 @@ see evidence foldercmp99-owner-point-hot-v1-fail-6f20ead4-20260905.
 No Lean/Lake/launcher at13:56:06UTC; disconnected/deleted about13:57UTC,
 reconnect state checked, tab closed and monitor deleted. No job remains.
 Both raw archives preserved.20/41,TermSource0,window15 unattained.
+
+## Addendum 1121 — point-probe NeZero retry diagnostic PASS (2026-09-05)
+
+Source91cc4dd5d6133e0eb0fc59279d58a71487caa6c7, fresh CPU/high-RAM Colab,
+host8f59de7fdfaa; start14:21:22.908259UTC. Diagnostic exit0/2243.349851095s.
+Repro0/3.821s, prerequisites0/2075.680s, point draft0/10.920s, source clean0.
+Both whole-vector point-probe identities have exactly the allowed trio.
+No project-build restoration, but COLD_SEAL=0 under the draft contract.
+
+Downloaded outerfb98e86845e56187eb26f834958c572d6ff8d0165db40d10560cfde9ef471cd4;
+inner21dc287d46f7fbef95c043a443e835d7805f32469d77691af405044c2a391a73.
+Pinned independent verifier passed18 stages,2 public axioms and2 actual
+output hashes;0.295s/~23.8MB observed locally, no Lean/Lake.
+Full provenance, commands and hashes:
+validation-evidence/cmp99-point-probe-retry-v1-91cc4dd5-20260905/README.md.
+Prior1120 FAIL remains preserved; no claim is retroactively made for it.
+
+No processes at15:08:52UTC; runtime deleted about15:09UTC, monitor removed,
+last disconnected tab closed. No calculation cell repeated.
+Nine physical/owner/point draft declarations now have diagnostic evidence;
+their promotion remains PRE-VALIDATION pending its own cold gate.
+No regional inverse/derivative B0/window15 claimed.20/41,TermSource0 unchanged.
