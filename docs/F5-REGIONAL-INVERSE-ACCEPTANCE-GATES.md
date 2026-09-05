@@ -43,3 +43,21 @@ No candidate is source-faithful merely because it is called a Green kernel.
 This list bounds the named interfaces, not the difficulty or number of
 lemmas needed to prove them. In particular, R2 and R3 remain genuine design
 and analytic obligations, not mechanical transports.
+
+## Bounded geometry diagnostic prepared
+
+tmp/NeumannBlockReflectionRepro.lean isolates the natural-number division
+identity before project elaboration. tmp/NeumannBlockReflectionDraft.lean
+uses the literal blockSite and coordinatewise Fin.rev, including arbitrary
+Boolean reflection branches. It aims to prove owner intertwining and
+same-owner equivalence, not regional inverse equality.
+The already existing cmp99GeneratedTerminalBlockSite_eq_blockSite_pow is
+the intended later tower consumer; no duplicated normalization is introduced.
+
+Both files remain PRE-VALIDATION. The initial text check rejected a missing
+colon in the exact PRE-VALIDATION: marker (exit1,0.1447s); corrected without
+weakening the guard. The two-file text/import guards then passed in
+0.1304162s/14512128 observed bytes and0.0891086s/13635584 observed bytes.
+No local Lean was run. Compile the Mathlib repro first, then the project
+draft in the retained Colab checkout only after the current cold gate ends.
+Keep its logs and outputs separate from the immutable cold archive.
