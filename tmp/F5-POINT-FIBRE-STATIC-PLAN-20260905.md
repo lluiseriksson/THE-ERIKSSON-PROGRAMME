@@ -108,3 +108,15 @@ Before the later owner-action endpoint, expose these exact remaining maps:
 
 These are parts of the already named physical coordinate/owner dictionary,
 not claims that the pending four-theorem hot draft proves them.
+
+The source read resolves the design question in item2 favorably:
+`cmp99GeneratedFineBoxOneBlockEquiv` in
+`BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse.lean` is itself
+`Equiv.cast`, with a named `..._apply_val` theorem preserving every fine
+coordinate. The full-site equivalence in
+`BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary.lean`
+is also a size cast, after forgetting the full-region membership proof.
+Thus the route is coordinate-value extensionality of those casts, not a
+new geometric relabeling. Still write the exact equality as a theorem
+before transporting source-localization owners; this static reading is not
+compiler evidence for that equality.
