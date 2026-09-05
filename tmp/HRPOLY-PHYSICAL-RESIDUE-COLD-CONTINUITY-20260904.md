@@ -12,6 +12,15 @@ CPU50.99028778076172GiB,noGPU, accountlluiseriksson@gmail.com. Sole browser
 tab3, immutable notebook scripts/colab_neumann_generated_counting_reflection_diagnostic.ipynb.
 No final verdict yet. No CI or local Lean. Do not rerun this cell.
 
+Prepared scripts/preserve_neumann_counting_reflection_diagnostic.py: it
+invokes the unchanged independent verifier before creating a destination,
+rechecks the exact archive bytes, then preserves nested logs/source/output
+and a hashed verification report without overwriting an existing directory.
+Local AST-only check exit0/0.0888825s/11419648 observed bytes; this is not a
+test on the real diagnostic archive, which does not exist yet.
+Latest process observation at elapsed21:56: PID3798 live, prerequisites
+advanced to8447/8486 (SourceWeightedPhysicalTower); no final draft result.
+
 Read-only observation at elapsed18:09: PID3798 still live; the physical
 prerequisite log advanced through8404/8486 (PhysicalChartDictionary). No
 launch-final-status.json existed. Dependency linter warnings are visible;
