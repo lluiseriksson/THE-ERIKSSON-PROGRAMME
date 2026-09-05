@@ -73,3 +73,11 @@ validation-evidence/f4-normalization-repro-20260904/. This is hot auxiliary
 evidence, not a cold seal and not a proof of the hybrid amplitude bound above.
 The original final sentence refers to the derivation when first written;
 only these two elementary inequalities now have compiler evidence.
+
+## Bounded hybrid diagnostic prepared, 2026-09-05 UTC
+
+The scalar foundations are now cold-sealed (Ledger Addendum1109).
+The hybrid draft now includes an exact `#print axioms` for its sole public
+bound. It remains uncompiled and outside the root. After the F2-F3 cold
+archive is preserved and verified, a separate warm diagnostic may test this
+draft without changing that archive or interpreting a hot PASS as a seal.

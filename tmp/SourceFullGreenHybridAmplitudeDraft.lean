@@ -102,5 +102,7 @@ theorem cmp85SourceFullGreen_fullBudget_le_hybrid_draft
   rw [abs_of_pos hc, pow_one]
   linarith
 
+#print axioms cmp85SourceFullGreen_fullBudget_le_hybrid_draft
+
 end
 end YangMills.RG

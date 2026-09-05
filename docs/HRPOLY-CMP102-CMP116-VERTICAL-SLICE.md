@@ -15892,8 +15892,20 @@ The generic F2 theorem `cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerRes
 has now passed a retained-runtime **hot diagnostic**, source `b536a216`,
 focal156.532s/audit8.369s, exact allowed trio (Ledger Addendum1110).
 Its notices remain PRE-VALIDATION pending a cold seal; its final source-flow
-specialization and F3 are still open. The preceding cold archive was
+specialization and F3 are not yet compiler-verified. The preceding cold archive was
 preserved before checkout and rechecked unchanged after this diagnostic.
+
+The F2 specialization and F3 literal source-flow owner bound are now written
+at PRE-VALIDATION source `bab82db79c118ef64259bc50627170f11c2e187e`.
+The final equality uses F1 by a typed evaluation of its function equality,
+then the generic F2 residue theorem; no free reconstruction equation enters.
+The cold four-stage queue started in Colab CPU/50.99 GiB at
+2026-09-05 04:52:52 UTC, runtime `b52ea23cad85`, with runner/verifier
+`dcbac7ff2f8436f7f6facd8cedff0bc0da4361f1` and launcher
+`4736269dd2a840565c046c4a69dba9a0ab51f49e`.
+Transport and portable preflight passed; this entry records launch only,
+not a compiler verdict. Both exact audits (one and three declarations)
+must pass before any selective seal. F4/F5 and window15 remain open.
 
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
