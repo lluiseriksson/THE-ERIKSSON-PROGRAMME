@@ -2,6 +2,18 @@
 
 ## Current physical composition gate — 2026-09-05
 
+Prepared after point-probe PASS: tmp/SourceFlowPhysicalValueActionDraft.lean,
+three declarations, NOT CHECKED. It specializes the literal typed kernel,
+then the exact source-localized action, then existential rho,C before depth
+and K,Q,Nc using the sealed F4 witness. Physical indices/fibre types are
+pinned in the signatures. The only orientation rewrite is finBoxDist_comm.
+The intermediate budget hypothesis is discharged by the last theorem;
+no source-provided Green or free reconstruction equality is introduced.
+Text/import guards passed the exact two-file diagnostic manifest in0.249s
+and0.114s. These are textual checks only. Do not modify or append it to the
+active cold queue b2d5df8ad; prepare a separate bounded HOT run, requiring
+the immutable cold archive to verify first.
+
 F5 generic prefix is already cold sealed (ledger1118). Four physical
 real-slice draft results passed at59f9f522 (ledger1119); three owner-map
 draft results passed as a HOT prefix at6f20ead4 (ledger1120). Neither draft
