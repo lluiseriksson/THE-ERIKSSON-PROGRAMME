@@ -1431,3 +1431,28 @@ Expected preservation `/content/f5-promoted-cold-preservation-20260905.tar.gz`.
 Inspect existing process/logs only; do not reexecute the cell. On result,
 download and independently verify evidence before selective PRE retirement.
 Nothing here proves regional B0 or window15; counters remain20/41,TermSource0.
+
+## 2026-09-05 — bounded physical real-slice continuation prepared
+
+Draft checkpoint `e833ec7e7e52ce4dbb1431777e715039ae567c23` adds four
+physical coordinate/fibre identities and a Mathlib-only repro. All are
+PRE-VALIDATION; none belongs to the source currently compiling.
+Runner checkpoint `5e65c2d0e79e26a1e8e070f9dfc8f08351e16aa7` published
+fast-forward after gh identity lluiseriksson and ancestry verification.
+Runner `scripts/colab_cmp99_physical_real_slice_hot.py`, Git-blob SHA256
+`617f1a65e6ede2ff92c239ef05f2513bd67d17e4d963db3db268225bdab97817`.
+Syntax-only local check passed0.0034s/17,174,528 bytes peak RSS; no Lean.
+
+After the actual F5 cold archive PASS is independently verified, launch
+that hash-pinned script once in the retained runtime with
+`--cold-archive-sha256 <observed verified cold archive digest>`.
+It checks cold launch status, reruns the read-only evidence verifier,
+checks the retained production source and Mathlib pin, and then runs only
+Mathlib carrier repro, physical prerequisites and the four draft theorems.
+It writes `/content/cmp99-physical-green-real-slice-hot-v1-logs.tar.gz`;
+HOT PASS is not a cold seal. Do not launch before the current gate finishes.
+
+The previously obsolete paused monitor `monitor-recursive-poincare-colab`
+was updated to this exact F5 gate plus bounded continuation, every10min,
+quiet on unchanged progress; delete it after evidence/runtime cleanup.
+No additional Colab, CI or Windows scientific process was launched.

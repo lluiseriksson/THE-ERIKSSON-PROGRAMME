@@ -86,3 +86,25 @@ No Windows Lean/Lake was used.
 
 This does not discharge the owner-cardinality action, proper regional
 inverse, derivative actions, regional B0 or window15. Counters unchanged.
+
+The physical hot runner is published at
+`5e65c2d0e79e26a1e8e070f9dfc8f08351e16aa7` (source draft `e833ec7e7`).
+Its subsequent synthetic control-flow test passed eight cases: success,
+cold FAIL, incorrect cold hash, verifier exit9, repro exit7, forbidden
+axiom, absent compiled output and duplicate start. All subprocess/HTTPS
+calls were mocked. 0.7234 seconds, 32,608,256 bytes peak RSS; Lean evidence0.
+
+Before the later owner-action endpoint, expose these exact remaining maps:
+
+1. Transport a real `singleFinitePiLp` by the physical carrier equivalence
+   to `cmp99FlatComplexFibrePointSource` at the mapped source, with the
+   same complexified Lie vector. A field identity alone is not this lemma.
+2. Identify `cmp99SourceSeparatedGeneratedPhysicalStep7bSiteEquiv` with
+   `cmp99Eq389SourceLocalizationSiteEquiv` (or prove their block owners
+   agree). The first composes the generated full/Step7b maps; the second
+   is an explicit cast. Their common domain/codomain is not a proof.
+3. Use `blockOf_card` for exactly one owner fibre and transport that count
+   through the proven map. Retain `R^4 * (C * R^-2) = C * R^2`.
+
+These are parts of the already named physical coordinate/owner dictionary,
+not claims that the pending four-theorem hot draft proves them.
