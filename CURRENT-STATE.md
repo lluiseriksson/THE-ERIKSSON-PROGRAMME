@@ -1,5 +1,13 @@
 # Current State
 
+> **Reader update · 2026-09-05:** start with [hRpoly status](docs/HRPOLY-STATUS.md)
+> and [research news](NEWS.md). They connect the active PR #29 snapshot to its
+> exact evidence. The entries below are accumulated historical checkpoints;
+> their dates and build counts do not describe one current repository build.
+> The canonical main contract remains [project-state.json](project-state.json).
+
+## Recorded programme snapshots
+
 **Surface Theorem closed and terminally sealed (2026-07-28).**  The paper
 *Global Ratio Monotonicity for a Killed von Mises Bridge* proves
 `F_B(t)>0` and `E'(t)<0` for every `beta>0` and `0<t<pi`.  The last

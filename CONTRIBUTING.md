@@ -37,3 +37,23 @@ automated ones). The short version:
 * Could it be vacuously true? What is the witness?
 * Are all carried hypotheses explicit in the signature?
 * Does the build job count match the ledger?
+
+## Documentation and research updates
+
+Use [NEWS.md](NEWS.md) for short, dated developments and
+[docs/HRPOLY-STATUS.md](docs/HRPOLY-STATUS.md) for the current hRpoly reading
+summary. A useful update names what changed, the exact source commit and
+ledger entry, the verification scope, and what remains open. Distinguish
+`main` results, research-branch results, diagnostic runs and unvalidated drafts.
+
+When updating a milestone, refresh the source snapshot and every summary that
+quotes its counters. Link the detailed evidence instead of copying a full
+campaign log into the front page. Preserve failed records and historical
+checkpoints. Do not turn build-job counts into progress percentages or change
+`project-state.json` merely because documentation was refreshed.
+
+For documentation-only changes, review the diff, relative links, GitHub
+rendering and applicable CI results. Record explicitly that no new Lean build
+or mathematical verification is claimed. Changes to Lean sources, imports or
+mathematical claims still require the full relevant build/oracle evidence on
+the sanctioned execution plane.

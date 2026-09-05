@@ -1,188 +1,57 @@
 # The Eriksson Programme
 
-**A Lean 4 / Mathlib formalization toward the Yang–Mills mass gap — with honest goalposts.**
+**Machine-checked lattice gauge theory, with an active hRpoly research programme.**
 
-![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
-![Mathlib](https://img.shields.io/badge/Mathlib-pinned_commit-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8463_jobs)-success)
-![sorry](https://img.shields.io/badge/sorry-0-success)
-![project axioms](https://img.shields.io/badge/project_axioms-0-success)
-![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
-![License](https://img.shields.io/badge/license-AGPL--3.0-lightgrey)
+[![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)](lean-toolchain)
+[![Source scan](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-AGPL--3.0-lightgrey)](LICENSE)
 
-This repository contains a **sound, self-contained, machine-verified core** of
-lattice Yang–Mills mathematics (`YangMillsCore`: SU(N) Haar selection rules, a
-Kotecký–Preiss cluster-expansion layer, an unconditional IR clustering bound, and
-a **volume-uniform Wilson-loop area law** for the true Wilson Boltzmann factor) —
-together with an explicit, adversarially-audited account of what is **not**
-proved. The defining principle is **honesty over progress**: a smaller true
-claim always beats a larger hollow one.
+[Explore YangMills](YangMills/README.md) · [What's new](NEWS.md) · [hRpoly status](docs/HRPOLY-STATUS.md) · [Documentation](docs/README.md) · [Reproduce](REPRODUCIBILITY.md)
 
-```bash
-lake build YangMillsCore          # the verified core — green, 8463 jobs
-lake env lean oracle_check.lean   # prints the axiom oracle for every headline
-```
+The Eriksson Programme develops Lean 4 / Mathlib proofs for SU(N) lattice
+Yang–Mills theory: polymer cluster expansions, Wilson-loop area laws,
+exponential clustering and source-specific renormalization-group estimates.
+The verified core and the active research frontier each have explicit scope,
+hypotheses and evidence.
 
-Every headline result depends on exactly `[propext, Classical.choice, Quot.sound]`
-— Lean's three standard axioms. **No `sorry`. No project axioms.** Gaps are
-carried as explicit theorem *hypotheses*, never assumed silently.
-
----
+> **5 September 2026 · Research update**
+>
+> hRpoly work continues in [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29),
+> with new recorded checks for source-flow full-Green identities and a sharper
+> map of the remaining physical bounds. The public documentation now connects
+> that work to `main`. [Read the update →](NEWS.md)
 
 ## Progress Dashboard
 
-**Live dashboard:** [lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard](https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/)
-— the public dependency DAG toward the mass gap, with every node marked
-proved / partial / open and linked to Lean sources, docs, or the verification
-ledger.
+| Track | Status | Explore |
+|---|---|---|
+| KP/Mayer cluster-expansion engine | Recorded core results | [KP source](YangMills/KP/) |
+| Strong-coupling area laws and IR clustering | Recorded core results, with explicit parameter windows | [Headline results](#headline-results-all-oracle-clean-all-in-the-core) |
+| Concrete physical activity bound `hRpoly` | **Open · research branch** | [20/41 terminal producers; `TermSource = 0`](docs/HRPOLY-STATUS.md) |
+| Physical scalar window 15 | **Compatible; not attained** | [Remaining milestones](docs/HRPOLY-STATUS.md#what-comes-next) |
+| Four-dimensional continuum limit and reconstruction | **Open mathematics** | [Hypothesis frontier](HYPOTHESIS_FRONTIER.md) |
 
-**Documentation snapshot updated:** 2026-07-04.  **Latest public source
-checkpoint:** 2026-07-14, measured at `a17d7816` (on `main`).  The verification
-ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
-257 and the 2026-07-04 diamagnetic unitary bridge Addendum 466, after the
-earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
-core build remains
-`lake build YangMillsCore` green at **8463 jobs**.
-The canonical machine-readable proof-state contract is
-[`project-state.json`](project-state.json); repository HEAD and paper commits
-may advance without changing that recorded Lean checkpoint.
+**The counts are construction milestones, not a percentage of a Millennium
+Problem solved.** No four-dimensional continuum mass gap is claimed. The
+project's historical Clay-distance shorthand remains **~0% (<0.1%)**.
 
-The bars below are communication estimates for humans, not theorem
-probabilities.  The formal record remains the compiler, `oracle_check.lean`,
-and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
+The [hRpoly status page](docs/HRPOLY-STATUS.md) is a dated, commit-linked guide
+to the active branch. The [dependency dashboard](https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/)
+describes the curated main programme. The canonical recorded main proof
+checkpoint remains [`project-state.json`](project-state.json); neither the
+new documentation date nor a branch build count updates that contract.
 
-### At a glance
+## Start with a result, then follow its evidence
 
-| Track | Bar | Reading |
-|---|---:|---|
-| Verified core integrity | `100% [##########]` | no `sorry`, no project axioms, standard Lean axioms only |
-| Reproducible Lean/Mathlib setup | `100% [##########]` | pinned Lean `v4.29.0-rc6` and pinned Mathlib commit |
-| KP / Mayer cluster-expansion engine | `100% [##########]` | partition identities, Ursell, Penrose/BFS, sharp KP, pinned tails |
-| Strong-coupling Wilson-loop area laws | `100% [##########]` | finite-volume and volume-uniform, linearized and exact-activity |
-| Exponential IR clustering | `100% [##########]` | theorem-fed lattice Gibbs clustering with a non-empty window |
-| Conditional M3 lattice mass-gap assembly | `PARTIAL` | the assembly exists; the UV producer remains a named hypothesis |
-| Appendix-F / H# bridge to UV consumer | `PARTIAL` | source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, source-assumption packaging, finite-root-piece activity consumers, oracle-covered hole-target geometry/family targets, and CMP116 Lemma 3/Eq. (2.31)/Eq. (2.37)/post-P source packages |
-| P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
-| Concrete YM activity decay `hRpoly` | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
-| Peter-Weyl / character infrastructure | `PARTIAL` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
-| Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
+- **New to the project:** [YangMills introduction and source map](YangMills/README.md).
+- **Returning after a few weeks:** [research news](NEWS.md) and [current hRpoly obstacles](docs/HRPOLY-STATUS.md).
+- **Checking a claim:** its exact source revision, [verification ledger](docs/VERIFICATION-LEDGER.md), and [reproduction instructions](REPRODUCIBILITY.md).
+- **Looking to help:** [contribution guide](CONTRIBUTING.md) and [documentation index](docs/README.md).
 
-### Human estimates
-
-| Estimate | Bar | Honest translation |
-|---|---:|---|
-| Infrastructure useful toward M3/Clay | `PARTIAL` | strong lattice-M3 infrastructure; Clay itself is still essentially untouched |
-| Unconditional M3 lattice gap | `OPEN` | blocked by the concrete `hRpoly` proof |
-| Strict unconditional Yang-Mills Clay | `0% [..........]` | **~0% (<0.1%)** until continuum construction and reconstruction exist |
-| Complete formal roadmap toward Clay | `PARTIAL` | the dependency map is serious; the hardest continuum nodes are open mathematics |
-| Repository readability for a new human | `PARTIAL` | the project now has a front door, a live state, source-db, mission maps, and an auditable ledger |
-
-### What is actually 100%
-
-* `YangMillsCore` is the public verified root.
-* The project has zero `sorry` in Lean source and zero project axioms in the
-  verified-core tree, as enforced by `scripts/check_consistency.py`.
-* The strong-coupling lattice package is theorem-fed: KP/Mayer, exponential
-  clustering, and Wilson-loop area laws.
-* The finite and volume-uniform area-law programme is complete in the four
-  advertised variants: finite-volume/volume-uniform times linearized/exact.
-* The IR side of the lattice mass-gap assembly is no longer a carried input.
-
-### What is not 100%
-
-* `hRpoly` is still the live mathematical frontier: the concrete Yang-Mills
-  cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
-  operator.
-* The P4 material now includes deterministic gauge-fixed precision
-  composition, exact covariance from strict coercivity, full-periodic physical
-  cochains, a fixed-volume flat Hodge/block Poincare closure, flat physical
-  precision/covariance adapters, source-facing covariance/root localization
-  APIs, a local fluctuation-activity certificate, finite-torus curl/divergence
-  classification, physical/CMP116 coordinate dictionaries, localized-root
-  transport, dictionary-backed Gaussian/activity construction scaffolding,
-  canonical Gaussian integral consumers, a Wilson-Hessian/Green source
-  dictionary, definitional Gaussian pushforward closure, raw-source transport
-  to Appendix-F,
-  the source-facing Balaban CMP116 theorem target, CMP116 Lemma 3 source-boundary
-  packaging, Eq. (2.29), Eq. (2.31), Eq. (2.37), and post-`P` residual
-  consumers, a resolvent-first local SPD precision substrate, local-SPD root
-  frontier packaging, dictionary root-map norm budgets, source-normalized
-  Gaussian record routes, finite-piece root sums, and physical activity
-  consumers.  It
-  still does not construct the physical Yang-Mills Hessian or prove
-  covariance/root/activity decay.
-* The Appendix-F/H# material is a verified consumer/adapter layer with generic
-  and CMP116 support-dependency wrappers through `K#`, evaluated second-gas
-  activities, integrated `H#` locality wrappers, raw-source `hraw`/H# and M3
-  consumers, source-assumption packaging into the M3 frontier, finite-family
-  activity consumers, CMP116 Lemma 3 resummation-source constructors, Eq. (2.31)
-  weighted/interior-boundary/positive-tail routes, Eq. (2.37) post-`P`
-  operational cards, `Z0` source-budget adapters, a combined post-`P`
-  residual source package, an executable M3 frontier graph, source-db
-  crosswalks, cluster-union containment facts, source-only UV endpoints,
-  finite-size-count bridges, `hRpoly` animal-summability adapters, certified
-  Appendix-F tail profiles, source-fed residual estimates, CMP119/CMP122 E/R/B
-  decomposition interfaces, CMP119 B/local source-bound and weight-transport
-  dictionaries, B/local metric/rate/amplitude/activity dictionary frontiers,
-  canonical-root K# summability/smallness discharge, a source-facing
-  canonical-root residual H# route, and the Eq. (2.31) `gapCubes` candidate
-  definition.  It does not by itself prove the Balaban/Dimock source theorem.
-* Peter-Weyl completeness for compact groups is still not supplied here.
-* The Clay problem is not proved, approached, or claimed in the continuum
-  sense.  Distance remains **~0% (<0.1%)**.
-
-### Phase estimates
-
-| Phase | Estimate | Current state |
-|---|---:|---|
-| M0: sound SU(N) Haar/lattice core | `100% [##########]` | done and imported by `YangMillsCore` |
-| M1: representation/character layer | `PARTIAL` | strong Schur/character infrastructure; Peter-Weyl completeness open |
-| M2: U(1) / toy non-vacuous gap route | `PARTIAL` | useful foundations exist; not the live frontier |
-| M3: SU(N) unconditional lattice mass gap | `CONDITIONAL` | IR and assembly done; UV activity producer open |
-| M4: continuum limit | `0% [..........]` | open mathematics |
-| M5: full Clay statement | `0% [..........]` | open mathematics |
-
-### Latest movement
-
-The latest 2026-07-04 source checkpoint did not change the Clay boundary.  It
-closed several useful finite interfaces while keeping the analytic frontier
-explicit:
-
-* PR #4's rooted Catalan closure is integrated into `YangMillsCore`: exact
-  child-factorial Catalan identities, plane/labeled tree infrastructure, and
-  the finite Catalan majorant partial-sum lane are now theorem-fed;
-* `YangMills/KP/ActivityDomain.lean` is now upstreamed into `YangMillsCore`:
-  KP activity domination gives a closed zero-free activity polydisc, and the
-  fugacity section `w -> Xi(w * z)` is an explicit polynomial;
-* `RootedCatalanMajorant.lean` now proves the convolution support,
-  antidiagonal flattening, quadratic/reset recursions, and scaled closed
-  square-root bound for the repo-local Catalan majorants;
-* `SchurCatalanBudget.lean`, `GaugeFixedPrecision.lean`, and
-  `PhysicalGaugeOperator.lean` now feed Catalan partial budgets into Schur
-  coercivity, block-Poincare coercivity, the physical precision defect, and an
-  exact covariance object with inverse identities, PSD, and norm bound;
-* the flow-diamagnetic UV route has started as theorem-fed infrastructure:
-  marginal-recursion/coupling summability, killed-region walks, finite
-  isometry-sum bookkeeping, block-transport coefficient bounds, factorial
-  kernel convergence/bound objects, and the finite bridge from complex unitary
-  matrices to Euclidean linear isometries now live in `YangMills/RG/MarginalCoupling.lean`,
-  `YangMills/RG/Diamagnetic.lean`, and
-  [`docs/FLOW-DIAMAGNETIC-PLAN.md`](docs/FLOW-DIAMAGNETIC-PLAN.md);
-* `oracle_check.lean` now covers the KP activity-domain theorems, the physical
-  precision residual budget, and Appendix-F hole target geometry/family targets;
-* `source-db` now routes the physical precision defect blocker, supports token
-  fallback search, and links Gaussian-root/activity/Eq229/Eq237 proof-obligation
-  cards to their source dictionary fields; the Eq229 Cammarota blocker remains
-  explicit;
-* the area-law paper artifact is now tracked under `paper/area-law/`;
-* the thermodynamic-limit branch was verified at 8460 jobs at source
-  checkpoint `0be45284`; after merging it with `main`, the combined core
-  was verified at 8463 jobs.
-
-The practical effect is that one more finite combinatorial/RG-budget lane is
-closed before the source estimates arrive.  The remaining work is still the
-real source-grounded Yang-Mills activity-decay proof, not another cosmetic
-wrapper.
+The source-scan badge reports the repository's textual checks, not a Lean
+compilation. Mathematical verification is scoped to the exact source and
+build/oracle evidence. Hard open inputs remain theorem hypotheses; the core
+does not silently assume them as project axioms.
 
 ---
 
@@ -225,7 +94,7 @@ volume-uniform, each linearized and exact).
 > *A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized
 > Cluster Expansion*, L. Eriksson, 2026 —
 > [`paper/area-law/paper.pdf`](paper/area-law/paper.pdf).
-> Preprint: ai.viXra:XXXX.XXXX (add the ID when published).
+> The repository PDF is linked above; this entry records no external preprint identifier.
 
 A reusable repackaging `area_law_to_exp_area_decay` turns either headline into
 **manifest exponential area decay** N<sub>c</sub>·e<sup>−τ·Area(C)</sup> with a
@@ -391,12 +260,17 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 
 ## Build & verify
 
+Maintainer Lean/Lake builds and sustained computation run in dedicated Colab
+Pro+ Linux runtimes under [repository governance](docs/OPERATIONAL-GOVERNANCE-CHARTER.md).
+The commands below describe verification, not a new build performed for this
+documentation update.
+
 | Step | Command | Expected |
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib cache | `lake exe cache get` | downloads the pinned-commit `.olean` cache |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8463 jobs)` |
-| Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
+| Build the core | `lake build YangMillsCore` | Exit zero; compare the job count with evidence for the exact source revision |
+| Axiom oracle | `lake env lean oracle_check.lean` | Only allowed standard axioms: `propext`, `Classical.choice`, `Quot.sound` (axiom-free declarations are allowed) |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 | Source citation lookup | `python scripts/source_citations.py show cmp116.eq231.p-bond-sum` | compact primary-source locator |
 | Source excerpt lookup | `python scripts/source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target` | line-numbered local source text |
@@ -409,6 +283,11 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 ---
 
 ## Documentation map
+
+Start with the [documentation index](docs/README.md), [research news](NEWS.md)
+and [current hRpoly status](docs/HRPOLY-STATUS.md). The table below is the
+established main reference collection; older campaign entries retain their
+original checkpoint scope.
 
 | Document | What it is |
 |---|---|
@@ -424,7 +303,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 | [`ROADMAP.md`](ROADMAP.md) | The measurable plan, written against reality rather than a vacuous target. |
 | [`docs/AREA-LAW-PLAN.md`](docs/AREA-LAW-PLAN.md) · [`AREA-LAW-EXACT-PLAN.md`](docs/AREA-LAW-EXACT-PLAN.md) · [`AREA-LAW-VU-PLAN.md`](docs/AREA-LAW-VU-PLAN.md) | The area-law campaigns — all **complete**: linearized, exact-activity, and volume-uniform (V0–V4 closed, both linearized and exact). |
 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | How to rebuild the exact verified state (pinned Mathlib commit) and re-run the oracle checks. |
-| [`CURRENT-STATE.md`](CURRENT-STATE.md) | The short live checkpoint: current build, proved substrate, and the exact remaining frontier. |
+| [`CURRENT-STATE.md`](CURRENT-STATE.md) | Accumulated dated programme snapshots; follow its opening link for the current hRpoly research summary. |
 | [`docs/BALABAN-RG-PLAN.md`](docs/BALABAN-RG-PLAN.md) · [`UV-S2-GAUSSIAN-PLAN.md`](docs/UV-S2-GAUSSIAN-PLAN.md) · [`UV-U1-SMALL-FIELD-PLAN.md`](docs/UV-U1-SMALL-FIELD-PLAN.md) · [`BALABAN-SOURCE-BOUNDS.md`](docs/BALABAN-SOURCE-BOUNDS.md) · [`docs/FLOW-DIAMAGNETIC-PLAN.md`](docs/FLOW-DIAMAGNETIC-PLAN.md) | The **gauge-RG continuum-facing track** (`YangMills/RG/**`): the averaging/Gaussian/kernel/animal-count substrate, the flow-diamagnetic UV branch, and the faithful Balaban/Dimock source bounds; the open input is the concrete YM activity-decay bound `hRpoly`. |
 | [`docs/PHYSICAL-OPERATOR-VERTICAL-SLICE.md`](docs/PHYSICAL-OPERATOR-VERTICAL-SLICE.md) | The P4 physical-operator route from Wilson action to covariance to localized activities. Deterministic bricks, source dictionaries, and component boundaries are closed; the physical Hessian/source estimates remain open. |
 | [`docs/UV-SINGLE-SCALE-PLAN.md`](docs/UV-SINGLE-SCALE-PLAN.md) | The §6.3 UV-bound campaign. The logical/summability/coupling scaffolding is oracle-clean; the remaining months-scale work is the model-specific cluster-expansion-with-holes activity estimate. |
@@ -438,7 +317,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 
 ---
 
-## Latest viXra submission
+## Recorded manuscript submission (2026-08-03)
 
 **Submitted 2026-08-03 as a v2 replacement; moderation outcome not yet
 recorded.**  The 20-page v5.5 edition of *The Row Sums Were the Method, Not the

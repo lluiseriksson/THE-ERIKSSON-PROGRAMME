@@ -1,5 +1,10 @@
 # `hRpoly` CAMPAIGN — the cluster-expansion-with-holes activity bound
 
+> **Reading guide · 2026-09-05:** this is the historical campaign plan.
+> Start with [current hRpoly status](HRPOLY-STATUS.md) for the active PR #29
+> snapshot and its commit-linked completion checklist. Older “next” steps below
+> belong to their dated checkpoints.
+
 **Live status (2026-06-20).** Core green at **8290 jobs**.  The campaign has
 already closed substantial substrate: animal counting, cube summability,
 marginal-coupling summability, exponential-decay kernel calculus, Schur/PSD

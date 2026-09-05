@@ -1,5 +1,9 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
+> **Research-branch guide · 2026-09-05:** [hRpoly status](docs/HRPOLY-STATUS.md)
+> records the active PR #29 snapshot, evidence and remaining physical gates.
+> The main-core hypotheses and historical checkpoints below retain their scope.
+
 **Control-plane review: 2026-07-11; theorem content through the recorded
 2026-07-04 Lean checkpoint.**  The canonical stable snapshot is
 [`project-state.json`](project-state.json).  This document states the honest assumption
