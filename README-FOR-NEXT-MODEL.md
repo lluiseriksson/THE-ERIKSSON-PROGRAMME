@@ -1,5 +1,10 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+> **Research update · 2026-09-05:** read [hRpoly status](docs/HRPOLY-STATUS.md)
+> before using the historical handoff below. It links the exact PR #29
+> completion map and evidence; it does not promote that branch to `main` or
+> change [project-state.json](project-state.json).
+
 You are a (more powerful) AI being handed this Lean 4 / Mathlib repository to advance. This
 single file is self-contained: it gives you the project's purpose, the build/verify loop,
 the iron rules, the complete map of what is proved, and the exact open targets. Read it once,
