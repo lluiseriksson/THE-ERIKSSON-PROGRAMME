@@ -1,0 +1,4 @@
+tmp/FullGreenUniformPowerRepro.lean
+tmp/FullGreenNormalizedBudgetRepro.lean
+tmp/SourceFullGreenHybridAmplitudeDraft.lean
+tmp/SourceFullGreenUniformAmplitudeDraft.lean

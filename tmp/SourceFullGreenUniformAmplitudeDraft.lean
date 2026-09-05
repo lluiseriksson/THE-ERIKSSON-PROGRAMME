@@ -6,7 +6,7 @@ import YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound
 # PRE-VALIDATION: full-G uniform scalar amplitude, with inverse-square scale
 
 Source present; `.olean` not materialized and result not compiler-verified.
-This draft is not part of the running F4 repro queue. It consumes the hybrid
+This draft is not part of the sealed project graph. It consumes the hybrid
 interval bound, not antitonicity of the whole coefficient. The generated
 module is imported only for its scalar amplitude definition; its physical
 coefficient is never identified with the source-flow coefficient.
@@ -159,7 +159,7 @@ theorem exists_cmp85SourceFullGreen_uniformOwnerAmplitude_draft
   refine ⟨rho, C, hrho, hC, hamp, hrad, hp, ?_⟩
   intro j
   refine ⟨(hj j).1, ?_⟩
-  have hR : 1 ≤ L ^ (j + 1) := one_le_pow_of_le (by omega) _
+  have hR : 1 ≤ L ^ (j + 1) := Left.one_le_pow_of_le (by omega) _
   exact cmp85SourceFullGreen_ownerAmplitude_inverse_square_draft hlower
     (cmp85Eq215SourceAveragingCoefficientFloor_le_massParameter ha hLreal j)
     (cmp85SourceFullGreen_massParameter_le_initial ha (by linarith) j)
