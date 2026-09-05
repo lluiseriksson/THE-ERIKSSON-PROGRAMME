@@ -4,6 +4,18 @@ Status: LIVE COMPLETION AUDIT.  This document prevents a green intermediate
 brick from being reported as closure of hRpoly.  A row is complete only when
 the cited current-state evidence proves the full scope of that row.
 
+2026-09-05 progress annotation (does not close the uniform physical B0 row):
+F4's source-flow full-Green owner amplitude is cold sealed (ledger1116),
+retaining R^-2 with rho,C before depth. F5's generic whole-fibre point bound
+and one-owner action are cold sealed (1118). Physical real-slice, owner and
+point-probe drafts passed separate diagnostics (1119–1121); their nine-name
+promotion b2d5df8ad is in a fresh Colab cold gate, not yet sealed.
+Draft7bdc0fa1e composes the literal flat full-ambient value action at C R^2,
+but is NOT CHECKED. Proper regional inverse/reflection identification and
+the derivative bounds still prevent completion of the B0 row.
+See docs/F5-PHYSICAL-PREFIX-PROMOTION.md and
+docs/F5-PHYSICAL-VALUE-ACTION-HOT-RUNBOOK.md for the finite next gates.
+
 Baseline: `9da8a6feaf832067c45e64398c77fbb61314f225` is an ancestor of the
 active branch.  Branch: `codex/cmp116-interacting-wilson-hessian`.  PR #29
 must remain draft until every row below is complete.
