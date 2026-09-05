@@ -1,5 +1,36 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Live continuation — 2026-09-05 13:10 UTC
+
+One Colab runtime is active: CPU/high RAM50.99GB, accountlluiseriksson@gmail.com,
+host685dabaa0a79. Notebook vehiclec5400201b96d4b5cc782906255b1cd130c9c419d,
+scripts/colab_cmp99_physical_real_slice_retry.ipynb, browser tab11.
+Source59f9f522f3f731ac8a6270ac5c3ae719b1b201f6. Cell copied/read back before
+execution: one source pin and one runner revision, no appended old script.
+GitHub provenance warning confirmed once. Actual hash-gated start
+2026-09-05T13:07:22.137527+00:00, launcherPID615.
+
+Mathlib carrier repro PASSED exit0/3.709982501s, raw log empty SHA256
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
+Now physical_prerequisites is in flight; actual four draft theorems NOT
+CHECKED yet. The pinned queue does not include the owner dictionary draft.
+Do not reexecute or restart this cell. Observe its existing process/child log:
+
+```
+ps -p 615 -o pid,stat,etime,args
+tail -n 8 /content/physical-real-slice-retry-v2-launch/physical_diagnostic.log
+tail -n 8 /content/hrpoly-cmp99-physical-real-slice-retry-v2-evidence/physical_prerequisites.log
+```
+
+At completion download physical-real-slice-retry-v2-preservation-20260905.tar.gz,
+compare observed remote SHA256, verify inner archive with pinned2140c64c3
+verifier and exact-LF helpers; preserve PASS/FAIL before runtime cleanup.
+Monitor monitor-physical-real-slice-retry-v2 is ACTIVE every10min, quiet on
+unchanged progress; delete after evidence/runtime cleanup. Its first create
+request lacked destination and was rejected; only the corrected thread
+heartbeat exists. Mark browser handoff while live; do not close its tab.
+No CI or Windows Lean.20/41,TermSource0,window15 remains unattained.
+
 ## Latest checkpoint — 2026-09-05 12:47 UTC
 
 Prepared next diagnostic v2, source59f9f522f3f731ac8a6270ac5c3ae719b1b201f6.
