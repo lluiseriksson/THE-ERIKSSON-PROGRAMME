@@ -112,3 +112,29 @@ rate. It keeps output fixed while summing sources and uses the existing
 point-probe decomposition rather than an adjoint row conversion. Its text
 and import guards passed in0.2564642s; there is no compiler evidence and it
 is not included in the current cold queue or the prepared F4 diagnostic.
+
+## F5 real/complex gate: exact available identities, 2026-09-05 UTC
+
+`SUNLieComplexCoord Nc` is literally the complex Euclidean space on the
+same Lie-coordinate index as the real fibre, not a new arbitrary fibre.
+The outer spaces are nevertheless different: real operators use counting
+PiLp2 and the full-box complex operators use ordinary function space.
+`FinitePiLpCanonicalComplexificationOuterTransport` explicitly conjugates
+between them; its continuous equivalence is not claimed to be an isometry.
+
+The existing `finitePiLpCanonicalComplexificationCLM_ofReal` identifies the
+complexified action on the real slice. A worked coordinate transport is in
+the private `sourceFlowSeparatedAmbientPrecisionComplex_apply_ofReal` proof
+of the source-flow Step7b precision dictionary. The same general transport
+can be used for the actual Green, since its complex definition is exactly
+the canonical complexification of that real Green, followed by the same
+outer and carrier equivalences. No inverse equality is a new hypothesis.
+
+The F3 equality has one scalar residue multiplying every coordinate of v.
+Preserve that common scalar to reconstruct a vector equality before taking
+the fibre norm, instead of summing independent coordinate upper bounds and
+introducing a spurious Lie-dimension factor. On real inputs, taking the real
+part gives the corresponding real scalar action. This is a prospective
+proof route, not a compiled norm or regional theorem. In particular none of
+these exact complexification identities imply equality of a compressed
+ambient inverse and a Dirichlet inverse on a proper regional carrier.
