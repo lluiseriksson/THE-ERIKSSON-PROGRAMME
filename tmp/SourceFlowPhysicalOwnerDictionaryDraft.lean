@@ -73,6 +73,7 @@ theorem cmp99PhysicalStep7b_blockSite_eq_sourceLocalizationOwner_draft
   rw [cmp99PhysicalStep7bSiteEquiv_eq_sourceLocalization_draft]
   rfl
 
+open scoped Classical in
 /-- Full ambient source-localization fibres have exactly R^4 sites.
 This transports the existing blockOf_card theorem, not an ambient-volume
 estimate or a new count of owners. -/
