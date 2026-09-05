@@ -1,5 +1,29 @@
 # F5 regional inverse: source-object gates after ambient value action
 
+## Next bounded R2 diagnostic (after cold geometry seal81260f49)
+
+The new PRE-VALIDATION draft constructs the reflection on the full canonical
+lifted active carrier internally, proves its terminal-owner intertwiner,
+then targets equality of the literal counting-adjoint Q'*Q' kernel on every
+Lie-coordinate delta probe, with both source and target reflected. It uses
+the existing direct-owner kernel theorem, not adjoint norm symmetry.
+The coefficient stays `(M^-d)^(2*depth)`; no source-weighted mass or fibre
+cardinality is substituted. There is no assumed site permutation or assumed
+kernel invariance. The full-carrier membership proof is internal by induction.
+
+This is not invariance of an arbitrary active region and not yet a retained
+physical precision intertwiner or a regional inverse. Those remain R1/R2/R3
+obligations. A two-theorem leaf repro isolates the dependent finite-box cast
+and the injective if-congruence before the physical dependency graph builds.
+Files: tmp/NeumannGeneratedCountingMassReflectionRepro.lean and
+tmp/NeumannGeneratedCountingMassReflectionDraft.lean. They have not been
+compiled; no marker is retired and counters20/41,TermSource0 are unchanged.
+
+The user-supplied physical-cold/HOT ZIP was reidentified by exact SHA256
+69f0b70a76fe636c1e9745c2b3307ad55ddaab99dce838616037e370217e573d,
+matching the already preserved, independently verified ledger1122/1123
+artifact. It is not a new run and is not evidence for this new draft.
+
 Initial static type review at source10437a1a824bdd920282778cabe2f3da6c40ce4e.
 Value-action is now cold-sealed in ledger1124. Half-cell block geometry
 passed a separate HOT diagnostic (ledger1125) and its exact promoted cold

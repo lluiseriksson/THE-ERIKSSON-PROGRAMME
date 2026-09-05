@@ -1,5 +1,22 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Prepared next diagnostic — after seal81260f49, 2026-09-05
+
+No active runtime or monitor at preparation. Two PRE-VALIDATION files target
+the full-carrier generated counting-mass reflection (not arbitrary region
+invariance, retained precision or regional inverse). Exact shipped manifest:
+tmp/neumann_generated_counting_reflection_paths.txt. The minimal leaf repro
+tests the dependent cast and injective if-congruence before the large graph.
+Local text/import guards PASS, exit0, respectively0.0986874s/13488128 observed
+bytes and0.082345s/11759616 observed bytes, under30s/512MiB watchdog. No Lean
+was run locally. An unrelated historical evidence path triggered Git's long
+filename warning in an unscoped diff check; do not alter that other work.
+Use only scoped diff/staging for this diagnostic. Compilation remains pending.
+The user's ZIP matches the already committed ledger1122/1123 artifact; no
+re-execution is needed. Next: publish pinned diagnostic transport, run the
+leaf repro then generated graph/draft in Colab CPU/highRAM, stop on first
+error and preserve the graph for bounded HOT correction. Counters unchanged.
+
 ## Current checkpoint — geometry cold PASS, 2026-09-05 after19:28UTC
 
 Ledger1126 supersedes the live state below: source59160603d passed all16
