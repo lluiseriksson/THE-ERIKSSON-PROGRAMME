@@ -120,3 +120,18 @@ Thus the route is coordinate-value extensionality of those casts, not a
 new geometric relabeling. Still write the exact equality as a theorem
 before transporting source-localization owners; this static reading is not
 compiler evidence for that equality.
+
+## Prepared owner dictionary, not added to the active queues
+
+`tmp/SourceFlowPhysicalOwnerDictionaryDraft.lean` now proposes the exact
+site-equivalence equality, its block-owner corollary and the full ambient
+owner-fibre cardinality `(L^(depth+1))^4` by `blockOf_card` and a bijection.
+`tmp/SourceFlowOwnerCastRepro.lean` isolates the size-cast coordinate lemmas
+with Mathlib only. Both depend on sealed carrier definitions, not on the
+pending F5 promoted/hot lemmas. Both remain PRE-VALIDATION, uncompiled.
+
+The exact two-file textual/import guards passed, respectively0.0673s/
+18,407,424 bytes and0.0513s/17,563,648 bytes peak RSS. No Lean was invoked.
+Do not silently append these files to the running cold gate or the already
+published four-theorem physical hot runner. They form the next separately
+prepared unit after the current evidence is preserved.
