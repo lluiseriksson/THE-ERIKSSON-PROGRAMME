@@ -81,3 +81,17 @@ The geometric portion of R2 is now HOT-verified; the functional Q*Q
 intertwiner and the regional inverse identity remain open. No implication
 from block-owner equivalence alone to equality of physical operators is used.
 All four archives are preserved and independently verified in ledger1125.
+
+## R2 transport boundary measured during geometry promotion
+
+The direct-owner kernel theorem quantifies over ActiveGaugeRegion.Site of
+an iterated lift of an arbitrary Omega. A geometric FinBox reflection does
+not automatically define a permutation of that active subtype: preservation
+of the actual carrier must be produced from the chosen rectangle/doubling,
+not presumed for arbitrary Omega. The existing one-block collapse exposes
+the counting-adjoint kernel as exactly weight^2 on equal block owners and
+zero otherwise; this is the candidate block-by-block route once that site
+permutation is constructed. Weighted-adjoint mass has a different coefficient.
+Keep the counting/weighted conventions distinct and never infer the physical
+intertwiner just from two predicates called same-owner. This is a static
+boundary, not a new no-go or a proved Q*Q reflection law.

@@ -14,6 +14,8 @@ preceding source hashes and both text guards passed. Not a final verdict.
 Read-only status in the existing Colab terminal:
 `ps -p 4917 -o pid,etime,stat,args; tail -n 12 /content/neumann-halfcell-block-reflection-cold-v1-launch/physical_cold_graph.log`
 Final status: /content/neumann-halfcell-block-reflection-cold-v1-launch/launch-final-status.json.
+Heartbeat monitor-half-cell-reflection-cold-gate is active every10minutes,
+silent on unchanged state; delete after preserving evidence and runtime closure.
 Outer: /content/neumann-halfcell-block-reflection-cold-v1-preservation-20260905.tar.gz.
 Inner: /content/hrpoly-neumann-halfcell-block-reflection-cold-v1-evidence.tar.gz.
 Never reexecute the cell. Preserve and independently verify via
