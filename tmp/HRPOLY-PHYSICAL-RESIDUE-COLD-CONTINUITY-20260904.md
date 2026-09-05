@@ -1,5 +1,23 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Current checkpoint — 2026-09-05 after19:14UTC
+
+Cold value-action seal d33bf1435 is published. HOT reflection v4 passed
+at sourcee46c93e3aa337bcf0c0feea19d61e97522f22861, runnerc39aff6ba.
+Repro2.0702s + draft5.5801s; all five successful names have allowed axioms,
+no warnings. v1/v2 instrument failures and v3 normalization failure retained.
+Downloaded four-attempt bundle independently verified; ledger1125 and
+validation-evidence/neumann-block-reflection-hot-20260905 contain details.
+No HOT result is a cold seal; do not retire the scratch PRE-VALIDATION marks.
+
+Runtime b77933b9aa81 deleted after19:14UTC, zero Lean/Lake at shutdown,
+sole tab closed. Do NOT reopen or rerun the historical cold notebook.
+Next bounded work: promote the proven half-cell block geometry with exact
+name mapping, prepare its cold leaf gate before a new Colab connection;
+R2 actual Q*Q intertwining and R3 regional right inverse remain open.
+No Windows Lean/Lake, no exploratory CI, no Fable.20/41,TermSource0,
+window15 unattained. Preserve unrelated dirty scratch files.
+
 ## Cold value-action PASS preserved — 2026-09-05 19:02 UTC
 
 This supersedes the running/pending status below. Exact source10437a1a8

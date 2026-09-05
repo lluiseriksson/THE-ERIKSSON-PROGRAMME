@@ -1,8 +1,9 @@
 # F5 regional inverse: source-object gates after ambient value action
 
-Static type review at source10437a1a824bdd920282778cabe2f3da6c40ce4e.
-No new theorem, compiler result or regional estimate is claimed here.
-The value-action cold gate runs separately. 20/41, TermSource=0,
+Initial static type review at source10437a1a824bdd920282778cabe2f3da6c40ce4e.
+Value-action is now cold-sealed in ledger1124. Half-cell block geometry
+passed a separate HOT diagnostic (ledger1125), not a production seal.
+No regional estimate is claimed. 20/41, TermSource=0,
 window15 unattained; Clay <0.1% remain unchanged.
 
 ## Existing facts and their exact limits
@@ -70,3 +71,13 @@ FAIL archive44dffcda0ce7c6295b743d5261c30eb8f483bb3a9158ac114c3a19d06cab3544.
 No mathematics was tested. The v2 runner places the same hash-pinned blobs
 under the retained checkout's tmp directory, refuses differing pre-existing
 files, and keeps logs/outputs in a new directory. No source proof changes.
+
+v2 then stopped at a nonexistent Mathlib.Tactic.Omega import, before
+mathematics. v3 removed that import: arithmetic passed, but project draft
+failed at Fin.rev subtraction normalization. v4 first tests that exact
+normalization in the minimal repro and then passes the three-name draft
+(2.0702s +5.5801s, exact allowed axioms, no warnings). Sourcee46c93e3a.
+The geometric portion of R2 is now HOT-verified; the functional Q*Q
+intertwiner and the regional inverse identity remain open. No implication
+from block-owner equivalence alone to equality of physical operators is used.
+All four archives are preserved and independently verified in ledger1125.

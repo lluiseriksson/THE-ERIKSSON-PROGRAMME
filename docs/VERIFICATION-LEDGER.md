@@ -46395,3 +46395,42 @@ This closes only the full ambient C*R^2 value action: rho,C precede depth,
 K,Q,Nc, with exactly one source fibre R^4 and point amplitude R^-2. Proper
 regional inverse/reflection, derivative B0 and window15 remain open.
 20/41,TermSource0 unchanged; Clay <0.1%.
+
+## Addendum 1125 — half-cell block reflection HOT diagnostic (2026-09-05)
+
+The retained1124 runtime was reused, not a new cold clone. Source
+e46c93e3aa337bcf0c0feea19d61e97522f22861, runnerc39aff6ba750112989e75be7beb9057bffe6a395.
+HOT v4 PASS: Mathlib repro exit0/2.070219441s; project draft exit0/5.580091629s.
+Two repro names and three project names pass exact axiom checks; involutivity
+uses only propext,Quot.sound, the other four use the allowed trio. No warnings.
+This proves coordinatewise Fin.rev commutes with literal blockSite and
+preserves same-owner equivalence. It is not Q intertwining, a regional
+inverse, derivative B0, or a cold production seal. No PRE-VALIDATION mark
+is retired on this HOT result;20/41,TermSource0,window15 unattained remain.
+
+Preserved first errors: v1 input outside project root (exit1/0.866441873s),
+v2 nonexistent Mathlib.Tactic.Omega import (exit1/1.167427019s), v3 successful
+arithmetic repro then Fin.rev subtraction shape mismatch at draft50:4.
+v3 failed declarations printed sorryAx through error recovery and are NOT
+accepted. v4 tests the exact subtraction normalization in the minimal repro
+before using it in the draft. No heartbeats increase or theorem weakening.
+
+Archives v1..v4 SHA256, in order:
+44dffcda0ce7c6295b743d5261c30eb8f483bb3a9158ac114c3a19d06cab3544
+4ccd1e23eee9e6aee3034944c367c3eb14c52266bc3cf1e1392822e6f34c4a47
+fe422e85b137ff571d1779939b5c20275174395728d7db233c5300aeb741ca44
+92ceef59e36c9bb49b9e8595a77ba44f52bc89170a04b935d58f0a73c4a54bc0
+Downloaded outer163259bytes SHA256:
+5c2dac811cb81f6df02236ed092ca2948cf2f61bad84c3ffcdeb32030b0cca58.
+Independent verification checks all archives, source/log/output hashes,
+stage exits and exact successful axioms; exit0/0.1153852s, observed16805888
+peak bytes, single bounded local process without Lean/network/pool.
+Report57c8c29378d00d1bf9577647f7e74575f3e4916ec7b6aad1aae8e02076eb0ffa.
+Durable folder validation-evidence/neumann-block-reflection-hot-20260905.
+
+At19:14:00UTC no Lean/Lake or any of the five recorded launch PIDs remained;
+both cold and diagnostic outer hashes were unchanged. Runtime b77933b9aa81
+then disconnected/deleted, UI confirmed disconnected, sole tab closed.
+Total session approximately60 minutes including cold gate and bounded HOT.
+Next: promote only this geometry after an exact cold gate; separately produce
+the actual Q*Q reflection law and regional right-inverse identity (R2/R3).

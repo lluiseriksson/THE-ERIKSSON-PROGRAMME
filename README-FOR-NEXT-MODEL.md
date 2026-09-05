@@ -3,8 +3,10 @@
 Latest focused update2026-09-05: ledger1124 seals the three-name literal
 full ambient physical value action at10437a1a8, with downloaded archives
 independently verified. Ledger1122 already seals the nine-name physical
-prefix;1123 remains separate HOT draft evidence. The current regional
-reflection diagnostic is not part of either cold seal; follow the top of
+prefix;1123 remains separate HOT draft evidence. Ledger1125 now preserves
+the HOT half-cell reflection/block diagnostic PASS and three earlier failures.
+The runtime was deleted and its sole tab closed after19:14UTC. This diagnostic
+is not part of either cold seal; follow the top of
 tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md for live state.
 20/41,TermSource0,window15 unattained. No Windows Lean or exploratory CI.
 
