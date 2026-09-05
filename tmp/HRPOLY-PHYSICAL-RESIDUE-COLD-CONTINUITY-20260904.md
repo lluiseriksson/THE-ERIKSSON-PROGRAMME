@@ -1,5 +1,32 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Current live gate — physical value action, 2026-09-05
+
+This supersedes the next-promotion instruction immediately below.
+Published HEAD/notebook: 884a1d3052cad10c5aab86a17116b6fe72c939c6.
+Compiled SOURCE_SHA: 10437a1a824bdd920282778cabe2f3da6c40ce4e.
+Runner/verifier checkpoint: fabc3e93e6e026f97bb5fdf3c567983c97261f40.
+Launcher checkpoint: b03e923c3c7363ea56f5b77485d76de4776c671d.
+RUNNER_REV=cmp99-physical-value-action-promoted-cold-v1.
+
+Single cell started once at 2026-09-05T18:14:29.412410+00:00;
+HASH_GATE=PASS, LAUNCH_PID=3923, host b77933b9aa81, CPU/high RAM
+50.99 GB, no GPU, account lluiseriksson@gmail.com. Only browser tab 2
+remains. At the 18:19 UTC observation the cell was still executing;
+the previously requested terminal snapshot showed the live launcher at
+elapsed 01:29 and stage lake_update after both text guards exited zero.
+This is not a final verdict. Do not rerun the cell or launch another clone.
+
+Read-only continuation command in the existing Colab terminal:
+`ps -p 3923 -o pid,etime,stat,args; tail -n 12 /content/physical-value-action-promoted-cold-v1-launch/physical_cold_graph.log`
+Final state: /content/physical-value-action-promoted-cold-v1-launch/launch-final-status.json.
+Outer artifact: /content/physical-value-action-promoted-cold-v1-preservation-20260905.tar.gz.
+After completion preserve and independently verify before deleting runtime;
+check C:/Users/lluis/Desktop/Descargas for the downloaded artifact.
+Only the two new value-action production/audit PRE-VALIDATION headers
+are candidates for this selective seal. 20/41, TermSource=0, window15
+unattained remain literal. No Windows Lean/Lake or exploratory CI.
+
 ## After cold seal57579615a — next promotion written PRE-VALIDATION
 
 The seal and durable evidence were fast-forward published at

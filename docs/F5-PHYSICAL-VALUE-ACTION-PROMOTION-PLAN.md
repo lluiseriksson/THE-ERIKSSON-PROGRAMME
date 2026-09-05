@@ -52,7 +52,10 @@ Keep PRE-VALIDATION in the new objects until their own cold evidence passes.
    sets and independently verified downloaded evidence before sealing.
 
 Manifest: tmp/f5_physical_value_action_promoted_paths.txt, exactly two files.
-No cold computation has started for this promotion.
+The single cold computation started 2026-09-05T18:14:29.412410+00:00
+at source10437a1a824bdd920282778cabe2f3da6c40ce4e. Notebook checkpoint
+884a1d3052cad10c5aab86a17116b6fe72c939c6; hash-gate passed, final verdict
+pending. Live process and artifact paths are in the continuity file.
 Even a successful future seal closes only the full ambient value action.
 Proper regional inverse/reflection and derivative estimates remain separate
 named obligations. 20/41, TermSource=0, window15 unattained.
