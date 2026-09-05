@@ -1,4 +1,14 @@
-# Prepared bounded action diagnostic — NOT CHECKED
+# Bounded action diagnostic — HOT PASS, local preservation pending
+
+Execution update 2026-09-05: the exact queue below ran once in the retained
+Colab runtime and passed all ten stages. The diagnostic child exited 0 in
+435.045481242 seconds; the pinned archive verifier exited 0. The three
+named draft axiom readouts contain exactly Classical.choice, Quot.sound,
+propext. The prior cold archive hash remained unchanged.
+This supersedes NOT CHECKED, but is neither cold promotion nor selective seal.
+Local download verification remains pending; see the continuity checkpoint
+for both immutable archive hashes and the combined ZIP hash.
+Do not run this launch command again.
 
 Never append this unit to the active cold queue. First require the completed
 physical-prefix cold PASS and preserve its immutable archives. This runner

@@ -1,7 +1,9 @@
 # Physical Green/owner/point prefix — PRE-VALIDATION promotion
 
 The three draft units have separate diagnostic evidence (ledger1119–1121).
-This six-file, nine-declaration promotion is NOT compiler-verified yet.
+This six-file, nine-declaration promotion passed its fresh Colab compiler
+and exact axiom gate on 2026-09-05. Its downloaded archive has not yet been
+independently verified locally, so the selective seal remains pending.
 No PRE-VALIDATION retirement and no aggregate root import precedes the cold gate.
 
 ## Exact finite transformation

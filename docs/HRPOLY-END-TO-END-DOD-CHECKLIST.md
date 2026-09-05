@@ -9,9 +9,11 @@ F4's source-flow full-Green owner amplitude is cold sealed (ledger1116),
 retaining R^-2 with rho,C before depth. F5's generic whole-fibre point bound
 and one-owner action are cold sealed (1118). Physical real-slice, owner and
 point-probe drafts passed separate diagnostics (1119–1121); their nine-name
-promotion b2d5df8ad is in a fresh Colab cold gate, not yet sealed.
+promotion b2d5df8ad passed its fresh Colab cold gate and nine-name audit;
+local archive preservation remains pending, so it is not yet sealed.
 Draft7bdc0fa1e composes the literal flat full-ambient value action at C R^2,
-but is NOT CHECKED. Proper regional inverse/reflection identification and
+and passed its three-name HOT diagnostic in the same retained runtime.
+This is not its promoted cold seal. Proper regional inverse/reflection identification and
 the derivative bounds still prevent completion of the B0 row.
 See docs/F5-PHYSICAL-PREFIX-PROMOTION.md and
 docs/F5-PHYSICAL-VALUE-ACTION-HOT-RUNBOOK.md for the finite next gates.

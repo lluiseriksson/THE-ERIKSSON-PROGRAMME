@@ -1,5 +1,21 @@
 # hRpoly CMP102 → CMP116 vertical slice
 
+## 2026-09-05 — physical prefix cold PASS and value-action HOT PASS
+
+Fresh source b2d5df8ad passed three focal/audit pairs and all nine named
+axiom checks. Draft source7bdc0fa1e then passed its three-name value-action
+diagnostic in the retained runtime, after independent verification of the
+unchanged cold archive. This supersedes the historical failed diagnostic
+mentioned below; it does not erase that failure's evidence.
+
+The physical action retains C*R^2, with rho,C before depth,K,Q,Nc and only
+one source-owner fibre R^4 counted. No proper regional inverse, derivative
+B0, or window15 attainment is implied. Downloaded preservation is still
+pending: no new selective seal or PRE-VALIDATION retirement is claimed.
+Exact archive/output hashes are in
+tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md.
+20/41, TermSource=0 remain unchanged.
+
 ## 2026-09-05 — F5 prefix cold seal, not regional B0
 
 Ledger1118 seals source6c49a8da after downloaded cold verification:

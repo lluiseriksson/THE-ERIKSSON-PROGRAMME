@@ -1,5 +1,49 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Both gates PASS; transport pending — 2026-09-05
+
+This supersedes the HOT-running observation below. Colab host aa59ca737da9
+reported LAUNCH_FINAL_STATUS=PASS COLD_SEAL=0 for the single retained-runtime
+value-action diagnostic, source 7bdc0fa1e76b3e2d3d64d1822bb30459d6697979.
+The diagnostic exited 0 in 435.045481242 seconds; its archive verifier exited
+0 in 0.1030855809995046 seconds. All ten recorded stages exited 0.
+The three exact draft declarations have only Classical.choice, Quot.sound,
+propext. This is diagnostic evidence, not a new cold seal.
+
+- Typed kernel: cmp99SourceFlowPhysicalRealGreen_typedKernel_draft.
+- Fibre action: cmp99SourceFlowPhysicalRealGreen_ownerAction_of_budget_draft.
+- Uniform witnesses: exists_cmp99SourceFlowPhysicalRealGreen_uniformValueAction_draft.
+
+The last theorem chooses rho,C before depth,K,Q,Nc. It retains C*R^2 from
+R^-2 point amplitude times R^4 source-fibre cardinality. It does not identify
+a proper regional inverse, prove derivative B0, or attain window 15.
+
+HOT inner /content/cmp99-physical-value-action-hot-v1-logs.tar.gz:
+1f5f0f549a9a6f46f82096221b37f81e4c3f68591abaf469598d3fecd89609a9.
+HOT outer /content/physical-value-action-hot-v1-preservation-20260905.tar.gz:
+dc411e6f16272fd8af308b7f6372d9a5d8ca3128d076f4015e0965f24e05fb75.
+Draft .olean: 60d94ec9f648e3d36b5a58a61d96d631e048cbe8a558bbf018ca584bfd1f2bb6.
+Repro .olean: 040c0fe02517f5071930b12c0c3694321aaa0f19406e084d5c798fa9913132c2.
+
+A transport-only ZIP contains the two unchanged cold/HOT outer archives:
+/content/hrpoly-physical-cold-and-hot-evidence-20260905.zip,
+364510 bytes, SHA256
+69f0b70a76fe636c1e9745c2b3307ad55ddaab99dce838616037e370217e573d.
+Cell [6] executed once and printed this digest; do not reexecute it.
+files.download did not produce a file in Downloads. Earlier explicit Blob
+download observation returned: Timed out after 10000ms waiting for download.
+The Chrome browser connector returned: Browser is not available: chrome.
+Native observation then stopped because it could not determine the browser
+URL confidently; no Windows input was sent. Neither result is a Lean failure.
+
+Keep the original runtime and archives until durable preservation succeeds.
+All six production PRE-VALIDATION headers remain; no selective seal yet.
+Next: retrieve the ZIP, verify its digest and both immutable inner archives
+with the pinned independent verifiers, then selective cold-prefix sealing.
+Prepare but do not conflate HOT draft promotion with that cold seal.
+No Windows Lean/Lake, no exploratory CI, no repeat computation.
+20/41, TermSource=0, window15 compatible but unattained.
+
 ## Bounded HOT continuation started — 2026-09-05 16:36:58 UTC
 
 User resumed explicitly. The two cold archives remain immutable in Colab;
