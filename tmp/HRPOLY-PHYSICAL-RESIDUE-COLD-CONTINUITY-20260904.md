@@ -2,6 +2,15 @@
 
 ## LIVE physical nine-name cold gate — 2026-09-05 15:33 UTC
 
+Observer recovery15:57UTC: tab14 disappeared from the browser inventory.
+Opened Colab home and selected this exact notebook from Recents, without
+executing any cell or requesting a new runtime. Tab15 recovered the same
+terminal hostaa59ca737da9. At15:57:19UTC originalPID3227 remained live,
+elapsed23:54; real_slice_focal reached8470/8675. This is an observer
+incident, NOT a runtime loss and not a mathematical FAIL.
+CURRENT browseriab1 tab15. Its reloaded original cell may show [ ];
+DO NOT EXECUTE IT. Follow PID/log files in the terminal. No duplicate job.
+
 Supersedes the no-runtime state below. One CPU/high-RAM Colab50.99GB,
 noGPU, accountlluiseriksson@gmail.com. One cell[1], PID3227.
 HASH_GATE=PASS START_UTC=2026-09-05T15:33:25.369921+00:00.
