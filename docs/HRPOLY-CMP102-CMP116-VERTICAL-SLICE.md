@@ -15949,6 +15949,18 @@ gates (static decomposition, not new producer counts):
 The standalone owner-fibre action draft addresses only part of gate1;
 it is still uncompiled and is not added to the current F4 diagnostic queue.
 
+The source route for gates2--3 is already recorded in
+`CMP99-SECTION-C-PARSER-AUDIT.md`, under "Direct Eq. (3.42) to Eq. (3.89)
+gate": CMP96 Proposition2.2 / (2.67) supplies the zero-background local
+four-component estimates; CMP99 pp.407--409 and Corollary3.6 use the
+near-identity perturbation and gauge transport for the localized background.
+Only afterwards do (3.89)--(3.90) and Theorem3.7 propagate the local bounds
+to the global Green. This cross-reference is a static dependency recovery,
+not a new visual source verification or a proof of these transports.
+In particular the regional input needed to estimate the cell defect must
+not be discharged by the global Neumann construction whose contraction
+is still the goal: that would reverse this source dependency.
+
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
 The centered and literal physical finite-grid representatives now each carry
