@@ -15923,6 +15923,32 @@ not an accepted audit. No F4/F5 seal follows. The existing Mathlib-only
 normalization repro remains auxiliary, and the full physical B0/derivative
 and regional bridges remain open. Counters stay20/41 and TermSource0.
 
+F5 is not a single reindexing. Reading the literal
+`CMP99Eq342SourceLocalizedGreenCertificate` gives these separate acceptance
+gates (static decomposition, not new producer counts):
+
+1. Bundle the common scalar point-source identity over the Lie fibre and
+   transport its real slice with the actual fibre norm. Sum only one source
+   owner-fibre: its R^4 sites times the planned R^-2 point amplitude gives
+   the required R^2 value scale, not an ambient-torus cardinality.
+2. Identify or estimate the canonical regional Dirichlet inverse consumed
+   by `value_bound`. Restricting the ambient full inverse is not, in general,
+   inversion of the compressed precision. No `restrictZero`/`extendZero`
+   coordinate equivalence alone discharges this gate on a proper region.
+3. Produce the three *literal* derivative actions of that same regional
+   Green: `D0.comp G`, `G.comp D0.adjoint`, and `Laplacian.comp G`, with
+   the source certificate's spacing and background parameters. The flat
+   Fourier point-source bound alone does not supply arbitrary-background
+   covariant estimates. Any specialization/perturbative dictionary must be
+   stated and proved, not inferred from the shared Green name.
+4. Put all four actions under one positive, depth-uniform B0 and rate,
+   with scale vector `[R^2,R,R,1]` and the exact source-owner distance.
+   Only then construct the source-localized certificate and continue the
+   three-species defect budget. F4 scalar uniformity alone is not (3.42).
+
+The standalone owner-fibre action draft addresses only part of gate1;
+it is still uncompiled and is not added to the current F4 diagnostic queue.
+
 ### Eq. (2.46) full endpoint solution domains (cold-sealed)
 
 The centered and literal physical finite-grid representatives now each carry
