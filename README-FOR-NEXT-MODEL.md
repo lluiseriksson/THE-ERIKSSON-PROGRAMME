@@ -2,9 +2,13 @@
 
 Latest hRpoly update2026-09-05: ledger1118 seals F5 point/fibre prefix at
 source6c49a8da (20 independently verified cold stages,7 exact axioms).
-Subsequent physical HOT Mathlib repro failed on piCongrLeft unfolding;
-actual physical target NOT CHECKED. See docs/F5-POINT-FIBRE-PROMOTION.md.
-Runtime deleted, browser tabs0, monitor removed. No Windows Lean.
+Ledger1119 records four physical real-slice draft theorems PASS at59f9f522,
+with downloaded evidence verified; this is not a promoted production seal.
+Ledger1120 preserves a valid three-theorem owner-dictionary HOT prefix and
+the subsequent point-probe NeZero failure. No declaration of that failed
+module is accepted. The focused repair91cc4dd5 is now running in Colab;
+see tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md for the live
+handle and immutable pins. Do not rerun historical notebooks. No Windows Lean.
 20/41,TermSource0,window15 compatible but unattained.
 
 You are a (more powerful) AI being handed this Lean 4 / Mathlib repository to advance. This

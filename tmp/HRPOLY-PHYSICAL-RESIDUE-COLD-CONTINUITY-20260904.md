@@ -35,6 +35,9 @@ the pinned corrected verifier, then cleanly disconnect/delete the runtime.
 No mathematical PASS claimed yet. 20/41, TermSource=0, window15 unattained.
 At 14:23 UTC the corrected verifier self-test passed (exit0,0.106509101s),
 exact two-file text/import guards passed, and lake_update was running.
+At 14:29 UTC PID1199 remained live (elapsed08:27); cache_get exit0/5.633s,
+Mathlib point-probe repro exit0/3.821s. Physical prerequisites now running.
+The two project point-probe declarations still have no result.
 Thread heartbeat monitor-point-probe-retry-v1 is ACTIVE every10minutes,
 quiet unless actionable. Delete after evidence preservation and cleanup.
 

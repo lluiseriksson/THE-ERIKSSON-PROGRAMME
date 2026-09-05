@@ -1,5 +1,47 @@
 # F5 point/fibre prefix — static plan, not compiler evidence
 
+## Current physical composition gate — 2026-09-05
+
+F5 generic prefix is already cold sealed (ledger1118). Four physical
+real-slice draft results passed at59f9f522 (ledger1119); three owner-map
+draft results passed as a HOT prefix at6f20ead4 (ledger1120). Neither draft
+group has a promoted production seal. Point-probe repair91cc4dd5 is in
+flight; do not add dependent Lean modules to its immutable queue.
+
+The source-signature review fixes a finite next composition, conditional
+on acceptance of that point-probe gate, not a new analytic assumption:
+
+1. For the literal real ambient Green G, source s, target t and whole real
+   Lie vector v, rewrite the physical complex input using
+   cmp99PhysicalStep7b_complexSingle_eq_pointSource_draft. Rewrite its
+   output norm using norm_cmp99SourceFlowPhysicalStep7bGreen_ofReal_apply_draft.
+   Apply the SEALED norm_cmp99SourceFlowFullPointSourceGreen_fibre_le_owner
+   at the exact transported source/target, and use the SEALED
+   norm_cmp99SUNLieCoordComplexificationLM on v. No outer norm transport,
+   dimension factor, free Green or equality hypothesis is admissible.
+2. Rewrite both block owners with
+   cmp99PhysicalStep7b_blockSite_eq_sourceLocalizationOwner_draft.
+   The sealed bound has distance(sourceOwner,targetOwner); the real typed
+   kernel consumer has distance(targetOwner,sourceOwner). Use the named
+   finBoxDist_comm (PhysicalBondDistance.lean), not an adjoint/row argument.
+   The endpoint is literally ||G(singleFinitePiLp s v) t|| <=
+   (ownerAmplitude R a_j rho * exp(-(rho*dist(owner t,owner s))))*||v||.
+3. Instantiate finitePiLpTypedBlockLocalizedSupBound_of_kernel_fibre_card
+   with that literal G and N=R^4, using
+   card_cmp99SourceLocalizationOwner_fibre_draft, then consume
+   exists_cmp85SourceFullGreen_uniformOwnerAmplitude. Choose rho,C once
+   before depth, K,Q,Nc; retain the output amplitude C*R^2 exactly,
+   because R^4*(C*(R^2)^-1)=C*R^2 for positive R=L^(depth+1).
+   cmp99SourceFlowFlatFullComplexA and cmp99SourceMassParameter must be
+   related by their actual definition (SourceFlowFlatPrecisionScalarDictionary),
+   not by a new freely supplied coefficient equality.
+
+This closes only the full ambient value action, not a proper regional
+inverse or derivatives. The R^2 is the value-action scale, not uniform B0.
+No all-owner count (2*K*Q)^4 enters. Required evidence: the two point-probe
+declarations first; then the exact finite promotion/assembly with separate
+audits and preserved source hashes. Counters remain20/41,TermSource0.
+
 F4 cold source remains `5138e9bd4bc88797c91c21df5bb5c630c71600ca`.
 Nothing in this plan changes the graph being compiled or its acceptance gate.
 

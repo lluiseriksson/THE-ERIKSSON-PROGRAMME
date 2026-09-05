@@ -3,8 +3,15 @@
 2026-09-05: source6c49a8da cold PASS, six exits0, seven exact allowed
 axiom trios,20 independently verified stages. See ledger1118 and evidence
 directory cmp99-point-fibre-promoted-cold-6c49a8da-20260905.
-Subsequent physical HOT repro failed in4.967s; actual physical target NOT
-CHECKED. Runtime and monitor now closed. Historical preparation below.
+Subsequent physical HOT repro failure in4.967s is retained as history.
+The repaired four-theorem physical real-slice diagnostic passed at59f9f522
+(ledger1119), with independently verified downloaded archives and actual
+output hashes. It has not been promoted or selectively cold sealed.
+The owner dictionary then passed three HOT declarations before the point
+probe failed on a missing derived NeZero instance (ledger1120). No result
+from that failed module is accepted. Focused point-probe repair91cc4dd5
+is pending; live handles are only in the continuity file, not this seal.
+Historical preparation below refers to the already sealed seven-name graph.
 
 This finite promotion of the seven HOT-verified draft declarations
 recorded in ledger Addendum 1117 is now cold verified (Addendum 1118).
