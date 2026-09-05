@@ -14,17 +14,17 @@ import tarfile
 import types
 import urllib.request
 
-SOURCE = '4fd88ac8d04e12bf4751869802ca7ba23cad8acb'
+SOURCE = 'a289ee24dc41c25f2480c408de45b3105b09ce71'
 COLD_SOURCE = '5138e9bd4bc88797c91c21df5bb5c630c71600ca'
 ROOT = Path('/content/hrpoly-cmp85-uniform-full-green-promoted-cold-v1')
 COLD_ARCHIVE = Path(str(ROOT) + '-evidence.tar.gz')
 LAUNCH = Path('/content/f4-promoted-cold-launch')
-REV = 'cmp99-full-green-fibre-prefix-hot-v1'
+REV = 'cmp99-full-green-fibre-prefix-hot-v2'
 LOGS = Path('/content') / (REV + '-logs')
 RAW = 'https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
 BLOBS = {
     'tmp/FullGreenFibreNormRepro.lean':
-        'fd7882b6d46d20c1ee2ca67206fed6a2df7149e4c705339e1a587ed78fb91da9',
+        '7dd63272dc90578f15e59aa0398c7811219c7ba008c8752f2d4b70d4c5354234',
     'tmp/FinitePiLpRealSliceFibreTransportDraft.lean':
         '66cd10f0573976ad5793fa35ca311cb8ea42f8dccabeabe62648389d00d3956b',
     'tmp/SourceFlowFullPointSourceFibreBoundDraft.lean':
@@ -53,6 +53,9 @@ QUEUE = [
 VERIFIER_HASH = 'f408dc8cb99fa1131f4b444f519c35a741dafc643f34e3881f4c49737e153da9'
 GATE_HASH = '016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2'
 MATHLIB = '07642720480157414db592fa85b626dafb71355b'
+PREVIOUS_REPRO_HASH = 'fd7882b6d46d20c1ee2ca67206fed6a2df7149e4c705339e1a587ed78fb91da9'
+PREVIOUS_HOT_ARCHIVE = Path('/content/cmp99-full-green-fibre-prefix-hot-v1-logs.tar.gz')
+PREVIOUS_HOT_HASH = '180ee030bd3dffda8dc964582e05bd1c4fa7b81b8cd7836b86657d636f5011ec'
 
 def sha(blob):
     return hashlib.sha256(blob).hexdigest()
@@ -91,6 +94,8 @@ def main():
     status, error = 'FAIL', None
     compiled = {}
     try:
+        if sha(PREVIOUS_HOT_ARCHIVE.read_bytes()) != PREVIOUS_HOT_HASH:
+            raise RuntimeError('PREVIOUS_HOT_EVIDENCE_HASH')
         launch_records = json.loads((LAUNCH / 'launch-records.json').read_text())
         if [r['stage'] for r in launch_records] != [
                 'verifier_self_test', 'cold_graph', 'archive_verifier']:
@@ -121,13 +126,20 @@ def main():
         if base.run('mathlib_pin', ['git', '-C', '.lake/packages/mathlib',
                 'rev-parse', 'HEAD']).strip() != MATHLIB:
             raise RuntimeError('MATHLIB_PIN_MISMATCH')
-        # Fetch only immutable public text. No checkout, source replacement,
-        # project build restoration or credentials are used.
+        # Fetch immutable text. Only the failed tmp repro may change, and
+        # only from its recorded v1 bytes; preserve those bytes in this log.
+        # No production source, checkout or project-build restoration changes.
         for path, digest in BLOBS.items():
             blob = fetched(SOURCE, path, digest)
             dest = ROOT / path
             if dest.exists() and dest.read_bytes() != blob:
-                raise RuntimeError('EXISTING_DRAFT_DIFFERS=' + path)
+                previous = dest.read_bytes()
+                if (path != 'tmp/FullGreenFibreNormRepro.lean' or
+                        sha(previous) != PREVIOUS_REPRO_HASH):
+                    raise RuntimeError('EXISTING_DRAFT_DIFFERS=' + path)
+                if previous.replace(b'WithLp.toLp_apply', b'PiLp.toLp_apply') != blob:
+                    raise RuntimeError('REPRO_REPAIR_NOT_EXACT')
+                (LOGS / 'FullGreenFibreNormRepro.previous.lean').write_bytes(previous)
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(blob)
             (LOGS / dest.name).write_bytes(blob)
@@ -158,6 +170,8 @@ def main():
             'YangMills', 'lean-toolchain', 'lake-manifest.json'])
         if sha(COLD_ARCHIVE.read_bytes()) != args.cold_archive_sha256.lower():
             raise RuntimeError('COLD_ARCHIVE_CHANGED')
+        if sha(PREVIOUS_HOT_ARCHIVE.read_bytes()) != PREVIOUS_HOT_HASH:
+            raise RuntimeError('PREVIOUS_HOT_ARCHIVE_CHANGED')
         status = 'PASS'
     except Exception as exc:
         error = repr(exc)
