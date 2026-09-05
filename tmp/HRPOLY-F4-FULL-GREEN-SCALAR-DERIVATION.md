@@ -81,3 +81,26 @@ The hybrid draft now includes an exact `#print axioms` for its sole public
 bound. It remains uncompiled and outside the root. After the F2-F3 cold
 archive is preserved and verified, a separate warm diagnostic may test this
 draft without changing that archive or interpreting a hot PASS as a seal.
+
+## F5 units check against the actual consumer, 2026-09-05 UTC
+
+Static signature check, not a theorem or a new producer. The `value_bound`
+field of `CMP99Eq342SourceLocalizedGreenCertificate` requires
+`B0 * (L^(depth+1))^2`, not a depth-independent value-action amplitude.
+The finite-sup contract is `FinitePiLpTypedBlockLocalizedSupBound`: one
+arbitrary field supported in a complete owner fibre, not one point probe.
+
+Thus the F4 target `point amplitude <= C * R^-2` is quantitatively aligned:
+a complete fibre has R^4 fine sites, and `R^4 * R^-2 = R^2` matches the
+printed value scale. The exact finite carrier equivalence already exists as
+`cmp99BlockOffsetEquiv`, with `sum_blockSites_eq_sum_offsets`. It identifies
+one owner block with `FinBox 4 R`, not with the whole ambient torus.
+There must be no `(2*Kloc*Q)^4` factor or second normalization in this step.
+
+Remaining proof obligations are still real: bundle the scalar component
+identity into a fibre-vector identity without an artificial Lie-dimension
+factor; sum point-source actions over this one fibre by linearity; consume
+the source supremum norm; and transport the real/complex and regional
+objects through their named dictionaries. A compressed ambient inverse is
+not asserted to be the regional Dirichlet inverse. The derivative species
+retain the separate `[R, R, 1]` scales and are not implied by the value bound.
