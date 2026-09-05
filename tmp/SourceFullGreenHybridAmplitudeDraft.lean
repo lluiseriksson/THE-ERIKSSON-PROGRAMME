@@ -81,7 +81,8 @@ theorem cmp85SourceFullGreen_fullBudget_le_hybrid_draft
       cmp89Eq248ComplexNoncentralGreenRadialConstant_draft
     positivity
   have hcentral := mul_le_mul_of_nonneg_left
-    (add_le_add (add_le_add hmoment (le_refl _))
+    (add_le_add (add_le_add hmoment
+      (le_refl (cmp89Eq248ComplexNoncentralGreenSumBound_draft rho)))
       (mul_le_mul_of_nonneg_right hcoef hT)) hrow
   have hcorrection :
       (current * cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho *
