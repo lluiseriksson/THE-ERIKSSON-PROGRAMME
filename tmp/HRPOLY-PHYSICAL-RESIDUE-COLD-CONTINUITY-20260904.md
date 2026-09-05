@@ -1,5 +1,40 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Cold execution PASS; local preservation pending — 2026-09-05 16:26 UTC
+
+The original cold launcher PID 3227 is terminal (absent at 16:22:07 UTC).
+Colab printed LAUNCH_FINAL_STATUS=PASS INTERMEDIATE_COLD_GRAPH=1 and its
+pinned archive verifier exited 0 in 0.146352448 seconds. Evidence reports
+20 stages. Exact focal/audit child exits and durations read from evidence.json:
+
+| Stage | Exit | Seconds |
+|---|---:|---:|
+| real_slice_focal | 0 | 2599.263246499 |
+| real_slice_audit | 0 | 20.792752153 |
+| owner_dictionary_focal | 0 | 46.883856981 |
+| owner_dictionary_audit | 0 | 8.182000411 |
+| point_probe_focal | 0 | 23.236427673 |
+| point_probe_audit | 0 | 8.217919138 |
+
+Outer SHA256 6075b75a4f58efe929f9f97de12347a700581d8f58034d2b37a96a78b6553a1e.
+Inner SHA256 d09d7ea9f43027ea203a674a56a4fe4326ad1741cbef00020d38141dfcda9601.
+Paths remain the immutable /content archives listed below. Three output hashes:
+
+- GreenRealSlice: 4a60ce6c6e8db302791d70570557c6c80b2675865628d875ae82de25e92f8603
+- OwnerDictionary: b734d5798d6767b3f8e010c8b828e4f78a2c2149f56e00fbe87429ead5d6d7e2
+- PointProbe: ec49bd7e22ecd42f1c2beb9127bf773cc72f881008e4a009fa163bb2edf8aa0e
+
+Download-only cell [2] ran once (not the original calculation cell), followed
+by the file-pane Download action on the same outer archive. Neither transfer
+was visible in C:/Users/lluis/Downloads as of 16:25 UTC. No browser error text
+was displayed; an async question asks the user whether a save dialog appeared.
+This is NOT a mathematical FAIL. Do not repeat the cold queue. The independent
+local archive verification and selective seal remain pending; all six
+PRE-VALIDATION headers remain in place. No HOT value-action launched yet.
+Runtime aa59ca737da9 remains retained for evidence, browser 1/tab 1 marked
+for handoff. Preserve/download/verify first, then use the already published
+bounded HOT launcher with the exact inner digest above. Counters unchanged.
+
 ## LIVE physical nine-name cold gate — 2026-09-05 15:33 UTC
 
 Observer recovery 16:16 UTC: this continuation again started with an empty
