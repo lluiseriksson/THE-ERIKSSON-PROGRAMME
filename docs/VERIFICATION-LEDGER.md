@@ -46312,3 +46312,47 @@ last disconnected tab closed. No calculation cell repeated.
 Nine physical/owner/point draft declarations now have diagnostic evidence;
 their promotion remains PRE-VALIDATION pending its own cold gate.
 No regional inverse/derivative B0/window15 claimed.20/41,TermSource0 unchanged.
+
+## Addendum 1122 — physical real/owner/point prefix cold seal (2026-09-05)
+
+Fresh Colab source b2d5df8ad6d600317b267bf87522a8bf472e9ea0 passed 20 stages,
+three focal/audit pairs and all nine exact named axiom checks. No project
+build output restored. Actual production .oleans are preserved for all
+three modules; no root or separate audit .olean claim is made.
+Immutable cold inner SHA256:
+d09d7ea9f43027ea203a674a56a4fe4326ad1741cbef00020d38141dfcda9601.
+Cold outer SHA256:
+6075b75a4f58efe929f9f97de12347a700581d8f58034d2b37a96a78b6553a1e.
+
+User supplied the exact downloaded ZIP from Desktop/Descargas. The pinned
+independent local verifiers accepted both archives; combined verification
+exit0, wall0.4333328s, observed24969216 peak bytes, one process, no Lean.
+Report SHA256:
+8fb41422e9817e8eac0c5a4f69a7fa723585e2b1996f2723a6bd95111f06a282.
+Full raw evidence and report: validation-evidence/physical-cold-hot-20260905.
+Six PRE-VALIDATION headers retired, restricted to the three certified
+production files and their exact audits. Mathematical text outside the
+initial module docstring compared equal to the cold source in all six.
+No imports, hypotheses, constants or proofs changed. Earlier failed draft
+evidence remains intact.20/41,TermSource0,window15 unattained.
+
+## Addendum 1123 — physical full-ambient value-action HOT PASS (2026-09-05)
+
+Source7bdc0fa1e76b3e2d3d64d1822bb30459d6697979, same retained hostaa59ca737da9
+after independent prior-archive verification. Diagnostic exit0/435.045481242s;
+ten stages, three exact public names with the allowed trio. Repro and draft
+.oleans verified. No additional clone, cold queue reexecution or CI.
+HOT inner SHA256:
+1f5f0f549a9a6f46f82096221b37f81e4c3f68591abaf469598d3fecd89609a9.
+HOT outer SHA256:
+dc411e6f16272fd8af308b7f6372d9a5d8ca3128d076f4015e0965f24e05fb75.
+Independent downloaded verification and exact outputs: same evidence folder
+and report as1122. This remains HOT, not promoted cold production.
+
+The literal real ambient Green typed kernel composes with one owner fibre:
+R^4 * (C/R^2) = C*R^2, rho,C chosen before depth,K,Q,Nc. The intermediate
+budget is supplied internally by the F4 uniform witness in the last theorem.
+No free Green family, outer-norm isometry or count of all owners is used.
+Proper regional inverse/reflection and derivative B0 remain open.
+Runtime deleted about17:59UTC after local preservation; disconnected state
+checked and sole tab closed before18:00:30UTC.20/41,TermSource0 unchanged.

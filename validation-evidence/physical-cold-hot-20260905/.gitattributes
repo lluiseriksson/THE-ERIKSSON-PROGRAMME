@@ -1,0 +1,6 @@
+# Preserve exact downloaded and generated evidence bytes across platforms.
+* -text
+# Raw console bytes and the Windows-generated report are hash-verified,
+# not whitespace-normalized source. Preserve CRs and progress formatting.
+*.log -diff
+independent-local-verification.json -diff

@@ -10,7 +10,8 @@ retaining R^-2 with rho,C before depth. F5's generic whole-fibre point bound
 and one-owner action are cold sealed (1118). Physical real-slice, owner and
 point-probe drafts passed separate diagnostics (1119–1121); their nine-name
 promotion b2d5df8ad passed its fresh Colab cold gate and nine-name audit;
-local archive preservation remains pending, so it is not yet sealed.
+downloaded archive verification and the six-file selective seal are complete
+(ledger1122). No new root validation is claimed.
 Draft7bdc0fa1e composes the literal flat full-ambient value action at C R^2,
 and passed its three-name HOT diagnostic in the same retained runtime.
 This is not its promoted cold seal. Proper regional inverse/reflection identification and

@@ -2,10 +2,11 @@ import YangMills.RG.FinitePiLpRealSliceFibreTransport
 import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalGreenIdentification
 
 /-!
-# PRE-VALIDATION: BalabanCMP99SourceFlowPhysicalGreenRealSlice
+# BalabanCMP99SourceFlowPhysicalGreenRealSlice
 
-Source present; .olean not materialized; result not compiler-verified.
-This promoted module is not yet a compiler-verified production seal.
+Cold-verified and .olean materialized at source b2d5df8ad on 2026-09-05.
+Downloaded evidence independently verified; see ledger Addendum 1122.
+This selective seal changes provenance comments only, not the mathematics.
 Its draft was checked at 59f9f522f3f731ac8a6270ac5c3ae719b1b201f6; see ledger 1119.
 Only the explicit public-name map and audit placement are changed.
 

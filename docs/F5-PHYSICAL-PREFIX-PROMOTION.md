@@ -1,10 +1,10 @@
-# Physical Green/owner/point prefix — PRE-VALIDATION promotion
+# Physical Green/owner/point prefix — cold-sealed promotion
 
 The three draft units have separate diagnostic evidence (ledger1119–1121).
 This six-file, nine-declaration promotion passed its fresh Colab compiler
-and exact axiom gate on 2026-09-05. Its downloaded archive has not yet been
-independently verified locally, so the selective seal remains pending.
-No PRE-VALIDATION retirement and no aggregate root import precedes the cold gate.
+and exact axiom gate on 2026-09-05. Its downloaded archive is independently
+verified locally; ledger1122 records the six-file comment-only selective seal.
+No aggregate root import or root validation is claimed.
 
 ## Exact finite transformation
 

@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP99SourceFlowPhysicalOwnerDictionary
 
 /-!
-# PRE-VALIDATION: exact public audit for BalabanCMP99SourceFlowPhysicalOwnerDictionary
+# Exact public audit for BalabanCMP99SourceFlowPhysicalOwnerDictionary
 
-Source present; .olean not materialized; result not compiler-verified.
-The promoted module and this audit require their own compiler evidence.
+Audit executed successfully in the fresh b2d5df8ad Colab gate on 2026-09-05.
+Exact public axiom sets independently verified; ledger Addendum 1122.
+Production .olean preserved; no separate audit .olean is claimed.
 -/
 
 #print axioms YangMills.RG.cmp99PhysicalStep7bSiteEquiv_eq_sourceLocalization

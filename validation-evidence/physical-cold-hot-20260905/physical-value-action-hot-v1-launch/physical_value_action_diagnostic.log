@@ -1,0 +1,24 @@
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 rejected=9
+STAGE=verify_prior
+{"command": ["/usr/bin/python3", "/content/physical-prefix-promoted-cold-v1-launch/verify_cmp99_physical_prefix_promoted_cold.py", "--helpers", "/content/physical-prefix-promoted-cold-v1-launch", "--archive", "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1-evidence.tar.gz", "--sha256", "d09d7ea9f43027ea203a674a56a4fe4326ad1741cbef00020d38141dfcda9601"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "verify_prior.log", "seconds": 0.0970391999999265, "sha256": "7d18baadcfa55418a85c6c330392fafce62f9484bcb977d32703d917de9a39b5", "stage": "verify_prior"}
+STAGE=retained_head
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "retained_head.log", "seconds": 0.002604780000183382, "sha256": "ffa28ff98b501ca3d45586220c4d34a921aa02e5334334051b92612cb4841243", "stage": "retained_head"}
+STAGE=retained_clean
+{"command": ["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "retained_clean.log", "seconds": 0.929676918000041, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "retained_clean"}
+STAGE=mathlib_pin
+{"command": ["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "mathlib_pin.log", "seconds": 0.0020400799994604313, "sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd", "stage": "mathlib_pin"}
+STAGE=text_guard
+{"command": ["/usr/bin/python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/cmp99-physical-value-action-hot-v1-logs/paths.txt", "--require-prevalidation"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "text_guard.log", "seconds": 0.06101617400054238, "sha256": "60f3ea19da1e3a68a684a14f4f14c5e53fccc42161614f5712b036c74616f643", "stage": "text_guard"}
+STAGE=import_guard
+{"command": ["/usr/bin/python3", "scripts/check_lean_import_prefix.py", "tmp/SourceFlowPhysicalValueActionRepro.lean", "tmp/SourceFlowPhysicalValueActionDraft.lean"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "import_guard.log", "seconds": 0.04891865399986273, "sha256": "d0ccc355605198f7e73ff27cdacfd509f3d0222f134d6ddb79067c3cf966dae9", "stage": "import_guard"}
+STAGE=value_action_repro
+{"command": ["lake", "env", "lean", "-o", "/content/cmp99-physical-value-action-hot-v1-logs/SourceFlowPhysicalValueActionRepro.olean", "tmp/SourceFlowPhysicalValueActionRepro.lean"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "value_action_repro.log", "seconds": 4.2418309579998095, "sha256": "ff1b098ec97b45892b9a9098189737226892e525b5272e851c112567a1c7ec07", "stage": "value_action_repro"}
+STAGE=prerequisites
+{"command": ["lake", "build", "YangMills.RG.BalabanCMP99SourceFlowPhysicalGreenRealSlice", "YangMills.RG.BalabanCMP99SourceFlowPhysicalOwnerDictionary", "YangMills.RG.BalabanCMP99SourceFlowPhysicalPointProbe", "YangMills.RG.BalabanCMP99SourceFlowFullPointSourceFibreBound", "YangMills.RG.BalabanCMP85SourceFullGreenUniformAmplitude", "YangMills.RG.FinitePiLpOwnerFibreAction"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "prerequisites.log", "seconds": 388.5822870029997, "sha256": "e20749de0c8fbd584ea03af546f515cfc6064d01a1d093343e3d97457b3172a8", "stage": "prerequisites"}
+STAGE=value_action
+{"command": ["lake", "env", "lean", "-o", "/content/cmp99-physical-value-action-hot-v1-logs/SourceFlowPhysicalValueActionDraft.olean", "tmp/SourceFlowPhysicalValueActionDraft.lean"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "value_action.log", "seconds": 40.408537844999955, "sha256": "582b74074ec8c40898ea9156282e77754ebf2475aaf1a5de49e72c3ef0500e48", "stage": "value_action"}
+STAGE=final_clean
+{"command": ["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1", "exit": 0, "log": "final_clean.log", "seconds": 0.008553458999813301, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "final_clean"}
+EVIDENCE_ARCHIVE=/content/cmp99-physical-value-action-hot-v1-logs.tar.gz
+EVIDENCE_SHA256=1f5f0f549a9a6f46f82096221b37f81e4c3f68591abaf469598d3fecd89609a9
+FINAL_STATUS=PASS COLD_SEAL=0 RUNTIME_RETAINED=1

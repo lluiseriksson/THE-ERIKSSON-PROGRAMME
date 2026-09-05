@@ -2,10 +2,11 @@ import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bCarrie
 import YangMills.RG.BalabanCMP99Eq389SourceLocalizationOwner
 
 /-!
-# PRE-VALIDATION: BalabanCMP99SourceFlowPhysicalOwnerDictionary
+# BalabanCMP99SourceFlowPhysicalOwnerDictionary
 
-Source present; .olean not materialized; result not compiler-verified.
-This promoted module is not yet a compiler-verified production seal.
+Cold-verified and .olean materialized at source b2d5df8ad on 2026-09-05.
+Downloaded evidence independently verified; see ledger Addendum 1122.
+This selective seal changes provenance comments only, not the mathematics.
 Its draft was checked at 6f20ead457a528c2e5df6cc5fa2318fe43dbeeda; see ledger 1120.
 Only the explicit public-name map and audit placement are changed.
 

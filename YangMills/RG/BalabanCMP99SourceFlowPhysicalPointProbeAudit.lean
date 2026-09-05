@@ -1,10 +1,11 @@
 import YangMills.RG.BalabanCMP99SourceFlowPhysicalPointProbe
 
 /-!
-# PRE-VALIDATION: physical point-probe public audit
+# Physical point-probe public audit
 
-Source present; .olean not materialized; result not compiler-verified.
-The promoted module and audit require their own compiler evidence.
+Audit executed successfully in the fresh b2d5df8ad Colab gate on 2026-09-05.
+Exact public axiom sets independently verified; ledger Addendum 1122.
+Production .olean preserved; no separate audit .olean is claimed.
 -/
 
 #print axioms YangMills.RG.cmp99ComplexOuter_singleFinitePiLp_eq_pointSource

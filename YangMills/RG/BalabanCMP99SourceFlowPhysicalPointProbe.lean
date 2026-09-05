@@ -3,10 +3,11 @@ import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalStep7bCarrie
 import YangMills.RG.BalabanCMP99FlatComplexFibrePointSourceFourierReconstruction
 
 /-!
-# PRE-VALIDATION: physical whole-vector point-probe transport
+# Physical whole-vector point-probe transport
 
-Source present; .olean not materialized; result not compiler-verified.
-This promoted module requires its own compiler evidence. The two draft
+Cold-verified and .olean materialized at source b2d5df8ad on 2026-09-05.
+Downloaded evidence independently verified; see ledger Addendum 1122.
+This seal changes provenance comments only. The two draft
 identities passed at source91cc4dd5d6133e0eb0fc59279d58a71487caa6c7;
 see verification-ledger Addendum1121. Only public renames and audit
 relocation change the mathematical draft. No regional inverse, derivative

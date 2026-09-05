@@ -10,8 +10,9 @@ mentioned below; it does not erase that failure's evidence.
 
 The physical action retains C*R^2, with rho,C before depth,K,Q,Nc and only
 one source-owner fibre R^4 counted. No proper regional inverse, derivative
-B0, or window15 attainment is implied. Downloaded preservation is still
-pending: no new selective seal or PRE-VALIDATION retirement is claimed.
+B0, or window15 attainment is implied. Downloaded preservation and pinned
+independent verification passed; ledger1122 seals exactly six prefix files,
+comments only. Ledger1123 preserves the HOT result without promoting it.
 Exact archive/output hashes are in
 tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md.
 20/41, TermSource=0 remain unchanged.

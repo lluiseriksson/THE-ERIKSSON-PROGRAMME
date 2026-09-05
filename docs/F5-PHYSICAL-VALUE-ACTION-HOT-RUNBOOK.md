@@ -1,4 +1,4 @@
-# Bounded action diagnostic — HOT PASS, local preservation pending
+# Bounded action diagnostic — HOT PASS, evidence preserved
 
 Execution update 2026-09-05: the exact queue below ran once in the retained
 Colab runtime and passed all ten stages. The diagnostic child exited 0 in
@@ -6,8 +6,8 @@ Colab runtime and passed all ten stages. The diagnostic child exited 0 in
 named draft axiom readouts contain exactly Classical.choice, Quot.sound,
 propext. The prior cold archive hash remained unchanged.
 This supersedes NOT CHECKED, but is neither cold promotion nor selective seal.
-Local download verification remains pending; see the continuity checkpoint
-for both immutable archive hashes and the combined ZIP hash.
+Local download verification passed; see ledger1123 and the continuity
+checkpoint for immutable archive hashes and the combined ZIP hash.
 Do not run this launch command again.
 
 Never append this unit to the active cold queue. First require the completed

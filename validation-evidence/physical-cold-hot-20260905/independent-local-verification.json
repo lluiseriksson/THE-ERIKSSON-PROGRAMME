@@ -1,0 +1,173 @@
+{
+  "cold": {
+    "audits": {
+      "owner_dictionary_audit": {
+        "YangMills.RG.card_cmp99SourceLocalizationOwner_fibre": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.cmp99PhysicalStep7bSiteEquiv_eq_sourceLocalization": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.cmp99PhysicalStep7b_blockSite_eq_sourceLocalizationOwner": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "point_probe_audit": {
+        "YangMills.RG.cmp99ComplexOuter_singleFinitePiLp_eq_pointSource": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.cmp99PhysicalStep7b_complexSingle_eq_pointSource": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "real_slice_audit": {
+        "YangMills.RG.cmp99SourceFlowPhysicalAmbientGreen_ofReal": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.cmp99SourceFlowPhysicalStep7bFieldEquiv_apply_site": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.cmp99SourceFlowPhysicalStep7bGreen_ofReal": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.norm_cmp99SourceFlowPhysicalStep7bGreen_ofReal_apply": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "87532b6f4ac30a032891119eb46ae6f40d2888b039dbdad0bed128f5ab151bf1",
+    "evidence_json_payload_sha256": "61b6ef420442bd09e91517128485c131d2f917849a5e0c03e37bf3b0b240a1f8",
+    "production_outputs": {
+      "BalabanCMP99SourceFlowPhysicalGreenRealSlice.olean": "4a60ce6c6e8db302791d70570557c6c80b2675865628d875ae82de25e92f8603",
+      "BalabanCMP99SourceFlowPhysicalOwnerDictionary.olean": "b734d5798d6767b3f8e010c8b828e4f78a2c2149f56e00fbe87429ead5d6d7e2",
+      "BalabanCMP99SourceFlowPhysicalPointProbe.olean": "ec49bd7e22ecd42f1c2beb9127bf773cc72f881008e4a009fa163bb2edf8aa0e"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.BalabanCMP99SourceFlowPhysicalGreenRealSlice"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "real_slice_focal.log",
+        "output_sha256": "021c5f802266a0c78fa258318e742c369e4745fbefa6bde4967bd87bee7a35d3",
+        "seconds": 2599.263246499,
+        "stage": "real_slice_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/BalabanCMP99SourceFlowPhysicalGreenRealSliceAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "real_slice_audit.log",
+        "output_sha256": "b9bb5a6cc14121490bac73c2811b4421cb89e820cad7c1ff7760f16144ba06e3",
+        "seconds": 20.792752153000038,
+        "stage": "real_slice_audit"
+      },
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.BalabanCMP99SourceFlowPhysicalOwnerDictionary"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "owner_dictionary_focal.log",
+        "output_sha256": "088f922aae4c74e954c3540a63488912214da6e60e5afd3fa499255569fddadd",
+        "seconds": 46.88385698100001,
+        "stage": "owner_dictionary_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/BalabanCMP99SourceFlowPhysicalOwnerDictionaryAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "owner_dictionary_audit.log",
+        "output_sha256": "bbe7ccc2002ca5b674529f1fc34d21d4b282f9092dc488f772956ba382389a3b",
+        "seconds": 8.18200041099999,
+        "stage": "owner_dictionary_audit"
+      },
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.BalabanCMP99SourceFlowPhysicalPointProbe"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "point_probe_focal.log",
+        "output_sha256": "4b77cce35b32002c865182f99ef9a842638a8476b743600fcbe4354324420ba5",
+        "seconds": 23.23642767299998,
+        "stage": "point_probe_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/BalabanCMP99SourceFlowPhysicalPointProbeAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-prefix-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "point_probe_audit.log",
+        "output_sha256": "c4bf5244f4a5d4deb2dafd0f2a44e410fd4120e123a296a98c406b50306d547c",
+        "seconds": 8.217919137999615,
+        "stage": "point_probe_audit"
+      }
+    ],
+    "runner_rev": "cmp99-physical-prefix-promoted-cold-v1",
+    "source_sha": "b2d5df8ad6d600317b267bf87522a8bf472e9ea0",
+    "stages_verified": 20,
+    "status": "PASS"
+  },
+  "cold_inner_sha256": "d09d7ea9f43027ea203a674a56a4fe4326ad1741cbef00020d38141dfcda9601",
+  "hot": {
+    "cold_seal": false,
+    "first_error": null,
+    "outputs": {
+      "SourceFlowPhysicalValueActionDraft.olean": "60d94ec9f648e3d36b5a58a61d96d631e048cbe8a558bbf018ca584bfd1f2bb6",
+      "SourceFlowPhysicalValueActionRepro.olean": "040c0fe02517f5071930b12c0c3694321aaa0f19406e084d5c798fa9913132c2"
+    },
+    "public_axioms": 3,
+    "source": "7bdc0fa1e76b3e2d3d64d1822bb30459d6697979",
+    "stages": 10,
+    "status": "PASS"
+  },
+  "hot_inner_sha256": "1f5f0f549a9a6f46f82096221b37f81e4c3f68591abaf469598d3fecd89609a9",
+  "outer_sha256": {
+    "physical-prefix-promoted-cold-v1-preservation-20260905.tar.gz": "6075b75a4f58efe929f9f97de12347a700581d8f58034d2b37a96a78b6553a1e",
+    "physical-value-action-hot-v1-preservation-20260905.tar.gz": "dc411e6f16272fd8af308b7f6372d9a5d8ca3128d076f4015e0965f24e05fb75"
+  },
+  "scope": "independent local evidence verification; HOT is not cold seal",
+  "seconds": 0.18233929999951215,
+  "status": "PASS",
+  "zip_sha256": "69f0b70a76fe636c1e9745c2b3307ad55ddaab99dce838616037e370217e573d"
+}

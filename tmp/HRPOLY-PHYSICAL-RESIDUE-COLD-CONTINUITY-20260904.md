@@ -1,5 +1,29 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Durable preservation and selective cold seal — 2026-09-05 18:00 UTC
+
+This supersedes all download-pending observations below. The user supplied
+C:/Users/lluis/Desktop/Descargas/hrpoly-physical-cold-and-hot-evidence-20260905.zip.
+Size364510 and SHA25669f0b70a76fe636c1e9745c2b3307ad55ddaab99dce838616037e370217e573d
+matched the Colab bundle exactly. Safe bounded extraction and both pinned
+independent original verifiers passed locally, one process, exit0,
+wall0.4333328s, observed24969216 peak bytes; no Lean/Lake or network.
+Durable evidence: validation-evidence/physical-cold-hot-20260905.
+Report SHA2568fb41422e9817e8eac0c5a4f69a7fa723585e2b1996f2723a6bd95111f06a282.
+Folder-scoped -text attributes preserve exact evidence bytes in Git.
+
+Ledger1122 records the six-file prefix seal; all text outside the initial
+module docstring matched cold source b2d5df8ad in6/6 files. Ledger1123
+preserves HOT value-action source7bdc0fa1e without claiming its cold seal.
+Runtime aa59ca737da9 disconnected/deleted around17:59UTC after preservation;
+UI reconnect state checked and sole tab closed before18:00:30UTC.
+No remote calculation or auxiliary browser tab remains from this unit.
+
+Next: apply the finite three-name/two-file promotion in
+docs/F5-PHYSICAL-VALUE-ACTION-PROMOTION-PLAN.md, compare mathematics against
+the exact HOT Git blob, then prepare its own immutable-source cold gate.
+20/41, TermSource=0, window15 unattained; full hRpoly objective remains open.
+
 ## Both gates PASS; transport pending — 2026-09-05
 
 This supersedes the HOT-running observation below. Colab host aa59ca737da9
