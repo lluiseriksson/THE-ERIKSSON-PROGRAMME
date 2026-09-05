@@ -1,5 +1,25 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Live promoted geometry cold gate — 2026-09-05 19:22:51UTC
+
+This supersedes the no-runtime/next-promotion state below. Source59160603d
+contains the exact HOT-to-public name promotion (mathematical-text comparison
+PASS). Notebooka6098119b5b109653df8f5597e7862865b4c576a, runner/verifierab13c0e75,
+launcher9d6b2f2e8. One execution, accountlluiseriksson@gmail.com, CPU/highRAM
+50.99GB,noGPU, host29f256073fc7, PID4917. Sole browser tab2.
+RUNNER_REVneumann-halfcell-block-reflection-cold-v1, SOURCE_SHA59160603dda023d9f577ea7edc96f24995de1ac5.
+HASH_GATE=PASS at19:22:51.352330UTC; at19:23:47UTC stage lake_update,
+preceding source hashes and both text guards passed. Not a final verdict.
+
+Read-only status in the existing Colab terminal:
+`ps -p 4917 -o pid,etime,stat,args; tail -n 12 /content/neumann-halfcell-block-reflection-cold-v1-launch/physical_cold_graph.log`
+Final status: /content/neumann-halfcell-block-reflection-cold-v1-launch/launch-final-status.json.
+Outer: /content/neumann-halfcell-block-reflection-cold-v1-preservation-20260905.tar.gz.
+Inner: /content/hrpoly-neumann-halfcell-block-reflection-cold-v1-evidence.tar.gz.
+Never reexecute the cell. Preserve and independently verify via
+scripts/preserve_verify_neumann_halfcell_cold.py before retiring the two
+promoted headers or deleting runtime.20/41,TermSource0,window15 unchanged.
+
 ## Current checkpoint — 2026-09-05 after19:14UTC
 
 Cold value-action seal d33bf1435 is published. HOT reflection v4 passed
