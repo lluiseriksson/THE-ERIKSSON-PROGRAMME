@@ -10,19 +10,19 @@ import time
 import types
 import urllib.request
 
-SOURCE = '3918b24e4e78c2dafccc0062f0b62becbdd9fd66'
+SOURCE = 'e46c93e3aa337bcf0c0feea19d61e97522f22861'
 BASE = '10437a1a824bdd920282778cabe2f3da6c40ce4e'
 ROOT = Path('/content/hrpoly-cmp99-physical-value-action-promoted-cold-v1')
-WORK = Path('/content/neumann-block-reflection-hot-v3')
-INPUT = ROOT/'tmp'/'neumann_block_reflection_v3'
+WORK = Path('/content/neumann-block-reflection-hot-v4')
+INPUT = ROOT/'tmp'/'neumann_block_reflection_v4'
 PRIOR = Path(str(ROOT) + '-evidence.tar.gz')
 PRIOR_HASH = '0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901'
 BLOBS = {
-    'NeumannBlockReflectionRepro.lean': '7e8a9816b91bf68f4bef5814fc434720fe811347b5e33d916e92f0903931c7c9',
-    'NeumannBlockReflectionDraft.lean': '9ab31397702dc27b0a01f18bdd3fc0a26f323be9ef88b84fe7a441b258b25728',
+    'NeumannBlockReflectionRepro.lean': '9f364d282b7241bd2e523a8bf37cf640d2fc151618c75aa6a6e817e6bf703aee',
+    'NeumannBlockReflectionDraft.lean': '911f44549a3fe9a6491ca9df3906fd564243d2abb79bd0bdc102e7a9336d7c94',
 }
 NAMES = {
-    'NeumannBlockReflectionRepro.lean': {'neumannBlockReflection_div_repro'},
+    'NeumannBlockReflectionRepro.lean': {'neumannBlockReflection_div_repro', 'neumannBlockReflection_finrev_repro'},
     'NeumannBlockReflectionDraft.lean': {
         'YangMills.RG.neumannBlockReflectionDraft_involutive',
         'YangMills.RG.blockSite_neumannBlockReflectionDraft',
