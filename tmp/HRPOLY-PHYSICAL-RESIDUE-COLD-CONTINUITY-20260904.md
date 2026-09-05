@@ -1,5 +1,43 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Current continuation — 2026-09-05 13:52 UTC
+
+Physical retry-v2 finished PASS and was downloaded/verified locally;
+see ledger1119 and validation-evidence/cmp99-physical-real-slice-retry-v2-59f9f522-20260905.
+Four physical drafts,18records,2actual.olean output hashes; no promotion.
+Outer hash ea1fbf70419d803d4707fc452e0cd2b8ceca404514aeae02e96e0d0420d33286;
+inner4981054f53a473c7722a6ea475feaa6993e878074b7ec1cfc7bbe28266fb8f50.
+Windows expected-path portability issue in old verifier is isolated by
+scripts/verify_physical_retry_v2_posix_adapter.py; no evidence transformed.
+Old launcherPID615 and all Lean/Lake processes absent before continuation.
+
+One new bounded HOT unit launched in the SAME CPU/highRAM runtimehost685dabaa0a79,
+tab11. Actual start2026-09-05T13:51:54.819662+00:00, launcherPID18947.
+Source6f20ead457a528c2e5df6cc5fa2318fe43dbeeda over retainedsource59f9f522;
+runnerc1536a7871d7671de15f79d8ebdf74a600cb2476,
+verifierbaa65237eea398d7929a86ad89c218fe2a6958be,
+launcherabbcbb44198db0550fa8e3e7b0407c0082bc07a7,
+launcher hash30848b0c23f17b212abbbd42bad9a5f9e56e3bd149f10f91fe620492976ccf03.
+Do not reexecute the completed notebook cell or relaunch HOT.
+
+Read-only probes:
+
+```
+ps -p 18947 -o pid,stat,etime,args
+tail -n 8 /content/owner-point-dictionary-hot-v1-console.log
+tail -n 8 /content/owner-point-dictionary-hot-v1-launch/owner_point_diagnostic.log
+```
+
+Queue: verify priorPASS/retainedhead/clean/pin, exact4sourceblobs,
+text/importguards, owner-cast repro, point-probe repro, necessary incremental
+prerequisites, ownerdictionary3axioms, pointprobe2axioms, finalclean.
+Stop first error. No project source mutation; existing draft allowed only
+byte-identical to its Git blob. HOT success is NOT a cold seal.
+Outer output/content/owner-point-dictionary-hot-v1-preservation-20260905.tar.gz;
+inner/content/cmp99-owner-point-dictionary-hot-v1-logs.tar.gz.
+Download/verify before disconnect/delete. Monitorphysical-real-slice-retry-v2
+updated to this handoff, quiet while unchanged.20/41,TermSource0 unchanged.
+
 ## Live continuation — 2026-09-05 13:10 UTC
 
 One Colab runtime is active: CPU/high RAM50.99GB, accountlluiseriksson@gmail.com,

@@ -46239,3 +46239,30 @@ No repeated cold run. No processes at12:46:19UTC; runtime deleted about
 The generic action pays one owner-fibre cardinality. Physical real-Green/
 owner dictionary, R^4 against F4 R^-2 (retaining R^2), regional inverse and
 derivative B0 remain.20/41,TermSource0,window15 unattained.
+
+## Addendum 1119 — physical real-slice retry-v2 diagnostic PASS (2026-09-05)
+
+Source59f9f522f3f731ac8a6270ac5c3ae719b1b201f6, fresh Colab CPU/highRAM,
+host685dabaa0a79; actual start13:07:22.137527UTC. Physical diagnostic
+exit0/2299.775889465s, four draft declarations with exact allowed axioms.
+Repro3.710s, prerequisites2114.319s, physical draft31.396s, clean check0.810s.
+No project cache restored; nevertheless cold_seal=false by the draft contract.
+No PRE-VALIDATION mark retired and no root/production seal inferred.
+
+Downloaded outerea1fbf70419d803d4707fc452e0cd2b8ceca404514aeae02e96e0d0420d33286;
+inner4981054f53a473c7722a6ea475feaa6993e878074b7ec1cfc7bbe28266fb8f50.
+Evidence foldercmp99-physical-real-slice-retry-v2-59f9f522-20260905 contains
+immutable archives/helpers and a detailed README. Local verification
+initially rejected CONTRACT=queue because pathlib constructed Windows
+expected paths for Linux commands. A traceable POSIX-expectation adapter
+changes no evidence bytes; the pinned original checks then passed:
+18records,4exactaxioms,2actual.olean hashes,7adversarial self-tests.
+The .olean hashes and adapter measurement are recorded in the evidence README.
+
+Prepared next unit source6f20ead45: two Mathlib-only repros, exact owner
+dictionary/cardinality and exact real point-probe carrier transport.
+Runnerc1536a787, verifierbaa65237e, launcherabbcbb441; HOT only, stop-on-first-error,
+requires verified current PASS before reuse. Verifier synthetic tests passed
+8corruptions plus valid FAILprefix (0.07990s,25,604,096peakbytes,noLean).
+Runtime retained for this bounded prepared continuation, not idle monitoring.
+20/41,TermSource0,window15 compatible but unattained.
