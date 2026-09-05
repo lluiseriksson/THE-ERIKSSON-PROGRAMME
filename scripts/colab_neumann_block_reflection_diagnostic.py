@@ -13,7 +13,7 @@ import urllib.request
 SOURCE = '47e975611f59ee8d95ec39317d4731918fe3b1bd'
 BASE = '10437a1a824bdd920282778cabe2f3da6c40ce4e'
 ROOT = Path('/content/hrpoly-cmp99-physical-value-action-promoted-cold-v1')
-WORK = Path('/content/neumann-block-reflection-hot-v1')
+WORK = Path('/content/neumann-block-reflection-hot-v2')
 PRIOR = Path(str(ROOT) + '-evidence.tar.gz')
 PRIOR_HASH = '0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901'
 BLOBS = {
@@ -52,9 +52,13 @@ def main():
                 payload = response.read()
             assert hashlib.sha256(payload).hexdigest() == digest, 'SOURCE_HASH='+name
             (WORK/name).write_bytes(payload)
+            destination = ROOT/'tmp'/name
+            assert not destination.exists() or destination.read_bytes() == payload, 'EXISTING_SOURCE_DIFFERS='+name
+            if not destination.exists():
+                destination.write_bytes(payload)
         for name in BLOBS:
             log = WORK/(name+'.log')
-            command = ['lake','env','lean','-o',str(WORK/(name+'.olean')),str(WORK/name)]
+            command = ['lake','env','lean','-o',str(WORK/(name+'.olean')),'tmp/'+name]
             started = time.perf_counter()
             timed_out = False
             with log.open('xb') as out:

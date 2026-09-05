@@ -61,3 +61,12 @@ weakening the guard. The two-file text/import guards then passed in
 No local Lean was run. Compile the Mathlib repro first, then the project
 draft in the retained Colab checkout only after the current cold gate ends.
 Keep its logs and outputs separate from the immutable cold archive.
+
+The first HOT attempt (source47e975611, runnerbb93a1f41) stopped before
+elaboration: Lean requires the input file to be inside the project root.
+Exit1 in0.866441873s; raw log SHA256
+ec55a0651de5ee0e6d1dc1eef73b54adaa8659a00a2485074dde83877aaa7e2d.
+FAIL archive44dffcda0ce7c6295b743d5261c30eb8f483bb3a9158ac114c3a19d06cab3544.
+No mathematics was tested. The v2 runner places the same hash-pinned blobs
+under the retained checkout's tmp directory, refuses differing pre-existing
+files, and keeps logs/outputs in a new directory. No source proof changes.
