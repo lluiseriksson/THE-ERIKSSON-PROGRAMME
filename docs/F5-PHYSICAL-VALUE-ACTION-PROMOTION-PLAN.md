@@ -1,9 +1,14 @@
-# Physical value-action promotion — prepared, not executed
+# Physical value-action promotion — written PRE-VALIDATION, cold gate pending
 
-Prerequisite: durable preservation and independent verification of the
-physical-prefix cold archive and the separate value-action HOT archive.
-The current transport failure must not be relabelled mathematical FAIL,
-nor silently waived for selective sealing.
+Prerequisite satisfied by ledger1122/1123: both immutable downloaded
+archives passed pinned independent verification. The exact two-file
+promotion below is now written, but has not been compiled in promoted form.
+Its mathematical text matches the HOT Git source after reversing only the
+three public renames, removing the initial provenance comment and moving
+the axiom prints. The private helper and all proofs/imports are unchanged.
+Two-file overlay PRE-VALIDATION guard passed0.1368713s/13709312observed bytes;
+import-prefix guard passed0.0979456s/13901824observed bytes. These are text
+checks only, not compiler evidence. No runtime or CI was opened for them.
 
 ## Exact source and scope
 
@@ -13,7 +18,7 @@ Binary Git blob SHA256:
 bfa16d9e39c9ee6518c9079cb61544d86864c6c87ad480af2e4ca5783bf76555.
 This exact draft passed HOT, not a fresh promoted-source gate.
 
-The future production file is BalabanCMP99SourceFlowPhysicalValueAction.lean,
+The production file is BalabanCMP99SourceFlowPhysicalValueAction.lean,
 with a separate BalabanCMP99SourceFlowPhysicalValueActionAudit.lean.
 The transformation is restricted to provenance comments, moving the three
 axiom prints to that audit, and the following public-name mapping:
@@ -46,7 +51,8 @@ Keep PRE-VALIDATION in the new objects until their own cold evidence passes.
 6. Preserve raw exits, immutable logs, source/output hashes, exact axiom
    sets and independently verified downloaded evidence before sealing.
 
-This plan creates no production module and starts no computation.
+Manifest: tmp/f5_physical_value_action_promoted_paths.txt, exactly two files.
+No cold computation has started for this promotion.
 Even a successful future seal closes only the full ambient value action.
 Proper regional inverse/reflection and derivative estimates remain separate
 named obligations. 20/41, TermSource=0, window15 unattained.

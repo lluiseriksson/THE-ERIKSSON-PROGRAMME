@@ -1,5 +1,20 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## After cold seal57579615a — next promotion written PRE-VALIDATION
+
+The seal and durable evidence were fast-forward published at
+57579615ad6218894b0551f25465f2da7b455fcd. No original source proof changed.
+The next two-file physical value-action promotion is now written:
+BalabanCMP99SourceFlowPhysicalValueAction.lean and its Audit.lean.
+Exact three-name mapping and acceptance gates are in the promotion plan.
+Reversing the public-name mapping and excluding provenance/audit placement
+reproduced the HOT source mathematics exactly. Both lightweight text guards
+passed; no promoted-source compiler result is claimed. Do not use HOT as
+its cold seal. Next: hash these Git blobs, prepare immutable runner/verifier,
+then one fresh Colab CPU/high-RAM focal/audit gate with prerequisites.
+Runtime from the previous unit was deleted; zero browser tabs remain.
+20/41, TermSource=0 and window15 unattained remain unchanged.
+
 ## Durable preservation and selective cold seal — 2026-09-05 18:00 UTC
 
 This supersedes all download-pending observations below. The user supplied
