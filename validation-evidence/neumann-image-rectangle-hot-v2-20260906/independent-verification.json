@@ -1,0 +1,204 @@
+{
+  "archive_sha256": "aae64e9f3eb9966b7bfe1c90398e9460608082c2d3388fa4e2a67d2639f01f2e",
+  "axioms": {
+    "mathlib_repro": {
+      "YangMills.RG.neumannImageRectangleCoordinateEquiv": [
+        "Quot.sound"
+      ],
+      "YangMills.RG.neumannImageRectangleFamilyEquiv_apply": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannImageRectangleFamily_bijective": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannImageRectangleIndexEquiv_apply": [
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannImageRectangle_fixedPoint_injective": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "physical_draft": {
+      "YangMills.RG.neumannImageRectangleCoordinateEquiv": [
+        "Quot.sound"
+      ],
+      "YangMills.RG.neumannImageRectangleFamilyEquiv_apply": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannImageRectangleFamily_bijective": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannImageRectangleIndexEquiv_apply": [
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannImageRectangle_fixedPoint_injective": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "cold_seal": false,
+  "outputs": {
+    "mathlib_repro.olean": "8036566fa39b40d35a1d3171d48c71b1c1d971cfef91906c81e0ef80d0dc2a98",
+    "physical_draft.olean": "d87715ec77e35fbb5df0f5aa3e3861b422ab67e76e908943c8b061dcca5793a0"
+  },
+  "records": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "81b485b5cb169624de69507c86bfbfa5c4896f052a78ed6dc50eb843f1fc8f30",
+      "seconds": 0.02504862800014962,
+      "stage": "base_head",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        ".lake/packages/mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd",
+      "seconds": 0.0040371680006501265,
+      "stage": "mathlib_pin",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "ffc062887a88810ba8aa56371c6f0ef93d49dad1c0bc7fe99a8d7b264d3db0b1",
+      "seconds": 0.06448201999955927,
+      "stage": "lean_version",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lake",
+        "--version"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "9f4a3130a140a735d63f1028a8437b9eb7a7b0fcea54f373c31fadd0fe5f43c6",
+      "seconds": 0.064406350000354,
+      "stage": "lake_version",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD",
+        "--",
+        "YangMills",
+        "lean-toolchain",
+        "lake-manifest.json"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.032264065001072595,
+      "stage": "clean_before",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-o",
+        "/content/neumann-image-rectangle-hot-v2-evidence/mathlib_repro.olean",
+        "tmp/neumann-image-rectangle-hot-v2/mathlib-repro.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "9f6b10a67884227ed69812ce2c95b721cb48d8b05eac0f5978b16683de47c627",
+      "seconds": 3.778867855000499,
+      "stage": "mathlib_repro",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP89NeumannReflectionRepresentation"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "bf50139cf2dc648d0d4911de4b5730508d44e8e75cba57ad55a65f8fef116ecd",
+      "seconds": 8.041153410000334,
+      "stage": "physical_prerequisites",
+      "timed_out": false,
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-o",
+        "/content/neumann-image-rectangle-hot-v2-evidence/physical_draft.olean",
+        "tmp/neumann-image-rectangle-hot-v2/NeumannImageRectangleCoverageDraft.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "9f6b10a67884227ed69812ce2c95b721cb48d8b05eac0f5978b16683de47c627",
+      "seconds": 4.628698558999531,
+      "stage": "physical_draft",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD",
+        "--",
+        "YangMills",
+        "lean-toolchain",
+        "lake-manifest.json"
+      ],
+      "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.008071675998507999,
+      "stage": "clean_after",
+      "timed_out": false,
+      "timeout_seconds": 120
+    }
+  ],
+  "source": "fbf2e61f38afbe050200a0c7aa275b46ae45a924",
+  "status": "VERIFIED_HOT_PASS"
+}

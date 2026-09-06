@@ -46847,3 +46847,28 @@ report3708d89ca797d3bcc46866f9ad7d4bc4964d0e9650d510e9818b60a490bb8896.
 Durable validation-evidence/neumann-image-rectangle-hot-v1-fail-20260906.
 Compiler error-recovery sorryAx placeholders are not accepted evidence.
 Prepared retry remains PRE-VALIDATION; no new bootstrap, CI or counter move.
+
+## Addendum1142 — rectangle family HOT v2 PASS, 2026-09-06
+
+Sourcefbf2e61f38afbe050200a0c7aa275b46ae45a924; supporting definition blobs
+fixed separately at1db42284358feffc281d9c2d28b3dca1d26db64d. Runnerc40a8256e,
+SHA2566f15b91dd6bd1369b80acc0fbe830db584c5b16d69e597b3a173d881965d6380.
+Same runtime/clean af35fbb8c checkout, start09:45:27UTC. Minimal repro
+3.778867855s, missing two prerequisites8.041153410s (3287jobs total), actual
+draft4.628698559s; all nine stages exit0. Exact five-name audits agree:
+one Quot.sound only, one propext/Quot.sound, three allowed trio.
+The first equivalence now pins beta/p; no theorem or hypothesis changed.
+Before execution, editor append was caught and cleared: one SOURCE/REV only.
+
+Archiveaae64e9f3eb9966b7bfe1c90398e9460608082c2d3388fa4e2a67d2639f01f2e,
+independent reader PASS exit0/0.142503s/21827584observed RSS.
+Report9b5978b4e1cc41b4f21b88d9d1c540ca85334e219d9b37634245293ab7305c39.
+Repro output8036566fa39b40d35a1d3171d48c71b1c1d971cfef91906c81e0ef80d0dc2a98;
+actual outputd87715ec77e35fbb5df0f5aa3e3861b422ab67e76e908943c8b061dcca5793a0.
+Durable validation-evidence/neumann-image-rectangle-hot-v2-20260906.
+Reader mutation test accepts the real PASS and rejects21 mutations/old
+failures, exit0/0.2641723s/25899008observed RSS. No Windows compiler.
+This is literal multidimensional image-family coverage and fixed-point
+image injectivity. HOT only; keep PRE pending promoted cold validation.
+No summability, inverse, B0 or window15 follows from bijectivity alone.
+20/41 and TermSource0 unchanged. Next: literal Eq246 source-image insertion.
