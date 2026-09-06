@@ -27,8 +27,15 @@ Suite checks commands,6 names,2 blobs, launcher/preserver pins, one-cell
 notebook, exact scope accepted1/rejected3, and rejection of an actual HOT
 archive as cold. None of these local checks is compiler evidence.
 
-Runtime NOT opened yet. Previous7ce7922a12a6 was deleted after preserving
-all results. Prepare before connecting CPU/highRAM/noGPU; execute once.
+Runtime opened 2026-09-06T12:08:18.743798+00:00, CPU/highRAM/noGPU,
+50.99 GB visible, account lluiseriksson@gmail.com. One cell executed once:
+HASH_GATE=PASS, LAUNCH_PID=8742, SOURCE and RUNNER_REV exactly as above.
+Notebook checkpoint3891a802042a6d68cb71b88d1e97c7dd57cdf39d, browser tab5.
+At12:13UTC the cell was still running; no final verdict is inferred.
+Previous7ce7922a12a6 was deleted after preserving all results. Its obsolete
+tab was closed; exactly one tab remains, the current running gate.
+Do not rerun the cell. Output:
+/content/neumann-complete-fibre-promoted-cold-v1-preservation-20260906.tar.gz.
 After PASS download/verify independently, retire only the two certified
 headers and record hashes. After FAIL preserve first error, no partial seal.
 Do not move20/41 for this carrier dictionary. R2d.2b finite-action endpoint,
