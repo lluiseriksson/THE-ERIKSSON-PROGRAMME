@@ -543,3 +543,13 @@ right-inverse law as a premise. This audit does not refute those conditional
 theorems, nor withdraw a periodic or finite-action seal. It locates a missing
 geometric hypothesis/producer for discharging their physical boundary law.
 20/41, TermSource0 and window15 unattained remain unchanged.
+
+Prepared a one-name finite probe of that exact mismatch in
+`tmp/NeumannRectangleWrapProbeDraft.lean`. It uses N=3, all rectangle sides3,
+and the positive bond from coordinate2 to the torus coordinate0; the integer
+forward endpoint3 is outside the half-open side. The actual rectangle and
+ActiveGaugeRegion.bonds definitions occur in the statement, not a toy graph.
+Text/import guards passed in0.1236922s with14991360 observed peak RSS, but
+COMPILER_CHECKED=0. It is NOT appended to the live cold queue or silently
+added to the already pinned internal-bond HOT runner. A separate bounded
+compiler check is needed before this draft can be called a sealed no-go.
