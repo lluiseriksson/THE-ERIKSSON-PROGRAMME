@@ -46489,3 +46489,26 @@ Bounded repair pins the existing membership iff's d/M/N' arguments and uses
 its implication directly. No statement, coefficient or hypothesis changed;
 PRE-VALIDATION retained pending HOT correction and later selective cold seal.
 20/41,TermSource0,window15 unattained remain unchanged.
+
+## Addendum 1128 — corrected counting reflection diagnostic PASS (2026-09-06)
+
+Source06a928178b22c42c4ecc5387461b808ee3a19dea; runnera336b6fa,
+notebookae6d6bd7, host3e1d8ed2110d, CPU/highRAM50.99GiB/noGPU.
+Single launch05:41:39.700843UTC PID8252, total1541.415481849s.
+Prerequisites8486 jobs exit0/1368.899147928s; repro exit0/5.483224508s;
+draft exit0/10.627043463s. All five named axiom blocks exact permitted trio.
+The original v1 FAIL and its compiler-inserted sorryAx remain rejected/preserved.
+
+Actual downloaded outer99286bytes SHA256
+ed2cda8e2fac4c51a1d49b140b5956fd0ba05134b9e0f2dddf4c1fecfa522d92;
+innera204cb56197db16a315a9f5432b65f31b5e595ad454e7a1686be933c85cf7df7.
+Draft output99b31f3f6f9a27663714391afd26b2796499731e3e97863f3c766b7f96869ec8.
+Independent preservation exit0/0.2614003s, observed19189760peak bytes;
+record4b25845fafdbc8162c92af893fb1b6fdbf9befe68b4cce98bece4043a6996d41.
+Durable folder validation-evidence/neumann-counting-reflection-diagnostic-v2-20260906.
+
+This is a diagnostic PASS, cold_seal=false; PRE-VALIDATION remains.
+It proves the full-carrier probe reflection, not arbitrary regional invariance
+or the retained Neumann inverse. Runtime retained for the separately pinned,
+bounded HOT counting-mass dictionary, after prior evidence verification.
+20/41,TermSource0,window15 unattained remain unchanged.

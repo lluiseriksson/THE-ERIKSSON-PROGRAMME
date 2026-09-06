@@ -1,8 +1,9 @@
 # F5 regional inverse: source-object gates after ambient value action
 
 Current execution state (2026-09-06): v1 failed at the full-carrier membership
-rewrite, preserved in ledger1127. v2 tests the one pinned membership repair;
-see `docs/COUNTING-REFLECTION-V2-CONTINUITY-20260906.md`. The running v2 and
+rewrite, preserved in ledger1127. v2 passed the pinned membership repair and
+its actual archive was independently verified/preserved (ledger1128);
+see `docs/COUNTING-REFLECTION-V2-CONTINUITY-20260906.md`. The diagnostic v2 and
 the separate retained-mass draft below do not retire PRE-VALIDATION marks.
 
 ## Next bounded R2 diagnostic (after cold geometry seal81260f49)
@@ -22,8 +23,8 @@ obligations. A two-theorem leaf repro isolates the dependent finite-box cast
 and the injective if-congruence before the physical dependency graph builds.
 Files: tmp/NeumannGeneratedCountingMassReflectionRepro.lean and
 tmp/NeumannGeneratedCountingMassReflectionDraft.lean. They have not been
-fully validated: the two-name repro has now passed in the live diagnostic,
-but the physical prerequisites/draft have no final verdict yet. No marker
+promoted as production: the two-name repro, prerequisites and three-name
+draft all passed the v2 diagnostic. No cold production marker
 is retired and counters20/41,TermSource0 are unchanged.
 
 The user-supplied physical-cold/HOT ZIP was reidentified by exact SHA256
