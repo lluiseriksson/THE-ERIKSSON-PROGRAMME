@@ -1,5 +1,14 @@
 # Six-name averaging/field-action cold cohort
 
+LATEST: complete-fibre HOT v3 PASS atb7ac45aca, all9 stages0 and6 exact
+allowed-trio names; archive/report independently verified, ledger1152.
+v1/v2 failures preserved in1150/1151. Runtime7ce7922a12a6 is now DELETED;
+no process remains in this session. Do not rerun historical cells or assume
+that the old terminal display is a live process. Production promotion is
+PRE-VALIDATION and its fresh cold runner must be prepared before reconnect.
+Cold1149 remains sealed, no counter movement. Read the R2 map's latest
+carrier status and remaining finite endpoint before creating another brick.
+
 LIVE supersession11:49UTC: cold seal committed atc671d2d7a8db7794bce00759dc764d0795609258,
 published together with final HOT instruments throughfce72cf3e. Cell3 was
 cleared after preserving its cold output, then replaced and executed ONCE

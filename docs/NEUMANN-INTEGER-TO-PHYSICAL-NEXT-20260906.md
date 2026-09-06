@@ -28,6 +28,18 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 
+Current R2d.2b carrier substep: HOT PASS atb7ac45acae587b0175526006f5a8d9a4247dea7c,
+six exact names/9 stages0, archive independently preserved, ledger1152.
+Its production module NeumannGeneratedCompleteFibre and audit are exact-body
+promotions and remain PRE-VALIDATION pending fresh cold focal/audit. v1/v2
+failures remain in1150/1151, not erased. Runtime has been deleted safely.
+Next finite endpoint is still to consume this constructed fibre in the
+actual full-field mass/average action and the common integer image. For the
+mass use the actual fine output's generated owner, whose membership is now
+produced by the first lemma, then the sealed dependent-owner iff. A free
+terminal-site/coarse-site identification is unnecessary for that endpoint.
+Do not count this HOT substep as cold, a right inverse, uniform B0 or20/41.
+
 Prepared R2d.2b on2026-09-06, NOT compiler-verified:
 `tmp/NeumannGeneratedCompleteFibreDraft.lean`. Six proposed audit names
 prove recursive lifted membership via the literal generated terminal owner,

@@ -47085,3 +47085,32 @@ local verification exit0/0.4871674s/23224320RSS. v2 explicitly records each
 dependency ref at the verified cold base8570618f2, while the draft/repro are
 at their retry source; selective header retirement is not mistaken for a
 change to the base bytes. Pins verified7/7.20/41 andTermSource0 unchanged.
+
+## Addendum 1152 — constructed complete fibre HOT PASS (2026-09-06)
+
+Sourceb7ac45acae587b0175526006f5a8d9a4247dea7c, runner2cb440c18c085b073d17910efab889dc48357488,
+runner Git-blob SHA92e0fd1e0296675bab5d7070d980534e065955116e92ee6de6352a223aad5646.
+Start11:58:07.798852UTC, PID19669, retained CPU/highRAM7ce7922a12a6.
+All9 HOT stages exit0: exact generic repro8.395019459s,
+prerequisites8.088724992s, physical six-name draft9.044223956s.
+All6 exact declarations have {propext,Classical.choice,Quot.sound};
+tracked source unchanged before/after. This is NOT a fresh cold seal.
+
+Downloaded archive79e156198c179fab5cfefc88bcf5b70fec788bbd90302a5d64f5c1a2713813da;
+independent report11da1a4953ffd2b2964f16eddd1ff384351cb4364ddcdbb08f58a5276e9d2441;
+physical output4ab8c1cc2b8e76284767cc68f95fc7c5ba18825148e48acb7bebbb971381ae99;
+repro output65ea9997445aec18db7f356c529da487c72f2e1d0fb14fded71fd4a9c1c8ece4.
+Independent local preservation exit0/0.507963s/23781376RSS under
+validation-evidence/neumann-generated-complete-fibre-hot-v3-pass-20260906.
+
+Constructed, not supplied: lifted membership iff terminal owner membership,
+whole active fibre equivalence with offsets, literal integer B*y+r, fibre
+sum and owner-indicator sum. No B^d multiplier inserted. This covers canonical
+iterated lifts, not arbitrary truncated fine regions. It is not a regional
+inverse or uniform B0.20/41,TermSource0,window15 unattained unchanged.
+
+Production NeumannGeneratedCompleteFibre and its six-name audit are exact
+HOT-body promotions, still PRE-VALIDATION until fresh compilation. Exact-body,
+text/import tests passed exit0/0.3270295s/15675392RSS. The runtime was then
+disconnected/deleted after independently preserving all cold/HOT archives;
+UI confirms reconnect state. No new cold run has been started yet.
