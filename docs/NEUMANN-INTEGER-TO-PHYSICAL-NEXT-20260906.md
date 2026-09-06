@@ -160,3 +160,11 @@ Drafttext/import guards passed0.1491296s/14835712observed RSS; the exact Git-blo
 minimal-repro extraction passed0.3917435s/16977920observed RSS, no compiler.
 ReproSHA256cf6fbbb8dd4a8908aaac36bb66d012fe8974305afe913f9f9607ae8867f95076.
 Five proposed audit names, no execution while the current cold cohort runs.
+
+Prepared independently: `tmp/NeumannActualFullGreenReflectionSummabilityDraft.lean`
+constructs the generic decay certificate for literal (2.46), then instantiates
+the existing source-image sum and its real-part sum. Three proposed audit
+names; text/import checks only (0.1276389s, 16056320 observed peak RSS), no
+compiler evidence. This route does not depend on the new rectangle draft.
+All strip/mass hypotheses and amplitude/rate units remain visible. It neither
+revives the withdrawn (2.48) specialization nor supplies the regional inverse.
