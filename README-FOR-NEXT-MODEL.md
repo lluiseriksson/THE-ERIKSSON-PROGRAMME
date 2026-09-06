@@ -3,6 +3,10 @@
 LIVE spacing cold: SOURCEdd9354a87, runner/readere2693781d, launcher339d5a2e7.
 Started once2026-09-06T19:30:22.418089UTC, hash gate PASS, PID1139,
 CPU/highRAM50.99GB, tab9/cellJj0kgx_GMieQ. No final verdict yet.
+Runtimea824030f7bc1;19:35:06UTC bootstrap passed and canonical_spacing_focal
+started. Next coarse check around20:00UTC; no polling loop or duplicate job.
+R3 internal-bond stencil sourcec0174bbcb and fail-closed HOT templatesd65d65c9c
+are prepared, NOT RUN; parent-cold pins deliberately unset until preservation.
 See docs/NEUMANN-CANONICAL-SPACING-COLD-20260906.md. Keep this active tab;
 do not rerun.20/41,TermSource0. All older runtime notes are historical.
 
