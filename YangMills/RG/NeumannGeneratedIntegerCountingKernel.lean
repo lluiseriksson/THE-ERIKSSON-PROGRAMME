@@ -2,9 +2,10 @@ import YangMills.RG.NeumannIntegerImageCountingKernel
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel
 
 /-!
-PRE-VALIDATION: promoted source present, .olean not materialized, not compiler-verified.
-The unchanged draft proof bodies passed HOT at eb2fde64f (ledger1136).
-That diagnostic is not the cold seal of this promoted module.
+Cold-verified at source af35fbb8c75bf2347543034b3abf27f0217b1bbf;
+production focal and exact four-name audit passed in a fresh clone.
+Archive and outputs independently verified; see ledger1140.
+The earlier HOT diagnostic remains separately preserved in ledger1136.
 
 R2 finite-to-integer dictionary. The finite representative is constructed,
 not supplied. The terminal owner uses block side M^depth in fine-site units.

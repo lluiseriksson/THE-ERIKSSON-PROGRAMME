@@ -46793,3 +46793,38 @@ Finite-Q and interval proof bodies are promoted unchanged with separate
 four-/seven-name audits and PRE-VALIDATION retained pending a fresh cold
 cohort. No multidimensional family, summability, physical inverse or B0
 claimed. 20/41,TermSource0,window15 compatible/not attained,Clay<0.1% unchanged.
+
+## Addendum1140 — promoted counting/interval cold cohort PASS, 2026-09-06
+
+Source af35fbb8c75bf2347543034b3abf27f0217b1bbf; launcher dde37075a,
+SHA2560262e3875378a1e5b8a5e5c0915b9346a289ef3a235db751583ef35aba52dfb3.
+Colab CPU/highRAM50.99GiB/noGPU, lluiseriksson@gmail.com, start09:08:51UTC.
+Fresh separate clone, no project build restoration. All16 stages passed;
+counting focal8496jobs/1451.333582179s, audit7.281164145s,
+interval focal12.899715783s, audit5.474681317s, all actual exit0.
+Exact four-plus-seven names: one propext/Quot.sound, ten allowed trio.
+Dependency linter warnings remain visible; no zero-warning claim.
+
+Outer198949bytes SHA256
+0c3a8858b2fab470e9a618ad084613f22c635ccc8b3942311d9ff623a7b04a34;
+inner22ddcfaf16cd0b0ca28328de0506917ce0e64f37ab31afccf6e3e42019a87245.
+Downloaded automatically, then independent reader PASS:
+exit0/0.2437849s/21639168observed peak RSS, under30s/512MiB watchdog.
+Report2af1e0bdf0b67cb6a01441fd48dc815ca8d35873f4f39de3431c27a219a91a5c.
+The first local reader invocation omitted scripts from sys.path and stopped
+before verification (exit1/0.0932488s); corrected invocation only, no rerun
+of Colab, no changed archive or instrument.
+Production outputs:
+NeumannGeneratedIntegerCountingKernel.olean
+8aaa476a193649d33acacfc3cb69cdbce4a380c13deb3e400cbb69527ca68fb9;
+NeumannImageIntervalCoverage.olean
+05ce7805be4b719e8b9ef5d8453eebc1a359a700d767b144a5bce73e1616a92a.
+Durable validation-evidence/neumann-integer-dictionary-cohort-cold-20260906.
+
+Only these two production headers and their two audit headers lose PRE.
+Proof bodies remain exactly the preserved HOT Git blobs; no root or CI run
+added for this intermediate cohort. The runtime is retained for the already
+prepared bounded rectangle repro/draft diagnostic, not another cold build.
+This closes finite physical counting-owner and full one-dimensional image
+coverage, NOT a regional inverse, uniform B0 or window15. Counters20/41,
+TermSource0,window15 compatible/not attained,Clay<0.1% unchanged.

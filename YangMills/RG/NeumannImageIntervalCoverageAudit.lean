@@ -1,7 +1,7 @@
 import YangMills.RG.NeumannImageIntervalCoverage
 
-/-! PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
-Exact seven-name audit of the one-dimensional image-family bijection. -/
+/-! Cold-verified exact seven-name audit at source af35fbb8c;
+independently preserved in ledger1140. No summability or inverse claim. -/
 
 #print axioms YangMills.RG.neumannOrbitFalse_periodQuotient
 #print axioms YangMills.RG.neumannOrbitTrue_periodQuotient

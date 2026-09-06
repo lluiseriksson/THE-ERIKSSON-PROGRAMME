@@ -1,5 +1,16 @@
 # Finite representative to physical counting mass — HOT diagnostic
 
+## Superseding cold PASS, 2026-09-06
+
+The af35fbb8c promoted cohort below has now PASSED. All16 stages and the
+four-plus-seven exact audits were independently checked after download;
+see ledger1140 and validation-evidence/neumann-integer-dictionary-cohort-cold-20260906.
+Outer0c3a8858b2fab470e9a618ad084613f22c635ccc8b3942311d9ff623a7b04a34.
+Only the four certified production/audit headers retire PRE. Cell2 completed,
+must not be rerun. Runtime retained only for the bounded rectangle diagnostic
+already prepared; that diagnostic is HOT and does not inherit a cold seal.
+20/41,TermSource0,window15 not attained remain unchanged.
+
 ## Superseding live checkpoint09:09UTC, 2026-09-06
 
 Historical live-process paragraphs below are retained, not current status.

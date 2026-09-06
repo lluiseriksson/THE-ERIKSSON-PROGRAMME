@@ -4,8 +4,10 @@ import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 
 /-!
-PRE-VALIDATION: promoted source present, .olean not materialized, not compiler-verified.
-Exact draft proof bodies passed HOT at99d0767ec (ledger1139); no cold seal yet.
+Cold-verified at source af35fbb8c75bf2347543034b3abf27f0217b1bbf;
+production focal and exact seven-name audit passed in a fresh clone.
+Archive and outputs independently verified; see ledger1140.
+The earlier HOT diagnostic remains separately preserved in ledger1139.
 The full family varies translation, parity and the original point in [0,m).
 Its period 2*m is not the generated owner divisor M^depth.
 This is a one-dimensional index bijection, not summability or a Green inverse.

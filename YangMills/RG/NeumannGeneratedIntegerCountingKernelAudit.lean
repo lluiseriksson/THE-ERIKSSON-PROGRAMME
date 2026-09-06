@@ -1,7 +1,7 @@
 import YangMills.RG.NeumannGeneratedIntegerCountingKernel
 
-/-! PRE-VALIDATION: promoted source present, .olean not materialized,
-not compiler-verified. Exact four-name audit of the finite integer dictionary. -/
+/-! Cold-verified exact four-name audit at source af35fbb8c;
+independently preserved in ledger1140. No regional inverse or B0 claim. -/
 
 #print axioms YangMills.RG.neumannFiniteSiteIntegerCoordinates_injective
 #print axioms YangMills.RG.neumannGeneratedTerminalOwner_integerCoordinates
