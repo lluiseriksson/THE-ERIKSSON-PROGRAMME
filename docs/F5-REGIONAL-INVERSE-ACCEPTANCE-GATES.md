@@ -28,7 +28,13 @@ of the original rectangle. Physical Q-kernel/Neumann intertwining and R3/R4
 still require proofs. Historical pending subsections below record earlier
 checkpoints; the current status is ledger1130/1131, counters20/41 unchanged.
 
-### Next exact image-indicator draft (not compiled)
+### Exact image-indicator algebra — cold sealed, physical bridge open
+
+Ledger1134 supersedes the historical pending statuses below:
+NeumannIntegerImageCountingKernel(+Audit) passed the fresh exact-source
+cold gate87edca651, seven names, independently preserved archive. Only its
+two headers retire PRE-VALIDATION. The next finite-to-integer/Q dictionary
+is explicitly enumerated in NEUMANN-INTEGER-TO-PHYSICAL-NEXT-20260906.md.
  
 Latest ledger1133: the repaired exact-source seven-name HOT queue passed
 and its downloaded archive is independently verified. Promotion is now in

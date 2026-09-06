@@ -46649,3 +46649,31 @@ Runtime termination via standalone Python failed (no IPython kernel); then
 Colab's Disconnect/delete UI succeeded and explicitly confirmed disconnected
 at about07:54UTC. Its only tab was closed. No scientific job was repeated.
 20/41,TermSource0,window15 unattained remain unchanged.
+
+## Addendum1134 — integer image-owner promoted cold PASS, 2026-09-06
+
+Source87edca6519df5b450b906e83db2ffa4fc1bd87bd, notebookd5266e95c,
+launcher7d73d5a57/0026a86bb1db3a7dea2d0166375c9b0b58eda4bb9160bd58378020fe4e54d162.
+Colab CPU/highRAM50.99GiB/noGPU, accountlluiseriksson@gmail.com. Actual
+hash-verified start08:00:44.090416UTC, PID8299. Fresh exact checkout, no
+project output restoration. Focal57.093438463s and audit4.957650278s, exit0;
+seven named declarations have exactly propext/Classical.choice/Quot.sound.
+Whole child224.160347449s. Sixteen inner stages and three launcher children
+verified; all actual exit0. No full hRpoly or regional inverse claim.
+
+Outer87004bytes SHA256f86b91ccc15ecdffae519b29fe35596ab2d6cf43fe6605f294a066e9297c94c3;
+inner54e1a383ab8c393d5d3d449cbcf6a8596d534ed877b77430bc528fdafac5b2e3;
+production NeumannIntegerImageCountingKernel.olean
+90dde70abe364d63bb0f23ac516d2137631a5fbf497a292fc35c56e340e81a10.
+Downloaded archive independently verified before header retirement:
+exit0/0.1595774s/20021248 observed peak bytes, under30s/512MiB watchdog.
+Reportd6ad3e12d3b472bb40ce815e17a317c164cdf1822723d00c44a0c9f092cb6b63.
+Durable validation-evidence/neumann-integer-image-promoted-cold-20260906.
+
+Only NeumannIntegerImageCountingKernel(+Audit) headers retire PRE-VALIDATION.
+No draft or physical-operator bridge inherits it. This proves integer
+Euclidean-division/image/owner-indicator algebra, including negative images,
+not a permutation of the original rectangle, not the physical image inverse.
+Next finite-to-integer/Q identification is enumerated in
+docs/NEUMANN-INTEGER-TO-PHYSICAL-NEXT-20260906.md. 20/41,TermSource0,
+window15 compatible/not attained remain unchanged.

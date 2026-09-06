@@ -4,14 +4,16 @@ import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 
 /-!
-PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
+Cold-verified at source87edca651, ledger1134: the promoted module and its
+seven-name audit passed in a fresh pinned Colab checkout. Exact archive,
+logs, outputs and axiom sets were independently verified before retirement.
 
 R2 integer image dictionary, using the existing CMP89 (2.42) image definition.
 B is the positive fine-site block side (later M^depth), m is the anisotropic
 coarse rectangle side, and B*m is the fine rectangle side. Integer division
 is Euclidean, including negative images. No m=N or rectangular invariance
 assumption is introduced. The seven proof bodies passed the exact-source HOT diagnostic at
-8a0714a03 (ledger1133). This promoted path still requires its cold gate.
+8a0714a03 (ledger1133); that HOT evidence was not used as a cold seal.
 
 The last theorem preserves the literal owner-indicator kernel under a COMMON
 image of source and target. It does not identify that integer kernel with a
@@ -107,5 +109,4 @@ theorem neumannIntegerCountingIndicator_image {d : ℕ}
     (neumannIntegerBlockOwner_image_eq_iff B hB m target source k branch) rfl rfl
 
 end YangMills.RG
-
 
