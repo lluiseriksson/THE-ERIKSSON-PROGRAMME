@@ -46512,3 +46512,26 @@ It proves the full-carrier probe reflection, not arbitrary regional invariance
 or the retained Neumann inverse. Runtime retained for the separately pinned,
 bounded HOT counting-mass dictionary, after prior evidence verification.
 20/41,TermSource0,window15 unattained remain unchanged.
+
+## Addendum 1129 — retained terminal counting dictionary HOT PASS (2026-09-06)
+
+Source214b6923f3523d44282d5772fa6ab09782864f10, runnerdd6d8b17,
+base06a928178, same retained Colab host3e1d8ed2110d. The runner independently
+validated the actual v2 archive before Lean and rejected concurrent Lean/Lake.
+No checkout or production-tree change. Twelve stages exit0: prerequisites
+23.491287688s, draft21.989546681s; exactly two named allowed axiom trios.
+No cold seal or PRE-VALIDATION retirement. This is the actual internally
+generated retained terminal Q' counting-adjoint square, not a Neumann
+Laplacian identification, reflected right inverse or regional B0 estimate.
+
+Outer SHA25619e1ee0269978842e7d5bb13c43eebb71019d540fce3169a5f4bdc3d095792cf;
+output2d75132d76757a8c25684937d4c8eb2ce5644e3b008977ab28be61e4274e9d89.
+Independent verifier revalidated the prior archive as well as HOT commands,
+source/runner pins, all logs, actual exits and both axiom blocks. Exit0,
+0.2184607s,19288064observed peak bytes, no local Lean/network/pool.
+Report697fd36fd2345b121aed4f72f2cd65210bc35053328779bb0106a742eefe000c.
+Durable directory validation-evidence/neumann-retained-counting-dictionary-hot-20260906.
+At06:11:46UTC no Lean/Lake or originalPID8252 remained; both archive hashes
+were unchanged. Runtime disconnected/deleted, UI confirmed at06:12UTC.
+About31min connected, including the preceding fresh diagnostic and HOT reuse.
+20/41,TermSource0,window15 unattained remain unchanged.

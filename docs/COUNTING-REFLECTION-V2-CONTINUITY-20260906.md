@@ -93,7 +93,8 @@ after the actual v2 archive was independently verified and preserved locally.
 Its runner commit is `dd6d8b17a233d84bb82da47efef1a51d1721ff0a`, binary blob
 SHA256 `483774c10b45d38de8fc40a79709207f1b73ea0dd26d765e2aa8db216d7c6538`.
 Remote launch log: `/content/neumann-retained-counting-dictionary-hot-v1-launch.log`.
-No verdict is claimed for this new HOT run yet. It requires the actual preserved v2 archive digest as
+The HOT run passed and its real archive was independently verified (ledger1129).
+It requires the actual preserved v2 archive digest as
 `--prior-sha256`, invokes the pinned independent v2 verifier before any Lean,
 rejects an already running Lean/Lake process, checks base/source tree/Mathlib,
 and refuses reused work/input directories. It then materializes only the two
@@ -108,5 +109,31 @@ archive. Retrieve and verify v2 before continuing in its retained runtime.
 The separate HOT verifier `scripts/verify_neumann_retained_counting_dictionary_hot.py`
 revalidates the real prior archive, exact input/runner blobs, stage commands,
 exit codes, logs, output and both named axiom blocks. AST and a real unrelated
-archive rejection passed (0.4224512s,21139456 observed peak bytes); it has not
-yet been exercised against an actual HOT PASS. Instrument tests are not Lean evidence.
+archive rejection passed (0.4224512s,21139456 observed peak bytes); it has now
+been exercised against the actual HOT PASS: exit0,0.2184607s,19288064 observed
+peak bytes. Both the prior archive and all12 HOT stages were rechecked.
+Outer `19e1ee0269978842e7d5bb13c43eebb71019d540fce3169a5f4bdc3d095792cf`;
+report `697fd36fd2345b121aed4f72f2cd65210bc35053328779bb0106a742eefe000c`.
+Durable folder `validation-evidence/neumann-retained-counting-dictionary-hot-20260906`.
+The HOT prerequisites took23.491287688s and the draft21.989546681s, both exit0.
+Both named declarations use exactly the allowed trio.
+
+At06:11:46UTC no Lean/Lake or PID8252 remained and both archive digests were
+unchanged. The runtime was then disconnected/deleted; UI confirmed reconnect
+state at06:12UTC. Session about31min total, including both diagnostics and
+preservation; no cold production seal. Next: selectively promote the two
+verified drafts and prepare a pinned cold gate, with no proof/constant change.
+
+## Promoted source prepared after diagnostics
+
+Four production paths are now written with PRE-VALIDATION intact:
+`NeumannGeneratedCountingMassReflection.lean`, its Audit,
+`NeumannRetainedCountingMassDictionary.lean`, its Audit, all under YangMills/RG.
+`scripts/check_neumann_counting_promotion.py` checks exact proof/statement text
+against the diagnostic drafts after only public-name replacement, initial
+provenance-header replacement and moving #print axioms to the audit files.
+This check plus the exact four-file overlay/import guards passed locally:
+exit0,0.166598s,15863808observed peak bytes. No compiler was run in Windows.
+The next operation is preparation of the exact promoted cold runner/notebook,
+using these four Git blobs and five expected axiom names. Do not relaunch the
+now completed v2 notebook or the HOT diagnostic.

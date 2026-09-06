@@ -6,6 +6,15 @@ its actual archive was independently verified/preserved (ledger1128);
 see `docs/COUNTING-REFLECTION-V2-CONTINUITY-20260906.md`. The diagnostic v2 and
 the separate retained-mass draft below do not retire PRE-VALIDATION marks.
 
+The retained terminal counting-mass dictionary also passed its bounded HOT
+run and independent archive verification (ledger1129). The next cold candidate
+is exactly four files: NeumannGeneratedCountingMassReflection(+Audit) and
+NeumannRetainedCountingMassDictionary(+Audit). Only public-name/provenance
+changes and extraction of #print axioms into audits are allowed in this
+promotion. The textual equivalence/overlay/import checks passed; these
+promoted module paths remain PRE-VALIDATION, not yet cold-compiler-verified.
+No arbitrary-rectangle reflection, Neumann image identity or B0 follows yet.
+
 ## Next bounded R2 diagnostic (after cold geometry seal81260f49)
 
 The new PRE-VALIDATION draft constructs the reflection on the full canonical
