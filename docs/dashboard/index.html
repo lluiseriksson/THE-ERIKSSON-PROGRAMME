@@ -390,6 +390,11 @@ footer {
 
   <div class="counts" id="counts" aria-label="Node counts"></div>
 
+  <section aria-labelledby="research-title">
+    <h2 id="research-title">Current research</h2>
+    <div id="research-updates"></div>
+  </section>
+
   <section aria-labelledby="milestones-title">
     <h2 id="milestones-title">Milestone Spine</h2>
     <div class="miles" id="miles"></div>
@@ -498,6 +503,15 @@ footer {
   $("checkpoint").textContent = meta.checkpoint;
   $("axioms").textContent = meta.axioms;
 
+  $("research-updates").innerHTML = (meta.research_updates || []).map(update => `
+    <article class="honesty">
+      <strong>${escapeHtml(update.title)}</strong>
+      <p>${escapeHtml(update.date)} · ${escapeHtml(update.status)}</p>
+      <p>${escapeHtml(update.note)}</p>
+      <a href="${escapeHtml(update.url)}" rel="noreferrer">Scope, milestones and evidence</a>
+    </article>
+  `).join("");
+
   const statuses = ["proved", "partial", "open"];
   const counts = Object.fromEntries(statuses.map(status => [
     status,
@@ -532,10 +546,13 @@ footer {
 
   $("honesty").innerHTML = `
     <strong>Honesty invariant.</strong>
-    All machine-checked progress above is lattice or finite-volume unless explicitly
-    marked otherwise. Closing the current frontier would close the M3 lattice mass gap,
-    not the Clay problem. The continuum limit and OS/Wightman reconstruction remain
-    open mathematics. Distance to Clay: <b>${escapeHtml(meta.clay_distance)}</b>.
+    The repository includes fixed-spacing lattice results and infinite-volume local
+    states. Closing hRpoly supplies the physical UV estimate; independent IR and
+    marginal-flow inputs must still be matched to the physical application.
+    The four-dimensional continuum limit and OS/Wightman reconstruction remain open.
+    Historical Clay-distance shorthand: <b>${escapeHtml(meta.clay_distance)}</b>;
+    this is not a measured completion percentage. Research updates above do not
+    increment verified node counts.
   `;
   $("footer").innerHTML = `
     Ground truth is the compiler, <code>oracle_check.lean</code>, and the

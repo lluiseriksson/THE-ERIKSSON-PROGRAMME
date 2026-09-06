@@ -2,12 +2,35 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-08-03",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
+    "updated": "2026-09-06",
+    "checkpoint": "Historical recorded core: a17d7816, 8412 jobs. Later scoped records are in the verification ledger; this page date is not a new build.",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
     "frontier": "hRpoly - concrete Yang-Mills activity decay for the actual gauge RG operator",
+    "research_updates": [
+      {
+        "title": "Physical Wilson reflection: independent campaign started",
+        "date": "2026-09-06",
+        "status": "Initial diagnostic passed; revised nine-declaration R1 undergoing core/oracle checks.",
+        "note": "ARR paper reuse audit completed: existing original-edge gauge fixing and the conditioned 2D heat-kernel amplitude are prior work. Duplicate gauge covariance removed. Physical Wilson positivity and reconstruction remain open.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
+      },
+      {
+        "title": "Prior work: exact 2D SU(2) disk model",
+        "date": "2026-09-06",
+        "status": "Reuse audit of the manuscript and its cited public source; no new satellite rebuild claimed.",
+        "note": "The paper's 177-entry companion audit differs from the 167-entry public snapshot. Its physical original-edge results inform this campaign; they do not establish 4D Wilson reflection or a continuum mass gap.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md"
+      },
+      {
+        "title": "hRpoly: source estimates and terminal requirements",
+        "date": "2026-09-06",
+        "status": "20/41 terminal producers; TermSource = 0; physical window 15 not attained at the inspected snapshot.",
+        "note": "PR #29 advances independently. Its checklist distinguishes selective cold checks from the uniform physical bounds and final application; follow the current PR for later evidence.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7d773cd4a335f13c3946353f0ab5cb7bb47ca0f9/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md"
+      }
+    ],
     "repo": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
     "blob": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/",
     "ledger": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/VERIFICATION-LEDGER.md",
