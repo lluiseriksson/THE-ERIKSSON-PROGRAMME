@@ -47675,3 +47675,19 @@ House note from measured profile1172: avoid concretely reducing Finset.univ
 when applying a generic membership theorem; with_reducible plus explicit
 indices works here. Use an explicit nested tactic block for continuation
 arguments. Neither raising limits nor changing exact/apply alone worked.
+## Addendum 1175 — flat-action HOT first error preserved (2026-09-06)
+
+SOURCE9838cd3c3c280971ef69fcf2e0bf19f4f193923c; runner55b3719087556fba937aeec45300a7f72625c572.
+One launch21:51:46.545228UTC PID31052, same retained Colab runtime/cache.
+physical_draft exit1/13.208612186s, no timeout. First error60:66: the
+Laplacian goal retains the flat-background adjoint factor on the incoming
+term. The first derivative lemma printed the allowed trinity; the second
+printed sorryAx from error recovery, so the complete unit remains FAIL.
+Static source check: cmp99SourceFlatGaugeConfig_apply is indexed by M*N',
+not arbitrary N. Use its literal definition, as the first lemma already does;
+no changed sign, mask, spacing coefficient, object or hypothesis.
+Archive4e6fb5c76f3dd522ccae433a62cf152474f0cdb921cacc8a9afc0d60b7e8dc07;
+report11e1da91319844c59ec23258a0ea5e7a944ab8c3128ec158952c9f2bfed7cea7.
+Preserved validation-evidence/neumann-flat-internal-bond-action-hot-v1-20260906.
+Reader exit0/0.1481893s/18165760RSS VERIFIED_FAILURE.20/41,TermSource0,
+window15 unchanged. Next is the same-cache bounded one-line repair, not CI.

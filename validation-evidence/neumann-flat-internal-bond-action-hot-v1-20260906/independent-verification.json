@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "4e6fb5c76f3dd522ccae433a62cf152474f0cdb921cacc8a9afc0d60b7e8dc07",
+  "cold_seal": false,
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/neumann-flat-internal-bond-action-hot-v1-evidence/physical_draft.olean",
+      "tmp/neumann-flat-internal-bond-action-hot-v1/NeumannFlatInternalBondActionDraft.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1",
+    "exit": 1,
+    "log_sha256": "e329f317e228075612b8e9ee9c96f3749ebae491d3c55c2c4c156479d986b9df",
+    "seconds": 13.20861218600021,
+    "stage": "physical_draft",
+    "timed_out": false,
+    "timeout_seconds": 120
+  },
+  "log": "tmp/neumann-flat-internal-bond-action-hot-v1/NeumannFlatInternalBondActionDraft.lean:60:66: error: unsolved goals\nd N Nc : \u2115\ninst\u271d\u00b2 : NeZero d\ninst\u271d\u00b9 : NeZero N\ninst\u271d : NeZero Nc\nOmega : ActiveGaugeRegion d N\nrho : SUNAdjointModel Nc\nspacing : \u211d\nf : GaugeZeroCochain d N (SUNLieCoord Nc)\nx : Omega.Site\n\u22a2 spacing\u207b\u00b9 \u2022\n      \u2211 x_1,\n        ((if (\u2191x, x_1) \u2208 Omega.bonds then spacing\u207b\u00b9 \u2022 (f.ofLp \u2191x - f.ofLp ((\u2191x).shift x_1)) else 0) -\n          (rho.adCLM\n              ((cmp99SourceFlatGaugeConfig d N Nc).toFun (positiveEdgeOfPhysicalBond ((\u2191x).shiftBack x_1, x_1)))\u207b\u00b9)\n            (if ((\u2191x).shiftBack x_1, x_1) \u2208 Omega.bonds then spacing\u207b\u00b9 \u2022 (f.ofLp ((\u2191x).shiftBack x_1) - f.ofLp \u2191x)\n            else 0)) =\n    spacing\u207b\u00b9 \u2022\n      \u2211 x_1,\n        ((if (\u2191x, x_1) \u2208 Omega.bonds then spacing\u207b\u00b9 \u2022 (f.ofLp \u2191x - f.ofLp ((\u2191x).shift x_1)) else 0) -\n          if ((\u2191x).shiftBack x_1, x_1) \u2208 Omega.bonds then spacing\u207b\u00b9 \u2022 (f.ofLp ((\u2191x).shiftBack x_1) - f.ofLp \u2191x) else 0)\ntmp/neumann-flat-internal-bond-action-hot-v1/NeumannFlatInternalBondActionDraft.lean:63:4: warning: This simp argument is unused:\n  cmp99SourceFlatGaugeConfig_apply\n\nHint: Omit it from the simp argument list.\n  simp only [neumannFlatInternalBond_extendedDerivative_apply, c\u0335m\u0335p\u03359\u03359\u0335S\u0335o\u0335u\u0335r\u0335c\u0335e\u0335F\u0335l\u0335a\u0335t\u0335G\u0335a\u0335u\u0335g\u0335e\u0335C\u0335o\u0335n\u0335f\u0335i\u0335g\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335inv_one,\n      SUNAdjointModel.ad_one_apply, FinBox.shift_shiftBack]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\ntmp/neumann-flat-internal-bond-action-hot-v1/NeumannFlatInternalBondActionDraft.lean:63:38: warning: This simp argument is unused:\n  inv_one\n\nHint: Omit it from the simp argument list.\n  simp only [neumannFlatInternalBond_extendedDerivative_apply,\n  \u0335  \u0335 \u0335 \u0335cmp99SourceFlatGaugeConfig_apply, \u0335i\u0335n\u0335v\u0335_\u0335o\u0335n\u0335e\u0335,\u0335\n      SUNAdjointModel.ad_one_apply, FinBox.shift_shiftBack]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\ntmp/neumann-flat-internal-bond-action-hot-v1/NeumannFlatInternalBondActionDraft.lean:64:4: warning: This simp argument is unused:\n  SUNAdjointModel.ad_one_apply\n\nHint: Omit it from the simp argument list.\n  simp only [neumannFlatInternalBond_extendedDerivative_apply, cmp99SourceFlatGaugeConfig_apply,\n  \u0332  \u0332 \u0332 \u0332inv_one, S\u0335U\u0335N\u0335A\u0335d\u0335j\u0335o\u0335i\u0335n\u0335t\u0335M\u0335o\u0335d\u0335e\u0335l\u0335.\u0335a\u0335d\u0335_\u0335o\u0335n\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335FinBox.shift_shiftBack]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n'YangMills.RG.neumannFlatInternalBond_extendedDerivative_apply' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'YangMills.RG.neumannFlatInternalBond_laplacian_apply' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+  "source": "9838cd3c3c280971ef69fcf2e0bf19f4f193923c",
+  "status": "VERIFIED_FAILURE"
+}

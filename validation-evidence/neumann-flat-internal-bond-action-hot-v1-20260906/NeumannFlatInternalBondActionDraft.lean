@@ -60,7 +60,7 @@ theorem neumannFlatInternalBond_laplacian_apply
             spacing⁻¹ • (f (x.1.shiftBack i) - f x.1) else 0)) := by
   rw [neumannInternalBond_laplacian_apply]
   simp only [neumannFlatInternalBond_extendedDerivative_apply,
-    cmp99SourceFlatGaugeConfig, inv_one,
+    cmp99SourceFlatGaugeConfig_apply, inv_one,
     SUNAdjointModel.ad_one_apply, FinBox.shift_shiftBack]
 
 #print axioms neumannFlatInternalBond_extendedDerivative_apply
