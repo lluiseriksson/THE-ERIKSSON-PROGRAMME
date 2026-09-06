@@ -1,4 +1,3 @@
-import YangMills.RG.BalabanCMP89NeumannReflectionOrbitAlgebra
 import Mathlib.Data.Int.DivMod
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
@@ -14,6 +13,18 @@ This is an exact index bijection, not summability or a Green inverse.
 -/
 
 namespace YangMills.RG
+
+def cmp89NeumannReflectionOrbit (m n k : ℤ) (reflected : Bool) : ℤ :=
+  if reflected then 2 * k * m - n - 1 else 2 * k * m + n
+
+@[simp] theorem cmp89NeumannReflectionOrbit_false (m n k : ℤ) :
+    cmp89NeumannReflectionOrbit m n k false = 2 * k * m + n := by
+  rfl
+
+@[simp] theorem cmp89NeumannReflectionOrbit_true (m n k : ℤ) :
+    cmp89NeumannReflectionOrbit m n k true = 2 * k * m - n - 1 := by
+  rfl
+
 
 def neumannImageIntervalPoint (m : ℤ) := {n : ℤ // 0 ≤ n ∧ n < m}
 
@@ -89,9 +100,7 @@ theorem neumannImageIntervalFamily_injective (m : ℤ) (hm : 0 < m) :
       neumannOrbitTrue_periodQuotient m hm v l] at hq
     rw [neumannOrbitTrue_periodRemainder m hm n k,
       neumannOrbitTrue_periodRemainder m hm v l] at hr
-    have hk : k = l := by omega
-    have hn : n.1 = v.1 := by omega
-    exact Prod.ext hk (Prod.ext rfl (Subtype.ext hn))
+    exact Prod.ext (by omega) (Prod.ext rfl (Subtype.ext (by omega)))
 
 /-- Constructed coverage of ALL integers, including negative translations;
 the reflected branch uses quotient q+1, with no endpoint clipping. -/

@@ -46748,3 +46748,21 @@ Repair normalizes both hypothesis and goal and pins local equality forms;
 no statement, constant, interval convention or hypothesis changes. Keep
 PRE-VALIDATION and retry only this bounded HOT unit, no graph rebuild.
 20/41,TermSource0,window15 unchanged; finite-Q HOT PASS remains preserved.
+
+## Addendum1138 — interval HOT v2 final projection normalization, 2026-09-06
+
+Source18a258099, runner66a95fa8e, SHA256
+5f4244b9641e41c3215a0b407339fd2f7eecec472811b9bb812d003ad06f68f8.
+Mathlib repro exit1/3.274983350s, only error103:61: omega sees product
+projections under Subtype.ext as separate atoms in the reflected/reflected
+injectivity case. No project draft execution. Repair proves k=l and n.val=v.val
+in explicitly typed local equalities, then assembles Prod.ext/Subtype.ext.
+No statement or hypothesis change; no heartbeat increase or cold bootstrap.
+
+Archive2e35579b353a28ce52d6e7e629368f0fb3d16e7fd3793157c8079741e5a538b7;
+log41c41ab8a2a8f5530bbca75e6dd67001e83181e2893b496480199bb4d3af39ba.
+Independent VERIFIED_FAILURE exit0/0.1811047s/23216128observed peak RSS,
+report334b7ad913ccf4a71611b3803ffb40132811453da0bd91841c786f1a8817a3bf.
+Durable validation-evidence/neumann-image-interval-hot-v2-fail-20260906.
+Runtime retained for this final bounded normalization retry. Physical finite-Q
+HOT PASS remains intact; all counters and cold-seal boundaries unchanged.

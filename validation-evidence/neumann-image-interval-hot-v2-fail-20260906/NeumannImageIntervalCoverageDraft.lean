@@ -89,9 +89,7 @@ theorem neumannImageIntervalFamily_injective (m : ℤ) (hm : 0 < m) :
       neumannOrbitTrue_periodQuotient m hm v l] at hq
     rw [neumannOrbitTrue_periodRemainder m hm n k,
       neumannOrbitTrue_periodRemainder m hm v l] at hr
-    have hk : k = l := by omega
-    have hn : n.1 = v.1 := by omega
-    exact Prod.ext hk (Prod.ext rfl (Subtype.ext hn))
+    exact Prod.ext (by omega) (Prod.ext rfl (Subtype.ext (by omega)))
 
 /-- Constructed coverage of ALL integers, including negative translations;
 the reflected branch uses quotient q+1, with no endpoint clipping. -/
