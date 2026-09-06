@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "55dec0c067f465614da2a5014dd3b823040de5c24122a2382f751ac166edc49f",
+  "cold_seal": false,
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/neumann-rectangle-wrap-probe-hot-v6-evidence/physical_draft.olean",
+      "tmp/neumann-rectangle-wrap-probe-hot-v6/NeumannRectangleWrapProbeDraft.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1",
+    "exit": 1,
+    "log_sha256": "b37d4ae962cea7e6284757f155ebe150faf189d9d5f797aa8ff4e1c3854bf5a3",
+    "seconds": 7.288976413000455,
+    "stage": "physical_draft",
+    "timed_out": false,
+    "timeout_seconds": 120
+  },
+  "log": "tmp/neumann-rectangle-wrap-probe-hot-v6/NeumannRectangleWrapProbeDraft.lean:63:19: error: Type mismatch\n  failed to pretty print expression (use 'set_option pp.rawOnError true' for raw representation)\nhas type\n  \u2200 (Omega : ActiveGaugeRegion 4 3), Omega.sites = Finset.univ \u2192 \u2200 (b : PositiveBond 4 3), b \u2208 Omega.bonds\nbut is expected to have type\n  (wrapProbeSite, 0) \u2208 wrapProbeRegion.bonds\ntmp/neumann-rectangle-wrap-probe-hot-v6/NeumannRectangleWrapProbeDraft.lean:58:57: error: unsolved goals\ncase right.right\n\u22a2 \u2191(wrapProbeSite.shift 0 0) = 0 \u2227 \u00ac\u2191\u2191(wrapProbeSite 0) + 1 < 3\ntmp/neumann-rectangle-wrap-probe-hot-v6/NeumannRectangleWrapProbeDraft.lean:64:6: error: unexpected identifier; expected command\n'YangMills.RG.neumannRectangle_siteFit_retains_wrapBond' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+  "source": "64c45ebc65ed35ae4fac6a6287876aad25338e10",
+  "status": "VERIFIED_FAILURE"
+}

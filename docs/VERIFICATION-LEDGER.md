@@ -47635,3 +47635,18 @@ Reader exit0/0.104449s/17719296RSS: VERIFIED_DIAGNOSTIC_ONLY.
 Next PRE repair uses with_reducible at the exact generic-lemma application;
 same public statement and source objects, no raised limits. Not yet compiled.
 No terminal counter movement; flat-action diagnostic still queued.
+
+## Addendum 1173 — wrap v6 parser/layout failure (2026-09-06)
+
+SOURCE64c45ebc65ed35ae4fac6a6287876aad25338e10, runnerc31a055e78ccbc454c1cef96d1cd6d81b4888acc.
+One launch21:46:02.433950UTC PID29387, retained runtime/cache.
+physical_draft exit1/7.288976413s. First error63:19 is a function-versus-
+membership type mismatch; subsequent64:6 unexpected identifier identifies
+the misplaced continuation under with_reducible exact. This is the author's
+layout defect, NOT validation or refutation of the transparency repair.
+Archive55dec0c067f465614da2a5014dd3b823040de5c24122a2382f751ac166edc49f;
+report29fb0ca26603f7b9f260329733b26aa44967668a128f232307b88b6bd4d7ab38.
+Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v6-20260906.
+Reader exit0/0.1504222s/18305024RSS VERIFIED_FAILURE. Next PRE changes only
+layout to an explicit nested tactic block; statement/gate/limits unchanged.
+20/41,TermSource0,window15 unchanged; no cold or flat action claimed.
