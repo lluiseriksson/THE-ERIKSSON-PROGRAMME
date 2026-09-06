@@ -60,3 +60,32 @@ summation bridge must identify which variable is summed and retain the
 counting coefficient (M^-d)^(2*depth); no weighted-adjoint substitution.
 
 20/41; TermSource0; window15 compatible/not attained. Goal active.
+
+## Continuation08:34UTC: live process and independent next repro
+
+PID20470 was checked directly through psutil: command
+`python3 -u /content/launch-finite-integer-hot-v2.py`, live at842seconds,
+status sleeping while waiting for its child. Exit file still absent; build log
+advanced into BalabanCMP99BlockContour. This is a verified wait, not runtime
+loss or failure. No new scientific process was launched.
+
+An independent step5 draft is committed atf9e6f5eb044e22424a5ed0732bc581b94d8c8b3c:
+tmp/NeumannImageIntervalCoverageDraft.lean. It imports ONLY sealed orbit
+algebra plus Mathlib, not the unverified finite-Q draft. Its seven proposed
+declarations decode quotient/remainder for both branches and target bijectivity
+of `(k,branch,n in [0,m)) -> printed integer image`. This is NOT compiled,
+NOT d-dimensional coverage yet, and NOT an image-sum interchange or inverse.
+
+Text/import/delimiter guards passed exit0/0.1785039s/10162176observed peak
+RSS bytes. Exact Git-blob extraction of a Mathlib-only repro passed
+exit0/0.1473817s/16416768observed peak bytes, no local Lean. Draft SHA256
+baa0e468d676632ec4e89feec5028c0202acc6acff309ad59b07a4040064f085;
+printed orbit source25a68943ae80ca3dcb4dbd22f2db7e10501d7b10c021692c84870f8a1fbb843a;
+verbatim reproccfc6aa7e6a850256de48d93113a8b237079d5bad43bfd8cfcbad48b5e948c8d.
+Generator scripts/neumann_image_interval_repro_contract.py preserves all
+seven proof statements/bodies and copies only the exact three orbit definitions.
+
+Do not run that next diagnostic concurrently. If current finite-Q gate fails,
+preserve and repair ONLY its first error. If it passes, independently preserve
+it before any prepared HOT follow-up or exact promotion. No cold seal follows
+from either textual gate. Keep the retained runtime for that bounded sequence.
