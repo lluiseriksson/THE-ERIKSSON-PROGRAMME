@@ -2,6 +2,17 @@
 
 ## Current bounded HOT, after cold seal1158
 
+Superseding v1 timeout: preserved and independently verified in ledger1159,
+archivee7da0c8d and reportec3e7173. It reached8700/8741 and timed out at600s,
+exit-9 with no Lean error lines. The physical draft was not started.
+SAME-source v2 runnerfddb430494340f88ebca6853cba61dcc212dede8, reader/tests
+d8ebd1112625ae776dcc72a5513067868c2caa40, keep the same600s budget and
+require the exact preserved v1 failure archive before continuing.
+One v2 launch in SAME runtime: PID38649,2026-09-06T14:23:30.940288UTC,
+hash-gate PASS. Runnerhasha7ca13187ffdb65c0709d1c581c06e001004d572de7362bb74463b495af92e85.
+No source/statement/constant/hypothesis changed. No CI. v2 is in flight;
+console /content/neumann-canonical-precision-offsets-hot-v2-console.log.
+
 Cold seal committed f45673a844ee5eddace0fc1cc9d433722918b517; final HOT
 runner7eea0b2396a24c3213680a1122f8e4e5f84861d9 and reader/tests
 c56d705ab751cc93b1b6d6b4f4d7ac98ad401a6a are published fast-forward.
