@@ -47591,3 +47591,17 @@ Reader exit0/0.1455352s/14688256RSS: VERIFIED_FAILURE; sorryAx rejected.
 Next bounded repair pins dimension, period and bond at specialization.
 No statement change or increased elaborator budgets.20/41,TermSource0,
 window15 unattained; neither a geometric seal nor the flat-action run yet.
+
+## Addendum 1170 — wrap probe HOT v4 explicit indices insufficient (2026-09-06)
+
+SOURCEd6e06209b85bf31c82095a51fc22f1aa59593ed6, runnerca9490f739dcfd09f58e32a6fd0da7f0989c52c8.
+One launch21:35:25.752010UTC PID26514, same runtime/cache; physical_draft
+exit1/7.389031266s without timeout. First error unchanged at63:10.
+Explicit d,N,b did NOT fix it; do not report index inference as the cause.
+Original archive6309c45de07003f37249fdd9272c50d59f1f9e69c89345a54b822e9b0f40e6f6;
+independent report993701ead5087714352e46ba3887b9427bac3852238fef52f4e4d3c96d2dd9eb.
+Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v4-20260906.
+Reader exit0/0.1446023s/15069184RSS, VERIFIED_FAILURE, sorryAx rejected.
+Next bounded test changes exact to apply at the SAME term to isolate
+expected-type elaboration; not a new mathematical proof claim or budget raise.
+20/41,TermSource0,window15 unchanged. All failed originals are retained.
