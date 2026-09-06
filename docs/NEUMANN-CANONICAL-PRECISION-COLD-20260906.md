@@ -1,6 +1,36 @@
 # Canonical Neumann finite-offset action — next cold gate
 
+## Final session state: cold1162 and HOT1163 preserved
+
+The bounded spacing diagnostic passed all9 stages and3 exact axiom names.
+Archiveb72c538bc5b8205284396969b9a8b1f8bc45466ad8e2439474e85e92eb4ce733;
+independent report6869c9afd1dbc7d3d9fc2778243260c8d3358c58e2ba9d892148d9ae334e8a1e.
+Original files and outputs are preserved under
+validation-evidence/neumann-canonical-spacing-hot-v1-20260906.
+Two redundant-ring warnings in each of repro/draft remain visible.
+This is HOT only. The exact-body production/audit are PRE-VALIDATION.
+
+No Lean/Lake or PID73600 remained19:18:37UTC; runtime373c432a4cb0 was
+then deleted via Colab and its sole browser tab closed. No active job/monitor.
+Next prepare the exact three-name spacing cold gate from a committed
+production source; use check_neumann_canonical_spacing_promotion.py for
+the exact HOT Git-blob comparison. Do not rerun this old notebook.
+All lower LIVE/survival checks are historical, superseded by this paragraph.
+20/41,TermSource0,window15 unattained.
+
 ## Superseding preserved cold PASS — ledger1162
+
+Runtime recovery confirmed2026-09-06T19:15:29UTC: SAME hostname373c432a4cb0,
+same retained root, no Lean/Lake process. No cold rerun or new runtime.
+Bounded spacing HOT launched once19:16:02.937623UTC, PID73600.
+Source852d3b82ed5d0ffd2e5c38eb4eeb96c433858bbc; runner4cf13d2824b78c44779e15da9bd4f861e967fbd2,
+Git-blob hash581705fc93decb6a98b004baf435b9f6059fae3b73d2e8a94e615337d16f0d75.
+Independent reader/testsfe563a83eb82d3a28f4dd1a1bf089fa22371c272,
+actual-parent contract test0.435556s/24285184RSS:1 fixture,10 corruptions
+rejected,1 failure preserved. Instrumental only; HOT verdict not yet read.
+Console /content/neumann-canonical-spacing-hot-v1-console.log.
+Expected /content/neumann-canonical-spacing-hot-v1-evidence.tar.gz.
+Parent-cold seal806e7f32d60edb5b3dd64053d019658e60b22a85 is published.
 
 Source4746880218c694a9d4e9d32c0af61f86d460b7b4 passed8742 fresh cold jobs.
 All16 stages passed; focal2366.193416338s, audit18.36277199999995s.

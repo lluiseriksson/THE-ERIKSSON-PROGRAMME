@@ -1,5 +1,14 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest1163: spacing normalization HOT PASS at852d3b82e,9 stages/3 exact names,
+archiveb72c538b and independent report6869c9af preserved. Exact-body production
+NeumannCanonicalSpacingNormalization + Audit are PRE pending their cold gate.
+The SAME runtime373c432a4cb0 survived reconnection and supplied the HOT cache;
+after preservation no Lean/Lake remained19:18:37UTC. Runtime deleted via Colab
+and all tabs closed. No active job/monitor. The earlier LIVE notes are historical.
+Cold canonical action1162 is sealed806e7f32d. Next prepare the spacing cold
+gate, not a rerun of any historical notebook.20/41,TermSource0 unchanged.
+
 Latest1162: canonical precision source474688021 passed fresh cold8742 jobs,
 all16 stages and both exact audit names. Original downloaded outerd2f2434b
 and independent reportc556fe22 are preserved. Only its two certified headers

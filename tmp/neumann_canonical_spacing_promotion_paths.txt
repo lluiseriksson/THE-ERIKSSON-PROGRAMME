@@ -1,0 +1,2 @@
+YangMills/RG/NeumannCanonicalSpacingNormalization.lean
+YangMills/RG/NeumannCanonicalSpacingNormalizationAudit.lean

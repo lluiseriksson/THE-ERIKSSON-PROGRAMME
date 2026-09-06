@@ -47388,3 +47388,46 @@ Only NeumannCanonicalPrecisionOffsetAction and Audit retire PRE, with exact
 HOT1161 mathematical bodies retained. Scope: literal canonical Neumann
 precision finite-offset action; NOT Fourier normalization, regional inverse,
 uniform physical B0 or window15.20/41,TermSource0,Clay<0.1% unchanged.
+
+## Addendum 1163 — canonical spacing/counting normalization HOT PASS (2026-09-06)
+
+SOURCE852d3b82ed5d0ffd2e5c38eb4eeb96c433858bbc, retained BASE4746880218c694a9d4e9d32c0af61f86d460b7b4.
+Runtime373c432a4cb0 reconnected unchanged: hostname/root confirmed19:15:29UTC,
+no Lean/Lake active. Runner4cf13d2824b78c44779e15da9bd4f861e967fbd2,
+hash581705fc93decb6a98b004baf435b9f6059fae3b73d2e8a94e615337d16f0d75;
+independent reader/testsfe563a83eb82d3a28f4dd1a1bf089fa22371c272.
+One launch PID73600 at19:16:02.937623UTC, source and parent-cold hash gate PASS.
+All9 stages exit0. Mathlib-only repro18.389075587s, retained prerequisites
+31.517296341s, physical draft22.64810882s. No repeated cold compilation.
+The repro and draft each emitted two warnings about the redundant ring tactic;
+they are preserved, not suppressed, and no zero-warning claim is made.
+
+All three exact declarations printed the allowed trio:
+neumannCanonicalFourierSpacing_terminal_eq_one,
+neumannCanonicalFourierSpacing_countingCoefficient,
+neumannCanonicalFourierSpacing_countingMassCoefficient.
+Downloaded archiveb72c538bc5b8205284396969b9a8b1f8bc45466ad8e2439474e85e92eb4ce733;
+independent report6869c9afd1dbc7d3d9fc2778243260c8d3358c58e2ba9d892148d9ae334e8a1e;
+physical olean0c6770458dc8566ace5afe997f54c5a8fb38e2135ba64294705a05ff1cacf716;
+repro olean831ca7b789764c93b5113fe309612a5f441019c3a3c3fd7d3a72884a16068cbd.
+Preserved validation-evidence/neumann-canonical-spacing-hot-v1-20260906.
+Independent reader exit0/0.245746s/23285760 observed RSS, VERIFIED_HOT_PASS,
+cold_seal=false. Exact inputs, parent review, stage commands/exits/timers,
+axiom names and outputs verified. Synthetic actual-runner contract test
+passed1 fixture, rejected10 corruptions, preserved1 failure; that fixture
+is instrumental testing only, not compiler evidence.
+
+Exact-body production NeumannCanonicalSpacingNormalization + Audit are
+PRE-VALIDATION until their fresh cold gate. Body/three-name/text/import
+checks exit0/0.138531s/14684160RSS. No root edit or production seal claimed.
+The scalar coefficient a_r B^d multiplies counting weight B^(-2d) to give
+a_r B^(-d); terminal spacing one is derived at fine spacing B^-1.
+No new fibre count, regional right inverse, uniform B0 or window15 proof.
+20/41,TermSource0,Clay<0.1% unchanged.
+
+After both archives were independently preserved, the19:18:37UTC process
+check found no Lean/Lake or PID73600. Colab then confirmed runtime deletion
+and the sole browser tab was closed (zero tabs). No job/monitor remains.
+The earlier interruption caused an idle disconnection, not evidence loss;
+do not rerun either historical cold or HOT job. Next prepare a fresh
+three-name production cold gate before allocating another high-RAM runtime.

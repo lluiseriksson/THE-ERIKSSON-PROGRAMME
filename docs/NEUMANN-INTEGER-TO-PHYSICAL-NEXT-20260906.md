@@ -410,3 +410,29 @@ full-lattice result or an arbitrary rectangular Neumann result. Any route
 through finite periodization must expose those domain/geometry dictionaries;
 the pointwise reflected-extension route must expose finite-sum interchanges
 and the actual stencil/averaging compatibility. No new no-go is claimed here.
+
+## R3 finite-stencil reuse located after canonical cold1162
+
+Static source inspection, not a new compiler result: the existing
+`cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply` in
+`BalabanCMP99ActiveRegionSourceCovariantAdjointStencil.lean` gives the
+restricted backward divergence for the Dirichlet derivative's adjoint.
+It may be reused for Neumann only after composing its input with
+`extendZeroOneCLM` on the INTERNAL bond field. It is not itself a
+Neumann Laplacian stencil.
+
+The exact finite substep is now named:
+R3-stencil.1 proves that active-bond restriction is the counting adjoint
+of active-bond zero extension, parallel to the already proved site identity
+`cmp99ActiveRegion_restrictZero_eq_extendZero_adjoint`.
+R3-stencil.2 rewrites the ACTUAL Neumann derivative as active-bond restriction
+after the actual regional scaled derivative, then reverses this composition
+under adjoint. R3-stencil.3 applies the existing divergence theorem to the
+zero extension of the internal derivative. Boundary-crossing bond values
+are zero by construction; no Dirichlet/Neumann equality is assumed.
+
+Only then specialize the flat stencil to rectangular half-cell reflection.
+This does not supply reflection covariance of the full two-endpoint Green,
+its full-lattice point-source equation, or the image-series right-inverse law.
+Those analytic/domain gates remain required before inverse uniqueness.
+No new source module or result is claimed by this located reuse.
