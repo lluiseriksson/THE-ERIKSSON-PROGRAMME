@@ -11,6 +11,12 @@ Next fill the bounded wrap probe's pins from this actual review, then its
 separately prepared flat-action successor. Do not rerun this cold gate.
 The LIVE and PRE paragraphs below preserve the prior preparation history.
 
+Observer correction: refreshed browser API documentation identifies automatic
+turn-end cleanup of unmarked agent-created tabs. Missing tabs10/11 were not
+evidence of runtime loss. Use tab.markHandoff() in EACH turn that must retain
+the live Colab view; the mark is turn-scoped. Tab12 is now marked. Reopening
+the same URL recovered the same hostname/PID; no notebook cell was rerun.
+
 LIVE: one execution2026-09-06T20:25:39.007088UTC, PID1799,
 hash gate PASS, CPU/highRAM50.99GB, accountlluiseriksson@gmail.com.
 Browser tab10, cellLfn-ch7rZMDi, notebookvehicleabe9e4560910afa7d433851d35890062d8ed328a.
