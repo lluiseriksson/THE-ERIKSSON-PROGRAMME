@@ -57,6 +57,17 @@ Unrelated shared C6d drafts and deleted old evidence remain untouched.
 
 ## Prepared next HOT only after current cold gate/evidence
 
+R2d.1 v1 stopped at the Mathlib-only repro (ledger1145), preserved and
+independently verified. V2 sourcef8e37328b37b8e37b4178ed295cc5d6f7917d06e
+adds only Bool.false_eq_true in the false branch. Runnercf905d318fcc28a11ab56417cc117155f7958ca4,
+scripts/colab_neumann_integer_block_image_average_hot_v2.py,
+SHAfe187a4059ecf6af61b611b700a8b06aaa092763db1b8e665fe8470c776ff09a.
+Exact new reproa71771253badcf3e43f42bcb567c63f84726975c6c64610fb026363a0ba3a555.
+Reader verify_neumann_integer_block_image_average_hot_v2.py; seven-blob,
+three-name/repro/old-archive-rejection and text checks passed
+exit0/0.8408484s/24375296RSS. Same retained af35 checkout, no cold rebuild.
+V1 information below is retained historical evidence, not a retry instruction.
+
 R2d.1 source4c8171bdc4f70606d89de05f53b6f90d39e689b8:
 tmp/NeumannIntegerBlockImageAverageDraft.lean (three named audit targets).
 Runner45abf2415477e02329acab300e3d8610949cb369:
