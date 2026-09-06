@@ -35,6 +35,24 @@ first actual compiler error belongs to a project-free proof step.
 
 Counters unchanged: 20/41, TermSource=0, window15 not attained.
 
+## Observer recovery, not a runtime restart
+
+At about23:24UTC the browser-control tool reported that tab14 was no longer
+part of its session, and its tab inventory was empty. This was not treated
+as a compiler failure or runtime loss. The same exact GitHub notebook URL
+was reopened as tab15; Colab resumed the existing connection automatically.
+No cell was run, no connect-to-new-runtime request was issued, and no source
+or process was replaced. The restored terminal confirmed hostname
+e71af114d3fe, original launcher PID4007 at14:28 elapsed, and the direct focal
+log advancing through8458..8463/8663. The original23:10:22 launch clock stays.
+
+The recovered notebook UI has fresh cell identifiers, so its empty output
+area is not authority for the old kernel execution. Use the original
+console, stage logs and final-status files. Mark the active tab for handoff
+in EVERY goal turn that uses it, including before returning; a mark in an
+earlier turn is not a substitute for retaining the current observer.
+The cause of the tab disappearance is not assigned from this observation.
+
 ## Separately prepared HOT contract, not launched
 
 Draft source checkpoint f2196b046117a59b9d4d1717887bc127fa34690f.
