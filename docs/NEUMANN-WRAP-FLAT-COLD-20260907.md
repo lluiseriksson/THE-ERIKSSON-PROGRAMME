@@ -53,6 +53,14 @@ The first local manifest check tripped over an empty line interpreted as a
 directory; filtering blank paths fixed the instrumentation before publication.
 These are STATIC/SYNTHETIC checks, NOT new compiler evidence.
 
+Additional nested-preservation test:
+scripts/test_neumann_wrap_flat_cold_preservation.py, in-memory fixtures only,
+exit0/0.8717217s/29634560 observed peak RSS. Valid1/rejected10, including
+corrupted inner production output with a recomputed outer hash, launcher
+tampering, nonzero child exits, missing payload and unexpected files.
+No fixture was written to validation-evidence; the current cold runner,
+launcher, source, queue and pinned reader were not modified.
+
 Preserve the downloaded outer archive with:
 scripts/preserve_neumann_wrap_flat_cold.py --archive <downloaded archive>
 --outer-sha256 <actual Colab stdout hash> --destination <new evidence directory>.
