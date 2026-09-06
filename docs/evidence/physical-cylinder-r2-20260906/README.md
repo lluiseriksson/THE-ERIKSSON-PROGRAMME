@@ -12,6 +12,18 @@ in [PR #79](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/79).
 The Colab execution used the registration base plus the exact overlays
 below; it was not a fresh clone of this later publication commit.
 
+PR #79 merged into `main` at `2026-09-06T13:23:55Z`, preserving the source
+commit, as `f2f7a8914f5945a3b14bbec77b74b9d246fc8e3f`.
+The [CI baseline record](../../PHYSICAL-REFLECTION-CI-BASELINE-20260906.md)
+records the exact R2 runs: scoped checks passed and general CI reproduced
+the nine prior Surface provenance failures (695 passes). Merge publication
+does not import these modules into `YangMillsCore` or add another Lean run.
+GitHub Pages completed deployment of that merge at `13:24:20Z`. A fresh
+dashboard load displayed R2's 39 focal/2854 global readouts, the preserved
+parser failure, the R3/continuum limits and the refreshed hRpoly snapshot.
+The curated graph retained 22 proved, 7 partial and 9 open nodes (38 total,
+43 edges). This is a publication/UI check, not additional mathematics.
+
 ## Gate 6: builds pass; original wrapper returns FAIL
 
 The current fresh clone at the registration commit uses geometry SHA-256

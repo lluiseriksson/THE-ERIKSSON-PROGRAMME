@@ -100,6 +100,12 @@ of this task.
   [Addendum R2-20260906](VERIFICATION-LEDGER.md#addendum-r2-20260906--physical-wilson-cylinder-geometry-and-measure)
   and the [evidence index](evidence/physical-cylinder-r2-20260906/README.md).
   R2 is standalone, not terminally reproduced or independently audited.
+- 2026-09-06: [PR #79](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/79)
+  merged at `13:23:55Z` as `f2f7a8914f5945a3b14bbec77b74b9d246fc8e3f`.
+  Source `507e8a3` is preserved. The final documentation revision leaves
+  the checked source bytes unchanged. General CI reproduced the same nine
+  pre-existing Surface provenance failures; scoped checks passed. See the
+  [CI comparison](PHYSICAL-REFLECTION-CI-BASELINE-20260906.md).
 
 ## R3 reuse boundary identified during R2
 
