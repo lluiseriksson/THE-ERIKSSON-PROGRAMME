@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1", "exit": 0, "log_file": "head.log", "output_sha256": "81b485b5cb169624de69507c86bfbfa5c4896f052a78ed6dc50eb843f1fc8f30", "seconds": 0.0038414180007748655, "stage": "head"}

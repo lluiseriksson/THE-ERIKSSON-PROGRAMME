@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "af35fbb8c75bf2347543034b3abf27f0217b1bbf"], "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "d7e98b7add8f9d077a4ac45c3fe0e33a8154c0881c65cf7151cf8c4d99cf9e07", "seconds": 1.2503010659993379, "stage": "checkout"}

@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannGeneratedIntegerCountingKernel"], "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1", "exit": 0, "log_file": "counting_focal.log", "output_sha256": "bb152e48b5c7e17524f0eecb69735e05721906584f443390a76a8a21bce39111", "seconds": 1451.3335821790006, "stage": "counting_focal"}
