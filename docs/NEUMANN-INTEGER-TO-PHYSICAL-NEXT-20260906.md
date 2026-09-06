@@ -501,3 +501,45 @@ factor. The generic reflection operator remains counting-normalized and
 can accept the appropriately scaled full-density kernel once its actual
 regional right-inverse law is proved. Never add R^-4 a second time to the
 already scaled periodic residue. No existing periodic seal is retracted.
+
+## R3 boundary acceptance gate: site fit is not a no-wrap bond dictionary
+
+Static definition audit2026-09-06, at HEAD69287f505155bacb4920c4cdc13493441408d728.
+This is NOT a newly compiler-verified no-go and does not change the live
+spacing cold source or the prepared internal-bond HOT draft.
+
+The site equivalence in BalabanCMP89NeumannRectangleActiveRegion accepts
+`hfit : forall mu, m mu <= (N : Int)`. This is sufficient for its declared
+SITE bijection. It does not establish the integer rectangle's bond graph.
+PhysicalGaugeOperator defines ActiveGaugeRegion.bonds by membership of both
+endpoints, and FiniteLatticeGeometryInstance defines FinBox.shift modulo N.
+
+In particular, take N >= 2 and m mu = N in every coordinate. The rectangular
+active region contains every torus site. A positive bond with x i = N-1
+is retained, since its shifted endpoint has coordinate 0 and is also active.
+The corresponding integer forward endpoint has coordinate N, outside [0,N).
+Thus the site equivalence alone cannot identify these retained torus bonds
+with the nonperiodic rectangle's internal bonds. A constant-field check
+would miss this difference: both derivatives kill constants.
+
+Required before the flat half-cell boundary specialization:
+
+1. Prove the actual bond dictionary, not merely the existing site bijection.
+   A sufficient no-wrap regime for the current origin-based embedding is
+   `forall mu, m mu < (N : Int)`; prove forward/backward endpoint cases and
+   its transport under the complete-block lift by name.
+2. Derive that strict fit from the actual physical carrier construction if
+   that is the intended regime. Do not silently replace the public <= premise
+   by < and call all original inputs covered. If full-side rectangles are
+   legitimate physical inputs, they need an explicit bond-cut or enlarged-
+   carrier construction and its operator transport, not a site relabeling.
+3. Keep this separate from the generic internal-bond adjoint/divergence
+   identity. That identity correctly describes whatever bonds the declared
+   ActiveGaugeRegion has, including the torus wrap case; it is not itself
+   the promised nonperiodic rectangular boundary equation.
+
+The generated rectangle reflection gates already leave the reflection or
+right-inverse law as a premise. This audit does not refute those conditional
+theorems, nor withdraw a periodic or finite-action seal. It locates a missing
+geometric hypothesis/producer for discharging their physical boundary law.
+20/41, TermSource0 and window15 unattained remain unchanged.
