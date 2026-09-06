@@ -28,6 +28,25 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 
+Prepared R2d.2b on2026-09-06, NOT compiler-verified:
+`tmp/NeumannGeneratedCompleteFibreDraft.lean`. Five proposed audit names
+prove recursive lifted membership via the literal generated terminal owner,
+construct the complete active fibre using the existing block-offset
+equivalence, expose its integer coordinates B*y+r (B=M^depth), and reindex
+its finite sum without a cardinality multiplier. This applies to the
+canonical iterated lift of an arbitrary coarse region, not to an arbitrary
+truncated fine region. In particular an active coarse owner supplies the
+whole block internally; no containment or fibre equivalence is an input.
+Static text/import gates passed exit0/0.5512377s/15826944 observed RSS.
+No compiler was run locally and no parallel Colab build was launched.
+
+Finite endpoints still to connect after that proposed carrier lemma:
+replace the full-field action's owner indicator sum by this fibre sum,
+then specialize its input field to the literal integer coordinates and
+consume R2d.1 for the common image. The field-action weight stays
+(M^-d)^depth; counting mass still uses its square. These are the remainder
+of R2d.2b, not an implicit right-inverse or uniform-B0 claim.
+
 Measured supersession: R2d.1 passed HOT at f8e37328b (ledger1146), and
 R2d.2a passed HOT at765c7be79 (ledger1148). Both actual artifacts were
 independently verified; exact-body production modules/audits are promoted
