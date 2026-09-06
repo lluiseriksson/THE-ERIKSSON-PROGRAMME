@@ -313,6 +313,19 @@ its conclusion is not the needed (2.46) specialization.
 
 ## R3 orientation/domain gate located against existing producers
 
+Additional endpoint check2026-09-06, before running the mass-offset draft:
+its common-image theorem transports a finite sum of F(image(x)); it does
+NOT prove reflection covariance of the two-endpoint physical Green.
+The sealed NeumannActualFullGreenReflectionSummability holds target x fixed
+and varies SOURCE images. Therefore neither that summability nor the new
+finite permutation justifies exchanging an image from one endpoint to the
+other, or asserting Neumann boundary invariance of the resulting solution.
+When R3 needs such a step, expose and prove the actual two-endpoint symmetry
+or the equivalent literal boundary/intertwining law. Do not substitute a
+free symmetry hypothesis and count the regional representation as derived.
+This is a scope check on the inspected producers, not a new impossibility
+theorem or a claim that no supporting theorem exists elsewhere in the tree.
+
 The sealed `cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply`
 is explicitly a FULL PERIODIC box statement. Its point-source solution
 solves the same finite periodic precision before inverse uniqueness is used.
