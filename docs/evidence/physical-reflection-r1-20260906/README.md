@@ -42,11 +42,35 @@ Observed successful commands: unchanged core build (8466 jobs), focal R1
 build (8160 jobs), nine-declaration `R1Audit.lean`, source consistency,
 dashboard validation and the complete oracle import set (8467 jobs).
 `revised-oracle.txt` is the verbatim nine-declaration output observed in that
-execution. Its locally transcribed UTF-8/LF SHA-256 is
+execution. Its UTF-8/LF SHA-256, now matched to the final Colab manifest, is
 `18765288B1B3A26D9B7E8FC0877A2447F4DA578961ACECF8030AA2BF57D5EA17`;
-comparison with the run's final manifest is pending while the global oracle
-replay runs. The executable focal oracle is retained as `R1Audit.lean`.
+the executable focal oracle is retained as `R1Audit.lean`.
 
-The two source overlays are the only Lean changes relative to the base.
+The full oracle also exited **0**, with **2815** readouts, including **26**
+axiom-free declarations. Every dependency is within the standard allowed set.
+The complete stdout hash is
+`bf173c24b55930b876a4a77ae34347bfe2d3644b3a16798cec048a5b686f1a21`.
+`revised-manifest.json` transcribes the final manifest's data, preserving all
+commands, real exits, timings, source/log hashes and the scoped verdict; its
+JSON whitespace differs from the archived original and no byte identity of
+those two JSON serializations is claimed.
+
+The final notebook output preserves the complete revised archive as lossless
+Base64, SHA-256
+`0ffc58c188fdb8fad88a3f5c930d1bbb3920ee6857dbecab7cc820477941c330`.
+It contains all complete logs and source overlays. This archive has not been
+downloaded into the public repository; do not mistake printed log tails for
+the complete logs. The public transcript and manifest expose the focal
+results and the global check's provenance without requiring Google access.
+
+Execution: `08:09:53.593994Z`–`08:51:29.847037Z`, **2496.253 s** on this task's
+CPU/high-RAM runtime. Automatic release followed evidence preservation; the
+disconnected UI was observed before `08:52:28Z`. Exact allocation and billing
+times were not captured. No runtime is left connected for this unit.
+
+The two production/global-oracle overlays are the new standalone module and
+`oracle_check.lean`; all other production Lean modules are unchanged from
+the base. The generated focal driver is additionally preserved in this
+documentation directory as `R1Audit.lean`.
 No R1 core-root import was added. One fresh revised run and the earlier
 different-source diagnostic are not two terminal reproductions at one SHA.

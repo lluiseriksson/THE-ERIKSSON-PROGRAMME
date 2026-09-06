@@ -20,8 +20,10 @@ Colab diagnostic passed. The owner-requested
 then identified existing original-edge gauge fixing and the exact conditioned
 2D heat-kernel amplitude. R1's duplicate gauge-covariance proof was removed;
 the revised source and nine headline oracles passed in a fresh Colab run.
-The unchanged core rebuilt at 8466 jobs; the full oracle replay is still
-running. R1 remains outside `YangMillsCore`, and terminal reproduction and
+The unchanged core rebuilt at 8466 jobs; the full **2815-command** oracle
+then passed with only permitted dependencies (26 declarations are axiom-free).
+The complete manifest and log hashes are retained, and the Colab runtime was
+released. R1 remains outside `YangMillsCore`, and terminal reproduction and
 independent audit are not claimed. No
 physical reflection positivity, transfer construction or mass gap is claimed.
 
@@ -37,6 +39,12 @@ from historical proof checkpoints and verified node counts. The
 the existing fixed-spacing thermodynamic state from the open continuum
 construction and records the independent inputs allowed by hRpoly's
 terminal checklist.
+
+The [hRpoly reading guide](docs/HRPOLY-STATUS.md) also refreshes its checklist
+reference to PR #29 source `6088e162757720e68b771b85c9393d3dda3bd95d`:
+scoped cold records through Addendum 1124 do not change **20/41**,
+**TermSource = 0**, or the open uniform physical-bound row. This is a reading
+update of that branch's records, not a reproduction or source integration.
 
 ## 2026-09-05 — hRpoly: source-flow identities and the next physical bounds
 

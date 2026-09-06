@@ -14,12 +14,14 @@ exponential clustering and source-specific renormalization-group estimates.
 The verified core and the active research frontier each have explicit scope,
 hypotheses and evidence.
 
-> **5 September 2026 · Research update**
+> **6 September 2026 · Research update**
 >
-> hRpoly work continues in [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29),
-> with new recorded checks for source-flow full-Green identities and a sharper
-> map of the remaining physical bounds. The public documentation now connects
-> that work to `main`. [Read the update →](NEWS.md)
+> The independent physical-reflection campaign has a compiled local
+> four-link dictionary with nine clean headline oracles. The ARR paper audit
+> identifies prior 2D results to reuse. hRpoly continues in
+> [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29);
+> its refreshed checklist still records 20/41 and `TermSource = 0`.
+> [Read the scoped evidence and remaining obligations →](NEWS.md)
 
 ## Progress Dashboard
 

@@ -26,7 +26,7 @@ obstruction is not revived.
 
 | ID | Required output | Current state |
 |---|---|---|
-| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Revised source compiled; nine headline oracles passed; existing core rebuilt at 8466 jobs. Global oracle replay in progress. Not core-integrated or terminally reproduced |
+| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Scoped cold PASS: revised source, 9/9 headline oracles, existing core at 8466 jobs and full 2815-command oracle. Not core-integrated or terminally reproduced |
 | R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Open |
 | R3 | Positive complex reflected Gram forms for a physically specified finite lattice and a nonzero physical test sector | Open |
 | R4 | Physical quotient/completion, transfer operator, vacuum and correlation identity, ready for `SharpBridge` | Open |
@@ -64,6 +64,30 @@ cylinder is a candidate next geometry because both plaquettes share the
 crossing links and the half-slices have closed spatial loops. Its measure,
 reflection and nonzero-sector proofs remain to be supplied. The frozen
 auxiliary SU(2) lane remains unmodified.
+
+### Candidate R2 geometry, before implementation
+
+Use two spatial links `u0,u1` on the lower circle, two `v0,v1` on the upper
+circle, and independent crossing links `a0,a1`. The candidate boundary words
+are `H0=u0*a1*v0^-1*a0^-1` and `H1=u1*a0*v1^-1*a1^-1`. Reflection exchanges
+the circles and inverts both crossing links. The predicted local identities
+are `H0(theta A)=a0^-1*H0(A)^-1*a0` and the analogous formula with `a1,H1`.
+These are design formulas to instantiate from R1, not new compiled theorems.
+
+The target measure has the actual density `w_beta(H0)*w_beta(H1)` against
+six independent Haar factors. The test candidate is the spatial-loop trace
+`tr(u0*u1)`, with centering and a strictly positive reflected norm still to
+be proved. For fixed crossing links, the kernel can be written using the
+vertex gauge transform of the upper slice:
+`v0 -> a0*v0*a1^-1`, `v1 -> a1*v1*a0^-1`. Positivity after averaging that
+gauge transform must be proved; it is not an automatic consequence of
+pointwise positivity of the weight.
+
+This cylinder has `(V,E,F)=(4,6,2)` and Euler characteristic zero. It is not
+an inhabitant of the satellite's disk record, which imposes Euler
+characteristic one. Reuse the Haar and covariance ingredients with explicit
+type adapters; do not pretend that the disk-amplitude theorem already
+applies to this geometry. No additional R2 source has been written yet.
 
 ## Acceptance conditions
 
@@ -147,3 +171,33 @@ reconstruction remain open. This label is not a measured percentage.
   not the two independent reproductions needed for terminal status.
   [Prior general-CI failures](PHYSICAL-REFLECTION-CI-BASELINE-20260906.md)
   are recorded independently of Lean and dashboard checks.
+- 2026-09-06: registered the two-link spatial cylinder above as an R2/R3
+  candidate after checking that the satellite disk theorem cannot instantiate
+  its Euler-zero geometry. No positivity or nonzero-sector proof is claimed.
+  Automatic approval review rejected deletion of the clean temporary
+  satellite checkout with `blocked by policy`; that read-only comparison
+  copy remains in the task's `work` directory. No further deletion attempted.
+- 2026-09-06: the revised execution completed at `08:51:29.847037Z` with
+  `SCOPED_PASS_NOT_CORE_INTEGRATED`. The full oracle exited **0** after
+  **1561.023 s**: **2815** readouts, including **26** axiom-free declarations;
+  all other dependencies are subsets of the allowed standard axioms.
+  Complete full-oracle stdout SHA-256:
+  `bf173c24b55930b876a4a77ae34347bfe2d3644b3a16798cec048a5b686f1a21`.
+  The [public manifest](evidence/physical-reflection-r1-20260906/revised-manifest.json)
+  transcribes every stage's command, real exit, timing and log hash from the
+  notebook. The focal transcript hash matches that manifest. The complete
+  archive is preserved losslessly as Base64 in the final notebook output;
+  archive SHA-256:
+  `0ffc58c188fdb8fad88a3f5c930d1bbb3920ee6857dbecab7cc820477941c330`.
+  This CPU/high-RAM execution ran from `08:09:53.593994Z` to the finish above
+  (**2496.253 s**, 41 min 36 s). Automatic runtime release followed archive
+  preservation; the disconnected UI was observed before `08:52:28Z`.
+  Execution timestamps are not exact allocation/billing timestamps; the
+  latter were not captured. R1 source is published in PR #78 at
+  `ea58f6127696a962953c636bb363a43a79b3a6c1` with the exact two
+  production/global-oracle overlays recorded above and the generated focal
+  driver preserved under docs. Later documentation changes do not alter
+  those bytes.
+  This completes one fresh revised-source check, not terminal two-clone
+  reproduction, independent review, physical reflection positivity or core
+  integration. R2–R5 remain open.

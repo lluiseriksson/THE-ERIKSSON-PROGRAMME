@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-09-06",
-    "checkpoint": "Scoped Colab core rebuild: 5066f3d, 8466 jobs (2026-09-06). R1 is standalone; full oracle replay is in progress. See the exact-source ledger entry.",
+    "checkpoint": "Scoped Colab check: base 5066f3d plus exact R1/oracle overlays; core 8466 jobs and full 2815-command oracle passed (2026-09-06). R1 remains standalone. See the exact-source ledger entry.",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
@@ -12,7 +12,7 @@
       {
         "title": "Physical Wilson reflection: independent campaign started",
         "date": "2026-09-06",
-        "status": "Revised local R1 compiled; 9/9 headline oracles passed. Full oracle replay in progress; not core-integrated or terminally reproduced.",
+        "status": "Local R1 compiled; 9/9 new headline oracles and full 2815-command oracle passed in one fresh Colab clone. Not core-integrated or terminally reproduced.",
         "note": "ARR paper reuse audit completed: existing original-edge gauge fixing and the conditioned 2D heat-kernel amplitude are prior work. Duplicate gauge covariance removed. Physical Wilson positivity and reconstruction remain open.",
         "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
       },
@@ -27,8 +27,8 @@
         "title": "hRpoly: source estimates and terminal requirements",
         "date": "2026-09-06",
         "status": "20/41 terminal producers; TermSource = 0; physical window 15 not attained at the inspected snapshot.",
-        "note": "PR #29 advances independently. Its checklist distinguishes selective cold checks from the uniform physical bounds and final application; follow the current PR for later evidence.",
-        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7d773cd4a335f13c3946353f0ab5cb7bb47ca0f9/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md"
+        "note": "PR #29 snapshot 6088e16, checked 6 September: scoped records through Addendum 1124 still leave regional inverse/reflection identification and derivative bounds open. Follow the current PR for later evidence.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/6088e162757720e68b771b85c9393d3dda3bd95d/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md"
       },
       {
         "title": "General CI: pre-existing provenance failures",

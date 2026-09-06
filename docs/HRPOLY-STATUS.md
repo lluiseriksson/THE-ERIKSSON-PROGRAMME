@@ -2,9 +2,16 @@
 
 [YangMills](../YangMills/README.md) · [News](../NEWS.md) · [Documentation](README.md) · [Active PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29)
 
-**Reviewed: 5 September 2026.** This is a curated reading guide to a fixed
-public branch snapshot. It summarizes existing verification records; this
-documentation update does not certify a new mathematical result.
+**Checklist refreshed: 6 September 2026.** PR #29 was still draft at
+`6088e162757720e68b771b85c9393d3dda3bd95d`. Its [completion checklist][dod]
+still records **20/41**, **TermSource = 0**, and window 15 not attained.
+It now records scoped F4/F5 cold evidence through Addendum 1124: full-Green
+owner amplitude, whole-fibre/physical-prefix results and the flat ambient
+value action. Proper regional inverse/reflection identification and the
+derivative bounds still leave the uniform physical `B0, delta0` row open.
+This refresh reads the branch's existing record; it is not a new Lean check,
+main integration or terminal closure. The detailed historical table and
+older ledger links below retain their 5 September snapshot.
 
 ## The problem in plain language
 
@@ -56,8 +63,10 @@ validate that draft. The hard counters above did not move with these entries.
 
 ## What comes next
 
-1. **Complete the uniform full-Green amplitude step (F4).** Check the exact
-   composed endpoint and its hypotheses, then obtain the scoped cold evidence.
+1. **Use the scoped F4 and flat-value evidence already recorded.** The newer
+   [completion checklist][dod] records those cold checks. Preserve their
+   precise source, hypotheses and scale factors when composing the still-open
+   uniform physical endpoint.
 2. **Close physical regional transport (F5).** Preserve fibre norms, endpoint
    orientation and literal lattice spacing. The current value-only adapter
    introduces depth-dependent derivative costs under physical specialization;
@@ -78,9 +87,10 @@ The [vertical slice][slice] gives the detailed source-to-consumer map.
 
 | Record | Immutable reference |
 |---|---|
+| Latest checklist-only refresh, 6 September | [`6088e162757720e68b771b85c9393d3dda3bd95d`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/6088e162757720e68b771b85c9393d3dda3bd95d); counters unchanged; no new reproduction |
 | Public `main` inspected for this update | [`04f87347f3e4d46a05e77bc1c70855794e111477`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/04f87347f3e4d46a05e77bc1c70855794e111477), dated 2026-08-03 |
 | PR #29 research snapshot inspected | [`7b068757bf0b49cd4fe1cdd82501fab808880aa4`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/7b068757bf0b49cd4fe1cdd82501fab808880aa4), dated 2026-09-05 |
-| Completion requirements | [Definition of Done at that snapshot][dod] |
+| Completion requirements | [Definition of Done at the 6 September refresh][dod] |
 | Mathematical evidence | [Verification ledger at that snapshot][ledger] |
 | Source and consumer relationships | [Vertical slice at that snapshot][slice] |
 | Canonical `main` proof-state contract | [`project-state.json`](../project-state.json); retained as recorded, not updated from branch build counts |
@@ -102,7 +112,7 @@ summary in [YangMills](../YangMills/README.md) consistent. Retain failed records
 and immutable references; a new date alone is not a research update.
 
 [pr]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29
-[dod]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7b068757bf0b49cd4fe1cdd82501fab808880aa4/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md
+[dod]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/6088e162757720e68b771b85c9393d3dda3bd95d/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md
 [ledger]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7b068757bf0b49cd4fe1cdd82501fab808880aa4/docs/VERIFICATION-LEDGER.md
 [slice]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7b068757bf0b49cd4fe1cdd82501fab808880aa4/docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md
 [spacing]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/7b068757bf0b49cd4fe1cdd82501fab808880aa4

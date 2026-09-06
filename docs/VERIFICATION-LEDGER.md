@@ -29352,12 +29352,29 @@ All nine new headline oracles: exit 0, with these verbatim outputs:
 'YangMills.OS.WilsonSquare.holonomy_single_bottom_ne_one' depends on axioms: [propext]
 ```
 
-The full **2815-command** global oracle replay is still running; no global
-oracle PASS is claimed at this checkpoint. The
+The full **2815-command** global oracle exited **0** after **1561.023 s**.
+There are **26** axiom-free readouts; the other dependencies are all subsets
+of `{propext, Classical.choice, Quot.sound}`. Full stdout SHA-256:
+`bf173c24b55930b876a4a77ae34347bfe2d3644b3a16798cec048a5b686f1a21`.
+The public focal transcript matches the run's recorded SHA-256
+`18765288b1b3a26d9b7e8fc0877a2447f4da578961acecf8030aa2bf57d5ea17`.
+The [public stage manifest](evidence/physical-reflection-r1-20260906/revised-manifest.json)
+records `SCOPED_PASS_NOT_CORE_INTEGRATED`; the
 [evidence index](evidence/physical-reflection-r1-20260906/README.md) retains
 the earlier ten-headline diagnostic separately and links the exact notebook
 source, complete command-log archives and runtime record. No Windows Lean,
 Lake or oracle execution was used.
+
+The revised execution ran from `2026-09-06T08:09:53.593994Z` to
+`08:51:29.847037Z` (2496.253 seconds). The notebook output preserves the
+complete archive as Base64, SHA-256
+`0ffc58c188fdb8fad88a3f5c930d1bbb3920ee6857dbecab7cc820477941c330`.
+Automatic runtime release followed preservation; the disconnected UI was
+observed before `08:52:28Z`. Exact allocation/billing times were not captured.
+The code is published at `ea58f6127696a962953c636bb363a43a79b3a6c1` (PR #78),
+with the two recorded production/global-oracle overlays relative to the
+checked base; the generated focal audit driver is also preserved under docs.
+Subsequent documentation updates do not change those source bytes.
 
 **Mathematical boundary.** This proves the local four-variable involution,
 its conjugate-inverse holonomy, the relative-path word, the mother's local
@@ -29369,8 +29386,8 @@ reconstruction, hRpoly or a continuum gap. The module remains outside
 and two same-source cold reproductions are not claimed.
 
 **General CI boundary.** The [baseline note](PHYSICAL-REFLECTION-CI-BASELINE-20260906.md)
-records the same nine Surface provenance failures before and after the
-documentation change; 695 tests passed in both runs. This is not a green
+records the same nine Surface provenance failures on earlier main, PR #77
+and PR #78's code checkpoint; 695 tests passed in each run. This is not a green
 general CI claim and no acceptance hashes were changed.
 
 Historical Clay label: **~0% (<0.1%)**, a convention rather than a measured
