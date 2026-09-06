@@ -109,7 +109,6 @@ theorem neumannCanonicalPrecision_apply_eq_completeOffsets
         (((regions.flatExplicitQprime (Nc := Nc)).adjoint.comp
           (regions.flatExplicitQprime (Nc := Nc))) f target) = _
   rw [neumannGeneratedCountingMass_apply_eq_completeOffsets Omega (steps + 1) f target]
-  rfl
 
 #print axioms neumannCanonicalPrecision_eq_explicitCountingMass
 #print axioms neumannCanonicalPrecision_apply_eq_completeOffsets

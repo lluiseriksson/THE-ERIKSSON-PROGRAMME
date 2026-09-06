@@ -47294,3 +47294,27 @@ Classification: measured dependency timeout, not a Lean mathematical failure.
 Retry keeps the SAME source and600s budget in the SAME retained runtime;
 new revision/output paths preserve v1 and reuse only diagnostic build state.
 No new cold seal, no PRE retirement,20/41 andTermSource0 unchanged.
+
+## Addendum 1160 — canonical finite-action HOT first elaboration failure (2026-09-06)
+
+Same source5fa96640891aa7fc980b4e27a77c08e85bf6909f, v2 runnerfddb430494,
+one PID38649 launch14:23:30.940288UTC. Cached prerequisites completed8741 jobs,
+exit0/210.30358039s; generic repro exit0/7.842715924s.
+Physical draft exit1/30.129726169s, no timeout. First exact error:
+NeumannCanonicalPrecisionOffsetActionDraft.lean:98:94: error: unsolved goals.
+The remaining equality differs only by WithLp.equiv versus .ofLp in the
+pointwise Laplacian evaluation. The first declaration prints the allowed trio;
+the second prints sorryAx from the unsolved proof. The WHOLE module is FAIL,
+no prefix is accepted and no PRE marker is retired.
+
+Archivee2f8ae44a8495c323d91c4bc87442512869819ed72c4e4ec417125dfab905b92;
+independent report31f26b84b7f1f0fea790f3a1e702acaed6f1f31f5d2dfdd8d01d06fd5f3e0905;
+physical log091ee7e35e7d3179a7e21dc15f08495540d2233b500a5ca33dac92c2c45b2362.
+Preserved validation-evidence/neumann-canonical-precision-hot-v2-20260906.
+Preserver completed VERIFIED_FAILURE and wrote that report before the local
+display wrapper hit UnicodeEncodeError on the Lean natural-number glyph.
+That display exit1 is not a compiler result or an artifact failure; the raw
+UTF-8 log was then read directly. No Colab process or proof was rerun for it.
+Proposed minimal repair: final rfl, with the exact generic WithLp equality
+added to the Mathlib repro FIRST. No statement, coefficient or hypothesis
+changes.20/41,TermSource0,window15 unattained unchanged.
