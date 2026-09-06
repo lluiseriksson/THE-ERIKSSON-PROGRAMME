@@ -64,3 +64,34 @@ whitespace differs from the archived original.
 The next draft annotates both indices as `Fin 2`. It also states the exact
 dictionary from the density exponent to the mother's Wilson action. This
 is another unverified repair, not evidence that the measure proof passes.
+
+## Diagnostic 3: geometry compiles, measure fails
+
+The third fresh clone at the same registration commit used geometry
+SHA-256 `CD4EEF25817D3A5F2EF6F61FDD19D3E8E5C3ECA3B5FC34202DDD7219933E4D79`
+and measure SHA-256
+`599323C5CE1315866061B606F3C10DFE476C97F7070A7A588FA441BC714F5B57`.
+The [public manifest](diagnostic-3-manifest.json) preserves every recorded
+field; JSON whitespace differs from the archive.
+
+- Execution: `2026-09-06T10:52:05.907252Z` to
+  `2026-09-06T10:57:00.562987Z` (294.655735 seconds).
+- CPU/high-RAM, 50.99 GB. The runner released the runtime automatically;
+  the disconnected UI was observed. Exact billing duration was not captured.
+- The concrete geometry module **compiled**, at job 8170 of 8171.
+  The measure module failed, so the overall focal exit is **1**
+  (157.014127 seconds). Core and all oracles were not reached.
+- Errors concern the swap theorem namespace, right-Haar map rewriting,
+  scalar-one simplification, second countability for product Borel spaces,
+  real-to-complex scalar rewrites, and the Fubini rewrite across measure aliases.
+  They are recorded failures, not missing hypotheses supplied by the caller.
+- Complete focal log SHA-256:
+  `a0d4790ccc1a2baad8621472bb48ea26c327f98f0c6ae19a8e107f03a3c8241d`.
+- Complete archive SHA-256:
+  `9717363d9be300d0e567efba83eca4fc82d94b3997f52923bbd792479c7cacf4`.
+  Full source, logs and lossless Base64 export remain in notebook cell 5.
+
+The revised measure draft reuses the satellite's explicit Haar-map and
+scalar-one proofs, supplies second countability from matrix coordinates,
+and rewrites complex scalar multiplication explicitly. Another fresh gate
+is required. Geometry compilation alone does not accept R2.

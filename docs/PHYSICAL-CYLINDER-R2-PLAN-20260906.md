@@ -76,3 +76,23 @@ of this task.
   are retained in the same evidence directory/notebook. A third prepared
   run includes those annotations and the explicit Wilson-action dictionary;
   no R2 acceptance is claimed before its results are observed.
+
+- 2026-09-06: the third diagnostic compiled the complete geometry but failed
+  in the measure module. Its separate failure record is preserved. Measure
+  repairs are prepared for a fresh gate; R2 is unverified.
+
+## R3 reuse boundary identified during R2
+
+Source inspection also located the existing
+`YangMills.OS.su2WilsonCrossing_isHaarPSDKernel` in
+`OS/SU2WilsonReflectionKernel.lean`. It proves the one-link Wilson kernel's
+positive semidefinite Haar form at `beta >= 0`, using positive finite-rank
+Taylor approximations. This is reusable substrate, not a new cylinder result.
+The frozen module is unchanged.
+
+For the cylinder, a later proof must connect the product kernel to the
+physical integral through the upper-slice gauge average, retaining both
+crossing links. It must then exhibit a strictly positive centered physical
+norm, for example in a justified spatial-loop sector at `beta > 0`.
+Neither the existing kernel theorem, positive density, nor reflection
+invariance discharges that second obligation. No R3 proof run is claimed.
