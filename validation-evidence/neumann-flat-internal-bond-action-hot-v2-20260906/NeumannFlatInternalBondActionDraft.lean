@@ -59,8 +59,9 @@ theorem neumannFlatInternalBond_laplacian_apply
           (if (x.1.shiftBack i, i) ∈ Omega.bonds then
             spacing⁻¹ • (f (x.1.shiftBack i) - f x.1) else 0)) := by
   rw [neumannInternalBond_laplacian_apply]
-  simp only [neumannFlatInternalBond_extendedDerivative_apply, FinBox.shift_shiftBack]
-  simp only [cmp99SourceFlatGaugeConfig, inv_one, SUNAdjointModel.ad_one_apply]
+  simp only [neumannFlatInternalBond_extendedDerivative_apply,
+    cmp99SourceFlatGaugeConfig, inv_one,
+    SUNAdjointModel.ad_one_apply, FinBox.shift_shiftBack]
 
 #print axioms neumannFlatInternalBond_extendedDerivative_apply
 #print axioms neumannFlatInternalBond_laplacian_apply

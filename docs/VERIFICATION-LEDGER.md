@@ -47691,3 +47691,18 @@ report11e1da91319844c59ec23258a0ea5e7a944ab8c3128ec158952c9f2bfed7cea7.
 Preserved validation-evidence/neumann-flat-internal-bond-action-hot-v1-20260906.
 Reader exit0/0.1481893s/18165760RSS VERIFIED_FAILURE.20/41,TermSource0,
 window15 unchanged. Next is the same-cache bounded one-line repair, not CI.
+
+## Addendum 1176 — flat v2 first error: simplification phase ordering (2026-09-06)
+
+SOURCEdeea786e397c603179f1d573331eadc785c0947d; runnerc1e17357fcadd03b7a5312097c5dea912aeb3c7d.
+One launch21:56:12.778284UTC PID32262. physical_draft exit1/12.957625007s,
+no timeout, same runtime/cache. First error60:66: unfolding the literal
+configuration in the shared simp pass prevented the derivative theorem
+from matching. Transport is now identity, but the two derivatives remain.
+First oracle clean, second sorryAx rejected; complete unit still FAIL.
+Archive55b25e4cc29daa3e77c50b4142c893ead318dcf9a9eaa3d35163d68e796d77cc;
+report1c31662a3ca9baf6840586aea262cc7934e11b0c2717837cadd42ac69978e5c9.
+Preserved validation-evidence/neumann-flat-internal-bond-action-hot-v2-20260906.
+Reader exit0/0.1468503s/18350080RSS VERIFIED_FAILURE. Next PRE separates
+derivative rewrite from configuration simplification, with all statements,
+signs, masks and spacing unchanged.20/41,TermSource0,window15 unchanged.

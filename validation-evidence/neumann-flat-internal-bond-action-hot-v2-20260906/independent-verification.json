@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "55b25e4cc29daa3e77c50b4142c893ead318dcf9a9eaa3d35163d68e796d77cc",
+  "cold_seal": false,
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/neumann-flat-internal-bond-action-hot-v2-evidence/physical_draft.olean",
+      "tmp/neumann-flat-internal-bond-action-hot-v2/NeumannFlatInternalBondActionDraft.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1",
+    "exit": 1,
+    "log_sha256": "4177c3194329ba4ca7de46c04aac2d982148bb55bda4cb87f692aa4640404c66",
+    "seconds": 12.957625007000388,
+    "stage": "physical_draft",
+    "timed_out": false,
+    "timeout_seconds": 120
+  },
+  "log": "tmp/neumann-flat-internal-bond-action-hot-v2/NeumannFlatInternalBondActionDraft.lean:60:66: error: unsolved goals\nd N Nc : \u2115\ninst\u271d\u00b2 : NeZero d\ninst\u271d\u00b9 : NeZero N\ninst\u271d : NeZero Nc\nOmega : ActiveGaugeRegion d N\nrho : SUNAdjointModel Nc\nspacing : \u211d\nf : GaugeZeroCochain d N (SUNLieCoord Nc)\nx : Omega.Site\n\u22a2 spacing\u207b\u00b9 \u2022\n      \u2211 x_1,\n        (((extendZeroOneCLM Omega)\n                ((cmp89SourceNeumannRegionalCovariantD0CLM Omega rho { toFun := fun x => 1, map_reverse := \u22ef } spacing)\n                  ((restrictZeroCLM Omega) f))).ofLp\n            (\u2191x, x_1) -\n          ((extendZeroOneCLM Omega)\n                ((cmp89SourceNeumannRegionalCovariantD0CLM Omega rho { toFun := fun x => 1, map_reverse := \u22ef } spacing)\n                  ((restrictZeroCLM Omega) f))).ofLp\n            ((\u2191x).shiftBack x_1, x_1)) =\n    spacing\u207b\u00b9 \u2022\n      \u2211 x_1,\n        ((if (\u2191x, x_1) \u2208 Omega.bonds then spacing\u207b\u00b9 \u2022 (f.ofLp \u2191x - f.ofLp ((\u2191x).shift x_1)) else 0) -\n          if ((\u2191x).shiftBack x_1, x_1) \u2208 Omega.bonds then spacing\u207b\u00b9 \u2022 (f.ofLp ((\u2191x).shiftBack x_1) - f.ofLp \u2191x) else 0)\ntmp/neumann-flat-internal-bond-action-hot-v2/NeumannFlatInternalBondActionDraft.lean:62:13: warning: This simp argument is unused:\n  neumannFlatInternalBond_extendedDerivative_apply\n\nHint: Omit it from the simp argument list.\n  simp only [\u0335n\u0335e\u0335u\u0335m\u0335a\u0335n\u0335n\u0335F\u0335l\u0335a\u0335t\u0335I\u0335n\u0335t\u0335e\u0335r\u0335n\u0335a\u0335l\u0335B\u0335o\u0335n\u0335d\u0335_\u0335e\u0335x\u0335t\u0335e\u0335n\u0335d\u0335e\u0335d\u0335D\u0335e\u0335r\u0335i\u0335v\u0335a\u0335t\u0335i\u0335v\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335\n  \u0335 \u0335 \u0335 \u0335 \u0335c\u0335m\u0335p\u03359\u03359\u0335S\u0335o\u0335u\u0335r\u0335c\u0335e\u0335F\u0335l\u0335a\u0335t\u0335G\u0335a\u0335u\u0335g\u0335e\u0335C\u0335o\u0335n\u0335f\u0335i\u0335g\u0335,\u0335[\u0332c\u0332m\u0332p\u03329\u03329\u0332S\u0332o\u0332u\u0332r\u0332c\u0332e\u0332F\u0332l\u0332a\u0332t\u0332G\u0332a\u0332u\u0332g\u0332e\u0332C\u0332o\u0332n\u0332f\u0332i\u0332g\u0332,\u0332 inv_one, SUNAdjointModel.ad_one_apply,\n  \u0332  \u0332 \u0332 \u0332FinBox.shift_shiftBack]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\ntmp/neumann-flat-internal-bond-action-hot-v2/NeumannFlatInternalBondActionDraft.lean:64:34: warning: This simp argument is unused:\n  FinBox.shift_shiftBack\n\nHint: Omit it from the simp argument list.\n  simp only [neumannFlatInternalBond_extendedDerivative_apply, cmp99SourceFlatGaugeConfig, inv_one,\n      S\u0335U\u0335N\u0335A\u0335d\u0335j\u0335o\u0335i\u0335n\u0335t\u0335M\u0335o\u0335d\u0335e\u0335l\u0335.\u0335a\u0335d\u0335_\u0335o\u0335n\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335F\u0335i\u0335n\u0335B\u0335o\u0335x\u0335.\u0335s\u0335h\u0335i\u0335f\u0335t\u0335_\u0335s\u0335h\u0335i\u0335f\u0335t\u0335B\u0335a\u0335c\u0335k\u0335]\u0335S\u0332U\u0332N\u0332A\u0332d\u0332j\u0332o\u0332i\u0332n\u0332t\u0332M\u0332o\u0332d\u0332e\u0332l\u0332.\u0332a\u0332d\u0332_\u0332o\u0332n\u0332e\u0332_\u0332a\u0332p\u0332p\u0332l\u0332y\u0332]\u0332\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n'YangMills.RG.neumannFlatInternalBond_extendedDerivative_apply' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'YangMills.RG.neumannFlatInternalBond_laplacian_apply' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+  "source": "deea786e397c603179f1d573331eadc785c0947d",
+  "status": "VERIFIED_FAILURE"
+}
