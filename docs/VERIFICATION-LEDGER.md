@@ -47619,3 +47619,19 @@ Independent reader exit0/0.1451639s/16617472RSS, VERIFIED_FAILURE.
 Next run is diagnostics only on this byte-identical failed source, 30s cap,
 no olean/seal; retain actual child exit and log before choosing another fix.
 No new cold run, no terminal counter movement, window15 remains unattained.
+
+## Addendum 1172 — finite enumeration reduction measured (2026-09-06)
+
+Instrumentation source is byte-identical v5. Runnerd7738431fab633cef5f074608d47f7acad7670e2,
+one launch21:42:18.419651UTC PID28432, same retained Colab runtime.
+Lean diagnostics child exit1/19.230498729s, under30s, no olean requested.
+At the failed application: List.rec188446, List.map125618, List.append62496,
+Finset.univ95 unfolds. This identifies concrete enumeration reduction as
+the measured elaboration load, not a refuted geometric proposition.
+Archive d46074382c22937571863824a532b4f4c4878ed5ff2a4faec21ec4c8a1465f95;
+report c0134b034cab324db405185827f29a042502288a5e8b54f221103d3625f478e8.
+Preserved validation-evidence/neumann-wrap-v5-reduction-diagnostic-20260906.
+Reader exit0/0.104449s/17719296RSS: VERIFIED_DIAGNOSTIC_ONLY.
+Next PRE repair uses with_reducible at the exact generic-lemma application;
+same public statement and source objects, no raised limits. Not yet compiled.
+No terminal counter movement; flat-action diagnostic still queued.
