@@ -1,0 +1,82 @@
+# Candidate mixed image family for the actual rectangular carrier
+
+STATIC DESIGN ONLY. No new compiler result, source equation verification,
+physical inverse, uniform B0 or scalar-window attainment is claimed here.
+The live directional-mask cold gate and its prepared HOT composition are
+unchanged. This note refines the already open full/proper-side design gate;
+it is not permission to replace the existing source kernel silently.
+
+## What the inspected tree fixes
+
+NeumannRectangleDirectionalMasks keeps the original hypotheses 0<m_mu<=N.
+Its current production cold gate is pending. The separately cold-sealed
+NeumannRectangleWrapProbe and NeumannFlatInternalBondAction establish that
+site fit alone does not erase actual torus wrap bonds.
+
+The literal full-image family in NeumannIntegerImageCountingKernel uses
+2*k*m+n and 2*k*m-n-1 in EVERY coordinate. Its scope is the existing CMP89
+reflection construction. NeumannActualFullGreenReflectionSummability fixes
+the target and varies source images of the full (2.46) kernel. Neither
+result already identifies that family with a mixed torus/Neumann inverse.
+
+## Candidate retaining all original carrier inputs
+
+Let B>0 be the fine block side; fine ambient period P=B*N and fine side
+h_mu=B*m_mu. In direction mu classify FULL by m_mu=N, otherwise PROPER.
+For an integer source coordinate n in [0,h_mu), use:
+
+- FULL: n + k*P, with a single branch.
+- PROPER: n + 2*k*h_mu or -n-1 + 2*k*h_mu.
+
+Use a proof-carrying branch type that forces the reflection bit to false
+in FULL directions. Summing over both bits there would duplicate the
+periodic images, and would change the delta normalization. This is not
+absorbed into a constant. The candidate has at most 2^4=16 branches,
+independent of B, K, N and the side lengths; that count still needs a theorem
+if the candidate is implemented.
+
+All proper directions recover the existing printed half-cell image family.
+All full directions instead give a periodic image family. A mixed rectangle
+uses the two prescriptions direction by direction; it does not cut any
+actual wrap bond or shrink a region to make strict fit true.
+
+## Finite proof obligations before adoption
+
+First determine whether the actual physical carrier producer guarantees
+proper sides. If it does, prove that fact from its geometry and use the
+existing all-reflecting route on that justified domain. M1-M4 below are
+conditional obligations for adopting a mixed-family route, not four new
+mandatory bricks added regardless of the physical consumer. The arbitrary
+rectangular finite-action theorem itself must still retain its full inputs.
+
+M1. Construct the exact full-family integer coverage/bijection, including
+the single periodic branch in full directions. Reuse the existing proper
+interval coverage; add ordinary Euclidean quotient/remainder in the full
+case. Count each point once, not only show coverage.
+
+M2. Prove the block-owner intertwiner at the same image index. For a full
+direction the required identity is (n+k*B*N)/B = n/B+k*N; proper directions
+use neumannIntegerTranslatedOwner and neumannIntegerReflectedOwner. Keep
+the physical counting coefficient and the single block-volume cancellation
+from the sealed generated-average dictionary unchanged.
+
+M3. Derive covariance of the ACTUAL full two-endpoint (2.46) Green under
+the required common block translations and coordinate half-cell reflections.
+Source-image summability or a source-image permutation alone does not prove
+target-boundary invariance. The located depth-one negated-endpoint swap
+theorem is not this arbitrary-depth covariance law.
+
+M4. Apply the actual masked Laplacian and generated averaging action to the
+constructed image series. Prove the periodic seams in FULL directions and
+the half-cell Neumann seams in PROPER directions separately; interchange
+only with explicit summability. The full-lattice normalized point-source
+equation and fine-density-to-counting factor B^-4 must be supplied once.
+Only then may inverse uniqueness identify the regional Green.
+
+This candidate could preserve the original non-strict carrier domain, but
+it remains unimplemented and unverified. It does NOT discharge M3/M4 or
+the independent full-lattice Fourier/operator equation by defining a new
+kernel. Any adoption must update the physical endpoint explicitly rather
+than relabel the all-reflecting CMP89 (2.42) formula as mixed-periodic.
+
+Counters unchanged: 20/41, TermSource=0, window15 not attained.

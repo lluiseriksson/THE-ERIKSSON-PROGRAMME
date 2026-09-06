@@ -2,6 +2,14 @@
 
 ## Superseding measured state, 2026-09-06
 
+Static refinement2026-09-07: NEUMANN-MIXED-BOUNDARY-CANDIDATE-20260907.md
+spells out a possible periodic/full versus reflecting/proper source-image
+family without deleting original carrier inputs. It is NOT implemented or
+verified, and does not supply the arbitrary-depth Green covariance or the
+full-lattice/right-inverse law. Its single branch in full directions is a
+normalization requirement, not a constant adjustment. The current cold
+directional-mask gate and bounded masked-action draft remain separate.
+
 Directional-mask draft HOT PASS atadfef2b5b883a839e24b03ceedd118b32428dace,
 ledger1179, nine stages0 and exact two/four-name audits. Parent cold1178 was
 independently preserved BEFORE launch on its retained runtime. The natural
