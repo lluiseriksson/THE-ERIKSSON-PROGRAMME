@@ -20,6 +20,37 @@ The older planning/live-state paragraphs below are historical, not claims
 that these already resolved steps remain open. R1/R3/R4 still remain open.
 20/41,TermSource0,window15 not attained unchanged.
 
+The joint eight-name cold cohort is running from d9d1bcae8 in a fresh
+separate checkout since10:08:37UTC; see
+NEUMANN-RECTANGLE-FULL-GREEN-COLD-20260906.md. No verdict yet.
+
+## R2d finite endpoint, explicitly split before manufacture
+
+R2d.1 draft: NeumannIntegerBlockImageAverageDraft.lean. The exact printed
+image of B*y+r is B*image(y)+r', where r'=r or Fin.rev(r) coordinatewise,
+using the SAME parity and translation and fine rectangle B*m. A constructed
+involution reindexes the complete finite offset sum; a weight outside it
+is unchanged. No image is clipped into the original rectangle. Static
+guards/repro extraction passed (exit0/0.1662513s/18264064RSS), not Lean.
+An earlier guard invocation supplied a path instead of its required
+--paths-from option: exit2 before scanning. Corrected invocation only.
+
+R2d.2 remains separate: identify that finite block sum with the literal
+generated flat Q action after the already sealed one-block collapse.
+Reuse cmp99BlockOffsetEquiv / sum_blockSites_eq_sum_offsets for the complete
+block carrier; do not invent a second finite-site equivalence.
+The weight is (M^-d)^depth, equal by the sealed
+cmp99SourceBlockAverageWeight_pow_eq_oneBlock to the one-block weight.
+The counting-adjoint mass uses the SQUARE of this weight, and is not
+identified with the source-weighted adjoint. No factor B^d is inserted
+by the permutation. Arbitrary active-region truncation is not replaced
+by a complete fibre without proving containment for the lifted rectangle.
+
+Only after R2d.2 and the actual pointwise precision law may R3 interchange
+the image series with finite stencil/averaging and prove a right inverse.
+The reflected periodic extension is generally not a global l2 field;
+the finite-sum dictionary is deliberately pointwise, not a fake l2 isometry.
+
 Design only; no compiled result or counter movement. Do not turn a common
 image-indicator equality into a physical inverse by renaming its parameters.
 

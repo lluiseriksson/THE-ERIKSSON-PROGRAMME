@@ -1,5 +1,9 @@
 # Literal Eq246 source-image insertion — live continuity
 
+SUPERSEDED LIVE STATE: HOT completed PASS, independently preserved in
+ledger1143. Current Cell3 is the fresh eight-name cold cohort; see
+NEUMANN-RECTANGLE-FULL-GREEN-COLD-20260906.md. Do not rerun this old unit.
+
 Current as of 2026-09-06 09:51UTC. Goal ACTIVE, no pause/blocker.
 20/41, TermSource0, window15 compatible/not attained, Clay<0.1% unchanged.
 
