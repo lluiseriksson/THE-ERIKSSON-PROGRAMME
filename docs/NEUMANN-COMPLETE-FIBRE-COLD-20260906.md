@@ -74,3 +74,12 @@ repro before prerequisites, no stale path and the non-execution guard.
 This is instrument readiness, not mathematical verification.
 At12:20UTC the live cold graph had completed cache_get exit0/4.956s and was
 in fibre_focal. One running cell; no reexecution or second build.
+
+Reader adversarial preparation: scripts/test_neumann_mass_offsets_hot_reader_preparation.py
+accepted1 synthetic valid fixture, rejected10 altered fixtures and preserved1
+synthetic failure without calling it a PASS. Final exit0/0.4339623s/24694784RSS.
+The first fixture attempt failed CWD_TIME (exit1/0.5118375s/24375296RSS):
+Windows Path emitted backslashes for synthetic Linux paths. Corrected the
+fixture to as_posix; the reader and its Linux cwd gate were NOT weakened.
+No fixture is compiler evidence and neither template has been executed.
+At12:25:15UTC PID8742 was alive (elapsed16:57), focal8468/8501; no final status.
