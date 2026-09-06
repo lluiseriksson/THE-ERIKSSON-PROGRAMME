@@ -87,6 +87,21 @@ after the cold evidence is independently preserved, otherwise disconnect.
 
 ## Second bounded HOT unit prepared, not launched
 
+Update: R2d.1 v2 PASS is preserved (ledger1146), production promotion
+remains PRE pending cold. Field-action v1 failed only at the final ite
+reduction in the positive branch (ledger1147); archive independently
+verified. Retry source765c7be79997313ebc6f72244d617634a4192700,
+runner4c96c6ce611eeee9e1f57900197f38180a8392d6,
+scripts/colab_neumann_generated_average_field_action_hot_v2.py,
+SHAc2109ca7a216a616b09e4355e19048f912f53289a6bb0a2694b49b9d2b3ad892.
+It executes the pinned Mathlib-only exact residual repro before prerequisites
+and the physical draft. Reader verify_neumann_generated_average_field_action_hot_v2.py.
+Four input blobs/three audit names and text checks passed,
+exit0/0.4678429s/23326720RSS. An initial text-guard invocation used an
+unsupported --paths flag (exit2 before scan); corrected --paths-from is
+the only accepted text-check evidence. No compiler result is inferred.
+Original v1 contract below remains historical; never reexecute v1.
+
 R2d.2a exact generated full-field action source
 6bbbbffaf56caf0c09d9cfb2e8c27c05fd47a654. Three declarations: Q itself,
 source-weighted mass, counting-adjoint mass. They expose actual terminal
