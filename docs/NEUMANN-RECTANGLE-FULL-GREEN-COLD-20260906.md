@@ -82,3 +82,16 @@ Use only after the current cold gate and previous bounded HOT unit;
 do not run concurrent jobs. If a first error is purely generic,
 extract its exact repro before retrying. R2d.2b physical offset reindexing
 and R3 right-inverse remain genuinely open.
+
+## While the cold gate runs: source-role notice propagation
+
+bd5273d71 changes only the module docstrings of the generic insertion file
+and the older finite-depth PhysicalReflectionRepresentation sibling:
+(2.48) remains valid compiled algebra but is not the full fine-to-fine
+(2.46) physical producer. No production proof or statement was modified.
+Git-blob comparison before/after, stripping only the first module docstring:
+PASS exit0/0.1915329s/13492224observed RSS.
+The first local check accidentally used Windows' default text encoding,
+failed before comparison (UnicodeDecodeError), and was not evidence.
+The corrected check used UTF-8 decoded Git blobs. No Colab rerun occurred.
+This documentation change does not alter the immutable d9d1bcae8 cold source.
