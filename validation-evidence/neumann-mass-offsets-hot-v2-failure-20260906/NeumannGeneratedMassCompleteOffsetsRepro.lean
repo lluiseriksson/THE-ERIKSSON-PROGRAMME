@@ -24,11 +24,4 @@ example {α β V : Type*} [Fintype α] [DecidableEq β] [AddCommMonoid V]
   dsimp only
   rw [hs]
 
--- A higher-order rewrite must receive the composed function explicitly.
-example {α β V : Type*} [Fintype α] [AddCommMonoid V]
-    (coord : α → β) (T : β → β) (F : β → V) (rhs : (β → V) → V)
-    (hs : ∀ g : β → V, (∑ source, g (coord source)) = rhs g) :
-    (∑ source, F (T (coord source))) = rhs (fun x => F (T x)) := by
-  rw [hs (fun x => F (T x))]
-
 end

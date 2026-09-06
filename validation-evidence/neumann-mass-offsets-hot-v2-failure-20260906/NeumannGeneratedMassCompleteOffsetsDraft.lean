@@ -162,9 +162,7 @@ theorem sum_neumannGeneratedTerminalOwner_commonImage_eq_completeOffsets
           (neumannFiniteSiteIntegerCoordinates
             (neumannGeneratedActiveCoarseOwner Omega depth target).1) k branch) r) := by
   dsimp only
-  rw [sum_neumannGeneratedTerminalOwner_integerField_eq_completeOffsets
-    Omega depth target (fun x => F (cmp89NeumannReflectionImage
-      (fun mu => ((M ^ depth : ℕ) : ℤ) * m mu) x k branch))]
+  rw [sum_neumannGeneratedTerminalOwner_integerField_eq_completeOffsets]
   exact sum_neumannIntegerImage_fineBlockPoint m
     (neumannFiniteSiteIntegerCoordinates
       (neumannGeneratedActiveCoarseOwner Omega depth target).1) k branch F

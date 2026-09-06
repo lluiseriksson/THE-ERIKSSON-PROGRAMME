@@ -47192,3 +47192,22 @@ Repair is exactly `dsimp only` before the two rewriters, with a generic
 outer-let repro added before any further project compilation. No statement,
 constant or hypothesis changes. The repaired source remains PRE-VALIDATION.
 20/41,TermSource0,window15 unattained unchanged. No cold rerun.
+
+## Addendum 1156 — mass/complete-offset HOT v2 first failure (2026-09-06)
+
+Source971bc5f2dc4065785cc21b300c10c66f21cf85d0, same retained cold runtime.
+Started12:54:18.121645UTC,PID25520. Repro/prerequisites passed; physical_draft
+exit1/9.947606809s. First error at165:6: Tactic `rewrite` failed: Did not find
+an occurrence of the pattern. The outer-let fix works, including the integer
+field theorem. Only the common-image proof remains: higher-order matching
+does not infer F composed with the printed reflection. No successful prefix
+of this failed module is counted. The repair explicitly supplies that SAME
+composition to the existing lemma, keeping all hypotheses/statements intact.
+
+Archive9b0282d54aa659c76a091650c85d5cd0fcdf18a76f0994f55a8c0a129a3eba6e;
+reportf49b4f98f9fb4da0a8049ddd3f614ebc017dc6b599131b4caade9db9d0158419.
+Preserved under validation-evidence/neumann-mass-offsets-hot-v2-failure-20260906.
+Independent reader exit0/0.4922748s/23232512RSS, VERIFIED_FAILURE.
+New Mathlib-only repro explicitly tests the composed-function rewrite before
+the next project run. No source proof is accepted from compiler recovery.
+20/41,TermSource0,window15 unattained unchanged; no cold rerun.
