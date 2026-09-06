@@ -71,3 +71,8 @@ of this task.
   oracles were not reached. The [failure record](evidence/physical-cylinder-r2-20260906/README.md)
   preserves exact hashes, actual exit, timing and the complete notebook archive.
   A corrected draft is prepared; R2 remains unverified.
+- 2026-09-06: the second fresh diagnostic reduced geometry failures to two
+  plaquette index annotations. Its separate manifest and complete archive
+  are retained in the same evidence directory/notebook. A third prepared
+  run includes those annotations and the explicit Wilson-action dictionary;
+  no R2 acceptance is claimed before its results are observed.

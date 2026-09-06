@@ -87,7 +87,10 @@ This cylinder has `(V,E,F)=(4,6,2)` and Euler characteristic zero. It is not
 an inhabitant of the satellite's disk record, which imposes Euler
 characteristic one. Reuse the Haar and covariance ingredients with explicit
 type adapters; do not pretend that the disk-amplitude theorem already
-applies to this geometry. No additional R2 source has been written yet.
+applies to this geometry. This was registered before source implementation.
+Two R2 modules are now drafted; two failed geometry diagnostics are preserved
+in the [R2 evidence log](evidence/physical-cylinder-r2-20260906/README.md).
+The corrected source remains unverified until its acceptance gates pass.
 
 ## Acceptance conditions
 
