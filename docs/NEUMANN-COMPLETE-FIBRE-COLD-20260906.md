@@ -40,3 +40,20 @@ After PASS download/verify independently, retire only the two certified
 headers and record hashes. After FAIL preserve first error, no partial seal.
 Do not move20/41 for this carrier dictionary. R2d.2b finite-action endpoint,
 R3 right inverse and R4 uniform physical B0 still remain open.
+
+Useful work completed during the live gate: PRE-VALIDATION source checkpoint
+4a05bff83ac0a30a7bdced8b1adee45828aaef24 (published, FF-only, gh identity
+lluiseriksson verified). Six proposed names in
+tmp/NeumannGeneratedMassCompleteOffsetsDraft.lean connect actual mass action
+to complete offsets, integer coordinates and a common image. Its isolated
+Repro must run first. Two-file text/import gate: exit0/0.1732472s/16183296RSS.
+No HOT run yet, and no second build concurrent with this cold gate.
+At12:17:17UTC PID8742 remained alive (elapsed08:59); all four launcher
+transport hashes matched and verifier_self_test exited0 in0.051601286s.
+The launcher log is not the focal log; do not infer its current stage from
+the unchanged self-test line. Runtime hostname visible4609d7098347.
+
+After cold PASS and independent preservation, prepare one bounded HOT run
+of this six-name draft in the SAME retained checkout7f7455b28, with exact
+Git-blob pins and parent evidence hash. Never rerun the cold cell. If the
+cold gate fails, preserve/repair its first error before this proposed HOT.
