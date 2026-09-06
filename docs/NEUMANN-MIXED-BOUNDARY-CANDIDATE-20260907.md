@@ -80,3 +80,40 @@ kernel. Any adoption must update the physical endpoint explicitly rather
 than relabel the all-reflecting CMP89 (2.42) formula as mixed-periodic.
 
 Counters unchanged: 20/41, TermSource=0, window15 not attained.
+
+## Primary-page check, 2026-09-07
+
+Read the complete existing renders of printed pages572,582,583,584 directly,
+not merely their OCR or an external report. The PDF matches the previously
+catalogued primary digest416e2b1f00b52e7235ab27d2be066b50d42dde33cf8596baeae0a6688b145143.
+
+Page572 explicitly allows subsets of a periodic torus as another ambient
+setting, fixes half-open blocks in(1.1), and defines(1.3) by summing bonds
+whose two endpoints are in Omega. This agrees with retaining actual wrap
+bonds when both endpoints are active; it does not justify cutting them.
+Lemma2.4 on page582 describes arbitrary block-built rectangular subsets of
+the lattice. Its proof on page584 invokes the reflection formula(2.42) and
+then the full-lattice Fourier equation(2.44). These inspected pages do not
+provide a finite-torus strict-fit hypothesis or its physical producer.
+This is a scoped source reading, not an assertion about every page or every
+downstream CMP95/CMP96/CMP99 domain construction.
+
+The apparent inclusive endpoint on page584 is already handled explicitly
+by BalabanCMP89NeumannReflectionScaleDictionary: distinguish its geometric
+envelope from the half-open block sites of(1.1). The present reading confirms
+both printed conventions; it does not announce a new endpoint no-go or
+change the established integer image family.
+
+Private render provenance (not committed as public paper copies):
+
+- tmp/pdfs/cmp89-massdef-02.png, printed572:
+  39af128b7107dbe230be49c87168e984c8c0df0493b97fe309fc6996e4297ae3.
+- tmp/cmp89-p-12.png, printed582:
+  d0961a39a1d0cc1121656b35c63ac3c7954e2edf21b18f421435a6342bfd4a14.
+- tmp/cmp89-p-13.png, printed583:
+  6d0ac2a169d83f0e5015d5433ed490eb5b5810879d8daaf63cb9ea3a9214369f.
+- tmp/cmp89-p-14.png, printed584:
+  36ec3a0c2c0d3f9e1e8acdd785d2c11195c89a134657756a401b2bd0d1827f5d.
+
+Hash-only local check: exit0,0.0949014s,15880192 observed peak RSS.
+No new render, compiler job or mathematical seal was required for this check.
