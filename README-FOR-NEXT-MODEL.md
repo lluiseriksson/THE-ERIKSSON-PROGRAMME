@@ -19,6 +19,12 @@ evidence preservation. Checkpoint6bed4a8f1 is pushed (gh identity checked,
 fast-forward only, no CI). Historical no-job notes below
 describe the completed previous runtime.20/41,TermSource0 unchanged.
 
+Prepared HOT instrumentation now cross-checks actual runner AST commands,
+draft loops and timeout budgets against each independent reader fixture:
+two tests PASS, exit0/0.3984242s/25464832 observed peak RSS. Each additionally
+keeps valid=1/rejected=10/preserved_failure=1 synthetic cases. This is NOT
+compiler evidence; parent-cold pins remain unset and both HOTs remain NOT RUN.
+
 Latest1165: internal-bond stencil HOT PASS at SOURCEc0174bbcb,
 runner e15a6c288, reader87db89571. All9 stages and4 exact audit names passed.
 Original archiveb084a312 and independent reportc6abfc32 are preserved in

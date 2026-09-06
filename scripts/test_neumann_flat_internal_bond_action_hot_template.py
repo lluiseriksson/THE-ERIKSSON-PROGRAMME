@@ -1,9 +1,10 @@
 """Synthetic adversarial fixtures ONLY; no compiler or claimed Lean evidence."""
+import ast
 import copy
 import hashlib
 import json
 import re
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import subprocess
 import sys
 import types
@@ -59,6 +60,40 @@ commands = {
         'tmp/' + r.REV + '/NeumannFlatInternalBondActionDraft.lean'],
     'clean_after': ['git', 'diff', '--exit-code', 'HEAD', '--', 'YangMills', 'lean-toolchain', 'lake-manifest.json'],
 }
+# Check the actual runner calls, not only reader-shaped synthetic metadata.
+tree = ast.parse(rt)
+run_defs = [n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef) and n.name == 'run']
+assert len(run_defs) == 1 and ast.literal_eval(run_defs[0].args.defaults[0]) == 120
+run_calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call)
+    and isinstance(n.func, ast.Name) and n.func.id == 'run']
+assert len(run_calls) == 7, 'UNEXPECTED_RUNNER_CALL'
+literal_stages = {}
+for call in run_calls:
+    if isinstance(call.args[0], ast.Constant):
+        stage = ast.literal_eval(call.args[0])
+        assert stage not in literal_stages, 'DUPLICATE_RUNNER_CALL'
+        literal_stages[stage] = ast.literal_eval(call.args[1])
+        timeout = {k.arg: ast.literal_eval(k.value) for k in call.keywords}
+        assert timeout == ({'timeout': 600} if stage == 'physical_prerequisites' else {}), 'ACTUAL_TIMEOUT'
+assert literal_stages == {k: commands[k] for k in
+    ('base_head', 'mathlib_pin', 'clean_before', 'physical_prerequisites', 'clean_after')}, 'ACTUAL_RUNNER_COMMANDS'
+draft_loops = [n for n in ast.walk(tree) if isinstance(n, ast.For)
+    and isinstance(n.target, ast.Tuple)
+    and [e.id for e in n.target.elts if isinstance(e, ast.Name)] == ['stage', 'path']]
+assert len(draft_loops) == 1
+assert ast.literal_eval(draft_loops[0].iter) == [('physical_draft', 'NeumannFlatInternalBondActionDraft.lean')], 'ACTUAL_DRAFT_LOOP'
+draft_calls = [n for n in ast.walk(draft_loops[0]) if isinstance(n, ast.Call)
+    and isinstance(n.func, ast.Name) and n.func.id == 'run']
+assert len(draft_calls) == 1 and not draft_calls[0].keywords
+posix_root = PurePosixPath(r.ROOT.as_posix())
+env = dict(Path=PurePosixPath, str=str,
+    op=PurePosixPath(r.OUT.as_posix()) / 'physical_draft.olean',
+    scratch=posix_root / 'tmp' / r.REV, ROOT=posix_root,
+    path='NeumannFlatInternalBondActionDraft.lean')
+actual_draft_command = eval(compile(ast.Expression(draft_calls[0].args[1]), '<runner command>', 'eval'), env)
+assert actual_draft_command == commands['physical_draft'], 'ACTUAL_DRAFT_COMMAND'
+print('ACTUAL_RUNNER_AST_CONTRACT=PASS calls=7 expanded_stages=8')
+
 logs = {s: b'' for s in commands}
 logs['base_head'] = (r.BASE + '\n').encode()
 logs['mathlib_pin'] = b'07642720480157414db592fa85b626dafb71355b\n'
