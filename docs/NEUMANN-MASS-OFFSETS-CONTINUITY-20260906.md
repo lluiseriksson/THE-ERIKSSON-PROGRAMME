@@ -45,6 +45,30 @@ current cold gate and evidence preservation, using the same retained Colab.
 R1 spacing/Fourier normalization, R3 boundary/right inverse and R4 uniform
 physical B0 remain open. Counters remain20/41, TermSource0, window15 unattained.
 
+Draft checkpoint5fa96640891aa7fc980b4e27a77c08e85bf6909f has been pushed
+fast-forward after gh identity lluiseriksson and ancestry verification.
+Git-blob hashes: draftc8fb07148897a3c6941a39075b9a29b5e79250b2d911d02349a4254e733ea405;
+reproe9e0ee784e158c4efd8aef1b9bc0e30126d2b50ad74dfdfd044c15d1c3946cd8.
+Repeated exact text/import checks exit0/0.244698s/18731008RSS.
+
+Prepared, deliberately NOT runnable until cold preservation:
+tmp/colab_neumann_canonical_precision_offsets_hot_template.py and
+tmp/verify_neumann_canonical_precision_offsets_hot_template.py.
+The four parent pins are None and the first operation rejects them; no
+network, process, directory or output can be created by that blocked launch.
+Fill them only from the independently preserved current cold result, then
+pin the final runner Git blob in the independent reader and publish the
+exact instruments. Do not use dummy fixture values for a real execution.
+The retained base must stay9bb957757b6454871eaea6e26aed8c95dc576b3c;
+the two draft inputs are pinned to5fa966408. Generic PiLp repro precedes
+the four explicit physical prerequisites and two-name draft. Stop at first
+error; no cold status or counter credit for HOT.
+
+scripts/test_neumann_canonical_precision_offsets_hot_template.py tested
+the blocked-unpinned branch, actual source audit names/import pins, one
+synthetic PASS, ten rejected corrupt fixtures and one preserved failure.
+Final local result exit0/0.4571856s/25104384RSS. No compiler was invoked.
+
 ## Measured result
 
 HOT PASS only, source6d02bcfd4091fb549dd9856f6fa95bb10e854643,
