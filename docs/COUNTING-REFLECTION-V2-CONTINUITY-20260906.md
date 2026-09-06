@@ -72,3 +72,25 @@ disconnect after evidence and scoped work are safe, not before retrieval.
 The next mathematical boundary is unchanged: full-carrier counting-mass probe
 reflection is not the arbitrary-rectangle retained Neumann inverse. R1/R2/R3/R4
 in `docs/F5-REGIONAL-INVERSE-ACCEPTANCE-GATES.md` remain the acceptance map.
+
+## Next bounded HOT candidate prepared while v2 runs
+
+Source `214b6923f3523d44282d5772fa6ab09782864f10` adds the independent
+`tmp/NeumannRetainedCountingMassDictionaryDraft.lean`; binary Git-blob SHA256
+`6f8a5be71b33261c263291b9049337ed068f1aee282f7eb1482b264bcd91e7f6` (5144 bytes).
+Its production `YangMills` tree is exactly the v2 base tree
+`d60f95120f11de18d0d3e3a73e90c9b59db07f05`; source/pin diff is empty.
+Text/import guards: exit0, 0.2184146s, 18907136 observed peak bytes.
+
+`scripts/colab_neumann_retained_counting_dictionary_hot.py` is prepared,
+NOT EXECUTED. It requires the actual preserved v2 archive digest as
+`--prior-sha256`, invokes the pinned independent v2 verifier before any Lean,
+rejects an already running Lean/Lake process, checks base/source tree/Mathlib,
+and refuses reused work/input directories. It then materializes only the two
+needed import targets and compiles the one draft, with real child exit codes,
+timeouts and exact two-name axiom gate. No checkout mutation or cold seal.
+AST/pin/order checks: exit0, 0.2059736s, 17215488 observed peak bytes.
+
+Do not run this candidate after a v2 FAIL: preserve and repair the first error
+instead. Do not infer the prior digest from a filename or substitute a v1
+archive. Retrieve and verify v2 before continuing in its retained runtime.
