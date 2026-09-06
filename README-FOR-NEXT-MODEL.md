@@ -1,5 +1,10 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Current cold promotion prepared2026-09-06: SOURCE7f7455b28,
+NeumannGeneratedCompleteFibre + six-name audit. Follow
+docs/NEUMANN-COMPLETE-FIBRE-COLD-20260906.md for live state and exact pins.
+Do not rerun historical HOT/cold cells.20/41 andTermSource0 unchanged.
+
 Latest HOT2026-09-06: ledger1152, constructed complete active-fibre dictionary
 sourceb7ac45aca, six exact names/9 stages0. Independently preserved; exact-body
 production NeumannGeneratedCompleteFibre/audit remain PRE pending cold gate.
