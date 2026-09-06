@@ -1,5 +1,16 @@
 # Canonical Neumann spacing — fresh intermediate cold gate (2026-09-06)
 
+CURRENT follow-up: same runtimea824030f7bc1 launched bounded internal-bond
+HOT once20:05:18.902703UTC,PID17944,SOURCEc0174bbcb8f9b2b791cdb2c546206b468fd4e3cf.
+Runner e15a6c288eb2702d7412039f74c0d8d79edb21d0,
+SHA2566894d5bcfedebfda7427e6596883a7fa43cb45a025ad2347437fb484449428ac;
+reader/tests87db895712a02943927690a3ed576d7509960d28.
+Actual template-instantiation check passed0.4302728s/24997888observed RSS,
+including10 synthetic rejections; that check is not compiler evidence.
+Console /content/neumann-internal-bond-stencil-hot-v1-console.log.
+Archive /content/neumann-internal-bond-stencil-hot-v1-evidence.tar.gz.
+Do not rerun. The prepared wrap probe544218955 is not in this diagnostic.
+
 FINAL: independently preserved COLD PASS, ledger1164, observed20:00UTC.
 Focal8743jobs exit0/1645.627271009s; audit exit0/15.844011201s.
 All16stages, exact3names/trio. Both redundant-ring warnings remain in the log.

@@ -1,5 +1,11 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE bounded HOT: internal-bond stencil SOURCEc0174bbcb, runner e15a6c288,
+reader87db89571. Started ONCE20:05:18.902703UTC PID17944, runtimea824030f7bc1.
+Parent cold1164 independently preserved/sealedfc28cbb63; same root retained.
+Console /content/neumann-internal-bond-stencil-hot-v1-console.log.
+No verdict yet; do not rerun or reset. Preserve actual result before closing.
+
 Latest1164: spacing cold sourcedd9354a87 PASS,8743jobs/16stages/3exactnames.
 Outer33830a24 and independent reportff717adf are downloaded and preserved.
 Only NeumannCanonicalSpacingNormalization + Audit retire PRE; exact body kept.
