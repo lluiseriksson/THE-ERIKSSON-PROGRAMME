@@ -86,3 +86,15 @@ for f in bad:
         continue
     raise AssertionError('MUTATION_ACCEPTED')
 print('INSTRUMENT_TEST_ONLY synthetic_pass=1 rejected=' + str(len(bad)))
+
+# A real old failure must never become the new source's PASS by repackaging.
+from pathlib import Path
+from verify_neumann_counting_reflection_diagnostic_v2 import unpack
+old = Path('validation-evidence/neumann-finite-integer-kernel-hot-v1-fail-20260906/neumann-finite-integer-kernel-hot-v1-evidence.tar.gz')
+old_files = {name.split('/', 1)[1]: b for name, b in unpack(old.read_bytes()).items()}
+try:
+    verify(old_files)
+except (AssertionError, ValueError, KeyError):
+    print('REAL_V1_ARCHIVE_REJECTED_AS_V2=1')
+else:
+    raise AssertionError('OLD_FAILURE_ACCEPTED_AS_NEW_EVIDENCE')
