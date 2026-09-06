@@ -588,3 +588,23 @@ The acceptance split is now explicit:
 The live four-name internal-bond cold gate is independent of this split.
 The next bounded wrap probe checks its finite witness only. These observations
 do not establish any comparison of inverse norms or attainment of window15.
+
+### R3 finite flat action, next bounded draft (not compiler-verified)
+
+NeumannFlatInternalBondActionDraft.lean fixes the NEXT two proposed identities:
+zero-extended actual flat derivative = internal-bond mask times
+spacing^-1*(f(source)-f(target)); then the literal Neumann Laplacian as the
+outgoing masked difference minus the incoming masked difference. The outer
+spacing^-1 is retained, so the scale is not silently lost during factoring.
+It uses the actual NeumannInternalBondStencil result, not a generic operator
+chosen to satisfy the conclusion. No free reflection, support or inverse law.
+
+Sign convention checked directly: covariantD0CLM_apply in
+PhysicalGaugeCochains is source-minus-target at the flat background;
+flatD0FullCLM in PhysicalGaugeOperator is target-minus-source. Their equality
+must not be assumed; the new draft never substitutes the latter. Boundary
+masks are still on the actual torus bonds, not the desired integer bonds.
+Text/import checks passed0.1028073s/15572992 observed peak RSS. This is PRE,
+COMPILER_CHECKED=0, not appended to the current cold queue or wrap-probe
+template. Run only after preserving the current cold gate; keep any first
+compiler error and its original source.20/41 andTermSource0 unchanged.
