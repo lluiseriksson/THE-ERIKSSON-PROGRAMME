@@ -8,7 +8,7 @@ guide, not the complete verification ledger. Entries distinguish work in
 
 ## 2026-09-06 — Physical Wilson reflection campaign started
 
-**Independent research campaign; initial diagnostic passed, revised source under verification.**
+**R1 local geometry compiled and its nine headline oracles passed.**
 The first target is the literal four-link plaquette boundary, its reflection
 and its dictionary to the existing Wilson holonomy. This precedes the
 physical product-Haar identity, reflected positivity and transfer
@@ -19,8 +19,17 @@ Colab diagnostic passed. The owner-requested
 [ARR paper reuse audit](docs/PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md)
 then identified existing original-edge gauge fixing and the exact conditioned
 2D heat-kernel amplitude. R1's duplicate gauge-covariance proof was removed;
-the revised nine-declaration source is undergoing core/oracle checks. No
+the revised source and nine headline oracles passed in a fresh Colab run.
+The unchanged core rebuilt at 8466 jobs; the full oracle replay is still
+running. R1 remains outside `YangMillsCore`, and terminal reproduction and
+independent audit are not claimed. No
 physical reflection positivity, transfer construction or mass gap is claimed.
+
+The existing two-free-transporter Haar projection is also part of the reuse
+inventory: a centered observable can have zero reflected norm. A candidate
+spatial-cylinder continuation must prove a strictly positive norm, not just
+nonconstancy. The [CI baseline note](docs/PHYSICAL-REFLECTION-CI-BASELINE-20260906.md)
+records nine pre-existing Surface provenance failures; general CI is not green.
 
 The [dashboard](docs/dashboard/) now separates current research updates
 from historical proof checkpoints and verified node counts. The

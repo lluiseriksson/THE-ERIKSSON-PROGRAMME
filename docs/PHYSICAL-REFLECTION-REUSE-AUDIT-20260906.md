@@ -44,6 +44,7 @@ commit. These are reusable prior results, not new results of this campaign.
 | Retention of the actual exterior holonomy | `SU2BoundaryConditionedGaugeFixing.lean`: `SU2BoundaryDiskCellulation.AdaptiveBoundaryGaugeChart.globalPhysicalBoundaryEdgeEquiv_measurePreserving`, `globalPhysicalBoundaryEdgeEquiv_apply_exterior` | Existing measure-preserving chart, retaining the complete boundary word. Use this construction as the reference for an honest change of variables. |
 | Exact conditioned original-edge amplitude | `SU2PhysicalConstructionIntegral.lean`: `SU2BoundaryDiskCellulation.conditionedEdgeModelAmplitude_eq_heatKernel` | Closed in the cited source for its certified finite 2D heat-kernel disk model; do not recreate it as a new physical-bridge milestone. |
 | Exact character area law | `SU2FiniteCellulation.lean`: `su2ConnectedDisk_simpleLoop_areaLaw_exact` | Existing endpoint on the schedule-independent connected-disk functional. For an original-edge consumer, compose the physical amplitude theorem and match the measures/normalization explicitly. |
+| Obstruction from freely integrated crossing variables | Mother repo `OS/TwoTransporterHaarProjection.lean`: `su2Wilson_quadraticD_eq_partition_mul_mean_sq`, `su2Wilson_quadraticE_eq_partition_mul_mean_sq` | Existing Lean source for projection onto the Haar mean, documented in `SU2-TWO-TRANSPORTER-NOGO-20260731.md`. Do not recreate it or confuse it with the frozen positive reduced-kernel result. Its independent terminal audit remains pending in that record. |
 | Geometric reflection of the mother's Wilson plaquette | No reflection/OS construction found in the inspected satellite source. The mother repo's existing SU(2) auxiliary cut explicitly has a common transporter that cancels. | Retain only the small R1 orientation/reflection adapter and four independent local variables. This is elementary group geometry, not a new gauge-fixing or area-law theorem. |
 | Physical Wilson reflected Gram form, transfer construction and total observable family | Not supplied by the disk-amplitude endpoints; no such source declaration was found in the inspected satellite | R2–R5 stay open with their physical hypotheses visible. |
 
@@ -79,6 +80,22 @@ ten-declaration diagnostic remains a historical run on its original source
 hash and is not evidence for changed source bytes.
 
 ## Consequence for the Millennium assessment
+
+The mother repo also already contains the general free-transporter collapse
+`Q(F) = Z * conjugate(mean(F)) * mean(F)`. For continuous Wilson data on a
+compact group, the ordinary integral manipulations are justified. A centered
+observable then has zero norm in that form. In the single open square, direct
+Haar integration of a crossing edge gives the same mathematical obstruction;
+the coordinate change to the existing formal D/E statements is not silently
+claimed as an already compiled square-specific theorem. This is prior
+obstruction evidence, not a new result of this audit.
+
+R3 must therefore prove a strictly positive reflected norm, not merely choose
+a nonconstant function. A finite spatial cylinder with two spatial links per
+slice is a candidate geometry to examine before implementing the integral:
+its two crossing plaquettes share the crossing links, and its half-slices
+contain closed spatial loops. Neither those features nor the 2D paper alone
+prove a nonzero OS sector. The frozen reduced SU(2) lane remains unmodified.
 
 This paper adds important existing finite two-dimensional infrastructure to
 the programme's inventory. It does not supply the four-dimensional continuum

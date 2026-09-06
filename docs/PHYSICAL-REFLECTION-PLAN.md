@@ -26,7 +26,7 @@ obstruction is not revived.
 
 | ID | Required output | Current state |
 |---|---|---|
-| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Initial ten-declaration diagnostic passed; redundant gauge covariance removed after reuse audit; revised nine-declaration source undergoing full core/oracle checks |
+| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Revised source compiled; nine headline oracles passed; existing core rebuilt at 8466 jobs. Global oracle replay in progress. Not core-integrated or terminally reproduced |
 | R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Open |
 | R3 | Positive complex reflected Gram forms for a physically specified finite lattice and a nonzero physical test sector | Open |
 | R4 | Physical quotient/completion, transfer operator, vacuum and correlation identity, ready for `SharpBridge` | Open |
@@ -54,6 +54,16 @@ nontrivial physical fluctuation sector. R3 must specify a geometry with
 genuine half-lattice loops, or explicitly account for boundary gauge
 conditions before selecting its nonzero test observable. This issue is
 registered before any positivity result.
+
+The [existing two-transporter obstruction](SU2-TWO-TRANSPORTER-NOGO-20260731.md)
+and `OS/TwoTransporterHaarProjection.lean` already give the corresponding
+Haar-mean projection for the D/E forms. Do not repeat that construction or
+count it as a new result. R3 must exhibit a strictly positive reflected norm;
+nonconstancy of a function alone is insufficient. A two-link spatial
+cylinder is a candidate next geometry because both plaquettes share the
+crossing links and the half-slices have closed spatial loops. Its measure,
+reflection and nonzero-sector proofs remain to be supplied. The frozen
+auxiliary SU(2) lane remains unmodified.
 
 ## Acceptance conditions
 
@@ -124,3 +134,16 @@ reconstruction remain open. This label is not a measured percentage.
   overlays; the full core, focal, source consistency and oracle checks are
   pending. This execution unit requests automatic runtime release after
   preserving its complete evidence in notebook output.
+- 2026-09-06: revised R1 focal build passed at **8160 jobs**, all **nine**
+  headline oracles passed, and source consistency passed. The unchanged
+  `YangMillsCore` import closure rebuilt successfully at **8466 jobs** on
+  the specified base. Building the full oracle import set plus standalone R1
+  passed at **8467 jobs**; that is not a change to the core root. The
+  `oracle_check.lean` overlay is UTF-8/LF SHA-256
+  `D67DDFC964D29FF30AA670618F9FF93F2E19EE02701BD79263917D79A1EFE141`.
+  The full 2815-command oracle replay remains in progress. The
+  [public scoped transcript](evidence/physical-reflection-r1-20260906/revised-oracle.txt)
+  records the nine actual outputs. This is one fresh revised-source run,
+  not the two independent reproductions needed for terminal status.
+  [Prior general-CI failures](PHYSICAL-REFLECTION-CI-BASELINE-20260906.md)
+  are recorded independently of Lean and dashboard checks.
