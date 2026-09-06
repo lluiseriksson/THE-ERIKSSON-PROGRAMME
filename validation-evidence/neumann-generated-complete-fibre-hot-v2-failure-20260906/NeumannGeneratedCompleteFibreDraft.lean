@@ -34,7 +34,6 @@ theorem neumann_mem_iteratedLift_iff_terminalOwner
   | zero =>
       rw [cmp99IteratedLiftActiveRegion_zero,
         cmp99GeneratedTerminalBlockSite_zero]
-      exact Iff.rfl
   | succ depth ih =>
       rw [cmp99GeneratedTerminalBlockSite_succ]
       exact (mem_cmp99LiftActiveRegion_sites_iff (M := M)

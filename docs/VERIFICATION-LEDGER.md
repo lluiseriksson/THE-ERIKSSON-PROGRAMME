@@ -47065,3 +47065,23 @@ constants and hypotheses unchanged. Repair still PRE-VALIDATION.
 One broad local source search was interrupted without treating its incomplete
 result as a check; subsequent signature reads were scoped to exact files.
 Cold ledger1149 remains valid;20/41,TermSource0,window15 unattained unchanged.
+
+## Addendum 1151 — complete-fibre HOT v2 reflexive remainder (2026-09-06)
+
+Source8acbb1277f07810708f56036afbec787177aef0a, runnerbe1aa8085.
+Single start11:54:56.308750UTC, PID18714, same retained CPU/highRAM runtime.
+Generic repro exit0/7.990312131s; prerequisites exit0/8.691375803s.
+Draft exit1/8.342547114s, only remaining error34:9: the zero-case goal
+is literally x in Omega.sites iff x in Omega.sites. rw did not discharge
+this iff; the repair adds exact Iff.rfl and its generic proposition repro.
+No statement/hypothesis/constant changes, no heartbeats increased.
+All downstream sorryAx listings rejected; no partial declaration seal.
+
+Archive62b7448ed397ae3737555ba32e130fee9d598b78718172eb888b09dda3c539b3,
+independent report89160bee05d390c8ae8f31489047b4c6f00f93d3615bdf5e4b64f984eb556942.
+Downloaded evidence preserved under
+validation-evidence/neumann-generated-complete-fibre-hot-v2-failure-20260906;
+local verification exit0/0.4871674s/23224320RSS. v2 explicitly records each
+dependency ref at the verified cold base8570618f2, while the draft/repro are
+at their retry source; selective header retirement is not mistaken for a
+change to the base bytes. Pins verified7/7.20/41 andTermSource0 unchanged.

@@ -7,9 +7,6 @@ Exact generic finite-sum rewriting step extracted before project elaboration.
 
 open scoped BigOperators
 
-example (p : Prop) : p ↔ p := by
-  exact Iff.rfl
-
 example {I V : Type*} [Fintype I] [AddCommMonoid V]
     (p : I → Prop) [DecidablePred p] (f : I → V) :
     (∑ x : I, if p x then f x else 0) = ∑ x : {x : I // p x}, f x.1 := by
