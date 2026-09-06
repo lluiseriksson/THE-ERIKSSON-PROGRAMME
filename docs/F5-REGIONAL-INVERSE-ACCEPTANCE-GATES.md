@@ -1,5 +1,10 @@
 # F5 regional inverse: source-object gates after ambient value action
 
+Current execution state (2026-09-06): v1 failed at the full-carrier membership
+rewrite, preserved in ledger1127. v2 tests the one pinned membership repair;
+see `docs/COUNTING-REFLECTION-V2-CONTINUITY-20260906.md`. The running v2 and
+the separate retained-mass draft below do not retire PRE-VALIDATION marks.
+
 ## Next bounded R2 diagnostic (after cold geometry seal81260f49)
 
 The new PRE-VALIDATION draft constructs the reflection on the full canonical
@@ -72,6 +77,37 @@ have concrete existing endpoints:
 These are static type/source-object checks, not newly compiled claims or a
 new closure of R1/R2. They keep the next finite endpoints tied to the actual
 regional consumer instead of treating a full-ambient symmetry as its inverse.
+
+### Bounded retained-mass dictionary prepared, not executed
+
+`tmp/NeumannRetainedCountingMassDictionaryDraft.lean` extracts the existing
+isometric codomain-transport argument for an arbitrary source region chain
+and specializes it to the internally generated flat retained terminal tower.
+It imports only the existing generated-precision-kernel and retained-terminal
+bridge modules, not the current unverified reflection draft. The two proposed
+equalities contain no free Q-family, hmass equality, image inverse, or new
+constant. Local text/import checks passed; compiler validation is pending.
+
+The canonical finite-depth Neumann precision actually uses
+`cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannLastPrefix steps`, whose
+index is `Fin.last (steps + 1)`. Thus the terminal specialization is the exact
+next mass component for that consumer; a family-of-prefixes extension is not
+silently inserted as an additional prerequisite for this endpoint.
+
+For a later consumer quantifying over every `r : Fin (depth + 1)`, an exact
+family bridge already exists as
+`cmp99SourceGeneratedRetainedPhysicalTower_towerAt_eq_take` in
+`BalabanCMP99SourceCanonicalPrefixTower`: it uses `regions.takeFin r` and
+`chain.takeFin r`, not a newly chosen tower. The generic draft equality can
+be specialized to that constructed chain. However, coordinate-owner geometry
+must then use the prefix block size `M^r.val`; the full-depth owner map and
+its counting kernel exponent `2*depth` may not be substituted unchanged.
+The corresponding prefix exponent is `2*r.val`, and the printed/counting
+coefficient continues to obey the existing fine/terminal volume identity.
+
+These are static endpoint and convention checks, not a newly compiled
+prefix-reflection theorem. The Neumann Laplacian, bare mass and physical
+counting coefficient remain the literal terms of the original consumer.
 
 Initial static type review at source10437a1a824bdd920282778cabe2f3da6c40ce4e.
 Value-action is now cold-sealed in ledger1124. Half-cell block geometry
