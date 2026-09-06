@@ -5,6 +5,8 @@ CPU/high-RAM (50.99GB visible), account lluiseriksson@gmail.com. Hash gate
 passed with source474688021 and revision neumann-canonical-precision-promoted-cold-v1.
 Launcher PID1050. Notebook vehicle7da1ad7d9f1975668dba1f697a919d8bcb328d1b,
 browser tab8, cell nPUF43VKLvF9. One execution only; no verdict yet.
+Runtime hostname373c432a4cb0. At~14:53UTC the read-only terminal check saw
+focal8251/8391, no error. The query did not launch or restart any compiler.
 Keep this tab/runtime until evidence is preserved. Do not rerun the cell.
 Expected outer /content/neumann-canonical-precision-promoted-cold-v1-preservation-20260906.tar.gz.
 Local reader scripts/preserve_neumann_canonical_precision_cold.py verifies it.

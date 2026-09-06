@@ -1,5 +1,17 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE2026-09-06: canonical precision cold source474688021 is executing once
+in Colab CPU/highRAM50.99GB, runtime373c432a4cb0, browser tab8.
+Start14:47:47.255875UTC, launcherPID1050, hash gate PASS. Notebook vehicle7da1ad7d9,
+revision neumann-canonical-precision-promoted-cold-v1. At~14:53UTC focal
+was8251/8391 with no error; no final verdict yet. Do not reexecute the cell.
+Keep the runtime/tab for independent evidence preservation. Next bounded
+HOT spacing draft852d3b82e and tested templates186d67fe7 remain NOT RUN,
+with parent-cold pins deliberately unset. No production seal or counter move.
+See docs/NEUMANN-CANONICAL-PRECISION-COLD-20260906.md for exact paths.
+The paragraphs saying no live runtime below describe the previous completed
+session, not this gate.20/41,TermSource0,window15 unattained.
+
 Latest1161: canonical Neumann finite-action HOT PASS at8aa5fe1ff,
 two exact names/nine stages, original archive and independent review preserved.
 v1 dependency timeout1159 and v2 coercion failure1160 remain preserved.
