@@ -65,3 +65,25 @@ child stopped in3.727203614s before project prerequisites. The injectivity
 case split did not rewrite its local hypothesis; only that proof is patched.
 Runtime retained for the bounded HOT retry, without restarting the original
 cell or bootstrap. Source-importing draft remains NOT CHECKED.
+
+## Latest: HOT verified, promoted cold gate prepared
+
+Ledger1133 supersedes the pending retry: exact source8a0714a03 passed the
+Mathlib-only and actual source-importing children. Independent preservation
+and11 altered-fixture rejections passed. Runtime closed via UI about07:54UTC.
+
+Promoted source87edca6519df5b450b906e83db2ffa4fc1bd87bd contains exactly
+NeumannIntegerImageCountingKernel(+Audit), seven unchanged theorem bodies.
+No PRE-VALIDATION mark has been retired. Instrument8564dbfee, launcher
+7d73d5a57aba341f4f54bc0a8797ae33cf699760, launcher digest
+0026a86bb1db3a7dea2d0166375c9b0b58eda4bb9160bd58378020fe4e54d162.
+Run scripts/colab_neumann_integer_image_promoted_cold.ipynb only once on a
+fresh CPU/highRAM runtime. Focal then seven-name audit, stop on first error;
+no restored .lake/build, no CI. Preserve and verify outer archive before
+selective header retirement. Counters20/41,TermSource0,window15 unchanged.
+
+Promotion text/import/overlay guards: exit0/0.1578543s/16068608 observed
+peak bytes. Runner/verifier/launcher/notebook/preserver consistency plus
+negative real diagnostic-as-cold test and synthetic verifier tests:
+exit0/0.1825147s/21741568 observed peak bytes. These are instrumentation
+checks, not compilation evidence.
