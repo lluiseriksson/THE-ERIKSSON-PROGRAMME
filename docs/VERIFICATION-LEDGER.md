@@ -47818,3 +47818,28 @@ already downloaded and verified. Colab disconnect-and-delete confirmed by
 the reconnect UI around22:57UTC. Gate launch-to-deletion interval about43min,
 including cold run, evidence preservation and bounded HOT; any pre-launch
 allocation time is not measured by that interval. No runtime remains active.
+
+## Addendum 1180 — directional rectangle masks COLD PASS (2026-09-07)
+
+SOURCE74fc4f4dcd115558de6cf882d17540fe57d9bd27; notebook43814351678798dc05c5e660fe6cc14ef8ac8458.
+One launch2026-09-06T23:10:22.032781Z, PID4007, runtimee71af114d3fe.
+Fresh checkout, no restored project outputs. All16 inner stages and three
+launcher stages exit0. Focal8663 jobs1505.730111897s; audit5.523626699s;
+full graph1633.043761355s. Four exact names each use
+{Classical.choice,Quot.sound,propext}. Original launcher FINAL_STATUS PASS
+observed after recovery of the same runtime, without cell reexecution.
+
+Outer62bf2ebca204725f973e7a7794dd472e67b3b45f4af8ee8b71f97d235e73f021;
+innerb3009d04b2f607457ef1034721994897fd31d256e2925cf9f2665755e2304c80;
+reportd39d0f23e0b4ea0121bd2ddd160c0c0dbe95131c359eab233228d659500b9261;
+production olean74b7bba1cabed6ad72b19aa501bd86f2b48b5fa0c00ea956df7b60e2351ce798.
+Original archive downloaded from Colab and independently verified at
+validation-evidence/neumann-directional-masks-cold-20260907; local reader
+exit0,0.3478926s,13283328 observed peak RSS. No Windows compiler.
+
+Only NeumannRectangleDirectionalMasks and its audit retire PRE in their
+headers. Exact HOT-body promotion guard checks statements/proofs unchanged.
+Scope is actual directional torus rectangle masks including full-period
+sides, not physical carrier choice, reflection covariance, regional inverse,
+uniform B0 or window15.20/41,TermSource0 unchanged. Runtime retained only
+for the separately parent-pinned bounded masked-action HOT, not a rerun.

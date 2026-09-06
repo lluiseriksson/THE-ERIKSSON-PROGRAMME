@@ -1,10 +1,11 @@
 import YangMills.RG.NeumannRectangleDirectionalMasks
 
 /-!
-# PRE-VALIDATION: exact four-name directional-mask audit
+# Cold-verified exact four-name directional-mask audit
 
-Source present; production .olean not materialized; compiler verification
-of this production audit is pending the fresh cold gate. No larger claim.
+Verified at source 74fc4f4dcd115558de6cf882d17540fe57d9bd27 in a fresh Colab
+checkout; four exact allowed-axiom sets, Verification Ledger Addendum 1180.
+No larger claim.
 -/
 
 #print axioms YangMills.RG.rectangleForwardMask_nat

@@ -2,6 +2,15 @@
 
 ## Superseding measured state, 2026-09-06
 
+2026-09-07: directional masks now COLD VERIFIED at source
+74fc4f4dcd115558de6cf882d17540fe57d9bd27, ledger1180. All16 stages exit0,
+8663 focal jobs and four exact allowed-axiom declarations. Original archive
+downloaded and independently preserved; only the two certified headers
+retire PRE. Older pending-mask notes below are historical. The separately
+prepared masked-action HOT remains unexecuted, not a cold seal. No physical
+carrier choice, reflection covariance, inverse or window15 follows;20/41
+and TermSource0 are unchanged.
+
 Static refinement2026-09-07: NEUMANN-MIXED-BOUNDARY-CANDIDATE-20260907.md
 spells out a possible periodic/full versus reflecting/proper source-image
 family without deleting original carrier inputs. It is NOT implemented or

@@ -1,12 +1,11 @@
 import YangMills.RG.BalabanCMP89NeumannRectangleActiveRegion
 
 /-!
-# PRE-VALIDATION: NeumannRectangleDirectionalMasks exact HOT-body promotion
+# NeumannRectangleDirectionalMasks — cold-verified exact HOT-body promotion
 
-Source present; production .olean not materialized; production result not
-compiler-verified. The unchanged draft passed the bounded HOT gate at
-adfef2b5b883a839e24b03ceedd118b32428dace (Verification Ledger Addendum 1179).
-A fresh cold gate is required before this production module is sealed.
+Production .olean and four-name audit verified in a fresh Colab checkout at
+74fc4f4dcd115558de6cf882d17540fe57d9bd27 (Verification Ledger Addendum 1180).
+The statement/proof body is unchanged from the HOT draft in Addendum 1179.
 Actual incoming/outgoing torus masks retain the original non-strict fit.
 No physical carrier choice, reflection covariance, regional inverse,
 uniform physical B0 or window15 attainment is claimed.
