@@ -608,3 +608,31 @@ Text/import checks passed0.1028073s/15572992 observed peak RSS. This is PRE,
 COMPILER_CHECKED=0, not appended to the current cold queue or wrap-probe
 template. Run only after preserving the current cold gate; keep any first
 compiler error and its original source.20/41 andTermSource0 unchanged.
+
+### Directionwise boundary masks: next acceptance statement, not a Lean seal
+
+Static derivation2026-09-06 from FinBox.shift/shiftBack and the actual
+rectangle site predicate. Fix an ACTIVE x, positive integer sides m_mu,
+and m_mu<=N. Write k=(x i).val and h=Int.toNat(m_i). The proposed exact
+mask endpoints are:
+
+* outgoing (x,i) retained iff h=N OR k+1<h;
+* incoming (x.shiftBack i,i) retained iff h=N OR 0<k.
+
+These are targets for a later named proof, NOT newly compiler-verified
+theorems. All other coordinates stay fixed and active. In a proper side
+h<N, outgoing k+1<N follows from k<h, so the forward step does not wrap;
+the incoming step at k=0 lands at N-1, which is outside that proper side.
+At h=N both endpoints are active, including wraps (and the N=1 self-loop).
+The incoming target identity must cite FinBox.shift_shiftBack by name.
+
+Consequently strict fit is needed only in the direction whose NONPERIODIC
+edge is being identified, not in every coordinate for every local claim.
+This refines the sufficient all-directions strict-fit gate above; it does
+not discharge it for the intended physical carrier. Mixed full/proper sides
+must retain their different masks. A later Green construction must match
+these periodic/nonperiodic boundary choices; no mixed-boundary image formula
+or inverse identity is supplied by this finite mask calculation.
+
+No additional PRE module or compiler job is introduced here. The live cold
+queue and the two prepared bounded HOT diagnostics remain unchanged.
