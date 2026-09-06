@@ -39,3 +39,19 @@ factorization, then existing active-region divergence applied to the
 zero-extended INTERNAL derivative. Do not identify it with Dirichlet.
 See docs/NEUMANN-INTEGER-TO-PHYSICAL-NEXT-20260906.md.
 20/41, TermSource=0, window15 compatible but not attained.
+
+Bounded next HOT diagnostic prepared (NOT RUN):
+sourcec0174bbcb8f9b2b791cdb2c546206b468fd4e3cf,
+tmp/NeumannInternalBondStencilDraft.lean and Mathlib-only Repro.
+Four named identities: counting bond adjoint, actual derivative factorization,
+adjoint with INTERNAL bond extension, literal finite divergence. The existing
+Dirichlet divergence is consumed only after this extension, never identified
+with Neumann. No positivity, nonempty-region, or boundary identity is assumed.
+Text/import guards passed0.1416958s/13991936RSS. Templates under
+tmp/*neumann_internal_bond_stencil_hot_template.py deliberately leave four
+parent-cold pins and the reader's runner hash unset. Synthetic template test
+passed1 fixture, rejected10 corruptions, preserved1 failure;0.404482s/
+23408640RSS. It checks actual Git-blob imports and all four audit names.
+No compiler evidence for this draft. Fill pins only after the current cold
+archive is independently preserved; then reuse the SAME runtime if available.
+Never reset or re-clone it merely to debug these four identities.
