@@ -47706,3 +47706,31 @@ Preserved validation-evidence/neumann-flat-internal-bond-action-hot-v2-20260906.
 Reader exit0/0.1468503s/18350080RSS VERIFIED_FAILURE. Next PRE separates
 derivative rewrite from configuration simplification, with all statements,
 signs, masks and spacing unchanged.20/41,TermSource0,window15 unchanged.
+
+## Addendum 1177 — flat internal-bond action HOT PASS (2026-09-06)
+
+SOURCE69a5308c8e5635b95b59c6d5c88d4b5b789f851c;
+runner/reader c470ebafbadbdae5771c228b7db578af45a73609.
+One launch21:59:58.029849UTC PID33296 on retained runtimeb53f9b4fbc01.
+All8 stages exit0; prerequisites8.292158256s, draft13.458372142s;
+source clean before/after, no warning in the draft log. Both exact names
+neumannFlatInternalBond_extendedDerivative_apply and
+neumannFlatInternalBond_laplacian_apply print the allowed trinity.
+Archive0e7af449f57a9390481ae3384944561f8ff215c23cdb273cc4525982eee6c427;
+report3213adc974dcdd14ae27c2174ebbdf2fdd82c2ecfebaefede709b98ce5824a43;
+olean a560de0ac085d4bf2881f2a0cfa5b2d578efe5ddc6886344e2fc26d8181168f8.
+Preserved validation-evidence/neumann-flat-internal-bond-action-hot-v3-20260906.
+Reader exit0/0.1506492s/21610496RSS VERIFIED_HOT_PASS, cold_seal=false.
+
+The repair only orders derivative rewriting before flat-configuration
+simplification. The actual source-minus-target derivative, both inverse
+spacing factors and the torus internal-bond masks remain literal. No integer
+boundary, reflection covariance, regional inverse or uniform B0 is supplied.
+Promotion of this body and wrap v7 still requires a fresh cold gate.
+
+At22:01:39.550744UTC pgrep lean/lake returned exit1 with no process; ps for
+the five recorded runner PIDs returned exit1/header only. After preserving
+all originals, the runtime was disconnected/deleted through Colab, confirmed
+by the reconnect UI around22:02UTC. Connection time from20:25:39 was about
+96 minutes, including the completed cold1166 and bounded HOT diagnostics.
+No active computation was interrupted.20/41,TermSource0,window15 unchanged.

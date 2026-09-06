@@ -1,5 +1,21 @@
 # Continuation at 2026-09-06 21:52 UTC
 
+## Superseding checkpoint, 22:02 UTC — NO ACTIVE RUNTIME
+
+Flat v3 HOT PASS, source69a5308c8e5635b95b59c6d5c88d4b5b789f851c;
+runner/reader c470ebafbadbdae5771c228b7db578af45a73609. All8 exits0,
+two exact clean axiom names, draft13.458372142s. Original archive
+0e7af449f57a9390481ae3384944561f8ff215c23cdb273cc4525982eee6c427,
+independent report3213adc974dcdd14ae27c2174ebbdf2fdd82c2ecfebaefede709b98ce5824a43
+preserved in validation-evidence/neumann-flat-internal-bond-action-hot-v3-20260906.
+Wrap v7 HOT PASS is preserved under ledger1174; flat v1/v2 FAILs remain1175/1176.
+Runtimeb53f9b4fbc01 has been disconnected/deleted, after22:01:39UTC checks
+showed no recorded runner, Lean or Lake. Do not reconnect an old cell.
+Next: promote byte-exact mathematical bodies from the two HOT source blobs,
+separate their audits, retain PRE marks, prepare/test/push a new fresh cold
+gate, then open one CPU/highRAM Colab. No terminal counter movement.
+Every running/process instruction below is historical and superseded.
+
 ## Superseding continuation, 21:56 UTC
 
 Flat v1 ended FAIL at the second/Laplacian lemma; first derivative oracle

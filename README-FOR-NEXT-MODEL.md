@@ -1,5 +1,15 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+SUPERSEDING1177 (2026-09-06 22:02UTC): wrap v7 and flat-action v3 both HOT
+PASS, original evidence downloaded and independently verified. Source pins
+baf5fa136663fe71a9cf07dacd4e365b0026942e and
+69a5308c8e5635b95b59c6d5c88d4b5b789f851c. Runtimeb53f9b4fbc01 deleted after
+process checks and preservation; NO job remains. Earlier LIVE notes below
+are history, not commands to rerun. Next: exact-body promotion of both drafts
+with separate audits and PRE headers, then a pinned fresh cold gate.
+No Windows Lean/Lake, no exploratory CI, no Fable.20/41,TermSource0,
+window15 not attained. See ledger1174/1177 and continuation checkpoint.
+
 LIVE bounded wrap HOT: launched ONCE21:10:26.816673UTC, PID18398, on SAME
 runtimeb53f9b4fbc01, tab12 marked handoff. SOURCE5442189556b1c85e3ac0cb864403cc65f8e23b31,
 BASE81f35765ad50f8217bca20bc4530d99b3bf05103; runner e8d513b2af902fb91b58bdb61c1f989de6e6440d,

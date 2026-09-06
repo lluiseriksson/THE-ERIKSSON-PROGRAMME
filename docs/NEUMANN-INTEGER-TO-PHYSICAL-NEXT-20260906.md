@@ -2,6 +2,15 @@
 
 ## Superseding measured state, 2026-09-06
 
+Flat internal-bond action v3: HOT PASS at69a5308c8e5635b95b59c6d5c88d4b5b789f851c,
+ledger1177, both exact axiom names and original archive preserved. Together
+with wrap v7 (ledger1174), this is ready for exact-body production promotion
+and a fresh cold gate. Neither HOT result retires PRE-VALIDATION. Runtime
+b53f9b4fbc01 was deleted around22:02UTC after preservation; no job remains.
+The older pending/live notes below are historical. Both spacing factors,
+the source-minus-target convention and actual torus masks remain explicit.
+The integer boundary/physical-carrier producer and regional inverse stay open.
+
 Wrap acceptance probe: HOT PASS at sourcebaf5fa136663fe71a9cf07dacd4e365b0026942e,
 ledger1174, with its actual one-name oracle and original archive preserved.
 The side3 torus wrap bond is retained despite non-strict site fit; its integer
