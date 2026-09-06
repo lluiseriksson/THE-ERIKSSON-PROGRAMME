@@ -6,6 +6,15 @@ import YangMills.RG.BalabanCMP85SourceMassParameterUniformComplexWindow
 /-!
 # CMP89 (2.42): full-lattice Green insertion into the Neumann image series
 
+SOURCE-ROLE NOTICE (2026-09-06): the generic certificate and generic
+summability lemmas below remain reusable. The later specialization to
+(2.48) is withdrawn AS A FULL FINE-TO-FINE PHYSICAL PRODUCER: that object
+has a coarse averaged source and is not the (2.46) kernel required here.
+Its existing algebraic compilation evidence is retained, not erased.
+The replacement is NeumannActualFullGreenReflectionSummability, whose
+promotion remains PRE until its own cold gate is independently verified.
+See NEUMANN-INTEGER-TO-PHYSICAL-NEXT-20260906.md and ledger1143.
+
 This module inserts one explicit full-lattice Green into the already sealed
 rectangular reflection-image sum.  A single pair `(B0, delta0)` controls every
 integer image and every reflection branch.  Absolute summability is proved

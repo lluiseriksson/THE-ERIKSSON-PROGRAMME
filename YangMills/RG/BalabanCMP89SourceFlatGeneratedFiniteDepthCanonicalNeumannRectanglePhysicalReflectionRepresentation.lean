@@ -4,6 +4,15 @@ import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRe
 /-!
 # Compiler-verified physical full-space action in the canonical CMP89 rectangle gate
 
+WITHDRAWN AS A FULL FINE-TO-FINE PHYSICAL PRODUCER (2026-09-06).
+The compilation provenance below certifies the stated conditional algebra,
+not the source-role identification: the chosen (2.48) object has an averaged
+coarse source and cannot stand for the full (2.46) Green in (2.42).
+Do not revive this gate by its physical-sounding name. Its definition and
+theorems are preserved unchanged; the actual (2.46) replacement still needs
+the regional right-inverse law, not merely a renamed assumed identity.
+See NEUMANN-INTEGER-TO-PHYSICAL-NEXT-20260906.md.
+
 Cold-sealed at source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`;
 see Verification Ledger Addendum 1003.
 

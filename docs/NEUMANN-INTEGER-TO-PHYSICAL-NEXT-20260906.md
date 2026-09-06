@@ -202,6 +202,11 @@ using the proposed abstract `Summable.comp_injective` route above.
 
 The physical specialization later in that file uses (2.48); it is NOT the
 full fine-to-fine (2.46) Green and remains excluded from this physical route.
+The 2026-09-06 header audit now puts this notice directly in that module
+and in the older finite-depth PhysicalReflectionRepresentation sibling.
+Their mathematical bodies and historical compilation evidence are retained.
+This propagates the already recorded source-role withdrawal; it is not a
+new no-go, a new compiler result, or a retraction of the generic summability.
 The reuse is only of the generic certificate and its generic theorems.
 The next physical insertion must construct that certificate for the literal
 `cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a`, with amplitude
