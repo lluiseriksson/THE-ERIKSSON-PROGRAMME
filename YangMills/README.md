@@ -13,9 +13,10 @@ its hypotheses, source revision and verification record.
 >
 > hRpoly development continues in [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29).
 > The refreshed checklist retains the open uniform physical bounds and
-> regional transport obligations. Independently, the local Wilson-square
-> reflection adapter compiled with nine clean headline oracles; it remains
-> outside the core root and does not prove physical reflection positivity.
+> regional transport obligations. Independently, R2's finite Wilson cylinder
+> geometry and measure passed 39 headline oracles and the unchanged core build;
+> all 2854 global reports were validated from the saved logs. It remains
+> outside the core root. Physical reflection positivity and transfer are open.
 > [Read the evidence and remaining gates →](../NEWS.md)
 
 ## Start here
@@ -36,7 +37,7 @@ its hypotheses, source revision and verification record.
 | KP/Mayer cluster expansion | Recorded core results | Sharp bounds, partition identities and summability |
 | Wilson-loop area laws and IR clustering | Recorded core results | Lattice statements with explicit coupling and geometry conditions |
 | Physical hRpoly activity estimate | **Open · active research branch** | 20/41 terminal producers recorded; `TermSource = 0` at the [September snapshot](../docs/HRPOLY-STATUS.md) |
-| Physical Wilson reflection and transfer | **Local geometry checked; physical construction open** | [R1 evidence and prior 2D work](../docs/PHYSICAL-REFLECTION-PLAN.md); no core-root import or terminal audit |
+| Physical Wilson reflection and transfer | **R1/R2 geometry and measure verified; positivity and transfer open** | [R2 evidence and preserved parser failure](../docs/evidence/physical-cylinder-r2-20260906/README.md); no core-root import or terminal audit |
 | Four-dimensional continuum limit and reconstruction | **Open** | No continuum mass-gap or Clay solution claimed |
 
 The 20/41 count measures one construction checklist, not a fraction of the

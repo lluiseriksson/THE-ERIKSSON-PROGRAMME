@@ -2,9 +2,11 @@
 
 All proof execution uses the task-owned CPU/high-RAM Colab notebook:
 [R1/R2 source and complete evidence archives](https://colab.research.google.com/drive/1Hj6-16RKQ8Fk1gzEfJC6Qg5aqmVJKjaw).
-Earlier cells and failed runs are retained. R2 has no accepted source gate yet.
+Earlier cells and failed runs are retained. R2's scoped source milestone is
+accepted on the build/oracle evidence below. It remains outside the core and
+has no terminal reproduction or independent-audit claim.
 
-## Gate 6 in progress: focal build and 39 oracles passed
+## Gate 6: builds pass; original wrapper returns FAIL
 
 The current fresh clone at the registration commit uses geometry SHA-256
 `CD4EEF25817D3A5F2EF6F61FDD19D3E8E5C3ECA3B5FC34202DDD7219933E4D79`,
@@ -16,11 +18,66 @@ The runner verified these exact UTF-8/LF bytes before their respective stages.
 
 The focal build completed successfully at **8171 jobs**, and all **39**
 headline oracles exited **0** with only the permitted standard axioms.
-The [observed focal transcript](gate-6-oracle.txt) is transcribed from the
-notebook; its byte hash will be matched to the final manifest before acceptance.
-The unchanged core build has started. The core/global results, complete
-archive and runtime-closure record are still pending. No full R2 acceptance,
-core integration or terminal reproduction is claimed here.
+The [focal transcript](gate-6-oracle.txt) matches the archived stdout SHA-256
+`442064076d3cb410b76cb0d82b2b343aa5796de7618e94252da0f1adf406f99f`.
+The unchanged core passed at **8466 jobs**; the complete oracle import set
+passed at **8471 jobs**. Consistency and the base dashboard validation passed.
+The global Lean process exited **0** after **1450.005648 seconds**.
+
+The original wrapper nevertheless returned **FAIL**, because its parser
+`'([^']+)'` cannot read apostrophes inside Lean declaration names. It counted
+2850 reports instead of 2854, first missing `YangMills.OS.pow_succ_apply'`.
+The [original manifest](gate-6-manifest.json) preserves that FAIL and every
+stage field; its whitespace differs from the archived original. This failed
+gate is not relabelled or amended.
+
+- Execution: `2026-09-06T11:14:30.527161Z` to
+  `2026-09-06T11:54:33.444475Z` (2402.917314 seconds).
+- CPU/high-RAM, observed at 50.99 GB. Automatic runtime release followed
+  archive preservation; the disconnected UI was observed before 12:56 UTC after
+  recovery of the task. Exact allocation and billed connection time are unavailable.
+- Full global stdout SHA-256:
+  `4ef9016c2f81cda5401363f74459e78a9c9365aca1b817e49e1df3491e493839`.
+- Complete archive SHA-256:
+  `77c85e48ddf0402548fe7c9c4bb38ebbabbbe76636ecfaa7c4f2f8e32151d14d`.
+  The lossless Base64 archive remains in notebook cell 8. Notebook access may
+  require the owner's permission; public manifests are not full public logs.
+
+## Separate validation of the saved logs
+
+A short Colab diagnosis at `12:57:58.754252Z`–`12:57:58.780112Z` confirmed
+the archive hash and the primed-name parser defect. It emitted no PASS and
+automatically released its runtime. The original failure remains immutable.
+
+The separately prepared [saved-log validator](check_gate6_logs.py), UTF-8/LF
+SHA-256 `852769894cf1b0ad1489ab83d549e1f8d6854cf6e38087a234258f98e1498c35`,
+then checked the same archive on a fresh task-owned CPU/high-RAM runtime.
+It checked all stage exits/log hashes, exact source/driver hashes, and every
+report's name, order and permitted axiom dependencies. It handles the four
+primed names without renaming or dropping any declaration.
+
+Normal and `python -O` modes both exited **0** and produced identical
+[JSON stdout](saved-log-validation.json), SHA-256
+`3dac65b9d31b74baef8498217deef57f5cfbefbf927c2faf87e9b69b8991f069`.
+Each mode rejected all **13** actual data mutations: missing/duplicate/
+renamed/reordered/malformed reports, a removed prime, a nonstandard axiom,
+changed driver name, nonzero/empty exit, changed log digest, source bytes
+and log bytes. The explicit counter is checked without Python assertions.
+
+Result: **39 focal and 2854 global readouts**, including **26 axiom-free**
+global readouts, all others using only standard permitted axioms. This
+validates the saved successful Lean executions; it does not rerun Lean,
+turn gate 6 into PASS or constitute a second fresh source reproduction.
+
+Validation ran `13:03:03.561008Z`–`13:03:04.180011Z` (0.619003 seconds),
+then automatically released its runtime. Disconnection was observed before
+13:08 UTC. These execution timestamps do not establish billed connection time.
+Full output and the prepared validator are preserved in notebook cell 10.
+
+R2 establishes the finite physical measure and reflection identity. R3
+positivity and strictly positive centered norm, R4/R5 and 4D continuum
+reconstruction remain open. Historical Clay label: **~0% (<0.1%)**, a
+convention rather than a measured completion fraction.
 
 ## Diagnostic 1: failed geometry elaboration
 

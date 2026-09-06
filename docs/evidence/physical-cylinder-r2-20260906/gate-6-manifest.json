@@ -1,0 +1,219 @@
+{
+  "base": "ba48274f217220ae2aa47ddaddd8e377fb2231a8",
+  "source_hashes": {
+    "PhysicalWilsonCylinder": "CD4EEF25817D3A5F2EF6F61FDD19D3E8E5C3ECA3B5FC34202DDD7219933E4D79",
+    "PhysicalWilsonCylinderMeasure": "1A345A144A95D2A61076A86EDD23ABF3B097E51F5ADC0E0EDB8EA9AA224B6884"
+  },
+  "opened_utc": "2026-09-06T13:14:30.527161+02:00",
+  "stages": [
+    {
+      "name": "git-init",
+      "command": [
+        "git",
+        "init",
+        "/content/physical-cylinder-r2-gate-6"
+      ],
+      "exit": 0,
+      "seconds": 0.06707536099997924,
+      "log_sha256": "c16724d7f841e5b03515fb28ab279b03371c4b8b5711e4ee8b5d73131b85f540"
+    },
+    {
+      "name": "remote",
+      "command": [
+        "git",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
+      ],
+      "exit": 0,
+      "seconds": 0.00868735899996409,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fetch",
+      "command": [
+        "git",
+        "fetch",
+        "--depth",
+        "1",
+        "origin",
+        "ba48274f217220ae2aa47ddaddd8e377fb2231a8"
+      ],
+      "exit": 0,
+      "seconds": 3.075015889999918,
+      "log_sha256": "95ce53cd38436adf2a8d3eeeb16a9f63a882d53546c1f339d0747b0fae469386"
+    },
+    {
+      "name": "checkout",
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "exit": 0,
+      "seconds": 1.1682192539999505,
+      "log_sha256": "0246a80e53528da3d6ff357b5272d16cd6fc8ab4cffeb65d905707d6f47dd703"
+    },
+    {
+      "name": "elan",
+      "command": [
+        "bash",
+        "-c",
+        "set -eu; curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /content/r2-elan-init.sh; sh /content/r2-elan-init.sh -y --default-toolchain none"
+      ],
+      "exit": 0,
+      "seconds": 0.5163768510000182,
+      "log_sha256": "06c09f6daa65bae914273dd027db1dd1eddfce63ac3152b1cde48b1902504ed5"
+    },
+    {
+      "name": "toolchain",
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 11.445921343000009,
+      "log_sha256": "26d7b52a0c4c3043835c929208c2a55be8d4d0b2075dc2be11bde1ab7580c3f3"
+    },
+    {
+      "name": "mathlib-cache",
+      "command": [
+        "lake",
+        "exe",
+        "cache",
+        "get"
+      ],
+      "exit": 0,
+      "seconds": 82.68013552599996,
+      "log_sha256": "b1105fdad96cc5b997c40194c66cbe11f1cba9a6273bb3e24969725da8568c56"
+    },
+    {
+      "name": "focal",
+      "command": [
+        "lake",
+        "build",
+        "YangMills.OS.PhysicalWilsonCylinderMeasure"
+      ],
+      "exit": 0,
+      "seconds": 176.34442268899988,
+      "log_sha256": "6923d716efa259f9dbe15e4c4d285a17a91d1ce471a8f5253691a997ca53df18"
+    },
+    {
+      "name": "oracle",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "R2Audit.lean"
+      ],
+      "exit": 0,
+      "seconds": 23.484330011999873,
+      "log_sha256": "442064076d3cb410b76cb0d82b2b343aa5796de7618e94252da0f1adf406f99f"
+    },
+    {
+      "name": "core",
+      "command": [
+        "lake",
+        "build",
+        "YangMillsCore"
+      ],
+      "exit": 0,
+      "seconds": 646.406887595,
+      "log_sha256": "69a8da0b2b03a63e42fd4a3aeb54c29cf7e0b613267bdd497a6886f9fb8025b4"
+    },
+    {
+      "name": "consistency",
+      "command": [
+        "python3",
+        "scripts/check_consistency.py"
+      ],
+      "exit": 0,
+      "seconds": 2.623227593000138,
+      "log_sha256": "95525419b7240fe2d3501fd26f7459993590021b731d7b4de820d6161b8293ff"
+    },
+    {
+      "name": "dashboard",
+      "command": [
+        "python3",
+        "scripts/validate_dashboard.py"
+      ],
+      "exit": 0,
+      "seconds": 0.06560973699993156,
+      "log_sha256": "58bd26865b21e71858e9f22818db8c37d82cef08bcefb888a895dd8cff163662"
+    },
+    {
+      "name": "global-imports",
+      "command": [
+        "lake",
+        "build",
+        "YangMillsCore",
+        "YangMills.OS.PhysicalWilsonCylinderMeasure",
+        "YangMills.OS.PhysicalWilsonSquare",
+        "YangMills.RG.NearLog",
+        "YangMills.RG.LocalFunctional",
+        "YangMills.RG.RawMayerWithHoles",
+        "YangMills.RG.OmegaConnectedCover",
+        "YangMills.RG.MayerCoverFactorization",
+        "YangMills.RG.AppendixFFiniteCover",
+        "YangMills.RG.AppendixFHoleTarget",
+        "YangMills.RG.AppendixFKsharp",
+        "YangMills.RG.AppendixFQuantitative",
+        "YangMills.RG.AppendixFFiberEntropy",
+        "YangMills.RG.PolymerClusterWithHolesBridge",
+        "YangMills.RG.AppendixFLocalSummability",
+        "YangMills.RG.AppendixFKsharpEstimate",
+        "YangMills.RG.AppendixFKsharpCanonicalRoot",
+        "YangMills.RG.AppendixFSecondGas",
+        "YangMills.RG.RelativeBVRetraction",
+        "YangMills.RG.PolymerSummabilityBridge",
+        "YangMills.RG.AppendixFHsharp",
+        "YangMills.RG.AppendixFHsharpResidual",
+        "YangMills.RG.AppendixFHsharpPartial",
+        "YangMills.RG.AppendixFHsharpConvergence",
+        "YangMills.RG.AppendixFHsharpLimit",
+        "YangMills.RG.AppendixFHsharpMajorant",
+        "YangMills.RG.AppendixFHsharpGeometricMajorant",
+        "YangMills.RG.AppendixFHsharpCertifiedTail",
+        "YangMills.RG.AppendixFHsharpSourceMajorant",
+        "YangMills.RG.AppendixFSecondUrsellSource",
+        "YangMills.RG.AppendixFSecondUrsellLeafSummation",
+        "YangMills.RG.AppendixFSecondUrsellClosure",
+        "YangMills.RG.AppendixFCluster3Geometry",
+        "YangMills.RG.AppendixFHsharpCluster3",
+        "YangMills.RG.AppendixFHsharpProfile",
+        "YangMills.RG.AppendixFHsharpMarkedVertexSource",
+        "YangMills.RG.AppendixFHsharpLeafSource",
+        "YangMills.RG.AppendixFHsharpSourceResidual",
+        "YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot",
+        "YangMills.RG.BalabanCMP116Eq229Criteria",
+        "YangMills.RG.BalabanCMP116Eq229CammarotaSource",
+        "YangMills.RG.BalabanCMP116Eq237",
+        "YangMills.Paper.GapRefinementChallenge",
+        "YangMills.SUSY.ValenceCarry",
+        "YangMills.SUSY.FiniteBerezin",
+        "YangMills.SUSY.WardPolymer"
+      ],
+      "exit": 0,
+      "seconds": 4.978159434999952,
+      "log_sha256": "abd8771c2e2a46b3fb17f5bd947e45baae7a1aff0d20997288e9b6cba8e042da"
+    },
+    {
+      "name": "global-oracle",
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "oracle_check.lean"
+      ],
+      "exit": 0,
+      "seconds": 1450.005648411,
+      "log_sha256": "4ef9016c2f81cda5401363f74459e78a9c9365aca1b817e49e1df3491e493839"
+    }
+  ],
+  "headlines": 39,
+  "verdict": "FAIL",
+  "error": "RuntimeError('Global oracle names/count mismatch')",
+  "finished_utc": "2026-09-06T13:54:33.444475+02:00"
+}

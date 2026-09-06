@@ -25,7 +25,8 @@ The first source gate must provide:
    expectations and a product-Haar integral identity for the reflected form.
    Any kernel rewrite must retain both shared crossing variables.
 
-These are R2 targets, not accepted results. No positivity of the reflected
+These targets were fixed at registration; the scoped R2 source milestone
+now meets them (see the evidence log below). No positivity of the reflected
 form, positive centered norm, transfer construction or 4D result follows just
 from positive density, reflection invariance or a nonconstant loop observable.
 Those are later R3–R5 obligations. Source must remain outside `YangMillsCore`
@@ -87,9 +88,18 @@ of this task.
   calculation. The failure is retained; the next run adds the standard
   complex coercion lemma without changing the theorem's statement.
 - 2026-09-06: gate 6 compiled both modules at 8171 jobs and passed all 39
-  focal axiom readouts. The unchanged core build is running; the global
-  oracle and completed evidence manifest remain pending. R2 acceptance
-  awaits those results.
+  focal axiom readouts. The unchanged core passed at 8466 jobs and the full
+  oracle import set at 8471 jobs. Consistency/dashboard checks passed.
+  The global Lean run exited 0, but its wrapper returned FAIL after a parser
+  omitted four primed theorem names. That original failure is preserved.
+- 2026-09-06: a separate validation of the exact saved archive passed in
+  normal and optimized modes, rejecting all 13 real field mutations in each.
+  It confirms all 2854 global reports (26 axiom-free), in exact driver order,
+  with only permitted standard axioms. No source or theorem changed and no
+  second Lean run is claimed. The scoped R2 milestone is accepted; see
+  [Addendum R2-20260906](VERIFICATION-LEDGER.md#addendum-r2-20260906--physical-wilson-cylinder-geometry-and-measure)
+  and the [evidence index](evidence/physical-cylinder-r2-20260906/README.md).
+  R2 is standalone, not terminally reproduced or independently audited.
 
 ## R3 reuse boundary identified during R2
 

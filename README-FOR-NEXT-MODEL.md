@@ -3,7 +3,15 @@
 > **Independent campaign · 2026-09-06:** the
 > [physical Wilson reflection plan](docs/PHYSICAL-REFLECTION-PLAN.md) tracks
 > local four-link geometry through physical reflection and transfer
-> construction. The initial diagnostic passed; after the
+> construction. R2 now has a checked finite-cylinder geometry, normalized
+> physical Wilson measure and reflection/Fubini identity: 39 focal oracles,
+> 8466-job unchanged core and all 2854 global reports validated. The
+> [R2 evidence](docs/evidence/physical-cylinder-r2-20260906/README.md) preserves
+> the original primed-name parser FAIL and its separate tested log validation.
+> The next target is R3 physical reflected positivity plus a strictly
+> positive centered norm. Reuse `su2WilsonCrossing_isHaarPSDKernel`; do not
+> duplicate the frozen auxiliary lane. No R3 proof is claimed.
+> The initial R1 diagnostic passed; after the
 > [ARR reuse audit](docs/PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md), duplicate
 > gauge covariance was removed. Revised R1 compiled, all nine headline
 > oracles passed, and the unchanged core rebuilt at 8466 jobs. The full

@@ -8,6 +8,20 @@ guide, not the complete verification ledger. Entries distinguish work in
 
 ## 2026-09-06 — Physical Wilson reflection campaign started
 
+**R2 geometry and physical Wilson measure verified.** Two new standalone
+modules construct a four-vertex, six-link, two-plaquette SU(2) cylinder,
+its normalized product-Haar Gibbs measure and exact reflection/Fubini
+identities. The focal build passed at 8171 jobs, all 39 headline oracles
+passed, and the unchanged core passed at 8466 jobs. The full global Lean
+run exited 0; a separate saved-log validation confirms all 2854 reports
+and permitted axiom dependencies. The original wrapper's primed-name
+parsing FAIL is preserved, with the successful normal/optimized validation
+and 13 rejected data mutations per mode in the
+[evidence record](docs/evidence/physical-cylinder-r2-20260906/README.md).
+R2 remains outside `YangMillsCore` and is not terminally reproduced or
+independently audited. Reflection positivity, a positive centered physical
+norm, transfer construction and the 4D continuum mass gap remain open.
+
 **R2 continuation registered:** the [finite-cylinder plan](docs/PHYSICAL-CYLINDER-R2-PLAN-20260906.md)
 requires explicit oriented geometry, six physical Haar factors, a normalized
 Wilson Gibbs measure and a reflected integral identity. No new R2 proof is

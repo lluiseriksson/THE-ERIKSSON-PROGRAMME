@@ -29393,3 +29393,140 @@ general CI claim and no acceptance hashes were changed.
 Historical Clay label: **~0% (<0.1%)**, a convention rather than a measured
 completion fraction. The physical reflection and 4D continuum obstructions
 remain open.
+
+## Addendum R2-20260906 — physical Wilson cylinder geometry and measure
+
+**Scoped source milestone accepted; no core integration or terminal claim.** The
+[registered R2 plan](PHYSICAL-CYLINDER-R2-PLAN-20260906.md) constructs a
+specific two-plaquette SU(2) cylinder, independently of hRpoly.
+
+**Exact source.** Fresh task-owned CPU/high-RAM Colab clone at
+`ba48274f217220ae2aa47ddaddd8e377fb2231a8`, with these UTF-8/LF overlays:
+
+- `YangMills/OS/PhysicalWilsonCylinder.lean`:
+  `CD4EEF25817D3A5F2EF6F61FDD19D3E8E5C3ECA3B5FC34202DDD7219933E4D79`.
+- `YangMills/OS/PhysicalWilsonCylinderMeasure.lean`:
+  `1A345A144A95D2A61076A86EDD23ABF3B097E51F5ADC0E0EDB8EA9AA224B6884`.
+- `oracle_check.lean`:
+  `2D7122DB41BDE8055F9A3290C98AE22E2DB361B65B12F4BB5C4953AE5D2E09E3`.
+
+The runner checked each overlay hash before its stage. Lean is
+`v4.29.0-rc6`; Mathlib is `07642720480157414db592fa85b626dafb71355b`.
+The source remains outside `YangMillsCore`. No RG source, hRpoly counter,
+frozen SU(2) module, certificate or canonical proof-state field changes.
+
+**Observed focal result.** Both modules compiled: **8171 jobs, exit 0**.
+The 39-declaration focal oracle exited **0**. Its verbatim stdout follows;
+the public transcript matches the archived stdout hash
+`442064076d3cb410b76cb0d82b2b343aa5796de7618e94252da0f1adf406f99f`.
+The unchanged core passed at **8466 jobs**; all oracle imports passed at
+**8471 jobs**. Consistency and the base dashboard check exited **0**.
+The full global Lean process exited **0** after **1450.005648 seconds**;
+stdout SHA-256 is
+`4ef9016c2f81cda5401363f74459e78a9c9365aca1b817e49e1df3491e493839`.
+
+**Preserved wrapper failure and separate log validation.** Gate 6's original
+wrapper returned **FAIL** because its parser omitted four existing names
+containing apostrophes. Its original manifest and verdict remain immutable.
+The separately tested saved-log validator checks every name/order, exact
+source/log hash and real process exit from the same archive. Normal and
+optimized modes both exited **0**, rejected 13 actual field mutations each,
+and produced identical stdout. It verified **2854 global readouts**, including
+**26 axiom-free** readouts, with only permitted standard dependencies.
+This is validation of saved logs, not a second Lean run or an amendment of
+the failed gate. The registered focal/core/headline requirements are met.
+
+Gate-6 execution ran `11:14:30.527161Z`–`11:54:33.444475Z` on 6 September
+2026, for **2402.917314 seconds**. Archive SHA-256:
+`77c85e48ddf0402548fe7c9c4bb38ebbabbbe76636ecfaa7c4f2f8e32151d14d`.
+Saved-log validation ran `13:03:03.561008Z`–`13:03:04.180011Z`.
+Both task-owned CPU/high-RAM units automatically released their runtimes;
+disconnected UI was observed. Exact billed connection time is unavailable.
+The [evidence index](evidence/physical-cylinder-r2-20260906/README.md) links
+the public manifest, validator and matching output, and the notebook's
+complete lossless archive. Notebook permission may be needed for full logs.
+
+```text
+'YangMills.OS.WilsonCylinder.geometry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.reflectionEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.reflect_measurePreserving' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.secondCountable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.haar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.rightInvariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.invInvariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.sliceHaar_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.haarMeasure_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.haar_reflect_measurePreserving' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.logDensity_eq_neg_wilsonAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.density_eq_wilson_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.continuous_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.density_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.density_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.density_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.partition_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.gibbsMeasure_probability' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.continuous_integrable_gibbs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.integral_gibbs_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.integral_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.reflectedForm_eq_productHaar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.boundaryEdge_src' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.boundaryEdge_dst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.fromGaugeConfig_toGaugeConfig' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.toGaugeConfig_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.plaquetteHolonomy_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.plaquetteHolonomy_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.face0_eq_square' depends on axioms: [propext]
+'YangMills.OS.WilsonCylinder.face1_eq_square' depends on axioms: [propext]
+'YangMills.OS.WilsonCylinder.reflect_involutive' depends on axioms: [propext]
+'YangMills.OS.WilsonCylinder.reflectEdge_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.reflectEdge_src' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.reflectEdge_dst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.toGaugeConfig_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.face0_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.face1_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.face0_eq_relative_gaugeUpper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonCylinder.face1_eq_relative_gaugeUpper' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+**What the statements establish.** The constructed geometry has four
+vertices, six independent positive edges, twelve oriented edges and two
+plaquettes. Every six-tuple embeds into a reversal-compatible `GaugeConfig`;
+its plaquette words and reflected edge/configuration maps are explicit.
+The concrete reference measure is the product of six normalized SU(2) Haar
+factors. Reflection swaps the two spatial slices and inverts both crossing
+links, preserving this measure.
+
+The density is the product of the two literal Wilson weights, with an exact
+identity to `-beta * wilsonAction` for plaquette energy `-Re(trace U)/2`.
+The configuration-independent energy constant is omitted explicitly.
+For every real beta the density is continuous, integrable and strictly
+positive; its partition function is positive. Exponential tilting supplies
+an actual probability measure. Continuous complex observables are integrable
+against it, reflection preserves their expectations, and Fubini rewrites the
+reflected form with both shared crossing links still present.
+
+The unconditional integral identity on arbitrary functions uses Mathlib's
+totalized Bochner integral. The separately proved continuous-observable
+integrability theorem supplies the probabilistic interpretation; it must not
+be omitted when interpreting expectations.
+
+**Reuse and limits.** Right/inversion Haar invariance adapts existing
+satellite arguments at `a1fbea97cbe673d383dbb4bc5e2a2fb70dbf190a` to the
+mother's measure. Product measure, tilting and Fubini are Mathlib results;
+the mother's Wilson weight and conjugation/inversion symmetry are reused.
+This is a new concrete interface in this repository, not a claim of new
+Haar analysis or a new disk-amplitude theorem. The cylinder has Euler
+characteristic zero and does not satisfy the satellite disk record.
+
+Reflection invariance and a positive density do not prove reflection
+positivity or a positive centered physical norm. R3, the R4 physical
+quotient/transfer construction, R5 observable/clustering identification,
+and the 4D continuum/OS-Wightman problem remain open. No claim is made for
+arbitrary finite lattices, arbitrary gauge groups, a physical spectral gap,
+core integration, independent audit or two same-SHA terminal reproductions.
+
+The [evidence index](evidence/physical-cylinder-r2-20260906/README.md) retains
+all five failed focal diagnostics and the failed gate-6 wrapper separately, with exact source/log/archive hashes
+and runtime records. Their source bytes do not certify the repaired source.
+The historical Clay label **~0% (<0.1%)** remains a convention rather than
+a measured completion fraction.

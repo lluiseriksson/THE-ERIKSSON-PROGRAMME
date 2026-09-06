@@ -1,5 +1,13 @@
 # Current State
 
+> **Independent R2 update · 2026-09-06:** the finite physical Wilson cylinder
+> geometry and normalized Gibbs measure are checked, with 39 focal oracles,
+> an unchanged 8466-job core and 2854 global reports validated from saved logs.
+> The [evidence record](docs/evidence/physical-cylinder-r2-20260906/README.md)
+> preserves the original parser FAIL and separate tested validation. R2 is
+> standalone; positivity, a positive centered physical norm, reconstruction
+> and the 4D continuum gap remain open. No canonical proof-state change.
+
 > **Reader update · 2026-09-05:** start with [hRpoly status](docs/HRPOLY-STATUS.md)
 > and [research news](NEWS.md). They connect the active PR #29 snapshot to its
 > exact evidence. The entries below are accumulated historical checkpoints;
