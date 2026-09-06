@@ -40,6 +40,11 @@ open. No compressed-Dirichlet/Neumann identification is imported.
 
 ## Full image-family coverage: located substrate, not yet proved here
 
+Update2026-09-06: the one-coordinate decoder below passed exact-source HOTv3
+(ledger1139). Its unchanged production promotion is in the cold cohort at
+sourceaf35fbb8c, still PRE-VALIDATION until that gate passes. The remaining
+multidimensional/summability statements below are design, not compiler claims.
+
 The pinned Mathlib has `Int.divModEquiv` in
 `Mathlib/Logic/Equiv/Fin/Basic.lean:371`: for positive natural period n,
 `Int equiv Int * Fin n`, with inverse `(q,r) -> q*n+r`. It handles negative
@@ -79,3 +84,42 @@ sums, and justify convolution/image-sum interchanges using the actual kernel
 summability. The resulting finite regional right-inverse identity can then
 use finite-dimensional uniqueness. Bounded extension is not decay, and this
 domain choice does not itself supply the kernel summability or physical B0.
+
+## Exact next finite list after the cold dictionary cohort
+
+R2a: on the literal `CMP89SourceNeumannIntegerRectanglePoint m`, construct
+the coordinatewise family map
+`((Fin d -> Int) * CMP89NeumannReflectionBranch d * RectanglePoint m)`
+to `Fin d -> Int`, using `cmp89NeumannReflectionImage` itself. Prove its
+injectivity and surjectivity by the interval theorem, with every `m mu > 0`
+explicit. Do not silently replace the rectangular subtype by a function of
+coordinate subtypes; prove that packaging equivalence. No new image formula.
+
+R2b: fix an original point n. Restrict the full-family injection to `(k,b,n)`.
+This is the exact injection required by `Summable.comp_injective`; the pinned
+Mathlib Group.lean theorem requires completeness for the codomain (Complex
+satisfies it). `Summable.prod` and `Summable.tsum_prod` from Constructions.lean
+then split integer translations and the finite parity sum. No convergence
+is inferred merely from bijectivity, and no factor `2^d` replaces the infinite
+translation series.
+
+R2c orientation gate: the already sealed
+`summable_cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient_massUniform`
+varies TARGET on an affine residue fibre with SOURCE fixed. The printed
+reflection representation varies SOURCE images at a fixed target. These are
+not the same theorem. Do not invoke translation invariance or adjunction to
+rename them. The literal two-endpoint estimate
+`norm_cmp89Eq246NormalizedPhysicalFineToFineGreen_le_massUniform` is available
+for EVERY pair of endpoints, so it can directly bound source-varying terms
+by the signed-l1 weight of `target-source`; establish summability via the
+constructed integer displacement bijection and the sealed total-lattice
+weight sum. This produces the required orientation without a physical
+symmetry premise. The amplitude still carries its L,j,a,rho dependence.
+
+R2d: after coverage/summability, construct the reflected field as a pointwise
+function. For finite block averaging, the reflected local remainder changes
+from r to B-1-r; unreflected r stays r. Cite a finite remainder permutation
+and the exact owner-image lemma before swapping finite sums. Keep the two
+normalizations separate: Q weight `(M^-d)^depth`, counting Q*Q weight
+`(M^-d)^(2*depth)`. R3 regional right inverse and R4 uniform physical B0 still
+need their own operator/sum identities and quantitative proofs.

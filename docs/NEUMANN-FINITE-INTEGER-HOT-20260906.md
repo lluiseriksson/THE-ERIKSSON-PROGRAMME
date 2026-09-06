@@ -1,5 +1,39 @@
 # Finite representative to physical counting mass — HOT diagnostic
 
+## Superseding live checkpoint09:09UTC, 2026-09-06
+
+Historical live-process paragraphs below are retained, not current status.
+The finite-Q HOT PASS is preserved in ledger1136. Interval HOTv1/v2 failures
+are preserved in1137/1138; its HOTv3 PASS is independently preserved in1139.
+No old runner is active. The new promoted source is
+af35fbb8c75bf2347543034b3abf27f0217b1bbf, published instrument974cf23a0.
+Four production files retain PRE-VALIDATION. Their statements/proof bodies
+match the two HOT source Git blobs exactly (four plus seven audited names).
+
+ONE new cold clone started09:08:51.528857UTC, launcher PID36466, same
+retained CPU/highRAM/noGPU runtimea7c701abce35, accountlluiseriksson@gmail.com.
+This reuses the host, NOT the project checkout, .lake/build or outputs.
+New clone:/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1.
+Old HOT clone:/content/hrpoly-neumann-integer-image-promoted-cold-v1.
+No project output restoration; raw sourceaf35fbb8c and exact pins required.
+Queue:counting_focal,counting_audit,interval_focal,interval_audit; stop first error.
+
+- Console:/content/neumann-integer-dictionary-cohort-cold-v1-console.log
+- Inner evidence:/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1-evidence
+- Final exit:/content/neumann-integer-dictionary-cohort-cold-v1-exit.txt
+- Preservation:/content/neumann-integer-dictionary-cohort-cold-v1-preservation-20260906.tar.gz
+- Launcher commitdde37075aa2297544eb42f1f91304f27257705f9
+- Launcher SHA2560262e3875378a1e5b8a5e5c0915b9346a289ef3a235db751583ef35aba52dfb3
+- Local reader:scripts/preserve_verify_neumann_integer_dictionary_cohort_cold.py
+
+Browser tab4 Cell2 is now THIS running cold gate, not the historical reader.
+NEVER rerun it; Cell1 is the older completed cold gate and must not be rerun.
+Terminal is available only for bounded read-only observation, no concurrent
+scientific job. Check at the measured physical build threshold, not each minute.
+After actual verdict, preserve/independently verify archive before selective
+header retirement. No root/CI added; intermediate leaf cohort only. Counters
+20/41,TermSource0,window15 compatible/not attained unchanged. Goal active.
+
 Current source eb2fde64ff5597e6c3fa49d3beb114633e806d37; instrument
 a3bbb0bbda604929bd57586e7387100c15021301. This is NOT a cold seal.
 The previous v1 failure is preserved in ledger1135, not deleted or repeated.
