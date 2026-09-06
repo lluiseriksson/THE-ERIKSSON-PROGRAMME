@@ -29,6 +29,7 @@ hypotheses and evidence.
 | Strong-coupling area laws and IR clustering | Recorded core results, with explicit parameter windows | [Headline results](#headline-results-all-oracle-clean-all-in-the-core) |
 | Concrete physical activity bound `hRpoly` | **Open · research branch** | [20/41 terminal producers; `TermSource = 0`](docs/HRPOLY-STATUS.md) |
 | Physical scalar window 15 | **Compatible; not attained** | [Remaining milestones](docs/HRPOLY-STATUS.md#what-comes-next) |
+| Physical Wilson reflection and transfer bridge | **Independent campaign started** | [Four-link geometry first; no new verified result yet](docs/PHYSICAL-REFLECTION-PLAN.md) |
 | Four-dimensional continuum limit and reconstruction | **Open mathematics** | [Hypothesis frontier](HYPOTHESIS_FRONTIER.md) |
 
 **The counts are construction milestones, not a percentage of a Millennium

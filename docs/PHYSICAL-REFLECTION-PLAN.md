@@ -26,7 +26,7 @@ obstruction is not revived.
 
 | ID | Required output | Current state |
 |---|---|---|
-| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Planned; no compiler claim |
+| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Drafted; own Colab diagnostic started, no PASS yet |
 | R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Open |
 | R3 | Positive complex reflected Gram forms for a physically specified finite lattice and a nonzero physical test sector | Open |
 | R4 | Physical quotient/completion, transfer operator, vacuum and correlation identity, ready for `SharpBridge` | Open |
@@ -88,3 +88,9 @@ reconstruction remain open. This label is not a measured percentage.
   existing thermodynamic and abstract operator results and their scope.
   Colab access checked without starting a computation runtime. R1 is the
   first implementation target; no new Lean result claimed.
+- 2026-09-06: R1 source draft prepared (UTF-8/LF SHA-256
+  `1046B1EF184A1940A965AC9DFE0B3F65C30140083FC83EC6DBC8D5824084FCA4`).
+  A task-owned CPU/high-RAM Colab diagnostic was initiated from registered
+  source `23f488959005718ac634176d02f5626e8ce70151` plus those exact draft
+  bytes. Build and ten headline oracle checks are pending. No core import
+  was added.

@@ -1,5 +1,12 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+> **Independent campaign · 2026-09-06:** the
+> [physical Wilson reflection plan](docs/PHYSICAL-REFLECTION-PLAN.md) tracks
+> local four-link geometry through physical reflection and transfer
+> construction. R1 is drafted and undergoing a Colab diagnostic; no new
+> verified endpoint or core build is claimed. Read its current evidence
+> before continuing this lane. The hRpoly lane is separate.
+
 > **Research update · 2026-09-05:** read [hRpoly status](docs/HRPOLY-STATUS.md)
 > before using the historical handoff below. It links the exact PR #29
 > completion map and evidence; it does not promote that branch to `main` or

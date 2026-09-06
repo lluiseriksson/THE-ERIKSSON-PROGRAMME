@@ -2,12 +2,28 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-08-03",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
+    "updated": "2026-09-06",
+    "checkpoint": "Historical recorded core: a17d7816, 8412 jobs. Later scoped records are in the verification ledger; this page date is not a new build.",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
     "frontier": "hRpoly - concrete Yang-Mills activity decay for the actual gauge RG operator",
+    "research_updates": [
+      {
+        "title": "Physical Wilson reflection: independent campaign started",
+        "date": "2026-09-06",
+        "status": "R1 drafted; Colab diagnostic in progress. No new verified result yet.",
+        "note": "First target: four independent plaquette links, exact reflection and a dictionary to the existing Wilson holonomy. Physical Haar positivity, reconstruction and the continuum remain open.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
+      },
+      {
+        "title": "hRpoly: source estimates and terminal requirements",
+        "date": "2026-09-06",
+        "status": "20/41 terminal producers; TermSource = 0; physical window 15 not attained at the inspected snapshot.",
+        "note": "PR #29 advances independently. Its checklist distinguishes selective cold checks from the uniform physical bounds and final application; follow the current PR for later evidence.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7d773cd4a335f13c3946353f0ab5cb7bb47ca0f9/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md"
+      }
+    ],
     "repo": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
     "blob": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/",
     "ledger": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/VERIFICATION-LEDGER.md",
