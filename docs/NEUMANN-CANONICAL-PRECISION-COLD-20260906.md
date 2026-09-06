@@ -9,6 +9,16 @@ Keep this tab/runtime until evidence is preserved. Do not rerun the cell.
 Expected outer /content/neumann-canonical-precision-promoted-cold-v1-preservation-20260906.tar.gz.
 Local reader scripts/preserve_neumann_canonical_precision_cold.py verifies it.
 
+Bounded next HOT diagnostic prepared, NOT RUN: source852d3b82ed5d0ffd2e5c38eb4eeb96c433858bbc,
+tmp/NeumannCanonicalSpacingNormalizationDraft.lean plus its Mathlib-only repro.
+Three named identities: literal terminal spacing one, counting coefficient
+a_r B^d, combined counting-mass coefficient a_r B^(-d). The scale choice
+is fixed in the signature; no free operator equality is assumed.
+Runner/reader templates tmp/*neumann_canonical_spacing_hot_template.py fail
+before any execution until this cold archive, independent review and output
+hash are pinned. Their synthetic contract test passes (one fixture,ten
+rejections,one preserved failure); no mathematical evidence is claimed.
+
 Cold package prepared: source4746880218c694a9d4e9d32c0af61f86d460b7b4,
 runner/reader44857de9b870e433d36b30e3a52a74b05e9a5d0d,
 launcher8ed60e286f2d670acfd0662ca21541fbedf20c29.
