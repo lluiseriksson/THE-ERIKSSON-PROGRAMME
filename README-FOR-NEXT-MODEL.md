@@ -1,5 +1,13 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Prepared next HOT478c40e6: sourceadfef2b5b has directionwise rectangle masks,
+full-period sides retained. Repro first, physical draft second; both PRE.
+Templates are deliberately non-executable until the current cold report is
+independently preserved and its actual pins filled. See
+docs/NEUMANN-DIRECTIONAL-MASKS-HOT-PREPARATION-20260907.md.
+Reuse only the SAME retained runtime after cold PASS/preservation; never
+rerun the cold cell or mark this subsequent diagnostic cold. No result yet.
+
 LIVE wrap/flat cold: SOURCE15e776db59c051571f79e47974acc2fbf597f715.
 One execution22:13:47.881279UTC PID16795, runtimeec5e95d70d1c,
 CPU/highRAM50.99GB, tab13/cellKkYQYAhYxyNB marked for handoff.
