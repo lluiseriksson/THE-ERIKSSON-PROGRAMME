@@ -46697,3 +46697,32 @@ Durable validation-evidence/neumann-finite-integer-kernel-hot-v1-fail-20260906.
 Runtime retained for this one-import HOT retry, distinct paths and outputs;
 no original cell rerun, no CI, no local Lean. 20/41,TermSource0,window15
 compatible/not attained unchanged. PRE-VALIDATION retained.
+
+## Addendum1136 — finite-to-integer physical counting mass HOT PASS, 2026-09-06
+
+Sourceeb2fde64ff5597e6c3fa49d3beb114633e806d37, runnera3bbb0bbd,
+SHA2566334e8d3c6946b8313f24cd47b793e03bad6c8770fc4b4193ac73e7432b10f73.
+Same retained base87edca651, hosta7c701abce35, CPU/highRAM/noGPU, exact pins.
+One run after08:20:28.965741UTC hash gate, PID20470; terminal exit0.
+Mathlib repro2.221527487s, physical prerequisites1424.660840543s/8484jobs,
+actual source-importing draft8.994392668s, all exit0. Four exact audit names:
+coordinate injectivity uses propext/Quot.sound; the three physical owner/kernel
+declarations use the allowed trio. Tracked source clean before/after. No
+statement/constant/hypothesis changed after the v1 import-only repair.
+
+Archive72757bytes SHA25691096b90e7d1583ee7b3ce88f3f09c2b74e2c882e618641df88efde17d43dbf9.
+Independent reader checked all nine stages, real exits, exact commands,
+source/runner/repro/log/output hashes, pins, file set and both axiom gates:
+exit0/0.21598s/22970368observed peak RSS bytes, under30s/512MiB watchdog.
+Report86efc612f4135fce6ef95e959abcee42b2051912e69e6044c99173154ca28888.
+Mathlib output40305d8f3b11251a27266390902ca783ee310a743c95127f87deef03b1d8b47f;
+physical output57912d76bdb84bc89f7928fb9f8359c6edf360d0abd4f9a6c553e7140b30b150.
+Durable validation-evidence/neumann-finite-integer-kernel-hot-v2-20260906.
+Instrument tests also reject the actual old v1 archive as v2 evidence.
+
+This identifies the literal generated counting-adjoint mass with integer owner
+equality, keeping (M^-d)^(2*depth) exact. It does not identify an image Green,
+Neumann precision, full inverse or physical B0. HOT only, PRE-VALIDATION
+retained pending exact promotion/cold gate. Runtime retained for the prepared
+independent interval-image diagnostic; no process duplicated. Counters20/41,
+TermSource0,window15 compatible/not attained unchanged.
