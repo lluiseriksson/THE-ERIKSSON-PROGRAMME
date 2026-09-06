@@ -1,5 +1,12 @@
 # Eight-name rectangle/full-G cold cohort — current continuity
 
+SUPERSEDED LIVE POINTER: docs/NEUMANN-AVERAGE-FIELD-COLD-20260906.md.
+This cold cohort is sealed in427d48258. Both subsequent HOT v2 diagnostics
+passed and were independently preserved (ledgers1146/1148); all v1 failures
+remain archived. Runtime a7c701abce35 was deleted at11:00UTC after preservation.
+Never reuse its historical launch instructions. Next is the prepared fresh
+six-name averaging/field-action cold cohort, SOURCE8570618f2.
+
 ## PASS preserved; selective seal, 2026-09-06
 
 The single cold execution completed: all16 stages exit0 and all8 exact
