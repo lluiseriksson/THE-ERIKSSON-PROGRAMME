@@ -118,3 +118,25 @@ Private render provenance (not committed as public paper copies):
 
 Hash-only local check: exit0,0.0949014s,15880192 observed peak RSS.
 No new render, compiler job or mathematical seal was required for this check.
+
+## Scoped consumer audit after ledger1181
+
+The existing canonical rectangular reflection gate takes hm>0 and hfit<=N,
+not strict fit. Its withdrawn physical specialization must NOT be used to
+smuggle a proper-side hypothesis into the actual (2.46) replacement.
+SourceSeparatedGeneratedPhysicalLargeBlockCutoff takes arbitrary Omega at
+ambient side2*(K*Q); it is not itself a rectangle/proper-fit producer.
+The inspected uniform-owner certificate also retains non-strict hfit and
+an explicit representation input. These signatures do not establish a
+strict-fit lemma for the eventual regional carrier. This is a scoped audit,
+not a claim that no such geometric theorem can exist elsewhere.
+
+The next shared algebraic primitive for M3 (needed for proper reflections
+even if FULL directions disappear) is finite-average half-cell phase, not
+the real-slice conjugation theorem. A Mathlib-only PRE repro is now written
+at tmp/NeumannHalfCellPhaseRepro.lean: reverse the finite exponential sum
+using Finset.sum_range_reflect. It allows every complex c, including c=0
+and exp(c)=1; a quotient geometric-sum proof excluding those cases would
+lose the central modes. No compiler result is claimed. After this primitive
+passes, specialize to the ACTUAL entire average factor with c=i*z/N; its
+phase must travel into the two-endpoint kernel before asserting covariance.
