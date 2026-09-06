@@ -63,3 +63,19 @@ Coordinatewise composition can then target the full rectangular image-index
 equivalence. Only after this exact bijection is proved may a summable family
 be reindexed. Summability/operator interchange and the averaging identity are
 separate gates; a bare reindexing theorem does not establish the Green inverse.
+
+## Domain gate for the averaging intertwiner
+
+Design restriction, not a newly compiled no-go: a nonzero field on the
+original finite rectangle, extended by reflection/translation to all integer
+images, generally is NOT square summable. Even the unreflected branch repeats
+one nonzero value on infinitely many translates. Do not introduce that
+extension as an isometry from the finite Hilbert space into global `l2`, or
+silently invoke an operator identity whose domain requires such membership.
+
+The candidate faithful route is pointwise: construct the reflected extension
+as a function, prove the local averaging/stencil relations with their finite
+sums, and justify convolution/image-sum interchanges using the actual kernel
+summability. The resulting finite regional right-inverse identity can then
+use finite-dimensional uniqueness. Bounded extension is not decay, and this
+domain choice does not itself supply the kernel summability or physical B0.
