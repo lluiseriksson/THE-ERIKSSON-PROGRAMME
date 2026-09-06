@@ -47274,3 +47274,23 @@ w^(2*depth), reindexed over a constructed complete fibre, no extra B^d.
 It is not Green reflection, a regional inverse, uniform B0 or window15.
 20/41,TermSource0 and Clay<0.1% unchanged. Runtime retained for the already
 prepared bounded canonical-Neumann finite-action HOT, not another cold run.
+
+## Addendum 1159 — bounded canonical precision HOT dependency timeout (2026-09-06)
+
+SOURCE5fa96640891aa7fc980b4e27a77c08e85bf6909f; retained cold BASE9bb957757b6454871eaea6e26aed8c95dc576b3c.
+Runner7eea0b2396a24c3213680a1122f8e4e5f84861d9, revision
+neumann-canonical-precision-offsets-hot-v1, one PID32845 launch at14:09:43UTC.
+Mathlib repro exit0/10.856949369s. The four-target prerequisite graph reached
+8700/8741 without an error line, then its recorded600-second watchdog fired:
+physical_prerequisites exit-9, timed_out=true,600.053086654s.
+Physical draft was NOT STARTED; no successful prefix counts as its proof.
+
+Downloaded archive e7da0c8d4d9172a0de6e3ab74ceccf7177712e3806f75bdeb940389593f85acd;
+independent report ec3e717383d9acab18e968e47cfc1b05c47c82939d566bb832d49353504c760c;
+failed-stage log f0d9bd82616660300d97fc19b89ea2a0bff8fd5ba1caab0a1d3cbd7be3e09066.
+Preserved validation-evidence/neumann-canonical-precision-hot-v1-20260906.
+Reader exit0/0.2902624s/23056384RSS, status VERIFIED_FAILURE, cold_seal=false.
+Classification: measured dependency timeout, not a Lean mathematical failure.
+Retry keeps the SAME source and600s budget in the SAME retained runtime;
+new revision/output paths preserve v1 and reuse only diagnostic build state.
+No new cold seal, no PRE retirement,20/41 andTermSource0 unchanged.
