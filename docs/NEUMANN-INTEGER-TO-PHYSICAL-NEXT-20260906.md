@@ -28,6 +28,21 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 
+Prepared2026-09-06 while the complete-fibre production cold gate runs:
+tmp/NeumannGeneratedMassCompleteOffsetsDraft.lean, six proposed audit names.
+The actual fine output produces its coarse membership witness internally.
+The sealed dependent-owner iff and constructed complete fibre then give
+the actual source-weighted and counting-adjoint mass actions as offset sums,
+with exponents depth and 2*depth kept distinct. Two further finite-sum
+specializations expose integer coordinates and a COMMON printed image.
+These are PRE-VALIDATION, not new compiler evidence. The pure equality-
+orientation/if/sum step is extracted to its Mathlib-only Repro before HOT.
+No second runtime or local compiler is launched while the cold gate runs.
+Exact two-file text/import preflight passed: exit0,0.1732472 seconds,
+16183296 bytes observed peak RSS; no resource limit hit. This is a textual
+check, not an elaboration or compiler verdict. Keep all PRE marks pending HOT.
+R3 right inverse, R4 uniform physical B0 and window15 remain open.
+
 Current R2d.2b carrier substep: HOT PASS atb7ac45acae587b0175526006f5a8d9a4247dea7c,
 six exact names/9 stages0, archive independently preserved, ledger1152.
 Its production module NeumannGeneratedCompleteFibre and audit are exact-body
