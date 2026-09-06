@@ -5,8 +5,10 @@
 > local four-link geometry through physical reflection and transfer
 > construction. The initial diagnostic passed; after the
 > [ARR reuse audit](docs/PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md), duplicate
-> gauge covariance was removed. Revised R1 has nine headlines and awaits its
-> full core/oracle check. Read the plan's exact-source evidence before
+> gauge covariance was removed. Revised R1 compiled, all nine headline
+> oracles passed, and the unchanged core rebuilt at 8466 jobs. The full
+> 2815-command oracle also passed; R1 is not core-integrated or terminally
+> reproduced. Read the plan's exact-source evidence before
 > continuing this lane. The hRpoly lane is separate.
 
 > **Research update · 2026-09-05:** read [hRpoly status](docs/HRPOLY-STATUS.md)

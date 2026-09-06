@@ -29315,3 +29315,81 @@ recorded because the record is what the next campaign reads.  Ten versions of a
 paper is exactly when the ledger entry stops feeling urgent and starts being
 necessary.  Written now, after the fact, and dated as such rather than
 back-dated.
+
+## Addendum R1-20260906 — local Wilson-square reflection and prior-work reuse
+
+**Scoped check, not terminal closure or core integration.** Campaign:
+[Physical reflection plan](PHYSICAL-REFLECTION-PLAN.md). The owner requested
+independent work while hRpoly advances and then required comparison with the
+[ARR 2D disk paper](PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md). That comparison
+removed duplicate gauge covariance and registered the existing original-edge
+gauge-fixing/amplitude chain and free-transporter Haar obstruction as prior
+work. No novelty claim is made for elementary group algebra.
+
+**Exact source and execution.** Fresh task-owned CPU/high-RAM Colab clone of
+`5066f3de44af98d73dc23e1062a0bcaf75b3a7e4`, plus the standalone
+`YangMills/OS/PhysicalWilsonSquare.lean` UTF-8/LF bytes with SHA-256
+`21A09C1447E2291C3D46679AAD76387794C4C95A3D4B13FF3A59CCDB47923921`.
+The full oracle overlay is UTF-8/LF SHA-256
+`D67DDFC964D29FF30AA670618F9FF93F2E19EE02701BD79263917D79A1EFE141`.
+Both transport hashes were checked before their respective execution.
+Lean `v4.29.0-rc6`; Mathlib `07642720480157414db592fa85b626dafb71355b`.
+
+**Observed checks.** Unchanged core: **8466 jobs, exit 0**. R1 focal build:
+**8160 jobs, exit 0**. Full oracle import set including standalone R1:
+**8467 jobs, exit 0**. Source consistency and dashboard validation: exit 0.
+All nine new headline oracles: exit 0, with these verbatim outputs:
+
+```text
+'YangMills.OS.WilsonSquare.reflect_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonSquare.holonomy_reflect' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.OS.WilsonSquare.holonomy_eq_relative_paths' depends on axioms: [propext]
+'YangMills.OS.WilsonSquare.holonomy_ofPlaquette' depends on axioms: [propext, Quot.sound]
+'YangMills.OS.WilsonSquare.bottom_injective' depends on axioms: [propext]
+'YangMills.OS.WilsonSquare.right_injective' depends on axioms: [propext]
+'YangMills.OS.WilsonSquare.top_injective' depends on axioms: [propext]
+'YangMills.OS.WilsonSquare.left_injective' depends on axioms: [propext]
+'YangMills.OS.WilsonSquare.holonomy_single_bottom_ne_one' depends on axioms: [propext]
+```
+
+The full **2815-command** global oracle exited **0** after **1561.023 s**.
+There are **26** axiom-free readouts; the other dependencies are all subsets
+of `{propext, Classical.choice, Quot.sound}`. Full stdout SHA-256:
+`bf173c24b55930b876a4a77ae34347bfe2d3644b3a16798cec048a5b686f1a21`.
+The public focal transcript matches the run's recorded SHA-256
+`18765288b1b3a26d9b7e8fc0877a2447f4da578961acecf8030aa2bf57d5ea17`.
+The [public stage manifest](evidence/physical-reflection-r1-20260906/revised-manifest.json)
+records `SCOPED_PASS_NOT_CORE_INTEGRATED`; the
+[evidence index](evidence/physical-reflection-r1-20260906/README.md) retains
+the earlier ten-headline diagnostic separately and links the exact notebook
+source, complete command-log archives and runtime record. No Windows Lean,
+Lake or oracle execution was used.
+
+The revised execution ran from `2026-09-06T08:09:53.593994Z` to
+`08:51:29.847037Z` (2496.253 seconds). The notebook output preserves the
+complete archive as Base64, SHA-256
+`0ffc58c188fdb8fad88a3f5c930d1bbb3920ee6857dbecab7cc820477941c330`.
+Automatic runtime release followed preservation; the disconnected UI was
+observed before `08:52:28Z`. Exact allocation/billing times were not captured.
+The code is published at `ea58f6127696a962953c636bb363a43a79b3a6c1` (PR #78),
+with the two recorded production/global-oracle overlays relative to the
+checked base; the generated focal audit driver is also preserved under docs.
+Subsequent documentation updates do not change those source bytes.
+
+**Mathematical boundary.** This proves the local four-variable involution,
+its conjugate-inverse holonomy, the relative-path word, the mother's local
+plaquette dictionary and injective dependence on each independent variable.
+It does not prove arbitrary extension into a global lattice, product-Haar
+reflection positivity, a nonzero OS fluctuation sector, transfer
+reconstruction, hRpoly or a continuum gap. The module remains outside
+`YangMillsCore`; the core node count is unchanged. Independent terminal audit
+and two same-source cold reproductions are not claimed.
+
+**General CI boundary.** The [baseline note](PHYSICAL-REFLECTION-CI-BASELINE-20260906.md)
+records the same nine Surface provenance failures on earlier main, PR #77
+and PR #78's code checkpoint; 695 tests passed in each run. This is not a green
+general CI claim and no acceptance hashes were changed.
+
+Historical Clay label: **~0% (<0.1%)**, a convention rather than a measured
+completion fraction. The physical reflection and 4D continuum obstructions
+remain open.

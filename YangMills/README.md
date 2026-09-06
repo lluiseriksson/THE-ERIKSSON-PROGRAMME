@@ -9,12 +9,14 @@ together SU(N) lattice gauge theory, polymer cluster expansions, Wilson-loop
 area laws and the active **hRpoly** campaign. Each research claim is tied to
 its hypotheses, source revision and verification record.
 
-> **Research update · 5 September 2026**
+> **Research update · 6 September 2026**
 >
 > hRpoly development continues in [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29).
-> Recent recorded checks cover full-Green foundations and source-flow residue
-> identities. The next obstacles are uniform physical bounds and regional
-> transport. [Read the evidence and remaining gates →](../docs/HRPOLY-STATUS.md)
+> The refreshed checklist retains the open uniform physical bounds and
+> regional transport obligations. Independently, the local Wilson-square
+> reflection adapter compiled with nine clean headline oracles; it remains
+> outside the core root and does not prove physical reflection positivity.
+> [Read the evidence and remaining gates →](../NEWS.md)
 
 ## Start here
 
@@ -34,6 +36,7 @@ its hypotheses, source revision and verification record.
 | KP/Mayer cluster expansion | Recorded core results | Sharp bounds, partition identities and summability |
 | Wilson-loop area laws and IR clustering | Recorded core results | Lattice statements with explicit coupling and geometry conditions |
 | Physical hRpoly activity estimate | **Open · active research branch** | 20/41 terminal producers recorded; `TermSource = 0` at the [September snapshot](../docs/HRPOLY-STATUS.md) |
+| Physical Wilson reflection and transfer | **Local geometry checked; physical construction open** | [R1 evidence and prior 2D work](../docs/PHYSICAL-REFLECTION-PLAN.md); no core-root import or terminal audit |
 | Four-dimensional continuum limit and reconstruction | **Open** | No continuum mass-gap or Clay solution claimed |
 
 The 20/41 count measures one construction checklist, not a fraction of the

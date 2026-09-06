@@ -21,6 +21,7 @@
 | [M3 dependency map](M3-FRONTIER-DEPENDENCIES.md) | The consumer and hypothesis structure |
 | [Physical Wilson reflection campaign](PHYSICAL-REFLECTION-PLAN.md) | Independent physical geometry, Haar, reflection and transfer work; per-milestone evidence |
 | [ARR 2D SU(2) reuse audit](PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md) | Exact prior source, original-edge results to reuse, removed duplication and remaining Wilson reflection requirements |
+| [Reflection campaign CI baseline](PHYSICAL-REFLECTION-CI-BASELINE-20260906.md) | Nine prior Surface provenance failures reproduced by general CI; separate from Lean and dashboard validation |
 | [After hRpoly: physical reconstruction and continuum audit](POST-HRPOLY-CONTINUUM-AUDIT-20260906.md) | Static source audit, independent workstream and explicit limits of the lattice-to-continuum inference |
 | [Dashboard](dashboard/) | The curated main dependency picture; active-branch updates are in [hRpoly status](HRPOLY-STATUS.md) |
 | [Source citations](SOURCE-CITATIONS.md) | Primary-source locators and extraction notes |

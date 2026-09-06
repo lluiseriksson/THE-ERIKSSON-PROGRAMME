@@ -14,12 +14,14 @@ exponential clustering and source-specific renormalization-group estimates.
 The verified core and the active research frontier each have explicit scope,
 hypotheses and evidence.
 
-> **5 September 2026 · Research update**
+> **6 September 2026 · Research update**
 >
-> hRpoly work continues in [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29),
-> with new recorded checks for source-flow full-Green identities and a sharper
-> map of the remaining physical bounds. The public documentation now connects
-> that work to `main`. [Read the update →](NEWS.md)
+> The independent physical-reflection campaign has a compiled local
+> four-link dictionary with nine clean headline oracles. The ARR paper audit
+> identifies prior 2D results to reuse. hRpoly continues in
+> [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29);
+> its refreshed checklist still records 20/41 and `TermSource = 0`.
+> [Read the scoped evidence and remaining obligations →](NEWS.md)
 
 ## Progress Dashboard
 
@@ -29,7 +31,7 @@ hypotheses and evidence.
 | Strong-coupling area laws and IR clustering | Recorded core results, with explicit parameter windows | [Headline results](#headline-results-all-oracle-clean-all-in-the-core) |
 | Concrete physical activity bound `hRpoly` | **Open · research branch** | [20/41 terminal producers; `TermSource = 0`](docs/HRPOLY-STATUS.md) |
 | Physical scalar window 15 | **Compatible; not attained** | [Remaining milestones](docs/HRPOLY-STATUS.md#what-comes-next) |
-| Physical Wilson reflection and transfer bridge | **Initial diagnostic passed; revised source under verification** | [Four-link geometry and reuse of the existing 2D paper](docs/PHYSICAL-REFLECTION-PLAN.md) |
+| Physical Wilson reflection and transfer bridge | **Local R1 compiled; 9/9 headline oracles passed** | [Scoped evidence, prior 2D work and remaining physical construction](docs/PHYSICAL-REFLECTION-PLAN.md) |
 | Four-dimensional continuum limit and reconstruction | **Open mathematics** | [Hypothesis frontier](HYPOTHESIS_FRONTIER.md) |
 
 **The counts are construction milestones, not a percentage of a Millennium
