@@ -476,6 +476,33 @@ No new source module or result is claimed by this located reuse.
 
 ## R1b/R3 acceptance gate: Fourier density versus counting kernel entry
 
+### Located mass-zero route for the later full-lattice equation (static 2026-09-07)
+
+Do not use the old suffix _of_commonRadius on the normalized fine-point-source
+equation: its signature still requires hmassPos : 0 < mass. That is not an
+acceptable shortcut for the canonical mass-zero specialization.
+
+The already available mass-uniform route has no such premise:
+
+1. cmp89Eq246FullSolutionDomain_of_commonRadius_massUniform constructs the
+   fields fine, stabilized and row, including at mass=0, under the unchanged
+   amplitude/radius/stabilized/pair/mass windows.
+2. cmp89Eq246EntireAliasPrecisionMatrix_mulVec_finePointSourceSolution
+   consumes exactly those three fields for the internally constructed solution.
+3. cmp89Eq246FinePointSourceAliasVector_eq_fourierTransform identifies its
+   RHS with the xi^(-d)-normalized point source, with hxi supplied by the
+   existing positive fine-spacing theorem.
+
+This is located composition of existing declarations, not a newly compiled
+wrapper and not the full-lattice operator equation. It removes no window.
+The missing transport still has two distinct parts: show the ACTUAL physical
+finite-difference/complete-fibre action intertwines with this continuous
+Fourier synthesis, then integrate the source phase to its correctly normalized
+lattice delta. The finite reciprocal-grid aliasing theorem selects periodic
+residue classes; it must not be substituted for the continuous Brillouin
+delta identity by definition. The named counting-entry multiplier xi^d stays
+outside exactly once. No reflection law or regional inverse is inferred.
+
 Static audit2026-09-06 after spacing HOT1163; NOT a new compiler result or
 no-go. The scalar spacing/counting-coefficient promotion does not by itself
 settle the point-source measure convention of the Green kernel.
