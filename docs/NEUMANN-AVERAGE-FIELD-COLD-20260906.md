@@ -1,5 +1,23 @@
 # Six-name averaging/field-action cold cohort
 
+Continuation2026-09-06T11:19UTC: current cell still running, not reexecuted.
+Read-only terminal inspection11:15UTC confirmed average_audit exit0/7.252s,
+its exact three-name axiom gate PASS, then STAGE=field_focal. This is a
+successful prefix, not the six-name verdict. Runtime7ce7922a12a6, highRAM.
+
+Next bounded HOT source prepared while that single cold build computes:
+8c07d3f3ccc833a38b7e6b6fd95764dd0985db63, with six-name
+tmp/NeumannGeneratedCompleteFibreDraft.lean and the exact generic
+tmp/NeumannGeneratedCompleteFibreSumRepro.lean. R2d.2b active membership,
+constructed complete fibre/offset equivalence, integer coordinates and
+indicator-to-fibre sum. Both remain PRE, not compiler-verified. Final text
+and import gates exit0/0.1581176s/10096640 observed RSS. The first draft
+checkpoint85cb49778 is superseded by this completed finite-sum variant.
+No new scientific process, browser tab, monitor or CI was launched.
+After cold PASS, preserve/verify its downloaded archive FIRST; then prepare
+the pinned HOT runner against retained BASE8570618f2, run the generic
+sum repro before the project draft, stop at the first error and preserve it.
+
 LIVE: single execution started2026-09-06T11:05:27.144744UTC,
 HASH_GATE=PASS, launchPID1043. New runtime after confirmed prior deletion;
 UI50.99GiB highRAM, accountlluiseriksson@gmail.com. The runner independently
