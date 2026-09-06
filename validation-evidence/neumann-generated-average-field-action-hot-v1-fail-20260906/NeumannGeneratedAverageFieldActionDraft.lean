@@ -54,7 +54,7 @@ theorem CMP99SourceActiveRegionChain.flatExplicitQprime_apply_eq_terminalFibreSu
   rw [regions.flatExplicitQprime_single]
   by_cases h : target = regions.terminalSiteOfFine source
   · subst target
-    simp only [singleFinitePiLp_self, if_pos rfl, ite_true]
+    simp only [singleFinitePiLp_self, if_pos rfl]
   · rw [singleFinitePiLp_of_ne _ h, if_neg h, smul_zero]
 
 /-- Source-weighted mass action on a complete field, with the coefficient

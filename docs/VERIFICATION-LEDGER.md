@@ -46942,3 +46942,38 @@ reportaa29954c8b56dc863ab0826a25469d745553e08833bf3d23753c7fda4afdb6ec.
 Durable validation-evidence/neumann-integer-block-image-average-hot-v1-fail-20260906.
 Error-recovery sorryAx outputs are rejected, not accepted as declarations.
 Retry remains PRE;20/41,TermSource0,window15 unchanged.
+
+## Addendum1146 — finite block-image averaging HOT v2 PASS, 2026-09-06
+
+Sourcef8e37328b37b8e37b4178ed295cc5d6f7917d06e, runnercf905d318fcc28a11ab56417cc117155f7958ca4,
+SHAfe187a4059ecf6af61b611b700a8b06aaa092763db1b8e665fe8470c776ff09a.
+Retained af35 checkout, start10:49:07UTC, PID74529 completed. All9 stages0:
+exact Mathlib repro59.556178633s; missing prerequisites14.059230583s/8171jobs;
+actual draft7.238717651s. All3 exact audit names have the allowed trio in
+both repro and physical draft. The repair changed only Boolean reduction.
+Archive01a82bb260205e8ca032db0dc60d165c2dfeb75f9073af72fdc29741dbf6e5b7;
+independent reader exit0/0.1654364s/23531520RSS;
+reporte3f861327590f244c2f14e1ca4e0da0b4d750b43782f673614d904e74b2cd5f5.
+Actual output87650ba5a4522281aabb6bbf062dbb802391abadf53777ee22af0b7eaab472a9.
+Durable validation-evidence/neumann-integer-block-image-average-hot-v2-20260906.
+Reader accepts actual PASS/rejects18 mutations (exit0/0.1898165s/25616384RSS).
+Exact-body production promotion/text/import checks passed
+exit0/0.14402s/15618048RSS; production and audit remain PRE until cold.
+This reindexes complete finite offsets with unchanged weight; it is not
+yet the physical Q dictionary or inverse.20/41,TermSource0 unchanged.
+
+## Addendum1147 — generated full-field action HOT v1 first error, 2026-09-06
+
+Source6bbbbffaf56caf0c09d9cfb2e8c27c05fd47a654, runner85ad19f6b1e941012b17c8f432fff4bfff7a3f5e.
+Retained af35 checkout, start10:51:18UTC, PID75271 completed. Prerequisites
+6.636901027s/8483jobs passed; actual draft stopped at56:2 after11.758331683s,
+exit1, leaving w*v = w*(if True then v else0) in scalar-action notation.
+Only that simplification is repaired with ite_true; exact abstracted
+Mathlib-only residual repro is supplied before the next project attempt.
+Archive1833cd9d3d650e88774b645438f88b24ff8d59d6f2171ad75562a0b50cab6e3a;
+logf537b07598a14104331ef63db86cdd06048e8c0ea6bc8a217f9bb0cd7c123b97.
+Independent VERIFIED_FAILURE,exit0/0.1539353s/23511040RSS;
+report354773e8e754e2bdc1ed5d6c55ef778104f6c1037a70a8a4cebcf56c1d7d9341.
+Durable validation-evidence/neumann-generated-average-field-action-hot-v1-fail-20260906.
+No declaration from error recovery is accepted. Statements/weights and
+counter20/41 unchanged; no new bootstrap or exploratory CI.
