@@ -28,6 +28,21 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 
+### R1 normalization acceptance gate (static derivation, NOT a new seal)
+
+The next finite-action HOT retains the exact counting coefficient. Before
+claiming the Fourier/physical normalization, specialize the already sealed
+`cmp85SourcePrefixCountingCoefficient_eq` and `T.towerAt_terminalSpacing`:
+for B=M^r and fine spacing epsilon, terminalSpacing=B*epsilon and the
+counting coefficient is a_r*(B*epsilon)^(d-2)/epsilon^d. The complete-fibre
+mass action carries B^(-2d), not B^(-d). At the source normalization
+epsilon=B^(-1), their product should be a_r*B^(-d), exactly one averaging
+weight. This is a proposed scalar endpoint to prove, not an identity newly
+verified by reading types. Record the positive spacing and M assumptions.
+Do not multiply by the fibre cardinality a second time, and do not replace
+the full Eq246 Green by the fine-to-coarse Eq248 GQ* kernel: the latter's
+same-scale endpoint no-go remains sealed and applicable.
+
 Superseding seal1158: actual mass/complete-offset production is now COLD
 SEALED at9bb957757b6454871eaea6e26aed8c95dc576b3c,8503 jobs,16 stages,
 six exact names, downloaded evidence independently verified. The conventions
