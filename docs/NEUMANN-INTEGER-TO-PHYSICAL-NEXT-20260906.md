@@ -2,6 +2,16 @@
 
 ## Superseding measured state, 2026-09-06
 
+Latest R3-stencil update: NeumannInternalBondStencil and its four-name audit
+are COLD SEALED at39b0782587098e1698f75b8663b32cb5a6946773 (ledger1166),
+compiled source81f35765ad50f8217bca20bc4530d99b3bf05103. The actual counting
+adjoint, restricted derivative, zero-extended internal divergence and finite
+Laplacian identities are produced, not premises. This completes the three
+R3-stencil substeps described historically below. The flat-mask specialization
+and wrap probe are still diagnostics pending compiler results; the no-wrap
+carrier producer, half-cell Green covariance, regional right-inverse law,
+and uniform physical B0 remain OPEN. No terminal row is discharged here.
+
 The finite-to-integer physical counting dictionary and full one-dimensional
 image-family coverage are COLD SEALED at af35fbb8c (ledger1140). The literal
 multidimensional rectangle family passed HOT at fbf2e61f3 (ledger1142), with
