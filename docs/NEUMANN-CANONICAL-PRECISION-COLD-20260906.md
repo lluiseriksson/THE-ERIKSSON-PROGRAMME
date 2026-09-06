@@ -1,5 +1,17 @@
 # Canonical Neumann finite-offset action — next cold gate
 
+Cold package prepared: source4746880218c694a9d4e9d32c0af61f86d460b7b4,
+runner/reader44857de9b870e433d36b30e3a52a74b05e9a5d0d,
+launcher8ed60e286f2d670acfd0662ca21541fbedf20c29.
+Launcher SHA256 a43bc5b5829942afebcfa09e9be181df79b59bf41aa1948b1fdff40ebc6ef68f.
+Actual producer AST/independent reader contract and two Git-blob audit names
+pass; eight metadata/output corruptions and four additional contract corruptions
+are rejected. Package test exit0,0.5279278s,observed peak24887296bytes.
+These are instrumental tests only; production cold compilation NOT STARTED.
+Notebook scripts/colab_neumann_canonical_precision_promoted_cold.ipynb has
+one unexecuted cell, hash-gated one-shot launcher and high-RAM/CPU gates.
+No changes to mathematical source or counters.
+
 HOT1161 is independently preserved; both earlier failures1159/1160 retained.
 The source actually compiled HOT was8aa5fe1ff3d166ad67debbda3aa4a23ff659950c.
 Production files (PRE-VALIDATION, exact mathematical body):
