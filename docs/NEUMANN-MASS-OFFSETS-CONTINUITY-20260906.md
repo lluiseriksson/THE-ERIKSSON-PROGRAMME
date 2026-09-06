@@ -50,6 +50,32 @@ HOT archives were verified locally. At12:59:04UTC no Lean/Lake remained.
 Browser tab5 is disconnected; do not run its old complete-fibre cell again.
 No monitor, new cold run or CI was started by this unit.
 
+## Cold instruments prepared (supersedes the preparation TODO above)
+
+Production SOURCE9bb957757b6454871eaea6e26aed8c95dc576b3c.
+Runner/independent reader checkpoint48d3b3df4f214a6335f1b7c438fcb945731661fb:
+runner5c46e6caf65796bfba486cebc498c42c8d701978df398bc4798a58b33168f625;
+readerbb097d627a5405373c2ebf93d43c6706bf1bad8f585af8ce781b11aeef4343c1.
+Launcher462252b67cce294f44014bcd9e95fa94f025717b,
+SHAe294bd0fe7fd545607aceefd7ded411959d2b20a6fe9de28986c738dd5a72173.
+The source has two exact promoted blobs and six audit declarations.
+Actual producer AST contract vs independent reader + source audit check passed
+exit0/0.8065256s/20611072RSS, with original synthetic8 and additional4
+contract-negative tests. No mathematical or compiler evidence is claimed.
+
+Notebook scripts/colab_neumann_mass_offsets_promoted_cold.ipynb has ONE code
+cell and exact raw-commit transport. The separate post-download script is
+scripts/preserve_neumann_mass_offsets_cold.py. Both launcher and preserver
+pin all4 payload files and the same SOURCE; the reader checks the exact file
+set, commands, real exit codes, all16/14 stages, six axiom names and output.
+
+Measured local package-check failure before any Colab connection:
+check_neumann_mass_offsets_cold_package.py:40 AssertionError,
+exit1/0.6534079s/24244224RSS. Cause: str(WindowsPath('/content/...'))
+has backslashes, while notebook paths are POSIX. Fix ONLY comparison to
+Path.as_posix(); do not alter a path, hash or command in the Linux runner.
+This instrument failure consumed no runtime and no compiler invocation.
+
 ## Scope
 
 This endpoint is literal source-weighted/counting mass as a complete finite
