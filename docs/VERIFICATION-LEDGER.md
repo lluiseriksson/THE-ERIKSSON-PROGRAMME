@@ -47605,3 +47605,17 @@ Reader exit0/0.1446023s/15069184RSS, VERIFIED_FAILURE, sorryAx rejected.
 Next bounded test changes exact to apply at the SAME term to isolate
 expected-type elaboration; not a new mathematical proof claim or budget raise.
 20/41,TermSource0,window15 unchanged. All failed originals are retained.
+
+## Addendum 1171 — wrap v5 failure; instrument before another repair (2026-09-06)
+
+SOURCEb5baabdeba5951c7b25fc6b942676f5d2c0fc6b8, runnerfc07d164644fbe20a5778bc05ff9a4741ff8cfb7.
+One launch21:39:00.913777UTC PID27507. Same runtime/cache. physical_draft
+exit1/18.626598285s, no timeout; same recursion error at63:10. Replacing
+exact with apply did not fix it. No additional proof change is inferred.
+Archive da64b830d850f7dd841f14fb559307e658a64c334227f33e5d7eff816d977420;
+report03892fe18e0b3036f017bd0fa2e937c3463d9c7dc339bf54cff4c133cf0fc410.
+Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v5-20260906.
+Independent reader exit0/0.1451639s/16617472RSS, VERIFIED_FAILURE.
+Next run is diagnostics only on this byte-identical failed source, 30s cap,
+no olean/seal; retain actual child exit and log before choosing another fix.
+No new cold run, no terminal counter movement, window15 remains unattained.
