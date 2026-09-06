@@ -60,7 +60,9 @@ Notebook vehicle commit `e674202c8ff128292a7ca4b096e6ada2927930dc`.
 The ordinary own-GitHub-notebook warning was confirmed once; the evidence
 clock starts at the printed hash gate, not the preceding click. Initial
 toolchain/checkout/source-text/import gates passed; last observed stage
-lake_update. No final verdict observed. Keep the one live tab, do not reexecute.
+at06:30UTC is reflection_focal, with launcherPID11958 still live (elapsed06:23)
+and UI execution active. Mathlib cache_get exit0/7.331s,8142 files decompressed.
+No final verdict observed. Keep the one live tab, do not reexecute.
 
 An additional preserver negative test rejected the actual earlier v2 diagnostic
 archive as the wrong cold object (`OUTER_FILES`) before writing anything.
