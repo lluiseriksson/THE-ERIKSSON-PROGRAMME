@@ -326,6 +326,22 @@ free symmetry hypothesis and count the regional representation as derived.
 This is a scope check on the inspected producers, not a new impossibility
 theorem or a claim that no supporting theorem exists elsewhere in the tree.
 
+Located partial substrate (exact-file inspection2026-09-06):
+BalabanCMP89Eq246FullEndpointReflection.lean already proves
+cmp89Eq246PhysicalFineToFineGreenIntegrand_neg_swap. It is a DEPTH-ONE
+integrand theorem, at z and -z, exchanging two NEGATED endpoints, with both
+FullSolutionDomain premises visible. It is not yet the integrated,
+arbitrary-depth, coordinatewise half-cell image covariance x -> -x-1
+needed for a rectangle boundary. Reuse its alias/direct-transpose machinery
+where applicable; do not rename it as the missing half-cell law.
+
+The older withdrawn finite-depth inverse scaffold also names spacing and
+prefix-coefficient normalizations. Its header explicitly says its .olean is
+unmaterialized and its (2.48) kernel is not a physical full Green. Therefore
+neither those draft scalar lemmas nor that scaffold may silently count as
+a sealed (2.46) regional inverse. Any needed scalar body must be separately
+validated and the actual (2.46) kernel fixed before inverse uniqueness.
+
 The sealed `cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply`
 is explicitly a FULL PERIODIC box statement. Its point-source solution
 solves the same finite periodic precision before inverse uniqueness is used.
