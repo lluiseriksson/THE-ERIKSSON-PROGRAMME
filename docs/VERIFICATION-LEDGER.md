@@ -47734,3 +47734,47 @@ all originals, the runtime was disconnected/deleted through Colab, confirmed
 by the reconnect UI around22:02UTC. Connection time from20:25:39 was about
 96 minutes, including the completed cold1166 and bounded HOT diagnostics.
 No active computation was interrupted.20/41,TermSource0,window15 unchanged.
+
+## Addendum 1178 — wrap witness and flat action COLD PASS (2026-09-07)
+
+SOURCE15e776db59c051571f79e47974acc2fbf597f715;
+runner/reader c5a961b1a1b55d4204a9d5d413df6dc99281bca0;
+launcher f60fd00d462d6959c519e3cbe7ec88dbfded6102;
+notebook d9a9c41ec4ccb0290dd40746364899748aeeef3c.
+One launch22:13:47.881279UTC,PID16795,runtimeec5e95d70d1c,CPU/highRAM50.99GB.
+Fresh checkout, no project build outputs restored; exact Lean4.29.0-rc6 and
+Mathlib07642720480157414db592fa85b626dafb71355b. All18 inner stages exit0.
+wrap_probe_focal8663 jobs/1656.028594512s; audit6.127038667s;
+flat_action_focal8530 jobs/99.888603792s in the SAME checkout; audit8.37367638s.
+All three exact names print {Classical.choice,Quot.sound,propext}.
+The wrap source has one unused-mu warning at55:7, retained unchanged;
+flat source has no new warning. Dependency warnings are retained in the logs.
+Outer graph child exit0/1979.246616567s; independent Colab verifier exit0.
+
+Downloaded original archive SHA256
+6c59b1ff7f58d2eb9d032f563c44134d957f1f1b267a5d5c2a1150bf67e4e7c3;
+inner19f03f53717bd6c8ca9c124f7b25d88fdb574475437a8c716adf324797d44fb7;
+independent report97b9d56baa6f2f7123cb084e3d37c6068b956cb0d70dc4d6cb0e0a9b85e518cb.
+Production olean wrap70a894b3a4032c85389b9ad450a68cac3c2f7a60d56c752bc60689089069c7f4;
+flat25091644d2061791820ee675fcbc0ac761be7a67f1c48672c78060cebdfb5fad.
+Preserved validation-evidence/neumann-wrap-flat-cold-20260907.
+Independent local preservation exit0/0.1467399s/18120704 observed peak RSS,
+VERIFIED_COLD_PASS; exact archive membership, payloads, commands, stage exits,
+source hashes, production outputs and per-audit names checked. No local Lean.
+
+Only four certified module/audit headers retire PRE; exact HOT and cold
+bodies must remain unchanged. This seals the ACTUAL torus wrap witness and
+flat masked derivative/Laplacian, not integer boundary identification,
+regional inverse, uniform physical B0 or window15.20/41,TermSource0 unchanged.
+Runtime retained after PASS and preservation for the separately prepared
+directional-mask HOT; no cold cell will be reexecuted. Closing time pending
+that bounded diagnostic, not silently recorded as already disconnected.
+
+Selective retirement checks exit0/0.2809751s/16637952 observed peak RSS:
+HOT-source body and exact audit lists, four-file text/import guards, and
+cold-source mathematical bodies all match. An additional byte-strict
+outside-header check first rejected the editor's removal of one final empty
+line in each audit (two local attempts, no compiler). Explicit comparison
+then admitted ONLY trailing newline normalization, reporting deltas0,-1,0,-1;
+no import, statement, proof or audit declaration changed. Original cold
+source blobs and evidence remain untouched and authoritative.

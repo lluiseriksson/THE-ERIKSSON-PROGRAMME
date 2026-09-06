@@ -2,11 +2,11 @@ import YangMills.RG.NeumannInternalBondStencil
 import YangMills.RG.BalabanCMP99SourceFlatPhysicalTransport
 
 /-!
-# PRE-VALIDATION: NeumannFlatInternalBondAction, exact HOT-body promotion
+# Cold-sealed NeumannFlatInternalBondAction
 
-Source present; production .olean not materialized; production result not
-compiler-verified. The draft passed the bounded HOT gate at 69a5308c8e5635b95b59c6d5c88d4b5b789f851c.
-This promotion retains its mathematical body; a fresh cold gate is required.
+Compiler-verified in a fresh Colab checkout at source
+15e776db59c051571f79e47974acc2fbf597f715; exact-name audit and downloaded
+evidence independently verified. See Verification Ledger Addendum 1178.
 Scope: actual torus internal bonds only. No integer boundary identification,
 regional Green inverse, uniform physical B0 or window15 attainment is claimed.
 -/

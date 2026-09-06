@@ -2,6 +2,17 @@
 
 ## Superseding measured state, 2026-09-06
 
+Wrap and flat production cohort COLD PASS from exact source
+15e776db59c051571f79e47974acc2fbf597f715, ledger1178: fresh Colab checkout,
+18 stages exit0, three exact oracle names, original archive downloaded and
+independently verified. Only its four production/audit headers retire PRE.
+Wrap focal8663 jobs, flat focal8530 jobs incrementally in the same checkout.
+The wrap source retains its unused-mu linter warning; no proof was edited.
+Directional masks remain PRE/uncompiled. The retained runtime is reserved
+for that separately parent-gated HOT, not a second cold execution.
+No integer boundary dictionary, regional inverse, uniform B0 or window15
+attainment follows from this cohort.20/41 andTermSource0 stay unchanged.
+
 Prepared after the wrap/flat cold launch: the directionwise mask draft and
 its Mathlib-only arithmetic repro now state the full/proper split explicitly.
 Outgoing: h=N OR k+1<h; incoming: h=N OR 0<k, with h=Int.toNat(m_i).

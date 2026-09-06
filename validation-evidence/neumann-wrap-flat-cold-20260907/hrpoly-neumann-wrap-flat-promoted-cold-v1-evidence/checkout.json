@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "15e776db59c051571f79e47974acc2fbf597f715"], "cwd": "/content/hrpoly-neumann-wrap-flat-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "be27b6187c0d8852f4695c4b0c52340ff6cf78df991e8411442bd38929a64f63", "seconds": 1.389732184999957, "stage": "checkout"}

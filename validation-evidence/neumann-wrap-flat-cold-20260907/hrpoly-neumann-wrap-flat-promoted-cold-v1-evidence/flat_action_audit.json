@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannFlatInternalBondActionAudit.lean"], "cwd": "/content/hrpoly-neumann-wrap-flat-promoted-cold-v1", "exit": 0, "log_file": "flat_action_audit.log", "output_sha256": "8dfbae73b0ac246166a93d1b3a59ef9962cb755dc25ea975c67e041a096d1ea8", "seconds": 8.373676379999779, "stage": "flat_action_audit"}
