@@ -480,3 +480,24 @@ state the normalized delta law and derive the counting-entry conversion by
 name. Actual full-kernel reflection summability and decay remain valid for
 their declared unscaled density object; they do not by themselves supply this
 operator identification. This gate adds no terminal row and changes no counter.
+
+### Existing periodic witness of the same normalization (located19:41UTC)
+
+Do NOT manufacture this scalar conversion a second time for the periodic
+lane. The cold-sealed theorem
+cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerResidue in
+BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity.lean already prints
+Kfine^(-4) outside the unscaled full-G residue, with its exact finite periodic
+point-source solution on the left. The source-flow consumer
+cmp99SourceFlowFullPointSourceGreen_apply_eq_scaledOwnerResidue in
+BalabanCMP99SourceFlowFullPointSourceOwnerBound.lean consumes that theorem
+and the actual inverse identification by name, with R=L^(depth+1) and R^-4
+paid once. Its scope remains finite periodic at mass zero; it is not the
+regional Neumann image law.
+
+The preceding R1b gate is thus a TRANSPORT OF AN ALREADY EXPLICIT CONVENTION
+into the new regional inverse, not a claim that the whole tree lacked the
+factor. The generic reflection operator remains counting-normalized and
+can accept the appropriately scaled full-density kernel once its actual
+regional right-inverse law is proved. Never add R^-4 a second time to the
+already scaled periodic residue. No existing periodic seal is retracted.
