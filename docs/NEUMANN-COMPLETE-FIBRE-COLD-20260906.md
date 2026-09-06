@@ -57,3 +57,20 @@ After cold PASS and independent preservation, prepare one bounded HOT run
 of this six-name draft in the SAME retained checkout7f7455b28, with exact
 Git-blob pins and parent evidence hash. Never rerun the cold cell. If the
 cold gate fails, preserve/repair its first error before this proposed HOT.
+
+HOT instruments prepared, deliberately NOT executable before the cold result:
+tmp/colab_neumann_generated_mass_complete_offsets_hot_v1.py.template and
+tmp/verify_neumann_generated_mass_complete_offsets_hot_v1.py.template.
+The runner's first assertion rejects its currently unfilled parent archive
+hash; the reader's final runner hash is also unfilled. After independent
+cold preservation, fill the parent hash, promote the runner with apply_patch,
+commit it, obtain its hash from git cat-file blob, then promote the reader.
+Do not infer the parent digest from a worktree, old archive or expected PASS.
+The six draft/import/gate pins are already exact Git blobs at source4a05bff83
+and retained base7f7455b28. Prepared scope excludes inverse/B0/window15.
+scripts/check_neumann_mass_offsets_hot_preparation.py passed exit0,
+0.3798053seconds,19054592 observed RSS. It checks all6 pins/names, generic
+repro before prerequisites, no stale path and the non-execution guard.
+This is instrument readiness, not mathematical verification.
+At12:20UTC the live cold graph had completed cache_get exit0/4.956s and was
+in fibre_focal. One running cell; no reexecution or second build.
