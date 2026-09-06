@@ -36,3 +36,14 @@ it remains uncompiled and is not appended to the cold gate. This gate seals
 the actual declared internal-bond operator, not a false nonperiodic rectangle
 identification. The strict-fit/no-wrap producer remains explicit (R3).
 20/41, TermSource=0, window15 compatible but not attained, Clay<0.1%.
+
+Bounded next diagnostic prepared while the cold gate runs:
+tmp/colab_neumann_rectangle_wrap_probe_hot_template.py and independent
+tmp/verify_neumann_rectangle_wrap_probe_hot_template.py. The one-name
+source remains5442189556b1c85e3ac0cb864403cc65f8e23b31, not a new proof.
+It has eight bounded stages (one actual regional prerequisite, one probe),
+no unrelated Mathlib repro. Parent archive/review/olean pins stay None until
+this cold gate is independently preserved. The unpinned runner fails before
+any filesystem/network/job action. Synthetic test passed1 fixture, rejected10
+corruptions, preserved1 failure in0.2797957s/23638016 observed peak RSS.
+This test verifies the draft's actual imports and audit name; COMPILER_CHECKED=0.
