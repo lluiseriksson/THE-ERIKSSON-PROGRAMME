@@ -2,6 +2,16 @@
 
 ## Superseding measured state, 2026-09-06
 
+Prepared after the wrap/flat cold launch: the directionwise mask draft and
+its Mathlib-only arithmetic repro now state the full/proper split explicitly.
+Outgoing: h=N OR k+1<h; incoming: h=N OR 0<k, with h=Int.toNat(m_i).
+Both keep the original positive-side/non-strict-fit premises. The incoming
+proof cites FinBox.shift_shiftBack; the other coordinates remain active.
+The two arithmetic bodies are identical in repro and physical draft.
+They remain PRE/uncompiled and are NOT appended to the live cold queue.
+Check the repro first, preserve its first error, then the physical draft.
+This does not decide the eventual physical carrier or reflection formula.
+
 Flat internal-bond action v3: HOT PASS at69a5308c8e5635b95b59c6d5c88d4b5b789f851c,
 ledger1177, both exact axiom names and original archive preserved. Together
 with wrap v7 (ledger1174), this is ready for exact-body production promotion

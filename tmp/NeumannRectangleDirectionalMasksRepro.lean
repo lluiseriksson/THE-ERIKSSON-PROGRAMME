@@ -15,8 +15,11 @@ theorem rectangleForwardMask_nat
     (k + 1) % N < h ↔ h = N ∨ k + 1 < h := by
   by_cases hh : h = N
   · subst h
-    simp only [true_or, iff_true]
-    exact Nat.mod_lt _ hN
+    constructor
+    · intro _
+      exact Or.inl rfl
+    · intro _
+      exact Nat.mod_lt _ hN
   · rw [Nat.mod_eq_of_lt (by omega : k + 1 < N)]
     omega
 
@@ -25,8 +28,11 @@ theorem rectangleBackwardMask_nat
     (k + N - 1) % N < h ↔ h = N ∨ 0 < k := by
   by_cases hh : h = N
   · subst h
-    simp only [true_or, iff_true]
-    exact Nat.mod_lt _ hN
+    constructor
+    · intro _
+      exact Or.inl rfl
+    · intro _
+      exact Nat.mod_lt _ hN
   · by_cases hk0 : k = 0
     · subst k
       rw [Nat.zero_add, Nat.mod_eq_of_lt (by omega : N - 1 < N)]
@@ -39,4 +45,3 @@ theorem rectangleBackwardMask_nat
 #print axioms rectangleBackwardMask_nat
 
 end YangMills.RG
-
