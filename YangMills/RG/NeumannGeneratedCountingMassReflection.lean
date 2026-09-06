@@ -3,9 +3,10 @@ import YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse
 import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanion
 
 /-!
-PRE-VALIDATION: promoted source present; this module's .olean is not yet
-materialized and this module path is not compiler-verified. Its draft passed
-the diagnostic recorded in ledger1128; a promoted cold gate is still required. This constructs reflection on the canonical FULL lifted carrier
+Cold-verified at source9b73a5fe3, ledger1130: the promoted module and its
+three-name audit passed in a fresh pinned Colab checkout. Evidence was
+independently verified before this header-only retirement.
+This constructs reflection on the canonical FULL lifted carrier
 and targets the literal flat generated counting-adjoint mass kernel.
 No invariant arbitrary active region, regional Green equality, or derivative
 B0 is assumed or concluded. The coefficient remains (M^-d)^(2*depth), not

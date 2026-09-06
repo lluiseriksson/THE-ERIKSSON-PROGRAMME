@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1", "exit": 0, "log_file": "head.log", "output_sha256": "e477e52b2b50f9d33908bb730cb129a1dd934aed1926baa493abe2c277df89b4", "seconds": 0.0015329299999393697, "stage": "head"}

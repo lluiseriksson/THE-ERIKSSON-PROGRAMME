@@ -46535,3 +46535,34 @@ At06:11:46UTC no Lean/Lake or originalPID8252 remained; both archive hashes
 were unchanged. Runtime disconnected/deleted, UI confirmed at06:12UTC.
 About31min connected, including the preceding fresh diagnostic and HOT reuse.
 20/41,TermSource0,window15 unattained remain unchanged.
+
+## Addendum 1130 — promoted counting reflection/retained mass cold PASS (2026-09-06)
+
+Source9b73a5fe37d1e5e3c8589af211c46708a9d0a7bb, notebooke674202c,
+hosta7df6ab4f6f3 CPU/highRAM50.9903GiB/noGPU, one launch06:23:49.945876UTC,
+PID11958. Fresh checkout, exact Lean4.29.0-rc6/Mathlib07642720 pins,
+no restored project build. Observer tab loss recovered the same live runtime,
+notebook output and PID; no cell or build was repeated.
+Cold graph exit0/1466.193456618s: reflection1286.072563151s,
+audit6.634049995s, retained dictionary45.889037347s, audit10.655520739s.
+Eighteen stages verified; five named declarations have the exact permitted trio.
+Only two production outputs are claimed, not audit .oleans or repo-wide closure.
+
+Downloaded outer251462bytes SHA256
+3821b824184797af0c555333b49726e03a6b7052ba70be3fdc750ce2e51bb1a4;
+inner454d7c8233165b5a6c67f7bbc3d1706c189ab55951e10713c4d38d5693737bde.
+Reflection outputeff605ab4f09fb721fafeb719b56c41691db9ec72d565a0e27685b224bdaf1b0;
+dictionary outputc0622ff2378a69fbe8116354cf9387e1c87adad10632518b858a6832199ef469.
+Actual independent preservation exit0/0.2031492s,21155840 observed peak bytes;
+report904bc4a8c2147ec6cf42c3bfae0e7791c7875ff34f697502bfeb884f51539c98.
+Durable directory validation-evidence/neumann-counting-promoted-cold-20260906.
+
+PRE-VALIDATION retired only from these four promoted paths, by header changes.
+Textual proof/statement equivalence and exact audit names rechecked; import/text
+guards exit0/0.1086889s,16621568bytes. First local header scan failed under
+Windows cp1252; repaired with explicit UTF-8, no source/proof change or rerun.
+Counting coefficient remains(M^-d)^(2depth), distinct from weighted(M^-d)^depth.
+Not arbitrary-rectangle Q invariance, Neumann inverse, derivative B0 or window15.
+20/41,TermSource0,window15 unattained remain unchanged.
+Runtime retained only for the separately pinned two-second image-owner repro
+and evidence transfer; lifecycle closure is recorded in the continuity document.

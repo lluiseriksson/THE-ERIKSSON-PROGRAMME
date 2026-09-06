@@ -1,8 +1,9 @@
 import YangMills.RG.NeumannGeneratedCountingMassReflection
 
 /-!
-PRE-VALIDATION: audit source present, .olean not materialized; this audit
-has not yet been compiler-verified. A diagnostic is not a promoted cold seal.
+Cold-verified at source9b73a5fe3, ledger1130: all three printed declarations
+have exactly the permitted axiom trio. Audit executed directly; no audit
+.olean is claimed. No statement or proof changed in this header retirement.
 -/
 
 #print axioms YangMills.RG.neumannGeneratedFullSiteReflection_involutive

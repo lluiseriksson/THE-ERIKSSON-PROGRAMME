@@ -4,6 +4,8 @@ import re
 import runpy
 import sys
 
+sealed = '--sealed' in sys.argv
+
 ITEMS = [
     ('NeumannGeneratedCountingMassReflectionDraft', 'NeumannGeneratedCountingMassReflection', [
         ('neumannGeneratedFullSiteReflectionDraft', 'neumannGeneratedFullSiteReflection'),
@@ -31,8 +33,13 @@ for src, dst, renames in ITEMS:
     print('EXACT_PROMOTION_TEXT=PASS ' + dst)
 
 paths = Path('tmp/neumann_counting_promotion_paths.txt').read_text().splitlines()
+if sealed:
+    for path in paths:
+        text = Path(path).read_text(encoding='utf-8')
+        assert 'PRE-VALIDATION:' not in text and 'ledger1130' in text, 'SEAL_HEADER=' + path
 for script, args in [
-    ('scripts/check_lean_overlay_text.py', ['--paths-from', 'tmp/neumann_counting_promotion_paths.txt', '--require-prevalidation']),
+    ('scripts/check_lean_overlay_text.py', ['--paths-from', 'tmp/neumann_counting_promotion_paths.txt'] +
+        ([] if sealed else ['--require-prevalidation'])),
     ('scripts/check_lean_import_prefix.py', paths),
 ]:
     sys.argv = [script, *args]

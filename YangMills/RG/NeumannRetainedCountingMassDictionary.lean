@@ -2,9 +2,10 @@ import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel
 import YangMills.RG.BalabanCMP99SourceRetainedGeneratedTerminalBridge
 
 /-!
-PRE-VALIDATION: promoted source present; this module's .olean is not yet
-materialized and this module path is not compiler-verified. Its draft passed
-the HOT diagnostic recorded in ledger1129; a promoted cold gate is still required. This draft extracts the existing Hilbert-bundle transport argument
+Cold-verified at source9b73a5fe3, ledger1130: the promoted module and its
+two-name audit passed in a fresh pinned Colab checkout. Evidence was
+independently verified before this header-only retirement.
+This extracts the existing Hilbert-bundle transport argument
 for the actual flat retained terminal counting mass. It imports no unverified
 reflection draft and assumes no operator equality or family of flatness data.
 

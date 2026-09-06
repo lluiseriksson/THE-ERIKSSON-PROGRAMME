@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "9b73a5fe37d1e5e3c8589af211c46708a9d0a7bb"], "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "7326da9b1d77f5cbef85df42a5864cacc1f406b2ee7cbc8a274a41f8e38a5883", "seconds": 0.5206377540002904, "stage": "checkout"}

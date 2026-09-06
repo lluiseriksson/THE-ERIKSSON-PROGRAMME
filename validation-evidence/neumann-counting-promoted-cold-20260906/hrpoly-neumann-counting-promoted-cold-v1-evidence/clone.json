@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-counting-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "758ed0cf4b8ad1378d3046c1a1d38c75f50d90c0631698976a69de976007bc74", "seconds": 9.368109931999697, "stage": "clone"}

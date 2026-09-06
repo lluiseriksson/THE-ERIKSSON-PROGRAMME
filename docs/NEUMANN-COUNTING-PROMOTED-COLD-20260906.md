@@ -1,6 +1,7 @@
 # Counting reflection and retained mass — promoted cold gate
 
-Prepared before connection. Not yet compiler-verified at this checkpoint.
+Cold PASS independently verified and preserved, ledger1130. The preparation
+and observer history below are retained as history, not current verdicts.
 Prior goal turn made progress: both diagnostic artifacts independently verified,
 preserved and published, then exact source promotion. Counters remain20/41,
 TermSource0, window15 unattained. R1/R2/R3/R4 are still the physical boundary.
@@ -114,3 +115,23 @@ All checks precede durable extraction; wrong metadata is rejected. Extended
 static check exit0/0.2161691s,18882560 observed peak bytes, including seven
 negative fields and runner/verifier pin consistency. Actual HOT PASS remains
 untested until this cold gate is terminal. No new CI/runtime was opened.
+
+## Verified result
+
+The graph finished PASS, exit0/1466.193456618s, with all four queue stages,
+five exact permitted axiom trios and both production outputs verified.
+Downloaded outer3821b824184797af0c555333b49726e03a6b7052ba70be3fdc750ce2e51bb1a4;
+inner454d7c8233165b5a6c67f7bbc3d1706c189ab55951e10713c4d38d5693737bde.
+Independent local reader exit0/0.2031492s,21155840observed peak bytes;
+record904bc4a8c2147ec6cf42c3bfae0e7791c7875ff34f697502bfeb884f51539c98.
+Both actual archives and parsed contents are durable under
+validation-evidence/neumann-counting-promoted-cold-20260906.
+Selective retirement changes only the first module docstrings, preserving
+proofs/statements/audit names. Exact textual check and guards passed.
+
+The integer image-owner HOT repro was then executed once in this runtime,
+without rebuild or tracked-source mutation: exit0/2.420113779s, three names
+(two permitted trios and one propext-only). Its raw archive is
+d3a73641df6341b62f29b25682927993224957ce603e1098d380b6ed62bde996.
+Separate local verification/transfer remains pending at this write; no cold
+production seal is claimed for that Mathlib-only repro.

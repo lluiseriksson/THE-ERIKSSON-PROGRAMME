@@ -3,16 +3,18 @@
 Current execution state (2026-09-06): v1 failed at the full-carrier membership
 rewrite, preserved in ledger1127. v2 passed the pinned membership repair and
 its actual archive was independently verified/preserved (ledger1128);
-see `docs/COUNTING-REFLECTION-V2-CONTINUITY-20260906.md`. The diagnostic v2 and
-the separate retained-mass draft below do not retire PRE-VALIDATION marks.
+see `docs/COUNTING-REFLECTION-V2-CONTINUITY-20260906.md`. Those diagnostic
+results alone did not retire PRE-VALIDATION marks.
 
 The retained terminal counting-mass dictionary also passed its bounded HOT
-run and independent archive verification (ledger1129). The next cold candidate
-is exactly four files: NeumannGeneratedCountingMassReflection(+Audit) and
+run and independent archive verification (ledger1129). The promoted cold gate
+subsequently passed at source9b73a5fe3 and was independently preserved
+(ledger1130): exactly four files, NeumannGeneratedCountingMassReflection(+Audit) and
 NeumannRetainedCountingMassDictionary(+Audit). Only public-name/provenance
 changes and extraction of #print axioms into audits are allowed in this
-promotion. The textual equivalence/overlay/import checks passed; these
-promoted module paths remain PRE-VALIDATION, not yet cold-compiler-verified.
+promotion. The textual equivalence/overlay/import checks passed. These four
+promoted paths alone have their PRE-VALIDATION headers retired after that
+cold verification; no draft, arbitrary-region or inverse module inherits it.
 No arbitrary-rectangle reflection, Neumann image identity or B0 follows yet.
 
 ## Next bounded R2 diagnostic (after cold geometry seal81260f49)

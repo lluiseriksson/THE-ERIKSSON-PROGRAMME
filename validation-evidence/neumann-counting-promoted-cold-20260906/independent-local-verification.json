@@ -1,0 +1,147 @@
+{
+  "cold": {
+    "audits": {
+      "dictionary_audit": {
+        "YangMills.RG.neumannFlatGeneratedCountingMass_eq_explicit": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannFlatRetainedTerminalCountingMass_eq_explicit": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "reflection_audit": {
+        "YangMills.RG.neumannGeneratedFullCountingMass_reflection": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedFullSiteReflection_involutive": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedTerminalOwner_reflection": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "067b9ce3cf5a4c051f42a80c20073c610102c62af084fbe187a98c439806a6cf",
+    "evidence_json_payload_sha256": "655e0dfa477d452f0aeb94cb5a02b5766df21168e575535c3d684bcb7408ceb7",
+    "production_outputs": {
+      "NeumannGeneratedCountingMassReflection.olean": "eff605ab4f09fb721fafeb719b56c41691db9ec72d565a0e27685b224bdaf1b0",
+      "NeumannRetainedCountingMassDictionary.olean": "c0622ff2378a69fbe8116354cf9387e1c87adad10632518b858a6832199ef469"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannGeneratedCountingMassReflection"
+        ],
+        "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "reflection_focal.log",
+        "output_sha256": "ac65ff406c7e5f0efabacc4dd3239390e8638a57670b8b23f62283836240e308",
+        "seconds": 1286.072563151,
+        "stage": "reflection_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannGeneratedCountingMassReflectionAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "reflection_audit.log",
+        "output_sha256": "22bdf9cf2146474cf6cd6fec1b45d91cb223ed6fcbff57a825210bfa4d269139",
+        "seconds": 6.634049994999259,
+        "stage": "reflection_audit"
+      },
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannRetainedCountingMassDictionary"
+        ],
+        "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "dictionary_focal.log",
+        "output_sha256": "6172fd0cf4a95a950edea66cf6a1760a4abbeda5353c81ed1fcdc38baefe869b",
+        "seconds": 45.88903734700034,
+        "stage": "dictionary_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannRetainedCountingMassDictionaryAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "dictionary_audit.log",
+        "output_sha256": "3f074fd9bc85d7ff9c81623c2c2a232edd3a45b26184518790e3b4d263801a31",
+        "seconds": 10.655520739000167,
+        "stage": "dictionary_audit"
+      }
+    ],
+    "runner_rev": "neumann-counting-promoted-cold-v1",
+    "source_sha": "9b73a5fe37d1e5e3c8589af211c46708a9d0a7bb",
+    "stages_verified": 18,
+    "status": "PASS"
+  },
+  "inner_sha256": "454d7c8233165b5a6c67f7bbc3d1706c189ab55951e10713c4d38d5693737bde",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-counting-promoted-cold-v1-launch/verify_neumann_counting_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-counting-promoted-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "f643baccae9703af02180d759f251b49e6f8efd60b8cebefafed41bbb77412f9",
+      "seconds": 0.04506044500021744,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-counting-promoted-cold-v1-launch/colab_neumann_counting_promoted_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "c73dec5fdeefcd6815df20b69e8bc123568074ee45f7d79de8fd45009c57aee6",
+      "seconds": 1466.1934566180003,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-counting-promoted-cold-v1-launch/verify_neumann_counting_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-counting-promoted-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-counting-promoted-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "454d7c8233165b5a6c67f7bbc3d1706c189ab55951e10713c4d38d5693737bde"
+      ],
+      "exit": 0,
+      "log_sha256": "27ad03b53451bb943afc168f57341073e67b91b0ce31d4b18da214abb6183596",
+      "seconds": 0.09023574500042741,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "3821b824184797af0c555333b49726e03a6b7052ba70be3fdc750ce2e51bb1a4",
+  "scope": "intermediate counting reflection and retained terminal mass; not regional inverse or window15",
+  "source": "9b73a5fe37d1e5e3c8589af211c46708a9d0a7bb",
+  "status": "PASS"
+}
