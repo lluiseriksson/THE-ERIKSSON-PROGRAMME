@@ -553,3 +553,38 @@ Text/import guards passed in0.1236922s with14991360 observed peak RSS, but
 COMPILER_CHECKED=0. It is NOT appended to the live cold queue or silently
 added to the already pinned internal-bond HOT runner. A separate bounded
 compiler check is needed before this draft can be called a sealed no-go.
+
+### R3 consumer/scale audit (2026-09-06; static, not a new Lean seal)
+
+Read against source81f35765ad50f8217bca20bc4530d99b3bf05103 while the
+internal-bond cold gate runs. The existing NeumannRectangleLift module
+proves cmp99IteratedLiftActiveRegion_cmp89Rectangle_eq and constructs
+cmp89SourceNeumannIteratedLiftedRectangleSiteEquiv with non-strict fit.
+Its side is B*m_mu and its ambient period is B*N, B=M^depth>0. Therefore
+lifting does not manufacture a missing gap: strict fit after scaling is
+equivalent arithmetically to m_mu<N, and equality m_mu=N persists at every
+depth. The already sealed complete-fibre dictionary preserves all blocks;
+it does not remove wrap bonds or impose a smaller region.
+
+The canonical finite-action theorem in NeumannCanonicalPrecisionOffsetAction
+quantifies over arbitrary Omega. It is valid for that actual internal-bond
+operator, including full-period sides, and must not be weakened merely to
+make the proposed rectangle reflection proof easier. The older specialized
+rectangle reflection/inverse files have hfit<= and carry the right-inverse
+or reflection identity explicitly; several are already WITHDRAWN as physical
+producers because they used Eq248. None supplies a hidden strict-fit producer
+for the new Eq246 replacement. No additional seal is withdrawn by this audit.
+
+The acceptance split is now explicit:
+
+* Proper rectangular sides: derive the strict-fit condition from the actual
+  requested carrier, then prove the integer/torus forward and backward bond
+  dictionary using the actual site equivalence and lifted rectangle theorem.
+* Full-period sides: do not silently drop these inputs. If the physical
+  application includes them, supply the appropriate periodic/mixed-boundary
+  construction or an explicitly transported alternative operator. This is
+  an open design obligation, not an already justified source identification.
+
+The live four-name internal-bond cold gate is independent of this split.
+The next bounded wrap probe checks its finite witness only. These observations
+do not establish any comparison of inverse norms or attainment of window15.
