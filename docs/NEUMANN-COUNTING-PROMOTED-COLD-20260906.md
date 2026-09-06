@@ -53,6 +53,20 @@ fixtures. Synthetic fixture PASS is not mathematical evidence.
 
 ## Runtime lifecycle
 
+Single launch confirmed at `2026-09-06T06:23:49.945876+00:00`, after the
+launcher hash gate: CPU/highRAM50.99028778076172GiB/noGPU, visible account
+lluiseriksson@gmail.com. Host `a7df6ab4f6f3`, launcher PID11958, parent11935.
+Notebook vehicle commit `e674202c8ff128292a7ca4b096e6ada2927930dc`.
+The ordinary own-GitHub-notebook warning was confirmed once; the evidence
+clock starts at the printed hash gate, not the preceding click. Initial
+toolchain/checkout/source-text/import gates passed; last observed stage
+lake_update. No final verdict observed. Keep the one live tab, do not reexecute.
+
+An additional preserver negative test rejected the actual earlier v2 diagnostic
+archive as the wrong cold object (`OUTER_FILES`) before writing anything.
+Complete local instrument check exit0/0.3474336s,21856256observed peak bytes.
+This is instrument evidence only. Current cold source/runner were unchanged.
+
 Expected console `/content/neumann-counting-promoted-cold-v1-console.log`.
 Expected launch `/content/neumann-counting-promoted-cold-v1-launch`.
 Expected outer `/content/neumann-counting-promoted-cold-v1-preservation-20260906.tar.gz`.

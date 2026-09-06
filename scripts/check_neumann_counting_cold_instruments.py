@@ -58,6 +58,17 @@ pins_node = next(n.value for n in ast.walk(preserver) if isinstance(n, ast.Assig
     and any(ast.unparse(t) == 'PINS' for t in n.targets))
 assert files == ast.literal_eval(SourceLiteral().visit(pins_node))
 print('ONE_CELL_LAUNCHER_PRESERVER_PINS=PASS')
+check = runpy.run_path('scripts/preserve_verify_neumann_counting_promoted_cold.py', run_name='instrument_test')
+sys.argv = ['preserver', '--archive',
+    'validation-evidence/neumann-counting-reflection-diagnostic-v2-20260906/neumann-generated-counting-reflection-diagnostic-v2-preservation-20260906.tar.gz',
+    '--outer-sha256', 'ed2cda8e2fac4c51a1d49b140b5956fd0ba05134b9e0f2dddf4c1fecfa522d92']
+try:
+    check['main']()
+except ValueError as error:
+    assert str(error) == 'OUTER_FILES', 'WRONG_NEGATIVE_FAILURE'
+else:
+    raise AssertionError('WRONG_DIAGNOSTIC_ACCEPTED_AS_COLD')
+print('REAL_DIAGNOSTIC_ARCHIVE_REJECTED_AS_COLD=PASS')
 script = 'scripts/verify_neumann_counting_promoted_cold.py'
 sys.argv = [script, '--helpers',
     'validation-evidence/neumann-halfcell-reflection-cold-20260905/neumann-halfcell-block-reflection-cold-v1-launch',

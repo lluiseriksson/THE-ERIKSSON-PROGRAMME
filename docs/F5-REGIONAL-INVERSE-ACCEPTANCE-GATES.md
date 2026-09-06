@@ -88,7 +88,7 @@ These are static type/source-object checks, not newly compiled claims or a
 new closure of R1/R2. They keep the next finite endpoints tied to the actual
 regional consumer instead of treating a full-ambient symmetry as its inverse.
 
-### Bounded retained-mass dictionary prepared, not executed
+### Bounded retained-mass dictionary diagnostic passed; promoted cold pending
 
 `tmp/NeumannRetainedCountingMassDictionaryDraft.lean` extracts the existing
 isometric codomain-transport argument for an arbitrary source region chain
@@ -96,7 +96,8 @@ and specializes it to the internally generated flat retained terminal tower.
 It imports only the existing generated-precision-kernel and retained-terminal
 bridge modules, not the current unverified reflection draft. The two proposed
 equalities contain no free Q-family, hmass equality, image inverse, or new
-constant. Local text/import checks passed; compiler validation is pending.
+constant. The two-name HOT diagnostic and its actual archive passed
+(ledger1129). The promoted module path awaits its exact cold gate.
 
 The canonical finite-depth Neumann precision actually uses
 `cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannLastPrefix steps`, whose
@@ -148,6 +149,34 @@ window15 unattained; Clay <0.1% remain unchanged.
    including the upper reflection 2*m-1-n and both orbit branches.
 
 ## Finite acceptance sequence; no inferred endpoint equality
+
+### Printed image orbit versus preservation of the original rectangle
+
+Static review of NeumannReflectionOrbitAlgebra/ScaleDictionary/RectangleLift
+fixes an important distinction: the lower printed map sends0 to-1. It is not
+a permutation of the original nonnegative half-open rectangle. The image-series
+route therefore needs an extension/intertwining law on image blocks, not a
+false hypothesis that this original rectangle is invariant. A doubled periodic
+carrier is a separate possible construction and must justify its actual
+coordinate periods; the existing cubic FinBox ambient side cannot silently
+stand for all anisotropic periods2*m_mu.
+
+The next minimal arithmetic input is the integer block-owner formula, for
+positive block sideB and arbitrary integersn,k,m:
+`(2*k*(B*m)-n-1)/B = 2*k*m - n/B - 1`, and its untranslated branch.
+Here `/` is integer Euclidean division (negative n included), B is in fine-site
+units and m is in coarse-block units. At depthr, B=M^r; no fine/counting mass
+normalization is changed. These formulas apply coordinatewise to the exact
+printed orbit and permit anisotropic m_mu without identifying it with the
+ambient torus side. `tmp/NeumannIntegerImageBlockOwnerRepro.lean` isolates the
+three arithmetic claims against Mathlib only; it is PRE-VALIDATION and has not
+run. Do not substitute it for the later actual Q kernel and image right-inverse
+law. The finite-site boundary and infinite sum/operator interchange remain R1/R3.
+
+This review also rechecked that the old physical rectangle inverse-producer
+module is explicitly withdrawn because it uses Eq248=GQ*, not the full Eq246
+fine-to-fine Green. Its conditional himage field must not be repackaged as
+the new physical reconstruction. No old withdrawn header is retired here.
 
 | Gate | Required output | Present limitation |
 |---|---|---|
