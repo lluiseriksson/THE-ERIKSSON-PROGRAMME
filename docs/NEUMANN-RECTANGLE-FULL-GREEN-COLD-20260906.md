@@ -39,3 +39,22 @@ scientific process. Source-image coverage/summability is NOT a regional
 inverse, uniform physical B0, or window15 attainment. Counters20/41,
 TermSource0 and window15 compatible/not attained unchanged.
 Unrelated shared C6d drafts and deleted old evidence remain untouched.
+
+## Prepared next HOT only after current cold gate/evidence
+
+R2d.1 source4c8171bdc4f70606d89de05f53b6f90d39e689b8:
+tmp/NeumannIntegerBlockImageAverageDraft.lean (three named audit targets).
+Runner45abf2415477e02329acab300e3d8610949cb369:
+scripts/colab_neumann_integer_block_image_average_hot_v1.py,
+SHA25680040534839660719185c8cebec406a53fe7b7f5de7cac1608e2732f19cac969.
+Seven input blobs from Git, verbatim Mathlib-only repro SHA
+84ff17cff6c72d0bd532e617adcbed7398580b59a8fa88ebf926b19038565f76.
+Reader scripts/verify_neumann_integer_block_image_average_hot_v1.py.
+Instrument checks7 inputs/3 names/old rectangle archive rejected,
+exit0/0.4919387s/23433216observed RSS. No compiler evidence.
+The HOT runner uses the retained af35fbb8c checkout, existing parent archive
+0c3a8858b2fab470e9a618ad084613f22c635ccc8b3942311d9ff623a7b04a34,
+repro first (120s), only missing two imports (600s), actual draft (120s),
+exact audits and clean-before/after. It has NOT been launched.
+Do not overlap it with the current cold compilation. Runtime can be reused
+after the cold evidence is independently preserved, otherwise disconnect.
