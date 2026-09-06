@@ -46766,3 +46766,30 @@ report334b7ad913ccf4a71611b3803ffb40132811453da0bd91841c786f1a8817a3bf.
 Durable validation-evidence/neumann-image-interval-hot-v2-fail-20260906.
 Runtime retained for this final bounded normalization retry. Physical finite-Q
 HOT PASS remains intact; all counters and cold-seal boundaries unchanged.
+
+## Addendum1139 — full one-dimensional image-family HOT PASS, 2026-09-06
+
+Source99d0767ec84ed79e633556653bc2fe05047c79cf, runner33d502751,
+SHA256905da643d92010978234b6ed41ebfe0ac5db5496c0e8e1701df24df0f2fd4761.
+Same retained Colab CPU/highRAM/noGPU, no project rebuild or original-cell
+rerun. Mathlib repro3.325236999s and actual source-importing draft7.238610131s,
+both exit0, seven exact named axiom blocks each, all allowed trio. Eight
+recorded stages exit0; tracked source unchanged before/after. Explicitly
+typed local equalities repaired the v2 normalization without changing the
+statement, hypotheses, period or half-open interval convention.
+
+Archive34387a931f104302b88107f641ddac6741965b1ce18dad7f50486c28af55c1fc,
+downloaded and independently verified: exit0/0.1547357s/23371776observed RSS.
+Report1999b6ae8ce22be119c87e483336d990dfb5a92f9dae8887c74ceee6ff987434.
+Mathlib output3c71a178214f0cb65bce55a6f64f7e35922e7953d6dc152d448a1a298d29c96f;
+actual output05b1d63d7a5395a13c88f003f8e145677e5fe71ff872e49050e3aa55e6653ca1.
+Durable validation-evidence/neumann-image-interval-hot-v3-20260906.
+Instrument test accepts that real archive and rejects19 mutations/old failure
+archives, exit0/0.1890883s/25559040observed RSS, no local compiler.
+
+The varying translation/parity/original-point map is bijective onto ALL
+integers for m>0, not merely injective with image index fixed. HOT only.
+Finite-Q and interval proof bodies are promoted unchanged with separate
+four-/seven-name audits and PRE-VALIDATION retained pending a fresh cold
+cohort. No multidimensional family, summability, physical inverse or B0
+claimed. 20/41,TermSource0,window15 compatible/not attained,Clay<0.1% unchanged.
