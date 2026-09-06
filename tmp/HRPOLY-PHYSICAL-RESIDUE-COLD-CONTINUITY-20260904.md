@@ -2,6 +2,15 @@
 
 ## Recovered counting-reflection FAIL — 2026-09-06
 
+At05:23UTC the old host99176a0ef4c0 and its exact archive were still readable.
+After the subsequent connection interruption, Colab supplied hostf045c885265a
+at05:32UTC with only sample_data and PRIOR_CHECKOUT_ABSENT. No build was run
+there. It was disconnected/deleted at05:33UTC (UI confirmed disconnected).
+Thus the prepared HOT retry is NOT EXECUTED, not a failed proof attempt.
+The saved v1 FAIL survives locally and in Git06a928178. A fresh v2 diagnostic
+will reuse the pinned v1 instrumentation, changing only source06a928178,
+the corrected draft blob5f6edb3c6, and the separate v2 work paths.
+
 Source dc00d3fe4, original PID3798 completed with exit1 after2078.64705s.
 The original runtime99176a0ef4c0 and output were recovered after the browser
 session disappeared; the cell was NOT rerun. Prerequisites passed8486 jobs
