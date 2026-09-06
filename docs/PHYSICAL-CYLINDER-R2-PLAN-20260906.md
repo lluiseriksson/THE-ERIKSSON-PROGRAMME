@@ -66,3 +66,8 @@ of this task.
 
 - 2026-09-06: continuation registered. Source and measure APIs inspected;
   no new R2 source or proof run exists at this registration checkpoint.
+- 2026-09-06: two source modules drafted. The first fresh Colab diagnostic
+  failed in concrete geometry instance elaboration; the measure module and
+  oracles were not reached. The [failure record](evidence/physical-cylinder-r2-20260906/README.md)
+  preserves exact hashes, actual exit, timing and the complete notebook archive.
+  A corrected draft is prepared; R2 remains unverified.
