@@ -116,3 +116,6 @@ crossing links. It must then exhibit a strictly positive centered physical
 norm, for example in a justified spatial-loop sector at `beta > 0`.
 Neither the existing kernel theorem, positive density, nor reflection
 invariance discharges that second obligation. No R3 proof run is claimed.
+The [R3 continuation plan](PHYSICAL-CYLINDER-R3-PLAN-20260906.md) now registers
+the two-sided gauge-average identity and spatial-loop centering/nonzero
+requirements, with the existing sharp character analysis explicitly reused.

@@ -3,7 +3,7 @@
 [YangMills](../YangMills/README.md) · [News](../NEWS.md) · [Documentation](README.md) · [Active PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29)
 
 **Checklist refreshed: 6 September 2026.** PR #29 was still draft at
-`6088e162757720e68b771b85c9393d3dda3bd95d`. Its [completion checklist][dod]
+`9bb957757b6454871eaea6e26aed8c95dc576b3c`. Its [completion checklist][dod]
 still records **20/41**, **TermSource = 0**, and window 15 not attained.
 It now records scoped F4/F5 cold evidence through Addendum 1124: full-Green
 owner amplitude, whole-fibre/physical-prefix results and the flat ambient
@@ -87,7 +87,7 @@ The [vertical slice][slice] gives the detailed source-to-consumer map.
 
 | Record | Immutable reference |
 |---|---|
-| Latest checklist-only refresh, 6 September | [`6088e162757720e68b771b85c9393d3dda3bd95d`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/6088e162757720e68b771b85c9393d3dda3bd95d); counters unchanged; no new reproduction |
+| Latest checklist-only refresh, 6 September | [`9bb957757b6454871eaea6e26aed8c95dc576b3c`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/9bb957757b6454871eaea6e26aed8c95dc576b3c); counters unchanged; no new reproduction |
 | Public `main` inspected for this update | [`04f87347f3e4d46a05e77bc1c70855794e111477`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/04f87347f3e4d46a05e77bc1c70855794e111477), dated 2026-08-03 |
 | PR #29 research snapshot inspected | [`7b068757bf0b49cd4fe1cdd82501fab808880aa4`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/7b068757bf0b49cd4fe1cdd82501fab808880aa4), dated 2026-09-05 |
 | Completion requirements | [Definition of Done at the 6 September refresh][dod] |
@@ -112,7 +112,7 @@ summary in [YangMills](../YangMills/README.md) consistent. Retain failed records
 and immutable references; a new date alone is not a research update.
 
 [pr]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29
-[dod]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/6088e162757720e68b771b85c9393d3dda3bd95d/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md
+[dod]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/9bb957757b6454871eaea6e26aed8c95dc576b3c/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md
 [ledger]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7b068757bf0b49cd4fe1cdd82501fab808880aa4/docs/VERIFICATION-LEDGER.md
 [slice]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7b068757bf0b49cd4fe1cdd82501fab808880aa4/docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md
 [spacing]: https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/7b068757bf0b49cd4fe1cdd82501fab808880aa4

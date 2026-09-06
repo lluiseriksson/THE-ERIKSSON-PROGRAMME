@@ -8,7 +8,7 @@
 > 8466-job unchanged core and all 2854 global reports validated. The
 > [R2 evidence](docs/evidence/physical-cylinder-r2-20260906/README.md) preserves
 > the original primed-name parser FAIL and its separate tested log validation.
-> The next target is R3 physical reflected positivity plus a strictly
+> The [R3 continuation](docs/PHYSICAL-CYLINDER-R3-PLAN-20260906.md) targets physical reflected positivity plus a strictly
 > positive centered norm. Reuse `su2WilsonCrossing_isHaarPSDKernel`; do not
 > duplicate the frozen auxiliary lane. No R3 proof is claimed.
 > The initial R1 diagnostic passed; after the

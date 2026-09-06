@@ -6,6 +6,12 @@ Earlier cells and failed runs are retained. R2's scoped source milestone is
 accepted on the build/oracle evidence below. It remains outside the core and
 has no terminal reproduction or independent-audit claim.
 
+Accepted source bytes are committed at
+[`507e8a38ce7f7addf9c1b8f65d296dc00b77971b`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/507e8a38ce7f7addf9c1b8f65d296dc00b77971b),
+in [PR #79](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/79).
+The Colab execution used the registration base plus the exact overlays
+below; it was not a fresh clone of this later publication commit.
+
 ## Gate 6: builds pass; original wrapper returns FAIL
 
 The current fresh clone at the registration commit uses geometry SHA-256

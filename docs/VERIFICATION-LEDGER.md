@@ -29399,6 +29399,9 @@ remain open.
 **Scoped source milestone accepted; no core integration or terminal claim.** The
 [registered R2 plan](PHYSICAL-CYLINDER-R2-PLAN-20260906.md) constructs a
 specific two-plaquette SU(2) cylinder, independently of hRpoly.
+The checked overlay bytes are published at
+[`507e8a38ce7f7addf9c1b8f65d296dc00b77971b`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/507e8a38ce7f7addf9c1b8f65d296dc00b77971b)
+in PR #79; the original execution base remains the one specified below.
 
 **Exact source.** Fresh task-owned CPU/high-RAM Colab clone at
 `ba48274f217220ae2aa47ddaddd8e377fb2231a8`, with these UTF-8/LF overlays:

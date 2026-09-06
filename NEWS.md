@@ -60,7 +60,7 @@ construction and records the independent inputs allowed by hRpoly's
 terminal checklist.
 
 The [hRpoly reading guide](docs/HRPOLY-STATUS.md) also refreshes its checklist
-reference to PR #29 source `6088e162757720e68b771b85c9393d3dda3bd95d`:
+reference to PR #29 source `9bb957757b6454871eaea6e26aed8c95dc576b3c`:
 scoped cold records through Addendum 1124 do not change **20/41**,
 **TermSource = 0**, or the open uniform physical-bound row. This is a reading
 update of that branch's records, not a reproduction or source integration.
