@@ -37,3 +37,29 @@ R1 literal regional precision/spacing/rectangle, R3 internally constructed
 full fine-to-fine inverse, and R4 uniform physical value/derivative B0 remain
 open. No compressed-Dirichlet/Neumann identification is imported.
 20/41; TermSource0; window15 compatible and not attained.
+
+## Full image-family coverage: located substrate, not yet proved here
+
+The pinned Mathlib has `Int.divModEquiv` in
+`Mathlib/Logic/Equiv/Fin/Basic.lean:371`: for positive natural period n,
+`Int equiv Int * Fin n`, with inverse `(q,r) -> q*n+r`. It handles negative
+integers via Euclidean division. This is a candidate existing substrate for
+step5; do not duplicate it or assume full-family injectivity from a fixed-image
+theorem. No new compiler evidence is claimed by this source inspection.
+
+For a one-coordinate side m>0, decode an arbitrary integer u using period
+2*m (NOT block-owner divisor B). Let q=u/(2*m), r=u%(2*m):
+
+- 0<=r<m: original coordinate n=r, k=q, branch=false;
+- m<=r<2*m: n=2*m-r-1, k=q+1, branch=true.
+
+Both branches have 0<=n<m and reproduce the printed orbit 2*k*m+n or
+2*k*m-n-1. The half-open split must be proved disjoint, including r=m and
+r=2*m-1; negative q is not clipped. Conversely the reflected branch encodes
+the residue 2*m-n-1 with quotient k-1, not k. The natural/int side conversion
+must use positivity and the already constructed rectangle equivalence.
+
+Coordinatewise composition can then target the full rectangular image-index
+equivalence. Only after this exact bijection is proved may a summable family
+be reindexed. Summability/operator interchange and the averaging identity are
+separate gates; a bare reindexing theorem does not establish the Green inverse.
