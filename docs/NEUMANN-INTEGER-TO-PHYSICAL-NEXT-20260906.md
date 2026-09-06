@@ -28,6 +28,11 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 
+Complete-fibre carrier substep COLD SEALED1154 at7f7455b28,8501jobs,16stages,
+6 names; original metadata-reader FAIL preserved1153 and corrected reader
+verified unchanged archives without rerunning Lean. Only its two headers
+retire PRE. Mass-offset endpoint4a05bff83 remains PRE, not yet run HOT.
+
 Prepared2026-09-06 while the complete-fibre production cold gate runs:
 tmp/NeumannGeneratedMassCompleteOffsetsDraft.lean, six proposed audit names.
 The actual fine output produces its coarse membership witness internally.

@@ -1,5 +1,13 @@
 # Constructed complete active fibre — cold promotion
 
+SEALED1154: original16-stage cold evidence independently passes corrected
+reader v2, six exact audit names,8501 jobs. Original reader FAIL stays in1153.
+Reviewed report59d55b07a9a1a79ef77f6a9b429f525f518830c7eab2a4206889ad646fba6ced
+under validation-evidence/neumann-complete-fibre-cold-reviewed-20260906.
+Only the two certified headers retire PRE; no Lean rerun. Runtime retained
+briefly for already prepared mass-offset HOT, whose parent gate must pin
+this reviewed report and preserve the original launch FAIL unchanged.
+
 LATEST: cold graph completed, original reader FAIL retained (ledger1153).
 First error OWNER_CONTRACT=physical_diagnostic_source: two stale prior-cohort
 fields in reader/self-fixture, absent from the actual published producer.

@@ -47141,3 +47141,30 @@ V2 tests: gate2/9, oldreader1/6, coldreader1/8;4 altered contracts rejected.
 Original unchanged inner archive passes16 stages/6 names under v2.
 Measured exit0/0.1735189s/19148800RSS. Full reviewed preservation and selective
 seal follow separately; this incident alone is not a seal.20/41 unchanged.
+
+## Addendum 1154 — complete active fibre cold seal after reader correction (2026-09-06)
+
+Exact production source7f7455b286da5809a0ee64a1511684f887cf8a88.
+All16 recorded cold stages verified, including fresh checkout and no project
+build-output restoration. Focal8501 jobs exit0/1413.923945838s; audit
+exit0/5.893478209s. Six exact declarations, each
+{propext,Classical.choice,Quot.sound}. Compiled .olean SHA
+3ae9c726f72c33ffc2afe176d801714f5eb2f4eaf117dbc26fba6f245d31c9e2.
+
+Original outer/inner remain byte-identical to1153. Corrected reader v2 at
+d8d0576eec46c4d60cea4cfb56e4a259955bccd0 has Git-blob SHA
+43bd4a309a8696134b1dfc48bcc7014dc0a023f93c1400a3eb90cb02d3c87c22.
+Full reviewed-preservation report SHA
+59d55b07a9a1a79ef77f6a9b429f525f518830c7eab2a4206889ad646fba6ced;
+evidence JSON file SHA b71688ef38cc9e264703d6c9a8e6b313cb81b0d2c926afd134d88989b1e54906.
+Independent preservation exit0/0.2797872s/19906560RSS under
+validation-evidence/neumann-complete-fibre-cold-reviewed-20260906.
+Original launch status is STILL FAIL; reviewed status is explicitly
+PASS_AFTER_READER_CORRECTION. No source, log, record, archive or compiler
+output was rewritten to manufacture a green launch. No Lean reexecution.
+
+Only NeumannGeneratedCompleteFibre and its six-name audit retire PRE.
+This seals membership, constructed whole active fibre, offsets and integer
+coordinates/sums. The subsequent actual mass-offset draft remains PRE.
+This is not the Neumann regional inverse, uniform physical B0 or window15.
+20/41,TermSource0 unchanged. Runtime retained for the already prepared HOT.

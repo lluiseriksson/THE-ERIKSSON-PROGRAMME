@@ -4,10 +4,11 @@ import YangMills.RG.NeumannGeneratedIntegerCountingKernel
 import YangMills.RG.NeumannIntegerBlockImageAverage
 
 /-!
-PRE-VALIDATION: production source present, production .olean not materialized;
-not compiler verified as a production module or in a fresh cold checkout.
-Exact proof body passed HOT at b7ac45acae587b0175526006f5a8d9a4247dea7c;
-see ledger1152. That diagnostic is not a production cold seal.
+Cold compiler-verified at7f7455b286da5809a0ee64a1511684f887cf8a88:
+8501 jobs, focal and exact six-name audit exit0. Downloaded original evidence
+independently verified with corrected reader v2; see ledger1154. The original
+metadata-reader FAIL is preserved separately in1153; no Lean was rerun.
+Earlier exact-body HOT evidence remains in1152.
 
 R2d.2b: the canonical iterated lift contains a WHOLE terminal block for every
 active coarse owner. This is proved from the recursive lift, not assumed for
@@ -146,4 +147,3 @@ theorem sum_neumannGeneratedOwnerIndicator_eq_offsets
 
 end
 end YangMills.RG
-

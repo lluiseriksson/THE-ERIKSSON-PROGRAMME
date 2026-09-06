@@ -1,5 +1,12 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest seal1154: complete active fibre at7f7455b28,8501 cold jobs,16 stages,
+6 audit names. Original metadata-reader FAIL preserved1153; reviewed v2
+PASS on unchanged downloaded archive, no compiler rerun. Only two certified
+headers retire PRE. The mass-offset draft4a05bff83 remains PRE and is the
+bounded HOT next step in retained runtime4609d7098347. See current continuity
+below.20/41,TermSource0,window15 not attained remain unchanged.
+
 Current cold promotion prepared2026-09-06: SOURCE7f7455b28,
 NeumannGeneratedCompleteFibre + six-name audit. Follow
 docs/NEUMANN-COMPLETE-FIBRE-COLD-20260906.md for live state and exact pins.
