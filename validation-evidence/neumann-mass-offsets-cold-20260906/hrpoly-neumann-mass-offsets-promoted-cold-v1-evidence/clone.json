@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "5e23ebceda1f6cfad69f3043ed4e0d94851c2e27de8e6b2bc344c7c27d6adfac", "seconds": 13.835603308999907, "stage": "clone"}

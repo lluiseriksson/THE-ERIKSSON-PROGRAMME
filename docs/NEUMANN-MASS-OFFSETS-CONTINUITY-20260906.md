@@ -1,5 +1,27 @@
 # Actual mass / complete-offset endpoint — continuity 2026-09-06
 
+## Cold PASS preserved, superseding pending state below
+
+Ledger1158: SOURCE9bb957757b6454871eaea6e26aed8c95dc576b3c,8503 jobs,
+all16 stages and six exact names passed. Focal1591.324973908s,
+audit9.925767761s; full graph1769.422225217s. At13:42:51.871215UTC,
+PID8676 was gone, no Lean remained, final launch status PASS. One execution.
+
+Downloaded outerfa07a48aff7657c6640452942663140d0d93b9355aca526290dbadb6a378120f
+(112170 bytes) matches the remote hash. Inner
+7a5b7dbab05028f5e0311eeddba1efa25abc701309defb36bfbe363ba1ddb056;
+independent report10670b676cc5b381734f10a4fae3fbbceeaa611cee8a5d93ef947f8f9fbcb1ad;
+production .olean6100f1c532c60459b389add5703894bf9c4ed2368809cdad10278919e7e2528b.
+Folder validation-evidence/neumann-mass-offsets-cold-20260906.
+Independent preservation exit0/0.451624s/20721664RSS. All original logs,
+real exit codes, source/runner pins, archive members and six axioms checked.
+Only NeumannGeneratedMassCompleteOffsets and its Audit retire PRE.
+
+Runtime bb2d3bf732a8 remains retained for the prepared bounded HOT. Fill
+the four parent pins from this preservation and its committed report, pin
+the final runner blob in the reader, test the final instruments and launch
+once. Do not rerun the cold cell.20/41,TermSource0,window15 unattained.
+
 ## Live cold gate (supersedes older runtime/preparation paragraphs)
 
 Notebook vehicle a98794ab178acb9b79d7a3861423825f0de4540a; compiled SOURCE

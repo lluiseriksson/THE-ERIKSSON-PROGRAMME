@@ -1,11 +1,13 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
-Latest observed2026-09-06 13:29:55UTC: mass-offset cold SOURCE9bb957757b6454871eaea6e26aed8c95dc576b3c
-is still executing mass_offsets_focal in Colab CPU/highRAM bb2d3bf732a8,
-PID8676. No final verdict yet. The browser view crashed and was recovered
-without rerunning the cell; terminal/log evidence confirms the original run.
-Vehicle a98794ab; prepared next HOT draft5fa966408 and blocked-until-parent-
-preservation templates944285a33 are NOT the current compiled source.
+Latest seal1158: actual mass/complete-offset source9bb957757b6454871eaea6e26aed8c95dc576b3c
+passed8503 cold jobs, all16 stages and six exact audit names. Downloaded
+outerfa07a48a and independent report10670b67 are preserved. Only the two
+certified production headers retire PRE. At13:42:51UTC PID8676 had ended
+and no Lean remained. The browser crash did not restart or invalidate the run.
+Runtime bb2d3bf732a8 is retained for the prepared bounded canonical-Neumann
+finite-action HOT draft5fa966408; its templates944285a33 require the actual
+parent preservation pins before execution. No new HOT has been launched yet.
 Read docs/NEUMANN-MASS-OFFSETS-CONTINUITY-20260906.md before any action.
 Do not duplicate the runtime or rerun a historical cell. The older runtime
 paragraphs below are historical.20/41,TermSource0,window15 unattained.

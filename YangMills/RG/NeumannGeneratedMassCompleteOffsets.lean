@@ -3,9 +3,10 @@ import YangMills.RG.NeumannGeneratedAverageFieldAction
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel
 
 /-!
-PRE-VALIDATION: production source present; production .olean not materialized;
-this module is not yet compiler-verified. Exact-body promotion of HOT source
-6d02bcfd4091fb549dd9856f6fa95bb10e854643 (ledger1157); cold validation pending.
+Cold-verified at source9bb957757b6454871eaea6e26aed8c95dc576b3c, ledger1158:
+8503 jobs and the six-name audit passed in a fresh pinned Colab checkout.
+Downloaded evidence was independently verified before this header retirement.
+The proof body is unchanged from HOT source6d02bcfd (ledger1157).
 R2d.2b finite field-action endpoint, not a regional inverse or B0.
 
 The coarse owner of an actual fine output is constructed from recursive

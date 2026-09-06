@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "9bb957757b6454871eaea6e26aed8c95dc576b3c"], "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "cbc85d7c704d530c2e327665e5216c3f76719d9f1042f2bceed5dddd2ff22528", "seconds": 1.654107703000136, "stage": "checkout"}

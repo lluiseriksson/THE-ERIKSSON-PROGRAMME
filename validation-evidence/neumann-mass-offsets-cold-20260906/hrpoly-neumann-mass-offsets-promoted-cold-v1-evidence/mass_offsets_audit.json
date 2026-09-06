@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannGeneratedMassCompleteOffsetsAudit.lean"], "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1", "exit": 0, "log_file": "mass_offsets_audit.log", "output_sha256": "2e1468095ec8893b79a402683c824d829d29217d3d2f0621e1de42b2c531e4df", "seconds": 9.925767761000316, "stage": "mass_offsets_audit"}

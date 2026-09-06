@@ -28,6 +28,15 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 
+Superseding seal1158: actual mass/complete-offset production is now COLD
+SEALED at9bb957757b6454871eaea6e26aed8c95dc576b3c,8503 jobs,16 stages,
+six exact names, downloaded evidence independently verified. The conventions
+w^depth versus w^(2*depth), and no extra fibre cardinality, remain unchanged.
+Next prepared R1 finite-action draft5fa966408 uses the literal canonical
+Neumann precision and its internal retained tower; it is NOT compiler-verified.
+R1 spacing/Fourier normalization, R3 boundary/right inverse and R4 physical
+uniform B0 remain open.20/41 andTermSource0 do not move with this seal.
+
 Complete-fibre carrier substep COLD SEALED1154 at7f7455b28,8501jobs,16stages,
 6 names; original metadata-reader FAIL preserved1153 and corrected reader
 verified unchanged archives without rerunning Lean. Only its two headers

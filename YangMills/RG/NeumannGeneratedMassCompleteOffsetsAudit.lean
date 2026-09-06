@@ -1,9 +1,9 @@
 import YangMills.RG.NeumannGeneratedMassCompleteOffsets
 
 /-!
-PRE-VALIDATION: source present; this audit .olean is not materialized and
-this production audit is not yet compiler-verified. Six names from the exact
-HOT body6d02bcfd4091fb549dd9856f6fa95bb10e854643, ledger1157.
+Cold audit verified at source9bb957757b6454871eaea6e26aed8c95dc576b3c,
+ledger1158. All six exact names have only propext, Classical.choice,
+Quot.sound. Downloaded evidence was independently checked before retirement.
 -/
 
 namespace YangMills.RG

@@ -47244,3 +47244,33 @@ exit0/0.4732454s/15966208RSS. No Windows compiler or exploratory CI.
 At12:59:04UTC ACTIVE_LEAN_LAKE=[]; after all cold/HOT archives were preserved,
 runtime4609d7098347 was disconnected/deleted. UI confirms reconnect state.
 About51 minutes since the cold launch, including all three bounded HOT runs.
+
+## Addendum 1158 — actual mass/complete-offset cold seal (2026-09-06)
+
+Production SOURCE9bb957757b6454871eaea6e26aed8c95dc576b3c, vehiclea98794ab,
+fresh Colab CPU/highRAM bb2d3bf732a8,50.99GiB, one launch13:10:51.955065UTC.
+The browser view crashed; reconnecting recovered the SAME PID8676 and its
+durable logs. No cold cell or queue was rerun. At13:42:51UTC the launcher
+had ended with PASS and no Lean remained. No project build outputs restored.
+
+All16 recorded stages independently checked. Focal8503 jobs,
+exit0/1591.324973908s; audit exit0/9.925767761s. Full graph1769.422225217s.
+All six names in NeumannGeneratedMassCompleteOffsetsAudit print exactly
+{propext,Classical.choice,Quot.sound}. Production output SHA
+6100f1c532c60459b389add5703894bf9c4ed2368809cdad10278919e7e2528b.
+
+Outer112170bytes SHAfa07a48aff7657c6640452942663140d0d93b9355aca526290dbadb6a378120f;
+inner7a5b7dbab05028f5e0311eeddba1efa25abc701309defb36bfbe363ba1ddb056;
+independent report10670b676cc5b381734f10a4fae3fbbceeaa611cee8a5d93ef947f8f9fbcb1ad;
+evidence JSON file643791d9a07f21b8e1496d9ec080b54c2ded6988182a1c80026f9eb93119e398.
+Preserved under validation-evidence/neumann-mass-offsets-cold-20260906.
+Independent local checker exit0/0.451624s/20721664RSS; exact archive sets,
+source/runner/toolchain/Mathlib pins, real stage exits, timings, logs and
+axioms verified. Earlier HOT failures1155/1156 and PASS1157 remain preserved.
+
+Only the two certified headers retire PRE; mathematical bodies unchanged.
+The endpoint is actual source-weighted/counting mass with w^depth and
+w^(2*depth), reindexed over a constructed complete fibre, no extra B^d.
+It is not Green reflection, a regional inverse, uniform B0 or window15.
+20/41,TermSource0 and Clay<0.1% unchanged. Runtime retained for the already
+prepared bounded canonical-Neumann finite-action HOT, not another cold run.
