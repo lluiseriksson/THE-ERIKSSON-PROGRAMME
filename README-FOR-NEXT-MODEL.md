@@ -1,10 +1,15 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
-LIVE bounded HOT: internal-bond stencil SOURCEc0174bbcb, runner e15a6c288,
-reader87db89571. Started ONCE20:05:18.902703UTC PID17944, runtimea824030f7bc1.
-Parent cold1164 independently preserved/sealedfc28cbb63; same root retained.
-Console /content/neumann-internal-bond-stencil-hot-v1-console.log.
-No verdict yet; do not rerun or reset. Preserve actual result before closing.
+Latest1165: internal-bond stencil HOT PASS at SOURCEc0174bbcb,
+runner e15a6c288, reader87db89571. All9 stages and4 exact audit names passed.
+Original archiveb084a312 and independent reportc6abfc32 are preserved in
+validation-evidence/neumann-internal-bond-stencil-hot-v1-20260906.
+This is diagnostic evidence, not a production cold seal. Next promote the
+exact mathematical body plus its audit, with PRE-VALIDATION until cold.
+At20:14:29UTC no PID17944, Lean or Lake remained. Runtimea824030f7bc1 was
+deleted after preservation; its only tab is now closed (zero tabs).
+No job remains in this session. Earlier LIVE/retained paragraphs are history.
+20/41,TermSource0,window15 unattained; Clay<0.1% unchanged.
 
 Latest1164: spacing cold sourcedd9354a87 PASS,8743jobs/16stages/3exactnames.
 Outer33830a24 and independent reportff717adf are downloaded and preserved.

@@ -1,6 +1,13 @@
 # Canonical Neumann spacing — fresh intermediate cold gate (2026-09-06)
 
-CURRENT follow-up: same runtimea824030f7bc1 launched bounded internal-bond
+FINAL follow-up: internal-bond HOT PASS, all9 stages/4 exact names,
+independently preserved in ledger1165. Archiveb084a31292392611b28e051d16295aa313e755fb1ef7b819a6201458b586fe76;
+reportc6abfc32656b51237974c2ea026461ad1851dc286f31ccf5953eb5b28f7799d9.
+At20:14:29UTC no runner/Lean/Lake remained. Runtime deleted after evidence
+preservation, sole tab closed. All retained/LIVE notes below are history.
+No cold seal is inferred from this HOT diagnostic;20/41 unchanged.
+
+Historical launch: same runtimea824030f7bc1 launched bounded internal-bond
 HOT once20:05:18.902703UTC,PID17944,SOURCEc0174bbcb8f9b2b791cdb2c546206b468fd4e3cf.
 Runner e15a6c288eb2702d7412039f74c0d8d79edb21d0,
 SHA2566894d5bcfedebfda7427e6596883a7fa43cb45a025ad2347437fb484449428ac;

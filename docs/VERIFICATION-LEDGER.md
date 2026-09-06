@@ -47462,3 +47462,40 @@ window15.20/41,TermSource0,Clay<0.1% unchanged.
 The runtime is retained for the prepared bounded internal-bond HOT diagnostic;
 its parent pins must use this actual independent review. No cold rerun.
 The static wrap-bond probe544218955 remains PRE, not new compiler evidence.
+
+## Addendum 1165 — actual Neumann internal-bond stencil HOT PASS (2026-09-06)
+
+SOURCE c0174bbcb8f9b2b791cdb2c546206b468fd4e3cf, retained BASE
+dd9354a87d2e9d60dac69aa79f287b53e45ba207. Same runtime a824030f7bc1,
+one launch at20:05:18.902703UTC, PID17944. Runner e15a6c288eb2702d7412039f74c0d8d79edb21d0,
+SHA256 6894d5bcfedebfda7427e6596883a7fa43cb45a025ad2347437fb484449428ac;
+independent reader/tests87db895712a02943927690a3ed576d7509960d28.
+The parent is the independently preserved cold1164, not an assumed cache.
+All9 stages exit0: Mathlib repro5.332921134s, prerequisites397.472003186s
+(8527jobs), physical draft13.761475963s. Source clean before/after.
+The draft log contains four axiom declarations and no warnings.
+
+Exact names, each with {Classical.choice,Quot.sound,propext}:
+neumannInternalBond_restrict_eq_extend_adjoint,
+neumannInternalBond_derivative_eq_restrict,
+neumannInternalBond_adjoint_eq_extended_divergence,
+neumannInternalBond_laplacian_apply.
+The actual Neumann derivative restricts the actual regional derivative;
+the reversed adjoint inserts zero extension of INTERNAL bonds before the
+existing divergence theorem is applied. No Neumann=Dirichlet identification.
+
+Downloaded original archive b084a31292392611b28e051d16295aa313e755fb1ef7b819a6201458b586fe76;
+independent report c6abfc32656b51237974c2ea026461ad1851dc286f31ccf5953eb5b28f7799d9;
+physical olean89b9211d6ba937a29a515067a77b7afc04ee41e9174bb55e5aa79081136aa4cc;
+repro olean71989bb2235928a18b73f2743d2f9ca65e2bf4c21a37ec2e6be10784bb47524a.
+Preserved validation-evidence/neumann-internal-bond-stencil-hot-v1-20260906.
+Bounded independent reader exit0/0.1511744s/18038784 observed peak RSS:
+VERIFIED_HOT_PASS, cold_seal=false. It checks actual input blobs, parent
+review, all commands/exits, exact audit names, logs and output hashes.
+
+This is actual internal-bond adjoint/divergence evidence, NOT a reflected
+Green boundary law, regional inverse, uniform B0, window15 or a cold seal.
+The wrap-bond probe remains PRE.20/41,TermSource0,Clay<0.1% unchanged.
+At20:14:29UTC ps/pgrep found no runner PID17944, Lean or Lake. After both
+archives were preserved, Colab runtime deletion was confirmed and its sole
+browser tab closed (zero tabs). Neither historical calculation is rerun.
