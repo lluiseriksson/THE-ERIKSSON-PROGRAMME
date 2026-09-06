@@ -2,6 +2,15 @@
 
 ## Superseding measured state, 2026-09-06
 
+Directional-mask draft HOT PASS atadfef2b5b883a839e24b03ceedd118b32428dace,
+ledger1179, nine stages0 and exact two/four-name audits. Parent cold1178 was
+independently preserved BEFORE launch on its retained runtime. The natural
+arithmetic repro and actual physical draft both passed first try; original
+archive downloaded and independently verified. Runtime deleted22:57UTC.
+This supersedes pending/live notes below, but the masks remain PRE until
+their own exact-body production cold gate. No physical-carrier choice or
+regional inverse is inferred; counters remain20/41,TermSource0.
+
 Wrap and flat production cohort COLD PASS from exact source
 15e776db59c051571f79e47974acc2fbf597f715, ledger1178: fresh Colab checkout,
 18 stages exit0, three exact oracle names, original archive downloaded and

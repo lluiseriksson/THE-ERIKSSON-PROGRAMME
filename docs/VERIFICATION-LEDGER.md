@@ -47778,3 +47778,43 @@ line in each audit (two local attempts, no compiler). Explicit comparison
 then admitted ONLY trailing newline normalization, reporting deltas0,-1,0,-1;
 no import, statement, proof or audit declaration changed. Original cold
 source blobs and evidence remain untouched and authoritative.
+
+## Addendum 1179 — directional rectangle masks HOT PASS (2026-09-07)
+
+SOURCEadfef2b5b883a839e24b03ceedd118b32428dace;
+runner919135cbf96ef03fbeaaff7688de46634c143fa0;
+reader/package07b7645e67138c9e7041234605121f311e003889.
+One launch22:54:50.314373UTC PID38380 on retained runtimeec5e95d70d1c,
+after independently preserving parent cold1178. Real parent report/archive
+and wrap production olean hash checked, not a synthetic or stale parent.
+All9 stages exit0, no timeout, clean source before/after. Mathlib-only repro
+8.296372246s; already-built physical prerequisite7.740704111s;
+physical draft7.245054107s. Repro two names and physical four names all print
+{Classical.choice,Quot.sound,propext}; neither new log contains warnings.
+Repeated arithmetic names belong to two separate invocations, not six new
+physical declarations. This remains HOT, cold_seal=false, and no PRE retires.
+
+Archive7968f4f35b0ed2a8eb7fca405260be9d528fa0319cef044b7c53b67dd1df318d;
+report94b918b8789fb43eacda1f89752c03e05e98c575cbf752984c9a2c6ec1f706d1;
+repro oleance7caee455d20a94f42be294fe993b244b5b97a060751bc0c439d1216a3d10d5;
+physical oleanbbef48b962326c188f6e67d567fcd293beb96f6dc84d26493f4cebacb2a2c73d.
+Preserved validation-evidence/neumann-directional-masks-hot-v1-20260907.
+Independent reader exit0/0.2049313s/24240128 observed peak RSS,
+VERIFIED_HOT_PASS; exact commands, pins, names, output hashes and parent
+cold provenance checked. No local compiler and no GitHub workflow dispatched.
+
+The actual outgoing/incoming bond masks retain full-period directions and
+the original non-strict fit; proper directions expose the nonperiodic masks.
+This does not choose a physical carrier, prove a mixed-boundary image formula,
+identify a regional inverse or attain uniform B0/window15.20/41,TermSource0
+remain unchanged. Next: exact-body promotion and its separate cold gate.
+
+Before closure ps for16795/38380 returned header only and pgrep lean/lake
+returned no process. Terminal initialization prefixed stray escape-response
+text to the first date command (three command-not-found messages); ps/pgrep
+still executed and the separate date read succeeded22:56:53UTC. This is an
+observer artifact, not a failed compiler stage. Both original archives were
+already downloaded and verified. Colab disconnect-and-delete confirmed by
+the reconnect UI around22:57UTC. Gate launch-to-deletion interval about43min,
+including cold run, evidence preservation and bounded HOT; any pre-launch
+allocation time is not measured by that interval. No runtime remains active.

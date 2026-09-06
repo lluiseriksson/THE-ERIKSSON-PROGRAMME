@@ -1,5 +1,14 @@
 # Directionwise torus rectangle masks — bounded next diagnostic
 
+Superseding measurement: HOT PASS, ledger1179, all9 stages exit0; arithmetic
+repro8.296372246s, physical draft7.245054107s, exact two/four-name oracles.
+Original archive and independent report preserved under
+validation-evidence/neumann-directional-masks-hot-v1-20260907.
+No PRE retired. Runtimeec5e95d70d1c disconnected/deleted22:57UTC after
+preservation; do not reconnect or rerun this diagnostic. Next is exact-body
+production promotion and a separate fresh cold gate. The preparation below
+is retained as provenance, not an instruction to execute the old HOT again.
+
 Source adfef2b5b883a839e24b03ceedd118b32428dace, PRE-VALIDATION.
 Template/test checkpoint 478c40e6f3b5bc896792a5a89187bcadc9c9f313.
 
