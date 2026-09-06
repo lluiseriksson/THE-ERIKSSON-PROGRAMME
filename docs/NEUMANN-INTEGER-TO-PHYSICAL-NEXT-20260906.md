@@ -123,3 +123,40 @@ and the exact owner-image lemma before swapping finite sums. Keep the two
 normalizations separate: Q weight `(M^-d)^depth`, counting Q*Q weight
 `(M^-d)^(2*depth)`. R3 regional right inverse and R4 uniform physical B0 still
 need their own operator/sum identities and quantitative proofs.
+
+## Reuse correction: generic source-image summability already exists
+
+Static inspection2026-09-06 found a shorter R2b/R2c route. In
+`BalabanCMP89NeumannRectangularPhysicalGreenInsertion.lean`, the generic
+`CMP89FullLatticeGreenDecayCertificate` keeps the FULL two-endpoint kernel
+and common amplitude/rate as parameters. Its generic producers
+`summable_cmp89NeumannRectangularBranchFullGreen` and
+`summable_cmp89NeumannRectangularFullGreen_sum` already prove the required
+SOURCE-image orientation. They use the rectangular branch residue sum and
+do not assume translation invariance or an inverse. Do not reprove them
+using the proposed abstract `Summable.comp_injective` route above.
+
+The physical specialization later in that file uses (2.48); it is NOT the
+full fine-to-fine (2.46) Green and remains excluded from this physical route.
+The reuse is only of the generic certificate and its generic theorems.
+The next physical insertion must construct that certificate for the literal
+`cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a`, with amplitude
+`cmp89Eq246DirectedFullSolutionSumBound L j a rho` and fine rate
+`rho / (L^j)`. The sealed two-endpoint mass-uniform contour bound supplies
+the pointwise inequality; nonnegativity of its literal amplitude follows
+by evaluation at equal endpoints, and positivity of the rate from rho>0
+and L>0. No family of chosen Green kernels enters.
+
+This is a located route, not a compiled new specialization. It retains
+all amplitude/radius/central-pair/mass windows and the L,j,a,rho dependence;
+it is NOT a uniform physical B0 proof. R2a full-family bijectivity remains
+needed for the pointwise reflected extension and later averaging identity,
+but is not an extra prerequisite of the already proved generic summability.
+
+Prepared R2a source1db42284358feffc281d9c2d28b3dca1d26db64d uses
+Mathlib `Equiv.subtypePiEquivPi`, `Equiv.arrowProdEquivProdArrow` and
+`Equiv.piCongrRight`, rather than custom bijections of these packaging types.
+Drafttext/import guards passed0.1491296s/14835712observed RSS; the exact Git-blob
+minimal-repro extraction passed0.3917435s/16977920observed RSS, no compiler.
+ReproSHA256cf6fbbb8dd4a8908aaac36bb66d012fe8974305afe913f9f9607ae8867f95076.
+Five proposed audit names, no execution while the current cold cohort runs.
