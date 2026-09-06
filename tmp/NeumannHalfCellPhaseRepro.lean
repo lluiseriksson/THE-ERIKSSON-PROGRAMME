@@ -1,5 +1,7 @@
 import Mathlib.Analysis.Complex.Exponential
 import Mathlib.Algebra.BigOperators.Intervals
+import Mathlib.Tactic.Omega
+import Mathlib.Tactic.Ring
 
 /-!
 # PRE-VALIDATION: finite reverse-sum phase, Mathlib-only repro
