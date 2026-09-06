@@ -44,6 +44,12 @@ produce the exact action on a complete field as a terminal-owner fibre sum.
 No full-cardinality premise is used. R2d.2b is the remaining identification
 of this actual fibre with the complete integer offsets of the lifted
 rectangle; it must be constructed, not supplied as a free equivalence.
+The same draft derives source-weighted and counting mass field actions
+from that Q formula and the sealed adjoint dictionary. This avoids needing
+a free terminal-site/coarse-site identification merely to state the mass:
+its owners are the actual generated owners of the fine output and input.
+The existing canonical-lift owner iff then transports this SAME equality
+to integer block owners. No adjoint is silently exchanged.
 Reuse cmp99BlockOffsetEquiv / sum_blockSites_eq_sum_offsets for the complete
 block carrier; do not invent a second finite-site equivalence.
 The weight is (M^-d)^depth, equal by the sealed

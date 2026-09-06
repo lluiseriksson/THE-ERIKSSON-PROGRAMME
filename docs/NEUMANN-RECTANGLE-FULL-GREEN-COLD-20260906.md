@@ -58,3 +58,27 @@ repro first (120s), only missing two imports (600s), actual draft (120s),
 exact audits and clean-before/after. It has NOT been launched.
 Do not overlap it with the current cold compilation. Runtime can be reused
 after the cold evidence is independently preserved, otherwise disconnect.
+
+## Second bounded HOT unit prepared, not launched
+
+R2d.2a exact generated full-field action source
+6bbbbffaf56caf0c09d9cfb2e8c27c05fd47a654. Three declarations: Q itself,
+source-weighted mass, counting-adjoint mass. They expose actual terminal
+fibres without assuming cardinality or supplying an operator equality.
+Weights remain (M^-d)^depth and (M^-d)^(2*depth), respectively.
+First field formula consumes the already sealed point-source producer
+internally and the exact finite-field decomposition; the two masses consume
+the sealed weighted/counting-adjoint dictionary. All remain PRE.
+
+Runner85ad19f6b1e941012b17c8f432fff4bfff7a3f5e:
+scripts/colab_neumann_generated_average_field_action_hot_v1.py
+SHA2568217b4ac2722cf44918d7d8df53fdddbdb4b92b5059981f3cd01ef66b77cb7cc.
+Reader scripts/verify_neumann_generated_average_field_action_hot_v1.py.
+Static input/name/old-archive-rejection checks exit0/0.4003601s/
+23793664observed RSS. Text/import checks passed; no compiler claim.
+Retained af35fbb8c checkout, only TerminalOwner prerequisite (600s),
+actual draft(120s), all three exact names, tracked-clean before/after.
+Use only after the current cold gate and previous bounded HOT unit;
+do not run concurrent jobs. If a first error is purely generic,
+extract its exact repro before retrying. R2d.2b physical offset reindexing
+and R3 right-inverse remain genuinely open.
