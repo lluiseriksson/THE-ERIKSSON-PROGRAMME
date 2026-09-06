@@ -1,6 +1,10 @@
 # Neumann internal-bond stencil — intermediate cold gate (2026-09-06)
 
-Prepared, not executed. Source checkpoint81f35765ad50f8217bca20bc4530d99b3bf05103.
+LIVE: one execution2026-09-06T20:25:39.007088UTC, PID1799,
+hash gate PASS, CPU/highRAM50.99GB, accountlluiseriksson@gmail.com.
+Browser tab10, cellLfn-ch7rZMDi, notebookvehicleabe9e4560910afa7d433851d35890062d8ed328a.
+Source checkpoint81f35765ad50f8217bca20bc4530d99b3bf05103.
+No final verdict yet. Do not reexecute or disconnect before preservation.
 Exact HOT draft promotionc0174bbcb, preserved ledger1165: four actual
 internal-bond adjoint/divergence identities, no free Green or boundary law.
 Production and audit remain PRE-VALIDATION until fresh cold evidence.

@@ -1,5 +1,14 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE internal-bond cold: SOURCE81f35765ad50f8217bca20bc4530d99b3bf05103,
+notebook abe9e4560910afa7d433851d35890062d8ed328a, one execution
+2026-09-06T20:25:39.007088UTC, PID1799, hash gate PASS.
+Colab CPU/highRAM50.99GB, account lluiseriksson@gmail.com, browser tab10,
+cell Lfn-ch7rZMDi. No final verdict yet. Do not rerun or close the active tab.
+See docs/NEUMANN-INTERNAL-BOND-STENCIL-COLD-20260906.md. Prepare only the
+bounded wrap probe while the cold graph runs. Historical no-job notes below
+describe the completed previous runtime.20/41,TermSource0 unchanged.
+
 Latest1165: internal-bond stencil HOT PASS at SOURCEc0174bbcb,
 runner e15a6c288, reader87db89571. All9 stages and4 exact audit names passed.
 Original archiveb084a312 and independent reportc6abfc32 are preserved in
