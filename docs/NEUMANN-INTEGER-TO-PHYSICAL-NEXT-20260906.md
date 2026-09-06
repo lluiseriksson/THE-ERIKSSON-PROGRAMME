@@ -30,6 +30,12 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ### R1 normalization acceptance gate (static derivation, NOT a new seal)
 
+Measured1161: the two-name canonical finite-action draft passed HOT at
+8aa5fe1ff, after a dependency timeout and a final WithLp coercion repair.
+The exact-body production/audit promotion is PRE pending its own cold gate.
+This discharges the draft's finite-action algebra, NOT the normalization
+below or the reflected right-inverse law. Original failure archives retained.
+
 The next finite-action HOT retains the exact counting coefficient. Before
 claiming the Fourier/physical normalization, specialize the already sealed
 `cmp85SourcePrefixCountingCoefficient_eq` and `T.towerAt_terminalSpacing`:

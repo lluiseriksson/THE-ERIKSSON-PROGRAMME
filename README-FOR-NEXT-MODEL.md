@@ -1,5 +1,17 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest1161: canonical Neumann finite-action HOT PASS at8aa5fe1ff,
+two exact names/nine stages, original archive and independent review preserved.
+v1 dependency timeout1159 and v2 coercion failure1160 remain preserved.
+The two exact-body production/audit files are PRE-VALIDATION pending cold,
+not a new production seal. Runtime bb2d3bf732a8 was deleted after all four
+cold/HOT archives were downloaded and verified; no Lean remained at14:34:35UTC,
+and all browser tabs are closed. No active build or monitoring loop.
+Next prepare the two-module cold gate; see
+docs/NEUMANN-CANONICAL-PRECISION-COLD-20260906.md. No historical cell rerun.
+20/41,TermSource0,window15 unattained. Older live-runtime paragraphs below
+are historical. The mass-offset cold production remains sealed1158.
+
 Latest seal1158: actual mass/complete-offset source9bb957757b6454871eaea6e26aed8c95dc576b3c
 passed8503 cold jobs, all16 stages and six exact audit names. Downloaded
 outerfa07a48a and independent report10670b67 are preserved. Only the two

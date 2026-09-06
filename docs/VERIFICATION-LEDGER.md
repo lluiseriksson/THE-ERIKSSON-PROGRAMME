@@ -47318,3 +47318,43 @@ UTF-8 log was then read directly. No Colab process or proof was rerun for it.
 Proposed minimal repair: final rfl, with the exact generic WithLp equality
 added to the Mathlib repro FIRST. No statement, coefficient or hypothesis
 changes.20/41,TermSource0,window15 unattained unchanged.
+
+## Addendum 1161 — literal canonical Neumann finite-action HOT PASS (2026-09-06)
+
+SOURCE8aa5fe1ff3d166ad67debbda3aa4a23ff659950c, BASE9bb957757b6454871eaea6e26aed8c95dc576b3c.
+Runnerf5e55dd1ed1e4fb751116997cb0feb7d54d3936c, hash
+3f9f6b809259872b8ad3ebcd12ddeeddcf4fb05d28849a795197fac974f3282c;
+reader70cbd0950f7b395a4b2bb70dcc450c008b8f5e08. One PID41346 launch
+2026-09-06T14:31:55.119924UTC, same retained high-RAM CPU runtime.
+Nine stages all exit0. Exact generic WithLp repro7.4950854s; cached
+prerequisites7.291221718s; physical draft29.782314815s. No theorem statement,
+coefficient or hypothesis changed; the only physical-proof edit was final rfl.
+Both exact names neumannCanonicalPrecision_eq_explicitCountingMass and
+neumannCanonicalPrecision_apply_eq_completeOffsets use precisely
+{Classical.choice,Quot.sound,propext}. No successful failed-module prefix counted.
+
+Downloaded archivef70e866d0c13490518ce56693d4f59edf8a62e460b6aae721a6070bad7bc8060;
+independent report87b8d34bab4d73937bc0265cf5227643d2827e2285efaf57b9d976ddeb48b24e;
+draft olean1c5b9770c9878522b72d3ef7561ad461c2c996d8d9f3c53d1c3afba000655778;
+repro oleanad5aa9131084ddf61300f168a46c26a9e11e8249b14b9e4b143742d346146f12.
+Independent reader exit0/0.1667025s/23965696RSS, VERIFIED_HOT_PASS,
+cold_seal=false. All input hashes, output hashes, exact names, stage commands,
+real exits/times, parent cold evidence and archive file set verified.
+Folder validation-evidence/neumann-canonical-precision-hot-v3-20260906.
+v2 review was rerun read-only without its Unicode display error:
+exit0/0.1475739s/21123072RSS, same report hash; no Lean rerun for that issue.
+
+Production NeumannCanonicalPrecisionOffsetAction and Audit are exact-body
+promotions, PRE-VALIDATION until their fresh cold focal/audit. First local
+promotion check caught two extra blank lines left by print-line removal;
+the source was corrected, not the comparison weakened. Final exact-body,
+two-name/text/import gates exit0/0.1329523s/15777792RSS.
+No cold seal claimed for this new production. No regional inverse, uniform
+physical B0, canonical Fourier-spacing normalization or window15 is proved.
+20/41,TermSource0 and Clay<0.1% remain unchanged.
+
+After all cold/HOT archives were independently preserved, no Lean/Lake
+process remained at14:34:35.924628UTC. Runtime bb2d3bf732a8 was disconnected
+and deleted via Colab; UI confirmed it, then the only tab was closed.
+Cold-launch-to-close-check interval approximately83m44s; this is not an
+assertion of exact billable connection time. No active build/monitor remains.

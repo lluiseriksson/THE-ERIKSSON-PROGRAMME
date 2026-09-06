@@ -1,5 +1,17 @@
 # Actual mass / complete-offset endpoint — continuity 2026-09-06
 
+## Superseding final runtime state
+
+HOT v3 PASS1161 atSOURCE8aa5fe1ff3d166ad67debbda3aa4a23ff659950c,
+runnerf5e55dd1ed1e4fb751116997cb0feb7d54d3936c, two exact names/nine stages0.
+Archivef70e866d0c13490518ce56693d4f59edf8a62e460b6aae721a6070bad7bc8060;
+independent report87b8d34bab4d73937bc0265cf5227643d2827e2285efaf57b9d976ddeb48b24e.
+All evidence preserved before deleting runtime bb2d3bf732a8. At14:34:35.924628UTC
+no Lean/Lake process remained. UI confirmed disconnected/deleted, then its
+sole tab was closed (zero tabs). No calculation or monitor remains active.
+The following runtime-in-flight paragraphs are historical. Next is the
+exact two-module production cold gate, not a rerun of any old HOT cell.
+
 ## Current bounded HOT, after cold seal1158
 
 Superseding v1 timeout: preserved and independently verified in ledger1159,
