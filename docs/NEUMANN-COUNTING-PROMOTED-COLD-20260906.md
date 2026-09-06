@@ -77,3 +77,29 @@ Execute once. Inspect existing handle after observer failure, never restart on
 timeout alone. Prior physical prerequisites23–31min: read near that threshold,
 not each minute. Preserve/verify final evidence, then disconnect/delete runtime.
 Only then selectively retire promoted PRE-VALIDATION, with proofs unchanged.
+
+## Observer recovery and prepared next diagnostic
+
+At06:39UTC the browser inventory had no tabs and the previous tab handle2
+was absent. The same pinned notebook was reopened without executing its cell.
+Colab resumed the existing runtime: original hash-gate timestamp and PID11958
+were recovered, and a terminal read at06:40 showed the same hosta7df6ab4f6f3,
+PID11958/PPID11935 live at elapsed16:33, still reflection_focal. This is an
+observer recovery, not a new run or runtime-loss verdict. The replacement
+browser tab1 is marked for handoff. Do not reexecute the notebook cell.
+
+`scripts/colab_neumann_integer_image_owner_hot.py` is prepared, NOT executed.
+It requires independent verification of the actual current cold inner archive,
+no live Lean/Lake, the exact base and Mathlib pins, and an unused output path.
+Then one Mathlib-only Lean child (120s cap), no build/bootstrap, tests the three
+integer image owner identities from sourced7e219993. Git-blob SHA256:
+`62c8ceb7502820740147bd678955e0ca529cceb6954bb350b4c0fbbcfc46a4d1`.
+Real exits, logs, three exact axiom names and output are separately archived;
+the report is explicitly HOT/cold_seal=false, not physical Q or inverse.
+Run only after the current cold PASS is preserved and independently verified;
+reuse this runtime before disconnecting. No concurrent or repeated execution.
+
+The static runner check passed exit0/0.1743551s,14729216 observed peak bytes,
+one Windows process, no compiler/network/pool. It checks the fixed source,
+three Mathlib-only names, one Lean child and absence of build/checkout/update.
+This is instrument readiness, not proof evidence. Contours20/41 unchanged.
