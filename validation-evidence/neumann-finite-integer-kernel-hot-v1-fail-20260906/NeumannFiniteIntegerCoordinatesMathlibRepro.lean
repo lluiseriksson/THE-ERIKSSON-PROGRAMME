@@ -1,6 +1,6 @@
 import Mathlib.Data.Fin.Basic
 import Mathlib.Data.Int.DivMod
-import Lean.Elab.Tactic.NormCast
+import Mathlib.Tactic.NormCast
 
 /-! PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
 Minimal casting/injectivity check only, not an operator dictionary. -/

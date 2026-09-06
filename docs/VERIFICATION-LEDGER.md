@@ -46677,3 +46677,23 @@ not a permutation of the original rectangle, not the physical image inverse.
 Next finite-to-integer/Q identification is enumerated in
 docs/NEUMANN-INTEGER-TO-PHYSICAL-NEXT-20260906.md. 20/41,TermSource0,
 window15 compatible/not attained remain unchanged.
+
+## Addendum1135 — finite integer kernel HOT v1 import failure, 2026-09-06
+
+Source54dc3455fdf7b3e7949ed6f7b68f22ea995ad3b5; retained cold base87edca651.
+First error: tmp/NeumannFiniteIntegerCoordinatesMathlibRepro.lean:1:0,
+object file Mathlib/Tactic/NormCast.olean of module Mathlib.Tactic.NormCast
+does not exist. Mathlib repro exit1,1.117713966s. Physical prerequisites
+and physical draft NOT RUN. No mathematical statement or proof was tested.
+Pinned toolchain source provides Lean.Elab.Tactic.NormCast instead; repair
+changes only that import, not the draft, statements, constants or hypotheses.
+
+Downloaded archive SHA2569f5c228ffd338329af092492f3e945a4ef9cdbfc8f3b240c374ee301dcbe35c7;
+failed log bd59ed1ed2139767b44be73f2199dbd487866f79b36f352fe790205bbaa8cb0d.
+Independent reader VERIFIED_FAILURE,exit0/0.1513041s/23023616 observed peak
+RSS bytes, under30s/512MiB watchdog. Report
+a1c3df779ee2d2b2407dad63e7bbefdff87ddc57e6b2c335303afed794bf8e8b.
+Durable validation-evidence/neumann-finite-integer-kernel-hot-v1-fail-20260906.
+Runtime retained for this one-import HOT retry, distinct paths and outputs;
+no original cell rerun, no CI, no local Lean. 20/41,TermSource0,window15
+compatible/not attained unchanged. PRE-VALIDATION retained.
