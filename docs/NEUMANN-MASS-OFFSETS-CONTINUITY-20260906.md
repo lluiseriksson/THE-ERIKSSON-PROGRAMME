@@ -1,5 +1,27 @@
 # Actual mass / complete-offset endpoint — continuity 2026-09-06
 
+## Current bounded HOT, after cold seal1158
+
+Cold seal committed f45673a844ee5eddace0fc1cc9d433722918b517; final HOT
+runner7eea0b2396a24c3213680a1122f8e4e5f84861d9 and reader/tests
+c56d705ab751cc93b1b6d6b4f4d7ac98ad401a6a are published fast-forward.
+GitHub identity lluiseriksson checked before push. No CI dispatched.
+Runner Git-blob SHA25678dfbf792dca6a3982b8ca6fc93fc08cc04257259f358e10efdf8b3f9a55a56e.
+Actual parent report and original archive hashes verified from Git blobs.
+Pinned reader self-test: one synthetic PASS, ten corruptions rejected,
+one first-failure preserved; exit0/0.6658546s/24854528RSS, no local Lean.
+
+SAME runtime bb2d3bf732a8 recovered after browser reconnection. Prelaunch
+confirmed old cold PASS, no Lean/Lake processes and no HOT output directory.
+One launch: PID32845, hash-gate PASS, START_UTC2026-09-06T14:09:43.662351+00:00.
+SOURCE5fa96640891aa7fc980b4e27a77c08e85bf6909f; BASE9bb957757b6454871eaea6e26aed8c95dc576b3c.
+Mathlib-only repro exit0/10.856949369s. At14:10UTC prerequisites PID33001
+were executing; no physical-draft verdict yet. Do not rerun.
+Console /content/neumann-canonical-precision-offsets-hot-v1-console.log;
+result and archive /content/neumann-canonical-precision-offsets-hot-v1-evidence[.tar.gz].
+On completion preserve with scripts/verify_neumann_canonical_precision_offsets_hot_v1.py.
+This is HOT only; no PRE retirement or terminal-counter movement.
+
 ## Cold PASS preserved, superseding pending state below
 
 Ledger1158: SOURCE9bb957757b6454871eaea6e26aed8c95dc576b3c,8503 jobs,
