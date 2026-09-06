@@ -19,6 +19,8 @@
 | [Hypothesis frontier](../HYPOTHESIS_FRONTIER.md) | Assumptions still carried by the main core |
 | [Canonical proof-state JSON](../project-state.json) | The recorded main proof checkpoint; a documentation date does not replace it |
 | [M3 dependency map](M3-FRONTIER-DEPENDENCIES.md) | The consumer and hypothesis structure |
+| [Physical Wilson reflection campaign](PHYSICAL-REFLECTION-PLAN.md) | Independent physical geometry, Haar, reflection and transfer work; per-milestone evidence |
+| [After hRpoly: physical reconstruction and continuum audit](POST-HRPOLY-CONTINUUM-AUDIT-20260906.md) | Static source audit, independent workstream and explicit limits of the lattice-to-continuum inference |
 | [Dashboard](dashboard/) | The curated main dependency picture; active-branch updates are in [hRpoly status](HRPOLY-STATUS.md) |
 | [Source citations](SOURCE-CITATIONS.md) | Primary-source locators and extraction notes |
 | [Source database](source-db/README.md) | Crosswalks, manifests, proof obligations and source lookup |
