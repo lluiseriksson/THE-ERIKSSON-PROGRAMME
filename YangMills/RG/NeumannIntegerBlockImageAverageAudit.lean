@@ -1,6 +1,6 @@
 import YangMills.RG.NeumannIntegerBlockImageAverage
 
-/-! PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
+/-! Cold-verified at source8570618f2; independent evidence preserved in ledger1149.
 Exact three-name audit of the promoted finite block-image averaging transport. -/
 
 #print axioms YangMills.RG.neumannIntegerImage_fineBlockPoint

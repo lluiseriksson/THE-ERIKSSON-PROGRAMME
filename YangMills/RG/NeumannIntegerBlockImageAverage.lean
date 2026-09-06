@@ -2,8 +2,10 @@ import YangMills.RG.NeumannHalfCellBlockReflection
 import YangMills.RG.NeumannIntegerImageCountingKernel
 
 /-!
-PRE-VALIDATION: promoted source present, .olean not materialized as this module.
-Exact draft passed HOT at f8e37328b (ledger1146); production cold validation pending.
+Cold-verified at source8570618f20c62c5724555589f910b84fdf803c33.
+Production focal and exact three-name audit passed in a fresh checkout;
+downloaded archives and outputs independently verified, ledger1149.
+Earlier HOT diagnostic remains preserved separately in ledger1146.
 
 R2d.1: the printed integer image maps a complete fine block to its
 coarse-image block with the SAME finite offset reflection Fin.rev.

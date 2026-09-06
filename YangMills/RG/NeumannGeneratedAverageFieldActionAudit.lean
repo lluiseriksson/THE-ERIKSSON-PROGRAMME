@@ -1,6 +1,6 @@
 import YangMills.RG.NeumannGeneratedAverageFieldAction
 
-/-! PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
+/-! Cold-verified at source8570618f2; independent evidence preserved in ledger1149.
 Exact three-name audit of generated Q/weighted/counting full-field action. -/
 
 #print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_apply_eq_terminalFibreSum

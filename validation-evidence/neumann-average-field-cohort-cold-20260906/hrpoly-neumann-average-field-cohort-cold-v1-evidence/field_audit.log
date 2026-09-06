@@ -1,0 +1,9 @@
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedMass_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitCountingMass_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

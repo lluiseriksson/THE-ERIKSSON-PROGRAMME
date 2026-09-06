@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannGeneratedAverageFieldAction"], "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1", "exit": 0, "log_file": "field_focal.log", "output_sha256": "737251d2b6676c514d4c444afa4a6751e2c97cf14ae97bda289a85e8ea40a7df", "seconds": 1790.0056256270002, "stage": "field_focal"}

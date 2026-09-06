@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeTerminalOwner
 
 /-!
-PRE-VALIDATION: promoted source present, .olean not materialized as this module.
-Exact draft passed HOT at 765c7be79 (ledger1148); production cold validation pending.
+Cold-verified at source8570618f20c62c5724555589f910b84fdf803c33.
+Production focal and exact three-name audit passed in a fresh checkout;
+downloaded archives and outputs independently verified, ledger1149.
+Earlier HOT diagnostic remains preserved separately in ledger1148.
 
 R2d.2a exact field action of the already constructed flat generated Q'.
 The point-source producer is consumed internally; no arbitrary kernel or

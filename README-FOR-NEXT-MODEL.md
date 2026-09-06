@@ -1,5 +1,14 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest focused seal2026-09-06: ledger1149 certifies finite block-image
+averaging and actual generated Q/source-weighted/counting full-field actions
+at8570618f2. All18 cold stages and6 exact names passed; downloaded artifacts
+independently verified. Only four certified headers retire PRE.20/41 and
+TermSource0 unchanged; regional inverse, uniform B0 and window15 stay open.
+Runtime retained for the already prepared six-name complete-fibre HOT
+diagnostic at8c07d3f3c, generic sum repro first. Live continuity:
+docs/NEUMANN-AVERAGE-FIELD-COLD-20260906.md. Do not rerun the completed cold cell.
+
 Latest focused seal2026-09-06: ledger1144 certifies rectangle image-family
 coverage and actual full Eq246 source-image summability at d9d1bcae8,
 16 cold stages and8 exact audit names, downloaded evidence independently

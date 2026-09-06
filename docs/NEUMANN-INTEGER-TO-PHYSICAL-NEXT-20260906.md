@@ -55,8 +55,10 @@ of R2d.2b, not an implicit right-inverse or uniform-B0 claim.
 
 Measured supersession: R2d.1 passed HOT at f8e37328b (ledger1146), and
 R2d.2a passed HOT at765c7be79 (ledger1148). Both actual artifacts were
-independently verified; exact-body production modules/audits are promoted
-with PRE retained pending the six-name fresh cold cohort. The older draft
+independently verified; their exact-body production modules/audits are now
+COLD SEALED at8570618f2 (ledger1149),18 stages and6 exact names, downloaded
+evidence independently verified. Only their four headers retire PRE.
+The older draft
 paragraphs below describe their design, not their current validation state.
 R2d.2b, R3 and R4 remain open. The six names do not change20/41.
 

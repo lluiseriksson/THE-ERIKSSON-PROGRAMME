@@ -47001,3 +47001,39 @@ text/import guards passed,exit0/0.451644s/24866816RSS. Production/audit PRE
 remain until the six-name fresh cold cohort with block-image averaging.
 R2d.2b complete physical-fibre/offset reindexing remains separate; no
 regional inverse, physical B0 or window15.20/41,TermSource0,Clay<0.1% unchanged.
+
+## Addendum1149 — block averaging and generated full-field action, cold PASS, 2026-09-06
+
+SOURCE8570618f20c62c5724555589f910b84fdf803c33; runner/reader c8ec499e1,
+launcher25b303fcc. Fresh ROOT/content/hrpoly-neumann-average-field-cohort-cold-v1,
+new runtime7ce7922a12a6, CPU/highRAM50.99GiB/noGPU, no project build restoration.
+Exact Lean4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b.
+Start11:05:27.144744UTC, launchPID1043 completed, full graph2009.273982031s.
+All18 recorded stages exit0 (16 required plus apt_update/install_zstd),
+remote archive verifier and launcher exit0. Average focal50.188878734s,
+8172jobs, audit7.252196941s; field focal1790.005625627s,8484jobs,
+audit11.961256251s. Six exact names all use the allowed trio. Existing
+unused-section-variable/simp-argument warnings are retained, not hidden.
+
+Outer192170bytes SHA358e4869601af04ac6ef6df975c9dd82a685b9e4fcc4a4cb774c7bd299ffbe55;
+inner03e5ea64cf13f6408d367503e7202fe46994db5624b99f23f49c83cd5775a6c2.
+Independent local preservation exit0/0.6497459s/21151744observed RSS;
+report857b5c5a1b10240fd07b422faf95690e18e085aeb465693ecab48765dce5134e.
+Evidence JSON76bb21869f396891d3f71a88422d638f6364ebcec5e711c79553d18a3387c6ea.
+Production outputs: NeumannIntegerBlockImageAverage.olean
+32d50d52277add9eb5d3744a378f01201b56dbba76b8cb3f475d6381cfeb3336;
+NeumannGeneratedAverageFieldAction.olean
+30846c90064d0da4afeab8882ebdf5436840ec5c9a757993aa2a6ac03c5bf6cd.
+Durable validation-evidence/neumann-average-field-cohort-cold-20260906.
+
+Before preservation, local reader7676e22a5 corrected a stale previous-cohort
+prose label and checked the exact current scope; all remote pinned bytes
+remained unchanged. The actual downloaded archive passed that stricter
+scope check as well as all source, command, stage, axiom and output checks.
+Only four production/audit headers retire PRE. The exact HOT proof bodies
+remain unchanged. Complete image-offset sums and generated full-field
+Q/source-weighted/counting actions are now cold verified; the last two
+weights remain distinct. Complete active-fibre reindexing is only PRE draft,
+not a physical inverse or uniform B0.20/41,TermSource0,window15 compatible
+but not attained,Clay<0.1% unchanged. Retain this runtime for the prepared
+bounded complete-fibre diagnostic, generic repro first; no fresh bootstrap.

@@ -1,5 +1,26 @@
 # Six-name averaging/field-action cold cohort
 
+PASS AND INDEPENDENTLY PRESERVED: source8570618f2,18 recorded stages0,
+six exact allowed-trio names, launcher/remote reader0. Completed graph
+2009.273982031s. Outer192170bytes,
+358e4869601af04ac6ef6df975c9dd82a685b9e4fcc4a4cb774c7bd299ffbe55;
+inner03e5ea64cf13f6408d367503e7202fe46994db5624b99f23f49c83cd5775a6c2.
+Local preservation exit0/0.6497459s/21151744RSS, report
+857b5c5a1b10240fd07b422faf95690e18e085aeb465693ecab48765dce5134e.
+See ledger1149 and validation-evidence/neumann-average-field-cohort-cold-20260906.
+Selective four-header retirement EXACT HOT body/text/import gates passed
+exit0/0.3307482s/17387520RSS. No mathematical body changed.20/41 unchanged.
+
+Cell3 is now FINISHED and MUST NOT be rerun. Runtime7ce7922a12a6 retained
+only for prepared complete-fibre HOT at8c07d3f3c. Templates are in
+tmp/colab_neumann_generated_complete_fibre_hot_v1.py.in and matching
+verify_neumann_generated_complete_fibre_hot_v1.py.in. Replace the parent
+archive placeholder with the independently verified outer hash above,
+then freeze/publish runner and bind the reader to its Git-blob hash before
+any new cell. Static template source/base/7pins/6names/queue/repro-first
+checks passed0.283845s/15663104RSS. These templates are not executable gates
+and have NOT run. The earlier live-state paragraphs below are historical.
+
 Preservation-instrument correction during the running gate: the LOCAL
 preserver still emitted the previous cohort's prose scope and display label.
 Its pinned source/queue/6-name checks were correct, but that final prose was
