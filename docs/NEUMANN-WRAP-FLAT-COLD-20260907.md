@@ -11,6 +11,15 @@ Preservation archive:
 /content/neumann-wrap-flat-promoted-cold-v1-preservation-20260907.tar.gz.
 Keep this tab marked for handoff; no other runtime is active.
 
+Verified live22:25:03UTC: PID16795 elapsed11:16, stateS/python3.
+The source/text/import gates and pinned dependencies passed; Mathlib cache
+8142 files, cache_get exit0/6.371s. Current stage wrap_probe_focal.
+No final status, failure or runtime loss. Next coarse result check around
+22:45UTC; do not infer stalling from the lack of final stdout during a focal.
+Next HOT templates478c40e6 are prepared separately with parent pins unset.
+Only after preserving cold PASS may the same runtime execute that bounded
+diagnostic before final deletion; see the directional-mask preparation doc.
+
 Source checkpoint: 15e776db59c051571f79e47974acc2fbf597f715.
 Exact HOT mathematical bodies from baf5fa136663fe71a9cf07dacd4e365b0026942e
 (wrap v7) and 69a5308c8e5635b95b59c6d5c88d4b5b789f851c (flat v3).
