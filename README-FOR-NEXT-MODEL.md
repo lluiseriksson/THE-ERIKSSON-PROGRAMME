@@ -1,5 +1,20 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE bounded wrap HOT: launched ONCE21:10:26.816673UTC, PID18398, on SAME
+runtimeb53f9b4fbc01, tab12 marked handoff. SOURCE5442189556b1c85e3ac0cb864403cc65f8e23b31,
+BASE81f35765ad50f8217bca20bc4530d99b3bf05103; runner e8d513b2af902fb91b58bdb61c1f989de6e6440d,
+hash ec01ca5615a879a9375f5e20ffdf3b5bd532564559b990b5b973810f7228b508,
+reader5ef38b091c0bfabdac87062d773f6c61a6ffa141. Parent review is sealed39b078258,
+not a guessed cache. At21:11UTC physical_prerequisites PID18450 active;
+no final result yet. Read /content/neumann-rectangle-wrap-probe-hot-v1-console.log;
+do NOT relaunch. Its first result/error must be preserved before continuing.
+Prepared separate flat-action runner55b3719087556fba937aeec45300a7f72625c572,
+hash82f4b8b4bd7a1e8a79975dd850b5da25142768779ab9b15902bdb30158165745,
+is NOT RUN. Both actual runner/reader pairs match the tested templates with
+only actual cold evidence pins filled (0.327921s/25305088RSS wrap;
+0.3577417s/25739264RSS flat), COMPILER_CHECKED=0 for these diagnostics.
+Cold1166 is sealed and pushed39b078258.20/41 andTermSource0 unchanged.
+
 LATEST1166: internal-bond production COLD PASS at81f35765ad50f8217bca20bc4530d99b3bf05103.
 8528jobs/16stages/four exact names. Original outer6c3977a5 and independent
 report81381379 preserved under validation-evidence/neumann-internal-bond-stencil-cold-20260906.
