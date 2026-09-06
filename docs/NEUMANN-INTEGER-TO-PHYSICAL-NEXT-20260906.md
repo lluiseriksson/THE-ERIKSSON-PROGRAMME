@@ -503,6 +503,32 @@ residue classes; it must not be substituted for the continuous Brillouin
 delta identity by definition. The named counting-entry multiplier xi^d stays
 outside exactly once. No reflection law or regional inverse is inferred.
 
+#### Bounded delta-normalization route (static, not compiler-verified)
+
+For N=L^j>0, u=target-source in Z^4 and the printed centered alias fibre,
+the precise next scalar target is
+
+`(2*pi)^(-4) integral_[-pi,pi]^4 sum_m exp(i*(p+2*pi*m).(u/N)) dp
+ = N^4 * (if u=0 then 1 else 0)`.
+
+Factor out exp(i*p.(u/N)) BEFORE the finite alias sum. The latter should be
+N^4 when every coordinate of u is divisible by N and zero otherwise.
+The located cmp99Flat_normalizedCharacterAverage_integerResidue supplies
+the ZMod character selector, not this centered-alias exponential identity:
+an explicit reindexing/character bridge is still required. The printed
+half-open interval is available as cmp89Eq245CenteredAliasIntegers_eq_Ico;
+do not assume symmetry under negation of its even-N representatives.
+
+On the surviving branch write u=N*v with v integer. The remaining normalized
+integral of exp(i*p.v) is the ordinary integer-character delta, coordinate
+by coordinate. Mathlib integral_exp_mul_complex supplies
+the one-dimensional nonzero-frequency antiderivative; the zero frequency
+is a separate volume computation. Thus periodic residue selection and
+continuous integration have different roles, and N^4=xi^(-4) is produced
+exactly once. This is a proposed proof decomposition, not a compiled delta
+law or an additional claim about the physical inverse. The actual operator
+intertwining and the half-cell regional boundary law remain separate gates.
+
 Static audit2026-09-06 after spacing HOT1163; NOT a new compiler result or
 no-go. The scalar spacing/counting-coefficient promotion does not by itself
 settle the point-source measure convention of the Green kernel.
