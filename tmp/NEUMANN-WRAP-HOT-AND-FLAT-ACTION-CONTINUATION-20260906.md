@@ -1,5 +1,27 @@
 # Continuation at 2026-09-06 21:52 UTC
 
+## Superseding continuation, 21:56 UTC
+
+Flat v1 ended FAIL at the second/Laplacian lemma; first derivative oracle
+printed the trinity. Full first failure preserved and published, ledger1175,
+archive4e6fb5c76f3dd522ccae433a62cf152474f0cdb921cacc8a9afc0d60b7e8dc07,
+report11e1da91319844c59ec23258a0ea5e7a944ab8c3128ec158952c9f2bfed7cea7.
+Do not rerun v1. Replace product-indexed cmp99SourceFlatGaugeConfig_apply
+with the literal cmp99SourceFlatGaugeConfig definition, one proof-line only.
+
+Flat v2 ALREADY LAUNCHED ONCE at21:56:12.778284UTC PID32262 on same runtime.
+SOURCEdeea786e397c603179f1d573331eadc785c0947d;
+draft SHAaafe9b691e99f85d2bd7e2b82cde149cbf6ba7567d09b8c4210bd9402cb9981d.
+Runner/reader/test and published HEADc1e17357fcadd03b7a5312097c5dea912aeb3c7d;
+scripts/colab_neumann_flat_internal_bond_action_hot_v2.py,
+runner SHA9f5cd4e2aeb3abefb4d6f4bed615495337dc40678754fdde5fd6163aa25ddfcc.
+Read /content/neumann-flat-internal-bond-action-hot-v2-console.log.
+Download its v2-evidence.tar.gz on result, verify with
+scripts/verify_neumann_flat_internal_bond_action_hot_v2.py and actual stdout
+hash into validation-evidence/neumann-flat-internal-bond-action-hot-v2-20260906.
+Same first-error rules and scope. No original cold cell rerun. Tab12 marked
+handoff; keep it marked each turn. The older v1-running note below is history.
+
 Branch codex/cmp116-interacting-wilson-hessian; published evidence HEAD
 e8d69033e2ba736d300fef17caa1099f384f4650. Active goal remains open.
 20/41, TermSource=0, window15 not attained; no new cold seal this block.
