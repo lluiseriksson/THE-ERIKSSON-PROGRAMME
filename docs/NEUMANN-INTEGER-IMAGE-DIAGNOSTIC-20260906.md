@@ -57,3 +57,11 @@ Expected inner /content/hrpoly-neumann-integer-image-counting-diagnostic-v1-evid
 Inspect that same process/log, preserve the first error or completed evidence,
 then independently verify with the published reader. No PRE-VALIDATION change
 is authorized by a running prefix or by the Mathlib-only stage alone.
+
+## Superseding result: FAIL preserved, bounded repair pending
+
+Ledger1132 records the actual v1 failure and exact archives. The Mathlib-only
+child stopped in3.727203614s before project prerequisites. The injectivity
+case split did not rewrite its local hypothesis; only that proof is patched.
+Runtime retained for the bounded HOT retry, without restarting the original
+cell or bootstrap. Source-importing draft remains NOT CHECKED.

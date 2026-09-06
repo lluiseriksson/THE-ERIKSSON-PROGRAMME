@@ -30,6 +30,11 @@ checkpoints; the current status is ledger1130/1131, counters20/41 unchanged.
 
 ### Next exact image-indicator draft (not compiled)
 
+Update ledger1132: its v1 Mathlib-only gate failed in3.727203614s in the
+injectivity case split; project prerequisites/draft were NOT RUN. Exact FAIL
+archive preserved. Minimal local-hypothesis rewrite repair remains
+PRE-VALIDATION and will be tested HOT in the retained runtime first.
+
 `tmp/NeumannIntegerImageCountingKernelDraft.lean` now implements the proposed
 coordinatewise R2 bridge against the existing
 `cmp89NeumannReflectionImage`, rather than a newly chosen image family.

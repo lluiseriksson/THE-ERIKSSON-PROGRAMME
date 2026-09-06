@@ -46597,3 +46597,27 @@ and regional derivative B0 remain open. Colab disconnected/deleted after
 independent preservation; UI confirmed Reconnect at07:15UTC, about52min from
 the cold launch including transfer friction. No Lean calculation was repeated.
 20/41,TermSource0,window15 unattained remain unchanged.
+
+## Addendum1132 — integer image v1 cheap gate FAIL, 2026-09-06
+
+Source9bba6c7b8c6f447a8e1914acca66e5c904beb154, vehiclef1df4d6f,
+CPU/highRAM Colab hoste79819ba96b5. The first Mathlib-only child exited1
+in3.727203614s: NeumannIntegerImageCountingMathlibRepro.lean:76:6,
+`change` failed because case splitting did not rewrite the local hypothesis.
+The reflected branch reports the same defect. No project prerequisite or
+source-importing draft child ran. Later sorryAx entries are failed-proof
+evidence, never successful axioms. No seal or numerator movement.
+
+Outer archive2b5824b15159b5bf5e61e6fe25f5036bb152c68d212c85f7323a0b5eb3d61b5a;
+inner3c985e01f64b709b5e6332f84fa7cb8cbeb5fd6de88ea814b98b7711be81f80e;
+failed log3c9388556b331e504fca8cab325acb624b90c86c338e6ea10e3af46294cdfcb1.
+Actual download reached disk and matched Colab; no loopback upload was needed.
+Independent FAIL-only preservation checked15 stage records, exact extraction,
+all source pins and launcher status. Exit0/0.1422138s/23515136 observed peak
+bytes, under30s/512MiB watchdog. Report315618bc8b25b7c3f9343b6579d7b0048cc5cf89dce554484d0bcda9081324e8.
+Durable: validation-evidence/neumann-integer-image-diagnostic-v1-fail-20260906.
+
+Only the injectivity proof is repaired using a named Bool case equation in
+the local hypothesis; statement/constant/hypotheses unchanged, PRE-VALIDATION
+retained. Next: bounded HOT Mathlib-first retry in this retained runtime,
+not a repeat bootstrap or exploratory CI. 20/41,TermSource0,window15 unchanged.

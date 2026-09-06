@@ -1,23 +1,21 @@
-import YangMills.RG.BalabanCMP89NeumannReflectionOrbitAlgebra
 import Mathlib.Data.Int.DivMod
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.Fintype.Pi
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Ring
 
-/-!
-PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
+/-! PRE-VALIDATION: extracted Mathlib-only repro, not a physical seal. -/
+namespace YangMills.RG
+abbrev CMP89NeumannReflectionBranch (d : ℕ) := Fin d → Bool
 
-R2 integer image dictionary, using the existing CMP89 (2.42) image definition.
-B is the positive fine-site block side (later M^depth), m is the anisotropic
-coarse rectangle side, and B*m is the fine rectangle side. Integer division
-is Euclidean, including negative images. No m=N or rectangular invariance
-assumption is introduced. The first three proof bodies are the HOT-verified
-repro of ledger1131; this new composite module has not been compiled.
+def cmp89NeumannReflectionOrbit (m n k : ℤ) (reflected : Bool) : ℤ :=
+  if reflected then 2 * k * m - n - 1 else 2 * k * m + n
 
-The last theorem preserves the literal owner-indicator kernel under a COMMON
-image of source and target. It does not identify that integer kernel with a
-generated finite/retained Q, supply a Neumann Laplacian, interchange an image
-sum with an operator, or prove a Green right inverse or window15.
--/
+def cmp89NeumannReflectionImage {d : ℕ}
+    (m n k : Fin d → ℤ) (branch : CMP89NeumannReflectionBranch d) :
+    Fin d → ℤ :=
+  fun mu => cmp89NeumannReflectionOrbit (m mu) (n mu) (k mu) (branch mu)
+end YangMills.RG
 
 namespace YangMills.RG
 
@@ -73,8 +71,14 @@ theorem neumannIntegerReflectionImage_injective {d : ℕ}
   have he := congrFun h mu
   change cmp89NeumannReflectionOrbit (m mu) (x mu) (k mu) (branch mu) =
     cmp89NeumannReflectionOrbit (m mu) (y mu) (k mu) (branch mu) at he
-  cases hb : branch mu <;>
-    simp [cmp89NeumannReflectionOrbit, hb] at he <;> linarith
+  cases branch mu with
+  | false =>
+      change 2 * k mu * m mu + x mu = 2 * k mu * m mu + y mu at he
+      linarith
+  | true =>
+      change 2 * k mu * m mu - x mu - 1 =
+        2 * k mu * m mu - y mu - 1 at he
+      linarith
 
 /-- A common image preserves the exact equality of block owners. -/
 theorem neumannIntegerBlockOwner_image_eq_iff {d : ℕ}

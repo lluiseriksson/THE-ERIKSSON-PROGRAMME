@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-integer-image-counting-diagnostic-v1", "exit": 0, "log_file": "head.log", "output_sha256": "1c07b297bfcfb98a33bfecf937f576d081b23aa2c0da90b8aaa2baba6660904c", "seconds": 0.0019821340000021337, "stage": "head"}

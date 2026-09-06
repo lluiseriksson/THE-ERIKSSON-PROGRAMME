@@ -73,8 +73,14 @@ theorem neumannIntegerReflectionImage_injective {d : ℕ}
   have he := congrFun h mu
   change cmp89NeumannReflectionOrbit (m mu) (x mu) (k mu) (branch mu) =
     cmp89NeumannReflectionOrbit (m mu) (y mu) (k mu) (branch mu) at he
-  cases hb : branch mu <;>
-    simp [cmp89NeumannReflectionOrbit, hb] at he <;> linarith
+  cases branch mu with
+  | false =>
+      change 2 * k mu * m mu + x mu = 2 * k mu * m mu + y mu at he
+      linarith
+  | true =>
+      change 2 * k mu * m mu - x mu - 1 =
+        2 * k mu * m mu - y mu - 1 at he
+      linarith
 
 /-- A common image preserves the exact equality of block owners. -/
 theorem neumannIntegerBlockOwner_image_eq_iff {d : ℕ}
