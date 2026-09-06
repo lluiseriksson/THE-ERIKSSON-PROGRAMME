@@ -28,6 +28,31 @@ of the original rectangle. Physical Q-kernel/Neumann intertwining and R3/R4
 still require proofs. Historical pending subsections below record earlier
 checkpoints; the current status is ledger1130/1131, counters20/41 unchanged.
 
+### Next exact image-indicator draft (not compiled)
+
+`tmp/NeumannIntegerImageCountingKernelDraft.lean` now implements the proposed
+coordinatewise R2 bridge against the existing
+`cmp89NeumannReflectionImage`, rather than a newly chosen image family.
+Its seven-name queue contains the three integer division proofs from1131,
+the equality owner_B(image_(B*m)(n))=image_m(owner_B(n)), injectivity for ONE
+fixed parity/translation, the owner-equality iff, and the unchanged scalar
+indicator action. The injectivity claim deliberately does not quantify over
+different image indices; it cannot justify image disjointness or a sum change.
+
+The last equality acts on both source and target with the SAME image. It is
+not the finite/retained physical Q intertwiner: identifying the integer owners
+with that operator's actual coordinate map remains the next named dictionary.
+No arbitrary-region permutation, free Q equality, B^d cardinality factor,
+Neumann right inverse or decay estimate has been introduced.
+
+Exact one-file text/import guards passed locally: exit0/0.2070078s,
+15548416observed peak bytes; exit0/0.1124462s,14503936bytes. Both were bounded
+by30s/512MiB, sequential without pools, no Lean/Lake. This only certifies
+textual readiness. PRE-VALIDATION stays on the whole draft. Next remote run
+must first test the new generic case/injectivity steps against the pinned
+Mathlib (minimal extraction), then compile the actual source-importing draft
+and check all seven names. No new runtime or CI has been launched for it.
+
 ## Next bounded R2 diagnostic (after cold geometry seal81260f49)
 
 The new PRE-VALIDATION draft constructs the reflection on the full canonical
