@@ -1,0 +1,107 @@
+{
+  "base": "ba48274f217220ae2aa47ddaddd8e377fb2231a8",
+  "source_hashes": {
+    "PhysicalWilsonCylinder": "CD4EEF25817D3A5F2EF6F61FDD19D3E8E5C3ECA3B5FC34202DDD7219933E4D79",
+    "PhysicalWilsonCylinderMeasure": "8DD90B81481BB7183792204A2588B164095BF47A2D424DBB5967587015F25256"
+  },
+  "opened_utc": "2026-09-06T11:09:18.775110+00:00",
+  "stages": [
+    {
+      "name": "git-init",
+      "command": [
+        "git",
+        "init",
+        "/content/physical-cylinder-r2-gate-5"
+      ],
+      "exit": 0,
+      "seconds": 0.06802995399993961,
+      "log_sha256": "a1e6499d26a64ee560e0ac15c9da3c5415bdef8e84e427a08bf9c80c7269cb73"
+    },
+    {
+      "name": "remote",
+      "command": [
+        "git",
+        "remote",
+        "add",
+        "origin",
+        "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
+      ],
+      "exit": 0,
+      "seconds": 0.004801199999974415,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fetch",
+      "command": [
+        "git",
+        "fetch",
+        "--depth",
+        "1",
+        "origin",
+        "ba48274f217220ae2aa47ddaddd8e377fb2231a8"
+      ],
+      "exit": 0,
+      "seconds": 2.8731856330000483,
+      "log_sha256": "95ce53cd38436adf2a8d3eeeb16a9f63a882d53546c1f339d0747b0fae469386"
+    },
+    {
+      "name": "checkout",
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "exit": 0,
+      "seconds": 1.2182819300001029,
+      "log_sha256": "0246a80e53528da3d6ff357b5272d16cd6fc8ab4cffeb65d905707d6f47dd703"
+    },
+    {
+      "name": "elan",
+      "command": [
+        "bash",
+        "-c",
+        "set -eu; curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /content/r2-elan-init.sh; sh /content/r2-elan-init.sh -y --default-toolchain none"
+      ],
+      "exit": 0,
+      "seconds": 0.7667555269999866,
+      "log_sha256": "06c09f6daa65bae914273dd027db1dd1eddfce63ac3152b1cde48b1902504ed5"
+    },
+    {
+      "name": "toolchain",
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 12.801524568000104,
+      "log_sha256": "26d7b52a0c4c3043835c929208c2a55be8d4d0b2075dc2be11bde1ab7580c3f3"
+    },
+    {
+      "name": "mathlib-cache",
+      "command": [
+        "lake",
+        "exe",
+        "cache",
+        "get"
+      ],
+      "exit": 0,
+      "seconds": 75.85349439200013,
+      "log_sha256": "dd60667615ca300ea70c3ebfb34fcf9f9d2a346dfcd5316148c103790c7b01c9"
+    },
+    {
+      "name": "focal",
+      "command": [
+        "lake",
+        "build",
+        "YangMills.OS.PhysicalWilsonCylinderMeasure"
+      ],
+      "exit": 1,
+      "seconds": 114.82664102400008,
+      "log_sha256": "54249c2f3f93a499302f212b16c1ad65ccd1164c4eb49eb35e9a6fd8f25a2d4c"
+    }
+  ],
+  "verdict": "FAIL",
+  "error": "RuntimeError('focal failed')",
+  "finished_utc": "2026-09-06T11:12:47.206869+00:00"
+}

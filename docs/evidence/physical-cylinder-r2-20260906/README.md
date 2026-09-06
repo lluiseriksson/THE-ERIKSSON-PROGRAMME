@@ -120,3 +120,26 @@ The [public manifest](diagnostic-4-manifest.json) preserves its recorded fields.
 The next draft uses an explicit intermediate integral and an instantiated
 constant-multiplication theorem. It also removes compiler-reported unused
 simp arguments. The mathematical statement and 39-headline target are unchanged.
+
+## Diagnostic 5: cast/inverse identity exposed
+
+Fresh clone at the same registration commit; geometry unchanged. Measure
+SHA-256 `8DD90B81481BB7183792204A2588B164095BF47A2D424DBB5967587015F25256`.
+The [public manifest](diagnostic-5-manifest.json) preserves every recorded field.
+
+- Execution: `2026-09-06T11:09:18.775110Z` to
+  `2026-09-06T11:12:47.206869Z` (208.431759 seconds).
+- CPU/high-RAM, 50.99 GB; automatic release and disconnected UI observed.
+  Exact allocation/billing duration was not captured.
+- Focal exit **1** (114.826641 seconds). The explicit calculation now exposes
+  the difference between the complex cast of a real inverse and inversion
+  after casting. Both remaining goals are in `integral_gibbs_eq`; the
+  standard `Complex.ofReal_inv` identity is the next repair.
+- Focal log SHA-256:
+  `54249c2f3f93a499302f212b16c1ad65ccd1164c4eb49eb35e9a6fd8f25a2d4c`.
+- Complete archive SHA-256:
+  `3ae8d20fadd84429df046b852da487e2de0b0898e3b7698f747bb728e1f6b968`.
+  Full logs/source and lossless Base64 are retained in notebook cell 7.
+
+No oracle or core build ran in this failed unit. The next draft adds the
+cast/inverse rewrite; the statement and headline list are unchanged.

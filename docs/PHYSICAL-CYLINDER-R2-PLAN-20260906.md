@@ -83,6 +83,9 @@ of this task.
 - 2026-09-06: diagnostic 4 left one normalization rewrite error. Its full
   record is retained. An explicit integral equality replaces that rewrite
   in the next draft; 39 headline checks remain pending.
+- 2026-09-06: diagnostic 5 exposed the cast/inverse identity needed by that
+  calculation. The failure is retained; the next run adds the standard
+  complex coercion lemma without changing the theorem's statement.
 
 ## R3 reuse boundary identified during R2
 
