@@ -41,7 +41,7 @@ theorem neumannOrbitFalse_periodRemainder
   have h := Int.ediv_mul_add_emod
     (cmp89NeumannReflectionOrbit m n.1 k false) (2 * m)
   rw [neumannOrbitFalse_periodQuotient m hm n k] at h
-  simp only [cmp89NeumannReflectionOrbit_false] at h ⊢
+  simp only [cmp89NeumannReflectionOrbit_false] at h
   nlinarith
 
 theorem neumannOrbitTrue_periodRemainder
@@ -50,7 +50,7 @@ theorem neumannOrbitTrue_periodRemainder
   have h := Int.ediv_mul_add_emod
     (cmp89NeumannReflectionOrbit m n.1 k true) (2 * m)
   rw [neumannOrbitTrue_periodQuotient m hm n k] at h
-  simp only [cmp89NeumannReflectionOrbit_true] at h ⊢
+  simp only [cmp89NeumannReflectionOrbit_true] at h
   nlinarith
 
 /-- Unlike fixed-image injectivity, this varies translation, parity and the
@@ -59,14 +59,8 @@ theorem neumannImageIntervalFamily_injective (m : ℤ) (hm : 0 < m) :
     Function.Injective (fun p : ℤ × Bool × neumannImageIntervalPoint m =>
       cmp89NeumannReflectionOrbit m p.2.2.1 p.1 p.2.1) := by
   rintro ⟨k, b, n⟩ ⟨l, c, v⟩ he
-  change cmp89NeumannReflectionOrbit m n.1 k b =
-    cmp89NeumannReflectionOrbit m v.1 l c at he
   have hq := congrArg (fun u : ℤ => u / (2 * m)) he
   have hr := congrArg (fun u : ℤ => u % (2 * m)) he
-  change cmp89NeumannReflectionOrbit m n.1 k b / (2 * m) =
-    cmp89NeumannReflectionOrbit m v.1 l c / (2 * m) at hq
-  change cmp89NeumannReflectionOrbit m n.1 k b % (2 * m) =
-    cmp89NeumannReflectionOrbit m v.1 l c % (2 * m) at hr
   cases b <;> cases c
   · rw [neumannOrbitFalse_periodQuotient m hm n k,
       neumannOrbitFalse_periodQuotient m hm v l] at hq

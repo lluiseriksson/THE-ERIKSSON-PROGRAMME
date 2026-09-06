@@ -46726,3 +46726,25 @@ Neumann precision, full inverse or physical B0. HOT only, PRE-VALIDATION
 retained pending exact promotion/cold gate. Runtime retained for the prepared
 independent interval-image diagnostic; no process duplicated. Counters20/41,
 TermSource0,window15 compatible/not attained unchanged.
+
+## Addendum1137 — interval image HOT v1 normalization failure, 2026-09-06
+
+Independent interval-coverage source977d05282, runner46102f4c0,
+SHA25608576be0e6ba694515cc83f6dfa867523e5171bda09a9ec6c3551d00551e164a.
+Retained same Colab runtime after ledger1136 PASS was locally preserved.
+Mathlib-only repro failed in3.275095278s, exit1; no project draft execution.
+First error at repro56:2: linarith sees an expanded orbit in h but an opaque
+orbit in the goal. Same at65:2; injectivity rewrites also need explicit beta/
+projection normalization. Compiler-produced sorryAx placeholders in this
+FAILED elaboration are not accepted evidence or source admissions.
+
+Archive600f41b23e653a53e51769e63e99c95bc6410c9955e50967395c85e0e4ebd94a;
+log31a7680f2b625bf98f826edffafc9efb43f6390865d68ee9438ce880eeaf51f5.
+Independent reader VERIFIED_FAILURE,exit0/0.3097112s/23203840observed peak
+RSS bytes under30s/512MiB watchdog. Report
+a4e4bec7fefb5fa0c11c5e30e3fc65634b20ef393306cda20721f88af8855fb1.
+Durable validation-evidence/neumann-image-interval-hot-v1-fail-20260906.
+Repair normalizes both hypothesis and goal and pins local equality forms;
+no statement, constant, interval convention or hypothesis changes. Keep
+PRE-VALIDATION and retry only this bounded HOT unit, no graph rebuild.
+20/41,TermSource0,window15 unchanged; finite-Q HOT PASS remains preserved.
