@@ -1,5 +1,14 @@
 # Canonical Neumann finite-offset action — next cold gate
 
+LIVE 2026-09-06T14:47:47.255875UTC: the one-shot cell started in Colab
+CPU/high-RAM (50.99GB visible), account lluiseriksson@gmail.com. Hash gate
+passed with source474688021 and revision neumann-canonical-precision-promoted-cold-v1.
+Launcher PID1050. Notebook vehicle7da1ad7d9f1975668dba1f697a919d8bcb328d1b,
+browser tab8, cell nPUF43VKLvF9. One execution only; no verdict yet.
+Keep this tab/runtime until evidence is preserved. Do not rerun the cell.
+Expected outer /content/neumann-canonical-precision-promoted-cold-v1-preservation-20260906.tar.gz.
+Local reader scripts/preserve_neumann_canonical_precision_cold.py verifies it.
+
 Cold package prepared: source4746880218c694a9d4e9d32c0af61f86d460b7b4,
 runner/reader44857de9b870e433d36b30e3a52a74b05e9a5d0d,
 launcher8ed60e286f2d670acfd0662ca21541fbedf20c29.
