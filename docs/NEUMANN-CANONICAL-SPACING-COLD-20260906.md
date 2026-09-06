@@ -61,3 +61,11 @@ passed1 fixture, rejected10 corruptions, preserved1 failure;0.404482s/
 No compiler evidence for this draft. Fill pins only after the current cold
 archive is independently preserved; then reuse the SAME runtime if available.
 Never reset or re-clone it merely to debug these four identities.
+
+Static audit while this cold graph runs identified an additional explicit
+acceptance gate R1b/R3 in NEUMANN-INTEGER-TO-PHYSICAL-NEXT-20260906.md:
+the Eq243/246 source is xi^(-d)-normalized while the finite counting kernel
+operator probes an unscaled delta. The actual inverse proof must show which
+RHS it solves and transport the xi^d factor explicitly. This is not a newly
+proved no-go, does not alter the current spacing statements or source SHA,
+and must not be hidden inside the already distinct Q-adjoint mass convention.

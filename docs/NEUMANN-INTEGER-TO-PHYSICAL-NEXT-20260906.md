@@ -436,3 +436,47 @@ This does not supply reflection covariance of the full two-endpoint Green,
 its full-lattice point-source equation, or the image-series right-inverse law.
 Those analytic/domain gates remain required before inverse uniqueness.
 No new source module or result is claimed by this located reuse.
+
+## R1b/R3 acceptance gate: Fourier density versus counting kernel entry
+
+Static audit2026-09-06 after spacing HOT1163; NOT a new compiler result or
+no-go. The scalar spacing/counting-coefficient promotion does not by itself
+settle the point-source measure convention of the Green kernel.
+
+The following literal definitions were read together:
+
+- BalabanCMP89Eq246FinePointSourceFibreGreen: the Fourier transform has
+  xi^d in its lattice sum; cmp89Eq243NormalizedFinePointSource is
+  xi^(-d) at the source. Its proved transform is the source phase.
+- cmp89Eq246PhysicalFineToFineGreenIntegrand synthesizes every alias of
+  that solution with no additional xi^d prefactor. The physical endpoint
+  wrapper only rescales the two endpoint coordinates.
+- BalabanCMP89Eq246FinePointSourceHolomorphy:
+  cmp89Eq246NormalizedPhysicalFineToFineGreen applies the literal
+  (2*pi)^(-4) Brillouin integral, not a lattice-measure multiplier.
+- BalabanCMP89NeumannScalarReflectionOperator:
+  finitePiLpScalarKernelOperator sums kernel(target,source)*f(source)
+  in COUNTING measure. Its single-site probe has amplitude v, not xi^(-d)*v.
+
+Therefore the physical inverse proof must explicitly determine its RHS:
+delta_counting or delta_density=xi^(-d)*delta_counting. The anticipated
+conversion, CONDITIONAL on the physical full-lattice equation being proved,
+is K*(G_density column)=xi^(-d)*delta_counting, hence the counting inverse
+entry is xi^d*G_density. At xi=B^(-1),d=4 this is B^(-4).
+This is a source/consumer convention gate, not a proved full-kernel equation.
+Do not insert the multiplier silently, and do not claim a contradiction in
+a sealed conditional theorem: its right-inverse premise remains unproved.
+
+Keep three distinct uses of volume separate:
+1. a_r B^d times counting Q-adjoint mass B^(-2d) gives a_r B^(-d)
+   (spacing HOT1163, production cold in flight).
+2. a common xi^d weight in BOTH Hilbert inner products cancels in an adjoint
+   (a separate measure dictionary; cancellation alone does not rescale a probe).
+3. evaluating an inverse on xi^(-d)*delta differs from evaluating it on delta
+   by xi^(-d), by linearity. The finite scalar-kernel sum must match its probe.
+
+Before any full Eq246 replacement is accepted as a regional inverse,
+state the normalized delta law and derive the counting-entry conversion by
+name. Actual full-kernel reflection summability and decay remain valid for
+their declared unscaled density object; they do not by themselves supply this
+operator identification. This gate adds no terminal row and changes no counter.
