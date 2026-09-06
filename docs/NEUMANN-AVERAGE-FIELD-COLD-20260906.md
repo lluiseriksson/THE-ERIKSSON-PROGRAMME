@@ -1,5 +1,17 @@
 # Six-name averaging/field-action cold cohort
 
+LIVE: single execution started2026-09-06T11:05:27.144744UTC,
+HASH_GATE=PASS, launchPID1043. New runtime after confirmed prior deletion;
+UI50.99GiB highRAM, accountlluiseriksson@gmail.com. The runner independently
+enforces CPU/noGPU/highRAM. Transport notebook/reader/preserver/checks
+published70f5f5ea0e5a0847e9bfa478f22261271fd9853f; final local pin check
+exit0/0.4997184s/22650880RSS and SOURCE_GIT_BLOBS=4/4.
+One tab4/browser1. Its legacy notebook title remains integer-image-owner;
+only Cell3 was replaced, verified empty first, then checked against the
+published six-name cell and executed once. Cell1/2 are historical and MUST
+NOT run. Runtime is computing; no current verdict. Do not rerun Cell3.
+No monitor automation or second scientific process was created.
+
 Prepared SOURCE8570618f20c62c5724555589f910b84fdf803c33.
 Exact HOT bodies: block-image averaging f8e37328b (ledger1146),
 generated Q/source-weighted/counting full-field action765c7be79 (ledger1148).
