@@ -47535,3 +47535,25 @@ editor is unexecuted and must never be mistaken for the original running cell.
 Selective header/body/text/import check exit0/0.1334575s/15196160RSS;
 staged Git-blob archive/report hashes checked exit0/0.1361709s/16052224RSS.
 Neither bounded local check invoked Lean or Lake.
+
+## Addendum 1167 — wrap probe HOT v1 first elaboration failure (2026-09-06)
+
+SOURCE5442189556b1c85e3ac0cb864403cc65f8e23b31, retained BASE81f35765ad50f8217bca20bc4530d99b3bf05103.
+Runner e8d513b2af902fb91b58bdb61c1f989de6e6440d, reader5ef38b091;
+same runtimeb53f9b4fbc01, launch21:10:26.816673UTC PID18398. Prerequisites
+8662jobs exit0/428.719920808s, then physical_draft exit1/7.138016281s.
+First error: NeumannRectangleWrapProbeDraft.lean:27:6, rewrite does not find
+the source-rectangle membership under the private wrapProbeRegion abbreviation.
+The same compiler run also reports maxRecDepth at46:12 (Finset.mem_univ
+for the concrete function-indexed bond), NOT at the numerical shift rfl.
+The subsequent sorryAx is error recovery in this FAIL, never accepted evidence.
+
+Original archive d734e0ff4816b23ee90c660bda5ff46bc1ad3904f41d0de86357796699239818;
+independent report11ec39b99674ba10f05aadc0f9a6d523adf5c3f2ae0ef0a0a464684ffa5c1526.
+Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v1-20260906.
+Independent reader exit0/0.1503786s/18194432RSS: VERIFIED_FAILURE, exact
+source/parent/commands, first nonzero child and original log checked.
+No cold rerun, no seal, no second flat-action diagnostic started. Keep
+the same cache for a bounded proof repair; do not raise recursion/heartbeat
+limits or change the witness/statement to bypass the elaboration failure.
+20/41,TermSource0,window15 unattained unchanged.
