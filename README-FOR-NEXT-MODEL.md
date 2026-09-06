@@ -5,6 +5,8 @@ notebook abe9e4560910afa7d433851d35890062d8ed328a, one execution
 2026-09-06T20:25:39.007088UTC, PID1799, hash gate PASS.
 Colab CPU/highRAM50.99GB, account lluiseriksson@gmail.com, browser tab10,
 cell Lfn-ch7rZMDi. No final verdict yet. Do not rerun or close the active tab.
+At20:28:25UTC runtimeb53f9b4fbc01 entered internal_bond_stencil_focal after
+Mathlib cache8142/exit0. Next coarse result check around20:55UTC, not minute polls.
 See docs/NEUMANN-INTERNAL-BOND-STENCIL-COLD-20260906.md. Prepare only the
 bounded wrap probe while the cold graph runs. Historical no-job notes below
 describe the completed previous runtime.20/41,TermSource0 unchanged.

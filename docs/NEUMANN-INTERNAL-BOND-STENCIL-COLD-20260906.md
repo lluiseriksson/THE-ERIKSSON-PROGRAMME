@@ -5,6 +5,10 @@ hash gate PASS, CPU/highRAM50.99GB, accountlluiseriksson@gmail.com.
 Browser tab10, cellLfn-ch7rZMDi, notebookvehicleabe9e4560910afa7d433851d35890062d8ed328a.
 Source checkpoint81f35765ad50f8217bca20bc4530d99b3bf05103.
 No final verdict yet. Do not reexecute or disconnect before preservation.
+Bootstrap observation20:28:25UTC: runtime b53f9b4fbc01, official Mathlib
+cache8142 decompressed, cache_get exit0, internal_bond_stencil_focal entered.
+This is a progress checkpoint, not PASS. Next coarse result check near20:55UTC,
+following the previous cold focal prior; do not poll every minute.
 Exact HOT draft promotionc0174bbcb, preserved ledger1165: four actual
 internal-bond adjoint/divergence identities, no free Green or boundary law.
 Production and audit remain PRE-VALIDATION until fresh cold evidence.
