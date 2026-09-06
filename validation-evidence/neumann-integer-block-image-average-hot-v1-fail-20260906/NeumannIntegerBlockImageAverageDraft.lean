@@ -47,7 +47,7 @@ theorem neumannIntegerImage_fineBlockPoint {d B : ℕ}
   funext mu
   cases hb : branch mu
   · simp only [cmp89NeumannReflectionImage, cmp89NeumannReflectionOrbit,
-      neumannIntegerFineBlockPoint, neumannHalfCellReflection, hb, Bool.false_eq_true, if_false]
+      neumannIntegerFineBlockPoint, neumannHalfCellReflection, hb, if_false]
     ring
   · simp only [cmp89NeumannReflectionImage, cmp89NeumannReflectionOrbit,
       neumannIntegerFineBlockPoint, neumannHalfCellReflection, hb, if_true]

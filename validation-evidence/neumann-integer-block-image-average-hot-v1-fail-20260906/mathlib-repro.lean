@@ -1,5 +1,43 @@
-import YangMills.RG.NeumannHalfCellBlockReflection
-import YangMills.RG.NeumannIntegerImageCountingKernel
+import Mathlib
+namespace YangMills
+abbrev FinBox (d N : ℕ) := Fin d → Fin N
+
+end YangMills
+namespace YangMills.RG
+def cmp89NeumannReflectionOrbit (m n k : ℤ) (reflected : Bool) : ℤ :=
+  if reflected then 2 * k * m - n - 1 else 2 * k * m + n
+
+@[simp] theorem cmp89NeumannReflectionOrbit_false (m n k : ℤ) :
+    cmp89NeumannReflectionOrbit m n k false = 2 * k * m + n := by
+  rfl
+
+@[simp] theorem cmp89NeumannReflectionOrbit_true (m n k : ℤ) :
+    cmp89NeumannReflectionOrbit m n k true = 2 * k * m - n - 1 := by
+  rfl
+abbrev CMP89NeumannReflectionBranch (d : ℕ) := Fin d → Bool
+def cmp89NeumannReflectionImage {d : ℕ}
+    (m n k : Fin d → ℤ) (branch : CMP89NeumannReflectionBranch d) :
+    Fin d → ℤ :=
+  fun mu => cmp89NeumannReflectionOrbit (m mu) (n mu) (k mu) (branch mu)
+
+@[simp] theorem cmp89NeumannReflectionImage_apply {d : ℕ}
+    (m n k : Fin d → ℤ) (branch : CMP89NeumannReflectionBranch d)
+    (mu : Fin d) :
+    cmp89NeumannReflectionImage m n k branch mu =
+      cmp89NeumannReflectionOrbit (m mu) (n mu) (k mu) (branch mu) := by
+  rfl
+def neumannHalfCellReflection {d N : ℕ}
+    (branch : Fin d → Bool) (x : FinBox d N) : FinBox d N :=
+  fun mu => if branch mu then (x mu).rev else x mu
+
+theorem neumannHalfCellReflection_involutive {d N : ℕ}
+    (branch : Fin d → Bool) :
+    Function.Involutive (neumannHalfCellReflection (N := N) branch) := by
+  intro x
+  funext mu
+  cases h : branch mu <;> simp [neumannHalfCellReflection, h]
+
+end YangMills.RG
 
 /-!
 PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
@@ -47,7 +85,7 @@ theorem neumannIntegerImage_fineBlockPoint {d B : ℕ}
   funext mu
   cases hb : branch mu
   · simp only [cmp89NeumannReflectionImage, cmp89NeumannReflectionOrbit,
-      neumannIntegerFineBlockPoint, neumannHalfCellReflection, hb, Bool.false_eq_true, if_false]
+      neumannIntegerFineBlockPoint, neumannHalfCellReflection, hb, if_false]
     ring
   · simp only [cmp89NeumannReflectionImage, cmp89NeumannReflectionOrbit,
       neumannIntegerFineBlockPoint, neumannHalfCellReflection, hb, if_true]

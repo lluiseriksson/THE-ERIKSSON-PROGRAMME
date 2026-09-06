@@ -46926,3 +46926,19 @@ HOT proof bodies. Rectangle coverage and source-image summability do not
 prove the regional inverse, uniform physical B0, or window15 attainment.
 20/41,TermSource0,Clay<0.1% unchanged. Retain runtime for the already prepared
 bounded R2d.1 and R2d.2a diagnostics only; no repeated cold build or CI.
+
+## Addendum1145 — finite block-image HOT v1 first error, 2026-09-06
+
+Source4c8171bdc4f70606d89de05f53b6f90d39e689b8, runner45abf2415477e02329acab300e3d8610949cb369,
+retained af35 checkout, start10:45:47UTC, PID73653 completed.
+Mathlib-only repro stopped at87:2 after12.561432244s, exit1:
+the false branch retained `if false = true` because simp only omitted the
+Boolean equality reduction. No project prerequisites or actual draft ran.
+Repair adds Bool.false_eq_true only; no statement or hypothesis change.
+Archivef46a75d9bfc546eaa3963eed05f7ea7de7b5d17cfc4109881148c85838b65ca1,
+first-error logde0b6ba749bcb83d43f16d2efd4bdc8c3ab23f7ff021eb06fbb675a29de4562c.
+Independent reader VERIFIED_FAILURE,exit0/0.3873167s/22978560observed RSS,
+reportaa29954c8b56dc863ab0826a25469d745553e08833bf3d23753c7fda4afdb6ec.
+Durable validation-evidence/neumann-integer-block-image-average-hot-v1-fail-20260906.
+Error-recovery sorryAx outputs are rejected, not accepted as declarations.
+Retry remains PRE;20/41,TermSource0,window15 unchanged.
