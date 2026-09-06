@@ -47431,3 +47431,34 @@ and the sole browser tab was closed (zero tabs). No job/monitor remains.
 The earlier interruption caused an idle disconnection, not evidence loss;
 do not rerun either historical cold or HOT job. Next prepare a fresh
 three-name production cold gate before allocating another high-RAM runtime.
+
+## Addendum 1164 — canonical spacing/counting normalization cold seal (2026-09-06)
+
+SOURCEdd9354a87d2e9d60dac69aa79f287b53e45ba207, notebook6eb506f130c1bd3d42d891879c78749502dfac24.
+One launch PID1139 at19:30:22.418089UTC, CPU/highRAM50.99GB,
+runtimea824030f7bc1. Official toolchain4.29.0-rc6 and exact Mathlib
+07642720480157414db592fa85b626dafb71355b verified. No project build restore.
+Focal8743jobs exit0/1645.627271009s; audit exit0/15.844011201s.
+All16 stages passed; whole physical runner1777.82256337s. Exact names:
+neumannCanonicalFourierSpacing_terminal_eq_one,
+neumannCanonicalFourierSpacing_countingCoefficient,
+neumannCanonicalFourierSpacing_countingMassCoefficient,
+all with exactly {Classical.choice,Quot.sound,propext}.
+The two redundant-ring warnings at production line73 are preserved, not hidden.
+
+Downloaded original outer33830a24341b533cff91184a3e0967f6ce5f1e23654c6fbccf584bd7e23f485d;
+innerf0166d3934ee455d70e618f9f8c33a0cc291c8efb99ee0217d47a71921128eb5;
+independent reportff717adf491d3403d767a74e8ddaca70c6a0c39578bbe2ad84a61ab370bd0e50;
+production oleandbda0bf9590ece51553179d34eb947ceb5e543faba9333c11c938768da8020a2.
+Preserved validation-evidence/neumann-canonical-spacing-cold-20260906.
+Bounded local reader exit0/0.1612902s/16601088 observed peak RSS. It verifies
+the original outer/inner membership, transport/pins, child commands/exits,
+logs, actual source, three exact names, outputs and physical scope.
+
+Only NeumannCanonicalSpacingNormalization and Audit retire PRE, without
+changing any mathematical body or suppressing warnings. This seals scalar
+spacing/counting normalization, not a regional right inverse, uniform B0 or
+window15.20/41,TermSource0,Clay<0.1% unchanged.
+The runtime is retained for the prepared bounded internal-bond HOT diagnostic;
+its parent pins must use this actual independent review. No cold rerun.
+The static wrap-bond probe544218955 remains PRE, not new compiler evidence.

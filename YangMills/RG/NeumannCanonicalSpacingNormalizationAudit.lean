@@ -1,8 +1,8 @@
 import YangMills.RG.NeumannCanonicalSpacingNormalization
 
-/-! PRE-VALIDATION: audit source present; the production .olean is not yet
-materialized and this audit is not compiler-verified in a fresh clone.
-Exact three-name audit of the HOT1163 promotion; no wider closure claim. -/
+/-! COLD VERIFIED at sourcedd9354a87d2e9d60dac69aa79f287b53e45ba207,
+ledger1164. Exact three-name audit; independently preserved cold evidence.
+No boundary inverse, uniform B0 or window15 closure claim. -/
 
 #print axioms YangMills.RG.neumannCanonicalFourierSpacing_terminal_eq_one
 #print axioms YangMills.RG.neumannCanonicalFourierSpacing_countingCoefficient

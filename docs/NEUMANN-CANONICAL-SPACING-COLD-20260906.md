@@ -1,5 +1,17 @@
 # Canonical Neumann spacing — fresh intermediate cold gate (2026-09-06)
 
+FINAL: independently preserved COLD PASS, ledger1164, observed20:00UTC.
+Focal8743jobs exit0/1645.627271009s; audit exit0/15.844011201s.
+All16stages, exact3names/trio. Both redundant-ring warnings remain in the log.
+Outer33830a24341b533cff91184a3e0967f6ce5f1e23654c6fbccf584bd7e23f485d;
+innerf0166d3934ee455d70e618f9f8c33a0cc291c8efb99ee0217d47a71921128eb5;
+independent reportff717adf491d3403d767a74e8ddaca70c6a0c39578bbe2ad84a61ab370bd0e50;
+oleandbda0bf9590ece51553179d34eb947ceb5e543faba9333c11c938768da8020a2.
+Preserved validation-evidence/neumann-canonical-spacing-cold-20260906.
+Local bounded reader exit0/0.1612902s/16601088 observed peak RSS.
+Runtimea824030f7bc1 remains retained for bounded R3 HOT, not another cold run.
+Only the two certified headers retire PRE. The LIVE notes below are history.
+
 Status: LIVE, one execution started2026-09-06T19:30:22.418089UTC.
 Hash gate PASS; launcherPID1139. Colab CPU/highRAM50.99GB, account
 lluiseriksson@gmail.com. Notebook vehicle6eb506f130c1bd3d42d891879c78749502dfac24,

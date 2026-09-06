@@ -2,9 +2,9 @@ import YangMills.RG.NeumannCanonicalPrecisionOffsetAction
 import YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse
 
 /-!
-PRE-VALIDATION: production source present; its .olean has not yet been
-materialized and this production module is not compiler-verified in a fresh
-clone. Exact mathematical body from HOT1163 source852d3b82e, three names.
+COLD VERIFIED at sourcedd9354a87d2e9d60dac69aa79f287b53e45ba207,
+ledger1164: fresh Colab focal8743 jobs and exact three-name audit, with
+downloaded evidence independently verified. Exact HOT1163 mathematical body.
 
 Canonical fine spacing is fixed to (M^(steps+1))^-1. The derived terminal
 spacing is one; the counting coefficient a_r B^d combines with B^(-2d)

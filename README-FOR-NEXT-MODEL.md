@@ -1,5 +1,13 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest1164: spacing cold sourcedd9354a87 PASS,8743jobs/16stages/3exactnames.
+Outer33830a24 and independent reportff717adf are downloaded and preserved.
+Only NeumannCanonicalSpacingNormalization + Audit retire PRE; exact body kept.
+Runtimea824030f7bc1/tab9 retained for the prepared bounded internal-bond HOT
+sourcec0174bbcb. Fill actual parent pins from this preserved cold evidence;
+do not rerun cold or call the prepared wrap probe544218955 compiler-verified.
+20/41,TermSource0,window15 unattained. Earlier LIVE paragraphs are historical.
+
 LIVE spacing cold: SOURCEdd9354a87, runner/readere2693781d, launcher339d5a2e7.
 Started once2026-09-06T19:30:22.418089UTC, hash gate PASS, PID1139,
 CPU/highRAM50.99GB, tab9/cellJj0kgx_GMieQ. No final verdict yet.
