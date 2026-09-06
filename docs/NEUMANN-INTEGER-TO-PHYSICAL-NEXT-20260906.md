@@ -2,6 +2,14 @@
 
 ## Superseding measured state, 2026-09-06
 
+Wrap acceptance probe: HOT PASS at sourcebaf5fa136663fe71a9cf07dacd4e365b0026942e,
+ledger1174, with its actual one-name oracle and original archive preserved.
+The side3 torus wrap bond is retained despite non-strict site fit; its integer
+forward endpoint leaves the rectangle. This is no longer only a static
+observation, but it is NOT cold-sealed or a comparison of inverse norms.
+Historical PRE descriptions below remain provenance, superseded only by this
+bounded HOT measurement. No terminal row, regional inverse or B0 discharged.
+
 Latest R3-stencil update: NeumannInternalBondStencil and its four-name audit
 are COLD SEALED at39b0782587098e1698f75b8663b32cb5a6946773 (ledger1166),
 compiled source81f35765ad50f8217bca20bc4530d99b3bf05103. The actual counting

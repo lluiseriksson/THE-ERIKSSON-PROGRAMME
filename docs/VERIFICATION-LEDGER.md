@@ -47650,3 +47650,28 @@ Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v6-20260906.
 Reader exit0/0.1504222s/18305024RSS VERIFIED_FAILURE. Next PRE changes only
 layout to an explicit nested tactic block; statement/gate/limits unchanged.
 20/41,TermSource0,window15 unchanged; no cold or flat action claimed.
+
+## Addendum 1174 — wrap witness HOT PASS, not a cold seal (2026-09-06)
+
+SOURCEbaf5fa136663fe71a9cf07dacd4e365b0026942e, runnerf51c95796bb8218a8cb2a06341c52fd420807f16.
+One launch21:49:07.784465UTC PID30261 on retained runtimeb53f9b4fbc01.
+All8 stages exit0, pinned BASE81f35765ad50f8217bca20bc4530d99b3bf05103
+and Mathlib07642720480157414db592fa85b626dafb71355b, Lean4.29.0-rc6.
+Prerequisites8.592236651s; physical draft8.341512584s. Source clean before/after.
+Exact sole oracle neumannRectangle_siteFit_retains_wrapBond:
+{Classical.choice,Quot.sound,propext}; no sorryAx accepted.
+Archive0f9875ee8fdb56e62df2cb0281c67b1b675876828cda7b359582cc60c14b391d;
+reportd29742db7f87edc4103ddbb92551e7a7841ad9d318f9e94ed0073ae2785adf62;
+olean39724ac41e497899348c4e01bbf0afbd5aa2359b8a69651b222fd8ed1040252d.
+Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v7-20260906.
+Reader exit0/0.1630367s/14811136RSS VERIFIED_HOT_PASS, cold_seal=false.
+
+This proves the actual retained torus bond witness at side3, not an inverse
+norm comparison or impossibility of a conditional Green theorem. Site-fit<=
+alone does not identify the integer nonperiodic bond graph. Promotion still
+requires its cold gate; no PRE mark is removed here.20/41,TermSource0,
+window15 unattained unchanged. Next: separately pinned flat-action HOT.
+House note from measured profile1172: avoid concretely reducing Finset.univ
+when applying a generic membership theorem; with_reducible plus explicit
+indices works here. Use an explicit nested tactic block for continuation
+arguments. Neither raising limits nor changing exact/apply alone worked.
