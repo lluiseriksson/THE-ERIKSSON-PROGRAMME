@@ -1,5 +1,31 @@
 # Physical residue endpoint continuity — 2026-09-04
 
+## Recovered counting-reflection FAIL — 2026-09-06
+
+Source dc00d3fe4, original PID3798 completed with exit1 after2078.64705s.
+The original runtime99176a0ef4c0 and output were recovered after the browser
+session disappeared; the cell was NOT rerun. Prerequisites passed8486 jobs
+in1840.632s. The draft failed at34:46, rewrite could not match lifted-site
+membership through the recursive lattice-size type. The other probe names
+printed compiler-inserted sorryAx through that failed proof and are rejected.
+No new mathematical seal or marker retirement.
+
+Downloaded outer97b8b08e71002036bdbe45b6f6e23547468e296a2bf566a61180514bc056f30a,
+innercae59efad28b957bd27df86316b06d3a6ae4b46ee5815cfe9c3c66ba841dd0de,
+failure logd62460143bb847114d7541ffcee9d06f53b942bf4a02746b467ae7abd3a89457.
+Independent failure preservation exit0/0.3052356s/19341312 observed bytes.
+Reportd269ad41c39417190b2f9c3e4930d5cb7b3594af8d4c6eb81ed25afc411a1128.
+Durable validation-evidence/neumann-counting-reflection-diagnostic-fail-20260906.
+
+Only the failed membership application is repaired locally, using explicit
+d/M/N' and the existing iff's forward construction instead of pattern rw.
+Same theorem/constant/hypotheses. Guards passed2files in0.1834345s/15884288
+and0.1217946s/13307904 observed bytes. The correction is still PRE-VALIDATION.
+Next: publish exact corrected blob and test it once in the retained warm
+checkout, preserving old archives. Browser connection was transient; inspect
+the session/hostname before launch. No CI, Windows Lean, or new cold graph.
+Counters20/41,TermSource0,window15 unattained unchanged.
+
 ## Live counting-reflection diagnostic — 2026-09-05 19:47:36UTC
 
 Exactly one cell started, source dc00d3fe4a583da601820605a98644e1fbc0245d,

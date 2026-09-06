@@ -46464,3 +46464,28 @@ sole tab closed and monitor-half-cell-reflection-cold-gate deleted.
 This seals geometry only. Active-carrier invariance, physical Q*Q reflection,
 regional right inverse and derivative B0 remain separate R2/R3/R4 gates.
 20/41,TermSource0,window15 unattained; Clay <0.1% remain unchanged.
+
+## Addendum 1127 — generated counting reflection diagnostic FAIL (2026-09-06)
+
+The source dc00d3fe4a583da601820605a98644e1fbc0245d diagnostic completed in
+2078.647049959s, host99176a0ef4c0, original launch PID3798. Recovered the
+original output and runtime without rerunning the cell after browser loss.
+Prerequisites8486 jobs exit0/1840.632s; leaf repro exit0/6.915s, two allowed
+axiom trios. Draft exit1/13.835726938s: line34:46 membership rewrite did not
+match the recursive lattice-side presentation. Compiler-inserted sorryAx in
+dependent declarations is rejected; no theorem from the failed file is sealed.
+
+Downloaded outer39507bytes SHA256
+97b8b08e71002036bdbe45b6f6e23547468e296a2bf566a61180514bc056f30a;
+innercae59efad28b957bd27df86316b06d3a6ae4b46ee5815cfe9c3c66ba841dd0de;
+failure logd62460143bb847114d7541ffcee9d06f53b942bf4a02746b467ae7abd3a89457.
+Independent failure verification/preservation exit0/0.3052356s, observed
+19341312peak bytes; no compiler/network/pool. Report SHA256
+d269ad41c39417190b2f9c3e4930d5cb7b3594af8d4c6eb81ed25afc411a1128.
+Durable folder validation-evidence/neumann-counting-reflection-diagnostic-fail-20260906.
+The preservation check passes, the mathematical artifact remains FAIL.
+
+Bounded repair pins the existing membership iff's d/M/N' arguments and uses
+its implication directly. No statement, coefficient or hypothesis changed;
+PRE-VALIDATION retained pending HOT correction and later selective cold seal.
+20/41,TermSource0,window15 unattained remain unchanged.

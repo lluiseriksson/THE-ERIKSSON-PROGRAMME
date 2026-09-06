@@ -31,12 +31,8 @@ private theorem fullLift_mem (depth : ℕ) :
       exact Finset.mem_univ x
   | succ depth ih =>
       intro x
-      rw [cmp99IteratedLiftActiveRegion_succ]
-      exact (mem_cmp99LiftActiveRegion_sites_iff
-        (d := d) (M := M) (N' := cmp99RegionalLatticeSize M N depth)
-        (cmp99IteratedLiftActiveRegion (M := M)
-          (cmp99SourceFullActiveRegion d N) depth) x).2
-        (ih (blockSite M (cmp99RegionalLatticeSize M N depth) x))
+      rw [cmp99IteratedLiftActiveRegion_succ, mem_cmp99LiftActiveRegion_sites_iff]
+      exact ih (blockSite M (cmp99RegionalLatticeSize M N depth) x)
 
 /-- The reflected point is constructed inside the full lifted carrier.
 There is no caller-supplied site permutation or invariance certificate. -/

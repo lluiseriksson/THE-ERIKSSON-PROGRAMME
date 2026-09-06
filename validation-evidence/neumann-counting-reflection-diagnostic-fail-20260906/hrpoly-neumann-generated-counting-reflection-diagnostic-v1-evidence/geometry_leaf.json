@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannHalfCellBlockReflection"], "cwd": "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1", "exit": 0, "log_file": "geometry_leaf.log", "output_sha256": "aaa6f8b763d4986304deaa054508205f52f528f11f8fb0c3abcd193e55f3d9c1", "seconds": 60.74711678499989, "stage": "geometry_leaf"}
