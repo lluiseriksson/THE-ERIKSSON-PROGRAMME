@@ -1,5 +1,23 @@
 # Six-name averaging/field-action cold cohort
 
+LIVE supersession11:49UTC: cold seal committed atc671d2d7a8db7794bce00759dc764d0795609258,
+published together with final HOT instruments throughfce72cf3e. Cell3 was
+cleared after preserving its cold output, then replaced and executed ONCE
+at2026-09-06T11:48:42.821668UTC, HOT_PID16972, runtime7ce7922a12a6.
+Current object8c07d3f3ccc833a38b7e6b6fd95764dd0985db63; runner554412fd6c6cd58c8e4fcef609f18da58e25c66a,
+Git-blob SHAe994e9d060b28b4f8a4e232d17e3903ad83ddfb41a722f915cd1b1ecf60f4762.
+Final local static/pin gate7/7 passed exit0/0.4713831s/21950464RSS.
+Remote generic Mathlib sum repro passed exit0/8.393837179999991s;
+physical_prerequisites PID17113 is the current stage. No final verdict yet.
+Do NOT execute the cell again. Archive on completion:
+/content/neumann-generated-complete-fibre-hot-v1-evidence.tar.gz;
+independent reader scripts/verify_neumann_generated_complete_fibre_hot_v1.py.
+The parent cold archive/report/inner archive were checked against STAGED Git
+blobs3/3 before commit, exit0/0.2992358s/16293888RSS. Whitespace warnings in
+raw recorded compiler/apt logs were preserved, not normalized away.
+20/41,TermSource0,window15 not attained. Earlier Cell3/template paragraphs
+below are history; the current Cell3 is this running HOT diagnostic.
+
 PASS AND INDEPENDENTLY PRESERVED: source8570618f2,18 recorded stages0,
 six exact allowed-trio names, launcher/remote reader0. Completed graph
 2009.273982031s. Outer192170bytes,
