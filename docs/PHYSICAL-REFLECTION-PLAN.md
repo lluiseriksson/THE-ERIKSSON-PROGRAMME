@@ -26,7 +26,7 @@ obstruction is not revived.
 
 | ID | Required output | Current state |
 |---|---|---|
-| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Drafted; own Colab diagnostic started, no PASS yet |
+| R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Initial ten-declaration diagnostic passed; redundant gauge covariance removed after reuse audit; revised nine-declaration source undergoing full core/oracle checks |
 | R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Open |
 | R3 | Positive complex reflected Gram forms for a physically specified finite lattice and a nonzero physical test sector | Open |
 | R4 | Physical quotient/completion, transfer operator, vacuum and correlation identity, ready for `SharpBridge` | Open |
@@ -39,6 +39,14 @@ vertical bisector sends these links to `(b^-1,l,t^-1,r)`, hence
 The later Wilson kernel dictionary must use `(b*r, l*t)`, since
 `(b*r)*(l*t)^-1=H`; using the same transporter on both halves would
 discard the physical coupling.
+
+The owner-requested [ARR paper reuse audit](PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md)
+identifies existing Haar analysis, full original-edge gauge fixing and the
+conditioned 2D heat-kernel disk amplitude in the satellite repository. Do not
+recreate those results. R1 also reuses the mother's existing plaquette gauge
+covariance instead of adding another proof. Its `ofPlaquette` dictionary is
+local; global lattice reflection and extension of arbitrary four-tuples to a
+configuration remain separate geometric requirements.
 
 A single open square has no nonconstant gauge-invariant observable on
 either half-tree. Therefore R1/R2 alone must not be promoted to a
@@ -94,3 +102,25 @@ reconstruction remain open. This label is not a measured percentage.
   source `23f488959005718ac634176d02f5626e8ce70151` plus those exact draft
   bytes. Build and ten headline oracle checks are pending. No core import
   was added.
+- 2026-09-06: the preceding diagnostic completed successfully: focal build
+  **8160 jobs**, ten requested oracle declarations, only subsets of
+  `{propext, Classical.choice, Quot.sound}`. The exact source above was an
+  overlay on `23f4889`, not committed code. No full core build ran in that
+  diagnostic. The 139.159-second execution ran from
+  `07:54:17.985510Z` to `07:56:37.145071Z` in this task's CPU/high-RAM runtime.
+  The runtime was disconnected and deleted after preserving the archive in
+  the notebook output; disconnection was observed before `08:07:10Z`.
+  Connection/allocation start and the exact disconnect second were not
+  captured, so exact billed connection duration is unavailable.
+  [Notebook with original source, output and lossless archive export](https://colab.research.google.com/drive/1Hj6-16RKQ8Fk1gzEfJC6Qg5aqmVJKjaw).
+  Archive byte SHA-256:
+  `47aa60230ec74bf11b5e036ddb4fa0e19dc196164843d61ee6d6fdf18c50ff32`.
+- 2026-09-06: compared the ARR manuscript with satellite source
+  `a1fbea97cbe673d383dbb4bc5e2a2fb70dbf190a`. Removed R1's duplicate gauge
+  action/covariance. The revised nine-declaration source has UTF-8/LF SHA-256
+  `21A09C1447E2291C3D46679AAD76387794C4C95A3D4B13FF3A59CCDB47923921`.
+  A fresh task-owned CPU/high-RAM Colab execution was prepared from
+  `5066f3de44af98d73dc23e1062a0bcaf75b3a7e4` with exact source and oracle
+  overlays; the full core, focal, source consistency and oracle checks are
+  pending. This execution unit requests automatic runtime release after
+  preserving its complete evidence in notebook output.

@@ -8,14 +8,19 @@ guide, not the complete verification ledger. Entries distinguish work in
 
 ## 2026-09-06 — Physical Wilson reflection campaign started
 
-**Independent research campaign; no new verified theorem claimed.**
+**Independent research campaign; initial diagnostic passed, revised source under verification.**
 The first target is the literal four-link plaquette boundary, its reflection
 and its dictionary to the existing Wilson holonomy. This precedes the
 physical product-Haar identity, reflected positivity and transfer
 construction. The [registered plan](docs/PHYSICAL-REFLECTION-PLAN.md) records
 acceptance conditions and the fact that a half-tree alone supplies no
-nonconstant gauge-invariant test observable. R1 is drafted and its own
-Colab diagnostic has started; the physical conclusions remain open.
+nonconstant gauge-invariant test observable. The initial ten-declaration
+Colab diagnostic passed. The owner-requested
+[ARR paper reuse audit](docs/PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md)
+then identified existing original-edge gauge fixing and the exact conditioned
+2D heat-kernel amplitude. R1's duplicate gauge-covariance proof was removed;
+the revised nine-declaration source is undergoing core/oracle checks. No
+physical reflection positivity, transfer construction or mass gap is claimed.
 
 The [dashboard](docs/dashboard/) now separates current research updates
 from historical proof checkpoints and verified node counts. The

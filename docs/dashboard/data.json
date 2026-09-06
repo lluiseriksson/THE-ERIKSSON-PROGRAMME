@@ -12,9 +12,16 @@
       {
         "title": "Physical Wilson reflection: independent campaign started",
         "date": "2026-09-06",
-        "status": "R1 drafted; Colab diagnostic in progress. No new verified result yet.",
-        "note": "First target: four independent plaquette links, exact reflection and a dictionary to the existing Wilson holonomy. Physical Haar positivity, reconstruction and the continuum remain open.",
+        "status": "Initial diagnostic passed; revised nine-declaration R1 undergoing core/oracle checks.",
+        "note": "ARR paper reuse audit completed: existing original-edge gauge fixing and the conditioned 2D heat-kernel amplitude are prior work. Duplicate gauge covariance removed. Physical Wilson positivity and reconstruction remain open.",
         "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
+      },
+      {
+        "title": "Prior work: exact 2D SU(2) disk model",
+        "date": "2026-09-06",
+        "status": "Reuse audit of the manuscript and its cited public source; no new satellite rebuild claimed.",
+        "note": "The paper's 177-entry companion audit differs from the 167-entry public snapshot. Its physical original-edge results inform this campaign; they do not establish 4D Wilson reflection or a continuum mass gap.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md"
       },
       {
         "title": "hRpoly: source estimates and terminal requirements",
