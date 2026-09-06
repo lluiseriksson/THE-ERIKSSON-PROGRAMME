@@ -1,4 +1,5 @@
 import YangMillsCore
+import YangMills.OS.PhysicalWilsonCylinderMeasure
 import YangMills.OS.PhysicalWilsonSquare
 import YangMills.RG.NearLog
 import YangMills.RG.LocalFunctional
@@ -3147,3 +3148,44 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.WilsonSquare.top_injective
 #print axioms YangMills.OS.WilsonSquare.left_injective
 #print axioms YangMills.OS.WilsonSquare.holonomy_single_bottom_ne_one
+
+-- Physical two-plaquette Wilson cylinder: geometry and measure only; R3 positivity open.
+#print axioms YangMills.OS.WilsonCylinder.geometry
+#print axioms YangMills.OS.WilsonCylinder.reflectionEquiv
+#print axioms YangMills.OS.WilsonCylinder.reflect_measurePreserving
+#print axioms YangMills.OS.WilsonCylinder.secondCountable
+#print axioms YangMills.OS.WilsonCylinder.haar
+#print axioms YangMills.OS.WilsonCylinder.rightInvariant
+#print axioms YangMills.OS.WilsonCylinder.invInvariant
+#print axioms YangMills.OS.WilsonCylinder.sliceHaar_probability
+#print axioms YangMills.OS.WilsonCylinder.haarMeasure_probability
+#print axioms YangMills.OS.WilsonCylinder.haar_reflect_measurePreserving
+#print axioms YangMills.OS.WilsonCylinder.logDensity_eq_neg_wilsonAction
+#print axioms YangMills.OS.WilsonCylinder.density_eq_wilson_product
+#print axioms YangMills.OS.WilsonCylinder.continuous_density
+#print axioms YangMills.OS.WilsonCylinder.density_pos
+#print axioms YangMills.OS.WilsonCylinder.density_integrable
+#print axioms YangMills.OS.WilsonCylinder.density_reflect
+#print axioms YangMills.OS.WilsonCylinder.partition_pos
+#print axioms YangMills.OS.WilsonCylinder.gibbsMeasure_probability
+#print axioms YangMills.OS.WilsonCylinder.continuous_integrable_gibbs
+#print axioms YangMills.OS.WilsonCylinder.integral_gibbs_eq
+#print axioms YangMills.OS.WilsonCylinder.integral_reflect
+#print axioms YangMills.OS.WilsonCylinder.reflectedForm_eq_productHaar
+#print axioms YangMills.OS.WilsonCylinder.boundaryEdge_src
+#print axioms YangMills.OS.WilsonCylinder.boundaryEdge_dst
+#print axioms YangMills.OS.WilsonCylinder.fromGaugeConfig_toGaugeConfig
+#print axioms YangMills.OS.WilsonCylinder.toGaugeConfig_injective
+#print axioms YangMills.OS.WilsonCylinder.plaquetteHolonomy_zero
+#print axioms YangMills.OS.WilsonCylinder.plaquetteHolonomy_one
+#print axioms YangMills.OS.WilsonCylinder.face0_eq_square
+#print axioms YangMills.OS.WilsonCylinder.face1_eq_square
+#print axioms YangMills.OS.WilsonCylinder.reflect_involutive
+#print axioms YangMills.OS.WilsonCylinder.reflectEdge_involutive
+#print axioms YangMills.OS.WilsonCylinder.reflectEdge_src
+#print axioms YangMills.OS.WilsonCylinder.reflectEdge_dst
+#print axioms YangMills.OS.WilsonCylinder.toGaugeConfig_reflect
+#print axioms YangMills.OS.WilsonCylinder.face0_reflect
+#print axioms YangMills.OS.WilsonCylinder.face1_reflect
+#print axioms YangMills.OS.WilsonCylinder.face0_eq_relative_gaugeUpper
+#print axioms YangMills.OS.WilsonCylinder.face1_eq_relative_gaugeUpper

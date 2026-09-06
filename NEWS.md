@@ -8,6 +8,25 @@ guide, not the complete verification ledger. Entries distinguish work in
 
 ## 2026-09-06 — Physical Wilson reflection campaign started
 
+**R2 geometry and physical Wilson measure verified.** Two new standalone
+modules construct a four-vertex, six-link, two-plaquette SU(2) cylinder,
+its normalized product-Haar Gibbs measure and exact reflection/Fubini
+identities. The focal build passed at 8171 jobs, all 39 headline oracles
+passed, and the unchanged core passed at 8466 jobs. The full global Lean
+run exited 0; a separate saved-log validation confirms all 2854 reports
+and permitted axiom dependencies. The original wrapper's primed-name
+parsing FAIL is preserved, with the successful normal/optimized validation
+and 13 rejected data mutations per mode in the
+[evidence record](docs/evidence/physical-cylinder-r2-20260906/README.md).
+R2 remains outside `YangMillsCore` and is not terminally reproduced or
+independently audited. Reflection positivity, a positive centered physical
+norm, transfer construction and the 4D continuum mass gap remain open.
+
+**R2 continuation registered:** the [finite-cylinder plan](docs/PHYSICAL-CYLINDER-R2-PLAN-20260906.md)
+requires explicit oriented geometry, six physical Haar factors, a normalized
+Wilson Gibbs measure and a reflected integral identity. No new R2 proof is
+claimed at registration; positivity and a nonzero physical sector remain open.
+
 **R1 local geometry compiled and its nine headline oracles passed.**
 The first target is the literal four-link plaquette boundary, its reflection
 and its dictionary to the existing Wilson holonomy. This precedes the
@@ -41,7 +60,7 @@ construction and records the independent inputs allowed by hRpoly's
 terminal checklist.
 
 The [hRpoly reading guide](docs/HRPOLY-STATUS.md) also refreshes its checklist
-reference to PR #29 source `6088e162757720e68b771b85c9393d3dda3bd95d`:
+reference to PR #29 source `9bb957757b6454871eaea6e26aed8c95dc576b3c`:
 scoped cold records through Addendum 1124 do not change **20/41**,
 **TermSource = 0**, or the open uniform physical-bound row. This is a reading
 update of that branch's records, not a reproduction or source integration.

@@ -20,6 +20,8 @@
 | [Canonical proof-state JSON](../project-state.json) | The recorded main proof checkpoint; a documentation date does not replace it |
 | [M3 dependency map](M3-FRONTIER-DEPENDENCIES.md) | The consumer and hypothesis structure |
 | [Physical Wilson reflection campaign](PHYSICAL-REFLECTION-PLAN.md) | Independent physical geometry, Haar, reflection and transfer work; per-milestone evidence |
+| [R2 finite physical Wilson cylinder](PHYSICAL-CYLINDER-R2-PLAN-20260906.md) | Checked geometry and normalized measure; [39 focal and 2854 global readouts](evidence/physical-cylinder-r2-20260906/README.md), preserved parser FAIL and separate log validation |
+| [R3 physical positivity plan](PHYSICAL-CYLINDER-R3-PLAN-20260906.md) | Registered gauge-average/product-kernel and centered spatial-loop obligations; no new R3 proof claimed |
 | [ARR 2D SU(2) reuse audit](PHYSICAL-REFLECTION-REUSE-AUDIT-20260906.md) | Exact prior source, original-edge results to reuse, removed duplication and remaining Wilson reflection requirements |
 | [Reflection campaign CI baseline](PHYSICAL-REFLECTION-CI-BASELINE-20260906.md) | Nine prior Surface provenance failures reproduced by general CI; separate from Lean and dashboard validation |
 | [After hRpoly: physical reconstruction and continuum audit](POST-HRPOLY-CONTINUUM-AUDIT-20260906.md) | Static source audit, independent workstream and explicit limits of the lattice-to-continuum inference |

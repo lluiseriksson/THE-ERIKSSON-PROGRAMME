@@ -1,0 +1,21 @@
+{
+  "base": "ba48274f217220ae2aa47ddaddd8e377fb2231a8",
+  "source_hashes": {
+    "PhysicalWilsonCylinderMeasure": "07A91C3113EBDE641F1F06C5FAAB0C56CD18960829891D121EF709022122A090",
+    "PhysicalWilsonCylinder": "5C143537D1B8943249025C60AF6043251C6CCE12BD891D0FFCFF2725326E9C38"
+  },
+  "opened_utc": "2026-09-06T10:31:02.626263+00:00",
+  "stages": [
+    {"name":"git-init","command":["git","init","/content/physical-cylinder-r2-diagnostic-1"],"exit":0,"seconds":0.1187716399999772,"log_sha256":"5289ff931cf08d70c14e1a28d4acf077fc3f5a65536f59d9a0373150ab7dedb6"},
+    {"name":"remote","command":["git","remote","add","origin","https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"],"exit":0,"seconds":0.009380318000012267,"log_sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},
+    {"name":"fetch","command":["git","fetch","--depth","1","origin","ba48274f217220ae2aa47ddaddd8e377fb2231a8"],"exit":0,"seconds":3.9884348159999945,"log_sha256":"95ce53cd38436adf2a8d3eeeb16a9f63a882d53546c1f339d0747b0fae469386"},
+    {"name":"checkout","command":["git","checkout","--detach","FETCH_HEAD"],"exit":0,"seconds":1.523496377000015,"log_sha256":"0246a80e53528da3d6ff357b5272d16cd6fc8ab4cffeb65d905707d6f47dd703"},
+    {"name":"elan","command":["bash","-c","set -eu; curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /content/r2-elan-init.sh; sh /content/r2-elan-init.sh -y --default-toolchain none"],"exit":0,"seconds":1.6226599310000438,"log_sha256":"06c09f6daa65bae914273dd027db1dd1eddfce63ac3152b1cde48b1902504ed5"},
+    {"name":"toolchain","command":["lean","--version"],"exit":0,"seconds":22.379121842000018,"log_sha256":"26d7b52a0c4c3043835c929208c2a55be8d4d0b2075dc2be11bde1ab7580c3f3"},
+    {"name":"mathlib-cache","command":["lake","exe","cache","get"],"exit":0,"seconds":123.73337348500002,"log_sha256":"c6eda72d021207eaf7ba4b4b32b7241e7bc896ad2ca671f7122c92e5409adeac"},
+    {"name":"focal","command":["lake","build","YangMills.OS.PhysicalWilsonCylinderMeasure"],"exit":1,"seconds":189.0535371510001,"log_sha256":"5e57a4427fcbb7385d357e0b030e337bbeadc6baa88470fefc2a85e19ea2eb2c"}
+  ],
+  "verdict": "FAIL",
+  "error": "RuntimeError('focal failed')",
+  "finished_utc": "2026-09-06T10:36:45.089760+00:00"
+}

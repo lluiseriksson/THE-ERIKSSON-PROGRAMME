@@ -16,8 +16,9 @@ hypotheses and evidence.
 
 > **6 September 2026 · Research update**
 >
-> The independent physical-reflection campaign has a compiled local
-> four-link dictionary with nine clean headline oracles. The ARR paper audit
+> The independent physical-reflection campaign now has a verified finite
+> Wilson cylinder geometry and normalized measure: 39 new headline oracles,
+> an unchanged core build and 2854 global reports validated. The ARR paper audit
 > identifies prior 2D results to reuse. hRpoly continues in
 > [draft PR #29](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/29);
 > its refreshed checklist still records 20/41 and `TermSource = 0`.
@@ -31,7 +32,7 @@ hypotheses and evidence.
 | Strong-coupling area laws and IR clustering | Recorded core results, with explicit parameter windows | [Headline results](#headline-results-all-oracle-clean-all-in-the-core) |
 | Concrete physical activity bound `hRpoly` | **Open · research branch** | [20/41 terminal producers; `TermSource = 0`](docs/HRPOLY-STATUS.md) |
 | Physical scalar window 15 | **Compatible; not attained** | [Remaining milestones](docs/HRPOLY-STATUS.md#what-comes-next) |
-| Physical Wilson reflection and transfer bridge | **Local R1 compiled; 9/9 headline oracles passed** | [Scoped evidence, prior 2D work and remaining physical construction](docs/PHYSICAL-REFLECTION-PLAN.md) |
+| Physical Wilson reflection and transfer bridge | **R1/R2 geometry and measure verified; positivity and transfer open** | [39 new headline oracles, saved-log validation and scope](docs/evidence/physical-cylinder-r2-20260906/README.md) |
 | Four-dimensional continuum limit and reconstruction | **Open mathematics** | [Hypothesis frontier](HYPOTHESIS_FRONTIER.md) |
 
 **The counts are construction milestones, not a percentage of a Millennium

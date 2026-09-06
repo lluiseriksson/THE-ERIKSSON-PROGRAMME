@@ -1,0 +1,41 @@
+{
+  "archive_sha256": "77c85e48ddf0402548fe7c9c4bb38ebbabbbe76636ecfaa7c4f2f8e32151d14d",
+  "build_summaries": {
+    "core": [
+      "Build completed successfully (8466 jobs)."
+    ],
+    "focal": [
+      "Build completed successfully (8171 jobs)."
+    ],
+    "global-imports": [
+      "Build completed successfully (8471 jobs)."
+    ]
+  },
+  "focal_reports": 39,
+  "global_axiom_free": 26,
+  "global_reports": 2854,
+  "global_stdout_sha256": "4ef9016c2f81cda5401363f74459e78a9c9365aca1b817e49e1df3491e493839",
+  "mutations_rejected": [
+    "missing report",
+    "duplicate report",
+    "renamed report",
+    "removed prime",
+    "nonstandard axiom",
+    "malformed report",
+    "reordered reports",
+    "driver name",
+    "nonzero exit",
+    "empty exit",
+    "log digest",
+    "source bytes",
+    "log bytes"
+  ],
+  "original_gate_verdict": "FAIL",
+  "primed_names": [
+    "YangMills.OS.pow_succ_apply'",
+    "YangMills.OS.cosh_sq_sub_sinh_sq'",
+    "YangMills.OS.one_le_cosh'",
+    "YangMills.OS.sinh_pos'"
+  ],
+  "verdict": "SAVED_LOG_VALIDATION_PASS"
+}

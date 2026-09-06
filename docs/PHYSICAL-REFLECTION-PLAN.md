@@ -27,7 +27,7 @@ obstruction is not revived.
 | ID | Required output | Current state |
 |---|---|---|
 | R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Scoped cold PASS: revised source, 9/9 headline oracles, existing core at 8466 jobs and full 2815-command oracle. Not core-integrated or terminally reproduced |
-| R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Open |
+| R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Scoped source milestone accepted: 8171-job focal, 39/39 focal oracles, unchanged 8466-job core, 2854 global readouts validated from saved logs. Original parser FAIL preserved; no core integration or terminal claim. See the [R2 evidence](evidence/physical-cylinder-r2-20260906/README.md) |
 | R3 | Positive complex reflected Gram forms for a physically specified finite lattice and a nonzero physical test sector | Open |
 | R4 | Physical quotient/completion, transfer operator, vacuum and correlation identity, ready for `SharpBridge` | Open |
 | R5 | Appropriate total local-observable family and matched clustering inputs | Open |
@@ -60,19 +60,20 @@ and `OS/TwoTransporterHaarProjection.lean` already give the corresponding
 Haar-mean projection for the D/E forms. Do not repeat that construction or
 count it as a new result. R3 must exhibit a strictly positive reflected norm;
 nonconstancy of a function alone is insufficient. A two-link spatial
-cylinder is a candidate next geometry because both plaquettes share the
-crossing links and the half-slices have closed spatial loops. Its measure,
-reflection and nonzero-sector proofs remain to be supplied. The frozen
+cylinder supplies this geometry because both plaquettes share the
+crossing links and the half-slices have closed spatial loops. R2 now proves
+its measure and reflection identities; the nonzero-sector proof remains open. The frozen
 auxiliary SU(2) lane remains unmodified.
 
-### Candidate R2 geometry, before implementation
+### R2 geometry: registered candidate and subsequent implementation
 
 Use two spatial links `u0,u1` on the lower circle, two `v0,v1` on the upper
 circle, and independent crossing links `a0,a1`. The candidate boundary words
 are `H0=u0*a1*v0^-1*a0^-1` and `H1=u1*a0*v1^-1*a1^-1`. Reflection exchanges
 the circles and inverts both crossing links. The predicted local identities
 are `H0(theta A)=a0^-1*H0(A)^-1*a0` and the analogous formula with `a1,H1`.
-These are design formulas to instantiate from R1, not new compiled theorems.
+These formulas were registered before implementation and are now checked
+in the R2 source. They do not establish reflected-form positivity.
 
 The target measure has the actual density `w_beta(H0)*w_beta(H1)` against
 six independent Haar factors. The test candidate is the spatial-loop trace
@@ -87,7 +88,15 @@ This cylinder has `(V,E,F)=(4,6,2)` and Euler characteristic zero. It is not
 an inhabitant of the satellite's disk record, which imposes Euler
 characteristic one. Reuse the Haar and covariance ingredients with explicit
 type adapters; do not pretend that the disk-amplitude theorem already
-applies to this geometry. No additional R2 source has been written yet.
+applies to this geometry. This was registered before source implementation.
+Two R2 modules are now compiled; five failed focal diagnostics are preserved
+in the [R2 evidence log](evidence/physical-cylinder-r2-20260906/README.md).
+Gate 6 compiled both modules and passed all 39 focal axiom readouts and the
+unchanged core build. The global Lean process also exited 0. Its wrapper's
+primed-name parsing failure is preserved; a separate, mutation-tested saved-log
+validation confirms all 2854 reports and their permitted dependencies.
+The scoped R2 source milestone is accepted. The five earlier failed drafts
+are not reproductions of these corrected bytes. R3–R5 remain open.
 
 ## Acceptance conditions
 

@@ -3,17 +3,17 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-09-06",
-    "checkpoint": "Scoped Colab check: base 5066f3d plus exact R1/oracle overlays; core 8466 jobs and full 2815-command oracle passed (2026-09-06). R1 remains standalone. See the exact-source ledger entry.",
+    "checkpoint": "Scoped R2 evidence: base ba48274 plus exact cylinder/oracle overlays; unchanged core 8466 jobs, 39 focal and 2854 global reports validated (2026-09-06). Original parser FAIL preserved with separate saved-log validation. R1/R2 remain standalone.",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
     "frontier": "hRpoly - concrete Yang-Mills activity decay for the actual gauge RG operator",
     "research_updates": [
       {
-        "title": "Physical Wilson reflection: independent campaign started",
+        "title": "Physical Wilson cylinder: geometry and measure verified",
         "date": "2026-09-06",
-        "status": "Local R1 compiled; 9/9 new headline oracles and full 2815-command oracle passed in one fresh Colab clone. Not core-integrated or terminally reproduced.",
-        "note": "ARR paper reuse audit completed: existing original-edge gauge fixing and the conditioned 2D heat-kernel amplitude are prior work. Duplicate gauge covariance removed. Physical Wilson positivity and reconstruction remain open.",
+        "status": "R2 focal build: 8171 jobs and 39/39 headline oracles. Unchanged core: 8466 jobs. All 2854 global reports validated from saved logs; no terminal or core-integration claim.",
+        "note": "The global Lean process exited 0; its wrapper missed four primed names. That FAIL is preserved. Separate log validation passed in normal and optimized modes, rejecting 13 mutations each. Positivity, a positive centered norm and reconstruction remain open.",
         "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
       },
       {
@@ -27,8 +27,8 @@
         "title": "hRpoly: source estimates and terminal requirements",
         "date": "2026-09-06",
         "status": "20/41 terminal producers; TermSource = 0; physical window 15 not attained at the inspected snapshot.",
-        "note": "PR #29 snapshot 6088e16, checked 6 September: scoped records through Addendum 1124 still leave regional inverse/reflection identification and derivative bounds open. Follow the current PR for later evidence.",
-        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/6088e162757720e68b771b85c9393d3dda3bd95d/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md"
+        "note": "PR #29 snapshot 9bb9577, checklist reread during R2 publication on 6 September: scoped records through Addendum 1124 still leave regional inverse/reflection identification and derivative bounds open. Follow the current PR for later evidence.",
+        "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/9bb957757b6454871eaea6e26aed8c95dc576b3c/docs/HRPOLY-END-TO-END-DOD-CHECKLIST.md"
       },
       {
         "title": "General CI: pre-existing provenance failures",
