@@ -2,6 +2,17 @@
 
 Source adfef2b5b883a839e24b03ceedd118b32428dace, PRE-VALIDATION.
 Template/test checkpoint 478c40e6f3b5bc896792a5a89187bcadc9c9f313.
+
+Parent cold PASS independently preserved and sealed in f0056ac6ab71da1c2545f06866210e618bdcf97f,
+ledger1178. Actual runner919135cbf96ef03fbeaaff7688de46634c143fa0 now fixes
+outer6c59b1ff7f58d2eb9d032f563c44134d957f1f1b267a5d5c2a1150bf67e4e7c3,
+review97b9d56baa6f2f7123cb084e3d37c6068b956cb0d70dc4d6cb0e0a9b85e518cb,
+wrap olean70a894b3a4032c85389b9ad450a68cac3c2f7a60d56c752bc60689089069c7f4.
+Runner Git-blob hash6806ed2f34cdc71519611f6199493839f3f45d1dc262a9bf1dcf9fa348c90af1.
+Actual runner/reader are exact template instantiations; package check passes
+exit0/0.5088972s/24731648 observed RSS, real parent/archive blob pins and four
+source pins checked, synthetic valid1/rejected11/failure1. No compiler result
+for these masks yet. Source adfef2b5 and its mathematical statements unchanged.
 This does not modify or append to the wrap/flat cold gate already running.
 
 First preserve and independently verify that cold result. If it passes and
