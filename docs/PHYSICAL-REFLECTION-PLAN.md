@@ -88,7 +88,7 @@ an inhabitant of the satellite's disk record, which imposes Euler
 characteristic one. Reuse the Haar and covariance ingredients with explicit
 type adapters; do not pretend that the disk-amplitude theorem already
 applies to this geometry. This was registered before source implementation.
-Two R2 modules are now drafted; three failed focal diagnostics are preserved
+Two R2 modules are now drafted; four failed focal diagnostics are preserved
 in the [R2 evidence log](evidence/physical-cylinder-r2-20260906/README.md).
 Diagnostic 3 compiled the geometry, but the measure failed. The corrected
 source remains unverified until its acceptance gates pass.

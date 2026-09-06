@@ -13,7 +13,7 @@
         "title": "Physical Wilson reflection: independent campaign started",
         "date": "2026-09-06",
         "status": "Local R1 compiled; 9/9 new headline oracles and full 2815-command oracle passed in one fresh Colab clone. Not core-integrated or terminally reproduced.",
-        "note": "R2 concrete cylinder geometry compiled in the third diagnostic. The measure module still failed; all three failure records are preserved. A corrected measure gate is running. R2 is not accepted. ARR Haar infrastructure is reused; physical positivity and reconstruction remain open.",
+        "note": "R2 cylinder geometry compiled; diagnostic 4 leaves one measure-normalization rewrite error. Four failed runs are preserved and the revised 39-headline gate is running. R2 is not accepted. ARR Haar infrastructure is reused; physical positivity and reconstruction remain open.",
         "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
       },
       {

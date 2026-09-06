@@ -95,3 +95,28 @@ The revised measure draft reuses the satellite's explicit Haar-map and
 scalar-one proofs, supplies second countability from matrix coordinates,
 and rewrites complex scalar multiplication explicitly. Another fresh gate
 is required. Geometry compilation alone does not accept R2.
+
+## Diagnostic 4: one normalization rewrite remains
+
+Fresh clone at the same registration commit; geometry bytes unchanged from
+diagnostic 3. Measure SHA-256:
+`BDAFEC9AEF0FA40CD2CF79B16FA3EF0251DE908A82EDB01445A5FE7B3DDBFF51`.
+The [public manifest](diagnostic-4-manifest.json) preserves its recorded fields.
+
+- Execution: `2026-09-06T11:01:13.544158Z` to
+  `2026-09-06T11:07:21.046792Z` (367.502634 seconds).
+- CPU/high-RAM, 50.99 GB; automatic release and disconnected UI observed.
+  Exact allocation/billing duration was not captured.
+- Geometry compiled. Focal exit **1** (215.249517 seconds), with one error:
+  the uninstantiated reverse `integral_const_mul` rewrite in
+  `integral_gibbs_eq`, line 200. Earlier topology, Haar and Fubini errors
+  were absent. No oracle/core acceptance follows from this failed module.
+- Focal log SHA-256:
+  `082bf14f5a724ad566c5f6ef2a800dc0d073bc2395e85809be342f4e0e9ede85`.
+- Complete archive SHA-256:
+  `fffbe23e744bfbf5b50691e76bd4f92da9bca3fc6c7a480e65d48835826d9225`.
+  Full logs, source and lossless Base64 export are retained in notebook cell 6.
+
+The next draft uses an explicit intermediate integral and an instantiated
+constant-multiplication theorem. It also removes compiler-reported unused
+simp arguments. The mathematical statement and 39-headline target are unchanged.

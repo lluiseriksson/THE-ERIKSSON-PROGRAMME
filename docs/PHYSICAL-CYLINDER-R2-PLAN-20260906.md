@@ -80,6 +80,9 @@ of this task.
 - 2026-09-06: the third diagnostic compiled the complete geometry but failed
   in the measure module. Its separate failure record is preserved. Measure
   repairs are prepared for a fresh gate; R2 is unverified.
+- 2026-09-06: diagnostic 4 left one normalization rewrite error. Its full
+  record is retained. An explicit integral equality replaces that rewrite
+  in the next draft; 39 headline checks remain pending.
 
 ## R3 reuse boundary identified during R2
 
