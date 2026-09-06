@@ -102,4 +102,15 @@ reuse this runtime before disconnecting. No concurrent or repeated execution.
 The static runner check passed exit0/0.1743551s,14729216 observed peak bytes,
 one Windows process, no compiler/network/pool. It checks the fixed source,
 three Mathlib-only names, one Lean child and absence of build/checkout/update.
-This is instrument readiness, not proof evidence. Contours20/41 unchanged.
+This is instrument readiness, not proof evidence. Counters20/41 unchanged.
+
+HOT runner published in `3553890d81fb71f1eea518a79e51c93b496ad6d7`,
+binary Git-blob SHA256
+`5089ed064f0ad30556c2bda35576f661a8db6e8f62eb71a288ffdaf007313b8d`.
+Independent reader `scripts/verify_neumann_integer_image_owner_hot.py` is
+also prepared: rechecks the real cold inner archive with its pinned helpers,
+exact ten-stage commands/logs, three named axioms and source/output hashes.
+All checks precede durable extraction; wrong metadata is rejected. Extended
+static check exit0/0.2161691s,18882560 observed peak bytes, including seven
+negative fields and runner/verifier pin consistency. Actual HOT PASS remains
+untested until this cold gate is terminal. No new CI/runtime was opened.
