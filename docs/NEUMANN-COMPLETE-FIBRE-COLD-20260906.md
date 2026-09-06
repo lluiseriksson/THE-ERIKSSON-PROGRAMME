@@ -1,5 +1,22 @@
 # Constructed complete active fibre — cold promotion
 
+LIVE HOT AFTER SEAL: start2026-09-06T12:43:44.358796+00:00,PID22774,
+same CPU/highRAM4609d7098347, browser tab5 (terminal panel).
+Revision neumann-generated-mass-complete-offsets-hot-v1,
+draftSOURCE4a05bff83ac0a30a7bdced8b1adee45828aaef24,
+retainedBASE7f7455b286da5809a0ee64a1511684f887cf8a88.
+Runner checkpoint6b659821920bfca7b8bec5beb3d7e55feae7ae02,
+SHA966433d42ea059202ebb1aedd16291902c4cc2c0868ebf598bdcdacffab152c8.
+Independent reader checkpoint0201f3194e375211013fb35d09c3908a290580fa.
+Final reader fixtures passed0.604744s/24997888RSS:1valid,10rejected,1failure.
+Log /content/neumann-mass-offsets-hot-v1-console.log; runner
+/content/run-neumann-mass-offsets-hot-v1.py. Do not relaunch either this
+terminal command or the old completed cold cell. Expected HOT archive:
+/content/neumann-generated-mass-complete-offsets-hot-v1-evidence.tar.gz.
+The original parent's FAIL is intentionally checked as FAIL, while its
+separate reviewed report59d55b07... and original .olean3ae9c726... are pinned.
+All published artifacts are FF; no CI and no Windows Lean.
+
 SEALED1154: original16-stage cold evidence independently passes corrected
 reader v2, six exact audit names,8501 jobs. Original reader FAIL stays in1153.
 Reviewed report59d55b07a9a1a79ef77f6a9b429f525f518830c7eab2a4206889ad646fba6ced
@@ -7,6 +24,9 @@ under validation-evidence/neumann-complete-fibre-cold-reviewed-20260906.
 Only the two certified headers retire PRE; no Lean rerun. Runtime retained
 briefly for already prepared mass-offset HOT, whose parent gate must pin
 this reviewed report and preserve the original launch FAIL unchanged.
+Selective exact-body/text/import checks passed0.3307765s/15630336RSS.
+Seal7a4eee0b08c8d535d869fad11b4c2db0048372c3; three report/archive Git blobs
+rechecked after commit, exit0/0.283863s/16175104RSS, exact hashes unchanged.
 
 LATEST: cold graph completed, original reader FAIL retained (ledger1153).
 First error OWNER_CONTRACT=physical_diagnostic_source: two stale prior-cohort
