@@ -115,11 +115,35 @@ theorem sum_neumannGeneratedCompleteFibre_eq_offsets
   exact ((neumannGeneratedCompleteFibreOffsetEquiv Omega depth y).sum_comp
     (fun x => f x.1)).symm
 
+/-- The owner-indicator sum used by the full-field producer is exactly that
+complete offset sum. The zero terms outside the fibre are removed by a
+finite-sum theorem, not by a support assumption on f. -/
+theorem sum_neumannGeneratedOwnerIndicator_eq_offsets
+    {V : Type*} [AddCommMonoid V]
+    (Omega : ActiveGaugeRegion d N) (depth : ℕ)
+    (y : ActiveGaugeRegion.Site Omega)
+    (f : ActiveGaugeRegion.Site
+      (cmp99IteratedLiftActiveRegion (M := M) Omega depth) → V) :
+    (∑ x : ActiveGaugeRegion.Site
+      (cmp99IteratedLiftActiveRegion (M := M) Omega depth),
+      if cmp99GeneratedTerminalBlockSite M N depth x.1 = y.1 then f x else 0) =
+      ∑ r : FinBox d (M ^ depth),
+        f (neumannGeneratedCompleteFibreOffsetEquiv Omega depth y r).1 := by
+  classical
+  rw [← Finset.sum_filter]
+  rw [Finset.sum_subtype (p := fun x : ActiveGaugeRegion.Site
+    (cmp99IteratedLiftActiveRegion (M := M) Omega depth) =>
+      cmp99GeneratedTerminalBlockSite M N depth x.1 = y.1)
+    _ (fun x => by simp only [Finset.mem_filter,
+    Finset.mem_univ, true_and])]
+  exact sum_neumannGeneratedCompleteFibre_eq_offsets Omega depth y f
+
 #print axioms neumann_mem_iteratedLift_iff_terminalOwner
 #print axioms neumannGeneratedBlockSitesToActiveFibre
 #print axioms neumannGeneratedCompleteFibreOffsetEquiv
 #print axioms neumannGeneratedCompleteFibreOffsetEquiv_integerCoordinates
 #print axioms sum_neumannGeneratedCompleteFibre_eq_offsets
+#print axioms sum_neumannGeneratedOwnerIndicator_eq_offsets
 
 end
 end YangMills.RG

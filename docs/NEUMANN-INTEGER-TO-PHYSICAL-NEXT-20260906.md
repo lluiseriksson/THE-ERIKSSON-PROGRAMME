@@ -29,7 +29,7 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 ## R2d finite endpoint, explicitly split before manufacture
 
 Prepared R2d.2b on2026-09-06, NOT compiler-verified:
-`tmp/NeumannGeneratedCompleteFibreDraft.lean`. Five proposed audit names
+`tmp/NeumannGeneratedCompleteFibreDraft.lean`. Six proposed audit names
 prove recursive lifted membership via the literal generated terminal owner,
 construct the complete active fibre using the existing block-offset
 equivalence, expose its integer coordinates B*y+r (B=M^depth), and reindex
@@ -40,9 +40,15 @@ whole block internally; no containment or fibre equivalence is an input.
 Static text/import gates passed exit0/0.5512377s/15826944 observed RSS.
 No compiler was run locally and no parallel Colab build was launched.
 
+The sixth proposed name now removes the zeros outside the actual owner
+fibre, using Finset.sum_filter and Finset.sum_subtype with the predicate
+explicitly pinned in the signature. The exact generic rewriting step is
+isolated in NeumannGeneratedCompleteFibreSumRepro.lean; test it BEFORE the
+project draft in the retained runtime, once the existing cold gate completes.
+
 Finite endpoints still to connect after that proposed carrier lemma:
-replace the full-field action's owner indicator sum by this fibre sum,
-then specialize its input field to the literal integer coordinates and
+consume it in the full-field action, specialize its input field to the
+literal integer coordinates and
 consume R2d.1 for the common image. The field-action weight stays
 (M^-d)^depth; counting mass still uses its square. These are the remainder
 of R2d.2b, not an implicit right-inverse or uniform-B0 claim.
