@@ -1,6 +1,5 @@
 import Mathlib.Analysis.Complex.Exponential
 import Mathlib.Algebra.BigOperators.Intervals
-import Mathlib.Tactic.Omega
 import Mathlib.Tactic.Ring
 
 /-!
@@ -30,7 +29,7 @@ theorem finite_exp_reverse (N : ℕ) (c : ℂ) :
       apply Finset.sum_congr rfl
       intro k hk
       have hkN : k < N := Finset.mem_range.mp hk
-      have hsub : k ≤ N - 1 := by omega
+      have hsub : k ≤ N - 1 := Nat.le_sub_one_of_lt hkN
       rw [← Complex.exp_add]
       congr 1
       rw [Nat.cast_sub hsub]
