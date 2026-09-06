@@ -21,8 +21,7 @@ noncomputable section
 def neumannImageRectangleCoordinateEquiv {d : ℕ} (m : Fin d → ℤ) :
     CMP89SourceNeumannIntegerRectanglePoint m ≃
       (∀ mu : Fin d, neumannImageIntervalPoint (m mu)) :=
-  Equiv.subtypePiEquivPi (β := fun _ : Fin d => ℤ)
-    (p := fun mu n => 0 ≤ n ∧ n < m mu)
+  Equiv.subtypePiEquivPi
 
 /-- Assemble the translation, parity and original point coordinatewise.
 This changes only the packaging, not a coordinate or the image convention. -/

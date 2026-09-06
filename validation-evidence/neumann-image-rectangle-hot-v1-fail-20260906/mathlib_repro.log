@@ -1,0 +1,40 @@
+tmp/neumann-image-rectangle-hot-v1/mathlib-repro.lean:178:2: error: Type mismatch
+  Equiv.subtypePiEquivPi
+has type
+  { f // ∀ (a : ?m.2), ?m.4 a (f a) } ≃ ((a : ?m.2) → { b // ?m.4 a b })
+but is expected to have type
+  CMP89SourceNeumannIntegerRectanglePoint m ≃ ((mu : Fin d) → neumannImageIntervalPoint (m mu))
+tmp/neumann-image-rectangle-hot-v1/mathlib-repro.lean:196:0: error: Not a definitional equality: the left-hand side
+  (neumannImageRectangleIndexEquiv m) p mu
+is not definitionally equal to the right-hand side
+  (p.1 mu, p.2.1 mu, ⟨↑p.2.2 mu, ⋯⟩)
+tmp/neumann-image-rectangle-hot-v1/mathlib-repro.lean:201:54: error: Type mismatch
+  rfl
+has type
+  ?m.31 = ?m.31
+but is expected to have type
+  (neumannImageRectangleIndexEquiv m) p mu = (p.1 mu, p.2.1 mu, ⟨↑p.2.2 mu, ⋯⟩)
+tmp/neumann-image-rectangle-hot-v1/mathlib-repro.lean:216:0: error: Not a definitional equality: the left-hand side
+  (neumannImageRectangleFamilyEquiv m hm) p
+is not definitionally equal to the right-hand side
+  cmp89NeumannReflectionImage m (↑p.2.2) p.1 p.2.1
+tmp/neumann-image-rectangle-hot-v1/mathlib-repro.lean:222:57: error: Type mismatch
+  rfl
+has type
+  ?m.24 = ?m.24
+but is expected to have type
+  (neumannImageRectangleFamilyEquiv m hm) p = cmp89NeumannReflectionImage m (↑p.2.2) p.1 p.2.1
+tmp/neumann-image-rectangle-hot-v1/mathlib-repro.lean:230:2: error: Type mismatch
+  Equiv.bijective (neumannImageRectangleFamilyEquiv m hm)
+has type
+  Function.Bijective ⇑(neumannImageRectangleFamilyEquiv m hm)
+but is expected to have type
+  Function.Bijective fun p => cmp89NeumannReflectionImage m (↑p.2.2) p.1 p.2.1
+'YangMills.RG.neumannImageRectangleCoordinateEquiv' depends on axioms: [sorryAx]
+'YangMills.RG.neumannImageRectangleIndexEquiv_apply' depends on axioms: [propext, sorryAx, Quot.sound]
+'YangMills.RG.neumannImageRectangleFamilyEquiv_apply' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannImageRectangleFamily_bijective' depends on axioms: [sorryAx]
+'YangMills.RG.neumannImageRectangle_fixedPoint_injective' depends on axioms: [sorryAx]

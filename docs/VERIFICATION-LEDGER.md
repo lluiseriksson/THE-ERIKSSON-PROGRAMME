@@ -46828,3 +46828,22 @@ prepared bounded rectangle repro/draft diagnostic, not another cold build.
 This closes finite physical counting-owner and full one-dimensional image
 coverage, NOT a regional inverse, uniform B0 or window15. Counters20/41,
 TermSource0,window15 compatible/not attained,Clay<0.1% unchanged.
+
+## Addendum1141 — rectangle HOT v1 explicit subtype gate, 2026-09-06
+
+Source1db42284358feffc281d9c2d28b3dca1d26db64d, runnerd8902b005,
+SHA256a72f26cd3e17108e7007c2e40cd5a3d363ef3e4af1b4b370f64fad78a0dc642c.
+Same retained runtime after ledger1140 cold PASS was independently preserved.
+Mathlib-only repro stopped at178:2 in3.479134411s, exit1: generic
+Equiv.subtypePiEquivPi did not infer the carrier/predicate behind the literal
+rectangle membership. Later rfl failures depend on that failed definition.
+No physical prerequisite build or actual-draft execution occurred. Repair
+pins the existing equivalence's beta and p explicitly; no statement change.
+
+Archivee0f2e5f6088cb1b48dabe4401da00a60316523ae680897d8ef0ad4d8b88d4909;
+log659f7402eedfe05045e16400ad59b85eab922d7af86b9dc310b943c413e94397.
+Independent reader VERIFIED_FAILURE,exit0/0.2496909s/21311488observed RSS;
+report3708d89ca797d3bcc46866f9ad7d4bc4964d0e9650d510e9818b60a490bb8896.
+Durable validation-evidence/neumann-image-rectangle-hot-v1-fail-20260906.
+Compiler error-recovery sorryAx placeholders are not accepted evidence.
+Prepared retry remains PRE-VALIDATION; no new bootstrap, CI or counter move.

@@ -1,0 +1,154 @@
+"""Bounded independent rectangle-image HOT diagnostic; no new bootstrap."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import signal
+import subprocess
+import tarfile
+import time
+import types
+import urllib.request
+
+SOURCE = '1db42284358feffc281d9c2d28b3dca1d26db64d'
+BASE = 'af35fbb8c75bf2347543034b3abf27f0217b1bbf'
+REV = 'neumann-image-rectangle-hot-v1'
+ROOT = Path('/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1')
+OUT = Path('/content/' + REV + '-evidence')
+ARCHIVE = Path(str(OUT) + '.tar.gz')
+RAW = 'https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
+PINS = {
+    "tmp/NeumannImageRectangleCoverageDraft.lean": "b73416a6d093e9e4375856da7d43b40e9e74fd765520b56d6fe18d81a8e58a26",
+    "YangMills/RG/NeumannImageIntervalCoverage.lean": "65ec7c52bb48e094aec5486acabb4175bffd42838c07ae10e9e950fdd805daf0",
+    "YangMills/RG/BalabanCMP89NeumannReflectionOrbitAlgebra.lean": "25a68943ae80ca3dcb4dbd22f2db7e10501d7b10c021692c84870f8a1fbb843a",
+    "YangMills/RG/BalabanCMP89NeumannReflectionBranchSum.lean": "a2bc16c72a54e7baaf9389bc1f4124eb568bfbaae03150423963585a499852c0",
+    "YangMills/RG/BalabanCMP89NeumannReflectionScaleDictionary.lean": "07075d96a36c86c14857b5de8a985c3090e7c497bf8524579e352e3c64f2d56d",
+    "YangMills/RG/BalabanCMP89NeumannReflectionRepresentation.lean": "9a591c98e170d111ba39606d96e037bbff7461ab80105bf93177cd7ab8de87a2",
+    "scripts/neumann_image_rectangle_repro_contract.py": "ad45076ce72d9d1d6ee5dc665de35c0d148f4025f50f5cf381ba07d24c838896",
+    "scripts/full_green_owner_exact_axiom_gate.py": "016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2"
+}
+NAMES = {
+    "mathlib_repro": [
+        "neumannImageRectangleCoordinateEquiv",
+        "neumannImageRectangleIndexEquiv_apply",
+        "neumannImageRectangleFamilyEquiv_apply",
+        "neumannImageRectangleFamily_bijective",
+        "neumannImageRectangle_fixedPoint_injective"
+    ],
+    "physical_draft": [
+        "neumannImageRectangleCoordinateEquiv",
+        "neumannImageRectangleIndexEquiv_apply",
+        "neumannImageRectangleFamilyEquiv_apply",
+        "neumannImageRectangleFamily_bijective",
+        "neumannImageRectangle_fixedPoint_injective"
+    ]
+}
+PARENT_OUTER_SHA = '0c3a8858b2fab470e9a618ad084613f22c635ccc8b3942311d9ff623a7b04a34'
+
+
+def sha(b):
+    return hashlib.sha256(b).hexdigest()
+
+
+def main():
+    assert ROOT.is_dir() and not OUT.exists() and not ARCHIVE.exists(), 'NO_REEXECUTION'
+    parent = Path('/content/neumann-integer-dictionary-cohort-cold-v1-preservation-20260906.tar.gz')
+    assert sha(parent.read_bytes()) == PARENT_OUTER_SHA, 'PARENT_ARCHIVE'
+    assert Path('/content/neumann-integer-dictionary-cohort-cold-v1-exit.txt').read_text().strip() == '0', 'PARENT_NOT_PASS'
+    assert (ROOT / '.lake/build/lib/lean/YangMills/RG/NeumannImageIntervalCoverage.olean').is_file(), 'PREREQUISITE_MISSING'
+    OUT.mkdir()
+    scratch = ROOT / 'tmp' / REV
+    scratch.mkdir(exist_ok=False)
+    env = os.environ.copy()
+    bins = list(Path('/content/lean-4.29.0-rc6-linux').glob('**/bin/lake'))
+    assert len(bins) == 1, 'EXACT_TOOLCHAIN_BIN'
+    env['PATH'] = str(bins[0].parent) + ':' + env['PATH']
+    records, axioms, outputs, status = [], {}, {}, 'FAIL'
+
+    def run(stage, command, timeout=120):
+        log = OUT / (stage + '.log')
+        start, timed_out = time.perf_counter(), False
+        with log.open('xb') as f:
+            p = subprocess.Popen(command, cwd=ROOT, env=env, stdout=f,
+                stderr=subprocess.STDOUT, start_new_session=True)
+            print('STAGE=' + stage + ' PID=' + str(p.pid), flush=True)
+            try:
+                p.wait(timeout=timeout)
+            except subprocess.TimeoutExpired:
+                timed_out = True
+                os.killpg(p.pid, signal.SIGKILL)
+                p.wait()
+        b = log.read_bytes()
+        r = dict(stage=stage, command=command, cwd=str(ROOT), exit=p.returncode,
+            seconds=time.perf_counter()-start, timed_out=timed_out,
+            timeout_seconds=timeout, log_sha256=sha(b))
+        records.append(r)
+        temp = OUT / 'records.tmp'
+        temp.write_text(json.dumps(records, sort_keys=True) + '\n')
+        temp.replace(OUT / 'records.json')
+        print(json.dumps(r, sort_keys=True), flush=True)
+        print(b.decode(errors='replace')[-6000:], flush=True)
+        if p.returncode or timed_out:
+            raise RuntimeError('FIRST_ERROR=' + stage)
+        return b.decode()
+
+    try:
+        assert run('base_head', ['git', 'rev-parse', 'HEAD']).strip() == BASE
+        assert run('mathlib_pin', ['git', '-C', '.lake/packages/mathlib', 'rev-parse', 'HEAD']).strip() == '07642720480157414db592fa85b626dafb71355b'
+        for exe in ('lean', 'lake'):
+            assert '4.29.0-rc6' in run(exe + '_version', [exe, '--version'])
+            (OUT / (exe + '-sha256.txt')).write_text(sha((bins[0].parent / exe).read_bytes()) + '\n')
+        run('clean_before', ['git', 'diff', '--exit-code', 'HEAD', '--', 'YangMills', 'lean-toolchain', 'lake-manifest.json'])
+        for path, digest in PINS.items():
+            with urllib.request.urlopen(RAW + SOURCE + '/' + path, timeout=60) as response:
+                b = response.read()
+            assert sha(b) == digest, 'SOURCE_HASH=' + path
+            (OUT / Path(path).name).write_bytes(b)
+            if path.endswith('.lean'):
+                with (scratch / Path(path).name).open('xb') as f:
+                    f.write(b)
+        contract = types.ModuleType('pinned_contract')
+        cb = (OUT / 'neumann_image_rectangle_repro_contract.py').read_bytes()
+        exec(compile(cb, 'pinned_contract', 'exec'), contract.__dict__)
+        repro = contract.make_repro({p: (OUT / Path(p).name).read_bytes() for p in contract.INPUTS})
+        assert sha(repro) == 'cf6fbbb8dd4a8908aaac36bb66d012fe8974305afe913f9f9607ae8867f95076', 'REPRO_HASH'
+        (OUT / 'mathlib-repro.lean').write_bytes(repro)
+        with (scratch / 'mathlib-repro.lean').open('xb') as f:
+            f.write(repro)
+        for path in contract.INPUTS[1:]:
+            assert sha((ROOT / path).read_bytes()) == PINS[path], 'BASE_SOURCE_CHANGED=' + path
+        gate = types.ModuleType('pinned_gate')
+        gb = (OUT / 'full_green_owner_exact_axiom_gate.py').read_bytes()
+        exec(compile(gb, 'pinned_gate', 'exec'), gate.__dict__)
+        gate.self_test()
+        for stage, path in [('mathlib_repro', 'mathlib-repro.lean'),
+                            ('physical_draft', 'NeumannImageRectangleCoverageDraft.lean')]:
+            if stage == 'physical_draft':
+                run('physical_prerequisites', ['lake', 'build', 'YangMills.RG.BalabanCMP89NeumannReflectionRepresentation'], timeout=600)
+            op = OUT / (stage + '.olean')
+            text = run(stage, ['lake', 'env', 'lean', '-o', str(op), str((scratch / Path(path).name).relative_to(ROOT))])
+            axioms[stage] = gate.exact_axioms(text, {'YangMills.RG.' + n for n in NAMES[stage]})
+            assert op.stat().st_size > 0
+            outputs[op.name] = sha(op.read_bytes())
+            print('AXIOM_GATE=PASS ' + stage, flush=True)
+        run('clean_after', ['git', 'diff', '--exit-code', 'HEAD', '--', 'YangMills', 'lean-toolchain', 'lake-manifest.json'])
+        status = 'PASS'
+    except Exception as e:
+        print('ERROR=' + repr(e), flush=True)
+    finally:
+        (OUT / 'runner.py').write_bytes(Path(__file__).read_bytes())
+        (OUT / 'result.json').write_text(json.dumps(dict(status=status, source=SOURCE,
+            base_source=BASE, cold_seal=False, pins=PINS, names=NAMES, records=records,
+            axioms=axioms, outputs=outputs, parent_outer_sha256=PARENT_OUTER_SHA,
+            scope='literal multidimensional image-family bijection, not image inverse'), sort_keys=True) + '\n')
+        with tarfile.open(ARCHIVE, 'w:gz') as t:
+            t.add(OUT, arcname=OUT.name)
+        print('FINAL_STATUS=' + status + ' COLD_SEAL=0', flush=True)
+        print('ARCHIVE=' + str(ARCHIVE), flush=True)
+        print('ARCHIVE_SHA256=' + sha(ARCHIVE.read_bytes()), flush=True)
+        print('RUNTIME_RETAINED_FOR_EVIDENCE=1', flush=True)
+    return 0 if status == 'PASS' else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
