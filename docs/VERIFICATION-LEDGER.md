@@ -46621,3 +46621,31 @@ Only the injectivity proof is repaired using a named Bool case equation in
 the local hypothesis; statement/constant/hypotheses unchanged, PRE-VALIDATION
 retained. Next: bounded HOT Mathlib-first retry in this retained runtime,
 not a repeat bootstrap or exploratory CI. 20/41,TermSource0,window15 unchanged.
+
+## Addendum1133 — exact integer image HOT repair PASS, 2026-09-06
+
+Source8a0714a034be31c6f4f25243e1f1c2c2fc88431f; runnerd7e83b425,
+SHA256e2360d489ee6eb9bedf5edb3ea049e72f660d69996ca0dc057771b4bc85b87cf.
+The retained Colab checkout stayed9bba6c7b8 with pinned Mathlib and clean
+tracked source. New source was hash-verified and compiled from separate tmp
+paths. Exact Mathlib repro19.777968777s, image prerequisites46.3652882s,
+actual source-importing draft7.238830265s, all exit0. Both seven-name gates
+passed; the source-importing draft has the permitted trio on all seven names.
+No assumptions/statements/constants changed in the repair.
+
+Archive49496a93f1dfbab8abcae5ea09cac7c816643b9634225acdc247d9c2745b1c28,
+125870bytes. Outputs: mathlibf5dbb9d68b363e21fc2de9b3fc86f31e55e3794daf6afb20e6180e8941f7f7d2;
+source20f5897837e452c335eab44d6d4a2adf8193e740b5f346844f5b6601b925d0c7.
+Independent reader checked the downloaded archive,9 real stage records,
+exact source/repro/runner/pins, all logs and outputs: exit0/0.1204668s,
+10141696 observed peak bytes. Reportc68812541d18319a2c7036cb222135890e4a8bde4c0766608aba9269fd6f0fcc.
+Actual-fixture mutation tests accepted1/rejected11, exit0/0.154804s,
+17010688 observed peak bytes. All local checks under30s/512MiB; no Lean.
+Durable validation-evidence/neumann-integer-image-hot-retry-v2-20260906.
+
+This is HOT, not cold. The promoted module/audit are PRE-VALIDATION with
+unchanged seven proof bodies. Physical Q embedding and R1–R4 remain open.
+Runtime termination via standalone Python failed (no IPython kernel); then
+Colab's Disconnect/delete UI succeeded and explicitly confirmed disconnected
+at about07:54UTC. Its only tab was closed. No scientific job was repeated.
+20/41,TermSource0,window15 unattained remain unchanged.

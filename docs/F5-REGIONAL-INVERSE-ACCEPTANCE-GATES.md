@@ -29,6 +29,11 @@ still require proofs. Historical pending subsections below record earlier
 checkpoints; the current status is ledger1130/1131, counters20/41 unchanged.
 
 ### Next exact image-indicator draft (not compiled)
+ 
+Latest ledger1133: the repaired exact-source seven-name HOT queue passed
+and its downloaded archive is independently verified. Promotion is now in
+NeumannIntegerImageCountingKernel(+Audit), with proof bodies unchanged and
+PRE-VALIDATION intact pending a fresh cold checkout. R1–R4 remain open.
 
 Update ledger1132: its v1 Mathlib-only gate failed in3.727203614s in the
 injectivity case split; project prerequisites/draft were NOT RUN. Exact FAIL
