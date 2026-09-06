@@ -10,16 +10,25 @@ import types
 sys.path.insert(0, 'scripts')
 def sha(b):
     return hashlib.sha256(b).hexdigest()
-rt = Path('tmp/colab_neumann_generated_mass_complete_offsets_hot_v1.py.template').read_text()
-vt = Path('tmp/verify_neumann_generated_mass_complete_offsets_hot_v1.py.template').read_text()
-assert rt.count('PARENT_OUTER_SHA = None') == vt.count('RUNNER_HASH = None') == 1
-rt = rt.replace('PARENT_OUTER_SHA = None', "PARENT_OUTER_SHA = '" + '1' * 64 + "'")
+final = '--final' in sys.argv
+rt = Path('scripts/colab_neumann_generated_mass_complete_offsets_hot_v1.py' if final else
+          'tmp/colab_neumann_generated_mass_complete_offsets_hot_v1.py.template').read_text()
+vt = Path('scripts/verify_neumann_generated_mass_complete_offsets_hot_v1.py' if final else
+          'tmp/verify_neumann_generated_mass_complete_offsets_hot_v1.py.template').read_text()
+if not final:
+    assert rt.count('PARENT_OUTER_SHA = None') == vt.count('RUNNER_HASH = None') == 1
+    rt = rt.replace('PARENT_OUTER_SHA = None', "PARENT_OUTER_SHA = '" + '1' * 64 + "'")
 rb = rt.encode()
 vt = vt.replace('RUNNER_HASH = None', 'RUNNER_HASH = ' + repr(sha(rb)))
 r, v = types.ModuleType('synthetic_runner'), types.ModuleType('synthetic_reader')
 exec(compile(rt, 'synthetic_runner', 'exec'), r.__dict__)
 exec(compile(vt, 'synthetic_reader', 'exec'), v.__dict__)
 files = {'runner.py': rb}
+if final:
+    assert v.RUNNER_HASH == sha(rb), 'FINAL_GIT_RUNNER_HASH'
+    files['parent-reviewed-cold-evidence.json'] = subprocess.check_output(
+        ['git', 'cat-file', 'blob', r.REVIEW_REF + ':' + r.REVIEW_PATH], timeout=5)
+    assert sha(files['parent-reviewed-cold-evidence.json']) == r.REVIEW_HASH
 for p, digest in r.PINS.items():
     files[Path(p).name] = subprocess.check_output(
         ['git', 'cat-file', 'blob', r.SOURCE_REFS[p] + ':' + p], timeout=5)
@@ -64,6 +73,8 @@ data = dict(status='PASS', source=r.SOURCE, base_source=r.BASE, cold_seal=False,
     outputs={n: sha(files[n]) for n in ('physical_draft.olean', 'mathlib_repro.olean')},
     parent_outer_sha256=r.PARENT_OUTER_SHA,
     scope='actual generated source-weighted/counting mass finite offsets and common integer image; not regional inverse, uniform B0 or window15')
+if final:
+    data.update(parent_review_sha256=r.REVIEW_HASH, parent_production_olean_sha256=r.PARENT_OLEAN_HASH)
 def pack(fs, d):
     fs['result.json'] = (json.dumps(d, sort_keys=True) + '\n').encode()
     fs['records.json'] = (json.dumps(d['records'], sort_keys=True) + '\n').encode()
