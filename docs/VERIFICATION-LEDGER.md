@@ -47577,3 +47577,17 @@ VERIFIED_FAILURE, exact archive/source/parent/commands/first error checked.
 Next repair moves full-site membership to a generic lemma before concrete
 specialization; public statement unchanged, no raised recursion/heartbeats.
 No cold rerun or flat diagnostic yet.20/41,TermSource0,window15 unchanged.
+
+## Addendum 1169 — wrap probe HOT v3 specialization failure (2026-09-06)
+
+SOURCE0a8cef1f347f37a397aedbc4ecdae3ebb983c4b9, runnerb624f0a53822f4ea6e234587ced5f1c0f16a6ed2.
+One launch21:31:38.989563UTC PID25472, same retained runtime/cache.
+Generic full-site membership elaborated; concrete application at63:10 still
+hits recursion depth. physical_draft exit1/8.141644464s, no timeout.
+Original archive931b671b9ef41c6588ce1224ec44e385f04c4087b93c350daa7bb88e80547c70;
+independent reportf7854bd44c3463841916cb18b78c700904c70e765773adcd8399c4cf07faf8e0.
+Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v3-20260906.
+Reader exit0/0.1455352s/14688256RSS: VERIFIED_FAILURE; sorryAx rejected.
+Next bounded repair pins dimension, period and bond at specialization.
+No statement change or increased elaborator budgets.20/41,TermSource0,
+window15 unattained; neither a geometric seal nor the flat-action run yet.

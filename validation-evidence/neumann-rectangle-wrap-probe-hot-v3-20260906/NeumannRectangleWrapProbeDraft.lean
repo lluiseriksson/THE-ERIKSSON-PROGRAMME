@@ -60,8 +60,7 @@ theorem neumannRectangle_siteFit_retains_wrapBond :
   · intro mu
     exact le_rfl
   constructor
-  · exact wrapProbe_mem_bonds_of_full_sites (d := 4) (N := 3)
-      wrapProbeRegion wrapProbeRegion_sites (wrapProbeSite, (0 : Fin 4))
+  · exact wrapProbe_mem_bonds_of_full_sites wrapProbeRegion wrapProbeRegion_sites _
   constructor
   · rfl
   · norm_num [wrapProbeSite]

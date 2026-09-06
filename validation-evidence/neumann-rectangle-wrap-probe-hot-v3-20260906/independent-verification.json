@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "931b671b9ef41c6588ce1224ec44e385f04c4087b93c350daa7bb88e80547c70",
+  "cold_seal": false,
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/neumann-rectangle-wrap-probe-hot-v3-evidence/physical_draft.olean",
+      "tmp/neumann-rectangle-wrap-probe-hot-v3/NeumannRectangleWrapProbeDraft.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1",
+    "exit": 1,
+    "log_sha256": "207e8b7f2d32e1c83f3850393cc1fea182a1f82255c036ab42d24688f83e4ec0",
+    "seconds": 8.14164446399991,
+    "stage": "physical_draft",
+    "timed_out": false,
+    "timeout_seconds": 120
+  },
+  "log": "tmp/neumann-rectangle-wrap-probe-hot-v3/NeumannRectangleWrapProbeDraft.lean:63:10: error: maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information\n'YangMills.RG.neumannRectangle_siteFit_retains_wrapBond' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+  "source": "0a8cef1f347f37a397aedbc4ecdae3ebb983c4b9",
+  "status": "VERIFIED_FAILURE"
+}
