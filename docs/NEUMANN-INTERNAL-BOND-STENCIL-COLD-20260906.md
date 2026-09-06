@@ -1,5 +1,16 @@
 # Neumann internal-bond stencil — intermediate cold gate (2026-09-06)
 
+SUPERSEDING RESULT: COLD PASS, ledger1166, source81f35765ad50f8217bca20bc4530d99b3bf05103.
+8528jobs, all16 stages, four exact names with the permitted trio. Focal
+1984.185718466s, audit13.086825144s. Downloaded original outer6c3977a5,
+inner7714f4de, independent report81381379; full hashes in ledger1166.
+Bounded independent preservation reader0.1414508s/18378752RSS, exit0.
+Only the two certified headers retire PRE. No regional inverse/B0/window15.
+Original runtimeb53f9b4fbc01 retained, current tab12 marked for handoff.
+Next fill the bounded wrap probe's pins from this actual review, then its
+separately prepared flat-action successor. Do not rerun this cold gate.
+The LIVE and PRE paragraphs below preserve the prior preparation history.
+
 LIVE: one execution2026-09-06T20:25:39.007088UTC, PID1799,
 hash gate PASS, CPU/highRAM50.99GB, accountlluiseriksson@gmail.com.
 Browser tab10, cellLfn-ch7rZMDi, notebookvehicleabe9e4560910afa7d433851d35890062d8ed328a.

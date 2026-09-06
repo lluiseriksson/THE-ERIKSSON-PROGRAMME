@@ -47499,3 +47499,39 @@ The wrap-bond probe remains PRE.20/41,TermSource0,Clay<0.1% unchanged.
 At20:14:29UTC ps/pgrep found no runner PID17944, Lean or Lake. After both
 archives were preserved, Colab runtime deletion was confirmed and its sole
 browser tab closed (zero tabs). Neither historical calculation is rerun.
+
+## Addendum 1166 — actual internal-bond production COLD PASS (2026-09-06)
+
+SOURCE81f35765ad50f8217bca20bc4530d99b3bf05103, notebook vehicle
+abe9e4560910afa7d433851d35890062d8ed328a. One launch20:25:39.007088UTC,
+PID1799 on CPU/highRAM50.99GB runtimeb53f9b4fbc01. No project-build restore;
+exact Lean4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b.
+Focal8528 jobs exit0/1984.185718466s; audit exit0/13.086825144s.
+All16 stages verified; whole physical runner2155.795680835s. Same four
+exact names as1165, each exactly {Classical.choice,Quot.sound,propext}.
+247 dependency warning headers are preserved in the focal log; none names
+NeumannInternalBondStencil.lean. Audit contains only four axiom reports.
+
+Original downloaded outer6c3977a59ccad04a4458bd615c3ddecdb3f36d5f9151e681eebcd376d26a917b;
+inner7714f4def128f3285378d5bdca136a8eb3ddb4d8ca5eec14b6b819f8b6fe4478;
+independent report813813795f437c413166e3ece6c1755dde1c82ded8331dd0c0ca384fb58d9607;
+production olean17a9f0d27a509de604d384bfa00666fa6768e97c4a6d41b3a23fcd2acc49355f.
+Preserved validation-evidence/neumann-internal-bond-stencil-cold-20260906.
+Independent bounded reader exit0/0.1414508s/18378752 observed peak RSS:
+VERIFIED_COLD_PASS, original membership/transport/source/commands/exits,
+exact audit names, logs, output and physical scope all checked.
+
+Only NeumannInternalBondStencil and Audit retire PRE, with mathematical
+body unchanged. This seals actual internal-bond adjoint/finite divergence,
+NOT reflected Green boundary law, regional inverse, uniform B0 or window15.
+20/41,TermSource0,Clay<0.1% unchanged. The same runtime is retained for the
+two separately prepared bounded HOT diagnostics, after actual parent pins.
+
+Observation recovery: tabs10/11 disappeared, but reopening the same notebook
+recovered hostnameb53f9b4fbc01 and original PID1799; no cell was reexecuted.
+At21:04:26UTC that PID was absent and original launcher reported PASS.
+Current tab12 is explicitly marked for handoff across turns. The reopened
+editor is unexecuted and must never be mistaken for the original running cell.
+Selective header/body/text/import check exit0/0.1334575s/15196160RSS;
+staged Git-blob archive/report hashes checked exit0/0.1361709s/16052224RSS.
+Neither bounded local check invoked Lean or Lake.

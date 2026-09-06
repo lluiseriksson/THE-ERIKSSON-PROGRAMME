@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "81f35765ad50f8217bca20bc4530d99b3bf05103"], "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "7595a6683726bd3a4987a36f82a693c1fa0ab6df2d65d470577f7ad23a21db02", "seconds": 1.8683350070000415, "stage": "checkout"}

@@ -1,5 +1,15 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LATEST1166: internal-bond production COLD PASS at81f35765ad50f8217bca20bc4530d99b3bf05103.
+8528jobs/16stages/four exact names. Original outer6c3977a5 and independent
+report81381379 preserved under validation-evidence/neumann-internal-bond-stencil-cold-20260906.
+Only NeumannInternalBondStencil + Audit retire PRE. Same runtimeb53f9b4fbc01,
+current tab12 marked handoff; no PID1799 remains at21:04:26UTC. Do NOT rerun
+the unexecuted editor cell restored when old tabs disappeared. Next use actual
+cold parent pins for bounded wrap HOT544218955, preserve first result/error,
+then flat action HOT9838cd3c3 if safe. No second cold clone/CI/Windows compiler.
+20/41,TermSource0,window15 unattained. LIVE text below is historical.
+
 LIVE internal-bond cold: SOURCE81f35765ad50f8217bca20bc4530d99b3bf05103,
 notebook abe9e4560910afa7d433851d35890062d8ed328a, one execution
 2026-09-06T20:25:39.007088UTC, PID1799, hash gate PASS.

@@ -2,10 +2,10 @@ import YangMills.RG.BalabanCMP89SourceNeumannRegionalPrecision
 import YangMills.RG.BalabanCMP99ActiveRegionSourceCovariantAdjointStencil
 
 /-!
-# PRE-VALIDATION: Neumann internal-bond adjoint and finite divergence
+# Neumann internal-bond adjoint and finite divergence
 
-Production source present; its .olean is not yet materialized in a fresh cold
-clone and this production module is not yet compiler-verified there.
+Production and four-name audit verified in a fresh cold clone at
+81f35765ad50f8217bca20bc4530d99b3bf05103; evidence preserved in ledger1166.
 The exact draft body passed HOT at c0174bbcb (ledger1165).
 The counting adjoint of bond restriction is proved, not assumed. The actual
 Neumann derivative factors through the ambient-bond-valued regional derivative,
