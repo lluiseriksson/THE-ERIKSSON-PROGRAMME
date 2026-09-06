@@ -51,3 +51,14 @@ this cold gate is independently preserved. The unpinned runner fails before
 any filesystem/network/job action. Synthetic test passed1 fixture, rejected10
 corruptions, preserved1 failure in0.2797957s/23638016 observed peak RSS.
 This test verifies the draft's actual imports and audit name; COMPILER_CHECKED=0.
+
+Second bounded diagnostic prepared separately (do not execute before preserving
+the wrap-probe result and stopping on any first error): source
+9838cd3c3c280971ef69fcf2e0bf19f4f193923c, NeumannFlatInternalBondActionDraft.
+Its two names expose the actual flat derivative and Laplacian with both bond
+masks and the source-minus-target sign. The parent is this SAME cold root,
+not a second clone. Eight bounded stages, no parent pins guessed in advance.
+The template/reader synthetic test passed1 fixture, rejected10 corruptions,
+preserved1 failure in0.2772874s/23564288 observed peak RSS. This is not Lean
+evidence. Both templates remain unexecutable until actual cold hashes are set.
+Do not treat these prepared diagnostics as cold targets or change this source.
