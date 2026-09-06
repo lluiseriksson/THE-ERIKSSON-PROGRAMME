@@ -135,3 +135,28 @@ without rebuild or tracked-source mutation: exit0/2.420113779s, three names
 d3a73641df6341b62f29b25682927993224957ce603e1098d380b6ed62bde996.
 Separate local verification/transfer remains pending at this write; no cold
 production seal is claimed for that Mathlib-only repro.
+
+## Transfer boundary at06:58UTC
+
+Cold seal published as24369b67417cff37b23f5bc71f0ea218fd12c501, fast-forward,
+gh identitylluiseriksson confirmed. Cold artifacts are fully local and committed.
+The HOT archive remains in the same Colab runtime, with no Lean/Lake live
+at the final process check. Its transfer has NOT succeeded locally:
+file-panel Download and a new download-only files.download cell completed
+without a visible error, but no file appeared in either user Downloads folder.
+The local verifier consequently stopped at FileNotFoundError before writes.
+A data-URL link was not usable; an explicit Blob link is now visible as
+"Save exact HOT archive" in the final transfer-only cell, with the same SHA.
+Clicking it also did not produce a local file in the observed folders.
+No scientific cell was rerun. The original cold cell remains execution[1];
+the additional cells only read/hash/render/download the existing archive.
+
+An asynchronous user question requests saving
+`neumann-integer-image-owner-hot-v1.tar.gz` from the Colab files panel.
+Preserve the runtime and sole tab until those bytes are recovered. Do not
+disconnect/delete it yet. Browser tab1, same notebook vehiclee674202c,
+hosta7df6ab4f6f3. No new calculation is needed to recover this evidence.
+Once downloaded, run the already prepared bounded independent verifier with
+the local cold inner archive and the expected HOT SHA above, preserve to
+validation-evidence/neumann-integer-image-owner-hot-20260906, then disconnect
+and record the lifecycle. No HOT seal or ledger1131 has been written yet.
