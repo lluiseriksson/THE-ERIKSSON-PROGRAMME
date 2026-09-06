@@ -47114,3 +47114,30 @@ HOT-body promotions, still PRE-VALIDATION until fresh compilation. Exact-body,
 text/import tests passed exit0/0.3270295s/15675392RSS. The runtime was then
 disconnected/deleted after independently preserving all cold/HOT archives;
 UI confirms reconnect state. No new cold run has been started yet.
+
+## Addendum 1153 — complete-fibre original reader failure preserved (2026-09-06)
+
+Cold source7f7455b286da5809a0ee64a1511684f887cf8a88, revision
+neumann-complete-fibre-promoted-cold-v1, CPU/highRAM4609d7098347.
+Start12:08:18.743798UTC,PID8742. Physical graph child exit0 in1536.199927760s;
+the original archive reader exited1 in0.091421533s with first error exactly
+OWNER_CONTRACT=physical_diagnostic_source. LAUNCH_FINAL_STATUS remains FAIL.
+No failed log or archive was edited, and no compiler was rerun.
+
+Original downloaded outer SHAe0516b0fbef4f87ce98700c96e9695a9c19557ac2484dce14b1cf4c84183d48c;
+inner SHAa156f9b7be82c3248172e7217bd83f905171e5a1ce3a2a75c10529d5600bf702;
+failure preservation reportd2b079d60b7dfacf9e0edbc7612fbbfcaa1f45057d4f3746c39151323f9ba76a.
+Independent preservation exit0/0.1738382s/20582400RSS, under
+validation-evidence/neumann-complete-fibre-original-verifier-failure-20260906.
+
+Cause measured against the published producer: the v1 reader AND its own
+synthetic fixture accidentally retained physical_diagnostic_source and
+physical_diagnostic_archive_sha256 from the previous averaging cohort.
+Neither is emitted by this complete-fibre producer. V2 removes those stale
+expectations and requires the EXACT producer contract field set. Its test
+compares the actual producer AST dictionary with the original archived
+dictionary, rather than trusting a reader-generated fixture alone.
+V2 tests: gate2/9, oldreader1/6, coldreader1/8;4 altered contracts rejected.
+Original unchanged inner archive passes16 stages/6 names under v2.
+Measured exit0/0.1735189s/19148800RSS. Full reviewed preservation and selective
+seal follow separately; this incident alone is not a seal.20/41 unchanged.

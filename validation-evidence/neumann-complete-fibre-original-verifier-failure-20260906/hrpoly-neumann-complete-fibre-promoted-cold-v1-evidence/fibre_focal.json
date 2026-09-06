@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannGeneratedCompleteFibre"], "cwd": "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1", "exit": 0, "log_file": "fibre_focal.log", "output_sha256": "75be001faf8104d86c40bd0176b98bfcc18f08d8eae547c3d20ff4ba96bbcd65", "seconds": 1413.9239458380002, "stage": "fibre_focal"}

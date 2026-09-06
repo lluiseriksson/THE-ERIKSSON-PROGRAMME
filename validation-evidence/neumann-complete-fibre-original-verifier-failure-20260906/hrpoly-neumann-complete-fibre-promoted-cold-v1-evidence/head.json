@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1", "exit": 0, "log_file": "head.log", "output_sha256": "6cd30af653b99da754219f410a42e083d6e597aeb76640dc0b9df8729770f25f", "seconds": 0.0035744470001191075, "stage": "head"}

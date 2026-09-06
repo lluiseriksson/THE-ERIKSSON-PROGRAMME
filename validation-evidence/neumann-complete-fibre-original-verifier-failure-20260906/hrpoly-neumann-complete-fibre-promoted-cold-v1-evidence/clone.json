@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "26e958240989131a63406d810f9482453d189b6237cbd0e499349fbd22a0a56e", "seconds": 9.551317589000064, "stage": "clone"}

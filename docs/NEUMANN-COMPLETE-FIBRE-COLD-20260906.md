@@ -1,5 +1,17 @@
 # Constructed complete active fibre — cold promotion
 
+LATEST: cold graph completed, original reader FAIL retained (ledger1153).
+First error OWNER_CONTRACT=physical_diagnostic_source: two stale prior-cohort
+fields in reader/self-fixture, absent from the actual published producer.
+Downloaded original outere0516b0fbef4f87ce98700c96e9695a9c19557ac2484dce14b1cf4c84183d48c
+and innera156f9b7be82c3248172e7217bd83f905171e5a1ce3a2a75c10529d5600bf702
+are independently preserved, unchanged. V2 reader verified16 stages/6 names
+against these exact bytes after matching the producer's AST contract.
+No Lean reexecution. Prepare full reviewed-preservation report next, then
+selective seal. Runtime retained for that and the already prepared HOT.
+HOT templates must use reviewed parent evidence, NOT demand that the old
+immutable launch-final-status become PASS. Never overwrite that FAIL.
+
 Previous goal turn: PROGRESS, not a wait. Cold averaging/field-action cohort
 sealed in1149; complete-fibre HOT v3 passed and independently preserved in1152.
 Production remains PRE-VALIDATION.20/41,TermSource0,window15 not attained.
