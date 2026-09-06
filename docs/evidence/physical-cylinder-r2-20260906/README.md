@@ -4,6 +4,24 @@ All proof execution uses the task-owned CPU/high-RAM Colab notebook:
 [R1/R2 source and complete evidence archives](https://colab.research.google.com/drive/1Hj6-16RKQ8Fk1gzEfJC6Qg5aqmVJKjaw).
 Earlier cells and failed runs are retained. R2 has no accepted source gate yet.
 
+## Gate 6 in progress: focal build and 39 oracles passed
+
+The current fresh clone at the registration commit uses geometry SHA-256
+`CD4EEF25817D3A5F2EF6F61FDD19D3E8E5C3ECA3B5FC34202DDD7219933E4D79`,
+measure SHA-256
+`1A345A144A95D2A61076A86EDD23ABF3B097E51F5ADC0E0EDB8EA9AA224B6884`,
+and global oracle SHA-256
+`2D7122DB41BDE8055F9A3290C98AE22E2DB361B65B12F4BB5C4953AE5D2E09E3`.
+The runner verified these exact UTF-8/LF bytes before their respective stages.
+
+The focal build completed successfully at **8171 jobs**, and all **39**
+headline oracles exited **0** with only the permitted standard axioms.
+The [observed focal transcript](gate-6-oracle.txt) is transcribed from the
+notebook; its byte hash will be matched to the final manifest before acceptance.
+The unchanged core build has started. The core/global results, complete
+archive and runtime-closure record are still pending. No full R2 acceptance,
+core integration or terminal reproduction is claimed here.
+
 ## Diagnostic 1: failed geometry elaboration
 
 - Fresh clone at `ba48274f217220ae2aa47ddaddd8e377fb2231a8`, with two

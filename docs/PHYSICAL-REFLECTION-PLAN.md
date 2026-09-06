@@ -27,7 +27,7 @@ obstruction is not revived.
 | ID | Required output | Current state |
 |---|---|---|
 | R1 | Four independent links; reflection involution; exact holonomy transformation; dictionary to `GaugeConfig.plaquetteHolonomy`; nontrivial dependence on each link | Scoped cold PASS: revised source, 9/9 headline oracles, existing core at 8466 jobs and full 2815-command oracle. Not core-integrated or terminally reproduced |
-| R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Geometry compiled in diagnostic 3; measure failed and is being repaired. No R2 acceptance yet. See the [R2 plan](PHYSICAL-CYLINDER-R2-PLAN-20260906.md) |
+| R2 | Genuine Wilson weight and product-Haar reflection identity, with orientation, normalization and integrability visible | Both modules compiled at 8171 jobs; 39/39 focal axiom readouts passed. Core/global checks pending; no full R2 acceptance yet. See the [R2 plan](PHYSICAL-CYLINDER-R2-PLAN-20260906.md) |
 | R3 | Positive complex reflected Gram forms for a physically specified finite lattice and a nonzero physical test sector | Open |
 | R4 | Physical quotient/completion, transfer operator, vacuum and correlation identity, ready for `SharpBridge` | Open |
 | R5 | Appropriate total local-observable family and matched clustering inputs | Open |
@@ -90,8 +90,9 @@ type adapters; do not pretend that the disk-amplitude theorem already
 applies to this geometry. This was registered before source implementation.
 Two R2 modules are now drafted; five failed focal diagnostics are preserved
 in the [R2 evidence log](evidence/physical-cylinder-r2-20260906/README.md).
-Diagnostic 3 compiled the geometry, but the measure failed. The corrected
-source remains unverified until its acceptance gates pass.
+Gate 6 compiled both modules and passed all 39 focal axiom readouts. Its
+unchanged core build and global oracle remain pending. Five earlier failed
+diagnostics do not certify these corrected source bytes.
 
 ## Acceptance conditions
 

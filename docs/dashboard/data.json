@@ -13,7 +13,7 @@
         "title": "Physical Wilson reflection: independent campaign started",
         "date": "2026-09-06",
         "status": "Local R1 compiled; 9/9 new headline oracles and full 2815-command oracle passed in one fresh Colab clone. Not core-integrated or terminally reproduced.",
-        "note": "R2 cylinder geometry compiled. Diagnostic 5 isolates the remaining normalization issue to a real/complex inverse identity. Five failed runs are preserved; the corrected 39-headline gate is running. R2 is not accepted. Physical positivity and reconstruction remain open.",
+        "note": "R2 geometry and Wilson measure compiled at 8171 jobs; all 39 focal axiom readouts passed. Core/global verification is still running, so full R2 acceptance is pending. Five failed diagnostics are preserved. Physical positivity and reconstruction remain open.",
         "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
       },
       {

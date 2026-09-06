@@ -86,6 +86,10 @@ of this task.
 - 2026-09-06: diagnostic 5 exposed the cast/inverse identity needed by that
   calculation. The failure is retained; the next run adds the standard
   complex coercion lemma without changing the theorem's statement.
+- 2026-09-06: gate 6 compiled both modules at 8171 jobs and passed all 39
+  focal axiom readouts. The unchanged core build is running; the global
+  oracle and completed evidence manifest remain pending. R2 acceptance
+  awaits those results.
 
 ## R3 reuse boundary identified during R2
 
