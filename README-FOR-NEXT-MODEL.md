@@ -1,9 +1,10 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
-Latest prepared gate: spacing production SOURCEdd9354a87, runner/readere2693781d,
-launcher339d5a2e7. Three-name cold package and actual contract tests pass;
-execution NOT STARTED. See docs/NEUMANN-CANONICAL-SPACING-COLD-20260906.md.
-No source claim changes;20/41,TermSource0. Prior session is deleted.
+LIVE spacing cold: SOURCEdd9354a87, runner/readere2693781d, launcher339d5a2e7.
+Started once2026-09-06T19:30:22.418089UTC, hash gate PASS, PID1139,
+CPU/highRAM50.99GB, tab9/cellJj0kgx_GMieQ. No final verdict yet.
+See docs/NEUMANN-CANONICAL-SPACING-COLD-20260906.md. Keep this active tab;
+do not rerun.20/41,TermSource0. All older runtime notes are historical.
 
 Latest1163: spacing normalization HOT PASS at852d3b82e,9 stages/3 exact names,
 archiveb72c538b and independent report6869c9af preserved. Exact-body production

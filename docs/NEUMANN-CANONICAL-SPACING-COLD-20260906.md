@@ -1,6 +1,10 @@
 # Canonical Neumann spacing — fresh intermediate cold gate (2026-09-06)
 
-Status: PREPARED, NOT STARTED. No mathematical cold verdict.
+Status: LIVE, one execution started2026-09-06T19:30:22.418089UTC.
+Hash gate PASS; launcherPID1139. Colab CPU/highRAM50.99GB, account
+lluiseriksson@gmail.com. Notebook vehicle6eb506f130c1bd3d42d891879c78749502dfac24,
+browser tab9/cellJj0kgx_GMieQ. No mathematical cold verdict yet.
+Do not rerun the cell or close this active tab before evidence preservation.
 SOURCE_CHECKPOINT=dd9354a87d2e9d60dac69aa79f287b53e45ba207
 Runner/reader checkpoint=e2693781db75058bd69d74fa659b17da2f89d6f0
 Runner SHA256=dc92529f0d7f10a076c939f32462872cd3a362abc0c057b299e1386a35b06c9f
