@@ -3,12 +3,20 @@
 LIVE internal-bond cold: SOURCE81f35765ad50f8217bca20bc4530d99b3bf05103,
 notebook abe9e4560910afa7d433851d35890062d8ed328a, one execution
 2026-09-06T20:25:39.007088UTC, PID1799, hash gate PASS.
-Colab CPU/highRAM50.99GB, account lluiseriksson@gmail.com, browser tab10,
-cell Lfn-ch7rZMDi. No final verdict yet. Do not rerun or close the active tab.
+Colab CPU/highRAM50.99GB, account lluiseriksson@gmail.com, current browser tab11.
+Original cell Lfn-ch7rZMDi was executed ONCE. Tab10 disappeared; its handle
+was absent, so the same notebook URL was reopened WITHOUT executing a cell.
+At20:44:13UTC the restored terminal confirmed hostnameb53f9b4fbc01 and the
+original PID1799 alive, elapsed18:34, still internal_bond_stencil_focal.
+The reopened editor has a new unexecuted cell: do NOT run it. Read original
+process/logs in the retained terminal. No final verdict or runtime loss.
 At20:28:25UTC runtimeb53f9b4fbc01 entered internal_bond_stencil_focal after
 Mathlib cache8142/exit0. Next coarse result check around20:55UTC, not minute polls.
 See docs/NEUMANN-INTERNAL-BOND-STENCIL-COLD-20260906.md. Prepare only the
-bounded wrap probe while the cold graph runs. Historical no-job notes below
+bounded wrap probe and flat internal-bond action are prepared separately;
+both parent-cold pin sets remain unset. Do not start either before cold
+evidence preservation. Checkpoint6bed4a8f1 is pushed (gh identity checked,
+fast-forward only, no CI). Historical no-job notes below
 describe the completed previous runtime.20/41,TermSource0 unchanged.
 
 Latest1165: internal-bond stencil HOT PASS at SOURCEc0174bbcb,
