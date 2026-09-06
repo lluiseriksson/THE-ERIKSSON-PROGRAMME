@@ -2,7 +2,8 @@ import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalGreenInsertion
 import YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenFourierSummability
 
 /-!
-PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
+Cold compiler-verified at d9d1bcae8 on 2026-09-06 (ledger1144).
+Three exact audit names; downloaded evidence independently verified.
 
 R2 source-image summability for the literal two-endpoint CMP89 (2.46) Green.
 Only the GENERIC decay-certificate and image-summability declarations from

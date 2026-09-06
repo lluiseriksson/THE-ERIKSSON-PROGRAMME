@@ -46897,3 +46897,32 @@ exit0/0.236398s/25600000observed RSS, no local compiler.
 Production and audit keep PRE pending fresh cold validation with the
 five-name rectangle promotion. R1/R3/R4, regional inverse, uniform B0 and
 window15 remain open; 20/41 and TermSource0 unchanged.
+
+## Addendum1144 — rectangle and actual full Eq246 images, cold PASS, 2026-09-06
+
+SOURCE d9d1bcae8e53b2ad442f507de0d695a1c5e0ccd6; runner/reader fef8e4bbbed0968c042fc7bce878d086c17c81b4;
+launcher ad37ffab980280db38c3819742c5828217cebfdf. New independent checkout
+/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1, separate project
+build directory, no project-output restoration. Exact Lean4.29.0-rc6 and
+Mathlib07642720480157414db592fa85b626dafb71355b. CPU/highRAM50.99GiB/noGPU,
+start10:08:37.789676UTC, launchPID58063 completed, whole graph1611.230905629s.
+All16 stages exit0; independent remote verifier and launcher exit0.
+Rectangle focal42.518530482s (3289jobs), audit4.358906315s;
+full-G focal1348.379284566s, audit14.068205098s. Dependency warnings are not
+a zero-warning claim. Eight exact names: CoordinateEquiv uses Quot.sound,
+IndexEquiv_apply uses propext/Quot.sound, the remaining six allowed trio.
+
+Outer archive5429bd0743a10c643c36b50404c2ed6849debe157488010fb2c400a35924b075 (91179bytes),
+inner4bdcdc5c6ddda0ade333f1a9370ebd945598eb70987dcdeaa7bba752e39cad75.
+Independent local preservation exit0/0.4112326s/20606976observed RSS;
+report453d00346ea4b23f96247c0f8fc6eb6bdfadf0bcba7df3c7c0826d78dcfc8dd9.
+Durable validation-evidence/neumann-rectangle-full-green-cohort-cold-20260906.
+Production outputs: NeumannImageRectangleCoverage.olean
+46fa689d8332b4583483c24c6ac39b1243755c790bc45e6fa52d295e5edb4d9e;
+NeumannActualFullGreenReflectionSummability.olean
+5ba1daae6814113249a44b2731ee4e8a1d25dc67db6a3345e7f63918b5a58803.
+Selective retirement changes only four module/audit headers, retaining exact
+HOT proof bodies. Rectangle coverage and source-image summability do not
+prove the regional inverse, uniform physical B0, or window15 attainment.
+20/41,TermSource0,Clay<0.1% unchanged. Retain runtime for the already prepared
+bounded R2d.1 and R2d.2a diagnostics only; no repeated cold build or CI.

@@ -1,5 +1,20 @@
 # Eight-name rectangle/full-G cold cohort — current continuity
 
+## PASS preserved; selective seal, 2026-09-06
+
+The single cold execution completed: all16 stages exit0 and all8 exact
+audit names accepted. Independent local preservation verified the downloaded
+outer archive5429bd0743a10c643c36b50404c2ed6849debe157488010fb2c400a35924b075,
+inner4bdcdc5c6ddda0ade333f1a9370ebd945598eb70987dcdeaa7bba752e39cad75,
+report453d00346ea4b23f96247c0f8fc6eb6bdfadf0bcba7df3c7c0826d78dcfc8dd9.
+Durable directory validation-evidence/neumann-rectangle-full-green-cohort-cold-20260906.
+See ledger1144. Only these two modules and their two audits lose PRE headers;
+no mathematical body changes. Do not rerun the cold cell.
+Next: the already prepared R2d.1 HOT unit below, using retained af35 checkout.
+20/41, TermSource0, regional inverse/uniform physical B0/window15 unchanged.
+
+## Original launch record (historical)
+
 2026-09-06 10:08:37UTC: single execution started, HASH_GATE=PASS,
 launchPID58063, runtime a7c701abce35 CPU/highRAM50.99GiB/noGPU.
 Visible account lluiseriksson@gmail.com, tab4/browser1, Cell3.

@@ -1,0 +1,5 @@
+'YangMills.RG.neumannImageRectangleCoordinateEquiv' depends on axioms: [Quot.sound]
+'YangMills.RG.neumannImageRectangleIndexEquiv_apply' depends on axioms: [propext, Quot.sound]
+'YangMills.RG.neumannImageRectangleFamilyEquiv_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannImageRectangleFamily_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannImageRectangle_fixedPoint_injective' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannImageRectangleCoverageAudit.lean"], "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1", "exit": 0, "log_file": "rectangle_audit.log", "output_sha256": "9f6b10a67884227ed69812ce2c95b721cb48d8b05eac0f5978b16683de47c627", "seconds": 4.35890631500115, "stage": "rectangle_audit"}

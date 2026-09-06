@@ -6,7 +6,7 @@ The finite-to-integer physical counting dictionary and full one-dimensional
 image-family coverage are COLD SEALED at af35fbb8c (ledger1140). The literal
 multidimensional rectangle family passed HOT at fbf2e61f3 (ledger1142), with
 explicitly pinned subtype beta/p. Its exact-body production promotion and
-five-name audit remain PRE-VALIDATION, pending the next cold cohort.
+five-name audit are now COLD SEALED at d9d1bcae8 (ledger1144).
 Promotion checks: Git-blob identity/text/import gates, exit0/0.1700507s,
 15728640 observed RSS. An initial local checker draft accidentally omitted
 its check body; missing expected output caught it before publication. That
@@ -14,15 +14,17 @@ exit0 was NOT counted as verification. The complete checker is the evidence.
 
 Actual full (2.46) source-image summability passed HOT at acc09ce87
 (ledger1143), with three exact audited names and independently preserved
-archive. Its exact-body production and audit remain PRE pending the
-joint eight-name cold cohort with rectangle coverage.
+archive. Its exact-body production and audit are now COLD SEALED at
+d9d1bcae8 in the joint eight-name cohort with rectangle coverage (ledger1144).
 The older planning/live-state paragraphs below are historical, not claims
 that these already resolved steps remain open. R1/R3/R4 still remain open.
 20/41,TermSource0,window15 not attained unchanged.
 
-The joint eight-name cold cohort is running from d9d1bcae8 in a fresh
-separate checkout since10:08:37UTC; see
-NEUMANN-RECTANGLE-FULL-GREEN-COLD-20260906.md. No verdict yet.
+The joint eight-name cold cohort passed from d9d1bcae8 in a fresh
+separate checkout: all16 stages exit0, downloaded evidence independently
+verified. See NEUMANN-RECTANGLE-FULL-GREEN-COLD-20260906.md.
+Selective header retirement exact-body/text/import checks passed:
+exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 

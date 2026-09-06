@@ -3,9 +3,9 @@ import YangMills.RG.BalabanCMP89NeumannReflectionRepresentation
 import Mathlib.Logic.Equiv.Prod
 
 /-!
-PRE-VALIDATION: promoted source present, .olean not materialized,
-not compiler-verified as this production module.
-Exact draft bodies passed HOT at fbf2e61f3 (ledger1142); no cold seal yet.
+Cold compiler-verified at d9d1bcae8 on 2026-09-06 (ledger1144).
+Five exact audit names; downloaded evidence independently verified.
+Proof bodies are unchanged from the HOT draft fbf2e61f3 (ledger1142).
 
 The complete image family uses the literal half-open source rectangle and
 positive coordinate sides. It is bijective onto all integer vectors. The

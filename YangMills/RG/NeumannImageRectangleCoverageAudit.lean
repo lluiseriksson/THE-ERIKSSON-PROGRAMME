@@ -1,6 +1,6 @@
 import YangMills.RG.NeumannImageRectangleCoverage
 
-/-! PRE-VALIDATION: source present, .olean not materialized, not compiler-verified.
+/-! Cold compiler-verified at d9d1bcae8 on 2026-09-06 (ledger1144).
 Exact five-name audit of rectangular image-family coverage. -/
 
 #print axioms YangMills.RG.neumannImageRectangleCoordinateEquiv

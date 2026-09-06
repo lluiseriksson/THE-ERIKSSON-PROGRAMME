@@ -1,5 +1,12 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest focused seal2026-09-06: ledger1144 certifies rectangle image-family
+coverage and actual full Eq246 source-image summability at d9d1bcae8,
+16 cold stages and8 exact audit names, downloaded evidence independently
+verified. This is not a regional inverse, uniform physical B0 or window15.
+20/41,TermSource0 unchanged. Current continuity and two prepared HOT units:
+docs/NEUMANN-RECTANGLE-FULL-GREEN-COLD-20260906.md. Never rerun its cold cell.
+
 Latest focused seal2026-09-05: ledger1126 certifies half-cell block reflection
 geometry at59160603d,16 cold stages, downloaded evidence independently verified.
 Runtime deleted, monitor removed, zero tabs after19:28UTC. Next gate is actual
