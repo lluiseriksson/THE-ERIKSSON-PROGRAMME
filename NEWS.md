@@ -8,6 +8,11 @@ guide, not the complete verification ledger. Entries distinguish work in
 
 ## 2026-09-06 — Physical Wilson reflection campaign started
 
+**R2 continuation registered:** the [finite-cylinder plan](docs/PHYSICAL-CYLINDER-R2-PLAN-20260906.md)
+requires explicit oriented geometry, six physical Haar factors, a normalized
+Wilson Gibbs measure and a reflected integral identity. No new R2 proof is
+claimed at registration; positivity and a nonzero physical sector remain open.
+
 **R1 local geometry compiled and its nine headline oracles passed.**
 The first target is the literal four-link plaquette boundary, its reflection
 and its dictionary to the existing Wilson holonomy. This precedes the

@@ -13,7 +13,7 @@
         "title": "Physical Wilson reflection: independent campaign started",
         "date": "2026-09-06",
         "status": "Local R1 compiled; 9/9 new headline oracles and full 2815-command oracle passed in one fresh Colab clone. Not core-integrated or terminally reproduced.",
-        "note": "ARR paper reuse audit completed: existing original-edge gauge fixing and the conditioned 2D heat-kernel amplitude are prior work. Duplicate gauge covariance removed. Physical Wilson positivity and reconstruction remain open.",
+        "note": "R2 finite-cylinder continuation registered: explicit geometry, six Haar factors and normalized Wilson reflection identity are the next targets; no R2 verification yet. Existing ARR 2D results will be reused. Physical positivity and reconstruction remain open.",
         "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/PHYSICAL-REFLECTION-PLAN.md"
       },
       {
