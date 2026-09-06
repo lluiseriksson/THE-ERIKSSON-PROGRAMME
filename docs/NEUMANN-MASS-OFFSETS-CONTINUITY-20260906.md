@@ -1,5 +1,50 @@
 # Actual mass / complete-offset endpoint — continuity 2026-09-06
 
+## Live cold gate (supersedes older runtime/preparation paragraphs)
+
+Notebook vehicle a98794ab178acb9b79d7a3861423825f0de4540a; compiled SOURCE
+9bb957757b6454871eaea6e26aed8c95dc576b3c. One launch only:
+RUNNER_REV=neumann-mass-offsets-promoted-cold-v1,
+HASH_GATE=PASS, START_UTC=2026-09-06T13:10:51.955065+00:00,
+LAUNCH_PID=8676. CPU/high-RAM, account lluiseriksson@gmail.com.
+
+At 13:21:57.804594 UTC the recovered terminal reports hostname bb2d3bf732a8,
+50.99 GiB total RAM, PID8676 alive and Lake15135 with active Lean children.
+The original browser tab6 crashed; a new view of the SAME notebook (tab7)
+reconnected to the existing runtime. No cell or compiler queue was rerun.
+The newly loaded cell visually shows an empty output: that is NOT evidence
+of no execution. The process and durable /content logs are authoritative.
+No cold verdict has yet been observed. The old crashed tab cannot currently
+be selected/closed through the browser tool because its data: URL is blocked.
+
+The first read-only terminal probe was contaminated by a terminal-response
+fragment 0;276;0c and returned bash command-not-found. Clearing the prompt
+and repeating ONLY that read recovered the state above; no Lean launch.
+
+Remote console: /content/launch-neumann-mass-offsets-cold-v1-console.log.
+Remote evidence: /content/hrpoly-neumann-mass-offsets-promoted-cold-v1-evidence.
+Expected outer archive:
+/content/neumann-mass-offsets-promoted-cold-v1-preservation-20260906.tar.gz.
+After completion preserve/download and verify via
+scripts/preserve_neumann_mass_offsets_cold.py before selective sealing.
+Do not run the old cell or create a replacement build while PID8676 is live.
+
+## Prepared next bounded R1 diagnostic, NOT compiler evidence
+
+tmp/NeumannCanonicalPrecisionOffsetActionDraft.lean and its Mathlib-only
+Repro keep the literal internally generated canonical Neumann precision.
+They propose two names: the counting-mass replacement and its complete-
+offset pointwise action. The internal-bond Laplacian and mass-squared term
+stay unchanged; the prefix counting coefficient and w^(2*(steps+1)) remain
+separate, with no extra fibre cardinality. No inverse or reflection premise.
+
+Both remain PRE-VALIDATION. Exact two-file text/import guards passed under
+the local watchdog: exit0/0.3481256s/15986688 observed peak RSS. This is not
+Lean validation. Run the generic pointwise PiLp repro FIRST, only after the
+current cold gate and evidence preservation, using the same retained Colab.
+R1 spacing/Fourier normalization, R3 boundary/right inverse and R4 uniform
+physical B0 remain open. Counters remain20/41, TermSource0, window15 unattained.
+
 ## Measured result
 
 HOT PASS only, source6d02bcfd4091fb549dd9856f6fa95bb10e854643,
