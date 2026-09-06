@@ -2,6 +2,14 @@
 
 ## Superseding measured state, 2026-09-06
 
+Masked-action HOT now VERIFIED atf2196b046117a59b9d4d1717887bc127fa34690f,
+ledger1181: eight stages0, one exact oracle, physical draft7.790s, original
+archive independently preserved. The two spacing factors, original fit and
+full/proper alternatives survive literal composition. Production promotion
+still needs its own cold evidence; this does not identify the integer image
+kernel with the actual regional inverse. Next semantic gate remains carrier
+geometry and boundary convention, not another renaming of this equality.
+
 2026-09-07: directional masks now COLD VERIFIED at source
 74fc4f4dcd115558de6cf882d17540fe57d9bd27, ledger1180. All16 stages exit0,
 8663 focal jobs and four exact allowed-axiom declarations. Original archive

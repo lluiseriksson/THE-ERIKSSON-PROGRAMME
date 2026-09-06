@@ -47843,3 +47843,37 @@ Scope is actual directional torus rectangle masks including full-period
 sides, not physical carrier choice, reflection covariance, regional inverse,
 uniform B0 or window15.20/41,TermSource0 unchanged. Runtime retained only
 for the separately parent-pinned bounded masked-action HOT, not a rerun.
+
+## Addendum 1181 — actual masked rectangular Laplacian HOT PASS (2026-09-07)
+
+SOURCEf2196b046117a59b9d4d1717887bc127fa34690f;
+runner051dca2ea77171552322d5d06a38936a5178d1f1;
+reader593afed79b15c555815f4a645f45c1bc844016bb.
+Launched once2026-09-06T23:43:09.249162Z PID19343 on retained runtimee71af114d3fe,
+only after parent cold1180 had been independently downloaded and verified.
+Runner hash63c74f2d84af465e3017ed7ac2d1d3e1ac56b29cb5de62528153f787f26ead19;
+the actual archive, review blob and parent production olean were checked.
+Eight stages exit0; prerequisites87.256182590s; physical draft7.790062111s;
+source clean before/after. Exact one oracle declaration
+YangMills.RG.neumannRectangleFlat_laplacian_directionalMasks uses
+{Classical.choice,Quot.sound,propext}. No reexecution or proof edit.
+
+Archivefd8c7f7bac683916bb2e491f736b3037aed4a9cd7fdf3c2d5e0fcfebe9d94277;
+report2b93e029946bf5334b43b7751cd19f1e3cd3aa6ff8851e17e8d0f5c1d246c00b;
+physical olean3b82fe5a227a69e179ab18853794b6887029864221d07ccc8ea052a83eb0d563.
+Preserved validation-evidence/neumann-rectangle-flat-masked-action-hot-v1-20260907.
+Independent local reader exit0,0.4265353s,13594624 observed peak RSS.
+The original downloaded archive and its reported hash match. HOT only,
+cold_seal=false; no PRE retirement is authorized by this diagnostic.
+
+The theorem composes the literal flat internal-bond Laplacian with the
+directionwise full/proper masks, retaining both inverse-spacing factors
+and original non-strict side fit. It is NOT the integer boundary dictionary,
+physical carrier choice, Green reflection covariance, regional inverse,
+uniform B0 or window15. Counters20/41,TermSource0 unchanged.
+
+After both original archives were preserved, disconnect-and-delete was
+confirmed through Colab's dialog and reconnect-only UI around23:46UTC.
+The final process observation showed no PID19343; no cold or HOT rerun.
+No runtime remains retained from this cohort. Launch-to-deletion interval
+was about36min including cold, preservation, instrumentation and HOT.

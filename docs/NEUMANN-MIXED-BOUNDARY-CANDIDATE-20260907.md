@@ -9,7 +9,8 @@ it is not permission to replace the existing source kernel silently.
 ## What the inspected tree fixes
 
 NeumannRectangleDirectionalMasks keeps the original hypotheses 0<m_mu<=N.
-Its current production cold gate is pending. The separately cold-sealed
+Its production cold gate is sealed in ledger1180; the literal masked action
+has a separately preserved HOT PASS in ledger1181, not a cold seal. The separately cold-sealed
 NeumannRectangleWrapProbe and NeumannFlatInternalBondAction establish that
 site fit alone does not erase actual torus wrap bonds.
 
