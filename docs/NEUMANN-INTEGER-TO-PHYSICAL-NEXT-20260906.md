@@ -37,6 +37,13 @@ An earlier guard invocation supplied a path instead of its required
 
 R2d.2 remains separate: identify that finite block sum with the literal
 generated flat Q action after the already sealed one-block collapse.
+R2d.2a is now written, not compiler-verified, in
+NeumannGeneratedAverageFieldActionDraft.lean: consume the existing
+flatExplicitQprime_single internally plus sum_singleFinitePiLp_eq to
+produce the exact action on a complete field as a terminal-owner fibre sum.
+No full-cardinality premise is used. R2d.2b is the remaining identification
+of this actual fibre with the complete integer offsets of the lifted
+rectangle; it must be constructed, not supplied as a free equivalence.
 Reuse cmp99BlockOffsetEquiv / sum_blockSites_eq_sum_offsets for the complete
 block carrier; do not invent a second finite-site equivalence.
 The weight is (M^-d)^depth, equal by the sealed
