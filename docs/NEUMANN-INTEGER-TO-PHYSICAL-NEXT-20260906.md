@@ -31,7 +31,24 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 Complete-fibre carrier substep COLD SEALED1154 at7f7455b28,8501jobs,16stages,
 6 names; original metadata-reader FAIL preserved1153 and corrected reader
 verified unchanged archives without rerunning Lean. Only its two headers
-retire PRE. Mass-offset endpoint4a05bff83 remains PRE, not yet run HOT.
+retire PRE. Mass-offset endpoint now HOT PASS1157 at6d02bcfd4091fb549dd9856f6fa95bb10e854643,
+9 stages/6 exact names. v1/v2 first errors retained1155/1156. Exact-body
+production NeumannGeneratedMassCompleteOffsets and audit remain PRE pending
+their fresh cold validation. Runtime4609d7098347 has been safely deleted.
+Earlier live/pending paragraphs below are historical; do not rerun old cells.
+
+Conventions at this endpoint (no change of adjoint or measure):
+
+| object | coefficient outside complete-offset sum |
+| --- | --- |
+| one averaging level | w = cmp99SourceBlockAverageWeight M d |
+| source-weighted generated mass | w^depth |
+| counting-adjoint generated mass | w^(2*depth) |
+| finite fibre reindexing, B=M^depth | no extra B^d factor |
+
+The same image translation/parity is shared across the finite fibre. This
+is not a Green endpoint-reflection theorem and not an inverse identity.
+After the fresh two-module seal, R1/R3/R4 remain the physical acceptance gates.
 
 Prepared2026-09-06 while the complete-fibre production cold gate runs:
 tmp/NeumannGeneratedMassCompleteOffsetsDraft.lean, six proposed audit names.

@@ -47211,3 +47211,36 @@ Independent reader exit0/0.4922748s/23232512RSS, VERIFIED_FAILURE.
 New Mathlib-only repro explicitly tests the composed-function rewrite before
 the next project run. No source proof is accepted from compiler recovery.
 20/41,TermSource0,window15 unattained unchanged; no cold rerun.
+
+## Addendum 1157 — actual mass/complete-offset endpoint HOT PASS (2026-09-06)
+
+Exact draft source6d02bcfd4091fb549dd9856f6fa95bb10e854643 on retained
+cold base7f7455b286da5809a0ee64a1511684f887cf8a88. Runner77251ad115f7ce5a4a966fe59a6a747d4b0df278,
+content SHA401ce51a2f9e1e5babf9adb3e5ecd738a659a6c37b1a14545c35906339fb0196.
+All9 stages exit0. Repro5.230727009s, prerequisites5.279696861s,
+physical draft10.399605858s; all6 exact named axioms are
+{propext,Classical.choice,Quot.sound}. Tracked base source unchanged before/after.
+This is HOT diagnostic evidence, NOT a cold production seal.
+
+Archive515f57a9898c8ef1460d353e9b85c6547cd9403514ad9521b39b73d30452382b;
+independent report1feb8e2622f4e9cde346f078d4bc5985ec3aac66b558b24d6c30fce595c49514;
+physical output53d4425bada8c3c017f535041d5fbdd52067b8f09de185fd7c74b2e14cc59f49;
+repro235e487f35565726b12d7c0d98deaff82bf6354753bde8cc9358eda10c06fe6c.
+Preserved under validation-evidence/neumann-mass-offsets-hot-v3-pass-20260906.
+Independent reader exit0/0.8114115s/23121920RSS. Both earlier failures remain
+preserved in1155/1156; no source or evidence rewritten to hide them.
+
+The actual fine target supplies coarse-owner membership internally. Literal
+source-weighted mass uses w^depth; counting-adjoint mass uses w^(2*depth),
+where w=cmp99SourceBlockAverageWeight M d. Both consume the constructed
+complete active fibre and use its offset sum without another cardinal factor.
+Integer coordinates and a COMMON printed image are finite-sum specializations.
+They do not establish Green reflection covariance, the regional right inverse,
+uniform physical B0, or window15.20/41,TermSource0 remain unchanged.
+
+NeumannGeneratedMassCompleteOffsets and its audit are exact-body promotions,
+still PRE-VALIDATION until a fresh cold build. Exact-body/text/import checker:
+exit0/0.4732454s/15966208RSS. No Windows compiler or exploratory CI.
+At12:59:04UTC ACTIVE_LEAN_LAKE=[]; after all cold/HOT archives were preserved,
+runtime4609d7098347 was disconnected/deleted. UI confirms reconnect state.
+About51 minutes since the cold launch, including all three bounded HOT runs.

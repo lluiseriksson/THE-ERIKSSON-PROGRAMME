@@ -1,5 +1,15 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest HOT1157: actual mass/complete-offset endpoint at6d02bcfd4091fb549dd9856f6fa95bb10e854643,
+9 stages/6 exact names, archive515f57a9 and independent report1feb8e26 preserved.
+Its production NeumannGeneratedMassCompleteOffsets + Audit are exact-body,
+PRE-VALIDATION pending fresh cold compilation. Earlier failures1155/1156 retained.
+Runtime4609d7098347 deleted safely after preservation; no active build or monitor.
+Next: prepare exact two-module cold runner/independent reader, cross-check their
+actual contract (not merely matching self-fixtures), then fresh Colab CPU/highRAM.
+Do not rerun historical cells.20/41,TermSource0,window15 unattained unchanged.
+See docs/NEUMANN-MASS-OFFSETS-CONTINUITY-20260906.md.
+
 Latest seal1154: complete active fibre at7f7455b28,8501 cold jobs,16 stages,
 6 audit names. Original metadata-reader FAIL preserved1153; reviewed v2
 PASS on unchanged downloaded archive, no compiler rerun. Only two certified
