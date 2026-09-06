@@ -47037,3 +47037,31 @@ weights remain distinct. Complete active-fibre reindexing is only PRE draft,
 not a physical inverse or uniform B0.20/41,TermSource0,window15 compatible
 but not attained,Clay<0.1% unchanged. Retain this runtime for the prepared
 bounded complete-fibre diagnostic, generic repro first; no fresh bootstrap.
+
+## Addendum 1150 — complete-fibre HOT v1 first failure preserved (2026-09-06)
+
+Source8c07d3f3ccc833a38b7e6b6fd95764dd0985db63, parent cold8570618f2,
+runner554412fd6c6cd58c8e4fcef609f18da58e25c66a. Single retained-runtime
+execution started11:48:42.821668UTC, PID16972, CPU/highRAM7ce7922a12a6.
+Generic sum repro passed8.39383718s; pinned physical prerequisites passed
+38.006687863s (8500 jobs, replayed/build, NOT cold). Physical draft exit1
+after9.093281419s. FIRST error at33:2: unnecessary generalizing x, because
+the dependent induction generalizes it automatically. The same first lemma
+also exposed an unclosed reflexive zero case and an unpinned lift-membership
+rewrite. No downstream declaration is accepted: printed sorryAx is the
+compiler's recovery after these errors, not permitted evidence.
+
+Downloaded22710-byte archive SHA256
+8c89fa485c24e2aac43c7b479a3daf77f1c850324d87ec7bdc0171f580a2cab5;
+independent failure report SHA256
+5d63ad1b14898e9b7115b6a7f95003f1e4fa0a6f7498d101ff9355e102d8f0d1.
+Local preservation exit0/0.3131855s/23138304RSS, exact first-failure stage
+and all downloaded source pins verified. Durable directory:
+validation-evidence/neumann-generated-complete-fibre-hot-v1-failure-20260906.
+Repair only the first membership proof: remove redundant generalizing,
+use reflexive rewrites at zero and the explicit M-pinned membership iff
+composed with the induction hypothesis at successor. Statement, six names,
+constants and hypotheses unchanged. Repair still PRE-VALIDATION.
+One broad local source search was interrupted without treating its incomplete
+result as a check; subsequent signature reads were scoped to exact files.
+Cold ledger1149 remains valid;20/41,TermSource0,window15 unattained unchanged.

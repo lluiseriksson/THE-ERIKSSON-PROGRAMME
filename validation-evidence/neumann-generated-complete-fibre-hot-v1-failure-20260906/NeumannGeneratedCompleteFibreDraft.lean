@@ -30,15 +30,14 @@ theorem neumann_mem_iteratedLift_iff_terminalOwner
     (x : FinBox d (cmp99RegionalLatticeSize M N depth)) :
     x ∈ (cmp99IteratedLiftActiveRegion (M := M) Omega depth).sites ↔
       cmp99GeneratedTerminalBlockSite M N depth x ∈ Omega.sites := by
-  induction depth with
-  | zero =>
-      rw [cmp99IteratedLiftActiveRegion_zero,
-        cmp99GeneratedTerminalBlockSite_zero]
+  induction depth generalizing x with
+  | zero => simpa only [cmp99IteratedLiftActiveRegion_zero,
+      cmp99GeneratedTerminalBlockSite_zero]
   | succ depth ih =>
-      rw [cmp99GeneratedTerminalBlockSite_succ]
-      exact (mem_cmp99LiftActiveRegion_sites_iff (M := M)
-        (cmp99IteratedLiftActiveRegion (M := M) Omega depth) x).trans
-        (ih (blockSite M (cmp99RegionalLatticeSize M N depth) x))
+      rw [cmp99IteratedLiftActiveRegion_succ,
+        mem_cmp99LiftActiveRegion_sites_iff,
+        cmp99GeneratedTerminalBlockSite_succ]
+      exact ih (blockSite M (cmp99RegionalLatticeSize M N depth) x)
 
 /-- The one-block carrier and the actual active terminal fibre coincide.
 The active membership witness is produced internally from the lifted region. -/
