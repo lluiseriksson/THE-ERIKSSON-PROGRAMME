@@ -133,7 +133,6 @@ theorem sum_neumannGeneratedTerminalOwner_integerField_eq_completeOffsets
       ∑ r : FinBox d (M ^ depth), F (neumannIntegerFineBlockPoint
         (neumannFiniteSiteIntegerCoordinates
           (neumannGeneratedActiveCoarseOwner Omega depth target).1) r) := by
-  dsimp only
   rw [sum_neumannGeneratedTerminalOwner_eq_completeOffsets]
   apply Finset.sum_congr rfl
   intro r _
@@ -161,7 +160,6 @@ theorem sum_neumannGeneratedTerminalOwner_commonImage_eq_completeOffsets
         (cmp89NeumannReflectionImage m
           (neumannFiniteSiteIntegerCoordinates
             (neumannGeneratedActiveCoarseOwner Omega depth target).1) k branch) r) := by
-  dsimp only
   rw [sum_neumannGeneratedTerminalOwner_integerField_eq_completeOffsets]
   exact sum_neumannIntegerImage_fineBlockPoint m
     (neumannFiniteSiteIntegerCoordinates

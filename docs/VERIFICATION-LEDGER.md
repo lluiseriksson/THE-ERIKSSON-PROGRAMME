@@ -47168,3 +47168,27 @@ This seals membership, constructed whole active fibre, offsets and integer
 coordinates/sums. The subsequent actual mass-offset draft remains PRE.
 This is not the Neumann regional inverse, uniform physical B0 or window15.
 20/41,TermSource0 unchanged. Runtime retained for the already prepared HOT.
+
+## Addendum 1155 — mass/complete-offset HOT v1 failed, preserved (2026-09-06)
+
+Source4a05bff83ac0a30a7bdced8b1adee45828aaef24 on retained cold
+base7f7455b286da5809a0ee64a1511684f887cf8a88, runtime4609d7098347.
+Runner6b659821920bfca7b8bec5beb3d7e55feae7ae02.
+Runner SHA256966433d42ea059202ebb1aedd16291902c4cc2c0868ebf598bdcdacffab152c8.
+Mathlib repro and prerequisites passed; physical_draft exit1/10.448671431s.
+First exact error: NeumannGeneratedMassCompleteOffsetsDraft.lean:136:6:
+Tactic `rewrite` failed: Did not find an occurrence of the pattern.
+The target still contains the outer `let regions := ...`; the second such
+proof fails at163:6 for the same reason. Compiler error-recovery sorryAx
+is rejected, not evidence for those declarations or a partial module seal.
+
+Downloaded archive SHA
+b8642782c3dada7e2184883d889d812ab9ebd7ac740a7e6d87c38bd1b5d53e65;
+independent report SHA
+7dd301d734635d5f650cdc0d8010257b73d72cfdfb10e59c38e22fe63439c1ea.
+Preserved under validation-evidence/neumann-mass-offsets-hot-v1-failure-20260906.
+Reader exit0/0.3008865s/22675456RSS, status VERIFIED_FAILURE, cold_seal=false.
+Repair is exactly `dsimp only` before the two rewriters, with a generic
+outer-let repro added before any further project compilation. No statement,
+constant or hypothesis changes. The repaired source remains PRE-VALIDATION.
+20/41,TermSource0,window15 unattained unchanged. No cold rerun.
