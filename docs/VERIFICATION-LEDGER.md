@@ -46977,3 +46977,27 @@ report354773e8e754e2bdc1ed5d6c55ef778104f6c1037a70a8a4cebcf56c1d7d9341.
 Durable validation-evidence/neumann-generated-average-field-action-hot-v1-fail-20260906.
 No declaration from error recovery is accepted. Statements/weights and
 counter20/41 unchanged; no new bootstrap or exploratory CI.
+
+## Addendum1148 — literal generated Q and two masses HOT v2 PASS, 2026-09-06
+
+Source765c7be79997313ebc6f72244d617634a4192700; runner4c96c6ce611eeee9e1f57900197f38180a8392d6,
+SHAc2109ca7a216a616b09e4355e19048f912f53289a6bb0a2694b49b9d2b3ad892.
+Retained af35 checkout, start10:57:13UTC, PID76818 completed. All9 stages0:
+exact abstracted residual repro5.783685292s, prerequisites5.529527218s/8483jobs,
+physical draft12.255287169s. Three exact names print the allowed trio.
+Unused-section-variable/simp-argument warnings remain; no zero-warning claim.
+The proof uses the existing generated point-source action internally to
+derive full-field Q, source-weighted mass, and counting-adjoint mass sums.
+No owner-fibre cardinality or operator equality is supplied as a hypothesis.
+Weights remain (M^-d)^depth and (M^-d)^(2*depth), not interchangeable.
+
+Archive6b3d1f7889c80bb1ba27802700ec5760b9422ba3a7efc4470e338d23c0a95a62;
+independent reader exit0/0.1984864s/23797760RSS;
+report587964741caf1df337d3df6475751dcb1e763425ea766666d5a78fc02632c64c.
+Actual output0f003e0b4f53b40e8f6121806f6d1ec3454feb07811daf30c72cf2a1690bae99.
+Durable validation-evidence/neumann-generated-average-field-action-hot-v2-20260906.
+Actual PASS accepted,17 mutations rejected; exact HOT-body promotion and
+text/import guards passed,exit0/0.451644s/24866816RSS. Production/audit PRE
+remain until the six-name fresh cold cohort with block-image averaging.
+R2d.2b complete physical-fibre/offset reindexing remains separate; no
+regional inverse, physical B0 or window15.20/41,TermSource0,Clay<0.1% unchanged.

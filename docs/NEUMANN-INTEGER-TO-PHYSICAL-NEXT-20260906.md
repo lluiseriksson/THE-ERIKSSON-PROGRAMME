@@ -28,6 +28,13 @@ exit0/0.274855s/16625664observed RSS; no local compiler used.
 
 ## R2d finite endpoint, explicitly split before manufacture
 
+Measured supersession: R2d.1 passed HOT at f8e37328b (ledger1146), and
+R2d.2a passed HOT at765c7be79 (ledger1148). Both actual artifacts were
+independently verified; exact-body production modules/audits are promoted
+with PRE retained pending the six-name fresh cold cohort. The older draft
+paragraphs below describe their design, not their current validation state.
+R2d.2b, R3 and R4 remain open. The six names do not change20/41.
+
 R2d.1 draft: NeumannIntegerBlockImageAverageDraft.lean. The exact printed
 image of B*y+r is B*image(y)+r', where r'=r or Fin.rev(r) coordinatewise,
 using the SAME parity and translation and fine rectangle B*m. A constructed
