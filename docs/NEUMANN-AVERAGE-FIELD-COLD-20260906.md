@@ -1,5 +1,19 @@
 # Six-name averaging/field-action cold cohort
 
+Preservation-instrument correction during the running gate: the LOCAL
+preserver still emitted the previous cohort's prose scope and display label.
+Its pinned source/queue/6-name checks were correct, but that final prose was
+not. Before any new downloaded report was written, the scope was corrected
+to the runner's literal averaging/full-field-action contract and made a
+checked field (accept1/reject3). The remote runner, reader, launcher, notebook,
+source and all their pins are UNCHANGED; no rerun is needed or authorized.
+The first added AST check used node.values() instead of node.values and
+failed locally in0.4889066s/20054016RSS; that exit1 was not counted. Corrected
+full instrument checks pass exit0/0.2593184s/21123072RSS, including existing
+synthetic gates and rejection of a HOT archive as cold. The remote reader's
+historical display-only label remains in its frozen bytes; exact names and
+source, not that label, determine what it verifies.
+
 Continuation2026-09-06T11:19UTC: current cell still running, not reexecuted.
 Read-only terminal inspection11:15UTC confirmed average_audit exit0/7.252s,
 its exact three-name axiom gate PASS, then STAGE=field_focal. This is a

@@ -11,6 +11,8 @@ SOURCE = '8570618f20c62c5724555589f910b84fdf803c33'
 REV = 'neumann-average-field-cohort-cold-v1'
 LAUNCHER = 'launch_neumann_average_field_cohort_cold.py'
 LAUNCHER_HASH = '798248f54c1d1c02e9caa401abeeaf753e621778c549874fc39dd6d10a13216c'
+SCOPE = ('finite block-image averaging and actual generated Q/weighted/counting full-field actions; '
+         'not complete physical fibre reindexing, inverse, B0 or window15')
 PINS = {
     'colab_neumann_average_field_cohort_cold.py': ('c8ec499e1f5fce268f5c48784a6a5854f949ec5e', '7b9bce5013a0482406f55ce2ea55d0e95ec27e9130dd4f79dadf6929af8db0cc'),
     'verify_neumann_average_field_cohort_cold.py': ('c8ec499e1f5fce268f5c48784a6a5854f949ec5e', '973e10c9a46c413a46e922b0d0d84d77f6700de306a64f27ddefd3096bc9f1ac'),
@@ -23,6 +25,11 @@ def load(blob, name):
     module = types.ModuleType(name)
     exec(compile(blob, name, 'exec'), module.__dict__)
     return module
+
+def verify_scope(files):
+    contract = json.loads(files['neumann-average-field-cohort-cold-contract.json'])
+    require(contract.get('scope') == SCOPE, 'PHYSICAL_SCOPE')
+
 
 def main():
     p = argparse.ArgumentParser()
@@ -70,10 +77,11 @@ def main():
     inner_prefix = 'hrpoly-' + REV + '-evidence/'
     require(all(n.startswith(inner_prefix) for n in nested), 'INNER_PREFIX')
     files = {n[len(inner_prefix):]: b for n, b in nested.items()}
+    verify_scope(files)
     report = cold.verify(files, gate, old)
     result = dict(status='PASS', source=SOURCE, outer_sha256=sha(blob),
         inner_sha256=sha(outer[inner_name]), launch=records, cold=report,
-        scope='rectangle image-family coverage and actual Eq246 source-image summability; not inverse, B0 or window15')
+        scope=SCOPE)
     payload = (json.dumps(result, sort_keys=True, indent=2) + '\n').encode()
     if a.destination:
         require(not set(outer).intersection(nested), 'PATH_COLLISION')
@@ -86,7 +94,7 @@ def main():
             with target.open('xb') as out:
                 out.write(content)
         (root / 'independent-local-verification.json').write_bytes(payload)
-    print('NEUMANN_RECTANGLE_FULL_GREEN_COHORT_COLD_PRESERVATION=PASS')
+    print('NEUMANN_AVERAGE_FIELD_COHORT_COLD_PRESERVATION=PASS')
     print('REPORT_SHA256=' + sha(payload))
     print(payload.decode(), end='')
 
