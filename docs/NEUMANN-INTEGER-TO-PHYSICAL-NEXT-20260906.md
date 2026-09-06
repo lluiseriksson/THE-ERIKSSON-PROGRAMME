@@ -1,5 +1,23 @@
 # Next R2 bridge after the seven-name integer image cold gate
 
+## Superseding measured state, 2026-09-06
+
+The finite-to-integer physical counting dictionary and full one-dimensional
+image-family coverage are COLD SEALED at af35fbb8c (ledger1140). The literal
+multidimensional rectangle family passed HOT at fbf2e61f3 (ledger1142), with
+explicitly pinned subtype beta/p. Its exact-body production promotion and
+five-name audit remain PRE-VALIDATION, pending the next cold cohort.
+Promotion checks: Git-blob identity/text/import gates, exit0/0.1700507s,
+15728640 observed RSS. An initial local checker draft accidentally omitted
+its check body; missing expected output caught it before publication. That
+exit0 was NOT counted as verification. The complete checker is the evidence.
+
+Actual full (2.46) source-image summability is currently in a separate bounded
+HOT run at acc09ce87, not yet a verdict; see NEUMANN-ACTUAL-FULL-GREEN-HOT-20260906.md.
+The older planning/live-state paragraphs below are historical, not claims
+that these already resolved steps remain open. R1/R3/R4 still remain open.
+20/41,TermSource0,window15 not attained unchanged.
+
 Design only; no compiled result or counter movement. Do not turn a common
 image-indicator equality into a physical inverse by renaming its parameters.
 
@@ -178,3 +196,22 @@ to this local remainder and the literal averaging finite-sum identity.
 The old `BalabanCMP89NeumannPhysicalRealReflectionSummability` theorem is
 explicitly (2.48), so its proof pattern may guide the real-part bound but
 its conclusion is not the needed (2.46) specialization.
+
+## R3 orientation/domain gate located against existing producers
+
+The sealed `cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply`
+is explicitly a FULL PERIODIC box statement. Its point-source solution
+solves the same finite periodic precision before inverse uniqueness is used.
+It is useful substrate, but not a Neumann regional identity. Likewise the
+sealed generic `cmp89CanonicalNeumannReflectionRepresentation_of_rightInverse`
+constructs the image-series operator internally but still requires that
+operator's right-inverse law for the SAME regional precision.
+
+Do not replace the withdrawn (2.48) wrapper by (2.46), leave himage assumed,
+and report the regional inverse as produced. The substantive remaining law
+is the pointwise/finite-operator equation for the constructed reflection sum.
+A finite-box Fourier result cannot silently become a continuous-momentum
+full-lattice result or an arbitrary rectangular Neumann result. Any route
+through finite periodization must expose those domain/geometry dictionaries;
+the pointwise reflected-extension route must expose finite-sum interchanges
+and the actual stencil/averaging compatibility. No new no-go is claimed here.
