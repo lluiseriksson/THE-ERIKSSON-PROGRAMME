@@ -1,5 +1,15 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE wrap/flat cold: SOURCE15e776db59c051571f79e47974acc2fbf597f715.
+One execution22:13:47.881279UTC PID16795, runtimeec5e95d70d1c,
+CPU/highRAM50.99GB, tab13/cellKkYQYAhYxyNB marked for handoff.
+Notebook d9a9c41ec4ccb0290dd40746364899748aeeef3c; hash gate PASS.
+Read docs/NEUMANN-WRAP-FLAT-COLD-20260907.md for exact pins and preservation.
+No reexecution/CI/local Lean. The previous b53 runtime is deleted.
+Separately prepared Mathlib-only NeumannRectangleDirectionalMasksRepro is
+STATIC/PRE, not in this cold queue and not compiler-verified.
+20/41,TermSource0,window15 unchanged. Older no-job/live notes are history.
+
 SUPERSEDING1177 (2026-09-06 22:02UTC): wrap v7 and flat-action v3 both HOT
 PASS, original evidence downloaded and independently verified. Source pins
 baf5fa136663fe71a9cf07dacd4e365b0026942e and

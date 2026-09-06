@@ -1,5 +1,16 @@
 # Wrap witness and flat action — prepared cold gate
 
+LIVE: one execution launched2026-09-06T22:13:47.881279UTC, PID16795,
+runtime ec5e95d70d1c, Colab CPU/highRAM50.99GB, lluiseriksson@gmail.com.
+Notebook vehicle d9a9c41ec4ccb0290dd40746364899748aeeef3c,
+tab13/cellKkYQYAhYxyNB. Hash gate PASS; at22:14:35UTC portable verifier
+self-test exit0/0.058657829s, toolchain download in progress. No final verdict.
+Do not reexecute. Inspect /content/launch-neumann-wrap-flat-cold-v1-console.log
+and /content/neumann-wrap-flat-promoted-cold-v1-launch/physical_cold_graph.log.
+Preservation archive:
+/content/neumann-wrap-flat-promoted-cold-v1-preservation-20260907.tar.gz.
+Keep this tab marked for handoff; no other runtime is active.
+
 Source checkpoint: 15e776db59c051571f79e47974acc2fbf597f715.
 Exact HOT mathematical bodies from baf5fa136663fe71a9cf07dacd4e365b0026942e
 (wrap v7) and 69a5308c8e5635b95b59c6d5c88d4b5b789f851c (flat v3).
