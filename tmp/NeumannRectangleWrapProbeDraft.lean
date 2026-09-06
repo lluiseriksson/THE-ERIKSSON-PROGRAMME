@@ -16,6 +16,13 @@ open YangMills
 
 noncomputable section
 
+private theorem wrapProbe_mem_bonds_of_endpoints
+    {d N : ℕ} [NeZero N] (Omega : ActiveGaugeRegion d N)
+    (b : PositiveBond d N)
+    (hb : b.1 ∈ Omega.sites ∧ b.1.shift b.2 ∈ Omega.sites) :
+    b ∈ Omega.bonds := by
+  exact Finset.mem_filter.mpr ⟨Finset.mem_univ b, hb⟩
+
 private def wrapProbeRegion : ActiveGaugeRegion 4 3 :=
   cmp89SourceNeumannRectangleActiveRegion (N := 3) (fun _ => 3)
 
@@ -24,6 +31,7 @@ private def wrapProbeSite : FinBox 4 3 := fun _ => 2
 private theorem wrapProbeRegion_sites : wrapProbeRegion.sites = Finset.univ := by
   ext x
   simp only [Finset.mem_univ, iff_true]
+  unfold wrapProbeRegion
   rw [mem_cmp89SourceNeumannRectangleActiveRegion_sites_iff]
   intro mu
   change (x mu).val < 3
@@ -41,10 +49,8 @@ theorem neumannRectangle_siteFit_retains_wrapBond :
   · intro mu
     exact le_rfl
   constructor
-  · rw [ActiveGaugeRegion.bonds, Finset.mem_filter]
-    constructor
-    · exact Finset.mem_univ _
-    · constructor <;> rw [wrapProbeRegion_sites] <;> exact Finset.mem_univ _
+  · apply wrapProbe_mem_bonds_of_endpoints
+    simp only [wrapProbeRegion_sites, Finset.mem_univ, and_self]
   constructor
   · rfl
   · norm_num [wrapProbeSite]
