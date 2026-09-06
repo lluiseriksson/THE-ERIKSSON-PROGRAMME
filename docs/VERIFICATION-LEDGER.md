@@ -46872,3 +46872,28 @@ This is literal multidimensional image-family coverage and fixed-point
 image injectivity. HOT only; keep PRE pending promoted cold validation.
 No summability, inverse, B0 or window15 follows from bijectivity alone.
 20/41 and TermSource0 unchanged. Next: literal Eq246 source-image insertion.
+
+## Addendum1143 — actual full Eq246 source-image HOT PASS, 2026-09-06
+
+Source acc09ce87687c473f7fc8280e6d61c78e2d24f7e; runner 9a3957bb0027633a6d10b1a37781d1fd04d914f9,
+SHA256 3c255db7a510f8ff26e95afa3ca5ab8456d5ae791fb4f69340208efad57caa45.
+Retained CPU/high-RAM runtime, clean af35fbb8c checkout, start09:50:15UTC.
+All eight stages exit0. Missing prerequisites366.967087576s/8653jobs;
+actual draft14.360548595s, three exact names with the allowed trio.
+Dependency linter warnings are not a zero-warning claim.
+The literal full fine-to-fine (2.46) kernel now supplies its own decay
+certificate and complex/real SOURCE-image summability. The generic
+certificate theorem is reused, NOT the withdrawn physical (2.48) instance.
+Radius/mass windows and L,j,a,rho-dependent amplitude remain visible.
+
+Archive b00bfb901dc0559f5ca13942cc1f5ec2a64749af0bfd37bd26f3310c9c1f4e03;
+output18042685b0d360a9ea725b3e8ceaae894b9d86f768160df68baee55b0f341778;
+report97dfe11d734688637caad88d75c42e30703b9a75afbf88497d8943763f2529ea.
+Independent reader exit0/0.1960371s/21786624observed RSS.
+Durable validation-evidence/neumann-actual-full-green-images-hot-v1-20260906.
+Reader mutations accept the actual PASS and reject19 corruptions/old failures.
+Combined mutation/exact-Git-body-promotion/text/import checks:
+exit0/0.236398s/25600000observed RSS, no local compiler.
+Production and audit keep PRE pending fresh cold validation with the
+five-name rectangle promotion. R1/R3/R4, regional inverse, uniform B0 and
+window15 remain open; 20/41 and TermSource0 unchanged.

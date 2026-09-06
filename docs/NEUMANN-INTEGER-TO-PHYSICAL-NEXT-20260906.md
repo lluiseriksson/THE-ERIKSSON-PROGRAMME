@@ -12,8 +12,10 @@ Promotion checks: Git-blob identity/text/import gates, exit0/0.1700507s,
 its check body; missing expected output caught it before publication. That
 exit0 was NOT counted as verification. The complete checker is the evidence.
 
-Actual full (2.46) source-image summability is currently in a separate bounded
-HOT run at acc09ce87, not yet a verdict; see NEUMANN-ACTUAL-FULL-GREEN-HOT-20260906.md.
+Actual full (2.46) source-image summability passed HOT at acc09ce87
+(ledger1143), with three exact audited names and independently preserved
+archive. Its exact-body production and audit remain PRE pending the
+joint eight-name cold cohort with rectangle coverage.
 The older planning/live-state paragraphs below are historical, not claims
 that these already resolved steps remain open. R1/R3/R4 still remain open.
 20/41,TermSource0,window15 not attained unchanged.
