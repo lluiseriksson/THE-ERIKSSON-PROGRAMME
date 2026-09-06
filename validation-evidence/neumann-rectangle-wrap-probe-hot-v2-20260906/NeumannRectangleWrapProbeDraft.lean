@@ -23,17 +23,6 @@ private theorem wrapProbe_mem_bonds_of_endpoints
     b ∈ Omega.bonds := by
   exact Finset.mem_filter.mpr ⟨Finset.mem_univ b, hb⟩
 
-private theorem wrapProbe_mem_bonds_of_full_sites
-    {d N : ℕ} [NeZero N] (Omega : ActiveGaugeRegion d N)
-    (hfull : Omega.sites = Finset.univ) (b : PositiveBond d N) :
-    b ∈ Omega.bonds := by
-  apply wrapProbe_mem_bonds_of_endpoints
-  constructor
-  · rw [hfull]
-    exact Finset.mem_univ _
-  · rw [hfull]
-    exact Finset.mem_univ _
-
 private def wrapProbeRegion : ActiveGaugeRegion 4 3 :=
   cmp89SourceNeumannRectangleActiveRegion (N := 3) (fun _ => 3)
 
@@ -60,7 +49,8 @@ theorem neumannRectangle_siteFit_retains_wrapBond :
   · intro mu
     exact le_rfl
   constructor
-  · exact wrapProbe_mem_bonds_of_full_sites wrapProbeRegion wrapProbeRegion_sites _
+  · apply wrapProbe_mem_bonds_of_endpoints
+    simp only [wrapProbeRegion_sites, Finset.mem_univ, and_self]
   constructor
   · rfl
   · norm_num [wrapProbeSite]

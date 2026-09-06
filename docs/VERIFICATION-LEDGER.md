@@ -47557,3 +47557,23 @@ No cold rerun, no seal, no second flat-action diagnostic started. Keep
 the same cache for a bounded proof repair; do not raise recursion/heartbeat
 limits or change the witness/statement to bypass the elaboration failure.
 20/41,TermSource0,window15 unattained unchanged.
+
+## Addendum 1168 — wrap probe HOT v2 failure preserved (2026-09-06)
+
+SOURCE70072b776d85c42e5f5935160c885b2b24fe3431, runner76110785c5f4d186f6528dfb138d212d839c7a14.
+One launch21:24:05.194704UTC, PID23525, same retained CPU/highRAM runtime
+b53f9b4fbc01 and BASE81f35765ad50f8217bca20bc4530d99b3bf05103.
+First failed child physical_draft exit1/11.555479680s, no timeout.
+Only compiler error: NeumannRectangleWrapProbeDraft.lean:52:4, recursion
+limit during concrete endpoint-membership simplification. The private
+rectangle rewrite error from v1 is gone; the finite witness remains PRE.
+The printed sorryAx belongs to error recovery and is rejected, not a seal.
+
+Original archive e87b0b8dd3f52acdab281c8b598aed17f6ba6d74c2db73f256a58bd91580770a;
+independent report d4796fe527b7847575bc61ef31b2a92ada7aa7869745544e1e04d8dd242fa43b.
+Preserved validation-evidence/neumann-rectangle-wrap-probe-hot-v2-20260906.
+Independent reader exit0/0.1759788s/23212032 observed peak RSS:
+VERIFIED_FAILURE, exact archive/source/parent/commands/first error checked.
+Next repair moves full-site membership to a generic lemma before concrete
+specialization; public statement unchanged, no raised recursion/heartbeats.
+No cold rerun or flat diagnostic yet.20/41,TermSource0,window15 unchanged.
