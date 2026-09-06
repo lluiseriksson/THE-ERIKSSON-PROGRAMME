@@ -4,10 +4,10 @@ import YangMills.RG.NeumannRetainedCountingMassDictionary
 import YangMills.RG.NeumannGeneratedMassCompleteOffsets
 
 /-!
-PRE-VALIDATION: production source present; its .olean is not yet materialized
-and this production module is not yet compiler-verified in a fresh clone.
-Exact proof body promoted from HOT source8aa5fe1ff, ledger1161.
-R1 finite-action dictionary only; fresh cold focal/audit still required.
+COLD VERIFIED at source4746880218c694a9d4e9d32c0af61f86d460b7b4,
+ledger1162: fresh Colab focal8742 jobs and exact two-name audit, with
+downloaded evidence independently verified. Exact HOT1161 proof body.
+R1 finite-action dictionary only; no regional inverse or window15 claim.
 
 Use the literal canonical Neumann precision, not the compressed Dirichlet
 precision. Its retained tower and positive terminal prefix are constructed

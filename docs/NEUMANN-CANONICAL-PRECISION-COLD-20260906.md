@@ -1,5 +1,24 @@
 # Canonical Neumann finite-offset action — next cold gate
 
+## Superseding preserved cold PASS — ledger1162
+
+Source4746880218c694a9d4e9d32c0af61f86d460b7b4 passed8742 fresh cold jobs.
+All16 stages passed; focal2366.193416338s, audit18.36277199999995s.
+Both exact names printed the allowed trio. Downloaded outer SHA256:
+d2f2434bd3a6a2719a33b3683ec630749f747d339b15911d95cca375bc98e81a.
+Inner4d788a4b5a89ce227cee086fcf4f08cb5d79be22df7ce443989b2a8ff0683852.
+Independent reportc556fe2293f438991d99b1a3e5d6581812944995ce6a69411cb54a02942e8644.
+Production olean59ba1504c640479910b28d2cb68cdad817407b2665c3a0ca4e0dbc1c942ad336.
+Preserved in validation-evidence/neumann-canonical-precision-cold-20260906.
+Only the two certified headers retire PRE; proof bodies are unchanged.
+
+At19:09UTC, after an interrupted agent turn, the existing page reported
+Colab disconnected for inactivity. The complete PASS transcript and automatic
+download survived. No rerun was needed. Runtime373c432a4cb0 survival must be
+checked before the prepared spacing diagnostic; the old LIVE notes below
+are historical. A newly allocated runtime is not retained hot state.
+No inverse, uniform B0 or window15 attained;20/41 andTermSource0 unchanged.
+
 LIVE 2026-09-06T14:47:47.255875UTC: the one-shot cell started in Colab
 CPU/high-RAM (50.99GB visible), account lluiseriksson@gmail.com. Hash gate
 passed with source474688021 and revision neumann-canonical-precision-promoted-cold-v1.

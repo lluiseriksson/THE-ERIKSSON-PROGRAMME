@@ -1,0 +1,103 @@
+{
+  "cold": {
+    "audits": {
+      "canonical_precision_audit": {
+        "YangMills.RG.neumannCanonicalPrecision_apply_eq_completeOffsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannCanonicalPrecision_eq_explicitCountingMass": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "aaee7ce3e9dcf0d8c72e9a2c58df0dee543eec89567bb650a0469a50c6f4b54c",
+    "evidence_json_payload_sha256": "7951db25677e39748232ef2240fb6e55c3d8526c11b77fa1704000c071294e13",
+    "production_outputs": {
+      "NeumannCanonicalPrecisionOffsetAction.olean": "59ba1504c640479910b28d2cb68cdad817407b2665c3a0ca4e0dbc1c942ad336"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannCanonicalPrecisionOffsetAction"
+        ],
+        "cwd": "/content/hrpoly-neumann-canonical-precision-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "canonical_precision_focal.log",
+        "output_sha256": "4cc9b391016c2601a80c1a0844a949c95c302325acedd0db3e330f644af3d190",
+        "seconds": 2366.193416338,
+        "stage": "canonical_precision_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannCanonicalPrecisionOffsetActionAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-canonical-precision-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "canonical_precision_audit.log",
+        "output_sha256": "add5bd90d0db101d448cc8d8055f30faa178014fa5ab61f709fb5f0d37bc11db",
+        "seconds": 18.36277199999995,
+        "stage": "canonical_precision_audit"
+      }
+    ],
+    "runner_rev": "neumann-canonical-precision-promoted-cold-v1",
+    "source_sha": "4746880218c694a9d4e9d32c0af61f86d460b7b4",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "cold_seal": true,
+  "inner_sha256": "4d788a4b5a89ce227cee086fcf4f08cb5d79be22df7ce443989b2a8ff0683852",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-canonical-precision-promoted-cold-v1-launch/verify_neumann_canonical_precision_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-canonical-precision-promoted-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "e62babdd61e60f1f485165f46c99be1df427581223eb62eb4d970559a9c3300d",
+      "seconds": 0.07367358299998727,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-canonical-precision-promoted-cold-v1-launch/colab_neumann_canonical_precision_promoted_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "419714debaaa981a460cc7d88ee4e876e0be89b0f6a964acaabb494b4edb2eeb",
+      "seconds": 2546.332155393,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-canonical-precision-promoted-cold-v1-launch/verify_neumann_canonical_precision_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-canonical-precision-promoted-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-canonical-precision-promoted-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "4d788a4b5a89ce227cee086fcf4f08cb5d79be22df7ce443989b2a8ff0683852"
+      ],
+      "exit": 0,
+      "log_sha256": "3e94f206328c3619a358b53b309a65b4e66afc7dbe32429dd280d33efa97bae0",
+      "seconds": 0.1292590029997882,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "d2f2434bd3a6a2719a33b3683ec630749f747d339b15911d95cca375bc98e81a",
+  "scope": "literal canonical Neumann precision finite-offset action; not Fourier normalization, regional inverse, uniform B0 or window15",
+  "source": "4746880218c694a9d4e9d32c0af61f86d460b7b4",
+  "status": "VERIFIED_COLD_PASS"
+}

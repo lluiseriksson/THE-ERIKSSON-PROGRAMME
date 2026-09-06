@@ -1,8 +1,8 @@
 import YangMills.RG.NeumannCanonicalPrecisionOffsetAction
 
-/-! PRE-VALIDATION: audit source present; its production module .olean is
-not yet materialized and this audit has not been compiler-verified in a
-fresh clone. Exact two-name audit; HOT1161 is not a production cold seal. -/
+/-! Cold-verified exact two-name audit at source474688021, ledger1162.
+Both declarations use exactly propext, Classical.choice and Quot.sound.
+Downloaded evidence independently verified; finite action only. -/
 
 #print axioms YangMills.RG.neumannCanonicalPrecision_eq_explicitCountingMass
 #print axioms YangMills.RG.neumannCanonicalPrecision_apply_eq_completeOffsets

@@ -1,5 +1,15 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+Latest1162: canonical precision source474688021 passed fresh cold8742 jobs,
+all16 stages and both exact audit names. Original downloaded outerd2f2434b
+and independent reportc556fe22 are preserved. Only its two certified headers
+retire PRE. The run finished PASS before Colab disconnected for inactivity;
+observed disconnected at19:09UTC after the interrupted turn. Do not rerun.
+Next check whether the SAME runtime373c432a4cb0 survives, then use the
+prepared bounded spacing HOT852d3b82e after filling actual parent-cold pins.
+If that runtime is gone, do not call a new runtime a retained hot session.
+20/41,TermSource0,window15 unattained. Earlier LIVE paragraphs are historical.
+
 LIVE2026-09-06: canonical precision cold source474688021 is executing once
 in Colab CPU/highRAM50.99GB, runtime373c432a4cb0, browser tab8.
 Start14:47:47.255875UTC, launcherPID1050, hash gate PASS. Notebook vehicle7da1ad7d9,

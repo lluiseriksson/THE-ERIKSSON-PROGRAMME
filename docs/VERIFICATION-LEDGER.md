@@ -47358,3 +47358,33 @@ process remained at14:34:35.924628UTC. Runtime bb2d3bf732a8 was disconnected
 and deleted via Colab; UI confirmed it, then the only tab was closed.
 Cold-launch-to-close-check interval approximately83m44s; this is not an
 assertion of exact billable connection time. No active build/monitor remains.
+
+## Addendum 1162 — canonical Neumann finite-action cold seal (2026-09-06)
+
+SOURCE4746880218c694a9d4e9d32c0af61f86d460b7b4, notebook7da1ad7d9f1975668dba1f697a919d8bcb328d1b.
+One PID1050 launch14:47:47.255875UTC, Colab CPU/highRAM50.99GB, runtime373c432a4cb0.
+Toolchain4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b verified.
+No restored project build outputs. Focal8742 jobs, exit0/2366.193416338s;
+audit exit0/18.36277199999995s. All16 recorded stages passed.
+Both exact names neumannCanonicalPrecision_eq_explicitCountingMass and
+neumannCanonicalPrecision_apply_eq_completeOffsets printed precisely
+{Classical.choice,Quot.sound,propext}. No root-wide claim is made.
+
+Original downloaded outerd2f2434bd3a6a2719a33b3683ec630749f747d339b15911d95cca375bc98e81a;
+inner4d788a4b5a89ce227cee086fcf4f08cb5d79be22df7ce443989b2a8ff0683852;
+independent reportc556fe2293f438991d99b1a3e5d6581812944995ce6a69411cb54a02942e8644;
+production olean59ba1504c640479910b28d2cb68cdad817407b2665c3a0ca4e0dbc1c942ad336.
+Preserved validation-evidence/neumann-canonical-precision-cold-20260906.
+Local reader exit0/0.4477052s/21323776 observed RSS, VERIFIED_COLD_PASS.
+An initial runpy wrapper omitted scripts from sys.path and failed before
+verification; correcting only that wrapper yielded the result above. No
+archive, reader, proof, or remote computation changed for that local error.
+
+The completed remote PASS and automatic download survived the interruption.
+At19:09UTC Colab reported disconnected for inactivity; this does not invalidate
+the already complete and independently preserved evidence. Retained runtime
+survival is not presumed. No historical cell is rerun for recovery.
+Only NeumannCanonicalPrecisionOffsetAction and Audit retire PRE, with exact
+HOT1161 mathematical bodies retained. Scope: literal canonical Neumann
+precision finite-offset action; NOT Fourier normalization, regional inverse,
+uniform physical B0 or window15.20/41,TermSource0,Clay<0.1% unchanged.
