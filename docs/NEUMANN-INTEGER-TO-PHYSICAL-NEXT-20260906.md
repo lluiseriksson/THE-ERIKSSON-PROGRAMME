@@ -168,3 +168,13 @@ names; text/import checks only (0.1276389s, 16056320 observed peak RSS), no
 compiler evidence. This route does not depend on the new rectangle draft.
 All strip/mass hypotheses and amplitude/rate units remain visible. It neither
 revives the withdrawn (2.48) specialization nor supplies the regional inverse.
+
+R2d reuse gate: `NeumannHalfCellBlockReflection` already constructs the
+coordinatewise finite remainder reflection with `Fin.rev`, and proves its
+involution and `blockSite` intertwining (ledger1126). Reuse that involution
+as the finite permutation rather than introducing another reflected index.
+What remains new is the arithmetic link from an arbitrary integer image
+to this local remainder and the literal averaging finite-sum identity.
+The old `BalabanCMP89NeumannPhysicalRealReflectionSummability` theorem is
+explicitly (2.48), so its proof pattern may guide the real-part bound but
+its conclusion is not the needed (2.46) specialization.
