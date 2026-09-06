@@ -17,6 +17,17 @@ promoted paths alone have their PRE-VALIDATION headers retired after that
 cold verification; no draft, arbitrary-region or inverse module inherits it.
 No arbitrary-rectangle reflection, Neumann image identity or B0 follows yet.
 
+The subsequent Mathlib-only integer image-owner repro passed once in the
+retained runtime (2.420113779s) and its exact archive is now independently
+verified and durable (ledger1131). Three integer identities, including negative
+coordinates, have verified axiom sets; this is HOT, not production/cold seal.
+The runtime was disconnected/deleted at07:15UTC after preservation.
+The next R2 step applies these identities coordinatewise to the actual
+anisotropic image orbit with fine sides B*m(mu), not a replacement permutation
+of the original rectangle. Physical Q-kernel/Neumann intertwining and R3/R4
+still require proofs. Historical pending subsections below record earlier
+checkpoints; the current status is ledger1130/1131, counters20/41 unchanged.
+
 ## Next bounded R2 diagnostic (after cold geometry seal81260f49)
 
 The new PRE-VALIDATION draft constructs the reflection on the full canonical

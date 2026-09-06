@@ -136,7 +136,7 @@ d3a73641df6341b62f29b25682927993224957ce603e1098d380b6ed62bde996.
 Separate local verification/transfer remains pending at this write; no cold
 production seal is claimed for that Mathlib-only repro.
 
-## Transfer boundary at06:58UTC
+## Transfer boundary at06:58UTC (historical; resolved below)
 
 Cold seal published as24369b67417cff37b23f5bc71f0ea218fd12c501, fast-forward,
 gh identitylluiseriksson confirmed. Cold artifacts are fully local and committed.
@@ -160,3 +160,33 @@ Once downloaded, run the already prepared bounded independent verifier with
 the local cold inner archive and the expected HOT SHA above, preserve to
 validation-evidence/neumann-integer-image-owner-hot-20260906, then disconnect
 and record the lifecycle. No HOT seal or ledger1131 has been written yet.
+
+## Transfer resolved and runtime closed at07:15UTC
+
+The original HOT archive was recovered byte-for-byte (50846bytes) through a
+one-shot loopback form, not a third-party upload or a scientific rerun.
+The previously rendered base64 was submitted only to127.0.0.1; the receiver
+checked the exact SHA before an exclusive-create write and then exited0 after
+19.594seconds. No worker pool or child compiler. Peak RSS was not captured for
+that transfer process; do not describe it as a measured-RSS certification.
+Normal downloads, page export, browser virtual clipboard and PNG-resource
+export had not produced the file. Those are transport failures, not FAILs of
+the mathematical run. The unused PNG transport did not become evidence.
+
+The independent HOT reader then passed against the actual local cold archive:
+exit0/0.2520841seconds,20008960observed peak bytes,30s/512MiB watchdog.
+Archive d3a73641df6341b62f29b25682927993224957ce603e1098d380b6ed62bde996;
+report f731370eec848fa105b73bc84600071b3148b70e631823313e5af84fb999e7bd;
+output 2cc7cf31259f5422fab67874bb717f45b962464f2f1679f04a7dea75f52a9374.
+Durable folder validation-evidence/neumann-integer-image-owner-hot-20260906.
+All ten stages and their real exits/logs, source/runner/toolchain pins,
+three exact axiom sets and prior cold gate were verified. This is HOT only.
+
+After preservation, Colab Disconnect/delete was confirmed. The UI showed
+Reconnect, no connected resource display, at07:15UTC; roughly52minutes from
+the recorded cold launch, including transfer friction. No new calculation was
+started. Both auxiliary tabs are closed. No runtime is being retained now.
+Next: lift the proven integer image-owner identities to the actual anisotropic
+image coordinates, then the counting-kernel image dictionary; R1-R4 remain
+open and no inverse or window15 follows from these arithmetic identities.
+Counters20/41,TermSource0,window15 unattained unchanged. See ledger1131.

@@ -46566,3 +46566,34 @@ Not arbitrary-rectangle Q invariance, Neumann inverse, derivative B0 or window15
 20/41,TermSource0,window15 unattained remain unchanged.
 Runtime retained only for the separately pinned two-second image-owner repro
 and evidence transfer; lifecycle closure is recorded in the continuity document.
+
+## Addendum 1131 — integer image-owner HOT repro preserved (2026-09-06)
+
+Source d7e2199934a14c843d46cb08094c554bc9d0c5f1, runner3553890d,
+base9b73a5fe3, same retained Colab hosta7df6ab4f6f3 after1130 cold PASS.
+One Mathlib-only Lean child, exit0/2.420113779s, no project rebuild or tracked
+source mutation. The three integer Euclidean-division identities include
+negative coordinates: half-cell reflection, translation by2*k*(B*m), and
+their composition. B>0 is the fine block side; m is the coarse rectangle side.
+Half-cell/reflected names use the permitted trio; translated name uses propext
+alone. All ten recorded stages have exit0 and timed_out=false.
+
+Archive50846bytes SHA256
+d3a73641df6341b62f29b25682927993224957ce603e1098d380b6ed62bde996;
+repro output2cc7cf31259f5422fab67874bb717f45b962464f2f1679f04a7dea75f52a9374.
+Independent reader reverified the actual1130 cold inner archive, every HOT
+command/log/pin/exit, exact three axiom sets and output: exit0/0.2520841s,
+20008960observed peak bytes under30s/512MiB watchdog, no Lean/network/pool.
+Reportf731370eec848fa105b73bc84600071b3148b70e631823313e5af84fb999e7bd.
+Actual archive and parsed contents:
+validation-evidence/neumann-integer-image-owner-hot-20260906.
+
+Download instrumentation failed repeatedly without a scientific failure.
+The same rendered archive bytes were finally recovered through a bounded
+one-shot local loopback form, exact hash before write, no external upload.
+This is HOT/cold_seal=false: no PRE-VALIDATION retirement or physical Q-law
+promotion. Original half-open rectangle invariance, full Neumann image inverse
+and regional derivative B0 remain open. Colab disconnected/deleted after
+independent preservation; UI confirmed Reconnect at07:15UTC, about52min from
+the cold launch including transfer friction. No Lean calculation was repeated.
+20/41,TermSource0,window15 unattained remain unchanged.
