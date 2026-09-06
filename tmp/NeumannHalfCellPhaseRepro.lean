@@ -1,4 +1,4 @@
-import Mathlib.Analysis.SpecialFunctions.Complex.Exponential
+import Mathlib.Analysis.Complex.Exponential
 import Mathlib.Algebra.BigOperators.Intervals
 
 /-!
