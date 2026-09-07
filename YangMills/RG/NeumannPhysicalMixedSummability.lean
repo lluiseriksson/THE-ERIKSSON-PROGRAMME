@@ -2,9 +2,10 @@ import YangMills.RG.NeumannMixedOwnerTransport
 import YangMills.RG.NeumannPhysicalPeriodicSummability
 
 /-!
-PRE-VALIDATION: source present; production .olean not yet materialized;
-production compiler result not verified. Exact proof body passed a HOT draft
-check; the promoted module still requires its independent cold gate. Convergence of the actual full two-endpoint Green over the
+COLD VERIFIED at source46bf719be34e586e83790fa1b2ff2092735faa12,
+ledger1222: fresh Colab focal and exact three-name audit; downloaded archive
+independently verified, production .olean preserved. Exact source proof body.
+Convergence of the actual full two-endpoint Green over the
 SAME mixed index, with one branch in FULL directions. All source windows
 remain explicit. No uniform B0, inverse, operator interchange or window15.
 The flag is an algebraic parameter here; the physical consumer must use

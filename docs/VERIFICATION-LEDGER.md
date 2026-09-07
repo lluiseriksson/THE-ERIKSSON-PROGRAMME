@@ -48639,6 +48639,72 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1223 — mixed seam reindex HOT repair PASS, 2026-09-07
+
+Same retained runtime after1222 preservation. Source49e81d935,
+runner7b9d98621; first prerequisites8605jobs exit0/25.593696944s.
+Draft exit1/6.780127323s at71:56: simp only left Bool conditions unreduced
+before ring. No mathematical counterexample and no accepted sorryAx.
+FirstFAIL archivebec415907cd385dac3d8175b6f18e810759bd9aeaaaae2351cc170e18030ffd8
+preserved under validation-evidence/neumann-mixed-image-reindex-hot-v1-failure-20260907;
+manifest/source/log hashes verified, exit0/0.1747807s/18616320RSS.
+
+Only repair: `cases b <;> simp only` to `cases b <;> simp` in the
+proper-orbit identity. Exact source bytes compared against the old Git blob
+with that single substitution; no enunciado, index, constant or premise change.
+Repaired sourceSHA256e1517f8173f02b4dbcc1bd8104b7f73cbb24b968438a0422043799a94dc1deba.
+Draft exit0/6.373947977s; exact seven-name audit: involution no axioms,
+four algebraic identities propext/Quot.sound, two tsums allowedtrio.
+HOTv2 archivef81d4abdff21e76951e852204f1299ebf20d2397d3bc389d27f550d2b9580ceb
+preserved under validation-evidence/neumann-mixed-image-reindex-hot-v2-20260907.
+Log28c89877c6430c2e265a61761a22959bf35b4797fdc045f1ab1c70d550fcd482.
+Independentcheck exact4members,manifest,sourcepatch,command/cwd/exit/log,
+sevennames: exit0/0.2767106s/18862080RSS, including1222bodycomparison.
+This is HOT only. No new production module or cold seal for reindex yet.
+
+Runtime unassigned11:53:38.617099UTC after verifying no Lean/Lake process,
+35m42.500594s connected from11:17:56.116505UTC. Reconnect UI confirmed,
+tab59 closed; zero task browser tabs remain. Both PASS archives and original
+FAIL retained before disconnect. No CI or local compiler was launched.
+Counters20/41,TermSource0,window15open.
+
+## Addendum1222 — physical FULL flag and mixed summability cold PASS, 2026-09-07
+
+Source46bf719be34e586e83790fa1b2ff2092735faa12; runner79f870c87,
+notebook1dabe4152. Fresh Colab CPU/highRAM50.99028778076172GiB,
+opened11:17:56.116505UTC; no restored project build cache.
+Prerequisites exit0/1492.117149593s; FULL focal8664jobs,
+exit0/31.381716168s; audit exit0/5.511564500s. Mixed focal8663jobs,
+exit0/10.467065849s; audit exit0/9.767147556s.
+Eight exact declarations: FULL iff/scale_test use propext only;
+FULL scale uses propext/Quot.sound; remaining five use the allowed trio.
+Dependency linter warnings remain in logs; this is not a zero-warning claim.
+
+Archive95388bytes SHA256
+38fc1b6795c1a542fccbd48fccff7b0c262e8ca4c7bad05bc63f3a50a55935bf,
+downloaded by assistant and preserved under
+validation-evidence/neumann-full-mixed-promoted-cold-v1-20260907.
+Independent pinned reader verifies19stages, exactsource4blobs, commands,
+logs, eightnames and two production outputs. Exit0/0.2006073s,
+observedpeakRSS18489344. An initial local helper lookup used the wrong
+commit and failed before verification; retry used Git blobs with unchanged
+required helper hashes. No failed read was accepted as evidence.
+JSONfile bd135c8a2424d79ec496669d7a3701e4f30336d42cba9cce74be143e85707661;
+JSONpayload645d8cde2ea607dd71883035ca3c3b2e9e5acb8b1410b47952fac0317c828750.
+NeumannPhysicalFullFlag.olean:
+2aae0e88bdcb345262ff29c0adf60e842fe5c8d3591bbc655081d5139953f4bd.
+NeumannPhysicalMixedSummability.olean:
+42d67108a43298b0ef7b0edead7510ccb5ca07b263a9fa78ff2a2d32442f2374.
+
+Selective header retirement for these four source/audit modules only;
+proof bodies compared against the exact compiled source. FULL is computed
+from actual masks; mixed convergence retains source windows and the same
+index. Physical use of that flag, operator interchange, infinite-lattice
+point-source equation and inverse uniqueness remain downstream.
+Runtime retained only for prepared HOT same-index reindex diagnostic,
+PID23148, after archive preservation acknowledgement; no concurrent Lean.
+No cold claim for that new draft. Counters20/41,TermSource0,window15open.
+
 ## Addendum1221 — mixed owner transport cold PASS, 2026-09-07
 
 Source `4f2f812dc06d82e5f0b7d93ad6d91d87ad07fe67`; runner/reader

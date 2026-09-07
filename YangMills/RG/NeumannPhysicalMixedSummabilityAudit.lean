@@ -1,7 +1,7 @@
 import YangMills.RG.NeumannPhysicalMixedSummability
 
 /-!
-PRE-VALIDATION: source present; production audit not yet compiler verified.
+COLD VERIFIED at source46bf719be34e586e83790fa1b2ff2092735faa12, ledger1222.
 Only the exact named declarations below are within this audit's scope.
 -/
 

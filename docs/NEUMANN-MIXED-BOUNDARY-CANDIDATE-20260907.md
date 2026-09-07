@@ -5,11 +5,14 @@ physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
 ## Current frontier after Addendum1209
 
-### FULL classification and mixed convergence: HOT PASS, cold gate active
+### FULL classification and mixed convergence: cold PASS, Addendum1222
 
 At source46bf719be34e586e83790fa1b2ff2092735faa12 the exact HOT proof bodies
 are promoted as NeumannPhysicalFullFlag and NeumannPhysicalMixedSummability,
-with separate five-name and three-name audits. No production seal yet.
+with separate five-name and three-name audits. Fresh Colab gate PASS;
+19 stages, eight exact names and both production outputs independently
+verified from downloaded archive38fc1b6795c1a542fccbd48fccff7b0c262e8ca4c7bad05bc63f3a50a55935bf.
+Only the four certified source/audit headers are retired from PRE-VALIDATION.
 The FULL flag is computed from the actual mask disjunct and transported
 across positive fine/block scale; the convergence theorem uses the SAME
 mixed index, not a duplicated Boolean branch in FULL directions.
@@ -18,6 +21,12 @@ eventual physical series must fix it to neumannPhysicalFullFlag, not accept
 an unrelated family. This is a composition obligation, not a new hypothesis.
 
 The next M4 seam queue is finite and does not replace the point-source gate:
+
+Same-index reindex draft now HOT PASS (Addendum1223), seven exact names;
+one Bool-reduction elaboration failure preserved and repaired without a
+statement change. Production promotion/cold validation remains open. This
+algebra preserves one branch in FULL directions; it does not yet install
+the actual physical flag or prove the physical endpoint seam.
 
 1. On the existing product index, construct a FULL-coordinate translation
    equivalence (k_mu -> k_mu-1, branches unchanged) and a PROPER-coordinate

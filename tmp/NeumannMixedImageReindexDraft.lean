@@ -71,7 +71,7 @@ theorem neumannMixedOrbit_proper_reflect (full : Bool) (hproper : full = false)
       2 * c * m - 1 - neumannMixedOrbit full m n k b := by
   subst full
   change Bool at b
-  cases b <;> simp only [neumannMixedBranchFlip, neumannMixedOrbit,
+  cases b <;> simp [neumannMixedBranchFlip, neumannMixedOrbit,
     cmp89NeumannReflectionOrbit] <;> ring
 
 theorem neumannMixedImage_periodicIndex {d : ℕ}
