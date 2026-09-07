@@ -1,5 +1,23 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+LIVE 2026-09-07T16:32:15.323593Z: new cold checkout launched ONCE on the
+retained CPU/highRAM runtime, tab68, PID20295. No other Lean/Lake active at
+launch. Source ba2998c4f22707ed0f828c741ae6aa1efb924a36; runner and reader
+c2adfc204127fc69cef5784efb7f160852e80288. Runner SHA256
+43f144ea8af5e1e83fdc2589b0f11567f21dfbf13e28051449c281a9a15010b0;
+reader0417daa81873b8517632878cae65da8fa1e932e20da7ccab7079658ba2b17f68.
+Read /content/alias-integral-promoted-cold-launch-v1/launch.log and pid.txt.
+ROOT /content/hrpoly-neumann-alias-physical-integral-promoted-cold-v1;
+archive ROOT-evidence.tar.gz. Fresh checkout, no project build restoration.
+Queue integral_focal -> integral_audit, four exact names, one production
+output. No final result yet. Never rerun the launch or original Cell1.
+Promotion exact-proof-body comparison PASS (.3431971s,16056320RSS).
+Reader synthetic1accepted/8rejected and runner contracts PASS
+(.3051492s,19128320RSS). Text guards exact2files PASS
+(.4046321s,17739776RSS); initial guard invocation used str instead of Path
+and was rejected before guard execution, then corrected without source edit.
+All production marks remain PRE-VALIDATION, counters20/41 unchanged.
+
 LATEST: physical integral HOT v4 PASS, source858bbc063675f71f5cc60bf935d957e63e924147,
 runner0e9ab15199415f7a7a4e112f16236492e4b8182f. PID19068 completed,
 8.518998451s, four exact allowed-trio declarations. Archive downloaded by
