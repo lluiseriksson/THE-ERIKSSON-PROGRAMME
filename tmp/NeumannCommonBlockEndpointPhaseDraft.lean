@@ -14,13 +14,13 @@ noncomputable section
 
 theorem neumannAliasTargetPhase_blockShift
     {d M : ℕ} (hM : 0 < M) (z : Fin d → ℂ)
-    (alias site shift : Fin d → ℤ) :
+    (mode site shift : Fin d → ℤ) :
     Complex.exp (Complex.I * cmp89Eq251EntirePhase
-      (cmp89Eq248EntireAliasMomentum z alias)
+      (cmp89Eq248EntireAliasMomentum z mode)
       (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
         (fun mu => site mu + (M : ℤ) * shift mu))) =
     Complex.exp (Complex.I * cmp89Eq251EntirePhase
-      (cmp89Eq248EntireAliasMomentum z alias)
+      (cmp89Eq248EntireAliasMomentum z mode)
       (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹) site)) *
       Complex.exp (Complex.I * ∑ mu, z mu * (shift mu : ℂ)) := by
   rw [cmp89Eq251EntirePhase_physicalFine_affineResidue hM,
@@ -28,21 +28,21 @@ theorem neumannAliasTargetPhase_blockShift
   congr 1
   simpa [cmp89Eq251EntirePhase,
     cmp89Eq249PhysicalFineLatticeDisplacement] using
-    exp_I_cmp89Eq251EntireAliasPhase_latticeDisplacement z alias shift
+    exp_I_cmp89Eq251EntireAliasPhase_latticeDisplacement z mode shift
 
 theorem neumannAliasSourcePhase_blockShift
     {d M : ℕ} (hM : 0 < M) (z : Fin d → ℂ)
-    (alias site shift : Fin d → ℤ) :
+    (mode site shift : Fin d → ℤ) :
     Complex.exp (-Complex.I * cmp89Eq251EntirePhase
-      (cmp89Eq248EntireAliasMomentum z alias)
+      (cmp89Eq248EntireAliasMomentum z mode)
       (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹)
         (fun mu => site mu + (M : ℤ) * shift mu))) =
     Complex.exp (-Complex.I * cmp89Eq251EntirePhase
-      (cmp89Eq248EntireAliasMomentum z alias)
+      (cmp89Eq248EntireAliasMomentum z mode)
       (cmp89Eq249PhysicalFineLatticeDisplacement ((M : ℝ)⁻¹) site)) *
       Complex.exp (-Complex.I * ∑ mu, z mu * (shift mu : ℂ)) := by
   have h := congrArg (fun c : ℂ => c⁻¹)
-    (neumannAliasTargetPhase_blockShift hM z alias site shift)
+    (neumannAliasTargetPhase_blockShift hM z mode site shift)
   simpa [neg_mul, Complex.exp_neg, mul_comm] using h
 
 theorem neumannCommonBlockPhase_cancel {d : ℕ}
