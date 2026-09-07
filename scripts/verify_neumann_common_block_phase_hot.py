@@ -10,7 +10,7 @@ SOURCE = '93264d4b654022f51cd1d1f0ce7963de26408d4b'
 BASE = 'eb5a9ec0609b015a3d367c0d729c2c2074a45b51'
 REV = 'neumann-common-block-phase-hot-v1'
 ROOT = '/content/hrpoly-neumann-actual-scalar-diagnostic-v1'
-RUNNER_HASH = None  # pin only the finalized parent-reviewed runner
+RUNNER_HASH = 'd71ab21813ec71cf508618e2ea821f01f635056179b06d04379d4ca9ecb730c0'
 
 
 def verify(files):
