@@ -1,5 +1,17 @@
 # Actual full-solution scalar gate — PRE-VALIDATION
 
+LIVE: one Colab launch 2026-09-07T00:13:31.101940Z, PID2214,
+CPU/high RAM50.99GB, account lluiseriksson@gmail.com; HASH_GATE=PASS.
+Source eb5a9ec0609b015a3d367c0d729c2c2074a45b51;
+runner7343544cd9e72d14fb73fc5b740ec03bdeca86fa;
+notebook/reader c9b535dd0975065da5ef29b535c7e26d955a492c.
+IAB tab17, log /content/launch-neumann-actual-scalar-v1.log.
+Do not reexecute. Original archive will be
+/content/hrpoly-neumann-actual-scalar-diagnostic-v1-evidence.tar.gz.
+Reader scripts/verify_neumann_actual_scalar_diagnostic.py. No verdict yet.
+Runner/reader static contract equality passed: four stages, three exact
+names (0.1063995s,18202624 observed peak RSS). Not compiler evidence.
+
 Parent d00dfc335284b53c50e1c486afe33ac2d2de66e7.
 The preceding finite-average phase diagnostic is preserved in ledger1182;
 no runtime remains active from it.
