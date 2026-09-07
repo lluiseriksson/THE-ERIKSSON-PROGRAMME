@@ -5,6 +5,44 @@ physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
 ## Current frontier after Addendum1209
 
+### FULL classification and mixed convergence: HOT PASS, cold gate active
+
+At source46bf719be34e586e83790fa1b2ff2092735faa12 the exact HOT proof bodies
+are promoted as NeumannPhysicalFullFlag and NeumannPhysicalMixedSummability,
+with separate five-name and three-name audits. No production seal yet.
+The FULL flag is computed from the actual mask disjunct and transported
+across positive fine/block scale; the convergence theorem uses the SAME
+mixed index, not a duplicated Boolean branch in FULL directions.
+The generic convergence argument still accepts an algebraic flag; the
+eventual physical series must fix it to neumannPhysicalFullFlag, not accept
+an unrelated family. This is a composition obligation, not a new hypothesis.
+
+The next M4 seam queue is finite and does not replace the point-source gate:
+
+1. On the existing product index, construct a FULL-coordinate translation
+   equivalence (k_mu -> k_mu-1, branches unchanged) and a PROPER-coordinate
+   reflection equivalence (k_mu -> c-k_mu, only that branch flipped).
+   The latter requires full_mu=false; it is not valid for a singleton
+   periodic branch. Keep this distinction in the two signatures.
+2. Prove the literal mixed-image identities under those equivalences,
+   then reindex the single product tsum. These are totalized tsum identities,
+   not convergence proofs; the newly verified HOT convergence supplies
+   that separate property when the physical sum is installed.
+3. Instantiate actual two-endpoint block-shift and half-cell transfer
+   from NeumannPhysicalPeriodicTransfer and NeumannPhysicalBoundaryTransfer.
+   The fine boundary must be L^j times its coarse boundary explicitly.
+   Do not substitute arbitrary fine translation or a supplied kernel law.
+4. With the computed physical flag, derive periodic and Neumann ghost
+   equalities for the SAME series. These feed the masked-action dictionary;
+   they still do not commute generated averaging with the sum or establish
+   the infinite-lattice normalized point-source equation.
+
+The all-reflecting boundary-series theorem cannot directly discharge step1:
+it quantifies over a full Boolean vector. Its integer involution and the
+one-coordinate Boolean flip are reusable primitives, not permission to
+reintroduce a second branch in FULL coordinates. Physical inverse, uniform
+B0 and window15 remain behind the separately named M4 action/source gates.
+
 ### Updated frontier after Addendum1221 (2026-09-07)
 
 The four owner obligations listed below are now cold-verified by
