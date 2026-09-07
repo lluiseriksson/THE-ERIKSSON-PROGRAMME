@@ -80,8 +80,12 @@ theorem neumannCenteredAlias_physicalIntegral
           cmp89Eq249NormalizedFourDimensionalBrillouinIntegral f * c := by
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
       dsimp only
-      rw [MeasureTheory.integral_mul_const
-        (μ := cmp89Eq249FourDimensionalBrillouinMeasure) c f, mul_assoc]
+      have hi : (∫ x, f x * c ∂cmp89Eq249FourDimensionalBrillouinMeasure) =
+          (∫ x, f x ∂cmp89Eq249FourDimensionalBrillouinMeasure) * c :=
+        MeasureTheory.integral_mul_const
+          (μ := cmp89Eq249FourDimensionalBrillouinMeasure) c f
+      exact (congrArg (fun z : ℂ => ((((2 * Real.pi) ^ 4)⁻¹ : ℝ) : ℂ) * z) hi).trans
+        (mul_assoc _ _ _).symm
     rw [hscale, neumannPhysicalBrillouin_integerCharacterIntegral]
     by_cases hv0 : v = 0
     · have hu0 := (neumannIntegerQuotient_zero_iff 4 N u v hv).mpr hv0
