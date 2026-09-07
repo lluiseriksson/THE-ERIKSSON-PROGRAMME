@@ -23,11 +23,8 @@ theorem neumannBrillouinMomentum_coordinateReflection (mu : Fin 4)
   funext k
   by_cases h : k = mu
   · subst k
-    simp only [cmp89Eq251PhysicalBrillouinParameter,
-      neumannIntervalCoordinateReflection, neumannMomentumCoordinateReflection,
-      if_pos rfl, Complex.ofReal_add, Complex.ofReal_sub,
-      Complex.ofReal_mul, Complex.ofReal_neg, Complex.ofReal_ofNat]
-    ring
+    simp [cmp89Eq251PhysicalBrillouinParameter,
+      neumannIntervalCoordinateReflection, neumannMomentumCoordinateReflection] <;> ring
   · simp [cmp89Eq251PhysicalBrillouinParameter,
       neumannIntervalCoordinateReflection, neumannMomentumCoordinateReflection, h]
 
