@@ -200,6 +200,16 @@ the single periodic branch in full directions. Reuse the existing proper
 interval coverage; add ordinary Euclidean quotient/remainder in the full
 case. Count each point once, not only show coverage.
 
+M1 implementation note (PRE-VALIDATION, 2026-09-07):
+tmp/NeumannMixedCoordinateCoverageDraft.lean assembles the coordinate
+bijections by piCongrRight, with FULL index Z x [0,m) and PROPER index
+Z x Bool x [0,m). No unused FULL reflection bit exists. Its literal apply
+theorem is definitional, not an assumed image equality. The FULL flag is
+explicit algebraic input and must later be fixed by the actual carrier's
+equality with the ambient side. This draft has no compiler evidence yet;
+its periodic dependency is presently in the cold gate. Do not execute it
+concurrently with that gate or count it as physical representation.
+
 M2. Prove the block-owner intertwiner at the same image index. For a full
 direction the required identity is (n+k*B*N)/B = n/B+k*N; proper directions
 use neumannIntegerTranslatedOwner and neumannIntegerReflectedOwner. Keep
