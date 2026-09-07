@@ -1,5 +1,21 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+PREPARED, NOT RUN: endpoint HOT suffix runner
+ea60bf10d583ab1ddbbbf8af2cbee4aa7362c2a8,
+scripts/colab_neumann_physical_endpoint_readout_hot.py,
+SHA25665761d13b6132396165ba21d9755eb341de4ba200348874eaa6da683c1973d52.
+Reader scripts/verify_neumann_physical_endpoint_readout_hot.py at5ba3306aa;
+synthetic1accepted/10rejected, exact runner/reader contract matched,
+.4010805s,22298624RSS,exit0. Both published by fast-forward after identity
+lluiseriksson was verified. No CI dispatched.
+This suffix uses the NEW cold root ba2998c4f and requires
+/content/alias-integral-cold-evidence-preserved.json containing source_sha,
+status PASS and the independently verified archive_sha256. Do not write
+that acknowledgement until the cold archive has been downloaded and checked.
+Queue phase_repro -> readout_prerequisite -> physical_readout; source5fa0ee8e5.
+Output /content/neumann-physical-endpoint-readout-hot-v1.tar.gz.
+No other compiler allowed; no reexecution. Cold PID20295 remains authoritative.
+
 LIVE update: PID20295 independently observed with Lake21319 and active Lean
 children; integral_focal is running. Bootstrap/guards/lake_update/mathlib_pin/
 cache_get exited0. Do not interpret the lack of focal output as a dead job.
