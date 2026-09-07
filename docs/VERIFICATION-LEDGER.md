@@ -48639,6 +48639,27 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1232 — literal exponential alias selector HOT PASS, 2026-09-07
+
+Base cold checkout29a48ac4bb1058cd71b74f65029e918d49e74b60; overlay
+0dcd87f8b60dfb464fb3a6707b8f65fe96637960. Runnerfffa84465dd49a9397b516a61d47d08dc7c3118e,
+blobf6d838590726f31b1123b356ff7b0991df5a8c206a0e3e6464ef267106590b09.
+Retained runtime: prerequisites8533jobs,exit0/465.664524353s;
+selector reproexit0/8.256888928s,three exact permitted-trio audits.
+No alias-negation symmetry assumption. The selector yields congruence modulo
+N, not an infinite-lattice delta or a physical inverse.
+
+Archive8b72d4250c6a2b8737dbbee6c719e647b7dd0377bc9174f48f9bbaad753c6d2c,
+stored validation-evidence/neumann-alias-exponential-selector-hot-v1-20260907/
+neumann-alias-exponential-selector-hot-v1.tar.gz. Download succeeded directly;
+independent pinned readerexit0/0.2262482s,17272832RSS, exact manifest,
+runner/source hashes, commands, exits, log hashes and audit names verified.
+Prerequisite logfa3a6a76a7eecd5845bf51b00444486b68e1eec69f1f9aaa06adc3dfb8462ce2;
+repro log5673968baad991f444145a29f4d7d6c93b8bb964ca6dd56813c704b09c6b08e9.
+HOT only: no production PRE-VALIDATION mark retired. Runtime retained for
+the previously prepared opposite-difference scalar repro after preservation.
+20/41,TermSource0,window15open unchanged.
+
 ## Addendum1231 — physical character promotion cold PASS, 2026-09-07
 
 Source29a48ac4bb1058cd71b74f65029e918d49e74b60; runnerc113f5f6ccdfaf6636f0dfb94bfdb490358e13b2.
