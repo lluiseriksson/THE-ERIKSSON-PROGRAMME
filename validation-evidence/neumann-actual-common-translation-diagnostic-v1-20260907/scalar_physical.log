@@ -1,0 +1,67 @@
+tmp/NeumannActualFullSolutionScalarDraft.lean:70:15: warning: This simp argument is unused:
+  fine
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, f̵i̵n̵e̵,̵ ̵column, row, moment, hm, if_pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+tmp/NeumannActualFullSolutionScalarDraft.lean:70:21: warning: This simp argument is unused:
+  column
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, fine, c̵o̵l̵u̵m̵n̵,̵ ̵row, moment, hm, if_pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+tmp/NeumannActualFullSolutionScalarDraft.lean:70:29: warning: This simp argument is unused:
+  row
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, fine, column, r̵o̵w̵,̵ ̵moment, hm, if_pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+tmp/NeumannActualFullSolutionScalarDraft.lean:70:34: warning: This simp argument is unused:
+  moment
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, fine, column, row, m̵o̵m̵e̵n̵t̵,̵ ̵hm, if_pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+tmp/NeumannActualFullSolutionScalarDraft.lean:74:15: warning: This simp argument is unused:
+  fine
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, f̵i̵n̵e̵,̵ ̵column, row, moment, hm, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+tmp/NeumannActualFullSolutionScalarDraft.lean:74:21: warning: This simp argument is unused:
+  column
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, fine, c̵o̵l̵u̵m̵n̵,̵ ̵row, moment, hm, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+tmp/NeumannActualFullSolutionScalarDraft.lean:74:29: warning: This simp argument is unused:
+  row
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, fine, column, r̵o̵w̵,̵ ̵moment, hm, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+tmp/NeumannActualFullSolutionScalarDraft.lean:74:34: warning: This simp argument is unused:
+  moment
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution,
+  ̵  ̵ ̵ ̵ ̵ ̵central, fine, column, row, m̵o̵m̵e̵n̵t̵,̵ ̵hm, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'YangMills.RG.neumannActualNoncentralSourceMoment_mul_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannActualFullSolutionMoment_mul_right' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannActualFullSolution_mul_right' depends on axioms: [propext, Classical.choice, Quot.sound]

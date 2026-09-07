@@ -1,5 +1,13 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT 2026-09-07 supersedes all LIVE notes below: common-block translation
+diagnostic PASS independently preserved, ledger1186, source327a79d3e.
+11 exact axiom declarations; fresh prerequisites8588jobs; diagnostic only,
+no production seal. Runtime930e719ad438 retained, tab22; PID753 completed.
+Do not rerun the notebook. Next: fill prepared R1 HOT pins from the preserved
+report and run once on this same warm runtime.20/41,TermSource0 unchanged.
+Evidence: validation-evidence/neumann-actual-common-translation-diagnostic-v1-20260907.
+
 LIVE UPDATE 01:02UTC: common-translation diagnostic is now running once,
 PID753, Colab tab18, CPU/highRAM50.99GB. Source327a79d3e, runner6a6a6b225,
 notebooka21430204; hash gate PASS, no compiler verdict yet. Do not reexecute.

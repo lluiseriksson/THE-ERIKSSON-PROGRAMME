@@ -47996,3 +47996,34 @@ disconnected and deleted via Colab confirmation around00:51UTC. Reconnect-
 only UI observed; both launch PIDs absent at their terminal checks. Connected
 duration from the recorded scalar launch approximately38minutes. No live
 runtime remains from this unit; next composition is prepared before reconnect.
+
+## Addendum 1186 — actual common-block translation diagnostic PASS (2026-09-07)
+
+SOURCE327a79d3e88e9580a2c37238f25d1f1f6b9f8429;
+runner6a6a6b2252421b57d3de0a18814098598094ba64, SHA256
+97c33c88e4f00d4af9752394c3f79231d0a988a3791b8ed845e9ee3f99f0bceb.
+One fresh Colab CPU/high-RAM checkout, runtime930e719ad438, PID753,
+started01:02:15.403046UTC. Prerequisites8588jobs/1149.415796537s;
+scalar7.489086404s, phase7.438228637s, translation9.294851621s.
+All recorded child exits0; clean-after empty. Exact11-name axiom audit:
+propext, Classical.choice, Quot.sound for every declaration.
+
+Independent VERIFIED_DIAGNOSTIC_PASS, cold_seal=false. Downloaded archive
+adc3c4a22bbfc97277f56b113cb510ee10f19361b72e33f646234da18439d3d0;
+evidence.json8cf6fc9647025cc35c59386decbe2d3a82aa743490cf56daa44037368202f489;
+report9c6acbcbcd82f9ba3b0dd7b9778038221939c9d90ab23f8344682686470896cd.
+Complete package under
+validation-evidence/neumann-actual-common-translation-diagnostic-v1-20260907.
+Independent reader exit0/0.140252s/18178048bytes observed peak RSS.
+Translation olean61693a2806612bb7390a8b163467bf206ee75841776242c064fd71dddeb7198c.
+Scalar output matches1183; phase output differs from HOT1185 after rebuilding
+against this fresh graph. Both exact output hashes are preserved; no claim of
+byte-identical cross-environment terminal reproduction is made.
+
+Five new diagnostic lemmas transport the actual source, solution, integrand,
+physical specialization and normalized integral under common integer BLOCK
+translation. They do not prove reflection, regional inverse, B0 or window15.
+No production PRE-VALIDATION mark removed.20/41;TermSource0 unchanged.
+Runtime retained for the prepared bounded coordinate-alias R1 HOT diagnostic;
+the printed RUNTIME_UNASSIGN_REQUESTED is not a disconnect (the runner
+explicitly retains the session). Original completed calculation is not rerun.
