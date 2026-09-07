@@ -182,3 +182,10 @@ inventory; same notebook reopened as tab20, same runtime930e719ad438.
 Terminal confirmed PID753 at11:01 elapsed, prerequisites8421/8588. No
 reexecution. R1 coordinate-permutation scratch b809bd818 is prepared
 independently from sealed inputs, NOT part of this queue and NOT checked.
+
+01:16UTC: recovered as tab21 and explicitly marked for browser handoff;
+this preservation action had not been set on the preceding observation
+tabs. PID753 again confirmed, elapsed14:50, prerequisites8455/8588, same
+runtime930e719ad438. No second compiler launch. R1 latest source6804b00aa
+adds the physical N=L^j permutation and central-alias preservation; seven
+audit targets, still NOT CHECKED and outside the running queue.
