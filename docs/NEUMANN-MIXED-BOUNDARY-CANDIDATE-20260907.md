@@ -177,6 +177,18 @@ This static type check does not reopen ledger1019 or claim a new no-go. It
 keeps the full-lattice point-source obligation in M4 visible and prevents
 mistaking the existing finite-periodic uniqueness theorem for its producer.
 
+The direct candidate for that missing integral step is instead
+`cmp89Eq246EntireAliasPrecisionMatrix_mulVec_finePointSourceSolution_of_pair_ne_zero`
+in `BalabanCMP89Eq246FinePointSourceFibreGreen`: its argument z is arbitrary
+complex momentum, not a finite-box Fourier frequency. The same module
+identifies its source vector with the literal xi^d-normalized delta Fourier
+transform, with no Q-star source factor. Its header records ledger1010.
+This is an available algebraic input, not the desired physical inverse.
+Remaining work must transport the ACTUAL infinite-lattice precision through
+the finite alias synthesis/integral (with integrability), then use Fourier
+orthogonality with the printed xi^d normalization once. Do not replace this
+by an arbitrary precision or assume an inverse-transform identity as data.
+
 ## What the inspected tree fixes
 
 NeumannRectangleDirectionalMasks keeps the original hypotheses 0<m_mu<=N.
