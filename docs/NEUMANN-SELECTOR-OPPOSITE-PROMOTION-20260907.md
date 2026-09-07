@@ -1,5 +1,22 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+LATEST: physical integral HOT v4 PASS, source858bbc063675f71f5cc60bf935d957e63e924147,
+runner0e9ab15199415f7a7a4e112f16236492e4b8182f. PID19068 completed,
+8.518998451s, four exact allowed-trio declarations. Archive downloaded by
+assistant, hash a1dc16653121c137d2beb05ff52abcf086dd75353ae06d17de097b319326b44f.
+Independent reader: exit0,.4647187s,20946944RSS; complete member/source/log
+hashes and audit records checked. Two warnings refer to the same redundant
+ring at line37; no warning suppression. No cold seal, no inverse claim.
+Preceding normalized repro f6e951636 passed3/3 in4.419303951s; archive
+13e358130ca38b16a9783eeb8ff9042491ad8a0f41cb15fab7b6571c0e69dd25,
+independent reader exit0,.4825149s,21757952RSS. Typed congrArg is the measured
+repair; the earlier rw failures are preserved, not reinterpreted as PASS.
+NEXT: prepare exact production/audit promotion of the four integral lemmas
+and cold validation; preserve warnings if keeping byte-exact proof bodies,
+or validate any cleanup separately. Do not call HOT evidence a cold seal.
+Runtime/tab68 retained; no compiler active after PID19068. Cell2 downloads
+the already-preserved v4 archive. Counters20/41,TermSource0,window15open.
+
 LATEST 16:22 UTC: browser tab67 disappeared, but reopening the same notebook
 recovered the retained runtime as tab68 (50.99 GiB). Read-only check: ROOT
 present, probe output absent, no active Lean/Lake. No cold rerun occurred.
