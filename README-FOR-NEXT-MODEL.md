@@ -1,5 +1,14 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE01:47:24UTC: coordinate precision diagnostic v1 executing ONCE, PID8249,
+Colab tab23/cellHhlGa5HMi3Ja, CPU/high-RAM, lluiseriksson@gmail.com.
+SOURCE95c757465455c7e8cffcfcd6d9d18aa56f6d5083, notebook07d068c15,
+runner1f5443d50; HASH_GATE=PASS. No verdict yet. Do not rerun.
+Log /content/launch-neumann-coordinate-precision-v1.log; archive
+/content/hrpoly-neumann-coordinate-precision-diagnostic-v1-evidence.tar.gz.
+Preserve with scripts/verify_neumann_coordinate_precision_diagnostic.py on PASS.
+Retain same runtime for bounded first-error repair.20/41,TermSource0 unchanged.
+
 NEXT PREPARED SOURCE: R2a momentum carry plus R2b actual column/row phases and
 entrywise precision conjugacy, with Mathlib-only one-factor product repro.
 All are PRE-VALIDATION/NOT CHECKED; the finite20-name queue is enumerated in

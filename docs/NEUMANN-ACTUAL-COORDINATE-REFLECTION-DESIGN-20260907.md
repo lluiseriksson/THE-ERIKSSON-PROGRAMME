@@ -189,4 +189,11 @@ producer/reader queue AST agrees exactly. Instrument test exit0/0.3691525s,
 21086208bytes observed peak RSS. No compiler conclusion follows from tests.
 Six scratch sources/outputs,20 exact audit names, two repros before the
 project prerequisite build; retained-runtime policy allows bounded repairs.
+
+Actual launch2026-09-07T01:47:24.455250UTC, PID8249, tab23,
+cellHhlGa5HMi3Ja. CPU/high-RAM selected before connection; account
+lluiseriksson@gmail.com. Published notebook07d068c15ad86ac8c7c570dac35206ff7c75f59f
+visually checked, GitHub notebook confirmation accepted once, HASH_GATE=PASS
+with exact SOURCE95c757465 and runner revision. No compiler result yet.
+No cell replacement or second launch. Preserve tab with per-turn handoff.
 Text/import guards passed; no local Lean or new Colab was run for this draft.
