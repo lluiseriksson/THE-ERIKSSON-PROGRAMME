@@ -81,8 +81,11 @@ theorem neumannMixedImage_source_injective {d : ℕ}
     intro f bb xx yy hh
     cases f
     · change Bool at bb
-      cases bb <;>
-        simp only [neumannMixedOrbit, cmp89NeumannReflectionOrbit] at hh <;> omega
+      cases bb
+      · change 2 * k mu * m mu + xx = 2 * k mu * m mu + yy at hh
+        omega
+      · change 2 * k mu * m mu - xx - 1 = 2 * k mu * m mu - yy - 1 at hh
+        omega
     · change xx + m mu * k mu = yy + m mu * k mu at hh
       omega
   exact coord (full mu) (b mu) (x mu) (y mu) hi
