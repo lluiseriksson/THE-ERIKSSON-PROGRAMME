@@ -78,7 +78,7 @@ def main():
         assert all(n.startswith(prefix) for n in unpacked)
         parent_files = {n[len(prefix):]:v for n,v in unpacked.items()}
         parent_report = reader.verify(parent_files)
-        (OUT / 'parent-review.json').write_text(json.dumps(parent_report, sort_keys=True)+'\\n')
+        (OUT / 'parent-review.json').write_text(json.dumps(parent_report, sort_keys=True)+'\n')
         gate = types.ModuleType('verified_gate')
         exec(compile(parent_files['axiom-gate.py'], 'verified_gate', 'exec'), gate.__dict__)
         bins = list(Path('/content/lean-4.29.0-rc6-linux').glob('**/bin/lake'))
@@ -125,5 +125,4 @@ def main():
 
 if __name__ == '__main__':
     raise SystemExit(main())
-
 
