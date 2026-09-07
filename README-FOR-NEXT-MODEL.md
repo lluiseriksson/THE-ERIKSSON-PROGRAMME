@@ -1,5 +1,11 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE R1 HOT01:32:50UTC: PID22599, runtime930e719ad438, tab22.
+Parent common-translation PASS is independently preserved in ledger1186.
+Source6804b00aa, runner4de83287a, reader b41de5843; seven-name alias
+permutation diagnostic only. Do not rerun; see coordinate-reflection design
+note for log/archive paths.20/41,TermSource0,window15 unchanged.
+
 CURRENT 2026-09-07 supersedes all LIVE notes below: common-block translation
 diagnostic PASS independently preserved, ledger1186, source327a79d3e.
 11 exact axiom declarations; fresh prerequisites8588jobs; diagnostic only,

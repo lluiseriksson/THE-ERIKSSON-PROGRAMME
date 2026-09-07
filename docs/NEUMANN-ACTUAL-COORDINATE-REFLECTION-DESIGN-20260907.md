@@ -122,3 +122,21 @@ These are templates, not launched scripts and not Lean evidence. After
 actual parent PASS and preservation, fill actual pins, test the final reader
 against synthetic corruptions, publish by fast-forward, then run once in the
 same warm runtime. If the current diagnostic fails, repair it first instead.
+
+## Actual R1 HOT launch after independent parent preservation
+
+Parent diagnostic is VERIFIED_DIAGNOSTIC_PASS, ledger1186, preservation
+892151b866cf474d6dc14ad74f20feaf3f93e35e. Final runner
+4de83287ad5a0ea7515946fe3b376440a5a354a4, Git-blob SHA256
+55ccd9d7db084238a5b164eb1d53efcd65f03f32078b437b3325d79a3a7218cb.
+Independent reader/tests published b41de5843: one synthetic valid case,
+13 corruptions rejected, exit0/0.2690323s/23142400bytes observed RSS.
+These are instrument tests, not Lean evidence.
+
+One HOT launch2026-09-07T01:32:50.664065UTC, PID22599, same retained
+runtime930e719ad438, tab22. Hash gate PASS; no previous Lean/Lake process
+or R1 output existed at preflight. Source6804b00aadf10ea9181044d150128c8942b9e7c7.
+Log /content/launch-coordinate-alias-reflection-hot-v1.log.
+Archive /content/neumann-coordinate-alias-reflection-hot-v1-evidence.tar.gz.
+Do not relaunch; preserve terminal result with the independent R1 reader.
+20/41;TermSource0;no production seal or reflection covariance yet.
