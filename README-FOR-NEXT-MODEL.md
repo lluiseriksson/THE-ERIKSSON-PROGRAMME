@@ -1,5 +1,10 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+LIVE UPDATE 01:02UTC: common-translation diagnostic is now running once,
+PID753, Colab tab18, CPU/highRAM50.99GB. Source327a79d3e, runner6a6a6b225,
+notebooka21430204; hash gate PASS, no compiler verdict yet. Do not reexecute.
+The immediately following no-runtime paragraph describes preparation only.
+
 CURRENT 2026-09-07 (supersedes every LIVE note below): runtime
 e7dbc45c00b1 was deleted after scalar1183 and phase1185 preservation.
 No Colab calculation is active. Source327a79d3e contains five PRE-VALIDATION

@@ -159,3 +159,11 @@ retain their exact blob hashes from1183/1185.
 Independent reader synthetic tests: one valid fixture,17 invalid rejected,
 queue AST agrees; exit0,0.3737953s,20922368bytes peak RSS. This verifies
 instrumentation only. Notebook is prepared; no new runtime yet.
+
+LIVE launch superseding the preceding prepared state:
+2026-09-07T01:02:15.403046UTC, PID753, tab18/celljRs-jhPuYgOA,
+CPU/highRAM50.99GB, lluiseriksson@gmail.com. HASH_GATE=PASS, source327a79d3e,
+runner6a6a6b225, notebooka21430204. One execution only; no verdict yet.
+Log /content/launch-neumann-actual-common-translation-v1.log;
+archive /content/hrpoly-neumann-actual-common-translation-diagnostic-v1-evidence.tar.gz.
+Preserve and independently verify before bounded warm repair or cleanup.
