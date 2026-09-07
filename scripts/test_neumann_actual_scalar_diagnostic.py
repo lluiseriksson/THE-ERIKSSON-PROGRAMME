@@ -58,5 +58,8 @@ for replacement in ('sorryAx','ofReduceBool','Unknown.axiom'):
 for key in ('scalar_prerequisites.log','NeumannActualFullSolutionScalarDraft.olean'):
     g=copy.deepcopy(f);del g[key];reject(g)
 g=copy.deepcopy(f);g['extra.log']=b'';reject(g)
+g=copy.deepcopy(f);g['NeumannActualFullSolutionScalarDraft.lean']+=b'\n-- altered source\n';reject(g)
+g=copy.deepcopy(f);g['NeumannActualFullSolutionScalarDraft.olean']+=b'corrupt';reject(g)
+g=copy.deepcopy(f);c=copy.deepcopy(contract);c['cold_seal']=True;g['scalar-contract.json']=json.dumps(c).encode();reject(g)
 g=copy.deepcopy(f);d=copy.deepcopy(data);d['records'][12:14]=reversed(d['records'][12:14]);g['evidence.json']=json.dumps(d).encode();reject(g)
 print('ACTUAL_SCALAR_DIAGNOSTIC_READER_SYNTHETIC=PASS valid=1 rejected='+str(rejected)+' PRODUCER_QUEUE_AST=PASS COMPILER_CHECKED=0')
