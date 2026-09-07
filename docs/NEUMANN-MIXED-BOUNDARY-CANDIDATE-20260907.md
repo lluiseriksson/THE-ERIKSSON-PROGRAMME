@@ -41,6 +41,17 @@ actual ambient period. Nor do they establish invariance of a restricted
 operator: finite masks, the actual generated averaging action, summability
 for interchange, and the (2.46) point-source equation remain required.
 
+Static carrier check during the branch cold gate: the already sealed
+`neumannRectangle_outgoingBond_iff` and `neumannRectangle_incomingBond_iff`
+in `NeumannRectangleDirectionalMasks` use precisely
+`Int.toNat (side mu) = ambientPeriod` as their FULL disjunct. Therefore the
+physical flag must be computed from that equality, with positivity and
+non-strict fit retained. At aligned fine scale `side=B*m`, period=`B*N`,
+the bridge to the coarse flag `m=N` must explicitly cancel positive B and
+justify the toNat cast. This is the named acceptance test for classification:
+both actual directional masks must reduce to the same computed flag. The
+algebraic owner lemma itself does not need this classification assumption.
+
 Physical periodic series and convergence are now COLD verified at
 d16030e70abeee9eb77e28f5dc6a222ffdfd8200: focal8660, audit5/5, archive
 7e764ea7924f8c59f7242a9192522eba249cabe42ccbc6def7f71ee1f1cc407b,
