@@ -45,3 +45,23 @@ disconnect. Never relaunch the cold cell to run this follow-up.
 Reader synthetic1accepted/8rejected, exit0/0.184607s,18427904 observed RSS.
 The generic endpoint hypotheses still need the physical seam producer;
 this test is not a physical source equation or inverse seal.
+
+Further bounded suffix prepared before the cold run finishes: if and only
+if the masked-difference HOT passes and its archive is locally preserved,
+the same retained runtime may run the two literal physical phase/readout
+drafts. This supersedes the disconnect immediately after the masked test;
+disconnect after this suffix is preserved, or after the first unresolved error.
+The cold queue/verdict is unchanged. No concurrent compiler or CI dispatch.
+
+Runner f5050f68ffc7be4e0794be935cb86ccda900df79, SHA256
+613f9dfa4751cf79546c4923efc8a94717d2128a351999619f009606051732ac.
+Base checkout remains98f4337e06271a7d5e3957450440292db0f79168;
+only two new tmp files are fetched from overlay ce9cc5cc858214ee4e80fca27e6854d22567f653:
+PhysicalBrillouinCharacterDraft c845da5c7961927047d0e8974031d2ff29c7791d7be8bb6113c99f16dc44dc75;
+AliasPrecisionReadoutDraft ddcc7a677396a175bea22e002304b00fe4c9b89de52f2714605eb59b3f5e2274.
+Both hashes checked before writing; existing different files are rejected.
+Requires /content/masked-difference-hot-evidence-preserved.ok and actual mask PASS.
+Queue: two named prerequisite modules -> physical character repro -> alias readout repro.
+Output /content/neumann-physical-character-readout-hot-v1.tar.gz.
+Reader fixtures1accepted/9rejected, exit0/0.2084564s,18399232 observed RSS.
+This remains HOT, with physical action/source/inverse still open.
