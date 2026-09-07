@@ -48225,3 +48225,29 @@ Independent pinned reader verifies commands, logs, exits, inputs and axioms;
 exit0/0.1221235s/18550784bytes RSS. Generic integrability assumptions are
 not physical producers. R5 physical consumer remains open. HOT only,
 no PRE retirement,20/41,TermSource0,window15 not attained.
+
+## Addendum 1195 — physical reflection domains and normalized Green HOT (2026-09-07)
+
+R5 domain v1 failed at line 61 (`NeZero ?m.80`); its complete archive is retained.
+Explicit L/j arguments were the sole repair. Domain v2 source
+dd6c5667107ced71d207994b876eb24f1aea6685 passed with two allowed-trio declarations.
+Archive 98c47910c20c64186e18c96a025e6d6272b59a0be153a94c86cb1c1e1177dd88;
+independent report be551ded7e3c7e87c09979f7253fea95aa9ed796e7f928ab00110b13ae15c7e5.
+
+The physical integral v1 failed in its coordinate helper: `if True` remained
+under a cast before ring. Archive 3d1bad340cd1da48095ca36085b29c62cb3a7513f1211dd90549bdd98f60f185
+is preserved. Ordinary simp of the three definitions was the sole repair.
+V2 source c4a4678683229ea290546bc27625cbe546243d62,
+runner c069d8091eed769a2bd5c87bcb8156e95c77e743; physical exit 0 in 7.888093637 s.
+Two allowed-trio declarations. Archive a8038f39fc3ed4d66b4c98f57d78255abec5c27b2f738788fe7680a02165f708;
+report d257dc8ec5a3c3da6dec6c42e0f8aa41c801e3f2d08cfd4a2b7438e3fe4e33d3;
+olean 399c7d7448888587940cb468f29f58566d5ff7837c06c9762c206e35303ecf8d.
+Independent verification: 0.1231115 s, 16789504 bytes observed RSS, exit 0;
+four corruptions (source, exit, axiom log, parent binary) separately rejected.
+
+This is the literal normalized two-endpoint physical Green reflection at arbitrary
+depth, not transpose or displacement-only Green. Domains and integrability are
+produced from the existing mass-uniform windows; normalization remains (2*pi)^-4.
+The half-open cube is used almost everywhere, not falsely identified pointwise.
+R6 lower-half-cell transport and cold promotion remain open. HOT only, no production
+PRE-VALIDATION retirement, counters 20/41, TermSource=0, window15 not attained.

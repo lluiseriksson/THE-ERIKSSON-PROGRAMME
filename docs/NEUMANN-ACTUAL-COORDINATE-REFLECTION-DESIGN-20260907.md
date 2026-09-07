@@ -336,3 +336,9 @@ Archive: 98c47910c20c64186e18c96a025e6d6272b59a0be153a94c86cb1c1e1177dd88.
 Independent report: be551ded7e3c7e87c09979f7253fea95aa9ed796e7f928ab00110b13ae15c7e5.
 Evidence directory: validation-evidence/neumann-physical-coordinate-domain-hot-v2-20260907.
 Counters unchanged: 20/41, TermSource=0, window 15 open.
+
+R5 physical normalized integral now HOT-verified: c4a4678683229ea290546bc27625cbe546243d62,
+archive a8038f39fc3ed4d66b4c98f57d78255abec5c27b2f738788fe7680a02165f708,
+ledger Addendum 1195. Integrability is produced at stage zero; reflected
+integrability is transported through an a.e. equality to the ordinary endpoint
+integrand. The original normalization is unchanged. R6 is next; no cold seal yet.
