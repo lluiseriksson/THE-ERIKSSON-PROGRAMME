@@ -1,5 +1,18 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+CURRENT: cold integral PASS independently preserved5ea4a702b and selective
+seal25ca1cbe5/ledger1239. Exact header-only comparison2files PASS
+(.2132846s,14290944RSS). All earlier LIVE cold notes below are historical.
+Archive bec0229ed171d05f20c40bbb1a672d97a98009e59ce5cdea89171a5e3f54c2f0.
+HOT endpoint suffix launched ONCE 2026-09-07T16:56:47.065124Z, PID31769,
+same runtime/tab68. Read /content/physical-endpoint-readout-launch-v1/launch.log.
+Phase repro exited0/5.119728533s, one exact allowed trio; currently
+readout_prerequisite. Physical readout has NOT yet been observed as run.
+Do not rerun launch. Cell2 is now a read-only full suffix log viewer.
+At completion download /content/neumann-physical-endpoint-readout-hot-v1.tar.gz
+and use the prepared independent reader. Preserve first error or exact PASS
+before changes. Runtime retained only for this bounded continuation.
+
 PREPARED, NOT RUN: endpoint HOT suffix runner
 ea60bf10d583ab1ddbbbf8af2cbee4aa7362c2a8,
 scripts/colab_neumann_physical_endpoint_readout_hot.py,
