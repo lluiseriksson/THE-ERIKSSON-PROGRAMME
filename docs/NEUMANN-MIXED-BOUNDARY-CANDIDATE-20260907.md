@@ -55,6 +55,21 @@ kernel with the real inverse must then be proved, not read from the phrase
 'real slice'. This is a type-boundary observation, not a new no-go or a
 claim that the existing source synthesis is non-real.
 
+The apparent extra positive-mass premise in the older
+integral_cmp89Eq246FinePointSourceFibreEquation_of_commonRadius is not a
+reason to restrict the new construction to mass>0. The inspected
+cmp89Eq246FullSolutionDomain_of_commonRadius_massUniform already produces
+the fine/stabilized/row nonvanishing fields throughout the same mass window,
+including zero mass. Those three fields feed the generic
+cmp89Eq246EntireAliasPrecisionMatrix_mulVec_finePointSourceSolution directly.
+Likewise the current physical contour lane has the named producer
+integrable_cmp89Eq246PhysicalFineToFineGreenPartialProductIntegrand_massUniform
+for every stage (use stage0 and its literal contour dictionary for the
+unshifted integrand). Thus the planned action/integral proof can retain
+the actual mass-uniform source windows; do not copy the stronger hypothesis
+from the older wrapper. This composition route is a static type check, not
+a claim that the infinite-lattice physical action equation is already proved.
+
 ### Updated frontier after Addendum1221 (2026-09-07)
 
 The four owner obligations listed below are now cold-verified by
