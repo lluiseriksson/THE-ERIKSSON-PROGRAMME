@@ -20,3 +20,18 @@ Next: inspect actual PID/children and launch.log without rerunning Cell 1;
 on completion preserve archive, independently verify, seal only certified docstrings.
 Cold evidence is still pending. Counters remain 20/41, TermSource=0, window15 open.
 This is alias precision readout integration, not physical operator interchange.
+
+## Continuation observation
+
+The browser tab disappeared between turns; this was not runtime loss.
+Manage sessions showed the existing short-SHA notebook URL. Reopening that
+exact URL restored the same 50.99 GiB runtime automatically. Current tab71;
+tab70 is an unused full-SHA view and has no separate runtime.
+Cell1 was not reexecuted. Cell2 now contains read-only PID/log observation.
+PID15790 remained alive with Lake PID17548 and live Lean children.
+All bootstrap guards and Mathlib pin passed; integral_focal was running.
+
+Bounded next scratch: commit70ddeb82b, tmp/NeumannMixedInteriorRepresentativeDraft.lean.
+Three statements identify the interior image representative using the
+varying-source bijection. Import guard passed in a measured local wrapper
+(0.297s, 13.4MB); no Lean verification yet. Do not include in current cold seal.
