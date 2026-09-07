@@ -2,9 +2,9 @@ import YangMills.RG.NeumannMixedFixedSource
 import Mathlib.Data.Fintype.BigOperators
 
 /-!
-PRE-VALIDATION: production source present; production .olean not materialized
-and cold compiler result not verified. Exact HOT-v2 bodies from
-476cc52e0b672438a2e6e23d21e2769c2db9cdef, ledger1219.
+Cold compiler-verified at c9818c183643a19b0cb88d614ea7b10ad3e8eda6,
+2026-09-07, ledger1220. Seven exact audit names and production output
+independently verified after download. Proof bodies unchanged from cold source.
 Global translation/branch packaging; FULL uses Unit and PROPER uses Bool.
 The at-most16 bound is independent of scale and volume. Actual physical
 carrier classification, Green identity, uniform B0 and window15 remain open.
@@ -85,4 +85,3 @@ theorem neumannMixedGlobalFixedSource_injective {d : ℕ}
     (neumannMixedGlobalFixedIndexEquiv full).injective
 
 end YangMills.RG
-

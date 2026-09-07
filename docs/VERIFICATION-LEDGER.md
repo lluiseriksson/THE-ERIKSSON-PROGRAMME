@@ -48639,6 +48639,30 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1220 — mixed branch packaging cold PASS, 2026-09-07
+
+Source `c9818c183643a19b0cb88d614ea7b10ad3e8eda6`; runner/reader checkpoint
+`579882fb91f11022f39003c9f6af2f53d339af13`; notebook `ef8e762132a7c0ff69b97e9d2be5976595518e3f`.
+Runner SHA256 `9cf22262126e325c186559f033f7a1c4d96f8365e949d8cf5e9ad89b673856fd`;
+reader `f8034619436e99d5c1f78010d03fffe6300d69b3d52e66fef09cb646ec03f90b`.
+Fresh Colab CPU50.99GiB, exact Lean4.29.0-rc6 / Mathlib0764272048 pins,
+no project build-cache restoration. Focal3290jobs exit0 in56.254445132s;
+seven-name audit exit0 in4.768029778s. All16 stages verified independently.
+Code injection/coordinate pack have no axioms; global equivalence/apply
+use propext/Quot.sound; the remaining three use the permitted trio.
+
+Durable archive `validation-evidence/neumann-mixed-branch-packaging-cold-v1-20260907/neumann-mixed-branch-packaging-cold-v1.tar.gz`,
+35230bytes, SHA256 `b1f33671a8ac555162b88469f4f92a90e69ca3035af137668eb91ab929d9b310`.
+JSON file `14794fa12bb60a2713647c04fd54ae780ebce2d2e9c4df88ea3685e5340fa11c`;
+payload `29b53e32863b7ddc06a931856813a4793c4dc1ec8ef17603348d39a4a0a48a28`;
+production olean `b3ee62d968b6aeaa735516c05106bab75604ffab30bbf5eab505561446dd6ce9`.
+Automatic download16.25s,25,399,296RSS; independent reader0.1148372s,
+18,706,432RSS, exit0. Runtime released after preservation, without another HOT.
+Only two certified headers lose PRE-VALIDATION; no theorem-body changes.
+At-most16 branches and same-index packaging are algebraic results, not a
+physical carrier choice or inverse. M2 owner transport, physical action,
+uniform B0 and window15 remain open. 20/41, TermSource0 unchanged.
+
 ## Addendum1219 — branch packaging HOT-v2 PASS, 2026-09-07
 
 Source `476cc52e0b672438a2e6e23d21e2769c2db9cdef`; runner
