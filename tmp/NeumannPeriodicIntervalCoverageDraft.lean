@@ -35,6 +35,8 @@ theorem neumannPeriodicIntervalFamily_injective (P : ℤ) (hP : 0 < P) :
   change n.1 + P * k = v.1 + P * l at he
   have hq := congrArg (fun u : ℤ => u / P) he
   have hr := congrArg (fun u : ℤ => u % P) he
+  change (n.1 + P * k) / P = (v.1 + P * l) / P at hq
+  change (n.1 + P * k) % P = (v.1 + P * l) % P at hr
   rw [neumannPeriodicInterval_periodQuotient P hP n k,
     neumannPeriodicInterval_periodQuotient P hP v l] at hq
   rw [neumannPeriodicInterval_periodRemainder P hP n k,
