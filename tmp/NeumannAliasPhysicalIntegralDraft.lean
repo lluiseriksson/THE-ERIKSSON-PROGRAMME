@@ -79,15 +79,21 @@ theorem neumannCenteredAlias_physicalIntegral
         cmp89Eq249NormalizedFourDimensionalBrillouinIntegral (fun x => f x * c) =
           cmp89Eq249NormalizedFourDimensionalBrillouinIntegral f * c := by
       unfold cmp89Eq249NormalizedFourDimensionalBrillouinIntegral
+      dsimp only
       rw [integral_mul_const, mul_assoc]
     rw [hscale, neumannPhysicalBrillouin_integerCharacterIntegral]
-    rw [neumannIntegerQuotient_zero_iff 4 N u v hv]
-    split <;> simp
+    by_cases hv0 : v = 0
+    · have hu0 := (neumannIntegerQuotient_zero_iff 4 N u v hv).mpr hv0
+      simp [hv0, hu0]
+    · have hu0 : u ≠ 0 := fun h => hv0
+        ((neumannIntegerQuotient_zero_iff 4 N u v hv).mp h)
+      simp [hv0, hu0]
   · have hu : u ≠ 0 := by
       intro hu
       apply hz
       subst u
-      rfl
+      funext i
+      simp
     have hf : (fun x => ∑ m : {m : Fin 4 → ℤ // m ∈ cmp89Eq245CenteredAliasVectors 4 N},
         Complex.exp (∑ i, Complex.I *
           ((cmp89Eq251PhysicalBrillouinParameter x i : ℂ) +
