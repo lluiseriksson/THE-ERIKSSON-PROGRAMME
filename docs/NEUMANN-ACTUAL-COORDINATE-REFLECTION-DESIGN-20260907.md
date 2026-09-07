@@ -231,3 +231,37 @@ the physical consumer must supply R2 and the existing solver uniqueness,
 respectively. It is not counted as either physical input or producer.
 Text/import guard exit0/0.1317943s/12144640bytes observed peak RSS.
 Text/import guards passed; no local Lean or new Colab was run for this draft.
+
+## R4/R5 literal endpoint and measure conventions (static, not verified)
+
+Re-read FinePointSourceHolomorphy at the normalized Green definition and
+Eq249NormalizedStabilizedEndpointIntegralBound at the measure definition.
+The integration parameter is NOT a unit cube: x belongs to [0,2*pi]^4,
+physical momentum is x-pi, and the measure is the product of restricted
+Lebesgue measures on uIoc 0 (2*pi). The outside normalization is (2*pi)^-4.
+Thus the selected-coordinate reflection is x_mu -> 2*pi-x_mu, not 1-x_mu.
+It preserves volume; no extra Jacobian or normalization is to be introduced.
+The half-open interval reflects to the opposite half-open interval, so the
+measure transport must account for null endpoints rather than assert exact
+set invariance. This is distinct from the discrete alias permutation R1.
+
+For R4 the physical endpoint reflection is S_N(t)_mu=N-1-t_mu, N=L^j.
+The expected target exponential phase is D^-1 and the source phase is D;
+their cancellation must be proved for the literal fine-to-fine integrand.
+Wrapped phases vanish because both fine endpoints are integer-valued.
+No analogous statement for arbitrary real endpoints is being assumed.
+These are acceptance conditions for later proofs, not compiler evidence.
+
+Existing R5 route located by reading signatures: Mathlib's
+intervalIntegral.integral_comp_sub_left gives the slice reflection with
+d=2*pi, a=0, b=2*pi. The sealed
+integral_pi_restrict_uIoc_eq_of_coordinate_intervalIntegral_ae_eq lifts
+slice equality to the product measure (cold source80c13cb97).
+It requires integrability of BOTH product integrands; this must not become
+a new free physical assumption. FinePointSourceHolomorphy already provides
+integrable_cmp89Eq246PhysicalFineToFineGreenIntegrand_real; the newer
+mass-uniform contour module is the candidate for avoiding a mass-positive
+restriction. The reflected integrand's integrability still needs explicit
+transport or a continuity proof. Hence R5 has a named finite route, not yet
+a completed proof, and the half-open endpoint issue can be handled by the
+existing interval integral theorem rather than a fresh set identity.
