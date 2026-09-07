@@ -1,4 +1,14 @@
-# Character normalization cold promotion — prepared
+# Character normalization cold promotion — live
+
+Notebook checkpoint c94ffdf634d3b461ac7693bc70deccfed577c3c5.
+Opened2026-09-07T13:48:57.054328UTC, account lluiseriksson@gmail.com,
+CPU/highRAM50.99028778076172GiB, noGPU. Runner hash verified, PID3998,
+tab62. Own-code confirmation clicked once; do not reexecute cell1.
+Initial observation: toolchain download/install/version stages exit0;
+git clone process4818 live. No mathematical result yet.
+Launch log /content/character-normalization-cold-launch-v1/launch.log.
+Checkout /content/hrpoly-neumann-character-normalization-promoted-cold-v1.
+Archive /content/hrpoly-neumann-character-normalization-promoted-cold-v1-evidence.tar.gz.
 
 Source98f4337e06271a7d5e3957450440292db0f79168; four PRE-VALIDATION
 production/audit files copied from ledger1227 HOT proofs. Imports, bodies
