@@ -48639,6 +48639,27 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1219 — branch packaging HOT-v2 PASS, 2026-09-07
+
+Source `476cc52e0b672438a2e6e23d21e2769c2db9cdef`; runner
+`924eef5767ccf38c662f25b0c204d5f6da0a61fe`, SHA256
+`27b2f50e0aaffae4e9cfdab27411b43eae1d620b0e70da103cedbb599661e3dd`.
+Same retained cold-parent checkout, no checkout/source mutation. Repro exit0
+in2.876646710s, no axioms; seven-name project draft exit0 in7.042171671s.
+Code injection and coordinate pack have no axioms; global equivalence/apply
+use propext/Quot.sound; the three other declarations use the permitted trio.
+All six stages exit0; exact independent reader passed. Reader self-test
+accepts one synthetic positive and rejects eleven corrupt/semantic cases.
+
+Archive `validation-evidence/neumann-mixed-branch-packaging-hot-v2-20260907/neumann-mixed-branch-packaging-hot-v2.tar.gz`,
+40168bytes, SHA256 `940cfa9103d51e2ecee273e71abd62fec1326496f8103bdf452262d36b4ce542`;
+output `mixed.olean` SHA256 `8782475f378c2cdaf97f562a0ff652bce06ab4fafe55027b3c61ae9a982783cf`.
+Local independent reader0.1179985s,17,870,848RSS; automatic download16.984s,25,079,808RSS.
+This is HOT evidence, not a cold production seal. It proves at most16 branches
+in dimension4 and exact fixed-source index packaging, without scale/volume
+in the count. Physical carrier classification, operator image equation,
+uniform B0 and window15 remain open. 20/41, TermSource0 unchanged.
+
 ## Addendum1218 — branch packaging HOT first failure preserved, 2026-09-07
 
 Source `5cc9f46ed092d2ef1221d78c33e54d0d061021da`, runner
