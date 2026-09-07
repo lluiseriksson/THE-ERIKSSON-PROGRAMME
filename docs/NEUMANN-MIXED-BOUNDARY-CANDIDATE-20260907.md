@@ -20,6 +20,29 @@ is exchanged with this series. No duplicate reflection branch in FULL sides.
 
 Historical frontier below records what was open before1203.
 
+### Located convergence route (static; 2026-09-07)
+
+For fixed target x and source n, a positive coordinatewise period P gives
+an injective map k -> x - (n + P*k) on Z^4. Compose the already sealed
+summable_cmp89SignedLatticeL1ExponentialWeight with this injection, multiply
+by the existing certificate amplitude, and apply Summable.of_norm_bounded
+using neumannActualFullGreenDecayCertificate.bound. This uses the literal
+(2.46) kernel and retains every amplitude/radius/pair/mass window.
+
+This route needs only P_mu != 0 for injection; the physical period is
+P_mu=L^j*blockCount_mu with positive blockCount. Zero periods must not be
+admitted into a convergence theorem: repeated indices then need not decay.
+The all-coordinate translation identity permits zero periods algebraically;
+its more general signature is not itself a convergence producer.
+
+This injection argument proves convergence only. Bounding it by the total
+fine-lattice mass would pay the fine rate rho/L^j and is NOT a uniform B0
+producer; do not use that coarse upper bound as attainment of window15.
+The sharper residue bound and the fine/block metric conversion remain
+necessary for quantitative regional estimates. For mixed branches the same
+argument requires injection separately within each fixed allowed branch;
+FULL directions must still have only their single branch.
+
 The historical paragraphs below record the earlier design audit. M3 is no
 longer wholly open: the literal full Green common block translation and
 simultaneous half-cell reflection are cold-sealed in Addendum1197. Their
