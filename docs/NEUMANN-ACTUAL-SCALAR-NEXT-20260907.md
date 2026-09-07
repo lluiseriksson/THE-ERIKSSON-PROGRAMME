@@ -106,3 +106,28 @@ Log `/content/launch-neumann-common-block-phase-hot-v1.log`;
 archive `/content/neumann-common-block-phase-hot-v1-evidence.tar.gz`.
 Do not reexecute. Preserve original on first error or PASS. Its three
 phase lemmas alone prove neither full Green covariance nor reflection.
+
+## Exact next consumer after phase PASS (design, not compiler evidence)
+
+The remaining common-translation composition has five finite outputs:
+1. `FinePointSourceAliasVector` at source+M*n equals the original literal
+   vector multiplied by exp(-I*sum(z*n)), by function extensionality and
+   the source phase theorem for each alias. No free source family.
+2. `StabilizedFinePointSourceSolution` has that same multiplier, by the
+   scalar lemma checked in1183, not by a uniqueness/invertibility assumption.
+3. `StabilizedFineToFineGreenIntegrand` is unchanged when BOTH fine
+   endpoints move by M*n with spacing1/M. Rewrite each target phase and
+   source solution in the finite output-alias sum, then cancel the opposite
+   common factors termwise. No displacement-only (2.48) replacement.
+4. Specialize to the literal physical wrapper with M=L^j and the existing
+   spacing definition; do not leave M independent of the physical depth.
+5. Lift the pointwise equality through
+   `cmp89Eq246NormalizedPhysicalFineToFineGreen` by equality of integrands.
+   This step does not require a new integrability assumption: it asserts
+   equality of the already defined totalized integrals, not an inverse.
+
+Every step keeps mass,a,z and the two endpoints of (2.46) explicit.
+The final output is common BLOCK translation of the actual full Green;
+arbitrary-depth half-cell reflection, regional image reconstruction and
+the regional inverse identity remain separate. No new draft of these five
+outputs is shipped before the pending phase diagnostic result.
