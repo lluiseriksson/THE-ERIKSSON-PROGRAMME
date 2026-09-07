@@ -1,0 +1,62 @@
+import YangMills.RG.NeumannPhysicalHalfCellReflection
+
+/-!
+# PRE-VALIDATION: complete physical reflection graph audit
+Source present; .olean not materialized; result not compiler-verified.
+All 52 declarations from the seventeen-module R1-R6 graph, including common
+block translation and the generic algebraic leaves. No terminal claim.
+-/
+
+#print axioms NeumannCoordinateProductRepro.one_factor
+#print axioms NeumannHalfCellPhaseRepro.finite_exp_reverse
+#print axioms YangMills.RG.neumannEntireAverageFactor_halfCellPhase
+#print axioms YangMills.RG.neumannAliasPiCoordinateReflection_self
+#print axioms YangMills.RG.neumannAliasPiCoordinateReflection_other
+#print axioms YangMills.RG.neumannAliasCoordinateReflection_other
+#print axioms YangMills.RG.neumannAliasCoordinateReflection_residue
+#print axioms YangMills.RG.neumannAliasCoordinateReflection_involutive
+#print axioms YangMills.RG.neumannAliasCoordinateReflection_sum
+#print axioms YangMills.RG.neumannPhysicalAliasCoordinateReflection_central
+#print axioms YangMills.RG.neumannMomentumCoordinateReflection_involutive
+#print axioms YangMills.RG.neumannPhysicalAliasCoordinateReflection_momentum
+#print axioms YangMills.RG.neumannEntireScaledLaplacianSymbol_coordinateReflection
+#print axioms YangMills.RG.neumannEntireAliasFineSymbol_coordinateReflection
+#print axioms YangMills.RG.neumannEntireAliasPrecisionMatrix_coordinateReflection
+#print axioms YangMills.RG.neumannCoordinateHalfCellPhase_ne_zero
+#print axioms YangMills.RG.neumannCoordinateHalfCellPhase_neg
+#print axioms YangMills.RG.neumannEntireAverageAmplitude_coordinateReflection
+#print axioms YangMills.RG.neumannEntireAliasAverageColumn_coordinateReflection
+#print axioms YangMills.RG.neumannEntireAliasAverageRow_coordinateReflection
+#print axioms NeumannDiagonalTransportRepro.action
+#print axioms NeumannDiagonalTransportRepro.action_function
+#print axioms NeumannDiagonalTransportRepro.solution_unique
+#print axioms YangMills.RG.neumannActualCoordinatePrecision_action
+#print axioms YangMills.RG.neumannActualCoordinateFullSolution_transport
+#print axioms YangMills.RG.neumannFineEndpointCoordinateReflection_involutive
+#print axioms YangMills.RG.neumannCoordinateEndpointPhase_identity
+#print axioms YangMills.RG.neumannAliasTargetPhase_coordinateReflection
+#print axioms YangMills.RG.neumannAliasSourcePhase_coordinateReflection
+#print axioms YangMills.RG.neumannActualPointSource_coordinateTransport
+#print axioms YangMills.RG.neumannActualPointSolution_coordinateReflection
+#print axioms YangMills.RG.neumannActualFineGreenIntegrand_coordinateReflection
+#print axioms YangMills.RG.neumannIntervalCoordinateReflection_insertNth
+#print axioms YangMills.RG.neumannIntegral_coordinateReflection
+#print axioms YangMills.RG.neumannCoordinateReflectedDomain_massUniform
+#print axioms YangMills.RG.neumannPhysicalFineGreenIntegrand_coordinateReflection_massUniform
+#print axioms YangMills.RG.neumannBrillouinMomentum_coordinateReflection
+#print axioms YangMills.RG.neumannPhysicalGreen_coordinateReflection_massUniform
+#print axioms YangMills.RG.neumannActualNoncentralSourceMoment_mul_right
+#print axioms YangMills.RG.neumannActualFullSolutionMoment_mul_right
+#print axioms YangMills.RG.neumannActualFullSolution_mul_right
+#print axioms YangMills.RG.neumannAliasTargetPhase_blockShift
+#print axioms YangMills.RG.neumannAliasSourcePhase_blockShift
+#print axioms YangMills.RG.neumannCommonBlockPhase_cancel
+#print axioms YangMills.RG.neumannActualPointSourceVector_blockShift
+#print axioms YangMills.RG.neumannActualPointSourceSolution_blockShift
+#print axioms YangMills.RG.neumannActualFineGreenIntegrand_commonBlockShift
+#print axioms YangMills.RG.neumannActualPhysicalFineGreenIntegrand_commonBlockShift
+#print axioms YangMills.RG.neumannActualNormalizedFineGreen_commonBlockShift
+#print axioms YangMills.RG.neumannBlockBoundaryReflection_eq_center_shift
+#print axioms YangMills.RG.neumannPhysicalGreen_blockBoundaryReflection_massUniform
+#print axioms YangMills.RG.neumannPhysicalGreen_lowerHalfCellReflection_massUniform
+
