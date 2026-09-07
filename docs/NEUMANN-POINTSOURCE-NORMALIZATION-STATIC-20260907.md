@@ -167,3 +167,30 @@ two-endpoint Green by the withdrawn one-displacement Eq248 kernel.
 This draft has passed only the text guard, not Lean, and is outside both
 queues currently fixed. The next composition still needs the exact alias
 sum, normalized physical character integral and actual finite action.
+
+## Orientation of the pending averaging-action dictionary
+
+Static derivation from the literal definitions, NOT compiler evidence:
+`cmp89Eq245EntireAverageBase N q = exp(-i*q/N)`; hence the column `u(q)`
+contains negative offset phases, while the row `u(-q)` contains positive
+offset phases. The inverse-transform target wave is positive. Therefore
+the average over targets `N*k+r` must consume the ROW, not the column.
+
+For an integer owner k and offsets0<=r<N in every coordinate, the two
+identities to prove and then compose are:
+
+- Normalized complete-fibre average of exp(i*(z+2*pi*m)*(N*k+r)/N)
+  equals exp(i*z*k) times u(-(z+2*pi*m)). Integer alias phase at the owner
+  must be removed by its named lattice-period lemma, not by a symmetry claim.
+- Sum over centered aliases of exp(i*(z+2*pi*m)*x/N) times u(z+2*pi*m)
+  equals exp(i*z*k) when x=N*k+r. Expanding u produces N^(-d); the alias
+  character sum produces N^d only for the matching offset r. These cancel
+  exactly once. This is synthesis of a block-constant field, not a factor
+  to hide in the scalar coefficient.
+
+These formulas describe the complex plane-wave action; the actual canonical
+operator still needs the complete-offset equivalence and the already sealed
+counting coefficient identity. N=L^j on the Fourier side must be explicitly
+identified with the generated terminal block side, rather than identifying
+parameters merely because both describe a scale. No new uniform bound,
+physical inverse or terminal-field producer is claimed here.
