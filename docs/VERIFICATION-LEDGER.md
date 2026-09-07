@@ -48105,3 +48105,27 @@ commands/order, exits, logs, output hashes and exact axiom blocks. Exit0,
 Status VERIFIED_HOT_PASS,cold_seal=false. No PRE retirement, physical Green
 covariance, inverse, B0, window15 or terminal field follows.20/41,TermSource0.
 Runtime retained for bounded Mathlib-only R3 transport repro, not a new build.
+
+## Addendum 1190 — generic R3 matrix transport repro HOT verified (2026-09-07)
+
+Same retained runtime, no bootstrap. Source5ed3699ca40d9ecd178bb6a24ad929375ee6d1c0,
+input65ee59400a92d3914555c2bc09de80af8e5ddd14b111ce9428a5732e62f39745.
+v1 launchPID30885 at02:19:10UTC failed before elaboration: input must be
+contained in root directory. Archive97ca3e723730824f5cc28b63f7ffee94c8308879831d8ada0993292d3b39d0ea
+downloaded/hash matched and retained in the path-fail evidence directory.
+v2 changes only runner revision and input placement under root/tmp;
+Lean source bytes unchanged. Runner6dd8b639624894cbcf8fb80b896bc96ff3f6e489,
+hash7ef8f53b0b77ea48ab753fddb03beaa89d1c4d9207f58dabfa9adefe8acad49c.
+PID31333 launch02:20:47.714370UTC; repro exit0/2.420979522s.
+Three named declarations action/action_function/solution_unique use exact
+Classical.choice,Quot.sound,propext. An unreachable trailing ring warning
+is retained, not hidden. The generic premises are not physical producers.
+
+Archive8bba1f7cd0ade06762ce41445eae34af0d4ec110b3b199b28cf2d950cad3670f;
+independent reporta669ccb5329d6023cb11691fa84ab8368d16ced3db8a1c898d8f5bdbc299a304;
+olean82718ecc7622064cb47e9f683fa4014c65361ea8d53c2495199216195cca32fc.
+Preserved validation-evidence/neumann-diagonal-transport-repro-v2-20260907.
+Independent reader exit0/0.1142444s/18612224bytes observed peak RSS;
+checks exact inputs, commands, exits, logs, output and three axiom blocks.
+VERIFIED_HOT_REPRO_PASS,cold_seal=false. Physical R3 specialization drafted
+after this result, NOT CHECKED. No PRE retirement;20/41,TermSource0 unchanged.

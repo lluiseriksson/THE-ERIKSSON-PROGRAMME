@@ -1,5 +1,18 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT02:24UTC: Mathlib R3 repro v2 passed and independently preserved1190
+in2.420979522s (3 exact axiom names). v1 failed only because its input was
+outside the checkout; original archive retained, no Lean source changed.
+Next physical R3 draft tmp/NeumannActualCoordinateSolutionDraft.lean now
+written, NOT CHECKED (two declarations). It consumes actual R2 matrix law,
+internally constructed full solutions and existing uniqueness. No free
+solution, matrix equality or inverse premise. Prepare bounded HOT runner
+on retained runtime f33828f71ae2/tab23; no cold bootstrap or CI.
+Repro olean currently /content/neumann-diagonal-transport-repro-v2/
+NeumannDiagonalTransportRepro.olean; copy by verified hash into scratch
+import path before physical R3. R2 carry/phase oleans already installed.
+20/41,TermSource0 unchanged. Earlier CURRENT entries are historical.
+
 CURRENT02:17UTC: R2 bounded HOT retry PASSED and independently preserved,
 ledger1189. Runtime f33828f71ae2/tab23 remains retained for bounded R3 repro.
 Original R2 v1 FAIL remains preserved1188; do not rerun either runner.
