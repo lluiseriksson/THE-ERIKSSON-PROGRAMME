@@ -47877,3 +47877,42 @@ confirmed through Colab's dialog and reconnect-only UI around23:46UTC.
 The final process observation showed no PID19343; no cold or HOT rerun.
 No runtime remains retained from this cohort. Launch-to-deletion interval
 was about36min including cold, preservation, instrumentation and HOT.
+
+## Addendum 1182 — half-cell phase diagnostic preserved PASS (2026-09-07)
+
+SOURCE 7320d1bab92f0bcb18d8072dd0d2fa13b1aea204; runner
+0505a1567cd48a5a9838e50103be80108324d171; reader/notebook
+12f3612d5563601488f917ba33a9e035a6b9a35e. One launch at
+2026-09-06T23:58:51.675083Z, PID8694, runtime e2e36fff9f96, CPU/high
+RAM 50.99GB, account lluiseriksson@gmail.com. Fresh source checkout,
+no project build restoration. Diagnostic scope, cold_seal=false.
+
+All 19 recorded stages exit0, no timeout. Repro4.228965399s;
+prerequisites3275jobs/34.482132555s; actual-symbol phase5.131315128s.
+Both exact declarations NeumannHalfCellPhaseRepro.finite_exp_reverse and
+YangMills.RG.neumannEntireAverageFactor_halfCellPhase use only
+{Classical.choice,Quot.sound,propext}. apt_update emitted a repository
+source-index warning with exit0; no claim of warning-free bootstrap.
+
+Archive SHA256 5e0acff780e5829778d62e0d1e13df3d4ac75c556138800120d3361fd40dd992;
+independent report a2161e6845eb72020735a639b687d7383975772f61f2daf942e1a57571e7fbc9;
+evidence JSON 294efe4ff05476e46f7d4f269e6025a847c13316ce42801483c3165e51b7c6f1.
+Repro olean dc7a88c613978aa2120ca07bf330cadb51ed7d11738c91f200ec11b1ab842482;
+physical-phase olean be24be4bc25693d70280afce4b31ff4f8ae6bb9411cf09fdca7e47ac6a324744.
+Original plus complete logs/contracts preserved at
+validation-evidence/neumann-half-cell-phase-diagnostic-v1-20260907.
+Reader exit0/0.1341729s/16666624 observed peak RSS. An initial local
+runpy invocation omitted scripts from sys.path and failed before reading
+the archive; fixing that invocation required no reader/source change or
+Colab rerun. This was instrument invocation failure, not Lean failure.
+
+No production PRE mark removed. The result concerns the finite reverse
+sum and actual entire-average phase, not full Green covariance, regional
+inverse, uniform B0 or window15. Counters20/41,TermSource0 unchanged.
+Next: common block translation and half-cell covariance of the literal
+two-endpoint (2.46), with scalar homogeneity of its constructed solution
+proved rather than a free Green covariance hypothesis.
+
+After independent preservation, disconnect-and-delete confirmed in Colab;
+reconnect-only UI observed around00:07UTC. The launcher had exited0 and
+its PID was absent. No live runtime from this diagnostic remains.

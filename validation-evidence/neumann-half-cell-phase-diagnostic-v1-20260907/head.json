@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-half-cell-phase-diagnostic-v1", "exit": 0, "log_file": "head.log", "output_sha256": "0021a835c829bad84691beb550299b98a5f92b38ed028523c87370d87ef0d1fe", "seconds": 0.003997138000158884, "stage": "head", "timed_out": false, "timeout_seconds": 3600}

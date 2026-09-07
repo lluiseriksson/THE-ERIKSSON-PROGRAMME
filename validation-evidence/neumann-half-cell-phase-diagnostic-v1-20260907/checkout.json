@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "7320d1bab92f0bcb18d8072dd0d2fa13b1aea204"], "cwd": "/content/hrpoly-neumann-half-cell-phase-diagnostic-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "208df2d562bfe99e13d2495737d47af035b6277359e138069c351c76a165481a", "seconds": 0.9677357170003233, "stage": "checkout", "timed_out": false, "timeout_seconds": 3600}

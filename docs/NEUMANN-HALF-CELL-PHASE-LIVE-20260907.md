@@ -1,4 +1,11 @@
-# Half-cell phase diagnostic live checkpoint
+# Half-cell phase diagnostic preserved PASS checkpoint
+
+2026-09-07: original archive downloaded and independently verified PASS.
+Archive SHA256 5e0acff780e5829778d62e0d1e13df3d4ac75c556138800120d3361fd40dd992.
+Report SHA256 a2161e6845eb72020735a639b687d7383975772f61f2daf942e1a57571e7fbc9.
+Evidence: validation-evidence/neumann-half-cell-phase-diagnostic-v1-20260907.
+Runtime e2e36fff9f96 disconnected and deleted after preservation; reconnect-only
+UI confirmed around 00:07 UTC. No rerun. See ledger Addendum 1182.
 
 Source7320d1bab92f0bcb18d8072dd0d2fa13b1aea204;
 runner0505a1567cd48a5a9838e50103be80108324d171;
@@ -16,7 +23,7 @@ Original archive /content/hrpoly-neumann-half-cell-phase-diagnostic-v1-evidence.
 Check existing process/logs; never reexecute because an observer times out.
 Queue: bootstrap/cache, scratch path, phase_repro, physical prerequisites,
 phase_physical, clean_after. Mathematical stages timeout120s. First error
-stops queue; preserve archive before deleting runtime. No verdict yet.
+stops queue. Completed PASS; 19 records exit 0, two exact oracle blocks.
 
 PASS reader: scripts/verify_neumann_half_cell_phase_diagnostic.py --archive
 <downloaded-original> --sha256 <actual-Colab-hash> --destination <fresh-folder>.
