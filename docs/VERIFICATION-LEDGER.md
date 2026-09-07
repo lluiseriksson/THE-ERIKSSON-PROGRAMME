@@ -48639,3 +48639,35 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1215 — bounded fixed-source HOT failure preserved
+
+Sourceb785249132875dbed2ac6e301fd765e71745c670, runner8975c73c0;
+parentcoldfc95d9151 independently reverified. Childexit1/4.175864367s.
+Firsterror NeumannMixedFixedSourceDraft.lean:31:38: congrArg Prod.fst
+inferred the wrong product domain, expecting p=q instead of equality of
+the inserted-source triples. No source sorry; printed sorryAx is compiler
+error recovery and never accepted as audit evidence. Clean-after notrun.
+Archive34a8397c8f2dbcf212388acf329df3709894cf822e295d53ad19ecd6b61f8e91,
+11959bytes, downloadedautomatically and10manifestentries/loghashesverified.
+Stored validation-evidence/neumann-mixed-fixed-source-hot-v1-failure-20260907.
+Transfer16.735s/25120768RSS; verification0.0990012s/17629184RSS,exit0.
+Only typed projection repair authorized next; nocold/terminalclaim.
+
+## Addendum1214 — mixed coordinate cold PASS, 2026-09-07
+
+Sourcefc95d9151248b428474028e2bd4a603a959f2bc9, runner506df83f0,
+notebook7d261da31. FreshCPU/highRAM50.99028778076172GiB opened08:57:07.680139UTC.
+Focal exit0/63.449019203s, audit exit0/4.324446694s; five exact allowedtrios.
+Independentreader validates16stages, source/log hashes, commands, fileset
+and production output. No restoredprojectbuild, no repo-wide or inverseclaim.
+Archive22118bytes SHA256
+777b7cf0cfa1765b64d87721b9799b58aef9eb8a60502702845cd6224aa5689f,
+preserved validation-evidence/neumann-mixed-coordinate-cold-v1-20260907.
+JSONfile4d72d0c773297979223fdd336b7bca93a08934e2e04a4680b3d329e0c896329c;
+JSONpayload66021a9a6dde8a14940a483479b787dc204077e8ed746ae3941e19fed84e30c8.
+NeumannMixedCoordinateCoverage.olean
+abaa74676ea09a2959d89e004284a235082e10b88408c469c96e3c0c18285dfc.
+Automatictransfer17.422s/25223168peakRSS; reader0.1078231s/17494016RSS,exit0.
+Selectiveheaderseal only. Runtime retained for prepared boundedfixed-source
+diagnostic afterdownload and independentverification; no overlappingcompiler.
+Counters20/41,TermSource0,window15open. FULL classification stillphysicaldebt.

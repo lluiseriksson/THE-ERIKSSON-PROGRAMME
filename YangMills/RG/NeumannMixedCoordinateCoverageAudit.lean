@@ -1,8 +1,8 @@
 import YangMills.RG.NeumannMixedCoordinateCoverage
 
 /-!
-PRE-VALIDATION: production audit present; .olean not yet materialized and
-cold compiler result not verified. Five exact names, no physical claim.
+Cold compiler-verified atfc95d9151248b428474028e2bd4a603a959f2bc9;
+ledger1214. Five exact audited names, no physical inverse claim.
 -/
 
 #print axioms YangMills.RG.neumannMixedCoordinateImage_bijective

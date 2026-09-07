@@ -2,9 +2,10 @@ import YangMills.RG.NeumannPeriodicIntervalCoverage
 import Mathlib.Logic.Equiv.Prod
 
 /-!
-PRE-VALIDATION: production source present; production .olean not yet
-materialized or cold compiler-verified. Exact HOT proof bodies from
-4d6cd7ea7880feafe5b1161fa3ab2d1822334323, ledger1213.
+Cold compiler-verified atfc95d9151248b428474028e2bd4a603a959f2bc9,
+2026-09-07, ledger1214. Five exact audit names and production output verified
+independently after download. Proof bodies unchanged from that cold source
+and HOT4d6cd7ea7880feafe5b1161fa3ab2d1822334323, ledger1213.
 M1 coordinate assembly only, not a physical dictionary.
 FULL classification is explicit data here; the regional carrier producer
 must later fix it from equality with the ambient side, not choose it freely.
