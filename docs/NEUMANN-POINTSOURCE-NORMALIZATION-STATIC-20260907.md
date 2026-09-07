@@ -62,3 +62,12 @@ dictionary; the remaining integer phase must be identified with that exact
 torus character before transport. Neither ordinary uncentered Fourier
 notation nor a finite-grid delta can replace this equality silently.
 No new orthogonality proof or source equation was compiled in this audit.
+
+`AddCircleMulti` uses a local normalized-Haar measure instance; the
+repository's physical measure bridge names standard volume. Period one
+makes them equal, but not a convention to erase silently. A Mathlib-only
+PRE-VALIDATION repro now states the explicit period-one measure equality
+and the four-dimensional character integral under product normalized Haar:
+tmp/NeumannTorusCharacterIntegralRepro.lean. It is not yet compiled and is
+not part of the live reindex cold queue. Only after this repro passes may
+the exact physical phase dictionary consume its orthogonality conclusion.
