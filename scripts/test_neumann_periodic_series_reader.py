@@ -2,7 +2,10 @@ import sys,json,subprocess
 sys.path.insert(0,'scripts')
 import verify_neumann_periodic_series_hot as v
 import full_green_owner_exact_axiom_gate as gate
-revision='v2' if '--v2' in sys.argv else 'v1'
+revision='v3' if '--v3' in sys.argv else ('v2' if '--v2' in sys.argv else 'v1')
+if revision=='v3':
+ v.OUT='/content/neumann-periodic-series-hot-v3'
+ v.RUNNER='2c438d97b0202d2b880e4b44292597e7cd4721cefe4c33bbfeedb7d328f92c0f'
 if revision=='v2':
  v.OUT='/content/neumann-periodic-series-hot-v2'
  v.RUNNER='bfe10c94523d81921940de1916aa40cc6c1e391cc049637ef8164aa17958e57a'
@@ -11,6 +14,7 @@ for n in v.PINS:
  p=('tmp/' if n.endswith('.lean') else 'scripts/')+n
  files[n]=subprocess.check_output(['git','cat-file','blob',v.SOURCE+':'+p])
 runner=('a912a05bfc27c6334331cadae49281060bde1bf0:scripts/colab_neumann_periodic_series_hot_v2.py' if revision=='v2' else '89cdaaed0:scripts/colab_neumann_periodic_series_hot.py')
+if revision=='v3':runner='68e2fe1b8df61e36d3f0769322deaebe3d009e0d:scripts/colab_neumann_periodic_series_hot_v3.py'
 files['runner.py']=subprocess.check_output(['git','cat-file','blob',runner])
 cmds=v.commands('parenthash','/usr/bin/python3');records=[];audits={}
 for s,c in cmds.items():
