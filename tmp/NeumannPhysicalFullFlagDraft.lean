@@ -25,7 +25,7 @@ theorem neumannPhysicalFullFlag_scale_test
     (B N : ℕ) (m : ℤ) (hB : 0 < B) (hm : 0 ≤ m) :
     Int.toNat ((B : ℤ) * m) = B * N ↔ Int.toNat m = N := by
   have hc : ((B * Int.toNat m : ℕ) : ℤ) = (B : ℤ) * m := by
-    simp only [Nat.cast_mul, Int.toNat_of_nonneg hm]
+    simp only [Int.natCast_mul, Int.toNat_of_nonneg hm]
   have hmul : Int.toNat ((B : ℤ) * m) = B * Int.toNat m := by
     rw [← hc]
     exact Int.toNat_natCast _
