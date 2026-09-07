@@ -48027,3 +48027,29 @@ No production PRE-VALIDATION mark removed.20/41;TermSource0 unchanged.
 Runtime retained for the prepared bounded coordinate-alias R1 HOT diagnostic;
 the printed RUNTIME_UNASSIGN_REQUESTED is not a disconnect (the runner
 explicitly retains the session). Original completed calculation is not rerun.
+
+## Addendum 1187 — one-coordinate physical alias permutation HOT PASS (2026-09-07)
+
+SOURCE6804b00aadf10ea9181044d150128c8942b9e7c7;
+runner4de83287ad5a0ea7515946fe3b376440a5a354a4, SHA256
+55ccd9d7db084238a5b164eb1d53efcd65f03f32078b437b3325d79a3a7218cb.
+Same retained runtime930e719ad438, base327a79d3e, PID22599, launched
+01:32:50.664065UTC once after1186 preservation. Eight stages exit0;
+warm prerequisites8591jobs/71.839149155s; draft6.687299610s.
+Exact seven-name audit passes with propext,Classical.choice,Quot.sound.
+No source change or retry was needed. Source/pin cleanliness checks empty.
+
+Independent VERIFIED_HOT_PASS,cold_seal=false; archive
+5dc24e2d6dde65fffee13758930a6af361c521018a9695f38230ab8f3e1737b5;
+reportf9ff4882e748ee7e5233f06e206ac07ad43cad10bd8590a2c9b4ba7bc9bc30a4;
+olean1a9ab5d8b88b305a05760434828762e864e308c98f64a6c327b67ad34b9fdf4d.
+Original package preserved under
+validation-evidence/neumann-coordinate-alias-reflection-hot-v1-20260907.
+Local reader exit0/0.1719959s/14671872bytes observed peak RSS.
+
+R1 constructs the true half-open carrier permutation in one coordinate,
+residue negation there, identity elsewhere, involution, finite-sum reindexing,
+physical N=L^j specialization and central-alias preservation. j=0/N=1
+remain included. R2-R6 (symbol phases, solution and actual Green reflection)
+are NOT conclusions. No production PRE mark removed,20/41,TermSource0,
+window15 unchanged. Runtime may now be cleaned up after local preservation.

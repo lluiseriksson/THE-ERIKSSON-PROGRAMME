@@ -1,5 +1,10 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+FINAL01:35UTC supersedes LIVE notes below: R1 HOT PASS independently preserved,
+ledger1187 (source6804b00aa,7names). Parent common translation PASS ledger1186
+(source327a79d3e,11names). No further live compiler required in runtime930e719ad438;
+cleanup is next. R2-R6 actual Green reflection remain open.20/41,TermSource0.
+
 LIVE R1 HOT01:32:50UTC: PID22599, runtime930e719ad438, tab22.
 Parent common-translation PASS is independently preserved in ledger1186.
 Source6804b00aa, runner4de83287a, reader b41de5843; seven-name alias

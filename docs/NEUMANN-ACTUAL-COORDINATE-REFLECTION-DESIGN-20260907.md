@@ -140,3 +140,12 @@ Log /content/launch-coordinate-alias-reflection-hot-v1.log.
 Archive /content/neumann-coordinate-alias-reflection-hot-v1-evidence.tar.gz.
 Do not relaunch; preserve terminal result with the independent R1 reader.
 20/41;TermSource0;no production seal or reflection covariance yet.
+
+FINAL: R1 HOT independently VERIFIED_HOT_PASS, ledger1187. Seven names,
+eight stages exit0; draft6.687299610s after71.839149155s warm prerequisites.
+Archive5dc24e2d6dde65fffee13758930a6af361c521018a9695f38230ab8f3e1737b5;
+reportf9ff4882e748ee7e5233f06e206ac07ad43cad10bd8590a2c9b4ba7bc9bc30a4.
+Source unchanged6804b00aa; R1 diagnostic completed, R2-R6 remain open.
+Next prepare the actual coordinate symbol transport, consuming the finite
+average half-cell phase and explicit wrapped momentum period. Do not replace
+it by the depth-one transpose reflection. Production promotion still pending.
