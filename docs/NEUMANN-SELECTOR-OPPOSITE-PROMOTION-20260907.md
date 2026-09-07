@@ -1,5 +1,18 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+LATEST 16:22 UTC: browser tab67 disappeared, but reopening the same notebook
+recovered the retained runtime as tab68 (50.99 GiB). Read-only check: ROOT
+present, probe output absent, no active Lean/Lake. No cold rerun occurred.
+Type probe launched once at 16:21:35 UTC, PID17572, and PASS in 3.907952s.
+Archive a53c4dbcb6dcfdd9d955c43845ecaec6811df247463b7636dd79aee2dd822334
+downloaded automatically and independently verified: exit0, .5123481s,
+17940480 observed RSS. Exact allowed trio; HOT only, no physical seal.
+This establishes the typed integral equality, not the cause of rw failure.
+Next: use a typed equality with congrArg in the normalized generic repro,
+then the physical draft only after that repro passes. Retained runtime idle;
+Cell2 downloads the preserved type-probe archive. Do not rerun Cell1.
+Counters remain20/41, TermSource0, window15 open.
+
 CURRENT: cold PASS independently preserved, ledger1234, evidenced9a505597.
 LATEST16:14UTC: v3 repro also failed, physical stage NOT RUN. Evidence
 375c87119/ledger1237 is durable. PID15129 finished, same runtime/tab67
