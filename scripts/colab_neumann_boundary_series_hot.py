@@ -16,10 +16,10 @@ import types
 import urllib.request
 
 IMAGE_READER_HASH = '69595e794145477bbbe1898814b9f23a2d05c029a0d41aba689612b6b9ace39f'
-SOURCE = '6448e892a9da085b6c7ee46e0dd3f74e74742726'
+SOURCE = '7800e4311399022e85c4a8b1f540c44551773f75'
 BASE = '108f30f954e3d807f16c4264fac56f4814c65ea4'
-PIN = '8bef08dd58b0885acc20247eae57ce3814138d642b898d948fc72a8c91a3b4b3'
-REV = 'neumann-boundary-series-hot-v1'
+PIN = 'e0f35dccf4635b18a8b8ea886f60aa0f7bf805a491ab7759350d1537b5d151d6'
+REV = 'neumann-boundary-series-hot-v2'
 ROOT = Path('/content/hrpoly-neumann-boundary-orbit-diagnostic-v2')
 PARENT = Path(str(ROOT) + '-evidence.tar.gz')
 HELPERS = Path('/content/orbit-diagnostic-v2-launch')
@@ -151,5 +151,4 @@ def main():
 
 if __name__ == '__main__':
     raise SystemExit(main())
-
 
