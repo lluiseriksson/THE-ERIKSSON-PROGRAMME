@@ -48187,3 +48187,25 @@ One valid artifact accepted and four corrupted variants rejected:
 source, exit, axiom-log, imported binary. Test0/0.1771573s/18948096bytes RSS.
 VERIFIED_HOT_PASS only; no PRE-VALIDATION retirement.20/41,TermSource0;
 window15 compatible and not attained.
+
+## Addendum 1193 — literal full Green integrand reflection HOT verified (2026-09-07)
+
+Sourcea1b305c8071cdf06db72b67604db36bf964b51a7;
+runner034dd451b52ae11bb567341c2a9644763b1b73af,
+runner SHA256c9f4b18be4b4b2e2d1d48baef4bb376e5a6d4090b40b097bb5b2c759e75b1885.
+Same retained CPU/high-RAM runtime; no cold claim. All seven stages exit0,
+including pinned prerequisites, physical consumer and clean_after.
+Three exact allowed-trio declarations establish literal source transport,
+constructed point-source solution reflection and full integrand reflection.
+Nine scratch parent binaries are independently hash-checked in the archive.
+
+Archivef574c0d1532511bfe441c5ac5140fe41e6d064c5de0ac7e5d899d8f9423f77a7;
+reportbf02ef4c2432e5fc5994ded2ab69bad57389a12b8d2996d9ad70272f082370cb;
+olean9453389cc222d26ecc09f3cf183e5c332f08e6ce46b12ce96fea55c1f2558943.
+Preserved validation-evidence/neumann-actual-coordinate-integrand-hot-v1-20260907.
+Independent verifier exit0/0.1242646s/15314944bytes observed RSS.
+The proof reindexes the actual finite alias sum and cancels the nonzero
+exponential phase. It does not assume a Green law or exchange endpoints.
+The base/reflected FullSolutionDomain remain visible inputs. No Brillouin
+integral transport, B0, window15 attainment or terminal field follows yet.
+VERIFIED_HOT_PASS; no PRE retirement;20/41,TermSource0 unchanged.

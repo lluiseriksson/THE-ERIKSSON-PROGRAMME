@@ -287,3 +287,12 @@ it is not a generic real-endpoint identity. Next identify the reflected
 literal point-source vector with R3's constructed transport, then cancel
 the target phase in the finite alias sum. Neither that consumer nor R5
 is closed by these four phase declarations. Production promotion remains open.
+
+R4 literal consumer HOT verified1193 at sourcea1b305c807: the transformed
+actual point-source vector is identified by the source phase theorem;
+R3 transports its internally constructed solution; finite alias reindexing
+and D^-1*D cancellation prove neumannActualFineGreenIntegrand_coordinateReflection.
+All three declarations compile with the allowed trio. No endpoint exchange,
+transpose Green, Q-star source or assumed covariance is introduced.
+R4 algebra is now diagnostically closed; R5 integration and physical domain
+production remain open. No production promotion or terminal count change.
