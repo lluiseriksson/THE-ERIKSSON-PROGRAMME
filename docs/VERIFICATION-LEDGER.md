@@ -48639,6 +48639,28 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1217 — mixed fixed-source cold PASS, 2026-09-07
+
+Source `8da9ffc57d7de329501fc5ba5d8084cdcbe5fb4f`; runner
+`43338383e2a386d209f8f8c8b533c5abc1a142f3`, blob SHA256
+`cd46825b6506f9e6e0d82bfc8e1fbcd509f5ce5b19632f44c9535432e136acec`.
+Fresh Colab CPU/high-RAM checkout, exact Lean4.29.0-rc6 and Mathlib
+`07642720480157414db592fa85b626dafb71355b`, no project build-cache restore.
+Focal 3289 jobs, exit0 in62.044409522s; audit exit0 in3.978409852s.
+All16 stages independently verified. Insert-source injectivity has no axioms;
+image/difference injectivity use exactly propext, Classical.choice, Quot.sound.
+
+Durable archive: `validation-evidence/neumann-mixed-fixed-source-cold-v1-20260907/neumann-mixed-fixed-source-cold-v1.tar.gz`,
+37000 bytes, SHA256 `4aa8bb0a414fe2a49b6529f49d95f7dc728b8c5d0a6e390b7efef3d5d07e8bc1`.
+Evidence JSON file `a31c9fc0886edf39c416b28009deb3dc9e9818ec4c8887c6a7090d57aa32ea6c`;
+payload `27b0429e66333f0ec42a0f1064cde44350167ad04e5a3faf97005c1f9b173444`;
+production olean `67e7ec37483469fd54cb3f6ab273d612eea88290d37913ca931d41e0ad532c8f`.
+Download independently hashed; local reader exit0,0.1118521s,17,367,040-byte observed RSS.
+Only the two certified module headers lose PRE-VALIDATION; theorem bodies unchanged.
+Scope: fixed-source image injectivity, not full-family surjectivity, physical
+carrier classification, Green identity, inverse, uniform B0 or window15.
+20/41 and TermSource0 unchanged. Runtime retained only for bounded next HOT.
+
 ## Addendum1216 — fixed-source HOT v2 PASS, 2026-09-07
 
 Sourceddbdd8913f91ff778594756bbecaad0d804dfb6c, runner35a1f574a.

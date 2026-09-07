@@ -1,8 +1,8 @@
 import YangMills.RG.NeumannMixedFixedSource
 
 /-!
-PRE-VALIDATION: production audit present; .olean not yet materialized and
-cold compiler result not verified. Three exact names; no physical claim.
+Cold compiler-verified at 8da9ffc57d7de329501fc5ba5d8084cdcbe5fb4f.
+Three exact names; evidence in ledger1217. No physical claim.
 -/
 
 #print axioms YangMills.RG.neumannMixedInsertSource_injective

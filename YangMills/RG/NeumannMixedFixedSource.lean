@@ -1,9 +1,9 @@
 import YangMills.RG.NeumannMixedCoordinateCoverage
 
 /-!
-PRE-VALIDATION: production source present; production .olean not yet
-materialized or cold compiler-verified. Exact HOT-v2 bodies from
-ddbdd8913f91ff778594756bbecaad0d804dfb6c, ledger1216. Fixed-source injectivity only, not full-family surjectivity.
+Cold compiler-verified at 8da9ffc57d7de329501fc5ba5d8084cdcbe5fb4f,
+with exact three-declaration audit; durable evidence in ledger1217.
+Fixed-source injectivity only, not full-family surjectivity.
 FULL has translation alone; PROPER has translation and the reflection bit.
 The physical carrier must determine full and m in a subsequent dictionary.
 No Green identity, norm budget, uniform B0 or window15 conclusion.
