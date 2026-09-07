@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99MultiscalePoincareRecurrence
+
+#print axioms YangMills.RG.cmp99MultiscalePoincareBackwardBound_controls
+#print axioms YangMills.RG.cmp99MultiscalePoincareBackwardBound_eq_sum

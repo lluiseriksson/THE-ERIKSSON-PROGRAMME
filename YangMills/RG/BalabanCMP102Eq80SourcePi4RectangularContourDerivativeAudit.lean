@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4RectangularContourDerivative
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RectangularContourPotentialCurve
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RectangularContourPotentialDerivative
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80SourcePi4RectangularContourPotential
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80SourcePi4RectangularContourPotential_of_source

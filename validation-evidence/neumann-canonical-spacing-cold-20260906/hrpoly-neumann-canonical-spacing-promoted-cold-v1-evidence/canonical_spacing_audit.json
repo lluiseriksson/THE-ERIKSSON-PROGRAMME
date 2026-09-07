@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannCanonicalSpacingNormalizationAudit.lean"], "cwd": "/content/hrpoly-neumann-canonical-spacing-promoted-cold-v1", "exit": 0, "log_file": "canonical_spacing_audit.log", "output_sha256": "60b1a2f8053d81c8c9cc1be4b3bd154ef2f1a4d46282475655b278074b9ea723", "seconds": 15.844011201000058, "stage": "canonical_spacing_audit"}

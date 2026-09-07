@@ -207,7 +207,7 @@
       "status": "visual_confirmed",
       "summary": "alpha5 restrictions and visual C3 formula.",
       "formulas": [
-        {"id": "cmp116.c3.visual", "statement": "Visual normalized transcription of C3.", "ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
+        {"id": "cmp116.c3.visual", "statement": "Visual normalized transcription of C3.", "ascii": "C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
       ],
       "open_questions": ["Distinct O(1) constants and full parameter definitions."]
     },

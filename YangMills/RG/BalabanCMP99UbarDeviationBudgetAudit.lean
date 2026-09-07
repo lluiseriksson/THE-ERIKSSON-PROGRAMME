@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99UbarDeviationBudget
+
+namespace YangMills.RG
+
+#print axioms trace_cmp99UbarSpecialUnitaryExponent_eq_zero_of_deviationBudget
+#print axioms cmp99UbarSpecialUnitaryFactorOfDeviationBudget
+#print axioms cmp99UbarSpecialUnitaryFactorOfDeviationBudget_coe
+#print axioms cmp99UbarSpecialUnitaryBlockOfDeviationBudget
+#print axioms cmp99UbarSpecialUnitaryBlockOfDeviationBudget_coe
+
+end YangMills.RG

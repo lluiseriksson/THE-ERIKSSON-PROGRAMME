@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceEq395TerminalReindex
+
+#print axioms YangMills.RG.cmp99Eq395TerminalSiteEquiv
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddleOnSource
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddleOnSource_exponentialKernelBound

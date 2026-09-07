@@ -1,0 +1,1 @@
+{"command": ["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3", "exit": 0, "log_file": "mathlib_pin.log", "output_sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd", "seconds": 0.003016937999973379, "stage": "mathlib_pin"}

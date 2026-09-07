@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP98UbarPhysicalLinearization
+
+#print axioms YangMills.RG.cmp98UbarLogAveragePhysicalVariation
+#print axioms YangMills.RG.fderiv_cmp98UbarLogAverage_zero_apply_physical

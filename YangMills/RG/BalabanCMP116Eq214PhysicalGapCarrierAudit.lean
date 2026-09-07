@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP116Eq214PhysicalGapCarrier
+
+#print axioms YangMills.RG.mem_cmp116Eq214PhysicalGapCarrier_iff
+#print axioms YangMills.RG.cmp116Eq214PhysicalGapCarrier_subset_Z0
+#print axioms YangMills.RG.cmp116Eq214PhysicalGapCarrier_disjoint_Y0
+#print axioms YangMills.RG.cmp99SourcePi4LargeBlocks_subset_cmp116Eq23Y0_of_mem
+#print axioms YangMills.RG.cmp116Eq214PhysicalGapCarrier_subset_sigmaZero_of_pi4_mem
+#print axioms YangMills.RG.cmp116Eq23Y0_subset_of_localizationAdmissible
+#print axioms YangMills.RG.card_cmp116Eq214PhysicalGapCarrier_of_localizationAdmissible
+#print axioms YangMills.RG.card_cmp116Eq214PhysicalGapCarrier_of_mem_Eq214Z0Index

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102AmbientLocalNearLogBudget
+
+#print axioms YangMills.RG.norm_nearLog_cmp98UbarAmbientDeviationMatrix_le_sourceBudget
+#print axioms YangMills.RG.norm_fderiv_nearLog_cmp98UbarAmbientDeviationMatrix_le_sourceBudget
+#print axioms YangMills.RG.norm_nearLog_cmp98UbarAmbientDeviationMatrix_sub_le_sourceBudget
+#print axioms YangMills.RG.norm_fderiv_nearLog_cmp98UbarAmbientDeviationMatrix_sub_le_sourceBudget

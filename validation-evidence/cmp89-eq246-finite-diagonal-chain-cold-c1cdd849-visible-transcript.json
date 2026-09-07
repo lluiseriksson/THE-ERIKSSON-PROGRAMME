@@ -1,0 +1,260 @@
+{
+  "schema": "visible-colab-terminal-evidence-v1",
+  "captured_at": "2026-09-02T01:08:41.342Z",
+  "source_sha": "c1cdd849d0117cdf18724ac076cd4a5bbfd67b35",
+  "runner_transport_sha256": "ab4919ab121e875115a4d1c056170a44f7e4fd544f8f85e38d98f06055304c44",
+  "base_runner_transport_sha256": "2f097a374361bd8e4c0f53220ffeeeb22fc06d6ccca5179aebda468d1aebee8e",
+  "mathlib_sha": "07642720480157414db592fa85b626dafb71355b",
+  "toolchain_asset_sha256": "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e",
+  "runtime": "Colab Pro+ CPU/high-RAM fresh checkout",
+  "ram_gib": 50.99,
+  "focal_jobs": 8518,
+  "stages": [
+    {
+      "stage": "finite_diagonal_chain_focal",
+      "exit": 0,
+      "seconds": 1453.718
+    },
+    {
+      "stage": "finite_diagonal_audit_101",
+      "exit": 0,
+      "seconds": 9.581
+    },
+    {
+      "stage": "finite_diagonal_audit_102",
+      "exit": 0,
+      "seconds": 8.46
+    },
+    {
+      "stage": "finite_diagonal_audit_103",
+      "exit": 0,
+      "seconds": 4.999
+    },
+    {
+      "stage": "finite_diagonal_audit_104",
+      "exit": 0,
+      "seconds": 9.708
+    },
+    {
+      "stage": "finite_diagonal_audit_105",
+      "exit": 0,
+      "seconds": 8.941
+    },
+    {
+      "stage": "finite_diagonal_audit_106",
+      "exit": 0,
+      "seconds": 9.827
+    },
+    {
+      "stage": "finite_diagonal_audit_107",
+      "exit": 0,
+      "seconds": 8.923
+    },
+    {
+      "stage": "finite_diagonal_audit_108",
+      "exit": 0,
+      "seconds": 10.103
+    },
+    {
+      "stage": "finite_diagonal_audit_109",
+      "exit": 0,
+      "seconds": 7.88
+    },
+    {
+      "stage": "finite_diagonal_audit_110",
+      "exit": 0,
+      "seconds": 8.951
+    },
+    {
+      "stage": "finite_diagonal_audit_111",
+      "exit": 0,
+      "seconds": 10.338
+    }
+  ],
+  "axiom_gates": [
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceNoncentralCorrectionAmplitudeBound",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.norm_cmp89Eq246FinePointSourceNoncentralCorrection_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq251HalfAliasPositiveTail_le_integral",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq251HalfAliasIntegral_eq",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq251BareInverseLaplacian_le_nine_mul_halfWeight",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq251OneDimensionalAliasWeight_half_le_shiftedAbs",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq245CenteredAliasIntegers_subset_Icc_radius",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq251CenteredOneDimensionalAliasSum_half_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq251CenteredFourDimensionalAliasSum_half_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceBareDiagonalAmplitudeBound",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.norm_cmp89Eq246FinePointSourceBareDiagonal_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceBareDiagonalSumBound",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.sum_norm_cmp89Eq246FinePointSourceBareDiagonal_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceNoncentralCorrectionSumBound",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.sum_norm_cmp89Eq246FinePointSourceNoncentralCorrection_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceNoncentralSolutionSumBound",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.sum_norm_cmp89Eq246FinePointSourceNoncentralSolution_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceCentralNumerator_eq",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceCentralComponentAmplitudeBound",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.norm_cmp89Eq246FinePointSourceCentralComponent_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.cmp89Eq246FinePointSourceFullSolutionSumBound",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "declaration": "YangMills.RG.sum_norm_cmp89Eq246FinePointSourceFullSolution_le",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    }
+  ],
+  "source_blobs": [
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceNoncentralCorrectionBound.lean",
+      "sha256": "996d20df188640c8a807da0cf35133241cc8540805ee5e22db75f2934781d968"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceNoncentralCorrectionBoundAudit.lean",
+      "sha256": "a40ed4762d302b41572167946bd5d9b83e3a8a86d9a7e2a9dd62862661707e8e"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq251HalfAliasTailIntegral.lean",
+      "sha256": "4c5b04379529d787d8e50cfe4be800fc40b1351f472bf65f8dfbf50536611b1c"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq251HalfAliasTailIntegralAudit.lean",
+      "sha256": "34fda564a9c88235ae8c739197526845a5d6f7bf9012d3f52a9aaf404cbe56a0"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq251BareInverseLaplacianHalfWeight.lean",
+      "sha256": "2e6ebfaf646e4a41def63bf398786790c4f5958ced4c4b24fd52321f687e8606"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq251BareInverseLaplacianHalfWeightAudit.lean",
+      "sha256": "d01bb463e9f09b1db0680c2a2aa600f608eae809b72ba452d73d83f1b49ea3e7"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq251CenteredHalfAliasSum.lean",
+      "sha256": "bbf0234f73f27d02ec97c5f1220ab7755905cec4491c7a239a98b2e10c6c7f18"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq251CenteredHalfAliasSumAudit.lean",
+      "sha256": "e360002e4f5f90cca46299c4183a52626889474ef0a03ceab39500bac0520553"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceBareDiagonalBound.lean",
+      "sha256": "b29f637585bf518ae98a5789bce524e4ae294f8fa99eeab5778aea0d8efd11e4"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceBareDiagonalBoundAudit.lean",
+      "sha256": "7c14d0baef8e1825d4d67a4f8495d9429b87b7fa46ad5f6663a037c72413f3a3"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceBareDiagonalSum.lean",
+      "sha256": "e9a4ba8557ce3edfca96c0f9960ce8d2de3e4f9fb9b59c1faf9407ffb89fba99"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceBareDiagonalSumAudit.lean",
+      "sha256": "f8a2d5ed50cae8b225cf2ce1521b9814b9497f94e4ed02e7cf63b7a24b96d23d"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceNoncentralCorrectionSum.lean",
+      "sha256": "f526bae53df34b31c891e147d9ab4a9b7a4afceb3a03f190fcb92e9181be738b"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceNoncentralCorrectionSumAudit.lean",
+      "sha256": "c357d2941c6e7c7076e46bc6d06ba10c5f03b05f4c76f8b5585a80c8c5c15d11"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceNoncentralSolutionSum.lean",
+      "sha256": "67fe60511421973758fcc8ede0c762d91114baba5a1e5da7a29b77458c1a05ef"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceNoncentralSolutionSumAudit.lean",
+      "sha256": "86a995125df15f333892224b5645a8f2e9c0fbb7c98dcd57b184597205d78d7b"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceCentralNumeratorIdentity.lean",
+      "sha256": "84e4f7db8ab83fa5c1459790a684026ec7b4bd4d069fc45d4383ba7d9e8915ca"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceCentralNumeratorIdentityAudit.lean",
+      "sha256": "32fe866f0a19741bd4f55224465d73ca25a860007e04b6df01fbffc83fdbb8bf"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceCentralComponentBound.lean",
+      "sha256": "010adeac0b9c63073bff65843b5af4a5cc75345f4ed1cd72012396526be04383"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceCentralComponentBoundAudit.lean",
+      "sha256": "4291b4df82274e8164f49626f5af5a44b449b40fe3c5baeae17ad9fa15346bd1"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceFullSolutionSum.lean",
+      "sha256": "0eab7af11e26f03b414baff2f94f195258850f3d5e991d170f668b573b53a2d4"
+    },
+    {
+      "path": "YangMills/RG/BalabanCMP89Eq246FinePointSourceFullSolutionSumAudit.lean",
+      "sha256": "2df9efa762e214ae926640009dbd611644ea88d0f9de5179539ac81c4530e1d1"
+    }
+  ],
+  "evidence_json_sha256": "b3be67f3016962fd564222f82174af0a2f44c7c2a9277e6011a558be9203946c",
+  "archive_sha256": "e73cf275bb3a0d2141005540f45d5a3610884bc56c3a4aa5fe28231beb496bd1",
+  "final_status": "PASS",
+  "launcher_exit": "0",
+  "archive_materialized_locally": false,
+  "transport_status": "Colab files.download displayed a progress bar, but the in-app browser produced no local file. The complete visible structured terminal transcript was parsed before closing the tab; no archive verification is claimed."
+}

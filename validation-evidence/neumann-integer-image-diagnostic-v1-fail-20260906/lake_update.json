@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-integer-image-counting-diagnostic-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "a28b29c6f607ea15b0725a47b55cfa8caa5404868a64eb9a06f1c93ad2ffdd38", "seconds": 105.70747265300002, "stage": "lake_update"}

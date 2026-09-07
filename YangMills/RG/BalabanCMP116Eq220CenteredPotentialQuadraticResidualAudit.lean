@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq220CenteredPotentialQuadraticResidual
+
+#print axioms YangMills.RG.cmp116Eq220_re_physicalComplexTauPotential_le_quadratic_add_eq220

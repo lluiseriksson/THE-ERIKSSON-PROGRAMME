@@ -1,0 +1,6 @@
+YangMills/RG/NeumannMaskedDifference.lean
+YangMills/RG/NeumannMaskedDifferenceAudit.lean
+YangMills/RG/NeumannPhysicalBrillouinCharacter.lean
+YangMills/RG/NeumannPhysicalBrillouinCharacterAudit.lean
+YangMills/RG/NeumannAliasPrecisionReadout.lean
+YangMills/RG/NeumannAliasPrecisionReadoutAudit.lean

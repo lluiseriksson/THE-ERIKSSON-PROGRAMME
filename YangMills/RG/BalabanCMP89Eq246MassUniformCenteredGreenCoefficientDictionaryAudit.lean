@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionary
+
+/-!
+# Axiom audit for the full-G centered-torus coefficient dictionary
+-/
+
+#print axioms YangMills.RG.cmp89UnitAddTorus_mFourier_neg_mul_stabilizedFineToFineGreen_eq_affineTarget
+#print axioms YangMills.RG.cmp89_mFourier_mul_centeredFullGreen_physicalBrillouin_massUniform
+#print axioms YangMills.RG.cmp89_ae_mFourier_mul_centeredFullGreen_physicalBrillouin_massUniform
+#print axioms YangMills.RG.cmp89_mFourierCoeff_centeredFullGreen_eq_normalizedFineToFineGreen_massUniform

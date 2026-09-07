@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourcePi4RealMixedCovarianceAffineRegularity
+
+#print axioms YangMills.RG.contDiff_cmp116SourcePi4RealMixedCovarianceOperatorCurve_ofPhysicalContour

@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP98Eq123AnalyticRemainder
+
+#print axioms YangMills.RG.analyticAt_cmp98UbarLogAverage_of_norm_lt_one
+#print axioms YangMills.RG.analyticAt_cmp98UbarExpAverage_of_norm_lt_one
+#print axioms YangMills.RG.analyticAt_cmp98UbarExpAverage_physicalLine
+#print axioms YangMills.RG.analyticAt_cmp98ContourMatrixCurve
+#print axioms YangMills.RG.analyticAt_cmp98Eq119NonlinearBlockCurve
+#print axioms YangMills.RG.analyticAt_cmp98Eq119NonlinearRelativeDeviation
+#print axioms YangMills.RG.cmp98Eq123PhysicalBlockRemainder_isBigO_sq
+#print axioms YangMills.RG.cmp98Eq122NonlinearLogRemainder_isBigO_sq

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceEq395PhysicalDistanceDecay
+
+open YangMills.RG
+
+#print axioms cmp99Eq395GeneratedPhysicalMiddlePhysicalDistKernelData
+#print axioms cmp99Eq395GeneratedPhysicalMiddle_physicalDist_exponentialKernelBound

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen
+
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalAmbientPrecision_eq_reindex
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalAmbientPrecision_comp_green
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalAmbientGreen_comp_precision

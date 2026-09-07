@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing
+
+/-!
+# Gate-5 axiom audit
+-/
+
+#print axioms YangMills.RG.cmp89Eq249CentralStabilizedLowerConstant_pos
+#print axioms YangMills.RG.cmp89Eq249CentralStabilizedAliasDenominator_massZero_ne_zero_centered
+#print axioms YangMills.RG.cmp89Eq249ComplexFullAliasDenominator_add_intPeriods
+#print axioms YangMills.RG.cmp89Eq249CentralStabilizedAliasDenominator_massZero_ne_zero_physical
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalStabilizedAliasDenominator_ne_zero

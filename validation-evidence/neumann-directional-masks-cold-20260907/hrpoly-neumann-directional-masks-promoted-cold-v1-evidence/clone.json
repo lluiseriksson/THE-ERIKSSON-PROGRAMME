@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-directional-masks-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "ace6ddf3ee5940bae98d4949c39e753e6c909da583f3983c3a06d3c01961074f", "seconds": 9.991684425000017, "stage": "clone"}

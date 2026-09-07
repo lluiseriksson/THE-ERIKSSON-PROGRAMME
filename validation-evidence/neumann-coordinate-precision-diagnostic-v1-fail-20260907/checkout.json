@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "95c757465455c7e8cffcfcd6d9d18aa56f6d5083"], "cwd": "/content/hrpoly-neumann-coordinate-precision-diagnostic-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "93e9924435395e03edaf54a7e007f0c96e320a7c177b60af099ba04a13b84570", "seconds": 1.721129868999924, "stage": "checkout", "timed_out": false, "timeout_seconds": 3600}

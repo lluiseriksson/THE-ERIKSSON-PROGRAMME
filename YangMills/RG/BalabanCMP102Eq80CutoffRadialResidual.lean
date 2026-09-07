@@ -1,0 +1,256 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import YangMills.RG.BalabanCMP102Eq80SourcePi4CutoffCarrier
+import YangMills.RG.BalabanCMP116RadialHessianThirdJet
+
+/-!
+# Cutoff control on the physical radial segment
+
+Equation (1.36) is a small-field estimate, whereas the Gaussian coordinate
+is unbounded.  The literal CMP116 cutoff resolves this mismatch domain by
+domain.  This module proves that the field projected to a selected
+equation-(80) domain, and every point of its radial segment from zero, remain
+inside the source sup-norm ball on nonzero cutoff support.
+
+The terminal theorem feeds a third-jet bound valid on that ball directly
+into the exact cubic radial-residual estimate.  It does not assume global
+control in the Gaussian coordinate and does not assert functional locality
+of the equation-(80) activity for arbitrary input functions.
+
+Oracle target: `[propext, Classical.choice, Quot.sound]`. No placeholders or
+local axioms.
+-/
+
+open Set
+open scoped RealInnerProductSpace
+
+namespace YangMills.RG
+
+noncomputable section
+
+/-- The `L²` norm of a field restricted to finitely many bonds is controlled
+by its source sup norm with the exact square-root cardinality cost.  This is
+the missing norm conversion between the literal cutoff and the cubic radial
+residual theorem. -/
+theorem norm_physicalBondProjection_le_sqrt_card_mul_sourceSupNorm
+    {d M N' Nc : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (S : Finset (PhysicalBond d (M * N')))
+    (A : PhysicalGaugeOneCochain d (M * N') Nc) :
+    ‖physicalBondProjection S A‖ ≤
+      Real.sqrt (S.card : ℝ) * cmp98SourceFieldSupNorm A := by
+  have hsq :
+      ‖physicalBondProjection S A‖ ^ 2 ≤
+        (S.card : ℝ) * cmp98SourceFieldSupNorm A ^ 2 := by
+    rw [PiLp.norm_sq_eq_of_L2]
+    calc
+      (∑ b, ‖physicalBondProjection S A b‖ ^ 2) =
+          ∑ b ∈ S, ‖A b‖ ^ 2 := by
+        classical
+        conv_rhs =>
+          rw [show S = Finset.univ.filter (fun b => b ∈ S) by ext; simp]
+        rw [Finset.sum_filter]
+        apply Finset.sum_congr rfl
+        intro b _hb
+        by_cases hbS : b ∈ S
+        · simp [hbS, physicalBondProjection_apply_mem S hbS]
+        · simp [hbS, physicalBondProjection_apply_not_mem S hbS]
+      _ ≤ ∑ _b ∈ S, cmp98SourceFieldSupNorm A ^ 2 := by
+        gcongr with b hb
+        exact norm_apply_le_cmp98SourceFieldSupNorm A b
+      _ = (S.card : ℝ) * cmp98SourceFieldSupNorm A ^ 2 := by
+        simp
+  have hsqrt0 : 0 ≤ Real.sqrt (S.card : ℝ) := Real.sqrt_nonneg _
+  have hsup0 : 0 ≤ cmp98SourceFieldSupNorm A :=
+    cmp98SourceFieldSupNorm_nonneg A
+  have hsqrtSq :
+      (Real.sqrt (S.card : ℝ) *
+          cmp98SourceFieldSupNorm A) ^ 2 =
+        (S.card : ℝ) * cmp98SourceFieldSupNorm A ^ 2 := by
+    rw [mul_pow, Real.sq_sqrt (by positivity)]
+  apply (sq_le_sq₀ (norm_nonneg _)
+    (mul_nonneg hsqrt0 hsup0)).mp
+  rw [hsqrtSq]
+  exact hsq
+
+/-- The source sup norm is exactly homogeneous under real scalar
+multiplication. -/
+theorem cmp98SourceFieldSupNorm_smul
+    {d M N' Nc : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (t : ℝ) (A : PhysicalGaugeOneCochain d (M * N') Nc) :
+    cmp98SourceFieldSupNorm (t • A) =
+      |t| * cmp98SourceFieldSupNorm A := by
+  rw [← norm_physicalGaugeOneCochainSupEquiv_eq_sourceSupNorm]
+  rw [map_smul, norm_smul, Real.norm_eq_abs]
+  rw [norm_physicalGaugeOneCochainSupEquiv_eq_sourceSupNorm]
+
+/-- A source-sup-norm ball is star-shaped about zero. -/
+theorem cmp98SourceFieldSupNorm_le_of_mem_segment_zero
+    {d M N' Nc : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (A X : PhysicalGaugeOneCochain d (M * N') Nc)
+    (threshold : ℝ)
+    (hA : cmp98SourceFieldSupNorm A ≤ threshold)
+    (hX : X ∈ segment ℝ (0 : PhysicalGaugeOneCochain d (M * N') Nc) A) :
+    cmp98SourceFieldSupNorm X ≤ threshold := by
+  rcases hX with ⟨u, t, hu, ht, hut, rfl⟩
+  have ht1 : t ≤ 1 := by linarith
+  simp only [smul_zero, zero_add]
+  rw [cmp98SourceFieldSupNorm_smul]
+  rw [abs_of_nonneg ht]
+  calc
+    t * cmp98SourceFieldSupNorm A ≤
+        1 * cmp98SourceFieldSupNorm A := by
+      exact mul_le_mul_of_nonneg_right ht1
+        (cmp98SourceFieldSupNorm_nonneg A)
+    _ ≤ threshold := by simpa using hA
+
+/-- On nonzero literal cutoff support, every point of the radial segment of
+the field projected to a selected equation-(80) domain remains in the
+printed source small-field ball. -/
+theorem cmp98SourceFieldSupNorm_eq80DomainProjection_segment_le_threshold_of_cutoffFactor_ne_zero
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (M * (2 * Q))] [NeZero Nc]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (W : CMP102Eq80SourcePi4PhysicalDomainLabel anchor)
+    (hW : W ∈ D)
+    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
+    (threshold : ℝ)
+    (b : CMP116Eq214GaussianCoordinate
+      (PhysicalBond 4 (M * (2 * Q))) (Nc ^ 2 - 1))
+    (hthreshold : 0 ≤ threshold)
+    (hcutoff :
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff
+            (cmp102Eq80SourcePi4PhysicalY0 (M := M) anchor D)
+            threshold (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0)
+    (X : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc)
+    (hX : X ∈ segment ℝ
+      (0 : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc)
+      (physicalBondProjection
+        (cmp102Eq80SourcePi4LocalizationDomain
+          (M := M) anchor W).bondSupport
+        (cmp116SourcePhysicalCoordinateCochain b))) :
+    cmp98SourceFieldSupNorm X ≤ threshold := by
+  apply cmp98SourceFieldSupNorm_le_of_mem_segment_zero
+    (physicalBondProjection
+      (cmp102Eq80SourcePi4LocalizationDomain
+        (M := M) anchor W).bondSupport
+      (cmp116SourcePhysicalCoordinateCochain b))
+    X threshold
+  · exact
+      cmp98SourceFieldSupNorm_eq80DomainProjection_le_threshold_of_cutoffFactor_ne_zero
+        anchor D W hW P threshold b hthreshold hcutoff
+  · exact hX
+
+/-- A bound on the source sup norm of a projected field converts to the
+corresponding `L²` bound with no ambient-volume factor. -/
+theorem norm_physicalBondProjection_le_sqrt_card_mul_of_projected_sourceSupNorm_le
+    {d M N' Nc : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (S : Finset (PhysicalBond d (M * N')))
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (threshold : ℝ)
+    (hsup :
+      cmp98SourceFieldSupNorm (physicalBondProjection S A) ≤ threshold) :
+    ‖physicalBondProjection S A‖ ≤
+      Real.sqrt (S.card : ℝ) * threshold := by
+  have hidem :
+      physicalBondProjection S (physicalBondProjection S A) =
+        physicalBondProjection S A := by
+    ext b
+    by_cases hbS : b ∈ S
+    · simp [physicalBondProjection_apply_mem S hbS]
+    · simp [physicalBondProjection_apply_not_mem S hbS]
+  have hraw :=
+    norm_physicalBondProjection_le_sqrt_card_mul_sourceSupNorm
+      S (physicalBondProjection S A)
+  rw [hidem] at hraw
+  exact hraw.trans
+    (mul_le_mul_of_nonneg_left hsup (Real.sqrt_nonneg _))
+
+/-- Source-domain specialization: the `L²` cost of the cutoff ball is
+explicit in the block cardinality and remains independent of the ambient
+periodic volume. -/
+theorem norm_cmp116LocalizationDomainProjection_le_explicitBlockCard_mul_threshold
+    {M N' Nc : ℕ}
+    [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc]
+    (Y : CMP116LocalizationDomain M N')
+    (A : PhysicalGaugeOneCochain 4 (M * N') Nc)
+    (threshold : ℝ) (hthreshold : 0 ≤ threshold)
+    (hsup :
+      cmp98SourceFieldSupNorm (physicalBondProjection Y.bondSupport A) ≤
+        threshold) :
+    ‖physicalBondProjection Y.bondSupport A‖ ≤
+      Real.sqrt (((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ) * threshold := by
+  calc
+    ‖physicalBondProjection Y.bondSupport A‖ ≤
+        Real.sqrt (Y.bondSupport.card : ℝ) * threshold :=
+      norm_physicalBondProjection_le_sqrt_card_mul_of_projected_sourceSupNorm_le
+        Y.bondSupport A threshold hsup
+    _ ≤ Real.sqrt (((M ^ 4 * Y.blocks.card) * 4 : ℕ) : ℝ) *
+          threshold := by
+      apply mul_le_mul_of_nonneg_right _ hthreshold
+      apply Real.sqrt_le_sqrt
+      exact_mod_cast
+        card_cmp116LocalizationDomain_bondSupport_le_blockCard Y
+
+/-- A third-jet estimate required only on the source small-field ball yields
+the exact cubic residual estimate for the literal field projected to one
+selected equation-(80) domain.  The cutoff constructs every radial-segment
+premise internally. -/
+theorem abs_half_inner_cmp116RadialTaylorResidualOperator_eq80DomainProjection_le_of_cutoff
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (M * (2 * Q))]
+    [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (D : Finset (CMP102Eq80SourcePi4PhysicalDomainLabel anchor))
+    (W : CMP102Eq80SourcePi4PhysicalDomainLabel anchor)
+    (hW : W ∈ D)
+    (P : Finset (PhysicalBond 4 (M * (2 * Q))))
+    (threshold : ℝ)
+    (b : CMP116Eq214GaussianCoordinate
+      (PhysicalBond 4 (M * (2 * Q))) (Nc ^ 2 - 1))
+    (hthreshold : 0 ≤ threshold)
+    (hcutoff :
+      (-1 : ℂ) ^ P.card *
+          cmp116SmallFieldCutoff
+            (cmp102Eq80SourcePi4PhysicalY0 (M := M) anchor D)
+            threshold (cmp116SourcePhysicalCoordinateCochain b) *
+          cmp116LargeFieldCutoff P threshold
+            (cmp116SourcePhysicalCoordinateCochain b) ≠ 0)
+    (f : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc → ℝ)
+    (hf : ContDiff ℝ 3 f)
+    (Λ : ℝ)
+    (hthird : ∀ X,
+      cmp98SourceFieldSupNorm X ≤ threshold →
+        ‖iteratedFDeriv ℝ 3 f X‖ ≤ Λ) :
+    let B :=
+      physicalBondProjection
+        (cmp102Eq80SourcePi4LocalizationDomain
+          (M := M) anchor W).bondSupport
+        (cmp116SourcePhysicalCoordinateCochain b)
+    |(1 / 2 : ℝ) * inner ℝ B
+        (cmp116RadialTaylorResidualOperator
+          f B (hf.of_le (by norm_num)) B)| ≤
+      (Λ / 6) * ‖B‖ ^ 3 := by
+  dsimp only
+  refine
+    abs_half_inner_cmp116RadialTaylorResidualOperator_le_of_thirdJet
+      f _ hf Λ ?_
+  intro X hX
+  apply hthird X
+  exact
+    cmp98SourceFieldSupNorm_eq80DomainProjection_segment_le_threshold_of_cutoffFactor_ne_zero
+      anchor D W hW P threshold b hthreshold hcutoff X hX
+
+end
+
+end YangMills.RG

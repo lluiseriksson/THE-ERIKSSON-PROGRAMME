@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullWeakenedCovariance
+
+namespace YangMills.RG
+
+#print axioms cmp116SourcePi4QuotientGeneratedWalkLayer
+#print axioms cmp99SourcePi4_patchedParametrix_mul_neg_defect_pow_eq_generatedLayer
+#print axioms summable_cmp116SourcePi4QuotientGeneratedWalkLayer
+#print axioms cmp116SourcePi4QuotientExactPatchedCovariance_eq_tsum_generatedLayers
+#print axioms cmp116SourcePi4QuotientWalkActive
+#print axioms cmp116SourcePi4FullWeakenedCovarianceLayer
+#print axioms cmp116SourcePi4FullWeakenedCovariance
+#print axioms cmp116SourcePi4FullWeakenedCovarianceLayer_one
+#print axioms cmp116SourcePi4FullWeakenedCovariance_one_eq_exact
+#print axioms cmp116SourcePi4_precision_mul_fullWeakenedCovarianceMatrix_one_eq_one
+
+end YangMills.RG

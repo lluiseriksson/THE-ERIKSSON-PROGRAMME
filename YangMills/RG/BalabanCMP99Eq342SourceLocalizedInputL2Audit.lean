@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99Eq342SourceLocalizedInputL2
+
+#print axioms YangMills.RG.norm_finitePiLp_le_sqrt_ownerFiber_card_mul_supNorm
+#print axioms YangMills.RG.card_cmp99Eq342SourceLocalizedActiveOwner_fiber_le
+#print axioms YangMills.RG.norm_finitePiLp_le_cmp99Eq342_sourceScale_mul_supNorm

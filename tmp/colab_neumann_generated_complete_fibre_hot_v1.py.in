@@ -1,0 +1,147 @@
+"""UNFINALIZED TEMPLATE. Bounded complete active fibre diagnostic; not a cold seal."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import signal
+import subprocess
+import tarfile
+import time
+import types
+import urllib.request
+
+SOURCE = '8c07d3f3ccc833a38b7e6b6fd95764dd0985db63'
+BASE = '8570618f20c62c5724555589f910b84fdf803c33'
+REV = 'neumann-generated-complete-fibre-hot-v1'
+ROOT = Path('/content/hrpoly-neumann-average-field-cohort-cold-v1')
+OUT = Path('/content/' + REV + '-evidence')
+ARCHIVE = Path(str(OUT) + '.tar.gz')
+RAW = 'https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
+PINS = {
+    "tmp/NeumannGeneratedCompleteFibreDraft.lean": "f86a3fc5dcc9f2275015be6c38d1dd976d7386c74904a60979fd9d9994f0b1ac",
+    "tmp/NeumannGeneratedCompleteFibreSumRepro.lean": "56046371ecbcf3407953e969fd0ef253532b57286ebefa1b113188641c452f1a",
+    "YangMills/RG/BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse.lean": "8b5519b4861f78c2d7a5a98b8b8f3db03e22db6e54f8abc8fb05ebc494c5ecca",
+    "YangMills/RG/BalabanCMP99SourceFlatQprimeBlockOffsetEquiv.lean": "f082f27633217b3a3f4dc0e402c3cca4146d5d8718ab5893ad0550faaaa2dd4e",
+    "YangMills/RG/NeumannGeneratedIntegerCountingKernel.lean": "7bbd82800a73b742b24bb35f25a6a0941d79913c0240b6390a18167d05c2fd4c",
+    "YangMills/RG/NeumannIntegerBlockImageAverage.lean": "5f949d49a0263b303b6c25fce6a7f8f59f0a6af1b2a3e3274ac7995a0c1b596c",
+    "scripts/full_green_owner_exact_axiom_gate.py": "016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2"
+}
+NAMES = {
+    "physical_draft": [
+        "neumann_mem_iteratedLift_iff_terminalOwner",
+        "neumannGeneratedBlockSitesToActiveFibre",
+        "neumannGeneratedCompleteFibreOffsetEquiv",
+        "neumannGeneratedCompleteFibreOffsetEquiv_integerCoordinates",
+        "sum_neumannGeneratedCompleteFibre_eq_offsets",
+        "sum_neumannGeneratedOwnerIndicator_eq_offsets"
+    ]
+}
+PARENT_OUTER_SHA = '@PARENT_COLD_OUTER_SHA256@'
+
+
+def sha(b):
+    return hashlib.sha256(b).hexdigest()
+
+
+def main():
+    assert ROOT.is_dir() and not OUT.exists() and not ARCHIVE.exists(), 'NO_REEXECUTION'
+    parent = Path('/content/neumann-average-field-cohort-cold-v1-preservation-20260906.tar.gz')
+    assert sha(parent.read_bytes()) == PARENT_OUTER_SHA, 'PARENT_ARCHIVE'
+    parent_status = json.loads(Path('/content/neumann-average-field-cohort-cold-v1-launch/launch-final-status.json').read_text())
+    assert parent_status == dict(status='PASS', source=BASE, revision='neumann-average-field-cohort-cold-v1', cold_seal=True), 'PARENT_NOT_PASS'
+    OUT.mkdir()
+    scratch = ROOT / 'tmp' / REV
+    scratch.mkdir(exist_ok=False)
+    env = os.environ.copy()
+    bins = list(Path('/content/lean-4.29.0-rc6-linux').glob('**/bin/lake'))
+    assert len(bins) == 1, 'EXACT_TOOLCHAIN_BIN'
+    env['PATH'] = str(bins[0].parent) + ':' + env['PATH']
+    records, axioms, outputs, status = [], {}, {}, 'FAIL'
+
+    def run(stage, command, timeout=120):
+        log = OUT / (stage + '.log')
+        start, timed_out = time.perf_counter(), False
+        with log.open('xb') as f:
+            p = subprocess.Popen(command, cwd=ROOT, env=env, stdout=f,
+                stderr=subprocess.STDOUT, start_new_session=True)
+            print('STAGE=' + stage + ' PID=' + str(p.pid), flush=True)
+            try:
+                p.wait(timeout=timeout)
+            except subprocess.TimeoutExpired:
+                timed_out = True
+                os.killpg(p.pid, signal.SIGKILL)
+                p.wait()
+        b = log.read_bytes()
+        r = dict(stage=stage, command=command, cwd=str(ROOT), exit=p.returncode,
+            seconds=time.perf_counter()-start, timed_out=timed_out,
+            timeout_seconds=timeout, log_sha256=sha(b))
+        records.append(r)
+        temp = OUT / 'records.tmp'
+        temp.write_text(json.dumps(records, sort_keys=True) + '\n')
+        temp.replace(OUT / 'records.json')
+        print(json.dumps(r, sort_keys=True), flush=True)
+        print(b.decode(errors='replace')[-6000:], flush=True)
+        if p.returncode or timed_out:
+            raise RuntimeError('FIRST_ERROR=' + stage)
+        return b.decode()
+
+    try:
+        assert run('base_head', ['git', 'rev-parse', 'HEAD']).strip() == BASE
+        assert run('mathlib_pin', ['git', '-C', '.lake/packages/mathlib', 'rev-parse', 'HEAD']).strip() == '07642720480157414db592fa85b626dafb71355b'
+        for exe in ('lean', 'lake'):
+            assert '4.29.0-rc6' in run(exe + '_version', [exe, '--version'])
+            (OUT / (exe + '-sha256.txt')).write_text(sha((bins[0].parent / exe).read_bytes()) + '\n')
+        run('clean_before', ['git', 'diff', '--exit-code', 'HEAD', '--', 'YangMills', 'lean-toolchain', 'lake-manifest.json'])
+        for path, digest in PINS.items():
+            with urllib.request.urlopen(RAW + SOURCE + '/' + path, timeout=60) as response:
+                b = response.read()
+            assert sha(b) == digest, 'SOURCE_HASH=' + path
+            (OUT / Path(path).name).write_bytes(b)
+            if path.endswith('.lean'):
+                with (scratch / Path(path).name).open('xb') as f:
+                    f.write(b)
+        for path in PINS:
+            if path.startswith('YangMills/'):
+                assert sha((ROOT / path).read_bytes()) == PINS[path], 'BASE_SOURCE_CHANGED=' + path
+        gate = types.ModuleType('pinned_gate')
+        gb = (OUT / 'full_green_owner_exact_axiom_gate.py').read_bytes()
+        exec(compile(gb, 'pinned_gate', 'exec'), gate.__dict__)
+        gate.self_test()
+        repro_op = OUT / 'mathlib_repro.olean'
+        run('mathlib_repro', ['lake', 'env', 'lean', '-o', str(repro_op),
+            str((scratch / 'NeumannGeneratedCompleteFibreSumRepro.lean').relative_to(ROOT))])
+        assert repro_op.stat().st_size > 0
+        outputs[repro_op.name] = sha(repro_op.read_bytes())
+        run('physical_prerequisites', ['lake', 'build',
+            'YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse',
+            'YangMills.RG.BalabanCMP99SourceFlatQprimeBlockOffsetEquiv',
+            'YangMills.RG.NeumannGeneratedIntegerCountingKernel',
+            'YangMills.RG.NeumannIntegerBlockImageAverage'], timeout=600)
+        for stage, path in [('physical_draft', 'NeumannGeneratedCompleteFibreDraft.lean')]:
+            op = OUT / (stage + '.olean')
+            text = run(stage, ['lake', 'env', 'lean', '-o', str(op), str((scratch / Path(path).name).relative_to(ROOT))])
+            axioms[stage] = gate.exact_axioms(text, {'YangMills.RG.' + n for n in NAMES[stage]})
+            assert op.stat().st_size > 0
+            outputs[op.name] = sha(op.read_bytes())
+            print('AXIOM_GATE=PASS ' + stage, flush=True)
+        run('clean_after', ['git', 'diff', '--exit-code', 'HEAD', '--', 'YangMills', 'lean-toolchain', 'lake-manifest.json'])
+        status = 'PASS'
+    except Exception as e:
+        print('ERROR=' + repr(e), flush=True)
+    finally:
+        (OUT / 'runner.py').write_bytes(Path(__file__).read_bytes())
+        (OUT / 'result.json').write_text(json.dumps(dict(status=status, source=SOURCE,
+            base_source=BASE, cold_seal=False, pins=PINS, names=NAMES, records=records,
+            axioms=axioms, outputs=outputs, parent_outer_sha256=PARENT_OUTER_SHA,
+            scope='constructed complete active fibre/offset and integer-coordinate dictionary; not a regional inverse, uniform B0 or window15'), sort_keys=True) + '\n')
+        with tarfile.open(ARCHIVE, 'w:gz') as t:
+            t.add(OUT, arcname=OUT.name)
+        print('FINAL_STATUS=' + status + ' COLD_SEAL=0', flush=True)
+        print('ARCHIVE=' + str(ARCHIVE), flush=True)
+        print('ARCHIVE_SHA256=' + sha(ARCHIVE.read_bytes()), flush=True)
+        print('RUNTIME_RETAINED_FOR_EVIDENCE=1', flush=True)
+    return 0 if status == 'PASS' else 1
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

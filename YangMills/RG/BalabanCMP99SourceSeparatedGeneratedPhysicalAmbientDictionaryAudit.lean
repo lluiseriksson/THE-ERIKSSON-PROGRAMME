@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedPhysicalAmbientDictionary
+
+/-!
+# Audit: separated-scale physical ambient dictionary
+-/
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalFullCoarseRegion
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv
+#print axioms YangMills.RG.finBoxDist_cmp99SourceSeparatedGeneratedPhysicalFullSiteEquiv_symm
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalAmbientPrecision
+#print axioms YangMills.RG.isCoerciveCLM_cmp99SourceSeparatedGeneratedPhysicalAmbientPrecision
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedPhysicalLargeBlockCutoff_fullSiteEquiv_symm
+#print axioms YangMills.RG.cmp99SourceSeparatedRegionalLargeBlockPrecisionCommutator_eq_reindex
+#print axioms YangMills.RG.cmp99SourceSeparatedRegionalLargeBlockPrecisionCommutator_exponentialKernelBound

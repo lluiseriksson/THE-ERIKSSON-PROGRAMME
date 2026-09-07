@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourceCoordinatePivotTsumBound
+
+#print axioms YangMills.RG.norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_trace_le
+#print axioms YangMills.RG.norm_trace_cmp116SourcePi4FullComplexRelativeCovarianceDefect_pow_succ_le
+#print axioms YangMills.RG.norm_trace_nearLog_cmp116SourcePi4FullComplexRelativeCovarianceDefect_le

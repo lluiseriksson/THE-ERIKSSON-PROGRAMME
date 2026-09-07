@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP95PeriodicSquareSlope
+
+#print axioms YangMills.RG.cmp95PeriodicActiveWindow
+#print axioms YangMills.RG.mem_cmp95PeriodicActiveWindow_of_ne_zero
+#print axioms YangMills.RG.card_cmp95PeriodicActiveWindow
+#print axioms YangMills.RG.cmp95PeriodicSquareWeight_eq_sum_activeWindow
+#print axioms YangMills.RG.norm_cmp95PeriodicSquareWeight_sub_le
+#print axioms YangMills.RG.cmp95PeriodicSquareWeight_le_one
+#print axioms YangMills.RG.norm_cmp95RescaledPeriodicSquareWeight_sub_le
+#print axioms YangMills.RG.cmp95RescaledPeriodicSquareWeight_le_one
+#print axioms YangMills.RG.norm_cmp95RescaledPeriodicTensorSquareWeight_sub_le
+#print axioms YangMills.RG.norm_cmp99SourceGeneratedFineCellSquareWeight_sub_le

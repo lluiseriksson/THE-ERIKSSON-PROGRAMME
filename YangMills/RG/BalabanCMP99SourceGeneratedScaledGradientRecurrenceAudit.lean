@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradientRecurrence
+
+/-! Public oracle for the iterated source-generated gradient recurrence. -/
+
+open YangMills.RG
+
+#print axioms cmp99SourceBlockAverageWeight_nonneg
+#print axioms cmp99SourceScaledGradientStepError_nonneg
+#print axioms CMP99SourceActiveRegionChain.scaledGradientCost
+#print axioms CMP99SourceActiveRegionChain.scaledGradientCost_nonneg
+#print axioms CMP99SourceActiveRegionChain.scaledGradientEnergy_le
+#print axioms cmp99SourceIteratedLift_scaledGradientEnergy_le
+#print axioms cmp99SourceIteratedLift_scaledGradientEnergy_le_of_closedBudget

@@ -1,0 +1,52 @@
+{
+  "cold": {
+    "first_error": "OWNER_CONTRACT=physical_diagnostic_source",
+    "status": "NOT_SEALED"
+  },
+  "inner_sha256": "a156f9b7be82c3248172e7217bd83f905171e5a1ce3a2a75c10529d5600bf702",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-complete-fibre-promoted-cold-v1-launch/verify_neumann_complete_fibre_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-complete-fibre-promoted-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "1ad38d72748deea436657b480949952b6cf1882d5604a3820f4a592f776b383a",
+      "seconds": 0.05160128599982272,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-complete-fibre-promoted-cold-v1-launch/colab_neumann_complete_fibre_promoted_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "12954aa2d342ea6ff7748be08a6388cccceca277bc5d0a21521c5e58d5a50ce9",
+      "seconds": 1536.1999277599998,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-complete-fibre-promoted-cold-v1-launch/verify_neumann_complete_fibre_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-complete-fibre-promoted-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "a156f9b7be82c3248172e7217bd83f905171e5a1ce3a2a75c10529d5600bf702"
+      ],
+      "exit": 1,
+      "log_sha256": "863b0aa50b7cfef38005fd1b31c8bbec713cd3c5db6be38aea9f8b69f22af8ea",
+      "seconds": 0.09142153299990241,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "e0516b0fbef4f87ce98700c96e9695a9c19557ac2484dce14b1cf4c84183d48c",
+  "scope": "constructed complete active fibre, offsets and integer-coordinate sum dictionary; not regional inverse, uniform B0 or window15",
+  "source": "7f7455b286da5809a0ee64a1511684f887cf8a88",
+  "status": "PRESERVED_INSTRUMENTATION_FAILURE"
+}

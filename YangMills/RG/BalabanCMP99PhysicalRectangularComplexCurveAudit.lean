@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99PhysicalRectangularComplexCurve
+
+#print axioms YangMills.RG.hasDerivAt_cmp99PhysicalRectangularOfComplexMatrix_compOfReal
+#print axioms YangMills.RG.cmp99SourcePi4RealBackgroundMinimizerOperatorCurve
+#print axioms YangMills.RG.cmp99SourcePi4RealBackgroundMinimizerOperatorDerivative
+#print axioms YangMills.RG.hasDerivAt_cmp99SourcePi4RealBackgroundMinimizerOperatorCurve_of_source

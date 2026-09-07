@@ -1,0 +1,13 @@
+'YangMills.RG.cmp85SourceFullGreenContourFactorDraft_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.cmp85SourceFullGreenHybridAmplitudeConstantDraft_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.cmp85SourceFullGreen_ownerAmplitude_split_draft' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.cmp85SourceFullGreen_ownerAmplitude_inverse_square_draft' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.exists_cmp85SourceFullGreen_uniformOwnerAmplitude_draft' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

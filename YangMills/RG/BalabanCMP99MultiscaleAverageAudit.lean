@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99MultiscaleAverage
+
+namespace YangMills.RG
+
+#print axioms cmp99MultiscaleQprime
+#print axioms cmp99MultiscaleQprime_zero
+#print axioms cmp99MultiscaleQprime_succ
+#print axioms cmp99MultiscaleQprime_zero_apply
+#print axioms cmp99MultiscaleQprime_succ_apply
+#print axioms adjoint_cmp99MultiscaleQprime_succ
+#print axioms cmp99MultiscaleQprime_comp_adjoint
+#print axioms cmp99MultiscaleQprime_comp_adjoint_apply
+#print axioms cmp99MultiscaleQprime_intertwines
+
+end YangMills.RG

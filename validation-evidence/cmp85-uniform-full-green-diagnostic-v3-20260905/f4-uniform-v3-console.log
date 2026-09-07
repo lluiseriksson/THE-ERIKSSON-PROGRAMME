@@ -1,0 +1,234 @@
+TRANSPORT_SHA256=29a5ebd9cba53e5b2d98eecd7dfb90bbf0a52430d8995deaf623e769b6be2892 PATH=scripts/colab_cmp99_full_green_arbitrary_residue_cold.py
+BASE_RUNNER_SHA256=2f097a374361bd8e4c0f53220ffeeeb22fc06d6ccca5179aebda468d1aebee8e
+TRANSPORT_SHA256=016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2 PATH=scripts/full_green_owner_exact_axiom_gate.py
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 rejected=9
+UNIFORM_VERIFIER_SELF_TEST=PASS synthetic=1 rejected=7
+AXIOM_GATE=PASS {"test": ["Classical.choice", "Quot.sound", "propext"]}
+PREFLIGHT=PASS [{"expected_exit": 0, "actual_exit": 0, "seconds": 0.020902858999988894}, {"expected_exit": 7, "actual_exit": 7, "seconds": 0.020968170000060127}]
+RUNNER_REV=cmp85-uniform-full-green-diagnostic-v3
+STAGE=runtime_open UTC=2026-09-05T07:10:46.945990+00:00
+RUNTIME=CPU RAM_GIB=50.99 MIN_RAM_GIB=40.00
+STAGE=download_toolchain CMD=["curl", "--fail", "--location", "--retry", "5", "--retry-all-errors", "--retry-delay", "2", "-o", "/content/lean-4.29.0-rc6-linux.tar.zst", "https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  6  512M    6 33.7M    0     0  73.4M      0  0:00:06 --:--:--  0:00:06 73.4M 52  512M   52  267M    0     0   183M      0  0:00:02  0:00:01  0:00:01  233M 96  512M   96  496M    0     0   202M      0  0:00:02  0:00:02 --:--:--  231M100  512M  100  512M    0     0   202M      0  0:00:02  0:00:02 --:--:--  231M
+
+STAGE=download_toolchain EXIT=0 SECONDS=2.538
+TOOLCHAIN_ASSET_SHA256=bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+STAGE=apt_update CMD=["apt-get", "update", "-qq"]
+W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu jammy InRelease' does not seem to provide it (sources.list entry misspelt?)
+
+STAGE=apt_update EXIT=0 SECONDS=5.305
+STAGE=install_zstd CMD=["apt-get", "install", "-y", "-qq", "zstd"]
+Selecting previously unselected package zstd.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 118419 files and directories currently installed.)
+Preparing to unpack .../zstd_1.4.8+dfsg-3build1_amd64.deb ...
+Unpacking zstd (1.4.8+dfsg-3build1) ...
+Setting up zstd (1.4.8+dfsg-3build1) ...
+Processing triggers for man-db (2.10.2-1) ...
+
+STAGE=install_zstd EXIT=0 SECONDS=5.572
+STAGE=extract_toolchain CMD=["tar", "--use-compress-program=unzstd", "-xf", "/content/lean-4.29.0-rc6-linux.tar.zst", "-C", "/content/lean-4.29.0-rc6-linux"]
+
+STAGE=extract_toolchain EXIT=0 SECONDS=6.908
+STAGE=lean_version CMD=["lean", "--version"]
+Lean (version 4.29.0-rc6, x86_64-unknown-linux-gnu, commit 00659f8e6071d7e46131ed643bf8003b99b044e9, Release)
+
+STAGE=lean_version EXIT=0 SECONDS=0.034
+STAGE=lake_version CMD=["lake", "--version"]
+Lake version 5.0.0-src+00659f8 (Lean version 4.29.0-rc6)
+
+STAGE=lake_version EXIT=0 SECONDS=0.038
+LEAN_SHA256=3e0d0d3d801675359f2d4cf9815bfdb417b20b92fdd9d48b3b14c95bbae28bbf
+LAKE_SHA256=a608ff084d7e2af228b92a29d7c2fd083ba0580e46889175ec74a81678c98359
+STAGE=clone CMD=["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3"]
+Cloning into '/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3'...
+Updating files:  83% (6098/7330)Updating files:  84% (6158/7330)Updating files:  85% (6231/7330)Updating files:  86% (6304/7330)Updating files:  87% (6378/7330)Updating files:  88% (6451/7330)Updating files:  89% (6524/7330)Updating files:  90% (6597/7330)Updating files:  91% (6671/7330)Updating files:  92% (6744/7330)Updating files:  93% (6817/7330)Updating files:  94% (6891/7330)Updating files:  95% (6964/7330)Updating files:  96% (7037/7330)Updating files:  97% (7111/7330)Updating files:  98% (7184/7330)Updating files:  99% (7257/7330)Updating files: 100% (7330/7330)Updating files: 100% (7330/7330), done.
+
+STAGE=clone EXIT=0 SECONDS=10.094
+STAGE=checkout CMD=["git", "checkout", "--detach", "be4e73409ac444d23e95c2eae2584fece5882f98"]
+HEAD is now at be4e73409 PRE-VALIDATION F4 uniform power qualification with project-free repro
+
+STAGE=checkout EXIT=0 SECONDS=1.523
+STAGE=head CMD=["git", "rev-parse", "HEAD"]
+be4e73409ac444d23e95c2eae2584fece5882f98
+
+STAGE=head EXIT=0 SECONDS=0.002
+SOURCE_BLOB=tmp/FullGreenUniformPowerRepro.lean SHA256=691e47eb11ebbf83b2a59f8bcb95152b4863ebb44a219879609efa6e7fd793cc
+SOURCE_BLOB=tmp/FullGreenNormalizedBudgetRepro.lean SHA256=b709e6376b505d55846acd6d255a56db06d2a817b40f671dac296a0c568a1f4f
+SOURCE_BLOB=tmp/SourceFullGreenHybridAmplitudeDraft.lean SHA256=3df28cff61bfd539dacac6e8e3ee18f175f3535f9d93bf12f59f06a6532b3882
+SOURCE_BLOB=tmp/SourceFullGreenUniformAmplitudeDraft.lean SHA256=c2819af6de7b6803f8ad375c92946441a491aa162a4177ff8ec9de32e69fed97
+STAGE=overlay_text_guard CMD=["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3-paths.txt"]
+LEAN_OVERLAY_TEXT_OK files=4 source=paths:/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3-paths.txt
+
+STAGE=overlay_text_guard EXIT=0 SECONDS=0.043
+STAGE=import_prefix_guard CMD=["python3", "scripts/check_lean_import_prefix.py", "tmp/FullGreenUniformPowerRepro.lean", "tmp/FullGreenNormalizedBudgetRepro.lean", "tmp/SourceFullGreenHybridAmplitudeDraft.lean", "tmp/SourceFullGreenUniformAmplitudeDraft.lean"]
+LEAN_IMPORT_PREFIX_OK files=4
+
+STAGE=import_prefix_guard EXIT=0 SECONDS=0.034
+STAGE=lake_update CMD=["lake", "update"]
+ded: 1174 file(s) [attempted 1174/8142 = 14%, 483 KB/s], Decompressed: 420[KDownloaded: 1281 file(s) [attempted 1281/8142 = 15%, 1204 KB/s], Decompressed: 420[KDownloaded: 1385 file(s) [attempted 1385/8142 = 17%, 274 KB/s], Decompressed: 420[KDownloaded: 1486 file(s) [attempted 1486/8142 = 18%, 842 KB/s], Decompressed: 420[KDownloaded: 1590 file(s) [attempted 1590/8142 = 19%, 1385 KB/s], Decompressed: 420[KDownloaded: 1696 file(s) [attempted 1696/8142 = 20%, 441 KB/s], Decompressed: 420[KDownloaded: 1794 file(s) [attempted 1794/8142 = 22%, 1402 KB/s], Decompressed: 420[KDownloaded: 1891 file(s) [attempted 1891/8142 = 23%, 76 KB/s], Decompressed: 420[KDownloaded: 1997 file(s) [attempted 1997/8142 = 24%, 100 KB/s], Decompressed: 420[KDownloaded: 2103 file(s) [attempted 2103/8142 = 25%, 149 KB/s], Decompressed: 420[KDownloaded: 2203 file(s) [attempted 2203/8142 = 27%, 373 KB/s], Decompressed: 420[KDownloaded: 2301 file(s) [attempted 2301/8142 = 28%, 2536 KB/s], Decompressed: 420[KDownloaded: 2398 file(s) [attempted 2398/8142 = 29%, 762 KB/s], Decompressed: 420[KDownloaded: 2505 file(s) [attempted 2505/8142 = 30%, 790 KB/s], Decompressed: 420[KDownloaded: 2606 file(s) [attempted 2606/8142 = 32%, 82 KB/s], Decompressed: 1014[KDownloaded: 2710 file(s) [attempted 2710/8142 = 33%, 1121 KB/s], Decompressed: 1014[KDownloaded: 2817 file(s) [attempted 2817/8142 = 34%, 1471 KB/s], Decompressed: 1014[KDownloaded: 2921 file(s) [attempted 2921/8142 = 35%, 117 KB/s], Decompressed: 1014[KDownloaded: 3022 file(s) [attempted 3022/8142 = 37%, 1289 KB/s], Decompressed: 1014[KDownloaded: 3126 file(s) [attempted 3126/8142 = 38%, 107 KB/s], Decompressed: 1014[KDownloaded: 3233 file(s) [attempted 3233/8142 = 39%, 568 KB/s], Decompressed: 1014[KDownloaded: 3337 file(s) [attempted 3337/8142 = 40%, 1158 KB/s], Decompressed: 1014[KDownloaded: 3441 file(s) [attempted 3441/8142 = 42%, 1132 KB/s], Decompressed: 1014[KDownloaded: 3545 file(s) [attempted 3545/8142 = 43%, 1005 KB/s], Decompressed: 1014[KDownloaded: 3649 file(s) [attempted 3649/8142 = 44%, 510 KB/s], Decompressed: 1014[KDownloaded: 3753 file(s) [attempted 3753/8142 = 46%, 1027 KB/s], Decompressed: 1014[KDownloaded: 3857 file(s) [attempted 3857/8142 = 47%, 374 KB/s], Decompressed: 1014[KDownloaded: 3961 file(s) [attempted 3961/8142 = 48%, 930 KB/s], Decompressed: 1014[KDownloaded: 4066 file(s) [attempted 4066/8142 = 49%, 1638 KB/s], Decompressed: 1014[KDownloaded: 4173 file(s) [attempted 4173/8142 = 51%, 1480 KB/s], Decompressed: 1014[KDownloaded: 4277 file(s) [attempted 4277/8142 = 52%, 277 KB/s], Decompressed: 1014[KDownloaded: 4385 file(s) [attempted 4385/8142 = 53%, 1169 KB/s], Decompressed: 1014[KDownloaded: 4489 file(s) [attempted 4489/8142 = 55%, 441 KB/s], Decompressed: 1014[KDownloaded: 4593 file(s) [attempted 4593/8142 = 56%, 168 KB/s], Decompressed: 1014[KDownloaded: 4704 file(s) [attempted 4704/8142 = 57%, 594 KB/s], Decompressed: 1014[KDownloaded: 4808 file(s) [attempted 4808/8142 = 59%, 1067 KB/s], Decompressed: 1014[KDownloaded: 4908 file(s) [attempted 4908/8142 = 60%, 1487 KB/s], Decompressed: 1014[KDownloaded: 5009 file(s) [attempted 5009/8142 = 61%, 325 KB/s], Decompressed: 1014[KDownloaded: 5116 file(s) [attempted 5116/8142 = 62%, 355 KB/s], Decompressed: 1014[KDownloaded: 5220 file(s) [attempted 5220/8142 = 64%, 680 KB/s], Decompressed: 1014[KDownloaded: 5328 file(s) [attempted 5328/8142 = 65%, 1661 KB/s], Decompressed: 1014[KDownloaded: 5435 file(s) [attempted 5435/8142 = 66%, 2858 KB/s], Decompressed: 1014[KDownloaded: 5539 file(s) [attempted 5539/8142 = 68%, 2450 KB/s], Decompressed: 1014[KDownloaded: 5644 file(s) [attempted 5644/8142 = 69%, 548 KB/s], Decompressed: 1014[KDownloaded: 5747 file(s) [attempted 5747/8142 = 70%, 267 KB/s], Decompressed: 1014[KDownloaded: 5855 file(s) [attempted 5855/8142 = 71%, 977 KB/s], Decompressed: 1014[KDownloaded: 5959 file(s) [attempted 5959/8142 = 73%, 1656 KB/s], Decompressed: 1014[KDownloaded: 6056 file(s) [attempted 6056/8142 = 74%, 134 KB/s], Decompressed: 1014[KDownloaded: 6153 file(s) [attempted 6153/8142 = 75%, 839 KB/s], Decompressed: 1014[KDownloaded: 6257 file(s) [attempted 6257/8142 = 76%, 1625 KB/s], Decompressed: 1014[KDownloaded: 6361 file(s) [attempted 6361/8142 = 78%, 601 KB/s], Decompressed: 1014[KDownloaded: 6469 file(s) [attempted 6469/8142 = 79%, 1049 KB/s], Decompressed: 1014[KDownloaded: 6575 file(s) [attempted 6575/8142 = 80%, 2411 KB/s], Decompressed: 1014[KDownloaded: 6680 file(s) [attempted 6680/8142 = 82%, 1218 KB/s], Decompressed: 1014[KDownloaded: 6784 file(s) [attempted 6784/8142 = 83%, 504 KB/s], Decompressed: 1014[KDownloaded: 6888 file(s) [attempted 6888/8142 = 84%, 245 KB/s], Decompressed: 1014[KDownloaded: 6996 file(s) [attempted 6996/8142 = 85%, 2115 KB/s], Decompressed: 2588[KDownloaded: 7103 file(s) [attempted 7103/8142 = 87%, 465 KB/s], Decompressed: 2588[KDownloaded: 7204 file(s) [attempted 7204/8142 = 88%, 1697 KB/s], Decompressed: 2588[KDownloaded: 7308 file(s) [attempted 7308/8142 = 89%, 352 KB/s], Decompressed: 2588[KDownloaded: 7412 file(s) [attempted 7412/8142 = 91%, 75 KB/s], Decompressed: 2588[KDownloaded: 7512 file(s) [attempted 7512/8142 = 92%, 488 KB/s], Decompressed: 2588[KDownloaded: 7620 file(s) [attempted 7620/8142 = 93%, 98 KB/s], Decompressed: 2588[KDownloaded: 7724 file(s) [attempted 7724/8142 = 94%, 1095 KB/s], Decompressed: 2588[KDownloaded: 7828 file(s) [attempted 7828/8142 = 96%, 2672 KB/s], Decompressed: 2588[KDownloaded: 7928 file(s) [attempted 7928/8142 = 97%, 520 KB/s], Decompressed: 2588[KDownloaded: 8029 file(s) [attempted 8029/8142 = 98%, 142 KB/s], Decompressed: 2588[KDownloaded: 8129 file(s) [attempted 8129/8142 = 99%, 2347 KB/s], Decompressed: 2588[KDownloaded: 8142 file(s) [attempted 8142/8142 = 100%, 2347 KB/s], Decompressed: 2588[K
+Decompressed 8142 file(s)
+Already decompressed 8142 file(s)
+
+STAGE=lake_update EXIT=0 SECONDS=79.835
+STAGE=mathlib_pin CMD=["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"]
+07642720480157414db592fa85b626dafb71355b
+
+STAGE=mathlib_pin EXIT=0 SECONDS=0.003
+STAGE=cache_get CMD=["lake", "exe", "cache", "get"]
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Already decompressed 8142 file(s)
+
+STAGE=cache_get EXIT=0 SECONDS=4.809
+STAGE=import_path_repro CMD=["python3", "-c", "import hashlib,json,os,subprocess,time\nfrom pathlib import Path\nroot=Path('tmp/import-path-repro').resolve()\nassert not root.exists(), 'REPRO_ALREADY_EXISTS'\nsource=root/'source'; built=root/'built'\n(source/'Probe').mkdir(parents=True); (built/'Probe').mkdir(parents=True)\n(source/'Probe/Leaf.lean').write_text('theorem importPathProbe : (1 : Nat) = 1 := rfl\\n')\n(source/'Main.lean').write_text('import Probe.Leaf\\nexample : (1 : Nat) = 1 := importPathProbe\\n')\nrecords=[]\ndef child(name,command,env,expected):\n start=time.perf_counter()\n p=subprocess.run(command,cwd=source,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)\n record=dict(stage=name,exit=p.returncode,expected=expected,seconds=time.perf_counter()-start,\n             command=command,output=p.stdout.decode(),sha256=hashlib.sha256(p.stdout).hexdigest())\n records.append(record); print(json.dumps(record,sort_keys=True),flush=True)\n assert p.returncode==expected, 'PATH_REPRO_EXIT='+name\n return p.stdout.decode()\nenv=os.environ.copy()\nchild('compile_leaf',['lean','-o',str(built/'Probe/Leaf.olean'),'Probe/Leaf.lean'],env,0)\nassert (built/'Probe/Leaf.olean').is_file()\nbad=child('source_first_expected_failure',['lean','Main.lean'],dict(env,LEAN_PATH=str(source)+os.pathsep+str(built)),1)\nassert 'object file' in bad and 'does not exist' in bad\nchild('compiled_first_expected_pass',['lean','Main.lean'],dict(env,LEAN_PATH=str(built)+os.pathsep+str(source)),0)\nprint('IMPORT_PATH_REPRO=PASS synthetic_only=1 cases=3',flush=True)\n"]
+{"command": ["lean", "-o", "/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3/tmp/import-path-repro/built/Probe/Leaf.olean", "Probe/Leaf.lean"], "exit": 0, "expected": 0, "output": "", "seconds": 0.2448008370001844, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "compile_leaf"}
+{"command": ["lean", "Main.lean"], "exit": 1, "expected": 1, "output": "Main.lean:1:0: error: object file '/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3/tmp/import-path-repro/source/Probe/Leaf.olean' of module Probe.Leaf does not exist\n", "seconds": 0.12444728300010865, "sha256": "310f9242e03414dff8f9458043d707a14f2c7c6de7b2396308d3d63382041153", "stage": "source_first_expected_failure"}
+{"command": ["lean", "Main.lean"], "exit": 0, "expected": 0, "output": "", "seconds": 0.253592683000079, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "compiled_first_expected_pass"}
+IMPORT_PATH_REPRO=PASS synthetic_only=1 cases=3
+
+STAGE=import_path_repro EXIT=0 SECONDS=0.703
+STAGE=mathlib_only_repro CMD=["lake", "env", "lean", "tmp/FullGreenUniformPowerRepro.lean"]
+'fullGreenUniformPowerRepro' depends on axioms: [propext, Quot.sound]
+
+STAGE=mathlib_only_repro EXIT=0 SECONDS=36.920
+AXIOM_GATE=PASS {"fullGreenUniformPowerRepro": ["Quot.sound", "propext"]}
+STAGE=prepare_tmp_outputs CMD=["python3", "-c", "from pathlib import Path; Path('.lake/build/lib/lean/tmp').mkdir(parents=True,exist_ok=True)"]
+
+STAGE=prepare_tmp_outputs EXIT=0 SECONDS=0.030
+STAGE=normalization_import CMD=["lake", "env", "lean", "-o", ".lake/build/lib/lean/tmp/FullGreenNormalizedBudgetRepro.olean", "tmp/FullGreenNormalizedBudgetRepro.lean"]
+tmp/FullGreenNormalizedBudgetRepro.lean:25:46: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+tmp/FullGreenNormalizedBudgetRepro.lean:25:46: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+tmp/FullGreenNormalizedBudgetRepro.lean:44:46: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+tmp/FullGreenNormalizedBudgetRepro.lean:44:46: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'FullGreenNormalizedBudgetRepro.split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FullGreenNormalizedBudgetRepro.retain_inverse_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STAGE=normalization_import EXIT=0 SECONDS=8.175
+AXIOM_GATE=PASS {"FullGreenNormalizedBudgetRepro.retain_inverse_square": ["Classical.choice", "Quot.sound", "propext"], "FullGreenNormalizedBudgetRepro.split": ["Classical.choice", "Quot.sound", "propext"]}
+STAGE=materialize_sealed_imports CMD=["lake", "build", "YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations", "YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound", "YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound"]
+banCMP99SourceFlatGeneratedPrecisionScalarDictionary (5.8s)
+✔ [8765/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary (6.9s)
+✔ [8766/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel (20s)
+✔ [8767/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary (8.4s)
+✔ [8768/8810] Built YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound (5.3s)
+✔ [8769/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary (8.5s)
+✔ [8770/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalComplexZeroExtensionDictionary (5.5s)
+✔ [8771/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary (24s)
+✔ [8772/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalComplexFieldData (5.4s)
+✔ [8773/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedBackgroundDictionary (4.6s)
+✔ [8774/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedAmbientLaplacian (4.9s)
+✔ [8775/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedComplexStencilDictionary (5.2s)
+✔ [8776/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary (5.5s)
+✔ [8777/8810] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedPhysicalPrecisionComplexDictionary (6.4s)
+✔ [8778/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreen (6.7s)
+✔ [8779/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive (5.6s)
+✔ [8780/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen (6.7s)
+✔ [8781/8810] Built YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing (5.0s)
+✔ [8782/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification (7.6s)
+✔ [8783/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain (5.4s)
+✔ [8784/8810] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient (5.6s)
+✔ [8785/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain (5.7s)
+✔ [8786/8810] Built YangMills.RG.BalabanCMP99CenteredTorusPhysicalGreenSampleTransport (7.4s)
+✔ [8787/8810] Built YangMills.RG.BalabanCMP99PhysicalGreenFiniteGridAliasing (5.7s)
+⚠ [8788/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceMixedDomain (7.5s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:200:5: unused variable `hamplitude`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:201:5: unused variable `hradius`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:202:5: unused variable `hdenWindow`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8789/8810] Built YangMills.RG.BalabanCMP99FullGreenFiniteGridAliasing (5.9s)
+✔ [8790/8810] Built YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing (6.0s)
+✔ [8791/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary (27s)
+✔ [8792/8810] Built YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing (5.5s)
+✔ [8793/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerCharacter (5.4s)
+✔ [8794/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenIdentification (5.8s)
+✔ [8795/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter (5.0s)
+✔ [8796/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceGreenIdentification (4.9s)
+✔ [8797/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode (5.5s)
+✔ [8798/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis (5.1s)
+✔ [8799/8810] Built YangMills.RG.BalabanCMP99SourceFlatQprimeTransposeEndpointSample (4.6s)
+✔ [8800/8810] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase (4.8s)
+✔ [8801/8810] Built YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection (4.9s)
+⚠ [8802/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceCharacterDictionary (6.2s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:234:58: This simp argument is unused:
+  pointSource
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, p̵o̵i̵n̵t̵S̵o̵u̵r̵ce̵,̵
+  ̵ ̵ ̵ ̵ ̵c̵oarseCharacter, owner, z, sourceEndpoint,
+  ̲  ̲ ̲ ̲e, reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:235:31: This simp argument is unused:
+  sourceEndpoint
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
+  ̵  ̵ ̵ ̵coarseCharacter, owner, z, s̵o̵u̵r̵c̵eE̵n̵d̵p̵o̵i̵n̵t̵,
+  ̲ e̵,̵  ̲ ̲reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8803/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceTargetCharacterDictionary (5.1s)
+✔ [8804/8810] Built YangMills.RG.BalabanCMP89Eq246FullEndpointReflection (5.4s)
+✔ [8805/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourcePhysicalEndpointReflection (4.7s)
+✔ [8806/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary (5.2s)
+✔ [8807/8810] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionary (4.6s)
+✔ [8808/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary (4.8s)
+✔ [8809/8810] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass (5.8s)
+✔ [8810/8810] Built YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound (4.8s)
+Build completed successfully (8810 jobs).
+
+STAGE=materialize_sealed_imports EXIT=0 SECONDS=1749.419
+STAGE=hybrid_draft CMD=["lake", "env", "lean", "-o", ".lake/build/lib/lean/tmp/SourceFullGreenHybridAmplitudeDraft.olean", "tmp/SourceFullGreenHybridAmplitudeDraft.lean"]
+'YangMills.RG.cmp85SourceFullGreen_fullBudget_le_hybrid_draft' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STAGE=hybrid_draft EXIT=0 SECONDS=6.894
+AXIOM_GATE=PASS {"YangMills.RG.cmp85SourceFullGreen_fullBudget_le_hybrid_draft": ["Classical.choice", "Quot.sound", "propext"]}
+STAGE=uniform_draft CMD=["lake", "env", "lean", "-o", ".lake/build/lib/lean/tmp/SourceFullGreenUniformAmplitudeDraft.olean", "tmp/SourceFullGreenUniformAmplitudeDraft.lean"]
+'YangMills.RG.cmp85SourceFullGreenContourFactorDraft_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.cmp85SourceFullGreenHybridAmplitudeConstantDraft_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.cmp85SourceFullGreen_ownerAmplitude_split_draft' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.cmp85SourceFullGreen_ownerAmplitude_inverse_square_draft' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.exists_cmp85SourceFullGreen_uniformOwnerAmplitude_draft' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STAGE=uniform_draft EXIT=0 SECONDS=8.634
+AXIOM_GATE=PASS {"YangMills.RG.cmp85SourceFullGreenContourFactorDraft_pos": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.cmp85SourceFullGreenHybridAmplitudeConstantDraft_nonneg": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.cmp85SourceFullGreen_ownerAmplitude_inverse_square_draft": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.cmp85SourceFullGreen_ownerAmplitude_split_draft": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.exists_cmp85SourceFullGreen_uniformOwnerAmplitude_draft": ["Classical.choice", "Quot.sound", "propext"]}
+STAGE=compiled_outputs CMD=["python3", "-c", "import hashlib,json; from pathlib import Path; names=['FullGreenNormalizedBudgetRepro','SourceFullGreenHybridAmplitudeDraft','SourceFullGreenUniformAmplitudeDraft']; print(json.dumps({n:hashlib.sha256(Path('.lake/build/lib/lean/tmp/'+n+'.olean').read_bytes()).hexdigest() for n in names},sort_keys=True))"]
+{"FullGreenNormalizedBudgetRepro": "7ec25d5368a7c81cfc837ae172232799a98cc9c1c40e9ca0e85a5612f3c26fea", "SourceFullGreenHybridAmplitudeDraft": "fd4ca541836c8f0676803b58595639f81b1f5e86da1c40318d6dd18892b53ce1", "SourceFullGreenUniformAmplitudeDraft": "b6a32639f0349668f5914fb846fe545e4180be8fbfa6226b0a8ddeeaf59cff59"}
+
+STAGE=compiled_outputs EXIT=0 SECONDS=0.065
+EVIDENCE_SHA256=01872c1cc525427298091d3fff9e1de2659bb6198b9eabb8647ba26fbd816d23
+EVIDENCE_ARCHIVE=/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3-evidence.tar.gz
+EVIDENCE_ARCHIVE_SHA256=822844a908b0ea3a888ac1a03e9bb14908dfb6b24b53ae8f42eff0c793710eef
+FINAL_STATUS=PASS
+RUNTIME_RETAINED_FOR_EVIDENCE=1
+RUNTIME_UNASSIGN_REQUESTED=1
+DIAGNOSTIC_PACKAGE_VERIFIED=/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3-verification.json
+VERIFICATION_SHA256=8aeb0a8ba702d067856bfa99e76866319dcc98575988292b6c0b891cb94d4de4
+DIAGNOSTIC_FINAL_STATUS=PASS COLD_SEAL=0

@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98Eq118SourceCurve
+
+#print axioms YangMills.RG.hasDerivAt_cmp98Eq118SourceCurve
+#print axioms YangMills.RG.cmp98Eq118SourceCurve_zero
+#print axioms YangMills.RG.cmp98Eq118SourceFirstVariation_eq
+#print axioms YangMills.RG.deriv_cmp98Eq118SourceCurve_zero
+#print axioms YangMills.RG.deriv_cmp98Eq118SourceCurve_zero_eq_nonlinearRightVariation

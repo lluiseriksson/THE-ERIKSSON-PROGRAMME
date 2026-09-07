@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP109ConstraintCorrectionFixedPoint
+
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_cmp96ConstraintPivotInsertion_le
+#print axioms YangMills.RG.cmp96ConstraintPivotInsertion_sub
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_cmp109PivotShift_sub_le
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData
+#print axioms YangMills.RG.cmp109ConstraintCorrectionMap
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData.correctionMap_eq_of_mem
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData.mapsTo_correctionMap
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData.contractionRate
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData.contractionRate_nonneg
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData.contractingWith_restrict
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData.existsUnique_constraintCorrection
+#print axioms YangMills.RG.CMP109ConstraintCorrectionBallData.exists_constraintCorrection_physicalEquation

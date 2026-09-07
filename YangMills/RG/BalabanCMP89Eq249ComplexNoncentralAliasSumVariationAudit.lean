@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasSumVariation
+
+#print axioms YangMills.RG.norm_cmp89Eq248ComplexAliasDenominatorSummand_sub_realSlice_le_sourceWeight
+#print axioms YangMills.RG.norm_cmp89Eq249ComplexNoncentralAliasSum_sub_realSlice_le_bound

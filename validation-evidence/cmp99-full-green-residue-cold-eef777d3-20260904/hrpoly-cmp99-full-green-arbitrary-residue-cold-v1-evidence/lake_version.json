@@ -1,0 +1,1 @@
+{"command": ["lake", "--version"], "cwd": null, "exit": 0, "log_file": "lake_version.log", "output_sha256": "9f4a3130a140a735d63f1028a8437b9eb7a7b0fcea54f373c31fadd0fe5f43c6", "seconds": 0.04188288000000284, "stage": "lake_version"}

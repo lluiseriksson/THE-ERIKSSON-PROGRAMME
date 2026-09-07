@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalTwoFieldUbar
+
+#print axioms YangMills.RG.cmp102SourceFourContourTwoFieldBudget_nonneg
+#print axioms YangMills.RG.norm_cmp98UbarAmbientDeviationMatrix_twoField_sub_le
+#print axioms YangMills.RG.norm_nearLog_cmp98UbarAmbientDeviationMatrix_twoField_sub_le
+#print axioms YangMills.RG.norm_cmp98UbarLogAverage_twoField_sub_le

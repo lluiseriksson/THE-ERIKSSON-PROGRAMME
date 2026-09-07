@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116Eq221AEInteractionAbsorption
+
+#print axioms YangMills.RG.cmp116Eq220_eq221_eq222_complexInteraction_le_localized
+#print axioms YangMills.RG.cmp116Eq220_eq221_eq222_complexInteraction_le_localized_ae

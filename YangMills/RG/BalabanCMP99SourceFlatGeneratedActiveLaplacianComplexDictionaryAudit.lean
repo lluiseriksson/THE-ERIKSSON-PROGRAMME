@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary
+
+#print axioms YangMills.RG.CMP99SourceGeneratedTerminalComplexFieldData.activeLaplacian_complexification_eq_fullComplexStencil

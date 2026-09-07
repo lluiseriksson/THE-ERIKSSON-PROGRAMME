@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCorrectionLinearGrowth
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrectionLinearGrowthConstant
+#print axioms YangMills.RG.norm_cmp102Eq80PhysicalBackgroundCorrection_le

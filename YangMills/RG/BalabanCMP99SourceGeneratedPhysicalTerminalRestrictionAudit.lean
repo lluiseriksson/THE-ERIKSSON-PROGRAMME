@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalTerminalRestriction
+
+#print axioms YangMills.RG.cmp99EqRec_heq_self
+#print axioms YangMills.RG.cmp99SourceTerminalCLMTransport_sub
+#print axioms YangMills.RG.cmp99SourceTerminalCLMTransport_adjoint_eq_self
+#print axioms YangMills.RG.CMP99SourceNestedRegionChains.terminalRestriction_heq_of_cast
+#print axioms YangMills.RG.cmp99SourceIteratedLiftTerminalRestriction_transport_eq_physical

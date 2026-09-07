@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99Eq337PhysicalComplexUbarDeviationRadius
+
+#print axioms YangMills.RG.cmp99SourceComplexUbarFourPaths
+#print axioms YangMills.RG.cmp99SourceComplexUbarFourPaths_length_le
+#print axioms YangMills.RG.cmp99SourceComplexLocalizedUbarDeviation_coe_eq_fourPathProduct
+#print axioms YangMills.RG.norm_cmp99SourceComplexLocalizedUbarDeviation_le_fourPathBudget
+#print axioms YangMills.RG.norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le
+#print axioms YangMills.RG.cmp99Eq337SourceComplexUbarUniformDeviationRadius
+#print axioms YangMills.RG.norm_cmp99Eq337SourceComplexLocalizedUbarDeviation_le_uniformRadius
+#print axioms YangMills.RG.cmp99Eq337SourceComplexUbarNoWindingBudget
+#print axioms YangMills.RG.cmp99Eq337SourceComplexUbarNoWindingBudget_delta
+#print axioms YangMills.RG.cmp99Eq337SourceComplexLocalizedNextBackground

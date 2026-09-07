@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102AmbientOrientedEdgeFDerivBound
+
+#print axioms YangMills.RG.fderiv_physicalMatrixExp_eval_apply
+#print axioms YangMills.RG.fderiv_ambientOrientedEdgeMatrix_apply
+#print axioms YangMills.RG.norm_fderiv_ambientOrientedEdgeMatrix_le
+#print axioms YangMills.RG.norm_fderiv_ambientOrientedEdgeMatrix_sub_le

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116R1ActiveFactorization
+
+#print axioms YangMills.RG.card_cmp116R1TelescopeActiveState
+#print axioms YangMills.RG.Matrix.r1TelescopeFactorLeft_mul_right
+#print axioms YangMills.RG.card_cmp116R1SymmetricRealActiveState

@@ -1072,6 +1072,39 @@
         "pdf_pages": "51-52 (PDF indices 50-51)"
       }
     ],
+    "YangMills.RG.cmp102Eq80GlobalPotential": [
+      {
+        "citation_key": "cmp102.variational-hessian-expansion-source-target",
+        "source_id": "cmp102_variational",
+        "short": "Balaban CMP102",
+        "status": "visual_confirmed",
+        "summary": "CMP102 Eq. (80), printed 290 / PDF 14, matches this literal four-term algebraic core exactly; Eq. (78) additionally requires the source-region D = C^(2) + D_3 dictionary because Lean accepts D and D₃ independently.",
+        "printed_pages": "290",
+        "pdf_pages": "14"
+      }
+    ],
+    "YangMills.RG.cmp102Eq80SourcePi4RectangularWeakenedPotential": [
+      {
+        "citation_key": "cmp102.variational-hessian-expansion-source-target",
+        "source_id": "cmp102_variational",
+        "short": "Balaban CMP102",
+        "status": "visual_confirmed",
+        "summary": "This is the rectangular coarse-to-fine H specialization of the source-verified Eq. (80) core; the source-to-Lean H dictionary remains open.",
+        "printed_pages": "290",
+        "pdf_pages": "14"
+      }
+    ],
+    "YangMills.RG.cmp102Eq80SourcePi4RealMixedPotential": [
+      {
+        "citation_key": "cmp102.variational-hessian-expansion-source-target",
+        "source_id": "cmp102_variational",
+        "short": "Balaban CMP102",
+        "status": "visual_confirmed",
+        "summary": "This auxiliary preserves the source-verified Eq. (80) algebra but replaces rectangular H by a square fine-field covariance; it is not by itself the physical H dictionary.",
+        "printed_pages": "290",
+        "pdf_pages": "14"
+      }
+    ],
     "wilson_hessian_identification": [
       {
         "citation_key": "cmp99.background-field-propagator-source-target",
@@ -1087,9 +1120,9 @@
         "source_id": "cmp102_variational",
         "short": "Balaban CMP102",
         "status": "visual_confirmed",
-        "summary": "CMP102 visually anchors the action expansion, linearizing operator H and positive second-variation quadratic form used by the Wilson-Hessian dictionary.",
-        "printed_pages": "281, 285, 299",
-        "pdf_pages": "5, 9, 23"
+        "summary": "CMP102 visually anchors the action expansion, rectangular linearizing operator H, Eq. (78) D/C^(2)/D_3 decomposition, literal Eq. (80), and positive second-variation quadratic form; Eq. (80) matches the Lean four-term core exactly while the Eq. (78) dictionary remains open.",
+        "printed_pages": "281, 285, 290, 299",
+        "pdf_pages": "5, 9, 14, 23"
       }
     ],
     "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification": [

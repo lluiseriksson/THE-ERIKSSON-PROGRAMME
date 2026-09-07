@@ -1,0 +1,108 @@
+{
+  "cold": {
+    "audits": {
+      "value_action_audit": {
+        "YangMills.RG.cmp99SourceFlowPhysicalRealGreen_ownerAction_of_budget": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.cmp99SourceFlowPhysicalRealGreen_typedKernel": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.exists_cmp99SourceFlowPhysicalRealGreen_uniformValueAction": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "1a8280d5f23914c71b36c394ff5ccb38ad097d35775bf7c860bfc62d87823570",
+    "evidence_json_payload_sha256": "f0e36d8c6cd88950569f41dbc72e0b3297e14b05510cc9f4e882119a2004dd54",
+    "production_outputs": {
+      "BalabanCMP99SourceFlowPhysicalValueAction.olean": "e2a1cb80e799f19a98699c2699613a955bd4c1d6688b96cda5e3bdb22196fbaa"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.BalabanCMP99SourceFlowPhysicalValueAction"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-value-action-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "value_action_focal.log",
+        "output_sha256": "47a7428ff421cf83e58e64edee090c7bb57f54e378c7942a13ed4c1a895390c7",
+        "seconds": 1723.83378737,
+        "stage": "value_action_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/BalabanCMP99SourceFlowPhysicalValueActionAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-cmp99-physical-value-action-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "value_action_audit.log",
+        "output_sha256": "462a4b6aba2be38ef242ca3a57b58601817655d46e24bc1a69e182d215d9a419",
+        "seconds": 16.06608803800009,
+        "stage": "value_action_audit"
+      }
+    ],
+    "runner_rev": "cmp99-physical-value-action-promoted-cold-v1",
+    "source_sha": "10437a1a824bdd920282778cabe2f3da6c40ce4e",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "inner_sha256": "0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/physical-value-action-promoted-cold-v1-launch/verify_cmp99_physical_value_action_promoted_cold.py",
+        "--helpers",
+        "/content/physical-value-action-promoted-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "9e6e9ff08a4c6250bfca96d422132d69809331b2119a2d86da768343bf50da0d",
+      "seconds": 0.04984669099997063,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/physical-value-action-promoted-cold-v1-launch/colab_cmp99_physical_value_action_promoted_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "cbb8da99e04b9cbd554f696951c6d02a07def6a1f0cb4bd8ab78a3a1dadfc181",
+      "seconds": 1899.586243275,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/physical-value-action-promoted-cold-v1-launch/verify_cmp99_physical_value_action_promoted_cold.py",
+        "--helpers",
+        "/content/physical-value-action-promoted-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-cmp99-physical-value-action-promoted-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901"
+      ],
+      "exit": 0,
+      "log_sha256": "586cc7ed0ad252c65a61efa7c5e82812638176fb91f29b6b42155dd51d3abe8e",
+      "seconds": 0.07046579799998653,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "a9d45101d602321fb86d7268815ebd4bade2ed6a51b2432bcaeb664b1fbd1614",
+  "scope": "three-name full ambient value action only; no regional B0 or window15",
+  "seconds": 0.1004216000001179,
+  "source": "10437a1a824bdd920282778cabe2f3da6c40ce4e",
+  "status": "PASS"
+}

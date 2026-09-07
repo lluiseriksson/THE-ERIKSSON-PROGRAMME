@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedUniformR1TraceBound
+
+#print axioms YangMills.RG.cmp116SourceRestrictedUniformR1TraceCost
+#print axioms YangMills.RG.norm_trace_cmp116SourcePi4FullComplexR1Matrix_mul_le_uniform

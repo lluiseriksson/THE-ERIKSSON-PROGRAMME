@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-average-field-cohort-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "c5ef03a35ae55e023eca64f1eb6f222d689506535ff7850f7d91e33ace35e521", "seconds": 15.357024793999983, "stage": "clone"}

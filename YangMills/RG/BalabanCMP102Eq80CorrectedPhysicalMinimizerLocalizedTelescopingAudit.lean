@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80CorrectedPhysicalMinimizerLocalizedTelescoping
+
+#print axioms YangMills.RG.cmp102Eq80CorrectedSourcePi4PhysicalLocalizedMinimizerIncrement
+#print axioms YangMills.RG.tendsto_sum_cmp102Eq80CorrectedSourcePi4PhysicalLocalizedMinimizerIncrements

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP98ContourFirstVariationSupport
+
+#print axioms YangMills.RG.orientedWilsonGenerator_eq_zero_of_apply_eq_zero
+#print axioms YangMills.RG.cmp98ContourFirstVariation_zero_of_generators
+#print axioms YangMills.RG.fderiv_cmp98AmbientWilsonLineMatrix_zero_apply_physical_of_support
+#print axioms YangMills.RG.fderiv_cmp98AmbientWilsonLineMatrix_zero_apply_single_of_avoids

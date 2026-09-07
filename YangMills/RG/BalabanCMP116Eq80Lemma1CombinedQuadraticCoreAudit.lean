@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP116Eq80Lemma1CombinedQuadraticCore
+
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedTotal
+#print axioms YangMills.RG.cmp116Eq80Lemma1CombinedResidual
+#print axioms YangMills.RG.sum_cmp116Eq80Lemma1CombinedTotal
+#print axioms YangMills.RG.sum_cmp116Eq80Lemma1CombinedResidual
+#print axioms YangMills.RG.cmp116Eq142PhysicalQuadraticCore_combined_direct
+#print axioms YangMills.RG.cmp116Eq142PhysicalQuadraticCore_combined_native
+#print axioms YangMills.RG.contDiff_cmp116Eq142PhysicalQuadraticCore_combined
+#print axioms YangMills.RG.abs_cmp116FDerivHessian_combined_le_eq143

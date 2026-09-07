@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP109Lemma1ResidualFamily
+
+#print axioms YangMills.RG.cmp109Eq212Lemma1LocalizedDifference
+#print axioms YangMills.RG.cmp109Eq212Lemma1AffectedDomainFamily
+#print axioms YangMills.RG.cmp109Eq212Lemma1ResidualActivity
+#print axioms YangMills.RG.cmp109Eq212Lemma1EnergyDifference_eq_sum_residualActivity
+#print axioms YangMills.RG.cmp109Eq212Lemma1ResidualActivity_eq_zero_of_not_mem
+#print axioms YangMills.RG.norm_cmp109Eq212Lemma1ResidualActivity_le

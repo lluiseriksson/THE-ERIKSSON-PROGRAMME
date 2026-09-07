@@ -1,0 +1,96 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "boundary_blob_sha256": {
+    "YangMills/RG/BalabanCMP99ComplexPhysicalRegionalTower.lean": "1c123e4b2bf8ec2ec3a3a4ae0bbafa373b8c9fa64cbdb04b66368005241b9107",
+    "YangMills/RG/BalabanCMP99ComplexPhysicalRegionalTowerAudit.lean": "9bb296c9a32a7b0116cb338b53176765d38313ef28de8ef19bcaff4d4a5d6a5b",
+    "YangMills/RG/BalabanCMP99ComplexRegionalTower.lean": "ecbc6808f3e15c83507d212c80c31ab8807c04c58833fcedc75b91b53401f127",
+    "YangMills/RG/BalabanCMP99ComplexRegionalTowerAudit.lean": "f278a5f081415e2737ec2665ceca2d091202ec2e8ba0497e5f06c2893325353e",
+    "YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointAction.lean": "9fbad97ce003f8c9cfe404a7d80f65c70e54cfe489e4388f49d2f173a2345e47",
+    "YangMills/RG/BalabanCMP99ComplexSpecialLinearAdjointActionAudit.lean": "d11825fb75f15dfb30c5ae46b283e824eb2925f9e5e18f9c7909163797482e1d",
+    "YangMills/RG/BalabanCMP99ComplexTransportedBlockAverage.lean": "7b6a53b6a8577b732eeca8c8a25fcba63db14b56d6ca50b9029162bd1d6bba2c",
+    "YangMills/RG/BalabanCMP99ComplexTransportedBlockAverageAudit.lean": "dac59d9638c535f2d8583d8b7168ebb51e09f22bd613e8753ab092fc0bffca30",
+    "YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTower.lean": "d8cc07217f1d4ec7d034c8cbc75e3c1b350da28027e1e147bc17289f8e9fa71e",
+    "YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerAudit.lean": "f3782dea68990ea0469fd72955a70f23ae9bfd4d5fa6c0fc0d3fdfb48ce275a3",
+    "YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerPair.lean": "e702caf207a88aa776d9a822d7fc3c7943fe6c102114ccf884a896ac2916ac2e",
+    "YangMills/RG/BalabanCMP99Eq359ComplexClosedPhysicalTowerPairAudit.lean": "d92d1e78d4faa06b6722a2f7ab46435ef0e032ef472ad52e7d3a2500bf4f711d",
+    "YangMills/RG/BalabanCMP99Eq359ComplexRegionalTowerPair.lean": "8be59b9e8676b9cea19e9b9814db50eed63c7a03253ea99acd1fd6e024c19f7e",
+    "YangMills/RG/BalabanCMP99Eq359ComplexRegionalTowerPairAudit.lean": "9cc2d6a6d3895c00b0987acbef4a5d4b74a7662c38ef65225718598e03bd0a7a"
+  },
+  "declarations_by_module": {
+    "BalabanCMP99ComplexPhysicalRegionalTower": [
+      "YangMills.RG.cmp99SpecialLinearBlockContainedContourSystem",
+      "YangMills.RG.cmp99ComplexPhysicalBlockHolonomy",
+      "YangMills.RG.CMP99ComplexPhysicalRegionalTower.stop",
+      "YangMills.RG.CMP99ComplexPhysicalRegionalTower.step",
+      "YangMills.RG.CMP99ComplexPhysicalRegionalTower.toComplexTower_stop",
+      "YangMills.RG.CMP99ComplexPhysicalRegionalTower.Qprime_step",
+      "YangMills.RG.CMP99ComplexPhysicalRegionalTower.starred_step"
+    ],
+    "BalabanCMP99ComplexRegionalTower": [
+      "YangMills.RG.CMP99ComplexRegionalTower.stop",
+      "YangMills.RG.CMP99ComplexRegionalTower.step",
+      "YangMills.RG.CMP99ComplexRegionalTower.depth_stop",
+      "YangMills.RG.CMP99ComplexRegionalTower.depth_step",
+      "YangMills.RG.CMP99ComplexRegionalTower.Qprime_step",
+      "YangMills.RG.CMP99ComplexRegionalTower.starred_step"
+    ],
+    "BalabanCMP99ComplexSpecialLinearAdjointAction": [
+      "YangMills.RG.cmp99SpecialLinearAdjointSlLM",
+      "YangMills.RG.cmp99SpecialLinearAdjointCoordLM",
+      "YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_specialLinearAdjoint"
+    ],
+    "BalabanCMP99ComplexTransportedBlockAverage": [
+      "YangMills.RG.cmp99ComplexTransportedBlockAverageCLM",
+      "YangMills.RG.cmp99ComplexTransportedBlockAverageCLM_apply",
+      "YangMills.RG.cmp99ComplexTransportedBlockStarSynthesisCLM",
+      "YangMills.RG.cmp99ComplexTransportedBlockStarSynthesisCLM_apply",
+      "YangMills.RG.cmp99ComplexAdjointBlockTransport",
+      "YangMills.RG.cmp99ComplexAdjointBlockStarTransport",
+      "YangMills.RG.cmp99ComplexAdjointBlockAverageCLM",
+      "YangMills.RG.cmp99ComplexAdjointBlockStarSynthesisCLM"
+    ],
+    "BalabanCMP99Eq359ComplexClosedPhysicalTower": [
+      "YangMills.RG.cmp99Eq359SourceComplexPerturbedPhysicalTower"
+    ],
+    "BalabanCMP99Eq359ComplexClosedPhysicalTowerPair": [
+      "YangMills.RG.cmp99Eq359SourceComplexClosedPhysicalTowerPair"
+    ],
+    "BalabanCMP99Eq359ComplexRegionalTowerPair": [
+      "YangMills.RG.CMP99Eq359ComplexRegionalTowerPair.stop",
+      "YangMills.RG.CMP99Eq359ComplexRegionalTowerPair.step",
+      "YangMills.RG.CMP99Eq359ComplexRegionalTowerPair.F2",
+      "YangMills.RG.CMP99Eq359ComplexRegionalTowerPair.F2star",
+      "YangMills.RG.CMP99Eq359ComplexRegionalTowerPair.Q1_eq_Q0_add_F2",
+      "YangMills.RG.CMP99Eq359ComplexRegionalTowerPair.starred1_eq_starred0_add_F2star"
+    ]
+  },
+  "evidence_input_sha256": "12839e86ee76c8ed817ca8ac6cb3cab8cee5989a0649b9ad563b8fdb5644f717",
+  "expected_declarations": 32,
+  "runner_revision": "eq359-complex-one-scale-average-promoted-cold-v4",
+  "source_sha": "5c0dc37146d130f637ee270a55eba6f638b3b64e",
+  "stage_seconds": {
+    "eq359_01_balabancmp99complexspeciallinearadjointaction_audit": "7.306890569000188",
+    "eq359_01_balabancmp99complexspeciallinearadjointaction_source": "7.929810468999676",
+    "eq359_02_balabancmp99complextransportedblockaverage_audit": "12.31940524599986",
+    "eq359_02_balabancmp99complextransportedblockaverage_source": "9.387608424000064",
+    "eq359_03_balabancmp99complexregionaltower_audit": "10.251923609999722",
+    "eq359_03_balabancmp99complexregionaltower_source": "6.2169858669999485",
+    "eq359_04_balabancmp99complexphysicalregionaltower_audit": "9.969222335000268",
+    "eq359_04_balabancmp99complexphysicalregionaltower_source": "5.611962286999642",
+    "eq359_05_balabancmp99eq359complexclosedphysicaltower_audit": "6.403770064999662",
+    "eq359_05_balabancmp99eq359complexclosedphysicaltower_source": "5.467840559999786",
+    "eq359_06_balabancmp99eq359complexregionaltowerpair_audit": "9.86071808700035",
+    "eq359_06_balabancmp99eq359complexregionaltowerpair_source": "9.0341939799996",
+    "eq359_07_balabancmp99eq359complexclosedphysicaltowerpair_audit": "6.63894382000035",
+    "eq359_07_balabancmp99eq359complexclosedphysicaltowerpair_source": "7.490409114999238",
+    "eq359_materialize_dependencies": "1137.3176176869997",
+    "eq359_prepare_build_dirs": "0.02243129999988014",
+    "eq359_root": "6026.623742908"
+  },
+  "status": "EQ359_COMPLEX_ONE_SCALE_AVERAGE_EVIDENCE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

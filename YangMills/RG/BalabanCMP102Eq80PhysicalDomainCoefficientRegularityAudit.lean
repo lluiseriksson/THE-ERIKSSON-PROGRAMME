@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainCoefficientRegularity
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainCoefficient_eq_derivative_matrixCoefficient
+#print axioms YangMills.RG.continuous_cmp102Eq80PhysicalFineHeadTailDomainCoefficient_affine
+#print axioms YangMills.RG.intervalIntegrable_cmp102Eq80PhysicalFineHeadTailDomainCoefficient_affine

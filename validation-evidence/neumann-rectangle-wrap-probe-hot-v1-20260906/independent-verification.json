@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "d734e0ff4816b23ee90c660bda5ff46bc1ad3904f41d0de86357796699239818",
+  "cold_seal": false,
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/neumann-rectangle-wrap-probe-hot-v1-evidence/physical_draft.olean",
+      "tmp/neumann-rectangle-wrap-probe-hot-v1/NeumannRectangleWrapProbeDraft.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1",
+    "exit": 1,
+    "log_sha256": "741562b1789e171a9f8ab93aa2096211646c0a5260d12cc96ef97f7d8afc15f0",
+    "seconds": 7.138016281000091,
+    "stage": "physical_draft",
+    "timed_out": false,
+    "timeout_seconds": 120
+  },
+  "log": "tmp/neumann-rectangle-wrap-probe-hot-v1/NeumannRectangleWrapProbeDraft.lean:27:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  @Membership.mem (FinBox 4 ?m.14) (Finset (FinBox 4 ?m.14)) SetLike.instMembership\n    (cmp89SourceNeumannRectangleActiveRegion ?m.16).sites ?y\nin the target expression\n  @Membership.mem (FinBox 4 3) (Finset (FinBox 4 3)) SetLike.instMembership wrapProbeRegion.sites x\n\ncase h\nx : FinBox 4 3\n\u22a2 x \u2208 wrapProbeRegion.sites\ntmp/neumann-rectangle-wrap-probe-hot-v1/NeumannRectangleWrapProbeDraft.lean:46:12: error: maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information\n'YangMills.RG.neumannRectangle_siteFit_retains_wrapBond' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+  "source": "5442189556b1c85e3ac0cb864403cc65f8e23b31",
+  "status": "VERIFIED_FAILURE"
+}

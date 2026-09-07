@@ -29,3 +29,8 @@ jobs:
       - name: Zero sorry (proof tree) + zero axioms (verified-core tree)
         # Comment-aware scanner; the core dirs/files are listed in the script.
         run: python scripts/check_consistency.py
+
+      - name: Every YangMillsCore import is tracked
+        # Prevent a hot local .olean/untracked source from masquerading as a
+        # reproducible root build.
+        run: python scripts/check_core_imports_tracked.py

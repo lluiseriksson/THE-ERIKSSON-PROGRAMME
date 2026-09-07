@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116QuadraticCoreHessian
+
+#print axioms YangMills.RG.cmp116FDerivHessian_half_bilinearDiagonal
+#print axioms YangMills.RG.abs_cmp116FDerivHessian_half_bilinearDiagonal_le
+#print axioms YangMills.RG.abs_cmp116FDerivHessian_half_projectedBilinearDiagonal_le
+#print axioms YangMills.RG.abs_cmp116FDerivHessian_half_projectedBilinearDiagonal_le_of_opNorm_le_one

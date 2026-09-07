@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannIntegerBlockImageAverageAudit.lean"], "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1", "exit": 0, "log_file": "average_audit.log", "output_sha256": "4c4a0ee27b0022b684584d1d21061851d06b6ffde8469483dbb02c5263d31c1c", "seconds": 7.252196941000022, "stage": "average_audit"}

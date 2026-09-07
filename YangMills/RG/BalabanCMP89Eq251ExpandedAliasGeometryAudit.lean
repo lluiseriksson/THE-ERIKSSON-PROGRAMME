@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq251ExpandedAliasGeometry
+
+#print axioms YangMills.RG.two_mul_abs_int_le_of_mem_cmp89Eq245CenteredAliasIntegers
+#print axioms YangMills.RG.two_mul_abs_cast_le_of_mem_cmp89Eq245CenteredAliasIntegers
+#print axioms YangMills.RG.abs_add_cmp89Eq245AliasShift_le_pi_mul_succ
+#print axioms YangMills.RG.abs_inverse_count_mul_add_cmp89Eq245AliasShift_le_three_pi_div_two
+#print axioms YangMills.RG.cmp89Eq245CenteredAliasIntegers_not_pointwise_scaled_brillouin

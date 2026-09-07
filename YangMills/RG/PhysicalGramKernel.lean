@@ -142,6 +142,110 @@ theorem adjointCompSelf_kernelBound
         _ = (M ^ 2 * ‖v‖) * ‖y‖ := by ring
     exact le_of_mul_le_mul_right h2 hy0
 
+/-! ## Mixed adjoint compositions -/
+
+/-- **Mixed Gram identity on probes**: the `(q,p)` block of `B†C` is the
+inner product of the `C`-probe at `p` with the `B`-probe at `q`. -/
+theorem adjointCompMixed_single_inner
+    {F : Type*} [NormedAddCommGroup F] [InnerProductSpace ℝ F]
+    [CompleteSpace F]
+    (B C : PhysicalGaugeOneCochain d N Nc →L[ℝ] F)
+    (p q : PhysicalBond d N) (v w : SUNLieCoord Nc) :
+    inner ℝ ((B.adjoint.comp C)
+        (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) p v) q) w =
+      inner ℝ (C (singlePhysicalBondCochain
+        (d := d) (N := N) (Nc := Nc) p v))
+        (B (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) q w)) := by
+  have h1 : inner ℝ ((B.adjoint.comp C)
+      (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) p v) q) w =
+      inner ℝ ((B.adjoint.comp C)
+        (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) p v))
+        (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) q w) :=
+    (inner_singlePhysicalBondCochain_right _ q w).symm
+  rw [h1, ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.adjoint_inner_left]
+
+/-- Mixed probe orthogonality transfers to finite range of `B†C`. -/
+theorem adjointCompMixed_finiteRange
+    {F : Type*} [NormedAddCommGroup F] [InnerProductSpace ℝ F]
+    [CompleteSpace F]
+    (B C : PhysicalGaugeOneCochain d N Nc →L[ℝ] F)
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) {R : ℕ}
+    (hdisj : ∀ p q : PhysicalBond d N, ∀ v w : SUNLieCoord Nc,
+      R < dist q p →
+        inner ℝ (C (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) p v))
+          (B (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) q w)) = 0) :
+    PhysicalCovarianceFiniteRange (B.adjoint.comp C) dist R := by
+  intro p q v hR
+  set y := (B.adjoint.comp C)
+    (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) p v) q with hy
+  have hself : inner ℝ y y = 0 := by
+    rw [hy, adjointCompMixed_single_inner]
+    exact hdisj p q v _ hR
+  exact inner_self_eq_zero.mp hself
+
+/-- Probe-image bounds for `B` and `C` give the entrywise mixed bound
+`M_C M_B` for `B†C`. -/
+theorem adjointCompMixed_kernelBound
+    {F : Type*} [NormedAddCommGroup F] [InnerProductSpace ℝ F]
+    [CompleteSpace F]
+    (B C : PhysicalGaugeOneCochain d N Nc →L[ℝ] F)
+    {MB MC : ℝ}
+    (hMB : 0 ≤ MB) (hMC : 0 ≤ MC)
+    (hB : ∀ p : PhysicalBond d N, ∀ v : SUNLieCoord Nc,
+      ‖B (singlePhysicalBondCochain
+        (d := d) (N := N) (Nc := Nc) p v)‖ ≤ MB * ‖v‖)
+    (hC : ∀ p : PhysicalBond d N, ∀ v : SUNLieCoord Nc,
+      ‖C (singlePhysicalBondCochain
+        (d := d) (N := N) (Nc := Nc) p v)‖ ≤ MC * ‖v‖) :
+    PhysicalCovarianceKernelBound
+      (B.adjoint.comp C) (fun _ _ => MC * MB) := by
+  intro p q v
+  set y := (B.adjoint.comp C)
+    (singlePhysicalBondCochain (d := d) (N := N) (Nc := Nc) p v) q with hy
+  have hsq : ‖y‖ ^ 2 ≤ (MC * ‖v‖) * (MB * ‖y‖) := by
+    have hinner : inner ℝ y y =
+        inner ℝ (C (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) p v))
+          (B (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) q y)) := by
+      rw [hy, adjointCompMixed_single_inner]
+    have hCS : inner ℝ (C (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) p v))
+        (B (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) q y)) ≤
+        ‖C (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) p v)‖ *
+        ‖B (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) q y)‖ :=
+      real_inner_le_norm _ _
+    have hc := hC p v
+    have hb := hB q y
+    calc
+      ‖y‖ ^ 2 = inner ℝ y y := (real_inner_self_eq_norm_sq y).symm
+      _ ≤ ‖C (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) p v)‖ *
+          ‖B (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) q y)‖ := by
+            rw [hinner]
+            exact hCS
+      _ ≤ (MC * ‖v‖) * (MB * ‖y‖) :=
+        mul_le_mul hc hb (norm_nonneg _)
+          (le_trans (norm_nonneg _) hc)
+  rcases eq_or_lt_of_le (norm_nonneg y) with hy0 | hy0
+  · rw [← hy0]
+    positivity
+  · have h2 : ‖y‖ * ‖y‖ ≤ (MC * MB * ‖v‖) * ‖y‖ := by
+      calc
+        ‖y‖ * ‖y‖ = ‖y‖ ^ 2 := (sq ‖y‖).symm
+        _ ≤ (MC * ‖v‖) * (MB * ‖y‖) := hsq
+        _ = (MC * MB * ‖v‖) * ‖y‖ := by ring
+    exact le_of_mul_le_mul_right h2 hy0
+
 /-! ## Assembly combinators -/
 
 /-- Finite range is preserved by sums (at the larger range). -/

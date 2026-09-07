@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq250CentralLaplacianComparison
+
+#print axioms YangMills.RG.cmp89Eq245ScaledDifferenceNorm_le_abs
+#print axioms YangMills.RG.two_div_pi_mul_abs_le_cmp89Eq249UnitDifferenceNorm
+#print axioms YangMills.RG.cmp89Eq245ScaledDifferenceNorm_le_pi_div_two_mul_unit
+#print axioms YangMills.RG.cmp89Eq245ScaledLaplacianSymbol_le_pi_sq_mul_unit
+#print axioms YangMills.RG.inv_pi_div_two_sq_le_cmp89Eq249_unit_div_scaled

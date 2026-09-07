@@ -1,0 +1,11 @@
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShiftAudit.lean
+YangMillsCore.lean
+docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md
+docs/VERIFICATION-LEDGER.md
+tmp/audit_cmp89_eq246_directed_source_moment_cold_evidence.py
+validation-evidence/cmp89-integrand-one-coordinate-shift-cold-881a6de1-20260902/README.md
+validation-evidence/cmp89-integrand-one-coordinate-shift-cold-881a6de1-20260902/colab_cmp89_eq246_integrand_one_coordinate_shift_validation-recovery.ipynb
+validation-evidence/cmp89-integrand-one-coordinate-shift-cold-881a6de1-20260902/hrpoly-cmp89-eq246-integrand-one-coordinate-shift-cold-v1-evidence.tar.gz
+validation-evidence/cmp89-integrand-one-coordinate-shift-cold-881a6de1-20260902/hrpoly-cmp89-eq246-integrand-one-coordinate-shift-cold-v1-evidence/evidence.json
+tmp/cmp89-integrand-one-coordinate-shift-seal-paths.txt

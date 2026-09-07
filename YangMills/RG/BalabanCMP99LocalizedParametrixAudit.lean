@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99LocalizedParametrix
+
+#print axioms YangMills.RG.physicalBondComplementProjection
+#print axioms YangMills.RG.norm_sq_physicalBondProjection_add_complement
+#print axioms YangMills.RG.inner_physicalBondComplementProjection_right_eq_left
+#print axioms YangMills.RG.inner_physicalBondComplementProjection_self
+#print axioms YangMills.RG.cmp99LocalizedPhysicalPrecision
+#print axioms YangMills.RG.isCoerciveCLM_cmp99LocalizedPhysicalPrecision
+#print axioms YangMills.RG.cmp99LocalizedPhysicalCovariance
+#print axioms YangMills.RG.cmp99LocalizedPhysicalPrecision_comp_covariance
+#print axioms YangMills.RG.cmp99LocalizedPhysicalCovariance_comp_precision
+#print axioms YangMills.RG.isCoerciveCLM_cmp99LocalizedInteractingPhysicalPrecision

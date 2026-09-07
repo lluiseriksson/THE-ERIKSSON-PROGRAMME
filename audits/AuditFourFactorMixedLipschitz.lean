@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116FourFactorMixedLipschitz
+
+#print axioms YangMills.RG.fourFactorMixed_eq_sum_products
+#print axioms YangMills.RG.norm_fourMatrixProduct_sub_le_four_scales
+#print axioms YangMills.RG.norm_fourFactorMixed_sub_le

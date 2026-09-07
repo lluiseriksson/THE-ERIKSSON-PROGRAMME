@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceAliasReflectionInvolutive
+
+#print axioms YangMills.RG.cmp99SourceCenteredAliasReflection_apply_apply
+#print axioms YangMills.RG.cmp99SourceCenteredAliasVectorReflection_apply_apply
+#print axioms YangMills.RG.cmp99SourceAliasIndexOneReflection_apply_apply

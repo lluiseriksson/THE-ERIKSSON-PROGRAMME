@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalHSupNorm
+
+#print axioms YangMills.RG.physicalGaugeOneCochainSupTransport
+#print axioms YangMills.RG.norm_physicalGaugeOneCochainSupTransport_apply_le
+#print axioms YangMills.RG.cmp99SourceEq3126PhysicalHSup
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_cmp99SourceEq3126PhysicalH_le

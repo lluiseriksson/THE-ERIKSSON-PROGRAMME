@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceRegionalDefectOverlap
+
+#print axioms YangMills.RG.cmp99RegionalGreenCorrection_single_eq_zero_of_value_eq_zero
+#print axioms YangMills.RG.cmp99RegionalGreenDefect_exponentialKernelBound_of_sourceOverlap
+#print axioms YangMills.RG.cmp99SourceRegionalLargeBlockGreenDefect_exponentialKernelBound

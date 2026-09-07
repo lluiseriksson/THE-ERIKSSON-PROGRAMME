@@ -1,0 +1,3 @@
+'YangMills.RG.neumannIntegerImage_fineBlockPoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.sum_neumannIntegerImage_fineBlockPoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.weightedSum_neumannIntegerImage_fineBlockPoint' depends on axioms: [propext, Classical.choice, Quot.sound]

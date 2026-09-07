@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasQuotientBound
+
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAveragePair_scaled_alias_le
+#print axioms YangMills.RG.norm_cmp89Eq248ComplexAliasDenominatorSummand_le_radialWeight
+#print axioms YangMills.RG.norm_cmp89Eq248ComplexAliasDenominatorSummand_le_sourceWeight

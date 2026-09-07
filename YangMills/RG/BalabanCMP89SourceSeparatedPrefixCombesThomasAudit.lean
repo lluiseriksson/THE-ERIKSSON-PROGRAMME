@@ -1,0 +1,23 @@
+import YangMills.RG.BalabanCMP89SourceSeparatedPrefixCombesThomas
+
+/-!
+# Axiom audit
+
+-/
+
+namespace YangMills.RG
+
+#print axioms cmp89SourceSeparatedPrefixCountingCoefficient
+#print axioms cmp89SourceSeparatedPrefixPrecisionUpperBound
+#print axioms cmp89SourceSeparatedPrefixPrecisionUpperBound_pos
+#print axioms norm_cmp89SourceSeparatedFinalPrefix_Qprime_le_one
+#print axioms cmp89SourceSeparatedFinalPrefix_QprimeMass_finiteRange
+#print axioms cmp89SourceSeparatedFinePrefixPrecision_finiteRange
+#print axioms norm_cmp89SourceSeparatedFinePrefixPrecision_le
+#print axioms cmp89SourceSeparatedFinePrefixPrecision_kernelBound
+#print axioms cmp89SourceSeparatedFinePrefixGreen_exponentialKernelBound
+#print axioms cmp89SourceSeparatedAmbientPrefixGreen_exponentialKernelBound
+#print axioms cmp89SourceSeparatedAmbientPrefixPrecision_exponentialKernelBound
+#print axioms cmp96SourceSeparatedRegionalPrefixGreen_exponentialKernelBound
+
+end YangMills.RG

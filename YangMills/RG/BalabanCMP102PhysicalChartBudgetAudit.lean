@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP102PhysicalChartBudget
+
+#print axioms YangMills.RG.CMP102PhysicalNonlinearChartBudget.local_deviation_le
+#print axioms YangMills.RG.CMP102PhysicalNonlinearChartBudget.near
+#print axioms YangMills.RG.CMP102PhysicalNonlinearChartBudget.noWinding
+#print axioms YangMills.RG.CMP102PhysicalNonlinearChartBudget.relative_deviation_le
+#print axioms YangMills.RG.CMP102PhysicalNonlinearChartBudget.relativeNear
+#print axioms YangMills.RG.CMP102PhysicalNonlinearChartBudget.relativeNoWinding'
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionOfBudget_apply
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionOfBudget_toMatrix

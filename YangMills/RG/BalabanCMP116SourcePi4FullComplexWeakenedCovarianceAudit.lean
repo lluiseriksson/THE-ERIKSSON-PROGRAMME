@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexWeakenedCovariance
+
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+#print axioms YangMills.RG.cmp116PhysicalOperatorCoefficientCLM
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceLayer_ofReal
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceLayer_one
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_one_eq_exact

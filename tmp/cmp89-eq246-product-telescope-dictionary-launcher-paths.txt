@@ -1,0 +1,2 @@
+scripts/colab_cmp89_eq246_product_telescope_dictionary_validation.ipynb
+tmp/cmp89-eq246-product-telescope-dictionary-launcher-paths.txt

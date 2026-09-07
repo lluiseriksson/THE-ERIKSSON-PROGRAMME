@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3", "exit": 0, "log_file": "head.log", "output_sha256": "c3a2da29c1e417fe6528eff44ccb5b9d208758ffe3dc3ef660fd4d01ddfa1be4", "seconds": 0.0016883099999631668, "stage": "head"}

@@ -1,0 +1,54 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "boundary_blob_sha256": {
+    "YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridge.lean": "0ddfbec994b54cd2f2a78335e5f13cc7bdb5a68338b37a82dee375603eaf8c2b",
+    "YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridgeAudit.lean": "687375fc504a04a9c89a911284d663eaf93ff1724520f0b35335ca1aebcf0485",
+    "YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalGates.lean": "ace4b6000866004fb4a33aec8f9b4cc72829231ba8123917f7ab4e48ee53f851",
+    "YangMills/RG/BalabanCMP99Eq337ComplexClosedRadiusPhysicalGatesAudit.lean": "eb7da0b899bbbb8a99b8df1eba6713e207c47f2bbf71840a0f483bcc3eda6f91",
+    "YangMills/RG/BalabanCMP99Eq337ComplexClosedRecursiveBackground.lean": "33da266e700960ec93ad704b51672d2dc227cafbf164e93227a29887b597a605",
+    "YangMills/RG/BalabanCMP99Eq337ComplexClosedRecursiveBackgroundAudit.lean": "b23249dedbb5be7b05f1637be360026ee821493bf9d2dc629d0a214574c5a294"
+  },
+  "declarations_by_module": {
+    "BalabanCMP99Eq337ComplexClosedRadiusPhysicalBridge": [
+      "YangMills.RG.cmp99ComplexClosedRadiusDeviation_eq_eq337Uniform",
+      "YangMills.RG.cmp99ComplexClosedRadiusLog_eq_ubarLogRadius",
+      "YangMills.RG.cmp99ComplexClosedRadiusExp_eq_ubarExpRadius",
+      "YangMills.RG.cmp99ComplexClosedRadiusNextLink_eq_sourceNextLinkRadius",
+      "YangMills.RG.cmp99ComplexClosedRadiusNext_eq_sourceNextOrientedLinkRadius",
+      "YangMills.RG.cmp99ComplexClosedRadiusPhysicalNoWindingBudget",
+      "YangMills.RG.cmp99ComplexClosedRadiusAt_succ_eq_sourceNextOrientedLinkRadius"
+    ],
+    "BalabanCMP99Eq337ComplexClosedRadiusPhysicalGates": [
+      "YangMills.RG.CMP99ComplexClosedRadiusBudget.deviation_lt_quarter",
+      "YangMills.RG.CMP99ComplexClosedRadiusBudget.nextLink_lt_half",
+      "YangMills.RG.CMP99ComplexClosedRadiusBudget.closedLog_lt_one",
+      "YangMills.RG.CMP99ComplexClosedRadiusBudget.physicalLog_lt_one",
+      "YangMills.RG.CMP99ComplexClosedRadiusBudget.physicalNextLink_lt_one"
+    ],
+    "BalabanCMP99Eq337ComplexClosedRecursiveBackground": [
+      "YangMills.RG.cmp99Eq337SourceComplexClosedRecursiveBackground",
+      "YangMills.RG.norm_cmp99Eq337SourceComplexClosedRecursiveBackground_sub_one_le"
+    ]
+  },
+  "evidence_input_sha256": "a60925a552e588f50b3c09d263703294d4bd18ea716b9a17a04aca39d127b054",
+  "expected_declarations": 14,
+  "runner_revision": "eq337-closed-physical-recursion-promoted-cold-v3",
+  "source_sha": "573d70e09eb3f069cc3e86f43ab76b16a2349163",
+  "stage_seconds": {
+    "eq337_closed_physical_01_balabancmp99eq337complexclosedradiusphysicalbridge_audit": "11.239493721999679",
+    "eq337_closed_physical_01_balabancmp99eq337complexclosedradiusphysicalbridge_source": "8.305222083000444",
+    "eq337_closed_physical_02_balabancmp99eq337complexclosedradiusphysicalgates_audit": "9.734688797000217",
+    "eq337_closed_physical_02_balabancmp99eq337complexclosedradiusphysicalgates_source": "8.546066885000073",
+    "eq337_closed_physical_03_balabancmp99eq337complexclosedrecursivebackground_audit": "12.596840275999966",
+    "eq337_closed_physical_03_balabancmp99eq337complexclosedrecursivebackground_source": "9.726992548999988",
+    "eq337_closed_physical_materialize_dependencies": "1776.83813416",
+    "eq337_closed_physical_prepare_build_dirs": "0.01432345900002474",
+    "eq337_closed_physical_root": "8972.230164253999"
+  },
+  "status": "EQ337_CLOSED_PHYSICAL_RECURSION_EVIDENCE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

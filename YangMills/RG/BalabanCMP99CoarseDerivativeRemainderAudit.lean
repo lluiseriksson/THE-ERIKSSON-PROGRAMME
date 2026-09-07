@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99CoarseDerivativeRemainder
+
+#print axioms YangMills.RG.norm_matrixSUNAdjointModel_ad_sub_self_le
+#print axioms YangMills.RG.norm_matrixSUNAdjointModel_ad_sub_ad_le
+#print axioms YangMills.RG.cmp99SourceTripleHolonomyRadius
+#print axioms YangMills.RG.norm_sun_mul_three_sub_one_le
+#print axioms YangMills.RG.norm_cmp99SourceTripleHolonomy_sub_one_le
+#print axioms YangMills.RG.norm_cmp99SourceCoarseTransportRemainderValue_le
+#print axioms YangMills.RG.norm_cmp99SourceCoarseTransportRemainder_sq_le
+#print axioms YangMills.RG.sum_norm_cmp99SourceCoarseTransportRemainder_sq_le
+#print axioms YangMills.RG.norm_add_sq_le_two
+#print axioms YangMills.RG.norm_covariantD0_cmp99FullSourceBlockAverage_sq_le
+#print axioms YangMills.RG.cmp99SourceUbarNextFineRadius_nonneg_of_logSmall
+#print axioms YangMills.RG.norm_covariantD0_cmp99FullSourceBlockAverage_physicalUbar_sq_le

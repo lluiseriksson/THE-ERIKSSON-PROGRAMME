@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq214CauchyProductRate
+
+#print axioms YangMills.RG.cmp116Eq214CauchyRate_eq_div_prod
+#print axioms YangMills.RG.cmp116Eq214NestedCauchyRate_eq_div_prod
+#print axioms YangMills.RG.cmp116Eq214CauchyTermWeight_le_of_boundaryMajorant_le_mul_radiusProduct

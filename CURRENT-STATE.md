@@ -2887,3 +2887,36 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 5. Keep the RG operator/propagator work source-grounded and oracle-clean.
 6. Do not introduce axioms or placeholder interfaces for the missing analytic
    theorem; carry gaps only as explicit theorem hypotheses.
+
+### Live hRpoly checkpoint — 2026-07-31
+
+The literal CMP109 Lemma-1 residual is now packaged by a nonvacuous restricted
+equation-(1.36) certificate, enumerated without collapsing native domains, and
+fed to an explicit volume-uniform rooted animal sum.  The rooted
+equation-(2.20) ledger is derived for every coarse root.  The analytic
+Lemma-1 estimate itself remains a named hypothesis; `domain_subset`,
+`volume_budget`, and the complete terminal term-source constructor remain
+open.  See
+`docs/source-db/reports/CMP109-LEMMA1-NATIVE-RESIDUAL-AUDIT.md`.
+
+### Live hRpoly checkpoint — 2026-08-01
+
+The combined direct/native kernel support, off-support Hessian theorem,
+terminal equation-(1.43), and partial centered-conditioned term-source
+constructor have now been materialized and oracle-checked in one fresh Colab
+Pro+ clone at source checkpoint `134a21f0`.  The same run completed
+`YangMillsCore` with `Build completed successfully (10345 jobs).` and executed
+the full oracle with exit code zero.  The downloaded evidence archive is
+229500 bytes with SHA-256
+`589769BC64D24493B0F68F5B0458DB017258919B32C265D8C83FA327487233EC`;
+the runtime was disconnected and deleted afterward.
+
+This is an intermediate-brick evidence closure, not a physical term-source
+inhabitation.  The constructor still receives an inhabited `PreEq136`; the
+live source-facing metric is 17 independently produced obligations out of 41.
+The next aligned brick is a source-specific pre-record assembler that no
+longer accepts those seventeen conclusions as inputs.  The analytic CMP109
+Lemma-1 bound remains a named source hypothesis, and the remaining
+covariance/parametrix, contour, nondegeneracy, Cauchy, and scalar-window
+obligations remain open.  `hRpoly`, the terminal paper endpoint, and every
+continuum/Clay claim remain open.

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixRescaledOwnerDecay
+
+#print axioms YangMills.RG.norm_cmp96SourceSeparatedRegionalPrefixGreen_apply_le_rescaledOwnerScale

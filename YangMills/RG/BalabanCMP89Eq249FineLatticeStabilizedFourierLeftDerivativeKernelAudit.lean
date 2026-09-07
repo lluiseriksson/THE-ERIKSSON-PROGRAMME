@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP89Eq249FineLatticeStabilizedFourierLeftDerivativeKernel
+
+/-!
+# Audit: fine-lattice Fourier left-derivative kernel
+-/
+
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand_zero_holder_independent
+#print axioms YangMills.RG.cmp89Eq249FineLatticeStabilizedFourierLeftDerivativeKernelIntegrand
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand_zero_eq_fineFourierLeftDerivative
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedFourierLeftDerivativeKernel
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedEndpointIntegral_eq_fourierLeftDerivative
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedIntegral_eq_fourierLeftDerivativeDiff

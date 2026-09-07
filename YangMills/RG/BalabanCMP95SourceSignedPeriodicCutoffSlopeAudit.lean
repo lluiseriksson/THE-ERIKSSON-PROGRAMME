@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP95SourceSignedPeriodicCutoffSlope
+
+#print axioms YangMills.RG.norm_cmp95PeriodicSignedCutoff_sub_le
+#print axioms YangMills.RG.norm_cmp95SourcePeriodicSignedCutoff_sub_le
+#print axioms YangMills.RG.norm_cmp95SourcePeriodicSignedCutoff_le_one
+#print axioms YangMills.RG.cmp95SourcePeriodicSignedCutoff_add_period
+#print axioms YangMills.RG.cmp95RescaledSourcePeriodicSignedCutoff_sq
+#print axioms YangMills.RG.norm_cmp95RescaledSourcePeriodicSignedCutoff_sub_le
+#print axioms YangMills.RG.cmp95RescaledSourcePeriodicSignedCutoff_add_period
+#print axioms YangMills.RG.cmp95RescaledSourcePeriodicSignedTensorCutoff_sq
+#print axioms YangMills.RG.sum_cmp95RescaledSourcePeriodicSignedTensorCutoff_sq
+#print axioms YangMills.RG.norm_cmp95RescaledSourcePeriodicSignedTensorCutoff_finBox_sub_le

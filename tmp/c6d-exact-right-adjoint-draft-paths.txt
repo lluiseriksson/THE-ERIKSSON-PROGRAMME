@@ -1,0 +1,4 @@
+tmp/BalabanCMP99Eq342RightAdjointFromValueBound.draft.lean
+tmp/BalabanCMP99Eq342RightAdjointFromValueBoundAudit.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjoint.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenRightAdjointAudit.draft.lean

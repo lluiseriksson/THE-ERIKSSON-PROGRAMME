@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-canonical-spacing-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "e7b27c8d7f062936eb5aaa1a2bb66dad50346ad32299394540fde7eeaae49442", "seconds": 10.547282145999986, "stage": "clone"}

@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-physical-reflection-promoted-cold-v1", "exit": 0, "log_sha256": "1a4b6db6539a4c06ccc798236a87fa430dda41d8b6c0c22fcd16e6f83a0c2cc7", "seconds": 0.002306279999174876, "stage": "head", "timed_out": false, "timeout_seconds": 120}

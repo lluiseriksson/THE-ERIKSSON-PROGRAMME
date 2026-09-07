@@ -1,0 +1,20 @@
+import YangMills.RG.BalabanCMP116ComplexWeakenedRandomWalkSeries
+
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_ofReal
+#print axioms YangMills.RG.cmp116ComplexShiftedWeakeningPolydisc
+#print axioms YangMills.RG.norm_cmp116ComplexWeakeningMonomial_le_prod
+#print axioms YangMills.RG.norm_cmp116ComplexWeakeningMonomial_le_pow_card
+#print axioms YangMills.RG.cmp116ComplexWeakenedRandomWalkSeries
+#print axioms YangMills.RG.norm_cmp116ComplexWeakeningTerm_le_radialMajorant
+#print axioms YangMills.RG.summable_cmp116ComplexWeakenedRandomWalkSeries
+#print axioms YangMills.RG.norm_cmp116ComplexWeakenedRandomWalkSeries_le_tsum_majorant
+#print axioms YangMills.RG.cmp116ComplexWeakenedRandomWalkSeries_one
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_update_of_mem
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_update_of_not_mem
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_zeroOutside
+#print axioms YangMills.RG.cmp116ComplexWeakenedRandomWalkSeries_zeroOutside
+#print axioms YangMills.RG.cmp116ComplexWeakenedRandomWalkSeriesDerivative
+#print axioms YangMills.RG.summable_cmp116ComplexWeakenedRandomWalkSeriesDerivative
+#print axioms YangMills.RG.cmp116ComplexWeakenedRandomWalkSeries_update_eq_affine
+#print axioms YangMills.RG.hasDerivAt_cmp116ComplexWeakenedRandomWalkSeries_update

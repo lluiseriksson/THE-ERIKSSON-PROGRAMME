@@ -1,0 +1,14 @@
+{
+  "source_sha": "ae676b71f2bae392560db80cbadcd24e6193305a",
+  "final_status": "PASS",
+  "module_exit": 0,
+  "module_seconds": 27.169,
+  "audit_exit": 0,
+  "audit_seconds": 16.179,
+  "expected_readouts": 15,
+  "observed_readouts": 15,
+  "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "evidence_sha256": "44e299887f8236319984b9f3d85f09dfea48791db81a9b231b812c41b15bc052",
+  "archive_sha256": "046dd4b3dd97616c8f51bc79e15af12b616bba58fa4a274ce03317532322dd96",
+  "executed_notebook_sha256": "227E6316CFF252832928077BE8EA20B50243364CEDE2EEEDCBD2AB4F82F1E376"
+}

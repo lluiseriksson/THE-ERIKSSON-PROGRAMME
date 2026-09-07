@@ -1,0 +1,35 @@
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+tmp/neumann-integer-block-image-average-hot-v1/mathlib-repro.lean:87:2: error: unsolved goals
+case h.false
+d B : ℕ
+m y k : Fin d → ℤ
+branch : CMP89NeumannReflectionBranch d
+r : FinBox d B
+mu : Fin d
+hb : branch mu = false
+⊢ (if false = true then -1 + k mu * ↑B * m mu * 2 + (-(↑B * y mu) - ↑↑(r mu))
+    else k mu * ↑B * m mu * 2 + ↑B * y mu + ↑↑(r mu)) =
+    (↑B * if false = true then -1 + (k mu * m mu * 2 - y mu) else k mu * m mu * 2 + y mu) +
+      ↑↑(if false = true then (r mu).rev else r mu)
+tmp/neumann-integer-block-image-average-hot-v1/mathlib-repro.lean:88:67: warning: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89NeumannReflectionImage, cmp89NeumannReflectionOrbit,
+       ̵ ̵neumannIntegerFineBlockPoint, neumannHalfCellReflection, hb,̵ ̵i̵f̵_̵f̵a̵l̵s̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'YangMills.RG.neumannIntegerImage_fineBlockPoint' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'YangMills.RG.sum_neumannIntegerImage_fineBlockPoint' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.weightedSum_neumannIntegerImage_fineBlockPoint' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

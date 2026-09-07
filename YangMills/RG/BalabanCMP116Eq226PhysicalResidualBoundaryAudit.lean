@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq226PhysicalResidualBoundary
+
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_eq226SourceTermWeight_of_physicalCutoff_residualLedger

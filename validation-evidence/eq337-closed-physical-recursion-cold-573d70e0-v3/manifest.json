@@ -1,0 +1,10 @@
+{
+  "files": {
+    "eq337-closed-physical-recursion-axioms.json": "53C0ACDF7203EA3BDEE0AB97A87E71F11D21B64C0198C8FD345056C61F5D0A78",
+    "hrpoly-eq337-closed-physical-recursion-evidence.tar.gz": "A60925A552E588F50B3C09D263703294D4BD18EA716B9A17A04ACA39D127B054"
+  },
+  "runner_revision": "eq337-closed-physical-recursion-promoted-cold-v3",
+  "source_sha": "573d70e09eb3f069cc3e86f43ab76b16a2349163",
+  "status": "EQ337_CLOSED_PHYSICAL_RECURSION_ARCHIVE_PACKAGE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

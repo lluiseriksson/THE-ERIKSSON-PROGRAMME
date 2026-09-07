@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive
+
+#print axioms YangMills.RG.cmp99SourceBlockAverageWeight_pos
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalMass_pos_succ
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexA_pos_succ
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexA_pos_physical

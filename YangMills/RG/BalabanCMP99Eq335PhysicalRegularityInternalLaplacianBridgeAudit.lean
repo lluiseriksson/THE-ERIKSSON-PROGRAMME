@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityInternalLaplacianBridge
+
+
+
+namespace YangMills.RG
+
+#print axioms CMP99Eq335PhysicalRegularityWitness.transformedBackground_eq_exponential_on_internalBonds
+#print axioms CMP99Eq335PhysicalRegularityWitness.regionalLaplacian_eq_exponential_of_sourceRegionDictionary
+
+end YangMills.RG

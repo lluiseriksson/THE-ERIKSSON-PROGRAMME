@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP109PhysicalConstraintRightInverseSupport
+
+#print axioms YangMills.RG.cmp96ConstraintPivotInsertion_apply_of_not_pivot
+#print axioms YangMills.RG.cmp96ConstraintPivotInsertion_apply_pivot
+#print axioms YangMills.RG.cmp109PhysicalConstraintRightInverseCLM_apply_eq_zero_of_not_pivot
+#print axioms YangMills.RG.cmp109PhysicalConstraintRightInverseCLM_apply_pivot

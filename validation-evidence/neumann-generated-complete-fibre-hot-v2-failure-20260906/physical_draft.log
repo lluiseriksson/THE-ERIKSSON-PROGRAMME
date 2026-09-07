@@ -1,0 +1,33 @@
+tmp/neumann-generated-complete-fibre-hot-v2/NeumannGeneratedCompleteFibreDraft.lean:34:9: error: unsolved goals
+case zero
+d M N : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero M
+inst✝ : NeZero N
+Omega : ActiveGaugeRegion d N
+x : FinBox d (cmp99RegionalLatticeSize M N 0)
+⊢ x ∈ Omega.sites ↔ x ∈ Omega.sites
+'YangMills.RG.neumann_mem_iteratedLift_iff_terminalOwner' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedBlockSitesToActiveFibre' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv_integerCoordinates' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.sum_neumannGeneratedCompleteFibre_eq_offsets' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.sum_neumannGeneratedOwnerIndicator_eq_offsets' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

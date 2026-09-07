@@ -1,0 +1,6 @@
+import YangMills.RG.AnalyticThirdDerivativeChangeOriginBound
+
+#print axioms YangMills.RG.thirdDerivativeChangeOriginBallBudget_nonneg
+#print axioms YangMills.RG.six_mul_norm_changeOrigin_three_le_ballBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_le_six_mul_changeOrigin
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_le_changeOriginBallBudget

@@ -1,0 +1,2001 @@
+✔ [8157/8307] Built YangMills.RG.BalabanCMP89Eq245SincAverageLower (9.9s)
+✔ [8158/8307] Built YangMills.RG.BalabanCMP116FTCInterpolation (9.9s)
+✔ [8159/8307] Built YangMills.RG.BalabanCMP116Eq23Cutoff (7.9s)
+ℹ [8160/8307] Built YangMills.KP.PlaneTreeCatalan (9.3s)
+info: YangMills/KP/PlaneTreeCatalan.lean:211:0: 'RootedTreeCatalan.PlaneTree.card_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:212:0: 'RootedTreeCatalan.PlaneTree.mem_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:213:0: 'RootedTreeCatalan.PlaneTree.numNodes_forestToBin' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:214:0: 'RootedTreeCatalan.sum_card_eq_card_sigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8161/8307] Built YangMills.RG.BalabanCMP116Eq214Cauchy (9.3s)
+⚠ [8162/8307] Built YangMills.RG.RealBilinearRiesz (10s)
+warning: YangMills/RG/RealBilinearRiesz.lean:24:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8163/8308] Built YangMills.RG.BalabanCMP116QuadraticGaussian (15s)
+✔ [8164/8308] Built YangMills.RG.BalabanCMP116WeakenedRandomWalkSum (12s)
+✔ [8165/8308] Built YangMills.RG.GaussianMGF (26s)
+✔ [8166/8308] Built YangMills.RG.LocalFunctional (29s)
+✔ [8167/8308] Built YangMills.L0_Lattice.FiniteLattice (21s)
+✔ [8168/8308] Built YangMills.RG.KernelDecay (29s)
+✔ [8169/8308] Built YangMills.KP.Basic (23s)
+✔ [8170/8316] Built YangMills.KP.WalkBound (25s)
+✔ [8171/8316] Built YangMills.RG.SUNAdjointMatrixSubstrate (26s)
+ℹ [8172/8316] Built YangMills.KP.LabeledPlaneTreeCatalan (6.4s)
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:377:0: 'RootedTreeCatalan.mem_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:378:0: 'RootedTreeCatalan.card_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:379:0: 'RootedTreeCatalan.decorate_shape_labels' depends on axioms: [propext]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:380:0: 'RootedTreeCatalan.labels_decorate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:381:0: 'RootedTreeCatalan.mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:382:0: 'RootedTreeCatalan.card_labeledTreesOn'' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8173/8316] Built YangMills.RG.BalabanCMP116Eq214PhysicalTerm (6.1s)
+✔ [8174/8316] Built YangMills.RG.BalabanCMP89Eq245ComplexSincDictionary (8.5s)
+✔ [8175/8316] Built YangMills.RG.BalabanCMP116GaussianOrthogonal (6.4s)
+✔ [8176/8317] Built YangMills.RG.BalabanCMP116WeakenedRandomWalkSeries (7.2s)
+✔ [8177/8317] Built YangMills.RG.AnimalCount (10s)
+✔ [8178/8317] Built YangMills.KP.Cluster (9.6s)
+✔ [8179/8317] Built YangMills.L0_Lattice.GaugeConfigurations (11s)
+✔ [8180/8317] Built YangMills.RG.BlockLattice (12s)
+✔ [8181/8317] Built YangMills.RG.BalabanCMP116Eq214CauchyEstimate (5.7s)
+✔ [8182/8317] Built YangMills.RG.CouplingFlowBridge (10s)
+✔ [8183/8317] Built YangMills.RG.KernelSchur (13s)
+⚠ [8184/8317] Built YangMills.KP.PinnedWalk (13s)
+warning: YangMills/KP/PinnedWalk.lean:107:51: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_m̵u̵l̵,̵ ̵z̵e̵r̵o̵_̵add] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/KP/PinnedWalk.lean:107:61: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_mul,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8185/8317] Built YangMills.RG.SUNAdjointInnerSpace (11s)
+✔ [8186/8319] Built YangMills.RG.BalabanCMP89Eq250CentralLaplacianComparison (6.8s)
+✔ [8187/8319] Built YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude (6.9s)
+✔ [8188/8319] Built YangMills.RG.BalabanCMP116QuadraticGaussianSpectral (7.7s)
+⚠ [8189/8319] Built YangMills.RG.BalabanCMP99GeneralizedRandomWalk (6.9s)
+warning: YangMills/RG/BalabanCMP99GeneralizedRandomWalk.lean:416:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99GeneralizedWalk.core_subset_contourActiveCore_of_mem`:
+  [DecidableEq Domain]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq Domain] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8190/8319] Built YangMills.RG.BalabanCMP116Eq214IntegrandEstimate (5.6s)
+✔ [8191/8319] Built YangMills.L0_Lattice.WilsonAction (9.9s)
+✔ [8192/8319] Built YangMills.KP.PenrosePrep (11s)
+✔ [8193/8319] Built YangMills.KP.Ursell (14s)
+✔ [8194/8319] Built YangMills.RG.CouplingFlow (11s)
+✔ [8195/8320] Built YangMills.ClayCore.WilsonLine (12s)
+✔ [8196/8320] Built YangMills.RG.BalabanCMP89Eq250CentralAliasLower (5.9s)
+✔ [8197/8320] Built YangMills.RG.CovarianceKernel (10s)
+✔ [8198/8320] Built YangMills.RG.BalabanCMP89Eq248EntireFourierSymbols (6.3s)
+✔ [8199/8320] Built YangMills.RG.BalabanCMP89Eq245EntireAverageStripGrowth (6.5s)
+✔ [8200/8320] Built YangMills.RG.RawMayerWithHoles (10s)
+✔ [8201/8320] Built YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummability (7.7s)
+✔ [8202/8320] Built YangMills.RG.BalabanCMP116QuadraticGaussianMatrix (9.8s)
+✔ [8203/8321] Built YangMills.L0_Lattice.GaugeInvariance (10s)
+✔ [8204/8321] Built YangMills.KP.PenroseScheme (10s)
+✔ [8205/8321] Built YangMills.RG.BalabanCMP89Eq250FullDenominatorLower (6.2s)
+✔ [8206/8322] Built YangMills.RG.BalabanCMP89Eq245EntireAverageVerticalVariation (7.1s)
+✔ [8207/8326] Built YangMills.KP.Criterion (11s)
+✔ [8208/8326] Built YangMills.RG.BalabanCMP116Eq223Gaussian (8.6s)
+✔ [8209/8329] Built YangMills.RG.SUNAdjointDimension (29s)
+✔ [8210/8329] Built YangMills.RG.BalabanCMP89Eq251OneDimensionalAliasSeries (7.1s)
+✔ [8211/8329] Built YangMills.KP.PenroseBFS (12s)
+✔ [8212/8329] Built YangMills.L0_Lattice.FiniteLatticeGeometryInstance (14s)
+✔ [8213/8337] Built YangMills.RG.BalabanCMP89Eq245EntireAverageAmplitudeVariation (7.3s)
+✔ [8214/8337] Built YangMills.KP.Expansion (10s)
+✔ [8215/8337] Built YangMills.KP.SharpMajorant (9.4s)
+✔ [8216/8337] Built YangMills.RG.BalabanCMP116CorrelatedGaussian (6.6s)
+✔ [8217/8337] Built YangMills.RG.BalabanCMP89Eq251MultidimensionalAliasProduct (5.7s)
+✔ [8218/8337] Built YangMills.KP.Convergence (9.9s)
+✔ [8219/8339] Built YangMills.RG.PolymerRemainder (31s)
+✔ [8220/8339] Built YangMills.L1_GibbsMeasure.GibbsMeasure (10s)
+✔ [8221/8339] Built YangMills.KP.PenroseFiber (11s)
+✔ [8222/8339] Built YangMills.RG.BlockMaps (10s)
+✔ [8223/8339] Built YangMills.RG.BalabanCMP89Eq245EntireLaplacianVariation (7.9s)
+✔ [8224/8342] Built YangMills.RG.BalabanCMP89Eq251ExpandedAliasGeometry (8.0s)
+✔ [8225/8343] Built YangMills.RG.LinearAveraging (14s)
+✔ [8226/8348] Built YangMills.RG.FiniteTorusCurlDiv (15s)
+✔ [8227/8348] Built YangMills.KP.ClusterWeight (11s)
+✔ [8228/8348] Built YangMills.RG.AnimalTour (12s)
+✔ [8229/8348] Built YangMills.RG.BalabanCMP116Eq225OuterGaussian (7.4s)
+✔ [8230/8348] Built YangMills.KP.RootedChildCount (13s)
+⚠ [8231/8348] Built YangMills.L1_GibbsMeasure.CenterInvariance (12s)
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.centerAct_apply_pos`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.wilsonLine_center_smul_of_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8232/8348] Built YangMills.RG.BalabanCMP89Eq251ExpandedDifferenceLower (16s)
+✔ [8233/8348] Built YangMills.KP.PinnedCluster (10s)
+⚠ [8234/8351] Built YangMills.RG.AveragingL2 (16s)
+warning: YangMills/RG/AveragingL2.lean:194:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8235/8351] Built YangMills.KP.KPBound (20s)
+✔ [8236/8351] Built YangMills.RG.CubeLattice (17s)
+✔ [8237/8351] Built YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper (12s)
+✔ [8238/8351] Built YangMills.KP.RootedLeafSummation (20s)
+⚠ [8239/8351] Built YangMills.L1_GibbsMeasure.PolymerExpansion (20s)
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:138:0: automatically included section variable(s) unused in theorem `YangMills.config_apply_neg`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:405:10: This simp argument is unused:
+  measure_univ
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵m̵e̵a̵s̵u̵r̵e̵_̵u̵n̵i̵v̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8240/8359] Built YangMills.RG.BalabanCMP89Eq251AliasSlopeNonzero (9.9s)
+⚠ [8241/8359] Built YangMills.KP.RootedCatalanBridge (38s)
+warning: YangMills/KP/RootedCatalanBridge.lean:683:0: automatically included section variable(s) unused in theorem `YangMills.KP.rootLabel_mem_labels`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:776:0: automatically included section variable(s) unused in theorem `YangMills.KP.disjoint_labels_of_ne_of_pairwise`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:1183:7: unused variable `h1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: YangMills/KP/RootedCatalanBridge.lean:1267:0: 'YangMills.KP.penroseTree_eq_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1268:0: 'YangMills.KP.card_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1269:0: 'YangMills.KP.bfsLevel_le_of_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1270:0: 'YangMills.KP.mem_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1271:0: 'YangMills.KP.card_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1272:0: 'YangMills.KP.card_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1273:0: 'YangMills.KP.sum_prod_factorial_eq_card_sigma_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1274:0: 'YangMills.KP.rootLabel_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1275:0: 'YangMills.KP.bfsLevel_parIter' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1276:0: 'YangMills.KP.mem_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1277:0: 'YangMills.KP.nodup_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1278:0: 'YangMills.KP.orderedBFSTree_mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1279:0: 'YangMills.KP.childrenOf_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1280:0: 'YangMills.KP.spanningTree_eq_of_listings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1281:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1282:0: 'YangMills.KP.orderedBFSTree_eq_of_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1283:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1284:0: 'YangMills.KP.treeEdges_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1285:0: 'YangMills.KP.rootedChildren_treeEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1286:0: 'YangMills.KP.card_sigma_childListings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1287:0: 'YangMills.KP.sum_prod_rootedChildCount_factorial_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [8242/8359] Built YangMills.RG.AveragingAdjoint (27s)
+✔ [8243/8361] Built YangMills.RG.BalabanCMP89Eq245EntireAverageAliasStripBound (22s)
+✔ [8244/8365] Built YangMills.RG.GaussianPi (95s)
+✔ [8245/8369] Built YangMills.RG.BalabanCMP89Eq251EntireAverageAliasDictionary (6.5s)
+✔ [8246/8375] Built YangMills.KP.RootedCatalan (14s)
+✔ [8247/8377] Built YangMills.RG.PhysicalGaugeCochains (61s)
+✔ [8248/8391] Built YangMills.RG.ModifiedMetric (32s)
+✔ [8249/8391] Built YangMills.L1_GibbsMeasure.PolymerFactorization (17s)
+✔ [8250/8391] Built YangMills.RG.InverseSqrtResolventScalar (7.3s)
+✔ [8251/8391] Built YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominator (6.9s)
+ℹ [8252/8391] Built YangMills.KP.RootedCatalanIdentityProof (14s)
+info: YangMills/KP/RootedCatalanIdentityProof.lean:61:0: 'YangMills.KP.rootedChildFactorialCatalanIdentity_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanIdentityProof.lean:62:0: 'YangMills.KP.rootedChildFactorialTreeSumNormalized_le_catalan' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+✔ [8253/8396] Built YangMills.RG.SUNAdjointModelInstance (17s)
+✔ [8254/8396] Built YangMills.RG.PhysicalGaugeHodgePoincare (12s)
+✔ [8255/8398] Built YangMills.RG.BalabanCMP116WilsonHessianLiteral (15s)
+✔ [8256/8398] Built YangMills.RG.PhysicalBondDistance (15s)
+✔ [8257/8398] Built YangMills.RG.BalabanCMP116Eq214Incidence (15s)
+✔ [8258/8398] Built YangMills.RG.GaugePrecision (26s)
+✔ [8259/8398] Built YangMills.RG.BalabanCMP89Eq245EntireAverageAliasWeightedVariation (7.4s)
+✔ [8260/8398] Built YangMills.RG.InverseSqrtResolventScalarIntegral (7.5s)
+✔ [8261/8398] Built YangMills.RG.BalabanCMP89Eq246EntireAliasPrecisionMatrix (8.6s)
+✔ [8262/8398] Built YangMills.RG.BalabanCMP116Eq221OperatorForms (15s)
+⚠ [8263/8398] Built YangMills.KP.SharpShell (67s)
+warning: YangMills/KP/SharpShell.lean:404:23: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead
+warning: YangMills/KP/SharpShell.lean:491:4: Try this: intro pl _ hadm
+✔ [8264/8398] Built YangMills.RG.OmegaConnectedCover (14s)
+✔ [8265/8398] Built YangMills.L1_GibbsMeasure.EdgeFactorization (14s)
+✔ [8266/8398] Built YangMills.KP.RootedCatalanExact (11s)
+⚠ [8267/8398] Built YangMills.RG.BalabanCMP99SimpleLocalizationDomains (15s)
+warning: YangMills/RG/BalabanCMP99SimpleLocalizationDomains.lean:118:8: automatically included section variable(s) unused in theorem `_private.YangMills.RG.BalabanCMP99SimpleLocalizationDomains.0.YangMills.RG.blocks_injective`:
+  [Fintype V]
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype V] [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SimpleLocalizationDomains.lean:129:0: automatically included section variable(s) unused in theorem `YangMills.RG.image_cmp99MeetingSimpleDomains_subset_rootedUnion`:
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SimpleLocalizationDomains.lean:218:0: automatically included section variable(s) unused in theorem `YangMills.RG.mem_cmp99SimpleDomainSuccessors_meets`:
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SimpleLocalizationDomains.lean:247:0: automatically included section variable(s) unused in theorem `YangMills.RG.summable_cmp99SimpleDomainWalk_radialMajorant`:
+  [NormedSpace ℝ E]
+  [CompleteSpace E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ E] [CompleteSpace E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8268/8398] Built YangMills.RG.InverseSqrtResolventCFC (10.0s)
+✔ [8269/8398] Built YangMills.RG.BalabanCMP89Eq249CentralStabilizedAliasDenominator (7.9s)
+⚠ [8270/8401] Built YangMills.RG.BalabanCMP116WilsonHessianUnitaryChart (15s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianUnitaryChart.lean:117:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalSuMatrixTangent_skew`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8271/8401] Built YangMills.RG.LocalLinearOperator (27s)
+✔ [8272/8412] Built YangMills.RG.BalabanCMP116Eq214Interior (15s)
+✔ [8273/8418] Built YangMills.RG.CoercivePerturbation (14s)
+✔ [8274/8418] Built YangMills.KP.SharpKP (10s)
+✔ [8275/8418] Built YangMills.RG.PhysicalGaugeFlatPoincare (29s)
+✔ [8276/8418] Built YangMills.RG.BalabanCMP99SimpleDomainActiveCarrier (14s)
+✔ [8277/8426] Built YangMills.RG.UltralocalFactorization (18s)
+✔ [8278/8426] Built YangMills.RG.CoerciveCovariance (16s)
+✔ [8279/8426] Built YangMills.RG.BalabanCMP116Eq214LocalizationCore (17s)
+✔ [8280/8426] Built YangMills.KP.RootedCatalanMajorant (19s)
+⚠ [8281/8426] Built YangMills.RG.BalabanCMP116WilsonHessianDifferential (26s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:42:0: automatically included section variable(s) unused in theorem `YangMills.RG.matrixConjTransposeCLM_apply`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:54:0: automatically included section variable(s) unused in theorem `YangMills.RG.matrixEntryCLM_apply`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:60:0: automatically included section variable(s) unused in theorem `YangMills.RG.analyticAt_physicalMatrixExp_eval`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:106:45: This simp argument is unused:
+  if_false
+
+Hint: Omit it from the simp argument list.
+  simp only [ambientOrientedEdgeMatrix, h,̵ ̵i̵f̵_̵f̵a̵l̵s̵e̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:146:0: automatically included section variable(s) unused in theorem `YangMills.RG.ambientTraceReal_eq`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:150:0: automatically included section variable(s) unused in theorem `YangMills.RG.analyticAt_ambientTraceReal_comp`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:207:0: automatically included section variable(s) unused in theorem `YangMills.RG.ambientWilsonHessian_add_left`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:216:0: automatically included section variable(s) unused in theorem `YangMills.RG.ambientWilsonHessian_add_right`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:248:58: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:261:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:263:60: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:277:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalSuTangentToAmbient_apply`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianDifferential.lean:401:4: This simp argument is unused:
+  physicalSuUnitaryLeftVariation
+
+Hint: Omit it from the simp argument list.
+  simp only [physicalWilsonMixedVariationUnitary, wilsonActionMixedVariation,̵
+  ̵ ̵ ̵ ̵ ̵p̵h̵y̵s̵i̵c̵a̵l̵S̵u̵U̵n̵i̵t̵a̵r̵y̵L̵e̵f̵t̵V̵a̵r̵i̵a̵t̵i̵o̵n̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8282/8437] Built YangMills.RG.BalabanCMP116Dmu0 (13s)
+✔ [8283/8437] Built YangMills.RG.PhysicalPoincareWall (16s)
+✔ [8284/8437] Built YangMills.RG.SchurCatalanBudget (16s)
+✔ [8285/8437] Built YangMills.RG.ShiftedCoerciveResolvent (20s)
+✔ [8286/8444] Built YangMills.RG.MayerCoverFactorization (24s)
+✔ [8287/8444] Built YangMills.RG.HolePolymerSystem (27s)
+⚠ [8288/8444] Built YangMills.RG.BalabanCMP116WilsonHessianFlatDictionary (16s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatDictionary.lean:35:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCochainToSuMatrixTangent_apply`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatDictionary.lean:51:0: automatically included section variable(s) unused in theorem `YangMills.RG.flatOrientedSuMatrixTangent_pos`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatDictionary.lean:59:0: automatically included section variable(s) unused in theorem `YangMills.RG.flatOrientedSuMatrixTangent_neg`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8289/8444] Built YangMills.RG.BalabanCMP116MatrixTraceL2OpNorm (13s)
+warning: YangMills/RG/BalabanCMP116MatrixTraceL2OpNorm.lean:21:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_matrix_entry_le_l2_opNorm`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8290/8444] Built YangMills.RG.BalabanCMP89Eq251NoncentralLaplacianRatio (9.1s)
+⚠ [8291/8447] Built YangMills.RG.BalabanCMP116FourFactorSecondDerivative (15s)
+warning: YangMills/RG/BalabanCMP116FourFactorSecondDerivative.lean:77:0: automatically included section variable(s) unused in theorem `YangMills.RG.hasDerivAt_fourFactorProduct`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116FourFactorSecondDerivative.lean:88:0: automatically included section variable(s) unused in theorem `YangMills.RG.hasDerivAt_fourFactorFirst`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8292/8447] Built YangMills.RG.BalabanCMP116Eq214FiniteGaussianData (11s)
+✔ [8293/8447] Built YangMills.RG.PhysicalPoincareSectorQuotient (13s)
+✔ [8294/8447] Built YangMills.RG.InverseSqrtResolventKernel (12s)
+✔ [8295/8447] Built YangMills.RG.BalabanCMP116WilsonHessianExpDerivative (28s)
+✔ [8296/8447] Built YangMills.RG.BalabanCMP89Eq251HolderPhase (7.8s)
+✔ [8297/8447] Built YangMills.RG.BalabanCMP116Eq214Geometry (12s)
+✔ [8298/8447] Built YangMills.RG.GaugeFixedPrecision (24s)
+✔ [8299/8447] Built YangMills.RG.BalabanCMP116Eq214IntegratedGaussianEstimate (15s)
+✔ [8300/8447] Built YangMills.RG.InverseSqrtResolventBochner (14s)
+✔ [8301/8447] Built YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation (18s)
+✔ [8302/8451] Built YangMills.RG.PhysicalPoincareLowModeFalsifier (17s)
+✔ [8303/8451] Built YangMills.RG.BalabanCMP89Eq251AliasWeightRedistribution (12s)
+✔ [8304/8457] Built YangMills.RG.BalabanCMP116FourFactorLipschitz (30s)
+⚠ [8305/8459] Built YangMills.RG.BalabanCMP116WilsonHessianFlatPlaquette (26s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatPlaquette.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.RG.hasDerivAt_fourExpLine`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatPlaquette.lean:190:62: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatPlaquette.lean:201:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatPlaquette.lean:203:60: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianFlatPlaquette.lean:331:0: automatically included section variable(s) unused in theorem `YangMills.RG.matrixTraceInner_add_right_local`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8306/8459] Built YangMills.RG.GaugeFixedCovariance (14s)
+✔ [8307/8459] Built YangMills.RG.BalabanCMP116Eq224GaussianBound (12s)
+✔ [8308/8459] Built YangMills.RG.BalabanCMP89Eq251NoncentralRealIntegrandBound (8.8s)
+✔ [8309/8459] Built YangMills.RG.BalabanCMP89Eq245CenteredAliasCycle (7.6s)
+⚠ [8310/8459] Built YangMills.RG.BalabanCMP116WilsonBackgroundFactorBounds (11s)
+warning: YangMills/RG/BalabanCMP116WilsonBackgroundFactorBounds.lean:77:0: automatically included section variable(s) unused in theorem `YangMills.RG.orientedWilsonBackgroundFactor_trivial`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8311/8463] Built YangMills.RG.PhysicalPoincareLowModeHodge (21s)
+⚠ [8312/8463] Built YangMills.RG.BalabanCMP116FourFactorMixed (12s)
+warning: YangMills/RG/BalabanCMP116FourFactorMixed.lean:51:0: automatically included section variable(s) unused in theorem `YangMills.RG.two_smul_fourFactorMixed_eq_polarization`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixed.lean:58:62: This simp argument is unused:
+  Pi.smul_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [fourFactorMixed, fourFactorSecond, Pi.add_apply, P̵i̵.̵s̵m̵u̵l̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵two_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixed.lean:63:0: automatically included section variable(s) unused in theorem `YangMills.RG.fourFactorMixed_symm`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8313/8463] Built YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula (13s)
+✔ [8314/8463] Built YangMills.RG.BalabanCMP89Eq245CenteredAliasVectorCycle (5.7s)
+✔ [8315/8468] Built YangMills.RG.BalabanCMP89Eq251CentralRealIntegrandBound (7.9s)
+✔ [8316/8468] Built YangMills.RG.BalabanCMP116WilsonHessianFlatGlobal (17s)
+✔ [8317/8471] Built YangMills.RG.BalabanCMP116Eq223GaussianDomination (12s)
+✔ [8318/8471] Built YangMills.RG.PhysicalGaugeFixedPrecision (15s)
+✔ [8319/8471] Built YangMills.RG.PeriodicHolomorphicVerticalShift (6.4s)
+✔ [8320/8471] Built YangMills.RG.IntervalIntegralSliceTransport (4.7s)
+✔ [8321/8471] Built YangMills.RG.BalabanCMP89SignedLatticeL1ExponentialSum (7.4s)
+⚠ [8322/8471] Built YangMills.RG.PhysicalPoincareLowModeBlock (19s)
+warning: YangMills/RG/PhysicalPoincareLowModeBlock.lean:419:30: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8323/8471] Built YangMills.RG.BalabanCMP116WilsonOrientedEdgeMixed (19s)
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixed.lean:34:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalMatrixExp_zero_smul`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixed.lean:93:54: This simp argument is unused:
+  zero_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [orientedWilsonFactorFirst, h, if_true, z̵e̵r̵o̵_̵s̵m̵u̵l̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵physicalMatrixExp_zero_smul, one_mul,
+  ̲  ̲ ̲ ̲orientedWilsonGenerator_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixed.lean:109:44: This simp argument is unused:
+  zero_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [orientedWilsonFactorMixedNumerator, h, Bool.false_eq_true,
+  ̵  ̵ ̵ ̵ ̵ ̵if_false,
+  ̲  ̲ ̲ ̲orientedWilsonFactorSecond, z̵e̵r̵o̵_̵s̵m̵u̵l̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵physicalMatrixExp_zero_smul, one_mul, orientedWilsonGenerator_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixed.lean:113:34: This simp argument is unused:
+  zero_smul
+
+Hint: Omit it from the simp argument list.
+  simp only [orientedWilsonFactorMixedNumerator, h, if_true,
+  ̵  ̵ ̵ ̵ ̵ ̵orientedWilsonFactorSecond,
+  ̲ z̵e̵r̵o̵_̵s̵m̵u̵l̵,̵  ̲ ̲physicalMatrixExp_zero_smul, one_mul,
+  ̵  ̵ ̵ ̵ ̵ ̵orientedWilsonGenerator_add]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8324/8471] Built YangMills.RG.BalabanCMP116Eq223PhysicalSmallness (13s)
+✔ [8325/8471] Built YangMills.RG.BalabanCMP116WilsonHessianFlatPrecision (15s)
+✔ [8326/8471] Built YangMills.RG.HolomorphicVerticalShiftBoundary (6.6s)
+✔ [8327/8471] Built YangMills.RG.IntervalIntegralPiCoordinateTransport (6.2s)
+✔ [8328/8471] Built YangMills.RG.PhysicalGaugeCovarianceLocalization (15s)
+✔ [8329/8471] Built YangMills.RG.BalabanCMP116WilsonPlaquetteMixedFormula (12s)
+✔ [8330/8471] Built YangMills.RG.PhysicalGaugeOperator (65s)
+✔ [8331/8473] Built YangMills.RG.BalabanCMP116Eq224DeterminantBound (13s)
+⚠ [8332/8473] Built YangMills.RG.BalabanCMP116WilsonOrientedEdgeMixedBounds (15s)
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixedBounds.lean:47:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵Bool.false_eq_true, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixedBounds.lean:55:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixedBounds.lean:77:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵Bool.false_eq_true, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixedBounds.lean:101:15: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixedBounds.lean:129:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_orientedWilsonMixedGeneratorNumerator_le`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixedBounds.lean:263:17: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵Bool.false_eq_true, if_false]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP116WilsonOrientedEdgeMixedBounds.lean:288:17: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  simp only [h̵,̵ ̵if_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8333/8484] Built YangMills.RG.BalabanCMP116FourFactorMixedLipschitz (37s)
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:47:0: automatically included section variable(s) unused in theorem `YangMills.RG.fourFactorMixed_eq_sum_products`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_fourMatrixProduct_sub_le_four_scales`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:140:66: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:150:66: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:160:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:170:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:180:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:190:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:211:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:221:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:231:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:241:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:262:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/BalabanCMP116FourFactorMixedLipschitz.lean:272:38: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8334/8484] Built YangMills.RG.BalabanCMP116Eq223CovarianceOpNorm (13s)
+✔ [8335/8484] Built YangMills.RG.BalabanCMP89Eq247EntireAliasTransposeSolution (6.7s)
+✔ [8336/8518] Built YangMills.RG.BalabanCMP89Eq251EntireScaledDifferenceStripUpper (5.4s)
+✔ [8337/8525] Built YangMills.RG.BalabanCMP89Eq249StabilizedAliasTransposeSolution (9.5s)
+✔ [8338/8538] Built YangMills.RG.BalabanCMP89Eq251BareInverseLaplacianHalfWeight (10s)
+✔ [8339/8541] Built YangMills.RG.PhysicalGaugeCMP116OperatorTransport (24s)
+⚠ [8340/8541] Built YangMills.RG.BalabanCMP116WilsonPlaquetteMixedLipschitz (14s)
+warning: YangMills/RG/BalabanCMP116WilsonPlaquetteMixedLipschitz.lean:161:12: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8341/8541] Built YangMills.RG.BalabanCMP116Eq224SourceBound (17s)
+✔ [8342/8542] Built YangMills.RG.BalabanCMP89Eq251HalfAliasTailIntegral (6.8s)
+✔ [8343/8549] Built YangMills.RG.BalabanCMP89CenteredUnitCubeTorusQuotient (8.1s)
+✔ [8344/8549] Built YangMills.RG.PhysicalCoerciveCombesThomas (28s)
+✔ [8345/8549] Built YangMills.RG.PhysicalGramKernel (34s)
+✔ [8346/8549] Built YangMills.RG.BalabanCMP89Eq251CenteredHalfAliasSum (8.8s)
+⚠ [8347/8558] Built YangMills.RG.BalabanCMP116WilsonPlaquetteEnergy (15s)
+warning: YangMills/RG/BalabanCMP116WilsonPlaquetteEnergy.lean:24:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_suLie_toMatrix_l2_opNorm_le`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonPlaquetteEnergy.lean:73:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_orientedWilsonGenerator_le_coordinate`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonPlaquetteEnergy.lean:100:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalPlaquetteCochainEnergy_nonneg`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonPlaquetteEnergy.lean:107:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_coordinate_le_physicalPlaquetteCochainEnergy`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8348/8558] Built YangMills.RG.BalabanCMP116Eq224LocalizedDeterminant (13s)
+✔ [8349/8588] Built YangMills.RG.PhysicalGaugeFluctuationActivity (17s)
+✔ [8350/8594] Built YangMills.RG.HolonomyGauge (11s)
+✔ [8351/8594] Built YangMills.RG.BalabanCMP116Eq225SourceEnergy (14s)
+✔ [8352/8594] Built YangMills.RG.OrientedLatticePath (12s)
+⚠ [8353/8594] Built YangMills.RG.PhysicalShellLocalityD1 (21s)
+warning: YangMills/RG/PhysicalShellLocalityD1.lean:210:0: automatically included section variable(s) unused in theorem `YangMills.RG.piLp_norm_le_sum_norm`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalShellLocalityD1.lean:290:0: automatically included section variable(s) unused in theorem `YangMills.RG.card_plaquettes_slot_eq_le`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8354/8594] Built YangMills.RG.BalabanCMP99FiniteMeanControl (18s)
+✔ [8355/8594] Built YangMills.RG.PhysicalCoerciveCombesThomasInverse (29s)
+✔ [8356/8594] Built YangMills.RG.PhysicalExponentialKernelComposition (26s)
+✔ [8357/8594] Built YangMills.KP.MayerInversion (192s)
+✔ [8358/8594] Built YangMills.RG.ConcreteOrientedLatticePath (11s)
+✔ [8359/8634] Built YangMills.RG.BalabanCMP116Eq225LinearSource (11s)
+⚠ [8361/8639] Built YangMills.RG.BalabanCMP116WilsonHessianLocality (11s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianLocality.lean:32:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalBondOfEdge_edges_eq_plaquetteBondSlots`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianLocality.lean:151:0: automatically included section variable(s) unused in theorem `YangMills.RG.singlePhysicalBondCochain_eq_zero_on_plaquetteSupport`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8362/8639] Built YangMills.RG.BalabanCMP89CenteredPeriodicL1ResidueSum (12s)
+✔ [8363/8639] Built YangMills.RG.PhysicalShiftedCombesThomas (16s)
+⚠ [8364/8639] Built YangMills.KP.Restriction (19s)
+warning: YangMills/KP/Restriction.lean:33:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:33:16: unused variable `Y`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:34:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8365/8639] Built YangMills.RG.PhysicalShellLocalityDiv (29s)
+⚠ [8366/8639] Built YangMills.RG.NearLog (52s)
+warning: YangMills/RG/NearLog.lean:64:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_logCoeff_smul_pow_le`:
+  [CompleteSpace 𝔸]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace 𝔸] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NearLog.lean:330:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_expTerm_le`:
+  [CompleteSpace 𝔸]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace 𝔸] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NearLog.lean:440:8: automatically included section variable(s) unused in theorem `YangMills.RG.nearLog_zero`:
+  [CompleteSpace 𝔸]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [CompleteSpace 𝔸] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8367/8639] Built YangMills.RG.PhysicalResolventCorrection (28s)
+⚠ [8368/8639] Built YangMills.RG.BalabanCMP116WilsonHessianOperator (32s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianOperator.lean:28:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCochainToSuMatrixTangent_add`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianOperator.lean:37:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCochainToSuMatrixTangent_smul`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+ℹ [8369/8639] Built YangMills.RG.FinitePiLpCombesThomas (38s)
+info: YangMills/RG/FinitePiLpCombesThomas.lean:939:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [8370/8639] Built YangMills.RG.NearLogComplex (12s)
+✔ [8371/8639] Built YangMills.RG.MatrixRealization (14s)
+⚠ [8372/8639] Built YangMills.RG.BalabanCMP99UbarUnitary (16s)
+warning: YangMills/RG/BalabanCMP99UbarUnitary.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.star_nearLog`:
+  [NormedAlgebra ℚ A]
+  [CompleteSpace A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAlgebra ℚ A] [CompleteSpace A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99UbarUnitary.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99UbarExponent_mem_skewAdjoint`:
+  [NormedAlgebra ℚ A]
+  [CompleteSpace A]
+  [ContinuousStar A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAlgebra ℚ A] [CompleteSpace A] [ContinuousStar A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8373/8639] Built YangMills.RG.LocalKP (24s)
+✔ [8374/8639] Built YangMills.RG.BalabanCMP116WilsonHessianOperatorLocality (11s)
+⚠ [8375/8639] Built YangMills.RG.PhysicalShellLocalityQ (27s)
+warning: YangMills/RG/PhysicalShellLocalityQ.lean:162:0: automatically included section variable(s) unused in theorem `YangMills.RG.flatBlockConstraint_single_apply`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalShellLocalityQ.lean:251:0: automatically included section variable(s) unused in theorem `YangMills.RG.sum_blocks_eq_sum_sites`:
+  [NeZero N']
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N'] [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8376/8639] Built YangMills.RG.Ubar (14s)
+✔ [8377/8639] Built YangMills.RG.SUNMatrixRealization (12s)
+⚠ [8378/8639] Built YangMills.RG.NearLogCFC (17s)
+warning: YangMills/RG/NearLogCFC.lean:36:0: automatically included section variable(s) unused in theorem `YangMills.RG.spectrum_subset_ball_zero_one`:
+  [IsScalarTower ℝ ℂ A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [IsScalarTower ℝ ℂ A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8379/8639] Built YangMills.RG.BalabanCMP99UbarUnitaryCovariance (12s)
+warning: YangMills/RG/BalabanCMP99UbarUnitaryCovariance.lean:26:8: automatically included section variable(s) unused in theorem `YangMills.RG.coe_toUnits_inv_eq_star`:
+  [NormedAlgebra ℚ A]
+  [NormedAlgebra ℝ A]
+  [CompleteSpace A]
+  [ContinuousStar A]
+  [StarModule ℝ A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAlgebra ℚ A] [NormedAlgebra ℝ A] [CompleteSpace A] [ContinuousStar A] [StarModule ℝ A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99UbarUnitaryCovariance.lean:33:0: automatically included section variable(s) unused in theorem `YangMills.RG.unitary_conj_sub_one`:
+  [NormedAlgebra ℚ A]
+  [NormedAlgebra ℝ A]
+  [CompleteSpace A]
+  [ContinuousStar A]
+  [StarModule ℝ A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAlgebra ℚ A] [NormedAlgebra ℝ A] [CompleteSpace A] [ContinuousStar A] [StarModule ℝ A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8380/8639] Built YangMills.RG.BalabanCMP116GaugeFixingMassDefect (33s)
+✔ [8381/8639] Built YangMills.RG.AppendixFCover (11s)
+✔ [8382/8639] Built YangMills.RG.FinitePiLpTypedKernel (24s)
+✔ [8383/8639] Built YangMills.RG.BalabanCMP116WilsonHessianDefect (12s)
+✔ [8384/8639] Built YangMills.RG.BalabanCMP96ConstraintPivot (10s)
+✔ [8385/8639] Built YangMills.RG.BalabanCMP116GaugeFixingWeightedSchur (10s)
+⚠ [8386/8639] Built YangMills.RG.NearLogUnitaryCFC (12s)
+warning: YangMills/RG/NearLogUnitaryCFC.lean:35:0: automatically included section variable(s) unused in theorem `YangMills.RG.nearLog_unitary_sub_one_eq_cfc_log`:
+  [NormedAlgebra ℚ A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAlgebra ℚ A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NearLogUnitaryCFC.lean:67:24: This simp argument is unused:
+  add_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [sub_eq_add_neg, a̵d̵d̵_̵a̵s̵s̵o̵c̵,̵ ̵add_comm, add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NearLogUnitaryCFC.lean:67:35: This simp argument is unused:
+  add_comm
+
+Hint: Omit it from the simp argument list.
+  simp [sub_eq_add_neg, add_assoc, add_c̵o̵m̵m̵,̵ ̵a̵d̵d̵_̵left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NearLogUnitaryCFC.lean:71:0: automatically included section variable(s) unused in theorem `YangMills.RG.cfc_log_unitary_eq_I_smul_argSelfAdjoint`:
+  [Nontrivial A]
+  [IsScalarTower ℝ ℂ A]
+  [NormedAlgebra ℚ A]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Nontrivial A] [IsScalarTower ℝ ℂ A] [NormedAlgebra ℚ A] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8387/8639] Built YangMills.RG.FinitePiLpTypedCutoff (15s)
+✔ [8388/8639] Built YangMills.RG.PhysicalGaugeCMP116Dictionary (19s)
+⚠ [8389/8639] Built YangMills.RG.NearLogMatrixNoWinding (11s)
+warning: YangMills/RG/NearLogMatrixNoWinding.lean:58:0: automatically included section variable(s) unused in theorem `YangMills.RG.trace_eq_zero_of_quantized_of_norm_lt_two_pi`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8390/8639] Built YangMills.RG.BalabanCMP99UbarUnitaryCFC (11s)
+⚠ [8391/8639] Built YangMills.RG.BalabanCMP96ConstraintRightInverse (15s)
+warning: YangMills/RG/BalabanCMP96ConstraintRightInverse.lean:44:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp96ConstraintPivotInsertion_add`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP96ConstraintRightInverse.lean:56:61: This simp argument is unused:
+  smul_add
+
+Hint: Omit it from the simp argument list.
+  simp [hp,̵ ̵s̵m̵u̵l̵_̵a̵d̵d̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP96ConstraintRightInverse.lean:58:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp96ConstraintPivotInsertion_smul`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP96ConstraintRightInverse.lean:93:36: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8392/8639] Built YangMills.RG.SUNProductDeviation (29s)
+✔ [8393/8639] Built YangMills.RG.BalabanCMP116WilsonHessianPlaquetteOperator (21s)
+✔ [8394/8639] Built YangMills.RG.BalabanCMP116Eq223PhysicalCovarianceMatrix (8.3s)
+⚠ [8395/8639] Built YangMills.RG.MatrixDetExpSkewAdjoint (8.7s)
+warning: YangMills/RG/MatrixDetExpSkewAdjoint.lean:43:0: automatically included section variable(s) unused in theorem `YangMills.RG.det_exp_eq_exp_trace_of_unitary_diagonalization`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8396/8639] Built YangMills.RG.BalabanCMP96ConstraintElimination (9.1s)
+warning: YangMills/RG/BalabanCMP96ConstraintElimination.lean:39:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp96ConstraintPivotInsertion_apply`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8397/8639] Built YangMills.RG.BalabanCMP116WilsonHessianEnergyOverlap (10s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianEnergyOverlap.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.sum_plaquetteSlot_coordinate_norm_sq_le`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116WilsonHessianEnergyOverlap.lean:99:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalPlaquetteCochainEnergy_sq`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8398/8639] Built YangMills.RG.BalabanCMP99UbarSpecialUnitary (7.6s)
+⚠ [8399/8639] Built YangMills.RG.NearLogDeviationBudget (7.7s)
+warning: YangMills/RG/NearLogDeviationBudget.lean:58:0: automatically included section variable(s) unused in theorem `YangMills.RG.MatrixNearLogNoWindingBudget.nearIdentity`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NearLogDeviationBudget.lean:67:0: automatically included section variable(s) unused in theorem `YangMills.RG.MatrixNearLogNoWindingBudget.nearLog_noWinding`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8400/8639] Built YangMills.RG.BalabanCMP96ConstraintNorm (9.0s)
+warning: YangMills/RG/BalabanCMP96ConstraintNorm.lean:105:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_flatBlockConstraintQCLM_apply_le`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8401/8639] Built YangMills.RG.BalabanCMP116WilsonHessianWeightedSchur (8.7s)
+warning: YangMills/RG/BalabanCMP116WilsonHessianWeightedSchur.lean:36:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp116WilsonHessianDefectRate_nonneg`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8402/8639] Built YangMills.RG.BalabanCMP99UbarDeviationBudget (7.9s)
+✔ [8403/8639] Built YangMills.RG.BalabanCMP116Eq223PhysicalRootNormBridge (17s)
+✔ [8404/8639] Built YangMills.RG.BalabanCMP99UbarPhysicalDeviation (9.9s)
+⚠ [8405/8639] Built YangMills.RG.BalabanCMP96ConstraintEliminationLocality (7.9s)
+warning: YangMills/RG/BalabanCMP96ConstraintEliminationLocality.lean:39:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalBondDist_sample_pivot_le`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP96ConstraintEliminationLocality.lean:72:2: Try this: intro x hx k hk heq
+warning: YangMills/RG/BalabanCMP96ConstraintEliminationLocality.lean:97:6: Try `simp at hfar` instead of `simpa using hfar`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/RG/BalabanCMP96ConstraintEliminationLocality.lean:111:4: Try `simp at hfar` instead of `simpa using hfar`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/RG/BalabanCMP96ConstraintEliminationLocality.lean:83:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp96ConstraintEliminationCLM_finiteRange`:
+  [NeZero (L * N')]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero (L * N')] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP96ConstraintEliminationLocality.lean:115:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp96ConstraintEliminationCLM_kernelBound`:
+  [NeZero (L * N')]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero (L * N')] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8406/8639] Built YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector (9.2s)
+warning: YangMills/RG/BalabanCMP116Eq223PhysicalLocalizationProjector.lean:48:8: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.mem_cmp116Eq223PhysicalLocalizedCoordinates_iff`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116Eq223PhysicalLocalizationProjector.lean:63:8: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.mem_cmp116Eq223PhysicalInteriorBonds_iff`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116Eq223PhysicalLocalizationProjector.lean:74:0: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.card_cmp116Eq223PhysicalLocalizedCoordinates`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116Eq223PhysicalLocalizationProjector.lean:144:0: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalLocalizationProjection_mulVec_apply_of_interior`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116Eq223PhysicalLocalizationProjector.lean:158:0: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalLocalizationProjection_mulVec_apply_of_not_interior`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116Eq223PhysicalLocalizationProjector.lean:172:0: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.dotProduct_physicalLocalizationProjection_mulVec`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116Eq223PhysicalLocalizationProjector.lean:184:0: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.posDef_physicalRootMatrix_of_alpha5_covariance_half_small_physicalZ0`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8407/8639] Built YangMills.RG.BalabanCMP116InteractingPrecision (11s)
+✔ [8408/8639] Built YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfig (11s)
+✔ [8409/8639] Built YangMills.RG.BalabanCMP116Eq226GaussianCardinality (12s)
+⚠ [8410/8639] Built YangMills.RG.BalabanCMP116AdjointSmallBridge (13s)
+warning: YangMills/RG/BalabanCMP116AdjointSmallBridge.lean:31:0: automatically included section variable(s) unused in theorem `YangMills.RG.matrixFrobEuclid_apply`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116AdjointSmallBridge.lean:36:0: automatically included section variable(s) unused in theorem `YangMills.RG.matrixFrobEuclid_add`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116AdjointSmallBridge.lean:42:0: automatically included section variable(s) unused in theorem `YangMills.RG.matrixFrobEuclid_sub`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116AdjointSmallBridge.lean:49:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_matrixFrobEuclid_sq`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116AdjointSmallBridge.lean:80:0: automatically included section variable(s) unused in theorem `YangMills.RG.matrixColumnEuclid_apply`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116AdjointSmallBridge.lean:86:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_matrixFrobEuclid_mul_left_le`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116AdjointSmallBridge.lean:136:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_matrixFrobEuclid_conjTranspose`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8411/8639] Built YangMills.RG.BalabanCMP116Eq222CutoffSuppression (14s)
+warning: YangMills/RG/BalabanCMP116Eq222CutoffSuppression.lean:49:8: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.mem_cmp116Eq222SelectedCoordinates_iff`:
+  [NeZero d]
+  [NeZero M]
+  [NeZero N']
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8412/8639] Built YangMills.RG.BalabanCMP116Eq214MainReduction (9.3s)
+warning: YangMills/RG/BalabanCMP116Eq214MainReduction.lean:62:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP116Eq214FiniteGaussianData.withPhysicalRootMatrix_covarianceRoot`:
+  [NeZero d]
+  [NeZero M]
+  [NeZero N']
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8413/8639] Built YangMills.RG.BalabanCMP116InteractingCombesThomas (9.5s)
+warning: YangMills/RG/BalabanCMP116InteractingCombesThomas.lean:48:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp116InteractingPhysicalKernelBudget_nonneg`:
+  [NeZero d]
+  [NeZero L]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero L] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116InteractingCombesThomas.lean:55:0: automatically included section variable(s) unused in theorem `YangMills.RG.interactingWilsonGaugeDefectCLM_finiteRange`:
+  [NeZero L]
+  [NeZero N']
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero L] [NeZero N'] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8414/8639] Built YangMills.RG.PhysicalCanonicalInverseSqrt (33s)
+✔ [8415/8639] Built YangMills.RG.BalabanCMP116Eq214GammaSource (8.3s)
+⚠ [8416/8639] Built YangMills.RG.BalabanCMP116InteractingResolventCorrection (10s)
+warning: YangMills/RG/BalabanCMP116InteractingResolventCorrection.lean:68:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_interactingWilsonGaugeDefect_tilt_le`:
+  [NeZero L]
+  [NeZero N']
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero L] [NeZero N'] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8417/8639] Built YangMills.RG.BalabanCMP116Eq214GammaComplement (8.9s)
+warning: YangMills/RG/BalabanCMP116Eq214GammaComplement.lean:97:8: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.mem_cmp116Eq214PhysicalComplementCoordinates_iff`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP116Eq214GammaComplement.lean:192:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGammaComplement_expCard`:
+  [NeZero d]
+  [NeZero M]
+  [NeZero N']
+  [NeZero (M * N')]
+  [NeZero Nc]
+  [NeZero L]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')] [NeZero Nc] [NeZero L] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8418/8639] Built YangMills.RG.PhysicalInverseSqrtBalakrishnan (20s)
+✔ [8419/8639] Built YangMills.RG.BalabanCMP116Eq214FlatDeltaBound (6.3s)
+✔ [8420/8639] Built YangMills.RG.BalabanCMP116Eq214PhysicalConstraintC (7.2s)
+⚠ [8421/8639] Built YangMills.RG.PhysicalInverseSqrtKernelDecay (14s)
+warning: YangMills/RG/PhysicalInverseSqrtKernelDecay.lean:331:25: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/PhysicalInverseSqrtKernelDecay.lean:332:59: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8422/8639] Built YangMills.RG.BalabanCMP116Eq216CorrectionDictionary (31s)
+⚠ [8423/8639] Built YangMills.RG.PhysicalSingleInverseSqrtKernelDecay (15s)
+warning: YangMills/RG/PhysicalSingleInverseSqrtKernelDecay.lean:232:32: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/PhysicalSingleInverseSqrtKernelDecay.lean:234:28: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8424/8639] Built YangMills.RG.BalabanCMP116Eq216PhysicalR3 (22s)
+⚠ [8425/8639] Built YangMills.RG.BalabanCMP116Eq216PhysicalR3Decay (13s)
+warning: YangMills/RG/BalabanCMP116Eq216PhysicalR3Decay.lean:49:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCovarianceExponentialKernelBound_comp_five`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8426/8639] Built YangMills.RG.BalabanCMP116Eq216PhysicalR1Decay (25s)
+✔ [8427/8639] Built YangMills.RG.BalabanCMP116Eq216PhysicalClosure (6.7s)
+✔ [8428/8639] Built YangMills.RG.BalabanCMP116Eq221PhysicalClosure (13s)
+⚠ [8429/8639] Built YangMills.RG.BalabanCMP116Eq221PhysicalCoordinateBridge (11s)
+warning: YangMills/RG/BalabanCMP116Eq221PhysicalCoordinateBridge.lean:36:0: automatically included section variable(s) unused in theorem `YangMills.RG.PhysicalGaugeCMP116Dictionary.sum_norm_sq_flatPhysicalLinearIsometryEquiv_physicalInteriorBonds`:
+  [NeZero d]
+  [NeZero Nc]
+  [NeZero lieDim]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] [NeZero lieDim] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8430/8639] Built YangMills.RG.BalabanCMP116Eq221PhysicalInteractionExponent (7.4s)
+✔ [8431/8639] Built YangMills.RG.BalabanCMP116Eq220PhysicalPotential (6.8s)
+✔ [8432/8639] Built YangMills.RG.BalabanCMP99LocalizedParametrix (9.6s)
+✔ [8433/8639] Built YangMills.RG.BalabanCMP116Eq219RootedResummation (9.0s)
+⚠ [8434/8639] Built YangMills.RG.BalabanCMP99LocalizedParametrixDecay (7.4s)
+warning: YangMills/RG/BalabanCMP99LocalizedParametrixDecay.lean:120:4: Try `simp at hfar` instead of `simpa using hfar`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8435/8639] Built YangMills.RG.BalabanCMP116Eq143To219 (7.6s)
+✔ [8436/8639] Built YangMills.RG.BalabanCMP99PatchedParametrix (9.3s)
+✔ [8437/8639] Built YangMills.RG.BalabanCMP116Eq219SourceGeometry (9.3s)
+✔ [8438/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixCollar (12s)
+✔ [8439/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixDefectDecay (8.6s)
+✔ [8440/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixCorePartition (8.8s)
+✔ [8441/8639] Built YangMills.RG.PhysicalExponentialKernelSchur (7.5s)
+✔ [8442/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixNeumann (8.2s)
+✔ [8443/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixWalkExpansion (17s)
+✔ [8444/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixTransitionSupport (10s)
+✔ [8445/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixSparseWalk (8.0s)
+⚠ [8446/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixSparseWalkBranching (5.4s)
+warning: YangMills/RG/BalabanCMP99PatchedParametrixSparseWalkBranching.lean:95:0: automatically included section variable(s) unused in theorem `YangMills.RG.image_cmp99PhysicalPatchSuccessors_subset_meetingSimpleDomains`:
+  [DecidableRel G.Adj]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableRel G.Adj] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8447/8639] Built YangMills.RG.BalabanCMP99PatchedParametrixPhysicalSummability (19s)
+✔ [8448/8639] Built YangMills.RG.BalabanCMP99PhysicalChartDictionary (6.8s)
+✔ [8449/8639] Built YangMills.RG.BalabanCMP99LabeledPhysicalChartDictionary (9.0s)
+✔ [8450/8639] Built YangMills.RG.BalabanCMP99LiteralPhysicalChartDictionary (5.8s)
+✔ [8451/8639] Built YangMills.RG.BalabanCMP99PhysicalChartCollarGeometry (5.3s)
+✔ [8452/8639] Built YangMills.RG.BalabanCMP99CanonicalPhysicalCharts (5.1s)
+✔ [8453/8639] Built YangMills.RG.BalabanCMP99CanonicalCoreOwnership (6.5s)
+✔ [8454/8639] Built YangMills.RG.BalabanCMP99SourceBasePartition (5.3s)
+✔ [8455/8639] Built YangMills.RG.BalabanCMP99SourceConcentricLargeBlockCube (6.1s)
+✔ [8456/8639] Built YangMills.RG.BalabanCMP99SourceConcentricShell (5.2s)
+✔ [8457/8639] Built YangMills.RG.BalabanCMP99SourceOmegaGeometry (5.9s)
+✔ [8458/8639] Built YangMills.RG.BalabanCMP99SourceBoundaryProblemSpec (6.4s)
+✔ [8459/8639] Built YangMills.RG.BalabanCMP99SourceDirichletProblem (8.3s)
+✔ [8460/8639] Built YangMills.RG.BalabanCMP99SourceGaugePrecision (8.0s)
+✔ [8461/8639] Built YangMills.RG.BalabanCMP99SourceStratifiedGaugeMass (11s)
+⚠ [8462/8639] Built YangMills.RG.BalabanCMP99SourceGlobalStratification (6.3s)
+warning: YangMills/RG/BalabanCMP99SourceGlobalStratification.lean:131:4: Try `simp at hlast` instead of `simpa using hlast`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8463/8639] Built YangMills.RG.BalabanCMP99SourceCoarseCovariance (22s)
+✔ [8464/8639] Built YangMills.RG.BalabanCMP99SourceStratifiedPrecisionNorm (12s)
+✔ [8465/8639] Built YangMills.RG.BalabanCMP99SourceOmegaTerminalRegion (7.1s)
+⚠ [8466/8639] Built YangMills.RG.BalabanCMP96SourceRegionAdmissibility (7.3s)
+warning: YangMills/RG/BalabanCMP96SourceRegionAdmissibility.lean:64:40: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/RG/BalabanCMP96SourceRegionAdmissibility.lean:98:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP96SourceAdmissibleGlobalStratification.empty_regions`:
+  [Fintype Site]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Site] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP96SourceRegionAdmissibility.lean:129:2: Try `simp at hx` instead of `simpa using hx`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/RG/BalabanCMP96SourceRegionAdmissibility.lean:138:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP96SourceAdmissibleGlobalStratification.global_regions`:
+  [Fintype Site]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype Site] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8467/8639] Built YangMills.RG.BalabanCMP99SourceScaledStratification (13s)
+✔ [8468/8639] Built YangMills.RG.BalabanCMP99SourceRegionalCoarseAverage (12s)
+✔ [8469/8639] Built YangMills.RG.BalabanCMP99SourceDependentOmegaGeometry (6.3s)
+✔ [8470/8639] Built YangMills.RG.BalabanCMP99SourceRegionalLiftTower (5.5s)
+✔ [8471/8639] Built YangMills.RG.BalabanCMP99SourceAdjointTransport (7.0s)
+✔ [8472/8639] Built YangMills.RG.BalabanCMP99ContourHolonomy (6.3s)
+✔ [8473/8639] Built YangMills.RG.BalabanCMP99SourceRegionalAdjoint (10s)
+⚠ [8474/8639] Built YangMills.RG.BalabanCMP99BlockContour (6.0s)
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:41:8: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99BlockEmbed_mem_blockOf`:
+  [NeZero d]
+  [NeZero N']
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N'] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:51:8: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99BlockEmbed_default`:
+  [NeZero d]
+  [NeZero N']
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N'] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:69:8: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99BlockOffsetPred_self`:
+  [NeZero d]
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:74:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99BlockOffsetPred_apply_of_ne`:
+  [NeZero d]
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:87:12: This simp argument is unused:
+  cmp99BlockOffsetWeight
+
+Hint: Omit it from the simp argument list.
+  simp [cmp99BlockOffsetW̵e̵i̵g̵h̵t̵,̵ ̵c̵m̵p̵9̵9̵B̵l̵o̵c̵k̵O̵f̵f̵s̵e̵t̵Pred, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:87:58: This simp argument is unused:
+  hi
+
+Hint: Omit it from the simp argument list.
+  simp [cmp99BlockOffsetWeight, cmp99BlockOffsetPred,̵ ̵h̵i̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:88:12: This simp argument is unused:
+  cmp99BlockOffsetWeight
+
+Hint: Omit it from the simp argument list.
+  simp [cmp99BlockOffsetW̵e̵i̵g̵h̵t̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵c̵m̵p̵9̵9̵B̵l̵o̵c̵k̵O̵f̵f̵s̵e̵t̵Pred_apply_of_ne r i j hi hji]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:91:12: This simp argument is unused:
+  cmp99BlockOffsetWeight
+
+Hint: Omit it from the simp argument list.
+  simp [cmp99BlockOffsetW̵e̵i̵g̵h̵t̵,̵ ̵c̵m̵p̵9̵9̵B̵l̵o̵c̵k̵O̵f̵f̵s̵e̵t̵Pred, hi]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:218:49: This simp argument is unused:
+  cmp99BlockOffsetWeight
+
+Hint: Omit it from the simp argument list.
+  simp [Gamma, OrientedLatticePath.refl,̵ ̵c̵m̵p̵9̵9̵B̵l̵o̵c̵k̵O̵f̵f̵s̵e̵t̵W̵e̵i̵g̵h̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:259:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99BlockEmbed_offsetOfMem`:
+  [NeZero d]
+  [NeZero N']
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N'] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99BlockContour.lean:270:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99BlockOffsetWeight_le`:
+  [NeZero d]
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8475/8639] Built YangMills.RG.BalabanCMP99SourceUbarContours (7.2s)
+warning: YangMills/RG/BalabanCMP99SourceUbarContours.lean:85:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99SourceTranslatedSite_blockEmbed`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8476/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeBlockOffsetEquiv (8.5s)
+✔ [8477/8639] Built YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjoint (11s)
+✔ [8478/8639] Built YangMills.RG.BalabanCMP99CovariantPathControl (11s)
+✔ [8479/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeFourierAmplitude (7.4s)
+⚠ [8480/8639] Built YangMills.RG.BalabanCMP99MultiscaleAverage (18s)
+warning: YangMills/RG/BalabanCMP99MultiscaleAverage.lean:43:8: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99MultiscaleQprime_zero`:
+  [∀ (k : ℕ), CompleteSpace (E k)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (k : ℕ), CompleteSpace (E k)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99MultiscaleAverage.lean:48:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99MultiscaleQprime_succ`:
+  [∀ (k : ℕ), CompleteSpace (E k)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (k : ℕ), CompleteSpace (E k)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99MultiscaleAverage.lean:54:8: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99MultiscaleQprime_zero_apply`:
+  [∀ (k : ℕ), CompleteSpace (E k)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (k : ℕ), CompleteSpace (E k)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99MultiscaleAverage.lean:59:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99MultiscaleQprime_succ_apply`:
+  [∀ (k : ℕ), CompleteSpace (E k)]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [∀ (k : ℕ), CompleteSpace (E k)] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8481/8639] Built YangMills.RG.BalabanCMP99SourceWeightedRegionalTower (11s)
+✔ [8482/8639] Built YangMills.RG.BalabanCMP99SourceMassWeights (11s)
+⚠ [8483/8639] Built YangMills.RG.BalabanCMP99StraightTransportEnergy (9.8s)
+warning: YangMills/RG/BalabanCMP99StraightTransportEnergy.lean:50:0: automatically included section variable(s) unused in theorem `YangMills.RG.FinBox.sum_iterate_shift`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8484/8639] Built YangMills.RG.BalabanCMP99OneScaleBlockPoincare (12s)
+warning: YangMills/RG/BalabanCMP99OneScaleBlockPoincare.lean:148:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99OneScaleBlockPoincareConstant_pos`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8485/8639] Built YangMills.RG.BalabanCMP99SourceBlockTranslation (5.7s)
+✔ [8486/8639] Built YangMills.RG.BalabanCMP85SourceAveragingCoefficientFloor (6.5s)
+✔ [8487/8639] Built YangMills.RG.BalabanCMP89Eq249CentralStabilizedRealLower (6.6s)
+⚠ [8488/8639] Built YangMills.RG.BalabanCMP99CoarseDerivativeDecomposition (6.0s)
+warning: YangMills/RG/BalabanCMP99CoarseDerivativeDecomposition.lean:71:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99SourceTripleHolonomy_eq_three_wilsonLines`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99CoarseDerivativeDecomposition.lean:82:4: This simp argument is unused:
+  cmp99BlockContainedContourSystem_of_mem (G := SUN Nc) y x.1 x.2
+
+Hint: Omit it from the simp argument list.
+  simp [cmp99SourceTripleHolonomy, cmp99ContourHolonomy, OrientedLatticePath.holonomy,
+      cmp99SourceUbarGamma1, c̵m̵p̵9̵9̵S̵o̵u̵r̵c̵e̵U̵b̵a̵r̵G̵a̵m̵m̵a̵2̵,̵
+  ̵ ̵ ̵ ̵ ̵c̵m̵p̵9̵9̵B̵l̵o̵c̵k̵C̵o̵n̵t̵a̵i̵n̵e̵d̵C̵o̵n̵t̵o̵u̵r̵S̵y̵s̵t̵e̵m̵_̵o̵f̵_̵m̵e̵m̵ ̵(̵G̵ ̵:̵=̵ ̵S̵U̵N̵ ̵N̵c̵)̵ ̵y̵ ̵x̵.̵1̵ ̵x̵.̵2̵]̵c̲m̲p̲9̲9̲S̲o̲u̲r̲c̲e̲U̲b̲a̲r̲G̲a̲m̲m̲a̲2̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99CoarseDerivativeDecomposition.lean:85:0: automatically included section variable(s) unused in theorem `YangMills.RG.wilsonLine_cmp99SourceUbarGamma3_eq_targetContour_inv`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8489/8639] Built YangMills.RG.BalabanCMP99RegionalAverageTower (21s)
+warning: YangMills/RG/BalabanCMP99RegionalAverageTower.lean:169:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99RegionalAverageTower.depth_stop`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99RegionalAverageTower.lean:175:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99RegionalAverageTower.normalization_stop`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99RegionalAverageTower.lean:181:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99RegionalAverageTower.Qprime_stop`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99RegionalAverageTower.lean:228:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99RegionalAverageTower.Qprime_comp_adjoint_apply`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8490/8639] Built YangMills.RG.BalabanCMP89Eq249NoncentralRealGap (6.7s)
+✔ [8491/8639] Built YangMills.RG.BalabanCMP99PhysicalRegionalAverageTower (6.5s)
+✔ [8492/8639] Built YangMills.RG.BalabanCMP89Eq249NoncentralComplexGap (7.0s)
+⚠ [8493/8639] Built YangMills.RG.BalabanCMP99SourceRegionalScale (8.0s)
+warning: YangMills/RG/BalabanCMP99SourceRegionalScale.lean:141:8: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99SourceUbarFineNoWindingBudget_delta`:
+  [NeZero d]
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8494/8639] Built YangMills.RG.BalabanCMP89Eq249UniformNoncentralComplexRadius (6.9s)
+⚠ [8495/8639] Built YangMills.RG.BalabanCMP99SourceUbarSmallFieldPropagation (8.1s)
+warning: YangMills/RG/BalabanCMP99SourceUbarSmallFieldPropagation.lean:49:0: automatically included section variable(s) unused in theorem `YangMills.RG.norm_cmp99UbarSpecialUnitaryExponent_le_logRadius`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceUbarSmallFieldPropagation.lean:165:0: automatically included section variable(s) unused in theorem `YangMills.RG.sum_cmp99SourceBlockAverageWeight_blockOf`:
+  [NeZero d]
+  [NeZero N']
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero N'] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8496/8639] Built YangMills.RG.BalabanCMP99SourceWeightedPhysicalTower (8.4s)
+✔ [8497/8639] Built YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasQuotientBound (7.5s)
+✔ [8498/8639] Built YangMills.RG.BalabanCMP89Eq251ComplexNoncentralEndpointQuotientBound (9.0s)
+✔ [8499/8639] Built YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasSumBound (7.7s)
+✔ [8500/8639] Built YangMills.RG.BalabanCMP99SourceRecursivePhysicalTower (9.3s)
+✔ [8501/8639] Built YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasQuotientVariation (9.8s)
+✔ [8502/8639] Built YangMills.RG.BalabanCMP99CoarseDerivativeRemainder (10s)
+✔ [8503/8639] Built YangMills.RG.BalabanCMP89Eq251ComplexNoncentralEndpointQuotientSum (9.0s)
+⚠ [8504/8639] Built YangMills.RG.BalabanCMP99SourceUbarRadiusBudget (11s)
+warning: YangMills/RG/BalabanCMP99SourceUbarRadiusBudget.lean:165:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceUbarScalarBudget.noWinding`:
+  [NeZero d]
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceUbarRadiusBudget.lean:175:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceUbarScalarBudget.deviation_lt_half`:
+  [NeZero d]
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceUbarRadiusBudget.lean:184:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceUbarScalarBudget.nextFineRadius_nonneg`:
+  [NeZero d]
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8505/8639] Built YangMills.RG.BalabanCMP89Eq249ComplexNoncentralAliasSumVariation (13s)
+✔ [8506/8639] Built YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance (15s)
+✔ [8507/8639] Built YangMills.RG.BalabanCMP89Eq249CentralStabilizedDenominatorVariation (7.9s)
+✔ [8508/8639] Built YangMills.RG.BalabanCMP99SourceStratumTowerCovariance (15s)
+✔ [8509/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointCentralFineUpper (7.9s)
+✔ [8510/8639] Built YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexFloor (8.3s)
+✔ [8511/8639] Built YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexFloorMassUniform (5.9s)
+✔ [8512/8639] Built YangMills.RG.BalabanCMP89Eq249CentralStabilizedComplexRadius (6.2s)
+✔ [8513/8639] Built YangMills.RG.BalabanCMP99SourcePhysicalGaugePrecision (26s)
+✔ [8514/8639] Built YangMills.RG.BalabanCMP89Eq249StabilizedComplexIntegrand (5.9s)
+✔ [8515/8639] Built YangMills.RG.BalabanCMP89Eq249CentralAveragePairComplexNonzero (6.3s)
+✔ [8516/8639] Built YangMills.RG.BalabanCMP89Eq251ComplexContourPhase (6.8s)
+✔ [8517/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedIntegrandHolomorphy (7.3s)
+✔ [8518/8639] Built YangMills.RG.BalabanCMP99OneScaleRegionalPoincare (9.3s)
+✔ [8519/8639] Built YangMills.RG.BalabanCMP89Eq251SignedContourPhase (6.8s)
+✔ [8520/8639] Built YangMills.RG.BalabanCMP89Eq251CommonStripHolomorphy (6.7s)
+✔ [8521/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointSplit (7.6s)
+✔ [8522/8639] Built YangMills.RG.BalabanCMP99OneScalePhysicalCoercivity (10s)
+✔ [8523/8639] Built YangMills.RG.BalabanCMP99CoarseDerivativeRegional (10s)
+✔ [8524/8639] Built YangMills.RG.BalabanCMP89Eq251LatticePhasePeriodicity (6.9s)
+✔ [8525/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticePhasedNoncentralSum (7.6s)
+✔ [8526/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointHolomorphy (7.0s)
+✔ [8527/8639] Built YangMills.RG.BalabanCMP89Eq245EntireAveragePeriodicity (7.5s)
+✔ [8528/8639] Built YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeFactorization (7.5s)
+⚠ [8529/8639] Built YangMills.RG.BalabanCMP89Eq248AliasMomentumCycle (7.8s)
+warning: YangMills/RG/BalabanCMP89Eq248AliasMomentumCycle.lean:68:30: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248EntireAliasMomentum, cmp89Eq248PhysicalCoordinatePeriodShift,
+          c̵m̵p̵8̵9̵E̵q̵2̵4̵5̵A̵l̵i̵a̵s̵S̵h̵i̵f̵t̵,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵c̲m̲p̲8̲9̲E̲q̲2̲4̲5̲A̲l̲i̲a̲s̲S̲h̲i̲f̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq248AliasMomentumCycle.lean:74:30: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248EntireAliasMomentum, cmp89Eq248PhysicalCoordinatePeriodShift,
+          cmp89Eq245AliasShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hnu, hfix]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq248AliasMomentumCycle.lean:84:30: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248EntireAliasMomentum, cmp89Eq248PhysicalCoordinatePeriodShift,
+          cmp89Eq251CoordinateAliasPeriodShift, c̵m̵p̵8̵9̵E̵q̵2̵4̵5̵A̵l̵i̵a̵s̵S̵h̵i̵f̵t̵,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵c̲m̲p̲8̲9̲E̲q̲2̲4̲5̲A̲l̲i̲a̲s̲S̲h̲i̲f̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq248AliasMomentumCycle.lean:91:30: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248EntireAliasMomentum, cmp89Eq248PhysicalCoordinatePeriodShift,
+          cmp89Eq251CoordinateAliasPeriodShift, cmp89Eq245AliasShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hnu, hfix]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8530/8639] Built YangMills.RG.BalabanCMP89Eq249FinePhaseScaleNoGo (6.2s)
+✔ [8531/8639] Built YangMills.RG.BalabanCMP89Eq245EntireScaledLaplacianPeriodicity (6.4s)
+✔ [8532/8639] Built YangMills.RG.BalabanCMP99OneScalePhysicalGreenCovariance (19s)
+✔ [8533/8639] Built YangMills.RG.BalabanCMP89Eq251ComplexEndpointAmplitudeBound (8.8s)
+⚠ [8534/8639] Built YangMills.RG.BalabanCMP99SourceRetainedPhysicalTower (18s)
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalTower.lean:402:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalTower.prefix_comp_weightedAdjoint`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalTower.lean:412:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalTower.Qprime_succ`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalTower.lean:423:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalTower.norm_nextAverage_sq_le`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8535/8639] Built YangMills.RG.BalabanCMP89Eq248ComplexAliasDenominatorPeriodicity (7.8s)
+✔ [8536/8639] Built YangMills.RG.BalabanCMP89CenteredTorusFourierPhase (8.1s)
+✔ [8537/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticePhasePeriodicity (8.5s)
+✔ [8538/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointBound (9.8s)
+✔ [8539/8639] Built YangMills.RG.BalabanCMP99SourceDependentRegionalTower (11s)
+✔ [8540/8639] Built YangMills.RG.BalabanCMP89Eq251DisplayedIntegrandPeriodicity (8.3s)
+✔ [8541/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointPeriodicity (8.6s)
+✔ [8542/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedBoundarySeam (9.6s)
+⚠ [8543/8639] Built YangMills.RG.BalabanCMP99SourceRetainedPhysicalMass (26s)
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:65:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.ofRetainedTower_levelEquiv`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:105:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.gaugePrecision_isCoercive`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:123:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.gaugePrecision_isSymmetric`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:214:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.stratumAverage_comp_stratumWeightedAdjoint`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:224:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.towerAt_terminalSpacing_pos`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:225:5: unused variable `I`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:232:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.norm_restrictStratumCLM_le_one`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:233:5: unused variable `I`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:353:5: unused variable `I`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:364:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.precisionUpperBound_pos`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalMass.lean:686:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.Qprime_apply`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8544/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicity (7.0s)
+✔ [8545/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointBoundarySeam (7.4s)
+⚠ [8546/8639] Built YangMills.RG.BalabanCMP89Eq251OneCoordinateContourShift (8.8s)
+warning: YangMills/RG/BalabanCMP89Eq251OneCoordinateContourShift.lean:53:47: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, c̵m̵p̵8̵9̵E̵q̵2̵4̵8̵P̵h̵y̵s̵i̵c̵a̵l̵C̵o̵o̵r̵d̵i̵n̵a̵t̵e̵P̵e̵r̵i̵o̵d̵S̵h̵i̵f̵t̵,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]̵c̲m̲p̲8̲9̲E̲q̲2̲4̲8̲P̲h̲y̲s̲i̲c̲a̲l̲C̲o̲o̲r̲d̲i̲n̲a̲t̲e̲P̲e̲r̲i̲o̲d̲S̲h̲i̲f̲t̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251OneCoordinateContourShift.lean:56:47: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251OneCoordinateContourShift.lean:113:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251OneCoordinateContourShift.lean:115:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8547/8639] Built YangMills.RG.BalabanCMP99SourceRegionTransition (35s)
+✔ [8548/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointPeriodicity (6.6s)
+⚠ [8549/8639] Built YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecision (13s)
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalPrecision.lean:180:5: unused variable `I`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceRetainedPhysicalPrecision.lean:186:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceRetainedPhysicalScaleIdentification.physicalPrecisionUpperBound_pos`:
+  [NeZero M]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero M] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8550/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShift (7.9s)
+warning: YangMills/RG/BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShift.lean:85:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251StabilizedEndpointOneCoordinateContourShift.lean:87:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8551/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointBoundarySeam (5.4s)
+✔ [8552/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductIntegrability (8.7s)
+✔ [8553/8639] Built YangMills.RG.BalabanCMP99CoarseDerivativeRegionalScaled (10s)
+⚠ [8554/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointOneCoordinateContourShift (10s)
+warning: YangMills/RG/BalabanCMP89Eq251FineLatticeStabilizedEndpointOneCoordinateContourShift.lean:91:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251FineLatticeStabilizedEndpointOneCoordinateContourShift.lean:93:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8555/8639] Built YangMills.RG.BalabanCMP99SourceLaplacianTransitionSupport (21s)
+⚠ [8556/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductCoordinateShift (8.7s)
+warning: YangMills/RG/BalabanCMP89Eq251StabilizedEndpointProductCoordinateShift.lean:84:52: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine,
+  ̵  ̵ ̵ ̵ ̵ ̵cmp89Eq251EndpointPartialSignedContourMomentum,
+        cmp89Eq251PhysicalBrillouinParameter, hstage,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251StabilizedEndpointProductCoordinateShift.lean:89:44: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine,
+  ̵  ̵ ̵ ̵ ̵ ̵cmp89Eq251EndpointPartialSignedContourMomentum,
+        cmp89Eq251SignedContourMomentum,
+  ̵  ̵ ̵ ̵ ̵ ̵cmp89Eq251PhysicalBrillouinParameter,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251StabilizedEndpointProductCoordinateShift.lean:109:52: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine,
+  ̵  ̵ ̵ ̵ ̵ ̵cmp89Eq251EndpointPartialSignedContourMomentum,
+        cmp89Eq251SignedContourMomentum,
+  ̵  ̵ ̵ ̵ ̵ ̵cmp89Eq251PhysicalBrillouinParameter, hstage,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq251StabilizedEndpointProductCoordinateShift.lean:118:44: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine,
+  ̵  ̵ ̵ ̵ ̵ ̵cmp89Eq251EndpointPartialSignedContourMomentum,
+        cmp89Eq251SignedContourMomentum,
+  ̵  ̵ ̵ ̵ ̵ ̵cmp89Eq251PhysicalBrillouinParameter, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hlt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8557/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedScaledGradient (10s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedScaledGradient.lean:129:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.scaledGradientEnergy_zero`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8558/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointProductContourTelescope (6.1s)
+✔ [8559/8639] Built YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContourTelescope (7.5s)
+⚠ [8560/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedScaledGradientRecurrence (7.9s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedScaledGradientRecurrence.lean:69:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.scaledGradientCost_nonneg`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedScaledGradientRecurrence.lean:100:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.scaledGradientEnergy_le`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8561/8639] Built YangMills.RG.BalabanCMP89Eq251StabilizedEndpointRecombination (6.9s)
+✔ [8562/8639] Built YangMills.RG.BalabanCMP89Eq251UnitLatticeHolderNormalization (6.2s)
+✔ [8563/8639] Built YangMills.RG.BalabanCMP89SignedLatticeL1TotalSum (6.8s)
+⚠ [8564/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedPoincare (9.3s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincare.lean:91:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.fieldNormSq_zero`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincare.lean:213:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.fieldNormSq_zero_le_poincareBound`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8565/8639] Built YangMills.RG.BalabanCMP89Eq251ComplexStabilizedEndpointBound (5.9s)
+⚠ [8566/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedPoincareAbsorption (9.6s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareAbsorption.lean:111:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.poincareBound_le_coefficients`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareAbsorption.lean:272:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.norm_sq_le_absorbed_poincare`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8567/8639] Built YangMills.RG.BalabanCMP89Eq249NormalizedStabilizedEndpointIntegralBound (6.7s)
+✔ [8568/8639] Built YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegral (7.0s)
+⚠ [8569/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime (8.9s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareQprime.lean:73:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.weightedQprimeTower_depth`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareQprime.lean:115:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.weightedQprimeTower_terminalSpacing`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareQprime.lean:196:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.terminalFieldNormSq_eq_weightedQprimeTower`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8570/8639] Built YangMills.RG.BalabanCMP89NormalizedBrillouinToTorusMeasure (7.8s)
+✔ [8571/8639] Built YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedIntegralRecombination (6.9s)
+✔ [8572/8639] Built YangMills.RG.BalabanCMP89Eq249FineLatticeStabilizedFourierLeftDerivativeKernel (5.9s)
+✔ [8573/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision (16s)
+✔ [8574/8639] Built YangMills.RG.BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative (5.9s)
+✔ [8575/8639] Built YangMills.RG.BalabanCMP89Eq248StabilizedGreenEndpointPeriodicity (6.0s)
+✔ [8576/8639] Built YangMills.RG.BalabanCMP89Eq249StabilizedAliasColumnSolution (7.0s)
+✔ [8577/8639] Built YangMills.RG.BalabanCMP89Eq248FineLatticeNormalizedFourierGreen (8.4s)
+✔ [8578/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCoarseCovariance (12s)
+✔ [8579/8639] Built YangMills.RG.BalabanCMP89Eq248GreenMassUniformHolomorphy (6.3s)
+⚠ [8580/8639] Built YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullSolution (9.5s)
+warning: YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolution.lean:255:8: This simp argument is unused:
+  fine
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution, central,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵f̵i̵n̵e̵,̵ ̵column, row, moment, if_pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolution.lean:255:14: This simp argument is unused:
+  column
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedAliasFullSolution, central,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵fine, c̵o̵l̵u̵m̵n̵,̵ ̵row, moment, if_pos]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolution.lean:273:22: This simp argument is unused:
+  row
+
+Hint: Omit it from the simp argument list.
+  simp [solution, cmp89Eq246StabilizedAliasFullSolution, central,
+  ̵  ̵ ̵ ̵ ̵ ̵ ̵ ̵fine, column, r̵o̵w̵,̵ ̵moment, hm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolution.lean:268:27: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8581/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedRegionTransition (10s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedRegionTransition.lean:106:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedTransitionRestriction_comp_extension`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8582/8639] Built YangMills.RG.BalabanCMP89Eq248CenteredGreenTorus (7.0s)
+✔ [8583/8639] Built YangMills.RG.BalabanCMP89Eq248MassUniformGreenBound (8.3s)
+✔ [8584/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceFibreGreen (6.9s)
+✔ [8585/8639] Built YangMills.RG.BalabanCMP89Eq246AliasPrecisionUniqueness (7.9s)
+✔ [8586/8639] Built YangMills.RG.BalabanCMP89Eq246AliasCycleTransport (8.0s)
+✔ [8587/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedEndpointPhase (8.6s)
+✔ [8588/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceStripBound (8.7s)
+✔ [8589/8639] Built YangMills.RG.BalabanCMP89Eq246AliasPrecisionCycle (8.8s)
+✔ [8590/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceHolomorphy (17s)
+✔ [8591/8639] Built YangMills.RG.BalabanCMP89Eq246FullSolutionDomain (8.0s)
+✔ [8592/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceMomentBound (11s)
+✔ [8593/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceSolutionCycle (7.0s)
+✔ [8594/8639] Built YangMills.RG.BalabanCMP89Eq246CentralAverageRowReciprocalBound (30s)
+✔ [8595/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralNumeratorIdentity (30s)
+✔ [8596/8639] Built YangMills.RG.BalabanCMP89Eq246SourceEnvelopeMoment (32s)
+✔ [8597/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceNoncentralCorrectionBound (32s)
+✔ [8598/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceBareDiagonalBound (32s)
+✔ [8599/8639] Built YangMills.RG.BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicity (29s)
+⚠ [8600/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedSourceMoment (6.2s)
+warning: YangMills/RG/BalabanCMP89Eq246DirectedSourceMoment.lean:98:10: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+⚠ [8601/8639] Built YangMills.RG.BalabanCMP89Eq246FineToFineGreenBoundarySeam (5.9s)
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeam.lean:48:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hreal nu, hface]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeam.lean:51:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8602/8639] Built YangMills.RG.BalabanCMP89Eq246FinePointSourceCentralComponentBound (10s)
+✔ [8603/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedNoncentralComponent (9.0s)
+⚠ [8604/8639] Built YangMills.RG.BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift (10s)
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean:64:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean:65:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8605/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedCentralComponent (12s)
+warning: YangMills/RG/BalabanCMP89Eq246DirectedCentralComponent.lean:89:10: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8606/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedNoncentralSum (10s)
+✔ [8607/8639] Built YangMills.RG.BalabanCMP89Eq246FineToFineGreenProductContourTelescope (9.6s)
+⚠ [8608/8639] Built YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain (10s)
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:93:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hreal nu, hface]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:96:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:189:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:190:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8609/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionSum (5.7s)
+✔ [8610/8639] Built YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenTorus (6.6s)
+✔ [8611/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedNormalizedFullSolutionIntegral (6.3s)
+✔ [8612/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedMassTransition (103s)
+⚠ [8613/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary (6.9s)
+warning: YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean:54:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8614/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel (6.5s)
+✔ [8615/8639] Built YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport (18s)
+✔ [8616/8639] Built YangMills.RG.BalabanCMP89Eq246DirectedPhysicalFineContourDictionary (6.3s)
+✔ [8617/8639] Built YangMills.RG.BalabanCMP99SourceCovariantLaplacianCutoffIdentity (7.0s)
+✔ [8618/8639] Built YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour (7.2s)
+✔ [8619/8639] Built YangMills.RG.BalabanCMP99SourceFlatAmbientLaplacian (5.3s)
+✔ [8620/8639] Built YangMills.RG.BalabanCMP99SourceFlatFourierStencil (5.7s)
+✔ [8621/8639] Built YangMills.RG.BalabanCMP99SourceFlatFourierSymbolDictionary (5.9s)
+✔ [8622/8639] Built YangMills.RG.BalabanCMP99FlatMultidimensionalDFT (6.7s)
+✔ [8623/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeFourierModeAction (6.5s)
+✔ [8624/8639] Built YangMills.RG.BalabanCMP99PhysicalFibreComplexification (7.7s)
+✔ [8625/8639] Built YangMills.RG.BalabanCMP99FlatFiniteGridAliasing (6.8s)
+✔ [8626/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCoarseAlias (6.1s)
+✔ [8627/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeComplexFibreModeAction (6.0s)
+✔ [8628/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeAliasFibreDictionary (6.2s)
+✔ [8629/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointPhase (6.4s)
+✔ [8630/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeSignedAliasMomentumDictionary (6.0s)
+✔ [8631/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalAliasPrecisionMatrix (6.1s)
+✔ [8632/8639] Built YangMills.RG.BalabanCMP99CenteredPeriodicEndpointDictionary (7.5s)
+✔ [8633/8639] Built YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointAliasPhase (5.4s)
+⚠ [8634/8639] Built YangMills.RG.BalabanCMP99FlatIntegerResidueClassDictionary (5.6s)
+warning: YangMills/RG/BalabanCMP99FlatIntegerResidueClassDictionary.lean:63:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8635/8639] Built YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientPhase (5.6s)
+✔ [8636/8639] Built YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientDictionary (6.6s)
+✔ [8637/8639] Built YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionary (6.1s)
+✔ [8638/8639] Built YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenFourierSummability (5.7s)
+ℹ [8639/8639] Built YangMills.RG.BalabanCMP99FullGreenArbitraryResidueBound (5.5s)
+info: YangMills/RG/BalabanCMP99FullGreenArbitraryResidueBound.lean:103:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Build completed successfully (8639 jobs).

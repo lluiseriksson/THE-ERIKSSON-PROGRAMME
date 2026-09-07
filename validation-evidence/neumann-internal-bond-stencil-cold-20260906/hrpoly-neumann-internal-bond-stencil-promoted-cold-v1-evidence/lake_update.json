@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "e29c9ccfce7c74954d07cd224b5e79d52d7838342a04393f65b3710d937a6898", "seconds": 102.25567312999999, "stage": "lake_update"}

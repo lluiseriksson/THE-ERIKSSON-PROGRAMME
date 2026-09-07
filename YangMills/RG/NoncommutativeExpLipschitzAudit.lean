@@ -1,0 +1,12 @@
+import YangMills.RG.NoncommutativeExpLipschitz
+
+#print axioms YangMills.RG.norm_expTermFDeriv_sub_apply_le
+#print axioms YangMills.RG.norm_expTermFDeriv_sub_le
+#print axioms YangMills.RG.expDerivativeBudget_nonneg
+#print axioms YangMills.RG.expSecondDerivativeBudget_nonneg
+#print axioms YangMills.RG.summable_expSecondDerivativeMajorant
+#print axioms YangMills.RG.norm_fderiv_exp_le_derivativeBudget
+#print axioms YangMills.RG.norm_fderiv_exp_sub_le_secondDerivativeBudget
+#print axioms YangMills.RG.norm_exp_sub_exp_sub_fderiv_le
+#print axioms YangMills.RG.norm_exp_sub_exp_le_derivativeBudgets
+#print axioms YangMills.RG.norm_exp_le_derivativeBudgets

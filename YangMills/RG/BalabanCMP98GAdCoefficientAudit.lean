@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP98GAdCoefficient
+
+#print axioms YangMills.RG.cmp98_alternating_choose_convolution
+#print axioms YangMills.RG.cmp98_alternating_choose_convolution_real
+#print axioms YangMills.RG.cmp98_exp_deriv_convolution_term
+#print axioms YangMills.RG.cmp98_exp_deriv_convolution_coefficient

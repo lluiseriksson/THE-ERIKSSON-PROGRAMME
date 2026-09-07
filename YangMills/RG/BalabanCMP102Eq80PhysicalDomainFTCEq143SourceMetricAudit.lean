@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCEq143SourceMetric
+
+#print axioms YangMills.RG.cmp102Eq80Eq143CardRate
+#print axioms YangMills.RG.cmp102Eq80Eq143MetricRate
+#print axioms YangMills.RG.cmp102Eq80Eq143ProducerPrefactor
+#print axioms YangMills.RG.CMP102Eq80Eq143ProducerBudget
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalDomainFTCSecondFieldSourceMetricMajorant_le_eq143

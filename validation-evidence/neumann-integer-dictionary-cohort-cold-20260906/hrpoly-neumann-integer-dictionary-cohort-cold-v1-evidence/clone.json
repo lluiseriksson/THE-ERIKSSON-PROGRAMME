@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "d93e27e375c90a771852ce6b11c47bd0c6741f100677c54d54eb0437c6dc55ae", "seconds": 16.50648242599982, "stage": "clone"}

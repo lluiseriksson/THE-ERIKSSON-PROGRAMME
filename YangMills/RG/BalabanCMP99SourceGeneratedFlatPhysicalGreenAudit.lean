@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreen
+
+#print axioms YangMills.RG.cmp99SourcePoincareErrorCoeff_zero
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexSpacing_pos
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalGreen
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalPrecision_comp_green
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalGreen_comp_precision

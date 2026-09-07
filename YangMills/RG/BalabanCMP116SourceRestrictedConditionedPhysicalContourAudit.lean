@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalContour
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.withSourcePi4RestrictedConditionedComplexGaussian
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.dotProduct_sourcePi4RestrictedConditioned_r3RealSource_self_le

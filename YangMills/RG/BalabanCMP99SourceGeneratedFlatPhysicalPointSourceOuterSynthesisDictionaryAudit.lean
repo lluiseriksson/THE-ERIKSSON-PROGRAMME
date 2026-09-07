@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary
+
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceGreen_apply_eq_outerIntegrandSum

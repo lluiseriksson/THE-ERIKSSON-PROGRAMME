@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullPointSourcePhysicalEndpointReflection
+
+#print axioms YangMills.RG.cmp99SourceFlatFullPointSourcePhysicalFineToFineGreenIntegrand_neg_swap

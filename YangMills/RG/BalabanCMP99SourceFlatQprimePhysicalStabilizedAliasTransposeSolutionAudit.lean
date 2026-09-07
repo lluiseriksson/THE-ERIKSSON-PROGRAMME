@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution
+
+/-!
+Cold-sealed axiom audit for the physical central-stabilized alias pullback.
+-/
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalCentralAliasIndex_reindex
+#print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalStabilizedAliasTransposeSolution_central
+#print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalAliasPrecisionMatrix_transpose_mulVec_stabilizedSolution

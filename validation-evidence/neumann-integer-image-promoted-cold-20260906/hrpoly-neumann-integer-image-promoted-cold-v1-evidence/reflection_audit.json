@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannIntegerImageCountingKernelAudit.lean"], "cwd": "/content/hrpoly-neumann-integer-image-promoted-cold-v1", "exit": 0, "log_file": "reflection_audit.log", "output_sha256": "1da1dc8f8fcaf6942ed75993572d6d1f1f3c577eb0fab1fdc7dcee2b9ead4404", "seconds": 4.957650278000074, "stage": "reflection_audit"}

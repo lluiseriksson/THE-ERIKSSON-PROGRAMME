@@ -1,0 +1,100 @@
+{
+  "archive_sha256": "486a1c48e4ec4175f35800b75c1cac0334e53818ba7d536e64e000299a030985",
+  "audits": {
+    "opposite_audit": {
+      "YangMills.RG.neumannIntegerPlaneWave_centeredDifference": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannOppositeExponentialDifference": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "selector_audit": {
+      "YangMills.RG.neumannCenteredAlias_exponential_sum": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannCenteredAlias_shiftedPhase_sum": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannIntegerVectorCharacter_phase": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "evidence_json_file_sha256": "e31466cc936af63f714385c817e72f21b1a745008cee874dde65027ea86d002b",
+  "evidence_json_payload_sha256": "583e9b71a6fa5a2403f3bd0d497854d01abc7c2abb58592227212cfadd1e4484",
+  "production_outputs": {
+    "NeumannAliasExponentialSelector.olean": "a24a41f78408773fd70c650cdbfc950c72fbaaf5aa96f4865102d372c6f77fe7",
+    "NeumannOppositeDifference.olean": "d0b19fc2e30105c704e52a1d2cf642d9b0a572d4267ed99cf088f3f455545070"
+  },
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.NeumannAliasExponentialSelector"
+      ],
+      "cwd": "/content/hrpoly-neumann-selector-opposite-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "selector_focal.log",
+      "output_sha256": "4272816e4eafdaac4b58fcda3f0a149dd7d0b4205dc04f8346686eacb623674a",
+      "seconds": 1048.94175048,
+      "stage": "selector_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/NeumannAliasExponentialSelectorAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-selector-opposite-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "selector_audit.log",
+      "output_sha256": "5673968baad991f444145a29f4d7d6c93b8bb964ca6dd56813c704b09c6b08e9",
+      "seconds": 6.246630989000096,
+      "stage": "selector_audit"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.NeumannOppositeDifference"
+      ],
+      "cwd": "/content/hrpoly-neumann-selector-opposite-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "opposite_focal.log",
+      "output_sha256": "bd79bb7ef085e555c3d16e75deec1511bb46611c5e429d4fc9d5fcda30d08337",
+      "seconds": 8.298810431999982,
+      "stage": "opposite_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/NeumannOppositeDifferenceAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-selector-opposite-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "opposite_audit.log",
+      "output_sha256": "f04c1d6a40e7ba5fb99ca826fa91d906b7868abf0485d4bcb1c3e89d8de192c0",
+      "seconds": 3.4821282679999968,
+      "stage": "opposite_audit"
+    }
+  ],
+  "runner_rev": "neumann-selector-opposite-promoted-cold-v1",
+  "source_sha": "1885a6c0886e595f0d3013c6ac2b9a71f3c93036",
+  "stages_verified": 18,
+  "status": "PASS"
+}

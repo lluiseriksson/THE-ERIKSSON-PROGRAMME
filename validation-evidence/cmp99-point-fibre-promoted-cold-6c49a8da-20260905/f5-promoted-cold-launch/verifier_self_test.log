@@ -1,0 +1,3 @@
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 rejected=9
+VERIFIER_SELF_TEST=PASS positive=1 rejected=6
+F5_POINT_FIBRE_VERIFIER_SELF_TEST=PASS synthetic=1 rejected=6

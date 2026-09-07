@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99FirstHitSplitEncoding
+
+#print axioms YangMills.RG.terminalDomain_take_eq_domains_get
+#print axioms YangMills.RG.mem_cmp99FirstHitSplitData_iff
+#print axioms YangMills.RG.cmp99PhysicalFirstHitSplitEncode
+#print axioms YangMills.RG.cmp99PhysicalFirstHitSplitEncode_mapsTo
+#print axioms YangMills.RG.cmp99PhysicalFirstHitSplitEncode_injOn
+#print axioms YangMills.RG.card_cmp99GeneratedWalksActivating_le_firstHitSplitData

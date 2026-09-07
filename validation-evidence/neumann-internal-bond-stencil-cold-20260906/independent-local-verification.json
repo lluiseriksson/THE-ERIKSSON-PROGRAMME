@@ -1,0 +1,113 @@
+{
+  "cold": {
+    "audits": {
+      "internal_bond_stencil_audit": {
+        "YangMills.RG.neumannInternalBond_adjoint_eq_extended_divergence": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannInternalBond_derivative_eq_restrict": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannInternalBond_laplacian_apply": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannInternalBond_restrict_eq_extend_adjoint": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "77505f0079e556cc383fc2432c8215fd7759e5756f9438cfae851b5894f82ea0",
+    "evidence_json_payload_sha256": "68fff01310188f9d5612765e1dbcc3d6705eb89f12bb5df5ac9226337502588f",
+    "production_outputs": {
+      "NeumannInternalBondStencil.olean": "17a9f0d27a509de604d384bfa00666fa6768e97c4a6d41b3a23fcd2acc49355f"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannInternalBondStencil"
+        ],
+        "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "internal_bond_stencil_focal.log",
+        "output_sha256": "aec9bf33a8b44793dacc34a64c35fed606b2691f26cd537886c662ddbd5f5215",
+        "seconds": 1984.1857184659998,
+        "stage": "internal_bond_stencil_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannInternalBondStencilAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "internal_bond_stencil_audit.log",
+        "output_sha256": "f63b692405d01095e91f57aaad17b34d9fc142f8be3c64ab2676b44800c9cf54",
+        "seconds": 13.086825144000159,
+        "stage": "internal_bond_stencil_audit"
+      }
+    ],
+    "runner_rev": "neumann-internal-bond-stencil-promoted-cold-v1",
+    "source_sha": "81f35765ad50f8217bca20bc4530d99b3bf05103",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "cold_seal": true,
+  "inner_sha256": "7714f4def128f3285378d5bdca136a8eb3ddb4d8ca5eec14b6b819f8b6fe4478",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-internal-bond-stencil-promoted-cold-v1-launch/verify_neumann_internal_bond_stencil_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-internal-bond-stencil-promoted-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "8bf7de9cc04cd3f703be0ba861236b1bd9047d3fdefdf13b522383c2d0e1e6b5",
+      "seconds": 0.07097787100002506,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-internal-bond-stencil-promoted-cold-v1-launch/colab_neumann_internal_bond_stencil_promoted_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "443fac22114a35f599049983d633e7e239327f08cb5a50c1117ffcd6fbaf6cea",
+      "seconds": 2155.795680835,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-internal-bond-stencil-promoted-cold-v1-launch/verify_neumann_internal_bond_stencil_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-internal-bond-stencil-promoted-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "7714f4def128f3285378d5bdca136a8eb3ddb4d8ca5eec14b6b819f8b6fe4478"
+      ],
+      "exit": 0,
+      "log_sha256": "2d7def7e5c684c2faa24ab57e067a55659c6c2a8a8cf836d04e0a27cf673a1c5",
+      "seconds": 0.1358938860003036,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "6c3977a59ccad04a4458bd615c3ddecdb3f36d5f9151e681eebcd376d26a917b",
+  "scope": "actual Neumann internal-bond adjoint and finite divergence only; not reflected Green boundary law, regional inverse, uniform B0 or window15",
+  "source": "81f35765ad50f8217bca20bc4530d99b3bf05103",
+  "status": "VERIFIED_COLD_PASS"
+}

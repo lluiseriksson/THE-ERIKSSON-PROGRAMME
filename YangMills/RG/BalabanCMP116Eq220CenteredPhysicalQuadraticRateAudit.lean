@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq220CenteredPhysicalQuadraticRate
+
+#print axioms YangMills.RG.cmp116Eq220_centeredPhysicalQuadratic_le_rate

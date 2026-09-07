@@ -1,0 +1,92 @@
+{
+  "archive_sha256": "e8835534a3d6e5790b1405378bc15ecfaf8177c63f90afa3a84d91fa19418025",
+  "audits": {
+    "generic_residue_audit": {
+      "YangMills.RG.cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerResidue": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "source_owner_audit": {
+      "YangMills.RG.cmp99SourceFlowFullPointSourceGreen_apply_eq_scaledOwnerResidue": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_cmp99PhysicalFullGreenScaledOwnerResidue_le_owner": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_cmp99SourceFlowFullPointSourceGreen_le_owner": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "evidence_json_file_sha256": "7f1463a7db4024a06adc5cbade6d0769273fb7789bfb3b3f7c308a39f6620adc",
+  "evidence_json_payload_sha256": "22c5065663cdbd720078771fa395e97a39dd504eb59b0209c4cb31f3d072bfdf",
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1",
+      "exit": 0,
+      "log_file": "generic_residue_focal.log",
+      "output_sha256": "14ce2ddacc065389762adb7b0461abf01e38eb54b663c9d7e0af75574d0cc18c",
+      "seconds": 2177.6931508619996,
+      "stage": "generic_residue_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentityAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1",
+      "exit": 0,
+      "log_file": "generic_residue_audit.log",
+      "output_sha256": "4b2c56cfbef5e3f18f6bc7b8cb1d3f603555e77c950d41b3fd3a7fa207b26ac6",
+      "seconds": 10.955616057000043,
+      "stage": "generic_residue_audit"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99SourceFlowFullPointSourceOwnerBound"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1",
+      "exit": 0,
+      "log_file": "source_owner_focal.log",
+      "output_sha256": "31aa905b04bac2ccc89209751ad77755555789120519707e508a342eaf7bd0a5",
+      "seconds": 277.2405951029996,
+      "stage": "source_owner_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP99SourceFlowFullPointSourceOwnerBoundAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-owner-v1",
+      "exit": 0,
+      "log_file": "source_owner_audit.log",
+      "output_sha256": "201cfd1315ca6f852960ec96432f20233d22a5162e935e06df134d01c51bd309",
+      "seconds": 16.377200641000854,
+      "stage": "source_owner_audit"
+    }
+  ],
+  "runner_rev": "cmp99-source-flow-full-green-owner-v1",
+  "source_sha": "bab82db79c118ef64259bc50627170f11c2e187e",
+  "stages_verified": 18,
+  "status": "PASS"
+}
+SOURCE_FLOW_OWNER_COLD_EVIDENCE_VERIFIED

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99Eq389GeneratedMassGreenInsertion
+
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSignedLargeBlockCutoff_sub_le_of_sameTerminalBlock
+#print axioms YangMills.RG.norm_cmp99RegionalExtendedDirichletGreen_single_apply_le_commonMetric
+#print axioms YangMills.RG.norm_cmp99Eq389GeneratedMassGreenCutoffValue_le
+#print axioms YangMills.RG.cmp99Eq389GeneratedCountingMass_GreenCutoffValue_le

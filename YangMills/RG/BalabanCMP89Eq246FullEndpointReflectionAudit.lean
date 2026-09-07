@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246FullEndpointReflection
+
+#print axioms YangMills.RG.cmp89Eq246StabilizedDepthOnePhysicalEndpointReflection
+#print axioms YangMills.RG.cmp89Eq246PhysicalFineToFineGreenIntegrand_neg_swap

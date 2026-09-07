@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexContourNonsingularity
+
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexRelativeCovarianceDefect
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_det_ne_zero
+#print axioms YangMills.RG.cmp116SourcePi4_fullComplexPrecision_mul_covariance_eq_one_of_relativeDefect

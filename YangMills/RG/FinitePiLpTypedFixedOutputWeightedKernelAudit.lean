@@ -1,0 +1,7 @@
+import YangMills.RG.FinitePiLpTypedFixedOutputWeightedKernel
+
+#print axioms YangMills.RG.FinitePiLpTypedFixedOutputWeightedKernelBound
+#print axioms YangMills.RG.finitePiLpTypedFixedOutputWeightedKernelBound_of_finiteRange
+#print axioms YangMills.RG.finitePiLpTypedFixedOutputWeightedKernelBound_of_outputSum_and_finiteRange
+#print axioms YangMills.RG.finitePiLpTypedFixedOutputWeightedKernelBound_smul
+#print axioms YangMills.RG.finitePiLpTypedFixedOutputWeightedKernelBound_add

@@ -1,0 +1,10 @@
+import YangMills.RG.NearLogDeviationBudget
+
+namespace YangMills.RG
+
+#print axioms norm_nearLog_le_div_of_norm_le
+#print axioms MatrixNearLogNoWindingBudget.nearIdentity
+#print axioms MatrixNearLogNoWindingBudget.nearLog_noWinding
+#print axioms trace_nearLog_unitary_sub_one_eq_zero_of_det_eq_one_of_deviationBudget
+
+end YangMills.RG

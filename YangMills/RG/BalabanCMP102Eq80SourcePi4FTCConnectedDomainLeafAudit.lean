@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCConnectedDomainLeaf
+
+#print axioms YangMills.RG.cmp116FixedWeakeningCoordinateDerivatives_eq_sum_connectedPhysicalDomains

@@ -1,0 +1,79 @@
+{
+  "kind": "retained-runtime-diagnostic",
+  "source_sha": "06e6be132c5e7742bb60102e890814d4961b5d2a",
+  "source_blobs": {
+    "YangMills/RG/BalabanCMP89Eq246DirectedEndpointPhase.lean": "f575b1601dffcea3dc97b65e0867c6a40945962d74d636ffa03e1dba81b7c983",
+    "YangMills/RG/BalabanCMP89Eq246DirectedEndpointPhaseAudit.lean": "446cdb707c10779c92ad6bc662bc0f795b5f4c0c8bae22beb3c623cd49cac4f1",
+    "YangMills/RG/BalabanCMP89Eq246SourceEnvelopeMoment.lean": "255e51c02c633bdf8f445ce78c81a5305217e5f27b2e0ab03db4d79ab8b62483",
+    "YangMills/RG/BalabanCMP89Eq246SourceEnvelopeMomentAudit.lean": "6ecd46448982927f7762df6919ce02b3cc73b44b5b259484d769572f42df3278"
+  },
+  "stages": [
+    {
+      "stage": "hot2_fetch_exact_source",
+      "exit": 0,
+      "seconds": 0.246
+    },
+    {
+      "stage": "hot2_checkout_exact_source",
+      "exit": 0,
+      "seconds": 0.027
+    },
+    {
+      "stage": "hot2_verify_head",
+      "exit": 0,
+      "seconds": 0.003
+    },
+    {
+      "stage": "hot2_directed_endpoint_phase_focal",
+      "exit": 0,
+      "seconds": 11.57
+    },
+    {
+      "stage": "hot2_directed_endpoint_phase_audit",
+      "exit": 0,
+      "seconds": 7.581
+    },
+    {
+      "stage": "hot2_source_envelope_moment_focal",
+      "exit": 0,
+      "seconds": 38.613
+    },
+    {
+      "stage": "hot2_source_envelope_moment_audit",
+      "exit": 0,
+      "seconds": 7.892
+    }
+  ],
+  "axiom_gates": [
+    {
+      "name": "YangMills.RG.cmp89Eq246TargetPhase_mul_finePointSourceAliasVector",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "name": "YangMills.RG.norm_cmp89Eq246TargetPhase_mul_finePointSourceAliasVector_signedContour",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "name": "YangMills.RG.norm_cmp89Eq246FinePointSourceAliasVector_signedContour",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "name": "YangMills.RG.norm_cmp89Eq246TargetPhase_signedContour",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "name": "YangMills.RG.cmp89Eq246_targetDecay_mul_sourceGrowth",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "name": "YangMills.RG.norm_cmp89Eq246StabilizedAliasNoncentralSourceMoment_le_of_envelope",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    },
+    {
+      "name": "YangMills.RG.norm_cmp89Eq246StabilizedAliasFullSolutionMoment_le_of_envelope",
+      "axioms": "Classical.choice,Quot.sound,propext"
+    }
+  ],
+  "status": "PASS",
+  "captured_utc": "2026-09-02T02:20:21.489Z"
+}

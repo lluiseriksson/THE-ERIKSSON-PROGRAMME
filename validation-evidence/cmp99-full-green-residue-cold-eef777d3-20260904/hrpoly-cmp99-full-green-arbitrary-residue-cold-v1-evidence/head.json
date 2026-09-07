@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1", "exit": 0, "log_file": "head.log", "output_sha256": "930318fc80fb783d308da204daffd01f2ce35dc30a1f675a594a994f68379c0f", "seconds": 0.0026648600000953593, "stage": "head"}

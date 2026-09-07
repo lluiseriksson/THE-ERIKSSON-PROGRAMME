@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary
+
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexBlockSide
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexSpacing
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexA
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexSpacing_inv_mul_inv
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexA_mul_weight
+#print axioms YangMills.RG.cmp99SourceGeneratedFullComplexA_mul_weight_complex

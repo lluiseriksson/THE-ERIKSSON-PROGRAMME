@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "2c1b4784a114ca1d3d4706cd90b13d50e8d008ac9248a1f1c24e70a33c993adf", "seconds": 99.19901527500002, "stage": "lake_update"}

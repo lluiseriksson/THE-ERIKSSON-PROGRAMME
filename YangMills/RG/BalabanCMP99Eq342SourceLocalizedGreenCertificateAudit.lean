@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99Eq342SourceLocalizedGreenCertificate
+
+/-!
+# Audit: source-localized regional Green package
+-/
+
+#print axioms YangMills.RG.cmp99Eq342SourceLocalizedActiveOwner
+#print axioms YangMills.RG.cmp99Eq342SourceLocalizedBondOwner
+#print axioms YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate.B0_pos
+#print axioms YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate.delta0_pos
+#print axioms YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate.value_bound
+#print axioms YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate.left_derivative_bound
+#print axioms YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate.right_adjoint_derivative_bound
+#print axioms YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate.laplacian_bound
+#print axioms YangMills.RG.CMP99Eq342SourceLocalizedGreenCertificate.B0_nonneg

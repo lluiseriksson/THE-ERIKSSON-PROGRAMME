@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedState
+
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.empty
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.newlyActive
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.update
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.transitionWeight
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.newlyActive_subset
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.disjoint_newlyActive
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.monomial_mul_transitionWeight
+#print axioms YangMills.RG.CMP116RestrictedVisitedState.card_eq_two_pow

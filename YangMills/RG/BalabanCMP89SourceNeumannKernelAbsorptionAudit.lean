@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89SourceNeumannKernelAbsorption
+
+#print axioms YangMills.RG.eq_zero_of_cmp89SourceNeumannRegionalPoincare_of_derivative_sq_le

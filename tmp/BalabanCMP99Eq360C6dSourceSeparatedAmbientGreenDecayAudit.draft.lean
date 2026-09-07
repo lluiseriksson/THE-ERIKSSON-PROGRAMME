@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenDecay
+
+-- SCRATCH ONLY: no compiler or axiom-oracle verdict is claimed.
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude
+#print axioms YangMills.RG.cmp99Eq360C6dSourceAmbientBaselinePrecision_exponentialKernelBound
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientPrecision_exponentialKernelBound
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_exponentialKernelBound

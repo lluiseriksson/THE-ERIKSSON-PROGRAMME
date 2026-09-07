@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointHolomorphy
+
+#print axioms YangMills.RG.differentiable_cmp89Eq251ComplexBareEndpointNumerator
+#print axioms YangMills.RG.differentiableAt_cmp89Eq251ComplexStabilizedEndpointNumerator
+#print axioms YangMills.RG.differentiableAt_cmp89Eq251ComplexStabilizedEndpointIntegrand
+#print axioms YangMills.RG.differentiableAt_cmp89Eq251ComplexStabilizedEndpointIntegrand_of_commonRadius

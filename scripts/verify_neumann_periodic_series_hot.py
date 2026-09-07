@@ -1,0 +1,88 @@
+"""Independent HOT contract reader. No compiler or child processes."""
+import argparse, hashlib, json, math
+from pathlib import Path
+import verify_neumann_physical_periodic_transfer_promoted_cold as cold
+from verify_neumann_counting_reflection_diagnostic_v2 import unpack
+
+SOURCE='0bdb056bad23b77adda9d6b13a4917386836e174'
+BASE='24dc691e451ab9b6684f950a3fdd5a78e913997f'
+OUT='/content/neumann-periodic-series-hot-v1'
+ROOT='/content/hrpoly-neumann-physical-periodic-transfer-promoted-cold-v1'
+RUNNER='87e9b976f66761093d74ede5ea6d257e9de68b07154d60c7e611a7fda097394e'
+PINS={
+ 'NeumannPeriodicSummabilityRepro.lean':'2f77706d8f22744ef45f765ce585cdd26027cb832f0ae9b034998ee24bbb9bca',
+ 'NeumannPhysicalPeriodicSeriesDraft.lean':'a20ac331d1a69ab393df813c4b66bbe5bdc177a6c645383bdef8fa7aff054e18',
+ 'NeumannPhysicalPeriodicSummabilityDraft.lean':'fa02f186d4730b6a40022b987e2b38bab87530a22baf21e486f3065e1dfb207b',
+ 'verify_neumann_physical_periodic_transfer_promoted_cold.py':'7b8855c954ec181e37e74318d7243cf940056ac5dfa5f603f5d12d0fcd03afff',
+ 'verify_cmp99_full_green_residue_cold.py':'558295bb43e74bdae3eb6508656e7b8cde756cb393376320d0c197347396a02c',
+ 'full_green_owner_exact_axiom_gate.py':'016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2'}
+NAMES={
+ 'series':{'YangMills.RG.neumannPeriodicTranslate_tsum_reindex','YangMills.RG.neumannPhysicalGreen_periodicImage_tsum'},
+ 'summability':{'YangMills.RG.neumannPeriodicSourceDifference_injective','YangMills.RG.summable_neumannPeriodicSource_of_decay','YangMills.RG.summable_neumannActualFullGreen_periodicSource'}}
+def sha(b):return hashlib.sha256(b).hexdigest()
+def require(c,m):
+ if not c:raise ValueError(m)
+def commands(parent_hash,python):
+ lean=['lake','env','lean']+(['--root='+OUT] if OUT.endswith('-v3') else [])
+ return {
+ 'parent_verify':[python,OUT+'/verify_neumann_physical_periodic_transfer_promoted_cold.py','--helpers',OUT,'--archive',ROOT+'-evidence.tar.gz','--sha256',parent_hash],
+ 'head':['git','rev-parse','HEAD'],
+ 'clean_before':['git','diff','--exit-code','HEAD','--','YangMills','lean-toolchain','lake-manifest.json'],
+ 'repro':['lake','env','lean',OUT+'/NeumannPeriodicSummabilityRepro.lean'],
+ 'prerequisite':['lake','build','YangMills.RG.NeumannActualFullGreenReflectionSummability'],
+ 'series':lean+['-o',OUT+'/series.olean',OUT+'/NeumannPhysicalPeriodicSeriesDraft.lean'],
+ 'summability':lean+['-o',OUT+'/summability.olean',OUT+'/NeumannPhysicalPeriodicSummabilityDraft.lean'],
+ 'clean_after':['git','diff','--exit-code','HEAD','--','YangMills','lean-toolchain','lake-manifest.json']}
+def verify(files,parent,parent_hash,gate):
+ manifest=json.loads(files['manifest.json'])
+ require(set(manifest)==set(files)-{'manifest.json'},'MANIFEST_SET')
+ for n,h in manifest.items():require(sha(files[n])==h,'HASH='+n)
+ require(sha(files['runner.py'])==RUNNER,'RUNNER')
+ for n,h in PINS.items():require(sha(files[n])==h,'PIN='+n)
+ data=json.loads(files['result.json'])
+ for k,v in dict(status='PASS',error=None,source=SOURCE,base=BASE,parent_sha256=parent_hash,cold_seal=False).items():require(data.get(k)==v,'RESULT='+k)
+ records=data['records'];require(len(records)==8,'RECORD_COUNT')
+ python=records[0]['command'][0]
+ require(python in ['/usr/bin/python3','/usr/bin/python','/usr/local/bin/python3'],'PYTHON')
+ cmds=commands(parent_hash,python)
+ require([r['stage'] for r in records]==list(cmds),'STAGE_ORDER')
+ for r in records:
+  s=r['stage'];require(r['command']==cmds[s],'COMMAND='+s)
+  require(r['exit']==0 and r['timed_out'] is False,'EXIT='+s)
+  require(math.isfinite(r['seconds']) and r['seconds']>=0,'TIME='+s)
+  require(sha(files[s+'.log'])==r['sha256'],'LOG='+s)
+ require(files['head.log'].decode().strip()==BASE,'HEAD')
+ report_text=files['parent_verify.log'].decode()
+ decoder=json.JSONDecoder();observed,end=decoder.raw_decode(report_text.lstrip())
+ require(observed==parent,'PARENT_REPORT')
+ require(report_text.lstrip()[end:].strip()=='NEUMANN_PHYSICAL_PERIODIC_TRANSFER_COLD_EVIDENCE_VERIFIED','PARENT_MARKER')
+ audits={s:gate.exact_axioms(files[s+'.log'].decode(),ns) for s,ns in NAMES.items()}
+ require(json.loads(files['audits.json'])==audits,'AUDIT_RECORD')
+ expected=set(PINS)|{'runner.py','result.json','manifest.json','audits.json','series.olean','summability.olean'}|{s+'.log' for s in cmds}
+ require(set(files)==expected,'FILE_SET')
+ return dict(status='PASS',cold_seal=False,source=SOURCE,parent_sha256=parent_hash,audits=audits,records=records,outputs={n:sha(files[n]) for n in ['series.olean','summability.olean']})
+def main():
+ global OUT,RUNNER
+ ap=argparse.ArgumentParser()
+ ap.add_argument('--revision',choices=['v1','v2','v3'],default='v1')
+ for n in ['archive','parent-archive','helpers']:ap.add_argument('--'+n,type=Path,required=True)
+ for n in ['sha256','parent-sha256']:ap.add_argument('--'+n,required=True)
+ a=ap.parse_args()
+ if a.revision=='v2':
+  OUT='/content/neumann-periodic-series-hot-v2'
+  RUNNER='bfe10c94523d81921940de1916aa40cc6c1e391cc049637ef8164aa17958e57a'
+ if a.revision=='v3':
+  OUT='/content/neumann-periodic-series-hot-v3'
+  RUNNER='2c438d97b0202d2b880e4b44292597e7cd4721cefe4c33bbfeedb7d328f92c0f'
+ old=cold.helper(a.helpers,'verify_cmp99_full_green_residue_cold.py',PINS['verify_cmp99_full_green_residue_cold.py'])
+ gate=cold.helper(a.helpers,'full_green_owner_exact_axiom_gate.py',PINS['full_green_owner_exact_axiom_gate.py'])
+ old.PREFIX='hrpoly-'+cold.REV+'-evidence'
+ parent=cold.verify(old.read_archive(a.parent_archive,a.parent_sha256),gate,old)
+ parent['archive_sha256']=a.parent_sha256.lower()
+ raw=a.archive.read_bytes();require(sha(raw)==a.sha256.lower(),'ARCHIVE_HASH')
+ rawfiles=unpack(raw);prefix=Path(OUT).name+'/'
+ require(all(n.startswith(prefix) for n in rawfiles),'PREFIX')
+ files={n[len(prefix):]:v for n,v in rawfiles.items()}
+ print(json.dumps(verify(files,parent,a.parent_sha256,gate),sort_keys=True,indent=2))
+ print('PERIODIC_SERIES_HOT_EVIDENCE_VERIFIED')
+if __name__=='__main__':main()

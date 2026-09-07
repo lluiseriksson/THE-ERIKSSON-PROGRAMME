@@ -1,0 +1,10 @@
+{
+  "files": {
+    "eq337-complex-ubar-radius-axioms.json": "58963197C7F010447E45A8B279F6F695D7E430C74FD5208C176D1261A55C40E0",
+    "hrpoly-eq337-complex-ubar-radius-evidence.tar.gz": "7DD18A52514D9BF62D52A8D4AAFEF0B5722CBA811883024E7274BBD9AB85BD82"
+  },
+  "runner_revision": "eq337-complex-ubar-radius-promoted-cold-v6",
+  "source_sha": "d69356d18c6c2392bc8a9599fd1c398109487f57",
+  "status": "EQ337_COMPLEX_UBAR_RADIUS_ARCHIVE_PACKAGE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

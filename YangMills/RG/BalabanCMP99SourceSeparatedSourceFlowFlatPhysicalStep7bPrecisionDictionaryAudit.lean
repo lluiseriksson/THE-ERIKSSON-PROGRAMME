@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalStep7bPrecisionDictionary
+
+open YangMills.RG
+
+#print axioms cmp99SourceSeparatedSourceFlowFlatAmbientPrecisionComplex_apply_ofReal
+#print axioms cmp99SourceSeparatedSourceFlowFlatAmbientPrecisionComplex_eq_step7b

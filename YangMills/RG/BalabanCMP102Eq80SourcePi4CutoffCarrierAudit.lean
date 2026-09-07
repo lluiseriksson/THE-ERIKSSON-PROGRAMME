@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4CutoffCarrier
+
+#print axioms YangMills.RG.CMP102Eq80SourcePi4PhysicalDomainLabel.properties
+#print axioms YangMills.RG.cmp102Eq80SourcePi4LocalizationDomain
+#print axioms YangMills.RG.cmp102Eq80SourcePi4BondDomainFamily
+#print axioms YangMills.RG.cmp102Eq80SourcePi4PhysicalY0
+#print axioms YangMills.RG.cmp102Eq80SourcePi4LocalizationDomain_bondSupport_subset_physicalY0
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_eq80DomainProjection_le_threshold_of_cutoffFactor_ne_zero

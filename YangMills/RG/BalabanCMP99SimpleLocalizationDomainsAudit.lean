@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99SimpleLocalizationDomains
+
+#print axioms YangMills.RG.CMP99SimpleLocalizationDomain
+#print axioms YangMills.RG.CMP99SimpleLocalizationDomain.Meets
+#print axioms YangMills.RG.cmp99RootedConnectedFamilies
+#print axioms YangMills.RG.card_cmp99RootedConnectedFamilies_le
+#print axioms YangMills.RG.cmp99MeetingSimpleDomains
+#print axioms YangMills.RG.image_cmp99MeetingSimpleDomains_subset_rootedUnion
+#print axioms YangMills.RG.card_cmp99MeetingSimpleDomains_le
+#print axioms YangMills.RG.cmp99SimpleDomainSuccessors
+#print axioms YangMills.RG.card_cmp99SimpleDomainSuccessors_le
+#print axioms YangMills.RG.mem_cmp99SimpleDomainSuccessors_meets
+#print axioms YangMills.RG.cmp99SimpleDomainBranchingBound
+#print axioms YangMills.RG.summable_cmp99SimpleDomainWalk_radialMajorant
+#print axioms YangMills.RG.summable_cmp116WeakenedCMP99SimpleDomainWalkSeries

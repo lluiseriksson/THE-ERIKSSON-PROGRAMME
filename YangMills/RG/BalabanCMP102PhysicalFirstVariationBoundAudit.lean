@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102PhysicalFirstVariationBound
+
+#print axioms YangMills.RG.norm_orientedWilsonFactorFirst_zero_le_sourceSupNorm
+#print axioms YangMills.RG.norm_cmp98ContourFirstVariation_zero_le_sourceSupNorm
+#print axioms YangMills.RG.cmp98UbarDeviationFirstVariation_zero_eq_sourceContour
+#print axioms YangMills.RG.norm_cmp98UbarDeviationFirstVariation_zero_le_sourceScale
+#print axioms YangMills.RG.norm_cmp98Eq119CoarseRightVariation_le_sourceScale

@@ -1,0 +1,23 @@
+import tmp.P9SourceSeparatedPrefixCombesThomas
+
+/-!
+PRE-VALIDATION SCRATCH: oracle source present under `tmp`; neither this file
+nor its target has been compiler-verified.
+-/
+
+namespace YangMills.RG
+
+#print axioms scratch_cmp89SourceSeparatedPrefixCountingCoefficient
+#print axioms scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound
+#print axioms scratch_cmp89SourceSeparatedPrefixPrecisionUpperBound_pos
+#print axioms scratch_norm_cmp89SourceSeparatedFinalPrefix_Qprime_le_one
+#print axioms scratch_cmp89SourceSeparatedFinalPrefix_QprimeMass_finiteRange
+#print axioms scratch_cmp89SourceSeparatedFinePrefixPrecision_finiteRange
+#print axioms scratch_norm_cmp89SourceSeparatedFinePrefixPrecision_le
+#print axioms scratch_cmp89SourceSeparatedFinePrefixPrecision_kernelBound
+#print axioms scratch_cmp89SourceSeparatedFinePrefixGreen_exponentialKernelBound
+#print axioms scratch_cmp89SourceSeparatedAmbientPrefixGreen_exponentialKernelBound
+#print axioms scratch_cmp89SourceSeparatedAmbientPrefixPrecision_exponentialKernelBound
+#print axioms scratch_cmp96SourceSeparatedRegionalPrefixGreen_exponentialKernelBound
+
+end YangMills.RG

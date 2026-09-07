@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP98Eq124ContourSplit
+
+#print axioms YangMills.RG.cmp98UbarContourVariationTerm
+#print axioms YangMills.RG.cmp98UbarDeviationFirstVariation_eq_sum_contourTerms
+#print axioms YangMills.RG.cmp98UbarMiddleContourVariation
+#print axioms YangMills.RG.cmp98UbarThreeContourCorrections
+#print axioms YangMills.RG.cmp98UbarDeviationFirstVariation_eq_middle_add_corrections
+#print axioms YangMills.RG.cmp98Eq124MiddleLogVariation
+#print axioms YangMills.RG.cmp98Eq124CorrectionLogVariation
+#print axioms YangMills.RG.cmp98UbarLogAveragePhysicalVariation_eq_middle_add_corrections

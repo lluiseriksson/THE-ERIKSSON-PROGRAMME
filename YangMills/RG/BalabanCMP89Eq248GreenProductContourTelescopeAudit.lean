@@ -1,0 +1,11 @@
+-- Promotion import:
+import YangMills.RG.BalabanCMP89Eq248GreenProductContourTelescope
+
+
+-- SEALED AXIOM SURFACE: intended axiom surface for Step 8b.23/Unit D.11.
+
+#print axioms YangMills.RG.cmp89Eq248FineLatticeGreenPartialProductIntegrand_draft
+#print axioms YangMills.RG.integrable_cmp89Eq248FineLatticeGreenPartialProductIntegrand_draft
+#print axioms YangMills.RG.integral_cmp89Eq248FineLatticeGreenPartialProductIntegrand_stage_succ_draft
+#print axioms YangMills.RG.integral_cmp89Eq248FineLatticeGreenPartialProductIntegrand_zero_eq_four_draft
+#print axioms YangMills.RG.integral_cmp89Eq248ComplexStabilizedGreenEndpointIntegrand_physicalFine_eq_signed_massUniform_draft

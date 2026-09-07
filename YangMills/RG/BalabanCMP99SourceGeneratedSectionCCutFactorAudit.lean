@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCutFactor
+
+open YangMills.RG
+
+#print axioms CMP99SourceDependentOmegaGeometry.GeneratedSectionCTransitionCutData
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseSectionCCutFactorCoordinates
+#print axioms CMP99SourceDependentOmegaGeometry.norm_generatedPhysicalCoarseSectionCCutFactorCoordinates_le

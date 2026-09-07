@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102PhysicalBackgroundZeroChart
+
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_zero
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionScalarData.backgroundBallSourceEnvelope_nonneg
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionScalarData.zeroChartBudget
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionScalarData.zeroChartBudget_localRadius
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionScalarData.zeroChartBudget_relativeRadius

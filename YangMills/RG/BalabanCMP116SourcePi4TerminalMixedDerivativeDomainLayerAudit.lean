@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalMixedDerivativeDomainLayer
+
+#print axioms YangMills.RG.cmp116SourcePi4ForwardWalkMixedDerivativeDomainTerm
+#print axioms YangMills.RG.cmp116SourcePi4TerminalMixedDerivativeDomainLayer
+#print axioms YangMills.RG.cmp116SourcePi4TerminalMixedDerivativeDomainLayer_eq_zero_of_not_mem_core
+#print axioms YangMills.RG.sum_cmp116SourcePi4TerminalMixedDerivativeDomainLayer

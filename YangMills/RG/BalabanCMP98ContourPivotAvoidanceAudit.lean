@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP98ContourPivotAvoidance
+
+#print axioms YangMills.RG.finBox_shift_ne_of_two_le
+#print axioms YangMills.RG.shift_cmp96ConstraintPivotSource_eq_targetBasepoint
+#print axioms YangMills.RG.reverseLatticePath_avoids_physicalBond
+#print axioms YangMills.RG.mem_cmp99StraightPositivePath_edges_exists
+#print axioms YangMills.RG.OrientedLatticePath.StaysIn.avoids_constraintPivot
+#print axioms YangMills.RG.cmp99SourceUbarGamma1_avoids_constraintPivot
+#print axioms YangMills.RG.cmp99SourceUbarGamma3_avoids_constraintPivot
+#print axioms YangMills.RG.cmp99SourceUbarGamma2_avoids_constraintPivot_of_ne
+#print axioms YangMills.RG.cmp98SourceCoarseBondPath_avoids_constraintPivot_of_ne
+#print axioms YangMills.RG.cmp98SourceFourContourEdges_avoids_constraintPivot_of_ne

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceEq395NeumannOperatorDecay
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalCorrection_tsum_pow_exponentialKernelBound_of_schurSmall

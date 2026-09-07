@@ -1,0 +1,9 @@
+'YangMills.RG.neumannAliasPiCoordinateReflection_self' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannAliasPiCoordinateReflection_other' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannAliasCoordinateReflection_other' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannAliasCoordinateReflection_residue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannAliasCoordinateReflection_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannAliasCoordinateReflection_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannPhysicalAliasCoordinateReflection_central' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

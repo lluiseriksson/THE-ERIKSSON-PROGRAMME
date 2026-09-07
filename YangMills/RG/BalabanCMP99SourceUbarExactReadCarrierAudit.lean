@@ -1,0 +1,22 @@
+import YangMills.RG.BalabanCMP99SourceUbarExactReadCarrier
+
+/-!
+
+
+Axiom queue for the exact one-scale source-Ubar read carrier.
+-/
+
+#print axioms YangMills.RG.cmp99PhysicalBondsOfEdgeList
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99PhysicalBondsOfEdgeList
+#print axioms YangMills.RG.cmp99SourceUbarBaseEdgeList
+#print axioms YangMills.RG.cmp99SourceUbarFineContourEdgeList
+#print axioms YangMills.RG.cmp99SourceUbarFineReadBonds
+#print axioms YangMills.RG.cmp99SourceUbarFineReadBondsOfCoarseBonds
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_base
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma1
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma2
+#print axioms YangMills.RG.physicalBondOfEdge_mem_cmp99SourceUbarFineReadBonds_of_gamma3
+#print axioms YangMills.RG.gaugeConfig_apply_eq_of_positivePhysicalBond_eq
+#print axioms YangMills.RG.cmp99SourceBaseCoarseBackground_apply_pos_eq_of_eqOn_readBonds
+#print axioms YangMills.RG.cmp99SourcePhysicalUbar_eq_of_eqOn_readBonds
+#print axioms YangMills.RG.cmp99SourcePhysicalUbar_eq_of_eqOn_selectedReadBonds

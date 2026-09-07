@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80OuterNeumannDirectionalBound
+
+#print axioms YangMills.RG.exists_uniform_bound_cmp102Eq80OuterNeumannDirectionalDerivative

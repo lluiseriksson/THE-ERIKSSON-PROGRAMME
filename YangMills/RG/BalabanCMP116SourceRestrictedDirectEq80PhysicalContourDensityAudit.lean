@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedDirectEq80PhysicalContourDensity
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.ofSourcePi4RestrictedEq80PhysicalContour

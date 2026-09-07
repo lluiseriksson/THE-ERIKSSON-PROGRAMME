@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116PhysicalEndomorphismSchurNorm
+
+#print axioms YangMills.RG.norm_cmp116PhysicalCoordinateEuclideanLinearEquiv
+#print axioms YangMills.RG.cmp116PhysicalCoordinateLinearIsometryEquiv_symm_reconstruction
+#print axioms YangMills.RG.norm_cmp116PhysicalEndomorphismOfComplexMatrixCLM_le_of_bilateral

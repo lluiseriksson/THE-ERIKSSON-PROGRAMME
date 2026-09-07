@@ -1,0 +1,4 @@
+import YangMills.RG.PhysicalWeightedRowKernelFiniteSum
+
+#print axioms YangMills.RG.physicalCovarianceWeightedRowKernelBound_mono_amplitude
+#print axioms YangMills.RG.physicalCovarianceWeightedRowKernelBound_finset_sum

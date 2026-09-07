@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixWeightedWalk
+
+#print axioms YangMills.RG.CMP99PhysicalPatchWeightedCertificate.orderedProduct_weightedRow

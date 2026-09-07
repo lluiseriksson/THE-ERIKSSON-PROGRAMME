@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannGeneratedCountingMassReflection"], "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1", "exit": 0, "log_file": "reflection_focal.log", "output_sha256": "ac65ff406c7e5f0efabacc4dd3239390e8638a57670b8b23f62283836240e308", "seconds": 1286.072563151, "stage": "reflection_focal"}

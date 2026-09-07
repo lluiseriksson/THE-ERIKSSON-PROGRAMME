@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceStratifiedPrecisionNorm
+
+namespace YangMills.RG
+
+#print axioms norm_cmp99SourceStratifiedGaugeMass_le_sum_abs
+#print axioms norm_cmp99SourceStratifiedGaugePrecision_le
+
+end YangMills.RG

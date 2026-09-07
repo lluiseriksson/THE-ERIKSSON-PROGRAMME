@@ -1,0 +1,1 @@
+{"command": ["lean", "--version"], "cwd": null, "exit": 0, "log_file": "lean_version.log", "output_sha256": "ffc062887a88810ba8aa56371c6f0ef93d49dad1c0bc7fe99a8d7b264d3db0b1", "seconds": 0.03407534999996642, "stage": "lean_version"}

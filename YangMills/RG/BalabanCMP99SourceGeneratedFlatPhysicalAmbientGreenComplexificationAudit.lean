@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification
+
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalAmbientGreenComplex
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalAmbientPrecisionComplex_comp_green
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalAmbientGreenComplex_comp_precision

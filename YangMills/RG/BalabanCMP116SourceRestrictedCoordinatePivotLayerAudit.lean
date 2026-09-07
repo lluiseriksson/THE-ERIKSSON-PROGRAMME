@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedCoordinatePivotLayer
+
+#print axioms YangMills.RG.cmp116SourcePi4TerminalComplexDefectLayer_restricted_eq_sum_coordinatePivots

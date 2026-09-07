@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99ComplexCoarseFineWalkWordExpansion
+
+#print axioms YangMills.RG.cmp99OrderedFinProduct
+#print axioms YangMills.RG.cmp99OrderedFinProduct_zero
+#print axioms YangMills.RG.cmp99OrderedFinProduct_succ
+#print axioms YangMills.RG.cmp99DependentOrderedProduct
+#print axioms YangMills.RG.cmp99OrderedFinProduct_sum_eq_sum_dependent
+#print axioms YangMills.RG.CMP99SourcePi4CoarseFineWalkChoice
+#print axioms YangMills.RG.cmp99SourcePi4ComplexCoarseFineWalkWordTerm
+#print axioms YangMills.RG.neg_cmp99SourcePi4ComplexCoarseRelativeDefectLayer_eq_sum_fineWalkTerms
+#print axioms YangMills.RG.cmp99OrderedCoarseRelativeDefectWord_eq_sum_fineWalkChoices

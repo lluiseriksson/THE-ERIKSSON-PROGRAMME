@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannGeneratedAverageFieldActionAudit.lean"], "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1", "exit": 0, "log_file": "field_audit.log", "output_sha256": "83598c2e1a659c7412266bc7d8b1929a10f2f470bd6db1da34efd31f41d1ae28", "seconds": 11.961256251000123, "stage": "field_audit"}

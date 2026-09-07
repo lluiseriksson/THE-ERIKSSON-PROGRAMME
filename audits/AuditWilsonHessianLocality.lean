@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP116WilsonHessianLocality
+
+/-! Focused oracle audit for interacting-background Wilson-Hessian locality. -/
+
+#print axioms YangMills.RG.mem_plaquettePhysicalBondSupport_iff
+#print axioms YangMills.RG.physicalSuUnitaryIncrement_t_independent_of_eq_zero
+#print axioms YangMills.RG.physicalPlaquetteWilsonMixedVariationUnitary_eq_ambientHessian
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_zero_of_left_eq_zero_on_support
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_zero_of_right_eq_zero_on_support
+#print axioms YangMills.RG.physicalWilsonHessian_single_eq_zero_of_dist_gt_two

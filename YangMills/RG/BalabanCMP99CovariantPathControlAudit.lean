@@ -1,0 +1,25 @@
+import YangMills.RG.BalabanCMP99CovariantPathControl
+
+/-! Public oracle for physical covariant path control. -/
+
+namespace YangMills.RG
+
+#print axioms covariantEdgeDefect
+#print axioms covariantEdgeDefect_eq_orientedOneValue
+#print axioms norm_covariantEdgeDefect_eq
+#print axioms norm_covariantPathDefect_le_sum
+#print axioms norm_covariantPathDefect_le_length_mul
+#print axioms norm_cmp99BlockContainedContour_defect_le
+#print axioms list_sum_sq_le_length_mul_sum_sq
+#print axioms covariantPathEnergy
+#print axioms norm_covariantPathDefect_sq_le_length_mul_energy
+#print axioms cmp99BlockCovariantEnergy
+#print axioms cmp99BlockCovariantEnergy_nonneg
+#print axioms physicalBondOfEdge_fst_mem_blockOf_of_staysIn
+#print axioms norm_covariantEdgeDefect_sq_le_blockEnergy_of_staysIn
+#print axioms covariantPathEnergy_le_length_mul_blockEnergy_of_staysIn
+#print axioms norm_cmp99BlockContainedContour_defect_sq_le_blockEnergy
+#print axioms sum_norm_cmp99BlockContainedContour_defect_sq_le
+#print axioms sum_cmp99BlockCovariantEnergy_eq_norm_sq
+
+end YangMills.RG

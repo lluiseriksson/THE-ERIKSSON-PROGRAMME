@@ -1,0 +1,295 @@
+TRANSPORT=scripts/colab_cmp99_full_green_arbitrary_residue_cold.py SHA256=29a5ebd9cba53e5b2d98eecd7dfb90bbf0a52430d8995deaf623e769b6be2892
+BASE_RUNNER_SHA256=2f097a374361bd8e4c0f53220ffeeeb22fc06d6ccca5179aebda468d1aebee8e
+TRANSPORT=scripts/full_green_owner_exact_axiom_gate.py SHA256=016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 rejected=9
+AXIOM_GATE=PASS {"test": ["Classical.choice", "Quot.sound", "propext"]}
+PREFLIGHT=PASS [{"expected_exit": 0, "actual_exit": 0, "seconds": 0.03792200199995932}, {"expected_exit": 7, "actual_exit": 7, "seconds": 0.04335850200004643}]
+RUNNER_REV=cmp99-point-fibre-promoted-cold-v1
+STAGE=runtime_open UTC=2026-09-05T11:46:37.916323+00:00
+RUNTIME=CPU RAM_GIB=50.99 MIN_RAM_GIB=40.00
+STAGE=download_toolchain CMD=["curl", "--fail", "--location", "--retry", "5", "--retry-all-errors", "--retry-delay", "2", "-o", "/content/lean-4.29.0-rc6-linux.tar.zst", "https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 56  512M   56  287M    0     0   230M      0  0:00:02  0:00:01  0:00:01  290M100  512M  100  512M    0     0   273M      0  0:00:01  0:00:01 --:--:--  316M
+
+STAGE=download_toolchain EXIT=0 SECONDS=1.973
+TOOLCHAIN_ASSET_SHA256=bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+STAGE=apt_update CMD=["apt-get", "update", "-qq"]
+W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu jammy InRelease' does not seem to provide it (sources.list entry misspelt?)
+
+STAGE=apt_update EXIT=0 SECONDS=8.231
+STAGE=install_zstd CMD=["apt-get", "install", "-y", "-qq", "zstd"]
+Selecting previously unselected package zstd.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 118419 files and directories currently installed.)
+Preparing to unpack .../zstd_1.4.8+dfsg-3build1_amd64.deb ...
+Unpacking zstd (1.4.8+dfsg-3build1) ...
+Setting up zstd (1.4.8+dfsg-3build1) ...
+Processing triggers for man-db (2.10.2-1) ...
+
+STAGE=install_zstd EXIT=0 SECONDS=8.515
+STAGE=extract_toolchain CMD=["tar", "--use-compress-program=unzstd", "-xf", "/content/lean-4.29.0-rc6-linux.tar.zst", "-C", "/content/lean-4.29.0-rc6-linux"]
+
+STAGE=extract_toolchain EXIT=0 SECONDS=11.824
+STAGE=lean_version CMD=["lean", "--version"]
+Lean (version 4.29.0-rc6, x86_64-unknown-linux-gnu, commit 00659f8e6071d7e46131ed643bf8003b99b044e9, Release)
+
+STAGE=lean_version EXIT=0 SECONDS=0.062
+STAGE=lake_version CMD=["lake", "--version"]
+Lake version 5.0.0-src+00659f8 (Lean version 4.29.0-rc6)
+
+STAGE=lake_version EXIT=0 SECONDS=0.065
+LEAN_SHA256=3e0d0d3d801675359f2d4cf9815bfdb417b20b92fdd9d48b3b14c95bbae28bbf
+LAKE_SHA256=a608ff084d7e2af228b92a29d7c2fd083ba0580e46889175ec74a81678c98359
+STAGE=clone CMD=["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1"]
+Cloning into '/content/hrpoly-cmp99-point-fibre-promoted-cold-v1'...
+Updating files:  73% (5372/7334)Updating files:  74% (5428/7334)Updating files:  75% (5501/7334)Updating files:  76% (5574/7334)Updating files:  77% (5648/7334)Updating files:  78% (5721/7334)Updating files:  79% (5794/7334)Updating files:  80% (5868/7334)Updating files:  81% (5941/7334)Updating files:  82% (6014/7334)Updating files:  83% (6088/7334)Updating files:  84% (6161/7334)Updating files:  85% (6234/7334)Updating files:  86% (6308/7334)Updating files:  87% (6381/7334)Updating files:  88% (6454/7334)Updating files:  89% (6528/7334)Updating files:  90% (6601/7334)Updating files:  91% (6674/7334)Updating files:  92% (6748/7334)Updating files:  93% (6821/7334)Updating files:  94% (6894/7334)Updating files:  95% (6968/7334)Updating files:  96% (7041/7334)Updating files:  97% (7114/7334)Updating files:  98% (7188/7334)Updating files:  99% (7261/7334)Updating files: 100% (7334/7334)Updating files: 100% (7334/7334), done.
+
+STAGE=clone EXIT=0 SECONDS=15.106
+STAGE=checkout CMD=["git", "checkout", "--detach", "6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4"]
+HEAD is now at 6c49a8dae [F5 cee1f6d3 hot PASS] PRE-VALIDATION promote seven-declaration point-fibre prefix
+
+STAGE=checkout EXIT=0 SECONDS=1.161
+STAGE=head CMD=["git", "rev-parse", "HEAD"]
+6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4
+
+STAGE=head EXIT=0 SECONDS=0.002
+SOURCE_BLOB=YangMills/RG/FinitePiLpRealSliceFibreTransport.lean SHA256=8beb2ed1c854782c3d1c5307b6138a8b3244fab3647072abca85e1c0127cc053
+SOURCE_BLOB=YangMills/RG/FinitePiLpRealSliceFibreTransportAudit.lean SHA256=e8a8ccca36cef4d144588d24dbe6db03266d746f784fb1ec92e94e3222a99449
+SOURCE_BLOB=YangMills/RG/BalabanCMP99SourceFlowFullPointSourceFibreBound.lean SHA256=a9c4309f8789b910c76facfca77866677e942a812df9d0e5614ca1daae49fb97
+SOURCE_BLOB=YangMills/RG/BalabanCMP99SourceFlowFullPointSourceFibreBoundAudit.lean SHA256=2683d18504d8caa8687e027fcc98553e1044f760e5406c6b1c801fe892028fc8
+SOURCE_BLOB=YangMills/RG/FinitePiLpOwnerFibreAction.lean SHA256=46b52c8ef7183dcfc77e64b8150f0b483ee4ba1383279d52d889edb32018c94d
+SOURCE_BLOB=YangMills/RG/FinitePiLpOwnerFibreActionAudit.lean SHA256=16ea84cf7885a6a9f0637377c19a94682900479dd9c8bd524ac932a34ac16519
+STAGE=overlay_text_guard CMD=["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1-paths.txt"]
+LEAN_OVERLAY_TEXT_OK files=6 source=paths:/content/hrpoly-cmp99-point-fibre-promoted-cold-v1-paths.txt
+
+STAGE=overlay_text_guard EXIT=0 SECONDS=0.063
+STAGE=import_prefix_guard CMD=["python3", "scripts/check_lean_import_prefix.py", "YangMills/RG/FinitePiLpRealSliceFibreTransport.lean", "YangMills/RG/FinitePiLpRealSliceFibreTransportAudit.lean", "YangMills/RG/BalabanCMP99SourceFlowFullPointSourceFibreBound.lean", "YangMills/RG/BalabanCMP99SourceFlowFullPointSourceFibreBoundAudit.lean", "YangMills/RG/FinitePiLpOwnerFibreAction.lean", "YangMills/RG/FinitePiLpOwnerFibreActionAudit.lean"]
+LEAN_IMPORT_PREFIX_OK files=6
+
+STAGE=import_prefix_guard EXIT=0 SECONDS=0.050
+STAGE=lake_update CMD=["lake", "update"]
+9 file(s) [attempted 209/8142 = 2%, 819 KB/s], Decompressed: 35[KDownloaded: 316 file(s) [attempted 316/8142 = 3%, 452 KB/s], Decompressed: 35[KDownloaded: 424 file(s) [attempted 424/8142 = 5%, 897 KB/s], Decompressed: 35[KDownloaded: 559 file(s) [attempted 559/8142 = 6%, 1610 KB/s], Decompressed: 136[KDownloaded: 681 file(s) [attempted 681/8142 = 8%, 403 KB/s], Decompressed: 136[KDownloaded: 806 file(s) [attempted 806/8142 = 9%, 1919 KB/s], Decompressed: 136[KDownloaded: 931 file(s) [attempted 931/8142 = 11%, 2610 KB/s], Decompressed: 136[KDownloaded: 1049 file(s) [attempted 1049/8142 = 12%, 235 KB/s], Decompressed: 136[KDownloaded: 1170 file(s) [attempted 1170/8142 = 14%, 621 KB/s], Decompressed: 136[KDownloaded: 1284 file(s) [attempted 1284/8142 = 15%, 439 KB/s], Decompressed: 136[KDownloaded: 1409 file(s) [attempted 1409/8142 = 17%, 3265 KB/s], Decompressed: 136[KDownloaded: 1531 file(s) [attempted 1531/8142 = 18%, 2958 KB/s], Decompressed: 136[KDownloaded: 1645 file(s) [attempted 1645/8142 = 20%, 545 KB/s], Decompressed: 136[KDownloaded: 1763 file(s) [attempted 1763/8142 = 21%, 568 KB/s], Decompressed: 136[KDownloaded: 1881 file(s) [attempted 1881/8142 = 23%, 282 KB/s], Decompressed: 136[KDownloaded: 1997 file(s) [attempted 1997/8142 = 24%, 1489 KB/s], Decompressed: 498[KDownloaded: 2113 file(s) [attempted 2113/8142 = 25%, 2323 KB/s], Decompressed: 498[KDownloaded: 2238 file(s) [attempted 2238/8142 = 27%, 3687 KB/s], Decompressed: 498[KDownloaded: 2356 file(s) [attempted 2356/8142 = 28%, 580 KB/s], Decompressed: 498[KDownloaded: 2481 file(s) [attempted 2481/8142 = 30%, 91 KB/s], Decompressed: 498[KDownloaded: 2606 file(s) [attempted 2606/8142 = 32%, 2521 KB/s], Decompressed: 498[KDownloaded: 2720 file(s) [attempted 2720/8142 = 33%, 610 KB/s], Decompressed: 498[KDownloaded: 2838 file(s) [attempted 2838/8142 = 34%, 411 KB/s], Decompressed: 498[KDownloaded: 2956 file(s) [attempted 2956/8142 = 36%, 2930 KB/s], Decompressed: 498[KDownloaded: 3074 file(s) [attempted 3074/8142 = 37%, 1704 KB/s], Decompressed: 498[KDownloaded: 3195 file(s) [attempted 3195/8142 = 39%, 1458 KB/s], Decompressed: 498[KDownloaded: 3316 file(s) [attempted 3316/8142 = 40%, 207 KB/s], Decompressed: 498[KDownloaded: 3431 file(s) [attempted 3431/8142 = 42%, 622 KB/s], Decompressed: 498[KDownloaded: 3559 file(s) [attempted 3559/8142 = 43%, 2040 KB/s], Decompressed: 498[KDownloaded: 3680 file(s) [attempted 3680/8142 = 45%, 3304 KB/s], Decompressed: 498[KDownloaded: 3798 file(s) [attempted 3798/8142 = 46%, 5031 KB/s], Decompressed: 498[KDownloaded: 3922 file(s) [attempted 3922/8142 = 48%, 186 KB/s], Decompressed: 498[KDownloaded: 4041 file(s) [attempted 4041/8142 = 49%, 938 KB/s], Decompressed: 498[KDownloaded: 4159 file(s) [attempted 4159/8142 = 51%, 2300 KB/s], Decompressed: 498[KDownloaded: 4287 file(s) [attempted 4287/8142 = 52%, 329 KB/s], Decompressed: 498[KDownloaded: 4409 file(s) [attempted 4409/8142 = 54%, 774 KB/s], Decompressed: 498[KDownloaded: 4533 file(s) [attempted 4533/8142 = 55%, 107 KB/s], Decompressed: 498[KDownloaded: 4658 file(s) [attempted 4658/8142 = 57%, 899 KB/s], Decompressed: 498[KDownloaded: 4774 file(s) [attempted 4774/8142 = 58%, 383 KB/s], Decompressed: 498[KDownloaded: 4901 file(s) [attempted 4901/8142 = 60%, 2783 KB/s], Decompressed: 498[KDownloaded: 5026 file(s) [attempted 5026/8142 = 61%, 5826 KB/s], Decompressed: 498[KDownloaded: 5150 file(s) [attempted 5150/8142 = 63%, 2210 KB/s], Decompressed: 498[KDownloaded: 5275 file(s) [attempted 5275/8142 = 64%, 573 KB/s], Decompressed: 498[KDownloaded: 5390 file(s) [attempted 5390/8142 = 66%, 256 KB/s], Decompressed: 498[KDownloaded: 5508 file(s) [attempted 5508/8142 = 67%, 908 KB/s], Decompressed: 498[KDownloaded: 5621 file(s) [attempted 5621/8142 = 69%, 533 KB/s], Decompressed: 498[KDownloaded: 5734 file(s) [attempted 5734/8142 = 70%, 671 KB/s], Decompressed: 498[KDownloaded: 5848 file(s) [attempted 5848/8142 = 71%, 5428 KB/s], Decompressed: 498[KDownloaded: 5965 file(s) [attempted 5965/8142 = 73%, 654 KB/s], Decompressed: 498[KDownloaded: 6083 file(s) [attempted 6083/8142 = 74%, 1054 KB/s], Decompressed: 498[KDownloaded: 6201 file(s) [attempted 6201/8142 = 76%, 135 KB/s], Decompressed: 498[KDownloaded: 6319 file(s) [attempted 6319/8142 = 77%, 1078 KB/s], Decompressed: 498[KDownloaded: 6440 file(s) [attempted 6440/8142 = 79%, 251 KB/s], Decompressed: 498[KDownloaded: 6558 file(s) [attempted 6558/8142 = 80%, 728 KB/s], Decompressed: 498[KDownloaded: 6669 file(s) [attempted 6669/8142 = 81%, 627 KB/s], Decompressed: 498[KDownloaded: 6794 file(s) [attempted 6794/8142 = 83%, 382 KB/s], Decompressed: 498[KDownloaded: 6905 file(s) [attempted 6905/8142 = 84%, 884 KB/s], Decompressed: 498[KDownloaded: 7006 file(s) [attempted 7006/8142 = 86%, 1688 KB/s], Decompressed: 498[KDownloaded: 7076 file(s) [attempted 7076/8142 = 86%, 29 KB/s], Decompressed: 498[KDownloaded: 7196 file(s) [attempted 7196/8142 = 88%, 2136 KB/s], Decompressed: 498[KDownloaded: 7300 file(s) [attempted 7300/8142 = 89%, 594 KB/s], Decompressed: 498[KDownloaded: 7401 file(s) [attempted 7401/8142 = 90%, 247 KB/s], Decompressed: 498[KDownloaded: 7498 file(s) [attempted 7498/8142 = 92%, 353 KB/s], Decompressed: 498[KDownloaded: 7619 file(s) [attempted 7619/8142 = 93%, 1719 KB/s], Decompressed: 498[KDownloaded: 7734 file(s) [attempted 7734/8142 = 94%, 296 KB/s], Decompressed: 498[KDownloaded: 7850 file(s) [attempted 7850/8142 = 96%, 571 KB/s], Decompressed: 498[KDownloaded: 7966 file(s) [attempted 7966/8142 = 97%, 583 KB/s], Decompressed: 498[KDownloaded: 8077 file(s) [attempted 8077/8142 = 99%, 1832 KB/s], Decompressed: 498[KDownloaded: 8139 file(s) [attempted 8139/8142 = 99%, 704 KB/s], Decompressed: 1997[KDownloaded: 8142 file(s) [attempted 8142/8142 = 100%, 704 KB/s], Decompressed: 1997[K
+Decompressed 8142 file(s)
+Already decompressed 8142 file(s)
+
+STAGE=lake_update EXIT=0 SECONDS=107.995
+STAGE=mathlib_pin CMD=["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"]
+07642720480157414db592fa85b626dafb71355b
+
+STAGE=mathlib_pin EXIT=0 SECONDS=0.003
+STAGE=cache_get CMD=["lake", "exe", "cache", "get"]
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Already decompressed 8142 file(s)
+
+STAGE=cache_get EXIT=0 SECONDS=6.809
+STAGE=real_slice_focal CMD=["lake", "build", "YangMills.RG.FinitePiLpRealSliceFibreTransport"]
+Recurrence (9.0s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedScaledGradientRecurrence.lean:69:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.scaledGradientCost_nonneg`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedScaledGradientRecurrence.lean:100:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.scaledGradientEnergy_le`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8472/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedPoincare (10s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincare.lean:91:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.fieldNormSq_zero`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincare.lean:213:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.fieldNormSq_zero_le_poincareBound`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8473/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedPoincareAbsorption (11s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareAbsorption.lean:111:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.poincareBound_le_coefficients`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareAbsorption.lean:272:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.norm_sq_le_absorbed_poincare`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8474/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime (9.7s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareQprime.lean:73:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.weightedQprimeTower_depth`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareQprime.lean:115:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.weightedQprimeTower_terminalSpacing`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedPoincareQprime.lean:196:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.terminalFieldNormSq_eq_weightedQprimeTower`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8475/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision (19s)
+✔ [8476/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalCoarseCovariance (12s)
+⚠ [8477/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedRegionTransition (12s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedRegionTransition.lean:106:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedTransitionRestriction_comp_extension`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8478/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedMassTransition (91s)
+✔ [8479/8487] Built YangMills.RG.BalabanCMP99SourceGeneratedLaplacianTransitionSupport (20s)
+✔ [8480/8487] Built YangMills.RG.BalabanCMP99SourceCovariantLaplacianCutoffIdentity (8.3s)
+✔ [8481/8487] Built YangMills.RG.BalabanCMP99SourceFlatAmbientLaplacian (6.6s)
+✔ [8482/8487] Built YangMills.RG.BalabanCMP99SourceFlatFourierStencil (7.3s)
+✔ [8483/8487] Built YangMills.RG.BalabanCMP99SourceFlatFourierSymbolDictionary (7.0s)
+✔ [8484/8487] Built YangMills.RG.BalabanCMP99PhysicalFibreComplexification (8.2s)
+✔ [8485/8487] Built YangMills.RG.FinitePiLpCanonicalComplexification (19s)
+✔ [8486/8487] Built YangMills.RG.FinitePiLpCanonicalComplexificationOuterTransport (14s)
+✔ [8487/8487] Built YangMills.RG.FinitePiLpRealSliceFibreTransport (8.2s)
+Build completed successfully (8487 jobs).
+
+STAGE=real_slice_focal EXIT=0 SECONDS=1680.159
+STAGE=real_slice_audit CMD=["lake", "env", "lean", "YangMills/RG/FinitePiLpRealSliceFibreTransportAudit.lean"]
+'YangMills.RG.norm_cmp99SUNLieCoordComplexificationLM' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.norm_finitePiLpComplexOfReal_apply' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.finitePiLpCanonicalComplexificationOuterCLM_ofReal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.norm_finitePiLpCanonicalComplexificationOuterCLM_ofReal_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STAGE=real_slice_audit EXIT=0 SECONDS=12.146
+AXIOM_GATE=PASS {"YangMills.RG.finitePiLpCanonicalComplexificationOuterCLM_ofReal": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.norm_cmp99SUNLieCoordComplexificationLM": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.norm_finitePiLpCanonicalComplexificationOuterCLM_ofReal_apply": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.norm_finitePiLpComplexOfReal_apply": ["Classical.choice", "Quot.sound", "propext"]}
+STAGE=point_fibre_focal CMD=["lake", "build", "YangMills.RG.BalabanCMP99SourceFlowFullPointSourceFibreBound"]
+nCMP99SourceGeneratedFullComplexAPositive (7.6s)
+✔ [8797/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen (8.5s)
+✔ [8798/8842] Built YangMills.RG.BalabanCMP89Eq234PhysicalGreenScaleDictionary (20s)
+✔ [8799/8842] Built YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing (7.2s)
+✔ [8800/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification (11s)
+✔ [8801/8842] Built YangMills.RG.BalabanCMP89SourceSeparatedAmbientPrefixPrecision (9.5s)
+✔ [8802/8842] Built YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalFineSymbolMassZeroNoncentral (7.8s)
+✔ [8803/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain (7.0s)
+✔ [8804/8842] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient (9.2s)
+✔ [8805/8842] Built YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreen (9.1s)
+✔ [8806/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain (8.2s)
+✔ [8807/8842] Built YangMills.RG.BalabanCMP99CenteredTorusPhysicalGreenSampleTransport (11s)
+✔ [8808/8842] Built YangMills.RG.BalabanCMP99SourceFlowFlatPrecisionScalarDictionary (8.5s)
+✔ [8809/8842] Built YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatAmbientGreenComplexification (11s)
+✔ [8810/8842] Built YangMills.RG.BalabanCMP99PhysicalGreenFiniteGridAliasing (8.6s)
+⚠ [8811/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceMixedDomain (12s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:200:5: unused variable `hamplitude`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:201:5: unused variable `hradius`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:202:5: unused variable `hdenWindow`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8812/8842] Built YangMills.RG.BalabanCMP99FullGreenFiniteGridAliasing (8.5s)
+✔ [8813/8842] Built YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing (10s)
+✔ [8814/8842] Built YangMills.RG.BalabanCMP99SourceFlowFlatQprimeMassComplexDictionary (19s)
+✔ [8815/8842] Built YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing (7.7s)
+✔ [8816/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerCharacter (6.6s)
+✔ [8817/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary (46s)
+✔ [8818/8842] Built YangMills.RG.BalabanCMP99SourceFlowFlatPhysicalPrecisionComplexDictionary (9.2s)
+✔ [8819/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter (6.9s)
+✔ [8820/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenIdentification (7.8s)
+✔ [8821/8842] Built YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalPrecisionDictionary (36s)
+✔ [8822/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceGreenIdentification (6.7s)
+✔ [8823/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode (7.7s)
+✔ [8824/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis (7.2s)
+✔ [8825/8842] Built YangMills.RG.BalabanCMP99SourceFlatQprimeTransposeEndpointSample (6.4s)
+✔ [8826/8842] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase (7.1s)
+✔ [8827/8842] Built YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection (7.0s)
+✔ [8828/8842] Built YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalStep7bPrecisionDictionary (36s)
+⚠ [8829/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceCharacterDictionary (8.5s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:234:58: This simp argument is unused:
+  pointSource
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, p̵o̵i̵n̵t̵S̵o̵u̵r̵ce̵,̵
+  ̵ ̵ ̵ ̵ ̵c̵oarseCharacter, owner, z, sourceEndpoint,
+  ̲  ̲ ̲ ̲e, reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:235:31: This simp argument is unused:
+  sourceEndpoint
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
+  ̵  ̵ ̵ ̵coarseCharacter, owner, z, s̵o̵u̵r̵c̵eE̵n̵d̵p̵o̵i̵n̵t̵,
+  ̲ e̵,̵  ̲ ̲reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8830/8842] Built YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalGreenIdentification (7.7s)
+✔ [8831/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceTargetCharacterDictionary (6.6s)
+✔ [8832/8842] Built YangMills.RG.BalabanCMP89Eq246FullEndpointReflection (7.2s)
+✔ [8833/8842] Built YangMills.RG.BalabanCMP99SourceFlowFullPointSourceGreenIdentification (6.5s)
+✔ [8834/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary (7.1s)
+✔ [8835/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourcePhysicalEndpointReflection (6.6s)
+✔ [8836/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionary (6.4s)
+✔ [8837/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary (6.7s)
+✔ [8838/8842] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity (7.6s)
+✔ [8839/8842] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass (8.1s)
+✔ [8840/8842] Built YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound (6.6s)
+✔ [8841/8842] Built YangMills.RG.BalabanCMP99SourceFlowFullPointSourceOwnerBound (6.9s)
+✔ [8842/8842] Built YangMills.RG.BalabanCMP99SourceFlowFullPointSourceFibreBound (6.5s)
+Build completed successfully (8842 jobs).
+
+STAGE=point_fibre_focal EXIT=0 SECONDS=1140.314
+STAGE=point_fibre_audit CMD=["lake", "env", "lean", "YangMills/RG/BalabanCMP99SourceFlowFullPointSourceFibreBoundAudit.lean"]
+'YangMills.RG.norm_euclidean_of_common_scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.norm_cmp99SourceFlowFullPointSourceGreen_fibre_le_owner' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STAGE=point_fibre_audit EXIT=0 SECONDS=15.006
+AXIOM_GATE=PASS {"YangMills.RG.norm_cmp99SourceFlowFullPointSourceGreen_fibre_le_owner": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.norm_euclidean_of_common_scalar": ["Classical.choice", "Quot.sound", "propext"]}
+STAGE=owner_action_focal CMD=["lake", "build", "YangMills.RG.FinitePiLpOwnerFibreAction"]
+⚠ [8165/8173] Replayed YangMills.RG.AveragingL2
+warning: YangMills/RG/AveragingL2.lean:194:53: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+ℹ [8170/8173] Replayed YangMills.RG.FinitePiLpCombesThomas
+info: YangMills/RG/FinitePiLpCombesThomas.lean:939:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [8173/8173] Built YangMills.RG.FinitePiLpOwnerFibreAction (8.7s)
+Build completed successfully (8173 jobs).
+
+STAGE=owner_action_focal EXIT=0 SECONDS=20.538
+STAGE=owner_action_audit CMD=["lake", "env", "lean", "YangMills/RG/FinitePiLpOwnerFibreActionAudit.lean"]
+'YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_of_kernel_fibre_card' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STAGE=owner_action_audit EXIT=0 SECONDS=7.827
+AXIOM_GATE=PASS {"YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_of_kernel_fibre_card": ["Classical.choice", "Quot.sound", "propext"]}
+EVIDENCE_SHA256=42abc17b25e76da8833700b730354d436022507a83c1a08f42cdd603e636899a
+EVIDENCE_ARCHIVE=/content/hrpoly-cmp99-point-fibre-promoted-cold-v1-evidence.tar.gz
+EVIDENCE_ARCHIVE_SHA256=97192a7e32c99c02e7663808019f9be149a075f24112ee4848d3af5b060fd18d
+FINAL_STATUS=PASS
+RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1
+RUNTIME_UNASSIGN_REQUESTED=1

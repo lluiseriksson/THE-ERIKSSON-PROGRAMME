@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP116SourceSigmaZeroActiveCarrier
+
+namespace YangMills.RG
+
+#print axioms cmp116SourceSigmaZero
+#print axioms mem_cmp116SourceSigmaZero_iff
+#print axioms cmp116SourceSigmaZeroBlockActive
+#print axioms mem_cmp116SourceSigmaZeroBlockActive_iff
+#print axioms card_cmp116SourceSigmaZeroBlockActive_le
+#print axioms cmp99SimpleDomainActive_sourceSigmaZero
+#print axioms cmp116SourceSigmaZeroPi4PhysicalChartDictionary
+#print axioms cmp116SourceSigmaZeroPi4PhysicalChartDictionary_domainActive
+#print axioms cmp116SourceSigmaZeroPi4PhysicalChartDictionary_walkActive
+#print axioms CMP99LabeledPhysicalChartDictionary.weakenedPhysicalPatchWalkSummand
+#print axioms summable_cmp116SourceSigmaZeroPi4PhysicalPatchWalkSeries
+
+end YangMills.RG

@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "eef777d32878297d9e143cbfaff82c290fbb9be1"], "cwd": "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "7d4f403809f388022e0088b59d29d628319351a71edb782741d9f92515095948", "seconds": 1.1887158289998752, "stage": "checkout"}

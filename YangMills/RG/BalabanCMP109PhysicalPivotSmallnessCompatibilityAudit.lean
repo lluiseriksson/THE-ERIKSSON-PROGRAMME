@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP109PhysicalPivotSmallnessCompatibility
+
+#print axioms
+  YangMills.RG.cmp109PhysicalPivotBackgroundBudget_eq_at_one_mul
+#print axioms YangMills.RG.cmp109PhysicalPivotSmallnessWitness_radius
+#print axioms YangMills.RG.cmp109PhysicalPivotSmallnessWitness_budget
+#print axioms
+  YangMills.RG.cmp109PhysicalPivotSmallnessRegimeWitness

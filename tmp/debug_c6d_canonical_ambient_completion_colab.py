@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""Hot Colab diagnostic for the finite post-C6d.1 scratch frontier.
+
+This is deliberately not seal evidence.  It reuses the `.lake` tree of the
+completed C6d cold checkout only to test the tower-pair/radius bridge,
+canonical ambient completion, counting/weighted dictionary and source-facing
+Eq. (3.60) wrapper without another cold dependency bootstrap.  The tracked
+analytic Eq. (3.60) algebraic leaf is compiled and audited explicitly because
+it postdates the retained cold checkout.  A later promotion still needs its
+own fresh cold gate.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import time
+
+
+REMOTE = "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git"
+COLD_ROOT = Path("/content/hrpoly-c6d-next-real-slice")
+DEBUG_ROOT = Path("/content/hrpoly-c6d-canonical-ambient-completion-debug")
+PAIRS = (
+    (
+        "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPair.draft.lean",
+        "tmp/BalabanCMP99SourcePhysicalRealSliceTowerPairAudit.draft.lean",
+    ),
+    (
+        "tmp/BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget.draft.lean",
+        "tmp/BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudgetAudit.draft.lean",
+    ),
+    (
+        "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletion.draft.lean",
+        "tmp/BalabanCMP99ActiveRegionCanonicalAmbientCompletionAudit.draft.lean",
+    ),
+    (
+        "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionary.draft.lean",
+        "tmp/BalabanCMP99SourceWeightedGaugePrecisionDictionaryAudit.draft.lean",
+    ),
+    (
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacian.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianAudit.lean",
+    ),
+    (
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.lean",
+    ),
+    (
+        "YangMills/RG/BalabanCMP99Eq360ComplexLocalLaplacianPerturbation.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexLocalLaplacianPerturbationAudit.lean",
+    ),
+    (
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalPrecisionPerturbation.lean",
+        "YangMills/RG/BalabanCMP99Eq360ComplexRegionalPrecisionPerturbationAudit.lean",
+    ),
+    (
+        "tmp/BalabanCMP99Eq360WeightedPrecisionRealSlice.draft.lean",
+        "tmp/BalabanCMP99Eq360WeightedPrecisionRealSliceAudit.draft.lean",
+    ),
+    (
+        "tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecision.draft.lean",
+        "tmp/BalabanCMP99Eq360C6dLocalizedRetainedPrecisionAudit.draft.lean",
+    ),
+)
+EXPECTED_AXIOM_HEADERS = 69
+ALLOWED_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
+
+
+def run(command: list[str], *, cwd: Path | None = None) -> str:
+    started = time.perf_counter()
+    print("CMD=" + repr(command), flush=True)
+    child = subprocess.run(
+        command,
+        cwd=cwd,
+        env=os.environ.copy(),
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    elapsed = time.perf_counter() - started
+    print(child.stdout, flush=True)
+    print(
+        f"EXIT={child.returncode} SECONDS={elapsed:.3f}",
+        flush=True,
+    )
+    if child.returncode != 0:
+        raise RuntimeError("FIRST_ERROR=" + " ".join(command))
+    return child.stdout
+
+
+def require_source_sha(value: str) -> str:
+    if re.fullmatch(r"[0-9a-f]{40}", value) is None:
+        raise RuntimeError("SOURCE_SHA_INVALID")
+    return value
+
+
+def parse_axioms(output: str) -> None:
+    if output.count("depends on axioms:") != EXPECTED_AXIOM_HEADERS:
+        raise RuntimeError(
+            "AXIOM_HEADER_COUNT="
+            f"{output.count('depends on axioms:')} WANT={EXPECTED_AXIOM_HEADERS}"
+        )
+    if "sorryAx" in output or "ofReduceBool" in output:
+        raise RuntimeError("FORBIDDEN_AXIOM_SENTINEL")
+    flattened = " ".join(output.replace("\r", "").split())
+    lists = re.findall(r"depends on axioms:\s*\[([^]]*)\]", flattened)
+    if len(lists) != EXPECTED_AXIOM_HEADERS:
+        raise RuntimeError(
+            f"AXIOM_LIST_COUNT={len(lists)} WANT={EXPECTED_AXIOM_HEADERS}"
+        )
+    for index, payload in enumerate(lists, start=1):
+        seen = {piece.strip() for piece in payload.split(",") if piece.strip()}
+        extra = seen - ALLOWED_AXIOMS
+        if extra:
+            raise RuntimeError(f"AXIOM_BLOCK_{index}_FORBIDDEN={sorted(extra)}")
+
+
+def olean_output(relative: str) -> Path:
+    """Map a Lean module path, including `.draft`, to its importable olean path."""
+    if not relative.endswith(".lean"):
+        raise RuntimeError("LEAN_SOURCE_SUFFIX_INVALID=" + relative)
+    module_name = relative.removesuffix(".lean").replace("/", ".")
+    return Path(".lake/build/lib/lean") / Path(*module_name.split(".")).with_suffix(
+        ".olean"
+    )
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source-sha", required=True, type=require_source_sha)
+    args = parser.parse_args()
+
+    if not COLD_ROOT.is_dir() or not (COLD_ROOT / ".lake").is_dir():
+        raise RuntimeError("COLD_CHECKOUT_OR_CACHE_MISSING")
+    shutil.rmtree(DEBUG_ROOT, ignore_errors=True)
+    run(["git", "clone", "--no-checkout", REMOTE, str(DEBUG_ROOT)])
+    run(["git", "checkout", "--detach", args.source_sha], cwd=DEBUG_ROOT)
+    head = run(["git", "rev-parse", "HEAD"], cwd=DEBUG_ROOT).strip()
+    if head != args.source_sha:
+        raise RuntimeError(f"SOURCE_HEAD={head} WANT={args.source_sha}")
+    for relative in (item for pair in PAIRS for item in pair):
+        if not (DEBUG_ROOT / relative).is_file():
+            raise RuntimeError("SOURCE_BLOB_MISSING=" + relative)
+
+    run(["cp", "-al", str(COLD_ROOT / ".lake"), str(DEBUG_ROOT / ".lake")])
+    (DEBUG_ROOT / ".lake/build/lib/lean/tmp").mkdir(parents=True, exist_ok=True)
+
+    audit_outputs: list[str] = []
+    for source, audit in PAIRS:
+        source_output = olean_output(source)
+        audit_output = olean_output(audit)
+        (DEBUG_ROOT / source_output).parent.mkdir(parents=True, exist_ok=True)
+        (DEBUG_ROOT / audit_output).parent.mkdir(parents=True, exist_ok=True)
+        run(
+            ["lake", "env", "lean", source, "-o", str(source_output)],
+            cwd=DEBUG_ROOT,
+        )
+        audit_outputs.append(
+            run(
+                ["lake", "env", "lean", audit, "-o", str(audit_output)],
+                cwd=DEBUG_ROOT,
+            )
+        )
+    parse_axioms("\n".join(audit_outputs))
+    print(
+        "FINAL_STATUS=PASS "
+        f"source_sha={args.source_sha} axiom_headers={EXPECTED_AXIOM_HEADERS} "
+        "evidence_class=HOT_DIAGNOSTIC_NOT_SEAL",
+        flush=True,
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

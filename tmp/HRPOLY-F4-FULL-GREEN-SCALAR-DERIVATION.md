@@ -1,0 +1,158 @@
+# F4 full-G amplitude: static derivation to formalize
+
+Not compiler evidence. Read against the literal definitions on 2026-09-04.
+Do not promote this calculation to a regional B0 or a terminal field.
+
+Fix initial source coefficient a>0 and RG ratio L>=2. Set a_* to the CMP85
+floor and R=L^(j+1). The pending scalar foundations queue constructs a common
+rho at a_*, all four windows, a_j<=a, and P(a_j,rho)<=P(a_*,rho).
+The existing floor lemma gives a_*<=a_j. This rho is independent of j and
+Kloc,Q, but is chosen for fixed a,L; no all-L uniformity is claimed.
+
+Exact abbreviations from the tree:
+
+- P_* = cmp89Eq246FinePointSourceMomentAmplitudeBound a_* rho.
+- A = cmp89Eq246CentralAverageRowReciprocalBound rho.
+- S = cmp89Eq248ComplexNoncentralGreenSumBound_draft rho.
+- T = cmp89Eq249ComplexNoncentralAliasSumBound rho.
+- Qc = cmp89Eq248ComplexNoncentralGreenQuotientConstant_draft rho.
+- Z = (tsum over integers of cmp89Eq251OneDimensionalAliasWeight with
+  exponent cmp89Eq251AliasSeriesExponent 4 (-1))^4.
+- b = cmp89Eq246FinePointSourceBareDiagonalAmplitudeBound = 18*(3*pi)^2.
+- H = (2/(1-exp(-rho)))^4 * exp(2*rho).
+
+The central component is A*(P_j+S+abs(a_j)*P_j*T). The correction is
+abs(a_j)*Qc*P_j. Positivity of each multiplier must be proved from its
+literal definition/window before invoking multiplication monotonicity.
+Use a_j>0 to replace abs(a_j), the initial coefficient a for the positive
+coefficient factors, and the floor ONLY for P. Define the hybrid constant
+
+    C_* = A*(P_*+S+a*P_* *T) + a*Qc*P_* *Z.
+
+Then the intended bound, before normalization, is
+
+    D(R,1,a_j,rho) <= C_* + 256*b*(R+1)^2.
+
+This is not the false assertion D(a_j)<=D(a_*): the full budget is not
+antitone in its coefficient. Its central and correction positive factors
+are bounded separately, using the opposite end of the source interval.
+
+For R>=1 the elementary inequality (R+1)^2<=4*R^2 gives the intended
+normalized bound
+
+    ownerAmplitude(R,a_j,rho)
+      <= H*(C_* *R^-4 + 1024*b*R^-2)
+      <= H*(C_*+1024*b)*R^-2.
+
+Preserve the first, sharper split as a named theorem before its second
+consequence. In particular do not erase R^-2 by immediately replacing it
+with 1. The finite source-point normalization is R^-4 exactly once; the
+quadratic alias loss leaves R^-2. Positivity of b and H would make the
+final constant strictly positive without an arbitrary +1 padding.
+
+What this would give: an explicit constant independent of source depth for
+R^2 times the normalized scalar owner amplitude. What it would NOT give:
+the remaining source-flow residue dictionary, a physical spacing/norm
+conversion, a fine-site row sum, derivative species, the regional Green
+certificate or window15. Those remain F2/F3/F5 and must preserve their
+own dimensions; no amplitude estimate changes 20/41 or TermSource=0.
+
+Compilation order after the current scalar foundations PASS: test the
+project-free R-power inequality in a minimal Mathlib repro; then prove the
+hybrid coefficient inequalities against the literal definitions; only then
+instantiate the common source-flow radius. No compiler execution is claimed
+for any part of this note.
+
+## Auxiliary normalization checked, 2026-09-04 UTC
+
+The elementary R-power inequalities alone passed the Colab Mathlib repro
+at source 995370c162c80694029242785925e7bae08476f4, exit0/11.700545847s,
+two exact allowed-trio declarations. The first additive-orientation error
+is preserved beside the corrected run under
+validation-evidence/f4-normalization-repro-20260904/. This is hot auxiliary
+evidence, not a cold seal and not a proof of the hybrid amplitude bound above.
+The original final sentence refers to the derivation when first written;
+only these two elementary inequalities now have compiler evidence.
+
+## Bounded hybrid diagnostic prepared, 2026-09-05 UTC
+
+The scalar foundations are now cold-sealed (Ledger Addendum1109).
+The hybrid draft now includes an exact `#print axioms` for its sole public
+bound. It remains uncompiled and outside the root. After the F2-F3 cold
+archive is preserved and verified, a separate warm diagnostic may test this
+draft without changing that archive or interpreting a hot PASS as a seal.
+
+## F5 units check against the actual consumer, 2026-09-05 UTC
+
+Static signature check, not a theorem or a new producer. The `value_bound`
+field of `CMP99Eq342SourceLocalizedGreenCertificate` requires
+`B0 * (L^(depth+1))^2`, not a depth-independent value-action amplitude.
+The finite-sup contract is `FinitePiLpTypedBlockLocalizedSupBound`: one
+arbitrary field supported in a complete owner fibre, not one point probe.
+
+Thus the F4 target `point amplitude <= C * R^-2` is quantitatively aligned:
+a complete fibre has R^4 fine sites, and `R^4 * R^-2 = R^2` matches the
+printed value scale. The exact finite carrier equivalence already exists as
+`cmp99BlockOffsetEquiv`, with `sum_blockSites_eq_sum_offsets`. It identifies
+one owner block with `FinBox 4 R`, not with the whole ambient torus.
+There must be no `(2*Kloc*Q)^4` factor or second normalization in this step.
+
+Remaining proof obligations are still real: bundle the scalar component
+identity into a fibre-vector identity without an artificial Lie-dimension
+factor; sum point-source actions over this one fibre by linearity; consume
+the source supremum norm; and transport the real/complex and regional
+objects through their named dictionaries. A compressed ambient inverse is
+not asserted to be the regional Dirichlet inverse. The derivative species
+retain the separate `[R, R, 1]` scales and are not implied by the value bound.
+
+The generic single-fibre action step is now drafted separately in
+`tmp/FullGreenOwnerFibreActionDraft.lean`. Its signature explicitly pays N,
+the upper bound on one owner fibre, and concludes amplitude N*A at the same
+rate. It keeps output fixed while summing sources and uses the existing
+point-probe decomposition rather than an adjoint row conversion. Its text
+and import guards passed in0.2564642s; there is no compiler evidence and it
+is not included in the current cold queue or the prepared F4 diagnostic.
+
+## F5 real/complex gate: exact available identities, 2026-09-05 UTC
+
+`SUNLieComplexCoord Nc` is literally the complex Euclidean space on the
+same Lie-coordinate index as the real fibre, not a new arbitrary fibre.
+The outer spaces are nevertheless different: real operators use counting
+PiLp2 and the full-box complex operators use ordinary function space.
+`FinitePiLpCanonicalComplexificationOuterTransport` explicitly conjugates
+between them; its continuous equivalence is not claimed to be an isometry.
+
+The existing `finitePiLpCanonicalComplexificationCLM_ofReal` identifies the
+complexified action on the real slice. A worked coordinate transport is in
+the private `sourceFlowSeparatedAmbientPrecisionComplex_apply_ofReal` proof
+of the source-flow Step7b precision dictionary. The same general transport
+can be used for the actual Green, since its complex definition is exactly
+the canonical complexification of that real Green, followed by the same
+outer and carrier equivalences. No inverse equality is a new hypothesis.
+
+The F3 equality has one scalar residue multiplying every coordinate of v.
+Preserve that common scalar to reconstruct a vector equality before taking
+the fibre norm, instead of summing independent coordinate upper bounds and
+introducing a spurious Lie-dimension factor. On real inputs, taking the real
+part gives the corresponding real scalar action. This is a prospective
+proof route, not a compiled norm or regional theorem. In particular none of
+these exact complexification identities imply equality of a compressed
+ambient inverse and a Dirichlet inverse on a proper regional carrier.
+
+## F4 composition draft prepared while the bounded diagnostic runs
+
+`tmp/SourceFullGreenUniformAmplitudeDraft.lean` is now a separate
+PRE-VALIDATION draft, not in the running source/queue. It states five exact
+audit endpoints: positivity of the contour factor, nonnegativity of the
+hybrid constant, the sharper normalized split, the retained inverse-square
+bound, and one radius/amplitude chosen before the universal source depth.
+The positive bare coefficient supplies strict positivity; no +1 padding is
+introduced. The imported generated module is used only for its existing
+scalar amplitude definition, never for its generated physical coefficient.
+
+Before any later diagnostic, materialize the two temporary imports explicitly:
+the hybrid draft and the already checked elementary normalization repro.
+Their current `lake env lean` checks do not produce `.olean` files. This is
+a future prerequisite, not a missing import to work around during the live
+queue. The one-file text/import guards passed locally in0.533459s; no Lean
+or new remote target was executed for this composition draft.

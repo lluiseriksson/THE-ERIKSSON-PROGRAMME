@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannReflectionRepresentation
+
+/-! # Axiom audit: flat generated finite-depth canonical CMP89 (2.42) gate -/
+
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannGreen
+#print axioms YangMills.RG.CMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannReflectionRepresentation
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannReflectionRepresentation_eq_series

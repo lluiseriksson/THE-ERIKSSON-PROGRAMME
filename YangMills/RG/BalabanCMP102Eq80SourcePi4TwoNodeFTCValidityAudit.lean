@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4TwoNodeFTCValidity
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4TwoNodeFTCExpansionTree_valid

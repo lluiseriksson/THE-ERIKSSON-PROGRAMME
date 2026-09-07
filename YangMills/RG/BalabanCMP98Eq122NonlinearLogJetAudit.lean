@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP98Eq122NonlinearLogJet
+
+#print axioms YangMills.RG.cmp98Eq119NonlinearRelativeDeviation_zero
+#print axioms YangMills.RG.cmp98Eq119NonlinearLogCoordinate_zero
+#print axioms YangMills.RG.hasDerivAt_cmp98Eq119NonlinearRelativeDeviation
+#print axioms YangMills.RG.hasDerivAt_cmp98Eq119NonlinearLogCoordinate
+#print axioms YangMills.RG.deriv_cmp98Eq119NonlinearLogCoordinate_zero_eq_rightVariation
+#print axioms YangMills.RG.cmp98Eq122NonlinearLogRemainder_zero
+#print axioms YangMills.RG.hasDerivAt_cmp98Eq122NonlinearLogRemainder_zero

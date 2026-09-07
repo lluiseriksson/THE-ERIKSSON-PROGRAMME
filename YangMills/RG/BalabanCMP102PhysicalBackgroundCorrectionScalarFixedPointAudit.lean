@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalBackgroundCorrectionScalarFixedPoint
+
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionScalarData.toBallData
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionScalarData.existsUnique_backgroundCorrection
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionScalarData.exists_backgroundCorrection_physicalEquation

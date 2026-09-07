@@ -1,0 +1,2 @@
+YangMills/RG/FinitePiLpTypedKernelDistanceRescaling.lean
+YangMills/RG/FinitePiLpTypedKernelDistanceRescalingAudit.lean

@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCConnectedDomainRecursion
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FTCConnectedDomainContribution_eq_zero_of_not_subset
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FTCConnectedDomainContribution_eq_zero_of_not_walkConnected

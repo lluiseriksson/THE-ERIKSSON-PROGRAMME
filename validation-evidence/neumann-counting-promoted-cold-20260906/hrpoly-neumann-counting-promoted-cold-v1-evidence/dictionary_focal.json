@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannRetainedCountingMassDictionary"], "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1", "exit": 0, "log_file": "dictionary_focal.log", "output_sha256": "6172fd0cf4a95a950edea66cf6a1760a4abbeda5353c81ed1fcdc38baefe869b", "seconds": 45.88903734700034, "stage": "dictionary_focal"}

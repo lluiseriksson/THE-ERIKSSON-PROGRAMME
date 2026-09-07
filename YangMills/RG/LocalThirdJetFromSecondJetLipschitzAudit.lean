@@ -1,0 +1,3 @@
+import YangMills.RG.LocalThirdJetFromSecondJetLipschitz
+
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_le_of_eventually_secondJet_lipschitz

@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116Eq214ComplexTauPotential
+
+#print axioms YangMills.RG.cmp116Eq214PhysicalComplexTauPotential_zero
+#print axioms YangMills.RG.cmp116Eq214PhysicalComplexTauPotential_re
+#print axioms YangMills.RG.cmp116Eq214PhysicalComplexTauPotential_ofReal
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq214ComplexTauPotentialCoordinate_zero
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq214ComplexTauPotentialCoordinate_ofReal

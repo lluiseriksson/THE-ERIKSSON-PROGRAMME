@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP102AmbientOrientedEdgeThirdJetBound
+
+#print axioms YangMills.RG.norm_cmp102AmbientRightMulCLM_le
+#print axioms YangMills.RG.norm_physicalAmbientBondEvalCLM_le_one
+#print axioms YangMills.RG.norm_matrixConjTransposeCLM_le_one
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_physicalMatrixExp_eval_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_ambientOrientedEdgeMatrix_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_ambientOrientedEdgeMatrix_le
+#print axioms YangMills.RG.cmp102AmbientEdgeOrderThreeJetBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_ambientOrientedEdgeMatrix_le_orderThreeBudget

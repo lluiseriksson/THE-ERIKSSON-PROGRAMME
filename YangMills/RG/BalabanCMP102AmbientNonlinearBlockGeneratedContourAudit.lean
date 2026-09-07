@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102AmbientNonlinearBlockGeneratedContour
+
+#print axioms YangMills.RG.norm_fderiv_cmp102AmbientNonlinearBlock_le_of_generatedContour
+#print axioms YangMills.RG.norm_fderiv_cmp102AmbientNonlinearBlock_sub_le_of_generatedContour

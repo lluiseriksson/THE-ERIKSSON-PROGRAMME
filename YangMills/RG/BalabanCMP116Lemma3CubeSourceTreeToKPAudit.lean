@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Lemma3CubeSourceTreeToKP
+
+#print axioms YangMills.RG.cmp116Lemma3LocalizedCubeActivityFamily_KPCriterion_boundedHoles_of_cubeSourceTreeMetric

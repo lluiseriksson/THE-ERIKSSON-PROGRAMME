@@ -1,0 +1,136 @@
+{
+  "archive_sha256": "97192a7e32c99c02e7663808019f9be149a075f24112ee4848d3af5b060fd18d",
+  "audits": {
+    "owner_action_audit": {
+      "YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_of_kernel_fibre_card": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "point_fibre_audit": {
+      "YangMills.RG.norm_cmp99SourceFlowFullPointSourceGreen_fibre_le_owner": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_euclidean_of_common_scalar": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "real_slice_audit": {
+      "YangMills.RG.finitePiLpCanonicalComplexificationOuterCLM_ofReal": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_cmp99SUNLieCoordComplexificationLM": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_finitePiLpCanonicalComplexificationOuterCLM_ofReal_apply": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_finitePiLpComplexOfReal_apply": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "evidence_json_file_sha256": "43357526a0a563909774c520fecc85ef3df033c9e519909d73c0c36bede9ae6c",
+  "evidence_json_payload_sha256": "42abc17b25e76da8833700b730354d436022507a83c1a08f42cdd603e636899a",
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.FinitePiLpRealSliceFibreTransport"
+      ],
+      "cwd": "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "real_slice_focal.log",
+      "output_sha256": "cc962e5a7ff9962564247445afdf407ce5343c3a75b700a2279b1bfe3c703d3c",
+      "seconds": 1680.1593184100002,
+      "stage": "real_slice_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/FinitePiLpRealSliceFibreTransportAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "real_slice_audit.log",
+      "output_sha256": "728614a3d69ac4a1afaa792d5e62c2849ee9604e146b3a4983e644af75546b88",
+      "seconds": 12.145938718999787,
+      "stage": "real_slice_audit"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99SourceFlowFullPointSourceFibreBound"
+      ],
+      "cwd": "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "point_fibre_focal.log",
+      "output_sha256": "bec7240c06a435b240fc7a4d9f040711a5e6644105bb453229a6956cecb49b07",
+      "seconds": 1140.313721478,
+      "stage": "point_fibre_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP99SourceFlowFullPointSourceFibreBoundAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "point_fibre_audit.log",
+      "output_sha256": "651d8f7146c52baa56a1705aca515ed1228703ee8fa8f36603d8857ee6a986c9",
+      "seconds": 15.006030344000465,
+      "stage": "point_fibre_audit"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.FinitePiLpOwnerFibreAction"
+      ],
+      "cwd": "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "owner_action_focal.log",
+      "output_sha256": "ff53e779bd5baafb07f2a94062f7b4f023d78dc05331f8bac2a614186d70bc83",
+      "seconds": 20.53812670499974,
+      "stage": "owner_action_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/FinitePiLpOwnerFibreActionAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-point-fibre-promoted-cold-v1",
+      "exit": 0,
+      "log_file": "owner_action_audit.log",
+      "output_sha256": "93a93413192a79ed01d29546800a477c60d9cabdefc9926363435e32e1963234",
+      "seconds": 7.827293512999859,
+      "stage": "owner_action_audit"
+    }
+  ],
+  "runner_rev": "cmp99-point-fibre-promoted-cold-v1",
+  "source_sha": "6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4",
+  "stages_verified": 20,
+  "status": "PASS"
+}
+F5_POINT_FIBRE_COLD_EVIDENCE_VERIFIED

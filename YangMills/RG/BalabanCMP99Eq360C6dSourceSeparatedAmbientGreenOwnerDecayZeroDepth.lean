@@ -1,0 +1,169 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenOwnerInputActionZeroDepth
+import YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge
+
+namespace YangMills.RG
+
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator RealInnerProductSpace BigOperators
+
+noncomputable section
+
+variable {L K Q Nc : ℕ}
+variable [NeZero L] [NeZero K] [NeZero Q] [NeZero Nc]
+variable (OmegaSource : ActiveGaugeRegion 4
+  (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)))
+variable (regions : CMP99SourceActiveRegionChain 4 L
+  (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) OmegaSource 0)
+variable (hL : 2 ≤ L)
+variable {spacing epsilon : ℝ}
+variable (background : GaugeConfig 4
+  (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) (SUN Nc))
+variable (chain : CMP99SourceUbarRadiusChain 4 L Nc 0 epsilon)
+variable (fineSmall : ∀ e : ConcreteEdge 4
+  (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)),
+  ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+
+/-- The exact depth-zero Green on one source-owner input has the block rate
+`L * rate`, with the three boundary payments explicit. -/
+theorem norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_ownerScale
+    (hspacing : 0 < spacing)
+    {decay : ℝ} (hdecay : 0 < decay)
+    (owner : FinBox 4 (2 * (K * Q)))
+    (root : ActiveGaugeRegion.Site OmegaSource)
+    (hroot : cmp99Eq342SourceLocalizedActiveOwner L K Q 0 root = owner)
+    (f : FinitePiLpField (ActiveGaugeRegion.Site OmegaSource)
+      (SUNLieCoord Nc))
+    (hf : FinitePiLpSupportedInOwner
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q 0) owner f)
+    (target : ActiveGaugeRegion.Site OmegaSource) :
+    letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
+    let ell := L ^ (0 + 1)
+    let A :=
+      cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall decay
+    let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall
+    let rate := finitePiLpExponentialInverseDecayRate A decay
+      (cmp99OmegaSiteExpSumBound (decay / 4)) c
+    let ownerRate := (ell : ℝ) * rate
+    let ownerAmplitude := (2 / c) *
+      Real.exp (3 * rate * ((ell - 1 : ℕ) : ℝ))
+    ‖cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing f target‖ ≤
+      (ownerAmplitude * (ell : ℝ) ^ 2) *
+        Real.exp (-(ownerRate *
+          (finBoxDist owner
+            (cmp99Eq342SourceLocalizedActiveOwner L K Q 0 target) : ℝ))) *
+        finitePiLpSupNorm f := by
+  dsimp only
+  let ell := L ^ (0 + 1)
+  let A :=
+    cmp99Eq360C6dSourceSeparatedAmbientPrecisionDecayAmplitude_zero
+      (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+      regions hL background chain fineSmall decay
+  let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
+    (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+    regions hL background chain fineSmall
+  let rate := finitePiLpExponentialInverseDecayRate A decay
+    (cmp99OmegaSiteExpSumBound (decay / 4)) c
+  let ownerRate := (ell : ℝ) * rate
+  let ownerAmplitude := (2 / c) *
+    Real.exp (3 * rate * ((ell - 1 : ℕ) : ℝ))
+  let ownerDist : ℝ :=
+    (finBoxDist owner
+      (cmp99Eq342SourceLocalizedActiveOwner L K Q 0 target) : ℝ)
+  let fineDist : ℝ := (finBoxDist root.1 target.1 : ℝ)
+  let boundary : ℝ := ((ell - 1 : ℕ) : ℝ)
+  letI : Nonempty (ActiveGaugeRegion.Site OmegaSource) := ⟨root⟩
+  have hA : 0 ≤ A := by
+    exact
+      (cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero_exponentialKernelBound
+        (Nc := Nc) (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing hdecay).1
+  have hc : 0 < c := by
+    exact cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
+      regions (by norm_num : 2 ≤ 4) hL hspacing background chain fineSmall
+  have hrow : 0 ≤ cmp99OmegaSiteExpSumBound (decay / 4) := by
+    unfold cmp99OmegaSiteExpSumBound
+    exact tsum_nonneg fun _ =>
+      mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le
+  have hrate : 0 < rate := by
+    exact finitePiLpExponentialInverseDecayRate_pos hA hdecay hrow hc
+  have hbridgeNat :
+      ell * finBoxDist owner
+          (cmp99Eq342SourceLocalizedActiveOwner L K Q 0 target) ≤
+        finBoxDist root.1 target.1 + 2 * (ell - 1) := by
+    rw [← hroot]
+    simpa [ell, cmp99Eq342SourceLocalizedActiveOwner] using
+      (cmp99Eq389SourceLocalizationOwner_mul_dist_le_fineDist_add_boundary
+        (L := L) (K := K) (Q := Q) 0 root.1 target.1)
+  have hbridgeCast :
+      (ell : ℝ) *
+          (finBoxDist owner
+            (cmp99Eq342SourceLocalizedActiveOwner L K Q 0 target) : ℝ) ≤
+        (finBoxDist root.1 target.1 : ℝ) +
+          2 * ((ell - 1 : ℕ) : ℝ) := by
+    exact_mod_cast hbridgeNat
+  have hbridge : (ell : ℝ) * ownerDist ≤ fineDist + 2 * boundary := by
+    simpa [ownerDist, fineDist, boundary] using hbridgeCast
+  have hexponent :
+      -(rate * fineDist) ≤
+        2 * rate * boundary - ownerRate * ownerDist := by
+    dsimp [ownerRate]
+    nlinarith [hrate.le, hbridge]
+  have hexp :
+      Real.exp (-(rate * fineDist)) ≤
+        Real.exp (2 * rate * boundary - ownerRate * ownerDist) :=
+    Real.exp_le_exp.mpr hexponent
+  have htail : 0 ≤
+      Real.exp (rate * boundary) * (ell : ℝ) ^ 2 * finitePiLpSupNorm f := by
+    exact mul_nonneg
+      (mul_nonneg (Real.exp_pos _).le (sq_nonneg _))
+      (finitePiLpSupNorm_nonneg f)
+  have hbase :=
+    norm_cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_apply_le_sourceScale
+      (L := L) (K := K) (Q := Q) (Nc := Nc)
+      OmegaSource regions hL background chain fineSmall
+      hspacing hdecay owner root hroot f hf target
+  calc
+    ‖cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
+        (OmegaSource := OmegaSource) (spacing := spacing)
+        regions hL background chain fineSmall hspacing f target‖ ≤
+      (2 / c) * Real.exp (-(rate * fineDist)) *
+        (Real.exp (rate * boundary) *
+          (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
+      simpa [ell, A, c, rate, fineDist, boundary] using hbase
+    _ ≤ (2 / c) *
+        Real.exp (2 * rate * boundary - ownerRate * ownerDist) *
+        (Real.exp (rate * boundary) *
+          (ell : ℝ) ^ 2 * finitePiLpSupNorm f) := by
+      exact mul_le_mul_of_nonneg_right
+        (mul_le_mul_of_nonneg_left hexp
+          (div_nonneg (by positivity) hc.le)) htail
+    _ = (ownerAmplitude * (ell : ℝ) ^ 2) *
+        Real.exp (-(ownerRate * ownerDist)) * finitePiLpSupNorm f := by
+      have hsplit :
+          Real.exp (2 * rate * boundary - ownerRate * ownerDist) =
+            Real.exp (2 * rate * boundary) *
+              Real.exp (-(ownerRate * ownerDist)) := by
+        rw [show 2 * rate * boundary - ownerRate * ownerDist =
+          2 * rate * boundary + (-(ownerRate * ownerDist)) by ring,
+          Real.exp_add]
+      have hamp :
+          Real.exp (2 * rate * boundary) * Real.exp (rate * boundary) =
+            Real.exp (3 * rate * boundary) := by
+        rw [← Real.exp_add]
+        congr 1
+        ring
+      rw [hsplit]
+      dsimp [ownerAmplitude]
+      rw [show ((ell - 1 : ℕ) : ℝ) = boundary by rfl]
+      rw [← hamp]
+      ring
+
+end
+
+end YangMills.RG

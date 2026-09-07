@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicFixedPointSecondJet
+
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_cmp102IntrinsicPhysicalBackgroundCorrectionMapUncurry_le

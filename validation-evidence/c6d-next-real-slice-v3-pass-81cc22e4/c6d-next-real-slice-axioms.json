@@ -1,0 +1,50 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "boundary_blob_sha256": {
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexBaselineRealSlice.lean": "6d022ab4f12d979e4cb3a5e90cc04739ebec033487c71c1b4a12056ed0b980e5",
+    "YangMills/RG/BalabanCMP99Eq337PhysicalComplexBaselineRealSliceAudit.lean": "4fd0833d973bc4f4e2b2609486eecfa47e1d25ce9eae346f7d96533cdd017a29",
+    "YangMills/RG/BalabanCMP99SourcePhysicalRealSliceTower.lean": "2865ece151193d233bf9052bb0e35366960d50de0062d38215bb2d22bd9ecc17",
+    "YangMills/RG/BalabanCMP99SourcePhysicalRealSliceTowerAudit.lean": "1c87b64500484f0215f834d9b472c7497e21300d95e98ecab839850acec84dc7",
+    "YangMills/RG/BalabanCMP99SourceRetainedFineOneCochainExtension.lean": "6920eb88698be70cfff2077378a6e197ee553d65ef80cd518fe8a0ba801ae032",
+    "YangMills/RG/BalabanCMP99SourceRetainedFineOneCochainExtensionAudit.lean": "6b589afafedc93478c39cd80cb10b704f467671699b6c43073101a1caef725ff"
+  },
+  "declarations_by_module": {
+    "BalabanCMP99Eq337PhysicalComplexBaselineRealSlice": [
+      "YangMills.RG.cmp99Eq337PhysicalComplexPerturbedBackground_zero_realSlice"
+    ],
+    "BalabanCMP99SourcePhysicalRealSliceTower": [
+      "YangMills.RG.CMP99SourceActiveRegionChain.physicalRealSliceComplexTower",
+      "YangMills.RG.CMP99SourceActiveRegionChain.physicalRealSliceTowerAgreement"
+    ],
+    "BalabanCMP99SourceRetainedFineOneCochainExtension": [
+      "YangMills.RG.CMP99SourceActiveRegionChain.retainedFineOneCochainExtension",
+      "YangMills.RG.CMP99SourceActiveRegionChain.retainedFineOneCochainExtension_apply_of_mem",
+      "YangMills.RG.CMP99SourceActiveRegionChain.retainedFineOneCochainExtension_apply_of_not_mem",
+      "YangMills.RG.CMP99SourceActiveRegionChain.norm_retainedFineOneCochainExtension_le",
+      "YangMills.RG.CMP99SourceActiveRegionChain.retainedFineComplexOneCochain",
+      "YangMills.RG.CMP99SourceActiveRegionChain.retainedFineComplexOneCochain_apply_of_mem",
+      "YangMills.RG.CMP99SourceActiveRegionChain.retainedFineComplexOneCochain_apply_of_not_mem"
+    ]
+  },
+  "evidence_input_sha256": "b1d967ceca887cbf37d1f0ddf019ba66c6896c259bacf34cbd00782ca45c73f4",
+  "expected_declarations": 10,
+  "runner_revision": "c6d-next-real-slice-v3",
+  "source_sha": "81cc22e41d46cce150c2a263c85e4acb90087153",
+  "stage_seconds": {
+    "c6d_next_real_slice_01_balabancmp99eq337physicalcomplexbaselinerealslice_audit": "8.388665242000116",
+    "c6d_next_real_slice_01_balabancmp99eq337physicalcomplexbaselinerealslice_source": "6.051681749000181",
+    "c6d_next_real_slice_02_balabancmp99sourceretainedfineonecochainextension_audit": "8.989657438999984",
+    "c6d_next_real_slice_02_balabancmp99sourceretainedfineonecochainextension_source": "6.494458322000355",
+    "c6d_next_real_slice_03_balabancmp99sourcephysicalrealslicetower_audit": "12.858492494000075",
+    "c6d_next_real_slice_03_balabancmp99sourcephysicalrealslicetower_source": "7.589231397999811",
+    "c6d_next_real_slice_materialize_dependencies": "1535.1796044369999",
+    "c6d_next_real_slice_prepare_build_dirs": "0.015116175999992265",
+    "c6d_next_real_slice_root": "6495.936569208001"
+  },
+  "status": "C6D_NEXT_REAL_SLICE_EVIDENCE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

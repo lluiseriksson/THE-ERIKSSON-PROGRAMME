@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedTailSum
+
+#print axioms YangMills.RG.cmp116RestrictedVisitedTailSum
+#print axioms YangMills.RG.cmp116RestrictedVisitedGeneratedTailSum
+#print axioms YangMills.RG.cmp116RestrictedVisitedGeneratedTailSum_eq_tailSum

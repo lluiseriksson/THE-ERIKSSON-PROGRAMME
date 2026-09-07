@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannActualFullGreenReflectionSummability"], "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1", "exit": 0, "log_file": "full_green_focal.log", "output_sha256": "4c2d7a2a6de43bffb765b6d711e0b4380beb94502b2d05e968bce238ea089028", "seconds": 1348.3792845659991, "stage": "full_green_focal"}

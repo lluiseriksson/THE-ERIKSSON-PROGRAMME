@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99ComplexMinimizerWordExpansion
+
+#print axioms YangMills.RG.complexMatrixTwoSidedCLM
+#print axioms YangMills.RG.complexMatrixTwoSidedCLM_apply
+#print axioms YangMills.RG.cmp99SourcePi4ComplexBackgroundMinimizerWordTerm
+#print axioms YangMills.RG.cmp99SourcePi4ComplexBackgroundMinimizerNeumannLayer_eq_tsum_words_of_source
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_tsum_tsum_words_of_source

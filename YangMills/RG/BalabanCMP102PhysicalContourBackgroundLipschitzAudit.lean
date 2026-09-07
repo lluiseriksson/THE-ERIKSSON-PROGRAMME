@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102PhysicalContourBackgroundLipschitz
+
+#print axioms YangMills.RG.norm_cmp98ContourMatrixCurve_zero_sub_trivial_le
+#print axioms YangMills.RG.norm_cmp98ContourFirstVariation_zero_sub_trivial_le

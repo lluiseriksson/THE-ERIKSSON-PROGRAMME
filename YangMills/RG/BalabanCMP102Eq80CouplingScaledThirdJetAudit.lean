@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP102Eq80CouplingScaledThirdJet
+
+#print axioms YangMills.RG.cmp109ConstrainedLinearFluctuationCLM
+#print axioms YangMills.RG.iteratedFDeriv_three_cmp102Eq80CouplingScaledPotential
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_cmp102Eq80CouplingScaledPotential_le
+#print axioms YangMills.RG.norm_cmp109ConstrainedLinearFluctuationCLM_le
+#print axioms YangMills.RG.coupling_cube_mul_threshold_cube
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_cmp102Eq80CouplingScaledPotential_le_of_source
+#print axioms YangMills.RG.CMP102Eq80SourcePi4RadialPackage.couplingScaledPhysicalPotential

@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "cfe2f05e0bfa7e471f6071cf74ee58f1274623e77e419ef844f24dd3dc3de7bf", "seconds": 78.41011063499991, "stage": "lake_update"}

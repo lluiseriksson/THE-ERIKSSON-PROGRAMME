@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP85SourceMassParameterUniformComplexWindow
+
+#print axioms YangMills.RG.cmp89Eq249CentralStabilizedDenominatorVariationBound_eq
+#print axioms YangMills.RG.CMP89Eq249CentralStabilizedComplexWindow_mono
+#print axioms YangMills.RG.cmp89Eq249CentralStabilizedComplexReciprocalBound_antitone
+#print axioms YangMills.RG.cmp89Eq248ComplexGreenNumeratorBound_nonneg
+#print axioms YangMills.RG.cmp89Eq248ComplexStabilizedGreenAmplitudeBound_antitone
+#print axioms YangMills.RG.exists_cmp85SourceMassParameter_uniformComplexRadius
+#print axioms YangMills.RG.exists_cmp85SourceMassParameter_uniformComplexRadiusAndAmplitude

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceEq395FirstLeftDecay
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.one_sub_cmp99Eq395PhysicalSourceCharacteristic_eq
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.norm_one_sub_cmp99SourcePiCharacteristic_le_one
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalFirstLeft_exponentialKernelBound

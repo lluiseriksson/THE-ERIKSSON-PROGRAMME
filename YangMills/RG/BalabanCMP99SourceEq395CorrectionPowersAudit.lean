@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceEq395CorrectionPowers
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalCorrection_pow_weightedRow

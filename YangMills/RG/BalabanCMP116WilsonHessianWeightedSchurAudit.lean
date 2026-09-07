@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116WilsonHessianWeightedSchur
+
+#print axioms YangMills.RG.physicalWilsonHessianDefect_tilt_kernelBound
+#print axioms YangMills.RG.norm_physicalWilsonHessianDefect_tilt_le
+#print axioms YangMills.RG.norm_physicalWilsonHessianDefect_tilt_sub_le

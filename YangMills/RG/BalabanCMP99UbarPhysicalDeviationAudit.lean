@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99UbarPhysicalDeviation
+
+namespace YangMills.RG
+
+#print axioms cmp99PhysicalNoWindingBudget
+#print axioms cmp99UbarPhysicalNoWindingBudget
+#print axioms norm_UbarDeviationLogArg_le_four_factors
+#print axioms norm_UbarDeviationLogArg_le_pathLength
+#print axioms norm_UbarDeviationLogArg_le_three_blockContours
+#print axioms norm_UbarDeviationLogArg_le_physicalNoWindingBudget
+
+end YangMills.RG

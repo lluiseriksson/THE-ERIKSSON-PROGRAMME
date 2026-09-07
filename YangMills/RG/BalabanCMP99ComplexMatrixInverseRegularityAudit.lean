@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99ComplexMatrixInverseRegularity
+
+#print axioms YangMills.RG.differentiableAt_complexMatrixDet_of_entrywise
+#print axioms YangMills.RG.differentiableAt_complexMatrixAdjugateEntry_of_entrywise
+#print axioms YangMills.RG.complexMatrixNonsingInv_eq_detInv_smul_adjugate
+#print axioms YangMills.RG.differentiableAt_complexMatrixNonsingInvEntry_of_entrywise
+#print axioms YangMills.RG.hasDerivAt_complexMatrixNonsingInvEntry_of_entrywise

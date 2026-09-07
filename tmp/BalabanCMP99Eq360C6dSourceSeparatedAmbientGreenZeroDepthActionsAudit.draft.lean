@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepthActions
+
+-- SCRATCH ONLY: no compiler or axiom-oracle verdict is claimed.
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_leftDerivative_blockLocalizedSupBound
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_rightAdjoint_blockLocalizedSupBound
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_laplacian_blockLocalizedSupBound

@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102AmbientLogAverageBudget
+
+#print axioms YangMills.RG.norm_normalized_block_sum_le
+#print axioms YangMills.RG.norm_cmp98UbarLogAverage_le_sourceBudget
+#print axioms YangMills.RG.norm_fderiv_cmp98UbarLogAverage_le_sourceBudget
+#print axioms YangMills.RG.norm_cmp98UbarLogAverage_sub_le_sourceBudget
+#print axioms YangMills.RG.norm_fderiv_cmp98UbarLogAverage_sub_le_sourceBudget

@@ -1,0 +1,4 @@
+tmp/BalabanCMP99Eq360ComplexRegionalLaplacian.draft.lean
+tmp/BalabanCMP99Eq360ComplexRegionalLaplacianAudit.draft.lean
+tmp/BalabanCMP99Eq360ComplexRegionalLaplacianRealSlice.draft.lean
+tmp/BalabanCMP99Eq360ComplexRegionalLaplacianRealSliceAudit.draft.lean

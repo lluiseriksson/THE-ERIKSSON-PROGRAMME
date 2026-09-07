@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP98Eq119RightSourceBridge
+
+#print axioms YangMills.RG.cmp98Eq119RightFourSourcePhysicalVariation_eq_logVariation
+#print axioms YangMills.RG.cmp98Eq119NonlinearRightVariation_eq_fourSources_add_direct

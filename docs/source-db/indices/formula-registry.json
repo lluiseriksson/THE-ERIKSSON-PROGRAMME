@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated": "2026-06-26",
+  "generated": "2026-08-05",
   "purpose": "Single flat registry of formulas and formula-shaped targets indexed for LLM agents. source_verified=false means this is a route target or paraphrase, not a theorem-feedable source formula.",
   "counts": {
-    "formulas": 66,
-    "source_verified": 57,
+    "formulas": 78,
+    "source_verified": 69,
     "inferred_or_unverified": 9
   },
   "formulas": [
@@ -18,7 +18,7 @@
       "exactness": "normalized_formula",
       "confidence": "visual",
       "statement": "Visual normalized transcription of C3.",
-      "formula_ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
+      "formula_ascii": "C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
       "formula_latex": null,
       "conclusion": null,
       "source_verified": true,
@@ -1441,6 +1441,94 @@
       ]
     },
     {
+      "claim_id": "cmp96.eq2.39.regional-commutator-three-species",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "The regional commutator K(h) is the sum of the link-derivative, cutoff-Laplacian and normalized block-average species.",
+      "formula_ascii": "K(h)lambda(x) = sum_(b in st(x)) (partial h)(b)*(partial lambda)(b) - (Delta h)(x)*lambda(x) - a_j*(L^j*eta)^(-2)*sum_(x' in B_j(y(x))) L^(-jd)*(partial h)(Gamma_(x,y(x),x')^(j))*lambda(x')",
+      "formula_latex": null,
+      "conclusion": "This is the scalar predecessor of the three-species background-field identity CMP99 (3.88).",
+      "source_verified": true,
+      "equations": [
+        "2.39"
+      ],
+      "assumptions": [
+        "x lies in B^j(Lambda_j) and derivatives are taken on eta-scale.",
+        "The source square cutoff h and regional precision Delta'_a are the objects of CMP96 Section B."
+      ]
+    },
+    {
+      "claim_id": "cmp96.eq2.40.rescaled-regional-commutator",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "After rescaling to L^-j scale, the regional commutator retains the derivative, Laplacian and normalized averaging terms.",
+      "formula_ascii": "K(h_Pi)G'(Pi)h_Pi lambda = derivativeSpecies - laplacianSpecies - normalizedAverageSpecies",
+      "formula_latex": null,
+      "conclusion": "The M^-1 gain must be proved termwise before any regional sum.",
+      "source_verified": true,
+      "equations": [
+        "2.40"
+      ],
+      "assumptions": [
+        "Pi has side 2*M*L^j*eta and is connected with the L^j*eta scale.",
+        "G'(Pi) is evaluated on L^-j scale with the displayed L^-jd kernel normalization."
+      ]
+    },
+    {
+      "claim_id": "cmp96.eq2.43.localized-green-value-derivative",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "The regional Green and its covariant derivative satisfy a common localized exponential action bound.",
+      "formula_ascii": "[|G'(Pi) lambda(x)|, |partial^(L^-j) G'(Pi) lambda(x)|] <= O(1)*exp(-delta0*dist(x,supp lambda))*|lambda|",
+      "formula_latex": null,
+      "conclusion": "These are the two local Green inputs used directly in (2.40).",
+      "source_verified": true,
+      "equations": [
+        "2.43"
+      ],
+      "assumptions": [
+        "The regional Green properties cited from CMP95 Lemmas 2.2, 2.4 and Proposition 2.3 hold.",
+        "lambda is localized in one source block."
+      ]
+    },
+    {
+      "claim_id": "cmp96.eq2.44.regional-defect-localized-action",
+      "citation_key": "cmp96.eq2.39-2.44.regional-defect",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "The direct single-square regional defect factor has an inverse-large-block localized action bound.",
+      "formula_ascii": "|(K(h_Pi) G'(Pi) h_Pi lambda)(x)| <= O(M^-1)*exp(-delta0*|x-y|)*|lambda|",
+      "formula_latex": null,
+      "conclusion": "CMP99 (3.89) explicitly identifies itself as this estimate rescaled to eta-scale.",
+      "source_verified": true,
+      "equations": [
+        "2.44"
+      ],
+      "assumptions": [
+        "Either supp lambda is contained in B^j(y), y in Lambda_j, or in B^(j+1)(y), y in Lambda_(j+1).",
+        "Distance is measured on L^-j scale."
+      ]
+    },
+    {
       "claim_id": "cmp99.eq3.27.background-field-propagator",
       "citation_key": "cmp99.background-field-propagator-source-target",
       "source_id": "cmp99",
@@ -1461,6 +1549,144 @@
       "assumptions": [
         "Delta_a is the background-field operator defined in Eq. (3.26).",
         "Dirichlet boundary conditions on Omega_0 are in force in the displayed restriction."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.42.localized-green-prime-bounds",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Localized value, covariant-derivative and Laplacian bounds for the regional Green operator G'.",
+      "formula_ascii": "[|G' lambda(x)|, |nabla_U G' lambda(x)|, |G' nabla_U^* lambda(x)|, |Delta_U G' lambda(x)|] <= B0 * [(L^j eta)^2, L^j eta, L^j eta, 1] * exp(-delta0 d(y,y')) * |lambda|",
+      "formula_latex": null,
+      "conclusion": "This four-species local estimate, rather than a bare operator-norm inverse bound, is the analytic input used by the source to derive the O(M^-1) defect estimate (3.89).",
+      "source_verified": true,
+      "equations": [
+        "3.42",
+        "Theorem 3.1"
+      ],
+      "assumptions": [
+        "The hypotheses and regularity condition (3.35) of CMP99 Theorem 3.1 are in force, with a = 1.",
+        "x lies in Delta(y), y lies in Lambda_j, and the source lambda is supported in Delta(y')."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.88.precision-cutoff-identity",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "literal_paired_formula",
+      "confidence": "visual",
+      "statement": "Literal three-species expansion of the generated precision acting on one cutoff field.",
+      "formula_ascii": "Delta'_a(h lambda) = h Delta'_a(lambda) - linkDerivative + cutoffLaplacian + normalizedQprimeTerm = h Delta'_a(lambda) - K(h)lambda",
+      "formula_latex": null,
+      "conclusion": "The normalized Qprime species retains the printed L^(-jd) row mass; a terminal range-ball cardinality is not an admissible substitute.",
+      "source_verified": true,
+      "equations": [
+        "3.88"
+      ],
+      "assumptions": [
+        "The source square cutoff h and the regional generated precision Delta'_a of Eq. (3.88) are in force.",
+        "The Qprime contribution uses the printed normalized L^(-jd) block average and parallel transports."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.89.regional-defect-localized-action",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Direct single-square localized action bound for the CMP99 regional Green defect factor.",
+      "formula_ascii": "|(K(h_Pi) G'_Pi h_Pi lambda)(x)| <= O(M^-1) * exp(-delta0 d(y,y')) * |lambda|",
+      "formula_latex": null,
+      "conclusion": "The inverse-scale gain is present before summing correction cells. The overlap count used downstream must remain independent of M; a coarse coercivity-plus-Schur replacement is not source-faithful.",
+      "source_verified": true,
+      "equations": [
+        "3.89"
+      ],
+      "assumptions": [
+        "The three-species identity (3.88) and the localized Green bounds (3.42) are in force.",
+        "x lies in Delta(y), supp lambda is contained in Delta(y'), and y,y' lie in the same square Pi.",
+        "The source large-block parameter M is independent of the local operator range scale."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.90.regional-green-neumann",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Regional Green operator reconstructed from the square-partition parametrix and its commutator defect.",
+      "formula_ascii": "G'_0 = sum_Pi h_Pi G'_Pi h_Pi; Delta' G'_0 = I - R'; R' = sum_Pi K(h_Pi) G'_Pi h_Pi; G' = G'_0 sum_(n>=0) (R')^n",
+      "formula_latex": null,
+      "conclusion": "This is the source-faithful fine regional G' walk reconstruction required inside the composite Eq. (3.95) species; it is not the coarse covariance Neumann series already formalized in the Eq395 modules.",
+      "source_verified": true,
+      "equations": [
+        "3.87",
+        "3.88",
+        "3.89",
+        "3.90",
+        "Theorem 3.7"
+      ],
+      "assumptions": [
+        "The square partition and regional local Green operators of Eqs. (3.87)-(3.89) are in force.",
+        "M is sufficiently large so that the correction R' is contractive, as stated in Theorem 3.7."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.107.generalized-walk-expansion-G",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Generalized random-walk expansion of the square propagator G.",
+      "formula_ascii": "G = sum_omega R_0(X_0) R_alpha1(X_1) ... R_alphan(X_n)",
+      "formula_latex": null,
+      "conclusion": "This is the source walk series for G, not by itself the rectangular minimizer H.",
+      "source_verified": true,
+      "equations": [
+        "3.107"
+      ],
+      "assumptions": [
+        "M is sufficiently large and the configuration satisfies the regularity hypothesis stated in CMP99 Theorem 3.10.",
+        "Consecutive localization domains intersect and only carrier-compatible alpha sequences are admissible, although the displayed formula suppresses those types."
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.126.rectangular-minimizer-H",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "exact_formula",
+      "confidence": "visual",
+      "statement": "Rectangular equation-(3.126) auxiliary represented through the square propagator.",
+      "formula_ascii": "H B = G Q* (Q G Q*)^(-1) B",
+      "formula_latex": null,
+      "conclusion": "A source-faithful physical H walk reconstruction must compose the G expansion, the inverse/readout factors in (3.126), the stated coordinate conversion, and Theorem 3.12; citing (3.107) alone is insufficient.",
+      "source_verified": true,
+      "equations": [
+        "3.126"
+      ],
+      "assumptions": [
+        "The vanishing identities (3.124) have been proved.",
+        "The displayed B uses the equation-(3.126) coordinates; the source separately inserts (U eta)^(-1), or transforms the data equivalently, for the literal variational-problem operator."
       ]
     },
     {
@@ -1596,6 +1822,50 @@
       ],
       "assumptions": [
         "CMP102 Eqs. (44)-(46) and the cited CMP99 Theorem 3.12."
+      ]
+    },
+    {
+      "claim_id": "cmp102.eq78.D3-remainder-decomposition",
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "literal_paired_formula",
+      "confidence": "visual",
+      "statement": "Source decomposition separating the order-two correction from the order-at-least-three remainder used in equation (80).",
+      "formula_ascii": "<H D(A'),J> = <H C^(2)(A'),J> + <H D_3(A'),J>",
+      "formula_latex": null,
+      "conclusion": "Equation (78) visually anchors the missing D/D_3/C^(2) dictionary. The current Lean equation-(80) core accepts D and D_3 as independent parameters and does not prove this relation.",
+      "source_verified": true,
+      "equations": [
+        "78"
+      ],
+      "assumptions": [
+        "CMP102 Sect. C notation and source region/frame immediately above Eq. (80), printed page 290 / PDF page 14.",
+        "The accompanying source construction identifies the second-order contribution with C^(2) on the stated region; a global Lean equality D_3 = D - C^(2) requires that region and coordinate dictionary."
+      ]
+    },
+    {
+      "claim_id": "cmp102.eq80.literal-higher-order-potential",
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "literal_formula",
+      "confidence": "visual",
+      "statement": "Literal four-term higher-order potential in the transformed field.",
+      "formula_ascii": "V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')> + (1/2)<H D(A'),Delta_pi H D(A')> + V_0(A' - H D(A'))",
+      "formula_latex": null,
+      "conclusion": "The four-term algebraic core of YangMills.RG.cmp102Eq80GlobalPotential is source-verified; YangMills.RG.cmp102Eq80SourcePi4RectangularWeakenedPotential is its rectangular physical H-specialization. YangMills.RG.cmp102Eq80SourcePi4RealMixedPotential preserves the formula but is a square fine-field auxiliary.",
+      "source_verified": true,
+      "equations": [
+        "80"
+      ],
+      "assumptions": [
+        "CMP102 Sect. C notation on printed page 290 / PDF page 14.",
+        "The source-to-Lean dictionary for H, Delta_pi, J, D, D_3, V_0 and A' remains a separate obligation."
       ]
     },
     {

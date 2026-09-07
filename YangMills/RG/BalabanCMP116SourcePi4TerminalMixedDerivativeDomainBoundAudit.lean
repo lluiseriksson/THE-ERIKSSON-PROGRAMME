@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalMixedDerivativeDomainBound
+
+#print axioms YangMills.RG.cmp116SourcePi4MixedDerivativeDomainLayerAmplitude
+#print axioms YangMills.RG.norm_cmp116SourcePi4TerminalMixedDerivativeDomainLayer_le
+#print axioms YangMills.RG.norm_cmp116SourcePi4MixedDerivativeDomainLayerCoefficient_le
+#print axioms YangMills.RG.norm_cmp116SourcePi4MixedDerivativeDomainLayerCoefficient_le'

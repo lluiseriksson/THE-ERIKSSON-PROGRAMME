@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing
+
+#print axioms YangMills.RG.cmp99FinBoxFourierNeg_involutive_for_zeroResidueAliasing
+#print axioms YangMills.RG.cmp99FinBoxFourierNegSelfEquiv
+#print axioms YangMills.RG.sum_comp_cmp99FinBoxFourierNeg
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysical_normalized_sum_endpointIntegrand_eq_zeroResidue

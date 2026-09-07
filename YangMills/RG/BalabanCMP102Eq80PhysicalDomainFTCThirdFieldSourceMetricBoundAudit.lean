@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCThirdFieldSourceMetricBound
+
+#print axioms
+  YangMills.RG.norm_iteratedFDeriv_three_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution_le_sourceMetric

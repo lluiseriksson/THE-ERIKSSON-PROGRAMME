@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter
+
+#print axioms YangMills.RG.cmp99FlatFourierMode_target_mul_source_inv_eq_reversedOwnerDifferenceCharacter

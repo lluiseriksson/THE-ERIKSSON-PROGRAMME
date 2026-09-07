@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq342RightAdjointFromValueBound
+
+#print axioms YangMills.RG.cmp99Eq342_rightAdjoint_blockLocalizedSupBound_of_value

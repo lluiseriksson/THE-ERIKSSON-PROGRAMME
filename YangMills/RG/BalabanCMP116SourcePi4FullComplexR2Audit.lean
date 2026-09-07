@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexR2
+
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR2Matrix
+#print axioms YangMills.RG.Matrix.sub_eq_leftInv_mul_sub_mul_of_inverse_laws
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR2Matrix_eq_resolventProduct

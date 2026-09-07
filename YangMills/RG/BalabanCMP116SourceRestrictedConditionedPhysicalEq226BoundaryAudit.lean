@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalEq226Boundary
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_term_le_eq226SourceTermWeight_of_sourcePi4ConditionedPhysicalOuterResidualLedger

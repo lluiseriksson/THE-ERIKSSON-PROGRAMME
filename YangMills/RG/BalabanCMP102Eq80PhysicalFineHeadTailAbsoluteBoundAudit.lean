@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailAbsoluteBound
+
+#print axioms YangMills.RG.cmp99SourcePi4ComplexFineHeadTailFixedRight
+#print axioms YangMills.RG.cmp99SourcePi4ComplexFineHeadTailWordTerm_eq_mul_fixedRight
+#print axioms YangMills.RG.norm_cmp99SourcePi4ComplexFineHeadTailWordTerm_le
+#print axioms YangMills.RG.summable_sum_norm_cmp99SourcePi4ComplexFineHeadTailWordTerm

@@ -1,0 +1,7 @@
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenProductContourTelescope.lean
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenProductContourTelescopeAudit.lean
+YangMills/RG/BalabanCMP89Eq246DirectedPhysicalFineContourDictionary.lean
+YangMills/RG/BalabanCMP89Eq246DirectedPhysicalFineContourDictionaryAudit.lean
+docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md
+docs/VERIFICATION-LEDGER.md
+tmp/cmp89-eq246-product-telescope-dictionary-prevalidation-paths.txt

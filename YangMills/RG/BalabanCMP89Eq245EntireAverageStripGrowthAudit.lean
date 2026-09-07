@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq245EntireAverageStripGrowth
+
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageBase_pow_eq
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageBase_pow_le_exp
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageFactor_le_exp
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageAmplitude_le_exp_pow
+#print axioms YangMills.RG.norm_cmp89Eq245EntireAverageAmplitude_mul_neg_le_exp_pow

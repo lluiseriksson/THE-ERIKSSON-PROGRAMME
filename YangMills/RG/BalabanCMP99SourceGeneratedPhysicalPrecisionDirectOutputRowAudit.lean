@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionDirectOutputRow
+
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacian_fixedOutputWeighted
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalPrecision_directFixedOutputWeighted

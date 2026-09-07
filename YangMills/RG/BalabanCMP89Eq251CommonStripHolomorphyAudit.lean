@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89Eq251CommonStripHolomorphy
+
+#print axioms YangMills.RG.cmp89Eq251NoncentralFineSymbol_ne_zero_of_commonRadius
+#print axioms YangMills.RG.differentiableAt_cmp89Eq251ComplexStabilizedIntegrand_of_commonRadius
+#print axioms YangMills.RG.exists_cmp89Eq251ComplexStabilizedIntegrand_commonStripHolomorphy

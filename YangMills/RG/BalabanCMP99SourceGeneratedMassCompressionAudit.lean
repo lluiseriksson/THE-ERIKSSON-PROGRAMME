@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedMassCompression
+
+
+#print axioms YangMills.RG.cmp99NestedActiveRegionRestriction_comp_extension_eq_id
+#print axioms YangMills.RG.CMP99SourceNestedRegionChains.generatedCountingMass_compression
+#print axioms YangMills.RG.CMP99SourceNestedRegionChains.QprimeMass_compression

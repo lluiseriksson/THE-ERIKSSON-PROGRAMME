@@ -2,11 +2,11 @@
 
 This index flattens every formula-shaped claim in the current source DB. `verified` means the formula record itself is marked source-verified; it still may require a Lean theorem.
 
-Total formulas: **66**. Source-verified records: **57**. Unverified/inferred route targets: **9**.
+Total formulas: **78**. Source-verified records: **69**. Unverified/inferred route targets: **9**.
 
 | Formula id | Source | Status | Equations | Verified | Exactness | ASCII |
 |---|---:|---|---|---:|---|---|
-| `cmp116.c3.visual` | Balaban CMP116 | `visual_confirmed` | 2.37, 2.38 | yes | normalized_formula | `C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)` |
+| `cmp116.c3.visual` | Balaban CMP116 | `visual_confirmed` | 2.37, 2.38 | yes | normalized_formula | `C3 = 2*(L+2)^4*O(1)^2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)` |
 | `cmp116.eq229.main` | Balaban CMP116 | `visual_confirmed` | 2.27, 2.28, 2.29, 2.30 | yes | normalized_formula | `sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1` |
 | `cmp116.eq230.metric` | Balaban CMP116 | `visual_confirmed` | 2.27, 2.28, 2.29, 2.30 | yes | normalized_formula | `(3*2^3)^(-1)*M^(-4)*\|Y\| <= d_k(Y) <= M^(-4)*\|Y\| - 1` |
 | `cmp116.eq231.rho` | Balaban CMP116 | `visual_confirmed` | 2.31 | yes | normalized_formula | `rho = gamma2*epsilon1^2/(20*gk^2)` |
@@ -18,13 +18,25 @@ Total formulas: **66**. Source-verified records: **57**. Unverified/inferred rou
 | `cmp122ii.eq1.98.exponentiation` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `{...} = exp R'^(k) = exp (sum_X R'^(k)(X))` |
 | `cmp122ii.eq1.99.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))` |
 | `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
+| `cmp96.eq2.39.regional-commutator-three-species` | Balaban CMP96 | `visual_confirmed` | 2.39 | yes | normalized_formula | `K(h)lambda(x) = derivativeSpecies - laplacianSpecies - normalizedAverageSpecies` |
+| `cmp96.eq2.40.rescaled-regional-commutator` | Balaban CMP96 | `visual_confirmed` | 2.40 | yes | normalized_formula | `K(h_Pi)G'(Pi)h_Pi lambda = derivativeSpecies - laplacianSpecies - normalizedAverageSpecies` |
+| `cmp96.eq2.43.localized-green-value-derivative` | Balaban CMP96 | `visual_confirmed` | 2.43 | yes | normalized_formula | `[\|G'(Pi) lambda(x)\|, \|partial G'(Pi) lambda(x)\|] <= O(1)*exp(-delta0*dist(x,supp lambda))*\|lambda\|` |
+| `cmp96.eq2.44.regional-defect-localized-action` | Balaban CMP96 | `visual_confirmed` | 2.44 | yes | normalized_formula | `\|(K(h_Pi) G'(Pi) h_Pi lambda)(x)\| <= O(M^-1)*exp(-delta0*\|x-y\|)*\|lambda\|` |
 | `cmp99.eq3.27.background-field-propagator` | Balaban CMP99 | `visual_confirmed` | 3.26, 3.27 | yes | normalized_formula | `G(U) = G = (Delta_a \| Omega_0)^(-1)` |
+| `cmp99.eq3.42.localized-green-prime-bounds` | Balaban CMP99 | `visual_confirmed` | 3.42, Theorem 3.1 | yes | normalized_formula | `[\|G' lambda(x)\|, \|nabla_U G' lambda(x)\|, \|G' nabla_U^* lambda(x)\|, \|Delta_U G' lambda(x)\|] <= B0 * [(L^j eta)^2, L^j eta, L^j eta, 1] * exp(-delta0 d(y,y')) * \|lambda\|` |
+| `cmp99.eq3.88.precision-cutoff-identity` | Balaban CMP99 | `visual_confirmed` | 3.88 | yes | literal_paired_formula | `Delta'_a(h lambda) = h Delta'_a(lambda) - linkDerivative + cutoffLaplacian + normalizedQprimeTerm = h Delta'_a(lambda) - K(h)lambda` |
+| `cmp99.eq3.89.regional-defect-localized-action` | Balaban CMP99 | `visual_confirmed` | 3.89 | yes | normalized_formula | `\|(K(h_Pi) G'_Pi h_Pi lambda)(x)\| <= O(M^-1) * exp(-delta0 d(y,y')) * \|lambda\|` |
+| `cmp99.eq3.90.regional-green-neumann` | Balaban CMP99 | `visual_confirmed` | 3.87, 3.88, 3.89, 3.90, Theorem 3.7 | yes | normalized_formula | `G'_0 = sum_Pi h_Pi G'_Pi h_Pi; Delta' G'_0 = I - R'; R' = sum_Pi K(h_Pi) G'_Pi h_Pi; G' = G'_0 sum_(n>=0) (R')^n` |
+| `cmp99.eq3.107.generalized-walk-expansion-G` | Balaban CMP99 | `visual_confirmed` | 3.107 | yes | normalized_formula | `G = sum_omega R_0(X_0) R_alpha1(X_1) ... R_alphan(X_n)` |
+| `cmp99.eq3.126.rectangular-minimizer-H` | Balaban CMP99 | `visual_confirmed` | 3.126 + coordinate convention after 3.133 | yes | exact_formula | `H B = G Q* (Q G Q*)^(-1) B` |
 | `cmp99.theorem3.3.background-field-green-bounds` | Balaban CMP99 | `visual_confirmed` | Theorem 3.1, Theorem 3.3, 3.42-3.47 | yes | normalized_formula | `Assumptions of Theorem 3.1 -> G(U) satisfies inequalities (3.42)-(3.47)` |
 | `cmp99.theorem3.11.positive-definite-family` | Balaban CMP99 | `visual_confirmed` | Theorem 3.11 | yes | normalized_formula | `Theorems 3.1-3.10 assumptions -> Delta'_a, G', (Q'G'^2Q'^*)^(-1), Delta_a, G are positive definite` |
 | `cmp99.theorem3.12.external-gauge-field-propagators` | Balaban CMP99 | `visual_confirmed` | 3.35, 3.36, Theorem 3.12 | yes | normalized_formula | `Regularity conditions (3.35),(3.36) with alpha_0 sufficiently small -> Theorems 3.3, 3.10, 3.11 hold for G,G1, and the stated H,H1 estimates hold, with the listed exception` |
 | `cmp99.theorem3.15.covariance-propagator-decay` | Balaban CMP99 | `visual_confirmed` | 3.185, 3.187, Theorem 3.15 | yes | normalized_formula | `M*alpha_0 sufficiently small -> C^(k)(A) is given by (3.185) and \|C^(k)(Lambda; y,y')\| <= B0 * exp(-delta0 * \|y-y'\|)` |
 | `cmp102.eq22.gauge-action-expansion-input` | Balaban CMP102 | `visual_confirmed` | 22 | yes | normalized_formula | `U_1 = exp(i eta A) = 1 + i eta A + (i eta)^2 A^2 / 2! + (i eta)^3 A^3 / 3! + (i eta)^4 A^4 R_4(i eta A)` |
 | `cmp102.eq44-46.linearizing-operator-H` | Balaban CMP102 | `visual_confirmed` | 44, 45, 46 | yes | normalized_formula | `H minimizes (1/2)<A,Delta A> subject to L^j_eta Q_j A = B and RD^*A = 0; L^j_eta Q_j H B = B, RD^*H B = 0, and \|HB\|, \|nabla HB\| have CMP99 Theorem 3.12 bounds` |
+| `cmp102.eq78.D3-remainder-decomposition` | Balaban CMP102 | `visual_confirmed` | 78 | yes | literal_paired_formula | `<H D(A'),J> = <H C^(2)(A'),J> + <H D_3(A'),J>` |
+| `cmp102.eq80.literal-higher-order-potential` | Balaban CMP102 | `visual_confirmed` | 80 | yes | literal_formula | `V(A') = -<H D_3(A'),J> - <A',Delta_pi H D(A')> + (1/2)<H D(A'),Delta_pi H D(A')> + V_0(A' - H D(A'))` |
 | `cmp102.eq142.hessian-quadratic-expansion` | Balaban CMP102 | `visual_confirmed` | 142 | yes | normalized_formula | `F(A') = A(U_k) + (1/2)<A', Delta_1 A'> + V(A'); the second-order differential at A'=0 is this positive-definite quadratic form` |
 | `dimocki.eq297.raw-activity` | Dimock I | `source_extracted` | 296, 297, 298, 299 | yes | normalized_formula | `\|H(X,Phi)\| <= H0*exp(-kappa*d_M(X))` |
 | `dimocki.eq299.hsharp-decay` | Dimock I | `source_extracted` | 296, 297, 298, 299 | yes | normalized_formula | `\|H#(Y)\| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y))` |

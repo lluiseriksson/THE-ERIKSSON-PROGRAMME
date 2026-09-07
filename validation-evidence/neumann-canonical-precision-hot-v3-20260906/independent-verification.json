@@ -1,0 +1,171 @@
+{
+  "archive_sha256": "f70e866d0c13490518ce56693d4f59edf8a62e460b6aae721a6070bad7bc8060",
+  "axioms": {
+    "physical_draft": {
+      "YangMills.RG.neumannCanonicalPrecision_apply_eq_completeOffsets": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannCanonicalPrecision_eq_explicitCountingMass": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "cold_seal": false,
+  "outputs": {
+    "mathlib_repro.olean": "ad5aa9131084ddf61300f168a46c26a9e11e8249b14b9e4b143742d346146f12",
+    "physical_draft.olean": "1c5b9770c9878522b72d3ef7561ad461c2c996d8d9f3c53d1c3afba000655778"
+  },
+  "records": [
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "af130057738031c5ad50934107f457645b795f6c68f936c4ced6f77c15ba75a6",
+      "seconds": 0.002472010000019509,
+      "stage": "base_head",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "git",
+        "-C",
+        ".lake/packages/mathlib",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd",
+      "seconds": 0.004098788999726821,
+      "stage": "mathlib_pin",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lean",
+        "--version"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "ffc062887a88810ba8aa56371c6f0ef93d49dad1c0bc7fe99a8d7b264d3db0b1",
+      "seconds": 0.06486200800009101,
+      "stage": "lean_version",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lake",
+        "--version"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "9f4a3130a140a735d63f1028a8437b9eb7a7b0fcea54f373c31fadd0fe5f43c6",
+      "seconds": 0.06481294799959869,
+      "stage": "lake_version",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD",
+        "--",
+        "YangMills",
+        "lean-toolchain",
+        "lake-manifest.json"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.016622195000309148,
+      "stage": "clean_before",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-o",
+        "/content/neumann-canonical-precision-offsets-hot-v3-evidence/mathlib_repro.olean",
+        "tmp/neumann-canonical-precision-offsets-hot-v3/NeumannCanonicalPrecisionOffsetActionRepro.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 7.49508539999988,
+      "stage": "mathlib_repro",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannPrecision",
+        "YangMills.RG.BalabanCMP89NeumannPrecisionThreeSpecies",
+        "YangMills.RG.NeumannRetainedCountingMassDictionary",
+        "YangMills.RG.NeumannGeneratedMassCompleteOffsets"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "c22e541d28a98f3acb14ddd02b759c163ae675972b57030199ef4f76b5ee0577",
+      "seconds": 7.291221718000088,
+      "stage": "physical_prerequisites",
+      "timed_out": false,
+      "timeout_seconds": 600
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-o",
+        "/content/neumann-canonical-precision-offsets-hot-v3-evidence/physical_draft.olean",
+        "tmp/neumann-canonical-precision-offsets-hot-v3/NeumannCanonicalPrecisionOffsetActionDraft.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "add5bd90d0db101d448cc8d8055f30faa178014fa5ab61f709fb5f0d37bc11db",
+      "seconds": 29.782314815000063,
+      "stage": "physical_draft",
+      "timed_out": false,
+      "timeout_seconds": 120
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD",
+        "--",
+        "YangMills",
+        "lean-toolchain",
+        "lake-manifest.json"
+      ],
+      "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.009816576999583049,
+      "stage": "clean_after",
+      "timed_out": false,
+      "timeout_seconds": 120
+    }
+  ],
+  "source": "8aa5fe1ff3d166ad67debbda3aa4a23ff659950c",
+  "status": "VERIFIED_HOT_PASS"
+}

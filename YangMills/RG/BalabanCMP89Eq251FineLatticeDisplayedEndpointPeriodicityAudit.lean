@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP89Eq251FineLatticeDisplayedEndpointPeriodicity
+
+/-!
+# Cold-sealed audit: fine-lattice displayed endpoint periodicity
+
+Exact source checkpoint `39598f7a567d268f27f57fed681800e7efce0815`, cold
+GitHub Actions run `31336314604`; six declarations use exactly the standard
+axiom trio.
+-/
+
+#print axioms YangMills.RG.cmp89Eq251ComplexFineLatticeBareEndpointMomentumFactor
+#print axioms YangMills.RG.cmp89Eq251ComplexFineLatticeBareEndpointMomentumFactor_coordinateAliasPeriodShift
+#print axioms YangMills.RG.cmp89Eq251ComplexFineLatticeDisplayedEndpointMomentumTerm
+#print axioms YangMills.RG.cmp89Eq251ComplexFineLatticeDisplayedEndpointMomentumTerm_coordinateAliasPeriodShift
+#print axioms YangMills.RG.cmp89Eq251ComplexDisplayedEndpointAliasTerm_zero_eq_fineLatticeMomentumTerm
+#print axioms YangMills.RG.cmp89Eq251ComplexDisplayedEndpointIntegrand_zero_physicalFinePeriodShift

@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP116Eq214PhysicalContourDensity
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.weightProduct_eq_determinantDensity_mul_exp_correctionExponent
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.conditionedMeasure_eq_reference
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.determinantDensity_sq_eq_det_div
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_weightProduct_eq
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_outerWeight_eq
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_outerWeight_le_of_determinantDensity_of_r1
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.r1Matrix_zero
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.r2Matrix_zero
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.r3Matrix_zero
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.weightProduct_zero_eq_one

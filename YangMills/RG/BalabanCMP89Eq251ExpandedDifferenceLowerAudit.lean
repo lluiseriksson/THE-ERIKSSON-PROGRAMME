@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89Eq251ExpandedDifferenceLower
+
+#print axioms YangMills.RG.one_div_three_pi_mul_abs_le_two_mul_abs_sin_half
+#print axioms YangMills.RG.one_div_three_pi_mul_abs_le_cmp89Eq249UnitDifferenceNorm
+#print axioms YangMills.RG.one_div_three_pi_le_abs_sinc_half_of_abs_le_three_pi_div_two
+#print axioms YangMills.RG.one_div_three_pi_mul_abs_le_cmp89Eq245ScaledDifferenceNorm
+#print axioms YangMills.RG.one_div_three_pi_mul_abs_alias_le_scaledDifferenceNorm
+#print axioms YangMills.RG.one_div_three_pi_le_abs_sinc_scaled_alias

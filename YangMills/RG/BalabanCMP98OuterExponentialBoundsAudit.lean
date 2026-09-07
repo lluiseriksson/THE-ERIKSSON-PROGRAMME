@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98OuterExponentialBounds
+
+#print axioms YangMills.RG.cmp98SourceLogAverageDisplacementBudget
+#print axioms YangMills.RG.cmp98SourceOuterExpDisplacementBudget
+#print axioms YangMills.RG.cmp98SourceOuterExpNormBudget
+#print axioms YangMills.RG.norm_cmp98UbarExpAverage_physicalLine_sub_zero_le_sourceBudget
+#print axioms YangMills.RG.norm_cmp98UbarExpAverage_zero_le_sourceBudget

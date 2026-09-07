@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP116ComplexQuadraticSchur
+
+#print axioms YangMills.RG.cmp116Eq214ComplexQuadratic_re_le_linfty_bilateral
+#print axioms YangMills.RG.Matrix.linfty_opNorm_mul_three_le
+#print axioms YangMills.RG.Matrix.linfty_opNorm_transpose_mul_three_le
+#print axioms YangMills.RG.cmp116R1TelescopeBilateralSchurBudget
+#print axioms YangMills.RG.cmp116R1BilateralSchurRate_le_telescopeBudget
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1BilateralSchurRate
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1TelescopeSchurBudget
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1BilateralSchurRate_le_telescope
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1_quadratic_re_le_bilateralSchurRate

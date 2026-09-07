@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116RestrictedMonomialLinearTelescope
+
+#print axioms YangMills.RG.mem_cmp116RestrictedActiveIndices_iff
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_restricted_eq_prod_activeIndices
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_restricted_sub_one_eq_orderedSum
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_restricted_sub_one_eq_sum_pivotWeight

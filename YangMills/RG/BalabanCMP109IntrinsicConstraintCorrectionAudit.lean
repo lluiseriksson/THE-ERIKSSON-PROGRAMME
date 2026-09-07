@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP109IntrinsicConstraintCorrection
+
+#print axioms YangMills.RG.contDiffAt_cmp109IntrinsicConstraintCorrectionMap_uncurry
+#print axioms YangMills.RG.cmp109ConstraintCorrectionMap_eq_intrinsic_of_mem
+#print axioms YangMills.RG.cmp109PhysicalConstraintCorrection_intrinsicEquation
+#print axioms YangMills.RG.cmp109IntrinsicConstraintCorrectionMap_fixedPoint_unique
+#print axioms YangMills.RG.cmp109IntrinsicConstraintCorrectionMap_fixedPoint_unique_across_certificates
+#print axioms YangMills.RG.cmp109PhysicalConstraintCorrectedFluctuation_eq

@@ -1,0 +1,1 @@
+{"command": ["apt-get", "update", "-qq"], "cwd": null, "exit": 0, "log_file": "apt_update.log", "output_sha256": "d90621fbbebef99d7cc656167901cbea6256057c28edd9a40873a127175f4ad8", "seconds": 4.880205265000086, "stage": "apt_update"}

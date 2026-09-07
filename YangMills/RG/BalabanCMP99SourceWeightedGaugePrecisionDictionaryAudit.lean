@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceWeightedGaugePrecisionDictionary
+
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceCountingCoefficientAsWeightedAdjoint
+#print axioms cmp99SourceGaugePrecision_eq_weightedAdjoint
+#print axioms CMP99SourceActiveRegionChain.weightedQprimeTower_countingCoefficient_asWeightedAdjoint
+
+end YangMills.RG

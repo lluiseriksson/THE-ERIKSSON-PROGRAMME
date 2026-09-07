@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalUniformOwnerBound
+
+#print axioms YangMills.RG.norm_cmp89Eq248PhysicalRegionalGreen_le_physicalOwner_uniform_draft

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourcePi4RealMixedCovarianceAffine
+
+#print axioms YangMills.RG.cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative_update_eq_affine

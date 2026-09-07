@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP96SourceSeparatedRegionalPrefixTiltedCoercivity
+
+#print axioms YangMills.RG.isCoerciveCLM_cmp96SourceSeparatedRegionalPrefixPrecision_tilt_canonical

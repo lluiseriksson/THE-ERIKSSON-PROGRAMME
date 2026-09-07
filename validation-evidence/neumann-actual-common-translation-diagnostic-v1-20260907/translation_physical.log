@@ -1,0 +1,11 @@
+'YangMills.RG.neumannActualPointSourceVector_blockShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannActualPointSourceSolution_blockShift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannActualFineGreenIntegrand_commonBlockShift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannActualPhysicalFineGreenIntegrand_commonBlockShift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannActualNormalizedFineGreen_commonBlockShift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

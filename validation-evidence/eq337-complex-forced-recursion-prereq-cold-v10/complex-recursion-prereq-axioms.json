@@ -1,0 +1,56 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "boundary_blob_sha256": {
+    "tmp/BalabanCMP99ComplexInverseRadius.draft.lean": "ff9943cc7f7a398c9d653bfb2fbc86aa70f9d7e3fbd59c890b68cc5d00218dd9",
+    "tmp/BalabanCMP99ComplexInverseRadiusAudit.draft.lean": "ea2597ee82f20741fc5b1ef18665baf4b8ba47687b6c814f5e83f6d17c590d28",
+    "tmp/BalabanCMP99ComplexUbarSmallFieldPropagation.draft.lean": "5e8808cc0e6161a174943455e7715cdaaf1fd5719c1ad297bc5ec43f9f6beb34",
+    "tmp/BalabanCMP99ComplexUbarSmallFieldPropagationAudit.draft.lean": "382ded9f34b3afe26072a120953848325def8d12fd76b3a33dc5e7c273f41e88",
+    "tmp/CMP99ComplexInverseRadius.repro.lean": "3e71811abf32f8503db7e1730394a99c1e54531acaf8e375f2afc76f9f383d3f",
+    "tmp/CMP99ComplexRadiusScalar.repro.lean": "97d73cf5b0b0b328f083aeb5716eaaf67dcb68dd6539fac4687553f333822b15"
+  },
+  "declarations_by_module": {
+    "BalabanCMP99ComplexInverseRadius": [
+      "YangMills.RG.norm_cmp99SpecialLinear_inv_sub_one_le_div"
+    ],
+    "BalabanCMP99ComplexUbarSmallFieldPropagation": [
+      "YangMills.RG.norm_cmp99UbarSpecialLinearExponent_le_logRadius",
+      "YangMills.RG.norm_cmp99UbarSpecialLinearFactorOfDeviationBudget_sub_one_le",
+      "YangMills.RG.cmp99SourceComplexUbarNextLinkRadius",
+      "YangMills.RG.cmp99SourceComplexUbarNextOrientedLinkRadius",
+      "YangMills.RG.exists_cmp99SourceComplexUbar_zero_step_gates",
+      "YangMills.RG.norm_cmp99SourceComplexLocalizedUbarDeviation_le_uniformRadius_of_linkRadius",
+      "YangMills.RG.cmp99SourceComplexUbarNoWindingBudget",
+      "YangMills.RG.cmp99SourceComplexUbarNoWindingBudget_delta",
+      "YangMills.RG.norm_cmp99SourceComplexLocalizedUbarBlock_sub_one_le",
+      "YangMills.RG.norm_cmp99SourceComplexLocalizedNextBackground_apply_pos_sub_one_le",
+      "YangMills.RG.norm_cmp99SourceComplexLocalizedNextBackground_sub_one_le",
+      "YangMills.RG.cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius",
+      "YangMills.RG.norm_cmp99SourceComplexLocalizedNextBackgroundOfLinkRadius_sub_one_le"
+    ]
+  },
+  "declarations_by_repro": {
+    "tmp/CMP99ComplexRadiusScalar.repro.lean": [
+      "YangMills.RG.cmp99ComplexRadiusScalar_expRadius_le_four_mul",
+      "YangMills.RG.cmp99ComplexRadiusScalar_orientedInverse_le_two_mul"
+    ]
+  },
+  "evidence_input_sha256": "82cb6c4007d83a32558a30b137741010c6400138300e3fcd00d05d7545c97e94",
+  "expected_declarations": 16,
+  "runner_revision": "eq337-complex-forced-recursion-prereq-v10",
+  "source_sha": "3d98e0b3b22c3ffc1b1a2db0c711c480b7fb1000",
+  "stage_seconds": {
+    "complex_inverse_radius_audit": "6.058",
+    "complex_inverse_radius_repro": "5.692",
+    "complex_inverse_radius_source": "6.160",
+    "complex_radius_scalar_repro": "6.711",
+    "complex_recursion_prereq_materialize_dependencies": "1164.551",
+    "complex_recursion_prereq_prepare_build_dirs": "0.003",
+    "complex_ubar_small_field_audit": "17.095",
+    "complex_ubar_small_field_source": "6.381"
+  },
+  "status": "EQ337_COMPLEX_RECURSION_PREREQ_EVIDENCE_OK"
+}

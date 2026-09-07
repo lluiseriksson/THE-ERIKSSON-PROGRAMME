@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "cc658a4a86a1fbdce81bdace12a7f567b79a8ea77a0ede78ab0a044b0f5cec42",
+  "cold_seal": false,
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/neumann-common-block-phase-hot-v1-evidence/physical_draft.olean",
+      "tmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-actual-scalar-diagnostic-v1",
+    "exit": 1,
+    "log_sha256": "9ae4efea0187a58b13c8355315de04d5745390163e93dc29e382e0643070e89c",
+    "seconds": 7.5953703820000555,
+    "stage": "physical_draft",
+    "timed_out": false,
+    "timeout_seconds": 120
+  },
+  "log": "tmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:17:5: error: unexpected token 'alias'; expected '_' or identifier\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:17:15: error: unexpected identifier; expected ':='\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:19:44: error: unexpected token ')'; expected '\u27e8' or identifier\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:23:44: error: unexpected token ')'; expected '\u27e8' or identifier\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:31:70: error: unexpected token 'theorem'; expected ':='\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:35:5: error: unexpected token 'alias'; expected '_' or identifier\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:35:15: error: unexpected identifier; expected ':='\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:37:44: error: unexpected token ')'; expected '\u27e8' or identifier\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:41:44: error: unexpected token ')'; expected '\u27e8' or identifier\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:45:55: error: unexpected identifier; expected ':='\nTry this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:53:35: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:55:14: error(lean.unknownIdentifier): Unknown constant `neumannAliasTargetPhase_blockShift`\ntmp/neumann-common-block-phase-hot-v1/NeumannCommonBlockEndpointPhaseDraft.lean:56:14: error(lean.unknownIdentifier): Unknown constant `neumannAliasSourcePhase_blockShift`\n'YangMills.RG.neumannCommonBlockPhase_cancel' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "source": "93264d4b654022f51cd1d1f0ce7963de26408d4b",
+  "status": "VERIFIED_FAILURE"
+}

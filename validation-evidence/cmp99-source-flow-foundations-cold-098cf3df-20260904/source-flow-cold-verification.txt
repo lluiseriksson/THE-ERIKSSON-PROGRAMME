@@ -1,0 +1,97 @@
+{
+  "archive_sha256": "ae15445e78008ab2bfc6ba11e2a74b545c2eaba512100589f94af19c4d1326b7",
+  "audits": {
+    "source_inverse_audit": {
+      "YangMills.RG.cmp99SourceFlowFullPointSourceSolution_eq_green_apply": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "source_scalar_audit": {
+      "YangMills.RG.cmp85SourceFullGreen_massParameter_le_initial": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.cmp85SourceFullGreen_momentBudget_antitone": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.cmp85SourceFullGreen_momentBudget_eq_scalarAmplitude": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.exists_cmp85SourceFullGreen_uniformRadiusAndMoment": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "evidence_json_file_sha256": "a6ef9db9545d2a8efed047ed233d960ad5ba477622ed7ca95bae8a9cd5a86c8d",
+  "evidence_json_payload_sha256": "63005a80777439add7936e8a479d47ee0dfe024c5d8a3f134f59c4cd7731ead0",
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP85SourceFullGreenScalarFoundations"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1",
+      "exit": 0,
+      "log_file": "source_scalar_focal.log",
+      "output_sha256": "e123a3d5bf5579ced57323651eb77a60af638448be02064effede5780d13aae4",
+      "seconds": 1043.026295328,
+      "stage": "source_scalar_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP85SourceFullGreenScalarFoundationsAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1",
+      "exit": 0,
+      "log_file": "source_scalar_audit.log",
+      "output_sha256": "653577ff3487a57499631ff25647790d420040017a2d23f4dc9ce37ff99c85e2",
+      "seconds": 7.110386595000136,
+      "stage": "source_scalar_audit"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99SourceFlowFullPointSourceGreenIdentification"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1",
+      "exit": 0,
+      "log_file": "source_inverse_focal.log",
+      "output_sha256": "9eac9b90a92c2ea2f17b7d7985b80362521c1c5c0273e80a1cd010e3447e54fc",
+      "seconds": 927.7169169240001,
+      "stage": "source_inverse_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP99SourceFlowFullPointSourceGreenIdentificationAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1",
+      "exit": 0,
+      "log_file": "source_inverse_audit.log",
+      "output_sha256": "eb23952b5667c75b48305502efeccf14fa69593127ac025ba8f68998b0ec45f3",
+      "seconds": 10.182952140999987,
+      "stage": "source_inverse_audit"
+    }
+  ],
+  "runner_rev": "cmp99-source-flow-full-green-foundations-v1",
+  "source_sha": "098cf3dfad1095c57bdc1d1dc5bc6b13252174d5",
+  "stages_verified": 18,
+  "status": "PASS"
+}
+SOURCE_FLOW_FULL_GREEN_COLD_EVIDENCE_VERIFIED

@@ -1,0 +1,38 @@
+tmp/neumann-generated-average-field-action-hot-v1/NeumannGeneratedAverageFieldActionDraft.lean:56:2: error: unsolved goals
+case pos
+d M N Nc : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero M
+inst✝ : NeZero Nc
+depth : ℕ
+Omega : ActiveGaugeRegion d N
+regions : CMP99SourceActiveRegionChain d M N Omega depth
+this : NeZero N := neZero regions
+f : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)
+hdecomp : regions.flatExplicitQprime f = ∑ source, regions.flatExplicitQprime (singleFinitePiLp source (f.ofLp source))
+source : Omega.Site
+a✝ : source ∈ Finset.univ
+happ :
+  (regions.flatExplicitQprime f).ofLp (regions.terminalSiteOfFine source) =
+    ∑ c, (regions.flatExplicitQprime (singleFinitePiLp c (f.ofLp c))).ofLp (regions.terminalSiteOfFine source)
+⊢ cmp99SourceBlockAverageWeight M d ^ depth • f.ofLp source =
+    cmp99SourceBlockAverageWeight M d ^ depth • if True then f.ofLp source else 0
+tmp/neumann-generated-average-field-action-hot-v1/NeumannGeneratedAverageFieldActionDraft.lean:57:38: warning: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only [singleFinitePiLp_self,̵ ̵i̵f̵_̵p̵o̵s̵ ̵r̵f̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedMass_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitCountingMass_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

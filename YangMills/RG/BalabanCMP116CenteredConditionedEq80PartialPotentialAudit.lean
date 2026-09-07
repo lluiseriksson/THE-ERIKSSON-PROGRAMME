@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116CenteredConditionedEq80PartialPotential
+
+#print axioms YangMills.RG.cmp116Eq142PhysicalQuadraticCore_centeredConditionedEq80Partial

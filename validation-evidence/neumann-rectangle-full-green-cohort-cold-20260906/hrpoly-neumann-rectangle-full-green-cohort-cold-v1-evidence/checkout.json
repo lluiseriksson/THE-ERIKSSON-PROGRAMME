@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "d9d1bcae8e53b2ad442f507de0d695a1c5e0ccd6"], "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "212214627864ca94c2aafbe278212796f2543a4a2e1d125248f5c4e92cb82311", "seconds": 1.168962924999505, "stage": "checkout"}

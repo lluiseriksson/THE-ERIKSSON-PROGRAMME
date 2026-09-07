@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP99SourcePi4ComplexRectangularMinimizer
+
+#print axioms YangMills.RG.cmp99PhysicalRectangularRealMatrix
+#print axioms YangMills.RG.cmp99PhysicalRectangularComplexMatrix
+#print axioms YangMills.RG.cmp99PhysicalRectangularComplexMatrix_comp
+#print axioms
+  YangMills.RG.cmp99PhysicalRectangularComplexMatrix_eq_endomorphismMatrix
+#print axioms YangMills.RG.cmp99SourcePi4ComplexBlockMatrix
+#print axioms YangMills.RG.cmp99SourcePi4ComplexBlockAdjointMatrix
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexCoarseMiddleMatrix
+#print axioms
+  YangMills.RG.cmp99SourcePi4FullComplexCoarseMiddleMatrix_one_eq_exact
+#print axioms
+  YangMills.RG.cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect
+#print axioms
+  YangMills.RG.cmp99SourcePi4FullComplexBackgroundMinimizerMatrix

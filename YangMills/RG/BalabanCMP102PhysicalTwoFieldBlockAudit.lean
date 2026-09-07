@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102PhysicalTwoFieldBlock
+
+#print axioms YangMills.RG.cmp102SourceUbarExpTwoFieldBudget_nonneg
+#print axioms YangMills.RG.cmp102SourceCoarseContourTwoFieldBudget_nonneg
+#print axioms YangMills.RG.norm_cmp98UbarExpAverage_twoField_sub_le
+#print axioms YangMills.RG.norm_cmp98UbarExpAverage_physicalLine_le_sourceBudget
+#print axioms YangMills.RG.norm_cmp98SourceCoarseContour_twoField_sub_le
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearBlockCurve_twoField_sub_le

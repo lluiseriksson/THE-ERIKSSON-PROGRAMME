@@ -1,0 +1,107 @@
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 rejected=9
+V2_LAUNCH_CODEC_SELF_TEST=PASS rejected=5
+{
+  "axioms": {
+    "counting_reflection_draft": {
+      "YangMills.RG.neumannGeneratedFullCountingMass_reflection_draft": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannGeneratedFullSiteReflectionDraft_involutive": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannGeneratedTerminalOwner_reflection_draft": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "counting_reflection_repro": {
+      "YangMills.RG.neumannCountingReflection_cast_repro": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannCountingReflection_if_repro": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "cold_seal": false,
+  "inner_sha256": "a204cb56197db16a315a9f5432b65f31b5e595ad454e7a1686be933c85cf7df7",
+  "outer_sha256": "ed2cda8e2fac4c51a1d49b140b5956fd0ba05134b9e0f2dddf4c1fecfa522d92",
+  "outputs": {
+    "NeumannGeneratedCountingMassReflectionDraft.olean": "99b31f3f6f9a27663714391afd26b2796499731e3e97863f3c766b7f96869ec8",
+    "NeumannGeneratedCountingMassReflectionRepro.olean": "9879abd1c8812838bcbdcadc7358a61e5e4c4bd675f16203d5703605560326fd"
+  },
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.NeumannHalfCellBlockReflection"
+      ],
+      "cwd": "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v2",
+      "exit": 0,
+      "log_file": "geometry_leaf.log",
+      "output_sha256": "29ce20a7dcafa8afe995994beec1d42be73d5a95e2ac7508ec4fc4d387569044",
+      "seconds": 39.98045930499984,
+      "stage": "geometry_leaf"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-o",
+        "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v2-evidence/NeumannGeneratedCountingMassReflectionRepro.olean",
+        "tmp/NeumannGeneratedCountingMassReflectionRepro.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v2",
+      "exit": 0,
+      "log_file": "counting_reflection_repro.log",
+      "output_sha256": "40a71504c730e2a68b0fb0a7185aebc904fc1957588776b0b01a02328e8e0141",
+      "seconds": 5.4832245080001485,
+      "stage": "counting_reflection_repro"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse",
+        "YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanion"
+      ],
+      "cwd": "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v2",
+      "exit": 0,
+      "log_file": "physical_prerequisites.log",
+      "output_sha256": "77995d8bf6deec2fdc99422ef1f4d6cda5e812cd93cb28b6e5c017c22e0c955b",
+      "seconds": 1368.8991479280003,
+      "stage": "physical_prerequisites"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "-o",
+        "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v2-evidence/NeumannGeneratedCountingMassReflectionDraft.olean",
+        "tmp/NeumannGeneratedCountingMassReflectionDraft.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v2",
+      "exit": 0,
+      "log_file": "counting_reflection_draft.log",
+      "output_sha256": "9a2cf962b955500b2018ce7e3b44fe252612f45b01c292130560dd09cd36056e",
+      "seconds": 10.627043463000064,
+      "stage": "counting_reflection_draft"
+    }
+  ],
+  "source": "06a928178b22c42c4ecc5387461b808ee3a19dea",
+  "stages": 18,
+  "status": "PASS"
+}
+COUNTING_REFLECTION_DIAGNOSTIC_EVIDENCE_VERIFIED COLD_SEAL=0

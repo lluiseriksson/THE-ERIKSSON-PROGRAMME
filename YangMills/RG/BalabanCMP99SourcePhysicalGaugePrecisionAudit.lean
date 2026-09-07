@@ -1,0 +1,21 @@
+import YangMills.RG.BalabanCMP99SourcePhysicalGaugePrecision
+
+/-! Public oracle for the literal CMP99 source gauge precision. -/
+
+namespace YangMills.RG
+
+#print axioms norm_covariantD0CLM_sq_le
+#print axioms norm_covariantD0CLM_le
+#print axioms cmp99OmegaSourceCovariantD0CLM
+#print axioms cmp99OmegaSourceCovariantLaplacian
+#print axioms inner_cmp99OmegaSourceCovariantLaplacian
+#print axioms cmp99OmegaSourceCovariantLaplacian_isSymmetric
+#print axioms norm_cmp99OmegaSourceCovariantD0CLM_le
+#print axioms norm_cmp99OmegaSourceCovariantLaplacian_le
+#print axioms cmp99OmegaSourcePhysicalGaugePrecision
+#print axioms cmp99OmegaSourcePhysicalPrecisionUpperBound
+#print axioms inner_cmp99OmegaSourcePhysicalGaugePrecision
+#print axioms cmp99OmegaSourcePhysicalGaugePrecision_isSymmetric
+#print axioms norm_cmp99OmegaSourcePhysicalGaugePrecision_le
+
+end YangMills.RG

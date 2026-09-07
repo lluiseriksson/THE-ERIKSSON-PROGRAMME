@@ -1,0 +1,249 @@
+import YangMills.RG.BalabanCMP99ActiveRegionCanonicalAmbientCompletion
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreen
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenZeroDepth
+
+namespace YangMills.RG
+
+open YangMills Matrix
+open scoped Matrix.Norms.L2Operator RealInnerProductSpace
+
+noncomputable section
+
+variable {L K Q Mlarge Nc n depth : ℕ}
+variable [NeZero L] [NeZero K] [NeZero Q] [NeZero Mlarge] [NeZero Nc]
+
+private instance instNeZeroEq360C6dCanonicalLargeBlockSide
+    (L K depth : ℕ) [NeZero L] [NeZero K] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth) :=
+  ⟨(Nat.mul_pos (NeZero.pos K)
+    (pow_pos (NeZero.pos L) (depth + 1))).ne'⟩
+
+private instance instNeZeroEq360C6dCanonicalAmbientSide
+    (L K Q depth : ℕ) [NeZero L] [NeZero K] [NeZero Q] :
+    NeZero (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)) :=
+  ⟨(Nat.mul_pos
+    (Nat.mul_pos (NeZero.pos K) (pow_pos (NeZero.pos L) (depth + 1)))
+    (Nat.mul_pos (by omega) (NeZero.pos Q))).ne'⟩
+variable {scaleExtent : Fin n → ℕ}
+variable {S : CMP99SourceScaledStratification
+  (FinBox 4 (L ^ (depth + 1) * (2 * (K * Q)))) n
+  (fun r => FinBox 4 (scaleExtent r))}
+variable {scaleExtent_pos : ∀ r, 0 < scaleExtent r}
+variable {U : PhysicalGaugeBackground 4
+  (L ^ (depth + 1) * (2 * (K * Q))) Nc}
+variable {eta alpha0 alpha1 : ℝ}
+variable (OmegaSource : ActiveGaugeRegion 4
+  (cmp99SourceSeparatedLargeBlockSide L K depth * (2 * Q)))
+variable (R : CMP99Eq335PhysicalRegularityClass
+  (L := L ^ (depth + 1)) (N' := 2 * (K * Q))
+  (Mlarge := Mlarge) (Nc := Nc) (n := n)
+  (scaleExtent := scaleExtent) (S := S)
+  (scaleExtent_pos := scaleExtent_pos) U eta alpha0)
+variable (C : CMP99SourceRegularCube
+  (FinBox 4 (L ^ (depth + 1) * (2 * (K * Q)))) n Mlarge
+  scaleExtent S scaleExtent_pos)
+variable (hscale : (C.geometryFactor : ℝ) * (Mlarge : ℝ) * alpha0 ≤ alpha1)
+variable {OmegaPrime0 : ActiveGaugeRegion 4
+  (L ^ (depth + 1) * (2 * (K * Q)))}
+variable (regions : CMP99SourceActiveRegionChain 4 L
+  (L ^ (depth + 1) * (2 * (K * Q)))
+  (cmp99Eq360C6dSourceSeparatedAmbientRegion
+    (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource) depth)
+variable (D : CMP99Eq335Corollary36SourceRegionDictionary
+  (cmp99Eq360C6dSourceSeparatedAmbientRegion
+    (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource)
+  OmegaPrime0 C)
+variable (hL : 2 ≤ L) (halpha1 : alpha1 ≤ 1 / 2)
+variable (baselineRadiusBudget : CMP99SourceUbarClosedBudget 4 L Nc depth
+  (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1))
+
+/-- Completing the literal regional compression of the one C6d source
+ambient precision leaves its internally generated source Green unchanged.
+No ambient operator, regional Green, or equality of inverses is caller data.
+-/
+theorem cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq
+    (hdepth : 0 < depth)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 L depth eta
+      (cmp99Eq335PhysicalRetainedNearIdentityRadius alpha1) < 1) :
+    let A := cmp99Eq360C6dSourceSeparatedAmbientPrecision
+      (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
+      (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
+      OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
+    let c := cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+      (L := L ^ (depth + 1)) (N' := 2 * (K * Q)) (M := L)
+      (Mlarge := Mlarge) (Nc := Nc) (n := n) (depth := depth)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1)
+      (Omega := cmp99Eq360C6dSourceSeparatedAmbientRegion
+        (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource)
+      (OmegaPrime0 := OmegaPrime0)
+      R C hscale regions D hL halpha1 baselineRadiusBudget
+    let hc : 0 < c := cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+      (L := L ^ (depth + 1)) (N' := 2 * (K * Q)) (M := L)
+      (Mlarge := Mlarge) (Nc := Nc) (n := n) (depth := depth)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1)
+      (Omega := cmp99Eq360C6dSourceSeparatedAmbientRegion
+        (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource)
+      (OmegaPrime0 := OmegaPrime0)
+      R C hscale regions D hL halpha1 baselineRadiusBudget
+      hdepth R.eta_pos hsmall
+    let hA : IsCoerciveCLM A c :=
+      isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision
+        (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
+        (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+        (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+        (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
+        OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
+        hdepth hsmall
+    cmp99RegionalDirichletGreen OmegaSource
+        (cmp99ActiveRegionCanonicalAmbientCompletion OmegaSource
+          (cmp99RegionalDirichletPrecision OmegaSource A))
+        (lt_min hc zero_lt_one)
+        (isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion
+          OmegaSource (cmp99RegionalDirichletPrecision OmegaSource A)
+          (isCoerciveCLM_cmp99RegionalDirichletPrecision OmegaSource A hA)) =
+      cmp99Eq360C6dSourceSeparatedAmbientGreen
+        (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
+        (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+        (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+        (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
+        OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
+        hdepth hsmall := by
+  dsimp only
+  let A := cmp99Eq360C6dSourceSeparatedAmbientPrecision
+    (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
+    (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+    (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+    (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
+    OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
+  let c := cmp99Eq360C6dSourceBaselinePhysicalCoercivity
+    (L := L ^ (depth + 1)) (N' := 2 * (K * Q)) (M := L)
+    (Mlarge := Mlarge) (Nc := Nc) (n := n) (depth := depth)
+    (scaleExtent := scaleExtent) (S := S)
+    (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+    (alpha0 := alpha0) (alpha1 := alpha1)
+    (Omega := cmp99Eq360C6dSourceSeparatedAmbientRegion
+      (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource)
+    (OmegaPrime0 := OmegaPrime0)
+    R C hscale regions D hL halpha1 baselineRadiusBudget
+  have hc : 0 < c :=
+    cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+      (L := L ^ (depth + 1)) (N' := 2 * (K * Q)) (M := L)
+      (Mlarge := Mlarge) (Nc := Nc) (n := n) (depth := depth)
+      (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1)
+      (Omega := cmp99Eq360C6dSourceSeparatedAmbientRegion
+        (L := L) (K := K) (Q := Q) (depth := depth) OmegaSource)
+      (OmegaPrime0 := OmegaPrime0)
+      R C hscale regions D hL halpha1 baselineRadiusBudget
+      hdepth R.eta_pos hsmall
+  have hA : IsCoerciveCLM A c :=
+    isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision
+      (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
+      (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+      (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+      (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
+      OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
+      hdepth hsmall
+  calc
+    _ = cmp99RegionalDirichletGreen OmegaSource A hc hA :=
+      cmp99RegionalDirichletGreen_canonicalAmbientCompletion_compressed_eq
+        OmegaSource A hc hA
+    _ = cmp99Eq360C6dSourceSeparatedAmbientGreen
+        (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
+        (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+        (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+        (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
+        OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
+        hdepth hsmall :=
+      cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_ambient
+        (L := L) (K := K) (Q := Q) (Mlarge := Mlarge) (Nc := Nc)
+        (n := n) (depth := depth) (scaleExtent := scaleExtent) (S := S)
+        (scaleExtent_pos := scaleExtent_pos) (U := U) (eta := eta)
+        (alpha0 := alpha0) (alpha1 := alpha1) (OmegaPrime0 := OmegaPrime0)
+        OmegaSource R C hscale regions D hL halpha1 baselineRadiusBudget
+        hdepth hsmall
+
+/-- The same canonical carrier round trip at exact retained depth zero.
+This branch constructs the full-companion ambient precision, its coercivity
+floor and its regional Green internally; in particular, no equality between
+the positive-depth and zero-depth operators is assumed. -/
+theorem
+    cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq_zero
+    (OmegaZero : ActiveGaugeRegion 4
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)))
+    (regionsZero : CMP99SourceActiveRegionChain 4 L
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) OmegaZero 0)
+    (hLZero : 2 ≤ L)
+    {spacingZero epsilonZero : ℝ}
+    (backgroundZero : GaugeConfig 4
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)) (SUN Nc))
+    (chainZero : CMP99SourceUbarRadiusChain 4 L Nc 0 epsilonZero)
+    (fineSmallZero : ∀ e : ConcreteEdge 4
+      (cmp99SourceSeparatedLargeBlockSide L K 0 * (2 * Q)),
+      ‖(backgroundZero e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonZero)
+    (hspacingZero : 0 < spacingZero) :
+    let A := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+      (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+      regionsZero hLZero backgroundZero chainZero fineSmallZero
+    let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
+      (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+      regionsZero hLZero backgroundZero chainZero fineSmallZero
+    let hc : 0 < c := by
+      simpa [c, cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity] using
+        (cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
+          regionsZero (by norm_num) hLZero hspacingZero backgroundZero
+          chainZero fineSmallZero)
+    let hA : IsCoerciveCLM A c :=
+      isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+    cmp99RegionalDirichletGreen OmegaZero
+        (cmp99ActiveRegionCanonicalAmbientCompletion OmegaZero
+          (cmp99RegionalDirichletPrecision OmegaZero A))
+        (lt_min hc zero_lt_one)
+        (isCoerciveCLM_cmp99ActiveRegionCanonicalAmbientCompletion
+          OmegaZero (cmp99RegionalDirichletPrecision OmegaZero A)
+          (isCoerciveCLM_cmp99RegionalDirichletPrecision OmegaZero A hA)) =
+      cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+        hspacingZero := by
+  dsimp only
+  let A := cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+    (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+    regionsZero hLZero backgroundZero chainZero fineSmallZero
+  let c := cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity
+    (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+    regionsZero hLZero backgroundZero chainZero fineSmallZero
+  have hc : 0 < c := by
+    simpa [c, cmp99Eq360C6dSourceSeparatedZeroDepthCoercivity] using
+      (cmp99SourceActiveRegionFullCompanionCountingCoefficient_pos_zero
+        regionsZero (by norm_num) hLZero hspacingZero backgroundZero
+        chainZero fineSmallZero)
+  have hA : IsCoerciveCLM A c :=
+    isCoerciveCLM_cmp99Eq360C6dSourceSeparatedAmbientPrecision_zero
+      (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+      regionsZero hLZero backgroundZero chainZero fineSmallZero
+  calc
+    _ = cmp99RegionalDirichletGreen OmegaZero A hc hA :=
+      cmp99RegionalDirichletGreen_canonicalAmbientCompletion_compressed_eq
+        OmegaZero A hc hA
+    _ = cmp99Eq360C6dSourceSeparatedAmbientGreen_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+        hspacingZero :=
+      cmp99Eq360C6dSourceSeparatedRegionalDirichletGreen_eq_zero
+        (Nc := Nc) (OmegaSource := OmegaZero) (spacing := spacingZero)
+        regionsZero hLZero backgroundZero chainZero fineSmallZero
+        hspacingZero
+
+end
+
+end YangMills.RG

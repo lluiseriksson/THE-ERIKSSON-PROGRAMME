@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99Eq360C6dCanonicalAmbientCompletion
+
+namespace YangMills.RG
+
+#print axioms cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq
+#print axioms cmp99Eq360C6dSourceSeparatedCanonicalAmbientCompletion_green_eq_zero
+
+end YangMills.RG

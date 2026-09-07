@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareAbsorption
+
+open YangMills.RG
+
+#print axioms cmp99SourcePoincareEnergyCoeff_nonneg
+#print axioms cmp99SourcePoincareErrorCoeff_nonneg
+#print axioms CMP99SourceActiveRegionChain.terminalFieldNormSq
+#print axioms CMP99SourceActiveRegionChain.poincareBound_le_coefficients
+#print axioms CMP99SourceActiveRegionChain.norm_sq_le_absorbed_poincare
+#print axioms cmp99SourceIteratedLift_norm_sq_le_absorbed_poincare_of_closedBudget

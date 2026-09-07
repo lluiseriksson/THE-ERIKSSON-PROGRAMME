@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP89Eq248EntireFourierSymbols
+
+/-!
+# Axiom audit for the entire CMP89 Fourier symbols
+-/
+
+#print axioms YangMills.RG.cmp89Eq245EntireScaledDifference
+#print axioms YangMills.RG.differentiable_cmp89Eq245EntireScaledDifference
+#print axioms YangMills.RG.cmp89Eq245EntireScaledLaplacianSymbol
+#print axioms YangMills.RG.differentiable_cmp89Eq245EntireScaledLaplacianSymbol
+#print axioms YangMills.RG.cmp89Eq245EntireScaledDifference_neg_ofReal_eq_conj
+#print axioms YangMills.RG.cmp89Eq245EntireScaledLaplacianSymbol_ofReal_eq
+#print axioms YangMills.RG.cmp89Eq245EntireAveragePair
+#print axioms YangMills.RG.differentiable_cmp89Eq245EntireAveragePair
+#print axioms YangMills.RG.cmp89Eq245EntireAverageFactor_neg_ofReal_eq_conj
+#print axioms YangMills.RG.cmp89Eq245EntireAverageAmplitude_neg_ofReal_eq_conj
+#print axioms YangMills.RG.cmp89Eq245EntireAveragePair_ofReal_eq

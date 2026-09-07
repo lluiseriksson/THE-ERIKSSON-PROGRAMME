@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99StraightTransportEnergy
+
+#print axioms YangMills.RG.covariantPathEnergy_cmp99StraightPositivePath_succ
+#print axioms YangMills.RG.FinBox.sum_iterate_shift
+#print axioms YangMills.RG.sum_covariantPathEnergy_cmp99StraightPositivePath
+#print axioms YangMills.RG.sum_covariantPathEnergy_cmp99StraightPositivePath_all
+#print axioms YangMills.RG.norm_normalized_fintype_sum_sq_le
+#print axioms YangMills.RG.norm_cmp99SourceParallelAverageDefectValue_sq_le
+#print axioms YangMills.RG.sum_norm_cmp99SourceParallelAverageDefectValue_sq_le

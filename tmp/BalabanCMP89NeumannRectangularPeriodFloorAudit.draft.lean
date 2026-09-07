@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89NeumannRectangularPeriodFloor
+
+#print axioms YangMills.RG.cmp89NeumannReflectionPeriodNat_ge_scale_of_side_floor_draft

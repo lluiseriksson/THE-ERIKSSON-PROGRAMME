@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99Eq337ComplexClosedRadiusToPhysicalRadiusBudget
+
+#print axioms YangMills.RG.cmp99SourceUbarDeviationCoefficient_le_complexClosed
+#print axioms YangMills.RG.cmp99SourceUbarRadiusGrowthFactor_le_complexClosed
+#print axioms YangMills.RG.CMP99ComplexClosedRadiusBudget.toSourceUbarClosedBudget
+#print axioms YangMills.RG.CMP99ComplexClosedRadiusBudget.toSourceUbarRadiusChain

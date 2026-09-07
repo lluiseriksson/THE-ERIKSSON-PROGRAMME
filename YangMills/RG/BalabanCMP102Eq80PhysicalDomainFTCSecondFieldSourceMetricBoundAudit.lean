@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCSecondFieldSourceMetricBound
+
+#print axioms
+  YangMills.RG.norm_cmp102AffinePropagatorJetFTCSecondFieldDerivative_le
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalDomainFTCSecondFieldSourceMetricMajorant
+#print axioms
+  YangMills.RG.norm_cmp102Eq80PhysicalFineHeadTailDomainFTCContributionSecondFieldDerivative_le_sourceMetric
+#print axioms
+  YangMills.RG.abs_inner_cmp102Eq80PhysicalFineHeadTailDomainFTCRadialOperator_le_sourceMetric

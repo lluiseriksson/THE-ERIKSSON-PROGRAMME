@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89Eq251StabilizedBoundarySeam
+
+#print axioms YangMills.RG.cmp89Eq251FineSymbol_ne_zero_of_boundaryFace
+#print axioms YangMills.RG.cmp89Eq251DisplayedDomain_of_boundaryFace
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedIntegrand_boundarySeam

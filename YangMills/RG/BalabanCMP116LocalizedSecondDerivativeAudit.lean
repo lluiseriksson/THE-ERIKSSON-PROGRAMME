@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP116LocalizedSecondDerivative
+
+#print axioms YangMills.RG.cmp116MixedLineSecondDerivative
+#print axioms YangMills.RG.cmp116MixedLineSecondDerivative_eq_zero_of_innerDirection
+#print axioms YangMills.RG.cmp116MixedLineSecondDerivative_eq_zero_of_outerDirection
+#print axioms YangMills.RG.cmp116LocalizedQuadraticKernel
+#print axioms YangMills.RG.cmp116LocalizedQuadraticKernel_eq_zero_of_left_not_mem
+#print axioms YangMills.RG.cmp116LocalizedQuadraticKernel_eq_zero_of_right_not_mem
+#print axioms YangMills.RG.cmp116LocalizedQuadraticKernel_eq_zero_of_not_mem
+#print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.activityQuadraticKernel
+#print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.activityQuadraticKernel_eq_zero_of_not_mem

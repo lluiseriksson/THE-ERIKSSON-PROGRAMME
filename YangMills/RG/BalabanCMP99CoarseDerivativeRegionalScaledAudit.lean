@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99CoarseDerivativeRegionalScaled
+
+namespace YangMills.RG
+
+#print axioms norm_cmp99ActiveRegionSourceCovariantD0CLM_sq_eq
+#print axioms norm_scaledCovariantD0_cmp99SourceRegionalAverage_physicalUbar_sq_le
+
+end YangMills.RG

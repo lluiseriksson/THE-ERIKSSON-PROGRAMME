@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCConnectedDomainTotal
+
+#print axioms YangMills.RG.cmp116RealPhysicalContourRegion_update_uIcc
+#print axioms YangMills.RG.cmp116FixedHistoryFTCRecursion_eq_connectedDomainTotal
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FTCNondecoupledRemainder_eq_connectedDomainTotal

@@ -1,0 +1,18 @@
+import Mathlib
+
+/-! PRE-VALIDATION: isolated generic proof step; .olean not materialized,
+compiler verification pending. Run before the project draft in Colab. -/
+
+noncomputable section
+
+example {α β V : Type*} [Fintype α] [DecidableEq β] [AddCommMonoid V]
+    (p q : α → β) (target : α) (f : α → V)
+    (h : ∀ source, p target = p source ↔ q target = q source) :
+    (∑ source, if p target = p source then f source else 0) =
+      ∑ source, if q source = q target then f source else 0 := by
+  apply Finset.sum_congr rfl
+  intro source _
+  apply if_congr _ rfl rfl
+  exact (h source).trans eq_comm
+
+end

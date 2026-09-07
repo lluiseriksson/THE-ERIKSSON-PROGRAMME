@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedPhysicalPrecisionDictionary
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedDirichletPrecision_eq_reindexed_sourceGaugePrecision

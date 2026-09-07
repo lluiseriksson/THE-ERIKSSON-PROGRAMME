@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceUbarLocalDeviationBound
+
+
+#print axioms YangMills.RG.norm_gaugeConfig_apply_sub_one_le_of_positivePhysicalBond
+#print axioms YangMills.RG.norm_cmp99SourceBaseCoarseBackground_sub_one_le_of_readBonds
+#print axioms YangMills.RG.norm_cmp99SourceUbarDeviationLogArg_le_fineRadius_of_readBonds

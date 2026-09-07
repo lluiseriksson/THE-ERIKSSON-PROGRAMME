@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexGamma
+
+#print axioms YangMills.RG.cmp116SourcePi4ComplementBonds
+#print axioms YangMills.RG.mem_cmp116SourcePi4ComplementBonds_iff
+#print axioms YangMills.RG.cmp116SourcePi4ConstraintMatrix
+#print axioms YangMills.RG.cmp116SourcePi4ComplementProjectionMatrix
+#print axioms YangMills.RG.cmp116SourcePi4ReferenceRootMatrix
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexGammaMatrix
+#print axioms YangMills.RG.cmp116SourcePi4PhysicalBaseGammaMatrix
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR3Matrix
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexGammaMatrix_one_eq_physical
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR3Matrix_eq_neg_constraint_mul_R2

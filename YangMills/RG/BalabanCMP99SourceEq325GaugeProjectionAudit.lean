@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceEq325GaugeProjection
+
+#print axioms YangMills.RG.cmp99SourceEq325PhysicalGaugeComplement
+#print axioms YangMills.RG.cmp99SourceEq325PhysicalGaugeProjection
+#print axioms YangMills.RG.cmp99Eq325Complement_comp_self_of_middle_comp_inverse
+#print axioms YangMills.RG.cmp99Eq325Projection_comp_self_of_complement
+#print axioms YangMills.RG.cmp99Eq325_QG_comp_projection_eq_zero_of_middle_comp_inverse
+#print axioms YangMills.RG.cmp99Eq325Complement_isSymmetric_of_weightedAdjoint
+#print axioms YangMills.RG.cmp99Eq325Projection_isSymmetric_of_complement
+#print axioms YangMills.RG.cmp99SourceEq325PhysicalGaugeComplement_comp_self
+#print axioms YangMills.RG.cmp99SourceEq325PhysicalGaugeProjection_comp_self
+#print axioms YangMills.RG.cmp99SourceEq325PhysicalGaugeComplement_isSymmetric
+#print axioms YangMills.RG.cmp99SourceEq325PhysicalGaugeProjection_isSymmetric
+#print axioms YangMills.RG.cmp99SourceEq325_Qprime_comp_green_comp_projection_eq_zero

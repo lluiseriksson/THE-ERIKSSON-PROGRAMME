@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP98PhysicalLieRetraction
+
+#print axioms YangMills.RG.cmp98AmbientToSuLieLinearMap_apply_mem
+#print axioms YangMills.RG.cmp98AmbientToLieCoordCLM_leftInverse
+#print axioms YangMills.RG.cmp98LieCoordToAmbientCLM_rightInverse_projection

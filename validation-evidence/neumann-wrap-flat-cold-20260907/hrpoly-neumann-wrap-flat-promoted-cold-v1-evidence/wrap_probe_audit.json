@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannRectangleWrapProbeAudit.lean"], "cwd": "/content/hrpoly-neumann-wrap-flat-promoted-cold-v1", "exit": 0, "log_file": "wrap_probe_audit.log", "output_sha256": "73376e4b1fc956b25cd7b2e83e15635aa0615382b5807666fbb28c18230a4f0b", "seconds": 6.127038667000306, "stage": "wrap_probe_audit"}

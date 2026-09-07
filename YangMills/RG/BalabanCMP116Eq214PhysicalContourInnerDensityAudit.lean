@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq214PhysicalContourInnerDensity
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.innerWeight_mul_exp_interactionExponent_eq
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.innerCorrectionExponent_re_eq_realInnerCorrectionExponent
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_innerIntegrand_le_exp_realInnerCorrectionExponent

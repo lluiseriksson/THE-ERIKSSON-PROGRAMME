@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCombinedEq136
+
+#print axioms YangMills.RG.cmp109Lemma1IndexedSourceResidual
+#print axioms YangMills.RG.cmp102Eq80PhysicalIndexedContourResidual_combinedCenteredRegion
+#print axioms YangMills.RG.abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136

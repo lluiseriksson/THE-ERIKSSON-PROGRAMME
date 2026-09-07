@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedCountingMassRow
+
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.sum_norm_generatedCountingMass_single
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.sum_norm_generatedCountingMass_single_le
+#print axioms YangMills.RG.cmp99SourceIteratedLift_generatedCountingMass_weightedRow
+#print axioms YangMills.RG.cmp99SourceIteratedLift_QprimeMass_weightedRow

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP98Eq123LogBound
+
+#print axioms YangMills.RG.norm_cmp98ContourMatrixCurve_eq_one
+#print axioms YangMills.RG.norm_cmp98Eq123PhysicalProduct_sub_zero_le_sourceBudget
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearRelativeDeviation_le_sourceBudget
+#print axioms YangMills.RG.norm_cmp98Eq122NonlinearLogRemainder_le_sourceBudget

@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116Eq229CardMetric
+
+#print axioms YangMills.RG.cmp116Eq229CardMetric
+#print axioms YangMills.RG.cmp116Eq229CardMetric_union_le_sum
+#print axioms YangMills.RG.cmp116Eq229CardMetric_eq227
+#print axioms YangMills.RG.cmp116Eq229Weight_le_cardMetricWeight_of_eq230
+#print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_of_eq230_uniform
+#print axioms YangMills.RG.CMP116Eq229Summability.of_exactUnion_fourDimensional_eq230_uniform

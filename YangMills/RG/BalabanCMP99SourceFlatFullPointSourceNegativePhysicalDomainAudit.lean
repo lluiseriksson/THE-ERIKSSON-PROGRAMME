@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain
+
+#print axioms YangMills.RG.cmp99SourceFlatFullPointSourceSolutionDomain_neg_physical

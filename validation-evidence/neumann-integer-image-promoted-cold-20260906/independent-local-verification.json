@@ -1,0 +1,127 @@
+{
+  "cold": {
+    "audits": {
+      "reflection_audit": {
+        "YangMills.RG.neumannIntegerBlockOwner_image": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannIntegerBlockOwner_image_eq_iff": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannIntegerCountingIndicator_image": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannIntegerHalfCellOwner": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannIntegerReflectedOwner": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannIntegerReflectionImage_injective": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannIntegerTranslatedOwner": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "c9d01c283fc87c2e830df433d62a0e6a4296477db37ec43a31aff0b6390680ca",
+    "evidence_json_payload_sha256": "9e14e8aacb21cb95211fb54a993cd3b6aee5817dfe2a2474eb97cefbcc1cb384",
+    "production_outputs": {
+      "NeumannIntegerImageCountingKernel.olean": "90dde70abe364d63bb0f23ac516d2137631a5fbf497a292fc35c56e340e81a10"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannIntegerImageCountingKernel"
+        ],
+        "cwd": "/content/hrpoly-neumann-integer-image-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "reflection_focal.log",
+        "output_sha256": "7c12e23a2b67c21349fe0227ffc0ed1e4e86965c5491157f9678c779f328a4af",
+        "seconds": 57.093438462999984,
+        "stage": "reflection_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannIntegerImageCountingKernelAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-integer-image-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "reflection_audit.log",
+        "output_sha256": "1da1dc8f8fcaf6942ed75993572d6d1f1f3c577eb0fab1fdc7dcee2b9ead4404",
+        "seconds": 4.957650278000074,
+        "stage": "reflection_audit"
+      }
+    ],
+    "runner_rev": "neumann-integer-image-promoted-cold-v1",
+    "source_sha": "87edca6519df5b450b906e83db2ffa4fc1bd87bd",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "inner_sha256": "54e1a383ab8c393d5d3d449cbcf6a8596d534ed877b77430bc528fdafac5b2e3",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-integer-image-promoted-cold-v1-launch/verify_neumann_integer_image_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-integer-image-promoted-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "bdb7b6846a7c86384f2be474badfd62babdd83467d31ce4db3e8b548a2349526",
+      "seconds": 0.05272140700026284,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-integer-image-promoted-cold-v1-launch/colab_neumann_integer_image_promoted_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "5b7e1a049c34afca1716154d42f1b69e3b48fc1bf72b9aa384b0cb15508e6e8f",
+      "seconds": 224.1603474489998,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-integer-image-promoted-cold-v1-launch/verify_neumann_integer_image_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-integer-image-promoted-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-integer-image-promoted-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "54e1a383ab8c393d5d3d449cbcf6a8596d534ed877b77430bc528fdafac5b2e3"
+      ],
+      "exit": 0,
+      "log_sha256": "6bcac2d9c0c3462959280db75b7391071f717b51011567790240f4d885821d1a",
+      "seconds": 0.07676440499972159,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "f86b91ccc15ecdffae519b29fe35596ab2d6cf43fe6605f294a066e9297c94c3",
+  "scope": "intermediate integer image-owner-indicator; not physical Q intertwining, regional inverse or window15",
+  "source": "87edca6519df5b450b906e83db2ffa4fc1bd87bd",
+  "status": "PASS"
+}

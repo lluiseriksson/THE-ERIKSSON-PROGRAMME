@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102Eq80JointEvaluationSourceJetBound
+
+#print axioms YangMills.RG.norm_iteratedFDeriv_jointOperatorProjection_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_comp_jointSnd_le
+#print axioms
+  YangMills.RG.cmp102Eq80JointEvaluationJetMajorant_le_sourceJetMajorant
+#print axioms
+  YangMills.RG.cmp102Eq80JointRemainderRadius_of_sourceEvaluation

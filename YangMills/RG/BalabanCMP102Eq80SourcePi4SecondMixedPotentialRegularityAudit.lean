@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4SecondMixedPotentialRegularity
+
+#print axioms YangMills.RG.cmp116UpdateRealWeakening_unitShifted
+#print axioms YangMills.RG.cmp116UpdateRealWeakening_cap
+#print axioms YangMills.RG.contDiff_one_cmp102Eq80SourcePi4SecondMixedDirectionalCurve

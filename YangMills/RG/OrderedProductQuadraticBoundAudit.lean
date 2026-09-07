@@ -1,0 +1,5 @@
+import YangMills.RG.OrderedProductQuadraticBound
+
+#print axioms YangMills.RG.norm_orderedOnePlusProduct_le
+#print axioms YangMills.RG.norm_orderedOnePlusProduct_sub_one_le
+#print axioms YangMills.RG.norm_orderedOnePlusProduct_sub_one_sub_sum_le

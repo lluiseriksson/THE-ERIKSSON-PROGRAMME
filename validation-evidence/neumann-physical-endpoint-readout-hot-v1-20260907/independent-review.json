@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "cold_seal": false,
+  "source_sha": "ba2998c4f22707ed0f828c741ae6aa1efb924a36",
+  "overlay_source_sha": "5fa0ee8e5d0d268f7595cdc2ebc62d677b1d4f04",
+  "archive_sha256": "08c8518f5ef1037268e92038dc0cfef6b37baab0c827a169e44b4f7bc426116c",
+  "phase_repro_exit": 0,
+  "phase_repro_seconds": 5.119728532999943,
+  "prerequisite_exit": 0,
+  "prerequisite_seconds": 134.62159008300023,
+  "physical_readout_exit": 0,
+  "physical_readout_seconds": 7.863357983000242,
+  "exact_axiom_names": 3,
+  "reader_exit": 0,
+  "reader_seconds": 0.2107954,
+  "reader_observed_peak_rss": 17686528,
+  "scope": "two physical endpoints and alias precision readout; not physical inverse"
+}

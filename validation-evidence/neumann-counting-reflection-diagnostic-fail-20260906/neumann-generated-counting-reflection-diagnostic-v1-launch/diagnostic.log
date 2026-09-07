@@ -1,0 +1,237 @@
+TRANSPORT_OK=scripts/colab_cmp99_full_green_arbitrary_residue_cold.py SHA256=29a5ebd9cba53e5b2d98eecd7dfb90bbf0a52430d8995deaf623e769b6be2892
+BASE_RUNNER_SHA256=2f097a374361bd8e4c0f53220ffeeeb22fc06d6ccca5179aebda468d1aebee8e
+TRANSPORT_OK=scripts/full_green_owner_exact_axiom_gate.py SHA256=016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 rejected=9
+AXIOM_GATE=PASS {"test": ["Classical.choice", "Quot.sound", "propext"]}
+PREFLIGHT=PASS [{"expected_exit": 0, "actual_exit": 0, "seconds": 0.031331248000014966}, {"expected_exit": 7, "actual_exit": 7, "seconds": 0.030938709999986713}]
+RUNNER_REV=neumann-generated-counting-reflection-diagnostic-v1
+STAGE=runtime_open UTC=2026-09-05T19:47:37.484572+00:00
+RUNTIME=CPU RAM_GIB=50.99 MIN_RAM_GIB=40.00
+STAGE=download_toolchain CMD=["curl", "--fail", "--location", "--retry", "5", "--retry-all-errors", "--retry-delay", "2", "-o", "/content/lean-4.29.0-rc6-linux.tar.zst", "https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0  512M    0  591k    0     0  1917k      0  0:04:33 --:--:--  0:04:33 1917k 39  512M   39  204M    0     0   156M      0  0:00:03  0:00:01  0:00:02  204M 80  512M   80  411M    0     0   178M      0  0:00:02  0:00:02 --:--:--  205M100  512M  100  512M    0     0   184M      0  0:00:02  0:00:02 --:--:--  207M
+
+STAGE=download_toolchain EXIT=0 SECONDS=2.863
+TOOLCHAIN_ASSET_SHA256=bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+STAGE=apt_update CMD=["apt-get", "update", "-qq"]
+W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu jammy InRelease' does not seem to provide it (sources.list entry misspelt?)
+
+STAGE=apt_update EXIT=0 SECONDS=5.899
+STAGE=install_zstd CMD=["apt-get", "install", "-y", "-qq", "zstd"]
+Selecting previously unselected package zstd.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 118419 files and directories currently installed.)
+Preparing to unpack .../zstd_1.4.8+dfsg-3build1_amd64.deb ...
+Unpacking zstd (1.4.8+dfsg-3build1) ...
+Setting up zstd (1.4.8+dfsg-3build1) ...
+Processing triggers for man-db (2.10.2-1) ...
+
+STAGE=install_zstd EXIT=0 SECONDS=6.983
+STAGE=extract_toolchain CMD=["tar", "--use-compress-program=unzstd", "-xf", "/content/lean-4.29.0-rc6-linux.tar.zst", "-C", "/content/lean-4.29.0-rc6-linux"]
+
+STAGE=extract_toolchain EXIT=0 SECONDS=10.390
+STAGE=lean_version CMD=["lean", "--version"]
+Lean (version 4.29.0-rc6, x86_64-unknown-linux-gnu, commit 00659f8e6071d7e46131ed643bf8003b99b044e9, Release)
+
+STAGE=lean_version EXIT=0 SECONDS=0.062
+STAGE=lake_version CMD=["lake", "--version"]
+Lake version 5.0.0-src+00659f8 (Lean version 4.29.0-rc6)
+
+STAGE=lake_version EXIT=0 SECONDS=0.061
+LEAN_SHA256=3e0d0d3d801675359f2d4cf9815bfdb417b20b92fdd9d48b3b14c95bbae28bbf
+LAKE_SHA256=a608ff084d7e2af228b92a29d7c2fd083ba0580e46889175ec74a81678c98359
+STAGE=clone CMD=["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1"]
+Cloning into '/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1'...
+Updating files:  73% (5376/7334)Updating files:  74% (5428/7334)Updating files:  75% (5501/7334)Updating files:  76% (5574/7334)Updating files:  77% (5648/7334)Updating files:  78% (5721/7334)Updating files:  79% (5794/7334)Updating files:  80% (5868/7334)Updating files:  81% (5941/7334)Updating files:  82% (6014/7334)Updating files:  83% (6088/7334)Updating files:  84% (6161/7334)Updating files:  85% (6234/7334)Updating files:  86% (6308/7334)Updating files:  87% (6381/7334)Updating files:  88% (6454/7334)Updating files:  89% (6528/7334)Updating files:  90% (6601/7334)Updating files:  91% (6674/7334)Updating files:  92% (6748/7334)Updating files:  93% (6821/7334)Updating files:  94% (6894/7334)Updating files:  95% (6968/7334)Updating files:  96% (7041/7334)Updating files:  97% (7114/7334)Updating files:  98% (7188/7334)Updating files:  99% (7261/7334)Updating files: 100% (7334/7334)Updating files: 100% (7334/7334), done.
+
+STAGE=clone EXIT=0 SECONDS=14.065
+STAGE=checkout CMD=["git", "checkout", "--detach", "dc00d3fe4a583da601820605a98644e1fbc0245d"]
+HEAD is now at dc00d3fe4 81260f49 PRE-VALIDATION: literal full counting-mass reflection draft and minimal repro
+
+STAGE=checkout EXIT=0 SECONDS=1.237
+STAGE=head CMD=["git", "rev-parse", "HEAD"]
+dc00d3fe4a583da601820605a98644e1fbc0245d
+
+STAGE=head EXIT=0 SECONDS=0.002
+SOURCE_BLOB=tmp/NeumannGeneratedCountingMassReflectionRepro.lean SHA256=4af89b1e7ca169aded4bb22e395d7d6dc291f5dffba44ee0c7328444013eaa4a
+SOURCE_BLOB=tmp/NeumannGeneratedCountingMassReflectionDraft.lean SHA256=2cd7378c983dfb2f08da54fe4d3c9ce333b0a630f05630c52bf52e66586e3aed
+STAGE=overlay_text_guard CMD=["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1-paths.txt"]
+LEAN_OVERLAY_TEXT_OK files=2 source=paths:/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1-paths.txt
+
+STAGE=overlay_text_guard EXIT=0 SECONDS=0.058
+STAGE=import_prefix_guard CMD=["python3", "scripts/check_lean_import_prefix.py", "tmp/NeumannGeneratedCountingMassReflectionRepro.lean", "tmp/NeumannGeneratedCountingMassReflectionDraft.lean"]
+LEAN_IMPORT_PREFIX_OK files=2
+
+STAGE=import_prefix_guard EXIT=0 SECONDS=0.046
+STAGE=lake_update CMD=["lake", "update"]
+--     0
+100 1125k  100 1125k    0     0  4593k      0 --:--:-- --:--:-- --:--:-- 4593k
+
+installing leantar 0.1.16
+Fetching ProofWidgets cloud release... done!
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+Attempting to download 8142 file(s) from leanprover-community/mathlib4 cache
+Downloaded: 1 file(s) [attempted 1/8142 = 0%, 7 KB/s], Decompressed: 0[KDownloaded: 101 file(s) [attempted 101/8142 = 1%, 144 KB/s], Decompressed: 33[KDownloaded: 216 file(s) [attempted 216/8142 = 2%, 323 KB/s], Decompressed: 33[KDownloaded: 337 file(s) [attempted 337/8142 = 4%, 810 KB/s], Decompressed: 94[KDownloaded: 462 file(s) [attempted 462/8142 = 5%, 1259 KB/s], Decompressed: 94[KDownloaded: 593 file(s) [attempted 593/8142 = 7%, 5422 KB/s], Decompressed: 94[KDownloaded: 723 file(s) [attempted 723/8142 = 8%, 1480 KB/s], Decompressed: 94[KDownloaded: 847 file(s) [attempted 847/8142 = 10%, 130 KB/s], Decompressed: 94[KDownloaded: 979 file(s) [attempted 979/8142 = 12%, 2782 KB/s], Decompressed: 94[KDownloaded: 1111 file(s) [attempted 1111/8142 = 13%, 336 KB/s], Decompressed: 94[KDownloaded: 1232 file(s) [attempted 1232/8142 = 15%, 1824 KB/s], Decompressed: 94[KDownloaded: 1368 file(s) [attempted 1368/8142 = 16%, 1698 KB/s], Decompressed: 319[KDownloaded: 1489 file(s) [attempted 1489/8142 = 18%, 637 KB/s], Decompressed: 319[KDownloaded: 1620 file(s) [attempted 1620/8142 = 19%, 456 KB/s], Decompressed: 319[KDownloaded: 1746 file(s) [attempted 1746/8142 = 21%, 91 KB/s], Decompressed: 319[KDownloaded: 1863 file(s) [attempted 1863/8142 = 22%, 362 KB/s], Decompressed: 319[KDownloaded: 1988 file(s) [attempted 1988/8142 = 24%, 65 KB/s], Decompressed: 319[KDownloaded: 2117 file(s) [attempted 2117/8142 = 26%, 1365 KB/s], Decompressed: 319[KDownloaded: 2248 file(s) [attempted 2248/8142 = 27%, 918 KB/s], Decompressed: 319[KDownloaded: 2380 file(s) [attempted 2380/8142 = 29%, 82 KB/s], Decompressed: 319[KDownloaded: 2512 file(s) [attempted 2512/8142 = 30%, 2006 KB/s], Decompressed: 319[KDownloaded: 2633 file(s) [attempted 2633/8142 = 32%, 868 KB/s], Decompressed: 319[KDownloaded: 2765 file(s) [attempted 2765/8142 = 33%, 1554 KB/s], Decompressed: 319[KDownloaded: 2897 file(s) [attempted 2897/8142 = 35%, 1079 KB/s], Decompressed: 319[KDownloaded: 3025 file(s) [attempted 3025/8142 = 37%, 2231 KB/s], Decompressed: 319[KDownloaded: 3158 file(s) [attempted 3158/8142 = 38%, 385 KB/s], Decompressed: 319[KDownloaded: 3288 file(s) [attempted 3288/8142 = 40%, 4355 KB/s], Decompressed: 319[KDownloaded: 3420 file(s) [attempted 3420/8142 = 42%, 431 KB/s], Decompressed: 319[KDownloaded: 3555 file(s) [attempted 3555/8142 = 43%, 173 KB/s], Decompressed: 319[KDownloaded: 3687 file(s) [attempted 3687/8142 = 45%, 432 KB/s], Decompressed: 319[KDownloaded: 3816 file(s) [attempted 3816/8142 = 46%, 1706 KB/s], Decompressed: 319[KDownloaded: 3944 file(s) [attempted 3944/8142 = 48%, 786 KB/s], Decompressed: 319[KDownloaded: 4079 file(s) [attempted 4079/8142 = 50%, 1591 KB/s], Decompressed: 319[KDownloaded: 4210 file(s) [attempted 4210/8142 = 51%, 1710 KB/s], Decompressed: 319[KDownloaded: 4339 file(s) [attempted 4339/8142 = 53%, 753 KB/s], Decompressed: 319[KDownloaded: 4460 file(s) [attempted 4460/8142 = 54%, 242 KB/s], Decompressed: 319[KDownloaded: 4599 file(s) [attempted 4599/8142 = 56%, 2124 KB/s], Decompressed: 319[KDownloaded: 4727 file(s) [attempted 4727/8142 = 58%, 1723 KB/s], Decompressed: 319[KDownloaded: 4866 file(s) [attempted 4866/8142 = 59%, 1633 KB/s], Decompressed: 319[KDownloaded: 4998 file(s) [attempted 4998/8142 = 61%, 2331 KB/s], Decompressed: 319[KDownloaded: 5130 file(s) [attempted 5130/8142 = 63%, 2189 KB/s], Decompressed: 319[KDownloaded: 5261 file(s) [attempted 5261/8142 = 64%, 148 KB/s], Decompressed: 319[KDownloaded: 5397 file(s) [attempted 5397/8142 = 66%, 623 KB/s], Decompressed: 319[KDownloaded: 5521 file(s) [attempted 5521/8142 = 67%, 1815 KB/s], Decompressed: 319[KDownloaded: 5661 file(s) [attempted 5661/8142 = 69%, 434 KB/s], Decompressed: 319[KDownloaded: 5792 file(s) [attempted 5792/8142 = 71%, 302 KB/s], Decompressed: 319[KDownloaded: 5924 file(s) [attempted 5924/8142 = 72%, 3667 KB/s], Decompressed: 1340[KDownloaded: 6052 file(s) [attempted 6052/8142 = 74%, 886 KB/s], Decompressed: 1340[KDownloaded: 6173 file(s) [attempted 6173/8142 = 75%, 2071 KB/s], Decompressed: 1340[KDownloaded: 6308 file(s) [attempted 6308/8142 = 77%, 1669 KB/s], Decompressed: 1340[KDownloaded: 6371 file(s) [attempted 6371/8142 = 78%, 1249 KB/s], Decompressed: 1340[KDownloaded: 6516 file(s) [attempted 6516/8142 = 80%, 3290 KB/s], Decompressed: 1340[KDownloaded: 6644 file(s) [attempted 6644/8142 = 81%, 339 KB/s], Decompressed: 1340[KDownloaded: 6783 file(s) [attempted 6783/8142 = 83%, 469 KB/s], Decompressed: 1340[KDownloaded: 6915 file(s) [attempted 6915/8142 = 84%, 1087 KB/s], Decompressed: 1340[KDownloaded: 7050 file(s) [attempted 7050/8142 = 86%, 1742 KB/s], Decompressed: 1340[KDownloaded: 7186 file(s) [attempted 7186/8142 = 88%, 1049 KB/s], Decompressed: 1340[KDownloaded: 7324 file(s) [attempted 7324/8142 = 89%, 419 KB/s], Decompressed: 1340[KDownloaded: 7455 file(s) [attempted 7455/8142 = 91%, 40 KB/s], Decompressed: 1340[KDownloaded: 7588 file(s) [attempted 7588/8142 = 93%, 2649 KB/s], Decompressed: 1340[KDownloaded: 7716 file(s) [attempted 7716/8142 = 94%, 1798 KB/s], Decompressed: 1340[KDownloaded: 7851 file(s) [attempted 7851/8142 = 96%, 402 KB/s], Decompressed: 1340[KDownloaded: 7980 file(s) [attempted 7980/8142 = 98%, 329 KB/s], Decompressed: 1340[KDownloaded: 8111 file(s) [attempted 8111/8142 = 99%, 496 KB/s], Decompressed: 1340[KDownloaded: 8139 file(s) [attempted 8139/8142 = 99%, 1431 KB/s], Decompressed: 1340[KDownloaded: 8142 file(s) [attempted 8142/8142 = 100%, 1431 KB/s], Decompressed: 1340[K
+Decompressed 8142 file(s)
+Already decompressed 8142 file(s)
+
+STAGE=lake_update EXIT=0 SECONDS=104.632
+STAGE=mathlib_pin CMD=["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"]
+07642720480157414db592fa85b626dafb71355b
+
+STAGE=mathlib_pin EXIT=0 SECONDS=0.007
+STAGE=cache_get CMD=["lake", "exe", "cache", "get"]
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Already decompressed 8142 file(s)
+
+STAGE=cache_get EXIT=0 SECONDS=7.138
+STAGE=geometry_leaf CMD=["lake", "build", "YangMills.RG.NeumannHalfCellBlockReflection"]
+✔ [8158/8160] Built YangMills.L0_Lattice.FiniteLattice (39s)
+✔ [8159/8160] Built YangMills.RG.BlockLattice (7.1s)
+✔ [8160/8160] Built YangMills.RG.NeumannHalfCellBlockReflection (5.9s)
+Build completed successfully (8160 jobs).
+
+STAGE=geometry_leaf EXIT=0 SECONDS=60.747
+STAGE=counting_reflection_repro CMD=["lake", "env", "lean", "-o", "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1-evidence/NeumannGeneratedCountingMassReflectionRepro.olean", "tmp/NeumannGeneratedCountingMassReflectionRepro.lean"]
+'YangMills.RG.neumannCountingReflection_cast_repro' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannCountingReflection_if_repro' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STAGE=counting_reflection_repro EXIT=0 SECONDS=6.915
+AXIOM_GATE=PASS {"YangMills.RG.neumannCountingReflection_cast_repro": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.neumannCountingReflection_if_repro": ["Classical.choice", "Quot.sound", "propext"]}
+STAGE=physical_prerequisites CMD=["lake", "build", "YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse", "YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanion"]
+: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:44:8: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99GeneratedTerminalBlockSite_zero`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:53:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99GeneratedTerminalBlockSite_succ`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:69:0: automatically included section variable(s) unused in theorem `YangMills.RG.finBoxDist_le_of_same_generatedTerminalBlock`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:129:8: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.sameTerminalBlock_stop`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:136:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.sameTerminalBlock_step`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:151:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.sameTerminalBlock_cast`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:163:0: automatically included section variable(s) unused in theorem `YangMills.RG.activeGaugeRegionSite_cast_val`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:180:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99SourceTransportedBlockAverageCLM_single`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedMassRange.lean:340:8: This simp argument is unused:
+  CMP99SourceActiveRegionChain.sameTerminalBlock_stop
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp99SourceIteratedLiftActiveRegionChain.eq_def,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵M̵P̵9̵9̵S̵o̵u̵r̵c̵e̵A̵c̵t̵i̵v̵e̵R̵e̵g̵i̵o̵n̵C̵h̵a̵i̵n̵.̵s̵a̵m̵e̵T̵e̵r̵m̵i̵n̵a̵l̵B̵l̵o̵c̵k̵_̵s̵t̵o̵p̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8480/8486] Built YangMills.RG.BalabanCMP99SourceGeneratedWeightedAdjointRange (340s)
+⚠ [8481/8486] Built YangMills.RG.BalabanCMP99SourceGeneratedQprimeRowMass (12s)
+warning: YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMass.lean:47:0: automatically included section variable(s) unused in theorem `YangMills.RG.sum_norm_cmp99SourceTransportedBlockAverageCLM_single`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMass.lean:206:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedQprimeRowMass.lean:289:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.sum_norm_physicalQprime_single_le`:
+  [NeZero N]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero N] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8482/8486] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeRecursion (11s)
+✔ [8483/8486] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeAdjointDictionary (14s)
+✔ [8484/8486] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeTerminalOwner (8.8s)
+✔ [8485/8486] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeDirectOwnerKernel (9.6s)
+✔ [8486/8486] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse (8.5s)
+Build completed successfully (8486 jobs).
+
+STAGE=physical_prerequisites EXIT=0 SECONDS=1840.632
+STAGE=counting_reflection_draft CMD=["lake", "env", "lean", "-o", "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1-evidence/NeumannGeneratedCountingMassReflectionDraft.olean", "tmp/NeumannGeneratedCountingMassReflectionDraft.lean"]
+tmp/NeumannGeneratedCountingMassReflectionDraft.lean:34:46: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  @Membership.mem (FinBox ?m.43 (?m.44 * ?m.45)) (Finset (FinBox ?m.43 (?m.44 * ?m.45))) SetLike.instMembership
+    (cmp99LiftActiveRegion ?OmegaCoarse).sites ?x
+in the target expression
+  @Membership.mem (FinBox d (cmp99RegionalLatticeSize M N (depth + 1)))
+    (Finset (FinBox d (cmp99RegionalLatticeSize M N (depth + 1)))) SetLike.instMembership
+    (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion (cmp99SourceFullActiveRegion d N) depth)).sites x
+
+case succ
+d M N : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero M
+inst✝ : NeZero N
+depth : ℕ
+ih :
+  ∀ (x : FinBox d (cmp99RegionalLatticeSize M N depth)),
+    x ∈ (cmp99IteratedLiftActiveRegion (cmp99SourceFullActiveRegion d N) depth).sites
+x : FinBox d (cmp99RegionalLatticeSize M N (depth + 1))
+⊢ x ∈ (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion (cmp99SourceFullActiveRegion d N) depth)).sites
+tmp/NeumannGeneratedCountingMassReflectionDraft.lean:55:8: warning: automatically included section variable(s) unused in theorem `_private.tmp.NeumannGeneratedCountingMassReflectionDraft.0.YangMills.RG.finBoxCast_reflection`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'YangMills.RG.neumannGeneratedFullSiteReflectionDraft_involutive' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedTerminalOwner_reflection_draft' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannGeneratedFullCountingMass_reflection_draft' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+
+STAGE=counting_reflection_draft EXIT=1 SECONDS=13.836
+ERROR=RuntimeError('FIRST_ERROR=counting_reflection_draft')
+Traceback (most recent call last):
+  File "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/eef777d32878297d9e143cbfaff82c290fbb9be1/scripts/colab_qprime_row_validation.py", line 272, in main
+  File "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/ddf6fdc1882edddbf063389aab4d455a8ed30801/scripts/colab_cmp99_full_green_arbitrary_residue_cold.py", line 124, in run
+RuntimeError: FIRST_ERROR=counting_reflection_draft
+EVIDENCE_SHA256=f322fbddb469f6ca6afb15d2a67e40d5155b147e79f1cfeb5abe59cf1b9cae82
+EVIDENCE_ARCHIVE=/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v1-evidence.tar.gz
+EVIDENCE_ARCHIVE_SHA256=cae59efad28b957bd27df86316b06d3a6ae4b46ee5815cfe9c3c66ba841dd0de
+FINAL_STATUS=FAIL
+RUNTIME_RETAINED_FOR_BOUNDED_HOT_REPAIR_AND_EVIDENCE=1
+RUNTIME_UNASSIGN_REQUESTED=1

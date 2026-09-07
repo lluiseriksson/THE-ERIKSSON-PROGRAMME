@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalCorrectionChartIndependence
+
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionField_apply_chart_independent
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionField_chart_independent
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionOfBudget_independent

@@ -1,0 +1,22 @@
+import YangMills.RG.BalabanCMP89Eq246FinePointSourceHolomorphy
+
+/-!
+# Audit of CMP89 (2.46) fine-point holomorphy and inverse transform
+
+Cold compiler evidence for exact source checkpoint
+`147e2e2197d57f8f5bc3bb85ebccb0bbaa7f8e06` is recorded in Verification
+Ledger Addendum 1012.
+-/
+
+#print axioms YangMills.RG.differentiable_cmp89Eq246FinePointSourceAliasVector_component
+#print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedAliasNoncentralPointSourceMoment
+#print axioms YangMills.RG.cmp89Eq246StabilizedFinePointSourceSolutionMoment
+#print axioms YangMills.RG.cmp89Eq246StabilizedFinePointSourceSolutionMoment_eq
+#print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedFinePointSourceSolutionMoment
+#print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedFinePointSourceSolution_component
+#print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedFineToFineGreenIntegrand
+#print axioms YangMills.RG.differentiableAt_cmp89Eq246StabilizedFineToFineGreenIntegrand_of_commonRadius
+#print axioms YangMills.RG.integrable_cmp89Eq246PhysicalFineToFineGreenIntegrand_real
+#print axioms YangMills.RG.integral_cmp89Eq246FinePointSourceFibreEquation_of_commonRadius
+#print axioms YangMills.RG.cmp89Eq246NormalizedPhysicalFineToFineGreen
+#print axioms YangMills.RG.cmp89Eq246NormalizedPhysicalFineToFineGreen_eq

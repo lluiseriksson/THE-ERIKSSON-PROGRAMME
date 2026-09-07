@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP89Eq251FineLatticeStabilizedEndpointProductContourTelescope
+
+/-!
+# Cold-sealed audit: fine-lattice endpoint product telescope
+-/
+
+#print axioms YangMills.RG.cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand
+#print axioms YangMills.RG.integrable_cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand
+#print axioms YangMills.RG.integral_cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand_stage_succ
+#print axioms YangMills.RG.integral_cmp89Eq251FineLatticeStabilizedEndpointPartialProductIntegrand_zero_eq_four
+#print axioms YangMills.RG.integral_cmp89Eq251ComplexStabilizedEndpointIntegrand_zero_physicalFine_eq_signed
