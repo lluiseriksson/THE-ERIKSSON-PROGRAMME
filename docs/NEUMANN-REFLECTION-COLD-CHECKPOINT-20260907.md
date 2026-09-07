@@ -29,8 +29,11 @@ Queue: explicit ReflectionOrbitAlgebra build, unchanged orbit repro (120 s),
 clean-source check. This is NOT a production seal and does not recompile the
 physical reflection prefix. Launched once on 2026-09-07T04:04:29.153909+00:00,
 Colab tab24, CPU/high RAM 50.99 GiB, account lluiseriksson@gmail.com,
-diagnostic child PID5068. Transport hash gate PASS. Notebook checkpoint
-c642d4612cb0d511febc5b351581272b14234e88. No terminal verdict yet.
+diagnostic child PID5068. PASS and locally preserved in Addendum1198.
+Notebook checkpointc642d4612cb0d511febc5b351581272b14234e88.
+Subsequent HOT image permutation PID8601 also PASS, independently preserved
+in Addendum1199. Runtime49f4f5497f3f retained for the next bounded image-series
+reindexing step; no scientific process currently active. Never rerun old cells.
 Log: /content/orbit-diagnostic-v2-launch/diagnostic.log.
 Final preservation: /content/orbit-diagnostic-v2-preservation-20260907.tar.gz.
 Do not reexecute the cell. The old tab23 has no live runtime.

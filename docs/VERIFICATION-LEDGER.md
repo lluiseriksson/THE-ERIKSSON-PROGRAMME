@@ -48320,3 +48320,19 @@ Diagnostic only: no production PRE removal or regional seam claim.
 Original source stays fixed under (k,b)->(c-k,!b); next gate lifts this
 permutation to a chosen coordinate of the multidimensional image index.
 20/41,TermSource=0,window15 not attained.
+
+## Addendum 1199 — multidimensional fixed-source image permutation HOT (2026-09-07)
+
+Source7f7c6915a691d1b97bc53cfd695a978874e40a8e; runner64292f29e,
+runner blob ce37b29b4ade2a3ae6abc2efad975b244e65422ba78c2220eb1beaf4827c652a.
+Same retained Colab checkout from1198; no new bootstrap or restored graph.
+Image-index proof exit0 in5.334033s, two {propext,Quot.sound} declarations.
+Seven exact command/log records and the independently verified parent archive
+checked locally;0.111015s,17723392bytes observed RSS. Five corruptions rejected.
+Archive684302b7267d246c5d2594ae345f734fb537cadc4f091732f430e41f60dd1e9d;
+output46af4d92a85dc749828526631a7072832b2dc116b091784085451215e2b8dba4.
+Durable:validation-evidence/neumann-boundary-image-hot-v1-20260907.
+Source n remains fixed in all dimensions; translation and parity move only
+in the selected coordinate. General integer c gives boundary c*m_mu.
+This is HOT algebra, not yet the physical seam or regional inverse.
+No production PRE retirement,20/41,TermSource=0,window15 not attained.
