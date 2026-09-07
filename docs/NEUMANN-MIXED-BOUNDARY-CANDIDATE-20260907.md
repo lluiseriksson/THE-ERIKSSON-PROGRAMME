@@ -3,11 +3,10 @@
 STATIC DESIGN ONLY. No new compiler result, source equation verification,
 physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
-## Current frontier after Addenda1203–1204
+## Current frontier after Addenda1203–1208
 
 The all-reflecting image seam is now cold-sealed in1203. Periodic endpoint
-transfer is separately HOT verified in1204; its exact production promotion
-24dc691e4 is under a cold gate. Neither result supplies mixed coverage.
+transfer is cold-sealed in1205 on24dc691e4. Neither result supplies mixed coverage.
 
 The next bounded draft tmp/NeumannPhysicalPeriodicSeriesDraft.lean reindexes
 the one-branch periodic series by an integer translation equivalence. Its
@@ -43,13 +42,18 @@ necessary for quantitative regional estimates. For mixed branches the same
 argument requires injection separately within each fixed allowed branch;
 FULL directions must still have only their single branch.
 
-The convergence route is now written, not compiled, in
+The convergence route is now HOT compiled (Addendum1208), not cold-sealed, in
 tmp/NeumannPhysicalPeriodicSummabilityDraft.lean: injection, generic decay
 composition and literal mass-uniform physical specialization. The period
 may be any nonzero integer for convergence; ONLY the separate covariance
 law requires block alignment. These different hypotheses are intentional.
 The source windows remain verbatim. No quantitative total-mass bound is
-installed by the draft. Text guard only; PRE-VALIDATION retained.
+installed by the draft. PRE-VALIDATION retained until exact promotion/cold gate.
+The periodic series draft also passed HOT: two series declarations and three
+convergence declarations, with the exact allowed trios. Archive7bf052a0e1117bb525e4633dc0fe07eee918ed1a660f208b22c2ef313e33209e
+independently verified together with its cold parent. V1/v2 instrument failures
+remain in1206/1207, not erased. Next: promote these exact proofs and audit,
+then one cold focal gate; mixed M1/M2 and full point-source action remain open.
 
 The historical paragraphs below record the earlier design audit. M3 is no
 longer wholly open: the literal full Green common block translation and

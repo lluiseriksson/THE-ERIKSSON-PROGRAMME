@@ -48485,3 +48485,23 @@ the bytecode packaging defect is closed. V3 sets the documented Lean
 `--root=OUT` option only for .olean-producing invocations and uses a new OUT.
 Lean --help checked in Colab,exit0. Source, targets, hypotheses and axiom
 gates unchanged. 20/41,TermSource=0,window15 not attained; no PRE retirement.
+
+## Addendum 1208 — periodic image series and convergence HOT PASS (2026-09-07)
+
+Source0bdb056bad23b77adda9d6b13a4917386836e174; retained cold checkout
+24dc691e451ab9b6684f950a3fdd5a78e913997f. V3 runner68e2fe1b8,
+hash2c438d97b0202d2b880e4b44292597e7cd4721cefe4c33bbfeedb7d328f92c0f.
+Eight exact records, all exit0: repro2.722895s; prerequisite5.630910s;
+series7.740668s; summability10.500458s. Five exact allowed-trio declarations.
+Source/manifest unchanged before/after. HOT only; no cold seal inherited.
+Archive71170bytes 7bf052a0e1117bb525e4633dc0fe07eee918ed1a660f208b22c2ef313e33209e
+downloaded automatically, independently verified with cold parent recursively,
+and preserved under validation-evidence/neumann-periodic-series-hot-v3-20260907.
+Reader exit0/0.124518s/17100800bytes observed RSS; no local compiler.
+Series output1c378f0587ac5fd2977df52ed56ad5a9443c9888f412cd6777d5f5de362371ed;
+summability outputdadbc72e56a97e16406ec7d6e690df1f1d0e56288f1a4a43f703a0e825f01e00.
+Physical periodic endpoint tsum transfer and nonzero-period source-image
+summability now have HOT evidence. The physical decay/source windows remain;
+no uniform sum budget, mixed coverage, regional inverse, B0 or window15 follows.
+PRE stays until exact production promotion passes its cold gate.
+20/41,TermSource=0 unchanged. Runtime disconnected/deleted after preservation.
