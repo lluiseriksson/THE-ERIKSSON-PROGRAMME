@@ -163,6 +163,20 @@ The live directional-mask cold gate and its prepared HOT composition are
 unchanged. This note refines the already open full/proper-side design gate;
 it is not permission to replace the existing source kernel silently.
 
+### Scoped point-source distinction checked during the FULL diagnostic
+
+`cmp99SourceFlatFullComplexPrecisionPointSourceSolution_eq_inverse_apply`
+is already cold-sealed (ledger1019), but its field is on
+`FinBox d (M*N')` and its inverse premise concerns that SAME finite-periodic
+precision. It is not an inverse law for the infinite-lattice integral kernel
+`cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a` used by the current
+image summability theorem. The latter has two endpoints in `Fin 4 -> Int`
+and retains the mass/strip windows. Reusing the finite theorem requires a
+proved dictionary/periodization; the shared label '(2.46)' is not that proof.
+This static type check does not reopen ledger1019 or claim a new no-go. It
+keeps the full-lattice point-source obligation in M4 visible and prevents
+mistaking the existing finite-periodic uniqueness theorem for its producer.
+
 ## What the inspected tree fixes
 
 NeumannRectangleDirectionalMasks keeps the original hypotheses 0<m_mu<=N.
