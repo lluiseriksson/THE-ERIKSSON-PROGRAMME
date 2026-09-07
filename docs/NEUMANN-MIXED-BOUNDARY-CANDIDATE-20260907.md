@@ -129,6 +129,49 @@ actual wrap bond or shrink a region to make strict fit true.
 
 ## Finite proof obligations before adoption
 
+### M1/M2 implementation boundary inspected during the periodic cold gate
+
+Static reading of NeumannImageIntervalCoverage and
+NeumannImageRectangleCoverage confirms that their coverage varies the
+original point as well as translation and branch. For a FIXED source the
+required consequence is injectivity, not surjectivity onto the lattice.
+Keep these two signatures separate in the mixed replacement.
+
+The missing FULL-coordinate primitive has exact map
+`(k,n) -> n + P*k`, with `n : neumannImageIntervalPoint P` and `0<P`.
+Its proposed inverse is `(u/P, u%P)` using Euclidean integer division,
+including negative u. There is no Bool in this coordinate. The PROPER
+primitive can reuse `neumannImageIntervalFamily_bijective` verbatim at
+side h. Coordinatewise assembly should first use a dependent index whose
+FULL branch is a singleton, and only then prove equivalence with the
+global proof-carrying Bool-vector presentation. Do not supply both Bool
+values and subsequently divide the sum by two.
+
+This yields a finite next proof queue: FULL quotient/remainder bijection;
+mixed coordinatewise equivalence and literal-image formula; fixed-source
+injectivity; branch-count bound; owner intertwiner. The branch bound is
+at most `2^d` (16 in dimension four), independent of all side lengths.
+No item in this paragraph is newly compiler-verified.
+
+The independent first-coordinate draft is now written at
+`tmp/NeumannPeriodicIntervalCoverageDraft.lean`: quotient, remainder,
+injectivity, surjectivity, bijectivity and the FULL owner identity, with
+six explicit audit names. It imports the cold-sealed interval coverage,
+not the currently pending physical series. Overlay textual guard passed
+in 0.095257s (15,376,384 bytes observed peak RSS); import-prefix guard
+passed in 0.0832739s (15,097,856 bytes). These are textual checks only;
+no Lean was run locally and the live cold queue was not altered.
+
+For M2 the FULL owner identity is exactly
+`(n + B*(k*N))/B = n/B + k*N`, with `0<B`.
+The inspected existing proof `neumannIntegerTranslatedOwner` already uses
+`Int.add_mul_ediv_left` for the analogous PROPER shift. Reuse that integer
+division mechanism and the existing reflected-owner theorem; do not add
+a new counting coefficient or confuse ambient period B*N with owner
+divisor B. The coefficient in `neumannIntegerCountingIndicator_image`
+stays unchanged, and its generated-operator identification remains a
+separate physical obligation.
+
 First determine whether the actual physical carrier producer guarantees
 proper sides. If it does, prove that fact from its geometry and use the
 existing all-reflecting route on that justified domain. M1-M4 below are
