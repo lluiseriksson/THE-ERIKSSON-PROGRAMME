@@ -48302,3 +48302,21 @@ Runtime f33828f71ae2 disconnected/deleted after preservation, approximately
 03:56 UTC (opened 01:47:24 UTC; about 129 minutes connected).
 Regional image equation, fixed-source seam, B0 and window15 remain open.
 Counters unchanged: 20/41; TermSource=0.
+
+## Addendum 1198 — fixed-source orbit diagnostic PASS (2026-09-07)
+
+Unchanged source108f30f954e3d807f16c4264fac56f4814c65ea4; runner3f9e88f70,
+notebookc642d4612. The v1 missing-prerequisite FAIL in1197 is preserved.
+V2 built the named OrbitAlgebra dependency explicitly:3285jobs,62.155874s.
+Orbit proof exit0 in5.083471s; two exact {propext,Quot.sound} declarations.
+Entire diagnostic278.097779s; independent Colab reader exit0 in0.175096s.
+Outer dfc999caa78168dd1822b661276b5ce581862cf8192b2bb5b58dd3ce51877a7c;
+inner6e9067b015a3fc4ef67801e07d3dc39f4076ed46371f4fed9917733ee33f23e7;
+report864a681f73da26bb80e0ecc18819b075c958189bfa72649eb6ab558af53dbe5c.
+Both archives downloaded and independently reverified locally in0.127444s,
+16601088bytes observed RSS. Durable directory:
+validation-evidence/neumann-boundary-orbit-diagnostic-v2-20260907.
+Diagnostic only: no production PRE removal or regional seam claim.
+Original source stays fixed under (k,b)->(c-k,!b); next gate lifts this
+permutation to a chosen coordinate of the multidimensional image index.
+20/41,TermSource=0,window15 not attained.
