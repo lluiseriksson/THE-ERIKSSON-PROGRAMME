@@ -171,6 +171,12 @@ not the currently pending physical series. Overlay textual guard passed
 in 0.095257s (15,376,384 bytes observed peak RSS); import-prefix guard
 passed in 0.0832739s (15,097,856 bytes). These are textual checks only;
 no Lean was run locally and the live cold queue was not altered.
+Subsequently, the two-line explicit-equality repair passed HOT at source
+1b222f64aa3034861a3eee17e02c56b5d452eb44 (ledger1211): six declarations,
+exact archive497f93438c55d69118cb4cf1f6141e411a8b8ded1a26b95762350c9472c0839b
+independently verified. Earlier repro FAIL retained in1210. This supplies
+the FULL interval primitive and owner shift at HOT level, not the mixed
+coordinatewise assembly; promotion/cold verification remains next.
 
 For M2 the FULL owner identity is exactly
 `(n + B*(k*N))/B = n/B + k*N`, with `0<B`.

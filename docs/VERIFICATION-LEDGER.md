@@ -48559,3 +48559,32 @@ All11manifest entries, exact archive set and four record hashes checked;
 only final record exit1, all preceding records0. Local integrity check
 0.1168838s/16052224bytes observed RSS; no local Lean. Cold1209 remains valid.
 20/41,TermSource=0,window15 not attained. No PRE retirement for this draft.
+
+## Addendum 1211 — FULL periodic interval coverage HOT PASS (2026-09-07)
+
+Exact two-line correction source1b222f64aa3034861a3eee17e02c56b5d452eb44;
+v2 runnera0c37f556e0a92e3ec94a436344cc024ac62f53a,
+hash56ecc0d581760d527f22f56fb654e1ce47115eb79a5d2e251ec01dc31edfaa79.
+Retained cold checkoutd16030e70, cold parent1209 reverified before execution.
+Repro exit0/4.130192501s; prerequisite3286 jobs exit0/18.531255764s;
+draft+six-name audit exit0/7.141556446s. Seven stages, all0, clean before/after.
+Production draft six declarations have exact allowed trios. The Mathlib-only
+repro's owner identity uses only propext; its other five use the allowed trio.
+No target .olean is inferred from a failed declaration or the earlier FAIL.
+
+Archive56351bytes497f93438c55d69118cb4cf1f6141e411a8b8ded1a26b95762350c9472c0839b,
+automatically downloaded and independently verified including the cold parent,
+source/runner pins, repro transformation, exact commands, manifests and audits.
+Output interval.oleanf4801e2a9e9d765ff04729b002cd8e204500f4917dd716bd2041ae6e799bf023.
+Preserved under validation-evidence/neumann-periodic-interval-hot-v2-20260907.
+Reader exit0/0.113548s/18464768bytes observed RSS. A preceding local runpy
+invocation omitted scripts from sys.path and failed before reading evidence;
+corrected invocation only, no remote rerun or artifact change.
+Reader synthetic tests1accepted/11rejected,0.2539294s/19525632bytes observed RSS.
+
+This proves HOT the one-branch FULL interval bijection and block-owner shift;
+it does not yet install the mixed-coordinate equivalence or regional inverse.
+PRE-VALIDATION remains until exact production/cold promotion.
+20/41,TermSource=0,window15 not attained. Runtime unassigned after all three
+archives were preserved at08:30:08.115306UTC (opened07:45:28.269671UTC,
+about44m40s connected); Reconnect UI confirmed and all auxiliary tabs closed.

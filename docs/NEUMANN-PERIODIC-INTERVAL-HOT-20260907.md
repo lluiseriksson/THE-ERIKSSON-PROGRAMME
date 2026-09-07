@@ -1,4 +1,13 @@
 # Bounded periodic interval diagnostic — prepared, not executed
+# Update: v2 executed HOT PASS, ledger1211
+
+Source1b222f64aa3034861a3eee17e02c56b5d452eb44, runnera0c37f556e0a92e3ec94a436344cc024ac62f53a.
+Hash56ecc0d581760d527f22f56fb654e1ce47115eb79a5d2e251ec01dc31edfaa79.
+Archive497f93438c55d69118cb4cf1f6141e411a8b8ded1a26b95762350c9472c0839b,
+downloaded and independently verified with `--revision v2`.
+V1 failed in the minimal repro and remains preserved in ledger1210.
+Runtime now disconnected/deleted; do not rerun either launch.
+The historical preparation contract follows unchanged.
 
 Draft source: e7bfd29f609408eccd6f296c1f96e04425320d8c.
 Runner: 4d3f72c5a2d26843cf8b5d86639be597f6a7b744,
