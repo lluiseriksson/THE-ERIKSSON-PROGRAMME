@@ -48639,6 +48639,36 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1240 — actual endpoint readout and produced-domain integral HOT PASS
+
+2026-09-07. The retained CPU/highRAM runtime was reused after independent
+preservation of Addendum1239; no overlapping compiler or repeated cold run.
+Endpoint source5fa0ee8e5d0d268f7595cdc2ebc62d677b1d4f04 passed the generic
+phase repro (5.119728533s), prerequisite (134.621590083s), actual two-endpoint
+readout (7.863357983s), all exit0 and exact1+2allowed-trio names. Archive
+08c8518f5ef1037268e92038dc0cfef6b37baab0c827a169e44b4f7bc426116c preserved
+in141be4fa9; independent reader exit0/.2107954s/17686528RSS.
+
+Integral composition sourcef308441f2cf19b2294189cab14d1a1d6d1217330 passed
+mass-uniform prerequisite (55.446424892s) and five-name integral audit
+(13.339828541s), both exit0, exact allowed trios. Archive
+3a612b299e0aea5b689979bf8a39095f676a129903e24060e56237463fb878d5 preserved
+in603a6771a; independent reader exit0/.1799572s/17965056RSS. Complete
+source/runner/member/log hashes, commands, stages and axiom records checked.
+
+The alias precision acts on its internally built fine-source solution;
+both physical endpoints use the same spacing (L^j)^-1. The nonvanishing
+domain is constructed almost everywhere from the common radius windows,
+including mass=0, rather than passed as a free solved family. Its normalized
+readout integral is (L^j)^4 times target=source. This is NOT yet physical
+operator/integral interchange, the finite regional inverse, counting-kernel
+normalization, B0, window15 or a terminal-field producer.
+
+Runtime released at2026-09-07T17:07:31.354574Z after verifying no active
+Lean/Lake process and preserving all archives; UI showed disconnected.
+Exact-body production promotion3391796fb remains PRE-VALIDATION pending a
+separate cold gate. 20/41 and TermSource=0 unchanged.
+
 ## Addendum1239 — literal alias physical integral COLD PASS
 
 2026-09-07. Source ba2998c4f22707ed0f828c741ae6aa1efb924a36, fresh

@@ -1,5 +1,19 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+CURRENT: integral suffix PASS5/5 independently preserved603a6771a,
+archive3a612b299e0aea5b689979bf8a39095f676a129903e24060e56237463fb878d5.
+Runtime released2026-09-07T17:07:31.354574Z, UI disconnected, no compiler
+left active. All LIVE runtime notes below are historical. Do not rerun them.
+Production source3391796fbcd65fa8f4453f5e482b36bc19f455c6:
+YangMills/RG/NeumannPhysicalReadoutIntegral.lean
+c63a547dcbfb4ef6701e56d0dc9384e973eff3b2b56288f4a42fbac819904ff2;
+Audit05095e1384f9a2cd2371ca293809722b397607b090a269e05921dd96a5d8f9ef.
+Exact HOT proof bodies + two-file text guards PASS
+(.2328644s,18137088RSS). PRE-VALIDATION remains. NEXT prepare pinned cold
+runner/reader and notebook for these two production files/five names before
+connecting another CPU/highRAM session. No runtime active now. Ledger1240
+records both HOT results and exact non-inverse scope. Counter20/41 unchanged.
+
 CURRENT 17:05UTC: endpoint suffix PASS preserved141be4fa9. Archive
 08c8518f5ef1037268e92038dc0cfef6b37baab0c827a169e44b4f7bc426116c;
 phase5.119728533s, prerequisite134.621590083s, physical7.863357983s,
