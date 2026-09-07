@@ -272,3 +272,10 @@ repair passed carry and phase on the retained graph,10 exact axiom blocks,
 independently verified HOT. Thus the matrix conjugacy is no longer merely
 static, but remains unpromoted scratch; no actual Green reflection follows
 until R3-R5. The original failed package is retained with its nonzero exit.
+
+R3 HOT verified1191: literal matrix action and transport of the internally
+constructed full solution both compile with the exact allowed trio. The
+domain gates are the existing base/reflected FullSolutionDomain, not a new
+uniqueness assumption. This does NOT identify the transformed arbitrary
+source with the reflected physical point-source vector: that is precisely
+R4, followed by target phase cancellation and R5 integral transport.

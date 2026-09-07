@@ -1,5 +1,16 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT02:29UTC: physical R3 PASSED and independently preserved1191.
+Source1e89a4cc27402ec539ece89c0288c8a1e9f9d103, runner31bf5bbd4;
+PID32820 launched02:26:43UTC and finished. Runtime f33828f71ae2/tab23
+retained for the next bounded R4 endpoint-phase work; all prior packages
+downloaded, checked and durable. No original cell is to be reexecuted.
+R3 olean /content/neumann-actual-coordinate-solution-hot-v1/
+NeumannActualCoordinateSolutionDraft.olean, hash8e4eb8490780cd16ccd70f690253b019922a32611232b089e34e0c836556c1df.
+Next R4: prove the integer endpoint reflection phases D and D^-1, then
+consume actual solver covariance; R5 Brillouin measure route is documented.
+HOT only, no production PRE marks retired;20/41,TermSource0 unchanged.
+
 CURRENT02:24UTC: Mathlib R3 repro v2 passed and independently preserved1190
 in2.420979522s (3 exact axiom names). v1 failed only because its input was
 outside the checkout; original archive retained, no Lean source changed.

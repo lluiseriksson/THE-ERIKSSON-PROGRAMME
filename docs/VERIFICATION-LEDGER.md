@@ -48129,3 +48129,32 @@ Independent reader exit0/0.1142444s/18612224bytes observed peak RSS;
 checks exact inputs, commands, exits, logs, output and three axiom blocks.
 VERIFIED_HOT_REPRO_PASS,cold_seal=false. Physical R3 specialization drafted
 after this result, NOT CHECKED. No PRE retirement;20/41,TermSource0 unchanged.
+
+## Addendum 1191 — actual full-solver coordinate transport HOT verified (2026-09-07)
+
+Source1e89a4cc27402ec539ece89c0288c8a1e9f9d103,
+runner31bf5bbd439bd893094afd505a89c3a920a3b106,
+runner SHA25674feef84dfa275cf689a5c78585a54fe8d8af07edf06e89c92d331e958f1a981.
+PID32820, launch02:26:43.934239UTC on retained runtime f33828f71ae2.
+Seven imported scratch outputs checked by exact hashes before use; parent
+payloads are included in the artifact. Prerequisites completed8501jobs,
+incremental43.136050405s; physical exit0/6.283573936s; clean_after exit0.
+Two exact axiom blocks: neumannActualCoordinatePrecision_action and
+neumannActualCoordinateFullSolution_transport, each standard allowed trio.
+
+The source constructs the transport from the actual one-coordinate alias
+permutation and nonzero exponential. Matrix action is derived from R2.
+Both solutions are the existing stabilized full solver for the supplied
+source; existing injectivity at reflected momentum proves their equality.
+Only the two literal FullSolutionDomain gates are inputs. No independent
+solution family, inverse, matrix conjugacy, or Green covariance is assumed.
+R4 endpoint phases and R5 integration remain open; no complete Green claim.
+
+Archive45adc8633dabd57a3fd89be27e98b2ceba32f655ee17c495031cba070b392fa2;
+reporte33d860adba76802848a91e0775dd02787de2f4bea6e0cc799b8e5006f17dd38;
+olean8e4eb8490780cd16ccd70f690253b019922a32611232b089e34e0c836556c1df.
+Preserved validation-evidence/neumann-actual-coordinate-solution-hot-v1-20260907.
+Independent reader verifies all source/runner/import hashes, exact queue,
+real exits, logs, outputs and axioms. Exit0/0.1217972s/18731008bytes peak RSS.
+VERIFIED_HOT_PASS,cold_seal=false. No production PRE retirement, window15,
+terminal row or TermSource instance.20/41,TermSource0 unchanged.
