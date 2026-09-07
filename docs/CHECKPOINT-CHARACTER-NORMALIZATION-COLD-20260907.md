@@ -29,3 +29,19 @@ runner; no project build cache restored. One launch only; no CI dispatch.
 On verdict, download and independently verify archive before selective seal.
 No physical source equation or inverse is asserted by these normalizations.
 20/41,TermSource0,window15open. Masked-difference repro remains unexecuted.
+
+Prepared retained-runtime follow-up (not part of the cold verdict): after
+independent download verification, acknowledge
+/content/character-normalization-cold-evidence-preserved.ok, then run exactly
+one Mathlib-only tmp/NeumannMaskedDifferenceRepro.lean diagnostic, no project
+rebuild. Runner checkpoint9dc39193157fa4627dd09b235305c5ab4fe90510,
+SHA25600e58fbe51018cbc3b4778ee4f4fa38d363974a2773a088c87537e23ecd31ae8.
+Source98f4337e06271a7d5e3957450440292db0f79168, draft SHA256
+70903fca9cf0e0510bf300f8e77b01d97da5bcd2d1b165adce98cea037814b09.
+Two exact names neumannMaskedForwardDifference/neumannMaskedBackwardDifference.
+Output /content/neumann-masked-difference-hot-v1.tar.gz; launch log must be
+outside that evidence folder. Stop on first error, preserve evidence, then
+disconnect. Never relaunch the cold cell to run this follow-up.
+Reader synthetic1accepted/8rejected, exit0/0.184607s,18427904 observed RSS.
+The generic endpoint hypotheses still need the physical seam producer;
+this test is not a physical source equation or inverse seal.
