@@ -47916,3 +47916,31 @@ proved rather than a free Green covariance hypothesis.
 After independent preservation, disconnect-and-delete confirmed in Colab;
 reconnect-only UI observed around00:07UTC. The launcher had exited0 and
 its PID was absent. No live runtime from this diagnostic remains.
+
+## Addendum 1183 — actual non-transpose scalar homogeneity diagnostic (2026-09-07)
+
+SOURCE eb5a9ec0609b015a3d367c0d729c2c2074a45b51; runner
+7343544cd9e72d14fb73fc5b740ec03bdeca86fa. One Colab CPU/high-RAM
+execution, host e7dbc45c00b1, PID2214, launched00:13:31.101940UTC.
+Fresh checkout, exact Lean4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b.
+All18 stages exited0; prerequisites8496jobs/1075.199618012s;
+actual scalar draft9.199243541s. Three exact named audits printed
+propext,Classical.choice,Quot.sound. Unused-simp warnings retained,
+not represented as zero warnings. Clean-source check exit0; launcher0.
+
+Independent archive verification: VERIFIED_DIAGNOSTIC_PASS, cold_seal=false.
+Archive d8bf0b29becbfc23b11ae923d667310d9d1a1a5c4182703b3240736117c18c72;
+report 4ebca1702f13bac303fa371a5e6dfaf63b295fc71dda8ca3fa303388292af131;
+evidence JSON6072782e549524b6ee53581899385224c5ebce2b7ee6d9508ae1757c9da97a49;
+output d4925a06a399d27ca2892a75bbcd577da756b42d0f520608c1eef2f77cc77a63.
+Original and exact records preserved under
+validation-evidence/neumann-actual-scalar-diagnostic-v1-20260907.
+Local reader0/0.1327495s/17006592 observed peak RSS; no local compiler.
+
+The three lemmas pull a common scalar through the noncentral source
+moment, full solution moment, and literal non-transpose full solution.
+This is algebra with totalized division, not an inverse at singular
+parameters, endpoint covariance, uniform B0 or window15. No production
+PRE mark removed;20/41 and TermSource0 unchanged.
+Runtime retained for the already prepared bounded common-block phase HOT;
+no scalar reexecution. Parent evidence must be pinned before that HOT.

@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-actual-scalar-diagnostic-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "6e449c57bff623aa55e83d245fc9658e20d728ca023c219023e6f81980ebf711", "seconds": 78.64979029300002, "stage": "lake_update", "timed_out": false, "timeout_seconds": 3600}

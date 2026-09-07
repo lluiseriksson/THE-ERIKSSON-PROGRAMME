@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "eb5a9ec0609b015a3d367c0d729c2c2074a45b51"], "cwd": "/content/hrpoly-neumann-actual-scalar-diagnostic-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "b84a3d5de5a9839ce512ed4f8d98b02f131b67c5e081c3383e54406e3f55d68a", "seconds": 1.6751070069999514, "stage": "checkout", "timed_out": false, "timeout_seconds": 3600}
