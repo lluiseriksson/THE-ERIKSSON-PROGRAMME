@@ -48251,3 +48251,23 @@ produced from the existing mass-uniform windows; normalization remains (2*pi)^-4
 The half-open cube is used almost everywhere, not falsely identified pointwise.
 R6 lower-half-cell transport and cold promotion remain open. HOT only, no production
 PRE-VALIDATION retirement, counters 20/41, TermSource=0, window15 not attained.
+
+## Addendum 1196 — actual physical half-cell reflection HOT verified (2026-09-07)
+
+Source 91dee187ebd5f32250c3966ed6a9141b25990ad7; runner
+75cc2d4beb250dc2479a0cbc4832b651b183ed60. V1 failed before elaboration because
+the restored common-block phase binary required CenteredTorusGreenCoefficientPhase.
+Failure archive d4698715933362ba16426dcd89e11a1323f4d210a15d7c2932d34f69024d9be6
+is retained. V2 adds only that prerequisite, with unchanged source SHA/bytes.
+Physical exit 0 in 10.345950800 s; three allowed-trio declarations, two style warnings.
+
+Boundary reflection is 2*(L^j)*B-1-x on one coordinate, arbitrary integer B,
+both endpoints together. B=0 yields -x-1. The upper physical boundary still
+needs its side/block-count dictionary. No fine-step translation or transpose.
+Archive 8debebc3f16a117320c73c576451b5337994cf14ad0adca7d0db2dc4104e3883;
+report 2e04c72d1bd2fda174612d3f04e7ff35b765ea3d32550f132831a299662ccd61;
+olean 919a5f3df5ef2fad86c644ac5ed1e5492e66fba3558b7be7797be957adbea28b.
+Independent reader: exit0, 0.1287169 s, 20041728 bytes observed RSS.
+Translation archive and sixteen parent binaries checked explicitly.
+R1-R6 are HOT diagnostic only; cold promotion and the regional image equation
+remain open. No PRE retirement, 20/41, TermSource=0, window15 not attained.

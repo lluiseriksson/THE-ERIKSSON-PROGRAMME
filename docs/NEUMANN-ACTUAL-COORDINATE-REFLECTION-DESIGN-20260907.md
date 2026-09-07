@@ -342,3 +342,9 @@ archive a8038f39fc3ed4d66b4c98f57d78255abec5c27b2f738788fe7680a02165f708,
 ledger Addendum 1195. Integrability is produced at stage zero; reflected
 integrability is transported through an a.e. equality to the ordinary endpoint
 integrand. The original normalization is unchanged. R6 is next; no cold seal yet.
+
+R6 subsequently HOT-verified at source91dee187ebd5f32250c3966ed6a9141b25990ad7,
+ledger1196. Arbitrary integer block boundary B is explicit; B=0 produces
+the exact lower half-cell reflection. Thus the finite R1-R6 route is tested,
+but still requires cold promotion. Regional seams/equations are not inferred
+from covariance alone. Keep the side=(L^j)*B dictionary visible for upper sides.
