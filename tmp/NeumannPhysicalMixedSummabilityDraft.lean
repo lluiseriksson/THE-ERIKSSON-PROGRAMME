@@ -21,6 +21,8 @@ theorem neumannMixedSourceDifference_injective {d : ℕ}
         target - neumannMixedImage full m (fun i => (n i).1) p.1 p.2) := by
   intro p q he
   apply neumannMixedGlobalFixedSource_injective full m hm n
+  change neumannMixedFixedSourceImage full m n (neumannMixedGlobalFixedIndexEquiv full p) =
+    neumannMixedFixedSourceImage full m n (neumannMixedGlobalFixedIndexEquiv full q)
   rw [neumannMixedImage_pack, neumannMixedImage_pack]
   funext i
   have hi := congrFun he i
