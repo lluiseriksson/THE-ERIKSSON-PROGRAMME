@@ -1,4 +1,21 @@
-# Character normalization cold promotion — live
+# Character normalization cold promotion — PASS, retained HOT suffix
+
+Cold verdict observed2026-09-07T14:19UTC: PASS. Downloaded by the assistant,
+then independently verified locally:19 stages,5 exact axiom names,4 source
+blobs and2 production outputs; reader exit0/0.1967934s,18755584 peak RSS.
+Archive83829bytes SHA256
+a51e9d590735faae1c5a3d55c294373420999906adb3ec85d07e4d390633c2f8,
+preserved under validation-evidence/neumann-character-normalization-promoted-cold-v1-20260907/.
+Evidence JSON file83273e94da3fc936463ec45fdd683af1d5598c9b67b67d84391f0cec8097ca72;
+payload6b42e8627e0ea0e7778251839e97ce446a8655de3105e3a30de5dacbedd7a870.
+Haar focal/audit10.785718315s/15.468785976s; alias prerequisites1575.31211888s,
+focal23.442235215s(8533jobs),audit8.706256537s; all exit0.
+Dependency linter warnings retained; no zero-warning claim.
+Selective header seal remains pending. No terminal counter change.
+The preserved-evidence acknowledgement was written only after local verification.
+The already prepared masked-difference HOT suffix was launched once;
+its status must be read from /content/masked-difference-hot-launch-v1/launch.log.
+Do not reexecute the launch cell. Preserve runtime for the conditional suffix below.
 
 Notebook checkpoint c94ffdf634d3b461ac7693bc70deccfed577c3c5.
 Opened2026-09-07T13:48:57.054328UTC, account lluiseriksson@gmail.com,
