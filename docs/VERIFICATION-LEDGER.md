@@ -47990,3 +47990,9 @@ exact cancellation. The five-step actual full-Green composition is the
 next consumer, not a conclusion of these three lemmas. Half-cell
 reflection, regional inverse, B0/window15 remain open. No production PRE
 mark removed, no counter movement:20/41,TermSource0.
+
+After independent preservation of scalar/v1/v2 archives, the runtime was
+disconnected and deleted via Colab confirmation around00:51UTC. Reconnect-
+only UI observed; both launch PIDs absent at their terminal checks. Connected
+duration from the recorded scalar launch approximately38minutes. No live
+runtime remains from this unit; next composition is prepared before reconnect.

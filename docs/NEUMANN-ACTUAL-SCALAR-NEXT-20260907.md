@@ -131,3 +131,17 @@ The final output is common BLOCK translation of the actual full Green;
 arbitrary-depth half-cell reflection, regional image reconstruction and
 the regional inverse identity remain separate. No new draft of these five
 outputs is shipped before the pending phase diagnostic result.
+
+## Current continuation checkpoint after phase verification
+
+Phase v1 failed on the reserved binder `alias` (ledger1184); v2 changed
+that identifier alone to `mode` and passed all three exact audits.
+Source0a9b18e5b14dc870a7edf60fe62698c56f779415,
+runner6b7856c62c67caba2ad101d67e912ca8e6e5603d;
+preservation bf1a9c1f1 (ledger1185), VERIFIED_HOT_PASS, not a cold seal.
+Original archive8aee46c3e3b12bc64ae3e0576041f822eb4ce601acc0b1530721fee51e1167f1;
+report8c555edb476c6b06734706180f4c17841563eb9c17c2f9180f105192914f9e22.
+Runtime e7dbc45c00b1 disconnected/deleted around00:51UTC after preservation.
+Next work is the five-step literal two-endpoint composition above. Both
+scalar and phase scratch inputs now have checked diagnostic evidence;
+their production promotion and the consumer itself are still pending.
