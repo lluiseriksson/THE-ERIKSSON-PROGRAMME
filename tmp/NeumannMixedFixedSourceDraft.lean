@@ -28,7 +28,7 @@ theorem neumannMixedInsertSource_injective (full : Bool) (m : ℤ)
   cases full
   · intro p q he
     change (p.1, p.2, n) = (q.1, q.2, n) at he
-    exact Prod.ext (congrArg Prod.fst he)
+    exact Prod.ext (congrArg (fun a : ℤ × Bool × neumannImageIntervalPoint m => a.1) he)
       (congrArg (fun a : ℤ × Bool × neumannImageIntervalPoint m => a.2.1) he)
   · intro k l he
     change (k, n) = (l, n) at he
