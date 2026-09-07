@@ -64,11 +64,20 @@ def verify(files,parent,parent_hash,gate):
  expected=set(PINS)|{'PeriodicIntervalMathlibRepro.lean','runner.py','result.json','manifest.json','audits.json','interval.olean'}|{s+'.log' for s in cmds}
  require(set(files)==expected,'FILE_SET')
  return dict(status='PASS',cold_seal=False,source=SOURCE,parent_sha256=parent_hash,audits=audits,records=records,outputs={n:sha(files[n]) for n in ['interval.olean']})
+def configure_v2():
+ global SOURCE,OUT,RUNNER
+ SOURCE='1b222f64aa3034861a3eee17e02c56b5d452eb44'
+ OUT='/content/neumann-periodic-interval-hot-v2'
+ RUNNER='56ecc0d581760d527f22f56fb654e1ce47115eb79a5d2e251ec01dc31edfaa79'
+ PINS['NeumannPeriodicIntervalCoverageDraft.lean']='7ae964c13ae9288525606a35837f69a1e58cf36fca792fe1b57dcb081c3b3a8a'
+
 def main():
  ap=argparse.ArgumentParser()
+ ap.add_argument('--revision',choices=['v1','v2'],default='v1')
  for n in ['archive','parent-archive','helpers']:ap.add_argument('--'+n,type=Path,required=True)
  for n in ['sha256','parent-sha256']:ap.add_argument('--'+n,required=True)
  a=ap.parse_args()
+ if a.revision=='v2':configure_v2()
  old=cold.helper(a.helpers,'verify_cmp99_full_green_residue_cold.py',PINS['verify_cmp99_full_green_residue_cold.py'])
  gate=cold.helper(a.helpers,'full_green_owner_exact_axiom_gate.py',PINS['full_green_owner_exact_axiom_gate.py'])
  old.PREFIX='hrpoly-'+cold.REV+'-evidence'

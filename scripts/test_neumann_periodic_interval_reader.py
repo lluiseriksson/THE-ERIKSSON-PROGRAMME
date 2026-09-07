@@ -2,11 +2,13 @@ import sys,json,subprocess
 sys.path.insert(0,'scripts')
 import verify_neumann_periodic_interval_hot as v
 import full_green_owner_exact_axiom_gate as gate
+if '--v2' in sys.argv:v.configure_v2()
 files={}
 for n in v.PINS:
  p=('tmp/' if n.endswith('.lean') else 'scripts/')+n
  files[n]=subprocess.check_output(['git','cat-file','blob',v.SOURCE+':'+p])
 runner='4d3f72c5a2d26843cf8b5d86639be597f6a7b744:scripts/colab_neumann_periodic_interval_hot.py'
+if '--v2' in sys.argv:runner='a0c37f556e0a92e3ec94a436344cc024ac62f53a:scripts/colab_neumann_periodic_interval_hot_v2.py'
 files['runner.py']=subprocess.check_output(['git','cat-file','blob',runner])
 draft=files['NeumannPeriodicIntervalCoverageDraft.lean'].decode()
 repro=draft.replace('import YangMills.RG.NeumannImageIntervalCoverage','import Mathlib.Data.Int.DivMod\nimport Mathlib.Tactic.Linarith\nimport Mathlib.Tactic.Ring')
@@ -70,4 +72,3 @@ for label in ['cold_upgrade','wrong_repro','forbidden_axiom']:
  except Exception:rejected+=1
  else:raise AssertionError(label)
 print('PERIODIC_INTERVAL_READER_SELF_TEST_PASS synthetic=1 rejected='+str(rejected))
-
