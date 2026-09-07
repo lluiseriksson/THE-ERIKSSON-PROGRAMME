@@ -1,5 +1,15 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+CURRENT: cold PASS independently preserved, ledger1234, evidenced9a505597.
+Archive486a1c48e4ec4175f35800b75c1cac0334e53818ba7d536e64e000299a030985.
+Four exact-header-only production/audit seals; no terminal-field movement.
+The SAME runtime/tab67 now runs the prepared HOT suffix ONCE,
+2026-09-07T16:02:34.770429UTC, PID12289. Cold PID999 completed.
+Read /content/alias-physical-integral-hot-launch-v1/launch.log and pid.txt;
+do not rerun Cell1 or the HOT launch now present in Cell2.
+HOT verdict not yet inspected. Download and independently verify its archive
+before first-error repair or cleanup. All LIVE cold notes below are history.
+
 LIVE: launched ONCE 2026-09-07T15:40:37.762283UTC, PID999,
 Colab CPU/highRAM50.99028778076172GiB, lluiseriksson@gmail.com.
 Tab67 retained for handoff. No final verdict yet; never rerun Cell1.

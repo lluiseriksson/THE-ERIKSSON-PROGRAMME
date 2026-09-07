@@ -2,9 +2,9 @@ import Mathlib.Analysis.Complex.Exponential
 import Mathlib.Tactic
 
 /-!
-PRE-VALIDATION: production source present; production .olean not yet
-materialized and production compiler result not verified. Exact draft
-passed HOT ledger1233. Scalar plane-wave algebra only. It does not identify a finite
+Cold compiler-verified at source1885a6c0886e595f0d3013c6ac2b9a71f3c93036,
+2026-09-07, ledger1234; exact audits and output independently preserved.
+Proof body unchanged from HOT ledger1233. Scalar plane-wave algebra only. It does not identify a finite
 torus wrap, a boundary mask, the physical precision or its inverse.
 -/
 

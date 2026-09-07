@@ -1,9 +1,9 @@
 import YangMills.RG.NeumannCenteredAliasCharacter
 
 /-!
-PRE-VALIDATION: production source present; production .olean not yet
-materialized and production compiler result not verified. Exact draft
-passed HOT ledger1232. Literal positive exponential phases are transported to the
+Cold compiler-verified at source1885a6c0886e595f0d3013c6ac2b9a71f3c93036,
+2026-09-07, ledger1234; exact audits and output independently preserved.
+Proof body unchanged from HOT ledger1232. Literal positive exponential phases are transported to the
 sealed centered-alias character sum. The result selects congruence, not an
 infinite-lattice point source. No alias-negation symmetry is assumed.
 -/

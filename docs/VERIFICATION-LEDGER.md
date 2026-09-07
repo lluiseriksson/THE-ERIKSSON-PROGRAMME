@@ -48639,6 +48639,28 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1234 — selector/opposite promotion COLD PASS, 2026-09-07
+
+Source1885a6c0886e595f0d3013c6ac2b9a71f3c93036, runnerc90e9d1e0,
+notebook90895a456. Fresh CPU/highRAM50.99028778076172GiB, no project
+build restoration. Selector focal8534jobs/1048.94175048s, audit6.246630989s;
+opposite focal8.298810432s, audit3.482128268s, all exit0. Five exact names
+all use Classical.choice, Quot.sound, propext. No repo-wide claim.
+Independent reader validated18stages, source/commands/logs and two outputs.
+Measured0.31719s,18022400RSS,exit0. Downloaded archive85918bytes:
+486a1c48e4ec4175f35800b75c1cac0334e53818ba7d536e64e000299a030985.
+JSON filee31466cc936af63f714385c817e72f21b1a745008cee874dde65027ea86d002b;
+payload583e9b71a6fa5a2403f3bd0d497854d01abc7c2abb58592227212cfadd1e4484.
+Selector olean a24a41f78408773fd70c650cdbfc950c72fbaaf5aa96f4865102d372c6f77fe7;
+opposite olean d0b19fc2e30105c704e52a1d2cf642d9b0a572d4267ed99cf088f3f455545070.
+Original archive and independent report preserved in commitd9a505597 under
+validation-evidence/neumann-selector-opposite-promoted-cold-v1-20260907.
+Only the four certified production/audit docstrings retire PRE; proof bodies
+and audit names unchanged. Finite congruence and scalar difference algebra
+are not the physical inverse/source equation.20/41,TermSource0,window15open.
+Runtime retained for prepared quotient-first physical-integral HOT only,
+launched after independent cold preservation; no simultaneous compiler.
+
 ## Addendum1233 — opposite exponential difference HOT PASS, 2026-09-07
 
 Base29a48ac4bb1058cd71b74f65029e918d49e74b60; overlayb3ca1ca8f749517014c934ff956116ecab19210d;
