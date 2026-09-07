@@ -1,5 +1,36 @@
 # Point-source normalization: static route, not a compiler seal
 
+## 2026-09-07 physical endpoint and scale convention check
+
+Inspected literal definitions, not a new compiler claim:
+
+- `BalabanCMP89Eq246FinePointSourceFibreGreen.lean` defines
+  `cmp89Eq246PhysicalFineToFineGreenIntegrand` by applying the SAME
+  `cmp89Eq249FineLatticeSpacing L j` to target and source independently.
+- `BalabanCMP89Eq249StabilizedComplexIntegrand.lean` defines the entire
+  phase as the ordinary bilinear sum; `BalabanCMP89Eq248ComplexAliasDenominator`
+  uses the literal alias translation, and `BalabanCMP89Eq250FullDenominatorLower`
+  fixes that translation to `2*pi*m`.
+- Thus the pending readout specialization must prove the cast-and-spacing
+  equality to the draft phase with displacement `target-source`, AFTER
+  the precision is applied. It must not replace the original Green by a
+  displacement-only function. The actual integrand retains two endpoints.
+
+Two distinct sizes must remain distinct in the next interface: the `N`
+of the alias integral draft means `L^j` (reciprocal fine spacing); the `N`
+of `neumannPhysicalMixedGreenSeries N L j ...` is the ambient side used
+by the FULL flag. There is no equality between those parameters by name.
+Use `aliasSide` and `ambientSide` when composing them. The source factor
+is `aliasSide^4`; FULL/PROPER classification compares regional side with
+`ambientSide`. Confusing these would preserve types and change the source.
+
+Current preparation: draft5b0638712 selects the quotient by divisibility
+rather than integer division. Its witness is constructed from the literal
+zero-residue test and is proved zero iff the original displacement is zero.
+No externally supplied quotient or phase equality enters that draft.
+It remains NOT CHECKED pending the quotient-first HOT gate; the production
+selector/opposite cold gate at1885a6c08 is still running separately.
+
 The running FULL/mixed cold gate is independent of this note. No new Lean
 claim, terminal field, inverse identity or window15 attainment is recorded.
 
