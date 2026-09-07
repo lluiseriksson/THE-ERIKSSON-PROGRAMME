@@ -48639,6 +48639,18 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1237 — explicit-argument rewrite repro failure preserved
+
+Overlaycd95bb263, runnercdd7712df. Same retained checkout; rewrite_repro
+exit1/4.374983519s at19:6, physical stage NOT RUN. Explicit integral measure
+and arguments still did not match the displayed target. Do not claim that
+beta reduction or argument inference was the measured root cause; both
+attempted repairs are now refuted. Inspect the elaborated integral types.
+Archive0bcd3dff7f0f48317c122ea4396afc88c56fbdaf6e264bcaee871095d5e43e88
+downloaded and independently preserved (0.2136602s,14442496RSS,exit0),
+validation-evidence/neumann-alias-physical-integral-hot-v3-failure-20260907.
+No new scientific seal;20/41,TermSource0,window15 unchanged.
+
 ## Addendum1236 — rewrite-only repro catches insufficient repair
 
 Overlay6925a9057, runnerca0f0dfb5, same retained cold checkout1885a6c08.
