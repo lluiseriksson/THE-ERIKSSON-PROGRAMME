@@ -45,3 +45,20 @@ an older mass-positive convenience theorem. The real/complex action
 dictionary remains a separate visible obligation.
 
 Counters: 20/41; TermSource=0; window15 open.
+
+## Existing normalized-integral route inspected
+
+The local Mathlib source was checked at the exact pinned commit
+07642720480157414db592fa85b626dafb71355b. Its
+`UnitAddTorus.orthonormal_mFourier` supplies normalized Haar character
+orthogonality. The repository already supplies
+`integral_unitAddTorus_eq_cmp89NormalizedBrillouin` for continuous torus
+functions, and `cmp89UnitAddTorus_mFourier_neg_eq_exp_physicalPhase` fixes
+the negative-momentum sign convention. These are candidates for step4,
+not an invitation to introduce a second `(2*pi)^(-4)` factor.
+
+The physical parameter uses the repository's centered/translated coordinate
+dictionary; the remaining integer phase must be identified with that exact
+torus character before transport. Neither ordinary uncentered Fourier
+notation nor a finite-grid delta can replace this equality silently.
+No new orthogonality proof or source equation was compiled in this audit.
