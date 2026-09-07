@@ -1,5 +1,11 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT CLEANUP01:35UTC: runtime930e719ad438 disconnected/deleted after both
+1186/1187 archives were locally verified and published; no Lean/Lake processes
+remained. Colab showed Reconnect; auxiliary tab22 closed. No live runtime now.
+Next static draft: tmp/NeumannCoordinateMomentumCarryDraft.lean (R2 carry/fine
+symbol only, NOT CHECKED). Prepare complete queue before another connection.
+
 FINAL01:35UTC supersedes LIVE notes below: R1 HOT PASS independently preserved,
 ledger1187 (source6804b00aa,7names). Parent common translation PASS ledger1186
 (source327a79d3e,11names). No further live compiler required in runtime930e719ad438;

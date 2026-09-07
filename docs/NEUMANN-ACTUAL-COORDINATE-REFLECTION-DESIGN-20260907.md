@@ -149,3 +149,14 @@ Source unchanged6804b00aa; R1 diagnostic completed, R2-R6 remain open.
 Next prepare the actual coordinate symbol transport, consuming the finite
 average half-cell phase and explicit wrapped momentum period. Do not replace
 it by the depth-one transpose reflection. Production promotion still pending.
+
+Prepared R2a scratch NeumannCoordinateMomentumCarryDraft.lean has four
+NOT-CHECKED declarations: momentum-coordinate involution; actual physical
+wrapped alias momentum with integer carry supported only on the chosen
+coordinate; fine-symbol coordinate symmetry; physical fine-alias symmetry.
+The carry is derived from R1 residue negation, not given as a hypothesis.
+The existing period theorem uses ((L^j : Nat) : Real), while the physical
+fine symbol uses (L : Real)^j: the final transport explicitly uses Nat.cast_pow.
+This is a convention equality, not a change of spacing or operator. The
+averaging column/row phase is R2b and remains to write before full R2 closes.
+Text/import guards passed; no local Lean or new Colab was run for this draft.
