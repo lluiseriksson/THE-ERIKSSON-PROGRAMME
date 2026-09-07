@@ -14,7 +14,18 @@ Source prepared for the next cold gate:
 - Production promotion contains the identical HOT theorem bodies, checked
   against Git blobs with explicit UTF-8 decoding. PRE-VALIDATION remains.
 
-## Current bounded operation — cold gate running
+## Current result — cold gate PASS and runtime released
+
+Ledger1220: focal3290jobs exit0/56.254445132s; audit7names exit0/4.768029778s.
+Independent reader verifies16 stages. Durable archive
+`validation-evidence/neumann-mixed-branch-packaging-cold-v1-20260907/neumann-mixed-branch-packaging-cold-v1.tar.gz`,
+SHA256 `b1f33671a8ac555162b88469f4f92a90e69ca3035af137668eb91ab929d9b310`.
+Runtime824 terminal, evidence preserved, unassigned; Reconnect observed by
+09:46:39UTC, all tabs closed. No runtime remains retained. No HOT was appended.
+Next: prepare same-index owner dictionary M2 against the now-sealed packaging,
+then use Colab for a bounded diagnostic. No request for new authority needed.
+
+### Preserved launch metadata (not a live process)
 
 Published notebook checkpoint `ef8e762132a7c0ff69b97e9d2be5976595518e3f`:
 `scripts/colab_neumann_mixed_branch_packaging_promoted_cold.ipynb`.
@@ -22,8 +33,8 @@ Runner/reader checkpoint `579882fb91f11022f39003c9f6af2f53d339af13`.
 Runner SHA256 `9cf22262126e325c186559f033f7a1c4d96f8365e949d8cf5e9ad89b673856fd`;
 reader SHA256 `f8034619436e99d5c1f78010d03fffe6300d69b3d52e66fef09cb646ec03f90b`.
 Opened2026-09-07T09:40:04.019789UTC, CPU50.99GiB, parentPID824.
-Hash/preflight passed; last observed live at toolchain extraction.
-Only browser tab51 is necessary. Never reexecute Cell1.
+Hash/preflight passed; subsequently PASS as recorded above.
+Historical browser tab51 is closed. Never reexecute the old Cell1.
 Cell2 reads `/content/mixed-branch-packaging-promoted-cold-launch-v1/launch.log`
 and its pid.txt. Check the same process; an observer timeout is not a failure.
 On completion preserve archive, independently verify, then cold-seal only

@@ -12,3 +12,4 @@ ledger1220. Seven exact names; no physical claim.
 #print axioms YangMills.RG.neumannMixedGlobalFixedIndexEquiv
 #print axioms YangMills.RG.neumannMixedGlobalFixedIndexEquiv_apply
 #print axioms YangMills.RG.neumannMixedGlobalFixedSource_injective
+

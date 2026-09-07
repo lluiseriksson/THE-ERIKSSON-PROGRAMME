@@ -85,3 +85,4 @@ theorem neumannMixedGlobalFixedSource_injective {d : ℕ}
     (neumannMixedGlobalFixedIndexEquiv full).injective
 
 end YangMills.RG
+

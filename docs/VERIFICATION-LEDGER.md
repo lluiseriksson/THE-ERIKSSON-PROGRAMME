@@ -48659,6 +48659,10 @@ production olean `b3ee62d968b6aeaa735516c05106bab75604ffab30bbf5eab505561446dd6c
 Automatic download16.25s,25,399,296RSS; independent reader0.1148372s,
 18,706,432RSS, exit0. Runtime released after preservation, without another HOT.
 Only two certified headers lose PRE-VALIDATION; no theorem-body changes.
+The initial header patch also removed one trailing blank line from each file;
+exact body comparison rejected that delta before publication. Blank lines
+restored in a traceable follow-up, exact UTF-8 body equality then passed for
+both files. The initial local seal commit was not independently published.
 At-most16 branches and same-index packaging are algebraic results, not a
 physical carrier choice or inverse. M2 owner transport, physical action,
 uniform B0 and window15 remain open. 20/41, TermSource0 unchanged.

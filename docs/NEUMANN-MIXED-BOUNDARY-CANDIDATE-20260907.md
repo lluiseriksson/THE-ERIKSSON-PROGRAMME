@@ -5,13 +5,13 @@ physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
 ## Current frontier after Addendum1209
 
-### Updated frontier after Addendum1219 (2026-09-07)
+### Updated frontier after Addendum1220 (2026-09-07)
 
 FULL interval coverage/owner shift is cold-sealed in1212; mixed coordinate
 coverage in1214; fixed-source image/difference injectivity in1217. Branch
-packaging and the dimension4 bound16 passed HOT-v2 (1219), with identical
-production bodies at `c9818c183643a19b0cb88d614ea7b10ad3e8eda6` now in a
-separate cold gate. None of these gives the physical inverse or uniform B0.
+packaging and the dimension4 bound16 are cold-verified in1220 at
+`c9818c183643a19b0cb88d614ea7b10ad3e8eda6`, with seven exact declarations
+and independently preserved output. None gives the physical inverse or uniform B0.
 Earlier status paragraphs below are chronology, not the current frontier.
 
 The next owner dictionary must retain exactly the global index
