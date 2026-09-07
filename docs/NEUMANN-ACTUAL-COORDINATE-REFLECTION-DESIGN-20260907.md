@@ -222,4 +222,12 @@ is Tsource, using both endpoint reflection and the wrapped integer phase.
 This avoids making the point-source phase a hidden premise of R3. The
 matrix-action transport is a Mathlib-only repro candidate before any new
 project bootstrap. No new R3 Lean module is stacked on the running R2 queue.
+
+Independent repro now prepared as tmp/NeumannDiagonalTransportRepro.lean,
+NOT CHECKED and not part of the running R2 queue. It states action at Pm,
+functional action, and uniqueness transport for finite field-valued matrices.
+This generic algebra deliberately accepts the entry law and injectivity;
+the physical consumer must supply R2 and the existing solver uniqueness,
+respectively. It is not counted as either physical input or producer.
+Text/import guard exit0/0.1317943s/12144640bytes observed peak RSS.
 Text/import guards passed; no local Lean or new Colab was run for this draft.
