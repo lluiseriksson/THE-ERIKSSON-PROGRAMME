@@ -16,6 +16,22 @@ Source prepared for the next cold gate:
 
 ## Current result — cold gate PASS and runtime released
 
+### Next source now written (not compiled)
+
+`tmp/NeumannMixedOwnerDraft.lean` at `bab8c90d09f7dfeaf7965ce3b0381a96bfabd19e`;
+SHA256 `4d37d5ae52d3b8b3323e6b460b145b0a655ea829acc8afee09387a9a24fc8621`.
+Seven audit declarations cover packaged-image equality, owner transport,
+common-source injectivity, owner equality iff, and unchanged counting indicator.
+It imports only the now-sealed packaging and integer owner algebra. Exact
+overlay text guard passes; compiler result is NOT CHECKED. No runtime opened.
+Prepare one bounded Colab diagnostic: pinned fresh checkout/toolchain/cache,
+build the sealed `YangMills.RG.NeumannMixedBranchPackaging` prerequisite,
+then run `lake env lean tmp/NeumannMixedOwnerDraft.lean` with exact seven-name
+audit and real exit code. Preserve first failure and use a minimal repro for
+any pure Mathlib elaboration error before retrying. This draft is not a cold
+production seal and must not change counters. The theorem coefficient stays
+literal; physical carrier classification and inverse equations remain outside.
+
 Ledger1220: focal3290jobs exit0/56.254445132s; audit7names exit0/4.768029778s.
 Independent reader verifies16 stages. Durable archive
 `validation-evidence/neumann-mixed-branch-packaging-cold-v1-20260907/neumann-mixed-branch-packaging-cold-v1.tar.gz`,
