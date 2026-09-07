@@ -3,7 +3,22 @@
 STATIC DESIGN ONLY. No new compiler result, source equation verification,
 physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
-## Current frontier after Addendum1202
+## Current frontier after Addenda1203–1204
+
+The all-reflecting image seam is now cold-sealed in1203. Periodic endpoint
+transfer is separately HOT verified in1204; its exact production promotion
+24dc691e4 is under a cold gate. Neither result supplies mixed coverage.
+
+The next bounded draft tmp/NeumannPhysicalPeriodicSeriesDraft.lean reindexes
+the one-branch periodic series by an integer translation equivalence. Its
+identity of totalized tsums is explicitly NOT a summability certificate.
+It is not added to the running gate, and compilation waits for the preceding
+cold evidence to be preserved. This is the periodic seam substep of M4, not
+the complete mixed-family M1/M2/M4 construction. Physical positivity/decay
+windows must enter a separate convergence producer before operator action
+is exchanged with this series. No duplicate reflection branch in FULL sides.
+
+Historical frontier below records what was open before1203.
 
 The historical paragraphs below record the earlier design audit. M3 is no
 longer wholly open: the literal full Green common block translation and
