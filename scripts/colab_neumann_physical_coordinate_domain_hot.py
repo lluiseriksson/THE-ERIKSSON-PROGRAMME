@@ -1,4 +1,4 @@
-"""R4 literal point-source Green integrand HOT diagnostic; no integrated Green or cold claim."""
+"""R5 physical domain HOT retry; explicit scale arguments, no cold claim."""
 import hashlib
 import json
 import os
@@ -10,11 +10,11 @@ import time
 import types
 import urllib.request
 
-SOURCE='7d719ad27d4c5a6a0526bd3748cc24367586b432'
+SOURCE='dd6c5667107ced71d207994b876eb24f1aea6685'
 BASE='95c757465455c7e8cffcfcd6d9d18aa56f6d5083'
-PIN='c5e5aed9509f095d4d3988179adc7d7d00de5a5e5221189bbfba64e715e9f6de'
+PIN='3394204c964bab29de9aa1b352edf64f62a50f4ae1c8faf8b5d905392f911790'
 GATE='016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2'
-REV='neumann-physical-coordinate-domain-hot-v1'
+REV='neumann-physical-coordinate-domain-hot-v2'
 ROOT=Path('/content/hrpoly-neumann-coordinate-precision-diagnostic-v1')
 OUT=Path('/content/'+REV)
 RAW='https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
