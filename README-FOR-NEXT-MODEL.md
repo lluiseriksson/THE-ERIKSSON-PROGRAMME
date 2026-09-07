@@ -1,5 +1,11 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+NEXT PREPARED SOURCE: R2a momentum carry plus R2b actual column/row phases and
+entrywise precision conjugacy, with Mathlib-only one-factor product repro.
+All are PRE-VALIDATION/NOT CHECKED; the finite20-name queue is enumerated in
+docs/NEUMANN-ACTUAL-COORDINATE-REFLECTION-DESIGN-20260907.md. Prepare pinned
+runner/reader before opening Colab. No runtime currently active.
+
 CURRENT CLEANUP01:35UTC: runtime930e719ad438 disconnected/deleted after both
 1186/1187 archives were locally verified and published; no Lean/Lake processes
 remained. Colab showed Reconnect; auxiliary tab22 closed. No live runtime now.

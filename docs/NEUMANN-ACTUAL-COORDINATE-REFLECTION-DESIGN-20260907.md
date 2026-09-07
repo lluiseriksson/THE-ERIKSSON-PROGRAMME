@@ -159,4 +159,25 @@ The existing period theorem uses ((L^j : Nat) : Real), while the physical
 fine symbol uses (L : Real)^j: the final transport explicitly uses Nat.cast_pow.
 This is a convention equality, not a change of spacing or operator. The
 averaging column/row phase is R2b and remains to write before full R2 closes.
+
+R2b is now drafted (not checked) in NeumannCoordinateAveragePhaseDraft.lean:
+explicit nonzero exponential D, D(-z)=D(z)^-1, the actual coordinate product
+phase, column D, row D^-1, and literal matrix-entry conjugacy. No averaging
+factor is assumed nonzero. The diagonal case uses only D≠0; the off-diagonal
+case uses injectivity of the constructed R1 permutation. Thus the full matrix
+identity is a derived conclusion, not an input or a transpose replacement.
+
+Next queue is finite and stop-on-first-error:
+1. Mathlib-only NeumannCoordinateProductRepro (one-factor product identity),
+   before project prerequisites; one audited declaration.
+2. Existing NeumannHalfCellPhaseRepro (one declaration).
+3. Project prerequisites for R1 and EntireAverageAmplitude.
+4. Existing NeumannEntireAverageHalfCellPhaseDraft (one declaration).
+5. R1 NeumannCoordinateAliasReflectionDraft (seven declarations).
+6. R2a NeumannCoordinateMomentumCarryDraft (four declarations).
+7. R2b NeumannCoordinateAveragePhaseDraft (six declarations).
+All six inputs must be Git-blob pinned, scratch oleans installed in order,
+20 exact axiom names total. The fresh run remains a diagnostic until the
+production promotion contract is explicitly prepared. No CI exploration,
+local Lean or live Colab session has been started for this new queue.
 Text/import guards passed; no local Lean or new Colab was run for this draft.
