@@ -16,7 +16,7 @@ theorem neumannReproNormalizedIntegral_mul (mu : Measure (Fin 4 → ℝ))
       neumannReproNormalizedIntegral mu k f * c := by
   unfold neumannReproNormalizedIntegral
   dsimp only
-  rw [integral_mul_const, mul_assoc]
+  rw [MeasureTheory.integral_mul_const (μ := mu) c f, mul_assoc]
 
 theorem neumannReproDependentZeroIf (u v : Fin 4 → ℤ) (c : ℂ)
     (h : u = 0 ↔ v = 0) :

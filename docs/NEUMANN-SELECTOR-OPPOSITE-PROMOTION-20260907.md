@@ -1,6 +1,13 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
 CURRENT: cold PASS independently preserved, ledger1234, evidenced9a505597.
+LATEST: v2 rewrite repro FAIL independently preserved7c8b1bfaa/ledger1236.
+PID14178 finished; no compiler currently runs. SAME runtime/tab67 retained
+for one bounded explicit-arguments retry; do not reopen/reexecute cold.
+Minimal edits now give integral_mul_const its actual measure, c and f.
+These edits remain PRE-VALIDATION; prepare/hash v3 runner+reader before launch.
+v2 archive1e058bca0a18922fa760b17f179ab69d11cc931de155137001835bf3ee3ddd62.
+Cell2 currently downloads that already-preserved archive, not a launch.
 CURRENT HOT UPDATE: v1 FAIL is independently preserveda123d3675/ledger1235.
 Minimal proof repair40dc905d2, generic rewrite repro6925a9057. v2 runner
 ca0f0dfb53654f1dc1d30c042b06da0e0749fff3, SHA256
