@@ -1,8 +1,8 @@
 import YangMills.RG.NeumannPhysicalPeriodicTransfer
 
 /-!
-# PRE-VALIDATION: physical periodic transfer audit
-Source present; .olean not materialized; production not compiler-verified.
+# Physical periodic transfer audit
+Cold audit verified at 24dc691e451ab9b6684f950a3fdd5a78e913997f; ledger1205.
 Two declarations only. No mixed regional inverse or window15 claim.
 -/
 

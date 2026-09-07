@@ -2,9 +2,9 @@ import YangMills.RG.NeumannActualCommonBlockTranslation
 import Mathlib.Tactic.Ring
 
 /-!
-# PRE-VALIDATION: physical block translation moved between endpoints
-Promoted source present; .olean not materialized; production not compiler-verified.
-The prior HOT diagnostic is not a cold seal.
+# Physical block translation moved between endpoints
+Cold-compiled at 24dc691e451ab9b6684f950a3fdd5a78e913997f.
+Independent preserved evidence: ledger Addendum 1205 (2026-09-07).
 The full Green is literal. This uses the cold common-block translation law,
 not arbitrary fine translation and not a supplied covariance hypothesis.
 For periodic images, subtracting one full block-aligned period changes k

@@ -48432,3 +48432,19 @@ Local reader exit0/0.130806s/17506304 bytes observed RSS. No local compiler.
 This is common BLOCK translation and its integer-period endpoint transfer,
 not arbitrary fine translation, periodic-series convergence or mixed inverse.
 No PRE retirement for this HOT draft; 20/41,TermSource=0,window15 not attained.
+
+## Addendum 1205 — physical periodic transfer cold seal (2026-09-07)
+
+Source24dc691e451ab9b6684f950a3fdd5a78e913997f. Fresh Colab CPU/highRAM,
+no restoration of project build outputs. Focal8592jobs exit0/1193.564807298s;
+audit exit0/8.323652599s, two exact allowed-trio declarations. Warnings retained.
+Archive41566bytes b1ec09858327c78525c19bc543966158aabad5a2cd98ce1648a72eb9b75bb958.
+Output f4d758bfaa1e2d05e3f6fdced108564dafed5ed1dcf026f058722523a7d51d81.
+Evidence JSON111e3a8069c536a926e85da754f09d92d0bf3640eba5587e858915f02397e8df.
+Independent local reader:16stages,exit0/0.1196432s/18141184bytes observed RSS.
+Archive copied to validation-evidence/neumann-physical-periodic-transfer-cold-v1-20260907
+with readback SHA matching Colab. Only two certified headers retire PRE;
+no proof or hypothesis changes. No arbitrary fine translation, convergence,
+mixed-family coverage, regional inverse, B0 or window15 follows from this seal.
+20/41,TermSource=0 remain unchanged. Separate HOT series diagnostic follows
+only after this archive's preservation; it cannot inherit a cold seal.
