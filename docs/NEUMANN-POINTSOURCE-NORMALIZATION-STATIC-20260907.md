@@ -208,3 +208,23 @@ Expected future action: A(G_density) = xi^(-d)*delta, then
 A(xi^d*G_density) = delta. Neither equation is proved by this static note.
 An inverse criterion requiring a counting point source must not consume
 the unscaled density kernel merely because its name says normalized.
+
+## Exact remaining congruence-to-delta composition
+
+The prepared exponential selector draft keeps the positive phase and factors
+out exp(i*sum(z_i*u_i/N)); it does not identify congruence with equality.
+For the forthcoming four-dimensional integral, split on the literal vector
+of integer casts into ZMod N. On its nonzero branch the finite sum is zero.
+On its zero branch `ZMod.intCast_zmod_eq_zero_iff_dvd` supplies N divides
+each u_i; use the explicit quotient u_i/N and `Int.ediv_mul_cancel` to
+identify the remaining phase with the physical integer character. N is
+nonzero, so that quotient vector is zero exactly when u is zero.
+The endpoint is N^4*delta(u), not delta(u). The xi^4 counting-kernel factor
+is consumed only afterwards, as recorded above.
+
+The normalized Brillouin integral definition is a fixed complex scalar
+times a Bochner integral over the translated cube. `integral_mul_const`
+therefore transports the finite selector's constant factor without assuming
+integrability of a new arbitrary family; the actual pointwise phase identity
+is still required. No second (2*pi)^(-4) enters. This route is inspected
+against the pinned Mathlib and source definitions, not yet compiled.
