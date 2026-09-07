@@ -1,4 +1,20 @@
-# Physical character promoted cold gate — live
+# Physical character promoted cold gate — PASS, local preservation pending
+
+Colab FINAL_STATUS=PASS observed 2026-09-07 around15:01UTC. All six
+focal/audit stages exit0. Physical focal1035.800s, physical audit9.768s;
+readout focal115.476s (8501jobs), readout audit7.549s. Six exact audit names
+accepted. No terminal-counter movement and no selective header seal yet.
+Archive153915bytes, SHA256
+f75abadc466198d1db07eefeafc00894803ea9cc4b4127c2f30b266ae3b75b6b.
+Runner evidence digest621fe50307203827833649e14d7363caa8d48818606e06357a928bb9b765083d.
+
+Transport pending: files.download twice and the Colab Files/Ladda ned menu
+were invoked, without restarting any compiler. No archive appeared at the
+expected local Downloads path; independent reader rejects ARCHIVE_SIZE
+because the file is absent. This is not a mathematical FAIL. Runtime/tab63
+retained, original archive intact in /content. Do not write the preservation
+ack or run the HOT suffix before independent local preservation succeeds.
+Cell2 currently contains only files.download; never rerun cell1.
 
 Opened2026-09-07T14:37:04.898397UTC; Colab account lluiseriksson@gmail.com,
 CPU/highRAM50.99028778076172GiB, noGPU. Notebook own-code confirmation
