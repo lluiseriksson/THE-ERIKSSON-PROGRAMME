@@ -28,6 +28,24 @@ against all preserved parents. Then prepare a fresh-clone cold gate of the
 six exact paths listed in NEUMANN-IMAGE-SEAM-PROMOTION-PATHS-20260907.txt.
 No restoration of the project build outputs in that cold checkout.
 
+## Cold instrumentation prepared, not launched
+
+Source checkpoint: 0f43fbdc51650fb2e8d77282d1c3af18b7f406f0.
+Runner: scripts/colab_neumann_physical_image_seam_promoted_cold.py.
+Independent reader: scripts/verify_neumann_physical_image_seam_promoted_cold.py.
+Both pin the six production Git blobs, five output objects and eleven names.
+Their source/blob/name/command contracts agree (read-only AST check,
+0.0944694 seconds, observed RSS 14905344 bytes). The reader synthetic
+self-test accepts its fixture and rejects eight corruptions; the pinned
+axiom gate accepts two fixtures and rejects nine (0.1260639 seconds,
+observed RSS 16736256 bytes). None of this is a compiler run.
+
+Queue: lake build YangMills.RG.NeumannPhysicalImageSeam, then lake env lean
+YangMills/RG/NeumannPhysicalImageSeamAudit.lean. Only Colab CPU/high RAM.
+Keep the launch blocked until the pending HOT archive is durably preserved
+and independently verified. The pinned original cold bootstrap is reused;
+no extra workflow dispatch, no local Lean, no project build-cache restore.
+
 ## Scope that survives promotion
 
 The literal physical Green is used. The fine/block equality c*m(mu)=L^j*B
