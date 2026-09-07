@@ -10,6 +10,15 @@ source108f30f9 and blob8abe85a4 unchanged. It does not rerun the sealed prefix.
 
 ## Inputs inspected
 
+Update 2026-09-07 (Addenda1198-1200): fixed-source coordinate permutation
+and source-order series reindexing now pass bounded HOT diagnostics.
+The latter preserves the nested order without exchanging sums. Its first
+rewrite FAIL is preserved; the explicit paired equality retry passed.
+The physical endpoint-transfer draft remains uncompiled, and the physical
+seam is not inferred from these algebraic diagnostics. Next: materialize
+the sealed physical prefix as an explicit prerequisite and compile that
+transfer, then combine with the reindex theorem and boundary-size dictionary.
+
 - NeumannPhysicalHalfCellReflection: simultaneous reflection of BOTH
   endpoints of the literal normalized full Green, at fine boundary N*B,
   where N=L^j and B is an integer. This is not fine-translation invariance.

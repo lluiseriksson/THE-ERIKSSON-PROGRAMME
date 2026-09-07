@@ -48336,3 +48336,25 @@ Source n remains fixed in all dimensions; translation and parity move only
 in the selected coordinate. General integer c gives boundary c*m_mu.
 This is HOT algebra, not yet the physical seam or regional inverse.
 No production PRE retirement,20/41,TermSource=0,window15 not attained.
+
+## Addendum 1200 — source-order boundary series reindex HOT (2026-09-07)
+
+V1 source6448e892a9da085b6c7ee46e0dd3f74e74742726 failed at line65:
+`simp made no progress`. The first two declarations compiled, but the whole
+draft is FAIL; no partial success is used as a seal. Preserved archive:
+de88644a979f855ebcecde5b585322f24d3e66b227eddc737a5022022679a1ed.
+The repair supplies the paired image equality explicitly; no statement or
+hypothesis changes. V2 source7800e4311399022e85c4a8b1f540c44551773f75,
+runnera83f532800448580be8fb87d232bf5d1f80ba886, same retained Colab.
+Proof exit0 in6.086064s; three declarations: one {propext,Quot.sound},
+two standard permitted trios. Seven command/log records, source, output,
+runner and both parent evidence chains independently verified locally.
+Reader0.112951s/19038208bytes observed RSS; five corruptions rejected.
+PASS archive de851585e93f20a82b242512f9ffe6e33ae22ed12fc3ec5c1360bf1c34db3426;
+output00fc69dd25faabf8cd91c70ac1dd9bc8e0493038f850a50597a223725c6a3659.
+Durable:validation-evidence/neumann-boundary-series-hot-v2-20260907.
+The finite branch sum and outer integer tsum are reindexed separately;
+there is NO exchange of summation order. The identity of totalized tsums
+does not establish convergence; the physical consumer keeps summability.
+HOT diagnostic only. Physical endpoint transfer remains PRE-VALIDATION.
+20/41,TermSource=0,window15 not attained; no production PRE retirement.
