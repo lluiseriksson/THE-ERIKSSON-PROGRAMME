@@ -1,5 +1,16 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT 2026-09-07 (supersedes every LIVE note below): runtime
+e7dbc45c00b1 was deleted after scalar1183 and phase1185 preservation.
+No Colab calculation is active. Source327a79d3e contains five PRE-VALIDATION
+common-block translation lemmas for the literal full Green. Runner
+6a6a6b2252421b57d3de0a18814098598094ba64 is prepared, not yet executed.
+Its independent reader tests accepted one synthetic fixture and rejected17;
+this is instrumentation evidence, NOT a Lean result. Next: publish notebook,
+then one fresh CPU/high-RAM diagnostic, retaining the runtime for bounded
+repair and evidence. See docs/NEUMANN-ACTUAL-SCALAR-NEXT-20260907.md.
+20/41, TermSource=0, window15 not attained. Do not rerun historical cells.
+
 Prepared next HOT478c40e6: sourceadfef2b5b has directionwise rectangle masks,
 full-period sides retained. Repro first, physical draft second; both PRE.
 Templates are deliberately non-executable until the current cold report is

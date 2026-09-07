@@ -145,3 +145,17 @@ Runtime e7dbc45c00b1 disconnected/deleted around00:51UTC after preservation.
 Next work is the five-step literal two-endpoint composition above. Both
 scalar and phase scratch inputs now have checked diagnostic evidence;
 their production promotion and the consumer itself are still pending.
+
+## Prepared common-translation diagnostic (not launched)
+
+Source327a79d3e88e9580a2c37238f25d1f1f6b9f8429 contains the five outputs
+above in tmp/NeumannActualCommonBlockTranslationDraft.lean, PRE-VALIDATION.
+Runner6a6a6b2252421b57d3de0a18814098598094ba64, SHA256
+97c33c88e4f00d4af9752394c3f79231d0a988a3791b8ed845e9ee3f99f0bceb.
+Queue: fresh prerequisites; scalar3; phase3; translation5; clean-source
+check. Three scratch oleans are materialized sequentially, no free Green
+covariance or inverse identity is inserted. The old scalar and phase inputs
+retain their exact blob hashes from1183/1185.
+Independent reader synthetic tests: one valid fixture,17 invalid rejected,
+queue AST agrees; exit0,0.3737953s,20922368bytes peak RSS. This verifies
+instrumentation only. Notebook is prepared; no new runtime yet.
