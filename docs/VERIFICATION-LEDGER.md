@@ -48639,6 +48639,26 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1233 — opposite exponential difference HOT PASS, 2026-09-07
+
+Base29a48ac4bb1058cd71b74f65029e918d49e74b60; overlayb3ca1ca8f749517014c934ff956116ecab19210d;
+runnerad518f8453156e5f7400ef0eff7f19a8fa8ae2ac, hash
+7053f405bdfd1094832169126607bd4bfde0c9a49bb68225b297af497eadeb82.
+One reproexit0/4.507144569s, two exact allowed-trio audits.
+Archive026b3918979f14f7d3ca4f6e28135358e3ec58d76c1e7885973b0c32047972cb,
+stored validation-evidence/neumann-opposite-difference-hot-v1-20260907/
+neumann-opposite-difference-hot-v1.tar.gz. Independent pinned reader
+exit0/0.3743498s,18173952RSS; exact files, hashes, command and names verified.
+Logf04c1d6a40e7ba5fb99ca826fa91d906b7868abf0485d4bcb1c3e89d8de192c0.
+Scalar opposite exponential and integer plane-wave differences only:
+no finite wrap, boundary-mask instantiation, physical action or inverse claim.
+HOT not cold; no draft PRE-VALIDATION header retired.20/41,TermSource0 unchanged.
+
+After all three archives were independently verified and copied, runtime
+reported NO_LEAN_LAKE_ACTIVE and closed2026-09-07T15:30:05.616854UTC.
+Opened14:37:04.898397UTC; connected53m00.718457s, including the transport
+incident and two prepared HOT suffixes. Reconnect UI confirmed, tab66 closed.
+
 ## Addendum1232 — literal exponential alias selector HOT PASS, 2026-09-07
 
 Base cold checkout29a48ac4bb1058cd71b74f65029e918d49e74b60; overlay

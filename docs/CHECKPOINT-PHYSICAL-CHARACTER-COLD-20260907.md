@@ -1,4 +1,15 @@
-# Physical character promoted cold gate — PASS, independently preserved
+# Physical character cold and prepared HOT suffixes — completed and preserved
+
+FINAL: cold ledger1231 and HOT1232/1233 all PASS, downloaded independently
+verified and copied to validation-evidence. Cold selective seal232874960.
+Selector archive8b72d4250c6a2b8737dbbee6c719e647b7dd0377bc9174f48f9bbaad753c6d2c;
+opposite archive026b3918979f14f7d3ca4f6e28135358e3ec58d76c1e7885973b0c32047972cb.
+Runtime reported NO_LEAN_LAKE_ACTIVE, unassigned15:30:05.616854UTC;
+Reconnect UI confirmed and tab66 closed. No active session remains from
+this checkpoint. Historical launch and transport notes below are superseded.
+Next: promote exact HOT selector/opposite bodies and compose the literal
+congruence selector with the physical integer-character integral. No new
+physical source equation, inverse, uniformB0 or window15 attainment yet.
 
 RESOLVED: Colab Files/Ladda ned from recovered tab66 delivered the archive
 to Downloads. No compilation repeated. Independent exact Git-blob reader
