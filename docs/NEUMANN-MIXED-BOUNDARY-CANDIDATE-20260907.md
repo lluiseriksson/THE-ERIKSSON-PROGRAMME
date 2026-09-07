@@ -2,6 +2,34 @@
 
 STATIC DESIGN ONLY. No new compiler result, source equation verification,
 physical inverse, uniform B0 or scalar-window attainment is claimed here.
+
+## Current frontier after Addendum1202
+
+The historical paragraphs below record the earlier design audit. M3 is no
+longer wholly open: the literal full Green common block translation and
+simultaneous half-cell reflection are cold-sealed in Addendum1197. Their
+exact entry points are neumannActualNormalizedFineGreen_commonBlockShift
+and neumannPhysicalGreen_blockBoundaryReflection_massUniform. The latter
+retains all source mass/strip windows; the former is the integral identity
+with arbitrary mass/a and no added positivity condition. Neither is an
+arbitrary fine-translation theorem.
+
+Addendum1202 preserves the HOT all-reflecting physical seam and both ghost
+values, with the explicit fine/block boundary equality. Its production graph
+at0f43fbdc5 is currently under a separate cold gate. This does not implement
+the mixed family, its coverage, or the periodic seam.
+
+For a FULL coordinate with fine period P=L^j*N, the remaining periodic seam
+can use common block shift N in that coordinate. Pointwise transfer is
+G(x+P,y)=G(x,y-P); at source image n+k*P, the source index becomes k-1,
+without a parity flip. The branch subtype must remain unchanged in that
+FULL coordinate. This algebraic route is a design obligation, not a theorem
+already obtained from the all-reflecting seam. The factor L^j is required:
+replacing P by a non-block-aligned fine period is not licensed by M3.
+
+M1/M2 and mixed M4 remain open. In particular, use exactly one branch in
+FULL coordinates and preserve the non-strict carrier fit. The full-lattice
+physical point-source equation remains an independent prerequisite.
 The live directional-mask cold gate and its prepared HOT composition are
 unchanged. This note refines the already open full/proper-side design gate;
 it is not permission to replace the existing source kernel silently.
