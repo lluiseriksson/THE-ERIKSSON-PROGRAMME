@@ -48448,3 +48448,24 @@ no proof or hypothesis changes. No arbitrary fine translation, convergence,
 mixed-family coverage, regional inverse, B0 or window15 follows from this seal.
 20/41,TermSource=0 remain unchanged. Separate HOT series diagnostic follows
 only after this archive's preservation; it cannot inherit a cold seal.
+
+## Addendum 1206 — periodic-series HOT prerequisite timeout (2026-09-07)
+
+Cold parent b1ec09858327c78525c19bc543966158aabad5a2cd98ce1648a72eb9b75bb958
+remains sealed in 033269dc75bd157e9144c004b016acf7647ed1b3.
+HOT source 0bdb056bad23b77adda9d6b13a4917386836e174; retained checkout
+24dc691e451ab9b6684f950a3fdd5a78e913997f. Repro exit0/2.974303405s;
+prerequisite NeumannActualFullGreenReflectionSummability timeout after
+120.046538084s, real child exit -9. Series and summability NOT EXECUTED.
+This is preparation timeout, not a mathematical refutation or a cold PASS.
+Archive 26727bytes 292b34839d0e8a5725baae27bc8012c908bb206ea3e362f0fd1030b9c2f6af01
+downloaded automatically, readback verified, preserved under
+validation-evidence/neumann-periodic-series-hot-v1-failure-20260907.
+All 13 manifest entries and five recorded log hashes checked independently;
+one unmanifested __pycache__/full_green_owner_exact_axiom_gate.cpython-313.pyc
+prevents acceptance by the strict PASS reader. Failure evidence retained intact.
+Local inspection exit0/0.177317s/16011264bytes observed RSS; no local Lean.
+Retry v2 changes only output directory, prerequisite limit to 900s and
+archive construction to exactly manifest-listed files plus manifest.json.
+Lean source hashes, targets, audit names and 120s target limits unchanged.
+No PRE retirement or counter movement:20/41,TermSource=0,window15 not attained.

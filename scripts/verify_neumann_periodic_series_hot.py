@@ -61,17 +61,22 @@ def verify(files,parent,parent_hash,gate):
  require(set(files)==expected,'FILE_SET')
  return dict(status='PASS',cold_seal=False,source=SOURCE,parent_sha256=parent_hash,audits=audits,records=records,outputs={n:sha(files[n]) for n in ['series.olean','summability.olean']})
 def main():
+ global OUT,RUNNER
  ap=argparse.ArgumentParser()
+ ap.add_argument('--revision',choices=['v1','v2'],default='v1')
  for n in ['archive','parent-archive','helpers']:ap.add_argument('--'+n,type=Path,required=True)
  for n in ['sha256','parent-sha256']:ap.add_argument('--'+n,required=True)
  a=ap.parse_args()
+ if a.revision=='v2':
+  OUT='/content/neumann-periodic-series-hot-v2'
+  RUNNER='bfe10c94523d81921940de1916aa40cc6c1e391cc049637ef8164aa17958e57a'
  old=cold.helper(a.helpers,'verify_cmp99_full_green_residue_cold.py',PINS['verify_cmp99_full_green_residue_cold.py'])
  gate=cold.helper(a.helpers,'full_green_owner_exact_axiom_gate.py',PINS['full_green_owner_exact_axiom_gate.py'])
  old.PREFIX='hrpoly-'+cold.REV+'-evidence'
  parent=cold.verify(old.read_archive(a.parent_archive,a.parent_sha256),gate,old)
  parent['archive_sha256']=a.parent_sha256.lower()
  raw=a.archive.read_bytes();require(sha(raw)==a.sha256.lower(),'ARCHIVE_HASH')
- rawfiles=unpack(raw);prefix='neumann-periodic-series-hot-v1/'
+ rawfiles=unpack(raw);prefix=Path(OUT).name+'/'
  require(all(n.startswith(prefix) for n in rawfiles),'PREFIX')
  files={n[len(prefix):]:v for n,v in rawfiles.items()}
  print(json.dumps(verify(files,parent,a.parent_sha256,gate),sort_keys=True,indent=2))
