@@ -27,12 +27,21 @@ scripts/colab_neumann_boundary_orbit_diagnostic.py, blob SHA-256
 New fresh diagnostic directory /content/hrpoly-neumann-boundary-orbit-diagnostic-v2.
 Queue: explicit ReflectionOrbitAlgebra build, unchanged orbit repro (120 s),
 clean-source check. This is NOT a production seal and does not recompile the
-physical reflection prefix. It has not been launched.
+physical reflection prefix. Launched once on 2026-09-07T04:04:29.153909+00:00,
+Colab tab24, CPU/high RAM 50.99 GiB, account lluiseriksson@gmail.com,
+diagnostic child PID5068. Transport hash gate PASS. Notebook checkpoint
+c642d4612cb0d511febc5b351581272b14234e88. No terminal verdict yet.
+Log: /content/orbit-diagnostic-v2-launch/diagnostic.log.
+Final preservation: /content/orbit-diagnostic-v2-preservation-20260907.tar.gz.
+Do not reexecute the cell. The old tab23 has no live runtime.
 Independent reader scripts/verify_neumann_boundary_orbit_diagnostic.py has a
 synthetic PASS fixture and five rejected corruptions (including missing
 prerequisite stage, nonzero exit and sorryAx with consistent log hashes).
 Measured local test: 0.224071 s, 19529728 bytes observed RSS; no compiler used.
-Prepare the pinned Colab launch and read its independent verdict next.
+Read the independent verdict and preserve the archive next. While it runs,
+tmp/NeumannPhysicalBoundaryTransferDraft.lean records the pointwise transfer
+G(Rx,y)=G(x,Ry), consuming sealed physical covariance and R involutivity.
+It is PRE-VALIDATION, uncompiled, and does not assume transposition or seam.
 
 The launch instructions below are historical records, not active processes.
 
