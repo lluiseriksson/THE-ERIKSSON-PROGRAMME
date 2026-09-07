@@ -1,5 +1,18 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+LIVE update: PID20295 independently observed with Lake21319 and active Lean
+children; integral_focal is running. Bootstrap/guards/lake_update/mathlib_pin/
+cache_get exited0. Do not interpret the lack of focal output as a dead job.
+Next bounded scratch source5fa0ee8e5d0d268f7595cdc2ebc62d677b1d4f04:
+tmp/NeumannPhysicalEndpointPhaseRepro.lean (Mathlib-only) then
+tmp/NeumannPhysicalEndpointAliasReadoutDraft.lean (actual two fine endpoints).
+Both NOT CHECKED; exact2file text/import guards PASS (.3086198s,13893632RSS).
+No next compiler launched and no overlapping build. The actual spacing name
+is cmp89Eq249FineLatticeSpacing (not FineLatticeSpacingLj). The phase theorem
+retains L^j explicitly; the readout only combines endpoints after precision
+acts on its internally generated source solution. Prepare a pinned suffix
+after cold evidence is preserved; do not claim it as an operator identity.
+
 LIVE 2026-09-07T16:32:15.323593Z: new cold checkout launched ONCE on the
 retained CPU/highRAM runtime, tab68, PID20295. No other Lean/Lake active at
 launch. Source ba2998c4f22707ed0f828c741ae6aa1efb924a36; runner and reader
