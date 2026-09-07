@@ -156,3 +156,14 @@ or the separately prepared masked-difference HOT queue. Its three goals
 are volume character integral, literal physical phase identity, and normalized
 physical integer-character integral. Even a future PASS would leave the
 alias-weighted fine source equation and finite action interchange open.
+
+The companion PRE-VALIDATION `tmp/NeumannAliasPrecisionReadoutDraft.lean`
+applies the literal target-phase sum to the already constructed Eq246 solver
+equation. It accepts only the named nonvanishing domain, not a source or
+solution family; the physical specialization must use the existing
+mass-uniform domain producer, not reinstate mass>0. Combining endpoint phases
+is valid here AFTER precision application. It is not a replacement of the
+two-endpoint Green by the withdrawn one-displacement Eq248 kernel.
+This draft has passed only the text guard, not Lean, and is outside both
+queues currently fixed. The next composition still needs the exact alias
+sum, normalized physical character integral and actual finite action.
