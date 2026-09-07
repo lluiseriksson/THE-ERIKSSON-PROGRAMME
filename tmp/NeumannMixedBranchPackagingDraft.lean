@@ -17,7 +17,11 @@ def neumannMixedBranch (full : Bool) : Type :=
   | false => Bool
 
 instance neumannMixedBranchFintype (full : Bool) : Fintype (neumannMixedBranch full) := by
-  cases full <;> exact inferInstance
+  cases full
+  · change Fintype Bool
+    exact inferInstance
+  · change Fintype Unit
+    exact inferInstance
 
 def neumannMixedBranchCode (full : Bool) : neumannMixedBranch full → Bool :=
   match full with
@@ -29,6 +33,7 @@ theorem neumannMixedBranchCode_injective (full : Bool) :
   cases full
   · exact Function.injective_id
   · intro x y _
+    change Unit at x y
     exact Subsingleton.elim x y
 
 theorem neumannMixedBranchFamily_card_le {d : ℕ} (full : Fin d → Bool) :
