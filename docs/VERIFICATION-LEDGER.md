@@ -47944,3 +47944,23 @@ parameters, endpoint covariance, uniform B0 or window15. No production
 PRE mark removed;20/41 and TermSource0 unchanged.
 Runtime retained for the already prepared bounded common-block phase HOT;
 no scalar reexecution. Parent evidence must be pinned before that HOT.
+
+## Addendum 1184 — common-block phase HOT v1 first failure (2026-09-07)
+
+SOURCE93264d4b654022f51cd1d1f0ce7963de26408d4b;
+runner e5cf6e006dbcbfcd97b32e511f99253ba6a78a18. Retained scalar runtime,
+PID13365 launched00:36:57.035934UTC. Prerequisites8581jobs completed;
+draft exited1 in7.595370382s, no timeout. First real error at17:5:
+`unexpected token 'alias'; expected '_' or identifier`.
+The identifier is a Lean keyword. Later parse/unknown-constant diagnostics
+are preserved, not interpreted as additional mathematical failures or
+partial valid declarations. No headline accepted from the failing file.
+
+Independent VERIFIED_FAILURE, archive
+cc658a4a86a1fbdce81bdace12a7f567b79a8ea77a0ede78ab0a044b0f5cec42;
+report f425a14c048d34ef01932e3b4d2d9be233b97a082cd9dda86a04d5f2177f3b63.
+Complete original preserved under
+validation-evidence/neumann-common-block-phase-hot-v1-fail-20260907.
+Local reader0/0.3877147s/23363584 observed peak RSS. Runtime retained for
+the bounded identifier-only repair; no full bootstrap or cold seal repeated.
+20/41,TermSource0,window15 unchanged; all phase PRE marks retained.
