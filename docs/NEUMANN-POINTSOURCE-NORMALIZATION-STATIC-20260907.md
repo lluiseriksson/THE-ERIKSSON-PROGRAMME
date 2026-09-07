@@ -194,3 +194,17 @@ counting coefficient identity. N=L^j on the Fourier side must be explicitly
 identified with the generated terminal block side, rather than identifying
 parameters merely because both describe a scale. No new uniform bound,
 physical inverse or terminal-field producer is claimed here.
+
+## Density kernel versus counting inverse
+
+The literal `cmp89Eq246NormalizedPhysicalFineToFineGreen` is only the
+normalized Brillouin integral of the full alias integrand: its definition
+does NOT insert an additional fine-cell volume. Its source is the density
+delta `xi^(-d) * delta`, as fixed by
+`cmp89Eq243NormalizedFinePointSource`. Consequently the pending counting
+inverse must multiply that density kernel by `xi^d` exactly once; this is
+separate from the already sealed cancellation inside the Qprime mass term.
+Expected future action: A(G_density) = xi^(-d)*delta, then
+A(xi^d*G_density) = delta. Neither equation is proved by this static note.
+An inverse criterion requiring a counting point source must not consume
+the unscaled density kernel merely because its name says normalized.
