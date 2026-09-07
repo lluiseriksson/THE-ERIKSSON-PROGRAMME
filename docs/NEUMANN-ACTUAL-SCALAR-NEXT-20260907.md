@@ -85,3 +85,24 @@ verified PASS. Local AST and both unpinned rejection gates passed in
 0.1843105 seconds with observed peak RSS 22675456 bytes; no compiler or
 network ran in that test. Current Colab scalar prerequisites remain in
 flight; no second execution has been launched.
+
+## Scalar PASS preserved; bounded phase HOT launched
+
+Scalar diagnostic now independently VERIFIED_DIAGNOSTIC_PASS, ledger1183,
+preservation f1e17f75aef75fbc589136722a33a5fc7edde93d. Three exact audits,
+actual draft9.199243541s; no production seal or counter change.
+
+Common-block phase HOT source93264d4b654022f51cd1d1f0ce7963de26408d4b,
+runner e5cf6e006dbcbfcd97b32e511f99253ba6a78a18,
+hash d71ab21813ec71cf508618e2ea821f01f635056179b06d04379d4ca9ecb730c0.
+Reader and synthetic tests196b23916: one synthetic accepted, seven
+mutations rejected;0.3176427s/24297472 observed RSS. The initial synthetic
+fixture used Windows path rendering for a Linux command; the exact-command
+gate rejected it. Fixture corrected, no Colab run consumed by that error.
+
+Same runtime e7dbc45c00b1, single HOT PID13365 launched
+2026-09-07T00:36:57.035934UTC after the runner hash gate passed.
+Log `/content/launch-neumann-common-block-phase-hot-v1.log`;
+archive `/content/neumann-common-block-phase-hot-v1-evidence.tar.gz`.
+Do not reexecute. Preserve original on first error or PASS. Its three
+phase lemmas alone prove neither full Green covariance nor reflection.
