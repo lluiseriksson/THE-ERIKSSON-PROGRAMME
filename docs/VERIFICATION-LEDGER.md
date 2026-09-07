@@ -48639,6 +48639,46 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1238 — typed congruence and literal alias integral HOT PASS
+
+2026-09-07. The same retained Colab CPU/highRAM runtime produced three
+separate, single-launch diagnostics after Addendum1237. No cold rebuild was
+used to diagnose these short proof steps, and no Windows Lean/Lake ran.
+
+- Typed integral equality: source4541fea172fb8a9a1a0dd500dae931a90fe2d409,
+  exit0/3.907952s, one exact allowed-trio declaration. Archive
+  `a53c4dbcb6dcfdd9d955c43845ecaec6811df247463b7636dd79aee2dd822334`,
+  preserved in cabc3299c. Independent verification exit0/.5123481s,
+  17940480 observed peak RSS. This does not identify the cause of the failed
+  rewrites; it establishes that the explicitly typed equality elaborates.
+- Normalized congruence: sourcef6e9516367e77fac1f70e2f3eb1fe855850ceea2,
+  exit0/4.419303951s, three exact allowed-trio declarations. Archive
+  `13e358130ca38b16a9783eeb8ff9042491ad8a0f41cb15fab7b6571c0e69dd25`,
+  preserved in858bbc063. Independent verification exit0/.4825149s,
+  21757952 observed peak RSS. Uses typed integral equality, congrArg and
+  associativity; it does not change the normalization or assumptions.
+- Literal physical-Brillouin alias integral: source
+  `858bbc063675f71f5cc60bf935d957e63e924147`, exit0/8.518998451s;
+  four exact allowed-trio declarations, archive
+  `a1dc16653121c137d2beb05ff52abcf086dd75353ae06d17de097b319326b44f`,
+  preserved in3f9b74616. Independent verification exit0/.4647187s,
+  20946944 observed peak RSS. The two linter warnings both concern the same
+  redundant ring tactic; they were not suppressed or counted as errors.
+
+All archives were downloaded by the assistant and checked against their
+Colab SHA256, exact source/runner blobs, member manifest, child exits,
+commands, log hashes and named axiom records. These are HOT-only results.
+The four final names are neumannZeroResidue_exists_integerQuotient,
+neumannIntegerQuotient_phase, neumannIntegerQuotient_zero_iff and
+neumannCenteredAlias_physicalIntegral (namespace YangMills.RG).
+
+Honest scope: the normalized integral of the literal finite alias sum is
+N^4 times the integer equality delta. This is not yet the physical operator
+equation, density/counting conversion, regional inverse, B0 or window15.
+Production promotion ba2998c4f preserves the proof bodies and remains
+PRE-VALIDATION while its separate fresh cold gate runs. 20/41 and
+TermSource=0 are unchanged. Earlier failures remain preserved as failures.
+
 ## Addendum1237 — explicit-argument rewrite repro failure preserved
 
 Overlaycd95bb263, runnercdd7712df. Same retained checkout; rewrite_repro
