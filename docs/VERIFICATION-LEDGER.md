@@ -48639,6 +48639,19 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1236 — rewrite-only repro catches insufficient repair
+
+Overlay6925a9057, runnerca0f0dfb5, same retained cold checkout1885a6c08.
+rewrite_repro exit1/4.935856754s, first error19:6: integral_mul_const
+still fails matching after explicit beta reduction. Physical stage NOT RUN.
+No new bootstrap. The two other generic rewritten goals printed allowed
+axioms, but the failed audit block is not accepted as PASS. Next repair must
+give the integral lemma its measure and arguments explicitly.
+Archive1e058bca0a18922fa760b17f179ab69d11cc931de155137001835bf3ee3ddd62,
+downloaded and independently manifest/source/runner/first-stage verified,
+0.2703705s,18378752RSS,exit0. Evidence under validation-evidence/
+neumann-alias-physical-integral-hot-v2-failure-20260907.20/41,TermSource0.
+
 ## Addendum1235 — physical alias integral HOT first failure preserved
 
 Overlay5b063871215a4b9b9d4c13b9935c035456b7eb5d, base1885a6c08,
