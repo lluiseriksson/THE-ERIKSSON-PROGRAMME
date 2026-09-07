@@ -48358,3 +48358,20 @@ there is NO exchange of summation order. The identity of totalized tsums
 does not establish convergence; the physical consumer keeps summability.
 HOT diagnostic only. Physical endpoint transfer remains PRE-VALIDATION.
 20/41,TermSource=0,window15 not attained; no production PRE retirement.
+
+## Addendum 1201 — physical endpoint transfer HOT PASS (2026-09-07)
+
+Sourceca988d2a270e89f38a29b89949212c5ccbfeee1c; runner587452cdc,
+runner hash14d59004d9c4c90d06891eff0c8a1b534187ae8aa9a3dbb55d64f6061b22324b.
+Retained Colab base108f30f9; explicit physical reflection prerequisite8653jobs,
+exit0 in1904.377419s. New transfer theorem exit0 in13.014479s, exact allowed
+trio. It derives G(Rx,y)=G(x,Ry) from simultaneous reflection and involution,
+not from transposition or a supplied kernel law. All mass/strip windows stay.
+Eight command/log records and the parent archive independently verified.
+Local verification0.159543s,17805312bytes observed RSS; five corruptions rejected.
+Archiveb74d288c83bf7b53f5541f547eaf0b8fe7ed854e731af505329bd05725a7c525;
+output61eebc62399c91d9ac3b77dbeb0631a36a93f661d32cc00ca5fe611976d9b653.
+Durable:validation-evidence/neumann-physical-transfer-hot-v1-20260907.
+HOT only: no production PRE retirement or counter change. Next bounded
+assembly uses this output only after recursive parent evidence verification.
+20/41,TermSource=0,window15 not attained.
