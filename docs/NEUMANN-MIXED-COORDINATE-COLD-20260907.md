@@ -1,4 +1,9 @@
-# Mixed-coordinate cold gate — PRE-VALIDATION
+# Mixed-coordinate cold gate — PASS, ledger1214
+
+Sourcefc95d9151 focal63.449s/audit4.324s, fiveexactnames. Archive
+777b7cf0cfa1765b64d87721b9799b58aef9eb8a60502702845cd6224aa5689f
+downloaded and independentlyverified; selectiveheadersseal d1f8d8159.
+Historical preparationcontract follows. No window15 claim.
 
 Sourcefc95d9151248b428474028e2bd4a603a959f2bc9. Exact proof bodies from
 HOT4d6cd7ea7 (ledger1213). Body and text guardPASS0.1237052s/14336000RSS.

@@ -48639,6 +48639,26 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1216 — fixed-source HOT v2 PASS, 2026-09-07
+
+Sourceddbdd8913f91ff778594756bbecaad0d804dfb6c, runner35a1f574a.
+Exact one-line typed projection repair; no hypothesis/statement change.
+Repro exit0/1.618791716s without axioms; draft exit0/3.724692871s.
+Three exact names: insert-source injectivity has no axioms, two image
+injectivity declarations use permittedtrio. All six stages exit0; unchanged
+coldparentfc95d9151 independentlyreverified. This remains HOT, not coldseal.
+Archive38161bytes SHA256
+85070e6d0aa48435546728425f1261863ce8130205fd1b6e1cba5e3585b1413f;
+stored validation-evidence/neumann-mixed-fixed-source-hot-v2-20260907.
+Outputmixed.olean0195bfad68ba30f57b7b43cc8a3cde9915e20f740f0d12fb2bcc8bdef987a315.
+Transfer17.750s/25452544peakRSS; recursive reader0.1179987s/18632704RSS,
+exit0. Readerfixtures1accepted/11rejected,0.2724722s/19623936RSS.
+Runtimeclosed09:09:52.172596UTC after all three archivesverified, opened
+08:57:07.680139UTC (about12m45s). Reconnectconfirmed; all tabsclosed.
+Fixed-source injection is not full-family surjectivity or a norm budget.
+Physicalcarrierclassification, inverse equation, B0 andwindow15 remainopen.
+20/41,TermSource0unchanged. Failedv1 retainedunchanged inledger1215.
+
 ## Addendum1215 — bounded fixed-source HOT failure preserved
 
 Sourceb785249132875dbed2ac6e301fd765e71745c670, runner8975c73c0;
