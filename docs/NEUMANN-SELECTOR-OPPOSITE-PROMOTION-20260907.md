@@ -1,6 +1,18 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
 CURRENT: cold PASS independently preserved, ledger1234, evidenced9a505597.
+CURRENT HOT UPDATE: v1 FAIL is independently preserveda123d3675/ledger1235.
+Minimal proof repair40dc905d2, generic rewrite repro6925a9057. v2 runner
+ca0f0dfb53654f1dc1d30c042b06da0e0749fff3, SHA256
+0d442fe88521d35feb2ae041ac28b0f45d72097d74ef2c6948cbacafd52dfb5d,
+has been launched ONCE on the same tab67/runtime. No cold rerun.
+Read /content/alias-physical-integral-hot-launch-v2/launch.log and pid.txt.
+Reader scripts/verify_neumann_alias_physical_integral_hot_v2.py at0c6fdf519;
+synthetic1accepted/10rejected,0.4971141s,22401024RSS,exit0.
+v2 checks parent failure archive and preservation ack; permits replacing
+only the exact prior draft hash. Queue rewrite_repro -> physical_integral.
+Preserve its original archive and first real result before repair or cleanup.
+The v1 pending-status notes below are historical; cold seal6938dd8e7 exists.
 Archive486a1c48e4ec4175f35800b75c1cac0334e53818ba7d536e64e000299a030985.
 Four exact-header-only production/audit seals; no terminal-field movement.
 The SAME runtime/tab67 now runs the prepared HOT suffix ONCE,
