@@ -2,11 +2,16 @@ import sys,json,subprocess
 sys.path.insert(0,'scripts')
 import verify_neumann_periodic_series_hot as v
 import full_green_owner_exact_axiom_gate as gate
+revision='v2' if '--v2' in sys.argv else 'v1'
+if revision=='v2':
+ v.OUT='/content/neumann-periodic-series-hot-v2'
+ v.RUNNER='bfe10c94523d81921940de1916aa40cc6c1e391cc049637ef8164aa17958e57a'
 files={}
 for n in v.PINS:
  p=('tmp/' if n.endswith('.lean') else 'scripts/')+n
  files[n]=subprocess.check_output(['git','cat-file','blob',v.SOURCE+':'+p])
-files['runner.py']=subprocess.check_output(['git','cat-file','blob','89cdaaed0:scripts/colab_neumann_periodic_series_hot.py'])
+runner=('a912a05bfc27c6334331cadae49281060bde1bf0:scripts/colab_neumann_periodic_series_hot_v2.py' if revision=='v2' else '89cdaaed0:scripts/colab_neumann_periodic_series_hot.py')
+files['runner.py']=subprocess.check_output(['git','cat-file','blob',runner])
 cmds=v.commands('parenthash','/usr/bin/python3');records=[];audits={}
 for s,c in cmds.items():
  text=''
@@ -37,3 +42,12 @@ for field,value in [('status','FAIL'),('source','wrong')]:
  except Exception:rejected+=1
  else:raise AssertionError(field)
 print('SEMANTIC_REJECTIONS_PASS total='+str(rejected))
+bad=dict(files);bad['__pycache__/unexpected.pyc']=b'extra'
+try:v.verify(bad,{},'parenthash',gate)
+except Exception:rejected+=1
+else:raise AssertionError('unmanifested bytecode')
+bad['manifest.json']=json.dumps({n:v.sha(b) for n,b in bad.items() if n!='manifest.json'}).encode()
+try:v.verify(bad,{},'parenthash',gate)
+except Exception:rejected+=1
+else:raise AssertionError('manifested unexpected bytecode')
+print('ARCHIVE_SET_REJECTIONS_PASS revision='+revision+' total='+str(rejected))
