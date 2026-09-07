@@ -249,3 +249,21 @@ their hypotheses for the mixed series. Do not apply periodic wrap to an
 individual continuous-momentum phase: the relevant periodicity belongs to
 the constructed image sum. The operator/image interchange remains a later,
 summability-dependent step. This is a static route, not a new action proof.
+
+## Image delta collapse: use the varying-source family
+
+After operator/image interchange, a counting delta must select exactly the
+original source inside the half-open rectangle. Fixed-source injectivity
+alone does not exclude another source's image from that rectangle.
+The stronger sealed `neumannMixedCoordinateImage_bijective` already varies
+both the original interval point and its image index. Compare any image
+equal to an interior target with the target's zero-translation, unreflected
+representative. Its injective component then identifies both the original
+source and the image index. FULL has translation alone; PROPER uses the
+unreflected branch at zero. Coordinatewise assembly gives the corresponding
+unique tensor representative, without a new geometric counting bound.
+
+This is an inspected proof route, not a compiled delta-sum theorem. The
+zero-representative evaluation, dependent index equality and final singleton
+tsum still need explicit lemmas. It does not discharge the physical operator
+action or its interchange with the image series.
