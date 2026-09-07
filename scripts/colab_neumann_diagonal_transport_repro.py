@@ -14,7 +14,7 @@ SOURCE='5ed3699ca40d9ecd178bb6a24ad929375ee6d1c0'
 BASE='95c757465455c7e8cffcfcd6d9d18aa56f6d5083'
 PIN='65ee59400a92d3914555c2bc09de80af8e5ddd14b111ce9428a5732e62f39745'
 GATE='016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2'
-REV='neumann-diagonal-transport-repro-v1'
+REV='neumann-diagonal-transport-repro-v2'
 ROOT=Path('/content/hrpoly-neumann-coordinate-precision-diagnostic-v1')
 OUT=Path('/content/'+REV)
 RAW='https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
@@ -23,6 +23,7 @@ def sha(b):return hashlib.sha256(b).hexdigest()
 
 def main():
     assert not OUT.exists(),'NO_REEXECUTION'; OUT.mkdir()
+    scratch=ROOT/'tmp'/REV; scratch.mkdir(exist_ok=False)
     records=[]; status='FAIL'; error=None; audits={}
     env=os.environ.copy(); bins=list(Path('/content/lean-4.29.0-rc6-linux').glob('**/bin/lake'))
     assert len(bins)==1,'TOOLCHAIN'; env['PATH']=str(bins[0].parent)+':'+env['PATH']
@@ -47,7 +48,9 @@ def main():
         for name,path,digest in [('NeumannDiagonalTransportRepro.lean','tmp/NeumannDiagonalTransportRepro.lean',PIN),('axiom-gate.py','scripts/full_green_owner_exact_axiom_gate.py',GATE)]:
             b=urllib.request.urlopen(RAW+SOURCE+'/'+path,timeout=60).read();assert sha(b)==digest,'SOURCE='+path;(OUT/name).write_bytes(b)
         gate=types.ModuleType('gate');exec(compile((OUT/'axiom-gate.py').read_bytes(),'gate','exec'),gate.__dict__);gate.self_test()
-        text=run('repro',['lake','env','lean','-o',str(OUT/'NeumannDiagonalTransportRepro.olean'),str(OUT/'NeumannDiagonalTransportRepro.lean')])
+        source=scratch/'NeumannDiagonalTransportRepro.lean'
+        source.write_bytes((OUT/source.name).read_bytes())
+        text=run('repro',['lake','env','lean','-o',str(OUT/'NeumannDiagonalTransportRepro.olean'),str(source.relative_to(ROOT))])
         audits=gate.exact_axioms(text,set(NAMES));status='PASS'
     except Exception as e:error=repr(e);print('ERROR='+error,flush=True)
     finally:
