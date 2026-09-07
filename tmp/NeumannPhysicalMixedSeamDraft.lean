@@ -116,10 +116,12 @@ theorem neumannPhysicalMixedGreenSeries_properBoundary
           else neumannMixedImage (neumannPhysicalFullFlag N m) m source p.1 p.2 i) := by
       apply tsum_congr
       intro p
-      simpa only [hphase] using
-        neumannPhysicalGreen_blockBoundaryTransfer_massUniform
-          ha hrho hamplitude hradius hdenWindow hpairWindow hmass
-          mu B target (neumannMixedImage (neumannPhysicalFullFlag N m) m source p.1 p.2)
+      have h := neumannPhysicalGreen_blockBoundaryTransfer_massUniform
+        (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+        ha hrho hamplitude hradius hdenWindow hpairWindow hmass
+        mu B target (neumannMixedImage (neumannPhysicalFullFlag N m) m source p.1 p.2)
+      rw [hphase] at h
+      exact h
     _ = _ := neumannMixedImage_proper_tsum (neumannPhysicalFullFlag N m)
       mu hflag c m source (cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a target)
 
