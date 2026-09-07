@@ -279,3 +279,11 @@ domain gates are the existing base/reflected FullSolutionDomain, not a new
 uniqueness assumption. This does NOT identify the transformed arbitrary
 source with the reflected physical point-source vector: that is precisely
 R4, followed by target phase cancellation and R5 integral transport.
+
+R4 endpoint phase substep HOT verified1192: integer reflection involution,
+exact physical phase difference, target D^-1 and source D all compile.
+The period cancellation consumes integer endpoints and explicit N^-1;
+it is not a generic real-endpoint identity. Next identify the reflected
+literal point-source vector with R3's constructed transport, then cancel
+the target phase in the finite alias sum. Neither that consumer nor R5
+is closed by these four phase declarations. Production promotion remains open.

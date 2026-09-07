@@ -48158,3 +48158,32 @@ Independent reader verifies all source/runner/import hashes, exact queue,
 real exits, logs, outputs and axioms. Exit0/0.1217972s/18731008bytes peak RSS.
 VERIFIED_HOT_PASS,cold_seal=false. No production PRE retirement, window15,
 terminal row or TermSource instance.20/41,TermSource0 unchanged.
+
+## Addendum 1192 — integer coordinate endpoint phases HOT verified (2026-09-07)
+
+Source1421eb6a8d619f41b598f79f01957b2dfd11a277,
+runnerfdddedc173da78698ce31ca829261ec2b07c2c84,
+runner SHA25633f8961d643b7362adf8fa6124a4e20b4e615f39145c1eaadb71aa12eaa39b45.
+One launch02:37:36.286315UTC, PID35631, retained runtime f33828f71ae2.
+Prerequisites exit0/23.192673404s; physical exit0/7.386475406s;
+clean_after exit0. Four exact axiom blocks: endpoint involution uses
+{propext,Quot.sound}; phase identity, target and source use the allowed trio.
+Three style warnings are retained in physical.log, not suppressed.
+
+The endpoint is integer-valued, reflected as (N-1)-u at fine scale N=L^j.
+The target phase acquires D^-1 and the source phase D, using the actual
+wrapped alias momentum and the existing integer full-period theorem.
+No periodicity for arbitrary real endpoints or complete Green covariance
+is assumed or established. R4 still needs the point-source solver consumer
+and termwise cancellation; R5 still needs the actual integral transport.
+
+Archive63fc5a2fe1d33e321d5fbb3d99a410c50d3aad272e8d5d28505af69457dfb0f4;
+report518efd9ca8e7788a33b5c8afa407fe562aaa8b603fb2b7b9e4ab7725418e24e0;
+olean4471ab587680400d9b76d0af102964dbf4dcbea8fb826e6f81e2cbe50091e1fe.
+Preserved validation-evidence/neumann-coordinate-endpoint-phase-hot-v1-20260907.
+Independent reader checks exact input/runner/import hashes, queue, exits,
+logs, output and four axiom names. Exit0/0.1236504s/19955712bytes RSS.
+One valid artifact accepted and four corrupted variants rejected:
+source, exit, axiom-log, imported binary. Test0/0.1771573s/18948096bytes RSS.
+VERIFIED_HOT_PASS only; no PRE-VALIDATION retirement.20/41,TermSource0;
+window15 compatible and not attained.
