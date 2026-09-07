@@ -167,3 +167,12 @@ runner6a6a6b225, notebooka21430204. One execution only; no verdict yet.
 Log /content/launch-neumann-actual-common-translation-v1.log;
 archive /content/hrpoly-neumann-actual-common-translation-diagnostic-v1-evidence.tar.gz.
 Preserve and independently verify before bounded warm repair or cleanup.
+
+Observation recovery around01:06UTC: browser inventory unexpectedly became
+empty; no runtime termination was inferred. Reopened the SAME pinned notebook
+as tab19, which resumed the existing session. Colab session manager showed
+one session. Terminal runtime930e719ad438 confirmed original PID753 alive
+(elapsed04:46), stage scalar_prerequisites, previous stages exit0. No cell
+rerun, second process or new compiler source. Only tab19 remains open.
+The next coordinate-reflection design gate is separately recorded in
+NEUMANN-ACTUAL-COORDINATE-REFLECTION-DESIGN-20260907.md (static, not Lean).
