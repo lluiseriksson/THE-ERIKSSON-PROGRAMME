@@ -40,4 +40,32 @@ No cold result yet. The preceding HOT result is ledger1225, not this gate.
 Counters20/41, TermSource0, window15 open. Physical source equation,
 finite operator interchange and inverse remain separate obligations.
 The normalized-Haar and alias-character drafts are still uncompiled and
-are not part of this queue. No Windows Lean/Lake, Fable or exploratory CI.
+are not part of this cold queue. No Windows Lean/Lake, Fable or exploratory CI.
+
+## Prepared bounded HOT follow-up after cold evidence preservation
+
+To avoid a separate bootstrap, the retained runtime may now run the
+already prepared normalization diagnostic after the cold archive has been
+downloaded and independently checked. This explicitly supersedes the
+earlier evidence-only cleanup plan, not the mathematical cold queue.
+Never launch the HOT diagnostic while a cold child is active or before
+the preservation acknowledgement exists.
+
+Runner checkpoint `4f721f8143617fad259c5b2d013a98c1444014e3`:
+`scripts/colab_neumann_pointsource_normalization_hot.py`, SHA256
+`72b5a1542213276b49a1f68861724769f62b5af8367a84ce7270b83da8cb25ec`.
+It verifies the two draft blobs already present at the exact cold source:
+
+- NeumannTorusCharacterIntegralRepro.lean:
+  `78e060fc4b296ca2aa14b79281850e6f0921fd17df183f24b809d18754c64317`
+- NeumannCenteredAliasCharacterDraft.lean:
+  `33e22d4852cbdf17f2d44445528fef1afbd2106f9b63c74d6ca10c867a926b53`
+
+Queue: Mathlib-only Haar repro first; if it passes, alias prerequisites
+then alias character repro. Stop on first error; real exits and exact
+five names across two audits. No physical source equation claim, no
+PRE-VALIDATION retirement. Independent reader:
+`scripts/verify_neumann_pointsource_normalization_hot.py`; synthetic
+tests accepted1/rejected8, exit0/0.2097599s/19222528bytes observed peak RSS.
+Expected HOT archive `/content/neumann-pointsource-normalization-hot-v1.tar.gz`.
+After its evidence is preserved, disconnect the runtime cleanly.
