@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.IntervalIntegralPiCoordinateTransport"], "cwd": "/content/hrpoly-neumann-coordinate-precision-diagnostic-v1", "exit": 0, "log_sha256": "4cd4605e8f55f44fcb0a10d5e210057f856a45ab069cf5e2282889d9e2d4805a", "seconds": 1.6690355290002117, "stage": "prerequisites", "timed_out": false, "timeout_seconds": 600}

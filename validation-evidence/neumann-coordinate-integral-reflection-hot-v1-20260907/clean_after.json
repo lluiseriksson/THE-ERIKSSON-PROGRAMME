@@ -1,0 +1,1 @@
+{"command": ["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-neumann-coordinate-precision-diagnostic-v1", "exit": 0, "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "seconds": 0.009794339999643853, "stage": "clean_after", "timed_out": false, "timeout_seconds": 120}

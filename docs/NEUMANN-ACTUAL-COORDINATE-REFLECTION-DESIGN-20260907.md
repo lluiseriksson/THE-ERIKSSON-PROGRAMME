@@ -296,3 +296,14 @@ All three declarations compile with the allowed trio. No endpoint exchange,
 transpose Green, Q-star source or assumed covariance is introduced.
 R4 algebra is now diagnostically closed; R5 integration and physical domain
 production remain open. No production promotion or terminal count change.
+
+R5 measure leaf HOT verified1194: insertNth compatibility and product
+integral reflection compile with the allowed trio. Both integrability
+proofs remain explicit at this generic layer. Physical route: produce the
+ordinary integrand's integrability for both pairs of integer endpoints;
+R4 identifies the reflected-momentum integrand almost everywhere on the
+Brillouin cube with the ordinary integrand at reflected endpoints. Transfer
+integrability through that equality, then consume the measure leaf.
+The mass-uniform FullSolutionDomain producer supplies both domains after
+checking coordinate reflection preserves the common polistrip. These steps
+are still to implement; no physical integrability hypothesis is authorized.

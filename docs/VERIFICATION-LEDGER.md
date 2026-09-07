@@ -48209,3 +48209,19 @@ exponential phase. It does not assume a Green law or exchange endpoints.
 The base/reflected FullSolutionDomain remain visible inputs. No Brillouin
 integral transport, B0, window15 attainment or terminal field follows yet.
 VERIFIED_HOT_PASS; no PRE retirement;20/41,TermSource0 unchanged.
+
+## Addendum 1194 — product interval coordinate reflection HOT verified (2026-09-07)
+
+Source76e777daccc7282628c0187810cde8477cf0a3b0,
+runnerb1f5134b05c6dfa32900a511c03bcf62be335042,
+runner SHA2560cc1ea6579244cd077ded3bec829092a153afb989a779bdf48b97d2bc38c6ec6.
+Retained CPU/high-RAM runtime, seven stages exit0; two exact allowed-trio
+axiom blocks. No unrelated scratch binary is imported by this measure leaf.
+Archivef6d55616d7f6a9d6fc1ded3ae9e2483f1cf7d2209ad9b588df4b6b166d703e5b;
+reportdeda730a0d014e04f7bc1cda126e40974fecb881560b5414fab8d716a67541ee;
+oleandc35365e956b13c2186e8898f0776353ba609f1635e07c945e85a71b58c1dc27.
+Preserved validation-evidence/neumann-coordinate-integral-reflection-hot-v1-20260907.
+Independent pinned reader verifies commands, logs, exits, inputs and axioms;
+exit0/0.1221235s/18550784bytes RSS. Generic integrability assumptions are
+not physical producers. R5 physical consumer remains open. HOT only,
+no PRE retirement,20/41,TermSource0,window15 not attained.
