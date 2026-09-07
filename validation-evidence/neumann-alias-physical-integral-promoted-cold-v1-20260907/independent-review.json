@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "source_sha": "ba2998c4f22707ed0f828c741ae6aa1efb924a36",
+  "archive_sha256": "bec0229ed171d05f20c40bbb1a672d97a98009e59ce5cdea89171a5e3f54c2f0",
+  "evidence_json_file_sha256": "0fd332e3f15c22c485ca52dda5e7f22f03fa63e0f0d0933a9653fda9b9a40cb8",
+  "evidence_json_payload_sha256": "cdc7db3a088c27f2fa1261f25b00fa39513fb63b828cfb0d56d056e24c2b0481",
+  "production_output_sha256": "f7213f6f599c54d5052ae0c4307a84e60ff1abb407035d1bdff37b786e1b9ce8",
+  "focal_jobs": 8571,
+  "focal_exit": 0,
+  "focal_seconds": 1234.6312999259999,
+  "audit_exit": 0,
+  "audit_seconds": 9.098989339999207,
+  "exact_axiom_names": 4,
+  "allowed_axioms": ["Classical.choice", "Quot.sound", "propext"],
+  "stages_verified": 14,
+  "reader_commit": "c2adfc204127fc69cef5784efb7f160852e80288",
+  "reader_sha256": "0417daa81873b8517632878cae65da8fa1e932e20da7ccab7079658ba2b17f68",
+  "reader_exit": 0,
+  "reader_seconds": 0.2725086,
+  "reader_observed_peak_rss": 17969152,
+  "scope": "literal normalized finite alias integral; not physical inverse or window15"
+}
