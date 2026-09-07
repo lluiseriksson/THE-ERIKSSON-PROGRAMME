@@ -19,8 +19,12 @@ claim, terminal field, inverse identity or window15 attainment is recorded.
 
 ## Finite remaining normalization route
 
-1. Construct reduction modulo N as an equivalence from the actual centered
-   scalar alias interval, using its length N. Lift it coordinatewise.
+1. Reuse `cmp99SourceCenteredAliasResidueEquiv N` and its
+   `_apply` theorem from `BalabanCMP99SourceCenteredAliasReflection`:
+   the output is the literal integer cast, not an arbitrary enumeration.
+   That module is already cold-verified at3bf925319be2b09c6d77706be64913e9817eb3b4.
+   Lift coordinatewise through the existing centered-vector Pi equivalence;
+   do not reconstruct the scalar equivalence from interval arithmetic.
 2. Prove the character dictionary for the literal exponential alias phase;
    do not replace that phase by a ZMod character by definition.
 3. Apply character orthogonality. The unnormalized alias sum contributes
@@ -34,6 +38,9 @@ claim, terminal field, inverse identity or window15 attainment is recorded.
    once when constructing the actual physical action.
 
 These are proof obligations, not proofs written or compiled in this note.
+Step1's scalar input is already proved; only its required vector composition
+and use in this normalization route are new work. This corrects the earlier
+static list which unnecessarily proposed rebuilding the scalar reduction.
 In particular the existing finite-grid aliasing theorem must not stand in
 for step4: a congruence-class sum is not the infinite-lattice point-source
 equation. No symmetry under negation of the even half-open alias set is
