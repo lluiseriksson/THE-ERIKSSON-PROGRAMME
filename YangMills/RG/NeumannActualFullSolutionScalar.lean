@@ -1,9 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullSolution
 
 /-!
-# PRE-VALIDATION: scalar homogeneity of the literal (2.46) solution
+# scalar homogeneity of the literal (2.46) solution
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 This is the non-transpose solution consumed by FinePointSourceFibreGreen.
 No invertibility, nonvanishing or Green covariance is assumed. Totalized
 division permits this algebraic identity even at singular parameters;
@@ -78,4 +79,3 @@ theorem neumannActualFullSolution_mul_right
 
 end
 end YangMills.RG
-

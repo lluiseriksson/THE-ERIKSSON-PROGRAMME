@@ -1,8 +1,9 @@
 import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 
 /-!
-# PRE-VALIDATION: one changed factor in a finite product
-Source present; .olean not materialized; result not compiler-verified.
+# one changed factor in a finite product
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 Mathlib-only preflight for the actual coordinate averaging phase.
 -/
 
@@ -27,4 +28,3 @@ theorem one_factor {I A : Type*} [Fintype I] [DecidableEq I]
       rw [Finset.prod_erase_mul Finset.univ f (Finset.mem_univ mu)]
 
 end NeumannCoordinateProductRepro
-

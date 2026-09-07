@@ -2,8 +2,9 @@ import YangMills.RG.NeumannActualCoordinateSolution
 import YangMills.RG.NeumannCoordinateEndpointPhase
 
 /-!
-# PRE-VALIDATION: literal full point-source integrand reflection
-Source present; .olean not materialized; result not compiler-verified.
+# literal full point-source integrand reflection
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 R3 and the integer endpoint phases are consumed, not assumed as a Green law.
 Both literal solver domains remain visible; integration is a separate gate.
 -/
@@ -82,4 +83,3 @@ theorem neumannActualFineGreenIntegrand_coordinateReflection
 
 end
 end YangMills.RG
-

@@ -3,8 +3,9 @@ import YangMills.RG.NeumannCoordinateIntegralReflection
 import YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour
 
 /-!
-# PRE-VALIDATION: literal normalized physical Green coordinate reflection
-Source present; .olean not materialized; result not compiler-verified.
+# literal normalized physical Green coordinate reflection
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 Integrability and both solver domains are produced from the existing common
 mass-uniform windows. No Green symmetry or integrability is assumed.
 The original Brillouin measure and normalization are preserved.
@@ -103,4 +104,3 @@ theorem neumannPhysicalGreen_coordinateReflection_massUniform
 
 end
 end YangMills.RG
-

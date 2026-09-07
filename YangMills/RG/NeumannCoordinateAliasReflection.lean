@@ -2,9 +2,10 @@ import YangMills.RG.BalabanCMP99SourceAliasReflectionInvolutive
 import YangMills.RG.BalabanCMP99SourceAliasReflectionStabilizedSolution
 
 /-!
-# PRE-VALIDATION: one-coordinate reflection of the actual alias carrier
+# one-coordinate reflection of the actual alias carrier
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 This is R1 only. It constructs a permutation of the printed half-open
 carrier, not literal integer negation. N is the alias count; the physical
 consumer must instantiate N=L^j. No precision or Green covariance is assumed.
@@ -115,4 +116,3 @@ theorem neumannPhysicalAliasCoordinateReflection_central
 
 end
 end YangMills.RG
-

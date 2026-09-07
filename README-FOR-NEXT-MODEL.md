@@ -1,5 +1,15 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT 2026-09-07 03:56 UTC: physical reflection graph COLD PASS preserved
+and locally independently verified; see Addendum 1197 and
+docs/NEUMANN-REFLECTION-COLD-CHECKPOINT-20260907.md. Seventeen production
+modules + audit, 52 declarations, source84ceb5f2. Selective header-only seal.
+Runtime f33828f71ae2 is now disconnected/deleted; do not reconnect the old cell.
+Next orbit HOT failed only at missing ReflectionOrbitAlgebra.olean; its FAIL
+archive is durable. Prepare explicit prerequisite materialization before retry.
+No regional image equation/B0/window15 yet;20/41,TermSource0 unchanged.
+All CURRENT entries below are historical and do not override this checkpoint.
+
 CURRENT02:29UTC: physical R3 PASSED and independently preserved1191.
 Source1e89a4cc27402ec539ece89c0288c8a1e9f9d103, runner31bf5bbd4;
 PID32820 launched02:26:43UTC and finished. Runtime f33828f71ae2/tab23

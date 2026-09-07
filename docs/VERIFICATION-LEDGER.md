@@ -48271,3 +48271,34 @@ Independent reader: exit0, 0.1287169 s, 20041728 bytes observed RSS.
 Translation archive and sixteen parent binaries checked explicitly.
 R1-R6 are HOT diagnostic only; cold promotion and the regional image equation
 remain open. No PRE retirement, 20/41, TermSource=0, window15 not attained.
+
+## Addendum 1197 — physical reflection graph cold verified (2026-09-07)
+
+Supersedes only the cold-promotion status in 1196. Source
+84ceb5f2f466ab8f4e9dea175fd412c7bf63a21e; runner/verifier
+acdc7db315eb00690296c4fe1d55f3deda4f81cb. Fresh Colab checkout, exact
+Lean 4.29.0-rc6 and Mathlib 07642720480157414db592fa85b626dafb71355b;
+no project build restored. Focal 8653 jobs, exit0, 1209.894459 s;
+audit exit0, 30.804162 s. Seventeen production outputs, 52 exact declarations:
+51 permitted trios and one {propext, Quot.sound}. All fourteen stages verified.
+
+Outer archive b246caedbaceb018e9b16efbd9f76ed1c6cd509f6fe1154a19281246ae27a3c5;
+inner 7c6512cd94dfc8311bc2874487c12ae0eab7b9ce18e580a1cc531b51bba86081.
+Downloaded and independently checked locally (0.138045 s, 16138240 bytes
+observed RSS). Durable package and complete report reside under
+validation-evidence/neumann-physical-reflection-promoted-cold-v1-20260907.
+Only the seventeen listed production headers plus the audit header retire
+PRE-VALIDATION; proof bodies, imports and hypotheses remain unchanged.
+This is intermediate cold evidence, not a two-clone external terminal release.
+
+The subsequent bounded orbit HOT v1 failed at import before proof elaboration:
+BalabanCMP89NeumannReflectionOrbitAlgebra.olean absent. Exit1, 0.867197 s;
+no new theorem verified. Archive
+cc8f71ceb3a61d9c2a27fa606039e097b64779ae9d9df55bac18b025f80c6cf5
+is downloaded with all recorded log hashes checked, in
+validation-evidence/neumann-boundary-orbit-hot-v1-20260907. Preserve this FAIL;
+next runner must explicitly materialize this prerequisite before the repro.
+Runtime f33828f71ae2 disconnected/deleted after preservation, approximately
+03:56 UTC (opened 01:47:24 UTC; about 129 minutes connected).
+Regional image equation, fixed-source seam, B0 and window15 remain open.
+Counters unchanged: 20/41; TermSource=0.

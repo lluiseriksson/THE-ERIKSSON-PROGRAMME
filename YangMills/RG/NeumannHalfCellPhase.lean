@@ -3,9 +3,10 @@ import Mathlib.Algebra.BigOperators.Intervals
 import Mathlib.Tactic.Ring
 
 /-!
-# PRE-VALIDATION: finite reverse-sum phase, Mathlib-only repro
+# finite reverse-sum phase, Mathlib-only repro
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 This is the phase primitive needed for the actual finite averaging symbol
 under a half-cell reflection. It does not prove Green covariance or identify
 a regional inverse. No exclusion of c=0 or exp(c)=1 is permitted.
@@ -37,4 +38,3 @@ theorem finite_exp_reverse (N : ℕ) (c : ℂ) :
 
 
 end NeumannHalfCellPhaseRepro
-

@@ -2,9 +2,10 @@ import YangMills.RG.BalabanCMP89Eq251EntireAverageAmplitude
 import YangMills.RG.NeumannHalfCellPhase
 
 /-!
-# PRE-VALIDATION: exact half-cell phase of the actual entire average
+# exact half-cell phase of the actual entire average
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 The Mathlib-only repro must compile first in the same scratch import path.
 This statement concerns the literal finite average, not a supplied symbol.
 It does not assert Green covariance, boundary identification, a regional
@@ -53,4 +54,3 @@ theorem neumannEntireAverageFactor_halfCellPhase (N : ℕ) (z : ℂ) :
 
 end
 end YangMills.RG
-

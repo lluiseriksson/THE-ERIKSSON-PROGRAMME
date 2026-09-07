@@ -2,8 +2,9 @@ import YangMills.RG.NeumannPhysicalCoordinateGreenIntegral
 import YangMills.RG.NeumannActualCommonBlockTranslation
 
 /-!
-# PRE-VALIDATION: physical Green reflection at integer block boundaries
-Source present; .olean not materialized; result not compiler-verified.
+# physical Green reflection at integer block boundaries
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 Both endpoints move together. Boundary B=0 is the lower half-cell reflection;
 B equal to the regional block count gives the upper half-cell reflection.
 The boundary uses fine integer units N*B, with N=L^j. No fine-translation
@@ -67,4 +68,3 @@ theorem neumannPhysicalGreen_lowerHalfCellReflection_massUniform
 
 end
 end YangMills.RG
-

@@ -1,8 +1,9 @@
 import YangMills.RG.IntervalIntegralPiCoordinateTransport
 
 /-!
-# PRE-VALIDATION: coordinate reflection of an interval product integral
-Source present; .olean not materialized; result not compiler-verified.
+# coordinate reflection of an interval product integral
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 This measure-theoretic leaf takes both integrability proofs explicitly.
 The physical consumer must produce them from its common-strip conditions.
 The half-open interval is handled by interval integration, not a false
@@ -48,4 +49,3 @@ theorem neumannIntegral_coordinateReflection
 
 end
 end YangMills.RG
-

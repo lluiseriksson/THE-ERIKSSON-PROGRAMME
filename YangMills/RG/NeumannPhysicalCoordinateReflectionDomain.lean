@@ -2,8 +2,9 @@ import YangMills.RG.NeumannActualCoordinateGreenIntegrand
 import YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain
 
 /-!
-# PRE-VALIDATION: physical common-strip production for coordinate reflection
-Source present; .olean not materialized; result not compiler-verified.
+# physical common-strip production for coordinate reflection
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 Both finite-solver domains are constructed from the existing mass-uniform
 windows. Neither domain nor Green covariance is supplied by the caller.
 This is still an integrand identity, not a normalized integral theorem.
@@ -69,4 +70,3 @@ theorem neumannPhysicalFineGreenIntegrand_coordinateReflection_massUniform
 
 end
 end YangMills.RG
-

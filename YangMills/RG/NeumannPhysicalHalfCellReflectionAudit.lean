@@ -1,8 +1,9 @@
 import YangMills.RG.NeumannPhysicalHalfCellReflection
 
 /-!
-# PRE-VALIDATION: complete physical reflection graph audit
-Source present; .olean not materialized; result not compiler-verified.
+# complete physical reflection graph audit
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 All 52 declarations from the seventeen-module R1-R6 graph, including common
 block translation and the generic algebraic leaves. No terminal claim.
 -/
@@ -59,4 +60,3 @@ block translation and the generic algebraic leaves. No terminal claim.
 #print axioms YangMills.RG.neumannBlockBoundaryReflection_eq_center_shift
 #print axioms YangMills.RG.neumannPhysicalGreen_blockBoundaryReflection_massUniform
 #print axioms YangMills.RG.neumannPhysicalGreen_lowerHalfCellReflection_massUniform
-

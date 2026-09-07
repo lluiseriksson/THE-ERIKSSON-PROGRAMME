@@ -3,8 +3,9 @@ import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Ring
 
 /-!
-# PRE-VALIDATION: finite diagonal-phase and permutation transport
-Source present; .olean not materialized; result not compiler-verified.
+# finite diagonal-phase and permutation transport
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 Mathlib-only repro. The matrix-entry law is a generic algebraic premise here;
 the physical consumer must supply its derived R2 identity, not assume it.
 -/
@@ -58,4 +59,3 @@ theorem solution_unique (p : Equiv.Perm I) (D : I → K)
 
 end
 end NeumannDiagonalTransportRepro
-

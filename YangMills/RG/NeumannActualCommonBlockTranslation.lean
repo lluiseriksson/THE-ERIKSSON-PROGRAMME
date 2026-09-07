@@ -3,9 +3,10 @@ import YangMills.RG.NeumannCommonBlockEndpointPhase
 import YangMills.RG.BalabanCMP89Eq246FinePointSourceHolomorphy
 
 /-!
-# PRE-VALIDATION: common block translation of the literal full Green
+# common block translation of the literal full Green
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 Inputs are the actual normalized point-source vector and non-transpose
 solution of (2.46). No Green covariance is assumed. The same integer block
 shift moves BOTH endpoints; the physical wrapper fixes M=L^j and xi=1/M.
@@ -98,4 +99,3 @@ theorem neumannActualNormalizedFineGreen_commonBlockShift
 
 end
 end YangMills.RG
-

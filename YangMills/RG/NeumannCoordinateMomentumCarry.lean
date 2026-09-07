@@ -2,9 +2,10 @@ import YangMills.RG.NeumannCoordinateAliasReflection
 import YangMills.RG.BalabanCMP99SourceAliasReflectionCoefficients
 
 /-!
-# PRE-VALIDATION: one-coordinate momentum carry for the physical alias fibre
+# one-coordinate momentum carry for the physical alias fibre
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 The input alias permutation is the R1 diagnostic object with N=L^j.
 This supplies the actual wrapped momentum equation and fine-symbol symmetry,
 not a free Green covariance. The averaging column/row phases remain separate.
@@ -101,4 +102,3 @@ theorem neumannEntireAliasFineSymbol_coordinateReflection
 
 end
 end YangMills.RG
-

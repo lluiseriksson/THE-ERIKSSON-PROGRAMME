@@ -1,0 +1,1 @@
+{"command": ["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-neumann-physical-reflection-promoted-cold-v1", "exit": 0, "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "seconds": 0.31515825599853997, "stage": "clean_before", "timed_out": false, "timeout_seconds": 120}

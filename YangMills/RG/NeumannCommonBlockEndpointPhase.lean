@@ -1,9 +1,10 @@
 import YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientPhase
 
 /-!
-# PRE-VALIDATION: alias-independent phases for a common block translation
+# alias-independent phases for a common block translation
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 Physical spacing is 1/M and the fine-site shift is M*n, not n.
 The base momentum is complex. This imports only existing phase machinery,
 not the pending full-solution scalar draft. It proves no Green covariance.
@@ -55,4 +56,3 @@ theorem neumannCommonBlockPhase_cancel {d : ℕ}
 
 end
 end YangMills.RG
-

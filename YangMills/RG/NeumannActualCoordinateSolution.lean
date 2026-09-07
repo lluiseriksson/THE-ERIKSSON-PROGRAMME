@@ -4,8 +4,9 @@ import YangMills.RG.BalabanCMP89Eq246AliasPrecisionUniqueness
 import YangMills.RG.BalabanCMP89Eq246FullSolutionDomain
 
 /-!
-# PRE-VALIDATION: actual coordinate transport of the constructed full solver
-Source present; .olean not materialized; result not compiler-verified.
+# actual coordinate transport of the constructed full solver
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 R3 consumes derived physical matrix conjugacy and existing solver uniqueness.
 The caller supplies a source vector and the two literal nonvanishing domains,
 not a solution family, inverse, Green covariance, or matrix identity.
@@ -68,4 +69,3 @@ theorem neumannActualCoordinateFullSolution_transport
 
 end
 end YangMills.RG
-

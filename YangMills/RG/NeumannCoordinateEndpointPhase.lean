@@ -2,9 +2,10 @@ import YangMills.RG.NeumannCoordinateAveragePhase
 import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointAliasPhase
 
 /-!
-# PRE-VALIDATION: literal integer endpoint reflection phases
+# literal integer endpoint reflection phases
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 The reflection is about (N-1)/2 in fine integer coordinates, with physical
 spacing N^-1. Wrapped alias periods cancel only at these integer endpoints.
 This is phase algebra, not a Green identity or a production seal.
@@ -93,4 +94,3 @@ theorem neumannAliasSourcePhase_coordinateReflection
 
 end
 end YangMills.RG
-

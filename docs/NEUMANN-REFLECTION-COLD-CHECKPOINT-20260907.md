@@ -1,4 +1,27 @@
-# Physical reflection cold promotion — active checkpoint
+# Physical reflection cold promotion — PASS preserved locally
+
+2026-09-07: cold focal PASS (8653 jobs, exit 0, 1209.894459 s),
+audit PASS (exit 0, 30.804162 s), 52 exact declarations, 17 materialized outputs.
+Independent local reader accepted the downloaded archive and all 14 stages.
+Local preservation: `validation-evidence/neumann-physical-reflection-promoted-cold-v1-20260907/`.
+Outer SHA-256: `b246caedbaceb018e9b16efbd9f76ed1c6cd509f6fe1154a19281246ae27a3c5`.
+Inner SHA-256: `7c6512cd94dfc8311bc2874487c12ae0eab7b9ce18e580a1cc531b51bba86081`.
+Independent report: `local-independent-verification.txt` in that directory.
+Selective production-header/ledger sealing is recorded in Addendum 1197; no
+proof bodies changed. Counters remain unchanged.
+
+Retained-runtime bounded orbit diagnostic launched once, PID 62369, from pinned
+runner ec751f5dcd834d921a898c82c96fc835bfcaa010; its log is
+`/content/neumann-boundary-orbit-hot-v1-launch.log`. It is NOT a cold seal.
+Diagnostic FAIL: missing BalabanCMP89NeumannReflectionOrbitAlgebra.olean,
+before proof elaboration (exit1, 0.867197 s). Archive SHA-256
+`cc8f71ceb3a61d9c2a27fa606039e097b64779ae9d9df55bac18b025f80c6cf5`
+is durable in validation-evidence/neumann-boundary-orbit-hot-v1-20260907.
+Runtime disconnected/deleted approximately 03:56 UTC after both packages
+were preserved. Do not rerun the old notebook or either launcher. Next action:
+prepare an explicit prerequisite stage for the bounded orbit retry.
+
+The launch instructions below are historical records, not active processes.
 
 Source checkpoint: `84ceb5f2f466ab8f4e9dea175fd412c7bf63a21e`.
 Runner/verifier checkpoint: `acdc7db315eb00690296c4fe1d55f3deda4f81cb`.

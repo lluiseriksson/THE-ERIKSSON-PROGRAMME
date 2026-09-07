@@ -3,9 +3,10 @@ import YangMills.RG.NeumannEntireAverageHalfCellPhase
 import YangMills.RG.NeumannCoordinateProduct
 
 /-!
-# PRE-VALIDATION: actual one-coordinate averaging phases
+# actual one-coordinate averaging phases
 
-Source present; .olean not materialized; result not compiler-verified.
+Cold compiler/audit verified at source 84ceb5f2 (2026-09-07).
+Evidence and scope: VERIFICATION-LEDGER Addendum 1197; no terminal claim.
 R2b uses the finite average itself, with the one-coordinate residue carry.
 The phases are entire exponentials, not complex conjugations. No positivity
 or nonvanishing of the averaging factors is assumed. N=1 and j=0 are kept.
@@ -131,4 +132,3 @@ theorem neumannEntireAliasPrecisionMatrix_coordinateReflection
 
 end
 end YangMills.RG
-
