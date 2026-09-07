@@ -1,5 +1,15 @@
 # Character normalization cold promotion — PASS, retained HOT suffix
 
+Latest retained-runtime state2026-09-07T14:24UTC: masked-difference HOT PASS,
+exit0/6.314148715s; two exact axioms sets {propext,Quot.sound}; unused hN
+warning retained. Archive2b8c8aa39332e863f79a90fbbcdaaa559caa4ce8108cb027353d7e04e6ad4780
+downloaded by assistant and independently verified locally exit0/0.1596778s,
+16769024 peak RSS. Preserved validation-evidence/neumann-masked-difference-hot-v1-20260907/.
+After preservation, physical-character/readout HOT launched once, PID18361,
+/content/physical-character-readout-hot-launch-v1/launch.log and pid.txt.
+The launch cell now contains that launch, NOT the old observer; do not rerun it.
+Read log in a separate/replaced observer cell. Runtime retained, tab62.
+
 Cold verdict observed2026-09-07T14:19UTC: PASS. Downloaded by the assistant,
 then independently verified locally:19 stages,5 exact axiom names,4 source
 blobs and2 production outputs; reader exit0/0.1967934s,18755584 peak RSS.
