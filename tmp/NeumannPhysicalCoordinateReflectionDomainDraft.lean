@@ -59,6 +59,7 @@ theorem neumannPhysicalFineGreenIntegrand_coordinateReflection_massUniform
       ha hrho hamplitude hradius hdenWindow hpairWindow hmass
       hreal (fun _ => rfl) himag
   have hr := neumannCoordinateReflectedDomain_massUniform
+    (L := L) (j := j)
     ha hrho hamplitude hradius hdenWindow hpairWindow hmass mu z hreal himag
   simpa only [cmp89Eq246PhysicalFineToFineGreenIntegrand,
     cmp89Eq249FineLatticeSpacing] using
