@@ -48639,6 +48639,41 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1221 — mixed owner transport cold PASS, 2026-09-07
+
+Source `4f2f812dc06d82e5f0b7d93ad6d91d87ad07fe67`; runner/reader
+`53d1fffffe32180bd48f5eb0229113143b6fc8c0`; notebook `0be3352323`.
+Fresh CPU/high RAM 50.99028778076172 GiB opened 10:12:52.011513 UTC.
+Both prerequisites exit0/59.660026368s (3291 jobs); production focal
+exit0/6.303562931s (3292 jobs); seven-name audit exit0/5.737144293s.
+One declaration uses Quot.sound only; two use propext+Quot.sound; four
+use the permitted trio. No sorryAx/ofReduceBool accepted.
+
+Archive SHA256 `9918e9db4d228ca104841936a34d4252df1f1d3925f1ba4ceb7299298b19c574`
+preserved in `validation-evidence/neumann-mixed-owner-transport-cold-v1-20260907/`.
+JSON file SHA256 `d265ec29ef6bf54448782605de82c796c17d9de1bcb8b2ff8b778d3ed21f0527`;
+JSON payload SHA256 `580ef9802e41269525d133f9204a0131c1c73cb8b92a6a8497935ebe4aeb58e7`.
+Production NeumannMixedOwnerTransport.olean SHA256
+`9d2ce3d85a7b6be78c446644207725bea96af2a065846a7ae830e6cd1b0ee353`.
+Assistant downloaded with files.download; independent reader verified all
+17 stages, exact commands, source/log/output hashes and file set. Reader
+exit0/0.152556s, observed peak RSS 11333632 bytes. No Windows Lean/Lake.
+Runtime unassigned after verified preservation; reconnect state observed,
+tab closed by 10:18:20 UTC (connected less than 5m28s).
+
+Prior fresh diagnostic omitted the counting-kernel prerequisite; HOT v2
+then exposed the branch simplification error; HOT v3 stopped on an invalid
+Mathlib import in the minimal repro. All retained in
+CHECKPOINT-MIXED-OWNER-HOT-PASS-20260907.md with exact failure archives.
+HOT v4 passed after explicit integer branch equalities, before this cold
+promotion. No failed diagnostic or recovery axiom was promoted as evidence.
+
+Selective header retirement only. Common mixed index and literal coefficient
+preserved, no extra FULL reflection branch or fibre cardinality introduced.
+Physical flag classification, actual mixed Green/operator action, full
+point-source equation, uniform B0 and window15 remain open. 20/41 and
+TermSource=0 unchanged.
+
 ## Addendum1220 — mixed branch packaging cold PASS, 2026-09-07
 
 Source `c9818c183643a19b0cb88d614ea7b10ad3e8eda6`; runner/reader checkpoint

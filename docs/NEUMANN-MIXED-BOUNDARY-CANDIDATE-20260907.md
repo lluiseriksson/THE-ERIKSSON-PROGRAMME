@@ -5,7 +5,21 @@ physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
 ## Current frontier after Addendum1209
 
-### Updated frontier after Addendum1220 (2026-09-07)
+### Updated frontier after Addendum1221 (2026-09-07)
+
+The four owner obligations listed below are now cold-verified by
+NeumannMixedOwnerTransport at `4f2f812dc06d82e5f0b7d93ad6d91d87ad07fe67`,
+ledger1221: same packaged index, unrestricted-source image, owner transport,
+common-image source injectivity and literal counting coefficient. Seven
+exact audited declarations; no physical flag classification or inverse.
+The older design-status sentences below remain chronology only.
+
+Next physical classification is precisely the existing directional-mask
+disjunct, not a freely chosen Bool. Retain both FULL and PROPER sides under
+non-strict fit; prove positive-scale cancellation between fine `B*m=B*N`
+and coarse `m=N`, including Int.toNat, then instantiate both actual masks.
+
+### Frontier after Addendum1220 (2026-09-07)
 
 FULL interval coverage/owner shift is cold-sealed in1212; mixed coordinate
 coverage in1214; fixed-source image/difference injectivity in1217. Branch

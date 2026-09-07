@@ -1,8 +1,8 @@
 import YangMills.RG.NeumannMixedOwnerTransport
 
 /-!
-PRE-VALIDATION: source present; .olean not materialized and compiler result
-not yet verified for this production module. Seven exact owner transport names.
+Cold compiler-verified at 4f2f812dc06d82e5f0b7d93ad6d91d87ad07fe67,
+ledger1221. Seven exact owner transport names, permitted axiom subsets only.
 -/
 
 #print axioms YangMills.RG.neumannMixedOrbit_pack

@@ -2,8 +2,8 @@ import YangMills.RG.NeumannMixedBranchPackaging
 import YangMills.RG.NeumannIntegerImageCountingKernel
 
 /-!
-PRE-VALIDATION: source present; .olean not materialized and compiler result
-not verified. M2 owner transport at the SAME packaged mixed index.
+Cold compiler-verified at 4f2f812dc06d82e5f0b7d93ad6d91d87ad07fe67,
+ledger1221. M2 owner transport at the SAME packaged mixed index.
 B is the positive fine-site block side; m is in block units and B*m is
 the fine side. FULL still requires the physical carrier classification.
 No Green equation, operator invariance, summability or uniform B0 claim.
