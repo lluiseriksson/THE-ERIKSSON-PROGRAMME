@@ -48639,6 +48639,31 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1239 — literal alias physical integral COLD PASS
+
+2026-09-07. Source ba2998c4f22707ed0f828c741ae6aa1efb924a36, fresh
+Colab checkout with no project build restoration. Runner
+c2adfc204127fc69cef5784efb7f160852e80288, exact toolchain4.29.0-rc6 and
+Mathlib07642720480157414db592fa85b626dafb71355b. Focal8571jobs exited0
+in1234.631299926s; audit exited0 in9.09898934s. Four exact allowed-trio names
+listed in Addendum1238. Both redundant-ring warnings remain visible.
+
+Archive bec0229ed171d05f20c40bbb1a672d97a98009e59ce5cdea89171a5e3f54c2f0;
+JSONfile0fd332e3f15c22c485ca52dda5e7f22f03fa63e0f0d0933a9653fda9b9a40cb8;
+JSONpayload cdc7db3a088c27f2fa1261f25b00fa39513fb63b828cfb0d56d056e24c2b0481;
+NeumannAliasPhysicalIntegral.olean
+f7213f6f599c54d5052ae0c4307a84e60ff1abb407035d1bdff37b786e1b9ce8.
+Downloaded and independently verified14stages, exact contracts, hashes,
+commands and audits; reader exit0/.2725086s/17969152RSS. Durable evidence
+5ea4a702b5dfebc48c94c1af489b0d20e3a3935e under
+validation-evidence/neumann-alias-physical-integral-promoted-cold-v1-20260907.
+Selective seal changes only the production/audit module docstrings.
+
+Scope remains the literal normalized alias integral N^4*delta, not the
+actual physical operator action, counting inverse, uniform B0 or window15.
+20/41 and TermSource=0 unchanged. Runtime retained for the already prepared
+single HOT endpoint readout suffix after independent preservation.
+
 ## Addendum1238 — typed congruence and literal alias integral HOT PASS
 
 2026-09-07. The same retained Colab CPU/highRAM runtime produced three

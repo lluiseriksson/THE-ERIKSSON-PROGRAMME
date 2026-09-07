@@ -2,8 +2,9 @@ import YangMills.RG.NeumannAliasExponentialSelector
 import YangMills.RG.NeumannPhysicalBrillouinCharacter
 
 /-!
-PRE-VALIDATION: source present; this production .olean has not yet been
-materialized or verified by the compiler. Exact proof bodies from HOT v4.
+Cold compiler-verified at ba2998c4f22707ed0f828c741ae6aa1efb924a36,
+2026-09-07; four exact audits and output independently preserved in
+5ea4a702b, ledger1239. Proof bodies unchanged from that cold source.
 The literal normalized alias integral leaves N^4 explicit. This is not the
 physical inverse equation, density/counting transport, uniform B0 or window15.
 -/
