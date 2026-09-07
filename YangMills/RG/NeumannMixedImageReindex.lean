@@ -3,9 +3,9 @@ import YangMills.RG.NeumannPhysicalPeriodicSeries
 import YangMills.RG.NeumannBoundaryImageSeriesReindex
 
 /-!
-PRE-VALIDATION: source present; production .olean not materialized and
-production compiler result not verified. Exact draft passed HOT ledger1223;
-this promotion requires its own independent cold gate.
+Compiler-verified in a fresh Colab checkout at source
+`fa898ff5d8bf724fa4b6e629da7260383ef54ecc`; ledger1224 records
+the independently verified cold archive and seven exact audits.
 M4 index algebra on the SAME mixed family. FULL directions
 retain one branch. PROPER reflection requires the explicit false flag.
 These totalized tsum identities do not prove convergence or physical

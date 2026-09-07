@@ -48639,6 +48639,36 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1224 — mixed image reindex production cold PASS, 2026-09-07
+
+Source `fa898ff5d8bf724fa4b6e629da7260383ef54ecc`; runner checkpoint
+`3a222f7b53825e3e433bb0dbe848d25952aad2b1`; notebook checkpoint
+`78dddbd08efc642d4cd6e50fa68843627fd22812`. Fresh Colab CPU/high-RAM
+50.99028778076172 GiB; no project build-cache restoration. Toolchain and
+Mathlib pins unchanged. Opened 2026-09-07T12:01:41.226719Z.
+
+Prerequisites exit0/1661.761055006s; production focal exit0/32.392084783s,
+8606 jobs; audit exit0/7.461979768s. Seven exact declarations: branch-flip
+involution has no axioms; four orbit/index identities use propext and
+Quot.sound; two tsum identities use the allowed trio. Dependency linter
+warnings remain visible; this is not a zero-warning claim.
+
+Assistant downloaded and independently checked the archive, all17 stage
+records, two source blobs, exact seven names and production output.
+Verifier exit0/0.2033258s/18706432bytes observed peak RSS.
+
+- Archive: `validation-evidence/neumann-mixed-image-reindex-promoted-cold-v1-20260907/hrpoly-neumann-mixed-image-reindex-promoted-cold-v1-evidence.tar.gz`
+- Archive SHA256: `2ddbb70ee83ddf69a3f1938ee295ecf54a4ec5e77dd3c0f01fd86cbef9bf1c8e`
+- evidence.json file SHA256: `333f66f251711d631b103f947ba564ed68060a70650081053edc8589ebcd0ae3`
+- evidence.json payload SHA256: `05927219ab4d8e922710ed1fd0dc3f47210bff39d7385e451a9454cebe845de5`
+- NeumannMixedImageReindex.olean SHA256: `3775038f4712ada3add6728c5c78d5fbb39afe7d55a92616399fd96ad56b616a`
+
+Selective seal retires only the two reindex module/audit header marks.
+This is same-index algebra, not physical endpoint transfer, finite operator
+interchange, inverse, uniform B0 or window15. Counters remain20/41,
+TermSource0. Runtime retained only for the already prepared bounded physical
+mixed seam HOT diagnostic after local preservation; HOT cannot seal source.
+
 ## Addendum1223 — mixed seam reindex HOT repair PASS, 2026-09-07
 
 Same retained runtime after1222 preservation. Source49e81d935,

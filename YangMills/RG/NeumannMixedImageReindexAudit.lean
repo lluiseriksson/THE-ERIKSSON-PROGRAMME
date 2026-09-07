@@ -1,7 +1,8 @@
 import YangMills.RG.NeumannMixedImageReindex
 
 /-!
-PRE-VALIDATION: source present; production audit not yet compiler verified.
+Compiler-verified at source `fa898ff5d8bf724fa4b6e629da7260383ef54ecc`;
+seven exact cold audits independently checked in ledger1224.
 Seven exact names; same-index algebra only, not physical endpoint transfer.
 -/
 
