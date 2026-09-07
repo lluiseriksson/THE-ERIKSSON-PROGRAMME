@@ -16,6 +16,17 @@ retained, original archive intact in /content. Do not write the preservation
 ack or run the HOT suffix before independent local preservation succeeds.
 Cell2 currently contains only files.download; never rerun cell1.
 
+Transport follow-up: explicit browser download-event wait timed out after
+15 seconds. Browser content.export is unsupported. A lossless PNG transport
+of the archive was displayed in Cell2 (RGB256x201, first153915bytes original
+payload); its payload digest remains the archive digest above. Asset export
+did not list that iframe data resource. Local loopback receiver was attempted
+once, but browser reported net::ERR_BLOCKED_BY_CLIENT. Receiver exited on
+its25-second deadline (25.3685591s,28372992observedRSS), no process retained.
+Auxiliary tab64 closed; only Colab63 retained. No security bypass attempted.
+Local evidence is still NOT preserved; no HOT suffix or header seal allowed.
+Cell2 now displays the lossless PNG transport, not a compiler or monitor.
+
 Opened2026-09-07T14:37:04.898397UTC; Colab account lluiseriksson@gmail.com,
 CPU/highRAM50.99028778076172GiB, noGPU. Notebook own-code confirmation
 clicked once; runner hash passed, PID7203, tab63. Never rerun cell1.
