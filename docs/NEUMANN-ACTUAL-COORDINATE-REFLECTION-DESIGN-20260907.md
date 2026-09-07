@@ -196,4 +196,30 @@ lluiseriksson@gmail.com. Published notebook07d068c15ad86ac8c7c570dac35206ff7c75f
 visually checked, GitHub notebook confirmation accepted once, HASH_GATE=PASS
 with exact SOURCE95c757465 and runner revision. No compiler result yet.
 No cell replacement or second launch. Preserve tab with per-turn handoff.
+
+## R3 finite-system transport: static endpoint fixed while R2 runs
+
+Re-read AliasPrecisionUniqueness and FinePointSourceSolutionCycle directly.
+Use the former's existing three nonvanishing gates, not a new inverse input.
+For the constructed permutation P and actual phase D, define internally
+Tf(k)=D(P^-1 k)*f(P^-1 k). R2 says A'(Pm,Pn)=D(m)*A(m,n)/D(n).
+The finite-sum change n=P(l) then gives A'*(Tf)=T*(A*f), with each D(l)
+cancelling its inverse; this costs no norm estimate and assumes only the
+already constructed exponential nonvanishing, not nonvanishing of averages.
+
+The next solution theorem should first quantify over an arbitrary SOURCE
+vector, not over an already chosen family of solutions. Both solutions are
+cmp89Eq246StabilizedAliasFullSolution, constructed internally. The base
+literal solver equation yields A'*(Tsolution)=Tsource; the reflected literal
+solver equation yields A'*solution'=Tsource. Existing injectivity at the
+reflected momentum identifies them. Exactly base/reflected
+CMP89Eq246FullSolutionDomain are visible inputs, as in the sealed cycle
+theorem. Their later physical production must use the common polistrip;
+no Green covariance, inverse family or extra uniqueness field is accepted.
+
+R4 then proves separately that the reflected physical point-source vector
+is Tsource, using both endpoint reflection and the wrapped integer phase.
+This avoids making the point-source phase a hidden premise of R3. The
+matrix-action transport is a Mathlib-only repro candidate before any new
+project bootstrap. No new R3 Lean module is stacked on the running R2 queue.
 Text/import guards passed; no local Lean or new Colab was run for this draft.
