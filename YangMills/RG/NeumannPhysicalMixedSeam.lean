@@ -4,9 +4,9 @@ import YangMills.RG.NeumannPhysicalMixedSummability
 import YangMills.RG.NeumannPhysicalBoundaryTransfer
 
 /-!
-PRE-VALIDATION: production source present; .olean not yet materialized and
-production compiler result not verified. Exact draft passed HOT ledger1225;
-this promotion requires its own independent cold gate.
+Cold-verified at source a5811d5ddd78faf6fe638aa00db30276af826baf,
+ledger1226: focal and three exact audits passed without project-build cache
+restoration. Only this header changed after verification.
 The literal complex-valued physical Green and actual-carrier FULL flag are
 constructed here, not supplied. Fine/block alignment remains explicit.
 Seam and summability are not the infinite-lattice source equation, finite

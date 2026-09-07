@@ -4,7 +4,7 @@ Status map with explicitly cited compiler evidence for completed prefixes.
 Remaining action/source/inverse steps are design obligations, not proofs.
 No physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
-## Current frontier after Addenda1224–1225
+## Current frontier after Addenda1224–1227
 
 The same-index reindex production module and audit are cold-sealed in1224
 at sourcefa898ff5d8bf724fa4b6e629da7260383ef54ecc, seven exact names and
@@ -17,9 +17,16 @@ Its summability, FULL periodicity and PROPER boundary transfer pass HOT
 in1225 at source0d63d2b0f234d3780b60d6ce1242c6aa8e3f67ae; one whnf
 elaboration failure is preserved, then repaired by pinned parameters and
 a named equality without changing statements or heartbeats. The exact
-production promotion a5811d5ddd78faf6fe638aa00db30276af826baf is in a live
-cold gate. Until that verdict is independently checked, this physical
-series remains PRE-VALIDATION at production level.
+production promotion a5811d5ddd78faf6fe638aa00db30276af826baf passed its
+independent cold gate in1226:8751jobs,three exact permitted-trio audits,
+archive and production output independently verified. Selective headers
+are retired; the statements and proof bodies are unchanged.
+
+Ledger1227 adds HOT-only character normalization: period-one volume/Haar,
+four-dimensional character integral, exact centered-alias residue dictionary,
+finite character sum and integer exponential phase. Five exact audits passed
+on the retained runtime. This is not yet a production cold seal or the full
+physical source equation. The runtime was then unassigned and its tab closed.
 
 M4's seam prefix does not close its action/source suffix. The next finite
 normalization route is in NEUMANN-POINTSOURCE-NORMALIZATION-STATIC-20260907.md:

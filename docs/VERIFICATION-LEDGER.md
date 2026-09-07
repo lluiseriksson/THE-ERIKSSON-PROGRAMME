@@ -48639,6 +48639,54 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1227 — point-source character normalization HOT PASS, 2026-09-07
+
+Retained runtime from1226, source a5811d5ddd78faf6fe638aa00db30276af826baf.
+Runner4f721f8143617fad259c5b2d013a98c1444014e3, hash
+72b5a1542213276b49a1f68861724769f62b5af8367a84ce7270b83da8cb25ec.
+Mathlib-only Haar repro exit0/13.678088773s; alias prerequisites
+exit0/11.037729271s,8532 replayed/built jobs; alias repro exit0/10.789515786s.
+Two Haar names and three exact alias names each audit to the permitted trio.
+No error, retry or separate runtime; HOT only, production marks not retired.
+
+Archive12512bytes,8members, automatically downloaded and preserved at
+validation-evidence/neumann-pointsource-normalization-hot-v1-20260907/neumann-pointsource-normalization-hot-v1.tar.gz.
+SHA256 d80bf1b479adfafb568d43335c229c98b060aab77b7d26cadfbabbed5c9e83de;
+result JSON9b034e9f754722159c71dc325c272de6bf557aab61b67ceb4af82989687120d3.
+Independent reader checked runner/source hashes,manifest,exact commands and
+five names: exit0/0.1582076s,17903616-byte observed peak RSS.
+After both cold/HOT archives were locally verified, no Lean/Lake active;
+runtime unassigned13:38:42.156745UTC,37m53.016s connected. Reconnect UI
+confirmed; tab61 closed. No source equation, inverse or window15 claim.
+20/41 and TermSource0 unchanged. These two drafts are ready for promotion;
+the independent masked-difference repro remains unexecuted.
+
+## Addendum1226 — physical mixed seam cold PASS, 2026-09-07
+
+Source a5811d5ddd78faf6fe638aa00db30276af826baf; runner c63ba76393e82cd6b3b22c127f1c0baa788eb76d;
+notebook 63c98b3139dac779a3a936e778b57017b330167e. Fresh CPU/high-RAM
+50.99028778076172GiB, opened13:00:49.141010UTC. No project build cache restored.
+Prerequisites exit0/1768.926056696s; focal exit0/40.006276064s,8751 jobs;
+audit exit0/13.716440999s. Three exact physical mixed-series names each use
+propext, Classical.choice, Quot.sound. Dependency linter warnings retained.
+
+Archive77302bytes, automatically downloaded and independently verified:
+validation-evidence/neumann-physical-mixed-seam-promoted-cold-v1-20260907/hrpoly-neumann-physical-mixed-seam-promoted-cold-v1-evidence.tar.gz
+SHA256 c78fa27d32898b92f5b16d1862fd30cc55ff9c007cdfe7be6052cb4a3669e50c.
+Evidence JSON file7a327c344f8747efdc748c2e9284d73e4e520a5261c4e19634d8a58ffd92b464;
+payload c3636d0d5951f40c4179eeb17a03885a91e0a2b1e9170df1bf9540eefc19a130.
+NeumannPhysicalMixedSeam.olean80d90a1b5517916e39cecb7b82d0470d5c16a57b02aa17e6db147aea34852e4e.
+Independent reader checked17stages,2sourceblobs,3names,exactcommands/logs/fileset
+and output; exit0/0.1922437s,18845696-byte observed peak RSS.
+
+Selective header retirement only for NeumannPhysicalMixedSeam and its Audit.
+Scope: summability and FULL periodic/PROPER reflection boundary identities
+of the literal complex physical mixed Green. Not the source equation,
+finite action interchange, regional inverse, uniform B0 or window15.
+20/41 and TermSource0 unchanged. Runtime retained for the already prepared
+bounded point-source normalization HOT diagnostic after local preservation;
+that diagnostic is separate evidence, not part of this cold seal.
+
 ## Addendum1225 — physical mixed seam HOT failure preserved, minimal repair PASS, 2026-09-07
 
 Reused ledger1224's retained CPU/high-RAM runtime after its cold archive was

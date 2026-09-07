@@ -1,4 +1,18 @@
-# Physical mixed seam promoted cold gate — live
+# Physical mixed seam promoted cold gate — completed
+
+Current status: COLD PASS (ledger1226), followed by the prepared normalization
+HOT PASS (ledger1227). Both archives were downloaded automatically and
+independently verified locally. Runtime unassigned2026-09-07T13:38:42.156745Z
+after NO_LEAN_LAKE_ACTIVE; Reconnect UI confirmed and tab61 closed.
+Connected duration37m53.016s. No runtime remains from this checkpoint.
+The launch details below are historical, not instructions to resume a PID.
+
+Cold archive SHA256 c78fa27d32898b92f5b16d1862fd30cc55ff9c007cdfe7be6052cb4a3669e50c.
+HOT archive SHA256 d80bf1b479adfafb568d43335c229c98b060aab77b7d26cadfbabbed5c9e83de.
+Both live under their corresponding validation-evidence folders dated20260907.
+Next: promote the two validated normalization drafts with exact-body checks;
+the physical phase/source/action dictionary remains open. The separate masked
+difference repro has NOT run. Counters20/41,TermSource0,window15open.
 
 Source `a5811d5ddd78faf6fe638aa00db30276af826baf`; runner checkpoint
 `c63ba76393e82cd6b3b22c127f1c0baa788eb76d`; notebook checkpoint

@@ -1,7 +1,7 @@
 import YangMills.RG.NeumannPhysicalMixedSeam
 
 /-!
-PRE-VALIDATION: production audit present, not yet compiler verified.
+Cold-verified at source a5811d5ddd78faf6fe638aa00db30276af826baf, ledger1226.
 Three exact physical-series names. No inverse or window15 claim.
 -/
 
