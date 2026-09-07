@@ -3,9 +3,9 @@ import YangMills.RG.NeumannBoundaryImageSeriesReindex
 import YangMills.RG.NeumannActualFullGreenReflectionSummability
 
 /-!
-# PRE-VALIDATION: actual two-endpoint source-image boundary invariant
-Promoted source present; its .olean is not materialized and this production
-module is not compiler-verified. Draft HOT evidence does not constitute a cold seal.
+# Actual two-endpoint source-image boundary invariant
+Cold-compiled at source 0f43fbdc51650fb2e8d77282d1c3af18b7f406f0.
+Independent evidence verification: ledger Addendum 1203 (2026-09-07).
 This combines physical endpoint transfer with fixed-source reindexing.
 The fine/block boundary equality is explicit. Summability is constructed
 from the existing actual full Green bound with all source windows retained.

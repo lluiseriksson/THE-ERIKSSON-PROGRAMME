@@ -1,9 +1,9 @@
 import YangMills.RG.NeumannBoundaryOrbitPermutation
 
 /-!
-# PRE-VALIDATION: fixed-source coordinate permutation of the image family
-Promoted source present; its .olean is not materialized and this production
-module is not compiler-verified. Draft HOT evidence does not constitute a cold seal.
+# Fixed-source coordinate permutation of the image family
+Cold-compiled at source 0f43fbdc51650fb2e8d77282d1c3af18b7f406f0.
+Independent evidence verification: ledger Addendum 1203 (2026-09-07).
 The original source n remains fixed. Only translation/parity indices move.
 This algebra does not assert Green covariance, convergence or a seam.
 -/

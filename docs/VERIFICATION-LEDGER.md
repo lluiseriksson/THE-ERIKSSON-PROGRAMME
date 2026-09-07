@@ -48393,3 +48393,28 @@ with the explicit fine/block boundary dictionary. Mixed FULL directions,
 regional point-source/inverse and window15 remain open. HOT only; promoted
 source0f43fbdc5 remains PRE-VALIDATION until its separate cold gate.
 20/41,TermSource=0,window15 not attained.
+
+## Addendum 1203 — physical image seam promoted cold seal (2026-09-07)
+
+Source 0f43fbdc51650fb2e8d77282d1c3af18b7f406f0, transport
+25a134dcf663014e27456c717df2fa01bf6a3830. Fresh Colab checkout;
+no restoration of project .lake/build. Focal 8686 jobs, exit 0,
+2148.780895162 seconds; audit exit 0, 24.162459138 seconds.
+Five production outputs and eleven exact audit names independently verified:
+five use {propext,Quot.sound}, six the standard permitted trio.
+Warnings are preserved, not represented as zero warnings.
+
+Archive SHA256 5c5bb24fb8c234948c9cfd2f66f98bcdf108ed966d8709cd5fbb9746cd22e6d8,
+159664 bytes, preserved locally with matching hash after browser transport.
+Independent reader passed in Colab and locally: fourteen stages; local
+exit 0 / 0.2533719 seconds / 18767872 bytes observed peak RSS.
+Durable: validation-evidence/neumann-physical-image-seam-promoted-cold-v1-20260907.
+The independent report names the JSON hashes and retains the full archive.
+
+Selective retirement of PRE-VALIDATION only for BoundaryOrbitPermutation,
+BoundaryImagePermutation, BoundaryImageSeriesReindex, PhysicalBoundaryTransfer,
+PhysicalImageSeam and its audit (all Neumann-prefixed). Only header comments
+change after the certified source; no proof, statement or hypothesis changes.
+This seals the all-reflecting physical image seam, not mixed FULL coverage,
+a regional inverse, B0 or window15. Periodic transfer remains separate HOT
+diagnosis. 20/41, TermSource=0, window15 not attained.

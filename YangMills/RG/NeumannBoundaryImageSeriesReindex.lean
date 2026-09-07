@@ -2,9 +2,9 @@ import YangMills.RG.NeumannBoundaryImagePermutation
 import Mathlib.Topology.Algebra.InfiniteSum.Basic
 
 /-!
-# PRE-VALIDATION: source-order image-series reindexing
-Promoted source present; its .olean is not materialized and this production
-module is not compiler-verified. Draft HOT evidence does not constitute a cold seal.
+# Source-order image-series reindexing
+Cold-compiled at source 0f43fbdc51650fb2e8d77282d1c3af18b7f406f0.
+Independent evidence verification: ledger Addendum 1203 (2026-09-07).
 The index permutation factors into independent integer and Boolean bijections.
 The finite sum is reindexed first, then the outer tsum: no exchange of sums.
 This algebra also holds for totalized tsums and DOES NOT prove convergence.

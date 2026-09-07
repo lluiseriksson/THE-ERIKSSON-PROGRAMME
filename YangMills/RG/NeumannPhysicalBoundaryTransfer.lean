@@ -2,10 +2,10 @@ import YangMills.RG.NeumannPhysicalHalfCellReflection
 import Mathlib.Tactic.Ring
 
 /-!
-# PRE-VALIDATION: move a physical boundary reflection between endpoints
+# Move a physical boundary reflection between endpoints
 
-Promoted source present; its .olean is not materialized and this production
-module is not compiler-verified. Draft HOT evidence does not constitute a cold seal.
+Cold-compiled at source 0f43fbdc51650fb2e8d77282d1c3af18b7f406f0.
+Independent evidence verification: ledger Addendum 1203 (2026-09-07).
 Consumes the cold-sealed simultaneous physical covariance, not transposition
 or a supplied Green law. This is pointwise transfer only; fixed-source image
 reindexing, summability and the regional Green equation remain separate.

@@ -1,8 +1,9 @@
 import YangMills.RG.NeumannPhysicalImageSeam
 
 /-!
-# PRE-VALIDATION: source-image boundary graph audit
-Source present; .olean not materialized; this production audit is not compiler-verified.
+# Source-image boundary graph audit
+Cold audit passed at source 0f43fbdc51650fb2e8d77282d1c3af18b7f406f0.
+Independent evidence verification: ledger Addendum 1203 (2026-09-07).
 Eleven declarations; no regional inverse or window15 attainment is asserted.
 -/
 
