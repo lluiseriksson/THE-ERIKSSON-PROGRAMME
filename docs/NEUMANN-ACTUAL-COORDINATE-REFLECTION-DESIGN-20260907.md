@@ -265,3 +265,10 @@ restriction. The reflected integrand's integrability still needs explicit
 transport or a continuity proof. Hence R5 has a named finite route, not yet
 a completed proof, and the half-open endpoint issue can be handled by the
 existing interval integral theorem rather than a fresh set identity.
+
+R2 status update (ledger1188/1189): v1 failed only at the positive-coordinate
+simplification retaining if True; phase was not run. The one-line simp
+repair passed carry and phase on the retained graph,10 exact axiom blocks,
+independently verified HOT. Thus the matrix conjugacy is no longer merely
+static, but remains unpromoted scratch; no actual Green reflection follows
+until R3-R5. The original failed package is retained with its nonzero exit.

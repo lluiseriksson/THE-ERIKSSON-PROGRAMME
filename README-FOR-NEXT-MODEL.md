@@ -1,5 +1,16 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT02:17UTC: R2 bounded HOT retry PASSED and independently preserved,
+ledger1189. Runtime f33828f71ae2/tab23 remains retained for bounded R3 repro.
+Original R2 v1 FAIL remains preserved1188; do not rerun either runner.
+HOT source249ee54287989580df0f802796937caa1e4107a0, runner2baa3d5b2,
+PID29282 launched02:13:12UTC and completed. Archive/review under
+validation-evidence/neumann-coordinate-precision-hot-retry-v1-20260907.
+R2 carry + exact matrix conjugacy now HOT verified (10 names); no promotion.
+Next: Mathlib-only tmp/NeumannDiagonalTransportRepro.lean already published
+at5ed3699ca, before physical R3. Preserve source/hash/real exits for that run.
+20/41,TermSource0,window15 unchanged. Historical statuses follow.
+
 CURRENT02:08UTC: R2 v1 stopped correctly at carry_physical line79:2,
 an unreduced if True in the positive coordinate case. Prerequisites8591
 passed; phase_physical NOT EXECUTED. FAIL archive independently preserved in

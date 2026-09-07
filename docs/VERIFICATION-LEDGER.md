@@ -48080,3 +48080,28 @@ prefix, real nonzero child exit and first error. Two altered fixtures rejected.
 Local reader exit0/0.1337218s/18407424bytes observed peak RSS.
 Runtime retained for a bounded hot repair, no repeat cold bootstrap.
 Minimal normalization patch is PRE-VALIDATION;20/41,TermSource0 unchanged.
+
+## Addendum 1189 — R2 carry and literal precision conjugacy HOT verified (2026-09-07)
+
+Source249ee54287989580df0f802796937caa1e4107a0,
+runner2baa3d5b217193f21837ad063972c8bbb26ece2b,
+runner blob14b7bee8b260d9b0a5df266d216e7c3a3d4b2849e0575dcd4657140715386cb8.
+Same retained runtime f33828f71ae2, PID29282, start02:13:12.326426UTC.
+No bootstrap and no project rebuild. Parent failed archive hash and all four
+successful parent outputs checked before the repair. One proof normalization
+changed: simp with coordinate definition, hnu and mul_comm. No statement,
+constant, domain, phase, or hypothesis changed; failed source retained1188.
+carry exit0/7.68656611s, phase exit0/7.63646529s; clean_before/after exit0.
+All10 named declarations use exactly Classical.choice,Quot.sound,propext.
+
+Archiveea16de33269c65964606bfe5997fea3fbf7478a27115d3bfbde5ef0ae401a915;
+independent report89874cff88a5ec9085b22ab0603ec66d5cb0039d12e34c2a99cf0fbdf1274c4e.
+carry olean8e9d176f4a642aeeae7e286dd693d394aa4165be349f840eecab115edd86f383;
+phase oleanf3439e2babe80464003ddfc014dad9b09c085e81efcebf3db0094b2b14c6ca45.
+Preserved in validation-evidence/neumann-coordinate-precision-hot-retry-v1-20260907.
+Independent reader checks exact sources, runner, parent contract, finite
+commands/order, exits, logs, output hashes and exact axiom blocks. Exit0,
+0.1702975s,19255296bytes observed peak RSS; four corrupt fixtures rejected.
+Status VERIFIED_HOT_PASS,cold_seal=false. No PRE retirement, physical Green
+covariance, inverse, B0, window15 or terminal field follows.20/41,TermSource0.
+Runtime retained for bounded Mathlib-only R3 transport repro, not a new build.
