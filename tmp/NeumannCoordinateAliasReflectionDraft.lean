@@ -81,12 +81,44 @@ theorem neumannAliasCoordinateReflection_sum
     ∑ m, f (neumannAliasCoordinateReflection d N mu m) = ∑ m, f m := by
   exact Equiv.sum_comp (neumannAliasCoordinateReflection d N mu) f
 
+/-- The physical specialization fixes the alias count to L^j, including j=0. -/
+def neumannPhysicalAliasCoordinateReflection
+    (d L j : ℕ) [NeZero L] (mu : Fin d) :
+    Equiv.Perm (CMP89Eq246AliasIndex d L j) := by
+  letI : NeZero (L ^ j) := ⟨pow_ne_zero j (NeZero.ne L)⟩
+  exact neumannAliasCoordinateReflection d (L ^ j) mu
+
+theorem neumannPhysicalAliasCoordinateReflection_central
+    (d L j : ℕ) [NeZero L] (mu : Fin d) :
+    neumannPhysicalAliasCoordinateReflection d L j mu
+        (cmp89Eq249CentralAliasIndex d L j) =
+      cmp89Eq249CentralAliasIndex d L j := by
+  letI : NeZero (L ^ j) := ⟨pow_ne_zero j (NeZero.ne L)⟩
+  change neumannAliasCoordinateReflection d (L ^ j) mu
+      (cmp89Eq249CentralAliasIndex d L j) =
+    cmp89Eq249CentralAliasIndex d L j
+  apply (cmp89Eq245CenteredAliasVectorPiEquiv d (L ^ j)).injective
+  funext nu
+  change neumannAliasPiCoordinateReflection d (L ^ j) mu
+      (cmp89Eq245CenteredAliasVectorPiEquiv d (L ^ j)
+        (cmp89Eq249CentralAliasIndex d L j)) nu =
+    (cmp89Eq245CenteredAliasVectorPiEquiv d (L ^ j)
+      (cmp89Eq249CentralAliasIndex d L j)) nu
+  by_cases hnu : nu = mu
+  · subst nu
+    rw [neumannAliasPiCoordinateReflection_self]
+    change cmp99SourceCenteredAliasReflection (L ^ j)
+        ⟨0, _⟩ = ⟨0, _⟩
+    exact cmp99SourceCenteredAliasReflection_zero
+  · exact neumannAliasPiCoordinateReflection_other d (L ^ j) mu nu hnu _
+
 #print axioms neumannAliasPiCoordinateReflection_self
 #print axioms neumannAliasPiCoordinateReflection_other
 #print axioms neumannAliasCoordinateReflection_other
 #print axioms neumannAliasCoordinateReflection_residue
 #print axioms neumannAliasCoordinateReflection_involutive
 #print axioms neumannAliasCoordinateReflection_sum
+#print axioms neumannPhysicalAliasCoordinateReflection_central
 
 end
 end YangMills.RG

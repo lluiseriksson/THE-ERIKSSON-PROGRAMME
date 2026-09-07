@@ -99,3 +99,9 @@ Nothing from this draft is in the running queue. Text guard only: exit0,
 0.0855034s,15273984bytes observed peak RSS; compiler status NOT CHECKED.
 Two local invocation mistakes (missing manifest argument, then str instead
 of Path in the direct checker call) were corrected without any Colab run.
+
+The subsequent scratch revision adds the explicit physical permutation on
+CMP89Eq246AliasIndex d L j and its central-alias preservation theorem.
+The NeZero(L^j) instance is constructed from NeZero L; j=0 and N=1 are
+retained. Seven audit declarations are now present, all NOT CHECKED.
+Both text and import-prefix guards pass; this is not compiler evidence.
