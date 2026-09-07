@@ -45,8 +45,15 @@ R3. Transport the solution of the literal alias equation through that
 diagonal phase and permutation. Use the already constructed full-solver
 domain at both momenta and the literal full-solution equation. Establish
 uniqueness from its square finite matrix, not a supplied inverse identity.
-If a solver injectivity lemma is needed, make it explicit here; no extra
-analytic hypothesis may be hidden in the reflection statement.
+The required theorem ALREADY EXISTS:
+cmp89Eq246EntireAliasPrecisionMatrix_mulVec_injective, in
+BalabanCMP89Eq246AliasPrecisionUniqueness. It takes exactly fine,
+stabilized and row nonvanishing; surjectivity is constructed from the
+literal solver and finite dimensionality gives injectivity. Its selective
+cold seal is1bda3dd70, ledger1056. Do not duplicate this theorem or add a
+new uniqueness hypothesis. FinePointSourceSolutionCycle demonstrates its
+existing use after transporting an actual source equation; reflection
+needs the additional diagonal phases, not a new uniqueness principle.
 
 R4. Reflect both fine integer endpoints about the block centre:
 S_N(x)_mu=N-1-x_mu in the selected coordinate, unchanged elsewhere.
@@ -79,3 +86,16 @@ remain M4 in NEUMANN-MIXED-BOUNDARY-CANDIDATE-20260907.md. The normalized
 fine-density-to-counting factor N^-4 must still be installed exactly once.
 
 20/41; TermSource=0; window15 compatible, not attained.
+
+## Bounded R1 scratch preparation while translation compiles
+
+tmp/NeumannCoordinateAliasReflectionDraft.lean constructs the one-coordinate
+permutation from already sealed scalar-reflection and product-equivalence
+modules; it does not import the pending translation draft. Six audit targets
+cover the two product-coordinate equations, unchanged integer coordinates,
+selected-coordinate residue negation, involution and finite-sum reindexing.
+Explicit central-alias preservation and specialization N=L^j remain to add.
+Nothing from this draft is in the running queue. Text guard only: exit0,
+0.0855034s,15273984bytes observed peak RSS; compiler status NOT CHECKED.
+Two local invocation mistakes (missing manifest argument, then str instead
+of Path in the direct checker call) were corrected without any Colab run.
