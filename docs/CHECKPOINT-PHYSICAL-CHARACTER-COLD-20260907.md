@@ -31,3 +31,23 @@ then disconnect/unassign unless a bounded continuation has been prepared.
 Do not infer a physical source equation or inverse from this normalization
 and readout gate. Actual finite action, density/counting conversion and
 image/operator interchange remain open.20/41,TermSource0,window15open.
+
+Bounded retained-runtime suffix prepared BEFORE cold completion, not launched:
+after cold PASS, assistant download and independent archive verification,
+write /content/physical-character-cold-evidence-preserved.ok. Then one
+HOT diagnostic may fetch tmp/NeumannAliasExponentialSelectorDraft.lean from
+overlay0dcd87f8b60dfb464fb3a6707b8f65fe96637960, SHA256
+48777e553acc6f908a78bc3de7f04ad42068fd1d53a56a60f41449e2f15d2e01.
+Base checkout remains29a48ac4bb1058cd71b74f65029e918d49e74b60.
+Runnerfffa84465dd49a9397b516a61d47d08dc7c3118e,
+scripts/colab_neumann_alias_exponential_selector_hot.py,
+SHA256f6d838590726f31b1123b356ff7b0991df5a8c206a0e3e6464ef267106590b09.
+Queue: lake build YangMills.RG.NeumannCenteredAliasCharacter, then
+lake env lean tmp/NeumannAliasExponentialSelectorDraft.lean. Three names.
+One launch, no concurrent compiler, stop on first error. Output
+/content/neumann-alias-exponential-selector-hot-v1.tar.gz. Launch log outside
+that evidence directory. Preserve and independently verify before disconnect.
+Reader scripts/verify_neumann_alias_exponential_selector_hot.py at223546756;
+synthetic1accepted/9rejected, exit0/0.1787398s,18546688 observed peak RSS.
+This suffix selects congruence only; the remaining continuous integral and
+actual finite operator action are not replaced by a finite-grid delta.
