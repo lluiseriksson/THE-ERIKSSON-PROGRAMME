@@ -141,3 +141,18 @@ Do not substitute the older
 it belongs to the withdrawn Eq248 scalar one-displacement route, not this
 Eq246 mixed physical kernel. No new compiler evidence or terminal field is
 claimed by this interface audit.
+
+## Literal Brillouin phase specialization prepared
+
+`tmp/NeumannPhysicalBrillouinCharacterDraft.lean` now consumes the named
+period-one volume/Haar equality, the sealed normalized-measure transport,
+and `cmp89Eq248NegativeTwoPiTorusMomentum_physicalBrillouin` to state
+orthogonality for the actual parameter `cmp89Eq251PhysicalBrillouinParameter`.
+The integer phase uses `mFourier (-u)` with the source's translated momentum;
+no parity convention or extra `(2*pi)^(-4)` is introduced.
+
+This is PRE-VALIDATION, text guard only. It is not in the live cold queue
+or the separately prepared masked-difference HOT queue. Its three goals
+are volume character integral, literal physical phase identity, and normalized
+physical integer-character integral. Even a future PASS would leave the
+alias-weighted fine source equation and finite action interchange open.
