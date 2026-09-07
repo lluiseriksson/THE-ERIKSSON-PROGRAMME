@@ -78,3 +78,33 @@ and the four-dimensional character integral under product normalized Haar:
 tmp/NeumannTorusCharacterIntegralRepro.lean. It is not yet compiled and is
 not part of the live reindex cold queue. Only after this repro passes may
 the exact physical phase dictionary consume its orthogonality conclusion.
+
+## Coefficient roles in the later physical-action dictionary
+
+Static reading of the actual source types, not a new compiler result:
+
+- `cmp89Eq246EntireAliasPrecisionMatrix` uses its parameter `a` literally
+  as the coefficient of the rank-one averaging column/row product.
+- `cmp85SourcePrefixA (M := M) a r` instead computes the prefix coefficient
+  from the initial parameter: `cmp99SourceMassParameter a M (r.val - 1)`.
+- `cmp85SourcePrefixWeightedCoefficient T a r` multiplies that prefix
+  coefficient by `terminalSpacing^(-2)`.
+- `cmp85SourcePrefixCountingCoefficient T a r` further multiplies by
+  `terminalSpacing^d / spacing^d`, to convert the weighted adjoint to the
+  counting-Hilbert adjoint used in Lean.
+- `neumannCanonicalPrecision_apply_eq_completeOffsets` keeps the literal
+  counting coefficient multiplied by the averaging weight to power
+  `2*(steps+1)`. The complete fibre is not silently renormalized there.
+
+Consequently the later dictionary must instantiate the Fourier coefficient
+with the actual effective prefix coefficient, rather than identifying two
+parameters both named `a`. At a normalized terminal spacing of one, the
+intended Fourier coefficient is `cmp85SourcePrefixA`; the preceding scale
+normalization and its index shift must be proved explicitly. The remaining
+volume ratio cancels one of the two counting weights, leaving one normalized
+fibre average. That cancellation is a required equality, not a new premise
+or an invitation to cancel the fine-density point-source factor twice.
+
+This is a named scalar/dictionary obligation inside the action step; the
+current mixed Green seam theorem intentionally leaves its coefficient
+parameter explicit and does not claim to instantiate the canonical tower.
