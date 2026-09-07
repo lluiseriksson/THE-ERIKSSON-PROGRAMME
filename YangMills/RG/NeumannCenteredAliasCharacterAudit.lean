@@ -1,8 +1,9 @@
 import YangMills.RG.NeumannCenteredAliasCharacter
 
 /-!
-PRE-VALIDATION: audit source present; .olean not materialized and production
-compiler result not verified. Three exact names, no source equation claim.
+COLD VERIFIED at source98f4337e06271a7d5e3957450440292db0f79168,
+ledger1228: three exact names checked from downloaded cold evidence.
+No source equation claim; this audit was executed, not built as an olean.
 -/
 
 #print axioms YangMills.RG.neumannCenteredAliasVectorResidueEquiv_apply

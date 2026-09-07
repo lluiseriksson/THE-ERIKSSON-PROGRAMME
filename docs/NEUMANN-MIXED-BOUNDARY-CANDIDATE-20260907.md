@@ -4,7 +4,18 @@ Status map with explicitly cited compiler evidence for completed prefixes.
 Remaining action/source/inverse steps are design obligations, not proofs.
 No physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
-## Current frontier after Addenda1224–1227
+## Current frontier after Addenda1224–1229
+
+Haar and centered-alias character normalization is now cold-sealed in1228
+at source98f4337e06271a7d5e3957450440292db0f79168: five exact audit names,
+two verified outputs, assistant-downloaded archive independently checked.
+Generic masked endpoint differences pass HOT1229 with only propext and
+Quot.sound; their physical seam instantiation remains a separate obligation.
+The retained-runtime physical phase/readout suffix is running, not sealed.
+Finite alias congruence plus continuous character orthogonality still needs
+composition with the actual finite precision action. The density-to-counting
+kernel factor xi^d is separate from the Qprime mass normalization.
+20/41,TermSource0,window15open; these normalization bricks do not move them.
 
 The same-index reindex production module and audit are cold-sealed in1224
 at sourcefa898ff5d8bf724fa4b6e629da7260383ef54ecc, seven exact names and

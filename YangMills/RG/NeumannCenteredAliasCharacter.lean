@@ -2,8 +2,9 @@ import YangMills.RG.BalabanCMP99SourceCenteredAliasReflection
 import YangMills.RG.BalabanCMP99FlatMultidimensionalDFT
 
 /-!
-PRE-VALIDATION: production source present; .olean not materialized and
-production compiler result not verified. Exact draft passed HOT ledger1227.
+COLD VERIFIED at source98f4337e06271a7d5e3957450440292db0f79168,
+ledger1228: fresh Colab focal8533 jobs and exact three-name audit,
+downloaded evidence independently verified. Exact HOT ledger1227 body.
 The literal scalar residue equivalence is reused. This finite sum selects
 congruence only; the physical phase/source equation remains open.
 -/

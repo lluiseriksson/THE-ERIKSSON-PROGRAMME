@@ -1,8 +1,9 @@
 import Mathlib.Analysis.Fourier.AddCircleMulti
 
 /-!
-PRE-VALIDATION: production source present; .olean not materialized and
-production compiler result not verified. The exact draft passed HOT ledger1227.
+COLD VERIFIED at source98f4337e06271a7d5e3957450440292db0f79168,
+ledger1228: fresh Colab focal and exact two-name audit; downloaded evidence
+independently verified. Exact HOT ledger1227 mathematical body.
 This is normalized Haar character orthogonality, not a physical source equation.
 The physical volume convention is linked explicitly at period one.
 -/

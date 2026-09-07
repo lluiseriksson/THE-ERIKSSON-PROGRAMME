@@ -48639,6 +48639,50 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1229 — masked endpoint differences HOT PASS, 2026-09-07
+
+Source98f4337e06271a7d5e3957450440292db0f79168, runner9dc39193157fa4627dd09b235305c5ab4fe90510.
+Retained runtime only after1228 cold evidence independently preserved.
+One Mathlib-only repro, exit0/6.314148715s; forward/backward masked difference
+names both exactly {propext,Quot.sound}. Unused hN warning retained.
+The hypotheses still require physical seam producers; no physical action,
+inverse, cold production seal or window15 claim.
+Archive validation-evidence/neumann-masked-difference-hot-v1-20260907/neumann-masked-difference-hot-v1.tar.gz,
+SHA2562b8c8aa39332e863f79a90fbbcdaaa559caa4ce8108cb027353d7e04e6ad4780.
+Downloaded by assistant, exact file/manifest/source/runner/log/audit checks PASS;
+local reader exit0/0.1596778s,16769024 observed peak RSS.
+Log543b4885895bcca232d2cd9770f65bdc5189988ec404c25785071b17808180b2.
+No PRE-VALIDATION removal for this HOT-only result.20/41,TermSource0 unchanged.
+
+## Addendum1228 — character normalization cold PASS, 2026-09-07
+
+Source98f4337e06271a7d5e3957450440292db0f79168,
+runner eaf9e56153aa906a498b5b623905de74d74a0262,
+notebook c94ffdf634d3b461ac7693bc70deccfed577c3c5.
+Fresh Colab CPU/highRAM50.99028778076172GiB, no restored project build;
+exact Lean4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b.
+Haar focal/audit exit0/10.785718315s/15.468785976s;
+alias prerequisites0/1575.31211888s, focal0/23.442235215s(8533jobs),
+audit0/8.706256537s. All five exact names use the permitted trio.
+Dependency linter warnings preserved; no zero-warning assertion.
+Independent reader verified19 stages,4 source blobs,5 names,2 outputs;
+exit0/0.1967934s,18755584 observed peak RSS.
+
+Archive83829bytes, validation-evidence/neumann-character-normalization-promoted-cold-v1-20260907/hrpoly-neumann-character-normalization-promoted-cold-v1-evidence.tar.gz,
+SHA256a51e9d590735faae1c5a3d55c294373420999906adb3ec85d07e4d390633c2f8.
+JSON file83273e94da3fc936463ec45fdd683af1d5598c9b67b67d84391f0cec8097ca72;
+payload6b42e8627e0ea0e7778251839e97ce446a8655de3105e3a30de5dacbedd7a870.
+Outputs NeumannTorusCharacterIntegral.olean
+0a6163eabc8f7935c03d53726450fa78955976d8a0b3c1a89097a7ea15bb6e19;
+NeumannCenteredAliasCharacter.olean
+0e866958e560b27efbbd6282d31b78cbdd877c4317fcca7f9cc4c3879767a029.
+Four headers selectively retired; all text outside first module docstrings
+equals the exact source, including EOF, after LF normalization:
+check exit0/0.1935678s,14385152 observed peak RSS.
+Scope is Haar/finite-alias character normalization, NOT the actual physical
+source equation, counting inverse, uniform B0 or window15.20/41,TermSource0.
+Runtime retained only for the two previously prepared HOT diagnostics.
+
 ## Addendum1227 — point-source character normalization HOT PASS, 2026-09-07
 
 Retained runtime from1226, source a5811d5ddd78faf6fe638aa00db30276af826baf.
