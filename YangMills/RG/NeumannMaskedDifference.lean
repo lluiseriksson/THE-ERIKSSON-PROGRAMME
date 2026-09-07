@@ -2,8 +2,10 @@ import Mathlib.Algebra.Group.Basic
 import Mathlib.Tactic
 
 /-!
-PRE-VALIDATION: production source present; .olean not materialized and
-production compiler result not verified. Exact draft passed HOT ledger1229. Mathlib-only endpoint/mask algebra. These endpoint hypotheses
+Cold compiler-verified at source29a48ac4bb1058cd71b74f65029e918d49e74b60,
+2026-09-07, ledger1231; output and exact audits independently preserved.
+Proof body unchanged from that cold source and HOT ledger1229.
+Mathlib-only endpoint/mask algebra. These endpoint hypotheses
 must later be supplied by the literal physical mixed seam producer; this
 file supplies no kernel, inverse or physical operator identification.
 Non-strict h <= N and the FULL branch are retained.

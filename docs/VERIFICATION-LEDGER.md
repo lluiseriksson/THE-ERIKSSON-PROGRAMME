@@ -48639,6 +48639,34 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1231 — physical character promotion cold PASS, 2026-09-07
+
+Source29a48ac4bb1058cd71b74f65029e918d49e74b60; runnerc113f5f6ccdfaf6636f0dfb94bfdb490358e13b2.
+Fresh CPU/highRAM Colab, exact pinned toolchain/Mathlib, no project build restore.
+Six focal/audit stages exit0: mask35.234119341s/3.840179694s,
+physical1035.800015861s/9.767550846s, readout115.476489539s/7.548819566s.
+Readout focal8501jobs. Six exact names: two masks use propext/Quot.sound;
+three physical characters and one literal alias readout use the allowed trio.
+Dependency warnings remain in full logs; no warning-free graph claim.
+Independent reader checks all20stages, six source blobs, exact file/command
+sets, logs and three production outputs: exit0/0.3321709s,18903040RSS.
+
+Archive153915bytes, SHA256f75abadc466198d1db07eefeafc00894803ea9cc4b4127c2f30b266ae3b75b6b,
+stored validation-evidence/neumann-physical-character-promoted-cold-v1-20260907/
+hrpoly-neumann-physical-character-promoted-cold-v1-evidence.tar.gz.
+JSONfile66a9aec6e10b2d6ad9e40f89794bd29f716533d148ec0a04aaf387f8dbc3cfaf;
+payload621fe50307203827833649e14d7363caa8d48818606e06357a928bb9b765083d.
+Production output hashes: mask13f27acbd82d136fac7ece8a2cd330e454a24f29181a5fe24974dd5c17d4d32a;
+physicalfb84de20054101558b7455af75098a9d387a657459377eacb5e042af0483a890;
+readoutb5385465eadb41a632460f150a9aa59cd3d7ea7ab5a7208bf9d46d10ba38b0ef.
+
+Download transport failed on tab63; recovered notebook tab66 reattached to
+the same runtime and Colab Files download succeeded. No compiler rerun.
+Only six certified headers are retired. Actual finite operator action,
+image interchange, density/counting source equation, inverse, uniform B0 and
+window15 remain open;20/41,TermSource0 unchanged. Runtime retained for the
+two HOT suffixes prepared before the cold verdict, not a new cold seal.
+
 ## Addendum1230 — literal physical character/readout HOT PASS, 2026-09-07
 
 Base98f4337e06271a7d5e3957450440292db0f79168; overlay

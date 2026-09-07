@@ -2,8 +2,10 @@ import YangMills.RG.NeumannTorusCharacterIntegral
 import YangMills.RG.BalabanCMP89NormalizedBrillouinToTorusMeasure
 
 /-!
-PRE-VALIDATION: production source present; .olean not materialized and
-production compiler result not verified. Exact draft passed HOT ledger1230. Consume the literal translated physical Brillouin parameter
+Cold compiler-verified at source29a48ac4bb1058cd71b74f65029e918d49e74b60,
+2026-09-07, ledger1231; output and exact audits independently preserved.
+Proof body unchanged from that cold source and HOT ledger1230.
+Consume the literal translated physical Brillouin parameter
 and its already normalized measure. No second Jacobian, no free phase map.
 This integer-character identity is not the full alias-weighted source
 equation, finite operator action, regional inverse or window15.

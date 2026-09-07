@@ -1,8 +1,10 @@
 import YangMills.RG.BalabanCMP89Eq246FullSolutionDomain
 
 /-!
-PRE-VALIDATION: production source present; .olean not materialized and
-production compiler result not verified. Exact draft passed HOT ledger1230. Read out the literal precision acting on its internally built
+Cold compiler-verified at source29a48ac4bb1058cd71b74f65029e918d49e74b60,
+2026-09-07, ledger1231; output and exact audits independently preserved.
+Proof body unchanged from that cold source and HOT ledger1230.
+Read out the literal precision acting on its internally built
 fine point-source solution. The source and solution are not free families.
 The two endpoint phases combine only AFTER applying the alias precision;
 this does not identify the two-endpoint Green with a displacement kernel.
