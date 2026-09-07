@@ -43,6 +43,14 @@ necessary for quantitative regional estimates. For mixed branches the same
 argument requires injection separately within each fixed allowed branch;
 FULL directions must still have only their single branch.
 
+The convergence route is now written, not compiled, in
+tmp/NeumannPhysicalPeriodicSummabilityDraft.lean: injection, generic decay
+composition and literal mass-uniform physical specialization. The period
+may be any nonzero integer for convergence; ONLY the separate covariance
+law requires block alignment. These different hypotheses are intentional.
+The source windows remain verbatim. No quantitative total-mass bound is
+installed by the draft. Text guard only; PRE-VALIDATION retained.
+
 The historical paragraphs below record the earlier design audit. M3 is no
 longer wholly open: the literal full Green common block translation and
 simultaneous half-cell reflection are cold-sealed in Addendum1197. Their
