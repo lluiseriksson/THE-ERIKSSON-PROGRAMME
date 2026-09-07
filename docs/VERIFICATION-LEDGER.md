@@ -48505,3 +48505,57 @@ summability now have HOT evidence. The physical decay/source windows remain;
 no uniform sum budget, mixed coverage, regional inverse, B0 or window15 follows.
 PRE stays until exact production promotion passes its cold gate.
 20/41,TermSource=0 unchanged. Runtime disconnected/deleted after preservation.
+
+## Addendum 1209 — physical periodic series and convergence COLD PASS (2026-09-07)
+
+Source d16030e70abeee9eb77e28f5dc6a222ffdfd8200; fresh Colab CPU/highRAM,
+opened07:45:28UTC, PID1787. No project build cache restored. Exact Lean
+4.29.0-rc6 and Mathlib07642720480157414db592fa85b626dafb71355b verified.
+Focal8660 jobs, exit0/1768.741739938s; audit exit0/18.864661977s.
+Five exact declarations, each [Classical.choice,Quot.sound,propext].
+The dependency log contains lint warnings; no zero-warning claim is made.
+Browser tabs33/34 disappeared but the same process/runtime was recovered
+in35 without relaunching. The launch counter reset on notebook reload was
+not interpreted as absence of a process. Both focal and audit completed.
+
+Archive70691bytes:
+7e764ea7924f8c59f7242a9192522eba249cabe42ccbc6def7f71ee1f1cc407b.
+Automatically downloaded and independently verified (16 stage records,
+source pins, exact file set, logs, five-name gate and both production outputs).
+Evidence JSON payload26d825d760d454a2b4f4f1c9d765bda160c8f53d060a7a6e28b3b23b33e543bc;
+JSON file9f0ac32559f9998904585a14c504eb96bd20ce8885c42f269d7845c8c06b33c1.
+Series.olean3717758eb216bb742dc305c4db9befb748cecb09e3f72a362df49594aaee060f;
+Summability.oleanaf4bb56e27f9bbf5bb598174408298e687282704dd2688bd314e43ba725fd57e.
+Preserved under validation-evidence/neumann-physical-periodic-series-cold-v1-20260907.
+Local reader exit0/0.1203905s/16646144bytes observed RSS. Loopback transfer
+20.875s/25776128bytes peak RSS; no local Lean/Lake execution.
+
+Selective retirement: only NeumannPhysicalPeriodicSeries,
+NeumannPhysicalPeriodicSummability and their shared audit header.
+This proves single-branch periodic tsum transport and convergence under
+the retained physical decay windows. It does NOT prove mixed coverage,
+point-source action, uniform B0, regional inverse or window15.
+20/41,TermSource=0 unchanged. Runtime retained only for the prepared bounded
+periodic-interval HOT diagnostic after this archive was durably preserved;
+that separate result cannot upgrade this seal or count as cold evidence.
+
+## Addendum 1210 — periodic interval HOT repro rejects hidden beta-redex (2026-09-07)
+
+Draft sourcee7bfd29f609408eccd6f296c1f96e04425320d8c; runner4d3f72c5a2,
+retained cold parent1209 independently reverified. Repro exit1/3.477037241s;
+prerequisite and project draft NOT EXECUTED. First real error at repro42:6:
+rewrite cannot find `(n+P*k)/P` in `(fun u => u/P)(n+P*k)=...`.
+The source contains no sorry; Lean's failed-declaration recovery prints
+sorryAx, and the nonzero child exit rejects the run before the axiom gate.
+No theorem or .olean is accepted from this diagnostic.
+Repair scope: two explicit `change` statements for quotient/remainder
+equalities before rewriting, following the existing sealed interval proof.
+No statement, hypothesis, coefficient, domain or period convention changes.
+
+Archive12938bytes8276fe37224ce4d6c5bf7d7fba44ad61b575fe63e3a66e7f9414a65fbd3222a7,
+downloaded automatically and preserved under
+validation-evidence/neumann-periodic-interval-hot-v1-failure-20260907.
+All11manifest entries, exact archive set and four record hashes checked;
+only final record exit1, all preceding records0. Local integrity check
+0.1168838s/16052224bytes observed RSS; no local Lean. Cold1209 remains valid.
+20/41,TermSource=0,window15 not attained. No PRE retirement for this draft.

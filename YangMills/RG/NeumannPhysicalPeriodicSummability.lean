@@ -3,10 +3,11 @@ import YangMills.RG.BalabanCMP89SignedLatticeL1TotalSum
 import Mathlib.Tactic.LinearCombination
 
 /-!
-# PRE-VALIDATION: one-branch periodic source summability
-Promoted source present; production .olean not materialized; this module is
-not yet compiler-verified. Exact draft proofs passed HOT in ledger1208;
-that evidence does not replace this module's pending cold gate.
+# Cold-verified one-branch periodic source summability
+Exact source d16030e70abeee9eb77e28f5dc6a222ffdfd8200 passed a fresh
+Colab focal (8660 jobs) and the shared five-name audit; ledger1209.
+Downloaded archive, logs and production outputs independently verified.
+Only this header changes after verification; proof bodies are unchanged.
 The coordinatewise periods are nonzero. No reflection branch is introduced.
 The actual full Green certificate retains all source strip/mass windows.
 This establishes only convergence, not a scale-uniform norm budget, mixed

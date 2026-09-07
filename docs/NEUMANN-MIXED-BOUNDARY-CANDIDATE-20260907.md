@@ -3,7 +3,17 @@
 STATIC DESIGN ONLY. No new compiler result, source equation verification,
 physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
-## Current frontier after Addenda1203–1208
+## Current frontier after Addendum1209
+
+Physical periodic series and convergence are now COLD verified at
+d16030e70abeee9eb77e28f5dc6a222ffdfd8200: focal8660, audit5/5, archive
+7e764ea7924f8c59f7242a9192522eba249cabe42ccbc6def7f71ee1f1cc407b,
+downloaded and independently checked. Ledger1209 retires exactly their
+three production/audit headers. Mixed M1/M2/M4 and the actual full-lattice
+point-source equation remain open. The independent periodic-interval draft
+has a prepared HOT-only gate, not a cold claim or an installed mixed operator.
+
+The following paragraphs retain the earlier promotion chronology.
 
 The all-reflecting image seam is now cold-sealed in1203. Periodic endpoint
 transfer is cold-sealed in1205 on24dc691e4. Neither result supplies mixed coverage.

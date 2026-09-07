@@ -3,10 +3,11 @@ import Mathlib.Topology.Algebra.InfiniteSum.Basic
 import Mathlib.Tactic.Ring
 
 /-!
-# PRE-VALIDATION: integer-period source reindexing
-Promoted source present; production .olean not materialized; this module is
-not yet compiler-verified. Exact draft proofs passed HOT in ledger1208;
-that evidence does not replace this module's pending cold gate.
+# Cold-verified integer-period source reindexing
+Exact source d16030e70abeee9eb77e28f5dc6a222ffdfd8200 passed a fresh
+Colab focal (8660 jobs) and the shared five-name audit; ledger1209.
+Downloaded archive, logs and production outputs independently verified.
+Only this header changes after verification; proof bodies are unchanged.
 This uses the literal physical endpoint transfer, not a supplied kernel law.
 Only one periodic branch is summed. The tsum identity alone does not assert
 summability, mixed-family coverage, a regional inverse, B0 or window15.

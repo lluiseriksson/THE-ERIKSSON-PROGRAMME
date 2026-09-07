@@ -2,10 +2,10 @@ import YangMills.RG.NeumannPhysicalPeriodicSeries
 import YangMills.RG.NeumannPhysicalPeriodicSummability
 
 /-!
-# PRE-VALIDATION: promoted physical periodic series and convergence audit
-Source present; production .olean not materialized; result not compiler-verified.
-The five exact draft declarations passed HOT (ledger1208). This audit and
-the promoted modules still require their own cold gate. No mixed inverse,
+# Cold-verified physical periodic series and convergence audit
+Source d16030e70abeee9eb77e28f5dc6a222ffdfd8200, fresh Colab focal8660
+and audit exit0; five exact allowed trios, independently verified archive.
+See ledger1209. Audit statements are unchanged. No mixed inverse,
 uniform B0, source equation, window15 or terminal field is claimed here.
 -/
 
