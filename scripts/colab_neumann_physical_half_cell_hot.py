@@ -15,7 +15,7 @@ SOURCE='91dee187ebd5f32250c3966ed6a9141b25990ad7'
 BASE='95c757465455c7e8cffcfcd6d9d18aa56f6d5083'
 PIN='e9e61b864d93af288c96f50e58968471c10adbe0da76e3f092b2be15ff02029b'
 GATE='016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2'
-REV='neumann-physical-half-cell-hot-v1'
+REV='neumann-physical-half-cell-hot-v2'
 ROOT=Path('/content/hrpoly-neumann-coordinate-precision-diagnostic-v1')
 OUT=Path('/content/'+REV)
 RAW='https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
@@ -88,7 +88,7 @@ def main():
         gate=types.ModuleType('gate');exec(compile((OUT/'axiom-gate.py').read_bytes(),'gate','exec'),gate.__dict__);gate.self_test()
         source=scratch/'NeumannPhysicalHalfCellReflectionDraft.lean'
         source.write_bytes((OUT/source.name).read_bytes())
-        run('prerequisites',['lake','build','YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour'])
+        run('prerequisites',['lake','build','YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour','YangMills.RG.BalabanCMP89CenteredTorusGreenCoefficientPhase'])
         text=run('physical',['lake','env','lean','-o',str(OUT/'NeumannPhysicalHalfCellReflectionDraft.olean'),str(source.relative_to(ROOT))])
         audits=gate.exact_axioms(text,set(NAMES))
         run('clean_after',['git','diff','--exit-code','HEAD','--','YangMills','lean-toolchain','lake-manifest.json'])
@@ -104,6 +104,5 @@ def main():
     return 0 if status=='PASS' else 1
 
 if __name__=='__main__':raise SystemExit(main())
-
 
 
