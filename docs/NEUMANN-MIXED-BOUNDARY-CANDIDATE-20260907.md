@@ -203,6 +203,21 @@ only with explicit summability. The full-lattice normalized point-source
 equation and fine-density-to-counting factor B^-4 must be supplied once.
 Only then may inverse uniqueness identify the regional Green.
 
+Static downstream audit: `neumannCanonicalPrecision_apply_eq_completeOffsets`
+is cold-sealed finite action (ledger1162), preserves three separate species,
+and fixes the literal prefix counting coefficient and complete fibre.
+It is reusable for the action, not itself a point-source equation.
+By contrast, the old
+`cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalRightInverse_iff_pointSources`
+is present only in an untracked local PRE-VALIDATION draft at inspection;
+it imports the WITHDRAWN (2.48) physical inverse scaffold and still
+specializes to its wrong source-role kernel. Do not stage that historical
+draft as part of this work or accept its older source-faithful header as
+evidence. The local draft was left unchanged; this map records the exclusion.
+No compiler seal is claimed by this documentation correction. Reuse the generic criterion
+`finitePiLp_comp_eq_id_iff_pointSources` only after constructing the actual
+(2.46) mixed operator; do not reuse the old specialization by name.
+
 This candidate could preserve the original non-strict carrier domain, but
 it remains unimplemented and unverified. It does NOT discharge M3/M4 or
 the independent full-lattice Fourier/operator equation by defining a new
