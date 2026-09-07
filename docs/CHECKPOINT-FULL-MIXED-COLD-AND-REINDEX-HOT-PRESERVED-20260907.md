@@ -19,9 +19,11 @@ Runtime unassigned2026-09-07T11:53:38.617099Z, no compiler active,
 Reconnect UI confirmed then sole tab59 closed. No external job remains.
 Do not relaunch old cells or old diagnostics.
 
-Next step: promote exact repaired tmp/NeumannMixedImageReindexDraft.lean
-proof body plus separate audit, then prepare its cold gate before opening
-CPU/highRAM Colab. The subsequent physical seam must consume the actual
+Exact repaired draft is now promoted as NeumannMixedImageReindex plus
+separate seven-name Audit, both PRE-VALIDATION. Proof body and readouts
+compared to HOT source; two-file text guard passed0.1846371s/14299136RSS.
+Next step: prepare its pinned cold runner/independent reader/notebook
+before opening CPU/highRAM Colab. The subsequent physical seam must consume the actual
 computed flag and already named fine/block alignment laws; the reindex
 tsums alone are not a physical inverse. M4 source-point normalization is
 explicitly enumerated in NEUMANN-POINTSOURCE-NORMALIZATION-STATIC-20260907.md.
