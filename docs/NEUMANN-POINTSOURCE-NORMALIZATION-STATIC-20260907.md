@@ -121,3 +121,23 @@ What remains is consumption of these scalar producers inside the action
 dictionary, not reproving their algebra. The
 current mixed Green seam theorem intentionally leaves its coefficient
 parameter explicit and does not claim to instantiate the canonical tower.
+
+## Complex-to-real action boundary (static audit)
+
+The canonical precision acts on real Lie coordinates; the physical Fourier
+Green series is complex-valued. The intended bridge is to prove the literal
+complex source equation first and then take its real part, not to assume
+that the complex kernel is real. Real coefficients commute with real-part
+projection in the finite action. For the infinite image series this step
+must consume the actual mixed-series summability theorem.
+
+Pinned Mathlib provides `Complex.re_tsum` in
+`Mathlib/Analysis/Complex/Basic.lean`, with an explicit `Summable` premise;
+equivalently use `Complex.reCLM.map_tsum`. This checks the available generic
+transport, not the still-open physical source equation or inverse identity.
+
+Do not substitute the older
+`BalabanCMP89NeumannPhysicalRealReflectionSummability` specialization:
+it belongs to the withdrawn Eq248 scalar one-displacement route, not this
+Eq246 mixed physical kernel. No new compiler evidence or terminal field is
+claimed by this interface audit.
