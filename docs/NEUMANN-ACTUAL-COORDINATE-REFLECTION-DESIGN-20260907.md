@@ -180,4 +180,13 @@ All six inputs must be Git-blob pinned, scratch oleans installed in order,
 20 exact axiom names total. The fresh run remains a diagnostic until the
 production promotion contract is explicitly prepared. No CI exploration,
 local Lean or live Colab session has been started for this new queue.
+
+Pinned diagnostic prepared: source95c757465455c7e8cffcfcd6d9d18aa56f6d5083,
+runner1f5443d50fbfb21d02a4f817137a3798de05ab0a, Git-blob SHA256
+18fd5b9087dd32add221ef56cf49604cc21e730f027c322a2ee95242f0fdb28c.
+Independent reader accepts one synthetic fixture and rejects17 corruptions;
+producer/reader queue AST agrees exactly. Instrument test exit0/0.3691525s,
+21086208bytes observed peak RSS. No compiler conclusion follows from tests.
+Six scratch sources/outputs,20 exact audit names, two repros before the
+project prerequisite build; retained-runtime policy allows bounded repairs.
 Text/import guards passed; no local Lean or new Colab was run for this draft.
