@@ -1,6 +1,13 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
 CURRENT: cold PASS independently preserved, ledger1234, evidenced9a505597.
+LATEST16:14UTC: v3 repro also failed, physical stage NOT RUN. Evidence
+375c87119/ledger1237 is durable. PID15129 finished, same runtime/tab67
+retained for the bounded type probe, no active compiler. Draft
+tmp/NeumannIntegralTypeProbe.lean uses a fully typed equality plus pp.all
+to expose any instance mismatch. This is the next diagnostic, not another
+speculative production rewrite. Prepare its pinned one-command runner/reader.
+Cell2 currently downloads the already-preserved v3 failure archive.
 LATEST: v2 rewrite repro FAIL independently preserved7c8b1bfaa/ledger1236.
 PID14178 finished; no compiler currently runs. SAME runtime/tab67 retained
 for one bounded explicit-arguments retry; do not reopen/reexecute cold.
