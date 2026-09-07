@@ -48639,6 +48639,24 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1218 — branch packaging HOT first failure preserved, 2026-09-07
+
+Source `5cc9f46ed092d2ef1221d78c33e54d0d061021da`, runner
+`965c01410829fc0bda0790c14798cdb2d6762e2d`; retained runtime after ledger1217.
+Parent verification/head/clean check exit0; draft exit1 in5.836893549s.
+First exact error: `NeumannMixedBranchPackagingDraft.lean:20:23:
+error(lean.synthInstanceFailed): failed to synthesize ... Fintype (neumannMixedBranch false)`.
+The true branch and its Subsingleton also needed explicit definitional reduction.
+No source sorry; recovery sorryAx in failed compiler output is not a certificate.
+No retry occurred inside this runner; no cold seal or counter change.
+
+Durable archive `validation-evidence/neumann-mixed-branch-packaging-hot-v1-failure-20260907/neumann-mixed-branch-packaging-hot-v1.tar.gz`,
+12372 bytes, SHA256 `3298b113f38f9b51a6afa286a68907e4fad6612d93289cf065616b1374b613cb`.
+Ten manifest entries, runner/source blob equality and exits independently checked;
+reader0.1857626s,17,911,808-byte observed RSS. Automatic transfer18.547s,24,936,448RSS.
+Repair source `476cc52e0b672438a2e6e23d21e2769c2db9cdef` uses `change Fintype Bool/Unit`
+and `change Unit at x y`; isolated Mathlib repro required before the next HOT draft.
+
 ## Addendum1217 — mixed fixed-source cold PASS, 2026-09-07
 
 Source `8da9ffc57d7de329501fc5ba5d8084cdcbe5fb4f`; runner
