@@ -324,3 +324,15 @@ to identify f(reflect x) with the ordinary integrand at those endpoints.
 Its stage-zero mass-uniform integrability producer transfers by ae equality.
 Then the generic integral reflection and the same outside (2*pi)^-4 give
 the normalized Green identity. This is a concrete proof route, not evidence.
+
+R5 domain HOT v2 is verified (2026-09-07). Source dd6c5667107ced71d207994b876eb24f1aea6685,
+runner e04f810915a5b6e34f8974bb758939798f330367. The v1 failure at line 61
+(`NeZero ?m.80`) remains preserved; the only source repair explicitly pins L and j.
+Both domain/integrand declarations now pass with the standard three axioms;
+physical exit 0 in 7.587687676 s. This constructs both domains from the existing
+mass-uniform windows, without additional assumptions. The normalized integral
+consumer above remains open. No production PRE-VALIDATION is retired.
+Archive: 98c47910c20c64186e18c96a025e6d6272b59a0be153a94c86cb1c1e1177dd88.
+Independent report: be551ded7e3c7e87c09979f7253fea95aa9ed796e7f928ab00110b13ae15c7e5.
+Evidence directory: validation-evidence/neumann-physical-coordinate-domain-hot-v2-20260907.
+Counters unchanged: 20/41, TermSource=0, window 15 open.
