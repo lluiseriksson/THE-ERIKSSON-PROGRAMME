@@ -48469,3 +48469,19 @@ Retry v2 changes only output directory, prerequisite limit to 900s and
 archive construction to exactly manifest-listed files plus manifest.json.
 Lean source hashes, targets, audit names and 120s target limits unchanged.
 No PRE retirement or counter movement:20/41,TermSource=0,window15 not attained.
+
+## Addendum 1207 — periodic-series HOT package-root rejection (2026-09-07)
+
+V2 same source0bdb056bad23b77adda9d6b13a4917386836e174, retained cold checkout.
+Prerequisite now exit0/27.701601s; repro exit0/3.074538s. Series exits1/0.917446s:
+`input file '/content/neumann-periodic-series-hot-v2/NeumannPhysicalPeriodicSeriesDraft.lean' must be contained in root directory (/content/hrpoly-neumann-physical-periodic-transfer-promoted-cold-v1/)`.
+Summability NOT EXECUTED; no proof result claimed. Archive23654bytes
+55bd621820aeaf3e22abbbf4180e2cd3a67d10dc86ae2b5323980bdacd9c81b6,
+downloaded automatically and preserved under
+validation-evidence/neumann-periodic-series-hot-v2-failure-20260907.
+Independent inspection: all14manifest entries, exact file set and six record
+hashes verified, exit0/0.098410s/17752064bytes observed RSS. Unlike v1,
+the bytecode packaging defect is closed. V3 sets the documented Lean
+`--root=OUT` option only for .olean-producing invocations and uses a new OUT.
+Lean --help checked in Colab,exit0. Source, targets, hypotheses and axiom
+gates unchanged. 20/41,TermSource=0,window15 not attained; no PRE retirement.

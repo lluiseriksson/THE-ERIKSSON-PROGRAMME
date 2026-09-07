@@ -23,14 +23,15 @@ def sha(b):return hashlib.sha256(b).hexdigest()
 def require(c,m):
  if not c:raise ValueError(m)
 def commands(parent_hash,python):
+ lean=['lake','env','lean']+(['--root='+OUT] if OUT.endswith('-v3') else [])
  return {
  'parent_verify':[python,OUT+'/verify_neumann_physical_periodic_transfer_promoted_cold.py','--helpers',OUT,'--archive',ROOT+'-evidence.tar.gz','--sha256',parent_hash],
  'head':['git','rev-parse','HEAD'],
  'clean_before':['git','diff','--exit-code','HEAD','--','YangMills','lean-toolchain','lake-manifest.json'],
  'repro':['lake','env','lean',OUT+'/NeumannPeriodicSummabilityRepro.lean'],
  'prerequisite':['lake','build','YangMills.RG.NeumannActualFullGreenReflectionSummability'],
- 'series':['lake','env','lean','-o',OUT+'/series.olean',OUT+'/NeumannPhysicalPeriodicSeriesDraft.lean'],
- 'summability':['lake','env','lean','-o',OUT+'/summability.olean',OUT+'/NeumannPhysicalPeriodicSummabilityDraft.lean'],
+ 'series':lean+['-o',OUT+'/series.olean',OUT+'/NeumannPhysicalPeriodicSeriesDraft.lean'],
+ 'summability':lean+['-o',OUT+'/summability.olean',OUT+'/NeumannPhysicalPeriodicSummabilityDraft.lean'],
  'clean_after':['git','diff','--exit-code','HEAD','--','YangMills','lean-toolchain','lake-manifest.json']}
 def verify(files,parent,parent_hash,gate):
  manifest=json.loads(files['manifest.json'])
@@ -63,13 +64,16 @@ def verify(files,parent,parent_hash,gate):
 def main():
  global OUT,RUNNER
  ap=argparse.ArgumentParser()
- ap.add_argument('--revision',choices=['v1','v2'],default='v1')
+ ap.add_argument('--revision',choices=['v1','v2','v3'],default='v1')
  for n in ['archive','parent-archive','helpers']:ap.add_argument('--'+n,type=Path,required=True)
  for n in ['sha256','parent-sha256']:ap.add_argument('--'+n,required=True)
  a=ap.parse_args()
  if a.revision=='v2':
   OUT='/content/neumann-periodic-series-hot-v2'
   RUNNER='bfe10c94523d81921940de1916aa40cc6c1e391cc049637ef8164aa17958e57a'
+ if a.revision=='v3':
+  OUT='/content/neumann-periodic-series-hot-v3'
+  RUNNER='2c438d97b0202d2b880e4b44292597e7cd4721cefe4c33bbfeedb7d328f92c0f'
  old=cold.helper(a.helpers,'verify_cmp99_full_green_residue_cold.py',PINS['verify_cmp99_full_green_residue_cold.py'])
  gate=cold.helper(a.helpers,'full_green_owner_exact_axiom_gate.py',PINS['full_green_owner_exact_axiom_gate.py'])
  old.PREFIX='hrpoly-'+cold.REV+'-evidence'
