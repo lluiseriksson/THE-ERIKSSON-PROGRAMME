@@ -24,7 +24,7 @@ def verify(files):
     require(data['parent_outer_sha256'] == runner.PARENT_OUTER_SHA, 'PARENT_ARCHIVE')
     require(data['scope'] == "common integer-block endpoint phases only; not full Green covariance, regional inverse, B0 or window15", 'PHYSICAL_SCOPE')
     require(data['parent_review_sha256'] == runner.REVIEW_HASH, 'PARENT_REVIEW_HASH')
-    require(data['parent_production_olean_sha256'] == runner.PARENT_OLEAN_HASH, 'PARENT_OUTPUT')
+    require(data['parent_diagnostic_olean_sha256'] == runner.PARENT_OLEAN_HASH, 'PARENT_OUTPUT')
     require(sha(files['parent-reviewed-diagnostic-evidence.json']) == runner.REVIEW_HASH, 'PARENT_REVIEW_FILE')
     review = json.loads(files['parent-reviewed-diagnostic-evidence.json'])
     require(review['status'] == 'VERIFIED_DIAGNOSTIC_PASS' and review['cold_seal'] is False and review['source'] == BASE, 'PARENT_REVIEW_STATUS')

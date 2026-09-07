@@ -68,3 +68,20 @@ Existing `cmp89UnitAddTorus_mFourier_neg_mul_stabilizedFineToFineGreen_eq_affine
 moves the target alone and leaves the source unchanged; it is not this
 common-translation theorem. This inspection avoids a duplicated phase
 proof but supplies no new compiler evidence or half-cell reflection claim.
+
+## Preservation recheck and next diagnostic terminology
+
+The user-supplied 20260905 ZIP is no longer at its former Desktop path,
+but the durable copy under `validation-evidence/physical-cold-hot-20260905`
+was rechecked against the existing independent report: SHA-256
+`69f0b70a76fe636c1e9745c2b3307ad55ddaab99dce838616037e370217e573d`,
+two ZIP members, CRC check successful. This rechecks preserved bytes;
+it does not add a new compiler run or a new terminal field.
+
+The common-block HOT templates now call the prerequisite output
+`parent_diagnostic_olean_sha256`, not a production output. Their parent
+pins remain deliberately unset until the actual-scalar archive has a
+verified PASS. Local AST and both unpinned rejection gates passed in
+0.1843105 seconds with observed peak RSS 22675456 bytes; no compiler or
+network ran in that test. Current Colab scalar prerequisites remain in
+flight; no second execution has been launched.

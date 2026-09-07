@@ -128,7 +128,7 @@ def main():
         (OUT / 'result.json').write_text(json.dumps(dict(status=status, source=SOURCE,
             base_source=BASE, cold_seal=False, pins=PINS, source_refs=SOURCE_REFS, names=NAMES, records=records,
             axioms=axioms, outputs=outputs, parent_outer_sha256=PARENT_OUTER_SHA,
-            parent_review_sha256=REVIEW_HASH, parent_production_olean_sha256=PARENT_OLEAN_HASH,
+            parent_review_sha256=REVIEW_HASH, parent_diagnostic_olean_sha256=PARENT_OLEAN_HASH,
             scope='common integer-block endpoint phases only; not full Green covariance, regional inverse, B0 or window15'), sort_keys=True) + '\n')
         with tarfile.open(ARCHIVE, 'w:gz') as t:
             t.add(OUT, arcname=OUT.name)
