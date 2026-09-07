@@ -47964,3 +47964,29 @@ validation-evidence/neumann-common-block-phase-hot-v1-fail-20260907.
 Local reader0/0.3877147s/23363584 observed peak RSS. Runtime retained for
 the bounded identifier-only repair; no full bootstrap or cold seal repeated.
 20/41,TermSource0,window15 unchanged; all phase PRE marks retained.
+
+## Addendum 1185 — common-block phase HOT v2 verified (2026-09-07)
+
+SOURCE0a9b18e5b14dc870a7edf60fe62698c56f779415;
+runner6b7856c62c67caba2ad101d67e912ca8e6e5603d,
+hash f71e29935de478118dc4c9768eff208e5d77665c9632060e137f0b182bb8f3fb.
+Only source change from1184: reserved binder alias renamed mode, with
+byte-exact replacement check against Git blobs. Same retained high-RAM
+runtime e7dbc45c00b1, PID17610, single launch00:49:36.344569UTC.
+All8 stages exited0. Cached prerequisites6.687904402s rather than the
+541.168383588s in v1; draft9.855183025s. Exact3-name axiom gate passed
+with propext,Classical.choice,Quot.sound. Clean-source checks empty.
+
+Independent VERIFIED_HOT_PASS, cold_seal=false. Archive
+8aee46c3e3b12bc64ae3e0576041f822eb4ce601acc0b1530721fee51e1167f1;
+report8c555edb476c6b06734706180f4c17841563eb9c17c2f9180f105192914f9e22;
+output1aa7f63dcd989cc210514c0a8da23d34221c0db9c48dd38cce28d7e51f7686a9.
+Original/records preserved under
+validation-evidence/neumann-common-block-phase-hot-v2-20260907.
+Reader0/0.1849765s/21606400 observed peak RSS; no local Lean/Lake.
+
+Proved only target/source phases at common integer-block shifts and their
+exact cancellation. The five-step actual full-Green composition is the
+next consumer, not a conclusion of these three lemmas. Half-cell
+reflection, regional inverse, B0/window15 remain open. No production PRE
+mark removed, no counter movement:20/41,TermSource0.
