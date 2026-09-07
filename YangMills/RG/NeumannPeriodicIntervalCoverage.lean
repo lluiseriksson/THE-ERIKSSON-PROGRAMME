@@ -1,10 +1,10 @@
 import YangMills.RG.NeumannImageIntervalCoverage
 
 /-!
-PRE-VALIDATION: production source present; production .olean not yet
-materialized or cold compiler-verified. Proof bodies copied unchanged from
-HOT-v2 source 1b222f64aa3034861a3eee17e02c56b5d452eb44 (ledger 1211).
-HOT evidence is not a cold seal.
+Cold compiler-verified at source633511137319dec3aeccb350af0e875da9f659c8
+on2026-09-07; ledger1212. Six exact audit names and output archive verified
+independently after automatic download. Proof bodies unchanged from that
+cold source and HOT-v2 source1b222f64a (ledger1211).
 
 FULL directions use one periodic branch, not two reflecting branches.
 Coverage varies both translation and the original half-open interval point.
@@ -71,4 +71,3 @@ theorem neumannIntegerPeriodicOwner
   rw [Int.add_mul_ediv_left _ _ (ne_of_gt hB)]
 
 end YangMills.RG
-

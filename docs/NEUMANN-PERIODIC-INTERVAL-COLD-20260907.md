@@ -1,4 +1,9 @@
-# FULL periodic interval cold gate — PRE-VALIDATION
+# FULL periodic interval cold gate — PASS, ledger1212
+
+Focal3287jobs/65.596s and audit4.940s exit0, sixexactnames. Archive
+4827f7f1cb38742f28d1b7963fdfa0995bfde420a1a589e4733a7f4b4978ba1a
+downloaded and independently verified. Selective header-only seal; no
+counter movement. Historical preparation contract follows.
 
 Source: 633511137319dec3aeccb350af0e875da9f659c8.
 Runner commit: a538006e9cd474d9a0acd1db21162ac1b2963b4b.

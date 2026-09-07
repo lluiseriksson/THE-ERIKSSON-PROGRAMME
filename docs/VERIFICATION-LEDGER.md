@@ -48588,3 +48588,54 @@ PRE-VALIDATION remains until exact production/cold promotion.
 20/41,TermSource=0,window15 not attained. Runtime unassigned after all three
 archives were preserved at08:30:08.115306UTC (opened07:45:28.269671UTC,
 about44m40s connected); Reconnect UI confirmed and all auxiliary tabs closed.
+
+## Addendum1212 — FULL periodic interval cold PASS, 2026-09-07
+
+Source633511137319dec3aeccb350af0e875da9f659c8; runnera538006e9,
+notebook71231313b. CPU50.99028778076172GiB, opened08:39:55.729225UTC,
+runtime_open08:39:57.474285UTC. One fresh checkout; no project build cache.
+Focal3287jobs exit0/65.596147842s; audit exit0/4.939944391s.
+Six exact permitted trios. Independent reader verifies16stages, commands,
+source pins, exact file set, logs, audits and output. No repo-wide claim.
+
+Archive55588bytes SHA256
+4827f7f1cb38742f28d1b7963fdfa0995bfde420a1a589e4733a7f4b4978ba1a.
+Preserved under validation-evidence/neumann-periodic-interval-cold-v1-20260907.
+JSONfile e7879784def03c467bc069037366aee27d219b7b4fa9085c4afd82f76d71b5b6;
+JSONpayload b4e239c60d38c0ab4758c7ba87d010f93f72d9ac7b84a4cb554cb71d0ed67eb5.
+NeumannPeriodicIntervalCoverage.olean
+bb9b79e29569a3912df5e774bff7c5d4d9bf33ae1e65f4ba34e17abaa785a2f3.
+Automatic loopback transfer17.140s/25366528bytes peakRSS;
+independent reader0.1184557s/17514496bytes observedRSS, both exit0.
+
+Selective header-only seal of interval and audit; proof bodies retained.
+This seals FULL one-branch interval coverage and periodic owner transport,
+not mixed physical representation, uniform B0 or window15. Counters20/41,
+TermSource0 unchanged. Browser-view loss recovered without rerunning launch;
+runtime retained only for the prepared bounded mixed-coordinate HOT diagnostic
+after this cold archive was downloaded and independently verified.
+
+## Addendum1213 — mixed-coordinate HOT PASS, 2026-09-07
+
+Source4d6cd7ea7880feafe5b1161fa3ab2d1822334323; runner4ed450dd3.
+Cold parent633511137 reverified internally and by independent local reader.
+Five stages exit0; mixed draft/audit6.089827163s, five exact permitted trios.
+No project source changed; before/after clean. No cold promotion claimed.
+Archive25492bytes SHA256
+f57f887f3c6cae43fc9f4ddb97de97c9b9718d8a904ddece1d7eb5298caa45bd;
+preserved under validation-evidence/neumann-mixed-coordinate-hot-v1-20260907.
+mixed.olean71ae7684b79d75d815ecec91c8f5fe50a2fe00582c0476c673c95f0e34d162c6.
+Automatic transfer17.078s/25194496bytes peakRSS; recursive reader
+0.1917701s/18771968bytes observedRSS, both exit0. Instrument fixtures1/11.
+
+Cold selective-seal body check first used Windows default text decoding and
+reported mismatch; explicit UTF-8 gave exact body identity for both files,
+ignoring terminal blank lines only:0.1395501s/14340096bytes observedRSS.
+No proof changed in response to that observer error.
+
+M1 coordinate coverage now HOT verified: one FULL periodic branch and the
+sealed PROPER reflecting pair. Physical FULL classification, global index
+packaging, fixed-source injection, branch bound and physical equation remain
+open.20/41,TermSource0,window15notattained. Runtime stopped only after both
+archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
+UI confirmed; all tabs closed, no worker or local receiver left running.

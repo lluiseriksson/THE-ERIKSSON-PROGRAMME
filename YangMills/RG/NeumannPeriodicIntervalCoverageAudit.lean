@@ -1,8 +1,8 @@
 import YangMills.RG.NeumannPeriodicIntervalCoverage
 
 /-!
-PRE-VALIDATION: audit source present; production .olean not yet materialized
-and this production audit not yet cold compiler-verified.
+Cold compiler-verified at633511137319dec3aeccb350af0e875da9f659c8;
+ledger1212. Exact six-name audit independently verified from cold evidence.
 Exact six-name audit; no physical inverse or window-15 claim.
 -/
 

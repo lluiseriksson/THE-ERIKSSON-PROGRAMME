@@ -1,4 +1,9 @@
-# Mixed coordinate diagnostic — prepared, not executed
+# Mixed coordinate diagnostic — HOT PASS, ledger1213
+
+Executed once after verified cold parent; mixed stage6.089827163s, five
+exact audited declarations. Archivef57f887f3c6cae43fc9f4ddb97de97c9b9718d8a904ddece1d7eb5298caa45bd
+downloaded and independently verified. Runtime closed08:51:24.146027UTC.
+Historical preparation contract below; do not rerun this launch.
 
 Source4d6cd7ea7880feafe5b1161fa3ab2d1822334323.
 Runner4ed450dd388a04d3347b6df5c940fac931645502,
