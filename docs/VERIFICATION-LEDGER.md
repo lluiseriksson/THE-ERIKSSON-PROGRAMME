@@ -48058,3 +48058,25 @@ Cleanup01:35UTC: process query showed neither launch PID nor Lean/Lake;
 Colab Disconnect/delete completed and Reconnect-only UI was observed.
 Auxiliary tab22 closed. Connected duration from1186 launch approximately33min.
 All original archives and verified records were published before deletion.
+
+## Addendum 1188 — R2 coordinate precision diagnostic FAIL preserved (2026-09-07)
+
+Source95c757465455c7e8cffcfcd6d9d18aa56f6d5083,
+runner1f5443d50fbfb21d02a4f817137a3798de05ab0a. Fresh CPU/high-RAM
+runtime f33828f71ae2, PID8249; launch01:47:24UTC, terminal observed02:08UTC.
+8591 prerequisites passed in1092.037592845s. Product and half-cell repros,
+half-cell physical and R1 passed. carry_physical exited1 in7.035063862s:
+tmp/NeumannCoordinateMomentumCarryDraft.lean:79:2: error: unsolved goals.
+The positive coordinate case retains if True before the product swap.
+The two downstream printed declarations contain sorryAx and are NOT evidence.
+phase_physical was NOT EXECUTED. No R2 seal, inverse or Green claim.
+
+Archive5ce85f28076e99319b122dabef5949b23ed8858fc59f654091925f3254abfe04;
+evidence JSON78448dbfcd94fb61bedb42a92c8b44767f929ed81986afbe86c198148d314ce6;
+independent FAIL report783af3dab9fc88f431111237341835a335755cee345f7de486bc63400271d7e1.
+Preserved in validation-evidence/neumann-coordinate-precision-diagnostic-v1-fail-20260907.
+Reader verifies the exact archive, input/log/output hashes, finite stage
+prefix, real nonzero child exit and first error. Two altered fixtures rejected.
+Local reader exit0/0.1337218s/18407424bytes observed peak RSS.
+Runtime retained for a bounded hot repair, no repeat cold bootstrap.
+Minimal normalization patch is PRE-VALIDATION;20/41,TermSource0 unchanged.

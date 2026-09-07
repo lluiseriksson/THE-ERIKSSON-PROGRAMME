@@ -76,7 +76,8 @@ theorem neumannEntireScaledLaplacianSymbol_coordinateReflection
   apply Finset.sum_congr rfl
   intro nu _
   by_cases hnu : nu = mu
-  · simp [neumannMomentumCoordinateReflection, hnu, mul_comm]
+  · simp only [neumannMomentumCoordinateReflection, hnu, if_pos rfl, neg_neg]
+    ring
   · simp [neumannMomentumCoordinateReflection, hnu]
 
 theorem neumannEntireAliasFineSymbol_coordinateReflection

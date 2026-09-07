@@ -1,5 +1,14 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT02:08UTC: R2 v1 stopped correctly at carry_physical line79:2,
+an unreduced if True in the positive coordinate case. Prerequisites8591
+passed; phase_physical NOT EXECUTED. FAIL archive independently preserved in
+validation-evidence/neumann-coordinate-precision-diagnostic-v1-fail-20260907;
+ledger1188. Runtime f33828f71ae2/tab23 retained for bounded HOT repair.
+Do NOT rerun original notebook. Minimal source correction uses simp with
+the coordinate definition, hnu and mul_comm; NOT CHECKED until hot test.
+The following LIVE entry is historical.20/41,TermSource0 unchanged.
+
 LIVE01:47:24UTC: coordinate precision diagnostic v1 executing ONCE, PID8249,
 Colab tab23/cellHhlGa5HMi3Ja, CPU/high-RAM, lluiseriksson@gmail.com.
 SOURCE95c757465455c7e8cffcfcd6d9d18aa56f6d5083, notebook07d068c15,
