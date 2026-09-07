@@ -1,5 +1,5 @@
 import YangMills.RG.NeumannMixedFixedSource
-import Mathlib.Data.Fintype.Pi
+import Mathlib.Data.Fintype.BigOperators
 
 /-!
 PRE-VALIDATION: source present; .olean not materialized; compiler result
