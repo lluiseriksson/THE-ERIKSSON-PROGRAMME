@@ -16,6 +16,16 @@ at the same runner commit: synthetic1accepted/8rejected; exact gate2/9;
 runner/reader command and blob cross-check PASS. Instrument test measured
 0.4876765seconds,19628032RSS,exit0; not compiler evidence.
 Next coarse result check around16:05UTC while preparing static composition.
+Bootstrap check: PID999 alive, selector_focal Lake PID2764 observed with
+active Lean children. Toolchain, checkout1885a6c08, both textual guards,
+dependency materialization and pinned Mathlib cache all exit0. No verdict.
+Next draft checkpoint5b063871215a4b9b9d4c13b9935c035456b7eb5d contains
+tmp/NeumannIntegerQuotientRepro.lean (three Mathlib-only names) and
+tmp/NeumannAliasPhysicalIntegralDraft.lean (four names). Both NOT CHECKED.
+Prepare a bounded HOT suffix for this retained checkout only after cold
+PASS and independent preservation. Order: quotient repro first, required
+physical-character dependency closure second, full integral draft last.
+No production seal or scalar-window claim follows from these drafts.
 On verdict preserve/download/hash and independently inspect the archive
 before any selective seal. No historical runtime is being reused here.
 
