@@ -21,6 +21,19 @@ Runtime disconnected/deleted approximately 03:56 UTC after both packages
 were preserved. Do not rerun the old notebook or either launcher. Next action:
 prepare an explicit prerequisite stage for the bounded orbit retry.
 
+Retry prepared at source108f30f9 (same Lean blob); runner checkpoint3f9e88f70,
+scripts/colab_neumann_boundary_orbit_diagnostic.py, blob SHA-256
+6b26d11c8d28080e5c993545b05a84c5feeb9f0bf2b62aee6bd4f57341c1b858.
+New fresh diagnostic directory /content/hrpoly-neumann-boundary-orbit-diagnostic-v2.
+Queue: explicit ReflectionOrbitAlgebra build, unchanged orbit repro (120 s),
+clean-source check. This is NOT a production seal and does not recompile the
+physical reflection prefix. It has not been launched.
+Independent reader scripts/verify_neumann_boundary_orbit_diagnostic.py has a
+synthetic PASS fixture and five rejected corruptions (including missing
+prerequisite stage, nonzero exit and sorryAx with consistent log hashes).
+Measured local test: 0.224071 s, 19529728 bytes observed RSS; no compiler used.
+Prepare the pinned Colab launch and read its independent verdict next.
+
 The launch instructions below are historical records, not active processes.
 
 Source checkpoint: `84ceb5f2f466ab8f4e9dea175fd412c7bf63a21e`.
