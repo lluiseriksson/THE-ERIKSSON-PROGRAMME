@@ -28,11 +28,11 @@ PINS = {
 SOURCE_REFS = {p: (BASE if p.startswith('YangMills/') else SOURCE) for p in PINS}
 NAMES = {"physical_draft": ["neumannAliasTargetPhase_blockShift", "neumannAliasSourcePhase_blockShift", "neumannCommonBlockPhase_cancel"]}
 # Deliberately unset until actual independently preserved parent diagnostic evidence.
-PARENT_OUTER_SHA = None
-REVIEW_REF = None
+PARENT_OUTER_SHA = 'd8bf0b29becbfc23b11ae923d667310d9d1a1a5c4182703b3240736117c18c72'
+REVIEW_REF = 'f1e17f75aef75fbc589136722a33a5fc7edde93d'
 REVIEW_PATH = 'validation-evidence/neumann-actual-scalar-diagnostic-v1-20260907/independent-verification.json'
-REVIEW_HASH = None
-PARENT_OLEAN_HASH = None
+REVIEW_HASH = '4ebca1702f13bac303fa371a5e6dfaf63b295fc71dda8ca3fa303388292af131'
+PARENT_OLEAN_HASH = 'd4925a06a399d27ca2892a75bbcd577da756b42d0f520608c1eef2f77cc77a63'
 
 
 def sha(b):
