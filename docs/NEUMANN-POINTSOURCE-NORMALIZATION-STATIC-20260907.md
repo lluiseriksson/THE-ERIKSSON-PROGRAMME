@@ -82,6 +82,15 @@ producer already identified in the mixed-boundary map, rather than copying
 an older mass-positive convenience theorem. The real/complex action
 dictionary remains a separate visible obligation.
 
+Exact producer rechecked: `cmp89Eq246FullSolutionDomain_of_commonRadius_massUniform`
+in `BalabanCMP89Eq246MassUniformAnalyticDomain.lean:26`. Its signature has
+the common-radius windows and the printed mass window, but NO `0 < mass`.
+The similarly named theorem in `BalabanCMP89Eq246FullSolutionDomain.lean:29`
+still requires positive mass and must not be used as its substitute.
+On the physical real slice, the momentum bound is obtained almost everywhere
+from the translated Brillouin cube, not asserted for all real integration
+parameters. This domain restriction must be explicit in the integral proof.
+
 Counters: 20/41; TermSource=0; window15 open.
 
 ## Existing normalized-integral route inspected
