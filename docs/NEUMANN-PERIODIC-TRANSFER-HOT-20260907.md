@@ -1,6 +1,7 @@
 # Prepared bounded periodic transfer diagnostic
 
-PRE-VALIDATION, not executed. Source3b0576aa1329025f815ebee0edd15666d6e432bd,
+HOT PASS independently verified on 2026-09-07; not a cold seal.
+Source3b0576aa1329025f815ebee0edd15666d6e432bd,
 draft tmp/NeumannPhysicalPeriodicTransferDraft.lean, Git-blob SHA256
 41b7242faf89cc5881f8f0b8b9eeef61035c1b946cc2a28def826b90832ab977.
 
@@ -25,3 +26,15 @@ this is instrumentation checking, not compiler evidence.
 Expected outputs are only endpoint transfer and integer-period image
 transfer for the literal Green. No periodic tsum convergence, mixed-family
 coverage, regional inverse, B0 or window15 is inferred. No counter change.
+
+Execution: prerequisite exit0/23.100677s, draft exit0/108.692444s;
+two exact permitted-trio audit declarations, eight command/log records.
+Archive dad847bcbea6053b72643932b8d7a2dc61906d7faa9583ef0c61183737a92c3d,
+35518 bytes; independently verified after automatic local preservation.
+Reader exit0/0.130806s/17506304 bytes observed RSS.
+Output ba977a2e606eb774bcca5eb8f215389d2e5f1be3684589fe45d1967435ae5c09.
+Durable: validation-evidence/neumann-physical-periodic-transfer-hot-v1-20260907.
+Next: promote the unchanged proof with an explicit cold gate before retiring
+its PRE-VALIDATION marker; then periodic-series reindexing and mixed-family
+coverage remain distinct obligations. This diagnostic does not identify a
+mixed regional inverse.

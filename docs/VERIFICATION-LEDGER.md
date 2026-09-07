@@ -48418,3 +48418,17 @@ change after the certified source; no proof, statement or hypothesis changes.
 This seals the all-reflecting physical image seam, not mixed FULL coverage,
 a regional inverse, B0 or window15. Periodic transfer remains separate HOT
 diagnosis. 20/41, TermSource=0, window15 not attained.
+
+## Addendum 1204 — physical periodic endpoint transfer HOT (2026-09-07)
+
+Source 3b0576aa1329025f815ebee0edd15666d6e432bd, retained diagnostic
+checkout 108f30f954e3d807f16c4264fac56f4814c65ea4, separate from cold source.
+Prerequisite exit0/23.100677s; draft exit0/108.692444s. Eight exact records,
+two allowed-trio declarations independently verified with the parent archive.
+Archive dad847bcbea6053b72643932b8d7a2dc61906d7faa9583ef0c61183737a92c3d;
+output ba977a2e606eb774bcca5eb8f215389d2e5f1be3684589fe45d1967435ae5c09.
+Durable: validation-evidence/neumann-physical-periodic-transfer-hot-v1-20260907.
+Local reader exit0/0.130806s/17506304 bytes observed RSS. No local compiler.
+This is common BLOCK translation and its integer-period endpoint transfer,
+not arbitrary fine translation, periodic-series convergence or mixed inverse.
+No PRE retirement for this HOT draft; 20/41,TermSource=0,window15 not attained.
