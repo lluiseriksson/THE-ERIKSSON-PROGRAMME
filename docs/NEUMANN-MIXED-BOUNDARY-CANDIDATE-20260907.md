@@ -1,7 +1,41 @@
 # Candidate mixed image family for the actual rectangular carrier
 
-STATIC DESIGN ONLY. No new compiler result, source equation verification,
-physical inverse, uniform B0 or scalar-window attainment is claimed here.
+Status map with explicitly cited compiler evidence for completed prefixes.
+Remaining action/source/inverse steps are design obligations, not proofs.
+No physical inverse, uniform B0 or scalar-window attainment is claimed here.
+
+## Current frontier after Addenda1224–1225
+
+The same-index reindex production module and audit are cold-sealed in1224
+at sourcefa898ff5d8bf724fa4b6e629da7260383ef54ecc, seven exact names and
+independently verified output. The chronology below saying its cold gate
+is open is superseded by this paragraph.
+
+The actual physical mixed series fixes its flag definitionally to
+neumannPhysicalFullFlag and uses the literal normalized two-endpoint Green.
+Its summability, FULL periodicity and PROPER boundary transfer pass HOT
+in1225 at source0d63d2b0f234d3780b60d6ce1242c6aa8e3f67ae; one whnf
+elaboration failure is preserved, then repaired by pinned parameters and
+a named equality without changing statements or heartbeats. The exact
+production promotion a5811d5ddd78faf6fe638aa00db30276af826baf is in a live
+cold gate. Until that verdict is independently checked, this physical
+series remains PRE-VALIDATION at production level.
+
+M4's seam prefix does not close its action/source suffix. The next finite
+normalization route is in NEUMANN-POINTSOURCE-NORMALIZATION-STATIC-20260907.md:
+literal centered-alias character dictionary, congruence selector, normalized
+continuous character integral, then exact fine-density factor. A prepared
+Mathlib-first HOT diagnostic checks the two normalization drafts only after
+the current cold evidence is preserved. It does not assert that Fourier
+action commutes with the physical integral or image series.
+
+The generated Q' field-action formula already exists in
+NeumannGeneratedAverageFieldAction (cold1149), but its finite terminal-owner
+sum is not itself the infinite-lattice Fourier source equation. Preserve
+the separate weighted coefficient (weight^depth) and counting-adjoint
+coefficient (weight^(2*depth)); neither may be silently replaced by a new
+Fourier normalization. The masked physical action and real/complex
+intertwiner remain later named obligations. Counters20/41,TermSource0.
 
 ## Current frontier after Addendum1209
 
