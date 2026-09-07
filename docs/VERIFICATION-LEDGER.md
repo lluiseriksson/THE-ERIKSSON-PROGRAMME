@@ -48375,3 +48375,21 @@ Durable:validation-evidence/neumann-physical-transfer-hot-v1-20260907.
 HOT only: no production PRE retirement or counter change. Next bounded
 assembly uses this output only after recursive parent evidence verification.
 20/41,TermSource=0,window15 not attained.
+
+## Addendum 1202 — physical image seam HOT evidence preserved (2026-09-07)
+
+Source970356bfc58ec2ca9ba94163be952d382c0689c9. Archive
+cd7a66477087916e59c54bf0f6d995810ab838d10eedb7168ec3a7fc04e12977
+recovered unchanged, 59473 bytes. Recursive independent verification of all
+parents, eight command/log records, source/runner/output hashes and three
+exact permitted-trio audits passed. Local reader0.2605171s/20008960bytes RSS;
+five corrupted evidence variants rejected in0.1210118s/17215488bytes RSS.
+Summability prerequisite8654jobs exit0/90.811202s; seam proof exit0/20.248754s.
+Output7ae65204d6afc2d9590ca0e47ea0b2da62d41a9b47b720986d8e1698dd516c8d.
+Durable:validation-evidence/neumann-physical-image-seam-hot-v1-20260907.
+One unnecessary-sequence linter warning retained; no claim of zero warnings.
+The literal physical image sum has summability and lower/upper ghost seams
+with the explicit fine/block boundary dictionary. Mixed FULL directions,
+regional point-source/inverse and window15 remain open. HOT only; promoted
+source0f43fbdc5 remains PRE-VALIDATION until its separate cold gate.
+20/41,TermSource=0,window15 not attained.

@@ -13,6 +13,10 @@ This is textual equivalence evidence, NOT compiler evidence.
 
 ## Evidence gate before cold promotion
 
+Resolved in Addendum1202: the exact archive is now durable locally and the
+recursive independent reader plus five corruption tests passed. The cold
+launch is unblocked. The following transport incident is retained as history.
+
 Endpoint transfer HOT evidence is durable in Addendum 1201. The subsequent
 physical image-seam HOT result is PASS in retained Colab, source
 970356bfc58ec2ca9ba94163be952d382c0689c9, three allowed-trio audits.
