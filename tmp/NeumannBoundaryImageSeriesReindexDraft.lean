@@ -62,7 +62,16 @@ theorem neumannBoundaryImage_reflected_source_sum
         else cmp89NeumannReflectionImage m n k b i)) =
     ∑' k : Fin d → ℤ, ∑ b : Fin d → Bool,
       F (cmp89NeumannReflectionImage m n k b) := by
-  simp_rw [neumannBoundaryImageIndexEquiv_image]
+  have himage : ∀ k b,
+      (fun i => if i = mu then
+        2*c*m mu-1-cmp89NeumannReflectionImage m n k b i
+        else cmp89NeumannReflectionImage m n k b i) =
+      cmp89NeumannReflectionImage m n
+        (neumannBoundaryImageIndexEquiv mu c (k,b)).1
+        (neumannBoundaryImageIndexEquiv mu c (k,b)).2 := by
+    intro k b
+    exact neumannBoundaryImageIndexEquiv_image mu c m n (k,b)
+  simp_rw [himage]
   exact neumannBoundaryImage_tsum_sum_reindex mu c
     (fun p => F (cmp89NeumannReflectionImage m n p.1 p.2))
 
