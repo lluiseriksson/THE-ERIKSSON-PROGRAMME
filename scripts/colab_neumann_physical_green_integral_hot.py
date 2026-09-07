@@ -10,11 +10,11 @@ import time
 import types
 import urllib.request
 
-SOURCE='6b1cc23e10dcdefacdbcf8d8f59493a1dd16bda3'
+SOURCE='c4a4678683229ea290546bc27625cbe546243d62'
 BASE='95c757465455c7e8cffcfcd6d9d18aa56f6d5083'
-PIN='8bd17718342e66ecdb819361c591785c61dd6414363593d494ccd0a31f28db1d'
+PIN='8fe4e0b8b985c733079bf94efda8d0ee7619515a0d005ef7ace49e0f562456a9'
 GATE='016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2'
-REV='neumann-physical-green-integral-hot-v1'
+REV='neumann-physical-green-integral-hot-v2'
 ROOT=Path('/content/hrpoly-neumann-coordinate-precision-diagnostic-v1')
 OUT=Path('/content/'+REV)
 RAW='https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
@@ -89,5 +89,4 @@ def main():
     return 0 if status=='PASS' else 1
 
 if __name__=='__main__':raise SystemExit(main())
-
 
