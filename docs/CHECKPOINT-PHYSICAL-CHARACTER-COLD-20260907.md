@@ -1,4 +1,20 @@
-# Physical character promoted cold gate — PASS, local preservation pending
+# Physical character promoted cold gate — PASS, independently preserved
+
+RESOLVED: Colab Files/Ladda ned from recovered tab66 delivered the archive
+to Downloads. No compilation repeated. Independent exact Git-blob reader
+exit0/0.3321709s,18903040RSS:20stages,sixnames,threeoutputs PASS.
+Copied and hash-verified at validation-evidence/
+neumann-physical-character-promoted-cold-v1-20260907/
+hrpoly-neumann-physical-character-promoted-cold-v1-evidence.tar.gz.
+Archive hash remains f75abadc466198d1db07eefeafc00894803ea9cc4b4127c2f30b266ae3b75b6b.
+JSON file66a9aec6e10b2d6ad9e40f89794bd29f716533d148ec0a04aaf387f8dbc3cfaf.
+Outputs: mask13f27acbd82d136fac7ece8a2cd330e454a24f29181a5fe24974dd5c17d4d32a;
+physicalfb84de20054101558b7455af75098a9d387a657459377eacb5e042af0483a890;
+readoutb5385465eadb41a632460f150a9aa59cd3d7ea7ab5a7208bf9d46d10ba38b0ef.
+The earlier transport incident below is retained, superseded by this recovery.
+Prepared selector HOT launch was submitted once on recovered tab66 after
+preservation acknowledgement, with own-code confirmation accepted once.
+Inspect /content/alias-selector-hot-launch-v1; do not rerun launch cell2.
 
 Colab FINAL_STATUS=PASS observed 2026-09-07 around15:01UTC. All six
 focal/audit stages exit0. Physical focal1035.800s, physical audit9.768s;
@@ -33,6 +49,13 @@ No workaround to that denied action is authorized; user permission change
 is required before retrying it. This is separate from successful Git/gh
 authentication and fast-forward publication through66f0d6a6b. Do not confuse
 the browser denial with a credential failure or repeat the scientific run.
+
+Recovery: tab63 disappeared from the browser inventory. Reopened the same
+notebook as tab66 without executing its launcher; it reattached to the
+50.99GiB runtime, and Files lists the original evidence archive, evidence
+directory and launch directory. Runtime loss is NOT established. Tab66 is
+the current retained handle; source notebook cells reverted to their saved
+content, so Cell2 is the stock monitor again. Never run Cell1.
 
 Opened2026-09-07T14:37:04.898397UTC; Colab account lluiseriksson@gmail.com,
 CPU/highRAM50.99028778076172GiB, noGPU. Notebook own-code confirmation
