@@ -176,3 +176,9 @@ one session. Terminal runtime930e719ad438 confirmed original PID753 alive
 rerun, second process or new compiler source. Only tab19 remains open.
 The next coordinate-reflection design gate is separately recorded in
 NEUMANN-ACTUAL-COORDINATE-REFLECTION-DESIGN-20260907.md (static, not Lean).
+
+Second observer recovery01:13UTC: tab19 also disappeared from browser
+inventory; same notebook reopened as tab20, same runtime930e719ad438.
+Terminal confirmed PID753 at11:01 elapsed, prerequisites8421/8588. No
+reexecution. R1 coordinate-permutation scratch b809bd818 is prepared
+independently from sealed inputs, NOT part of this queue and NOT checked.
