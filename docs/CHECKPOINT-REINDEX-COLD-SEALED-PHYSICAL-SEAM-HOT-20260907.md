@@ -1,4 +1,23 @@
-# Reindex cold sealed; physical mixed seam HOT running
+# Reindex cold sealed; physical mixed seam HOT PASS preserved
+
+## Completion supersedes the live-process notes below
+
+Ledger1225 records v1's exact preserved whnf failure and v2 PASS after
+pinning the physical specialization without changing mathematics or
+heartbeats. v2 source `0d63d2b0f234d3780b60d6ce1242c6aa8e3f67ae`;
+runner `d4e28c0d0ce7d8eee7f82373af80696f4109a9ac`. Only the draft was
+retried, exit0/16.520201375s, three exact audits with the allowed trio.
+Assistant downloaded and independently verified its five-member archive:
+`aed81d7fb9f7f55b197e0a21c71c4912591b45d3a6f8ea53b0f3218d0de5230c`.
+
+No process/session remains active. Runtime unassigned
+2026-09-07T12:53:18.920512Z, Reconnect verified, tab60 closed.
+Next: promote the exact repaired physical draft to module/audit, prove
+promotion body equality and prepare its fresh cold gate before connecting.
+Do not retire PRE-VALIDATION from this HOT result. The independent
+point-source drafts remain uncompiled and outside that cold queue.
+
+## Historical live checkpoint (do not relaunch these processes)
 
 2026-09-07. The independent cold gate of NeumannMixedImageReindex passed,
 was downloaded by the assistant, independently verified, preserved and

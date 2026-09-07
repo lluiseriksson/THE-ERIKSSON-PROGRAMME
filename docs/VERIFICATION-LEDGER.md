@@ -48639,6 +48639,54 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1225 — physical mixed seam HOT failure preserved, minimal repair PASS, 2026-09-07
+
+Reused ledger1224's retained CPU/high-RAM runtime after its cold archive was
+downloaded and independently checked. No additional runtime or CI run.
+
+v1 source `e4f037a52050fd9c539f5b30476d7a59d9f59688`, draft SHA256
+`75a86db01f24def9dd7d5c2b888f8ed4ef8e68751f77a53b3330b59de55c2fd0`.
+Additional physical prerequisites exit0/640.780523859s,8750 jobs. Draft
+exit1/43.719531417s: first error line119:6 deterministic whnf timeout at
+the PROPER boundary specialization. Summability and periodicity printed
+the allowed trio; the failed declaration's recovery sorryAx is rejected,
+not accepted as evidence. Five data members plus manifest independently
+hash-checked; preservation exit0/0.1006418s/17059840bytes observed peak RSS.
+Failure archive SHA256:
+`ed2f22ba4f90b6944fddd076b3024fde6cfa99f3995c426c20bf1e321feff720`.
+Archive preserved under
+`validation-evidence/neumann-physical-mixed-seam-hot-v1-failure-20260907/`.
+
+Only repair: pin L,j,mass,a,rho in the existing transfer theorem, then
+rewrite hphase in a named equality instead of simplifying against the
+physical kernel. No statement, hypothesis, constant or heartbeat change.
+v2 source `0d63d2b0f234d3780b60d6ce1242c6aa8e3f67ae`, draft SHA256
+`8b6a3b21158c3d047e76695c0da179511ae7d353a4be8c95a4da26726e73b155`.
+Runner checkpoint `d4e28c0d0ce7d8eee7f82373af80696f4109a9ac`, hash
+`629c64a7b1eff578db16ee8fa20dbac29f9370062775443667fdb89fce6b459b`.
+The retry checked exact v1 archive/source bytes and ran only the draft:
+exit0/16.520201375s, three exact audits with the allowed trio.
+
+v2 archive SHA256:
+`aed81d7fb9f7f55b197e0a21c71c4912591b45d3a6f8ea53b0f3218d0de5230c`.
+Preserved under `validation-evidence/neumann-physical-mixed-seam-hot-v2-20260907/`.
+Log SHA256 `b7de96f4a5f04490dba0f224236ea90b0e45022b17e607d87e040d68c7ef980d`.
+Independent five-member reader checked source, runner, manifest, exact
+command/exit and all three names: exit0/0.1351914s/18591744bytes observed
+peak RSS. Reader synthetic tests accepted1/rejected4; these are parser
+tests, not compilation evidence.
+
+The literal complex-valued Green series uses the actual-carrier FULL flag;
+its summability, periodic and PROPER boundary equalities pass HOT only.
+The draft remains PRE-VALIDATION pending its own production cold gate.
+No infinite-lattice source equation, finite operator interchange, inverse,
+uniform B0 or window15 follows. Counters remain20/41,TermSource0.
+
+All archives downloaded by the assistant before cleanup. No Lean/Lake
+processes remained. Runtime unassigned at2026-09-07T12:53:18.920512Z;
+Reconnect UI confirmed, then the sole tab closed. Connected duration
+51m37.693793s from ledger1224 opening; no runtime remains active.
+
 ## Addendum1224 — mixed image reindex production cold PASS, 2026-09-07
 
 Source `fa898ff5d8bf724fa4b6e629da7260383ef54ecc`; runner checkpoint
