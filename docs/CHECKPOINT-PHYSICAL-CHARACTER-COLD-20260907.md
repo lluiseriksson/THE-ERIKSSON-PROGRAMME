@@ -27,6 +27,13 @@ Auxiliary tab64 closed; only Colab63 retained. No security bypass attempted.
 Local evidence is still NOT preserved; no HOT suffix or header seal allowed.
 Cell2 now displays the lossless PNG transport, not a compiler or monitor.
 
+Subsequent GitHub browser preservation attempt was explicitly rejected by
+the browser security policy: a saved user preference blocks github.com.
+No workaround to that denied action is authorized; user permission change
+is required before retrying it. This is separate from successful Git/gh
+authentication and fast-forward publication through66f0d6a6b. Do not confuse
+the browser denial with a credential failure or repeat the scientific run.
+
 Opened2026-09-07T14:37:04.898397UTC; Colab account lluiseriksson@gmail.com,
 CPU/highRAM50.99028778076172GiB, noGPU. Notebook own-code confirmation
 clicked once; runner hash passed, PID7203, tab63. Never rerun cell1.
