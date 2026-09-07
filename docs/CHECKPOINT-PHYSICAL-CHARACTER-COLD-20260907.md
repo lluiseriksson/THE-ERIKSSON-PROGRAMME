@@ -15,6 +15,14 @@ The earlier transport incident below is retained, superseded by this recovery.
 Prepared selector HOT launch was submitted once on recovered tab66 after
 preservation acknowledgement, with own-code confirmation accepted once.
 Inspect /content/alias-selector-hot-launch-v1; do not rerun launch cell2.
+Selector launched PID23029; prerequisite Lake PID23031. Latest live check
+at about15:26UTC: prerequisite age437s, child compiling
+BalabanCMP99SourceFlatQprimeCoarseAlias.lean. This is the additional
+centered-alias dependency closure in the retained checkout, not a cold
+restart. Cell2 now contains only a read-only PID/children/log monitor.
+Cold selective seal is commit232874960 (ledger1231); six proof bodies
+compared exactly outside first module docstring, local bounded checker
+exit0/0.5566582s,14479360RSS. HOT selector verdict still pending.
 
 Colab FINAL_STATUS=PASS observed 2026-09-07 around15:01UTC. All six
 focal/audit stages exit0. Physical focal1035.800s, physical audit9.768s;
