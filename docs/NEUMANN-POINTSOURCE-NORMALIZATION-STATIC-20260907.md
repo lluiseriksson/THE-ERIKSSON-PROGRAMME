@@ -266,8 +266,24 @@ The normalized Brillouin integral definition is a fixed complex scalar
 times a Bochner integral over the translated cube. `integral_mul_const`
 therefore transports the finite selector's constant factor without assuming
 integrability of a new arbitrary family; the actual pointwise phase identity
-is still required. No second (2*pi)^(-4) enters. This route is inspected
-against the pinned Mathlib and source definitions, not yet compiled.
+is still required. No second (2*pi)^(-4) enters. The literal finite-alias
+integral route is now HOT-verified at858bbc063 (four declarations, archive
+a1dc16653121c137d2beb05ff52abcf086dd75353ae06d17de097b319326b44f).
+Its production promotion ba2998c4f is undergoing a fresh cold gate.
+The normalized multiplication step uses an explicitly typed integral
+equality and congrArg; the earlier rewrites failed elaboration. This does
+not yet identify the actual alias-precision readout with this literal phase.
+
+Next exact dictionary: specialize both endpoints to the SAME fine spacing
+times their integer coordinates, and prove their phase difference equals
+the phase of the integer difference divided by aliasSide=L^j. Then consume
+neumannAliasPrecision_finePointSource_readout with the internally produced
+mass-uniform FullSolutionDomain at the physical real Brillouin parameter.
+That domain exists almost everywhere on the translated cube; do not demand
+it for every real parameter. Only after the pointwise/a.e. dictionary is
+proved may integral congruence consume the compiled literal selector.
+This is still prior to operator-integral interchange and the finite/image
+action dictionary. Neither is discharged by an alias-space matrix equation.
 
 ## Laplacian action: reuse boundary masks, not discrete momentum restriction
 
