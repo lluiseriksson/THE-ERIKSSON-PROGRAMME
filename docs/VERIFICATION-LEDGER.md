@@ -48639,6 +48639,31 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1230 — literal physical character/readout HOT PASS, 2026-09-07
+
+Base98f4337e06271a7d5e3957450440292db0f79168; overlay
+ce9cc5cc858214ee4e80fca27e6854d22567f653; runner
+f5050f68ffc7be4e0794be935cb86ccda900df79. Base checkout unchanged;
+two hash-pinned tmp files fetched separately. No restored cold claim.
+Prerequisites8502jobs exit0/196.024075715s; physical character repro
+exit0/12.579297107s; alias precision readout exit0/7.916614021s.
+Four exact names all use propext,Classical.choice,Quot.sound.
+Dependency warnings retained; both repro logs have no warnings.
+The phase uses the literal physical Brillouin parameter and normalized
+measure. The readout combines endpoint phases only AFTER applying the
+internally constructed alias precision to its solution. Actual finite
+physical operator action and the full counting source equation remain open.
+
+Archive12004bytes, validation-evidence/neumann-physical-character-readout-hot-v1-20260907/neumann-physical-character-readout-hot-v1.tar.gz,
+SHA256a6618a294b75d5437093bc859f802273889fa9170f092395dc2d1e5156dac3e1.
+Assistant download, independent local reader and preserved-copy digest PASS;
+reader exit0/0.1606843s,14467072 observed peak RSS. Three records and four
+audits checked against exact source/runner/manifest contracts. HOT only.
+Runtime NO_LEAN_LAKE_ACTIVE then unassigned2026-09-07T14:28:28.646350UTC,
+opened13:48:57.054328UTC:39m31.592s connected for cold plus both HOT suffixes.
+Reconnect UI confirmed, tab62 closed; no active runtime retained.
+20/41,TermSource0,window15open. No selective production seal for these drafts yet.
+
 ## Addendum1229 — masked endpoint differences HOT PASS, 2026-09-07
 
 Source98f4337e06271a7d5e3957450440292db0f79168, runner9dc39193157fa4627dd09b235305c5ab4fe90510.

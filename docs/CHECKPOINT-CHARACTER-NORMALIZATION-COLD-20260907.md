@@ -1,4 +1,16 @@
-# Character normalization cold promotion — PASS, retained HOT suffix
+# Character normalization cold promotion and HOT suffixes — completed
+
+COMPLETED2026-09-07T14:28:28.646350UTC: cold1228 selectively sealed in
+f5a2bafba; maskHOT1229 and physical-character/readoutHOT1230 both PASS,
+assistant-downloaded and independently verified archives locally preserved.
+Last archive a6618a294b75d5437093bc859f802273889fa9170f092395dc2d1e5156dac3e1,
+12004bytes under validation-evidence/neumann-physical-character-readout-hot-v1-20260907/.
+No Lean/Lake active; runtime unassigned, reconnect confirmed, tab62 closed.
+The live-state paragraphs below are historical; do not reconnect/relaunch them.
+Next: promote exact successful HOT mask/physical-character/readout bodies
+with separate audits and a fresh pinned cold gate before using them as
+production inputs. Actual precision action and density-to-counting source
+composition remain open;20/41,TermSource0,window15open.
 
 Latest retained-runtime state2026-09-07T14:24UTC: masked-difference HOT PASS,
 exit0/6.314148715s; two exact axioms sets {propext,Quot.sound}; unused hN
