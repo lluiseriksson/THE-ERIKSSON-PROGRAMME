@@ -28,4 +28,3 @@ theorem neumannTorus_normalizedCharacterIntegral (u : Fin 4 → ℤ) :
 
 end
 end YangMills.RG
-

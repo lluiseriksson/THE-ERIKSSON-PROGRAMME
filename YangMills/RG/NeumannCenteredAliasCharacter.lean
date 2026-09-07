@@ -51,4 +51,3 @@ theorem neumannIntegerCharacter_product_phase
 
 end
 end YangMills.RG
-
