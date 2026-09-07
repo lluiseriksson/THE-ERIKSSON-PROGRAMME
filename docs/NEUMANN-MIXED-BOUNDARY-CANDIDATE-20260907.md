@@ -55,6 +55,14 @@ independently verified together with its cold parent. V1/v2 instrument failures
 remain in1206/1207, not erased. Next: promote these exact proofs and audit,
 then one cold focal gate; mixed M1/M2 and full point-source action remain open.
 
+Exact production promotion is now written as NeumannPhysicalPeriodicSeries,
+NeumannPhysicalPeriodicSummability and their shared SeriesAudit. Only the
+module header and placement of #print axioms differ from HOT drafts; body
+equality checked textually. These leaf modules remain PRE-VALIDATION and are
+not silently installed in YangMillsCore. Cold queue must build both modules
+and audit the five exact names. The cold runner is the next preparation step;
+no second runtime is opened before its source/hash contract is ready.
+
 The historical paragraphs below record the earlier design audit. M3 is no
 longer wholly open: the literal full Green common block translation and
 simultaneous half-cell reflection are cold-sealed in Addendum1197. Their
