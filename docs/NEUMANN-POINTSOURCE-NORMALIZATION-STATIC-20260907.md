@@ -228,3 +228,24 @@ therefore transports the finite selector's constant factor without assuming
 integrability of a new arbitrary family; the actual pointwise phase identity
 is still required. No second (2*pi)^(-4) enters. This route is inspected
 against the pinned Mathlib and source definitions, not yet compiled.
+
+## Laplacian action: reuse boundary masks, not discrete momentum restriction
+
+`cmp99FlatPeriodicComplexStencil_fourierMode` is an exact finite ZMod-mode
+identity, but its momentum is discrete. The physical Brillouin variable is
+continuous, so this theorem is not the missing action dictionary by itself.
+The literal alias diagonal is `cmp89Eq245EntireScaledLaplacianSymbol`:
+sum of D_xi(q)*D_xi(-q), plus mass squared, with
+D_xi(q)=(exp(-i*xi*q)-1)/xi. Its integer-shift stencil factor must therefore
+be proved as (2-exp(i*xi*q)-exp(-i*xi*q))/xi^2, using the opposite exponential
+product identity, before summing coordinates. No real-slice conjugation is
+needed for that algebraic identity.
+
+The physical finite stencil is already named in
+`neumannFlatInternalBond_laplacian_apply`, with two explicit spacing inverses
+and separate outgoing/incoming masks. HOT1229 supplies the generic masked
+endpoint identities; the physical FULL/PROPER seam producers must discharge
+their hypotheses for the mixed series. Do not apply periodic wrap to an
+individual continuous-momentum phase: the relevant periodicity belongs to
+the constructed image sum. The operator/image interchange remains a later,
+summability-dependent step. This is a static route, not a new action proof.
