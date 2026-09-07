@@ -1,5 +1,23 @@
 # Exact HOT-body promotion — PRE-VALIDATION
 
+CURRENT 17:05UTC: endpoint suffix PASS preserved141be4fa9. Archive
+08c8518f5ef1037268e92038dc0cfef6b37baab0c827a169e44b4f7bc426116c;
+phase5.119728533s, prerequisite134.621590083s, physical7.863357983s,
+all exits0, exact1+2names. Reader exit0/.2107954s/17686528RSS.
+Next bounded integral suffix launched ONCE 2026-09-07T17:05:02.952323Z,
+PID34152 on same runtime/tab68. Sourcef308441f2cf19b2294189cab14d1a1d6d1217330,
+runner145a3201eae41d8133504bc3f9d3b9da826febe8,
+scripts/colab_neumann_physical_readout_integral_hot.py,
+SHA256143570f89b72f5526f7fea7b68ea25e99a681762bfa610aa9ddead2f4e8d57b8.
+Reader607d44728: synthetic1accepted/10rejected, contracts matched,
+.2359473s,22257664RSS,exit0. Exact draft guards PASS before launch.
+Read /content/physical-readout-integral-launch-v1/launch.log and pid.txt;
+archive /content/neumann-physical-readout-integral-hot-v1.tar.gz.
+Queue mass_uniform_prerequisite -> readout_integral. Five names expected.
+No result yet. The domain is constructed a.e. from common windows including
+mass=0; no arbitrary solved family. This is still alias-precision integral,
+not the missing physical operator/integral interchange or finite inverse.
+
 CURRENT: cold integral PASS independently preserved5ea4a702b and selective
 seal25ca1cbe5/ledger1239. Exact header-only comparison2files PASS
 (.2132846s,14290944RSS). All earlier LIVE cold notes below are historical.
