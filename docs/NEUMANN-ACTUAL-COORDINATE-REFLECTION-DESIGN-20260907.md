@@ -307,3 +307,20 @@ integrability through that equality, then consume the measure leaf.
 The mass-uniform FullSolutionDomain producer supplies both domains after
 checking coordinate reflection preserves the common polistrip. These steps
 are still to implement; no physical integrability hypothesis is authorized.
+
+Physical domain draft7d719ad27 is now the bounded next test. It applies
+cmp89Eq246FullSolutionDomain_of_commonRadius_massUniform to z and to its
+selected-coordinate negation; absolute real and imaginary bounds survive
+without shrinking rho, and mass=0 remains admissible. The physical
+integrand wrapper uses the literal spacing definition (Nat power cast)^-1.
+
+For the final R5 consumer, the almost-everywhere cube-membership pattern
+already exists in MassUniformCenteredGreenCoefficientDictionary: rewrite
+the named product measure as volume restricted to PhysicalBrillouinCube,
+then use ae_restrict_mem. At each cube point the Brillouin parameter is
+bounded by pi. Reflecting x_mu to 2*pi-x_mu negates only that momentum
+coordinate. Apply R4 to reflected endpoints (using integer involution)
+to identify f(reflect x) with the ordinary integrand at those endpoints.
+Its stage-zero mass-uniform integrability producer transfers by ae equality.
+Then the generic integral reflection and the same outside (2*pi)^-4 give
+the normalized Green identity. This is a concrete proof route, not evidence.
