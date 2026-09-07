@@ -100,11 +100,24 @@ Consequently the later dictionary must instantiate the Fourier coefficient
 with the actual effective prefix coefficient, rather than identifying two
 parameters both named `a`. At a normalized terminal spacing of one, the
 intended Fourier coefficient is `cmp85SourcePrefixA`; the preceding scale
-normalization and its index shift must be proved explicitly. The remaining
+normalization and its index shift must remain explicit. The remaining
 volume ratio cancels one of the two counting weights, leaving one normalized
-fibre average. That cancellation is a required equality, not a new premise
-or an invitation to cancel the fine-density point-source factor twice.
+fibre average. This cancellation is ALREADY cold-sealed in
+`NeumannCanonicalSpacingNormalization`, source
+dd9354a87d2e9d60dac69aa79f287b53e45ba207, ledger1164:
 
-This is a named scalar/dictionary obligation inside the action step; the
+- `neumannCanonicalFourierSpacing_terminal_eq_one` derives terminal spacing1;
+- `neumannCanonicalFourierSpacing_countingCoefficient` gives a_r*B^d;
+- `neumannCanonicalFourierSpacing_countingMassCoefficient` combines the
+  two counting weights to obtain a_r*B^(-d) exactly.
+
+Reuse these named theorems. The initial audit above identified the correct
+convention but unnecessarily treated the scalar equality as remaining work;
+the follow-up declaration check removes that duplicate debt. It is not a
+new premise or an invitation to cancel the fine-density point-source factor
+twice.
+
+What remains is consumption of these scalar producers inside the action
+dictionary, not reproving their algebra. The
 current mixed Green seam theorem intentionally leaves its coefficient
 parameter explicit and does not claim to instantiate the canonical tower.
