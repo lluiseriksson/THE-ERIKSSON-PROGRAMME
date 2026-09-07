@@ -51,3 +51,20 @@ Reader scripts/verify_neumann_alias_exponential_selector_hot.py at223546756;
 synthetic1accepted/9rejected, exit0/0.1787398s,18546688 observed peak RSS.
 This suffix selects congruence only; the remaining continuous integral and
 actual finite operator action are not replaced by a finite-grid delta.
+
+One further Mathlib-only suffix is prepared before cold completion. Run it
+only after selector HOT PASS and independent preservation; write
+/content/alias-selector-hot-evidence-preserved.ok only then. Runner
+ad518f8453156e5f7400ef0eff7f19a8fa8ae2ac,
+scripts/colab_neumann_opposite_difference_hot.py,
+SHA2567053f405bdfd1094832169126607bd4bfde0c9a49bb68225b297af497eadeb82.
+Overlayb3ca1ca8f749517014c934ff956116ecab19210d supplies only
+tmp/NeumannOppositeDifferenceRepro.lean, SHA256
+f0f97dee3b98e0410c69969d40aed56c45a2cc4be8d17db9c967d18d3d569864.
+One lake env lean call, two exact names, no project rebuild. Output
+/content/neumann-opposite-difference-hot-v1.tar.gz; launch log outside OUT.
+Reader scripts/verify_neumann_opposite_difference_hot.py fixtures1accepted/
+9rejected, exit0/0.2204541s,18616320 observed peak RSS. Not compiler evidence.
+This supersedes disconnect immediately after selector: preserve both bounded
+suffixes (or the first unresolved error), then disconnect. No cold queue
+change, concurrent compiler, physical-action or window15 claim.
