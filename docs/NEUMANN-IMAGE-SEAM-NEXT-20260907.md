@@ -1,9 +1,12 @@
 # After physical reflection: exact image-seam gate
 
 Source context: 84ceb5f2f466ab8f4e9dea175fd412c7bf63a21e.
-STATIC DESIGN, not a compiler result. The 17-module cold promotion is
-currently in flight; its source and launch checkpoint are recorded in
-NEUMANN-REFLECTION-COLD-CHECKPOINT-20260907.md. No PRE mark is retired here.
+The 17-module physical reflection prefix is cold-sealed in 7b69f8337,
+Addendum 1197. The seam construction below remains STATIC DESIGN, not a
+compiler result. Its fixed-source orbit draft failed before elaboration
+because ReflectionOrbitAlgebra.olean was absent from the retained checkout.
+The v2 diagnostic explicitly builds that prerequisite, with the original
+source108f30f9 and blob8abe85a4 unchanged. It does not rerun the sealed prefix.
 
 ## Inputs inspected
 
