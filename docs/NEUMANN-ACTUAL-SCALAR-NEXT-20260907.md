@@ -42,3 +42,29 @@ already checked phase identity of its finite-average factor.
 
 No production promotion, uniform B0, regional inverse, or window15 claim.
 20/41 and TermSource0 unchanged.
+
+## Common-translation gate: inspected consumers, not an extra hypothesis
+
+`BalabanCMP89Eq246FinePointSourceFibreGreen` constructs the source vector
+as exp(-I*phase(aliasMomentum,sourceEndpoint)) and applies the literal
+non-transpose full solution. The synthesis multiplies each output by the
+opposite-sign target exponential. Neither endpoint is averaged.
+
+`exp_I_cmp89Eq251EntireAliasPhase_latticeDisplacement` in
+`BalabanCMP89CenteredTorusGreenCoefficientPhase` already quantifies over
+complex base momentum and integer displacement. It removes alias periods
+at integer physical shifts, not arbitrary fine shifts. Together with
+`cmp89Eq251EntirePhase_physicalFine_affineResidue`, this is the named
+phase route for shifts target/source -> target/source + M*n, spacing 1/M.
+For the physical wrapper M=L^j, the translation is exactly one coarse
+integer displacement, not one arbitrary fine site. The source multiplier
+is exp(-I*phase(z,n)); target multiplier is exp(+I*phase(z,n)). Their
+product is one without a real-slice or nonvanishing hypothesis.
+
+The scalar draft must pass before its equality is lifted through the
+actual point-source vector. Then cancel termwise in the output-alias sum;
+only after that transport equality through the normalized integral.
+Existing `cmp89UnitAddTorus_mFourier_neg_mul_stabilizedFineToFineGreen_eq_affineTarget`
+moves the target alone and leaves the source unchanged; it is not this
+common-translation theorem. This inspection avoids a duplicated phase
+proof but supplies no new compiler evidence or half-cell reflection claim.
