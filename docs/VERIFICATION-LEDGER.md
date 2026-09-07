@@ -48639,6 +48639,21 @@ packaging, fixed-source injection, branch bound and physical equation remain
 open.20/41,TermSource0,window15notattained. Runtime stopped only after both
 archives verified, closed08:51:24.146027UTC, about11m28sconnected. Reconnect
 UI confirmed; all tabs closed, no worker or local receiver left running.
+## Addendum1235 — physical alias integral HOT first failure preserved
+
+Overlay5b063871215a4b9b9d4c13b9935c035456b7eb5d, base1885a6c08,
+runner6ef29e785. Quotient repro exit0/3.564059197s, three exact trios;
+physical prerequisite closure exit0/86.823019571s,8484jobs. Physical draft
+exit1/6.840623249s. First error line82:10: integral_mul_const rewriting
+did not beta-reduce the integrand. Same lemma also reports dependent ite
+rewriting at84 and a non-definitional zero-function cast at90. No theorem
+or audit PASS inferred from compiler error recovery/sorryAx.
+Archive5c65cfbd818d98b81acabcc6b29ea7b387d77636f337b9380c45ffc51872f039,
+downloaded and manifest/source/runner/log/exit-prefix checked independently,
+0.2305009s,17043456RSS,exit0. Preserved under validation-evidence/
+neumann-alias-physical-integral-hot-v1-failure-20260907. Runtime retained
+for bounded first-stage repair; no cold rerun.20/41,TermSource0 unchanged.
+
 ## Addendum1234 — selector/opposite promotion COLD PASS, 2026-09-07
 
 Source1885a6c0886e595f0d3013c6ac2b9a71f3c93036, runnerc90e9d1e0,

@@ -1,0 +1,84 @@
+{
+  "archive_sha256": "5c65cfbd818d98b81acabcc6b29ea7b387d77636f337b9380c45ffc51872f039",
+  "audits": {
+    "quotient_repro": {
+      "YangMills.RG.neumannIntegerQuotient_phase": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannIntegerQuotient_zero_iff": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannZeroResidue_exists_integerQuotient": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "classification": "PRESERVED_FIRST_ERROR_physical_integral_82_10",
+  "cold_seal": false,
+  "expected_names": {
+    "physical_integral": [
+      "YangMills.RG.neumannZeroResidue_exists_integerQuotient",
+      "YangMills.RG.neumannIntegerQuotient_phase",
+      "YangMills.RG.neumannIntegerQuotient_zero_iff",
+      "YangMills.RG.neumannCenteredAlias_physicalIntegral"
+    ],
+    "quotient_repro": [
+      "YangMills.RG.neumannZeroResidue_exists_integerQuotient",
+      "YangMills.RG.neumannIntegerQuotient_phase",
+      "YangMills.RG.neumannIntegerQuotient_zero_iff"
+    ]
+  },
+  "overlay_source_sha": "5b063871215a4b9b9d4c13b9935c035456b7eb5d",
+  "records": [
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "tmp/NeumannIntegerQuotientRepro.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-selector-opposite-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "fd0cbe63fbec38812cd0e21ffc1670aee3f63bbaedfc91992f0ad325c3cc36f9",
+      "seconds": 3.564059197000006,
+      "stage": "quotient_repro"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.NeumannPhysicalBrillouinCharacter"
+      ],
+      "cwd": "/content/hrpoly-neumann-selector-opposite-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "8d41a125ca3d7e58ea6c75bb0c84177f495eb811754f5a26d572fa727320be93",
+      "seconds": 86.82301957100003,
+      "stage": "physical_prerequisites"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "tmp/NeumannAliasPhysicalIntegralDraft.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-selector-opposite-promoted-cold-v1",
+      "exit": 1,
+      "log_sha256": "c0e6074047b9a13d2c6718580a56648d67ddf29657a51582e771ed4a6792f603",
+      "seconds": 6.840623249000146,
+      "stage": "physical_integral"
+    }
+  ],
+  "source_blobs": {
+    "tmp/NeumannAliasPhysicalIntegralDraft.lean": "d3b149ca9780d2e3eed9f9b58195a07da0885691e2b25d8377a35a5d3ae81b91",
+    "tmp/NeumannIntegerQuotientRepro.lean": "80fe51d49be61590ca99dd58033545ddff3329092095b98b6f04c6c8b4552c0d"
+  },
+  "source_sha": "1885a6c0886e595f0d3013c6ac2b9a71f3c93036",
+  "status": "FAIL"
+}
