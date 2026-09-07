@@ -105,3 +105,20 @@ CMP89Eq246AliasIndex d L j and its central-alias preservation theorem.
 The NeZero(L^j) instance is constructed from NeZero L; j=0 and N=1 are
 retained. Seven audit declarations are now present, all NOT CHECKED.
 Both text and import-prefix guards pass; this is not compiler evidence.
+
+## Prepared retained-runtime diagnostic, deliberately locked
+
+tmp/colab_neumann_coordinate_alias_reflection_hot.template.py and the
+matching verify_neumann_coordinate_alias_reflection_hot.template.py target
+source6804b00aadf10ea9181044d150128c8942b9e7c7, draft blob SHA256
+ffb4bbab01f8f49b593d2f2657f12a499232501a54bb64638c0320c8d28aea3e.
+The runtime checkout must remain327a79d3e; only the named scratch overlay
+is added after the ongoing common-translation diagnostic is preserved.
+Parent archive/report/olean pins and the final runner hash are deliberately
+unset. Tests confirm the runner refuses BEFORE network or filesystem writes
+(exit0 test,0.1247246s,16470016bytes observed RSS) and the reader refuses
+before opening evidence (exit0 test,0.1040106s,14528512bytes observed RSS).
+These are templates, not launched scripts and not Lean evidence. After
+actual parent PASS and preservation, fill actual pins, test the final reader
+against synthetic corruptions, publish by fast-forward, then run once in the
+same warm runtime. If the current diagnostic fails, repair it first instead.
