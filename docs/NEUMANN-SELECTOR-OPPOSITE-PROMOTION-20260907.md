@@ -26,6 +26,20 @@ Prepare a bounded HOT suffix for this retained checkout only after cold
 PASS and independent preservation. Order: quotient repro first, required
 physical-character dependency closure second, full integral draft last.
 No production seal or scalar-window claim follows from these drafts.
+The HOT suffix is now prepared, NOT RUN: runner6ef29e7855501ed513b03c3885499ef2f87c0cba,
+scripts/colab_neumann_alias_physical_integral_hot.py,
+SHA256ae63512958a9dbfa28a71d6b2fb15a9273e98d360a06b7335e0c029ea5c0ea98.
+Requires /content/selector-opposite-cold-evidence-preserved.ok, to be written
+only after downloading and independently verifying the cold archive.
+Same cold ROOT/HEAD1885a6c08, overlay5b0638712, OUT
+/content/neumann-alias-physical-integral-hot-v1. One execution, no concurrent
+compiler. Stop on first error; preserve the resulting archive before repair.
+Reader scripts/verify_neumann_alias_physical_integral_hot.py accepts one
+synthetic fixture and rejects ten altered fixtures; runner/reader pins,
+commands and names cross-checked. Measured0.3752545s,22020096RSS,exit0.
+The initial local instrument check failed only because Windows rendered a
+Path with backslashes; comparison corrected to as_posix, no source change
+and no Colab iteration. This is instrument testing, not compilation evidence.
 On verdict preserve/download/hash and independently inspect the archive
 before any selective seal. No historical runtime is being reused here.
 
