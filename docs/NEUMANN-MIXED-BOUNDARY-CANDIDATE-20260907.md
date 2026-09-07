@@ -43,6 +43,18 @@ one-coordinate Boolean flip are reusable primitives, not permission to
 reintroduce a second branch in FULL coordinates. Physical inverse, uniform
 B0 and window15 remain behind the separately named M4 action/source gates.
 
+Scoped scalar-field check for the later action dictionary: the literal
+two-endpoint Fourier synthesis is complex-valued (the zero-radius identity
+in BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel has codomain C),
+whereas neumannCanonicalPrecision_apply_eq_completeOffsets acts on real
+SUNLieCoord cochains. The final constructor must not silently cast that
+kernel into a real coefficient. A possible faithful route is an explicit
+real-part intertwiner for the actual real-coefficient finite action after
+the complex point-source identity; any identification of the full complex
+kernel with the real inverse must then be proved, not read from the phrase
+'real slice'. This is a type-boundary observation, not a new no-go or a
+claim that the existing source synthesis is non-real.
+
 ### Updated frontier after Addendum1221 (2026-09-07)
 
 The four owner obligations listed below are now cold-verified by
