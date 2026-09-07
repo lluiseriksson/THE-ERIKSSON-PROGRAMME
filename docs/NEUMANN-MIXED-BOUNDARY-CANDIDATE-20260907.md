@@ -5,6 +5,42 @@ physical inverse, uniform B0 or scalar-window attainment is claimed here.
 
 ## Current frontier after Addendum1209
 
+### Updated frontier after Addendum1219 (2026-09-07)
+
+FULL interval coverage/owner shift is cold-sealed in1212; mixed coordinate
+coverage in1214; fixed-source image/difference injectivity in1217. Branch
+packaging and the dimension4 bound16 passed HOT-v2 (1219), with identical
+production bodies at `c9818c183643a19b0cb88d614ea7b10ad3e8eda6` now in a
+separate cold gate. None of these gives the physical inverse or uniform B0.
+Earlier status paragraphs below are chronology, not the current frontier.
+
+The next owner dictionary must retain exactly the global index
+`((Fin d -> Z) x (forall mu, neumannMixedBranch (full mu)))` from packaging.
+Do not replace it by an unrestricted Bool vector in FULL coordinates.
+Define the unrestricted-source image on this SAME branch type, prove its
+equality to the packaged fixed-source image for interval sources, and only
+then transport owners. The unrestricted-source extension is needed to
+state covariance under common images; it is not another choice of kernel.
+
+The coordinate obligations are finite and use existing named identities:
+
+1. FULL: `(n + (B*m)*k)/B = n/B + m*k`, from
+   `neumannIntegerPeriodicOwner` plus explicit multiplication reorder.
+2. PROPER false/true: use `neumannIntegerTranslatedOwner` /
+   `neumannIntegerReflectedOwner` verbatim, with fine side `B*m` and coarse
+   side `m`; the half-cell offset remains `-1`, not `-B`.
+3. Coordinate assembly: owner of mixed fine image equals mixed coarse
+   image of owner, with unchanged translation and branch index.
+4. A COMMON image is injective in the source; hence equality of owners,
+   and the owner-indicator coefficient, are preserved exactly. No fibre
+   cardinality or new averaging coefficient is introduced.
+
+All four are design obligations until their own compiler evidence exists.
+They do not set `full`; physical classification remains `m_mu = N` for the
+actual ambient period. Nor do they establish invariance of a restricted
+operator: finite masks, the actual generated averaging action, summability
+for interchange, and the (2.46) point-source equation remain required.
+
 Physical periodic series and convergence are now COLD verified at
 d16030e70abeee9eb77e28f5dc6a222ffdfd8200: focal8660, audit5/5, archive
 7e764ea7924f8c59f7242a9192522eba249cabe42ccbc6def7f71ee1f1cc407b,

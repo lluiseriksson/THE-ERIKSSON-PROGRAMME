@@ -14,10 +14,31 @@ Source prepared for the next cold gate:
 - Production promotion contains the identical HOT theorem bodies, checked
   against Git blobs with explicit UTF-8 decoding. PRE-VALIDATION remains.
 
-## Next bounded operation
+## Current bounded operation — cold gate running
 
-Prepare the cold runner/independent reader/notebook by specializing the
-existing `colab_neumann_mixed_fixed_source_promoted_cold.py` contract to
+Published notebook checkpoint `ef8e762132a7c0ff69b97e9d2be5976595518e3f`:
+`scripts/colab_neumann_mixed_branch_packaging_promoted_cold.ipynb`.
+Runner/reader checkpoint `579882fb91f11022f39003c9f6af2f53d339af13`.
+Runner SHA256 `9cf22262126e325c186559f033f7a1c4d96f8365e949d8cf5e9ad89b673856fd`;
+reader SHA256 `f8034619436e99d5c1f78010d03fffe6300d69b3d52e66fef09cb646ec03f90b`.
+Opened2026-09-07T09:40:04.019789UTC, CPU50.99GiB, parentPID824.
+Hash/preflight passed; last observed live at toolchain extraction.
+Only browser tab51 is necessary. Never reexecute Cell1.
+Cell2 reads `/content/mixed-branch-packaging-promoted-cold-launch-v1/launch.log`
+and its pid.txt. Check the same process; an observer timeout is not a failure.
+On completion preserve archive, independently verify, then cold-seal only
+the exact two production headers if PASS. A bounded next HOT must be prepared
+before retaining the runtime; otherwise preserve and disconnect immediately.
+
+Reader synthetic test passed1positive/8negative; exact axiom parser2positive/9negative.
+Overlay checks passed on exactly2 files. One local guard invocation used a
+string instead of Path and failed before checking source; corrected invocation
+passed. This was local instrumentation only, not a Lean failure.
+
+## Cold contract
+
+Prepared by specializing the existing
+`colab_neumann_mixed_fixed_source_promoted_cold.py` contract to
 `YangMills.RG.NeumannMixedBranchPackaging` and its Audit. Do not claim a
 cold result from the HOT archive. Exact source hashes:
 
@@ -43,7 +64,8 @@ HOT-v2PID16356 all terminal before unassign. All three archives downloaded
 and independently hashed locally before release. Colab showed Reconnect
 at09:34:49UTC; exact printed closure timestamp was cleared by unassignment
 and is not claimed. All browser tabs closed; no Colab process retained.
-No Lean/Lake ran in Windows; local checks stayed below30s/512MiB.
+That previous runtime is closed; the new gate above is now the sole active
+session. No Lean/Lake ran in Windows; local checks stayed below30s/512MiB.
 No CI dispatched. GitHub last verified as lluiseriksson before fast-forward.
 Unrelated worktree changes were not staged.
 
