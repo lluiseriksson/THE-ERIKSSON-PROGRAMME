@@ -60,7 +60,69 @@ theorem neumannActualFullGreenImage_summable_boundaryInvariant
   exact neumannBoundaryImage_reflected_source_sum mu c m source
     (cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a target)
 
+theorem neumannActualFullGreenImage_lowerGhost
+    {L j : ℕ} [NeZero L] {mass a rho : ℝ}
+    (ha : 0 ≤ a) (hrho : 0 < rho)
+    (hamplitude : rho * Real.exp rho ≤ 1 / 6)
+    (hradius : CMP89Eq249UniformNoncentralComplexRadiusCondition rho)
+    (hdenWindow : CMP89Eq249CentralStabilizedComplexWindow a rho)
+    (hpairWindow : CMP89Eq249CentralAveragePairComplexWindow rho)
+    (hmass : CMP89Eq251UniformMassWindow mass)
+    (mu : Fin 4) (m target source : Fin 4 → ℤ)
+    (hm : ∀ i, 0 < m i) (htarget : target mu = 0) :
+    cmp89NeumannReflectionSeries
+      (cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a) m
+      (fun i => if i = mu then -1 else target i) source =
+    cmp89NeumannReflectionSeries
+      (cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a) m target source := by
+  have h := (neumannActualFullGreenImage_summable_boundaryInvariant
+    (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+    ha hrho hamplitude hradius hdenWindow hpairWindow hmass
+    mu 0 0 m target source hm (by simp)).2
+  have hg : (fun i => if i = mu then 2*(0:ℤ)*m mu-1-target i else target i) =
+      (fun i => if i = mu then -1 else target i) := by
+    funext i
+    by_cases hi : i = mu
+    · subst i
+      simp [htarget]
+    · simp [hi]
+  rw [hg] at h
+  exact h
+
+theorem neumannActualFullGreenImage_upperGhost
+    {L j : ℕ} [NeZero L] {mass a rho : ℝ}
+    (ha : 0 ≤ a) (hrho : 0 < rho)
+    (hamplitude : rho * Real.exp rho ≤ 1 / 6)
+    (hradius : CMP89Eq249UniformNoncentralComplexRadiusCondition rho)
+    (hdenWindow : CMP89Eq249CentralStabilizedComplexWindow a rho)
+    (hpairWindow : CMP89Eq249CentralAveragePairComplexWindow rho)
+    (hmass : CMP89Eq251UniformMassWindow mass)
+    (mu : Fin 4) (B : ℤ) (m target source : Fin 4 → ℤ)
+    (hm : ∀ i, 0 < m i)
+    (hboundary : m mu = ((L ^ j : ℕ) : ℤ) * B)
+    (htarget : target mu = m mu - 1) :
+    cmp89NeumannReflectionSeries
+      (cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a) m
+      (fun i => if i = mu then m mu else target i) source =
+    cmp89NeumannReflectionSeries
+      (cmp89Eq246NormalizedPhysicalFineToFineGreen L j mass a) m target source := by
+  have h := (neumannActualFullGreenImage_summable_boundaryInvariant
+    (L := L) (j := j) (mass := mass) (a := a) (rho := rho)
+    ha hrho hamplitude hradius hdenWindow hpairWindow hmass
+    mu 1 B m target source hm (by simpa only [one_mul] using hboundary)).2
+  have hg : (fun i => if i = mu then 2*(1:ℤ)*m mu-1-target i else target i) =
+      (fun i => if i = mu then m mu else target i) := by
+    funext i
+    by_cases hi : i = mu
+    · subst i
+      simp [htarget] <;> ring
+    · simp [hi]
+  rw [hg] at h
+  exact h
+
 end
 end YangMills.RG
 
 #print axioms YangMills.RG.neumannActualFullGreenImage_summable_boundaryInvariant
+#print axioms YangMills.RG.neumannActualFullGreenImage_lowerGhost
+#print axioms YangMills.RG.neumannActualFullGreenImage_upperGhost
