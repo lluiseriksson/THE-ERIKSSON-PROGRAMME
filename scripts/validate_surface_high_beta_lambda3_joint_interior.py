@@ -8,7 +8,7 @@ from pathlib import Path
 from flint import arb
 
 import certify_surface_high_beta_lambda3_joint_interior as cert
-from surface_eol_hashes import validate_recorded_dependencies
+from surface_eol_hashes import sha256_variants, validate_recorded_dependencies
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +31,7 @@ def validate() -> dict[str, object]:
     replay_bytes = REPLAY.read_bytes()
     if production_bytes != replay_bytes:
         raise AssertionError("production/replay byte mismatch")
-    if hashlib.sha256(production_bytes).hexdigest() != EXPECTED_SHA256:
+    if EXPECTED_SHA256 not in sha256_variants(PRODUCTION):
         raise AssertionError("unexpected transcript digest")
     lines = production_bytes.decode("utf-8").splitlines()
     if lines[0] != f"PROVENANCE git_head {SOURCE_HEAD}":

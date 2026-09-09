@@ -4,6 +4,11 @@
 records the exact pre-existing failures instead of changing certificate
 hashes or presenting an unrelated documentation check as a full PASS.
 
+**Follow-up, 9 September:** the [portability repair](SURFACE-EVIDENCE-PORTABILITY-20260909.md)
+addresses LF/CRLF hash comparisons and Windows output paths while retaining
+the historical artifacts and frozen acceptance constants. The results below
+remain the historical baseline; the repair's full Linux CI is a separate gate.
+
 | Source | Evidence | Result |
 |---|---|---|
 | `main`, `ff9498df9bb13050a3c663103e4a0830e793c56f` | [5 September run 33957207604](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/33957207604) | 9 failed, 695 passed, 382.59 s |

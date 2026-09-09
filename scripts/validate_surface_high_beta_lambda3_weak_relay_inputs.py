@@ -62,7 +62,7 @@ def validate() -> dict[str, object]:
     if production != replay:
         raise AssertionError("lambda-three production/replay byte mismatch")
     digest = hashlib.sha256(production).hexdigest()
-    if digest != EXPECTED_SHA256:
+    if EXPECTED_SHA256 not in sha256_variants(PRODUCTION):
         raise AssertionError(f"unexpected lambda-three digest: {digest}")
     lines = production.decode("utf-8").splitlines()
     recorded = {
