@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0",
+  "reviewed_on": "2026-09-09",
+  "window": {
+    "start": "2026-09-03",
+    "end": "2026-09-09",
+    "calendar_week_start": "2026-09-07"
+  },
+  "coverage": "targeted, non-exhaustive",
+  "repository_card": {
+    "repository": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+    "source_ids": [
+      "2608.27267",
+      "2609.04117",
+      "2609.00867",
+      "2606.21062",
+      "2609.04423"
+    ],
+    "local_anchors": [
+      "README.md",
+      "docs/HRPOLY-STATUS.md",
+      "HYPOTHESIS_FRONTIER.md"
+    ],
+    "frontier": "The inspected main records finite-lattice area laws, an open hRpoly source programme and an open physical Wilson reflection/transfer bridge. Its continuum limit remains open.",
+    "bridge_hypothesis": "Prioritize edge gauge coordinates and physical reflection, then test uniform integrability tools against the actual raw activity. Dictionary: particle-number bounds -> candidate volume budget; tree reduction -> exact finite lattice coordinates. Neither supplies target-localized RG decay or hRpoly.",
+    "next_finite_task": "Extract three separate checklists: tree-coordinate inverse and Haar identity; reflection compatibility for the physical cylinder; parameter dependence of a candidate exponential-moment estimate. Route each obligation to its satellite before changing a terminal hypothesis.",
+    "falsifier": "Reject any route that loses target support, hides volume/scale dependence, substitutes a real-time dissipative gap, or cites a general convergence theorem without its source estimate.",
+    "related_repositories": [
+      "lean-2d-yang-mills",
+      "lean-os-positivity",
+      "lean-gaussian-field",
+      "lean-zero-free-regions"
+    ],
+    "proposal_status": "speculative; not executed or formally verified",
+    "eliminated_hypotheses": [],
+    "inspected_commit": "ecc55e71df056e6d2acb08ede7a80e7bc61ee36a"
+  },
+  "sources": [
+    {
+      "id": "arxiv:2608.27267",
+      "arxiv_id": "2608.27267",
+      "title": "Efficient Quantum Simulations of Yang-Mills theory with Maximal-tree Gauge",
+      "authors": [
+        "Li, Tianyin",
+        "Li, Ying-Ying",
+        "Wang, Xiaoyang",
+        "Xing, Hongxi"
+      ],
+      "first_submitted": "2026-08-27",
+      "latest_revision": "2026-08-27",
+      "reviewed_version": "v1",
+      "url": "https://arxiv.org/abs/2608.27267v1",
+      "doi": "10.48550/arXiv.2608.27267",
+      "verified_on": "2026-09-09",
+      "recency": "background",
+      "publication_status": "preprint; peer-review status not established in this sweep",
+      "evidence_level": "literature",
+      "review_depth": "v1: abstract and maximal-tree gauge construction",
+      "source_claim": "Li and collaborators use maximal-tree gauge and field-amplitude digitization to obtain polynomial resource bounds for Hamiltonian Yang-Mills simulation through QSVT.",
+      "limits": "Hamiltonian simulation complexity is distinct from an exact Haar edge-coordinate equivalence, Euclidean reflection positivity, and a continuum mass gap. First posted 27 August; a September news mention is not a new submission.",
+      "tags": [
+        "gauge-fixing",
+        "spanning-trees",
+        "yang-mills",
+        "quantum-simulation"
+      ],
+      "abstract_page_sha256": "8fa19bcafeebf9e933c70192ace6a9b2ff01e8e6d04fd2e98295d10ef400f233",
+      "reviewed_full_text_sha256": "05f7e0cd23badc54c61dc3bafa5237f4126a6c2bcdda0d97b621cd3bb719dd1c",
+      "reuse": "Bibliographic metadata and original synthesis only; no permission to train on linked full text is inferred."
+    },
+    {
+      "id": "arxiv:2609.04117",
+      "arxiv_id": "2609.04117",
+      "title": "Non-Abelian string melting and thermalization in an open lattice gauge theory",
+      "authors": [
+        "Verde, Erick Parra",
+        "Cataldi, Giovanni",
+        "Kühn, Stefan",
+        "Magnifico, Giuseppe",
+        "Halimeh, Jad C."
+      ],
+      "first_submitted": "2026-09-03",
+      "latest_revision": "2026-09-03",
+      "reviewed_version": "v1",
+      "url": "https://arxiv.org/abs/2609.04117v1",
+      "doi": "10.48550/arXiv.2609.04117",
+      "verified_on": "2026-09-09",
+      "recency": "new-in-trailing-week",
+      "publication_status": "preprint; peer-review status not established in this sweep",
+      "evidence_level": "literature",
+      "review_depth": "v1: model, thermalization discussion and strong-dephasing reduction",
+      "source_claim": "A tensor-network study couples 1+1D SU(2) gauge theory with matter to a gauge-preserving Lindblad bath. It finds nonmonotonic relaxation and derives an exclusion-process description in a strong-dephasing limit.",
+      "limits": "This is an open-system finite/truncated lattice setting, not pure 4D Euclidean Yang-Mills. A Liouvillian relaxation rate is not automatically a Hamiltonian gap, and the strong-dephasing expansion has its own regime.",
+      "tags": [
+        "yang-mills",
+        "lindblad",
+        "zeno",
+        "tensor-networks"
+      ],
+      "abstract_page_sha256": "5bd8e4f32445c083e75584d29d5ef41d78ed422d5c848b77e706f123fb496a82",
+      "reviewed_full_text_sha256": "7eec747973d16173df4cf1775f12720a3e7ba56b4fcdf158063e15d681b8fa00",
+      "reuse": "Bibliographic metadata and original synthesis only; no permission to train on linked full text is inferred."
+    },
+    {
+      "id": "arxiv:2609.00867",
+      "arxiv_id": "2609.00867",
+      "title": "Uniform Partition-Function Estimates for Coulomb Modulated Energy at All Positive Temperatures",
+      "authors": [
+        "Wang, Zhenfu",
+        "Zhao, Xianliang"
+      ],
+      "first_submitted": "2026-09-01",
+      "latest_revision": "2026-09-01",
+      "reviewed_version": "v1",
+      "url": "https://arxiv.org/abs/2609.00867v1",
+      "doi": "10.48550/arXiv.2609.00867",
+      "verified_on": "2026-09-09",
+      "recency": "background",
+      "publication_status": "preprint; peer-review status not established in this sweep",
+      "evidence_level": "literature",
+      "review_depth": "Abstract and submission history",
+      "source_claim": "Wang and Zhao report particle-number-uniform partition-function bounds for centered Coulomb-type modulated energies in a locally square-integrable regime, with a second-chaos Fredholm-determinant limit.",
+      "limits": "Positive-real-parameter integrability does not establish complex zero-freeness. Particle-number uniformity is not automatically RG-scale, support or volume uniformity in the Yang-Mills activity norm. First posted 1 September.",
+      "tags": [
+        "partition-functions",
+        "uniformity",
+        "gaussian",
+        "fredholm-determinants"
+      ],
+      "abstract_page_sha256": "d577ac4e265c8e5618bd4160f3845a6d6bb559fd37c51e308b27b06394f586db",
+      "reviewed_full_text_sha256": null,
+      "reuse": "Bibliographic metadata and original synthesis only; no permission to train on linked full text is inferred."
+    },
+    {
+      "id": "arxiv:2606.21062",
+      "arxiv_id": "2606.21062",
+      "title": "The prescribed Hermitian-Yang-Mills flow I",
+      "authors": [
+        "Xiong, Zhiyao",
+        "Yang, Xaokui",
+        "Yau, Shing-Tung"
+      ],
+      "first_submitted": "2026-06-19",
+      "latest_revision": "2026-09-05",
+      "reviewed_version": "v2",
+      "url": "https://arxiv.org/abs/2606.21062v2",
+      "doi": "10.48550/arXiv.2606.21062",
+      "verified_on": "2026-09-09",
+      "recency": "revised-in-trailing-week",
+      "publication_status": "preprint; peer-review status not established in this sweep",
+      "evidence_level": "literature",
+      "review_depth": "Abstract and submission history",
+      "source_claim": "The prescribed Hermitian-Yang-Mills flow paper establishes convergence for a class of prescribed Hermitian tensors; a parabolic comparison principle supplies the uniform C0 estimate.",
+      "limits": "This is a flow of Hermitian metrics on holomorphic bundles, not Wilson lattice gradient flow. Read the precise tensor and manifold assumptions before importing a comparison principle. Version 2 is dated 5 September; version 1 is from June.",
+      "tags": [
+        "yang-mills-flow",
+        "parabolic",
+        "comparison-principle"
+      ],
+      "abstract_page_sha256": "486c85fb8b7b5ed192a38759dc73e4aa57487be039590c1d8c0afc8dff40cbc0",
+      "reviewed_full_text_sha256": "7e7ad5d1fef2e606ec906f2d40edb7f9580211571e59a51302f06a567276736c",
+      "reuse": "Bibliographic metadata and original synthesis only; no permission to train on linked full text is inferred."
+    },
+    {
+      "id": "arxiv:2609.04423",
+      "arxiv_id": "2609.04423",
+      "title": "On Quasiparticles within the Refined Gribov-Zwanziger Model",
+      "authors": [
+        "Garcia, Felipe F.",
+        "Capri, Marcio A. L.",
+        "Mintz, Bruno W."
+      ],
+      "first_submitted": "2026-09-03",
+      "latest_revision": "2026-09-03",
+      "reviewed_version": "v1",
+      "url": "https://arxiv.org/abs/2609.04423v1",
+      "doi": "10.48550/arXiv.2609.04423",
+      "verified_on": "2026-09-09",
+      "recency": "new-in-trailing-week",
+      "publication_status": "preprint; peer-review status not established in this sweep",
+      "evidence_level": "literature",
+      "review_depth": "Abstract and submission history",
+      "source_claim": "The refined Gribov-Zwanziger effective model is reexamined through PT symmetry, with a proposed interpretation of quadratic excitations in the real-mass-pole case.",
+      "limits": "An effective gauge-fixed propagator and real poles do not establish reflection positivity for gauge-invariant Wilson observables, OS reconstruction, or a physical mass gap.",
+      "tags": [
+        "yang-mills",
+        "reflection-positivity",
+        "effective-models"
+      ],
+      "abstract_page_sha256": "ffa44376c2a8286387edbdfcfbda4338224a2bf0cf45e1e3715bf01cc1af8b10",
+      "reviewed_full_text_sha256": null,
+      "reuse": "Bibliographic metadata and original synthesis only; no permission to train on linked full text is inferred."
+    }
+  ]
+}
