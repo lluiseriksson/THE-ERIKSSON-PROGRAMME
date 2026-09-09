@@ -8,6 +8,11 @@ from pathlib import Path
 import re
 import subprocess
 
+try:
+    from .surface_eol_hashes import sha256_variants
+except ImportError:  # Direct script / historical top-level imports.
+    from surface_eol_hashes import sha256_variants
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "certify_bulk_arb.py"
@@ -50,8 +55,8 @@ def _blob(relative: str) -> bytes:
 def validate() -> dict[str, object]:
     script_bytes = SCRIPT.read_bytes()
     transcript_bytes = TRANSCRIPT.read_bytes()
-    assert hashlib.sha256(script_bytes).hexdigest() == SCRIPT_SHA256
-    assert hashlib.sha256(transcript_bytes).hexdigest() == TRANSCRIPT_SHA256
+    assert SCRIPT_SHA256 in sha256_variants(SCRIPT)
+    assert TRANSCRIPT_SHA256 in sha256_variants(TRANSCRIPT)
     assert hashlib.sha256(script_bytes.replace(b"\r\n", b"\n")).hexdigest() == (
         SCRIPT_LF_SHA256
     )
@@ -88,7 +93,9 @@ def validate() -> dict[str, object]:
     return {
         "beta_boxes": len(rows),
         "t_boxes": 592_068,
-        "transcript_sha256": TRANSCRIPT_SHA256,
+        "transcript_sha256": hashlib.sha256(transcript_bytes).hexdigest(),
+        "recorded_transcript_sha256": TRANSCRIPT_SHA256,
+        "transcript_lf_sha256": TRANSCRIPT_LF_SHA256,
     }
 
 

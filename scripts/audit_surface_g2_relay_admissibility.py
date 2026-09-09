@@ -15,7 +15,7 @@ import json
 import math
 import re
 from fractions import Fraction
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 
 from flint import arb, ctx
 
@@ -29,6 +29,19 @@ EXPECTED_OWNER_COUNT = 501
 EXPECTED_TERMINAL_FINGERPRINT = (
     "86029ed96f88c53fd0fe18769e33577d4eee56aed553f36943dd490f09b7ae80"
 )
+
+
+def archive_path(relative: str) -> Path:
+    """Resolve historical slash styles without rewriting the recorded identity."""
+    normalized = relative.replace("\\", "/")
+    parts = normalized.split("/")
+    if (not relative or PureWindowsPath(relative).drive
+            or normalized.startswith("/") or any(p in ("", ".", "..") for p in parts)):
+        raise ValueError(f"invalid repository-relative artifact path: {relative!r}")
+    path = ROOT.joinpath(*parts)
+    if not path.resolve().is_relative_to(ROOT.resolve()):
+        raise ValueError(f"artifact path escapes repository: {relative!r}")
+    return path
 
 
 def sha256(path: Path) -> str:
@@ -161,7 +174,7 @@ def output_groups(manifest: dict) -> list[tuple[str, dict, dict]]:
             replay = by_path.get(path[:-4] + "_rerun.txt") \
                 if path.endswith(".txt") else None
             if replay is not None:
-                paired.append((Path(path).stem, [item, replay]))
+                paired.append((PureWindowsPath(path).stem, [item, replay]))
         if paired:
             groups.extend((name, pair) for name, pair in paired)
         else:
@@ -188,13 +201,16 @@ def output_groups(manifest: dict) -> list[tuple[str, dict, dict]]:
 
 def verify_outputs(production: dict, replay: dict) -> list[str]:
     reasons = []
-    pp, rp = ROOT / production["path"], ROOT / replay["path"]
+    try:
+        pp, rp = archive_path(production["path"]), archive_path(replay["path"])
+    except ValueError:
+        return ["invalid_output_path"]
     if not pp.is_file() or not rp.is_file():
         return ["production_or_replay_file_missing"]
     if pp.read_bytes() != rp.read_bytes():
         reasons.append("production_replay_byte_mismatch")
     for item in (production, replay):
-        path = ROOT / item["path"]
+        path = archive_path(item["path"])
         recorded = item.get("sha256")
         recorded_lf = item.get("sha256_lf")
         if (recorded
@@ -330,7 +346,7 @@ def terminal_fingerprint(units: list[dict], ownership: list[dict]) -> str:
             digest.update(relative.encode("utf-8"))
             digest.update(b"\0")
             digest.update(
-                (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
+                archive_path(relative).read_bytes().replace(b"\r\n", b"\n")
             )
             digest.update(b"\0")
     return digest.hexdigest()
@@ -366,10 +382,13 @@ def audit_summary() -> dict:
             continue
         for group_name, production, replay in groups:
             reasons = verify_outputs(production, replay)
-            production_path = ROOT / production["path"]
-            parsed = (parse_transcript(production_path)
-                      if production_path.is_file()
-                      else {"ok": False, "reasons": ["no_production_transcript"]})
+            try:
+                production_path = archive_path(production["path"])
+                parsed = (parse_transcript(production_path)
+                          if production_path.is_file()
+                          else {"ok": False, "reasons": ["no_production_transcript"]})
+            except ValueError:
+                parsed = {"ok": False, "reasons": ["invalid_output_path"]}
             reasons.extend(parsed.get("reasons", []))
             units.append({"manifest": path.name, "unit": group_name,
                           "status": manifest.get("status"),

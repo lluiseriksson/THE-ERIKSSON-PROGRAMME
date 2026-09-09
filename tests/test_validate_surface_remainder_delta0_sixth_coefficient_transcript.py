@@ -14,8 +14,24 @@ SPEC.loader.exec_module(MOD)
 
 def test_authoritative_sixth_head_transcript_validates():
     result = MOD.validate()
-    assert result["raw_sha256"] == \
-        "27725eaac35f1b5d29c556cbb188dbda24311b2e930825de9cb6681d1eeeec9c"
+    assert result["raw_sha256"] in {
+        "27725eaac35f1b5d29c556cbb188dbda24311b2e930825de9cb6681d1eeeec9c",
+        "ee5fb3edfda129a5c0177577032ac8f307418ae64ffe1088b5b4675a87cf5556",
+    }
+    assert result["lf_sha256"] == \
+        "ee5fb3edfda129a5c0177577032ac8f307418ae64ffe1088b5b4675a87cf5556"
+
+
+@pytest.mark.parametrize("ending,expected_raw", [
+    (b"\n", "ee5fb3edfda129a5c0177577032ac8f307418ae64ffe1088b5b4675a87cf5556"),
+    (b"\r\n", "27725eaac35f1b5d29c556cbb188dbda24311b2e930825de9cb6681d1eeeec9c"),
+])
+def test_sixth_head_reports_actual_bytes_and_fixed_lf_digest(tmp_path, ending, expected_raw):
+    path = tmp_path / "sixth-head.txt"
+    lf = MOD.TRANSCRIPT.read_bytes().replace(b"\r\n", b"\n")
+    path.write_bytes(lf.replace(b"\n", ending))
+    result = MOD.validate(path)
+    assert result["raw_sha256"] == expected_raw
     assert result["lf_sha256"] == \
         "ee5fb3edfda129a5c0177577032ac8f307418ae64ffe1088b5b4675a87cf5556"
 
