@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalComplexDefectLayer
+
+#print axioms YangMills.RG.cmp116SourcePi4ForwardWalkActive
+#print axioms YangMills.RG.cmp116SourcePi4TerminalComplexDefectLayer
+#print axioms YangMills.RG.cmp116SourcePi4TerminalComplexDefectLayer_apply_eq_zero_of_not_mem_core
+#print axioms YangMills.RG.sum_cmp116SourcePi4TerminalComplexDefectLayer

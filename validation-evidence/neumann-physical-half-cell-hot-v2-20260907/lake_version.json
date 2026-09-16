@@ -1,0 +1,1 @@
+{"command": ["lake", "--version"], "cwd": "/content/hrpoly-neumann-coordinate-precision-diagnostic-v1", "exit": 0, "log_sha256": "9f4a3130a140a735d63f1028a8437b9eb7a7b0fcea54f373c31fadd0fe5f43c6", "seconds": 0.06428840700027649, "stage": "lake_version", "timed_out": false, "timeout_seconds": 120}

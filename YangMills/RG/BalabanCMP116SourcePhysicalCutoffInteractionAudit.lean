@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourcePhysicalCutoffInteraction
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.ae_interactionExponent_le_sourcePhysicalAlpha5_of_potential_cutoffSupport

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedOwnerDecayRescaling
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparated_exponentialKernelBound_rescaleOwner

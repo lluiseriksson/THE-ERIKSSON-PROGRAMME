@@ -1,0 +1,7 @@
+'YangMills.RG.neumannOrbitFalse_periodQuotient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannOrbitTrue_periodQuotient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannOrbitFalse_periodRemainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannOrbitTrue_periodRemainder' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannImageIntervalFamily_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannImageIntervalFamily_surjective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannImageIntervalFamily_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]

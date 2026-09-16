@@ -1,0 +1,13 @@
+{
+  "bundle_revision": "eq359-c6d-evidence-bundle-v1",
+  "members": {
+    "hrpoly-c6d-eq359-cross-evidence.tar.gz": {
+      "sha256": "4ecf337a69b34eec124b8d8b0bb18aec3606fac3a848b9e2c549510485906c9b",
+      "size": 6709
+    },
+    "hrpoly-eq359-real-slice-evidence.tar.gz": {
+      "sha256": "f7838e80d698db73af7bc480da8e687e527bb8209d5509cfd3060804b4e7925c",
+      "size": 185378
+    }
+  }
+}

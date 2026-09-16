@@ -1,0 +1,3 @@
+import YangMills.RG.FinitePiLpTypedKernelDistanceRescaling
+
+#print axioms YangMills.RG.finitePiLpTypedExponentialKernelBound_rescale_dist

@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalReflectionRepresentation
+
+/-!
+# Compiler-verified axiom audit for the physical canonical CMP89 rectangle gate
+
+Cold-sealed at source checkpoint `cdd859ba99671e83a1ef2b3d8119a4e376a97ced`;
+see Verification Ledger Addendum 1003.
+-/
+
+namespace YangMills.RG
+
+#print axioms cmp89Eq248PhysicalFullLatticeGreenRealAction
+#print axioms CMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalReflectionRepresentation
+#print axioms cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalReflectionRepresentation_eq_series
+
+end YangMills.RG

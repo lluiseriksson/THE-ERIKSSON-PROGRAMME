@@ -1,0 +1,22 @@
+import YangMills.RG.BalabanCMP89SourceNeumannRegionalGaugePrecision
+
+/-!
+# Axiom audit for the CMP89 regional Neumann gauge precision
+
+Compiler-verified in the same fresh Colab checkout as the focal module.
+-/
+
+namespace YangMills.RG
+
+#print axioms inner_cmp89SourceNeumannRegionalGaugePrecision
+#print axioms cmp89SourceNeumannRegionalGaugePrecision_isSymmetric
+#print axioms isCoerciveCLM_cmp89SourceNeumannRegionalGaugePrecision
+#print axioms cmp89SourceNeumannRegionalGaugePrecision_comp_green
+#print axioms cmp89SourceNeumannRegionalGreen_comp_gaugePrecision
+#print axioms inner_cmp89SourceRetainedNeumannPrefixGaugePrecision
+#print axioms cmp89SourceRetainedNeumannPrefixGaugePrecision_isSymmetric
+#print axioms isCoerciveCLM_cmp89SourceRetainedNeumannPrefixGaugePrecision
+#print axioms cmp89SourceRetainedNeumannPrefixGaugePrecision_comp_green
+#print axioms cmp89SourceRetainedNeumannPrefixGreen_comp_gaugePrecision
+
+end YangMills.RG

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80GlobalPotentialLinearGrowth
+
+#print axioms YangMills.RG.cmp102Eq80GlobalPotential_hasFDerivAt_zero_of_linearGrowth

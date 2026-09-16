@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceTargetCharacterDictionary
+
+#print axioms YangMills.RG.cmp99FlatFourierMode_eq_fineTargetAliasPhase_mul_coarseMode
+#print axioms YangMills.RG.cmp99FlatFourierMode_eq_owned_fineTargetAliasPhase_mul_coarseMode

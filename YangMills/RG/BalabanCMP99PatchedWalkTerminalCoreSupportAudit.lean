@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99PatchedWalkTerminalCoreSupport
+
+#print axioms YangMills.RG.CMP99GeneralizedWalk.terminalDomain
+#print axioms YangMills.RG.CMP99GeneralizedWalk.terminalDomain_nil
+#print axioms YangMills.RG.CMP99GeneralizedWalk.terminalDomain_cons
+#print axioms YangMills.RG.CMP99GeneralizedWalk.term_apply_eq_zero_of_not_mem_terminalCore
+#print axioms YangMills.RG.cmp99PhysicalPatchHead_apply_eq_zero_of_not_mem_core
+#print axioms YangMills.RG.cmp99PhysicalPatchContinuation_apply_eq_zero_of_not_mem_core
+#print axioms YangMills.RG.cmp99PhysicalPatchWalk_term_apply_eq_zero_of_not_mem_terminalCore

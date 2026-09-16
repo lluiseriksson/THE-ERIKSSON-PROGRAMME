@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99ComplexFineWalkLayerExpansion
+
+#print axioms YangMills.RG.CMP99SourcePi4FineWalkIndex
+#print axioms YangMills.RG.cmp99SourcePi4FineWalkIndex.walk
+#print axioms YangMills.RG.cmp99SourcePi4FineWalkIndex.active
+#print axioms YangMills.RG.cmp99SourcePi4FineWalkIndex.operator
+#print axioms YangMills.RG.cmp99SourcePi4ComplexFineWalkTerm
+#print axioms YangMills.RG.cmp99SourcePi4ComplexFineWalkTerm_apply
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceLayer_eq_sum_fineWalkTerms
+#print axioms YangMills.RG.cmp99SourcePi4ComplexCoarseFineWalkDefectTerm
+#print axioms YangMills.RG.cmp99SourcePi4ComplexCoarseRelativeDefectLayer_eq_sum_fineWalkTerms

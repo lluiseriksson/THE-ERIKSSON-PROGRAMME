@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99Eq351PhysicalComplexOrientedPerturbation
+
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_pos
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_neg
+#print axioms YangMills.RG.cmp99Eq351PhysicalComplexOrientedPerturbation_realSlice

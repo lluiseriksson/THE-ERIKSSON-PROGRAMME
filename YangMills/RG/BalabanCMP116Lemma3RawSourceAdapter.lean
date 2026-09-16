@@ -135,6 +135,135 @@ theorem balabanCMP116Lemma3Weight_domination_of_sourceMetric_domination_and_rate
     (metric_comparison_of_sourceMetric_domination_and_rate_margin
       Λ sourceMetric_domination rate_margin kappa_nonneg)
 
+/-- Convention-robust bridge from an unshifted source metric to the shifted
+Appendix-F weight.
+
+When the source metric vanishes on singleton polymers, the valid geometric
+comparison is `d_M(X) ≤ sourceMetric X`, not
+`d_M(X) + 1 ≤ sourceMetric X`.  The missing unit is paid exactly by the
+multiplicative factor `exp kappa`; the source decay itself remains unshifted. -/
+theorem balabanCMP116Lemma3Weight_le_exp_mul_appendixFHoleExpWeight_of_unshiftedSourceMetric
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    (Λ : Finset (OmegaPolymerType HF z))
+    {sourceMetric : OmegaPolymerType HF z → ℕ}
+    {blockScale : ℕ}
+    {delta kappaSource kappa : ℝ}
+    (sourceMetric_domination :
+      ∀ X, X ∈ Λ →
+        (discreteModifiedMetric HF X.val : ℝ) ≤
+          (sourceMetric X : ℝ))
+    (rate_margin :
+      kappa ≤
+        balabanCMP116Lemma3DecayRate blockScale delta kappaSource)
+    (kappa_nonneg : 0 ≤ kappa) :
+    ∀ X, X ∈ Λ →
+      balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetric X ≤
+        Real.exp kappa *
+          appendixFHoleExpWeight HF kappa X.val := by
+  intro X hX
+  let dM : ℝ := (discreteModifiedMetric HF X.val : ℝ)
+  let m : ℝ := (sourceMetric X : ℝ)
+  let sourceRate : ℝ :=
+    balabanCMP116Lemma3DecayRate blockScale delta kappaSource
+  have hdM : 0 ≤ dM := Nat.cast_nonneg _
+  have hm : 0 ≤ m := Nat.cast_nonneg _
+  have hmetric : kappa * dM ≤ sourceRate * m := by
+    calc
+      kappa * dM ≤ kappa * m :=
+        mul_le_mul_of_nonneg_left
+          (by simpa [dM, m] using sourceMetric_domination X hX)
+          kappa_nonneg
+      _ ≤ sourceRate * m :=
+        mul_le_mul_of_nonneg_right rate_margin hm
+  have hexp :
+      Real.exp (-(sourceRate * m)) ≤
+        Real.exp (-(kappa * dM)) :=
+    Real.exp_le_exp.mpr (neg_le_neg hmetric)
+  have hshift :
+      Real.exp (-(kappa * dM)) =
+        Real.exp kappa *
+          Real.exp
+            (-(kappa *
+              (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)))) := by
+    rw [← Real.exp_add]
+    congr 1
+    simp only [Nat.cast_add, Nat.cast_one]
+    dsimp [dM]
+    ring
+  unfold balabanCMP116Lemma3Weight appendixFHoleExpWeight
+  simpa [sourceRate, m] using hexp.trans_eq hshift
+
+/-- Scaled, convention-robust bridge from a shifted source metric to the
+Appendix-F modified metric.
+
+The geometric comparison is allowed to lose a fixed factor `metricScale`:
+
+`d_M(X) + 1 ≤ metricScale * (sourceMetric X + 1)`.
+
+If `metricScale * kappa` fits below the source decay rate, the one-unit
+source normalization costs exactly `exp (metricScale * kappa)` in amplitude.
+This is the form needed by the literal dimension-four equation-(2.30)
+constant `metricScale = 24`. -/
+theorem balabanCMP116Lemma3Weight_le_scaledExp_mul_appendixFHoleExpWeight
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    (Λ : Finset (OmegaPolymerType HF z))
+    {sourceMetric : OmegaPolymerType HF z → ℕ}
+    {blockScale : ℕ}
+    {delta kappaSource metricScale kappa : ℝ}
+    (sourceMetric_domination :
+      ∀ X, X ∈ Λ →
+        (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+          metricScale * ((sourceMetric X : ℝ) + 1))
+    (rate_margin :
+      metricScale * kappa ≤
+        balabanCMP116Lemma3DecayRate blockScale delta kappaSource)
+    (kappa_nonneg : 0 ≤ kappa) :
+    ∀ X, X ∈ Λ →
+      balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetric X ≤
+        Real.exp (metricScale * kappa) *
+          appendixFHoleExpWeight HF kappa X.val := by
+  intro X hX
+  let dM : ℝ := (discreteModifiedMetric HF X.val : ℝ)
+  let m : ℝ := (sourceMetric X : ℝ)
+  let sourceRate : ℝ :=
+    balabanCMP116Lemma3DecayRate blockScale delta kappaSource
+  have hm : 0 ≤ m := Nat.cast_nonneg _
+  have hscaled :
+      kappa * (dM + 1) ≤
+        metricScale * kappa + sourceRate * m := by
+    have hgeom :
+        kappa * (dM + 1) ≤
+          kappa * (metricScale * (m + 1)) := by
+      apply mul_le_mul_of_nonneg_left _ kappa_nonneg
+      simpa [dM, m, Nat.cast_add, Nat.cast_one] using
+        sourceMetric_domination X hX
+    have hrate :
+        (metricScale * kappa) * m ≤ sourceRate * m := by
+      exact mul_le_mul_of_nonneg_right rate_margin hm
+    nlinarith
+  have hexp :
+      Real.exp (-(sourceRate * m)) ≤
+        Real.exp
+          (metricScale * kappa - kappa * (dM + 1)) := by
+    apply Real.exp_le_exp.mpr
+    linarith
+  have hsplit :
+      Real.exp
+          (metricScale * kappa - kappa * (dM + 1)) =
+        Real.exp (metricScale * kappa) *
+          Real.exp (-(kappa * (dM + 1))) := by
+    rw [← Real.exp_add]
+    congr 1
+  unfold balabanCMP116Lemma3Weight appendixFHoleExpWeight
+  simpa [sourceRate, m, dM, Nat.cast_add, Nat.cast_one] using
+    hexp.trans_eq hsplit
+
 namespace PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
 /-- Add the final CMP116 Lemma 3 estimate to the separated Gaussian,

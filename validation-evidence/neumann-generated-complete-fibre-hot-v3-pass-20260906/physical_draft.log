@@ -1,0 +1,8 @@
+'YangMills.RG.neumann_mem_iteratedLift_iff_terminalOwner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannGeneratedBlockSitesToActiveFibre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv_integerCoordinates' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.sum_neumannGeneratedCompleteFibre_eq_offsets' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.sum_neumannGeneratedOwnerIndicator_eq_offsets' depends on axioms: [propext, Classical.choice, Quot.sound]

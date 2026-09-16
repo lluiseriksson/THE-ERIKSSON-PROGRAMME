@@ -1,0 +1,86 @@
+{
+  "cold": {
+    "audits": {
+      "fibre_audit": {
+        "YangMills.RG.neumannGeneratedBlockSitesToActiveFibre": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv_integerCoordinates": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumann_mem_iteratedLift_iff_terminalOwner": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.sum_neumannGeneratedCompleteFibre_eq_offsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.sum_neumannGeneratedOwnerIndicator_eq_offsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "b71688ef38cc9e264703d6c9a8e6b313cb81b0d2c926afd134d88989b1e54906",
+    "evidence_json_payload_sha256": "61ae662c0642c254d03c62deef06b77fc2844372313caa0ca2cdeec5c993d6a0",
+    "production_outputs": {
+      "NeumannGeneratedCompleteFibre.olean": "3ae9c726f72c33ffc2afe176d801714f5eb2f4eaf117dbc26fba6f245d31c9e2"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannGeneratedCompleteFibre"
+        ],
+        "cwd": "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "fibre_focal.log",
+        "output_sha256": "75be001faf8104d86c40bd0176b98bfcc18f08d8eae547c3d20ff4ba96bbcd65",
+        "seconds": 1413.9239458380002,
+        "stage": "fibre_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannGeneratedCompleteFibreAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "fibre_audit.log",
+        "output_sha256": "0fd1d08cc841316f45d9cd78e24b97c1ecfba84a4bc5cc2ce1a54da3b8179c2f",
+        "seconds": 5.893478208999568,
+        "stage": "fibre_audit"
+      }
+    ],
+    "runner_rev": "neumann-complete-fibre-promoted-cold-v1",
+    "source_sha": "7f7455b286da5809a0ee64a1511684f887cf8a88",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "cold_seal": true,
+  "corrected_reader_sha256": "43bd4a309a8696134b1dfc48bcc7014dc0a023f93c1400a3eb90cb02d3c87c22",
+  "inner_sha256": "a156f9b7be82c3248172e7217bd83f905171e5a1ce3a2a75c10529d5600bf702",
+  "no_compiler_reexecution": true,
+  "original_error": "OWNER_CONTRACT=physical_diagnostic_source",
+  "original_launch_status": "FAIL",
+  "original_outer_sha256": "e0516b0fbef4f87ce98700c96e9695a9c19557ac2484dce14b1cf4c84183d48c",
+  "scope": "constructed complete active fibre, offsets and integer-coordinate sum dictionary; not regional inverse, uniform B0 or window15",
+  "source": "7f7455b286da5809a0ee64a1511684f887cf8a88",
+  "status": "PASS_AFTER_READER_CORRECTION"
+}

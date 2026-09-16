@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-generated-counting-reflection-diagnostic-v2"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "7090bc95ae8fd3f65526061b9723936f8093e5932bd23c89b02cecb7ecd0aca6", "seconds": 9.519727046999833, "stage": "clone"}

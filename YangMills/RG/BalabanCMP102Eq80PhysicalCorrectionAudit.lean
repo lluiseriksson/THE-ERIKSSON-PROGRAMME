@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCorrection
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_mem_ball
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_eq
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_zero
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalGlobalPotential
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalGlobalPotential_zero

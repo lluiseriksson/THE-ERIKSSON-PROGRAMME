@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedNestedRestrictionAdjoint
+
+#print axioms YangMills.RG.cmp99NestedActiveRegionExtension
+#print axioms YangMills.RG.cmp99NestedActiveRegionRestriction_adjoint_eq_extension

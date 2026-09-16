@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116CarrierAnchoredLocalizationRegrouping
+
+#print axioms YangMills.RG.cmp116Carrier_subset_carrierAnchoredLocalizationDomain
+#print axioms YangMills.RG.cmp116CarrierAnchoredLocalizationDomain_subset
+#print axioms YangMills.RG.cmp116CarrierAnchoredLocalizationDomain_eq_confinedComponent
+#print axioms YangMills.RG.cmp116CarrierAnchoredLocalizationDomain_walkConnected
+#print axioms YangMills.RG.cmp116_sum_eq_sum_carrierAnchoredFiberCoefficient

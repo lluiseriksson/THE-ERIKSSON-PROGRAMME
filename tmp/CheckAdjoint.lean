@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceWeightedRegionalTower
+#check ContinuousLinearMap.adjoint_comp
+#check ContinuousLinearMap.adjoint_id
+#check ContinuousLinearMap.id_comp
+#check ContinuousLinearMap.comp_id

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalTwoFieldExponential
+
+#print axioms YangMills.RG.norm_exp_sub_exp_le_cmp102ExpLipschitzBudget
+#print axioms YangMills.RG.orientedWilsonGenerator_sub
+#print axioms YangMills.RG.norm_orientedWilsonGenerator_sub_le_sourceSupNorm
+#print axioms YangMills.RG.norm_physicalMatrixExp_orientedGenerator_sub_le

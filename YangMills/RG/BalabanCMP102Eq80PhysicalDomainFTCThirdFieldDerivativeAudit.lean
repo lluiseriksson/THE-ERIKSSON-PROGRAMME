@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCThirdFieldDerivative
+
+#print axioms
+  YangMills.RG.cmp102PartialPropagatorJetSecondFieldDerivative_hasFDerivAt_nested
+#print axioms
+  YangMills.RG.norm_cmp102PartialPropagatorJetThirdFieldDerivativeNested_eq
+#print axioms
+  YangMills.RG.cmp102AffinePropagatorJetFTCSecondFieldDerivative_hasFDerivAt
+#print axioms
+  YangMills.RG.norm_cmp102AffinePropagatorJetFTCThirdFieldDerivative_le
+#print axioms
+  YangMills.RG.norm_iteratedFDeriv_three_cmp102AffinePropagatorJetFTC_eq

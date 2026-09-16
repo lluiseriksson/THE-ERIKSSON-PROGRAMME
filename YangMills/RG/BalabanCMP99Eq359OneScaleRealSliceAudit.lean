@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99Eq359OneScaleRealSlice
+
+#print axioms YangMills.RG.cmp99SUNHolonomyToSpecialLinear
+#print axioms YangMills.RG.cmp99SUNHolonomyToSpecialLinear_apply
+#print axioms YangMills.RG.cmp99ComplexAdjointBlockAverageCLM_realSlice
+#print axioms YangMills.RG.cmp99ComplexAdjointBlockStarSynthesisCLM_realSlice

@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSignedLargeBlockPartition
+
+/-!
+# Audit: signed source-separated CMP99 large-block partition
+-/
+
+#print axioms YangMills.RG.mem_cmp95RescaledPeriodicTensorActiveCellWindow_of_signed_ne_zero
+#print axioms YangMills.RG.cmp99SourceSeparatedSignedLargeBlockCutoff
+#print axioms YangMills.RG.sum_cmp99SourceSeparatedSignedLargeBlockCutoff_sq
+#print axioms YangMills.RG.cmp99SourceSeparatedSignedLargeBlockSquarePartition
+#print axioms YangMills.RG.cmp99SourceSeparatedSignedLargeBlockSlope_mul_precisionRange
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSignedLargeBlockSquarePartition_value_sub_le
+#print axioms YangMills.RG.cmp99SourceSeparatedSignedLargeBlockActiveCells
+#print axioms YangMills.RG.cmp99SourceSeparatedSignedLargeBlockActiveCells_subset
+#print axioms YangMills.RG.card_cmp99SourceSeparatedSignedLargeBlockActiveCells_le_sixteen

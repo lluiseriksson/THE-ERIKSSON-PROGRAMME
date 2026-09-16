@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceTerminalCoercivity
+
+
+namespace YangMills.RG
+
+#print axioms cmp99Eq360C6dSourceBaselinePhysicalCoercivity_pos
+#print axioms isCoerciveCLM_cmp99Eq360C6dSourceBaselinePrecision
+#print axioms isCoerciveCLM_cmp99Eq360C6dLocalizedRetainedSourceInput_baselinePhysicalPrecision
+
+end YangMills.RG

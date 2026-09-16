@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116Eq214PhysicalContourRealPart
+
+#print axioms YangMills.RG.cmp116Eq214ComplexQuadratic_re
+#print axioms YangMills.RG.cmp116Eq214ComplexMixed_re
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.correctionExponent_re_eq_realCorrectionExponent
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_weightProduct_eq_realCorrectionExponent

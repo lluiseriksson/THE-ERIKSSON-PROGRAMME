@@ -1,0 +1,4 @@
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean
+YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShiftAudit.lean
+docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md
+tmp/cmp89-integrand-one-coordinate-shift-promoted-paths.txt

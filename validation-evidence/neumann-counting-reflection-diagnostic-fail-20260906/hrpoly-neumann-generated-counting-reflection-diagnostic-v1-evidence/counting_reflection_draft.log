@@ -1,0 +1,34 @@
+tmp/NeumannGeneratedCountingMassReflectionDraft.lean:34:46: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  @Membership.mem (FinBox ?m.43 (?m.44 * ?m.45)) (Finset (FinBox ?m.43 (?m.44 * ?m.45))) SetLike.instMembership
+    (cmp99LiftActiveRegion ?OmegaCoarse).sites ?x
+in the target expression
+  @Membership.mem (FinBox d (cmp99RegionalLatticeSize M N (depth + 1)))
+    (Finset (FinBox d (cmp99RegionalLatticeSize M N (depth + 1)))) SetLike.instMembership
+    (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion (cmp99SourceFullActiveRegion d N) depth)).sites x
+
+case succ
+d M N : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero M
+inst✝ : NeZero N
+depth : ℕ
+ih :
+  ∀ (x : FinBox d (cmp99RegionalLatticeSize M N depth)),
+    x ∈ (cmp99IteratedLiftActiveRegion (cmp99SourceFullActiveRegion d N) depth).sites
+x : FinBox d (cmp99RegionalLatticeSize M N (depth + 1))
+⊢ x ∈ (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion (cmp99SourceFullActiveRegion d N) depth)).sites
+tmp/NeumannGeneratedCountingMassReflectionDraft.lean:55:8: warning: automatically included section variable(s) unused in theorem `_private.tmp.NeumannGeneratedCountingMassReflectionDraft.0.YangMills.RG.finBoxCast_reflection`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+'YangMills.RG.neumannGeneratedFullSiteReflectionDraft_involutive' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedTerminalOwner_reflection_draft' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.neumannGeneratedFullCountingMass_reflection_draft' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

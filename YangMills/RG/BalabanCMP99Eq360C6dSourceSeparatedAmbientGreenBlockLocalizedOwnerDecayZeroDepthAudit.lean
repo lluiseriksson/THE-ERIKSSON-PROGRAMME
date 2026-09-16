@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenBlockLocalizedOwnerDecayZeroDepth
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_zero_blockLocalizedSupBound

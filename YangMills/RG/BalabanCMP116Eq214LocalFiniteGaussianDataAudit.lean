@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq214LocalFiniteGaussianData
+
+#print axioms YangMills.RG.CMP116Eq214LocalFiniteGaussianData.toLocalAnalyticData_toAnalyticData_eq
+#print axioms YangMills.RG.CMP116Eq214LocalFiniteGaussianData.toLocalAnalyticData_term_eq_toFiniteGaussianData_term
+#print axioms YangMills.RG.CMP116Eq214LocalFiniteGaussianData.globalEval_localTerm_eq_toFiniteGaussianData_term

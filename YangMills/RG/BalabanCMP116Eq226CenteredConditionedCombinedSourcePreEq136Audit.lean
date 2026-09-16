@@ -1,0 +1,39 @@
+import YangMills.RG.BalabanCMP116Eq226CenteredConditionedCombinedSourcePreEq136
+import YangMills.RG.BalabanCMP116InteractingPhysicalPrecisionSourceAudit
+
+/-!
+The preceding assembler audit was compiler-verified at source checkpoint
+`7fb235a3c86d3077b3d978a24a5623cd562eef9c`.  The interacting-precision
+declarations below were compiler-verified from one fresh Colab CPU/high-RAM
+clone at source checkpoint `5b061eb968885f5d724dc3b9226ee593ddc5d0db`.
+
+The scalar-wall integration in the combined assembler was compiler-verified
+at source checkpoint `fbb2d47d5fbc0ccc4900c15b55cc210d9a8e0440` in durable
+GitHub Actions run `30965959088`; all eighteen declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+The generated localized carrier, root and covariance-lower certificate were
+compiler-verified at source checkpoint
+`fe9a2cd3e9344a5a63a0087f3e5009a56bf9644f` in durable GitHub Actions run
+`30962182007`; all eighteen declarations below use exactly
+`[propext, Classical.choice, Quot.sound]`.
+-/
+
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.total
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.residual
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.sourceRange_bound
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.finiteRange
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.coercivity_pos
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_coercive
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.K_comp_interactingCovariance
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedRegion
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedRegion_eq
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.localizedCoordinates_nonempty
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.conditionedRoot
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.conditionedCovariance_nondegenerate
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.E0
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.threshold
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.alpha
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.rootBound
+#print axioms YangMills.RG.CMP116CenteredConditionedCombinedSourceData.volumeRate
+#print axioms YangMills.RG.cmp116Eq226CenteredConditionedCombinedSourcePreEq136

@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannCanonicalPrecisionOffsetAction"], "cwd": "/content/hrpoly-neumann-canonical-precision-promoted-cold-v1", "exit": 0, "log_file": "canonical_precision_focal.log", "output_sha256": "4cc9b391016c2601a80c1a0844a949c95c302325acedd0db3e330f644af3d190", "seconds": 2366.193416338, "stage": "canonical_precision_focal"}

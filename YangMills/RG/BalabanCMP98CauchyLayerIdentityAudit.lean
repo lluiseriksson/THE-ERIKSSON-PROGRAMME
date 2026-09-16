@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP98CauchyLayerIdentity
+
+#print axioms YangMills.RG.cmp98LeftTrivializedCauchyLayer_eq_gadTerm

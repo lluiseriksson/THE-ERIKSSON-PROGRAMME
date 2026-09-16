@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicFixedPointSourceDerivative
+
+#print axioms YangMills.RG.cmp102IntrinsicPhysicalBackgroundCorrectionMapUncurry_eq
+#print axioms YangMills.RG.fderiv_cmp102IntrinsicPhysicalBackgroundCorrectionMapUncurry_apply
+#print axioms YangMills.RG.norm_fderiv_cmp102IntrinsicPhysicalBackgroundCorrectionMapUncurry_sub_apply_le_sourceBudget

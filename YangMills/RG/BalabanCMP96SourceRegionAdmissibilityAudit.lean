@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP96SourceRegionAdmissibility
+
+/-! Public oracle for the CMP96 source region admissibility predicate. -/
+
+namespace YangMills.RG
+
+#print axioms CMP96SourceRegionSeparated
+#print axioms CMP96SourceAdmissibleGlobalStratification
+#print axioms CMP96SourceAdmissibleGlobalStratification.empty
+#print axioms CMP96SourceAdmissibleGlobalStratification.fullUntilLast
+#print axioms CMP96SourceAdmissibleGlobalStratification.empty_regions
+#print axioms CMP96SourceAdmissibleGlobalStratification.fullUntilLast_regions_of_ne_last
+#print axioms CMP96SourceAdmissibleGlobalStratification.empty_ne_fullUntilLast
+#print axioms CMP96SourceAdmissibleGlobalStratification.global
+#print axioms CMP96SourceAdmissibleGlobalStratification.global_regions
+
+end YangMills.RG

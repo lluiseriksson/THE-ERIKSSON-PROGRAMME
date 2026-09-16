@@ -1,0 +1,3 @@
+import YangMills.RG.FinitePiLpSourceOverlapSum
+
+#print axioms YangMills.RG.finitePiLpExponentialKernelBound_sum_of_sourceOverlap

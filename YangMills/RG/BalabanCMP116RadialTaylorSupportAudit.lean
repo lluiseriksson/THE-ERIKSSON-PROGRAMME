@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116RadialTaylorSupport
+
+#print axioms YangMills.RG.cmp116EuclideanFDeriv_eq_zero_of_direction_vanishesOn
+#print axioms YangMills.RG.cmp116EuclideanHessian_eq_zero_of_right_vanishesOn
+#print axioms YangMills.RG.cmp116EuclideanHessian_eq_zero_of_left_vanishesOn
+#print axioms YangMills.RG.inner_cmp116RadialTaylorOperator_eq_zero_of_vanishesOn
+#print axioms YangMills.RG.cmp116RadialTaylorOperator_coordinateSupport

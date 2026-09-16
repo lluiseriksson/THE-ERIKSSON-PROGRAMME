@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99ComplexCoarseDefectWordExpansion
+
+#print axioms YangMills.RG.summable_norm_cmp99OrderedTupleProduct
+#print axioms YangMills.RG.tsum_pow_eq_tsum_cmp99OrderedTupleProduct
+#print axioms YangMills.RG.neg_cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect_pow_eq_tsum_words
+#print axioms YangMills.RG.neg_cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect_pow_eq_tsum_words_of_source

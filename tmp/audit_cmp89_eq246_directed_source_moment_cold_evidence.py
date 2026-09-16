@@ -1,0 +1,393 @@
+#!/usr/bin/env python3
+"""Fail-closed verifier for the cold CMP89 directed source-moment gate."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import tarfile
+
+
+EXPECTED_MATHLIB = "07642720480157414db592fa85b626dafb71355b"
+EXPECTED_TOOLCHAIN = "bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e"
+EXPECTED_CONFIGS = {
+    "cmp89-eq246-directed-source-moment-cold-v1": {
+        "source_sha": "6ae9648a61be6f5be62b351b2c0ab2da1c45cfe9",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedSourceMoment.lean":
+                "8ad29f284e6e0a321e55a4a607c8741549a52a60073a33e690a43f3365392300",
+            "YangMills/RG/BalabanCMP89Eq246DirectedSourceMomentAudit.lean":
+                "d6d92c3806739f36efed59ac8c49d86563ea90e8fd64314ab34b13379143e497",
+        },
+    },
+    "cmp89-eq246-directed-source-moment-cold-v2": {
+        "source_sha": "e8a1b6be6862256a75cf34f55dae94a48b2e1a37",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedSourceMoment.lean":
+                "4becef682d69d45714e70848afe7a561b287d42716ffc30972dfca4f0d8ece46",
+            "YangMills/RG/BalabanCMP89Eq246DirectedSourceMomentAudit.lean":
+                "d6d92c3806739f36efed59ac8c49d86563ea90e8fd64314ab34b13379143e497",
+        },
+        "queue": ["directed_source_moment_focal", "directed_source_moment_audit"],
+    },
+    "cmp89-eq246-directed-central-component-cold-v1": {
+        "source_sha": "76b64ebc1307c1445136941bdcf1c01ace2f4995",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedCentralComponent.lean":
+                "5242d30e29b7b2d0a16b8e35058cc7d84ca2411c78e34a99583ac8e93bb9c887",
+            "YangMills/RG/BalabanCMP89Eq246DirectedCentralComponentAudit.lean":
+                "a7f1ca53cca8f1d528a33b95eba5adcc2f51f795b75424dcddfa177d7bc79e58",
+        },
+        "queue": ["directed_central_component_focal", "directed_central_component_audit"],
+    },
+    "cmp89-eq246-directed-noncentral-component-cold-v1": {
+        "source_sha": "b90a58ddc8893f081ffccb1b6ad8409226075972",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralComponent.lean":
+                "6a1ecbb36d702026168529fb76916276a743acf3c974ff1b014a6be97e00e2a8",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralComponentAudit.lean":
+                "293053d7ad17ee38e220b26a3187c5eea9f40ab69fbc00961045cbf5c9c8e075",
+        },
+        "queue": [
+            "directed_noncentral_component_focal",
+            "directed_noncentral_component_audit",
+        ],
+    },
+    "cmp89-eq246-directed-noncentral-sum-cold-v1": {
+        "source_sha": "1f3bc9b0bb85016d1ebb96514b4da54f5e32b754",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralSum.lean":
+                "fee3a497bdfc100f93f77c4345cfd08bf54de0c124784067682b0d5b7ed9c938",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNoncentralSumAudit.lean":
+                "198162274f4f4178c4fef00cd611848fde7dc945edbaf1e7ad6b5e04b3f2ba74",
+        },
+        "queue": [
+            "directed_noncentral_sum_focal",
+            "directed_noncentral_sum_audit",
+        ],
+    },
+    "cmp89-eq246-directed-full-solution-sum-cold-v1": {
+        "source_sha": "a95ed996f0a60ed7101e7b99dbe8bf998da21c7d",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionSum.lean":
+                "0bb4f3f0e621a50b2d752fc92dba8f111da58b7a5c29f27d2413d09493607553",
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionSumAudit.lean":
+                "4b4ebee0f230d169200a9d784aeec1764beab7c4f31eae74fa8fd602c2e5e171",
+        },
+        "queue": [
+            "directed_full_solution_sum_focal",
+            "directed_full_solution_sum_audit",
+        ],
+    },
+    "cmp89-eq246-directed-normalized-full-solution-integral-cold-v1": {
+        "source_sha": "887a726b4dc2d79925a67d16e9be4db935139e4d",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedFullSolutionIntegral.lean":
+                "bd23ca39c21c7d3da31049a552010733961b9699c6ac1de6bd619954f15c1b0f",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedFullSolutionIntegralAudit.lean":
+                "43f801ecf440f85e1dbd21e804fcf66847d963e9e6e23efdf5d491eafb1e56df",
+        },
+        "queue": [
+            "directed_normalized_full_solution_integral_focal",
+            "directed_normalized_full_solution_integral_audit",
+        ],
+    },
+    "cmp89-eq246-directed-full-solution-integral-dictionary-cold-v1": {
+        "source_sha": "3b71da757fa69acfeb02312882b4d147fe1ff972",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean":
+                "7ba05690763cb42ab595f92df5263ca9c8d44c90b570ed2d494c96791848bb80",
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionaryAudit.lean":
+                "345947c2ffbc27ccf55a3e2a002008b54341282459a842a6457560b186a097cd",
+        },
+        "queue": [
+            "directed_full_solution_integral_dictionary_focal",
+            "directed_full_solution_integral_dictionary_audit",
+        ],
+    },
+    "cmp89-eq246-directed-full-solution-integral-dictionary-cold-v2": {
+        "source_sha": "7de43366df46de3cbfa7878ab42a63696796ab76",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean":
+                "d45e9207dc5a8bfdc93278cd07b3229715e1bcd1c507b658a657f5176fe61806",
+            "YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionaryAudit.lean":
+                "345947c2ffbc27ccf55a3e2a002008b54341282459a842a6457560b186a097cd",
+        },
+        "queue": [
+            "directed_full_solution_integral_dictionary_focal",
+            "directed_full_solution_integral_dictionary_audit",
+        ],
+    },
+    "cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v1": {
+        "source_sha": "98c8ba6e6a53c01442f6b43bd69bd82d81a746df",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel.lean":
+                "5a0de3e0a1704d2dfca40550c7cbcb4249423a6fa36b2fc952f802c38512b982",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernelAudit.lean":
+                "efe636469898034e98c75c01a622f4fbf53efcaeef66e172c496820d61759d56",
+        },
+        "queue": [
+            "directed_normalized_physical_fine_kernel_focal",
+            "directed_normalized_physical_fine_kernel_audit",
+        ],
+    },
+    "cmp89-eq246-directed-normalized-physical-fine-kernel-cold-v2": {
+        "source_sha": "1a53d2755b05419f2401c5d839fc9a6cffdd0c2d",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel.lean":
+                "c5c2ac76669a10dcb1e983d7f85fed7efb145787b7c8a348107586bbb4200d32",
+            "YangMills/RG/BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernelAudit.lean":
+                "efe636469898034e98c75c01a622f4fbf53efcaeef66e172c496820d61759d56",
+        },
+        "queue": [
+            "directed_normalized_physical_fine_kernel_focal",
+            "directed_normalized_physical_fine_kernel_audit",
+        ],
+        "prequeue_failure_stage": "lake_update",
+    },
+    "cmp89-eq246-full-solution-domain-cold-v1": {
+        "source_sha": "03dd11dac7be29e786261ef14683796099747231",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomain.lean":
+                "daf253d68199083ed3a71e2890db08b94d782222c9dfd69b28ff004c62bd60e2",
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomainAudit.lean":
+                "12d9c9525e0b2fbff6454a85288e8b025b2346319ca6c988f017f9e028181738",
+        },
+        "queue": [
+            "full_solution_domain_focal",
+            "full_solution_domain_audit",
+        ],
+    },
+    "cmp89-eq246-alias-cycle-transport-cold-v1": {
+        "source_sha": "e8383c00d2cba1c9a704be1d1293e0f5c2ea13ec",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransport.lean":
+                "215c664842abca04c0ee068a0d9949a03bee3db141e6160ea6a71da3f8264946",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransportAudit.lean":
+                "69f73e6d66806fea6aa538a3d2cb4d26ce9158a2c7b162a0ff5ae0eb3fe4cb88",
+        },
+        "queue": [
+            "alias_cycle_transport_focal",
+            "alias_cycle_transport_audit",
+        ],
+    },
+    "cmp89-eq246-alias-precision-uniqueness-cold-v1": {
+        "source_sha": "23be18e4fa7628ff553c9dc7d80d9a6dc5462c98",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniqueness.lean":
+                "2f3c56ca5fc423d2ffb0d1d42f6e5f67b9a6fb220da4422fe706381771127411",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniquenessAudit.lean":
+                "34f662592715346047d55a979e77ccf8d9dab5fe94078ee546b3be7625793bf9",
+        },
+        "queue": [
+            "alias_precision_uniqueness_focal",
+            "alias_precision_uniqueness_audit",
+        ],
+    },
+    "cmp89-eq246-domain-cycle-uniqueness-cold-v1": {
+        "source_sha": "b78bbe6f8ae609f88c7396e58a6a4527945f427f",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomain.lean":
+                "daf253d68199083ed3a71e2890db08b94d782222c9dfd69b28ff004c62bd60e2",
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomainAudit.lean":
+                "12d9c9525e0b2fbff6454a85288e8b025b2346319ca6c988f017f9e028181738",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransport.lean":
+                "215c664842abca04c0ee068a0d9949a03bee3db141e6160ea6a71da3f8264946",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransportAudit.lean":
+                "69f73e6d66806fea6aa538a3d2cb4d26ce9158a2c7b162a0ff5ae0eb3fe4cb88",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniqueness.lean":
+                "2f3c56ca5fc423d2ffb0d1d42f6e5f67b9a6fb220da4422fe706381771127411",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniquenessAudit.lean":
+                "34f662592715346047d55a979e77ccf8d9dab5fe94078ee546b3be7625793bf9",
+        },
+        "queue": [
+            "full_solution_domain_focal",
+            "full_solution_domain_audit",
+            "alias_cycle_transport_focal",
+            "alias_cycle_transport_audit",
+            "alias_precision_uniqueness_focal",
+            "alias_precision_uniqueness_audit",
+        ],
+    },
+    "cmp89-eq246-domain-cycle-uniqueness-cold-v2": {
+        "source_sha": "df364a3c629004ff7ca1062247cfe488b0579f2e",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomain.lean":
+                "daf253d68199083ed3a71e2890db08b94d782222c9dfd69b28ff004c62bd60e2",
+            "YangMills/RG/BalabanCMP89Eq246FullSolutionDomainAudit.lean":
+                "12d9c9525e0b2fbff6454a85288e8b025b2346319ca6c988f017f9e028181738",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransport.lean":
+                "8f6ffae2b417589d4c61aa00320666bd72fd1be0b4756580afb8508304ce13f7",
+            "YangMills/RG/BalabanCMP89Eq246AliasCycleTransportAudit.lean":
+                "69f73e6d66806fea6aa538a3d2cb4d26ce9158a2c7b162a0ff5ae0eb3fe4cb88",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniqueness.lean":
+                "2f3c56ca5fc423d2ffb0d1d42f6e5f67b9a6fb220da4422fe706381771127411",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionUniquenessAudit.lean":
+                "34f662592715346047d55a979e77ccf8d9dab5fe94078ee546b3be7625793bf9",
+        },
+        "queue": [
+            "full_solution_domain_focal",
+            "full_solution_domain_audit",
+            "alias_cycle_transport_focal",
+            "alias_cycle_transport_audit",
+            "alias_precision_uniqueness_focal",
+            "alias_precision_uniqueness_audit",
+        ],
+    },
+    "cmp89-eq246-solution-cycle-cold-v1": {
+        "source_sha": "e9f8f326262588c2c12ee98daa8e276cb0b63001",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionCycle.lean":
+                "7f921295a0130adae8ae099b256ce251b3340bfd75cf5de755e07b9cafa98f48",
+            "YangMills/RG/BalabanCMP89Eq246AliasPrecisionCycleAudit.lean":
+                "22d58cb00ecf947e7c90e7e172300fcd43bd3c90e605b2b400255ea60b52050f",
+            "YangMills/RG/BalabanCMP89Eq246FinePointSourceSolutionCycle.lean":
+                "b8101d95a2bd66657ab58974ccf0eb2b22b685de219bfbd516bf973cc7e1130c",
+            "YangMills/RG/BalabanCMP89Eq246FinePointSourceSolutionCycleAudit.lean":
+                "85f20825891ebd6da1bc3603d26c9c026898b3ac3e565a64a4020dfc38472ebc",
+        },
+        "queue": [
+            "alias_precision_cycle_focal",
+            "alias_precision_cycle_audit",
+            "fine_point_source_solution_cycle_focal",
+            "fine_point_source_solution_cycle_audit",
+        ],
+    },
+    "cmp89-eq246-integrand-periodicity-seam-cold-v1": {
+        "source_sha": "dec1cb163d7d0d2dd5d79270f6591db68a17ec5f",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicity.lean":
+                "3f44af581856e4d0ebeb39a5e3ae5d90b46a87bf71f011c48f7c972c0a755e57",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicityAudit.lean":
+                "26773a4fe09cca26982b033d2f00ff86e02cd4a377777baf167d34892a874e2c",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeam.lean":
+                "244112db1c86da0719e5e1bb2fc2966ab32a3a362c5d1828294007de665a3d80",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenBoundarySeamAudit.lean":
+                "df9e4ae804d6a9d43bb8739d3cef355e39b50de41c7da3fba2334e2e9c214184",
+        },
+        "queue": [
+            "integrand_periodicity_focal",
+            "integrand_periodicity_audit",
+            "boundary_seam_focal",
+            "boundary_seam_audit",
+        ],
+    },
+    "cmp89-eq246-integrand-one-coordinate-shift-cold-v1": {
+        "source_sha": "881a6de1c6c945161c65f9d9966319b17e386e4c",
+        "source_blobs": {
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift.lean":
+                "884b451741bc5c8bb4ae3c03e074d1bfb53a08078a3bc20868e893e624a67899",
+            "YangMills/RG/BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShiftAudit.lean":
+                "8cb5cfd2b83cd08b5dba38cce758b4978752fb6136154821e8d49cef88af1214",
+        },
+        "queue": [
+            "integrand_one_coordinate_shift_focal",
+            "integrand_one_coordinate_shift_audit",
+        ],
+    },
+}
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("archive", type=Path)
+    archive = parser.parse_args().archive.resolve()
+    if not archive.is_file():
+        raise RuntimeError(f"ARCHIVE_MISSING={archive}")
+    with tarfile.open(archive, "r:gz") as bundle:
+        files = [member for member in bundle.getmembers() if member.isfile()]
+        if len(files) != 1 or not files[0].name.endswith("/evidence.json"):
+            raise RuntimeError(f"ARCHIVE_SCOPE_MISMATCH={[m.name for m in files]}")
+        stream = bundle.extractfile(files[0])
+        if stream is None:
+            raise RuntimeError("EVIDENCE_UNREADABLE")
+        raw = stream.read()
+    payload = json.loads(raw)
+    runner_rev = payload.get("runner_rev")
+    config = EXPECTED_CONFIGS.get(runner_rev)
+    if config is None:
+        raise RuntimeError(f"RUNNER_REV_MISMATCH={runner_rev!r}")
+    expected_source = config["source_sha"]
+    expected_blobs = config["source_blobs"]
+    expected_queue = config.get(
+        "queue", ["directed_source_moment_focal", "directed_source_moment_audit"]
+    )
+    required = {
+        "runner_rev": runner_rev,
+        "source_sha": expected_source,
+        "mathlib_sha": EXPECTED_MATHLIB,
+        "toolchain_asset_sha256": EXPECTED_TOOLCHAIN,
+        "minimum_ram_gib": 11.0,
+        "gpu_runtime_authorized": False,
+    }
+    for key, expected in required.items():
+        if payload.get(key) != expected:
+            raise RuntimeError(
+                f"EVIDENCE_FIELD_MISMATCH key={key} expected={expected!r} "
+                f"actual={payload.get(key)!r}"
+            )
+    if payload.get("source_blobs") != expected_blobs:
+        raise RuntimeError("SOURCE_BLOB_GATE_MISMATCH")
+    status = payload.get("status")
+    if status not in {"PASS", "FAIL"}:
+        raise RuntimeError(f"INVALID_STATUS={status!r}")
+    records = payload.get("records")
+    if not isinstance(records, list) or not records:
+        raise RuntimeError("RECORDS_MISSING")
+    for record in records:
+        if not isinstance(record.get("output_sha256"), str) or len(record["output_sha256"]) != 64:
+            raise RuntimeError(f"INVALID_OUTPUT_HASH={record!r}")
+        if not isinstance(record.get("exit"), int):
+            raise RuntimeError(f"INVALID_EXIT={record!r}")
+        if not isinstance(record.get("seconds"), (int, float)) or record["seconds"] < 0:
+            raise RuntimeError(f"INVALID_DURATION={record!r}")
+    record_stages = [record.get("stage") for record in records]
+    try:
+        queue_start = record_stages.index(expected_queue[0])
+    except ValueError as error:
+        allowed_prequeue = config.get("prequeue_failure_stage")
+        if not (
+            status == "FAIL"
+            and allowed_prequeue is not None
+            and record_stages[-1] == allowed_prequeue
+            and records[-1].get("exit") != 0
+            and all(record.get("exit") == 0 for record in records[:-1])
+        ):
+            raise RuntimeError("QUEUE_START_MISSING") from error
+        queue_records = []
+    else:
+        queue_records = records[queue_start:]
+    if len(queue_records) > len(expected_queue):
+        raise RuntimeError(f"QUEUE_HAS_EXTRA_RECORDS={queue_records!r}")
+    stages = [record.get("stage") for record in queue_records]
+    if stages != expected_queue[: len(queue_records)]:
+        raise RuntimeError(f"QUEUE_STAGE_MISMATCH={stages!r}")
+    exits = [record.get("exit") for record in queue_records]
+    if status == "PASS" and (stages != expected_queue or any(code != 0 for code in exits)):
+        raise RuntimeError(f"PASS_QUEUE_INCOMPLETE stages={stages!r} exits={exits!r}")
+    if status == "FAIL" and queue_records and (
+        exits[-1] == 0 or any(code != 0 for code in exits[:-1])
+    ):
+        raise RuntimeError(f"FAIL_STOP_GATE_MISMATCH exits={exits!r}")
+    print("CMP89_EQ246_DIRECTED_SOURCE_MOMENT_COLD_EVIDENCE_OK")
+    print(f"STATUS={status}")
+    print(f"SOURCE_SHA={expected_source}")
+    print(f"RECORDS={len(records)}")
+    print(f"QUEUE_STAGES={len(queue_records)}")
+    print(f"SOURCE_BLOBS={len(expected_blobs)}")
+    print(f"EVIDENCE_JSON_SHA256={hashlib.sha256(raw).hexdigest().upper()}")
+    print(f"ARCHIVE_SHA256={file_sha256(archive).upper()}")
+
+
+if __name__ == "__main__":
+    main()

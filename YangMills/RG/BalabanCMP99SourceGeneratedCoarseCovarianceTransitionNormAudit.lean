@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedCoarseCovarianceTransitionNorm
+
+open YangMills.RG
+
+#print axioms norm_cmp99SourceGeneratedPhysicalCoarseCovariance_le
+#print axioms cmp99SourceGeneratedPhysicalCoarseCovarianceTransitionNormBound
+#print axioms CMP99SourceDependentOmegaGeometry.norm_generatedPhysicalCoarseCovarianceTransition_le

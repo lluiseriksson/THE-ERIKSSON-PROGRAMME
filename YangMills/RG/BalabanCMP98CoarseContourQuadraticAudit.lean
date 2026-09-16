@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP98CoarseContourQuadratic
+
+#print axioms YangMills.RG.cmp98SourceCoarseContourDisplacementBudget
+#print axioms YangMills.RG.cmp98SourceCoarseContourQuadraticBudget
+#print axioms YangMills.RG.cmp98ContourFirstVariation_mul_backgroundConjTranspose_eq_generatorSum
+#print axioms YangMills.RG.norm_cmp98SourceCoarseRelativeContour_sub_one_le
+#print axioms YangMills.RG.norm_cmp98SourceCoarseRelativeContour_sub_one_sub_linear_le
+#print axioms YangMills.RG.norm_cmp98SourceCoarseContour_sub_zero_le
+#print axioms YangMills.RG.norm_cmp98SourceCoarseContour_sub_zero_sub_linear_le

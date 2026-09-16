@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89Eq249PhysicalHolderNormalizedIntegral
+
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedHolderIntegral_draft
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedHolderIntegral_zero_draft
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedHolderIntegral_eq_xiRpowInv_mul_raw_draft

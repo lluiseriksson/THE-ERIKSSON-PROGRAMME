@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-actual-common-translation-diagnostic-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "b43cfe1c6b775f43e1943f9d92714a9b6da7fc0fdf3ed5ce38c04baee463df11", "seconds": 103.697020678, "stage": "lake_update", "timed_out": false, "timeout_seconds": 3600}

@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116Eq228DomainProduct
+
+#print axioms YangMills.RG.cmp116Eq226DomainFactor_eq_eq229Weight_mul_eq228Residual
+#print axioms YangMills.RG.cmp116Eq228SourceCoefficient_nonneg
+#print axioms YangMills.RG.cmp116Eq228Residual_le_sourceCoefficient
+#print axioms YangMills.RG.cmp116Eq228_residualProduct_le
+#print axioms YangMills.RG.cmp116Eq228_residualProduct_le_of_lowerMetric
+#print axioms YangMills.RG.cmp116Eq226DomainProduct_le_eq229Product_mul_eq228Residual
+#print axioms YangMills.RG.cmp116Eq226DomainProduct_le_eq229Product_mul_eq228Residual_of_lowerMetric

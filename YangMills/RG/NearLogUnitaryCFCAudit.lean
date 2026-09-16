@@ -1,0 +1,10 @@
+import YangMills.RG.NearLogUnitaryCFC
+
+namespace YangMills.RG
+
+#print axioms nearLog_unitary_sub_one_eq_cfc_log
+#print axioms cfc_log_unitary_eq_I_smul_argSelfAdjoint
+#print axioms nearLog_unitary_sub_one_mem_skewAdjoint
+#print axioms nearLog_unitary_star_sub_one_eq_neg
+
+end YangMills.RG

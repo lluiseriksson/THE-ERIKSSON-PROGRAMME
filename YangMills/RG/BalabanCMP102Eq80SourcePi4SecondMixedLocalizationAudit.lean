@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4SecondMixedLocalization
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4SecondMixedDomainCoefficient_eq_zero_of_not_subset
+#print axioms YangMills.RG.cmp102Eq80SourcePi4SecondMixedDomainCoefficient_eq_zero_of_not_walkConnected
+#print axioms YangMills.RG.cmp102Eq80SecondPropagatorMixedDerivative_fullRealMixed_eq_sum_pi4Domains

@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/BalabanCMP99FullGreenArbitraryResidueBoundAudit.lean"], "cwd": "/content/hrpoly-cmp99-full-green-arbitrary-residue-cold-v1", "exit": 0, "log_file": "full_green_residue_audit.log", "output_sha256": "f189dc1e494be08a1eb0b2112777a9693eaf7b41c560db7dd5f4a7188e704719", "seconds": 18.88800828300009, "stage": "full_green_residue_audit"}

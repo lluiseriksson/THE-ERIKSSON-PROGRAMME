@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP109Lemma1NativeRootedResidual
+
+#print axioms YangMills.RG.cmp109Lemma1NativeRootBound
+#print axioms YangMills.RG.cmp109Lemma1NativeRootBound_nonneg
+#print axioms YangMills.RG.cmp109Lemma1NativeIndexed_rooted_residual_le

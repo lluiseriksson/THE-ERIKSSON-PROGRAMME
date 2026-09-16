@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99MultiscalePhysicalPoincare
+
+namespace YangMills.RG
+
+#print axioms cmp99OneScaleBlockDerivativeCoefficient
+#print axioms cmp99OneScaleBlockAverageCoefficient
+#print axioms sum_norm_sq_sourceBlocks_le_covariantEnergy_add_average
+#print axioms sum_norm_sq_sourceBlocks_le_cmp99OneScaleBlockPoincare
+
+end YangMills.RG

@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceBlockTranslation
+
+#print axioms YangMills.RG.cmp99SourceBlockTranslation_injective
+#print axioms YangMills.RG.cmp99SourceBlockTranslation_bijective
+#print axioms YangMills.RG.cmp99SourceBlockTranslationEquiv_apply_val
+#print axioms YangMills.RG.sum_cmp99SourceBlockTranslationEquiv

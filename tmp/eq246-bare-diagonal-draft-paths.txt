@@ -1,0 +1,3 @@
+tmp/BalabanCMP89Eq251BareInverseLaplacianHalfWeight.draft.lean
+tmp/BalabanCMP89Eq246FinePointSourceBareDiagonalBound.draft.lean
+tmp/BalabanCMP89Eq246FinePointSourceBareDiagonalBoundAudit.draft.lean

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99CoarseDerivativeRegional
+
+#print axioms YangMills.RG.norm_cmp99FullSourceBlockAverage_sq_le
+#print axioms YangMills.RG.norm_cmp99SourceRegionalAverage_sq_le
+#print axioms YangMills.RG.norm_covariantD0_cmp99SourceRegionalAverage_physicalUbar_sq_le

@@ -1,0 +1,234 @@
+{
+  "attempts": [
+    {
+      "archive_sha256": "44dffcda0ce7c6295b743d5261c30eb8f483bb3a9158ac114c3a19d06cab3544",
+      "base": "10437a1a824bdd920282778cabe2f3da6c40ce4e",
+      "cold_seal": false,
+      "error": "AssertionError('FIRST_ERROR=NeumannBlockReflectionRepro.lean')",
+      "files": {
+        "NeumannBlockReflectionDraft.lean": "facb070b5e6ad9b78e96850d3b86394de6c582928d8b1f9cd5b4405b8788b216",
+        "NeumannBlockReflectionRepro.lean": "86f454067865f3b7eac480a6c59d127cc0dc7c21a9010ccbaa387d9b79417926",
+        "NeumannBlockReflectionRepro.lean.log": "ec55a0651de5ee0e6d1dc1eef73b54adaa8659a00a2485074dde83877aaa7e2d",
+        "full_green_owner_exact_axiom_gate.py": "016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2",
+        "records.json": "1c2e3cd4d905640831d4fa33242586a0ef25172e2d5927aa993667f2b9674ea2",
+        "runner.py": "c06afee9a1fa2e134d3586671a592d872426bf7934ce6b5963cbbbb0184538e1"
+      },
+      "prior_sha256": "0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901",
+      "records": [
+        {
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "-o",
+            "/content/neumann-block-reflection-hot-v1/NeumannBlockReflectionRepro.lean.olean",
+            "/content/neumann-block-reflection-hot-v1/NeumannBlockReflectionRepro.lean"
+          ],
+          "exit": 1,
+          "log_sha256": "ec55a0651de5ee0e6d1dc1eef73b54adaa8659a00a2485074dde83877aaa7e2d",
+          "seconds": 0.8664418729999852,
+          "stage": "NeumannBlockReflectionRepro.lean",
+          "timed_out": false
+        }
+      ],
+      "source": "47e975611f59ee8d95ec39317d4731918fe3b1bd",
+      "source_blobs": {
+        "NeumannBlockReflectionDraft.lean": "facb070b5e6ad9b78e96850d3b86394de6c582928d8b1f9cd5b4405b8788b216",
+        "NeumannBlockReflectionRepro.lean": "86f454067865f3b7eac480a6c59d127cc0dc7c21a9010ccbaa387d9b79417926"
+      },
+      "status": "FAIL",
+      "version": 1
+    },
+    {
+      "archive_sha256": "4ccd1e23eee9e6aee3034944c367c3eb14c52266bc3cf1e1392822e6f34c4a47",
+      "base": "10437a1a824bdd920282778cabe2f3da6c40ce4e",
+      "cold_seal": false,
+      "error": "AssertionError('FIRST_ERROR=NeumannBlockReflectionRepro.lean')",
+      "files": {
+        "NeumannBlockReflectionDraft.lean": "facb070b5e6ad9b78e96850d3b86394de6c582928d8b1f9cd5b4405b8788b216",
+        "NeumannBlockReflectionRepro.lean": "86f454067865f3b7eac480a6c59d127cc0dc7c21a9010ccbaa387d9b79417926",
+        "NeumannBlockReflectionRepro.lean.log": "82fd59bef89d309afbad63e6d18d00421120ea15839c80b01a9f237f35c9cdc1",
+        "full_green_owner_exact_axiom_gate.py": "016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2",
+        "records.json": "41f8af37b3a4559d4ac9d7b9904f02a899c19dac7115e211f2bdd84c9bd712d7",
+        "runner.py": "471e3c8910f3e5de546cf6345d55a1aacc0ef65b1c870ddba7a23a45c6b90ecf"
+      },
+      "prior_sha256": "0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901",
+      "records": [
+        {
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "-o",
+            "/content/neumann-block-reflection-hot-v2/NeumannBlockReflectionRepro.lean.olean",
+            "tmp/NeumannBlockReflectionRepro.lean"
+          ],
+          "exit": 1,
+          "log_sha256": "82fd59bef89d309afbad63e6d18d00421120ea15839c80b01a9f237f35c9cdc1",
+          "seconds": 1.1674270190001153,
+          "stage": "NeumannBlockReflectionRepro.lean",
+          "timed_out": false
+        }
+      ],
+      "source": "47e975611f59ee8d95ec39317d4731918fe3b1bd",
+      "source_blobs": {
+        "NeumannBlockReflectionDraft.lean": "facb070b5e6ad9b78e96850d3b86394de6c582928d8b1f9cd5b4405b8788b216",
+        "NeumannBlockReflectionRepro.lean": "86f454067865f3b7eac480a6c59d127cc0dc7c21a9010ccbaa387d9b79417926"
+      },
+      "status": "FAIL",
+      "version": 2
+    },
+    {
+      "archive_sha256": "fe422e85b137ff571d1779939b5c20275174395728d7db233c5300aeb741ca44",
+      "base": "10437a1a824bdd920282778cabe2f3da6c40ce4e",
+      "cold_seal": false,
+      "error": "AssertionError('FIRST_ERROR=NeumannBlockReflectionDraft.lean')",
+      "files": {
+        "NeumannBlockReflectionDraft.lean": "9ab31397702dc27b0a01f18bdd3fc0a26f323be9ef88b84fe7a441b258b25728",
+        "NeumannBlockReflectionDraft.lean.log": "a1802e676ce127b5586721ba43b7abb74c903fa46c8b9052ecdd7797ac78f755",
+        "NeumannBlockReflectionRepro.lean": "7e8a9816b91bf68f4bef5814fc434720fe811347b5e33d916e92f0903931c7c9",
+        "NeumannBlockReflectionRepro.lean.log": "06e210a2607aa514be1142960c5a1dd55360527859d4f6131439ecae84c1aa89",
+        "NeumannBlockReflectionRepro.lean.olean": "11bedfe448545adace17d4963fd44883dc4bb6d61ab843f309ff5a476be7d3db",
+        "full_green_owner_exact_axiom_gate.py": "016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2",
+        "records.json": "ab1b130143b1b51b9fa7c0f0ccb56e2d99ccec0f112f306c09fadf47b6816db6",
+        "runner.py": "31276ccc7a3e1463323466cdc88a1ea51c3e406df28c56c877913a5aa1692499"
+      },
+      "prior_sha256": "0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901",
+      "records": [
+        {
+          "axioms": {
+            "neumannBlockReflection_div_repro": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "-o",
+            "/content/neumann-block-reflection-hot-v3/NeumannBlockReflectionRepro.lean.olean",
+            "tmp/neumann_block_reflection_v3/NeumannBlockReflectionRepro.lean"
+          ],
+          "exit": 0,
+          "log_sha256": "06e210a2607aa514be1142960c5a1dd55360527859d4f6131439ecae84c1aa89",
+          "seconds": 2.3209544939991247,
+          "stage": "NeumannBlockReflectionRepro.lean",
+          "timed_out": false
+        },
+        {
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "-o",
+            "/content/neumann-block-reflection-hot-v3/NeumannBlockReflectionDraft.lean.olean",
+            "tmp/neumann_block_reflection_v3/NeumannBlockReflectionDraft.lean"
+          ],
+          "exit": 1,
+          "log_sha256": "a1802e676ce127b5586721ba43b7abb74c903fa46c8b9052ecdd7797ac78f755",
+          "seconds": 7.887565983000059,
+          "stage": "NeumannBlockReflectionDraft.lean",
+          "timed_out": false
+        }
+      ],
+      "source": "3918b24e4e78c2dafccc0062f0b62becbdd9fd66",
+      "source_blobs": {
+        "NeumannBlockReflectionDraft.lean": "9ab31397702dc27b0a01f18bdd3fc0a26f323be9ef88b84fe7a441b258b25728",
+        "NeumannBlockReflectionRepro.lean": "7e8a9816b91bf68f4bef5814fc434720fe811347b5e33d916e92f0903931c7c9"
+      },
+      "status": "FAIL",
+      "version": 3
+    },
+    {
+      "archive_sha256": "92ceef59e36c9bb49b9e8595a77ba44f52bc89170a04b935d58f0a73c4a54bc0",
+      "base": "10437a1a824bdd920282778cabe2f3da6c40ce4e",
+      "cold_seal": false,
+      "error": null,
+      "files": {
+        "NeumannBlockReflectionDraft.lean": "911f44549a3fe9a6491ca9df3906fd564243d2abb79bd0bdc102e7a9336d7c94",
+        "NeumannBlockReflectionDraft.lean.log": "663f1aa5cf98760ea1accc743222ab56df4938ab26472b089ae70fbb9b5ebc02",
+        "NeumannBlockReflectionDraft.lean.olean": "f93608f46391caf0e79e2b8af882ac6309a13b9b1c36dc7db3c60f27044abf5c",
+        "NeumannBlockReflectionRepro.lean": "9f364d282b7241bd2e523a8bf37cf640d2fc151618c75aa6a6e817e6bf703aee",
+        "NeumannBlockReflectionRepro.lean.log": "41952796dfe28d1571acd6c13129298548a31a5894f1fa0c2354f29af74fd5da",
+        "NeumannBlockReflectionRepro.lean.olean": "62e2e64a02b756ebd80f1caf83db2e7303b0f7ada4a1efd136c3348e482343ff",
+        "full_green_owner_exact_axiom_gate.py": "016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2",
+        "records.json": "5256e39cc1a72166676332c4c3656b22f2c5c9019e85b11a33e37eb743cb69d8",
+        "runner.py": "3d14f9edfec7972a27dc8dc5e510ab7cad0b42c5f308290d4eb2e84b15c596ad"
+      },
+      "prior_sha256": "0c4000e3bf98def88f6f96aeaea5d15970d72a43e86458976a68ce2ea7e1f901",
+      "records": [
+        {
+          "axioms": {
+            "neumannBlockReflection_div_repro": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "neumannBlockReflection_finrev_repro": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "-o",
+            "/content/neumann-block-reflection-hot-v4/NeumannBlockReflectionRepro.lean.olean",
+            "tmp/neumann_block_reflection_v4/NeumannBlockReflectionRepro.lean"
+          ],
+          "exit": 0,
+          "log_sha256": "41952796dfe28d1571acd6c13129298548a31a5894f1fa0c2354f29af74fd5da",
+          "seconds": 2.070219440999608,
+          "stage": "NeumannBlockReflectionRepro.lean",
+          "timed_out": false
+        },
+        {
+          "axioms": {
+            "YangMills.RG.blockSite_neumannBlockReflectionDraft": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ],
+            "YangMills.RG.neumannBlockReflectionDraft_involutive": [
+              "Quot.sound",
+              "propext"
+            ],
+            "YangMills.RG.neumannBlockReflectionDraft_sameOwner_iff": [
+              "Classical.choice",
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          "command": [
+            "lake",
+            "env",
+            "lean",
+            "-o",
+            "/content/neumann-block-reflection-hot-v4/NeumannBlockReflectionDraft.lean.olean",
+            "tmp/neumann_block_reflection_v4/NeumannBlockReflectionDraft.lean"
+          ],
+          "exit": 0,
+          "log_sha256": "663f1aa5cf98760ea1accc743222ab56df4938ab26472b089ae70fbb9b5ebc02",
+          "seconds": 5.5800916289999805,
+          "stage": "NeumannBlockReflectionDraft.lean",
+          "timed_out": false
+        }
+      ],
+      "source": "e46c93e3aa337bcf0c0feea19d61e97522f22861",
+      "source_blobs": {
+        "NeumannBlockReflectionDraft.lean": "911f44549a3fe9a6491ca9df3906fd564243d2abb79bd0bdc102e7a9336d7c94",
+        "NeumannBlockReflectionRepro.lean": "9f364d282b7241bd2e523a8bf37cf640d2fc151618c75aa6a6e817e6bf703aee"
+      },
+      "status": "PASS",
+      "version": 4
+    }
+  ],
+  "cold_seal": false,
+  "outer_sha256": "5c2dac811cb81f6df02236ed092ca2948cf2f61bad84c3ffcdeb32030b0cca58",
+  "scope": "half-cell block geometry only; 20/41 unchanged",
+  "verification": "PASS"
+}

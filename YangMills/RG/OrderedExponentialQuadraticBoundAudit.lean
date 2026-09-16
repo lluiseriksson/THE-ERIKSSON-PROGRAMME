@@ -1,0 +1,7 @@
+import YangMills.RG.OrderedExponentialQuadraticBound
+
+#print axioms YangMills.RG.hasDerivAt_orderedExpProduct_zero
+#print axioms YangMills.RG.norm_exp_smul_sub_one_le_two_mul
+#print axioms YangMills.RG.norm_exp_smul_sub_one_sub_smul_le_two_mul_sq
+#print axioms YangMills.RG.norm_orderedExpProduct_sub_one_le
+#print axioms YangMills.RG.norm_orderedExpProduct_sub_one_sub_smul_sum_le

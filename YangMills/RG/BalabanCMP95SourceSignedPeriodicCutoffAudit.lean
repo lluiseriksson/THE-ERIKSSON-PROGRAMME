@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP95SourceSignedPeriodicCutoff
+
+#print axioms YangMills.RG.cmp95PeriodicSignedCutoff_eq_sum_activeWindow
+#print axioms YangMills.RG.cmp95PeriodicSignedCutoff_add_period
+#print axioms YangMills.RG.cmp95PeriodicActiveWindow_eq_pair
+#print axioms YangMills.RG.cmp95PeriodicTranslate_mul_next_eq_zero
+#print axioms YangMills.RG.cmp95PeriodicSignedCutoff_sq
+#print axioms YangMills.RG.cmp95PeriodicSquareWeight_eq_one_of_eq_one
+#print axioms YangMills.RG.cmp95SourcePeriodicSignedCutoff_sq
+#print axioms YangMills.RG.cmp95SourcePeriodicSignedTensorCutoff_sq
+#print axioms YangMills.RG.sum_cmp95SourcePeriodicSignedTensorCutoff_sq

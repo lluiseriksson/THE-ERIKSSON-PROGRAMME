@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedCoarseCovarianceTransitionWeightedRow
+
+open YangMills.RG
+
+#print axioms cmp99SourceGeneratedPhysicalCoarseCovarianceTransitionWeightedRowAmplitude
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceTransitionCoordinates_weightedRowKernelBound

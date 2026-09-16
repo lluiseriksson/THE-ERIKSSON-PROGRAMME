@@ -1,0 +1,35 @@
+CMP89 rectangular Neumann branch-distance cold evidence
+
+Final status: PASS
+Source SHA: dfb6f7443c6f3245443753336b51ad5f85104300
+Mathlib SHA: 07642720480157414db592fa85b626dafb71355b
+Lean: 4.29.0-rc6
+Lake: 5.0.0
+Runtime: Colab Pro+ CPU/high RAM, MemTotal 53467192 kB
+Fresh checkout: yes
+Restored .lake/build: no
+
+Focal: 8563/8563 jobs, exit 0, 1576 seconds
+Audit: exit 0, 47 seconds
+Audited declarations: 2
+Axioms: exactly propext, Classical.choice, Quot.sound for both declarations
+Forbidden axioms: none
+
+Archive SHA-256:
+53DCFF0CA4CB6679CF51E1F2D80919977C9BDCCFCAB1F006D23A72EF6B8A0D5B
+
+Manifest SHA-256:
+CDD415BF3529B684A9AE804501BCA15940CA096F8A8F56762F3503C4F72347E1
+
+Manifest entries: 10
+Local rehash mismatches: 0
+
+Instrumentation incident: the original parser had a malformed Python string
+and the first repair counted dependency readouts from the full cold log.  The
+invalid archive is retained in the evidence incident record.  The final gate
+selected the two exact target declarations from the completed audit log;
+Lean was not rerun.
+
+Scope: seals branch-distance retention only.  The finite 2^4 branch sum,
+physical Green insertion, CMP89 (2.42), uniform regional B0/delta0 and window
+15 remain open.  Counters stay 20/41 and TermSource remains 0.

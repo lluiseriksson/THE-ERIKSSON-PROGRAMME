@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalMass
+#check ContinuousLinearMap.opNorm_comp_le
+#check ContinuousLinearMap.norm_comp_le
+#check norm_sum_le
+#check Finset.sum_le_sum_of_subset_of_nonneg
+#check ContinuousLinearMap.norm_adjoint_comp_self
+#check ContinuousLinearMap.opNorm_le_bound
+#check one_le_pow₀

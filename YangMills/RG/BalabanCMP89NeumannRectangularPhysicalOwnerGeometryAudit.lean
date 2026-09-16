@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalOwnerGeometry
+
+#print axioms YangMills.RG.cmp89SourceNeumannRectanglePointToFinBox_draft
+#print axioms YangMills.RG.cmp89SourceNeumannRectanglePointToFinBox_val_draft
+#print axioms YangMills.RG.finTorusDist_cmp89RectangleEmbedding_le_natAbs_sub_draft
+#print axioms YangMills.RG.finBoxDist_cmp89RectangleEmbedding_le_l1_draft
+#print axioms YangMills.RG.cmp89RectanglePhysicalOwner_mul_dist_le_l1_add_boundary_draft

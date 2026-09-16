@@ -1,0 +1,106 @@
+{
+  "archive_sha256": "03e5ea64cf13f6408d367503e7202fe46994db5624b99f23f49c83cd5775a6c2",
+  "audits": {
+    "average_audit": {
+      "YangMills.RG.neumannIntegerImage_fineBlockPoint": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.sum_neumannIntegerImage_fineBlockPoint": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.weightedSum_neumannIntegerImage_fineBlockPoint": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "field_audit": {
+      "YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitCountingMass_apply_eq_terminalFibreSum": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_apply_eq_terminalFibreSum": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedMass_apply_eq_terminalFibreSum": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "evidence_json_file_sha256": "76bb21869f396891d3f71a88422d638f6364ebcec5e711c79553d18a3387c6ea",
+  "evidence_json_payload_sha256": "d70378a19524d2ab7d59c312ad9eb2fec6ad84cec53b58c889f25a29df919391",
+  "production_outputs": {
+    "NeumannGeneratedAverageFieldAction.olean": "30846c90064d0da4afeab8882ebdf5436840ec5c9a757993aa2a6ac03c5bf6cd",
+    "NeumannIntegerBlockImageAverage.olean": "32d50d52277add9eb5d3744a378f01201b56dbba76b8cb3f475d6381cfeb3336"
+  },
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.NeumannIntegerBlockImageAverage"
+      ],
+      "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1",
+      "exit": 0,
+      "log_file": "average_focal.log",
+      "output_sha256": "cbb800bc8640b6d524d5caf2c4ae58c94ee5e11fc9629af155b569197ca99fcb",
+      "seconds": 50.18887873399996,
+      "stage": "average_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/NeumannIntegerBlockImageAverageAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1",
+      "exit": 0,
+      "log_file": "average_audit.log",
+      "output_sha256": "4c4a0ee27b0022b684584d1d21061851d06b6ffde8469483dbb02c5263d31c1c",
+      "seconds": 7.252196941000022,
+      "stage": "average_audit"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.NeumannGeneratedAverageFieldAction"
+      ],
+      "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1",
+      "exit": 0,
+      "log_file": "field_focal.log",
+      "output_sha256": "737251d2b6676c514d4c444afa4a6751e2c97cf14ae97bda289a85e8ea40a7df",
+      "seconds": 1790.0056256270002,
+      "stage": "field_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/NeumannGeneratedAverageFieldActionAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1",
+      "exit": 0,
+      "log_file": "field_audit.log",
+      "output_sha256": "83598c2e1a659c7412266bc7d8b1929a10f2f470bd6db1da34efd31f41d1ae28",
+      "seconds": 11.961256251000123,
+      "stage": "field_audit"
+    }
+  ],
+  "runner_rev": "neumann-average-field-cohort-cold-v1",
+  "source_sha": "8570618f20c62c5724555589f910b84fdf803c33",
+  "stages_verified": 18,
+  "status": "PASS"
+}
+NEUMANN_RECTANGLE_FULL_GREEN_COLD_EVIDENCE_VERIFIED

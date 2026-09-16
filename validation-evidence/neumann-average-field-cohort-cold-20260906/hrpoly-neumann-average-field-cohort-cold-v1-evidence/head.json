@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1", "exit": 0, "log_file": "head.log", "output_sha256": "b589611cb52c79ea7b202df821a505c285e51b112724f49689253a82d8716731", "seconds": 0.002225858999963748, "stage": "head"}

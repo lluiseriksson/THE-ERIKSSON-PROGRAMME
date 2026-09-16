@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP98CauchyCoefficient
+
+#print axioms YangMills.RG.cmp98_leftTrivialized_cauchy_coefficient

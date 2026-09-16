@@ -1,0 +1,9 @@
+-- PRE-VALIDATION SCRATCH: no declaration below is compiler-verified.
+
+-- Promotion import:
+-- import YangMills.RG.BalabanCMP99SourceFineToCoarseCenteredOwnerDictionary
+
+#print axioms YangMills.RG.cmp99SourceFineToCoarseEndpointDisplacement_neg_cast
+#print axioms YangMills.RG.cmp89Eq251LatticeL1Length_centered_neg_fineToCoarse_eq_diagonalPeriodic
+#print axioms YangMills.RG.cmp89SignedLatticeL1ExponentialWeight_centered_neg_fineToCoarse_eq_diagonalPeriodic
+#print axioms YangMills.RG.cmp89SignedLatticeL1ExponentialWeight_centered_neg_fineToCoarse_le_owner

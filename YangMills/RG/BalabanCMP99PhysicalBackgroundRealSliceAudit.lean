@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99PhysicalBackgroundRealSlice
+
+#print axioms YangMills.RG.cmp99PhysicalGaugeBackgroundToSpecialLinear
+#print axioms YangMills.RG.cmp99PhysicalGaugeBackgroundToSpecialLinear_apply
+#print axioms YangMills.RG.wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear
+#print axioms YangMills.RG.cmp99ComplexPhysicalBlockHolonomy_realSlice
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexPerturbedBackground_realSlice

@@ -1,0 +1,159 @@
+{
+  "cold": {
+    "audits": {
+      "full_green_audit": {
+        "YangMills.RG.neumannActualFullGreenDecayCertificate": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.summable_neumannActualFullGreenReflection_real_sum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.summable_neumannActualFullGreenReflection_sum": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "rectangle_audit": {
+        "YangMills.RG.neumannImageRectangleCoordinateEquiv": [
+          "Quot.sound"
+        ],
+        "YangMills.RG.neumannImageRectangleFamilyEquiv_apply": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannImageRectangleFamily_bijective": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannImageRectangleIndexEquiv_apply": [
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannImageRectangle_fixedPoint_injective": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "58187f15ccd9fa53d1b096db036c182fa5d5c7e21294a4222bfb92e846ca70a1",
+    "evidence_json_payload_sha256": "35728bc79af9b00b0cf987a80f7893061ae4fcb7d320eb8ddcbd91b08fabb5bd",
+    "production_outputs": {
+      "NeumannActualFullGreenReflectionSummability.olean": "5ba1daae6814113249a44b2731ee4e8a1d25dc67db6a3345e7f63918b5a58803",
+      "NeumannImageRectangleCoverage.olean": "46fa689d8332b4583483c24c6ac39b1243755c790bc45e6fa52d295e5edb4d9e"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannImageRectangleCoverage"
+        ],
+        "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "rectangle_focal.log",
+        "output_sha256": "a92e128c3755ea81968ae8aa3b17e2a41b956b1a9f58cf5db1d87d222acdb810",
+        "seconds": 42.51853048200064,
+        "stage": "rectangle_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannImageRectangleCoverageAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "rectangle_audit.log",
+        "output_sha256": "9f6b10a67884227ed69812ce2c95b721cb48d8b05eac0f5978b16683de47c627",
+        "seconds": 4.35890631500115,
+        "stage": "rectangle_audit"
+      },
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannActualFullGreenReflectionSummability"
+        ],
+        "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "full_green_focal.log",
+        "output_sha256": "4c2d7a2a6de43bffb765b6d711e0b4380beb94502b2d05e968bce238ea089028",
+        "seconds": 1348.3792845659991,
+        "stage": "full_green_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannActualFullGreenReflectionSummabilityAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "full_green_audit.log",
+        "output_sha256": "de4d1deac6726370e0b508730a2977153dc79afc1effb464ac1a79dc69c08b48",
+        "seconds": 14.068205097999453,
+        "stage": "full_green_audit"
+      }
+    ],
+    "runner_rev": "neumann-rectangle-full-green-cohort-cold-v1",
+    "source_sha": "d9d1bcae8e53b2ad442f507de0d695a1c5e0ccd6",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "inner_sha256": "4bdcdc5c6ddda0ade333f1a9370ebd945598eb70987dcdeaa7bba752e39cad75",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-rectangle-full-green-cohort-cold-v1-launch/verify_neumann_rectangle_full_green_cohort_cold.py",
+        "--helpers",
+        "/content/neumann-rectangle-full-green-cohort-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "50672e9a258233583023536c8cd6ac55fa3d249dc3a9198273e9b2837ec5bd18",
+      "seconds": 0.06197436200091033,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-rectangle-full-green-cohort-cold-v1-launch/colab_neumann_rectangle_full_green_cohort_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "7c3f152841dadadd8433065068d15a99385c13fa0fc9db0b4c3d4aa4688b1060",
+      "seconds": 1611.2309056289996,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-rectangle-full-green-cohort-cold-v1-launch/verify_neumann_rectangle_full_green_cohort_cold.py",
+        "--helpers",
+        "/content/neumann-rectangle-full-green-cohort-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "4bdcdc5c6ddda0ade333f1a9370ebd945598eb70987dcdeaa7bba752e39cad75"
+      ],
+      "exit": 0,
+      "log_sha256": "98d3b2454c38cba493889814bb8f1c92a961695f6469f750ce516eb59fe41d4a",
+      "seconds": 0.058990952999010915,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "5429bd0743a10c643c36b50404c2ed6849debe157488010fb2c400a35924b075",
+  "scope": "rectangle image-family coverage and actual Eq246 source-image summability; not inverse, B0 or window15",
+  "source": "d9d1bcae8e53b2ad442f507de0d695a1c5e0ccd6",
+  "status": "PASS"
+}

@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "7f7455b286da5809a0ee64a1511684f887cf8a88"], "cwd": "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "cc2f6890fdda4d24688fe99bb5db268891b8ef2bff64394570a1d0a0f4e9215e", "seconds": 0.6763074759996925, "stage": "checkout"}

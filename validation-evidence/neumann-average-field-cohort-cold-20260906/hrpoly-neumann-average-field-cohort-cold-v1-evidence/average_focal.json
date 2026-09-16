@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannIntegerBlockImageAverage"], "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1", "exit": 0, "log_file": "average_focal.log", "output_sha256": "cbb800bc8640b6d524d5caf2c4ae58c94ee5e11fc9629af155b569197ca99fcb", "seconds": 50.18887873399996, "stage": "average_focal"}

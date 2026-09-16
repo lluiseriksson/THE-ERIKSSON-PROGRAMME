@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannFlatInternalBondAction"], "cwd": "/content/hrpoly-neumann-wrap-flat-promoted-cold-v1", "exit": 0, "log_file": "flat_action_focal.log", "output_sha256": "eb7d6f71b747726440680f19137c9a78333fadd2e140cbf6002b941218d80e11", "seconds": 99.88860379200014, "stage": "flat_action_focal"}

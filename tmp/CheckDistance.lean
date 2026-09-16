@@ -1,0 +1,12 @@
+import YangMills.RG.PhysicalBondDistance
+#check Nat.dist
+#check Nat.dist_le
+#check Nat.dist_le_iff
+#check Nat.dist_triangle
+#check Nat.cast_sub
+#check Nat.cast_ofNat
+#check abs_sub_le_iff
+#check abs_sub_comm
+#check Int.natAbs_of_nonneg
+#check Nat.cast_abs
+#check norm_natCast

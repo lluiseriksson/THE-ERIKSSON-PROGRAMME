@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicCorrectionSourceDerivative
+
+#print axioms YangMills.RG.fderiv_cmp102IntrinsicPhysicalCorrectionBondCoord_apply
+#print axioms YangMills.RG.norm_fderiv_cmp102IntrinsicPhysicalCorrectionBondCoord_sub_apply_le_sourceBudget

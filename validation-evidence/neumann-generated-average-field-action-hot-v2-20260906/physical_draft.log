@@ -1,0 +1,22 @@
+tmp/neumann-generated-average-field-action-hot-v2/NeumannGeneratedAverageFieldActionDraft.lean:29:0: warning: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_apply_eq_terminalFibreSum`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+tmp/neumann-generated-average-field-action-hot-v2/NeumannGeneratedAverageFieldActionDraft.lean:57:38: warning: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only [singleFinitePiLp_self, if̵_̵p̵o̵s̵ ̵r̵f̵l̵,̵ ̵i̵te_true]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedMass_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitCountingMass_apply_eq_terminalFibreSum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

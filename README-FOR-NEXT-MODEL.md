@@ -1,5 +1,350 @@
 # README FOR THE NEXT MODEL — complete foundations of THE-ERIKSSON-PROGRAMME
 
+CURRENT 2026-09-07 03:56 UTC: physical reflection graph COLD PASS preserved
+and locally independently verified; see Addendum 1197 and
+docs/NEUMANN-REFLECTION-COLD-CHECKPOINT-20260907.md. Seventeen production
+modules + audit, 52 declarations, source84ceb5f2. Selective header-only seal.
+Runtime f33828f71ae2 is now disconnected/deleted; do not reconnect the old cell.
+Next orbit HOT failed only at missing ReflectionOrbitAlgebra.olean; its FAIL
+archive is durable. Prepare explicit prerequisite materialization before retry.
+No regional image equation/B0/window15 yet;20/41,TermSource0 unchanged.
+All CURRENT entries below are historical and do not override this checkpoint.
+
+CURRENT02:29UTC: physical R3 PASSED and independently preserved1191.
+Source1e89a4cc27402ec539ece89c0288c8a1e9f9d103, runner31bf5bbd4;
+PID32820 launched02:26:43UTC and finished. Runtime f33828f71ae2/tab23
+retained for the next bounded R4 endpoint-phase work; all prior packages
+downloaded, checked and durable. No original cell is to be reexecuted.
+R3 olean /content/neumann-actual-coordinate-solution-hot-v1/
+NeumannActualCoordinateSolutionDraft.olean, hash8e4eb8490780cd16ccd70f690253b019922a32611232b089e34e0c836556c1df.
+Next R4: prove the integer endpoint reflection phases D and D^-1, then
+consume actual solver covariance; R5 Brillouin measure route is documented.
+HOT only, no production PRE marks retired;20/41,TermSource0 unchanged.
+
+CURRENT02:24UTC: Mathlib R3 repro v2 passed and independently preserved1190
+in2.420979522s (3 exact axiom names). v1 failed only because its input was
+outside the checkout; original archive retained, no Lean source changed.
+Next physical R3 draft tmp/NeumannActualCoordinateSolutionDraft.lean now
+written, NOT CHECKED (two declarations). It consumes actual R2 matrix law,
+internally constructed full solutions and existing uniqueness. No free
+solution, matrix equality or inverse premise. Prepare bounded HOT runner
+on retained runtime f33828f71ae2/tab23; no cold bootstrap or CI.
+Repro olean currently /content/neumann-diagonal-transport-repro-v2/
+NeumannDiagonalTransportRepro.olean; copy by verified hash into scratch
+import path before physical R3. R2 carry/phase oleans already installed.
+20/41,TermSource0 unchanged. Earlier CURRENT entries are historical.
+
+CURRENT02:17UTC: R2 bounded HOT retry PASSED and independently preserved,
+ledger1189. Runtime f33828f71ae2/tab23 remains retained for bounded R3 repro.
+Original R2 v1 FAIL remains preserved1188; do not rerun either runner.
+HOT source249ee54287989580df0f802796937caa1e4107a0, runner2baa3d5b2,
+PID29282 launched02:13:12UTC and completed. Archive/review under
+validation-evidence/neumann-coordinate-precision-hot-retry-v1-20260907.
+R2 carry + exact matrix conjugacy now HOT verified (10 names); no promotion.
+Next: Mathlib-only tmp/NeumannDiagonalTransportRepro.lean already published
+at5ed3699ca, before physical R3. Preserve source/hash/real exits for that run.
+20/41,TermSource0,window15 unchanged. Historical statuses follow.
+
+CURRENT02:08UTC: R2 v1 stopped correctly at carry_physical line79:2,
+an unreduced if True in the positive coordinate case. Prerequisites8591
+passed; phase_physical NOT EXECUTED. FAIL archive independently preserved in
+validation-evidence/neumann-coordinate-precision-diagnostic-v1-fail-20260907;
+ledger1188. Runtime f33828f71ae2/tab23 retained for bounded HOT repair.
+Do NOT rerun original notebook. Minimal source correction uses simp with
+the coordinate definition, hnu and mul_comm; NOT CHECKED until hot test.
+The following LIVE entry is historical.20/41,TermSource0 unchanged.
+
+LIVE01:47:24UTC: coordinate precision diagnostic v1 executing ONCE, PID8249,
+Colab tab23/cellHhlGa5HMi3Ja, CPU/high-RAM, lluiseriksson@gmail.com.
+SOURCE95c757465455c7e8cffcfcd6d9d18aa56f6d5083, notebook07d068c15,
+runner1f5443d50; HASH_GATE=PASS. No verdict yet. Do not rerun.
+Log /content/launch-neumann-coordinate-precision-v1.log; archive
+/content/hrpoly-neumann-coordinate-precision-diagnostic-v1-evidence.tar.gz.
+Preserve with scripts/verify_neumann_coordinate_precision_diagnostic.py on PASS.
+Retain same runtime for bounded first-error repair.20/41,TermSource0 unchanged.
+
+NEXT PREPARED SOURCE: R2a momentum carry plus R2b actual column/row phases and
+entrywise precision conjugacy, with Mathlib-only one-factor product repro.
+All are PRE-VALIDATION/NOT CHECKED; the finite20-name queue is enumerated in
+docs/NEUMANN-ACTUAL-COORDINATE-REFLECTION-DESIGN-20260907.md. Prepare pinned
+runner/reader before opening Colab. No runtime currently active.
+
+CURRENT CLEANUP01:35UTC: runtime930e719ad438 disconnected/deleted after both
+1186/1187 archives were locally verified and published; no Lean/Lake processes
+remained. Colab showed Reconnect; auxiliary tab22 closed. No live runtime now.
+Next static draft: tmp/NeumannCoordinateMomentumCarryDraft.lean (R2 carry/fine
+symbol only, NOT CHECKED). Prepare complete queue before another connection.
+
+FINAL01:35UTC supersedes LIVE notes below: R1 HOT PASS independently preserved,
+ledger1187 (source6804b00aa,7names). Parent common translation PASS ledger1186
+(source327a79d3e,11names). No further live compiler required in runtime930e719ad438;
+cleanup is next. R2-R6 actual Green reflection remain open.20/41,TermSource0.
+
+LIVE R1 HOT01:32:50UTC: PID22599, runtime930e719ad438, tab22.
+Parent common-translation PASS is independently preserved in ledger1186.
+Source6804b00aa, runner4de83287a, reader b41de5843; seven-name alias
+permutation diagnostic only. Do not rerun; see coordinate-reflection design
+note for log/archive paths.20/41,TermSource0,window15 unchanged.
+
+CURRENT 2026-09-07 supersedes all LIVE notes below: common-block translation
+diagnostic PASS independently preserved, ledger1186, source327a79d3e.
+11 exact axiom declarations; fresh prerequisites8588jobs; diagnostic only,
+no production seal. Runtime930e719ad438 retained, tab22; PID753 completed.
+Do not rerun the notebook. Next: fill prepared R1 HOT pins from the preserved
+report and run once on this same warm runtime.20/41,TermSource0 unchanged.
+Evidence: validation-evidence/neumann-actual-common-translation-diagnostic-v1-20260907.
+
+LIVE UPDATE 01:02UTC: common-translation diagnostic is now running once,
+PID753, Colab tab18, CPU/highRAM50.99GB. Source327a79d3e, runner6a6a6b225,
+notebooka21430204; hash gate PASS, no compiler verdict yet. Do not reexecute.
+The immediately following no-runtime paragraph describes preparation only.
+
+CURRENT 2026-09-07 (supersedes every LIVE note below): runtime
+e7dbc45c00b1 was deleted after scalar1183 and phase1185 preservation.
+No Colab calculation is active. Source327a79d3e contains five PRE-VALIDATION
+common-block translation lemmas for the literal full Green. Runner
+6a6a6b2252421b57d3de0a18814098598094ba64 is prepared, not yet executed.
+Its independent reader tests accepted one synthetic fixture and rejected17;
+this is instrumentation evidence, NOT a Lean result. Next: publish notebook,
+then one fresh CPU/high-RAM diagnostic, retaining the runtime for bounded
+repair and evidence. See docs/NEUMANN-ACTUAL-SCALAR-NEXT-20260907.md.
+20/41, TermSource=0, window15 not attained. Do not rerun historical cells.
+
+Prepared next HOT478c40e6: sourceadfef2b5b has directionwise rectangle masks,
+full-period sides retained. Repro first, physical draft second; both PRE.
+Templates are deliberately non-executable until the current cold report is
+independently preserved and its actual pins filled. See
+docs/NEUMANN-DIRECTIONAL-MASKS-HOT-PREPARATION-20260907.md.
+Reuse only the SAME retained runtime after cold PASS/preservation; never
+rerun the cold cell or mark this subsequent diagnostic cold. No result yet.
+
+LIVE wrap/flat cold: SOURCE15e776db59c051571f79e47974acc2fbf597f715.
+One execution22:13:47.881279UTC PID16795, runtimeec5e95d70d1c,
+CPU/highRAM50.99GB, tab13/cellKkYQYAhYxyNB marked for handoff.
+Notebook d9a9c41ec4ccb0290dd40746364899748aeeef3c; hash gate PASS.
+Read docs/NEUMANN-WRAP-FLAT-COLD-20260907.md for exact pins and preservation.
+No reexecution/CI/local Lean. The previous b53 runtime is deleted.
+Separately prepared Mathlib-only NeumannRectangleDirectionalMasksRepro is
+STATIC/PRE, not in this cold queue and not compiler-verified.
+20/41,TermSource0,window15 unchanged. Older no-job/live notes are history.
+
+SUPERSEDING1177 (2026-09-06 22:02UTC): wrap v7 and flat-action v3 both HOT
+PASS, original evidence downloaded and independently verified. Source pins
+baf5fa136663fe71a9cf07dacd4e365b0026942e and
+69a5308c8e5635b95b59c6d5c88d4b5b789f851c. Runtimeb53f9b4fbc01 deleted after
+process checks and preservation; NO job remains. Earlier LIVE notes below
+are history, not commands to rerun. Next: exact-body promotion of both drafts
+with separate audits and PRE headers, then a pinned fresh cold gate.
+No Windows Lean/Lake, no exploratory CI, no Fable.20/41,TermSource0,
+window15 not attained. See ledger1174/1177 and continuation checkpoint.
+
+LIVE bounded wrap HOT: launched ONCE21:10:26.816673UTC, PID18398, on SAME
+runtimeb53f9b4fbc01, tab12 marked handoff. SOURCE5442189556b1c85e3ac0cb864403cc65f8e23b31,
+BASE81f35765ad50f8217bca20bc4530d99b3bf05103; runner e8d513b2af902fb91b58bdb61c1f989de6e6440d,
+hash ec01ca5615a879a9375f5e20ffdf3b5bd532564559b990b5b973810f7228b508,
+reader5ef38b091c0bfabdac87062d773f6c61a6ffa141. Parent review is sealed39b078258,
+not a guessed cache. At21:11UTC physical_prerequisites PID18450 active;
+no final result yet. Read /content/neumann-rectangle-wrap-probe-hot-v1-console.log;
+do NOT relaunch. Its first result/error must be preserved before continuing.
+Prepared separate flat-action runner55b3719087556fba937aeec45300a7f72625c572,
+hash82f4b8b4bd7a1e8a79975dd850b5da25142768779ab9b15902bdb30158165745,
+is NOT RUN. Both actual runner/reader pairs match the tested templates with
+only actual cold evidence pins filled (0.327921s/25305088RSS wrap;
+0.3577417s/25739264RSS flat), COMPILER_CHECKED=0 for these diagnostics.
+Cold1166 is sealed and pushed39b078258.20/41 andTermSource0 unchanged.
+
+LATEST1166: internal-bond production COLD PASS at81f35765ad50f8217bca20bc4530d99b3bf05103.
+8528jobs/16stages/four exact names. Original outer6c3977a5 and independent
+report81381379 preserved under validation-evidence/neumann-internal-bond-stencil-cold-20260906.
+Only NeumannInternalBondStencil + Audit retire PRE. Same runtimeb53f9b4fbc01,
+current tab12 marked handoff; no PID1799 remains at21:04:26UTC. Do NOT rerun
+the unexecuted editor cell restored when old tabs disappeared. Next use actual
+cold parent pins for bounded wrap HOT544218955, preserve first result/error,
+then flat action HOT9838cd3c3 if safe. No second cold clone/CI/Windows compiler.
+20/41,TermSource0,window15 unattained. LIVE text below is historical.
+
+LIVE internal-bond cold: SOURCE81f35765ad50f8217bca20bc4530d99b3bf05103,
+notebook abe9e4560910afa7d433851d35890062d8ed328a, one execution
+2026-09-06T20:25:39.007088UTC, PID1799, hash gate PASS.
+Colab CPU/highRAM50.99GB, account lluiseriksson@gmail.com, current browser tab11.
+Original cell Lfn-ch7rZMDi was executed ONCE. Tab10 disappeared; its handle
+was absent, so the same notebook URL was reopened WITHOUT executing a cell.
+At20:44:13UTC the restored terminal confirmed hostnameb53f9b4fbc01 and the
+original PID1799 alive, elapsed18:34, still internal_bond_stencil_focal.
+The reopened editor has a new unexecuted cell: do NOT run it. Read original
+process/logs in the retained terminal. No final verdict or runtime loss.
+At20:28:25UTC runtimeb53f9b4fbc01 entered internal_bond_stencil_focal after
+Mathlib cache8142/exit0. Next coarse result check around20:55UTC, not minute polls.
+See docs/NEUMANN-INTERNAL-BOND-STENCIL-COLD-20260906.md. Prepare only the
+bounded wrap probe and flat internal-bond action are prepared separately;
+both parent-cold pin sets remain unset. Do not start either before cold
+evidence preservation. Checkpoint6bed4a8f1 is pushed (gh identity checked,
+fast-forward only, no CI). Historical no-job notes below
+describe the completed previous runtime.20/41,TermSource0 unchanged.
+
+Prepared HOT instrumentation now cross-checks actual runner AST commands,
+draft loops and timeout budgets against each independent reader fixture:
+two tests PASS, exit0/0.3984242s/25464832 observed peak RSS. Each additionally
+keeps valid=1/rejected=10/preserved_failure=1 synthetic cases. This is NOT
+compiler evidence; parent-cold pins remain unset and both HOTs remain NOT RUN.
+
+Latest1165: internal-bond stencil HOT PASS at SOURCEc0174bbcb,
+runner e15a6c288, reader87db89571. All9 stages and4 exact audit names passed.
+Original archiveb084a312 and independent reportc6abfc32 are preserved in
+validation-evidence/neumann-internal-bond-stencil-hot-v1-20260906.
+This is diagnostic evidence, not a production cold seal. Next promote the
+exact mathematical body plus its audit, with PRE-VALIDATION until cold.
+At20:14:29UTC no PID17944, Lean or Lake remained. Runtimea824030f7bc1 was
+deleted after preservation; its only tab is now closed (zero tabs).
+No job remains in this session. Earlier LIVE/retained paragraphs are history.
+20/41,TermSource0,window15 unattained; Clay<0.1% unchanged.
+
+Latest1164: spacing cold sourcedd9354a87 PASS,8743jobs/16stages/3exactnames.
+Outer33830a24 and independent reportff717adf are downloaded and preserved.
+Only NeumannCanonicalSpacingNormalization + Audit retire PRE; exact body kept.
+Runtimea824030f7bc1/tab9 retained for the prepared bounded internal-bond HOT
+sourcec0174bbcb. Fill actual parent pins from this preserved cold evidence;
+do not rerun cold or call the prepared wrap probe544218955 compiler-verified.
+20/41,TermSource0,window15 unattained. Earlier LIVE paragraphs are historical.
+
+LIVE spacing cold: SOURCEdd9354a87, runner/readere2693781d, launcher339d5a2e7.
+Started once2026-09-06T19:30:22.418089UTC, hash gate PASS, PID1139,
+CPU/highRAM50.99GB, tab9/cellJj0kgx_GMieQ. No final verdict yet.
+Runtimea824030f7bc1;19:35:06UTC bootstrap passed and canonical_spacing_focal
+started. Next coarse check around20:00UTC; no polling loop or duplicate job.
+R3 internal-bond stencil sourcec0174bbcb and fail-closed HOT templatesd65d65c9c
+are prepared, NOT RUN; parent-cold pins deliberately unset until preservation.
+See docs/NEUMANN-CANONICAL-SPACING-COLD-20260906.md. Keep this active tab;
+do not rerun.20/41,TermSource0. All older runtime notes are historical.
+
+Latest1163: spacing normalization HOT PASS at852d3b82e,9 stages/3 exact names,
+archiveb72c538b and independent report6869c9af preserved. Exact-body production
+NeumannCanonicalSpacingNormalization + Audit are PRE pending their cold gate.
+The SAME runtime373c432a4cb0 survived reconnection and supplied the HOT cache;
+after preservation no Lean/Lake remained19:18:37UTC. Runtime deleted via Colab
+and all tabs closed. No active job/monitor. The earlier LIVE notes are historical.
+Cold canonical action1162 is sealed806e7f32d. Next prepare the spacing cold
+gate, not a rerun of any historical notebook.20/41,TermSource0 unchanged.
+
+Latest1162: canonical precision source474688021 passed fresh cold8742 jobs,
+all16 stages and both exact audit names. Original downloaded outerd2f2434b
+and independent reportc556fe22 are preserved. Only its two certified headers
+retire PRE. The run finished PASS before Colab disconnected for inactivity;
+observed disconnected at19:09UTC after the interrupted turn. Do not rerun.
+Next check whether the SAME runtime373c432a4cb0 survives, then use the
+prepared bounded spacing HOT852d3b82e after filling actual parent-cold pins.
+If that runtime is gone, do not call a new runtime a retained hot session.
+20/41,TermSource0,window15 unattained. Earlier LIVE paragraphs are historical.
+
+LIVE2026-09-06: canonical precision cold source474688021 is executing once
+in Colab CPU/highRAM50.99GB, runtime373c432a4cb0, browser tab8.
+Start14:47:47.255875UTC, launcherPID1050, hash gate PASS. Notebook vehicle7da1ad7d9,
+revision neumann-canonical-precision-promoted-cold-v1. At~14:53UTC focal
+was8251/8391 with no error; no final verdict yet. Do not reexecute the cell.
+Keep the runtime/tab for independent evidence preservation. Next bounded
+HOT spacing draft852d3b82e and tested templates186d67fe7 remain NOT RUN,
+with parent-cold pins deliberately unset. No production seal or counter move.
+See docs/NEUMANN-CANONICAL-PRECISION-COLD-20260906.md for exact paths.
+The paragraphs saying no live runtime below describe the previous completed
+session, not this gate.20/41,TermSource0,window15 unattained.
+
+Latest1161: canonical Neumann finite-action HOT PASS at8aa5fe1ff,
+two exact names/nine stages, original archive and independent review preserved.
+v1 dependency timeout1159 and v2 coercion failure1160 remain preserved.
+The two exact-body production/audit files are PRE-VALIDATION pending cold,
+not a new production seal. Runtime bb2d3bf732a8 was deleted after all four
+cold/HOT archives were downloaded and verified; no Lean remained at14:34:35UTC,
+and all browser tabs are closed. No active build or monitoring loop.
+Next prepare the two-module cold gate; see
+docs/NEUMANN-CANONICAL-PRECISION-COLD-20260906.md. No historical cell rerun.
+20/41,TermSource0,window15 unattained. Older live-runtime paragraphs below
+are historical. The mass-offset cold production remains sealed1158.
+
+Latest seal1158: actual mass/complete-offset source9bb957757b6454871eaea6e26aed8c95dc576b3c
+passed8503 cold jobs, all16 stages and six exact audit names. Downloaded
+outerfa07a48a and independent report10670b67 are preserved. Only the two
+certified production headers retire PRE. At13:42:51UTC PID8676 had ended
+and no Lean remained. The browser crash did not restart or invalidate the run.
+Runtime bb2d3bf732a8 is retained for the prepared bounded canonical-Neumann
+finite-action HOT draft5fa966408; its templates944285a33 require the actual
+parent preservation pins before execution. No new HOT has been launched yet.
+Read docs/NEUMANN-MASS-OFFSETS-CONTINUITY-20260906.md before any action.
+Do not duplicate the runtime or rerun a historical cell. The older runtime
+paragraphs below are historical.20/41,TermSource0,window15 unattained.
+
+Latest HOT1157: actual mass/complete-offset endpoint at6d02bcfd4091fb549dd9856f6fa95bb10e854643,
+9 stages/6 exact names, archive515f57a9 and independent report1feb8e26 preserved.
+Its production NeumannGeneratedMassCompleteOffsets + Audit are exact-body,
+PRE-VALIDATION pending fresh cold compilation. Earlier failures1155/1156 retained.
+Runtime4609d7098347 deleted safely after preservation; no active build or monitor.
+Next: prepare exact two-module cold runner/independent reader, cross-check their
+actual contract (not merely matching self-fixtures), then fresh Colab CPU/highRAM.
+Do not rerun historical cells.20/41,TermSource0,window15 unattained unchanged.
+See docs/NEUMANN-MASS-OFFSETS-CONTINUITY-20260906.md.
+
+Latest seal1154: complete active fibre at7f7455b28,8501 cold jobs,16 stages,
+6 audit names. Original metadata-reader FAIL preserved1153; reviewed v2
+PASS on unchanged downloaded archive, no compiler rerun. Only two certified
+headers retire PRE. The mass-offset draft4a05bff83 remains PRE and is the
+bounded HOT next step in retained runtime4609d7098347. See current continuity
+below.20/41,TermSource0,window15 not attained remain unchanged.
+
+Current cold promotion prepared2026-09-06: SOURCE7f7455b28,
+NeumannGeneratedCompleteFibre + six-name audit. Follow
+docs/NEUMANN-COMPLETE-FIBRE-COLD-20260906.md for live state and exact pins.
+Do not rerun historical HOT/cold cells.20/41 andTermSource0 unchanged.
+
+Latest HOT2026-09-06: ledger1152, constructed complete active-fibre dictionary
+sourceb7ac45aca, six exact names/9 stages0. Independently preserved; exact-body
+production NeumannGeneratedCompleteFibre/audit remain PRE pending cold gate.
+Runtime deleted after preserving all results. Earlier "runtime retained"
+paragraphs are historical. Cold1149 remains sealed.20/41,TermSource0 unchanged.
+
+Latest focused seal2026-09-06: ledger1149 certifies finite block-image
+averaging and actual generated Q/source-weighted/counting full-field actions
+at8570618f2. All18 cold stages and6 exact names passed; downloaded artifacts
+independently verified. Only four certified headers retire PRE.20/41 and
+TermSource0 unchanged; regional inverse, uniform B0 and window15 stay open.
+Runtime retained for the already prepared six-name complete-fibre HOT
+diagnostic at8c07d3f3c, generic sum repro first. Live continuity:
+docs/NEUMANN-AVERAGE-FIELD-COLD-20260906.md. Do not rerun the completed cold cell.
+
+Latest focused seal2026-09-06: ledger1144 certifies rectangle image-family
+coverage and actual full Eq246 source-image summability at d9d1bcae8,
+16 cold stages and8 exact audit names, downloaded evidence independently
+verified. This is not a regional inverse, uniform physical B0 or window15.
+20/41,TermSource0 unchanged. Current continuity and two prepared HOT units:
+docs/NEUMANN-RECTANGLE-FULL-GREEN-COLD-20260906.md. Never rerun its cold cell.
+
+Latest focused seal2026-09-05: ledger1126 certifies half-cell block reflection
+geometry at59160603d,16 cold stages, downloaded evidence independently verified.
+Runtime deleted, monitor removed, zero tabs after19:28UTC. Next gate is actual
+generated Q*Q reflection with a constructed active-carrier map, not the already
+proved same-owner geometry alone.20/41,TermSource0,window15 unattained.
+
+Latest focused update2026-09-05: ledger1124 seals the three-name literal
+full ambient physical value action at10437a1a8, with downloaded archives
+independently verified. Ledger1122 already seals the nine-name physical
+prefix;1123 remains separate HOT draft evidence. Ledger1125 now preserves
+the HOT half-cell reflection/block diagnostic PASS and three earlier failures.
+The runtime was deleted and its sole tab closed after19:14UTC. This diagnostic
+is not part of either cold seal; follow the top of
+tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md for live state.
+20/41,TermSource0,window15 unattained. No Windows Lean or exploratory CI.
+
+Latest hRpoly update2026-09-05: ledger1118 seals F5 point/fibre prefix at
+source6c49a8da (20 independently verified cold stages,7 exact axioms).
+Ledger1119 records four physical real-slice draft theorems PASS at59f9f522,
+with downloaded evidence verified; this is not a promoted production seal.
+Ledger1120 preserves a valid three-theorem owner-dictionary HOT prefix and
+the subsequent point-probe NeZero failure. No declaration of that failed
+module is accepted. The focused repair91cc4dd5 passed its two declarations
+and all18 recorded stages (ledger1121); downloaded archive hashes match.
+This is a diagnostic PASS, not a promoted production seal. Runtime deleted,
+monitor deleted, browser tabs closed. See the continuity file for the next
+finite nine-declaration promotion. Do not rerun historical notebooks. No Windows Lean.
+20/41,TermSource0,window15 compatible but unattained.
+
 You are a (more powerful) AI being handed this Lean 4 / Mathlib repository to advance. This
 single file is self-contained: it gives you the project's purpose, the build/verify loop,
 the iron rules, the complete map of what is proved, and the exact open targets. Read it once,
@@ -453,3 +798,72 @@ lemmas without breaking §3. And keep `~0% to Clay` honest — a model that clai
 prize by adding an axiom or a vacuous target has failed the actual test, which is integrity.
 
 — The Eriksson Programme. Build truthfully.
+
+## Live handoff — 2026-08-01
+
+The current hRpoly branch retains each literal CMP109 Lemma-1 native domain as
+a distinct finite index, maps only its support to the terminal coarse lattice,
+and derives the complete centered rooted-residual sum with explicit
+`64 * exp(-rate/24) < 1` windows.  Do not quotient coincident coarse supports:
+that would reintroduce a fibre-multiplicity obligation.  The combined
+`domain_nonempty`, `domain_subset`, `domainMetric_nonneg`, `rooted_residual`,
+and `volume_budget` fields are now derived, as is the combined physical
+equation-(1.43) field.
+
+The mixed-sector equation-(1.36) producer is now also green on the corrected
+source carrier `cmp116Eq80Lemma1CombinedSourceSmallFieldCarrier`. The cutoff
+carrier is disjoint from every source-admissible `P`, while the residual is
+still evaluated on the terminal projection `P_Z0 B`. The bridge uses
+monotonicity of the source sup norm under an additional coordinate projection;
+it does not claim that every native source bond is interior with its full
+stencil, and it does not localize the global correction `D(B)`. Headline:
+`abs_cmp116Eq80Lemma1CombinedPhysicalResidual_le_eq136`.
+
+Do not reuse the retracted all-interior route: because
+`cmp116LocalizationCore` makes every bond in `P` interior, that small-field
+cutoff and the complementary large-field cutoff are incompatible for nonempty
+`P`. The formal no-go theorem remains
+`cmp116Eq80Lemma1CombinedInteriorSignedCutoff_eq_zero`.
+
+The public partial constructor
+`cmp116Eq226CenteredConditionedCombinedPartialTermSourceOfPreEq136` is now
+compiler- and oracle-verified in a fresh Colab clone.  It generates the final
+equation-(1.36) field from the direct producer and the strictly positive,
+source-pinned `CMP109Lemma1Eq136SourceCertificate.bound`; do not count that
+certificate as a proof of Lemma 1.  The constructor still receives an already
+inhabited `PreEq136`, so it is not a terminal inhabitant and does not reduce
+the remaining input telescope by itself.
+
+The live denominator is now explicit: 17 of the 41 pre-(1.36) obligations
+have independent source-specific producers.  The next milestone is a genuine
+source-specific `PreEq136` assembler that omits those seventeen conclusions
+from its inputs, rather than accepting a completed pre-record plus ledger
+equalities.  The physical covariance/parametrix data, conditioned covariance
+lower certificate, contour contractions, Cauchy normalizations, and joint
+scalar windows must remain visible until they are separately discharged.
+
+## Focused hRpoly handoff — 2026-09-05
+
+The preceding August denominator is historical: the current count is
+20/41, TermSource=0, window15 compatible but not attained. Clay remains
+<0.1%. The current branch is codex/cmp116-interacting-wilson-hessian.
+
+F4's promoted uniform scalar full-Green owner-amplitude graph is cold
+verified at source5138e9bd4bc88797c91c21df5bb5c630c71600ca and selectively
+sealed in47848fb0f21f495e956cab35dbbee3d706cdfe0f (ledger Addendum1116).
+Three production modules, three audits, eight exact allowed trios;
+downloaded archives independently verified. The theorem chooses rho,C
+before all depths j for fixed a,L and retains C R^-2. It does not give
+regional/derivative B0 or window15. No new aggregate root build is claimed.
+
+F5 must separately bundle the common scalar over the Lie fibre, transport
+the actual real operator, pay only one owner-fibre's R^4 cardinality, then
+address the canonical regional inverse and its three derivative actions.
+Do not identify restriction of an ambient inverse with inversion of a
+compressed precision. Read docs/F4-UNIFORM-AMPLITUDE-PROMOTION.md and the
+F5 acceptance gates in docs/HRPOLY-CMP102-CMP116-VERTICAL-SLICE.md.
+
+Current bounded hot diagnostic status is recorded in
+tmp/HRPOLY-PHYSICAL-RESIDUE-COLD-CONTINUITY-20260904.md. Its cache is
+diagnostic only, never the basis for a cold seal. Heavy work remains in
+Colab, not Windows; Fable is unavailable and exploratory CI is forbidden.

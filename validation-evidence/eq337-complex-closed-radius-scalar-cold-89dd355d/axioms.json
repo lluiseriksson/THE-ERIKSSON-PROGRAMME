@@ -1,0 +1,31 @@
+{
+  "source_sha": "89dd355dc97c2ddac166a8ae5ab1d9d1987ac7c3",
+  "source_blob": "tmp/CMP99ComplexClosedRadiusScalar.repro.lean",
+  "source_blob_sha256": "ec016c7642686947e9ac87ef5cee573d8d2ea85bea046cd365ec21ce6cac2aa9",
+  "final_status": "PASS",
+  "focal_exit": 0,
+  "focal_seconds": 58.024,
+  "expected_readouts": 15,
+  "observed_readouts": 15,
+  "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "declarations": [
+    "YangMills.RG.cmp99ComplexClosedRadiusFactorEnvelope_mono",
+    "YangMills.RG.cmp99ComplexClosedRadiusAt_next",
+    "YangMills.RG.cmp99ComplexClosedRadiusDeviation_le_coefficient_mul",
+    "YangMills.RG.cmp99ComplexClosedRadiusDeviation_nonneg",
+    "YangMills.RG.cmp99ComplexClosedRadiusExp_le_four_mul",
+    "YangMills.RG.cmp99ComplexClosedRadiusNextLink_le_coefficient_mul",
+    "YangMills.RG.cmp99ComplexClosedRadiusNextLink_nonneg",
+    "YangMills.RG.cmp99ComplexClosedRadiusNext_le_two_mul",
+    "YangMills.RG.cmp99ComplexClosedRadiusNext_nonneg",
+    "YangMills.RG.cmp99ComplexClosedRadiusNext_le_growthFactor_mul",
+    "YangMills.RG.cmp99ComplexClosedRadiusDeviationCoefficient_pos",
+    "YangMills.RG.cmp99ComplexClosedRadiusLinkCoefficient_pos",
+    "YangMills.RG.one_le_cmp99ComplexClosedRadiusGrowthFactor",
+    "YangMills.RG.CMP99ComplexClosedRadiusBudget.radiusAt_nonneg_and_le",
+    "YangMills.RG.CMP99ComplexClosedRadiusBudget.deviation_lt_threshold"
+  ],
+  "evidence_sha256": "bf014bd14e0d0ae57a120ae67d699b6bd1df3562a6df4e565fc103ca1124d4cb",
+  "archive_sha256": "abdfc29292c153cc44bfe36667559773dc423acab3017fc369685ce62775fad6",
+  "executed_notebook_sha256": "627122013C1C9FCB3D841C33F4455D777331C5F4CE244EE4DAD880655E96EB7D"
+}

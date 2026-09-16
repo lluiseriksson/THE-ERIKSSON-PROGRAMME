@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary
+
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionPointSourceFibreSolution_apply_eq_integrand

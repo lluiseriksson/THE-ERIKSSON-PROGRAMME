@@ -1,0 +1,1 @@
+{"command": ["lake", "exe", "cache", "get"], "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1", "exit": 0, "log_file": "cache_get.log", "output_sha256": "18cfb29942326ace51032bafb8c557fb732db93edb34b6930fc372497a2503c1", "seconds": 4.460466917998929, "stage": "cache_get"}

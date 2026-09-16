@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-canonical-precision-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "1963b31baf362f55a71d6a89d4b673b1dc89ff32df7abd9e5a100664c02afcbe", "seconds": 15.936370311999951, "stage": "clone"}

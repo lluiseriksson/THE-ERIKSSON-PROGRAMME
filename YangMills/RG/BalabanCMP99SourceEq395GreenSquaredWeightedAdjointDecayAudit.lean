@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceEq395GreenSquaredWeightedAdjointDecay
+
+#print axioms YangMills.RG.cmp99Eq395GeneratedGreenSquaredWeightedAdjointAmplitude
+#print axioms YangMills.RG.cmp99Eq395GeneratedGreenSquaredWeightedAdjoint
+#print axioms YangMills.RG.cmp99Eq395GeneratedGreenSquaredWeightedAdjointKernelData
+#print axioms YangMills.RG.cmp99Eq395GeneratedGreenSquaredWeightedAdjoint_exponentialKernelBound

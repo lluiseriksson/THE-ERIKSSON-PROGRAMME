@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116Lemma1WeakenedPropagatorBound
+
+#print axioms YangMills.RG.CMP116Lemma1WeakenedPropagatorCertificate.walkExponent_le_sixteen
+#print axioms YangMills.RG.CMP116Lemma1WeakenedPropagatorCertificate.exp_walkExponent_le
+#print axioms YangMills.RG.CMP116Lemma1WeakenedPropagatorCertificate.radialMajorant_le
+#print axioms YangMills.RG.CMP116Lemma1WeakenedPropagatorCertificate.propagator_one
+#print axioms YangMills.RG.CMP116Lemma1WeakenedPropagatorCertificate.norm_propagator_le
+#print axioms YangMills.RG.CMP116Lemma1WeakenedPropagatorCertificate.hasDerivAt_propagator_update
+#print axioms YangMills.RG.CMP116Lemma1WeakenedPropagatorCertificate.norm_propagator_apply_le

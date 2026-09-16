@@ -1,0 +1,10 @@
+import YangMills.RG.NearLogMatrixNoWinding
+
+namespace YangMills.RG
+
+#print axioms norm_matrix_trace_le_card_mul_l2_opNorm
+#print axioms MatrixTraceQuantized
+#print axioms trace_eq_zero_of_quantized_of_norm_lt_two_pi
+#print axioms trace_nearLog_unitary_sub_one_eq_zero_of_quantized_of_noWinding
+
+end YangMills.RG

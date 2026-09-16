@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP116RadialTaylorResidual
+
+#print axioms YangMills.RG.cmp116RadialTaylorResidualOperator
+#print axioms YangMills.RG.eq_fixedQuadratic_add_residual_of_eq_radial
+#print axioms YangMills.RG.inner_cmp116RadialTaylorOperator_zero
+#print axioms YangMills.RG.inner_cmp116RadialTaylorResidualOperator
+#print axioms YangMills.RG.abs_inner_cmp116RadialTaylorResidualOperator_le_of_hessian_sub
+#print axioms YangMills.RG.abs_inner_cmp116RadialTaylorResidualOperator_le_one_third
+#print axioms YangMills.RG.abs_half_inner_cmp116RadialTaylorResidualOperator_le_one_sixth
+#print axioms YangMills.RG.cmp116RadialTaylorOperator_eq_fixed_add_residual_of_normalized
+#print axioms YangMills.RG.cmp116RadialTaylor_scalarResidual_eq

@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannImageIntervalCoverageAudit.lean"], "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1", "exit": 0, "log_file": "interval_audit.log", "output_sha256": "2afdfb6113e08d1e08c46811083710b3e000485c100e460d934e5bb9beeb3386", "seconds": 5.474681317000432, "stage": "interval_audit"}

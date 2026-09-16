@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99PhysicalFineHeadTailAbsoluteSummability
+
+#print axioms YangMills.RG.summable_norm_cmp99SourcePi4ComplexBackgroundMinimizerWordTerms_of_source
+#print axioms YangMills.RG.summable_norm_cmp99SourcePi4PhysicalBackgroundMinimizerWordTerms_of_source

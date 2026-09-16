@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99Eq335PhysicalRegularityClassLocalizedPrecision
+
+/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
+
+namespace YangMills.RG
+
+#print axioms CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision
+#print axioms CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_eq
+#print axioms CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_eq_canonical
+#print axioms CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_eq_exponentialSource
+#print axioms CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_isSymmetric
+#print axioms CMP99Eq335PhysicalRegularityClass.inner_localizedRetainedPhysicalPrecision
+
+end YangMills.RG

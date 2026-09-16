@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedPhysicalOuterCardinality
+
+#print axioms YangMills.RG.cmp116SourcePhysicalCoordinateRate
+#print axioms YangMills.RG.cmp116SourcePhysicalRootCardinalityRate
+#print axioms YangMills.RG.cmp116SourceRestrictedUniformR1TraceCost_eq_card_mul
+#print axioms YangMills.RG.cmp116SourceRestrictedUniformR1TraceCost_le_card_mul
+#print axioms YangMills.RG.cmp116Eq225LocalizedSourceEnergyPrefactor_zero_le_exp_card_physical
+#print axioms YangMills.RG.cmp116SourceRestrictedPhysicalOuterPerCarrierCost
+#print axioms YangMills.RG.cmp116SourceRestrictedPhysicalOuterBoundary_le_exp_card

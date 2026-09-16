@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4RootedResidual
+
+#print axioms YangMills.RG.sum_cmp102Eq80SourcePi4DomainAt_filter_blocks_eq
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DomainFamily_rooted_sum_pow_card_le
+#print axioms YangMills.RG.exp_neg_cmp102Eq80SourcePi4Metric_le_cardWeight
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DomainFamily_rooted_exp_metric_sum_le
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DomainFamily_rooted_weighted_exp_metric_sum_le
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DirectRootBound
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DirectRootBound_nonneg
+#print axioms YangMills.RG.cmp102Eq80SourcePi4Indexed_rooted_residual_le

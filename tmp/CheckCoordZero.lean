@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FaaDiBrunoPhysicalDomainExpansion
+
+#check ContinuousMultilinearMap.map_coord_zero
+#check ContinuousMultilinearMap.map_zero
+#check Finset.sum_eq_zero
+#check Finset.exists_ne_zero_of_sum_ne_zero

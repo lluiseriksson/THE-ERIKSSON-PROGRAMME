@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionModeAction
+
+#print axioms YangMills.RG.cmp99SourceFlatFullActiveComplexField
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexQprimeMass
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexQprimeMass_fourierMode
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionAction
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionAction_fourierMode
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceFlatFullComplexPrecision_fourierMode

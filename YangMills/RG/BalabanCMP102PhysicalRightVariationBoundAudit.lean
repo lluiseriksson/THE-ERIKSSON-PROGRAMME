@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalRightVariationBound
+
+#print axioms YangMills.RG.norm_cmp98UbarLogAveragePhysicalVariation_le_sourceScale
+#print axioms YangMills.RG.norm_cmp98GAd_apply_le_exp_two_mul
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearRightVariation_le_sourceSupNorm

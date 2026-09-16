@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99Eq335PhysicalLaplacianInternalCarrier
+
+/-! PRE-VALIDATION: scratch audit; no compiler or oracle verdict exists. -/
+
+namespace YangMills.RG
+
+#print axioms norm_covariantD0CLM_extendZero_eq_of_eqOn_internalBonds
+#print axioms norm_cmp99ActiveRegionSourceCovariantD0CLM_eq_of_eqOn_internalBonds
+#print axioms cmp99ActiveRegionSourceCovariantLaplacian_eq_of_eqOn_internalBonds
+
+end YangMills.RG

@@ -1,0 +1,10 @@
+{
+  "files": {
+    "eq337-covariant-derivative-axioms.json": "2C706A9743DC4FC05BB74BCB1D73CC3775DAA26593BE563E0C5F1C769AABFA2C",
+    "hrpoly-eq337-covariant-derivative-evidence.tar.gz": "B14FF54127B3BABE336F8BE6935E10C746D5250803170F1B8AD1A0A4A7E136CD"
+  },
+  "runner_revision": "eq337-complex-coordinate-promoted-cold-v2",
+  "source_sha": "573d70e09eb3f069cc3e86f43ab76b16a2349163",
+  "status": "EQ337_COVARIANT_DERIVATIVE_ARCHIVE_PACKAGE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

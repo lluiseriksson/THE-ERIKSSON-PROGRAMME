@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceTransportedBlockSynthesisRowSum
+
+#print axioms YangMills.RG.sum_norm_cmp99TransportedBlockSynthesisCLM
+#print axioms YangMills.RG.sum_norm_cmp99SourceTransportedBlockAverage_adjoint

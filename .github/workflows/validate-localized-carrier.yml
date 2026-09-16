@@ -1,0 +1,204 @@
+name: Validate CMP89 Eq246 full solution
+
+on:
+  workflow_dispatch:
+    inputs:
+      cold:
+        description: Require a cold checkout without project-graph restoration
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+env:
+  SOURCE_SHA: febce96d017f4ec8494354656f88b0dca56c1854
+  EXPECTED_MATHLIB: 07642720480157414db592fa85b626dafb71355b
+  TOOLCHAIN_URL: https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst
+  TOOLCHAIN_SHA256: bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+
+jobs:
+  cmp89-eq246-full-solution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Require cold terminal mode
+        shell: bash
+        run: |
+          set -euo pipefail
+          test '${{ inputs.cold }}' = 'true'
+
+      - name: Checkout exact control checkpoint
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          path: control
+
+      - name: Checkout immutable mathematical source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 1
+          path: source
+
+      - name: Verify checkpoints and exact source scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          control_head="$(git -C control rev-parse HEAD)"
+          source_head="$(git -C source rev-parse HEAD)"
+          printf 'SOURCE_SHA=%s\nACTUAL_SOURCE_HEAD=%s\nCONTROL_SHA=%s\nGITHUB_SHA=%s\nCOLD_MODE=%s\n' \
+            "$SOURCE_SHA" "$source_head" "$control_head" "$GITHUB_SHA" \
+            '${{ inputs.cold }}' | tee evidence/checkpoint.txt
+          test "$control_head" = "$GITHUB_SHA"
+          test "$source_head" = "$SOURCE_SHA"
+          test "$(tr -d '\r\n' < source/lean-toolchain)" = \
+            'leanprover/lean4:v4.29.0-rc6'
+          printf '%s  %s\n' \
+            396b2827d694662b915bad20c62c71bfbb3493af136b9b52cd86538b389467b2 \
+            source/YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolution.lean \
+            | sha256sum -c -
+          printf '%s  %s\n' \
+            d586fb4ff1c7ddee39d12b8133a7cfdc1879d37b0e9fb3609c191e15bc3c6310 \
+            source/YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolutionAudit.lean \
+            | sha256sum -c -
+
+      - name: Install exact Lean toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          asset=/tmp/lean-4.29.0-rc6-linux.tar.zst
+          curl --fail --location --retry 5 --retry-all-errors --retry-delay 2 \
+            -o "$asset" "$TOOLCHAIN_URL"
+          printf '%s  %s\n' "$TOOLCHAIN_SHA256" "$asset" | sha256sum -c -
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq zstd
+          mkdir -p /tmp/lean-toolchain
+          tar --use-compress-program=unzstd -xf "$asset" -C /tmp/lean-toolchain
+          bindir=/tmp/lean-toolchain/lean-4.29.0-rc6-linux/bin
+          test -x "$bindir/lean"
+          test -x "$bindir/lake"
+          echo "$bindir" >> "$GITHUB_PATH"
+          {
+            printf 'TOOLCHAIN_URL=%s\nTOOLCHAIN_ASSET_SHA256=%s\n' \
+              "$TOOLCHAIN_URL" "$TOOLCHAIN_SHA256"
+            sha256sum "$bindir/lean" "$bindir/lake"
+          } | tee evidence/toolchain.txt
+
+      - name: Materialize pinned dependencies
+        shell: bash
+        working-directory: source
+        run: |
+          set -euo pipefail
+          lean --version | tee -a ../evidence/toolchain.txt
+          lake --version | tee -a ../evidence/toolchain.txt
+          manifest_before="$(sha256sum lake-manifest.json | cut -d' ' -f1)"
+          toolchain_before="$(sha256sum lean-toolchain | cut -d' ' -f1)"
+          lake update 2>&1 | tee ../evidence/lake-update.log
+          test "$(sha256sum lake-manifest.json | cut -d' ' -f1)" = "$manifest_before"
+          test "$(sha256sum lean-toolchain | cut -d' ' -f1)" = "$toolchain_before"
+          mathlib="$(git -C .lake/packages/mathlib rev-parse HEAD)"
+          printf 'MATHLIB_SHA=%s\n' "$mathlib" | tee ../evidence/mathlib.txt
+          test "$mathlib" = "$EXPECTED_MATHLIB"
+          lake exe cache get 2>&1 | tee ../evidence/cache-get.log
+
+      - name: Run Eq246 focal
+        shell: bash
+        working-directory: source
+        run: |
+          set -euo pipefail
+          start=$SECONDS
+          set +e
+          lake build YangMills.RG.BalabanCMP89Eq246StabilizedAliasFullSolution \
+            2>&1 | tee ../evidence/focal.log
+          focal_exit=${PIPESTATUS[0]}
+          set -e
+          elapsed=$((SECONDS - start))
+          printf 'stage=eq246_full_solution_focal exit=%s seconds=%s\n' \
+            "$focal_exit" "$elapsed" | tee ../evidence/focal.status
+          test "$focal_exit" -eq 0
+
+      - name: Run Eq246 audit and exact axiom gate
+        shell: bash
+        working-directory: source
+        run: |
+          set -euo pipefail
+          start=$SECONDS
+          set +e
+          lake env lean \
+            YangMills/RG/BalabanCMP89Eq246StabilizedAliasFullSolutionAudit.lean \
+            2>&1 | tee ../evidence/audit.log
+          audit_exit=${PIPESTATUS[0]}
+          set -e
+          elapsed=$((SECONDS - start))
+          printf 'stage=eq246_full_solution_audit exit=%s seconds=%s\n' \
+            "$audit_exit" "$elapsed" | tee ../evidence/audit.status
+          test "$audit_exit" -eq 0
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          text = Path('../evidence/audit.log').read_text(encoding='utf-8')
+          compact = re.sub(r'\s+', '', text)
+          for forbidden in ('sorryAx', 'ofReduceBool', 'Lean.ofReduceBool'):
+              if forbidden in compact:
+                  raise SystemExit('FORBIDDEN_AXIOM=' + forbidden)
+          with_axioms = re.findall(r"'([^']+)'dependsonaxioms:\[([^\]]*)\]", compact)
+          without_axioms = re.findall(r"'([^']+)'doesnotdependonanyaxioms", compact)
+          expected = {
+              'YangMills.RG.sum_row_mul_cmp89Eq246StabilizedAliasFullSolution_eq',
+              'YangMills.RG.cmp89Eq246EntireAliasPrecisionMatrix_mulVec_stabilizedFullSolution',
+          }
+          names = {name for name, _ in with_axioms} | set(without_axioms)
+          if len(with_axioms) + len(without_axioms) != 2:
+              raise SystemExit('AXIOM_HEADER_COUNT_MISMATCH')
+          if names != expected:
+              raise SystemExit('AXIOM_DECLARATION_MISMATCH=' + repr(sorted(names)))
+          allowed = {'propext', 'Classical.choice', 'Quot.sound'}
+          lines = []
+          for name, raw in with_axioms:
+              axioms = {item for item in raw.split(',') if item}
+              unexpected = axioms - allowed
+              if unexpected:
+                  raise SystemExit(f'AXIOM_GATE_FAILED {name} {sorted(unexpected)}')
+              lines.append(name + '=' + ','.join(sorted(axioms)))
+          for name in without_axioms:
+              lines.append(name + '=')
+          Path('../evidence/axioms.txt').write_text(
+              '\n'.join(sorted(lines)) + '\n', encoding='utf-8'
+          )
+          print('\n'.join(sorted(lines)))
+          PY
+          printf 'FINAL_STATUS=PASS\n' > ../evidence/FINAL_STATUS
+
+      - name: Package deterministic cold evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test ! -f evidence/FINAL_STATUS; then
+            printf 'FINAL_STATUS=FAIL_OR_INCOMPLETE\n' > evidence/FINAL_STATUS
+          fi
+          sums="$(mktemp)"
+          find evidence -maxdepth 1 -type f ! -name SHA256SUMS -print0 | \
+            sort -z | xargs -0 sha256sum > "$sums"
+          mv "$sums" evidence/SHA256SUMS
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 \
+            --numeric-owner -cf - evidence | gzip -n \
+            > cmp89-eq246-full-solution-evidence.tar.gz
+          sha256sum cmp89-eq246-full-solution-evidence.tar.gz \
+            | tee evidence/ARCHIVE_SHA256
+
+      - name: Upload durable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmp89-eq246-full-solution-${{ env.SOURCE_SHA }}
+          path: |
+            evidence
+            cmp89-eq246-full-solution-evidence.tar.gz
+          if-no-files-found: error
+          retention-days: 14

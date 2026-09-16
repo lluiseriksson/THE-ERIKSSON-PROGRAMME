@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89Eq251AliasAmplitudeUpper
+
+#print axioms YangMills.RG.abs_sin_half_add_alias
+#print axioms YangMills.RG.pi_mul_abs_cast_le_abs_add_alias
+#print axioms YangMills.RG.abs_sinc_half_add_alias_le_six_mul_weight
+#print axioms YangMills.RG.abs_cmp89Eq245SincAverageFactor_scaled_alias_le
+#print axioms YangMills.RG.abs_cmp89Eq245SincAverageAmplitude_scaled_alias_le
+#print axioms YangMills.RG.norm_cmp89Eq245ComplexAverageAmplitude_scaled_alias_le

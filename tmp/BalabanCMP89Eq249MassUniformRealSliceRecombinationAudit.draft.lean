@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq249MassUniformRealSliceRecombination
+
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedIntegral_eq_fourierLeftDerivativeDiff_massUniform_draft

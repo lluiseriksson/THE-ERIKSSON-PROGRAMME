@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalTwoFieldContour
+
+#print axioms YangMills.RG.norm_orientedWilsonFactor_eq_one
+#print axioms YangMills.RG.norm_orientedWilsonFactor_sub_le
+#print axioms YangMills.RG.norm_cmp98ContourMatrixCurve_sub_le
+#print axioms YangMills.RG.norm_cmp98SourceFourContourMatrixCurve_sub_le_sourceScale

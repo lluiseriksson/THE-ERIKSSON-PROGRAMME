@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "tmp/FullGreenUniformPowerRepro.lean"], "cwd": "/content/hrpoly-cmp85-uniform-full-green-diagnostic-v3", "exit": 0, "log_file": "mathlib_only_repro.log", "output_sha256": "72da2eb7c39912f8af7fb8dd969d94d582d7c12204deedd68319493b3ce9ab2f", "seconds": 36.92028038400008, "stage": "mathlib_only_repro"}

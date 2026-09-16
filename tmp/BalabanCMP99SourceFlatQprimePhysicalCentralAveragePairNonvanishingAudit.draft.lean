@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalCentralAveragePairNonvanishing
+
+#print axioms YangMills.RG.cmp89Eq249CentralEntireAveragePair_physicalCoarse_ne_zero

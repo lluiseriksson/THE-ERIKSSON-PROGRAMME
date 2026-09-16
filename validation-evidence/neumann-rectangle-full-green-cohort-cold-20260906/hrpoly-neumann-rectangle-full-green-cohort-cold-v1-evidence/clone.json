@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "21730e40829c260d355ee118bdddaac2601a3715af5529018a1a9dc356db4f57", "seconds": 15.710170640000797, "stage": "clone"}

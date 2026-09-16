@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedCountingMassVaryingOutput
+
+#print axioms YangMills.RG.cmp99GeneratedTerminalBlockResidue
+#print axioms YangMills.RG.cmp99GeneratedTerminalBlockResidue_injOn_owner
+#print axioms YangMills.RG.card_cmp99SourceIteratedLift_sameTerminalBlock_le
+#print axioms YangMills.RG.cmp99GeneratedTerminalBlockCount_mul_weight_sq
+#print axioms YangMills.RG.cmp99SourceIteratedLift_sum_norm_generatedCountingMass_varying_le

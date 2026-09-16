@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "87edca6519df5b450b906e83db2ffa4fc1bd87bd"], "cwd": "/content/hrpoly-neumann-integer-image-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "dbded747af8f3804c93cfee3b8d91c542fa5b58dd7b6a11e075869acc31938a9", "seconds": 1.2386081559998274, "stage": "checkout"}

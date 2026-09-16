@@ -1,0 +1,20 @@
+import YangMills.RG.BalabanCMP116InteractingResolventCorrection
+
+/-! Focused dependency audit for the interacting covariance correction. -/
+
+#print axioms YangMills.RG.physicalTiltConjCLM_add
+#print axioms YangMills.RG.physicalTiltConjCLM_sub
+#print axioms YangMills.RG.physicalTiltConjCLM_comp
+#print axioms YangMills.RG.covariance_sub_eq_comp_precision_sub_comp
+#print axioms YangMills.RG.norm_rightInverse_le_of_isCoerciveCLM
+#print axioms YangMills.RG.physicalTiltConjCLM_precision_comp_covariance
+#print axioms YangMills.RG.norm_physicalTiltConj_covariance_le_of_coercive
+#print axioms YangMills.RG.norm_physicalTiltConj_covariance_sub_le
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_of_tilted_opNorm
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_sub_of_tilted_resolvent
+#print axioms YangMills.RG.cmp116InteractingTiltedDefectBudget_nonneg
+#print axioms YangMills.RG.norm_interactingWilsonGaugeDefect_tilt_le
+#print axioms YangMills.RG.interactingPhysicalBasePrecisionCLM_sub_eq_defect_sub
+#print axioms YangMills.RG.norm_interactingPhysicalBasePrecision_sub_tilt_le
+#print axioms YangMills.RG.interactingPhysicalCovariance_comp_basePrecision
+#print axioms YangMills.RG.interactingPhysicalCovariance_sub_exponentialKernelBound

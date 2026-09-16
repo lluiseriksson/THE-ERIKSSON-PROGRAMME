@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannActualFullGreenReflectionSummabilityAudit.lean"], "cwd": "/content/hrpoly-neumann-rectangle-full-green-cohort-cold-v1", "exit": 0, "log_file": "full_green_audit.log", "output_sha256": "de4d1deac6726370e0b508730a2977153dc79afc1effb464ac1a79dc69c08b48", "seconds": 14.068205097999453, "stage": "full_green_audit"}

@@ -1,0 +1,28 @@
+import YangMills.RG.BalabanCMP109Lemma1CoarsenedResidualFamily
+
+#print axioms YangMills.RG.cmp109Lemma1CoarsenedBlocks
+#print axioms YangMills.RG.cmp109Lemma1CoarsenedBlocks_nonempty
+#print axioms YangMills.RG.cmp109Lemma1NativeDomainFamily
+#print axioms YangMills.RG.cmp109Lemma1NativeBlockFamily
+#print axioms YangMills.RG.cmp109Lemma1NativeDomain_blocks_injective
+#print axioms YangMills.RG.cmp109Lemma1NativeBlockFamily_connected
+#print axioms YangMills.RG.cmp109Lemma1NativeBlockFamily_coarsenedRoot_sum_pow_card_le
+#print axioms YangMills.RG.cmp109Lemma1NativeDomainFamily_coarsenedRoot_sum_pow_card_le
+#print axioms YangMills.RG.exp_neg_cmp109Lemma1NativeMetric_le_cardWeight
+#print axioms YangMills.RG.cmp109Lemma1NativeDomainFamily_coarsenedRoot_exp_metric_sum_le
+#print axioms YangMills.RG.cmp109Lemma1NativeDomainFamily_coarsenedRoot_weighted_exp_metric_sum_le
+#print axioms YangMills.RG.cmp109Lemma1NativeDomainAt
+#print axioms YangMills.RG.cmp109Lemma1NativeDomainAt_mem
+#print axioms YangMills.RG.cmp109Lemma1NativeDomainAt_injective
+#print axioms YangMills.RG.image_cmp109Lemma1NativeDomainAt_univ
+#print axioms YangMills.RG.sum_cmp109Lemma1NativeDomainAt_eq_sum_nativeDomainFamily
+#print axioms YangMills.RG.cmp109Lemma1NativeIndexedDomainMetric
+#print axioms YangMills.RG.cmp109Lemma1NativeIndexedDomainCard
+#print axioms YangMills.RG.cmp109Lemma1NativeIndexedDomainSupport
+#print axioms YangMills.RG.cmp109Lemma1NativeIndexedDomainSupport_nonempty
+#print axioms YangMills.RG.sum_cmp109Lemma1NativeDomainAt_filter_support_eq
+#print axioms YangMills.RG.cmp109Lemma1CoarsenedBlockFamily
+#print axioms YangMills.RG.cmp109Eq212Lemma1CoarsenedResidualActivity
+#print axioms YangMills.RG.cmp109Eq212Lemma1EnergyDifference_eq_sum_nativeResidualActivity
+#print axioms YangMills.RG.cmp109Eq212Lemma1EnergyDifference_eq_sum_indexedNativeResidualActivity
+#print axioms YangMills.RG.cmp109Eq212Lemma1EnergyDifference_eq_sum_coarsenedResidualActivity

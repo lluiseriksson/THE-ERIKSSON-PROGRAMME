@@ -1,0 +1,21 @@
+import YangMills.RG.BalabanCMP99SourceDependentOmegaGeometry
+
+/-! Public oracle for the scale-faithful CMP99 local Omega geometry. -/
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceLocalOmegaGap
+#print axioms cmp99SourceLocalOmegaGap_pos
+#print axioms CMP99SourceLocalOmegaSeparated
+#print axioms CMP99SourceDependentOmegaGeometry
+#print axioms CMP99SourceDependentOmegaGeometry.fineRegion
+#print axioms CMP99SourceDependentOmegaGeometry.fineRegion_subset_of_le
+#print axioms CMP99SourceDependentOmegaGeometry.fineRegion_pi4Index
+#print axioms CMP99SourceDependentOmegaGeometry.fineRegion_lastIndex
+#print axioms CMP99SourceDependentOmegaGeometry.fineRegion_last_subset_pi3
+#print axioms CMP99SourceDependentOmegaGeometry.transition_separated
+#print axioms CMP99SourceDependentOmegaGeometry.toLargeBlockGeometry
+#print axioms CMP99SourceDependentOmegaGeometry.toLargeBlockGeometry_regions
+#print axioms CMP99SourceDependentOmegaGeometry.toLargeBlockGeometry_last_region
+
+end YangMills.RG

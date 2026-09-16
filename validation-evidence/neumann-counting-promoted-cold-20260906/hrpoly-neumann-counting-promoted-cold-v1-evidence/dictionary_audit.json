@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannRetainedCountingMassDictionaryAudit.lean"], "cwd": "/content/hrpoly-neumann-counting-promoted-cold-v1", "exit": 0, "log_file": "dictionary_audit.log", "output_sha256": "3f074fd9bc85d7ff9c81623c2c2a232edd3a45b26184518790e3b4d263801a31", "seconds": 10.655520739000167, "stage": "dictionary_audit"}

@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-canonical-spacing-promoted-cold-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "ec7fe729442b0ba5a6863d767946801e3905fa1a4d9bf34a0fdcef214906a2ff", "seconds": 77.05266955600001, "stage": "lake_update"}

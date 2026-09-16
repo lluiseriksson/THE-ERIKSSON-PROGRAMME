@@ -1,0 +1,30 @@
+CMP89 finite rectangular Neumann branch-sum cold evidence
+
+Final status: PASS
+Source SHA: d741c5b8e4aa2b57b56621e03e175db840233b72
+Mathlib SHA: 07642720480157414db592fa85b626dafb71355b
+Lean: 4.29.0-rc6
+Lake: 5.0.0
+Runtime: Colab Pro+ CPU/high RAM, MemTotal 53467192 kB
+Fresh checkout: yes
+Restored .lake/build: no
+
+Focal: 8565/8565 jobs, exit 0, 1555 seconds
+Audit: exit 0, 40 seconds
+Audited declarations: 9
+Axioms: each readout is contained in propext, Classical.choice, Quot.sound
+Forbidden axioms: none
+
+Archive SHA-256:
+66E7C9254F251C089076B3722979A4106E02E2B5ECAC7638C5427025CFE6B0AF
+
+Manifest SHA-256:
+8C32A6E08363D1F4EF3DD5F476EBB7D1124587A07769E138D23BE2609FE516FD
+
+Manifest entries: 9
+Local rehash mismatches: 0
+
+Scope: seals the literal finite 2^d reflection-branch sum, including
+summability before the source-order tsum/finite-sum exchange.  Physical Green
+insertion, CMP89 (2.42), uniform regional B0/delta0 and window 15 remain open.
+Counters stay 20/41 and TermSource remains 0.

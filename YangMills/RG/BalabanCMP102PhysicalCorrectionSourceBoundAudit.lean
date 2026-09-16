@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102PhysicalCorrectionSourceBound
+
+#print axioms YangMills.RG.cmp102SourceCorrectionTwoFieldBudget_le_sourceSupNorm
+#print axioms YangMills.RG.norm_cmp98Eq122NonlinearLogRemainder_twoField_sub_le_sourceSupNorm

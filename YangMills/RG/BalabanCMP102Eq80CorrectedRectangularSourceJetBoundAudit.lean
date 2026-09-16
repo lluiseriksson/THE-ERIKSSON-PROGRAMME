@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102Eq80CorrectedRectangularSourceJetBound
+
+#print axioms YangMills.RG.contDiff_cmp102Eq80JointPotential_rectangular
+#print axioms YangMills.RG.norm_iteratedFDeriv_fixedFirstSlice_le
+#print axioms YangMills.RG.cmp102Eq80RectangularOrderTwoJetRadius
+#print axioms YangMills.RG.cmp102Eq80JointRemainderRadius_orderTwo_of_correctionJets
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_cmp102Eq80GlobalPotential_fixedRectangular_le_sourceJets
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_cmp102Eq80GlobalPotential_physicalCorrection_le_sourceJets

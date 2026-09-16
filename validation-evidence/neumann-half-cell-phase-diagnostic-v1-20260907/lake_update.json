@@ -1,0 +1,1 @@
+{"command": ["lake", "update"], "cwd": "/content/hrpoly-neumann-half-cell-phase-diagnostic-v1", "exit": 0, "log_file": "lake_update.log", "output_sha256": "1a23e340a33753c16cdec890276555d272539ade82938c25b8ac89779fc47608", "seconds": 105.47558587100002, "stage": "lake_update", "timed_out": false, "timeout_seconds": 3600}

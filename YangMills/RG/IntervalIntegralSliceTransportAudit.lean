@@ -1,0 +1,3 @@
+import YangMills.RG.IntervalIntegralSliceTransport
+
+#print axioms YangMills.RG.intervalIntegral_integral_eq_of_slice_intervalIntegral_eq

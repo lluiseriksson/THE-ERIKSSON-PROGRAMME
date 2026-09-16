@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCFixedHistoryRecursion
+
+#print axioms YangMills.RG.cmp116FixedHistoryFTCRecursion_eq
+#print axioms YangMills.RG.cmp116FixedHistoryFTCRecursion_nil

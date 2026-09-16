@@ -1,0 +1,28 @@
+CMP89_RECTANGULAR_PREFIX_LOCAL_EVIDENCE_OK
+
+source_sha=e7f38ed24b249ad08a5a829545abed0a05ff379c
+runner_sha=4f943a76f3f0cdf628b21230d3220e650fb2e0b1
+runner_revision=cmp89-neumann-centered-rectangular-v2
+toolchain=Lean 4.29.0-rc6
+mathlib=07642720480157414db592fa85b626dafb71355b
+focal_jobs=8561
+focal_exit=0
+focal_seconds=1385.376
+representative_audit_exit=0
+representative_audit_seconds=8.035
+representative_axiom_blocks=9
+representative_pure_readouts=1
+extra_audits_exit=0,0,0,0
+extra_audit_readouts=28
+allowed_axioms=propext,Classical.choice,Quot.sound
+blacklist_hits=0
+
+The inherited v2 runner emitted FINAL_STATUS=FAIL only because it counted the
+nine `depends on axioms` lists and omitted the tenth pure readout.  The focal
+and audit child exits are both zero.  The same untouched cold checkout then
+passed the four transitively required audits, and the robust companion emitted
+CMP89_NEUMANN_RECTANGULAR_PREFIX_EXTRA_AUDITS_OK.
+
+14B6490A744D58BAA0F7430C34CEE201E784F0E5BDDCF30700F7284EA588FDC1  hrpoly-cmp89-neumann-centered-rectangular-cold-v2-evidence.tar.gz
+496530C93913F952FA6FC38C0702EB0DD183E0D03D8CE9F449B910E78C288507  hrpoly-cmp89-neumann-rectangular-prefix-extra-audits.tar.gz
+951D0ED9246B39A569A67FA0BC07E657211D0EC9145EE73CDF843DA6DFCD9F7E  extra-audits/evidence.json

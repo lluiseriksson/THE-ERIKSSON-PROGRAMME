@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullWeakenedPrecision
+
+#print axioms YangMills.RG.cmp116SourcePi4FullWeakenedCovarianceMatrix
+#print axioms YangMills.RG.cmp116SourcePi4FullWeakenedPrecisionMatrix
+#print axioms YangMills.RG.cmp116SourcePi4_fullWeakenedPrecision_mul_covariance_eq_one
+#print axioms YangMills.RG.cmp116SourcePi4FullWeakenedCovarianceMatrix_one_eq_exact
+#print axioms YangMills.RG.cmp116SourcePi4FullWeakenedCovarianceMatrix_one_det_ne_zero
+#print axioms YangMills.RG.cmp116SourcePi4FullWeakenedPrecisionMatrix_one_eq_physical

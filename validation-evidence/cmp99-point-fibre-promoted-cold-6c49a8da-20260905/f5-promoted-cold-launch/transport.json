@@ -1,0 +1,18 @@
+{
+  "colab_cmp99_point_fibre_promoted_cold.py": [
+    "4a08173f79d4fab73b524605339c41085a9ae26b",
+    "9713719644c3ac294d8575da53d33afc17400b1d905fe34aa62ba303a4c756c2"
+  ],
+  "full_green_owner_exact_axiom_gate.py": [
+    "6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4",
+    "016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2"
+  ],
+  "verify_cmp99_full_green_residue_cold.py": [
+    "6c49a8daeb6d6c6f60ac4a2cd2bafda67a495ff4",
+    "558295bb43e74bdae3eb6508656e7b8cde756cb393376320d0c197347396a02c"
+  ],
+  "verify_cmp99_point_fibre_promoted_cold.py": [
+    "4a08173f79d4fab73b524605339c41085a9ae26b",
+    "f9a1c8b85731e8203d9046860005a1a0f867298ca2b33be3abf17396612f0a51"
+  ]
+}

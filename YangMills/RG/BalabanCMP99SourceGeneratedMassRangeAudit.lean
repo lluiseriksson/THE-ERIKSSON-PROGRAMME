@@ -1,0 +1,22 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedMassRange
+
+open YangMills.RG
+
+#print axioms cmp99RegionalLatticeSize_eq_pow_mul
+#print axioms cmp99GeneratedTerminalBlockSite
+#print axioms cmp99GeneratedTerminalBlockSite_zero
+#print axioms cmp99GeneratedTerminalBlockSite_succ
+#print axioms finBoxDist_le_of_same_generatedTerminalBlock
+#print axioms cmp99ActiveCoarseSiteOfFine
+#print axioms CMP99SourceActiveRegionChain.SameTerminalBlock
+#print axioms CMP99SourceActiveRegionChain.sameTerminalBlock_stop
+#print axioms CMP99SourceActiveRegionChain.sameTerminalBlock_step
+#print axioms CMP99SourceActiveRegionChain.sameTerminalBlock_cast
+#print axioms activeGaugeRegionSite_cast_val
+#print axioms dependent_cast_symm_cancel
+#print axioms cmp99SourceTransportedBlockAverageCLM_single
+#print axioms CMP99SourceActiveRegionChain.generatedCountingMass_single_apply_eq_zero
+#print axioms cmp99SourceIteratedLift_sameTerminalBlock_iff
+#print axioms CMP99SourceActiveRegionChain.generatedCountingMass_finiteRange
+#print axioms cmp99SourceIteratedLift_generatedCountingMass_finiteRange
+#print axioms cmp99SourceIteratedLift_QprimeMass_finiteRange

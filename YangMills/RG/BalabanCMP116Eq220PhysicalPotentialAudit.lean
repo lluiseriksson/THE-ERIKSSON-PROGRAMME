@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116Eq220PhysicalPotential
+
+#print axioms YangMills.RG.cmp116Eq142PhysicalPotentialTerm
+#print axioms YangMills.RG.cmp116Eq214PhysicalTauPotential
+#print axioms YangMills.RG.cmp116Eq220_physicalTauPotential_le_localized
+#print axioms YangMills.RG.CMP116Eq216PhysicalKernelCertificate.physicalRealInteractionExponent_le_coordinateAlpha5_of_eq220Source

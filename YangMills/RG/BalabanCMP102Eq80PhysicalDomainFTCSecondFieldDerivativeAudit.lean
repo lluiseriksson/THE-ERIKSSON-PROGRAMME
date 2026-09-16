@@ -1,0 +1,23 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCSecondFieldDerivative
+
+#print axioms YangMills.RG.cmp102AffinePropagatorJetFTC
+#print axioms YangMills.RG.cmp102AffinePropagatorJetFTCFirstFieldDerivative
+#print axioms YangMills.RG.cmp102AffinePropagatorJetFTCSecondFieldDerivative
+#print axioms YangMills.RG.cmp102AffinePropagatorJetFTC_hasFDerivAt
+#print axioms
+  YangMills.RG.cmp102AffinePropagatorJetFTCFirstFieldDerivative_hasFDerivAt
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContributionFirstFieldDerivative
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContributionSecondFieldDerivative
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContribution_eq_affinePropagatorJetFTC
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContribution_hasFDerivAt
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContributionFirstFieldDerivative_hasFDerivAt
+#print axioms
+  YangMills.RG.continuous_cmp102AffinePropagatorJetFTCSecondFieldDerivative
+#print axioms YangMills.RG.contDiff_two_cmp102AffinePropagatorJetFTC
+#print axioms
+  YangMills.RG.contDiff_two_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution

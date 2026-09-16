@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP89Eq248FineLatticeFourierGreenLeftDerivative
+
+/-!
+# Audit: fine-lattice Fourier Green left derivative
+-/
+
+#print axioms YangMills.RG.cmp89Eq248FineLatticeForwardCoordinateShift
+#print axioms YangMills.RG.cmp89Eq249PhysicalFineLatticeDisplacement_forwardCoordinateShift
+#print axioms YangMills.RG.cmp89Eq251EntireAliasPhase_forwardCoordinateShift
+#print axioms YangMills.RG.cmp89Eq251_exp_aliasPhase_forwardDifference_div_spacing
+#print axioms YangMills.RG.cmp89Eq248ComplexBareGreenEndpointNumerator
+#print axioms YangMills.RG.cmp89Eq248ComplexBareGreenEndpoint_forwardDifference
+#print axioms YangMills.RG.cmp89Eq248ComplexStabilizedGreenEndpointNumerator
+#print axioms YangMills.RG.cmp89Eq248ComplexStabilizedGreenEndpointIntegrand
+#print axioms YangMills.RG.cmp89Eq248ComplexStabilizedGreenEndpointNumerator_forwardDifference
+#print axioms YangMills.RG.cmp89Eq248ComplexStabilizedGreenEndpoint_forwardDifference

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedBackgroundDictionary
+
+#print axioms YangMills.RG.cmp99SourceFlatGaugeConfig_eq_cmp99FlatGaugeBackground

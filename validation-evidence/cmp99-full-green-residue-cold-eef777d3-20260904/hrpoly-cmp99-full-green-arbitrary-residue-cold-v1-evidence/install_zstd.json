@@ -1,0 +1,1 @@
+{"command": ["apt-get", "install", "-y", "-qq", "zstd"], "cwd": null, "exit": 0, "log_file": "install_zstd.log", "output_sha256": "647f4dc73757cc27a15fc3bff3dfda1f0994bfc79b33bb86d9fdb8f987b11cda", "seconds": 7.79413175600007, "stage": "install_zstd"}

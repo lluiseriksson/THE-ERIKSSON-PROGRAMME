@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99Eq335PhysicalLocalizedRetainedTowerOfSourceRegion
+
+
+#print axioms YangMills.RG.CMP99Eq335PhysicalRegularityWitness.localizedRetainedTowerOfSourceRegion
+#print axioms YangMills.RG.CMP99Eq335PhysicalRegularityWitness.localizedRetainedTerminalQprime_eq_ofSourceRegion

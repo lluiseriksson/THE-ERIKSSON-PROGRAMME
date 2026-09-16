@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceRecursivePhysicalTower
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceUbarRadiusChain
+#print axioms nonempty_cmp99SourceRecursivePhysicalTower
+#print axioms cmp99SourceRecursivePhysicalTower
+#print axioms cmp99SourceRecursivePhysicalTower_Qprime_comp_weightedAdjoint_eq_Cj
+
+end YangMills.RG

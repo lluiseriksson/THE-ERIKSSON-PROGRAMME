@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80CouplingScaledEq143SourceMetric
+
+#print axioms YangMills.RG.cmp102Eq80CouplingScaledEq143Cost
+#print axioms YangMills.RG.CMP102Eq80CouplingScaledEq143ProducerBudget
+#print axioms YangMills.RG.cmp102Eq80PhysicalDomainFTCSecondFieldSourceMetricMajorant_mul_couplingCost_le_eq143
+#print axioms YangMills.RG.abs_cmp116FDerivHessian_cmp102Eq80CouplingScaledPhysicalDomainFTC_le_eq143

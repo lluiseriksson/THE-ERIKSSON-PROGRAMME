@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalGroupedWalkLayer
+
+#print axioms YangMills.RG.cmp116SourcePi4TerminalGroupedWalkLayer
+#print axioms YangMills.RG.sum_cmp116SourcePi4TerminalGroupedWalkLayer
+#print axioms YangMills.RG.cmp116SourcePi4TerminalGroupedWalkLayer_apply_eq_zero_of_not_mem_core

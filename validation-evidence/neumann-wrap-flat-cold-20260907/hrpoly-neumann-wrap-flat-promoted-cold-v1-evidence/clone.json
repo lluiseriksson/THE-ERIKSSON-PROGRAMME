@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-wrap-flat-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "af06b3cbda6a6cb3ad29056cc0e4c81e4bcc0af9c5d75cd4f2f095cef0bed1db", "seconds": 14.481287928999336, "stage": "clone"}

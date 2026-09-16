@@ -1,0 +1,20 @@
+import YangMills.RG.BalabanCMP99SourceWeightedRegionalTower
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceWeightedTowerHilbertSpace
+#print axioms CMP99SourceWeightedRegionalTower
+#print axioms CMP99SourceWeightedRegionalTower.stop
+#print axioms CMP99SourceWeightedRegionalTower.step
+#print axioms CMP99SourceWeightedRegionalTower.depth_stop
+#print axioms CMP99SourceWeightedRegionalTower.depth_step
+#print axioms CMP99SourceWeightedRegionalTower.Qprime_step
+#print axioms CMP99SourceWeightedRegionalTower.weightedAdjoint_step
+#print axioms cmp99SourceScaleNormalization
+#print axioms cmp99SourceTowerNormalization
+#print axioms cmp99SourceTowerNormalization_eq_one
+#print axioms cmp99SourceTowerNormalization_pos
+#print axioms CMP99SourceWeightedRegionalTower.Qprime_comp_weightedAdjoint_eq_Cj
+#print axioms CMP99SourceWeightedRegionalTower.weightedAdjoint_norm_eq_sqrt_Cj
+
+end YangMills.RG

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCBranchRecursion
+
+#print axioms YangMills.RG.cmp116RealWeakeningFTCActiveRecursion_eq
+#print axioms YangMills.RG.cmp116RealWeakeningFTCActiveRecursion_false
+#print axioms YangMills.RG.cmp116RealWeakeningFTCActiveRecursion_true

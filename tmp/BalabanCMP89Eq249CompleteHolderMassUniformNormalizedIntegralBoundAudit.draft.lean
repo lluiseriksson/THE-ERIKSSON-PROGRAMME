@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq249CompleteHolderMassUniformNormalizedIntegralBound
+
+#print axioms YangMills.RG.norm_cmp89Eq249NormalizedCompleteHolderIntegral_physicalFine_le_massUniform

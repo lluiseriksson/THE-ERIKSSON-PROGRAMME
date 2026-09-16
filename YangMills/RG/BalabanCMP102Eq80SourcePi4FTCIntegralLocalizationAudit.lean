@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCIntegralLocalization
+
+#print axioms YangMills.RG.continuous_cmp116ClampUnit
+#print axioms YangMills.RG.cmp116ClampedRealWeakeningCoordinatePath_mem_contourRegion
+#print axioms YangMills.RG.integral_coordinateSegment_iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_eq_sum_integral_connectedPhysicalDomains

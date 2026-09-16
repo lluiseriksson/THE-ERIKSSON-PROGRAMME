@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116FiniteCarrierLinftyNorm
+
+#print axioms YangMills.RG.linfty_opNorm_cmp116FinsetColumnInclusion_le_one
+#print axioms YangMills.RG.linfty_opNorm_cmp116FinsetCoordinateRestriction_le_one

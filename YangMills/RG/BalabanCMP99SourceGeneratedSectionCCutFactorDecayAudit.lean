@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCutFactorDecay
+
+open YangMills.RG
+
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseSectionCCutFactorCoordinates_exponential
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseSectionCCutFactorCoordinates_weightedRowKernelBound

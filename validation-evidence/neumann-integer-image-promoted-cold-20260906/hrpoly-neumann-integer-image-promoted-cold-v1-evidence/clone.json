@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-integer-image-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "b41a4ea8b2aadfa44fa805b490876d0fb160e609bdfa54064691bbb8a738bb76", "seconds": 13.316361758999847, "stage": "clone"}

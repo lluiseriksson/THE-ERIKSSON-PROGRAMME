@@ -1,0 +1,13 @@
+{
+  "cold_seal": false,
+  "first_error": null,
+  "outputs": {
+    "SourceFlowPhysicalValueActionDraft.olean": "60d94ec9f648e3d36b5a58a61d96d631e048cbe8a558bbf018ca584bfd1f2bb6",
+    "SourceFlowPhysicalValueActionRepro.olean": "040c0fe02517f5071930b12c0c3694321aaa0f19406e084d5c798fa9913132c2"
+  },
+  "public_axioms": 3,
+  "source": "7bdc0fa1e76b3e2d3d64d1822bb30459d6697979",
+  "stages": 10,
+  "status": "PASS"
+}
+PHYSICAL_VALUE_ACTION_HOT_PACKAGE_VERIFIED COLD_SEAL=0

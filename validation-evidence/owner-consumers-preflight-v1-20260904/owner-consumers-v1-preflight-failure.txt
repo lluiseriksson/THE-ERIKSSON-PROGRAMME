@@ -1,0 +1,83 @@
+/content# python3 -c 'import hashlib,urllib.re
+quest; u="https://raw.githubusercontent.com/ll
+uiseriksson/THE-ERIKSSON-PROGRAMME/90f4d877d01
+7e7a2b95aa9af740aee89f3cc5f3e/scripts/colab_cm
+p99_full_green_owner_consumers.py"; b=urllib.r
+equest.urlopen(u,timeout=60).read(); h=hashlib
+.sha256(b).hexdigest(); print("RUNNER_TRANSPOR
+T_SHA256="+h,flush=True); assert h=="fffd23317
+866ed7f827b00e55dcf844a202a8f896784d833cb0cf69
+6d9f9e0a9"; exec(compile(b,u,"exec"),{"__name_
+_":"__main__"})'
+RUNNER_TRANSPORT_SHA256=fffd23317866ed7f827b00
+e55dcf844a202a8f896784d833cb0cf696d9f9e0a9
+TRANSPORT=scripts/colab_cmp99_full_green_arbit
+rary_residue_cold.py SHA256=29a5ebd9cba53e5b2d
+98eecd7dfb90bbf0a52430d8995deaf623e769b6be2892
+BASE_RUNNER_SHA256=2f097a374361bd8e4c0f53220ff
+eeeb22fc06d6ccca5179aebda468d1aebee8e
+TRANSPORT=scripts/full_green_owner_exact_axiom
+_gate.py SHA256=016ca4daf0cd06c8016ece106334cc
+10a4c332c0a58f7f383f03c6f6b3e287c2
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 reject
+ed=9
+AXIOM_GATE=PASS {"test": ["Classical.choice",
+"Quot.sound", "propext"]}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import hashlib,urllib.request; u="https://
+raw.githubusercontent.com/lluiseriksson/THE-ER
+IKSSON-PROGRAMME/90f4d877d017e7a2b95aa9af740ae
+e89f3cc5f3e/scripts/colab_cmp99_full_green_own
+er_consumers.py"; b=urllib.request.urlopen(u,t
+imeout=60).read(); h=hashlib.sha256(b).hexdige
+st(); print("RUNNER_TRANSPORT_SHA256="+h,flush
+=True); assert h=="fffd23317866ed7f827b00e55dc
+f844a202a8f896784d833cb0cf696d9f9e0a9"; exec(c
+ompile(b,u,"exec"),{"__name__":"__main__"})
+
+
+
+
+
+
+
+
+                                        ~~~~^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "https://raw.githubusercontent.com/llui
+seriksson/THE-ERIKSSON-PROGRAMME/90f4d877d017e
+7a2b95aa9af740aee89f3cc5f3e/scripts/colab_cmp9
+9_full_green_owner_consumers.py", line 122, in
+ <module>
+  File "https://raw.githubusercontent.com/llui
+seriksson/THE-ERIKSSON-PROGRAMME/90f4d877d017e
+7a2b95aa9af740aee89f3cc5f3e/scripts/colab_cmp9
+9_full_green_owner_consumers.py", line 111, in
+ main
+  File "https://raw.githubusercontent.com/llui
+seriksson/THE-ERIKSSON-PROGRAMME/ddf6fdc1882ed
+ddbf063389aab4d455a8ed30801/scripts/colab_cmp9
+9_full_green_arbitrary_residue_cold.py", line
+90, in preflight
+  File "https://raw.githubusercontent.com/llui
+seriksson/THE-ERIKSSON-PROGRAMME/90f4d877d017e
+7a2b95aa9af740aee89f3cc5f3e/scripts/colab_cmp9
+9_full_green_owner_consumers.py", line 84, in
+parse_axioms
+  File "https://raw.githubusercontent.com/llui
+seriksson/THE-ERIKSSON-PROGRAMME/ea524400bbf59
+777d461e8d04790516771258988/scripts/full_green
+_owner_exact_axiom_gate.py", line 18, in exact
+_axioms
+ValueError: FORBIDDEN_AXIOM
+/content# rc=$?; printf "V1_PREFLIGHT_EXIT=%s\
+n" "$rc"; tmux capture-pane -p -S -10000 > /co
+ntent/owner-consumers-v1-preflight-failure.txt
+; printf "V1_PREFLIGHT_EXIT=%s\n" "$rc" >> /co
+ntent/owner-consumers-v1-preflight-failure.txt
+; sha256sum /content/owner-consumers-v1-prefli
+ght-failure.txt
+V1_PREFLIGHT_EXIT=1
+
+V1_PREFLIGHT_EXIT=1

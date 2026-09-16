@@ -1,0 +1,1 @@
+{"command": ["tar", "--use-compress-program=unzstd", "-xf", "/content/lean-4.29.0-rc6-linux.tar.zst", "-C", "/content/lean-4.29.0-rc6-linux"], "cwd": null, "exit": 0, "log_file": "extract_toolchain.log", "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "seconds": 6.907773340999938, "stage": "extract_toolchain"}

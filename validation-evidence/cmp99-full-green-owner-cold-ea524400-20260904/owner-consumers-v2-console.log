@@ -1,0 +1,294 @@
+RUNNER_TRANSPORT_SHA256=bb8d74699319d1c6bc24e68afefa57a078066f6852303a4804d82eff6740d164
+TRANSPORT=scripts/colab_cmp99_full_green_arbitrary_residue_cold.py SHA256=29a5ebd9cba53e5b2d98eecd7dfb90bbf0a52430d8995deaf623e769b6be2892
+BASE_RUNNER_SHA256=2f097a374361bd8e4c0f53220ffeeeb22fc06d6ccca5179aebda468d1aebee8e
+TRANSPORT=scripts/full_green_owner_exact_axiom_gate.py SHA256=016ca4daf0cd06c8016ece106334cc10a4c332c0a58f7f383f03c6f6b3e287c2
+OWNER_AXIOM_GATE_SELF_TEST=PASS valid=2 rejected=9
+AXIOM_GATE=PASS {"test": ["Classical.choice", "Quot.sound", "propext"]}
+PREFLIGHT=PASS [{"expected_exit": 0, "actual_exit": 0, "seconds": 0.025213640000060877}, {"expected_exit": 7, "actual_exit": 7, "seconds": 0.023497910000060074}]
+RUNNER_REV=cmp99-full-green-owner-consumers-v2
+STAGE=runtime_open UTC=2026-09-04T21:42:46.041411+00:00
+RUNTIME=CPU RAM_GIB=50.99 MIN_RAM_GIB=40.00
+STAGE=download_toolchain CMD=["curl", "--fail", "--location", "--retry", "5", "--retry-all-errors", "--retry-delay", "2", "-o", "/content/lean-4.29.0-rc6-linux.tar.zst", "https://github.com/leanprover/lean4/releases/download/v4.29.0-rc6/lean-4.29.0-rc6-linux.tar.zst"]
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 13  512M   13 67.4M    0     0   135M      0  0:00:03 --:--:--  0:00:03  135M 66  512M   66  339M    0     0   226M      0  0:00:02  0:00:01  0:00:01  271M100  512M  100  512M    0     0   252M      0  0:00:02  0:00:02 --:--:--  290M
+
+STAGE=download_toolchain EXIT=0 SECONDS=2.130
+TOOLCHAIN_ASSET_SHA256=bf3e0a4025e47a0bea9ed907d12dcccd3d3590b1d8ad6c55a915298b01ad9d3e
+STAGE=apt_update CMD=["apt-get", "update", "-qq"]
+W: Skipping acquire of configured file 'main/source/Sources' as repository 'https://r2u.stat.illinois.edu/ubuntu jammy InRelease' does not seem to provide it (sources.list entry misspelt?)
+
+STAGE=apt_update EXIT=0 SECONDS=4.762
+STAGE=install_zstd CMD=["apt-get", "install", "-y", "-qq", "zstd"]
+Selecting previously unselected package zstd.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 118419 files and directories currently installed.)
+Preparing to unpack .../zstd_1.4.8+dfsg-3build1_amd64.deb ...
+Unpacking zstd (1.4.8+dfsg-3build1) ...
+Setting up zstd (1.4.8+dfsg-3build1) ...
+Processing triggers for man-db (2.10.2-1) ...
+
+STAGE=install_zstd EXIT=0 SECONDS=7.335
+STAGE=extract_toolchain CMD=["tar", "--use-compress-program=unzstd", "-xf", "/content/lean-4.29.0-rc6-linux.tar.zst", "-C", "/content/lean-4.29.0-rc6-linux"]
+
+STAGE=extract_toolchain EXIT=0 SECONDS=9.136
+STAGE=lean_version CMD=["lean", "--version"]
+Lean (version 4.29.0-rc6, x86_64-unknown-linux-gnu, commit 00659f8e6071d7e46131ed643bf8003b99b044e9, Release)
+
+STAGE=lean_version EXIT=0 SECONDS=0.042
+STAGE=lake_version CMD=["lake", "--version"]
+Lake version 5.0.0-src+00659f8 (Lean version 4.29.0-rc6)
+
+STAGE=lake_version EXIT=0 SECONDS=0.042
+LEAN_SHA256=3e0d0d3d801675359f2d4cf9815bfdb417b20b92fdd9d48b3b14c95bbae28bbf
+LAKE_SHA256=a608ff084d7e2af228b92a29d7c2fd083ba0580e46889175ec74a81678c98359
+STAGE=clone CMD=["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-cmp99-full-green-owner-consumers-v2"]
+Cloning into '/content/hrpoly-cmp99-full-green-owner-consumers-v2'...
+Updating files:  81% (5960/7330)Updating files:  82% (6011/7330)Updating files:  83% (6084/7330)Updating files:  84% (6158/7330)Updating files:  85% (6231/7330)Updating files:  86% (6304/7330)Updating files:  87% (6378/7330)Updating files:  88% (6451/7330)Updating files:  89% (6524/7330)Updating files:  90% (6597/7330)Updating files:  91% (6671/7330)Updating files:  92% (6744/7330)Updating files:  93% (6817/7330)Updating files:  94% (6891/7330)Updating files:  95% (6964/7330)Updating files:  96% (7037/7330)Updating files:  97% (7111/7330)Updating files:  98% (7184/7330)Updating files:  99% (7257/7330)Updating files: 100% (7330/7330)Updating files: 100% (7330/7330), done.
+
+STAGE=clone EXIT=0 SECONDS=10.183
+STAGE=checkout CMD=["git", "checkout", "--detach", "ea524400bbf59777d461e8d04790516771258988"]
+HEAD is now at ea524400b PRE-VALIDATION steps14-15 full Green owner consumers after 88d7ccc77 cold seal
+
+STAGE=checkout EXIT=0 SECONDS=0.538
+STAGE=head CMD=["git", "rev-parse", "HEAD"]
+ea524400bbf59777d461e8d04790516771258988
+
+STAGE=head EXIT=0 SECONDS=0.002
+SOURCE_BLOB=YangMills/RG/BalabanCMP99PhysicalFullGreenOwnerResidueBound.lean SHA256=3b6ffeda9e55f8e43a9b1c480f91c4e521f883a0222659ba8fae903dad0ff03b
+SOURCE_BLOB=YangMills/RG/BalabanCMP99PhysicalFullGreenOwnerResidueBoundAudit.lean SHA256=2e11b1dd48db49e7d79d2a7ae969b240ab13c3836cfdadd1539fb87b75320c59
+SOURCE_BLOB=YangMills/RG/BalabanCMP99GeneratedFullPointSourceOwnerBound.lean SHA256=f56f4278f4dcaadcbe8cd87986e5acc5c92c3f019fd563c7e39879a826936049
+SOURCE_BLOB=YangMills/RG/BalabanCMP99GeneratedFullPointSourceOwnerBoundAudit.lean SHA256=03693386229db46bc711f70f853fb9c97d0fd221c2ec19417007cecd405d8101
+STAGE=overlay_text_guard CMD=["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/hrpoly-cmp99-full-green-owner-consumers-v2-paths.txt"]
+LEAN_OVERLAY_TEXT_OK files=4 source=paths:/content/hrpoly-cmp99-full-green-owner-consumers-v2-paths.txt
+
+STAGE=overlay_text_guard EXIT=0 SECONDS=0.048
+STAGE=import_prefix_guard CMD=["python3", "scripts/check_lean_import_prefix.py", "YangMills/RG/BalabanCMP99PhysicalFullGreenOwnerResidueBound.lean", "YangMills/RG/BalabanCMP99PhysicalFullGreenOwnerResidueBoundAudit.lean", "YangMills/RG/BalabanCMP99GeneratedFullPointSourceOwnerBound.lean", "YangMills/RG/BalabanCMP99GeneratedFullPointSourceOwnerBoundAudit.lean"]
+LEAN_IMPORT_PREFIX_OK files=4
+
+STAGE=import_prefix_guard EXIT=0 SECONDS=0.036
+STAGE=lake_update CMD=["lake", "update"]
+[KDownloaded: 1448 file(s) [attempted 1448/8142 = 17%, 143 KB/s], Decompressed: 407[KDownloaded: 1555 file(s) [attempted 1555/8142 = 19%, 730 KB/s], Decompressed: 407[KDownloaded: 1657 file(s) [attempted 1657/8142 = 20%, 846 KB/s], Decompressed: 407[KDownloaded: 1756 file(s) [attempted 1756/8142 = 21%, 501 KB/s], Decompressed: 407[KDownloaded: 1859 file(s) [attempted 1859/8142 = 22%, 342 KB/s], Decompressed: 407[KDownloaded: 1956 file(s) [attempted 1956/8142 = 24%, 796 KB/s], Decompressed: 407[KDownloaded: 2051 file(s) [attempted 2051/8142 = 25%, 276 KB/s], Decompressed: 407[KDownloaded: 2155 file(s) [attempted 2155/8142 = 26%, 680 KB/s], Decompressed: 407[KDownloaded: 2242 file(s) [attempted 2242/8142 = 27%, 801 KB/s], Decompressed: 407[KDownloaded: 2339 file(s) [attempted 2339/8142 = 28%, 7836 KB/s], Decompressed: 407[KDownloaded: 2439 file(s) [attempted 2439/8142 = 29%, 1474 KB/s], Decompressed: 407[KDownloaded: 2543 file(s) [attempted 2543/8142 = 31%, 179 KB/s], Decompressed: 407[KDownloaded: 2644 file(s) [attempted 2644/8142 = 32%, 2818 KB/s], Decompressed: 407[KDownloaded: 2705 file(s) [attempted 2705/8142 = 33%, 164 KB/s], Decompressed: 407[KDownloaded: 2803 file(s) [attempted 2803/8142 = 34%, 2047 KB/s], Decompressed: 407[KDownloaded: 2907 file(s) [attempted 2907/8142 = 35%, 1704 KB/s], Decompressed: 407[KDownloaded: 3011 file(s) [attempted 3011/8142 = 36%, 2710 KB/s], Decompressed: 407[KDownloaded: 3115 file(s) [attempted 3115/8142 = 38%, 1561 KB/s], Decompressed: 407[KDownloaded: 3219 file(s) [attempted 3219/8142 = 39%, 950 KB/s], Decompressed: 407[KDownloaded: 3324 file(s) [attempted 3324/8142 = 40%, 1008 KB/s], Decompressed: 1108[KDownloaded: 3428 file(s) [attempted 3428/8142 = 42%, 1843 KB/s], Decompressed: 1108[KDownloaded: 3532 file(s) [attempted 3532/8142 = 43%, 659 KB/s], Decompressed: 1108[KDownloaded: 3636 file(s) [attempted 3636/8142 = 44%, 797 KB/s], Decompressed: 1108[KDownloaded: 3736 file(s) [attempted 3736/8142 = 45%, 220 KB/s], Decompressed: 1108[KDownloaded: 3837 file(s) [attempted 3837/8142 = 47%, 698 KB/s], Decompressed: 1108[KDownloaded: 3937 file(s) [attempted 3937/8142 = 48%, 280 KB/s], Decompressed: 1108[KDownloaded: 4041 file(s) [attempted 4041/8142 = 49%, 2394 KB/s], Decompressed: 1108[KDownloaded: 4142 file(s) [attempted 4142/8142 = 50%, 270 KB/s], Decompressed: 1108[KDownloaded: 4253 file(s) [attempted 4253/8142 = 52%, 214 KB/s], Decompressed: 1108[KDownloaded: 4358 file(s) [attempted 4358/8142 = 53%, 796 KB/s], Decompressed: 1108[KDownloaded: 4457 file(s) [attempted 4457/8142 = 54%, 2459 KB/s], Decompressed: 1108[KDownloaded: 4561 file(s) [attempted 4561/8142 = 56%, 3292 KB/s], Decompressed: 1108[KDownloaded: 4662 file(s) [attempted 4662/8142 = 57%, 774 KB/s], Decompressed: 1108[KDownloaded: 4763 file(s) [attempted 4763/8142 = 58%, 933 KB/s], Decompressed: 1108[KDownloaded: 4867 file(s) [attempted 4867/8142 = 59%, 1283 KB/s], Decompressed: 1108[KDownloaded: 4971 file(s) [attempted 4971/8142 = 61%, 136 KB/s], Decompressed: 1108[KDownloaded: 5078 file(s) [attempted 5078/8142 = 62%, 668 KB/s], Decompressed: 1108[KDownloaded: 5182 file(s) [attempted 5182/8142 = 63%, 673 KB/s], Decompressed: 1108[KDownloaded: 5290 file(s) [attempted 5290/8142 = 64%, 816 KB/s], Decompressed: 1108[KDownloaded: 5383 file(s) [attempted 5383/8142 = 66%, 635 KB/s], Decompressed: 1108[KDownloaded: 5473 file(s) [attempted 5473/8142 = 67%, 653 KB/s], Decompressed: 1108[KDownloaded: 5574 file(s) [attempted 5574/8142 = 68%, 495 KB/s], Decompressed: 1108[KDownloaded: 5678 file(s) [attempted 5678/8142 = 69%, 762 KB/s], Decompressed: 1108[KDownloaded: 5782 file(s) [attempted 5782/8142 = 71%, 131 KB/s], Decompressed: 1108[KDownloaded: 5879 file(s) [attempted 5879/8142 = 72%, 457 KB/s], Decompressed: 1108[KDownloaded: 5983 file(s) [attempted 5983/8142 = 73%, 1343 KB/s], Decompressed: 1108[KDownloaded: 6084 file(s) [attempted 6084/8142 = 74%, 1255 KB/s], Decompressed: 1108[KDownloaded: 6153 file(s) [attempted 6153/8142 = 75%, 1095 KB/s], Decompressed: 1108[KDownloaded: 6241 file(s) [attempted 6241/8142 = 76%, 1021 KB/s], Decompressed: 1108[KDownloaded: 6337 file(s) [attempted 6337/8142 = 77%, 901 KB/s], Decompressed: 1108[KDownloaded: 6430 file(s) [attempted 6430/8142 = 78%, 160 KB/s], Decompressed: 1108[KDownloaded: 6531 file(s) [attempted 6531/8142 = 80%, 714 KB/s], Decompressed: 1108[KDownloaded: 6635 file(s) [attempted 6635/8142 = 81%, 578 KB/s], Decompressed: 1108[KDownloaded: 6740 file(s) [attempted 6740/8142 = 82%, 1099 KB/s], Decompressed: 1108[KDownloaded: 6843 file(s) [attempted 6843/8142 = 84%, 727 KB/s], Decompressed: 1108[KDownloaded: 6947 file(s) [attempted 6947/8142 = 85%, 826 KB/s], Decompressed: 1108[KDownloaded: 7048 file(s) [attempted 7048/8142 = 86%, 178 KB/s], Decompressed: 1108[KDownloaded: 7145 file(s) [attempted 7145/8142 = 87%, 1279 KB/s], Decompressed: 1108[KDownloaded: 7245 file(s) [attempted 7245/8142 = 88%, 441 KB/s], Decompressed: 1108[KDownloaded: 7346 file(s) [attempted 7346/8142 = 90%, 2583 KB/s], Decompressed: 1108[KDownloaded: 7447 file(s) [attempted 7447/8142 = 91%, 369 KB/s], Decompressed: 1108[KDownloaded: 7551 file(s) [attempted 7551/8142 = 92%, 862 KB/s], Decompressed: 1108[KDownloaded: 7655 file(s) [attempted 7655/8142 = 94%, 919 KB/s], Decompressed: 1108[KDownloaded: 7755 file(s) [attempted 7755/8142 = 95%, 3229 KB/s], Decompressed: 1108[KDownloaded: 7859 file(s) [attempted 7859/8142 = 96%, 431 KB/s], Decompressed: 1108[KDownloaded: 7963 file(s) [attempted 7963/8142 = 97%, 197 KB/s], Decompressed: 1108[KDownloaded: 8071 file(s) [attempted 8071/8142 = 99%, 455 KB/s], Decompressed: 1108[KDownloaded: 8140 file(s) [attempted 8140/8142 = 99%, 979 KB/s], Decompressed: 1108[KDownloaded: 8142 file(s) [attempted 8142/8142 = 100%, 979 KB/s], Decompressed: 1108[K
+Decompressed 8142 file(s)
+Already decompressed 8142 file(s)
+
+STAGE=lake_update EXIT=0 SECONDS=84.329
+STAGE=mathlib_pin CMD=["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"]
+07642720480157414db592fa85b626dafb71355b
+
+STAGE=mathlib_pin EXIT=0 SECONDS=0.004
+STAGE=cache_get CMD=["lake", "exe", "cache", "get"]
+Current branch: HEAD
+Using cache (Azure) from origin: leanprover-community/mathlib4
+No files to download
+Already decompressed 8142 file(s)
+
+STAGE=cache_get EXIT=0 SECONDS=4.734
+STAGE=owner_residue_focal CMD=["lake", "build", "YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound"]
+mallEq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedGreenTransitionDecay.lean:50:57: This simp argument is unused:
+  hlargeEq
+
+Hint: Omit it from the simp argument list.
+  simp [cmp99NestedActiveRegionRestriction, restrictZeroCLM,
+  ̵  ̵ ̵ ̵ ̵ ̵extendZeroZeroCLM, htargetLarge,
+  ̲  ̲ ̲ ̲ ̲ ̲singleFinitePiLp, hl̵a̵r̵g̵e̵E̵q̵,̵ ̵h̵smallEq]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceGeneratedGreenTransitionDecay.lean:61:0: automatically included section variable(s) unused in theorem `YangMills.RG.cmp99NestedActiveRegionRestriction_single_of_not_mem`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8672/8696] Built YangMills.RG.BalabanCMP95PeriodicSquarePartition (5.4s)
+✔ [8673/8696] Built YangMills.RG.BalabanCMP95RescaledPeriodicSquarePartition (6.9s)
+✔ [8674/8696] Built YangMills.RG.BalabanCMP95PeriodicSquarePartitionSupportCardinality (9.5s)
+✔ [8675/8696] Built YangMills.RG.BalabanCMP99SourceGeneratedSmoothGreenCommutator (16s)
+✔ [8676/8696] Built YangMills.RG.BalabanCMP95PeriodicSquareSlope (8.9s)
+⚠ [8677/8696] Built YangMills.RG.BalabanCMP95PeriodicSquareTorusSlope (6.5s)
+warning: YangMills/RG/BalabanCMP95PeriodicSquareTorusSlope.lean:38:33: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+info: YangMills/RG/BalabanCMP95PeriodicSquareTorusSlope.lean:69:34: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+warning: YangMills/RG/BalabanCMP95PeriodicSquareTorusSlope.lean:69:30: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✔ [8678/8696] Built YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorFactor (29s)
+✔ [8679/8696] Built YangMills.RG.BalabanCMP99SourceEq395Partition (17s)
+⚠ [8680/8696] Built YangMills.RG.BalabanCMP95PeriodicCutoffSlope (6.6s)
+warning: YangMills/RG/BalabanCMP95PeriodicCutoffSlope.lean:94:42: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [Finset.attach_eq_univ, vx, P̵i̵L̵p̵.̵t̵o̵L̵p̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.norm_eq_abs, sq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP95PeriodicCutoffSlope.lean:101:42: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [Finset.attach_eq_univ, vy, P̵i̵L̵p̵.̵t̵o̵L̵p̵_̵a̵p̵p̵l̵y̵,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵Real.norm_eq_abs, sq_abs]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP95PeriodicCutoffSlope.lean:128:14: This simp argument is unused:
+  Fintype.card_coe
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵F̵i̵n̵t̵y̵p̵e̵.̵c̵a̵r̵d̵_̵c̵o̵e̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8681/8696] Built YangMills.RG.BalabanCMP95PeriodicActiveCellOverlap (6.7s)
+⚠ [8682/8696] Built YangMills.RG.BalabanCMP99SourceEq395LocalInverse (12s)
+warning: YangMills/RG/BalabanCMP99SourceEq395LocalInverse.lean:272:0: automatically included section variable(s) unused in theorem `YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_pi4RegionProjector`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8683/8696] Built YangMills.RG.BalabanCMP99SourceGeneratedSectionCSmoothCommutatorFactor (20s)
+✔ [8684/8696] Built YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorFactorDecay (7.4s)
+✔ [8685/8696] Built YangMills.RG.BalabanCMP99SourceEq395PhysicalFamily (15s)
+✔ [8686/8696] Built YangMills.RG.BalabanCMP99SourceGeneratedSectionCHeadFactor (8.4s)
+✔ [8687/8696] Built YangMills.RG.BalabanCMP99SourceEq395HeadDictionary (11s)
+⚠ [8688/8696] Built YangMills.RG.BalabanCMP99SourceRegionalGreenNeumann (11s)
+warning: YangMills/RG/BalabanCMP99SourceRegionalGreenNeumann.lean:172:2: Try `simp at himpossible` instead of `simpa using himpossible`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8689/8696] Built YangMills.RG.BalabanCMP99SourceRegionalLargeBlockPartition (5.1s)
+⚠ [8690/8696] Built YangMills.RG.BalabanCMP99SourceSeparatedLargeBlockPartition (5.9s)
+warning: YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartition.lean:153:28: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/BalabanCMP99SourceSeparatedLargeBlockPartition.lean:153:28: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [8691/8696] Built YangMills.RG.BalabanCMP99Eq389SourceLocalizationOwner (4.0s)
+✔ [8692/8696] Built YangMills.RG.BalabanCMP99SourceLocalizationOwnerDistanceBridge (5.2s)
+✔ [8693/8696] Built YangMills.RG.BalabanCMP99DiagonalFiniteGreenOwnerBound (5.7s)
+✔ [8694/8696] Built YangMills.RG.BalabanCMP99SourceFineToCoarseCenteredOwnerDictionary (5.1s)
+✔ [8695/8696] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary (5.3s)
+✔ [8696/8696] Built YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound (5.0s)
+Build completed successfully (8696 jobs).
+
+STAGE=owner_residue_focal EXIT=0 SECONDS=1616.682
+STAGE=owner_residue_audit CMD=["lake", "env", "lean", "YangMills/RG/BalabanCMP99PhysicalFullGreenOwnerResidueBoundAudit.lean"]
+'YangMills.RG.cmp99PhysicalFullGreenUnscaledOwnerResidueSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.cmp99PhysicalFullGreenOwnerResidue_affineBase_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.norm_cmp99PhysicalFullGreenUnscaledOwnerResidueSum_le_owner' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+STAGE=owner_residue_audit EXIT=0 SECONDS=10.568
+AXIOM_GATE=PASS {"YangMills.RG.cmp99PhysicalFullGreenOwnerResidue_affineBase_eq": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.cmp99PhysicalFullGreenUnscaledOwnerResidueSum": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.norm_cmp99PhysicalFullGreenUnscaledOwnerResidueSum_le_owner": ["Classical.choice", "Quot.sound", "propext"]}
+STAGE=generated_owner_focal CMD=["lake", "build", "YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound"]
+RG.BalabanCMP99SourceFlatGeneratedTerminalBlockCollapse (6.8s)
+✔ [8763/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedPrecisionScalarDictionary (5.3s)
+✔ [8764/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalLargeBlockCutoff (6.4s)
+✔ [8765/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPrecisionKernel (19s)
+✔ [8766/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexCoordinateDictionary (7.5s)
+✔ [8767/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeMassComplexFieldDictionary (8.6s)
+✔ [8768/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalComplexZeroExtensionDictionary (5.7s)
+✔ [8769/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedPhysicalAmbientDictionary (23s)
+✔ [8770/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedTerminalComplexFieldData (5.4s)
+✔ [8771/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedBackgroundDictionary (4.9s)
+✔ [8772/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedAmbientLaplacian (5.0s)
+✔ [8773/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedComplexStencilDictionary (5.4s)
+✔ [8774/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedActiveLaplacianComplexDictionary (5.5s)
+✔ [8775/8808] Built YangMills.RG.BalabanCMP99SourceFlatGeneratedPhysicalPrecisionComplexDictionary (6.4s)
+✔ [8776/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreen (6.3s)
+✔ [8777/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFullComplexAPositive (5.5s)
+✔ [8778/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreen (6.6s)
+✔ [8779/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalStabilizedDenominatorNonvanishing (5.7s)
+✔ [8780/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientGreenComplexification (7.5s)
+✔ [8781/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain (5.8s)
+✔ [8782/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreAliasQuotient (6.1s)
+✔ [8783/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain (5.9s)
+✔ [8784/8808] Built YangMills.RG.BalabanCMP99CenteredTorusPhysicalGreenSampleTransport (7.6s)
+✔ [8785/8808] Built YangMills.RG.BalabanCMP99PhysicalGreenFiniteGridAliasing (5.7s)
+⚠ [8786/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceMixedDomain (7.5s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:200:5: unused variable `hamplitude`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:201:5: unused variable `hradius`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:202:5: unused variable `hdenWindow`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8787/8808] Built YangMills.RG.BalabanCMP99FullGreenFiniteGridAliasing (5.6s)
+✔ [8788/8808] Built YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing (6.8s)
+✔ [8789/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalAmbientPrecisionComplexDictionary (26s)
+✔ [8790/8808] Built YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing (5.4s)
+✔ [8791/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerCharacter (5.2s)
+✔ [8792/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenIdentification (6.2s)
+✔ [8793/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter (5.4s)
+✔ [8794/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceGreenIdentification (5.5s)
+✔ [8795/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode (5.8s)
+✔ [8796/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis (5.4s)
+✔ [8797/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeTransposeEndpointSample (5.2s)
+✔ [8798/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase (5.3s)
+✔ [8799/8808] Built YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection (5.5s)
+⚠ [8800/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceCharacterDictionary (6.6s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:234:58: This simp argument is unused:
+  pointSource
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, p̵o̵i̵n̵t̵S̵o̵u̵r̵ce̵,̵
+  ̵ ̵ ̵ ̵ ̵c̵oarseCharacter, owner, z, sourceEndpoint,
+  ̲  ̲ ̲ ̲e, reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:235:31: This simp argument is unused:
+  sourceEndpoint
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
+  ̵  ̵ ̵ ̵coarseCharacter, owner, z, s̵o̵u̵r̵c̵eE̵n̵d̵p̵o̵i̵n̵t̵,
+  ̲ e̵,̵  ̲ ̲reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8801/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceTargetCharacterDictionary (5.6s)
+✔ [8802/8808] Built YangMills.RG.BalabanCMP89Eq246FullEndpointReflection (5.9s)
+✔ [8803/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourcePhysicalEndpointReflection (5.1s)
+✔ [8804/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary (5.6s)
+✔ [8805/8808] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionary (5.0s)
+✔ [8806/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceOuterSynthesisDictionary (4.0s)
+✔ [8807/8808] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceResidueClass (6.2s)
+✔ [8808/8808] Built YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound (5.2s)
+Build completed successfully (8808 jobs).
+
+STAGE=generated_owner_focal EXIT=0 SECONDS=543.118
+STAGE=generated_owner_audit CMD=["lake", "env", "lean", "YangMills/RG/BalabanCMP99GeneratedFullPointSourceOwnerBoundAudit.lean"]
+'YangMills.RG.cmp99PhysicalFullGreenOwnerAmplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.norm_cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.norm_cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum_le_owner' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99GeneratedFullPointSourceOwnerBoundCertificate.owner_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.cmp99GeneratedFullPointSourceOwnerBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+STAGE=generated_owner_audit EXIT=0 SECONDS=18.311
+AXIOM_GATE=PASS {"YangMills.RG.CMP99GeneratedFullPointSourceOwnerBoundCertificate.owner_bound": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.cmp99GeneratedFullPointSourceOwnerBound": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.cmp99PhysicalFullGreenOwnerAmplitude": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.norm_cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum_eq": ["Classical.choice", "Quot.sound", "propext"], "YangMills.RG.norm_cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum_le_owner": ["Classical.choice", "Quot.sound", "propext"]}
+EVIDENCE_SHA256=f348d486dd18981ea1a525456784bc20d41849cf4d948b21685010ab6fb013ad
+EVIDENCE_ARCHIVE=/content/hrpoly-cmp99-full-green-owner-consumers-v2-evidence.tar.gz
+EVIDENCE_ARCHIVE_SHA256=12bc8b02448bd041879cd36a247cbfacfdb58b72c160697ae5e7787086bc86c5
+FINAL_STATUS=PASS
+RUNTIME_RETAINED_FOR_EVIDENCE_DOWNLOAD=1
+RUNTIME_UNASSIGN_REQUESTED=1

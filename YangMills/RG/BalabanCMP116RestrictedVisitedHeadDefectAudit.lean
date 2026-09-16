@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedHeadDefect
+
+#print axioms YangMills.RG.cmp116RestrictedHeadActive
+#print axioms YangMills.RG.cmp116RestrictedHeadWeight_eq_one_of_not_active
+#print axioms YangMills.RG.cmp116RestrictedHeadDefectLeft
+#print axioms YangMills.RG.cmp116RestrictedHeadDefectRight
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferHeadReadout_sub_one_eq_headActiveFactorization
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferHeadReadout_sub_eq_headDefect_add_resolventDefect
+#print axioms YangMills.RG.cmp116RestrictedHeadReadoutProductLeft
+#print axioms YangMills.RG.cmp116RestrictedHeadReadoutProductRight
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferHeadReadout_mul_eq_productFactorization
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferHeadReadout_resolvent_sub_one_eq_activeTargetFactorization
+#print axioms YangMills.RG.Matrix.sumFactorLeft
+#print axioms YangMills.RG.Matrix.sumFactorRight
+#print axioms YangMills.RG.Matrix.sumFactorLeft_mul_sumFactorRight
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferHeadReadout_resolvent_sub_one_eq_finiteFactorization

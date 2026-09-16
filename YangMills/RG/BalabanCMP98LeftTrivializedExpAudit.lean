@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98LeftTrivializedExp
+
+#print axioms YangMills.RG.tsum_cmp98NegLeftExpTerm_eq
+#print axioms YangMills.RG.tsum_expTermFDeriv_shift_eq_fderiv
+#print axioms YangMills.RG.tsum_negLeft_mul_tsum_expFDeriv_shift_eq_gad
+#print axioms YangMills.RG.cmp98_leftTrivialized_fderiv_exp_eq_gad
+#print axioms YangMills.RG.cmp98_exp_neg_mul_fderiv_exp_eq_gad_apply

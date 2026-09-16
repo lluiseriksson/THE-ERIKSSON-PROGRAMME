@@ -1,0 +1,5 @@
+/- STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED. -/
+
+import YangMills.RG.BalabanCMP89Eq249FineLatticeLeftDerivativeOneCoordinateContourShift
+
+#print axioms YangMills.RG.intervalIntegral_cmp89Eq249FineLatticeStabilizedFourierLeftDerivativeKernelIntegrand_coordinateShift_massUniform_draft

@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116Eq214AnalyticSupport
+
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.TermSupportedOn
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.TermSupportedOn.mono
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.FieldWeightsSupportedOn
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.TermSupportedOn.of_fieldWeights
+#print axioms YangMills.RG.balabanCMP116H_eq_of_agreeOn_of_analyticTermSupportedOn
+#print axioms YangMills.RG.balabanCMP116H_eq_of_agreeOn_of_activityIdentification

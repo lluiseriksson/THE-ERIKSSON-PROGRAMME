@@ -1,0 +1,12 @@
+'YangMills.RG.norm_cmp89Eq246PhysicalZeroMassGreen_le_signedLatticeWeight' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.cmp89Eq246DirectedFullSolutionSumBound_nonneg_of_window' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.tsum_norm_cmp89Eq246FullGreen_arbitraryResidue_le_centeredPeriodic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.norm_tsum_cmp89Eq246FullGreen_arbitraryResidue_le_centeredPeriodic' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

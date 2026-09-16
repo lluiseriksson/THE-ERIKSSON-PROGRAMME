@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116DomainCardinalityAbsorption
+
+#print axioms YangMills.RG.sqrt_nat_pow_three_mul_exp_neg_le
+#print axioms YangMills.RG.sqrt_four_mul_fourth_mul_nat
+#print axioms YangMills.RG.sqrt_explicitBlockCard_pow_three_mul_exp_neg_le

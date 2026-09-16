@@ -158,13 +158,20 @@ Visually confirmed source anchors already located:
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
+  Direct inspection of the rendered primary PDF also fixes the preceding
+  constant as
+  `C_3 = 2 (L+2)^4 O(1)^2 E_0 C_1 alpha_4^-1 alpha_6^-1 M^q
+  exp(C_2 kappa_1)`.  This supersedes the corrupted OCR reading with
+  `alpha_1^-1 alpha_L^-1`; `O(1)` remains a named positive source constant.
   This is an activity-decay anchor for the localized fluctuation-integral
   expansion, not yet the full Lean support theorem.
 * CMP 116 (1988), PDF page 21, eqs. (2.39)--(2.41): Lemma 3's `H(Z)` bound is
   inserted into the exponentiated polymer series and converted into the
   effective-action estimate
-  `|E^(k+1)(X)| <= O(1) C_3 eps_1 exp(-(1 - 10 delta)^(1/2) L kappa d_{k+1}(X))`.
-  The text then fixes `(1 - 10 delta)^(1/2) L = 1`, assumes
+  `|E^(k+1)(X)| <= O(1) C_3 eps_1 exp(-(1 - 10 delta) * (1/2) * L * kappa *
+  d_{k+1}(X))`.
+  The text then fixes `(1 - 10 delta) * (1/2) * L = 1`, equivalently
+  `delta = (1/10) * (1 - 2/L)`, assumes
   `O(1) C_3 eps_1 <= E_0/2`, and treats the extra `log Z` normalization term by
   a separate generalized random-walk expansion.  This is the source anchor for
   the post-Lemma-3 effective-action consumer; see `docs/SOURCE-CLAIM-AUDIT.md`

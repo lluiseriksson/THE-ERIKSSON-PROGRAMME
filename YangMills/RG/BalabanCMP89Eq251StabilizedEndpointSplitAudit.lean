@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89Eq251StabilizedEndpointSplit
+
+#print axioms YangMills.RG.cmp89Eq251ComplexBareEndpointNumerator
+#print axioms YangMills.RG.cmp89Eq251ComplexBareAliasNumerator_eq_sub_endpoint
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointNumerator
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedNumerator_eq_sub_endpoint
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedEndpointIntegrand
+#print axioms YangMills.RG.cmp89Eq251ComplexStabilizedIntegrand_eq_sub_endpoint

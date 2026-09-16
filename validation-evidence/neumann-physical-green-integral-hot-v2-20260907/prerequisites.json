@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour"], "cwd": "/content/hrpoly-neumann-coordinate-precision-diagnostic-v1", "exit": 0, "log_sha256": "6bbc2f7546ba8d6782a9b35370a1bb26af0fe1eca73b7dd9a670e2488189d8f2", "seconds": 4.926601893999759, "stage": "prerequisites", "timed_out": false, "timeout_seconds": 600}

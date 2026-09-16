@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq216PhysicalClosure
+
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_mono_amplitude
+#print axioms YangMills.RG.CMP116Eq216PhysicalKernelCertificate.of_bounds
+#print axioms YangMills.RG.CMP116Eq216PhysicalKernelCertificate.of_interactingCorrections

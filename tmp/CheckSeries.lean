@@ -1,0 +1,20 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalComplexDefectBound
+
+#check Summable.map
+#check Summable.comp_injective
+#check ContinuousLinearMap.map_tsum
+#check hasSum_choose_mul_geometric_of_norm_lt_one'
+#check summable_choose_mul_geometric_of_norm_lt_one
+#check tsum_choose_mul_geometric_of_norm_lt_one'
+#check tsum_sub
+#check Summable.add
+#check Summable.sub
+#check Summable.congr
+#check norm_tsum_le_tsum_norm
+#check tsum_apply
+#check Pi.summable
+#check Summable.tsum_sub
+#check one_le_pow₀
+#check one_le_pow_of_one_le
+#check tsum_le_tsum
+#check Summable.tsum_le_tsum

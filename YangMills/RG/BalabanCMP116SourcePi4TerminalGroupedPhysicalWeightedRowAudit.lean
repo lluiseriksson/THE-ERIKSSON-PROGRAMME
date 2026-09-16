@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalGroupedPhysicalWeightedRow
+
+#print axioms YangMills.RG.cmp116SourcePi4TerminalBranching
+#print axioms YangMills.RG.cmp116SourcePi4TerminalGroupedWalkLayer_weightedRow_physical
+#print axioms YangMills.RG.cmp116SourcePi4QuotientGeneratedWalkLayer_weightedRow_physical

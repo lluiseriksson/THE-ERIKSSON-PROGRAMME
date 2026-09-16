@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4WeakenedPotential
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4WeakenedPotential_one_eq_exact
+#print axioms YangMills.RG.cmp102Eq80SourcePi4WeakenedPotential_zero
+#print axioms YangMills.RG.fderiv_cmp102Eq80SourcePi4WeakenedPotential_zero
+#print axioms YangMills.RG.contDiff_two_cmp102Eq80SourcePi4WeakenedPotential

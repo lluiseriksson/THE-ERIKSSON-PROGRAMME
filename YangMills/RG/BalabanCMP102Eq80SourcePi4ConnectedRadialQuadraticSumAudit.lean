@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4ConnectedRadialQuadraticSum
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4ConnectedRadialQuadraticSum
+#print axioms YangMills.RG.inner_cmp102Eq80SourcePi4ConnectedRadialQuadraticSum_eq_sum_activity
+#print axioms YangMills.RG.cmp102Eq80SourcePi4PhysicalPotential_eq_decoupledLeaf_add_radialQuadratic

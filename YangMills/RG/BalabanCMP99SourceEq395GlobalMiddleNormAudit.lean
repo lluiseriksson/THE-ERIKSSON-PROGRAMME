@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceEq395GlobalMiddleNorm
+
+#print axioms YangMills.RG.norm_cmp99Eq395GeneratedWeightedAdjoint_le
+#print axioms YangMills.RG.norm_cmp99Eq395GeneratedMiddle_le
+#print axioms YangMills.RG.norm_cmp99Eq395PhysicalGlobalMiddle_le

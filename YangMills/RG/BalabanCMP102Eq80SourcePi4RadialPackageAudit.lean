@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4RadialPackage
+
+#print axioms YangMills.RG.CMP102Eq80SourcePi4RadialPackage
+#print axioms YangMills.RG.CMP102Eq80SourcePi4RadialPackage.physicalPotential
+#print axioms YangMills.RG.CMP102Eq80SourcePi4RadialPackage.radialOperator
+#print axioms YangMills.RG.CMP102Eq80SourcePi4RadialPackage.physicalPotential_eq_half_inner_radialOperator

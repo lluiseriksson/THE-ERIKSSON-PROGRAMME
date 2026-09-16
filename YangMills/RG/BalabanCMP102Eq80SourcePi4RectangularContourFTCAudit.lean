@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4RectangularContourFTC
+
+#print axioms YangMills.RG.continuousOn_cmp102Eq80PropagatorDirectionalDerivative_families
+#print axioms YangMills.RG.integral_cmp102Eq80SourcePi4RectangularContourPotentialDerivative_eq_sub_of_source

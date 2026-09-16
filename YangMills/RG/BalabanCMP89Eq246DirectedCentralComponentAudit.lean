@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246DirectedCentralComponent
+
+#print axioms YangMills.RG.norm_cmp89Eq246CentralTargetPhase_mul_noncentralSourceMoment_signedContour_le
+#print axioms YangMills.RG.norm_cmp89Eq246CentralTargetPhase_mul_centralComponent_signedContour_le

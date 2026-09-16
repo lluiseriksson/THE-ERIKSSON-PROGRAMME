@@ -1,0 +1,144 @@
+PRECEDING_COLD_PASS_VERIFIED=1
+HOT_STAGE=original_head CMD=["git", "rev-parse", "HEAD"]
+098cf3dfad1095c57bdc1d1dc5bc6b13252174d5
+
+HOT_STAGE_RESULT={"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "original_head.log", "seconds": 0.0038728000004084606, "sha256": "6998ae3d9c3a86e023049dd87ed951202e6680d964e7a426f02792e51c00241a", "stage": "original_head"}
+HOT_STAGE=original_clean CMD=["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"]
+
+HOT_STAGE_RESULT={"command": ["git", "diff", "--exit-code", "HEAD", "--", "YangMills", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "original_clean.log", "seconds": 0.6573638549998577, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "original_clean"}
+HOT_STAGE=fetch_source CMD=["git", "fetch", "--no-tags", "origin", "b536a21679ff811ceee9bf24452fa20dd866b166"]
+From https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+ * branch                b536a21679ff811ceee9bf24452fa20dd866b166 -> FETCH_HEAD
+
+HOT_STAGE_RESULT={"command": ["git", "fetch", "--no-tags", "origin", "b536a21679ff811ceee9bf24452fa20dd866b166"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "fetch_source.log", "seconds": 0.38798912099991867, "sha256": "1e1889bafbd9605ebfc31c6c47f4884ca136ca5ce2a314dfd84eb8a1b3c4acac", "stage": "fetch_source"}
+HOT_STAGE=source_delta CMD=["git", "diff", "--name-only", "098cf3dfad1095c57bdc1d1dc5bc6b13252174d5", "b536a21679ff811ceee9bf24452fa20dd866b166", "--", "YangMills"]
+YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity.lean
+YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentityAudit.lean
+
+HOT_STAGE_RESULT={"command": ["git", "diff", "--name-only", "098cf3dfad1095c57bdc1d1dc5bc6b13252174d5", "b536a21679ff811ceee9bf24452fa20dd866b166", "--", "YangMills"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "source_delta.log", "seconds": 0.004392459999962739, "sha256": "5dbdf70dfb8b8c93495c1a98cbbfb9cb35c4083050e27c2e3b874bedc093650d", "stage": "source_delta"}
+HOT_STAGE=pins_delta CMD=["git", "diff", "--exit-code", "098cf3dfad1095c57bdc1d1dc5bc6b13252174d5", "b536a21679ff811ceee9bf24452fa20dd866b166", "--", "lean-toolchain", "lake-manifest.json"]
+
+HOT_STAGE_RESULT={"command": ["git", "diff", "--exit-code", "098cf3dfad1095c57bdc1d1dc5bc6b13252174d5", "b536a21679ff811ceee9bf24452fa20dd866b166", "--", "lean-toolchain", "lake-manifest.json"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "pins_delta.log", "seconds": 0.002075190000141447, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stage": "pins_delta"}
+HOT_STAGE=checkout CMD=["git", "checkout", "--detach", "b536a21679ff811ceee9bf24452fa20dd866b166"]
+Previous HEAD position was 098cf3dfa PRE-VALIDATION: source-flow full-G inverse identity and joint scalar foundations
+HEAD is now at b536a2167 PRE-VALIDATION: generic full point-source residue identity for independent scales
+
+HOT_STAGE_RESULT={"command": ["git", "checkout", "--detach", "b536a21679ff811ceee9bf24452fa20dd866b166"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "checkout.log", "seconds": 0.033315079000203696, "sha256": "cbd910be9ed4810972ad604aa3f991fe566fbaded45a111860f4a4948250f5b3", "stage": "checkout"}
+HOT_STAGE=head CMD=["git", "rev-parse", "HEAD"]
+b536a21679ff811ceee9bf24452fa20dd866b166
+
+HOT_STAGE_RESULT={"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "head.log", "seconds": 0.0018232300003546698, "sha256": "b6cb07a6d4cfda673fc52079ffd101a4cb442fcd15dc907af4e35c5793abfda4", "stage": "head"}
+HOT_STAGE=mathlib CMD=["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"]
+07642720480157414db592fa85b626dafb71355b
+
+HOT_STAGE_RESULT={"command": ["git", "-C", ".lake/packages/mathlib", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "mathlib.log", "seconds": 0.0018968700001096295, "sha256": "a2fa5070e2d7c78dce69980ad09098922cf74cea781f2be21a6e899f21dc84cd", "stage": "mathlib"}
+HOT_STAGE=text_guard CMD=["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/cmp99-generic-full-point-source-residue-hot-v2-logs/source-paths.txt", "--require-prevalidation"]
+LEAN_OVERLAY_TEXT_OK files=2 source=paths:/content/cmp99-generic-full-point-source-residue-hot-v2-logs/source-paths.txt prevalidation=required
+
+HOT_STAGE_RESULT={"command": ["python3", "scripts/check_lean_overlay_text.py", "--paths-from", "/content/cmp99-generic-full-point-source-residue-hot-v2-logs/source-paths.txt", "--require-prevalidation"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "text_guard.log", "seconds": 0.061226578999594494, "sha256": "fcc490ee97ed1eedc6e6594311bfb4125006351b637fa489216e68a5e6a27e67", "stage": "text_guard"}
+HOT_STAGE=import_guard CMD=["python3", "scripts/check_lean_import_prefix.py", "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity.lean", "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentityAudit.lean"]
+LEAN_IMPORT_PREFIX_OK files=2
+
+HOT_STAGE_RESULT={"command": ["python3", "scripts/check_lean_import_prefix.py", "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity.lean", "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentityAudit.lean"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "import_guard.log", "seconds": 0.04425269900002604, "sha256": "d0ccc355605198f7e73ff27cdacfd509f3d0222f134d6ddb79067c3cf966dae9", "stage": "import_guard"}
+HOT_STAGE=f2_focal CMD=["lake", "build", "YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity"]
+angMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:96:53: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq248PhysicalCoordinatePeriodShift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵pShift, hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:189:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hreal nu]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP89Eq246MassUniformAnalyticDomain.lean:190:48: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [cmp89Eq251PhysicalCoordinateLine, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hk, hreal k]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8774/8804] Built YangMills.RG.BalabanCMP89Eq246DirectedNormalizedFullSolutionIntegral (6.5s)
+✔ [8775/8804] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalResidueEndpointDictionary (6.8s)
+✔ [8776/8804] Built YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalZeroResidueAliasing (8.4s)
+✔ [8777/8804] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierMode (6.8s)
+✔ [8778/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerCharacter (6.4s)
+✔ [8779/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceSolutionDomain (6.9s)
+✔ [8780/8804] Built YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenTorus (7.3s)
+⚠ [8781/8804] Built YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary (7.2s)
+warning: YangMills/RG/BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary.lean:54:2: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+✔ [8782/8804] Built YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalGreenFourierSynthesis (7.4s)
+✔ [8783/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceReversedOwnerCharacter (7.1s)
+✔ [8784/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceNegativePhysicalDomain (7.2s)
+✔ [8785/8804] Built YangMills.RG.BalabanCMP89Eq246DirectedNormalizedPhysicalFineKernel (6.7s)
+✔ [8786/8804] Built YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenCoefficientDictionary (7.7s)
+⚠ [8787/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceMixedDomain (8.0s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:200:5: unused variable `hamplitude`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:201:5: unused variable `hradius`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceMixedDomain.lean:202:5: unused variable `hdenWindow`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8788/8804] Built YangMills.RG.BalabanCMP99SourceFlatQprimeTransposeEndpointSample (5.9s)
+✔ [8789/8804] Built YangMills.RG.BalabanCMP89Eq246DirectedPhysicalFineContourDictionary (5.4s)
+✔ [8790/8804] Built YangMills.RG.BalabanCMP99SourceFlatQprimeCrossFibreEndpointPhase (5.2s)
+✔ [8791/8804] Built YangMills.RG.BalabanCMP89Eq246MassUniformPhysicalContour (6.5s)
+✔ [8792/8804] Built YangMills.RG.BalabanCMP99SourceFlatQprimeZeroFibreEndpointReflection (5.2s)
+✔ [8793/8804] Built YangMills.RG.BalabanCMP89Eq246MassUniformCenteredGreenFourierSummability (5.0s)
+⚠ [8794/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceCharacterDictionary (6.2s)
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:234:58: This simp argument is unused:
+  pointSource
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, p̵o̵i̵n̵t̵S̵o̵u̵r̵ce̵,̵
+  ̵ ̵ ̵ ̵ ̵c̵oarseCharacter, owner, z, sourceEndpoint,
+  ̲  ̲ ̲ ̲e, reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/BalabanCMP99SourceFlatFullPointSourceCharacterDictionary.lean:235:31: This simp argument is unused:
+  sourceEndpoint
+
+Hint: Omit it from the simp argument list.
+  simp only [cmp89Eq246StabilizedFinePointSourceSolution, pointSource,
+  ̵  ̵ ̵ ̵coarseCharacter, owner, z, s̵o̵u̵r̵c̵eE̵n̵d̵p̵o̵i̵n̵t̵,
+  ̲ e̵,̵  ̲ ̲reflect]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8795/8804] Built YangMills.RG.BalabanCMP99FullGreenFiniteGridAliasing (5.3s)
+ℹ [8796/8804] Built YangMills.RG.BalabanCMP99FullGreenArbitraryResidueBound (5.4s)
+info: YangMills/RG/BalabanCMP99FullGreenArbitraryResidueBound.lean:106:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [8797/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceTargetCharacterDictionary (5.3s)
+✔ [8798/8804] Built YangMills.RG.BalabanCMP89Eq246FullEndpointReflection (5.4s)
+✔ [8799/8804] Built YangMills.RG.BalabanCMP99FullGreenPhysicalFiniteGridAliasing (5.3s)
+✔ [8800/8804] Built YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound (5.6s)
+✔ [8801/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourcePhysicalEndpointReflection (4.9s)
+✔ [8802/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceFibreIntegrandDictionary (5.7s)
+✔ [8803/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOuterSynthesisDictionary (4.7s)
+✔ [8804/8804] Built YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity (5.4s)
+Build completed successfully (8804 jobs).
+
+HOT_STAGE_RESULT={"command": ["lake", "build", "YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "f2_focal.log", "seconds": 156.53189485199982, "sha256": "d2fc6a930c94a8f3c46fb00a1dff680e1c8e1528204b0631fb29af00701a9f56", "stage": "f2_focal"}
+HOT_STAGE=f2_audit CMD=["lake", "env", "lean", "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentityAudit.lean"]
+'YangMills.RG.cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerResidue' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+HOT_STAGE_RESULT={"command": ["lake", "env", "lean", "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentityAudit.lean"], "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1", "exit": 0, "log": "f2_audit.log", "seconds": 8.369206639999902, "sha256": "4b2c56cfbef5e3f18f6bc7b8cb1d3f603555e77c950d41b3fd3a7fa207b26ac6", "stage": "f2_audit"}
+HOT_ARCHIVE=/content/cmp99-generic-full-point-source-residue-hot-v2-logs.tar.gz
+HOT_ARCHIVE_SHA256=75d1697daa8088cdd497a94e3e555369047e36deb510e4b456c341e5085faaca
+HOT_DEBUG_STATUS=PASS COLD_SEAL=0
+RUNTIME_RETAINED_FOR_EVIDENCE=1

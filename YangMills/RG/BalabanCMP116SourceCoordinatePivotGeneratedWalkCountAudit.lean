@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourceCoordinatePivotGeneratedWalkCount
+
+#print axioms YangMills.RG.cmp116SourcePi4CoordinateActive
+#print axioms YangMills.RG.mem_cmp116SourcePi4CoordinateActive_iff
+#print axioms YangMills.RG.card_cmp116SourcePi4GeneratedWalksActivating_le

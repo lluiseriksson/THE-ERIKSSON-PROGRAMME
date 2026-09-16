@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "8c89fa485c24e2aac43c7b479a3daf77f1c850324d87ec7bdc0171f580a2cab5",
+  "cold_seal": false,
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/neumann-generated-complete-fibre-hot-v1-evidence/physical_draft.olean",
+      "tmp/neumann-generated-complete-fibre-hot-v1/NeumannGeneratedCompleteFibreDraft.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1",
+    "exit": 1,
+    "log_sha256": "5c113d4b7a1e64991b72bc7e1e451591e5ffcbff653423414a439ddcdd40b831",
+    "seconds": 9.09328141900005,
+    "stage": "physical_draft",
+    "timed_out": false,
+    "timeout_seconds": 120
+  },
+  "log": "tmp/neumann-generated-complete-fibre-hot-v1/NeumannGeneratedCompleteFibreDraft.lean:33:2: error: Unnecessary `generalizing` argument: Variable `x` is generalized automatically\ntmp/neumann-generated-complete-fibre-hot-v1/NeumannGeneratedCompleteFibreDraft.lean:34:12: error: Tactic `assumption` failed\n\ncase zero\nd M N : \u2115\ninst\u271d\u00b2 : NeZero d\ninst\u271d\u00b9 : NeZero M\ninst\u271d : NeZero N\nOmega : ActiveGaugeRegion d N\nx : FinBox d (cmp99RegionalLatticeSize M N 0)\n\u22a2 x \u2208 Omega.sites \u2194 x \u2208 Omega.sites\ntmp/neumann-generated-complete-fibre-hot-v1/NeumannGeneratedCompleteFibreDraft.lean:38:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  ?x \u2208 (cmp99LiftActiveRegion ?OmegaCoarse).sites\nin the target expression\n  x \u2208 (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion Omega depth)).sites \u2194\n    cmp99GeneratedTerminalBlockSite M N (depth + 1) x \u2208 Omega.sites\n\ncase succ\nd M N : \u2115\ninst\u271d\u00b2 : NeZero d\ninst\u271d\u00b9 : NeZero M\ninst\u271d : NeZero N\nOmega : ActiveGaugeRegion d N\ndepth : \u2115\nih :\n  \u2200 (x : FinBox d (cmp99RegionalLatticeSize M N depth)),\n    x \u2208 (cmp99IteratedLiftActiveRegion Omega depth).sites \u2194 cmp99GeneratedTerminalBlockSite M N depth x \u2208 Omega.sites\nx : FinBox d (cmp99RegionalLatticeSize M N (depth + 1))\n\u22a2 x \u2208 (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion Omega depth)).sites \u2194\n    cmp99GeneratedTerminalBlockSite M N (depth + 1) x \u2208 Omega.sites\n'YangMills.RG.neumann_mem_iteratedLift_iff_terminalOwner' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'YangMills.RG.neumannGeneratedBlockSitesToActiveFibre' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv_integerCoordinates' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'YangMills.RG.sum_neumannGeneratedCompleteFibre_eq_offsets' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n'YangMills.RG.sum_neumannGeneratedOwnerIndicator_eq_offsets' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]\n",
+  "source": "8c07d3f3ccc833a38b7e6b6fd95764dd0985db63",
+  "status": "VERIFIED_FAILURE"
+}

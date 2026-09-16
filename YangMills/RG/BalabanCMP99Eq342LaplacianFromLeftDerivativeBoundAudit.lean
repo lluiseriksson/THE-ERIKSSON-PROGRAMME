@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq342LaplacianFromLeftDerivativeBound
+
+#print axioms YangMills.RG.cmp99Eq342_laplacian_blockLocalizedSupBound_of_leftDerivative

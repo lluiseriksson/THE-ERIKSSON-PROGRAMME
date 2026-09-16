@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceEq3163Hprime
+
+#print axioms YangMills.RG.cmp99SourceEq3163PhysicalHprime
+#print axioms YangMills.RG.cmp99SourceEq3163_Qprime_comp_physicalHprime_eq_id

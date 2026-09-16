@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP99SourceDomainLargeBlockConnectivity
+
+#print axioms YangMills.RG.cmp99SourceBaseCellPrefix_zero
+#print axioms YangMills.RG.cmp99SourceBaseCellPrefix_four
+#print axioms YangMills.RG.mem_cmp99SourceBaseCellPrefix
+#print axioms YangMills.RG.cmp99SourceBaseCellPrefix_next_eq_replace
+#print axioms YangMills.RG.cmp99SourceBaseCellPrefix_apply_next
+#print axioms YangMills.RG.exists_cmp99SourceBaseCellPrefix_stepWalk
+#print axioms YangMills.RG.exists_cmp99SourceBaseCell_walk_from_corner
+#print axioms YangMills.RG.cmp116BlockCorner_mem_cmp99SourceBaseCell
+#print axioms YangMills.RG.shift_cmp116BlockCorner_mem_cmp99SourceBaseCell
+#print axioms YangMills.RG.exists_cmp99SourceBaseCell_cornerWalk_shift
+#print axioms YangMills.RG.exists_cmp99SourceBaseCell_cornerWalk_of_adj
+#print axioms YangMills.RG.exists_cmp99SourceDomainLargeBlocks_cornerWalk
+#print axioms YangMills.RG.walkConnected_cmp99SourceDomainLargeBlocks
+#print axioms YangMills.RG.nonempty_cmp99SourceDomainLargeBlocks

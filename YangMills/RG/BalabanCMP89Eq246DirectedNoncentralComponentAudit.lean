@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP89Eq246DirectedNoncentralComponent
+
+#print axioms YangMills.RG.norm_inv_cmp89Eq246EntireAliasFineSymbol_le_halfWeight
+#print axioms YangMills.RG.norm_cmp89Eq246TargetPhase_mul_bareDiagonal_signedContour_le
+#print axioms YangMills.RG.norm_cmp89Eq246TargetPhase_mul_noncentralCorrection_signedContour_le
+#print axioms YangMills.RG.norm_cmp89Eq246TargetPhase_mul_noncentralSolution_signedContour_le

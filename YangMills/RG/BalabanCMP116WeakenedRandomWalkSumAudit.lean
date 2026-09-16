@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSum
+
+#print axioms YangMills.RG.cmp116WeakeningMonomial
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSum
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSum_one
+#print axioms YangMills.RG.cmp116WeakeningMonomial_update_of_mem
+#print axioms YangMills.RG.cmp116WeakeningMonomial_update_of_not_mem
+#print axioms YangMills.RG.hasDerivAt_cmp116WeakeningMonomial_update
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkDerivative
+#print axioms YangMills.RG.hasDerivAt_cmp116WeakenedRandomWalkSum_update
+#print axioms YangMills.RG.cmp116WeakeningZeroOutside
+#print axioms YangMills.RG.cmp116WeakeningMonomial_zeroOutside
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSum_zeroOutside
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSum_ftcStep

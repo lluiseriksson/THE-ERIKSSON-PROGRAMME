@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq246FineToFineGreenIntegrandPeriodicity
+
+#print axioms YangMills.RG.cmp89Eq246PhysicalFineToFineGreenIntegrand_periodShift

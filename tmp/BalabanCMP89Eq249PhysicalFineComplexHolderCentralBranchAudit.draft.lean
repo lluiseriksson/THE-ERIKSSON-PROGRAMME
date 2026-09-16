@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP89Eq249PhysicalFineComplexHolderCentralBranch
+
+/- PRE-VALIDATION: audit draft; none of these declarations has been checked. -/
+
+#print axioms YangMills.RG.cmp89Eq251EuclideanNorm_le_two_pi_of_mem_brillouin
+#print axioms YangMills.RG.cmp89Eq249ComplexPhysicalFineHolderCentralBranchBound
+#print axioms YangMills.RG.cmp89Eq249ComplexPhysicalFineHolderCentralBranch
+#print axioms YangMills.RG.cmp89Eq251ComplexBareAliasNumerator_zero_eq_physicalFineHolderCentralBranch
+#print axioms YangMills.RG.norm_cmp89Eq249ComplexPhysicalFineHolderCentralBranch_signedContour_le

@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4MixedPotentialAffineRegularity
+
+#print axioms YangMills.RG.contDiff_cmp102Eq80SourcePi4RealMixedPotentialCurve_ofPhysicalContour

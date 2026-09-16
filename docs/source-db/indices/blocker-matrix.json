@@ -3,15 +3,42 @@
   "generated": "2026-06-26",
   "blockers": [
     {
+      "citation_key": "cmp116.lemma1.window.1.11-1.29",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "summary": "Rendered primary PDF pages 5-8 recover Eqs. (1.11)-(1.29), including the exact fixed-point constants, the coupled-field and Cauchy estimates, and the final exp(-kappa1 d_k(Y)/16) decay. The split is m > 2^4, not m > 24. Generic L1 and L2 are compiler-verified; their physical specialization and the L7-L8 summation remain open.",
+      "printed_pages": "5-8",
+      "pdf_pages": "5-8",
+      "questions": [
+        "Physical specialization of the compiler-verified parameter-family fixed-point theorem.",
+        "Exact source-to-Lean dictionary for the localized Cauchy and set-difference factors.",
+        "Formal summation and conversion of Eq. (1.29) to cmp116Eq136ResidualMajorant."
+      ]
+    },
+    {
+      "citation_key": "cmp116.lemma1.window.1.30-1.36",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "summary": "Rendered primary PDF page 9 fixes Eq. (1.31), the window (1/4)*(kappa1-1) >= (1-delta)*kappa and the final window (1/16)*kappa1 >= (1-2*delta)*kappa. The earlier provisional 1/2 and 7/8 factors are rejected; the scale dictionary and formal Eq. (1.29)-to-(1.36) route remain open.",
+      "printed_pages": "9",
+      "pdf_pages": "9",
+      "questions": [
+        "Exact source-to-Lean dictionary for d_j, d_k, X0 and Y.",
+        "Formal scale transport and summation into cmp116Eq136ResidualMajorant."
+      ]
+    },
+    {
       "citation_key": "cmp116.lemma3.window.2.14-2.38",
       "source_id": "cmp116",
       "short": "Balaban CMP116",
-      "status": "ocr_corrupted",
-      "summary": "Main resummation window for H(Z), retained as navigation only until each formula is extracted separately.",
-      "printed_pages": "15-20",
-      "pdf_pages": "15-20",
+      "status": "visual_confirmed",
+      "summary": "Direct inspection of the rendered primary PDF confirms the Lemma 3 endpoint on page 20: C3 = 2 (L+2)^4 O(1)^2 E0 C1 alpha4^-1 alpha6^-1 M^q exp(C2 kappa1), and (2.38) has rate (1-8 delta)(L/2)kappa. Page 21 fixes (1-10 delta)(L/2)=1, hence delta=(1/10)(1-2/L). The earlier OCR readings alpha1^-1 alphaL^-1 and a square-root factor are rejected. The preceding part of the window still requires termwise extraction and a source-to-Lean dictionary.",
+      "printed_pages": "15-21",
+      "pdf_pages": "15-21",
       "questions": [
-        "Exact D/P/Z0/Z0' dictionary and full constant hierarchy."
+        "Exact D/P/Z0/Z0' dictionary and the remaining termwise constant hierarchy before the visually confirmed Lemma 3 endpoint."
       ]
     },
     {
@@ -113,10 +140,11 @@
       "source_id": "cmp102_variational",
       "short": "Balaban CMP102",
       "status": "visual_confirmed",
-      "summary": "Action expansion, H-operator bridge, and positive second variation are visually confirmed; the Wilson-Hessian source-to-Lean dictionary remains open.",
-      "printed_pages": "281, 285, 299",
-      "pdf_pages": "5, 9, 23",
+      "summary": "Action expansion, rectangular H, the Eq. (78) D/C^(2)/D_3 decomposition, literal Eq. (80), and positive second variation are visually confirmed; Eq. (80) matches the Lean four-term core exactly, while the Eq. (78) and Wilson-Hessian source-to-Lean dictionaries remain open.",
+      "printed_pages": "281, 285, 290, 299",
+      "pdf_pages": "5, 9, 14, 23",
       "questions": [
+        "Source-region and coordinate dictionary proving D = C^(2) + D_3 for the maps supplied to cmp102Eq80GlobalPotential.",
         "Dictionary from CMP102 A', Delta_1, H and U_k to repository PhysicalGaugeField/PhysicalBond/Hessian objects.",
         "Sign and normalization conventions for the source quadratic form.",
         "Bridge identifying the CMP102 Hessian/inverse-propagator with CMP99 G(U) and the repository covariance object."

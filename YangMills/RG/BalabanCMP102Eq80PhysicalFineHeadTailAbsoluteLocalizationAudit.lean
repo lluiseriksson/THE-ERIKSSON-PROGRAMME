@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailAbsoluteLocalization
+
+#print axioms YangMills.RG.norm_cmp116CarrierAnchoredFiberCoefficient_le_sum_norm
+#print axioms YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+#print axioms YangMills.RG.norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_le
+#print axioms YangMills.RG.summable_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+#print axioms YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient

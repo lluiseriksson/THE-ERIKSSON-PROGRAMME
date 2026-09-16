@@ -1,0 +1,4 @@
+tmp/BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecay.draft.lean
+tmp/BalabanCMP99SourceActiveRegionFullCompanionPrecisionDecayAudit.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientMetric.draft.lean
+tmp/BalabanCMP99Eq360C6dSourceSeparatedAmbientMetricAudit.draft.lean

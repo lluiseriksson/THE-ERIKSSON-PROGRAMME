@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99SourceActiveRegionFullCompanion
+
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceFullActiveRegion
+#print axioms cmp99SourceFullActiveRegion_blockSaturated
+#print axioms cmp99ActiveCoarseRegion_sourceFull_eq
+#print axioms CMP99SourceActiveRegionFullCompanion
+#print axioms cmp99SourceActiveRegionFullCompanion
+
+end YangMills.RG

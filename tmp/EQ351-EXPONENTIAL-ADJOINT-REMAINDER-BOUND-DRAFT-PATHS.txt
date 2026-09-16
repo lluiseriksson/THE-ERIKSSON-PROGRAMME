@@ -1,0 +1,4 @@
+tmp/BalabanCMP99Eq351ExponentialAdjointRemainder.draft.lean
+tmp/BalabanCMP99Eq351ExponentialAdjointRemainderAudit.draft.lean
+tmp/BalabanCMP99Eq351ExponentialAdjointRemainderBound.draft.lean
+tmp/BalabanCMP99Eq351ExponentialAdjointRemainderBoundAudit.draft.lean

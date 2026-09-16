@@ -1,0 +1,7 @@
+import YangMills.RG.QuantitativeFixedPointDerivedMapSecondJet
+
+#print axioms YangMills.RG.norm_fixedPointGraphFactorLinear_le
+#print axioms YangMills.RG.contDiff_fixedPointGraphFactor
+#print axioms YangMills.RG.norm_iteratedFDeriv_one_fixedPointGraphFactor_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_fixedPointGraphFactor
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_fixedPointFirstDerivativeMap_le

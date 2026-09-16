@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannRectangleDirectionalMasks"], "cwd": "/content/hrpoly-neumann-directional-masks-promoted-cold-v1", "exit": 0, "log_file": "directional_masks_focal.log", "output_sha256": "ebe775914af049c508c1a42b0e09da701f24e85e8691c7b688718f70dfadc293", "seconds": 1505.7301118970001, "stage": "directional_masks_focal"}

@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceFlatFullComplexPrecisionStabilizedQprimeStarField
+
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreInvDFT_eq_fourierSum
+#print axioms YangMills.RG.cmp99FlatPhysicalFibre_fourierSum_DFT
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexWeightedAdjoint_apply
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexWeightedAdjoint_fourierMode
+#print axioms YangMills.RG.cmp99SourceFlatFullComplexPrecisionAction_stabilizedQprimeStarField

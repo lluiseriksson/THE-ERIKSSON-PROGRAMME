@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedTransferPowers
+
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_row_mul_sum
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_power_row_sum
+#print axioms YangMills.RG.cmp116RestrictedTransferHeadState
+#print axioms YangMills.RG.cmp116RestrictedGeneratedWalkLayer
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferPowerLayer
+#print axioms YangMills.RG.cmp116RestrictedGeneratedWalkLayer_eq_transferPowerLayer

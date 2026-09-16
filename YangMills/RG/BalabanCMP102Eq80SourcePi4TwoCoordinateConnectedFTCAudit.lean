@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4TwoCoordinateConnectedFTC
+
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80SourcePi4RootCurve_secondMixedDirectional
+#print axioms YangMills.RG.continuous_cmp102Eq80SourcePi4SecondMixedDirectionalCurve_left
+#print axioms YangMills.RG.cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement
+#print axioms YangMills.RG.cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement_comm
+#print axioms YangMills.RG.cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement_eq_iteratedFTC

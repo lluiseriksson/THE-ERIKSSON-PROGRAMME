@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannIntegerImageCountingKernel"], "cwd": "/content/hrpoly-neumann-integer-image-promoted-cold-v1", "exit": 0, "log_file": "reflection_focal.log", "output_sha256": "7c12e23a2b67c21349fe0227ffc0ed1e4e86965c5491157f9678c779f328a4af", "seconds": 57.093438462999984, "stage": "reflection_focal"}

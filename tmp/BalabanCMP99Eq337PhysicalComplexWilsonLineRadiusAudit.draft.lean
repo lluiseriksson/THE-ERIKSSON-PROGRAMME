@@ -1,0 +1,21 @@
+import YangMills.RG.BalabanCMP99Eq337PhysicalComplexWilsonLineRadius
+
+/-!
+PRE-VALIDATION: this scratch audit has no materialized `.olean` and no
+compiler or axiom-oracle verdict.
+-/
+
+namespace YangMills.RG
+
+#print axioms cmp99SpecialLinearWilsonLine_coe_eq_orderedOnePlusProduct
+#print axioms norm_cmp99SpecialLinearWilsonLine_sub_one_le
+#print axioms norm_cmp99SpecialLinearWilsonLine_le
+#print axioms cmp99ComplexFourWilsonPathDeviationBudget
+#print axioms norm_fourSpecialLinearWilsonLineProduct_sub_one_le
+#print axioms cmp99ComplexFourWilsonUniformDeviationBudget
+#print axioms cmp99ComplexFourWilsonPathDeviationBudget_le_uniform
+#print axioms norm_cmp99Eq337PhysicalComplexPerturbedBackground_apply_sub_one_le
+#print axioms norm_cmp99Eq337PhysicalComplexPerturbedWilsonLine_sub_one_le
+#print axioms norm_cmp99Eq337PhysicalComplexPerturbedWilsonLine_le
+
+end YangMills.RG

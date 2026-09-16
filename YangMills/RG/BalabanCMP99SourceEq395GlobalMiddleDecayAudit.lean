@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceEq395GlobalMiddleDecay
+
+#print axioms YangMills.RG.cmp99Eq395GeneratedQprimeScale
+#print axioms YangMills.RG.cmp99Eq395GeneratedMiddleDecayAmplitude
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddle
+#print axioms YangMills.RG.cmp99Eq395GeneratedMiddleDist
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddleKernelData
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddle_exponentialKernelBound

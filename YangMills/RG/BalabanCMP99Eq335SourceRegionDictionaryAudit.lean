@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99Eq335SourceRegionDictionary
+
+
+#print axioms YangMills.RG.CMP99Eq335Corollary36SourceRegionDictionary
+#print axioms YangMills.RG.CMP99Eq335Corollary36SourceRegionDictionary.retainedFineReadCarrierInsideRegularCube

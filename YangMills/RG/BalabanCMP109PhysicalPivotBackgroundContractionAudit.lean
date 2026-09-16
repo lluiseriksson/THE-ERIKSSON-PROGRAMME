@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP109PhysicalPivotBackgroundContraction
+
+#print axioms YangMills.RG.cmp109PhysicalLinearConstraint_eq_retractedRightVariation
+#print axioms YangMills.RG.cmp98SourceFieldSupNorm_singlePhysicalBondCochain
+#print axioms YangMills.RG.cmp109PhysicalPivotBackgroundBudget
+#print axioms YangMills.RG.norm_cmp109PhysicalPivotDefectCLM_apply_le_backgroundBudget
+#print axioms YangMills.RG.norm_cmp109PhysicalPivotDefectCLM_le_backgroundBudget
+#print axioms YangMills.RG.norm_cmp109PhysicalPivotDefectCLM_lt_one_of_backgroundBudget

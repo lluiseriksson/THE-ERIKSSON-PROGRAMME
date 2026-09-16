@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannInternalBondStencil"], "cwd": "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1", "exit": 0, "log_file": "internal_bond_stencil_focal.log", "output_sha256": "aec9bf33a8b44793dacc34a64c35fed606b2691f26cd537886c662ddbd5f5215", "seconds": 1984.1857184659998, "stage": "internal_bond_stencil_focal"}

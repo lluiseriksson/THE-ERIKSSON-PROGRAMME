@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4SecondMixedDerivativeValue
+
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80SourcePi4SecondMixedDirectionalCurve

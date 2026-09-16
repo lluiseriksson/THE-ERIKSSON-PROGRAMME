@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-coordinate-precision-diagnostic-v1", "exit": 0, "log_sha256": "c6381bab119b08baf4260fea2854bd036bf486efc24b2dde86621107f4a33af6", "seconds": 0.00210735000018758, "stage": "head", "timed_out": false, "timeout_seconds": 120}

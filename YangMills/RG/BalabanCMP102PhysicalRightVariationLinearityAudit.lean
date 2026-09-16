@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalRightVariationLinearity
+
+#print axioms YangMills.RG.cmp102AmbientNonlinearBlock_physicalLine_eq
+#print axioms YangMills.RG.fderiv_cmp102AmbientNonlinearBlock_zero_apply_physical
+#print axioms YangMills.RG.cmp98Eq119NonlinearRightVariation_eq_ambientFDeriv
+#print axioms YangMills.RG.cmp98Eq119NonlinearRightVariation_sub

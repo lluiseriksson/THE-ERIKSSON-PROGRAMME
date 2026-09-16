@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailDomainCoefficient
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainDerivativeLayer
+#print axioms YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainDerivativeLayer_eq_fiberCoefficient
+#print axioms YangMills.RG.summable_cmp102Eq80PhysicalFineHeadTailDomainDerivativeLayer
+#print axioms YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainCoefficient

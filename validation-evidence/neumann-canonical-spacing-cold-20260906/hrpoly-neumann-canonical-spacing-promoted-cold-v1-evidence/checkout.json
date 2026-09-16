@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "dd9354a87d2e9d60dac69aa79f287b53e45ba207"], "cwd": "/content/hrpoly-neumann-canonical-spacing-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "6602f6c477980b2bbffbe48b0bd77f4a6fab732cacc5d0b6aec1a9c6ac0d4337", "seconds": 0.8806157909999683, "stage": "checkout"}

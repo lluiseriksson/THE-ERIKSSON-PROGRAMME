@@ -56,6 +56,48 @@ def CMP116Eq214CauchyBoundaryBound :
           CMP116Eq214CauchyBoundaryBound n (fun i => radius i.succ)
             (fun tail => F (Fin.cons z tail)) M
 
+/-- Increasing the terminal majorant preserves the recursive Cauchy boundary
+predicate.  This is the boundary-level analogue of
+`cmp116Eq214CauchyRate_mono`. -/
+theorem CMP116Eq214CauchyBoundaryBound.mono
+    (n : ℕ) (radius : Fin n → ℝ) (F : (Fin n → ℂ) → ℂ)
+    {M N : ℝ} (hMN : M ≤ N)
+    (hF : CMP116Eq214CauchyBoundaryBound n radius F M) :
+    CMP116Eq214CauchyBoundaryBound n radius F N := by
+  induction n with
+  | zero =>
+      exact hF.trans hMN
+  | succ n ih =>
+      intro s hs z hz
+      exact ih (radius := fun i => radius i.succ)
+        (F := fun tail => F (Fin.cons z tail))
+        (hF s hs z hz)
+
+/-- Subtracting a fixed complex base value preserves the recursive Cauchy
+boundary condition, with the literal triangle-inequality cost `‖c‖`.
+
+This is the source-faithful operation needed for correction operators such
+as `R₃(σ) = Γ(σ) - Γ(0)`: the base value is not replaced by an independent
+majorant. -/
+theorem CMP116Eq214CauchyBoundaryBound.sub_const
+    (n : ℕ) (radius : Fin n → ℝ) (F : (Fin n → ℂ) → ℂ)
+    (M : ℝ) (c : ℂ)
+    (hF : CMP116Eq214CauchyBoundaryBound n radius F M) :
+    CMP116Eq214CauchyBoundaryBound n radius
+      (fun z => F z - c) (M + ‖c‖) := by
+  induction n with
+  | zero =>
+      calc
+        ‖F Fin.elim0 - c‖ ≤ ‖F Fin.elim0‖ + ‖c‖ := norm_sub_le _ _
+        _ ≤ M + ‖c‖ := by
+          simpa [add_comm] using add_le_add_right hF ‖c‖
+  | succ n ih =>
+      intro s hs z hz
+      exact ih
+        (radius := fun i => radius i.succ)
+        (F := fun tail => F (Fin.cons z tail))
+        (hF s hs z hz)
+
 /-- One Cauchy/interpolation coordinate costs exactly one inverse radius. -/
 theorem norm_cmp116Eq214CauchyStep_le_div
     {radius M : ℝ} {f : ℂ → ℂ}

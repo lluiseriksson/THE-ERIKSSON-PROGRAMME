@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102IntrinsicAmbientCorrectionThirdJetBound
+
+#print axioms YangMills.RG.cmp102SourceAmbientRelativeDeviationThirdJetBudget
+#print axioms YangMills.RG.cmp102SourceAmbientRelativeDeviationCompositionRadius
+#print axioms YangMills.RG.cmp102SourceIntrinsicAmbientCorrectionThirdJetBudget
+#print axioms YangMills.RG.norm_cmp98RightMulCLM_le
+#print axioms YangMills.RG.norm_iteratedFDeriv_cmp102AmbientRelativeDeviation_le_sourceThirdJetBudget
+#print axioms YangMills.RG.norm_iteratedFDeriv_three_cmp102IntrinsicAmbientCorrectionBond_le_sourceBudget

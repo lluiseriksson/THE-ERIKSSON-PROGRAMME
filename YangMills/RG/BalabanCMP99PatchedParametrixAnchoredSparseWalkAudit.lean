@@ -1,0 +1,19 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixAnchoredSparseWalk
+
+namespace YangMills.RG
+
+#print axioms cmp99PhysicalPatchHead_mul_continuation_eq_zero_of_rangeSeparated
+#print axioms cmp99PhysicalPatchHeadAnchoredAdmissibleWords
+#print axioms cmp99PhysicalPatchHeadAnchoredAdmissibleWords_subset
+#print axioms cmp99SingleSpeciesWalk_term_eq_zero_of_not_headAnchored
+#print axioms sum_cmp99PhysicalPatchAdmissibleWords_eq_headAnchored
+#print axioms mem_cmp99AdmissibleTails_physicalPatch_iff
+#print axioms cmp99PhysicalPatchStepsOfWord
+#print axioms cmp99PhysicalPatchStepsOfWord_mem_admissibleTails
+#print axioms cmp99PhysicalPatchWordOfTail
+#print axioms ofFn_cmp99PhysicalPatchWordOfTail
+#print axioms cmp99PhysicalPatchWordOfTail_mem_headAnchored
+#print axioms cmp99PhysicalPatchHeadAnchoredWordsEquivTails
+#print axioms sum_cmp99PhysicalPatchHeadAnchoredWords_eq_admissibleTails
+
+end YangMills.RG

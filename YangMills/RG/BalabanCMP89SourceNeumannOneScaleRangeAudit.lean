@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89SourceNeumannOneScaleRange
+
+#print axioms YangMills.RG.cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_blockAverage
+#print axioms YangMills.RG.cmp89SourceNeumannRegionalCovariantD0CLM_eq_zero_weightedAdjoint_average

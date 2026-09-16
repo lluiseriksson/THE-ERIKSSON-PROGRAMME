@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP109PhysicalPivotInverseNoMixing
+
+#print axioms YangMills.RG.cmp109PhysicalPivotResponseCLM_apply_congr
+#print axioms YangMills.RG.cmp109PhysicalPivotDefectCLM_apply_congr
+#print axioms YangMills.RG.cmp109PhysicalPivotDefect_neg_pow_apply_congr
+#print axioms YangMills.RG.cmp109PhysicalPivotInverseCLM_apply_congr
+#print axioms YangMills.RG.cmp109PhysicalPivotInverseCLM_apply_eq_zero
+#print axioms YangMills.RG.cmp109PhysicalConstraintRightInverseCLM_apply_pivot_congr
+#print axioms YangMills.RG.cmp109PhysicalConstraintRightInverseCLM_apply_pivot_eq_zero

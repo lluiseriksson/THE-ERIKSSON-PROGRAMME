@@ -1,0 +1,38 @@
+{
+  "archive_sha256": "2b5824b15159b5bf5e61e6fe25f5036bb152c68d212c85f7323a0b5eb3d61b5a",
+  "classification": "VERIFIED_FAILURE",
+  "cold_seal": false,
+  "counters": {
+    "producers": "20/41",
+    "term_source": 0,
+    "window15": "not attained"
+  },
+  "failed_stage": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/content/hrpoly-neumann-integer-image-counting-diagnostic-v1-evidence/mathlib-repro.olean",
+      "tmp/NeumannIntegerImageCountingMathlibRepro.lean"
+    ],
+    "cwd": "/content/hrpoly-neumann-integer-image-counting-diagnostic-v1",
+    "exit": 1,
+    "log_file": "image_mathlib_repro.log",
+    "output_sha256": "3c9388556b331e504fca8cab325acb624b90c86c338e6ea10e3af46294cdfcb1",
+    "seconds": 3.727203614000018,
+    "stage": "image_mathlib_repro",
+    "timed_out": false
+  },
+  "first_error": "tmp/NeumannIntegerImageCountingMathlibRepro.lean:76:6: error: 'change' tactic failed, pattern",
+  "inner_sha256": "3c985e01f64b709b5e6332f84fa7cb8cbeb5fd6de88ea814b98b7711be81f80e",
+  "mathematical_status": "FAIL",
+  "not_run": [
+    "image_prerequisites",
+    "image_draft",
+    "final_clean_source",
+    "independent_archive_verifier"
+  ],
+  "records_verified": 15,
+  "source": "9bba6c7b8c6f447a8e1914acca66e5c904beb154"
+}

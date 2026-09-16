@@ -1,0 +1,88 @@
+{
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "boundary_blob_sha256": {
+    "YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackground.lean": "8af5790cd28ffb09810ba720f988e345d4de8b7df10b8af8e398fbbf2a0c1dbf",
+    "YangMills/RG/BalabanCMP99ComplexLocalizedUbarBackgroundAudit.lean": "3b9be467c8bdbec0b8d52e15c2eaab433a0771c074631d5aa2f4a553f850f3b1",
+    "YangMills/RG/BalabanCMP99ComplexUbarSuccessorRealSlice.lean": "9aa9f959139d15dad132fbb26893c5fc95b77ec74b0d2c6f0e5841e027143600",
+    "YangMills/RG/BalabanCMP99ComplexUbarSuccessorRealSliceAudit.lean": "8160f2a58d7d1371acde1df6ccc5b944ad6c7ebda66aade43da0ce0f625dc651",
+    "YangMills/RG/BalabanCMP99Eq359OneScaleRealSlice.lean": "0b2033475470d4772cf9ca301f8ddeb4218ce878f493c0d286e087c1388b8a96",
+    "YangMills/RG/BalabanCMP99Eq359OneScaleRealSliceAudit.lean": "f94ec4db67ea0cea1e436ec30da66aaa640c7a2e578b15e20afd4f64c68a981b",
+    "YangMills/RG/BalabanCMP99Eq359TowerRealSliceAgreement.lean": "a3168b10ced9316e89b794a5c21abaad1de117c7624bdc284320ad782d8d7655",
+    "YangMills/RG/BalabanCMP99Eq359TowerRealSliceAgreementAudit.lean": "f7335e8c1cd0ddc3a1ab138cf9d2c33f14c247923a9ccdbc97c5753c010b96ed",
+    "YangMills/RG/BalabanCMP99PhysicalBackgroundRealSlice.lean": "810d0593173ed6bb39fc74d0885bd882196a68c7a2a83f206708ceeb7ac855f4",
+    "YangMills/RG/BalabanCMP99PhysicalBackgroundRealSliceAudit.lean": "e38343c96d38fe0474c09600cc7e1fbbb27f7c494a7cae3dc17372083c3bcb94",
+    "YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice.lean": "0dd35a65c8c21033bb9b851ad48b68162dcb99ae745a8aa8a665faaf10299a27",
+    "YangMills/RG/BalabanCMP99SpecialUnitaryToSpecialLinearRealSliceAudit.lean": "36538f496b3941e6a54c4a802303efcdeabdae964579b3eaaa5b48378bf32482"
+  },
+  "declarations_by_module": {
+    "BalabanCMP99ComplexLocalizedUbarBackground": [
+      "YangMills.RG.cmp99SourceComplexLocalizedUbarDeviation",
+      "YangMills.RG.cmp99SourceComplexLocalizedUbarBlock",
+      "YangMills.RG.cmp99SourceComplexLocalizedNextBackground",
+      "YangMills.RG.cmp99SourceComplexLocalizedNextBackground_apply_pos"
+    ],
+    "BalabanCMP99ComplexUbarSuccessorRealSlice": [
+      "YangMills.RG.cmp99UbarSpecialLinearExponent_realSlice",
+      "YangMills.RG.cmp99UbarSpecialLinearBlockOfDeviationBudget_realSlice",
+      "YangMills.RG.cmp99SourceBaseCoarseBackground_realSlice",
+      "YangMills.RG.cmp99SourceComplexLocalizedUbarDeviation_realSlice",
+      "YangMills.RG.CMP99ComplexLocalizedUbarDeviationCertificate",
+      "YangMills.RG.CMP99PhysicalUbarDeviationCertificate",
+      "YangMills.RG.cmp99SourceComplexLocalizedUbarBlock_realSlice",
+      "YangMills.RG.cmp99SourceComplexLocalizedNextBackground_realSlice",
+      "YangMills.RG.cmp99SourceComplexLocalizedNextBackground_realSlice_ofFineSmall"
+    ],
+    "BalabanCMP99Eq359OneScaleRealSlice": [
+      "YangMills.RG.cmp99SUNHolonomyToSpecialLinear",
+      "YangMills.RG.cmp99SUNHolonomyToSpecialLinear_apply",
+      "YangMills.RG.cmp99ComplexAdjointBlockAverageCLM_realSlice",
+      "YangMills.RG.cmp99ComplexAdjointBlockStarSynthesisCLM_realSlice"
+    ],
+    "BalabanCMP99Eq359TowerRealSliceAgreement": [
+      "YangMills.RG.CMP99Eq359TowerRealSliceAgreement",
+      "YangMills.RG.CMP99Eq359TowerRealSliceAgreement.stop",
+      "YangMills.RG.CMP99Eq359TowerRealSliceAgreement.step"
+    ],
+    "BalabanCMP99PhysicalBackgroundRealSlice": [
+      "YangMills.RG.cmp99PhysicalGaugeBackgroundToSpecialLinear",
+      "YangMills.RG.cmp99PhysicalGaugeBackgroundToSpecialLinear_apply",
+      "YangMills.RG.wilsonLine_cmp99PhysicalGaugeBackgroundToSpecialLinear",
+      "YangMills.RG.cmp99ComplexPhysicalBlockHolonomy_realSlice",
+      "YangMills.RG.cmp99Eq337PhysicalComplexPerturbedBackground_realSlice"
+    ],
+    "BalabanCMP99SpecialUnitaryToSpecialLinearRealSlice": [
+      "YangMills.RG.cmp99SUNToSpecialLinear",
+      "YangMills.RG.cmp99SUNToSpecialLinear_coe",
+      "YangMills.RG.cmp99SUNToSpecialLinear_inv_coe",
+      "YangMills.RG.cmp99SpecialLinearAdjointCoordLM_realSlice",
+      "YangMills.RG.cmp99SpecialLinearAdjointCoordLM_realSlice_inv"
+    ]
+  },
+  "evidence_input_sha256": "f7838e80d698db73af7bc480da8e687e527bb8209d5509cfd3060804b4e7925c",
+  "expected_declarations": 30,
+  "runner_revision": "eq359-real-slice-promoted-cold-v4",
+  "source_sha": "cd6ff65638f0e09e2533733df2d7176c10714a3a",
+  "stage_seconds": {
+    "eq359_real_slice_01_balabancmp99specialunitarytospeciallinearrealslice_audit": "13.262914545000058",
+    "eq359_real_slice_01_balabancmp99specialunitarytospeciallinearrealslice_source": "9.182074079999893",
+    "eq359_real_slice_02_balabancmp99eq359onescalerealslice_audit": "12.922478135999881",
+    "eq359_real_slice_02_balabancmp99eq359onescalerealslice_source": "10.204331863999869",
+    "eq359_real_slice_03_balabancmp99eq359towerrealsliceagreement_audit": "12.189098481000201",
+    "eq359_real_slice_03_balabancmp99eq359towerrealsliceagreement_source": "12.870082123999964",
+    "eq359_real_slice_04_balabancmp99physicalbackgroundrealslice_audit": "12.252848191999874",
+    "eq359_real_slice_04_balabancmp99physicalbackgroundrealslice_source": "10.159836529000131",
+    "eq359_real_slice_05_balabancmp99complexlocalizedubarbackground_audit": "14.010315683000044",
+    "eq359_real_slice_05_balabancmp99complexlocalizedubarbackground_source": "8.722611961999974",
+    "eq359_real_slice_06_balabancmp99complexubarsuccessorrealslice_audit": "29.248267580000174",
+    "eq359_real_slice_06_balabancmp99complexubarsuccessorrealslice_source": "10.286727768000219",
+    "eq359_real_slice_materialize_dependencies": "2106.528185577",
+    "eq359_real_slice_prepare_build_dirs": "0.01405219499974919",
+    "eq359_real_slice_root": "10258.180876271"
+  },
+  "status": "EQ359_REAL_SLICE_EVIDENCE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

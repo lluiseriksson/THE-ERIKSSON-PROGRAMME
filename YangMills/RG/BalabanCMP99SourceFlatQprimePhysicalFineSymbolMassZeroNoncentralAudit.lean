@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimePhysicalFineSymbolMassZeroNoncentral
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimePhysicalFineSymbol_massZero_ne_zero_noncentral

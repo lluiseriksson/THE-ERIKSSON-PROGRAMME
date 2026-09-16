@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99PatchedWalkContourActiveCore
+
+#print axioms YangMills.RG.cmp99PhysicalPatchHead_comp_coreProjection
+#print axioms YangMills.RG.cmp99PhysicalPatchContinuation_comp_coreProjection
+#print axioms YangMills.RG.cmp99PhysicalPatchWalk_firstActiveFactor_comp_contourActiveCore
+#print axioms YangMills.RG.cmp99PhysicalPatchWalk_term_eq_firstHit_contourActiveCore

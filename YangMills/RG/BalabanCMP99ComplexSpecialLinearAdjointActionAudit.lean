@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99ComplexSpecialLinearAdjointAction
+
+#print axioms YangMills.RG.cmp99SpecialLinearAdjointSlLM
+#print axioms YangMills.RG.cmp99SpecialLinearAdjointCoordLM
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordMatrixLM_specialLinearAdjoint

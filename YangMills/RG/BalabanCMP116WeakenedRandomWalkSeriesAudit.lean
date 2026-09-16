@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSeries
+
+#print axioms YangMills.RG.abs_cmp116WeakeningMonomial_le_pow_card
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSeries
+#print axioms YangMills.RG.cmp116WeakeningPolydisc
+#print axioms YangMills.RG.norm_cmp116WeakeningTerm_le_radialMajorant
+#print axioms YangMills.RG.summable_cmp116WeakenedRandomWalkSeries
+#print axioms YangMills.RG.tendstoUniformlyOn_cmp116WeakenedRandomWalkSeries
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSeries_one
+#print axioms YangMills.RG.hasSum_cmp116WeakenedRandomWalkSeries
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSeries_zeroOutside
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSeriesDerivative
+#print axioms YangMills.RG.summable_cmp116WeakenedRandomWalkSeriesDerivative
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSeries_update_eq_affine
+#print axioms YangMills.RG.hasDerivWithinAt_cmp116WeakenedRandomWalkSeries_update
+#print axioms YangMills.RG.hasDerivAt_cmp116WeakenedRandomWalkSeries_update
+#print axioms YangMills.RG.cmp116WeakenedRandomWalkSeries_ftcStep

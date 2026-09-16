@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceSignedAliasFourierNegCarry
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimeSignedAliasFourierNegCarryEquiv
+#print axioms YangMills.RG.cmp99SourceAliasIndexOneReflection_coordinate_cast_eq_neg
+#print axioms YangMills.RG.cmp99SourceFlatQprimeSignedAliasFourierNegCarryEquiv_coordinate_cast

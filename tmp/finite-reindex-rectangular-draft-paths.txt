@@ -1,0 +1,2 @@
+tmp/FinitePiLpTypedKernelReindexRectangularAlgebra.draft.lean
+tmp/FinitePiLpTypedKernelReindexRectangularAlgebraAudit.draft.lean

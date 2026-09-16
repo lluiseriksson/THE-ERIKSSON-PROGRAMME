@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102PhysicalExpAverageBackgroundLipschitz
+
+#print axioms YangMills.RG.cmp98UbarExpAveragePhysicalVariation
+#print axioms YangMills.RG.cmp102PhysicalExpAverageBackgroundValueBudget
+#print axioms YangMills.RG.cmp102PhysicalExpAverageBackgroundDerivativeBudget
+#print axioms YangMills.RG.norm_cmp98UbarExpAveragePhysicalVariation_le_sourceScale
+#print axioms YangMills.RG.norm_cmp98UbarExpAverage_zero_sub_trivial_le_sourceScale

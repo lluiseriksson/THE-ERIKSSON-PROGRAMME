@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP109Lemma1PhysicalBackgrounds
+
+#print axioms YangMills.RG.cmp109Eq212PerturbedCoarseBackground
+#print axioms YangMills.RG.cmp109Eq212BaseFineBackground
+#print axioms YangMills.RG.cmp109Eq212PerturbedFineBackground
+#print axioms YangMills.RG.blockMap_cmp109Eq212BaseFineBackground
+#print axioms YangMills.RG.blockMap_cmp109Eq212PerturbedFineBackground
+#print axioms YangMills.RG.cmp109Eq212Lemma1EnergyDifference
+#print axioms YangMills.RG.cmp109Eq212Lemma1EnergyDifference_eq_sum_changed
+#print axioms YangMills.RG.norm_cmp109Eq212Lemma1EnergyDifference_le_sum_changed
+#print axioms YangMills.RG.exists_cmp109Eq212Lemma1PhysicalBackgrounds

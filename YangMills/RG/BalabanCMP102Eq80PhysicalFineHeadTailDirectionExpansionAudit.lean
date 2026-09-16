@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailDirectionExpansion
+
+#print axioms YangMills.RG.cmp102Eq80PropagatorDirectionalDerivative_physicalChoiceWord_eq_tsum_headWalks
+#print axioms YangMills.RG.cmp102Eq80PropagatorDirectionalDerivative_physicalFineHeadTail_eq_of_eqOn_active

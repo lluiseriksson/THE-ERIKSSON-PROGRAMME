@@ -1,0 +1,123 @@
+{
+  "cold": {
+    "audits": {
+      "mass_offsets_audit": {
+        "YangMills.RG.neumannGeneratedActiveCoarseOwner": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedCountingMass_apply_eq_completeOffsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedWeightedMass_apply_eq_completeOffsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.sum_neumannGeneratedTerminalOwner_commonImage_eq_completeOffsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.sum_neumannGeneratedTerminalOwner_eq_completeOffsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.sum_neumannGeneratedTerminalOwner_integerField_eq_completeOffsets": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "643791d9a07f21b8e1496d9ec080b54c2ded6988182a1c80026f9eb93119e398",
+    "evidence_json_payload_sha256": "5f87a06af98a0b1a8bef33062be1e101bfa3af7b8e2602b5a1815237db28729d",
+    "production_outputs": {
+      "NeumannGeneratedMassCompleteOffsets.olean": "6100f1c532c60459b389add5703894bf9c4ed2368809cdad10278919e7e2528b"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannGeneratedMassCompleteOffsets"
+        ],
+        "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "mass_offsets_focal.log",
+        "output_sha256": "f7210c7a991f3171a3b733a4f769b5acf6c2a00201db33155d19bc7bba7fa249",
+        "seconds": 1591.3249739080002,
+        "stage": "mass_offsets_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannGeneratedMassCompleteOffsetsAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1",
+        "exit": 0,
+        "log_file": "mass_offsets_audit.log",
+        "output_sha256": "2e1468095ec8893b79a402683c824d829d29217d3d2f0621e1de42b2c531e4df",
+        "seconds": 9.925767761000316,
+        "stage": "mass_offsets_audit"
+      }
+    ],
+    "runner_rev": "neumann-mass-offsets-promoted-cold-v1",
+    "source_sha": "9bb957757b6454871eaea6e26aed8c95dc576b3c",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "cold_seal": true,
+  "inner_sha256": "7a5b7dbab05028f5e0311eeddba1efa25abc701309defb36bfbe363ba1ddb056",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-mass-offsets-promoted-cold-v1-launch/verify_neumann_mass_offsets_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-mass-offsets-promoted-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "f552d23bbf86a4ddc9f0f3ec712fdcc8c5229c5d8f5faa80250c474df9336422",
+      "seconds": 0.0546277429998554,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-mass-offsets-promoted-cold-v1-launch/colab_neumann_mass_offsets_promoted_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "f6d770a2c1986dab4d83d7305898cd062c2bf76017e7d1936400d04a4754453c",
+      "seconds": 1769.4222252169998,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-mass-offsets-promoted-cold-v1-launch/verify_neumann_mass_offsets_promoted_cold.py",
+        "--helpers",
+        "/content/neumann-mass-offsets-promoted-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "7a5b7dbab05028f5e0311eeddba1efa25abc701309defb36bfbe363ba1ddb056"
+      ],
+      "exit": 0,
+      "log_sha256": "a3cf8411dcb0ccadc51b8b2495ffe721048ab11c2c44d6e006ce1efbd9fa46fa",
+      "seconds": 0.06427785000005315,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "fa07a48aff7657c6640452942663140d0d93b9355aca526290dbadb6a378120f",
+  "scope": "actual generated source-weighted/counting mass finite offsets and common integer image; not regional inverse, uniform B0 or window15",
+  "source": "9bb957757b6454871eaea6e26aed8c95dc576b3c",
+  "status": "VERIFIED_COLD_PASS"
+}

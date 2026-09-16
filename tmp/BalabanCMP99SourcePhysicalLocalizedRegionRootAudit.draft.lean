@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourcePhysicalLocalizedRegionRoot
+
+#print axioms YangMills.RG.cmp99SourcePhysicalLocalizedActiveRegion
+#print axioms YangMills.RG.cmp99SourcePhysicalLocalizedRoot
+#print axioms YangMills.RG.cmp99SourcePhysicalLocalizedRoot_mem

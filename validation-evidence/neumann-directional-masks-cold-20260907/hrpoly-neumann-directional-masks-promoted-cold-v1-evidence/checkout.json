@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "74fc4f4dcd115558de6cf882d17540fe57d9bd27"], "cwd": "/content/hrpoly-neumann-directional-masks-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "a5d12f5b0b206b321d65a4e5167b7fce48bf1500ec4f7cefa8ce095033ebab69", "seconds": 1.585365480000064, "stage": "checkout"}

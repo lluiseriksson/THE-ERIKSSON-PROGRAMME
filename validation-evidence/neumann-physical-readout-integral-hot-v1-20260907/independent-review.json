@@ -1,0 +1,66 @@
+{
+  "audits": {
+    "readout_integral": {
+      "YangMills.RG.neumannPhysicalAliasPrecisionReadout_integral": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannPhysicalBrillouinParameter_ae_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannPhysicalBrillouin_fullSolutionDomain_ae": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannPhysicalEndpoint_aliasPhase": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.neumannPhysicalEndpoint_aliasPrecision_readout": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "cold_seal": false,
+  "records": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP89Eq246MassUniformAnalyticDomain"
+      ],
+      "cwd": "/content/hrpoly-neumann-alias-physical-integral-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "4519abc3e41722d1c0afb9f28468fbf9b4022302d394998de4cc20fae841ef57",
+      "seconds": 55.44642489200032,
+      "stage": "mass_uniform_prerequisite"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "tmp/NeumannPhysicalReadoutIntegralDraft.lean"
+      ],
+      "cwd": "/content/hrpoly-neumann-alias-physical-integral-promoted-cold-v1",
+      "exit": 0,
+      "log_sha256": "a1defc83da1fd6b4ef0fdc73353e9c043b32081fcb8d35ee31ffc5fadc673bea",
+      "seconds": 13.339828541000315,
+      "stage": "readout_integral"
+    }
+  ],
+  "source_sha": "ba2998c4f22707ed0f828c741ae6aa1efb924a36",
+  "status": "PASS",
+  "overlay_source_sha": "f308441f2cf19b2294189cab14d1a1d6d1217330",
+  "archive_sha256": "3a612b299e0aea5b689979bf8a39095f676a129903e24060e56237463fb878d5",
+  "reader_seconds": 0.1799572,
+  "reader_observed_peak_rss": 17965056,
+  "reader_exit": 0
+}

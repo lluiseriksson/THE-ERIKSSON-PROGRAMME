@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceRetainedExactReadCarrier
+
+
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineReadBonds
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineReadBonds_stop
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.retainedFineReadBonds_step
+#print axioms YangMills.RG.eqOn_averageReadBonds_of_eqOn_retainedFineReadBonds
+#print axioms YangMills.RG.eqOn_tailUbarReadBonds_of_eqOn_retainedFineReadBonds
+#print axioms YangMills.RG.cmp99SourceTransportedBlockAverageCLM_eq_of_eqOn_retainedFineReadBonds
+#print axioms YangMills.RG.cmp99SourcePhysicalUbar_eq_of_eqOn_retainedTailReadBonds

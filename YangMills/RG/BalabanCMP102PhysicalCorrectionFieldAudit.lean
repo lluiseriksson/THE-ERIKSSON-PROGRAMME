@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102PhysicalCorrectionField
+
+#print axioms YangMills.RG.CMP102PhysicalNonlinearFieldChart.one_mem
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionField_apply
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionField_toMatrix
+#print axioms YangMills.RG.norm_cmp102PhysicalNonlinearCorrectionField_toMatrix
+#print axioms YangMills.RG.norm_cmp102PhysicalNonlinearCorrectionField_toMatrix_le_sourceBudget

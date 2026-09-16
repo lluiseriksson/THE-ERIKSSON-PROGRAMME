@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCNormalization
+
+#print axioms
+  YangMills.RG.cmp102PartialPropagatorJet_zero_of_zero_field_slice
+#print axioms
+  YangMills.RG.cmp102AffinePropagatorJetFTC_zero_of_zero_field_slice
+#print axioms
+  YangMills.RG.cmp102AffinePropagatorJetFTCFirstFieldDerivative_zero_of_vertical_slice
+#print axioms
+  YangMills.RG.fderiv_cmp102Eq80JointPotential_rectangular_vertical_zero
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContribution_zero_field
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContributionFirstFieldDerivative_zero_field
+#print axioms
+  YangMills.RG.fderiv_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution_zero_field

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89MassZeroCentralFineSymbolNonvanishing
+
+#print axioms YangMills.RG.cmp89Eq251MomentumSquare_pos_of_ne_zero
+#print axioms YangMills.RG.cmp89Eq245ScaledLaplacianSymbol_massZero_pos_of_ne_zero
+#print axioms YangMills.RG.cmp89Eq249CentralEntireFineSymbol_massZero_ne_zero_ofReal

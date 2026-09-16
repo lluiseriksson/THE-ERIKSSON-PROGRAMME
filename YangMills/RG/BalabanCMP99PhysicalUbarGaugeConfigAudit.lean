@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfig
+
+namespace YangMills.RG
+
+#print axioms cmp99PhysicalUbarBlock
+#print axioms cmp99PhysicalUbarGaugeConfig
+#print axioms cmp99PhysicalUbarBlockOfDeviationBudget
+#print axioms cmp99PhysicalUbarGaugeConfigOfDeviationBudget
+#print axioms cmp99PhysicalUbarGaugeConfigOfDeviationBudget_apply_pos
+#print axioms cmp99PhysicalUbarGaugeConfigOfDeviationBudget_apply_neg
+#print axioms cmp99PhysicalUbarBlock_coe_eq_Ubar
+#print axioms cmp99PhysicalUbarGaugeConfig_apply_pos
+#print axioms cmp99PhysicalUbarGaugeConfig_apply_neg
+
+end YangMills.RG

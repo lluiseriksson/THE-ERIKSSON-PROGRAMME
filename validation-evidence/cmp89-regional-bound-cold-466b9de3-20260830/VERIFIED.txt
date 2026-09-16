@@ -1,0 +1,25 @@
+CMP89 physical regional Green value-bound consumer cold seal
+
+Source checkpoint: 466b9de31df1fd65ec86092908746a250edb5b4b
+Cold runner: d7a625af990fa9cb1d7d4f6f43db30f3b0390e73
+Fail-closed same-checkout supplement: d12199f269c08dcaa8fd4fad07d83e2821320fb3
+Mathlib: 07642720480157414db592fa85b626dafb71355b
+
+Original cold focal: 8612/8612 jobs, exit 0, 1526.632 seconds
+Original cold audit: exit 0, 9.721 seconds
+Supplement audit: exit 0, 8.719 seconds
+Axiom set: {propext, Classical.choice, Quot.sound}
+
+Supplement archive SHA-256:
+9B916A336C224E32A6C0E384CAAA9EFF82148B774E04943A0FDEF14748C6A18F
+Supplement manifest SHA-256:
+3426DAE5713A5E3B0ED79D8AAAF049D2F52C29839D346864AC0B36136C915FB2
+Composite archive SHA-256:
+2CB83632AA30985784A4DB7E2C6A50A0718B4D3CF6CC2B4E16EB6B82CE6E8971
+
+The composite retains the supplement plus both post-PASS download-cell
+instrumentation failures.  Those failures stopped before Lean and are not
+mathematical evidence.
+
+Counters remain exactly 20/41; TermSource = 0; window 15 remains compatible
+but unattained.

@@ -1,0 +1,5 @@
+import YangMills.RG.FinitePiLpTypedKernelReindexAlgebra
+
+#print axioms YangMills.RG.finitePiLpTypedKernelReindex_comp
+#print axioms YangMills.RG.finitePiLpTypedKernelReindex_id
+#print axioms YangMills.RG.finitePiLpTypedKernelReindex_comp_eq_id

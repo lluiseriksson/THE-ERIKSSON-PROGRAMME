@@ -1,0 +1,10 @@
+{
+  "files": {
+    "eq359-complex-one-scale-average-axioms.json": "9C49BC4613FEFD3E4F9B3D9BB3989D3387D2FD2A506AD50B7FB61AEE06DCEC06",
+    "hrpoly-eq359-complex-one-scale-average-evidence.tar.gz": "12839E86EE76C8ED817CA8AC6CB3CAB8CEE5989A0649B9AD563B8FDB5644F717"
+  },
+  "runner_revision": "eq359-complex-one-scale-average-promoted-cold-v4",
+  "source_sha": "5c0dc37146d130f637ee270a55eba6f638b3b64e",
+  "status": "EQ359_COMPLEX_ONE_SCALE_AVERAGE_ARCHIVE_PACKAGE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

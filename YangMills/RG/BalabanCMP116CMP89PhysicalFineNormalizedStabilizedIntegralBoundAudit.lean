@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116CMP89PhysicalFineNormalizedStabilizedIntegralBound
+
+/-!
+# Axiom audit: physical fine-lattice normalized owner bound
+-/
+
+#print axioms YangMills.RG.cmp116CMP89PhysicalFineNormalizedStabilizedIntegralAmplitudeBound
+#print axioms YangMills.RG.cmp116CMP89PhysicalFineNormalizedStabilizedIntegralAmplitudeBound_nonneg
+#print axioms YangMills.RG.norm_cmp116CMP89PhysicalFineNormalizedStabilizedIntegral_le_owner

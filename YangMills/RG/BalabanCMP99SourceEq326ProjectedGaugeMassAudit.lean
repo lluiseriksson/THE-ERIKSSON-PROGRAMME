@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceEq326ProjectedGaugeMass
+
+#print axioms YangMills.RG.cmp99ProjectedGaugeMassCLM
+#print axioms YangMills.RG.inner_cmp99ProjectedGaugeMassCLM_eq_norm_sq
+#print axioms YangMills.RG.inner_cmp99ProjectedGaugeMassCLM_nonneg
+#print axioms YangMills.RG.cmp99ProjectedGaugeMassCLM_isSymmetric
+#print axioms YangMills.RG.cmp99SourceEq326ProjectedGaugeMass
+#print axioms YangMills.RG.inner_cmp99SourceEq326ProjectedGaugeMass_eq_norm_sq
+#print axioms YangMills.RG.inner_cmp99SourceEq326ProjectedGaugeMass_nonneg
+#print axioms YangMills.RG.cmp99SourceEq326ProjectedGaugeMass_isSymmetric

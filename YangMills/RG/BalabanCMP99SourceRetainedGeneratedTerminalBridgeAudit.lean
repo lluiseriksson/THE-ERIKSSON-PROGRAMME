@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceRetainedGeneratedTerminalBridge
+
+#print axioms YangMills.RG.CMP99SourceRetainedPhysicalTower.towerAt_transport
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.weightedQprimeTower_transport
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.transport_eq_mpr
+#print axioms YangMills.RG.cmp99SourceRetainedWeightedTerminal_transport
+#print axioms YangMills.RG.cmp99SourceGeneratedRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower
+#print axioms YangMills.RG.cmp99SourceFlatRetainedPhysicalTower_towerAt_last_eq_weightedQprimeTower

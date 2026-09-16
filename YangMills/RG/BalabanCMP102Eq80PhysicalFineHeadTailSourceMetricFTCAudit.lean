@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailSourceMetricFTC
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalFTCSourceMetricDecayPrefactor
+#print axioms YangMills.RG.norm_cmp102Eq80PhysicalLayerWordDomainFTCContribution_le_sourceMetricProduct
+#print axioms YangMills.RG.cmp102Eq80PhysicalNeumannDomainFTCContribution
+#print axioms YangMills.RG.summable_and_norm_cmp102Eq80PhysicalNeumannDomainFTCContribution_le_sourceMetricDecay

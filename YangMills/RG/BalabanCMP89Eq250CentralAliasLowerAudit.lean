@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP89Eq250CentralAliasLower
+
+#print axioms YangMills.RG.cmp89Eq250LiteralCentralAliasContribution_eq_core
+#print axioms YangMills.RG.cmp89Eq250CentralAliasLowerConstant_le_core_inverseScale
+#print axioms YangMills.RG.cmp89Eq250CentralAliasLowerConstant_le_literal_inverseScale
+#print axioms YangMills.RG.cmp89Eq250CentralAliasLowerConstant_pos

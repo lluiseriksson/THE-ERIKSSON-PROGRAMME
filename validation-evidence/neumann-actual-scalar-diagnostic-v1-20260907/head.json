@@ -1,0 +1,1 @@
+{"command": ["git", "rev-parse", "HEAD"], "cwd": "/content/hrpoly-neumann-actual-scalar-diagnostic-v1", "exit": 0, "log_file": "head.log", "output_sha256": "4551a9dbb24a61cfb53e99159a82c826b40293d6e35f07f941f6a5784d6bf504", "seconds": 0.0018488399999796457, "stage": "head", "timed_out": false, "timeout_seconds": 3600}

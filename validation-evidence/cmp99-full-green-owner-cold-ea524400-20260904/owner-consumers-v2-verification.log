@@ -1,0 +1,112 @@
+{
+  "archive_sha256": "12bc8b02448bd041879cd36a247cbfacfdb58b72c160697ae5e7787086bc86c5",
+  "audits": {
+    "generated_owner_audit": {
+      "YangMills.RG.CMP99GeneratedFullPointSourceOwnerBoundCertificate.owner_bound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.cmp99GeneratedFullPointSourceOwnerBound": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.cmp99PhysicalFullGreenOwnerAmplitude": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum_eq": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_cmp99SourceGeneratedFlatPhysicalPointSourceResidueClassSum_le_owner": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    },
+    "owner_residue_audit": {
+      "YangMills.RG.cmp99PhysicalFullGreenOwnerResidue_affineBase_eq": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.cmp99PhysicalFullGreenUnscaledOwnerResidueSum": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ],
+      "YangMills.RG.norm_cmp99PhysicalFullGreenUnscaledOwnerResidueSum_le_owner": [
+        "Classical.choice",
+        "Quot.sound",
+        "propext"
+      ]
+    }
+  },
+  "evidence_json_file_sha256": "0d658b7525a1914c7a604ac56de5b9610f1e545f8f41abe7b67172a7e1d5e25d",
+  "evidence_json_payload_sha256": "f348d486dd18981ea1a525456784bc20d41849cf4d948b21685010ab6fb013ad",
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99PhysicalFullGreenOwnerResidueBound"
+      ],
+      "cwd": "/content/hrpoly-cmp99-full-green-owner-consumers-v2",
+      "exit": 0,
+      "log_file": "owner_residue_focal.log",
+      "output_sha256": "7a0cca2ed2b5c524e4bf247ea7d9e98eb67024f7f396268fa38c7fc59c343dfb",
+      "seconds": 1616.681783452,
+      "stage": "owner_residue_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP99PhysicalFullGreenOwnerResidueBoundAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-full-green-owner-consumers-v2",
+      "exit": 0,
+      "log_file": "owner_residue_audit.log",
+      "output_sha256": "e9fe798a93028d9811003961e151bbfb43d7976ac1daffba18640c93f35ddaa6",
+      "seconds": 10.568492332999995,
+      "stage": "owner_residue_audit"
+    },
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99GeneratedFullPointSourceOwnerBound"
+      ],
+      "cwd": "/content/hrpoly-cmp99-full-green-owner-consumers-v2",
+      "exit": 0,
+      "log_file": "generated_owner_focal.log",
+      "output_sha256": "4b2a4c1897254b32c00024e027129ec44fd168ab9bd3c7a8e85821fcbc44cd74",
+      "seconds": 543.1177627040001,
+      "stage": "generated_owner_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP99GeneratedFullPointSourceOwnerBoundAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-full-green-owner-consumers-v2",
+      "exit": 0,
+      "log_file": "generated_owner_audit.log",
+      "output_sha256": "4fa93535d2230142086ef1b107a805a0519639705a0ca475438c1af981663ff9",
+      "seconds": 18.310657450000235,
+      "stage": "generated_owner_audit"
+    }
+  ],
+  "runner_rev": "cmp99-full-green-owner-consumers-v2",
+  "source_sha": "ea524400bbf59777d461e8d04790516771258988",
+  "stages_verified": 18,
+  "status": "PASS"
+}
+FULL_GREEN_OWNER_COLD_EVIDENCE_VERIFIED

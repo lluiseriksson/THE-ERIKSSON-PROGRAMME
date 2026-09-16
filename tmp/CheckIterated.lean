@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4ThirdFieldDerivative
+#check iteratedFDeriv_succ_apply_left
+#check iteratedFDeriv_succ_eq_comp_left
+#check fderiv_iteratedFDeriv
+#check norm_iteratedFDeriv_fderiv

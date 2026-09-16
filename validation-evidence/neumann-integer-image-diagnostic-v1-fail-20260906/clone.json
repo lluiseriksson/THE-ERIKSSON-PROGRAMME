@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-integer-image-counting-diagnostic-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "34afd40da6954b156a30be3a515492e973409090f00474aeb4edd5350c4eacfa", "seconds": 14.665805324999951, "stage": "clone"}

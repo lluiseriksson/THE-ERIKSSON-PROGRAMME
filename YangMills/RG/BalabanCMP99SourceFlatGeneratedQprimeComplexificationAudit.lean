@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeComplexification
+
+/-!
+# Axiom audit: generated flat `Q'` complexification
+-/
+
+#print axioms YangMills.RG.cmp99FinitePiLpSUNLieCoordComplexificationCLM
+#print axioms YangMills.RG.cmp99FinitePiLpSUNLieCoordComplexificationCLM_apply
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockAverage_commutes_real_explicit
+#print axioms YangMills.RG.cmp99SourceFlatComplexBlockWeightedAdjoint_commutes_real_explicit
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitComplexQprime
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitComplexWeightedAdjoint
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitComplexQprime_commutes_complexification
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitComplexWeightedAdjoint_commutes_complexification

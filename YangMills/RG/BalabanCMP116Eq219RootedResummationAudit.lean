@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116Eq219RootedResummation
+
+#print axioms YangMills.RG.cmp116Eq219DomainAmplitude
+#print axioms YangMills.RG.cmp116Eq219InternalRate
+#print axioms YangMills.RG.cmp116Eq219_internalSchur
+#print axioms YangMills.RG.cmp116Eq219_rootedEnergyResummation
+#print axioms YangMills.RG.cmp116Eq219_rootedQuadraticResummation
+#print axioms YangMills.RG.cmp116Eq219_literalRootedQuadraticResummation

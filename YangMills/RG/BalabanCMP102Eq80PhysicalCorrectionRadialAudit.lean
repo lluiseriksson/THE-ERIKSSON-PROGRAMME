@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCorrectionRadial
+
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalRadialOperator
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalRadialOperator_generated
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalGlobalPotential_eq_radial_constRadii
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalGlobalPotential_eq_radial_generatedRegularity

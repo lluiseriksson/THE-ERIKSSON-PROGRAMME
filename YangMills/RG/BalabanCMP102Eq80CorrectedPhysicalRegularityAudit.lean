@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80CorrectedPhysicalRegularity
+
+#print axioms YangMills.RG.contDiff_top_cmp102Eq80CorrectedPhysicalGlobalPotential
+#print axioms YangMills.RG.contDiff_two_cmp102Eq80CorrectedPhysicalGlobalPotential

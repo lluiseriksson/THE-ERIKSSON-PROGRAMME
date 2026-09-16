@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89Eq245EntireLaplacianVariation
+
+#print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifferenceExponent_sub_realSlice_eq
+#print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifference_sub_realSlice_le
+#print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifference_ofReal_eq
+#print axioms YangMills.RG.norm_mul_sub_mul_le_eps_mul_two_mul_add
+#print axioms YangMills.RG.norm_cmp89Eq245EntireScaledDifference_pair_sub_realSlice_le
+#print axioms YangMills.RG.norm_cmp89Eq245EntireScaledLaplacianSymbol_sub_realSlice_le

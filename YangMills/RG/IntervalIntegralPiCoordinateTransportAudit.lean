@@ -1,0 +1,4 @@
+import YangMills.RG.IntervalIntegralPiCoordinateTransport
+
+#print axioms YangMills.RG.intervalIntegral_integral_eq_of_slice_intervalIntegral_ae_eq
+#print axioms YangMills.RG.integral_pi_restrict_uIoc_eq_of_coordinate_intervalIntegral_ae_eq

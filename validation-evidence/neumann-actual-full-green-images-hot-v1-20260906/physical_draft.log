@@ -1,0 +1,5 @@
+'YangMills.RG.neumannActualFullGreenDecayCertificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.summable_neumannActualFullGreenReflection_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.summable_neumannActualFullGreenReflection_real_sum' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

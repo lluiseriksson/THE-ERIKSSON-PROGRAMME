@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannCanonicalSpacingNormalization"], "cwd": "/content/hrpoly-neumann-canonical-spacing-promoted-cold-v1", "exit": 0, "log_file": "canonical_spacing_focal.log", "output_sha256": "ac69b7cef58b97b547958705f458af7554c251e156afb2d2a341d96d8f99acdb", "seconds": 1645.627271009, "stage": "canonical_spacing_focal"}

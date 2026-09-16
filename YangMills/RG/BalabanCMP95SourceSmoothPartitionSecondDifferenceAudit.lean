@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP95SourceSmoothPartitionSecondDifference
+
+#print axioms YangMills.RG.CMP95SourceSmoothPartitionProfile.norm_deriv_sub_deriv_le_secondDerivBound
+#print axioms YangMills.RG.CMP95SourceSmoothPartitionProfile.norm_value_sub_firstOrder_le_secondDerivBound
+#print axioms YangMills.RG.CMP95SourceSmoothPartitionProfile.norm_centeredSecondDifference_le_secondDerivBound

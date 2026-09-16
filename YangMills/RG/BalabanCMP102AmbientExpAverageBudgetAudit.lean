@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102AmbientExpAverageBudget
+
+#print axioms YangMills.RG.cmp102SourceLogAverageRadius_nonneg
+#print axioms YangMills.RG.norm_cmp98UbarExpAverage_le_sourceBudget
+#print axioms YangMills.RG.norm_fderiv_cmp98UbarExpAverage_le_sourceBudget
+#print axioms YangMills.RG.norm_cmp98UbarExpAverage_sub_le_sourceBudget
+#print axioms YangMills.RG.norm_fderiv_cmp98UbarExpAverage_sub_le_sourceBudget

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use or build upon this work, please cite Lluis Eriksson and The Eriksson Programme, including the exact commit used. This request includes AI-assisted research, AI laboratories, and outputs produced with AI systems. Preserve applicable copyright and license notices."
+title: "The Eriksson Programme"
+type: software
+authors:
+  - family-names: Eriksson
+    given-names: Lluis
+repository-code: "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME"
+url: "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME"
+abstract: "Research formalization toward the Yang–Mills mass gap in Lean. Incomplete research: archived drafts and conditional results must not be presented as a completed hRpoly or Clay proof."

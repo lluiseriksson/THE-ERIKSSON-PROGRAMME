@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCSecondFieldDerivative
+#check ContinuousLinearMap.compL
+#check ContinuousLinearMap.flipₗᵢ
+#check LinearIsometry.toContinuousLinearMap
+#check LinearIsometryEquiv.toLinearIsometry
+#check ContinuousMultilinearMap.apply
+#check continuousMultilinearCurryRightEquiv'

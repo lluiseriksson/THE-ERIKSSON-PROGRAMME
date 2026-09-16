@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246FineToFineGreenOneCoordinateContourShift
+
+#print axioms YangMills.RG.intervalIntegral_cmp89Eq246PhysicalFineToFineGreenIntegrand_coordinateShift
+

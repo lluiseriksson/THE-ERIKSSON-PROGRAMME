@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCSecondFieldDerivative
+#check ContinuousMultilinearMap.normedAddCommGroup'
+#check ContinuousMultilinearMap.normedSpace'
+#print ContinuousMultilinearMap.normedAddCommGroup'

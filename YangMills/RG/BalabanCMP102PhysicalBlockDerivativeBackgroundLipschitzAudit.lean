@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102PhysicalBlockDerivativeBackgroundLipschitz
+
+#print axioms YangMills.RG.cmp98Eq119NonlinearBlockPhysicalVariation
+#print axioms YangMills.RG.cmp102PhysicalBlockDerivativeLinearBudget
+#print axioms YangMills.RG.cmp102PhysicalBlockDerivativeBackgroundBudget
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearBlockPhysicalVariation_le_sourceScale
+#print axioms YangMills.RG.norm_cmp98Eq119NonlinearBlockPhysicalVariation_sub_trivial_le_sourceScale

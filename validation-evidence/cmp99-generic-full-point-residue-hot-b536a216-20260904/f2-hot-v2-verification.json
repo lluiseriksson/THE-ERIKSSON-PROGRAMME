@@ -1,0 +1,44 @@
+{
+  "archive_sha256": "75d1697daa8088cdd497a94e3e555369047e36deb510e4b456c341e5085faaca",
+  "axioms": {
+    "YangMills.RG.cmp99SourceFlatFullPointSourceSolution_eq_scaledOwnerResidue": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "cold_archive_unchanged": true,
+  "cold_seal": false,
+  "members": 28,
+  "queue": [
+    {
+      "command": [
+        "lake",
+        "build",
+        "YangMills.RG.BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentity"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1",
+      "exit": 0,
+      "log": "f2_focal.log",
+      "seconds": 156.53189485199982,
+      "sha256": "d2fc6a930c94a8f3c46fb00a1dff680e1c8e1528204b0631fb29af00701a9f56",
+      "stage": "f2_focal"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "YangMills/RG/BalabanCMP99SourceFlatFullPointSourceOwnerResidueIdentityAudit.lean"
+      ],
+      "cwd": "/content/hrpoly-cmp99-source-flow-full-green-foundations-v1",
+      "exit": 0,
+      "log": "f2_audit.log",
+      "seconds": 8.369206639999902,
+      "sha256": "4b2c56cfbef5e3f18f6bc7b8cb1d3f603555e77c950d41b3fd3a7fa207b26ac6",
+      "stage": "f2_audit"
+    }
+  ],
+  "stages": 12,
+  "status": "PASS"
+}

@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalH
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalGlobalPotential
+#print axioms YangMills.RG.flatBlockConstraint_apply_physicalH_apply
+#print axioms YangMills.RG.flatBlockConstraint_apply_physicalH_D
+#print axioms YangMills.RG.cmp102Eq80PhysicalGlobalPotential_zero
+#print axioms YangMills.RG.cmp102Eq80PhysicalGlobalPotential_hasFDerivAt_zero
+#print axioms YangMills.RG.contDiff_two_cmp102Eq80PhysicalGlobalPotential
+#print axioms YangMills.RG.contDiff_top_cmp102Eq80PhysicalGlobalPotential

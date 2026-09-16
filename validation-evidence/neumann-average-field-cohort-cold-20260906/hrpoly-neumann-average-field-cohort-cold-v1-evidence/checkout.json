@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "8570618f20c62c5724555589f910b84fdf803c33"], "cwd": "/content/hrpoly-neumann-average-field-cohort-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "fa8f40603ddb15140b86fd737819227061cd44e3fdfbe6a4aeb77f8eb70aef05", "seconds": 0.7694819069999994, "stage": "checkout"}

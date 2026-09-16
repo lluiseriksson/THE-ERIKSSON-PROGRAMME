@@ -1,0 +1,26 @@
+HOT_REPRO_EXIT=1
+
+YangMills/RG/BalabanCMP89Eq246DirectedPhysicalFineContourDictionary.lean:48:2:
+Type mismatch after simplification.
+
+The supplied theorem has the literal product measure
+
+  Measure.pi fun x => volume.restrict (Set.uIoc 0 (2 * Real.pi))
+
+and signed displacement
+
+  cmp89Eq249PhysicalFineLatticeDisplacement xi
+    (fun mu => target mu - source mu),
+
+while the wrapper goal has the named measure
+
+  cmp89Eq249FourDimensionalBrillouinMeasure
+
+and signed displacement
+
+  fun mu =>
+    cmp89Eq249PhysicalFineLatticeDisplacement xi target mu -
+      cmp89Eq249PhysicalFineLatticeDisplacement xi source mu.
+
+Lean exited with code 1 and the stop-on-first-error queue did not run the
+dictionary audit.

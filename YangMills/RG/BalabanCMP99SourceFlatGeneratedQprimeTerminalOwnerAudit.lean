@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceFlatGeneratedQprimeTerminalOwner
+
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitQprime_single
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedAdjoint_apply
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitWeightedMass_single_apply
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.flatExplicitCountingMass_single_apply

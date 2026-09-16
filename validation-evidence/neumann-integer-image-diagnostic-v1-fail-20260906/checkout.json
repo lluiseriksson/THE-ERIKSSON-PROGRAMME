@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "9bba6c7b8c6f447a8e1914acca66e5c904beb154"], "cwd": "/content/hrpoly-neumann-integer-image-counting-diagnostic-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "a23579e7d1dafafb1b8f69280a4000b6b4441041bc87ad31fe057bffeb116907", "seconds": 0.7793187269999748, "stage": "checkout"}

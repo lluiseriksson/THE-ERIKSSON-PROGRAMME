@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateSummability
+
+#print axioms YangMills.RG.summable_cmp99AnchoredWalk_radialMajorant_of_term
+#print axioms YangMills.RG.cmp99PhysicalAnchoredPatchWalkValue
+#print axioms YangMills.RG.norm_cmp99PhysicalAnchoredPatchWalkValue_le_fixedRate
+#print axioms YangMills.RG.CMP99LabeledPhysicalChartDictionary.summable_fixedRatePatchWalkValues
+#print axioms YangMills.RG.tsum_cmp99AnchoredWalk_radialMajorant_of_term_le

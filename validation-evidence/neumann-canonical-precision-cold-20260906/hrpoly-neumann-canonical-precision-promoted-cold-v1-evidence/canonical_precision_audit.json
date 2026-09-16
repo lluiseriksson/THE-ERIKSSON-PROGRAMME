@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannCanonicalPrecisionOffsetActionAudit.lean"], "cwd": "/content/hrpoly-neumann-canonical-precision-promoted-cold-v1", "exit": 0, "log_file": "canonical_precision_audit.log", "output_sha256": "add5bd90d0db101d448cc8d8055f30faa178014fa5ab61f709fb5f0d37bc11db", "seconds": 18.36277199999995, "stage": "canonical_precision_audit"}

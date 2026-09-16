@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceLocalizedTowerCanonicalExtension
+
+
+#print axioms YangMills.RG.cmp99SourceLocalizedNextBackground_apply_pos_eq_sourceOfFineSmall
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.localizedWeightedQprimeTower_Qprime_eq_canonicalExtension

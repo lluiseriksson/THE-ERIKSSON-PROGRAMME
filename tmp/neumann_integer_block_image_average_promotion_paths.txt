@@ -1,0 +1,2 @@
+YangMills/RG/NeumannIntegerBlockImageAverage.lean
+YangMills/RG/NeumannIntegerBlockImageAverageAudit.lean

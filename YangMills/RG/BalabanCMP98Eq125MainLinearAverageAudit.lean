@@ -1,0 +1,19 @@
+import YangMills.RG.BalabanCMP98Eq125MainLinearAverage
+
+#print axioms YangMills.RG.cmp98Eq125MainAverageWeight
+#print axioms YangMills.RG.cmp98Eq125PrefixHolonomy
+#print axioms YangMills.RG.cmp98Eq125PrefixHolonomy_trivial
+#print axioms YangMills.RG.cmp98Eq125TransportedEdgeValue
+#print axioms YangMills.RG.cmp98Eq125TransportedEdgeValue_trivial
+#print axioms YangMills.RG.cmp98Eq125TransportedLineSum
+#print axioms YangMills.RG.cmp98Eq125TransportedLineSum_trivial
+#print axioms YangMills.RG.cmp98Eq125MainAverageWeight_eq_inv_mul_flatWeight
+#print axioms YangMills.RG.cmp98Eq125MainAverageValue
+#print axioms YangMills.RG.cmp98Eq125MainAverageCLM
+#print axioms YangMills.RG.cmp98Eq125MainAverageCLM_apply
+#print axioms YangMills.RG.cmp98Eq125MainAverageCLM_trivial_apply
+#print axioms YangMills.RG.cmp98Eq125MainAverageCLM_trivial
+#print axioms YangMills.RG.cmp98Eq125MainAverageMass
+#print axioms YangMills.RG.inner_cmp98Eq125MainAverageMass
+#print axioms YangMills.RG.inner_cmp98Eq125MainAverageMass_nonneg
+#print axioms YangMills.RG.cmp98Eq125MainAverageMass_isSymmetric

@@ -1,0 +1,45 @@
+RUNNER_REV=c6d-step3-localized-precision-v5
+38c4d4df881c99b5fe1a32e97f98563bb1356c0f
+'YangMills.RG.norm_covariantD0CLM_extendZero_eq_of_eqOn_internalBonds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.norm_cmp99ActiveRegionSourceCovariantD0CLM_eq_of_eqOn_internalBonds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacian_eq_of_eqOn_internalBonds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityWitness.transformedBackground_eq_exponential_on_internalBonds' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityWitness.regionalLaplacian_eq_exponential_of_sourceRegionDictionary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceLocalizedRetainedTower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.cmp99SourceLocalizedRetainedTower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.CMP99SourceLocalizedRetainedTower.terminalQprime_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99SourceLocalizedRetainedTower.terminalQprime_transport_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_eq' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_eq_canonical' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_eq_exponentialSource' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityClass.localizedRetainedPhysicalPrecision_isSymmetric' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.CMP99Eq335PhysicalRegularityClass.inner_localizedRetainedPhysicalPrecision' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+LEAN_AXIOM_READOUT_COVERAGE_OK files=8 declarations=15 readouts=15
+C6D_STEP3_AXIOM_SUPPLEMENT_STATUS=PASS

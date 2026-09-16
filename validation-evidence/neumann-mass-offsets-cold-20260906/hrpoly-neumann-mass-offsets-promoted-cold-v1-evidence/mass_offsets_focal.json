@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannGeneratedMassCompleteOffsets"], "cwd": "/content/hrpoly-neumann-mass-offsets-promoted-cold-v1", "exit": 0, "log_file": "mass_offsets_focal.log", "output_sha256": "f7210c7a991f3171a3b733a4f769b5acf6c2a00201db33155d19bc7bba7fa249", "seconds": 1591.3249739080002, "stage": "mass_offsets_focal"}

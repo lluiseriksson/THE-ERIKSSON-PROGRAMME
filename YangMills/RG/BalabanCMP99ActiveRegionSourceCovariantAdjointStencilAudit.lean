@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99ActiveRegionSourceCovariantAdjointStencil
+
+/-!
+# Axiom audit for the regional covariant-adjoint stencil
+-/
+
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply
+#print axioms YangMills.RG.finitePiLpSupNorm_cmp99ActiveRegionSourceCovariantD0CLM_adjoint_le
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantD0CLM_adjoint_apply_eq_zero_of_owner_far

@@ -1,0 +1,1 @@
+{"command": ["lake", "env", "lean", "YangMills/RG/NeumannGeneratedCompleteFibreAudit.lean"], "cwd": "/content/hrpoly-neumann-complete-fibre-promoted-cold-v1", "exit": 0, "log_file": "fibre_audit.log", "output_sha256": "0fd1d08cc841316f45d9cd78e24b97c1ecfba84a4bc5cc2ce1a54da3b8179c2f", "seconds": 5.893478208999568, "stage": "fibre_audit"}

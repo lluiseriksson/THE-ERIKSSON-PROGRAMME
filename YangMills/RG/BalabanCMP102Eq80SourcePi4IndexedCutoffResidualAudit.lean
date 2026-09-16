@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4IndexedCutoffResidual
+
+#print axioms YangMills.RG.abs_half_inner_cmp116RadialTaylorResidualOperator_eq80IndexedCouplingScaledDomainProjection_le_centeredEnergy_of_printedCutoff

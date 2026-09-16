@@ -1,0 +1,1 @@
+{"command": ["git", "checkout", "--detach", "4746880218c694a9d4e9d32c0af61f86d460b7b4"], "cwd": "/content/hrpoly-neumann-canonical-precision-promoted-cold-v1", "exit": 0, "log_file": "checkout.log", "output_sha256": "ad9fcd8432ea0dbcca7e264b5621fe3c9bcc640128ecd4c4074105fb36d4660e", "seconds": 2.009013737000032, "stage": "checkout"}

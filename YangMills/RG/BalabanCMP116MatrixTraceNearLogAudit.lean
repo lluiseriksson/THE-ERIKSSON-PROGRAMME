@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116MatrixTraceNearLog
+
+#print axioms YangMills.RG.matrixTraceLinftyCLM
+#print axioms YangMills.RG.trace_nearLog_eq_tsum_trace_pow
+#print axioms YangMills.RG.trace_nearLog_eq_tsum_succ_trace_pow
+#print axioms YangMills.RG.norm_trace_nearLog_le_of_trace_pow_geometric

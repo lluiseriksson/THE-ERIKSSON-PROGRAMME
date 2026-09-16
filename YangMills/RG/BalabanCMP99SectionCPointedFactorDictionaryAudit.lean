@@ -1,0 +1,23 @@
+import YangMills.RG.BalabanCMP99SectionCPointedFactorDictionary
+
+namespace YangMills.RG
+
+#print axioms cmp99SectionCZeroLabel
+#print axioms card_cmp99SectionCFactorLabel
+#print axioms CMP99IsSourceCellDomain
+#print axioms cmp99SourceSingletonDomainBounded
+#print axioms cmp99SourceSingletonDomainBounded_blocks
+#print axioms cmp99IsSourceCellDomain_singleton
+#print axioms card_blocks_eq_one_of_cmp99IsSourceCellDomain
+#print axioms not_cmp99IsSourceCellDomain_of_card_ne_one
+#print axioms CMP99SectionCPointedFactorDictionary.Rop_zero_sourceSingleton
+#print axioms CMP99SectionCPointedFactorDictionary.Rop_zero_of_not_sourceCell
+#print axioms CMP99SectionCPointedFactorDictionary.term_eq_zero_of_head_not_sourceCell
+#print axioms CMP99SectionCPointedFactorDictionary.term_eq_zero_of_zero_tail_step_not_sourceCell
+#print axioms cmp99SectionCZeroCompatibleStep
+#print axioms cmp99SectionCZeroCompatibleSuccessors
+#print axioms mem_cmp99SectionCZeroCompatibleSuccessors_iff
+#print axioms CMP99SectionCPointedFactorDictionary.term_eq_zero_of_tail_step_not_zeroCompatible
+#print axioms card_cmp99SectionCZeroCompatibleSuccessors_le
+
+end YangMills.RG

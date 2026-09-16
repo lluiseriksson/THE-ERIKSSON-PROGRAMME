@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedVisitedTransferSummability
+
+#print axioms YangMills.RG.norm_cmp116ComplexVisitedWeakeningProduct_tail_le
+#print axioms YangMills.RG.norm_cmp116PhysicalContinuationMatrix_tail_prod_le
+#print axioms YangMills.RG.norm_cmp116SourcePi4RestrictedContinuationMatrix_tail_prod_le
+#print axioms YangMills.RG.norm_cmp116RestrictedVisitedTailProduct_le_of_matrix_tail
+#print axioms YangMills.RG.summable_cmp116SourcePi4RestrictedVisitedTransferMatrix_pow

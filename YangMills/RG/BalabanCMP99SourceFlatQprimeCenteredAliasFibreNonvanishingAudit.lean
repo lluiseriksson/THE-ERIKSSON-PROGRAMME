@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimeCenteredAliasFibreNonvanishing
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimeCenteredCoarseBaseMomentum_ne_zero
+#print axioms YangMills.RG.cmp89Eq245EntireAliasFibre_massZero_ne_zero_centered
+#print axioms YangMills.RG.cmp89Eq245EntireAliasFibreNonvanishing_physicalShift_iff
+#print axioms YangMills.RG.cmp89Eq245EntireAliasFibreNonvanishing_add_intPeriods_iff
+#print axioms YangMills.RG.cmp89Eq246EntireAliasFineSymbol_massZero_ne_zero_physical

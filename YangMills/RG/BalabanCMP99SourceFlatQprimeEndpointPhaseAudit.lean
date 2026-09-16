@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointPhase
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement
+#print axioms YangMills.RG.cmp99Flat_stdAddChar_mul_eq_exp_discreteMomentum
+#print axioms YangMills.RG.cmp99FlatFourierMode_eq_exp_entirePhase_canonicalLift
+#print axioms YangMills.RG.cmp99FlatFourierMode_div_coarseMode_eq_exp_amplitudeMomentum_endpoint

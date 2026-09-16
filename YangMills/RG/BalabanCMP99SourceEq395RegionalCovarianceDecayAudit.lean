@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceEq395RegionalCovarianceDecay
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceCoordinates_eq_onSource
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseCovarianceAmbient_exponentialKernelBound

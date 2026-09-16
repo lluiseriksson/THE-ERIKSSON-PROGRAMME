@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP116Eq214CMP102FineHeadTailPotential
+
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainQuadraticFamily
+#print axioms
+  YangMills.RG.cmp116Eq142PhysicalPotentialTerm_eq_cmp102Eq80FineHeadTailDomainFTCContribution
+#print axioms
+  YangMills.RG.cmp116Eq214PhysicalComplexTauPotential_cmp102FineHeadTail_eq
+#print axioms
+  YangMills.RG.cmp116Eq214ComplexTauPotentialCoordinate_cmp102FineHeadTail_eq
+#print axioms
+  YangMills.RG.CMP116Eq214PhysicalContourDensity.withCMP102FineHeadTailPotential
+#print axioms
+  YangMills.RG.CMP116Eq214PhysicalContourDensity.withCMP102FineHeadTailPotential_potential
+#print axioms
+  YangMills.RG.CMP116Eq214PhysicalContourDensity.withCMP102FineHeadTailPotential_potential_zero

@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCBasicAdjointFactor
+
+open YangMills.RG
+
+#print axioms cmp99SourceGeneratedPhysicalBasicAdjointFactorNormBound
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalSectionCBasicAdjointFactor
+#print axioms CMP99SourceDependentOmegaGeometry.norm_generatedPhysicalSectionCBasicAdjointFactor_le

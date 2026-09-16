@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalCorrectionContraction
+
+#print axioms YangMills.RG.norm_cmp102PhysicalNonlinearCorrectionField_sub_apply_le
+#print axioms YangMills.RG.cmp102PhysicalCorrectionSupNorm_sub_le
+#print axioms YangMills.RG.cmp102PhysicalCorrectionSupNorm_sub_lt_sourceSupNorm

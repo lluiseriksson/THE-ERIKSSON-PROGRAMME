@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4CarrierAnchoredRootFTC
+
+#print axioms YangMills.RG.CMP116SourcePi4RealMixedDerivativeCertificate.realWeakeningDerivative_eq_sum_pi4CarrierAnchoredDomains

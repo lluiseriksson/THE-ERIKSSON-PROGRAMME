@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP102Eq80CorrectedPhysicalLocalizedRadialLimit
+
+#print axioms YangMills.RG.tendsto_sum_cmp102Eq80CorrectedSourcePi4PhysicalLocalizedIncrements_to_radial

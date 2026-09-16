@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89NeumannRectangularPhysicalUniformOwnerCertificate
+
+#print axioms YangMills.RG.CMP89RegionalOwnerKernelDecayCertificate
+#print axioms YangMills.RG.cmp89Eq248PhysicalRegionalUniformOwnerB0_draft
+#print axioms YangMills.RG.cmp89Eq248PhysicalRegionalOwnerKernelDecayCertificate_draft

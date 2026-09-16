@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99Eq360C6dSourceSeparatedAmbientGreenLaplacian
+
+#print axioms YangMills.RG.cmp99Eq360C6dSourceSeparatedAmbientGreen_laplacian_blockLocalizedSupBound

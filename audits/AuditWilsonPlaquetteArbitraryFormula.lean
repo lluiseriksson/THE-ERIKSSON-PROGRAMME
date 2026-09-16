@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
+
+/-! Focused oracle audit for the exact arbitrary-background plaquette formula. -/
+
+#print axioms YangMills.RG.hasDerivAt_fourFactorProduct
+#print axioms YangMills.RG.hasDerivAt_fourFactorFirst
+#print axioms YangMills.RG.hasDerivAt_traceReal_fourFactorFirst
+#print axioms YangMills.RG.ambientOrientedEdgeMatrix_line_eq_orientedWilsonFactor
+#print axioms YangMills.RG.hasDerivAt_orientedWilsonFactor
+#print axioms YangMills.RG.hasDerivAt_orientedWilsonFactorFirst
+#print axioms YangMills.RG.ambientPlaquetteHolonomy_line_eq_fourFactorProduct
+#print axioms YangMills.RG.hasDerivAt_orientedWilsonPlaquetteActionLine
+#print axioms YangMills.RG.secondDeriv_orientedWilsonPlaquetteActionLine_zero
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_self_eq_arbitraryFormula
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_arbitraryMixedFormula

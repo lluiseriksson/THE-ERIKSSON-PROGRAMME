@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP102Eq80CorrectedSourcePi4RectangularRadial
+
+#print axioms
+  YangMills.RG.cmp102Eq80CorrectedSourcePi4RectangularWeakenedPotential
+#print axioms
+  YangMills.RG.cmp102Eq80CorrectedSourcePi4RectangularWeakenedPotential_one_eq_physical
+#print axioms
+  YangMills.RG.cmp102Eq80CorrectedSourcePi4RectangularWeakenedPotential_zero
+#print axioms
+  YangMills.RG.contDiff_two_cmp102Eq80CorrectedSourcePi4RectangularWeakenedPotential
+#print axioms
+  YangMills.RG.cmp102Eq80CorrectedSourcePi4RectangularWeakenedPotential_hasFDerivAt_zero
+#print axioms
+  YangMills.RG.cmp102Eq80CorrectedSourcePi4RectangularRadialOperator
+#print axioms
+  YangMills.RG.cmp102Eq80CorrectedSourcePi4RectangularWeakenedPotential_eq_radial

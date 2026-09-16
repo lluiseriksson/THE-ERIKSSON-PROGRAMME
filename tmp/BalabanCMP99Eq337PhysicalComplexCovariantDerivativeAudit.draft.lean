@@ -1,0 +1,30 @@
+import YangMills.RG.BalabanCMP99Eq337PhysicalComplexCovariantDerivative
+
+/-!
+PRE-VALIDATION: this scratch audit has not been executed.  Its source module
+has no materialized `.olean` and no compiler or axiom-oracle verdict.
+-/
+
+#print axioms YangMills.RG.CMP99Eq337PhysicalComplexOneCochain
+#print axioms YangMills.RG.CMP99Eq337PhysicalComplexCovariantDerivativeIndex
+#print axioms YangMills.RG.CMP99Eq337PhysicalComplexCovariantDerivativeSup
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordRealPart
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordImagPart
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordRealPart_complexification
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordImagPart_complexification
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordRealPart_add
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordImagPart_add
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordRealPart_smul
+#print axioms YangMills.RG.cmp99SUNLieComplexCoordImagPart_smul
+#print axioms YangMills.RG.cmp99SUNAdjointComplexActionLM
+#print axioms YangMills.RG.cmp99SUNAdjointComplexAction
+#print axioms YangMills.RG.cmp99SUNAdjointComplexAction_complexification
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexifyOneCochain
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexifyOneCochain_apply
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexOneCochainComponent
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexCovariantDerivativeLM
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexCovariantDerivative
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexCovariantDerivative_apply
+#print axioms YangMills.RG.cmp99Eq337PhysicalComplexCovariantDerivative_complexification
+#print axioms YangMills.RG.CMP99Eq337PhysicalComplexAmplitudeBoundOn
+#print axioms YangMills.RG.CMP99Eq337PhysicalComplexCovariantDerivativeBoundOn

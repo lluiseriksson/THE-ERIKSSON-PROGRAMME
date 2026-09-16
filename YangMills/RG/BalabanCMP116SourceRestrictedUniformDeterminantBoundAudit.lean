@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedUniformDeterminantBound
+
+#print axioms YangMills.RG.cmp116SourceRestrictedContourDeterminantPerCarrierCost_mono_defect
+#print axioms YangMills.RG.cmp116SourceRestrictedUniformContourDeterminantCost
+#print axioms YangMills.RG.norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_uniformCost_card

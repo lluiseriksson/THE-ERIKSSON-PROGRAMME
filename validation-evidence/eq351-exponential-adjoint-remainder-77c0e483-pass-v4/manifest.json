@@ -1,0 +1,10 @@
+{
+  "files": {
+    "eq351-exponential-adjoint-remainder-axioms.json": "BC2F46F04471FA062B12E50B70004FEA2617B71D23B7E46D5F0D14663CA75B3D",
+    "hrpoly-eq351-exponential-adjoint-remainder-evidence.tar.gz": "6CE623E5E73FB5C035FCA99EE5808E22E226045FCEFF7DCB4D5722E8948D45E3"
+  },
+  "runner_revision": "eq351-exponential-adjoint-remainder-cold-v4",
+  "source_sha": "77c0e4834ce69d8b174d37aeefac56fd5b06b5ad",
+  "status": "EQ351_EXPONENTIAL_ADJOINT_REMAINDER_ARCHIVE_PACKAGE_OK",
+  "transport": "durable-stage-stdout-archive"
+}

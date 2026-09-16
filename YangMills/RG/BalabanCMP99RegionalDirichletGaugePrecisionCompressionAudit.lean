@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99RegionalDirichletGaugePrecisionCompression
+
+
+namespace YangMills.RG
+
+#print axioms cmp99RegionalAmbientRestrictedQprime
+#print axioms cmp99RegionalDirichletPrecision_sourceGaugePrecision_eq
+
+end YangMills.RG

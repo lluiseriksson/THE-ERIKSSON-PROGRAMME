@@ -1,0 +1,3 @@
+import YangMills.RG.ExpSecondDerivativeBound
+
+#print axioms YangMills.RG.norm_iteratedFDeriv_two_exp_le_secondDerivativeBudget

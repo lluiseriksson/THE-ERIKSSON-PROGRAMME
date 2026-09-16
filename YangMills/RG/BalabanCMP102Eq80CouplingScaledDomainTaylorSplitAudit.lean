@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80CouplingScaledDomainTaylorSplit
+
+#print axioms
+  YangMills.RG.cmp102Eq80CouplingScaledFineHeadTailDomainPotential_eq_fixed_add_residual

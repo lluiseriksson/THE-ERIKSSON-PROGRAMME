@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP89Eq249FineLatticeNormalizedStabilizedEndpointIntegral
+
+/-!
+# Cold-sealed audit: normalized physical fine-lattice endpoint integral
+-/
+
+#print axioms YangMills.RG.cmp89Eq249FineLatticeSpacing
+#print axioms YangMills.RG.cmp89Eq249FineLatticeSpacing_pos
+#print axioms YangMills.RG.cmp89Eq251DisplacementL1_physicalFineLatticeDisplacement
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedEndpointIntegral
+#print axioms YangMills.RG.cmp89Eq249NormalizedFineLatticeStabilizedEndpointIntegral_eq_signed
+#print axioms YangMills.RG.norm_cmp89Eq249NormalizedFineLatticeStabilizedEndpointIntegral_le
+#print axioms YangMills.RG.exp_neg_cmp89Eq251DisplacementL1_physicalFine_transport_le

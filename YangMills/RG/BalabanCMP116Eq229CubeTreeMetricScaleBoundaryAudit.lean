@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq229CubeTreeMetricScaleBoundary
+
+#print axioms YangMills.RG.CMP116Lemma3Eq229ScaleBoundary.of_cubeSourceTreeMetric_exactUnion
+#print axioms YangMills.RG.CMP116Lemma3Eq229ScaleBoundary.of_cubeSourceTreeMetric_componentExactUnion
+#print axioms YangMills.RG.CMP116Lemma3Eq229ScaleBoundary.of_cubeSourceTreeMetric_exactUnionInjection

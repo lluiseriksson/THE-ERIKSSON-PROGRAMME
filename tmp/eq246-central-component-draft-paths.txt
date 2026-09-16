@@ -1,0 +1,3 @@
+tmp/BalabanCMP89Eq246FinePointSourceCentralNumeratorIdentity.draft.lean
+tmp/BalabanCMP89Eq246FinePointSourceCentralComponentBound.draft.lean
+tmp/BalabanCMP89Eq246FinePointSourceCentralComponentBoundAudit.draft.lean

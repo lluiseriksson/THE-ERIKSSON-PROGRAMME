@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99PhysicalRectangularMatrixReconstruction
+#check LinearMap.toContinuousLinearMap
+#check LinearMap.mkContinuous
+#check LinearMap.mkContinuousNormLe
+#check LinearMap.continuous_of_finiteDimensional
+#check Summable.map
+#check ContinuousLinearMap.map_tsum

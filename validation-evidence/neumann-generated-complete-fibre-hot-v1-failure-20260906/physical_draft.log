@@ -1,0 +1,54 @@
+tmp/neumann-generated-complete-fibre-hot-v1/NeumannGeneratedCompleteFibreDraft.lean:33:2: error: Unnecessary `generalizing` argument: Variable `x` is generalized automatically
+tmp/neumann-generated-complete-fibre-hot-v1/NeumannGeneratedCompleteFibreDraft.lean:34:12: error: Tactic `assumption` failed
+
+case zero
+d M N : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero M
+inst✝ : NeZero N
+Omega : ActiveGaugeRegion d N
+x : FinBox d (cmp99RegionalLatticeSize M N 0)
+⊢ x ∈ Omega.sites ↔ x ∈ Omega.sites
+tmp/neumann-generated-complete-fibre-hot-v1/NeumannGeneratedCompleteFibreDraft.lean:38:8: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ?x ∈ (cmp99LiftActiveRegion ?OmegaCoarse).sites
+in the target expression
+  x ∈ (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion Omega depth)).sites ↔
+    cmp99GeneratedTerminalBlockSite M N (depth + 1) x ∈ Omega.sites
+
+case succ
+d M N : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero M
+inst✝ : NeZero N
+Omega : ActiveGaugeRegion d N
+depth : ℕ
+ih :
+  ∀ (x : FinBox d (cmp99RegionalLatticeSize M N depth)),
+    x ∈ (cmp99IteratedLiftActiveRegion Omega depth).sites ↔ cmp99GeneratedTerminalBlockSite M N depth x ∈ Omega.sites
+x : FinBox d (cmp99RegionalLatticeSize M N (depth + 1))
+⊢ x ∈ (cmp99LiftActiveRegion (cmp99IteratedLiftActiveRegion Omega depth)).sites ↔
+    cmp99GeneratedTerminalBlockSite M N (depth + 1) x ∈ Omega.sites
+'YangMills.RG.neumann_mem_iteratedLift_iff_terminalOwner' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedBlockSitesToActiveFibre' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.neumannGeneratedCompleteFibreOffsetEquiv_integerCoordinates' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.sum_neumannGeneratedCompleteFibre_eq_offsets' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.sum_neumannGeneratedOwnerIndicator_eq_offsets' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

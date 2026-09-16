@@ -1,0 +1,3 @@
+import Mathlib.Analysis.Analytic.Composition
+#check ContinuousMultilinearMap.map_sum_finset
+#check MultilinearMap.map_sum_finset

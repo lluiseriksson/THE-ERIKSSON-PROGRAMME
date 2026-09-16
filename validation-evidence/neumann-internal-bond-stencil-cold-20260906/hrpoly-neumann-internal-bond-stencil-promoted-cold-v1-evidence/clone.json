@@ -1,0 +1,1 @@
+{"command": ["git", "clone", "--no-tags", "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git", "/content/hrpoly-neumann-internal-bond-stencil-promoted-cold-v1"], "cwd": null, "exit": 0, "log_file": "clone.log", "output_sha256": "5f0f2985fc58ca6e3eb79c24bec9e930f2af8ce0b966491408097dd08a5c6eca", "seconds": 15.173407214999997, "stage": "clone"}

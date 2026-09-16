@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80Eq220RateCompatibility
+
+#print axioms YangMills.RG.cmp102Eq80CanonicalRatio_mul_eq
+#print axioms YangMills.RG.cmp102Eq80CanonicalRatioCertificate
+#print axioms YangMills.RG.cmp102Eq80Eq220_branching_small_of_budget
+#print axioms YangMills.RG.ratio_le_exp_neg_rate_mul_10000_iff
+#print axioms YangMills.RG.cmp102Eq80Eq220_metric_decay_iff

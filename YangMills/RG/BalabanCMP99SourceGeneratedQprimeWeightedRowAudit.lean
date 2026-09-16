@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedQprimeWeightedRow
+
+#print axioms YangMills.RG.CMP99SourceActiveRegionChain.physicalQprime_single_apply_eq_zero
+#print axioms YangMills.RG.cmp99SourceIteratedLift_physicalQprime_finiteRange
+#print axioms YangMills.RG.cmp99SourceIteratedLift_physicalQprime_weightedRow

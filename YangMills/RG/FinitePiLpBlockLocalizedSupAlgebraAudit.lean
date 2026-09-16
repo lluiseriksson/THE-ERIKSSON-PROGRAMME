@@ -1,0 +1,16 @@
+import YangMills.RG.FinitePiLpBlockLocalizedSupAlgebra
+
+/-!
+# Audit: block-localized supremum algebra
+-/
+
+#print axioms YangMills.RG.finitePiLpSupNorm_le_of_norm_apply_le
+#print axioms YangMills.RG.finitePiLpSupNorm_scalarMultiplier_le
+#print axioms YangMills.RG.finitePiLpSupportedInOwner_scalarMultiplier
+#print axioms YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_comp_scalarMultiplier_right
+#print axioms YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_comp_scalarMultiplier_left
+#print axioms YangMills.RG.finitePiLpSupNorm_restrictZeroCLM_le
+#print axioms YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_comp_restrictZeroCLM_right
+#print axioms YangMills.RG.finitePiLpSupNorm_extendZeroZeroCLM_le
+#print axioms YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_extendZeroZeroCLM_left
+#print axioms YangMills.RG.finitePiLpTypedBlockLocalizedSupBound_extend_comp_restrictZeroCLM

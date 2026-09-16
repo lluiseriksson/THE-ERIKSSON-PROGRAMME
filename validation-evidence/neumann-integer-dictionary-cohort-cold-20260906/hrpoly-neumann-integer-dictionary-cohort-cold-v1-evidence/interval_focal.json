@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.NeumannImageIntervalCoverage"], "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1", "exit": 0, "log_file": "interval_focal.log", "output_sha256": "c39ae1c5bee4ec2e12c5fef3dc324c046d5f5e36a594463e120821b80258411c", "seconds": 12.89971578299992, "stage": "interval_focal"}

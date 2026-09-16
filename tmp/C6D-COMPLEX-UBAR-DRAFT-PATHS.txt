@@ -1,0 +1,6 @@
+tmp/BalabanCMP99ComplexUbarSpecialLinear.draft.lean
+tmp/BalabanCMP99ComplexUbarSpecialLinearAudit.draft.lean
+tmp/BalabanCMP99ComplexUbarCoordinateExponent.draft.lean
+tmp/BalabanCMP99ComplexUbarCoordinateExponentAudit.draft.lean
+tmp/BalabanCMP99ComplexLocalizedUbarBackground.draft.lean
+tmp/BalabanCMP99ComplexLocalizedUbarBackgroundAudit.draft.lean

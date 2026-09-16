@@ -1,0 +1,2 @@
+tmp/FinitePiLpTypedKernelDistanceRescaling.draft.lean
+tmp/FinitePiLpTypedKernelDistanceRescalingAudit.draft.lean

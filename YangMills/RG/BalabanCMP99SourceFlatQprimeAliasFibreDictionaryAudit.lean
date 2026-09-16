@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceFlatQprimeAliasFibreDictionary
+
+#print axioms YangMills.RG.cmp99SourceFlatQprimeCenteredAliasEquiv_apply_val
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFixedCoarseFibreEquiv_apply_val
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFixedCoarseFibreEquiv_symm_apply_val
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFixedCoarseAliasIndexEquiv_symm_coarseAlias

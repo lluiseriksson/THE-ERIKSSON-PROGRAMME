@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80SecondPropagatorDerivative
+
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80PropagatorDirectionalDerivative_curves
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80PropagatorDirectionalDerivative_fderivCurve

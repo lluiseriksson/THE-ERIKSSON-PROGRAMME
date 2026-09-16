@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99PhysicalOuterNeumannAbsoluteSummability
+
+#print axioms YangMills.RG.summable_norm_cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayers_of_source

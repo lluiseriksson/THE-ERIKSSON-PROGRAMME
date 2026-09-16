@@ -1,0 +1,176 @@
+{
+  "cold": {
+    "audits": {
+      "counting_audit": {
+        "YangMills.RG.neumannFiniteSiteIntegerCoordinates_injective": [
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedFlatCountingMass_integerOwner": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedTerminalOwner_eq_iff_integerCoordinates": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannGeneratedTerminalOwner_integerCoordinates": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      },
+      "interval_audit": {
+        "YangMills.RG.neumannImageIntervalFamily_bijective": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannImageIntervalFamily_injective": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannImageIntervalFamily_surjective": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannOrbitFalse_periodQuotient": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannOrbitFalse_periodRemainder": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannOrbitTrue_periodQuotient": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "YangMills.RG.neumannOrbitTrue_periodRemainder": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ]
+      }
+    },
+    "evidence_json_file_sha256": "7220f14f0125985cd1ef3a72749fa5b5d6666bb3e04687e0c7c04550a3e9dc3a",
+    "evidence_json_payload_sha256": "4a5b2dcfe08e8186a8d355a55f0d926e7bf7e7dd30cd27add4b82a30d470e659",
+    "production_outputs": {
+      "NeumannGeneratedIntegerCountingKernel.olean": "8aaa476a193649d33acacfc3cb69cdbce4a380c13deb3e400cbb69527ca68fb9",
+      "NeumannImageIntervalCoverage.olean": "05ce7805be4b719e8b9ef5d8453eebc1a359a700d767b144a5bce73e1616a92a"
+    },
+    "queue": [
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannGeneratedIntegerCountingKernel"
+        ],
+        "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "counting_focal.log",
+        "output_sha256": "bb152e48b5c7e17524f0eecb69735e05721906584f443390a76a8a21bce39111",
+        "seconds": 1451.3335821790006,
+        "stage": "counting_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannGeneratedIntegerCountingKernelAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "counting_audit.log",
+        "output_sha256": "68b752d1209f2d31f8f457a48d8ea2088cf6d8a17abdf50230c25f2c2e7c5b51",
+        "seconds": 7.281164144999821,
+        "stage": "counting_audit"
+      },
+      {
+        "command": [
+          "lake",
+          "build",
+          "YangMills.RG.NeumannImageIntervalCoverage"
+        ],
+        "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "interval_focal.log",
+        "output_sha256": "c39ae1c5bee4ec2e12c5fef3dc324c046d5f5e36a594463e120821b80258411c",
+        "seconds": 12.89971578299992,
+        "stage": "interval_focal"
+      },
+      {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "YangMills/RG/NeumannImageIntervalCoverageAudit.lean"
+        ],
+        "cwd": "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1",
+        "exit": 0,
+        "log_file": "interval_audit.log",
+        "output_sha256": "2afdfb6113e08d1e08c46811083710b3e000485c100e460d934e5bb9beeb3386",
+        "seconds": 5.474681317000432,
+        "stage": "interval_audit"
+      }
+    ],
+    "runner_rev": "neumann-integer-dictionary-cohort-cold-v1",
+    "source_sha": "af35fbb8c75bf2347543034b3abf27f0217b1bbf",
+    "stages_verified": 16,
+    "status": "PASS"
+  },
+  "inner_sha256": "22ddcfaf16cd0b0ca28328de0506917ce0e64f37ab31afccf6e3e42019a87245",
+  "launch": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-integer-dictionary-cohort-cold-v1-launch/verify_neumann_integer_dictionary_cohort_cold.py",
+        "--helpers",
+        "/content/neumann-integer-dictionary-cohort-cold-v1-launch",
+        "--self-test"
+      ],
+      "exit": 0,
+      "log_sha256": "2ba1a221a09ec332c7339f44ebc17649d7417feb5600a70ba0391dcc0fec24e3",
+      "seconds": 0.0600396420004472,
+      "stage": "verifier_self_test"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-integer-dictionary-cohort-cold-v1-launch/colab_neumann_integer_dictionary_cohort_cold.py"
+      ],
+      "exit": 0,
+      "log_sha256": "702e11b6252454bb55d01e7bf55370e3f96d1e3a0a6cff990de07e50622b502a",
+      "seconds": 1625.5399014350005,
+      "stage": "physical_cold_graph"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/content/neumann-integer-dictionary-cohort-cold-v1-launch/verify_neumann_integer_dictionary_cohort_cold.py",
+        "--helpers",
+        "/content/neumann-integer-dictionary-cohort-cold-v1-launch",
+        "--archive",
+        "/content/hrpoly-neumann-integer-dictionary-cohort-cold-v1-evidence.tar.gz",
+        "--sha256",
+        "22ddcfaf16cd0b0ca28328de0506917ce0e64f37ab31afccf6e3e42019a87245"
+      ],
+      "exit": 0,
+      "log_sha256": "5d3ccb278a9ad2b53b740f3f89b031d9c48a6c8a42a9183df6c502d36cf5f696",
+      "seconds": 0.06571712000004482,
+      "stage": "archive_verifier"
+    }
+  ],
+  "outer_sha256": "0c3a8858b2fab470e9a618ad084613f22c635ccc8b3942311d9ff623a7b04a34",
+  "scope": "finite physical counting-owner and full 1D image-family bijection; not inverse, B0 or window15",
+  "source": "af35fbb8c75bf2347543034b3abf27f0217b1bbf",
+  "status": "PASS"
+}

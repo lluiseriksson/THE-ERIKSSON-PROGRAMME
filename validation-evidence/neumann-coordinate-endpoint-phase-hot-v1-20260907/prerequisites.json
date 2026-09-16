@@ -1,0 +1,1 @@
+{"command": ["lake", "build", "YangMills.RG.BalabanCMP99SourceFlatQprimeEndpointAliasPhase"], "cwd": "/content/hrpoly-neumann-coordinate-precision-diagnostic-v1", "exit": 0, "log_sha256": "c89d71bc55a2ab06938ef5f964ea5c626cf3b01fe1726ad603530546a311900b", "seconds": 23.192673404000743, "stage": "prerequisites", "timed_out": false, "timeout_seconds": 600}
