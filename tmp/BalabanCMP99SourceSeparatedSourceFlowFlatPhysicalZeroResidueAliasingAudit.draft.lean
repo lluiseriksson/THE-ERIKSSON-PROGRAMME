@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalZeroResidueAliasing
+
+#print axioms YangMills.RG.cmp99SourceSeparatedSourceFlowFlatPhysical_normalized_sum_endpointIntegrand_eq_zeroResidue

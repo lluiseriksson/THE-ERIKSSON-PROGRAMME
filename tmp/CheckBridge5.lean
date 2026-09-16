@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99PhysicalRectangularMatrixReconstruction
+#check ContinuousLinearMap.mk
+#check ContinuousLinearMap.mk_continuous
+#check LinearMap.continuous_of_finiteDimensional

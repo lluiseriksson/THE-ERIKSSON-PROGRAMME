@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFlatPhysicalPointSourceGreenIdentification
+
+#print axioms YangMills.RG.cmp99SourceGeneratedFlatPhysicalPointSourceSolution_eq_green_apply

@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionIntegralDictionary
+
+#print axioms YangMills.RG.cmp89Eq246DirectedFullSolutionSum_eq_signedContourIntegrand
+#print axioms YangMills.RG.cmp89Eq246DirectedNormalizedFullSolutionIntegral_eq_signedContour
+#print axioms YangMills.RG.cmp89Eq246DirectedNormalizedFullSolutionIntegral_zero_eq_realSlice

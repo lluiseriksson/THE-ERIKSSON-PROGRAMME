@@ -1,0 +1,9 @@
+/- STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED. -/
+
+import YangMills.RG.BalabanCMP89Eq249FineLatticeLeftDerivativeProductContourTelescope
+
+#print axioms YangMills.RG.cmp89Eq249FineLatticeLeftDerivativePartialProductIntegrand_draft
+#print axioms YangMills.RG.integrable_cmp89Eq249FineLatticeLeftDerivativePartialProductIntegrand_draft
+#print axioms YangMills.RG.integral_cmp89Eq249FineLatticeLeftDerivativePartialProductIntegrand_stage_succ_draft
+#print axioms YangMills.RG.integral_cmp89Eq249FineLatticeLeftDerivativePartialProductIntegrand_zero_eq_four_draft
+#print axioms YangMills.RG.integral_cmp89Eq249FineLatticeStabilizedFourierLeftDerivativeKernelIntegrand_eq_signed_massUniform_draft

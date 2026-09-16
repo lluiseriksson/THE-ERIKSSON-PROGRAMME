@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalReflectionRepresentation
+
+/-!
+# Draft axiom audit: physical canonical CMP89 rectangle gate
+
+This draft remains outside the import graph until its dependencies and this
+specialization receive compiler evidence.
+-/
+
+namespace YangMills.RG
+
+#print axioms cmp89Eq248PhysicalFullLatticeGreenRealAction
+#print axioms CMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalReflectionRepresentation
+#print axioms cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannRectanglePhysicalReflectionRepresentation_eq_series
+
+end YangMills.RG

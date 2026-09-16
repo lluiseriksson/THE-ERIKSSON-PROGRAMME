@@ -5,7 +5,7 @@ fresh CPU/high-RAM runner emits literal `FINAL_STATUS=PASS`, the downloaded
 archive rehashes to the runner value, and the fail-closed local verifier and
 sealer both succeed.
 
-## Addendum 951 (2026-08-27, **C6d baseline real slice, retained complex extension and physical tower agreement sealed in fresh Colab Pro+; 20/41 unchanged**)
+## Addendum 951 (2026-08-28, **C6d baseline real slice, retained complex extension and physical tower agreement sealed in fresh Colab Pro+; 20/41 unchanged**)
 
 Exact mathematical source
 `81cc22e41d46cce150c2a263c85e4acb90087153` was validated in one fresh
@@ -17,19 +17,22 @@ Colab Pro+ CPU/high-RAM checkout with Lean `4.29.0-rc6` and Mathlib
 `DEDF6E84911CBDBA481D5F2F9434F39B02CF84E2F92CE9323BA56CE86F5F0C72`
 pin the exact queue.
 
-The prerequisite materialization completed `8554` jobs in `1408.895`
+The prerequisite materialization completed `8554` jobs in `1535.180`
 seconds.  The three source/audit pairs then completed with real exit code
-zero: baseline real slice in `6.468` / `7.837` seconds, retained physical and
-complex one-cochain extension in `5.941` / `8.222` seconds, and recursive
-physical real-slice tower agreement in `6.866` / `11.737` seconds.  All ten
+zero: baseline real slice in `6.052` / `8.389` seconds, retained physical and
+complex one-cochain extension in `6.494` / `8.990` seconds, and recursive
+physical real-slice tower agreement in `7.589` / `12.858` seconds.  All ten
 audited declarations use only `[propext, Classical.choice, Quot.sound]` or a
 subset.
 
-The cold `YangMillsCore` root completed [ROOT_JOBS] jobs in [ROOT_SECONDS]
+The cold `YangMillsCore` root completed `11026` jobs in `6495.937`
 seconds, exit `0`, and the runner emitted literal `FINAL_STATUS=PASS`.
-Canonical evidence SHA-256 is `[CANONICAL_EVIDENCE_SHA256]`; the downloaded
-archive independently rehashes to `[DOWNLOADED_ARCHIVE_SHA256]`; the local
-verification/package manifest rehashes to `[LOCAL_MANIFEST_SHA256]`.
+Canonical evidence SHA-256 is
+`845BA9468EF412AD41DB508D0929527BDA7F81189FF74BF162D1EFF6F438FDDE`;
+the downloaded archive independently rehashes to
+`B1D967CECA887CBF37D1F0DDF019BA66C6896C259BACF34CBD00782CA45C73F4`;
+the local verification/package manifest rehashes to
+`15CEBEB82747A44FA4142916182EEAA884B8643B880BD916D01BAC7DA3564120`.
 
 The selective seal retires exactly six PRE-VALIDATION notices from the three
 source/audit pairs and changes no theorem statement.  The sealed objects:

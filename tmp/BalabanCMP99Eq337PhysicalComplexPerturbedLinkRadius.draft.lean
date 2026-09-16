@@ -25,10 +25,16 @@ noncomputable section
 
 variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
 
+local instance cmp99Eq337PhysicalComplexPerturbedMatrixNormOneClass :
+    NormOneClass (Matrix (Fin Nc) (Fin Nc) ℂ) where
+  norm_one := by
+    rw [← Matrix.diagonal_one, Matrix.l2_opNorm_diagonal]
+    simp
+
 /-- Literal visible radius: physical background displacement plus twice the
 complex exponential scale. -/
 noncomputable def cmp99Eq337PhysicalComplexPerturbedLinkRadius
-    (Nc : ℕ) (epsilonU eta rA : ℝ) : ℝ :=
+    (Nc : ℕ) [NeZero Nc] (epsilonU eta rA : ℝ) : ℝ :=
   epsilonU + 2 *
     (|eta| * cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA)
 
@@ -50,7 +56,7 @@ theorem norm_cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_sub_one_le
   let U0 : Matrix (Fin Nc) (Fin Nc) ℂ :=
     U (positiveEdgeOfPhysicalBond b)
   have hbudget : 0 ≤ cmp99SUNLieComplexCoordMatrixNormBudget Nc :=
-    norm_nonneg _
+    cmp99SUNLieComplexCoordMatrixNormBudget_nonneg
   have hX : ‖X‖ ≤
       cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA := by
     exact (norm_cmp99SUNLieComplexCoordMatrixLM_le (A b)).trans
@@ -102,8 +108,8 @@ theorem norm_cmp99Eq337PhysicalComplexPerturbedNegativeBondModel_sub_one_le
       (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) ≤ 1 / 2)
     (hU : ‖(U (positiveEdgeOfPhysicalBond b) :
         Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonU) :
-    ‖(U (positiveEdgeOfPhysicalBond b) :
-          Matrix (Fin Nc) (Fin Nc) ℂ)ᴴ *
+    ‖Matrix.conjTranspose (U (positiveEdgeOfPhysicalBond b) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) *
         NormedSpace.exp
           ((-eta) • cmp99SUNLieComplexCoordMatrixLM Nc (A b)) - 1‖ ≤
       cmp99Eq337PhysicalComplexPerturbedLinkRadius Nc epsilonU eta rA := by
@@ -111,7 +117,7 @@ theorem norm_cmp99Eq337PhysicalComplexPerturbedNegativeBondModel_sub_one_le
   let U0 : Matrix (Fin Nc) (Fin Nc) ℂ :=
     U (positiveEdgeOfPhysicalBond b)
   have hbudget : 0 ≤ cmp99SUNLieComplexCoordMatrixNormBudget Nc :=
-    norm_nonneg _
+    cmp99SUNLieComplexCoordMatrixNormBudget_nonneg
   have hX : ‖X‖ ≤
       cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA := by
     exact (norm_cmp99SUNLieComplexCoordMatrixLM_le (A b)).trans
@@ -124,25 +130,32 @@ theorem norm_cmp99Eq337PhysicalComplexPerturbedNegativeBondModel_sub_one_le
       norm_exp_smul_sub_one_le_two_mul (-eta)
         (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA) X hX
         (by simpa only [abs_neg] using hsmall)
-  have hU0 : ‖U0ᴴ‖ = 1 := by
+  have hU0 : ‖Matrix.conjTranspose U0‖ = 1 := by
     let e : ConcreteEdge d N := ⟨b.1, b.2, true⟩
     rw [Matrix.l2_opNorm_conjTranspose]
     simpa [U0, e, orientedWilsonPositiveBase] using
       norm_orientedWilsonPositiveBase U e
-  have hUdev : ‖U0ᴴ - 1‖ ≤ epsilonU := by
+  have hUdev : ‖Matrix.conjTranspose U0 - 1‖ ≤ epsilonU := by
     calc
-      ‖U0ᴴ - 1‖ = ‖(U0 - 1)ᴴ‖ := by simp
+      ‖Matrix.conjTranspose U0 - 1‖ =
+          ‖Matrix.conjTranspose (U0 - 1)‖ := by simp
       _ = ‖U0 - 1‖ := Matrix.l2_opNorm_conjTranspose _
       _ ≤ epsilonU := hU
-  change ‖U0ᴴ * NormedSpace.exp ((-eta) • X) - 1‖ ≤ _
+  change ‖Matrix.conjTranspose U0 *
+      NormedSpace.exp ((-eta) • X) - 1‖ ≤ _
   calc
-    ‖U0ᴴ * NormedSpace.exp ((-eta) • X) - 1‖ =
-        ‖U0ᴴ * (NormedSpace.exp ((-eta) • X) - 1) + (U0ᴴ - 1)‖ := by
+    ‖Matrix.conjTranspose U0 * NormedSpace.exp ((-eta) • X) - 1‖ =
+        ‖Matrix.conjTranspose U0 *
+            (NormedSpace.exp ((-eta) • X) - 1) +
+          (Matrix.conjTranspose U0 - 1)‖ := by
           congr 1
           noncomm_ring
-    _ ≤ ‖U0ᴴ * (NormedSpace.exp ((-eta) • X) - 1)‖ + ‖U0ᴴ - 1‖ :=
+    _ ≤ ‖Matrix.conjTranspose U0 *
+          (NormedSpace.exp ((-eta) • X) - 1)‖ +
+        ‖Matrix.conjTranspose U0 - 1‖ :=
       norm_add_le _ _
-    _ ≤ ‖U0ᴴ‖ * ‖NormedSpace.exp ((-eta) • X) - 1‖ + epsilonU :=
+    _ ≤ ‖Matrix.conjTranspose U0‖ *
+          ‖NormedSpace.exp ((-eta) • X) - 1‖ + epsilonU :=
       add_le_add (norm_mul_le _ _) hUdev
     _ ≤ 1 * (2 * (|eta| *
           (cmp99SUNLieComplexCoordMatrixNormBudget Nc * rA))) + epsilonU := by
@@ -162,8 +175,8 @@ theorem cmp99Eq337PhysicalComplexPerturbedPositiveBondSL_inv_coe
     (((cmp99Eq337PhysicalComplexPerturbedPositiveBondSL U A eta b)⁻¹ :
         Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
           Matrix (Fin Nc) (Fin Nc) ℂ) =
-      (U (positiveEdgeOfPhysicalBond b) :
-          Matrix (Fin Nc) (Fin Nc) ℂ)ᴴ *
+      Matrix.conjTranspose (U (positiveEdgeOfPhysicalBond b) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) *
         NormedSpace.exp
           ((-eta) • cmp99SUNLieComplexCoordMatrixLM Nc (A b)) := by
   let X := cmp99SUNLieComplexCoordMatrixLM Nc (A b)
@@ -172,25 +185,25 @@ theorem cmp99Eq337PhysicalComplexPerturbedPositiveBondSL_inv_coe
   have hexp :
       NormedSpace.exp ((-eta) • X) * NormedSpace.exp (eta • X) = 1 := by
     simpa only [neg_smul] using cmp98_exp_neg_mul_exp (eta • X)
-  have hunit : U0ᴴ * U0 = 1 := by
+  have hunit : Matrix.conjTranspose U0 * U0 = 1 := by
     simpa only [U0] using
       su_conjTranspose_mul_self (U (positiveEdgeOfPhysicalBond b))
   have hinv :
       (cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix U A eta b)⁻¹ =
-        U0ᴴ * NormedSpace.exp ((-eta) • X) := by
+        Matrix.conjTranspose U0 * NormedSpace.exp ((-eta) • X) := by
     apply Matrix.inv_eq_left_inv
     rw [cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix,
       cmp99Eq337PrintedComplexGenerator_eq]
-    change (U0ᴴ * NormedSpace.exp ((-eta) • X)) *
+    change (Matrix.conjTranspose U0 * NormedSpace.exp ((-eta) • X)) *
         (NormedSpace.exp (eta • X) * U0) = 1
     calc
-      (U0ᴴ * NormedSpace.exp ((-eta) • X)) *
+      (Matrix.conjTranspose U0 * NormedSpace.exp ((-eta) • X)) *
           (NormedSpace.exp (eta • X) * U0) =
-        U0ᴴ *
+        Matrix.conjTranspose U0 *
           ((NormedSpace.exp ((-eta) • X) *
             NormedSpace.exp (eta • X)) * U0) := by
               simp only [mul_assoc]
-      _ = U0ᴴ * U0 := by rw [hexp, one_mul]
+      _ = Matrix.conjTranspose U0 * U0 := by rw [hexp, one_mul]
       _ = 1 := hunit
   have hmatrixInv :
       (cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix U A eta b)⁻¹ =
@@ -199,7 +212,10 @@ theorem cmp99Eq337PhysicalComplexPerturbedPositiveBondSL_inv_coe
     rw [Matrix.inv_def,
       cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_det,
       Ring.inverse_one, one_smul]
-  rw [Matrix.SpecialLinearGroup.coe_inv, ← hmatrixInv]
+  rw [Matrix.SpecialLinearGroup.coe_inv]
+  change Matrix.adjugate
+      (cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix U A eta b) = _
+  rw [← hmatrixInv]
   exact hinv
 
 /-- The public negative edge of the reconstructed complex background is the
@@ -212,8 +228,8 @@ theorem cmp99Eq337PhysicalComplexPerturbedBackground_apply_neg_matrix
         (ConcreteEdge.mk x mu false) :
           Matrix.SpecialLinearGroup (Fin Nc) ℂ) :
             Matrix (Fin Nc) (Fin Nc) ℂ) =
-      (U (positiveEdgeOfPhysicalBond (x, mu)) :
-          Matrix (Fin Nc) (Fin Nc) ℂ)ᴴ *
+      Matrix.conjTranspose (U (positiveEdgeOfPhysicalBond (x, mu)) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) *
         NormedSpace.exp
           ((-eta) • cmp99SUNLieComplexCoordMatrixLM Nc (A (x, mu))) := by
   rw [cmp99Eq337PhysicalComplexPerturbedBackground,

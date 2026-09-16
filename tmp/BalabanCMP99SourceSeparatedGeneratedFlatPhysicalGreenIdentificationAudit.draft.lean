@@ -1,0 +1,9 @@
+-- Promotion import:
+-- import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalGreenIdentification
+
+-- PRE-VALIDATION SCRATCH: intended axiom surface for Step 8b.24/S3.
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalStep7bGreenCLM
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalStep7bGreenCLM_comp_precision
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalStabilizedAliasDenominator_ne_zero
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalStabilizedFieldCLM_eq_green_comp

@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99Eq335PhysicalRetainedNearIdentity
+
+/-!
+PRE-VALIDATION: source is present in scratch only; no `.olean` has been
+materialized and no compiler or axiom-oracle verdict exists for this module.
+-/
+
+#print axioms YangMills.RG.CMP99Eq335RetainedFineReadCarrierInsideRegularCube
+#print axioms YangMills.RG.cmp99Eq335PhysicalRetainedNearIdentityRadius
+#print axioms YangMills.RG.CMP99Eq335PhysicalRegularityWitness.transformedBackground
+#print axioms YangMills.RG.CMP99Eq335PhysicalRegularityWitness.abs_eta_mul_amplitudeMajorant_le
+#print axioms YangMills.RG.CMP99Eq335PhysicalRegularityWitness.retainedFineReadBonds_nearIdentity

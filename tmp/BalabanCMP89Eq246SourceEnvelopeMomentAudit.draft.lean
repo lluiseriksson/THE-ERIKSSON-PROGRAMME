@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246SourceEnvelopeMoment
+
+#print axioms YangMills.RG.norm_cmp89Eq246StabilizedAliasNoncentralSourceMoment_le_of_envelope
+#print axioms YangMills.RG.norm_cmp89Eq246StabilizedAliasFullSolutionMoment_le_of_envelope

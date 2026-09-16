@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixPathReversal
+#check Finset.card_le_card_of_injOn
+#check Finset.card_le_card_of_injOn
+#check Finset.card_le_card_of_injective
+#check Finset.sigma
+#check Finset.mem_sigma
+#check Sigma.ext
+#check Sigma.mk.inj_iff
+#check heq_iff_eq
+#check List.reverse_reverse

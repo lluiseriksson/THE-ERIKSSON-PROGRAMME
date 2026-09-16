@@ -1,0 +1,10 @@
+-- Intended axiom surface for C6c.1/D4a--D4b.
+-- import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalDerivativeResidueShift
+
+#print axioms YangMills.RG.cmp99SourceSeparatedFineTargetShiftCarry
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement_neg_shift_eq_forward_sub_periodCarry_draft
+#print axioms YangMills.RG.cmp99SourceFlatQprimeFineToCoarseEndpointDisplacement_neg_shift_eq_forward_sub_periodCarry_fun_draft
+#print axioms YangMills.RG.cmp99SourceSeparatedFineTargetShiftResidueEquiv
+#print axioms YangMills.RG.cmp99SourceSeparatedFineTargetShiftResidueEquiv_apply_val_draft
+#print axioms YangMills.RG.cmp99SourceSeparatedFineTargetShift_affineResidue_eq_forward_draft
+#print axioms YangMills.RG.tsum_cmp99SourceSeparatedFineTargetShift_affineResidue_eq_forward_draft

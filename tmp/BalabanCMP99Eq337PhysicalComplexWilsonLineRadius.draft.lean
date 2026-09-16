@@ -1,6 +1,7 @@
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedLinkRadius
 import YangMills.RG.BalabanCMP99ComplexFourFactorDeviation
 import YangMills.RG.OrderedProductQuadraticBound
+import YangMills.ClayCore.WilsonLine
 
 /-!
 PRE-VALIDATION: this scratch source has no materialized `.olean` and no
@@ -16,12 +17,18 @@ the visible `(1+r)^length` cost.
 
 namespace YangMills.RG
 
-open YangMills Matrix
+open YangMills Matrix YangMills.GaugeConfig
 open scoped Matrix.Norms.L2Operator
 
 noncomputable section
 
 variable {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero Nc]
+
+local instance cmp99Eq337PhysicalComplexWilsonMatrixNormOneClass :
+    NormOneClass (Matrix (Fin Nc) (Fin Nc) ℂ) where
+  norm_one := by
+    rw [← Matrix.diagonal_one, Matrix.l2_opNorm_diagonal]
+    simp
 
 /-- A matrix Wilson line in `SL(N,C)` is definitionally the ordered product
 of its link deviations added back to one. -/
@@ -34,7 +41,9 @@ theorem cmp99SpecialLinearWilsonLine_coe_eq_orderedOnePlusProduct
         (es.map fun e ↦
           (V e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1) := by
   induction es with
-  | nil => simp [orderedOnePlusProduct]
+  | nil =>
+      rw [YangMills.GaugeConfig.wilsonLine_nil]
+      rfl
   | cons e es ih =>
       rw [wilsonLine_cons, Matrix.SpecialLinearGroup.coe_mul,
         List.map_cons, orderedOnePlusProduct_cons, ih]
@@ -51,10 +60,14 @@ theorem norm_cmp99SpecialLinearWilsonLine_sub_one_le
           Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
       es.length * r * (1 + r) ^ es.length := by
   rw [cmp99SpecialLinearWilsonLine_coe_eq_orderedOnePlusProduct]
-  apply norm_orderedOnePlusProduct_sub_one_le _ hr
-  intro X hX
-  rcases List.mem_map.mp hX with ⟨e, he, rfl⟩
-  exact hlink e
+  have hm : ∀ X ∈ es.map (fun e ↦
+      (V e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1), ‖X‖ ≤ r := by
+    intro X hX
+    rcases List.mem_map.mp hX with ⟨e, he, rfl⟩
+    exact hlink e
+  simpa only [List.length_map] using
+    (norm_orderedOnePlusProduct_sub_one_le
+      (es.map fun e ↦ (V e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1) hr hm)
 
 /-- The same input retains the factor norm needed by heterogeneous
 four-factor telescoping. -/
@@ -66,10 +79,14 @@ theorem norm_cmp99SpecialLinearWilsonLine_le
           Matrix (Fin Nc) (Fin Nc) ℂ)‖ ≤
       (1 + r) ^ es.length := by
   rw [cmp99SpecialLinearWilsonLine_coe_eq_orderedOnePlusProduct]
-  apply norm_orderedOnePlusProduct_le _ hr
-  intro X hX
-  rcases List.mem_map.mp hX with ⟨e, he, rfl⟩
-  exact hlink e
+  have hm : ∀ X ∈ es.map (fun e ↦
+      (V e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1), ‖X‖ ≤ r := by
+    intro X hX
+    rcases List.mem_map.mp hX with ⟨e, he, rfl⟩
+    exact hlink e
+  simpa only [List.length_map] using
+    (norm_orderedOnePlusProduct_le
+      (es.map fun e ↦ (V e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1) hr hm)
 
 /-- Visible four-path budget obtained by combining ordered-product growth
 with heterogeneous four-factor telescoping. -/
@@ -122,7 +139,11 @@ theorem cmp99ComplexFourWilsonPathDeviationBudget_le_uniform
         (L : ℝ) * r * (1 + r) ^ L := by
     have hcast : ((paths i).length : ℝ) ≤ (L : ℝ) := by
       exact_mod_cast hlen i
-    gcongr
+    have hlength : ((paths i).length : ℝ) * r ≤ (L : ℝ) * r :=
+      mul_le_mul_of_nonneg_right hcast hr
+    exact mul_le_mul hlength (hpow i)
+      (pow_nonneg (by linarith : 0 ≤ 1 + r) _)
+      (mul_nonneg (Nat.cast_nonneg _) hr)
   unfold cmp99ComplexFourWilsonPathDeviationBudget
   unfold cmp99ComplexFourWilsonUniformDeviationBudget
   unfold cmp99ComplexFourFactorDeviationBudget
@@ -161,7 +182,8 @@ theorem norm_cmp99Eq337PhysicalComplexPerturbedBackground_apply_sub_one_le
         norm_cmp99Eq337PhysicalComplexPerturbedNegativeBondModel_sub_one_le
           U A eta epsilonU rA (x, mu) (hA (x, mu)) hsmall (hU (x, mu))
   | true =>
-      rw [cmp99Eq337PhysicalComplexPerturbedBackground_apply_pos]
+      change ‖cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix
+        U A eta (x, mu) - 1‖ ≤ _
       exact
         norm_cmp99Eq337PhysicalComplexPerturbedPositiveBondMatrix_sub_one_le
           U A eta epsilonU rA (x, mu) (hA (x, mu)) hsmall (hU (x, mu))

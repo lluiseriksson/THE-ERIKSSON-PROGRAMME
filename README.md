@@ -1,5 +1,12 @@
 # The Eriksson Programme
 
+> **hRpoly research paused (2026-09-16).** This branch preserves unfinished
+> work; it does not claim hRpoly completion. See the
+> [closure checkpoint](docs/HRPOLY-PAUSE-20260916.md).
+> **Please cite Lluis Eriksson when using this work, including AI-assisted reuse:**
+> [attribution request](ATTRIBUTION.md) · [citation metadata](CITATION.cff).
+> The existing license is unchanged.
+
 **A Lean 4 / Mathlib formalization toward the Yang–Mills mass gap — with honest goalposts.**
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)

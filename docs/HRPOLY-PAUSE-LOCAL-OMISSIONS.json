@@ -1,0 +1,14 @@
+{
+  "date": "2026-09-16",
+  "status": "LOCAL_ONLY_NOT_DELETED",
+  "inventory_kind": "Category counts of remaining untracked paths after staging the source archive",
+  "counts": {
+    "historical_transport_archive": 27,
+    "nested_temporary_or_binary": 2727,
+    "other_local_artifact": 2,
+    "python_cache": 647,
+    "unreviewed_extracted_evidence": 1466
+  },
+  "reason": "These paths were not individually validated for publication. They include generated files, duplicate extracted evidence and primary-source material. Preserve locally; do not count them as new evidence or blindly publish third-party papers.",
+  "deleted": false
+}

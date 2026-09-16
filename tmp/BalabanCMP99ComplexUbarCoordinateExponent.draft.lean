@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP99ComplexUbarSpecialLinear
 import YangMills.RG.BalabanCMP99Eq337PhysicalComplexPerturbedBackground
+import Mathlib.Analysis.Normed.Operator.Basic
 
 /-!
 PRE-VALIDATION: this scratch source has no materialized `.olean` and no
@@ -30,11 +31,15 @@ noncomputable section
 
 variable {Nc : ℕ} [NeZero Nc]
 
+local instance cmp99SUNLieComplexCoordMatrixCLMNorm :
+    Norm (SUNLieComplexCoord Nc →L[ℂ] Matrix (Fin Nc) (Fin Nc) ℂ) :=
+  ContinuousLinearMap.hasOpNorm
+
 /-- The explicit complex-coordinate matrix realization as a continuous
 linear map.  Finite dimensionality supplies continuity, but no isometry is
 asserted: the public norm of this map is the visible chart cost consumed by
 the later analytic Ubar estimate. -/
-noncomputable def cmp99SUNLieComplexCoordMatrixCLM (Nc : ℕ) :
+noncomputable def cmp99SUNLieComplexCoordMatrixCLM (Nc : ℕ) [NeZero Nc] :
     SUNLieComplexCoord Nc →L[ℂ] Matrix (Fin Nc) (Fin Nc) ℂ :=
   ⟨cmp99SUNLieComplexCoordMatrixLM Nc,
     (cmp99SUNLieComplexCoordMatrixLM Nc).continuous_of_finiteDimensional⟩
@@ -42,8 +47,15 @@ noncomputable def cmp99SUNLieComplexCoordMatrixCLM (Nc : ℕ) :
 /-- Source-visible operator-norm cost of decoding one complex physical Lie
 coordinate to its literal matrix.  This deliberately replaces the invalid
 implicit choice `Ccoord = 1`. -/
-noncomputable def cmp99SUNLieComplexCoordMatrixNormBudget (Nc : ℕ) : ℝ :=
+noncomputable def cmp99SUNLieComplexCoordMatrixNormBudget
+    (Nc : ℕ) [NeZero Nc] : ℝ :=
   ‖cmp99SUNLieComplexCoordMatrixCLM Nc‖
+
+theorem cmp99SUNLieComplexCoordMatrixNormBudget_nonneg :
+    0 ≤ cmp99SUNLieComplexCoordMatrixNormBudget Nc := by
+  unfold cmp99SUNLieComplexCoordMatrixNormBudget
+  exact ContinuousLinearMap.opNorm_nonneg
+    (cmp99SUNLieComplexCoordMatrixCLM Nc)
 
 /-- The named complex-coordinate norm bridge required by the first stage of
 the physical complex Ubar deviation estimate. -/
@@ -51,6 +63,8 @@ theorem norm_cmp99SUNLieComplexCoordMatrixLM_le
     (Z : SUNLieComplexCoord Nc) :
     ‖cmp99SUNLieComplexCoordMatrixLM Nc Z‖ ≤
       cmp99SUNLieComplexCoordMatrixNormBudget Nc * ‖Z‖ := by
+  change ‖(cmp99SUNLieComplexCoordMatrixCLM Nc) Z‖ ≤
+    ‖cmp99SUNLieComplexCoordMatrixCLM Nc‖ * ‖Z‖
   exact (cmp99SUNLieComplexCoordMatrixCLM Nc).le_opNorm Z
 
 /-- The literal determinant-one Ubar exponent in Mathlib's trace-zero

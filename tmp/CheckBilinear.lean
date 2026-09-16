@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102AmbientOrientedEdgeThirdJetBound
+#check ContinuousLinearMap.norm_iteratedFDeriv_le_of_bilinear
+#check ContinuousLinearMap.norm_iteratedFDeriv_le_of_bilinear_of_le_one
+#check Matrix.mul
+#check Matrix.mulVecLin

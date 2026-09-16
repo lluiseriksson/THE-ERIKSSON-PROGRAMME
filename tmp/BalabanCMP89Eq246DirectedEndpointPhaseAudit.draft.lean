@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP89Eq246DirectedEndpointPhase
+
+#print axioms YangMills.RG.cmp89Eq246TargetPhase_mul_finePointSourceAliasVector
+#print axioms YangMills.RG.norm_cmp89Eq246TargetPhase_mul_finePointSourceAliasVector_signedContour
+#print axioms YangMills.RG.norm_cmp89Eq246FinePointSourceAliasVector_signedContour
+#print axioms YangMills.RG.norm_cmp89Eq246TargetPhase_signedContour
+#print axioms YangMills.RG.cmp89Eq246_targetDecay_mul_sourceGrowth

@@ -1,6 +1,7 @@
 import YangMills.RG.BalabanCMP116DeterminantNearLog
 import YangMills.RG.MatrixDetExpSkewAdjoint
 import YangMills.RG.MatrixRealization
+import YangMills.RG.NearLogDeviationBudget
 
 /-!
 PRE-VALIDATION: this scratch source has no materialized `.olean` and no
@@ -35,6 +36,12 @@ instance instMatrixRealizationSpecialLinear :
       (Matrix (Fin Nc) (Fin Nc) ℂ) where
   rep := Matrix.SpecialLinearGroup.toGL
 
+local instance cmp99ComplexUbarSpecialLinearMatrixNormOneClass :
+    NormOneClass (Matrix (Fin Nc) (Fin Nc) ℂ) where
+  norm_one := by
+    rw [← Matrix.diagonal_one, Matrix.l2_opNorm_diagonal]
+    simp
+
 /-- Determinant one quantizes the trace of the principal Mercator logarithm;
 no unitarity or skew-adjointness is needed for this implication. -/
 theorem matrixTraceQuantized_nearLog_sub_one_of_det_eq_one
@@ -42,7 +49,11 @@ theorem matrixTraceQuantized_nearLog_sub_one_of_det_eq_one
     (hD : ‖D - 1‖ < 1) (hdet : Matrix.det D = 1) :
     MatrixTraceQuantized (nearLog (D - 1)) := by
   have hexp : Complex.exp (Matrix.trace (nearLog (D - 1))) = 1 := by
-    rw [← det_one_add_eq_exp_trace_nearLog (D - 1) hD]
+    have hdetLog : Matrix.det (1 + (D - 1)) =
+        Complex.exp (Matrix.trace (nearLog (D - 1))) := by
+      rw [← exp_nearLog_eq_one_add hD]
+      exact det_matrix_exp_eq_exp_trace (nearLog (D - 1))
+    rw [← hdetLog]
     simpa using hdet
   rcases Complex.exp_eq_one_iff.mp hexp with ⟨k, hk⟩
   refine ⟨k, ?_⟩

@@ -18,7 +18,7 @@ factor.  It does not import the unitary four-factor estimate.
 
 namespace YangMills.RG
 
-open YangMills Matrix
+open YangMills Matrix YangMills.GaugeConfig
 open scoped Matrix.Norms.L2Operator
 
 noncomputable section
@@ -56,10 +56,13 @@ theorem cmp99SourceComplexUbarFourPaths_length_le
       cmp99SourceUbarGamma2_length_le (G := SLNc) hd hM b x
   · simpa [cmp99SourceComplexUbarFourPaths] using
       cmp99SourceUbarGamma3_length_le (G := SLNc) b x hx
-  · simpa [cmp99SourceComplexUbarFourPaths, cmp99SourceUbarGamma2,
-      OrientedLatticePath.symm, reverseLatticePath] using
-      cmp99SourceUbarGamma2_length_le (G := SLNc) hd hM b
-        (blockBasepoint M N' b.1)
+  · change
+      ((cmp99SourceParallelTransportPath (G := SLNc)
+        (blockBasepoint M N' b.1) b.2).symm.edges).length ≤ d * (M - 1)
+    simp only [OrientedLatticePath.symm, reverseLatticePath,
+      List.length_reverse, List.length_map]
+    exact cmp99SourceUbarGamma2_length_le (G := SLNc) hd hM b
+      (blockBasepoint M N' b.1)
 
 /-- Exact four-path identification.  In particular the last factor is not a
 free coarse background and no equality between independently chosen
@@ -94,6 +97,7 @@ theorem norm_cmp99SourceComplexLocalizedUbarDeviation_le_fourPathBudget
         (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x) r := by
   rw [cmp99SourceComplexLocalizedUbarDeviation_coe_eq_fourPathProduct]
   exact norm_fourSpecialLinearWilsonLineProduct_sub_one_le
+    (d := d) (N := M * N') (Nc := Nc)
     background (cmp99SourceComplexUbarFourPaths (Nc := Nc) b x)
       r hr hlink
 

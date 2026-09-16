@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246DirectedNormalizedFullSolutionIntegral
+
+#print axioms YangMills.RG.cmp89Eq246DirectedNormalizedFullSolutionIntegral
+#print axioms YangMills.RG.norm_cmp89Eq246DirectedNormalizedFullSolutionIntegral_le

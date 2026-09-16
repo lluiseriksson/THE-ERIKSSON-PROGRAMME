@@ -1,0 +1,9 @@
+-- Promotion import:
+-- import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalGreenFourierEndpoint
+
+-- PRE-VALIDATION SCRATCH: intended axiom surface for Step 8b.24/S4.
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_fourierMode
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_fourierMode
+#print axioms YangMills.RG.cmp99FlatPhysicalFibreDFT_sourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_fourierMode_eq_zero_of_coarseAlias_ne
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalGreenQprimeStar_fourierMode_apply_eq_sum_transposeGreenTerms

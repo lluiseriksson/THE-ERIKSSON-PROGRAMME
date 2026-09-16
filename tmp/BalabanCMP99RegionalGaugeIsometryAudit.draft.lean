@@ -1,0 +1,19 @@
+import YangMills.RG.BalabanCMP99RegionalGaugeIsometry
+
+#print axioms YangMills.RG.cmp99FineGaugeLinearIsometryEquiv
+#print axioms YangMills.RG.cmp99FineGaugeLinearIsometryEquiv_apply
+#print axioms YangMills.RG.cmp99RegionalFineGaugeLinearIsometryEquiv
+#print axioms YangMills.RG.cmp99RegionalFineGaugeLinearIsometryEquiv_apply
+#print axioms YangMills.RG.cmp99RegionalFineGaugeLinearIsometryEquiv_eq_gaugeAct
+#print axioms YangMills.RG.cmp99RegionalFineGaugeLinearIsometryEquiv_symm_apply
+#print axioms YangMills.RG.norm_cmp99RegionalFineGaugeAct_eq
+#print axioms YangMills.RG.support_cmp99RegionalFineGaugeAct_eq
+#print axioms YangMills.RG.extendZeroZeroCLM_cmp99RegionalFineGaugeAct
+#print axioms YangMills.RG.restrictZeroCLM_cmp99FineGaugeLinearIsometryEquiv
+#print axioms YangMills.RG.cmp99RegionalCoarseGaugeLinearIsometryEquiv
+#print axioms YangMills.RG.cmp99RegionalCoarseGaugeLinearIsometryEquiv_apply
+#print axioms YangMills.RG.cmp99RegionalCoarseGaugeLinearIsometryEquiv_eq_gaugeAct
+#print axioms YangMills.RG.cmp99RegionalCoarseGaugeLinearIsometryEquiv_symm_apply
+#print axioms YangMills.RG.norm_cmp99RegionalCoarseGaugeAct_eq
+#print axioms YangMills.RG.support_cmp99RegionalCoarseGaugeAct_eq
+#print axioms YangMills.RG.cmp99RegionalCoarseGaugeLinearIsometryEquiv_eq_fine_coarseTransform

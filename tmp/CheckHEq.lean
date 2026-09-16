@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixPathReversal
+#check eqRec_heq
+#check cast_heq
+#check HEq.of_eq
+#check heq_of_eq
+#check heq_iff_eq
+#check Subtype.ext
+#check Sigma.ext_iff
+#check HEq.trans
+#check HEq.symm

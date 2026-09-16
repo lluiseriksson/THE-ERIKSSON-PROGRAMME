@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99CovariantD0GaugeIntertwiner
+
+#print axioms YangMills.RG.continuousLinearMap_adjoint_intertwines_of_isometries
+#print axioms YangMills.RG.continuousLinearMap_adjoint_comp_self_intertwines_of_isometries
+#print axioms YangMills.RG.isCoerciveCLM_of_intertwines_linearIsometryEquiv
+#print axioms YangMills.RG.cmp99PhysicalBondGaugeLinearIsometryEquiv
+#print axioms YangMills.RG.cmp99PhysicalBondGaugeLinearIsometryEquiv_apply
+#print axioms YangMills.RG.cmp99PhysicalBondGaugeLinearIsometryEquiv_symm_apply
+#print axioms YangMills.RG.norm_cmp99PhysicalBondGaugeLinearIsometryEquiv_apply
+#print axioms YangMills.RG.support_cmp99PhysicalBondGaugeLinearIsometryEquiv_apply
+#print axioms YangMills.RG.covariantD0CLM_gaugeAct
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantD0CLM_gaugeAct
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantD0CLM_comp_gaugeIsometry
+#print axioms YangMills.RG.cmp99ActiveRegionSourceCovariantLaplacian_gaugeAct

@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP99ComplexUbarSpecialLinear
 import YangMills.RG.BalabanCMP99SourceUbarContours
+import YangMills.RG.Ubar
 
 /-!
 PRE-VALIDATION: this scratch source has no materialized `.olean` and no

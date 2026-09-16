@@ -1,0 +1,24 @@
+import YangMills.RG.PhysicalWeightedRowKernel
+
+#check tsum_sum
+#check Finset.tsum_sum
+#check Summable.sum
+#check Summable.finset_sum
+#check summable_finset_sum
+#check Summable.tsum_add
+#check Summable.tsum_le_tsum
+#check tsum_le_tsum
+#check tsum_mul_right
+#check tsum_mul_left
+#check Summable.mul_right
+#check Summable.mul_left
+#check ContinuousLinearMap.proj
+#check PiLp.continuousLinearEquiv
+#check Summable.of_nonneg_of_le
+#check Matrix.l1_opNorm_def
+#check Matrix.l1_opNorm_mul
+#check Matrix.linfty_opNorm_transpose
+#check Matrix.l1_opNorm_transpose
+#check pow_le_pow_right₀
+#check pow_le_pow_right
+#check pow_le_pow_left

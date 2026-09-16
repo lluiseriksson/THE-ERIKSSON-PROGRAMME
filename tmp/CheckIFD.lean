@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102AmbientOrientedEdgeFDerivBound
+#check norm_iteratedFDeriv_zero
+#check norm_iteratedFDeriv_one
+#check iteratedFDeriv_zero_eq_comp
+#check iteratedFDeriv_one_eq_comp
+#print norm_iteratedFDeriv_zero
+#print norm_iteratedFDeriv_one

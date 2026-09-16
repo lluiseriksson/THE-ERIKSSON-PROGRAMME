@@ -1,0 +1,9 @@
+-- Promotion import:
+-- import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalAmbientGreenComplexification
+
+-- PRE-VALIDATION SCRATCH: intended axiom surface for Step 8b.24/S1-complex.
+
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientPrecisionComplex
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientGreenComplex
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientPrecisionComplex_comp_green
+#print axioms YangMills.RG.cmp99SourceSeparatedGeneratedFlatPhysicalAmbientGreenComplex_comp_precision

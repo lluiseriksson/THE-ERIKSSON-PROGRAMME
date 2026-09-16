@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP89Eq246CentralAverageRowReciprocalBound
+
+#print axioms YangMills.RG.cmp89Eq246CentralAverageRowReciprocalBound
+#print axioms YangMills.RG.norm_inv_cmp89Eq246CentralAverageRow_le

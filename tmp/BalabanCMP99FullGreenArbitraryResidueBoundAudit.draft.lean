@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99FullGreenArbitraryResidueBound
+
+#print axioms YangMills.RG.tsum_norm_cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient_residueClass_le
+#print axioms YangMills.RG.norm_tsum_cmp89Eq246CenteredFullGreenPhysicalFourierCoefficient_residueClass_le

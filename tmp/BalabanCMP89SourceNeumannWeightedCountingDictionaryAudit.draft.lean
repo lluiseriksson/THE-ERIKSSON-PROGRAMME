@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP89SourceNeumannWeightedCountingDictionary
+
+/- PRE-VALIDATION: draft audit not materialized by the compiler. -/
+
+#print axioms YangMills.RG.cmp89SourceCommonSpacingWeight_adjoint
+#print axioms YangMills.RG.cmp99SourceSpacingPairing_neumannRegionalLaplacian
+#print axioms YangMills.RG.cmp85SourcePrefixCountingCoefficient_mul_fineVolume
+#print axioms YangMills.RG.cmp99SourceSpacingPairing_retainedNeumannPrefixGaugePrecision

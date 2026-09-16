@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalSupNormTransport
+
+#check ContinuousLinearMap.le_opNorm
+#check ContinuousLinearMap.le_opNorm_of_le
+#check ContinuousLinearMap.norm_apply_le
+#check ContinuousLinearMap.opNorm_le_bound

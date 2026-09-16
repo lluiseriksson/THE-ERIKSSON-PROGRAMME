@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP89Eq249NearestCompleteHolderNormalizedBound
+
+#print axioms YangMills.RG.norm_cmp89Eq249NormalizedCompleteHolderIntegral_le_nearestSignedL1

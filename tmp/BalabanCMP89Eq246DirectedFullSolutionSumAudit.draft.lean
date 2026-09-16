@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89Eq246DirectedFullSolutionSum
+
+#print axioms YangMills.RG.cmp89Eq246DirectedFullSolutionSum
+#print axioms YangMills.RG.cmp89Eq246DirectedFullSolutionSumBound
+#print axioms YangMills.RG.norm_cmp89Eq246DirectedFullSolutionSum_signedContour_le

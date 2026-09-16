@@ -1,0 +1,6 @@
+/- STATIC DRAFT ONLY -- NOT COMPILER-VERIFIED. -/
+
+import YangMills.RG.BalabanCMP89Eq249FineLatticeLeftDerivativeMassUniformHolomorphy
+
+#print axioms YangMills.RG.differentiableAt_cmp89Eq249FineLatticeStabilizedFourierLeftDerivativeKernelIntegrand_massUniform_draft
+#print axioms YangMills.RG.cmp89Eq249FineLatticeStabilizedFourierLeftDerivativeKernelIntegrand_boundarySeam_massUniform_draft

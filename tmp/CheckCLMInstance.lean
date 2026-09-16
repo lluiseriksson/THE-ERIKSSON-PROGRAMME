@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCSecondFieldDerivative
+#check ContinuousLinearMap.toNormedAddCommGroup
+#check ContinuousLinearMap.toNormedSpace
+#check ContinuousLinearMap.instNorm
+#check ContinuousLinearMap.hasOpNorm
+#print ContinuousLinearMap.toNormedAddCommGroup

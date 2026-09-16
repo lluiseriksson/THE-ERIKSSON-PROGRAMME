@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedSourceFlowFlatPhysicalSourceOwnerBound
+
+#print axioms YangMills.RG.norm_cmp99SourceSeparatedSourceFlowFlatPhysicalGreenQprimeStar_pointSource_apply_siteEquiv_le_sourceOwner

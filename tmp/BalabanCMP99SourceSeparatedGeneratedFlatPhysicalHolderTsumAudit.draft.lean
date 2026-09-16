@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceSeparatedGeneratedFlatPhysicalHolderTsum
+
+#print axioms YangMills.RG.tsum_cmp99SourceSeparatedGeneratedFlatPhysicalDerivative_shift_eq_forward_draft
+#print axioms YangMills.RG.tsum_cmp89Eq249PhysicalHolderIntegral_eq_xiRpowInv_mul_derivativeDiff_draft

@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP102Eq80MinimizerTelescoping
+#check ContinuousLinearMap.apply
+#check ContinuousLinearMap.apply_apply
+#check Continuous.tendsto
+#check Filter.Tendsto.inner
+#check Filter.Tendsto.clm_apply
+#check HasSum.tendsto_sum_nat
+#check Summable.hasSum
+#check summable_iff_tendsto_nat

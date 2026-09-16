@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalPointSourceReduction
+
+/-! PRE-VALIDATION axiom audit for the physical point-source reduction. -/
+
+#print axioms YangMills.RG.cmp89SourceFlatGeneratedFiniteDepthCanonicalNeumannPhysicalRightInverse_iff_pointSources

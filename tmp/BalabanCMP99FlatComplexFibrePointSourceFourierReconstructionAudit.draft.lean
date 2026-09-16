@@ -1,0 +1,9 @@
+-- Promotion import:
+-- import YangMills.RG.BalabanCMP99FlatComplexFibrePointSourceFourierReconstruction
+
+-- PRE-VALIDATION SCRATCH: intended axiom surface for Step 8b.24/post-S4 C1a.
+
+#print axioms YangMills.RG.cmp99FlatComplexFibrePointSource
+#print axioms YangMills.RG.sum_cmp99FlatFourierMode_mul_inv
+#print axioms YangMills.RG.cmp99FlatComplexFibrePointSource_eq_normalized_sum_fourierMode
+#print axioms YangMills.RG.ContinuousLinearMap_apply_cmp99FlatComplexFibrePointSource_eq
