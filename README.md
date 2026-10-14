@@ -64,7 +64,11 @@ pinned in `lake-manifest.json` (Mathlib itself is not recompiled), runs
 `oracle_check.lean` to depend on nothing beyond
 `[propext, Classical.choice, Quot.sound]`. The
 **source-scan** badge reports textual checks only (no `sorry`, no project
-axioms). Mathematical verification is scoped to the exact source and
+axioms). The recorded core build is **8466 jobs**: the cold CI run
+[38559635653](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/38559635653)
+on source checkpoint `02fae0ad`, with 2854/2854 oracle readouts clean (ledger
+Addendum CI-20261014; canonical record [`project-state.json`](project-state.json)).
+Mathematical verification is scoped to the exact source and
 build/oracle evidence. Hard open inputs remain theorem hypotheses; the core
 does not silently assume them as project axioms.
 
@@ -271,7 +275,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8463 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8466 jobs in CI, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]

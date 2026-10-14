@@ -1,5 +1,14 @@
 # Current State
 
+> **CI build of record · 2026-10-14:** `lake build YangMillsCore` now runs on
+> GitHub-hosted runners ([`lean-build.yml`](.github/workflows/lean-build.yml)).
+> The cold run [38559635653](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/38559635653)
+> on source checkpoint `02fae0ad` completed with **8466 jobs**, and all 2854
+> `oracle_check.lean` readouts depend on nothing beyond
+> `[propext, Classical.choice, Quot.sound]` (26 axiom-free). This is the one
+> recorded core build count, the same as in [`project-state.json`](project-state.json)
+> and the README; the counts in the dated entries below are historical.
+
 > **Independent R2 update · 2026-09-06:** the finite physical Wilson cylinder
 > geometry and normalized Gibbs measure are checked, with 39 focal oracles,
 > an unchanged 8466-job core and 2854 global reports validated from saved logs.
@@ -489,10 +498,15 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
-  verification checkpoint.
+* `lake build YangMillsCore` is green at **8466 jobs**: the recorded count in
+  [`project-state.json`](project-state.json), produced by CI run
+  [38559635653](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/38559635653)
+  on source checkpoint `02fae0ad` (Mathlib from its prebuilt cache; every
+  project module compiled cold).
 * `lake env lean oracle_check.lean` prints only
-  `[propext, Classical.choice, Quot.sound]` for every headline theorem.
+  `[propext, Classical.choice, Quot.sound]` (or no axioms) for every headline
+  theorem: 2854/2854 readouts in that run, checked by
+  `scripts/check_oracle_output.py`.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
   and zero `axiom` declarations in the verified-core source tree.
 * Lean is fixed by `lean-toolchain`; Mathlib is pinned to commit
