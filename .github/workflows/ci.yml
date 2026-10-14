@@ -2,14 +2,13 @@ name: CI – Epistemic Honesty Enforcement
 
 # HONEST SCOPE STATEMENT
 # ----------------------
-# A full `lake build YangMillsCore` (Lean 4 + pinned Mathlib) exceeds the
-# GitHub Actions free tier, so CI does NOT compile Lean. The compiler
-# verification (latest recorded build green, 8410 jobs, axiom oracle
-# [propext, Classical.choice, Quot.sound] on every headline) is performed
-# locally at every checkpoint and recorded VERBATIM in
-# docs/VERIFICATION-LEDGER.md — which is the authoritative record.
+# This job is a TEXTUAL scan and compiles no Lean.  Compilation is done by
+# .github/workflows/lean-build.yml (`lake build YangMillsCore` against the
+# pinned toolchain and Mathlib cache, plus the `oracle_check.lean` axiom
+# oracle); its recorded job count lives in project-state.json, and dated
+# build/oracle records are in docs/VERIFICATION-LEDGER.md.
 #
-# What CI does enforce, on every push and PR:
+# What this job enforces, on every push and PR:
 #   1. zero `sorry` in the proof tree (comment-aware Python scanner);
 #   2. zero `axiom` declarations inside the verified-core source tree
 #      (including the clean `YangMills/RG` layer).

@@ -96,7 +96,7 @@
       "label": "SU(N) unconditional lattice mass gap",
       "display": "CONDITIONAL",
       "status": "partial",
-      "note": "IR side and assembly are theorem-fed; Catalan/Schur budgets, KP activity-domain control, and the unitary diamagnetic bridge advanced; the concrete UV activity producer remains open."
+      "note": "The assembly is a decay lemma about real correlator sequences, not a spectral gap; IR-shaped bounds are proved at strong coupling; Catalan/Schur budgets, KP activity-domain control, and the unitary diamagnetic bridge advanced; the concrete UV activity producer remains open."
     },
     {
       "id": "M4",
@@ -584,7 +584,7 @@
       "group": "gas",
       "col": 6,
       "row": 4,
-      "note": "Theorem-fed lattice Gibbs exponential clustering; the IR input to the mass-gap assembly is no longer carried.",
+      "note": "Theorem-fed lattice Gibbs exponential clustering at strong coupling, in the exponential shape the M3 decay assembly consumes (the assembly lemma takes the IR sequence as a free input).",
       "links": [
         {
           "label": "ExponentialClustering.lean",

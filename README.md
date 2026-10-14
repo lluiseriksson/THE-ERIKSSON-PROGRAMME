@@ -6,6 +6,7 @@
 **Machine-checked lattice gauge theory, with an active hRpoly research programme.**
 
 [![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)](lean-toolchain)
+[![Lean build](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/lean-build.yml/badge.svg?branch=main)](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/lean-build.yml)
 [![Source scan](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-AGPL--3.0-lightgrey)](LICENSE)
 
@@ -55,8 +56,15 @@ new documentation date nor a branch build count updates that contract.
 - **Checking a claim:** its exact source revision, [verification ledger](docs/VERIFICATION-LEDGER.md), and [reproduction instructions](REPRODUCIBILITY.md).
 - **Looking to help:** [contribution guide](CONTRIBUTING.md) and [documentation index](docs/README.md).
 
-The source-scan badge reports the repository's textual checks, not a Lean
-compilation. Mathematical verification is scoped to the exact source and
+The **Lean build** badge is a compilation: on every push and pull request to
+`main`, [`lean-build.yml`](.github/workflows/lean-build.yml) installs the
+toolchain from `lean-toolchain`, fetches Mathlib's prebuilt cache for the commit
+pinned in `lake-manifest.json` (Mathlib itself is not recompiled), runs
+`lake build YangMillsCore`, and requires every `#print axioms` readout of
+`oracle_check.lean` to depend on nothing beyond
+`[propext, Classical.choice, Quot.sound]`. The
+**source-scan** badge reports textual checks only (no `sorry`, no project
+axioms). Mathematical verification is scoped to the exact source and
 build/oracle evidence. Hard open inputs remain theorem hypotheses; the core
 does not silently assume them as project axioms.
 
@@ -145,22 +153,39 @@ Kotecký–Preiss bound. The SU(N)-specific form is
 `sun_two_plaquette_correlator_bound` ([`TwoPlaquetteCorrelator.lean`](YangMills/L1_GibbsMeasure/TwoPlaquetteCorrelator.lean)),
 proved **without Peter–Weyl**.
 
-### 3. The conditional lattice mass gap (M3 assembly)
+### 3. The M3 assembly lemma (a decay bound, not a spectral gap)
 
 `theorem lattice_mass_gap_of_exp_clustering_uniform`
-([`Paper/ClusteringToGap.lean`](YangMills/Paper/ClusteringToGap.lean)) assembles
-the lattice mass gap from (i) an IR clustering bound — **now theorem-fed** by
-result 2 — and (ii) the §6.3 Balaban single-scale UV bound, which is the
-**sole remaining carried hypothesis** of the whole assembly. It is a named
-hypothesis of a theorem, never an axiom. See
+([`Paper/ClusteringToGap.lean`](YangMills/Paper/ClusteringToGap.lean)) is,
+despite its name, an elementary lemma about **two real sequences**: if
+|covIR k| ≤ C₁·e<sup>−εk</sup> and |covUV t| ≤ C₂·e<sup>−c₀t</sup> for all k, t,
+then |covIR t + covUV t| ≤ (C₁+C₂)·e<sup>−gap·t</sup> for one gap > 0
+(gap = min(ε, c₀)). `covIR` and `covUV` are arbitrary `ℕ → ℝ` sequences. The
+statement mentions no gauge group, Gibbs measure, Hamiltonian or transfer
+matrix, and its conclusion is **not** a spectral gap of any SU(N) operator.
+"Lattice mass gap" names the role the lemma plays in the planned M3 assembly
+(exponential decay of a correlator, the lattice signature a gap would leave),
+not what it proves.
+
+Its IR hypothesis has the same exponential shape as result 2, but the lemma
+does not itself consume `gibbs_truncated_correlation_bound`. The link to the
+actual SU(N) Wilson measure is made separately in
+[`RG/CorrelatorBridge.lean`](YangMills/RG/CorrelatorBridge.lean):
+`wilson_correlator_mass_gap_strong_coupling` pushes the Wilson ray correlator
+through the assembly in a strong-coupling window, via a trivial bridge that
+carries no UV content. That is again exponential decay of a correlator at
+strong coupling, not a transfer-matrix or Hamiltonian gap. The UV input
+(`hUV`, the §6.3 Balaban single-scale bound) is a **carried hypothesis**: a
+named hypothesis of a theorem, never an axiom. See
 [`HYPOTHESIS_FRONTIER.md`](HYPOTHESIS_FRONTIER.md).
 
 `theorem lattice_mass_gap_of_per_scale_uv` (same file, ledger Addendum 19)
 sharpens that carried hypothesis to the renormalization-group level: the UV
 covariance is the finite sum of per-scale RG remainders, and a **single
 geometric per-scale contraction** |R<sub>t,k</sub>| ≤ (C₂·e<sup>−c₀t</sup>)·rᵏ —
-exactly the form Balaban's Lemma 6.2 supplies — already yields the mass gap, via
-the proved §6.3 summation mechanism (`uv_geometric_summation`).
+exactly the form Balaban's Lemma 6.2 supplies — already yields the same
+real-sequence decay bound, via the proved §6.3 summation mechanism
+(`uv_geometric_summation`).
 
 The gauge-RG branch then refines the UV obligation into a source-grounded,
 oracle-clean conditional. `lattice_mass_gap_of_cluster_and_coupling`
@@ -211,6 +236,10 @@ above, thirty-plus addenda — is [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICAT
   These are the Clay problem's actual content and they are open mathematics.
   Distance to the Clay prize: **~0% (<0.1%)** — and every status document in
   this repo is required to say so.
+* **No transfer-matrix or Hamiltonian spectral gap for SU(N), not even on the
+  lattice.** The `lattice_mass_gap_*` theorems conclude exponential decay of
+  real correlator sequences (see result 3); identifying such decay with a
+  spectral gap is not formalized.
 * **The §6.3 Balaban UV single-scale bound is a carried hypothesis** of the M3
   assembly (deliberately: it is real mathematics that we have not formalized,
   so it appears as a theorem hypothesis, not an axiom).
@@ -248,7 +277,7 @@ graph TD
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
         SCHUR["ClayCore / Schur*<br/>SU(N) Haar selection rules,<br/>Z_N grading, entry monomials"]
         WLM["ClayCore / WilsonLoopMonomial<br/>the join + AREA LAWS"]
-        PAPER["Paper layer<br/>clustering → mass gap assembly<br/>(UV bound = carried hypothesis)"]
+        PAPER["Paper layer<br/>clustering → correlator-decay assembly<br/>(real-sequence lemma; UV bound carried)"]
         P8["P8_PhysicalGap<br/>SU(N) compactness, Haar states,<br/>L log L envelope"]
     end
     L0 --> L1 --> KP

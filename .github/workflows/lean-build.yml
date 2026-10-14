@@ -1,0 +1,169 @@
+name: Lean – YangMillsCore build + axiom oracle
+
+# HONEST SCOPE STATEMENT
+# ----------------------
+# This workflow compiles the verified core on a GitHub-hosted runner, so
+# "the core builds green" no longer rests on the author's ledger alone.
+#
+#   1. Lean is the exact toolchain named in `lean-toolchain` (installed by
+#      elan); Mathlib and its dependencies are the commits pinned in
+#      `lake-manifest.json`.
+#   2. `lake exe cache get` downloads Mathlib's prebuilt .olean files for that
+#      pinned commit. Mathlib itself is therefore NOT recompiled here: it is
+#      trusted as upstream Mathlib's own CI build.  Every project module
+#      reachable from `YangMillsCore` IS compiled (or replayed from this
+#      workflow's own `.lake` cache, which Lake re-checks against source hashes;
+#      dispatch with `cold_build: true` to compile without that cache).
+#   3. `lake build YangMillsCore` must succeed.  The job count Lake prints is
+#      the recorded core build count: it is written to the run summary and
+#      compared with `project-state.json` (a mismatch is reported as a warning,
+#      meaning the recorded count is stale and must be re-recorded from a run).
+#   4. The remaining modules imported by `oracle_check.lean` are built, then
+#      `lake env lean oracle_check.lean` runs and
+#      `scripts/check_oracle_output.py` requires one readout per
+#      `#print axioms`, each depending only on
+#      [propext, Classical.choice, Quot.sound] (or on no axioms).
+#
+# Pull requests build the PR head commit itself (not GitHub's synthetic merge
+# ref), so every green run attests a commit that exists in history; the push
+# run on `main` attests the merged commit.  Build log and oracle output are
+# uploaded as run artifacts.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      cold_build:
+        description: "Ignore the .lake cache and compile every project module from scratch"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  core:
+    name: lake build YangMillsCore + oracle
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Free runner disk space
+        # Mathlib's cache plus the project build need well over the default
+        # free space; drop preinstalled SDKs this job never uses.
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+          df -h /
+
+      - name: Install elan and the pinned Lean toolchain
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          lean --version
+          lake --version
+
+      - name: Compute .lake cache key
+        id: key
+        env:
+          DEPS: ${{ hashFiles('lean-toolchain', 'lake-manifest.json', 'lakefile.lean') }}
+          SOURCES: ${{ hashFiles('**/*.lean') }}
+        run: |
+          echo "deps=lake-${RUNNER_OS}-${DEPS}-" >> "$GITHUB_OUTPUT"
+          echo "key=lake-${RUNNER_OS}-${DEPS}-${SOURCES}" >> "$GITHUB_OUTPUT"
+
+      - name: Restore .lake
+        id: cache
+        if: ${{ !inputs.cold_build }}
+        uses: actions/cache/restore@v4
+        with:
+          path: .lake
+          key: ${{ steps.key.outputs.key }}
+          restore-keys: ${{ steps.key.outputs.deps }}
+
+      - name: lake exe cache get (prebuilt Mathlib for the pinned commit)
+        run: lake exe cache get
+
+      - name: lake build YangMillsCore
+        id: core
+        run: |
+          set -o pipefail
+          lake build YangMillsCore 2>&1 | tee "$RUNNER_TEMP/core-build.log"
+          jobs=$(grep -oE 'Build completed successfully \([0-9]+ jobs\)' "$RUNNER_TEMP/core-build.log" \
+                 | tail -n 1 | grep -oE '[0-9]+')
+          if [ -z "$jobs" ]; then
+            echo "::error::lake build exited 0 but printed no 'Build completed successfully (N jobs)' line"
+            exit 1
+          fi
+          echo "jobs=$jobs" >> "$GITHUB_OUTPUT"
+
+      - name: Save .lake
+        if: ${{ always() && steps.cache.outputs.cache-hit != 'true' && steps.key.outcome == 'success' }}
+        uses: actions/cache/save@v4
+        with:
+          path: .lake
+          key: ${{ steps.key.outputs.key }}
+
+      - name: Build the other modules imported by oracle_check.lean
+        run: |
+          set -o pipefail
+          mods=$(sed -nE 's/^import[[:space:]]+([^[:space:]]+).*/\1/p' oracle_check.lean | grep -vx YangMillsCore || true)
+          echo "$mods"
+          if [ -n "$mods" ]; then
+            lake build $mods 2>&1 | tee "$RUNNER_TEMP/oracle-imports-build.log"
+          fi
+
+      - name: lake env lean oracle_check.lean
+        run: |
+          set -o pipefail
+          lake env lean oracle_check.lean 2>&1 | tee "$RUNNER_TEMP/oracle-output.txt" | tail -n 5
+          python3 scripts/check_oracle_output.py \
+            --output "$RUNNER_TEMP/oracle-output.txt" \
+            --json "$RUNNER_TEMP/oracle-stats.json"
+
+      - name: Record the build in the run summary
+        if: ${{ always() && steps.core.outputs.jobs != '' }}
+        env:
+          JOBS: ${{ steps.core.outputs.jobs }}
+        run: |
+          recorded=$(python3 -c 'import json; print(json.load(open("project-state.json"))["lean_core"]["latest_recorded_build"]["jobs"])')
+          oracle=$(cat "$RUNNER_TEMP/oracle-stats.json" 2>/dev/null || echo '{"oracle": "did not complete"}')
+          {
+            echo "### YangMillsCore build"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Commit built | \`$(git rev-parse HEAD)\` |"
+            echo "| Toolchain | \`$(cat lean-toolchain)\` |"
+            echo "| Mathlib (lake-manifest.json) | \`$(python3 -c 'import json; print(next(p["rev"] for p in json.load(open("lake-manifest.json"))["packages"] if p["name"] == "mathlib"))')\` |"
+            echo "| .lake cache | ${{ steps.cache.outputs.cache-hit == 'true' && 'exact hit' || (steps.cache.outputs.cache-matched-key != '' && 'partial (restore key)' || 'none (cold)') }} |"
+            echo "| \`lake build YangMillsCore\` | **Build completed successfully ($JOBS jobs)** |"
+            echo "| \`project-state.json\` recorded jobs | $recorded |"
+            echo "| Oracle | \`$oracle\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$recorded" != "$JOBS" ]; then
+            echo "::warning title=Recorded core build count is stale::CI built YangMillsCore in $JOBS jobs; project-state.json records $recorded. Re-record the count from this run."
+          fi
+
+      - name: Upload build log and oracle output
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-core-evidence-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/core-build.log
+            ${{ runner.temp }}/oracle-imports-build.log
+            ${{ runner.temp }}/oracle-output.txt
+            ${{ runner.temp }}/oracle-stats.json
+          if-no-files-found: warn

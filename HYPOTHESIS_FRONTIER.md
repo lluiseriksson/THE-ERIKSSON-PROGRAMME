@@ -44,9 +44,18 @@ the import closure of `YangMillsCore`.  Gaps are carried as explicit
 
 ## The honest frontier of the M3 (lattice) mass-gap assembly
 
+**What the assembly states (scope correction, 2026-10-14).** The assembly
+theorems (`lattice_mass_gap_of_exp_clustering_uniform` and the
+`lattice_mass_gap_*` family built on it) are lemmas about real sequences
+`covIR, covUV : ℕ → ℝ`. Their conclusion is exponential decay of
+`covIR t + covUV t`. They mention no gauge group, measure, Hamiltonian or
+transfer matrix, and prove **no spectral gap**; "mass gap" names their role.
+Two independent model reviews of `main` @ `990d228` (2026-10-14) flagged the
+earlier "theorem-fed lattice mass gap" wording.
+
 | Obligation | Status |
 |---|---|
-| **IR clustering bound** (`hIRbound`) | **THEOREM-FED.** Discharged by `gibbs_truncated_correlation_bound` / `sun_two_plaquette_correlator_bound` with explicit non-empty coupling windows. No carried hypothesis remains on the IR side. |
+| **IR clustering bound** (`hIRbound`) | **Shape-matched; in Lean, a hypothesis of the assembly lemma.** `gibbs_truncated_correlation_bound` / `sun_two_plaquette_correlator_bound` prove bounds of this exponential shape for the strong-coupling Gibbs measure, with explicit non-empty coupling windows. The assembly lemma itself quantifies over a free `covIR` and does not consume them. The Wilson-measure instantiation is `wilson_correlator_mass_gap_strong_coupling` (`RG/CorrelatorBridge.lean`), via a trivial bridge that carries no UV content. |
 | **Strong-coupling area law** (confinement, lattice) | **THEOREM, unconditional.** Finite-volume and volume-uniform, linearized and exact-activity (`finite_volume_area_law_exp`, `normalized_exp_wilson_loop_area_law`). Carries no hypothesis. |
 | **UV single-scale bound** (§6.3 Bałaban) | **CARRIED**, and now *decomposed*. The geometric-profile conditional `lattice_mass_gap_of_cluster_and_coupling` and the marginal-coupling conditional in `RG/MarginalUVMassGap.lean` are oracle-clean; coupling/summability/kernel/Gaussian scaffolding has been theorem-fed. The remaining carried input is `hRpoly`: the concrete Yang-Mills cluster-expansion-with-holes remainder activity bound for the actual gauge RG operator. It is a theorem hypothesis — never an axiom. |
 | **Continuum limit / OS–Wightman reconstruction / continuum mass gap** (M4–M5, the actual Clay problem) | **OPEN MATHEMATICS.** Not carried, not axiomatized, not claimed. **Distance to the Clay prize: ~0% (<0.1%).** |
@@ -180,8 +189,9 @@ Wilson-flow measure decomposition, `hRpoly`, the lattice mass gap, or Clay.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
-* Discharging `hRpoly` would make the **lattice** (M3) mass gap
-  unconditional through the existing conditional assembly.  `hRpoly` is the
+* Discharging `hRpoly` would make the **lattice** (M3) assembly's
+  correlator-decay conclusion unconditional.  That is still exponential decay
+  of a correlator sequence, not a transfer-matrix spectral gap.  `hRpoly` is the
   Dimock/Balaban cluster expansion with holes plus the fluctuation-integral
   estimate — genuine, **months-scale** constructive QFT with no Mathlib
   primitives.  The older geometric `hg` branch remains documented as the
