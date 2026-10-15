@@ -101,6 +101,32 @@ permits a candidate `PASS`.  Logs and sentinels must use semantic mode names,
 such as `normal` and `optimized`, rather than indistinguishable numeric
 suffixes.
 
+### Agent calls have a measured 300-second transport ceiling
+
+**Incident that paid the rule (2026-08-02):** two monolithic Fable Gate 7
+calls on the same SHA and unchanged contract were terminated by the outer MCP
+transport at approximately 300 seconds.  The second call requested a
+900-second bridge timeout, but the outer transport still returned the literal
+error `timed out awaiting tools/call after 300s`.  Neither expiration returned
+a verdict.  The exact measurements and the later terminal verdict are recorded
+in the PR #35 Gate 7 audit trail: [timeout
+measurement](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/35#issuecomment-5157227097)
+and [terminal phased
+verdict](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/35#issuecomment-5157390269).
+
+**Rule.**  No single agent or MCP call may be designed on the assumption that
+it will run for more than 300 seconds.  If the task may not fit, partition the
+execution before launching it and make every intermediate result durable so a
+transport death does not erase completed work.
+
+For a preregistered gate, every phase receives the original contract and
+criteria verbatim; only execution is partitioned, never the criteria.  Role
+separation and blindness between phases are preserved by one continuing
+auditor or by explicit fresh re-blinding.  No phase may reveal to a later blind
+phase the route it must independently discover.  A separate final synthesis
+may consume only sealed phase reports and sealed evidence.  A timeout is not
+a verdict and creates no authority to amend the gate.
+
 ### Text hashes identify a byte representation
 
 **Rule.**  Every hash of a textual artifact must name the byte representation
