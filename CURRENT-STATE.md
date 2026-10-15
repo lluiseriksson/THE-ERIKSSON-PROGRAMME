@@ -1,5 +1,14 @@
 # Current State
 
+> **CI build of record · 2026-10-14:** `lake build YangMillsCore` now runs on
+> GitHub-hosted runners ([`lean-build.yml`](.github/workflows/lean-build.yml)).
+> The cold run [38559635653](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/38559635653)
+> on source checkpoint `02fae0ad` completed with **8466 jobs**, and all 2854
+> `oracle_check.lean` readouts depend on nothing beyond
+> `[propext, Classical.choice, Quot.sound]` (26 axiom-free). This is the one
+> recorded core build count, the same as in [`project-state.json`](project-state.json)
+> and the README; the counts in the dated entries below are historical.
+
 > **Independent R2 update · 2026-09-06:** the finite physical Wilson cylinder
 > geometry and normalized Gibbs measure are checked, with 39 focal oracles,
 > an unchanged 8466-job core and 2854 global reports validated from saved logs.
@@ -51,8 +60,8 @@ recorded here.
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
-unitary bridge Addendum 466.  The latest measured source checkpoint is
-`a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
+unitary bridge Addendum 466.  At that snapshot the measured source checkpoint was
+`a17d7816` (on `main`) with a recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -476,8 +485,8 @@ the axiom oracle, and the verification ledger.
 |---|---:|---|
 | Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
 | Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
-| IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
-| Conditional M3 assembly | `CONDITIONAL` | the assembly is verified; the UV producer remains explicit |
+| IR input of the M3 assembly | `STRONG COUPLING` | bounds of the required exponential shape are proved for the Gibbs/Wilson measure at strong coupling; the assembly lemma itself takes `covIR` as a free real sequence, and its Wilson instance is the trivial-bridge `wilson_correlator_mass_gap_strong_coupling` |
+| Conditional M3 assembly | `CONDITIONAL` | the assembly is verified; it is a decay lemma about real sequences, not a spectral gap; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `PARTIAL` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
 | P4 physical-operator vertical slice | `PARTIAL` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
 | Concrete `hRpoly` discharge | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
@@ -489,10 +498,15 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
-  verification checkpoint.
+* `lake build YangMillsCore` is green at **8466 jobs**: the recorded count in
+  [`project-state.json`](project-state.json), produced by CI run
+  [38559635653](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/38559635653)
+  on source checkpoint `02fae0ad` (Mathlib from its prebuilt cache; every
+  project module compiled cold).
 * `lake env lean oracle_check.lean` prints only
-  `[propext, Classical.choice, Quot.sound]` for every headline theorem.
+  `[propext, Classical.choice, Quot.sound]` (or no axioms) for every headline
+  theorem: 2854/2854 readouts in that run, checked by
+  `scripts/check_oracle_output.py`.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
   and zero `axiom` declarations in the verified-core source tree.
 * Lean is fixed by `lean-toolchain`; Mathlib is pinned to commit
@@ -529,7 +543,9 @@ The strong-coupling lattice side is now extensive and oracle-clean:
   holomorphic and mixed finite products of positively oriented Wilson loops
   with non-trivial total centre charge, including the corresponding connected
   holomorphic and mixed finite-product covariances;
-* the lattice mass-gap assembly with the IR side theorem-fed;
+* the M3 correlator-decay assembly (`lattice_mass_gap_of_exp_clustering_uniform`:
+  a lemma about two real sequences, not a transfer-matrix or Hamiltonian gap),
+  with IR-shaped bounds proved for the Wilson measure at strong coupling;
 * the regulator-gap quantifier infrastructure now gives the exact criterion
   for promoting stagewise positive gaps to one regulator-uniform positive gap:
   the chosen stagewise lower bounds must have a positive regulator-independent

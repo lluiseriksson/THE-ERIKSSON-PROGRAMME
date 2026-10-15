@@ -119,13 +119,19 @@ theorem lattice_mass_gap_of_clustering_uniform
   exact Paper.mass_gap_bound (covIR t + covUV t) (covIR t) (covUV t) C1 C2 mstar c0 (t : ℝ)
     (Nat.cast_nonneg t) rfl (hIR t) (hUV t)
 
-/-- **Strong-coupling lattice mass gap — exponential-IR form.**  The
-adapter consuming the IR bound in the exact shape produced by the
-cluster-correlation campaign (`gibbs_truncated_correlation_bound`:
-`|covIR k| ≤ C₁·e^{−ε·k}`): with `r := e^{−ε}` this is the geometric
-hypothesis of `lattice_mass_gap_of_clustering_uniform`.  The IR side
-of the lattice mass gap is hereby fed by a THEOREM; only the UV side
-remains hypothesis-carried (the §6.3 single-scale Balaban input). -/
+/-- **M3 assembly, exponential-IR form — a lemma about two real sequences.**
+If `|covIR k| ≤ C₁·e^{−ε·k}` and `|covUV t| ≤ C₂·e^{−c₀·t}`, then
+`|covIR t + covUV t| ≤ (C₁ + C₂)·e^{−gap·t}` for one `gap > 0`; with
+`r := e^{−ε}` this reduces to `lattice_mass_gap_of_clustering_uniform`.
+
+SCOPE.  `covIR` and `covUV` are arbitrary `ℕ → ℝ` sequences: nothing here
+mentions a gauge group, Gibbs measure, Hamiltonian or transfer matrix, and
+the conclusion is not a spectral gap.  "Lattice mass gap" names the role in
+the M3 assembly (exponential decay of a correlator).  The IR hypothesis has
+the shape of `gibbs_truncated_correlation_bound`'s conclusion, but this lemma
+does not consume that theorem; the Wilson-measure link is made separately in
+`YangMills/RG/CorrelatorBridge.lean`.  `hUV` (the §6.3 single-scale Balaban
+input) is carried as a hypothesis. -/
 theorem lattice_mass_gap_of_exp_clustering_uniform
     (covIR covUV : ℕ → ℝ) (C1 C2 ε c0 : ℝ)
     (hε : 0 < ε) (hc0 : 0 < c0)

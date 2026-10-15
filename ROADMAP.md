@@ -2,12 +2,14 @@
 
 > **STATUS STAMP (updated 2026-07-04; source checkpoint 2026-07-04).**
 > Core green at **8412 jobs**
-> in the latest recorded verification-ledger checkpoint, Mathlib pinned (see
+> in the verification-ledger checkpoint of that date (the current recorded CI
+> count is in [`project-state.json`](project-state.json)), Mathlib pinned (see
 > `REPRODUCIBILITY.md`).  Since this roadmap was first
 > written (2026-06-09) several tracks closed: the area-law track (all four
 > variants — finite-volume/volume-uniform × linearized/exact-activity,
-> ledger Addenda 12–18d); the IR clustering bound (theorem-fed, M3 IR side
-> done); and the **gauge-RG continuum-facing track** (`YangMills/RG/**`,
+> ledger Addenda 12–18d); the IR clustering bound (proved at strong coupling in the
+> exponential shape the M3 assembly consumes; the assembly itself is a
+> real-sequence decay lemma, not a spectral gap); and the **gauge-RG continuum-facing track** (`YangMills/RG/**`,
 > ledger Addenda 23–444, date-stamped checkpoints, the 2026-07-03
 > Catalan/Schur series through Addendum 465, and the 2026-07-04 diamagnetic
 > unitary bridge Addendum 466; latest measured source checkpoint
@@ -86,7 +88,7 @@ orientation, not a replacement for the proof ledger.
 | Target | Bar | Meaning |
 |---|---:|---|
 | Infrastructure useful toward M3/Clay | `PARTIAL` | much of the lattice/RG scaffolding exists; Clay's continuum core does not |
-| Unconditional M3 lattice mass gap | `OPEN` | IR, assembly, Catalan/Schur budget, KP activity-domain, and finite unitary-diamagnetic lanes are theorem-fed; `hRpoly` remains open |
+| Unconditional M3 lattice mass gap | `OPEN` | the assembly is a real-sequence decay lemma, not a spectral gap; IR-shaped bounds (strong coupling), assembly, Catalan/Schur budget, KP activity-domain, and finite unitary-diamagnetic lanes are theorem-fed; `hRpoly` remains open |
 | Appendix-F/H# source-to-UV interface | `PARTIAL` | strong consumers, source-only UV endpoints, canonical-root K# and residual H# routes, certified-tail profiles, root-piece activity consumers, Lemma 3/Eq. (2.31)/post-P source packages, source-db blockers, oracle-covered hole-target geometry/family targets, frontier graph, finite-locality wrappers, source-assumption packaging, and dependency wrappers; missing source theorem |
 | P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, physical/CMP116 dictionaries, root transport, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, source-normalized Gaussian records, local-SPD root frontier, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and activity consumers; physical Hessian/covariance/activity decay not constructed |
 | Formal roadmap toward full Clay | `PARTIAL` | dependency map is explicit; continuum nodes remain unsolved mathematics |

@@ -29533,3 +29533,53 @@ all five failed focal diagnostics and the failed gate-6 wrapper separately, with
 and runtime records. Their source bytes do not certify the repaired source.
 The historical Clay label **~0% (<0.1%)** remains a convention rather than
 a measured completion fraction.
+
+## Addendum CI-20261014 — first GitHub-hosted core build and oracle
+
+**Why.** Two independent model reviews of `main` @ `990d228` (2026-10-14)
+noted that the CI badge ran only textual checks, so "the core builds green"
+rested on this ledger alone, and that the recorded core job count disagreed
+across documents (8369 in `project-state.json`; 8410, 8412, 8463 and 8466
+elsewhere).
+
+**What ran.** Workflow `.github/workflows/lean-build.yml`, run
+[38559635653](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/actions/runs/38559635653)
+(PR #83, `ubuntu-latest`), on the PR head commit
+`02fae0add25d05a3a10d1c5e8ec515320843172d` itself. Its Lean sources differ from
+`990d228` only by a docstring in `YangMills/Paper/ClusteringToGap.lean`. Lean
+`v4.29.0-rc6` from `lean-toolchain`; Mathlib
+`07642720480157414db592fa85b626dafb71355b` from `lake-manifest.json`, with
+Mathlib's prebuilt `.olean` files fetched by `lake exe cache get` (Mathlib is
+not recompiled; it is trusted as upstream's build). The `.lake` cache was
+empty ("Cache not found"), so every project module was compiled in this run.
+Total wall time: about 42 minutes.
+
+**Observed.**
+
+```text
+lake build YangMillsCore                        -> Build completed successfully (8466 jobs).
+lake build <other oracle_check.lean imports>    -> Build completed successfully (8313 jobs).
+lake env lean oracle_check.lean + scripts/check_oracle_output.py
+  -> 2854/2854 readouts in order; 2828 on [propext, Classical.choice, Quot.sound]
+     or a subset, 26 axiom-free, 0 non-standard; 6 #check outputs; exit 0
+```
+
+The oracle output (`oracle-output.txt` artifact, SHA-256
+`4ef9016c2f81cda5401363f74459e78a9c9365aca1b817e49e1df3491e493839`) is
+byte-identical to the global oracle stdout recorded in Addendum R2-20260906.
+The core build log artifact has SHA-256
+`e38cb6812d0068ed1100b070b1dfd755b150f46ff8fa4f9ac0354080e8cf9670`.
+Artifacts expire with GitHub's retention policy; the hashes above remain.
+
+**Recorded state.** `project-state.json` now records `source_checkpoint`
+`02fae0ad` with `jobs: 8466`, and README and CURRENT-STATE quote that count.
+Earlier counts in dated entries are historical. From now on, the recorded
+count is the one a `lean-build.yml` run prints; a mismatch is flagged as a
+warning in the run.
+
+**Wording correction in the same PR.** `lattice_mass_gap_of_exp_clustering_uniform`
+is a lemma about two real sequences (exponential decay of `covIR t + covUV t`).
+It proves no SU(N), Hamiltonian or transfer-matrix gap, and its IR hypothesis
+is shape-matched to, not discharged by, `gibbs_truncated_correlation_bound`
+(see README result 3 and `HYPOTHESIS_FRONTIER.md`). No Lean statement changed.
+The historical Clay label **~0% (<0.1%)** is unchanged.

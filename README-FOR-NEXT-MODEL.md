@@ -37,8 +37,9 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 ## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
-handoff below.  The latest verification-ledger checkpoint records the verified
-merged core green at **8463 jobs**, with Mathlib pinned and every headline oracle-clean
+handoff below.  At that snapshot the verification ledger recorded the verified
+merged core green at **8463 jobs** (the current recorded count is the CI count in
+[`project-state.json`](project-state.json)), with Mathlib pinned and every headline oracle-clean
 at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
 Addendum 444/date-stamped checkpoint material plus the 2026-07-03
 Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
@@ -171,7 +172,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6
 lake exe cache get          # fetch prebuilt Mathlib oleans — do NOT build Mathlib from source
-lake build YangMillsCore    # 8463 jobs at the latest merged checkpoint; fast with warm cache
+lake build YangMillsCore    # job count recorded in project-state.json (CI: lean-build.yml)
 ```
 
 ---
@@ -371,9 +372,13 @@ lemma. Full details + Lean signatures in `docs/HANDOFF-KP.md` and `HORIZON.md`.
   non-vacuity witnesses `clustering_window_nonempty` /
   `sun_clustering_window_nonempty` (explicit `β₀ > 0` windows).
   Also: `lattice_mass_gap_of_exp_clustering_uniform` — the M3
-  assembly's IR hypothesis is THEOREM-FED; the §6.3 UV single-scale
-  bound is the SOLE remaining carried hypothesis (Balaban, by
-  design).  `docs/VERIFICATION-LEDGER.md` addenda 8–10 (seventeen
+  assembly, a lemma about two real sequences (exponential decay of
+  `covIR t + covUV t`; no spectral gap is stated).  Its IR hypothesis
+  has the shape these clustering theorems prove, but the lemma takes
+  `covIR` as a free sequence; the Wilson instance is
+  `wilson_correlator_mass_gap_strong_coupling` (strong coupling,
+  trivial bridge).  The §6.3 UV single-scale bound is carried
+  (Balaban, by design).  `docs/VERIFICATION-LEDGER.md` addenda 8–10 (seventeen
   oracle lines); `HYPOTHESIS_FRONTIER.md` current-state addendum.
 - **GAUGE-RG CONTINUUM TRACK (`docs/BALABAN-RG-PLAN.md`) — local
   averaging-operator theory COMPLETE (2026-06-12, ledger Add. 23–41,

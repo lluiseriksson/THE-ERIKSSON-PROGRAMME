@@ -65,6 +65,33 @@ line:
 Build completed successfully (8463 jobs).
 ```
 
+## Continuous integration (compilation on GitHub-hosted runners)
+
+Since 2026-10-14, [`.github/workflows/lean-build.yml`](.github/workflows/lean-build.yml)
+repeats the rebuild above on every push and pull request to `main` (and on
+manual dispatch):
+
+1. elan installs the toolchain named in `lean-toolchain`;
+2. `lake exe cache get` fetches Mathlib's prebuilt `.olean` files for the commit
+   pinned in `lake-manifest.json`, so Mathlib is **not** recompiled (it is
+   trusted as upstream Mathlib's own build);
+3. `lake build YangMillsCore` compiles every project module in the core's import
+   closure. The `Build completed successfully (N jobs)` count is written to the
+   run summary and compared with `project-state.json`;
+4. the other modules imported by `oracle_check.lean` are built, then
+   `lake env lean oracle_check.lean` runs, and
+   [`scripts/check_oracle_output.py`](scripts/check_oracle_output.py) requires
+   one readout per `#print axioms`, in order, each depending on nothing beyond
+   `[propext, Classical.choice, Quot.sound]`.
+
+The workflow caches `.lake` between runs. Lake re-checks every cached module
+against its source hash, and `workflow_dispatch` with `cold_build: true`
+compiles the project modules without that cache. Pull requests build the PR
+head commit itself, and the push run on `main` builds the merged commit. Each
+run uploads its build log and oracle output as an artifact. The recorded core
+build count in `project-state.json` is the count printed by such a run; the
+run is cited in the ledger.
+
 ## Committed oracle transcripts
 
 Full raw oracle outputs for recent checkpoints are committed under

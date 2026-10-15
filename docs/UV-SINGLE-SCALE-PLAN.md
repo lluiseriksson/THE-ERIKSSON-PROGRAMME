@@ -17,9 +17,10 @@ status above is authoritative.
 The lattice mass gap is assembled by `lattice_mass_gap_of_exp_clustering_uniform`
 (`YangMills/Paper/ClusteringToGap.lean`) from two inputs:
 
-* the **IR** bound `∀ k, |covIR k| ≤ C₁·e^{−ε·k}` — **THEOREM-FED** by
+* the **IR** bound `∀ k, |covIR k| ≤ C₁·e^{−ε·k}` — a hypothesis of the
+  lemma on a free sequence `covIR`; bounds of this shape are proved by
   `gibbs_truncated_correlation_bound` (the B4 cluster-correlation
-  campaign);
+  campaign) at strong coupling;
 * the **UV** bound `hUV : ∀ t, |covUV t| ≤ C₂·e^{−c₀·t}` — **CARRIED**.
 
 `covUV t` is the ultraviolet (short-distance / high-RG-scale) part of
@@ -144,7 +145,7 @@ core-clean, so it cannot feed the core assembly as-is.
 | U1 | **Small-field per-scale bound:** on the small-field region the RG step is a contraction; `|R_k^{sf}| ≤ M_sf·r^k` from the analytic stability of the Gaussian-dominated step (reuse `SmallFieldBound` content, rebuilt clean). | campaign |
 | U2 | **Large-field suppression:** the large-field region carries `e^{−c·(field)²}` suppression beating its entropy; `|R_k^{lf}| ≤ M_lf·r^k` (the P80/P81 content — the genuine analytic core, currently carried as named hypotheses even in the excluded tree). | campaign (hardest) |
 | U3 | **Per-scale assembly** `|R_k| ≤ M·r^k` from U1+U2 (large/small split), then `uv_geometric_summation` ⟹ `hUV`. | 1 session |
-| U4 | **Feed the assembly:** instantiate `lattice_mass_gap_of_exp_clustering_uniform` with the now-theorem `hUV` ⟹ the **unconditional lattice mass gap** (M3), no carried hypotheses. | 1 session |
+| U4 | **Feed the assembly:** instantiate `lattice_mass_gap_of_exp_clustering_uniform` with the now-theorem `hUV` ⟹ the M3 correlator-decay bound with no carried UV hypothesis (still a real-sequence decay statement, not a spectral gap). | 1 session |
 
 ## 5. Honest difficulty + scope statement
 
