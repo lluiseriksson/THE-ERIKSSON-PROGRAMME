@@ -1,0 +1,12 @@
+{
+  "status": "EVIDENCE_VALIDATED",
+  "bundle_sha256": "bb01c7a51ce8af790ad2a6489cb8f07b1a031a4fb77d010180fae1ffa13b9f08",
+  "manifest_files": 12,
+  "source_files": 11,
+  "oracle_reports": 6,
+  "source_sha": "7b25bfb39357406cf61880e3ac0428d7d1ba3449",
+  "target_olean_sha256": "6e7a650818feefcd7f044f1db5ce3b5090da725a9c81ab72c391700929f91c5e",
+  "started_utc": "2026-10-29T14:27:27.019398+01:00",
+  "finished_utc": "2026-10-29T14:32:25.058869+01:00",
+  "historical_run006_olean_match": true
+}
