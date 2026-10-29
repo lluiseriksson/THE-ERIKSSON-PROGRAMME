@@ -1,0 +1,11 @@
+{
+  "status": "TWO_FRESH_CLONES_MATCH",
+  "source_sha": "ddd2535231a34778ee5c0cee1b4062c19ad92d64",
+  "matched": [
+    "source_sha",
+    "target_olean_sha256",
+    "oracle_log_sha256",
+    "source_manifest_sha256"
+  ],
+  "independent_scientific_review": false
+}
