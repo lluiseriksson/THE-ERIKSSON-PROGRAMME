@@ -1,0 +1,15 @@
+{
+  "status": "QUANTITATIVE_CENTERED_ENERGY_BOUND_VALIDATED",
+  "zip_sha256": "2d5c5d8d6c8afea38243e8715bba8bf2712a3ce943ab0148585a2e95a0b01fed",
+  "source_sha": "bb8bd02b75a8651dde5cac93f880d4944f15c612",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 4,
+  "target_olean_sha256": "39a4c3706ced82cf30f985cd0d5837ecf5b3e1f971a40379a293da8a122e8032",
+  "oracle_log_sha256": "1efc4976995f3f4d29318b985464333b6572dbf2249a81caa62ca9ede09d0103",
+  "source_manifest_sha256": "deaacdc9eff083b3010e8cd183138d7ddd256e98b0de13fbe316b06d5e72de35",
+  "started_utc": "2026-10-29T21:44:18.577976+01:00",
+  "finished_utc": "2026-10-29T21:47:13.158036+01:00",
+  "scope": "Quantitative centered scalar-stencil energy bound; physical cochain identification pending"
+}
