@@ -29,11 +29,15 @@ noncomputable def sunComplexPlane (hNc : 2 ≤ Nc) (z : ℂ) : SUNLieCoord Nc :=
 
 theorem sunComplexPlane_norm_sq (hNc : 2 ≤ Nc) (z : ℂ) :
     ‖sunComplexPlane hNc z‖ ^ 2 = ‖z‖ ^ 2 := by
-  rw [← real_inner_self_eq_norm_sq]
-  simp [sunComplexPlane, inner_add_left, inner_add_right,
-    EuclideanSpace.inner_single_left, EuclideanSpace.single_apply,
-    ← Complex.normSq_eq_norm_sq, Complex.normSq_apply, pow_two]
-
+  calc
+    ‖sunComplexPlane hNc z‖ ^ 2 =
+        inner ℝ (sunComplexPlane hNc z) (sunComplexPlane hNc z) :=
+      (real_inner_self_eq_norm_sq _).symm
+    _ = z.re * z.re + z.im * z.im := by
+      simp only [sunComplexPlane, inner_add_left, inner_add_right,
+        EuclideanSpace.inner_single_left]
+      simp [EuclideanSpace.single_apply]
+    _ = ‖z‖ ^ 2 := by rw [← Complex.normSq_eq_norm_sq]; rfl
 noncomputable def finBoxZModEquiv (d n : ℕ) [NeZero n] :
     FinBox d n ≃ (Fin d → ZMod n) :=
   Equiv.piCongrRight (fun _ => (ZMod.finEquiv n).toEquiv)
@@ -51,8 +55,8 @@ theorem torusPhysicalEmbed_add (hNc : 2 ≤ Nc) (j : Fin d)
       torusPhysicalEmbed hNc j f + torusPhysicalEmbed hNc j g := by
   ext e i
   by_cases h : e.2 = j
-  · simp [torusPhysicalEmbed, h, sunComplexPlane, EuclideanSpace.single_apply]
-    split_ifs <;> simp_all <;> ring
+  · simp [torusPhysicalEmbed, h, sunComplexPlane, EuclideanSpace.single_apply] <;>
+      split_ifs <;> simp_all
   · simp [torusPhysicalEmbed, h]
 
 theorem torusPhysicalEmbed_smul (hNc : 2 ≤ Nc) (j : Fin d) (r : ℝ)
@@ -60,8 +64,8 @@ theorem torusPhysicalEmbed_smul (hNc : 2 ≤ Nc) (j : Fin d) (r : ℝ)
     torusPhysicalEmbed hNc j (r • f) = r • torusPhysicalEmbed hNc j f := by
   ext e i
   by_cases h : e.2 = j
-  · simp [torusPhysicalEmbed, h, sunComplexPlane, EuclideanSpace.single_apply]
-    split_ifs <;> simp_all <;> ring
+  · simp [torusPhysicalEmbed, h, sunComplexPlane, EuclideanSpace.single_apply] <;>
+      split_ifs <;> simp_all
   · simp [torusPhysicalEmbed, h]
 
 theorem torusPhysicalEmbed_norm_sq (hNc : 2 ≤ Nc) (j : Fin d)
@@ -72,8 +76,8 @@ theorem torusPhysicalEmbed_norm_sq (hNc : 2 ≤ Nc) (j : Fin d)
   change (∑ e : FinBox d n × Fin d,
     ‖if e.2 = j then sunComplexPlane hNc (f (finBoxZModEquiv d n e.1)) else 0‖ ^ 2) = _
   rw [Fintype.sum_prod_type]
-  simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true, norm_zero, ne_eq,
-    OfNat.ofNat_ne_zero, not_false_eq_true, zero_pow, sunComplexPlane_norm_sq]
+  simp only [apply_ite, norm_zero, zero_pow (by decide : (2 : ℕ) ≠ 0),
+    sunComplexPlane_norm_sq, Finset.sum_ite_eq', Finset.mem_univ, if_true]
   exact Equiv.sum_comp (finBoxZModEquiv d n) (fun x => ‖f x‖ ^ 2)
 
 theorem torusPhysicalEmbed_injective (hNc : 2 ≤ Nc) (j : Fin d) :
