@@ -1,0 +1,15 @@
+{
+  "status": "PHYSICAL_EMBEDDING_COUNTING_NORM_VALIDATED",
+  "zip_sha256": "9b40b0c60a56b4cbc60abc3348f94a656f4189f31edebd3590af7667700b3ea4",
+  "source_sha": "ddd2535231a34778ee5c0cee1b4062c19ad92d64",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "fb9c0baeaca047763427064fa1a2da6f8593e4ac68b9e0878950bcc9fb266a29",
+  "oracle_log_sha256": "9d7446d40729b9962b4c4e969969b86e3ac8c386b66e5fe4ae52d5a9de8fdcad",
+  "source_manifest_sha256": "aed3ada20e885d883fffd87a19b1fae6cd50362b2696819d8ad7a4d5fb86ee50",
+  "started_utc": "2026-10-29T23:01:13.011393+01:00",
+  "finished_utc": "2026-10-29T23:04:03.788012+01:00",
+  "scope": "Constructed real-linear physical cochain embedding and counting norm; physical Hodge identity pending"
+}

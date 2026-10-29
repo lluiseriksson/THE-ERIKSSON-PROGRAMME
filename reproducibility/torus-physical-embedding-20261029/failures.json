@@ -1,0 +1,18 @@
+{
+  "failures": [
+    {
+      "acceptance_counted": false,
+      "run": "022",
+      "zip_sha256": "a44d00c829308ac946d6eeb88ffac7c9e18c47b7353f95ffd4786442bc544fd0",
+      "source_sha": "40b5bdab1d487b8dca7b5db5a3abec94f3279254",
+      "status": "FAIL"
+    },
+    {
+      "acceptance_counted": false,
+      "run": "023",
+      "zip_sha256": "3bd3099ebb58e2b817e23c39eaa173a44185fc0375c136be8f30882bff533e2c",
+      "source_sha": "f98cf14712ca73035855aa14fccc1dee61696450",
+      "status": "FAIL"
+    }
+  ]
+}
