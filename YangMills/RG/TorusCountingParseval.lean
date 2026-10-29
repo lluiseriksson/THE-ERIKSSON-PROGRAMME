@@ -22,7 +22,16 @@ theorem addChar_counting_gram (chi psi : AddChar G ℂ) :
       rw [AddChar.sub_apply', div_eq_mul_inv,
         Complex.inv_eq_conj (AddChar.norm_apply chi x)]
       ring
-    _ = _ := by simpa [sub_eq_zero, eq_comm] using (AddChar.sum_eq_ite (psi - chi))
+    _ = _ := by
+      have hcond : psi - chi = 0 ↔ chi = psi := by
+        constructor
+        · intro h
+          exact (sub_eq_zero.mp h).symm
+        · intro h
+          exact sub_eq_zero.mpr h.symm
+      have h := AddChar.sum_eq_ite (psi - chi)
+      rw [hcond] at h
+      exact h
 
 noncomputable def characterSynthesis (chi : I → AddChar G ℂ) (c : I → ℂ) : G → ℂ :=
   fun x => ∑ i, c i * chi i x
@@ -37,11 +46,14 @@ theorem character_synthesis_pairing (chi : I → AddChar G ℂ)
         ((starRingEnd ℂ) (c i) * b j) * ((starRingEnd ℂ) (chi i x) * chi j x) := by
       apply Finset.sum_congr rfl
       intro x hx
-      simp only [characterSynthesis, map_sum, map_mul, Finset.sum_mul, Finset.mul_sum]
+      simp only [characterSynthesis, map_sum]
+      rw [Finset.sum_mul]
       apply Finset.sum_congr rfl
       intro i hi
+      rw [Finset.mul_sum]
       apply Finset.sum_congr rfl
       intro j hj
+      rw [map_mul]
       ring
     _ = ∑ i, ∑ j, ((starRingEnd ℂ) (c i) * b j) *
         (∑ x, (starRingEnd ℂ) (chi i x) * chi j x) := by
@@ -51,7 +63,8 @@ theorem character_synthesis_pairing (chi : I → AddChar G ℂ)
       rw [Finset.sum_comm]
       simp_rw [Finset.mul_sum]
     _ = _ := by
-      simp [addChar_counting_gram, hc.eq_iff, Finset.mul_sum,
+      simp_rw [addChar_counting_gram, hc.eq_iff]
+      simp [Finset.mul_sum,
         mul_comm, mul_left_comm, mul_assoc]
 
 theorem character_synthesis_mass (chi : I → AddChar G ℂ)
