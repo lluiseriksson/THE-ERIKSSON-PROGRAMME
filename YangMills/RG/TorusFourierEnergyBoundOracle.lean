@@ -1,0 +1,6 @@
+import YangMills.RG.TorusFourierEnergyBound
+
+#print axioms YangMills.RG.stdAddChar_centered_bound
+#print axioms YangMills.RG.centeredFourier_coordinate_multiplier_bound
+#print axioms YangMills.RG.centeredFourier_multiplier_sum_sq_le
+#print axioms YangMills.RG.centeredFourier_stencilEnergy_le
