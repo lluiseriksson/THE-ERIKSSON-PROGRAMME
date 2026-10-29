@@ -163,4 +163,3 @@ No hRpoly assumption is discharged, no term source is created, and no physical
 mass gap or continuum statement follows. The canonical PR29 count remains
 20/41 with TermSource=0. Formalization and external scientific review remain
 separate tasks; this note is a complete on-paper argument only.
-
