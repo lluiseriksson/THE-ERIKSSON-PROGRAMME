@@ -1,0 +1,15 @@
+{
+  "status": "CONCRETE_FOURIER_CUBE_DIMENSION_VALIDATED",
+  "zip_sha256": "12118ffc8275d7d0269d70f33d2be9e406f1d5547d15b5a94f379d0f40cbc458",
+  "source_sha": "0e88dfe5f434123e057dd83c17801872fc2498a5",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 4,
+  "target_olean_sha256": "a2b022a15072394e6b3722f9ad692cb1370c8a160013d5f1672f13863e4d485f",
+  "oracle_log_sha256": "b53be8d889e03f2a0e96a44f2dda9c902133ea6653c0c51e7b4cde51a6afc3c8",
+  "source_manifest_sha256": "ec2e977c4337e539210caa9c68298de2c73a3ee6cfc02e20a021f729b0da3651",
+  "started_utc": "2026-10-29T17:56:58.37816+01:00",
+  "finished_utc": "2026-10-29T18:00:14.017532+01:00",
+  "scope": "Concrete complex profile cube; physical cochain embedding and Hodge energy pending"
+}

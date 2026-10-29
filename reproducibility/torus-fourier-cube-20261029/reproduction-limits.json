@@ -1,0 +1,21 @@
+{
+  "final_source_sha": "0e88dfe5f434123e057dd83c17801872fc2498a5",
+  "full_final_source_packages": [
+    "013"
+  ],
+  "initial_success": "012 at b4359681d334b7695a18da0dba28401c85d70aae; only subsequent EOF blank removal",
+  "attempt014": {
+    "status": "final_result_unavailable",
+    "saved_steps_exit_zero": 5,
+    "full_zip_recovered": false,
+    "original_tab": "CDP timeouts; reset/rebind did not restore",
+    "fresh_tab": "Drive snapshot has only initial steps",
+    "session_inventory_utc": "2026-10-29T17:06:00Z",
+    "inventory_time_precision": "minute, observed",
+    "active_sessions_shown": 0
+  },
+  "terminal_same_sha_two_package_reproduction": false,
+  "claim": "Concrete profile dimension verified, not physical-cochain energy or lattice endpoint",
+  "independent_scientific_review": false,
+  "compute_units": "not measured"
+}

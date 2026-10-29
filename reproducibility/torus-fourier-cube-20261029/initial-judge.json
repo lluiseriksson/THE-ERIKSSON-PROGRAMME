@@ -1,0 +1,13 @@
+{
+  "registered_utc": "2026-10-29T16:44:12.2275908Z",
+  "source_sha": "b4359681d334b7695a18da0dba28401c85d70aae",
+  "target": "YangMills.RG.TorusFourierBandDimension",
+  "oracle_count": 4,
+  "axiom_set": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "Concrete complex Fourier cube dimension and real restriction; not yet physical cochain band or Hodge energy",
+  "driver_sha": "4bc65755ca37bb3f1f54f68c7661415b646a240bcaee866ada96bffa6f36f656"
+}
