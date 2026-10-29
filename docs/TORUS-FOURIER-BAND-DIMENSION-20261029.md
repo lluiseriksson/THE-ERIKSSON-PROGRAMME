@@ -83,3 +83,28 @@ SHA. A second complete same-SHA reproduction is still required before terminal
 reproduction closure. No GPU, Windows Lean/Lake or shared runtime was used.
 Compute units were not measured. Separate execution sessions orchestrated in
 this same chat are not independent scientific review.
+
+### Same-SHA reproduction completed in unit012
+
+On 29 October, the saved notebook014 was re-executed in a newly allocated own
+CPU/high-RAM runtime. This new attempt is called **014b** in the archive; it
+does not retroactively supply the missing verdict of the original attempt014.
+Its report ran 17:40:29.037302-17:43:25.153860 UTC, with all nine steps exiting
+zero and all four exact oracle reports matching the frozen criterion. The
+runtime was released automatically; the reconnect control was then observed.
+Compute units and pre-execution allocation duration were not measured.
+
+Its complete ZIP has SHA-256
+`c4f44751c26f6d232f9b139b860d40eae0d20fd25b18d1c6ed1e181432f16dee`.
+The validator checked all twelve manifest entries, both source hashes, all
+nine child exit codes and all four oracle reports. Source SHA, target `.olean`,
+raw `oracle.log` and source-hash manifest match run013 exactly. Thus **013 and
+014b now supply the two fresh-clone packages at the final source SHA**
+`0e88dfe5f434123e057dd83c17801872fc2498a5`. The earlier reproduction limitation
+is resolved for this module only. The original partial014 remains a recorded
+transport failure with no recovered verdict. No mathematics or judge changed.
+
+This closure concerns the concrete character-space dimension, not the cochain
+L2 embedding, Hodge energy, the whole repository or an independent review.
+The analytic fixed-map repair criterion and explicit two-dimensional falsifier
+are recorded separately in `FIXED-MEASUREMENT-REPAIR-CRITERION-20261029.md`.
