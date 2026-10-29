@@ -82,9 +82,22 @@ theorem torusPhysicalEmbed_flat_div_norm_sq (hNc : 2 ≤ Nc) (ρ : SUNAdjointMod
     ‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d n Nc)
       (torusPhysicalEmbed hNc j f)‖ ^ 2 =
       backwardShiftEnergy f (Pi.single j (1 : ZMod n)) := by
-  rw [PiLp.norm_sq_eq_of_L2]
-  simp_rw [torusPhysicalEmbed_flat_div_apply, sunComplexPlane_norm_sq]
-  exact Equiv.sum_comp (finBoxZModEquiv d n)
-    (fun x => ‖f x - f (x - Pi.single j (1 : ZMod n))‖ ^ 2)
+  let D := gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d n Nc)
+    (torusPhysicalEmbed hNc j f)
+  have hpoint (x : FinBox d n) :
+      ‖D x‖ ^ 2 = ‖f (finBoxZModEquiv d n x) -
+        f (finBoxZModEquiv d n x - Pi.single j (1 : ZMod n))‖ ^ 2 := by
+    change ‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d n Nc)
+      (torusPhysicalEmbed hNc j f) x‖ ^ 2 = _
+    rw [torusPhysicalEmbed_flat_div_apply, sunComplexPlane_norm_sq]
+  calc
+    _ = ∑ x : FinBox d n, ‖D x‖ ^ 2 := PiLp.norm_sq_eq_of_L2 _ D
+    _ = ∑ x : FinBox d n, ‖f (finBoxZModEquiv d n x) -
+        f (finBoxZModEquiv d n x - Pi.single j (1 : ZMod n))‖ ^ 2 :=
+      Finset.sum_congr rfl (fun x _ => hpoint x)
+    _ = _ := by
+      unfold backwardShiftEnergy
+      exact Equiv.sum_comp (finBoxZModEquiv d n)
+        (fun x => ‖f x - f (x - Pi.single j (1 : ZMod n))‖ ^ 2)
 
 end YangMills.RG
