@@ -1,0 +1,6 @@
+import YangMills.RG.TorusFourierBandDimension
+
+#print axioms YangMills.RG.torusFourierCharacter_injective
+#print axioms YangMills.RG.centeredFourierProfiles_linearIndependent
+#print axioms YangMills.RG.centeredFourierBand_finrank_complex
+#print axioms YangMills.RG.centeredFourierBand_finrank_real
