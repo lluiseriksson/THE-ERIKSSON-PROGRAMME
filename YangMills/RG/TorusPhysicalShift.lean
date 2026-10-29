@@ -77,6 +77,7 @@ theorem torusPhysicalEmbed_flat_curl_apply (hNc : 2 ≤ Nc) (ρ : SUNAdjointMode
   by_cases h1 : p.dir1 = j <;> by_cases h2 : p.dir2 = j <;>
     simp [torusPhysicalEmbed, h1, h2, finBoxZModEquiv_shift, sunComplexPlane_sub] <;> abel
 
+set_option maxHeartbeats 800000 in
 theorem torusPhysicalEmbed_flat_div_norm_sq (hNc : 2 ≤ Nc) (ρ : SUNAdjointModel Nc)
     (j : Fin d) (f : (Fin d → ZMod n) → ℂ) :
     ‖gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground d n Nc)
@@ -97,7 +98,8 @@ theorem torusPhysicalEmbed_flat_div_norm_sq (hNc : 2 ≤ Nc) (ρ : SUNAdjointMod
       Finset.sum_congr rfl (fun x _ => hpoint x)
     _ = _ := by
       unfold backwardShiftEnergy
-      exact Equiv.sum_comp (finBoxZModEquiv d n)
-        (fun x => ‖f x - f (x - Pi.single j (1 : ZMod n))‖ ^ 2)
+      refine Fintype.sum_equiv (finBoxZModEquiv d n) _ _ ?_
+      intro x
+      rfl
 
 end YangMills.RG
