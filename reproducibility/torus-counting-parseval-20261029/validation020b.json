@@ -1,0 +1,15 @@
+{
+  "status": "COUNTING_PARSEVAL_BAND_ENERGY_VALIDATED",
+  "zip_sha256": "45874010ee2862bd819101fde449cf6c95877d0af2fe1b7389366c8f2faba705",
+  "source_sha": "09f56788669f1f6aba94b7e5548b2a1a941c79ce",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "8a4946f81d52ccfca6edcf6540c89934edc3ff8299248e62932eb42b98af204e",
+  "oracle_log_sha256": "9adfd237fb435476ab0c4314ad06f22397735246712c21a859a9e727da2da111",
+  "source_manifest_sha256": "7be5e15070e248cc1b5f94a9fb78ee6f5de54188ed4d3e9445a3deae40a89bfe",
+  "started_utc": "2026-10-29T20:55:56.723081+01:00",
+  "finished_utc": "2026-10-29T20:58:36.607366+01:00",
+  "scope": "Actual finite-family Parseval and band stencil energy; quantitative multiplier bound and physical identification pending"
+}
