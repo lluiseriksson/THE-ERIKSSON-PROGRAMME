@@ -51,7 +51,7 @@ theorem torusFourierProfiles_linearIndependent :
 
 /-- Coordinate labels 0,...,2R become the centered residues -R,...,R. -/
 def centeredFourierFrequency (R : ℕ) (k : Fin d → Fin (2 * R + 1)) :
-    Fin d → ZMod n := fun i => (k i : ℕ) - (R : ZMod n)
+    Fin d → ZMod n := fun i => ((k i : ℕ) : ZMod n) - (R : ZMod n)
 
 /-- There is no modular aliasing when 2R<n. -/
 theorem centeredFourierFrequency_injective (R : ℕ) (hR : 2 * R < n) :
