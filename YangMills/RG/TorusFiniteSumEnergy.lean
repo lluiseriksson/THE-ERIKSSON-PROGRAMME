@@ -26,8 +26,11 @@ noncomputable def backwardShiftEnergy (f : G → ℂ) (a : G) : ℝ :=
 theorem backwardShiftEnergy_eq_forward (f : G → ℂ) (a : G) :
     backwardShiftEnergy f a = forwardShiftEnergy f a := by
   classical
-  have h := (Equiv.addRight (-a)).sum_comp (fun x => ‖f (x + a) - f x‖ ^ 2)
-  simpa [backwardShiftEnergy, forwardShiftEnergy, sub_eq_add_neg, add_assoc] using h
+  unfold backwardShiftEnergy forwardShiftEnergy
+  apply Fintype.sum_equiv (Equiv.addRight (-a))
+  intro x
+  change ‖f x - f (x - a)‖ ^ 2 = ‖f ((x + -a) + a) - f (x + -a)‖ ^ 2
+  simp [sub_eq_add_neg, add_assoc]
 
 theorem character_forward_difference (chi : AddChar G ℂ) (a x : G) :
     chi (x + a) - chi x = (chi a - 1) * chi x := by
