@@ -1,0 +1,14 @@
+{
+  "status": "ABSTRACT_DIMENSION_MODULE_VALIDATED",
+  "source_sha": "b2313402cefb896c899ab4afb3c4d2aed75d95d4",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 3,
+  "target_olean_sha256": "3b7ad9bfdc70bd9f9d2ecdf844e597d9d2d993a08e7667b0e55134e5a6f3cf93",
+  "oracle_log_sha256": "07627b9f289ee4abd713a37f6eef3671380f7c5b4344f259ecf42bbc983ed7dc",
+  "source_manifest_sha256": "bab5e6239fe17a38d218cc08622e062a25d9dfb0d7bc77e7f30bb2b59a445bc6",
+  "started_utc": "2026-10-29T16:41:37.126715+01:00",
+  "finished_utc": "2026-10-29T16:44:13.422857+01:00",
+  "scope": "Abstract dimension obstruction only; concrete Fourier band not yet formalized"
+}

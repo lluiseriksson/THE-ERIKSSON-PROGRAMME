@@ -1,0 +1,5 @@
+import YangMills.RG.CoarseMeasurementDimensionObstruction
+
+#print axioms YangMills.RG.exists_unseen_of_finrank_lt_measurement_add_repair
+#print axioms YangMills.RG.factorized_coercivity_false_of_dimension_budget
+#print axioms YangMills.RG.factorized_coercivity_dimension_budget
