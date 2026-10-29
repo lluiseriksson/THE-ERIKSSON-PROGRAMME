@@ -96,4 +96,3 @@ theorem centeredFourierBand_finrank_real (R : ℕ) (hR : 2 * R < n) :
     Complex.finrank_real_complex, centeredFourierBand_finrank_complex R hR]
 
 end YangMills.RG
-
