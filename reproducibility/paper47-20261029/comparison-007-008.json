@@ -1,0 +1,18 @@
+{
+  "status": "FOCAL_TWO_CLONE_REPRODUCED",
+  "source_sha": "7b25bfb39357406cf61880e3ac0428d7d1ba3449",
+  "source_sha_equal": true,
+  "target_olean_equal": true,
+  "target_olean_sha256": "6e7a650818feefcd7f044f1db5ce3b5090da725a9c81ab72c391700929f91c5e",
+  "oracle_log_equal": true,
+  "oracle_log_sha256": "1aeb0c7f5efef1e4a9c6e2637c2f311ccbfcacff829808bbb243d9b4cdff9243",
+  "source_manifest_equal": true,
+  "source_manifest_sha256": "9000150ad797515946f35c6619be703e7dd1b0af329a33f6b66f4d8112e5d472",
+  "run007_start": "2026-10-29T14:27:27.019398+01:00",
+  "run007_finish": "2026-10-29T14:32:25.058869+01:00",
+  "run008_start": "2026-10-29T14:38:55.976498+01:00",
+  "run008_finish": "2026-10-29T14:43:23.302214+01:00",
+  "run008_seconds": 267.325716,
+  "independent_scientific_review": false,
+  "scope": "focal target and six oracle reports only; no repository-wide terminal audit"
+}

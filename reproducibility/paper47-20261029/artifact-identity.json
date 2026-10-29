@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "kind": "existing-paper-reproduction-supplement",
+  "airr_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "archive_version": "v1",
+  "manuscript_edition": "1.4",
+  "pdf_sha256": "48b2b725422263a272d9862621fa723d3d82c9d186dd7151be39c6ff1e3ff2e7",
+  "source_zip_sha256": "ef5501145398b5f672dcdfb66206c1f5f280f2c61b231d2c9ac0e1a4e693f82a",
+  "source_sha": "7b25bfb39357406cf61880e3ac0428d7d1ba3449",
+  "lean": "leanprover/lean4:v4.29.0-rc6",
+  "mathlib": "07642720480157414db592fa85b626dafb71355b",
+  "new_mathematical_result": false,
+  "new_publication": false,
+  "peer_review": false,
+  "independent_scientific_assessment": false,
+  "scope": "Dimension-four unrestricted periodic flat form; no physical spectral gap or continuum claim",
+  "text_hash_representation": "Lean source hashes: UTF-8 bytes normalized CRLF to LF; binary artifact hashes: exact bytes"
+}
