@@ -5,6 +5,7 @@ import YangMills.RG.TorusPhysicalEmbedding
     a separate obligation. -/
 namespace YangMills.RG
 open scoped BigOperators
+open Fin.NatCast
 variable {d n Nc : ℕ} [NeZero n]
 
 theorem finBoxZModEquiv_apply (x : FinBox d n) (i : Fin d) :
@@ -39,7 +40,7 @@ theorem sunComplexPlane_sub (hNc : 2 ≤ Nc) (z w : ℂ) :
   simp [sunComplexPlane, EuclideanSpace.single_apply] <;>
     split_ifs <;> simp_all <;> ring
 
-variable [NeZero Nc]
+variable [NeZero d] [NeZero Nc]
 
 theorem torusPhysicalEmbed_flat_div_apply (hNc : 2 ≤ Nc) (ρ : SUNAdjointModel Nc)
     (j : Fin d) (f : (Fin d → ZMod n) → ℂ) (x : FinBox d n) :
