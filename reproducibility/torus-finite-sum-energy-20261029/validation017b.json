@@ -1,0 +1,15 @@
+{
+  "status": "FINITE_SUM_CHARACTER_ENERGY_VALIDATED",
+  "zip_sha256": "d651ec6aaa029d7303ee9e4b85229c6819c07cfc6e5d2372955955a72621e7a6",
+  "source_sha": "251401e4de885dd0d70905e32da01bf5ba40cffd",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 5,
+  "target_olean_sha256": "1e8e67d872b53fff90a84e0e41ef5091770ec4e22a4cb39b5a72fd7ecd82435f",
+  "oracle_log_sha256": "a83dedce31b5f5da8348ee1672d5386a2a2599d7bcec1c3d7c7d8bb36975ec49",
+  "source_manifest_sha256": "e59fbb08f958862c0f3299ee920a7e0ee9f8841a3868bd09a4d1d0bea6d8c6b3",
+  "started_utc": "2026-10-29T19:48:34.83961+01:00",
+  "finished_utc": "2026-10-29T19:50:45.271259+01:00",
+  "scope": "Explicit counting-L2 character energy; full band Parseval and physical-cochain identification pending"
+}
