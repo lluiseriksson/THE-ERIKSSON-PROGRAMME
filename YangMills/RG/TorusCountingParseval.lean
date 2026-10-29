@@ -30,8 +30,11 @@ theorem addChar_counting_gram (chi psi : AddChar G ℂ) :
         · intro h
           exact sub_eq_zero.mpr h.symm
       have h := AddChar.sum_eq_ite (psi - chi)
-      rw [hcond] at h
-      exact h
+      by_cases heq : chi = psi
+      · have hz : psi - chi = 0 := hcond.mpr heq
+        simpa only [if_pos hz, if_pos heq] using h
+      · have hz : psi - chi ≠ 0 := fun hz => heq (hcond.mp hz)
+        simpa only [if_neg hz, if_neg heq] using h
 
 noncomputable def characterSynthesis (chi : I → AddChar G ℂ) (c : I → ℂ) : G → ℂ :=
   fun x => ∑ i, c i * chi i x
@@ -64,8 +67,7 @@ theorem character_synthesis_pairing (chi : I → AddChar G ℂ)
       simp_rw [Finset.mul_sum]
     _ = _ := by
       simp_rw [addChar_counting_gram, hc.eq_iff]
-      simp [Finset.mul_sum,
-        mul_comm, mul_left_comm, mul_assoc]
+      simp [Finset.mul_sum, mul_comm, mul_left_comm]
 
 theorem character_synthesis_mass (chi : I → AddChar G ℂ)
     (hc : Function.Injective chi) (c : I → ℂ) :
