@@ -1,0 +1,15 @@
+{
+  "status": "prepared_disconnected",
+  "registered_utc": "2026-10-29T15:40:56.3769613Z",
+  "source_sha": "b2313402cefb896c899ab4afb3c4d2aed75d95d4",
+  "target": "YangMills.RG.CoarseMeasurementDimensionObstruction",
+  "oracle_count": 3,
+  "axiom_set": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "success_requires": "two LF source hashes, exact toolchain/mathlib, target real exit0, exactly 3 raw oracle reports with named declarations and exact axiom set",
+  "claim_boundary": "Abstract dimension/rank lemma only; Fourier band and explicit lattice constant not yet formal",
+  "driver_sha256": "ef6a1d24334a9353cc209afc1310189a6187c1eab89711fd5438d37939e4d980"
+}

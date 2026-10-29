@@ -1,0 +1,12 @@
+{
+  "source_sha": "b2313402cefb896c899ab4afb3c4d2aed75d95d4",
+  "source_sha_equal": true,
+  "target_olean_equal": true,
+  "oracle_log_equal": true,
+  "source_manifest_equal": true,
+  "target_olean_sha256": "3b7ad9bfdc70bd9f9d2ecdf844e597d9d2d993a08e7667b0e55134e5a6f3cf93",
+  "oracle_log_sha256": "07627b9f289ee4abd713a37f6eef3671380f7c5b4344f259ecf42bbc983ed7dc",
+  "source_manifest_sha256": "bab5e6239fe17a38d218cc08622e062a25d9dfb0d7bc77e7f30bb2b59a445bc6",
+  "scope": "Two fresh clones of abstract module; not lattice Fourier endpoint",
+  "independent_scientific_review": false
+}
