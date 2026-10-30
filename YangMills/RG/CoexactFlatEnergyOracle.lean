@@ -1,0 +1,7 @@
+import YangMills.RG.CoexactFlatEnergy
+#print axioms YangMills.RG.piLp_norm_sub_sq_of_disjoint
+#print axioms YangMills.RG.torusPhysicalEmbed_gradient_sub_norm_sq
+#print axioms YangMills.RG.torusPhysicalEmbed_hodge_sub_eq
+#print axioms YangMills.RG.centeredFourierBand_backward_mem
+#print axioms YangMills.RG.coexactPositivePhysicalBand_hodge_le
+#print axioms YangMills.RG.coexactFlat_local_coercivity_false
