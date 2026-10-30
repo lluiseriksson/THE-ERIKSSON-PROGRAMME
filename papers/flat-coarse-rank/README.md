@@ -1,50 +1,39 @@
-# Consolidation candidate for the existing flat-kernel paper dossier
+# Consolidated revision of the existing flat-kernel paper dossier
 
-`flat_coarse_rank.tex` and its six-page PDF are a compiled, visually checked
-consolidation candidate, pending exact-artifact scientific assessments and
-the existing dossier revision route. This is not an accepted publication.
-The manuscript groups the constructed physical Fourier band,
-finite arbitrary-measurement rank budget, direct sector obstruction, uniform
-refinement wall, and the analytic fixed-map cross-coupling criterion.
+The manuscript now preserves the substantive original results as well as the
+new arbitrary-measurement rank walls. The original exact PDF was recovered from
+the historical AIRR preparation registry and its canonical hash checked:
+48b2b725422263a272d9862621fa723d3d82c9d186dd7151be39c6ff1e3ff2e7.
+That registry's phrase sources prepared refers here to PDF/extracted text and
+metadata; no original TeX was found in its exact record folder. The integrated
+exposition is reconstructed from those original statements with an explicit
+scope map, rather than claiming recovered original TeX.
 
-The intended route is a linked revision/consolidation in the existing dossier
-ARR-2026-7EPM3V3DP796BBRR / ai.viXra2608.0015, not an ordinary duplicate deposit.
-The public existing v1 was checked on 30 October 2026 and remains historical
-import, not assessed, with the same canonical PDF hash as the unit009 audit.
-No current artifact-specific historical revision permission is inferred from
-an old or ordinary deposit grant. No grant-status request is needed before
-there is an exact new PDF ready for authorized review/submission.
+The revision retains the constant-sector critical-exponent distinction, exact
+block-kernel witness, zero divergence and Hodge energy, arbitrary factorized
+penalty no-go, higher-frequency spectral ladder, witness repair identity and
+its asymptotic/line-only consequences. The derivative Gram calculation is made
+explicit. The new physical low band, necessary information budget, direct
+bounded-rank sector wall and uniform-refinement theorem then extend this chain.
+The fixed-map Schur criterion remains analytic with a counterexample.
 
-The old source was not found among tracked TeX manuscripts by the directed
-search in this worktree. This candidate is a separately preserved continuation;
-it does not overwrite the old PDF or pretend to be its complete revised source.
-Before submission, recover/reconcile the actual original source and decide the
-linked revision's final combined scope. Do not silently drop the old witness
-and repair results merely because the new low-band obstruction is broader.
+There are TWO formal anchors. The new band/wall source tree is e31b428; the
+original dimension-four factorized/repair reproduction uses 7b25bfb. Its modules
+are not present in new main merely because main contains a reproduction packet.
+The declaration map makes this boundary explicit. Do not claim every analytic
+statement or the whole manuscript is machine checked.
 
-The abstract is shortened; derivative-profile Gram orthogonality is explicit;
-long declarations move to declaration-map.json; copyable reproduction notebooks
-remain the source of commands. These address the mathematical and exposition
-objections from the exact old thirteen-page PDF audit. The final six-page PDF has been inspected page by page after the layout fixes.
-The first compiled version and its objections are preserved in the evidence.
+The earlier visually checked six-page continuation is preserved separately as
+six-page-candidate.pdf, SHA256
+fcf0aa40cbb87f4f5afeca5348cb8c609411b4c59376ed0cf5156c0cc3b0607d.
+It is not the PDF of the expanded current TeX. The expanded exact PDF must be
+compiled and visually checked before review; none of the earlier QA or any
+historical review transfers to its new bytes.
 
-The exact PDF SHA256 is
-fcf0aa40cbb87f4f5afeca5348cb8c609411b4c59376ed0cf5156c0cc3b0607d;
-source commit bd2538c1a809b5b9479fa7385da41be7cc248000.
-See reproducibility/flat-wall-pdf-20261030/EXACT-PDF-QA.md for the complete
-visual record, hashes, logs, earlier version and Colab runtime accounting.
-All six final pages were checked individually; no final LaTeX layout warnings.
-No Windows compilation or rendering was performed. PDF metadata dates use the
-fixed SOURCE_DATE_EPOCH in the driver, not the runtime start timestamp.
-
-Next: reconcile the final combined scope/original source and obtain the available
-authorized scientific assessments of this exact artifact. Keep PR97 in draft
-until the manuscript review is ready, without converting visual QA into a
-scientific review or claiming a publication decision.
-Named-model reviews must concern that exact PDF and retain full objections,
-real model identity and context. No score or review transfers from an older PDF.
-The Model assessments and review context section explicitly records the current
-lack of exact-artifact reviews, non-blind preparation and founder-author conflict.
-
-No new deposit, model-provider transfer, editorial acceptance or publication
-occurred. Historical manuscript rights are separate from the repository license.
+Intended publication route: linked revision/consolidation in the existing
+ARR-2026-7EPM3V3DP796BBRR / ai.viXra2608.0015 dossier, never a duplicate ordinary
+deposit. Keep PR97 draft pending exact scientific assessment and actual supported
+revision route. Do not infer permissions, provider consent, license expansion,
+acceptance or publication from access to an old or ordinary deposit grant.
+Model identity/context, full objections and founder-author conflict must remain
+explicit. No score is sought, inherited or improved by rerunning a reviewer.

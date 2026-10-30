@@ -93,6 +93,104 @@ The last equality is finite translation invariance. The exclusive two
 plaquette incidences and the divergence term account for every direction
 exactly once, with no extra factor two.
 
+\section{The original block kernel and its repair budget}\label{sec:old}
+We retain the substantive results of the historical paper \cite{eriksson}
+before explaining the new information-budget obstruction. Use a block side
+$\ell\geq1$, set $n=\ell N'$, and for a coarse site $y$ put
+$B_y=\{\ell y+r:0\leq r_i<\ell\}$. The original line-integral map is
+\[
+ (Q_\ell A)_i(y)=\ell^{-d}\sum_{x\in B_y}\sum_{k=0}^{\ell-1}A_i(x+ke_i).
+\]
+For a constant field $A_i(x)=v_i$ and $S=\sum_i\|v_i\|^2>0$,
+\[
+ \|A\|^2=\ell^d(N')^dS,\qquad
+ \|\ell^\sigma Q_\ell A\|^2=\ell^{2\sigma+2}(N')^dS.
+\]
+A uniform Poincare estimate must therefore have
+$\sigma\geq(d-2)/2$ if it is to survive this sector. Equality alone makes
+the two powers identical. Larger exponents pass this necessary test too;
+neither equality nor the inequality is a sufficient full-space condition.
+This follows by cancelling $(N')^dS$ to obtain
+$\ell^{d-2-2\sigma}\leq C_P$. The real-exponent comparison is analytic here.
+
+For $d\geq2$ choose distinct directions $p,q$ and the real isometry
+$\iota(z)=(\Re z)u+(\Im z)v$ from Section~2. For $\ell\geq2$ define
+\[
+ A^{(\ell)}_i(x)=\mathbf1_{i=p}\,
+ \iota\bigl(e^{2\pi\mathrm i x_q/\ell}\bigr),\qquad
+ \lambda_\ell=|e^{2\pi\mathrm i/\ell}-1|^2
+             =4\sin^2(\pi/\ell).
+\]
+The character is well defined on $X_{\ell N'}$. The sum over the $q$-offset
+in every block is a nontrivial root-of-unity sum and vanishes. Shifts in the
+line direction $p$ do not change the profile. Hence
+\begin{equation}\label{eq:old-witness}
+ Q_\ell A^{(\ell)}=0,\quad \delta A^{(\ell)}=0,\quad
+ \|A^{(\ell)}\|^2=(\ell N')^d,\quad
+ \ip{A^{(\ell)}}{K_{0,n}A^{(\ell)}}=(\ell N')^d\lambda_\ell.
+\end{equation}
+Only the plaquette pair containing $p,q$ contributes to the curl energy;
+its difference has constant squared norm $\lambda_\ell$ at every site.
+This also explains the exact energy in~\eqref{eq:old-witness}, including
+periodic boundary jumps.
+
+Consequently any scale-wise estimate
+\[
+ \|A\|^2\leq C_P(\ell)\bigl(\ip{A}{K_{0,n}A}+\Psi_\ell(Q_\ell A)\bigr),
+ \qquad \Psi_\ell(0)=0,
+\]
+forces $C_P(\ell)\geq\lambda_\ell^{-1}\geq\ell^2/(4\pi^2)$.
+No fixed $C_P>0$ before all block sides can work. This includes
+$\Psi_\ell(y)=\|T_\ell y\|^2$ for arbitrary linear postconditioners, and
+all critical or faster scalar rescalings. There is no regularity or sign
+assumption on the scalar function $\Psi_\ell$.
+
+The original spectral strengthening is retained analytically. For
+$1\leq r\leq R\leq\lfloor(\ell-1)/2\rfloor$, replace the profile by
+$\iota(c e^{2\pi\mathrm i r x_q/\ell})$, $c\in\C$. These are mutually
+orthogonal real two-dimensional spaces in $\ker Q_\ell$. Derivative
+orthogonality must be checked too: every forward difference multiplies a
+character by its frequency multiplier, so the same root-of-unity Gram sum
+annihilates cross terms between distinct frequencies. Thus for
+$H_\ell=K_{0,n}+(T_\ell Q_\ell)^*(T_\ell Q_\ell)$ the sum of these spaces
+has dimension $2R$ and maximum Rayleigh quotient at most
+$4\sin^2(\pi R/\ell)\leq4\pi^2R^2/\ell^2$. Finite-dimensional min--max
+gives $\mu_{2R}(H_\ell)\leq4\pi^2R^2/\ell^2$. Taking
+$R=\lfloor\ell^\alpha\rfloor$, $0<\alpha<1$, for sufficiently large
+$\ell$, yields a growing cluster below $4\pi^2\ell^{-2(1-\alpha)}$.
+Eigenvalue language is restricted to this linear self-adjoint operator,
+not applied to a general nonlinear penalty.
+
+Finally, for any linear changed measurement $\widetilde Q_\ell$, linear
+postconditioner $T_\ell$ and positive self-adjoint fine term $V_\ell$, put
+\[
+ \varepsilon_\ell=\frac{\|T_\ell\widetilde Q_\ell A^{(\ell)}\|}
+                         {\|A^{(\ell)}\|},\qquad
+ \nu_\ell=\frac{\ip{A^{(\ell)}}{V_\ell A^{(\ell)}}}
+                    {\|A^{(\ell)}\|^2}.
+\]
+Set $\widetilde H_\ell=K_{0,n}+
+(T_\ell\widetilde Q_\ell)^*(T_\ell\widetilde Q_\ell)+V_\ell$.
+Expansion gives the exact repaired quotient
+\[
+ \frac{\ip{A^{(\ell)}}{\widetilde H_\ell A^{(\ell)}}}
+      {\|A^{(\ell)}\|^2}
+ =\lambda_\ell+\varepsilon_\ell^2+\nu_\ell.
+\]
+A full-space constant $c>0$ therefore requires
+$\varepsilon_\ell^2+\nu_\ell\geq c-\lambda_\ell$ at every scale, hence
+$\liminf_{\ell\to\infty}(\varepsilon_\ell^2+\nu_\ell)\geq c$.
+On the single witness line, uniform coercivity is equivalent to
+$\inf_{\ell\geq2}(\lambda_\ell+\varepsilon_\ell^2+\nu_\ell)>0$;
+this is not full-space sufficiency. In particular if
+$\widetilde Q_\ell=Q_\ell+R_\ell$, $T_\ell=\ell^{(d-2)/2}I$ and
+$\eta_\ell=\|R_\ell A^{(\ell)}\|/\|A^{(\ell)}\|$, then
+$\varepsilon_\ell^2=\ell^{d-2}\eta_\ell^2$. In dimension four and with
+$V_\ell=0$, leakage $o(\ell^{-1})$ cannot even repair this line.
+The liminf, real-exponent, spectral multiplicity and witness-line equivalence
+are analytic statements. The older exact kernel, norm-form energy, finite
+budget and dimension-four factorized no-go have their own preserved formal
+source and reproductions, separately anchored below.
 \section{A constructed low band}
 For $R\geq0$ with $2R<n$, let $\Lambda_R=\{-R,\ldots,R\}^d$ and
 $B=|\Lambda_R|=(2R+1)^d$. Define
@@ -270,8 +368,20 @@ physical operator. No ultraviolet activity estimate, continuum limit,
 Wilson-Hessian identification or Yang--Mills mass gap is obtained.
 
 \section{Formal evidence and publication context}
-The source-tree anchor containing all formal results used above is
+The source-tree anchor for the new physical-band and uniform-rank results is
 \begin{center}\small\texttt{e31b428917aa767b4a1aad097db5cf92fb9cd23e}.\end{center}
+The original factorized-kernel and repair development in
+Section~\ref{sec:old} instead has the distinct tested source anchor
+\begin{center}\small\texttt{7b25bfb39357406cf61880e3ac0428d7d1ba3449}.\end{center}
+Its exact modules are not present in the new main tree merely because a
+reproduction supplement is present there. The two full preserved focal runs
+at that older SHA agree in compiled object, oracle log and source manifest;
+their six named reports use only the three standard axioms. The reproduced
+factorized endpoint is dimension four. The general-dimensional witness
+calculation, trigonometric closed form, spectral multiplicity, liminf and
+witness-line statements are analytic here; they are not all silently included
+in that formalization claim. The external declaration map keeps both anchors.
+
 The geometric and Fourier modules are ordinary proof dependencies, not
 assumptions about a newly supplied band. Each development stage has complete
 same-source fresh-clone Colab evidence. For the uniform endpoints the tested

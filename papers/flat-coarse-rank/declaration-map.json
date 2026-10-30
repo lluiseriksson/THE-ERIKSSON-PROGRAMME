@@ -40,6 +40,19 @@
       ],
       "module": "UniformPhysicalCoarseRankWall",
       "evidence": "reproducibility/uniform-physical-rank-wall-20261030"
+    },
+    {
+      "label": "original factorized kernel and repair",
+      "present_in_new_main_tree": false,
+      "evidence": "reproducibility/paper47-20261029",
+      "module": "PhysicalCriticalRescalingFourierFactorizedRepair",
+      "declarations": [
+        "factorizedFlatPoincare_fourier_lower_bound",
+        "volumeUniformFactorizedFlatPoincareGate_fourier_false",
+        "repairedFlatPoincare_blockFourier_rayleigh_eq",
+        "repairedFlatPoincare_blockFourier_budget"
+      ],
+      "tested_sha": "7b25bfb39357406cf61880e3ac0428d7d1ba3449"
     }
   ],
   "publication_target": "existing ARR-2026-7EPM3V3DP796BBRR dossier; no duplicate deposit",
@@ -48,5 +61,7 @@
     "two-dimensional cross-coupling calculation",
     "exact CT consumer specialization",
     "physical-scaled positive coercivity"
-  ]
+  ],
+  "original_kernel_source_tree": "7b25bfb39357406cf61880e3ac0428d7d1ba3449",
+  "original_kernel_scope": "Reproduced factorized endpoint is dimension4; analytic general-d witness/trig, spectral multiplicity, asymptotic and witness-line consequences remain separate"
 }
