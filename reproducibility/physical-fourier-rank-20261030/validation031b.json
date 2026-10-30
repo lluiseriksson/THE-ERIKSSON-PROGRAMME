@@ -1,0 +1,15 @@
+{
+  "status": "CONCRETE_PHYSICAL_FOURIER_RANK_OBSTRUCTION_VALIDATED",
+  "zip_sha256": "cf9632641a8ba0ae7d914bfefbf4094f337ff8f53baaafdc7767fe932ada34ca",
+  "source_sha": "a79e6e4b2e5de72e73bd6109069eb2f82127c355",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "db3fac30520d43f27afc99fab94edf8c2089e41e33a500fd0274316ed39874c2",
+  "oracle_log_sha256": "4afbf5f9e27c790f309475918191d55af0978bc24b350d5757d8a7388ad0cad2",
+  "source_manifest_sha256": "9c8ffde577a769c2b980fc45b0674e2a1a037c4e0819089a0f9c4df2f96ecacf",
+  "started_utc": "2026-10-30T02:57:20.20314+01:00",
+  "finished_utc": "2026-10-30T03:01:22.867483+01:00",
+  "scope": "Actual physical real Fourier image dimension, energy and arbitrary-coarse-map dimension budget"
+}

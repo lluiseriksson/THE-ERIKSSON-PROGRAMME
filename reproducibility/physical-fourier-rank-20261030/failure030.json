@@ -1,0 +1,8 @@
+{
+  "run": "030",
+  "source_sha": "1ce5b87bac397b75cfcd6d422b77cd5fc2413464",
+  "zip_sha256": "b9ebf391d7e84b41b1df13a8be5f86df1eaddc5ab4d95387a7406c9c551babe3",
+  "status": "FAIL",
+  "reason": "Explicit complex scalar parameter omitted before finite-span equivalence .mp",
+  "counted_as_pass": false
+}
