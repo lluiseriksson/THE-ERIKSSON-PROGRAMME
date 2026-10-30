@@ -44,8 +44,10 @@ theorem transverseFourierBand_finrank_complex (R : ℕ) (hR : 2 * R < n) :
 
 theorem transverseFourierBand_finrank_real (R : ℕ) (hR : 2 * R < n) :
     finrank ℝ (transverseFourierBand d n R) = 2 * (2 * R + 1) ^ d := by
-  rw [← Module.finrank_mul_finrank ℝ ℂ (transverseFourierBand d n R),
-    Complex.finrank_real_complex, transverseFourierBand_finrank_complex R hR]
+  have h := Module.finrank_mul_finrank ℝ ℂ (transverseFourierBand d n R)
+  have htwo : finrank ℝ ℂ = 2 := Complex.finrank_real_complex
+  rw [htwo, transverseFourierBand_finrank_complex R hR] at h
+  exact h.symm
 
 theorem transverseFourierBand_le_centered (R : ℕ) :
     transverseFourierBand d n R ≤ centeredFourierBand (d + 1) n R := by
@@ -58,16 +60,20 @@ theorem transverseFourierProfile_shift (R : ℕ) (k : Fin d → Fin (2 * R + 1))
     transverseFourierProfile R k (x - Pi.single 0 (1 : ZMod n)) =
       transverseFourierProfile R k x := by
   classical
-  change ZMod.stdAddChar (∑ i, centeredFourierFrequency R (transverseFourierIndex R k) i *
-    (x - Pi.single 0 (1 : ZMod n)) i) =
-    ZMod.stdAddChar (∑ i, centeredFourierFrequency R (transverseFourierIndex R k) i * x i)
-  congr 1
-  apply Finset.sum_congr rfl
-  intro i hi
-  by_cases h : i = 0
-  · subst i
-    simp [centeredFourierFrequency, transverseFourierIndex]
-  · simp [Pi.sub_apply, Pi.single_apply, h, Ne.symm h]
+  have hphase : (∑ i : Fin (d + 1),
+      centeredFourierFrequency (n := n) R (transverseFourierIndex R k) i *
+        (x - Pi.single 0 (1 : ZMod n)) i) =
+      ∑ i : Fin (d + 1),
+        centeredFourierFrequency (n := n) R (transverseFourierIndex R k) i * x i := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    by_cases h : i = 0
+    · subst i
+      simp [centeredFourierFrequency, transverseFourierIndex]
+    · simp [Pi.sub_apply, Pi.single_apply, h, Ne.symm h]
+  simpa only [transverseFourierProfile, centeredFourierProfile,
+    torusFourierCharacter, AddChar.coe_mk] using
+    congrArg (fun z : ZMod n => (ZMod.stdAddChar z : ℂ)) hphase
 
 theorem transverseFourierBand_shift (R : ℕ)
     (f : (Fin (d + 1) → ZMod n) → ℂ) (hf : f ∈ transverseFourierBand d n R)
@@ -127,7 +133,8 @@ theorem transversePhysicalBand_div_zero (hNc : 2 ≤ Nc) (rho : SUNAdjointModel 
   change gaugeConstraintQCLM rho (trivialPhysicalGaugeBackground (d + 1) n Nc)
     (torusPhysicalEmbed hNc 0 f.val) y = 0
   rw [torusPhysicalEmbed_flat_div_apply, transverseFourierBand_shift R f.val f.property]
-  simp [sunComplexPlane]
+  ext i
+  simp [sunComplexPlane, EuclideanSpace.single_apply]
 
 theorem transversePhysicalBand_hodge_le (hNc : 2 ≤ Nc) (rho : SUNAdjointModel Nc)
     (R : ℕ) (hR : 2 * R < n) (x : PhysicalGaugeOneCochain (d + 1) n Nc)
@@ -238,13 +245,13 @@ theorem transverseFlat_local_coercivity_false
       ‖x‖ < r → c * ‖x‖ ^ 2 ≤ inner ℝ x (flatGaugeHodgeK0CLM (d + 1) n Nc rho x) +
         inner ℝ x (componentwiseWeightedRepairCLM w x) + Phi (C x) := by
   intro hbound
-  apply nonlinear_tangent_local_subspace_coercivity_false
-    (transversePhysicalBand (d := d) (n := n) hNc R) C L hC hC0
-    (fun x => inner ℝ x (flatGaugeHodgeK0CLM (d + 1) n Nc rho x) +
-      inner ℝ x (componentwiseWeightedRepairCLM w x)) Phi K delta r
-    ((1 + M) * (4 * Real.pi ^ 2 * ((d + 1 : ℕ) : ℝ) * (R : ℝ) ^ 2 / (n : ℝ) ^ 2)) c
-    hdelta hr hPhi ?_ ?_ hc
-  · intro x hx
+  have hband : ∀ x : PhysicalGaugeOneCochain (d + 1) n Nc,
+      x ∈ transversePhysicalBand hNc R →
+      inner ℝ x (flatGaugeHodgeK0CLM (d + 1) n Nc rho x) +
+        inner ℝ x (componentwiseWeightedRepairCLM w x) ≤
+      ((1 + M) * (4 * Real.pi ^ 2 * ((d + 1 : ℕ) : ℝ) * (R : ℝ) ^ 2 /
+        (n : ℝ) ^ 2)) * ‖x‖ ^ 2 := by
+    intro x hx
     have hv := componentwiseWeightedRepair_le_hodge rho w M hw x
     have hb := transversePhysicalBand_hodge_le hNc rho R hR x hx
     calc
@@ -252,8 +259,17 @@ theorem transverseFlat_local_coercivity_false
       _ ≤ (1 + M) * ((4 * Real.pi ^ 2 * ((d + 1 : ℕ) : ℝ) * (R : ℝ) ^ 2 /
         (n : ℝ) ^ 2) * ‖x‖ ^ 2) := mul_le_mul_of_nonneg_left hb (by linarith)
       _ = _ := by ring
-  · simpa only [transversePhysicalBand_finrank hNc R hR] using hdim
-  · intro x hx hxr
-    exact hbound x (transversePhysicalBand_div_zero hNc rho R x hx) hxr
+  have hdim' : finrank ℝ F <
+      finrank ℝ (transversePhysicalBand (d := d) (n := n) hNc R) := by
+    simpa only [transversePhysicalBand_finrank hNc R hR] using hdim
+  have hno := nonlinear_tangent_local_subspace_coercivity_false
+    (transversePhysicalBand (d := d) (n := n) hNc R) C L hC hC0
+    (fun x => inner ℝ x (flatGaugeHodgeK0CLM (d + 1) n Nc rho x) +
+      inner ℝ x (componentwiseWeightedRepairCLM w x)) Phi K delta r
+    ((1 + M) * (4 * Real.pi ^ 2 * ((d + 1 : ℕ) : ℝ) * (R : ℝ) ^ 2 / (n : ℝ) ^ 2)) c
+    hdelta hr hPhi hband hdim' hc
+  apply hno
+  intro x hx hxr
+  exact hbound x (transversePhysicalBand_div_zero hNc rho R x hx) hxr
 end Obstruction
 end YangMills.RG
