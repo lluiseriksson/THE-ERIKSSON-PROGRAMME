@@ -1,0 +1,324 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=28mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\T}{\mathbb T}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\title{Coarse information and finite rank obstructions\newline for flat lattice Hodge forms}
+\author{Lluis Eriksson}
+\date{30 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+On a finite periodic lattice with unit spacing, a flat Hodge form cannot have
+a positive coercivity constant uniform under refinement if it is supplemented
+only by observations in a fixed finite-dimensional space and uniformly bounded
+rank fine-space repairs. The observations may vary arbitrarily with the
+refinement, and their penalty need only vanish at zero. We prove the same
+obstruction directly on kernels of uniformly bounded rank constraints.
+The proof constructs a real physical Fourier subspace of dimension
+$2(2R+1)^d$ with Hodge energy at most $4\pi^2dR^2/n^2$ times its squared norm.
+Its intersection with the unobserved directions gives a necessary rank budget.
+We also explain why this budget is not sufficient, using a two-dimensional
+cross-coupling example and a classical complete criterion for a fixed map.
+The Fourier construction, finite budget, and uniform obstructions have Lean
+proofs; the fixed-map criterion is an analytic result here. These are finite
+flat statements, with no interacting or continuum mass-gap claim.
+\end{abstract}
+
+\section{Purpose and relation to the existing record}
+This text consolidates a continuation of the exact-kernel obstruction in
+\cite{eriksson}. That paper exhibits fields in the kernel of a particular
+line-integral block map. Changing the map can remove a particular witness.
+Here the obstruction depends instead on the amount of coarse information:
+a whole low-energy subspace is too large to be seen by a fixed-dimensional
+measurement together with a bounded-rank repair. The map need not factor
+through the original block variable, be local, or obey a norm bound.
+The restricted-sector result is proved separately and does not follow merely
+from failure of an estimate on the full space.
+
+Fourier diagonalization, rank-nullity and finite-dimensional Schur complements
+are classical. Finite-difference Hodge theory has a long history; Dodziuk's
+work \cite{dodziuk} provides historical context, rather than this paper's
+specific lattice normalization. We make no claim to a new general spectral
+principle or an exhaustive priority search. The contribution is a concrete,
+reproducibly checked constraint on proposed repair routes in this programme.
+This consolidation is intended for the existing paper dossier, rather than
+an additional deposit for each lemma.
+
+\section{Spaces and the actual flat form}
+Fix integers $d\geq1$, $n\geq1$ and $N_c\geq2$. Set
+$X_n=(\mathbb Z/n\mathbb Z)^d$ and $m=N_c^2-1$. The real one-cochain space is
+\[
+ E_n=\{A:X_n\times\{1,\ldots,d\}\longrightarrow\R^m\},\qquad
+ \|A\|^2=\sum_{x\in X_n}\sum_{i=1}^d\|A_i(x)\|^2.
+\]
+The internal coordinates are those of the repository's Euclidean Lie-coordinate
+model. No identification with a matrix Lie algebra is required here.
+For positive unordered plaquettes $i<k$, define
+\begin{align*}
+ (\mathrm dA)_{ik}(x)&=A_k(x+e_i)-A_k(x)-A_i(x+e_k)+A_i(x),\\
+ (\delta A)(x)&=\sum_i\bigl(A_i(x)-A_i(x-e_i)\bigr).
+\end{align*}
+The flat operator $K_{0,n}$ is the actual repository Hodge operator, with
+\begin{equation}\label{eq:hodge}
+ \ip{A}{K_{0,n}A}=\|\mathrm dA\|^2+\|\delta A\|^2.
+\end{equation}
+The plaquette norm sums each pair once. All differences have unit spacing;
+there is no hidden $n^2$ or block-side squared factor.
+
+Choose a direction $j$ and two distinct internal unit coordinates $u,v$.
+They exist since $m\geq3$. For $f:X_n\to\C$, put
+\[
+ (E_jf)_i(x)=\begin{cases}(\Re f(x))u+(\Im f(x))v,&i=j,\\0,&i\ne j.\end{cases}
+\]
+This is a real-linear injection and $\|E_jf\|^2=\sum_x|f(x)|^2$.
+Writing $D_i f(x)=f(x+e_i)-f(x)$, the actual curl and divergence give
+\begin{equation}\label{eq:stencil}
+ \ip{E_jf}{K_{0,n}E_jf}
+ =\sum_{i\ne j}\sum_x|D_i f(x)|^2+
+   \sum_x|f(x)-f(x-e_j)|^2
+ =\sum_i\sum_x|D_i f(x)|^2.
+\end{equation}
+The last equality is finite translation invariance. The exclusive two
+plaquette incidences and the divergence term account for every direction
+exactly once, with no extra factor two.
+
+\section{A constructed low band}
+For $R\geq0$ with $2R<n$, let $\Lambda_R=\{-R,\ldots,R\}^d$ and
+$B=|\Lambda_R|=(2R+1)^d$. Define
+\[
+ \chi_k(x)=\exp(2\pi\mathrm i\,k\cdot x/n),\qquad
+ f_a=\sum_{k\in\Lambda_R}a_k\chi_k,\qquad
+ S_R=\{E_j f_a:a\in\C^{\Lambda_R}\}\subset E_n.
+\]
+\begin{lemma}\label{lem:band}
+The real subspace $S_R$ has dimension $2B$, and for every $A\in S_R$,
+\begin{equation}\label{eq:band}
+ \ip{A}{K_{0,n}A}\leq b_R(n)\|A\|^2,
+ \qquad b_R(n)=\frac{4\pi^2dR^2}{n^2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $k,\ell\in\Lambda_R$, the product root-of-unity sum is
+$\sum_x\overline{\chi_k(x)}\chi_\ell(x)=n^d\mathbf1_{k=\ell}$.
+The no-alias condition ensures that coordinate differences, of absolute value
+at most $2R<n$, cannot be nonzero multiples of $n$. Thus synthesis is injective
+and its complex image has dimension $B$. As a real space that image has
+dimension $2B$; applying the real-linear injection $E_j$ preserves dimension.
+The factor two represents independent real and imaginary coefficients stored
+in two real internal coordinates, not two copies of a real scalar band.
+
+For completeness, energy orthogonality is needed as well as mass orthogonality.
+For each $i$,
+\[
+ D_i f_a=\sum_k a_k\bigl(e^{2\pi\mathrm i k_i/n}-1\bigr)\chi_k.
+\]
+Applying the same Gram sum to these derivative amplitudes gives
+\begin{align*}
+ \|E_jf_a\|^2&=n^d\sum_k|a_k|^2,\\
+ \ip{E_jf_a}{K_{0,n}E_jf_a}
+ &=n^d\sum_k |a_k|^2\sum_i|e^{2\pi\mathrm i k_i/n}-1|^2.
+\end{align*}
+Since $|e^{\mathrm it}-1|\leq|t|$ and $|k_i|\leq R$, each sum of multipliers
+is at most $4\pi^2dR^2/n^2$. This proves the bound for every member of the
+constructed image, not only its individual generators.
+\end{proof}
+
+\section{The finite information budget}
+Let $F$ be a finite-dimensional real vector space, $C:E_n\to F$ a linear
+measurement and $V:E_n\to E_n$ a linear operator. No symmetry or positivity
+of $V$ is needed. Let $\Phi:F\to\R$ be any function with $\Phi(0)=0$.
+\begin{theorem}\label{thm:budget}
+If $c>b_R(n)$ and
+\begin{equation}\label{eq:estimate}
+ c\|A\|^2\leq\ip{A}{K_{0,n}A}+\Phi(CA)+\ip{A}{VA}
+ \quad\text{for all }A\in E_n,
+\end{equation}
+then $2(2R+1)^d\leq\dim F+\rank V$.
+\end{theorem}
+\begin{proof}
+If the budget is smaller than $\dim S_R$, restrict the map $(C,V)$ to $S_R$.
+Its image has dimension at most $\dim F+\rank V$. Rank-nullity yields a
+nonzero $A\in S_R$ with $CA=VA=0$. Equation~\eqref{eq:estimate} and
+Lemma~\ref{lem:band} imply $c\|A\|^2\leq b_R(n)\|A\|^2$, a contradiction.
+\end{proof}
+The codomain dimension is a conservative measurement budget. We do not label
+this formal endpoint as a sharper theorem with $\rank C$ in its place.
+No regularity, sign, polynomial form or growth restriction on $\Phi$ enters.
+
+\begin{proposition}\label{prop:sector}
+If $P:E_n\to E_n$ is linear, $c>b_R(n)$ and
+$\dim F+\rank P<2(2R+1)^d$, the inequality
+\[
+ c\|A\|^2\leq\ip{A}{K_{0,n}A}+\Phi(CA)
+ \qquad(A\in\ker P)
+\]
+is false.
+\end{proposition}
+\begin{proof}
+Apply the same rank-nullity argument to $(C,P)|_{S_R}$. Its nonzero kernel
+vector belongs to the stipulated sector as well as the unobserved band.
+\end{proof}
+For example, $d=4,n=16,R=1$ gives dimension $162$ and
+$b_R(n)=\pi^2/16<1$. Twelve measurement coordinates and a repair of rank at
+most $149$ cannot yield~\eqref{eq:estimate} with $c=1$. This illustrates a
+necessary budget, not the programme's chosen target constant.
+
+\section{Uniform refinement and sector exclusion}
+Fix $N'\geq1$ and put $n_L=(L+1)N'$ for $L\geq0$.
+The finite-dimensional space $F$ is fixed. Allow arbitrary families
+$C_L:E_{n_L}\to F$, $\Phi_L:F\to\R$ with $\Phi_L(0)=0$, and
+$V_L:E_{n_L}\to E_{n_L}$ with $\rank V_L\leq r$ for one fixed integer $r$.
+\begin{theorem}\label{thm:uniform}
+There is no $c>0$ for which~\eqref{eq:estimate} holds for every $L$ and every
+$A\in E_{n_L}$ with these families. Likewise, for linear $P_L$ of rank at
+most $r$, there is no positive uniform $c$ for the sector estimates of
+Proposition~\ref{prop:sector} on all $\ker P_L$.
+\end{theorem}
+\begin{proof}
+Set $M=\dim F$ and $R=M+r+1$. Since $d\geq1$,
+$2(2R+1)^d>M+r$. Choose $L$ so large that $2R<n_L$ and $b_R(n_L)<c$.
+Here is a fully finite choice argument, without an assumed limit theorem:
+with $a=4\pi^2dR^2$, take an integer
+$L>\max\{2R,a/c,1\}$. Since $N'\geq1$, $n_L\geq L+1>L>1$, and
+$a<cL\leq cn_L^2$. Theorem~\ref{thm:budget} now contradicts the rank bound.
+Use Proposition~\ref{prop:sector} for the separate sector conclusion.
+\end{proof}
+The constants $c,r$ precede the quantifier over $L$. Arbitrary rescalings of
+$C_L$ preserve its fixed codomain and do not escape the theorem. Removing
+harmonic or constant directions is covered only when a concrete linear
+constraint describing the proposed sector has uniformly bounded rank.
+A quotient or its norm is not silently identified with such a sector.
+
+\section{Why dimension is not a sufficiency criterion}
+The following analytic statement is included to prevent the reverse inference
+from a necessary rank budget. It is not a new Lean-verified endpoint here.
+Let $E$ be a finite-dimensional real inner-product space, $H=H^*$ and
+$B=H-cI$. Fix linear $C:E\to F$, and decompose $E=N\oplus W$ with
+$N=\ker C$, $W=N^\perp$. In this decomposition write
+\[
+ B=\begin{pmatrix}A&D\\D^*&G\end{pmatrix}.
+\]
+\begin{proposition}\label{prop:schur}
+A finite real-valued function $\Phi$ with $\Phi(0)=0$ can make
+$\ip{x}{Bx}+\Phi(Cx)\geq0$ for every $x$ if and only if
+$A\succeq0$ and $\ker A\subseteq\ker D^*$. In that event a quadratic
+penalty suffices.
+\end{proposition}
+\begin{proof}
+Taking $x\in N$ proves $A\succeq0$. For $z\in\ker A$ and fixed $w\in W$,
+the value at $tz+w$ contains $2t\ip{z}{Dw}$, while $C(tz+w)=Cw$ is fixed.
+Boundedness below for all real $t$ forces this coefficient to vanish.
+
+Conversely, $\ker A\subseteq\ker D^*$ implies $D(W)\subseteq\operatorname{ran}A$.
+Let $A^\dagger$ be the inverse on $\operatorname{ran}A$ and zero on $\ker A$.
+Completing the square gives
+\[
+ \ip{n+w}{B(n+w)}=
+ \ip{n+A^\dagger Dw}{A(n+A^\dagger Dw)}
+ +\ip{w}{(G-D^*A^\dagger D)w}.
+\]
+The restriction $C|_W$ is injective; extend its inverse on $C(W)$ to a
+linear map $T:F\to W$. The quadratic function
+$\Phi(y)=\ip{Ty}{(D^*A^\dagger D-G)Ty}$ cancels the second term and vanishes
+at zero. If $F$ has a chosen Euclidean norm, a sufficiently large nonnegative
+multiple of $\|y\|^2$ also suffices, by finite-dimensional norm bounds.
+\end{proof}
+For a concrete counterexample let $H=\operatorname{diag}(0,2)$, $c=1$ and
+$C(x,y)=x+y$. On $\ker C$, $\ip{x}{(H-I)x}=0$, and $C$ detects the negative
+eigendirection of $H-I$. Nevertheless, on $(t,1-t)$ the repaired form is
+$1-2t+\Phi(1)$, unbounded below for every finite $\Phi(1)$.
+Kernel nonnegativity and low-mode detection alone do not suffice; cross-coupling
+must be checked.
+
+\section{Operator scaling and the actual consumer}
+In the repository, the flat fixed-volume covariance endpoint uses
+$K_0+aQ^*Q$ with the physical counting $\ell^2$ norm and the same unscaled
+flat Hodge operator. Its coercivity constant is $\min(1,a)/C_P$, with $C_P$
+from the full-periodic block-Poincare estimate. At fixed $d,N_c,N'$ the block
+codomain is fixed and finite. Inspection therefore identifies the unscaled
+flat base route with the setting of Theorem~\ref{thm:uniform}, with
+$\Phi_L(y)=a_L\|y\|^2$ and no fine repair. Even allowing arbitrary scalar
+$a_L$ or rescaling $Q_L$ does not yield a positive uniform full-space constant.
+This is a source-level specialization in this text; no new Lean adapter to
+that consumer is claimed.
+
+The inspected endpoint is explicitly fixed-volume. Its positive rate may
+depend on $L,N'$ and $C_P$, so there is no contradiction. Nor does the
+obstruction exclude all possible uniform Combes--Thomas arguments. Its
+locality radius and matrix-entry bounds also vary with $L$; coercivity alone
+would not settle the rate. An interacting Hessian, a growing measurement
+budget, a different sector norm or a physically rescaled operator must each
+be audited separately.
+
+In particular, writing $\ell=L+1$ so that $n_L=\ell N'$, replacing $K_0$
+by $\ell^2K_0$ changes the band threshold exactly to
+$4\pi^2dR^2/(N')^2$. The proof above
+no longer drives it below every fixed $c>0$. This observation is an escape
+from this proof, not an established coercivity theorem for the programme's
+physical operator. No ultraviolet activity estimate, continuum limit,
+Wilson-Hessian identification or Yang--Mills mass gap is obtained.
+
+\section{Formal evidence and publication context}
+The source-tree anchor containing all formal results used above is
+\begin{center}\small\texttt{e31b428917aa767b4a1aad097db5cf92fb9cd23e}.\end{center}
+The geometric and Fourier modules are ordinary proof dependencies, not
+assumptions about a newly supplied band. Each development stage has complete
+same-source fresh-clone Colab evidence. For the uniform endpoints the tested
+source is \texttt{17ca395d4e9de992b1c575454a112da9e6f97e86}; its two runs
+agree in compiled object, raw oracle log and source-manifest hashes. The
+standalone budget lemma uses \texttt{propext, Quot.sound}; the other four
+uniform-module reports also use \texttt{Classical.choice}. No extra axiom is
+reported. Actual-log acceptance and three real-field rejection tests pass
+under normal and optimized Python. These tests concern evidence handling,
+not mathematical independence.
+
+Short labels and an external declaration map replace long wrapped Lean names
+in this manuscript. The companion source map records exact names, source SHAs,
+and evidence directories. Reproduction commands remain in the existing
+copyable notebooks rather than being split into misleading line fragments.
+The fixed-map Schur criterion, its counterexample calculation and consumer
+specialization above are analytic or source-inspection arguments; the whole
+manuscript is not described as machine checked.
+
+\subsection*{Model assessments and review context}
+This text was prepared with the Codex agent in the author's ongoing research
+chat. The exact served model identifier is not exposed in this preparation
+record; a different named reviewer or reasoning setting is not inferred.
+The agent had the prior manuscript objections, source audits and reproduction
+records, and was not blind to the programme. No exact-PDF external model
+assessment, numerical score, independent human peer review or editorial
+acceptance is claimed for this text. Fresh runs of the same workflow are
+reproducibility checks, not independent scientific assessments. Previous
+version scores, if any, do not transfer to a revised artifact.
+
+Lluis Eriksson is both the author and operator of AIRR.science. Any later
+founder-author editorial decision must be recorded separately from model
+assessments and from independent review. The existing record \cite{eriksson}
+is an author-authorized historical import, not assessed under the current
+AIRR screening. This preparation does not change its public version or
+publication status. Code and manuscript licensing must be recorded separately;
+no new license grant for the historical PDF is inferred.
+
+\begin{thebibliography}{9}
+\bibitem{eriksson} L. Eriksson, \emph{Exact-Kernel Fourier Families Obstruct
+Every Penalty Factored Through a Block Map in a Flat Lattice Gauge Form},
+ai.viXra 2608.0015v1 (2026), AIRR ARR-2026-7EPM3V3DP796BBRR v1.
+\url{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v1/}.
+Historical import, not peer reviewed or assessed by AIRR; checked 30 October 2026.
+\bibitem{dodziuk} J. Dodziuk, \emph{Finite-difference approach to the Hodge
+theory of harmonic forms}, American Journal of Mathematics \textbf{98}
+(1976), 79--104. \url{https://doi.org/10.2307/2373615}.
+Institutional source: \url{https://academicworks.cuny.edu/gc_pubs/180/}.
+\end{thebibliography}
+\end{document}
