@@ -1,0 +1,12 @@
+{
+  "status": "TWO_FRESH_CLONE_TERMINAL_REPRODUCTIONS_MATCH",
+  "source_sha": "17ca395d4e9de992b1c575454a112da9e6f97e86",
+  "target_olean_sha256": "997dac2604cfd28551ef2f52fb3ef7428bb0ad658c03094916e545f87c291511",
+  "oracle_log_sha256": "31b90171fc94f9da29657741487c51e7c059cdbf641c5d2a9e00da1d661ed252",
+  "source_manifest_sha256": "acd31eff43c91bc8add367fe0a31c0696608a5abc69d369aedd5541eb33c608a",
+  "run_zip_hashes": [
+    "5db4dae9be73e261606daaafd806f929cec3b9d5dbf9f97769732c798feaad01",
+    "3269c599be25327153399d2959fa2dded0ad485e2469395f2e7a1bbaad01a444"
+  ],
+  "independent_scientific_review": false
+}
