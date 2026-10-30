@@ -57,7 +57,7 @@ Run028:23:58:38.054373UTC on29October to00:01:24.746989UTC on30October,
 166.692616s. Run028b:00:03:04.335155-00:06:29.300677UTC on30October,
 204.965522s. Both automatically released and the disconnected control was
 observed. Three earlier failed runtimes were also released. Total execution
-intervals including failures:0 seconds. Additional allocation
+intervals including failures:1000.350327 seconds. Additional allocation
 and release overhead and compute units were not measured. All five runtimes
 were this chat's own serial CPU/high-RAM machines;50.99GB RAM observed.
 No GPU, local Windows Lean/Lake, runtime sharing, additional purchase or idle
