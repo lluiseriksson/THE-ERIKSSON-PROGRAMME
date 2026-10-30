@@ -42,7 +42,7 @@ theorem physicalCenteredFourierBand_representation (hNc : 2 ≤ Nc) (j : Fin d)
   rcases hA with ⟨f, hf⟩
   have hm : f.val ∈ Submodule.span ℂ
       (Set.range (centeredFourierProfile (d := d) (n := n) R)) := f.property
-  rcases Submodule.mem_span_range_iff_exists_fun.mp hm with ⟨c, hc⟩
+  rcases (Submodule.mem_span_range_iff_exists_fun ℂ).mp hm with ⟨c, hc⟩
   have hs : (fun x => ∑ k, c k * centeredFourierProfile (d := d) (n := n) R k x) = f.val := by
     calc
       _ = ∑ k, c k • centeredFourierProfile (d := d) (n := n) R k := by
