@@ -1,2 +1,2 @@
-scientific-review.md -text
-summary.json -text
+scientific-review.md -text whitespace=trailing-space,space-before-tab,cr-at-eol
+summary.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
