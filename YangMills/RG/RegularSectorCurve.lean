@@ -47,7 +47,9 @@ theorem regular_sector_curve
   · have hc : HasFDerivAt ψ A.ker.subtypeL ((fun t : ℝ => t • u) 0) := by
       simpa using hψ
     simpa [Function.comp_def, u] using hc.comp_hasDerivAt 0 hray
-  · exact hray.continuousAt.tendsto.eventually hlevel
+  · have ht : Tendsto (fun t : ℝ => t • u) (𝓝 0) (𝓝 (0 : A.ker)) := by
+      simpa using hray.continuousAt.tendsto
+    exact ht.eventually hlevel
 
 theorem C1_regular_sector_curve
     (P : E → G) (A : E →L[ℝ] G)
@@ -60,7 +62,6 @@ theorem C1_regular_sector_curve
 
 variable {F : Type*}
 variable [NormedAddCommGroup F] [NormedSpace ℝ F] [FiniteDimensional ℝ F]
-variable [FiniteDimensional ℝ E]
 
 theorem exists_unseen_regular_sector_curve
     (S : Submodule ℝ E) (P : E → G) (A : E →L[ℝ] G)
@@ -100,4 +101,5 @@ theorem exists_unseen_regular_sector_curve
   · have hc : HasFDerivAt C L (γ 0) := by simpa [hγ0] using hC
     simpa [hL] using hc.comp_hasDerivAt 0 hγ
 
+end
 end YangMills.RG
