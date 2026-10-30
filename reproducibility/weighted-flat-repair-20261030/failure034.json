@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "54662efa197a1a1b38a5b2155580bc02db73d7a8",
+  "started_utc": "2026-10-30T06:51:24.771241+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.566,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.374,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.719,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 20.926,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 99.723,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 201.08,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: /TorusPhysicalEmbedding.lean:40:6: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: YangMills/RG/TorusPhysicalEmbedding.lean:40:6: 'omega' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: YangMills/RG/TorusPhysicalEmbedding.lean:63:79: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n\u26a0 [8175/8184] Built YangMills.RG.TorusPhysicalShift (9.6s)\nwarning: YangMills/RG/TorusPhysicalShift.lean:18:10: This simp argument is unused:\n  Fin.val_natCast\n\nHint: Omit it from the simp argument list.\n  simp [F\u0335i\u0335n\u0335.\u0335v\u0335a\u0335l\u0335_\u0335n\u0335a\u0335t\u0335C\u0335a\u0335s\u0335t\u0335,\u0335 \u0335Nat.mod_eq_of_lt (x i).isLt]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:18:27: This simp argument is unused:\n  Nat.mod_eq_of_lt (x i).isLt\n\nHint: Omit it from the simp argument list.\n  simp [Fin.val_natCast,\u0335 \u0335N\u0335a\u0335t\u0335.\u0335m\u0335o\u0335d\u0335_\u0335e\u0335q\u0335_\u0335o\u0335f\u0335_\u0335l\u0335t\u0335 \u0335(\u0335x\u0335 \u0335i\u0335)\u0335.\u0335i\u0335s\u0335L\u0335t\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:27:24: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [FinBox.shift, P\u0335i\u0335.\u0335s\u0335i\u0335n\u0335g\u0335l\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335ZMod.natCast_mod]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:28:27: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [FinBox.shift, h,\u0335 \u0335P\u0335i\u0335.\u0335s\u0335i\u0335n\u0335g\u0335l\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:41:31: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:40:54: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:41:31: 'ring' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:78:86: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: YangMills/RG/TorusPhysicalShift.lean:78:86: 'abel' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n\u2714 [8176/8184] Built YangMills.RG.PhysicalGaugeFlatPoincare (14s)\n\u2714 [8177/8184] Built YangMills.RG.PhysicalPoincareWall (6.6s)\n\u2714 [8178/8184] Built YangMills.RG.PhysicalPoincareSectorQuotient (6.4s)\n\u2714 [8179/8184] Built YangMills.RG.PhysicalPoincareLowModeFalsifier (6.7s)\n\u2714 [8180/8184] Built YangMills.RG.PhysicalPoincareLowModeHodge (10s)\n\u2714 [8181/8184] Built YangMills.RG.TorusPhysicalHodge (22s)\n\u2714 [8182/8184] Built YangMills.RG.PhysicalFourierRankObstruction (13s)\n\u2714 [8183/8184] Built YangMills.RG.UniformPhysicalCoarseRankWall (7.0s)\n\u2716 [8184/8184] Building YangMills.RG.WeightedFlatRepairWall (18s)\ntrace: .> LEAN_PATH=/content/eriksson-paper47-20261030-034/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-paper47-20261030-034/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-paper47-20261030-034/YangMills/RG/WeightedFlatRepairWall.lean -o /content/eriksson-paper47-20261030-034/.lake/build/lib/lean/YangMills/RG/WeightedFlatRepairWall.olean -i /content/eriksson-paper47-20261030-034/.lake/build/lib/lean/YangMills/RG/WeightedFlatRepairWall.ilean -c /content/eriksson-paper47-20261030-034/.lake/build/ir/YangMills/RG/WeightedFlatRepairWall.c --setup /content/eriksson-paper47-20261030-034/.lake/build/ir/YangMills/RG/WeightedFlatRepairWall.setup.json --json\nerror: YangMills/RG/WeightedFlatRepairWall.lean:131:4: Type mismatch: After simplification, term\n  hdim\n has type\n  finrank \u211d F < 2 * (2 * R + 1) ^ d\nbut is expected to have type\n  finrank \u211d F + finrank \u211d \u21a5(LinearMap.range 0) < 2 * (2 * R + 1) ^ d\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.WeightedFlatRepairWall\nerror: build failed\n",
+  "finished_utc": "2026-10-30T06:56:52.359606+00:00"
+}

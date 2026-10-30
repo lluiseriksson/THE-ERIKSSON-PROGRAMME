@@ -1,0 +1,15 @@
+{
+  "status": "WEIGHTED_FLAT_REPAIR_WALL_VALIDATED",
+  "zip_sha256": "802eec785d1baa60791362d6bc411986f90626c9614451b304215f5d46e8d556",
+  "source_sha": "acf33d4fc9d9d98efe4d7df2c068cb9a6f7972d4",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 8,
+  "target_olean_sha256": "c705b57bef8865c5d749b3b6d04628634b5213cacd6373435388e6156dc76a3a",
+  "oracle_log_sha256": "9fbe4d99a8a25cc22c93e65edacf638fec95bde392332a261be7e98542fb8979",
+  "source_manifest_sha256": "3e9f7f2be5ddd120da76f44a8d47e21be02bdaed540b7fa99f38bc60ef5408b5",
+  "started_utc": "2026-10-30T08:01:18.725579+01:00",
+  "finished_utc": "2026-10-30T08:04:50.427233+01:00",
+  "scope": "Concrete bounded-coefficient weighted curl/divergence repair; no rank bound; unit-spacing flat wall"
+}

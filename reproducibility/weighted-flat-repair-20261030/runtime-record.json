@@ -1,0 +1,41 @@
+{
+  "note": "All four serial runtimes auto-unassigned; reconnect UI verified. No GPU, extra charges/contracts, shared runtime or local compilation. Intervals are driver execution, not unmeasured allocation overhead.",
+  "allocation_overhead_seconds": null,
+  "total_reported_execution_seconds": 1214.725738,
+  "runs": [
+    {
+      "source_sha": "f3efa4aaebea966200cbdfa83ee24e71818ffa0d",
+      "finished_utc": "2026-10-30T06:48:00.0392880Z",
+      "started_utc": "2026-10-30T06:43:15.9827070Z",
+      "execution_seconds": 284.056581,
+      "status": "FAIL",
+      "released": true
+    },
+    {
+      "source_sha": "54662efa197a1a1b38a5b2155580bc02db73d7a8",
+      "finished_utc": "2026-10-30T06:56:52.3596060Z",
+      "started_utc": "2026-10-30T06:51:24.7712410Z",
+      "execution_seconds": 327.588365,
+      "status": "FAIL",
+      "released": true
+    },
+    {
+      "source_sha": "acf33d4fc9d9d98efe4d7df2c068cb9a6f7972d4",
+      "finished_utc": "2026-10-30T07:04:50.4272330Z",
+      "started_utc": "2026-10-30T07:01:18.7255790Z",
+      "execution_seconds": 211.701654,
+      "status": "WEIGHTED_FLAT_REPAIR_WALL_VALIDATED",
+      "released": true
+    },
+    {
+      "source_sha": "acf33d4fc9d9d98efe4d7df2c068cb9a6f7972d4",
+      "finished_utc": "2026-10-30T07:12:50.0182200Z",
+      "started_utc": "2026-10-30T07:06:18.6390820Z",
+      "execution_seconds": 391.379138,
+      "status": "WEIGHTED_FLAT_REPAIR_WALL_VALIDATED",
+      "released": true
+    }
+  ],
+  "compute_units": null,
+  "runtime": "Colab Pro+ Linux CPU/high-RAM"
+}
