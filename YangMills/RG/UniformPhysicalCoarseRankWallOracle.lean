@@ -1,0 +1,6 @@
+import YangMills.RG.UniformPhysicalCoarseRankWall
+#print axioms YangMills.RG.physicalBand_budget_exceeded
+#print axioms YangMills.RG.exists_refinement_below_threshold
+#print axioms YangMills.RG.physical_band_restricted_estimate_false
+#print axioms YangMills.RG.no_uniform_coarse_finite_rank_repair
+#print axioms YangMills.RG.no_uniform_coarse_finite_rank_sector
