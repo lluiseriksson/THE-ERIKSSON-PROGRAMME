@@ -21,8 +21,9 @@
 \begin{abstract}
 On a finite periodic lattice with unit spacing, a flat Hodge form cannot have
 a positive coercivity constant uniform under refinement if it is supplemented
-only by observations in a fixed finite-dimensional space and uniformly bounded
-rank fine-space repairs. The observations may vary arbitrarily with the
+only by linear observations in a fixed finite-dimensional real space and
+linear fine-space repairs of uniformly bounded rank. The linear observations
+may vary arbitrarily with the
 refinement, and their penalty need only vanish at zero. We prove the same
 obstruction directly on kernels of uniformly bounded rank constraints.
 The proof constructs a real physical Fourier subspace of dimension
@@ -42,18 +43,29 @@ line-integral block map. Changing the map can remove a particular witness.
 Here the obstruction depends instead on the amount of coarse information:
 a whole low-energy subspace is too large to be seen by a fixed-dimensional
 measurement together with a bounded-rank repair. The map need not factor
-through the original block variable, be local, or obey a norm bound.
+through the original block variable, be local, or obey a norm bound; it is
+always real-linear. The penalty applied to its output may be nonlinear.
 The restricted-sector result is proved separately and does not follow merely
 from failure of an estimate on the full space.
 
 Fourier diagonalization, rank-nullity and finite-dimensional Schur complements
-are classical. Finite-difference Hodge theory has a long history; Dodziuk's
+are classical. For the singular Schur complement and pseudoinverse background,
+see Albert and Carlson--Haynsworth--Markham \cite{albert,carlson}. Finite-difference Hodge theory has a long history; Dodziuk's
 work \cite{dodziuk} provides historical context, rather than this paper's
 specific lattice normalization. We make no claim to a new general spectral
 principle or an exhaustive priority search. The contribution is a concrete,
 reproducibly checked constraint on proposed repair routes in this programme.
 This consolidation is intended for the existing paper dossier, rather than
 an additional deposit for each lemma.
+
+Gauge-fixing and block averaging in renormalization-group constructions
+require their own domain and scaling analysis. Dimock \cite{dimock} develops
+covariant axial gauge for an abelian model and discusses its relation to
+Balaban's programme. His introduction distinguishes a finite unit lattice
+from a torus with small spacing, equivalently a large unit-spacing volume.
+Our unrestricted, unit-spacing flat form is not identified with every
+constrained fluctuation form in those constructions. This negative diagnostic
+does not refute their gauge-fixed estimates or establish an interacting bound.
 
 \section{Spaces and the actual flat form}
 Fix integers $d\geq1$, $n\geq1$ and $N_c\geq2$. Set
@@ -94,9 +106,11 @@ plaquette incidences and the divergence term account for every direction
 exactly once, with no extra factor two.
 
 \section{The original block kernel and its repair budget}\label{sec:old}
-We retain the substantive results of the historical paper \cite{eriksson}
-before explaining the new information-budget obstruction. Use a block side
-$\ell\geq1$, set $n=\ell N'$, and for a coarse site $y$ put
+We retain the principal results of the historical paper \cite{eriksson}
+before explaining the new information-budget obstruction. The original
+Appendix~A (an even-block square-wave witness with quotient $8/\ell$) remains
+in the preserved v1; it is not reproduced here. Use positive integers
+$\ell,N'$, set $n=\ell N'$, and for a coarse site $y$ put
 $B_y=\{\ell y+r:0\leq r_i<\ell\}$. The original line-integral map is
 \[
  (Q_\ell A)_i(y)=\ell^{-d}\sum_{x\in B_y}\sum_{k=0}^{\ell-1}A_i(x+ke_i).
@@ -192,7 +206,7 @@ are analytic statements. The older exact kernel, norm-form energy, finite
 budget and dimension-four factorized no-go have their own preserved formal
 source and reproductions, separately anchored below.
 \section{A constructed low band}
-For $R\geq0$ with $2R<n$, let $\Lambda_R=\{-R,\ldots,R\}^d$ and
+For a nonnegative integer $R$ with $2R<n$, let $\Lambda_R=\{-R,\ldots,R\}^d$ and
 $B=|\Lambda_R|=(2R+1)^d$. Define
 \[
  \chi_k(x)=\exp(2\pi\mathrm i\,k\cdot x/n),\qquad
@@ -273,10 +287,11 @@ most $149$ cannot yield~\eqref{eq:estimate} with $c=1$. This illustrates a
 necessary budget, not the programme's chosen target constant.
 
 \section{Uniform refinement and sector exclusion}
-Fix $N'\geq1$ and put $n_L=(L+1)N'$ for $L\geq0$.
+Fix a positive integer $N'$ and put $n_L=(L+1)N'$ for nonnegative integers $L$.
 The finite-dimensional space $F$ is fixed. Allow arbitrary families
-$C_L:E_{n_L}\to F$, $\Phi_L:F\to\R$ with $\Phi_L(0)=0$, and
-$V_L:E_{n_L}\to E_{n_L}$ with $\rank V_L\leq r$ for one fixed integer $r$.
+of linear maps $C_L:E_{n_L}\to F$, arbitrary functions $\Phi_L:F\to\R$
+with $\Phi_L(0)=0$, and linear maps $V_L:E_{n_L}\to E_{n_L}$ with
+$\rank V_L\leq r$ for one fixed nonnegative integer $r$.
 \begin{theorem}\label{thm:uniform}
 There is no $c>0$ for which~\eqref{eq:estimate} holds for every $L$ and every
 $A\in E_{n_L}$ with these families. Likewise, for linear $P_L$ of rank at
@@ -297,10 +312,16 @@ $C_L$ preserve its fixed codomain and do not escape the theorem. Removing
 harmonic or constant directions is covered only when a concrete linear
 constraint describing the proposed sector has uniformly bounded rank.
 A quotient or its norm is not silently identified with such a sector.
+Linearity is essential: if nonlinear observations were allowed, the single
+real observation $C_L(A)=\|A\|^2$, with $\Phi_L(y)=y$ and $V_L=0$, would give
+the uniform lower bound $c=1$ since $K_{0,n_L}\succeq0$. This counterexample
+explains why finite-dimensional output alone is not the hypothesis.
 
 \section{Why dimension is not a sufficiency criterion}
 The following analytic statement is included to prevent the reverse inference
-from a necessary rank budget. It is not a new Lean-verified endpoint here.
+from a necessary rank budget. It is not a new Lean-verified endpoint here. The proof below is the classical
+singular-Schur range condition \cite{albert,carlson}, expressed as boundedness
+below on each measurement fiber; we claim no new general matrix criterion.
 Let $E$ be a finite-dimensional real inner-product space, $H=H^*$ and
 $B=H-cI$. Fix linear $C:E\to F$, and decompose $E=N\oplus W$ with
 $N=\ker C$, $W=N^\perp$. In this decomposition write
@@ -342,14 +363,20 @@ must be checked.
 \section{Operator scaling and the actual consumer}
 In the repository, the flat fixed-volume covariance endpoint uses
 $K_0+aQ^*Q$ with the physical counting $\ell^2$ norm and the same unscaled
-flat Hodge operator. Its coercivity constant is $\min(1,a)/C_P$, with $C_P$
-from the full-periodic block-Poincare estimate. At fixed $d,N_c,N'$ the block
+flat Hodge operator. More precisely, the declared precision shell includes
+$-\Sigma$. Specializing every perturbation and its summable majorant to zero
+and taking $a>0$ gives the available certified coercivity lower bound
+$\min(1,a)/C_P$, with $C_P>0$ from the full-periodic block-Poincare estimate.
+This is not a claim that this value is optimal. At fixed $d,N_c,N'$ the block
 codomain is fixed and finite. Inspection therefore identifies the unscaled
 flat base route with the setting of Theorem~\ref{thm:uniform}, with
 $\Phi_L(y)=a_L\|y\|^2$ and no fine repair. Even allowing arbitrary scalar
 $a_L$ or rescaling $Q_L$ does not yield a positive uniform full-space constant.
 This is a source-level specialization in this text; no new Lean adapter to
-that consumer is claimed.
+that consumer is claimed. At the new source anchor below, the module
+\texttt{PhysicalGaugeFixedPrecision} defines
+\texttt{flatGaugeFixedPrecisionCLM}; its explicit-Poincare coercivity theorem
+is recorded by its full name and specialization in the linked declaration map.
 
 The inspected endpoint is explicitly fixed-volume. Its positive rate may
 depend on $L,N'$ and $C_P$, so there is no contradiction. Nor does the
@@ -380,7 +407,14 @@ their six named reports use only the three standard axioms. The reproduced
 factorized endpoint is dimension four. The general-dimensional witness
 calculation, trigonometric closed form, spectral multiplicity, liminf and
 witness-line statements are analytic here; they are not all silently included
-in that formalization claim. The external declaration map keeps both anchors.
+in that formalization claim. The external declaration map keeps both anchors. The public source repository is
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.
+The corrected map is
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7ab9a61c060d07a5a7a08081115981e47684a39a/papers/flat-coarse-rank/declaration-map.json}{\texttt{papers/flat-coarse-rank/declaration-map.json}}
+and the preserved evidence is
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/e31b428917aa767b4a1aad097db5cf92fb9cd23e/reproducibility}{\texttt{reproducibility/}}. Exact source SHAs, not moving branch heads,
+identify the formal claims. The revised map and manuscript have their own
+revision SHA in the accompanying package.
 
 The geometric and Fourier modules are ordinary proof dependencies, not
 assumptions about a newly supplied band. Each development stage has complete
@@ -409,9 +443,17 @@ This text was prepared with the Codex agent in the author's ongoing research
 chat. The exact served model identifier is not exposed in this preparation
 record; a different named reviewer or reasoning setting is not inferred.
 The agent had the prior manuscript objections, source audits and reproduction
-records, and was not blind to the programme. No exact-PDF external model
-assessment, numerical score, independent human peer review or editorial
-acceptance is claimed for this text. Fresh runs of the same workflow are
+records, and was not blind to the programme. An earlier eight-page PDF (SHA256 recorded in the accompanying report) was
+assessed once by a subagent configured as \texttt{gpt-6-astra}, with express
+author authorization. Actual backend identity and reasoning setting were
+not exposed. The reviewer saw the exact PDF and prior context; the workflow
+used the same chat, account and provider and was not blind or organizationally
+independent. Its complete report and six objections are preserved with this
+revision. This revised artifact incorporates scope and attribution corrections;
+the earlier assessment does not apply to its new bytes. No numerical score,
+independent human peer review or editorial acceptance is claimed. The reviewer
+did not rebuild Lean or independently audit the complete evidence/dependency
+closure; formal reproduction statements above describe the supplied records. Fresh runs of the same workflow are
 reproducibility checks, not independent scientific assessments. Previous
 version scores, if any, do not transfer to a revised artifact.
 
@@ -434,5 +476,14 @@ Historical import, not peer reviewed or assessed by AIRR; checked 30 October 202
 theory of harmonic forms}, American Journal of Mathematics \textbf{98}
 (1976), 79--104. \url{https://doi.org/10.2307/2373615}.
 Institutional source: \url{https://academicworks.cuny.edu/gc_pubs/180/}.
+\bibitem{albert} A. Albert, \emph{Conditions for Positive and Nonnegative
+Definiteness in Terms of Pseudoinverses}, SIAM Journal on Applied Mathematics
+\textbf{17} (1969), 434--440. \url{https://doi.org/10.1137/0117041}.
+\bibitem{carlson} D. Carlson, E. Haynsworth and T. Markham,
+\emph{A Generalization of the Schur Complement by Means of the Moore--Penrose
+Inverse}, SIAM Journal on Applied Mathematics \textbf{26} (1974), 169--175.
+\url{https://doi.org/10.1137/0126013}.
+\bibitem{dimock} J. Dimock, \emph{Covariant Axial Gauge},
+arXiv:1410.2798v2 (2014). \url{https://arxiv.org/abs/1410.2798v2}.
 \end{thebibliography}
 \end{document}
