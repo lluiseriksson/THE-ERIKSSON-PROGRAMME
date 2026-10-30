@@ -1,0 +1,4 @@
+import YangMills.RG.NonlinearTangentCoercivity
+#print axioms YangMills.RG.tangent_kernel_norm_ratio_tendsto
+#print axioms YangMills.RG.nonlinear_tangent_coercivity_false
+#print axioms YangMills.RG.physicalBand_nonlinear_tangent_coercivity_false
