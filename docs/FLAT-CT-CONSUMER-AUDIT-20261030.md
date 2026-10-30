@@ -10,7 +10,7 @@ The concrete flat CT base route matches the unit-spacing theorem:
 | Fine norm | PhysicalGaugeCochains.lean:97 | PhysicalGaugeOneCochain is PiLp2 over positive bonds, with Euclidean internal coordinates |
 | Flat operator | PhysicalGaugeCochains.lean:482 | flatGaugeHodgeK0CLM is backgroundGaugeHodgeK0CLM at the trivial background; no refinement-squared multiplier |
 | Fine/coarse domains | PhysicalGaugeCochains.lean:624,628 | Fine side L*Nprime; coarse side Nprime, independent of L |
-| Measurement | PhysicalGaugeCochains.lean:648 | flatBlockConstraintQCLM is linear linAvg, viewed in the physical positive-bond counting space |
+| Measurement | PhysicalGaugeCochains.lean:644 | flatBlockConstraintQCLM is linear linAvg, viewed in the physical positive-bond counting space |
 | Poincare gate | PhysicalGaugeHodgePoincare.lean:26 | CP>0 and every fine A obeys norm²<=CP*(actualK0energy+norm(QA)²) |
 | Precision | PhysicalGaugeFixedPrecision.lean:35 | actual flat K0+aQ*Q-Sigma, with no physical-spacing multiplier inserted |
 | CT endpoint | PhysicalShellCombesThomasEndpoint.lean:87 | fixed-volume covariance kernel estimate, c=min(1,a)/CP, with an explicit L-dependent tilt budget |
