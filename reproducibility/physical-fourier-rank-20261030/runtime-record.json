@@ -1,0 +1,35 @@
+{
+  "runtime_type": "own serial Colab CPU/high-RAM",
+  "all_released_observed": true,
+  "runs": [
+    {
+      "run": "030",
+      "source_sha": "1ce5b87bac397b75cfcd6d422b77cd5fc2413464",
+      "status": "FAIL",
+      "started_utc": "2026-10-30T01:42:33.0602860Z",
+      "finished_utc": "2026-10-30T01:47:38.5086560Z",
+      "execution_seconds": 305.44837
+    },
+    {
+      "run": "031",
+      "source_sha": "a79e6e4b2e5de72e73bd6109069eb2f82127c355",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "started_utc": "2026-10-30T01:51:16.5616140Z",
+      "finished_utc": "2026-10-30T01:56:17.0960800Z",
+      "execution_seconds": 300.534466
+    },
+    {
+      "run": "031b",
+      "source_sha": "a79e6e4b2e5de72e73bd6109069eb2f82127c355",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "started_utc": "2026-10-30T01:57:20.2031400Z",
+      "finished_utc": "2026-10-30T02:01:22.8674830Z",
+      "execution_seconds": 242.664343
+    }
+  ],
+  "total_execution_seconds": 848.647179,
+  "extra_allocation_release_overhead_seconds": null,
+  "compute_units": null,
+  "gpu_used": false,
+  "runtime_shared_with_other_chat": false
+}
