@@ -1,0 +1,13 @@
+{
+  "scientific_independence_claim": false,
+  "zip_sha256": [
+    "802eec785d1baa60791362d6bc411986f90626c9614451b304215f5d46e8d556",
+    "1aa816ecc6933db27db4109f29ed69cdaf10ea36b0b0f4948dcfebb8544a0d30"
+  ],
+  "status": "TWO_FRESH_CLONE_REPRODUCTIONS_MATCH",
+  "target_olean_sha256": "c705b57bef8865c5d749b3b6d04628634b5213cacd6373435388e6156dc76a3a",
+  "source_manifest_sha256": "3e9f7f2be5ddd120da76f44a8d47e21be02bdaed540b7fa99f38bc60ef5408b5",
+  "source_sha": "acf33d4fc9d9d98efe4d7df2c068cb9a6f7972d4",
+  "oracle_log_sha256": "9fbe4d99a8a25cc22c93e65edacf638fec95bde392332a261be7e98542fb8979",
+  "distinct_start_times": true
+}
