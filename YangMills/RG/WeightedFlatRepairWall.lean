@@ -117,10 +117,18 @@ theorem weightedFlatRepair_coarse_estimate_false
       c * ‖A‖ ^ 2 ≤ inner ℝ A (flatGaugeHodgeK0CLM d n Nc ρ A) +
         Phi (C A) + inner ℝ A (weightedFlatRepairCLM ρ w v A) := by
   intro hbound
+  have hzeroRange : LinearMap.range
+      (0 : PhysicalGaugeOneCochain d n Nc →ₗ[ℝ] PhysicalGaugeOneCochain d n Nc) = ⊥ := by
+    apply le_antisymm
+    · rintro x ⟨y, hy⟩
+      change x = 0
+      change (0 : PhysicalGaugeOneCochain d n Nc) = x at hy
+      exact hy.symm
+    · exact bot_le
   have hdim' : finrank ℝ F + finrank ℝ (LinearMap.range
       (0 : PhysicalGaugeOneCochain d n Nc →ₗ[ℝ] PhysicalGaugeOneCochain d n Nc)) <
       finrank ℝ (physicalCenteredFourierBand (n := n) hNc j R) := by
-    simpa [physicalCenteredFourierBand_finrank hNc j R hR] using hdim
+    simpa [hzeroRange, physicalCenteredFourierBand_finrank hNc j R hR] using hdim
   rcases exists_unseen_of_finrank_lt_measurement_add_repair
       (physicalCenteredFourierBand hNc j R) C
       (0 : PhysicalGaugeOneCochain d n Nc →ₗ[ℝ] PhysicalGaugeOneCochain d n Nc) hdim'
