@@ -117,22 +117,34 @@ theorem weightedFlatRepair_coarse_estimate_false
       c * ‖A‖ ^ 2 ≤ inner ℝ A (flatGaugeHodgeK0CLM d n Nc ρ A) +
         Phi (C A) + inner ℝ A (weightedFlatRepairCLM ρ w v A) := by
   intro hbound
-  have hzeroRange : LinearMap.range
-      (0 : PhysicalGaugeOneCochain d n Nc →ₗ[ℝ] PhysicalGaugeOneCochain d n Nc) = ⊥ := by
-    apply le_antisymm
-    · rintro x ⟨y, hy⟩
-      change x = 0
-      change (0 : PhysicalGaugeOneCochain d n Nc) = x at hy
-      exact hy.symm
-    · exact bot_le
-  have hdim' : finrank ℝ F + finrank ℝ (LinearMap.range
-      (0 : PhysicalGaugeOneCochain d n Nc →ₗ[ℝ] PhysicalGaugeOneCochain d n Nc)) <
-      finrank ℝ (physicalCenteredFourierBand (n := n) hNc j R) := by
-    simpa [hzeroRange, physicalCenteredFourierBand_finrank hNc j R hR] using hdim
-  rcases exists_unseen_of_finrank_lt_measurement_add_repair
-      (physicalCenteredFourierBand hNc j R) C
-      (0 : PhysicalGaugeOneCochain d n Nc →ₗ[ℝ] PhysicalGaugeOneCochain d n Nc) hdim'
-    with ⟨A, hAS, hA, hCA, hz⟩
+  let S := physicalCenteredFourierBand (n := n) hNc j R
+  have hdimS : finrank ℝ F < finrank ℝ S := by
+    dsimp [S]
+    rw [physicalCenteredFourierBand_finrank hNc j R hR]
+    exact hdim
+  let f : S →ₗ[ℝ] F := C.comp S.subtype
+  have hnotinj : ¬ Function.Injective f := by
+    intro hinj
+    have hle := LinearMap.finrank_le_finrank_of_injective hinj
+    exact (not_le_of_gt hdimS) hle
+  have hex : ∃ x : S, x ≠ 0 ∧ f x = 0 := by
+    by_contra hnone
+    push_neg at hnone
+    apply hnotinj
+    intro x y hxy
+    have hz : f (x - y) = 0 := by rw [map_sub, hxy, sub_self]
+    have hsub : x - y = 0 := by
+      by_contra hne
+      exact hnone (x - y) hne hz
+    exact sub_eq_zero.mp hsub
+  rcases hex with ⟨x, hx, hfx⟩
+  let A : PhysicalGaugeOneCochain d n Nc := x.val
+  have hAS : A ∈ physicalCenteredFourierBand hNc j R := x.property
+  have hA : A ≠ 0 := by
+    intro hz
+    apply hx
+    exact Subtype.ext hz
+  have hCA : C A = 0 := hfx
   have hlo := hbound A
   rw [hCA, hPhi, add_zero] at hlo
   have hweight := weightedFlatRepair_le_flat ρ w v M hw hv A
