@@ -5,6 +5,7 @@ cancellation. The full curl/divergence energy identification is not assumed
 here and remains a separate transport obligation. -/
 namespace YangMills.RG
 open scoped BigOperators RealInnerProductSpace
+set_option maxHeartbeats 1200000
 
 section Summation
 variable {d n : ℕ} [NeZero n]
@@ -35,6 +36,13 @@ theorem flat_commuting_cross_cancellation (f g : FinBox d n → V) (i j : Fin d)
   simp_rw [hc] at h₁
   have h₂ := flat_forward_summation_by_parts Bg f j
   simp only [real_inner_comm] at h₂
+  have hswap :
+      (∑ x, inner ℝ (Bg x) (f x - f (x.shiftBack j))) =
+        ∑ x, inner ℝ (f x - f (x.shiftBack j)) (g x - g (x.shiftBack i)) := by
+    apply Finset.sum_congr rfl
+    intro x _
+    exact real_inner_comm _ _
+  rw [hswap] at h₂
   change (∑ x, inner ℝ (f (x.shift i) - f x) (Dg x)) = _
   linarith
 
@@ -85,8 +93,9 @@ theorem componentwiseFlatGradient_energy (A : PhysicalGaugeOneCochain d n Nc) :
 
 noncomputable def componentwiseWeightedRepairCLM (w : PhysicalGradientIndex d n → ℝ) :
     PhysicalGaugeOneCochain d n Nc →L[ℝ] PhysicalGaugeOneCochain d n Nc :=
-  componentwiseFlatGradientCLM.adjoint.comp
-    ((coordinateWeightCLM w).comp componentwiseFlatGradientCLM)
+  let G : PhysicalGaugeOneCochain d n Nc →L[ℝ] PhysicalStackedGradient d n Nc :=
+    componentwiseFlatGradientCLM
+  G.adjoint.comp ((coordinateWeightCLM w).comp G)
 
 theorem componentwiseWeightedRepair_energy (w : PhysicalGradientIndex d n → ℝ)
     (A : PhysicalGaugeOneCochain d n Nc) :
