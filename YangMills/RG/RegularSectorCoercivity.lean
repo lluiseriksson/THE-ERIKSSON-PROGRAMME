@@ -38,7 +38,7 @@ theorem quadratic_curve_rescaled_tendsto (T : E →L[ℝ] E)
     Tendsto (fun t : ℝ => inner ℝ (t⁻¹ • γ t) (T (t⁻¹ • γ t)))
       (𝓝[≠] 0) (𝓝 (inner ℝ v (T v))) := by
   have hu := curve_rescaled_tendsto γ v hγ hγ0
-  exact hu.inner (T.continuous.tendsto.comp hu)
+  exact hu.inner ((T.continuous.tendsto v).comp hu)
 end Quadratic
 
 section Sector
@@ -81,7 +81,7 @@ theorem regular_sector_local_coercivity_false
       hball.filter_mono nhdsWithin_le_nhds,
       hsmall.filter_mono nhdsWithin_le_nhds] with t htP htball htdelta
     have hb : c * ‖γ t‖ ^ 2 ≤ inner ℝ (γ t) (T (γ t)) + K * ‖C (γ t)‖ ^ 2 :=
-      (hbound _ htP htball).trans (add_le_add_left (hPhi _ htdelta) _)
+      (hbound _ htP htball).trans (add_le_add (le_refl _) (hPhi _ htdelta))
     dsimp only [u, z]
     calc
       c * ‖t⁻¹ • γ t‖ ^ 2 = (t⁻¹) ^ 2 * (c * ‖γ t‖ ^ 2) := by
@@ -93,8 +93,11 @@ theorem regular_sector_local_coercivity_false
   have hl : Tendsto (fun t : ℝ => c * ‖u t‖ ^ 2) (𝓝[≠] 0)
       (𝓝 (c * ‖v‖ ^ 2)) := tendsto_const_nhds.mul (hu.norm.pow 2)
   have hq : Tendsto (fun t : ℝ => inner ℝ (u t) (T (u t))) (𝓝[≠] 0)
-      (𝓝 (inner ℝ v (T v))) := hu.inner (T.continuous.tendsto.comp hu)
-  have hright := hq.add (tendsto_const_nhds.mul (hz.norm.pow 2))
+      (𝓝 (inner ℝ v (T v))) := hu.inner ((T.continuous.tendsto v).comp hu)
+  have hright : Tendsto
+      (fun t : ℝ => inner ℝ (u t) (T (u t)) + K * ‖z t‖ ^ 2) (𝓝[≠] 0)
+      (𝓝 (inner ℝ v (T v) + K * ‖(0 : F)‖ ^ 2)) :=
+    hq.add (tendsto_const_nhds.mul (hz.norm.pow 2))
   have hcv : c * ‖v‖ ^ 2 ≤ inner ℝ v (T v) := by
     simpa using le_of_tendsto_of_tendsto hl hright hineq
   have hstrict : b * ‖v‖ ^ 2 < c * ‖v‖ ^ 2 :=
@@ -125,13 +128,16 @@ theorem physicalBand_regular_sector_local_coercivity_false
     ¬ ∀ x : PhysicalGaugeOneCochain d n Nc, P x = 0 → ‖x‖ < r →
       c * ‖x‖ ^ 2 ≤ inner ℝ x (flatGaugeHodgeK0CLM d n Nc rho x) +
         inner ℝ x (componentwiseWeightedRepairCLM w x) + Phi (C x) := by
+  let T : PhysicalGaugeOneCochain d n Nc →L[ℝ] PhysicalGaugeOneCochain d n Nc :=
+    flatGaugeHodgeK0CLM d n Nc rho + componentwiseWeightedRepairCLM (Nc := Nc) w
   have hband : ∀ x : PhysicalGaugeOneCochain d n Nc,
       x ∈ physicalCenteredFourierBand (n := n) hNc j R →
-      inner ℝ x ((flatGaugeHodgeK0CLM d n Nc rho + componentwiseWeightedRepairCLM w) x) ≤
+      inner ℝ x (T x) ≤
         ((1 + M) * (4 * Real.pi ^ 2 * (d : ℝ) * (R : ℝ) ^ 2 / (n : ℝ) ^ 2)) * ‖x‖ ^ 2 := by
     intro x hx
     have hv := componentwiseWeightedRepair_le_hodge rho w M hw x
     have hb := physicalCenteredFourierBand_hodge_le hNc rho j R hR x hx
+    dsimp only [T]
     simp only [ContinuousLinearMap.add_apply, inner_add_right]
     calc
       _ ≤ (1 + M) * inner ℝ x (flatGaugeHodgeK0CLM d n Nc rho x) := by nlinarith
@@ -143,9 +149,9 @@ theorem physicalBand_regular_sector_local_coercivity_false
     simpa only [physicalCenteredFourierBand_finrank hNc j R hR] using hdim
   have hno := regular_sector_local_coercivity_false
     (physicalCenteredFourierBand (n := n) hNc j R) P A hP hdP hP0 hA C L hC hC0
-    (flatGaugeHodgeK0CLM d n Nc rho + componentwiseWeightedRepairCLM w) Phi K delta r
+    T Phi K delta r
     ((1 + M) * (4 * Real.pi ^ 2 * (d : ℝ) * (R : ℝ) ^ 2 / (n : ℝ) ^ 2)) c
     hdelta hr hPhi hband hdim' hc
-  simpa only [ContinuousLinearMap.add_apply, inner_add_right] using hno
+  simpa only [T, ContinuousLinearMap.add_apply, inner_add_right] using hno
 end Physical
 end YangMills.RG
