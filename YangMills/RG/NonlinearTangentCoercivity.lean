@@ -22,7 +22,7 @@ theorem tangent_kernel_norm_ratio_tendsto
     simpa using (tendsto_id.smul tendsto_const_nhds :
       Tendsto (fun t : ℝ => t • v) (𝓝 0) (𝓝 ((0 : ℝ) • v)))
   have hh := (hasFDerivAt_iff_tendsto.mp hC).comp ht
-  simpa [hC0, map_smul, hv] using hh
+  simpa [Function.comp_def, hC0, map_smul, hv] using hh
 
 theorem nonlinear_tangent_coercivity_false
     (S : Submodule ℝ E) (C : E → F) (L : E →L[ℝ] F)
@@ -35,7 +35,8 @@ theorem nonlinear_tangent_coercivity_false
     ¬ ∀ x : E, c * ‖x‖ ^ 2 ≤ energy x + Phi (C x) := by
   intro hbound
   have hd : finrank ℝ F + finrank ℝ (LinearMap.range (0 : E →ₗ[ℝ] E)) <
-      finrank ℝ S := by simpa using hdim
+      finrank ℝ S := by
+    simpa only [LinearMap.range_zero, finrank_bot, add_zero] using hdim
   rcases exists_unseen_of_finrank_lt_measurement_add_repair
     S L.toLinearMap (0 : E →ₗ[ℝ] E) hd with ⟨v, hvS, hv, hLv, _⟩
   let r : ℝ → ℝ := fun t => ‖t • v‖⁻¹ * ‖C (t • v)‖
@@ -59,7 +60,7 @@ theorem nonlinear_tangent_coercivity_false
     have heq : ‖C (t • v)‖ ^ 2 = (r t) ^ 2 * ‖t • v‖ ^ 2 := by
       dsimp [r]
       field_simp
-    apply (mul_le_mul_right hpos).mp
+    apply (mul_le_mul_iff_left₀ hpos).mp
     calc
       c * ‖t • v‖ ^ 2 ≤ energy (t • v) + Phi (C (t • v)) := hbound _
       _ ≤ b * ‖t • v‖ ^ 2 + K * ‖C (t • v)‖ ^ 2 :=
