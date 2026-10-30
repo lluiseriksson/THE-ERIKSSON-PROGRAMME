@@ -1,0 +1,196 @@
+{
+  "review_id": "astra-exact-pdf-corrections-025",
+  "date": "2026-10-30",
+  "review_type": "exact_artifact_substantive_corrections_assessment",
+  "numerical_score": null,
+  "target_score": null,
+  "artifact": {
+    "pdf_path": "D:\\Entregas\\the-eriksson-programme\\2026-10-30_flat-wall-corrected\\flat_coarse_rank.pdf",
+    "pdf_sha256": "b37f2fe86b7a8a526ad02f8b28491c300a9ff72d5653536bc5532e8c9468ed8f",
+    "tex_lf_sha256": "f8e0699eb9e5fac4f89ceb94f2b8be539052ffd017f2f13b0eae703fe82d81a5",
+    "source_commit": "77b8ec265dea2bd6b3e6c9ffe85e02b423a9e00b",
+    "render_zip_sha256": "268dfdbc56265bb9074482bfe8375e1f62b02629228ed5a506b707e1b02c2f77",
+    "pages": 8
+  },
+  "verification": {
+    "pdf_hash": true,
+    "tex_lf_hash": true,
+    "render_zip_hash": true,
+    "manifest_entries_checked": 28,
+    "manifest_entries_matched": 28,
+    "pages_individually_inspected": 8,
+    "supplied_render_steps_exit_zero": 9,
+    "supplied_render_layout_warnings": 0,
+    "own_visual_defects_found": [],
+    "source_diff_read": true,
+    "consumer_source_reread": true,
+    "exact_map_local_and_GitHub_read": true,
+    "compiled_or_rendered_locally": false,
+    "lean_lake_oracle_run": false,
+    "full_formal_evidence_audit": false
+  },
+  "outcome": {
+    "status": "solid_within_stated_scope",
+    "O1_to_O5_substantively_resolved": true,
+    "O6_retained": true,
+    "new_material_objections": [],
+    "mathematical_blocker_found": false,
+    "correctness": "Narrow finite-dimensional analytic claims supported by displayed arguments; essential linear-observation scope is now explicit.",
+    "originality": "Classical Fourier/rank-nullity/min-max/singular-Schur mechanisms. Concrete normalization, programme application and formalization are the potential contribution; exact priority not established.",
+    "programme_relevance": "Negative constraint on unscaled flat full-space and bounded-rank linear sector routes; no positive interacting or continuum mass-gap result.",
+    "publication_acceptance": false,
+    "human_peer_review": false,
+    "independent_formal_certification": false
+  },
+  "objection_dispositions": [
+    {
+      "id": "O1",
+      "status": "resolved",
+      "locations": [
+        "Abstract p1",
+        "Section 1 p1",
+        "Section 6 p5"
+      ],
+      "reason": "Linear observations and repairs explicit; arbitrary nonlinear Phi distinguished; norm-square observation counterexample preserved."
+    },
+    {
+      "id": "O2",
+      "status": "resolved",
+      "locations": [
+        "Section 3 p2",
+        "Section 4 p4",
+        "Section 6 p5"
+      ],
+      "reason": "Positive integer ell,Nprime and nonnegative integer R,L,r now declared."
+    },
+    {
+      "id": "O3",
+      "status": "resolved_at_requested_scope",
+      "locations": [
+        "Section 1 pp1-2",
+        "Section 7 p6",
+        "References p8"
+      ],
+      "reason": "Classical singular-Schur citations and fiber interpretation added; Dimock gauge/scaling context restored without general novelty or refutation claim.",
+      "remaining_limits": [
+        "Albert full article not read",
+        "Carlson verification limited to publisher abstract/bibliography",
+        "Dimock contextual introduction review",
+        "No exhaustive priority search"
+      ]
+    },
+    {
+      "id": "O4",
+      "status": "resolved_presentation_source_identification",
+      "locations": [
+        "Section 8 pp6-7",
+        "Section 9 p7",
+        "declaration-map.json"
+      ],
+      "reason": "Exact source/map links, full consumer theorem, zero perturbation/majorant specialization and non-optimal lower-bound wording supplied; linked map fetched successfully.",
+      "remaining_limits": [
+        "Full reproduction tree not rebuilt or audited",
+        "Not every notebook link tested"
+      ]
+    },
+    {
+      "id": "O5",
+      "status": "resolved",
+      "locations": [
+        "Section 3 p2",
+        "Section 1 pp1-2"
+      ],
+      "reason": "Principal-results retention qualified; omitted square-wave appendix explicitly preserved in historical v1; context restored."
+    },
+    {
+      "id": "O6",
+      "status": "retained_verification_limit",
+      "locations": [
+        "Section 9 p7",
+        "Disclosure p8"
+      ],
+      "reason": "No independent Lean build, oracle execution, full evidence validation or dependency-closure audit. Disclosure acknowledges but does not resolve this limitation."
+    }
+  ],
+  "principal_claim_checks": [
+    {
+      "claim": "historical_block_witness_spectral_repair",
+      "location": "Sections 2-3 pp2-4",
+      "result": "supported"
+    },
+    {
+      "claim": "real_band_dimension_2B_and_energy",
+      "location": "Lemma 4.1 p4",
+      "result": "supported"
+    },
+    {
+      "claim": "necessary_rank_budget",
+      "location": "Theorem 5.1 pp4-5",
+      "result": "supported"
+    },
+    {
+      "claim": "direct_sector_obstruction",
+      "location": "Proposition 5.2 p5",
+      "result": "supported"
+    },
+    {
+      "claim": "uniform_quantifiers",
+      "location": "Theorem 6.1 p5",
+      "result": "supported"
+    },
+    {
+      "claim": "singular_Schur_fixed_map",
+      "location": "Proposition 7.1 p6",
+      "result": "supported_classical"
+    },
+    {
+      "claim": "zero_perturbation_consumer_specialization",
+      "location": "Section 8 pp6-7",
+      "result": "supported_by_source_reading_not_new_Lean_adapter"
+    },
+    {
+      "claim": "physical_scaling_limitations",
+      "location": "Section 8 p7",
+      "result": "appropriately_limited"
+    }
+  ],
+  "review_context": {
+    "configured_model_requested": "gpt-6-astra",
+    "actual_served_model": null,
+    "reasoning_setting": null,
+    "identity_telemetry_exposed": false,
+    "same_reviewer_as_024": true,
+    "prior_original_preparation_involvement": false,
+    "prior_correction_cycle_involvement": "Reviewer supplied original objections; did not edit manuscript.",
+    "same_orchestrated_chat_account_provider": true,
+    "provider_workflow": "OpenAI/Codex",
+    "blind": false,
+    "organizational_independence": false,
+    "old_verdict_automatically_inherited": false,
+    "no_score_optimization": true
+  },
+  "prior_record": {
+    "pdf_sha256": "119ea6ae2f0434598aab39d0f1ba338fec8fd8a27ca67faef2474f7d58561eed",
+    "report_sha256": "954afe0931bc039321194b95787145ab1e0d0337b51290fdd73a4d8087842fd1",
+    "summary_sha256": "9152e8410094f8adf3a737a0d508bde0349e962176e98fabcc7a41f6959ca576",
+    "report_and_summary_hashes_reverified": true,
+    "preserved_unchanged": true
+  },
+  "exclusions": [
+    "PR98 weighted derivative theorem",
+    "New mathematical source review beyond specified consumer/map check",
+    "Exhaustive novelty search",
+    "Interacting/continuum/Yang-Mills positive gap claims",
+    "Publication or editorial decision"
+  ],
+  "map_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/7ab9a61c060d07a5a7a08081115981e47684a39a/papers/flat-coarse-rank/declaration-map.json",
+  "report_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-025\\astra-review-corrections\\scientific-review.md",
+  "input_file_record": "Full input list in report; old report preserved as objection history, not transferred approval.",
+  "mutations": {
+    "manuscript": false,
+    "pdfs": false,
+    "repository": false,
+    "public_services": false,
+    "outputs_only_in_authorized_new_review_directory": true
+  }
+}

@@ -20,3 +20,7 @@ Dimock's author manuscript https://arxiv.org/html/1410.2798v2, introduction, was
 ## Model assessments and review context
 
 This response is by the preparing Codex agent with full programme context. It is not a new reviewer assessment. The prior authorized subagent was configured gpt-6-astra; actual backend identity and reasoning setting were not exposed. No score is sought, inherited or assigned, and no paper is deposited, accepted or published by these corrections. The weighted derivative theorem of PR98 is a separate code unit and is not automatically added to this manuscript or covered by the prior assessment.
+
+## Disposition after the corrected-artifact assessment
+
+The same expressly authorized reviewer assessed exact PDFb37f2fe8 and found O1-O5 substantively resolved, retaining O6 and all stated limits. Full new report and summary are in reproducibility/flat-wall-corrected-pdf-20261030/reviews/astra-exact-pdf-corrections-025/. The table above records the author's earlier responses; this dated addendum records the subsequent assessment without altering the prior report or PDF. No score, formal certification or editorial acceptance is inferred.

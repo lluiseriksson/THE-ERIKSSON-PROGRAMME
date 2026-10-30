@@ -52,3 +52,9 @@ services or quotas are unavailable. No manuscript was sent there and no other
 chat was altered. Old workflow/grant records were read, not treated as current
 artifact-specific permission. No statistics, administrative bypass or duplicate
 deposit was used.
+
+## Update after the exact-artifact review on30October2026
+
+The authorized reviewer subsequently assessed the exact eight-page119ea6 PDF. Its complete report and six objections are preserved under reproducibility/flat-wall-integrated-pdf-20261030/reviews/astra-exact-pdf-024/. The earlier paragraphs describing the review as pending record the prior preparation state; they do not imply that assessment remains unperformed.
+
+The revised source77b8ec26 and PDFb37f2fe8 incorporate the author's O1-O5 corrections with a point-by-point response. The principal-results qualification now explicitly excludes a claim to reproduce old square-wave AppendixA; v1 remains preserved. The new candidate has its own rendering and assessment records and inherits no approval or score from119ea6. O6 remains the limit that the reviewer did not independently rebuild Lean or audit the full dependency/evidence closure. No published AIRR/ai.viXra version is changed by this work.
