@@ -1,0 +1,15 @@
+Preparing-agent mathematical/source audit, not a scientific/model review.
+
+The actual sector curve comes from the proved IFT construction in RegularSectorCurve, merged5442be3c after exact-head required checks. The new module does not assume that curve as a hypothesis in its sector endpoint. It invokes the derived nonzero joint derivative-kernel tangent and the actual exact-sector curve. P remains C1 at0 with actual derivative surjectivity; C remains differentiable with C0=0. These are genuine retained assumptions.
+
+The derivative-as-slope theorem on punctured real neighborhoods gives t^-1 smul gamma(t)->v. The same theorem applied to the actual composition C o gamma with derivative0 and value0 gives t^-1 smul C(gamma(t))->0. Continuity of the fixed actual continuous linear T and inner product gives convergence of q(t^-1 smul gamma(t)) to q(v). No low-band estimate is used on gamma(t), which may leave S.
+
+Exact scalar homogeneity identities for the actual norm squared and actual quadratic form turn the local sector inequality into an inequality in these rescaled vectors. Multiplication uses (t^-1)^2>=0; it never assumes a sign of t or K. At t=0 the inverse convention is harmless; the limit is punctured and its filter is nontrivial. Local ball and penalty neighborhoods follow from the actually derived continuity of gamma and C o gamma. The contradiction uses only the actual bound at v in S, b<c and v!=0.
+
+The generic operator T is not required self-adjoint because the continuous real quadratic expression inner x (T x) and scalar homogeneity suffice. This does not license arbitrary C1 stationary energy; the earlier4/3,3/2 counterexample remains valid and the actual quadratic energy assumption is retained. No physical lower bound or gauge/continuum identification is inserted.
+
+The physical specialization uses the actual T=flat Hodge+constructed componentwise weighted derivative repair, actual physical Fourier subspace and its proved dimension/energy. Weight upper bound w<=M and M>=0, SUN and lattice integer hypotheses remain explicit. This is a finite flat unit-spacing statement at a coefficient threshold; it does not prove Yang-Mills mass gap, continuum passage or the actual interacting gauge sector regularity. PR29 remains20/41,TermSource=0.
+
+Primary mechanism is classical derivative/IFT/rank-nullity. Pinned primary Mathlib Analysis/Calculus/Deriv/Slope.lean was read via raw GitHub and local checkout, particularly HasDerivAt.tendsto_slope_zero. Primary lookup establishes the applicable derivative API, not originality or priority. This candidate has not yet passed compilation; retain any failed attempt and do not infer success from prepared source, prior curve results or repository CI of a different root.
+
+Postscript: after the preserved047 failure, corrected source9bb90cfd passed both048/048b, validated raw reports and matching hashes in paired-validation.json. The preceding uncompiled-candidate statements record the earlier audit stage; they are not the final verification status. This preparing-agent audit remains distinct from scientific peer review.

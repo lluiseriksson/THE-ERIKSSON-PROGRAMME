@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "source_sha": "9bb90cfd77ec5cea5c4447667fe8baf8c21429a1",
+  "started_utc": "2026-10-30T20:55:59.329120+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.617,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.119,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.928,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.921,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 16.123,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 98.0,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 0,
+      "seconds": 224.576,
+      "log": "focal-build.log"
+    },
+    {
+      "name": "oracle",
+      "exit_code": 0,
+      "seconds": 10.399,
+      "log": "oracle.log"
+    }
+  ],
+  "status": "FOCAL_REPRODUCTION_PASS",
+  "independent_review": false,
+  "target_olean_sha256": "16cc8486faf7aac5296362aebfa17944c5265fb776f2ceb7dec8956419887c95",
+  "oracle_validator_selftests": [
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": false,
+      "mode": "normal"
+    },
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": true,
+      "mode": "optimized"
+    }
+  ],
+  "oracle_reports": [
+    {
+      "name": "YangMills.RG.curve_rescaled_tendsto",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.quadratic_curve_rescaled_tendsto",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.regular_sector_local_coercivity_false",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.physicalBand_regular_sector_local_coercivity_false",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "finished_utc": "2026-10-30T21:01:55.406171+00:00"
+}

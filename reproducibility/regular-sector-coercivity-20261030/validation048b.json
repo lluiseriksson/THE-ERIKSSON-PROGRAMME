@@ -1,0 +1,16 @@
+{
+  "status": "REGULAR_SECTOR_COERCIVITY_VALIDATED",
+  "source_sha": "9bb90cfd77ec5cea5c4447667fe8baf8c21429a1",
+  "zip_sha256": "abae281ba84fd02b17f162af722dd772cae077f5bc5d221d155a508d67b910c7",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 4,
+  "target_olean_sha256": "16cc8486faf7aac5296362aebfa17944c5265fb776f2ceb7dec8956419887c95",
+  "oracle_log_sha256": "9887feda39a4fccf8c4701eecda775dd4d147ffd62627dcd8e271a7af9fdb2ec",
+  "source_manifest_sha256": "1381ebd8c3f07931155e9794dfb5dfa20d32906cfc08257f74be1218cf2c47cc",
+  "started_utc": "2026-10-30T20:55:59.3291200+00:00",
+  "finished_utc": "2026-10-30T21:01:55.4061710+00:00",
+  "independent_review": false,
+  "scope": "Actual quadratic transport and local exact regular-sector obstruction, generic and finite flat physical weighted-repair specialization",
+  "windows_lean_executed": false
+}
