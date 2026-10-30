@@ -1,0 +1,7 @@
+Primary sources inspected30October2026:
+
+Volodymyr Sushch, 2D discrete Hodge-Dirac operator on the torus, arXiv2202.03923v1, https://arxiv.org/pdf/2202.03923 . Equation2.18 on PDFpage6 gives the two crossed backward-difference components of the discrete codifferential of a2-form; following equation2.16 on PDFpage5 the paper records its square-zero identity. This is classical coexact/divergence-free structure. The present implementation must still instantiate the repository's actual SUN-coordinate embedding, exact index independence and actual divergence; this source is not claimed to prove the exact positive-frequency rank count. No originality priority follows from that difference.
+
+Pinned primary Mathlib at07642720480157414db592fa85b626dafb71355b: LinearAlgebra/LinearIndependent/Defs.lean, Fintype.linearIndependent_iff, explicitly characterizes finite-family independence by vanishing coefficients in an actual sum. Data/Fintype/Card.lean supplies cardinal infrastructure; the chosen product positive-frequency index avoids an unnecessary complementary-subtype counting lemma. Source API inspection is separate from actual compilation and scientific originality/relevance.
+
+PDF text extraction read for the equations; no visual manuscript/PDF review or new scientific model assessment claimed. The source comparison supports the classical mechanism, not any Yang-Mills physical-gap or continuum conclusion.

@@ -1,0 +1,151 @@
+✔ [8158/8171] Built YangMills.L0_Lattice.FiniteLattice (17s)
+⚠ [8159/8171] Built YangMills.RG.TorusFourierBandDimension (20s)
+warning: YangMills/RG/TorusFourierBandDimension.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.RG.centeredFourierFrequency_injective`:
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8160/8171] Built YangMills.L0_Lattice.GaugeConfigurations (4.9s)
+✔ [8161/8171] Built YangMills.RG.BlockLattice (5.4s)
+⚠ [8162/8171] Built YangMills.RG.TorusFiniteSumEnergy (4.6s)
+warning: YangMills/RG/TorusFiniteSumEnergy.lean:35:0: automatically included section variable(s) unused in theorem `YangMills.RG.character_forward_difference`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8163/8171] Built YangMills.L0_Lattice.WilsonAction (4.4s)
+✔ [8164/8171] Built YangMills.RG.TorusCountingParseval (5.4s)
+✔ [8165/8171] Built YangMills.L0_Lattice.GaugeInvariance (4.4s)
+✔ [8166/8171] Built YangMills.L0_Lattice.FiniteLatticeGeometryInstance (5.4s)
+✔ [8167/8171] Built YangMills.RG.LinearAveraging (5.2s)
+✔ [8168/8171] Built YangMills.RG.PhysicalGaugeCochains (17s)
+⚠ [8169/8171] Built YangMills.RG.TorusPhysicalEmbedding (5.1s)
+warning: YangMills/RG/TorusPhysicalEmbedding.lean:40:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/TorusPhysicalEmbedding.lean:40:6: 'omega' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/RG/TorusPhysicalEmbedding.lean:63:79: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8170/8171] Built YangMills.RG.TorusPhysicalShift (6.5s)
+warning: YangMills/RG/TorusPhysicalShift.lean:18:10: This simp argument is unused:
+  Fin.val_natCast
+
+Hint: Omit it from the simp argument list.
+  simp [F̵i̵n̵.̵v̵a̵l̵_̵n̵a̵t̵C̵a̵s̵t̵,̵ ̵Nat.mod_eq_of_lt (x i).isLt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:18:27: This simp argument is unused:
+  Nat.mod_eq_of_lt (x i).isLt
+
+Hint: Omit it from the simp argument list.
+  simp [Fin.val_natCast,̵ ̵N̵a̵t̵.̵m̵o̵d̵_̵e̵q̵_̵o̵f̵_̵l̵t̵ ̵(̵x̵ ̵i̵)̵.̵i̵s̵L̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:27:24: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [FinBox.shift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵ZMod.natCast_mod]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:28:27: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [FinBox.shift, h,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:41:31: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/TorusPhysicalShift.lean:40:54: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/TorusPhysicalShift.lean:41:31: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/RG/TorusPhysicalShift.lean:78:86: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/TorusPhysicalShift.lean:78:86: 'abel' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✖ [8171/8171] Building YangMills.RG.CoexactFlatBand (129s)
+trace: .> LEAN_PATH=/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-coexact-flat-band-20261030-052/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-coexact-flat-band-20261030-052/YangMills/RG/CoexactFlatBand.lean -o /content/eriksson-coexact-flat-band-20261030-052/.lake/build/lib/lean/YangMills/RG/CoexactFlatBand.olean -i /content/eriksson-coexact-flat-band-20261030-052/.lake/build/lib/lean/YangMills/RG/CoexactFlatBand.ilean -c /content/eriksson-coexact-flat-band-20261030-052/.lake/build/ir/YangMills/RG/CoexactFlatBand.c --setup /content/eriksson-coexact-flat-band-20261030-052/.lake/build/ir/YangMills/RG/CoexactFlatBand.setup.json --json
+info: YangMills/RG/CoexactFlatBand.lean:24:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+error: YangMills/RG/CoexactFlatBand.lean:21:19: unsolved goals
+case h
+D n : ℕ
+inst✝ : NeZero n
+j : Fin D
+r : ℂ
+f : (Fin D → ZMod n) → ℂ
+x : Fin D → ZMod n
+⊢ r * f x - r * f (x - Pi.single j 1) = f x * (RingHom.id ℂ) r - f (x - Pi.single j 1) * (RingHom.id ℂ) r
+warning: YangMills/RG/CoexactFlatBand.lean:26:8: automatically included section variable(s) unused in theorem `YangMills.RG.torusBackwardDifference_apply`:
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatBand.lean:30:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusBackwardDifference_commute`:
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/CoexactFlatBand.lean:54:41: failed to synthesize instance of type class
+  LinearMap.CompatibleSMul ((Fin D → ZMod n) → ℂ) ((Fin D → ZMod n) → ℂ) ℝ ℂ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: YangMills/RG/CoexactFlatBand.lean:55:43: failed to synthesize instance of type class
+  LinearMap.CompatibleSMul ((Fin D → ZMod n) → ℂ) ((Fin D → ZMod n) → ℂ) ℝ ℂ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: YangMills/RG/CoexactFlatBand.lean:57:0: Not a definitional equality: the left-hand side
+  (coexactFlatMap hNc i j) f
+is not definitionally equal to the right-hand side
+  torusPhysicalEmbed hNc i ((torusBackwardDifference j) f) - torusPhysicalEmbed hNc j ((torusBackwardDifference i) f)
+error: YangMills/RG/CoexactFlatBand.lean:61:66: Type mismatch
+  rfl
+has type
+  ?m.36 = ?m.36
+but is expected to have type
+  (coexactFlatMap hNc i j) f =
+    torusPhysicalEmbed hNc i ((torusBackwardDifference j) f) - torusPhysicalEmbed hNc j ((torusBackwardDifference i) f)
+error: YangMills/RG/CoexactFlatBand.lean:226:5: failed to synthesize
+  LinearMap.CompatibleSMul (↥(coexactPositiveScalarBand d n R)) ((Fin (d + 2) → ZMod n) → ℂ) ℝ ℂ
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: YangMills/RG/CoexactFlatBand.lean:234:26: Application type mismatch: The argument
+  hfg
+has type
+  (coexactPositivePhysicalBandMap hNc R) f = (coexactPositivePhysicalBandMap hNc R) g
+but is expected to have type
+  (coexactFlatMap hNc 0 (Fin.succ 0)) ↑f = (coexactFlatMap hNc 0 (Fin.succ 0)) ↑g
+in the application
+  sub_eq_zero.mpr hfg
+error: YangMills/RG/CoexactFlatBand.lean:252:0: (deterministic) timeout at `whnf`, maximum number of heartbeats (1200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.CoexactFlatBand
+error: build failed

@@ -1,0 +1,16 @@
+{
+  "status": "COEXACT_FLAT_BAND_VALIDATED",
+  "source_sha": "a8fb93c5c9a244b7cec3f7654a7c549e6a61beb4",
+  "zip_sha256": "d17f7758df88545e0578740b4bdddfea25ff38544ee651e8ae1f1a34db8ee1b0",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "989d48907ec82e77ac0de0eccce6a48900a4d5d34c8e76c382806a45d002e60d",
+  "oracle_log_sha256": "7ba2ab7e10e25b8893191e2602225017d4e8e1f506825d6ab52406940d8bd10c",
+  "source_manifest_sha256": "d4297bd187bfff3bf22453a4182335003c1434bd26d0d4505625a0d44e532ad2",
+  "started_utc": "2026-10-30T22:53:14.3656250+00:00",
+  "finished_utc": "2026-10-30T22:58:45.1575010+00:00",
+  "independent_review": false,
+  "scope": "Constructed positive-first-frequency coexact physical band, proved dimension and actual divergence zero only; no new Hodge-energy or coercivity endpoint",
+  "windows_lean_executed": false
+}
