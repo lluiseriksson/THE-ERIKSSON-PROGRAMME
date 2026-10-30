@@ -1,0 +1,15 @@
+{
+  "status": "UNIFORM_PHYSICAL_COARSE_RANK_WALL_VALIDATED",
+  "zip_sha256": "3269c599be25327153399d2959fa2dded0ad485e2469395f2e7a1bbaad01a444",
+  "source_sha": "17ca395d4e9de992b1c575454a112da9e6f97e86",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 5,
+  "target_olean_sha256": "997dac2604cfd28551ef2f52fb3ef7428bb0ad658c03094916e545f87c291511",
+  "oracle_log_sha256": "31b90171fc94f9da29657741487c51e7c059cdbf641c5d2a9e00da1d661ed252",
+  "source_manifest_sha256": "acd31eff43c91bc8add367fe0a31c0696608a5abc69d369aedd5541eb33c608a",
+  "started_utc": "2026-10-30T03:56:34.131791+01:00",
+  "finished_utc": "2026-10-30T04:00:08.158546+01:00",
+  "scope": "Uniform unit-spacing flat walls for fixed coarse dimension and uniformly bounded repair or sector rank"
+}

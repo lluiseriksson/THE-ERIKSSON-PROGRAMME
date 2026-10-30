@@ -1,0 +1,26 @@
+{
+  "runtime": "Colab Pro+ Linux CPU high-RAM",
+  "source_sha": "17ca395d4e9de992b1c575454a112da9e6f97e86",
+  "runs": [
+    {
+      "zip_sha256": "5db4dae9be73e261606daaafd806f929cec3b9d5dbf9f97769732c798feaad01",
+      "started_utc": "2026-10-30T02:50:31.9535930Z",
+      "execution_seconds": 319.415568,
+      "finished_utc": "2026-10-30T02:55:51.3691610Z",
+      "status": "PASS",
+      "released": true
+    },
+    {
+      "zip_sha256": "3269c599be25327153399d2959fa2dded0ad485e2469395f2e7a1bbaad01a444",
+      "started_utc": "2026-10-30T02:56:34.1317910Z",
+      "execution_seconds": 214.026755,
+      "finished_utc": "2026-10-30T03:00:08.1585460Z",
+      "status": "PASS",
+      "released": true
+    }
+  ],
+  "total_reported_execution_seconds": 533.442323,
+  "allocation_overhead_seconds": null,
+  "compute_units_consumed": null,
+  "note": "Each runtime auto-unassigned on completion, disconnected UI checked. Intervals cover driver execution, not unmeasured allocation overhead. No GPU, additional payment, shared runtime or Windows compilation."
+}
