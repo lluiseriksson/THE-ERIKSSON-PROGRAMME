@@ -1,0 +1,15 @@
+{
+  "url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/98",
+  "merged_utc": "2026-10-30T07:43:04Z",
+  "required_checks": {
+    "core_and_oracle": "SUCCESS",
+    "honesty": "SUCCESS"
+  },
+  "tested_source_ancestor": true,
+  "principal_checkout_modified": false,
+  "focal_source_diff": false,
+  "merge": "d712c0effa4fcb5bb1e129a8dfab300f4cdb4e64",
+  "pr": 98,
+  "method": "merge",
+  "head": "61a8d8fe27fe04a35fb4b4c0b3266e6d4b485235"
+}
