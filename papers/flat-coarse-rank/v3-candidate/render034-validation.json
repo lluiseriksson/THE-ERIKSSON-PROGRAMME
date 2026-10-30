@@ -1,0 +1,21 @@
+{
+  "status": "RENDER034_BUILD_HASHES_AND_ALL_13_PAGES_VISUALLY_CHECKED",
+  "zip_sha256": "1f3aad78397e239bf01afae9c7cf04050dbe25c1932976b4c442ecbfc9692abf",
+  "source_sha": "794afd87d24f6f3284722a3aeb9471e316f19623",
+  "tex_lf_sha256": "4a86a5630f9f72a40b29d1e58db58671f4a82c8a8c5d8b08c99ba05c21a9361e",
+  "pdf_sha256": "c9de923a66038ed66c3f68ecf8256b3f738a3ccf27e41f77e470bf7dc3efb5b9",
+  "pages": 13,
+  "manifest_entries": 33,
+  "exit_zero_steps": 8,
+  "layout_warnings": 0,
+  "started_utc": "2026-10-30T18:36:34.027789+01:00",
+  "finished_utc": "2026-10-30T18:38:16.604029+01:00",
+  "visual_qa_completed": true,
+  "independent_review": false,
+  "visual_findings": [
+    "Pages1-13 individually inspected; equations, text and references legible; no clipping or overlapping content observed.",
+    "Pages11 and13 are sparse because review context starts on a separate page; retained as a minor layout limitation.",
+    "Visual QA and mathematical source audit by preparing agent; no independent exact-PDF assessment."
+  ],
+  "runtime_disconnected_ui_verified": true
+}
