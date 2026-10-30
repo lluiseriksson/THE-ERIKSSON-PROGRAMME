@@ -63,5 +63,16 @@
     "physical-scaled positive coercivity"
   ],
   "original_kernel_source_tree": "7b25bfb39357406cf61880e3ac0428d7d1ba3449",
-  "original_kernel_scope": "Reproduced factorized endpoint is dimension4; analytic general-d witness/trig, spectral multiplicity, asymptotic and witness-line consequences remain separate"
+  "original_kernel_scope": "Reproduced factorized endpoint is dimension4; analytic general-d witness/trig, spectral multiplicity, asymptotic and witness-line consequences remain separate",
+  "consumer_specialization": {
+    "source_sha": "e31b428917aa767b4a1aad097db5cf92fb9cd23e",
+    "verification": "Source inspection and mathematical specialization; no newly compiled Lean consumer adapter",
+    "specialization": "Sigma i=0 and delta i=0 for all i, a>0, supplied FlatGaugeHodgePoincare CP with CP>0; min(1,a)/CP is an available certified lower bound, not an optimum",
+    "coercivity": "flatGaugeFixedPrecision_coerciveWithPositiveConstant_of_flatPoincare",
+    "precision": "flatGaugeFixedPrecisionCLM",
+    "namespace": "YangMills.RG",
+    "source_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/e31b428917aa767b4a1aad097db5cf92fb9cd23e/YangMills/RG/PhysicalGaugeFixedPrecision.lean",
+    "module": "YangMills/RG/PhysicalGaugeFixedPrecision.lean"
+  },
+  "repository_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME"
 }
