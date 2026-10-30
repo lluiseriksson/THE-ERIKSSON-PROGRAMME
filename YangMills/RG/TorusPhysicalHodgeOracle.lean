@@ -1,0 +1,6 @@
+import YangMills.RG.TorusPhysicalHodge
+#print axioms YangMills.RG.orderedDirectionPair_incident_sum
+#print axioms YangMills.RG.torusPhysicalEmbed_flat_curl_norm_point
+#print axioms YangMills.RG.torusPhysicalEmbed_flat_curl_norm_sq
+#print axioms YangMills.RG.torusPhysicalEmbed_flat_hodge_eq_stencil
+#print axioms YangMills.RG.centeredFourier_physical_hodge_le
