@@ -1,0 +1,11 @@
+Next single research question, activated only after unit037 closes its exact-sector local energy proof:
+
+Can we construct a concrete low Fourier band contained in the kernel of the ACTUAL flat gaugeConstraintQCLM, so that local noncoercivity on that divergence-free sector does not count the volume-sized constraint output in the dimension budget?
+
+Candidate: d>=2, Nc>=2, periodic unit-spacing finite lattice n, 2R<n. Choose one bond direction j, and only centered Fourier frequencies with k_j=0. The actual identity torusPhysicalEmbed_flat_div_apply in TorusPhysicalShift.lean:45 reduces the divergence to f(x)-f(x-e_j); derive its vanishing from those actual characters. Derive independence and real dimension2(2R+1)^(d-1), not an assumed divergence-free-band structure. Inclusion in the full band gives an upper energy estimate; weights w<=M remain actual constructed componentwise derivative repair. A ray in this linear exact kernel avoids the finite-dimensional regular-constraint output cost. The differentiable observation and genuine local upper-quadratic penalty remain required.
+
+Scope sought: a finite flat exact divergence-free-sector theorem, and if derivable a uniform-refinement consequence for fixed finite observation output. No interacting gauge derivative or nonlinear gauge regularity, Wilson, hRpoly, physical gap or continuum conclusion. No novelty priority claim: transverse Fourier modes are classical. This is a next bounded question, not a result already proved.
+
+Falsifier: a coercive example satisfying every retained hypothesis, a character invariance/aliasing or independence defect invalidating the proposed dimension, or an actual divergence formula differing from the verified flat one. d=1 is excluded because the proposed band dimension does not grow with R.
+
+Abandonment: after three substantive units without a proved useful reduction, preserve failed constructions and identify a precise algebra/library obstruction or change route. Do not replace the desired annihilation identity by a structure hypothesis. Do not open a second mathematical question in parallel.

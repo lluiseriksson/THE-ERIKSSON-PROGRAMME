@@ -1,0 +1,70 @@
+{
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "source_sha": "9bb90cfd77ec5cea5c4447667fe8baf8c21429a1",
+  "first": {
+    "status": "REGULAR_SECTOR_COERCIVITY_VALIDATED",
+    "source_sha": "9bb90cfd77ec5cea5c4447667fe8baf8c21429a1",
+    "zip_sha256": "84f0854e4d0efd57bc739a38d20521ce4be341932b5018f8d60c15e336f9cac3",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 4,
+    "target_olean_sha256": "16cc8486faf7aac5296362aebfa17944c5265fb776f2ceb7dec8956419887c95",
+    "oracle_log_sha256": "9887feda39a4fccf8c4701eecda775dd4d147ffd62627dcd8e271a7af9fdb2ec",
+    "source_manifest_sha256": "1381ebd8c3f07931155e9794dfb5dfa20d32906cfc08257f74be1218cf2c47cc",
+    "started_utc": "2026-10-30T21:47:41.571439+01:00",
+    "finished_utc": "2026-10-30T21:52:05.655231+01:00",
+    "independent_review": false,
+    "scope": "Actual quadratic transport and local exact regular-sector obstruction, generic and finite flat physical weighted-repair specialization",
+    "windows_lean_executed": false
+  },
+  "second": {
+    "status": "REGULAR_SECTOR_COERCIVITY_VALIDATED",
+    "source_sha": "9bb90cfd77ec5cea5c4447667fe8baf8c21429a1",
+    "zip_sha256": "abae281ba84fd02b17f162af722dd772cae077f5bc5d221d155a508d67b910c7",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 4,
+    "target_olean_sha256": "16cc8486faf7aac5296362aebfa17944c5265fb776f2ceb7dec8956419887c95",
+    "oracle_log_sha256": "9887feda39a4fccf8c4701eecda775dd4d147ffd62627dcd8e271a7af9fdb2ec",
+    "source_manifest_sha256": "1381ebd8c3f07931155e9794dfb5dfa20d32906cfc08257f74be1218cf2c47cc",
+    "started_utc": "2026-10-30T21:55:59.32912+01:00",
+    "finished_utc": "2026-10-30T22:01:55.406171+01:00",
+    "independent_review": false,
+    "scope": "Actual quadratic transport and local exact regular-sector obstruction, generic and finite flat physical weighted-repair specialization",
+    "windows_lean_executed": false
+  },
+  "exact_endpoints": [
+    "curve_rescaled_tendsto",
+    "quadratic_curve_rescaled_tendsto",
+    "regular_sector_local_coercivity_false",
+    "physicalBand_regular_sector_local_coercivity_false"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "normal_and_optimized_real_oracle_mutations": true,
+  "full_zip_manifests_validated": 2,
+  "independent_scientific_review": false,
+  "windows_lean_executed": false,
+  "retained_hypotheses": "Actual C1 regular constraint, surjective derivative, differentiable observation C0=0, actual quadratic energy, true local upper-quadratic penalty, strict combined dimension and energy budget",
+  "scope": "Generic and finite flat physical weighted-repair local exact regular-sector noncoercivity only",
+  "new_physical_hypotheses_eliminated": [],
+  "frozen_pdf_c9de_unchanged": true,
+  "new_deposit": false,
+  "new_publication": false,
+  "all_own_runtimes_released_ui_verified": true,
+  "own_notebook_tab_closed": true,
+  "cpu_high_ram_gb": 50.99,
+  "billed_units": null,
+  "runtime_interval_note": "Driver start to release request; allocation/release latency and charged units not measured",
+  "failure047_interval_utc": [
+    "2026-10-30T20:34:55.406143Z",
+    "2026-10-30T20:43:24.184182Z"
+  ],
+  "notebooks": [
+    "https://colab.research.google.com/drive/1GaoNg6pdjEgcBx_X2IiFtgkUD9aPlDfV",
+    "https://colab.research.google.com/drive/1xnWmBzbMQdMYCaddK93Y4-qkPcsbvLK5"
+  ]
+}

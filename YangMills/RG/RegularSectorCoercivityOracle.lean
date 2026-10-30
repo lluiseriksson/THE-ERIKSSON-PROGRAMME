@@ -1,0 +1,5 @@
+import YangMills.RG.RegularSectorCoercivity
+#print axioms YangMills.RG.curve_rescaled_tendsto
+#print axioms YangMills.RG.quadratic_curve_rescaled_tendsto
+#print axioms YangMills.RG.regular_sector_local_coercivity_false
+#print axioms YangMills.RG.physicalBand_regular_sector_local_coercivity_false
