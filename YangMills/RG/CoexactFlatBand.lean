@@ -20,12 +20,21 @@ noncomputable def torusBackwardDifference (j : Fin D) :
     ring
   map_smul' r f := by
     funext x
-    simp only [Pi.smul_apply, smul_eq_mul]
+    simp only [Pi.smul_apply, smul_eq_mul, RingHom.id_apply]
     ring
 
 @[simp] theorem torusBackwardDifference_apply (j : Fin D)
     (f : (Fin D → ZMod n) → ℂ) (x : Fin D → ZMod n) :
     torusBackwardDifference j f x = f x - f (x - Pi.single j (1 : ZMod n)) := rfl
+
+/-- The actual real action is checked directly; no CompatibleSMul input. -/
+noncomputable def torusBackwardDifferenceReal (j : Fin D) :
+    ((Fin D → ZMod n) → ℂ) →ₗ[ℝ] ((Fin D → ZMod n) → ℂ) where
+  toFun f := torusBackwardDifference j f
+  map_add' f g := (torusBackwardDifference j).map_add f g
+  map_smul' r f := by
+    funext x
+    simp only [torusBackwardDifference_apply, Pi.smul_apply, RingHom.id_apply, smul_sub]
 
 theorem torusBackwardDifference_commute (i j : Fin D)
     (f : (Fin D → ZMod n) → ℂ) (x : Fin D → ZMod n) :
@@ -51,8 +60,8 @@ noncomputable def torusPhysicalEmbedLinear (hNc : 2 ≤ Nc) (j : Fin D) :
 
 noncomputable def coexactFlatMap (hNc : 2 ≤ Nc) (i j : Fin D) :
     ((Fin D → ZMod n) → ℂ) →ₗ[ℝ] PhysicalGaugeOneCochain D n Nc :=
-  (torusPhysicalEmbedLinear hNc i).comp ((torusBackwardDifference j).restrictScalars ℝ) -
-    (torusPhysicalEmbedLinear hNc j).comp ((torusBackwardDifference i).restrictScalars ℝ)
+  (torusPhysicalEmbedLinear hNc i).comp (torusBackwardDifferenceReal j) -
+    (torusPhysicalEmbedLinear hNc j).comp (torusBackwardDifferenceReal i)
 
 @[simp] theorem coexactFlatMap_apply (hNc : 2 ≤ Nc) (i j : Fin D)
     (f : (Fin D → ZMod n) → ℂ) :
@@ -221,9 +230,12 @@ section PhysicalBand
 variable {d n Nc : ℕ} [NeZero n] [NeZero Nc]
 
 noncomputable def coexactPositivePhysicalBandMap (hNc : 2 ≤ Nc) (R : ℕ) :
-    coexactPositiveScalarBand d n R →ₗ[ℝ] PhysicalGaugeOneCochain (d + 2) n Nc :=
-  (coexactFlatMap hNc (0 : Fin (d + 2)) (Fin.succ (0 : Fin (d + 1)))).comp
-    ((coexactPositiveScalarBand d n R).subtype.restrictScalars ℝ)
+    coexactPositiveScalarBand d n R →ₗ[ℝ] PhysicalGaugeOneCochain (d + 2) n Nc where
+  toFun f := coexactFlatMap hNc (0 : Fin (d + 2)) (Fin.succ (0 : Fin (d + 1))) f.val
+  map_add' f g := (coexactFlatMap hNc (0 : Fin (d + 2))
+    (Fin.succ (0 : Fin (d + 1)))).map_add f.val g.val
+  map_smul' r f := (coexactFlatMap hNc (0 : Fin (d + 2))
+    (Fin.succ (0 : Fin (d + 1)))).map_smul r f.val
 
 theorem coexactPositivePhysicalBandMap_injective (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 * R < n) :
     Function.Injective (coexactPositivePhysicalBandMap (d := d) (n := n) hNc R) := by
