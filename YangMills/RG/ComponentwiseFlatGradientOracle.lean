@@ -1,0 +1,9 @@
+import YangMills.RG.ComponentwiseFlatGradient
+#print axioms YangMills.RG.flat_forward_summation_by_parts
+#print axioms YangMills.RG.flat_commuting_cross_cancellation
+#print axioms YangMills.RG.flat_backward_forward_energy
+#print axioms YangMills.RG.componentwiseFlatGradient_apply
+#print axioms YangMills.RG.componentwiseFlatGradient_energy
+#print axioms YangMills.RG.componentwiseWeightedRepair_energy
+#print axioms YangMills.RG.componentwiseWeightedRepair_nonneg
+#print axioms YangMills.RG.componentwiseWeightedRepair_le_gradient

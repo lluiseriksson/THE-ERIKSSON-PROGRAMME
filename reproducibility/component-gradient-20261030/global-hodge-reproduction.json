@@ -1,0 +1,41 @@
+{
+  "status": "TWO_FRESH_CLONES_GLOBAL_HODGE_MATCH",
+  "source_sha": "dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc",
+  "target_olean_sha256": "1ed9034ec15b651e1b22cba39be73a774bbc23ed1e9f313b69c96d0d2e83f6b8",
+  "oracle_log_sha256": "5795bc34e56443e06534f3f825c9c3de0f3191e8a5086580a87c699d1b9ae3a5",
+  "source_manifest_sha256": "0ea09a2f986529ff6a7fb91262d24b38b4f9c9c845e63aaaeeff6b61193c7b65",
+  "first": {
+    "status": "GLOBAL_FLAT_HODGE_VALIDATED",
+    "zip_sha256": "79476ccd15ef1ee0f96469c91ff01f0178021cbfd2136386fb011135a957ac3c",
+    "source_sha": "dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc",
+    "manifest_entries": 12,
+    "source_files": 2,
+    "exit_zero_steps": 9,
+    "oracle_reports": 4,
+    "target_olean_sha256": "1ed9034ec15b651e1b22cba39be73a774bbc23ed1e9f313b69c96d0d2e83f6b8",
+    "oracle_log_sha256": "5795bc34e56443e06534f3f825c9c3de0f3191e8a5086580a87c699d1b9ae3a5",
+    "source_manifest_sha256": "0ea09a2f986529ff6a7fb91262d24b38b4f9c9c845e63aaaeeff6b61193c7b65",
+    "started_utc": "2026-10-30T13:01:51.206377+01:00",
+    "finished_utc": "2026-10-30T13:07:25.461484+01:00",
+    "scope": "Actual all-cochain Hodge equals stacked-gradient energy, with derived weighted Hodge comparison"
+  },
+  "second": {
+    "status": "GLOBAL_FLAT_HODGE_VALIDATED",
+    "zip_sha256": "1d47edf258deea83ff86a21a8a2dbc36cf43ef22e49d3e600c19b354720fb4fa",
+    "source_sha": "dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc",
+    "manifest_entries": 12,
+    "source_files": 2,
+    "exit_zero_steps": 9,
+    "oracle_reports": 4,
+    "target_olean_sha256": "1ed9034ec15b651e1b22cba39be73a774bbc23ed1e9f313b69c96d0d2e83f6b8",
+    "oracle_log_sha256": "5795bc34e56443e06534f3f825c9c3de0f3191e8a5086580a87c699d1b9ae3a5",
+    "source_manifest_sha256": "0ea09a2f986529ff6a7fb91262d24b38b4f9c9c845e63aaaeeff6b61193c7b65",
+    "started_utc": "2026-10-30T13:08:40.954816+01:00",
+    "finished_utc": "2026-10-30T13:14:33.051234+01:00",
+    "scope": "Actual all-cochain Hodge equals stacked-gradient energy, with derived weighted Hodge comparison"
+  },
+  "global_hodge_transport_formalized": true,
+  "weighted_hodge_comparison_formalized": true,
+  "independent_scientific_review": false,
+  "physical_hypothesis_removed": false
+}

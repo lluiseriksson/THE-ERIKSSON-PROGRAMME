@@ -1,0 +1,40 @@
+{
+  "status": "TWO_FRESH_CLONES_FOCAL_MATCH",
+  "source_sha": "d75bce428ff6603a9d44503d46839e52276f0c90",
+  "target_olean_sha256": "7dba01c3dfd710b1c6c959290c65fd81631ccd03bff0fc51bdda6b6035ab409c",
+  "oracle_log_sha256": "8b65a21873beeff046c0f991cd0127918adf670efbe86cfde4c2e5d8b38acf1a",
+  "source_manifest_sha256": "ad5feccf3824867a74306f55db8ba75f02fee574f65e16fe1b5158e7104692ab",
+  "first": {
+    "status": "COMPONENTWISE_GRADIENT_STAGE_VALIDATED",
+    "zip_sha256": "773955195a4abc41e1eb1a2aee0192a35a298d3c9dc8750c7ccdc68e4dfa24ff",
+    "source_sha": "d75bce428ff6603a9d44503d46839e52276f0c90",
+    "manifest_entries": 12,
+    "source_files": 2,
+    "exit_zero_steps": 9,
+    "oracle_reports": 8,
+    "target_olean_sha256": "7dba01c3dfd710b1c6c959290c65fd81631ccd03bff0fc51bdda6b6035ab409c",
+    "oracle_log_sha256": "8b65a21873beeff046c0f991cd0127918adf670efbe86cfde4c2e5d8b38acf1a",
+    "source_manifest_sha256": "ad5feccf3824867a74306f55db8ba75f02fee574f65e16fe1b5158e7104692ab",
+    "started_utc": "2026-10-30T12:03:26.807893+01:00",
+    "finished_utc": "2026-10-30T12:08:20.896386+01:00",
+    "scope": "Actual stacked gradient, periodic cross cancellation and weighted energy; global Hodge identification pending"
+  },
+  "second": {
+    "status": "COMPONENTWISE_GRADIENT_STAGE_VALIDATED",
+    "zip_sha256": "765a50b79403a7d2dbe27aba8b65e0acad7fbcd2434e84dfd92e138b8d719444",
+    "source_sha": "d75bce428ff6603a9d44503d46839e52276f0c90",
+    "manifest_entries": 12,
+    "source_files": 2,
+    "exit_zero_steps": 9,
+    "oracle_reports": 8,
+    "target_olean_sha256": "7dba01c3dfd710b1c6c959290c65fd81631ccd03bff0fc51bdda6b6035ab409c",
+    "oracle_log_sha256": "8b65a21873beeff046c0f991cd0127918adf670efbe86cfde4c2e5d8b38acf1a",
+    "source_manifest_sha256": "ad5feccf3824867a74306f55db8ba75f02fee574f65e16fe1b5158e7104692ab",
+    "started_utc": "2026-10-30T12:10:47.435377+01:00",
+    "finished_utc": "2026-10-30T12:17:12.962644+01:00",
+    "scope": "Actual stacked gradient, periodic cross cancellation and weighted energy; global Hodge identification pending"
+  },
+  "independent_scientific_review": false,
+  "global_hodge_transport_formalized": false,
+  "physical_hypothesis_removed": false
+}
