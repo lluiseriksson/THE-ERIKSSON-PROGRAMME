@@ -1,0 +1,15 @@
+{
+  "status": "PHYSICAL_HODGE_STENCIL_VALIDATED",
+  "zip_sha256": "89431cc7370f2b522991730af8b322ed43b050672ef4feab888d0406ab6935e8",
+  "source_sha": "17733eebb779fae4aa1aecc9cdfab8f6d4133c07",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 5,
+  "target_olean_sha256": "09ecc509d808cf74c934e1a3b61138c81b96a671e5f7ed4acea92cfa6ee08050",
+  "oracle_log_sha256": "9f6b040545ea377ad1c41ae6cae58f665bf4fa1f55ec86b38239ab1eadfc576a",
+  "source_manifest_sha256": "084435fe958d9f74f3e527db253b9e99ed8d926ca6505f2c8011ad560485967a",
+  "started_utc": "2026-10-30T01:44:45.090758+01:00",
+  "finished_utc": "2026-10-30T01:49:13.526324+01:00",
+  "scope": "Actual unordered-plaquette curl norm, Hodge-stencil identity and centered physical Hodge bound"
+}
