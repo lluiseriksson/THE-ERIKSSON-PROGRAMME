@@ -60,9 +60,10 @@ theorem transverseFourierProfile_shift (R : ℕ) (k : Fin d → Fin (2 * R + 1))
     transverseFourierProfile R k (x - Pi.single 0 (1 : ZMod n)) =
       transverseFourierProfile R k x := by
   classical
+  let e : Fin (d + 1) → ZMod n := Pi.single (0 : Fin (d + 1)) (1 : ZMod n)
   have hphase : (∑ i : Fin (d + 1),
       centeredFourierFrequency (n := n) R (transverseFourierIndex R k) i *
-        (x - Pi.single 0 (1 : ZMod n)) i) =
+        (x i - e i)) =
       ∑ i : Fin (d + 1),
         centeredFourierFrequency (n := n) R (transverseFourierIndex R k) i * x i := by
     apply Finset.sum_congr rfl
@@ -70,9 +71,9 @@ theorem transverseFourierProfile_shift (R : ℕ) (k : Fin d → Fin (2 * R + 1))
     by_cases h : i = 0
     · subst i
       simp [centeredFourierFrequency, transverseFourierIndex]
-    · simp [Pi.sub_apply, Pi.single_apply, h, Ne.symm h]
+    · simp [e, Pi.single_apply, h, Ne.symm h]
   simpa only [transverseFourierProfile, centeredFourierProfile,
-    torusFourierCharacter, AddChar.coe_mk] using
+    torusFourierCharacter, AddChar.coe_mk, Pi.sub_apply, e] using
     congrArg (fun z : ZMod n => (ZMod.stdAddChar z : ℂ)) hphase
 
 theorem transverseFourierBand_shift (R : ℕ)
