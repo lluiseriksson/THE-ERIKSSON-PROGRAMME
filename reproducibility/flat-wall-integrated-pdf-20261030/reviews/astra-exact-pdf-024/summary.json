@@ -1,0 +1,189 @@
+{
+  "review_id": "astra-exact-pdf-024",
+  "date": "2026-10-30",
+  "type": "scientific_model_assessment",
+  "numerical_score": null,
+  "target_score": null,
+  "review_context": {
+    "requested_model": "gpt-6-astra",
+    "requested_model_source": "parent delegation record",
+    "actual_served_model": null,
+    "reasoning_setting": null,
+    "service_identity_independently_verified": false,
+    "provider_workflow": "OpenAI/Codex",
+    "same_orchestrated_chat_account_provider": true,
+    "prior_preparation_involvement_by_reviewer": false,
+    "blind_review": false,
+    "organizationally_independent_review": false,
+    "human_peer_review": false,
+    "editorial_acceptance": false,
+    "publication": false,
+    "prior_scores_inherited": false
+  },
+  "artifact": {
+    "path": "D:\\Entregas\\the-eriksson-programme\\2026-10-30_flat-wall-integrated\\flat_coarse_rank.pdf",
+    "sha256": "119ea6ae2f0434598aab39d0f1ba338fec8fd8a27ca67faef2474f7d58561eed",
+    "pages": 8,
+    "pdf_hash_verified": true,
+    "tex_lf_sha256": "ec1f4090f71d9bf0260bba62ebdb507286d121a72c93ad6e5d4c06d484a9c5dd",
+    "tex_hash_verified": true,
+    "supplied_source_commit": "d803cd3b920a7547420352ed28abc204593d1685",
+    "historical_pdf_sha256": "48b2b725422263a272d9862621fa723d3d82c9d186dd7151be39c6ff1e3ff2e7",
+    "historical_hash_verified": true
+  },
+  "checks": {
+    "all_eight_pages_visually_inspected": true,
+    "all_eight_image_hashes_match_bundle_manifest": true,
+    "local_render_or_compile": false,
+    "lean_or_lake_executed": false,
+    "full_dependency_audit": false,
+    "independent_reproduction": false,
+    "selected_source_inspection": true,
+    "primary_literature_search": true,
+    "exhaustive_priority_search": false,
+    "manuscript_modified": false
+  },
+  "assessment": {
+    "correctness": "Core body arguments appear sound under intended discrete parameters and linear measurement hypotheses; abstract omits essential linearity and is false if read as covering nonlinear observations.",
+    "originality": "Classical Fourier/rank-nullity/min-max/Schur mechanisms; defensible value is the concrete normalization/programme obstruction and formal development. Broad novelty and exact priority not established.",
+    "relevance": "Useful negative diagnostic for the unscaled flat full-space route and bounded-codimension linear sectors. No positive interacting, physical-scaling, continuum or Yang-Mills mass-gap result.",
+    "disposition": "qualified support for narrow analytic results; corrections needed before treating exact PDF as a finished scientific account"
+  },
+  "claim_checks": [
+    {
+      "id": "historical_block",
+      "location": "Section 3 pp2-3",
+      "result": "sound",
+      "notes": "Constant-sector powers, transverse root-of-unity kernel, exact energy, spectral ladder, penalty no-go, repair identity, liminf and witness-line equivalence checked."
+    },
+    {
+      "id": "band",
+      "location": "Lemma 4.1 pp3-4",
+      "result": "sound_with_intended_integer_R",
+      "notes": "2B real dimension correct due to two internal coordinates; no conjugate-symmetry restriction; derivative Gram orthogonality included."
+    },
+    {
+      "id": "budget",
+      "location": "Theorem 5.1 p4",
+      "result": "sound",
+      "notes": "Linear C,V; Phi(0)=0; rank-nullity; c>b strict; nonsymmetric V allowed."
+    },
+    {
+      "id": "sector",
+      "location": "Proposition 5.2 pp4-5",
+      "result": "sound",
+      "notes": "Direct kernel intersection proof, not inferred from full-space failure."
+    },
+    {
+      "id": "uniform",
+      "location": "Theorem 6.1 p5",
+      "result": "sound",
+      "notes": "Fixed F,r; R then L selected after c; positive integer N'; no norm/locality bound required."
+    },
+    {
+      "id": "schur",
+      "location": "Proposition 7.1 pp5-6",
+      "result": "sound_classical",
+      "notes": "A>=0 and ker A subset ker D* necessary/sufficient; completed square correct; counterexample 1-2t+Phi(1)."
+    },
+    {
+      "id": "consumer",
+      "location": "Section 8 p6",
+      "result": "narrow_base_specialization_supported",
+      "notes": "Inspected shell includes negative perturbation Sigma; zero-Sigma specialization supplies stated lower bound. Exact consumer map needed."
+    }
+  ],
+  "objections": [
+    {
+      "id": "O1",
+      "severity": "material_scope_wording",
+      "location": "Abstract p1 first three sentences",
+      "finding": "Linearity of observations omitted.",
+      "falsifier": "F=R, C_L(A)=||A||^2, Phi_L(y)=y, V_L=0 gives uniform c=1 since K0 is nonnegative.",
+      "correction": "State linear observations and linear bounded-rank fine repairs explicitly; retain arbitrary nonlinear Phi.",
+      "invalidates_body_theorems": false
+    },
+    {
+      "id": "O2",
+      "severity": "minor_hypothesis_precision",
+      "location": "Section 3 p2; Section 4 opening p3; Section 6 opening p5",
+      "finding": "Integer/positive parameter types implicit.",
+      "falsifier": "Noninteger R is incompatible with cardinality (2R+1)^d.",
+      "correction": "Declare ell,N' positive integers and R,L nonnegative integers."
+    },
+    {
+      "id": "O3",
+      "severity": "material_attribution_context",
+      "location": "Sections 1,7 and references pp1,5-6,8",
+      "finding": "Only self-predecessor and Dodziuk cited; no direct singular-Schur citation; gauge-RG context dropped.",
+      "correction": "Cite classical matrix sources, explain fiber-minimization reformulation, restore primary gauge-RG comparison; no priority overclaim."
+    },
+    {
+      "id": "O4",
+      "severity": "reproducibility_presentation",
+      "location": "Sections 8-9 pp6-7 and declaration-map.json",
+      "finding": "No precise consumer map, direct repository/supplement location, or zero-perturbation specialization.",
+      "correction": "Link source/evidence and map exact consumer declarations; call min(1,a)/CP an available lower bound, not optimal constant."
+    },
+    {
+      "id": "O5",
+      "severity": "minor_retention_qualification",
+      "location": "Section 3 opening p2 and reconciliation",
+      "finding": "Principal historical results retained, but square-wave Appendix A and gauge-RG discussion not reproduced.",
+      "correction": "Qualify retention as principal results; preserve old appendix/version and restore context."
+    },
+    {
+      "id": "O6",
+      "severity": "review_verification_limit",
+      "location": "Section 9 pp6-7",
+      "finding": "Reproduction and axiom-log assertions were not independently rerun or fully audited in this review.",
+      "correction": "Retain reported-evidence distinction; do not call this an independent Lean rebuild or certification."
+    }
+  ],
+  "formal_anchors": {
+    "new_main": "e31b428917aa767b4a1aad097db5cf92fb9cd23e",
+    "old_dimension_four": "7b25bfb39357406cf61880e3ac0428d7d1ba3449",
+    "tested_band": "a79e6e4b2e5de72e73bd6109069eb2f82127c355",
+    "tested_uniform": "17ca395d4e9de992b1c575454a112da9e6f97e86",
+    "old_module_absent_from_new_main": true,
+    "new_YangMills_tree_matches_uniform_tested_commit": true,
+    "band_endpoint_file_matches_band_tested_commit": true
+  },
+  "primary_sources": [
+    {
+      "title": "Albert, Conditions for Positive and Nonnegative Definiteness in Terms of Pseudoinverses (1969)",
+      "url": "https://epubs.siam.org/doi/10.1137/0117041",
+      "scope": "Publisher bibliography verified; full article not read."
+    },
+    {
+      "title": "Carlson, Haynsworth and Markham, A Generalization of the Schur Complement by Means of the Moore-Penrose Inverse (1974)",
+      "url": "https://epubs.siam.org/doi/10.1137/0126013",
+      "scope": "Publisher abstract and bibliographic record."
+    },
+    {
+      "title": "Hansen and Ghrist, Toward a Spectral Theory of Cellular Sheaves",
+      "url": "https://jakobhansen.org/publications/spectralsheaves.pdf",
+      "scope": "Author manuscript, low-rank interlacing section 5.1."
+    },
+    {
+      "title": "Dodziuk, Finite-difference approach to the Hodge theory of harmonic forms (1976)",
+      "url": "https://academicworks.cuny.edu/gc_pubs/180/",
+      "scope": "Institutional bibliographic record."
+    },
+    {
+      "title": "Dimock, Covariant Axial Gauge",
+      "url": "https://arxiv.org/html/1410.2798v2",
+      "scope": "Author paper introduction and gauge-fixing context."
+    }
+  ],
+  "report_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-024\\astra-review\\scientific-review.md",
+  "limitations": [
+    "No exhaustive priority search",
+    "No backend identity telemetry exposed",
+    "No Lean execution or independent build",
+    "No full dependency closure or evidence packet hash audit",
+    "Historical comparison used supplied extracted text, not all historical PDF pages",
+    "No proof of physical/continuum/interacting bridge"
+  ],
+  "input_manifest": "Full input-file list and supplied task context in report appendix"
+}
