@@ -71,8 +71,15 @@ def main():
     app = a.create_app()
     with app.app_context():
         entries, catalogue_hash = catalogue(app)
-        validate_binding(binding, entries, app.config.get('HISTORICAL_OPERATOR_AUTHOR'))
         db = a.get_db()
+        try:
+            validate_binding(binding, entries, app.config.get('HISTORICAL_OPERATOR_AUTHOR'))
+        except ValueError as error:
+            pending=db.execute("SELECT COUNT(*) FROM historical_revision_grants h JOIN agent_grants g ON g.id=h.grant_id WHERE g.state='approved' AND g.expires_at>? AND g.uses=0", (a.iso(),)).fetchone()[0]
+            diagnostic={'checked_at':a.iso(),'binding_rejected':str(error),'configured_operator_author':app.config.get('HISTORICAL_OPERATOR_AUTHOR'),'target_catalogue_entry':entries.get(PID),'catalogue_path':app.config['HISTORICAL_REVISION_CATALOGUE'],'catalogue_sha256':catalogue_hash,'unconsumed_unexpired_historical_grants':pending,'grant_issued':False,'uploaded':False}
+            save('catalogue-diagnostic.json',diagnostic)
+            print(json.dumps(diagnostic),flush=True)
+            raise
         owner = db.execute("SELECT u.id,u.active,u.role,p.alias,p.identity_kind,p.terms_version,p.privacy_version FROM users u JOIN private_accounts p ON p.user_id=u.id WHERE p.alias=?", ('lluiseriksson',)).fetchone()
         actor = db.execute("SELECT id FROM users WHERE email=? AND role='operator' AND active=1 AND totp_secret IS NOT NULL", (app.config['OPERATOR_EMAIL'],)).fetchone()
         if not owner or not owner['active'] or owner['role'] != 'depositor' or owner['identity_kind'] != 'human' or not actor:
