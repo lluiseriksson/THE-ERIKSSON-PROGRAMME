@@ -1,0 +1,7 @@
+import YangMills.RG.PhysicalFourierRankObstruction
+#print axioms YangMills.RG.centeredPhysicalBandMap_injective
+#print axioms YangMills.RG.physicalCenteredFourierBand_finrank
+#print axioms YangMills.RG.physicalCenteredFourierBand_representation
+#print axioms YangMills.RG.physicalCenteredFourierBand_hodge_le
+#print axioms YangMills.RG.physicalCenteredFourierBand_coercivity_budget
+#print axioms YangMills.RG.physicalCenteredFourierBand_coercivity_false
