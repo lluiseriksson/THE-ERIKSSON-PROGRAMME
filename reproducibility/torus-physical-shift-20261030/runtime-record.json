@@ -1,0 +1,52 @@
+{
+  "runtime_type": "own serial Colab CPU/high-RAM",
+  "observed_ram_gb": 50.99,
+  "all_released_observed": true,
+  "runs": [
+    {
+      "run": "025",
+      "source_sha": "78c1012fde47b49efabecbbf2c0d9f410c1758cd",
+      "status": "FAIL",
+      "started_utc": "2026-10-29T23:40:14.2665910Z",
+      "finished_utc": "2026-10-29T23:43:51.1349060Z",
+      "execution_seconds": 216.868315
+    },
+    {
+      "run": "026",
+      "source_sha": "2acc4444e323f5f049ce62adb3ae56578242e574",
+      "status": "FAIL",
+      "started_utc": "2026-10-29T23:47:12.6762200Z",
+      "finished_utc": "2026-10-29T23:50:52.3405260Z",
+      "execution_seconds": 219.664306
+    },
+    {
+      "run": "027",
+      "source_sha": "62e3526b6d1d31ad01d171a7ef4a2aaa319374be",
+      "status": "FAIL",
+      "started_utc": "2026-10-29T23:53:18.9696760Z",
+      "finished_utc": "2026-10-29T23:56:31.1292440Z",
+      "execution_seconds": 192.159568
+    },
+    {
+      "run": "028",
+      "source_sha": "bf6fa4efd7bd7d883373d4ddb6299ff3c0b71426",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "started_utc": "2026-10-29T23:58:38.0543730Z",
+      "finished_utc": "2026-10-30T00:01:24.7469890Z",
+      "execution_seconds": 166.692616
+    },
+    {
+      "run": "028b",
+      "source_sha": "bf6fa4efd7bd7d883373d4ddb6299ff3c0b71426",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "started_utc": "2026-10-30T00:03:04.3351550Z",
+      "finished_utc": "2026-10-30T00:06:29.3006770Z",
+      "execution_seconds": 204.965522
+    }
+  ],
+  "total_execution_seconds": 0.0,
+  "extra_allocation_release_overhead_seconds": null,
+  "compute_units": null,
+  "runtime_shared_with_other_chat": false,
+  "gpu_used": false
+}
