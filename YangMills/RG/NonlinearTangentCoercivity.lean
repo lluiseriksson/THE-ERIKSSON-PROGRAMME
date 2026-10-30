@@ -33,12 +33,30 @@ theorem nonlinear_tangent_coercivity_false
     (hband : ∀ x : E, x ∈ S → energy x ≤ b * ‖x‖ ^ 2)
     (hdim : finrank ℝ F < finrank ℝ S) (hbc : b < c) :
     ¬ ∀ x : E, c * ‖x‖ ^ 2 ≤ energy x + Phi (C x) := by
+  classical
   intro hbound
-  have hd : finrank ℝ F + finrank ℝ (LinearMap.range (0 : E →ₗ[ℝ] E)) <
-      finrank ℝ S := by
-    simpa only [LinearMap.range_zero, finrank_bot, add_zero] using hdim
-  rcases exists_unseen_of_finrank_lt_measurement_add_repair
-    S L.toLinearMap (0 : E →ₗ[ℝ] E) hd with ⟨v, hvS, hv, hLv, _⟩
+  let f : S →ₗ[ℝ] F := L.toLinearMap.comp S.subtype
+  have hnotinj : ¬ Function.Injective f := by
+    intro hinj
+    exact (not_le_of_gt hdim) (LinearMap.finrank_le_finrank_of_injective hinj)
+  have hex : ∃ x : S, x ≠ 0 ∧ f x = 0 := by
+    by_contra hnone
+    push_neg at hnone
+    apply hnotinj
+    intro x y hxy
+    have hz : f (x - y) = 0 := by rw [map_sub, hxy, sub_self]
+    have hsub : x - y = 0 := by
+      by_contra hne
+      exact hnone (x - y) hne hz
+    exact sub_eq_zero.mp hsub
+  rcases hex with ⟨x, hx, hfx⟩
+  let v : E := x
+  have hvS : v ∈ S := x.property
+  have hv : v ≠ 0 := by
+    intro hz
+    apply hx
+    exact Subtype.ext hz
+  have hLv : L v = 0 := by simpa [f, v] using hfx
   let r : ℝ → ℝ := fun t => ‖t • v‖⁻¹ * ‖C (t • v)‖
   have hr : Tendsto r (𝓝 0) (𝓝 0) :=
     tangent_kernel_norm_ratio_tendsto C L hC hC0 v hLv
