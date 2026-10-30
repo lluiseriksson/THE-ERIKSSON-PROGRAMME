@@ -1,6 +1,6 @@
 # Componentwise derivative repairs: a global identity and the coefficient frontier
 
-Analytic research note, 30 October 2026. This is not a new paper, not a new Lean endpoint and not part of the frozen PDFb37f. It closes the analytic construction of the remaining componentwise family; its transport into a checked Lean theorem is still pending. Formal-source anchor: a9937ee1dd5978bf372174500a2395cf259eb395.
+Research note with a checked formal core, 30 October 2026. This is not a new paper or part of the frozen PDFb37f. The actual componentwise operator, global all-cochain Hodge quadratic identity and weighted comparison are now proved in Lean at dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc, with two complete fresh Colab reproductions. The growing-envelope obstruction and matching quadratic escape below remain analytic. Original convention anchor: a9937ee1dd5978bf372174500a2395cf259eb395.
 
 ## Concrete operator and actual conventions
 
@@ -42,13 +42,13 @@ Thus, for every physical one-cochain, not just one-component Fourier witnesses,
 
     <A,K0 A>=||GA||².                                       (4)
 
-Since both K0 and G*G are symmetric, polarization also gives K0=G*G as operators in this finite real Hilbert model. No operator equality is inferred from a single test vector: (4) was derived for every A. This is an analytic equality at the actual flat conventions; a Lean proof is not claimed yet.
+Since both K0 and G*G are symmetric, polarization also gives K0=G*G as operators in this finite real Hilbert model. No operator equality is inferred from a single test vector: (4) holds for every A and is now checked by componentwiseFlatGradient_eq_hodge. The operator equality by polarization is analytic here; no separate Lean operator-equality endpoint is claimed.
 
 Equations(1)-(4) give the constructed-family comparison
 
     w<=M  ==>  <A,V_w A><=M<A,K0 A> for every A.              (5)
 
-Unit weights give equality of forms and operators. The original componentwise family is now constructed and compared analytically, rather than being silently identified with the different weighted curl/divergence family of PR98. The new ingredient to formalize is the global cross-term cancellation (2)-(3).
+Unit weights give equality of forms and operators. The componentwise family is constructed explicitly, with the comparison (5) checked by componentwiseWeightedRepair_le_hodge. It is distinct from the weighted curl/divergence family of PR98. The global cross-term cancellation and actual unordered-plaquette transport have been proved, without introducing a structure assuming the desired identity or bound.
 
 ## Obstruction with growing, even subquadratic, coefficient envelopes
 
@@ -100,4 +100,12 @@ Primary source read: Daniel A. Spielman, Spectral Graph Theory Lecture3, 5Septem
 
 The earlier bull1557.pdf lookup timed out and the2012 lecture lookup was unavailable through the web tool. Neither failure is evidence of absence or novelty. No exhaustive priority search was performed. Weighted derivative comparisons and Fourier scaling are classical; the programme value is closing the specific componentwise construction and its normalization/cross-term obligations, with the exact subquadratic frontier and a matching escape recorded together. Do not turn this into a separate small paper or add it silently to an assessed PDF.
 
-Prepared and analytically checked by the same Codex agent with programme context, not blind or organizationally independent. No new alternate-model review, score, peer review, acceptance or publication. No Lean/Lake, numeric oracle or sustained local computation was executed. The only next active mathematical task is to formalize(2)-(5) for these actual finite physical cochains and verify in an own serial Colab workflow before any formal-certification claim. After three units without substantive proof progress, retain failures and change route or state the precise blocker.
+Prepared and analytically checked by the same Codex agent with programme context, not blind or organizationally independent. No new alternate-model review, score, peer review, acceptance or publication. No Windows Lean/Lake, numeric oracle or sustained local computation was executed.
+
+## Formal core and reproduction boundary
+
+ComponentwiseFlatGradient constructs G and V_w and proves (1), periodic summation by parts, commuting-shift cross cancellation and the upper bound against gradient energy. ComponentwiseFlatHodge proves matrix_sum_eq_diag_add_orderedPairs, finite_flat_curl_div_energy, componentwiseFlatGradient_eq_hodge and componentwiseWeightedRepair_le_hodge. The actual plaquette equivalence counts each unordered pair once; there is no curl-zero or mean-zero assumption. Thus the previously active formalization obligation (2)-(5) is closed.
+
+Runs040/040b are complete fresh dedicated CPU/high-RAM Colab Linux clones at source dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc. Each recovered package has12 checked manifest entries,2 pinned sources,9 exit-zero steps,4 exact-name axiom reports (only propext,Classical.choice,Quot.sound), and three actual-evidence mutations rejected in each of normal/optimized Python. The .olean, oracle and source-manifest hashes match. All runtimes were released; this is focal reproduction, not independent scientific review or repository-wide terminal closure. Full hashes and pinned drivers are in reproducibility/component-gradient-20261030/global-hodge-reproduction.json. Failure039 is preserved: inner-product ordering, over-recursive square expansion and two redundant closing tactics were repaired without changing oracle statements.
+
+The asymptotic coefficient frontier, Fourier sharpness example, operator norm estimates and operator equality by polarization remain analytic claims in this note. None is silently promoted by the checked quadratic-form endpoints. This closes a concrete finite-flat proof obligation; it supplies no Wilson Hessian, hRpoly producer or physical continuum result. No assessment of the frozen PDF is inherited.

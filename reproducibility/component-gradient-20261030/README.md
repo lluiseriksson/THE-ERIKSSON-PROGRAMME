@@ -1,5 +1,21 @@
 # Actual componentwise gradient: verified construction stage
 
+## Global extension, 30 October 2026
+
+The later source dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc closes the
+all-cochain Hodge quadratic identity and derives V_w<=M K0 for the actual
+constructed weighted gradient family. Runs040/040b passed in separate fresh
+dedicated Colab runtimes with four exact-name standard-axiom reports and
+normal/optimized actual-mutation selftests. See global-hodge-reproduction.json,
+global-hodge-source-hashes.json and validate-global-hodge.ps1. Matching .olean,
+oracle and source-manifest hashes, complete recovered ZIPs, and disconnected UI
+were verified. Failure039 is preserved with its unchanged statements and proof
+repair diagnosis. This is focal reproduction, not independent scientific review.
+The asymptotic growing-envelope frontier and quadratic escape remain analytic;
+there is no new physical hypothesis elimination or inherited PDF assessment.
+
+## Earlier construction stage at d75bce42
+
 Source: d75bce428ff6603a9d44503d46839e52276f0c90. The eight declarations in
 ComponentwiseFlatGradientOracle.lean were checked in two separate fresh
 Colab Linux clones, runs038/038b, with nine exit-zero steps per run and
