@@ -1,0 +1,15 @@
+{
+  "status": "PHYSICAL_SHIFT_AND_DIFFERENTIALS_VALIDATED",
+  "zip_sha256": "8e8bde41ee443c91a0b63b0daca08c93a04905f5b10f9a2a675c79f9e589e161",
+  "source_sha": "bf6fa4efd7bd7d883373d4ddb6299ff3c0b71426",
+  "manifest_entries": 12,
+  "source_files": 2,
+  "exit_zero_steps": 9,
+  "oracle_reports": 7,
+  "target_olean_sha256": "a22576640cae53acbc1f1e845258746c8c438562232881736b8e4efb47d1d3c0",
+  "oracle_log_sha256": "ed2b8a44ae7b259282aa10d64c9b1b71b28bc12a33ca41ae38ec31743cc8b28e",
+  "source_manifest_sha256": "2316dbe64077b4b54883e70e005e0fa3d01996833f137551747751b3a71dd704",
+  "started_utc": "2026-10-30T01:03:04.335155+01:00",
+  "finished_utc": "2026-10-30T01:06:29.300677+01:00",
+  "scope": "Actual cyclic shift transport, pointwise flat curl/divergence and divergence energy; total curl sum pending"
+}

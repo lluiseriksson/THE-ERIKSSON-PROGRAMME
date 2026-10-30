@@ -1,0 +1,26 @@
+[
+  {
+    "zip_sha256": "63f4c32bd3d7f69e95484a41237334e6b0d18c0c6f6231d1e6b0a96e7eac29d8",
+    "source_sha": "78c1012fde47b49efabecbbf2c0d9f410c1758cd",
+    "status": "FAIL",
+    "run": "025",
+    "reason": "Scoped Fin cast and NeZero d instance errors",
+    "counted_as_pass": false
+  },
+  {
+    "zip_sha256": "eef90819534884e029e7a56a6e068408d9512bdd4b6db800edc9d61d6bff058c",
+    "source_sha": "2acc4444e323f5f049ce62adb3ae56578242e574",
+    "status": "FAIL",
+    "run": "026",
+    "reason": "Default heartbeats timeout in final norm reindexing",
+    "counted_as_pass": false
+  },
+  {
+    "zip_sha256": "9964767f4ce9ddd5e699c8143a665ddf0ad179a643efcfaf7d34250aee7d0206",
+    "counted_as_pass": false,
+    "status": "FAIL",
+    "run": "027",
+    "source_sha": "62e3526b6d1d31ad01d171a7ef4a2aaa319374be",
+    "reason": "Default heartbeat timeout at final finite-sum reindexing despite explicit pointwise norm congruence"
+  }
+]
