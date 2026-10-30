@@ -104,6 +104,12 @@ Prepared and analytically checked by the same Codex agent with programme context
 
 ## Formal core and reproduction boundary
 
+The subsequent [nonlinear observation note](NONLINEAR-COARSE-FLAT-FRONTIER-20261030.md)
+derives analytic extensions to continuous odd observations and to observations
+differentiable at zero with a locally upper-quadratic penalty. It also gives
+explicit scalar norm-power counterexamples to broader nonlinear claims. These
+conclusions have no new Lean endpoint and are not added to the assessed PDF.
+
 ComponentwiseFlatGradient constructs G and V_w and proves (1), periodic summation by parts, commuting-shift cross cancellation and the upper bound against gradient energy. ComponentwiseFlatHodge proves matrix_sum_eq_diag_add_orderedPairs, finite_flat_curl_div_energy, componentwiseFlatGradient_eq_hodge and componentwiseWeightedRepair_le_hodge. The actual plaquette equivalence counts each unordered pair once; there is no curl-zero or mean-zero assumption. Thus the previously active formalization obligation (2)-(5) is closed.
 
 Runs040/040b are complete fresh dedicated CPU/high-RAM Colab Linux clones at source dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc. Each recovered package has12 checked manifest entries,2 pinned sources,9 exit-zero steps,4 exact-name axiom reports (only propext,Classical.choice,Quot.sound), and three actual-evidence mutations rejected in each of normal/optimized Python. The .olean, oracle and source-manifest hashes match. All runtimes were released; this is focal reproduction, not independent scientific review or repository-wide terminal closure. Full hashes and pinned drivers are in reproducibility/component-gradient-20261030/global-hodge-reproduction.json. Failure039 is preserved: inner-product ordering, over-recursive square expansion and two redundant closing tactics were repaired without changing oracle statements.
