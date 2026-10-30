@@ -1,0 +1,53 @@
+{
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "source_sha": "ef81f028ce6e7e8aaca7e9229eb00aa683752a41",
+  "first": {
+    "status": "REGULAR_SECTOR_CURVE_VALIDATED",
+    "source_sha": "ef81f028ce6e7e8aaca7e9229eb00aa683752a41",
+    "zip_sha256": "fdacf1711830871b7fe0dec782a4e04c28ff1fbc0d85fc3800b151357608f4d3",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 4,
+    "target_olean_sha256": "1e4d943299d6f7bcbf2020f535ca507750bb7ef2907adeed8836d5b3b4db5559",
+    "oracle_log_sha256": "6c8f97ee5a3a30e0ab4a142bce3c851e7604f885b9d1c555040c25ef2b863ce0",
+    "source_manifest_sha256": "eae349cfd48ba4776ea064c647ed0685df01976f81ad67e16491647c98f66023",
+    "started_utc": "2026-10-30T20:36:24.288113+01:00",
+    "finished_utc": "2026-10-30T20:38:45.107716+01:00",
+    "independent_review": false,
+    "scope": "Actual IFT chart and exact-sector curve with a derived nonzero unseen band tangent; no quadratic-energy noncoercivity theorem yet",
+    "windows_lean_executed": false
+  },
+  "second": {
+    "status": "REGULAR_SECTOR_CURVE_VALIDATED",
+    "source_sha": "ef81f028ce6e7e8aaca7e9229eb00aa683752a41",
+    "zip_sha256": "7a5b74af6023a532d485e7346b7a81a735e71db45a93b741064bb69aceb1b71d",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 4,
+    "target_olean_sha256": "1e4d943299d6f7bcbf2020f535ca507750bb7ef2907adeed8836d5b3b4db5559",
+    "oracle_log_sha256": "6c8f97ee5a3a30e0ab4a142bce3c851e7604f885b9d1c555040c25ef2b863ce0",
+    "source_manifest_sha256": "eae349cfd48ba4776ea064c647ed0685df01976f81ad67e16491647c98f66023",
+    "started_utc": "2026-10-30T20:39:31.706601+01:00",
+    "finished_utc": "2026-10-30T20:41:30.613821+01:00",
+    "independent_review": false,
+    "scope": "Actual IFT chart and exact-sector curve with a derived nonzero unseen band tangent; no quadratic-energy noncoercivity theorem yet",
+    "windows_lean_executed": false
+  },
+  "actual_endpoints": [
+    "regular_sector_chart",
+    "regular_sector_curve",
+    "C1_regular_sector_curve",
+    "exists_unseen_regular_sector_curve"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "normal_and_optimized_actual_oracle_mutations": true,
+  "no_assumed_sector_curve": true,
+  "ambient_finite_dimension_required": false,
+  "quadratic_energy_noncoercivity_formalized": false,
+  "independent_scientific_review": false,
+  "scope": "Classical IFT/rank-nullity construction in a Banach ambient space with finite-dimensional outputs. No physical gap or continuum claim."
+}
