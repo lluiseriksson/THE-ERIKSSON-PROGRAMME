@@ -66,16 +66,29 @@ theorem finite_flat_curl_div_energy (a : Fin d → FinBox d n → V) :
     apply Finset.sum_congr rfl
     intro i _
     rw [Finset.sum_comm]
-    rfl
+    apply Finset.sum_congr rfl
+    intro j _
+    dsimp [R]
+    apply Finset.sum_congr rfl
+    intro x _
+    exact real_inner_comm _ _
   have hpair (i j : Fin d) :
       (∑ x : FinBox d n, ‖(a j (x.shift i) - a j x) -
         (a i (x.shift j) - a i x)‖ ^ 2) = Q i j + Q j i - (R i j + R j i) := by
-    simp_rw [norm_sub_sq_two_cross]
-    simp only [Finset.sum_sub_distrib, Finset.sum_add_distrib]
     have hc₁ := flat_commuting_cross_cancellation (a j) (a i) i j
     have hc₂ := flat_commuting_cross_cancellation (a i) (a j) j i
-    dsimp [Q, R]
-    linarith
+    calc
+      _ = ∑ x : FinBox d n,
+          (‖a j (x.shift i) - a j x‖ ^ 2 + ‖a i (x.shift j) - a i x‖ ^ 2 -
+            inner ℝ (a j (x.shift i) - a j x) (a i (x.shift j) - a i x) -
+            inner ℝ (a i (x.shift j) - a i x) (a j (x.shift i) - a j x)) := by
+        apply Finset.sum_congr rfl
+        intro x _
+        exact norm_sub_sq_two_cross _ _
+      _ = _ := by
+        simp only [Finset.sum_sub_distrib, Finset.sum_add_distrib]
+        dsimp [Q, R]
+        linarith
   have hcurl : (∑ p : OrderedDirectionPair d, ∑ x : FinBox d n,
       ‖(a p.1.2 (x.shift p.1.1) - a p.1.2 x) -
         (a p.1.1 (x.shift p.1.2) - a p.1.1 x)‖ ^ 2) =
@@ -124,7 +137,6 @@ theorem componentwiseFlatGradient_eq_hodge (ρ : SUNAdjointModel Nc)
     apply Finset.sum_congr rfl
     intro x _
     rw [gaugeConstraintQCLM_trivial_apply]
-    rfl
   have hg : ‖componentwiseFlatGradientCLM A‖ ^ 2 =
       ∑ i : Fin d, ∑ j : Fin d, ∑ x : FinBox d n,
         ‖a j (x.shift i) - a j x‖ ^ 2 := by
@@ -132,7 +144,6 @@ theorem componentwiseFlatGradient_eq_hodge (ρ : SUNAdjointModel Nc)
     apply Finset.sum_congr rfl
     intro i _
     rw [Fintype.sum_prod_type, Finset.sum_comm]
-    rfl
   rw [flatGaugeHodgeK0_inner_right, hcurl, hdiv, hg]
   exact (finite_flat_curl_div_energy a).symm
 
