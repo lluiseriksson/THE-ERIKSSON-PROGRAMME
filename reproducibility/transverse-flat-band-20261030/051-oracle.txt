@@ -1,0 +1,6 @@
+'YangMills.RG.transverseFourierProfiles_linearIndependent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.transverseFourierBand_shift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.transversePhysicalBand_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.transversePhysicalBand_div_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.transversePhysicalBand_hodge_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.transverseFlat_local_coercivity_false' depends on axioms: [propext, Classical.choice, Quot.sound]
