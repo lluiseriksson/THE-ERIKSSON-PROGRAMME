@@ -1,0 +1,30 @@
+{
+  "runtime": "Colab Pro+ Linux CPU/high-RAM",
+  "runs": [
+    {
+      "finished_utc": "2026-10-30T04:40:52.1273030Z",
+      "execution_seconds": 78.295204,
+      "source_sha": "eac3cd5315b32f24226e7675456dbea86ef5edd0",
+      "started_utc": "2026-10-30T04:39:33.8320990Z",
+      "layout_warnings": [
+        "Overfull \\hbox (21.71484pt too wide) in paragraph at lines 275--285",
+        "Underfull \\hbox (badness 10000) in paragraph at lines 314--319",
+        "Underfull \\hbox (badness 10000) in paragraph at lines 314--319",
+        "Underfull \\hbox (badness 4846) in paragraph at lines 314--319"
+      ],
+      "released": true
+    },
+    {
+      "finished_utc": "2026-10-30T04:44:23.3518350Z",
+      "execution_seconds": 72.679009,
+      "source_sha": "bd2538c1a809b5b9479fa7385da41be7cc248000",
+      "started_utc": "2026-10-30T04:43:10.6728260Z",
+      "layout_warnings": [],
+      "released": true
+    }
+  ],
+  "total_reported_execution_seconds": 150.974213,
+  "note": "Both auto-unassigned and disconnected UI checked. No Lean/oracle run, no Windows compilation/rendering, no GPU. Second source is a layout correction, not same-SHA terminal scientific reproduction.",
+  "compute_units": null,
+  "allocation_overhead_seconds": null
+}

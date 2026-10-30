@@ -1,7 +1,9 @@
 # Consolidation candidate for the existing flat-kernel paper dossier
 
-`flat_coarse_rank.tex` is an uncompiled manuscript source candidate, not a reviewed
-PDF or an accepted publication. It groups the constructed physical Fourier band,
+`flat_coarse_rank.tex` and its six-page PDF are a compiled, visually checked
+consolidation candidate, pending exact-artifact scientific assessments and
+the existing dossier revision route. This is not an accepted publication.
+The manuscript groups the constructed physical Fourier band,
 finite arbitrary-measurement rank budget, direct sector obstruction, uniform
 refinement wall, and the analytic fixed-map cross-coupling criterion.
 
@@ -23,13 +25,22 @@ and repair results merely because the new low-band obstruction is broader.
 The abstract is shortened; derivative-profile Gram orthogonality is explicit;
 long declarations move to declaration-map.json; copyable reproduction notebooks
 remain the source of commands. These address the mathematical and exposition
-objections from the exact old thirteen-page PDF audit. Layout defects cannot
-be marked resolved until this candidate is compiled and all pages inspected.
+objections from the exact old thirteen-page PDF audit. The final six-page PDF has been inspected page by page after the layout fixes.
+The first compiled version and its objections are preserved in the evidence.
 
-Next: compile in a private Colab CPU/high-RAM runtime, preserve compiler logs,
-freeze PDF hash, render all pages and inspect visually. Run the artifact-operation
-marker from the PDF skill immediately before first PDF authoring, in that
-sanctioned runtime. No local Windows compilation/rendering was performed.
+The exact PDF SHA256 is
+fcf0aa40cbb87f4f5afeca5348cb8c609411b4c59376ed0cf5156c0cc3b0607d;
+source commit bd2538c1a809b5b9479fa7385da41be7cc248000.
+See reproducibility/flat-wall-pdf-20261030/EXACT-PDF-QA.md for the complete
+visual record, hashes, logs, earlier version and Colab runtime accounting.
+All six final pages were checked individually; no final LaTeX layout warnings.
+No Windows compilation or rendering was performed. PDF metadata dates use the
+fixed SOURCE_DATE_EPOCH in the driver, not the runtime start timestamp.
+
+Next: reconcile the final combined scope/original source and obtain the available
+authorized scientific assessments of this exact artifact. Keep PR97 in draft
+until the manuscript review is ready, without converting visual QA into a
+scientific review or claiming a publication decision.
 Named-model reviews must concern that exact PDF and retain full objections,
 real model identity and context. No score or review transfers from an older PDF.
 The Model assessments and review context section explicitly records the current
