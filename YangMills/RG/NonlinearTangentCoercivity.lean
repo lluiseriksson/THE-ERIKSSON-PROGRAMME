@@ -84,7 +84,8 @@ theorem nonlinear_tangent_coercivity_false
       _ ≤ b * ‖t • v‖ ^ 2 + K * ‖C (t • v)‖ ^ 2 :=
         add_le_add (hband _ (S.smul_mem t hvS)) (hPhi _ ht)
       _ = (b + K * (r t) ^ 2) * ‖t • v‖ ^ 2 := by rw [heq]; ring
-  have hr' := hr.mono_left nhdsWithin_le_nhds
+  have hr' : Tendsto r (𝓝[≠] (0 : ℝ)) (𝓝 (0 : ℝ)) :=
+    hr.mono_left nhdsWithin_le_nhds
   have hg : Tendsto (fun t : ℝ => b + K * (r t) ^ 2) (𝓝[≠] 0)
       (𝓝 (b + K * (0 : ℝ) ^ 2)) :=
     tendsto_const_nhds.add (tendsto_const_nhds.mul (hr'.pow 2))
