@@ -26,9 +26,14 @@ statement or the whole manuscript is machine checked.
 The earlier visually checked six-page continuation is preserved separately as
 six-page-candidate.pdf, SHA256
 fcf0aa40cbb87f4f5afeca5348cb8c609411b4c59376ed0cf5156c0cc3b0607d.
-It is not the PDF of the expanded current TeX. The expanded exact PDF must be
-compiled and visually checked before review; none of the earlier QA or any
-historical review transfers to its new bytes.
+It is not the PDF of the expanded current TeX. The expanded eight-page PDF is now compiled and all pages were separately
+visually inspected. Its hash is
+119ea6ae2f0434598aab39d0f1ba338fec8fd8a27ca67faef2474f7d58561eed,
+from source d803cd3b920a7547420352ed28abc204593d1685.
+The fresh exact QA and complete bundle are in
+reproducibility/flat-wall-integrated-pdf-20261030. None of the earlier QA or
+historical reviews transfers to these new bytes. Scientific assessment remains
+pending; the local exact-artifact review request is prepared, not dispatched.
 
 Intended publication route: linked revision/consolidation in the existing
 ARR-2026-7EPM3V3DP796BBRR / ai.viXra2608.0015 dossier, never a duplicate ordinary
