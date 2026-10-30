@@ -1,0 +1,5 @@
+import YangMills.RG.ComponentwiseFlatHodge
+#print axioms YangMills.RG.matrix_sum_eq_diag_add_orderedPairs
+#print axioms YangMills.RG.finite_flat_curl_div_energy
+#print axioms YangMills.RG.componentwiseFlatGradient_eq_hodge
+#print axioms YangMills.RG.componentwiseWeightedRepair_le_hodge
