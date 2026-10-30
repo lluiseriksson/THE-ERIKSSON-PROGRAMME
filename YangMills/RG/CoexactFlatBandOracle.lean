@@ -1,0 +1,7 @@
+import YangMills.RG.CoexactFlatBand
+#print axioms YangMills.RG.torusBackwardDifference_commute
+#print axioms YangMills.RG.coexactFlatMap_div_zero
+#print axioms YangMills.RG.coexactPositiveScalarBand_backward_kernel
+#print axioms YangMills.RG.coexactPositivePhysicalBandMap_injective
+#print axioms YangMills.RG.coexactPositivePhysicalBand_finrank
+#print axioms YangMills.RG.coexactPositivePhysicalBand_div_zero
