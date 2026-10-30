@@ -1,0 +1,81 @@
+{
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "source_sha": "bffc9cfd45c6afbd2ba8524c6fd85c4eae6a4697",
+  "first": {
+    "status": "TRANSVERSE_FLAT_BAND_VALIDATED",
+    "source_sha": "bffc9cfd45c6afbd2ba8524c6fd85c4eae6a4697",
+    "zip_sha256": "07767a0bc29721932cc85ee8d8c77e97f07f8bf12d3806f19b3024ddcb05242a",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "c6cd0aebb910dc05f91db69901425a43688e5c4c2c14e29a0168f48c9867e576",
+    "oracle_log_sha256": "ce2abf1d826756cdb6b770dbc5ecbc1988db35616a73694ef7d8523c776c83db",
+    "source_manifest_sha256": "25b20743b0b145af6423ce642398421b00f8d20840c237ee25868dc7a053bcd1",
+    "started_utc": "2026-10-30T22:52:47.223432+01:00",
+    "finished_utc": "2026-10-30T22:57:31.76194+01:00",
+    "independent_review": false,
+    "scope": "Constructed actual flat divergence-free Fourier band and local nonlinear-observation obstruction; no constraint-output dimension cost",
+    "windows_lean_executed": false
+  },
+  "second": {
+    "status": "TRANSVERSE_FLAT_BAND_VALIDATED",
+    "source_sha": "bffc9cfd45c6afbd2ba8524c6fd85c4eae6a4697",
+    "zip_sha256": "0430ba5dcd9660e50021ed06b47623d98cc10cd01b957d56d62884a50eda6aa8",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "c6cd0aebb910dc05f91db69901425a43688e5c4c2c14e29a0168f48c9867e576",
+    "oracle_log_sha256": "ce2abf1d826756cdb6b770dbc5ecbc1988db35616a73694ef7d8523c776c83db",
+    "source_manifest_sha256": "25b20743b0b145af6423ce642398421b00f8d20840c237ee25868dc7a053bcd1",
+    "started_utc": "2026-10-30T22:58:26.908703+01:00",
+    "finished_utc": "2026-10-30T23:04:02.459938+01:00",
+    "independent_review": false,
+    "scope": "Constructed actual flat divergence-free Fourier band and local nonlinear-observation obstruction; no constraint-output dimension cost",
+    "windows_lean_executed": false
+  },
+  "exact_endpoints": [
+    "transverseFourierProfiles_linearIndependent",
+    "transverseFourierBand_shift",
+    "transversePhysicalBand_finrank",
+    "transversePhysicalBand_div_zero",
+    "transversePhysicalBand_hodge_le",
+    "transverseFlat_local_coercivity_false"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "normal_and_optimized_actual_oracle_mutations": true,
+  "full_zip_manifests_validated": 2,
+  "independent_scientific_review": false,
+  "windows_lean_executed": false,
+  "scope": "Actual finite flat divergence-zero sector, dimension2(2R+1)^d in spatiald+1; local nonlinear-observation obstruction counts only dimF",
+  "derived_constraint_annihilation": true,
+  "bounded_divergence_codimension_assumed": false,
+  "arbitrary_constraint_hypotheses_dropped": false,
+  "uniform_family_formalized": false,
+  "one_dimensional_boundary_counterexample_formalized": false,
+  "frozen_pdf_c9de_unchanged": true,
+  "new_deposit": false,
+  "new_publication": false,
+  "all_own_runtimes_released_ui_verified": true,
+  "all_unit038_own_runtimes_released_ui_verified": true,
+  "own_notebook_tab_closed": true,
+  "cpu_high_ram_gb": 50.99,
+  "billed_units": null,
+  "runtime_interval_note": "Driver start to release request; full allocation/release latency and billed units not measured",
+  "failure049_interval_utc": [
+    "2026-10-30T21:34:05.874285Z",
+    "2026-10-30T21:41:22.742903Z"
+  ],
+  "failure050_interval_utc": [
+    "2026-10-30T21:46:02.970515Z",
+    "2026-10-30T21:50:48.778092Z"
+  ],
+  "notebooks": [
+    "https://colab.research.google.com/drive/1HvIttQvAjsZlrFSFiw-1hhdsAZy1E6dh",
+    "https://colab.research.google.com/drive/1NtSowcTXWfmoiG4JHj8mlutyb8YPuXe2"
+  ],
+  "prepared050b_executed": false
+}

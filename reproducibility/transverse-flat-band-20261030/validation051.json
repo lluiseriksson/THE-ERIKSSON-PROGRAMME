@@ -1,0 +1,16 @@
+{
+  "status": "TRANSVERSE_FLAT_BAND_VALIDATED",
+  "source_sha": "bffc9cfd45c6afbd2ba8524c6fd85c4eae6a4697",
+  "zip_sha256": "07767a0bc29721932cc85ee8d8c77e97f07f8bf12d3806f19b3024ddcb05242a",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "c6cd0aebb910dc05f91db69901425a43688e5c4c2c14e29a0168f48c9867e576",
+  "oracle_log_sha256": "ce2abf1d826756cdb6b770dbc5ecbc1988db35616a73694ef7d8523c776c83db",
+  "source_manifest_sha256": "25b20743b0b145af6423ce642398421b00f8d20840c237ee25868dc7a053bcd1",
+  "started_utc": "2026-10-30T21:52:47.2234320+00:00",
+  "finished_utc": "2026-10-30T21:57:31.7619400+00:00",
+  "independent_review": false,
+  "scope": "Constructed actual flat divergence-free Fourier band and local nonlinear-observation obstruction; no constraint-output dimension cost",
+  "windows_lean_executed": false
+}

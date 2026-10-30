@@ -1,0 +1,7 @@
+import YangMills.RG.TransverseFlatBand
+#print axioms YangMills.RG.transverseFourierProfiles_linearIndependent
+#print axioms YangMills.RG.transverseFourierBand_shift
+#print axioms YangMills.RG.transversePhysicalBand_finrank
+#print axioms YangMills.RG.transversePhysicalBand_div_zero
+#print axioms YangMills.RG.transversePhysicalBand_hodge_le
+#print axioms YangMills.RG.transverseFlat_local_coercivity_false
