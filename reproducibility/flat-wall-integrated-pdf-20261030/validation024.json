@@ -1,0 +1,15 @@
+{
+  "status": "PDF_RENDER_BUNDLE_HASH_VALIDATED",
+  "zip_sha256": "a0de714973b18a0dce7a29837afbd8c258062d1a604b6e5a5089e29c9b6b3591",
+  "source_sha": "d803cd3b920a7547420352ed28abc204593d1685",
+  "source_sha256": "ec1f4090f71d9bf0260bba62ebdb507286d121a72c93ad6e5d4c06d484a9c5dd",
+  "pdf_sha256": "119ea6ae2f0434598aab39d0f1ba338fec8fd8a27ca67faef2474f7d58561eed",
+  "pages": 8,
+  "manifest_entries": 28,
+  "exit_zero_steps": 9,
+  "layout_warnings": 0,
+  "started_utc": "2026-10-30T05:42:40.1753900Z",
+  "finished_utc": "2026-10-30T05:43:59.6132500Z",
+  "visual_inspection": "separate report required",
+  "independent_review": false
+}

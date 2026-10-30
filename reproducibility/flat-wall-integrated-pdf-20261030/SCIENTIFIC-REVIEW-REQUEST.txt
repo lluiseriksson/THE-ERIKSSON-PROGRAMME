@@ -1,0 +1,31 @@
+Review the attached exact eight-page PDF as a local candidate scientific preassessment.
+Target historical dossier: ARR-2026-7EPM3V3DP796BBRR / ai.viXra2608.0015.
+This local candidate has no private SUB receipt and no editorial acceptance.
+Exact PDF SHA256:119ea6ae2f0434598aab39d0f1ba338fec8fd8a27ca67faef2474f7d58561eed.
+Source commit:d803cd3b920a7547420352ed28abc204593d1685.
+
+Assess correctness, originality and relevance separately. Seek missing hypotheses,
+wrong quantifiers, normalization mistakes, unjustified formalization claims and
+counterexamples. Check the retained block witness/spectral/repair arguments, the
+constructed Fourier band and real dimension2B, the necessary rank budget, direct
+sector obstruction, uniform quantifiers and analytic singular-Schur criterion.
+Determine whether the original paper's substantive results are preserved and
+whether physical scaling/quotient/interacting and continuum limits are honest.
+Consult only primary sources when verifying novelty; no new-general-principle
+priority or Yang-Mills result is assumed. Explain any literature overlap or
+limitations without trying to justify acceptance.
+
+The declaration map distinguishes old tested7b25bfb source (dimension-four
+factorized endpoint) from new e31b428 main. Old modules are absent from current
+main even though reproduction packets are present. Analytic trig, spectral,
+asymptotic, fixed-map and source-inspection consequences are not all Lean endpoints.
+The preparing agent's visual QA is not a scientific assessment. No earlier model
+score/report applies to this PDF. You have not been asked for a target score.
+
+Provide a complete report: precise claims checked; material objections and exact
+locations; concrete correction or falsifier for each; separate originality and
+programme relevance; uncertainty and unverified points. State actual model/provider
+metadata only if available, and your prior involvement/context honestly. A model's
+self-report alone is not proof of identity; the operator will record visible service
+metadata separately. Do not claim independent peer review, editorial acceptance or
+publication. Preserve disagreements; do not silently rewrite the manuscript.

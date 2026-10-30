@@ -1,0 +1,11 @@
+{
+  "finished_utc": "2026-10-30T05:43:59.6132500Z",
+  "started_utc": "2026-10-30T05:42:40.1753900Z",
+  "runtime": "Colab Pro+ Linux CPU/high-RAM",
+  "note": "Prepared offline; edit marker exit0; all9steps exit0; runtime auto-unassigned, reconnect UI checked; no Lean or Windows compile/render.",
+  "allocation_overhead_seconds": null,
+  "compute_units": null,
+  "reported_execution_seconds": 79.43786,
+  "source_sha": "d803cd3b920a7547420352ed28abc204593d1685",
+  "released": true
+}
