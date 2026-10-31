@@ -80,6 +80,9 @@ American Mathematical Society (2017), Chapter 13.
 Author-hosted text: \url{https://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf}.
 '@
 $t=$t.Replace('\end{thebibliography}',$bib+"`n\end{thebibliography}")
+$t=$t.Replace('It has not been formalized in this manuscript.','The actual curve construction and local-energy obstruction now have separately pinned formal proofs, identified in the evidence section.')
+$t=$t.Replace('This is attribution of the'+"`n"+'classical parametrization, not a claim that our sector theorem is formalized.','This attributes the classical parametrization; the separately pinned sector formalizations are identified in the evidence section.')
+$t=$t.Replace('\clearpage'+"`n"+'\subsection*{Model assessments and review context}','\bigskip'+"`n"+'\subsection*{Model assessments and review context}')
 [IO.File]::WriteAllText((Join-Path $out 'flat_coarse_rank.tex'),$t,[Text.UTF8Encoding]::new($false))
 $map=ReadJ (Join-Path $w 'papers\flat-coarse-rank\v3-candidate\declaration-map.json')
 $map.candidate_version='v4-not-deposited';$map.consolidated_tree='formal dependencies as at c3f2b1d31e50b37e44d895e0b08ee834bd6af488; manuscript source recorded separately';$map.review_context='No exact-v4 model assessment; no inherited score, no scientific independence claim'

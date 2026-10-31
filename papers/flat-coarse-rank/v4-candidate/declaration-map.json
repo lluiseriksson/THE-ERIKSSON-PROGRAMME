@@ -84,7 +84,10 @@
       "status": "formal two fresh matching Colab clones044/044b"
     },
     {
+      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
       "evidence": "reproducibility/average-weight-rank-divergence-20261031/paired-validation.json",
+      "module": "PhysicalAverageWeightFamily",
+      "label": "actual mean-weight output-rank divergence",
       "declarations": [
         "positiveStripCharacter_multiplier_bound",
         "positiveStrip_multiplier_sum_sq_le",
@@ -93,13 +96,13 @@
         "physicalAverage_subquadratic_finrank_tendsto",
         "physicalAverage_subquadratic_no_bounded_output"
       ],
-      "module": "PhysicalAverageWeightFamily",
-      "label": "actual mean-weight output-rank divergence",
-      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
       "tested_sha": "ac60c0df885d8866329a839e2b4e73c90595d806"
     },
     {
+      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
       "evidence": "reproducibility/physical-quadratic-mean-20261031/paired-validation.json",
+      "module": "PhysicalQuadraticMeanRepair",
+      "label": "quadratic-weight mean boundary",
       "declarations": [
         "finBoxMean_poincare_energy_le",
         "physicalDirectionalMean_hasFDerivAt",
@@ -108,22 +111,19 @@
         "physicalQuadraticMean_global_coercive",
         "physicalDirectionalMean_output_finite"
       ],
-      "module": "PhysicalQuadraticMeanRepair",
-      "label": "quadratic-weight mean boundary",
-      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
       "tested_sha": "7f37d6437a8f69a1d3fddf3dc0bcfad74c6bf9b6"
     },
     {
+      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
       "evidence": "reproducibility/regular-sector-coercivity-20261030/paired-validation.json",
+      "module": "RegularSectorCoercivity",
+      "label": "actual local regular-sector energy obstruction",
       "declarations": [
         "curve_rescaled_tendsto",
         "quadratic_curve_rescaled_tendsto",
         "regular_sector_local_coercivity_false",
         "physicalBand_regular_sector_local_coercivity_false"
       ],
-      "module": "RegularSectorCoercivity",
-      "label": "actual local regular-sector energy obstruction",
-      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
       "tested_sha": "9bb90cfd77ec5cea5c4447667fe8baf8c21429a1"
     }
   ],
