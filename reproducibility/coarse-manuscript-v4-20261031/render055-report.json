@@ -1,0 +1,53 @@
+{
+  "source_sha": "dbd8be9909204daea99ca442918e4fae238b8bbc",
+  "started_utc": "2026-10-31T14:07:32.511291+00:00",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 4.13271
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 72.223693
+    },
+    {
+      "name": "pip-render",
+      "exit_code": 0,
+      "seconds": 3.884636
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.739655
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.729624
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.049371
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.122996
+    },
+    {
+      "name": "pdftoppm",
+      "exit_code": 0,
+      "seconds": 0.728043
+    }
+  ],
+  "status": "PDF_COMPILED_ALL_PAGES_RENDERED_AWAITING_VISUAL_QA",
+  "independent_review": false,
+  "pages": 16,
+  "pdf_sha256": "6d399e0fcf557ac15a4cde8e42920f706420f652df4460071e81d1045bbbcd84",
+  "source_sha256": "9757b9450a4f8e06101b4a74ae316a8da0c6f4fbfd685be2df24102b5d01a588",
+  "layout_warnings": [],
+  "finished_utc": "2026-10-31T14:08:56.023741+00:00"
+}

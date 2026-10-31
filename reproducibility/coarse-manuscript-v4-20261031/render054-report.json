@@ -1,0 +1,55 @@
+{
+  "source_sha": "9c074cfab097e19af8516aa2f5e264f7fea751f1",
+  "started_utc": "2026-10-31T14:03:43.777458+00:00",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 5.576662
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 60.213293
+    },
+    {
+      "name": "pip-render",
+      "exit_code": 0,
+      "seconds": 3.209793
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.468971
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.456068
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.037587
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.080961
+    },
+    {
+      "name": "pdftoppm",
+      "exit_code": 0,
+      "seconds": 0.457249
+    }
+  ],
+  "status": "PDF_COMPILED_ALL_PAGES_RENDERED_AWAITING_VISUAL_QA",
+  "independent_review": false,
+  "pages": 16,
+  "pdf_sha256": "7ba764c9d4291e3e620d40a2d9e3e12b332be408e4bad9db054636f0d1f5eb39",
+  "source_sha256": "c5a91b047f60445c36df8e0beb46926975f8c1537d3b960fc8e380011afa26d3",
+  "layout_warnings": [
+    "Overfull \\hbox (48.59346pt too wide) in paragraph at lines 772--780"
+  ],
+  "finished_utc": "2026-10-31T14:04:55.161365+00:00"
+}
