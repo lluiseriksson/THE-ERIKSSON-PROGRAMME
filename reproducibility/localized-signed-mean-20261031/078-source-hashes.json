@@ -1,0 +1,14 @@
+[
+  {
+    "name": "LocalizedSignedMeanCounterexample.lean",
+    "sha256_lf": "e4817a07b5985215392208a89849680a42fe3a3275d1065cd1132c7057db85a9",
+    "expected": "e4817a07b5985215392208a89849680a42fe3a3275d1065cd1132c7057db85a9",
+    "matches": true
+  },
+  {
+    "name": "LocalizedSignedMeanCounterexampleOracle.lean",
+    "sha256_lf": "4ba6c9aac0b12fe433ff9eff5035b2e9600e1d3b5871000ae06cc329f50eb58c",
+    "expected": "4ba6c9aac0b12fe433ff9eff5035b2e9600e1d3b5871000ae06cc329f50eb58c",
+    "matches": true
+  }
+]

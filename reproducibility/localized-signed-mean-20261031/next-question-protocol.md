@@ -1,0 +1,11 @@
+# Single next question — actual square-cycle cancellation
+
+Statement: can an explicit actual signed repair be proved nonpositive on every cochain while the spatial mean of pointwise positive parts is critical (n²), then obtain the existing output-rank obstruction without assuming an abstract operator-order certificate?
+
+Hypotheses: periodic flat side n>=3, fixed distinct directions i,k, chosen component j, same actual cochains/operators. For subsequent observation-rank application retain the original differentiability at0, zero observation, local upper-quadratic penalty and fixed c>0. Do not claim these are eliminated.
+
+Proposed actual construction (not yet formal/verified): let origin o, e_i/e_k denote actual shifts. Put positive A=n^(d+2) on edge(i,o,j). Put -3A on edges(k,o,j), (i,o+e_k,j), (k,o+e_i,j), zero elsewhere. First verify supports are distinct and actual source-site indexing. Commuting shifts should give D_i u(o)=D_k u(o)+D_i u(o+e_k)-D_k u(o+e_i). The three-term Hilbert norm bound yields ||D_i u(o)||²<=3*(sum3 path norm²), hence the exact weighted energy is <=0. This is a derived order statement on actual weights, not a structure field. The selected positive-part mean should equal A/n^d=n², so the unit057 sufficient positive-part o(n²) condition fails, while actual domination by zero allows its older unweighted family rank obstruction under the original local coercivity hypothesis. This would show the positive-part condition is not necessary, not refute its sufficiency.
+
+Falsifiers: wrong sign/orientation/source site, support collisions, missing factor3, wrong n^d normalization, changed original local hypotheses, or supplying the desired order as a certificate. Determine all before interpreting a compiler result.
+
+Abandonment: after3 implementation units without a substantive checked actual endpoint, preserve failures and identify the exact blocker or change route. No extra paper for a norm inequality or small corollary. Cycle telescoping/energy comparison is classical; compare primary literature before any originality claim. One active question only; the signed-mean family counterexample must first be fully closed.
