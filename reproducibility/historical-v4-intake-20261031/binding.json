@@ -1,0 +1,16 @@
+{
+  "version_id": "arr:version:06fc6b16-cadb-4184-8931-58a6893392d3",
+  "parent_sha256": "c9de923a66038ed66c3f68ecf8256b3f738a3ccf27e41f77e470bf7dc3efb5b9",
+  "sha256": "e5e9ddcf044ddcfab0e4cae8e2c6ac1a3dca39ff21bf23b20989aaff4b220e05",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "version": "v4",
+  "supersedes_version_id": "arr:version:7cf50607-2703-4920-bf35-ea247b4dc9da",
+  "record_id": "arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00",
+  "changelog": {
+    "editorial": "Author explicitly authorized exact-byte linked deposit and Working-paper publication CC-BY-4.0/CC0; not admitted, no new exact-v4 external model assessment, inherited rating, independent review or editorial acceptance.",
+    "mathematics": "Consolidates actual directional-mean nonlinear output-rank divergence on the divergence-free space, the constructed fixed-output quadratic-weight mean boundary, and explicit quadratic-penalty refutations/tradeoff. Later actual regular-sector curve/local-energy formalizations separately identified.",
+    "reproducibility": "Mean-weight proof ac60c0df passed own matching fresh clones076/076b; quadratic boundary proof7f37d643 passed067/067b. Exact15page PDF e5e9 compiled/rendered055/056 and all final056 pages visually inspected; original054/055 diagnostics retained. Whole manuscript not machine checked.",
+    "scope": "Finite flat unit-spacing cochains only; nonnegative weights, fixed c>0 and local upper-quadratic penalty retained. No volume-density, interacting or continuum mass-gap claim.",
+    "version": "Candidate v4 of same public record superseding actual v3 c9de; no fictitious private parent case or duplicated new paper."
+  }
+}
