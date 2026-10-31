@@ -43,7 +43,8 @@ theorem finBoxMean_poincare_energy_le (f : FinBox d n → V) :
       _ = _ := by
         apply Finset.sum_congr rfl
         intro x _
-        simp only [g, WithLp.toLp_apply, hshift, Equiv.symm_apply_apply]
+        change ‖f (e.symm (e x + torusUnit i)) - f (e.symm (e x))‖ ^ 2 = _
+        rw [hshift, Equiv.symm_apply_apply]
   have h := torusMean_poincare_energy_le g
   rw [hl] at h
   simpa only [hr] using h
