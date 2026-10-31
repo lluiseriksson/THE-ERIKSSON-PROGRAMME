@@ -1,0 +1,50 @@
+{
+  "runs": [
+    {
+      "run": "085",
+      "status": "FAIL",
+      "started_utc": "2026-11-01T00:10:57.124376+01:00",
+      "finished_utc": "2026-11-01T00:16:01.120048+01:00",
+      "driver_interval_seconds": 303.995672,
+      "runtime_type": "own Colab Linux CPU high-RAM",
+      "release": "automatically unassigned, disconnected UI verified",
+      "billed_units": null
+    },
+    {
+      "run": "086",
+      "status": "FAIL",
+      "started_utc": "2026-11-01T00:26:35.138117+01:00",
+      "finished_utc": "2026-11-01T00:36:59.026279+01:00",
+      "driver_interval_seconds": 623.888162,
+      "runtime_type": "own Colab Linux CPU high-RAM",
+      "release": "automatically unassigned, disconnected UI verified",
+      "billed_units": null
+    },
+    {
+      "run": "087",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "started_utc": "2026-11-01T00:41:28.114241+01:00",
+      "finished_utc": "2026-11-01T00:46:42.413397+01:00",
+      "driver_interval_seconds": 314.299156,
+      "runtime_type": "own Colab Linux CPU high-RAM",
+      "release": "automatically unassigned, disconnected UI verified",
+      "billed_units": null
+    },
+    {
+      "run": "087b",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "started_utc": "2026-11-01T00:48:43.065482+01:00",
+      "finished_utc": "2026-11-01T00:54:05.519833+01:00",
+      "driver_interval_seconds": 322.454351,
+      "runtime_type": "own Colab Linux CPU high-RAM",
+      "release": "automatically unassigned, disconnected UI verified",
+      "billed_units": null
+    }
+  ],
+  "connected_duration": "driver intervals only; allocation/release latency not measured",
+  "unused085b_086b": "prepared disconnected, never allocated",
+  "all_own_tabs_closed": true,
+  "windows_Lean": false,
+  "shared_runtime": false,
+  "GPU": false
+}

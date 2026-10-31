@@ -1,0 +1,16 @@
+{
+  "status": "NORMALIZED_ACTUAL_COEXACT_SYNTHESIS_VALIDATED",
+  "source_sha": "6924c6769b58e69a35367b59ef63e3fa9e165a12",
+  "zip_sha256": "009b3f13784f4c2c2f7f9101763b07de3888b26e6242f1e69b9923a4354d9579",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 7,
+  "target_olean_sha256": "766169602b166d4ecdd24041d960c68329ff7993114ef3e567e7b549d1eb4e38",
+  "oracle_log_sha256": "659546a77ff0ead32afc5bccbb3cfd34fac3f8c698b28f983c87c975903f7af3",
+  "source_manifest_sha256": "92b98dbad4369ea4ea1aab1f8044f6eb7c33fc9730f5c7204af0722e5ca8cdc8",
+  "started_utc": "2026-10-31T23:48:43.0654820+00:00",
+  "finished_utc": "2026-10-31T23:54:05.5198330+00:00",
+  "independent_review": false,
+  "scope": "Actual coexact normalization and all-coefficient counting norm identity; no weighted packet trace or full density endpoint claimed",
+  "windows_lean_executed": false
+}
