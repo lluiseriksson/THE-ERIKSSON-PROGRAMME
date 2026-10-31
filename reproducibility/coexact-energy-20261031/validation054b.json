@@ -1,0 +1,16 @@
+{
+  "status": "COEXACT_FLAT_ENERGY_VALIDATED",
+  "source_sha": "299736d8ba7fb530c37bfe73a07a59faa289aaad",
+  "zip_sha256": "89c6b9f5ae4674748934db1f4b90b84db4c0397433a2dfd5ed1d9609a255acfa",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "ee674e9bcdb3938b465a1cf72271e1dd483999bb501d522bdc78daaf06cf72b5",
+  "oracle_log_sha256": "b0a4df472ab7c906875f62f282565ab294792e90c84a035bd8109e529eeca17f",
+  "source_manifest_sha256": "5377bc7097c8e8f0e86ae51580cb7ad75fab6ca8eab1755d7e260afc00c4657a",
+  "started_utc": "2026-10-30T23:42:59.2500890+00:00",
+  "finished_utc": "2026-10-30T23:50:08.3099590+00:00",
+  "independent_review": false,
+  "scope": "Actual support-derived Hodge energy and nonlinear-observation local coercivity obstruction on constructed volume-order flat divergence-free band",
+  "windows_lean_executed": false
+}
