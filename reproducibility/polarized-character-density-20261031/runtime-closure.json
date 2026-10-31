@@ -1,0 +1,32 @@
+{
+  "runtime_type": "Colab Linux CPU/high-RAM",
+  "own_serial_runtimes": true,
+  "shared": false,
+  "prepared_disconnected": true,
+  "runs": [
+    {
+      "started_utc": "2026-10-31T22:09:59.2296900+00:00",
+      "driver_interval_seconds": 299.966269,
+      "source_sha": "5ccd1018b0f60ec7d443247887bd7865ab5425aa",
+      "finished_utc": "2026-10-31T22:14:59.1959590+00:00"
+    },
+    {
+      "started_utc": "2026-10-31T22:15:22.1202410+00:00",
+      "driver_interval_seconds": 323.059135,
+      "source_sha": "5ccd1018b0f60ec7d443247887bd7865ab5425aa",
+      "finished_utc": "2026-10-31T22:20:45.1793760+00:00"
+    }
+  ],
+  "notebooks": [
+    "https://colab.research.google.com/drive/1p_tG7N_j-EAbvNIdZYKjnsp389Koy8aa",
+    "https://colab.research.google.com/drive/1w5MevpdCPQVKV3ujWkPxh_WS2H6prs1V"
+  ],
+  "total_connected_time": "Driver intervals plus unmeasured allocation/release latency; exact connected duration not exposed",
+  "billed_compute_units": null,
+  "automatic_release": true,
+  "both_visibly_disconnected": true,
+  "signal": "Återanslut Mycket RAM-minne",
+  "all_own_notebook_tabs_closed": true,
+  "windows_lean": false,
+  "gpu": false
+}

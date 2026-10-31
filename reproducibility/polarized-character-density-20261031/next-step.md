@@ -1,0 +1,7 @@
+# Continue the same registered formal trace question
+
+The four polarized-character endpoints transport actual componentwise gradients, counting mass and weighted energy. They do not complete the normalized coexact packet. Next specialize the amplitudes to the two backward-difference symbols, prove their denominator nonzero using the positive first frequency, construct both normalized real quadratures, and derive the finite-character Gram identity. Then sum the actual weighted diagonal over this derived orthonormal basis before applying the positive compressed-trace/local nonlinear rank argument.
+
+Keep arbitrary weights for exact energy identities and all component/direction nonnegative mean bounds, including diagonal pairs, for the density theorem. No supplied coexactness, normalization, Gram, trace, order or volume-dimension field. No unproved uniform pointwise cap or arbitrary-band operator bound may enter. The analytic theorem at e6b60325 remains analytic until the actual formal chain is complete.
+
+Retain the existing three-unit rule: after three units without a substantive actual normalized-packet/weighted-trace formal advance, preserve exact failed source/logs and identify the specific obstruction or change route. Do not count preparation, status polling or numerical probes as a successful Lean endpoint. Group the eventual result into the existing dossier; do not create a paper for each transport lemma or inherit frozen PDF assessments/permissions.

@@ -1,0 +1,4 @@
+'YangMills.RG.polarizedCharacter_gradient_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.polarizedCharacter_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.polarizedCharacter_weightedRepair_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.polarizedCharacter_mean_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
