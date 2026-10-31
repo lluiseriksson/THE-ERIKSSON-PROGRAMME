@@ -21,7 +21,7 @@ BASE = 'https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
 FOLDER = '/reproducibility/historical-v4-intake-20261031/'
 PID = 'ARR-2026-7EPM3V3DP796BBRR'
 SHA = 'e5e9ddcf044ddcfab0e4cae8e2c6ac1a3dca39ff21bf23b20989aaff4b220e05'
-PINS = {'binding.json':'4158e3688bfaa6d3b065964b7ce3323b2953fb56f3ead05f85cc237bc3fec239','revision-job.json':'a3880ad1d2e758a46c6b53ee3b2eae349effc6e66817ca6e47f6a76f1641c130'}
+PINS = {'binding.json':'9ea729b2986699b23320d11c68c760eb8e33e0aed722b8bca9b326405b41f21c','revision-job.json':'a3880ad1d2e758a46c6b53ee3b2eae349effc6e66817ca6e47f6a76f1641c130'}
 
 
 def digest(data):
