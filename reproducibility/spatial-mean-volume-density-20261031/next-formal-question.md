@@ -1,0 +1,13 @@
+# Single next active question: actual normalized coexact weighted trace
+
+Statement: in the actual physical cochain space for every d>=2, Nc>=2, n>2R and R>=1, construct the 2R(2R+1)^(d-1) normalized real coexact character fields used in proof.md and derive their exact weighted energy diagonal and Gram matrix. Target endpoint is equality (E), with arbitrary actual component weights, followed by the nonnegative mean-weight density consequence. No assumed trace, order, coexactness, orthonormality or volume-dimension certificate may substitute for these derivations.
+
+Hypotheses: the finite lattice, fixed two distinct field directions and two orthonormal internal coordinates; positive first frequency and non-aliasing; arbitrary weights for the exact diagonal identity, then actual nonnegative weights and all spatial means<=M for the trace bound. The subsequent density conclusion retains differentiability at zero, C(0)=0, local upper-quadratic Phi, positive local radii and fixed c>0. No uniform pointwise cap.
+
+Mechanism: specialize coexactFlatMap to each actual character, divide by the derived strictly positive norm sqrt(V)*sqrt(|t_1|^2+|t_2|^2), use backward-difference commutation for divergence and geometric finite-character sums for the real Gram identity. Transport actual componentwiseWeightedRepair_energy; take the finite basis sum before invoking PositiveCompressedTrace/nonlinear derivative-kernel machinery. Existing modules are dependencies, not desired-conclusion inputs. Index code may use d+2 and k+1; record that translation explicitly.
+
+Falsifiers: forward/backward symbol confusion, division by an unproved nonzero norm, missing real quadrature, aliasing, use of off-diagonal means alone, loss of n^d order, silently assuming arbitrary-band operator domination from means, changing the original local observation/penalty hypotheses, or citing finite numeric probes as universal proof.
+
+Abandonment: after three units without a substantive actual normalized-packet/weighted-trace formal endpoint, preserve exact failed source and logs, identify the concrete elaboration/lemma obstruction or change route. Do not move the missing theorem into a structure field. Prepare disconnected and use an owned Colab Linux runtime only; preserve all literal failures and exact source identities. No new discovery paper or grade-seeking review loop.
+
+The analytic all-side density question has a complete written answer in proof.md; this task asks for formal closure of the same result, not an additional unproved mathematical claim. Before changing a PDF, group the result into the existing dossier and assess the exact new bytes. Frozen approved v4 and reviewed internal v5 are unchanged and do not contain this theorem.
