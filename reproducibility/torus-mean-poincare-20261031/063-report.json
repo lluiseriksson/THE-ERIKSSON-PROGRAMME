@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "adc4699882e10ad3483bb0fa5925ae29c78239ec",
+  "started_utc": "2026-10-31T05:01:51.544660+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.169,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.005,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.978,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.169,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 19.28,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 103.14,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 33.841,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: \u26a0 [8158/8159] Built YangMills.RG.CyclicMeanPoincare (7.5s)\nwarning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:\n  [NormedAddCommGroup V]\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:\n  [NormedAddCommGroup V]\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u2716 [8159/8159] Building YangMills.RG.TorusMeanPoincare (19s)\ntrace: .> LEAN_PATH=/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-torus-mean-poincare-20261031-063/YangMills/RG/TorusMeanPoincare.lean -o /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.olean -i /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.ilean -c /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/ir/YangMills/RG/TorusMeanPoincare.c --setup /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/ir/YangMills/RG/TorusMeanPoincare.setup.json --json\nerror: YangMills/RG/TorusMeanPoincare.lean:82:6: 'change' tactic failed, pattern\n  (a i).val \u2022 1 = a i\nis not definitionally equal to target\n  ((a i).val \u2022 torusUnit i) i = Pi.single i (a i) i\nerror: YangMills/RG/TorusMeanPoincare.lean:84:68: Application type mismatch: The argument\n  a i\nhas type\n  ZMod n\nbut is expected to have type\n  ?m.78 i\nin the application\n  Pi.single i (a i)\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.TorusMeanPoincare\nerror: build failed\n",
+  "finished_utc": "2026-10-31T05:04:34.499165+00:00"
+}

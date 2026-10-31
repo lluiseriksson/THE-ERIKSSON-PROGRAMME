@@ -1,0 +1,88 @@
+{
+  "rows": [
+    {
+      "driver_started_utc": "2026-10-31T04:49:09.534977+00:00",
+      "run": "060",
+      "source_sha": "7f8d7dbc7adcbc067e523b6bdedebb8caf626c84",
+      "status": "FAIL",
+      "release_request_utc": "2026-10-31T04:49:15.494863+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_torus-mean-poincare\\060-disconnected.png",
+      "capture_sha256": "07b1f724939b404d2bd8f78602b6f399d66ce58f2d59cb37a193674f790d3c73"
+    },
+    {
+      "driver_started_utc": "2026-10-31T04:51:28.114328+00:00",
+      "run": "061",
+      "source_sha": "7f8d7dbc7adcbc067e523b6bdedebb8caf626c84",
+      "status": "FAIL",
+      "release_request_utc": "2026-10-31T04:55:36.541956+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_torus-mean-poincare\\061-disconnected.png",
+      "capture_sha256": "541e7bd2d6c7c6d203e098de33a9da0dfe3ded3f674ba6d5c1b548ef8e468699"
+    },
+    {
+      "driver_started_utc": "2026-10-31T04:57:13.110675+00:00",
+      "run": "062",
+      "source_sha": "9b0b8a4dd95f76d1b5489298a16f6f92ebe9f7bc",
+      "status": "FAIL",
+      "release_request_utc": "2026-10-31T04:59:37.212764+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_torus-mean-poincare\\062-disconnected.png",
+      "capture_sha256": "c4953c6841ccaf73fe409a7e50d5df93905ab9250e0ff9156ab9a0151e7c7792"
+    },
+    {
+      "driver_started_utc": "2026-10-31T05:01:51.544660+00:00",
+      "run": "063",
+      "source_sha": "adc4699882e10ad3483bb0fa5925ae29c78239ec",
+      "status": "FAIL",
+      "release_request_utc": "2026-10-31T05:04:34.499165+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_torus-mean-poincare\\063-disconnected.png",
+      "capture_sha256": "67973eebf989797dac5d9a397f0c65a8fc2c2a3ddb421c09276703a39598d57b"
+    },
+    {
+      "driver_started_utc": "2026-10-31T05:10:23.538330+00:00",
+      "run": "065",
+      "source_sha": "d02530a5a724f431ebfe8c39b05f3c829ac334b9",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "release_request_utc": "2026-10-31T05:13:23.855587+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_torus-mean-poincare\\065-disconnected.png",
+      "capture_sha256": "6b7f0f2f9eb68138f8df2ab669ea2c1700b126dfa8bf965a60c2b68390de3693"
+    },
+    {
+      "driver_started_utc": "2026-10-31T05:14:08.452629+00:00",
+      "run": "065b",
+      "source_sha": "d02530a5a724f431ebfe8c39b05f3c829ac334b9",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "release_request_utc": "2026-10-31T05:16:35.367438+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_torus-mean-poincare\\065b-disconnected.png",
+      "capture_sha256": "283b53e405f01c5723cf183b828794c85d73f3f6d6f2c89e5153f3dd4f9d87b6"
+    },
+    {
+      "disconnected_ui": "Manage sessions: Körningen har kopplats från",
+      "capture_sha256": "0cfa384009ac024a61aa5a103e7edd5edacd9109f93040571a030125ca6e5f26",
+      "full_connected_interval": null,
+      "run": "064",
+      "status": "INCOMPLETE_NO_FINAL_VERDICT",
+      "observed_disconnected_at_utc": "2026-10-31T05:09:04.9114157Z",
+      "notebook": "https://colab.research.google.com/drive/1MxpC8olzZUC1QfFhLKIO79Ljsmr4N-V-",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_torus-mean-poincare\\064-session-disconnected.png",
+      "driver_started_utc": null,
+      "partial_output_preserved": true,
+      "release_request_utc": null,
+      "source_sha": "d02530a5a724f431ebfe8c39b05f3c829ac334b9"
+    }
+  ],
+  "executed_runs": 7,
+  "browser_session_cleanup_incident": "Several owned tabs vanished during064; exact notebook reopened, only partial saved output and disconnected-session UI recovered.065 repeats the identical source. Active065/065b tabs marked retained until evidence extraction.",
+  "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+  "incomplete064_not_counted_as_proof": true,
+  "prepared_not_executed": [
+    "060b",
+    "061b",
+    "062b",
+    "063b",
+    "064b"
+  ],
+  "all_owned_runtimes_disconnected": true,
+  "billed_units": null,
+  "interval_scope": "Driver start to release request only; complete allocation/release latency and billed units not known;064 full interval unavailable",
+  "all_owned_notebook_tabs_closed": true,
+  "other_chat_runtime_shared": false
+}

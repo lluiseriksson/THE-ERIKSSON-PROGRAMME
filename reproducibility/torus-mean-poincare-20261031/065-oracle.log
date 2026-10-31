@@ -1,0 +1,6 @@
+'YangMills.RG.finiteTranslationAverage_eq_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.finiteMean_norm_le_of_translate_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.torus_coordinate_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.torusTranslate_difference_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.torusMean_poincare_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.torusMean_poincare_energy_le' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "9b0b8a4dd95f76d1b5489298a16f6f92ebe9f7bc",
+  "status": "FAIL",
+  "zip_sha256": "844d6c4fcf6b7ae3e0d263fd9fa74cecf28350fbd427537d0541bc3693edade2",
+  "manifest_entries": 12,
+  "error": "focal-build failed: ⚠ [8158/8159] Built YangMills.RG.CyclicMeanPoincare (22s)\nwarning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:\n  [NormedAddCommGroup V]\n  [NormedSpace ℝ V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:\n  [NormedAddCommGroup V]\n  [NormedSpace ℝ V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:\n  [NormedSpace ℝ V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedSpace ℝ V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n✖ [8159/8159] Building YangMills.RG.TorusMeanPoincare (5.0s)\ntrace: .> LEAN_PATH=/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-062/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-torus-mean-poincare-20261031-062/YangMills/RG/TorusMeanPoincare.lean -o /content/eriksson-torus-mean-poincare-20261031-062/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.olean -i /content/eriksson-torus-mean-poincare-20261031-062/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.ilean -c /content/eriksson-torus-mean-poincare-20261031-062/.lake/build/ir/YangMills/RG/TorusMeanPoincare.c --setup /content/eriksson-torus-mean-poincare-20261031-062/.lake/build/ir/YangMills/RG/TorusMeanPoincare.setup.json --json\nerror: YangMills/RG/TorusMeanPoincare.lean:77:67: Application type mismatch: The argument\n  a i\nhas type\n  ZMod n\nbut is expected to have type\n  ?m.37 i i\nin the application\n  Pi.single i (a i)\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.TorusMeanPoincare\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.485,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.119,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.475,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.169,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 17.371,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 84.578,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 35.697,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-10-31T04:57:13.110675+00:00",
+  "finished_utc": "2026-10-31T04:59:37.212764+00:00"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "TorusMeanPoincare.lean",
+    "sha256_lf": "b0a80c0bf48a4008c38807aa512834c2924dd42e958eed38ced9cf9370bc5b3c",
+    "expected": "b0a80c0bf48a4008c38807aa512834c2924dd42e958eed38ced9cf9370bc5b3c",
+    "matches": true
+  },
+  {
+    "name": "TorusMeanPoincareOracle.lean",
+    "sha256_lf": "f4da3b730117eb0415de4040159a468bf198a079118e0d12ae440d12dc399a2f",
+    "expected": "f4da3b730117eb0415de4040159a468bf198a079118e0d12ae440d12dc399a2f",
+    "matches": true
+  }
+]
