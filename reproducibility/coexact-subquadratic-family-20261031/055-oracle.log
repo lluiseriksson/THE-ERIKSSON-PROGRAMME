@@ -1,0 +1,6 @@
+'YangMills.RG.coexact_band_budget_dominates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexact_subquadratic_cutoff_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexact_subquadratic_threshold_eventually' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexactFlat_subquadratic_finrank_eventually_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexactFlat_subquadratic_finrank_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexactFlat_subquadratic_no_bounded_output' depends on axioms: [propext, Classical.choice, Quot.sound]

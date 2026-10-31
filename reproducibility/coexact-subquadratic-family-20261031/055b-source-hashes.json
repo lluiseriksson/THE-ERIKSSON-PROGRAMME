@@ -1,0 +1,14 @@
+[
+  {
+    "name": "CoexactSubquadraticFamily.lean",
+    "sha256_lf": "82e4ccf57afb37a105032a9c2963bd45230a3f7de34917daaad6971ed125d667",
+    "expected": "82e4ccf57afb37a105032a9c2963bd45230a3f7de34917daaad6971ed125d667",
+    "matches": true
+  },
+  {
+    "name": "CoexactSubquadraticFamilyOracle.lean",
+    "sha256_lf": "7f6d24e6a790c703c1bd2f161b1cf0f03bb34a18f7a890a1db4012dde5472f55",
+    "expected": "7f6d24e6a790c703c1bd2f161b1cf0f03bb34a18f7a890a1db4012dde5472f55",
+    "matches": true
+  }
+]
