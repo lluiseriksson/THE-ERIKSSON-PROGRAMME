@@ -74,8 +74,17 @@ def torusUnit (i : Fin D) : Fin D → ZMod n := Pi.single i 1
 theorem torus_coordinate_decomposition (a : Fin D → ZMod n) :
     a = ∑ i : Fin D, (a i).val • torusUnit i := by
   classical
+  have hsingle (i : Fin D) : (a i).val • torusUnit i = Pi.single i (a i) := by
+    funext j
+    by_cases hij : j = i
+    · subst j
+      change (a i).val • (1 : ZMod n) = a i
+      simp only [nsmul_eq_mul, ZMod.natCast_zmod_val, mul_one]
+    · change (a i).val • (Pi.single i (1 : ZMod n) j) = Pi.single i (a i) j
+      simp [Pi.single_apply, hij]
+  simp_rw [hsingle]
   ext j
-  simp [torusUnit, Finset.sum_apply, Pi.single_apply]
+  simp [Finset.sum_apply, Pi.single_apply]
 
 theorem torusTranslate_difference_norm_le
     (a : Fin D → ZMod n) (f : PeriodicL2 (Fin D → ZMod n) V) :
@@ -113,6 +122,11 @@ theorem torusMean_poincare_energy_le (f : PeriodicL2 (Fin D → ZMod n) V) :
   rw [mul_pow] at hs
   have ht := hs.trans (mul_le_mul_of_nonneg_left hc (sq_nonneg (n : ℝ)))
   simp only [PiLp.norm_sq_eq_of_L2] at ht
-  convert ht using 1 <;> ring
+  change (∑ x : Fin D → ZMod n, ‖f x - finiteArithmeticMean f‖ ^ 2) ≤
+    (n : ℝ) ^ 2 * ((D : ℝ) *
+      ∑ i : Fin D, ∑ x : Fin D → ZMod n, ‖f (x + torusUnit i) - f x‖ ^ 2) at ht
+  calc
+    _ ≤ _ := ht
+    _ = _ := by ring
 end Torus
 end YangMills.RG
