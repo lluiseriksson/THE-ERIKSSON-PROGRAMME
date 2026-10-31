@@ -1,0 +1,5 @@
+lmodern	2.005-1
+nodejs	18.19.1+dfsg-6ubuntu5
+poppler-utils	24.02.0-1ubuntu9.11
+texlive-fonts-recommended	2023.20240207-1
+texlive-latex-recommended	2023.20240207-1

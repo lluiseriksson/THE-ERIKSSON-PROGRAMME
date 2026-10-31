@@ -1,0 +1,261 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./flat_coarse_rank.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty)
+(/usr/share/texmf/tex/latex/lm/lmodern.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+No file flat_coarse_rank.aux.
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+))) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg)))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+(/usr/share/texmf/tex/latex/lm/ot1lmr.fd)
+(/usr/share/texmf/tex/latex/lm/omllmm.fd)
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd)
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+
+LaTeX Warning: Citation `eriksson' on page 1 undefined on input line 44.
+
+
+LaTeX Warning: Citation `albert' on page 1 undefined on input line 56.
+
+
+LaTeX Warning: Citation `carlson' on page 1 undefined on input line 56.
+
+
+LaTeX Warning: Citation `dodziuk' on page 1 undefined on input line 57.
+
+
+LaTeX Warning: Citation `dimock' on page 1 undefined on input line 65.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-ec.enc}]
+
+LaTeX Warning: Citation `eriksson' on page 2 undefined on input line 112.
+
+[2{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-mathex.enc}]
+
+LaTeX Warning: Reference `eq:old-witness' on page 3 undefined on input line 151
+.
+
+[3] [4]
+
+LaTeX Warning: Reference `eq:estimate' on page 5 undefined on input line 267.
+
+
+LaTeX Warning: Reference `lem:band' on page 5 undefined on input line 268.
+
+
+LaTeX Warning: Reference `eq:estimate' on page 5 undefined on input line 289.
+
+
+LaTeX Warning: Reference `eq:estimate' on page 5 undefined on input line 299.
+
+
+LaTeX Warning: Reference `prop:sector' on page 5 undefined on input line 302.
+
+
+LaTeX Warning: Reference `thm:budget' on page 5 undefined on input line 310.
+
+
+LaTeX Warning: Reference `prop:sector' on page 5 undefined on input line 311.
+
+[5]
+
+LaTeX Warning: Reference `eq:phi-local' on page 6 undefined on input line 363.
+
+
+LaTeX Warning: Reference `sec:average' on page 6 undefined on input line 373.
+
+[6]
+
+LaTeX Warning: Citation `mathlib-implicit' on page 7 undefined on input line 39
+5.
+
+
+LaTeX Warning: Reference `eq:phi-local' on page 7 undefined on input line 404.
+
+
+LaTeX Warning: Reference `eq:phi-local' on page 7 undefined on input line 436.
+
+[7]
+
+LaTeX Warning: Reference `thm:regular-sector' on page 8 undefined on input line
+ 453.
+
+
+LaTeX Warning: Reference `thm:regular-sector' on page 8 undefined on input line
+ 476.
+
+
+LaTeX Warning: Reference `thm:regular-sector' on page 8 undefined on input line
+ 482.
+
+
+LaTeX Warning: Reference `thm:regular-sector' on page 8 undefined on input line
+ 493.
+
+[8]
+
+LaTeX Warning: Reference `eq:mean-finite' on page 9 undefined on input line 565
+.
+
+
+LaTeX Warning: Reference `eq:kernel-average' on page 9 undefined on input line 
+571.
+
+
+LaTeX Warning: Reference `eq:mean-finite' on page 9 undefined on input line 575
+.
+
+[9]
+
+LaTeX Warning: Reference `thm:average' on page 10 undefined on input line 586.
+
+
+LaTeX Warning: Citation `levin-peres' on page 10 undefined on input line 624.
+
+
+LaTeX Warning: Reference `thm:tangent' on page 10 undefined on input line 627.
+
+[10]
+
+LaTeX Warning: Reference `thm:average' on page 11 undefined on input line 673.
+
+
+LaTeX Warning: Reference `thm:average' on page 11 undefined on input line 691.
+
+[11]
+
+LaTeX Warning: Reference `thm:signed-positive' on page 12 undefined on input li
+ne 755.
+
+[12]
+
+LaTeX Warning: Reference `thm:average' on page 13 undefined on input line 790.
+
+
+LaTeX Warning: Reference `thm:signed-positive' on page 13 undefined on input li
+ne 815.
+
+
+LaTeX Warning: Citation `zelazo' on page 13 undefined on input line 825.
+
+
+LaTeX Warning: Citation `albert' on page 13 undefined on input line 845.
+
+
+LaTeX Warning: Citation `carlson' on page 13 undefined on input line 845.
+
+[13]
+
+LaTeX Warning: Reference `thm:uniform' on page 14 undefined on input line 894.
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd) [14]
+
+LaTeX Warning: Reference `sec:old' on page 15 undefined on input line 923.
+
+
+LaTeX Warning: Reference `sec:tangent' on page 15 undefined on input line 957.
+
+[15]
+
+LaTeX Warning: Reference `sec:average' on page 16 undefined on input line 982.
+
+
+LaTeX Warning: Citation `spielman' on page 16 undefined on input line 1003.
+
+
+LaTeX Warning: Reference `sec:signed' on page 16 undefined on input line 1005.
+
+[16] [17] [18] (./flat_coarse_rank.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `flat_coarse_rank.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy6.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
+bols/msbm10.pfb>
+Output written on flat_coarse_rank.pdf (18 pages, 392854 bytes).
+Transcript written on flat_coarse_rank.log.

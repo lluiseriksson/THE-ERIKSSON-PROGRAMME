@@ -1,0 +1,15 @@
+{
+  "source_sha": "be4a56e02faf91bdb6d9c9585502e43f44ed3470",
+  "status": "EXACT_SOURCE_RENDER_INTEGRITY_VALIDATED_VISUAL_QA_PENDING",
+  "validation_processes_started": 0,
+  "pdf_sha256": "003be55040d84fbd5dc8cf88caa56bd25ddafaaf575409314e6430521ed4ce61",
+  "validation_seconds": 0.1879825,
+  "pages": 18,
+  "independent_review": false,
+  "manifest_entries": 41,
+  "zip_sha256": "2cea8aa2193aa6fe3787162130fd019a042afdf0f8a78ade62a8bd25f03301f8",
+  "peak_current_process_rss_bytes": 98869248,
+  "rendered_pages": 18,
+  "layout_warnings": [],
+  "source_lf_sha256": "303f36e137edf09399394aef72af6dabfb4eca854774133f7f52653ac51a8b6a"
+}
