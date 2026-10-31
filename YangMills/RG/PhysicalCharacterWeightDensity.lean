@@ -36,10 +36,11 @@ theorem physicalCharacter_gradient_density (hNc : 2 ≤ Nc) (j : Fin d)
   rw [componentwiseFlatGradient_apply]
   by_cases hl : l = j
   · subst l
-    change ‖sunComplexPlane hNc (z * chi (finBoxZModEquiv d n (x.shift i))) -
-      sunComplexPlane hNc (z * chi (finBoxZModEquiv d n x))‖ ^ 2 = _
+    have hp (y : FinBox d n) : physicalCharacterField hNc j chi z (y,j) =
+        sunComplexPlane hNc (z * chi (finBoxZModEquiv d n y)) := by
+      simp [physicalCharacterField, torusPhysicalEmbed]
+    simp only [hp, if_pos rfl]
     rw [← sunComplexPlane_sub, sunComplexPlane_norm_sq, finBoxZModEquiv_shift]
-    simp only [if_pos rfl]
     exact character_amplitude_forward_density chi z _ _
   · simp [physicalCharacterField, torusPhysicalEmbed, hl]
 
