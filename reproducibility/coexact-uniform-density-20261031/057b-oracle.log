@@ -1,0 +1,6 @@
+'YangMills.RG.coexact_dilation_scale_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexact_dilation_energy_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexact_band_power_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexactFlat_dilation_finrank_ge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexactFlat_dilation_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexactFlat_uniform_density_exists' depends on axioms: [propext, Classical.choice, Quot.sound]

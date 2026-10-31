@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "67a834bdc68099d454dce10520851223aaee60ac",
+  "started_utc": "2026-10-31T02:46:30.134464+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.219,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.004,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 4.328,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.169,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 21.715,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 104.31,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 231.136,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: orem `YangMills.RG.torusPhysicalEmbed_disjoint`:\n  [NeZero D]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CoexactFlatEnergy.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_gradient_disjoint`:\n  [NeZero D]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u26a0 [8193/8194] Built YangMills.RG.CoexactSubquadraticFamily (7.7s)\nwarning: YangMills/RG/CoexactSubquadraticFamily.lean:31:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n\u2716 [8194/8194] Building YangMills.RG.CoexactUniformDensity (7.1s)\ntrace: .> LEAN_PATH=/content/eriksson-uniform-density-20261031-056/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-uniform-density-20261031-056/YangMills/RG/CoexactUniformDensity.lean -o /content/eriksson-uniform-density-20261031-056/.lake/build/lib/lean/YangMills/RG/CoexactUniformDensity.olean -i /content/eriksson-uniform-density-20261031-056/.lake/build/lib/lean/YangMills/RG/CoexactUniformDensity.ilean -c /content/eriksson-uniform-density-20261031-056/.lake/build/ir/YangMills/RG/CoexactUniformDensity.c --setup /content/eriksson-uniform-density-20261031-056/.lake/build/ir/YangMills/RG/CoexactUniformDensity.setup.json --json\nerror: YangMills/RG/CoexactUniformDensity.lean:18:4: linarith failed to find a contradiction\ncase h\nd : \u2115\nM c : \u211d\nhc : 0 < c\ns : \u2115\nhs : (1 + M) * 4 * Real.pi ^ 2 * \u2191(d + 2) / c + 1 < \u2191s\nhs0 : 0 \u2264 \u2191s\na\u271d : (\u2191s + 3) ^ 2 \u2264 (1 + M) * 4 * Real.pi ^ 2 * (\u2191d + 2) / c\n\u22a2 False\nfailed\nwarning: YangMills/RG/CoexactUniformDensity.lean:31:26: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:31:26: 'ring' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:39:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:92:24: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:92:24: 'ring' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:104:9: unused variable `hw`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:107:9: unused variable `hC`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:107:34: unused variable `hC0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:108:25: unused variable `hdelta`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:108:46: unused variable `hr`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:109:9: unused variable `hPhi`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/CoexactUniformDensity.lean:110:9: unused variable `hbound`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.CoexactUniformDensity\nerror: build failed\n",
+  "finished_utc": "2026-10-31T02:52:34.417954+00:00"
+}
