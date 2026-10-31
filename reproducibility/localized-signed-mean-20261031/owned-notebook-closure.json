@@ -1,0 +1,63 @@
+{
+  "before_final_cleanup": [
+    {
+      "id": "7",
+      "providerTabId": "browser-use:699944ca-f3b1-460c-9941-ccfe6c2cf480",
+      "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms — AIRR.SCIENCE",
+      "url": "https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v3/",
+      "browserId": "2"
+    },
+    {
+      "id": "46",
+      "providerTabId": "browser-use:04518bec-31e9-4d2b-8661-f5f517179bdb",
+      "title": "reproduce079.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/f600d2912b6b55d96aba9dc36935e5b169da5c4d/reproducibility/localized-signed-mean-20261031/reproduce079.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "47",
+      "providerTabId": "375d2811-9a37-4a54-8476-729ee3a97770",
+      "title": "Kopia av reproduce079.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/10_iQ20U2oVmaHjN9nMbliCaQqOr9nDx8",
+      "browserId": "2"
+    },
+    {
+      "id": "48",
+      "providerTabId": "browser-use:b55305ab-24d2-4af0-b6e3-2bbe9ddb5e79",
+      "title": "reproduce079b.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/f600d2912b6b55d96aba9dc36935e5b169da5c4d/reproducibility/localized-signed-mean-20261031/reproduce079b.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "49",
+      "providerTabId": "fc2a1e55-3ef5-404d-913f-a75c446cd9f8",
+      "title": "Kopia av reproduce079b.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/1mMcsogLne08o7X_5Im07hdbJZ4Mw0r-c#scrollTo=Ge4du-rMMs0V",
+      "browserId": "2"
+    }
+  ],
+  "after": [
+    {
+      "id": "7",
+      "providerTabId": "browser-use:699944ca-f3b1-460c-9941-ccfe6c2cf480",
+      "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms — AIRR.SCIENCE",
+      "url": "https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v3/",
+      "browserId": "2"
+    }
+  ],
+  "owned_ids": [
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49"
+  ],
+  "probe078_tabs_already_closed": [
+    "44",
+    "45"
+  ],
+  "all_owned_notebook_tabs_closed": true,
+  "all_owned_runtimes_disconnected": true,
+  "observed_utc": "2026-10-31T18:22:50.938Z"
+}

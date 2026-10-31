@@ -1,0 +1,47 @@
+{
+  "all_owned_runtimes_disconnected": true,
+  "rows": [
+    {
+      "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_localized-signed-mean\\078-disconnected.jpg",
+      "capture_sha256": "b4204657649daee4913aba50e43e1f62a59d51deb5ab0d07680ec97b11f06c58",
+      "report_finished_utc": "2026-10-31T18:05:23.677067+00:00",
+      "status": "FAIL",
+      "release_request_utc": null,
+      "run": "078",
+      "source_sha": "6c1e4d98aee36827b95cf967487ca79b00de7694",
+      "disconnection_capture_saved_utc": "2026-10-31T18:06:22.6627240Z",
+      "driver_started_utc": "2026-10-31T17:58:47.946599+00:00"
+    },
+    {
+      "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_localized-signed-mean\\079-disconnected.jpg",
+      "capture_sha256": "f9f739ddaca10d01ae70c1c623c2ea103d919bd612c32c378d2136f4384f5f6d",
+      "report_finished_utc": "2026-10-31T18:13:29.632729+00:00",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "release_request_utc": null,
+      "run": "079",
+      "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+      "disconnection_capture_saved_utc": "2026-10-31T18:14:23.8183388Z",
+      "driver_started_utc": "2026-10-31T18:08:56.288005+00:00"
+    },
+    {
+      "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_localized-signed-mean\\079b-disconnected.jpg",
+      "capture_sha256": "220c81dc8d780bdfc69b2598cbbe899bd9762850f55fe4786eeadd48fe0d4b26",
+      "report_finished_utc": "2026-10-31T18:21:26.167572+00:00",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "release_request_utc": null,
+      "run": "079b",
+      "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+      "disconnection_capture_saved_utc": "2026-10-31T18:22:07.4192058Z",
+      "driver_started_utc": "2026-10-31T18:15:07.606752+00:00"
+    }
+  ],
+  "all_owned_notebook_tabs_closed": true,
+  "executed_runs": 3,
+  "other_chat_runtime_shared": false,
+  "interval_scope": "Driver start to report before automatic runtime release; full allocation/release latency and billed units unavailable",
+  "runtime_type": "Own Colab Linux CPU/highRAM50.99GB, no GPU",
+  "failed_compilations": [
+    "078 at6c1e4d98; simp with sum_comm reached recursion depth, raw failure preserved; fixed by explicit finite sum exchange, not raised depth or relaxed oracle"
+  ],
+  "billed_units": null
+}

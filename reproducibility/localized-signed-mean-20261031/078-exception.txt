@@ -1,0 +1,70 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_2123/2214577065.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.LocalizedSignedMeanCounterexample'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_2123/2214577065.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: 31-078/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-localized-signed-mean-20261031-078/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-localized-signed-mean-20261031-078/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-localized-signed-mean-20261031-078/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-localized-signed-mean-20261031-078/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-localized-signed-mean-20261031-078/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-localized-signed-mean-20261031-078/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-localized-signed-mean-20261031-078/YangMills/RG/LocalizedSignedMeanCounterexample.lean -o /content/eriksson-localized-signed-mean-20261031-078/.lake/build/lib/lean/YangMills/RG/LocalizedSignedMeanCounterexample.olean -i /content/eriksson-localized-signed-mean-20261031-078/.lake/build/lib/lean/YangMills/RG/LocalizedSignedMeanCounterexample.ilean -c /content/eriksson-localized-signed-mean-20261031-078/.lake/build/ir/YangMills/RG/LocalizedSignedMeanCounterexample.c --setup /content/eriksson-localized-signed-mean-20261031-078/.lake/build/ir/YangMills/RG/LocalizedSignedMeanCounterexample.setup.json --json
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:44:0: automatically included section variable(s) unused in theorem `YangMills.RG.localizedSignedWeights_average_zero`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:52:10: This simp argument is unused:
+  card_finBox
+
+Hint: Omit it from the simp argument list.
+  simp [̵c̵a̵r̵d̵_̵f̵i̵n̵B̵o̵x̵,̵ ̵n̵s̵m̵u̵l̵_̵e̵q̵_̵m̵u̵l̵,̵[̲n̲s̲m̲u̲l̲_̲e̲q̲_̲m̲u̲l̲,̲ mul_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:69:4: Possibly looping simp theorem: `Finset.sum_comm`
+
+Hint: You can disable a simp theorem from the default simp set by passing `- theoremName` to `simp`.
+error: YangMills/RG/LocalizedSignedMeanCounterexample.lean:68:2: Tactic `simp` failed with a nested error:
+maximum recursion depth has been reached
+use `set_option maxRecDepth <num>` to increase limit
+use `set_option diagnostics true` to get diagnostic information
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:76:0: automatically included section variable(s) unused in theorem `YangMills.RG.localizedSignedPenalty_nonneg`:
+  [NeZero d]
+  [NeZero n]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero n] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:81:0: automatically included section variable(s) unused in theorem `YangMills.RG.localizedSignedPenalty_quadratic_upper`:
+  [NeZero d]
+  [NeZero n]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero n] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:112:0: automatically included section variable(s) unused in theorem `YangMills.RG.signedMeanObservation_hasFDerivAt`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:117:0: automatically included section variable(s) unused in theorem `YangMills.RG.signedMeanObservation_zero`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/LocalizedSignedMeanCounterexample.lean:120:0: automatically included section variable(s) unused in theorem `YangMills.RG.signedMeanObservation_output_finite`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.LocalizedSignedMeanCounterexample
+error: build failed
+

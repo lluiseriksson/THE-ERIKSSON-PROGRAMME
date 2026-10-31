@@ -1,0 +1,109 @@
+{
+  "runtime_closure": {
+    "all_owned_runtimes_disconnected": true,
+    "rows": [
+      {
+        "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_localized-signed-mean\\078-disconnected.jpg",
+        "capture_sha256": "b4204657649daee4913aba50e43e1f62a59d51deb5ab0d07680ec97b11f06c58",
+        "report_finished_utc": "2026-10-31T18:05:23.677067+00:00",
+        "status": "FAIL",
+        "release_request_utc": null,
+        "run": "078",
+        "source_sha": "6c1e4d98aee36827b95cf967487ca79b00de7694",
+        "disconnection_capture_saved_utc": "2026-10-31T18:06:22.6627240Z",
+        "driver_started_utc": "2026-10-31T17:58:47.946599+00:00"
+      },
+      {
+        "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_localized-signed-mean\\079-disconnected.jpg",
+        "capture_sha256": "f9f739ddaca10d01ae70c1c623c2ea103d919bd612c32c378d2136f4384f5f6d",
+        "report_finished_utc": "2026-10-31T18:13:29.632729+00:00",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "release_request_utc": null,
+        "run": "079",
+        "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+        "disconnection_capture_saved_utc": "2026-10-31T18:14:23.8183388Z",
+        "driver_started_utc": "2026-10-31T18:08:56.288005+00:00"
+      },
+      {
+        "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_localized-signed-mean\\079b-disconnected.jpg",
+        "capture_sha256": "220c81dc8d780bdfc69b2598cbbe899bd9762850f55fe4786eeadd48fe0d4b26",
+        "report_finished_utc": "2026-10-31T18:21:26.167572+00:00",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "release_request_utc": null,
+        "run": "079b",
+        "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+        "disconnection_capture_saved_utc": "2026-10-31T18:22:07.4192058Z",
+        "driver_started_utc": "2026-10-31T18:15:07.606752+00:00"
+      }
+    ],
+    "all_owned_notebook_tabs_closed": true,
+    "executed_runs": 3,
+    "other_chat_runtime_shared": false,
+    "interval_scope": "Driver start to report before automatic runtime release; full allocation/release latency and billed units unavailable",
+    "runtime_type": "Own Colab Linux CPU/highRAM50.99GB, no GPU",
+    "failed_compilations": [
+      "078 at6c1e4d98; simp with sum_comm reached recursion depth, raw failure preserved; fixed by explicit finite sum exchange, not raised depth or relaxed oracle"
+    ],
+    "billed_units": null
+  },
+  "energy_identity_assumed_as_certificate": false,
+  "actual_signed_weights_explicit": true,
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "exact_endpoints": [
+    "localizedSignedWeights_average_zero",
+    "localizedSignedWeights_energy",
+    "localizedSignedPenalty_nonneg",
+    "localizedSignedPenalty_quadratic_upper",
+    "localizedSignedMean_global_coercive",
+    "signedMeanObservation_hasFDerivAt",
+    "signedMeanObservation_zero",
+    "signedMeanObservation_output_finite",
+    "localizedSignedMean_hodge_global_coercive",
+    "localizedSignedMean_fixed_output_family"
+  ],
+  "approved_v4_pdf_changed": false,
+  "physical_hypotheses_eliminated": [],
+  "first": {
+    "status": "LOCALIZED_SIGNED_FIXED_OUTPUT_FAMILY_VALIDATED",
+    "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+    "zip_sha256": "25c47b339126e84c3737e78ec7900d120dd0a916baa6730b7340c8cd8d10de56",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 10,
+    "target_olean_sha256": "7f34ee35befa8291efae6fdef8f34ccc33d0cdecd605411f25764396ed3126bf",
+    "oracle_log_sha256": "9d288eddda257c456fc224b6a9483feba9af10dd8cd44bbf8b9c94d7f1bee692",
+    "source_manifest_sha256": "fa7287199ed90fce4960417cce1ec3063507dab597f4237cf4f0d33a1a326ee1",
+    "started_utc": "2026-10-31T18:08:56.2880050+00:00",
+    "finished_utc": "2026-10-31T18:13:29.6327290+00:00",
+    "independent_review": false,
+    "scope": "Explicit actual signed repair with every ordinary directional spatial mean zero, actual fixed finite output independent of side, nonnegative upper-quadratic penalty, derivative and zero preservation, and global Hodge coercivity c=1 for every side k+1",
+    "windows_lean_executed": false
+  },
+  "original_priority_claimed": false,
+  "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+  "all_ordinary_directional_means_zero_proved": true,
+  "new_AIRR_publication": false,
+  "second": {
+    "status": "LOCALIZED_SIGNED_FIXED_OUTPUT_FAMILY_VALIDATED",
+    "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+    "zip_sha256": "4c5ab5131dd202ad385c3554402fb453f543652f8c92f56155c19e6686d6a702",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 10,
+    "target_olean_sha256": "7f34ee35befa8291efae6fdef8f34ccc33d0cdecd605411f25764396ed3126bf",
+    "oracle_log_sha256": "9d288eddda257c456fc224b6a9483feba9af10dd8cd44bbf8b9c94d7f1bee692",
+    "source_manifest_sha256": "fa7287199ed90fce4960417cce1ec3063507dab597f4237cf4f0d33a1a326ee1",
+    "started_utc": "2026-10-31T18:15:07.6067520+00:00",
+    "finished_utc": "2026-10-31T18:21:26.1675720+00:00",
+    "independent_review": false,
+    "scope": "Explicit actual signed repair with every ordinary directional spatial mean zero, actual fixed finite output independent of side, nonnegative upper-quadratic penalty, derivative and zero preservation, and global Hodge coercivity c=1 for every side k+1",
+    "windows_lean_executed": false
+  },
+  "actual_observation_derivative_and_zero_proved": true,
+  "fixed_output_type_has_no_side_parameter": true,
+  "actual_global_hodge_coercivity_c1_proved": true,
+  "actual_energy_cancellation_derived": true,
+  "independent_review": false,
+  "nonnegative_quadratic_penalty_upper_proved": true,
+  "output_norm": "Ordinary Lean product max norm; actual upper bound proved for it"
+}
