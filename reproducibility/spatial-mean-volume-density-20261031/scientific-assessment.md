@@ -1,6 +1,6 @@
 # Assessment of the mean-weight volume-density derivation
 
-31 October 2026. Preparing Codex agent in the continuing author chat; actual backend model identity and reasoning effort unexposed. No blind, independent, external-model or human peer review. No numerical score, inherited approval or grade-seeking repeat. Target is the complete proof.md in this package; raw-byte and Git/LF hashes are recorded in artifact-binding.json. The finite probe source is pinned separately at4b331830aa4c6c2fa56e801245810409d16735e1.
+31 October 2026. Preparing Codex agent in the continuing author chat; actual backend model identity and reasoning effort unexposed. No blind, independent, external-model or human peer review. No numerical score, inherited approval or grade-seeking repeat. Target is the complete proof.md at e6b603252e63ee7ebfa2c5507023ad49acdd40c8 in this package; raw-byte and Git/LF hashes are recorded in artifact-binding.json. Earlier diagnostic082 source is pinned separately at4b331830aa4c6c2fa56e801245810409d16735e1.
 
 ## Assessment
 
@@ -25,3 +25,7 @@ Relevance: replaces a uniform pointwise upper cap by bounded actual spatial mean
 Run082 passed its recorded five cases in normal/optimized modes, but inspection found two weaknesses in that diagnostic coverage: all component means were equal M, which could mask an index permutation, and the mutation labelled missing V normalization actually tested 2*Gram rather than V*Gram. The latter detects a wrong unit normalization but does not implement the specifically named missing-V mutation on these lattices. Raw082 source/logs/reports remain immutable; its status is not upgraded. The next083 revision uses unequal component/direction means, an actual V*Gram missing-normalization mutation and two additional even-side cases. These changes strengthen finite diagnostics; they do not change the universal mathematical proof or seek a score. Only the actually executed diagnostics may be reported as passing.
 
 The finite diagnostics are recorded separately, including any literal failures. Their report status says NOT_A_UNIVERSAL_PROOF. The written proof, rather than sampled outputs, establishes the analytic statement. No evaluation has been repeated to improve a grade.
+
+## Actual corrected083 observations
+
+The owned Colab Linux CPU/high-RAM run at sourcee6b60325 completed all seven odd/even-side cases in both normal and optimized Python; raw case records match. Each case rejects the wrong forward-symbol polarization, the actual missing V^-1/2 normalization and the missing real factor two. Component means are unequal, bounded by1.75, with concentrated weights whose maxima grow with volume. Full normal/optimized logs, NumPy/Python versions and source hashes are retained. Both process exit codes are zero. Raw ZIP SHA256bb932a4aed9c49b3ce83005371d7d347b92503824a77442463eeace3b5f6da83; all8 manifest entries checked. These observations support the diagnostic implementation only; the seven objections and formal/independence limits remain.

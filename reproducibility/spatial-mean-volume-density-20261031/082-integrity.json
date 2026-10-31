@@ -1,0 +1,12 @@
+{
+  "status": "RAW_BUNDLE_INTEGRITY_VALIDATED_NOT_A_UNIVERSAL_PROOF",
+  "source_sha": "4b331830aa4c6c2fa56e801245810409d16735e1",
+  "cases": 5,
+  "manifest_entries": 8,
+  "bundle_entries": 9,
+  "zip_sha256": "405953fa776c782c1780cb199e0141ed0a7225241336c90b85c70e6fb345e437",
+  "seconds": 0.0051722,
+  "child_processes_started": 0,
+  "peak_process_rss_bytes": 98177024,
+  "local_mathematical_execution": false
+}

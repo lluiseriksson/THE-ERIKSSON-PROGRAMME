@@ -1,0 +1,32 @@
+[
+  {
+    "path": "proof.md",
+    "raw_checkout_sha256": "addefc5b7e867402f945d39b9358f48e52e89e269cce34346ccc81d33deaba99",
+    "git_lf_sha256": "addefc5b7e867402f945d39b9358f48e52e89e269cce34346ccc81d33deaba99"
+  },
+  {
+    "path": "scientific-assessment.md",
+    "raw_checkout_sha256": "580f50f286e6115fd2913aedb6dcbeeefb76e3b1e0dae332910f4181c022e3db",
+    "git_lf_sha256": "580f50f286e6115fd2913aedb6dcbeeefb76e3b1e0dae332910f4181c022e3db"
+  },
+  {
+    "path": "check_packet.py",
+    "raw_checkout_sha256": "76e874b2498592cf11d10774d03dc6b5454aa736724f816986a543821b9be6d6",
+    "git_lf_sha256": "76e874b2498592cf11d10774d03dc6b5454aa736724f816986a543821b9be6d6"
+  },
+  {
+    "path": "pre-execution-objections.md",
+    "raw_checkout_sha256": "ce0556d47628127734f4c6991833b1736eea5ae76f7e4d8201be27b801eb818f",
+    "git_lf_sha256": "ce0556d47628127734f4c6991833b1736eea5ae76f7e4d8201be27b801eb818f"
+  },
+  {
+    "path": "next-formal-question.md",
+    "raw_checkout_sha256": "00ae0669789457ef4d97cd24df92880df55ea87eb69fd3ee98c56406d7806cd1",
+    "git_lf_sha256": "00ae0669789457ef4d97cd24df92880df55ea87eb69fd3ee98c56406d7806cd1"
+  },
+  {
+    "path": "literature-audit.md",
+    "raw_checkout_sha256": "a67bd035a9259df2b7a8ec4a1df7561ad4bd3a899fb2bdf318c5f2a1db89f34a",
+    "git_lf_sha256": "a67bd035a9259df2b7a8ec4a1df7561ad4bd3a899fb2bdf318c5f2a1db89f34a"
+  }
+]
