@@ -33,7 +33,8 @@ theorem coexact_characterSynthesis_norm_sq (hNc : 2 ≤ Nc) (i j : Fin D) (hij :
       characterSynthesis chi c (x - Pi.single i (1 : ZMod n))) = _
   rw [counting_backward_mass_eq_forward, counting_backward_mass_eq_forward,
     character_synthesis_forwardEnergy chi hc, character_synthesis_forwardEnergy chi hc]
-  simp only [Fintype.card_pi, Fintype.card_fin, ZMod.card, Nat.cast_pow]
+  have hcard : (Fintype.card (Fin D → ZMod n) : ℝ) = (n : ℝ)^D := by simp
+  rw [hcard]
   rw [← mul_add, ← Finset.sum_add_distrib]
   congr 1
   apply Finset.sum_congr rfl
@@ -104,7 +105,7 @@ theorem normalizedCoexactSynthesis_norm_sq (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 * 
       positiveCoexactSymbolMass (n := n) R k) = ‖c k‖ ^ 2
   rw [norm_div, Complex.norm_real, Real.norm_eq_abs,
     abs_of_pos (positiveCoexactNormalization_pos R hR k), div_pow, hsq]
-  field_simp [ne_of_gt hv, ne_of_gt hb]
+  field_simp [ne_of_gt hv, ne_of_gt hb] <;> ring
 
 theorem normalizedCoexactSynthesis_div_zero (hNc : 2 ≤ Nc) (rho : SUNAdjointModel Nc)
     (R : ℕ) (c : CoexactPositiveIndex d R → ℂ) :
