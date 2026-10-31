@@ -1,0 +1,70 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_3092/1483397817.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.NormalizedCoexactPacket'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_3092/1483397817.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: p̵_̵d̵e̵f̵,̵ ̵hγ0, hC0]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8193/8195] Built YangMills.RG.TransverseFlatBand (12s)
+warning: YangMills/RG/TransverseFlatBand.lean:74:15: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [e, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵h, Ne.symm h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TransverseFlatBand.lean:74:35: This simp argument is unused:
+  Ne.symm h
+
+Hint: Omit it from the simp argument list.
+  simp [e, Pi.single_apply, h,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TransverseFlatBand.lean:104:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalBandMap_injective`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/TransverseFlatBand.lean:121:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalBand_le_centered`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8194/8195] Built YangMills.RG.CoexactFlatEnergy (11s)
+warning: YangMills/RG/CoexactFlatEnergy.lean:28:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatEnergy.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_gradient_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [8195/8195] Building YangMills.RG.NormalizedCoexactPacket (232s)
+trace: .> LEAN_PATH=/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-normalized-coexact-packet-20261101-086/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-normalized-coexact-packet-20261101-086/YangMills/RG/NormalizedCoexactPacket.lean -o /content/eriksson-normalized-coexact-packet-20261101-086/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactPacket.olean -i /content/eriksson-normalized-coexact-packet-20261101-086/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactPacket.ilean -c /content/eriksson-normalized-coexact-packet-20261101-086/.lake/build/ir/YangMills/RG/NormalizedCoexactPacket.c --setup /content/eriksson-normalized-coexact-packet-20261101-086/.lake/build/ir/YangMills/RG/NormalizedCoexactPacket.setup.json --json
+error: YangMills/RG/NormalizedCoexactPacket.lean:31:2: (deterministic) timeout at `isDefEq`, maximum number of heartbeats (1200000) has been reached
+
+Note: Use `set_option maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+warning: YangMills/RG/NormalizedCoexactPacket.lean:112:44: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/NormalizedCoexactPacket.lean:112:44: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.NormalizedCoexactPacket
+error: build failed
+

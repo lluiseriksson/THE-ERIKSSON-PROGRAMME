@@ -1,0 +1,14 @@
+[
+  {
+    "name": "NormalizedCoexactPacketOracle.lean",
+    "sha256_lf": "6b6a1982f31c389e7bdbef066fccf8c09a313fd69210f550f5d076d218eef236",
+    "expected": "6b6a1982f31c389e7bdbef066fccf8c09a313fd69210f550f5d076d218eef236",
+    "matches": true
+  },
+  {
+    "name": "NormalizedCoexactPacket.lean",
+    "sha256_lf": "6d9ddf1268a471274af40332dd57f2cb4a6a23839f40059f202d520856d531d7",
+    "expected": "6d9ddf1268a471274af40332dd57f2cb4a6a23839f40059f202d520856d531d7",
+    "matches": true
+  }
+]
