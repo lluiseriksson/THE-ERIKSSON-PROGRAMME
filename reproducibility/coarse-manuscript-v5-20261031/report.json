@@ -1,0 +1,62 @@
+{
+  "source_sha": "be4a56e02faf91bdb6d9c9585502e43f44ed3470",
+  "started_utc": "2026-10-31T20:26:57.903207+00:00",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 8.006624
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 61.110331
+    },
+    {
+      "name": "pip-render",
+      "exit_code": 0,
+      "seconds": 3.285591
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.47366
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.501637
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.043367
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.100938
+    },
+    {
+      "name": "pdftoppm",
+      "exit_code": 0,
+      "seconds": 4.987875
+    }
+  ],
+  "status": "PDF_COMPILED_ALL_PAGES_RENDERED_AWAITING_VISUAL_QA",
+  "independent_review": false,
+  "declaration_map_sha256": "23ffcb39c0634f3140922dc41c2e547eb79bdfadde0fe782723db65b1bbace50",
+  "declaration_map_source_sha": "d9e2a805796e6901dc9b5565f67f975cd5e41760",
+  "candidate": "internal-v5-not-deposited",
+  "pages": 18,
+  "pdf_sha256": "003be55040d84fbd5dc8cf88caa56bd25ddafaaf575409314e6430521ed4ce61",
+  "source_sha256": "303f36e137edf09399394aef72af6dabfb4eca854774133f7f52653ac51a8b6a",
+  "layout_warnings": [],
+  "text_anchor_presence_only": {
+    "Signed weights and the limits of mean criteria": true,
+    "Zero signed means with fixed output": true,
+    "An attributed square cancellation": true,
+    "Model assessments and review context": true
+  },
+  "finished_utc": "2026-10-31T20:28:17.816687+00:00"
+}

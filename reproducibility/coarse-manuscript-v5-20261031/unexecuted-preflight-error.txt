@@ -1,0 +1,1 @@
+A first PowerShell driver-preparation command had an unmatched parenthesis in WriteAllText for notebook JSON. Parsing failed before any command ran. Corrected before allocating a runtime; no PDF or mathematical verification failure is inferred.

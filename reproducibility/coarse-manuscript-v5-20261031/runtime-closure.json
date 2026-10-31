@@ -1,0 +1,19 @@
+{
+  "driver_sha": "0b373b70f184d8c04cb5b21ff0c5b4f8dfc5092e",
+  "notebook": "https://colab.research.google.com/drive/16DjBa1d4d3AaspDZPkOeowClgw2ICo5d",
+  "runtime_type": "Colab Linux CPU/high-RAM",
+  "owned_by_this_chat": true,
+  "shared": false,
+  "prepared_disconnected": true,
+  "execution_started_utc": "2026-10-31T21:26:57.903207+01:00",
+  "execution_finished_utc": "2026-10-31T21:28:17.816687+01:00",
+  "driver_interval_seconds": 79.91348,
+  "total_connected_time": "Driver interval plus unmeasured allocation/release latency; exact connected duration unavailable",
+  "billed_compute_units": null,
+  "gpu_used": false,
+  "automatic_unassign_finally": true,
+  "visibly_disconnected": true,
+  "visible_signal": "Återanslut Mycket RAM-minne",
+  "screenshot": "runtime-disconnected.png",
+  "local_lean_or_pdf_compilation": false
+}

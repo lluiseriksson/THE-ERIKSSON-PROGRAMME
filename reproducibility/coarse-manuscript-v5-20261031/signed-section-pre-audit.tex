@@ -1,0 +1,159 @@
+\section{Signed weights and the limits of mean criteria}\label{sec:signed}
+Write $R_w=G^*W G$ and $Q_w(A)=\ip{A}{K_{0,n}A}+\ip{A}{R_wA}$.
+For signed weights this form need not be nonnegative. Its spatial means
+alone no longer supply the positive trace comparison used above.
+The following sufficient condition is nevertheless available without a
+lower bound on any original weight. Define the \emph{pointwise} positive part
+and its selected directional mean by
+\[
+ w^+(k,(x,l))=\max\{w(k,(x,l)),0\},\qquad
+ b^+_{ij}(n)=n^{-d}\sum_x w^+(i,(x,j)).
+\]
+In general $b^+_{ij}$ is not the positive part of the signed mean.
+
+\begin{theorem}[A sufficient signed-weight condition]\label{thm:signed-positive}
+Keep the observation, penalty, local divergence-free domain and fixed
+$c>0$ of Theorem~\ref{thm:average}, but use arbitrary signed actual weights
+in the local coercivity inequality. For every $0\leq R<n$,
+\[
+ c(2R-\dim F_n)\leq
+       \frac{8\pi^2(1+b^+_{ij}(n))R^3}{n^2}.
+\]
+If $(1+b^+_{ij}(n))/n^2\to0$, then $\dim F_n\to\infty$.
+The original $C_n,L_n,\Phi_n,c,K_n,\delta_n,r_n$ are retained.
+\end{theorem}
+\begin{proof}
+The exact weighted-gradient energy gives, for every actual cochain,
+\[
+ \ip{A}{R_w A}=\sum_{x,k,l}w(k,(x,l))\|D_k A_l(x)\|^2
+       \leq\sum_{x,k,l}w^+(k,(x,l))\|D_k A_l(x)\|^2
+       =\ip{A}{R_{w^+}A}.
+\]
+The inequality uses only nonnegativity of the squared differences.
+Thus the original local coercivity inequality transfers upward to the
+constructed nonnegative repair $R_{w^+}$, and Theorem~\ref{thm:average}
+applies. Nonnegativity of $w^+$ and the comparison are proved from their
+actual definitions, not supplied as fields of a comparison structure.
+\end{proof}
+This changes the explicit mean hypothesis for signed weights. It neither
+proves the original weights nonnegative nor removes the local regularity,
+quadratic penalty or fixed positive coercivity requirements.
+
+\subsection{Zero signed means with fixed output}
+There is no counterpart using only ordinary signed directional means,
+even when \emph{every} such mean is zero. Fix a site $o\in X_n$, set
+$V=n^d$, $a=2dn^2$, and construct actual weights
+\[
+ w_n(k,(x,l))=a\bigl(1-V\mathbf1_{x=o}\bigr).
+\]
+Since $|X_n|=V$, their ordinary spatial means are all exactly zero.
+Let $\mu(A)$ be the directional mean above, and let
+$J_n(A)=(D_k A_l(o))_{k,l}$ collect all actual forward differences at $o$.
+Use the same finite output type for every side:
+\[
+ F=(\R^m)^d\times(\R^m)^{d\times d},\quad
+ C_n(A)=(\mu(A),J_n(A)),\quad
+ \|(y,z)\|_F=\max\{\|y\|_2,\|z\|_2\}.
+\]
+Its dimension is $(d+d^2)m$, independent of $n$. The companion code proves
+the fixed finite output type; this displayed numerical dimension is an
+analytic calculation, not an additional named oracle endpoint.
+
+\begin{proposition}\label{prop:signed-zero}
+The actual continuous linear observation $C_n$ and the nonnegative
+quadratic penalty
+\[
+ \Phi_n(y,z)=2V\|y\|_2^2+aV\|z\|_2^2
+\]
+satisfy $C_n(0)=0$, $DC_n(0)=C_n$,
+$\Phi_n(y,z)\leq V(2+a)\|(y,z)\|_F^2$, and
+\[
+ \|A\|^2\leq Q_{w_n}(A)+\Phi_n(C_n(A))\qquad(A\in E_n).
+\]
+Consequently all the original local observation and penalty hypotheses
+can hold with fixed output and $c=1$, although all signed means vanish.
+\end{proposition}
+\begin{proof}
+Linearity follows directly from the finite sums and differences. The
+penalty bound follows from each projection norm being at most the
+specified product max norm. The exact energy expansion is
+\[
+ \ip{A}{R_{w_n}A}=a\|GA\|^2-aV\|J_n(A)\|_2^2.
+\]
+Adding the penalty cancels the negative term and leaves
+\[
+ Q_{w_n}(A)+\Phi_n(C_n(A))
+   =\ip{A}{K_{0,n}A}+a\|GA\|^2+2V\|\mu(A)\|_2^2
+   \geq\|A\|^2.
+\]
+The last step is the actual mean/path estimate of the preceding section,
+with $a=2dn^2$, together with $K_{0,n}\succeq0$.
+\end{proof}
+The coefficient $K_n=V(2+a)$ may grow with the lattice side, exactly as
+allowed by the proposed ordinary-mean extension. This is not a transfer
+of the desired coercivity into an assumed observation certificate.
+The weights, observation, penalty and cancellation are constructed.
+For $n>1$ their positive-part mean is $a(1-V^{-1})$, of quadratic rather
+than subquadratic order, so they do not contradict
+Theorem~\ref{thm:signed-positive}.
+
+As an analytic diagnostic, take $n\geq3$, $i\ne j$, a unit internal vector
+$u$, and $A_j(x)=u\mathbf1_{x_i=0}$, with other components zero. Then
+$\delta A=0$, $\|GA\|^2=2n^{d-1}$ and $\|J_n(A)\|^2=1$, giving
+\[
+ Q_{w_n}(A)=n^{d-1}\bigl(2-a(n-2)\bigr)<0.
+\]
+This explains the failure of the original positive trace argument.
+The diagnostic field calculation is analytic; the formal fixed-output
+family theorem does not claim to check this additional field explicitly.
+
+\subsection{An attributed square cancellation}
+The positive-part condition is sufficient, not necessary for an actual
+order-based rank obstruction. Fix distinct directions $i,k$, a component
+$j$, and $o\in X_n$. For an amplitude $A_0\geq0$, define the repair
+weights additively by
+\begin{align*}
+ w(p)&=A_0\mathbf1_{p=(i,(o,j))}
+       -3A_0\mathbf1_{p=(k,(o,j))}\\
+     &\quad-3A_0\mathbf1_{p=(i,(o+e_k,j))}
+       -3A_0\mathbf1_{p=(k,(o+e_i,j))}.
+\end{align*}
+Writing $D_s A_j(x)=A_j(x+e_s)-A_j(x)$, commuting shifts give
+\[
+ D_i A_j(o)=D_k A_j(o)+D_i A_j(o+e_k)-D_k A_j(o+e_i).
+\]
+The squared norm of this sum is at most three times the sum of the
+three squared norms. The actual finite weighted-energy sum therefore
+proves $\ip{A}{R_wA}\leq0$ for every cochain.
+For $n\geq2$ the positive edge is separate from all negative contributions,
+so $w^+=A_0\mathbf1_{p=(i,(o,j))}$ and $b^+_{ij}=A_0/n^d$.
+Choosing $A_0=n^d n^2$ gives $b^+_{ij}=n^2$.
+
+If the original local coercivity hypotheses hold for this actual repair,
+they imply the same hypotheses with zero repair, since $Q_w(A)\leq
+\ip{A}{K_{0,n}A}$. Applying Theorem~\ref{thm:average} with zero weights
+again forces $\dim F_n\to\infty$. The normalized positive-part mean is
+$1+n^{-2}$ and does not tend to zero. This last limit interpretation is
+an elementary analytic consequence of the formal exact mean identity,
+not a separate negated-limit oracle endpoint.
+
+The cancellation mechanism is classical, rather than a new general
+spectral principle. Restricted to the four active vertices, the negative
+of this scalar repair has three positive path conductances $3A_0$ and a
+direct negative conductance $-A_0$. For $A_0>0$ the path resistance is
+$1/A_0$, so this is the critical case of Zelazo and B\"urger's
+Theorem III.3~\cite{zelazo}. Isolated vertices contribute zero blocks;
+the internal vector coordinates sum scalar copies. This comparison
+attributes the mechanism; it does not establish originality of the
+whole consolidated dossier.
+
+The conditional obstruction is nonvacuous. An analytic check takes
+$F_n=E_n$, $C_n=I$ and
+$\Phi_n(y)=\|y\|^2-\ip{y}{R_w y}\geq0$.
+The operator norm gives the upper quadratic bound
+$(1+\|R_w\|)\|y\|^2$, while $Q_w(A)+\Phi_n(A)
+=\ip{A}{K_{0,n}A}+\|A\|^2\geq\|A\|^2$.
+This example has growing output, as the theorem requires; it is not an
+additional formal endpoint or a compressed observation construction.
+None of these signed-weight statements proves a volume-density bound,
+identifies an interacting Hessian, or supplies a physical mass gap.
