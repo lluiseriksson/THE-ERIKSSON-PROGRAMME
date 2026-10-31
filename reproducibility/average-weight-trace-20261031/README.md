@@ -187,3 +187,13 @@ and the negative actual-field example; formalization remains open.
 No interacting/continuum Yang-Mills hypothesis is eliminated and no
 physical mass gap is asserted. PR29 remains20/41,TermSource=0. Frozen
 public AIRR v3 c9de923a...c3efb5b9 is unchanged and excludes this work.
+
+## Unit048 partial formal bridge
+
+PhysicalCharacterWeightDensity.lean at29eb3e6ce512f56a4f5e5699bf8b9ab9bc200cea
+now derives exact actual character gradient density, weighted spatial-sum
+energy, norm/divergence/Hodge identities. Two fresh Colab clones069/069b
+matched; full evidence is in ../physical-character-weight-density-20261031/.
+The normalized transverse strip basis and positive compressed-trace/rank
+composition ABOVE remain paper-level. Do not inherit this partial bridge's
+formal verdict for the whole rank-divergence conclusion.

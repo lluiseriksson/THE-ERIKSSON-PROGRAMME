@@ -1,0 +1,96 @@
+{
+  "compressed_trace_rank_complete": false,
+  "actual_character_gradient_density": true,
+  "actual_weighted_spatial_sum_identity": true,
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "all_owned_runtimes_disconnected": true,
+  "second": {
+    "status": "CHARACTER_WEIGHT_DENSITY_VALIDATED",
+    "source_sha": "29eb3e6ce512f56a4f5e5699bf8b9ab9bc200cea",
+    "zip_sha256": "c8240c5d720d82d39b836ab004515b07e728131b57dee4a481b1644e590721fd",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "42bbe4696f4e48cf48849370e6f521fa85ec40669f1820afef3590c08589cd3a",
+    "oracle_log_sha256": "0fb543e84f4e4f8b3daec68d7b0a5b474a68e3ec161fe77d48f1d197534cbdb6",
+    "source_manifest_sha256": "dbc23124cf50c6a1b0e9809912b38531df77b8a3111d815ef52c96d881ed1339",
+    "started_utc": "2026-10-31T08:13:35.3570520+00:00",
+    "finished_utc": "2026-10-31T08:17:52.0138380+00:00",
+    "independent_review": false,
+    "scope": "Actual physical character amplitude gradient density, exact weighted site sums, norm/divergence/Hodge identities; normalized strip basis and compressed trace/rank composition still open",
+    "windows_lean_executed": false
+  },
+  "runtime_closure": {
+    "executed_runs": 3,
+    "all_owned_runtimes_disconnected": true,
+    "other_chat_runtime_shared": false,
+    "rows": [
+      {
+        "capture_sha256": "5ecf1124f3900445dd12a18dc513c8b54fa8f3354e585ccf8f1c6395a7a01f6f",
+        "release_request_utc": "2026-10-31T08:02:11.504369+00:00",
+        "run": "068",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-character-weight-density\\068-disconnected.png",
+        "driver_started_utc": "2026-10-31T07:57:20.963111+00:00",
+        "status": "FAIL",
+        "source_sha": "d17a398bc15b8cc081aa4b748595d40ae3d0dc4f"
+      },
+      {
+        "capture_sha256": "713c07323803f46b79650b5f18474926a505eb9c3ef22d6f006d4bc742c8f265",
+        "release_request_utc": "2026-10-31T08:08:50.406246+00:00",
+        "run": "069",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-character-weight-density\\069-disconnected.png",
+        "driver_started_utc": "2026-10-31T08:04:38.635455+00:00",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "source_sha": "29eb3e6ce512f56a4f5e5699bf8b9ab9bc200cea"
+      },
+      {
+        "capture_sha256": "9643a415c40e39b54ba089f34e6c8777f8745e4dee27378a813ccf34bf76cc43",
+        "release_request_utc": "2026-10-31T08:17:52.013838+00:00",
+        "run": "069b",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-character-weight-density\\069b-disconnected.png",
+        "driver_started_utc": "2026-10-31T08:13:35.357052+00:00",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "source_sha": "29eb3e6ce512f56a4f5e5699bf8b9ab9bc200cea"
+      }
+    ],
+    "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+    "interval_scope": "Driver start to release request; full allocation/release latency and billed units unknown",
+    "all_owned_notebook_tabs_closed": true,
+    "billed_units": null,
+    "prepared_not_executed": [
+      "068b"
+    ]
+  },
+  "first": {
+    "status": "CHARACTER_WEIGHT_DENSITY_VALIDATED",
+    "source_sha": "29eb3e6ce512f56a4f5e5699bf8b9ab9bc200cea",
+    "zip_sha256": "d013d2a3c579f6fe0989f15377d8790791ba8a52ea66e777b5c2a7574700e872",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "42bbe4696f4e48cf48849370e6f521fa85ec40669f1820afef3590c08589cd3a",
+    "oracle_log_sha256": "0fb543e84f4e4f8b3daec68d7b0a5b474a68e3ec161fe77d48f1d197534cbdb6",
+    "source_manifest_sha256": "dbc23124cf50c6a1b0e9809912b38531df77b8a3111d815ef52c96d881ed1339",
+    "started_utc": "2026-10-31T08:04:38.6354550+00:00",
+    "finished_utc": "2026-10-31T08:08:50.4062460+00:00",
+    "independent_review": false,
+    "scope": "Actual physical character amplitude gradient density, exact weighted site sums, norm/divergence/Hodge identities; normalized strip basis and compressed trace/rank composition still open",
+    "windows_lean_executed": false
+  },
+  "normalized_strip_basis_complete": false,
+  "all_owned_notebook_tabs_closed": true,
+  "source_sha": "29eb3e6ce512f56a4f5e5699bf8b9ab9bc200cea",
+  "average_weight_rank_obstruction_formally_complete": false,
+  "original_priority_claimed": false,
+  "physical_hypotheses_eliminated": [],
+  "independent_review": false,
+  "new_publication": false,
+  "exact_endpoints": [
+    "character_amplitude_forward_density",
+    "physicalCharacter_gradient_density",
+    "physicalCharacter_norm_sq",
+    "physicalCharacter_weightedRepair_energy",
+    "physicalCharacter_div_zero",
+    "physicalCharacter_hodge_energy"
+  ]
+}
