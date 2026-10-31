@@ -87,6 +87,7 @@ noncomputable def normalizedCoexactSynthesis (hNc : 2 ≤ Nc) (R : ℕ)
     (characterSynthesis (positiveCoexactCharacter (n := n) R)
       (fun k => c k / (positiveCoexactNormalization (n := n) R k : ℂ)))
 
+set_option maxHeartbeats 1200000 in
 theorem normalizedCoexactSynthesis_norm_sq (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 * R < n)
     (c : CoexactPositiveIndex d R → ℂ) :
     ‖normalizedCoexactSynthesis (n := n) hNc R c‖ ^ 2 = ∑ k, ‖c k‖ ^ 2 := by
