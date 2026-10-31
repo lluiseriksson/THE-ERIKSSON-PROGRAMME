@@ -23,7 +23,7 @@ theorem finBoxMean_poincare_energy_le (f : FinBox d n → V) :
   have hm : finiteArithmeticMean g = finBoxArithmeticMean f := by
     unfold finiteArithmeticMean finBoxArithmeticMean
     have hc : Fintype.card (Fin d → ZMod n) = n ^ d := by simp
-    rw [hc]
+    rw [hc, Nat.cast_pow]
     congr 1
     exact Equiv.sum_comp e.symm f
   have hl : (∑ y : Fin d → ZMod n, ‖g y - finiteArithmeticMean g‖ ^ 2) =
@@ -115,7 +115,7 @@ theorem physicalMean_poincare_energy_le (A : PhysicalGaugeOneCochain d n Nc) :
   rw [hl, hr, Finset.mul_sum]
   exact Finset.sum_le_sum (fun j _ => finBoxMean_poincare_energy_le (fun x => A (x,j)))
 
-def physicalQuadraticMeanPenalty (d n Nc : ℕ) (y : PhysicalDirectionalMean d Nc) : ℝ :=
+noncomputable def physicalQuadraticMeanPenalty (d n Nc : ℕ) (y : PhysicalDirectionalMean d Nc) : ℝ :=
   (2 * (n : ℝ)^d) * ‖y‖ ^ 2
 
 def physicalQuadraticWeights (p : PhysicalGradientIndex d n) : ℝ :=
