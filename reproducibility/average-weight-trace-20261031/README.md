@@ -207,3 +207,14 @@ matched; evidence is in ../transverse-character-strip-20261031/. This closes
 the normalized-family obligations mentioned as pending above. The positive
 compressed-trace/rank and derivative-kernel composition still remain open;
 do not inherit the strip's formal verdict for the whole rank obstruction.
+
+## Unit050 penalty sharpness and refuted extension
+
+`penalty-sharpness.md` gives a complete paper-level counterexample to dropping
+the quadratic upper penalty hypothesis: C(x)=||x||^2 has zero derivative and
+scalar output, but Phi(y)=c|y| recovers c||x||^2 exactly in every dimension.
+Both maps can even be C1 using C(x)=||x||^(3/2), Phi(y)=c|y|^(4/3).
+The note proves all zero-derivative and local-upper-bound-failure claims,
+and distinguishes the valid C2-observation/C1-penalty tradeoff from a
+weakening of the current theorem. No Lean verification or new publication
+is claimed. The main positive compressed-trace/rank question remains active.
