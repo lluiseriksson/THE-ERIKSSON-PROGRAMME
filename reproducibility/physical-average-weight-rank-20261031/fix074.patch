@@ -1,0 +1,23 @@
+diff --git a/YangMills/RG/PhysicalAverageWeightRank.lean b/YangMills/RG/PhysicalAverageWeightRank.lean
+index aa142ffa..49aef4ea 100644
+--- a/YangMills/RG/PhysicalAverageWeightRank.lean
++++ b/YangMills/RG/PhysicalAverageWeightRank.lean
+@@ -67,7 +67,7 @@ theorem local_derivative_kernel_quadratic_lower
+         hlocal _ (S.smul_mem t hvS) htball
+       _ ≤ b * ‖t • v‖ ^ 2 + K * ‖C (t • v)‖ ^ 2 := by
+         rw [henergy]
+-        exact add_le_add_left (hPhi _ htnear) _
++        exact add_le_add (le_refl _) (hPhi _ htnear)
+       _ = (b + K * (z t) ^ 2) * ‖t • v‖ ^ 2 := by rw [heq]; ring
+   have hz' : Tendsto z (𝓝[≠] (0 : ℝ)) (𝓝 (0 : ℝ)) :=
+     hz.mono_left nhdsWithin_le_nhds
+@@ -158,6 +158,9 @@ theorem physicalStripCompression_trace (hNc : 2 ≤ Nc) (rho : SUNAdjointModel N
+   let v := fun p : Fin R × Bool => normalizedTransversePhysicalCharacter (n := n) hNc i j p.1 p.2
+   let hv := normalizedTransversePhysicalCharacters_orthonormal hNc i j hR
+   let b := orthonormalSpanBasis v hv
++  change LinearMap.trace ℝ (Submodule.span ℝ (Set.range v))
++    (finiteSubspaceCompression (Submodule.span ℝ (Set.range v))
++      (physicalFlatWeightedOperator rho w)) = _
+   rw [LinearMap.trace_eq_sum_inner _ b]
+   simp only [finiteSubspaceCompression_inner, orthonormalSpanBasis_coe, b]
+   change (∑ p : Fin R × Bool, inner ℝ (v p)

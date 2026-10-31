@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "bd013f56e4c97fda24c575afa685c7422f78e50a",
+  "status": "FAIL",
+  "zip_sha256": "2cfc00d08f65fc3f27774750273aa0bd24a3d960832530c8248c3598dc11ce94",
+  "manifest_entries": 12,
+  "error": "focal-build failed: h `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:168:0: automatically included section variable(s) unused in theorem `YangMills.RG.physical_quadratic_smul`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n⚠ [8190/8191] Built YangMills.RG.NonlinearTangentCoercivity (8.6s)\nwarning: YangMills/RG/NonlinearTangentCoercivity.lean:17:0: automatically included section variable(s) unused in theorem `YangMills.RG.tangent_kernel_norm_ratio_tendsto`:\n  [FiniteDimensional ℝ E]\n  [FiniteDimensional ℝ F]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [FiniteDimensional ℝ E] [FiniteDimensional ℝ F] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n✖ [8191/8191] Building YangMills.RG.PhysicalAverageWeightRank (8.3s)\ntrace: .> LEAN_PATH=/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-physical-average-weight-rank-20261031-074/YangMills/RG/PhysicalAverageWeightRank.lean -o /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/lib/lean/YangMills/RG/PhysicalAverageWeightRank.olean -i /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/lib/lean/YangMills/RG/PhysicalAverageWeightRank.ilean -c /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/ir/YangMills/RG/PhysicalAverageWeightRank.c --setup /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/ir/YangMills/RG/PhysicalAverageWeightRank.setup.json --json\nerror: YangMills/RG/PhysicalAverageWeightRank.lean:70:8: Type mismatch\n  add_le_add_left (hPhi (C (t • v)) htnear) ?m.1026\nhas type\n  Phi (C (t • v)) + ?m.1026 ≤ K * ‖C (t • v)‖ ^ 2 + ?m.1026\nbut is expected to have type\n  b * ‖t • v‖ ^ 2 + Phi (C (t • v)) ≤ b * ‖t • v‖ ^ 2 + K * ‖C (t • v)‖ ^ 2\nwarning: YangMills/RG/PhysicalAverageWeightRank.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.RG.orthonormalSpanBasis_coe`:\n  [FiniteDimensional ℝ E]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [FiniteDimensional ℝ E] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/PhysicalAverageWeightRank.lean:161:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern\n  (LinearMap.trace ℝ ↥(Submodule.span ℝ (Set.range v))) ?m.143\nin the target expression\n  (LinearMap.trace ℝ ↥(physicalTransverseStripSpace hNc i j R))\n      (finiteSubspaceCompression (physicalTransverseStripSpace hNc i j R) (physicalFlatWeightedOperator rho w)) =\n    2 * (1 + physicalDirectionalWeightAverage w i j) * ∑ r, ‖ZMod.stdAddChar ↑(↑r + 1) - 1‖ ^ 2\n\nd n Nc R : ℕ\ninst✝² : NeZero d\ninst✝¹ : NeZero n\ninst✝ : NeZero Nc\nhNc : 2 ≤ Nc\nrho : SUNAdjointModel Nc\ni j : Fin d\nhR : R < n\nw : PhysicalGradientIndex d n → ℝ\nv : Fin R × Bool → PhysicalGaugeOneCochain d n Nc := fun p => normalizedTransversePhysicalCharacter hNc i j p.1 p.2\nhv : Orthonormal ℝ fun p => normalizedTransversePhysicalCharacter hNc i j p.1 p.2 :=\n  normalizedTransversePhysicalCharacters_orthonormal hNc i j hR\nb : OrthonormalBasis (Fin R × Bool) ℝ ↥(Submodule.span ℝ (Set.range v)) := orthonormalSpanBasis v hv\n⊢ (LinearMap.trace ℝ ↥(physicalTransverseStripSpace hNc i j R))\n      (finiteSubspaceCompression (physicalTransverseStripSpace hNc i j R) (physicalFlatWeightedOperator rho w)) =\n    2 * (1 + physicalDirectionalWeightAverage w i j) * ∑ r, ‖ZMod.stdAddChar ↑(↑r + 1) - 1‖ ^ 2\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.PhysicalAverageWeightRank\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.817,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.119,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.727,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.169,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.265,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 89.713,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 206.893,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-10-31T11:55:41.091633+00:00",
+  "finished_utc": "2026-10-31T12:00:58.037688+00:00"
+}

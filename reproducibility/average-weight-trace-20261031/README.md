@@ -231,3 +231,19 @@ clones073/073b match; evidence is in ../positive-compressed-trace-20261031/.
 This closes the generic trace bridge mentioned as pending above. The final
 actual physical derivative-kernel/strip composition and quantitative tail
 remain open; the full average-weight rank conclusion is not yet formal.
+
+## Unit052 actual finite physical average-weight rank composition
+
+PhysicalAverageWeightRank.lean at d03ab7ef930a2ad9de6346803bad30c395e9bfc9
+now derives local nonlinear derivative-kernel coercivity, actual strip
+constraint/positivity/orthonormal span basis and the physical compressed
+trace identity, then proves c*(2R-dim F)<=2*(1+b_ij)*sum lambda_r under the
+actual nonnegative-weight, local divergence-free coercivity and original
+upper-quadratic penalty hypotheses. No pointwise cap or externally supplied
+band/kernel/positivity/trace certificate appears in the final endpoint.
+Fresh own Linux clones075/075b match; full evidence and retained failure074
+are in ../physical-average-weight-rank-20261031/. This closes the finite
+physical composition mentioned as pending above. The quantitative multiplier
+bound and actual-family asymptotic output-rank divergence still remain to
+be formally composed. No signed-weight generalization or physical source
+claim is made. Keep the same grouped dossier; frozen AIRR v3 unchanged.

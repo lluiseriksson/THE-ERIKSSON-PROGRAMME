@@ -1,0 +1,65 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_3681/2811344745.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.PhysicalAverageWeightRank'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_3681/2811344745.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: h `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:168:0: automatically included section variable(s) unused in theorem `YangMills.RG.physical_quadratic_smul`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8190/8191] Built YangMills.RG.NonlinearTangentCoercivity (8.6s)
+warning: YangMills/RG/NonlinearTangentCoercivity.lean:17:0: automatically included section variable(s) unused in theorem `YangMills.RG.tangent_kernel_norm_ratio_tendsto`:
+  [FiniteDimensional ℝ E]
+  [FiniteDimensional ℝ F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℝ E] [FiniteDimensional ℝ F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [8191/8191] Building YangMills.RG.PhysicalAverageWeightRank (8.3s)
+trace: .> LEAN_PATH=/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-physical-average-weight-rank-20261031-074/YangMills/RG/PhysicalAverageWeightRank.lean -o /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/lib/lean/YangMills/RG/PhysicalAverageWeightRank.olean -i /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/lib/lean/YangMills/RG/PhysicalAverageWeightRank.ilean -c /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/ir/YangMills/RG/PhysicalAverageWeightRank.c --setup /content/eriksson-physical-average-weight-rank-20261031-074/.lake/build/ir/YangMills/RG/PhysicalAverageWeightRank.setup.json --json
+error: YangMills/RG/PhysicalAverageWeightRank.lean:70:8: Type mismatch
+  add_le_add_left (hPhi (C (t • v)) htnear) ?m.1026
+has type
+  Phi (C (t • v)) + ?m.1026 ≤ K * ‖C (t • v)‖ ^ 2 + ?m.1026
+but is expected to have type
+  b * ‖t • v‖ ^ 2 + Phi (C (t • v)) ≤ b * ‖t • v‖ ^ 2 + K * ‖C (t • v)‖ ^ 2
+warning: YangMills/RG/PhysicalAverageWeightRank.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.RG.orthonormalSpanBasis_coe`:
+  [FiniteDimensional ℝ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℝ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/PhysicalAverageWeightRank.lean:161:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (LinearMap.trace ℝ ↥(Submodule.span ℝ (Set.range v))) ?m.143
+in the target expression
+  (LinearMap.trace ℝ ↥(physicalTransverseStripSpace hNc i j R))
+      (finiteSubspaceCompression (physicalTransverseStripSpace hNc i j R) (physicalFlatWeightedOperator rho w)) =
+    2 * (1 + physicalDirectionalWeightAverage w i j) * ∑ r, ‖ZMod.stdAddChar ↑(↑r + 1) - 1‖ ^ 2
+
+d n Nc R : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+rho : SUNAdjointModel Nc
+i j : Fin d
+hR : R < n
+w : PhysicalGradientIndex d n → ℝ
+v : Fin R × Bool → PhysicalGaugeOneCochain d n Nc := fun p => normalizedTransversePhysicalCharacter hNc i j p.1 p.2
+hv : Orthonormal ℝ fun p => normalizedTransversePhysicalCharacter hNc i j p.1 p.2 :=
+  normalizedTransversePhysicalCharacters_orthonormal hNc i j hR
+b : OrthonormalBasis (Fin R × Bool) ℝ ↥(Submodule.span ℝ (Set.range v)) := orthonormalSpanBasis v hv
+⊢ (LinearMap.trace ℝ ↥(physicalTransverseStripSpace hNc i j R))
+      (finiteSubspaceCompression (physicalTransverseStripSpace hNc i j R) (physicalFlatWeightedOperator rho w)) =
+    2 * (1 + physicalDirectionalWeightAverage w i j) * ∑ r, ‖ZMod.stdAddChar ↑(↑r + 1) - 1‖ ^ 2
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.PhysicalAverageWeightRank
+error: build failed
+

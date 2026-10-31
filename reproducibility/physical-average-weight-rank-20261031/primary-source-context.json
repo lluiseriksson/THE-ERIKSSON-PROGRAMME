@@ -1,0 +1,25 @@
+{
+  "independent_review": false,
+  "original_priority_claimed": false,
+  "mathlib_pin": "07642720480157414db592fa85b626dafb71355b",
+  "novelty_scope": "Repository-specific finite physical composition of classical mechanisms; no evidence of original-priority theorem or interacting/continuum relevance",
+  "formal_verdict_inherited": false,
+  "definition_context": "Actual normalized strip unit049 and generic trace/rank unit051; local Frechet norm-ratio lemma from NonlinearTangentCoercivity.lean",
+  "primary_sources": [
+    {
+      "path": "Mathlib/LinearAlgebra/Basis/Basic.lean",
+      "blob": "b553f746e683d8f5abfea1ce58decfcbec217ba7",
+      "used": "Basis.span; Basis.coe_span_apply"
+    },
+    {
+      "path": "Mathlib/Analysis/InnerProductSpace/Orthonormal.lean",
+      "blob": "9a1f6da8dce57248376bf96d1ba967924f796e38",
+      "used": "orthonormal_iff_ite and inherited inner-product definitions"
+    },
+    {
+      "sections": "16.3.2 and16.5",
+      "url": "https://www.cs.yale.edu/homes/spielman/PAPERS/SGTChapter.pdf",
+      "used": "Classical weighted quadratic-form and variational spectral background"
+    }
+  ]
+}
