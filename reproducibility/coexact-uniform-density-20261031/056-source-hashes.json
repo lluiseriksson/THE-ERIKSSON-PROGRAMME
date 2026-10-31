@@ -1,0 +1,14 @@
+[
+  {
+    "name": "CoexactUniformDensity.lean",
+    "sha256_lf": "85426be739a3b853008075da1d5dba7897c3cef35eeba7d3e4a591b24038b55d",
+    "expected": "85426be739a3b853008075da1d5dba7897c3cef35eeba7d3e4a591b24038b55d",
+    "matches": true
+  },
+  {
+    "name": "CoexactUniformDensityOracle.lean",
+    "sha256_lf": "466a62bb73108f4341c661cda5f742a63abf3bf410213635771bf185c8baeaff",
+    "expected": "466a62bb73108f4341c661cda5f742a63abf3bf410213635771bf185c8baeaff",
+    "matches": true
+  }
+]

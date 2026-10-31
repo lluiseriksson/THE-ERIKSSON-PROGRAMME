@@ -1,0 +1,79 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_4569/2819125480.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.CoexactUniformDensity'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_4569/2819125480.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: orem `YangMills.RG.torusPhysicalEmbed_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatEnergy.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_gradient_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8193/8194] Built YangMills.RG.CoexactSubquadraticFamily (7.7s)
+warning: YangMills/RG/CoexactSubquadraticFamily.lean:31:21: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+✖ [8194/8194] Building YangMills.RG.CoexactUniformDensity (7.1s)
+trace: .> LEAN_PATH=/content/eriksson-uniform-density-20261031-056/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-uniform-density-20261031-056/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-uniform-density-20261031-056/YangMills/RG/CoexactUniformDensity.lean -o /content/eriksson-uniform-density-20261031-056/.lake/build/lib/lean/YangMills/RG/CoexactUniformDensity.olean -i /content/eriksson-uniform-density-20261031-056/.lake/build/lib/lean/YangMills/RG/CoexactUniformDensity.ilean -c /content/eriksson-uniform-density-20261031-056/.lake/build/ir/YangMills/RG/CoexactUniformDensity.c --setup /content/eriksson-uniform-density-20261031-056/.lake/build/ir/YangMills/RG/CoexactUniformDensity.setup.json --json
+error: YangMills/RG/CoexactUniformDensity.lean:18:4: linarith failed to find a contradiction
+case h
+d : ℕ
+M c : ℝ
+hc : 0 < c
+s : ℕ
+hs : (1 + M) * 4 * Real.pi ^ 2 * ↑(d + 2) / c + 1 < ↑s
+hs0 : 0 ≤ ↑s
+a✝ : (↑s + 3) ^ 2 ≤ (1 + M) * 4 * Real.pi ^ 2 * (↑d + 2) / c
+⊢ False
+failed
+warning: YangMills/RG/CoexactUniformDensity.lean:31:26: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/CoexactUniformDensity.lean:31:26: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/RG/CoexactUniformDensity.lean:39:23: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/CoexactUniformDensity.lean:92:24: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/CoexactUniformDensity.lean:92:24: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/RG/CoexactUniformDensity.lean:104:9: unused variable `hw`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/CoexactUniformDensity.lean:107:9: unused variable `hC`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/CoexactUniformDensity.lean:107:34: unused variable `hC0`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/CoexactUniformDensity.lean:108:25: unused variable `hdelta`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/CoexactUniformDensity.lean:108:46: unused variable `hr`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/CoexactUniformDensity.lean:109:9: unused variable `hPhi`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/CoexactUniformDensity.lean:110:9: unused variable `hbound`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.CoexactUniformDensity
+error: build failed
+
