@@ -1,0 +1,37 @@
+{
+  "all_owned_runtimes_disconnected": true,
+  "interval_scope": "Driver start to final report before automatic release request; complete allocation/release latency and billed units unknown",
+  "billed_units": null,
+  "prepared_not_executed": [
+    "a95b615a driver labels changed a Mathlib-pin prefix; fixed before any run in1641f3d8"
+  ],
+  "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+  "executed_runs": 2,
+  "other_chat_runtime_shared": false,
+  "failed_compilations": [],
+  "rows": [
+    {
+      "capture_sha256": "d17b36379c638fefd82cf60ef9a2b10ce68d75e85686a2bc4fa2d19a357af1d2",
+      "report_finished_utc": "2026-10-31T17:11:28.009141+00:00",
+      "release_request_utc": null,
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "disconnection_capture_saved_utc": "2026-10-31T17:11:53.1778824Z",
+      "run": "077",
+      "driver_started_utc": "2026-10-31T17:03:20.019500+00:00",
+      "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_signed-positive-mean\\077-disconnected.jpg"
+    },
+    {
+      "capture_sha256": "e9384be9cae673b386855510f1e3481bcae63c67dd330f8ccafd5e82de94a277",
+      "report_finished_utc": "2026-10-31T17:18:01.153508+00:00",
+      "release_request_utc": null,
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "disconnection_capture_saved_utc": "2026-10-31T17:18:40.8829354Z",
+      "run": "077b",
+      "driver_started_utc": "2026-10-31T17:13:09.627786+00:00",
+      "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_signed-positive-mean\\077b-disconnected.jpg"
+    }
+  ],
+  "all_owned_notebook_tabs_closed": true
+}

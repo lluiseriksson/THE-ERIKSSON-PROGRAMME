@@ -1,0 +1,8 @@
+import YangMills.RG.SignedPositiveMeanFamily
+
+#print axioms YangMills.RG.signedWeightPositivePart_nonneg
+#print axioms YangMills.RG.componentwiseWeightedRepair_mono
+#print axioms YangMills.RG.signedWeightPositivePart_energy_le
+#print axioms YangMills.RG.physicalSignedPositiveMean_rank_quantitative_bound
+#print axioms YangMills.RG.physicalSignedPositiveMean_finrank_tendsto
+#print axioms YangMills.RG.physicalSignedPositiveMean_no_bounded_output

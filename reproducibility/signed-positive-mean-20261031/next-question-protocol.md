@@ -1,0 +1,13 @@
+# Next bounded formal question: actual zero-signed-mean fixed-output counterexample
+
+Statement: formally realize the complete analytic unit056 counterexample on the actual flat lattice, with all ordinary signed directional means identically zero, fixed output type independent of n, and global coercivity c=1 with nonnegative quadratic penalty. This is the one next question after unit057 positive-part closure, not another paper.
+
+Hypotheses retained: d>=2, Nc>=2, n>=1, actual stacked gradient and flat Hodge K0. Construct every object explicitly. Do not assume the energy cancellation, fixed output, smoothness or quadratic upper bound in a certificate.
+
+Mechanism/API map inspected at source810785b1: PhysicalQuadraticMeanRepair supplies actual mean CLM, derivative at every point and physicalQuadraticMean_global_coercive. ComponentwiseFlatGradient supplies exact weighted-energy sum. Use actual J(A)_(k,l)=A((origin.shift k,l))-A(origin,l), target PiLp2 over Fin d x Fin d, paired with PhysicalDirectionalMean d Nc; this fixed target has no lattice-side parameter. J is an explicit linear map, continuity follows from finite-dimensional domain, derivative is itself. Define w(p)=a*(1-V*if p.2.1=origin then 1 else 0), a=2*d*n^2, V=n^d. Derive exact energy= a*||G A||^2-a*V*||J A||^2 by finite sum splitting. Penalty=2*V*||mean A||^2+a*V*||J A||^2 cancels, leaving existing mean-repair coercivity plus nonnegative K0. Prove means zero from card_finBox and the singleton sum. Verify the chosen product norm (Lean's ordinary product norm is max, not Euclidean); either use WithLp2 or prove the upper bound K=V*(2+a) for that actual norm explicitly. Do not silently import the paper's product convention.
+
+Falsifiers: a missing factor V, weight on wrong gradient source site, cancellation sign error, target secretly depends on n, nonquadratic penalty, unsupported actual zero mean, or a local/global/domain premise supplied instead of proved.
+
+Abandonment: after three implementation units without a substantive checked endpoint, retain the full analytic proof, document the exact API blocker and change route; do not split weak finite corollaries into papers. Windows remains editing/git/hashes only; any Lean/oracle validation on own Colab Linux with exact source and preserved failure evidence.
+
+This is preparation only: no new formal claim, test execution, physical hypothesis discharge, novelty certification, PDF or AIRR publication.

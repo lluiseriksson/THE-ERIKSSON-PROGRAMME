@@ -1,0 +1,14 @@
+[
+  {
+    "name": "SignedPositiveMeanFamily.lean",
+    "sha256_lf": "e1fd10c5192fcad01bc7d7b7a3178c1f99c8e243ad4b01bf7320f06d0ceef1dc",
+    "expected": "e1fd10c5192fcad01bc7d7b7a3178c1f99c8e243ad4b01bf7320f06d0ceef1dc",
+    "matches": true
+  },
+  {
+    "name": "SignedPositiveMeanFamilyOracle.lean",
+    "sha256_lf": "8a3128388b6e72b2b3f441a3cb955d5c777a7c1c9223e3c86727ffbe2819a907",
+    "expected": "8a3128388b6e72b2b3f441a3cb955d5c777a7c1c9223e3c86727ffbe2819a907",
+    "matches": true
+  }
+]

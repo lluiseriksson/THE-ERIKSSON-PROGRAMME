@@ -1,0 +1,75 @@
+{
+  "before": [
+    {
+      "id": "7",
+      "providerTabId": "browser-use:699944ca-f3b1-460c-9941-ccfe6c2cf480",
+      "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms — AIRR.SCIENCE",
+      "url": "https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v3/",
+      "browserId": "2"
+    },
+    {
+      "id": "39",
+      "providerTabId": "browser-use:9f48b530-998f-44d7-9fae-c9bd82be8cb9",
+      "title": "SCP | Login",
+      "url": "https://www.servercontrolpanel.de/realms/scp/protocol/openid-connect/auth?client_id=scp&redirect_uri=https%3A%2F%2Fwww.servercontrolpanel.de%2Fscp-ui%2F&state=44e946f5-42d9-4748-b630-5e617bdd197e&response_mode=fragment&response_type=code&scope=openid&nonce=6c6d252a-369d-4511-98e5-1b84d5bc3f48&code_challenge=3ehD4RhFgL4TyYykKSDv3GRsVRIT-PqNCYVLexZGt7c&code_challenge_method=S256",
+      "browserId": "2"
+    },
+    {
+      "id": "40",
+      "providerTabId": "browser-use:1168b248-3074-4b7c-b4eb-f893b19aaf6c",
+      "title": "reproduce077.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/1641f3d8d69de433874e56026331b1862dc59405/reproducibility/signed-positive-mean-20261031/reproduce077.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "41",
+      "providerTabId": "1c7c6845-3644-449d-82e7-884b573d19db",
+      "title": "Kopia av reproduce077.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/1hBML-TLxXq8r3e0WAjMgWMbHoi_DnHvS",
+      "browserId": "2"
+    },
+    {
+      "id": "42",
+      "providerTabId": "browser-use:5855eb20-f508-419c-a631-3e35334d5eff",
+      "title": "reproduce077b.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/1641f3d8d69de433874e56026331b1862dc59405/reproducibility/signed-positive-mean-20261031/reproduce077b.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "43",
+      "providerTabId": "630ac72b-05e8-40c1-ba35-ffa4926aaf02",
+      "title": "Kopia av reproduce077b.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/10MZ8h2RcEHr3Y0oM9N_LPtJdbi5YjvEH#scrollTo=OcqmXY0X-Kbd",
+      "browserId": "2"
+    }
+  ],
+  "after": [
+    {
+      "id": "7",
+      "providerTabId": "browser-use:699944ca-f3b1-460c-9941-ccfe6c2cf480",
+      "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms — AIRR.SCIENCE",
+      "url": "https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v3/",
+      "browserId": "2"
+    },
+    {
+      "id": "39",
+      "providerTabId": "browser-use:9f48b530-998f-44d7-9fae-c9bd82be8cb9",
+      "title": "SCP | Login",
+      "url": "https://www.servercontrolpanel.de/realms/scp/protocol/openid-connect/auth?client_id=scp&redirect_uri=https%3A%2F%2Fwww.servercontrolpanel.de%2Fscp-ui%2F&state=44e946f5-42d9-4748-b630-5e617bdd197e&response_mode=fragment&response_type=code&scope=openid&nonce=6c6d252a-369d-4511-98e5-1b84d5bc3f48&code_challenge=3ehD4RhFgL4TyYykKSDv3GRsVRIT-PqNCYVLexZGt7c&code_challenge_method=S256",
+      "browserId": "2"
+    }
+  ],
+  "owned_ids": [
+    "40",
+    "41",
+    "42",
+    "43"
+  ],
+  "all_owned_notebook_tabs_closed": true,
+  "all_owned_runtimes_disconnected": true,
+  "notebook_urls": [
+    "https://colab.research.google.com/drive/1hBML-TLxXq8r3e0WAjMgWMbHoi_DnHvS",
+    "https://colab.research.google.com/drive/10MZ8h2RcEHr3Y0oM9N_LPtJdbi5YjvEH"
+  ],
+  "observed_utc": "2026-10-31T17:20:05.065Z"
+}

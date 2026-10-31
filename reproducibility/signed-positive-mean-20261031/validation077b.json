@@ -1,0 +1,16 @@
+{
+  "status": "SIGNED_POSITIVE_MEAN_FAMILY_VALIDATED",
+  "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+  "zip_sha256": "efd7172ac6984242dea8c4e003681ae6f241e770b0eb157c7adc882b478f36bf",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "5c80c179aa9f2dbd20e113e9d1967e4a45408314f4b8c4501b6b34fe442753c8",
+  "oracle_log_sha256": "67385ac63ad3eb763afc56409e8f9fda0990f0e637dd1a52a2e38e640278a108",
+  "source_manifest_sha256": "34e492c3bace1adcfd120ca7c67693f7cb683efba91ac0c3dd9fee5c20fb2f1b",
+  "started_utc": "2026-10-31T17:13:09.6277860+00:00",
+  "finished_utc": "2026-10-31T17:18:01.1535080+00:00",
+  "independent_review": false,
+  "scope": "Actual signed weights with no lower bound; finite quantitative bound and output-rank divergence controlled by the mean of pointwise positive parts o(n^2), fixed c>0 and original local nonlinear/quadratic hypotheses",
+  "windows_lean_executed": false
+}
