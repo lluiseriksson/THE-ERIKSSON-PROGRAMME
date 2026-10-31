@@ -1,0 +1,54 @@
+{
+  "all_owned_runtimes_disconnected": true,
+  "billed_units": null,
+  "interval_scope": "Driver start to report before automatic release; allocation/release latency and billed units unavailable",
+  "failed_compilations": [
+    {
+      "error": "focal-build failed: et_option linter.unusedSectionVars false`\n✖ [8194/8194] Building YangMills.RG.SquareCycleCancellation (8.7s)\ntrace: .> LEAN_PATH=/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-square-cycle-cancellation-20261031-080/YangMills/RG/SquareCycleCancellation.lean -o /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean/YangMills/RG/SquareCycleCancellation.olean -i /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean/YangMills/RG/SquareCycleCancellation.ilean -c /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/ir/YangMills/RG/SquareCycleCancellation.c --setup /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/ir/YangMills/RG/SquareCycleCancellation.setup.json --json\nerror: YangMills/RG/SquareCycleCancellation.lean:13:28: Application type mismatch: The argument\n  add_le_add_right (norm_add_le x y) ?m.121\nhas type\n  ?m.121 + ‖x + y‖ ≤ ?m.121 + (‖x‖ + ‖y‖)\nbut is expected to have type\n  ‖x + y‖ + ‖z‖ ≤ ‖x‖ + ‖y‖ + ‖z‖\nin the application\n  LE.le.trans (norm_sub_le (x + y) z) (add_le_add_right (norm_add_le x y) ?m.121)\nwarning: YangMills/RG/SquareCycleCancellation.lean:29:40: Try `simp at hk` instead of `simpa using hk`\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\nwarning: YangMills/RG/SquareCycleCancellation.lean:21:0: automatically included section variable(s) unused in theorem `YangMills.RG.finBox_shift_ne_of_one_lt`:\n  [NeZero d]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/SquareCycleCancellation.lean:32:0: automatically included section variable(s) unused in theorem `YangMills.RG.squareCycle_path_norm_sq_le`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/SquareCycleCancellation.lean:78:43: Invalid argument name `Nc` for function `finBox_shift_ne_of_one_lt`\n\nHint: Perhaps you meant one of the following parameter names:\n  • `d`: N̵c̵d̲\n  • `n`: N̵c̵n̲\n  • `hn`: N̵c̵h̲n̲\n  • `o`: N̵c̵o̲\n  • `k`: N̵c̵k̲\nerror: YangMills/RG/SquareCycleCancellation.lean:76:40: unsolved goals\nd n : ℕ\ninst✝¹ : NeZero d\ninst✝ : NeZero n\nhn : 1 < n\no : FinBox d n\ni k j : Fin d\nhik : i ≠ k\na : ℝ\nha : 0 ≤ a\np : PhysicalGradientIndex d n\n⊢ signedWeightPositivePart (squareCycleWeights o i k j a) p = if p = (i, o, j) then a else 0\nerror: YangMills/RG/SquareCycleCancellation.lean:107:44: Invalid argument name `Nc` for function `squareCycleWeights_positive_part`\n\nHint: Perhaps you meant one of the following parameter names:\n  • `d`: N̵c̵d̲\n  • `n`: N̵c̵n̲\n  • `hn`: N̵c̵h̲n̲\n  • `o`: N̵c̵o̲\n  • `i`: N̵c̵i̲\n  • `k`: N̵c̵k̲\n  • `j`: N̵c̵j̲\n  • `hik`: N̵c̵h̲i̲k̲\n  • `a`: N̵c̵a̲\n  • `ha`: N̵c̵h̲a̲\n  • `p`: N̵c̵p̲\nerror: YangMills/RG/SquareCycleCancellation.lean:107:11: `simp` made no progress\nerror: YangMills/RG/SquareCycleCancellation.lean:115:42: Invalid argument name `Nc` for function `squareCycleWeights_positive_average`\n\nHint: Perhaps you meant one of the following parameter names:\n  • `d`: N̵c̵d̲\n  • `n`: N̵c̵n̲\n  • `hn`: N̵c̵h̲n̲\n  • `o`: N̵c̵o̲\n  • `i`: N̵c̵i̲\n  • `k`: N̵c̵k̲\n  • `j`: N̵c̵j̲\n  • `hik`: N̵c̵h̲i̲k̲\n  • `a`: N̵c̵a̲\n  • `ha`: N̵c̵h̲a̲\nerror: YangMills/RG/SquareCycleCancellation.lean:114:81: unsolved goals\nd n : ℕ\ninst✝¹ : NeZero d\ninst✝ : NeZero n\nhn : 1 < n\no : FinBox d n\ni k j : Fin d\nhik : i ≠ k\n⊢ physicalDirectionalWeightAverage (signedWeightPositivePart (squareCycleWeights o i k j (↑n ^ d * ↑n ^ 2))) i j =\n    ↑n ^ 2\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.SquareCycleCancellation\nerror: build failed\n",
+      "run": "080",
+      "source_sha": "b7885333896eeb449781bd5d3710f0eeeb113a5e"
+    }
+  ],
+  "executed_runs": 3,
+  "rows": [
+    {
+      "driver_started_utc": "2026-10-31T19:11:03.795836+00:00",
+      "release_request_utc": null,
+      "disconnection_capture_saved_utc": "2026-10-31T19:17:34.5115247Z",
+      "driver_interval_seconds": 366.998527,
+      "report_finished_utc": "2026-10-31T19:17:10.794363+00:00",
+      "run": "080",
+      "capture_sha256": "efa825da51abe3941d12d1f0b795cac8ec29c9900af31672d450ed60cba45743",
+      "source_sha": "b7885333896eeb449781bd5d3710f0eeeb113a5e",
+      "status": "FAIL",
+      "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_square-cycle-cancellation\\080-disconnected.jpg"
+    },
+    {
+      "driver_started_utc": "2026-10-31T19:21:53.412707+00:00",
+      "release_request_utc": null,
+      "disconnection_capture_saved_utc": "2026-10-31T19:30:03.9057000Z",
+      "driver_interval_seconds": 454.295802,
+      "report_finished_utc": "2026-10-31T19:29:27.708509+00:00",
+      "run": "081",
+      "capture_sha256": "abee48ed7684d361dbd084107fcda5098b812bf218d48d60426e12fd552d548e",
+      "source_sha": "4c5728d147721523f5a521011351ac4bf2d3cf86",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_square-cycle-cancellation\\081-disconnected.jpg"
+    },
+    {
+      "driver_started_utc": "2026-10-31T19:31:14.561217+00:00",
+      "release_request_utc": null,
+      "disconnection_capture_saved_utc": "2026-10-31T19:37:13.2190770Z",
+      "driver_interval_seconds": 301.537623,
+      "report_finished_utc": "2026-10-31T19:36:16.098840+00:00",
+      "run": "081b",
+      "capture_sha256": "5a263815f2216e821c55ff208402a2481d79097499cdce1b727565064f1ffcbc",
+      "source_sha": "4c5728d147721523f5a521011351ac4bf2d3cf86",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_square-cycle-cancellation\\081b-disconnected.jpg"
+    }
+  ],
+  "runtime_type": "Own Colab Linux CPU/highRAM50.99GB, no GPU",
+  "all_owned_notebook_tabs_closed": true,
+  "other_chat_runtime_shared": false
+}
