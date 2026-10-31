@@ -59,7 +59,7 @@ theorem positive_trace_lower_on_subspace (T : E →ₗ[ℝ] E)
     _ = LinearMap.trace ℝ E T := by
       rw [T.trace_eq_sum_inner b]
       simp only [hb]
-      rw [Finset.sum_coe_sort]
+      exact (Finset.sum_coe_sort u (fun x : E => inner ℝ x (T x))).symm
 
 theorem positive_trace_rank_bound (T : E →ₗ[ℝ] E)
     (hpos : ∀ x : E, 0 ≤ inner ℝ x (T x))
