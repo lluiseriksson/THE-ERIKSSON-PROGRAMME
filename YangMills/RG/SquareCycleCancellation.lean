@@ -9,8 +9,10 @@ open scoped BigOperators Topology RealInnerProductSpace
 
 theorem three_term_norm_sq_le {V : Type*} [NormedAddCommGroup V] (x y z : V) :
     ‖x + y - z‖^2 ≤ 3 * (‖x‖^2 + ‖y‖^2 + ‖z‖^2) := by
-  have ht : ‖x + y - z‖ ≤ ‖x‖ + ‖y‖ + ‖z‖ :=
-    (norm_sub_le _ _).trans (add_le_add_right (norm_add_le x y) _)
+  have ht : ‖x + y - z‖ ≤ ‖x‖ + ‖y‖ + ‖z‖ := by
+    have h1 := norm_sub_le (x+y) z
+    have h2 := norm_add_le x y
+    linarith
   have hs := pow_le_pow_left₀ (norm_nonneg (x+y-z)) ht 2
   nlinarith [sq_nonneg (‖x‖-‖y‖), sq_nonneg (‖x‖-‖z‖),
     sq_nonneg (‖y‖-‖z‖)]
@@ -75,7 +77,7 @@ theorem squareCycleWeights_positive_part (hn : 1 < n) (o : FinBox d n)
     signedWeightPositivePart (squareCycleWeights o i k j a) p =
       if p = (i,(o,j)) then a else 0 := by
   classical
-  have hshift := finBox_shift_ne_of_one_lt (Nc := Nc) hn o k
+  have hshift := finBox_shift_ne_of_one_lt hn o k
   have hp1 : (i,(o,j)) ≠ (k,(o,j)) := by
     intro h
     exact hik (congrArg Prod.fst h)
@@ -104,7 +106,7 @@ theorem squareCycleWeights_positive_average (hn : 1 < n) (o : FinBox d n)
       ((n : ℝ)^d)⁻¹ * a := by
   classical
   unfold physicalDirectionalWeightAverage
-  simp_rw [squareCycleWeights_positive_part (Nc := Nc) hn o i k j hik a ha]
+  simp_rw [squareCycleWeights_positive_part hn o i k j hik a ha]
   simp
 
 theorem squareCycleWeights_critical_positive_average (hn : 1 < n) (o : FinBox d n)
@@ -112,7 +114,7 @@ theorem squareCycleWeights_critical_positive_average (hn : 1 < n) (o : FinBox d 
     physicalDirectionalWeightAverage
       (signedWeightPositivePart
         (squareCycleWeights o i k j ((n : ℝ)^d * (n : ℝ)^2))) i j = (n : ℝ)^2 := by
-  rw [squareCycleWeights_positive_average (Nc := Nc) hn o i k j hik _ (by positivity)]
+  rw [squareCycleWeights_positive_average hn o i k j hik _ (by positivity)]
   have hne : (n : ℝ) ≠ 0 := by exact_mod_cast NeZero.ne n
   rw [← mul_assoc, inv_mul_cancel₀ (pow_ne_zero d hne), one_mul]
 
