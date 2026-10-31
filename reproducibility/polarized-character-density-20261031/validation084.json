@@ -1,0 +1,16 @@
+{
+  "status": "POLARIZED_CHARACTER_ACTUAL_DIAGONAL_VALIDATED",
+  "source_sha": "5ccd1018b0f60ec7d443247887bd7865ab5425aa",
+  "zip_sha256": "3c32262bcc89d0fb65b2190e6089200c8d75e04bde42de505844e444dd46b0cf",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 4,
+  "target_olean_sha256": "03379541c6dcd28cca9d9fe63488d52f8cf71a4f5c449cb5ca1e26de6924c757",
+  "oracle_log_sha256": "34b03201135dac0027fa94ca88ba4abf1200256ba94c06ba015ed9c6a8fc68c7",
+  "source_manifest_sha256": "c349b70ff31bcb667f93e55facc04a4c17483ff3f185f859eabe124035191c16",
+  "started_utc": "2026-10-31T22:09:59.2296900+00:00",
+  "finished_utc": "2026-10-31T22:14:59.1959590+00:00",
+  "independent_review": false,
+  "scope": "Actual multi-component character gradient, norm, weighted diagonal and spatial sum upper bound; no normalized packet, Gram, coexactness, trace or density theorem claimed",
+  "windows_lean_executed": false
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PolarizedCharacterWeightDensity.lean",
+    "sha256_lf": "cccfad04bd517fcdb327d34ca889c8e259e8cb853cc78085648280abf4627c9a",
+    "expected": "cccfad04bd517fcdb327d34ca889c8e259e8cb853cc78085648280abf4627c9a",
+    "matches": true
+  },
+  {
+    "name": "PolarizedCharacterWeightDensityOracle.lean",
+    "sha256_lf": "930a7bc56f26c823388dc9ab729eac6ae34bac143c9a0a2cf300d42c3e4adffd",
+    "expected": "930a7bc56f26c823388dc9ab729eac6ae34bac143c9a0a2cf300d42c3e4adffd",
+    "matches": true
+  }
+]

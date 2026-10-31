@@ -1,0 +1,5 @@
+import YangMills.RG.PolarizedCharacterWeightDensity
+#print axioms YangMills.RG.polarizedCharacter_gradient_density
+#print axioms YangMills.RG.polarizedCharacter_norm_sq
+#print axioms YangMills.RG.polarizedCharacter_weightedRepair_energy
+#print axioms YangMills.RG.polarizedCharacter_mean_upper
