@@ -197,3 +197,13 @@ matched; full evidence is in ../physical-character-weight-density-20261031/.
 The normalized transverse strip basis and positive compressed-trace/rank
 composition ABOVE remain paper-level. Do not inherit this partial bridge's
 formal verdict for the whole rank-divergence conclusion.
+## Unit049 normalized strip and energy sum
+
+PhysicalTransverseCharacterStrip.lean at40bb2de8461a878c86d9cea4e80f7da31adb0e58
+now constructs the actual normalized real orthonormal2R transverse family,
+derives its divergence zero and span dimension, and proves the exact weighted
+plus Hodge energy sum2(1+b_ij)*sum lambda_r. Fresh Colab clones071/071b
+matched; evidence is in ../transverse-character-strip-20261031/. This closes
+the normalized-family obligations mentioned as pending above. The positive
+compressed-trace/rank and derivative-kernel composition still remain open;
+do not inherit the strip's formal verdict for the whole rank obstruction.

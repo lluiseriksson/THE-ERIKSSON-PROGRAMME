@@ -1,0 +1,13 @@
+# Unit049 scope and remaining positive rank composition
+
+Verified source40bb2de8461a878c86d9cea4e80f7da31adb0e58. Fresh own Colab clones071/071b passed at the same source with matching compiled/raw-oracle/source-manifest hashes; complete reports and paired validation are the witnesses.
+
+Actual fields are normalized using sqrt((n^D)^(-1)), the physical complex-plane embedding in two distinct internal real coordinates, and positive frequencies r+1 in one coordinate i. The physical bond direction j can be transverse (i!=j). Under R<n the actual characters are injective and the FinR x Bool family is real orthonormal; the two Bool phases are1 andI in the two internal coordinates, not duplicated real scalar Fourier profiles. Exact span dimension is2R. Transverse actual divergence is derived to vanish.
+
+Each normalized field has actual weighted repair energy lambda_r*b_ij and Hodge energy lambda_r. The exact sum of both energies over all2R fields is2*(1+b_ij)*sum_r lambda_r. The identity does not require nonnegative weights, but the following positive trace/rank inequality will retain that condition. No band dimension, normalization, energy certificate or physical divergence is assumed.
+
+Remaining single question: construct the positive compressed-trace/rank inequality and compose it with derivative-kernel coercivity and a derived quantitative multiplier bound to obtain eventual average-weight output-rank divergence. No assumption that B preserves the strip, and no false global B-cP_kernel positivity claim. See trace-next-implementation.md for pinned primary Mathlib APIs and a coarse sufficient bound. Full rank obstruction remains open until this composition is verified.
+
+First actual run070 ataf06 failed on finite-sum binder scope, complex cardinal-power real/imaginary casts and proving normalization mass nonzero. Full source/raw diagnostic/ZIP and exact patch retained. Source40bb makes these explicit without weakening the intended formulas or six oracle rules. Prepared070b never ran.
+
+Classical character, inner-product and weighted-Laplacian mechanisms. Pinned Mathlib primary sources inspected; no originality priority or independent scientific review claimed. Keep in same coarse-information dossier. No new paper/PDF/deposit/license/model assessment, no interacting/continuum hypothesis removed or physical mass gap. PR29 remains20/41,TermSource=0; frozen public AIRR v3 c9de unchanged. Preserve the three-unit abandonment rule; do not substitute a supplied structure for a proof.

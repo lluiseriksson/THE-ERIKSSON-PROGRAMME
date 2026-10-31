@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_1837/535052091.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.PhysicalTransverseCharacterStrip'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1837/535052091.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: ild/lib/lean:/content/eriksson-transverse-character-strip-20261031-070/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-transverse-character-strip-20261031-070/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-transverse-character-strip-20261031-070/YangMills/RG/PhysicalTransverseCharacterStrip.lean -o /content/eriksson-transverse-character-strip-20261031-070/.lake/build/lib/lean/YangMills/RG/PhysicalTransverseCharacterStrip.olean -i /content/eriksson-transverse-character-strip-20261031-070/.lake/build/lib/lean/YangMills/RG/PhysicalTransverseCharacterStrip.ilean -c /content/eriksson-transverse-character-strip-20261031-070/.lake/build/ir/YangMills/RG/PhysicalTransverseCharacterStrip.c --setup /content/eriksson-transverse-character-strip-20261031-070/.lake/build/ir/YangMills/RG/PhysicalTransverseCharacterStrip.setup.json --json
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:13:0: automatically included section variable(s) unused in theorem `YangMills.RG.sunComplexPlane_real_inner`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:36:55: Unknown identifier `x`
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:36:66: Unknown identifier `x`
+info: YangMills/RG/PhysicalTransverseCharacterStrip.lean:63:62: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:48:74: unsolved goals
+case pos
+d n Nc : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+j : Fin d
+chi psi : AddChar (Fin d → ZMod n) ℂ
+z v : ℂ
+hc :
+  ∑ x, (starRingEnd ℂ) (z * chi x) * (v * psi x) =
+    (starRingEnd ℂ) z * v * if chi = psi then ↑(Fintype.card (Fin d → ZMod n)) else 0
+heq : chi = psi
+⊢ z.re * v.re * (↑n ^ d).re - z.re * v.im * (↑n ^ d).im + v.re * z.im * (↑n ^ d).im + z.im * v.im * (↑n ^ d).re =
+    z.re * v.re * ↑n ^ d + z.im * v.im * ↑n ^ d
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:76:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalCharacter_step`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:86:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalCharacter_injective`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:103:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCharacterNormalization_sq`:
+  [NeZero d]
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:111:28: failed to prove nonzeroness, but it would be possible to prove nonnegativity if desired
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:162:0: automatically included section variable(s) unused in theorem `YangMills.RG.physical_quadratic_smul`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:205:61: Invalid projection: Type of
+  p
+is not known; cannot resolve projection `1`
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:205:65: Invalid projection: Type of
+  p
+is not known; cannot resolve projection `2`
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:206:89: Invalid projection: Type of
+  p
+is not known; cannot resolve projection `1`
+error: YangMills/RG/PhysicalTransverseCharacterStrip.lean:206:93: Invalid projection: Type of
+  p
+is not known; cannot resolve projection `2`
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.PhysicalTransverseCharacterStrip
+error: build failed
+

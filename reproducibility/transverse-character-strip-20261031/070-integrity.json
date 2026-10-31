@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "af06b6cd9311a803b55ef8835f5a78b230bbf3db",
+  "status": "FAIL",
+  "zip_sha256": "d568996b5c0b0718f637da3e1708c9a9c72a3f1de30cb77a5b18c4ee6ac5c654",
+  "manifest_entries": 12,
+  "error": "focal-build failed: ild/lib/lean:/content/eriksson-transverse-character-strip-20261031-070/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-transverse-character-strip-20261031-070/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-transverse-character-strip-20261031-070/YangMills/RG/PhysicalTransverseCharacterStrip.lean -o /content/eriksson-transverse-character-strip-20261031-070/.lake/build/lib/lean/YangMills/RG/PhysicalTransverseCharacterStrip.olean -i /content/eriksson-transverse-character-strip-20261031-070/.lake/build/lib/lean/YangMills/RG/PhysicalTransverseCharacterStrip.ilean -c /content/eriksson-transverse-character-strip-20261031-070/.lake/build/ir/YangMills/RG/PhysicalTransverseCharacterStrip.c --setup /content/eriksson-transverse-character-strip-20261031-070/.lake/build/ir/YangMills/RG/PhysicalTransverseCharacterStrip.setup.json --json\nwarning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:13:0: automatically included section variable(s) unused in theorem `YangMills.RG.sunComplexPlane_real_inner`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:36:55: Unknown identifier `x`\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:36:66: Unknown identifier `x`\ninfo: YangMills/RG/PhysicalTransverseCharacterStrip.lean:63:62: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:48:74: unsolved goals\ncase pos\nd n Nc : ℕ\ninst✝² : NeZero d\ninst✝¹ : NeZero n\ninst✝ : NeZero Nc\nhNc : 2 ≤ Nc\nj : Fin d\nchi psi : AddChar (Fin d → ZMod n) ℂ\nz v : ℂ\nhc :\n  ∑ x, (starRingEnd ℂ) (z * chi x) * (v * psi x) =\n    (starRingEnd ℂ) z * v * if chi = psi then ↑(Fintype.card (Fin d → ZMod n)) else 0\nheq : chi = psi\n⊢ z.re * v.re * (↑n ^ d).re - z.re * v.im * (↑n ^ d).im + v.re * z.im * (↑n ^ d).im + z.im * v.im * (↑n ^ d).re =\n    z.re * v.re * ↑n ^ d + z.im * v.im * ↑n ^ d\nwarning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:76:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalCharacter_step`:\n  [NeZero d]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:86:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalCharacter_injective`:\n  [NeZero d]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:103:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCharacterNormalization_sq`:\n  [NeZero d]\n  [NeZero n]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero n] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:111:28: failed to prove nonzeroness, but it would be possible to prove nonnegativity if desired\nwarning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:162:0: automatically included section variable(s) unused in theorem `YangMills.RG.physical_quadratic_smul`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:205:61: Invalid projection: Type of\n  p\nis not known; cannot resolve projection `1`\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:205:65: Invalid projection: Type of\n  p\nis not known; cannot resolve projection `2`\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:206:89: Invalid projection: Type of\n  p\nis not known; cannot resolve projection `1`\nerror: YangMills/RG/PhysicalTransverseCharacterStrip.lean:206:93: Invalid projection: Type of\n  p\nis not known; cannot resolve projection `2`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.PhysicalTransverseCharacterStrip\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.369,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.067,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.979,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 20.081,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 99.458,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 181.935,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-10-31T08:58:36.663399+00:00",
+  "finished_utc": "2026-10-31T09:03:45.075223+00:00"
+}
