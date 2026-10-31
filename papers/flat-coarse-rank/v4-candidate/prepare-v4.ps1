@@ -12,9 +12,18 @@ $t=$t.Replace('The operator and full-space tangent endpoints have separately pin
 $t=$t.Replace('\section{Why dimension is not a sufficiency criterion}',([IO.File]::ReadAllText((Join-Path $out 'average-section.tex'))+"`n\section{Why dimension is not a sufficiency criterion}"))
 $t=$t.Replace('but that variant is analytic'+"`n"+'here; the formal endpoint above is stated on the full space.','while the original formal endpoint above is stated on the full space. The later local kernel and average-weight endpoint in Section~\ref{sec:average} has its own separately reproduced proof.')
 $old='These checks do'+"`n"+'not formalize the implicit-function construction, local-ball version,'+"`n"+'regular-sector theorem or its uniform consequence in'+"`n"+'Section~\ref{sec:nonlinear-sector}. Those proofs are displayed analytically.'
-$new='Later, separately reproduced sources formalize the actual implicit-function curve construction (\texttt{ef81f028ce6e7e8aaca7e9229eb00aa683752a41}) and the local quadratic-energy regular-sector obstruction (\texttt{9bb90cfd77ec5cea5c4447667fe8baf8c21429a1}). The displayed sector proofs remain readable analytic arguments; their uniform consequence is not silently included in those four-endpoint reports.'
+$new=@'
+Later, separately reproduced sources formalize the actual implicit-function
+curve construction at
+\begin{center}\small\texttt{ef81f028ce6e7e8aaca7e9229eb00aa683752a41}.\end{center}
+The local quadratic-energy regular-sector obstruction uses
+\begin{center}\small\texttt{9bb90cfd77ec5cea5c4447667fe8baf8c21429a1}.\end{center}
+The displayed sector proofs remain readable analytic arguments; their
+uniform consequence is not silently included in those four-endpoint reports.
+'@
 if(-not $t.Contains($old)){throw 'Missing formal-scope replacement'}
 $t=$t.Replace($old,$new)
+$t=$t.Replace('7ab9a61c060d07a5a7a08081115981e47684a39a/papers/flat-coarse-rank/declaration-map.json','9c074cfab097e19af8516aa2f5e264f7fea751f1/papers/flat-coarse-rank/v4-candidate/declaration-map.json')
 $anchor=@'
 The actual mean-weight finite/asymptotic theorem of Section~\ref{sec:average}
 uses tested source
