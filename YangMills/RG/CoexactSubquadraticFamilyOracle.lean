@@ -1,0 +1,7 @@
+import YangMills.RG.CoexactSubquadraticFamily
+#print axioms YangMills.RG.coexact_band_budget_dominates
+#print axioms YangMills.RG.coexact_subquadratic_cutoff_eventually
+#print axioms YangMills.RG.coexact_subquadratic_threshold_eventually
+#print axioms YangMills.RG.coexactFlat_subquadratic_finrank_eventually_ge
+#print axioms YangMills.RG.coexactFlat_subquadratic_finrank_tendsto
+#print axioms YangMills.RG.coexactFlat_subquadratic_no_bounded_output
