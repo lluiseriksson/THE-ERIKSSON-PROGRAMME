@@ -7,3 +7,5 @@ import YangMills.RG.LocalizedSignedMeanCounterexample
 #print axioms YangMills.RG.signedMeanObservation_hasFDerivAt
 #print axioms YangMills.RG.signedMeanObservation_zero
 #print axioms YangMills.RG.signedMeanObservation_output_finite
+#print axioms YangMills.RG.localizedSignedMean_hodge_global_coercive
+#print axioms YangMills.RG.localizedSignedMean_fixed_output_family

@@ -64,9 +64,13 @@ theorem localizedSignedWeights_energy (o : FinBox d n)
     ← Finset.mul_sum]
   congr 1
   rw [PiLp.norm_sq_eq_of_L2]
-  simp only [Fintype.sum_prod_type]
-  simp [signedSiteGradientCLM, ite_mul, Finset.mul_sum,
-    Finset.sum_comm, mul_assoc]
+  simp only [Fintype.sum_prod_type, Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro i _
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro j _
+  simp [signedSiteGradientCLM, ite_mul]
 
 noncomputable def localizedSignedPenalty (d n Nc : ℕ)
     (y : SignedMeanObservation d Nc) : ℝ :=
@@ -120,5 +124,38 @@ theorem signedMeanObservation_zero (o : FinBox d n) :
 theorem signedMeanObservation_output_finite :
     FiniteDimensional ℝ (SignedMeanObservation d Nc) := inferInstance
 
+theorem localizedSignedMean_hodge_global_coercive (rho : SUNAdjointModel Nc)
+    (o : FinBox d n) (A : PhysicalGaugeOneCochain d n Nc) :
+    ‖A‖^2 ≤ inner ℝ A (flatGaugeHodgeK0CLM d n Nc rho A) +
+      inner ℝ A (componentwiseWeightedRepairCLM (localizedSignedWeights o) A) +
+      localizedSignedPenalty d n Nc (signedMeanObservationCLM o A) := by
+  have h := localizedSignedMean_global_coercive o A
+  have hK := flatGaugeHodgeK0_nonnegative_right rho A
+  linarith
+
 end Actual
+
+theorem localizedSignedMean_fixed_output_family {d Nc : ℕ} [NeZero d] [NeZero Nc]
+    (rho : SUNAdjointModel Nc) :
+    ∀ k : ℕ, ∃ (w : PhysicalGradientIndex d (k+1) → ℝ)
+      (C : PhysicalGaugeOneCochain d (k+1) Nc →L[ℝ] SignedMeanObservation d Nc)
+      (Phi : SignedMeanObservation d Nc → ℝ) (K : ℝ),
+      (∀ i j, physicalDirectionalWeightAverage w i j = 0) ∧
+      HasFDerivAt C C 0 ∧ C 0 = 0 ∧
+      (∀ y, 0 ≤ Phi y ∧ Phi y ≤ K * ‖y‖^2) ∧
+      (∀ A, ‖A‖^2 ≤ inner ℝ A (flatGaugeHodgeK0CLM d (k+1) Nc rho A) +
+        inner ℝ A (componentwiseWeightedRepairCLM w A) + Phi (C A)) := by
+  intro k
+  let o : FinBox d (k+1) := fun _ => 0
+  refine ⟨localizedSignedWeights o, signedMeanObservationCLM o,
+    localizedSignedPenalty d (k+1) Nc,
+    ((k+1 : ℕ) : ℝ)^d * (2 + 2 * (d : ℝ) * ((k+1 : ℕ) : ℝ)^2),
+    ?_, ?_, ?_, ?_, ?_⟩
+  · exact localizedSignedWeights_average_zero o
+  · exact signedMeanObservation_hasFDerivAt o 0
+  · exact signedMeanObservation_zero o
+  · intro y
+    exact ⟨localizedSignedPenalty_nonneg y, localizedSignedPenalty_quadratic_upper y⟩
+  · exact localizedSignedMean_hodge_global_coercive rho o
+
 end YangMills.RG
