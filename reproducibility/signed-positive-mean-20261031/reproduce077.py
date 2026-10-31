@@ -39,7 +39,7 @@ try:
     if toolchain!='leanprover/lean4:v4.29.0-rc6': raise RuntimeError('Unexpected toolchain '+toolchain)
     manifest=json.loads((ROOT/'lake-manifest.json').read_text())
     mathlib=[p for p in manifest['packages'] if p['name']=='mathlib']
-    if len(mathlib)!=1 or mathlib[0]['rev']!='07742720480157414db592fa85b626dafb71355b': raise RuntimeError('Mathlib pin mismatch')
+    if len(mathlib)!=1 or mathlib[0]['rev']!='07642720480157414db592fa85b626dafb71355b': raise RuntimeError('Mathlib pin mismatch')
     run('lean-version',['lean','--version'],ROOT,600)
     run('cache-get',['lake','exe','cache','get'],ROOT)
     run('focal-build',['lake','build','YangMills.RG.SignedPositiveMeanFamily'],ROOT)
