@@ -1,0 +1,28 @@
+{
+  "source_sha": "4b331830aa4c6c2fa56e801245810409d16735e1",
+  "started_utc": "2026-10-31T21:10:55.003820+00:00",
+  "status": "FINITE_PROBES_AND_MUTATIONS_MATCH_NOT_A_UNIVERSAL_PROOF",
+  "formal_verification": false,
+  "independent_review": false,
+  "steps": [
+    {
+      "mode": "normal",
+      "exit_code": 0,
+      "seconds": 0.15964510999992854
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 0,
+      "seconds": 0.6565584709999257
+    }
+  ],
+  "cases": 5,
+  "mutations_per_case": 3,
+  "source_hashes": {
+    "pre-execution-objections.md": "ce0556d47628127734f4c6991833b1736eea5ae76f7e4d8201be27b801eb818f",
+    "proof.md": "20de7205b52343984b4df26031a0fd537ef6d91b12ac46213f24f52db9419412",
+    "check_packet.py": "a70311932ea002f7ccd73575325bd74d8205772c39102b864a5a860b37da2e67"
+  },
+  "normal_optimized_match": true,
+  "finished_utc": "2026-10-31T21:10:56.455142+00:00"
+}

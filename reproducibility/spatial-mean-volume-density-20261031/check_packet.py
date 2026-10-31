@@ -16,13 +16,14 @@ def case(d,n,R):
     fields=[]; expected=[]; wrong=[]
     rng=np.random.default_rng(20261031+d*100+n)
     w=rng.random((d,d)+shape)
-    # Each mean exactly M, spikes allowed to grow with volume.
+    # Unequal component/direction means prevent isotropy masking index errors.
     M=1.75
     w[:]=0
     for i in range(d):
         for l in range(d):
             pos=tuple(rng.integers(0,n,size=d))
-            w[(i,l)+pos]=M*V
+            mean=M if (i,l)==(0,0) else M*(0.1+0.9*rng.random())
+            w[(i,l)+pos]=mean*V
     means=w.reshape(d,d,V).mean(axis=2)
     for k in ks:
         angles=2*np.pi*np.array(k)/n
@@ -66,7 +67,7 @@ def case(d,n,R):
         baddiv += wrong[:,i]-np.roll(wrong[:,i],1,axis=i+1)
     bad_symbol_detected=float(np.max(abs(baddiv)))>1e-5
     require(bad_symbol_detected,'forward/backward mutation not rejected')
-    require(float(np.max(abs(2*gram-np.eye(H))))>0.5,'norm mutation not rejected')
+    require(float(np.max(abs(V*gram-np.eye(H))))>0.5,'norm mutation not rejected')
     require(abs(sum(expected)/2-sum(diagonal))>1e-5,'real factor mutation not rejected')
     return dict(d=d,n=n,R=R,V=V,H=H,gram_error=gram_error,
         divergence_error=divergence_error,trace_error=trace_error,
@@ -74,7 +75,7 @@ def case(d,n,R):
         trace=float(sum(diagonal)),trace_bound=float(H*(1+M)*B),
         mutations_rejected=['wrong divergence symbol','missing V normalization','missing real factor two'])
 
-result=[case(*a) for a in [(2,5,1),(2,7,2),(3,5,1),(3,7,2),(4,5,1)]]
+result=[case(*a) for a in [(2,4,1),(2,5,1),(2,7,2),(3,5,1),(3,6,2),(3,7,2),(4,5,1)]]
 print(json.dumps(dict(status='FINITE_PROBES_PASS_NOT_A_PROOF',optimized=not __debug__,
     cases=result,numpy=np.__version__,python=sys.version,universal_proof='proof.md',
     formal_verification=False,independent_review=False),sort_keys=True))
