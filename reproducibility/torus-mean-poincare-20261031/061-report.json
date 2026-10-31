@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "7f8d7dbc7adcbc067e523b6bdedebb8caf626c84",
+  "started_utc": "2026-10-31T04:51:28.114328+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.37,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.627,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.22,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.615,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 178.694,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 48.487,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: \u26a0 [8158/8159] Built YangMills.RG.CyclicMeanPoincare (35s)\nwarning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:\n  [NormedAddCommGroup V]\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:\n  [NormedAddCommGroup V]\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u2716 [8159/8159] Building YangMills.RG.TorusMeanPoincare (6.4s)\ntrace: .> LEAN_PATH=/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-061/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-torus-mean-poincare-20261031-061/YangMills/RG/TorusMeanPoincare.lean -o /content/eriksson-torus-mean-poincare-20261031-061/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.olean -i /content/eriksson-torus-mean-poincare-20261031-061/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.ilean -c /content/eriksson-torus-mean-poincare-20261031-061/.lake/build/ir/YangMills/RG/TorusMeanPoincare.c --setup /content/eriksson-torus-mean-poincare-20261031-061/.lake/build/ir/YangMills/RG/TorusMeanPoincare.setup.json --json\nerror: YangMills/RG/TorusMeanPoincare.lean:75:48: unsolved goals\ncase h\nD n : \u2115\ninst\u271d : NeZero n\na : Fin D \u2192 ZMod n\nj : Fin D\n\u22a2 a j = (a j).cast j\ninfo: YangMills/RG/TorusMeanPoincare.lean:116:25: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nerror: YangMills/RG/TorusMeanPoincare.lean:105:78: unsolved goals\ncase h.e'_4\nD n : \u2115\ninst\u271d\u00b2 : NeZero n\nV : Type u_1\ninst\u271d\u00b9 : NormedAddCommGroup V\ninst\u271d : NormedSpace \u211d V\nf : PeriodicL2 (Fin D \u2192 ZMod n) V\nhs : \u2016f - finiteMeanField f\u2016 ^ 2 \u2264 \u2191n ^ 2 * (\u2211 i, \u2016periodicTranslate (torusUnit i) f - f\u2016) ^ 2\nhc : (\u2211 i, \u2016periodicTranslate (torusUnit i) f - f\u2016) ^ 2 \u2264 \u2191D * \u2211 i, \u2016periodicTranslate (torusUnit i) f - f\u2016 ^ 2\nht :\n  \u2211 i, \u2016(f - finiteMeanField f).ofLp i\u2016 ^ 2 \u2264\n    \u2191n ^ 2 * (\u2191D * \u2211 x, \u2211 i, \u2016(periodicTranslate (torusUnit x) f - f).ofLp i\u2016 ^ 2)\n\u22a2 \u2191D * \u2191n ^ 2 * \u2211 x, \u2211 x_1, \u2016f.ofLp (x_1 + torusUnit x) - f.ofLp x_1\u2016 ^ 2 =\n    \u2191D * \u2191n ^ 2 * \u2211 x, \u2211 x_1, \u2016(periodicTranslate (torusUnit x) f - f).ofLp x_1\u2016 ^ 2\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.TorusMeanPoincare\nerror: build failed\n",
+  "finished_utc": "2026-10-31T04:55:36.541956+00:00"
+}

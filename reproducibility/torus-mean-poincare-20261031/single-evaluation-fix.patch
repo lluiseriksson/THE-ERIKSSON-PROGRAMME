@@ -1,0 +1,20 @@
+diff --git a/YangMills/RG/TorusMeanPoincare.lean b/YangMills/RG/TorusMeanPoincare.lean
+index 04b5d6f0..e4e15faf 100644
+--- a/YangMills/RG/TorusMeanPoincare.lean
++++ b/YangMills/RG/TorusMeanPoincare.lean
+@@ -77,12 +77,11 @@ theorem torus_coordinate_decomposition (a : Fin D → ZMod n) :
+   have hsingle (i : Fin D) : (a i).val • torusUnit (n := n) i =
+       (Pi.single i (a i) : Fin D → ZMod n) := by
+     funext j
++    simp only [Pi.smul_apply, torusUnit]
+     by_cases hij : j = i
+     · subst j
+-      change (a i).val • (1 : ZMod n) = a i
+-      simp only [nsmul_eq_mul, ZMod.natCast_zmod_val, mul_one]
+-    · change (a i).val • (Pi.single i (1 : ZMod n) j) = Pi.single i (a i) j
+-      simp [Pi.single_apply, hij]
++      simp [Pi.single_apply, nsmul_eq_mul, ZMod.natCast_zmod_val]
++    · simp [Pi.single_apply, hij]
+   simp_rw [hsingle]
+   ext j
+   simp [Finset.sum_apply, Pi.single_apply]

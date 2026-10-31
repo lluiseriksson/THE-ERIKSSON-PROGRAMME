@@ -1,0 +1,43 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "7f8d7dbc7adcbc067e523b6bdedebb8caf626c84",
+  "status": "FAIL",
+  "zip_sha256": "bfb64593ea692e9362257d3016587b8c43c6d567c6bf2f409fff1ecba1f34dd6",
+  "manifest_entries": 8,
+  "error": "Source mismatch: TorusMeanPoincare.lean",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.466,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.525,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.821,
+      "log": "git-checkout.log"
+    }
+  ],
+  "started_utc": "2026-10-31T04:49:09.534977+00:00",
+  "finished_utc": "2026-10-31T04:49:15.494863+00:00"
+}

@@ -1,0 +1,39 @@
+⚠ [8158/8159] Built YangMills.RG.CyclicMeanPoincare (7.5s)
+warning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:
+  [NormedAddCommGroup V]
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:
+  [NormedAddCommGroup V]
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [8159/8159] Building YangMills.RG.TorusMeanPoincare (19s)
+trace: .> LEAN_PATH=/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-torus-mean-poincare-20261031-063/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-torus-mean-poincare-20261031-063/YangMills/RG/TorusMeanPoincare.lean -o /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.olean -i /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/lib/lean/YangMills/RG/TorusMeanPoincare.ilean -c /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/ir/YangMills/RG/TorusMeanPoincare.c --setup /content/eriksson-torus-mean-poincare-20261031-063/.lake/build/ir/YangMills/RG/TorusMeanPoincare.setup.json --json
+error: YangMills/RG/TorusMeanPoincare.lean:82:6: 'change' tactic failed, pattern
+  (a i).val • 1 = a i
+is not definitionally equal to target
+  ((a i).val • torusUnit i) i = Pi.single i (a i) i
+error: YangMills/RG/TorusMeanPoincare.lean:84:68: Application type mismatch: The argument
+  a i
+has type
+  ZMod n
+but is expected to have type
+  ?m.78 i
+in the application
+  Pi.single i (a i)
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.TorusMeanPoincare
+error: build failed
