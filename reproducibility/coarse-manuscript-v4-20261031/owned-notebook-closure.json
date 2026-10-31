@@ -1,0 +1,30 @@
+{
+  "closed_at_utc": "2026-10-31T14:16:43.898Z",
+  "own_notebook_tab_ids": [
+    "35",
+    "36"
+  ],
+  "own_tabs": [
+    {
+      "id": "35",
+      "providerTabId": "browser-use:aa068001-214a-46f0-89f2-1396f7d2a33a",
+      "title": "render054.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/03a39ec28a6ce763b2c0500adc9e82c27f9649ca/reproducibility/coarse-manuscript-v4-20261031/render054.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "36",
+      "providerTabId": "4dc97dec-097f-4210-8e96-96432eb43d2e",
+      "title": "Kopia av render054.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/1XryChO0Xbfh4vxuKTJBL6tx8bkwPSn-9#scrollTo=kE9acAtmUSSa",
+      "browserId": "2"
+    }
+  ],
+  "all_own_notebook_tabs_closed": true,
+  "retained_author_case_tab": "37",
+  "author_case": "SUB-4315E678FE1186E7",
+  "author_session_authenticated": true,
+  "public_version": "v3",
+  "no_new_deposit_or_license": true,
+  "other_chat_tabs_touched": false
+}

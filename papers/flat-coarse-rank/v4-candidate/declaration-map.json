@@ -1,0 +1,162 @@
+{
+  "source_tree": "e31b428917aa767b4a1aad097db5cf92fb9cd23e",
+  "endpoints": [
+    {
+      "tested_sha": "a79e6e4b2e5de72e73bd6109069eb2f82127c355",
+      "label": "low band",
+      "declarations": [
+        "physicalCenteredFourierBand_finrank",
+        "physicalCenteredFourierBand_representation",
+        "physicalCenteredFourierBand_hodge_le"
+      ],
+      "module": "PhysicalFourierRankObstruction",
+      "evidence": "reproducibility/physical-fourier-rank-20261030"
+    },
+    {
+      "tested_sha": "a79e6e4b2e5de72e73bd6109069eb2f82127c355",
+      "label": "finite budget",
+      "declarations": [
+        "physicalCenteredFourierBand_coercivity_budget",
+        "physicalCenteredFourierBand_coercivity_false"
+      ],
+      "module": "PhysicalFourierRankObstruction"
+    },
+    {
+      "tested_sha": "17ca395d4e9de992b1c575454a112da9e6f97e86",
+      "label": "sector",
+      "declarations": [
+        "physical_band_restricted_estimate_false"
+      ],
+      "module": "UniformPhysicalCoarseRankWall"
+    },
+    {
+      "tested_sha": "17ca395d4e9de992b1c575454a112da9e6f97e86",
+      "label": "uniform",
+      "declarations": [
+        "physicalBand_budget_exceeded",
+        "exists_refinement_below_threshold",
+        "no_uniform_coarse_finite_rank_repair",
+        "no_uniform_coarse_finite_rank_sector"
+      ],
+      "module": "UniformPhysicalCoarseRankWall",
+      "evidence": "reproducibility/uniform-physical-rank-wall-20261030"
+    },
+    {
+      "label": "original factorized kernel and repair",
+      "present_in_new_main_tree": false,
+      "evidence": "reproducibility/paper47-20261029",
+      "module": "PhysicalCriticalRescalingFourierFactorizedRepair",
+      "declarations": [
+        "factorizedFlatPoincare_fourier_lower_bound",
+        "volumeUniformFactorizedFlatPoincareGate_fourier_false",
+        "repairedFlatPoincare_blockFourier_rayleigh_eq",
+        "repairedFlatPoincare_blockFourier_budget"
+      ],
+      "tested_sha": "7b25bfb39357406cf61880e3ac0428d7d1ba3449"
+    },
+    {
+      "scope": "Actual finite whole-space gradient/Hodge identity and constructed G*WG upper bound",
+      "label": "constructed full-space derivative repair",
+      "declarations": [
+        "matrix_sum_eq_diag_add_orderedPairs",
+        "finite_flat_curl_div_energy",
+        "componentwiseFlatGradient_eq_hodge",
+        "componentwiseWeightedRepair_le_hodge"
+      ],
+      "tested_sha": "dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc",
+      "module": "ComponentwiseFlatHodge",
+      "status": "formal dual-fresh-clone evidence preserved in unit030"
+    },
+    {
+      "scope": "Full-space endpoint; no formal claim for local balls or exact nonlinear sector",
+      "label": "differentiable nonlinear observation",
+      "declarations": [
+        "tangent_kernel_norm_ratio_tendsto",
+        "nonlinear_tangent_coercivity_false",
+        "physicalBand_nonlinear_tangent_coercivity_false"
+      ],
+      "tested_sha": "81cf07b2e0d30543682c4073a4a2d82950d638b7",
+      "module": "NonlinearTangentCoercivity",
+      "evidence_zip_sha256": [
+        "3a616520f7f1407682997ebd1095defb1b22652e1ffccf47ca8ecfb3baed34e6",
+        "dbb8890c62615009e8d9e1df138651572a032185adf6a19f7a84e6d7cd1ffe11"
+      ],
+      "status": "formal two fresh matching Colab clones044/044b"
+    },
+    {
+      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
+      "evidence": "reproducibility/average-weight-rank-divergence-20261031/paired-validation.json",
+      "module": "PhysicalAverageWeightFamily",
+      "label": "actual mean-weight output-rank divergence",
+      "declarations": [
+        "positiveStripCharacter_multiplier_bound",
+        "positiveStrip_multiplier_sum_sq_le",
+        "physicalDirectionalWeightAverage_nonneg",
+        "physicalStrip_nonlinear_average_rank_quantitative_bound",
+        "physicalAverage_subquadratic_finrank_tendsto",
+        "physicalAverage_subquadratic_no_bounded_output"
+      ],
+      "tested_sha": "ac60c0df885d8866329a839e2b4e73c90595d806"
+    },
+    {
+      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
+      "evidence": "reproducibility/physical-quadratic-mean-20261031/paired-validation.json",
+      "module": "PhysicalQuadraticMeanRepair",
+      "label": "quadratic-weight mean boundary",
+      "declarations": [
+        "finBoxMean_poincare_energy_le",
+        "physicalDirectionalMean_hasFDerivAt",
+        "physicalMeanLift_norm_sq",
+        "physicalMean_poincare_energy_le",
+        "physicalQuadraticMean_global_coercive",
+        "physicalDirectionalMean_output_finite"
+      ],
+      "tested_sha": "7f37d6437a8f69a1d3fddf3dc0bcfad74c6bf9b6"
+    },
+    {
+      "status": "two fresh own Colab clones; matching object/oracle/LF source hashes; not independent review",
+      "evidence": "reproducibility/regular-sector-coercivity-20261030/paired-validation.json",
+      "module": "RegularSectorCoercivity",
+      "label": "actual local regular-sector energy obstruction",
+      "declarations": [
+        "curve_rescaled_tendsto",
+        "quadratic_curve_rescaled_tendsto",
+        "regular_sector_local_coercivity_false",
+        "physicalBand_regular_sector_local_coercivity_false"
+      ],
+      "tested_sha": "9bb90cfd77ec5cea5c4447667fe8baf8c21429a1"
+    }
+  ],
+  "publication_target": "existing ARR-2026-7EPM3V3DP796BBRR dossier; no duplicate deposit",
+  "not_formalized_here": [
+    "fixed-map Schur criterion",
+    "two-dimensional cross-coupling calculation",
+    "exact CT consumer specialization",
+    "physical-scaled positive coercivity"
+  ],
+  "original_kernel_source_tree": "7b25bfb39357406cf61880e3ac0428d7d1ba3449",
+  "original_kernel_scope": "Reproduced factorized endpoint is dimension4; analytic general-d witness/trig, spectral multiplicity, asymptotic and witness-line consequences remain separate",
+  "consumer_specialization": {
+    "source_sha": "e31b428917aa767b4a1aad097db5cf92fb9cd23e",
+    "verification": "Source inspection and mathematical specialization; no newly compiled Lean consumer adapter",
+    "specialization": "Sigma i=0 and delta i=0 for all i, a>0, supplied FlatGaugeHodgePoincare CP with CP>0; min(1,a)/CP is an available certified lower bound, not an optimum",
+    "coercivity": "flatGaugeFixedPrecision_coerciveWithPositiveConstant_of_flatPoincare",
+    "precision": "flatGaugeFixedPrecisionCLM",
+    "namespace": "YangMills.RG",
+    "source_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/e31b428917aa767b4a1aad097db5cf92fb9cd23e/YangMills/RG/PhysicalGaugeFixedPrecision.lean",
+    "module": "YangMills/RG/PhysicalGaugeFixedPrecision.lean"
+  },
+  "repository_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "candidate_version": "v4-not-deposited",
+  "consolidated_tree": "formal dependencies as at c3f2b1d31e50b37e44d895e0b08ee834bd6af488; manuscript source recorded separately",
+  "analytic_only": [
+    "singular-Schur criterion and cross-coupling example",
+    "consumer source specialization",
+    "displayed uniform regular-sector consequence",
+    "penalty counterexamples and C2/C1 tradeoff",
+    "spiked directional-weight example",
+    "numeric dimension of fixed mean output type",
+    "optimality of constants or density under mean-only hypothesis"
+  ],
+  "review_context": "No exact-v4 model assessment; no inherited score, no scientific independence claim"
+}

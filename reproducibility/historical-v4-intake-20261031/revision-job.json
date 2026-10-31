@@ -1,0 +1,20 @@
+{
+  "idempotency_key": "eriksson-v4-e5e9ddcf044ddcfab0e4cae8e2c6ac1a3dca39ff21bf23b20989aaff4b220e05",
+  "pdf_path": "papers/flat-coarse-rank/v4-candidate/flat_coarse_rank.pdf",
+  "authority_note": "Actual user approval of exact e5e9 PDF, one24h historical send/receipt and Working-paper CC-BY-4.0/CC0 publication; current terms/privacy must still match earlier actual acknowledgments, not invented.",
+  "binding_path": "binding.json",
+  "status": "EXACT_HUMAN_AUTHORIZATION_RECORDED_NOT_YET_SENT",
+  "pdf_source_commit": "b1c632147efc83295af0341aea359023b2958a8e",
+  "metadata": {
+    "sha256": "e5e9ddcf044ddcfab0e4cae8e2c6ac1a3dca39ff21bf23b20989aaff4b220e05",
+    "primary_subject": "mathematical-physics",
+    "secondary_subjects": [],
+    "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms",
+    "abstract": "On a finite periodic lattice with unit spacing, we derive necessary coarse-information rank budgets for flat Hodge forms and constructed derivative repairs. For nonnegative componentwise repair weights, local coercivity on actual divergence-free fields with a fixed positive constant forces the output dimensions of differentiable observations to diverge when one directional spatial mean is subquadratic in lattice side length. The proof derives an exact transverse-character trace formula and composes it with the actual local derivative-kernel bound. A constructed quadratic-weight repair and arithmetic-mean observation show that fixed output dimension becomes possible at quadratic weight scale. Explicit polynomial/Lipschitz and C1 counterexamples retain the necessity of the stated quadratic penalty upper hypothesis in the merely differentiable observation class. Prior finite-rank, tangent and exact regular-sector results are consolidated with separately pinned Lean evidence and analytic arguments. Classical mechanisms are distinguished from original priority and physical relevance. No interacting or continuum Yang-Mills mass gap is established.",
+    "ai_disclosure": "Prepared by Codex in the continuing programme chat, with preparing-agent mathematical/source audit and all15 exact-PDF pages visually inspected. Actual served backend identity and reasoning setting unexposed. No new external model assessed these bytes; full prior Astra reports and objections remain exact-version-specific with no inherited score. Formal and analytic claims separately anchored. No independent review, human peer review or editorial acceptance claimed.",
+    "authors": "Lluis Eriksson",
+    "rights_confirmed": true,
+    "specific_topic": "Finite flat lattice Hodge forms; directional mean weights, nonlinear coarse observations and rank obstructions",
+    "operator_conflict": true
+  }
+}

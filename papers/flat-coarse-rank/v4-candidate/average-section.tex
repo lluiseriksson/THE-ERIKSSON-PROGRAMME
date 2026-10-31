@@ -1,0 +1,156 @@
+\section{Directional mean weights and local nonlinear observations}\label{sec:average}
+Pointwise bounds on a derivative repair are stronger than the following
+actual spatial-mean condition. Fix $d\geq2$, $N_c\geq2$, and distinct
+directions $i,j$. For nonnegative componentwise weights $w_n(k,(x,l))$, put
+\[
+ Q_n(A)=\ip{A}{K_{0,n}A}+\sum_{x,k,l}w_n(k,(x,l))
+                  \|A_l(x+e_k)-A_l(x)\|^2,
+ \qquad b_{ij}(n)=n^{-d}\sum_x w_n(i,(x,j)).
+\]
+The repair is the actual $G^*W_nG$ of the componentwise forward gradient.
+In particular $Q_n\geq0$; signed weights are not included in this section.
+Let $D_n=\ker\delta$ be the actual flat divergence-free space.
+
+\begin{theorem}[Local nonlinear average-weight obstruction]\label{thm:average}
+For each $n\geq1$, let $F_n$ be a finite-dimensional real normed space,
+$C_n:E_n\to F_n$ be Fr\'echet differentiable at zero with $C_n(0)=0$,
+and let $\Phi_n:F_n\to\R$ satisfy
+\[
+ \Phi_n(y)\leq K_n\|y\|^2\quad(\|y\|<\delta_n),\qquad \delta_n>0.
+\]
+Suppose one fixed $c>0$ and positive radii $r_n$ satisfy
+\begin{equation}\label{eq:local-average}
+ c\|A\|^2\leq Q_n(A)+\Phi_n(C_n(A))
+       \quad(A\in D_n,\ \|A\|<r_n).
+\end{equation}
+For every integer $0\leq R<n$,
+\begin{equation}\label{eq:mean-finite}
+ c(2R-\dim F_n)\leq 2(1+b_{ij}(n))
+       \sum_{s=1}^{R}|e^{2\pi\mathrm{i}s/n}-1|^2
+ \leq \frac{8\pi^2(1+b_{ij}(n))R^3}{n^2}.
+\end{equation}
+Consequently, if $(1+b_{ij}(n))/n^2\to0$, then $\dim F_n\to\infty$.
+No uniform bound on $K_n,\delta_n^{-1}$ or $r_n^{-1}$ is required.
+\end{theorem}
+\begin{proof}
+Write $L_n=DC_n(0)$. If $v\in D_n\cap\ker L_n$, differentiability gives
+$C_n(tv)=o(|t|)$. For all sufficiently small nonzero $t$, both the local
+coercivity and penalty bound apply. Divide by $t^2$ and let $t\to0$ to get
+\begin{equation}\label{eq:kernel-average}
+ c\|v\|^2\leq Q_n(v).
+\end{equation}
+This argument is performed separately at each $n$; it does not impose
+uniform neighborhoods or derivative remainder rates.
+
+Use the two internal coordinates $u,v$ of Section 2 to regard a complex
+number as a real internal vector. For $1\leq s\leq R$ and $a\in\{1,\mathrm{i}\}$,
+define $\psi_{s,a}$ by taking only component $j$ nonzero and setting it to
+$n^{-d/2}$ times the internal vector corresponding to
+$a e^{2\pi\mathrm{i}s x_i/n}$. The finite-character orthogonality identity
+and the real orthogonality of the two quadratures give an orthonormal
+family of $2R$ fields. This also covers even $n$; the two quadratures use
+two internal coordinates, not two allegedly independent scalar sine and
+cosine functions. Since $i\ne j$, these fields are independent of $x_j$,
+so $\delta\psi_{s,a}=0$. Their span $S_{R,n}$ is thus an actual
+$2R$-dimensional subspace of $D_n$.
+
+Every nonzero forward difference of $\psi_{s,a}$ is in direction $i$ and
+has the same squared norm at every site, namely
+$n^{-d}|e^{2\pi\mathrm{i}s/n}-1|^2$. The exact Hodge and repair energies are
+therefore
+\[
+ Q_n(\psi_{s,a})=(1+b_{ij}(n))|e^{2\pi\mathrm{i}s/n}-1|^2.
+\]
+In particular the trace of the compression of $Q_n$ to $S_{R,n}$ is the
+middle expression in \eqref{eq:mean-finite}; no invariance of $S_{R,n}$
+under the weighted operator is asserted or needed.
+
+For completeness, the positive trace/rank argument is as follows. Set
+$U=S_{R,n}\cap\ker L_n$. Rank-nullity gives
+$\dim U\geq2R-\dim F_n$. Extend an orthonormal basis of $U$ to one of
+$S_{R,n}$. Equation \eqref{eq:kernel-average} bounds the terms on $U$
+below by $c$; positivity of $Q_n$ makes every remaining diagonal term
+nonnegative. Hence $c(2R-\dim F_n)\leq\operatorname{tr}_{S_{R,n}}Q_n$.
+Finally $|e^{2\pi\mathrm{i}s/n}-1|\leq2\pi s/n\leq2\pi R/n$, which proves
+the last inequality in \eqref{eq:mean-finite}.
+
+Fix $R$. The right side tends to zero under the stated mean condition.
+Eventually it is less than $c$. If $\dim F_n<2R$, integrality would make
+the left side at least $c$. Thus $\dim F_n\geq2R$ eventually. Arbitrarily
+large fixed $R$ prove the claimed divergence.
+\end{proof}
+
+The condition concerns one directional spatial average, not the maximum
+of all weights. For example, a weight of size $n^{d+1}$ at one site in
+component $(i,j)$ and zero elsewhere has $b_{ij}(n)=n$, while its maximum
+is not subquadratic. Theorem~\ref{thm:average} still excludes bounded
+output dimension under its other hypotheses. This example is a direct
+calculation, not an additional formal endpoint. The nonnegative-weight
+condition is essential to the trace argument as used here: the complement
+of the derivative kernel must contribute nonnegative energy. This is not
+a universal extension of older statements allowing signed weights with a
+pointwise absolute cap.
+
+\subsection{A constructed quadratic-weight boundary example}
+The exponent $2$ cannot be replaced by an unrestricted allowance of
+quadratic-size mean weights. Let
+$\mu_j(A)=n^{-d}\sum_x A_j(x)$, with output in the same fixed space
+$F=(\R^{N_c^2-1})^d$ for every $n$. A finite path comparison on the actual
+periodic lattice gives
+\[
+ \|A-\operatorname{lift}\mu(A)\|^2\leq d n^2\|GA\|^2,
+ \qquad \|\operatorname{lift}\mu(A)\|^2=n^d\|\mu(A)\|^2.
+\]
+One way to obtain the first inequality is to write each difference of
+site values as a path of at most $dn$ forward edges, apply finite
+Cauchy--Schwarz, and average the pairs of sites; the displayed constant
+is deliberately nonoptimal. The exact modular-torus reindexing and its
+transport to the physical cochain norm are also proved in the companion
+formal construction.
+Using $\|x+y\|^2\leq2\|x\|^2+2\|y\|^2$, choose actual weights
+$w_n(k,(x,l))=2dn^2$ and the quadratic penalty
+$\Phi_n(y)=2n^d\|y\|^2$. Then
+\[
+ \|A\|^2\leq\ip{A}{G^*W_nGA}+\Phi_n(\mu(A))
+                  \leq Q_n(A)+\Phi_n(\mu(A))
+\]
+on the entire space, hence also on $D_n$. The mean observation is an
+actual continuous linear map with finite-dimensional output type
+independent of $n$, not a postulated observation certificate. Here
+$b_{ij}(n)=2dn^2$ and the subquadratic hypothesis fails. The example
+allows $K_n=2n^d$ to vary, exactly as the obstruction does. It proves
+neither an optimal boundary constant nor positive coercivity for an
+interacting gauge operator. The path/mean mechanism is classical;
+see the primary exposition in \cite{levin-peres}.
+
+\subsection{Why the penalty assumption remains}
+The $C^1$ counterexample after Theorem~\ref{thm:tangent} also applies to
+the actual nonnegative $Q_n$ and to $D_n$. A second useful counterexample
+retains a polynomial observation and a globally Lipschitz penalty:
+\[
+ C(A)=\|A\|^2\in\R,\qquad \Phi(y)=c|y|,
+ \qquad DC(0)=0,\qquad \Phi(C(A))=c\|A\|^2.
+\]
+Thus output dimension one suffices even when $Q_n=0$. No finite local
+quadratic upper constant for $\Phi$ exists, since $c|y|/y^2=c/|y|$.
+Likewise, $C(A)=\|A\|^{3/2}$ and $\Phi(y)=c|y|^{4/3}$ are both $C^1$
+with zero derivatives at zero, yet their composition is exactly quadratic.
+These are complete analytic counterexamples, not new Lean claims.
+
+There is a distinct analytic regularity tradeoff, not a hypothesis removal
+for merely differentiable observations. If, on each fixed derivative-kernel
+direction, $C(tv)=t^2H_v+o(t^2)$, and $\Phi(0)=0$, $D\Phi(0)=0$, then
+$\Phi(C(tv))=o(t^2)$. Indeed $\|C(tv)\|/t^2$ is bounded and
+$|\Phi(y)|\leq\epsilon\|y\|$ near zero, including at zero; multiply the
+two estimates and let $\epsilon\downarrow0$. A $C^2$ observation and a
+nonnegative differentiable penalty vanishing at zero suffice for this
+step, because a differentiable local minimum has zero derivative.
+No actual observation's $C^2$ regularity is proved here, and no formal
+composition of this alternate route is claimed.
+
+The strengthened mean-weight result is an output-rank divergence theorem.
+Its fixed-$R$ argument does not assert a positive density of observations
+per lattice volume. Fixed $c>0$, nonnegative weights and the stated
+penalty condition remain explicit. In particular no interacting or
+continuum Yang--Mills hypothesis, ultraviolet activity estimate, or
+physical spectral gap is supplied by this section.

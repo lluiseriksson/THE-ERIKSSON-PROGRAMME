@@ -1,0 +1,12 @@
+{
+  "publication": "candidate only",
+  "source_lf_sha256": "0a0e06d67a3e2b28376d620a78128c2c1d045cb68a0381fedce782d3f8a6bf6a",
+  "source_sha": "8f333c6458de613e6eab69a3de92c9c5dff9a2dc",
+  "formal_source_sha": "ac60c0df885d8866329a839e2b4e73c90595d806",
+  "path": "papers/flat-coarse-rank/v4-candidate/flat_coarse_rank.tex",
+  "review_status": "no exact-v4 external model review",
+  "previous_renders_preserved": [
+    "054 layout warning",
+    "055 inherited wording and unnecessary page break"
+  ]
+}

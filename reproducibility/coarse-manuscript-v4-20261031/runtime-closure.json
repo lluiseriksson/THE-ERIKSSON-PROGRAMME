@@ -1,0 +1,57 @@
+{
+  "no_scientific_model_review": true,
+  "scope": "Driver-start to final report, before automatic release request. Complete allocation/release latency and billed units unknown.",
+  "other_chat_runtime_shared": false,
+  "retained_original_renders": [
+    "054 overflow",
+    "055 inherited wording/forced whitespace"
+  ],
+  "all_own_notebook_tabs_closed": true,
+  "billed_units": null,
+  "runtime_type": "Own Colab Linux CPU/highRAM50.99GB, no GPU",
+  "rows": [
+    {
+      "layout_warnings": [
+        "Overfull \\hbox (48.59346pt too wide) in paragraph at lines 772--780"
+      ],
+      "disconnected_capture_sha256": "c9ac003d9a4aeed7fdfd33866c416641f1b338ba4ac965f683ed5942e28ddebe",
+      "source_sha": "9c074cfab097e19af8516aa2f5e264f7fea751f1",
+      "status": "PDF_COMPILED_ALL_PAGES_RENDERED_AWAITING_VISUAL_QA",
+      "run": "054",
+      "pages": 16,
+      "release_request_utc": null,
+      "disconnection_capture_saved_utc": "2026-10-31T14:05:46.1916577Z",
+      "report_finished_utc": "2026-10-31T14:04:55.161365+00:00",
+      "driver_started_utc": "2026-10-31T14:03:43.777458+00:00",
+      "pdf_sha256": "7ba764c9d4291e3e620d40a2d9e3e12b332be408e4bad9db054636f0d1f5eb39"
+    },
+    {
+      "layout_warnings": [],
+      "disconnected_capture_sha256": "541cb5b89808f2e3df7090ac36355acca1dd1884c80d482c7110d0bd6cdbde1f",
+      "source_sha": "dbd8be9909204daea99ca442918e4fae238b8bbc",
+      "status": "PDF_COMPILED_ALL_PAGES_RENDERED_AWAITING_VISUAL_QA",
+      "run": "055",
+      "pages": 16,
+      "release_request_utc": null,
+      "disconnection_capture_saved_utc": "2026-10-31T14:09:43.8059200Z",
+      "report_finished_utc": "2026-10-31T14:08:56.023741+00:00",
+      "driver_started_utc": "2026-10-31T14:07:32.511291+00:00",
+      "pdf_sha256": "6d399e0fcf557ac15a4cde8e42920f706420f652df4460071e81d1045bbbcd84"
+    },
+    {
+      "layout_warnings": [],
+      "disconnected_capture_sha256": "7f88604f9d1b999ba4755c124454cecbe77428cb6d5ef1d0085fd4993a9fbfff",
+      "source_sha": "8f333c6458de613e6eab69a3de92c9c5dff9a2dc",
+      "status": "PDF_COMPILED_ALL_PAGES_RENDERED_AWAITING_VISUAL_QA",
+      "run": "056",
+      "pages": 15,
+      "release_request_utc": null,
+      "disconnection_capture_saved_utc": "2026-10-31T14:14:30.6025764Z",
+      "report_finished_utc": "2026-10-31T14:13:00.741432+00:00",
+      "driver_started_utc": "2026-10-31T14:11:47.406164+00:00",
+      "pdf_sha256": "e5e9ddcf044ddcfab0e4cae8e2c6ac1a3dca39ff21bf23b20989aaff4b220e05"
+    }
+  ],
+  "executed_render_runs": 3,
+  "all_own_runtimes_disconnected": true
+}
