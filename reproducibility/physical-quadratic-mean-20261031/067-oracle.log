@@ -1,0 +1,6 @@
+'YangMills.RG.finBoxMean_poincare_energy_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalDirectionalMean_hasFDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalMeanLift_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalMean_poincare_energy_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalQuadraticMean_global_coercive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalDirectionalMean_output_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
