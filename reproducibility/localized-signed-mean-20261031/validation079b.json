@@ -1,0 +1,16 @@
+{
+  "status": "LOCALIZED_SIGNED_FIXED_OUTPUT_FAMILY_VALIDATED",
+  "source_sha": "497e3b4ef4046cee25b1069b8aa0fd8c0cfaa178",
+  "zip_sha256": "4c5ab5131dd202ad385c3554402fb453f543652f8c92f56155c19e6686d6a702",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 10,
+  "target_olean_sha256": "7f34ee35befa8291efae6fdef8f34ccc33d0cdecd605411f25764396ed3126bf",
+  "oracle_log_sha256": "9d288eddda257c456fc224b6a9483feba9af10dd8cd44bbf8b9c94d7f1bee692",
+  "source_manifest_sha256": "fa7287199ed90fce4960417cce1ec3063507dab597f4237cf4f0d33a1a326ee1",
+  "started_utc": "2026-10-31T18:15:07.6067520+00:00",
+  "finished_utc": "2026-10-31T18:21:26.1675720+00:00",
+  "independent_review": false,
+  "scope": "Explicit actual signed repair with every ordinary directional spatial mean zero, actual fixed finite output independent of side, nonnegative upper-quadratic penalty, derivative and zero preservation, and global Hodge coercivity c=1 for every side k+1",
+  "windows_lean_executed": false
+}
