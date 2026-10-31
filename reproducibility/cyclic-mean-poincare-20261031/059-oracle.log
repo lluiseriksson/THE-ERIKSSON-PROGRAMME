@@ -1,0 +1,6 @@
+'YangMills.RG.periodicTranslate_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.periodicTranslate_difference_add_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.periodicTranslate_difference_nsmul_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.cyclicTranslationAverage_eq_mean' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.cyclicMean_poincare_norm_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.cyclicMean_poincare_energy_le' depends on axioms: [propext, Classical.choice, Quot.sound]
