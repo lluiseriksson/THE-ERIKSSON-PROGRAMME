@@ -1,0 +1,135 @@
+{
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "source_sha": "b350aaca92b50e552665c079ffef1279a384f5ce",
+  "first": {
+    "status": "CYCLIC_MEAN_POINCARE_VALIDATED",
+    "source_sha": "b350aaca92b50e552665c079ffef1279a384f5ce",
+    "zip_sha256": "b65f68911fc522a315b130bf4c8a1c983b515c76a95f70f99c31de8b2ae45ffe",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "fb4ca54c4f6b50f0b4590c0a027a1f9997dcc825af95cf09d09f5dff652285c9",
+    "oracle_log_sha256": "2fdc50d4de25e8830865b3ca70bececd7aa744c185c8b7ba1178947835a508d7",
+    "source_manifest_sha256": "16ab2e89012a545ec6b85584b3da5a5480181d49af67ac3ccd600c1fa9d6e6c6",
+    "started_utc": "2026-10-31T03:56:32.7359030+00:00",
+    "finished_utc": "2026-10-31T03:59:02.9371870+00:00",
+    "independent_review": false,
+    "scope": "Actual vector-valued counting-L2 cyclic Poincare; D-dimensional physical transport remains pending",
+    "windows_lean_executed": false
+  },
+  "second": {
+    "status": "CYCLIC_MEAN_POINCARE_VALIDATED",
+    "source_sha": "b350aaca92b50e552665c079ffef1279a384f5ce",
+    "zip_sha256": "7bb4991adda0a3400d95908805ac032f4cee687ac3da92c4dac468582d248c06",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "fb4ca54c4f6b50f0b4590c0a027a1f9997dcc825af95cf09d09f5dff652285c9",
+    "oracle_log_sha256": "2fdc50d4de25e8830865b3ca70bececd7aa744c185c8b7ba1178947835a508d7",
+    "source_manifest_sha256": "16ab2e89012a545ec6b85584b3da5a5480181d49af67ac3ccd600c1fa9d6e6c6",
+    "started_utc": "2026-10-31T03:59:31.6485950+00:00",
+    "finished_utc": "2026-10-31T04:01:46.4485170+00:00",
+    "independent_review": false,
+    "scope": "Actual vector-valued counting-L2 cyclic Poincare; D-dimensional physical transport remains pending",
+    "windows_lean_executed": false
+  },
+  "exact_endpoints": [
+    "periodicTranslate_norm",
+    "periodicTranslate_difference_add_le",
+    "periodicTranslate_difference_nsmul_le",
+    "cyclicTranslationAverage_eq_mean",
+    "cyclicMean_poincare_norm_le",
+    "cyclicMean_poincare_energy_le"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "normal_and_optimized_actual_oracle_mutations": true,
+  "full_zip_manifests_validated": 2,
+  "failed058": {
+    "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+    "mathematical_pass": false,
+    "source_sha": "99c6157fbd716607cf07eaa62cc9163a7e1fd3a9",
+    "status": "FAIL",
+    "zip_sha256": "c515347af842e6ee77f77e9b2f8910188ecf5f2ca46a36c295afab2c486cef7d",
+    "manifest_entries": 12,
+    "error": "focal-build failed: ✖ [8158/8158] Building YangMills.RG.CyclicMeanPoincare (48s)\ntrace: .> LEAN_PATH=/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-cyclic-mean-poincare-20261031-058/YangMills/RG/CyclicMeanPoincare.lean -o /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean/YangMills/RG/CyclicMeanPoincare.olean -i /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean/YangMills/RG/CyclicMeanPoincare.ilean -c /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/ir/YangMills/RG/CyclicMeanPoincare.c --setup /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/ir/YangMills/RG/CyclicMeanPoincare.setup.json --json\nwarning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:\n  [NormedAddCommGroup V]\n  [NormedSpace ℝ V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:\n  [NormedAddCommGroup V]\n  [NormedSpace ℝ V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:\n  [NormedSpace ℝ V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedSpace ℝ V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/CyclicMeanPoincare.lean:64:10: Type mismatch\n  add_le_add_right ih ?m.116\nhas type\n  ?m.116 + ‖periodicTranslate (m • a) f - f‖ ≤ ?m.116 + ↑m * ‖periodicTranslate a f - f‖\nbut is expected to have type\n  ‖periodicTranslate (m • a) f - f‖ + ‖periodicTranslate a f - f‖ ≤\n    ↑m * ‖periodicTranslate a f - f‖ + ‖periodicTranslate a f - f‖\nerror: YangMills/RG/CyclicMeanPoincare.lean:84:4: Type mismatch\n  map_sum (PiLp.projₗ 2 ?m.79) (fun a => periodicTranslate a f) Finset.univ\nhas type\n  (PiLp.projₗ 2 ?m.79) (∑ x, periodicTranslate x f) = ∑ x, (PiLp.projₗ 2 ?m.79) (periodicTranslate x f)\nbut is expected to have type\n  (∑ a, periodicTranslate a f).ofLp x = ∑ a, f.ofLp (x + a)\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.CyclicMeanPoincare\nerror: build failed\n",
+    "steps": [
+      {
+        "name": "install-elan",
+        "exit_code": 0,
+        "seconds": 1.269,
+        "log": "install-elan.log"
+      },
+      {
+        "name": "git-init",
+        "exit_code": 0,
+        "seconds": 0.066,
+        "log": "git-init.log"
+      },
+      {
+        "name": "git-remote",
+        "exit_code": 0,
+        "seconds": 0.008,
+        "log": "git-remote.log"
+      },
+      {
+        "name": "git-fetch",
+        "exit_code": 0,
+        "seconds": 3.927,
+        "log": "git-fetch.log"
+      },
+      {
+        "name": "git-checkout",
+        "exit_code": 0,
+        "seconds": 1.219,
+        "log": "git-checkout.log"
+      },
+      {
+        "name": "lean-version",
+        "exit_code": 0,
+        "seconds": 21.051,
+        "log": "lean-version.log"
+      },
+      {
+        "name": "cache-get",
+        "exit_code": 0,
+        "seconds": 100.075,
+        "log": "cache-get.log"
+      },
+      {
+        "name": "focal-build",
+        "exit_code": 1,
+        "seconds": 55.101,
+        "log": "focal-build.log"
+      }
+    ],
+    "started_utc": "2026-10-31T03:51:42.979384+00:00",
+    "finished_utc": "2026-10-31T03:54:46.029044+00:00"
+  },
+  "prepared058b_executed": false,
+  "all_unit044_own_runtimes_released_ui_verified": true,
+  "first_candidate_passed": false,
+  "proof_repair": "add_le_add ih le_rfl; explicit fiber type in actual linear evaluation; statements and judge unchanged",
+  "independent_scientific_review": false,
+  "windows_lean_executed": false,
+  "new_pdf": false,
+  "new_deposit": false,
+  "new_publication": false,
+  "physical_YangMills_hypotheses_removed": [],
+  "billed_units": null,
+  "cpu_high_ram_gb": 50.99,
+  "runtime_interval_note": "Driver start through release request, not full allocation/release latency or measured billing",
+  "notebooks": [
+    "https://colab.research.google.com/drive/1VU4i-kXFbdw7ETXHfXDSNHz7BH72xAxR",
+    "https://colab.research.google.com/drive/1hcQYCWFO_8maRVWaqREhB9qi-GpIAdaM"
+  ],
+  "failed_notebook": "https://colab.research.google.com/drive/10emqnJCYHvN4cTTvLobz9wzPeB-UKmAj",
+  "actual_cyclic_poincare_formalized": true,
+  "multidimensional_physical_poincare_formalized": false,
+  "quadratic_boundary_counterexample_formalized": false,
+  "own_notebook_tabs_closed": true,
+  "browser_cleanup_incident": "Stale public-tab handle rejected before closure; one controls reset restored access. All own24-29 tabs then closed; inventory only foreign1 and deliverable13. No runtime left connected or evidence lost."
+}

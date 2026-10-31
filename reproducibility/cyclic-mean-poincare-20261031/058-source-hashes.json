@@ -1,0 +1,14 @@
+[
+  {
+    "name": "CyclicMeanPoincare.lean",
+    "sha256_lf": "ae148f576a140fff25973d36e1c0884e6877c58fe39409623718c7918c9433b4",
+    "expected": "ae148f576a140fff25973d36e1c0884e6877c58fe39409623718c7918c9433b4",
+    "matches": true
+  },
+  {
+    "name": "CyclicMeanPoincareOracle.lean",
+    "sha256_lf": "bad328d09e4445411037a274e503fc1f7266994cb09206b80adb1ab882fa0c8e",
+    "expected": "bad328d09e4445411037a274e503fc1f7266994cb09206b80adb1ab882fa0c8e",
+    "matches": true
+  }
+]

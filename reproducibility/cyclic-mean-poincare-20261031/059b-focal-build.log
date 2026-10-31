@@ -1,0 +1,22 @@
+⚠ [8158/8158] Built YangMills.RG.CyclicMeanPoincare (7.5s)
+warning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:
+  [NormedAddCommGroup V]
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:
+  [NormedAddCommGroup V]
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+Build completed successfully (8158 jobs).

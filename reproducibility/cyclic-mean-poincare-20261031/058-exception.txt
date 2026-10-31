@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_3537/30594673.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.CyclicMeanPoincare'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_3537/30594673.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: ✖ [8158/8158] Building YangMills.RG.CyclicMeanPoincare (48s)
+trace: .> LEAN_PATH=/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-cyclic-mean-poincare-20261031-058/YangMills/RG/CyclicMeanPoincare.lean -o /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean/YangMills/RG/CyclicMeanPoincare.olean -i /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean/YangMills/RG/CyclicMeanPoincare.ilean -c /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/ir/YangMills/RG/CyclicMeanPoincare.c --setup /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/ir/YangMills/RG/CyclicMeanPoincare.setup.json --json
+warning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:
+  [NormedAddCommGroup V]
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:
+  [NormedAddCommGroup V]
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedAddCommGroup V] [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:
+  [NormedSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NormedSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/CyclicMeanPoincare.lean:64:10: Type mismatch
+  add_le_add_right ih ?m.116
+has type
+  ?m.116 + ‖periodicTranslate (m • a) f - f‖ ≤ ?m.116 + ↑m * ‖periodicTranslate a f - f‖
+but is expected to have type
+  ‖periodicTranslate (m • a) f - f‖ + ‖periodicTranslate a f - f‖ ≤
+    ↑m * ‖periodicTranslate a f - f‖ + ‖periodicTranslate a f - f‖
+error: YangMills/RG/CyclicMeanPoincare.lean:84:4: Type mismatch
+  map_sum (PiLp.projₗ 2 ?m.79) (fun a => periodicTranslate a f) Finset.univ
+has type
+  (PiLp.projₗ 2 ?m.79) (∑ x, periodicTranslate x f) = ∑ x, (PiLp.projₗ 2 ?m.79) (periodicTranslate x f)
+but is expected to have type
+  (∑ a, periodicTranslate a f).ofLp x = ∑ a, f.ofLp (x + a)
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.CyclicMeanPoincare
+error: build failed
+

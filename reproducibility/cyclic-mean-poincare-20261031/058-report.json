@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "99c6157fbd716607cf07eaa62cc9163a7e1fd3a9",
+  "started_utc": "2026-10-31T03:51:42.979384+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.269,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.927,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.219,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 21.051,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 100.075,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 55.101,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: \u2716 [8158/8158] Building YangMills.RG.CyclicMeanPoincare (48s)\ntrace: .> LEAN_PATH=/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-cyclic-mean-poincare-20261031-058/YangMills/RG/CyclicMeanPoincare.lean -o /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean/YangMills/RG/CyclicMeanPoincare.olean -i /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/lib/lean/YangMills/RG/CyclicMeanPoincare.ilean -c /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/ir/YangMills/RG/CyclicMeanPoincare.c --setup /content/eriksson-cyclic-mean-poincare-20261031-058/.lake/build/ir/YangMills/RG/CyclicMeanPoincare.setup.json --json\nwarning: YangMills/RG/CyclicMeanPoincare.lean:18:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_apply`:\n  [NormedAddCommGroup V]\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:21:8: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_zero`:\n  [NormedAddCommGroup V]\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedAddCommGroup V] [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CyclicMeanPoincare.lean:27:0: automatically included section variable(s) unused in theorem `YangMills.RG.periodicTranslate_norm`:\n  [NormedSpace \u211d V]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NormedSpace \u211d V] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/CyclicMeanPoincare.lean:64:10: Type mismatch\n  add_le_add_right ih ?m.116\nhas type\n  ?m.116 + \u2016periodicTranslate (m \u2022 a) f - f\u2016 \u2264 ?m.116 + \u2191m * \u2016periodicTranslate a f - f\u2016\nbut is expected to have type\n  \u2016periodicTranslate (m \u2022 a) f - f\u2016 + \u2016periodicTranslate a f - f\u2016 \u2264\n    \u2191m * \u2016periodicTranslate a f - f\u2016 + \u2016periodicTranslate a f - f\u2016\nerror: YangMills/RG/CyclicMeanPoincare.lean:84:4: Type mismatch\n  map_sum (PiLp.proj\u2097 2 ?m.79) (fun a => periodicTranslate a f) Finset.univ\nhas type\n  (PiLp.proj\u2097 2 ?m.79) (\u2211 x, periodicTranslate x f) = \u2211 x, (PiLp.proj\u2097 2 ?m.79) (periodicTranslate x f)\nbut is expected to have type\n  (\u2211 a, periodicTranslate a f).ofLp x = \u2211 a, f.ofLp (x + a)\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.CyclicMeanPoincare\nerror: build failed\n",
+  "finished_utc": "2026-10-31T03:54:46.029044+00:00"
+}

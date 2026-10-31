@@ -1,0 +1,23 @@
+diff --git a/YangMills/RG/CyclicMeanPoincare.lean b/YangMills/RG/CyclicMeanPoincare.lean
+index f43d5247..632702cf 100644
+--- a/YangMills/RG/CyclicMeanPoincare.lean
++++ b/YangMills/RG/CyclicMeanPoincare.lean
+@@ -61,7 +61,7 @@ theorem periodicTranslate_difference_nsmul_le (a : G) (f : PeriodicL2 G V) (m :
+           simpa only [add_nsmul, one_nsmul] using
+             periodicTranslate_difference_add_le (m • a) a f
+         _ ≤ (m : ℝ) * ‖periodicTranslate a f - f‖ + ‖periodicTranslate a f - f‖ :=
+-          add_le_add_right ih _
++          add_le_add ih le_rfl
+         _ = _ := by push_cast; ring
+ end Translations
+ 
+@@ -81,7 +81,8 @@ theorem cyclicTranslationAverage_eq_mean (f : PeriodicL2 (ZMod n) V) :
+   apply PiLp.ext
+   intro x
+   have heval : (∑ a : ZMod n, periodicTranslate a f) x = ∑ a : ZMod n, f (x + a) :=
+-    map_sum (PiLp.projₗ (p := 2) (𝕜 := ℝ) x) (fun a => periodicTranslate a f) Finset.univ
++    map_sum (PiLp.projₗ (p := 2) (𝕜 := ℝ) (fun _ : ZMod n => V) x)
++      (fun a => periodicTranslate a f) Finset.univ
+   change (n : ℝ)⁻¹ • ((∑ a : ZMod n, periodicTranslate a f) x) =
+     (n : ℝ)⁻¹ • ∑ y : ZMod n, f y
+   rw [heval]
