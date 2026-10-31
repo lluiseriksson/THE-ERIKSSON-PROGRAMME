@@ -15,7 +15,7 @@ variable {n R : ℕ} [NeZero n]
 theorem positiveStripCharacter_multiplier_bound (r : Fin R) :
     ‖ZMod.stdAddChar ((r.val + 1 : ℕ) : ZMod n) - 1‖ ≤
       2 * Real.pi * (R : ℝ) / (n : ℝ) := by
-  let k : Fin (2 * R + 1) := ⟨r.val + 1 + R, by omega⟩
+  let k : Fin (2 * R + 1) := ⟨r.val + 1 + R, by have hr := r.isLt; omega⟩
   have heq : ((k.val : ℕ) : ZMod n) - (R : ZMod n) =
       ((r.val + 1 : ℕ) : ZMod n) := by
     dsimp [k]
@@ -137,7 +137,9 @@ theorem physicalAverage_subquadratic_finrank_eventually_ge (R : ℕ) :
   by_contra hbad
   have hdim : finrank ℝ (F n) + 1 ≤ 2 * R := by omega
   have hdim' : (finrank ℝ (F n) : ℝ) + 1 ≤ 2 * (R : ℝ) := by exact_mod_cast hdim
-  have hclower : c ≤ c * (2 * (R : ℝ) - (finrank ℝ (F n) : ℝ)) := by nlinarith
+  have hgap : (1 : ℝ) ≤ 2 * (R : ℝ) - (finrank ℝ (F n) : ℝ) := by linarith
+  have hclower : c ≤ c * (2 * (R : ℝ) - (finrank ℝ (F n) : ℝ)) := by
+    simpa using mul_le_mul_of_nonneg_left hgap (le_of_lt hc)
   linarith
 
 theorem physicalAverage_subquadratic_finrank_tendsto :
