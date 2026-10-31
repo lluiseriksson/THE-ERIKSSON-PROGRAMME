@@ -1,0 +1,97 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_1269/1010438382.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.SquareCycleCancellation'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1269/1010438382.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: et_option linter.unusedSectionVars false`
+✖ [8194/8194] Building YangMills.RG.SquareCycleCancellation (8.7s)
+trace: .> LEAN_PATH=/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-square-cycle-cancellation-20261031-080/YangMills/RG/SquareCycleCancellation.lean -o /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean/YangMills/RG/SquareCycleCancellation.olean -i /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean/YangMills/RG/SquareCycleCancellation.ilean -c /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/ir/YangMills/RG/SquareCycleCancellation.c --setup /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/ir/YangMills/RG/SquareCycleCancellation.setup.json --json
+error: YangMills/RG/SquareCycleCancellation.lean:13:28: Application type mismatch: The argument
+  add_le_add_right (norm_add_le x y) ?m.121
+has type
+  ?m.121 + ‖x + y‖ ≤ ?m.121 + (‖x‖ + ‖y‖)
+but is expected to have type
+  ‖x + y‖ + ‖z‖ ≤ ‖x‖ + ‖y‖ + ‖z‖
+in the application
+  LE.le.trans (norm_sub_le (x + y) z) (add_le_add_right (norm_add_le x y) ?m.121)
+warning: YangMills/RG/SquareCycleCancellation.lean:29:40: Try `simp at hk` instead of `simpa using hk`
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/RG/SquareCycleCancellation.lean:21:0: automatically included section variable(s) unused in theorem `YangMills.RG.finBox_shift_ne_of_one_lt`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/SquareCycleCancellation.lean:32:0: automatically included section variable(s) unused in theorem `YangMills.RG.squareCycle_path_norm_sq_le`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/SquareCycleCancellation.lean:78:43: Invalid argument name `Nc` for function `finBox_shift_ne_of_one_lt`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `d`: N̵c̵d̲
+  • `n`: N̵c̵n̲
+  • `hn`: N̵c̵h̲n̲
+  • `o`: N̵c̵o̲
+  • `k`: N̵c̵k̲
+error: YangMills/RG/SquareCycleCancellation.lean:76:40: unsolved goals
+d n : ℕ
+inst✝¹ : NeZero d
+inst✝ : NeZero n
+hn : 1 < n
+o : FinBox d n
+i k j : Fin d
+hik : i ≠ k
+a : ℝ
+ha : 0 ≤ a
+p : PhysicalGradientIndex d n
+⊢ signedWeightPositivePart (squareCycleWeights o i k j a) p = if p = (i, o, j) then a else 0
+error: YangMills/RG/SquareCycleCancellation.lean:107:44: Invalid argument name `Nc` for function `squareCycleWeights_positive_part`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `d`: N̵c̵d̲
+  • `n`: N̵c̵n̲
+  • `hn`: N̵c̵h̲n̲
+  • `o`: N̵c̵o̲
+  • `i`: N̵c̵i̲
+  • `k`: N̵c̵k̲
+  • `j`: N̵c̵j̲
+  • `hik`: N̵c̵h̲i̲k̲
+  • `a`: N̵c̵a̲
+  • `ha`: N̵c̵h̲a̲
+  • `p`: N̵c̵p̲
+error: YangMills/RG/SquareCycleCancellation.lean:107:11: `simp` made no progress
+error: YangMills/RG/SquareCycleCancellation.lean:115:42: Invalid argument name `Nc` for function `squareCycleWeights_positive_average`
+
+Hint: Perhaps you meant one of the following parameter names:
+  • `d`: N̵c̵d̲
+  • `n`: N̵c̵n̲
+  • `hn`: N̵c̵h̲n̲
+  • `o`: N̵c̵o̲
+  • `i`: N̵c̵i̲
+  • `k`: N̵c̵k̲
+  • `j`: N̵c̵j̲
+  • `hik`: N̵c̵h̲i̲k̲
+  • `a`: N̵c̵a̲
+  • `ha`: N̵c̵h̲a̲
+error: YangMills/RG/SquareCycleCancellation.lean:114:81: unsolved goals
+d n : ℕ
+inst✝¹ : NeZero d
+inst✝ : NeZero n
+hn : 1 < n
+o : FinBox d n
+i k j : Fin d
+hik : i ≠ k
+⊢ physicalDirectionalWeightAverage (signedWeightPositivePart (squareCycleWeights o i k j (↑n ^ d * ↑n ^ 2))) i j =
+    ↑n ^ 2
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.SquareCycleCancellation
+error: build failed
+

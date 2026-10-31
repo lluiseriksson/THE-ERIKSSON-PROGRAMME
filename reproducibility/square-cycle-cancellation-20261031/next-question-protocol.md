@@ -1,0 +1,11 @@
+# One next mathematical question — volume density from spatial mean bounds
+
+Question (open, no new result): for actual nonnegative componentwise weights on a periodic flat lattice of fixed d>=2,Nc>=2, does a fixed upper bound M on ALL directional/component spatial means force positive output-rank density under the original differentiable-zero-observation, local upper-quadratic penalty and fixed c>0 coercivity hypotheses? Target: some explicit rho(c,M,d,Nc)>0 eventually gives finrank(F_n)>=rho*(n+1)^d.
+
+Mechanism to investigate: build an actual positive-frequency coexact Fourier packet of volume-order dimension; derive its weighted compression trace by translation/conjugate-pair identities and the spatial means. Prove the Gram normalization, pointwise trace diagonal and low-frequency bound from actual maps. Choose cutoff proportional to lattice side and apply the checked nonlinear rank/trace obstruction. Do NOT assume a trace, band, frame-isotropy or operator-order certificate. Means do not imply a uniform pointwise cap; this would be a generalized trace argument, not proof of that cap or physical hypothesis discharge.
+
+Falsifiers: missing real/conjugate frequency factor, zero/Nyquist or wraparound collision, unproved coexact injectivity/Gram normalization, loss of volume-order dimension, use of only one mean when all are needed, or a desired trace inequality hidden in a structure. Keep original local regularity and fixed c explicit; K/delta/radius may vary.
+
+Abandonment: after3 units without a substantive checked actual finite-band trace endpoint, preserve failures and identify the exact blocker or change route. Verify primary prior work before novelty claims. The just-closed square cancellation is classical and is not a new-paper route.
+
+Priority before another implementation campaign: consolidate the signed sufficient condition, zero-signed-mean counterexample and attributed cancellation boundary into the existing manuscript dossier, evaluate exact new bytes and preserve all objections. The already-authorized e5e9 v4 stays frozen; it cannot silently acquire new results or assessments. No new PDF publication is inferred from this protocol.

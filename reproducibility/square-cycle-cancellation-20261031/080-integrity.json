@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "b7885333896eeb449781bd5d3710f0eeeb113a5e",
+  "status": "FAIL",
+  "zip_sha256": "fc9a55af55ff62161229ac11eb3875be8068dfe24c54b65f800e6ffe0df5904c",
+  "manifest_entries": 12,
+  "error": "focal-build failed: et_option linter.unusedSectionVars false`\n✖ [8194/8194] Building YangMills.RG.SquareCycleCancellation (8.7s)\ntrace: .> LEAN_PATH=/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-square-cycle-cancellation-20261031-080/YangMills/RG/SquareCycleCancellation.lean -o /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean/YangMills/RG/SquareCycleCancellation.olean -i /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/lib/lean/YangMills/RG/SquareCycleCancellation.ilean -c /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/ir/YangMills/RG/SquareCycleCancellation.c --setup /content/eriksson-square-cycle-cancellation-20261031-080/.lake/build/ir/YangMills/RG/SquareCycleCancellation.setup.json --json\nerror: YangMills/RG/SquareCycleCancellation.lean:13:28: Application type mismatch: The argument\n  add_le_add_right (norm_add_le x y) ?m.121\nhas type\n  ?m.121 + ‖x + y‖ ≤ ?m.121 + (‖x‖ + ‖y‖)\nbut is expected to have type\n  ‖x + y‖ + ‖z‖ ≤ ‖x‖ + ‖y‖ + ‖z‖\nin the application\n  LE.le.trans (norm_sub_le (x + y) z) (add_le_add_right (norm_add_le x y) ?m.121)\nwarning: YangMills/RG/SquareCycleCancellation.lean:29:40: Try `simp at hk` instead of `simpa using hk`\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\nwarning: YangMills/RG/SquareCycleCancellation.lean:21:0: automatically included section variable(s) unused in theorem `YangMills.RG.finBox_shift_ne_of_one_lt`:\n  [NeZero d]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/SquareCycleCancellation.lean:32:0: automatically included section variable(s) unused in theorem `YangMills.RG.squareCycle_path_norm_sq_le`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: YangMills/RG/SquareCycleCancellation.lean:78:43: Invalid argument name `Nc` for function `finBox_shift_ne_of_one_lt`\n\nHint: Perhaps you meant one of the following parameter names:\n  • `d`: N̵c̵d̲\n  • `n`: N̵c̵n̲\n  • `hn`: N̵c̵h̲n̲\n  • `o`: N̵c̵o̲\n  • `k`: N̵c̵k̲\nerror: YangMills/RG/SquareCycleCancellation.lean:76:40: unsolved goals\nd n : ℕ\ninst✝¹ : NeZero d\ninst✝ : NeZero n\nhn : 1 < n\no : FinBox d n\ni k j : Fin d\nhik : i ≠ k\na : ℝ\nha : 0 ≤ a\np : PhysicalGradientIndex d n\n⊢ signedWeightPositivePart (squareCycleWeights o i k j a) p = if p = (i, o, j) then a else 0\nerror: YangMills/RG/SquareCycleCancellation.lean:107:44: Invalid argument name `Nc` for function `squareCycleWeights_positive_part`\n\nHint: Perhaps you meant one of the following parameter names:\n  • `d`: N̵c̵d̲\n  • `n`: N̵c̵n̲\n  • `hn`: N̵c̵h̲n̲\n  • `o`: N̵c̵o̲\n  • `i`: N̵c̵i̲\n  • `k`: N̵c̵k̲\n  • `j`: N̵c̵j̲\n  • `hik`: N̵c̵h̲i̲k̲\n  • `a`: N̵c̵a̲\n  • `ha`: N̵c̵h̲a̲\n  • `p`: N̵c̵p̲\nerror: YangMills/RG/SquareCycleCancellation.lean:107:11: `simp` made no progress\nerror: YangMills/RG/SquareCycleCancellation.lean:115:42: Invalid argument name `Nc` for function `squareCycleWeights_positive_average`\n\nHint: Perhaps you meant one of the following parameter names:\n  • `d`: N̵c̵d̲\n  • `n`: N̵c̵n̲\n  • `hn`: N̵c̵h̲n̲\n  • `o`: N̵c̵o̲\n  • `i`: N̵c̵i̲\n  • `k`: N̵c̵k̲\n  • `j`: N̵c̵j̲\n  • `hik`: N̵c̵h̲i̲k̲\n  • `a`: N̵c̵a̲\n  • `ha`: N̵c̵h̲a̲\nerror: YangMills/RG/SquareCycleCancellation.lean:114:81: unsolved goals\nd n : ℕ\ninst✝¹ : NeZero d\ninst✝ : NeZero n\nhn : 1 < n\no : FinBox d n\ni k j : Fin d\nhik : i ≠ k\n⊢ physicalDirectionalWeightAverage (signedWeightPositivePart (squareCycleWeights o i k j (↑n ^ d * ↑n ^ 2))) i j =\n    ↑n ^ 2\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.SquareCycleCancellation\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.247,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.033,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.004,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 4.277,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.82,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 17.469,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 94.107,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 247.835,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-10-31T19:11:03.795836+00:00",
+  "finished_utc": "2026-10-31T19:17:10.794363+00:00"
+}

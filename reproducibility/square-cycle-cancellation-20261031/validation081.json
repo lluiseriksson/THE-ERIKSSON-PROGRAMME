@@ -1,0 +1,16 @@
+{
+  "status": "SQUARE_CYCLE_ACTUAL_CANCELLATION_VALIDATED",
+  "source_sha": "4c5728d147721523f5a521011351ac4bf2d3cf86",
+  "zip_sha256": "78c29575204ecb7e55b370982eeebed0a98c1123f9be81c79c99d4579266bff3",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 10,
+  "target_olean_sha256": "acf7bc96a17c56164eb765f8dc390208fbb6d8f53d17d0c9c02b66e8feb34472",
+  "oracle_log_sha256": "ad9604c9a2fbd058a987560970f17382c511324d8e2469fbe0b29cb24106e020",
+  "source_manifest_sha256": "a67ee85da9481b3b21bd94d4577a9f67d607d58835566092bec70ad1eaadeeb6",
+  "started_utc": "2026-10-31T19:21:53.4127070+00:00",
+  "finished_utc": "2026-10-31T19:29:27.7085090+00:00",
+  "independent_review": false,
+  "scope": "Explicit actual square-cycle signed repair, derived nonpositive energy, critical pointwise-positive-part spatial mean n^2 and output-finrank divergence under original local coercivity/quadratic hypotheses; no comparison certificate input",
+  "windows_lean_executed": false
+}

@@ -1,0 +1,9 @@
+# Exact failed-source assessment — probe080
+
+Preparing Codex agent,2026-10-31; exact backend identifier/effort unavailable and not invented. No independent or external reviewer, score or peer review. Object: b7885333896eeb449781bd5d3710f0eeeb113a5e, exact sources/hashes and full080 log/exception preserved.
+
+Formal correctness verdict: FAIL. The norm-inequality chain used an elaborated addition-order lemma with the wrong side, and three calls supplied a colour parameter Nc that those colour-independent declarations do not take. The compiler did not validate the module or run the ten-endpoint oracle. No pass is inherited from older results. These are implementation errors; they neither prove nor refute the analytic square identity.
+
+Analytic audit: exact additive edge weights, correct alternative-path orientation, factor3, sign and volume normalization are laid out in analytic-verification.md. The mean claim excludes side1; the order proof covers coincident indices additively. Original local differentiability/quadratic/coercivity assumptions remain. The general-mechanism originality claim is rejected for the primary comparison separately recorded in primary-novelty-refutation.md. Relevance is a boundary witness in the existing dossier, not a standalone paper or physical result.
+
+Correction plan: derive the triangle scalar inequality by linear arithmetic from two actual norm inequalities, remove the invalid named arguments, retain theorem statements, ten oracle names, standard axioms and real mutation acceptance. Preserve the patch and require new exact-source verification. This failed assessment does not transfer as a positive review of the corrected version or any PDF.

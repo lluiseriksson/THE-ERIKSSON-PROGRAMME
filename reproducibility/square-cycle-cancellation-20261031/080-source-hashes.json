@@ -1,0 +1,14 @@
+[
+  {
+    "name": "SquareCycleCancellation.lean",
+    "sha256_lf": "53f5e28d51005efa694649de0f88ad35210fdfd79584a68b4c627220347d771b",
+    "expected": "53f5e28d51005efa694649de0f88ad35210fdfd79584a68b4c627220347d771b",
+    "matches": true
+  },
+  {
+    "name": "SquareCycleCancellationOracle.lean",
+    "sha256_lf": "8308c8f8d875e097413ac0e851e8ec5b8aa411b727a1956c0fa2c18808d13acc",
+    "expected": "8308c8f8d875e097413ac0e851e8ec5b8aa411b727a1956c0fa2c18808d13acc",
+    "matches": true
+  }
+]

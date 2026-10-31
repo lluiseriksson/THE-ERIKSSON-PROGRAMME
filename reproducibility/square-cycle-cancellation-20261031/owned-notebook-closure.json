@@ -1,0 +1,63 @@
+{
+  "before_final_cleanup": [
+    {
+      "id": "7",
+      "providerTabId": "browser-use:699944ca-f3b1-460c-9941-ccfe6c2cf480",
+      "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms — AIRR.SCIENCE",
+      "url": "https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v3/",
+      "browserId": "2"
+    },
+    {
+      "id": "52",
+      "providerTabId": "browser-use:da0992a0-a083-4a1d-9486-859adc8cea2d",
+      "title": "reproduce081.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/4438d1db2a617ed9d0be5f9f9a80af76cb85391c/reproducibility/square-cycle-cancellation-20261031/reproduce081.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "53",
+      "providerTabId": "9169507a-5448-4c7b-9b78-0603dd3eb165",
+      "title": "Kopia av reproduce081.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/1jYwQB2r1Jiau-GH0WYI7QRgSkGGC0fXi",
+      "browserId": "2"
+    },
+    {
+      "id": "54",
+      "providerTabId": "browser-use:a638c516-05a2-48dc-b336-f215443fc734",
+      "title": "reproduce081b.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/4438d1db2a617ed9d0be5f9f9a80af76cb85391c/reproducibility/square-cycle-cancellation-20261031/reproduce081b.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "55",
+      "providerTabId": "b5227f9b-0865-4fcd-a683-174e82dd0cb9",
+      "title": "Kopia av reproduce081b.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/1iXpVpx_aqONL9faKP3mvmkH3XBiKdZjh#scrollTo=rpGhn28bd8fi",
+      "browserId": "2"
+    }
+  ],
+  "after": [
+    {
+      "id": "7",
+      "providerTabId": "browser-use:699944ca-f3b1-460c-9941-ccfe6c2cf480",
+      "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms — AIRR.SCIENCE",
+      "url": "https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v3/",
+      "browserId": "2"
+    }
+  ],
+  "owned_ids": [
+    "50",
+    "51",
+    "52",
+    "53",
+    "54",
+    "55"
+  ],
+  "probe080_tabs_already_closed": [
+    "50",
+    "51"
+  ],
+  "all_owned_notebook_tabs_closed": true,
+  "all_owned_runtimes_disconnected": true,
+  "observed_utc": "2026-10-31T19:38:27.212Z"
+}

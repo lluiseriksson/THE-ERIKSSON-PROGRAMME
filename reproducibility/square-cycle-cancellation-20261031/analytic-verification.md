@@ -1,0 +1,13 @@
+# Analytic verification of actual square-cycle construction
+
+For distinct directions i,k and component j, let p0=(i,o,j), p1=(k,o,j), p2=(i,o+e_k,j), p3=(k,o+e_i,j). Weights are a*1_p0-3a*(1_p1+1_p2+1_p3), implemented additively even if indices coincide. No order condition is assumed.
+
+Commuting shifts give D_i A_j(o)=D_k A_j(o)+D_i A_j(o+e_k)-D_k A_j(o+e_i). Triangle inequality and the scalar identity3*(x²+y²+z²)-(x+y+z)²=(x-y)²+(x-z)²+(y-z)² prove the3-term squared-norm bound. The exact finite weighted-energy sum therefore gives Q_w(A)<=0 for a>=0, all actual cochains. This proof also covers degenerate side1 additively; no positive-mean claim there.
+
+For side n>=2, a shift is not its original site. Together with i!=k this separates p0 from all negative terms, so w^+=a*1_p0. The selected directional/component positive-part mean is a/n^d. Choose a=n^d*n²: this mean equals n². Consequently (1+mean(w^+))/n²=1+1/n², which does not tend to0. The sufficient positive-part criterion therefore does not apply. This does not contradict that theorem.
+
+Since the actual signed energy is <=0, original local divergence-free coercivity with that repair implies the same inequality with zero repair and IDENTICAL C,L,Phi,c,K,delta,radius. Apply the checked actual zero-average family theorem. Fixed c>0 and the original differentiability at0, C0=0, locally upper-quadratic penalty and local domain remain. Output finrank diverges. All compared maps are the actual constructed weighted-gradient maps; no abstract order certificate is introduced.
+
+Non-vacuity check, analytic only: for each actual finite T=R_w, take the FULL actual cochain space as output, C=id, Phi(y)=||y||²-<y,T y>. Actual Q_T<=0 proves Phi>=0. Cauchy--Schwarz and the continuous-linear operator bound give Phi(y)<=(1+||T||)*||y||². The Hodge inequality becomes ||A||²<=<A,K0 A>+||A||², true by actual K0 nonnegativity. Thus c=1 and radius=delta=1 give admissible examples; local K may grow with n, as the theorem allows. This analytic example is not an extra Lean endpoint.
+
+Originality disposition: see the explicit primary-theorem match in primary-novelty-refutation.md. It is a classical cancellation, useful to delimit the sufficient positive-part criterion and consolidate the existing dossier; no separate paper or physical/continuum/density claim. Formal status is determined ONLY by exact-source logs, not this analytic note.
