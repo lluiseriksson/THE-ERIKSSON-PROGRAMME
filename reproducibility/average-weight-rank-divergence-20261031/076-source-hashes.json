@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PhysicalAverageWeightFamily.lean",
+    "sha256_lf": "dfbda2727fa0a7cdc47b2132e0bdecabbbf9ca17d1b8871e5fdf650151ec9041",
+    "expected": "dfbda2727fa0a7cdc47b2132e0bdecabbbf9ca17d1b8871e5fdf650151ec9041",
+    "matches": true
+  },
+  {
+    "name": "PhysicalAverageWeightFamilyOracle.lean",
+    "sha256_lf": "c67bc9cffad9db563db22bd97223edbe20fcbef39fe7bbcf1d9fe36cd0f9b9ad",
+    "expected": "c67bc9cffad9db563db22bd97223edbe20fcbef39fe7bbcf1d9fe36cd0f9b9ad",
+    "matches": true
+  }
+]

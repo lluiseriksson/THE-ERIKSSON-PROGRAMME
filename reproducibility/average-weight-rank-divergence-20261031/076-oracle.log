@@ -1,0 +1,8 @@
+'YangMills.RG.positiveStripCharacter_multiplier_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.positiveStrip_multiplier_sum_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalDirectionalWeightAverage_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalStrip_nonlinear_average_rank_quantitative_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.physicalAverage_subquadratic_finrank_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalAverage_subquadratic_no_bounded_output' depends on axioms: [propext, Classical.choice, Quot.sound]

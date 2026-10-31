@@ -1,0 +1,33 @@
+{
+  "closed_at_utc": "2026-10-31T13:36:19.516Z",
+  "owned_tab_ids": [
+    "32",
+    "33",
+    "34"
+  ],
+  "owned_tabs": [
+    {
+      "id": "32",
+      "providerTabId": "browser-use:e5203b28-b7c2-4d4c-9e7b-233e5676463c",
+      "title": "eriksson-average-family-076.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/1UtItWTzawgBtMSf6qHgP_rtdcDGlg6FM",
+      "browserId": "2"
+    },
+    {
+      "id": "33",
+      "providerTabId": "browser-use:538d6451-c6ce-4ebf-bfda-9040de19c126",
+      "title": "reproduce076b.ipynb - Colab",
+      "url": "https://colab.research.google.com/github/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/faa1579baa26b7da19927a2da072e1a3641ee39b/reproducibility/average-weight-rank-divergence-20261031/reproduce076b.ipynb",
+      "browserId": "2"
+    },
+    {
+      "id": "34",
+      "providerTabId": "9abd524b-351b-49eb-a008-e274819bd7c9",
+      "title": "Kopia av reproduce076b.ipynb - Colab",
+      "url": "https://colab.research.google.com/drive/1iebWcSV965Av13EXmOx84i65fsacqHwf#scrollTo=lb77w6ewLFhd",
+      "browserId": "2"
+    }
+  ],
+  "all_owned_notebook_tabs_closed": true,
+  "other_tabs_untouched": true
+}
