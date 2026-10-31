@@ -1,0 +1,16 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "record_id": "arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00",
+  "supersedes_version_id": "arr:version:1047e4db-2050-4f7f-9f41-9c526bdbe570",
+  "parent_sha256": "b37f2fe86b7a8a526ad02f8b28491c300a9ff72d5653536bc5532e8c9468ed8f",
+  "version": "v3",
+  "version_id": "arr:version:7cf50607-2703-4920-bf35-ea247b4dc9da",
+  "sha256": "c9de923a66038ed66c3f68ecf8256b3f738a3ccf27e41f77e470bf7dc3efb5b9",
+  "changelog": {
+    "mathematics": "Adds actual global gradient/Hodge and constructed weighted-repair bounds, formally proved nonlinear observation tangent obstruction, and analytic exact regular nonlinear-sector extension with explicit hypothesis counterexamples.",
+    "scope": "Finite flat lattice forms only. C1 submersion, differentiable observation, local quadratic upper penalty and actual quadratic energy retained. No physical mass gap, interacting Hessian or continuum theorem.",
+    "reproducibility": "Formal source anchors dfd49d0b and81cf07b2 have two fresh matching Colab runs each. Candidate13page PDF c9de compiled/rendered in owned Colab at TeX794afd87, all pages visually inspected. IFT sector theorem remains analytic.",
+    "version": "Candidate v3 of the same record, superseding public v2 b37f. Private revision numbering remains separate; no fictitious parent case.",
+    "editorial": "Working paper — no admitido, authorized for exact-hash linked deposit and publication by the author. No external exact-v3 assessment, inherited score, independent peer review or editorial acceptance."
+  }
+}

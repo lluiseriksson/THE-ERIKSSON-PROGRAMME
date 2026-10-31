@@ -1,0 +1,21 @@
+{
+  "status": "PREPARED_NOT_SUBMITTED_OR_AUTHORIZED",
+  "metadata": {
+    "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms",
+    "authors": "Lluis Eriksson",
+    "abstract": "On a finite periodic lattice with unit spacing, a flat Hodge form cannot have a positive coercivity constant uniform under refinement when supplemented only by linear observations in a fixed finite-dimensional real space and linear fine-space repairs of uniformly bounded rank. We construct a real physical Fourier band, prove the necessary dimension budget and a bounded-rank linear-sector obstruction, and explain the fixed-map cross-coupling limitation through a classical singular-Schur criterion. We construct componentwise derivative repairs and prove a differentiable-observation tangent obstruction. An analytic implicit-function argument extends the obstruction to exact nonlinear regular sectors; counterexamples delimit its regularity and quadratic-energy hypotheses. The operator and full-space tangent results have separately pinned Lean evidence; the exact regular-sector extension remains analytic. These are finite flat statements, with no interacting or continuum mass-gap claim.",
+    "primary_subject": "eu-2ba1c7ad-2532-4cd7-8c5c-60f090a8700a",
+    "secondary_subjects": [],
+    "specific_topic": "Finite flat lattice Hodge forms; coarse measurements, derivative repairs and exact nonlinear regular sectors",
+    "sha256": "c9de923a66038ed66c3f68ecf8256b3f738a3ccf27e41f77e470bf7dc3efb5b9",
+    "ai_disclosure": "Prepared by Codex in the continuing programme chat, with preparing-agent source and exact-PDF visual audit. Actual served backend identity and reasoning setting are not exposed. No new external model assessed this exact candidate; prior v2 reports do not assess these bytes. No numerical rating, independence, human peer review or editorial acceptance claimed. Formal source anchors and analytic arguments are separated in the manuscript.",
+    "operator_conflict": true,
+    "rights_confirmed": true
+  },
+  "idempotency_key": "eriksson-v3-c9de923a66038ed66c3f68ecf8256b3f738a3ccf27e41f77e470bf7dc3efb5b9",
+  "pdf_source_commit": "ba71e81cb07cd35578de9aac11d0992ff78061b5",
+  "pdf_path": "papers/flat-coarse-rank/v3-candidate/flat_coarse_rank.pdf",
+  "binding_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-035\\binding-v3-prepared-not-authorized.json",
+  "authority_note": "Metadata prepared under standing author authorization; no fresh exact-artifact grant or license exists. Classification identifiers still to verify against live installed taxonomy.",
+  "verified_owner_user_id": 4
+}
