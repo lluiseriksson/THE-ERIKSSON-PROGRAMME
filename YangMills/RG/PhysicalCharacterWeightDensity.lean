@@ -86,7 +86,8 @@ theorem physicalCharacter_div_zero (hNc : 2 ≤ Nc) (rho : SUNAdjointModel Nc)
       (finBoxZModEquiv d n x - Pi.single j (1 : ZMod n)) (Pi.single j (1 : ZMod n))
     simpa only [sub_add_cancel, hj, mul_one] using h.symm
   rw [hc, sub_self]
-  simp [sunComplexPlane]
+  ext a
+  simp [sunComplexPlane, EuclideanSpace.single_apply]
 
 theorem physicalCharacter_hodge_energy (hNc : 2 ≤ Nc) (rho : SUNAdjointModel Nc)
     (j : Fin d) (chi : AddChar (Fin d → ZMod n) ℂ) (z : ℂ) :
