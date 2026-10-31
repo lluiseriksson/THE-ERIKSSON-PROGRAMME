@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PhysicalQuadraticMeanRepairOracle.lean",
+    "sha256_lf": "0e4f2f3896abf55438118ada55a1ac5fce03834b0eb0aa7d79aab1b2e774e25e",
+    "expected": "0e4f2f3896abf55438118ada55a1ac5fce03834b0eb0aa7d79aab1b2e774e25e",
+    "matches": true
+  },
+  {
+    "name": "PhysicalQuadraticMeanRepair.lean",
+    "sha256_lf": "91cc4b373f4068c9883db9e4528dc5c2bd06fc017e9cadc9c1ae5c1f5ab2142e",
+    "expected": "91cc4b373f4068c9883db9e4528dc5c2bd06fc017e9cadc9c1ae5c1f5ab2142e",
+    "matches": true
+  }
+]

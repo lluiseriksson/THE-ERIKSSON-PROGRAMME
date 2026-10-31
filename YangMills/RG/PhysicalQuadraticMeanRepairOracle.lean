@@ -1,0 +1,7 @@
+import YangMills.RG.PhysicalQuadraticMeanRepair
+#print axioms YangMills.RG.finBoxMean_poincare_energy_le
+#print axioms YangMills.RG.physicalDirectionalMean_hasFDerivAt
+#print axioms YangMills.RG.physicalMeanLift_norm_sq
+#print axioms YangMills.RG.physicalMean_poincare_energy_le
+#print axioms YangMills.RG.physicalQuadraticMean_global_coercive
+#print axioms YangMills.RG.physicalDirectionalMean_output_finite

@@ -1,0 +1,41 @@
+{
+  "prepared_not_executed": [
+    "066b"
+  ],
+  "all_owned_notebook_tabs_closed": true,
+  "rows": [
+    {
+      "release_request_utc": "2026-10-31T06:04:53.372461+00:00",
+      "run": "066",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-quadratic-mean\\066-disconnected.png",
+      "capture_sha256": "88075d5bc3d61e455771c3d9209359a35a814a9c1c9ebb285e3a40fdbdc5bebf",
+      "status": "FAIL",
+      "source_sha": "f933b7f46726397ef4a45cf03eef8ef1c5176b32",
+      "driver_started_utc": "2026-10-31T05:58:56.575409+00:00"
+    },
+    {
+      "release_request_utc": "2026-10-31T06:14:39.201187+00:00",
+      "run": "067",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-quadratic-mean\\067-disconnected.png",
+      "capture_sha256": "b094f0837bcefffef6cd3462647b680822d6c7b5c798902df842de2b95e90a17",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "source_sha": "7f37d6437a8f69a1d3fddf3dc0bcfad74c6bf9b6",
+      "driver_started_utc": "2026-10-31T06:09:03.532074+00:00"
+    },
+    {
+      "release_request_utc": "2026-10-31T06:20:33.160434+00:00",
+      "run": "067b",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-quadratic-mean\\067b-disconnected.png",
+      "capture_sha256": "566d39d27bb2cb1871a915f6c554f496f20ca8c16392251c17c31fb8bee51550",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "source_sha": "7f37d6437a8f69a1d3fddf3dc0bcfad74c6bf9b6",
+      "driver_started_utc": "2026-10-31T06:16:02.627539+00:00"
+    }
+  ],
+  "other_chat_runtime_shared": false,
+  "interval_scope": "Driver start to release request; full allocation latency and billed units unknown",
+  "all_owned_runtimes_disconnected": true,
+  "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+  "executed_runs": 3,
+  "billed_units": null
+}

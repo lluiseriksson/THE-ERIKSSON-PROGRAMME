@@ -1,0 +1,67 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_1448/2420761143.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.PhysicalQuadraticMeanRepair'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1448/2420761143.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: ills/RG/ComponentwiseFlatGradient.lean:115:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseWeightedRepair_le_gradient`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [8188/8188] Building YangMills.RG.PhysicalQuadraticMeanRepair (11s)
+trace: .> LEAN_PATH=/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-physical-quadratic-mean-20261031-066/YangMills/RG/PhysicalQuadraticMeanRepair.lean -o /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/lib/lean/YangMills/RG/PhysicalQuadraticMeanRepair.olean -i /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/lib/lean/YangMills/RG/PhysicalQuadraticMeanRepair.ilean -c /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/ir/YangMills/RG/PhysicalQuadraticMeanRepair.c --setup /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/ir/YangMills/RG/PhysicalQuadraticMeanRepair.setup.json --json
+error: YangMills/RG/PhysicalQuadraticMeanRepair.lean:28:4: Type mismatch
+  Equiv.sum_comp e.symm f
+has type
+  Eq.{u_1 + 1} (∑ i, f (e.symm i)) (∑ i, f i)
+but is expected to have type
+  Eq.{1} (↑(n ^ d))⁻¹ (↑n ^ d)⁻¹
+warning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:81:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalDirectionalMean_hasFDerivAt`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:90:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalMeanLift_norm_sq`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:95:8: This simp argument is unused:
+  card_finBox
+
+Hint: Omit it from the simp argument list.
+  simp [̵c̵a̵r̵d̵_̵f̵i̵n̵B̵o̵x̵,̵ ̵n̵s̵m̵u̵l̵_̵e̵q̵_̵m̵u̵l̵]̵[̲n̲s̲m̲u̲l̲_̲e̲q̲_̲m̲u̲l̲]̲
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: YangMills/RG/PhysicalQuadraticMeanRepair.lean:118:4: failed to compile definition, consider marking it as 'noncomputable' because it depends on 'PiLp.instNorm', which is 'noncomputable'
+warning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:121:30: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:144:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalDirectionalMean_output_finite`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:147:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalQuadraticMeanPenalty_exact`:
+  [NeZero d]
+  [NeZero n]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero n] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.PhysicalQuadraticMeanRepair
+error: build failed
+

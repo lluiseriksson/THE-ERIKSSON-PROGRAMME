@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "f933b7f46726397ef4a45cf03eef8ef1c5176b32",
+  "status": "FAIL",
+  "zip_sha256": "e00b67d11d5d21dd8fc0ec0d0b7a3a6b4dfa150e2b64c8a95c75f626e629c19e",
+  "manifest_entries": 12,
+  "error": "focal-build failed: ills/RG/ComponentwiseFlatGradient.lean:115:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseWeightedRepair_le_gradient`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n✖ [8188/8188] Building YangMills.RG.PhysicalQuadraticMeanRepair (11s)\ntrace: .> LEAN_PATH=/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-physical-quadratic-mean-20261031-066/YangMills/RG/PhysicalQuadraticMeanRepair.lean -o /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/lib/lean/YangMills/RG/PhysicalQuadraticMeanRepair.olean -i /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/lib/lean/YangMills/RG/PhysicalQuadraticMeanRepair.ilean -c /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/ir/YangMills/RG/PhysicalQuadraticMeanRepair.c --setup /content/eriksson-physical-quadratic-mean-20261031-066/.lake/build/ir/YangMills/RG/PhysicalQuadraticMeanRepair.setup.json --json\nerror: YangMills/RG/PhysicalQuadraticMeanRepair.lean:28:4: Type mismatch\n  Equiv.sum_comp e.symm f\nhas type\n  Eq.{u_1 + 1} (∑ i, f (e.symm i)) (∑ i, f i)\nbut is expected to have type\n  Eq.{1} (↑(n ^ d))⁻¹ (↑n ^ d)⁻¹\nwarning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:81:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalDirectionalMean_hasFDerivAt`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:90:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalMeanLift_norm_sq`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:95:8: This simp argument is unused:\n  card_finBox\n\nHint: Omit it from the simp argument list.\n  simp [̵c̵a̵r̵d̵_̵f̵i̵n̵B̵o̵x̵,̵ ̵n̵s̵m̵u̵l̵_̵e̵q̵_̵m̵u̵l̵]̵[̲n̲s̲m̲u̲l̲_̲e̲q̲_̲m̲u̲l̲]̲\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nerror: YangMills/RG/PhysicalQuadraticMeanRepair.lean:118:4: failed to compile definition, consider marking it as 'noncomputable' because it depends on 'PiLp.instNorm', which is 'noncomputable'\nwarning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:121:30: unused variable `p`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:144:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalDirectionalMean_output_finite`:\n  [NeZero d]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/PhysicalQuadraticMeanRepair.lean:147:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalQuadraticMeanPenalty_exact`:\n  [NeZero d]\n  [NeZero n]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero d] [NeZero n] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.PhysicalQuadraticMeanRepair\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.617,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.628,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.872,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 18.18,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 100.758,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 231.55,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-10-31T05:58:56.575409+00:00",
+  "finished_utc": "2026-10-31T06:04:53.372461+00:00"
+}
