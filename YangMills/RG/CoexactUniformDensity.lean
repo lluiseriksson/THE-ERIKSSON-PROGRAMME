@@ -13,7 +13,7 @@ theorem coexact_dilation_scale_exists (d : ℕ) (M c : ℝ) (hc : 0 < c) :
     ((1 + M) * 4 * Real.pi ^ 2 * ((d + 2 : ℕ) : ℝ) / c + 1)
   have hsq : (1 + M) * 4 * Real.pi ^ 2 * ((d + 2 : ℕ) : ℝ) / c <
       ((s + 3 : ℕ) : ℝ) ^ 2 := by
-    push_cast
+    push_cast at hs ⊢
     have hs0 : (0 : ℝ) ≤ s := Nat.cast_nonneg s
     nlinarith [sq_nonneg (s : ℝ)]
   refine ⟨s, (div_lt_iff₀ (by positivity : (0 : ℝ) < ((s + 3 : ℕ) : ℝ) ^ 2)).2 ?_⟩
