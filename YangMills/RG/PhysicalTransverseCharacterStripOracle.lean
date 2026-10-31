@@ -1,0 +1,7 @@
+import YangMills.RG.PhysicalTransverseCharacterStrip
+#print axioms YangMills.RG.transversePhysicalCharacter_injective
+#print axioms YangMills.RG.normalizedTransversePhysicalCharacters_orthonormal
+#print axioms YangMills.RG.normalizedTransversePhysicalCharacter_div_zero
+#print axioms YangMills.RG.normalizedTransversePhysicalCharacters_span_finrank
+#print axioms YangMills.RG.normalizedTransversePhysicalCharacter_weighted_energy
+#print axioms YangMills.RG.normalizedTransversePhysicalCharacters_energy_sum
