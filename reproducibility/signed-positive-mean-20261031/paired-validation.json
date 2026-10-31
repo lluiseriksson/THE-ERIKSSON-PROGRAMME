@@ -1,0 +1,98 @@
+{
+  "actual_signed_family_rank_divergence_complete": true,
+  "mean_condition": "Spatial mean of pointwise max(w,0), NOT max of ordinary signed mean",
+  "volume_density_claim": false,
+  "fixed_positive_c_retained": true,
+  "approved_v4_pdf_changed": false,
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "original_operator_positive_assumed": false,
+  "original_quadratic_penalty_retained": true,
+  "original_weight_lower_bound_assumed": false,
+  "original_priority_claimed": false,
+  "independent_review": false,
+  "abstract_comparison_certificate_assumed": false,
+  "uniform_K_delta_radius_assumed": false,
+  "exact_endpoints": [
+    "signedWeightPositivePart_nonneg",
+    "componentwiseWeightedRepair_mono",
+    "signedWeightPositivePart_energy_le",
+    "physicalSignedPositiveMean_rank_quantitative_bound",
+    "physicalSignedPositiveMean_finrank_tendsto",
+    "physicalSignedPositiveMean_no_bounded_output"
+  ],
+  "runtime_closure": {
+    "all_owned_runtimes_disconnected": true,
+    "interval_scope": "Driver start to final report before automatic release request; complete allocation/release latency and billed units unknown",
+    "billed_units": null,
+    "prepared_not_executed": [
+      "a95b615a driver labels changed a Mathlib-pin prefix; fixed before any run in1641f3d8"
+    ],
+    "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+    "executed_runs": 2,
+    "other_chat_runtime_shared": false,
+    "failed_compilations": [],
+    "rows": [
+      {
+        "capture_sha256": "d17b36379c638fefd82cf60ef9a2b10ce68d75e85686a2bc4fa2d19a357af1d2",
+        "report_finished_utc": "2026-10-31T17:11:28.009141+00:00",
+        "release_request_utc": null,
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "disconnection_capture_saved_utc": "2026-10-31T17:11:53.1778824Z",
+        "run": "077",
+        "driver_started_utc": "2026-10-31T17:03:20.019500+00:00",
+        "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_signed-positive-mean\\077-disconnected.jpg"
+      },
+      {
+        "capture_sha256": "e9384be9cae673b386855510f1e3481bcae63c67dd330f8ccafd5e82de94a277",
+        "report_finished_utc": "2026-10-31T17:18:01.153508+00:00",
+        "release_request_utc": null,
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "disconnection_capture_saved_utc": "2026-10-31T17:18:40.8829354Z",
+        "run": "077b",
+        "driver_started_utc": "2026-10-31T17:13:09.627786+00:00",
+        "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_signed-positive-mean\\077b-disconnected.jpg"
+      }
+    ],
+    "all_owned_notebook_tabs_closed": true
+  },
+  "first": {
+    "status": "SIGNED_POSITIVE_MEAN_FAMILY_VALIDATED",
+    "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+    "zip_sha256": "cc39b45b6bb1326989c31e43a9943d6f5bd6e65a2c418d05d8a5cf458cfda7c1",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "5c80c179aa9f2dbd20e113e9d1967e4a45408314f4b8c4501b6b34fe442753c8",
+    "oracle_log_sha256": "67385ac63ad3eb763afc56409e8f9fda0990f0e637dd1a52a2e38e640278a108",
+    "source_manifest_sha256": "34e492c3bace1adcfd120ca7c67693f7cb683efba91ac0c3dd9fee5c20fb2f1b",
+    "started_utc": "2026-10-31T17:03:20.0195000+00:00",
+    "finished_utc": "2026-10-31T17:11:28.0091410+00:00",
+    "independent_review": false,
+    "scope": "Actual signed weights with no lower bound; finite quantitative bound and output-rank divergence controlled by the mean of pointwise positive parts o(n^2), fixed c>0 and original local nonlinear/quadratic hypotheses",
+    "windows_lean_executed": false
+  },
+  "actual_signed_weight_order_derived": true,
+  "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+  "ordinary_signed_mean_counterexample_formalized": false,
+  "second": {
+    "status": "SIGNED_POSITIVE_MEAN_FAMILY_VALIDATED",
+    "source_sha": "810785b17b2f1bb14dd6caa5435865eb51a86ef3",
+    "zip_sha256": "efd7172ac6984242dea8c4e003681ae6f241e770b0eb157c7adc882b478f36bf",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "5c80c179aa9f2dbd20e113e9d1967e4a45408314f4b8c4501b6b34fe442753c8",
+    "oracle_log_sha256": "67385ac63ad3eb763afc56409e8f9fda0990f0e637dd1a52a2e38e640278a108",
+    "source_manifest_sha256": "34e492c3bace1adcfd120ca7c67693f7cb683efba91ac0c3dd9fee5c20fb2f1b",
+    "started_utc": "2026-10-31T17:13:09.6277860+00:00",
+    "finished_utc": "2026-10-31T17:18:01.1535080+00:00",
+    "independent_review": false,
+    "scope": "Actual signed weights with no lower bound; finite quantitative bound and output-rank divergence controlled by the mean of pointwise positive parts o(n^2), fixed c>0 and original local nonlinear/quadratic hypotheses",
+    "windows_lean_executed": false
+  },
+  "actual_positive_part_constructed_and_nonnegative_proved": true,
+  "physical_hypotheses_eliminated": [],
+  "new_AIRR_publication": false
+}

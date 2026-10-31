@@ -1,0 +1,8 @@
+'YangMills.RG.signedWeightPositivePart_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.componentwiseWeightedRepair_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.signedWeightPositivePart_energy_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalSignedPositiveMean_rank_quantitative_bound' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.RG.physicalSignedPositiveMean_finrank_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalSignedPositiveMean_no_bounded_output' depends on axioms: [propext, Classical.choice, Quot.sound]
