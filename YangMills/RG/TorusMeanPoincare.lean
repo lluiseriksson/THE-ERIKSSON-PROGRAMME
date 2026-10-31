@@ -74,7 +74,8 @@ def torusUnit (i : Fin D) : Fin D → ZMod n := Pi.single i 1
 theorem torus_coordinate_decomposition (a : Fin D → ZMod n) :
     a = ∑ i : Fin D, (a i).val • torusUnit i := by
   classical
-  have hsingle (i : Fin D) : (a i).val • torusUnit i = Pi.single i (a i) := by
+  have hsingle (i : Fin D) : (a i).val • torusUnit (n := n) i =
+      (Pi.single i (a i) : Fin D → ZMod n) := by
     funext j
     by_cases hij : j = i
     · subst j
