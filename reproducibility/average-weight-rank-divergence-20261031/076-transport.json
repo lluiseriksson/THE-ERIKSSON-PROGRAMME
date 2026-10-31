@@ -1,0 +1,13 @@
+{
+  "driver_head": "faa1579baa26b7da19927a2da072e1a3641ee39b",
+  "driver_sha256_lf": "fff9d5951d3cdecf84b35be99a455aae9481fec53b4555bcf229bb3ca1883beb",
+  "initial_lookup": "No commit found for abbreviated ref faa1579b while push was pending",
+  "own_notebook": "https://colab.research.google.com/drive/1UtItWTzawgBtMSf6qHgP_rtdcDGlg6FM",
+  "mathematical_execution_repeated_for_transport_issue": false,
+  "run": "076",
+  "save_recovery": "Direct UI-tool write to D exceeded tool timeout and reset its JS kernel; released notebook output remained intact, ZIP/capture staged temporarily in C then native-copied to D and validated",
+  "source_sha": "ac60c0df885d8866329a839e2b4e73c90595d806",
+  "gemini_used": false,
+  "fallback": "Exact prepared driver pasted into new own normal Colab code cell; original source and oracle guards unchanged",
+  "new_auth_grants_or_quota_changes": false
+}

@@ -1,0 +1,6 @@
+'YangMills.RG.character_amplitude_forward_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalCharacter_gradient_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalCharacter_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalCharacter_weightedRepair_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalCharacter_div_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalCharacter_hodge_energy' depends on axioms: [propext, Classical.choice, Quot.sound]

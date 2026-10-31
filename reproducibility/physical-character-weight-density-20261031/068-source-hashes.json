@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PhysicalCharacterWeightDensity.lean",
+    "sha256_lf": "1cdc249e60640dafc879a04440c6b35f8274d8bbb660fadebb24f23693513e04",
+    "expected": "1cdc249e60640dafc879a04440c6b35f8274d8bbb660fadebb24f23693513e04",
+    "matches": true
+  },
+  {
+    "name": "PhysicalCharacterWeightDensityOracle.lean",
+    "sha256_lf": "30bb1c95ff682e7c309b7917e178f404776ebaa06042735d8371d69fb644f739",
+    "expected": "30bb1c95ff682e7c309b7917e178f404776ebaa06042735d8371d69fb644f739",
+    "matches": true
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "unit": 47,
+  "status": "PAPER_DERIVATION_AND_EXPLICIT_COUNTEREXAMPLE",
+  "definition_source_sha": "8f1fb22eef72dbab56b0daba8cc604f91ca4df56",
+  "lean_verified": false,
+  "new_lean_oracle_executed": false,
+  "colab_allocations": 0,
+  "independent_review": false,
+  "original_priority_claimed": false,
+  "checks": {
+    "weighted_trace": "Exactly2(1+b_ij)*sum lambda_r; no assumption B(E) subset E",
+    "counterexample": "Actual D2 n4 Nc2 transverse field: bmax1, gradient24, repair64, total88>48",
+    "actual_wraparound": "finBoxZModEquiv_shift",
+    "kernel": "Differentiability at zero plus local quadratic upper bound implies coercivity on ker derivative",
+    "formal_status": "All new trace/character/kernel composition statements remain unformalized",
+    "trace_complement": "Nonnegative weights retained; both Hodge and repair positive",
+    "orthonormality": "Explicit geometric series for distinct r,s and real polarization; 2R<n",
+    "rank_integrality": "Trace<c implies q>=2R for each fixedR",
+    "normalization": "Counting N=n^D and N^(-1/2) for each character",
+    "actual_flat_divergence": "torusPhysicalEmbed_flat_div_apply: transverse character independent of j",
+    "gradient_density": "Exactly lambda_r/N in channel(i,j), zero in others, for each alpha",
+    "hodge_factor": "torusPhysicalEmbed_flat_hodge_eq_stencil; one unordered plaquette, no factor2",
+    "actual_two_internal_coordinate_isometry": "sunComplexPlane_norm_sq"
+  },
+  "refutations": [
+    "Directional spatial average does not dominate weighted energy pointwise, even for actual divergence-free finite fields"
+  ],
+  "paper_level_reduction": "For nonnegative weights, a fixed transverse directional average o(n^2) suffices for output-rank divergence via explicit derived strip; formalization pending",
+  "new_physical_hypotheses_eliminated": [],
+  "new_publication": false,
+  "remaining": "Formalize actual per-site transverse character density and positive compressed-trace rank lemma"
+}

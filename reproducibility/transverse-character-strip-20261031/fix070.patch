@@ -1,0 +1,50 @@
+diff --git a/YangMills/RG/PhysicalTransverseCharacterStrip.lean b/YangMills/RG/PhysicalTransverseCharacterStrip.lean
+index a5880a2f..6f4c00ed 100644
+--- a/YangMills/RG/PhysicalTransverseCharacterStrip.lean
++++ b/YangMills/RG/PhysicalTransverseCharacterStrip.lean
+@@ -33,7 +33,7 @@ theorem torusPhysicalEmbed_real_inner (hNc : 2 ≤ Nc) (j : Fin d)
+   simp_rw [hp]
+   simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true]
+   calc
+-    _ = ∑ x : Fin d → ZMod n, (f x).re * (g x).re + (f x).im * (g x).im :=
++    _ = ∑ x : Fin d → ZMod n, ((f x).re * (g x).re + (f x).im * (g x).im) :=
+       Equiv.sum_comp (finBoxZModEquiv d n) _
+     _ = _ := by
+       rw [show (∑ x, (starRingEnd ℂ) (f x) * g x).re =
+@@ -60,7 +60,12 @@ theorem physicalCharacter_real_inner (hNc : 2 ≤ Nc) (j : Fin d)
+         ring
+       _ = _ := by rw [addChar_counting_gram]
+   rw [hc]
+-  by_cases heq : chi = psi <;> simp [heq, Complex.mul_re] <;> ring
++  by_cases heq : chi = psi
++  · simp only [if_pos heq]
++    have hcard : (Fintype.card (Fin d → ZMod n) : ℂ) = (((n : ℝ)^d : ℝ) : ℂ) := by simp
++    rw [hcard, Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im]
++    simp [Complex.mul_re] <;> ring
++  · simp [heq]
+ end Pairing
+ 
+ section Strip
+@@ -108,7 +113,8 @@ theorem physicalCharacterNormalization_sq :
+ theorem physicalCharacterNormalization_mass :
+     physicalCharacterNormalization d n ^ 2 * (n : ℝ)^d = 1 := by
+   rw [physicalCharacterNormalization_sq]
+-  exact inv_mul_cancel₀ (by positivity)
++  have hn : (0 : ℝ) < n := by exact_mod_cast Nat.pos_of_ne_zero (NeZero.ne n)
++  exact inv_mul_cancel₀ (ne_of_gt (pow_pos hn d))
+ 
+ def physicalCharacterQuadrature (b : Bool) : ℂ := if b then Complex.I else 1
+ 
+@@ -200,10 +206,10 @@ theorem normalizedTransversePhysicalCharacter_hodge_energy (hNc : 2 ≤ Nc)
+ 
+ theorem normalizedTransversePhysicalCharacters_energy_sum (hNc : 2 ≤ Nc)
+     (rho : SUNAdjointModel Nc) (i j : Fin d) (w : PhysicalGradientIndex d n → ℝ) :
+-    (∑ p : Fin R × Bool, inner ℝ (normalizedTransversePhysicalCharacter hNc i j p.1 p.2)
++    (∑ p : Fin R × Bool, (inner ℝ (normalizedTransversePhysicalCharacter hNc i j p.1 p.2)
+         (flatGaugeHodgeK0CLM d n Nc rho (normalizedTransversePhysicalCharacter hNc i j p.1 p.2)) +
+       inner ℝ (normalizedTransversePhysicalCharacter hNc i j p.1 p.2)
+-        (componentwiseWeightedRepairCLM w (normalizedTransversePhysicalCharacter hNc i j p.1 p.2))) =
++        (componentwiseWeightedRepairCLM w (normalizedTransversePhysicalCharacter hNc i j p.1 p.2)))) =
+       2 * (1 + physicalDirectionalWeightAverage w i j) *
+         ∑ r : Fin R, ‖ZMod.stdAddChar ((r.val + 1 : ℕ) : ZMod n) - 1‖ ^ 2 := by
+   classical

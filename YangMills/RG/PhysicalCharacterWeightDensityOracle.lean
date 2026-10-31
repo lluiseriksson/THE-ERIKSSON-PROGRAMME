@@ -1,0 +1,7 @@
+import YangMills.RG.PhysicalCharacterWeightDensity
+#print axioms YangMills.RG.character_amplitude_forward_density
+#print axioms YangMills.RG.physicalCharacter_gradient_density
+#print axioms YangMills.RG.physicalCharacter_norm_sq
+#print axioms YangMills.RG.physicalCharacter_weightedRepair_energy
+#print axioms YangMills.RG.physicalCharacter_div_zero
+#print axioms YangMills.RG.physicalCharacter_hodge_energy

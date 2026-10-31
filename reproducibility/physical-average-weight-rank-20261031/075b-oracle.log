@@ -1,0 +1,6 @@
+'YangMills.RG.local_derivative_kernel_quadratic_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.local_nonlinear_compressed_trace_rank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalTransverseStripSpace_div_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalFlatWeightedOperator_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalStripCompression_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.physicalStrip_nonlinear_average_rank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

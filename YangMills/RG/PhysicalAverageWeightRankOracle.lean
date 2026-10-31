@@ -1,0 +1,7 @@
+import YangMills.RG.PhysicalAverageWeightRank
+#print axioms YangMills.RG.local_derivative_kernel_quadratic_lower
+#print axioms YangMills.RG.local_nonlinear_compressed_trace_rank_bound
+#print axioms YangMills.RG.physicalTransverseStripSpace_div_zero
+#print axioms YangMills.RG.physicalFlatWeightedOperator_nonneg
+#print axioms YangMills.RG.physicalStripCompression_trace
+#print axioms YangMills.RG.physicalStrip_nonlinear_average_rank_bound

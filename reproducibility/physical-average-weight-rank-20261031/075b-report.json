@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+  "started_utc": "2026-10-31T12:12:51.420708+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.516,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.067,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.475,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.821,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 15.164,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 99.464,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 0,
+      "seconds": 282.699,
+      "log": "focal-build.log"
+    },
+    {
+      "name": "oracle",
+      "exit_code": 0,
+      "seconds": 15.322,
+      "log": "oracle.log"
+    }
+  ],
+  "status": "FOCAL_REPRODUCTION_PASS",
+  "independent_review": false,
+  "target_olean_sha256": "e2e28a6b3c5a8894938ca965b3184a3f5a16726627a1b5e682611345bccb4f7f",
+  "oracle_validator_selftests": [
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": false,
+      "mode": "normal"
+    },
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": true,
+      "mode": "optimized"
+    }
+  ],
+  "oracle_reports": [
+    {
+      "name": "YangMills.RG.local_derivative_kernel_quadratic_lower",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.local_nonlinear_compressed_trace_rank_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.physicalTransverseStripSpace_div_zero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.physicalFlatWeightedOperator_nonneg",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.physicalStripCompression_trace",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.physicalStrip_nonlinear_average_rank_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "finished_utc": "2026-10-31T12:19:50.357212+00:00"
+}

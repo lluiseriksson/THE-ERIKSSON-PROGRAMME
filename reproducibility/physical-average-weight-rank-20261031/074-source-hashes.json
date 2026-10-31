@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PhysicalAverageWeightRankOracle.lean",
+    "sha256_lf": "265a86efa7e4a5a5c80ee29bc270e6c1b4d1808f2b9a0864cc5ec3f0799683e3",
+    "expected": "265a86efa7e4a5a5c80ee29bc270e6c1b4d1808f2b9a0864cc5ec3f0799683e3",
+    "matches": true
+  },
+  {
+    "name": "PhysicalAverageWeightRank.lean",
+    "sha256_lf": "0bc0532ba4f1f31594859f7cfb5166f9396c18b7d8b142137610f8ae23d848bf",
+    "expected": "0bc0532ba4f1f31594859f7cfb5166f9396c18b7d8b142137610f8ae23d848bf",
+    "matches": true
+  }
+]

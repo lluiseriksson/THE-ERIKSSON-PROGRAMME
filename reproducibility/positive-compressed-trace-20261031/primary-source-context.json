@@ -1,0 +1,28 @@
+{
+  "primary_sources": [
+    {
+      "used": "LinearMap.trace_eq_sum_inner",
+      "path": "Mathlib/Analysis/InnerProductSpace/Trace.lean",
+      "blob": "a14fc04af3465796ed6d1f53cc05d65f04e8334d"
+    },
+    {
+      "used": "Orthonormal.exists_orthonormalBasis_extension; stdOrthonormalBasis",
+      "path": "Mathlib/Analysis/InnerProductSpace/PiL2.lean",
+      "blob": "024d1092ddbb007b7619a5250b67d8a8586d4c5d"
+    },
+    {
+      "used": "LinearMap.adjoint_inner_right",
+      "path": "Mathlib/Analysis/InnerProductSpace/Adjoint.lean",
+      "blob": "625903e6e24a63e300f33171f67ab5159c139217"
+    },
+    {
+      "used": "finrank_range_add_finrank_ker",
+      "path": "Mathlib/LinearAlgebra/FiniteDimensional/Lemmas.lean",
+      "blob": "218606ff59b7e73cb1ddb228d63a6b982f287851"
+    }
+  ],
+  "note": "Classical finite trace and rank-nullity mechanism; exact pinned primary source inspected, not evidence of originality",
+  "independent_review": false,
+  "pin": "07642720480157414db592fa85b626dafb71355b",
+  "original_priority_claimed": false
+}

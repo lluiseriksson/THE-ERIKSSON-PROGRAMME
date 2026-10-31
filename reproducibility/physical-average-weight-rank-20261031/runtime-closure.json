@@ -1,0 +1,47 @@
+{
+  "billed_units": null,
+  "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+  "executed_runs": 3,
+  "all_owned_notebook_tabs_closed": true,
+  "rows": [
+    {
+      "driver_started_utc": "2026-10-31T11:55:41.091633+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-average-weight-rank\\074-disconnected.jpg",
+      "source_sha": "bd013f56e4c97fda24c575afa685c7422f78e50a",
+      "release_request_utc": null,
+      "report_finished_utc": "2026-10-31T12:00:58.037688+00:00",
+      "capture_sha256": "eb8f2c878da995837bf776de5674c0d9143ef98a6b93b6fe1d9d7fd9a8ed7ee3",
+      "run": "074",
+      "status": "FAIL",
+      "disconnection_capture_saved_utc": "2026-10-31T12:02:31.9459112Z"
+    },
+    {
+      "driver_started_utc": "2026-10-31T12:04:27.975913+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-average-weight-rank\\075-disconnected.jpg",
+      "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+      "release_request_utc": null,
+      "report_finished_utc": "2026-10-31T12:10:10.626007+00:00",
+      "capture_sha256": "4b056d47572b31eb584c1af4926e00a87eff5387d359934e7af18b3153b3c5f6",
+      "run": "075",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "disconnection_capture_saved_utc": "2026-10-31T12:10:46.2869994Z"
+    },
+    {
+      "driver_started_utc": "2026-10-31T12:12:51.420708+00:00",
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-average-weight-rank\\075b-disconnected.jpg",
+      "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+      "release_request_utc": null,
+      "report_finished_utc": "2026-10-31T12:19:50.357212+00:00",
+      "capture_sha256": "6c961341dec107eec6e64ce90c2eb9e8bab3912db9496d36827d1dd5c4d077ed",
+      "run": "075b",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "disconnection_capture_saved_utc": "2026-10-31T12:19:58.7169224Z"
+    }
+  ],
+  "all_owned_runtimes_disconnected": true,
+  "prepared_not_executed": [
+    "074b"
+  ],
+  "other_chat_runtime_shared": false,
+  "interval_scope": "Driver start to final report timestamp, before automatic release request; complete allocation/release latency and billed units unknown"
+}

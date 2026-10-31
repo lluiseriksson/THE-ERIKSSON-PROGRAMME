@@ -1,0 +1,36 @@
+{
+  "all_owned_runtimes_disconnected": true,
+  "other_chat_runtime_shared": false,
+  "all_owned_notebook_tabs_closed": true,
+  "executed_runs": 2,
+  "billed_units": null,
+  "interval_scope": "Driver start to final report timestamp before automatic release request; complete allocation/release latency and billed units unknown",
+  "rows": [
+    {
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_average-weight-rank-divergence\\076-disconnected.jpg",
+      "driver_started_utc": "2026-10-31T13:14:09.438387+00:00",
+      "report_finished_utc": "2026-10-31T13:19:38.781088+00:00",
+      "run": "076",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "release_request_utc": null,
+      "capture_sha256": "26407daebc06bdfdb23cd930ddb31e727835b0d2b8e11dfe8f1c2cbf8c76c207",
+      "source_sha": "ac60c0df885d8866329a839e2b4e73c90595d806",
+      "disconnection_capture_saved_utc": "2026-10-31T13:24:12.8469101Z"
+    },
+    {
+      "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_average-weight-rank-divergence\\076b-disconnected.jpg",
+      "driver_started_utc": "2026-10-31T13:28:01.451247+00:00",
+      "report_finished_utc": "2026-10-31T13:34:28.204617+00:00",
+      "run": "076b",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "release_request_utc": null,
+      "capture_sha256": "c00879957fe978eb6e1f732cad9ab8564da46fd134d5e4cf3bd59986f0954ce1",
+      "source_sha": "ac60c0df885d8866329a839e2b4e73c90595d806",
+      "disconnection_capture_saved_utc": "2026-10-31T13:35:27.0083024Z"
+    }
+  ],
+  "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+  "failed_compilations": [],
+  "transport_issues_are_not_mathematical_failures": true,
+  "prepared_not_executed": []
+}

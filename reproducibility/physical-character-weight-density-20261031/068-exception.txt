@@ -1,0 +1,75 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_738/1711633925.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.PhysicalCharacterWeightDensity'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_738/1711633925.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:88:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseFlatGradient_energy`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:100:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseWeightedRepair_energy`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:115:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseWeightedRepair_le_gradient`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [8186/8186] Building YangMills.RG.PhysicalCharacterWeightDensity (5.2s)
+trace: .> LEAN_PATH=/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-physical-character-weight-density-20261031-068/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-physical-character-weight-density-20261031-068/YangMills/RG/PhysicalCharacterWeightDensity.lean -o /content/eriksson-physical-character-weight-density-20261031-068/.lake/build/lib/lean/YangMills/RG/PhysicalCharacterWeightDensity.olean -i /content/eriksson-physical-character-weight-density-20261031-068/.lake/build/lib/lean/YangMills/RG/PhysicalCharacterWeightDensity.ilean -c /content/eriksson-physical-character-weight-density-20261031-068/.lake/build/ir/YangMills/RG/PhysicalCharacterWeightDensity.c --setup /content/eriksson-physical-character-weight-density-20261031-068/.lake/build/ir/YangMills/RG/PhysicalCharacterWeightDensity.setup.json --json
+warning: YangMills/RG/PhysicalCharacterWeightDensity.lean:42:19: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only [hp,̵ ̵i̵f̵_̵p̵o̵s̵ ̵r̵f̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/PhysicalCharacterWeightDensity.lean:47:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCharacter_norm_sq`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalCharacterWeightDensity.lean:51:24: This simp argument is unused:
+  norm_mul
+
+Hint: Omit it from the simp argument list.
+  simp [countingL2Mass, n̵o̵r̵m̵_̵m̵u̵l̵,̵ ̵AddChar.norm_apply, nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: YangMills/RG/PhysicalCharacterWeightDensity.lean:79:50: unsolved goals
+case h
+d n Nc : ℕ
+inst✝² : NeZero d
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+rho : SUNAdjointModel Nc
+j : Fin d
+chi : AddChar (Fin d → ZMod n) ℂ
+z : ℂ
+hj : chi (Pi.single j 1) = 1
+x : FinBox d n
+hc : chi ((finBoxZModEquiv d n) x - Pi.single j 1) = chi ((finBoxZModEquiv d n) x)
+⊢ EuclideanSpace.single ⟨0, ⋯⟩ 0 + EuclideanSpace.single ⟨1, ⋯⟩ 0 = 0
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.PhysicalCharacterWeightDensity
+error: build failed
+

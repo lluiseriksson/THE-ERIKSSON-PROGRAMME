@@ -1,0 +1,105 @@
+{
+  "finite_physical_average_weight_rank_complete": true,
+  "actual_strip_orthonormal_basis_constructed": true,
+  "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+  "local_kernel_coercivity_derived": true,
+  "weight_scope": "Nonnegative actual componentwise finite flat repair weights",
+  "second": {
+    "status": "PHYSICAL_AVERAGE_WEIGHT_RANK_VALIDATED",
+    "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+    "zip_sha256": "4169504dfb0329151fa1e2ebdc361538bab1fff2547ff5ad7a5155af4abcf74b",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "e2e28a6b3c5a8894938ca965b3184a3f5a16726627a1b5e682611345bccb4f7f",
+    "oracle_log_sha256": "e61ffb8a579a2437e56c6f70f61cbc240361c103cc3fd32f35ce9ac1181af1b3",
+    "source_manifest_sha256": "2831cd499dc07524a913c3d2b7314359b2981fe2272296ae0c5f8356c9c3e98f",
+    "started_utc": "2026-10-31T12:12:51.4207080+00:00",
+    "finished_utc": "2026-10-31T12:19:50.3572120+00:00",
+    "independent_review": false,
+    "scope": "Actual finite physical average-weight rank inequality from local nonlinear coercivity; quantitative multiplier/asymptotic tail remains open",
+    "windows_lean_executed": false
+  },
+  "pointwise_cap_comparison_assumed": false,
+  "band_dimension_certificate_assumed": false,
+  "asymptotic_rank_divergence_complete": false,
+  "independent_review": false,
+  "runtime_closure": {
+    "billed_units": null,
+    "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+    "executed_runs": 3,
+    "all_owned_notebook_tabs_closed": true,
+    "rows": [
+      {
+        "driver_started_utc": "2026-10-31T11:55:41.091633+00:00",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-average-weight-rank\\074-disconnected.jpg",
+        "source_sha": "bd013f56e4c97fda24c575afa685c7422f78e50a",
+        "release_request_utc": null,
+        "report_finished_utc": "2026-10-31T12:00:58.037688+00:00",
+        "capture_sha256": "eb8f2c878da995837bf776de5674c0d9143ef98a6b93b6fe1d9d7fd9a8ed7ee3",
+        "run": "074",
+        "status": "FAIL",
+        "disconnection_capture_saved_utc": "2026-10-31T12:02:31.9459112Z"
+      },
+      {
+        "driver_started_utc": "2026-10-31T12:04:27.975913+00:00",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-average-weight-rank\\075-disconnected.jpg",
+        "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+        "release_request_utc": null,
+        "report_finished_utc": "2026-10-31T12:10:10.626007+00:00",
+        "capture_sha256": "4b056d47572b31eb584c1af4926e00a87eff5387d359934e7af18b3153b3c5f6",
+        "run": "075",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "disconnection_capture_saved_utc": "2026-10-31T12:10:46.2869994Z"
+      },
+      {
+        "driver_started_utc": "2026-10-31T12:12:51.420708+00:00",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_physical-average-weight-rank\\075b-disconnected.jpg",
+        "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+        "release_request_utc": null,
+        "report_finished_utc": "2026-10-31T12:19:50.357212+00:00",
+        "capture_sha256": "6c961341dec107eec6e64ce90c2eb9e8bab3912db9496d36827d1dd5c4d077ed",
+        "run": "075b",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "disconnection_capture_saved_utc": "2026-10-31T12:19:58.7169224Z"
+      }
+    ],
+    "all_owned_runtimes_disconnected": true,
+    "prepared_not_executed": [
+      "074b"
+    ],
+    "other_chat_runtime_shared": false,
+    "interval_scope": "Driver start to final report timestamp, before automatic release request; complete allocation/release latency and billed units unknown"
+  },
+  "physical_hypotheses_eliminated": [],
+  "exact_endpoints": [
+    "local_derivative_kernel_quadratic_lower",
+    "local_nonlinear_compressed_trace_rank_bound",
+    "physicalTransverseStripSpace_div_zero",
+    "physicalFlatWeightedOperator_nonneg",
+    "physicalStripCompression_trace",
+    "physicalStrip_nonlinear_average_rank_bound"
+  ],
+  "first": {
+    "status": "PHYSICAL_AVERAGE_WEIGHT_RANK_VALIDATED",
+    "source_sha": "d03ab7ef930a2ad9de6346803bad30c395e9bfc9",
+    "zip_sha256": "cf3f27cab0af49b91b261398ccf2fccb93a70dfbebda7b7c9ab42507f1cef1f2",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "e2e28a6b3c5a8894938ca965b3184a3f5a16726627a1b5e682611345bccb4f7f",
+    "oracle_log_sha256": "e61ffb8a579a2437e56c6f70f61cbc240361c103cc3fd32f35ce9ac1181af1b3",
+    "source_manifest_sha256": "2831cd499dc07524a913c3d2b7314359b2981fe2272296ae0c5f8356c9c3e98f",
+    "started_utc": "2026-10-31T12:04:27.9759130+00:00",
+    "finished_utc": "2026-10-31T12:10:10.6260070+00:00",
+    "independent_review": false,
+    "scope": "Actual finite physical average-weight rank inequality from local nonlinear coercivity; quantitative multiplier/asymptotic tail remains open",
+    "windows_lean_executed": false
+  },
+  "actual_compressed_trace_energy_sum_derived": true,
+  "new_publication": false,
+  "original_priority_claimed": false,
+  "actual_positive_form_derived": true,
+  "actual_strip_divergence_derived": true,
+  "status": "TWO_FRESH_CLONES_MATCHED"
+}

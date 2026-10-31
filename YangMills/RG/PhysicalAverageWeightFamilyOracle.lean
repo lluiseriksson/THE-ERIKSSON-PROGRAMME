@@ -1,0 +1,7 @@
+import YangMills.RG.PhysicalAverageWeightFamily
+#print axioms YangMills.RG.positiveStripCharacter_multiplier_bound
+#print axioms YangMills.RG.positiveStrip_multiplier_sum_sq_le
+#print axioms YangMills.RG.physicalDirectionalWeightAverage_nonneg
+#print axioms YangMills.RG.physicalStrip_nonlinear_average_rank_quantitative_bound
+#print axioms YangMills.RG.physicalAverage_subquadratic_finrank_tendsto
+#print axioms YangMills.RG.physicalAverage_subquadratic_no_bounded_output

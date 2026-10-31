@@ -1,0 +1,68 @@
+{
+  "original_priority_claimed": false,
+  "unit": 50,
+  "tradeoff": "C2 observation and nonnegative C1 penalty at its zero minimum suffice for kernel limit; stronger observation premise, not universal hypothesis elimination",
+  "pr29": "20/41;TermSource=0",
+  "refutations": [
+    "Continuous or globally Lipschitz nonnegative penalty cannot replace the quadratic upper hypothesis, even for polynomial scalar observation with DC(0)=0",
+    "C1 observation and C1 nonnegative penalty, both with zero derivative, also do not suffice"
+  ],
+  "proof_checks": [
+    "Frechet remainder quotients ->0 explicitly",
+    "Nonzero-point derivatives and operator norms ->0 at zero",
+    "Composition exponents multiply to2",
+    "Q=0 gives exact global coercivity but false tangent-kernel conclusion on every nonzero vector",
+    "Any nonnegative actual quadratic energy only strengthens the global inequality",
+    "No change to existing quadratic-penalty theorem",
+    "Second-order directional C expansion plus Phi(y)=o(norm(y)) proves o(t^2) with zeros included"
+  ],
+  "airr_v3_unchanged": true,
+  "exact_examples": [
+    {
+      "penalty": "c*abs(y)",
+      "quadratic_upper_ratio": "c/abs(y) -> infinity",
+      "derivative_at_zero": "0",
+      "observation": "norm(x)^2",
+      "output_real_dimension": 1,
+      "composition": "c*norm(x)^2"
+    },
+    {
+      "both_C1": true,
+      "penalty": "c*abs(y)^(4/3)",
+      "both_derivatives_at_zero": "0",
+      "quadratic_upper_ratio": "c*abs(y)^(-2/3) -> infinity",
+      "observation": "norm(x)^(3/2)",
+      "output_real_dimension": 1,
+      "composition": "c*norm(x)^2"
+    }
+  ],
+  "windows_lean_executed": false,
+  "status": "PAPER_PROOF_AND_COUNTEREXAMPLE",
+  "definition_source_sha": "41530cd67e67e2b9b6d749b811a7d13e0f568ecf",
+  "new_publication": false,
+  "independent_review": false,
+  "sources": [
+    "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/InnerProductSpace/Calculus.html",
+    "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Pow/Deriv.html"
+  ],
+  "next": "Positive compressed-trace/rank and derivative-kernel composition using original quadratic upper penalty hypothesis",
+  "new_physical_hypotheses_eliminated": [],
+  "source_context": "Primary live documentation consulted as calculus background, not pinned compilation proof",
+  "inputs": [
+    {
+      "sha256": "6dca72eb0bd311ad124551ea0d336772fd8396196b8d9ca36c68581b3ac6bed7",
+      "path": "YangMills/RG/NonlinearTangentCoercivity.lean"
+    },
+    {
+      "sha256": "4a1a4933bf6e36ecc084f34af4580a3435b7bdc43220641fb3aa8b338dd3412d",
+      "path": "YangMills/RG/TransverseFlatBand.lean"
+    },
+    {
+      "sha256": "8c3a8e6f6bdaafad04808726abed282d999acb2bb9d0c5ab4856ba4a46f261e3",
+      "path": "YangMills/RG/PhysicalTransverseCharacterStrip.lean"
+    }
+  ],
+  "formal_rank_composition_complete": false,
+  "colab_allocations": 0,
+  "lean_verified": false
+}

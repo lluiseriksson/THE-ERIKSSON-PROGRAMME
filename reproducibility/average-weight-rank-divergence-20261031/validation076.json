@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_AVERAGE_WEIGHT_FAMILY_VALIDATED",
+  "source_sha": "ac60c0df885d8866329a839e2b4e73c90595d806",
+  "zip_sha256": "6f4db877046b40650232f95d207b2ec002c2d748d612baeea2690d5e0aacf025",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 6,
+  "target_olean_sha256": "28fcc004795a1d8ab74ca87b5e67cdf90f557551bc02b1bb912da38324c26e50",
+  "oracle_log_sha256": "bb28f216c4599b12501114dda334e5ea6cbebf8ce31c2416587ff866cfda12c6",
+  "source_manifest_sha256": "09caa1a9593397f72730d09c9bae3d1a2e9b2ce8b6749e62c63dbc7dff7a4ac8",
+  "started_utc": "2026-10-31T13:14:09.4383870+00:00",
+  "finished_utc": "2026-10-31T13:19:38.7810880+00:00",
+  "independent_review": false,
+  "scope": "Actual quantitative finite bound and output-rank divergence for nonnegative spatial mean weights o(n^2), fixed c>0 and local nonlinear coercivity",
+  "windows_lean_executed": false
+}

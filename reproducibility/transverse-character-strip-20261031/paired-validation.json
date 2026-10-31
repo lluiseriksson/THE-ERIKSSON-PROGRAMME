@@ -1,0 +1,98 @@
+{
+  "compressed_trace_rank_complete": false,
+  "orthonormality_derived": true,
+  "all_owned_runtimes_disconnected": true,
+  "source_sha": "40bb2de8461a878c86d9cea4e80f7da31adb0e58",
+  "exact_weighted_Hodge_energy_sum": true,
+  "physical_hypotheses_eliminated": [],
+  "actual_normalized_transverse_strip": true,
+  "actual_divergence_derived": true,
+  "independent_review": false,
+  "all_owned_notebook_tabs_closed": true,
+  "first": {
+    "status": "TRANSVERSE_CHARACTER_STRIP_VALIDATED",
+    "source_sha": "40bb2de8461a878c86d9cea4e80f7da31adb0e58",
+    "zip_sha256": "99a3b57cc6d3395e9b97b1794902607e41c22847ef9b989c9b4dd5584a2b1837",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "47279d97a84b3152e28dc807c2d1fc7a3bc01c8ad1ca1b0460e4dc668b96c1c7",
+    "oracle_log_sha256": "78087b39bbeb4d53e74225f71d3045a234b6345562f9442e155c35711a49a8b9",
+    "source_manifest_sha256": "1c8ff8e103659c4e4f76ab8d7f058b2592719c9f04e65a0e44cd65f1532543a2",
+    "started_utc": "2026-10-31T09:07:25.7594370+00:00",
+    "finished_utc": "2026-10-31T09:13:06.0033480+00:00",
+    "independent_review": false,
+    "scope": "Actual normalized transverse physical orthonormal2R strip, divergence zero and exact weighted/Hodge energy sum; positive trace/rank composition still open",
+    "windows_lean_executed": false
+  },
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "runtime_closure": {
+    "all_owned_runtimes_disconnected": true,
+    "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU",
+    "prepared_not_executed": [
+      "070b"
+    ],
+    "rows": [
+      {
+        "run": "070",
+        "release_request_utc": "2026-10-31T09:03:45.075223+00:00",
+        "capture_sha256": "64853889061d8c188c635400b5fb44cd7bd066c64fb6dfad6ec2307e02ee0e46",
+        "driver_started_utc": "2026-10-31T08:58:36.663399+00:00",
+        "status": "FAIL",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_transverse-character-strip\\070-disconnected.png",
+        "source_sha": "af06b6cd9311a803b55ef8835f5a78b230bbf3db"
+      },
+      {
+        "run": "071",
+        "release_request_utc": "2026-10-31T09:13:06.003348+00:00",
+        "capture_sha256": "d0af0d9b875eac0ff6228b29462604bc1cdeb4bc4e3fd57007f9d6f95f3ca1df",
+        "driver_started_utc": "2026-10-31T09:07:25.759437+00:00",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_transverse-character-strip\\071-disconnected.jpg",
+        "source_sha": "40bb2de8461a878c86d9cea4e80f7da31adb0e58"
+      },
+      {
+        "run": "071b",
+        "release_request_utc": "2026-10-31T09:20:59.748384+00:00",
+        "capture_sha256": "3ce29b866212f4431a45c8531d0b4ba5577da6cdc1777586b90246663d484e60",
+        "driver_started_utc": "2026-10-31T09:16:04.064994+00:00",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_transverse-character-strip\\071b-disconnected.jpg",
+        "source_sha": "40bb2de8461a878c86d9cea4e80f7da31adb0e58"
+      }
+    ],
+    "all_owned_notebook_tabs_closed": true,
+    "other_chat_runtime_shared": false,
+    "billed_units": null,
+    "executed_runs": 3,
+    "interval_scope": "Driver start to release request; full allocation/release latency and billed units unknown"
+  },
+  "new_publication": false,
+  "actual_span_finrank": "2*R under R<n",
+  "second": {
+    "status": "TRANSVERSE_CHARACTER_STRIP_VALIDATED",
+    "source_sha": "40bb2de8461a878c86d9cea4e80f7da31adb0e58",
+    "zip_sha256": "43cc4472f4ff4d5236b1337377b88612251e9cc871be686809c1e295b073494d",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "47279d97a84b3152e28dc807c2d1fc7a3bc01c8ad1ca1b0460e4dc668b96c1c7",
+    "oracle_log_sha256": "78087b39bbeb4d53e74225f71d3045a234b6345562f9442e155c35711a49a8b9",
+    "source_manifest_sha256": "1c8ff8e103659c4e4f76ab8d7f058b2592719c9f04e65a0e44cd65f1532543a2",
+    "started_utc": "2026-10-31T09:16:04.0649940+00:00",
+    "finished_utc": "2026-10-31T09:20:59.7483840+00:00",
+    "independent_review": false,
+    "scope": "Actual normalized transverse physical orthonormal2R strip, divergence zero and exact weighted/Hodge energy sum; positive trace/rank composition still open",
+    "windows_lean_executed": false
+  },
+  "average_weight_rank_obstruction_formally_complete": false,
+  "original_priority_claimed": false,
+  "exact_endpoints": [
+    "transversePhysicalCharacter_injective",
+    "normalizedTransversePhysicalCharacters_orthonormal",
+    "normalizedTransversePhysicalCharacter_div_zero",
+    "normalizedTransversePhysicalCharacters_span_finrank",
+    "normalizedTransversePhysicalCharacter_weighted_energy",
+    "normalizedTransversePhysicalCharacters_energy_sum"
+  ]
+}

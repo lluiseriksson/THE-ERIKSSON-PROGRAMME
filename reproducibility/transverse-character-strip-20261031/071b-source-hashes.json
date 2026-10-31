@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PhysicalTransverseCharacterStrip.lean",
+    "sha256_lf": "8c3a8e6f6bdaafad04808726abed282d999acb2bb9d0c5ab4856ba4a46f261e3",
+    "expected": "8c3a8e6f6bdaafad04808726abed282d999acb2bb9d0c5ab4856ba4a46f261e3",
+    "matches": true
+  },
+  {
+    "name": "PhysicalTransverseCharacterStripOracle.lean",
+    "sha256_lf": "6cf43f46e1051b8216662bd1fc0e65ec3cc610c44ac4bc483c2fc30c031bafc4",
+    "expected": "6cf43f46e1051b8216662bd1fc0e65ec3cc610c44ac4bc483c2fc30c031bafc4",
+    "matches": true
+  }
+]
