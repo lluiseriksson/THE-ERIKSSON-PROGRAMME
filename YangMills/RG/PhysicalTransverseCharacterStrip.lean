@@ -88,11 +88,12 @@ theorem transversePhysicalCharacter_injective (i : Fin d) (hR : R < n) :
   intro r s hrs
   have he : transversePhysicalFrequency (n := n) i r = transversePhysicalFrequency i s :=
     torusFourierCharacter_injective hrs
-  have hv := congrArg ZMod.val (congrFun he i)
   have hr : r.val + 1 < n := by have := r.isLt; omega
   have hs : s.val + 1 < n := by have := s.isLt; omega
-  simp only [transversePhysicalFrequency, Pi.single_eq_same,
-    ZMod.val_natCast, Nat.mod_eq_of_lt hr, Nat.mod_eq_of_lt hs] at hv
+  have hz : ((r.val + 1 : ℕ) : ZMod n) = ((s.val + 1 : ℕ) : ZMod n) := by
+    simpa [transversePhysicalFrequency, Pi.single_apply] using congrFun he i
+  have hv := congrArg ZMod.val hz
+  simp only [ZMod.val_natCast, Nat.mod_eq_of_lt hr, Nat.mod_eq_of_lt hs] at hv
   apply Fin.ext
   omega
 
