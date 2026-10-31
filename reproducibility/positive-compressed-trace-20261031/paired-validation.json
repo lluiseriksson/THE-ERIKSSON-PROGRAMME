@@ -1,0 +1,97 @@
+{
+  "exact_endpoints": [
+    "submodule_orthonormal_coe",
+    "positive_trace_lower_on_subspace",
+    "positive_trace_rank_bound",
+    "finiteSubspaceCompression_inner",
+    "finiteSubspaceCompression_nonneg",
+    "positive_compressed_trace_rank_bound"
+  ],
+  "full_average_weight_rank_obstruction_complete": false,
+  "original_priority_claimed": false,
+  "generic_positive_compressed_trace_rank_complete": true,
+  "ambient_subspace_invariance_assumed": false,
+  "rank_nullity_derived": true,
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "positive_after_subtracting_kernel_projection_assumed": false,
+  "runtime_closure": {
+    "all_owned_notebook_tabs_closed": true,
+    "all_owned_runtimes_disconnected": true,
+    "prepared_not_executed": [
+      "072b"
+    ],
+    "billed_units": null,
+    "interval_scope": "Driver start to release request; complete allocation/release latency and billed units unknown",
+    "other_chat_runtime_shared": false,
+    "rows": [
+      {
+        "source_sha": "b87f6e562b7a0b9a4f7b8bcc868c5e50d3cb9b67",
+        "driver_started_utc": "2026-10-31T10:54:28.252105+00:00",
+        "run": "072",
+        "status": "FAIL",
+        "capture_sha256": "4bd6ced8318079ca0f68680970f6687b926e14c228e711507796e34fefdfbc8e",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_positive-compressed-trace\\072-disconnected.jpg",
+        "release_request_utc": "2026-10-31T10:56:15.551981+00:00"
+      },
+      {
+        "source_sha": "e9fb5a4f6d9263c805a032d8e2be5078c484455c",
+        "driver_started_utc": "2026-10-31T10:57:47.900882+00:00",
+        "run": "073",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "capture_sha256": "2ad966a6174b93603b2e0e052ffa502091ef7f0bb7759d03d3bbc6269efc1dce",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_positive-compressed-trace\\073-disconnected.jpg",
+        "release_request_utc": "2026-10-31T11:00:16.647023+00:00"
+      },
+      {
+        "source_sha": "e9fb5a4f6d9263c805a032d8e2be5078c484455c",
+        "driver_started_utc": "2026-10-31T11:01:48.577031+00:00",
+        "run": "073b",
+        "status": "FOCAL_REPRODUCTION_PASS",
+        "capture_sha256": "457f9ec1d8b8d5a2f9841e090179815b09687ab9816aa51291a57d395a24a1b1",
+        "disconnected_capture": "D:\\Capturas\\the-eriksson-programme\\2026-10-31_positive-compressed-trace\\073b-disconnected.jpg",
+        "release_request_utc": "2026-10-31T11:04:05.419422+00:00"
+      }
+    ],
+    "executed_runs": 3,
+    "runtime_type": "Own Linux CPU/highRAM50.99GB, no GPU"
+  },
+  "physical_hypotheses_eliminated": [],
+  "independent_review": false,
+  "source_sha": "e9fb5a4f6d9263c805a032d8e2be5078c484455c",
+  "new_publication": false,
+  "second": {
+    "status": "POSITIVE_COMPRESSED_TRACE_VALIDATED",
+    "source_sha": "e9fb5a4f6d9263c805a032d8e2be5078c484455c",
+    "zip_sha256": "4acc1216879992bf552bb9105544e0e60e59b9bc37a8264bc898c213f5fc3e13",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "8154ce8d5da9df1258856d3318d6f9ea0f1c5d7e11b6d6a3adbf904bc5b22d91",
+    "oracle_log_sha256": "20f918a8a3aa87df0b7c7072ec66563b94d5f5850a9d0c5beb8c49e75726408e",
+    "source_manifest_sha256": "b7ea557a14332b0627627318e7a21924e18c37cd583fdfe42612a99cce173690",
+    "started_utc": "2026-10-31T11:01:48.5770310+00:00",
+    "finished_utc": "2026-10-31T11:04:05.4194220+00:00",
+    "independent_review": false,
+    "scope": "Generic finite positive trace-rank comparison and actual subspace adjoint compression; physical derivative-kernel composition still open",
+    "windows_lean_executed": false
+  },
+  "first": {
+    "status": "POSITIVE_COMPRESSED_TRACE_VALIDATED",
+    "source_sha": "e9fb5a4f6d9263c805a032d8e2be5078c484455c",
+    "zip_sha256": "2697018d8bbadd8a1ee776a5437fdf008cfcf2db3ad61037b686cc06d90f76fe",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "8154ce8d5da9df1258856d3318d6f9ea0f1c5d7e11b6d6a3adbf904bc5b22d91",
+    "oracle_log_sha256": "20f918a8a3aa87df0b7c7072ec66563b94d5f5850a9d0c5beb8c49e75726408e",
+    "source_manifest_sha256": "b7ea557a14332b0627627318e7a21924e18c37cd583fdfe42612a99cce173690",
+    "started_utc": "2026-10-31T10:57:47.9008820+00:00",
+    "finished_utc": "2026-10-31T11:00:16.6470230+00:00",
+    "independent_review": false,
+    "scope": "Generic finite positive trace-rank comparison and actual subspace adjoint compression; physical derivative-kernel composition still open",
+    "windows_lean_executed": false
+  },
+  "physical_derivative_kernel_composition_complete": false,
+  "orthonormal_kernel_basis_constructed": true,
+  "compression_defined_via_actual_subtype_adjoint": true
+}

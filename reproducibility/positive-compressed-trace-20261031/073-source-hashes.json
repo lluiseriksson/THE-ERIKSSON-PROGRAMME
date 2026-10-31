@@ -1,0 +1,14 @@
+[
+  {
+    "name": "PositiveCompressedTraceOracle.lean",
+    "sha256_lf": "696695e7e0aca2a6d6bdaef742f3e170bf043ddd55f66cca869211f5408237ba",
+    "expected": "696695e7e0aca2a6d6bdaef742f3e170bf043ddd55f66cca869211f5408237ba",
+    "matches": true
+  },
+  {
+    "name": "PositiveCompressedTrace.lean",
+    "sha256_lf": "9fa70a21917814cf5be31c15fa9a4a86654a9867409c4391861013020975668f",
+    "expected": "9fa70a21917814cf5be31c15fa9a4a86654a9867409c4391861013020975668f",
+    "matches": true
+  }
+]

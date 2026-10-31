@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "source_sha": "e9fb5a4f6d9263c805a032d8e2be5078c484455c",
+  "started_utc": "2026-10-31T10:57:47.900882+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.826,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 20.598,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 96.937,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 0,
+      "seconds": 5.834,
+      "log": "focal-build.log"
+    },
+    {
+      "name": "oracle",
+      "exit_code": 0,
+      "seconds": 18.629,
+      "log": "oracle.log"
+    }
+  ],
+  "status": "FOCAL_REPRODUCTION_PASS",
+  "independent_review": false,
+  "target_olean_sha256": "8154ce8d5da9df1258856d3318d6f9ea0f1c5d7e11b6d6a3adbf904bc5b22d91",
+  "oracle_validator_selftests": [
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": false,
+      "mode": "normal"
+    },
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": true,
+      "mode": "optimized"
+    }
+  ],
+  "oracle_reports": [
+    {
+      "name": "YangMills.RG.submodule_orthonormal_coe",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.positive_trace_lower_on_subspace",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.positive_trace_rank_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.finiteSubspaceCompression_inner",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.finiteSubspaceCompression_nonneg",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.positive_compressed_trace_rank_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "finished_utc": "2026-10-31T11:00:16.647023+00:00"
+}

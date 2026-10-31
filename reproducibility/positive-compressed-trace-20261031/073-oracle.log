@@ -1,0 +1,6 @@
+'YangMills.RG.submodule_orthonormal_coe' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.positive_trace_lower_on_subspace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.positive_trace_rank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.finiteSubspaceCompression_inner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.finiteSubspaceCompression_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.positive_compressed_trace_rank_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

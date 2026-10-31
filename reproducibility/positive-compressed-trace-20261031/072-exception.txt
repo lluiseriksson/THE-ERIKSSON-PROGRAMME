@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_1084/473718269.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.PositiveCompressedTrace'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1084/473718269.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: ✖ [2541/2541] Building YangMills.RG.PositiveCompressedTrace (3.5s)
+trace: .> LEAN_PATH=/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-positive-compressed-trace-20261031-072/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-positive-compressed-trace-20261031-072/YangMills/RG/PositiveCompressedTrace.lean -o /content/eriksson-positive-compressed-trace-20261031-072/.lake/build/lib/lean/YangMills/RG/PositiveCompressedTrace.olean -i /content/eriksson-positive-compressed-trace-20261031-072/.lake/build/lib/lean/YangMills/RG/PositiveCompressedTrace.ilean -c /content/eriksson-positive-compressed-trace-20261031-072/.lake/build/ir/YangMills/RG/PositiveCompressedTrace.c --setup /content/eriksson-positive-compressed-trace-20261031-072/.lake/build/ir/YangMills/RG/PositiveCompressedTrace.setup.json --json
+warning: YangMills/RG/PositiveCompressedTrace.lean:16:0: automatically included section variable(s) unused in theorem `YangMills.RG.submodule_orthonormal_coe`:
+  [FiniteDimensional ℝ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℝ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/PositiveCompressedTrace.lean:62:10: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ i, ?f ↑i
+in the target expression
+  ∑ x ∈ u, ⟪x, T x⟫ = ∑ x, ⟪↑x, T ↑x⟫
+
+E : Type u_1
+inst✝² : NormedAddCommGroup E
+inst✝¹ : InnerProductSpace ℝ E
+inst✝ : FiniteDimensional ℝ E
+T : E →ₗ[ℝ] E
+hpos : ∀ (x : E), 0 ≤ ⟪x, T x⟫
+H : Submodule ℝ E
+c : ℝ
+hbound : ∀ x ∈ H, c * ‖x‖ ^ 2 ≤ ⟪x, T x⟫
+bH : OrthonormalBasis (Fin (finrank ℝ ↥H)) ℝ ↥H := stdOrthonormalBasis ℝ ↥H
+v : Fin (finrank ℝ ↥H) → E := fun i => ↑(bH i)
+hv : Orthonormal ℝ v
+hinj : Function.Injective v
+hset : Orthonormal ℝ Subtype.val
+u : Finset E
+b : OrthonormalBasis ↥u ℝ E
+hsubset : Set.range v ⊆ ↑u
+hb : ⇑b = Subtype.val
+s : Finset E := Finset.image v Finset.univ
+hs : s ⊆ u
+hcard : s.card = finrank ℝ ↥H
+hdiag : ∀ x ∈ s, c ≤ ⟪x, T x⟫
+⊢ ∑ x ∈ u, ⟪x, T x⟫ = ∑ x, ⟪↑x, T ↑x⟫
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.PositiveCompressedTrace
+error: build failed
+

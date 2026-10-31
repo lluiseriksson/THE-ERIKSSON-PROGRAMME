@@ -218,3 +218,16 @@ The note proves all zero-derivative and local-upper-bound-failure claims,
 and distinguishes the valid C2-observation/C1-penalty tradeoff from a
 weakening of the current theorem. No Lean verification or new publication
 is claimed. The main positive compressed-trace/rank question remains active.
+
+## Unit051 positive compressed trace/rank bridge
+
+PositiveCompressedTrace.lean at e9fb5a4f6d9263c805a032d8e2be5078c484455c
+now derives the generic positive trace lower bound on an actual submodule,
+actual rank-nullity bound, actual inclusion-adjoint compression inner identity
+and its positivity, and c*(dim S-dim F)<=trace(compression) under positivity
+on S and kernel coercivity with c>=0. No ambient subspace invariance or
+positivity after subtracting a kernel projection is assumed. Fresh own Linux
+clones073/073b match; evidence is in ../positive-compressed-trace-20261031/.
+This closes the generic trace bridge mentioned as pending above. The final
+actual physical derivative-kernel/strip composition and quantitative tail
+remain open; the full average-weight rank conclusion is not yet formal.
