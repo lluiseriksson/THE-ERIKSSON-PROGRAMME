@@ -1,0 +1,9 @@
+import YangMills.RG.LocalizedSignedMeanCounterexample
+#print axioms YangMills.RG.localizedSignedWeights_average_zero
+#print axioms YangMills.RG.localizedSignedWeights_energy
+#print axioms YangMills.RG.localizedSignedPenalty_nonneg
+#print axioms YangMills.RG.localizedSignedPenalty_quadratic_upper
+#print axioms YangMills.RG.localizedSignedMean_global_coercive
+#print axioms YangMills.RG.signedMeanObservation_hasFDerivAt
+#print axioms YangMills.RG.signedMeanObservation_zero
+#print axioms YangMills.RG.signedMeanObservation_output_finite
