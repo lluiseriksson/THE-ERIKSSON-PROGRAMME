@@ -1,0 +1,69 @@
+{
+  "status": "TWO_FRESH_CLONES_MATCHED",
+  "source_sha": "728e88b759937168a362165b94950fbe8839a594",
+  "first": {
+    "status": "COEXACT_SUBQUADRATIC_FAMILY_VALIDATED",
+    "source_sha": "728e88b759937168a362165b94950fbe8839a594",
+    "zip_sha256": "db8287841885b89b22b2d90928cd6eea090635be638d82c341b5f516c99c7d37",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "edca6c09c570f32c714e463705c6547a24459847cce711a46a7650da4f6c3595",
+    "oracle_log_sha256": "8e4271dd5be7c003cf7076d0f9216c14b51aaa474214ab71ea8e22762979af29",
+    "source_manifest_sha256": "3e6052fb6e78036a5ff37b2316e1771a1db7ff14ed8cb57a1a15259dd0a4c97a",
+    "started_utc": "2026-10-31T01:41:33.9510850+00:00",
+    "finished_utc": "2026-10-31T01:47:57.2609780+00:00",
+    "independent_review": false,
+    "scope": "Actual positive-size flat family; subquadratic repair caps force observation finrank to tend to infinity",
+    "windows_lean_executed": false
+  },
+  "second": {
+    "status": "COEXACT_SUBQUADRATIC_FAMILY_VALIDATED",
+    "source_sha": "728e88b759937168a362165b94950fbe8839a594",
+    "zip_sha256": "cad43ed4270c07a00c1fdb1043b02d97e1d5309ac4c09d86b421a86f4ff3a511",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 6,
+    "target_olean_sha256": "edca6c09c570f32c714e463705c6547a24459847cce711a46a7650da4f6c3595",
+    "oracle_log_sha256": "8e4271dd5be7c003cf7076d0f9216c14b51aaa474214ab71ea8e22762979af29",
+    "source_manifest_sha256": "3e6052fb6e78036a5ff37b2316e1771a1db7ff14ed8cb57a1a15259dd0a4c97a",
+    "started_utc": "2026-10-31T01:48:16.4807430+00:00",
+    "finished_utc": "2026-10-31T01:54:24.1941140+00:00",
+    "independent_review": false,
+    "scope": "Actual positive-size flat family; subquadratic repair caps force observation finrank to tend to infinity",
+    "windows_lean_executed": false
+  },
+  "exact_endpoints": [
+    "coexact_band_budget_dominates",
+    "coexact_subquadratic_cutoff_eventually",
+    "coexact_subquadratic_threshold_eventually",
+    "coexactFlat_subquadratic_finrank_eventually_ge",
+    "coexactFlat_subquadratic_finrank_tendsto",
+    "coexactFlat_subquadratic_no_bounded_output"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "normal_and_optimized_actual_oracle_mutations": true,
+  "full_zip_manifests_validated": 2,
+  "all_own_runtimes_released_ui_verified": true,
+  "independent_scientific_review": false,
+  "windows_lean_executed": false,
+  "new_pdf": false,
+  "new_deposit": false,
+  "new_publication": false,
+  "physical_YangMills_hypotheses_removed": [],
+  "billed_units": null,
+  "cpu_high_ram_gb": 50.99,
+  "runtime_interval_note": "Driver start through release request; full allocation/release latency and billed units not measured",
+  "notebooks": [
+    "https://colab.research.google.com/drive/1XylIKFuRjFU9eB4MiOgmLqg9m8MARh2-",
+    "https://colab.research.google.com/drive/1Z9piED6_d2HyUcT_Xg24nbmyTPGDXeTd"
+  ],
+  "first_candidate_passed_without_repairs": true,
+  "uniform_density_formalized": false,
+  "sharp_spectral_count_formalized": false,
+  "own_notebook_tabs_closed": true
+}
