@@ -1,0 +1,59 @@
+diff --git a/YangMills/RG/NormalizedCoexactPacket.lean b/YangMills/RG/NormalizedCoexactPacket.lean
+index e9ed8bf3..2bdf195c 100644
+--- a/YangMills/RG/NormalizedCoexactPacket.lean
++++ b/YangMills/RG/NormalizedCoexactPacket.lean
+@@ -17,6 +17,7 @@ section General
+ variable {D n Nc : ℕ} [NeZero D] [NeZero n] [NeZero Nc]
+ variable {I : Type*} [Fintype I]
+ 
++set_option maxHeartbeats 1200000 in
+ theorem coexact_characterSynthesis_norm_sq (hNc : 2 ≤ Nc) (i j : Fin D) (hij : i ≠ j)
+     (chi : I → AddChar (Fin D → ZMod n) ℂ) (hc : Function.Injective chi)
+     (c : I → ℂ) :
+@@ -34,7 +35,7 @@ theorem coexact_characterSynthesis_norm_sq (hNc : 2 ≤ Nc) (i j : Fin D) (hij :
+   rw [counting_backward_mass_eq_forward, counting_backward_mass_eq_forward,
+     character_synthesis_forwardEnergy chi hc, character_synthesis_forwardEnergy chi hc]
+   have hcard : (Fintype.card (Fin D → ZMod n) : ℝ) = (n : ℝ)^D := by simp
+-  rw [hcard]
++  simp only [hcard]
+   rw [← mul_add, ← Finset.sum_add_distrib]
+   congr 1
+   apply Finset.sum_congr rfl
+@@ -77,7 +78,8 @@ noncomputable def positiveCoexactNormalization (R : ℕ)
+ theorem positiveCoexactNormalization_pos (R : ℕ) (hR : 2 * R < n)
+     (k : CoexactPositiveIndex d R) : 0 < positiveCoexactNormalization (n := n) R k := by
+   apply Real.sqrt_pos.mpr
+-  exact mul_pos (by positivity) (positiveCoexactSymbolMass_pos R hR k)
++  have hn : 0 < (n : ℝ) := by exact_mod_cast (Nat.pos_of_ne_zero (NeZero.ne n))
++  exact mul_pos (pow_pos hn _) (positiveCoexactSymbolMass_pos R hR k)
+ 
+ noncomputable def normalizedCoexactSynthesis (hNc : 2 ≤ Nc) (R : ℕ)
+     (c : CoexactPositiveIndex d R → ℂ) : PhysicalGaugeOneCochain (d + 2) n Nc :=
+@@ -87,7 +89,7 @@ noncomputable def normalizedCoexactSynthesis (hNc : 2 ≤ Nc) (R : ℕ)
+ 
+ theorem normalizedCoexactSynthesis_norm_sq (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 * R < n)
+     (c : CoexactPositiveIndex d R → ℂ) :
+-    ‖normalizedCoexactSynthesis hNc R c‖ ^ 2 = ∑ k, ‖c k‖ ^ 2 := by
++    ‖normalizedCoexactSynthesis (n := n) hNc R c‖ ^ 2 = ∑ k, ‖c k‖ ^ 2 := by
+   classical
+   unfold normalizedCoexactSynthesis
+   rw [coexact_characterSynthesis_norm_sq hNc 0 (Fin.succ 0) (by simp) _
+@@ -95,7 +97,8 @@ theorem normalizedCoexactSynthesis_norm_sq (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 *
+   rw [Finset.mul_sum]
+   apply Finset.sum_congr rfl
+   intro k _
+-  have hv : 0 < (n : ℝ)^(d + 2) := by positivity
++  have hn : 0 < (n : ℝ) := by exact_mod_cast (Nat.pos_of_ne_zero (NeZero.ne n))
++  have hv : 0 < (n : ℝ)^(d + 2) := pow_pos hn _
+   have hb := positiveCoexactSymbolMass_pos (n := n) R hR k
+   have hsq : positiveCoexactNormalization (n := n) R k ^ 2 =
+       (n : ℝ)^(d + 2) * positiveCoexactSymbolMass (n := n) R k :=
+@@ -110,7 +113,7 @@ theorem normalizedCoexactSynthesis_norm_sq (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 *
+ theorem normalizedCoexactSynthesis_div_zero (hNc : 2 ≤ Nc) (rho : SUNAdjointModel Nc)
+     (R : ℕ) (c : CoexactPositiveIndex d R → ℂ) :
+     gaugeConstraintQCLM rho (trivialPhysicalGaugeBackground (d + 2) n Nc)
+-      (normalizedCoexactSynthesis hNc R c) = 0 :=
++      (normalizedCoexactSynthesis (n := n) hNc R c) = 0 :=
+   coexactFlatMap_div_zero hNc rho _ _ _
+ end Positive
+ end YangMills.RG
