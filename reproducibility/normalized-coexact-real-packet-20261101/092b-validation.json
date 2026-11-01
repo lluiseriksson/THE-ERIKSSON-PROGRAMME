@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_REAL_QUADRATURE_PACKET_VALIDATED",
+  "source_sha": "0339e185f19f9019a9c83ee55b0660a581d180fb",
+  "zip_sha256": "5693fe8e9f3bd2f2051eeaa67cdbeb6abcf764a99ef98020067da75d5033af22",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 7,
+  "target_olean_sha256": "3ad28d8d47511da8464cf39c2330a6095724082040e77655809bbc4ee87a31cc",
+  "oracle_log_sha256": "c0762d47f436dfd6ccd3351cf71dd9b7ae332047112204c55cc71bf2668f05ea",
+  "source_manifest_sha256": "c99905f2b4e543ab810ddea1c2f05dd0419732d63b7a39703a0c8ad1f73a7b36",
+  "started_utc": "2026-11-01T01:28:42.4564290+00:00",
+  "finished_utc": "2026-11-01T01:34:58.9202030+00:00",
+  "independent_review": false,
+  "scope": "Actual real orthonormal quadrature family and actual synthesis image span; weighted trace and density pending",
+  "windows_lean_executed": false
+}

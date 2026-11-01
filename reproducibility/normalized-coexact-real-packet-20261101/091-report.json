@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "05dd73ea59ef542c1136b3a5b258d9c3e3b7192c",
+  "started_utc": "2026-11-01T01:16:01.870004+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.817,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.07,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.574,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 13.705,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 78.487,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 204.396,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedCoexactRealPairing.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_smul`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u2716 [8197/8197] Building YangMills.RG.NormalizedCoexactRealPacket (7.2s)\ntrace: .> LEAN_PATH=/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-normalized-coexact-real-packet-20261101-091/YangMills/RG/NormalizedCoexactRealPacket.lean -o /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPacket.olean -i /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPacket.ilean -c /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPacket.c --setup /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPacket.setup.json --json\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:18:49: Application type mismatch: The argument\n  w\nhas type\n  \u2102\nbut is expected to have type\n  ?m.19 s l\nin the application\n  Pi.single l w\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:45:4: Unknown identifier `counting_single_real_pairing`\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:41:81: unsolved goals\nd n Nc : \u2115\ninst\u271d\u00b9 : NeZero n\ninst\u271d : NeZero Nc\nhNc : 2 \u2264 Nc\nR : \u2115\nhR : 2 * R < n\np q : CoexactPositiveIndex d R \u00d7 Bool\n\u22a2 \u2211 k, \u27eaPi.single p.1 (coexactQuadraturePhase p.2) k, Pi.single q.1 (coexactQuadraturePhase q.2) k\u27eb =\n    if p = q then 1 else 0\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:57:4: typeclass instance problem is stuck\n  InnerProductSpace \u211d (PhysicalGaugeOneCochain (?m.22 + 2) n Nc)\n\nNote: Lean will not try to resolve this typeclass instance problem because the second and fourth type arguments to `InnerProductSpace` contain metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.\n\nHint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:67:14: failed to synthesize\n  HSMul \u211d ((j : CoexactPositiveIndex d R) \u2192 ?m.12 j) ?m.27\n(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached\n\nNote: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\n\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:68:29: Application type mismatch: The argument\n  Complex.I\nhas type\n  \u2102\nbut is expected to have type\n  ?m.19 k\nin the application\n  Pi.single k Complex.I\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:85:5: Unknown identifier `coexactCoefficient_real_expansion`\nerror: YangMills/RG/NormalizedCoexactRealPacket.lean:82:76: unsolved goals\nd n Nc : \u2115\ninst\u271d\u00b9 : NeZero n\ninst\u271d : NeZero Nc\nhNc : 2 \u2264 Nc\nR : \u2115\nc : CoexactPositiveIndex d R \u2192 \u2102\n\u22a2 normalizedCoexactSynthesis hNc R c =\n    \u2211 k,\n      ((c k).re \u2022 normalizedCoexactRealPacket hNc R (k, false) + (c k).im \u2022 normalizedCoexactRealPacket hNc R (k, true))\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.NormalizedCoexactRealPacket\nerror: build failed\n",
+  "finished_utc": "2026-11-01T01:21:04.313885+00:00"
+}
