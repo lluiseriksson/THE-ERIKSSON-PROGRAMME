@@ -1,0 +1,9 @@
+# Source-only consolidation preparation
+
+This directory contains mathematical section source for the next consolidated manuscript. It is not an assembled or rendered PDF, not a new public AIRR version, and has no exact-PDF assessment. Preserve v5 source/PDF and publicv4 unchanged. The PDF artifact-operation marker must run in the sanctioned authoring environment before actual PDF assembly/rendering; no local PDF build was run.
+
+Proposed insertion: before Why dimension is not a sufficiency criterion. The abstract should then mention the positive TOTAL occupied-mean full-volume rank budget and positive density. Retain v5 signed-cycle/all-pairs-sum scope distinctions and objections.
+
+Formal evidence to map: actual compression9a8946b7; support/envelope88445ac6; original nonlinear rank3a2d5305; numerical/dilation density031ca274. Full-tail source067fed75 exists but its Colab094 result is UNRECOVERED after browser connection loss; Drive notebook775bytes has no saved outputs/execution count. Do not mark that endpoint verified or reuse an oracle from the numerical/dilation source. The theorem's displayed analytic proof is separate from that missing formal evidence. Exact averaged/sinc formula remains analytic at62adf1ac. No grade inherited from any source or older PDF.
+
+Before rendering: incorporate the new section, update abstract/date/publicv4 context, bibliography and declaration map, inspect cross references, then use ownColabLinux to render with logs and per-page images. Individually inspect every final page, validate PDF/text/source hashes and perform the exact PDF's first numerical assessment with full objections and actual model/context. Existing v5 was18pages with an unscored report; no old visual verdict or grade applies to changed bytes. Reconcile the private/public AIRR dossier before any exact-artifact permission/publication action.

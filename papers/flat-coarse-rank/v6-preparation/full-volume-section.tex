@@ -1,0 +1,153 @@
+% Source-only mathematical section for the next consolidated candidate.
+% Not yet assembled/rendered; no inherited exact-PDF assessment.
+\section{Full volume rank from signed total coefficient means}\label{sec:volume-mean}
+The directional strip in Section~\ref{sec:average} detects divergence of the
+observation dimension. A full dimensional coexact packet yields a positive
+volume density under a stronger, explicitly stated mean hypothesis. Original
+weights may have either sign. The relevant quantity is the spatial mean of
+$\max\{1+w,0\}$, not an ordinary signed mean or a positive part taken after
+averaging. The extra $1$ is the actual flat Hodge coefficient, already absorbed
+into the envelope; it must not be added a second time.
+
+In this section write $D\geq2$ for the number of lattice directions,
+$V_n=n^D$, and $E_n$ for the actual real cochain space on
+$(\mathbb Z/n\mathbb Z)^D$, with fixed $N_c\geq2$. Use field components
+$0,1$ and the internal real plane representing a complex scalar from
+Section~2. Put $D_i A_l(x)=A_l(x+e_i)-A_l(x)$ and retain the original form
+\[
+ Q_{w_n}(A)=\langle A,K_{0,n}A\rangle+
+       \sum_{x,i,l}w_n(i,(x,l))\|D_i A_l(x)\|^2.
+\]
+The actual all-cochain flat Hodge identity gives
+$Q_{w_n}(A)=\sum_{x,i,l}(1+w_n(i,(x,l)))\|D_i A_l(x)\|^2$.
+
+\begin{theorem}[Finite full volume mean budget]\label{thm:volume-mean-finite}
+Let $1\leq R$ and $2R<n$. Assume $m\geq0$ and
+\begin{equation}\label{eq:total-positive-means}
+ \sum_x\max\{1+w_n(i,(x,l)),0\}\leq V_n m
+       \qquad(0\leq i<D,\ l=0,1).
+\end{equation}
+No mean bound on the other field components, original weight lower bound or
+prescribed uniform pointwise cap is assumed. Let $C_n:E_n\to F_n$ be
+Fr\'echet differentiable at zero, $C_n(0)=0$, with $F_n$ finite dimensional.
+Suppose $\Phi_n(y)\leq K_n\|y\|^2$ for $\|y\|<\delta_n$, $\delta_n>0$,
+and the original small divergence-free coercivity inequality holds with
+$c\geq0$ and some radius $r_n>0$. Set
+\[
+ H=2R(2R+1)^{D-1},\qquad
+ \Lambda(k)=4\sum_{i=0}^{D-1}\sin^2(\pi k_i/n),
+ \qquad\mathcal K=\{1,\ldots,R\}\times\{-R,\ldots,R\}^{D-1}.
+\]
+Then
+\begin{equation}\label{eq:volume-mean-finite}
+ c(H-\dim_{\R}F_n)\leq m\sum_{(k,q)\in\mathcal K\times\{0,1\}}\Lambda(k)
+ \leq mH\,\frac{4\pi^2 D R^2}{n^2}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+For $k\in\mathcal K$ use the actual scalar character $\chi_k$ and the
+coexact field with components given by its backward differences in
+directions $1,0$, with opposite signs. Commuting differences give actual
+divergence zero. Since $k_0\neq0\pmod n$, the normalization denominator is
+positive. Counting Fourier orthogonality and both internal real quadratures
+produce an orthonormal family of $H$ actual real fields, spanning $S_n$.
+The condition $2R<n$ prevents aliasing of their scalar frequencies; no
+scalar real-valued conjugacy constraint is imposed on the internal plane.
+Every vector of $S_n$ is supported on field components $0,1$.
+
+Define actual coefficients $v_n(i,(x,l))=\max\{1+w_n(i,(x,l)),0\}$ for
+$l=0,1$, and zero otherwise, and the positive form $P_n=G^*V_n^{\rm wt}G$
+with those coefficients. The notation $V_n^{\rm wt}$ here denotes the
+weight multiplication operator, not lattice volume. Then $P_n\succeq0$
+on all cochains and $Q_{w_n}(A)\leq\langle A,P_nA\rangle$ on $S_n$.
+This comparison is needed only on the actual packet image, and is not
+asserted on every cochain or every divergence-free field.
+
+Write $L_n=DC_n(0)$. The same shrinking-ray proof as in
+Section~\ref{sec:average}, now followed by the proved envelope comparison,
+gives $c\|v\|^2\leq\langle v,P_nv\rangle$ on $S_n\cap\ker L_n$.
+Its dimension is at least $H-\dim F_n$. Complete an orthonormal basis of
+that kernel within $S_n$. Positivity of $P_n$ controls the complementary
+trace terms. Thus $c(H-\dim F_n)\leq\operatorname{tr}(P_n|_{S_n})$, where
+the restriction means the genuine orthogonal compression.
+
+For an individual normalized packet $U_{k,q}$, its squared component
+amplitudes are constant in $x$ and are $V_n^{-1}a_{k,l}$ for $l=0,1$,
+where $a_{k,l}\geq0$ and $a_{k,0}+a_{k,1}=1$. Consequently
+\[
+ \langle U_{k,q},P_nU_{k,q}\rangle
+ =V_n^{-1}\sum_{i,l=0,1}
+   |\chi_k(e_i)-1|^2 a_{k,l}\sum_x v_n(i,(x,l))
+ \leq m\sum_i|\chi_k(e_i)-1|^2=m\Lambda(k).
+\]
+Sum over all $H$ basis vectors. Finally every signed integer frequency
+satisfies $|k_i|\leq R$, and $|\sin t|\leq|t|$ gives
+$\Lambda(k)\leq4\pi^2DR^2/n^2$. All $D$ derivative directions remain in
+this sum even though only two field components are occupied.
+\end{proof}
+
+\begin{theorem}[One positive density on the full integer tail]\label{thm:volume-full-tail}
+Fix $D,N_c$, $c>0$ and $m\geq0$. For every sufficiently large integer $n$,
+allow its own $F_n,C_n,L_n,\Phi_n,K_n,\delta_n,r_n,w_n$ satisfying the
+original local hypotheses and~\eqref{eq:total-positive-means}, with these
+same $c,m$. There are $k\geq3$ and $\varepsilon>0$, depending only on
+$D,m,c$, such that
+\[
+ \dim_{\R}F_n\geq\varepsilon n^D\qquad(n\geq k)
+\]
+whenever those finite-side hypotheses hold. One may take
+$\varepsilon=1/(2k^D)$ for any integer $k\geq3$ satisfying
+$2m\,4\pi^2D/k^2\leq c$. No common quadratic penalty constant,
+differentiability neighborhood or coercivity radius is required.
+\end{theorem}
+\begin{proof}
+Choose such a $k$ by the Archimedean property. For each $n\geq k$ put
+$R=\lfloor n/k\rfloor$. Integer division yields
+\[
+ R\geq1,\qquad kR\leq n<k(R+1)\leq2kR,\qquad2R<kR\leq n.
+\]
+Hence the actual packet is admissible and $R/n\leq1/k$. The finite theorem
+gives $c(H-\dim F_n)\leq(c/2)H$, so $H\leq2\dim F_n$. Also
+$H\geq(2R)^D\geq(n/k)^D$. Combining these gives the displayed density.
+Each shrinking-ray argument was applied at a fixed $n$ before using these
+integer inequalities. No limit of derivatives or local neighborhoods is taken.
+\end{proof}
+
+\begin{proposition}[Exact trace average and a sharper analytic constant]\label{prop:volume-average}
+For $R\geq1$, put $A_R(x)=\sum_{r=1}^R\sin^2(rx)$. The actual multiplier
+average in~\eqref{eq:volume-mean-finite} is
+\begin{align*}
+ B_{D,R,n}&=\frac1H\sum_{k,q}\Lambda(k)
+   =4A_R(\pi/n)\frac{2DR+1}{R(2R+1)},\\
+ A_R(x)&=\frac R2-\frac{\sin(Rx)\cos((R+1)x)}{2\sin x},\\
+ B_{D,R,n}&\leq\frac{2\pi^2}{3n^2}(R+1)(2DR+1).
+\end{align*}
+For fixed $0<\alpha<1/2$ and $R=\lfloor\alpha n\rfloor$, the original
+family hypotheses therefore imply the analytic bound
+\[
+ \liminf_{n\to\infty}\frac{\dim F_n}{n^D}
+ \geq(2\alpha)^D\left[1-\frac mc\,2D
+       \left(1-\frac{\sin(2\pi\alpha)}{2\pi\alpha}\right)\right].
+\]
+Its elementary quadratic lower estimate replaces the bracket by
+$1-4\pi^2Dm\alpha^2/(3c)$. This improves the low-frequency quadratic
+coefficient of the maximum-coordinate estimate by a factor three.
+\end{proposition}
+\begin{proof}
+The positive first coordinate contributes $4A_R/R$ to the average; each
+of the $D-1$ centered coordinates contributes $8A_R/(2R+1)$. Both real
+quadratures occur in numerator and denominator. The cosine sum follows by
+summing $2\sin x\cos(2rx)=\sin((2r+1)x)-\sin((2r-1)x)$ and telescoping;
+$\sin^2(rx)=(1-\cos(2rx))/2$ gives the formula for $A_R$.
+Bounding $\sin^2(rx)\leq r^2x^2$ and summing $r^2$ gives the finite upper
+bound, including its lower-order terms. Floor inequalities give
+$H/n^D\to(2\alpha)^D$, and $\sin x/x\to1$ gives
+$B_{D,R,n}\to2D[1-\sin(2\pi\alpha)/(2\pi\alpha)]$. Divide the finite
+rank bound by $n^D$ and take the lower limit. Negative right sides are merely
+weak bounds. For $m=0$, taking $\alpha\uparrow1/2$ gives lower density one.
+\end{proof}
+These are classical Fourier and finite trace arguments, with the standard
+discrete-torus spectrum already present in the literature. The exact average
+and its improved constant are analytic calculations here, not extra formal
+endpoints or sharp optimal observation-rank claims. They do not identify an
+interacting background or a continuum Yang--Mills spectral gap.
