@@ -46,7 +46,7 @@ theorem actualVolume_quotient_volume_bound (d k n : ℕ) (hk : 3 ≤ k) (hn : k 
   have hq := (actualVolume_quotient_cutoff k n hk hn).2.2.2
   have hreal : (n : ℝ) ≤ (k : ℝ) * (2 * ((n / k : ℕ) : ℝ)) := by exact_mod_cast hq
   have hp : (n : ℝ)^(d + 2) ≤ ((k : ℝ) * (2 * ((n / k : ℕ) : ℝ)))^(d + 2) := by
-    gcongr
+    gcongr <;> assumption
   have hb : (2 * ((n / k : ℕ) : ℝ))^(d + 2) ≤
       ((2 * (n / k) * (2 * (n / k) + 1)^(d + 1) : ℕ) : ℝ) := by
     exact_mod_cast coexact_band_power_bound d (n / k)
