@@ -209,7 +209,7 @@
     "module": "YangMills/RG/PhysicalGaugeFixedPrecision.lean"
   },
   "repository_url": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
-  "candidate_version": "internal-v5-not-deposited",
+  "candidate_version": "internal-v6-not-deposited",
   "consolidated_tree": "11ad49829974847c690f2cbe7d6744a45c0a8f35",
   "analytic_only": [
     "singular-Schur criterion and cross-coupling example",
@@ -224,7 +224,6 @@
     "normalized critical positive-part mean limit interpretation",
     "full-state identity-observation non-vacuity check for individual or summed cycles",
     "primary-theorem attribution comparison",
-    "Full integer-tail numerical density proof pending own full-tail formal evidence",
     "Exact full-volume averaged multiplier and sinc limit, quadratic factor3 estimate; source62adf1ac"
   ],
   "review_context": "Source-only v6 preparation. First exact-PDF numerical assessment and individual visual QA pending; no inherited score or review.",
@@ -233,7 +232,7 @@
     "originality of general square cancellation or full dossier priority",
     "independent peer review",
     "physical interacting/continuum mass gap",
-    "Whole manuscript or full-tail/exact-average formal verification",
+    "Whole manuscript or exact-average formal verification",
     "A rendered or scored v6 PDF",
     "Sharp observation rank or exact-spectrum optimization"
   ],
@@ -267,10 +266,13 @@
       "status": "PAIRED_VERIFIED_DILATION_FAMILY"
     },
     {
-      "evidence": "reproducibility/actual-volume-full-tail-20261101/verification-recovery.md",
+      "evidence": "reproducibility/actual-volume-full-tail-20261101/paired-validation.json",
       "candidate_sha": "067fed7556b9d5c2fb2e7672feafa20df4dda72e",
       "module": "ActualVolumeFullTailDensity",
-      "status": "PREPARED_UNVERIFIED_RUNTIME_OUTPUT_UNRECOVERED"
+      "status": "PAIRED_VERIFIED_FULL_INTEGER_TAIL",
+      "tested_sha": "067fed7556b9d5c2fb2e7672feafa20df4dda72e",
+      "compiled_target_sha256": "bfcd8b74d739860a874f165d4cbff01ac829aecfc17c4b74bca88d55ec472610",
+      "raw_oracle_sha256": "a5a1c9875213c4f62fef71a9a76578e072990d59d804c50a55368845f2b6c4a5"
     }
   ]
 }
