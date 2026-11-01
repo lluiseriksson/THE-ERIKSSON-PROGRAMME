@@ -1,0 +1,9 @@
+# Actual real quadrature packet
+
+Corrected candidate0339e185 constructs actual normalized coexact fields for coefficient singletons with phase1 or I. Seven exact endpoints target scalar phases/singleton pairing, actual Kronecker Gram, Orthonormal, coefficient and physical synthesis expansions, and equality of actual synthesis image with the real packet span. No Gram/spanning certificate is an input. Both fresh092/092b runs pass all nine stages and seven literal standard-axiom reports, with matching compiled/oracle/LF-source hashes; see paired-validation.json.
+
+Use pinned reproduce092/092b only in fresh own Colab Linux CPU/high-RAM runtimes. Check exact sources/toolchain/Mathlib, seven literal standard-axiom reports, all zero-exit stages, full manifests and real-log mutation rejection in normal/-O modes. Preserve all warnings/failures and release owned runtimes after evidence. No Windows Lean authorized.
+
+The explicit family uses Bool for its two phases. Gram/Orthonormal require2R<n; the direct finite expansion/span identity does not. Ordinary Pi coefficients are not asserted to use a counting norm. EmptyR=0 supplies no density. A packaged OrthonormalBasis object, dimension, weighted compression trace and nonlinear density formal endpoint are not claimed here. Exact source assessment retains seven objections and model/context/priority limits. Classical singleton coordinates and Gram characterization; no independent review or general novelty claim.
+
+Group into the existing dossier, not a separate lemma paper. Frozen approvedv4 and reviewed internalv5 remain unchanged. No inherited assessment/permission, AIRR grant/deposit/receipt/license/release/editorial action or PR29 status change.

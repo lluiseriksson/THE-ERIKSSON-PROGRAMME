@@ -1,0 +1,7 @@
+# Same active question: derive the actual weighted packet trace
+
+After exact Gram/span validation, construct the real basis of the actual image if required by the library trace API; do not replace it by a supplied basis/trace certificate. Compute each actual normalized backward-symbol component amplitude for both1/I quadratures and instantiate the checked polarized-character weighted diagonal. Sum the actual packet, keeping all volume and normalization factors and every component/direction mean. Transport this to the actual compressed trace and the existing analytic density argument.
+
+Hypotheses retained: actual positiven, dimensiond+2, internalNc>=2,2R<n; at density, actual nonnegative weights, all component/direction mean bounds, complementary positivity and original local differentiability, C(0)=0, quadratic penalty and fixed positivec. EmptyR=0 is not a positive-density case.
+
+Falsifier: an omitted component, wrong phase/volume factor, alias mode or stronger assumption actually needed by the intended trace transport. Preserve counterexamples; compiler/elaboration failures are not mathematical refutations. After three substantive units without mathematical transport advance, document the concrete unresolved lemma and change route or identify the blocker. Keep a single active question, no small-corollary paper or physical-gap/continuum claim.

@@ -1,0 +1,7 @@
+'YangMills.RG.coexactQuadraturePhase_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.counting_single_real_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactRealPacket_gram' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactRealPacket_orthonormal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexactCoefficient_real_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactSynthesis_real_expansion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactRealPacket_span' depends on axioms: [propext, Classical.choice, Quot.sound]
