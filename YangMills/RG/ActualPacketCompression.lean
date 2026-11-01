@@ -49,7 +49,10 @@ theorem actualPacket_compression_trace (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 * R < 
   classical
   rw [LinearMap.trace_eq_sum_inner _ (actualPacketBasis (n := n) (d := d) hNc R hR)]
   simp_rw [finiteSubspaceCompression_inner, actualPacketBasis_coe]
-  exact Finset.sum_coe_sort Finset.univ _
+  exact Finset.sum_coe_sort (Finset.univ : Finset (CoexactPositiveIndex d R × Bool))
+    (fun p : CoexactPositiveIndex d R × Bool =>
+      inner ℝ (normalizedCoexactRealPacket (n := n) (d := d) hNc R p)
+        (T (normalizedCoexactRealPacket (n := n) (d := d) hNc R p)))
 
 theorem actualPacket_weightedRepair_trace (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 * R < n)
     (w : PhysicalGradientIndex (d + 2) n → ℝ) :
