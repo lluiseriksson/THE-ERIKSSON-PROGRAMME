@@ -1,0 +1,20 @@
+{
+  "runtime": "Own Linux CPU highRAM50.99GB, noGPU, two separate corrected runtimes",
+  "own_tabs_closed": true,
+  "initial_observed_available_units": 1766.41,
+  "exact_billed_units": null,
+  "shared": false,
+  "note": "Driver UTC start/finish recorded separately, account-wide unit delta not a task invoice/full connected interval",
+  "own_active_sessions": 0,
+  "two_runtime_observed_rate": 0.52,
+  "visible_available_units": 1766.34,
+  "visible_units_per_hour": 0,
+  "unused_prepared": "092b never executed",
+  "status": "ALL_OWN_RESOURCES_DISCONNECTED",
+  "executions": [
+    "092 failed",
+    "093 pass",
+    "093b pass"
+  ],
+  "capture_limitation": "Page.captureScreenshot timed out on116 and117; full UI evidence/resources preserved, no screenshot invented"
+}

@@ -1,0 +1,7 @@
+'YangMills.RG.positiveCoexact_multiplier_sum_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualPacket_multiplier_trace_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualVolumeMean_numerical_rank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualVolumeMean_dilation_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualVolumeMean_uniform_dilation_density_exists' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

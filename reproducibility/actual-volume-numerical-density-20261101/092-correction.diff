@@ -1,0 +1,21 @@
+diff --git a/YangMills/RG/ActualVolumeNumericalDensity.lean b/YangMills/RG/ActualVolumeNumericalDensity.lean
+index 85f0b789..dfde4777 100644
+--- a/YangMills/RG/ActualVolumeNumericalDensity.lean
++++ b/YangMills/RG/ActualVolumeNumericalDensity.lean
+@@ -37,7 +37,7 @@ theorem actualPacket_multiplier_trace_le (R : ℕ) :
+       apply Finset.sum_le_sum
+       intro p _
+       exact positiveCoexact_multiplier_sum_sq_le R p.1
+-    _ = _ := by simp [CoexactPositiveIndex, Nat.cast_mul, Nat.cast_pow] <;> ring
++    _ = _ := by simp [CoexactPositiveIndex, Nat.cast_mul, Nat.cast_pow] <;> ring <;> simp
+ 
+ section Finite
+ variable {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F] [FiniteDimensional ℝ F]
+@@ -116,6 +116,7 @@ theorem actualVolumeMean_dilation_density :
+     have hp : 0 < c * (H - 2 * (finrank ℝ F : ℝ)) := mul_pos hc (by linarith)
+     nlinarith [hsH]
+   have hpow : (((2 * (R + 1))^(d + 2) : ℕ) : ℝ) ≤ H := by
++    dsimp [H]
+     exact_mod_cast coexact_band_power_bound d (R + 1)
+   have heq : (2 / ((s + 3 : ℕ) : ℝ))^(d + 2) *
+       (((s + 3) * (R + 1) : ℕ) : ℝ)^(d + 2) =
