@@ -1,0 +1,67 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": true,
+  "source_sha": "031ca274a547bfaae9efe2d913921aba03144cc5",
+  "status": "FOCAL_REPRODUCTION_PASS",
+  "zip_sha256": "f09f00eed1e0580f106e98fef20558e0d736810263a32892b33c5d90e78b5796",
+  "manifest_entries": 12,
+  "error": null,
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.416,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.068,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.525,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.82,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 13.358,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 91.8,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 0,
+      "seconds": 301.001,
+      "log": "focal-build.log"
+    },
+    {
+      "name": "oracle",
+      "exit_code": 0,
+      "seconds": 11.801,
+      "log": "oracle.log"
+    }
+  ],
+  "started_utc": "2026-11-01T11:35:49.205821+00:00",
+  "finished_utc": "2026-11-01T11:42:53.244207+00:00"
+}

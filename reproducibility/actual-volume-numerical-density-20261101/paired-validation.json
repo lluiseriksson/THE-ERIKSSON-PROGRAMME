@@ -1,0 +1,40 @@
+{
+  "new_formal_full_integer_tail": false,
+  "failed092_preserved": true,
+  "second": {
+    "status": "ACTUAL_VOLUME_NUMERICAL_DENSITY_VALIDATED",
+    "source_sha": "031ca274a547bfaae9efe2d913921aba03144cc5",
+    "zip_sha256": "f09f00eed1e0580f106e98fef20558e0d736810263a32892b33c5d90e78b5796",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 5,
+    "target_olean_sha256": "ae9d3c62658c62981e56c58d65245e6d6af7478cf4b0f86b3e0750c19634c696",
+    "oracle_log_sha256": "064988752676edb9f58755e47b6b0632389a3c0d68ed761b4659798991610971",
+    "source_manifest_sha256": "5ed34b414e1532bed0a65e8c1c395d467901636e49d7e8425fec84e3bae7fe76",
+    "started_utc": "2026-11-01T11:35:49.2058210+00:00",
+    "finished_utc": "2026-11-01T11:42:53.2442070+00:00",
+    "independent_review": false,
+    "scope": "Actual numerical finite rank and uniform dilation density; exact-average/full-integer-tail formal transport open",
+    "windows_lean_executed": false
+  },
+  "oracle_names": 5,
+  "first": {
+    "status": "ACTUAL_VOLUME_NUMERICAL_DENSITY_VALIDATED",
+    "source_sha": "031ca274a547bfaae9efe2d913921aba03144cc5",
+    "zip_sha256": "6f84ec012dce7ab637a0b72aaeb79351fb8c373d361afff48ec1ceabc14bae93",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 5,
+    "target_olean_sha256": "ae9d3c62658c62981e56c58d65245e6d6af7478cf4b0f86b3e0750c19634c696",
+    "oracle_log_sha256": "064988752676edb9f58755e47b6b0632389a3c0d68ed761b4659798991610971",
+    "source_manifest_sha256": "5ed34b414e1532bed0a65e8c1c395d467901636e49d7e8425fec84e3bae7fe76",
+    "started_utc": "2026-11-01T11:37:06.7065400+00:00",
+    "finished_utc": "2026-11-01T11:43:02.4229080+00:00",
+    "independent_review": false,
+    "scope": "Actual numerical finite rank and uniform dilation density; exact-average/full-integer-tail formal transport open",
+    "windows_lean_executed": false
+  },
+  "status": "PAIRED_ACTUAL_VOLUME_NUMERICAL_DENSITY_VERIFIED",
+  "independent_scientific_review": false,
+  "new_formal_exact_average": false
+}

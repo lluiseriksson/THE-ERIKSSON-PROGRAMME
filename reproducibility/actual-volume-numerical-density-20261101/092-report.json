@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "15a799d0826dcf3e00de011a6caf82d1a194aba4",
+  "started_utc": "2026-11-01T11:26:03.245963+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.466,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.067,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.009,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 4.379,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.871,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.313,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 101.615,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 349.362,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: /RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P\u0335i\u0335.\u0335s\u0335i\u0335n\u0335g\u0335l\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:\n  Ne.symm hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, hb,\u0335 \u0335N\u0335e\u0335.\u0335s\u0335y\u0335m\u0335m\u0335 \u0335h\u0335b\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n\u2714 [8204/8207] Built YangMills.RG.ActualPacketCompression (9.6s)\n\u26a0 [8205/8207] Built YangMills.RG.ActualPacketSupportEnvelope (6.8s)\nwarning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:49: This simp argument is unused:\n  PiLp.toLp_apply\n\nHint: Omit it from the simp argument list.\n  simp only [PiLp.sub_apply, torusPhysicalEmbed, P\u0335i\u0335L\u0335p\u0335.\u0335t\u0335o\u0335L\u0335p\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335if_neg h0, if_neg h1, sub_self]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n\u2714 [8206/8207] Built YangMills.RG.ActualVolumeMeanRank (12s)\n\u2716 [8207/8207] Building YangMills.RG.ActualVolumeNumericalDensity (12s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-volume-numerical-density-20261101-092/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-volume-numerical-density-20261101-092/YangMills/RG/ActualVolumeNumericalDensity.lean -o /content/eriksson-actual-volume-numerical-density-20261101-092/.lake/build/lib/lean/YangMills/RG/ActualVolumeNumericalDensity.olean -i /content/eriksson-actual-volume-numerical-density-20261101-092/.lake/build/lib/lean/YangMills/RG/ActualVolumeNumericalDensity.ilean -c /content/eriksson-actual-volume-numerical-density-20261101-092/.lake/build/ir/YangMills/RG/ActualVolumeNumericalDensity.c --setup /content/eriksson-actual-volume-numerical-density-20261101-092/.lake/build/ir/YangMills/RG/ActualVolumeNumericalDensity.setup.json --json\ninfo: YangMills/RG/ActualVolumeNumericalDensity.lean:40:76: Try this:\n  [apply] ring_nf\n  \n  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.\n    \n  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.\nerror: YangMills/RG/ActualVolumeNumericalDensity.lean:40:13: unsolved goals\nd n : \u2115\ninst\u271d : NeZero n\nR : \u2115\n\u22a2 True \u2228 (2 + \u2191d = 0 \u2228 R = 0) \u2228 n = 0\nerror: YangMills/RG/ActualVolumeNumericalDensity.lean:119:4: mod_cast has type\n  (2 * (R + 1)) ^ (d + 2) \u2264 2 * (R + 1) * (2 * (R + 1) + 1) ^ (d + 1)\nbut is expected to have type\n  \u2191((2 * (R + 1)) ^ (d + 2)) \u2264 H\nwarning: YangMills/RG/ActualVolumeNumericalDensity.lean:142:9: unused variable `hw`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeNumericalDensity.lean:147:9: unused variable `hC`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeNumericalDensity.lean:147:34: unused variable `hC0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeNumericalDensity.lean:148:30: unused variable `hdelta`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeNumericalDensity.lean:148:51: unused variable `hradius`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeNumericalDensity.lean:149:9: unused variable `hPhi`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeNumericalDensity.lean:150:9: unused variable `hlocal`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualVolumeNumericalDensity\nerror: build failed\n",
+  "finished_utc": "2026-11-01T11:33:55.364414+00:00"
+}
