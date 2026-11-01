@@ -1,0 +1,8 @@
+'YangMills.RG.backward_character_amplitude' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexact_character_polarized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedPacket_scalar_profile' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedRealPacket_eq_polarized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedRealPacket_weighted_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedPacket_amplitude_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedRealPacket_mean_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedPacket_weightedDiagonal_upper' depends on axioms: [propext, Classical.choice, Quot.sound]

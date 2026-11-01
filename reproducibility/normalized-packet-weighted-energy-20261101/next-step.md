@@ -1,0 +1,7 @@
+# Same active question: actual compressed trace and reduced means
+
+Construct the actual image basis/isometry from the already checked real packet Gram/span and prove that its weighted diagonal sum equals the trace of the actual compressed componentwise repair operator. Do not define the desired trace as a diagonal sum or supply a trace certificate. Retain both quadratures, exact volume/normalization, every gradient direction and the two diagonal direction/component pairs.
+
+Within the same route, formalize the analytic two-component support reduction: prove actual amplitudes/gradients vanish at all other field components, then derive the mean bound using upper means only for the occupied pair. Positivity of all weights is still needed for complementary trace/rank; original differentiability, zero observation, local quadratic penalty and fixed positivec remain. The current formal all-component theorem must not be relabelled as this refined theorem.
+
+Falsifier: an actual cross-component coupling, missing phase/volume factor, omitted diagonal pair, alias mode or stronger assumption genuinely required by the intended trace/rank transport. Preserve counterexamples. After three substantive units without mathematical progress, document the exact unresolved lemma and change route or identify the concrete blocker. No physical/interacting/continuum gap claim or separate small paper; consolidate with exact new PDF assessment only when ready.

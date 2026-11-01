@@ -1,0 +1,14 @@
+[
+  {
+    "name": "NormalizedPacketWeightedEnergy.lean",
+    "sha256_lf": "5368b48be765b47197bd187fcd7103a7e07ae08fd962f9c3af4267cb02b3bba7",
+    "expected": "5368b48be765b47197bd187fcd7103a7e07ae08fd962f9c3af4267cb02b3bba7",
+    "matches": true
+  },
+  {
+    "name": "NormalizedPacketWeightedEnergyOracle.lean",
+    "sha256_lf": "d10bf8d1bed42a7c74f1f3b212f32f2fd26d52e83dc63a5533d0c1acb07b38b7",
+    "expected": "d10bf8d1bed42a7c74f1f3b212f32f2fd26d52e83dc63a5533d0c1acb07b38b7",
+    "matches": true
+  }
+]
