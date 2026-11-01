@@ -1,7 +1,7 @@
 import os,sys,json,time,pathlib,subprocess,hashlib,urllib.request,zipfile,base64,traceback
 from datetime import datetime,timezone
-SHA='d41773de8045b95b8fa633fa7fb34456167b6853'
-EXPECTED='3989a6baf9edb08fcc35e17691d382dc8ad302fdb396ea0f0f7a1955d275fed9'
+SHA='6613462edf6b6ea577e2a70b04b1caad6e37a696'
+EXPECTED='11ad012d8d07ac47a662da40fe8f675579082c939609f46ddb01bf10afb550fe'
 MAP_HASH='49c40cd78dc266e9a31c6bce790d51d2d4e6f000cc94a74aebaf3c187888561f'
 ROOT=pathlib.Path('/content/eriksson-render058');ROOT.mkdir(exist_ok=True)
 OUT=ROOT/'evidence';OUT.mkdir(exist_ok=True)
