@@ -107,7 +107,9 @@ theorem actualVolumeMean_dilation_density :
       ((s + 3 : ℕ) : ℝ)^2 := by
     simpa only [show (1 : ℝ) + (2 * m - 1) = 2 * m by ring] using
       (coexact_dilation_energy_identity d s R (2 * m - 1))
-  have hs : 2 * m * B ≤ c := he ▸ hscale
+  have hs : 2 * m * B ≤ c := by
+    rw [he]
+    exact hscale
   have hsH := mul_le_mul_of_nonneg_right hs (show 0 ≤ H by positivity)
   have hhalf : H ≤ 2 * (finrank ℝ F : ℝ) := by
     by_contra hh
