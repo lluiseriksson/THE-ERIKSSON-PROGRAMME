@@ -1,0 +1,21 @@
+{
+  "artifact": "ActualConstantObservationRank.lean",
+  "source_sha": "12201e2df4db0693b30b02600059f3264aa42048",
+  "source_utf8_lf_sha256": "52c475356b60191de394ff3a5a4b6b7f9b92dd72016413fe2791866cbb732b27",
+  "score": 6,
+  "scale": 10,
+  "first_assessment": true,
+  "reviewer": "Preparing Codex agent",
+  "model_identity": "Codex; served backend and reasoning effort unexposed",
+  "independent": false,
+  "context": "Source-level assessment of this exact candidate; Colab verdict recorded separately, not assumed. Not PDF assessment or peer review.",
+  "objections": [
+    "O1 Harmonic constant-sector rank baseline is classical; originality not established.",
+    "O2 This does not formalize adaptive full mean-budget matching order or block-variance construction.",
+    "O3 Applies to full actual divergence-free domain containing constants; mean-zero quotient has a counterexample.",
+    "O4 Retains differentiability, upper quadratic penalty and strict local coercivity; no physical hypothesis removed.",
+    "O5 No interacting background or continuum Yang-Mills mass gap follows.",
+    "O6 Preparing agent assessment is not independent; no external model identity or editorial acceptance claimed.",
+    "O7 Failed prior candidates and aborted restart remain in evidence; score belongs only to exact source and cannot be inherited by a PDF."
+  ]
+}

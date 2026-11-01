@@ -1,0 +1,4 @@
+import YangMills.RG.ActualConstantObservationRank
+#print axioms YangMills.RG.actualConstant_total_energy_zero
+#print axioms YangMills.RG.actualConstant_derivative_injective
+#print axioms YangMills.RG.actualConstant_observation_rank
