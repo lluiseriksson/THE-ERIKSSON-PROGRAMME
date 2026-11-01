@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "1c4048d2ef59358904e6a6fa397076b6692ee04f",
+  "started_utc": "2026-11-01T07:20:09.291406+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.466,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.474,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.357,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 73.077,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 234.1,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: edCoexactRealPacket.lean:73:4: try 'simp' instead of 'simpa'\n\nNote: This linter can be disabled with `set_option linter.unnecessarySimpa false`\nwarning: YangMills/RG/NormalizedCoexactRealPacket.lean:75:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P\u0335i\u0335.\u0335s\u0335i\u0335n\u0335g\u0335l\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedCoexactRealPacket.lean:75:27: This simp argument is unused:\n  hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, h\u0335b\u0335,\u0335 \u0335Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u26a0 [8199/8200] Built YangMills.RG.NormalizedPacketWeightedEnergy (7.5s)\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:\n  [NeZero D]\n  [NeZero n]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero n] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp_all \u0335[\u0335h\u0335z\u0335]\u0335\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P\u0335i\u0335.\u0335s\u0335i\u0335n\u0335g\u0335l\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:\n  Ne.symm hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, hb,\u0335 \u0335N\u0335e\u0335.\u0335s\u0335y\u0335m\u0335m\u0335 \u0335h\u0335b\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n\u2716 [8200/8200] Building YangMills.RG.ActualPacketCompression (6.0s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-085/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-packet-compression-20261031-085/YangMills/RG/ActualPacketCompression.lean -o /content/eriksson-actual-packet-compression-20261031-085/.lake/build/lib/lean/YangMills/RG/ActualPacketCompression.olean -i /content/eriksson-actual-packet-compression-20261031-085/.lake/build/lib/lean/YangMills/RG/ActualPacketCompression.ilean -c /content/eriksson-actual-packet-compression-20261031-085/.lake/build/ir/YangMills/RG/ActualPacketCompression.c --setup /content/eriksson-actual-packet-compression-20261031-085/.lake/build/ir/YangMills/RG/ActualPacketCompression.setup.json --json\nerror: YangMills/RG/ActualPacketCompression.lean:52:28: typeclass instance problem is stuck\n  Fintype ?m.84\n\nNote: Lean will not try to resolve this typeclass instance problem because the type argument to `Fintype` is a metavariable. This argument must be fully determined before Lean will try to resolve the typeclass.\n\nHint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualPacketCompression\nerror: build failed\n",
+  "finished_utc": "2026-11-01T07:25:36.087752+00:00"
+}

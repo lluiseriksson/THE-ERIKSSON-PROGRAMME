@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_PACKET_COMPRESSION_VALIDATED",
+  "source_sha": "9a8946b7f96a8528078c59650d94e636acc68887",
+  "zip_sha256": "f14adde85972f32dbee7b3dded9d4f2512d1711241a198f13e235a87aac495cf",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 4,
+  "target_olean_sha256": "e339e59edb45798bb6eeb19ed1a00f53e99b7cd01bd0e479e0eb883b7024b705",
+  "oracle_log_sha256": "d678ee7afe2ae0c210aec601e248ebac6a3059fed212d5fc144fb6454a95008c",
+  "source_manifest_sha256": "e9897adede864ca6da99bbe2eb8ab87625ca0436586a0a49fa413288e6bbb2a3",
+  "started_utc": "2026-11-01T07:27:15.8686640+00:00",
+  "finished_utc": "2026-11-01T07:33:35.6408470+00:00",
+  "independent_review": false,
+  "scope": "Actual packet image orthonormal basis, true compression trace, and weighted repair trace; Hodge/local-kernel/support-positivity composition still open",
+  "windows_lean_executed": false
+}

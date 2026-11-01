@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "ba668b038007a8e057e5de329e1e50787c19b055",
+  "status": "FAIL",
+  "zip_sha256": "12070ea20b5070a1e5630a664e7dfeed3febe6b50aab46b2e5d64af2964d4785",
+  "manifest_entries": 12,
+  "error": "focal-build failed: ean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:\n  [NeZero D]\n  [NeZero n]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero n] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp_all ̵[̵h̵z̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:\n  Ne.symm hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n✖ [8200/8200] Building YangMills.RG.ActualPacketCompression (26s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-packet-compression-20261031-084/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-packet-compression-20261031-084/YangMills/RG/ActualPacketCompression.lean -o /content/eriksson-actual-packet-compression-20261031-084/.lake/build/lib/lean/YangMills/RG/ActualPacketCompression.olean -i /content/eriksson-actual-packet-compression-20261031-084/.lake/build/lib/lean/YangMills/RG/ActualPacketCompression.ilean -c /content/eriksson-actual-packet-compression-20261031-084/.lake/build/ir/YangMills/RG/ActualPacketCompression.c --setup /content/eriksson-actual-packet-compression-20261031-084/.lake/build/ir/YangMills/RG/ActualPacketCompression.setup.json --json\nerror: YangMills/RG/ActualPacketCompression.lean:16:5: Type mismatch\n  Finset.image (normalizedCoexactRealPacket hNc R) Finset.univ\nhas type\n  Finset (PhysicalGaugeOneCochain (?m.37 + 2) n Nc)\nbut is expected to have type\n  Set (PhysicalGaugeOneCochain (d + 2) n Nc)\nerror: YangMills/RG/ActualPacketCompression.lean:21:70: unsolved goals\nd n Nc : ℕ\ninst✝¹ : NeZero n\ninst✝ : NeZero Nc\nhNc : 2 ≤ Nc\nR : ℕ\n⊢ sorry = Submodule.span ℝ (Set.range (normalizedCoexactRealPacket hNc R))\nwarning: YangMills/RG/ActualPacketCompression.lean:24:8: declaration uses `sorry`\nerror: YangMills/RG/ActualPacketCompression.lean:27:4: typeclass instance problem is stuck\n  InnerProductSpace ℝ ↥(actualPacketSubspace hNc R)\n\nNote: Lean will not try to resolve this typeclass instance problem because the second and fourth type arguments to `InnerProductSpace` contain metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.\n\nHint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.\nerror: YangMills/RG/ActualPacketCompression.lean:35:24: Invalid argument name `n` for function\nerror: YangMills/RG/ActualPacketCompression.lean:50:38: Unknown identifier `actualPacketBasis`\nerror: YangMills/RG/ActualPacketCompression.lean:48:66: unsolved goals\nd n Nc : ℕ\ninst✝¹ : NeZero n\ninst✝ : NeZero Nc\nhNc : 2 ≤ Nc\nR : ℕ\nhR : 2 * R < n\nT : PhysicalGaugeOneCochain (d + 2) n Nc →ₗ[ℝ] PhysicalGaugeOneCochain (d + 2) n Nc\n⊢ (LinearMap.trace ℝ ↥(actualPacketSubspace hNc R)) (finiteSubspaceCompression (actualPacketSubspace hNc R) T) =\n    ∑ p, ⟪normalizedCoexactRealPacket hNc R p, T (normalizedCoexactRealPacket hNc R p)⟫\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualPacketCompression\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.415,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 2.921,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.119,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 12.946,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 66.078,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 207.912,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-11-01T07:12:35.297709+00:00",
+  "finished_utc": "2026-11-01T07:17:26.862548+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "actual_billed_task_units": null,
+  "displayed_single_rate": 0.26,
+  "available_final": 1766.59,
+  "available_initial": 1766.65,
+  "screenshots": "D:\\Capturas\\the-eriksson-programme\\2026-11-01_actual-packet-compression",
+  "context": "Driver timestamps exclude complete allocation/release latency; displayed availability is account-wide, not precise task bill",
+  "displayed_two_rate": 0.52,
+  "final_usage_per_hour": 0,
+  "final_active_sessions": 0,
+  "runs": [
+    {
+      "disconnection_observed": true,
+      "started_utc": "2026-11-01T08:12:35.297709+01:00",
+      "release_requested_by_driver": true,
+      "finished_utc": "2026-11-01T08:17:26.862548+01:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "shared": false,
+      "run": "084",
+      "status": "FAIL",
+      "source_sha": "ba668b038007a8e057e5de329e1e50787c19b055"
+    },
+    {
+      "disconnection_observed": true,
+      "started_utc": "2026-11-01T08:20:09.291406+01:00",
+      "release_requested_by_driver": true,
+      "finished_utc": "2026-11-01T08:25:36.087752+01:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "shared": false,
+      "run": "085",
+      "status": "FAIL",
+      "source_sha": "1c4048d2ef59358904e6a6fa397076b6692ee04f"
+    },
+    {
+      "disconnection_observed": true,
+      "started_utc": "2026-11-01T08:27:15.868664+01:00",
+      "release_requested_by_driver": true,
+      "finished_utc": "2026-11-01T08:33:35.640847+01:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "shared": false,
+      "run": "086",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "source_sha": "9a8946b7f96a8528078c59650d94e636acc68887"
+    },
+    {
+      "disconnection_observed": true,
+      "started_utc": "2026-11-01T08:28:21.394216+01:00",
+      "release_requested_by_driver": true,
+      "finished_utc": "2026-11-01T08:35:04.965902+01:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "shared": false,
+      "run": "086b",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "source_sha": "9a8946b7f96a8528078c59650d94e636acc68887"
+    }
+  ]
+}
