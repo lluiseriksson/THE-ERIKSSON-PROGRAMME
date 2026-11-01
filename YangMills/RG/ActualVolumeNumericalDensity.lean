@@ -126,8 +126,9 @@ theorem actualVolumeMean_dilation_density :
     push_cast
     field_simp [hk] <;> ring
   have hp := hpow.trans hhalf
-  push_cast at hp
-  rw [← heq] at hp
+  have hp' : (((2 * (R + 1) : ℕ) : ℝ))^(d + 2) ≤ 2 * (finrank ℝ F : ℝ) := by
+    simpa only [Nat.cast_pow] using hp
+  rw [← heq] at hp'
   nlinarith
 end Dilation
 
