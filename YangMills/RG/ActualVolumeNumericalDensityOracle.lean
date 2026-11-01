@@ -1,0 +1,6 @@
+import YangMills.RG.ActualVolumeNumericalDensity
+#print axioms YangMills.RG.positiveCoexact_multiplier_sum_sq_le
+#print axioms YangMills.RG.actualPacket_multiplier_trace_le
+#print axioms YangMills.RG.actualVolumeMean_numerical_rank
+#print axioms YangMills.RG.actualVolumeMean_dilation_density
+#print axioms YangMills.RG.actualVolumeMean_uniform_dilation_density_exists
