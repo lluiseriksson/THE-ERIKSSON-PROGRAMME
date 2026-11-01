@@ -1,0 +1,17 @@
+# First exact-source assessment
+
+Exact proof.md SHA256: 687fd8f3998160de493b8e440916e95eaea6337fb0b12cd0e04f5cffabeca9a7. Same preparing Codex agent, continuing author context, backend/effort unexposed. No independent, blind, external model or human assessment. First numerical assessment of this source only; not a PDF or AIRR grade. No repeated review for a target score.
+
+Overall6/10 (subjective evidence/readiness, not probability). Equal rubric: correctness/hypothesis discipline8; formal completion4; evidence for originality2; programme relevance5; reproducibility/provenance8; clarity8. Sum35/60, mean35/6, rounded nearest whole6. This modest refinement belongs in the grouped dossier and does not justify a separate paper.
+
+Complete objections and disposition:
+
+1. Actual normalization: coefficient1 requires the exact all-cochain Hodge identity, not merely K0>=0 or an upper comparison. Checked componentwiseFlatGradient_eq_hodge and energy definitions at75308f16. The source explicitly includes diagonal pairs and counting/unordered-plaquette conventions. Symbolic derivation valid; no new Lean endpoint.
+2. Strictness: nonnegative occupied weights are removed but a pointwise lower bound-1 remains explicit. No assertion that all lower bounds were removed. Witness w=-1/2 and C=id satisfies every retained hypothesis, in D=2 as well. High-dimensional F proves compatibility, not sharpness.
+3. Trace transport: original packet basis, both quadratures, whole-span support cancellation and true projection compression are used. Existing normalized energy/Gram endpoints support ingredients, but new actual trace composition is still analytic, not compiled. Missing formal transport remains open.
+4. Cutoff and signs: M>=0,c>0 retained; upper means suffice because amplitude/multiplier coefficients are nonnegative. Same H,B,alpha/floor argument; neither omitted diagonal direction nor negative penalty constant changes the derivation. No new uniform-in-n local estimate assumed.
+5. Boundary witness: constant w=-1-epsilon gives Q=-epsilon*K0, with a nonconstant actual packet wave. C=id and finite penalty c+4D*epsilon verify all retained local hypotheses. This refutes universal complementary positivity below-1, NOT the final rank inequality or necessity of-1 for each variable coefficient field. Do not overclaim optimality.
+6. Originality and relevance: coefficient absorption is elementary/classical, precise combined priority unestablished. Official Mathlib trace reference supports basis invariance only. No independent literature novelty verdict, interacting or continuum relevance established.
+7. Publication/model context: no new PDF/deposit/license, public v4 untouched; same-agent6/10 applies only to this SHA. No external reviewer, backend identity or independence invented. PR29 remains20/41;TermSource=0. Need a paired Colab verification before claiming a new formal endpoint.
+
+Disposition: analytic strict hypothesis weakening and a useful boundary counterexample checked symbolically. Source-level6/10. No claim of new formal or physical closure. Next formal step remains actual image basis/compression trace/support transport, followed by the total-gradient identity in that same construction.
