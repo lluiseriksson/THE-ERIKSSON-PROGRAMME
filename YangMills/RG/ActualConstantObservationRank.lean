@@ -1,4 +1,5 @@
-import YangMills.RG.ActualVolumeFullTailDensity
+import YangMills.RG.PhysicalAverageWeightRank
+import YangMills.RG.ComponentwiseFlatHodge
 import YangMills.RG.PhysicalPoincareSectorQuotient
 
 /-! Actual harmonic-sector observation rank under the original local nonlinear
@@ -19,8 +20,10 @@ theorem actualConstant_total_energy_zero (rho : SUNAdjointModel Nc)
       (flatGaugeHodgeK0CLM (d + 2) n Nc rho (constantSectorLin (d + 2) n Nc v)) +
     inner ℝ (constantSectorLin (d + 2) n Nc v)
       (componentwiseWeightedRepairCLM w (constantSectorLin (d + 2) n Nc v)) = 0 := by
-  rw [actualTotalStiffness_energy]
-  simp [constantSectorLin_apply, constantPhysicalGaugeOneCochain_apply]
+  simp only [constantSectorLin_apply,
+    flatGaugeHodgeK0CLM_constantPhysicalGaugeOneCochain, inner_zero_right, zero_add]
+  rw [componentwiseWeightedRepair_energy]
+  simp [constantPhysicalGaugeOneCochain_apply]
 
 section Observation
 variable {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F] [FiniteDimensional ℝ F]
@@ -62,7 +65,13 @@ theorem actualConstant_derivative_injective :
     A hAS hLA
   have hE := actualConstant_total_energy_zero rho w (u - v)
   have hb0 : c * ‖A‖^2 ≤ 0 := by
-    simpa [T, A, ContinuousLinearMap.add_apply, inner_add_right, hE] using hb
+    change c * ‖A‖^2 ≤ inner ℝ A
+      ((flatGaugeHodgeK0CLM (d + 2) n Nc rho + componentwiseWeightedRepairCLM w) A) at hb
+    rw [ContinuousLinearMap.add_apply, inner_add_right] at hb
+    have hEA : inner ℝ A (flatGaugeHodgeK0CLM (d + 2) n Nc rho A) +
+        inner ℝ A (componentwiseWeightedRepairCLM w A) = 0 := hE
+    rw [hEA] at hb
+    exact hb
   have hAz : A = 0 := by
     by_contra hne
     have hp : 0 < c * ‖A‖^2 := mul_pos hc (sq_pos_of_pos (norm_pos_iff.mpr hne))
@@ -79,6 +88,10 @@ theorem actualConstant_observation_rank :
   have hinj := actualConstant_derivative_injective rho w C L hC hC0 Phi K delta radius c
     hc hdelta hradius hPhi hlocal
   have h := LinearMap.finrank_le_finrank_of_injective hinj
-  simpa [SUNLieCoord, Module.finrank_pi] using h
+  have hdim : finrank ℝ (Fin (d + 2) → SUNLieCoord Nc) = (d + 2) * (Nc^2 - 1) := by
+    rw [Module.finrank_pi_fintype]
+    simp [SUNLieCoord, finrank_euclideanSpace]
+  rw [hdim] at h
+  exact h
 end Observation
 end YangMills.RG
