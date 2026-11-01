@@ -1,0 +1,5 @@
+# Exact-v4 intake metadata correction
+
+The first supported revision POST returned HTTP400; no receipt was saved. A subsequent native exact-version query and inspect found no case. Original metadata primary_subject mathematical-physics fails the current native classifier with: Choose a main subject from the catalogue, or Other or emerging research areas. The existing verified subject eu-2ba1c7ad-2532-4cd7-8c5c-60f090a8700a passes, label Mathematical physics, AIRR-SUBJECTS-1. Full native diagnostic and screenshots preserved privately in unit068.
+
+Only the subject identifier is corrected in the job. Same PDF, binding, human authorization, grant file, single-use limit and idempotency key remain. No native API, database, quota, account acknowledgment or permission logic changes. The host helper now validates classification before sending, preserves superseded prepared input bytes and stores future HTTP error bodies instead of discarding their cause. No automatic retry, renewal or second grant. The operator must reconcile absence of cases before explicitly retrying this same job. Prepared source corrections are not evidence that a retry succeeded.
