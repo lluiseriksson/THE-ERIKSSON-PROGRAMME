@@ -95,7 +95,7 @@ theorem actualVolumeMean_nonlinear_rank (hNc : 2 ≤ Nc) (rho : SUNAdjointModel 
       intro A hA hnorm
       have hdiv := actualPacketSubspace_div_zero hNc rho R A hA
       exact (hlocal A hdiv hnorm).trans
-        (add_le_add_right (actualPacket_envelope_order hNc rho R w A hA) (Phi (C A))))
+        (add_le_add (actualPacket_envelope_order hNc rho R w A hA) (le_refl (Phi (C A)))))
   rw [actualPacketSubspace_finrank hNc R hR] at hr
   exact hr.trans (actualPacket_envelope_trace_mean_upper hNc R hR w m hm hw)
 

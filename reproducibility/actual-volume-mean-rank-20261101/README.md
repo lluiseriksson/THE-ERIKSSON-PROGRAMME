@@ -1,0 +1,15 @@
+# Actual full-volume mean/trace/nonlinear rank composition
+
+Candidate source85a4e4394c2c64c1348018505156c56c90711a69; five preregistered exact oracle endpoints. Not yet compiled/paired; source preparation is not verification.
+
+The explicit occupied mean hypothesis is sum_x max(1+w(i,x,l),0)<=n^(d+2)*m for every direction i and occupied l=0,1, with m>=0. Unoccupied original weights have no bounds/sign conditions. Derived envelope weights have the same all-component mean bound because they vanish outside the pair. The actual packet basis derives image dimension H=2R(2R+1)^(d+1), and range witnesses derive actual divergence0. Genuine compression trace is bounded by m times the sum of the actual character-gradient multipliers over BOTH real quadratures and the full finite packet.
+
+The final target retains original C:E->F, its actual Frechet derivative L at0, C(0)=0, finite-dimensional F, local upper-quadratic Phi with explicit K,delta,radius and original repaired coercivity on small actual divergence-free A. Coercivity transfers upward by the proved actual-image envelope comparison. The existing local_nonlinear_compressed_trace_rank_bound derives the kernel step; kernel coercivity/positivity/trace/dimension/support are not fields supplied by the caller. c>=0 suffices for this finite inequality; later positive-density conclusions need c>0.
+
+Target conclusion: c*(H-dim_R F)<=m*sum_(packet p,direction i)|chi_(p.1)(e_i)-1|². This is a finite explicit-symbol rank constraint. It is NOT yet the numerical spectral cutoff H*m*B, an n-family density/asymptotic endpoint or physical/interacting/continuum gap. All local hypotheses and positive-TOTAL-part mean condition remain, not signed means alone. PR29 stays20/41;TermSource=0; publicv4 unchanged.
+
+Drivers090/090b use fresh own Colab CPU/highRAM clones, exact source and dependency pins, target compilation, five exact standard-axiom oracles, complete logs/manifests and wrong-name/missing-report/sorryAx rejection in normal/-O Python. Windows only edits/git/hashes/light metadata. Drivers request resource release on success/failure; visible disconnection must be checked. Disconnected preflight6d634cf5->85a4e439 replaces an implicit sum transport by explicit rewrite, no executed failure or statement change.
+
+Primary context: actual preceding image/trace and support/envelope modules, prior local derivative-kernel theorem in PhysicalAverageWeightRank.lean, and official Mathlib LinearAlgebra.Dimension.Finrank LinearEquiv.finrank_eq primary docs checked1November2026. Finite trace/rank and monotone quadratic-envelope mechanisms classical; combined priority unestablished, no separate small discovery paper.
+
+Model assessments and review context: same preparing Codex author-context agent, actual backend/effort unexposed; no independent/blind/external-model/human review or inherited grade. The exact source will receive its own first score and full objections after focal verification; prior source/PDF reports do not apply to this candidate. No new PDF, AIRR submission, licence or external model transfer.
