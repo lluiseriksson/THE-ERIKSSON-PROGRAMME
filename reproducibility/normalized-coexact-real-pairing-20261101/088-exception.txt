@@ -1,0 +1,69 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_1249/3406747645.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.NormalizedCoexactRealPairing'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1249/3406747645.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: c] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatEnergy.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_gradient_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8195/8196] Built YangMills.RG.NormalizedCoexactPacket (4.8s)
+warning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✖ [8196/8196] Building YangMills.RG.NormalizedCoexactRealPairing (5.9s)
+trace: .> LEAN_PATH=/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-normalized-coexact-real-pairing-20261101-088/YangMills/RG/NormalizedCoexactRealPairing.lean -o /content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPairing.olean -i /content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPairing.ilean -c /content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPairing.c --setup /content/eriksson-normalized-coexact-real-pairing-20261101-088/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPairing.setup.json --json
+error: YangMills/RG/NormalizedCoexactRealPairing.lean:24:5: failed to synthesize instance of type class
+  LinearMap.CompatibleSMul (CoexactPositiveIndex d R → ℂ) ((Fin (d + 2) → ZMod n) → ℂ) ℝ ℂ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
+error: YangMills/RG/NormalizedCoexactRealPairing.lean:31:2: Type mismatch
+  LinearMap.map_add (normalizedCoexactRealLinear hNc R) c b
+has type
+  (normalizedCoexactRealLinear hNc R) (c + b) =
+    (normalizedCoexactRealLinear hNc R) c + (normalizedCoexactRealLinear hNc R) b
+but is expected to have type
+  normalizedCoexactSynthesis hNc R (c + b) = normalizedCoexactSynthesis hNc R c + normalizedCoexactSynthesis hNc R b
+error: YangMills/RG/NormalizedCoexactRealPairing.lean:37:2: Type mismatch
+  LinearMap.map_smul (normalizedCoexactRealLinear hNc R) a c
+has type
+  (normalizedCoexactRealLinear hNc R) (a • c) = a • (normalizedCoexactRealLinear hNc R) c
+but is expected to have type
+  normalizedCoexactSynthesis hNc R (a • c) = a • normalizedCoexactSynthesis hNc R c
+error: YangMills/RG/NormalizedCoexactRealPairing.lean:57:2: linarith failed to find a contradiction
+case h1.h
+d n Nc : ℕ
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+R : ℕ
+hR : 2 * R < n
+c b : CoexactPositiveIndex d R → ℂ
+h :
+  ⟪normalizedCoexactSynthesis hNc R c, normalizedCoexactSynthesis hNc R c⟫ +
+        ⟪normalizedCoexactSynthesis hNc R b, normalizedCoexactSynthesis hNc R c⟫ +
+      (⟪normalizedCoexactSynthesis hNc R b, normalizedCoexactSynthesis hNc R c⟫ +
+        ⟪normalizedCoexactSynthesis hNc R b, normalizedCoexactSynthesis hNc R b⟫) =
+    ∑ x, ⟪c x, c x⟫ + ∑ k, ⟪c k, b k⟫ + (∑ x, ⟪c x, b x⟫ + ∑ x, ⟪b x, b x⟫)
+hs : ∑ k, ⟪b k, c k⟫ = ∑ k, ⟪c k, b k⟫
+hc : ⟪normalizedCoexactSynthesis hNc R c, normalizedCoexactSynthesis hNc R c⟫ = ∑ x, ⟪c x, c x⟫
+hb : ⟪normalizedCoexactSynthesis hNc R b, normalizedCoexactSynthesis hNc R b⟫ = ∑ x, ⟪b x, b x⟫
+a✝ : ⟪normalizedCoexactSynthesis hNc R c, normalizedCoexactSynthesis hNc R b⟫ < ∑ k, ⟪c k, b k⟫
+⊢ False
+failed
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.NormalizedCoexactRealPairing
+error: build failed
+
