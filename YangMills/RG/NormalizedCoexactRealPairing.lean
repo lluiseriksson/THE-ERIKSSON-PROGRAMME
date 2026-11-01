@@ -28,7 +28,7 @@ noncomputable def normalizedScalarSynthesisReal (R : ℕ) :
       positiveCoexactCharacter (n := n) R k x) =
         a • (∑ k, (c k / (positiveCoexactNormalization (n := n) R k : ℂ)) *
           positiveCoexactCharacter (n := n) R k x)
-    simp only [smul_div_assoc, smul_mul_assoc, Finset.smul_sum]
+    simp only [Complex.real_smul, mul_div_assoc, mul_assoc, Finset.mul_sum]
 
 noncomputable def normalizedCoexactRealLinear (hNc : 2 ≤ Nc) (R : ℕ) :
     (CoexactPositiveIndex d R → ℂ) →ₗ[ℝ] PhysicalGaugeOneCochain (d + 2) n Nc :=

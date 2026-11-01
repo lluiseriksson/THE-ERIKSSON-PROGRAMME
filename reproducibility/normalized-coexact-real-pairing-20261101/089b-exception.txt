@@ -1,0 +1,69 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_3849/320248119.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.NormalizedCoexactRealPairing'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_3849/320248119.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: it [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8194/8196] Built YangMills.RG.CoexactFlatEnergy (7.0s)
+warning: YangMills/RG/CoexactFlatEnergy.lean:28:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatEnergy.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_gradient_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8195/8196] Built YangMills.RG.NormalizedCoexactPacket (5.6s)
+warning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✖ [8196/8196] Building YangMills.RG.NormalizedCoexactRealPairing (5.9s)
+trace: .> LEAN_PATH=/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-normalized-coexact-real-pairing-20261101-089b/YangMills/RG/NormalizedCoexactRealPairing.lean -o /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPairing.olean -i /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPairing.ilean -c /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPairing.c --setup /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPairing.setup.json --json
+error: YangMills/RG/NormalizedCoexactRealPairing.lean:25:19: unsolved goals
+case h
+d n Nc : ℕ
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+R : ℕ
+a : ℝ
+c : CoexactPositiveIndex d R → ℂ
+x : Fin (d + 2) → ZMod n
+⊢ ∑ x_1, a • (c x_1 / ↑(positiveCoexactNormalization R x_1) * (positiveCoexactCharacter R x_1) x) =
+    a • ∑ k, c k / ↑(positiveCoexactNormalization R k) * (positiveCoexactCharacter R k) x
+warning: YangMills/RG/NormalizedCoexactRealPairing.lean:31:47: This simp argument is unused:
+  Finset.smul_sum
+
+Hint: Omit it from the simp argument list.
+  simp only [smul_div_assoc, smul_mul_assoc,̵ ̵F̵i̵n̵s̵e̵t̵.̵s̵m̵u̵l̵_̵s̵u̵m̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPairing.lean:38:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_add`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NormalizedCoexactRealPairing.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_smul`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.NormalizedCoexactRealPairing
+error: build failed
+
