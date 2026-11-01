@@ -1,0 +1,11 @@
+# Verification recovery boundary
+
+Candidate mathematical source067fed7556b9d5c2fb2e7672feafa20df4dda72e; parent actual numerical/dilation source031ca274 separately paired verified. Five candidate full-tail endpoints are prepared, not accepted merely because source exists or earlier oracles passed.
+
+Colab094 allocation was requested on own CPU/highRAM notebook1hVaY1-K05EKSDiRINYhVSRRly9FrKGBr. Before any execution/result resource snapshot was recovered, the browser control session disappeared. Subsequent inventory had zero browser surfaces; selecting browser2 and opening iab both returned Browser is not available. The exact notebook was read through the installed GoogleDrive connector:775bytes, modified2026-11-01T12:01:10.919Z, one code cell, execution_count null and outputs empty. Complete raw notebook savedD. This proves only absence of saved outputs, NOT compiler failure, PASS, elapsed runtime or resource release. Actual allocation/execution/resource state is UNKNOWN. No replacement runtime or local Lean execution started.
+
+Human action requested once: open that existing notebook in this chat's integrated browser and restore its control. Then inspect own resource/session state first, recover complete output if present; stop any own idle runtime before preparing a replacement. Do not touch/share any other chat's sessions. If evidence is irretrievable, retain this access failure separately and run fresh reproducible own clones. Do not count the access loss as a mathematical refutation or transfer a score from earlier source/PDF.
+
+A source-only consolidated manuscript section is prepared in papers/flat-coarse-rank/v6-preparation. The displayed analytic finite/full-tail proof is separate from unrecovered formal evidence. It is not a rendered PDF, visual review, exact-PDF numerical assessment, AIRR deposit or accepted publication. Publicv4/internalv5 unchanged. First scoring of these new final PDF bytes remains pending creation and inspection. No score invented for missing focal evidence.
+
+User2026-11-01 requested continued work and closing this chat only when authorized work is complete and preserved/verified. Do not archive while this blocker or manuscript/publication work remains. Automation remains useful; no historical Paper36 restart, other-chat action, stats, permission bypass or local heavy computation.
