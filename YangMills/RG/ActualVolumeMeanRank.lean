@@ -63,7 +63,7 @@ theorem actualPacket_envelope_trace_mean_upper (hNc : 2 ≤ Nc)
       intro p _
       exact normalizedRealPacket_mean_upper hNc R hR p _ m
         (actualPacket_envelope_means w m hm hw)
-    _ = _ := (Finset.mul_sum _ _ _).symm
+    _ = _ := by rw [Finset.mul_sum]
 
 variable {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F] [FiniteDimensional ℝ F]
 
