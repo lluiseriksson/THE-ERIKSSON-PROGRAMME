@@ -1,0 +1,7 @@
+# Failed087 exact-source assessment
+
+First assessment of sourcefe7efc7c2f5bf4aad4abf50891aed2ef108c6035 / target SHA256c27485f3946fe67544906527f57d901d2f7b3e34ac0a21f3b2b7ed0884d89634:4/10 readiness. Same preparing Codex agent in continuing author context, backend/effort unexposed; no independent/blind/external-model/human review or target grade. Focal build exited1, no oracle or formal closure.
+
+Seven objections retained: (1) raw change incorrectly treated PiLp coordinate evaluation of a difference as definitional, (2) rewrite actual PiLp.sub_apply/toLp_apply rather than change premises, (3) all downstream declarations in a failed module remain unverified even if no separate error appeared, (4) whole-span support and actual-image order need full six-oracle verification, (5) mean trace/local derivative-kernel/rank composition still outside scope, (6) classical coefficient comparison supplies no novelty/physical gap claim, (7) exact paired reproduction/source/model/resource context must be preserved. No earlier score or PDF verdict applies.
+
+Disposition: preserve full failed source/report/ZIP and correct only the coordinate evaluation proof using pinned primary PiLp.sub_apply/toLp_apply. The six endpoint names and assumptions remain unchanged. The runtime released automatically; an attempted Terminal read after completion requested a new empty resource, immediately disconnected without commands or mathematical computation; retain this operational incident, not a second compiler run.

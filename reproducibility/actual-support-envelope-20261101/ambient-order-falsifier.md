@@ -1,0 +1,7 @@
+# Falsifier for an ambient envelope-order claim
+
+Analytic boundary of the exact actual operator construction, not a new Lean endpoint or separate paper. For D>=3,n>=3, put original w=0 everywhere. The constructed envelope has coefficient1 on components0,1 and0 elsewhere. Choose a nonzero actual internal-coordinate plane wave in component2, with spatial frequency1 in coordinate0. It is independent of coordinate2, hence its actual backward divergence vanishes. Its occupied components and all gradients there are0, so P(A)=0. The actual flat Hodge/gradient identity gives Q_0(A)=4sin²(pi/n)||A||²>0. Thus Q_0<=P fails on the full ambient space AND on the full divergence-free sector.
+
+All original local nonlinear observation assumptions can simultaneously hold: take F=E,C=id,Phi(y)=c||y||² with fixed c>0. Since Q_0>=0 globally, repaired coercivity holds globally. This is a full-hypothesis-compatible boundary witness, not merely arbitrary incompatible matrix data. It does not contradict order on the actual two-component packet image, because this witness lies outside that image. D=2 has no component2 and is not covered by this witness.
+
+The comparison must therefore remain restricted to actualPacketSubspace. No ambient/global-order upgrade, physical interacting consequence, rank sharpness or priority claim. Same preparing Codex author-context agent, backend/effort unexposed; evaluated symbolically with the module's exact-source assessment, no independent review. Original local hypotheses and publicv4 unchanged.
