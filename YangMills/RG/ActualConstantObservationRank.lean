@@ -66,8 +66,8 @@ theorem actualConstant_derivative_injective :
   have hE := actualConstant_total_energy_zero rho w (u - v)
   have hb0 : c * ‖A‖^2 ≤ 0 := by
     change c * ‖A‖^2 ≤ inner ℝ A
-      ((flatGaugeHodgeK0CLM (d + 2) n Nc rho + componentwiseWeightedRepairCLM w) A) at hb
-    rw [ContinuousLinearMap.add_apply, inner_add_right] at hb
+      (flatGaugeHodgeK0CLM (d + 2) n Nc rho A + componentwiseWeightedRepairCLM w A) at hb
+    rw [inner_add_right] at hb
     have hEA : inner ℝ A (flatGaugeHodgeK0CLM (d + 2) n Nc rho A) +
         inner ℝ A (componentwiseWeightedRepairCLM w A) = 0 := hE
     rw [hEA] at hb
