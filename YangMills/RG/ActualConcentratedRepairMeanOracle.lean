@@ -1,0 +1,5 @@
+import YangMills.RG.ActualConcentratedRepairMean
+#print axioms YangMills.RG.actualOriginDifference_eq_existing_site_gradient
+#print axioms YangMills.RG.actualConcentrated_repair_energy
+#print axioms YangMills.RG.actualConcentrated_positive_total_sum
+#print axioms YangMills.RG.actualConcentrated_positive_total_budget
