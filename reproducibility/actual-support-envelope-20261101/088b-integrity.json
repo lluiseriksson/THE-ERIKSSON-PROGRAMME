@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "994d1716c54200d6c9918044d78e77066f6090c7",
+  "status": "FAIL",
+  "zip_sha256": "8a93d1f816817ab501ae3ca2cd94d34edeb06e4f82b545df9a188112d4b8f3a2",
+  "manifest_entries": 12,
+  "error": "focal-build failed: : This simp argument is unused:\n  hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, h̵b̵,̵ ̵Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n⚠ [8199/8201] Built YangMills.RG.NormalizedPacketWeightedEnergy (10s)\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:\n  [NeZero D]\n  [NeZero n]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero n] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp_all ̵[̵h̵z̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:\n  Ne.symm hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n✔ [8200/8201] Built YangMills.RG.ActualPacketCompression (9.8s)\n✖ [8201/8201] Building YangMills.RG.ActualPacketSupportEnvelope (6.5s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-support-envelope-20261031-088b/YangMills/RG/ActualPacketSupportEnvelope.lean -o /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/lib/lean/YangMills/RG/ActualPacketSupportEnvelope.olean -i /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/lib/lean/YangMills/RG/ActualPacketSupportEnvelope.ilean -c /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/ir/YangMills/RG/ActualPacketSupportEnvelope.c --setup /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/ir/YangMills/RG/ActualPacketSupportEnvelope.setup.json --json\nerror: YangMills/RG/ActualPacketSupportEnvelope.lean:16:57: unsolved goals\nd n Nc : ℕ\ninst✝¹ : NeZero n\ninst✝ : NeZero Nc\nhNc : 2 ≤ Nc\nR : ℕ\nx : FinBox (d + 2) n\nl : Fin (d + 2)\nh0 : l ≠ 0\nh1 : l ≠ Fin.succ 0\nc : CoexactPositiveIndex d R → ℂ\n⊢ l = 1 →\n    sunComplexPlane hNc\n        ((normalizedScalarSynthesisReal R) c ((finBoxZModEquiv (d + 2) n) x) -\n          (normalizedScalarSynthesisReal R) c ((finBoxZModEquiv (d + 2) n) x - Pi.single 0 1)) =\n      0\nwarning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:44: This simp argument is unused:\n  PiLp.toLp_apply\n\nHint: Omit it from the simp argument list.\n  simp [PiLp.sub_apply, torusPhysicalEmbed, P̵i̵L̵p̵.̵t̵o̵L̵p̵_̵a̵p̵p̵l̵y̵,̵ ̵h0, h1]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:65: This simp argument is unused:\n  h1\n\nHint: Omit it from the simp argument list.\n  simp [PiLp.sub_apply, torusPhysicalEmbed, PiLp.toLp_apply, h0,̵ ̵h̵1̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualPacketSupportEnvelope\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.567,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.117,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.018,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.626,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.921,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.52,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 95.864,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 317.446,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-11-01T08:34:37.943041+00:00",
+  "finished_utc": "2026-11-01T08:41:52.123095+00:00"
+}

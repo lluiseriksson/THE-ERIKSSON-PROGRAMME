@@ -1,0 +1,19 @@
+{
+  "independent_review": false,
+  "target_olean_sha256": "472e2e02bf190a2c776ffc86fe34ed89a95870efa9d5cac6d84e631f8e9cf0c7",
+  "zero_exit_stages_each": 9,
+  "all_resources_observed_disconnected": true,
+  "status": "PAIRED_ACTUAL_SUPPORT_ENVELOPE_VERIFIED",
+  "fresh_own_clones": 2,
+  "exact_standard_axiom_endpoints": 6,
+  "failures_retained": [
+    "087",
+    "088",
+    "088b"
+  ],
+  "normal_and_optimized_real_mutations_rejected_each": 3,
+  "source_sha": "88445ac6b2358667c96b46fdefacaf5be21049a9",
+  "source_manifest_sha256": "c385eae14b159d20dd87e8b490b9ba4e54b7dca9d801046dc1b1213b0f196f27",
+  "windows_lean": false,
+  "oracle_log_sha256": "90d95755a0948399b8b01fe8433d4aae0dfceb188428f4742fc93632d1f3d98b"
+}

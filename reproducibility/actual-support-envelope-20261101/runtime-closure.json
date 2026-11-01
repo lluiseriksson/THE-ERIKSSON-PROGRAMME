@@ -1,0 +1,78 @@
+{
+  "actual_billed_task_units": null,
+  "incidental_resource": {
+    "native_disconnect_confirmed": true,
+    "mathematical_computation": false,
+    "commands_executed": 0,
+    "trigger": "Terminal read request coincided with completed/disconnected run and allocated a fresh empty runtime",
+    "after": "087 automatic release",
+    "record": "D:\\Capturas\\the-eriksson-programme\\2026-11-01_actual-support-envelope\\incidental-terminal-resource-closed.txt"
+  },
+  "allocation_and_release_latency_fully_measured": false,
+  "first_visible_available_during087": 1766.58,
+  "final_active_sessions": 0,
+  "context": "Displayed availability is account-wide; driver timestamps do not measure complete connection intervals",
+  "runs": [
+    {
+      "status": "FAIL",
+      "shared": false,
+      "started_utc": "2026-11-01T08:21:01.847994+00:00",
+      "source_sha": "fe7efc7c2f5bf4aad4abf50891aed2ef108c6035",
+      "release_requested": true,
+      "finished_utc": "2026-11-01T08:27:49.394383+00:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "disconnection_observed": true,
+      "run": "087"
+    },
+    {
+      "status": "FAIL",
+      "shared": false,
+      "started_utc": "2026-11-01T08:33:45.690435+00:00",
+      "source_sha": "994d1716c54200d6c9918044d78e77066f6090c7",
+      "release_requested": true,
+      "finished_utc": "2026-11-01T08:40:55.551813+00:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "disconnection_observed": true,
+      "run": "088"
+    },
+    {
+      "status": "FAIL",
+      "shared": false,
+      "started_utc": "2026-11-01T08:34:37.943041+00:00",
+      "source_sha": "994d1716c54200d6c9918044d78e77066f6090c7",
+      "release_requested": true,
+      "finished_utc": "2026-11-01T08:41:52.123095+00:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "disconnection_observed": true,
+      "run": "088b"
+    },
+    {
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "shared": false,
+      "started_utc": "2026-11-01T08:47:31.171526+00:00",
+      "source_sha": "88445ac6b2358667c96b46fdefacaf5be21049a9",
+      "release_requested": true,
+      "finished_utc": "2026-11-01T08:54:49.684284+00:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "disconnection_observed": true,
+      "run": "089"
+    },
+    {
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "shared": false,
+      "started_utc": "2026-11-01T08:55:41.171638+00:00",
+      "source_sha": "88445ac6b2358667c96b46fdefacaf5be21049a9",
+      "release_requested": true,
+      "finished_utc": "2026-11-01T09:03:15.903741+00:00",
+      "runtime": "Own Colab Linux CPU highRAM50.99GB",
+      "disconnection_observed": true,
+      "run": "089b"
+    }
+  ],
+  "available_after087_and_empty_resource": 1766.56,
+  "final_usage_per_hour": 0,
+  "two_concurrent_rate": 0.52,
+  "available_final": 1766.47,
+  "single_rate": 0.26,
+  "windows_lean": false
+}

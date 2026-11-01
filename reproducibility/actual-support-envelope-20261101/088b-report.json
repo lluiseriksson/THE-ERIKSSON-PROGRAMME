@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "994d1716c54200d6c9918044d78e77066f6090c7",
+  "started_utc": "2026-11-01T08:34:37.943041+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.567,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.117,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.018,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.626,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.921,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.52,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 95.864,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 317.446,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: : This simp argument is unused:\n  hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, h\u0335b\u0335,\u0335 \u0335Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u26a0 [8199/8201] Built YangMills.RG.NormalizedPacketWeightedEnergy (10s)\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:\n  [NeZero D]\n  [NeZero n]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero n] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp_all \u0335[\u0335h\u0335z\u0335]\u0335\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P\u0335i\u0335.\u0335s\u0335i\u0335n\u0335g\u0335l\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:\n  Ne.symm hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, hb,\u0335 \u0335N\u0335e\u0335.\u0335s\u0335y\u0335m\u0335m\u0335 \u0335h\u0335b\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n\u2714 [8200/8201] Built YangMills.RG.ActualPacketCompression (9.8s)\n\u2716 [8201/8201] Building YangMills.RG.ActualPacketSupportEnvelope (6.5s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-088b/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-support-envelope-20261031-088b/YangMills/RG/ActualPacketSupportEnvelope.lean -o /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/lib/lean/YangMills/RG/ActualPacketSupportEnvelope.olean -i /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/lib/lean/YangMills/RG/ActualPacketSupportEnvelope.ilean -c /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/ir/YangMills/RG/ActualPacketSupportEnvelope.c --setup /content/eriksson-actual-support-envelope-20261031-088b/.lake/build/ir/YangMills/RG/ActualPacketSupportEnvelope.setup.json --json\nerror: YangMills/RG/ActualPacketSupportEnvelope.lean:16:57: unsolved goals\nd n Nc : \u2115\ninst\u271d\u00b9 : NeZero n\ninst\u271d : NeZero Nc\nhNc : 2 \u2264 Nc\nR : \u2115\nx : FinBox (d + 2) n\nl : Fin (d + 2)\nh0 : l \u2260 0\nh1 : l \u2260 Fin.succ 0\nc : CoexactPositiveIndex d R \u2192 \u2102\n\u22a2 l = 1 \u2192\n    sunComplexPlane hNc\n        ((normalizedScalarSynthesisReal R) c ((finBoxZModEquiv (d + 2) n) x) -\n          (normalizedScalarSynthesisReal R) c ((finBoxZModEquiv (d + 2) n) x - Pi.single 0 1)) =\n      0\nwarning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:44: This simp argument is unused:\n  PiLp.toLp_apply\n\nHint: Omit it from the simp argument list.\n  simp [PiLp.sub_apply, torusPhysicalEmbed, P\u0335i\u0335L\u0335p\u0335.\u0335t\u0335o\u0335L\u0335p\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335h0, h1]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:65: This simp argument is unused:\n  h1\n\nHint: Omit it from the simp argument list.\n  simp [PiLp.sub_apply, torusPhysicalEmbed, PiLp.toLp_apply, h0,\u0335 \u0335h\u03351\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualPacketSupportEnvelope\nerror: build failed\n",
+  "finished_utc": "2026-11-01T08:41:52.123095+00:00"
+}

@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e691e0eca976a4aab37395b3262b45ac467c9ac5/reproducibility/actual-support-envelope-20261101/reproduce087.py", line 45, in <module>
+  File "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/e691e0eca976a4aab37395b3262b45ac467c9ac5/reproducibility/actual-support-envelope-20261101/reproduce087.py", line 16, in run
+RuntimeError: focal-build failed: t.
+  simp [hk, hq̵,̵ ̵h̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:73:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:75:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:75:27: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, h̵b̵,̵ ̵Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8199/8201] Built YangMills.RG.NormalizedPacketWeightedEnergy (8.0s)
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:
+  [NeZero D]
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:
+  hz
+
+Hint: Omit it from the simp argument list.
+  simp_all ̵[̵h̵z̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:
+  Ne.symm hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8200/8201] Built YangMills.RG.ActualPacketCompression (8.3s)
+✖ [8201/8201] Building YangMills.RG.ActualPacketSupportEnvelope (5.6s)
+trace: .> LEAN_PATH=/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-support-envelope-20261031-087/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-support-envelope-20261031-087/YangMills/RG/ActualPacketSupportEnvelope.lean -o /content/eriksson-actual-support-envelope-20261031-087/.lake/build/lib/lean/YangMills/RG/ActualPacketSupportEnvelope.olean -i /content/eriksson-actual-support-envelope-20261031-087/.lake/build/lib/lean/YangMills/RG/ActualPacketSupportEnvelope.ilean -c /content/eriksson-actual-support-envelope-20261031-087/.lake/build/ir/YangMills/RG/ActualPacketSupportEnvelope.c --setup /content/eriksson-actual-support-envelope-20261031-087/.lake/build/ir/YangMills/RG/ActualPacketSupportEnvelope.setup.json --json
+error: YangMills/RG/ActualPacketSupportEnvelope.lean:22:2: 'change' tactic failed, pattern
+  ((if l = 0 then ?m.117 else 0) - if l = Fin.succ 0 then ?m.127 else 0) = 0
+is not definitionally equal to target
+  (torusPhysicalEmbed hNc 0 ((torusBackwardDifference (Fin.succ 0)) ((normalizedScalarSynthesisReal R) c)) -
+          torusPhysicalEmbed hNc (Fin.succ 0) ((torusBackwardDifference 0) ((normalizedScalarSynthesisReal R) c))).ofLp
+      (x, l) =
+    0
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.ActualPacketSupportEnvelope
+error: build failed
+
