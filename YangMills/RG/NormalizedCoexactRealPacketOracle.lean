@@ -1,0 +1,8 @@
+import YangMills.RG.NormalizedCoexactRealPacket
+#print axioms YangMills.RG.coexactQuadraturePhase_gram
+#print axioms YangMills.RG.counting_single_real_pairing
+#print axioms YangMills.RG.normalizedCoexactRealPacket_gram
+#print axioms YangMills.RG.normalizedCoexactRealPacket_orthonormal
+#print axioms YangMills.RG.coexactCoefficient_real_expansion
+#print axioms YangMills.RG.normalizedCoexactSynthesis_real_expansion
+#print axioms YangMills.RG.normalizedCoexactRealPacket_span
