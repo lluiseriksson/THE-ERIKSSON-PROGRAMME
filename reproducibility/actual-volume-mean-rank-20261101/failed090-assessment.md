@@ -1,0 +1,7 @@
+# Failed090 exact-source assessment
+
+Exact source85a4e4394c2c64c1348018505156c56c90711a69, complete failed source/report/ZIP retained. First assessment4/10 readiness, same preparing Codex author-context agent, backend/effort unexposed, no independent/blind/external-model/human review or target grade. Focal build exit1, no oracle/PASS/closure.
+
+Seven objections: (1) final add_le_add_right resolved to left-addition orientation and did not match required Q+Phi<=P+Phi; use explicit add_le_add with le_refl(Phi), no mathematical hypothesis change, (2) processed dimension/divergence/trace declarations in a failed module are not accepted closure, (3) all five exact standard-axiom oracles and source/manifest validation remain required, (4) original nonlinear/local/positive-total-mean hypotheses must remain explicit rather than a kernel lower-bound field, (5) finite exact-symbol inequality is not numerical cutoff/density, (6) classical mechanism/no original-priority or physical interacting/continuum consequence, (7) preserve failed report, own resource disconnection and exact model/source context, no inherited score. The disconnected finite-sum preflight was unexecuted and is not a failure.
+
+Disposition: correct only final addition transport via explicit add_le_add and keep all five statements, premises and acceptance criteria. Resource automatically released; visible0sessions/0usage, available1766.44, exact task bill unknown. No Windows Lean/oracle, external model transfer or publicv4 modification.

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ActualVolumeMeanRank.lean",
+    "sha256_lf": "2592279723b6f415da28614cc16d5924e4a0026bf06d602a57886e130c295a3f",
+    "expected": "2592279723b6f415da28614cc16d5924e4a0026bf06d602a57886e130c295a3f",
+    "matches": true
+  },
+  {
+    "name": "ActualVolumeMeanRankOracle.lean",
+    "sha256_lf": "e0224c3fbb7b6943dee9aaacbd0fc0b49697f160a4fe24fa435203e5bfe14b65",
+    "expected": "e0224c3fbb7b6943dee9aaacbd0fc0b49697f160a4fe24fa435203e5bfe14b65",
+    "matches": true
+  }
+]

@@ -1,0 +1,431 @@
+⚠ [8158/8204] Built YangMills.RG.PositiveCompressedTrace (8.7s)
+warning: YangMills/RG/PositiveCompressedTrace.lean:16:0: automatically included section variable(s) unused in theorem `YangMills.RG.submodule_orthonormal_coe`:
+  [FiniteDimensional ℝ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℝ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8159/8204] Built YangMills.RG.RegularSectorCurve (10s)
+✔ [8160/8204] Built YangMills.L0_Lattice.FiniteLattice (13s)
+✔ [8161/8204] Built YangMills.RG.CoarseMeasurementDimensionObstruction (14s)
+⚠ [8162/8204] Built YangMills.RG.TorusFourierBandDimension (16s)
+warning: YangMills/RG/TorusFourierBandDimension.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.RG.centeredFourierFrequency_injective`:
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8163/8204] Built YangMills.L0_Lattice.GaugeConfigurations (6.3s)
+✔ [8164/8204] Built YangMills.RG.BlockLattice (6.8s)
+⚠ [8165/8204] Built YangMills.RG.TorusFiniteSumEnergy (5.5s)
+warning: YangMills/RG/TorusFiniteSumEnergy.lean:35:0: automatically included section variable(s) unused in theorem `YangMills.RG.character_forward_difference`:
+  [Fintype G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [Fintype G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8166/8204] Built YangMills.L0_Lattice.WilsonAction (5.0s)
+✔ [8167/8204] Built YangMills.RG.TorusCountingParseval (5.0s)
+✔ [8168/8204] Built YangMills.L0_Lattice.GaugeInvariance (4.0s)
+✔ [8169/8204] Built YangMills.RG.TorusFourierEnergyBound (5.8s)
+✔ [8170/8204] Built YangMills.L0_Lattice.FiniteLatticeGeometryInstance (6.3s)
+✔ [8171/8204] Built YangMills.RG.BlockMaps (4.9s)
+✔ [8172/8204] Built YangMills.RG.LinearAveraging (6.3s)
+✔ [8173/8204] Built YangMills.RG.FiniteTorusCurlDiv (6.7s)
+✔ [8174/8204] Built YangMills.RG.PhysicalGaugeCochains (19s)
+✔ [8175/8204] Built YangMills.RG.PhysicalGaugeHodgePoincare (5.2s)
+⚠ [8176/8204] Built YangMills.RG.TorusPhysicalEmbedding (6.1s)
+warning: YangMills/RG/TorusPhysicalEmbedding.lean:40:6: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/TorusPhysicalEmbedding.lean:40:6: 'omega' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/RG/TorusPhysicalEmbedding.lean:63:79: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [8177/8204] Built YangMills.RG.TorusPhysicalShift (7.7s)
+warning: YangMills/RG/TorusPhysicalShift.lean:18:10: This simp argument is unused:
+  Fin.val_natCast
+
+Hint: Omit it from the simp argument list.
+  simp [F̵i̵n̵.̵v̵a̵l̵_̵n̵a̵t̵C̵a̵s̵t̵,̵ ̵Nat.mod_eq_of_lt (x i).isLt]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:18:27: This simp argument is unused:
+  Nat.mod_eq_of_lt (x i).isLt
+
+Hint: Omit it from the simp argument list.
+  simp [Fin.val_natCast,̵ ̵N̵a̵t̵.̵m̵o̵d̵_̵e̵q̵_̵o̵f̵_̵l̵t̵ ̵(̵x̵ ̵i̵)̵.̵i̵s̵L̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:27:24: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [FinBox.shift, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵ZMod.natCast_mod]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:28:27: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [FinBox.shift, h,̵ ̵P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TorusPhysicalShift.lean:41:31: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/TorusPhysicalShift.lean:40:54: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/TorusPhysicalShift.lean:41:31: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/RG/TorusPhysicalShift.lean:78:86: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/TorusPhysicalShift.lean:78:86: 'abel' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+✔ [8178/8204] Built YangMills.RG.PhysicalGaugeFlatPoincare (11s)
+✔ [8179/8204] Built YangMills.RG.PhysicalPoincareWall (5.7s)
+✔ [8180/8204] Built YangMills.RG.PhysicalPoincareSectorQuotient (5.4s)
+⚠ [8181/8204] Built YangMills.RG.CoexactFlatBand (14s)
+warning: YangMills/RG/CoexactFlatBand.lean:26:8: automatically included section variable(s) unused in theorem `YangMills.RG.torusBackwardDifference_apply`:
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatBand.lean:39:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusBackwardDifference_commute`:
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatBand.lean:66:8: automatically included section variable(s) unused in theorem `YangMills.RG.coexactFlatMap_apply`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatBand.lean:91:0: automatically included section variable(s) unused in theorem `YangMills.RG.coexactFlatMap_zero_backward`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [8182/8204] Built YangMills.RG.PhysicalPoincareLowModeFalsifier (5.2s)
+✔ [8183/8204] Built YangMills.RG.PhysicalPoincareLowModeHodge (8.5s)
+✔ [8184/8204] Built YangMills.RG.TorusPhysicalHodge (18s)
+✔ [8185/8204] Built YangMills.RG.PhysicalFourierRankObstruction (10s)
+✔ [8186/8204] Built YangMills.RG.UniformPhysicalCoarseRankWall (6.4s)
+✔ [8187/8204] Built YangMills.RG.WeightedFlatRepairWall (12s)
+⚠ [8188/8204] Built YangMills.RG.ComponentwiseFlatGradient (8.6s)
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:49:0: automatically included section variable(s) unused in theorem `YangMills.RG.flat_backward_forward_energy`:
+  [InnerProductSpace ℝ V]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [InnerProductSpace ℝ V] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:83:8: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseFlatGradient_apply`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:88:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseFlatGradient_energy`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:100:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseWeightedRepair_energy`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/ComponentwiseFlatGradient.lean:115:0: automatically included section variable(s) unused in theorem `YangMills.RG.componentwiseWeightedRepair_le_gradient`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8189/8204] Built YangMills.RG.PhysicalCharacterWeightDensity (5.0s)
+warning: YangMills/RG/PhysicalCharacterWeightDensity.lean:42:19: This simp argument is unused:
+  if_pos rfl
+
+Hint: Omit it from the simp argument list.
+  simp only [hp,̵ ̵i̵f̵_̵p̵o̵s̵ ̵r̵f̵l̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/PhysicalCharacterWeightDensity.lean:47:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCharacter_norm_sq`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalCharacterWeightDensity.lean:51:24: This simp argument is unused:
+  norm_mul
+
+Hint: Omit it from the simp argument list.
+  simp [countingL2Mass, n̵o̵r̵m̵_̵m̵u̵l̵,̵ ̵AddChar.norm_apply, nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8190/8204] Built YangMills.RG.ComponentwiseFlatHodge (6.2s)
+⚠ [8191/8204] Built YangMills.RG.PolarizedCharacterWeightDensity (6.4s)
+warning: YangMills/RG/PolarizedCharacterWeightDensity.lean:26:0: automatically included section variable(s) unused in theorem `YangMills.RG.polarizedCharacter_norm_sq`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PolarizedCharacterWeightDensity.lean:34:31: This simp argument is unused:
+  card_finBox
+
+Hint: Omit it from the simp argument list.
+  simp [Fintype.sum_prod_type, c̵a̵r̵d̵_̵f̵i̵n̵B̵o̵x̵,̵ ̵nsmul_eq_mul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8192/8204] Built YangMills.RG.PhysicalTransverseCharacterStrip (8.2s)
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:13:0: automatically included section variable(s) unused in theorem `YangMills.RG.sunComplexPlane_real_inner`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:22:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_real_inner`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:67:26: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:81:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalCharacter_step`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:91:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalCharacter_injective`:
+  [NeZero d]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.RG.physicalCharacterNormalization_sq`:
+  [NeZero d]
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/PhysicalTransverseCharacterStrip.lean:168:0: automatically included section variable(s) unused in theorem `YangMills.RG.physical_quadratic_smul`:
+  [NeZero d]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero d] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8193/8204] Built YangMills.RG.NonlinearTangentCoercivity (8.4s)
+warning: YangMills/RG/NonlinearTangentCoercivity.lean:17:0: automatically included section variable(s) unused in theorem `YangMills.RG.tangent_kernel_norm_ratio_tendsto`:
+  [FiniteDimensional ℝ E]
+  [FiniteDimensional ℝ F]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℝ E] [FiniteDimensional ℝ F] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8194/8204] Built YangMills.RG.RegularSectorCoercivity (9.1s)
+warning: YangMills/RG/RegularSectorCoercivity.lean:70:53: This simp argument is unused:
+  Function.comp_def
+
+Hint: Omit it from the simp argument list.
+  simp [F̵u̵n̵c̵t̵i̵o̵n̵.̵c̵o̵m̵p̵_̵d̵e̵f̵,̵ ̵hγ0, hC0]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8195/8204] Built YangMills.RG.PhysicalAverageWeightRank (9.5s)
+warning: YangMills/RG/PhysicalAverageWeightRank.lean:37:8: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: YangMills/RG/PhysicalAverageWeightRank.lean:37:8: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/PhysicalAverageWeightRank.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.RG.orthonormalSpanBasis_coe`:
+  [FiniteDimensional ℝ E]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [FiniteDimensional ℝ E] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8196/8204] Built YangMills.RG.TransverseFlatBand (8.0s)
+warning: YangMills/RG/TransverseFlatBand.lean:74:15: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [e, P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵h, Ne.symm h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TransverseFlatBand.lean:74:35: This simp argument is unused:
+  Ne.symm h
+
+Hint: Omit it from the simp argument list.
+  simp [e, Pi.single_apply, h,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/TransverseFlatBand.lean:104:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalBandMap_injective`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/TransverseFlatBand.lean:121:0: automatically included section variable(s) unused in theorem `YangMills.RG.transversePhysicalBand_le_centered`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8197/8204] Built YangMills.RG.CoexactFlatEnergy (8.2s)
+warning: YangMills/RG/CoexactFlatEnergy.lean:28:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/CoexactFlatEnergy.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_gradient_disjoint`:
+  [NeZero D]
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8198/8204] Built YangMills.RG.NormalizedCoexactPacket (5.6s)
+warning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+warning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+⚠ [8199/8204] Built YangMills.RG.NormalizedCoexactRealPairing (6.5s)
+warning: YangMills/RG/NormalizedCoexactRealPairing.lean:38:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_add`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NormalizedCoexactRealPairing.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_smul`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8200/8204] Built YangMills.RG.NormalizedCoexactRealPacket (5.6s)
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:25:12: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵h, Ne.symm h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:25:32: This simp argument is unused:
+  Ne.symm h
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, h,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:27:31: This simp argument is unused:
+  Ne.symm hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:49:12: This simp argument is unused:
+  hk
+
+Hint: Omit it from the simp argument list.
+  simp [hk̵,̵ ̵h̵q, h]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:49:16: This simp argument is unused:
+  hq
+
+Hint: Omit it from the simp argument list.
+  simp [hk, hq̵,̵ ̵h̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:73:4: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:75:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:75:27: This simp argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, h̵b̵,̵ ̵Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8201/8204] Built YangMills.RG.NormalizedPacketWeightedEnergy (8.4s)
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:
+  [NeZero D]
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:
+  hz
+
+Hint: Omit it from the simp argument list.
+  simp_all ̵[̵h̵z̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:
+  Ne.symm hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8202/8204] Built YangMills.RG.ActualPacketCompression (7.5s)
+⚠ [8203/8204] Built YangMills.RG.ActualPacketSupportEnvelope (5.3s)
+warning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:49: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [PiLp.sub_apply, torusPhysicalEmbed, P̵i̵L̵p̵.̵t̵o̵L̵p̵_̵a̵p̵p̵l̵y̵,̵ ̵if_neg h0, if_neg h1, sub_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8204/8204] Built YangMills.RG.ActualVolumeMeanRank (9.4s)
+Build completed successfully (8204 jobs).

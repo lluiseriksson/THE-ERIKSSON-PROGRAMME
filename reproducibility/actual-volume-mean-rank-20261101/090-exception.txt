@@ -1,0 +1,71 @@
+Traceback (most recent call last):
+  File "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/ca03bee71bd1362c6171f867f000e8b606064320/reproducibility/actual-volume-mean-rank-20261101/reproduce090.py", line 45, in <module>
+  File "https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/ca03bee71bd1362c6171f867f000e8b606064320/reproducibility/actual-volume-mean-rank-20261101/reproduce090.py", line 16, in run
+RuntimeError: focal-build failed:  argument is unused:
+  hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, h̵b̵,̵ ̵Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8201/8204] Built YangMills.RG.NormalizedPacketWeightedEnergy (10s)
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:
+  [NeZero D]
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:
+  hz
+
+Hint: Omit it from the simp argument list.
+  simp_all ̵[̵h̵z̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:
+  Ne.symm hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [8202/8204] Built YangMills.RG.ActualPacketCompression (9.3s)
+⚠ [8203/8204] Built YangMills.RG.ActualPacketSupportEnvelope (6.5s)
+warning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:49: This simp argument is unused:
+  PiLp.toLp_apply
+
+Hint: Omit it from the simp argument list.
+  simp only [PiLp.sub_apply, torusPhysicalEmbed, P̵i̵L̵p̵.̵t̵o̵L̵p̵_̵a̵p̵p̵l̵y̵,̵ ̵if_neg h0, if_neg h1, sub_self]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✖ [8204/8204] Building YangMills.RG.ActualVolumeMeanRank (11s)
+trace: .> LEAN_PATH=/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-volume-mean-rank-20261101-090/YangMills/RG/ActualVolumeMeanRank.lean -o /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean/YangMills/RG/ActualVolumeMeanRank.olean -i /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean/YangMills/RG/ActualVolumeMeanRank.ilean -c /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/ir/YangMills/RG/ActualVolumeMeanRank.c --setup /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/ir/YangMills/RG/ActualVolumeMeanRank.setup.json --json
+error: YangMills/RG/ActualVolumeMeanRank.lean:98:8: Application type mismatch: The argument
+  add_le_add_right (actualPacket_envelope_order hNc rho R w A hA) (Phi (C A))
+has type
+  Phi (C A) + (⟪A, (flatGaugeHodgeK0CLM (d + 2) n Nc rho) A⟫ + ⟪A, (componentwiseWeightedRepairCLM w) A⟫) ≤
+    Phi (C A) + ⟪A, (componentwiseWeightedRepairCLM (actualPacketPositiveEnvelope w)) A⟫
+but is expected to have type
+  ⟪A, (flatGaugeHodgeK0CLM (d + 2) n Nc rho) A⟫ + ⟪A, (componentwiseWeightedRepairCLM w) A⟫ + Phi (C A) ≤
+    ⟪A, ↑(componentwiseWeightedRepairCLM (actualPacketPositiveEnvelope w)) A⟫ + Phi (C A)
+in the application
+  LE.le.trans (hlocal A hdiv hnorm) (add_le_add_right (actualPacket_envelope_order hNc rho R w A hA) (Phi (C A)))
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.ActualVolumeMeanRank
+error: build failed
+

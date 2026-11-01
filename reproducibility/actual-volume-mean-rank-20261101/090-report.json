@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "85a4e4394c2c64c1348018505156c56c90711a69",
+  "started_utc": "2026-11-01T09:14:46.005463+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.416,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.005,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.576,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.821,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.361,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 95.099,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 325.624,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed:  argument is unused:\n  hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, h\u0335b\u0335,\u0335 \u0335Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u26a0 [8201/8204] Built YangMills.RG.NormalizedPacketWeightedEnergy (10s)\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:\n  [NeZero D]\n  [NeZero n]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero n] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp_all \u0335[\u0335h\u0335z\u0335]\u0335\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P\u0335i\u0335.\u0335s\u0335i\u0335n\u0335g\u0335l\u0335e\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:\n  Ne.symm hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, hb,\u0335 \u0335N\u0335e\u0335.\u0335s\u0335y\u0335m\u0335m\u0335 \u0335h\u0335b\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n\u2714 [8202/8204] Built YangMills.RG.ActualPacketCompression (9.3s)\n\u26a0 [8203/8204] Built YangMills.RG.ActualPacketSupportEnvelope (6.5s)\nwarning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:49: This simp argument is unused:\n  PiLp.toLp_apply\n\nHint: Omit it from the simp argument list.\n  simp only [PiLp.sub_apply, torusPhysicalEmbed, P\u0335i\u0335L\u0335p\u0335.\u0335t\u0335o\u0335L\u0335p\u0335_\u0335a\u0335p\u0335p\u0335l\u0335y\u0335,\u0335 \u0335if_neg h0, if_neg h1, sub_self]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n\u2716 [8204/8204] Building YangMills.RG.ActualVolumeMeanRank (11s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-volume-mean-rank-20261101-090/YangMills/RG/ActualVolumeMeanRank.lean -o /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean/YangMills/RG/ActualVolumeMeanRank.olean -i /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean/YangMills/RG/ActualVolumeMeanRank.ilean -c /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/ir/YangMills/RG/ActualVolumeMeanRank.c --setup /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/ir/YangMills/RG/ActualVolumeMeanRank.setup.json --json\nerror: YangMills/RG/ActualVolumeMeanRank.lean:98:8: Application type mismatch: The argument\n  add_le_add_right (actualPacket_envelope_order hNc rho R w A hA) (Phi (C A))\nhas type\n  Phi (C A) + (\u27eaA, (flatGaugeHodgeK0CLM (d + 2) n Nc rho) A\u27eb + \u27eaA, (componentwiseWeightedRepairCLM w) A\u27eb) \u2264\n    Phi (C A) + \u27eaA, (componentwiseWeightedRepairCLM (actualPacketPositiveEnvelope w)) A\u27eb\nbut is expected to have type\n  \u27eaA, (flatGaugeHodgeK0CLM (d + 2) n Nc rho) A\u27eb + \u27eaA, (componentwiseWeightedRepairCLM w) A\u27eb + Phi (C A) \u2264\n    \u27eaA, \u2191(componentwiseWeightedRepairCLM (actualPacketPositiveEnvelope w)) A\u27eb + Phi (C A)\nin the application\n  LE.le.trans (hlocal A hdiv hnorm) (add_le_add_right (actualPacket_envelope_order hNc rho R w A hA) (Phi (C A)))\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualVolumeMeanRank\nerror: build failed\n",
+  "finished_utc": "2026-11-01T09:22:07.013901+00:00"
+}
