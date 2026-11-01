@@ -19,8 +19,7 @@ theorem actualPacket_support (hNc : 2 ≤ Nc) (R : ℕ)
   change (coexactFlatMap hNc (0 : Fin (d + 2)) (Fin.succ 0)
     (normalizedScalarSynthesisReal (n := n) (d := d) R c)) (x, l) = 0
   rw [coexactFlatMap_apply]
-  change (if l = 0 then _ else 0) - (if l = Fin.succ 0 then _ else 0) = 0
-  simp [h0, h1]
+  simp [PiLp.sub_apply, torusPhysicalEmbed, PiLp.toLp_apply, h0, h1]
 
 theorem actualPacket_gradient_zero (hNc : 2 ≤ Nc) (R : ℕ)
     (A : PhysicalGaugeOneCochain (d + 2) n Nc)

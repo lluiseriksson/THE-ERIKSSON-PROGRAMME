@@ -1,0 +1,13 @@
+# Actual whole-packet support and total-stiffness envelope
+
+Candidate mathematical sourcefe7efc7c2f5bf4aad4abf50891aed2ef108c6035; six preregistered oracle endpoints. Compilation/paired validation pending; no formal success inferred from source preparation.
+
+For every actual vector in the full normalized packet image, prove zero outside the occupied field components0,1 directly from its actual synthesis map; every componentwise gradient there is therefore zero too. The actual flat Hodge identity plus actual weighted repair energy derives Q_w=sum(1+w)|G A|² on all cochains. The explicit envelope weight is max(1+w,0) on the occupied pair and0 elsewhere. Coefficients and its actual quadratic form are proved nonnegative. The original actual Q_w is proved <=this positive form on the whole actual image, without any original-weight sign/lower bound or supplied order/positivity certificate. Ambient order is NOT asserted with arbitrary unoccupied weights.
+
+This targets the support/order piece required by total-positive-budget-20261101 and the checked ActualPacketCompression image/trace. It does not yet prove the positive-total mean trace upper bound, local nonlinear derivative-kernel transfer, finite rank-density inequality or physical/interacting/continuum bridge. Retain all those debts and the original local hypotheses. PR29 stays20/41;TermSource=0.
+
+Reproduce using087/087b in fresh own Colab Linux CPU/highRAM clones, exact source/toolchain/Mathlib pins, target build, six exact standard-axiom oracle names and real wrong-name/missing-endpoint/sorryAx mutation rejection in normal/-O Python. Strict metadata/hash/raw-oracle validator is adapted from the already measured light previous version, not a Windows Lean execution. Preserve full failure or success evidence and observe actual resource disconnection; no sentinel-only success.
+
+Primary sources: the actual in-repository Hodge/weighted gradient definitions atd4ec547a and SignedPositiveMeanFamily.lean's older actual order/positive-part mechanism. Mathlib Analysis.InnerProductSpace.Adjoint official primary docs rechecked1November2026 for the G*WG energy framework. Support/positive-part finite-sum comparison is classical; precise combined priority unestablished. No separate discovery paper or originality claim.
+
+Model assessments and review context: same preparing Codex agent and continuing author context; actual backend/effort unexposed. A future exact-source numerical assessment will retain every objection and compiler failure. No independent/blind/external-model/human review or inherited score is implied. No new PDF, AIRR deposit, licence, external model transfer or modification of publicv4.
