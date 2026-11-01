@@ -1,0 +1,4 @@
+import YangMills.RG.NormalizedCoexactRealPairing
+#print axioms YangMills.RG.normalizedCoexactSynthesis_add
+#print axioms YangMills.RG.normalizedCoexactSynthesis_real_smul
+#print axioms YangMills.RG.normalizedCoexactSynthesis_real_pairing
