@@ -1,0 +1,5 @@
+'YangMills.RG.actualPacket_envelope_means' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualPacketSubspace_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualPacketSubspace_div_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualPacket_envelope_trace_mean_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.actualVolumeMean_nonlinear_rank' depends on axioms: [propext, Classical.choice, Quot.sound]
