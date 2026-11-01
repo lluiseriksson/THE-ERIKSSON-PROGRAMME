@@ -1,0 +1,7 @@
+# Failed084 exact-source assessment
+
+Sourceba668b038007a8e057e5de329e1e50787c19b055, ActualPacketCompression.lean SHA25676c97fda223c77f9fd238346ab6797b731113bf6a1ee1ee1c9ceb2479866c68a. Same preparing Codex agent/author context; backend/effort unexposed, no independent/blind/external-model/human review. First assessment4/10 readiness of this failed candidate, no target grade or inherited report. Actual focal build exit1; no oracle, PASS or formal closure.
+
+Objections retained: (1) implicit dimension d unresolved in actual finite-image construction; (2) consequent errors invalidate all downstream basis/trace declarations, compiler-generated sorry recovery is NOT accepted proof; (3) typeclass/argument errors must be fixed by explicit source indices without weakening premises; (4) no genuine trace endpoint checked yet; (5) no paired run or oracle mutation verification yet; (6) full local nonlinear/rank/support composition remains outside this module even after fixes; (7) standard classical API use supplies no originality, physical relevance or independence. Dependency linter warnings are not the cause; exact error/log preserved.
+
+Disposition: preserve failed source/report and correct dimension annotations. New version must pass the original four exact standard-axiom oracle endpoints and strict validation before any formal claim. Runtime released automatically, visible0sessions/usage0; available units1766.63 after initial1766.65, shared billing not attributed to this task. No local Lean/PDF or publicv4 change.
