@@ -1,0 +1,41 @@
+{
+  "runs": [
+    {
+      "run": "093",
+      "driver_seconds": 394.619167,
+      "started_utc": "2026-11-01T02:17:56.331661+00:00",
+      "disconnected_ui_verified": true,
+      "finished_utc": "2026-11-01T02:24:30.950828+00:00",
+      "status": "FAIL",
+      "released": true
+    },
+    {
+      "run": "094",
+      "driver_seconds": 337.273954,
+      "started_utc": "2026-11-01T02:27:11.281231+00:00",
+      "disconnected_ui_verified": true,
+      "finished_utc": "2026-11-01T02:32:48.555185+00:00",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "released": true
+    },
+    {
+      "run": "094b",
+      "driver_seconds": 311.050566,
+      "started_utc": "2026-11-01T02:27:15.036046+00:00",
+      "disconnected_ui_verified": true,
+      "finished_utc": "2026-11-01T02:32:26.086612+00:00",
+      "status": "FOCAL_REPRODUCTION_PASS",
+      "released": true
+    }
+  ],
+  "max_concurrent": 2,
+  "own_separate_cpu_high_ram": true,
+  "all_owned_released": true,
+  "shared_runtime": false,
+  "gpu": false,
+  "windows_lean": false,
+  "unallocated_driver": "093b",
+  "owned_tabs_closed": 6,
+  "billed_units": null,
+  "allocation_release_latency": "unknown; driver intervals are not billed time"
+}

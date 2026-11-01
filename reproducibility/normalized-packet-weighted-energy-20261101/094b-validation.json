@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_NORMALIZED_PACKET_WEIGHTED_ENERGY_VALIDATED",
+  "source_sha": "218ae50be26c491a1d18a39fac5fbc5213df42ee",
+  "zip_sha256": "741a4c0eadaa5b9cd0a250ac20ac94fee9d7813a46f6135ad27a83b1ebeae89f",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 8,
+  "target_olean_sha256": "b0d093362934acd68ac70512593a5e4d2a6ac291e30e5329c704932944c4d65c",
+  "oracle_log_sha256": "677a10bbb3d5b8cdd4ae2aa18af99f190ba15715eeedee04eb85029f502d1c16",
+  "source_manifest_sha256": "892493341b4d369b64feb21bd5af6b2f26ff6345e2e4df58f59b72e5242ed452",
+  "started_utc": "2026-11-01T02:27:15.0360460+00:00",
+  "finished_utc": "2026-11-01T02:32:26.0866120+00:00",
+  "independent_review": false,
+  "scope": "Actual normalized packet amplitudes, weighted energy and spatial-mean diagonal upper bound; operator trace and density pending",
+  "windows_lean_executed": false
+}

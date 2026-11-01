@@ -1,0 +1,9 @@
+import YangMills.RG.NormalizedPacketWeightedEnergy
+#print axioms YangMills.RG.backward_character_amplitude
+#print axioms YangMills.RG.coexact_character_polarized
+#print axioms YangMills.RG.normalizedPacket_scalar_profile
+#print axioms YangMills.RG.normalizedRealPacket_eq_polarized
+#print axioms YangMills.RG.normalizedRealPacket_weighted_energy
+#print axioms YangMills.RG.normalizedPacket_amplitude_mass
+#print axioms YangMills.RG.normalizedRealPacket_mean_upper
+#print axioms YangMills.RG.normalizedPacket_weightedDiagonal_upper

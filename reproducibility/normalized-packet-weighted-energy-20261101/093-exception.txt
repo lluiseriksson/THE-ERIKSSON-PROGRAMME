@@ -1,0 +1,92 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_524/102371785.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.NormalizedPacketWeightedEnergy'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_524/102371785.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: b̵,̵ ̵Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [8198/8198] Building YangMills.RG.NormalizedPacketWeightedEnergy (9.1s)
+trace: .> LEAN_PATH=/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-normalized-packet-weighted-energy-20261101-093/YangMills/RG/NormalizedPacketWeightedEnergy.lean -o /content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/build/lib/lean/YangMills/RG/NormalizedPacketWeightedEnergy.olean -i /content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/build/lib/lean/YangMills/RG/NormalizedPacketWeightedEnergy.ilean -c /content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/build/ir/YangMills/RG/NormalizedPacketWeightedEnergy.c --setup /content/eriksson-normalized-packet-weighted-energy-20261101-093/.lake/build/ir/YangMills/RG/NormalizedPacketWeightedEnergy.setup.json --json
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:
+  [NeZero D]
+  [NeZero n]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero D] [NeZero n] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+error: YangMills/RG/NormalizedPacketWeightedEnergy.lean:28:82: unsolved goals
+case pos
+D n Nc : ℕ
+inst✝² : NeZero D
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+i j : Fin D
+chi : AddChar (Fin D → ZMod n) ℂ
+z : ℂ
+hz : sunComplexPlane hNc 0 = 0
+e : PhysicalBond D n
+hi : e.2 = i
+hj : e.2 = j
+⊢ (if i = j then sunComplexPlane hNc (z * (1 - chi (-Pi.single i 1)) * chi ((finBoxZModEquiv D n) e.1)) else 0) =
+    sunComplexPlane hNc (if i = j then z * (1 - chi (-Pi.single i 1)) * chi ((finBoxZModEquiv D n) e.1) else 0)
+
+case neg
+D n Nc : ℕ
+inst✝² : NeZero D
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+i j : Fin D
+chi : AddChar (Fin D → ZMod n) ℂ
+z : ℂ
+hz : sunComplexPlane hNc 0 = 0
+e : PhysicalBond D n
+hi : e.2 = i
+hj : ¬e.2 = j
+⊢ (if i = j then sunComplexPlane hNc (z * (1 - chi (-Pi.single i 1)) * chi ((finBoxZModEquiv D n) e.1)) else 0) =
+    sunComplexPlane hNc (if i = j then z * (1 - chi (-Pi.single i 1)) * chi ((finBoxZModEquiv D n) e.1) else 0)
+
+case pos
+D n Nc : ℕ
+inst✝² : NeZero D
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+i j : Fin D
+chi : AddChar (Fin D → ZMod n) ℂ
+z : ℂ
+hz : sunComplexPlane hNc 0 = 0
+e : PhysicalBond D n
+hi : ¬e.2 = i
+hj : e.2 = j
+⊢ (if j = i then sunComplexPlane hNc (z * (1 - chi (-Pi.single j 1)) * chi ((finBoxZModEquiv D n) e.1)) else 0) =
+    sunComplexPlane hNc (if j = i then z * (1 - chi (-Pi.single j 1)) * chi ((finBoxZModEquiv D n) e.1) else 0)
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:66:10: This simp argument is unused:
+  Pi.single_apply
+
+Hint: Omit it from the simp argument list.
+  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:66:31: This simp argument is unused:
+  Ne.symm hb
+
+Hint: Omit it from the simp argument list.
+  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.NormalizedPacketWeightedEnergy
+error: build failed
+

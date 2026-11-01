@@ -1,0 +1,9 @@
+{
+  "status": "RAW_MANIFEST_VALIDATED_ONLY",
+  "source_sha": "218ae50be26c491a1d18a39fac5fbc5213df42ee",
+  "reported_focal_status": "FOCAL_REPRODUCTION_PASS",
+  "error": null,
+  "manifest_entries": 12,
+  "zip_sha256": "e02d13c51583ad3814986aad4743062da77da82311741370354bd1495140a6b2",
+  "local_Lean": false
+}
