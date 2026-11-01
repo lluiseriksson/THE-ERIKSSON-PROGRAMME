@@ -1,0 +1,5 @@
+# Failed088/088b exact-source assessment
+
+Exact mathematical source994d1716c54200d6c9918044d78e77066f6090c7, identical source manifests in two fresh own clones. First assessment4/10 readiness of this failed version, same preparing Codex agent/author context; backend/effort unexposed, no independence or target grade. Both focal builds exit1 with the same residual l=1 implication in actualPacket_support; no oracle/PASS/closure. Full source/report/ZIPs retained.
+
+All seven failed087 objections remain. Coordinate subtraction evaluation is now explicit, but general simp normalizes Fin.succ0 to1 before applying h1:l!=Fin.succ0. Correct only by simp only with PiLp.sub_apply, original embedding/toLp evaluation, if_neg h0, if_neg h1 and sub_self. This avoids unrelated normalization rather than replacing or adding hypotheses. All six endpoints, statements, criteria and original signed-weight freedom remain unchanged. The stronger final nonlinear rank theorem remains open. Both resources auto-released and visible0sessions/0usage; no Terminal or extra connection was opened after these runs. Corrections are driven by the compiler, not a score target.
