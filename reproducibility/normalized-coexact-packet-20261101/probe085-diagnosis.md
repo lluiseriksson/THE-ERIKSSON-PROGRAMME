@@ -1,0 +1,7 @@
+# Failed085: exact diagnosis and correction
+
+Source8d9ed76c2b387271a92b61b655191b0d1a168a94 failed focal compilation; the full source, original pre-run assessment, logs, exception and hash-bearing bundle are preserved. It has no accepted oracle reports and supplies no formal result.
+
+The compiler reported three issues: default200000-heartbeat definitional elaboration timeout while exposing the backward mass, insufficient information for positivity of the cast positive side, and a stuck NeZero metavariable at the scalar-valued norm statement because n was not inferable from the coefficient type. The correction makes n explicit, derives its real positivity from the existing NeZero n hypothesis, and explicitly transports the finite cardinality and normalization algebra. The two norm calculations receive a fixed1200000-heartbeat elaboration budget, in line with existing coexact modules. This changes resource allowance, not a mathematical premise or an oracle acceptance criterion; no linter or axiom check is disabled.
+
+Seven exact oracle names and the three allowed standard axioms remain unchanged. No desired norm, Gram, trace or coexactness certificate is added. No source-level mathematical weakening, numeric tolerance or model score is used. The unused085b notebook was prepared but never connected or executed; no paired success is attributed to085. Corrected source requires its own fresh reconstruction and paired evidence.

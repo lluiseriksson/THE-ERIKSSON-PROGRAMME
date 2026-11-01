@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "source_sha": "5c722f54fd443cedb24c9ff12346915e7a8ce7e7",
+  "started_utc": "2026-11-01T00:23:04.233415+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.416,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.005,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 2.924,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 13.055,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 77.858,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 271.394,
+      "log": "focal-build.log"
+    }
+  ],
+  "status": "FAIL",
+  "independent_review": false,
+  "error": "focal-build failed: it [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u26a0 [8194/8196] Built YangMills.RG.CoexactFlatEnergy (7.0s)\nwarning: YangMills/RG/CoexactFlatEnergy.lean:28:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_disjoint`:\n  [NeZero D]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/CoexactFlatEnergy.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.torusPhysicalEmbed_gradient_disjoint`:\n  [NeZero D]\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n\u26a0 [8195/8196] Built YangMills.RG.NormalizedCoexactPacket (5.6s)\nwarning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\nwarning: YangMills/RG/NormalizedCoexactPacket.lean:113:44: 'ring' tactic does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n\u2716 [8196/8196] Building YangMills.RG.NormalizedCoexactRealPairing (5.9s)\ntrace: .> LEAN_PATH=/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-normalized-coexact-real-pairing-20261101-089b/YangMills/RG/NormalizedCoexactRealPairing.lean -o /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPairing.olean -i /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPairing.ilean -c /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPairing.c --setup /content/eriksson-normalized-coexact-real-pairing-20261101-089b/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPairing.setup.json --json\nerror: YangMills/RG/NormalizedCoexactRealPairing.lean:25:19: unsolved goals\ncase h\nd n Nc : \u2115\ninst\u271d\u00b9 : NeZero n\ninst\u271d : NeZero Nc\nR : \u2115\na : \u211d\nc : CoexactPositiveIndex d R \u2192 \u2102\nx : Fin (d + 2) \u2192 ZMod n\n\u22a2 \u2211 x_1, a \u2022 (c x_1 / \u2191(positiveCoexactNormalization R x_1) * (positiveCoexactCharacter R x_1) x) =\n    a \u2022 \u2211 k, c k / \u2191(positiveCoexactNormalization R k) * (positiveCoexactCharacter R k) x\nwarning: YangMills/RG/NormalizedCoexactRealPairing.lean:31:47: This simp argument is unused:\n  Finset.smul_sum\n\nHint: Omit it from the simp argument list.\n  simp only [smul_div_assoc, smul_mul_assoc,\u0335 \u0335F\u0335i\u0335n\u0335s\u0335e\u0335t\u0335.\u0335s\u0335m\u0335u\u0335l\u0335_\u0335s\u0335u\u0335m\u0335]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedCoexactRealPairing.lean:38:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_add`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedCoexactRealPairing.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_smul`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.NormalizedCoexactRealPairing\nerror: build failed\n",
+  "finished_utc": "2026-11-01T00:29:11.220605+00:00"
+}

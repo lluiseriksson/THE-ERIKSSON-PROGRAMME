@@ -1,0 +1,15 @@
+# Same active question: finish the actual weighted packet trace
+
+After validating the exact normalized coexact synthesis norm identity, expose its real linearity, its two real coefficient quadratures and the resulting explicit real orthonormal packet. The source construction already uses actual positive-frequency characters and actual coexact backward differences; no unit-norm, Gram, coexactness, trace or order field may be supplied as a premise.
+
+Compute the pointwise component amplitudes of each normalized coexact character and instantiate the checked polarized-character weighted energy identity. Sum over the derived real packet to obtain its actual weighted compression trace. Keep the exact volume/normalization factors, both real quadratures, all component means including diagonal pairs, and the original local differentiability/zero/quadratic assumptions in the eventual rank-density endpoint. Positivity remains needed for the complementary trace. An arbitrary-band pointwise Rayleigh bound may not be inferred from means.
+
+The scalar coefficient norm identity alone is not an already printed explicit real inner-product Gram or weighted trace theorem. A successful focal run must not be relabelled as formal closure of the full analytic density supplement. Preserve exact source/hash/axiom scope and the three-unit abandonment rule if the real-frame/trace transport stalls. Group results into the existing dossier and assess exact new PDF bytes at consolidation, without separate lemma papers or inherited artifact permissions.
+
+Registered continuation of the single active question (unit063)
+
+Statement: derive the actual real two-quadrature normalized coexact packet and its weighted compression trace, sufficient to transport the existing analytic density argument without an assumed frame/trace certificate.
+Hypotheses retained: positive actual side n, at least two spatial/internal coordinates, actual positive-first frequencies with2R<n, actual nonnegative componentwise weights with bounded component/direction means, and the original local differentiability, C(0)=0, quadratic-penalty and fixed positive-c assumptions at the later nonlinear endpoint.
+Mechanism: use the checked all-coefficient norm identity to prove real linear isometry and explicit inner-product Gram; evaluate the actual component amplitudes, apply the checked polarized-character energy identity, and sum the real packet. Derive every coefficient/volume factor rather than supplying it.
+Falsifier: a missing factor, quadrature sign, omitted component mean, alias mode or genuinely needed stronger assumption invalidating the claimed trace/density transport. Preserve a counterexample if found. An elaboration failure alone is not a mathematical refutation.
+Abandonment criterion: after three substantive units with no mathematical transport advance, preserve the exact failed chain and change route or identify its concrete remaining lemma. Unit063 obtains the full coefficient-norm transport but not the remaining weighted trace.

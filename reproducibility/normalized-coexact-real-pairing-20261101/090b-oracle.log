@@ -1,0 +1,3 @@
+'YangMills.RG.normalizedCoexactSynthesis_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactSynthesis_real_smul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactSynthesis_real_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]

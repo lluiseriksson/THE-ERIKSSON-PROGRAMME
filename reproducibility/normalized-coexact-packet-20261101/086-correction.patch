@@ -1,0 +1,20 @@
+diff --git a/YangMills/RG/NormalizedCoexactPacket.lean b/YangMills/RG/NormalizedCoexactPacket.lean
+index 66f7902e..3466018d 100644
+--- a/YangMills/RG/NormalizedCoexactPacket.lean
++++ b/YangMills/RG/NormalizedCoexactPacket.lean
+@@ -28,10 +28,11 @@ theorem coexact_characterSynthesis_norm_sq (hNc : 2 ≤ Nc) (i j : Fin D) (hij :
+   classical
+   rw [coexactFlatMap_apply, torusPhysicalEmbed_sub_norm_sq hNc i j hij,
+     torusPhysicalEmbed_norm_sq, torusPhysicalEmbed_norm_sq]
+-  change countingL2Mass (fun x => characterSynthesis chi c x -
+-    characterSynthesis chi c (x - Pi.single j (1 : ZMod n))) +
+-    countingL2Mass (fun x => characterSynthesis chi c x -
+-      characterSynthesis chi c (x - Pi.single i (1 : ZMod n))) = _
++  have hback (l : Fin D) :
++      torusBackwardDifference l (characterSynthesis chi c) =
++        (fun x : Fin D → ZMod n => characterSynthesis chi c x -
++          characterSynthesis chi c (x - Pi.single l (1 : ZMod n))) := rfl
++  rw [hback j, hback i]
+   rw [counting_backward_mass_eq_forward, counting_backward_mass_eq_forward,
+     character_synthesis_forwardEnergy chi hc, character_synthesis_forwardEnergy chi hc]
+   have hcard : (Fintype.card (Fin D → ZMod n) : ℝ) = (n : ℝ)^D := by simp

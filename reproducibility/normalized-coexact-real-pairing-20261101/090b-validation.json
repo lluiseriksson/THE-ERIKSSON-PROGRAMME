@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_REAL_COEXACT_PAIRING_VALIDATED",
+  "source_sha": "5b539009b6c1f70731c5b8aa3fff7f0346b2d62c",
+  "zip_sha256": "7158bad9839b85ae25d9c676bf12fba27015f932462e6bef9d624ce35c4302e4",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 3,
+  "target_olean_sha256": "46e6ee1999ad5e0ad87f5dca617bffedf01e2bbb8eecff7cbf67103e81f54953",
+  "oracle_log_sha256": "cd07c1f45203711b3e578f036e5e858ebb86447f853af5502afae3c9cb21bc7d",
+  "source_manifest_sha256": "e65df707a468292882a749ec7c23f779c1f09e811e8aceca439cabe6aef92963",
+  "started_utc": "2026-11-01T00:31:47.5309970+00:00",
+  "finished_utc": "2026-11-01T00:36:58.3999530+00:00",
+  "independent_review": false,
+  "scope": "Actual real-linearity and full coefficient real pairing; no explicit real basis, weighted packet trace or density endpoint claimed",
+  "windows_lean_executed": false
+}

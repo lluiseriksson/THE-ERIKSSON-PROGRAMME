@@ -1,0 +1,7 @@
+'YangMills.RG.counting_backward_mass_eq_forward' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.coexact_characterSynthesis_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.positiveCoexactCharacter_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.positiveCoexactSymbolMass_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.positiveCoexactNormalization_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactSynthesis_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.RG.normalizedCoexactSynthesis_div_zero' depends on axioms: [propext, Classical.choice, Quot.sound]

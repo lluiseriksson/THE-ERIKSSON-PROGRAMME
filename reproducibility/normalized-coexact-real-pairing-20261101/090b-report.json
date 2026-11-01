@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "source_sha": "5b539009b6c1f70731c5b8aa3fff7f0346b2d62c",
+  "started_utc": "2026-11-01T00:31:47.530997+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.167,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.065,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.825,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 16.71,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 96.902,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 0,
+      "seconds": 184.258,
+      "log": "focal-build.log"
+    },
+    {
+      "name": "oracle",
+      "exit_code": 0,
+      "seconds": 6.434,
+      "log": "oracle.log"
+    }
+  ],
+  "status": "FOCAL_REPRODUCTION_PASS",
+  "independent_review": false,
+  "target_olean_sha256": "46e6ee1999ad5e0ad87f5dca617bffedf01e2bbb8eecff7cbf67103e81f54953",
+  "oracle_validator_selftests": [
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": false,
+      "mode": "normal"
+    },
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": true,
+      "mode": "optimized"
+    }
+  ],
+  "oracle_reports": [
+    {
+      "name": "YangMills.RG.normalizedCoexactSynthesis_add",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.normalizedCoexactSynthesis_real_smul",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.normalizedCoexactSynthesis_real_pairing",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "finished_utc": "2026-11-01T00:36:58.399953+00:00"
+}

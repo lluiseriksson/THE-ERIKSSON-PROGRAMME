@@ -1,0 +1,14 @@
+[
+  {
+    "name": "NormalizedCoexactRealPairing.lean",
+    "sha256_lf": "a887d925d745521081c8c2943d0b5c54fff16eea2cf4927cb62e3dabb2fc2ff6",
+    "expected": "a887d925d745521081c8c2943d0b5c54fff16eea2cf4927cb62e3dabb2fc2ff6",
+    "matches": true
+  },
+  {
+    "name": "NormalizedCoexactRealPairingOracle.lean",
+    "sha256_lf": "8b46e4679ffb8d279caa9972e500b4223a4fd12c1f35ed95fe2a389d1a01d084",
+    "expected": "8b46e4679ffb8d279caa9972e500b4223a4fd12c1f35ed95fe2a389d1a01d084",
+    "matches": true
+  }
+]

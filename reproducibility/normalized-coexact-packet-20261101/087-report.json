@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "source_sha": "6924c6769b58e69a35367b59ef63e3fa9e165a12",
+  "started_utc": "2026-10-31T23:41:28.114241+00:00",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.666,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.004,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.574,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.218,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 18.271,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 80.408,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 0,
+      "seconds": 200.608,
+      "log": "focal-build.log"
+    },
+    {
+      "name": "oracle",
+      "exit_code": 0,
+      "seconds": 9.094,
+      "log": "oracle.log"
+    }
+  ],
+  "status": "FOCAL_REPRODUCTION_PASS",
+  "independent_review": false,
+  "target_olean_sha256": "766169602b166d4ecdd24041d960c68329ff7993114ef3e567e7b549d1eb4e38",
+  "oracle_validator_selftests": [
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": false,
+      "mode": "normal"
+    },
+    {
+      "status": "ORACLE_VALIDATOR_SELFTEST_PASS",
+      "real_mutations_rejected": 3,
+      "positive_accepted": 1,
+      "optimized": true,
+      "mode": "optimized"
+    }
+  ],
+  "oracle_reports": [
+    {
+      "name": "YangMills.RG.counting_backward_mass_eq_forward",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.coexact_characterSynthesis_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.positiveCoexactCharacter_injective",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.positiveCoexactSymbolMass_pos",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.positiveCoexactNormalization_pos",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.normalizedCoexactSynthesis_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "YangMills.RG.normalizedCoexactSynthesis_div_zero",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
+  "finished_utc": "2026-10-31T23:46:42.413397+00:00"
+}

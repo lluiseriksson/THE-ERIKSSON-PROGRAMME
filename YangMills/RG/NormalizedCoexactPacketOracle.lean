@@ -1,0 +1,8 @@
+import YangMills.RG.NormalizedCoexactPacket
+#print axioms YangMills.RG.counting_backward_mass_eq_forward
+#print axioms YangMills.RG.coexact_characterSynthesis_norm_sq
+#print axioms YangMills.RG.positiveCoexactCharacter_injective
+#print axioms YangMills.RG.positiveCoexactSymbolMass_pos
+#print axioms YangMills.RG.positiveCoexactNormalization_pos
+#print axioms YangMills.RG.normalizedCoexactSynthesis_norm_sq
+#print axioms YangMills.RG.normalizedCoexactSynthesis_div_zero
