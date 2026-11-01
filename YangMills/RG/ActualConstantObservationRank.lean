@@ -37,6 +37,8 @@ variable (hlocal : ∀ A : PhysicalGaugeOneCochain (d + 2) n Nc,
     inner ℝ A (flatGaugeHodgeK0CLM (d + 2) n Nc rho A) +
     inner ℝ A (componentwiseWeightedRepairCLM w A) + Phi (C A))
 
+include rho w C L hC hC0 Phi K delta radius c hc hdelta hradius hPhi hlocal
+
 theorem actualConstant_derivative_injective :
     Function.Injective (L.toLinearMap.comp (constantSectorLin (d + 2) n Nc)) := by
   classical
