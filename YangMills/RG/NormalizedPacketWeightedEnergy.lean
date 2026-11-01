@@ -45,7 +45,8 @@ theorem coexact_character_polarized (hNc : 2 ≤ Nc) (i j : Fin D)
       (if e.2 = j then z * (1 - chi (-Pi.single i (1 : ZMod n))) else 0)) *
         chi (finBoxZModEquiv D n e.1))
   rw [sub_mul, sunComplexPlane_sub]
-  by_cases hi : e.2 = i <;> by_cases hj : e.2 = j <;> simp [hi, hj, hz]
+  by_cases hi : e.2 = i <;> by_cases hj : e.2 = j <;>
+    simp [hi, hj, hz] <;> split_ifs <;> simp_all [hz]
 end Character
 
 variable {d n Nc : ℕ} [NeZero n] [NeZero Nc]
