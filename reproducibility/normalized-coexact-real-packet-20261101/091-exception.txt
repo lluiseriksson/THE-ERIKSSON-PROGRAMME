@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "/tmp/ipykernel_1001/2650940007.py", line 45, in <cell line: 0>
+    run('focal-build',['lake','build','YangMills.RG.NormalizedCoexactRealPacket'],ROOT)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ipykernel_1001/2650940007.py", line 16, in run
+    if p.returncode!=0: raise RuntimeError(name+' failed: '+log.read_text(errors='replace')[-5000:])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: focal-build failed: `set_option linter.unusedSectionVars false`
+warning: YangMills/RG/NormalizedCoexactRealPairing.lean:45:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_smul`:
+  [NeZero Nc]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [NeZero Nc] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✖ [8197/8197] Building YangMills.RG.NormalizedCoexactRealPacket (7.2s)
+trace: .> LEAN_PATH=/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-normalized-coexact-real-packet-20261101-091/YangMills/RG/NormalizedCoexactRealPacket.lean -o /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPacket.olean -i /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/lib/lean/YangMills/RG/NormalizedCoexactRealPacket.ilean -c /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPacket.c --setup /content/eriksson-normalized-coexact-real-packet-20261101-091/.lake/build/ir/YangMills/RG/NormalizedCoexactRealPacket.setup.json --json
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:18:49: Application type mismatch: The argument
+  w
+has type
+  ℂ
+but is expected to have type
+  ?m.19 s l
+in the application
+  Pi.single l w
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:45:4: Unknown identifier `counting_single_real_pairing`
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:41:81: unsolved goals
+d n Nc : ℕ
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+R : ℕ
+hR : 2 * R < n
+p q : CoexactPositiveIndex d R × Bool
+⊢ ∑ k, ⟪Pi.single p.1 (coexactQuadraturePhase p.2) k, Pi.single q.1 (coexactQuadraturePhase q.2) k⟫ =
+    if p = q then 1 else 0
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:57:4: typeclass instance problem is stuck
+  InnerProductSpace ℝ (PhysicalGaugeOneCochain (?m.22 + 2) n Nc)
+
+Note: Lean will not try to resolve this typeclass instance problem because the second and fourth type arguments to `InnerProductSpace` contain metavariables. These arguments must be fully determined before Lean will try to resolve the typeclass.
+
+Hint: Adding type annotations and supplying implicit arguments to functions can give Lean more information for typeclass resolution. For example, if you have a variable `x` that you intend to be a `Nat`, but Lean reports it as having an unresolved type like `?m`, replacing `x` with `(x : Nat)` can get typeclass resolution un-stuck.
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:67:14: failed to synthesize
+  HSMul ℝ ((j : CoexactPositiveIndex d R) → ?m.12 j) ?m.27
+(deterministic) timeout at `typeclass`, maximum number of heartbeats (20000) has been reached
+
+Note: Use `set_option synthInstance.maxHeartbeats <num>` to set the limit.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:68:29: Application type mismatch: The argument
+  Complex.I
+has type
+  ℂ
+but is expected to have type
+  ?m.19 k
+in the application
+  Pi.single k Complex.I
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:85:5: Unknown identifier `coexactCoefficient_real_expansion`
+error: YangMills/RG/NormalizedCoexactRealPacket.lean:82:76: unsolved goals
+d n Nc : ℕ
+inst✝¹ : NeZero n
+inst✝ : NeZero Nc
+hNc : 2 ≤ Nc
+R : ℕ
+c : CoexactPositiveIndex d R → ℂ
+⊢ normalizedCoexactSynthesis hNc R c =
+    ∑ k,
+      ((c k).re • normalizedCoexactRealPacket hNc R (k, false) + (c k).im • normalizedCoexactRealPacket hNc R (k, true))
+error: Lean exited with code 1
+Some required targets logged failures:
+- YangMills.RG.NormalizedCoexactRealPacket
+error: build failed
+

@@ -15,7 +15,7 @@ theorem coexactQuadraturePhase_gram (q r : Bool) :
 
 theorem counting_single_real_pairing {I : Type*} [Fintype I] [DecidableEq I]
     (k l : I) (z w : ℂ) :
-    (∑ s, inner ℝ (Pi.single k z s) (Pi.single l w s)) =
+    (∑ s : I, inner ℝ ((Pi.single k z : I → ℂ) s) ((Pi.single l w : I → ℂ) s)) =
       if k = l then inner ℝ z w else 0 := by
   classical
   rw [Finset.sum_eq_single k]
@@ -54,9 +54,9 @@ theorem normalizedCoexactRealPacket_gram (hNc : 2 ≤ Nc) (R : ℕ) (hR : 2 * R 
 
 theorem normalizedCoexactRealPacket_orthonormal (hNc : 2 ≤ Nc)
     (R : ℕ) (hR : 2 * R < n) :
-    Orthonormal ℝ (normalizedCoexactRealPacket (n := n) hNc R) := by
+    Orthonormal ℝ (normalizedCoexactRealPacket (n := n) (d := d) hNc R) := by
   classical
-  exact orthonormal_iff_ite.mpr (normalizedCoexactRealPacket_gram hNc R hR)
+  exact orthonormal_iff_ite.mpr (normalizedCoexactRealPacket_gram (d := d) hNc R hR)
 
 theorem complex_real_quadrature_decomposition (z : ℂ) :
     z.re • (1 : ℂ) + z.im • Complex.I = z := by
@@ -64,8 +64,8 @@ theorem complex_real_quadrature_decomposition (z : ℂ) :
 
 theorem coexactCoefficient_real_expansion (R : ℕ)
     (c : CoexactPositiveIndex d R → ℂ) :
-    c = ∑ k, ((c k).re • Pi.single k (1 : ℂ) +
-      (c k).im • Pi.single k Complex.I) := by
+    c = ∑ k, ((c k).re • (Pi.single k (1 : ℂ) : CoexactPositiveIndex d R → ℂ) +
+      (c k).im • (Pi.single k Complex.I : CoexactPositiveIndex d R → ℂ)) := by
   classical
   funext l
   simp only [Finset.sum_apply, Pi.add_apply, Pi.smul_apply]
