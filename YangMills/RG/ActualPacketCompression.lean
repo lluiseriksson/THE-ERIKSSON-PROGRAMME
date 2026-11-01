@@ -17,7 +17,7 @@ noncomputable def actualPacketSubspace (hNc : 2 ≤ Nc) (R : ℕ) :
       Set (PhysicalGaugeOneCochain (d + 2) n Nc))
 
 theorem actualPacketSubspace_eq_range (hNc : 2 ≤ Nc) (R : ℕ) :
-    actualPacketSubspace (n := n) (d := d) (d := d) hNc R =
+    actualPacketSubspace (n := n) (d := d) hNc R =
       LinearMap.range (normalizedCoexactRealLinear (n := n) (d := d) hNc R) := by
   classical
   rw [normalizedCoexactRealPacket_span]
