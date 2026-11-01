@@ -1,0 +1,46 @@
+{
+  "status": "PAIRED_FOCAL_PASS",
+  "source_sha": "12201e2df4db0693b30b02600059f3264aa42048",
+  "target_olean_sha256": "9004ab16e8bc0d1a031a814c1cfa68012eec8d866fc5bb30d5bd4a330768f9e1",
+  "oracle_log_sha256": "b00dae251571c93254aa6ce722dde205ea78456a80f4d534242a2b5eb97bcfa8",
+  "source_manifest_sha256": "b3cd9f14489004124b7897c542ffbbca0d441b9a27fb0fdb95aec72f8c2801c7",
+  "runs": [
+    {
+      "status": "ACTUAL_CONSTANT_OBSERVATION_RANK_VALIDATED",
+      "source_sha": "12201e2df4db0693b30b02600059f3264aa42048",
+      "zip_sha256": "04b52690464ed046d37e10ae4cf32cbade2fd8114c39e1632e5a7d6e43dbc9ee",
+      "manifest_entries": 12,
+      "exit_zero_steps": 9,
+      "oracle_reports": 3,
+      "target_olean_sha256": "9004ab16e8bc0d1a031a814c1cfa68012eec8d866fc5bb30d5bd4a330768f9e1",
+      "oracle_log_sha256": "b00dae251571c93254aa6ce722dde205ea78456a80f4d534242a2b5eb97bcfa8",
+      "source_manifest_sha256": "b3cd9f14489004124b7897c542ffbbca0d441b9a27fb0fdb95aec72f8c2801c7",
+      "started_utc": "2026-11-01T19:11:44.535472+01:00",
+      "finished_utc": "2026-11-01T19:19:18.434023+01:00",
+      "independent_review": false,
+      "scope": "Actual constant harmonic observation derivative injection and dimension under original local nonlinear hypotheses; no mean cap needed",
+      "windows_lean_executed": false
+    },
+    {
+      "status": "ACTUAL_CONSTANT_OBSERVATION_RANK_VALIDATED",
+      "source_sha": "12201e2df4db0693b30b02600059f3264aa42048",
+      "zip_sha256": "4652d09c9e6f2f72b6ce73ac9f8dc6c0288ae60823e2ea3529506bcb068502f6",
+      "manifest_entries": 12,
+      "exit_zero_steps": 9,
+      "oracle_reports": 3,
+      "target_olean_sha256": "9004ab16e8bc0d1a031a814c1cfa68012eec8d866fc5bb30d5bd4a330768f9e1",
+      "oracle_log_sha256": "b00dae251571c93254aa6ce722dde205ea78456a80f4d534242a2b5eb97bcfa8",
+      "source_manifest_sha256": "b3cd9f14489004124b7897c542ffbbca0d441b9a27fb0fdb95aec72f8c2801c7",
+      "started_utc": "2026-11-01T19:11:38.882256+01:00",
+      "finished_utc": "2026-11-01T19:18:41.238297+01:00",
+      "independent_review": false,
+      "scope": "Actual constant harmonic observation derivative injection and dimension under original local nonlinear hypotheses; no mean cap needed",
+      "windows_lean_executed": false
+    }
+  ],
+  "independent_review": false,
+  "runtime_release_verified": true,
+  "final_available_units": 1766.05,
+  "final_active_sessions": 0,
+  "billing": "Visible account reading only; no exact billed-unit attribution"
+}
