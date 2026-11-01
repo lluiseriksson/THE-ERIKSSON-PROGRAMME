@@ -1,0 +1,15 @@
+{
+  "first_exact_pdf_score": null,
+  "map_sha256_lf": "49c40cd78dc266e9a31c6bce790d51d2d4e6f000cc94a74aebaf3c187888561f",
+  "new_formal_verification": false,
+  "unresolved_refs": [],
+  "visual_qa": false,
+  "labels": 33,
+  "source_sha": "d41773de8045b95b8fa633fa7fb34456167b6853",
+  "status": "SOURCE_ONLY_ASSEMBLY_CHECKED_NOT_RENDERED",
+  "render_executed": false,
+  "operation_marker_sha256_lf": "e0578762dc2a8f44a26323062c8afcf6c72ef197649f349c8b40e9f2a03c8942",
+  "duplicate_labels": [],
+  "tex_sha256_lf": "3989a6baf9edb08fcc35e17691d382dc8ad302fdb396ea0f0f7a1955d275fed9",
+  "readiness": "Source assembly and rendering driver prepared; existing browser blocker unchanged"
+}
