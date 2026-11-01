@@ -14,6 +14,7 @@ from pathlib import Path
 import re
 import sys
 import urllib.request
+import urllib.error
 import uuid
 
 ROOT = Path('/srv/airr-private/eriksson-v4-20261031')
@@ -21,7 +22,7 @@ BASE = 'https://raw.githubusercontent.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/'
 FOLDER = '/reproducibility/historical-v4-intake-20261031/'
 PID = 'ARR-2026-7EPM3V3DP796BBRR'
 SHA = 'e5e9ddcf044ddcfab0e4cae8e2c6ac1a3dca39ff21bf23b20989aaff4b220e05'
-PINS = {'binding.json':'9ea729b2986699b23320d11c68c760eb8e33e0aed722b8bca9b326405b41f21c','revision-job.json':'a3880ad1d2e758a46c6b53ee3b2eae349effc6e66817ca6e47f6a76f1641c130'}
+PINS = {'binding.json':'9ea729b2986699b23320d11c68c760eb8e33e0aed722b8bca9b326405b41f21c','revision-job.json':'cfba99e3d1de2da46243839c4f459cc388dbfe74d514f1fa16b6c6d12af8d2bc'}
 
 
 def digest(data):
@@ -60,6 +61,10 @@ def main():
         raw = urllib.request.urlopen(BASE+args.source_sha+FOLDER+name, timeout=30).read()
         if digest(raw) != expected:
             raise ValueError('Pinned input mismatch')
+        prior_path = ROOT/name
+        if prior_path.exists() and prior_path.read_bytes() != raw:
+            previous = prior_path.read_bytes()
+            save('superseded-'+name+'-'+digest(previous), previous)
         save(name, raw)
     binding = json.loads((ROOT/'binding.json').read_bytes())
     job = json.loads((ROOT/'revision-job.json').read_bytes())
@@ -143,6 +148,7 @@ def main():
             stamp = datetime.fromisoformat(approval['recorded_at'])
             if stamp.tzinfo is None or stamp > a.now() or stamp < a.now()-timedelta(days=7):
                 raise ValueError('Approval must be recent and offset-aware')
+        a.validate_classification(job['metadata']['primary_subject'], job['metadata']['secondary_subjects'], job['metadata']['specific_topic'])
         cutoff = a.iso(a.now()-timedelta(hours=24))
         recent = db.execute('SELECT COUNT(*) FROM submissions WHERE user_id=? AND created_at>=?', (owner['id'],cutoff)).fetchone()[0]
         existing = db.execute("SELECT s.id,s.sha256,s.scan_status,s.status FROM historical_revisions h JOIN submissions s ON s.id=h.submission_id WHERE h.version_id=? OR (h.binding_json LIKE ?)", (binding['version_id'],'%'+SHA+'%')).fetchall()
@@ -177,8 +183,13 @@ def main():
             grant=json.loads((ROOT/'grant.json').read_bytes())
             req=urllib.request.Request('https://submit.airr.science/api/v1/submissions/'+prior['registration_number'],headers={'Authorization':'Bearer '+grant['agent_token']})
         opener=urllib.request.build_opener(NoRedirect)
-        with opener.open(req,timeout=60) as response:
-            raw=response.read()
+        try:
+            with opener.open(req,timeout=60) as response:
+                raw=response.read()
+        except urllib.error.HTTPError as error:
+            detail=error.read()
+            save('http-error-'+str(error.code)+'-'+uuid.uuid4().hex+'.txt', detail)
+            raise ValueError('HTTP '+str(error.code)+': '+detail.decode('utf-8',errors='replace')[:4000]) from None
         receipt=json.loads(raw)
         if receipt['sha256'] != SHA or receipt['historical_revision'] != binding:
             raise ValueError('Receipt artifact/binding mismatch')
