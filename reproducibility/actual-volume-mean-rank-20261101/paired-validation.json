@@ -1,0 +1,42 @@
+{
+  "score": 7,
+  "review_context": "First preparing-agent review after091; later pair completed without regrading",
+  "scale": 10,
+  "status": "PAIRED_ACTUAL_VOLUME_MEAN_RANK_VERIFIED",
+  "first": {
+    "status": "ACTUAL_VOLUME_MEAN_RANK_VALIDATED",
+    "source_sha": "3a2d5305df4ec817c2ec9739e269272d6b29967d",
+    "zip_sha256": "a0d059f3406fe2ceeec91b817af2a852116ace0158e354b24e5d7b4505326a3b",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 5,
+    "target_olean_sha256": "65b1c4c5e9196901d56d0e514e375f2227baebfca4b97197a29f24b055d17891",
+    "oracle_log_sha256": "30747ba8662592fdbf04177db024e9025f5cb1c6b459f814a15343a7d4635ce9",
+    "source_manifest_sha256": "2496359ae965e764b2984e3151e09747b97791074eeec19b89eef6ce48be5097",
+    "started_utc": "2026-11-01T09:26:17.1285070+00:00",
+    "finished_utc": "2026-11-01T09:32:12.9999540+00:00",
+    "independent_review": false,
+    "scope": "Actual full-volume dimension/divergence, positive-total mean trace and original nonlinear finite rank inequality; spectral cutoff/density transport open",
+    "windows_lean_executed": false
+  },
+  "second": {
+    "status": "ACTUAL_VOLUME_MEAN_RANK_VALIDATED",
+    "source_sha": "3a2d5305df4ec817c2ec9739e269272d6b29967d",
+    "zip_sha256": "6192aee528f64f1edddb80c6c8887b8bd420ba2f5b9c89cdfbbee418da3c1a08",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 5,
+    "target_olean_sha256": "65b1c4c5e9196901d56d0e514e375f2227baebfca4b97197a29f24b055d17891",
+    "oracle_log_sha256": "30747ba8662592fdbf04177db024e9025f5cb1c6b459f814a15343a7d4635ce9",
+    "source_manifest_sha256": "2496359ae965e764b2984e3151e09747b97791074eeec19b89eef6ce48be5097",
+    "started_utc": "2026-11-01T09:34:23.7257690+00:00",
+    "finished_utc": "2026-11-01T09:39:59.7865380+00:00",
+    "independent_review": false,
+    "scope": "Actual full-volume dimension/divergence, positive-total mean trace and original nonlinear finite rank inequality; spectral cutoff/density transport open",
+    "windows_lean_executed": false
+  },
+  "independent_scientific_review": false,
+  "failures_retained": [
+    "090"
+  ]
+}

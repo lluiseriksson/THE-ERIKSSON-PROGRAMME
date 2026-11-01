@@ -1,0 +1,18 @@
+{
+  "runtime": "Own Linux CPU highRAM50.99GB, no GPU, serial fresh clones",
+  "shared": false,
+  "status": "ALL_OWN_RESOURCES_DISCONNECTED",
+  "bill_context": "Account-wide observed availability is not a task invoice; driver duration excludes allocation/release latency",
+  "executions": [
+    "090 failed, preserved",
+    "091 pass",
+    "091b pass"
+  ],
+  "visible_units_per_hour": 0,
+  "exact_billed_units": null,
+  "incidental_extra_vm": false,
+  "own_active_sessions": 0,
+  "visible_available_units": 1766.41,
+  "initial_observed_available_units": 1766.47,
+  "own_tabs_closed": true
+}

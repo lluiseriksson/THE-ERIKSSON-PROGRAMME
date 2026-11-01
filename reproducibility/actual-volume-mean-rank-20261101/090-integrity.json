@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "85a4e4394c2c64c1348018505156c56c90711a69",
+  "status": "FAIL",
+  "zip_sha256": "e1878476c6c84693eebe3b139d75da128a38c733d7b98ea6424deb9ba47b0f32",
+  "manifest_entries": 12,
+  "error": "focal-build failed:  argument is unused:\n  hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, h̵b̵,̵ ̵Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedCoexactRealPacket.lean:78:0: automatically included section variable(s) unused in theorem `YangMills.RG.normalizedCoexactSynthesis_real_expansion`:\n  [NeZero Nc]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero Nc] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\n⚠ [8201/8204] Built YangMills.RG.NormalizedPacketWeightedEnergy (10s)\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:11:0: automatically included section variable(s) unused in theorem `YangMills.RG.backward_character_amplitude`:\n  [NeZero D]\n  [NeZero n]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [NeZero D] [NeZero n] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:49:50: This simp argument is unused:\n  hz\n\nHint: Omit it from the simp argument list.\n  simp_all ̵[̵h̵z̵]̵\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:10: This simp argument is unused:\n  Pi.single_apply\n\nHint: Omit it from the simp argument list.\n  simp [P̵i̵.̵s̵i̵n̵g̵l̵e̵_̵a̵p̵p̵l̵y̵,̵ ̵hb, Ne.symm hb]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\nwarning: YangMills/RG/NormalizedPacketWeightedEnergy.lean:67:31: This simp argument is unused:\n  Ne.symm hb\n\nHint: Omit it from the simp argument list.\n  simp [Pi.single_apply, hb,̵ ̵N̵e̵.̵s̵y̵m̵m̵ ̵h̵b̵]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n✔ [8202/8204] Built YangMills.RG.ActualPacketCompression (9.3s)\n⚠ [8203/8204] Built YangMills.RG.ActualPacketSupportEnvelope (6.5s)\nwarning: YangMills/RG/ActualPacketSupportEnvelope.lean:22:49: This simp argument is unused:\n  PiLp.toLp_apply\n\nHint: Omit it from the simp argument list.\n  simp only [PiLp.sub_apply, torusPhysicalEmbed, P̵i̵L̵p̵.̵t̵o̵L̵p̵_̵a̵p̵p̵l̵y̵,̵ ̵if_neg h0, if_neg h1, sub_self]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n✖ [8204/8204] Building YangMills.RG.ActualVolumeMeanRank (11s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-volume-mean-rank-20261101-090/YangMills/RG/ActualVolumeMeanRank.lean -o /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean/YangMills/RG/ActualVolumeMeanRank.olean -i /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/lib/lean/YangMills/RG/ActualVolumeMeanRank.ilean -c /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/ir/YangMills/RG/ActualVolumeMeanRank.c --setup /content/eriksson-actual-volume-mean-rank-20261101-090/.lake/build/ir/YangMills/RG/ActualVolumeMeanRank.setup.json --json\nerror: YangMills/RG/ActualVolumeMeanRank.lean:98:8: Application type mismatch: The argument\n  add_le_add_right (actualPacket_envelope_order hNc rho R w A hA) (Phi (C A))\nhas type\n  Phi (C A) + (⟪A, (flatGaugeHodgeK0CLM (d + 2) n Nc rho) A⟫ + ⟪A, (componentwiseWeightedRepairCLM w) A⟫) ≤\n    Phi (C A) + ⟪A, (componentwiseWeightedRepairCLM (actualPacketPositiveEnvelope w)) A⟫\nbut is expected to have type\n  ⟪A, (flatGaugeHodgeK0CLM (d + 2) n Nc rho) A⟫ + ⟪A, (componentwiseWeightedRepairCLM w) A⟫ + Phi (C A) ≤\n    ⟪A, ↑(componentwiseWeightedRepairCLM (actualPacketPositiveEnvelope w)) A⟫ + Phi (C A)\nin the application\n  LE.le.trans (hlocal A hdiv hnorm) (add_le_add_right (actualPacket_envelope_order hNc rho R w A hA) (Phi (C A)))\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualVolumeMeanRank\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 0.416,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.005,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 3.576,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.821,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 14.361,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 95.099,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 325.624,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-11-01T09:14:46.005463+00:00",
+  "finished_utc": "2026-11-01T09:22:07.013901+00:00"
+}
