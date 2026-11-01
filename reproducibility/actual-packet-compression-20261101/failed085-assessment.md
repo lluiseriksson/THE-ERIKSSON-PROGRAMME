@@ -1,0 +1,5 @@
+# Failed085 exact-source assessment
+
+Source1c4048d2ef59358904e6a6fa397076b6692ee04f, exact failure/report and complete source retained. First source assessment5/10 readiness, same preparing Codex author-context agent, backend/effort unexposed, no independence or target grade. No PASS or closure: focal build exit1, no oracle.
+
+All earlier objections retained. Explicit dimension annotations resolved definition/basis errors; only remaining source error is ActualPacketCompression.lean line52 Fintype metavariable at Finset.sum_coe_sort Finset.univ _. Supply actual finite index type and actual diagonal function. No premise/conclusion/oracle/acceptance change. Failed candidate and full raw log preserved; compiled declarations in an unsuccessful module are not treated as formal closure. Physical/rank/local-kernel transport remains outside scope. Correction is driven by concrete compiler error, not score seeking; later source must receive its own exact assessment.

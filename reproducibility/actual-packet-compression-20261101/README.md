@@ -1,0 +1,13 @@
+# Actual packet image and operator compression trace
+
+Corrected proof source9a8946b7f96a8528078c59650d94e636acc68887, pinned Mathlib07642720480157414db592fa85b626dafb71355b and Lean4.29.0-rc6. Paired086/086b focal reproduction strictly validated; see paired-validation.json and exact-source assessment.md(7/10 same-agent). Failed084/085 source, reports and assessments retained.
+
+The actual packet's previously proved orthonormal Gram supplies OrthonormalBasis.span on its entire finite index set. actualPacketSubspace_eq_range identifies that explicit finite span with the actual normalized synthesis image. The basis coercion theorem identifies its vectors with original fields, so genuine adjoint-inclusion compression trace can be computed by those actual diagonals. Applying normalizedRealPacket_weighted_energy then gives a genuine weighted repair trace for arbitrary signed actual weights. No trace, span, orthonormality, positivity or invariance certificate is supplied.
+
+Scope: these four oracle endpoints target actual image/trace transport. They do not prove restricted support positivity, the positive-total envelope theorem, the nonlinear derivative-kernel lower bound, volume-density cutoff or physical/interacting/continuum bridge. No change to PR29(20/41,TermSource=0) or publicv4.
+
+Final drivers086/086b prepare two fresh exact-source Colab clones, strict source/toolchain/Mathlib pin checks, target build, four exact standard-axiom oracle names and real mutation rejection tests in normal and optimized Python. Reports record child exit codes and hashes. They automatically emit the complete evidence ZIP and request runtime release on success or failure. runtime-closure.json records visible disconnection and available consumption context; release requests alone were not treated as observed disconnection. No execution on Windows.
+
+Preflight failure retained: the initial notebook bootstrap used a CRLF working-copy driver hash while GitHub serves canonicalLF. Hash guard rejected before driver execution. Corrected only expected bootstrap hash to canonicalLF, no proof/acceptance changes. Monaco setValue introduced incorrect indentation/partial replacement; code was replaced by explicit select-all/paste and read back before corrected execution. Raw failure snapshot retained in D captures.
+
+Primary APIs: pinned Mathlib Analysis.InnerProductSpace.PiL2 OrthonormalBasis.span/span_apply and Analysis.InnerProductSpace.Trace trace_eq_sum_inner. Classical basis/trace machinery, no original-priority or independent-review claim. Same preparing Codex agent, author context; actual backend/effort unexposed. Exact source assessment and numerical score must be bound to actual source/evidence; no score inherited from earlier notes or PDFs.

@@ -1,0 +1,19 @@
+{
+  "status": "PAIRED_ACTUAL_PACKET_COMPRESSION_VERIFIED",
+  "source_sha": "9a8946b7f96a8528078c59650d94e636acc68887",
+  "fresh_own_clones": 2,
+  "independent_scientific_review": false,
+  "target_olean_sha256": "e339e59edb45798bb6eeb19ed1a00f53e99b7cd01bd0e479e0eb883b7024b705",
+  "oracle_log_sha256": "d678ee7afe2ae0c210aec601e248ebac6a3059fed212d5fc144fb6454a95008c",
+  "source_manifest_sha256": "e9897adede864ca6da99bbe2eb8ab87625ca0436586a0a49fa413288e6bbb2a3",
+  "oracle_endpoints": 4,
+  "all_standard_axioms": true,
+  "zero_exit_stages_each": 9,
+  "normal_and_optimized_real_mutations_rejected_each": 3,
+  "runtime_release_observed": true,
+  "windows_lean": false,
+  "failures_retained": [
+    "084",
+    "085"
+  ]
+}

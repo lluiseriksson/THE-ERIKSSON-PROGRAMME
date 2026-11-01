@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ActualPacketCompressionOracle.lean",
+    "sha256_lf": "abe075d0d17d207a75b799e794b363fff448f2f0980a66d6ae4bc7e1be126d81",
+    "expected": "abe075d0d17d207a75b799e794b363fff448f2f0980a66d6ae4bc7e1be126d81",
+    "matches": true
+  },
+  {
+    "name": "ActualPacketCompression.lean",
+    "sha256_lf": "2bda0d0ff9fb87fda79663af7dff28cc008060b915d7f6185bb00181ebe4dc04",
+    "expected": "2bda0d0ff9fb87fda79663af7dff28cc008060b915d7f6185bb00181ebe4dc04",
+    "matches": true
+  }
+]
