@@ -1,0 +1,7 @@
+# First failed-source assessment
+
+Exact source15a799d0826dcf3e00de011a6caf82d1a194aba4, sourceLF hash15667e951683943bc5b324890e623fc1e5ff379e33162b902c444013de0b2635. First readiness4/10 after failed092; no formal acceptance or oracle report. Same preparing Codex agent, continuing author context; backend/effort unexposed. No independent/blind/external-model/human review or inherited/target grade.
+
+Full objections: (1) numerical actual multiplier proof compiles but packet sum equality broad simp/ring leaves True-or proposition, not closed; (2) actual band power cast fails because local H needs unfolding; (3) these two errors invalidate whole target, no downstream theorem/kernel evidence accepted despite other tactic blocks; (4) original signed positive TOTAL occupied mean and all local nonlinear hypotheses unchanged, no supplied positivity/trace/kernel certificate allowed; (5) derived uniform family is dilation only, not full integer tail or exact averaged factor3 formula; (6) full failed source/log/report/ZIP preserved and auto-release observed0sessions,092b prepared but never executed, no Windows Lean; (7) mechanism classical, no originality/physical-gap claim, PR29 remains20/41;TermSource=0, no new PDF/AIRR publication.
+
+Disposition: fix proof closure by final simp and unfold H before exact_mod_cast, preserving five exact oracle names, theorem statements and acceptance criteria. This grade remains bound to failed source, not reused on corrected source.
