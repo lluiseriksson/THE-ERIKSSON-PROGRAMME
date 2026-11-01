@@ -1,0 +1,13 @@
+# Actual numerical finite rank and uniform dilation density
+
+Candidate mathematical source15a799d0826dcf3e00de011a6caf82d1a194aba4. Five exact preregistered endpoints, not verified merely by this source preparation. Own Colab092/092b drivers pin two source LF hashes, Lean4.29rc6 and Mathlib07642720, include raw five-name standard-axiom oracle validation and real mutations normal/-O, and release resources on success/failure. Local ZIP/hash validators are reused measured lightweight metadata checks; no Windows Lean.
+
+Mechanism: centeredFourier_multiplier_sum_sq_le is applied to the actual coexactPositiveFourierIndex and transported to positiveCoexactCharacter. The sum over actual packet times Bool derives H=2R(2R+1)^(d+1), retaining all d+2 directions and BOTH quadratures. Original actualVolumeMean_nonlinear_rank yields c(H-dim F)<=m*H*beta, beta=4pi²(d+2)R²/n². Original signed weights have no lower bound or pointwise cap; pointwise positive TOTAL coefficient occupied means<=m remain explicit.
+
+For n=(s+3)(R+1), the derived beta scale and2m*4pi²(d+2)/(s+3)²<=c with c>0 yield H<=2dimF. The actual band power inequality derives epsilon*n^(d+2)<=dimF with epsilon=(2/(s+3))^(d+2)/2>0. A single s,epsilon is constructed from d,m,c; every original C,L,F,Phi,K,delta,radius,w at each R remains universally quantified. No uniform differentiability neighbourhood, K or radius; no supplied spectral, support, trace or kernel certificate.
+
+Boundary: this is the uniform DILATION family. Floor(alpha*n)/full-integer-tail formal transport, exact averaged sinc multiplier, factor3 improved constant and optimized bound remain separate analytic results at62adf1ac. Do not mark those formal from these five endpoints. This finite flat obstruction is not an interacting or continuum producer. PR29 stays20/41;TermSource=0.
+
+Primary/prior context: actual packet and derivative-kernel/trace modules in the repository, centeredFourier multiplier theorem based on integer lifts and the standard exponential chord estimate; Lin,Wan,Zhang arXiv2403.06105 Theorem1.2 gives established discrete torus spectra. Classical Fourier/trace/rank/Archimedean-scale mechanisms, no original general principle or established combined priority. Consolidate in existing manuscript, no standalone small-corollary paper. Publicv4 and internalv5 unchanged; no new PDF/deposit/license/external-model assessment.
+
+Model assessments and review context: exact source will receive a first score and complete objections after actual focal evidence, with same preparing-agent context identified; no inherited source/PDF grade or scientific independence. Later fresh paired reproduction completes verification without another review for grade improvement.

@@ -1,0 +1,9 @@
+# One active next question: full integer tail from numerical finite rank
+
+Prove in Lean the full integer-tail density from the checked actual finite numerical rank, retaining positive TOTAL occupied means and original local nonlinear hypotheses. No sharper sinc/optimized constant is needed for this closure. Do not leave the first formal density restricted to the dilation family indefinitely.
+
+Candidate mechanism, not a new compiled endpoint: choose k=s+3>=3 from2m*4pi²D/k²<=c, and for every n>=k use R=n/k (natural integer quotient). Then R>=1, kR<=n<k(R+1)<=2kR, so2R<kR<=n. Derive R/n<=1/k and hence the actual per-frequency cutoff beta<=4pi²D/k². The finite numerical rank then gives H<=2dimF. Also H>= (2R)^D >=(n/k)^D, yielding epsilon*n^D<=dimF for epsilon=1/(2k^D)>0 on the full tail. Every inequality involving natural quotient, cast, positive denominator and power must be derived, not provided as a certificate. This avoids any derivative or infinite-sum limit and needs no uniform K,delta or radius.
+
+Retain fixed d,Nc, common c>0 and m>=0; actual C_n,L_n,F_n,Phi_n,weights and neighbourhoods may vary. Falsifiers: wrong natural division edge, missing R>=1 for R+1<=2R, dropped nonzero n, false cutoff or quadrature count, signed-mean substitution, hidden uniformity, or conflation with exact averaged factor3 result. Abandon/change route after three substantive units without a derived endpoint/useful counterexample; preserve literal blocker/failures.
+
+After this closes, consolidate the related mean-density results into the already inventoried internal manuscript candidate (v5 sourcebe4a56e0,18pages,PDF003be550...4ce61). Its prior report had no numerical grade and must not be transferred; a changed manuscript needs an exact new PDF, individual visual QA, first scoring and full objections. Publicv4 remains frozen. No separate small-corollary paper, no physical-gap upgrade, PR29 stays20/41;TermSource=0.
