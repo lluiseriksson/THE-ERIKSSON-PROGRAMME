@@ -1,0 +1,41 @@
+{
+  "status": "TWO_FRESH_OWN_COLAB_CLONES_MATCH",
+  "source_sha": "067fed7556b9d5c2fb2e7672feafa20df4dda72e",
+  "compiled_object": "bfcd8b74d739860a874f165d4cbff01ac829aecfc17c4b74bca88d55ec472610",
+  "raw_oracle": "a5a1c9875213c4f62fef71a9a76578e072990d59d804c50a55368845f2b6c4a5",
+  "source_manifest": "4e28dced12042b04392a24a3899e597dd20d5fdcafe2767029f8eb1e3a025da2",
+  "oracle_count": 5,
+  "run094": {
+    "status": "ACTUAL_VOLUME_FULL_TAIL_VALIDATED",
+    "source_sha": "067fed7556b9d5c2fb2e7672feafa20df4dda72e",
+    "zip_sha256": "892e8d6af8f46f6ee649996b9ba5cde38145cb1c8ddbc9d76ae10d4269d06bdd",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 5,
+    "target_olean_sha256": "bfcd8b74d739860a874f165d4cbff01ac829aecfc17c4b74bca88d55ec472610",
+    "oracle_log_sha256": "a5a1c9875213c4f62fef71a9a76578e072990d59d804c50a55368845f2b6c4a5",
+    "source_manifest_sha256": "4e28dced12042b04392a24a3899e597dd20d5fdcafe2767029f8eb1e3a025da2",
+    "started_utc": "2026-11-01T15:42:09.347889+01:00",
+    "finished_utc": "2026-11-01T15:49:44.716378+01:00",
+    "independent_review": false,
+    "scope": "Actual full integer-tail nonlinear mean-budget rank density; exact averaged multiplier separate analytic",
+    "windows_lean_executed": false
+  },
+  "run094b": {
+    "status": "ACTUAL_VOLUME_FULL_TAIL_VALIDATED",
+    "source_sha": "067fed7556b9d5c2fb2e7672feafa20df4dda72e",
+    "zip_sha256": "6da773e0018c263e602e5e9017ba820243fdf3c88bd0a60cdef33f0e940bd6cd",
+    "manifest_entries": 12,
+    "exit_zero_steps": 9,
+    "oracle_reports": 5,
+    "target_olean_sha256": "bfcd8b74d739860a874f165d4cbff01ac829aecfc17c4b74bca88d55ec472610",
+    "oracle_log_sha256": "a5a1c9875213c4f62fef71a9a76578e072990d59d804c50a55368845f2b6c4a5",
+    "source_manifest_sha256": "4e28dced12042b04392a24a3899e597dd20d5fdcafe2767029f8eb1e3a025da2",
+    "started_utc": "2026-11-01T15:43:58.827783+01:00",
+    "finished_utc": "2026-11-01T15:52:13.340431+01:00",
+    "independent_review": false,
+    "scope": "Actual full integer-tail nonlinear mean-budget rank density; exact averaged multiplier separate analytic",
+    "windows_lean_executed": false
+  },
+  "independent_scientific_review": false
+}

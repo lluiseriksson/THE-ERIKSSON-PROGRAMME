@@ -1,0 +1,17 @@
+{
+  "first_exact_pdf_score": null,
+  "map_sha256_lf": "49c40cd78dc266e9a31c6bce790d51d2d4e6f000cc94a74aebaf3c187888561f",
+  "new_formal_verification": false,
+  "unresolved_refs": [],
+  "visual_qa": false,
+  "labels": 33,
+  "source_sha": "6613462edf6b6ea577e2a70b04b1caad6e37a696",
+  "status": "SOURCE_ONLY_ASSEMBLY_CHECKED_NOT_RENDERED",
+  "render_executed": false,
+  "operation_marker_sha256_lf": "e0578762dc2a8f44a26323062c8afcf6c72ef197649f349c8b40e9f2a03c8942",
+  "duplicate_labels": [],
+  "tex_sha256_lf": "11ad012d8d07ac47a662da40fe8f675579082c939609f46ddb01bf10afb550fe",
+  "readiness": "Source assembly and rendering driver prepared; existing browser blocker unchanged",
+  "bibliography_label_width": "99 for10entries",
+  "browser_open_request": "Queued on this own chat by open_in_codex; user must show the chat to activate it"
+}

@@ -1,0 +1,6 @@
+import YangMills.RG.ActualVolumeFullTailDensity
+#print axioms YangMills.RG.actualVolume_quotient_cutoff
+#print axioms YangMills.RG.actualVolume_quotient_spectral_bound
+#print axioms YangMills.RG.actualVolume_quotient_volume_bound
+#print axioms YangMills.RG.actualVolumeMean_full_tail_density
+#print axioms YangMills.RG.actualVolumeMean_uniform_full_tail_density_exists
