@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$Zip,[Parameter(Mandatory=$true)][string]$Output,[string]$Source='82f7e201ed5b028ed9de6d14f9b3c7980ba0654d')
+param([Parameter(Mandatory=$true)][string]$Zip,[Parameter(Mandatory=$true)][string]$Output,[string]$Source='3281eb956ac3d4e5135cf2011c3902b4766ece1a')
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $z=[IO.Compression.ZipFile]::OpenRead($Zip)
@@ -20,5 +20,5 @@ try {
  if(@($r.oracle_validator_selftests).Count -ne 2){throw 'Missing validator modes'}
  foreach($mode in @('normal','optimized')){$t=@($r.oracle_validator_selftests|Where-Object mode -eq $mode);if($t.Count -ne 1 -or $t[0].real_mutations_rejected -ne 3 -or $t[0].positive_accepted -ne 1){throw "Mutation checks missing $mode"}}
  if($r.target_olean_sha256 -notmatch '^[a-f0-9]{64}$'){throw 'Missing compiled object hash'}
- [ordered]@{status='ACTUAL_CONCENTRATED_FAMILY_OBSTRUCTION_VALIDATED';source_sha=$r.source_sha;zip_sha256=(Get-FileHash -LiteralPath $Zip).Hash.ToLowerInvariant();manifest_entries=$m.Count;exit_zero_steps=@($r.steps).Count;oracle_reports=3;target_olean_sha256=$r.target_olean_sha256;oracle_log_sha256=$m['oracle.log'];source_manifest_sha256=$m['source-hashes.json'];started_utc=([datetimeoffset]$r.started_utc).ToUniversalTime().ToString("o");finished_utc=([datetimeoffset]$r.finished_utc).ToUniversalTime().ToString("o");independent_review=$false;scope='Actual quotient cutoff, natural finite-tail rank and concrete nonnegative positive-total budget; original nonlinear hypotheses retained';windows_lean_executed=$false}|ConvertTo-Json -Depth 8|Set-Content -LiteralPath $Output -Encoding utf8
+ [ordered]@{status='ACTUAL_CONCENTRATED_FAMILY_OBSTRUCTION_VALIDATED';source_sha=$r.source_sha;zip_sha256=(Get-FileHash -LiteralPath $Zip).Hash.ToLowerInvariant();manifest_entries=$m.Count;exit_zero_steps=@($r.steps).Count;oracle_reports=3;target_olean_sha256=$r.target_olean_sha256;oracle_log_sha256=$m['oracle.log'];source_manifest_sha256=$m['source-hashes.json'];started_utc=([datetimeoffset]$r.started_utc).ToUniversalTime().ToString("o");finished_utc=([datetimeoffset]$r.finished_utc).ToUniversalTime().ToString("o");independent_review=$false;scope='Uniform bounded observation-rank tail obstruction from original local nonlinear data; explicit nonnegative profile parameterization';windows_lean_executed=$false}|ConvertTo-Json -Depth 8|Set-Content -LiteralPath $Output -Encoding utf8
 } finally {$z.Dispose()}

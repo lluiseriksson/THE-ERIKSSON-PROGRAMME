@@ -9,13 +9,9 @@ set_option maxHeartbeats 1800000
 
 theorem actualConcentrated_volume_dominates_side (d n : ℕ) (hn : 1 ≤ n) :
     n ≤ n^(d + 2) := by
-  induction d with
-  | zero => simp only [Nat.zero_add]; nlinarith
-  | succ d ih =>
-    calc
-      n ≤ n^(d + 2) * n := by nlinarith
-      _ = n^(d.succ + 2) := by
-        rw [show d.succ + 2 = (d + 2) + 1 by omega, pow_succ]
+  calc
+    n = n^1 := (pow_one n).symm
+    _ ≤ n^(d + 2) := pow_le_pow_right₀ hn (by omega)
 
 section Finite
 variable {d n Nc : ℕ} [NeZero n] [NeZero Nc]
