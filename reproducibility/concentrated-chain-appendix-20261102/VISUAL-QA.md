@@ -1,0 +1,5 @@
+# Visual QA — exact five-page appendix
+
+PDF02a9cf3eae9b15aefcbf69ed5ea25ba0f2382e8e26ee552ec1dc2f816e601d37. All pages1,2,3,4,5 individually inspected from their original Colab-generated PNGs. Page1title/abstract/meanidentity, page2localdata/finiteband, page3integer-tail/uniformquantifiers, page4coverage/history/reviewcontext and page5limitations are readable. No clipping, overlapping text, missing equations or broken references observed. Two natural continuations and a sparse final page are recorded as nonblocking limitations. No image retouching, local rendering or PDF editing was used.
+
+Eight successful renderer stages; no layout warnings. Pagecount5 checked against exactly5PNGs, all25inner-manifest files rehashed. Full first exactPDFassessment is separate,6/10, identified preparing-agent only, with seven full objections. These checks do not establish novelty or peer acceptance.
