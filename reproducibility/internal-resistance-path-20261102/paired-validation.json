@@ -1,0 +1,13 @@
+{
+  "targets": 5,
+  "source_manifest_sha256": "efabf902156917054aa39565f111274604774783af6dcb7492192e14e26dc770",
+  "oracle_sha256": "97608a45dc2b8e31aa8777401f4119debda62eb9af66925d2bb499f9f01a4ee0",
+  "fresh_clones": 2,
+  "zero_exit_steps_each": 9,
+  "same_exact_source": true,
+  "independent_review": false,
+  "object_sha256": "a3f76dc3bd770753df95430d6676b59c735d5b9066df7476b3ed067b1fa5a83d",
+  "full_block_theorem_verified": false,
+  "same_object_oracle_sources_toolchain": true,
+  "source_sha": "660c50b3846fd818392d7cbc467106cd663fd15b"
+}
