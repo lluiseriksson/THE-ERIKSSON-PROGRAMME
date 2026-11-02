@@ -1,0 +1,6 @@
+import YangMills.RG.ActualConcentratedVolumeRank
+#print axioms YangMills.RG.actualConcentrated_cutoff_exists
+#print axioms YangMills.RG.actualConcentrated_quotient_gap
+#print axioms YangMills.RG.actualConcentrated_quotient_volume_nat
+#print axioms YangMills.RG.actualConcentrated_quotient_rank
+#print axioms YangMills.RG.actualConcentrated_nonnegative_profile_rank

@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_CONCENTRATED_VOLUME_RANK_VALIDATED",
+  "source_sha": "82f7e201ed5b028ed9de6d14f9b3c7980ba0654d",
+  "zip_sha256": "97905343df4b038722361c77c67d4f228a181384a2b9d1dc61f3e6f9ae087dc0",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 5,
+  "target_olean_sha256": "326cac3d73ae33edbf5b166e0ead6feff182642dfa11e757abc6338bb375b765",
+  "oracle_log_sha256": "be05561dab6cdaa7deb3d2fa09b9998c18012dbee9b0c240079ba7a3abd33d6c",
+  "source_manifest_sha256": "0438bea80f3d8ab2def1a0f878ae042887e667932643ebe067d68e3ff328d24c",
+  "started_utc": "2026-11-02T04:50:46.9252680+00:00",
+  "finished_utc": "2026-11-02T04:57:06.5667600+00:00",
+  "independent_review": false,
+  "scope": "Actual quotient cutoff, natural finite-tail rank and concrete nonnegative positive-total budget; original nonlinear hypotheses retained",
+  "windows_lean_executed": false
+}
