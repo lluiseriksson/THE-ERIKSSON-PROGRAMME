@@ -1,0 +1,280 @@
+{
+  "schema": 1,
+  "public_code_revision": "9699c2a0d50e7d722ac20c6f9ea263ee4eaeac6a",
+  "proof_source": "9e6298ef199961ff14e94db3dfd2e297ec931fc6",
+  "declarations": [
+    {
+      "declaration": "YangMills.RG.actualConcentrated_weight_nonneg",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "file": "YangMills/RG/ActualConcentratedRepair.lean",
+      "runs": [
+        "100",
+        "100b"
+      ],
+      "compiled_object": "fa0d13838f57384a5ebb687d73c42fe40c7bb02f5a0a2a9eaa5640767167dbb5",
+      "oracle_sha256": "100e55c0f5f116556f6f94b4adf6513ab4b289ae9fed6fe3b8503b4ba7d307e7"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_repair_energy_zero",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "file": "YangMills/RG/ActualConcentratedRepair.lean",
+      "runs": [
+        "100",
+        "100b"
+      ],
+      "compiled_object": "fa0d13838f57384a5ebb687d73c42fe40c7bb02f5a0a2a9eaa5640767167dbb5",
+      "oracle_sha256": "100e55c0f5f116556f6f94b4adf6513ab4b289ae9fed6fe3b8503b4ba7d307e7"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_total_energy_on_kernel",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "file": "YangMills/RG/ActualConcentratedRepair.lean",
+      "runs": [
+        "100",
+        "100b"
+      ],
+      "compiled_object": "fa0d13838f57384a5ebb687d73c42fe40c7bb02f5a0a2a9eaa5640767167dbb5",
+      "oracle_sha256": "100e55c0f5f116556f6f94b4adf6513ab4b289ae9fed6fe3b8503b4ba7d307e7"
+    },
+    {
+      "declaration": "YangMills.RG.actualOriginDifference_eq_existing_site_gradient",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "file": "YangMills/RG/ActualConcentratedRepairMean.lean",
+      "runs": [
+        "101",
+        "101b"
+      ],
+      "compiled_object": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+      "oracle_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_repair_energy",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "file": "YangMills/RG/ActualConcentratedRepairMean.lean",
+      "runs": [
+        "101",
+        "101b"
+      ],
+      "compiled_object": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+      "oracle_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_positive_total_sum",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "file": "YangMills/RG/ActualConcentratedRepairMean.lean",
+      "runs": [
+        "101",
+        "101b"
+      ],
+      "compiled_object": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+      "oracle_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_positive_total_budget",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "file": "YangMills/RG/ActualConcentratedRepairMean.lean",
+      "runs": [
+        "101",
+        "101b"
+      ],
+      "compiled_object": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+      "oracle_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873"
+    },
+    {
+      "declaration": "YangMills.RG.actualOriginDifference_codomain_finrank",
+      "source_sha": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+      "file": "YangMills/RG/ActualConcentratedCoexactRank.lean",
+      "runs": [
+        "102",
+        "102b"
+      ],
+      "compiled_object": "ee7b6cb9a9a19659bfa958a9d742eaf73989ff5c3f7acd94e06e61987c581b36",
+      "oracle_sha256": "4dc0179c71f7d01ac83c06dd425b49e905a14d90ac7a9309202695fbe2854f0c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_coexact_combined_injective",
+      "source_sha": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+      "file": "YangMills/RG/ActualConcentratedCoexactRank.lean",
+      "runs": [
+        "102",
+        "102b"
+      ],
+      "compiled_object": "ee7b6cb9a9a19659bfa958a9d742eaf73989ff5c3f7acd94e06e61987c581b36",
+      "oracle_sha256": "4dc0179c71f7d01ac83c06dd425b49e905a14d90ac7a9309202695fbe2854f0c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_coexact_rank",
+      "source_sha": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+      "file": "YangMills/RG/ActualConcentratedCoexactRank.lean",
+      "runs": [
+        "102",
+        "102b"
+      ],
+      "compiled_object": "ee7b6cb9a9a19659bfa958a9d742eaf73989ff5c3f7acd94e06e61987c581b36",
+      "oracle_sha256": "4dc0179c71f7d01ac83c06dd425b49e905a14d90ac7a9309202695fbe2854f0c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_cutoff_exists",
+      "source_sha": "82f7e201ed5b028ed9de6d14f9b3c7980ba0654d",
+      "file": "YangMills/RG/ActualConcentratedVolumeRank.lean",
+      "runs": [
+        "103",
+        "103b"
+      ],
+      "compiled_object": "326cac3d73ae33edbf5b166e0ead6feff182642dfa11e757abc6338bb375b765",
+      "oracle_sha256": "be05561dab6cdaa7deb3d2fa09b9998c18012dbee9b0c240079ba7a3abd33d6c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_quotient_gap",
+      "source_sha": "82f7e201ed5b028ed9de6d14f9b3c7980ba0654d",
+      "file": "YangMills/RG/ActualConcentratedVolumeRank.lean",
+      "runs": [
+        "103",
+        "103b"
+      ],
+      "compiled_object": "326cac3d73ae33edbf5b166e0ead6feff182642dfa11e757abc6338bb375b765",
+      "oracle_sha256": "be05561dab6cdaa7deb3d2fa09b9998c18012dbee9b0c240079ba7a3abd33d6c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_quotient_volume_nat",
+      "source_sha": "82f7e201ed5b028ed9de6d14f9b3c7980ba0654d",
+      "file": "YangMills/RG/ActualConcentratedVolumeRank.lean",
+      "runs": [
+        "103",
+        "103b"
+      ],
+      "compiled_object": "326cac3d73ae33edbf5b166e0ead6feff182642dfa11e757abc6338bb375b765",
+      "oracle_sha256": "be05561dab6cdaa7deb3d2fa09b9998c18012dbee9b0c240079ba7a3abd33d6c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_quotient_rank",
+      "source_sha": "82f7e201ed5b028ed9de6d14f9b3c7980ba0654d",
+      "file": "YangMills/RG/ActualConcentratedVolumeRank.lean",
+      "runs": [
+        "103",
+        "103b"
+      ],
+      "compiled_object": "326cac3d73ae33edbf5b166e0ead6feff182642dfa11e757abc6338bb375b765",
+      "oracle_sha256": "be05561dab6cdaa7deb3d2fa09b9998c18012dbee9b0c240079ba7a3abd33d6c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_nonnegative_profile_rank",
+      "source_sha": "82f7e201ed5b028ed9de6d14f9b3c7980ba0654d",
+      "file": "YangMills/RG/ActualConcentratedVolumeRank.lean",
+      "runs": [
+        "103",
+        "103b"
+      ],
+      "compiled_object": "326cac3d73ae33edbf5b166e0ead6feff182642dfa11e757abc6338bb375b765",
+      "oracle_sha256": "be05561dab6cdaa7deb3d2fa09b9998c18012dbee9b0c240079ba7a3abd33d6c"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_volume_dominates_side",
+      "source_sha": "9e6298ef199961ff14e94db3dfd2e297ec931fc6",
+      "file": "YangMills/RG/ActualConcentratedFamilyObstruction.lean",
+      "runs": [
+        "105",
+        "105b"
+      ],
+      "compiled_object": "afe931101eb923176e364dbbea3fed01d7ea317d3014d1660edcb5fada1e4469",
+      "oracle_sha256": "a7834003dbc54a0cf00c50f5f427e5c1e98ce02365d0ac26b41a0789c4b4eaeb"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_bounded_rank_obstruction",
+      "source_sha": "9e6298ef199961ff14e94db3dfd2e297ec931fc6",
+      "file": "YangMills/RG/ActualConcentratedFamilyObstruction.lean",
+      "runs": [
+        "105",
+        "105b"
+      ],
+      "compiled_object": "afe931101eb923176e364dbbea3fed01d7ea317d3014d1660edcb5fada1e4469",
+      "oracle_sha256": "a7834003dbc54a0cf00c50f5f427e5c1e98ce02365d0ac26b41a0789c4b4eaeb"
+    },
+    {
+      "declaration": "YangMills.RG.actualConcentrated_uniform_bounded_rank_tail",
+      "source_sha": "9e6298ef199961ff14e94db3dfd2e297ec931fc6",
+      "file": "YangMills/RG/ActualConcentratedFamilyObstruction.lean",
+      "runs": [
+        "105",
+        "105b"
+      ],
+      "compiled_object": "afe931101eb923176e364dbbea3fed01d7ea317d3014d1660edcb5fada1e4469",
+      "oracle_sha256": "a7834003dbc54a0cf00c50f5f427e5c1e98ce02365d0ac26b41a0789c4b4eaeb"
+    }
+  ],
+  "allowlist": {
+    "YangMills/RG/ActualConcentratedRepair.lean": "8bcf4410958e22a4a61ab1af69c72e11b41f4845c68e07ff6100250d8e331ddf",
+    "YangMills/RG/ActualConcentratedRepairOracle.lean": "e97f817277cdb38a8cb2c8ac0661f8b87689d5cbb036e0d099807c36608c2587",
+    "reproducibility/actual-concentrated-repair-20261101/100-validation.json": "b1a3bf49bb5e81c483010bd535870a77314e84b5ea12c67c913b0b258c43bddc",
+    "reproducibility/actual-concentrated-repair-20261101/100b-validation.json": "570d486e97ae74f415717e6063cf39124e348188d6b8cccf8ca69edbac18bf82",
+    "reproducibility/actual-concentrated-repair-20261101/failed099-diagnosis.md": "e3aa16d2a11d3cdc133a72d024e0a25ede3e8c2dc738af9cfa1e452c99246c99",
+    "reproducibility/actual-concentrated-repair-20261101/inspect-evidence.ps1": "fe887449f281e5d5c4bb3cee7f73e1cc61cdc7d77189f0b7e1fb9ebfd062b362",
+    "reproducibility/actual-concentrated-repair-20261101/paired-stage1-validation.json": "e1fbad18d31c46db3a1ad19df28d2b1b5191a52682be187460597816868159a6",
+    "reproducibility/actual-concentrated-repair-20261101/README.md": "17ee164fe7c3acbae926b36718fd57703095414fbeb9704ebbb25e9bee03b37d",
+    "reproducibility/actual-concentrated-repair-20261101/reproduce099.py": "3c06abf3227179fb79c7c44282feaa0ece4e14b8fc75af7c65ed0d162b2a421d",
+    "reproducibility/actual-concentrated-repair-20261101/reproduce099b.py": "1a5be4a7d805e47720fbb63af7076b4adae7920433e81a0d8daceedd085f4da6",
+    "reproducibility/actual-concentrated-repair-20261101/reproduce100.py": "8f818ea6701e818e8059fd2cb0eedd1a9346af9c13df6d5590e6606ff1a7e9c8",
+    "reproducibility/actual-concentrated-repair-20261101/reproduce100b.py": "920c4269ed1f5264ef5e067444e6c43808adfb46163309f921e8e2ffded954b9",
+    "reproducibility/actual-concentrated-repair-20261101/source-fce61-first-assessment.json": "211c32d21a7e347f0e476917bfd198102d16d1a3cbdeffedf268fc80428b6822",
+    "reproducibility/actual-concentrated-repair-20261101/validate-package.ps1": "aad23dfc51201022bd4745848e2182a42b7ca5520b3b70c3fd8762d4fae90954",
+    "YangMills/RG/ActualConcentratedRepairMean.lean": "8e8f66cd44db4591c1a690b0ad938c9edb0f0e1103fefef488e007a29e3f4eee",
+    "YangMills/RG/ActualConcentratedRepairMeanOracle.lean": "14bc1a4cbb39a715deb3559259fc794b216b84a4a9fe8ff99b33a787b34a71e2",
+    "reproducibility/actual-concentrated-repair-mean-20261102/101-validation.json": "738ec36c85617dde223d6cdc7fb63b690d074497ce5229888343ebec9c3fe3d3",
+    "reproducibility/actual-concentrated-repair-mean-20261102/101b-validation.json": "d11af537fabd3870c1087bffd308e59614b8f13672fb17f47a463f6a2195a06f",
+    "reproducibility/actual-concentrated-repair-mean-20261102/inspect-evidence.ps1": "fe887449f281e5d5c4bb3cee7f73e1cc61cdc7d77189f0b7e1fb9ebfd062b362",
+    "reproducibility/actual-concentrated-repair-mean-20261102/mean-fce61-first-assessment.json": "580489934b34409c800a1b838a0e19e232e645718de1d0054094b31935c0ba67",
+    "reproducibility/actual-concentrated-repair-mean-20261102/paired-stage2-validation.json": "959018adde46e7689374f6f1f7bdf789d0d7ad2b93bdcda48044b2ce46c319ed",
+    "reproducibility/actual-concentrated-repair-mean-20261102/README.md": "b25d83b7c0de4139cdbe4926913fc8d044459ee6beba9a80fa81a2c214fe68a2",
+    "reproducibility/actual-concentrated-repair-mean-20261102/reproduce101.py": "20d2069c36e6994a22d178e97c4bf79479f560d4e6441e987f0750cb89b0423c",
+    "reproducibility/actual-concentrated-repair-mean-20261102/reproduce101b.py": "81c559afe41b5819ff57a0542754285e81c806623cababf025050f16f92aaab2",
+    "reproducibility/actual-concentrated-repair-mean-20261102/validate-package.ps1": "08f533b3d08e4be94d5d03d15616f055699778de8055680d8b98b0dad81d6874",
+    "YangMills/RG/ActualConcentratedCoexactRank.lean": "765a9102c986e88bf9b66f1a82d401dce31873ce5487f1928afda618e9b98c64",
+    "YangMills/RG/ActualConcentratedCoexactRankOracle.lean": "3ecf3c57dd4ac5a8b55822507dfcbcd01e9f39426beea91482d7567774246902",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/102-validation.json": "eb04b5b19ae1edf39a9018798c1fa170b9280d6ec4a06ddd0e82429c3607d38e",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/102b-validation.json": "33545f60918bbd18728a910ff79ec589dff1dd2dd086cf5e70edca1077b1ea3a",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/inspect-evidence.ps1": "fe887449f281e5d5c4bb3cee7f73e1cc61cdc7d77189f0b7e1fb9ebfd062b362",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/paired-validation.json": "2f178a3b4faebada2fcf138042b667fa4fb81f33ae72df37ba0e93838e16d40e",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/rank-source-first-assessment.json": "ef0775bdfb684a1dd04ba1ab5368cb084d8dab04e8dc8e2a56c95e5d8bb218e8",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/README.md": "bef81f691410e967d9d9b4bfadd61c49bd9138186965a50edf317c5f4ff21074",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/reproduce102.py": "f1fac0b4d97087e4897ac6e9e00e46225897d5da07e3bf516840d8bb72aeb422",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/reproduce102b.py": "8480a1d231009d5708a0687b1336a4e31743fd371a7389e9552b226c95444fad",
+    "reproducibility/actual-concentrated-coexact-rank-20261102/validate-package.ps1": "6516607e3260e9e1a8d9736796b213379847504d3afda966651b343337f09144",
+    "YangMills/RG/ActualConcentratedVolumeRank.lean": "fa7c2d630c8ced6b7ae6b544a9e16e0f73f0d6e4d5b1ed3346d0eaa1a3c9fa88",
+    "YangMills/RG/ActualConcentratedVolumeRankOracle.lean": "39970d7ba15a8a584b092b80191fbc87cd9440d310ee9bf3299ae0afdc310be3",
+    "reproducibility/actual-concentrated-volume-rank-20261102/103-report.json": "edb5d4f72b3c44cc983b3a413451b74aa757b12000ea605043909422c0b319a5",
+    "reproducibility/actual-concentrated-volume-rank-20261102/103-validation.json": "5002eccd698eba8d4277687238972f97aee6ecffcce0bc54e9b7641ff247bb77",
+    "reproducibility/actual-concentrated-volume-rank-20261102/103b-report.json": "904bde0e32c6d332f3076a4fda74011bbd2d90840002b6f7be5e108be4d8d9ea",
+    "reproducibility/actual-concentrated-volume-rank-20261102/103b-validation.json": "5001648c1d4f51aac91cb19f5f7a7cd38a73389d59e1bbfaf5daf33246069409",
+    "reproducibility/actual-concentrated-volume-rank-20261102/first-source-assessment.md": "64c8d3b801d2ae5ada904f839740c245cbf9b1357ed9a0e6c1a6226408952e3f",
+    "reproducibility/actual-concentrated-volume-rank-20261102/inspect-evidence.ps1": "fe887449f281e5d5c4bb3cee7f73e1cc61cdc7d77189f0b7e1fb9ebfd062b362",
+    "reproducibility/actual-concentrated-volume-rank-20261102/quantifier-consequence.md": "6ffa3b6306fa3dc661d8091e38a28d4d39dbc91c3c6e315ac7dfae5b49769523",
+    "reproducibility/actual-concentrated-volume-rank-20261102/README.md": "441b574fcba40aeb4d0769b29efcd38fa28cfd53c3e5b2dd275a75228016170c",
+    "reproducibility/actual-concentrated-volume-rank-20261102/reproduce103.py": "56f58d6093db188790a0dd04f17dc5cf2d4dac391a4c7b291e97f2275cff00b3",
+    "reproducibility/actual-concentrated-volume-rank-20261102/reproduce103b.py": "fd50a216cf95cae2fdfec23a53a116b2aa2aedd5e42736780398a58354a63bdd",
+    "reproducibility/actual-concentrated-volume-rank-20261102/validate-package.ps1": "f1fae20d90f8e43375e35e9ecb29c54c8311cfa80cc914d5e6641bee77be8dbc",
+    "YangMills/RG/ActualConcentratedFamilyObstruction.lean": "7358875341cc1935671009ee2eb084c7ee6e3ad2bf763f3caf2ea58957791d81",
+    "YangMills/RG/ActualConcentratedFamilyObstructionOracle.lean": "ec8b86171f7e98fc725f2ee42cb4b841aac11c16cc913720764db8b9706d122d",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/104-integrity.json": "e5ea1da73f4b07e5b712b674ebe42d2b6abc7c4af066eafb16db19ae75ecec07",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/104-report.json": "d3938066444734ef7af0751f2d89a38d12162fcfcf69ac18bc2a4b29fbdebc7b",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/104b-integrity.json": "cd4c71f52c774e796dca9ebf5dfae00666e77ef868dd8b165dfe9ce5d62f896e",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/104b-report.json": "723f33c8a780ebfb3abf5fa1f733cffff97c3797770022852227cee1e7d02e79",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/105-report.json": "03f303e2c52ea5239840f3be965798f33c0b78f27279782a3be02e92933652ae",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/105-validation.json": "44fddec58b888062f9b4d8c05eb6cf7ab0de0595c20ae6765f0d6713326413ef",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/105b-report.json": "c518a20d0d555030517663c6e6b7bf2ccc637b7df3340061e407299e365a2154",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/105b-validation.json": "44dac7cb95841378d52c64aa55545c7a0ba51966c3e017da0431ecdf89fa3a05",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/consolidation-placement.md": "7f200d4ab1e010813e96792eea1021f1e13b3c32a9afdfd0b9e5979baba9bb68",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/failure-diagnosis.md": "b99faddf4cf24e2220a791519383978909da2e1f92f751de9530445c5958c4cd",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/first-source-assessment-105.md": "513df8fcf897d3da50130bec5914155801225a96884b1d748eb7ea77df5f9dee",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/first-source-assessment.md": "2b838cd0cc2873efd77ccdbc7c47a40da6595d67089b8d2988f43ab262390ef8",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/inspect-evidence.ps1": "fe887449f281e5d5c4bb3cee7f73e1cc61cdc7d77189f0b7e1fb9ebfd062b362",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/README.md": "8c785797552b7c586b591877caf14c227421c7004ea5ee71d5566d4fbf615f33",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/reproduce104.py": "cd25353ad50083d3fd0cb9684ed276e5f9215237e35e129fcc800719b8e804ce",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/reproduce104b.py": "740d507d63b83741161dd38b0d37283814a034c1504a91b08c5b293d8ece070e",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/reproduce105.py": "cae64603e41e1c0b2f55646b970f7342c2946646e29a70e1669146a7ed5f80ff",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/reproduce105b.py": "d5b94a221451fff86395d574917b512a2f46ee0b60bb5c670c8e7dcada20b467",
+    "reproducibility/actual-concentrated-family-obstruction-20261102/validate-package.ps1": "b01c90a07062148056d5971a342fa3f28cb8e4ba4d9c9dc348ba54bfb4182f60"
+  },
+  "private_access_state_included": false,
+  "new_lean_execution": false,
+  "independent_review": false
+}

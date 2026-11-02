@@ -1,0 +1,13 @@
+# Concentrated-chain appendix — source prepared, PDF not rendered
+
+This is an appendix candidate for the existing flat-coarse-rank article, not a new deposit or a replacement for the frozen97bd manuscript. TeX and map are in papers/flat-coarse-rank/research-consolidation/concentrated-chain-appendix.tex and concentrated-chain-map.json.
+
+Eighteen exact declarations cover five actual mathematical stages. Their accepted proof SHAs/paired validations are in the map. Public code/data are pinned to9699c2a0d50e7d722ac20c6f9ea263ee4eaeac6a, with final family proof9e6298ef199961ff14e94db3dfd2e297ec931fc6. The explicit70-file allowlist includes already public mathematical code, scripts, reports and first source assessments; it excludes local access-state snapshots and credentials.
+
+render106.ipynb is prepared disconnected. Its single code cell checks the exact render106.py bytes, writes /content/render106.py, and executes with __file__ set. Run only in this chat's own authorized Colab Linux CPU/highRAM runtime. The driver checks source/map hashes, fetches the fixed allowlist, validates five historical pairs, installs the PDF dependencies, compiles twice, renders every page to PNG, creates a public-candidate reproducibility ZIP and full hash-manifested evidence ZIP, then unassigns its runtime. It does not run Lean or claim fresh mathematical verification. SOURCE_DATE_EPOCH and package-version records support reproduction without claiming environment-independent byte identity.
+
+Current status: NOT EXECUTED. Browser control disconnected before any runtime opened. No PDF, rendered pages, public ZIP, visual QA, exact-PDF score or new AIRR receipt exists for this appendix. Do not replace the missing Colab run with a Windows build. Preserve failed future renders, if any; inspect every final rendered page before a first exact-PDF assessment. The official bundled PDF artifact-operation marker ran successfully once before authoring; do not duplicate it for the same authoring batch.
+
+Model assessments and review context: first source-only5/10, complete seven objections in FIRST-SOURCE-ASSESSMENT.md. Preparing Codex agent, exact served backend/effort unexposed; no independent review, human peer review, PDF-grade transfer or editorial acceptance. No repeat review of an unchanged PDF to improve a grade.
+
+The exact frozen97bd PDF's separate permission question remains pending and is not replaced by this appendix. Do not publish the appendix or its candidate archive under an earlier PDF's grant. PR29 remains20/41, TermSource=0; interacting/continuum Yang-Mills remains open.

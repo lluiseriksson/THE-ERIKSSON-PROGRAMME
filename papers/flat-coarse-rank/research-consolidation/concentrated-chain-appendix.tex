@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=28mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathcal E}
+\newcommand{\J}{\mathcal J}
+\title{Concentrated nonnegative repairs:\\a consolidated appendix to the flat-lattice rank dossier}
+\author{Lluis Eriksson}
+\date{2 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+This appendix assembles one actual finite-flat mechanism: a repair supported
+at a single lattice site has arbitrarily prescribed nonnegative directional
+mean, yet vanishes on the kernel of a fixed-dimensional origin-difference
+map. A constructed divergence-free low-energy band then forces observation
+rank of volume order. We state the explicit integer-tail inequality and its
+uniform bounded-rank consequence, identify their exact Lean declarations,
+and preserve the failed and successful reproduction records. This is an
+appendix for the existing coarse-information dossier, not a separate paper
+or deposit. The mechanism and its quantifier closure are classical; no
+independent novelty, interacting gauge-theory gap or continuum limit is claimed.
+\end{abstract}
+
+\section{Objects and scope}
+Let $D=d+2\geq2$, $n\geq1$, and $N_c\geq2$. Work on the periodic unit-spacing
+lattice $X_n=(\mathbb Z/n\mathbb Z)^D$ with the actual real physical
+one-cochain space used by the formalization. Its coefficient space $G$ has
+real dimension $g=N_c^2-1$. Write $A_j(x)\in G$ for a field component and
+$\Delta_i A_j(x)=A_j(x+e_i)-A_j(x)$ for the forward difference. All norms
+and energies below use the repository's actual finite-flat normalization.
+Write $\E_0(A)$ for its flat gauge Hodge form and $\E_w(A)$ for its
+componentwise weighted repair form. The gauge condition is the actual
+flat divergence constraint associated with the stated adjoint model $\rho$.
+
+For $x_0\in X_n$ and $b\in\R$, define
+\[
+ w_{i,x,j}=b\,\mathbf1_{\{x=x_0\}},\qquad
+ (\J_{x_0}A)_{ij}=\Delta_i A_j(x_0).
+\]
+The parameters $i,j$ both run over $D$ directions. Thus the codomain of
+$\J_{x_0}$ has dimension $D^2g$, independently of $n$ and $b$.
+This is the earlier site-gradient map in a different finite-product
+packaging, not an independently introduced observation mechanism.
+
+\begin{lemma}[Actual energy and exact mean]
+For the actual concentrated weight,
+\[
+ \E_w(A)=b\sum_{i,j}\|\Delta_i A_j(x_0)\|^2.
+\]
+In particular $\E_w=0$ on $\ker\J_{x_0}$, for every real $b$.
+If $m\geq1$ and $b=(m-1)n^D$, then $w\geq0$ and, for every $i,j$,
+\[
+ \sum_{x\in X_n}\max(1+w_{i,x,j},0)=n^D m.
+\]
+\end{lemma}
+The last identity is an equality of actual directional sums, not a budget
+certificate supplied as an extra hypothesis. It follows from the support
+definition and the already derived repair identity. In particular $m=1$
+gives the zero repair.
+
+\section{Original local nonlinear data}
+An observation is a map $C$ from the actual physical cochains to a real
+finite-dimensional normed space $F$. Assume $C(0)=0$ and differentiability
+at zero with derivative $L=DC(0)$. Let $\Phi:F\to\R$ obey
+\[
+ \Phi(y)\leq K\|y\|^2\quad(\|y\|<\delta),\qquad \delta>0.
+\]
+No differentiability of $\Phi$ is assumed. The local coercivity assertion to
+be tested is, for some $c>0$ and $r>0$,
+\begin{equation}\label{eq:local}
+ c\|A\|^2\leq\E_0(A)+\E_w(A)+\Phi(C(A))
+ \quad\text{if $\operatorname{div}_{\rho}A=0$ and $\|A\|<r$}.
+\end{equation}
+These are the original local nonlinear assumptions. No rank certificate,
+band-dimension certificate, supplied injection or compressed-energy
+certificate replaces them. In a family indexed by $n$, the observation,
+$K$, $\delta$ and $r$ may vary with $n$.
+
+\section{One mechanism, from a finite band to the integer tail}
+The actual constructed positive coexact physical band of cutoff $R$ has
+dimension
+\[
+ H_R=2R(2R+1)^{D-1},
+\]
+lies in the actual divergence kernel, and satisfies
+\[
+ \E_0(A)\leq\beta_{n,R}\|A\|^2,\qquad
+ \beta_{n,R}=\frac{4\pi^2 D R^2}{n^2}.
+\]
+Its existence, dimension, divergence vanishing and energy bound are earlier
+derived facts of the actual formal construction, not hypotheses of the
+final rank theorem.
+
+\begin{theorem}[Actual finite-band obstruction]\label{thm:band}
+Suppose $2R<n$ and $\beta_{n,R}<c$. If \eqref{eq:local} holds with the
+concentrated repair, then
+\[
+ H_R\leq\dim_{\R}F+D^2(N_c^2-1).
+\]
+The amplitude $b$ can be any real number.
+\end{theorem}
+\begin{proof}
+Restrict $(L,\J_{x_0})$ to the actual coexact band. An element of its kernel
+has zero repair energy and is invisible to the derivative of $C$. Along
+$tA$, differentiability gives $C(tA)=o(t)$; the upper-quadratic penalty
+therefore contributes at most $o(t^2)$. For sufficiently small $t$, the
+original neighbourhood conditions apply. Dividing the local inequality by
+$t^2$ gives $c\|A\|^2\leq\E_0(A)\leq\beta_{n,R}\|A\|^2$ in the limit.
+The strict gap forces $A=0$. The restricted combined map is injective, so
+rank-nullity and the actual codomain dimension yield the assertion.
+\end{proof}
+
+Choose $k\geq3$ so that
+\begin{equation}\label{eq:scale}
+ \frac{4\pi^2D}{k^2}\leq\frac c2.
+\end{equation}
+Such an integer exists for every $c>0$. For every integer $n\geq k$, put
+$R=\lfloor n/k\rfloor$. The quotient estimates derive
+\[
+ 0<R,\quad 2R<n,\quad
+ \beta_{n,R}\leq\frac{4\pi^2D}{k^2}<c,\quad
+ n^D\leq k^D H_R.
+\]
+The last comparison is a natural-number inequality; it is not restricted
+to a divisibility subsequence.
+
+\begin{theorem}[Full integer-tail rank and actual nonnegative profile]
+Under the original local data, for $n\geq k$ and \eqref{eq:scale},
+\begin{equation}\label{eq:volume}
+ n^D\leq k^D\bigl(\dim_{\R}F+D^2(N_c^2-1)\bigr).
+\end{equation}
+For every $m\geq1$, the actual choice $b=(m-1)n^D$ is nonnegative and has
+the exact directional positive-total mean $m$ stated in Lemma 1; the same
+rank bound applies if its original local coercivity assertion holds.
+\end{theorem}
+\begin{proof}
+Combine the derived quotient-volume comparison with Theorem~\ref{thm:band}.
+The profile statements are the already proved actual energy/mean adapters.
+\end{proof}
+The finite additive cost $D^2(N_c^2-1)$ must be retained. Neither this
+constant nor the chosen cutoff is asserted optimal.
+
+\section{Uniform bounded-rank consequence}
+\begin{theorem}[Explicit uniform tail]
+Fix integers $d\geq0$ and $N_c\geq2$, a positive real $c$, and
+a natural rank budget $q$. Choose $k$ by \eqref{eq:scale}, and set
+\[
+ N=\max\{k,\ k^D(q+D^2(N_c^2-1))+1\}.
+\]
+For every $n\geq N$, every $m\geq1$, every $x_0\in X_n$ and every
+observation space of dimension at most $q$, the original local assertion
+\eqref{eq:local} is false for the actual profile
+$w_{i,x,j}=(m-1)n^D\mathbf1_{\{x=x_0\}}$ and the stated local data.
+The threshold is independent of $m$, $C$, $K$, $\delta$ and $r$.
+\end{theorem}
+\begin{proof}
+If the assertion held, \eqref{eq:volume} and $\dim F\leq q$ would imply
+$n^D\leq k^D(q+D^2(N_c^2-1))<n$. But $n\geq k\geq3$ and $D\geq2$
+give $n\leq n^D$, a contradiction. The formal growth helper uses ordered
+power monotonicity.
+\end{proof}
+The quantifiers permit local radii and penalty constants to change at
+every $n$. A family with growing observation rank, or a coercivity constant
+tending to zero, is not excluded. The underlying arbitrary-amplitude
+obstruction is stronger than the intended nonnegative specialization;
+the premise $m\geq1$ identifies that class but is not used in the rank
+contradiction itself.
+
+\section{Relation to the mean-budget question}
+The relevant distinction is between an infimum over profiles and a statement
+uniform over every profile with the same mean. The example above rules out
+the latter form of bounded-rank saving. It does not refute the earlier
+infimum-over-profiles scaling argument: a spatially constant repair and a
+concentrated repair have different distributions despite equal means.
+The block-mean upper construction and its tensorized variance estimate
+remain analytic in the current dossier; they are not promoted here to Lean
+endpoints. This appendix consolidates the actual lower-obstruction chain.
+
+Fourier localization, finite-rank perturbations and rank-nullity are
+classical. The uniform theorem is an elementary logical consequence of
+the preceding actual volume inequality. The primary-source dependency
+comparison establishes that it is not an independent new mechanism.
+No exhaustive external priority search or new general spectral principle
+is claimed. Relevance is limited to a precise, reproducible obstruction to
+the proposed mean-only repair route in this finite-flat model.
+
+\section{Formal coverage and reproduction record}
+The declaration map accompanying this PDF supplies full declaration names,
+source revisions, exact code paths, reproduction runs and output hashes.
+The \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/9e6298ef199961ff14e94db3dfd2e297ec931fc6/YangMills/RG}{exact primary code revision}
+is retained independently of the manuscript and its assessment.
+The grouped stages are:
+\begin{enumerate}
+\item Actual support/energy annihilation: proof \texttt{fce61c6f}, runs
+100/100b; the earlier failed 099 pair is retained in the source dossier.
+\item Actual site-gradient identity, repair energy and exact directional
+budget: the same proof revision, runs 101/101b.
+\item Actual coexact combined-map injection and finite-band rank:
+proof \texttt{f9332b26}, runs 102/102b.
+\item Scalar cutoff, integer-tail volume rank and actual nonnegative
+profile: proof \texttt{82f7e201}, runs 103/103b.
+\item Explicit bounded-rank tail: corrected proof \texttt{9e6298ef},
+runs 105/105b. The initial proof \texttt{3281eb95} failed both 104 runs
+at an auxiliary power rewrite; full failed reports and the correction
+are preserved.
+\end{enumerate}
+Every successful pair used fresh own Colab Linux clones at one exact
+source revision, the pinned Lean/Mathlib toolchain, compiler exit records
+and raw axiom reports. Matching output hashes are preparing-agent
+reproduction evidence, not independent scientific review. The current
+family pair has three exact oracle reports, ten source hashes and three
+real evidence-checker mutations rejected in both normal and optimized
+Python. Only \texttt{propext}, \texttt{Classical.choice} and
+\texttt{Quot.sound} occur in its reported axiom lists. No Windows Lean
+or Lake compilation was performed for these units.
+
+The public-candidate package is assembled from an explicit allowlist of
+mathematical sources, reports, validators, this appendix and its map.
+Historical access-state snapshots and credentials are outside it. Its
+assembly and hash checks do not constitute a new Lean run. The package
+still requires ordinary artifact-level publication permissions; it is not
+an AIRR receipt or acceptance.
+
+\section{Model assessments and review context}
+The first identified preparing-agent assessment of the exact PDF belongs
+in a separate complete report, recorded against its SHA256 after all
+rendered pages have been visually inspected. This section reports no
+numerical PDF score and does not pre-approve the artifact. Source-level first
+assessments remain separate: the energy and mean adapters received 5/10;
+finite-band and volume-rank sources received 6/10; the failed family source
+and the corrected family source each have
+their own first 5/10 report and seven objections. The corrected source was
+read and assessed anew; its score was not inherited from the failed one.
+These scores are not a score for this PDF.
+
+The evaluator was the preparing Codex agent. The exact served backend and
+effort were not exposed. There is no evidence of an independent model or
+human peer review, and no editorial acceptance is implied. All full reports,
+objections, failed attempts and review contexts are preserved. No review
+of an unchanged artifact is repeated to improve a score.
+
+The previously frozen 21-page consolidated manuscript, SHA256 beginning
+\texttt{97bdcba4}, remains unchanged with its own first exact-PDF assessment
+and pending artifact-specific publication question. This appendix neither
+inherits that score nor replaces that permission request. It is not a new
+deposit, an accepted article, or evidence for a physical mass gap. PR29
+remains 20/41 and TermSource remains zero; the interacting and continuum
+problems remain open.
+\end{document}
