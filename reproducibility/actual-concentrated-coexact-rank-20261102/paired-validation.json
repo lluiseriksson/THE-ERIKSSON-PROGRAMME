@@ -1,0 +1,49 @@
+{
+  "independent_review": false,
+  "runs": [
+    {
+      "status": "ACTUAL_CONCENTRATED_COEXACT_RANK_VALIDATED",
+      "source_sha": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+      "zip_sha256": "c492f13451e064b102b5ef720aac54dbbea8a144f5fe5587bb53a44e9428c8a1",
+      "manifest_entries": 12,
+      "exit_zero_steps": 9,
+      "oracle_reports": 3,
+      "target_olean_sha256": "ee7b6cb9a9a19659bfa958a9d742eaf73989ff5c3f7acd94e06e61987c581b36",
+      "oracle_log_sha256": "4dc0179c71f7d01ac83c06dd425b49e905a14d90ac7a9309202695fbe2854f0c",
+      "source_manifest_sha256": "63218c7f648051f67e94a86a8e9cf64717e98fd490a686dda00fc4001b2c1334",
+      "started_utc": "2026-11-02T05:16:42.96604+01:00",
+      "finished_utc": "2026-11-02T05:23:18.261935+01:00",
+      "independent_review": false,
+      "scope": "Actual coexact combined observation injection and finite-codimension rank; no supplied band dimension or annihilation certificate",
+      "windows_lean_executed": false
+    },
+    {
+      "status": "ACTUAL_CONCENTRATED_COEXACT_RANK_VALIDATED",
+      "source_sha": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+      "zip_sha256": "354871f0b49316a50616d8bbe2d21bf196467f91ff6c93e01b7488dc40b1eb35",
+      "manifest_entries": 12,
+      "exit_zero_steps": 9,
+      "oracle_reports": 3,
+      "target_olean_sha256": "ee7b6cb9a9a19659bfa958a9d742eaf73989ff5c3f7acd94e06e61987c581b36",
+      "oracle_log_sha256": "4dc0179c71f7d01ac83c06dd425b49e905a14d90ac7a9309202695fbe2854f0c",
+      "source_manifest_sha256": "63218c7f648051f67e94a86a8e9cf64717e98fd490a686dda00fc4001b2c1334",
+      "started_utc": "2026-11-02T05:17:13.358782+01:00",
+      "finished_utc": "2026-11-02T05:23:00.040369+01:00",
+      "independent_review": false,
+      "scope": "Actual coexact combined observation injection and finite-codimension rank; no supplied band dimension or annihilation certificate",
+      "windows_lean_executed": false
+    }
+  ],
+  "uniform_quotient_tail_verified": false,
+  "source_sha": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+  "status": "PAIRED_ACTUAL_COEXACT_RANK_PASS",
+  "target_olean_sha256": "ee7b6cb9a9a19659bfa958a9d742eaf73989ff5c3f7acd94e06e61987c581b36",
+  "source_manifest_sha256": "63218c7f648051f67e94a86a8e9cf64717e98fd490a686dda00fc4001b2c1334",
+  "runtime_release_verified": true,
+  "full_real_fourier_dimension_claim": false,
+  "oracle_log_sha256": "4dc0179c71f7d01ac83c06dd425b49e905a14d90ac7a9309202695fbe2854f0c",
+  "final_visible_available_units": 1765.93,
+  "final_active_sessions": 0,
+  "final_visible_rate_per_hour": 0,
+  "billing": "Visible account reading and recorded driver intervals only; no attributed invoice or VM allocation latency"
+}

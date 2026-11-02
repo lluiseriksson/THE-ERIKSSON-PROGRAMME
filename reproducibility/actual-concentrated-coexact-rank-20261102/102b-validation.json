@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_CONCENTRATED_COEXACT_RANK_VALIDATED",
+  "source_sha": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+  "zip_sha256": "354871f0b49316a50616d8bbe2d21bf196467f91ff6c93e01b7488dc40b1eb35",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 3,
+  "target_olean_sha256": "ee7b6cb9a9a19659bfa958a9d742eaf73989ff5c3f7acd94e06e61987c581b36",
+  "oracle_log_sha256": "4dc0179c71f7d01ac83c06dd425b49e905a14d90ac7a9309202695fbe2854f0c",
+  "source_manifest_sha256": "63218c7f648051f67e94a86a8e9cf64717e98fd490a686dda00fc4001b2c1334",
+  "started_utc": "2026-11-02T04:17:13.3587820+00:00",
+  "finished_utc": "2026-11-02T04:23:00.0403690+00:00",
+  "independent_review": false,
+  "scope": "Actual coexact combined observation injection and finite-codimension rank; no supplied band dimension or annihilation certificate",
+  "windows_lean_executed": false
+}
