@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_CONCENTRATED_REPAIR_VALIDATED",
+  "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+  "zip_sha256": "0cf69be6abacdd8d9f5a6103baed9130b4e477491e7a53df3680e6997dcfdf9a",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 3,
+  "target_olean_sha256": "fa0d13838f57384a5ebb687d73c42fe40c7bb02f5a0a2a9eaa5640767167dbb5",
+  "oracle_log_sha256": "100e55c0f5f116556f6f94b4adf6513ab4b289ae9fed6fe3b8503b4ba7d307e7",
+  "source_manifest_sha256": "6e38800edf4fbccad16f22f5ac5239557fb4d0a34bbc9119cbb09f125dfec8a3",
+  "started_utc": "2026-11-02T02:49:49.1201890+00:00",
+  "finished_utc": "2026-11-02T02:54:19.1140630+00:00",
+  "independent_review": false,
+  "scope": "Actual concentrated repair positivity and energy identity on the actual origin-difference kernel only; no full rank theorem",
+  "windows_lean_executed": false
+}

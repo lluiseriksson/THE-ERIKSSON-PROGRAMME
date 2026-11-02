@@ -1,0 +1,49 @@
+{
+  "runtime_release_verified": true,
+  "oracle_log_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873",
+  "runs": [
+    {
+      "status": "ACTUAL_CONCENTRATED_REPAIR_MEAN_VALIDATED",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "zip_sha256": "b4ecbd168d42c1e3e224bc4cbf8d07d45e4e592dfb90b1032fffa2cafd1b77bf",
+      "manifest_entries": 12,
+      "exit_zero_steps": 9,
+      "oracle_reports": 4,
+      "target_olean_sha256": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+      "oracle_log_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873",
+      "source_manifest_sha256": "858431c6bf942dc06ef2aa155c4283209754c2a8432e5ad822fd194c135e7896",
+      "started_utc": "2026-11-02T04:42:39.364219+01:00",
+      "finished_utc": "2026-11-02T04:48:39.87905+01:00",
+      "independent_review": false,
+      "scope": "Actual site-map reuse, concentrated energy and positive-total exact budget only; no full rank theorem",
+      "windows_lean_executed": false
+    },
+    {
+      "status": "ACTUAL_CONCENTRATED_REPAIR_MEAN_VALIDATED",
+      "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+      "zip_sha256": "0373d9cea76c21382f9bde28dd913678ec3f88896d7dd48426a15d9d6bd0b0b0",
+      "manifest_entries": 12,
+      "exit_zero_steps": 9,
+      "oracle_reports": 4,
+      "target_olean_sha256": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+      "oracle_log_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873",
+      "source_manifest_sha256": "858431c6bf942dc06ef2aa155c4283209754c2a8432e5ad822fd194c135e7896",
+      "started_utc": "2026-11-02T04:42:50.926852+01:00",
+      "finished_utc": "2026-11-02T04:48:06.003053+01:00",
+      "independent_review": false,
+      "scope": "Actual site-map reuse, concentrated energy and positive-total exact budget only; no full rank theorem",
+      "windows_lean_executed": false
+    }
+  ],
+  "source_manifest_sha256": "858431c6bf942dc06ef2aa155c4283209754c2a8432e5ad822fd194c135e7896",
+  "full_rank_theorem_verified": false,
+  "stage1_evidence": "OwnColab100/100b same prooffce61c6f; separate3target oracle",
+  "status": "PAIRED_STAGE2_FOCAL_PASS",
+  "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+  "independent_review": false,
+  "target_olean_sha256": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+  "final_visible_available_units": 1765.95,
+  "final_active_sessions": 0,
+  "final_visible_rate_per_hour": 0,
+  "billing": "Visible account reading only; no exact attributed invoice or allocation/release latency inferred"
+}

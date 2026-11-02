@@ -1,0 +1,4 @@
+import YangMills.RG.ActualConcentratedRepair
+#print axioms YangMills.RG.actualConcentrated_weight_nonneg
+#print axioms YangMills.RG.actualConcentrated_repair_energy_zero
+#print axioms YangMills.RG.actualConcentrated_total_energy_on_kernel
