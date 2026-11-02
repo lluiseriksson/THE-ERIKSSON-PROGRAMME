@@ -1,0 +1,9 @@
+{
+  "zero_exit_steps": 9,
+  "independent_review": false,
+  "source_sha": "660c50b3846fd818392d7cbc467106cd663fd15b",
+  "target_olean_sha256": "a3f76dc3bd770753df95430d6676b59c735d5b9066df7476b3ed067b1fa5a83d",
+  "status": "FOCAL_REPRODUCTION_PASS",
+  "manifested_files_rehashed": 12,
+  "targets": 5
+}
