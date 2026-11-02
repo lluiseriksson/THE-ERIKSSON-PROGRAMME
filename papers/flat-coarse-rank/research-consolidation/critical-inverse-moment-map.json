@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "public_code_revision": "3c4849b58438310b0b2799bb11dea7d98841d808",
+  "tex_sha256_lf": "184b218489f167489d40172a4680591120c864ca272fe972e7c06ca6fea5b307",
+  "formal_hodge_source": "dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc",
+  "critical_source": "527fcdcd119a056e7ea188cd50e33421a663125d",
+  "dyadic_source": "fb65a67af360441025ce1e4f98ad43ccca0202ce",
+  "fixture_pin": "4bb460e1537ed2f0bdc8b845b9c0304cfe3128c7",
+  "diagnostic_report_head": "602ae3f0b59aa6b7c8cf64ffd340eb79c35a6ae5",
+  "new_lean_execution": false,
+  "independent_review": false,
+  "private_access_state_included": false,
+  "allowlist": {
+    "reproducibility/mean-budget-order-20261101/global-reciprocal-mean-trap-refutation.md": "c4b7c3035211269e3b0703bcec975c10941c88149087d0c1c06ae159a1520716",
+    "reproducibility/mean-budget-order-20261101/higher-inverse-moment-adaptive-upper.md": "67567512ea225fdcf26f4237bb3bcb86dc7ba261a416490b79df35dc8204bbe7",
+    "reproducibility/mean-budget-order-20261101/critical-inverse-moment-spectral-threshold.md": "18098c172a4fed841ce929932e50f0e517f93805788ef49af75731a4ccb38629",
+    "reproducibility/mean-budget-order-20261101/critical-dyadic-partition-obstruction.md": "46856afe0ce26079ccb8aae3021af8a700bb291dda9223bf717dd4469b1fa053",
+    "reproducibility/mean-budget-order-20261101/internal-resistance-fixed-profile-upper.md": "5f87ceb4a60ce4a4698530dde76cb409dc7e1fc788bae8c7a3f41ac6f75afb97",
+    "reproducibility/critical-fourier-fixtures-20261102/exact-fixtures.py": "11db01f92651edd6497f80ef28b3a4dd69c9a7ab90769f4edc00ff0e33462f45",
+    "reproducibility/critical-fourier-fixtures-20261102/diagnostics109.py": "3880aae65d2ce2c8080a2a55f1be4ec6ab05a40cde26e759e26b7a931d954ff2",
+    "reproducibility/critical-fourier-fixtures-20261102/diagnostics109.ipynb": "7f17b6a333365b295ed7689676e9f58445c50d17c64bd25a3cf88a7f88bb859a",
+    "reproducibility/critical-fourier-fixtures-20261102/109-report.json": "a976d20b8615113c88e867d8872f4f608f5a4352fa9f8b30726606b4c2d8e5f5",
+    "reproducibility/critical-fourier-fixtures-20261102/109-validation.json": "4c828b0a15b611a73e8d1409d015222c8a56bee5da63e356e2736cd204d3f843",
+    "reproducibility/critical-fourier-fixtures-20261102/109-full-evidence.zip": "1c433591db41963cc76d9fa3b4cfdf587f314649fd19fc263010016b76d54ec8",
+    "reproducibility/critical-fourier-fixtures-20261102/README.md": "b8e541245cf6fd2ab73f8f4c6c2f3fb155e276165920cd8a04c0c834a3136d0c"
+  }
+}
