@@ -1,0 +1,21 @@
+{
+  "objections": [
+    "O1 Finite-band rank with explicit scalar gap only; quotient-tail and infinite-volume statements not yet instantiated.",
+    "O2 Uses the existing selected coexact family, not full real Fourier/divergence dimension or a sharp maximal band.",
+    "O3 Original differentiability, quadratic penalty control, positive neighbourhoods and strict gap remain explicit.",
+    "O4 Positive-total budget/nonnegative profile link retains separate accepted adapters; no physical hypothesis removed.",
+    "O5 Combined injection and rank-nullity are classical mechanisms; originality/priority and paper-level relevance unestablished.",
+    "O6 Same preparing agent with full context is not independent/blind/model peer review; actual backend/effort unexposed.",
+    "O7 No interacting/continuum mass gap, inherited PDF score, publication or editorial acceptance claimed."
+  ],
+  "new_exact_pdf": false,
+  "artifact": "ActualConcentratedCoexactRank.lean and exact source context",
+  "inherited_grade": false,
+  "independent": false,
+  "scale": 10,
+  "proof_source": "f9332b260dd4996a22b8b6b73a25a6b5ee607cf2",
+  "score": 6,
+  "context": "Current exact source with paired102/102b logs; prior energy/mean reports and original nonlinear hypotheses available",
+  "first_assessment": true,
+  "reviewer": "Preparing Codex agent; actual served backend/effort unexposed"
+}
