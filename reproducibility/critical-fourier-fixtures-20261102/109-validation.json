@@ -1,0 +1,61 @@
+{
+  "archive_sha256": "1c433591db41963cc76d9fa3b4cfdf587f314649fd19fc263010016b76d54ec8",
+  "inner_manifest_files": 8,
+  "entries": 9,
+  "all_inner_hashes_match": true,
+  "driver_matches": true,
+  "fixture_matches": true,
+  "status": "EXACT_FINITE_DIAGNOSTICS_PASS",
+  "accepted_each": 4,
+  "rejected_each": 16,
+  "checks": [
+    {
+      "file": "exact-fixtures.py",
+      "expected": "11db01f92651edd6497f80ef28b3a4dd69c9a7ab90769f4edc00ff0e33462f45",
+      "actual": "11db01f92651edd6497f80ef28b3a4dd69c9a7ab90769f4edc00ff0e33462f45",
+      "matches": true
+    },
+    {
+      "file": "normal.stderr.txt",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "file": "normal.stdout.txt",
+      "expected": "fc99a2e20aa8e627cba53b5b151ddd39f4f6110ddd6228f6538b29543434fb59",
+      "actual": "fc99a2e20aa8e627cba53b5b151ddd39f4f6110ddd6228f6538b29543434fb59",
+      "matches": true
+    },
+    {
+      "file": "optimized.stderr.txt",
+      "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "file": "optimized.stdout.txt",
+      "expected": "69b60ebffb907a627e0661c587b5cceb8c1ebd540608af3618c20150e8c4f01d",
+      "actual": "69b60ebffb907a627e0661c587b5cceb8c1ebd540608af3618c20150e8c4f01d",
+      "matches": true
+    },
+    {
+      "file": "python-version.txt",
+      "expected": "c65f863321652dc52c6deeea13b7fc21209acd20557084f3df01a176b4e8107e",
+      "actual": "c65f863321652dc52c6deeea13b7fc21209acd20557084f3df01a176b4e8107e",
+      "matches": true
+    },
+    {
+      "file": "recipe109.py",
+      "expected": "3880aae65d2ce2c8080a2a55f1be4ec6ab05a40cde26e759e26b7a931d954ff2",
+      "actual": "3880aae65d2ce2c8080a2a55f1be4ec6ab05a40cde26e759e26b7a931d954ff2",
+      "matches": true
+    },
+    {
+      "file": "report.json",
+      "expected": "a976d20b8615113c88e867d8872f4f608f5a4352fa9f8b30726606b4c2d8e5f5",
+      "actual": "a976d20b8615113c88e867d8872f4f608f5a4352fa9f8b30726606b4c2d8e5f5",
+      "matches": true
+    }
+  ]
+}
