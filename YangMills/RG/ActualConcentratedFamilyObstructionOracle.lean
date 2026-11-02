@@ -1,0 +1,4 @@
+import YangMills.RG.ActualConcentratedFamilyObstruction
+#print axioms YangMills.RG.actualConcentrated_volume_dominates_side
+#print axioms YangMills.RG.actualConcentrated_bounded_rank_obstruction
+#print axioms YangMills.RG.actualConcentrated_uniform_bounded_rank_tail
