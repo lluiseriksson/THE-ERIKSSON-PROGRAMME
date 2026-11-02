@@ -39,12 +39,13 @@ theorem actualConcentrated_repair_energy_zero (x0 : FinBox d n) (b : ℝ)
   rw [componentwiseWeightedRepair_energy]
   apply Finset.sum_eq_zero
   intro p _
-  by_cases hp : p.2.1 = x0
-  · have h := congrArg (fun f : Fin d × Fin d → SUNLieCoord Nc => f (p.1, p.2.2)) hA
-    change A (x0.shift p.1, p.2.2) - A (x0, p.2.2) = 0 at h
-    have hd : A (p.2.1.shift p.1, p.2.2) - A p.2 = 0 := by simpa only [hp] using h
-    simp [hd]
-  · simp [actualConcentratedWeight, hp]
+  rcases p with ⟨i, x, j⟩
+  by_cases hx : x = x0
+  · subst x
+    have h := congrArg (fun f : Fin d × Fin d → SUNLieCoord Nc => f (i, j)) hA
+    change A (x0.shift i, j) - A (x0, j) = 0 at h
+    simp [h]
+  · simp [actualConcentratedWeight, hx]
 
 theorem actualConcentrated_total_energy_on_kernel (rho : SUNAdjointModel Nc)
     (x0 : FinBox d n) (b : ℝ) (A : PhysicalGaugeOneCochain d n Nc)
