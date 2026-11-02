@@ -1,0 +1,12 @@
+{
+  "accepted_each": 6,
+  "source_sha": "1eb91fd91087b4ab521d449bf105debf5f7c1e99",
+  "real_mutations_rejected_each": 18,
+  "driver_sha256": "763c8a31953ba147f1b50c572100e7ccfbf743d8080dd88a7d42bace713e72da",
+  "new_lean_run": false,
+  "normal_optimized_fixture_results_match": true,
+  "zip_sha256": "6aa7f7c538f71836c11fa059fd45c02f9003b30b52acd756ab522f67e41e5fdc",
+  "fixture_sha256": "b318522bb1e0a6847adbbebc8ac754b865427cd6267e0450eecd20f2d54d1e83",
+  "manifested_files_rehashed": 8,
+  "general_theorem_verified": false
+}
