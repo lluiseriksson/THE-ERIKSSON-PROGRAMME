@@ -1,0 +1,504 @@
+{
+  "run": "109",
+  "started_utc": "2026-11-02T17:13:06.300923+00:00",
+  "status": "EXACT_FINITE_DIAGNOSTICS_PASS",
+  "fixture_source_sha": "4bb460e1537ed2f0bdc8b845b9c0304cfe3128c7",
+  "fixture_sha256": "11db01f92651edd6497f80ef28b3a4dd69c9a7ab90769f4edc00ff0e33462f45",
+  "general_theorem_verified": false,
+  "new_lean_run": false,
+  "independent_review": false,
+  "terminal_reproduction": false,
+  "steps": [
+    {
+      "mode": "normal",
+      "exit_code": 0
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 0
+    }
+  ],
+  "fixtures": [
+    {
+      "mean": "1",
+      "critical_moment": "1",
+      "comparison_inertia": [
+        0,
+        0,
+        16
+      ],
+      "weak_frequency": [
+        "1/256",
+        "1/256",
+        "1/256",
+        "1/256"
+      ],
+      "density_checks": [
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "10988146946849/251328272919552"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "54874329355/5616672482304"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        }
+      ],
+      "counts": [
+        {
+          "c": "1/2",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bound": "973"
+        },
+        {
+          "c": "4",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "bound": "62209"
+        },
+        {
+          "c": "10",
+          "low": 11,
+          "inverse_count": 10,
+          "sum_count": 10,
+          "component_counts": [
+            7,
+            7,
+            7,
+            7
+          ],
+          "bound": "388801"
+        },
+        {
+          "c": "40",
+          "low": 16,
+          "inverse_count": 15,
+          "sum_count": 15,
+          "component_counts": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "bound": "6220801"
+        }
+      ]
+    },
+    {
+      "mean": "4",
+      "critical_moment": "1",
+      "comparison_inertia": [
+        0,
+        0,
+        16
+      ],
+      "weak_frequency": [
+        "1/256",
+        "1/256",
+        "1/256",
+        "1/256"
+      ],
+      "density_checks": [
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "10988146946849/251328272919552"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "54874329355/5616672482304"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        }
+      ],
+      "counts": [
+        {
+          "c": "1/2",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bound": "247/4"
+        },
+        {
+          "c": "4",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bound": "3889"
+        },
+        {
+          "c": "10",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "bound": "24301"
+        },
+        {
+          "c": "40",
+          "low": 11,
+          "inverse_count": 10,
+          "sum_count": 10,
+          "component_counts": [
+            7,
+            7,
+            7,
+            7
+          ],
+          "bound": "388801"
+        }
+      ]
+    },
+    {
+      "mean": "17/2",
+      "critical_moment": "289/54",
+      "comparison_inertia": [
+        4,
+        0,
+        12
+      ],
+      "weak_frequency": [
+        "1/256",
+        "1/256",
+        "1/256",
+        "1/256"
+      ],
+      "density_checks": [
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "10988146946849/251328272919552"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "54874329355/5616672482304"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        }
+      ],
+      "counts": [
+        {
+          "c": "1/2",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bound": "73"
+        },
+        {
+          "c": "4",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bound": "4609"
+        },
+        {
+          "c": "10",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "bound": "28801"
+        },
+        {
+          "c": "40",
+          "low": 5,
+          "inverse_count": 4,
+          "sum_count": 4,
+          "component_counts": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "bound": "460801"
+        }
+      ]
+    },
+    {
+      "mean": "5/2",
+      "critical_moment": "425/128",
+      "comparison_inertia": [
+        15,
+        0,
+        1
+      ],
+      "weak_frequency": [
+        "1/256",
+        "1/256",
+        "1/256",
+        "1/256"
+      ],
+      "density_checks": [
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "10988146946849/251328272919552"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "54874329355/5616672482304"
+        },
+        {
+          "trace": "4",
+          "lower": "10609/110592"
+        },
+        {
+          "trace": "1",
+          "lower": "466335211/7919576064"
+        },
+        {
+          "trace": "1",
+          "lower": "1715255915297/80236836154368"
+        }
+      ],
+      "counts": [
+        {
+          "c": "1/2",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "bound": "4139/8"
+        },
+        {
+          "c": "4",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 0,
+          "component_counts": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "bound": "33049"
+        },
+        {
+          "c": "10",
+          "low": 1,
+          "inverse_count": 0,
+          "sum_count": 4,
+          "component_counts": [
+            4,
+            4,
+            4,
+            4
+          ],
+          "bound": "206551"
+        },
+        {
+          "c": "40",
+          "low": 15,
+          "inverse_count": 14,
+          "sum_count": 15,
+          "component_counts": [
+            8,
+            8,
+            8,
+            8
+          ],
+          "bound": "3304801"
+        }
+      ]
+    }
+  ],
+  "accepted_each": 4,
+  "real_mutations_rejected_each": 16,
+  "mode_fixture_outputs_match": true,
+  "finished_utc": "2026-11-02T17:13:16.201862+00:00",
+  "colab_gpu_env": ""
+}
