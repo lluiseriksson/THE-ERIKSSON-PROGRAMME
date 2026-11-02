@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$Zip,[Parameter(Mandatory=$true)][string]$Output,[string]$Source='3281eb956ac3d4e5135cf2011c3902b4766ece1a')
+param([Parameter(Mandatory=$true)][string]$Zip,[Parameter(Mandatory=$true)][string]$Output,[string]$Source='9e6298ef199961ff14e94db3dfd2e297ec931fc6')
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $z=[IO.Compression.ZipFile]::OpenRead($Zip)
@@ -6,6 +6,8 @@ function ReadEntry([string]$name){$entry=$z.GetEntry($name);if($null -eq $entry)
 try {
  $m=ReadEntry 'manifest.json'|ConvertFrom-Json -AsHashtable -DateKind String
  foreach($name in $m.Keys){$entry=$z.GetEntry($name);if($null -eq $entry){throw "Missing $name"};$stream=$entry.Open();try{$hash=[Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($stream)).ToLowerInvariant()}finally{$stream.Dispose()};if($hash -ne $m[$name]){throw "Manifest mismatch $name"}}
+ $sources=@(ReadEntry 'source-hashes.json'|ConvertFrom-Json)
+ if($sources.Count -ne 10 -or @($sources|Where-Object {-not $_.matches -or $_.sha256_lf -ne $_.expected -or $_.sha256_lf -notmatch '^[a-f0-9]{64}$'}).Count){throw 'Ten exact source hash checks required'}
  $r=ReadEntry 'report.json'|ConvertFrom-Json
  if($r.status -ne 'FOCAL_REPRODUCTION_PASS' -or $r.source_sha -ne $Source){throw 'Wrong source or verdict'}
  if(@($r.steps|Where-Object exit_code -ne 0).Count -ne 0){throw 'Nonzero step'}

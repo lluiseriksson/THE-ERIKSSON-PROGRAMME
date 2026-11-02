@@ -1,0 +1,61 @@
+{
+  "bundle_integrity": "MANIFEST_VALIDATED_ONLY",
+  "mathematical_pass": false,
+  "source_sha": "3281eb956ac3d4e5135cf2011c3902b4766ece1a",
+  "status": "FAIL",
+  "zip_sha256": "4a0094d5db1752cecfdf86edd381c70a0488420b39b3f5c8aa0943372a12569e",
+  "manifest_entries": 12,
+  "error": "focal-build failed: ter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeFullTailDensity.lean:116:9: unused variable `hw`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeFullTailDensity.lean:120:9: unused variable `hC`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeFullTailDensity.lean:120:34: unused variable `hC0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeFullTailDensity.lean:121:30: unused variable `hdelta`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeFullTailDensity.lean:121:51: unused variable `hradius`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeFullTailDensity.lean:122:9: unused variable `hPhi`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualVolumeFullTailDensity.lean:123:9: unused variable `hlocal`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n✔ [8216/8217] Built YangMills.RG.ActualConcentratedVolumeRank (7.3s)\n✖ [8217/8217] Building YangMills.RG.ActualConcentratedFamilyObstruction (5.3s)\ntrace: .> LEAN_PATH=/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/Cli/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/batteries/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/Qq/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/aesop/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/proofwidgets/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/importGraph/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/plausible/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/packages/mathlib/.lake/build/lib/lean:/content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/build/lib/lean /root/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /content/eriksson-actual-concentrated-family-obstruction-20261101-104b/YangMills/RG/ActualConcentratedFamilyObstruction.lean -o /content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/build/lib/lean/YangMills/RG/ActualConcentratedFamilyObstruction.olean -i /content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/build/lib/lean/YangMills/RG/ActualConcentratedFamilyObstruction.ilean -c /content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/build/ir/YangMills/RG/ActualConcentratedFamilyObstruction.c --setup /content/eriksson-actual-concentrated-family-obstruction-20261101-104b/.lake/build/ir/YangMills/RG/ActualConcentratedFamilyObstruction.setup.json --json\nerror: YangMills/RG/ActualConcentratedFamilyObstruction.lean:17:28: unsolved goals\nn : ℕ\nhn : 1 ≤ n\nd : ℕ\nih : n ≤ n ^ (d + 2)\n⊢ n ^ (d + 1) * n * n = n ^ (d + 2 + 1)\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:54:28: unused variable `hn`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:56:9: unused variable `hdim`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:56:66: unused variable `hm`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:59:9: unused variable `hC`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:59:34: unused variable `hC0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:60:30: unused variable `hdelta`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:60:51: unused variable `hradius`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nwarning: YangMills/RG/ActualConcentratedFamilyObstruction.lean:61:9: unused variable `hPhi`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nerror: Lean exited with code 1\nSome required targets logged failures:\n- YangMills.RG.ActualConcentratedFamilyObstruction\nerror: build failed\n",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit_code": 0,
+      "seconds": 1.218,
+      "log": "install-elan.log"
+    },
+    {
+      "name": "git-init",
+      "exit_code": 0,
+      "seconds": 0.066,
+      "log": "git-init.log"
+    },
+    {
+      "name": "git-remote",
+      "exit_code": 0,
+      "seconds": 0.008,
+      "log": "git-remote.log"
+    },
+    {
+      "name": "git-fetch",
+      "exit_code": 0,
+      "seconds": 4.228,
+      "log": "git-fetch.log"
+    },
+    {
+      "name": "git-checkout",
+      "exit_code": 0,
+      "seconds": 1.168,
+      "log": "git-checkout.log"
+    },
+    {
+      "name": "lean-version",
+      "exit_code": 0,
+      "seconds": 21.295,
+      "log": "lean-version.log"
+    },
+    {
+      "name": "cache-get",
+      "exit_code": 0,
+      "seconds": 99.894,
+      "log": "cache-get.log"
+    },
+    {
+      "name": "focal-build",
+      "exit_code": 1,
+      "seconds": 300.802,
+      "log": "focal-build.log"
+    }
+  ],
+  "started_utc": "2026-11-02T05:54:08.084469+00:00",
+  "finished_utc": "2026-11-02T06:01:17.082848+00:00"
+}

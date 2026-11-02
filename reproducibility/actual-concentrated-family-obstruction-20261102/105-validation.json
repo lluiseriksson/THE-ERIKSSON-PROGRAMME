@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_CONCENTRATED_FAMILY_OBSTRUCTION_VALIDATED",
+  "source_sha": "9e6298ef199961ff14e94db3dfd2e297ec931fc6",
+  "zip_sha256": "1ccdb1b9a5ec8953028ad14ae606bfe2c41235ca7a5ee33dd78a798bfcba1a56",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 3,
+  "target_olean_sha256": "afe931101eb923176e364dbbea3fed01d7ea317d3014d1660edcb5fada1e4469",
+  "oracle_log_sha256": "a7834003dbc54a0cf00c50f5f427e5c1e98ce02365d0ac26b41a0789c4b4eaeb",
+  "source_manifest_sha256": "525fc528b47d1df9dce4e2be817a2c37c3e4585222dfe61fd2d1d40620985db9",
+  "started_utc": "2026-11-02T06:14:11.8162830+00:00",
+  "finished_utc": "2026-11-02T06:21:56.4347840+00:00",
+  "independent_review": false,
+  "scope": "Uniform bounded observation-rank tail obstruction from original local nonlinear data; explicit nonnegative profile parameterization",
+  "windows_lean_executed": false
+}
