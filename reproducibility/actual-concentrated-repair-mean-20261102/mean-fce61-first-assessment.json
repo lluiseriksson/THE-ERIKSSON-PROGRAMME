@@ -1,0 +1,22 @@
+{
+  "objections": [
+    "O1 Four actual adapter endpoints only, not the full nonlinear fixed-profile rank counterexample.",
+    "O2 Full actual Fourier/divergence dimension and finite-codimension lower bound still need formal proofs.",
+    "O3 Site-gradient construction and finite-sum identities reuse existing work; no new independent-map novelty.",
+    "O4 Positive-total budget covers nonnegative amplitude andm>=1; no transfer to unrestricted signed or physical hypotheses.",
+    "O5 Core mechanisms classical; originality/priority and paper-level relevance remain unestablished.",
+    "O6 No interacting/continuum mass gap, PR29 change or TermSource producer follows.",
+    "O7 Preparing-agent grade and clone reproductions are not independent peer review, PDF assessment, publication or acceptance."
+  ],
+  "independent": false,
+  "artifact": "ActualConcentratedRepairMean.lean with corrected dependencies at prooffce61c6f",
+  "first_assessment": true,
+  "score": 5,
+  "context": "Current exact Mean source/dependency snapshot with paired101 reports; earlier24b candidate assessment preserved, not reused as this evaluation",
+  "reviewer": "Preparing Codex agent; actual served backend/effort unexposed",
+  "exact_source_manifest": "858431c6bf942dc06ef2aa155c4283209754c2a8432e5ad822fd194c135e7896",
+  "scale": 10,
+  "pdf_grade_inherited": false,
+  "proof_source": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+  "new_exact_pdf": false
+}

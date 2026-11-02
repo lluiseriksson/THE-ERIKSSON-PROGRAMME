@@ -1,0 +1,16 @@
+{
+  "status": "ACTUAL_CONCENTRATED_REPAIR_MEAN_VALIDATED",
+  "source_sha": "fce61c6fcd686b5f0863a13aad2f59aef2a1b714",
+  "zip_sha256": "0373d9cea76c21382f9bde28dd913678ec3f88896d7dd48426a15d9d6bd0b0b0",
+  "manifest_entries": 12,
+  "exit_zero_steps": 9,
+  "oracle_reports": 4,
+  "target_olean_sha256": "af02fbb9dd1673edd3d322df811a58d3071a0cadbec5a54b9a9033930e53f740",
+  "oracle_log_sha256": "550f44941b85bd2c7113672f0e3ccc96ddb4e128c8a83de6607a08970533f873",
+  "source_manifest_sha256": "858431c6bf942dc06ef2aa155c4283209754c2a8432e5ad822fd194c135e7896",
+  "started_utc": "2026-11-02T03:42:50.9268520+00:00",
+  "finished_utc": "2026-11-02T03:48:06.0030530+00:00",
+  "independent_review": false,
+  "scope": "Actual site-map reuse, concentrated energy and positive-total exact budget only; no full rank theorem",
+  "windows_lean_executed": false
+}
