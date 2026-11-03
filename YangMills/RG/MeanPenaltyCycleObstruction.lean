@@ -14,7 +14,11 @@ noncomputable section
 abbrev Field := Fin 4 → ℝ
 
 def weight (i : Fin 4) : ℝ :=
-  if i = 0 then 1 else if i = 1 then 6 else if i = 2 then 4 else 1
+  match i.val with
+  | 0 => 1
+  | 1 => 6
+  | 2 => 4
+  | _ => 1
 
 def energy (u : Field) : ℝ :=
   (u 1 - u 0)^2 + 6 * (u 2 - u 1)^2 +
@@ -35,7 +39,10 @@ def meanProjection (u : Field) : Field :=
     (u 2 + u 3) / 2, (u 2 + u 3) / 2]
 
 def witness (i : Fin 4) : ℝ :=
-  if i = 0 then 19 / 14 else if i = 1 then -9 / 14 else -5 / 14
+  match i.val with
+  | 0 => 19 / 14
+  | 1 => -9 / 14
+  | _ => -5 / 14
 
 theorem weights_admissible :
     (weight 0 + weight 1 + weight 2 + weight 3) / 4 = 3 ∧
@@ -100,5 +107,7 @@ theorem fixed_penalty_coercivity_false :
   have hw := h witness
   have hd := witness_negative_defect
   linarith
+
+end
 
 end YangMills.RG.MeanPenaltyCycleObstruction
