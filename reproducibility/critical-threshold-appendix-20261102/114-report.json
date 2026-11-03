@@ -1,0 +1,58 @@
+{
+  "run": "114",
+  "started_utc": "2026-11-03T15:20:24.177287+00:00",
+  "source_sha": "c1d7a256591ec371e13663e00da594ad0836bcb0",
+  "status": "PDF_RENDERED_AWAITING_FIRST_VISUAL_REVIEW",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 4.212
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 69.383
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.674
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.68
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.042
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.073
+    },
+    {
+      "name": "pdftoppm",
+      "exit_code": 0,
+      "seconds": 2.128
+    }
+  ],
+  "new_lean_run": false,
+  "independent_review": false,
+  "artifact_marker": "Official bundled marker executed exactly once on host immediately before TeX authoring",
+  "allowlist_count": 12,
+  "diagnostic_inner_hashes_rechecked": 8,
+  "pages": 7,
+  "pdf_sha256": "36c4c125a59bf79047267ffd59f1a6e922b76cde9f345765f9b13d87dda3aeb9",
+  "tex_sha256": "fbe8e44df56f55281890825dbf0f706a00b3b320bf00048fc401c0eb3b79b0b2",
+  "map_sha256": "0c74852e4174097fb771129032fc0d9b0954edb5328354b79eb42e67e8f5047b",
+  "driver_sha256": "4958addde20f213b8cfd8b814925cabc900671a5374d66f7c9ea52626c9990c9",
+  "layout_warnings": [],
+  "public_package_entries": 19,
+  "public_package_sha256": "756601bcda0fa8a0209064d69550ff1fbff04203fd052d1208dda4f26f8b8b8c",
+  "finished_utc": "2026-11-03T15:21:43.006087+00:00",
+  "colab_gpu_env": ""
+}

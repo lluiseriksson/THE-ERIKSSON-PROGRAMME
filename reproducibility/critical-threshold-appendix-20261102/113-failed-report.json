@@ -1,0 +1,13 @@
+{
+  "run": "113",
+  "started_utc": "2026-11-03T15:16:13.950550+00:00",
+  "source_sha": "c1d7a256591ec371e13663e00da594ad0836bcb0",
+  "status": "FAIL",
+  "steps": [],
+  "new_lean_run": false,
+  "independent_review": false,
+  "artifact_marker": "Official bundled marker executed exactly once on host immediately before TeX authoring",
+  "error": "ValueError('Map hash mismatch')",
+  "finished_utc": "2026-11-03T15:16:14.414709+00:00",
+  "colab_gpu_env": ""
+}
