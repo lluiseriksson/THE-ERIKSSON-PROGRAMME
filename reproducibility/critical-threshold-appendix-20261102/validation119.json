@@ -1,0 +1,6 @@
+{
+  "status": "FAILURE_FULLY_PRESERVED",
+  "manifest_files": 3,
+  "error": "Map hash mismatch: rawCRLF preparation hash versus normalizedLF check",
+  "sha256": "30169d01af259c5bc2095653cec300046d99f3218c6c819deed282a972253f17"
+}
