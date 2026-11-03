@@ -1,0 +1,349 @@
+{
+  "accepted_each": 10,
+  "colab_gpu_environment": "",
+  "finished_utc": "2026-11-03T23:03:41.573111+00:00",
+  "general_rectangular_theorem": false,
+  "independent_review": false,
+  "new_lean_run": true,
+  "physical_embedding_verified": false,
+  "products": [
+    {
+      "clone": "fresh_a",
+      "olean_sha256": "5ac803d0c9ae015c22b5921cc65599ceda668577761dc1ad5ac740532a8760d4",
+      "oracle_sha256": "d1b2c71a4236342b67f9750fb0af9607ff3909516b6b77a16e67c836e8077643",
+      "rows": [
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.weights_admissible"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.energy_from_actual_weights"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.observedSq_eq_output"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.normalized_mean_norm"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.orthogonal_mean_decomposition"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_square_identity"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_coercive"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_exact_values"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_negative_defect"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.fixed_penalty_coercivity_false"
+        }
+      ]
+    },
+    {
+      "clone": "fresh_b",
+      "olean_sha256": "5ac803d0c9ae015c22b5921cc65599ceda668577761dc1ad5ac740532a8760d4",
+      "oracle_sha256": "d1b2c71a4236342b67f9750fb0af9607ff3909516b6b77a16e67c836e8077643",
+      "rows": [
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.weights_admissible"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.energy_from_actual_weights"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.observedSq_eq_output"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.normalized_mean_norm"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.orthogonal_mean_decomposition"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_square_identity"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_coercive"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_exact_values"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_negative_defect"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.fixed_penalty_coercivity_false"
+        }
+      ]
+    }
+  ],
+  "run": "118",
+  "scope": "FINITE_FOUR_CYCLE_ONLY",
+  "source_sha": "41f8492c619000b932778c67f3196fccee6a12d1",
+  "started_utc": "2026-11-03T22:58:57.002727+00:00",
+  "status": "FOCAL_LEAN_PAIRED_ORACLE_PASS",
+  "steps": [
+    {
+      "exit_code": 0,
+      "name": "install_elan",
+      "seconds": 0.767
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_init",
+      "seconds": 0.066
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_remote",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_config_core.autocrlf",
+      "seconds": 0.004
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_config_core.sparseCheckout",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_config_remote.origin.promisor",
+      "seconds": 0.004
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_config_remote.origin.partialclonefilter",
+      "seconds": 0.004
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_fetch",
+      "seconds": 1.369
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_checkout",
+      "seconds": 0.466
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_source",
+      "seconds": 0.004
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_lean_version",
+      "seconds": 12.555
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_cache_get",
+      "seconds": 84.614
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_build",
+      "seconds": 68.95
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_oracle",
+      "seconds": 8.593
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_validator_normal",
+      "seconds": 0.065
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_a_validator_optimized",
+      "seconds": 0.216
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_init",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_remote",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_config_core.autocrlf",
+      "seconds": 0.004
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_config_core.sparseCheckout",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_config_remote.origin.promisor",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_config_remote.origin.partialclonefilter",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_fetch",
+      "seconds": 0.717
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_checkout",
+      "seconds": 0.466
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_source",
+      "seconds": 0.005
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_lean_version",
+      "seconds": 0.065
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_cache_get",
+      "seconds": 86.817
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_build",
+      "seconds": 10.346
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_oracle",
+      "seconds": 8.142
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_validator_normal",
+      "seconds": 0.033
+    },
+    {
+      "exit_code": 0,
+      "name": "fresh_b_validator_optimized",
+      "seconds": 0.033
+    }
+  ],
+  "terminal_reproduction": true,
+  "validator_mutations_rejected_each": 3
+}
