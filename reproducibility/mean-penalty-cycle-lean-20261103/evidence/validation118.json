@@ -1,0 +1,190 @@
+{
+  "status": "FULL_ARCHIVE_MANIFEST_AND_ACTUAL_REPORT_VALIDATED",
+  "run": "118",
+  "result": "FOCAL_LEAN_PAIRED_ORACLE_PASS",
+  "source_sha": "41f8492c619000b932778c67f3196fccee6a12d1",
+  "manifest_files": 69,
+  "total_files": 70,
+  "bundle_bytes": 29499,
+  "bundle_sha256": "a6a8b79ca85d7f28a539dcc74c7a66f8a7e2a44ca41f8d75d5f459b47a78002b",
+  "started_utc": "2026-11-03T22:58:57.002727+00:00",
+  "finished_utc": "2026-11-03T23:03:41.573111+00:00",
+  "products": [
+    {
+      "clone": "fresh_a",
+      "olean_sha256": "5ac803d0c9ae015c22b5921cc65599ceda668577761dc1ad5ac740532a8760d4",
+      "oracle_sha256": "d1b2c71a4236342b67f9750fb0af9607ff3909516b6b77a16e67c836e8077643",
+      "rows": [
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.weights_admissible"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.energy_from_actual_weights"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.observedSq_eq_output"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.normalized_mean_norm"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.orthogonal_mean_decomposition"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_square_identity"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_coercive"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_exact_values"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_negative_defect"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.fixed_penalty_coercivity_false"
+        }
+      ]
+    },
+    {
+      "clone": "fresh_b",
+      "olean_sha256": "5ac803d0c9ae015c22b5921cc65599ceda668577761dc1ad5ac740532a8760d4",
+      "oracle_sha256": "d1b2c71a4236342b67f9750fb0af9607ff3909516b6b77a16e67c836e8077643",
+      "rows": [
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.weights_admissible"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.energy_from_actual_weights"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.observedSq_eq_output"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.normalized_mean_norm"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.orthogonal_mean_decomposition"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_square_identity"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.kernel_coercive"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_exact_values"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.witness_negative_defect"
+        },
+        {
+          "axioms": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "name": "YangMills.RG.MeanPenaltyCycleObstruction.fixed_penalty_coercivity_false"
+        }
+      ]
+    }
+  ],
+  "no_local_lean_or_math_execution": true,
+  "validation_scope": "Host hashes, archive entries, JSON and actual exit-code/output consistency only"
+}

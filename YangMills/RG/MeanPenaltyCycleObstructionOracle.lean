@@ -1,0 +1,12 @@
+import YangMills.RG.MeanPenaltyCycleObstruction
+
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.weights_admissible
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.energy_from_actual_weights
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.observedSq_eq_output
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.normalized_mean_norm
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.orthogonal_mean_decomposition
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.kernel_square_identity
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.kernel_coercive
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.witness_exact_values
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.witness_negative_defect
+#print axioms YangMills.RG.MeanPenaltyCycleObstruction.fixed_penalty_coercivity_false

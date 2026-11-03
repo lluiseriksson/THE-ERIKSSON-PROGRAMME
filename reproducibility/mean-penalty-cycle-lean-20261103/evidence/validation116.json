@@ -1,0 +1,8 @@
+{
+  "status": "FAIL",
+  "source": "86ed176be451415f7e43506b62e59d5040c099b7",
+  "manifest_files": 34,
+  "build_exit": "1",
+  "full_archive_sha256": "f56eb3e2260c120381f6cc5f7acf301800ea96f241040452375a93c70980b366",
+  "preserved_failure": true
+}
