@@ -13,7 +13,7 @@
 \newcommand{\nct}{\mathsf n}
 \title{Critical inverse moments and local observation geometry on finite flat lattices}
 \author{Lluis Eriksson}
-\date{2 November 2026}
+\date{4 November 2026: consolidated revision}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -25,7 +25,9 @@ counterexamples. At the critical exponent, spatial observations by means on a fu
 cube tree can require logarithmically many blocks even for a fixed weak region; the same
 profiles admit a constant-size unrestricted rectangular partition. The finite Fourier
 and flow adapters are proved analytically, and exact finite diagnostics are recorded
-separately from formal verification. The spectral mechanism is classical; independent
+separately from formal verification. A four-cycle counterexample now has a focal Lean
+proof: coercivity on the zero-mean kernel does not justify the same fixed penalty.
+The distinction from a freely chosen penalty is essential. The spectral mechanism is classical; independent
 novelty, an interacting gauge-theory gap and a continuum limit are not established.
 This is a consolidation appendix, not a separate paper or AIRR deposit.
 \end{abstract}
@@ -310,6 +312,143 @@ moments of finite order strictly greater than $D/2$; the dossier contains the ex
 balanced-box proof. Proposition~\ref{prop:dyadic} explains why its critical tree-counting
 loss cannot be removed merely by choosing a better cube-tree stopping criterion.
 
+\section{What a spatial observation proof must still establish}
+\label{sec:spatial-obstructions}
+The preceding positive spectral result does not construct a rectangular mean map.
+Three further checks prevent substitutions for that missing construction. They concern
+local geometry, the penalty coefficient, and support of observations, respectively.
+They are collected here as limitations of the same dossier, not as additional papers.
+
+\subsection{Critical inverse mass does not remove rectangle geometry}
+For a rectangle $R$ of side lengths $l_i$, set $V=\prod_i l_i$, $L=\max_i l_i$,
+$\kappa=L^2/V^{2/D}$ and $\mu=\sum_R a^{-D/2}$. The endpoint Sobolev estimate
+on balanced cubes, with $q=2D/(D+2)$, transfers to arbitrary rectangles by repeated
+coordinate reflection and gives
+\begin{equation}\label{eq:aspect}
+ \sum_R|u-\bar u_R|^2\leq A_D D^{2/D}\kappa\mu^{2/D}\E_{a,R}(u).
+\end{equation}
+Here the energy uses original internal edges and their actual starting-vertex weights.
+The full reflection multiplicities and graph adapters to the classical estimate
+\cite[Section 2.2]{ads} are preserved in the companion geometric note; this is an
+analytic adapter, not a new Lean theorem.
+
+The factor cannot be discarded even for uniform coefficients. With $u(x)=x_i-(L-1)/2$
+along a longest side, direct sums give
+\[
+ \sum_Ru^2=V(L^2-1)/12,\qquad
+ \E_{a,R}(u)=aV(L-1)/L.
+\]
+Their ratio is $L(L+1)/(12a)\geq\kappa\mu^{2/D}/12$.
+On the thin rectangle of lengths $(L,1,\ldots,1)$, choosing $a=L^{2/D}$ makes
+$\mu=1$ while this ratio diverges. Thus compressing a cube-tree chain into thin
+rectangles cannot simply reuse a shape-independent inverse-mass certificate.
+This prescribed-block test does not defeat every global partition: omitted crossing
+edges and a different partition may help. The successful partition in
+Proposition~\ref{prop:dyadic} is not contradicted.
+
+\subsection{Fixed and free penalties are different obligations}
+Let $C$ be normalized means on a fixed partition of a finite real Euclidean space.
+Then $CC^*=I$; $P=C^*C$ is the orthogonal block-mean projection and $Q=I-P$.
+For the actual positive stiffness $L_a$, write the blocks on
+$\operatorname{ran}P\oplus\operatorname{ran}Q$ as
+\[
+ A=PL_aP,\qquad B=PL_aQ,\qquad D_0=QL_aQ.
+\]
+Positivity implies $\ker A\subseteq\ker B^*$: otherwise the energy of $tp+v$
+would have a nonzero linear coefficient with zero quadratic coefficient in $t$.
+Completing the square with the finite spectral pseudoinverse $A^\dagger$ shows
+\begin{equation}\label{eq:shorted}
+ L_a+cP\geq cI\quad\Longleftrightarrow\quad
+ D_0-B^*A^\dagger B\geq cI\ \hbox{on }\operatorname{ran}Q.
+\end{equation}
+Indeed the first inequality is exactly $L_a-cQ\geq0$, and its quadratic form is
+$\langle p+A^\dagger Bv,A(p+A^\dagger Bv)\rangle+
+\langle v,(D_0-cI-B^*A^\dagger B)v\rangle$.
+This is classical shorted-operator algebra \cite{anderson}; it supplies no spatial
+partition or target count. In particular $D_0\geq cI$ alone is insufficient.
+
+\begin{proposition}\label{prop:formal-cycle}
+On the four-cycle with edge weights $(1,6,4,1)$ and blocks $\{0,1\},\{2,3\}$,
+coercivity holds on zero block sums with $c=19/5$, but $L_a+cP\geq cI$ fails.
+\end{proposition}
+\begin{proof}
+For $v=(x,-x,y,-y)$, with the counting Euclidean norm,
+\[
+ \E_a(v)-\frac{19}{5}\|v\|^2
+ =\frac{17}{5}\left(x+\frac{35}{17}y\right)^2+\frac{84}{85}y^2\geq0.
+\]
+The actual normalized observation is
+$Cu=((u_0+u_1)/\sqrt2,(u_2+u_3)/\sqrt2)$.
+For $u=(19,-9,-5,-5)/14$, direct exact evaluation gives
+\[
+ \E_a(u)=52/7,\quad\|u\|^2=123/49,\quad\|Cu\|^2=25/49,
+\]
+and hence $\E_a(u)+(19/5)\|Cu\|^2-(19/5)\|u\|^2=-6/35$.
+The weights have mean $3$ and lie between $1$ and $6$. Ten focal Lean theorems
+preserve the constructed weights, normalized observations, projection identities,
+kernel square identity and exact negative witness; Section~\ref{sec:evidence}
+identifies the successful immutable source. This is a finite four-cycle result,
+not a proved embedding into the full physical divergence-zero kernel.
+\end{proof}
+
+For the original class allowing an arbitrary finite $K$, put $J=D_0-cI$.
+The necessary and sufficient condition is instead
+\begin{equation}\label{eq:free-penalty}
+ \exists K\geq0:\ L_a+KP\geq cI
+ \quad\Longleftrightarrow\quad J\geq0\ \hbox{and }B\ker J=0.
+\end{equation}
+Necessity follows by testing $v\in\ker C$, then $v+tp$ with $v\in\ker J$.
+For sufficiency, $B\ker J=0$ implies $B^*p\in\operatorname{ran}J$.
+Completing the square in $v+J^\dagger B^*p$ leaves
+$A+(K-c)I-BJ^\dagger B^*$, so $K=c+\|BJ^\dagger B^*\|$ suffices.
+In particular a proved all-cochain margin $D_0\geq(c+\epsilon)I$ gives
+$K=c+\|L_a\|^2/\epsilon$. For actual $a\leq2m$, the elementary edge estimate
+$|r-s|^2\leq2|r|^2+2|s|^2$ gives $\|L_a\|\leq8Dm$, including the parallel
+edge occurrences at $n=2$. A margin $2c$ therefore permits
+$K=c+64D^2m^2/c$, without increasing the number of observations.
+No margin or partition is proved by this conditional implication. Ordinary block
+averaging need not preserve divergence, so an estimate only on the physical kernel
+cannot silently replace the all-cochain hypothesis in this decomposition.
+
+Even free $K$ needs care at equality. On the same cycle let
+$s=\sqrt{85}$, $c_*=(17-s)/2$ and $v=(7,-7,6-s,s-6)$. Its kernel defect at $c_*$
+is zero, since for general $(x,-x,y,-y)$ it equals
+$(s-6)[x+7y/(s-6)]^2$. For
+$p=(\delta/2,\delta/2,-\delta/2,-\delta/2)$ the full defect is
+\[
+ \E_a(v+p)+K\|C(v+p)\|^2-c_*\|v+p\|^2
+ =(7+K-c_*)\delta^2-10(13-s)\delta.
+\]
+For each finite $K\geq0$ a sufficiently small positive $\delta$ makes it negative.
+This additional equality example is exact analytic algebra and finite diagnostic
+evidence, not one of the ten Lean theorems of Proposition~\ref{prop:formal-cycle}.
+
+\subsection{Sparse point samples cannot replace stable averages}
+For uniform $a=m$, if an observation depends only on vertex values on a set $S$, $|S|=s$, and
+$C(0)=0$, then the scalar field $u=1$ off $S$ and $0$ on $S$ has zero observation.
+At most $2Ds$ forward-edge occurrences cross $S$, so
+$\E_m(u)\leq2Dm s$. Consequently all-cochain coercivity requires
+\[
+ s\geq\frac{cn^D}{2Dm+c}.
+\]
+For an actual divergence-zero test, fix a component direction $j$ and let the field
+be constant along every $j$-line, equal to zero on each line meeting $S$ and one on
+the other lines, in one fixed internal coordinate. There are at most $s$ hit lines.
+Its backward divergence is zero, its norm squared is at least
+$n(n^{D-1}-s)$, and transverse crossing energy is at most $2(D-1)mns$.
+Thus necessarily
+\[
+ s\geq\frac{cn^{D-1}}{2(D-1)m+c}.
+\]
+If every transverse line is hit, the second bound is immediate without a nonzero test. These bounds give the required obstruction:
+at $a=m=n^2$ and critical moment $M=1$, bounded samples fail for all cochains
+when $D\geq3$ and for these physical tests when $D\geq4$.
+For the same uniform coefficients one global mean succeeds for $0<c\leq16$,
+by the nonzero Fourier gap $n^2\lambda(k)\geq16$.
+This comparison rules out a point-sampling shortcut, not rectangular averages or
+singletons supplemented by complementary block means. A nonlinear local observation
+is tested on sufficiently small multiples of these fields.
+
 \section{Evidence provenance and verification limits}\label{sec:evidence}
 The analytic sources, their exact revisions and the executable finite diagnostics are
 collected in a hash-allowlisted companion package. Its map gives full SHAs and SHA256
@@ -342,14 +481,29 @@ a theorem about arbitrary dimensions or odd lattices, or independent mathematica
 No new Lean run occurs in this appendix's PDF assembly. Operational repository checks
 on unchanged Lean files do not verify these new analytic proofs.
 
+There is also subsequent, strictly focal formal evidence. Source
+\texttt{41f8492c6190} supplies the ten four-cycle theorems and their oracle.
+Own Colab118 compiled that same source in two fresh clones; both actual oracle logs
+and compiled module hashes agree. Each of four normal/optimized validator runs
+accepted ten readouts and rejected three real corruptions. All readouts use only
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+The full archive has 69 manifest files and is included with the failed Colab116/117
+compiler attempts. Source hashes, complete logs and exact reports are allowlisted.
+This verifies Proposition~\ref{prop:formal-cycle}'s finite identities, not the
+geometric, shorted-operator, free-penalty or general rectangular adapters.
+Own Colab115 separately checked 18 finite diagnostics and eight real mutations in
+each mode of two fresh clones. Finite examples do not establish their general claims.
+
 \section{Model assessments and review context}
 The prior analytic-source first self-assessments were 6/10 for the critical spectral
 note, 5/10 for the dyadic note, and 5/10 for the exact finite diagnostic package.
 They apply only to their own exact source versions. All were by the preparing Codex
 agent; the served backend identity and effort were unexposed. They are neither independent
 model reviews nor human peer review. No earlier score is inherited by this appendix.
-The first assessment of the exact compiled PDF is preserved separately with its SHA256,
-full rubric, objections and visual-review record. No grade-seeking repeated review,
+The previous appendix PDF and its first exact assessment remain historical artifacts;
+their assessment does not transfer to this consolidated revision. This revision's
+first exact-PDF review is a separate SHA-linked sidecar after visual inspection.
+No grade-seeking repeated review,
 editorial acceptance or publication status is implied.
 
 The principal limitations and objections are these. The new finite Fourier, inverse,
@@ -374,6 +528,9 @@ blocker identified. Formalization and consolidation of the existing results are 
 work, not additional active new research questions.
 
 \begin{thebibliography}{9}
+\bibitem{anderson} W.~N. Anderson, Jr. and G.~E. Trapp,
+\emph{Shorted Operators. II}, SIAM J. Appl. Math. 28(1) (1975), 60--71.
+\url{https://doi.org/10.1137/0128007}.
 \bibitem{frank} R.~L. Frank, \emph{Cwikel's theorem and the CLR inequality},
 arXiv:1206.3325v1 (2012), Section2, Theorem2.1, Corollary2.2, Lemmas2.4--2.5.
 \url{https://arxiv.org/abs/1206.3325}.

@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "public_code_revision": "3c4849b58438310b0b2799bb11dea7d98841d808",
-  "tex_sha256_lf": "fbe8e44df56f55281890825dbf0f706a00b3b320bf00048fc401c0eb3b79b0b2",
+  "public_code_revision": "d40ac5934919eeca7e9b71c16cf055382ef1e032",
+  "tex_sha256_lf": "c103630f0e23db4e8e4d472c49f3703137b46fe2bec5b7201ecef859890b2e36",
   "formal_hodge_source": "dfd49d0b0730a4d36f58a4cbb7a17d6a41fb60bc",
   "critical_source": "527fcdcd119a056e7ea188cd50e33421a663125d",
   "dyadic_source": "fb65a67af360441025ce1e4f98ad43ccca0202ce",
@@ -22,6 +22,26 @@
     "reproducibility/critical-fourier-fixtures-20261102/109-report.json": "a976d20b8615113c88e867d8872f4f608f5a4352fa9f8b30726606b4c2d8e5f5",
     "reproducibility/critical-fourier-fixtures-20261102/109-validation.json": "4c828b0a15b611a73e8d1409d015222c8a56bee5da63e356e2736cd204d3f843",
     "reproducibility/critical-fourier-fixtures-20261102/109-full-evidence.zip": "1c433591db41963cc76d9fa3b4cfdf587f314649fd19fc263010016b76d54ec8",
-    "reproducibility/critical-fourier-fixtures-20261102/README.md": "b8e541245cf6fd2ab73f8f4c6c2f3fb155e276165920cd8a04c0c834a3136d0c"
-  }
+    "reproducibility/critical-fourier-fixtures-20261102/README.md": "b8e541245cf6fd2ab73f8f4c6c2f3fb155e276165920cd8a04c0c834a3136d0c",
+    "reproducibility/mean-budget-order-20261101/critical-rectangle-aspect-obstruction.md": "11c067fe84becee4d961c8f289a4eb739a2214ee31e6ca88c29d464c64ff5a75",
+    "reproducibility/mean-budget-order-20261101/interblock-shorted-energy.md": "820383dc270cd9b71807af29ed278de3248c14fc976a2a7992e336d8121320bd",
+    "reproducibility/mean-budget-order-20261101/mean-penalty-slack-criterion.md": "92f4ad3e8616a80c4e937f3aff6c9fa451290aa78cfa7d4ab1327083e9974486",
+    "reproducibility/mean-budget-order-20261101/sparse-point-observation-obstruction.md": "24332d43d615f966972923641d020e55ce055b5e592d175175acc0124bb42065",
+    "reproducibility/spatial-observation-audit-20261103/exact-audit.py": "e191abd7524ddb165bdab53e589255769da9a44a6d05ffe4777593551bdb209f",
+    "reproducibility/spatial-observation-audit-20261103/115-report.json": "d482cfb4aeae0f24ecf98cc70d961782c5253355d6d396c1153a1c09122719a2",
+    "reproducibility/spatial-observation-audit-20261103/115-full-evidence.zip": "e2535b6735e9fd400955fd201ecb2650733585ad7305a7e215690ae34827468b",
+    "YangMills/RG/MeanPenaltyCycleObstruction.lean": "412178481750c6b269760ed9ab1d0c4c4bcc2795097817e1339d27c6a29b2d44",
+    "YangMills/RG/MeanPenaltyCycleObstructionOracle.lean": "349b9bcd4a737d9801e96909cb7c1cc7d73446c058fbe9b8ddc884384de79cb6",
+    "reproducibility/mean-penalty-cycle-lean-20261103/README.md": "f897e6ae0d4832475d7e67c35dc8a4c418e54819afd8bc2a5be875418e4f0078",
+    "reproducibility/mean-penalty-cycle-lean-20261103/colab118.py": "d1683c3b60fdf771fab4ab0dc87ed191dce968e9e79e1a894aa0ce7a73537e79",
+    "reproducibility/mean-penalty-cycle-lean-20261103/colab118.ipynb": "25a42009a6b722347fcbaab3ee62e65b846987e5c800c00378590dcdf68d0ea3",
+    "reproducibility/mean-penalty-cycle-lean-20261103/evidence/colab116-full.zip": "f56eb3e2260c120381f6cc5f7acf301800ea96f241040452375a93c70980b366",
+    "reproducibility/mean-penalty-cycle-lean-20261103/evidence/colab117-full.zip": "e78725896c3f8a62aa6f9817d1a00898187c870b182b9900f41c129019a1441d",
+    "reproducibility/mean-penalty-cycle-lean-20261103/evidence/colab118-full.zip": "a6a8b79ca85d7f28a539dcc74c7a66f8a7e2a44ca41f8d75d5f459b47a78002b",
+    "reproducibility/mean-penalty-cycle-lean-20261103/evidence/report118.json": "1620915fd5dcb6b17da7e62b01a95d2fdfed8fb929eaab23bce7869eee83dea1"
+  },
+  "formal_cycle_source": "41f8492c619000b932778c67f3196fccee6a12d1",
+  "assembly_performs_new_lean_execution": false,
+  "prior_focal_lean_run": "118, paired fresh focal builds and ten-target oracle",
+  "prior_pdf_assessments_inherited": false
 }
