@@ -1,0 +1,51 @@
+{
+  "run": "111",
+  "started_utc": "2026-11-02T18:19:26.713150+00:00",
+  "source_sha": "fea2021269fd5c655b0ef8fbc24fb82e40ff64a3",
+  "status": "FAIL",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 2.875
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 50.522
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.418
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.421
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.038
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.049
+    },
+    {
+      "name": "pdftoppm",
+      "exit_code": 0,
+      "seconds": 1.723
+    }
+  ],
+  "new_lean_run": false,
+  "independent_review": false,
+  "artifact_marker": "Official bundled marker executed exactly once on host immediately before TeX authoring",
+  "allowlist_count": 12,
+  "diagnostic_inner_hashes_rechecked": 8,
+  "error": "ValueError(\"Layout/reference warnings ['Overfull \\\\\\\\hbox (8.2824pt too wide) in paragraph at lines 174--182']\")",
+  "finished_utc": "2026-11-02T18:20:24.922493+00:00",
+  "colab_gpu_env": ""
+}

@@ -1,0 +1,385 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage[margin=27mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathcal E}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\nct}{\mathsf n}
+\title{Critical inverse moments and local observation geometry on finite flat lattices}
+\author{Lluis Eriksson}
+\date{2 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+This appendix consolidates one sufficient coefficient condition and its limitations in the
+existing flat-lattice observation-rank dossier. A global inverse-conductance moment of
+order $D/2$ suffices for the mean-budget rank order through an actual real spectral
+observation. Every lower positive inverse exponent admits explicit divergence-free
+counterexamples. At the critical exponent, spatial observations by means on a full dyadic
+cube tree can require logarithmically many blocks even for a fixed weak region; the same
+profiles admit a constant-size unrestricted rectangular partition. The finite Fourier
+and flow adapters are proved analytically, and exact finite diagnostics are recorded
+separately from formal verification. The spectral mechanism is classical; independent
+novelty, an interacting gauge-theory gap and a continuum limit are not established.
+This is a consolidation appendix, not a separate paper or AIRR deposit.
+\end{abstract}
+
+\section{Actual objects and the original observation problem}
+Fix $D\geq3$, $N_c\geq2$, $c>0$, and the unit-spacing torus
+$X_n=(\mathbb Z/n\mathbb Z)^D$. The actual real adjoint coefficient space has dimension
+$g=N_c^2-1$; there are $D$ field components, so write $h=Dg$.
+For the actual forward difference $d_i u(x)=u(x+e_i)-u(x)$, take one scalar total
+coefficient $a(x)=1+w_{i,x,j}>0$ shared by all derivative directions and field components.
+Use counting norms and the actual componentwise flat energy
+\begin{equation}\label{eq:energy}
+ Q_w(U)=\E_a(U)=\sum_{x,i,j}a(x)\|d_iU_j(x)\|^2.
+\end{equation}
+The existing flat Hodge identity identifies these forms; its formal source is listed
+in Section~\ref{sec:evidence}. All new adapters in this appendix remain analytic.
+There is no substitution of a covariant or interacting derivative in \eqref{eq:energy}.
+
+The original local data consist of a differentiable map $C$ at zero, with $C(0)=0$,
+into an actual finite-dimensional real normed space $F$, and a penalty satisfying
+$\Phi(y)\leq K\|y\|^2$ near zero, such that
+\begin{equation}\label{eq:local}
+ c\|U\|^2\leq Q_w(U)+\Phi(C(U))
+\end{equation}
+for sufficiently small actual divergence-zero fields. ``Local'' here means a
+configuration-space neighbourhood; spatial support of $C$ is an additional condition.
+The constant $c$ is fixed, while observation maps and neighbourhoods may depend on $n$.
+
+A useful necessary condition follows directly. If an actual $J$-dimensional
+divergence-zero subspace has $Q_w(U)\leq\lambda\|U\|^2$ with $\lambda<c$, then
+$\dim F\geq J$. Otherwise a nonzero $U$ in that subspace lies in $\ker DC(0)$.
+Along $tU$, $C(tU)=o(t)$ and the penalty is at most $o(t^2)$. Dividing
+\eqref{eq:local} by $t^2$ and taking $t\to0$ contradicts $\lambda<c$.
+No rank or band certificate is supplied as an extra hypothesis in this argument.
+
+\section{The critical global moment theorem}
+Put $p=D/2>1$. For $m\geq1$ suppose that
+\begin{equation}\label{eq:moment}
+ n^{-D}\sum_{x\in X_n}(m/a(x))^p\leq M<\infty.
+\end{equation}
+\begin{theorem}\label{thm:critical}
+Under \eqref{eq:moment}, there is an actual real linear spectral observation $C$ such that
+\[
+ c\|U\|^2\leq Q_w(U)+c\|C(U)\|^2
+ \quad\hbox{for every actual cochain }U,
+\]
+and
+\begin{equation}\label{eq:rank}
+ \dim F\leq C_*\max\{1,(n/\sqrt{1+m})^D\},
+\end{equation}
+where, with $I_p=(p-1)^2/[p(p+1)]$ and
+$\Gamma_p=\frac p{p-1}I_p^{-(p-1)}$, one safe choice is
+\[
+ C_*=h\left[1+\Gamma_p(3/4)^D D^{p+1}c^pM2^p\right].
+\]
+Thus $\Phi(y)=c\|y\|^2$, $K=c$ and any positive neighbourhood radii supply the original
+local data. In particular the assertion holds on the actual divergence-zero subspace.
+\end{theorem}
+The original subclass $1\leq a\leq2m$ with exact arithmetic mean $m$ is included,
+but those extra normalizations are not needed for sufficiency. The distribution
+condition \eqref{eq:moment} remains additional; it is not derived from an arithmetic mean.
+
+\subsection{A finite normalized Fourier lemma}
+For a finite abelian group of size $V$, let $\mathcal F$ be its counting-unitary Fourier
+matrix, whose entries have modulus $V^{-1/2}$. For a frequency multiplier $g$ put
+\[
+ L=V^{-1}\sup_{t>0}t^p\#\{k:|g(k)|^2>t\}.
+\]
+For a nonnegative matrix $B$, write $\nct(s,B)$ for its number of eigenvalues strictly
+greater than $s$, counted with ordinary multiplicity.
+\begin{lemma}\label{lem:finite}
+For $K=M_f\mathcal F^*M_g\mathcal F$ and $s>0$,
+\[
+ \nct(s,K^*K)\leq\Gamma_p Ls^{-p}\sum_x|f(x)|^{2p}.
+\]
+The trace and eigenvalue counts are not volume-normalized.
+\end{lemma}
+\begin{proof}
+Remove phases by unitaries and set $A=\mathcal F^*M_{|g|^2}\mathcal F$.
+If $L=0$ the assertion is immediate. Otherwise let $B_0=pL/(p-1)$ and let $A^+$
+be the inverse on $\operatorname{ran}A$, zero on its kernel. For $0\leq\gamma\leq A$
+write $\rho(x)=\langle\delta_x,\gamma\delta_x\rangle$. Positivity makes $\gamma$
+annihilate $\ker A$. On the range let $P_E=\mathbf1_{\{A^+\leq E\}}$ and
+$R_E=\mathbf1_{\{A^+>E\}}$. The weak-frequency tail gives
+\[
+ \langle\delta_x,P_EAP_E\delta_x\rangle
+ =V^{-1}\sum_{|g(k)|^2\geq1/E}|g(k)|^2\leq B_0E^{p-1}.
+\]
+Indeed the tail above $t$ is $t$ times its count plus the integral of counts above $t$;
+the resulting bound is $VLp\,t^{1-p}/(p-1)$. Non-strict thresholds follow by limits.
+The triangle inequality for $\gamma^{1/2}\delta_x$ split by $P_E+R_E$ yields
+\[
+ \langle\delta_x,R_E\gamma R_E\delta_x\rangle
+ \geq\bigl(\sqrt{\rho(x)}-\sqrt{B_0}E^{(p-1)/2}\bigr)_+^2.
+\]
+Exact spectral layer integration consequently gives
+\begin{equation}\label{eq:density}
+ \Tr(A^+\gamma)\geq I_pB_0^{-1/(p-1)}\sum_x\rho(x)^{p/(p-1)}.
+\end{equation}
+The scalar integral reduces to
+$\int_0^1(1-t^{(p-1)/2})^2dt=I_p$.
+Now take $P$ to be the spectral projection of $A^{1/2}M_{|f|^2}A^{1/2}$ above $s$,
+with rank $\nu>0$, and set $\gamma=A^{1/2}PA^{1/2}$. Then
+$0\leq\gamma\leq A$, $\Tr(A^+\gamma)\leq\nu$, and
+\[
+ s\nu<\sum_x|f(x)|^2\rho(x)
+ \leq\Bigl(\sum_x|f(x)|^{2p}\Bigr)^{1/p}
+       \Bigl(\sum_x\rho(x)^{p/(p-1)}\Bigr)^{(p-1)/p}.
+\]
+Insert \eqref{eq:density} and raise to $p$. The constant becomes
+$B_0I_p^{-(p-1)}=\Gamma_pL$. This also explicitly handles a zero-frequency kernel.
+\end{proof}
+The density method is classical and follows the Rumin--Frank approach
+\cite[Section 2]{frank}. The proof above supplies its finite normalization and kernel
+adapter; it is not a claim of a new Cwikel mechanism or independent discovery.
+
+\subsection{Actual lattice frequencies and the weighted inverse}
+For $n\geq2$ let $L_0=d^*d$ and work first on the actual counting-mean-zero scalar
+space $H_0$. Its Fourier symbols are
+\[
+ z_i(k)=e^{2\pi\mathrm i k_i/n}-1,\qquad
+ \lambda(k)=4\sum_i\sin^2(\pi k_i/n).
+\]
+Choose centred integer representatives $r_i$ with $|r_i|\leq n/2$, using only one
+representative at an even endpoint. Concavity of sine implies
+\[
+ \lambda(k)\geq16|r|^2/n^2,\qquad
+ |g_i(k)|:=|z_i(k)/\lambda(k)|\leq n/(4|r|),\quad k\ne0.
+\]
+Set $g_i(0)=0$. If $|g_i|>\tau$, then $0<|r|<R=n/(4\tau)$.
+For $R\leq1$ there are none, and for $R>1$ there are at most $(3R)^D$ representatives.
+Thus
+\begin{equation}\label{eq:weak}
+ n^{-D}\sup_{t>0}t^{D/2}\#\{|g_i|^2>t\}\leq(3/4)^D.
+\end{equation}
+This is uniform in $n$, including $n=2$, not an imported infinite-volume bound.
+
+Let $L_a=d^*M_ad$. On $H_0$ it is positive definite. For $f\in H_0$, the flow
+$j_*=M_adL_a^{-1}f$ minimizes $\langle j,M_{a^{-1}}j\rangle$ among $d^*j=f$:
+write $j=j_*+k$, $d^*k=0$, and the cross term is
+$\langle dL_a^{-1}f,k\rangle=0$. Inserting the explicit feasible flow
+$j=dL_0^{-1}f$ gives the actual quadratic-form comparison
+\begin{equation}\label{eq:inverse}
+ L_a^{-1}\leq\sum_{i=1}^DT_i^*T_i,\qquad
+ T_i=M_{a^{-1/2}}d_iL_0^{-1}.
+\end{equation}
+Extend $L_0^{-1}$ by zero on constants. Lemma~\ref{lem:finite} and \eqref{eq:weak}
+bound each $\nct(s,T_i^*T_i)$ by
+
+\[
+ \Gamma_p(3/4)^Ds^{-p}\sum_xa(x)^{-p}.
+\]
+
+For nonnegative matrices, the count of their sum above $t$ is no larger than the
+sum of their counts above $t/D$: intersect the complements of their high spectral
+subspaces and apply min--max. No commutation is required. With $t=1/c$ in
+\eqref{eq:inverse}, inversion on $H_0$ and the single scalar constant mode yield
+\begin{equation}\label{eq:count}
+ \#\{\lambda(L_a)<c\}\leq
+ 1+\Gamma_p(3/4)^DD^{p+1}c^pM n^D/m^p.
+\end{equation}
+No spectral-band dimension is assumed in this derivation.
+
+\begin{proof}[Completion of Theorem~\ref{thm:critical}]
+Choose an actual real counting-orthonormal eigenbasis of the real symmetric matrix
+$L_a$. Retain the coordinates with eigenvalue $<c$, separately in each of the $h$
+real field coordinates. Complexification used in the Fourier proof preserves real
+eigenvalue multiplicities; it does not double them. Energy controls coefficients at
+eigenvalues $\geq c$, while $c\|C(U)\|^2$ controls the rest. Equation~\eqref{eq:count},
+$p=D/2$, and $(1+m)/m\leq2$ give \eqref{eq:rank}. For $n=1$ take the identity on all
+$h$ coordinates. This constructs the actual global spectral observation.
+\end{proof}
+
+\section{Every lower positive inverse exponent is insufficient}
+\begin{theorem}\label{thm:subcritical}
+For every fixed $0<r<D/2$, the analogue of Theorem~\ref{thm:critical} under
+$\operatorname{mean}((m/a)^r)\leq2$ is false uniformly in the actual scalar class
+$1\leq a\leq2m$, $\operatorname{mean}(a)=m$.
+\end{theorem}
+\begin{proof}
+Choose a fixed integer $\ell>3D/c$, and put $P=2\ell+2$, $B=(2\ell+1)^D$.
+The triangular window $t(s)=(1-|s|/\ell)_+$ has finite sums
+\[
+ T=\sum t^2=(2\ell^2+1)/(3\ell),\quad
+ V=\sum(d^-t)^2=2/\ell,\quad W=\sum(d^+d^-t)^2=6/\ell^2.
+\]
+For a product window $\psi_y(x)=\prod_it(x_i-y_i)$ and nonzero actual adjoint $H$,
+the actual curl $U_1=d^-_2\psi_y H$, $U_2=-d^-_1\psi_y H$, other components zero,
+has backward divergence zero. Its field support and all nonzero forward-gradient
+start sites lie in the box $y+[-\ell,\ell]^D$. Direct separable sums give
+\[
+ \|U\|^2=2VT^{D-1}\|H\|^2,\qquad
+ \frac{\E_0(U)}{\|U\|^2}=\frac WV+(D-1)\frac VT
+ =\frac3\ell+\frac{6(D-1)}{2\ell^2+1}\leq\frac{3D}\ell<c.
+\]
+Take sufficiently large multiples $n$ of $P$, set $m=n^2$ and
+$J=\lfloor n^{D-2r}/B\rfloor$. These $J$ boxes fit on the separated $P$-grid
+eventually, since $P^D\leq Bn^{2r}$. They satisfy
+$J\geq n^{D-2r}/(2B)\to\infty$. Put $s=BJ/n^D\leq m^{-r}$ and set $a=1$ on
+their union, $a=A=(m-s)/(1-s)$ elsewhere. Eventually $s\leq1/2$, so
+\[
+ \operatorname{mean}(a)=m,\quad1\leq a\leq2m,\quad A\geq m,
+ \qquad\operatorname{mean}((m/a)^r)\leq sm^r+1\leq2.
+\]
+Each curl's gradients start only in its weak box. The actual $J$-dimensional span
+has that same Rayleigh quotient, because both field and gradient supports are
+disjoint. Section~1 forces $\dim F\geq J$, whereas the target maximum at $m=n^2$
+is $1$. This proves the refutation using original nonlinear data.
+\end{proof}
+Together the two theorems give the sharp inverse-moment exponent for this specified
+family of global scalar conditions. They do not identify all sufficient coefficient
+criteria, prove a physical coefficient hypothesis, or impose spatial locality on $C$.
+
+\section{Spatial means and the critical dyadic obstruction}
+For a partition $\mathcal P$ into integer rectangles, its actual normalized means are
+\[
+ C_{\mathcal P}(U)_{R,j}=\sqrt{|R|}\operatorname{mean}_R U_j,
+ \qquad \dim F=h\#\mathcal P.
+\]
+A full dyadic cube tree splits each selected cube into all $2^D$ equal children and
+retains unsplit siblings. The origin of the torus coordinate cube may be translated.
+This class excludes arbitrary anisotropic rectangle cuts and compressed observations.
+
+\begin{proposition}\label{prop:dyadic}
+There are fixed critical-moment profiles with target maximum $1$ for which every
+coercive full dyadic cube-tree mean partition has $\Omega(\log n)$ leaves, even after
+choosing a translated origin. The same profiles admit an explicit constant-size
+rectangular mean partition satisfying the global inequality for every actual cochain.
+\end{proposition}
+\begin{proof}
+Keep $\ell>3D/c$ fixed. Choose a dyadic $L=2^q\geq4\ell+2$, put
+$\gamma=\max(1,c/4)$, $n=2^J$ with $J\geq q+1$, $m=\gamma n^2$, and
+$S=\{0,\ldots,L-1\}^D$. Set $a=1$ on $S$ and $a=A=(m-s)/(1-s)$ elsewhere,
+$s=L^D/n^D$. Then $1\leq a\leq2m$, its mean is exactly $m$, and
+\[
+ \operatorname{mean}((m/a)^{D/2})\leq1+L^D\gamma^{D/2}=:M_0.
+\]
+All these parameters except $n$ are fixed, and the target maximum is $1$.
+
+In the hypothetical complete level $j_*=J-q$ of any translated dyadic grid, cells
+have side $L$. Each coordinate interval of $S$ meets at most two such cyclic grid
+intervals, so one intersection has integer length at least $L/2\geq2\ell+1$.
+Taking these intersections independently places a whole gradient-start box for a
+compact curl inside $S$ and inside one level-$j_*$ cell. If the proposed partition
+had maximum depth at most $j_*$, that cell would lie in one actual leaf. The curl
+then has zero means on every leaf, since each component has total sum zero, yet its
+weighted Rayleigh quotient is $<c$. This contradicts coercivity. A single zero-extended
+window needs no packing divisibility assumption on $n$; $n\geq2L$ suffices here.
+The field may depend on the partition, since coercivity is asserted for every field.
+Thus maximum depth is at least $J-q+1$, and the full-arity tree identity gives
+\begin{equation}\label{eq:dyadiclower}
+ \#\mathcal P\geq1+(2^D-1)(J-q+1).
+\end{equation}
+
+For a successful unrestricted partition, isolate all $L^D$ vertices of $S$ as
+singletons, and use the $D$ disjoint complement rectangles
+\[
+ R_i=[0,L-1]^{i-1}\times[L,n-1]\times[0,n-1]^{D-i}.
+\]
+Coverage follows from the unique first coordinate outside $[0,L-1]$.
+Every internal edge starts at a strong vertex with coefficient $A$.
+On a length-$l$ interval, counting variance and path Cauchy--Schwarz give
+\[
+ \sum\|u-\bar u\|^2\leq\frac{l(l-1)}{4A}\sum A\|du\|^2.
+\]
+Indeed the path resistance is at most $(l-1)/A$, and a cut at $t$ is crossed by
+$t(l-t)\leq l^2/4$ pairs in the variance identity.
+Product-variance tensorization on original fibres yields a rectangle constant
+$n^2/(4A)$, with no extra factor $D$. Singletons have zero residual, internal edge
+sets are disjoint, and omitted edges have positive energy. Since
+$cn^2/(4A)\leq c/(4\gamma)\leq1$, exact orthogonal decomposition proves
+\[
+ c\|U\|^2\leq Q_w(U)+c\|C_{\mathcal P}(U)\|^2,
+ \qquad \#\mathcal P=L^D+D.
+\]
+These rectangles have potentially unbounded aspect ratio; they leave the cube-tree class.
+\end{proof}
+The general critical moment question for unrestricted rectangular means remains open.
+Changing only the stopping rule within full cube trees cannot resolve it. Classical
+weighted Sobolev inequalities \cite{ads} also yield block observations for inverse
+moments of finite order strictly greater than $D/2$; the dossier contains the explicit
+balanced-box proof. Proposition~\ref{prop:dyadic} explains why its critical tree-counting
+loss cannot be removed merely by choosing a better cube-tree stopping criterion.
+
+\section{Evidence provenance and verification limits}\label{sec:evidence}
+The analytic sources, their exact revisions and the executable finite diagnostics are
+collected in a hash-allowlisted companion package. Its map gives full SHAs and SHA256
+values; short forms below are identifiers, not substitute hashes.
+\begin{center}\small
+\begin{tabular}{lll}
+Item & Source revision & Verification status\\\hline
+Actual flat Hodge identity & \texttt{dfd49d0b0730} & earlier formal source\\
+Critical spectral theorem & \texttt{527fcdcd119a} & analytic adapters\\
+Dyadic spatial separation & \texttt{fb65a67af360} & analytic adapters\\
+Higher moment block proof & \texttt{6dcb893155e5} & analytic adapters\\
+Exact finite fixture code & \texttt{4bb460e1537e} & own Colab109\\
+Full diagnostic report & \texttt{602ae3f0b59a} & finite rational batch
+\end{tabular}
+\end{center}
+Colab109 checked four actual profiles on $(\mathbb Z/2\mathbb Z)^4$ using rational
+arithmetic. Each normal and optimized Python mode accepted four profiles and rejected
+16 real matrix, inverse or flow mutations, with matching outputs and exit code zero.
+It checked the constant mode, forward symbols, actual pseudoinverse identities,
+feasible/minimizing flow energy, comparison inertia, strict low-spectrum multiplicities
+and noncommuting counts. There are 12 distinct density examples, evaluated again for
+each profile: 48 evaluations per mode, not 48 independent examples.
+
+All eight files in the diagnostic archive's inner manifest were rehashed. Runtime
+execution was recorded at 17:13:06.300923--17:13:16.201862 UTC on 2 November2026,
+with automatic runtime release and zero sessions verified afterwards. Rounded resource
+units do not prove zero cost. No local Windows mathematical execution occurred.
+This single embedded-SHA finite batch is not two fresh matching clones, a Lean proof,
+a theorem about arbitrary dimensions or odd lattices, or independent mathematical review.
+No new Lean run occurs in this appendix's PDF assembly. Operational repository checks
+on unchanged Lean files do not verify these new analytic proofs.
+
+\section{Model assessments and review context}
+The prior analytic-source first self-assessments were 6/10 for the critical spectral
+note, 5/10 for the dyadic note, and 5/10 for the exact finite diagnostic package.
+They apply only to their own exact source versions. All were by the preparing Codex
+agent; the served backend identity and effort were unexposed. They are neither independent
+model reviews nor human peer review. No earlier score is inherited by this appendix.
+The first assessment of the exact compiled PDF is preserved separately with its SHA256,
+full rubric, objections and visual-review record. No grade-seeking repeated review,
+editorial acceptance or publication status is implied.
+
+The principal limitations and objections are these. The new finite Fourier, inverse,
+field and partition adapters are analytic rather than kernel-verified. The classical
+Rumin--Frank method and elementary refinement geometry limit any novelty claim; a
+complete priority comparison is unfinished. The sufficient theorem uses one shared
+scalar coefficient profile, and its distribution condition is not proved from arithmetic
+means. Spectral coordinates are global; unrestricted critical rectangular means remain
+unresolved. Exact finite diagnostics cover a small selected family, and some count bounds
+are loose. The constants are safe rather than sharp. This appendix makes no statement
+about an interacting or continuum physical mass gap. PR29 remains 20/41 and TermSource=0.
+
+\section{The single remaining bounded question}
+For fixed $D\geq3,c>0,N_c\geq2,M$, do all actual scalar profiles
+$1\leq a\leq2m$, exact mean $m$, satisfying \eqref{eq:moment}, admit
+\eqref{eq:rank} using normalized means on an unrestricted axis-aligned integer
+rectangular partition? The mechanism must leave full cube trees, for example through
+anisotropic cuts with a proved variance bound. A falsifier must defeat every such
+rectangular partition, not merely every dyadic cube tree. After three substantive units
+without a proved reduction or useful falsifier, the route must be changed or its concrete
+blocker identified. Formalization and consolidation of the existing results are preserved
+work, not additional active new research questions.
+
+\begin{thebibliography}{9}
+\bibitem{frank} R.~L. Frank, \emph{Cwikel's theorem and the CLR inequality},
+arXiv:1206.3325v1 (2012), Section2, Theorem2.1, Corollary2.2, Lemmas2.4--2.5.
+\url{https://arxiv.org/abs/1206.3325}.
+\bibitem{ads} S.~Andres, J.-D. Deuschel and M.~Slowik,
+\emph{Harnack inequalities on weighted graphs and some applications to the random
+conductance model}, arXiv:1312.5473v6 (2019), Section2.2, equation(2.5) and Proposition2.1.
+\url{https://arxiv.org/abs/1312.5473}.
+\end{thebibliography}
+\end{document}
