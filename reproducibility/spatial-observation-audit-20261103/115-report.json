@@ -1,0 +1,314 @@
+{
+  "accepted_each": 18,
+  "colab_gpu_environment": "",
+  "finished_utc": "2026-11-03T21:44:48.945334+00:00",
+  "finite_fixtures": [
+    {
+      "defect": "-6/35",
+      "energy": "52/7",
+      "kernel_determinant": "84/25",
+      "norm": "123/49",
+      "observed": "25/49"
+    },
+    {
+      "c": [
+        "17/2",
+        "-1/2"
+      ],
+      "constant_quadratic": [
+        "-3/2",
+        "1/2"
+      ],
+      "every_finite_K": true,
+      "linear": [
+        "-130",
+        "10"
+      ],
+      "r": [
+        "13",
+        "-1"
+      ]
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 2,
+      "physical_energy": 0,
+      "physical_norm": 8,
+      "samples": 0,
+      "scalar_energy": 0,
+      "scalar_norm": 8,
+      "transverse": 0
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 2,
+      "physical_energy": 32,
+      "physical_norm": 6,
+      "samples": 1,
+      "scalar_energy": 24,
+      "scalar_norm": 7,
+      "transverse": 1
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 2,
+      "physical_energy": 64,
+      "physical_norm": 4,
+      "samples": 2,
+      "scalar_energy": 48,
+      "scalar_norm": 6,
+      "transverse": 2
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 2,
+      "physical_energy": 0,
+      "physical_norm": 0,
+      "samples": 8,
+      "scalar_energy": 0,
+      "scalar_norm": 0,
+      "transverse": 4
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 4,
+      "physical_energy": 0,
+      "physical_norm": 64,
+      "samples": 0,
+      "scalar_energy": 0,
+      "scalar_norm": 64,
+      "transverse": 0
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 4,
+      "physical_energy": 256,
+      "physical_norm": 60,
+      "samples": 1,
+      "scalar_energy": 96,
+      "scalar_norm": 63,
+      "transverse": 1
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 4,
+      "physical_energy": 1024,
+      "physical_norm": 48,
+      "samples": 4,
+      "scalar_energy": 384,
+      "scalar_norm": 60,
+      "transverse": 4
+    },
+    {
+      "critical_moment": 1,
+      "d": 3,
+      "n": 4,
+      "physical_energy": 0,
+      "physical_norm": 0,
+      "samples": 64,
+      "scalar_energy": 0,
+      "scalar_norm": 0,
+      "transverse": 16
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 4,
+      "physical_energy": 0,
+      "physical_norm": 256,
+      "samples": 0,
+      "scalar_energy": 0,
+      "scalar_norm": 256,
+      "transverse": 0
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 4,
+      "physical_energy": 384,
+      "physical_norm": 252,
+      "samples": 1,
+      "scalar_energy": 128,
+      "scalar_norm": 255,
+      "transverse": 1
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 4,
+      "physical_energy": 1536,
+      "physical_norm": 240,
+      "samples": 4,
+      "scalar_energy": 512,
+      "scalar_norm": 252,
+      "transverse": 4
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 4,
+      "physical_energy": 0,
+      "physical_norm": 0,
+      "samples": 256,
+      "scalar_energy": 0,
+      "scalar_norm": 0,
+      "transverse": 64
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 8,
+      "physical_energy": 0,
+      "physical_norm": 4096,
+      "samples": 0,
+      "scalar_energy": 0,
+      "scalar_norm": 4096,
+      "transverse": 0
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 8,
+      "physical_energy": 3072,
+      "physical_norm": 4088,
+      "samples": 1,
+      "scalar_energy": 512,
+      "scalar_norm": 4095,
+      "transverse": 1
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 8,
+      "physical_energy": 24576,
+      "physical_norm": 4032,
+      "samples": 8,
+      "scalar_energy": 4096,
+      "scalar_norm": 4088,
+      "transverse": 8
+    },
+    {
+      "critical_moment": 1,
+      "d": 4,
+      "n": 8,
+      "physical_energy": 0,
+      "physical_norm": 0,
+      "samples": 4096,
+      "scalar_energy": 0,
+      "scalar_norm": 0,
+      "transverse": 512
+    }
+  ],
+  "finite_payload_sha256": "ed089363c1cc262e4f7d8775db19b8b4a10e36304a976f8f4e0530748f51e2c9",
+  "fresh_clone_payloads_match": true,
+  "fresh_clones": 2,
+  "general_theorem_verified": false,
+  "independent_review": false,
+  "new_lean_run": false,
+  "normal_optimized_match": true,
+  "real_mutations_rejected_each": 8,
+  "run": "115",
+  "runtime_note": "Own CPU allocation; record UI units before/after separately, do not infer zero cost",
+  "source_sha": "ace78c3bb3f31d14244aa5acd61829c5d99ece34",
+  "started_utc": "2026-11-03T21:44:19.775346+00:00",
+  "status": "EXACT_FINITE_DIAGNOSTICS_PASS",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "fresh_a_init"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_remote"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_config_core.autocrlf"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_config_core.sparseCheckout"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_config_remote.origin.promisor"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_config_remote.origin.partialclonefilter"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_fetch"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_checkout"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_sha"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_normal"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a_optimized"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_init"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_remote"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_config_core.autocrlf"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_config_core.sparseCheckout"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_config_remote.origin.promisor"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_config_remote.origin.partialclonefilter"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_fetch"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_checkout"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_sha"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_normal"
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b_optimized"
+    }
+  ],
+  "terminal_reproduction": false,
+  "thread": "tep-own-spatial-observation-audit"
+}

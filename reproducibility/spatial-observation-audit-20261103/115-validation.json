@@ -1,0 +1,16 @@
+{
+  "general_theorem_verified": false,
+  "finite_payload_sha256": "ed089363c1cc262e4f7d8775db19b8b4a10e36304a976f8f4e0530748f51e2c9",
+  "four_payloads_equal": true,
+  "accepted_each": 18,
+  "bundle_bytes": 35945,
+  "total_files": 74,
+  "mutations_rejected_each": 8,
+  "bundle_sha256": "e2535b6735e9fd400955fd201ecb2650733585ad7305a7e215690ae34827468b",
+  "status": "FULL_BUNDLE_HASH_MANIFEST_AND_REPORT_VALIDATED",
+  "new_lean_run": false,
+  "manifest_files": 73,
+  "started_utc": "2026-11-03T21:44:19.775346+00:00",
+  "source_sha": "ace78c3bb3f31d14244aa5acd61829c5d99ece34",
+  "finished_utc": "2026-11-03T21:44:48.945334+00:00"
+}
