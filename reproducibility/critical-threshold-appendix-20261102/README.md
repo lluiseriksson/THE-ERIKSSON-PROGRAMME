@@ -1,3 +1,24 @@
+# Current consolidated revision — unit113,4November2026
+
+The current appendix is10pages,350079bytes, SHA256b441fbf76bd88647f1e62f529f16451a59d8b774aaef7e6560d5ba8648936d97, assembled from immutable ba44a9f9e3d7ec976e082c4c863fdbe50282843e. It now groups the aspect-ratio limitation, fixed/free-penalty obligations, sparse-point obstruction and the separately Lean-verified four-cycle with the prior critical theorem. This is the same existing dossier, not a separate paper or AIRR deposit.
+
+OwnColab121 completed both TeX passes and rendered all10pages; zero layout/reference warnings. All10exact PNGs were individually inspected. Read FIRST-EXACT-PDF-REVIEW121.md for the first exact-PDF self-assessment6/10, full rubric/eight objections/model context/visual audit. Same preparing Codex agent, served backend/effort unexposed; no independent/human review, grade inheritance or repeated grade-seeking review. The PDF bytes were not edited afterwards.
+
+- Source TeX canonicalLF SHA25656460bffb7abaf16187bd07e168fc248bd15fe7a21d211da2dff371cccfc08ca.
+- Map canonicalLF SHA2561268e1bcaf0be45ae44bf9df83387dc9d5e453f6f07805c0534a784088b51e45.
+- Public package121-public-reproducibility.zip SHA2562bed3d858f6026bb6bf618bf256f9060d7ac314e3da416bd04459d2cb82290b8;561012bytes,34entries/33manifestedfiles.
+- Complete render121-full.zip SHA256cad2ffcabe6fcf41070b3d1431384b681bbdb7d68976e252782096350af0ecfa;3023635bytes,38entries/37manifestedfiles. Actual outputs, decimal exit sentinels, tool/package versions, source, PDF and all pages included.
+- Allowlist28files atd40ac5934919eeca7e9b71c16cf055382ef1e032; inner109/115/116/117/118 manifests8/73/34/34/69files rehashed. Rendering runs no Lean or mathematical fixtures; prior118 supplies the focal formal certificate only.
+- Complete119failure retained (rawCRLF versus normalizedLF map pin); complete120failure retained (compiled PDF rejected for9.52104pt overfull observation line).121 changes that layout and pins, without weakening a theorem. Reports and first exact review describe both failures.
+
+All own CPU/high-RAM notebooks were prepared disconnected, automatically released and0sessions verified after each. Rounded units1765.71 do not establish zero consumption; exact total connected duration unavailable.121script2026-11-03T23:53:55.099659–23:55:15.240779UTC; UI97.229seconds. PDF metadata uses fixed2November SOURCE_DATE_EPOCH for reproducibility, not the actual render date. Private UI/profile/resource captures remain onD, outside public git/package.
+
+The general critical rectangular-mean question is OPEN. Both stopped construction routes retain counter3; this consolidation resets neither. New geometric/shorted/free-penalty/physical adapters remain analytic, not covered by the finite-cycle oracle. PR29 remains20/41,TermSource0; interacting/continuum gap open. Existing AIRRv4/pending97bdpermission unchanged; no new send/license/grant/receipt/acceptance/publication.
+
+## Historical seven-page record (unit105; applies only at its stated revision)
+
+The following frozen record, old scores and old next-action counters describe the OLD seven-page PDF and its exact source revision. The PDF path below must be read at that historical revision; at the current head it contains the10page consolidated PDF identified above. Its historical assessment is not the assessment of the current artifact.
+
 # Critical threshold appendix and exact PDF review
 
 Unit105 consolidates the existing critical global spectral inverse-moment theorem, all lower positive inverse-exponent counterexamples, and the full dyadic-cube obstruction versus same-profile rectangular escape in ONE seven-page appendix for the existing dossier. This unit adds no new mathematical theorem, physical hypothesis discharge, or new independent paper. The sole active question remains the unrestricted axis-aligned rectangular mean endpoint. PR29 stays20/41,TermSource=0.
