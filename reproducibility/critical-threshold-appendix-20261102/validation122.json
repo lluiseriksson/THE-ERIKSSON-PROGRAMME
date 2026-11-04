@@ -1,7 +1,7 @@
 {
   "self_score": 6,
   "rounded_units_before": 1765.71,
-  "first_exact_review_sha256": "8388e86140445f5afb351dea8d01bfd0e83a48243a5c64548f4a06b7a4aef9fe",
+  "first_exact_review_sha256": "6bcb87729bce24b7ab2fcf7c4687ed50ef3f14aabcfe92c31a9650952fc39230",
   "inner_manifest_files": 40,
   "independent_review": false,
   "old_scores_inherited": false,
@@ -81,5 +81,6 @@
   "public_package_sha256": "5051358a23b033dc9d97d01a1016ff081537ab546e6bc920e99604d9c612a997",
   "pdf_bytes": 369605,
   "external_review": false,
-  "bundle_sha256": "b4fbf6aeefa8fcdccf01bfed07c70128f04d11d0158f97924c17f63f1952cd88"
+  "bundle_sha256": "b4fbf6aeefa8fcdccf01bfed07c70128f04d11d0158f97924c17f63f1952cd88",
+  "metadata_normalization": "Review markdown normalized toUTF8LF after rawremote comparison foundCRLF difference; no semanticreview/PDFchange or regrading"
 }
