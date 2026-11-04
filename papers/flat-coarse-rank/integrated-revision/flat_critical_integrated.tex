@@ -646,7 +646,10 @@ retains a polynomial observation and a globally Lipschitz penalty:
  C(A)=\|A\|^2\in\R,\qquad \Phi(y)=c|y|,
  \qquad DC(0)=0,\qquad \Phi(C(A))=c\|A\|^2.
 \]
-Thus output dimension one suffices even when $Q_n=0$. No finite local
+This example already gives the bound for the actual admissible choice $w=0$,
+with $Q_n=K_{0,n}\succeq0$. The zero-form interpretation is only an abstract
+illustration, not an instance of this nonnegative-weight lattice family.
+No finite local
 quadratic upper constant for $\Phi$ exists, since $c|y|/y^2=c/|y|$.
 Likewise, $C(A)=\|A\|^{3/2}$ and $\Phi(y)=c|y|^{4/3}$ are both $C^1$
 with zero derivatives at zero, yet their composition is exactly quadratic.
@@ -1265,7 +1268,6 @@ not been deposited, accepted or published. Earlier exact-artifact permissions,
 licenses and reviews are not transferred to a changed PDF. No new historical
 grant, legal acceptance, external-model transfer or editorial outcome is claimed.
 
-\clearpage
 \section{From necessary rank budgets to sufficient observations}
 The preceding sections establish necessary information budgets and their
 formal and analytic boundaries. The continuation below asks when actual
@@ -1576,11 +1578,11 @@ They are collected here as limitations of the same dossier, not as additional pa
 
 \subsection{Critical inverse mass does not remove rectangle geometry}
 For a rectangle $R$ of side lengths $l_i$, set $V=\prod_i l_i$, $L=\max_i l_i$,
-$\kappa=L^2/V^{2/D}$ and $\mu=\sum_R a^{-D/2}$. The endpoint Sobolev estimate
+$\kappa=L^2/V^{2/D}$ and $\eta_R=\sum_R a^{-D/2}$. The endpoint Sobolev estimate
 on balanced cubes, with $q=2D/(D+2)$, transfers to arbitrary rectangles by repeated
 coordinate reflection and gives
 \begin{equation}\label{ap:eq:aspect}
- \sum_R|u-\bar u_R|^2\leq A_D D^{2/D}\kappa\mu^{2/D}\E_{a,R}(u).
+ \sum_R|u-\bar u_R|^2\leq A_D D^{2/D}\kappa\eta_R^{2/D}\E_{a,R}(u).
 \end{equation}
 Here the energy uses original internal edges and their actual starting-vertex weights.
 The full reflection multiplicities and graph adapters to the classical estimate
@@ -1593,9 +1595,9 @@ along a longest side, direct sums give
  \sum_Ru^2=V(L^2-1)/12,\qquad
  \E_{a,R}(u)=aV(L-1)/L.
 \]
-Their ratio is $L(L+1)/(12a)\geq\kappa\mu^{2/D}/12$.
+Their ratio is $L(L+1)/(12a)\geq\kappa\eta_R^{2/D}/12$.
 On the thin rectangle of lengths $(L,1,\ldots,1)$, choosing $a=L^{2/D}$ makes
-$\mu=1$ while this ratio diverges. Thus compressing a cube-tree chain into thin
+$\eta_R=1$ while this ratio diverges. Thus compressing a cube-tree chain into thin
 rectangles cannot simply reuse a shape-independent inverse-mass certificate.
 This prescribed-block test does not defeat every global partition: omitted crossing
 edges and a different partition may help. The successful partition in
