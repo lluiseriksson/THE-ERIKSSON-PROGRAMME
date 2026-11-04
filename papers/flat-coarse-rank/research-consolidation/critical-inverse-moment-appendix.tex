@@ -13,7 +13,7 @@
 \newcommand{\nct}{\mathsf n}
 \title{Critical inverse moments and local observation geometry on finite flat lattices}
 \author{Lluis Eriksson}
-\date{4 November 2026: consolidated revision}
+\date{4 November 2026: spatial constructions consolidated}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -27,7 +27,11 @@ profiles admit a constant-size unrestricted rectangular partition. The finite Fo
 and flow adapters are proved analytically, and exact finite diagnostics are recorded
 separately from formal verification. A four-cycle counterexample now has a focal Lean
 proof: coercivity on the zero-mean kernel does not justify the same fixed penalty.
-The distinction from a freely chosen penalty is essential. The spectral mechanism is classical; independent
+The distinction from a freely chosen penalty is essential. We also give a general
+rectangular bound with exponent $D/4$, an obstruction to its single-threshold
+mechanism, and the target exponent for supplied scaled cubes. A fixed-moment
+two-neighbour example prevents deriving that exact cube decomposition universally.
+The spectral and geometric inputs are classical; independent
 novelty, an interacting gauge-theory gap and a continuum limit are not established.
 This is a consolidation appendix, not a separate paper or AIRR deposit.
 \end{abstract}
@@ -451,6 +455,8 @@ This comparison rules out a point-sampling shortcut, not rectangular averages or
 singletons supplemented by complementary block means. A nonlinear local observation
 is tested on sufficiently small multiples of these fields.
 
+\input{spatial-constructions.tex}
+
 \section{Evidence provenance and verification limits}\label{sec:evidence}
 The analytic sources, their exact revisions and the executable finite diagnostics are
 collected in a hash-allowlisted companion package. Its map gives full SHAs and SHA256
@@ -495,6 +501,11 @@ This verifies Proposition~\ref{prop:formal-cycle}'s finite identities, not the
 geometric, shorted-operator, free-penalty or general rectangular adapters.
 Own Colab115 separately checked 18 finite diagnostics and eight real mutations in
 each mode of two fresh clones. Finite examples do not establish their general claims.
+Section~\ref{sec:spatial-new} consolidates analytic sources at
+\texttt{0fa0d91000f6}, \texttt{312f476ea6e5}, \texttt{f52ae344f61f},
+\texttt{1850be2aa6d5} and \texttt{b348f4488b3a}. These new spatial proofs
+have no Lean certificate or new numerical verification. PDF assembly does not
+change that status. The earlier exact PDF and its assessment remain preserved.
 
 \section{Model assessments and review context}
 The prior analytic-source first self-assessments were 6/10 for the critical spectral
@@ -530,6 +541,10 @@ blocker identified. Formalization and consolidation of the existing results are 
 work, not additional active new research questions.
 
 \begin{thebibliography}{9}
+\bibitem{deberg} M.~de Berg, \emph{Linear Size Binary Space Partitions for
+Uncluttered Scenes}, UU-CS-1998-12 (1998), Section2.1, Lemmas2.1 and2.4,
+Theorem2.5 and Corollary2.9.
+\url{https://ics-archive.science.uu.nl/research/techreps/repo/CS-1998/1998-12.pdf}.
 \bibitem{anderson} W.~N. Anderson, Jr. and G.~E. Trapp,
 \emph{Shorted Operators. II}, SIAM J. Appl. Math. 28(1) (1975), 60--71.
 \url{https://doi.org/10.1137/0128007}.

@@ -1,0 +1,132 @@
+\section{Constructive rectangular bounds and their limits}\label{sec:spatial-new}
+Retain $m\geq1$, $1\leq a\leq2m$, exact mean $m$, \eqref{eq:moment},
+and $p=D/2$. All assertions in this section remain analytic.
+
+\subsection{A general threshold construction}
+For an interval of length $l$, the identity
+$\operatorname{Var}(u)=l^{-1}\sum_{x<y}|u(x)-u(y)|^2$ and path
+Cauchy--Schwarz give coefficient at most $l(l-1)/4$ per edge: each
+crossing pair has distance at most $l-1$, and at most $l^2/4$ pairs cross
+any edge. Product variance tensorization therefore yields, for a rectangle
+of maximal side $L$,
+\begin{equation}\label{eq:boxvar}
+ \sum_R|u-\operatorname{mean}_R u|^2
+ \leq \frac{L(L-1)}4\sum_{\text{internal forward edges of }R}|du|^2.
+\end{equation}
+There is no additional factor $D$ in this tensorization.
+
+Fix $\tau\geq1$. If $\tau<c/4$ use singletons. Otherwise set
+$\ell=\min\{n,\lfloor2\sqrt{\tau/c}\rfloor\}$ and start with a grid
+whose sides have length at most $\ell$. Isolate each vertex with $a<\tau$
+as a singleton. Its current rectangle minus that vertex splits into at most
+$2D$ rectangles by the first coordinate differing from that vertex. Delete
+empty pieces and preserve earlier singletons. Remaining rectangles have
+$a\geq\tau$ and side at most $\ell$. Equation~\eqref{eq:boxvar},
+nonnegative omitted edges and normalized-mean orthogonality give
+\begin{equation}\label{eq:globalmeans}
+ c\|U\|^2\leq\E_a(U)+c\|C_{\mathcal P}U\|^2,
+ \quad (C_{\mathcal P}U)_{R,j}=\sqrt{|R|}\operatorname{mean}_R U_j
+\end{equation}
+for ALL cochains. Singleton residuals vanish, including $n=1$; parallel
+edge occurrences for $n=2$ are counted separately, and wrap edges can be
+omitted positively. With $B_c=(1+\sqrt c)^D$,
+\[
+ |\mathcal P|\leq B_c\max\{1,n^D/\tau^p\}+2D\#\{a<\tau\},\quad
+ \#\{a<\tau\}\leq M n^D\tau^p/m^p.
+\]
+The singleton branch satisfies this count since $B_c\tau^{-p}>1$ there.
+Taking $\tau=\sqrt m$ yields the weaker general bound
+\[
+ \dim F\leq h(B_c+2DM)\max\{1,n^D/m^{D/4}\}.
+\]
+
+\subsection{Every global threshold can lose the target order}
+Let $\gamma=\max\{1,c/4\}$, $n=t^2$, $t\geq2$, $m=\gamma n^2$,
+$b=\gamma n$, $S=\{0,\ldots,t-1\}^D$, and $f=n^{-p}$. Set $a=b$ on
+$S$, $a=A=(m-fb)/(1-f)$ outside. Then $1\leq a\leq2m$, the mean is
+$m$, and the critical moment is less than $2-f$. The target maximum is one.
+For any global $\tau\geq1$, consider the preceding algorithm with any
+translated initial grid or excision order, retaining grid boundaries and
+every excised singleton. If $\tau\leq b$, no vertex is weak and the grid
+volume bound gives
+\[
+ |\mathcal P|\geq n^D/(2\sqrt{b/c})^D
+     =(c/(4\gamma))^p n^{D/2},
+\]
+or the singleton branch is larger. For large $n$ the grid side is less
+than $n$. If $\tau>b$, all $t^D=n^{D/2}$ weak vertices remain distinct
+singletons. Every such threshold therefore loses the target order.
+
+For the SAME profile retain the whole weak cube and split its complement
+by the first coordinate outside it, giving $D+1$ rectangles. On $S$,
+$ct^2/(4b)=c/(4\gamma)\leq1$; outside, $A\geq m$ and
+$cn^2/(4A)\leq1$. Equation~\eqref{eq:boxvar} proves
+\eqref{eq:globalmeans} for this constant-size partition. This is a
+mechanism obstruction, not a counterexample to every rectangular partition.
+
+\subsection{Supplied scaled cubes attain the target order}
+Suppose additionally that disjoint integer cubes $S_k$ of side $L_k$,
+nonwrapping in one common root, satisfy for fixed $\beta\geq1$
+\begin{equation}\label{eq:scaled-assumptions}
+ \begin{split}
+ cL_k(L_k-1)/4\leq a(x)\leq\beta L_k^2 &\quad(x\in S_k),\\
+ a(x)\geq cn(n-1)/4 &\quad(x\notin\cup_k S_k).
+ \end{split}
+\end{equation}
+These are extra coefficient and geometric assumptions. Each cluster charges
+at least $\beta^{-p}$ to $\sum_xa(x)^{-p}$; thus
+$J\leq\beta^p M n^D/m^p$.
+
+The solid-fat-object BSP construction of de Berg~\cite{deberg} has linear
+size in fixed dimension. Its first stage uses axis-parallel cuts; its second
+uses object facet planes. For solid axis-aligned cubes both stages are
+axis-parallel. Replace $S_k=\prod_i\{b_{ki},\ldots,b_{ki}+L_k-1\}$ by
+$Q_k=\prod_i[b_{ki}-1/4,b_{ki}+L_k-3/4]$. These are positive-side solid
+cubes of fixed fatness, strictly disjoint even for touching integer-cell
+interpretations; their integer points are precisely $S_k$ and are interior,
+including when $L_k=1$.
+
+Clip BSP leaves to $[-1/2,n-1/2]^D$, assign each cut boundary consistently
+to one child, take integer points and delete empty cells. If an assigned
+integer point belongs to $S_k$, a ball about it lies in $Q_k$, so the open
+leaf also meets $Q_k$. Hence one leaf's integer points belong to at most one
+cluster. Refine it with that cube's $2D$ facets, at most $3^D$ subrectangles,
+each inside one cluster or outside all clusters. Fragmentation is permitted;
+whole-cluster preservation is unnecessary. Consequently, for dimension-only
+$A_D\geq1$,
+\[
+ |\mathcal P|\leq A_D\max\{1,J\},\qquad
+ \dim F\leq h A_D(1+2^p\beta^pM)\max\{1,n^D/(1+m)^p\}.
+\]
+Inside a cluster fragment maximal side is at most $L_k$, outside at most
+$n$. Equations~\eqref{eq:scaled-assumptions} and~\eqref{eq:boxvar} prove
+\eqref{eq:globalmeans}. Projection separation and a high-budget restriction
+are unnecessary. This uses classical geometry; it does not derive the
+supplied cubes from the original moment.
+
+\subsection{The exact cube decomposition is not universal}
+For fixed $c,\beta$ take arbitrarily large integer $n\geq3$, $m=n$,
+$W=\{e_1,-e_1\}$, $f=2/n^D$, with $a=1$ on $W$ and
+$a=A=(n-f)/(1-f)$ elsewhere. Then $n<A\leq2n$, mean $a=n$, and the
+critical moment is less than $2n^{-p}+1-f\leq2$. Choose also
+$n>\max\{\beta,8\beta/c,1+8/c\}$ and $n\geq c$.
+Every vertex has $a<cn(n-1)/4$, so any family satisfying
+\eqref{eq:scaled-assumptions} must cover zero. A side-one cube containing
+zero would require $A\leq\beta<n$. A cube of side $L\geq2$ contains at
+least one of $e_1,-e_1$, in every translated root. Its lower bound forces
+$L^2\leq8/c$, while its upper bound at zero requires
+$A\leq\beta L^2\leq8\beta/c<n<A$. Even allowing overlap cannot repair
+this exact decomposition.
+
+The SAME profile nevertheless admits a strong grid with
+$\ell=\min\{n,\lfloor2\sqrt{A/c}\rfloor\}$ and two singleton excisions.
+Equation~\eqref{eq:globalmeans} holds and
+\[
+ \dim F\leq h\bigl[2^p(1+\sqrt c)^D+4D\bigr]
+                  \max\{1,n^D/(1+m)^p\}.
+\]
+There are at most $\lceil n/\ell\rceil^D+4D$ blocks. If $\ell<n$,
+$\ell\geq\sqrt{A/c}$; if $\ell=n$, there is one grid box. Remaining
+rectangles have coefficient $A$ and weak residuals are singletons. The
+universal supplied-cube route is refuted. The original unrestricted
+rectangular question is neither proved nor refuted.

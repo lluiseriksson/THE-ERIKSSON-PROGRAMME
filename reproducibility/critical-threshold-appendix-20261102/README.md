@@ -62,3 +62,11 @@ This assembly performs NO new Lean execution or mathematical fixture run. Prior1
 ## Next bounded action
 
 After the small PR passes required exact-head checks, integrate ordinarily and verify the remote tree/PDF/package. Then return to one anisotropic rectangular mechanism: prove a partition-count/variance bound from the critical moment, or a falsifier defeating ALL rectangular partitions. No new mathematics in104or105, so no-progress counter2. At the third such unit document a concrete obstruction and change route. The translated full cube-tree route is already ruled out; do not repackage it as an unrestricted-rectangle refutation.
+
+## Spatial consolidation 122 on 4 November 2026
+
+The current appendix PDF has12pages andSHA2566585330e9f6cf4db6fc3fc16e0c3971177cb90db6d317d987a023afc8442230e. It consolidates units114–118 into the same dossier. Its immutable TeX/map/source revision is08a6e0191a85c0eb62eb8dc9288c965580e9aa4f; render122.py pins that revision and rehashes32allowlisted sources/evidence artifacts. No new Lean or numerical diagnostic was run. The full303chunk bundle and public package are retained as render122-full.zip and122-public-reproducibility.zip.
+
+All12renderedpages were visually inspected. FIRST-EXACT-PDF-REVIEW122.md contains the FIRST assessment of these exact bytes: preparing Codex agent6/10, eight material objections, actual backend/effort unexposed, no independence and no old grade inheritance. This appendix has not been deposited, accepted or published in AIRR. Earlier121bytes/review remain in their existing archives and git history.
+
+Publication integration remains required: combine/reconcile the existing main-manuscript scope and this appendix as one concrete reviewable revision before the supported exact-artifact historical grant/license step. The current ordinary AIRR deposit grant cannot authorize a linked historical revision. Do not consume its last upload to duplicate this appendix as a new paper. No human question is repeated by this preparation.

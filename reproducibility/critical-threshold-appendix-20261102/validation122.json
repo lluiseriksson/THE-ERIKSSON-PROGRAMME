@@ -1,0 +1,86 @@
+{
+  "self_score": 6,
+  "rounded_units_before": 1765.71,
+  "first_exact_review_sha256": "6bcb87729bce24b7ab2fcf7c4687ed50ef3f14aabcfe92c31a9650952fc39230",
+  "inner_manifest_files": 40,
+  "independent_review": false,
+  "old_scores_inherited": false,
+  "rounded_units_after": 1765.71,
+  "exact_consumption_known": false,
+  "AIRR_deposit": false,
+  "chunks": 303,
+  "numerical_execution": false,
+  "layout_warnings": [],
+  "pages": [
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 1
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 2
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 3
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 4
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 5
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 6
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 7
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 8
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 9
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 10
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 11
+    },
+    {
+      "defects": [],
+      "visual_inspected": true,
+      "page": 12
+    }
+  ],
+  "source_sha": "08a6e0191a85c0eb62eb8dc9288c965580e9aa4f",
+  "runtime_released_ui": true,
+  "pdf_sha256": "6585330e9f6cf4db6fc3fc16e0c3971177cb90db6d317d987a023afc8442230e",
+  "public_version": false,
+  "lean_execution": false,
+  "public_package_sha256": "5051358a23b033dc9d97d01a1016ff081537ab546e6bc920e99604d9c612a997",
+  "pdf_bytes": 369605,
+  "external_review": false,
+  "bundle_sha256": "b4fbf6aeefa8fcdccf01bfed07c70128f04d11d0158f97924c17f63f1952cd88",
+  "metadata_normalization": "Review markdown normalized toUTF8LF after rawremote comparison foundCRLF difference; no semanticreview/PDFchange or regrading"
+}
