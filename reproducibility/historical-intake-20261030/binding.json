@@ -1,0 +1,16 @@
+{
+  "version": "v2",
+  "record_id": "arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "supersedes_version_id": "arr:version:44c1db02-4eae-4b1c-ba2a-bb5d6b994c97",
+  "sha256": "b37f2fe86b7a8a526ad02f8b28491c300a9ff72d5653536bc5532e8c9468ed8f",
+  "changelog": {
+    "scope": "Explicitly linear observations and linear bounded-rank repairs; penalty may be nonlinear. Explicit integer hypotheses; nonlinear observation counterexample added. Unit spacing, finite flat full-domain scope; no interacting Hessian or physical mass-gap result.",
+    "version": "Proposed v2 linked to existing public ARR-2026-7EPM3V3DP796BBRR v1 / ai.viXra2608.0015v1. Public page checked30October2026 still lists onlyv1; server-installed catalogue must independently match before authorization. Not an ordinary new deposit.",
+    "mathematics": "Retain principal exact-kernel results and consolidate constructed physical Fourier band, arbitrary linear measurement/rank budget, separate bounded-rank sector obstruction, uniform quantifiers, and analytic classical fixed-map Schur criterion with counterexample. No weighted PR98 theorem added.",
+    "reproducibility": "Distinct old and new tested source anchors, preserved dual-clone evidence, exact consumer declaration map and zero-Sigma specialization; new exact PDFb37f compiled/rendered in Colab with8-page visual QA. Full previous exact-PDF model report preserved; corrected-artifact assessment recorded separately.",
+    "editorial": "No acceptance, publication, human peer review, numerical score or independence claimed. Actual configured model versus hidden backend identity distinguished. Author is AIRR operator; any editorial decision and exact-artifact permission must be recorded separately."
+  },
+  "version_id": "arr:version:1047e4db-2050-4f7f-9f41-9c526bdbe570",
+  "parent_sha256": "48b2b725422263a272d9862621fa723d3d82c9d186dd7151be39c6ff1e3ff2e7"
+}
