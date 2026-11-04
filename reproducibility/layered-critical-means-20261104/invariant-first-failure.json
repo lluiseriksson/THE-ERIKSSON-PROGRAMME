@@ -1,0 +1,12 @@
+{
+  "pass_claimed": false,
+  "preservation": "Original failed source remains in Git history; full actual Colab error and runtime-release evidence retained privately in programme evidencia-128",
+  "optimized_run": false,
+  "error": "ValueError: fixture requires exact rational square root",
+  "correction": "b8765be82c7405f88e4acf9ad366c80043bb2c5a changes fixture scales1,2,3 to1,4,9",
+  "normal_exit": 1,
+  "where": "partition threshold fixture scale2 under odd ambient dimension",
+  "failed_source": "309247968e16a02dced92d43a360a3f05bf19aa0",
+  "theorem_source_changed": false,
+  "diagnosis": "Fixture helper requires square rational threshold scale; using scale2 was incompatible, not a theorem counterexample"
+}
