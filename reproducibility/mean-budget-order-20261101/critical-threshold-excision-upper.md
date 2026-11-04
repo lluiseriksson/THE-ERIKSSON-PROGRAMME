@@ -213,7 +213,7 @@ independent model/human review or inherited PDF/source grade. No numerical
 assessment is assigned to this note. Material objections: (3) is weaker
 than the target; (8) is substantial additional coefficient information;
 the isolation construction is not kernel-verified; the product input is
-classical; no optimality or originality established; no interacting or
+classical; no general spatial optimality or originality established; no interacting or
 continuum gap. Group with the existing dossier, not a micro-paper.
 
 ONE active question remains the original critical rectangular target.
@@ -229,3 +229,167 @@ estimate is supplied: its uniform-profile failure is already proved above.
 After three units without a substantial further reduction, document the
 specific intermediate-conductance blocker and change route. PR29 remains
 20/41,TermSource=0. No AIRR/ai.viXra deposit or publication occurs here.
+
+## 8. Unit115: every single-threshold point-excision rule can lose the target
+
+4November2026. This strengthens Section6 from one balanced rule on a
+uniform profile to ALL choices of a single threshold on the SAME explicit
+nonuniform family. It is a mechanism-level counterexample, not a
+counterexample to every rectangular partition. No new PDF, grade, numerical
+run or Lean verification. The prior unit114 statements remain unchanged.
+
+### Exact family and quantifiers
+
+Fix D>=3,Nc>=2,c>0 and put gamma=max(1,c/4), p=D/2. For integers t>=2 let
+
+    n=t^2,   m=gamma*n^2,   b=gamma*n,
+    S={0,...,t-1}^D,   s=|S|=t^D=n^p,
+    f=s/n^D=n^(-p),   A=(m-f*b)/(1-f),
+    a(x)=b on S, and A off S.                           (10)
+
+Use sufficiently large t that n>4*gamma/c. For EVERY threshold tau>=1,
+even chosen after reading the entire profile and depending arbitrarily on
+t, the Section2--3 algorithm produces at least
+
+    N_tau >= kappa*n^(D/2),
+    kappa=(c/(4*gamma))^(D/2)>0.                        (11)
+
+This holds for any translated initial coordinate grid, and any order of
+singleton excisions. The algorithm retains its starting grid, only refines,
+uses maximum initial side ell<=floor(2sqrt(tau/c)) when tau>=c/4, and
+retains EACH a<tau vertex as a distinct singleton. The tau<c/4 branch is
+the singleton grid. It does not permit subsequent coarsening, replacing
+bad singletons by cluster averages, deleting outputs or changing the map.
+Those operations would be different constructions and are NOT refuted.
+
+Yet the very SAME profiles admit an explicit partition with only D+1
+rectangles and the actual global all-cochain fixed-penalty inequality (1).
+All family parameters D,c,Nc and the critical moment bound M=2 are fixed,
+while the original target maximum is1 for every t.
+
+### The original coefficient constraints are verified, not assumed
+
+Since f<=1/2, b>=1 and b<=m, direct algebra gives
+
+    A=m+f*(m-b)/(1-f) >=m,
+    A<=m/(1-f)<=2m,
+    1<=a<=2m,   mean(a)=f*b+(1-f)*A=m.
+
+Moreover m/b=n and A>=m, so the EXACT critical moment satisfies
+
+    mean((m/a)^p)=f*n^p+(1-f)*(m/A)^p <=2-f<2.           (12)
+
+Thus M=2 works uniformly. Because gamma>=1,
+max(1,n^D/(1+m)^p)=1. Unlike the fixed weak-box example of unit103, this
+weak cube GROWS with t, and its weak coefficient b also grows: there is
+no fixed W bounding a on S. The additional bounded-weak-coefficient gap
+from Section5 is therefore not silently available.
+
+### Why EVERY threshold loses: a complete two-case proof
+
+If tau<=b, then B_tau is empty since A>=m>=b. For tau<c/4 the output is
+the singleton grid, with n^D leaves. Otherwise ell=floor(2sqrt(tau/c)),
+capped at n. Our choice n>4gamma/c implies
+
+    2sqrt(tau/c)<=2sqrt(gamma*n/c)<n,
+
+so the cap does not activate. Every initial cell has volume<=ell^D,
+independently of translation or terminal-interval alignment. No bad point
+is excised and no cell is coarsened. Hence
+
+    N_tau >= n^D/ell^D
+           >= n^D/(2sqrt(gamma*n/c))^D
+            = kappa*n^(D/2).
+
+The same bound holds in the singleton branch, since kappa<=1.
+Equality tau=b belongs to this case because the bad threshold is STRICT.
+
+If tau>b, every one of the s=n^(D/2) vertices of S belongs to B_tau.
+They are distinct retained singleton leaves at termination, regardless
+of what happens to the complement. Thus N_tau>=s>=kappa*n^(D/2).
+This also covers tau>A, when all vertices are bad. It is a lower bound
+on the ACTUAL retained leaves, not on an upper-bound formula in Section4.
+This proves (11) for all finite tau>=1.
+
+The chosen observation codomain is the literal h*N_tau-dimensional space
+of all normalized block outputs. We do not turn the leaf-count statement
+into a lower bound for arbitrary compressed observations on the physical
+subspace. No nonlinearity or interaction claim is involved.
+
+### A D+1-block averaged observation actually succeeds
+
+Retain the WHOLE cube S as ONE block, not s singleton blocks. Partition
+its complement into the D rectangles
+
+    R_i=[0,t-1]^(i-1)*[t,n-1]*[0,n-1]^(D-i), i=1,...,D.
+
+Every point outside S has a unique first coordinate outside [0,t-1],
+proving coverage and disjointness. All these blocks are nonempty for t>=2.
+On S the coefficient is b, so the SAME proved path/product estimate (5)
+gives
+
+    c*Var_S(U) <= [c*t^2/(4*b)]*E_a,S(U)
+               = [c/(4*gamma)]*E_a,S(U) <= E_a,S(U).
+
+On each R_i all internal edges start at coefficient A>=m=gamma*n^2,
+and every side is <=n, so
+
+    c*Var_(R_i)(U) <= [c*n^2/(4*A)]*E_a,R_i(U)
+                   <= [c/(4*gamma)]*E_a,R_i(U)
+                   <= E_a,R_i(U).
+
+Apply these estimates coordinatewise to the actual field. Internal edges
+of the D+1 blocks are disjoint; omitted crossing/wrap edges are positive.
+With the exact orthogonal decomposition for normalized means this proves
+
+    c||U||^2 <= E_a(U)+c||C_P(U)||^2 for ALL cochains,
+    #P=D+1,  dim F=h*(D+1).                             (13)
+
+This is an actual successful observation on exactly the family in (10),
+not merely the spectral-existence theorem or an assumed kernel estimate.
+It consequently holds on actual divergence-zero fields as a restriction.
+No block-average divergence-preservation assertion is needed.
+
+### Interpretation and verification limits
+
+The D/4 decay scale of Section1 is sharp as a UNIFORM RATE FOR THIS
+single-threshold point-excision algorithm family: along (10), n^D/m^(D/4)
+is a fixed multiple of n^(D/2), matching (11). Any proposed larger decay
+exponent in m for that family is contradicted by the same sequence. It is
+NOT the optimal rate for unrestricted rectangular observations; (13)
+already gives a constant number of blocks on these very profiles.
+
+The obstruction is an intermediate-conductance cluster with b proportional
+to its squared side length. A small threshold unnecessarily resolves the
+whole torus at scale sqrt(b); a large threshold unnecessarily isolates
+every vertex of the cluster. A stable cluster average avoids both costs.
+Choosing a different global threshold, a translated grid or excision order
+cannot fix THIS mechanism. The Section5 target bound under an extra fixed
+coefficient gap remains valid and is not contradicted.
+
+Analytic checks: t integer ensures n=t^2 and exact s=n^(D/2) even for odd D;
+actual arithmetic mean/cap/lower bound; fixed M=2; gamma and n restrictions;
+strict tau=b boundary, small tau, tau>A and capped-grid cases; actual-volume
+leaf lower bound versus an upper formula; preservation of singleton outputs;
+same-profile D+1-block coverage; strong starting-vertex weights and weak
+cube normalization; all-cochain/fixed-penalty/physical restriction distinction.
+No executable arithmetic, Lean or numerical check was run.
+
+The only classical analytic input remains the variance tensorization cited
+in Section7; its primary author-hosted statement and conditioning/Jensen
+proof were rechecked this unit. The cube-plus-first-outside complement
+geometry is adapted from the dossier's unit103, with growing weak size and
+conductance and an additional ALL-threshold lower bound. No independent
+novelty or exhaustive priority finding is claimed. Same preparing Codex
+agent, actual served backend/effort unexposed; no independent/human review,
+new numerical grade, PDF-score inheritance, deposit or publication.
+
+Keep ONE active original critical rectangular question. This is unit2 of
+the actual-excision route without general-target closure; it gives a useful
+class-wide algorithm refutation. STOP single-global-threshold/per-vertex
+excision as a route to that target now, rather than waiting for a third
+retuning attempt. Keep its valid D/4 theorem. Old stopped-route counters3
+remain unchanged and are not reset. The next mechanism needs actual stable
+averages of intermediate-conductance CLUSTERS with a proved rectangular
+count; (13) supplies a closed benchmark, not that general construction.
+PR29 remains20/41,TermSource=0; interacting/continuum gap stays open.
