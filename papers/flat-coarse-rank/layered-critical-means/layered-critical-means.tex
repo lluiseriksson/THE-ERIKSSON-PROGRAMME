@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\title{Critical rectangular means for layered finite-lattice coefficients}
+\author{Lluis Eriksson}
+\date{4 November 2026 --- analytic research note, not a new deposit}
+\begin{document}\maketitle
+\paragraph{Status.} The original unrestricted rectangular question remains open. This note proves its target order for the additional layered class $a(x)=\alpha(x_1)$, constructs the actual partition and observations, and refutes an immediate extension by taking coordinatewise plane minima. No partition, Poincare certificate, cube family or spectral band is assumed. Layeredness IS an extra structural hypothesis and is not derived from the moment. This is not a removal of hypotheses from the general theorem. No new PDF, AIRR submission, external review, Lean verification or numerical execution is claimed; published v5 is unchanged. The analytic argument below has been self-audited by the preparing agent.
+
+Let $D\ge3$, $p=D/2$, $r=D-1$, $X_n=(\mathbb Z/n\mathbb Z)^D$, with counting norms and forward-edge occurrences. The argument also works for $D=2$, but the existing dossier uses $D\ge3$. Let $a(x)=\alpha(x_1)>0$, and
+\[
+ E_a(U)=\sum_{x,i,j}\alpha(x_1)\|U_j(x+e_i)-U_j(x)\|^2.
+\]
+Suppose $\mu\ge1$, $n^{-1}\sum_s\alpha(s)=\mu$, and
+\[
+ \frac1n\sum_s(\mu/\alpha(s))^p\le M.
+\]
+The original extra range $1\le a\le2\mu$ is permitted but not needed in this layered proof. All conclusions concern the specified shared scalar flat energy, not interacting or continuum operators.
+
+\begin{theorem}\label{thm:main}
+For every $c>0$ there is a constructively defined partition $\mathcal P$ into axis-parallel integer rectangles for which the actual normalized means
+\[
+ (C_{\mathcal P}U)_{R,j}=|R|^{-1/2}\sum_{x\in R}U_j(x)
+\]
+satisfy
+\[
+ c\|U\|^2\le E_a(U)+c\|C_{\mathcal P}U\|^2
+\]
+for every cochain (hence every divergence-zero cochain). If there are $h$ real scalar coordinates, $\dim F=h|\mathcal P|$, and
+\[
+ |\mathcal P|\le 2^r\left[1+K_r(c/4)^p M\frac{n^D}{\mu^p}\right],
+ \qquad K_r=\frac{2\,3^r-1}{1-(2/3)^r}.
+\]
+In particular,
+\[
+ \dim F\le h\,2^r[1+2^pK_r(c/4)^p M]
+ \max\{1,n^D/(1+\mu)^p\}.
+\]
+The constants are explicit and deliberately nonsharp; neither $n$ nor coefficient contrast enters them.
+\end{theorem}
+
+\begin{lemma}[A layered block bound]\label{lem:block}
+Let $I$ be an integer interval of length $L\ge2$, let $J_2,\ldots,J_D$ be intervals of lengths at most $L$, and set $B=I\times\prod_{j=2}^D J_j$ and $H_I=L^{-1}\sum_{s\in I}\alpha(s)^{-1}$. Omitting wrap and inter-block edges,
+\[
+ \sum_B\|u-\bar u_B\|^2\le\frac{L^2H_I}{4}
+ \sum_{\text{internal forward edges of }B}\alpha(x_1)\|du\|^2.
+\]
+\end{lemma}
+\begin{proof}
+For $v(z)=L^{-1}\sum_{s\in I}u(s,z)$, conditional variance gives the exact identity
+\[
+ \sum_B\|u-\bar u_B\|^2=
+ \sum_z\sum_{s\in I}\|u(s,z)-v(z)\|^2
+ +L\sum_z\|v(z)-\bar v\|^2.
+\]
+On a fixed normal fibre, the pairwise variance identity is $L^{-1}\sum_{s<t}\|u(s)-u(t)\|^2$. Weighted path Cauchy bounds each pair by its path resistance times its weighted path energy. Every path resistance is at most $R_I=\sum_{s\in I}\alpha(s)^{-1}=LH_I$, including the unused last coefficient harmlessly. Any edge is crossed by at most $L^2/4$ pairs. Thus the first term is at most $(L^2H_I/4)$ times normal-direction energy.
+
+The ordinary product-interval variance inequality for $v$ has constant at most $L^2/4$, with no additional dimension factor. One obtains it by one-dimensional pairwise path Cauchy and variance tensorization; each one-dimensional constant is $l(l-1)/4\le L^2/4$. Moreover, on every transverse edge, weighted Cauchy in the normal coordinate gives
+\[
+ \|d_jv(z)\|^2\le\frac{H_I}{L}\sum_{s\in I}\alpha(s)\|d_ju(s,z)\|^2.
+\]
+Multiplication by the $L$ in the conditional variance identity proves the same constant for the transverse contribution. Normal and transverse edge energies are disjoint, so their common coefficient is taken once rather than summed. All arguments hold coordinatewise for real Hilbert-valued fields.
+\end{proof}
+
+\paragraph{A rejected local constant, preserved.}
+The unweighted expression $L(L-1)H_I/4$ cannot replace $L^2H_I/4$ for arbitrary layer weights. On $I=\{0,1\}$ take $u=(0,1)$, $\alpha(0)=1$, $\alpha(1)=K>1$. The variance is $1/2$, the single internal weighted edge energy is one, and the rejected coefficient is $(1+1/K)/4<1/2$. The proof above deliberately includes the unused terminal inverse weight and uses the safe $L^2$ constant. No stronger endpoint cancellation is claimed.
+
+\paragraph{The algorithm.}
+Use the root interval $\{0,\ldots,n-1\}$ in the normal direction. An interval $I$ is good if $L=1$ or $(c/4)L^2H_I\le1$. Otherwise bisect into consecutive intervals of lengths $\lfloor L/2\rfloor$ and $\lceil L/2\rceil$, and recurse. This terminates, since bad intervals have length at least two. For each normal leaf of length $L$, independently partition every transverse root interval into consecutive pieces of lengths at most $L$. Products with $I$ are the partition rectangles. Leaves with $L=1$ yield only singletons; their residual variance is zero without any coefficient test. Other leaves satisfy Lemma~\ref{lem:block} with constant at most $1/c$. The rectangles cover every site exactly once, since normal leaves partition the root and each leaf's transverse tiling partitions its fibre slab. Positive omitted energies and exact orthogonality of normalized means now prove the global inequality.
+
+\begin{lemma}[Weighted binary-tree count]\label{lem:tree}
+Assign weight $w(I)=L^{-r}$, with $r>0$, to every interval in this splitting tree. Let $\mathcal B$ be its bad (split) nodes and $\mathcal T$ its bad nodes with no bad child. Then
+\[
+ \sum_{I\in\mathcal B}w(I)\le
+ \frac{1}{1-(2/3)^r}\sum_{I\in\mathcal T}w(I),
+\]
+and the final normal leaves $\mathcal L$ satisfy
+\[
+ \sum_{I\in\mathcal L}w(I)\le n^{-r}
+ +(2\,3^r-1)\sum_{I\in\mathcal B}w(I).
+\]
+\end{lemma}
+\begin{proof}
+For every split $L\ge2$, each child length lies between $L/3$ and $2L/3$ (for $L=2$ both lengths are one). A bad node with a bad child therefore has at least one bad child of weight at least $(3/2)^r$ times its own. Choose one such child for each nonterminal bad node. The chosen children are distinct, so the total nonterminal-bad weight is at most $(2/3)^r$ times the total bad weight. Subtracting yields the first inequality. This proof does not assume a dyadic $n$ or absence of one-child bad chains.
+
+At a split, replacing its parent by its two children increases the leaf weight by at most $(2\,3^r-1)w(I)$, using the lower child length bound. Summing these increments starting from the root gives the second inequality.
+\end{proof}
+
+\begin{proof}[Completion of Theorem~\ref{thm:main}]
+Terminal bad nodes are pairwise disjoint intervals: a terminal bad node has no bad descendant, since its good children are never split. For every bad node, convexity ($p\ge1$) and its stopping failure imply
+\[
+ \sum_{s\in I}\alpha(s)^{-p}\ge L H_I^p
+ >(4/c)^p L^{1-2p}=(4/c)^p w(I).
+\]
+Consequently $\sum_{\mathcal T}w(I)\le(c/4)^p\sum_{s=0}^{n-1}\alpha(s)^{-p}$. This charges disjoint terminal intervals, not every nested ancestor to the same mass.
+
+A normal leaf of length $L$ produces $\lceil n/L\rceil^r\le2^r n^r L^{-r}$ rectangles. Lemma~\ref{lem:tree} therefore gives
+\[
+ |\mathcal P|\le2^r\left[1+K_r(c/4)^p n^r\sum_s\alpha(s)^{-p}\right].
+\]
+The moment hypothesis bounds the final sum by $Mn/\mu^p$. Finally $(1+\mu)/\mu\le2$ gives the stated target form. For $n=1$ a single rectangle is a singleton and the conclusion is immediate. No asymptotic, divisibility or generic-position condition was used.
+\end{proof}
+
+\paragraph{Why this is outside the stopped cube-tree route.}
+Only a one-dimensional normal tree is retained. A leaf's transverse mesh is chosen anew at that leaf's scale; transverse grid boundaries are not retained throughout the normal ancestry. The weighted cost of normal leaves is $L^{-(D-1)}$, not one per cube-tree leaf. Its positive exponent permits the geometric tree summation above. The argument does not assert that unrestricted coefficients have this layered geometry, nor that the earlier growing weak cube or two-neighbour examples are layered.
+
+\begin{proposition}[Coordinatewise minimum extension fails]\label{prop:min}
+A general coefficient cannot be reduced to this theorem by taking minima on coordinate planes while retaining a bounded critical moment. There are original-range profiles with bounded critical moment and target maximum one for which, in every coordinate direction, that minimum-envelope algorithm uses at least a constant times $n^{D-1}$ rectangles. The same profiles admit the desired one-rectangle observation.
+\end{proposition}
+\begin{proof}
+For $n\ge3$ let $W=\{(s,s,\ldots,s):s\in\mathbb Z/n\mathbb Z\}$, $f=n^{1-D}$, $b=n^{2/D}$, $\gamma=\max\{1,5c/8\}$ and $\mu=\gamma n^2$. Set $a=b$ on $W$ and $a=A=(\mu-fb)/(1-f)$ elsewhere. Then $1\le a\le2\mu$, mean $a=\mu$, and
+\[
+ \operatorname{mean}((\mu/a)^p)\le f(\mu/b)^p+1-f\le\gamma^p+1.
+\]
+Every coordinate plane contains one weak point, so every plane-minimum envelope is the constant $b$. Its own normalized critical moment is $(\mu/b)^p=\gamma^p n^{D-1}$, which is unbounded. For sufficiently large $n$, every good normal leaf in that envelope has $L\le2\sqrt{b/c}$, including singletons. All resulting rectangles have volume at most $(2\sqrt{b/c})^D$, hence
+\[
+ |\mathcal P|\ge(c/4)^p n^D/b^p=(c/4)^p n^{D-1}.
+\]
+Changing the chosen coordinate or translating the root does not change the constant minimum envelope. This refutes that proposed reduction, not every rectangular partition.
+
+For an explicit successful map, use the same length-three detours as in the separated-defect note, with $\sigma$ a cyclic permutation. For each $x\in W$ and direction $i$, the tails $x-e_{\sigma(i)}$ and $x-e_{\sigma(i)}+e_i$ are outside the diagonal $W$: at least one other coordinate is unchanged, so diagonal membership would force the shift to be zero, contradicting a changed coordinate. Thus all detour edges are strong. For any strong edge there are at most three source-role possibilities; uniqueness within each role follows from the explicit coordinates, without assuming separation. Three-segment Cauchy and congestion at most three yield $E_1\le10E_S$, whence
+\[
+ E_a\ge(A/10)E_1\ge (2A/5)\sin^2(\pi/n)\|U-\bar U\|^2
+ \ge (8\gamma/5)\|U-\bar U\|^2\ge c\|U-\bar U\|^2.
+\]
+Here $\sin(\pi/n)\ge2/n$ and $A\ge\mu$. Exact normalized global means complete the one-box coercivity inequality for all cochains. Since $\gamma\ge1$, the original target maximum is one.
+\end{proof}
+
+\paragraph{Novelty and assessment context.}
+Weighted path Cauchy and Dirichlet-form comparisons are classical; see Diaconis--Saloff-Coste, \emph{Comparison Theorems for Reversible Markov Chains}, Annals of Applied Probability3(3),696--730(1993), Theorem2.1:
+\url{https://www2.stat.duke.edu/~scs/Courses/Stat376/Papers/ConvergeRates/ComparisonReversMC_DiaconisSalaffCoste_AAP1993.pdf}.
+Pechstein--Scheichl's primary NuMaReport2009-12, \emph{Weighted Poincare Inequalities and Applications in Domain Decomposition}, studies coefficient-robust weighted inequalities for structured coefficient distributions, including geometric dependencies:
+\url{https://numa.jku.at/media/filer_public/c8/55/c8554ca7-43df-45fc-a5b7-25f19c4dc28b/2009-12.pdf}.
+Their setup and norms must be compared before any priority claim; this note does not assert that its exact finite counting theorem is absent there or elsewhere. The adaptive tree calculation here is fully derived, but originality is unestablished. The former Bath-hosted PDF link redirected to the university homepage; the JKU primary PDF was used instead. A failed link is not evidence that a source or permission expired.
+
+\paragraph{Model assessments and review context.}
+This source was prepared and analytically self-audited by the ongoing Codex programme agent, with extensive prior participation. The system describes a GPT-6-based Codex agent; actual served backend identifier and reasoning setting are unexposed. There is no independent, external or human review and no numerical grade for this new source. No earlier PDF score transfers. No Lean theorem or executable finite diagnostic was run in this unit. Publication and manuscript integration await further verification and substantive grouping.
+
+\paragraph{Single next research question.}
+Can the one-dimensional weighted-cost charging argument be replaced by a derived adaptive construction for truly multivariate coefficients under the original critical moment alone? No layerwise minimum moment, supplied cubes or routing certificate may be assumed. The diagonal counterexample above is a mandatory test for any proposed plane-envelope extension; the old unit115 growing weak cube and unit118 two-neighbour profiles remain tests for a general construction. A falsifier of a proposed charge bound stops that mechanism; refuting the original question requires defeating every allowed partition. Preserve the three-unit abandonment rule. The layered target is closed analytically; the unrestricted target remains open.
+\end{document}

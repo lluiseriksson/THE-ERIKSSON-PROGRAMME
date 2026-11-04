@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "claim": "local variance",
+      "proof": "Conditional variance normal/transverse; weighted path Cauchy normal, weighted averaging Cauchy transverse; common L^2 H/4 coefficient, no extra D"
+    },
+    {
+      "claim": "finite actual partition",
+      "proof": "Balanced consecutive normal interval splits until L=1 or (c/4)L^2 H<=1; each normal leaf chooses new transverse tiles length<=L; coverage/disjointness explicit"
+    },
+    {
+      "claim": "non-dyadic weighted tree",
+      "proof": "Child lengths in[L/3,2L/3]; choose one bad child of every nonterminal bad parent; terminal bad intervals disjoint"
+    },
+    {
+      "claim": "critical charge",
+      "proof": "Jensen sum_I alpha^-p>=L H_I^p>(4/c)^p L^(1-D); positive leaf weight exponent r=D-1 gives geometric summation"
+    },
+    {
+      "claim": "target count",
+      "proof": "ceil(n/L)^(D-1)<=2^(D-1)n^(D-1)L^-(D-1); global inverse moment closes count"
+    },
+    {
+      "claim": "actual all-cochain coercivity",
+      "proof": "Good block Poincare, disjoint internal edge energies, omitted edges nonnegative, orthogonal normalized mean identity"
+    }
+  ],
+  "constant": "K_r=(2*3^r-1)/(1-(2/3)^r)",
+  "new_general_hypotheses_eliminated": [],
+  "model_context": "Same preparing Codex agent; actual backend/effort unexposed, no independence or numerical grade",
+  "status": "Analytic proof derived and self-audited; no formal/numerical/external validation",
+  "extra_structure": "Layeredness explicitly retained, not derived from moment",
+  "negative_results": [
+    {
+      "claim": "naive plane-minimum extension fails in every coordinate",
+      "profile": "Diagonal weak set size n, aweak=n^(2/D), mu=gamma*n^2,A=(mu-fb)/(1-f),f=n^(1-D),gamma=max(1,5c/8)",
+      "evidence": "Full critical moment<=1+gamma^p; each coordinate minimum envelope constant b with moment gamma^p*n^(D-1), algorithm forces Omega(n^(D-1)) cells; targetmaximum1"
+    },
+    {
+      "claim": "same diagonal profile is not original-problem counterexample",
+      "proof": "All length3 cyclic detour tails strong; congestion<=3, E_a>=A/10 E_1, exact global mean works"
+    },
+    {
+      "witness": "L2,u=(0,1),alpha=(1,K),K>1;variance1/2,edgeenergy1,rejectedcoefficient(1+1/K)/4<1/2",
+      "claim": "rejected L(L-1)H/4 local constant false"
+    }
+  ],
+  "scope": "Shared scalar coefficient depending on one coordinate; arbitrary n; D>=3",
+  "main_result": "Constructive actual rectangular means with #P<=2^(D-1)[1+K_(D-1)*(c/4)^(D/2)*M*n^D/mu^(D/2)]",
+  "runtime": "No Lean/Lake/PDF build, numerical computation or Colab connection",
+  "novelty": "Not established; classical weighted Poincare/path mechanisms, precise priority comparison unfinished",
+  "publication": "Research source only; group with existing dossier; public AIRRv5 unchanged",
+  "references": {
+    "pechstein_scheichl": "https://numa.jku.at/media/filer_public/c8/55/c8554ca7-43df-45fc-a5b7-25f19c4dc28b/2009-12.pdf",
+    "failed_link": "Bath PS2009-12.pdf redirected to homepage; no expiry inference",
+    "diaconis_saloff_coste": "https://www2.stat.duke.edu/~scs/Courses/Stat376/Papers/ConvergeRates/ComparisonReversMC_DiaconisSalaffCoste_AAP1993.pdf"
+  },
+  "general_problem": "OPEN",
+  "unit": 125
+}
