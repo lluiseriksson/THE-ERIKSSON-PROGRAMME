@@ -1,0 +1,16 @@
+{
+  "version_id": "arr:version:0f080d79-5423-4c93-93b1-c9e75bdc43c4",
+  "parent_sha256": "e5e9ddcf044ddcfab0e4cae8e2c6ac1a3dca39ff21bf23b20989aaff4b220e05",
+  "version": "v5",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "record_id": "arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00",
+  "supersedes_version_id": "arr:version:06fc6b16-cadb-4184-8931-58a6893392d3",
+  "changelog": {
+    "reproducibility": "SingleTeX/unifiedbibliography;source d199a097;ownColab123failure/124prepublicationcorrections/125finalrender;126exactPDFimage recovery;all33pages inspected;first exact selfreview6/10;no newLean/numericalrun.",
+    "mathematics": "Consolidates earlier finite-rank/tangent/nonlinear-sector, signed and full-volume necessary budgets with critical inverse-moment spectral sufficiency and spatial constructions/obstructions. Generalcriticalrectangular target remainsopen.",
+    "version": "Proposed publicv5 linked to existingAIRRrecord latestv4,not internalv5/v6labels;notissued/deposited/published.",
+    "scope": "Finiteflat unitspacing;sharedscalarcoefficient restrictions explicit;criticalsection meanbudgetmu distinctfrominternaldimensionm;nointeracting/continuumgap.",
+    "editorial": "Workingpaperrequestedonly;authorisoperator;firstexactPDFselfreviewandfullobjectionssidecar,notindependent/humanreview;no inheritedscores/permissions/acceptance."
+  },
+  "sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8"
+}
