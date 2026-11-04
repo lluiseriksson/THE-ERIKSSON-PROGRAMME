@@ -1,0 +1,15 @@
+{
+  "new_lean_execution": false,
+  "appendix_pdf_sha256": "6585330e9f6cf4db6fc3fc16e0c3971177cb90db6d317d987a023afc8442230e",
+  "public_version_assigned": false,
+  "title": "Integrated flat rank and critical inverse-moment revision",
+  "appendix_source": "08a6e0191a85c0eb62eb8dc9288c965580e9aa4f",
+  "main_pdf_sha256": "97bdcba4413f330ba54cbaa14b66edc41fdaab8e7fbd3489c26a0788e4f385d0",
+  "main_source": "c6732ac2746a1d6c8eb3bbe9d75d95a4d6afa776",
+  "independent_review": false,
+  "old_scores_inherited": false,
+  "tex_sha256": "97dcbdb96e4dcc2f8eb3c892ea164c0dfdb4b887abd62f6e70a2a4bcf8fef621",
+  "integration": "Single TeX; unified bibliography; namespaced appendix labels/citations; scalar budgetm renamedmu to distinguish internaldimensionm; no mathematical assertion altered",
+  "integration_gate_correction": "Optional-argument citation namespaces and displayed theorem conditions fixed after failed123layoutgate; no priorreviewgrade",
+  "prepublication_corrections": "124all34pagesreviewedbeforegrading;actualw0versusabstractQ0;localeta_Rdifferentfrombudgetmu;removeforcednearblankpage. No priornumericassessment."
+}

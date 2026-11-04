@@ -1,0 +1,32 @@
+{
+  "purpose": "Recover remaining exact125 PDF images; no new TeX compilation or review score",
+  "pdf_sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8",
+  "first": 13,
+  "last": 33,
+  "pages": 21,
+  "elapsed_seconds": 13.5852210521698,
+  "finished_utc": "2026-11-04T07:23:33.770106+00:00",
+  "hashes": {
+    "page-13.png": "6d33a3da60823dec4f758641975ba0f3ca04150f90587454f4fca1b7b6dfa57b",
+    "page-14.png": "0b73d167d4dd22cf064d352fc45981f4b1327ead350ff62fb71d78d98205a045",
+    "page-15.png": "9ca3c048ae91f0b37a2a8223f799f9c843fe5684748d16fee32ba38b0ca1a83f",
+    "page-16.png": "f0991e0464c8e78daf67b956aaf4b9c8156333541c923bd570c2a61d9c22bd95",
+    "page-17.png": "d2b250145d395790dc2938ea10796de524a63ff5158cf099b3cb0a1ff31e3591",
+    "page-18.png": "d4c5d0e22fbfa19e406acc4784190afc7f23025b0d286a85fbc862d7eb8f4852",
+    "page-19.png": "7d137d2ebb3fe7c28afb9f7fa615668c55da21e9e59eae048423e67cbd3277d9",
+    "page-20.png": "0b1760f2f3343150bf4f3958a4cb50579afca3cacf05b18d7c0836c3ea17ae74",
+    "page-21.png": "cda9900bdeb80f0855bb60e47c3282d8936ec88c200d33af70ed8b8b0d1def10",
+    "page-22.png": "963c55f6e44e9676b913e81a9788f4186f867dea261986f7b6ecc157f788142d",
+    "page-23.png": "a710efc01ceab893df6f7e45751217afec7d45779312ef7c691126c5d3444d39",
+    "page-24.png": "13b953b646a512ff5faacf72a97d6c2b59c7defb3d297ffb37c752d44c20baf6",
+    "page-25.png": "e69913b27efac4b629a27373d2155e0510206a1b85eca380997c9fd1a6b7537a",
+    "page-26.png": "f70f625da33ed2c22ed296afc0a6444bc1c5842aa19e7afd88c57714700e42ba",
+    "page-27.png": "eabb7dcf4616fb91b8f20647b8a06b6458400037646cad90c367100dfef3ca24",
+    "page-28.png": "20804482833ab33f95b0b5d70e1e70e5a3cb260c439d6a63689ea4330cccf625",
+    "page-29.png": "b47c346c0e7644ca49e6c7fa8e0d3b4cdf26be28b05c88a33276930f8a5c5885",
+    "page-30.png": "756095e583bde4c1b741ba77c9b15e7aa1f5283badc3b8d14b1c94a8128896cb",
+    "page-31.png": "4a38e68a0e1cfad715ef585451972f78414760fcef9f13b3d3e98ae288ac1cb5",
+    "page-32.png": "7f19cbb39f6f406a67b34d5789ee0ac62131941c6005e9725ffbd9b4201ea6db",
+    "page-33.png": "fa55a7f18b7c5ca934b5daf5b6cc078c22d05546d0f32729ea3d4a42ea1aff44"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "terms_version": "ARR-DEPOSIT-2.0",
+  "authorship_confirmed": null,
+  "privacy_version": "ARR-PRIVACY-1.8",
+  "exact_grant_max_uses": 1,
+  "actual_human_approval": null,
+  "public_release_authorized": false,
+  "proposed_version": "v5",
+  "publication_does_not_mean_acceptance": true,
+  "native_host_preflight_required": true,
+  "exact_grant_scope": [
+    "revision:create",
+    "submission:receipt"
+  ],
+  "proposed_version_id": "arr:version:0f080d79-5423-4c93-93b1-c9e75bdc43c4",
+  "terms_url": "https://airr.science/terms/",
+  "source_reference": null,
+  "metadata_license": "CC0-1.0",
+  "exact_grant_hours": 24,
+  "privacy_url": "https://airr.science/privacy/",
+  "public_license": "CC-BY-4.0",
+  "sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR"
+}
