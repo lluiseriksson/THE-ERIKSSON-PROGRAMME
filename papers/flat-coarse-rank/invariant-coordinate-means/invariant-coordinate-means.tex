@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\title{Critical rectangular means with an invariant coordinate}
+\author{Lluis Eriksson}
+\date{4 November 2026 --- analytic research source, not a new deposit}
+\begin{document}\maketitle
+\paragraph{Status and scope.}
+The preceding layered construction extends to arbitrary dependence on $k<D$ coordinates. The key is a positive transverse dimension $r=D-k$, both in a local convolution estimate and in a weighted refinement-tree count. Coordinate invariance is an EXTRA assumption, not a consequence of the original moment. This source does not solve or refute the fully multivariate question, alter published v5, or constitute a new paper, PDF, review or formal proof. All proofs below are analytic and self-audited by the preparing agent; exact-specialization originality is unestablished.
+
+Fix $D\ge3$, $2\le k<D$, $r=D-k$, $p=D/2$, and $n\ge1$. Write $x=(s,z)$ with $s\in\{0,\ldots,n-1\}^k$ and $z\in\{0,\ldots,n-1\}^r$, using the periodic root convention and counting norms. Suppose $a(s,z)=\alpha(s)>0$, its exact mean is $\mu\ge1$, and
+\[
+ n^{-k}\sum_s(\mu/\alpha(s))^p\le M.
+\]
+For actual real cochain coordinates $U_j$ ($j=1,\ldots,h$), use the shared scalar flat energy
+\[
+ E_a(U)=\sum_{x,i,j}a(x)\|U_j(x+e_i)-U_j(x)\|^2.
+\]
+The original range $1\le a\le2\mu$ is allowed but not used by this proof. Taking $k=D-1$ covers EVERY positive coefficient independent of at least one coordinate, even if its actual dependence is on fewer coordinates.
+
+Define the explicit dimension constants
+\[
+ R_k=\frac{3^k2^{k-1}}{1-(2/3)^{k-1}},\quad
+ B_k=1+2k3^{k-1},\quad
+ C_{k,D}=1+kR_k^2\left(\frac{B_k(D-1)}{D-k}\right)^2,
+\]
+\[
+ T_{k,r}=\frac{2^k3^r-1}{1-(2/3)^r}.
+\]
+They are deliberately nonsharp and may be large.
+\begin{theorem}\label{thm:main}
+For every fixed $c>0$, there is a finite constructive partition $\mathcal P$ into actual axis-parallel integer rectangles with normalized mean map
+\[
+ (C_{\mathcal P}U)_{R,j}=|R|^{-1/2}\sum_{x\in R}U_j(x)
+\]
+such that, for every cochain,
+\[
+ c\|U\|^2\le E_a(U)+c\|C_{\mathcal P}U\|^2,
+\]
+and
+\[
+ |\mathcal P|\le 2^r\left[1+2^kT_{k,r}(cC_{k,D})^pM\frac{n^D}{\mu^p}\right].
+\]
+Hence $\dim F=h|\mathcal P|$ has the target order
+$h\max\{1,n^D/(1+\mu)^p\}$, with explicit constants depending only on $D,k,c,M$. No supplied cubes, partition, routing certificate or local Poincare assumption appears as a hypothesis.
+\end{theorem}
+
+\paragraph{The balanced profile tree.}
+Start from the $k$-cube of side $n$. At a split, halve every nonsingleton coordinate interval into consecutive floor/ceiling halves, taking all products. Every node $Q$ has side lengths differing by at most one, hence aspect ratio at most two. If its maximal side is $L\ge2$, each child maximal side $L'$ lies in $[L/3,2L/3]$. There are at most $2^k$ children; every child has at least $3^{-k}|Q|$ sites. These claims follow coordinatewise from integer floor/ceiling halving, including the final lengths one and two. A complete balanced tree ends at singletons. It is used first for an elementary local estimate, not as an assumed observation partition.
+
+\begin{lemma}[Finite profile potential estimate]\label{lem:potential}
+On any node $Q$ of this tree, with maximal side $L\ge2$, let
+$g(y)=\sum_{i=1}^k\|d_i u(y)\|$, counting only internal profile edges. Then
+\[
+ \|u(x)-\bar u_Q\|\le R_k\sum_{y\in Q}
+ \frac{g(y)}{(1+\|x-y\|_\infty)^{k-1}}.
+\]
+\end{lemma}
+\begin{proof}
+On a rectangle $P$ with maximal side $L_P$, pairwise averaging and ordered coordinate paths give
+\[
+ \sum_P\|u-\bar u_P\|\le\frac{L_P}{2}\sum_{e\text{ internal to }P}\|du(e)\|.
+\]
+Indeed a direction-$i$ edge at the cut $t$ is crossed by exactly
+$2t(l_i-t)|P|/l_i\le l_i|P|/2$ ordered pairs in the canonical coordinate paths. Division by $|P|$ yields the claim. No weight is used here.
+
+Follow the complete balanced chain from the singleton $\{x\}$ to $Q$ and telescope its means. For child $P'$ of parent $P$,
+\[
+ \|\bar u_{P'}-\bar u_P\|\le |P'|^{-1}\sum_P\|u-\bar u_P\|
+ \le3^k2^{k-1}L_P^{1-k}\sum_{e\text{ internal to }P}\|du(e)\|,
+\]
+since $|P'|\ge3^{-k}|P|$ and $|P|\ge(L_P/2)^k$. For any fixed edge with tail $y$, the parents containing it form a terminal segment of that chain. Their maximal sides grow by at least $3/2$; the smallest such side is at least $1+\|x-y\|_\infty$. The geometric sum of their $L_P^{1-k}$ is at most
+$(1+\|x-y\|_\infty)^{1-k}/(1-(2/3)^{k-1})$. This proves the stated constant, including internal boundary edges. All differences are in the nonwrapping integer root.
+\end{proof}
+
+\begin{lemma}[Derived weighted profile bound]\label{lem:profile}
+Set $m_Q=|Q|^{-1}\sum_{s\in Q}\alpha(s)^{-p}$. Then
+\[
+ \sum_Q\|u-\bar u_Q\|^2\le(C_{k,D}-1)L^2m_Q^{1/p}
+ \sum_{e\text{ internal to }Q}\alpha(e_-)\|du(e)\|^2.
+\]
+\end{lemma}
+\begin{proof}
+Put $q=2D/(D+2)$ and $t=D/(D-1)$. Then $1/q+1/t=3/2$ and $1<q,t<2$. Extend $g$ by zero to $\mathbb Z^k$ and truncate the potential kernel to $\|y\|_\infty\le L-1$. The number of points in its shell of radius $j-1$ is at most $B_k j^{k-1}$. With $b=(k-1)/(D-1)<1$,
+\[
+ \|K_L\|_t^t\le B_k\sum_{j=1}^L j^{-b}
+ \le\frac{B_k}{1-b}L^{1-b}.
+\]
+The final inequality follows by integrating the decreasing function $x^{-b}$ over $[0,L]$. In particular
+\[
+ \|K_L\|_t^2\le\left(\frac{B_k(D-1)}{D-k}\right)^2L^{2-2k/D},
+\]
+where the exponent $2/t<2$ was bounded by two on a base at least one, only to keep the constant rational.
+
+For completeness the discrete Young inequality used here follows directly from Holder: write $K(x-y)g(y)$ as
+$(K^tg^q)^{1/2}K^{1-t/2}g^{1-q/2}$ and use exponents $2$, $2t/(2-t)$ and $2q/(2-q)$. Squaring and summing in $x$ yields
+$\|K*g\|_2\le\|K\|_t\|g\|_q$; zero terms are understood by continuity. Thus the potential lemma controls the variance by $R_k^2\|K_L\|_t^2\|g\|_q^2$.
+
+Finally $g^q\le k^{q-1}\sum_i\|d_i u\|^q$, and weighted Holder over the internal edges gives
+\[
+ \|g\|_q^2\le k^{2-2/q}
+ \left(\sum_e\alpha(e_-)\|du(e)\|^2\right)
+ \left(\sum_e\alpha(e_-)^{-p}\right)^{1/p}
+ \le k\,(|Q|m_Q)^{1/p} E_{\alpha,Q}(u).
+\]
+Here $q/(2-q)=p$, each tail occurs at most $k$ times, and
+$2-2/q+1/p=1$. Since $|Q|\le L^k$, the powers of $L$ combine to exactly $L^2$. This proves the constant displayed in the lemma, without importing a weighted Sobolev certificate.
+\end{proof}
+
+\paragraph{The full local rectangle bound.}
+For $B=Q\times\prod_{j=1}^r J_j$, each $|J_j|\le L$, take the mean $v(z)$ over $Q$. Exact conditional variance splits normal profile variance and $|Q|$ times transverse variance of $v$. Lemma~\ref{lem:profile} bounds the former. For any transverse edge, weighted Cauchy gives
+\[
+ \|d_jv\|^2\le\frac{H_Q}{|Q|}\sum_{s\in Q}\alpha(s)\|d_j u(s,\cdot)\|^2,
+ \quad H_Q=|Q|^{-1}\sum_Q\alpha^{-1}\le m_Q^{1/p}.
+\]
+Ordinary product-interval Poincare bounds transverse variance with constant $L^2/4$, without an extra dimension factor. The two disjoint energy groups therefore give the safe common bound
+\[
+ \sum_B\|u-\bar u_B\|^2\le C_{k,D}L^2m_Q^{1/p}E_{\alpha,B}(u).
+\]
+If $L=1$ and all transverse sides are at most $L$, the rectangle is a singleton and its residual is zero.
+
+\paragraph{The actual observation construction.}
+A profile node $Q$ is good if $L=1$ or $cC_{k,D}L^2m_Q^{1/p}\le1$. Split bad nodes by the balanced rule above. At each resulting profile leaf $Q$, tile every invariant coordinate by consecutive intervals of length at most its maximal side $L$. Products are the actual partition rectangles. Normal leaves partition the profile root; the new transverse tiling for each leaf partitions its whole fibre slab. Thus coverage is exact and disjoint; boundaries from other profile leaves need not persist transversely. Local coercivity follows from the derived bound, positive omitted edges and exact orthogonal normalized means. This proves the inequality in Theorem~\ref{thm:main} on all cochains, not just their divergence-zero subspace.
+
+\begin{proof}[Counting the constructed observations]
+Give each profile node weight $w(Q)=L^{-r}$. For bad nodes $\mathcal B$ and terminal bad nodes $\mathcal T$, selecting one bad child for each nonterminal bad parent injects these parents into bad children whose weights are at least $(3/2)^r$ times theirs. Hence
+\[
+ \sum_{\mathcal B}w\le\frac1{1-(2/3)^r}\sum_{\mathcal T}w.
+\]
+At each split the leaf-weight increment is at most $(2^k3^r-1)w(Q)$, so the final profile leaves $\mathcal L$ satisfy
+\[
+ \sum_{\mathcal L}w\le n^{-r}+(2^k3^r-1)\sum_{\mathcal B}w.
+\]
+The terminal bad nodes are pairwise disjoint. A bad node has
+\[
+ \sum_Q\alpha^{-p}=|Q|m_Q
+ >(L/2)^k(cC_{k,D})^{-p}L^{-2p}
+ =2^{-k}(cC_{k,D})^{-p}w(Q).
+\]
+Consequently $\sum_{\mathcal T}w\le2^k(cC_{k,D})^p\sum_s\alpha(s)^{-p}$.
+A profile leaf produces at most $\lceil n/L\rceil^r\le2^r n^r L^{-r}$ rectangles. Combine these bounds with
+$\sum_s\alpha^{-p}\le M n^k/\mu^p$ to obtain the theorem. The $n=1$ singleton case is immediate. To express the target using $1+\mu$, use $\mu^{-p}\le2^p(1+\mu)^{-p}$ and bound the additive one by the target maximum.
+\end{proof}
+
+\paragraph{A sign detail retained in the audit.}
+In the bad-node mass display, the stopping inequality is strict, whereas $|Q|\ge(L/2)^k$ need not be strict. Their combination is still strict. No claim that every node volume is strictly larger than $(L/2)^k$ is needed.
+
+\paragraph{The fully variable endpoint is not solved.}
+Setting $k=D$ would give $r=0$, so the bad-child geometric denominator vanishes. Independently, $b=1$ in the elementary kernel estimate, giving a harmonic sum rather than the positive-power bound above. These are failures of this particular Young/tree estimate, not proofs that a critical local Sobolev inequality or a different global partition cannot exist. Stronger endpoint tools could improve the local estimate without repairing the zero-exponent counting step. The old full cube-tree obstruction and plane-minimum counterexample remain in force. No unsupported extension to full dependence is made.
+
+\paragraph{Primary-source comparison and originality.}
+Weighted Sobolev estimates obtained through unweighted inequalities and Holder are classical; compare Andres--Deuschel--Slowik, \emph{Invariance principle for the random conductance model in a degenerate ergodic environment}, Annals of Probability43(4),1866--1891(2015), Section3.1 and Proposition3.5, DOI10.1214/14-AOP921:
+\url{https://madoc.bib.uni-mannheim.de/58490/1/euclid.aop.1433341322.pdf}.
+Its graph/cutoff setup differs from the finite mean-zero rectangle construction here; it is not being substituted for an unchecked lemma. All finite estimates needed here are proved explicitly. The earlier dossier also cites Diaconis--Saloff-Coste path comparisons and Pechstein--Scheichl weighted Poincare work. No claim that this specialization or adaptive counting is absent from the literature has been established. Exact priority comparison remains unfinished; do not issue a separate small paper or advertise a new general spectral principle.
+
+\paragraph{Model assessments and review context.}
+Prepared and analytically self-audited in the ongoing Codex programme chat. The system describes a GPT-6-based Codex agent; actual served backend identifier/reasoning setting are unexposed. The preparer participated extensively in prior results. There is no independent, external or human review and no numerical grade for this source. Unit126's exact finite diagnostics apply to the earlier unit124/125 sources, not automatically to this extension. No score or verification is inherited. No Lean, numerical campaign or PDF build occurred in this unit.
+
+\paragraph{Single next question and abandonment.}
+Can the zero-transverse-dimension counting obstruction be overcome for fully variable coefficients under the original critical moment, using a genuinely anisotropic partition rather than plane minima or full cube trees? This is the same original unrestricted question, with a proved invariant-coordinate benchmark. A proposed mechanism must handle the unit125 diagonal profile, unit115 growing weak cube and unit118 two-neighbour profile. A refutation of the original question must defeat every allowed partition. After three substantive units without a derived bound, independent result or useful counterexample, abandon that mechanism and preserve what failed. No general hypothesis is counted as eliminated here: coordinate invariance is explicitly retained.
+\end{document}

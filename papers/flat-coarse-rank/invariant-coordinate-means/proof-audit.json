@@ -1,0 +1,70 @@
+{
+  "prior_diagnostics": "Unit126 tests cover124/125 only; not inherited by this extension",
+  "extra_hypothesis": "Exact invariance in at least one coordinate explicitly retained, not derived from original moment",
+  "scope": "D>=3,2<=k<D,a(s,z)=alpha(s)>0, r=D-k invariant coordinates, original critical p=D/2 moment",
+  "primary_source": {
+    "authors": "Sebastian Andres; Jean-Dominique Deuschel; Martin Slowik",
+    "year": 2015,
+    "title": "Invariance principle for the random conductance model in a degenerate ergodic environment",
+    "DOI": "10.1214/14-AOP921",
+    "url": "https://madoc.bib.uni-mannheim.de/58490/1/euclid.aop.1433341322.pdf",
+    "comparison": "Section3.1, Proposition3.5; graph/cutoff framework differs, not used as unchecked hypothesis"
+  },
+  "model_context": "Same preparing Codex programme agent; actual backend/effort unexposed; no independent/external/human assessment or grade",
+  "general_hypotheses_eliminated": [],
+  "proof_checks": [
+    {
+      "claim": "near-balanced nodes and children",
+      "evidence": "Coordinate floor/ceil splitting: node side lengths differ<=1; parent maxL, child max in[L/3,2L/3], child volume>=3^-k parent, arity<=2^k"
+    },
+    {
+      "claim": "unweighted L1 Poincare",
+      "evidence": "Ordered-coordinate pair paths: edge at cutt has2t(l_i-t)|Q|/l_i crossings; yields maxsideL/2 per internal edge"
+    },
+    {
+      "claim": "finite potential representation",
+      "evidence": "Telescope actual nested means to point; parent coefficient3^k*2^(k-1)L^(1-k); geometric ancestor sum controlled by distance kernel"
+    },
+    {
+      "claim": "subcritical convolution bound",
+      "evidence": "q=2D/(D+2),t=D/(D-1); explicit Holder proof of Young; shell exponent(k-1)/(D-1)<1"
+    },
+    {
+      "claim": "weighted local estimate",
+      "evidence": "Weighted Holder on internal profile edges and exact k factor; powers L^(2-2k/D)*|Q|^(2/D)<=L^2"
+    },
+    {
+      "claim": "full rectangle conditional variance",
+      "evidence": "Mean over profile block and transverse weighted Cauchy H_Q<=m_Q^(1/p); disjoint normal/transverse energy groups"
+    },
+    {
+      "claim": "actual partition",
+      "evidence": "Good profile nodes c*C L²*m_Q^(1/p)<=1 or singleton; fresh transverse grids per profile leaf; exact disjoint coverage"
+    },
+    {
+      "claim": "critical weighted tree charge",
+      "evidence": "r=D-k>0; terminal bad profile nodes disjoint, mass>2^-k(cC)^-p L^-r; bad-child injection gives geometric sum and final count"
+    },
+    {
+      "claim": "quantifiers and endpoint",
+      "evidence": "Partition may depend on fixed c; arbitrary integern, n1singleton; omitwrapedges positively"
+    }
+  ],
+  "unit": 127,
+  "priority": "Unestablished; classical unweighted/weighted Sobolev and Holder mechanisms; finite adaptation/count derived here",
+  "theorem": "Actual rectangular means attain target order h*max(1,n^D/(1+mu)^(D/2)); in particular all coefficients independent of at least one coordinate",
+  "publication": "Research source grouped with dossier; no newpaper/PDF/deposit/v5change",
+  "explicit_constants": {
+    "count": "2^r*[1+2^k*T_kr*(c*C_kD)^p*M*n^D/mu^p]",
+    "B_k": "1+2*k*3^(k-1)",
+    "C_kD": "1+k*R_k^2*[B_k*(D-1)/(D-k)]^2",
+    "R_k": "3^k*2^(k-1)/(1-(2/3)^(k-1))",
+    "T_kr": "(2^k*3^r-1)/(1-(2/3)^r)"
+  },
+  "endpoint_limitations": [
+    "k=D gives r0 and vanishing tree denominator",
+    "k=D gives harmonic kernel sum in this Young bound",
+    "Neither failure proves absence of another local estimate or global rectangular construction"
+  ],
+  "status": "Analytic derivation and preparing-agent self-audit; no formal/numerical/external verification of this extension"
+}
