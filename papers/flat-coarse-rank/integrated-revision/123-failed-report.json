@@ -1,0 +1,53 @@
+{
+  "run": "123",
+  "source_sha": "7fa8ce20ec57b0324a84b05956a748dbe0b7adbf",
+  "started_utc": "2026-11-04T06:46:29.638521+00:00",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 5.332
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 58.117
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.617
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.617
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.041
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.186
+    },
+    {
+      "name": "pdftoppm",
+      "exit_code": 0,
+      "seconds": 7.721
+    }
+  ],
+  "status": "FAIL",
+  "new_lean_execution": false,
+  "new_numerical_execution": false,
+  "independent_review": false,
+  "old_scores_inherited": false,
+  "artifact_marker": "Official bundled marker once on host before integrated TeX authoring",
+  "prior_package_files_rehashed": 38,
+  "unique_labels": 56,
+  "error": "ValueError('Layout/reference [\"LaTeX Warning: Citation `frank\\' on page 24 undefined on input line 1396.\", \\'Overfull \\\\\\\\hbox (4.77182pt too wide) in paragraph at lines 1458--1461\\', \"LaTeX Warning: Citation `ads\\' on page 27 undefined on input line 1584.\", \\'LaTeX Warning: There were undefined references.\\']')",
+  "finished_utc": "2026-11-04T06:47:44.150652+00:00",
+  "colab_gpu_env": ""
+}

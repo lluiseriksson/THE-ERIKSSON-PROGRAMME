@@ -1,0 +1,65 @@
+{
+  "run": "125",
+  "source_sha": "d199a0977eca581b2e0d00c1afd84233a8db361d",
+  "started_utc": "2026-11-04T07:04:07.360669+00:00",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 7.693
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 60.692
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.628
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.626
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.038
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.183
+    },
+    {
+      "name": "pdftoppm",
+      "exit_code": 0,
+      "seconds": 7.782
+    }
+  ],
+  "status": "INTEGRATED_PDF_AWAITING_FIRST_VISUAL_REVIEW",
+  "new_lean_execution": false,
+  "new_numerical_execution": false,
+  "independent_review": false,
+  "old_scores_inherited": false,
+  "artifact_marker": "Official bundled marker once on host before integrated TeX authoring",
+  "prior_package_files_rehashed": 38,
+  "unique_labels": 56,
+  "pages": 33,
+  "pdf_sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8",
+  "pdf_bytes": 503478,
+  "layout_warnings": [],
+  "public_package_sha256": "9b3bee9727cb82342398193660570f872bf33c80b065415ec93514a0222b1e36",
+  "public_package_entries": 9,
+  "driver_sha256": "d87fae8a32c45584dc703ee4ed662f41bcdfb3aff020b61edf92f7c4347f5244",
+  "input_hashes": {
+    "main-declaration-map.json": "2ec3658252c36ea9ea3b60fca4a0004147782499452814653952d7ae2932aa61",
+    "flat_critical_integrated.tex": "97dcbdb96e4dcc2f8eb3c892ea164c0dfdb4b887abd62f6e70a2a4bcf8fef621",
+    "critical-declaration-map.json": "6b4632fa8b44559b56285ff8196eb97f7d5df64bd38433f1301ff55bde9397b9",
+    "integration-map.json": "4c0f4c347a247b7751aea00c1957cfb3ff037ad2d6004670f5ccf4da08324095"
+  },
+  "finished_utc": "2026-11-04T07:05:26.880718+00:00",
+  "colab_gpu_env": ""
+}
