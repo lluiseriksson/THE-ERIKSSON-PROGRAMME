@@ -144,7 +144,7 @@ def main():
             for fixture in range(3):local_cases.append(local(shape,D,fixture))
         for n in (1,2,3,5):
             for fixture in range(3):
-                for scale in (1,2,3):tree_cases.append(partition(n,k,D,fixture,scale))
+                for scale in (1,4,9):tree_cases.append(partition(n,k,D,fixture,scale))
     rejected=False
     try:constants(3,3)
     except ValueError as e:rejected=str(e)=='invariant-coordinate scope requires 2<=k<D'
