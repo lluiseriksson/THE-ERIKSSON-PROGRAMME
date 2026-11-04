@@ -1,0 +1,56 @@
+{
+  "score": null,
+  "status": "analytic proof derived and self-audited; not Lean verified or externally reviewed",
+  "publication": "research note only; no deposit, PDF or alteration of AIRRv5",
+  "verification_kind": "Complete analytic proof and explicit obstruction calculations; no executable experiment or build run",
+  "question": "Separated weak-tail comparison and necessity boundary for critical inverse moment",
+  "general_question_solved": false,
+  "general_hypothesis_eliminated": false,
+  "source": "separated-defect-comparison.tex",
+  "new_originality_claim": false,
+  "unit": 124,
+  "assumptions": [
+    "D>=3",
+    "n>=3",
+    "shared scalar nonnegative a",
+    "a>=A>0 off W",
+    "distinct W sites have cyclic Chebyshev distance>=2"
+  ],
+  "classical_primary_source": {
+    "url": "https://www2.stat.duke.edu/~scs/Courses/Stat376/Papers/ConvergeRates/ComparisonReversMC_DiaconisSalaffCoste_AAP1993.pdf",
+    "year": 1993,
+    "authors": "Persi Diaconis; Laurent Saloff-Coste",
+    "title": "Comparison Theorems for Reversible Markov Chains",
+    "scope": "Theorem2.1 and grid-edge deletion Example2.1"
+  },
+  "proof_checks": [
+    {
+      "evidence": "tails x-e_sigma(i) and x-e_sigma(i)+e_i are nonzero Chebyshev-one offsets from weak x",
+      "claim": "all detour tails strong"
+    },
+    {
+      "evidence": "for edge(y,k), three possible weak sources y+e_k,y+e_sigma(k),y+e_k-e_sigma_inverse(k) pairwise Chebyshev-one and distinct; D-cycle has no fixed point or 2-cycle",
+      "claim": "congestion<=1"
+    },
+    {
+      "evidence": "Eweak<=3Estrong by edge-disjoint length3 paths; Eunit<=4Estrong; Ea>=A Estrong",
+      "claim": "comparison factor4"
+    },
+    {
+      "evidence": "unit torus Fourier eigenvalue4sin^2(pi/n); normalized mean identity exact, coordinatewise all cochains",
+      "claim": "actual mean coercivity"
+    },
+    {
+      "evidence": "n multiple3; weak sublattice density3^-D,aweak1,mu=gamma*n^2,A=(mu-f)/(1-f); moment>=f*mu^(D/2) diverges while dimF=h",
+      "claim": "critical inverse moment not necessary"
+    },
+    {
+      "evidence": "weak incoming star and delta0 give Ea/Eunit=b, below A/4 when b<A/4",
+      "claim": "geometry cannot simply be dropped"
+    },
+    {
+      "evidence": "W={e2,e1-e2},n>=6; edge(0,1) occurs in middle and last roles",
+      "claim": "D2 routing congestion-one false"
+    }
+  ]
+}

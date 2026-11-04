@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\title{Separated weak tails: an explicit finite-lattice comparison}
+\author{Lluis Eriksson}
+\date{4 November 2026 --- analytic research note, not a new deposit}
+\begin{document}\maketitle
+\paragraph{Status and scope.} This is a worked restricted-class result for the existing coarse-information dossier. It does not edit the published integrated v5, solve the unrestricted critical rectangular question, establish priority, or provide a physical mass gap. No Lean verification, numerical experiment, external review or new PDF compilation is claimed. The proof below is analytic and self-contained. The path comparison mechanism is classical.
+
+Let $D\ge3$, $n\ge3$, $X=(\mathbb Z/n\mathbb Z)^D$, with counting norms and forward-edge occurrences $(x,i)$, $1\le i\le D$. For a finite-dimensional real Hilbert-valued $u$, write
+\[
+ E_1(u)=\sum_{x,i}\|u(x+e_i)-u(x)\|^2,
+ \qquad E_a(u)=\sum_{x,i}a(x)\|u(x+e_i)-u(x)\|^2.
+\]
+A set $W\subset X$ is separated if distinct points never differ by a nonzero vector in $\{-1,0,1\}^D$ modulo $n$. Thus their cyclic Chebyshev distance is at least two. Suppose $a(x)\ge A>0$ for $x\notin W$ and merely $a(x)\ge0$ on $W$.
+
+\begin{theorem}\label{thm:comparison}
+Under these explicit geometric assumptions,
+\[
+ E_a(u)\ge \frac A4 E_1(u)
+ \ge A\sin^2(\pi/n)\sum_x\|u(x)-\bar u\|^2.
+\]
+The constant is independent of the number of weak sites and of their coefficient values. No inverse moment assumption is required.
+\end{theorem}
+\begin{proof}
+Choose the cyclic permutation $\sigma(i)=i+1$ modulo $D$. In particular it has neither fixed points nor two-cycles. Replace each edge $(x,i)$ with $x\in W$ by the length-three path
+\[
+ x,\quad x-e_{\sigma(i)},\quad x-e_{\sigma(i)}+e_i,\quad x+e_i.
+\]
+The first segment is traversed in reverse. All three corresponding forward-edge tails lie outside $W$: they are $x-e_{\sigma(i)}$ (twice, in different directions) and $x-e_{\sigma(i)}+e_i$, distinct from $x$ at cyclic Chebyshev distance one.
+
+We now prove rather than assume congestion one. A fixed strong forward edge $(y,k)$ can occur in at most one path in each of the following roles:
+\[
+\begin{array}{c|c|c}
+\text{role}&\text{weak source }x&\text{replaced direction }i\\\hline
+\text{first}&y+e_k&\sigma^{-1}(k)\\
+\text{middle}&y+e_{\sigma(k)}&k\\
+\text{last}&y+e_k-e_{\sigma^{-1}(k)}&\sigma^{-1}(k).
+\end{array}
+\]
+The three source candidates are pairwise distinct and at cyclic Chebyshev distance one. For the middle/last pair this uses that $k,\sigma(k),\sigma^{-1}(k)$ are three distinct directions. Separation permits at most one candidate in $W$. Hence the detour paths are edge-disjoint as forward-edge occurrences. This counts orientations by their actual positive-forward representative and remains valid across the periodic boundary.
+
+Cauchy--Schwarz on each three-segment path gives a factor three. If $E_S$ sums unweighted energies over edges with tail outside $W$, summing the disjoint paths gives $E_W\le3E_S$. Therefore $E_1=E_S+E_W\le4E_S$ and $E_a\ge A E_S\ge(A/4)E_1$.
+
+For completeness the unit-torus Fourier characters have difference eigenvalues $4\sum_i\sin^2(\pi k_i/n)$. Every nonconstant character has eigenvalue at least $4\sin^2(\pi/n)$; Parseval applied to each real Hilbert coordinate proves the second inequality, with the mean removed exactly.
+\end{proof}
+
+\paragraph{An actual one-rectangle mean map.}
+Apply the theorem componentwise to the flat cochain energy $\sum_{x,i,j}a(x)\|d_iU_j(x)\|^2$ with $h$ real scalar coordinates. Put
+\[
+ C(U)=n^{-D/2}\sum_x U(x)\in\mathbb R^h.
+\]
+Exact orthogonality gives $\|U\|^2=\|U-\bar U\|^2+\|C(U)\|^2$. Consequently, if $A\sin^2(\pi/n)\ge c$, then
+\[
+ c\|U\|^2\le E_a(U)+c\|C(U)\|^2
+\]
+for every cochain, hence also every divergence-zero cochain. This is the actual normalized mean on the single root rectangle, not a supplied rank or band certificate. The original shared scalar flat energy is retained.
+
+\begin{proposition}\label{prop:moment-notnecessary}
+There are profiles in the original range $1\le a\le2\mu$, with exact mean $\mu$ and $\mu$ quadratic in $n$, for which this one-rectangle observation works with fixed $c>0$ while the normalized critical inverse moment is unbounded.
+\end{proposition}
+\begin{proof}
+Take $n=3m$, $W=\{0,3,\ldots,n-3\}^D$, $f=3^{-D}$ and $\gamma=\max\{1,c/4\}$. Set $\mu=\gamma n^2$, $a=1$ on $W$ and
+\[
+ A=\frac{\mu-f}{1-f}
+\]
+outside. The set is separated also at the cyclic boundary. The mean is exactly $\mu$, and $\mu\le A\le2\mu$ since $f\le1/2$. Concavity of sine on $[0,\pi/2]$ gives $\sin(\pi/n)\ge2/n$, so $A\sin^2(\pi/n)\ge4\gamma\ge c$. Theorem~\ref{thm:comparison} supplies the one-box map of dimension $h$.
+For $p=D/2$, however,
+\[
+ n^{-D}\sum_x(\mu/a(x))^p\ge f\mu^p
+ =3^{-D}\gamma^{D/2}n^D\longrightarrow\infty.
+\]
+Thus the critical inverse-moment hypothesis is not necessary for existence of rectangular means on this class. This does not derive separation from a moment bound and does not remove hypotheses from the unrestricted sufficient theorem. Also $\max\{1,n^D/(1+\mu)^{D/2}\}=1$, since $\gamma\ge1$.
+\end{proof}
+
+\paragraph{A useful failure when geometry is dropped.}
+The comparison itself cannot follow merely from a count of weak sites. Take $W=\{0,-e_1,\ldots,-e_D\}$, $a=b$ on $W$, $a=A$ otherwise, and $u=\mathbf1_{\{0\}}$. The $2D$ edge occurrences incident to zero all have weak tails; all other differences vanish. Thus $E_a(u)=2Db$, $E_1(u)=2D$, and $E_a/E_1=b$. If $0\le b<A/4$ this refutes $E_a\ge(A/4)E_1$. Even $b=1$ works for $A>4$. These weak sites are not separated. This scalar comparison counterexample is not a counterexample to the original divergence-zero observation problem or to every partition.
+
+\paragraph{Limitations and novelty.}
+Diaconis and Saloff-Coste's \emph{Comparison Theorems for Reversible Markov Chains}, Annals of Applied Probability 3(3), 696--730 (1993), Theorem2.1 and Example2.1, already compare Dirichlet forms via bounded-length replacement paths and congestion, including deletion of grid edges. Primary source:
+\url{https://www2.stat.duke.edu/~scs/Courses/Stat376/Papers/ConvergeRates/ComparisonReversMC_DiaconisSalaffCoste_AAP1993.pdf}.
+The general mechanism is therefore not new. The contribution here is a completely derived shared-tail lattice specialization, the explicit congestion-one calculation in $D\ge3$, and its scoped consequence for the existing question. Originality of this exact specialization is not established; this is not a new paper or AIRR submission.
+
+The dimension restriction is used essentially in this particular congestion-one proof: for $D=2$ the cyclic permutation has a two-cycle, and the middle/last source difference contains twice another coordinate. For example, for $n\ge6$, $D=2$, $y=0$, $k=1$, the separated weak sources $e_2$ and $e_1-e_2$ use the same strong edge $(0,1)$ in the middle and last roles. Congestion one is therefore false for this prescribed two-dimensional routing, not merely unproved. No claim is made for this constant in $D=2$, for arbitrary weak geometry, directional/component-dependent coefficients, signed total coefficients, interacting derivatives or continuum limits. Weak coefficients may be zero in Theorem1; the original-range example uses one throughout.
+
+\paragraph{One active research question.}
+For the original $D\ge3$, exact mean $\mu$, $1\le a\le2\mu$ and bounded critical inverse moment, construct unrestricted rectangular means of order $h\max\{1,n^D/(1+\mu)^{D/2}\}$ or refute existence for every allowed partition. The proposed bounded subquestion is whether non-separated weak clusters can be removed by explicitly charged detours together with local means, with congestion controlled by the original moment alone. A falsifier must defeat that proposed geometry-to-moment bound, and a counterexample to the original problem must defeat every partition. Abandon this detour extension after three substantive units without a derived bound or a useful counterexample; do not revive full cube trees, per-vertex retained-grid thresholds or universal exact supplied cubes. The separated theorem is an independent benchmark, not a solution of the active question.
+\end{document}
