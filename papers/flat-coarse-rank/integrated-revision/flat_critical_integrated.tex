@@ -1393,7 +1393,7 @@ Insert \eqref{ap:eq:density} and raise to $p$. The constant becomes
 $B_0I_p^{-(p-1)}=\Gamma_pL$. This also explicitly handles a zero-frequency kernel.
 \end{proof}
 The density method is classical and follows the Rumin--Frank approach
-\cite[Section 2]{frank}. The proof above supplies its finite normalization and kernel
+\cite[Section 2]{ap:frank}. The proof above supplies its finite normalization and kernel
 adapter; it is not a claim of a new Cwikel mechanism or independent discovery.
 
 \subsection{Actual lattice frequencies and the weighted inverse}
@@ -1455,9 +1455,12 @@ $h$ coordinates. This constructs the actual global spectral observation.
 
 \section{Every lower positive inverse exponent is insufficient}
 \begin{theorem}\label{ap:thm:subcritical}
-For every fixed $0<r<D/2$, the analogue of Theorem~\ref{ap:thm:critical} under
-$\operatorname{mean}((\mu/a)^r)\leq2$ is false uniformly in the actual scalar class
-$1\leq a\leq2\mu$, $\operatorname{mean}(a)=\mu$.
+For every fixed $0<r<D/2$, the analogue of Theorem~\ref{ap:thm:critical}
+is false uniformly under the conditions
+\[
+ \operatorname{mean}((\mu/a)^r)\leq2,\qquad
+ 1\leq a\leq2\mu,\qquad \operatorname{mean}(a)=\mu.
+\]
 \end{theorem}
 \begin{proof}
 Choose a fixed integer $\ell>3D/c$, and put $P=2\ell+2$, $B=(2\ell+1)^D$.
@@ -1581,7 +1584,7 @@ coordinate reflection and gives
 \end{equation}
 Here the energy uses original internal edges and their actual starting-vertex weights.
 The full reflection multiplicities and graph adapters to the classical estimate
-\cite[Section 2.2]{ads} are preserved in the companion geometric note; this is an
+\cite[Section 2.2]{ap:ads} are preserved in the companion geometric note; this is an
 analytic adapter, not a new Lean theorem.
 
 The factor cannot be discarded even for uniform coefficients. With $u(x)=x_i-(L-1)/2$
