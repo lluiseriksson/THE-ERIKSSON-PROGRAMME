@@ -1,0 +1,62 @@
+{
+  "unit": 132,
+  "parent": "315a2b5c5ebe2272b56f4bde744a60c1782605f7",
+  "status": "Analytic proofs and preparing-agent self-audit only; unrendered grouped draft",
+  "positive_transfer": {
+    "hypotheses": "Fixed nonnegative edge energy, vertex-cover overlap<=r, actual cover-local inequalities kappa*variance<=internalenergy",
+    "conclusion": "Any actual subordinate partition has total block variance<=r/kappa*globalenergy; kappa>=rc yields actual normalized mean coercivity",
+    "proof": "Cell means minimize squared residual; group cells assigned to each cover set; each edge occurrence counted at most r times",
+    "not_removed": "No cover existence, local estimate or target count derived from original moment"
+  },
+  "geometric_conversion": {
+    "bound": "min(n^D,(2m+1)^D) actual cells",
+    "proof": "Cut each cyclic axis at a fixed seam and all proper-interval endpoints; Cartesian grid membership constant for each cover set",
+    "scope": "Power-loss count, not linear target; bounded target remains bounded under a fixed power"
+  },
+  "counterexample": {
+    "parameters": "D>=2,J>=2,n=2J,m=2J+1",
+    "cover": "Full torus, J odd x1 singleton strips, J odd x2 singleton strips; all other axes full",
+    "overlap": 3,
+    "universal_common_refinement_minimum": "n²=(m-1)² cells, exactly attained",
+    "proof": "Any cyclic interval of length>=2 contains odd/even neighbours; common refinement forces first two sides singleton",
+    "subordinate_partition_minimum": 1,
+    "energy_control": "Constant mu=max(1,3cn²/16) makes every cover-local Fourier gap>=3c; exactmean/range and momentM1 valid",
+    "not_refuted": ["Existence of linear-size merely subordinate partition", "Special covers", "Original coefficient-adapted divergence-zero problem"]
+  },
+  "self_audit": [
+    "Arithmetic means and normalized mean norm identity exact for Hilbert-valued fields",
+    "Assignment grouping uses disjoint cells contained in cover member",
+    "Nonnegative energy and tail membership bound internal edge occurrences by r",
+    "All cyclic endpoints and wrap edges accounted for",
+    "Even n critical to alternating parity at cyclic seam",
+    "Count lower bound attained by products of two singleton coordinates and remaining full axes",
+    "Full torus member supplies one-cell subordination, preventing false stronger refutation",
+    "Constant coefficient cover has genuine local certificate; no optimal-cover claim",
+    "Power-law count insufficient only for growing targets, not every bounded-target regime"
+  ],
+  "primary_source": {
+    "authors": "F.A.Sukochev; D.V.Zanin",
+    "doi": "10.4213/sm9732e",
+    "url": "https://www.mathnet.ru/php/archive.phtml?jrnid=sm&option_lang=eng&paperid=9732&wshow=paper",
+    "read_scope": "Primary abstract/introduction operator statement only; later-section retrieval timed out",
+    "use": "Context/operator mismatch, not a partition or local certificate theorem",
+    "novelty": "Unestablished; elementary transfer and arrangement arguments, no priority claim"
+  },
+  "hypotheses_eliminated_original": [],
+  "route": {
+    "status": "STOPPED: generic bounded-overlap cover to linear-count common refinement",
+    "concrete_blockage": "Quadratic cell requirement at overlap3; generic energy-safe grid conversion loses a power",
+    "original_question": "OPEN, same single fixed-a mixed-cell/cross-boundary question",
+    "units_without_original_advance": 3,
+    "next_work_change": "Consolidate closed invariant-coordinate positive theorem127, diagnostics128 and related grouped benchmarks; do not repeat this generic conversion route"
+  },
+  "model_context": "Same preparing Codex agent, system-described GPT6; exact backend/effort unexposed; no independent/external/human review",
+  "grade": null,
+  "lean_verified": false,
+  "executed_diagnostic": false,
+  "prior_tests_inherited": false,
+  "pdf_rendered": false,
+  "new_deposit": false,
+  "published_v5_changed": false,
+  "PR29": "20/41; TermSource=0; unchanged"
+}
