@@ -1,42 +1,42 @@
 [
   {
-    "sha256": "8c9672c40de877c1ddfdcc3134e0ef43d56c34f88fb0e3db45b94c2adefc9038",
     "bytes": 200787,
-    "file": "model-response-original.html"
+    "file": "model-response-original.html",
+    "sha256": "8c9672c40de877c1ddfdcc3134e0ef43d56c34f88fb0e3db45b94c2adefc9038"
   },
   {
-    "sha256": "afd4dccdc6b3988e24f9a1cc9528ccf9e91a4940f2c28faac5aff429b19523fd",
     "bytes": 30995,
-    "file": "model-response-original.txt"
+    "file": "model-response-original.txt",
+    "sha256": "afd4dccdc6b3988e24f9a1cc9528ccf9e91a4940f2c28faac5aff429b19523fd"
   },
   {
-    "sha256": "c1170289c7ad626cf977dd96daac549562ca628f1c70efc858a3cce32d9dba9b",
     "bytes": 30861,
-    "file": "model-response-visible.txt"
+    "file": "model-response-visible.txt",
+    "sha256": "c1170289c7ad626cf977dd96daac549562ca628f1c70efc858a3cce32d9dba9b"
   },
   {
-    "sha256": "136cb19a25800603d6d939c78cc892433575a37180c92e69aac983f6193eb2f0",
     "bytes": 4126,
-    "file": "operator-disposition.md"
+    "file": "operator-disposition.md",
+    "sha256": "136cb19a25800603d6d939c78cc892433575a37180c92e69aac983f6193eb2f0"
   },
   {
-    "sha256": "254e8a554abfb2e2c9ea8cc136bb812a5a6b4d017d4ddac5b3c79b9e33232e4e",
-    "bytes": 1070,
-    "file": "operator-evidence.json"
+    "bytes": 1037,
+    "file": "operator-evidence.json",
+    "sha256": "10baca847a614878025d66770ce2666dc3857f595cd88cd0d5b71d4eff94a50e"
   },
   {
-    "sha256": "57b4680c532245bea094ac26ece1d1240ec6c15df23c3dcd9ff7e12b487a8bce",
-    "bytes": 594,
-    "file": "primary-source-context.json"
+    "bytes": 578,
+    "file": "primary-source-context.json",
+    "sha256": "18064f6708e815dd662b3fe1899297258dd46f4746d01854fe4bd3e29362b26f"
   },
   {
-    "sha256": "a1d4a63faead4225aba124fea089837f7de615b23c7d2e2851963e6e3d889f22",
     "bytes": 1909,
-    "file": "prompt.txt"
+    "file": "prompt.txt",
+    "sha256": "a1d4a63faead4225aba124fea089837f7de615b23c7d2e2851963e6e3d889f22"
   },
   {
-    "sha256": "c19d7b13da991b58851afe5c43fbaaa3214abe0de2c80605d2ca956df9b8a7b3",
-    "bytes": 1790,
-    "file": "review-context.json"
+    "bytes": 1751,
+    "file": "review-context.json",
+    "sha256": "551a60b5f6ee6a21336568257594dcc014229a792f61e3ad0fb6367fdcf52e02"
   }
 ]
