@@ -43,9 +43,10 @@ theorem cycleFour_scalar_identities (u : Field) :
     simp [Fin.sum_univ_succ, normSq, add_assoc]
   · have h01 : (0 : ZMod 4) ≠ 1 := by decide
     have h23 : (2 : ZMod 4) ≠ 3 := by decide
-    simp [Fin.sum_univ_succ, cyclePairIntervals, cycleFourProfile,
+    norm_num [Fin.sum_univ_succ, cyclePairIntervals, cycleFourProfile,
       Finset.sum_insert, Finset.sum_singleton, h01, h23, div_pow, hs, observedSq]
-    <;> ring
+    <;> ring_nf
+    <;> rfl
 
 variable {d Nc : ℕ} [NeZero Nc]
 
