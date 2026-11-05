@@ -1,0 +1,15 @@
+# First Lean cycle-lift stage (unit143)
+
+At immutable source784236ea24a74728b49516cf5acfdf03aad45c8e, an exclusively owned fresh Colab Linux CPU/high-RAM clone built YangMills.RG.PhysicalCycleLift successfully. Five actual endpoints passed an axiom oracle with only propext, Classical.choice and Quot.sound: divergence zero, injectivity, exact counting mass, exact physical norm, and the actual normalized fibre mean in the selected internal coordinate. This is a FIRST successful clone, not the repository's required paired terminal reproduction.
+
+Energy transport, the full observation squared norm and the final physical negative-defect theorem remain analytic; the sharp-endpoint free-penalty example is not newly Lean verified. The selected-coordinate observation endpoint must not be described as verification of the entire physical mean map.
+
+Actual build138.636748899s; oracle10.447605370s. Both oracle validators exited0, each accepted all5 actual readouts and rejected3 changes to those readouts; normal and optimized outputs matched. Real exit sentinels, source, complete logs, oracle, validators and builtolean retained. Source had no sorry/axiom declarations; axiom dependencies were also checked on the compiled result. Build linter warnings (including an unused NeZero section variable) remain visible; no zero-warning claim. No Windows compiler execution.
+
+Public archive SHA256636f5c6a43064ccaed5f34092889bccbe887de8b8adc09de55ff2fe4104c8fc5,120987bytes;45 inner manifest members rehashed without mismatch. Builtolean SHA256564c95667cef610466cb520698da12daeb25a8d69a0cf1e1a23b1fefe5878014; actual oracle SHA256dc9f36b4d7a066c7e5de7fd733b1f32711dfb2247751363d0a27a9aedafaa4ef.
+
+The first attempt failed BEFORE compiling this module: an official leantar download returned a92byte HTML504GatewayTimeout page. Its full15919byte failure archive and report are preserved privately in D; no quota/expiry or proof failure was inferred. After releasing that session, the driver was prepared offline to retry the SAME official version/URL with HTTP-error handling and verify gzip magic. Retry succeeded; no mirror, permission expansion or quota bypass was used. All sessions disconnected after recovery. Full private successful archive1911f5a08f3929bf2b0f2da21b79b6f945550b7458b63fa9dde0d46209c63fcf (46 manifest members) also retained. Third-party installers/binary asset excluded from the public bundle; original URLs and observed hashes remain in its driver/report.
+
+Original critical rectangle question stays open, common-refinement remains stopped at counter3, PR29 stays20/41 TermSource0. Frozen PDF candidates, companion and all full reviews unchanged. No external assessment, inherited rating or new AIRR publication.
+
+Next: obtain the required second fresh clone at the SAME immutable source and compare actualolean/oracle hashes for these5 endpoints, or finish the missing energy/whole-mean transport before performing terminal paired validation of that final source. Do not label the whole unit142 physical counterexample Lean verified based on this partial stage.
