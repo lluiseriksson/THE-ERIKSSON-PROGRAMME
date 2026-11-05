@@ -42,7 +42,7 @@ theorem actualCycleLongitudinalEnergy_eq_directional
     simp only [PiLp.sub_apply, Real.norm_eq_abs, sq_abs]
   have hf (z : ActualCycleFibreIndex d Nc) :
       (∑ t : ZMod 4, cycleFourAlpha t *
-        (actualCycleFibreProfile A z (t + 1) - actualCycleFibreProfile A z t)^2) =
+        (actualCycleFibreProfile A z (t + (1 : ZMod 4)) - actualCycleFibreProfile A z t)^2) =
       energy (actualCycleFibreProfile A z) :=
     (cycleFour_scalar_identities (actualCycleFibreProfile A z)).1
   simp_rw [hn, Finset.mul_sum]
@@ -100,9 +100,15 @@ theorem actualCycleLongitudinalEnergy_le_total (rho : SUNAdjointModel Nc)
   simp only [PhysicalGradientIndex, Fintype.sum_prod_type]
   have ha (t : ZMod 4) : 0 ≤ cycleFourAlpha t :=
     le_trans (by norm_num) (weights_admissible.2 t).1
-  exact Finset.single_le_sum
-    (fun i _ => Finset.sum_nonneg (fun x _ => Finset.sum_nonneg (fun l _ =>
-      mul_nonneg (ha _) (sq_nonneg _)))) (Finset.mem_univ (0 : Fin (d + 2)))
+  let F : Fin (d + 2) → ℝ := fun i =>
+    ∑ x : FinBox (d + 2) 4, ∑ l : Fin (d + 2),
+      cycleFourAlpha (finBoxZModEquiv (d + 2) 4 x 0) *
+        ‖A (x.shift i, l) - A (x, l)‖^2
+  have hF (i : Fin (d + 2)) : 0 ≤ F i := by
+    exact Finset.sum_nonneg (fun x _ => Finset.sum_nonneg (fun l _ =>
+      mul_nonneg (ha _) (sq_nonneg _)))
+  change F 0 ≤ ∑ i, F i
+  exact Finset.single_le_sum (fun i _ => hF i) (Finset.mem_univ (0 : Fin (d + 2)))
 
 theorem physicalCycleFour_kernel_coercive (rho : SUNAdjointModel Nc)
     (A : PhysicalGaugeOneCochain (d + 2) 4 Nc)
