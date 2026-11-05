@@ -1,0 +1,206 @@
+% Supplement to the existing scaled-cluster result, not a new standalone paper.
+\section{A finite rectangular partition of disjoint lattice cubes}
+\label{sec:explicit-cube-partition}
+The linear partition for supplied disjoint cubes can be derived directly,
+without importing a general fat-object or low-density theorem. We use the
+classical compressed cube-splitting strategy of de Berg, UU-CS-1998-12,
+Section~2.1 and Lemma~2.1, and prove the required special-case geometry and
+all discrete/energy adapters below. This is not an original general BSP
+method. No time-complexity, measured implementation or Lean claim is made.
+
+Fix $D\geq3$, an integer $n\geq1$, and pairwise disjoint nonempty integer
+cubes $S_k=\prod_i\{b_{ki},\ldots,b_{ki}+L_k-1\}$ in the common root
+$X=\{0,\ldots,n-1\}^D$, for $1\leq k\leq J$. Set
+\[
+ Q_k=\prod_i[b_{ki}-1/4,b_{ki}+L_k-3/4].
+\]
+These are positive-side closed solid cubes, including $L_k=1$. They are
+strictly disjoint: disjoint integer intervals in a separating coordinate
+leave a real gap at least $1/2$. Their integer points are exactly $S_k$,
+and each such point is interior to $Q_k$. All corners of the $Q_k$ lie
+strictly inside $[-1,n]^D$.
+
+\subsection{Proper-intersection corner bound}
+Let $C$ be any axis-aligned cube of side $s>0$ with no corner of any $Q_k$
+in its interior. Then at most $2^D$ of the $Q_k$ meet $\operatorname{int}C$.
+Indeed, if $Q_k$ of side $a<s$ properly meets $C$, each of its coordinate
+intervals has an endpoint in the interior of the corresponding interval
+of $C$. Choosing these endpoints gives a corner of $Q_k$ in
+$\operatorname{int}C$, a contradiction. Thus every properly meeting $Q_k$
+has $a\geq s$. In each coordinate its interval then contains at least
+one endpoint of the interval of $C$; otherwise it would lie strictly
+inside that shorter interval. Hence $Q_k$ contains a corner of $C$.
+Strict disjointness makes these corner choices injective, proving the bound.
+
+The qualifier ``properly'' is essential. Closed boundary-only contact
+must not be counted here. For $C=[0,1]^D$ and any integer $K\geq1$, put
+$\epsilon=1/(4K+4)$ and
+\[
+ Q_j=[-\epsilon,0]\times[(2j+1)\epsilon,(2j+2)\epsilon]
+       \times[\epsilon,2\epsilon]^{D-2},\qquad0\leq j<K.
+\]
+These $K$ strictly disjoint small cubes touch $C$ but none meets its
+interior or has a corner in its interior. Thus the corresponding
+closed-contact bound would be false. This boundary guard does not assert
+that de Berg's theorem is false; our construction below explicitly uses
+open-cell intersections and interior lattice points.
+
+\subsection{Constructing linearly many vertex-free rectangles}
+Let $V$ be the set of all corners of the $Q_k$, so $N=|V|=2^DJ$.
+For $J=0$ use the single root rectangle and skip this construction.
+For $J>0$ begin with the cube $[-1,n]^D$. At a current cube $C$ keep
+exactly $V_C=V\cap\operatorname{int}C$.
+If $V_C$ is empty, stop at that cube. Otherwise consider its $2^D$ open
+half-side children.
+
+If the points are not all in one open child, perform all midpoint cuts
+and recurse on the nonempty child point sets. Points on the cuts are
+removed from subsequent interior sets. If all points lie in one open
+child, reflect and translate coordinates so the common corner is zero
+and $C=[0,s]^D$. Put
+\[
+ a=\max\{x_i:x\in V_C,\ 1\leq i\leq D\},\qquad C'=[0,a]^D.
+\]
+Then $0<a<s/2$. Successively cut at the $D$ upper facet planes of $C'$,
+producing $C'$ and the $D$ boxes
+\[
+ E_i=[0,a]^{i-1}\times[a,s]\times[0,s]^{D-i},\qquad1\leq i\leq D.
+\]
+Use disjoint boundary ownership for these boxes. Only $C'$ can contain
+points of $V$ in its interior, and at least one point of $V_C$ lies on
+its boundary. Stop at the other boxes and recurse inside $C'$ if needed.
+Every intermediate or terminal cell is full-dimensional; a boundary
+ownership convention never creates a separate hyperplane cell.
+
+Here is a direct finite termination and size proof. Among active cells,
+let $n_C=|V_C|>0$ and use the nonnegative integer potential
+\[
+ \Psi=\sum_{C\ {\rm active}}(2n_C-1).
+\]
+Initially $\Psi=2N-1$. If a processed cell loses $r$ points to new cut
+boundaries and has $t$ nonempty child point sets, the decrease is
+$2r+t-1$. In the shrinking step $r\geq1$. In a midpoint step either
+$r\geq1$ or $t\geq2$. Thus every event decreases $\Psi$ by at least one,
+so there are at most $2N-1$ events. Each event creates at most $2^D-1$
+additional leaves, since a shrinking step creates only $D$ extra leaves.
+The number $M$ of terminal rectangles satisfies
+\begin{equation}\label{eq:explicit-first-size}
+ M\leq1+(2N-1)(2^D-1)
+ \leq2^{D+1}(2^D-1)J.
+\end{equation}
+Tracking exactly $V\cap\operatorname{int}C$ ensures that every terminal
+rectangle has no corner of an input cube in its interior. This argument
+is a construction and a decreasing integer potential, not a supplied
+partition certificate. It does not prove a fast implementation bound.
+
+\subsection{A uniform occupancy bound for the terminal rectangles}
+Terminal cubes meet at most $2^D$ input cubes properly, by the corner bound.
+A terminal noncube has the form $E_i$ above after a coordinate reflection.
+It is contained in the slab $[0,s]^{i-1}\times[a,s]\times[0,s]^{D-i}$.
+Cover this slab by $2^{D-1}$ closed cubes of side $s-a$: in coordinate $i$
+use $[a,s]$, and in every other coordinate choose either $[0,s-a]$ or
+$[a,s]$. These intervals cover $[0,s]$ since $a<s/2$.
+Every covering cube lies inside the parent cube and outside the interior
+of $C'$, and its interior contains no point of $V$. The corner bound
+therefore applies separately to each covering cube.
+
+If an input cube properly meets $E_i$, the intersection contains an open
+set. A point of that set avoiding the finitely many covering-facet planes
+belongs to the interior of a covering cube. Thus all proper intersections
+are counted by the cover, even if some particular point lies on a cover
+boundary. Consequently each terminal rectangle properly meets at most
+\begin{equation}\label{eq:explicit-occupancy}
+ T_D=2^{D-1}2^D=2^{2D-1}
+\end{equation}
+input cubes. The covering argument, including its boundary qualification,
+is proved here; no arbitrary-box unclutteredness is assumed.
+
+\subsection{From open geometry to an actual integer partition}
+For each terminal rectangle list the at most $T_D$ cubes meeting its
+interior. Refine by all their facet coordinates. There are at most $2T_D$
+cut coordinates per axis, so at most $(2T_D+1)^D$ refined rectangles per
+terminal cell. All cuts are axis-parallel. Now assign every splitting
+hyperplane to one child consistently, intersect with $X$, and delete empty
+integer sets. The result is a disjoint cover of $X$ by integer rectangles.
+Taking integer points and deleting empty sets does not increase the count.
+
+To check membership rigorously, suppose an assigned integer point $x$
+lies in $S_k$. It is interior to $Q_k$, while its assigned terminal
+rectangle has $x$ in its closure. A small ball about $x$ lies in $Q_k$
+and meets the interior of that full-dimensional terminal rectangle.
+Therefore $Q_k$ was in its list. None of the new facet coordinates is an
+integer. Hence each refined integer rectangle is entirely inside a
+listed $S_k$ or disjoint from every listed $S_k$. An unlisted cluster
+cannot contain one of its integer points, by the same closure argument.
+Strict disjointness then implies that each integer rectangle is inside
+one cluster or outside every cluster.
+
+In particular, with the explicit dimension-only constant
+\begin{equation}\label{eq:explicit-final-size}
+ A_D=2^{D+1}(2^D-1)(2^{2D}+1)^D,
+ \qquad |\mathcal P|\leq A_D\max\{1,J\},
+\end{equation}
+we have derived the required partition. The constant is deliberately
+loose and no sharpness or algorithm running-time claim is made.
+For $n=1$ and for singleton input cubes all constructions remain valid.
+
+\subsection{The actual coefficient and fixed-penalty consequence}
+Suppose, in addition, that for fixed $c>0$ and $\beta\geq1$ the actual
+positive scalar starting coefficients obey
+\[
+ a(x)\geq cL_k(L_k-1)/4\quad(x\in S_k),\qquad
+ a(x)\geq cn(n-1)/4\quad(x\notin\cup_k S_k),
+ \qquad a(x)\leq\beta L_k^2\quad(x\in S_k).
+\]
+These coefficient/cube assumptions are retained, not inferred from the
+critical moment. On an interval of $l$ integer vertices, pairwise variance,
+path Cauchy--Schwarz and at most $l^2/4$ pairs through one cut give
+\[
+ \sum|u-\bar u|^2\leq\frac{l(l-1)}4\sum_{\rm edges}|du|^2.
+\]
+For completeness, product variance tensorization follows from the commuting
+coordinate averages $P_i u=l_i^{-1}\sum_{t=0}^{l_i-1}u(x_1,\ldots,t,\ldots,x_D)$: the telescoping orthogonal decomposition of
+$I-\prod_iP_i$ gives a sum bounded by
+$\sum_i\|u-P_i u\|_2^2$. Applying the interval bound on its fibers proves
+\[
+ \operatorname{Var}_R(u)\leq\frac{L(R)(L(R)-1)}4
+                      \sum_{e\subset R}|du(e)|^2.
+\]
+Inside a cluster $L(R)\leq L_k$, and outside all clusters $L(R)\leq n$.
+The displayed coefficient lower bounds therefore give
+$c\operatorname{Var}_R(u)\leq\mathcal E_{a,R}(u)$.
+Singleton residuals are zero, so no zero lower bound is divided by.
+Sum over all field/internal coordinates and all partition cells. Original
+internal positive-axis edge occurrences are disjoint; omitted inter-cell
+and periodic-wrap occurrences have nonnegative energy. Thus the ACTUAL
+normalized means
+\[
+ (C_{\mathcal P}U)_{R,j}=\sqrt{|R|}\,\operatorname{mean}_R U_j
+\]
+satisfy
+\[
+ c\|U\|^2\leq\mathcal E_a(U)+c\|C_{\mathcal P}U\|^2
+\]
+for every cochain, with output dimension $h|\mathcal P|$,
+$h=D(N_c^2-1)$. This uses an all-cochain variance estimate, not the invalid
+inference from a kernel-only margin to fixed penalty $c$. Means need not
+preserve the divergence constraint. The inequality consequently also
+holds on that constraint subspace without changing $C_{\mathcal P}$.
+
+If $p=D/2$, $\mu\geq1$, and the original critical mass bound is
+$\sum_Xa^{-p}\leq Mn^D/\mu^p$, then each supplied cube contributes
+at least $L_k^D/(\beta L_k^2)^p=\beta^{-p}$ to this mass. Hence
+$J\leq\beta^pMn^D/\mu^p$, and \eqref{eq:explicit-final-size} gives
+\[
+ \dim F\leq hA_D(1+2^p\beta^pM)
+                   \max\{1,n^D/(1+\mu)^p\}.
+\]
+This proves the restricted supplied-cube consequence with an explicit
+constant and without a fat-object BSP theorem as a black box. It does
+not construct the supplied cubes from the critical moment, remove either
+scale bound or the strong complement bound, resolve the unrestricted
+critical rectangular question, or establish a covariant/continuum gap.
+No new originality or independent-discovery claim is made: the compressed
+splitting strategy is attributed classical geometry, here derived and
+adapted completely for this special class. The frozen reviewed PDF and
+its full reports and pending permission remain unchanged.
