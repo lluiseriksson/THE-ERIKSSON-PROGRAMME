@@ -1,0 +1,224 @@
+{
+  "status": "FINITE_ACTUAL_PHYSICAL_DIAGNOSTICS_PASS",
+  "steps": [
+    {
+      "mode": "normal",
+      "exit": 0,
+      "seconds": 0.6013681109999993
+    },
+    {
+      "mode": "optimized",
+      "exit": 0,
+      "seconds": 0.9353544279999824
+    }
+  ],
+  "source_sha256": "4ad050cdeec3aac52827970cc71b1ffdcd7b813107933e293f9805c16c53e227",
+  "assert_nodes": 0,
+  "summary": {
+    "actual_cases_checked": 8,
+    "cases": [
+      {
+        "D": 3,
+        "defect": [
+          "-96/35",
+          "0"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "832/7",
+          "0"
+        ],
+        "kind": "fixed19/5",
+        "norm": [
+          "1968/49",
+          "0"
+        ],
+        "observation_norm": [
+          "400/49",
+          "0"
+        ]
+      },
+      {
+        "D": 3,
+        "K": 0,
+        "defect": [
+          "289600/19",
+          "-35200/19"
+        ],
+        "delta": [
+          "-115/19",
+          "25/19"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "41020160/361",
+          "-4141824/361"
+        ],
+        "kind": "endpoint",
+        "norm": [
+          "3025440/361",
+          "-230624/361"
+        ],
+        "observation_norm": [
+          "1061600/361",
+          "-92000/361"
+        ]
+      },
+      {
+        "D": 3,
+        "K": 1,
+        "defect": [
+          "130400/7",
+          "-15200/7"
+        ],
+        "delta": [
+          "-60/7",
+          "10/7"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "892320/7",
+          "-91488/7"
+        ],
+        "kind": "endpoint",
+        "norm": [
+          "460160/49",
+          "-38016/49"
+        ],
+        "observation_norm": [
+          "193600/49",
+          "-19200/49"
+        ]
+      },
+      {
+        "D": 3,
+        "K": 100,
+        "defect": [
+          "-497600/461",
+          "51200/461"
+        ],
+        "delta": [
+          "315/461",
+          "-25/461"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "12853589760/212521",
+          "-1226283264/212521"
+        ],
+        "kind": "endpoint",
+        "norm": [
+          "1158551840/212521",
+          "-81860064/212521"
+        ],
+        "observation_norm": [
+          "2437600/212521",
+          "-252000/212521"
+        ]
+      },
+      {
+        "D": 4,
+        "defect": [
+          "-384/35",
+          "0"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "3328/7",
+          "0"
+        ],
+        "kind": "fixed19/5",
+        "norm": [
+          "7872/49",
+          "0"
+        ],
+        "observation_norm": [
+          "1600/49",
+          "0"
+        ]
+      },
+      {
+        "D": 4,
+        "K": 0,
+        "defect": [
+          "1158400/19",
+          "-140800/19"
+        ],
+        "delta": [
+          "-115/19",
+          "25/19"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "164080640/361",
+          "-16567296/361"
+        ],
+        "kind": "endpoint",
+        "norm": [
+          "12101760/361",
+          "-922496/361"
+        ],
+        "observation_norm": [
+          "4246400/361",
+          "-368000/361"
+        ]
+      },
+      {
+        "D": 4,
+        "K": 1,
+        "defect": [
+          "521600/7",
+          "-60800/7"
+        ],
+        "delta": [
+          "-60/7",
+          "10/7"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "3569280/7",
+          "-365952/7"
+        ],
+        "kind": "endpoint",
+        "norm": [
+          "1840640/49",
+          "-152064/49"
+        ],
+        "observation_norm": [
+          "774400/49",
+          "-76800/49"
+        ]
+      },
+      {
+        "D": 4,
+        "K": 100,
+        "defect": [
+          "-1990400/461",
+          "204800/461"
+        ],
+        "delta": [
+          "315/461",
+          "-25/461"
+        ],
+        "divergence_nonzero": 0,
+        "energy": [
+          "51414359040/212521",
+          "-4905133056/212521"
+        ],
+        "kind": "endpoint",
+        "norm": [
+          "4634207360/212521",
+          "-327440256/212521"
+        ],
+        "observation_norm": [
+          "9750400/212521",
+          "-1008000/212521"
+        ]
+      }
+    ],
+    "mutated_fields_detected": 2,
+    "scope": "D3/4,n4 only; full analytic lift proof is separate; no Lean or independent reproduction",
+    "status": "FINITE_ACTUAL_PHYSICAL_DIAGNOSTICS_PASS"
+  },
+  "matching_bytes": true
+}

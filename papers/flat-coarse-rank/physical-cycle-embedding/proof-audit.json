@@ -1,0 +1,40 @@
+{
+  "primary": "https://epubs.siam.org/doi/10.1137/0126013",
+  "next": "Complete actual diagnostics then preserve remote evidence and one small draftPR",
+  "frozen_pdf_unchanged": true,
+  "question": "Does the old scalar cycle obstruction persist for actual rectangular means on actual divergence-zero cochains?",
+  "moment": "mu3, 1<=a<=6, M_D=(2*3^(D/2)+(1/2)^(D/2)+(3/4)^(D/2))/4",
+  "new_hypotheses_removed": [],
+  "new_Lean": false,
+  "prior_limitation": "Old four-cycle theorem explicitly had no proved physical divergence-zero embedding",
+  "verified_existing_identity": "YangMills/RG/ActualPacketSupportEnvelope.lean actualTotalStiffness_energy",
+  "original_question": "OPEN",
+  "primary_inspected": "Publisher abstract and bibliography only, not paywalled fulltext",
+  "unit": 142,
+  "commonrefinement": "STOPPEDcounter3",
+  "new_general_priority_claim": false,
+  "source_prior": "papers/flat-coarse-rank/research-consolidation/critical-inverse-moment-appendix.tex",
+  "freeK_defect": "-25*(13-sqrt85)^2/(7+K-c*)*4^(D-1)",
+  "outcome": "Analytic lift closes physical-domain embedding;8 finite actual-field cases pass exactly in D3/4 both modes;2 changed fields detected by actual divergence",
+  "fixed_defect": "-(6/35)*4^(D-1)",
+  "endpoint": "c*=(17-sqrt85)/2",
+  "fixed_c": "19/5",
+  "hypotheses": [
+    "D>=3,Nc>=2",
+    "n4 for concrete witness",
+    "actual shared scalar total stiffness alpha=(1,6,4,1)",
+    "actual rectangles I_b x singleton transverse fibres"
+  ],
+  "finite_diagnostics": {
+    "universal_proof": "Analytic derivation in markdown, not certified by8 tests",
+    "archive": "f06b55dc5e6615ec645092bf58a1e4a62564fa396ba100f18007b1b6aa562148",
+    "quadratic_field": "Q(sqrt85), exact Fraction pairs",
+    "new_Lean": false,
+    "case_count": 8,
+    "source": "9596d5a9e60b60f0b25409532aae3562df79bb89",
+    "modes": [
+      "normal",
+      "optimized"
+    ]
+  }
+}
