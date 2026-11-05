@@ -1,0 +1,70 @@
+{
+  "source_sha": "0c706827dcbb11859e56bb6c7dc981eb37a02e69",
+  "terminal_paired_reproduction": true,
+  "separate_sessions": true,
+  "fresh_clones": 2,
+  "rows": [
+    {
+      "file": "PhysicalCycleFullForm.lean",
+      "first_sha256": "1ea5a2bd1377b778080bc1271b0e68497bb38425af0856063743b58e1929a023",
+      "second_sha256": "1ea5a2bd1377b778080bc1271b0e68497bb38425af0856063743b58e1929a023",
+      "match": true
+    },
+    {
+      "file": "PhysicalCycleFullFormOracle.lean",
+      "first_sha256": "f3ba5256f118feba394c8430a52671d25c0234cd84330ff6c0a53a2e6bdc1ff2",
+      "second_sha256": "f3ba5256f118feba394c8430a52671d25c0234cd84330ff6c0a53a2e6bdc1ff2",
+      "match": true
+    },
+    {
+      "file": "PhysicalCycleFullForm.olean",
+      "first_sha256": "b0f8ff8654d79d020effb428e1da8a850c34b8857fd75ff1d6e642d63c396e61",
+      "second_sha256": "b0f8ff8654d79d020effb428e1da8a850c34b8857fd75ff1d6e642d63c396e61",
+      "match": true
+    },
+    {
+      "file": "oracle.log",
+      "first_sha256": "bb8066caac360948d41d325ff4f3cb9650f51728cf963699b42e5cccba0fd390",
+      "second_sha256": "bb8066caac360948d41d325ff4f3cb9650f51728cf963699b42e5cccba0fd390",
+      "match": true
+    },
+    {
+      "file": "oracle-validator.py",
+      "first_sha256": "b5257468358ed0d8240907fe0a4843c59f7e0a8a44d9d33a476501add52450f3",
+      "second_sha256": "b5257468358ed0d8240907fe0a4843c59f7e0a8a44d9d33a476501add52450f3",
+      "match": true
+    },
+    {
+      "file": "validator-normal.log",
+      "first_sha256": "09ad97c34784f78d012d239fc36c6cb3cd0a0b74bc78801b33e64f773abc3804",
+      "second_sha256": "09ad97c34784f78d012d239fc36c6cb3cd0a0b74bc78801b33e64f773abc3804",
+      "match": true
+    },
+    {
+      "file": "validator-optimized.log",
+      "first_sha256": "09ad97c34784f78d012d239fc36c6cb3cd0a0b74bc78801b33e64f773abc3804",
+      "second_sha256": "09ad97c34784f78d012d239fc36c6cb3cd0a0b74bc78801b33e64f773abc3804",
+      "match": true
+    },
+    {
+      "file": "build148.py",
+      "first_sha256": "590fbfdd198051643442449dd87b0b811b214bb92da6aa505f046af949bcc1e3",
+      "second_sha256": "590fbfdd198051643442449dd87b0b811b214bb92da6aa505f046af949bcc1e3",
+      "match": true
+    }
+  ],
+  "raw_reports_preserved": true,
+  "scope": "Actual full physical-form all-kernel coercivity plus explicit fixed-penalty failure on divergence-zero cochains; no sharp free-penalty physical result",
+  "first_public": {
+    "members": 45,
+    "all_inner_hashes_verified": true,
+    "sha256": "209220f94f1883cfd9919afcc1466bc5eaccb3d0adcbffdc2205a3aab93a86d1",
+    "bytes": 130621
+  },
+  "second_public": {
+    "members": 45,
+    "all_inner_hashes_verified": true,
+    "sha256": "7939f34c6fa9fff1b2c5cd535ec9fb0927f1c493e34cdc2e68132d4aac0fd7a9",
+    "bytes": 130783
+  }
+}
