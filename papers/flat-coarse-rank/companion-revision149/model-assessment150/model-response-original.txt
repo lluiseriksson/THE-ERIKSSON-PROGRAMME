@@ -1,0 +1,4314 @@
+1. Artifact Identity, Model Identity, and Inspected Inputs
+
+Artifact Filename and Length: companion.pdf, exact 14-page working-paper companion titled Finite critical estimates cube partitions and physical cycle obstructions: Consolidated companion proof and reproducibility record, dated 5 November 2026, prepared under The Eriksson Programme with OpenAI Codex listed as preparing assistant.   
+companion.pdf
++ 1
+
+Artifact SHA256: 5c2774494fa559e2d792db328d0c7dce201325bd0234626675357cce54f08377 (user-supplied in the review prompt; because the model environment exposes the parsed 14-page document representation rather than raw binary file bytes, this hash is recorded as user-supplied metadata rather than independently recomputed).
+
+Reviewing Model Identity: Unknown (the runtime environment exposes only the generic assistant persona Gemini without an API-attested model build or version string).
+
+Directly Inspected Inputs:
+
+The complete text and equations of the 14-page PDF companion.pdf.   
+companion.pdf
++ 4
+
+The instructions and constraints in the user prompt.
+
+Uninspected External Items (Retained as Explicit Limitations):
+
+Formal Verification Artifacts: The Lean 4.29.0-rc6 source file PhysicalCycleFullForm.lean (commit 0c706827dcbb11859e56bb6c7dc981eb37a02e69), compiled binary (b0f8ff8654d79d02...), validator scripts, oracle mutations, and paired Colab evidence archives (paired-full-form148.json, inputs.json) were not provided or inspected.   
+companion.pdf
+
+Computational Fixture Archives: The Python 3.13.18 rational-arithmetic partition builder/checker source (commit 3c309786dff766a97638b9bb4f654bcb14cb9455), the 58 canonical JSON certificates, and the 193,158-byte archive (64f548dff043cf6cf9f1c1a3abf24fc793cf6565ff7dd436c1d0f263351b5be1) were not inspected.   
+companion.pdf
+
+External Literature and Dossier History: Cited papers by Andres–Deuschel–Slowik (arXiv:1312.5473v6), de Berg (UU-CS-1998-12), and Carlson–Haynsworth–Markham (SIAM J. Appl. Math. 26 (1974), 169–175), as well as prior programme artifacts (units137-140, units142-148, revision136, eb4df3, AIRR v5, PR29), were not independently inspected.   
+companion.pdf
++ 4
+
+2. Mathematical Findings
+2.1 Part 1: Classical Finite Critical Rectangle Estimates (Section 1, pp. 3–5)
+
+Parameters and Conjugacy: For 
+𝐷
+≥
+3
+D≥3, the exponents 
+𝑝
+=
+𝐷
+/
+2
+p=D/2, 
+𝑞
+=
+2
+𝐷
+𝐷
++
+2
+∈
+[
+6
+/
+5
+,
+2
+)
+q=
+D+2
+2D
+	​
+
+∈[6/5,2), 
+𝑞
+′
+=
+2
+𝐷
+𝐷
+−
+2
+∈
+(
+2
+,
+6
+]
+q
+′
+=
+D−2
+2D
+	​
+
+∈(2,6], and 
+𝛼
+=
+2
+(
+𝐷
+−
+1
+)
+𝐷
+∈
+[
+4
+/
+3
+,
+2
+)
+α=
+D
+2(D−1)
+	​
+
+∈[4/3,2) satisfy the exact Hölder and scaling identities 
+1
+𝑞
++
+1
+𝑞
+′
+=
+1
+q
+1
+	​
+
++
+q
+′
+1
+	​
+
+=1, 
+𝛼
+𝐷
+𝐷
+−
+1
+=
+2
+α
+D−1
+D
+	​
+
+=2, and 
+(
+𝛼
+−
+1
+)
+𝑞
+′
+=
+2
+(α−1)q
+′
+=2.   
+companion.pdf
++ 1
+
+Finite Projection Inequality (Section 1.1, Eq. (1)): The Shannon entropy proof of Loomis–Whitney/Shearer projection 
+∣
+𝐴
+∣
+𝐷
+−
+1
+≤
+∏
+𝑖
+=
+1
+𝐷
+∣
+𝜋
+𝑖
+𝐴
+∣
+∣A∣
+D−1
+≤∏
+i=1
+D
+	​
+
+∣π
+i
+	​
+
+A∣ for finite 
+∅
+≠
+𝐴
+⊂
+∏
+𝑗
+=
+1
+𝐷
+𝑋
+𝑗
+∅
+
+=A⊂∏
+j=1
+D
+	​
+
+X
+j
+	​
+
+ via concavity of 
+−
+𝑡
+log
+⁡
+𝑡
+−tlogt, conditional entropy monotonicity 
+𝐻
+(
+𝑌
+∣
+𝑍
+)
+≥
+𝐻
+(
+𝑌
+∣
+𝑍
+,
+𝑊
+)
+H(Y∣Z)≥H(Y∣Z,W), the chain rule, and uniform support bound 
+𝐻
+(
+𝑋
+−
+𝑖
+)
+≤
+log
+⁡
+∣
+𝜋
+𝑖
+𝐴
+∣
+H(X
+−i
+	​
+
+)≤log∣π
+i
+	​
+
+A∣ is complete and exact.   
+companion.pdf
+
+Relative Edge Isoperimetry on 
+𝑄
+𝑠
+Q
+s
+	​
+
+ (Section 1.2, Eq. (2)): On 
+𝑄
+𝑠
+=
+{
+0
+,
+…
+,
+𝑠
+−
+1
+}
+𝐷
+Q
+s
+	​
+
+={0,…,s−1}
+D
+ (
+𝑠
+≥
+2
+s≥2), for 
+0
+<
+𝑎
+=
+∣
+𝐴
+∣
+≤
+𝑠
+𝐷
+/
+2
+0<a=∣A∣≤s
+D
+/2, direction-
+𝑖
+i fibers are connected intervals of length 
+𝑠
+s, so at most 
+𝑎
+/
+𝑠
+a/s occupied fibers are full and each of the remaining 
+≥
+𝑃
+𝑖
+−
+𝑎
+/
+𝑠
+≥P
+i
+	​
+
+−a/s non-full occupied fibers contributes at least one internal crossing edge. Applying Eq. (1), AM-GM, and 
+𝑎
+/
+𝑠
+=
+𝑎
+(
+𝐷
+−
+1
+)
+/
+𝐷
+(
+𝑎
+1
+/
+𝐷
+/
+𝑠
+)
+≤
+2
+−
+1
+/
+𝐷
+𝑎
+(
+𝐷
+−
+1
+)
+/
+𝐷
+a/s=a
+(D−1)/D
+(a
+1/D
+/s)≤2
+−1/D
+a
+(D−1)/D
+ yields 
+∣
+∂
+𝐸
+𝐴
+∣
+≥
+𝐷
+(
+1
+−
+2
+−
+1
+/
+𝐷
+)
+𝑎
+(
+𝐷
+−
+1
+)
+/
+𝐷
+=
+𝑐
+𝐷
+∣
+𝐴
+∣
+(
+𝐷
+−
+1
+)
+/
+𝐷
+∣∂
+E
+	​
+
+A∣≥D(1−2
+−1/D
+)a
+(D−1)/D
+=c
+D
+	​
+
+∣A∣
+(D−1)/D
+.   
+companion.pdf
++ 1
+
+Endpoint Counting-Norm Sobolev–Poincaré Inequality (Section 1.3, Eq. (3)):
+
+By coarea/layer-cake decomposition and Minkowski's inequality in 
+ℓ
+𝐷
+/
+(
+𝐷
+−
+1
+)
+ℓ
+D/(D−1)
+, any 
+𝑣
+≥
+0
+v≥0 supported on at most 
+∣
+𝑄
+𝑠
+∣
+/
+2
+∣Q
+s
+	​
+
+∣/2 vertices obeys 
+∥
+𝑣
+∥
+𝐷
+/
+(
+𝐷
+−
+1
+)
+≤
+𝑐
+𝐷
+−
+1
+∑
+𝑒
+∣
+𝑑
+𝑣
+(
+𝑒
+)
+∣
+∥v∥
+D/(D−1)
+	​
+
+≤c
+D
+−1
+	​
+
+∑
+e
+	​
+
+∣dv(e)∣.   
+companion.pdf
+
+Replacing 
+𝑣
+v by 
+𝑣
+𝛼
+v
+α
+, using 
+∣
+𝑎
+𝛼
+−
+𝑏
+𝛼
+∣
+≤
+𝛼
+∣
+𝑎
+−
+𝑏
+∣
+(
+𝑎
+𝛼
+−
+1
++
+𝑏
+𝛼
+−
+1
+)
+∣a
+α
+−b
+α
+∣≤α∣a−b∣(a
+α−1
++b
+α−1
+), Hölder's inequality with 
+(
+𝑞
+,
+𝑞
+′
+)
+(q,q
+′
+), 
+(
+𝑎
++
+𝑏
+)
+𝑞
+′
+≤
+2
+𝑞
+′
+−
+1
+(
+𝑎
+𝑞
+′
++
+𝑏
+𝑞
+′
+)
+(a+b)
+q
+′
+≤2
+q
+′
+−1
+(a
+q
+′
++b
+q
+′
+), and the vertex degree bound 
+deg
+⁡
+𝑄
+𝑠
+(
+𝑥
+)
+≤
+2
+𝐷
+deg
+Q
+s
+	​
+
+	​
+
+(x)≤2D, gives 
+∥
+𝑣
+∥
+2
+𝛼
+≤
+2
+𝛼
+𝐷
+1
+/
+𝑞
+′
+𝑐
+𝐷
+∥
+𝑑
+𝑣
+∥
+𝑞
+∥
+𝑣
+∥
+2
+𝛼
+−
+1
+∥v∥
+2
+α
+	​
+
+≤
+c
+D
+	​
+
+2αD
+1/q
+′
+	​
+
+∥dv∥
+q
+	​
+
+∥v∥
+2
+α−1
+	​
+
+, i.e., 
+∥
+𝑣
+∥
+2
+≤
+𝐾
+𝐷
+∥
+𝑑
+𝑣
+∥
+𝑞
+∥v∥
+2
+	​
+
+≤K
+D
+	​
+
+∥dv∥
+q
+	​
+
+.   
+companion.pdf
+
+Splitting an arbitrary real 
+𝑢
+u at a counting median 
+𝑚
+m into 
+𝑣
++
+=
+(
+𝑢
+−
+𝑚
+)
++
+v
++
+	​
+
+=(u−m)
++
+	​
+
+ and 
+𝑣
+−
+=
+(
+𝑚
+−
+𝑢
+)
++
+v
+−
+	​
+
+=(m−u)
++
+	​
+
+ (each supported on 
+≤
+∣
+𝑄
+𝑠
+∣
+/
+2
+≤∣Q
+s
+	​
+
+∣/2 vertices) and using 
+𝑎
+𝑞
++
+𝑏
+𝑞
+≤
+(
+𝑎
++
+𝑏
+)
+𝑞
+a
+q
++b
+q
+≤(a+b)
+q
+ (
+𝑞
+>
+1
+q>1) and 
+𝐴
+2
+/
+𝑞
++
+𝐵
+2
+/
+𝑞
+≤
+(
+𝐴
++
+𝐵
+)
+2
+/
+𝑞
+A
+2/q
++B
+2/q
+≤(A+B)
+2/q
+ (
+2
+/
+𝑞
+>
+1
+2/q>1) rigorously establishes 
+Var
+𝑄
+𝑠
+(
+𝑢
+)
+≤
+∥
+𝑢
+−
+𝑚
+∥
+2
+2
+≤
+𝐾
+𝐷
+2
+∥
+𝑑
+𝑢
+∥
+𝑞
+2
+Var
+Q
+s
+	​
+
+	​
+
+(u)≤∥u−m∥
+2
+2
+	​
+
+≤K
+D
+2
+	​
+
+∥du∥
+q
+2
+	​
+
+.   
+companion.pdf
+
+Reflection and Weighted Extension (Sections 1.4–1.6, Eqs. (4)–(5)):
+
+Folding 
+𝑄
+𝑠
+Q
+s
+	​
+
+ (
+𝑠
+=
+2
+𝐿
++
+1
+s=2L+1, 
+𝐿
+=
+max
+⁡
+𝑖
+𝑙
+𝑖
+≥
+2
+L=max
+i
+	​
+
+l
+i
+	​
+
+≥2) onto 
+𝑅
+=
+∏
+𝑖
+=
+1
+𝐷
+{
+0
+,
+…
+,
+𝑙
+𝑖
+−
+1
+}
+R=∏
+i=1
+D
+	​
+
+{0,…,l
+i
+	​
+
+−1} via the 
+2
+𝑙
+𝑖
+2l
+i
+	​
+
+-periodic endpoint-repeating reflection assigns each coordinate value at least 
+2
+⌊
+𝑠
+/
+(
+2
+𝑙
+𝑖
+)
+⌋
+≥
+𝑠
+/
+𝑙
+𝑖
+>
+𝑠
+/
+(
+2
+𝑙
+𝑖
+)
+2⌊s/(2l
+i
+	​
+
+)⌋≥s/l
+i
+	​
+
+>s/(2l
+i
+	​
+
+) and at most 
+2
+⌈
+𝑠
+/
+(
+2
+𝑙
+𝑖
+)
+⌉
+≤
+𝑠
+/
+𝑙
+𝑖
++
+2
+≤
+3
+𝑠
+/
+𝑙
+𝑖
+2⌈s/(2l
+i
+	​
+
+)⌉≤s/l
+i
+	​
+
++2≤3s/l
+i
+	​
+
+ preimages.   
+companion.pdf
+
+Consequently, 
+Var
+𝑄
+𝑠
+(
+𝑢
+~
+)
+≥
+2
+−
+𝐷
+𝑟
+Var
+𝑅
+(
+𝑢
+)
+Var
+Q
+s
+	​
+
+	​
+
+(
+u
+~
+)≥2
+−D
+rVar
+R
+	​
+
+(u) and 
+∑
+𝑒
+⊂
+𝑄
+𝑠
+∣
+𝑑
+𝑢
+~
+(
+𝑒
+)
+∣
+𝑞
+≤
+3
+𝐷
+𝑟
+∑
+𝑒
+⊂
+𝑅
+∣
+𝑑
+𝑢
+(
+𝑒
+)
+∣
+𝑞
+∑
+e⊂Q
+s
+	​
+
+	​
+
+∣d
+u
+~
+(e)∣
+q
+≤3
+D
+r∑
+e⊂R
+	​
+
+∣du(e)∣
+q
+ where 
+𝑟
+=
+𝑠
+𝐷
+/
+𝑉
+r=s
+D
+/V. Since 
+𝑟
+2
+/
+𝑞
+−
+1
+=
+(
+𝑠
+𝐷
+/
+𝑉
+)
+2
+/
+𝐷
+=
+𝑠
+2
+/
+𝑉
+2
+/
+𝐷
+≤
+9
+𝐿
+2
+/
+𝑉
+2
+/
+𝐷
+=
+3
+2
+𝜅
+r
+2/q−1
+=(s
+D
+/V)
+2/D
+=s
+2
+/V
+2/D
+≤9L
+2
+/V
+2/D
+=3
+2
+κ, Eq. (4) holds with 
+𝐴
+𝐷
+=
+𝐾
+𝐷
+2
+2
+𝐷
+3
+2
+𝐷
+/
+𝑞
++
+2
+A
+D
+	​
+
+=K
+D
+2
+	​
+
+2
+D
+3
+2D/q+2
+.   
+companion.pdf
++ 2
+
+Applying Hölder on 
+𝑅
+R with exponents 
+2
+/
+𝑞
+2/q and 
+2
+/
+(
+2
+−
+𝑞
+)
+=
+𝐷
+/
+(
+2
+−
+𝐷
++
+2
+)
+2/(2−q)=D/(2−D+2) (so 
+𝑞
+/
+(
+2
+−
+𝑞
+)
+=
+𝐷
+/
+2
+=
+𝑝
+q/(2−q)=D/2=p) yields Eq. (5), and bounding starting edges per vertex by 
+𝐷
+D yields 
+Var
+𝑅
+(
+𝑢
+)
+≤
+𝐴
+𝐷
+𝐷
+2
+/
+𝐷
+𝜅
+(
+∑
+𝑅
+𝑎
+(
+𝑥
+)
+−
+𝐷
+/
+2
+)
+2
+/
+𝐷
+𝐸
+𝑎
+,
+𝑅
+(
+𝑢
+)
+Var
+R
+	​
+
+(u)≤A
+D
+	​
+
+D
+2/D
+κ(∑
+R
+	​
+
+a(x)
+−D/2
+)
+2/D
+E
+a,R
+	​
+
+(u).   
+companion.pdf
+
+The linear test profile 
+𝑢
+(
+𝑥
+)
+=
+𝑥
+𝑖
+−
+(
+𝐿
+−
+1
+)
+/
+2
+u(x)=x
+i
+	​
+
+−(L−1)/2 on uniform weights correctly verifies 
+Var
+𝑅
+(
+𝑢
+)
+/
+𝐸
+𝑎
+,
+𝑅
+(
+𝑢
+)
+=
+𝐿
+(
+𝐿
++
+1
+)
+12
+𝑎
+≥
+𝐿
+2
+12
+𝑎
+Var
+R
+	​
+
+(u)/E
+a,R
+	​
+
+(u)=
+12a
+L(L+1)
+	​
+
+≥
+12a
+L
+2
+	​
+
+, confirming that the aspect-ratio factor 
+𝜅
+κ is unavoidable.   
+companion.pdf
+
+2.2 Part 2: Finite Rectangular Partition of Supplied Disjoint Lattice Cubes (Section 2, pp. 6–9)
+
+Quarter-Offset Solid Embedding: Replacing pairwise disjoint integer cubes 
+𝑆
+𝑘
+=
+∏
+𝑖
+{
+𝑏
+𝑘
+𝑖
+,
+…
+,
+𝑏
+𝑘
+𝑖
++
+𝐿
+𝑘
+−
+1
+}
+⊂
+𝑋
+=
+{
+0
+,
+…
+,
+𝑛
+−
+1
+}
+𝐷
+S
+k
+	​
+
+=∏
+i
+	​
+
+{b
+ki
+	​
+
+,…,b
+ki
+	​
+
++L
+k
+	​
+
+−1}⊂X={0,…,n−1}
+D
+ by closed solids 
+𝑄
+𝑘
+=
+∏
+𝑖
+[
+𝑏
+𝑘
+𝑖
+−
+1
+/
+4
+,
+𝑏
+𝑘
+𝑖
++
+𝐿
+𝑘
+−
+3
+/
+4
+]
+Q
+k
+	​
+
+=∏
+i
+	​
+
+[b
+ki
+	​
+
+−1/4,b
+ki
+	​
+
++L
+k
+	​
+
+−3/4] of side 
+𝐿
+𝑘
+−
+1
+/
+2
+≥
+1
+/
+2
+L
+k
+	​
+
+−1/2≥1/2 guarantees strict pairwise separation 
+≥
+1
+/
+2
+≥1/2, 
+𝑄
+𝑘
+∩
+𝑍
+𝐷
+=
+𝑆
+𝑘
+⊂
+int 
+𝑄
+𝑘
+Q
+k
+	​
+
+∩Z
+D
+=S
+k
+	​
+
+⊂int Q
+k
+	​
+
+, and all 
+𝑁
+=
+2
+𝐷
+𝐽
+N=2
+D
+J corners of 
+𝑄
+𝑘
+Q
+k
+	​
+
+ inside 
+(
+−
+1
+,
+𝑛
+)
+𝐷
+(−1,n)
+D
+.   
+companion.pdf
++ 1
+
+Proper-Intersection Corner Bound and Stress Family (Sections 2.1–2.2):
+
+Any axis-aligned cube 
+𝐶
+C of side 
+𝑠
+>
+0
+s>0 containing no corner of any 
+𝑄
+𝑘
+Q
+k
+	​
+
+ in 
+int 
+𝐶
+int C can properly meet (
+𝑄
+𝑘
+∩
+int 
+𝐶
+≠
+∅
+Q
+k
+	​
+
+∩int C
+
+=∅) at most 
+2
+𝐷
+2
+D
+ solids 
+𝑄
+𝑘
+Q
+k
+	​
+
+ because each such 
+𝑄
+𝑘
+Q
+k
+	​
+
+ must have side 
+𝑎
+≥
+𝑠
+a≥s and therefore contain at least one of the 
+2
+𝐷
+2
+D
+ corners of 
+𝐶
+C (see Objection 4a below regarding the minor strict-inequality slip 
+𝑎
+>
+𝑠
+a>s vs. 
+𝑎
+≥
+𝑠
+a≥s).   
+companion.pdf
+
+The boundary-contact family in Section 2.1 shows openness of 
+int 
+𝐶
+int C is necessary, and the binary family 
+𝑆
+𝜎
+S
+σ
+	​
+
+ (
+𝜎
+∈
+{
+0
+,
+1
+}
+𝐷
+−
+1
+σ∈{0,1}
+D−1
+) in Section 2.2 rigorously shows that up to 
+2
+𝐷
+−
+1
+2
+D−1
+ disjoint cubes can properly meet a corner-free query cube 
+𝐶
+=
+[
+1
+,
+2
+]
+𝐷
+C=[1,2]
+D
+.   
+companion.pdf
+
+Compressed BSP Recursion, Slab Cover, and Integer Partition (Sections 2.3–2.5, Eqs. (6)–(8)):
+
+The integer potential 
+Ψ
+=
+∑
+𝐶
+ active
+(
+2
+∣
+𝑉
+∩
+int 
+𝐶
+∣
+−
+1
+)
+Ψ=∑
+C active
+	​
+
+(2∣V∩int C∣−1) starts at 
+2
+𝑁
+−
+1
+2N−1 and decreases by 
+2
+𝑟
++
+𝑡
+−
+1
+≥
+1
+2r+t−1≥1 at every midpoint cut (
+𝑟
+≥
+1
+r≥1 or 
+𝑡
+≥
+2
+t≥2) and corner-shrinking cut (
+𝑟
+≥
+1
+r≥1), terminating in at most 
+2
+𝑁
+−
+1
+2N−1 events and producing 
+𝑀
+≤
+1
++
+(
+2
+𝑁
+−
+1
+)
+(
+2
+𝐷
+−
+1
+)
+≤
+2
+𝐷
++
+1
+(
+2
+𝐷
+−
+1
+)
+𝐽
+M≤1+(2N−1)(2
+D
+−1)≤2
+D+1
+(2
+D
+−1)J corner-free terminal cells (Eq. (6)).   
+companion.pdf
+
+Covering any non-cube terminal box 
+𝐸
+𝑖
+⊂
+[
+0
+,
+𝑠
+]
+𝑖
+−
+1
+×
+[
+𝑎
+,
+𝑠
+]
+×
+[
+0
+,
+𝑠
+]
+𝐷
+−
+𝑖
+E
+i
+	​
+
+⊂[0,s]
+i−1
+×[a,s]×[0,s]
+D−i
+ (
+0
+<
+𝑎
+<
+𝑠
+/
+2
+0<a<s/2) by 
+2
+𝐷
+−
+1
+2
+D−1
+ closed cubes of side 
+𝑠
+−
+𝑎
+s−a inside 
+𝐶
+∖
+int 
+𝐶
+′
+C∖int C
+′
+ bounds proper intersections per terminal cell by 
+𝑇
+𝐷
+=
+2
+𝐷
+−
+1
+2
+𝐷
+=
+2
+2
+𝐷
+−
+1
+T
+D
+	​
+
+=2
+D−1
+2
+D
+=2
+2D−1
+ (Eq. (7)).   
+companion.pdf
+
+Refining each terminal cell by the at most 
+2
+𝑇
+𝐷
+2T
+D
+	​
+
+ facet coordinates per axis of its properly intersecting 
+𝑄
+𝑘
+Q
+k
+	​
+
+ and intersecting the resulting half-open partition of 
+[
+−
+1
+,
+𝑛
+)
+𝐷
+[−1,n)
+D
+ with 
+𝑋
+X yields an exact integer partition 
+𝑃
+P of size 
+∣
+𝑃
+∣
+≤
+𝐴
+𝐷
+max
+⁡
+{
+1
+,
+𝐽
+}
+∣P∣≤A
+D
+	​
+
+max{1,J} with 
+𝐴
+𝐷
+=
+2
+𝐷
++
+1
+(
+2
+𝐷
+−
+1
+)
+(
+2
+2
+𝐷
++
+1
+)
+𝐷
+A
+D
+	​
+
+=2
+D+1
+(2
+D
+−1)(2
+2D
++1)
+D
+ (Eq. (8)), where every 
+𝑅
+∈
+𝑃
+R∈P lies wholly inside one 
+𝑆
+𝑘
+S
+k
+	​
+
+ or wholly in 
+𝑋
+∖
+⋃
+𝑘
+𝑆
+𝑘
+X∖⋃
+k
+	​
+
+S
+k
+	​
+
+.   
+companion.pdf
+
+All-Cochain Fixed-Penalty Coercivity Under Supplied Hypotheses (Section 2.6):
+
+Using the 1D path inequality 
+∑
+∣
+𝑢
+−
+𝑢
+ˉ
+∣
+2
+≤
+𝑙
+(
+𝑙
+−
+1
+)
+4
+∑
+edges
+∣
+𝑑
+𝑢
+∣
+2
+∑∣u−
+u
+ˉ
+∣
+2
+≤
+4
+l(l−1)
+	​
+
+∑
+edges
+	​
+
+∣du∣
+2
+ and orthogonal tensorization 
+𝐼
+−
+∏
+𝑖
+𝑃
+𝑖
+=
+∑
+𝑖
+(
+∏
+𝑗
+<
+𝑖
+𝑃
+𝑗
+)
+(
+𝐼
+−
+𝑃
+𝑖
+)
+I−∏
+i
+	​
+
+P
+i
+	​
+
+=∑
+i
+	​
+
+(∏
+j<i
+	​
+
+P
+j
+	​
+
+)(I−P
+i
+	​
+
+), every rectangle 
+𝑅
+R satisfies 
+Var
+𝑅
+(
+𝑢
+)
+≤
+𝐿
+(
+𝑅
+)
+(
+𝐿
+(
+𝑅
+)
+−
+1
+)
+4
+∑
+𝑒
+⊂
+𝑅
+∣
+𝑑
+𝑢
+(
+𝑒
+)
+∣
+2
+Var
+R
+	​
+
+(u)≤
+4
+L(R)(L(R)−1)
+	​
+
+∑
+e⊂R
+	​
+
+∣du(e)∣
+2
+.   
+companion.pdf
+
+Under the assumed pointwise bounds 
+𝑎
+(
+𝑥
+)
+≥
+𝑐
+𝐿
+𝑘
+(
+𝐿
+𝑘
+−
+1
+)
+/
+4
+a(x)≥cL
+k
+	​
+
+(L
+k
+	​
+
+−1)/4 on 
+𝑆
+𝑘
+S
+k
+	​
+
+ and 
+𝑎
+(
+𝑥
+)
+≥
+𝑐
+𝑛
+(
+𝑛
+−
+1
+)
+/
+4
+a(x)≥cn(n−1)/4 outside 
+⋃
+𝑘
+𝑆
+𝑘
+⋃
+k
+	​
+
+S
+k
+	​
+
+, summing over 
+𝑅
+∈
+𝑃
+R∈P and all 
+ℎ
+=
+𝐷
+(
+𝑁
+𝑐
+2
+−
+1
+)
+h=D(N
+c
+2
+	​
+
+−1) components yields 
+𝑐
+∥
+𝑈
+∥
+2
+≤
+𝐸
+𝑎
+(
+𝑈
+)
++
+𝑐
+∥
+𝐶
+𝑃
+𝑈
+∥
+2
+c∥U∥
+2
+≤E
+a
+	​
+
+(U)+c∥C
+P
+	​
+
+U∥
+2
+ for every cochain 
+𝑈
+U. Combining 
+𝑎
+(
+𝑥
+)
+≤
+𝛽
+𝐿
+𝑘
+2
+a(x)≤βL
+k
+2
+	​
+
+ on 
+𝑆
+𝑘
+S
+k
+	​
+
+ with 
+∑
+𝑋
+𝑎
+−
+𝑝
+≤
+𝑀
+𝑛
+𝐷
+/
+𝜇
+𝑝
+∑
+X
+	​
+
+a
+−p
+≤Mn
+D
+/μ
+p
+ (
+𝑝
+=
+𝐷
+/
+2
+p=D/2, 
+𝜇
+≥
+1
+μ≥1) gives 
+𝐽
+≤
+𝛽
+𝑝
+𝑀
+𝑛
+𝐷
+/
+𝜇
+𝑝
+J≤β
+p
+Mn
+D
+/μ
+p
+ and 
+dim
+⁡
+𝐹
+≤
+ℎ
+𝐴
+𝐷
+(
+1
++
+2
+𝑝
+𝛽
+𝑝
+𝑀
+)
+max
+⁡
+{
+1
+,
+𝑛
+𝐷
+/
+(
+1
++
+𝜇
+)
+𝑝
+}
+dimF≤hA
+D
+	​
+
+(1+2
+p
+β
+p
+M)max{1,n
+D
+/(1+μ)
+p
+}.   
+companion.pdf
++ 2
+
+2.3 Part 3: Physical Cycle Obstructions and Analytic Free-Penalty Extension (Section 3, pp. 10–13)
+
+1D Cyclic Form and Divergence-Zero Lift (Sections 3.1–3.2, Eqs. (9)–(15)):
+
+On 
+𝑋
+=
+(
+𝑍
+/
+4
+𝑍
+)
+𝐷
+X=(Z/4Z)
+D
+ with 
+𝛼
+=
+(
+1
+,
+6
+,
+4
+,
+1
+)
+α=(1,6,4,1) (
+𝜇
+=
+3
+μ=3) and 
+𝐼
+0
+=
+{
+0
+,
+1
+}
+,
+𝐼
+1
+=
+{
+2
+,
+3
+}
+I
+0
+	​
+
+={0,1},I
+1
+	​
+
+={2,3}, the lift 
+(
+𝐽
+𝑢
+)
+2
+(
+𝑥
+)
+=
+𝑢
+𝑥
+1
+𝑇
+(Ju)
+2
+	​
+
+(x)=u
+x
+1
+	​
+
+	​
+
+T (
+∣
+𝑇
+∣
+=
+1
+∣T∣=1), 
+(
+𝐽
+𝑢
+)
+𝑙
+=
+0
+(Ju)
+l
+	​
+
+=0 (
+𝑙
+≠
+2
+l
+
+=2) is constant in coordinate 
+𝑥
+2
+x
+2
+	​
+
+, hence has exact backward divergence zero, and scales norms by 
+4
+𝐷
+−
+1
+4
+D−1
+.   
+companion.pdf
++ 1
+
+On 
+ker
+⁡
+𝐶
+kerC, every scalar fiber profile takes the form 
+𝑣
+=
+(
+𝑥
+,
+−
+𝑥
+,
+𝑦
+,
+−
+𝑦
+)
+v=(x,−x,y,−y), for which
+
+𝐸
+(
+𝑣
+)
+=
+(
+−
+2
+𝑥
+)
+2
++
+6
+(
+𝑥
++
+𝑦
+)
+2
++
+4
+(
+−
+2
+𝑦
+)
+2
++
+(
+𝑥
++
+𝑦
+)
+2
+=
+11
+𝑥
+2
++
+14
+𝑥
+𝑦
++
+23
+𝑦
+2
+,
+∣
+𝑣
+∣
+2
+=
+2
+𝑥
+2
++
+2
+𝑦
+2
+E(v)=(−2x)
+2
++6(x+y)
+2
++4(−2y)
+2
++(x+y)
+2
+=11x
+2
++14xy+23y
+2
+,∣v∣
+2
+=2x
+2
++2y
+2
+
+and
+
+𝐸
+(
+𝑣
+)
+−
+19
+5
+∣
+𝑣
+∣
+2
+=
+17
+5
+𝑥
+2
++
+14
+𝑥
+𝑦
++
+77
+5
+𝑦
+2
+=
+17
+5
+(
+𝑥
++
+35
+17
+𝑦
+)
+2
++
+84
+85
+𝑦
+2
+≥
+0
+E(v)−
+5
+19
+	​
+
+∣v∣
+2
+=
+5
+17
+	​
+
+x
+2
++14xy+
+5
+77
+	​
+
+y
+2
+=
+5
+17
+	​
+
+(x+
+17
+35
+	​
+
+y)
+2
++
+85
+84
+	​
+
+y
+2
+≥0
+
+
+confirming Eqs. (12)–(14): 
+𝐶
+𝐴
+=
+0
+⟹
+𝐻
+(
+𝐴
+)
+≥
+19
+5
+∥
+𝐴
+∥
+2
+CA=0⟹H(A)≥
+5
+19
+	​
+
+∥A∥
+2
+ for every cochain 
+𝐴
+A.   
+companion.pdf
+
+For the witness 
+𝑢
+=
+(
+19
+,
+−
+9
+,
+−
+5
+,
+−
+5
+)
+/
+14
+u=(19,−9,−5,−5)/14, direct arithmetic confirms 
+𝐸
+(
+𝑢
+)
+=
+784
++
+96
++
+0
++
+576
+196
+=
+52
+7
+E(u)=
+196
+784+96+0+576
+	​
+
+=
+7
+52
+	​
+
+, 
+∣
+𝑢
+∣
+2
+=
+361
++
+81
++
+25
++
+25
+196
+=
+123
+49
+∣u∣
+2
+=
+196
+361+81+25+25
+	​
+
+=
+49
+123
+	​
+
+, and 
+𝑂
+(
+𝑢
+)
+=
+100
++
+100
+2
+⋅
+196
+=
+25
+49
+O(u)=
+2⋅196
+100+100
+	​
+
+=
+49
+25
+	​
+
+, yielding
+
+𝐻
+(
+𝐽
+𝑢
+)
++
+19
+5
+∥
+𝐶
+𝐽
+𝑢
+∥
+2
+−
+19
+5
+∥
+𝐽
+𝑢
+∥
+2
+=
+4
+𝐷
+−
+1
+(
+52
+7
++
+19
+5
+⋅
+25
+−
+123
+49
+)
+=
+−
+6
+35
+4
+𝐷
+−
+1
+<
+0
+H(Ju)+
+5
+19
+	​
+
+∥CJu∥
+2
+−
+5
+19
+	​
+
+∥Ju∥
+2
+=4
+D−1
+(
+7
+52
+	​
+
++
+5
+19
+	​
+
+⋅
+49
+25−123
+	​
+
+)=−
+35
+6
+	​
+
+4
+D−1
+<0
+
+
+which verifies Eq. (15).   
+companion.pdf
+
+Analytic Sharp Free-Penalty Extension (Section 3.3):
+
+With 
+𝑠
+=
+85
+s=
+85
+	​
+
+ and 
+𝑐
+∗
+=
+(
+17
+−
+𝑠
+)
+/
+2
+≈
+3.890228
+>
+19
+/
+5
+=
+3.8
+c
+∗
+	​
+
+=(17−s)/2≈3.890228>19/5=3.8, the kernel quadratic form factors exactly as 
+𝐸
+(
+𝑣
+)
+−
+𝑐
+∗
+∣
+𝑣
+∣
+2
+=
+(
+𝑠
+−
+6
+)
+𝑥
+2
++
+14
+𝑥
+𝑦
++
+(
+𝑠
++
+6
+)
+𝑦
+2
+=
+(
+𝑠
+−
+6
+)
+(
+𝑥
++
+7
+𝑦
+𝑠
+−
+6
+)
+2
+≥
+0
+E(v)−c
+∗
+	​
+
+∣v∣
+2
+=(s−6)x
+2
++14xy+(s+6)y
+2
+=(s−6)(x+
+s−6
+7y
+	​
+
+)
+2
+≥0 (since 
+𝑠
+2
+−
+36
+=
+49
+s
+2
+−36=49), vanishing at the nonzero kernel vector 
+𝑣
+∗
+=
+(
+7
+,
+−
+7
+,
+6
+−
+𝑠
+,
+𝑠
+−
+6
+)
+v
+∗
+	​
+
+=(7,−7,6−s,s−6).   
+companion.pdf
+
+Perturbing by 
+𝑝
+𝛿
+=
+(
+𝛿
+/
+2
+,
+𝛿
+/
+2
+,
+−
+𝛿
+/
+2
+,
+−
+𝛿
+/
+2
+)
+⊥
+𝑣
+∗
+p
+δ
+	​
+
+=(δ/2,δ/2,−δ/2,−δ/2)⊥v
+∗
+	​
+
+ gives 
+∣
+𝑝
+𝛿
+∣
+2
+=
+𝑂
+(
+𝑝
+𝛿
+)
+=
+𝛿
+2
+∣p
+δ
+	​
+
+∣
+2
+=O(p
+δ
+	​
+
+)=δ
+2
+ and 
+𝐸
+(
+𝑣
+∗
++
+𝑝
+𝛿
+)
+−
+𝐸
+(
+𝑣
+∗
+)
+=
+7
+𝛿
+2
+−
+10
+(
+13
+−
+𝑠
+)
+𝛿
+E(v
+∗
+	​
+
++p
+δ
+	​
+
+)−E(v
+∗
+	​
+
+)=7δ
+2
+−10(13−s)δ, so for any 
+𝐾
+≥
+0
+K≥0,
+
+𝐸
+(
+𝑣
+∗
++
+𝑝
+𝛿
+)
++
+𝐾
+𝑂
+(
+𝑣
+∗
++
+𝑝
+𝛿
+)
+−
+𝑐
+∗
+∣
+𝑣
+∗
++
+𝑝
+𝛿
+∣
+2
+=
+𝑞
+𝐾
+𝛿
+2
+−
+10
+(
+13
+−
+𝑠
+)
+𝛿
+,
+𝑞
+𝐾
+=
+7
++
+𝐾
+−
+𝑐
+∗
+>
+0.
+E(v
+∗
+	​
+
++p
+δ
+	​
+
+)+KO(v
+∗
+	​
+
++p
+δ
+	​
+
+)−c
+∗
+	​
+
+∣v
+∗
+	​
+
++p
+δ
+	​
+
+∣
+2
+=q
+K
+	​
+
+δ
+2
+−10(13−s)δ,q
+K
+	​
+
+=7+K−c
+∗
+	​
+
+>0.
+
+
+Evaluating at 
+𝛿
+=
+5
+(
+13
+−
+𝑠
+)
+/
+𝑞
+𝐾
+δ=5(13−s)/q
+K
+	​
+
+ produces the strictly negative minimum 
+−
+25
+(
+13
+−
+𝑠
+)
+2
+/
+𝑞
+𝐾
+<
+0
+−25(13−s)
+2
+/q
+K
+	​
+
+<0 (multiplied by 
+4
+𝐷
+−
+1
+4
+D−1
+ under 
+𝐽
+J), proving that no finite quadratic penalty 
+𝐾
+∥
+𝐶
+𝐴
+∥
+2
+K∥CA∥
+2
+ restores coercivity at the sharp kernel constant 
+𝑐
+∗
+c
+∗
+	​
+
+.   
+companion.pdf
++ 1
+
+3. Material Objections
+#	Section / Equation	Material Objection	Explicit Falsifier or Required Correction
+1	
+
+Sec. 3.1 (Eq. (9), p. 10), Sec. 3.4 (p. 12), Sec. 4 (p. 13) 
+companion.pdf
++ 2
+
+	
+
+Uninspected Formal and Computational Archives & Externalized Energy Identity: The Lean 4 proof (PhysicalCycleFullForm.lean, commit 0c706827...), paired Colab outputs (paired-full-form148.json), and Python 3.13.18 rational checker archive (64f548df...) are reported but absent from the inspectable artifact. In addition, Eq. (9) imports "the established flat Hodge identity and the definition of the repair" from the external codebase without writing out their explicit algebraic definitions in Section 3.1, and the Python checker shares primitives and authorship with the builder. 
+companion.pdf
++ 3
+
+	Required Correction: Write out the explicit algebraic definitions of the flat Hodge quadratic form and componentwise repair form on 
+(
+𝑍
+/
+4
+𝑍
+)
+𝐷
+(Z/4Z)
+D
+ in Section 3.1 so Eq. (9) is self-contained on paper; supply the .lean and .py files directly if formal/computational verification is to be audited rather than recorded as an unverified author report.
+2	
+
+Abstract (p. 1), Sec. 1.5–1.6 (p. 5), Sec. 2.6 (pp. 8–9), Sec. 6 (p. 14) 
+companion.pdf
++ 4
+
+	
+
+Disconnect Between Part 1 and Part 2 & Unresolved All-Rectangle Problem: Part 1 proves a local critical 
+𝐿
+𝑞
+→
+𝐿
+2
+L
+q
+→L
+2
+ inequality (Eq. (5)) depending on 
+𝜅
+=
+𝐿
+2
+/
+𝑉
+2
+/
+𝐷
+κ=L
+2
+/V
+2/D
+, whereas Part 2's energy step (Sec. 2.6) uses only an elementary 
+𝐿
+2
+L
+2
+ path Poincaré bound and requires pre-supplied disjoint cubes 
+𝑆
+𝑘
+S
+k
+	​
+
+ plus strong pointwise bounds 
+𝑎
+(
+𝑥
+)
+≥
+𝑐
+𝐿
+𝑘
+(
+𝐿
+𝑘
+−
+1
+)
+/
+4
+a(x)≥cL
+k
+	​
+
+(L
+k
+	​
+
+−1)/4 on 
+𝑆
+𝑘
+S
+k
+	​
+
+, 
+𝑎
+(
+𝑥
+)
+≤
+𝛽
+𝐿
+𝑘
+2
+a(x)≤βL
+k
+2
+	​
+
+ on 
+𝑆
+𝑘
+S
+k
+	​
+
+, and 
+𝑎
+(
+𝑥
+)
+≥
+𝑐
+𝑛
+(
+𝑛
+−
+1
+)
+/
+4
+a(x)≥cn(n−1)/4 on 
+𝑋
+∖
+⋃
+𝑘
+𝑆
+𝑘
+X∖⋃
+k
+	​
+
+S
+k
+	​
+
+. The unrestricted critical rectangular partition question and continuum/interacting mass-gap questions remain unresolved. 
+companion.pdf
++ 4
+
+	Explicit Falsifier: A positive weight 
+𝑎
+(
+𝑥
+)
+a(x) obeying 
+1
+∣
+𝑋
+∣
+∑
+𝑋
+(
+𝜇
+/
+𝑎
+(
+𝑥
+)
+)
+𝐷
+/
+2
+≤
+𝑀
+∣X∣
+1
+	​
+
+∑
+X
+	​
+
+(μ/a(x))
+D/2
+≤M that concentrates its small values along an elongated 
+1
+×
+⋯
+×
+1
+×
+𝑛
+1×⋯×1×n filament or a power-law halo around a cube violates the uniform complement lower bound 
+𝑎
+(
+𝑥
+)
+≥
+𝑐
+𝑛
+(
+𝑛
+−
+1
+)
+/
+4
+a(x)≥cn(n−1)/4 outside disjoint cubes of bounded aspect ratio. Bridging Parts 1 and 2 requires an adaptive partitioning theorem driven directly by the subadditive critical mass 
+∑
+𝑅
+𝑎
+(
+𝑥
+)
+−
+𝐷
+/
+2
+∑
+R
+	​
+
+a(x)
+−D/2
+.
+3	
+
+Sec. 3.2 (Eqs. (14)–(15), p. 11), Sec. 3.3–3.4 (pp. 11–12) 
+companion.pdf
++ 1
+
+	
+
+Non-Lean Status of Sharp Free-Penalty Extension & Sub-Sharp Penalty Threshold: The sharp constant 
+𝑐
+∗
+=
+(
+17
+−
+85
+)
+/
+2
+c
+∗
+	​
+
+=(17−
+85
+	​
+
+)/2 and free-penalty obstruction in Sec. 3.3 are analytic only and not covered by the Lean theorem (which checks only 
+𝑐
+=
+𝐾
+=
+19
+/
+5
+c=K=19/5). Furthermore, because 
+19
+/
+5
+=
+3.8
+<
+𝑐
+∗
+≈
+3.8902
+19/5=3.8<c
+∗
+	​
+
+≈3.8902, the failure of 
+𝑐
+=
+19
+/
+5
+c=19/5 in Sec. 3.2 is strictly a fixed-penalty (
+𝐾
+=
+19
+/
+5
+K=19/5) phenomenon: unlike the sharp endpoint 
+𝑐
+∗
+c
+∗
+	​
+
+, the sub-sharp margin 
+𝑐
+=
+19
+/
+5
+c=19/5 can be restored for the same observation map 
+𝐶
+C by taking a sufficiently large finite penalty 
+𝐾
+K. 
+companion.pdf
++ 1
+
+	Explicit Falsifier (for arbitrary-
+𝐾
+K failure at 
+𝑐
+=
+19
+/
+5
+c=19/5): On the 2D subspace spanned by 
+𝑝
+1
+=
+(
+1
+,
+1
+,
+−
+1
+,
+−
+1
+)
+/
+2
+p
+1
+	​
+
+=(1,1,−1,−1)/2 and 
+𝑣
+=
+(
+𝑥
+,
+−
+𝑥
+,
+𝑦
+,
+−
+𝑦
+)
+v=(x,−x,y,−y), completing the square shows 
+𝐸
+(
+𝑣
++
+𝑝
+𝛿
+)
++
+𝐾
+𝑂
+(
+𝑣
++
+𝑝
+𝛿
+)
+−
+19
+5
+∣
+𝑣
++
+𝑝
+𝛿
+∣
+2
+≥
+0
+E(v+p
+δ
+	​
+
+)+KO(v+p
+δ
+	​
+
+)−
+5
+19
+	​
+
+∣v+p
+δ
+	​
+
+∣
+2
+≥0 holds for all 
+𝑢
+∈
+𝑅
+4
+u∈R
+4
+ (and hence all cochains 
+𝐴
+A) whenever 
+𝐾
+≥
+19
+5
+−
+7
++
+25
+(
+13
+−
+85
+)
+2
+𝑐
+∗
+−
+19
+/
+5
+K≥
+5
+19
+	​
+
+−7+
+c
+∗
+	​
+
+−19/5
+25(13−
+85
+	​
+
+)
+2
+	​
+
+ (in fact, exact Schur complement on the 
+3
+×
+3
+3×3 mean-zero quotient gives a finite threshold 
+𝐾
+0
+<
+∞
+K
+0
+	​
+
+<∞ above which 
+𝐻
+(
+𝐴
+)
++
+𝐾
+∥
+𝐶
+𝐴
+∥
+2
+≥
+19
+5
+∥
+𝐴
+∥
+2
+H(A)+K∥CA∥
+2
+≥
+5
+19
+	​
+
+∥A∥
+2
+ holds universally). Clarify this distinction between 
+𝑐
+=
+19
+/
+5
+c=19/5 (repairable by large finite 
+𝐾
+K) and 
+𝑐
+=
+𝑐
+∗
+c=c
+∗
+	​
+
+ (unrepairable by any finite 
+𝐾
+K) in Sec. 3.2–3.3.
+4	
+
+Sec. 1.3 (p. 4), Sec. 2.1 (p. 6), Sec. 3.1 (Eq. (11), p. 10), Sec. 3.3 (p. 11) 
+companion.pdf
++ 3
+
+	
+
+Technical Quantifier, Case-Boundary, and Typesetting Defects:
+
+
+
+
+(4a) Sec. 2.1 states every properly meeting 
+𝑄
+𝑘
+Q
+k
+	​
+
+ has strict inequality 
+𝑎
+>
+𝑠
+a>s. 
+companion.pdf
+
+
+
+
+(4b) Eq. (11) in Sec. 3.1 typesets 
+2
+⋅
+3
+𝑝
+2⋅3
+p
+ as 
+23
+𝑝
+23
+p
+. 
+companion.pdf
+
+
+
+
+(4c) Bottom of p. 11 truncates $O(p_\delta) =$ without the RHS 
+𝛿
+2
+δ
+2
+. 
+companion.pdf
+
+
+
+
+(4d) Sec. 1.3 states the 
+𝛼
+α-power calculus bound for 
+𝑎
+,
+𝑏
+>
+0
+a,b>0 but applies it to 
+𝑣
+≥
+0
+v≥0 vanishing on at least half of 
+𝑄
+𝑠
+Q
+s
+	​
+
+. 
+companion.pdf
+
+	
+
+Falsifiers / Required Corrections:
+
+
+
+
+(4a) If 
+𝑄
+𝑘
+Q
+k
+	​
+
+ has side 
+𝑎
+=
+𝑠
+a=s and shares at least one coordinate interval with 
+𝐶
+C (e.g., 
+𝑄
+𝑘
+=
+𝐶
+Q
+k
+	​
+
+=C), it properly meets 
+𝐶
+C with no corner in 
+int 
+𝐶
+int C; replace "
+𝑎
+>
+𝑠
+a>s" by "
+𝑎
+≥
+𝑠
+a≥s" and note that a closed interval of length 
+𝑎
+≥
+𝑠
+a≥s meeting 
+(
+𝑐
+𝑖
+,
+𝑐
+𝑖
++
+𝑠
+)
+(c
+i
+	​
+
+,c
+i
+	​
+
++s) cannot lie strictly inside 
+(
+𝑐
+𝑖
+,
+𝑐
+𝑖
++
+𝑠
+)
+(c
+i
+	​
+
+,c
+i
+	​
+
++s).
+
+
+
+
+(4b) At 
+𝑝
+=
+1
+p=1, 
+1
+4
+∑
+𝑡
+=
+0
+3
+(
+3
+/
+𝛼
+𝑡
+)
+=
+2
+⋅
+3
++
+1
+/
+2
++
+3
+/
+4
+4
+=
+29
+16
+≠
+23
++
+1
+/
+2
++
+3
+/
+4
+4
+4
+1
+	​
+
+∑
+t=0
+3
+	​
+
+(3/α
+t
+	​
+
+)=
+4
+2⋅3+1/2+3/4
+	​
+
+=
+16
+29
+	​
+
+
+=
+4
+23+1/2+3/4
+	​
+
+; change 2 3^p to 2\cdot 3^p in Eq. (11).
+
+
+
+
+(4c) Restore 
+𝑂
+(
+𝑝
+𝛿
+)
+=
+𝛿
+2
+O(p
+δ
+	​
+
+)=δ
+2
+ on p. 11.
+
+
+
+
+(4d) State 
+∣
+𝑎
+𝛼
+−
+𝑏
+𝛼
+∣
+≤
+𝛼
+∣
+𝑎
+−
+𝑏
+∣
+(
+𝑎
+𝛼
+−
+1
++
+𝑏
+𝛼
+−
+1
+)
+∣a
+α
+−b
+α
+∣≤α∣a−b∣(a
+α−1
++b
+α−1
+) for 
+𝑎
+,
+𝑏
+≥
+0
+a,b≥0 (and write 
+𝜅
+κ consistently in the display after Eq. (5) on p. 5). 
+companion.pdf
+
+
+5	
+
+Sec. 1.6 (p. 5), Sec. 2 (p. 6), Sec. 3.4 (p. 13), Sec. 5 (p. 14) 
+companion.pdf
++ 3
+
+	
+
+Uninspected Primary Sources & Non-Blinded Review Context: Primary papers cited for classical attribution are not inspectable here (and Carlson–Haynsworth–Markham 1974 was only inspected via abstract/bibliography by the authors). Section 5 embeds prior model review scores (3.5/10, minor revision on eb4df3) inside the PDF, breaking review blindness. 
+companion.pdf
++ 3
+
+	Required Correction: Keep the uninspected-source caveat explicit; remove embedded historical review narratives from future companion artifacts when a blinded assessment is sought.
+4. Originality and Relevance
+
+Originality: As candidly stated by the authors, Part 1 (entropy projection, relative edge isoperimetry, coarea, median/power endpoint Sobolev–Poincaré) and Part 2 (de Berg's compressed octree/BSP splitting with potential 
+Ψ
+=
+∑
+(
+2
+𝑛
+𝐶
+−
+1
+)
+Ψ=∑(2n
+C
+	​
+
+−1)) are adaptations of classical discrete analysis and computational geometry rather than new general theorems. The primary technical contributions of this consolidation are: (i) making the finite lattice constants and aspect-ratio reflection steps completely self-contained without importing external graph-Harnack or black-box fat-object BSP theorems, and (ii) embedding the 4-state cycle counterexample into the divergence-zero flat physical 1-cochain space on 
+(
+𝑍
+/
+4
+𝑍
+)
+𝐷
+(Z/4Z)
+D
+ with an elementary all-cochain kernel proof (Eqs. (12)–(15)) and an exact analytic free-penalty extension at 
+𝑐
+∗
+=
+(
+17
+−
+85
+)
+/
+2
+c
+∗
+	​
+
+=(17−
+85
+	​
+
+)/2.   
+companion.pdf
++ 4
+
+Relevance: Within the scope of the author's programme, the companion successfully discharges two previously externalized classical lemmas (the local balanced/reflected rectangle Sobolev estimate and the supplied-disjoint-cube BSP partition) and rigorously rules out the naive Schur-complement heuristic that kernel coercivity 
+𝐶
+𝐴
+=
+0
+⟹
+𝐻
+(
+𝐴
+)
+≥
+𝑐
+∥
+𝐴
+∥
+2
+CA=0⟹H(A)≥c∥A∥
+2
+ automatically implies fixed-penalty coercivity 
+𝐻
+(
+𝐴
+)
++
+𝑐
+∥
+𝐶
+𝐴
+∥
+2
+≥
+𝑐
+∥
+𝐴
+∥
+2
+H(A)+c∥CA∥
+2
+≥c∥A∥
+2
+ (or arbitrary-
+𝐾
+K coercivity at the sharp kernel endpoint 
+𝑐
+∗
+c
+∗
+	​
+
+) on divergence-free lattice fields. However, because Part 2 still assumes pre-supplied disjoint cubes and strong pointwise coefficient bounds, and Part 3 concerns one fixed coarse block map on 
+(
+𝑍
+/
+4
+𝑍
+)
+𝐷
+(Z/4Z)
+D
+, the companion remains an internal working-paper technical record rather than a resolution of the open critical rectangular partition problem or any interacting/continuum Yang–Mills mass-gap question.   
+companion.pdf
++ 4
+
+5. Review Context and Limitations
+
+Non-Blinded Context: Section 5 of companion.pdf prints the historical assessment of an earlier frozen manuscript (eb4df3, scored 3.5/10 with minor revision). Following the review instructions, this report does not inherit that score or assessment and evaluates companion.pdf strictly on its own inspectable 14 pages.   
+companion.pdf
+
+Verification Boundaries: All finite algebraic derivations, exponents, inequalities, and counterexample arithmetic printed in Sections 1, 2, and 3 were checked step-by-step in this review. Conversely, no Lean compilation, Colab archive integrity, Python execution, or external primary literature was directly inspected, and no human peer review or editorial endorsement is implied.
+
+6. Recommendation and AI-Only Score
+
+Recommendation: minor_revision (specifically: acceptable as a mathematical working-paper companion after minor revision to fix the technical/typographical defects in Objection 4, supply the self-contained algebraic definition of the flat Hodge and repair forms behind Equation (9) in Objection 1, and add the clarifying remark on finite-
+𝐾
+K repairability for sub-sharp 
+𝑐
+<
+𝑐
+∗
+c<c
+∗
+	​
+
+ vs. unrepairability at 
+𝑐
+=
+𝑐
+∗
+c=c
+∗
+	​
+
+ in Objection 3).
+
+AI-Only Score: 6.5 / 10
+
+Score Rationale:
+
+Mathematical Rigor and Transparency (+4.5): The finite proofs in Section 1 (entropy projection, edge isoperimetry, endpoint Sobolev–Poincaré, periodic reflection), Section 2 (quarter-offset cubes, potential termination, slab cover, half-open integer refinement), and Section 3 (all-cochain kernel square completion, divergence-zero witness arithmetic, and sharp 
+𝑐
+∗
+=
+(
+17
+−
+85
+)
+/
+2
+c
+∗
+	​
+
+=(17−
+85
+	​
+
+)/2 perturbation analysis) are mathematically sound, algebraically verifiable on paper, and accompanied by unusually candid scope disclaimers that avoid overclaiming.   
+companion.pdf
++ 4
+
+Completeness of Self-Contained Paper Presentation (+2.0): Compared to relying on unproved external adapters, writing out the complete finite proofs of the Sobolev and cube-splitting lemmas substantially improves the self-contained auditability of the dossier.   
+companion.pdf
++ 1
+
+Deductions (-3.5):
+
+External formal/computational evidence (PhysicalCycleFullForm.lean, Colab logs, Python checker archives) cannot be inspected from the PDF alone, and Eq. (9) still relies on an external definition of the flat Hodge and repair forms (-1.0).   
+companion.pdf
++ 2
+
+The core analytical gap between Part 1 (critical 
+𝐿
+𝑞
+L
+q
+ estimate) and Part 2 (pre-supplied cubes with strong pointwise complement bounds) leaves the unrestricted critical rectangular partition problem and continuum questions completely open (-1.5).   
+companion.pdf
++ 3
+
+Minor technical and typesetting errors—specifically 
+𝑎
+>
+𝑠
+a>s instead of 
+𝑎
+≥
+𝑠
+a≥s in Section 2.1, the LaTeX typo 
+23
+𝑝
+23
+p
+ for 
+2
+⋅
+3
+𝑝
+2⋅3
+p
+ in Eq. (11), the clipped $O(p_\delta) =$ on page 11, and 
+𝑎
+,
+𝑏
+>
+0
+a,b>0 vs. 
+𝑎
+,
+𝑏
+≥
+0
+a,b≥0 in Section 1.3—require cleanup (-1.0).   
+companion.pdf
++ 3
+
+
+
+
+Argon
+Alto
+
+Gemini es una IA y puede cometer errores, incluso sobre personas. Tu privacidad y Gemini
+Se abre en una ventana nueva

@@ -1,0 +1,34 @@
+{
+  "source_checks": {
+    "physical_cycle_line45": "2\\,3^p",
+    "sobolev_line89": "a,b\\geq0",
+    "physical_cycle_line121": "O(p_delta)=|p_delta|^2=delta^2",
+    "partition_line30": "a\\geq s"
+  },
+  "page_images": [
+    {
+      "page": 4,
+      "file": "page-04.jpg",
+      "sha256": "189560bf98c89282bc2342fab92cb3416f5730ffd71362c57b007eec0b33cb3c"
+    },
+    {
+      "page": 6,
+      "file": "page-06.jpg",
+      "sha256": "c5344ebdc4b17a0b85198b97087a77887b3b4710b55ed0a485dcf2101ee90f0f"
+    },
+    {
+      "page": 10,
+      "file": "page-10.jpg",
+      "sha256": "ed24399557ea764ab487dba40e56c41fc43b00de463b902773ccc44f0e3eae23"
+    },
+    {
+      "page": 11,
+      "file": "page-11.jpg",
+      "sha256": "889971ed072c55b7759054a5a458950bb5fd4333c5a03350f15b33dfb98be641"
+    }
+  ],
+  "PDF_unchanged": true,
+  "pdf_sha256": "5c2774494fa559e2d792db328d0c7dce201325bd0234626675357cce54f08377",
+  "reviewer_claims_4a_4b_4c_4d": "contradicted by exact PDF and source",
+  "source_sha": "b75009af644e5678d6b88d0859124c1e182f4473"
+}
