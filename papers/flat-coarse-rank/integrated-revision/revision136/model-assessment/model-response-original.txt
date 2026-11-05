@@ -1,0 +1,67 @@
+{
+"candidate_id": "ERIKSSON-REV136B",
+"canonical_sha256": "eb4df3487ec60f84f582b8e73feb4b166a4a327a07e2909f0c668d93481bdc72",
+"provider": "Google",
+"model_id": "unknown",
+"model_reported_assessed_at": "2026-11-05T08:36:00+01:00",
+"prompt_version": "ARR-ASSESS-1.0-CANDIDATE",
+"independence": "unknown",
+"review_context": "All 33 pages of flat_critical_integrated.pdf (candidate ERIKSSON-REV136B) were accessed and inspected via the prompt-supplied document text. The SHA256 hash eb4df3487ec60f84f582b8e73feb4b166a4a327a07e2909f0c668d93481bdc72 is operator-supplied context and was not independently computed from raw PDF bytes. This assessment is not blinded: Section 14.1 describes a subagent (gpt-6-astra) review of an 8-page v2 artifact without a numerical score, and Section 23 embeds historical v5 ratings (a preparing-agent self-assessment of 6/10 with 8 retained objections on a separate rubric, and a Gemini 4 Argon report scoring 3.4/10 with major_revision on the AIRR scale). No independent technical, memory, or organizational isolation is attested. External GitHub repositories, declaration-map.json, Lean 4 source files, Colab logs, and cited primary literature URLs were not accessed or executed.",
+"recommendation": "minor_revision",
+"millennium_score": 3.5,
+"overall_stars": 4,
+"criteria": {
+"correctness_confidence": {
+"stars": 4,
+"basis": "All analytic proofs printed across the 33 pages (Sections 2-12 and 16-21) were checked step by step and found mathematically sound. Stale weight symbols (m vs mu) and cross-reference issues noted in v5 have been corrected. Both lower bounds in Eq. (28) explicitly contain the factor c, and Proposition 11.3 includes R=1. Confidence is capped below 5 only because external Lean 4 proofs, Colab diagnostics, and de Berg's BSP theorem [11] were not independently verified."
+},
+"rigor": {
+"stars": 4,
+"basis": "Hypotheses, quantifiers, finite-lattice domains, and norms are stated explicitly throughout. Counterexamples rigorously delimit each hypothesis: nonlinear observations (Section 6), C^1 penalties without upper-quadratic control (Sections 7, 9.2), non-quadratic C^1 energies and non-surjective constraints (Section 8), zero signed means (Prop. 10.2), fixed vs free penalties (Prop. 20.1), and subcritical exponents (Theorem 18.1). Minor symbol overloading of m remains in Section 11."
+},
+"novelty": {
+"stars": 2,
+"basis": "As the manuscript candidly acknowledges, the core mechanisms are adaptations of classical tools: Fourier diagonalization, rank-nullity, singular Schur complements [3, 4], the implicit function theorem [6], Zelazo-Burger cycle resistance [9], Rumin-Frank's density approach to Cwikel-type bounds [13], Andres-Deuschel-Slowik weighted Sobolev inequalities [14], and de Berg's fat-object BSP [11]. Originality lies in assembling concrete domain-specific counterexamples and finite-lattice adapters rather than new general theory."
+},
+"significance": {
+"stars": 2,
+"basis": "Results are strictly restricted to the free, flat, unit-spacing periodic lattice Hodge operator K_{0,n} with componentwise weighted forward-gradient repairs. While useful as an internal diagnostic ruling out naive bounded-rank or subquadratic-weight repair routes within the author's programme, they do not address non-abelian gauge covariance, Wilson Hessians, small-spacing renormalization-group scaling, or the interacting continuum Yang-Mills mass gap."
+},
+"reproducibility": {
+"stars": 3,
+"basis": "The analytic calculations in the PDF are self-contained and directly verifiable by hand, including exact rational witnesses in Propositions 10.2 and 20.1 and explicit trigonometric and variance identities. However, machine-checked Lean 4 claims and Colab execution manifests in Sections 14 and 22 depend on external repository artifacts not bundled in the PDF, and Sections 17-21 (except Prop. 20.1) lack formal Lean verification."
+}
+},
+"summary": "This 33-page manuscript (ERIKSSON-REV136B) consolidates two parts on the finite periodic lattice X_n = (Z/nZ)^d with unit spacing and the flat Hodge operator K_{0,n}. Part I (Sections 2-14) establishes necessary coarse-information and repair-rank budgets: low-energy Fourier bands obstruct uniform coercivity under linear measurements of fixed codomain and bounded-rank repairs (Theorems 5.1, 6.1), Fréchet-differentiable observations with locally upper-quadratic penalties on the full space and on regular nonlinear sectors via the implicit function theorem (Theorems 7.1, 8.1), and divergence-free sectors with subquadratic directional mean weights (Theorem 9.1), positive-part signed means (Theorem 10.1), and full-volume coexact packets yielding positive output-rank density (Theorems 11.1, 11.2). Part II (Sections 15-24) studies sufficient observation dimension for a shared scalar weight a(x) > 0 under a critical D/2 inverse-moment bound (16), proving an O((n/sqrt(1+mu))^D) global spectral observation bound via a finite Rumin-Frank/Cwikel trace inequality (Theorem 17.1), sharpness of the exponent D/2 (Theorem 18.1), an Omega(log n) leaf obstruction for full dyadic cube trees (Prop. 19.1), a weaker O(n^D/mu^{D/4}) threshold bound, and a conditional O((n/sqrt(1+mu))^D) bound for supplied scaled cubes via de Berg's BSP (Section 21). All printed proofs check out; prior v5 symbol defects are fixed, though external Lean/Colab artifacts remain uninspected and the general rectangular partition question remains open.",
+"strengths": [
+"Complete, step-by-step analytic proofs are provided in the text for the finite-dimensional linear algebra, Fourier band, tangent ray, implicit-curve, trace-compression, and discrete Cwikel-type bounds.",
+"Sharp, explicit counterexamples justify almost every structural hypothesis: nonlinear norm observations (p. 6), C^1 compositions with unbounded quadratic ratio (pp. 7, 10-11), curved sector and C^1 energy examples (p. 8), zero signed means with fixed output dimension (Prop. 10.2, p. 12), Zelazo-Burger square-cycle cancellation (Section 10.2, p. 13), and the 4-cycle fixed- vs free-penalty separation (Prop. 20.1, p. 27).",
+"Corrects the presentation and notation defects identified in the prior v5 artifact (specifically replacing stale weight symbols m by mu in the continuation sections and restoring the explicit reference to Section 16 in the proof of Theorem 18.1).",
+"Exemplary candor regarding scientific scope and attribution: explicitly disclaims any interacting or continuum Yang-Mills mass-gap result, new general spectral principle, or full formal verification of the analytic continuation in Sections 17-21.",
+"Constructive geometric counterexamples in Sections 19, 21.2, and 21.4 cleanly separate mechanism failures (full dyadic cube trees, single global thresholds, and universal non-overlapping/overlapping scaled-cube decompositions) from the existence of valid anisotropic rectangular partitions for the same profiles."
+],
+"weaknesses": [
+"Minor notation collision in Part I: Section 2 (p. 2) and Section 10.1 (p. 12) define m = N_c^2 - 1 as the internal Lie-algebra dimension, whereas Section 11 (Theorems 11.1-11.2, pp. 14-16) reuses m >= 0 for the spatial mean bound of max{1+w_n, 0} before Section 15 (p. 21) introduces g = N_c^2 - 1 and mu >= 1.",
+"The sufficient spectral theorem in Part II (Theorem 17.1, p. 22) requires a single scalar total weight a(x) = 1 + w > 0 shared across all derivative directions i and field components j, which is more restrictive than the direction- and component-dependent weights w_n(i,(x,l)) analyzed in Part I (Sections 7-11).",
+"The global spectral observation C constructed in Theorem 17.1 projects onto low eigenvectors of the weighted scalar Laplacian L_a and is spatially nonlocal, whereas the target spatial localization using unrestricted axis-aligned rectangular means achieves only exponent D/4 in general (Section 21.1) and leaves the critical D/2 rectangular question open (Section 24).",
+"Sections 14, 14.1, 22, and 23 interleave mathematical exposition with extensive operational audit logs, commit SHAs, and historical AI review narratives, which detracts from standard mathematical presentation.",
+"All results are restricted to the flat, abelianized unit-spacing lattice operator K_{0,n} and do not engage with non-abelian parallel transport, gauge-covariant Laplacians, or continuum scaling."
+],
+"potential_errors": [
+"No mathematical errors were found in the printed proofs of candidate ERIKSSON-REV136B. (For the record, two allegations from a prior v5 review discussed in Section 23 are confirmed false on this PDF: Proposition 11.3 on p. 15 covers R >= 1, and Equation (28) on p. 29 explicitly includes the factor c in both c L_k(L_k-1)/4 <= a(x) and a(x) >= c n(n-1)/4).",
+"Minor presentation overloading on pp. 14-16: the symbol m >= 0 is used in Theorems 11.1 and 11.2 for the truncated weight mean bound while m = N_c^2 - 1 was fixed globally in Section 2 (p. 2); although locally quantified and unambiguous in Section 11, renaming the weight bound in Section 11 would eliminate the symbol clash."
+],
+"strong_novelty_candidates": [
+"The full-volume divergence-free coexact Fourier packet construction in Section 11 (Theorems 11.1-11.2 and Proposition 11.3, pp. 14-16), which uses backward differences in two field components and two internal quadratures to establish an explicit positive lower bound on observation rank density per lattice volume under spatial means of max{1+w, 0}.",
+"The pairing of sharp mechanism obstructions with explicit constant-size anisotropic rectangular partitions on the same critical-moment profiles in Proposition 19.1 (dyadic cube-tree Omega(log n) lower bound vs L^D + D rectangles, p. 25), Section 21.2 (global threshold Omega(n^{D/2}) lower bound vs D+1 rectangles, p. 29), and Section 21.4 (refutation of universal scaled-cube decomposition vs singleton-excised grid, p. 30)."
+],
+"unresolved_material_objections": [
+"Unverified external formalization and execution artifacts: All references in Sections 14 and 22 to the GitHub repository THE-ERIKSSON-PROGRAMME, declaration-map.json, pinned Lean 4 source SHAs, and Colab execution logs/hashes are external to the supplied PDF and were not independently rebuilt, executed, or audited in this review.",
+"Unformalized continuation proofs: As acknowledged in Sections 16, 22, and 23, the continuation theorems and adapters in Sections 17-21 (except the 4-cycle finite identities in Proposition 20.1) are analytic only and have no machine-checked Lean 4 verification.",
+"Unverified external primary-source dependencies: Section 21.3 relies on de Berg's solid-fat-object binary space partition theorem [11] (Corollary 2.9) for linear partition complexity A_D max{1, J}, and Section 20.1 relies on the Andres-Deuschel-Slowik weighted Sobolev inequality [14]; these external sources were not independently inspected in this PDF-only assessment.",
+"Unresolved critical spatial localization question: Whether every scalar weight profile 1 <= a <= 2*mu with mean mu satisfying the critical D/2 inverse-moment bound (16) admits a target-order O((n/sqrt(1+mu))^D) coercive observation using normalized means on an unrestricted axis-aligned integer rectangular partition remains open (Section 24).",
+"Absence of interacting or continuum gauge-theory connection: The manuscript establishes finite unit-spacing flat-lattice properties and does not resolve or reduce the interacting or continuum Yang-Mills mass-gap problem, nor does it derive the inverse-moment condition (16) or shared scalar weight structure from physical gauge-fixed fluctuation operators."
+]
+}   
+flat_critical_integrated.pdf
++ 4

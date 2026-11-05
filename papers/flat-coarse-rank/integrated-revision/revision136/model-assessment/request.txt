@@ -1,0 +1,20 @@
+Please perform the FIRST exact-PDF referee assessment of the attached corrected integrated manuscript, candidate ERIKSSON-REV136B. This is not an issued AIRR version or a new accepted paper. The operator-bound PDF SHA256 is eb4df3487ec60f84f582b8e73feb4b166a4a327a07e2909f0c668d93481bdc72 (33 pages); state if you cannot actually access every page. The operator hash is supplied context, not a hash you independently computed unless you really can do so.
+
+Assess this exact attached artifact, including proofs, domains, quantifiers, constants, novelty attribution, reproducibility limits and scientific relevance. Distinguish verified mathematical defects, presentation problems, unverified dependencies and questions that intentionally remain open. Give precise theorem/equation/page evidence for each claimed defect. Do not invent unseen text, external source checks, executed Lean/code, backend identity, technical isolation or independent peer review. The PDF embeds historical predecessor assessments and ratings; this is therefore NOT a blinded review. No earlier report is separately attached. Historical grades and resolved-objection status do not transfer to this candidate. Do not repeat this assessment to improve its grade. Preserve disagreement and all material objections.
+
+Return one JSON object (no Markdown fences) with fields:
+candidate_id: "ERIKSSON-REV136B";
+canonical_sha256: the operator-supplied hash above;
+provider and model_id: honestly identify your model if known, otherwise "unknown";
+model_reported_assessed_at: current timestamp only if reliably known, otherwise null;
+prompt_version: "ARR-ASSESS-1.0-CANDIDATE";
+independence: "unknown";
+review_context: describe the actual accessible material, historical scores in the PDF, absence of independent isolation evidence, and what was NOT inspected/executed;
+recommendation: accept, minor_revision, major_revision or reject (a referee recommendation, not an AIRR decision);
+millennium_score: 0..10, AIRR scientific significance/rigor assessment scale, with 10 reserved for an independently established millennium-resolution benchmark; do not inflate the score for the programme name or for presentation corrections;
+overall_stars: nearest integer to millennium_score, clamped to1..10;
+criteria: correctness_confidence, rigor, novelty, significance, reproducibility, each containing stars1..5 and basis (max600 characters);
+summary: max1600 characters;
+strengths, weaknesses, potential_errors, strong_novelty_candidates, unresolved_material_objections: arrays, max12 entries each, each entry max800 characters; empty if none. Keep every material objection, including anything not resolved by the supplied PDF.
+
+A mathematical assessment is not a correctness certificate or human peer review. No interacting or continuum Yang-Mills gap is established merely by a finite flat-lattice information budget. Evaluate originality against primary sources only when actually accessible; otherwise report the priority comparison as unverified. Do not silently assume missing prerequisites. If a formula is alleged missing, transcribe the actual printed formula carefully before judging it.
