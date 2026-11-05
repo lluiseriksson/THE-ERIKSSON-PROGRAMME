@@ -1,0 +1,51 @@
+{
+  "primary_locations": [
+    "Section2.2 Eq2.5 and Proposition2.1 printedp12",
+    "Remark2.2 and endpoint substitution printedp13"
+  ],
+  "constants": {
+    "q": "2D/(D+2)",
+    "qprime": "2D/(D-2)",
+    "AD": "KD^2*2^D*3^(2D/q+2)",
+    "KD": "2alpha D^(1/qprime)/cD",
+    "alpha": "2(D-1)/D",
+    "cD": "D(1-2^(-1/D))"
+  },
+  "chain": [
+    "Concavity of finite entropy, chain rule and support bound explicitly derived",
+    "Projection inequality from summing conditional entropy inequalities",
+    "Relative EDGE isoperimetry by occupied/nonfull fiber counting",
+    "Median-supported L1 Sobolev from finite layer sets and triangle inequality",
+    "Power alpha and Holder q/qprime yield explicit critical L2 estimate",
+    "Positive/negative median parts combined with no hidden volume factor",
+    "Endpoint-repeating reflection retains all preimage and aspect-ratio factors",
+    "Weighted Holder only on ORIGINAL internal edges",
+    "Coordinatewise field extension without internal-dimension loss"
+  ],
+  "primary_pdf_bytes": 519624,
+  "verification": "Complete preparing-agent analytic self-audit; no numerical test or Lean certificate",
+  "source_primary_url": "https://arxiv.org/pdf/1312.5473v6",
+  "new_pdf": false,
+  "original_partition_question_resolved": false,
+  "schema": 1,
+  "independent_review": false,
+  "edge_cases_checked": [
+    "s=1 and V=1: variance zero",
+    "Empty median level sets",
+    "Zero norm before division",
+    "Even cardinality median ties",
+    "Singleton rectangle coordinate sides",
+    "Parallel torus edges not silently introduced: only induced internal rectangle edges",
+    "Reflection before weights: no changed coefficient profile"
+  ],
+  "primary_relation": "Classical prior context; no original general Sobolev principle claimed",
+  "new_originality_claim": false,
+  "coefficient_assumptions_changed": false,
+  "pending_pdf_eb4df3_unchanged": true,
+  "new_physical_hypothesis_removed": false,
+  "pending_human_permission_not_reasked": true,
+  "unit": 137,
+  "objective": "Discharge the external balanced-cube endpoint input by a complete finite derivation",
+  "primary_pdf_sha256": "c991202673c1214430f479b7cb5966a6f03360a07af1cf6a2f6ec432fdf09d10",
+  "proof_sha256": "d9ce7aca21aa2d4288e8ffb30bfbd91fceaf743c7c3f389b2c1300e21c9da439"
+}
