@@ -1,0 +1,153 @@
+{
+  "unit": 147,
+  "source_sha": "354dd0de7facf8464b9e8e9b0f55c8edc641c2f6",
+  "started_utc": "2026-11-05T19:30:28.249038+00:00",
+  "status": "FIVE_KERNEL_FIBRE_ENDPOINTS_FIRST_CLONE_PASS",
+  "steps": [
+    {
+      "name": "install-elan",
+      "exit": 0,
+      "seconds": 0.8671653940000397
+    },
+    {
+      "name": "init",
+      "exit": 0,
+      "seconds": 0.06558614599998691
+    },
+    {
+      "name": "remote",
+      "exit": 0,
+      "seconds": 0.0042151400000420836
+    },
+    {
+      "name": "config-core.autocrlf",
+      "exit": 0,
+      "seconds": 0.004452270999991015
+    },
+    {
+      "name": "config-core.sparseCheckout",
+      "exit": 0,
+      "seconds": 0.004447990000016944
+    },
+    {
+      "name": "config-remote.origin.promisor",
+      "exit": 0,
+      "seconds": 0.00439742999998316
+    },
+    {
+      "name": "config-remote.origin.partialclonefilter",
+      "exit": 0,
+      "seconds": 0.004315000000019609
+    },
+    {
+      "name": "fetch",
+      "exit": 0,
+      "seconds": 0.8171572199999559
+    },
+    {
+      "name": "checkout",
+      "exit": 0,
+      "seconds": 1.3687061839999615
+    },
+    {
+      "name": "head",
+      "exit": 0,
+      "seconds": 0.004320750000033513
+    },
+    {
+      "name": "lean-version",
+      "exit": 0,
+      "seconds": 17.735762540999986
+    },
+    {
+      "name": "leantar-download",
+      "exit": 0,
+      "seconds": 0.41596572299999934
+    },
+    {
+      "name": "leantar-extract",
+      "exit": 0,
+      "seconds": 0.03252069199999141
+    },
+    {
+      "name": "leantar-version",
+      "exit": 0,
+      "seconds": 0.0021099809999896024
+    },
+    {
+      "name": "mathlib-cache",
+      "exit": 0,
+      "seconds": 79.496569722
+    },
+    {
+      "name": "build",
+      "exit": 0,
+      "seconds": 166.835230442
+    },
+    {
+      "name": "oracle",
+      "exit": 0,
+      "seconds": 6.784877033000043
+    },
+    {
+      "name": "validator-normal",
+      "exit": 0,
+      "seconds": 0.032591888999945695
+    },
+    {
+      "name": "validator-optimized",
+      "exit": 0,
+      "seconds": 0.1650454839999611
+    }
+  ],
+  "terminal_paired_reproduction": false,
+  "longitudinal_kernel_coercivity_verified": true,
+  "full_kernel_coercivity_Lean_verified": false,
+  "leantar_asset_sha256": "2cbc40ca214227a0e536721c021bad719a802dd86b1f2d8989571efafbfbd3d1",
+  "full_physical_norm_decomposition_verified": true,
+  "endpoints": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.actualCycleKernel_profile_pair_zero"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.actualCycleKernel_fibre_coercive"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.actualCycleFibre_norm_decomposition"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.actualCycleKernel_coordinate_sum_coercive"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.actualCycleKernel_norm_coercive"
+    }
+  ],
+  "olean_sha256": "e4d6cfecddf19ea197c5869babefc7067b2ed8673261662278a4bcee171dd2e3",
+  "oracle_sha256": "6465f9068b226eba552a8ba7dccf740f974a4418f7c29dcabe836ab3c051a03a",
+  "finished_utc": "2026-11-05T19:35:03.073106+00:00"
+}
