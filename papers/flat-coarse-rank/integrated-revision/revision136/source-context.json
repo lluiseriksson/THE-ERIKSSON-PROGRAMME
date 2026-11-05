@@ -1,9 +1,11 @@
 {
   "parent_source_sha256": "efa351a2cff1fb0cc3766f1435b5ca4028766c734c264aec3cb9935e4a2412e6",
-  "source_sha256": "1e196eae2c2bdfa4d1780218b4f403eff26c660de10494272963d010f69caf03",
+  "source_sha256": "2f3584253453cdab1507f91ff6cc755374f233daf9e6236a2b274a37e1c5a12f",
   "predecessor_pdf_sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8",
   "prior_report_not_transferred": true,
   "new_score": null,
   "new_pdf": null,
-  "changes": "Verified notation/reference corrections retained; historical publication and review context reconciled; no new theorem"
+  "changes": "Verified notation/reference corrections retained; historical publication and review context reconciled; no new theorem",
+  "previous_render_pdf": "de847675a35d19f9f6546ebcaabf66cfbc01da871ed22c110ac7e25f757e7f9a",
+  "post_visual_correction": "Remove stage-dependent unrendered wording; original render and full page QA retained"
 }

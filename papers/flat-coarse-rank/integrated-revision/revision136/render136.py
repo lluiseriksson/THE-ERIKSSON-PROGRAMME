@@ -15,7 +15,7 @@ def run(name,cmd):
 try:
  prefix='papers/flat-coarse-rank/integrated-revision/'
  tex=fetch('lluiseriksson/THE-ERIKSSON-PROGRAMME',args.source_sha,prefix+'revision136/flat_critical_integrated.tex')
- if hashlib.sha256(tex).hexdigest()!='1e196eae2c2bdfa4d1780218b4f403eff26c660de10494272963d010f69caf03':raise ValueError('Source hash')
+ if hashlib.sha256(tex).hexdigest()!='2f3584253453cdab1507f91ff6cc755374f233daf9e6236a2b274a37e1c5a12f':raise ValueError('Source hash')
  (OUT/'flat_critical_integrated.tex').write_bytes(tex)
  for name in ('source-context.json',): (OUT/name).write_bytes(fetch('lluiseriksson/THE-ERIKSSON-PROGRAMME',args.source_sha,prefix+'revision136/'+name))
  for name in ('main-declaration-map.json','critical-declaration-map.json','integration-map.json'):(OUT/name).write_bytes(fetch('lluiseriksson/THE-ERIKSSON-PROGRAMME',args.source_sha,prefix+name))
