@@ -80,6 +80,7 @@ theorem physicalCycleLift_total_energy (hNc : 2 ≤ Nc) (rho : SUNAdjointModel N
         (u (finBoxZModEquiv (d + 2) n x 0 + 1) -
           u (finBoxZModEquiv (d + 2) n x 0)) ^ 2 := by
     simp only [PhysicalGradientIndex, Fintype.sum_prod_type]
+    rw [Finset.sum_comm]
     simp_rw [mul_ite, mul_zero]
     simp only [Finset.sum_ite_eq', Finset.mem_univ, if_true]
   rw [hsum]
@@ -89,7 +90,9 @@ theorem physicalCycleLift_total_energy (hNc : 2 ≤ Nc) (rho : SUNAdjointModel N
     _ = _ := cycleCoordinate_sum _
 
 noncomputable def cycleInternalZero (hNc : 2 ≤ Nc) : Fin (Nc ^ 2 - 1) :=
-  ⟨0, by have hs : 4 ≤ Nc ^ 2 := by nlinarith; omega⟩
+  ⟨0, by
+    have hs : 4 ≤ Nc ^ 2 := by nlinarith
+    omega⟩
 
 theorem physicalCycleLift_fibre_coordinate (hNc : 2 ≤ Nc)
     (u : ZMod n → ℝ) (t : ZMod n) (y : Fin (d + 1) → ZMod n)
