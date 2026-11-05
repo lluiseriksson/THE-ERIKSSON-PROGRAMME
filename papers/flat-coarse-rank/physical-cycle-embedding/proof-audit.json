@@ -1,6 +1,6 @@
 {
   "primary": "https://epubs.siam.org/doi/10.1137/0126013",
-  "next": "Complete actual diagnostics then preserve remote evidence and one small draftPR",
+  "next": "Physical embedding closed analytically; formalize actual J/divergence/norm/energy/means transport only in sanctioned Colab, reusing existing scalar cycle endpoints. Original optimal-partition question remains open.",
   "frozen_pdf_unchanged": true,
   "question": "Does the old scalar cycle obstruction persist for actual rectangular means on actual divergence-zero cochains?",
   "moment": "mu3, 1<=a<=6, M_D=(2*3^(D/2)+(1/2)^(D/2)+(3/4)^(D/2))/4",
