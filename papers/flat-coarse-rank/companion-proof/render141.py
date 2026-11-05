@@ -27,7 +27,7 @@ try:
  (ROOT/'tep-cube-fixtures139.zip').write_bytes(data)
  step('apt-update',['apt-get','update','-qq'])
  step('apt-install',['apt-get','install','-y','-qq','texlive-latex-recommended','texlive-fonts-recommended','lmodern','poppler-utils'])
- for k in (1,2):step('pdflatex-pass'+str(k),['pdflatex','-interaction=nonstopmode','-halt-on-error','companion.tex'])
+ for k in (1,2,3):step('pdflatex-pass'+str(k),['pdflatex','-interaction=nonstopmode','-halt-on-error','companion.tex'])
  warnings=[s for s in (ROOT/'companion.log').read_text(errors='replace').splitlines() if any(v in s for v in ('Overfull','Underfull','LaTeX Warning'))]
  report['warnings']=warnings
  if warnings:raise ValueError('Layout/reference warnings; retain output and repair source')
