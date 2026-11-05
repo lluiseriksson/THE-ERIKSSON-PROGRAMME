@@ -82,3 +82,7 @@ Source9596d5a9e60b60f0b25409532aae3562df79bb89 ran only in this chat's exclusive
 ## First formal lift stage, with explicit remaining obligations
 
 Unit143 compiled PhysicalCycleLift.lean at784236ea24a74728b49516cf5acfdf03aad45c8e in a fresh exclusive Colab clone. Five endpoints certify the constructed lift's divergence zero, injectivity, counting mass, physical norm and selected-coordinate normalized fibre mean, with only standard propext/Classical.choice/Quot.sound dependencies. Actual oracle validators passed in normal/optimized modes and each rejected3 changed oracle outputs. This is one successful clone; paired terminal reproduction is pending. The actual energy transport, FULL observation squared-norm identity and final physical negative-defect theorem are still analytic, not Lean verified. See FORMAL-STAGE143.md and the complete evidence package. This does not change any exact-PDF review or assessment.
+
+## Paired reproduction of the first five lift endpoints
+
+Unit144 completed the required second fresh Colab clone at the SAME784236ea24a74728b49516cf5acfdf03aad45c8e source. Actual recovered source/olean/oracle/validator hashes match across both separate sessions. Thus terminal paired reproduction is complete for those5 partial lift endpoints only. Full actual energy transport, entire observation squared norm and final physical penalty-counterexample theorem remain analytic. This milestone is not an independent review or an assessment of either PDF. See FORMAL-PAIRED144.md and paired-lift144.json. No third identical run is needed.
