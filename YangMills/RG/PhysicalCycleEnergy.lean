@@ -2,7 +2,7 @@ import YangMills.RG.PhysicalCycleLift
 import YangMills.RG.ComponentwiseFlatHodge
 
 /-! Actual original weighted-energy and FULL normalized-mean transport.
-Candidate until own Colab build and axiom audit. Does not itself assert
+Candidate until own Colab build and dependency audit. Does not itself assert
 an instantiated four-cycle negative-defect endpoint or paired reproduction.
 -/
 namespace YangMills.RG
