@@ -32,12 +32,19 @@ theorem cycleFour_scalar_identities (u : Field) :
   have hs : (Real.sqrt (2 : ℝ))^2 = 2 := Real.sq_sqrt (by norm_num)
   constructor
   · change (∑ t : Fin 4, weight t * (u (t + 1) - u t)^2) = energy u
-    norm_num [Fin.sum_univ_succ, weight, energy]
+    have h1 : (1 : Fin 4) + 1 = 2 := by decide
+    have h2 : (2 : Fin 4) + 1 = 3 := by decide
+    have h3 : (3 : Fin 4) + 1 = 0 := by decide
+    have hs3 : Fin.succ (2 : Fin 3) = (3 : Fin 4) := rfl
+    norm_num [Fin.sum_univ_succ, weight, energy, h1, h2, h3, hs3]
+    <;> ring
   constructor
   · change (∑ t : Fin 4, (u t)^2) = normSq u
-    simp [Fin.sum_univ_succ, normSq]
-  · simp [Fin.sum_univ_succ, cyclePairIntervals, cycleFourProfile,
-      div_pow, hs, observedSq]
+    simp [Fin.sum_univ_succ, normSq, add_assoc]
+  · have h01 : (0 : ZMod 4) ≠ 1 := by decide
+    have h23 : (2 : ZMod 4) ≠ 3 := by decide
+    simp [Fin.sum_univ_succ, cyclePairIntervals, cycleFourProfile,
+      Finset.sum_insert, Finset.sum_singleton, h01, h23, div_pow, hs, observedSq]
     <;> ring
 
 variable {d Nc : ℕ} [NeZero Nc]
