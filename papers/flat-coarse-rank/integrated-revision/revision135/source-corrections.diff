@@ -1,0 +1,55 @@
+diff --git a/papers/flat-coarse-rank/integrated-revision/flat_critical_integrated.tex b/papers/flat-coarse-rank/integrated-revision/revision135/flat_critical_corrected.tex
+index a48800a7..a3186035 100644
+--- a/papers/flat-coarse-rank/integrated-revision/flat_critical_integrated.tex
++++ b/papers/flat-coarse-rank/integrated-revision/revision135/flat_critical_corrected.tex
+@@ -1286,7 +1286,7 @@ different exact PDF bytes. Neither assessment transfers to this integrated
+ artifact. Its first complete exact-PDF review is a separate hash-linked
+ sidecar after visual inspection of every page. No new external model review,
+ human peer review, historical grant, deposit or publication is claimed.
+-\section{Actual objects and the original observation problem}
++\section{Actual objects and the original observation problem}\label{ap:sec:objects}
+ Fix $D\geq3$, $N_c\geq2$, $c>0$, and the unit-spacing torus
+ $X_n=(\mathbb Z/n\mathbb Z)^D$. The actual real adjoint coefficient space has dimension
+ $g=N_c^2-1$; there are $D$ field components, so write $h=Dg$.
+@@ -1487,11 +1487,11 @@ $J\geq n^{D-2r}/(2B)\to\infty$. Put $s=BJ/n^D\leq \mu^{-r}$ and set $a=1$ on
+ their union, $a=A=(\mu-s)/(1-s)$ elsewhere. Eventually $s\leq1/2$, so
+ \[
+  \operatorname{mean}(a)=\mu,\quad1\leq a\leq2\mu,\quad A\geq \mu,
+- \qquad\operatorname{mean}((\mu/a)^r)\leq sm^r+1\leq2.
++ \qquad\operatorname{mean}((\mu/a)^r)\leq s\mu^r+1\leq2.
+ \]
+ Each curl's gradients start only in its weak box. The actual $J$-dimensional span
+ has that same Rayleigh quotient, because both field and gradient supports are
+-disjoint. Section~1 forces $\dim F\geq J$, whereas the target maximum at $\mu=n^2$
++disjoint. Section~\ref{ap:sec:objects} forces $\dim F\geq J$, whereas the target maximum at $\mu=n^2$
+ is $1$. This proves the refutation using original nonlinear data.
+ \end{proof}
+ Together the two theorems give the sharp inverse-moment exponent for this specified
+@@ -1662,7 +1662,7 @@ Completing the square in $v+J^\dagger B^*p$ leaves
+ $A+(K-c)I-BJ^\dagger B^*$, so $K=c+\|BJ^\dagger B^*\|$ suffices.
+ In particular a proved all-cochain margin $D_0\geq(c+\epsilon)I$ gives
+ $K=c+\|L_a\|^2/\epsilon$. For actual $a\leq2\mu$, the elementary edge estimate
+-$|r-s|^2\leq2|r|^2+2|s|^2$ gives $\|L_a\|\leq8Dm$, including the parallel
++$|r-s|^2\leq2|r|^2+2|s|^2$ gives $\|L_a\|\leq8D\mu$, including the parallel
+ edge occurrences at $n=2$. A margin $2c$ therefore permits
+ $K=c+64D^2\mu^2/c$, without increasing the number of observations.
+ No margin or partition is proved by this conditional implication. Ordinary block
+@@ -1686,15 +1686,15 @@ evidence, not one of the ten Lean theorems of Proposition~\ref{ap:prop:formal-cy
+ For uniform $a=\mu$, if an observation depends only on vertex values on a set $S$, $|S|=s$, and
+ $C(0)=0$, then the scalar field $u=1$ off $S$ and $0$ on $S$ has zero observation.
+ At most $2Ds$ forward-edge occurrences cross $S$, so
+-$\E_\mu(u)\leq2Dm s$. Consequently all-cochain coercivity requires
++$\E_\mu(u)\leq2D\mu s$. Consequently all-cochain coercivity requires
+ \[
+- s\geq\frac{cn^D}{2Dm+c}.
++ s\geq\frac{cn^D}{2D\mu+c}.
+ \]
+ For an actual divergence-zero test, fix a component direction $j$ and let the field
+ be constant along every $j$-line, equal to zero on each line meeting $S$ and one on
+ the other lines, in one fixed internal coordinate. There are at most $s$ hit lines.
+ Its backward divergence is zero, its norm squared is at least
+-$n(n^{D-1}-s)$, and transverse crossing energy is at most $2(D-1)mns$.
++$n(n^{D-1}-s)$, and transverse crossing energy is at most $2(D-1)\mu ns$.
+ Thus necessarily
+ \[
+  s\geq\frac{cn^{D-1}}{2(D-1)\mu+c}.

@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "scope": "Source-only notation/cross-reference correction candidate; not a rendered or assessed PDF",
+  "source_pdf_sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8",
+  "source_tex_sha256": "97dcbdb96e4dcc2f8eb3c892ea164c0dfdb4b887abd62f6e70a2a4bcf8fef621",
+  "candidate_tex_sha256": "efa351a2cff1fb0cc3766f1435b5ca4028766c734c264aec3cb9935e4a2412e6",
+  "corrections": [
+    {
+      "id": "label-section16",
+      "from": "\\section{Actual objects and the original observation problem}",
+      "to": "\\section{Actual objects and the original observation problem}\\label{ap:sec:objects}"
+    },
+    {
+      "id": "moment-weight-p25",
+      "from": "\\leq sm^r+1",
+      "to": "\\leq s\\mu^r+1"
+    },
+    {
+      "id": "rank-reference-p25",
+      "from": "Section~1 forces $\\dim F\\geq J$",
+      "to": "Section~\\ref{ap:sec:objects} forces $\\dim F\\geq J$"
+    },
+    {
+      "id": "operator-norm-p28",
+      "from": "\\|L_a\\|\\leq8Dm",
+      "to": "\\|L_a\\|\\leq8D\\mu"
+    },
+    {
+      "id": "scalar-energy-p28",
+      "from": "\\E_\\mu(u)\\leq2Dm s",
+      "to": "\\E_\\mu(u)\\leq2D\\mu s"
+    },
+    {
+      "id": "scalar-denominator-p28",
+      "from": "{cn^D}{2Dm+c}",
+      "to": "{cn^D}{2D\\mu+c}"
+    },
+    {
+      "id": "physical-line-energy-p28",
+      "from": "$2(D-1)mns$",
+      "to": "$2(D-1)\\mu ns$"
+    }
+  ],
+  "false_allegations": [
+    "Eq28 factor c already printed",
+    "Proposition11.3 already states R >= 1"
+  ],
+  "new_error_found": "Additional stale m in physical line-test energy bound on page28; denominator already uses mu",
+  "hypotheses_removed": [],
+  "new_theorem": false,
+  "rendered": false,
+  "lean_verified": false,
+  "external_review_for_candidate": false,
+  "score_inherited": false
+}
