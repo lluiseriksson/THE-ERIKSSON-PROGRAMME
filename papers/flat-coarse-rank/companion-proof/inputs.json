@@ -1,0 +1,14 @@
+{
+  "sobolev.tex": {
+    "path": "papers/flat-coarse-rank/critical-sobolev-derivation/critical-sobolev-derivation.tex",
+    "sha256": "daac3f2df4431212b145171f8db072d09ecd4690b6998b61f067fb4d7959f016"
+  },
+  "partition.tex": {
+    "path": "papers/flat-coarse-rank/explicit-cube-partition/explicit-cube-partition.tex",
+    "sha256": "f27ffc08445dbda8ef413dcbf833c7880c26ece2472cbc5e4d3e9eae4e223a19"
+  },
+  "companion.tex": {
+    "path": "papers/flat-coarse-rank/companion-proof/companion.tex",
+    "sha256": "45656af4ea56927456499e27af5e3da23b2a44f0890a497f64b008d1d5c738d1"
+  }
+}
