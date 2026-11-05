@@ -1,0 +1,39 @@
+{
+  "scope": "Visual layout QA only; not mathematical correctness or external review",
+  "peer_review": false,
+  "unit": 141,
+  "external_model_assessment": false,
+  "final_c": "Dedicated contents page, all3 passes exit0, zero warnings",
+  "initial_b_all_pages_visually_read": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "initial_a": "Failed on2 overfull displays and unstable references; complete failed package preserved privately",
+  "pdf_sha256": "6fcb0a7b5c2ff53402975d702f8f6edfc93aa7cd5ff58147ea5f10ebf29a7738",
+  "pages": 11,
+  "final_changed_pages_visually_read": [
+    1,
+    2,
+    10,
+    11
+  ],
+  "final_pages_identical_by_image_sha256": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "status": "All final pages covered; no clipping, overlap or unreadable equations"
+}

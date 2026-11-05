@@ -1,0 +1,21 @@
+{
+  "existing_report_not_inherited": {
+    "independence_established": false,
+    "full_original_report": "papers/flat-coarse-rank/integrated-revision/revision136/model-assessment/model-response-original.txt",
+    "operator_observed_ui": "Google Gemini4ArgonHigh",
+    "score_context_only": "3.5/10 minor_revision",
+    "blind": false,
+    "pdf_sha256": "eb4df3487ec60f84f582b8e73feb4b166a4a327a07e2909f0c668d93481bdc72",
+    "commit": "0bd20490552f3d7cfadb442af20e484aa95fe958",
+    "raw_model_id": "unknown",
+    "full_context": "papers/flat-coarse-rank/integrated-revision/revision136/model-assessment/review-context.json"
+  },
+  "source_sha": "e375f6250c42b3f2d07482f889672a012c8dda2a",
+  "artifact_pdf_sha256": "6fcb0a7b5c2ff53402975d702f8f6edfc93aa7cd5ff58147ea5f10ebf29a7738",
+  "render_source_manifest": "inputs.json",
+  "publication": "No new AIRR record/version, acceptance or peer review",
+  "status": "UNREVIEWED_COMPANION_NO_SCORE",
+  "frozen_pdf_changed": false,
+  "archive_sha256": "29afe0d620c98a517bdadcb575476700e2f8eb6132a1e57efe1f9471c136792c",
+  "inner_members_rehashed": 40
+}

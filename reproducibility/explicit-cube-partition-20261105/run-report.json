@@ -1,0 +1,151 @@
+{
+  "unit": 139,
+  "source_sha": "3c309786dff766a97638b9bb4f654bcb14cb9455",
+  "started_utc": "2026-11-05T10:22:17.858867+00:00",
+  "steps": [
+    {
+      "mode": "normal",
+      "exit_code": 0,
+      "seconds": 1.4811700179999434
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 0,
+      "seconds": 1.6882610929999373
+    }
+  ],
+  "status": "FINITE_EXACT_FIXTURES_PASS",
+  "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "scope": "Finite exact certificates only; no Lean, universal proof certificate or physical gap",
+  "assert_nodes": 0,
+  "matching_json_files": 58,
+  "canonical_result_sha256": "1a535eaf7ebca4794b39d8d0820d926cdb33398e16011efb15ba43535e28087d",
+  "summary": {
+    "actual_mutations_rejected": 47,
+    "actual_mutations_tested": 47,
+    "bad_inputs_rejected": 2,
+    "cases": [
+      {
+        "certificate_sha256": "ef37fab38b7ecaddef8551ae5a3e0e43c726e45a57cb9dd85295125ae1cb1cfd",
+        "coverage": "enumeration",
+        "events": 0,
+        "first_leaves": 1,
+        "max_proper_occupancy": 0,
+        "midpoint_events": 0,
+        "name": "empty",
+        "potential_decrease": 0,
+        "rectangles": 1,
+        "shrink_events": 0
+      },
+      {
+        "certificate_sha256": "bc8090bc6c7e713d3d40ea1b493f84be77a24cc1484a7960206d0f20ca371de2",
+        "coverage": "enumeration",
+        "events": 9,
+        "first_leaves": 32,
+        "max_proper_occupancy": 1,
+        "midpoint_events": 1,
+        "name": "singleton-root",
+        "potential_decrease": 15,
+        "rectangles": 1,
+        "shrink_events": 8
+      },
+      {
+        "certificate_sha256": "3a5650face37c13d8e2503ec2be156f9ac826ae182805e8bf5a4f0d38428cade",
+        "coverage": "enumeration",
+        "events": 26,
+        "first_leaves": 111,
+        "max_proper_occupancy": 1,
+        "midpoint_events": 8,
+        "name": "small-offset",
+        "potential_decrease": 47,
+        "rectangles": 59,
+        "shrink_events": 18
+      },
+      {
+        "certificate_sha256": "d69fbefa451e33c2bef946eb634f0b8e5332962ec2a0a50606ec36a50df4b0e4",
+        "coverage": "enumeration",
+        "events": 28,
+        "first_leaves": 165,
+        "max_proper_occupancy": 1,
+        "midpoint_events": 20,
+        "name": "adjacent-solids",
+        "potential_decrease": 63,
+        "rectangles": 52,
+        "shrink_events": 8
+      },
+      {
+        "certificate_sha256": "09d3a233a305c488e0dcadac8916d3e21dea55a771cd9a09c28a7612f76a2a87",
+        "coverage": "enumeration",
+        "events": 25,
+        "first_leaves": 96,
+        "max_proper_occupancy": 1,
+        "midpoint_events": 5,
+        "name": "mixed-scales",
+        "potential_decrease": 63,
+        "rectangles": 76,
+        "shrink_events": 20
+      },
+      {
+        "certificate_sha256": "c344e37d39fc14c00ac07a928655670d20cb4efa7e8fb627f27fb35a098b7219",
+        "coverage": "enumeration",
+        "events": 55,
+        "first_leaves": 226,
+        "max_proper_occupancy": 1,
+        "midpoint_events": 15,
+        "name": "anisotropic-placement",
+        "potential_decrease": 95,
+        "rectangles": 42,
+        "shrink_events": 40
+      },
+      {
+        "certificate_sha256": "dd4e1260d2bead0cccdb68ee58211fdb289100c1778fe08e3c4ac6396167963c",
+        "coverage": "enumeration",
+        "events": 41,
+        "first_leaves": 220,
+        "max_proper_occupancy": 1,
+        "midpoint_events": 5,
+        "name": "four-dimensional",
+        "potential_decrease": 95,
+        "rectangles": 61,
+        "shrink_events": 36
+      },
+      {
+        "certificate_sha256": "0b5384f522dc5c0b65637a4ad3cafc7ba303879ee8acafddf32d4be82755faa0",
+        "coverage": "disjoint-count",
+        "events": 5,
+        "first_leaves": 20,
+        "max_proper_occupancy": 1,
+        "midpoint_events": 1,
+        "name": "large-root-small-scene",
+        "potential_decrease": 31,
+        "rectangles": 17,
+        "shrink_events": 4
+      }
+    ],
+    "certificates_accepted": 8,
+    "closed_contact_controls": [
+      {
+        "D": 2,
+        "K": 5,
+        "closed_contacts": 5,
+        "proper_contacts": 0
+      },
+      {
+        "D": 3,
+        "K": 9,
+        "closed_contacts": 9,
+        "proper_contacts": 0
+      },
+      {
+        "D": 4,
+        "K": 17,
+        "closed_contacts": 17,
+        "proper_contacts": 0
+      }
+    ],
+    "scope": "Only listed finite rational certificates; not a universal theorem/Lean/physical certificate",
+    "status": "FIXTURES_PASS"
+  },
+  "finished_utc": "2026-11-05T10:22:21.587092+00:00"
+}

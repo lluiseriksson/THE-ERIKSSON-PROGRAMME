@@ -1,0 +1,32 @@
+{
+  "primary_context": "https://ics-archive.science.uu.nl/research/techreps/repo/CS-1998/1998-12.pdf Section2.1; attributed classical BSP context",
+  "kind": "Preparing-agent analytic derivation, no execution",
+  "frozen_pdf_changed": false,
+  "independent_review": false,
+  "new_originality_claim": false,
+  "stress_family": {
+    "D": "all D>=2",
+    "L": 2,
+    "J": "2^(D-1)",
+    "n": 4,
+    "all_proper": true,
+    "query": "[1,2]^D",
+    "solid_separation": "1/2",
+    "claims_actual_recursion_leaf": false,
+    "claims_sharp_2D_bound": false,
+    "query_interior_vertices": 0,
+    "b": "(2sigma_1,...,2sigma_(D-1),1)"
+  },
+  "universal_proof_or_Lean": false,
+  "finite139_limitation": "All baseline leaf occupancies <=1, not evidence against the analytic family",
+  "ownership": {
+    "convention": "all axes lower-inclusive upper-exclusive",
+    "closure_interior_argument": "needed for original leaf cuts; cluster facet coordinates are not integer",
+    "integer_interval": "[ceil(l),ceil(h)) intersect [0,n)",
+    "negative_endpoints": "covered",
+    "integer_cut_owner": "upper child"
+  },
+  "physical_hypotheses_removed": [],
+  "unit": 140,
+  "refuted_shortcut": "Corner-free cube implies at most one properly meeting supplied lattice cube"
+}

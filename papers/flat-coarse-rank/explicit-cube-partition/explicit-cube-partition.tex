@@ -45,6 +45,28 @@ closed-contact bound would be false. This boundary guard does not assert
 that de Berg's theorem is false; our construction below explicitly uses
 open-cell intersections and interior lattice points.
 
+\subsection{A multiple-object stress family}
+The corner-free property does not imply that a query cube meets only one
+input cube. This can fail even for the quarter-offset solids of equal-side
+integer cubes, not merely for arbitrary real objects. For $D\geq2$, put
+$n=4$, $C=[1,2]^D$, and, for $\sigma\in\{0,1\}^{D-1}$, set
+\[
+ b_\sigma=(2\sigma_1,\ldots,2\sigma_{D-1},1),\quad L_\sigma=2,
+ \qquad S_\sigma=\prod_{i=1}^D\{b_{\sigma i},b_{\sigma i}+1\}.
+\]
+The $2^{D-1}$ integer cubes are pairwise disjoint: distinct binary words
+have a coordinate with the disjoint integer intervals $\{0,1\}$ and
+$\{2,3\}$. Their solids have, in that coordinate, intervals
+$[-1/4,5/4]$ and $[7/4,13/4]$, with a gap $1/2$.
+In the last coordinate every solid has interval $[3/4,9/4]$.
+Consequently every solid properly meets $C$, while no solid corner is
+interior to $C$: every such corner has last coordinate $3/4$ or $9/4$.
+Thus a universal proper-occupancy bound for corner-free query cubes in
+this exact lattice class must be at least $2^{D-1}$. This neither proves
+sharpness of $2^D$ nor asserts that this particular $C$ occurs as a leaf
+of our root-based recursion. It rules out replacing the occupancy
+argument by a one-object assumption. The finite unit139 baseline leaves
+all had occupancy at most one, so those runs did not test this phenomenon.
 \subsection{Constructing linearly many vertex-free rectangles}
 Let $V$ be the set of all corners of the $Q_k$, so $N=|V|=2^DJ$.
 For $J=0$ use the single root rectangle and skip this construction.
@@ -123,6 +145,19 @@ terminal cell. All cuts are axis-parallel. Now assign every splitting
 hyperplane to one child consistently, intersect with $X$, and delete empty
 integer sets. The result is a disjoint cover of $X$ by integer rectangles.
 Taking integer points and deleting empty sets does not increase the count.
+More explicitly, use the uniform convention $[l_i,h_i)$ in every axis
+of every cell. A coordinate split at $t$ then assigns the plane to the
+upper child. The two intervals $[l,t)$ and $[t,h)$ partition $[l,h)$
+exactly, even when $t$ is an integer. By induction through every cut,
+these half-open cells partition $[-1,n)^D$; intersecting with $X$ gives
+\[
+ R=\prod_i\bigl(\{\lceil l_i\rceil,\ldots,\lceil h_i\rceil-1\}
+                 \cap\{0,\ldots,n-1\}\bigr).
+\]
+This formula is also valid for negative or integer endpoints. An empty
+axis makes the entire integer cell empty; no lattice point is assigned
+twice or lost when those cells are deleted. The outer upper face at $n$
+contains no point of $X$.
 
 To check membership rigorously, suppose an assigned integer point $x$
 lies in $S_k$. It is interior to $Q_k$, while its assigned terminal
@@ -148,9 +183,11 @@ For $n=1$ and for singleton input cubes all constructions remain valid.
 Suppose, in addition, that for fixed $c>0$ and $\beta\geq1$ the actual
 positive scalar starting coefficients obey
 \[
- a(x)\geq cL_k(L_k-1)/4\quad(x\in S_k),\qquad
- a(x)\geq cn(n-1)/4\quad(x\notin\cup_k S_k),
- \qquad a(x)\leq\beta L_k^2\quad(x\in S_k).
+ \begin{gathered}
+ a(x)\geq cL_k(L_k-1)/4\quad(x\in S_k),\\
+ a(x)\geq cn(n-1)/4\quad(x\notin\cup_k S_k),\\
+ a(x)\leq\beta L_k^2\quad(x\in S_k).
+ \end{gathered}
 \]
 These coefficient/cube assumptions are retained, not inferred from the
 critical moment. On an interval of $l$ integer vertices, pairwise variance,
