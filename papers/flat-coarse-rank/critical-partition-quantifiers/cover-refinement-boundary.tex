@@ -1,0 +1,213 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\title{From overlapping local estimates to actual rectangular means:
+energy transfer and the common-refinement count obstruction}
+\author{The Eriksson Programme --- grouped research dossier}
+\date{5 November 2026; unit 132; unrendered draft source}
+\begin{document}
+\maketitle
+\paragraph{Purpose and status.}
+We separate two obligations in the single coefficient-adapted rectangular
+observation question: transferring energy estimates and keeping a linear
+cell count. The first has an elementary answer below. The second does not
+follow from bounded overlap through a common refinement. These are finite
+analytic statements, with proofs and preparing-agent self-audit only. No
+formal check, executed diagnostic, external review, originality claim,
+new paper, or physical/continuum conclusion is asserted.
+
+\paragraph{Conventions.}
+Let $T_n=(\mathbb Z/n\mathbb Z)^D$, $n\ge3$, with counting measure and
+unit-spacing forward edges $(x,i)$ from $x$ to $x+e_i$. The coefficient
+$a(x)>0$ is shared among directions. Fields take values in a finite-dimensional
+real Hilbert space $H$. Define
+\[
+ E_a(u)=\sum_{x,i}a(x)\|u(x+e_i)-u(x)\|^2,
+ \quad V_B(u)=\sum_{x\in B}\|u(x)-\bar u_B\|^2,
+\]
+where $\bar u_B=|B|^{-1}\sum_Bu$. The internal energy $E_{a,B}$ includes
+precisely those forward edge occurrences whose two endpoints belong to $B$.
+For full cyclic coordinates it includes their wrap edges. Every cell in a
+rectangular partition is a product of nonempty cyclic intervals. The actual
+normalized mean map is $C_{\cal P}u=(|Q|^{-1/2}\sum_Qu)_{Q\in\cal P}$.
+
+\begin{proposition}[Transfer to any subordinate partition]
+Suppose nonempty sets $B_1,\ldots,B_m$ cover $T_n$, every vertex belongs to
+at most $r$ of them, and for all fields
+\[
+ \kappa V_{B_j}(u)\le E_{a,B_j}(u),\qquad j=1,\ldots,m.
+\]
+If a partition $\cal P$ admits an assignment $j(Q)$ with $Q\subset B_{j(Q)}$,
+then
+\[
+ \sum_{Q\in\cal P} V_Q(u)\le\frac r\kappa E_a(u).
+\]
+Consequently, if $\kappa\ge rc$, its actual means satisfy
+\[
+ c\|u\|_2^2\le E_a(u)+c\|C_{\cal P}u\|_2^2.
+\]
+The cells need not have separately proved internal Poincare inequalities.
+The conclusion holds for the same fixed coefficient as in the local bounds.
+\end{proposition}
+\begin{proof}
+The arithmetic mean minimizes squared distance to constants, so
+\[
+ \sum_{Q:j(Q)=j}V_Q(u)
+ \le\sum_{Q:j(Q)=j}\sum_{x\in Q}\|u(x)-\bar u_{B_j}\|^2
+ \le V_{B_j}(u).
+\]
+Assigned cells are disjoint, and all the omitted summands are nonnegative.
+Summing the assumed local estimates gives
+\[
+ \kappa\sum_QV_Q(u)\le\sum_jE_{a,B_j}(u)\le rE_a(u).
+\]
+Indeed any directed edge included in $E_{a,B_j}$ has its tail in $B_j$,
+so it is counted at most $r$ times. Nonnegativity is essential at this step.
+Finally orthogonal block-mean decomposition gives exactly
+$\|u\|_2^2=\sum_QV_Q(u)+\|C_{\cal P}u\|_2^2$.
+\end{proof}
+
+\paragraph{What was and was not eliminated.}
+The proof derives the transfer; it does not assume a new transfer structure.
+It also shows why discarding all cross-cell energies and demanding an
+independent local estimate on every final cell is unnecessarily strong.
+Cover-internal edges joining different final cells are retained in the
+intermediate sum. However the existence, count and local constants of an
+appropriate cover have not been derived from the original critical moment.
+Those are still hypotheses of this conditional lemma, not hypotheses removed
+from the original theorem. A merely scalar local estimate can be extended
+componentwise to $H$ by summing in an orthonormal basis; no assertion about an
+interacting gauge energy follows.
+
+\begin{proposition}[Unconditional geometric conversion, with a power loss]
+If the cover above consists of $m$ cyclic axis-parallel rectangles, there is
+an actual rectangular partition subordinate to the cover with
+\[
+ \#\cal P\le \min\{n^D,(2m+1)^D\}.
+\]
+It can be chosen to refine every cover member. The transfer proposition
+applies, but no linear bound in $m$ follows from this construction.
+\end{proposition}
+\begin{proof}
+Represent each cyclic coordinate as $\{0,\ldots,n-1\}$. For each direction,
+cut at $0,n$ and at the at most two endpoints of each proper cyclic
+interval occurring in a cover member; a wrapped interval is the union of the
+two corresponding linear end intervals. Whole cycles require no endpoints.
+There are at most $2m+1$ nonempty coordinate segments. Their Cartesian
+products form a partition of at most $(2m+1)^D$ nonempty rectangles, and at
+most $n^D$ because every cell contains a vertex. Each cover member is a union
+of grid cells. Since it is a cover, every grid cell belongs to at least one
+cover member; assign one of them by a fixed index rule. The rule is geometric
+and independent of the field.
+\end{proof}
+
+\paragraph{Count relevance.}
+If one had a bounded-overlap cover with
+$m\le A\max\{1,n^D/(1+\mu)^{D/2}\}$ and local constant $\kappa\ge rc$,
+the power-loss conversion proves a corresponding power-law cell count.
+It does \emph{not} prove the target linear order when that target grows.
+When the target stays bounded, a fixed power of its bound is still bounded;
+the count objection alone does not rule out that regime. Neither the
+existence of this hypothetical cover nor a linear subordinate conversion is
+proved here.
+
+\begin{proposition}[Depth-three common refinements can be quadratic]
+For every integer $J\ge2$ and every $D\ge2$, let $n=2J$. There is a cover
+of $T_n$ by $m=2J+1$ axis-parallel rectangles with vertex overlap at most
+three such that every rectangular partition refining \emph{all} cover
+members has at least
+\[
+ n^2=4J^2=(m-1)^2
+\]
+cells. This lower bound is attained. In contrast, a partition merely
+subordinate to the same cover can have one cell.
+\end{proposition}
+\begin{proof}
+Take the full torus $B_0=T_n$, the $J$ strips
+$V_j=\{x:x_1=2j+1\}$, and the $J$ strips
+$H_j=\{x:x_2=2j+1\}$, for $j=0,\ldots,J-1$.
+Each vertex lies in $B_0$, at most one $V_j$ and at most one $H_j$.
+
+Refining a set means every partition cell is wholly inside it or disjoint
+from it. A nonempty cell whose first cyclic interval contains at least two
+vertices contains a consecutive odd/even pair (also at the cyclic seam,
+because $n$ is even). It then intersects the corresponding $V_j$ but is
+not contained in it. This contradicts refinement. Thus its first interval
+is a singleton. The same argument using the $H_j$ makes its second interval
+a singleton. Every cell has at most $n^{D-2}$ vertices, giving at least
+$n^D/n^{D-2}=n^2$ cells. All products
+$\{x_1\}\times\{x_2\}\times(\mathbb Z/n\mathbb Z)^{D-2}$ attain the bound.
+For mere subordination, the one-cell partition $\{T_n\}$ is assigned to
+$B_0$ and is valid. Hence the example does not disprove the existence of
+some linear-size subordinate partition; it only disproves a linear-size
+universal common refinement.
+\end{proof}
+
+\paragraph{A local-energy control for the geometric example.}
+This example need not rely on a cover with invalid local estimates. Fix
+$c>0$ and take a constant coefficient
+$a(x)=\mu=\max\{1,3cn^2/16\}$. Every member is a product of full cycles
+and singleton coordinates, with at least one full cycle. Its nonconstant
+Fourier frequencies have energy eigenvalue at least
+$4\mu\sin^2(\pi/n)\ge16\mu/n^2\ge3c$.
+Thus all cover-local estimates hold with $\kappa=3c$ and $r=3$.
+The original coefficient range, exact mean and critical moment hold, the
+last with $M=1$. Yet common refinement still wastes quadratically many
+cells in the cover size, whereas the full-torus member already supplies a
+one-box estimate. This demonstrates waste in the conversion method, not a
+coefficient counterexample to the original question; this particular cover
+is not alleged to have optimal size relative to the moment target.
+
+\paragraph{Primary-source comparison and originality.}
+Sukochev--Zanin~\cite{SZ22} studies weak Schatten estimates for a
+Birman--Schwinger operator with smoothing order $D/2$ and an $L\log L$
+multiplier. This is useful context for critical spectral methods, but its
+operator and hypotheses differ from the present weighted first-difference
+rectangular-means target. No theorem from that paper is used as a local
+cover certificate or a disjoint-partition theorem. The finite arguments
+above are proved in full. Bounded-overlap energy counting and rectangular
+arrangements are elementary; priority is unestablished and no independent
+new theorem of the literature is claimed. Attempts to retrieve later
+sections of the primary web text timed out; only its abstract/introduction
+operator statement is relied on here.
+
+\paragraph{Model assessments and review context.}
+Preparing-agent self-audit only, in the same Codex session that derived these
+claims. The system describes a GPT-6-based agent, while the actual served
+backend identifier and reasoning setting are unexposed. No independent AI,
+external service, human peer review, grade, PDF rendering, Lean run or
+executed diagnostic is claimed. Checks derived the variance minimization,
+edge-occurrence multiplicity, cyclic cuts, even-seam parity, attained cell
+count, conditional constants and scope distinctions. No result or assessment
+is inherited from another artifact.
+
+\paragraph{Route closure and next unit.}
+This closes a precise shortcut negatively: replacing a bounded-overlap
+anisotropic cover by a common refinement cannot generally preserve linear
+count, even at depth three and with valid local energy estimates. Do not
+repeat this mechanism or relabel its power-loss count as the target theorem.
+Simple subordination, special covers, or a coefficient-specific global
+argument remain possible and are not refuted. The original fully variable
+coupled divergence-zero question remains open.
+
+Units 130--132 have not advanced that original question: finite verification,
+classical quantifier audit, and now the explicit conversion boundary. Count
+three conservatively; stop the generic cover/common-refinement research
+mechanism and preserve this concrete blockage. The next work unit switches
+to consolidating the already derived invariant-coordinate positive theorem
+(unit 127, with actual finite diagnostics in unit 128), together with the
+related layered/separated benchmarks and carefully scoped negative results.
+Audit the exact combined manuscript and its primary-source novelty before
+rendering/review/publication. Do not split these guards into micro-papers,
+redeposit published v5, inherit grades, or open a second active mathematical
+question. No original hypothesis is counted as eliminated.
+
+\begin{thebibliography}{1}
+\bibitem{SZ22} F. A. Sukochev and D. V. Zanin,
+\emph{Solomyak-type eigenvalue estimates for the Birman--Schwinger operator},
+Sb. Math. 213 (2022), 1250--1289.
+\href{https://doi.org/10.4213/sm9732e}{doi:10.4213/sm9732e}.
+\href{https://www.mathnet.ru/php/archive.phtml?jrnid=sm\&option_lang=eng\&paperid=9732\&wshow=paper}{Primary text}.
+\end{thebibliography}
+\end{document}
