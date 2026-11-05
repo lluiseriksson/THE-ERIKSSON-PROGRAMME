@@ -1,0 +1,42 @@
+{
+  "sobolev.tex": {
+    "path": "papers/flat-coarse-rank/critical-sobolev-derivation/critical-sobolev-derivation.tex",
+    "sha256": "879f895b69eb04fd41c26fd4e4bd779dcdfe7d9547c22181c6d4313f343bdb43",
+    "binary": false
+  },
+  "partition.tex": {
+    "path": "papers/flat-coarse-rank/explicit-cube-partition/explicit-cube-partition.tex",
+    "sha256": "7cb297d6b78d4aac6f7941e5ca7a531e50987c22a7ea48ddbcbcbfe31ba88b65",
+    "binary": false
+  },
+  "companion.tex": {
+    "path": "papers/flat-coarse-rank/companion-revision149/companion.tex",
+    "sha256": "01a2e5887f2bc74f4363e6d95292b3e81b79ffbae6b92699e23f944c9f035c2d",
+    "binary": false
+  },
+  "physical-cycle.tex": {
+    "path": "papers/flat-coarse-rank/companion-revision149/physical-cycle.tex",
+    "sha256": "205b30a2ba55178932ec16e49a0a1de8f47524d79f4b68f12983e53ea3574c88",
+    "binary": false
+  },
+  "tep-cube-fixtures139.zip": {
+    "path": "reproducibility/explicit-cube-partition-20261105/tep-cube-fixtures139.zip",
+    "sha256": "64f548dff043cf6cf9f1c1a3abf24fc793cf6565ff7dd436c1d0f263351b5be1",
+    "binary": true
+  },
+  "full-form148-first-clone-evidence.zip": {
+    "path": "papers/flat-coarse-rank/physical-cycle-embedding/full-form148-first-clone-evidence.zip",
+    "sha256": "209220f94f1883cfd9919afcc1466bc5eaccb3d0adcbffdc2205a3aab93a86d1",
+    "binary": true
+  },
+  "full-form148-second-clone-evidence.zip": {
+    "path": "papers/flat-coarse-rank/physical-cycle-embedding/full-form148-second-clone-evidence.zip",
+    "sha256": "7939f34c6fa9fff1b2c5cd535ec9fb0927f1c493e34cdc2e68132d4aac0fd7a9",
+    "binary": true
+  },
+  "paired-full-form148.json": {
+    "path": "papers/flat-coarse-rank/physical-cycle-embedding/paired-full-form148.json",
+    "sha256": "2917c677f8867a899e1df5031a630912e04e19b7e0592b99f59f45b8a29082af",
+    "binary": false
+  }
+}
