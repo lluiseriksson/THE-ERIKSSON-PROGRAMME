@@ -1,0 +1,69 @@
+{
+  "model_context": "SamepreparingCodexagent,system-describedGPT6actualbackend/effortunexposed;noindependent/external/humanrevieworgrade",
+  "unit": 129,
+  "not_refuted": [
+    "Original coupled divergence-zero observation question",
+    "All unrestricted rectangle partitions",
+    "Cube-local or shape-dependent moment estimates",
+    "Methods retaining cross-boundary energy or mixingcoefficients in rectangles"
+  ],
+  "status": "Analytic proof and preparing-agent self-audit; no executable/Lean/external verification of new source",
+  "previous_tests_inherited": false,
+  "published_v5_changed": false,
+  "primary_reference": {
+    "title": "Weighted Poincare inequalities",
+    "authors": "Clemens Pechstein; Robert Scheichl",
+    "read_scope": "Abstract/introduction geometry/topology dependence; coefficient-weighted norms differ from ours",
+    "url": "https://numa.jku.at/media/filer_public/aa/2f/aa2f2ced-1f56-4962-8ad4-970c02940df8/2010-10.pdf",
+    "NuMaReport": "2010-10,December2010"
+  },
+  "admissibility": {
+    "range": "1<=a<=2mu",
+    "critical_moment": "<=gamma^(D/2)+1",
+    "weak_inverse_mass": "n/b^(D/2)=1",
+    "weak_components": 1,
+    "geometric_partition_rectangles": "D, via first nonzero transverse coordinate",
+    "target_maximum": 1,
+    "mean": "exactmu"
+  },
+  "refuted_route": {
+    "status": "REFUTED for target-order decoupled coefficient-respecting certificates",
+    "penalty": "AnyPhi withPhi(0)=0; zero-mean witness kills penalty",
+    "mechanism": "Weak blocks are line intervals; zero-mean path/cycle mode Rayleigh<=48b/L² forcesL<=sqrt(48b/c), then cover n sites",
+    "class": "All coefficient-respecting rectangular partitions, discarding all inter-block edges, requiring scalar/all-cochain coercivity with one normalized mean per block",
+    "lower_bound": "#P>=sqrt(c/48)*n^(1-1/D) for all sufficiently large n"
+  },
+  "new_general_hypotheses_eliminated": [],
+  "profile": "D>=3,n large,W=coordinate weak line,size n; b=n^(2/D);gamma=max(1,c);mu=gamma*n²;f=n^(1-D);A=(mu-fb)/(1-f)",
+  "priority": "Unestablished; path comparisons, Neumann modes and weighted Poincare geometry classical",
+  "proof_checks": [
+    {
+      "exact": "linear centeredu, normL(L²-1)/12,energyb(L-1),ratio12b/[L(L+1)]",
+      "claim": "path mode"
+    },
+    {
+      "exact": "L2m triangle centered,normm(m²+2)/6,energy2mb,ratio12b/(m²+2)",
+      "claim": "even cycle"
+    },
+    {
+      "exact": "L2m+1 triangle centered,normm(m+1)(m²+m+1)/[3(2m+1)],energy2mb;48bound equivalent to polynomial gap4m²+10m+7>=0",
+      "claim": "odd cycle"
+    },
+    {
+      "exact": "Weak cell is interval; path forproperarc, cycle forwholeline; singleton handled forlargen",
+      "claim": "all allowed root choices/internal wrap"
+    },
+    {
+      "exact": "Transverse detoursj1=2 andcycle2..D, everytailstrong,max2preimages; congestion<=2+1+2=5;Eunit<=16Estrong;Ea>=A/16Eunit>=A/n² variance>=cvariance",
+      "claim": "full energy one-box success"
+    },
+    {
+      "exact": "For supportedonW, D-1 distinct incomingstrong directions contribute(D-1)A||u||²; removed bydecoupling",
+      "claim": "lostcrossenergy"
+    },
+    {
+      "exact": "Weaklineinversecriticalmass1 butlocalvariance/energy>=n^(2-2/D)/48 grows",
+      "claim": "mass-only arbitrary-aspect rule false"
+    }
+  ]
+}

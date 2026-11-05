@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\title{A connected weak line obstructs decoupled block certificates}
+\author{Lluis Eriksson}
+\date{5 November 2026 --- analytic research source, not a new deposit}
+\begin{document}\maketitle
+\paragraph{Scope.}
+This note falsifies a specific proposed geometry-to-energy step: a small coefficient-respecting rectangular partition does not suffice for coercivity if one discards all inter-block energy and relies on one arithmetic mean per block. The failure persists for a connected weak region and bounded original critical moment. The full original energy on the SAME profile admits a single global rectangular mean. Thus this is not a counterexample to the unrestricted observation problem, and it is not a new paper, deposit, formal verification or originality claim. Published AIRR v5 and its assessments are unchanged.
+
+Fix $D\ge3$, $c>0$, $p=D/2$, and arbitrarily large $n\ge3$. On the unit periodic lattice $X_n$ use counting norms and actual forward-edge occurrences. Put
+\[
+ W=\{(s,0,\ldots,0):s\in\mathbb Z/n\mathbb Z\},\quad
+ f=n^{1-D},\quad b=n^{2/D},\quad\gamma=\max\{1,c\},\quad\mu=\gamma n^2,
+\]
+\[
+ a(x)=b\ (x\in W),\qquad a(x)=A=\frac{\mu-fb}{1-f}\ (x\notin W),
+ \qquad E_a(u)=\sum_{x,i}a(x)\|d_i u(x)\|^2.
+\]
+These are shared scalar total coefficients, so the scalar inequalities transport coordinatewise to the actual flat cochain energy.
+
+\begin{lemma}[Original admissibility and elementary geometry]\label{lem:profile}
+The profile satisfies $1\le a\le2\mu$, exact mean $\mu$, and
+\[
+ \operatorname{mean}((\mu/a)^p)\le\gamma^p+1,
+ \qquad \sum_{x\in W}a(x)^{-p}=1.
+\]
+The original target maximum $\max\{1,n^D/(1+\mu)^p\}$ equals one. There is a coefficient-respecting partition with only $D$ rectangles, and $W$ is connected in the periodic nearest-neighbour graph.
+\end{lemma}
+\begin{proof}
+We have $1\le b\le\mu$, $f\le1/2$, and $\mu\le A\le2\mu$. The mean identity is immediate from the definition of $A$. Since $b^p=n$, the weak contribution to the normalized moment is
+$f(\mu/b)^p=\gamma^p$, while the strong contribution is at most $1-f$. The weak inverse mass is $n/b^p=1$. Also $\mu\ge n^2$ gives the target maximum one.
+
+Use the coordinate root in which the transverse coordinates of $W$ are zero. Along with $W$, take $D-1$ rectangles obtained by the unique first nonzero transverse coordinate:
+\[
+ R_i=\{0,\ldots,n-1\}\times\{0\}^{i-2}\times\{1,\ldots,n-1\}
+ \times\{0,\ldots,n-1\}^{D-i},\quad i=2,\ldots,D.
+\]
+They cover the complement disjointly and have coefficient $A$ everywhere. The line has periodic consecutive weak neighbours. Its geometric representation therefore has constant size; no growing number of connected components or boxes is responsible for the obstruction below.
+\end{proof}
+
+For a rectangle partition $\mathcal P$, call it coefficient-respecting if every rectangle is contained wholly in $W$ or wholly in its complement. Define the decoupled energy by keeping only edge occurrences whose two endpoints lie in the same rectangle:
+\[
+ E_a^{\mathcal P}(u)=\sum_{R\in\mathcal P}\sum_{(x,i):x,x+e_i\in R}
+ a(x)\|d_i u(x)\|^2.
+\]
+Keeping or omitting internal periodic wrap occurrences does not repair the result. Each block has its actual normalized arithmetic mean; write their map as $C_{\mathcal P}$. The following obstruction is an all-scalar-field/local-certificate statement, not a claim about divergence-free witnesses in the original coupled operator.
+
+\begin{lemma}[Elementary zero-mean modes]\label{lem:modes}
+For a path of $L\ge2$ weak vertices, or for the periodic cycle when the block is the whole weak line, there is a nonzero zero-mean real field with weighted Rayleigh quotient at most $48b/L^2$.
+\end{lemma}
+\begin{proof}
+On the path take $u_t=t-(L-1)/2$. Its squared norm is $L(L^2-1)/12$ and its energy is $b(L-1)$, giving quotient $12b/[L(L+1)]\le12b/L^2$.
+
+On a cycle take the distance-to-zero triangle wave and subtract its mean. For $L=2m$ its energy is $2mb$ and its squared norm is $m(m^2+2)/6$, giving $12b/(m^2+2)\le48b/L^2$. For $L=2m+1$ its energy is $2mb$ and its squared norm is
+$m(m+1)(m^2+m+1)/[3(2m+1)]$. Its quotient is
+\[
+ \frac{6b(2m+1)}{(m+1)(m^2+m+1)}\le\frac{48b}{(2m+1)^2},
+\]
+because $(2m+1)^3\le8(m+1)(m^2+m+1)$; subtracting the left side from the right gives $4m^2+10m+7$. These formulae include $L=2$ with its two periodic forward-edge occurrences. Removing an edge only reduces the energy, so the upper bound also covers omitted wrap edges.
+\end{proof}
+
+\begin{theorem}[Every coefficient-respecting decoupled certificate loses the target]\label{thm:obstruction}
+Suppose a coefficient-respecting partition satisfies, for every scalar field,
+\[
+ c\|u\|^2\le E_a^{\mathcal P}(u)+\Phi(C_{\mathcal P}u),\qquad\Phi(0)=0.
+\]
+For all sufficiently large $n$ it must have at least
+\[
+ |\mathcal P|\ge\sqrt{c/48}\,n^{1-1/D}
+\]
+rectangles. In particular no constant-size coefficient-respecting partition can supply this decoupled all-cochain certificate, even with an arbitrary mean penalty vanishing at zero.
+\end{theorem}
+\begin{proof}
+Every weak rectangle is an interval of length $L$ along $W$, with singleton transverse sides. Their lengths sum to $n$. For a weak block with $L\ge2$, extend its zero-mean witness from Lemma~\ref{lem:modes} by zero on every other rectangle. Every block mean is then zero. The decoupled energy includes only the weak path/cycle energy; there are no transverse internal edges in this block. Thus $c\le48b/L^2$, forcing $L\le\sqrt{48b/c}$. Singletons also obey this length bound once $n$ is large enough that $48b/c\ge1$. Covering $n$ weak vertices requires at least $n/\sqrt{48b/c}=\sqrt{c/48}\,n^{1-1/D}$ weak blocks.
+
+A rectangular cell in a translated coordinate root has the same interval property. If it covers the whole periodic line, the cycle case applies; otherwise its internal graph is a path. Thus root translation or retaining internal periodic occurrences cannot evade the bound.
+\end{proof}
+
+\begin{theorem}[The original coupled energy needs only one global mean]\label{thm:positive}
+For the SAME coefficient profile, the actual normalized global mean
+$C(u)=n^{-D/2}\sum_xu(x)$ satisfies
+\[
+ c\|u\|^2\le E_a(u)+c\|C(u)\|^2
+\]
+for every field, hence coordinatewise for every actual cochain and in particular its divergence-zero subspace. This has the original target order.
+\end{theorem}
+\begin{proof}
+Let $E_S$ be the unweighted energy over edge occurrences with strong tails. For every direction choose a transverse detour direction $j(i)\ne i$: set $j(1)=2$, and let $j$ cycle the directions $2,\ldots,D$ on those directions. Each transverse direction has at most two preimages, and direction one has none. Replace every weak-tail edge $(x,i)$ by
+\[
+ x,\quad x-e_{j(i)},\quad x-e_{j(i)}+e_i,\quad x+e_i.
+\]
+All corresponding forward tails are strong. The first tail has a nonzero transverse coordinate; the last tail remains outside the line whether $i=1$ or $i\ge2$, since $i\ne j(i)$ and $n\ge3$.
+
+A strong edge $(y,k)$ can occur in the first role for at most two directions $i$ with $j(i)=k$; in the middle role $i=k$ determines its weak source uniquely; and in the last role there are at most two such preimages again. Each role has a uniquely determined source once $i$ is fixed. Congestion is therefore at most five, derived without a routing assumption. Three-edge Cauchy yields $E_W\le15E_S$, and $E_1\le16E_S$. Positivity gives $E_a\ge A E_S\ge(A/16)E_1$.
+
+The unit torus characters have eigenvalues $4\sum_i\sin^2(\pi k_i/n)$, so $E_1\ge4\sin^2(\pi/n)\|u-\bar u\|^2$. Since $\sin(\pi/n)\ge2/n$, we obtain
+\[
+ E_a\ge\frac A4\sin^2(\pi/n)\|u-\bar u\|^2
+ \ge\frac A{n^2}\|u-\bar u\|^2\ge\gamma\|u-\bar u\|^2\ge c\|u-\bar u\|^2.
+\]
+Exact normalized-mean orthogonality completes the inequality. No physical, interacting or continuum spectral gap is asserted.
+\end{proof}
+
+\paragraph{The lost boundary energy can be exhibited exactly.}
+For a field supported on $W$, every transverse incoming edge $(x-e_i,i)$, $i=2,\ldots,D$, has strong tail and value difference $u(x)$. Those distinct occurrences contribute
+\[
+ (D-1)A\sum_{x\in W}\|u(x)\|^2
+\]
+to the original energy. The decoupled certificate discards them. Its low path modes are therefore not low modes of the coupled lattice operator. This explains the two theorems without any contradiction.
+
+\paragraph{Mass alone cannot certify arbitrary-aspect local rectangles.}
+The whole weak line has inverse critical mass exactly one but an internal zero-mean Rayleigh quotient at most $48n^{2/D-2}\to0$. Thus a uniform local rule of the form
+\[
+ \|u-\bar u_R\|^2\le K\left(\sum_Ra^{-D/2}\right)^{2/D}E_{a,R}(u)
+\]
+for arbitrary-aspect rectangles and dimension-only $K$ is false, even inside globally admissible bounded-moment profiles. The necessary geometric growth in this example is at least a constant times $n^{2-2/D}$. This does not disprove a cube estimate, a shape-dependent estimate, or a proof that retains cross-rectangle energies.
+
+\paragraph{Implications for the current route.}
+A small geometric partition of weak/strong regions is not itself an energy certificate. The example already has one connected weak component and a $D$-rectangle coefficient-respecting partition. A terminal-cluster or BSP route that insists on coefficient-respecting blocks AND discards all boundary energy must therefore stop or change that requirement. An unrestricted construction may mix coefficients within a rectangle, as the successful one-box map does, or keep the coupling in its proof. The invariant-coordinate theorem also covers this coefficient family; the new result isolates a failure of an apparently natural proof mechanism within that already positive class. It is not an impossibility theorem for the original divergence-zero rectangular observation problem.
+
+\paragraph{Originality and primary sources.}
+Geometry dependence of weighted Poincare constants and path comparison are classical. Pechstein--Scheichl, \emph{Weighted Poincare inequalities}, NuMaReport2010-10 (December2010), discusses geometry/topology dependence in its abstract/introduction and uses coefficient-weighted norms:
+\url{https://numa.jku.at/media/filer_public/aa/2f/aa2f2ced-1f56-4962-8ad4-970c02940df8/2010-10.pdf}.
+The norms and local/coupled setup must be distinguished from this finite example. Diaconis--Saloff-Coste1993 provides the classical path-comparison framework. No priority claim for this exact normalized example or lower bound has been established. This source should be grouped with the existing dossier, not deposited as a small corollary paper.
+
+\paragraph{Model assessments and review context.}
+Prepared and analytically self-audited by the ongoing Codex programme agent with extensive prior participation. The system describes GPT-6-based Codex; the actual served backend identifier/reasoning setting is unexposed. No independent, external or human review, numerical grade, Lean proof or executable experiment is claimed for this source. Earlier exact diagnostics apply to their pinned sources only. No prior PDF score or verification transfers here.
+
+\paragraph{Single next question.}
+For the original fully variable critical-moment class, can an anisotropic construction derive both its observation count and a coercivity inequality while permitting mixed-coefficient rectangles or explicitly retaining enough cross-boundary coupling? The coefficient-respecting plus fully decoupled subroute is refuted above and must not be restarted by merely improving geometric counting. The weak line joins the diagonal, growing weak cube and two-neighbour profiles as mandatory tests. A refutation of the original problem still requires defeating every allowed partition for the original coupled divergence-zero inequality. After three substantive units without a derived bound, independent result or useful counterexample, abandon the particular mechanism and preserve the failure.
+\end{document}
