@@ -67,7 +67,8 @@ theorem actualCycleFibre_norm_decomposition
     ‖A‖^2 = ∑ z : ActualCycleFibreIndex d Nc, normSq (actualCycleFibreProfile A z) := by
   classical
   have hn (p : PhysicalBond (d + 2) 4) : ‖A p‖^2 = ∑ k, (A p k)^2 := by
-    simpa only [Real.norm_eq_abs, sq_abs] using PiLp.norm_sq_eq_of_L2 (A p)
+    rw [PiLp.norm_sq_eq_of_L2]
+    simp only [Real.norm_eq_abs, sq_abs]
   rw [PiLp.norm_sq_eq_of_L2]
   simp_rw [hn]
   change (∑ p : FinBox (d + 2) 4 × Fin (d + 2), ∑ k, (A p k)^2) = _
