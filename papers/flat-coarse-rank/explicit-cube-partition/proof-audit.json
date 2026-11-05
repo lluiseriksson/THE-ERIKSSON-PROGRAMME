@@ -1,0 +1,57 @@
+{
+  "frozen_eb4df3_and_reviews_unchanged": true,
+  "attribution": "deBerg compressed splitting strategy; no new general BSP or independent-discovery claim",
+  "original_critical_question": "OPEN",
+  "retained_assumptions": [
+    "Pairwise disjoint supplied integer cubes in one common root",
+    "Actualclusterlower cL(L-1)/4",
+    "Actualclusterupper betaL² for momentcharge",
+    "Strong complementlower cn(n-1)/4",
+    "Criticalinverse-momentbound and mu>=1 for targetconversion"
+  ],
+  "scope": "Self-contained special-case cube partition and fixed-penalty adapter in existing dossier",
+  "new_pdf": false,
+  "physical_coefficient_hypothesis_removed": false,
+  "schema": 1,
+  "algorithm_time_complexity_proved": false,
+  "dimension_constant": "AD=2^(D+1)(2^D-1)(2^(2D)+1)^D",
+  "proved_chain": [
+    "Quarter-expanded lattice solids strictly disjoint and contain latticepoints interiorly",
+    "Corner injection bounds proper intersections of vertex-free query cube by2^D",
+    "Explicit closed-contact counterexample guards boundary convention",
+    "Midpoint/shrink recursion with active potential2N-k terminates in<=2N-1 events",
+    "Firstleaf count<=2^(D+1)(2^D-1)J",
+    "Every shrink slab covered by2^(D-1) vertex-free cubes; open-set boundary guard",
+    "Uniform proper occupancy TD=2^(2D-1)",
+    "All relevant2TDfacet cuts peraxis produce<= (2TD+1)^D pieces perfirstleaf",
+    "Closure/interior proof lists every cluster containing assignedintegerpoints",
+    "Actualnormalizedmeans and originaledgevariance yield fixedpenaltyc inequality",
+    "Originalcriticalmoment chargesbeta^(-p)peractualcluster and yieldsallbudgettarget"
+  ],
+  "primary": {
+    "url": "https://ics-archive.science.uu.nl/research/techreps/repo/CS-1998/1998-12.pdf",
+    "pdf_sha256": "a3233dff6422b815f13c4c1c924345268b34d4546989e8120f71a16883400c70",
+    "pages": 15,
+    "locations": [
+      "Section2.1 printedpp4-5: midpoint/corner-shrink strategy and Lemma2.1 count",
+      "Lemma2.4 printedp7: bounded occupancy of intermediate cells",
+      "Theorem2.5 printedp8; Corollary2.9 printedp9: broader prior BSP context"
+    ]
+  },
+  "external_BSP_theorem_assumed": false,
+  "verified_by": "Full preparing-agent analytic audit; no numerical or kernel verification",
+  "new_originality_claim": false,
+  "unit": 138,
+  "edge_cases": [
+    "J=0 root",
+    "n=1 and Lk=1",
+    "Boundary vertices removed forever from active pointsets",
+    "Midpoint allpoints oncuts: r>=1",
+    "Singletonterminal integerpieces and redundant facet cuts",
+    "Slabcoverboundary points avoided within open intersections",
+    "Originalintegercutboundaryownership without newhyperplanecells",
+    "Parallel n=2 wrapedges omitted only with nonnegativeenergy"
+  ],
+  "general_fatness_density_theorem_assumed": false,
+  "permission_question_repeated": false
+}
