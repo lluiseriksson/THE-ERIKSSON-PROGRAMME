@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\title{Critical partition quantifiers: two invalid relaxations}
+\author{The Eriksson Programme --- grouped research dossier}
+\date{5 November 2026; unit 131; draft source, not a new paper}
+\begin{document}
+\maketitle
+\paragraph{Status and scope.}
+These scalar finite-torus arguments audit proposed shortcuts in the existing
+rectangular-observation investigation. They do not refute the original
+coefficient-adapted, coupled divergence-zero question. No new physical or
+continuum conclusion, Lean verification, external assessment, numerical grade,
+or originality claim is made. This source has not been rendered to PDF.
+
+\paragraph{Conventions and the still-open question.}
+Let $T_n=(\mathbb Z/n\mathbb Z)^D$, $D\ge3$, $n\ge3$, $N=n^D$,
+$p=D/2$, and $q=2D/(D+2)$. All norms and sums use counting measure and
+unit-spacing forward differences. Set
+\[
+ E_a(u)=\sum_{x\in T_n}\sum_{i=1}^D
+ a(x)|u(x+e_i)-u(x)|^2.
+\]
+An allowed partition consists of products of nonempty cyclic intervals,
+including whole cyclic coordinates. Its actual normalized mean map has
+components $|B|^{-1/2}\sum_{x\in B}u(x)$. The orthogonal projection $P_{\cal P}$
+onto block constants consequently satisfies
+$\|P_{\cal P}u\|_2^2=\|C_{\cal P}u\|_2^2$.
+The original order is: for each fixed admissible spatial $a$, construct
+one partition depending on $a$ and then control every field. The hypotheses are
+$1\le a\le2\mu$, $\operatorname{mean}a=\mu\ge1$ and
+$\operatorname{mean}(\mu/a)^p\le M$; the proposed count is a constant times
+$\max\{1,N/(1+\mu)^p\}$. Neither replacing the weighted class by a larger
+unweighted critical ball nor choosing a partition before seeing $a$ is required
+by that question.
+
+\begin{proposition}[Critical-ball loss after forgetting the coefficient]
+For every partition into $K$ nonempty cells (even nonrectangular),
+\[
+ \sup_{\substack{\sum_xu(x)=0\\\|\nabla u\|_q\le1}}
+ \|(I-P_{\cal P})u\|_2
+ \ \ge\ (2D)^{-1/q}\sqrt{1-K/N}.
+\]
+Thus uniformly vanishing errors on the full unweighted critical gradient ball
+require $K/N\to1$. This is not a lower bound for the smaller weighted class
+associated with a fixed coefficient.
+\end{proposition}
+\begin{proof}
+For each vertex $x$ take $v_x=\delta_x-N^{-1}{\bf1}$. Its forward gradient
+has exactly $2D$ nonzero occurrences, each of magnitude one; the restriction
+$n\ge3$ avoids identifying the two endpoint neighbours. Hence
+$\|\nabla v_x\|_q=(2D)^{1/q}$. Since constants lie in the projected space,
+$(I-P_{\cal P})v_x=(I-P_{\cal P})\delta_x$. If $x\in B$,
+\[
+ \|(I-P_{\cal P})\delta_x\|_2^2=1-|B|^{-1},\qquad
+ \sum_x\|(I-P_{\cal P})\delta_x\|_2^2=N-K.
+\]
+One of the $N$ terms is at least their average. Divide that witness by
+$(2D)^{1/q}$. No compactness theorem or asymptotic continuum approximation
+has been used.
+\end{proof}
+
+\paragraph{Why the weighted Holder step does not justify that relaxation.}
+Holder on the directed edge occurrences, with exponents $2/q$ and
+$2/(2-q)$, gives
+\[
+ \|\nabla u\|_q^2\le
+ \left(D\sum_x a(x)^{-p}\right)^{1/p} E_a(u),
+ \qquad \frac{q}{2-q}=p.
+\]
+It embeds one fixed weighted energy ball into a critical unweighted ball;
+it does not identify the two. In the regime $\mu=\gamma n^2$, the upper
+moment bound makes the factor at most $D^{1/p}M^{1/p}/\gamma$, which need
+not vanish with $n$. For the constant profile $a=\gamma n^2$, however,
+the exact Fourier Poincare inequality is
+\[
+ E_a(u)\ge4\gamma n^2\sin^2(\pi/n)\|u-\bar u\|_2^2
+ \ge16\gamma\|u-\bar u\|_2^2.
+\]
+Here $\sin(\pi/n)\ge2/n$. For $\gamma\ge\max\{1,c/16\}$ the one-box
+actual mean therefore already proves the desired scalar estimate with
+coercivity $c$. The point witnesses in the enlarged ball do not contradict
+this: their weighted energies grow like $n^2$.
+
+\begin{proposition}[A coefficient-blind rectangular partition cannot suffice]
+Fix $D\ge3$, $c>0$, and $\gamma\ge1$. Choose an integer $L\ge1$ with
+\[
+ \lambda_L=4D\sin^2\!\left(\frac{\pi}{2(L+1)}\right)<c,
+ \qquad H=2L+3,
+ \qquad m=2(L^D+D L^{D-1}).
+\]
+Such an $L$ exists, for instance whenever $D\pi^2/(L+1)^2<c$.
+Set $M_0=m\gamma^p+1$. For every sufficiently large $n$, and every
+rectangular partition selected before seeing the coefficient with $K<n/H$
+cells, there is an admissible profile with
+\[
+ \mu=\gamma n^2,\qquad
+ \operatorname{mean}(\mu/a)^p\le M_0,
+ \qquad C_{\cal P}u=0,\qquad E_a(u)<c\|u\|_2^2
+\]
+for a nonzero scalar $u$. The same conclusion holds for any coarse penalty
+$\Phi(C_{\cal P}u)$ with $\Phi(0)=0$.
+In particular, there is no bounded-size partition depending only on
+$(D,c,M_0,\mu,n)$ that works simultaneously for all profiles with these
+parameters, even though $\max\{1,N/(1+\mu)^p\}=1$.
+\end{proposition}
+\begin{proof}
+Some cell $B$ has volume at least $n^D/K$. Write its cyclic side lengths
+as $\ell_i\le n$. For every $i$,
+$\ell_i\ge |B|/n^{D-1}\ge n/K>H$.
+Cut each interval at its own start (a whole cycle may be cut anywhere).
+The cell contains a translated box $\{0,\ldots,2L+2\}^D$.
+
+Inside it take $Q_1=\{1,\ldots,L\}^D$ and
+$Q_2=Q_1+(L+2)e_1$. These cubes and their adjacent gradient-tail sets are
+disjoint. On $Q_1$ define the positive Dirichlet product mode
+\[
+ v(j)=\prod_{i=1}^D\sin\left(\frac{\pi j_i}{L+1}\right),
+ \qquad v=0\text{ off }Q_1.
+\]
+Take $u=v-\tau_{(L+2)e_1}v$. The equal translated sums cancel, and both
+supports lie in $B$, so every block mean is zero. The elementary one-variable
+identity $2s_j-s_{j-1}-s_{j+1}=4\sin^2(\pi/(2(L+1)))s_j$,
+with $s_0=s_{L+1}=0$, gives the Dirichlet energy identity by multiplying
+by $s_j$ and summing. Tensoring and adding the two disjoint copies gives
+$E_1(u)=\lambda_L\|u\|_2^2$.
+
+All nonzero forward differences have tails in
+\[
+ S=\bigcup_{r=1}^2\left(Q_r\cup\bigcup_{i=1}^D(Q_r-e_i)\right).
+\]
+For one cube this union consists of $L^D$ interior sites and $D$ disjoint
+lower faces with $L^{D-1}$ sites each. Its size is $L^D+D L^{D-1}$;
+the two unions are disjoint, so $|S|=m$. The padding prevents wrap
+identifications; choose $n>H$ as part of ``sufficiently large.''
+Set $f=m/N\le1/2$ and
+\[
+ a(x)=\begin{cases}1,&x\in S,\\ A,&x\notin S,\end{cases}
+ \qquad A=\frac{\mu-f}{1-f},\quad \mu=\gamma n^2.
+\]
+Then $\operatorname{mean}a=\mu$ and $\mu\le A\le2\mu$, so the original
+range holds. Since $2p=D$,
+\[
+ \operatorname{mean}(\mu/a)^p
+ =f\mu^p+(1-f)(\mu/A)^p
+ \le m\gamma^p+1=M_0.
+\]
+Every nonzero gradient tail is weak, including incoming boundary tails.
+Consequently the full coupled energy, without discarding any edge, is
+$E_a(u)=E_1(u)=\lambda_L\|u\|_2^2<c\|u\|_2^2$.
+Finally $N/(1+\gamma n^2)^p<\gamma^{-p}\le1$.
+\end{proof}
+
+\paragraph{Quantifiers and limits of the conclusion.}
+The last result proves $\forall{\cal P}\ \exists a\ \exists u$ for partitions
+with $K<n/H$; it does not prove $\exists a\ \forall{\cal P}\ \exists u$.
+The adversarial coefficient is explicitly chosen after the partition.
+Allowing the partition to see $S$ escapes this argument. The witness is scalar;
+no divergence-zero embedding is asserted. The coupled incoming weak edges are
+included, unlike the distinct decoupled-energy obstruction of unit 129.
+The result stops only the coefficient-blind shortcut, not the open route.
+
+\paragraph{Primary-source applicability audit.}
+Birman--Solomyak~\cite{BS67}, Theorem 2.1, uses a strictly positive
+volume exponent for a lower-semiadditive cube functional. The discussion
+immediately before Section 3 (printed page 302) explicitly notes failure at
+zero exponent for a point load. Theorem 3.2 chooses partitions for each
+function and assumes a strict subcritical target exponent. Theorems 3.3--3.4
+instead provide measure-dependent partitions common to functions, with their
+own strict hypotheses; the measure occurs in the target norm.
+Thus neither a function-dependent approximation theorem nor that
+measure-dependent theorem can simply be relabelled as our fixed spatial
+gradient-weight problem. This applicability conclusion is our inference, not
+a claim that no stronger result exists in the literature. In particular the
+zero volume exponent is a known classical endpoint obstruction, not a new
+discovery of this programme. The positive transverse exponent $D-k$ in unit
+127 avoids that particular obstruction; invariance was still an extra
+hypothesis there.
+
+\paragraph{Model assessments and review context.}
+This is a preparing-agent analytic self-audit in the current Codex session.
+The system describes the assistant as GPT-6; the exact serving backend and
+reasoning setting are not exposed by this session. No independent model,
+human peer reviewer, external service, grade, executed diagnostic, or Lean
+check is claimed. The checks consisted of deriving the trace identity,
+Holder exponents, sine energy, full boundary-tail support, exact mean,
+range, critical moment, and quantifier order. Originality remains
+unestablished. No assessment of another artifact is inherited.
+
+\paragraph{Next action and abandonment.}
+Keep the single original mixed-cell/cross-boundary question open. A useful
+construction must retain spatial information from the fixed $a$ and be
+uniform over fields only after that coefficient is fixed. Before constructing
+a manuscript, derive an actual overlap-to-disjoint-rectangle conversion with
+both count and coupled-energy control, or document the concrete obstruction.
+Do not replace this obligation by an assumed partition certificate. This
+audit does not resolve that obligation; conservatively count it as the second
+unit without advance on the original question, following verification unit
+130. At the third such unit, stop/change the mechanism or record its precise
+blockage. Group these negative guards with the existing dossier; do not create
+a separate paper, deposit, or regrade the published v5.
+
+\begin{thebibliography}{1}
+\bibitem{BS67} M. S. Birman and M. Z. Solomyak,
+\emph{Piecewise-polynomial approximations of functions of the classes
+$W_p^\alpha$}, Math. USSR-Sbornik 2 (1967), 295--317.
+\href{https://doi.org/10.1070/SM1967v002n03ABEH002343}{doi:10.1070/SM1967v002n03ABEH002343}.
+\href{https://www.mathnet.ru/php/getFT.phtml?jrnid=sm\&paperid=4132\&what=fullteng}{Primary full text}.
+\end{thebibliography}
+\end{document}

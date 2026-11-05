@@ -1,0 +1,57 @@
+{
+  "unit": 131,
+  "status": "Analytic derivations and preparing-agent self-audit only; draft grouped source, not a new paper",
+  "parent": "a499c942836d31fde8b3c4becc65a2f070780e95",
+  "results": [
+    {
+      "claim": "Full mean-zero unweighted critical gradient ball has block-projection error at least (2D)^(-1/q)*sqrt(1-K/n^D)",
+      "proof": "Centered point masses, exactly 2D directed gradient occurrences, orthogonal projection trace N-K",
+      "scope": "All partitions; fixed-a weighted class is smaller"
+    },
+    {
+      "claim": "No coefficient-blind rectangular partition with K<n/(2L+3) controls every original-range coefficient in a fixed bounded-moment class",
+      "proof": "Largest cell contains two separated equal Dirichlet product modes of opposite sign; set every nonzero gradient tail weak, including incoming tails",
+      "parameters": "D>=3,c>0,gamma>=1; lambdaL=4D*sin(pi/(2(L+1)))^2<c; m=2*(L^D+D*L^(D-1)); M0=m*gamma^(D/2)+1; mu=gamma*n^2; n sufficiently large",
+      "range_mean_moment": "f=m/n^D<=1/2; a=1 on S, A=(mu-f)/(1-f) otherwise; mu<=A<=2mu; mean a=mu; moment<=M0; targetmaximum1",
+      "quantifiers": "For every small coefficient-blind partition there exists an adversarial coefficient and a scalar zero-block-mean witness",
+      "not": "One fixed coefficient defeating every adapted partition; no divergence-zero claim"
+    }
+  ],
+  "self_audit": [
+    "q/(2-q)=D/2 and D gradient copies in Holder",
+    "Unit-spacing counting norms throughout; no normalization switch",
+    "Constant coefficient one-box success is a control against false original-problem refutation",
+    "Each side of largest box >=n/K, including cyclic intervals and full cycles",
+    "Two support cubes and their lower-face tail sets are disjoint and embedded for n>2L+3",
+    "Dirichlet sine recurrence includes zero outside each support; all incident edges retained",
+    "Equal translated sums cancel actual normalized arithmetic means",
+    "Weak set cardinality exact; range and exact mean direct; 2p=D cancels volume in critical moment",
+    "Strict energy inequality uses lambdaL<c; no endpoint equality assumed",
+    "Original forall-a exists-partition forall-field order explicitly retained"
+  ],
+  "primary_reference": {
+    "authors": "M. S. Birman; M. Z. Solomyak",
+    "year": 1967,
+    "doi": "10.1070/SM1967v002n03ABEH002343",
+    "url": "https://www.mathnet.ru/php/getFT.phtml?jrnid=sm&paperid=4132&what=fullteng",
+    "private_original_pdf_sha256": "93d5200cdfe3b24b9dabd1f271081d7bf8e3dcb327388cbaf86305d496c1c134",
+    "read_scope": "Theorem2.1, zero-volume-exponent discussion on printed302, and quantifiers/hypotheses in Section3 Theorems3.2-3.4; OCR text consulted, no PDF visual-layout review claimed",
+    "applicability": "Classical positive-volume-exponent machinery does not directly supply the missing critical fixed-gradient-weight adapted rectangular construction",
+    "priority": "Unestablished for the present elementary finite specialization; no new discovery or priority claim"
+  },
+  "active_original_question": "Same coefficient-adapted mixed-cell/cross-boundary question from129; OPEN",
+  "stopped_shortcuts": ["Forget spatial coefficient and uniformly approximate entire critical gradient ball", "Select bounded-size rectangular partition from scalar moment parameters before seeing coefficient"],
+  "hypotheses_eliminated": [],
+  "original_general_problem_refuted": false,
+  "new_mathematical_advance_counter_policy": "Conservatively count this classical applicability/quantifier audit as no advance on original question: current counter2 after130 counter1",
+  "next": "Derive overlap-to-disjoint-rectangle conversion with actual count and coupled-energy control, or identify concrete obstruction; third no-advance unit triggers stop/change or explicit blockage",
+  "model_context": "Same preparing Codex agent; system-described GPT-6, actual serving backend and reasoning setting unexposed; no independent/external/human review",
+  "grade": null,
+  "lean_verified": false,
+  "executed_diagnostic": false,
+  "previous_tests_inherited": false,
+  "pdf_rendered": false,
+  "published_v5_changed": false,
+  "new_deposit": false,
+  "PR29": "20/41; TermSource=0; unchanged"
+}
