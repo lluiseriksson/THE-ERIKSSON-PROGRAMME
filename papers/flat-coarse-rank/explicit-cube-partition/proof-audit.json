@@ -53,5 +53,10 @@
     "Parallel n=2 wrapedges omitted only with nonnegativeenergy"
   ],
   "general_fatness_density_theorem_assumed": false,
-  "permission_question_repeated": false
+  "permission_question_repeated": false,
+  "proof_sha256": "4285d802261fd858278ad47c163dc29ce3679e613c325ef4429411065a6ad81b",
+  "proof_hash_scope": "GitHub canonical LF bytes",
+  "windows_raw_source_sha256": "31168b65ca130357ab54b9ffee515f3592d5d02aeafe613942d206d7b0b2202e",
+  "remote_source_verified": true,
+  "remote_verified_commit": "10bd1970b481c0170f7e62b6fff0ca2ea2c462d8"
 }
