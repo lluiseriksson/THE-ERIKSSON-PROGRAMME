@@ -52,7 +52,17 @@ try:
  for f in ('PhysicalCycleLift.lean','PhysicalCycleLiftOracle.lean'):
   data=(clone/'YangMills/RG'/f).read_bytes();(OUT/f).write_bytes(data)
   need(not re.search(rb'\b(sorry|axiom)\b',data),'candidate sorry/axiom token')
- run('lean-version',['lean','--version'],clone,600);run('mathlib-cache',['lake','exe','cache','get'],clone,1800)
+ run('lean-version',['lean','--version'],clone,600)
+ # Same official version/URL used by pinned Mathlib; bounded HTTP-error retries.
+ asset=OUT/'leantar-0.1.16.tar.gz';cache=pathlib.Path.home()/'.cache/mathlib';cache.mkdir(parents=True,exist_ok=True)
+ url='https://github.com/digama0/leangz/releases/download/v0.1.16/leantar-v0.1.16-x86_64-unknown-linux-musl.tar.gz'
+ run('leantar-download',['curl','--fail','--retry','3','--retry-all-errors','--retry-delay','2','--max-time','90','-L',url,'-o',str(asset)],timeout=420)
+ need(asset.read_bytes().startswith(b'\x1f\x8b'),'official asset is not gzip')
+ report['leantar_asset_sha256']=sha(asset)
+ run('leantar-extract',['tar','-xzf',str(asset),'-C',str(cache),'--strip-components=1'],timeout=60)
+ (cache/'leantar').replace(cache/'leantar-0.1.16')
+ run('leantar-version',[str(cache/'leantar-0.1.16'),'--version'],timeout=60)
+ run('mathlib-cache',['lake','exe','cache','get'],clone,1800)
  run('build',['lake','build','YangMills.RG.PhysicalCycleLift'],clone,1200)
  oracle=run('oracle',['lake','env','lean','YangMills/RG/PhysicalCycleLiftOracle.lean'],clone,300)
  validator=OUT/'oracle-validator.py';validator.write_text(VALIDATOR);results=[]
