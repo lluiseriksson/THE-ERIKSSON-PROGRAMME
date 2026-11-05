@@ -1,0 +1,107 @@
+Finite flat energy definitions and the exact subsharp penalty threshold
+Research and manuscript integration note unit151
+
+This note supplies the missing paper definitions behind Eq.(9) of the grouped companion and derives an exact finite penalty threshold at c=19/5 for its same actual observation. It is a technical addition to the existing dossier, not a separate paper. The previous14-page PDF and its first model report remain unchanged. This note has no external assessment or inherited score.
+
+A. Actual finite definitions and cross cancellation
+
+Let X=(Z/nZ)^D, with counting inner product, V a real Euclidean space, and A=(A_i(x)) an actual V-valued one-cochain. All translations are periodic. Define
+  D_i^+ f(x)=f(x+e_i)-f(x),
+  D_i^- f(x)=f(x)-f(x-e_i),
+  curl_ij A(x)=D_i^+ A_j(x)-D_j^+ A_i(x), i<j,
+  div^- A(x)=sum_i D_i^- A_i(x),
+  H_0(A)=sum_{i<j,x} ||curl_ij A(x)||^2
+          +sum_x ||div^- A(x)||^2.
+There is exactly one curl term per unordered pair, no hidden factor1/2.
+For w(i,x,l), define the actual componentwise weighted repair
+  R_w(A)=sum_{i,x,l} w(i,x,l)||D_i^+ A_l(x)||^2.
+In operator language this is <A,G*WG A>, with G the stacked actual forward gradient; its displayed sum is its definition on paper, not a supplied comparison certificate.
+
+Periodic reindexing proves, for every actual f,h,
+  sum_x <D_i^+ f(x),h(x)> = -sum_x <f(x),D_i^- h(x)>.
+Forward/backward shifts commute coordinatewise, including i=j. Applying the displayed summation twice and real symmetry gives
+  sum_x <D_i^+ f,D_j^+ g>
+    =sum_x <D_j^- f,D_i^- g>.
+Also sum_x ||D_i^- f||^2=sum_x ||D_i^+ f||^2 by translation.
+For f=A_j,g=A_i the cross term of curl_ij therefore equals the corresponding divergence cross term. Expanding curl squares supplies all off-diagonal gradient norms and the negative cross terms. Expanding divergence supplies the diagonal norms and the opposite cross terms. They cancel pair by pair, proving on ALL cochains
+  H_0(A)=sum_{i,x,l}||D_i^+ A_l(x)||^2.
+No divergence constraint, lift ansatz or coefficient assumption enters this identity.
+
+For the actual n=4 example, alpha=(1,6,4,1) and w(i,x,l)=alpha[x_1]-1. Consequently
+  H(A):=H_0(A)+R_w(A)
+       =sum_{i,x,l} alpha[x_1]||D_i^+ A_l(x)||^2.
+This is obtained by adding repair to the UNWEIGHTED identity. It does not replace curl/divergence by coefficient-weighted curls or move a varying weight through summation by parts. No such weighted Hodge identity is assumed.
+
+B. Exact scalar strict-margin threshold
+
+Use exactly the previous four-cycle energy and complete two-block normalized observation:
+  E(u)=(u_1-u_0)^2+6(u_2-u_1)^2
+       +4(u_3-u_2)^2+(u_0-u_3)^2,
+  O(u)=((u_0+u_1)^2+(u_2+u_3)^2)/2,
+  |u|^2=sum_t u_t^2, c=19/5.
+Every u in R^4 has the UNIQUE decomposition
+  u=m(1,1,1,1)+(x,-x,y,-y)+(delta/2,delta/2,-delta/2,-delta/2),
+where m=sum_t u_t/4, x=(u_0-u_1)/2, y=(u_2-u_3)/2,
+and delta=(u_0+u_1-u_2-u_3)/2.
+Thus
+  |u|^2=4m^2+2x^2+2y^2+delta^2,
+  O(u)=4m^2+delta^2,
+  E(u)=11x^2+14xy+23y^2+7delta^2-10delta(x+y).
+Define X=x-(25/2)delta, Y=y+(75/14)delta. Direct expansion gives the universal identity, for EVERY real K,m,x,y,delta:
+  E(u)+K O(u)-(19/5)|u|^2
+   =4(K-19/5)m^2
+     +(17/5)(X+(35/17)Y)^2
+     +(84/85)Y^2
+     +(K-1138/35)delta^2.                         (S)
+The constant1138/35 is strictly greater than19/5. All coefficients on the right are nonnegative when K>=1138/35, so (S) proves sufficiency on ALL u.
+For necessity choose m=0, delta=1, x=25/2, y=-75/14, hence
+  u_*=(13,-12,-41/7,34/7).
+Then X=Y=0, O(u_*)=1, |u_*|^2=18174/49 and E(u_*)=67468/49. The defect is exactly K-1138/35. Thus
+  [forall u in R^4, E(u)+K O(u)>=(19/5)|u|^2]
+    iff K>=1138/35.                              (T)
+This proves the threshold, rather than a loose sufficient bound or a finite sample test.
+
+A second hand derivation checks the constant. The kernel residual matrix at c=19/5 is
+  M=[[17/5,7],[7,77/5]], det M=84/25>0.
+The mixed term is -2delta b^T(x,y), b=(5,5).
+M^{-1}b=(25/2,-75/14), b^T M^{-1}b=250/7.
+The residual coefficient is K+16/5-250/7=K-1138/35, agreeing with (S). This is a classical finite Schur-complement computation, not an originality claim.
+
+C. Actual full physical conclusion
+
+Take D>=3,Nc>=2,V=R^(Nc^2-1) and the SAME full observation C from the companion: all normalized sums on I_0={0,1},I_1={2,3}, separately for every transverse y, physical component l and internal coordinate k. For each profile t -> A_l(t,y)_k, apply (T), and sum over all y,l,k. Their norms exhaust ||A||^2; their O-values exhaust ||CA||^2; their E-values exhaust precisely the first-direction contribution to H(A). All other derivative contributions are nonnegative since alpha>=1. Therefore K>=1138/35 implies
+  H(A)+K||CA||^2 >= (19/5)||A||^2
+on ALL actual cochains.
+Conversely lift u_* into physical component2 along x_1 and a unit internal coordinate, constant in all transverse coordinates. Its backward divergence is exactly zero. Norm, energy and complete observation norm squared each multiply by4^(D-1). Its defect is
+  4^(D-1)(K-1138/35).
+Hence the following THREE conditions are equivalent:
+  (i) K>=1138/35;
+  (ii) the fixed target19/5 inequality holds on all actual cochains;
+  (iii) it holds on all actual divergence-zero cochains.
+The implication (ii)->(iii) is restriction; (iii)->(i) follows from the explicit lift. No assumption about a supplied kernel estimate or an abstract physical embedding is used here.
+
+This resolves the strict-margin ambiguity for this particular map: the previously paired Lean counterexample at K=c=19/5 remains true, while a larger finite penalty repairs that target, exactly at1138/35. At the different SHARP kernel target c_*=(17-sqrt85)/2, the earlier analytic no-finite-K argument remains distinct and unchanged. The exact threshold(T) and its all-field consequence here are paper proofs plus exact coefficient verification, NOT part of the paired Lean148 claim.
+
+D. Provenance, falsifiers and limits
+
+Actual formal source binding0c706827dcbb11859e56bb6c7dc981eb37a02e69:
+  ComponentwiseFlatGradient.lean: flat_forward_summation_by_parts;
+    flat_commuting_cross_cancellation; flat_backward_forward_energy;
+    componentwiseWeightedRepair_energy.
+  ComponentwiseFlatHodge.lean: finite_flat_curl_div_energy;
+    componentwiseFlatGradient_eq_hodge.
+  PhysicalGaugeCochains.lean: flatGaugeHodgeK0CLM;
+    flatGaugeHodgeK0_inner_right.
+  PhysicalCycleEnergy.lean: physicalCycleRepairWeights;
+    physicalCycleLift_total_energy; full observation transport.
+  PhysicalCycleFullForm.lean: physicalCycleFourForm;
+    physicalCycleFour_total_energy_sum; paired fixed-penalty theorem.
+The dimension notation there is D=d+2, with zero-based direction0 and component1 corresponding to paper direction1 and component2. Unordered plaquette indexing is explicitly retained. Source inspection is not a new compilation; the existing paired148 record remains scoped to its existing endpoints.
+
+Exact verifier151 constructs E, O and norm from the actual four-coordinate linear forms and compares ALL polynomial coefficients against(S), using Fraction arithmetic. It also checks decomposition inversion, the rational witness and Schur data, and rejects mutations of threshold, cross sign and constant-mode coefficient in normal and optimized Python modes. It is supplementary algebra evidence, not a universal Lean theorem, independent authorship or a physical interacting result. Execution status belongs in the separate actual run record, never inferred from this prepared source.
+
+A falsifier of(S) is any nonzero exact coefficient in E+KO-c|u|^2 minus its displayed RHS. A falsifier of the actual transport would be a mismatch of the stated full observation/form definitions; the cited existing actual definitions are checked separately. No sampling over dimensions or K can substitute for this coefficient identity and its paper transport.
+
+Classical context: Carlson, Haynsworth and Markham, A Generalization of the Schur Complement by Means of the Moore–Penrose Inverse, SIAM J.Appl.Math.26(1974),169–175, doi10.1137/0126013. Publisher abstract and bibliographic metadata inspected in unit150; full paywalled article not read. The elementary block elimination above carries the actual argument; no claim that this exact constant is new in the literature and no exhaustive novelty search claim.
+
+Original unrestricted actual-rectangle critical inverse-moment problem remains OPEN. Supplied geometry is not derived from moments. Common-refinement route remains STOPPED after3 no-advance units; this fixed-map computation does not restart it. No optimal-rank theorem, all-partition refutation, interacting Hessian or continuum mass gap follows. PR29 remains20/41,TermSource=0.
