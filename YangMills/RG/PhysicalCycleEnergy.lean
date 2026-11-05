@@ -31,7 +31,7 @@ theorem physicalCycleLift_gradient_norm_sq (hNc : 2 ≤ Nc) (u : ZMod n → ℝ)
   classical
   by_cases hl : l = Fin.succ 0
   · subst l
-    simp only [physicalCycleLift, torusPhysicalEmbed, if_pos rfl, PiLp.toLp_apply]
+    simp only [physicalCycleLift, torusPhysicalEmbed, if_pos rfl, PiLp.toLp_apply, if_true]
     rw [← sunComplexPlane_sub, sunComplexPlane_norm_sq]
     by_cases hi : i = 0
     · subst i
@@ -41,7 +41,7 @@ theorem physicalCycleLift_gradient_norm_sq (hNc : 2 ≤ Nc) (u : ZMod n → ℝ)
           finBoxZModEquiv (d + 2) n x 0 := by
         simp [finBoxZModEquiv_shift, Pi.add_apply, Pi.single_apply, Ne.symm hi]
       simp [cycleCoordinateProfile, hs, hi]
-  · simp [physicalCycleLift, torusPhysicalEmbed, hl]
+  · simp_all [physicalCycleLift, torusPhysicalEmbed]
 
 noncomputable def physicalCycleRepairWeights (alpha : ZMod n → ℝ) :
     PhysicalGradientIndex (d + 2) n → ℝ :=
@@ -86,8 +86,10 @@ theorem physicalCycleLift_total_energy (hNc : 2 ≤ Nc) (rho : SUNAdjointModel N
   rw [hsum]
   calc
     _ = ∑ x : Fin (d + 2) → ZMod n, alpha (x 0) * (u (x 0 + 1) - u (x 0)) ^ 2 := by
-      exact Equiv.sum_comp (finBoxZModEquiv (d + 2) n) _
-    _ = _ := cycleCoordinate_sum _
+      exact Equiv.sum_comp (finBoxZModEquiv (d + 2) n)
+        (fun x : Fin (d + 2) → ZMod n => alpha (x 0) * (u (x 0 + 1) - u (x 0)) ^ 2)
+    _ = _ := cycleCoordinate_sum (d := d) (n := n)
+      (fun t : ZMod n => alpha t * (u (t + 1) - u t) ^ 2)
 
 noncomputable def cycleInternalZero (hNc : 2 ≤ Nc) : Fin (Nc ^ 2 - 1) :=
   ⟨0, by
@@ -105,7 +107,7 @@ theorem physicalCycleLift_fibre_coordinate (hNc : 2 ≤ Nc)
   · subst l
     simp [physicalCycleLift, torusPhysicalEmbed, cycleCoordinateProfile,
       sunComplexPlane, EuclideanSpace.single_apply, cycleInternalZero, Fin.ext_iff]
-  · simp [physicalCycleLift, torusPhysicalEmbed, hl]
+  · simp_all [physicalCycleLift, torusPhysicalEmbed]
 
 noncomputable def actualCycleFullObservation {B : Type*} [Fintype B]
     (I : B → Finset (ZMod n)) (A : PhysicalGaugeOneCochain (d + 2) n Nc) :
@@ -127,8 +129,8 @@ theorem actualCycleFullObservation_lift_norm_sq {B : Type*} [Fintype B]
       if z.2.1 = Fin.succ 0 then if z.2.2 = cycleInternalZero hNc then
         ((∑ t ∈ I z.1.1, u t) / Real.sqrt ((I z.1.1).card : ℝ)) ^ 2 else 0 else 0 := by
     by_cases hl : z.2.1 = Fin.succ 0 <;> by_cases hk : z.2.2 = cycleInternalZero hNc
-    all_goals simp [actualCycleFullObservation, physicalCycleLift_fibre_coordinate,
-      hl, hk, Real.norm_eq_abs, sq_abs]
+    all_goals simp_all [actualCycleFullObservation, physicalCycleLift_fibre_coordinate,
+      Real.norm_eq_abs, div_pow, sq_abs]
   simp_rw [hp]
   simp [Fintype.sum_prod_type, Fintype.card_fun, ZMod.card, Finset.mul_sum]
 
