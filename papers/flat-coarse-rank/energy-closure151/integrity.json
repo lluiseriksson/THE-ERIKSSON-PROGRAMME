@@ -1,0 +1,17 @@
+{
+  "all_inner_hashes_verified": true,
+  "optimized_real_mutations_rejected": 3,
+  "actual_exits": [
+    0,
+    0
+  ],
+  "members": 10,
+  "normal_real_mutations_rejected": 3,
+  "ZIP_sha256": "2ed1816832d0de01e4b0db338a55180f0a0a586156127281f4286f3780a7b005",
+  "manifest_entries": 9,
+  "optimized_accepted": 5,
+  "output_sha256": "c2f56618628ec615233340713aa83090a05a1009db19eb0318033a5c0c1e2616",
+  "normal_accepted": 5,
+  "windows_math_executed": false,
+  "paired_reproduction": false
+}

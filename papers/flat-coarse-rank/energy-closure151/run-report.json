@@ -1,0 +1,50 @@
+{
+  "Lean_verified": false,
+  "checker_result": {
+    "Lean_verified": false,
+    "accepted": 5,
+    "actual_nonzero_monomials": 9,
+    "all_physical_dimensions": "Paper transport; not executed by this scalar checker",
+    "independent_authorship": false,
+    "method": "Universal exact rational polynomial coefficient comparison, not sampling",
+    "real_mutations_rejected": 3,
+    "status": "EXACT_COEFFICIENT_IDENTITY_AND_WITNESS_VERIFIED",
+    "target": "19/5",
+    "threshold": "1138/35",
+    "variables": [
+      "m",
+      "x",
+      "y",
+      "delta",
+      "K"
+    ],
+    "witness": [
+      "13",
+      "-12",
+      "-41/7",
+      "34/7"
+    ]
+  },
+  "driver_seconds": 0.5610519240000258,
+  "finished_utc": "2026-11-05T23:33:08.418908+00:00",
+  "outputs_match": true,
+  "paired_reproduction": false,
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "python": "3.13.18 (main, Oct 26 2026, 15:28:15) [GCC 13.3.0]",
+  "source_sha": "564b84230478cb8d40505cb67985470e9bae699d",
+  "started_utc": "2026-11-05T23:33:07.859142+00:00",
+  "status": "EXACT_IDENTITY_NORMAL_OPTIMIZED_PASS",
+  "steps": [
+    {
+      "exit": 0,
+      "mode": "normal",
+      "seconds": 0.038640200000031655
+    },
+    {
+      "exit": 0,
+      "mode": "optimized",
+      "seconds": 0.18970497600003
+    }
+  ],
+  "unit": 151
+}
