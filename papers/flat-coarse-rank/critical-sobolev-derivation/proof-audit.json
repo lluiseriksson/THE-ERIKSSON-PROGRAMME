@@ -47,5 +47,8 @@
   "unit": 137,
   "objective": "Discharge the external balanced-cube endpoint input by a complete finite derivation",
   "primary_pdf_sha256": "c991202673c1214430f479b7cb5966a6f03360a07af1cf6a2f6ec432fdf09d10",
-  "proof_sha256": "d9ce7aca21aa2d4288e8ffb30bfbd91fceaf743c7c3f389b2c1300e21c9da439"
+  "proof_sha256": "daac3f2df4431212b145171f8db072d09ecd4690b6998b61f067fb4d7959f016",
+  "proof_hash_scope": "GitHub canonical LF bytes",
+  "windows_raw_source_sha256": "d9ce7aca21aa2d4288e8ffb30bfbd91fceaf743c7c3f389b2c1300e21c9da439",
+  "remote_source_verified": true
 }
