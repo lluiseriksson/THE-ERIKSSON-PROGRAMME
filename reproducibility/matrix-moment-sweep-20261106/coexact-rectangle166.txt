@@ -1,0 +1,135 @@
+Base57630e3691babda4385919a5bdad0edc1cf95c00. Unit166,6November2026.
+Actual flat physical/coexact transfer of closed positive rectangle obstruction165.
+Grouped supporting result, not a separate paper or claim of Yang-Mills closure.
+
+1. Actual dictionary, not an assumed physical comparison
+Fix D3,n2,Nc>=2, the trivial gauge background, counting inner products and
+unit-spacing cyclic forward differences D_i=T_i-I. The actual real internal
+space SUNLieCoord Nc has dimension Nc^2-1; choose an actual coordinate unit e.
+A one-cochain is A_j(x) in that internal space, j=1,2,3. Actual flat curl
+has unordered plaquette entries (d1 A)_ij=D_i A_j-D_j A_i for i<j; the
+constraint is backward divergence sum_j(A_j-T_j^-1 A_j). No gauge quotient
+or abstract scalar-to-physical certificate is assumed.
+
+For EVERY physical cochain the finite periodic integration-by-parts identity
+ ||d1 A||^2+||div A||^2=sum_(i,j,x)||D_i A_j(x)||^2
+follows by expanding unordered curl squares: mixed terms cancel the cross
+terms of divergence after commuting translations. The diagonal divergence
+terms equal corresponding forward energies by a cyclic change of variable.
+This exact all-cochain identity, with no coefficient comparison, is already
+the actual repository theorem componentwiseFlatGradient_eq_hodge in
+YangMills/RG/ComponentwiseFlatHodge.lean (lines109 onward at base57630e36).
+actualTotalStiffness_energy in YangMills/RG/ActualPacketSupportEnvelope.lean
+(line33 onward at the same source) adds the actual componentwise repair.
+Both complete displayed proofs/definitions were read this unit; no new Lean
+execution or change of their historical verification referents is claimed.
+
+Choose a(x)=6+(-1)^x1+4(-1)^x2 and actual repair coefficient
+ w(i,(x,j))=a(x)-1 for EVERY gradient direction i and field component j.
+Thus w>=0, a in{1,3,9,11},mean a=6,1<=a<=12. The actual Hodge-plus-repair
+quadratic form is exactly
+ Q_w(A)=||d1 A||^2+||div A||^2+sum_(i,j,x)w(x)||D_i A_j(x)||^2
+       =sum_(i,j,x)a(x)||D_i A_j(x)||^2.
+In an orthonormal internal coordinate basis this is the direct sum of
+3(Nc^2-1) copies of scalar L_a from165. This equality is proved on actual
+cochains, not stipulated in a new structure. A nontrivial-background or
+interacting Hessian identity is NOT inferred from it.
+
+2. Actual componentwise rectangular observation and kernel lower bound
+For the four disjoint rectangles R_yz={0,1}x{y}x{z}, define
+ (C A)_(y,z,j)=(A_j(0,y,z)+A_j(1,y,z))/sqrt2,
+with its actual Euclidean internal coordinates. This is a coisometry from
+all physical cochains to dimension12(Nc^2-1), with C*C the componentwise
+pair-average projection. Its restriction to divergence-free/coexact fields
+need not be coisometric; the argument below does NOT assume otherwise.
+
+The FULL kernel consists of fields odd in x1, component by component.
+The scalar Walsh compression proof165 gives Q_w(A)>=16||A||^2 there,
+since its two blocks are [[24,16],[16,48]] and[[48,32],[32,72]]. Summing
+over all j/internal coordinates proves the same bound on the full physical
+kernel, and hence on its actual divergence-free or coexact subset.
+The first shifted block at16 is PSD rank1; the second is positive definite
+with first pivot32 and determinant768. No comparison with an unidentified
+physical low band or assumed rank is used.
+
+3. Explicit coexact fields and potentials
+Let chi_S(x)=(-1)^(sum_(i in S)xi)/sqrt8, with norm1 in counting L2.
+Set scalar u=chi_2 and v=-2chi_1+chi_12, both independent of x3, and
+define ACTUAL fields U_3=u e,V_3=v e, U_1=U_2=V_1=V_2=0.
+Their divergence is zero by the actual backward formula (the only possibly
+nonzero component is3 and is invariant under its own backward shift).
+Embedding f as the3rd component times e is isometric, and the proved form
+identity gives Q_w(U+tV)=Q_a(u+tv), not an assumed domination.
+
+There is a stronger exact coexactness witness. For unordered2-cochains
+define B^U_23=-(chi_2/2)e, all other entries0; define
+ B^V_13=(chi_1-chi_12/2)e, all other entries0.
+At side2, D_i*=T_i^-1-I=T_i-I. Taking the actual adjoint of
+(d1 A)_ij=D_i A_j-D_j A_i gives a contribution D_i*B_ij in component j
+and -D_j*B_ij in component i. D_2*chi_2=-2chi_2 and
+D_1*chi_1=D_1*chi_12=-2 times the character, while D_3* of both
+displayed potentials is0. Therefore d1*B^U=U and d1*B^V=V.
+These formulas account for the SINGLE unordered plaquette copy; inserting
+a duplicated (i,j)/(j,i) sum would change the normalization and is not used.
+Consequently EVERY U+tV is in the actual range of d1*, not merely in the
+divergence kernel. No assumption of an abstract Hodge decomposition is needed.
+
+4. Failure at16, feasible targets below16, and nonlinear extension
+From165 and the isometric dictionary,
+ CV=0,||V||^2=5,||CU||^2=||U||^2=1,
+ Q_w(V)=80,Q_w(U)=24, and <U,(L_w-16I)V>=4.
+For any k>=0 and real t the actual augmented physical form is
+ Q_w(U+tV)-16||U+tV||^2+k||C(U+tV)||^2=8+8t+k.
+Choosing t=-(8+k)/8-1 makes it -8. Scaling this coexact field towards0
+proves failure of every locally quadratic penalty <=k||y||^2 for the
+actual means C at target16. This includes the divergence-free domain.
+
+More generally if F(0)=0 and DF(0)=C restricted to the actual divergence-free
+or coexact domain, local coercivity and Phi(y)<=k||y||^2 would imply the
+same necessary quadratic inequality after replacing A by sA and s->0.
+The explicit witnesses disprove it. No claim is made about all other
+derivatives or all other partitions of this output dimension.
+
+For0<c<16, full-kernel strict positivity and the classical Schur criterion
+on the ambient finite cochain space give some finite penalty for C globally;
+restriction yields the required inequality on coexact fields as well. For
+c>16 the coexact V already fails. Hence even in the coexact sector16 is
+the nonattained supremum of attainable constants for these prescribed means.
+On span{U,V/sqrt5}, writing delta=16-c, PSD forces
+ k>=max(0,16/(5delta)-8-delta).
+This quantitative obstruction is valid on the actual coexact sector.
+
+5. Hypothesis bookkeeping, primary sources and assessment
+What is now proved rather than supplied: an actual physical form equality
+for this family, actual isometry, actual normalized componentwise means,
+global kernel inequality, divergence vanishing and actual coexact potentials.
+Thus the auxiliary warning in165 'physical cochain transfer not yet proved'
+is discharged for THIS trivial-background unit-spacing example. Historical165
+records and its PDF/context are preserved; no retroactive certificate upgrade.
+Strict margin or derived critical-kernel compatibility still cannot be
+dropped. This refutes a concrete prescribed-observation sufficiency shortcut,
+not the unrestricted critical-moment rank-order existence conjecture.
+All fixed inverse moments are finite in this one size; no unbounded-size
+violating family or lack of another good rectangular partition is proved.
+For derivative nD_i at n2, all energies/targets scale by4; unit-spacing16
+becomes physical-spacing64. The constraints/means/coexact membership persist
+under nonzero scalar derivative scaling, with rescaled potentials.
+
+The general singular Schur mechanism is classical; primary author exposition
+checked165: Higham,1June2023,Theorem1 generalized Schur complement,
+https://nhigham.com/2023/06/01/what-is-the-schur-complement-of-a-matrix/ .
+The present contribution is the explicit actual flat coexact adapter and
+boundary witness, not a new Hodge or Schur theorem or a verified originality
+priority. No interacting gauge-field, continuum or physical mass-gap claim.
+PR29=20/41,TermSource0; original positive rectangle question OPEN, common-
+refinement route STOPPED3. This auxiliary transfer is CLOSED by the displayed
+construction, not a second active research question or a standalone paper.
+
+Model assessments and review context: same continuing Codex preparing session;
+exact backend identifier not exposed. No independent/blinded model audit,
+human peer review, numerical score, new Lean theorem/build or new exact-PDF
+assessment. Earlier154/164/165 assessments do not transfer to this source.
+Numerical diagnostics, if executed, must separately check actual curl/divergence
+and repair stencils, full matrix identity, real potentials and true mutations
+in own Colab Linux. Merely reusing165's scalar output would not verify this
+new dictionary. Keep this result grouped with164/165 before manuscript update.
