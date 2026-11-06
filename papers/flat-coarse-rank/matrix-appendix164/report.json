@@ -1,0 +1,73 @@
+{
+  "attempt": "B",
+  "child_maxrss_kib": 127592,
+  "compute_units_billed": null,
+  "elapsed_seconds": 104.36770951099993,
+  "external_model_score": null,
+  "finished_utc": "2026-11-06T20:28:46.234806+00:00",
+  "gpu_environment": "",
+  "independent_review": false,
+  "layout_warnings": [],
+  "page_count": 6,
+  "pdf_bytes": 347708,
+  "pdf_sha256": "0fa265ea16de3a775ca68f4b5243e0019e6d13fd98c258af5c96438016c1684a",
+  "pdfinfo": "Title:           Matrix gradients and signed channel interactions\nSubject:         Consolidated draft appendix to the coarse information manuscript\nKeywords:        finite gradients, inverse moments, spectral repair, effective resistance\nAuthor:          Lluis Eriksson\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Fri Nov  6 00:00:00 2026 UTC\nModDate:         Fri Nov  6 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           6\nEncrypted:       no\nPage size:       595.276 x 841.89 pts (A4)\nPage rot:        0\nFile size:       347708 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "pdflatex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "published": false,
+  "python": "3.13.18",
+  "source_sha": "95c6259c4f4a66f177879064551ed579bb30fa8f",
+  "started_utc": "2026-11-06T20:27:01.867133+00:00",
+  "status": "PDF_RENDERED_PENDING_VISUAL_REVIEW",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "apt-update",
+      "seconds": 7.975409673999934
+    },
+    {
+      "exit_code": 0,
+      "label": "apt-install",
+      "seconds": 91.0188603470001
+    },
+    {
+      "exit_code": 0,
+      "label": "pdflatex-version",
+      "seconds": 0.004314448999934939
+    },
+    {
+      "exit_code": 0,
+      "label": "poppler-version",
+      "seconds": 0.043695385999967584
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-first",
+      "seconds": 0.6810008410000137
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-final",
+      "seconds": 0.6868850700000166
+    },
+    {
+      "exit_code": 0,
+      "label": "pdfinfo",
+      "seconds": 0.019653975999972317
+    },
+    {
+      "exit_code": 0,
+      "label": "pdftext",
+      "seconds": 0.07709253299992724
+    },
+    {
+      "exit_code": 0,
+      "label": "render-pages",
+      "seconds": 3.0429959980000376
+    }
+  ],
+  "tex_git_LF_sha256": "51643b780567c255202f9c93888cbae2ca47f7c1ef2b16beaf7d9be1634239f5",
+  "unit": 164,
+  "visual_review": "PENDING"
+}
