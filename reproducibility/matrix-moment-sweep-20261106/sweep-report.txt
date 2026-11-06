@@ -1,0 +1,123 @@
+Base: 88f31a1981b757b9240a9076e2012545066b9028
+6 November 2026, unit158. A bounded new sweep, not an exhaustive internet audit.
+
+COVERAGE AND DEDUPLICATION
+
+The authenticated repository catalogue returned102 repositories (limit1000).
+Every name/description is indexed locally. Current README source cards were
+fetched for28 mathematical/physics research repositories, each with its Git
+blob SHA. Backup mirrors and unrelated applications were not counted as new
+research outputs. READMEs describe claims and evidence; they are not proof
+verification. The local AIRR tree contains267 metadata files, of which266
+name Eriksson, representing234 distinct record IDs. These are catalogue
+records, not234 newly accepted or newly audited papers. The legacy import
+snapshot contains135 ai.viXra records, with title/abstract/version/source URLs;
+these overlap AIRR and MUST NOT be added as135 additional discoveries.
+
+The full machine-readable inventories and source cards are retained in
+D:/Datos/the-eriksson-programme/autonomia/evidencia-158/. The large catalogue
+is a local snapshot, not a claim to have downloaded/audited every PDF or all
+repository branches. The active main SHA was separately checked remotely.
+The two other AIRR project ESTADO.json files were read, reconciled, and their
+original hashes rechecked. No state or chat belonging to them was changed.
+
+PRIMARY-SOURCE CROSSWALK AND DECISIONS
+
+1. Critical finite Hodge/coarse-information dossier
+   Existing source: critical-inverse-moment-spectral-threshold.md, unit102,
+   explicitly leaves matrix-valued/anisotropic coefficients outside scope.
+   Primary input: Frank, arXiv:1206.3325v1, Theorem3.1 (FULL statement checked),
+   general measure spaces and matrix-valued multipliers. This is stronger
+   than the scalar special case previously used. The accompanying derivation
+   now treats full SPD gradient matrices, arbitrary site-dependent eigenbases,
+   and proves the low-band bound from the trace inverse moment. The proof
+   includes square padding, zero modes, ordinary multiplicities, and the exact
+   finite Fourier normalization. Status: analytic adapter, not Lean/audit/PDF
+   closure and not a new Cwikel principle. This is the one result developed
+   beyond catalogue/planning in this sweep; it belongs in the existing dossier.
+
+2. Unrestricted critical rectangular means: retain the real gap
+   Primary: Kesseboehmer--Niemann, arXiv:2312.16644v2, Sections1.1-1.5,
+   Theorems1.4/1.8 and Remark1.7 (FULL relevant definitions checked).
+   Their principal algorithm works with dyadic cubes and a specified monotone
+   set function; asymptotic partition exponents are not automatically uniform
+   finite constants over all our coefficient profiles. Existing unit103 already
+   obstructs the full translated cube-tree mechanism. Merely citing this paper
+   cannot rescue that route. Remark1.7 identifies a different aligned-cube
+   covering literature, but neither a bounded-overlap cover nor a spectral
+   width is an actual disjoint rectangular mean partition with the needed
+   energy estimate. No rectangle theorem is imported. The common-refinement
+   counter is not reset. This source supplies a precise hypothesis audit, not
+   a solved endpoint or an invented negative theorem about all rectangles.
+
+3. Degenerate-conductance Moser iteration
+   Primary: Andres--Deuschel--Slowik, arXiv:1306.2521v5, Theorem1.3 and
+   Section1.3 (FULL conditions checked). The requirement is 1/P+1/Q<2/D.
+   Even bounded upper conductances (P=infinity) require Q>D/2. At our exact
+   critical Q=D/2 the inequality becomes equality; the displayed Moser gain
+   becomes1. Therefore THIS theorem/iteration does not close our endpoint.
+   It concerns an ergodic random environment/invariance principle, while the
+   programme asks for all deterministic finite profiles. A new deterministic
+   estimate would have to be proved, rather than deleting those assumptions.
+   This is a rejected black-box implication, not a refutation of our conjecture.
+
+4. Finite-sample spectral certificates + Hausdorff satellite
+   Current README cards inspected in both repositories. They distinguish a
+   finite support incompatibility test from a positive uniform gap certificate.
+   Tropp, arXiv:1501.01571, is relevant to covariance confidence methods;
+   source discovery is not a checked theorem transfer. The existing spectral
+   dossier already optimizes witnesses inside a simultaneous confidence set
+   and retains non-Gaussian undercoverage. Do not relabel this as a new robust
+   covariance theorem or infer a mass gap from finitely many successful PSD
+   tests. Potential integration is an exact replay/uncertainty pipeline only.
+   No second active research question or new paper is opened here.
+
+5. Bessel/surface family
+   Segura, arXiv:2105.02524, provides Riccati/nullcline bounds for individual
+   Bessel ratios and their products; arXiv:1606.02008 supplies related sharp
+   ratio bounds. These are primary discovery cards, not a full checked adapter.
+   The programme already has Amos consumers and killed-bridge parity barriers.
+   A single-Bessel inequality cannot erase a coupled bridge remainder. Keep
+   the surface hypotheses and old counterexamples visible. No new monotonicity
+   theorem is asserted from this title/abstract match.
+
+6. Tree/polymer family
+   Primary: Fernandez--Procacci, arXiv:math-ph/0605041, explicitly compares
+   improved abstract convergence criteria with Kotecky--Preiss. Current
+   lean-rooted-tree-polymer-expansion is an ARCHIVED final artifact v2.4.3;
+   it denies independent new general theory and leaves raw YM activities open.
+   A more efficient abstract majorant is not the missing model-specific
+   activity estimate hRpoly. No archival automation, code, or scope was changed.
+
+7. AQFT/recoverability/GKLS family
+   Current source cards inspected in AQFT, additive-GKLS, leakage and filling
+   repositories. Junge et al., arXiv:1509.07127, is a primary recovery-map
+   reference. It does not by itself provide a Davies rate lower bound, a
+   controller budget or a split-uniform continuum limit. Those are distinct
+   hypotheses already tracked in the owner's papers. No recovery-to-power
+   shortcut is declared. Further extraction is a queued source audit only.
+
+8. Riemann/Hodge/P-vs-NP and transfer satellites
+   Repository cards identify formal bookkeeping, hypothesis-explicit interfaces
+   and independent programmes. Shared resolvents, positivity or combinatorial
+   libraries are reusable tools; they are not implications among open problems.
+   The Riemann main repo has absorbed its criterion subproject, so old sibling
+   descriptions cannot be counted as two independent discoveries. The transfer
+   and OS interfaces must not be mistaken for a constructed interacting theory.
+
+WHAT THIS SWEEP PRODUCED
+
+One concrete extension is derived in matrix-gradient-extension.txt. It removes
+the scalar/shared-direction structure for the stated finite gradient family
+using the full classical operator-valued theorem, while explicitly retaining
+SPD and a substantive inverse-moment bound. The original positive rectangular
+question remains the only active new question. No signed-indefinite claim,
+spectral physical gap, continuum closure, independent priority, new external
+model rating or new PDF publication is asserted by this research supplement.
+
+Next verification is a separate exact finite noncommuting-coefficient replay
+and source audit, on this chat's own Colab Linux runtime. No runtime was opened
+in this sweep. Windows performed editing, git, file indexing and hashes only;
+the metadata indexing observation took0.778 seconds and no mathematical
+computation was executed. The current manuscript score7.6/10 belongs only to
+the already frozen ccf53e0a... PDF, never to this new supplement.
