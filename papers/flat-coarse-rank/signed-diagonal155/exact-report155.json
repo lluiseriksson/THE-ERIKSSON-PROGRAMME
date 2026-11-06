@@ -1,0 +1,27 @@
+{
+  "unit": 155,
+  "source_sha": "25affd4d01ee522b9918ebf6e2d3990f1c099366",
+  "started_utc": "2026-11-06T03:34:09.824846+00:00",
+  "steps": [
+    {
+      "mode": "normal",
+      "exit_code": 0,
+      "seconds": 0.2239175319999731
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 0,
+      "seconds": 0.4045267290000538
+    }
+  ],
+  "status": "ONE_RUNTIME_EXACT_DIAGNOSTICS_PASS",
+  "Lean": false,
+  "scope": "exact finite diagnostics; analytic proof not formal/independent review",
+  "mathematical_output_sha256": "2ccb7374296003ebcd9f8a831f05f6bd4482479f9b30bdfdd63c8695a5a5a537",
+  "normal_optimized_identical": true,
+  "identities": 6,
+  "witness_records": 48,
+  "rejected_actual_mutations_per_mode": 3,
+  "paired_fresh_clones": false,
+  "finished_utc": "2026-11-06T03:34:11.789588+00:00"
+}
