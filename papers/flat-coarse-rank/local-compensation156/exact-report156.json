@@ -1,0 +1,27 @@
+{
+  "unit": 156,
+  "source_sha": "9cde78f8e66ab875769a503fc15731e23e2fd9af",
+  "started_utc": "2026-11-06T04:42:19.213213+00:00",
+  "steps": [
+    {
+      "mode": "normal",
+      "exit_code": 0,
+      "seconds": 0.1042468259998941
+    },
+    {
+      "mode": "optimized",
+      "exit_code": 0,
+      "seconds": 0.27243924200001857
+    }
+  ],
+  "status": "ONE_RUNTIME_EXACT_NEGATIVE_BAND_PASS",
+  "Lean": false,
+  "paired_fresh_clones": false,
+  "scope": "exact finite diagnostics of analytic signed-extension counterexample; not a positive-scalar rectangular refutation",
+  "mathematical_output_sha256": "258e71f2e0bdf7cc039dd83471bb6b3ddabd29c86c465ef6411290d1d5ec03f8",
+  "normal_optimized_identical": true,
+  "cases": 6,
+  "actual_negative_packets": 31,
+  "rejected_actual_mutations_per_mode": 3,
+  "finished_utc": "2026-11-06T04:42:21.176120+00:00"
+}
