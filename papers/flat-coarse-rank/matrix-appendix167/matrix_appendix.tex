@@ -1,0 +1,609 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[margin=27mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\hypersetup{pdftitle={Matrix gradients and critical observations},
+pdfauthor={Lluis Eriksson},pdfsubject={Consolidated draft appendix to the coarse information manuscript},
+pdfkeywords={finite gradients, inverse moments, spectral repair, effective resistance}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\R}{\mathbb R}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\id}{\mathrm I}
+\newcommand{\Nlow}{N_{<c}}
+\DeclareMathOperator{\diag}{diag}
+\title{Matrix gradients and critical observations\\
+\large Consolidated draft on signed channels and rectangular means}
+\author{Lluis Eriksson}
+\date{7 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We consolidate finite matrix gradient estimates, spectral repair bounds and
+signed channel examples into one supporting appendix. An operator-valued
+Cwikel estimate gives an inverse moment bound with explicit counting-measure
+normalization. Finite-rank repair produces a capped moment criterion that
+admits zero and negative channels. A separate effective-resistance argument
+constructs stable signed families with uniform observation rank and penalty,
+and a small Schur matrix detects coupled instabilities. A critical rectangular mean obstruction is also transferred to actual flat coexact cochains. An explicit torus
+example shows that individually repairable channels need not remain
+repairable together by a scalar differentiable observation. The underlying
+spectral and resistance methods are classical. The statements concern the
+defined finite gradient form; they establish neither an interacting
+Yang--Mills form identity nor a continuum mass gap.
+\end{abstract}
+
+\paragraph{Status and provenance.}
+This is a grouped appendix candidate for the existing integrated manuscript,
+not a separate deposit. Its analytical sources and finite evidence are pinned
+at repository commit \texttt{1e3ede17}; full identifiers and execution records
+are in Section~\ref{sec:evidence}. The published working paper v6 and its
+assessment report 154 remain separate artifacts. This new PDF has no inherited
+assessment score, independent review or Lean certificate.
+The parent is
+\href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v6/}
+{AIRR working paper ARR-2026-7EPM3V3DP796BBRR version 6}; its unchanged PDF
+SHA256 is
+\begin{center}\scriptsize
+\texttt{ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389}.
+\end{center}
+
+\section{Actual finite objects and observation scope}
+Let $D\geq3$, $n\geq2$, $h\geq1$, $V=n^D$, $r=Dh$, and $p=D/2$.
+On $X=(\mathbb Z/n\mathbb Z)^D$ use the counting inner product. For
+$u:X\to\R^h$, define
+\[
+ du(x)=(u(x+e_i)-u(x))_{i=1}^D,\qquad
+ Q_A(u)=\sum_x du(x)^T A(x)du(x),\quad L_A=d^*A d,
+\]
+where $A(x)$ is a real symmetric $r\times r$ matrix. A channel is one local
+coefficient eigenvector, counted with multiplicity. Distinct matrices need
+not commute. All derivatives have unit spacing. A physical derivative $nd$
+requires an explicit rescaling of every energy and threshold.
+
+The number $\Nlow(L_A)$ counts all eigenvalues strictly below $c>0$,
+including negative and zero ones, with ordinary real multiplicity. Spectral
+coordinates on this low space give a real observation $C$ and penalty
+\begin{equation}\label{eq:penalty}
+ \Phi(y)=\sum_{\lambda<c}(c-\lambda)y_\lambda^2,
+ \qquad Q_A(u)+\Phi(Cu)\geq c\|u\|^2.
+\end{equation}
+This is an existence result for an actual, generally nonlocal observation.
+It does not construct the unresolved local rectangular observation.
+For signed forms, $c\|y\|^2$ alone need not be sufficient.
+
+\section{The positive matrix estimate}
+Put
+\[
+ \alpha_D=\frac D2\left(\frac D{D-2}\right)^{D-1}
+                 \left(\frac34\right)^D.
+\]
+\begin{theorem}\label{thm:positive}
+If every $A(x)$ is positive definite, then
+\begin{equation}\label{eq:positive}
+ \Nlow(L_A)\leq h+\alpha_D c^p\sum_x\tr A(x)^{-p}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+On the mean-zero space $H_0$, write $L_0=d^*d$ and $J=dL_0^{-1}$.
+For any $b\in H_0$, the flow $j_*=A dL_A^{-1}b$ has $d^*j_*=b$.
+Every other feasible flow $j=j_*+k$ has $d^*k=0$, and expansion gives
+\[
+ \langle j,A^{-1}j\rangle
+ =\langle b,L_A^{-1}b\rangle+\langle k,A^{-1}k\rangle.
+\]
+Taking the actual feasible flow $Jb$ proves
+$L_A^{-1}\leq J^*A^{-1}J$. No coefficients commute in this argument.
+
+The unitary counting Fourier transform on $r$ components has
+$L_1(\ell_2^r)\to L_\infty(\ell_2^r)$ norm $V^{-1/2}$. The symbol of $J$
+is $z(k)/\lambda(k)$ with
+$z_i(k)=e^{2\pi i k_i/n}-1$ and
+$\lambda(k)=4\sum_i\sin^2(\pi k_i/n)$; set $J(0)=0$.
+It is rectangular $r\times h$. Embed $\R^h$ isometrically in $\R^r$ by $I$
+and use the square symbol $G(k)=J(k)I^*$. Thus $\|G(k)\|=\lambda(k)^{-1/2}$
+for $k\ne0$. Writing $\mathcal F_r$ for the counting transform, the actual
+factorization is $J=\mathcal F_r^*M_G\mathcal F_r I$.
+Centered frequency representatives $b$ satisfy
+$\lambda(k)\geq16|b|^2/n^2$. Counting the cube containing
+$0<|b|<n/(4t)$ gives
+\[
+ \sup_{t>0}t^D\#\{k:\|G(k)\|>t\}\leq(3/4)^D V.
+\]
+When the radius is at most one the set is empty; otherwise
+$(2\lfloor R\rfloor+1)^D\leq(3R)^D$ suffices.
+
+Apply Frank's operator-valued Cwikel theorem~\cite[Theorem 3.1]{Frank}
+with $q=D$, $f=A^{-1/2}$, this square multiplier and counting measures.
+Its constant is $\frac D2(\frac D{D-2})^{D-1}V^{-1}$, so the displayed
+frequency $V$ cancels exactly once. It bounds the number of singular values
+of $A^{-1/2}J$ strictly above $s$ by
+$\alpha_Ds^{-D}\sum_x\tr A(x)^{-p}$. The right factor $\mathcal F_r I$ is an isometry
+and cannot increase singular-value counts. Apply min-max to the inverse
+comparison at threshold $1/c$ on $H_0$, then add the $h$ constant modes.
+Complexification of a real symmetric matrix preserves multiplicities.
+\end{proof}
+
+\paragraph{Input and interpretation.}
+The operator-valued estimate is classical; this proof fixes its finite
+normalization, padding and actual form dictionary. It is not a new general
+Cwikel theorem. A matrix arithmetic mean alone does not imply its inverse
+moment hypothesis. For the formal flat cochain application one may set
+$h=D(N_c^2-1)$, but an interacting Hessian or weighted curl/divergence form
+must first be proved equal or comparable to this $Q_A$.
+
+\section{Spectral repair and the capped budget}
+\begin{theorem}\label{thm:repair}
+Let $A(x)$ now be arbitrary real symmetric matrices. In local orthonormal
+eigenbases choose a set $S$ of channels containing all nonpositive ones.
+Let $P_S$ be their orthogonal projection and $R(S)=\rank(P_Sd)$. Then
+\begin{equation}\label{eq:repair}
+ \Nlow(L_A)\leq\min\left\{hV,\ h+R(S)+
+          \alpha_Dc^p\sum_{j\notin S}\lambda_j^{-p}\right\}.
+\end{equation}
+Writing $\nu_0$ for the total multiplicity of nonpositive local eigenvalues,
+one consequently has
+\begin{equation}\label{eq:capped}
+ \Nlow(L_A)\leq\min\{hV,\ h+F_c(A)\},\quad
+ F_c(A)=\nu_0+\sum_{\lambda_j>0}
+                  \min\{1,\alpha_Dc^p\lambda_j^{-p}\}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Replace selected eigenvalues by $T$ larger than zero and all of them.
+The resulting field $A_T$ is positive definite and
+\[
+ L_{A_T}-L_A=d^*P_S(T\id-A)P_Sd\geq0,
+ \quad\rank(L_{A_T}-L_A)=R(S).
+\]
+The rank equality follows because $T\id-A$ is strictly positive on
+$\im P_S$. Finite-rank min-max gives
+$\Nlow(L_A)\leq\Nlow(L_{A_T})+R(S)$: intersect the low space of $L_A$
+with the kernel of the update and the orthogonal complement of the low
+space of $L_{A_T}$. A dimension larger than $R(S)$ would give a nonzero
+vector whose identical quadratic forms are both strictly below and at least
+$c\|u\|^2$. Theorem~\ref{thm:positive} and $T\to\infty$ prove
+\eqref{eq:repair}. For \eqref{eq:capped}, use $R(S)\leq|S|$ and select
+all positive channels with $\alpha_Dc^p\lambda_j^{-p}\geq1$ as well.
+\end{proof}
+
+\paragraph{A strict extension of the full moment criterion.}
+Let $m\geq1$ and $T_m=\max\{1,V/(1+m)^p\}$. If $F_c(A)\leq KT_m$,
+then $\Nlow(L_A)\leq(h+K)T_m$. Every former SPD budget
+\[
+ \frac1{rV}\sum_x\tr((mA(x)^{-1})^p)\leq M
+\]
+implies this capped budget, with $K=2^p\alpha_Dc^prM$.
+Conversely choose $m=n^2$, one actual diagonal edge channel
+$\epsilon=n^{-4}$, and all others $m$. Now $T_m=1$ and
+$F_c(A)\leq1+\alpha_Dc^pr$, whereas the normalized full inverse moment is
+at least $n^{2D}/r$ and diverges. These bounds are derived for this explicit
+family; no new moment bound is assumed.
+
+\paragraph{Sparse contamination and its limitation.}
+Selecting every channel with $\lambda<m$ gives
+\[
+ \Nlow(L_A)\leq h+R_m+\alpha_Dc^prVm^{-p},
+ \qquad R_m=\rank(\boldsymbol1_{(-\infty,m)}(A)d).
+\]
+An actual selected-channel count $k_m\leq KT_m$ suffices since $R_m\leq k_m$.
+If $A(x)\geq m\id$ outside a specified set $B$, then $k_m\leq r|B|$.
+Neither condition follows from an arithmetic mean. This particular
+prescribed-threshold count criterion does not subsume every full moment
+family: $A=(m/2)\id$ has normalized inverse moment $2^p$ but every channel
+lies below $m$. The two particular sufficient criteria are incomparable;
+the general capped criterion \eqref{eq:capped} does include the old one.
+
+\paragraph{Actual rank and unavoidable costs.}
+For diagonal direction/component channels the selected rows are graph
+incidences. If $\kappa_a$ counts all components, including isolated vertices,
+of the selected-edge graph for component $a$, then
+$R(S)=\sum_a(V-\kappa_a)$: its kernel consists precisely of fields constant
+on those components. Parallel rows at $n=2$ do not change that kernel.
+This formula is not applied to rotated local eigenchannels.
+Isolating $q$ nonadjacent vertices by zeroing their incident edges gives
+at least $q+1$ kernel modes. Replacing these zeros by
+$0<\epsilon<c/(2D)$ yields a $q$-dimensional strict low subspace of delta
+functions. The defect-count cost cannot simply be deleted.
+
+In \eqref{eq:penalty}, a generic bound is $K\leq c+4Db$ with
+$b=\max_x\|A_-(x)\|$, since $\|du\|^2\leq4D\|u\|^2$.
+One negative channel $-B$ with all other channels $m$, at $n\geq3,h=1$,
+has the trial vector $v=\delta_y-\delta_x$ on that edge and
+\[
+ \frac{Q_A(v)}{\|v\|^2}=-2B+(2D-1)m.
+\]
+Any normalized linear observation with penalty bounded by $K\|y\|^2$
+therefore needs $K\geq c+2B-(2D-1)m$. Sparsity alone does not bound penalty.
+
+\section{Stable signed families from actual resistance}
+This section is independent of the Cwikel input. Its mechanism is classical
+effective resistance and finite-rank congruence~\cite{Zelazo,Spielman}.
+Let $e$ be one actual direction/component row and $v=d^*e$. With all
+coefficients $m$ except this one set to $-B$, $B\geq0$,
+\[
+ H=mL_0-(m+B)vv^*,\qquad L_0=d^*d.
+\]
+On $H_0$ let $G=L_0^{-1}$. Translations and coordinate permutations make
+every scalar row leverage equal. Their sum is
+$\tr(dGd^*)=V-1$, so
+\begin{equation}\label{eq:rho}
+ \rho=v^*Gv=\frac{V-1}{DV}.
+\end{equation}
+Components decouple; the same value holds for every $h$. The $DV$ rows
+are counted individually even at $n=2$.
+
+\begin{proposition}\label{prop:phase}
+The exact threshold is $B_*=m(DV/(V-1)-1)$. On $H_0$, $H$ is positive
+definite for $B<B_*$, has one zero direction at equality, and has exactly
+one negative direction above it. If $m=n^2$, $B=\theta m$ and
+$0\leq\theta<D-1$, its mean-zero gap is at least
+\[
+ g=16(D-1-\theta)/D>0.
+\]
+For every $0<c\leq g$, the normalized mean observation
+$C(u)=V^{-1/2}\sum_xu(x)\in\R^h$ and $\Phi(y)=c\|y\|^2$ give coercivity
+with optimal rank $h$, uniformly in $n$.
+\end{proposition}
+\begin{proof}
+Congruence by $G^{1/2}$ gives $m\id-(m+B)ww^*$ with $\|w\|^2=\rho$,
+proving the phase claim. The equality witness is $Gv$.
+Cauchy--Schwarz in the $L_0$ energy gives
+$|v^*u|^2\leq\rho\langle u,L_0u\rangle$, hence
+$H\geq[m-(m+B)\rho]L_0$ on $H_0$; equality holds on $Gv$.
+For the stated scaling the coefficient is at least
+$m(D-1-\theta)/D$. The actual first nonconstant Fourier eigenvalue of $L_0$
+is $4\sin^2(\pi/n)\geq16/n^2$. This proves the gap. Decompose into
+constants and $H_0$ to prove the displayed observation inequality.
+The constant kernel forces rank at least $h$.
+\end{proof}
+For $\theta>0$, negative coefficient depth grows as $\theta n^2$, yet the
+penalty is uniformly $c$. A bounded-depth hypothesis is sufficient for the
+generic estimate, not necessary for every stable signed family. The actual
+form is positive despite an indefinite coefficient field; this does not
+contradict the fixed-$m$, $B\to\infty$ penalty obstruction above.
+
+\section{Coupled channels and a nonlinear observation obstruction}
+Choose $q$ actual rows of $d$ as $Z$, and $W=\diag(w_j)>0$. The modified
+form is exactly $H=mL_0-Z^*WZ$. Define
+\[
+ \Gamma=ZGZ^*,\qquad \mathcal C=mW^{-1}-\Gamma,\quad N_0=h(V-1).
+\]
+Schur elimination of either positive diagonal block in
+$\left[\begin{smallmatrix}mL_0&Z^*\\Z&W^{-1}\end{smallmatrix}\right]$
+on $H_0\oplus\R^q$ proves
+\begin{equation}\label{eq:inertia}
+ n_-(H)=n_-(\mathcal C),\quad n_0(H)=h+n_0(\mathcal C),\quad
+ n_+(H)=N_0-q+n_+(\mathcal C).
+\end{equation}
+Indeed the two congruences give the identity
+\[
+ \operatorname{inertia}(H|_{H_0})+(q,0,0)
+ = (N_0,0,0)+\operatorname{inertia}(\mathcal C/m).
+\]
+No disjoint-cycle or independent-row assumption occurs. In particular,
+$H$ is positive semidefinite with exactly $h$ constant zeros if and only if
+$\mathcal C$ is positive definite. General signed matrix criteria preexist
+in~\cite{Chen}; our $\Gamma$ uses the positive reference inverse.
+
+\begin{example}\label{ex:coupled}
+Take $D=3,n=2,h=1,m=4$, and change the first two direction rows at one
+vertex separately or together to coefficient $-84/11$. Then
+\[
+ \Gamma=\begin{pmatrix}7/24&5/48\\5/48&7/24\end{pmatrix},
+ \quad w=128/11,\quad w/m=32/11.
+\]
+The diagonal follows from \eqref{eq:rho}; the off-diagonal Walsh sum is
+$(1/8)(1/2+1/3)=5/48$, with both forward orientations counted.
+Each single channel is below its critical magnitude $68/7$ and has full
+inertia $(7,0,1)$. Together the reduced matrix has diagonal $5/96$ and
+off-diagonal $-5/48$, so its eigenvalues are $-5/96,5/32$.
+Equation~\eqref{eq:inertia} gives joint inertia $(6,1,1)$.
+
+Each single form has mean-zero gap at least
+$16(1-(32/11)(7/24))=80/33>1$. The same scalar mean observation with
+$\Phi(y)=|y|^2$ repairs either single form at $c=1$. The joint form cannot
+be repaired by any scalar observation $F:\R^8\to\R$ differentiable at zero
+with $F(0)=0$ and $0\leq\Phi(z)\leq K|z|^2$ near zero. Its negative
+eigenvector and constant vector span a two-dimensional nonpositive space.
+The derivative of $F$ has a nonzero kernel vector $v$ there. Then
+$F(tv)=o(t)$ and $\Phi(F(tv))=o(t^2)$, whereas $Q_A(tv)\leq0$, contradicting
+coercivity at $c=1$ for small nonzero $t$.
+\end{example}
+This refutes the shortcut from individual to joint control, not the full
+matrix resistance criterion or any theorem retaining a disjoint-cycle
+hypothesis. The $q$-row perturbation also gives
+$\Nlow(H)\leq h+q$ for $0<c\leq16m/n^2$. Extra zero or negative modes
+provide the necessary rank lower bound in \eqref{eq:inertia}; they do not
+alone bound the penalty coefficient.
+
+\section{Critical constants for rectangular mean observations}
+For a disjoint partition $\mathcal P$ of a finite counting space, its
+normalized means are $(Cf)_R=|R|^{-1/2}\sum_{x\in R}f(x)$. They satisfy
+$CC^*=\id$ and $C^*C=P$, the orthogonal projection onto functions constant
+on each cell. This concrete normalization matters for the penalty.
+
+\begin{theorem}\label{thm:critical}
+Let $L=L^*$ on a finite real Hilbert space, $c>0$, and $C$ a coisometry
+onto $\R^q$, $q\geq1$. On $\mathcal K=\ker C$ and
+$\mathcal O=\im C^*$, write
+\[
+ L-c\id=\begin{pmatrix}A_0&X\\X^*&B_0\end{pmatrix}.
+\]
+A finite $k\geq0$ satisfying $L+kC^*C\geq c\id$ exists if and only if
+\begin{equation}\label{eq:compatibility}
+ A_0\geq0,\qquad X^*(\ker A_0)=0.
+\end{equation}
+When these hold, its smallest value is
+\[
+ k_{\min}=\max\{0,\lambda_{\max}(X^*A_0^\dagger X-B_0)\}.
+\]
+Here $A_0^\dagger$ is the Moore--Penrose inverse on $\mathcal K$.
+\end{theorem}
+\begin{proof}
+The restriction to $\mathcal K$ forces $A_0\geq0$. For $z\in\ker A_0$
+the augmented form at $tz+y$ has linear term $2t\langle z,Xy\rangle$
+and no quadratic term in $t$. Nonnegativity for every real $t$ forces
+$X^*z=0$. This is equivalent to $\im X\subseteq\im A_0$. Under that
+condition the full form at $z+y$ is exactly
+\[
+ \langle z+A_0^\dagger Xy,A_0(z+A_0^\dagger Xy)\rangle
+ +\langle y,(B_0+k\id-X^*A_0^\dagger X)y\rangle.
+\]
+Finite spectral decomposition proves the criterion and the minimum.
+\end{proof}
+This is the classical generalized Schur criterion~\cite[Theorem 1]{Higham},
+applied to actual means; it is not a new general matrix theorem. Strict
+positivity of $A_0$ suffices, whereas a weak bound at the target requires
+the extra compatibility in~\eqref{eq:compatibility}.
+
+\begin{example}\label{ex:rectangle}
+On $(\mathbb Z/2\mathbb Z)^3$ take the same scalar coefficient in every
+gradient direction,
+\[
+ a(x)=6+(-1)^{x_1}+4(-1)^{x_2},\qquad L=d^*ad.
+\]
+Its values are $1,3,9,11$, each twice, and its mean is $m=6$; hence
+$1\leq a\leq2m$. Choose the four actual rectangles
+$R_{yz}=\{0,1\}\times\{y\}\times\{z\}$ and
+$(Cf)_{yz}=(f(0,y,z)+f(1,y,z))/\sqrt2$.
+The best coercivity constant of $L$ on $\ker C$ is $16$, but no finite
+quadratic penalty for these means attains the same constant on the full
+space. Every $0<c<16$ is attainable. Thus the supremum $16$ is not attained.
+\end{example}
+\begin{proof}
+For $S\subseteq\{1,2,3\}$ let
+$\chi_S(x)=(-1)^{\sum_{i\in S}x_i}/\sqrt8$. These are an orthonormal real
+Walsh basis. Retain all $24$ oriented forward rows, including opposite rows
+at period two. The actual adjoint calculation gives
+\begin{align*}
+ L\chi_S={}&24|S|\chi_S
+ +4\bigl(|S|-\boldsymbol1_{1\in S}\bigr)\chi_{S\triangle\{1\}}\\
+ &+16\bigl(|S|-\boldsymbol1_{2\in S}\bigr)\chi_{S\triangle\{2\}}.
+\end{align*}
+Indeed $d_i\chi_S=-2\chi_S$ when $i\in S$, and the corresponding
+adjoint term is $2(a+T_i a)\chi_S$; absent directions contribute zero.
+In the kernel basis $(\chi_1,\chi_{12},\chi_{13},\chi_{123})$ the compression
+has the two blocks
+\[
+ \begin{pmatrix}24&16\\16&48\end{pmatrix},\qquad
+ \begin{pmatrix}48&32\\32&72\end{pmatrix}.
+\]
+After subtracting $16\id$, the first is positive semidefinite with kernel
+vector $(-2,1)$, and the second is positive definite, with first pivot $32$
+and determinant $768$. This proves the complete kernel bound, not just a
+bound on selected test vectors.
+
+Set $v=-2\chi_1+\chi_{12}$ and $u=\chi_2$. Direct evaluation gives
+\[
+ Cv=0,\quad\|v\|^2=5,\quad\|Cu\|^2=\|u\|^2=1,
+ \quad(L-16\id)v=4u,\quad\langle u,(L-16\id)u\rangle=8.
+\]
+The augmented form on $u+tv$ is therefore $8+8t+k$, negative for
+$t<-(8+k)/8$. No finite $k$ works. For $c<16$ the compressed block is
+strictly positive and Theorem~\ref{thm:critical} supplies a finite penalty;
+for $c>16$, $v$ violates coercivity already in the kernel.
+\end{proof}
+
+\paragraph{A quantitative penalty obstruction.}
+Write $\delta=16-c>0$. On the orthonormal pair $(v/\sqrt5,u)$ the
+augmented form has matrix
+\[
+ \begin{pmatrix}\delta&4/\sqrt5\\4/\sqrt5&8+\delta+k\end{pmatrix}.
+\]
+Its determinant gives the necessary bound
+\begin{equation}\label{eq:blowup}
+ k\geq\max\{0,16/(5\delta)-8-\delta\}.
+\end{equation}
+This lower bound need not equal the full optimum. It proves divergence
+as the target approaches $16$ from below without numerical extrapolation.
+If $F(0)=0$, $DF(0)=C$ and $0\leq\Phi(y)\leq k\|y\|^2$ near zero,
+local coercivity would imply $L+kC^*C\geq c\id$ by substituting $sf$,
+dividing by $s^2$ and taking $s\to0$. Higher order terms with this same
+derivative do not repair the failure at $c=16$.
+
+\section{Transfer to actual flat coexact cochains}
+The preceding obstruction also holds on the actual finite coexact domain,
+with a proved form dictionary. Fix $N_c\geq2$ and an actual coordinate unit
+$e\in\R^{N_c^2-1}$. At the trivial background, a physical one-cochain is
+$A_j(x)\in\R^{N_c^2-1}$, $j=1,2,3$, with counting inner product. Use one
+unordered plaquette copy for each $i<j$:
+\[
+ (d_1 A)_{ij}=d_iA_j-d_jA_i,\qquad
+ \operatorname{div}A=\sum_j(A_j-T_j^{-1}A_j).
+\]
+Expansion of curl squares and cyclic summation by parts cancel the cross
+terms against divergence, proving the all-cochain identity
+\[
+ \|d_1A\|^2+\|\operatorname{div}A\|^2=\sum_{i,j,x}\|d_iA_j(x)\|^2.
+\]
+These are the actual repository conventions, not a supplied comparison.
+Take the actual componentwise repair coefficient $w(i,(x,j))=a(x)-1\geq0$.
+The total Hodge-plus-repair form is consequently
+\begin{equation}\label{eq:physical-dictionary}
+ Q_w(A)=\|d_1A\|^2+\|\operatorname{div}A\|^2+
+ \sum_{i,j,x}w(x)\|d_iA_j(x)\|^2
+ =\sum_{i,j,x}a(x)\|d_iA_j(x)\|^2.
+\end{equation}
+It is a direct sum of $3(N_c^2-1)$ scalar copies. Componentwise normalized
+means on the same four bars have output dimension $12(N_c^2-1)$, and
+the whole ambient kernel has coercivity constant $16$ by the two blocks
+in Example~\ref{ex:rectangle}. Restriction to coexact fields preserves the
+inequality; coisometry on the restricted domain is not assumed.
+
+\begin{proposition}\label{prop:coexact}
+At target $16$, no finite quadratic penalty for these actual componentwise
+rectangle means supplies coercivity even on $\im d_1^*$. The same is true
+for local nonlinear observations with derivative equal to those restricted
+means and a locally quadratic penalty. On that domain every $0<c<16$ is
+attainable, and the necessary bound~\eqref{eq:blowup} still applies.
+\end{proposition}
+\begin{proof}
+Construct actual fields $U_3=ue$, $V_3=ve$ from Example~\ref{ex:rectangle},
+with all other components zero. They are isometric copies of $u,v$ and
+independent of $x_3$, so their actual backward divergence vanishes.
+More explicitly, use unordered two-cochains with only
+\[
+ B^U_{23}=-\tfrac12\chi_2 e,\qquad
+ B^V_{13}=(\chi_1-\tfrac12\chi_{12})e
+\]
+nonzero. At side two $d_i^*=T_i^{-1}-\id=T_i-\id$. The adjoint of the
+displayed curl puts $d_i^*B_{ij}$ in component $j$ and $-d_j^*B_{ij}$ in
+component $i$. Since $d_3^*B^U=d_3^*B^V=0$ and each relevant character
+has multiplier $-2$, these actual potentials satisfy $d_1^*B^U=U$ and
+$d_1^*B^V=V$. Thus the entire line $U+tV$ is coexact.
+
+Equation~\eqref{eq:physical-dictionary} and the actual means give the same
+augmented value $8+8t+k$. Scaling a violating coexact field towards zero
+also excludes locally bounded quadratic penalties and the stated nonlinear
+observations. Strict positivity on the ambient kernel supplies a finite
+penalty for every $c<16$, which can then be restricted. The coexact field
+$V$ excludes $c>16$. The same two-dimensional determinant proves the bound.
+\end{proof}
+
+\paragraph{Scope and source of the transfer.}
+The actual form identity above agrees with
+\texttt{componentwiseFlatGradient\_eq\_hodge} and
+\texttt{actualTotalStiffness\_energy} in the pinned repository, respectively
+in \path{YangMills/RG/ComponentwiseFlatHodge.lean} and
+\path{YangMills/RG/ActualPacketSupportEnvelope.lean}. Their proofs and the
+actual curl/divergence definitions were read; no new Lean compilation is
+claimed. Unit 166 checks the newly constructed physical stencils rather
+than relabelling a scalar diagnostic. For derivatives $nd_i$ at $n=2$,
+energies and targets scale by four, so $16$ becomes $64$ with rescaled
+potentials. This is finite rescaling, not a physical mass-gap claim.
+
+The example has finite inverse moments at this one size. It refutes weak
+kernel sufficiency for these prescribed rectangles at the same target;
+it does not rule out another rectangular partition with the desired rank,
+or establish an unbounded-size violation of the critical rank-order
+conjecture. Only the trivial-background form has been identified here.
+
+
+\section{Reproduction and limitations}\label{sec:evidence}
+The source repository is
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/186}{THE ERIKSSON PROGRAMME PR186},
+stacked on PR185. All paths below are under
+\texttt{reproducibility/matrix-moment-sweep-20261106/}.
+Full source for this consolidation is pinned at
+\begin{center}\small\texttt{1e3ede175efd2663f75333b3d6094fd01b0f67df}.\end{center}
+Units 162 and 163 each used two distinct own CPU allocations, four actual
+fresh sparse Git clones at one pinned source, and eight normal/optimized
+Python processes. Outputs matched within each unit. Both runtimes were
+deleted and disconnected after evidence export. Full stdout, stderr, exit
+sentinels, Git logs, exact source bytes and manifests are in the corresponding
+\texttt{evidence162-*.zip} and \texttt{evidence163-*.zip} archives.
+
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Unit & Executed source prefix & Fixture cases & Mutations per process\\
+\midrule
+162 & \texttt{f644c093} & four & seven types\\
+163 & \texttt{378e879b} & four & seven types across four cases\\
+\bottomrule
+\end{tabular}
+\end{center}
+The 163 fixtures are $(D,n,h)=(3,2,1),(3,3,1),(3,3,2),(4,2,2)$.
+They check actual Green and leverage identities, below/equal/above phase
+inertia, equality witnesses, gap and mean-observation coercivity, and coupled
+pair inertia. Unit 162 covers zero and near-zero stars, one large negative
+channel and rationally rotated local eigendirections. Every acceptance check
+raises explicitly on failure in both ordinary and \texttt{-O} execution.
+There are 28 fixture-mutation pairs per 163 process, not 28 distinct types.
+The two unit 163 recipe times were 53.83 and 29.98 seconds; requested-to-release
+times were 179.71 and 102.74 seconds. Billed compute units were not exposed.
+
+Units 165 and 166 each used two distinct own CPU allocations, four actual
+fresh pinned Git clones and eight ordinary/optimized processes. Unit 165
+checks the entire scalar torus matrix, the rectangular projection and three
+distinct mutations per process. Unit 166 constructs the actual $72\times72$
+physical matrix at $D=3,n=2,N_c=2$, with 72 unordered curl rows, 24 backward
+divergence rows and 216 gradient rows. It checks the full Hodge-plus-repair
+identity, both actual adjoint potentials, divergence zero and the rectangular
+witnesses. Four distinct physical mutations are rejected per process: omit
+divergence, double the unordered curl, reverse a potential sign and put the
+field in the wrong component. Both 166 archives have 55 verified manifest
+subjects. Their recipe times are 5.28 and 8.19 seconds; requested-to-release
+times are 46.23 and 49.10 seconds. Both runtimes were disconnected after
+export. Billed compute units remain unknown. The analytic all-$N_c$ coordinate
+embedding and nonlinear limit are not extra executed cases.
+
+Finite replay checks these finite matrices, not the universal analytical
+statements. Arbitrary $q$, unequal weights, the all-size capped-family example
+and the nonlinear derivative consequence are analytical arguments, not extra
+executed fixtures. Earlier 159 diagnostics used source downloads rather than
+fresh Git clones; their original limitation remains in their own records.
+No Lean compilation certifies this appendix. A full independently prepared
+audit of the imported Fourier adapter and the application form dictionary
+remains necessary before broader claims.
+
+\section{Model assessments and review context}
+This appendix was prepared and checked analytically in the continuing Codex
+session that prepared its sources and diagnostics. The application does not
+expose the exact backend model identity for that preparation. There is no
+claim of independence, blinding, human peer review or editorial acceptance.
+This exact new PDF has no external model assessment and no numerical score.
+An assessment of an earlier PDF does not transfer to this artifact.
+
+The retained objections are substantive: the Cwikel mechanism and Schur
+principles are classical, so independent originality is unestablished; the
+observation from spectral coordinates is generally nonlocal; sparse-count
+and full-moment criteria must not be conflated; a diagonal graph-rank formula
+does not cover rotated eigenchannels; negative depth is neither universally
+dispensable nor universally necessary; the full off-diagonal interaction must
+be retained; critical kernel compatibility cannot be omitted at the target; finite diagnostics do not prove all-size statements; and no
+interacting physical form equality has been supplied. These limits are part
+of the result, not editorial acceptance conditions represented as satisfied.
+
+The original positive critical rectangular construction remains open.
+The common-refinement route remains stopped after three unsuccessful units.
+The recorded PR29 baseline stays 20/41 with TermSource 0. This appendix adds
+supporting finite mathematical results and useful counterexamples without
+changing those records. It is a draft for consolidation, not a deposit,
+acceptance or new verified public release.
+
+\begin{thebibliography}{9}
+\bibitem{Frank} R. L. Frank, \emph{Cwikel's theorem and the CLR inequality},
+arXiv:1206.3325v1 (2012), Theorem 3.1.
+\url{https://arxiv.org/abs/1206.3325v1}.
+\bibitem{Zelazo} D. Zelazo and M. B\"urger, \emph{On the definiteness of the
+weighted Laplacian and its connection to effective resistance},
+IEEE CDC (2014), Theorem III.3.
+\url{https://arxiv.org/abs/1408.2187}.
+\bibitem{Spielman} D. A. Spielman, \emph{Spectral Graph Theory Lecture 14},
+15 October 2018, Claim 14.6.2.
+\url{https://www.cs.yale.edu/homes/spielman/561/lect14-18.pdf}.
+\bibitem{Chen} W. Chen, J. Liu, Y. Chen, S. Z. Khong, D. Wang,
+T. Ba\c{s}ar, L. Qiu and K. H. Johansson, \emph{Characterizing the positive
+semidefiniteness of signed Laplacians via effective resistances},
+IEEE CDC (2016), pp. 985--990.
+\url{https://people.kth.se/~kallej/papers/network_cdc16chen.pdf}.
+\bibitem{Higham} N. J. Higham, \emph{What Is the Schur Complement of a Matrix?}, 1 June 2023, Theorem 1, generalized Schur complement. \url{https://nhigham.com/2023/06/01/what-is-the-schur-complement-of-a-matrix/}.
+\end{thebibliography}
+\end{document}
