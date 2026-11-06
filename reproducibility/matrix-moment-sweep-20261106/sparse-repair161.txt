@@ -1,0 +1,170 @@
+Base: 51c43d2b2ed30a2b5f7ddecb0c6f549aed1cb53b. Unit161, 6 November2026.
+Grouped analytic supplement to158/159; not a separate paper or priority claim.
+
+SPARSE ADVERSARIAL CHANNELS: A CAPPED MOMENT AND AN EXACT REPAIR BUDGET
+
+1. Objects, imported result and scope
+
+Use the actual counting torus X=(Z/nZ)^D, D>=3,n>=2,V=n^D,
+h real field components, r=Dh, p=D/2, unscaled forward incidence d and
+L_A=d*Ad from158/159. Every A(x) is a finite real symmetric r-by-r matrix.
+Let alpha=alpha_D=(D/2)(D/(D-2))^(D-1)(3/4)^D and c>0.
+N_<c counts ALL eigenvalues below c, including negative and zero ones.
+
+The only analytic imported input is158's SPD counting adapter, derived from
+Frank, arXiv:1206.3325v1, Theorem3.1, with its counting Fourier normalization:
+N_<c(L_B)<=h+alpha*c^p*sum_x tr B(x)^(-p), for every SPD B(x).
+Source rechecked this unit: https://arxiv.org/html/1206.3325v1#S3.SS1 .
+The finite-rank min-max argument was proved explicitly in159.
+
+2. Repair ANY selected spectral channels, not only the nonpositive ones
+
+Choose an orthonormal eigenbasis of every A(x), retaining multiplicity.
+Let S select any subset of these local eigenvectors, containing ALL channels
+with eigenvalue<=0. Repeated-eigenvalue basis choices are allowed: the resulting
+orthogonal P_S(x) still commutes with A(x). All unselected eigenvalues are >0.
+Define R(S)=rank(P_S d), computed from the actual incidence, and
+M(S)=sum_(unselected channels j) lambda_j^(-p).
+Then
+
+ N_<c(L_A)<=min{hV, h+R(S)+alpha*c^p*M(S)}.                 (1)
+
+Proof. Choose T strictly above both0 and every selected eigenvalue. Replace
+selected eigenvalues by T, leaving all unselected eigenpairs unchanged.
+Call this SPD field A_T. The form update is
+d*P_S(TI-A)P_S d >=0 and has rank exactly R(S), since TI-A is strictly
+positive on ran P_S. Rank min-max and the SPD adapter give
+N_<c(L_A)<=h+R(S)+alpha*c^p*(M(S)+|S|T^(-p)).
+Send T to infinity. All other terms are fixed finite quantities. This proves
+(1), with the dimension bound hV separately. No commutation with d, no shared
+site eigenbasis and no convergence of eigenvectors of L_(A_T) is required.
+
+The minimum over all admissible S is also valid because the channel set is
+finite. This is a finite optimization certificate, not a claimed efficient
+algorithm and not an assumption of a pre-existing low spectral space.
+
+3. A fully local capped inverse moment
+
+Let nu0 be the total multiplicity of nonpositive local eigenvalues. Since
+R(S)<=|S|, select, besides these mandatory channels, every positive channel
+with w_j=alpha*c^p*lambda_j^(-p)>=1. Equation(1) yields
+
+ N_<c(L_A)<=min{hV, h+nu0+sum_(lambda_j>0) min{1,w_j}}.     (2)
+
+Equality at w_j=1 can be assigned either way. Unlike the ordinary inverse
+moment, this right side is finite and insensitive to how close a selected
+positive eigenvalue gets to zero. Nonpositive channels cost their multiplicity
+in this local relaxation, NOT a negative or zero inverse power. The sharper
+actual-rank optimization(1) can be strictly better because selected gradient
+rows can be dependent. This is a rank-truncation consequence of the classical
+input, not a new Cwikel inequality or a claimed original spectral principle.
+
+4. A genuine weakening of the inverse-moment premise for sparse contamination
+
+Fix m>=1. At every site select ALL eigenchannels with lambda<m, including
+the negative and zero ones. Denote this projection P_m and R_m=rank(P_m d).
+There are at most rV unselected channels, each lambda>=m. Thus
+
+ N_<c(L_A)<=h+R_m+alpha*c^p*rV*m^(-p).                    (3)
+
+No inverse moment, magnitude floor or positivity is imposed on selected
+channels. If the actual selected channel count is k_m, R_m<=k_m. In
+particular, if A(x)>=mI outside an explicitly specified bad vertex set B,
+then R_m<=r|B|. Matrices on B may be singular, signed and noncommuting;
+their arbitrarily large positive eigenvalues cause no problem.
+
+Set T_m=max{1,V/(1+m)^p}. If the coefficient channel count is proved to obey
+k_m<=K*T_m, equation(3) gives, with constants independent of n and m,
+
+ N_<c(L_A)<=[h+K+2^p*alpha*c^p*r]*T_m.                    (4)
+
+Proof: m^(-p)<=(2/(1+m))^p and T_m>=1. A sufficient directly local version
+is |B|<=B0*T_m, with K=rB0. These are explicit distribution/support conditions,
+not consequences of an arithmetic mean. The count condition is weaker than
+a full inverse-moment budget: even ONE zero channel violates the latter,
+and one positive channel tending to0 makes it diverge, whereas(3) has a
+uniform finite cost. The selected count/order still needs mathematical proof
+in any physical application; it has not been inferred or hidden in a structure.
+
+5. Exact topological computation in the diagonal edge case
+
+If A is diagonal in the actual direction/component basis, selected rows of d
+are actual oriented edge differences for each field component a. Let G_a(S)
+be the graph with ALL V vertices and the selected edges of component a;
+include isolated vertices in its connected-component count kappa_a(S).
+Then
+
+ R(S)=sum_(a=1,...,h) [V-kappa_a(S)].                      (5)
+
+Proof: P_S d u=0 says exactly that each scalar u_a is constant along every
+selected edge, hence constant on each connected component. Its kernel has
+dimension sum_a kappa_a. Rank-nullity on the hV-dimensional actual domain
+gives(5). Reversed/parallel rows at n=2 do not change that kernel. Thus the
+coefficient-channel price is computed from an explicit graph, rather than
+assumed. A cycle costs no extra rank once its other edges are selected.
+This is the classical incidence-rank fact, not a novelty claim; see the
+author-hosted Chapter17, Proposition17.1 and the component-indicator proof:
+https://www.cis.upenn.edu/~cis5150/cis515-14-graphlap.pdf .
+Formula(5) is NOT used for non-diagonal variable eigenchannels; those still
+use actual R(S), or the honest channel-count upper bound.
+
+6. Why the sparse-defect cost cannot simply be erased
+
+Take h=1, n>=3, and q pairwise nonadjacent vertices with q<V. Set every
+edge coefficient incident to these vertices to0; give all other edges m.
+This is an actual diagonal nonnegative A, with at most2Dq zero channels.
+Each of the q vertices is isolated in the positive-edge graph and the
+remaining nonempty vertex set has at least one component. Its exact kernel
+therefore has dimension at least q+1, so N_<c>=q+1 for every c>0.
+Proof: zero energy forces equality precisely along positive edges, so the
+component indicators span the kernel. This is a lower bound, not an assertion
+that the remaining vertices are connected or that(3)'s coefficient is optimal.
+
+Replace the incident zero coefficients by any0<epsilon<c/(2D), keeping the
+others m. The q delta-functions at the nonadjacent vertices span a subspace
+with Q_A(u)=2D*epsilon*||u||^2: there are no edges joining their supports.
+Finite min-max gives N_<c>=q. Consequently strict positivity alone cannot
+erase the defect-order term. As epsilon tends to0 the full inverse moment
+diverges but the upper bound(3) with k_m<=2Dq stays uniform (take epsilon<m).
+This is a symbolically derived family, not an executed numerical fixture.
+
+7. Observation penalty: bounded negative depth is still substantive
+
+Choose actual orthonormal low eigenvectors and spectral observation C as159,
+with Phi(y)=sum_(lambda<c)(c-lambda)y_lambda^2. Then
+Q_A(u)+Phi(Cu)>=c||u||^2 and rank C=N_<c.
+If b=max_x||A_-(x)|| is bounded independently of the family, then
+Phi(y)<=(c+4Db)||y||^2, by the actual ||du||^2<=4D||u||^2 estimate.
+Thus(4) controls both the observation rank and a uniform penalty whenever
+the sparse channel count and negative-depth bound are actually established.
+
+Small support alone does NOT control normalized penalty size. On one actual
+edge at n>=3 choose its coefficient -B and set all other edge coefficients0.
+Then L_A=-B vv^T, where v=delta_y-delta_x, ||v||^2=2. Its eigenvalue along
+v is -2B. Any linear observation ||C||<=1 and Phi(z)<=K||z||^2 satisfying
+coercivity must have K>=c+2B by evaluating on v. This prevents claiming that
+the repaired rank estimate also removes the independent negative-depth cost.
+With physical derivative n*d, the penalty estimates acquire n^2; all equations
+here use the stated unit-spacing convention.
+
+8. Assessment, falsifiers, next integration step
+
+Checked analytically in this continuing Codex session: exact positive repair,
+strict threshold, T-limit, capping selection, rank-nullity including isolated
+vertices/parallel rows, sparse-scale conversion and both explicit lower bounds.
+No Lean build, Colab runtime, numerical PASS, new rating, exact-PDF assessment,
+independent model/human review, acceptance or AIRR deposit is claimed this unit.
+The preparing backend's exact model identity is not exposed by the application.
+
+The previous159 finite replay does NOT test these newly written formulas.
+Before manuscript integration, independently audit the imported158 adapter
+and(1)-(4); replay actual capped/near-zero/disconnected/mixed-channel fixtures
+in own Colab with normal/-O mutations at a pinned SHA. A counterexample must
+respect the defined counting incidence and full constants; eliminating the
+selected-count or negative-depth premise is not a legitimate test of(4).
+
+This is grouped with158/159 in PR186. It closes a supporting analytical
+extension, not a second active research question. The original positive
+critical rectangular construction remains OPEN, common-refinement STOPPED3,
+PR29=20/41 and TermSource=0. No interacting Hessian/form equality, local
+rectangular observation or physical continuum gap has been established.
