@@ -1,0 +1,32 @@
+[
+  {
+    "file": "YangMills/RG/ActualPacketSupportEnvelope.lean",
+    "git_LF_sha256": "1d8aba05f62dfa13f4a6de6472c5ad6c9a1928bfbc4772cea85a51ee712f4f34",
+    "source": "57630e3691babda4385919a5bdad0edc1cf95c00",
+    "read_not_new_Lean_build": true
+  },
+  {
+    "file": "YangMills/RG/ComponentwiseFlatHodge.lean",
+    "git_LF_sha256": "06e66ecfde85f9f3d5a143e3ed0470869fade1bd6461032a7d1a255f78e27da3",
+    "source": "57630e3691babda4385919a5bdad0edc1cf95c00",
+    "read_not_new_Lean_build": true
+  },
+  {
+    "file": "YangMills/RG/ComponentwiseFlatGradient.lean",
+    "git_LF_sha256": "1abddbf5c9132b121ad1c5cc4bc91976dfa0c356c82afc89258090554acee870",
+    "source": "57630e3691babda4385919a5bdad0edc1cf95c00",
+    "read_not_new_Lean_build": true
+  },
+  {
+    "file": "YangMills/RG/PhysicalCharacterWeightDensity.lean",
+    "git_LF_sha256": "336f2d411f2d1dbea31a9f6c4ee0f2e04f204a85a329293f436207839ad7e1f3",
+    "source": "57630e3691babda4385919a5bdad0edc1cf95c00",
+    "read_not_new_Lean_build": true
+  },
+  {
+    "file": "YangMills/RG/PhysicalGaugeCochains.lean",
+    "git_LF_sha256": "55fc00eef8bab55908b64b7bc8d9cbc25ace19d121dd7148c6981c40856ad071",
+    "source": "57630e3691babda4385919a5bdad0edc1cf95c00",
+    "read_not_new_Lean_build": true
+  }
+]
