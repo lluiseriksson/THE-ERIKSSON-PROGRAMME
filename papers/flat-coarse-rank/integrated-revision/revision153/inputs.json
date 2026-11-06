@@ -5,9 +5,9 @@
     "binary": false
   },
   "partition.tex": {
-    "path": "papers/flat-coarse-rank/explicit-cube-partition/explicit-cube-partition.tex",
-    "sha256": "7cb297d6b78d4aac6f7941e5ca7a531e50987c22a7ea48ddbcbcbfe31ba88b65",
-    "binary": false
+    "binary": false,
+    "sha256": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/partition.tex"
   },
   "physical-cycle.tex": {
     "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
