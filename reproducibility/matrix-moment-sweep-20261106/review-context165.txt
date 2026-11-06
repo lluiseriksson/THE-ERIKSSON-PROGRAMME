@@ -1,0 +1,77 @@
+Unit165,6 November2026. Source04aa4bfd0d82d2c6d87212f146edfca91a16c742,
+recipefbdb1248f003a37ba52d8e72e26daf291aa573eb. Supporting note only.
+
+RESULT AND ANALYTICAL AUDIT
+Closed auxiliary implication: weak kernel coercivity at a specified target c
+does not guarantee finite-penalty repair by the prescribed rectangular means.
+General coisometric observation criterion derived by completing the square:
+nonnegative compressed block AND vanishing coupling of its critical kernel.
+If compatible, k_min=max(0,lambda_max(X*A^dagger X-B)); if incompatible,
+no finite k exists. This is classical singular Schur theory, credited to
+Higham's author-hosted primary exposition, generalized Schur Theorem1:
+https://nhigham.com/2023/06/01/what-is-the-schur-complement-of-a-matrix/
+Read6November2026; no new-general-theorem originality claim.
+
+Actual D3n2 scalar positive a=6+chi1+4chi2 has values1,3,9,11,mean6,
+bound1<=a<=12. Four length2 x1-bars are genuine rectangles. Full actual
+incidence retains24 forward rows, counting opposite n2 orientations.
+Kernel compression is [[24,16],[16,48]] plus [[48,32],[32,72]], with
+smallest eigenvalue16. At c16, v=-2chi1+chi12 has norm^2=5,Cv=0,
+(L-16I)v=4chi2. The observed u=chi2 has norm^2=||Cu||^2=1 and
+<u,(L-16I)u>=8. Thus the augmented form on u+tv is8+8t+k,
+which is negative at t=-(8+k)/8-1 for any finite k. A nonlinear
+observation with the SAME derivative C and locally quadratic penalty
+cannot fix this necessary quadratic condition. Another derivative/partition
+is not excluded. Every0<c<16 is feasible by strict compressed positivity;
+c16 is a nonattained supremum and c>16 fails already on v. For
+delta=16-c, necessary k>=16/(5delta)-8-delta follows by a2x2 determinant.
+The divergence lower bound is analytical, not inferred from finite samples.
+
+ACTUAL EXECUTION
+Two own CPU Linux Colab allocations, each two actual fresh sparse Git clones
+at the SAME pinned source, clean before execution. Each clone ran normal
+and optimized -O. Eight processes produced byte-identical stdout SHA256
+91afa5614cbaca9a481446c248bb5bc6b3bc7ff5489418423b630f514d2dafbd.
+Exact rational arithmetic constructed the8x8 operator from actual oriented
+rows, checked its entire Walsh dictionary, both critical kernel blocks,
+PSD/rank/determinants, coupling, actual rectangular projection and explicit
+finite-k witnesses. Three distinct mutations per process rejected: erased
+x1 variation, collapsed parallel rows, altered threshold. No assert controls
+acceptance. Logs, all exit sentinels, sources/Git provenance retained.
+
+First recipe5.132418222s,maxRSS106988KiB; requested21:17:18.055Z,
+released21:18:19.011Z,60.956s. Second recipe3.862398260s,maxRSS106672KiB;
+requested21:18:20.440Z,released21:19:12.634Z,52.194s. Request-to-release
+includes allocation/export/observation and is not billed compute duration.
+Compute units billed unknown. Both own runtimes deleted/disconnected after
+D archival, Ateranslut observed. No other runtime or local scientific run.
+Each archive51manifest subjects independently matched after UI transfer.
+Archives8557a518611d029348d81e7df4619e39ca83d71306216424d45a4f0e3c075150
+and8e2d634d79a78dded661a3abde049c3e24bde6693de7814b9143943330b1a522.
+
+LIMITATIONS, FAILURES AND REVIEW IDENTITY
+Same continuing preparing Codex session; exact backend identity not exposed.
+No independent/blinded/external-model or human review; no numerical score.
+The real runtime pair is reproduction, not independent scientific judgement.
+The first attempt to address prior own tab8 failed because it no longer
+belonged to the browser session; read actual tabs and used existing own tab4.
+No runtime was started by that failure, no other session/chat was altered.
+No scientific fixture failed; earlier attempts/failures and notes are retained.
+Verification plan JSON was recorded after launching first execution but BEFORE
+reading its result; source/script and recipe themselves were committed BEFORE
+launch. Do not describe that JSON as a separate pre-execution registration.
+
+This is one positive scalar finite example, not an all-size rank-order
+counterexample. Its inverse moments are finite at this size; no divergent
+ratio family is supplied. No physical divergence-free cochain embedding is
+proved by this note. A direct transfer would require checking actual Hodge
+plus repair identity and original observation domain, not just renaming a
+scalar vertex field. No interacting form identity, continuum or mass gap.
+The original unrestricted positive critical rectangular question stays OPEN,
+common-refinement STOPPED3;PR29=20/41,TermSource0. No hypothesis claimed freely
+removed: either strict margin or derived critical-kernel compatibility remains.
+Appendix164 PDF0fa265ea,its self-review,and public parent v6/report154 unchanged.
+This source note is new and inherits none of those assessments. No new PDF,
+AIRR deposit,editorial acceptance or publication. Group into PR186; no small
+standalone paper. Next: check actual cochain transfer and retain this boundary
+obstruction when constructing rectangles with a uniform strict margin.
