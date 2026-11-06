@@ -60,6 +60,16 @@ on each finite lattice; it is NOT claimed uniform for indefinite families.
 In fact with negative lambda the old choice Phi=c||y||^2 is insufficient.
 The correction must be stated rather than inherited from the SPD theorem.
 
+An explicit uniformity criterion is available, not a carried spectral norm:
+put b=max_x ||A_-(x)||. The elementary directed-edge estimate
+||du||^2<=4D||u||^2 proves L_A>=-4Db I, hence the displayed penalty has
+K<=c+4Db. Thus if the nonpositive derivative rank R has the target order,
+the positive trace inverse moment has that order, and b is bounded across
+the family, BOTH observation rank and the penalty coefficient are controlled
+uniformly. These three substantive conditions remain; none is inferred from
+the arithmetic mean or frozen compensation. The incidence is unscaled: with
+physical derivatives n*d the last estimate acquires n^2 and must be restated.
+
 Sharpness of the defect coefficient. Take A(x)=0 for all x. Then L_A=0,
 S_p=0, P=I, R=rank(d)=h(V-1), so N_<c=hV=h+R. The same equality holds
 for A(x)=-I: L_A=-L0 is nonpositive. Thus the coefficient1 of R cannot
