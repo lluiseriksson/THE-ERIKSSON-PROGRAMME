@@ -487,12 +487,14 @@ $V$ excludes $c>16$. The same two-dimensional determinant proves the bound.
 \end{proof}
 
 \paragraph{Scope and source of the transfer.}
-The actual form identity above agrees with
-\texttt{componentwiseFlatGradient\_eq\_hodge} and
-\texttt{actualTotalStiffness\_energy} in the pinned repository, respectively
-in \path{YangMills/RG/ComponentwiseFlatHodge.lean} and
-\path{YangMills/RG/ActualPacketSupportEnvelope.lean}. Their proofs and the
-actual curl/divergence definitions were read; no new Lean compilation is
+The pinned repository gives the actual form identities in these two sources:
+\begin{quote}\small
+\texttt{componentwiseFlatGradient\_eq\_hodge}\\
+\path{YangMills/RG/ComponentwiseFlatHodge.lean}\\[4pt]
+\texttt{actualTotalStiffness\_energy}\\
+\path{YangMills/RG/ActualPacketSupportEnvelope.lean}
+\end{quote}
+Their proofs and the actual curl/divergence definitions were read; no new Lean compilation is
 claimed. Unit 166 checks the newly constructed physical stencils rather
 than relabelling a scalar diagnostic. For derivatives $nd_i$ at $n=2$,
 energies and targets scale by four, so $16$ becomes $64$ with rescaled
