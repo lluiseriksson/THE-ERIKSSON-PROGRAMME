@@ -45,10 +45,11 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('mode', choices=['inspect', 'deposit', 'receipt'])
+    parser.add_argument('mode', choices=['record-approval', 'inspect', 'deposit', 'receipt'])
     parser.add_argument('source_sha')
     parser.add_argument('--approval-file')
     parser.add_argument('--approval-sha256')
+    parser.add_argument('--answer-b64')
     args = parser.parse_args()
     if not re.fullmatch('[a-f0-9]{40}', args.source_sha):
         raise ValueError('Pinned source commit required')
@@ -72,6 +73,32 @@ def main():
     from services.intake.historical_revisions import catalogue, validate_binding
     app = a.create_app()
     with app.app_context():
+        if args.mode == 'record-approval':
+            import base64
+            answer = base64.b64decode(args.answer_b64 or '', validate=True).decode('utf-8')
+            if answer != 'Confirmo y autorizo este PDF y esas condiciones':
+                raise ValueError('Preserve the actual exact-ccf53e human reply, not invented evidence')
+            if a.TERMS_VERSION != 'ARR-DEPOSIT-2.0' or a.PRIVACY_VERSION != 'ARR-PRIVACY-1.8':
+                raise ValueError('Human answer does not cover changed contract versions')
+            if (ROOT/'actual-human-approval.json').exists():
+                raise ValueError('Actual approval already recorded; do not overwrite it')
+            approval = {'paper_id':PID, 'sha256':SHA, 'terms_version':a.TERMS_VERSION,
+                        'privacy_version':a.PRIVACY_VERSION, 'accepted_terms':True,
+                        'read_privacy':True, 'approve_exact_grant':True,
+                        'source_reference':'Actual human answer to request_user_input_async call_3278de7ae5ab4b70aacba2c21e49e337 item0 in THE ERIKSSON PROGRAMME chat on2026-11-06; original private evidence157 retained on D:',
+                        'actual_human_answer':answer, 'recorded_at':a.iso()}
+            path=save('actual-human-approval.json', approval)
+            save('actual-human-approval.sha256', digest(path.read_bytes()).encode())
+            save('publication-instruction.json', {'paper_id':PID, 'sha256':SHA,
+                 'actual_human_answer':answer, 'source_reference':approval['source_reference'],
+                 'only_existing_predecessor_refresh':True, 'recorded_at':approval['recorded_at'],
+                 'publish_as':'Working paper', 'pdf_license':'CC-BY-4.0', 'metadata_license':'CC0-1.0'})
+            print(json.dumps({'actual_approval_recorded':True, 'sha256':SHA,
+                              'grant_issued':False, 'uploaded':False}), flush=True)
+            return
+        if args.mode == 'deposit' and not args.approval_file and not args.approval_sha256:
+            args.approval_file=str(ROOT/'actual-human-approval.json')
+            args.approval_sha256=(ROOT/'actual-human-approval.sha256').read_text().strip()
         entries, catalogue_hash = catalogue(app)
         db = a.get_db()
         try:
