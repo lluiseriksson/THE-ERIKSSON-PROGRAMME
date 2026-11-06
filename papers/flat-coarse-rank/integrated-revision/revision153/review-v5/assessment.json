@@ -1,0 +1,87 @@
+{
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "version": "v5",
+  "version_id": "arr:version:0f080d79-5423-4c93-93b1-c9e75bdc43c4",
+  "canonical_sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8",
+  "provider": "Google",
+  "model_id": "gemini-4-argon",
+  "assessed_at": "2026-11-05T06:06:15+01:00",
+  "prompt_version": "ARR-ASSESS-1.0",
+  "independence": "unknown",
+  "recommendation": "major_revision",
+  "millennium_score": 3.4,
+  "overall_stars": 3,
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "All analytic proofs across Sections 2-20 were verified by hand and hold as stated, but Equation (28) in Section 21.3 omits a required factor of c in the cluster lower bound, alongside minor notation typos and uninspected external Lean/Colab dependencies."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Quantifiers, finite periodic domains (2R < n), and local regularity assumptions are stated carefully with explicit counterexamples testing hypothesis boundaries, though marred by the missing factor c in (28) and unupdated cross-references/notation from splicing two drafts."
+    },
+    "novelty": {
+      "stars": 2,
+      "basis": "The core tools—discrete Fourier modes, rank-nullity, singular Schur complements, Zelazo-Burger cycle cancellation, and the Rumin-Frank spectral density method—are classical; originality lies in specific finite-lattice adapters and diagnostic counterexamples."
+    },
+    "significance": {
+      "stars": 2,
+      "basis": "Provides useful internal obstructions and observation-rank budgets for flat unit-spacing Hodge forms in the author's programme, but establishes no results for interacting gauge theories, continuum limits, or multiscale covariant renormalization-group operators."
+    },
+    "reproducibility": {
+      "stars": 3,
+      "basis": "The mathematical text is largely self-contained and verifiable on paper, and commit SHAs/hashes are documented, but no external GitHub sources, Lean 4 proofs, or Colab execution logs could be inspected in this PDF-only review, and internal version metadata is inconsistent."
+    }
+  },
+  "summary": "All 33 pages of ARR-2026-7EPM3V3DP796BBRR-v5.pdf were visually and mathematically inspected in full without external browsing, code execution, or access to the external GitHub repository or Lean/Colab artifacts. The manuscript consolidates two parts: (1) Sections 1-14 establishing necessary observation-dimension and repair-rank budgets for flat unit-spacing lattice Hodge forms under linear and local Fréchet-differentiable observations, regular nonlinear sectors, and directional or full-volume weighted gradient repairs; and (2) Sections 15-24 analyzing sufficient global spectral observations under a critical p = D/2 inverse-moment condition via a finite Rumin-Frank Cwikel bound, sharpness for r < D/2, a log(n) lower bound for dyadic cube-tree partitions, and constructive rectangular-mean bounds. All proofs in Sections 2-20 are mathematically sound. However, a material error occurs in Equation (28) of Section 21.3, where the factor c is omitted from the lower bound on a(x) inside the supplied cubes S_k, invalidating the deduction of the c-coercivity bound (27) on cluster subrectangles for c > 1 and conflicting with the step L^2 <= 8/c in Section 21.4. In addition, splicing the continuation created notation clashes between m and mu, a broken section reference, and uncleaned internal version/tracker notes.",
+  "strengths": [
+    "Exact discrete identities on the finite torus X_n, including the whole-space curl-divergence gradient identity ||GA||^2 = <A, A K_{0,n}> and no-aliasing Fourier band bounds for 2R < n, are proved cleanly without hidden asymptotic assumptions.",
+    "The order of quantifiers in the uniform refinement and local tangent obstructions (Theorems 6.1, 7.1, 8.1, 9.1, and 11.2) is handled rigorously, shrinking rays t -> 0 at each fixed lattice size n without requiring uniform implicit-function radii or penalty constants.",
+    "Sharp analytic counterexamples justify each structural hypothesis, including C^1 observations failing without quadratic penalty control, C^1 non-quadratic energies and non-surjective constraints in regular sectors, and zero-signed-mean weights with fixed output dimension.",
+    "The finite normalized Rumin-Frank spectral density proof of Lemma 17.2 and the variational flow comparison L_a^{-1} <= sum_i T_i^* T_i in Theorem 17.1 are self-contained, handle the zero-frequency kernel explicitly, and give uniform finite-torus constants for all n >= 2.",
+    "The compact discrete curl window in Theorem 18.1 and Proposition 19.1 is constructed with exact finite-difference sums (T, V, W) and strictly controlled gradient-start support in [-l, l]^D, cleanly proving both the subcritical inverse-moment refutation and the Omega(log n) dyadic tree depth bound.",
+    "The manuscript maintains strict scientific candor regarding scope, explicitly stating that its unit-spacing flat-lattice bounds do not establish an interacting or continuum Yang-Mills mass gap or refute covariant renormalization-group gauge-fixing schemes."
+  ],
+  "weaknesses": [
+    "External verification artifacts—including Lean 4 source commits, declaration-map.json, and Colab execution logs referenced in Sections 14 and 22—are not self-contained in the PDF and could not be independently verified.",
+    "Sections 15-24 are spliced onto Sections 1-14 as an uncleaned internal dossier, leaving a broken reference to 'Section 1' instead of Section 16 on page 25, conflicting references to internal v5/v6 drafts on pages 20-21, and raw project-tracker shorthand ('PR29 remains 20/41 and TermSource = 0') on page 32.",
+    "Notation for the internal Lie-algebra dimension m = N_c^2 - 1 (Sections 2 and 10.1) collides with the mean-weight budget m >= 0 in Section 11, and after switching to mu in Section 15, the text still reverts to m in formulas on pages 25 and 28.",
+    "The sufficient spectral theorem (Theorem 17.1) requires a single scalar weight a(x) shared across all derivative directions and field components, which is substantially more restrictive than the componentwise and directional weights treated in Sections 7-11.",
+    "The central spatial localization problem—whether critical inverse-moment profiles always admit an O((n/sqrt(1+mu))^D) partition into unrestricted axis-aligned rectangles—remains open, with general threshold partitions achieving only exponent D/4 instead of D/2.",
+    "Section 21.3 relies on de Berg's external binary space partition theorem [11] and Section 20.1 relies on the weighted Sobolev inequality of Andres-Deuschel-Slowik [14] as analytic adapters without self-contained proofs in the manuscript."
+  ],
+  "potential_errors": [
+    "In Section 21.3, Equation (28) states the inside-cube condition as L_k(L_k-1)/4 <= a(x) <= beta L_k^2 without the factor c, whereas proving c||U||^2 <= E_a(U) + c||C_P U||^2 in (27) via (26) requires c L_k(L_k-1)/4 <= a(x) for x in S_k.",
+    "In Section 21.4 (page 30, line 20), the proof that no cube of side L >= 2 can cover 0 writes 'Its lower bound forces L^2 <= 8/c' at a vertex where a(x) = 1, which requires the lower bound in (28) to be c L(L-1)/4 <= a(x) rather than the printed L(L-1)/4 <= a(x).",
+    "On page 25, line 2 (proof of Theorem 18.1), the inequality 'mean((mu/a)^r) <= s m^r + 1 <= 2' prints m^r instead of mu^r.",
+    "On page 25, line 5 (proof of Theorem 18.1), 'Section 1 forces dim F >= J' is an unupdated cross-reference that should point to Section 16 (page 22) after integrating the appendix into the main text.",
+    "On page 28, in Subsection 20.2 (line 7: '||L_a|| <= 8Dm') and Subsection 20.3 (lines 12-13: 'E_mu(u) <= 2Dms' and 's >= cn^D/(2Dm+c)'), the symbol m is erroneously written in place of the scalar weight parameter mu.",
+    "In Proposition 11.3 (page 15), the statement writes 'For R > 1', although the formula for A_R(x) and B_{D,R,n} holds for all integers R >= 1 as used in Theorem 11.1."
+  ],
+  "strong_novelty_candidates": [
+    "Construction of the all-pairs off-diagonal sum of Zelazo-Burger 4-edge square cancellations on the d-dimensional torus (Section 10.2), giving a nonpositive derivative repair <A, A R_{bar{w}}> <= 0 whose directional positive-part means bar{b}{ij}^+ all grow like n^2.",
+    "The concrete separation in Proposition 19.1 showing that for critical inverse-moment profiles on (Z/nZ)^D, any translated full dyadic cube-tree mean observation requires Omega(log n) leaves, whereas an anisotropic rectangular partition succeeds with L^D + D = O(1) blocks.",
+    "The constructive counterexample in Section 21.4 trapping a strong vertex 0 between two weak vertices e_1, -e_1 to rule out any universal non-overlapping or overlapping scaled-cube decomposition satisfying (28), while admitting an O(n^D/(1+mu)^{D/2}) grid-plus-singleton rectangular partition."
+  ],
+  "unresolved_material_objections": [
+    "In Section 21.3 (page 30), Equation (28) specifies the lower bound on a(x) inside each supplied cube S_k as L_k(L_k-1)/4 <= a(x), omitting the coercivity constant c (unlike the exterior condition a(x) >= c n(n-1)/4). For any c > 1 and L_k >= 2, combining (28) with the rectangle variance bound (26) only yields E{a,R}(U) >= ||U - mean_R U||^2 on cluster fragments R subset S_k, failing to establish the claimed c-coercive inequality (27) highlighted in the Abstract and Section 21.3. Conversely, Section 21.4 explicitly invokes the unprinted factor c when deducing L^2 <= 8/c at a(x) = 1; Equation (28) must be corrected to c L_k(L_k-1)/4 <= a(x) <= beta L_k^2 (or beta rescaled accordingly in the cluster count) for Sections 21.3 and 21.4 to be valid as stated."
+  ],
+  "assessment_id": "arr:assessment:6b48a950-8939-43ef-9001-13a8d8e88c14",
+  "source_response_sha256": "fabdea285bf350b57046aa25a12863ce03548629fbf641b7ae300ecb8f22feb1",
+  "runtime_provenance": {
+    "provider": "Google",
+    "model_id": "gemini-4-argon",
+    "reasoning_effort": "high",
+    "basis": "operator_verified_ui",
+    "evidence_sha256": "052840803a44c73df6677441c906e3f7cee0a028b6741c31a2b804bc075a4aa3"
+  },
+  "review_context": {
+    "mode": "unknown",
+    "history_isolated": false,
+    "memory_disabled": false,
+    "other_reports_withheld": true,
+    "basis": "operator_verified_ui",
+    "evidence_sha256": "052840803a44c73df6677441c906e3f7cee0a028b6741c31a2b804bc075a4aa3",
+    "recorded_at": "2026-11-05T05:14:53.850Z"
+  }
+}

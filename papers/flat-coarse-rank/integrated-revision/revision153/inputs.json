@@ -1,0 +1,167 @@
+{
+  "sobolev.tex": {
+    "path": "papers/flat-coarse-rank/critical-sobolev-derivation/critical-sobolev-derivation.tex",
+    "sha256": "879f895b69eb04fd41c26fd4e4bd779dcdfe7d9547c22181c6d4313f343bdb43",
+    "binary": false
+  },
+  "partition.tex": {
+    "path": "papers/flat-coarse-rank/explicit-cube-partition/explicit-cube-partition.tex",
+    "sha256": "7cb297d6b78d4aac6f7941e5ca7a531e50987c22a7ea48ddbcbcbfe31ba88b65",
+    "binary": false
+  },
+  "physical-cycle.tex": {
+    "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/physical-cycle.tex"
+  },
+  "tep-cube-fixtures139.zip": {
+    "path": "reproducibility/explicit-cube-partition-20261105/tep-cube-fixtures139.zip",
+    "sha256": "64f548dff043cf6cf9f1c1a3abf24fc793cf6565ff7dd436c1d0f263351b5be1",
+    "binary": true
+  },
+  "full-form148-first-clone-evidence.zip": {
+    "path": "papers/flat-coarse-rank/physical-cycle-embedding/full-form148-first-clone-evidence.zip",
+    "sha256": "209220f94f1883cfd9919afcc1466bc5eaccb3d0adcbffdc2205a3aab93a86d1",
+    "binary": true
+  },
+  "full-form148-second-clone-evidence.zip": {
+    "path": "papers/flat-coarse-rank/physical-cycle-embedding/full-form148-second-clone-evidence.zip",
+    "sha256": "7939f34c6fa9fff1b2c5cd535ec9fb0927f1c493e34cdc2e68132d4aac0fd7a9",
+    "binary": true
+  },
+  "paired-full-form148.json": {
+    "path": "papers/flat-coarse-rank/physical-cycle-embedding/paired-full-form148.json",
+    "sha256": "2917c677f8867a899e1df5031a630912e04e19b7e0592b99f59f45b8a29082af",
+    "binary": false
+  },
+  "exact-evidence151.zip": {
+    "sha256": "2ed1816832d0de01e4b0db338a55180f0a0a586156127281f4286f3780a7b005",
+    "binary": true,
+    "path": "papers/flat-coarse-rank/energy-closure151/exact-evidence151.zip"
+  },
+  "energy-and-threshold-proof.txt": {
+    "sha256": "04cd2660822ca290f31bce6f24791bf1912482f72b08f4ce267855f1ea064260",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/energy-closure151/energy-and-threshold-proof.txt"
+  },
+  "review150-model-response-original.html": {
+    "sha256": "8c9672c40de877c1ddfdcc3134e0ef43d56c34f88fb0e3db45b94c2adefc9038",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/model-response-original.html"
+  },
+  "review150-model-response-original.txt": {
+    "sha256": "afd4dccdc6b3988e24f9a1cc9528ccf9e91a4940f2c28faac5aff429b19523fd",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/model-response-original.txt"
+  },
+  "review150-model-response-visible.txt": {
+    "sha256": "c1170289c7ad626cf977dd96daac549562ca628f1c70efc858a3cce32d9dba9b",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/model-response-visible.txt"
+  },
+  "review150-operator-disposition.md": {
+    "sha256": "136cb19a25800603d6d939c78cc892433575a37180c92e69aac983f6193eb2f0",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/operator-disposition.md"
+  },
+  "review150-operator-evidence.json": {
+    "sha256": "10baca847a614878025d66770ce2666dc3857f595cd88cd0d5b71d4eff94a50e",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/operator-evidence.json"
+  },
+  "review150-primary-source-context.json": {
+    "sha256": "18064f6708e815dd662b3fe1899297258dd46f4746d01854fe4bd3e29362b26f",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/primary-source-context.json"
+  },
+  "review150-prompt.txt": {
+    "sha256": "a1d4a63faead4225aba124fea089837f7de615b23c7d2e2851963e6e3d889f22",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/prompt.txt"
+  },
+  "review150-review-context.json": {
+    "sha256": "551a60b5f6ee6a21336568257594dcc014229a792f61e3ad0fb6367fdcf52e02",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/review-context.json"
+  },
+  "review150-SHA256.json": {
+    "sha256": "49f471eab2f9503ccb8070a6078cafe53c1ccc7cd8bd016dd603367b9a18eeaa",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/companion-revision149/model-assessment150/SHA256.json"
+  },
+  "flat_critical_integrated.tex": {
+    "sha256": "6191aa3306453229fe60b308587a5690d38434687d9daa362d694bb82fbd3a7b",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/flat_critical_integrated.tex"
+  },
+  "review136-model-response-original.txt": {
+    "sha256": "f15c52330fae14406fd009af9c83148ab345b63fa78832f3ecde35dcab1a80ba",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision136/model-assessment/model-response-original.txt"
+  },
+  "review136-model-response.json": {
+    "sha256": "edacd43277d6d586d82fe09df062520307f7cb8e7d83c5ba855239be7b7286d7",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision136/model-assessment/model-response.json"
+  },
+  "review136-README.md": {
+    "sha256": "d1076bc65f33755c7ba9fce0e44ebd579622ab5a6f45a227789518b0c9d6b33c",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision136/model-assessment/README.md"
+  },
+  "review136-request.txt": {
+    "sha256": "543ac797482508b7cb5416b10a9573da21d33c30453c047f2b52a06f758565b6",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision136/model-assessment/request.txt"
+  },
+  "review136-review-context.json": {
+    "sha256": "a0ce868bed9e11f253e72839cb8e242457487465142725efaa382c09b2e7d8dd",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision136/model-assessment/review-context.json"
+  },
+  "main-declaration-map.json": {
+    "sha256": "2ec3658252c36ea9ea3b60fca4a0004147782499452814653952d7ae2932aa61",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/main-declaration-map.json"
+  },
+  "critical-declaration-map.json": {
+    "sha256": "6b4632fa8b44559b56285ff8196eb97f7d5df64bd38433f1301ff55bde9397b9",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/critical-declaration-map.json"
+  },
+  "integration-map.json": {
+    "sha256": "4c0f4c347a247b7751aea00c1957cfb3ff037ad2d6004670f5ccf4da08324095",
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/integration-map.json"
+  },
+  "review-v5-assessment.json": {
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/review-v5/assessment.json",
+    "sha256": "fb925cec894061341b87d984b595b45c7b49e206a37e3975ff40fcbb60017394"
+  },
+  "review-v5-model-response-original.txt": {
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/review-v5/model-response-original.txt",
+    "sha256": "b609db6ac1459256c44b8bb95fe944299a7e904807619c2b7d0cde94f7bb70a4"
+  },
+  "review-v5-model-response.json": {
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/review-v5/model-response.json",
+    "sha256": "9b6aaf317ed0e9cc1a06a7b22c60c0c93a3526c5380b410a614819b8f17ae234"
+  },
+  "review-v5-request.txt": {
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/review-v5/request.txt",
+    "sha256": "05e585991507e72168639e32bf87fee79c2a37e88098ddb41efcb1a7f34c9e9b"
+  },
+  "review-v5-review-context.json": {
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/review-v5/review-context.json",
+    "sha256": "052840803a44c73df6677441c906e3f7cee0a028b6741c31a2b804bc075a4aa3"
+  },
+  "review-v5-OPERATOR-RESPONSE.md": {
+    "binary": false,
+    "path": "papers/flat-coarse-rank/integrated-revision/revision153/review-v5/OPERATOR-RESPONSE.md",
+    "sha256": "92d0798d7ce68d1cb284fbfedb1320f87abdbeabe49c75e174c0d5bda9b128ae"
+  }
+}
