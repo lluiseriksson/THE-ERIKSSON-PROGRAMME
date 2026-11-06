@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "abstract": "On finite periodic unit-spacing lattices, necessary coarse-information budgets constrain flat Hodge forms and constructed derivative repairs. We consolidate physical Fourier-band, tangent, exact regular-sector, signed-weight and full-volume rank results with separately pinned formal evidence and analytic arguments. A critical inverse-conductance moment suffices for a global spectral observation of the mean-budget order. Actual rectangular means have a general D/4 upper rate and the target D/2 rate for an explicitly restricted scaled-cube class. Constructive counterexamples obstruct a retained-grid single-threshold algorithm and a universal exact supplied-cube decomposition, while the same profiles admit successful rectangular partitions. The unrestricted critical rectangular question remains open. No interacting or continuum Yang-Mills mass gap is established.",
+    "ai_disclosure": "PreparingCodexprogrammeagent extensively involved; system describes GPT6-based, actual served backend and effort unknown. First exact46pagePDF external AI assessment154:7.6/10 acceptable_as_working_paper with minor_revision qualification. GoogleGemini UI4ArgonAlto; backend unknown, nonblind, independence unestablished. Full original report and objections preserved, three false-reading dispositions and two reader clarifications separate. No inherited scores or human peer review.",
+    "specific_topic": "Finiteflat lattice Hodge forms, coarseinformation rank, criticalinverse moments and rectangular observations",
+    "sha256": "ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389",
+    "authors": "Lluis Eriksson",
+    "title": "Coarse information and finite rank obstructions for flat lattice Hodge forms",
+    "secondary_subjects": [],
+    "rights_confirmed": true,
+    "operator_conflict": true,
+    "primary_subject": "eu-2ba1c7ad-2532-4cd7-8c5c-60f090a8700a"
+  },
+  "manuscript_file": "paper.pdf",
+  "idempotency_key": "eriksson-integrated-71f14ebb-45f7-458d-b5fe-572cea5503d0",
+  "binding_file": "binding.json",
+  "pending": [
+    "Native authenticated preflight, grant, receipt and public Workingpaper release"
+  ],
+  "grant_file": null,
+  "ordinary_upload_to_be_used": false,
+  "intended_route": "/api/v1/revisions",
+  "state": "EXACT_CCF53E_HUMAN_AUTHORIZATION_RECORDED_NOT_SENT",
+  "pdf_source_commit": "e1748f206a2e8509fedeb8edea56e11060b852a5",
+  "authority_note": "Actualhumanreply to call_3278de7ae5ab4b70aacba2c21e49e337 authorizes exactccf53e PDF, ARR-DEPOSIT2.0/PRIVACY1.8, one24h historical revision send/receipt and WorkingpaperCCBY4/metadataCC0. Private evidence preserved; no server grant issued yet."
+}
