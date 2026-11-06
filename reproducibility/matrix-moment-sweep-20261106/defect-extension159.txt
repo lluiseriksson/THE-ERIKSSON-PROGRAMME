@@ -78,6 +78,16 @@ why deleting positivity at no cost is false. They also force full observation
 rank under any differentiable-at-zero observation with locally quadratically
 bounded penalty, by the existing derivative-kernel dimension argument.
 
+The explicit penalty bound is also worst-case sharp under a normalized linear
+observation. For even n and A(x)=-b I, b>=0, take the actual checkerboard
+u(x)=(-1)^(x_1+...+x_D)*v with a fixed nonzero real fibre vector v. Then
+Q_A(u)=-4Db||u||^2. If ||C||<=1 and Phi(y)<=K||y||^2, coercivity forces
+K>=c+4Db. The full identity observation with
+Phi(y)=<y,(cI+bL0)y> attains this K and has rank hV, which is forced
+because Q_A-cI is negative definite. Thus in this uniform nonpositive family
+both the defect-rank price and the explicit normalized penalty price are
+attained. This is a finite observation-resource statement, not a physical gap.
+
 Relationship to prior signed results. Unit156's extensive negative band is
 consistent with (1): a large coefficient-channel defect may cost volume order.
 This theorem does not rescue the refuted pointwise/frozen compensation route,
