@@ -1,0 +1,916 @@
+{
+  "accepted_cases": 6,
+  "actual_mutations_rejected": [
+    {
+      "mutation": "actual-field-changed-at-peak",
+      "reason": "field is not actual physical/mean-zero",
+      "rejected": true
+    },
+    {
+      "mutation": "actual-contrast-lowered-to-zero-energy-threshold",
+      "reason": "actual negative energy required; zero/positive packet rejected",
+      "rejected": true
+    },
+    {
+      "mutation": "actual-packed-field-shifted-into-overlap",
+      "reason": "actual gradient stencils overlap",
+      "rejected": true
+    }
+  ],
+  "cases": [
+    {
+      "D": 2,
+      "R_D": 106,
+      "analytic_inverse_moment_bound": "mean((mu/eta)^r)<=R_D^r for every fixedr>0; no floating approximation",
+      "combination_coefficient_square_sum": 1,
+      "field_sites_disjoint": 8,
+      "gradient_sites_disjoint": 14,
+      "mean_rho": [
+        249,
+        4
+      ],
+      "n": 6,
+      "negative_packets": 1,
+      "negative_rayleigh": [
+        -36,
+        30
+      ],
+      "packets": [
+        {
+          "H0": 212,
+          "L": 72,
+          "O": 140,
+          "Q": -72,
+          "divergence_nonzero": 0,
+          "field_sites": 8,
+          "gradient_sites": 14,
+          "means": [
+            0,
+            0
+          ],
+          "norm": 60,
+          "positive_control_energy": 15192,
+          "weighted_L": 282,
+          "weighted_O": 140,
+          "weighted_S": 68,
+          "weighted_identity_defect": 210
+        }
+      ],
+      "profile_high_vertices": 21,
+      "profile_low_vertices": 15,
+      "s": 1,
+      "tested_actual_linear_combination": {
+        "H0": 212,
+        "L": 72,
+        "O": 140,
+        "Q": -72,
+        "divergence_nonzero": 0,
+        "field_sites": 8,
+        "gradient_sites": 14,
+        "means": [
+          0,
+          0
+        ],
+        "norm": 60,
+        "positive_control_energy": 15192,
+        "weighted_L": 282,
+        "weighted_O": 140,
+        "weighted_S": 68,
+        "weighted_identity_defect": 210
+      }
+    },
+    {
+      "D": 2,
+      "R_D": 106,
+      "analytic_inverse_moment_bound": "mean((mu/eta)^r)<=R_D^r for every fixedr>0; no floating approximation",
+      "combination_coefficient_square_sum": 3,
+      "field_sites_disjoint": 32,
+      "gradient_sites_disjoint": 56,
+      "mean_rho": [
+        249,
+        4
+      ],
+      "n": 12,
+      "negative_packets": 4,
+      "negative_rayleigh": [
+        -144,
+        30
+      ],
+      "packets": [
+        {
+          "H0": 212,
+          "L": 72,
+          "O": 140,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 8,
+          "gradient_sites": 14,
+          "means": [
+            0,
+            0
+          ],
+          "norm": 60,
+          "positive_control_energy": 60768,
+          "weighted_L": 282,
+          "weighted_O": 140,
+          "weighted_S": 68,
+          "weighted_identity_defect": 210
+        },
+        {
+          "H0": 212,
+          "L": 72,
+          "O": 140,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 8,
+          "gradient_sites": 14,
+          "means": [
+            0,
+            0
+          ],
+          "norm": 60,
+          "positive_control_energy": 60768,
+          "weighted_L": 282,
+          "weighted_O": 140,
+          "weighted_S": 68,
+          "weighted_identity_defect": 210
+        },
+        {
+          "H0": 212,
+          "L": 72,
+          "O": 140,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 8,
+          "gradient_sites": 14,
+          "means": [
+            0,
+            0
+          ],
+          "norm": 60,
+          "positive_control_energy": 60768,
+          "weighted_L": 282,
+          "weighted_O": 140,
+          "weighted_S": 68,
+          "weighted_identity_defect": 210
+        },
+        {
+          "H0": 212,
+          "L": 72,
+          "O": 140,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 8,
+          "gradient_sites": 14,
+          "means": [
+            0,
+            0
+          ],
+          "norm": 60,
+          "positive_control_energy": 60768,
+          "weighted_L": 282,
+          "weighted_O": 140,
+          "weighted_S": 68,
+          "weighted_identity_defect": 210
+        }
+      ],
+      "profile_high_vertices": 21,
+      "profile_low_vertices": 15,
+      "s": 2,
+      "tested_actual_linear_combination": {
+        "H0": 636,
+        "L": 216,
+        "O": 420,
+        "Q": -864,
+        "divergence_nonzero": 0,
+        "field_sites": 24,
+        "gradient_sites": 42,
+        "means": [
+          0,
+          0
+        ],
+        "norm": 180,
+        "positive_control_energy": 182304,
+        "weighted_L": 846,
+        "weighted_O": 420,
+        "weighted_S": 204,
+        "weighted_identity_defect": 630
+      }
+    },
+    {
+      "D": 3,
+      "R_D": 330,
+      "analytic_inverse_moment_bound": "mean((mu/eta)^r)<=R_D^r for every fixedr>0; no floating approximation",
+      "combination_coefficient_square_sum": 1,
+      "field_sites_disjoint": 16,
+      "gradient_sites_disjoint": 36,
+      "mean_rho": [
+        5617,
+        24
+      ],
+      "n": 6,
+      "negative_packets": 1,
+      "negative_rayleigh": [
+        -36,
+        60
+      ],
+      "packets": [
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -72,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 43272,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        }
+      ],
+      "profile_high_vertices": 153,
+      "profile_low_vertices": 63,
+      "s": 1,
+      "tested_actual_linear_combination": {
+        "H0": 544,
+        "L": 144,
+        "O": 400,
+        "Q": -72,
+        "divergence_nonzero": 0,
+        "field_sites": 16,
+        "gradient_sites": 36,
+        "means": [
+          0,
+          0,
+          0
+        ],
+        "norm": 120,
+        "positive_control_energy": 43272,
+        "weighted_L": 802,
+        "weighted_O": 400,
+        "weighted_S": 256,
+        "weighted_identity_defect": 658
+      }
+    },
+    {
+      "D": 3,
+      "R_D": 330,
+      "analytic_inverse_moment_bound": "mean((mu/eta)^r)<=R_D^r for every fixedr>0; no floating approximation",
+      "combination_coefficient_square_sum": 5,
+      "field_sites_disjoint": 128,
+      "gradient_sites_disjoint": 288,
+      "mean_rho": [
+        5617,
+        24
+      ],
+      "n": 12,
+      "negative_packets": 8,
+      "negative_rayleigh": [
+        -144,
+        60
+      ],
+      "packets": [
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        },
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        },
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        },
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        },
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        },
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        },
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        },
+        {
+          "H0": 544,
+          "L": 144,
+          "O": 400,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 16,
+          "gradient_sites": 36,
+          "means": [
+            0,
+            0,
+            0
+          ],
+          "norm": 120,
+          "positive_control_energy": 173088,
+          "weighted_L": 802,
+          "weighted_O": 400,
+          "weighted_S": 256,
+          "weighted_identity_defect": 658
+        }
+      ],
+      "profile_high_vertices": 153,
+      "profile_low_vertices": 63,
+      "s": 2,
+      "tested_actual_linear_combination": {
+        "H0": 2720,
+        "L": 720,
+        "O": 2000,
+        "Q": -1440,
+        "divergence_nonzero": 0,
+        "field_sites": 80,
+        "gradient_sites": 180,
+        "means": [
+          0,
+          0,
+          0
+        ],
+        "norm": 600,
+        "positive_control_energy": 865440,
+        "weighted_L": 4010,
+        "weighted_O": 2000,
+        "weighted_S": 1280,
+        "weighted_identity_defect": 3290
+      }
+    },
+    {
+      "D": 4,
+      "R_D": 898,
+      "analytic_inverse_moment_bound": "mean((mu/eta)^r)<=R_D^r for every fixedr>0; no floating approximation",
+      "combination_coefficient_square_sum": 1,
+      "field_sites_disjoint": 32,
+      "gradient_sites_disjoint": 88,
+      "mean_rho": [
+        103897,
+        144
+      ],
+      "n": 6,
+      "negative_packets": 1,
+      "negative_rayleigh": [
+        -36,
+        120
+      ],
+      "packets": [
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -72,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 112392,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        }
+      ],
+      "profile_high_vertices": 1041,
+      "profile_low_vertices": 255,
+      "s": 1,
+      "tested_actual_linear_combination": {
+        "H0": 1328,
+        "L": 288,
+        "O": 1040,
+        "Q": -72,
+        "divergence_nonzero": 0,
+        "field_sites": 32,
+        "gradient_sites": 88,
+        "means": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "norm": 240,
+        "positive_control_energy": 112392,
+        "weighted_L": 2082,
+        "weighted_O": 1040,
+        "weighted_S": 752,
+        "weighted_identity_defect": 1794
+      }
+    },
+    {
+      "D": 4,
+      "R_D": 898,
+      "analytic_inverse_moment_bound": "mean((mu/eta)^r)<=R_D^r for every fixedr>0; no floating approximation",
+      "combination_coefficient_square_sum": 11,
+      "field_sites_disjoint": 512,
+      "gradient_sites_disjoint": 1408,
+      "mean_rho": [
+        103897,
+        144
+      ],
+      "n": 12,
+      "negative_packets": 16,
+      "negative_rayleigh": [
+        -144,
+        120
+      ],
+      "packets": [
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        },
+        {
+          "H0": 1328,
+          "L": 288,
+          "O": 1040,
+          "Q": -288,
+          "divergence_nonzero": 0,
+          "field_sites": 32,
+          "gradient_sites": 88,
+          "means": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "norm": 240,
+          "positive_control_energy": 449568,
+          "weighted_L": 2082,
+          "weighted_O": 1040,
+          "weighted_S": 752,
+          "weighted_identity_defect": 1794
+        }
+      ],
+      "profile_high_vertices": 1041,
+      "profile_low_vertices": 255,
+      "s": 2,
+      "tested_actual_linear_combination": {
+        "H0": 14608,
+        "L": 3168,
+        "O": 11440,
+        "Q": -3168,
+        "divergence_nonzero": 0,
+        "field_sites": 352,
+        "gradient_sites": 968,
+        "means": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "norm": 2640,
+        "positive_control_energy": 4945248,
+        "weighted_L": 22902,
+        "weighted_O": 11440,
+        "weighted_S": 8272,
+        "weighted_identity_defect": 19734
+      }
+    }
+  ],
+  "scope": "finite actual fixtures only; all-n,D theorem is analytic, not Lean or independent review",
+  "source_sha256": "044b9131059eb46d8dcea58741d3c669268193c0d03f2a775798bd6547ba2937",
+  "status": "EXACT_NEGATIVE_BAND_DIAGNOSTICS_PASS",
+  "total_actual_negative_packets": 31
+}
