@@ -1,0 +1,84 @@
+Base b35f6585f4fd1e94c586cdf95b9256aaea6019c7. Unit159, 6 November2026.
+Analytic finite-gradient supplement to unit158; no separate paper/priority claim.
+
+THE EXACT RANK PRICE OF NONPOSITIVE MATRIX CHANNELS
+
+Let all actual finite gradient objects D>=3,h,n,d,L_A be as in unit158,
+but now allow EVERY real symmetric fibre matrix A(x), including zero and
+negative eigenvalues. Write P(x)=1_{(-infinity,0]}(A(x)), P=directsum_x P(x),
+R=rank(P d), nu=sum_x rank P(x), and
+
+ S_p=sum_x sum_(positive eigenvalues lambda of A(x)) lambda^(-p), p=D/2.
+
+An empty positive sum is zero. In particular this is NOT tr of the
+pseudoinverse raised to p when negative eigenvalues are present.
+For c>0, with the SAME alpha_D as unit158,
+
+ N_(-infinity,c)(L_A) <= h+R+alpha_D*c^p*S_p.                 (1)
+
+This counts negative and zero modes as well as positive modes below c.
+It is not N_[0,c) after silently discarding negative energy. The cost R is
+computed from actual coefficient eigenspaces and actual incidence d, not
+supplied as a coercivity certificate. R<=nu is an optional weaker bound.
+
+Proof. Replace every nonpositive eigenvalue of A(x) by T>0, retaining all
+positive eigenvalues; call the resulting SPD matrix A_T(x). Functional
+calculus on each fibre gives
+
+ L_(A_T)-L_A=d* P (T I-A) P d >=0,
+ rank(L_(A_T)-L_A)=rank(P d)=R.
+
+The equality follows because T I-A is strictly positive on ran P, so its
+square root is invertible there. This does not require A at different
+vertices, d or Fourier multipliers to commute. Kernel of the update is
+ker(P d).
+
+For any symmetric matrices H and B with rank(B-H)<=R, finite min-max gives
+N_<c(H)<=N_<c(B)+R: intersect the low spectral subspace of H with ker(B-H)
+and with the complement of the low spectral subspace of B. A nonzero vector
+in this intersection would have H-quadratic form strictly below c||u||^2
+and B-quadratic form at least c||u||^2, while they are equal. The codimension
+estimate proves the claim; no diagonalization of H and B together is used.
+
+Apply this with B=L_(A_T), then the proved unit158 SPD adapter:
+
+ N_<c(L_A)<=h+R+alpha_D*c^p*(S_p+nu*T^(-p)).
+
+The left side, R and S_p are independent of T. Taking T to infinity proves
+(1); no convergence of eigenspaces or exchange of limits in a spectrum is
+required. For n=1, d=0,R=0 and the exact answer is h.
+
+Actual observation and nonlinear scope. Choose real orthonormal eigenvectors
+of L_A with lambda<c. Let C retain these coefficients and set
+Phi(y)=sum_(lambda<c)(c-lambda)y_lambda^2. Then Phi>=0 and
+
+ Q_A(u)+Phi(Cu)>=c||u||^2,
+ Phi(y)<=max_(lambda<c)(c-lambda)||y||^2.
+
+If no low mode exists take the zero output. The penalty constant is finite
+on each finite lattice; it is NOT claimed uniform for indefinite families.
+In fact with negative lambda the old choice Phi=c||y||^2 is insufficient.
+The correction must be stated rather than inherited from the SPD theorem.
+
+Sharpness of the defect coefficient. Take A(x)=0 for all x. Then L_A=0,
+S_p=0, P=I, R=rank(d)=h(V-1), so N_<c=hV=h+R. The same equality holds
+for A(x)=-I: L_A=-L0 is nonpositive. Thus the coefficient1 of R cannot
+be replaced by any smaller universal number. These examples show exactly
+why deleting positivity at no cost is false. They also force full observation
+rank under any differentiable-at-zero observation with locally quadratically
+bounded penalty, by the existing derivative-kernel dimension argument.
+
+Relationship to prior signed results. Unit156's extensive negative band is
+consistent with (1): a large coefficient-channel defect may cost volume order.
+This theorem does not rescue the refuted pointwise/frozen compensation route,
+and does not reduce the original low-rank target unless R itself is controlled.
+It makes that missing premise quantitative; it does not disguise it in a new
+structure. The original positive scalar critical rectangular question is OPEN,
+common-refinement STOPPED3, PR29=20/41,TermSource=0.
+
+Prior method context: unit158 imports Frank arXiv:1206.3325v1 Theorem3.1;
+the extra argument here is standard finite-rank min-max/interlacing, proved
+explicitly above. No new general spectral principle or independent novelty.
+Same continuing Codex author; no separate model or human review. No new
+Lean certificate or rating. Exact diagnostics, if executed, verify only the
+listed finite matrices and mutations, not this all-size analytic theorem.
