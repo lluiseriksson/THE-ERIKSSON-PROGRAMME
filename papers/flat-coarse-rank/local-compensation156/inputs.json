@@ -1,0 +1,18 @@
+{
+  "verify156.py": {
+    "path": "papers/flat-coarse-rank/local-compensation156/verify156.py",
+    "sha256": "044b9131059eb46d8dcea58741d3c669268193c0d03f2a775798bd6547ba2937"
+  },
+  "primary-source-context.json": {
+    "path": "papers/flat-coarse-rank/local-compensation156/primary-source-context.json",
+    "sha256": "17f133b6a60ed26cea65097513ca6f5d5dfeaaa6edbca2d2aacb6ca9806773f8"
+  },
+  "prior-proof155.md": {
+    "path": "papers/flat-coarse-rank/signed-diagonal155/proof-and-scope.md",
+    "sha256": "6a7577ccd99b1067ee99e10172651fafec96910410654a20bce750d6817d5abd"
+  },
+  "proof-and-scope.md": {
+    "path": "papers/flat-coarse-rank/local-compensation156/proof-and-scope.md",
+    "sha256": "58a883deffb9365f33e92dd40b546e14fcdc8789e2351fcb69951f0131dd4203"
+  }
+}

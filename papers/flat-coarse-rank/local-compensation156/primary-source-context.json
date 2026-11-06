@@ -1,0 +1,16 @@
+{
+  "checked_utc": "2026-11-06T04:40:52.2610767Z",
+  "scope": "Bounded primary-source comparison, not exhaustive priority verification",
+  "dossier_comparison": "155global a>kappa remains true. The new counterexample has min off2n^2 and max negative diagonal n^2R_D, so those global constants fail its sufficient inequality; only the proposed pointwise substitution is refuted.",
+  "verification": "Self-contained all-n analytic construction with separately scoped exact finite diagnostics",
+  "primary": {
+    "context": "General localization/homogenization failure is classical; their continuum elasticity setup is not identified with this explicit finite cochain signed family or negative-packet rank calculation",
+    "inspected": "Abstract and introduction, in particular distinction of pointwise strong ellipticity from global lower boundedness/coercivity",
+    "version": "arXiv1805.05150v2",
+    "url": "https://arxiv.org/html/1805.05150",
+    "uninspected": "Full proof of that31-page paper and underlying Geymonat/Muller/Triantafyllidis work not audited",
+    "authors": "Antoine Gloria,Matthias Ruf",
+    "title": "Loss of strong ellipticity through homogenization in2Dlinear elasticity:A phase diagram"
+  },
+  "novelty": "No new general ellipticity principle or established independent-discovery claim"
+}
