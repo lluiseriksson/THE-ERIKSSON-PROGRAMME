@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "base_sha": "88f31a1981b757b9240a9076e2012545066b9028",
+  "status": "PREPARED_NOT_EXECUTED",
+  "unit": 158,
+  "execution_plane": "own isolated Colab Pro+ Linux CPU runtime",
+  "primary_input": {
+    "url": "https://arxiv.org/html/1206.3325v1#S3.SS1",
+    "theorem": "Frank Theorem 3.1, q=D, finite counting measures",
+    "checked_in_writing": true,
+    "novel_classical_mechanism": false
+  },
+  "finite_replay": {
+    "D": 4,
+    "n": 2,
+    "h": [1, 2],
+    "arithmetic": "fractions.Fraction, no floating acceptance decisions",
+    "coefficients": "site-dependent rational SPD blocks diag(1,4) and [[2,-1],[-1,2]], coupled across derivative/component slots",
+    "objects": ["actual counting incidence d", "L0=d^T d", "constant projection P", "L0plus=(L0+P)^(-1)-P", "LA=d^T A d", "LAplus=(LA+P)^(-1)-P", "J=d L0plus"],
+    "identities": ["constant kernel dimension h", "d^T J=I-P", "exact rational PSD of J^T A^(-1) J-LAplus", "ordinary inertia low-mode counts against the stated trace inverse-square bound", "directed Fourier weak-count normalization with V=16"],
+    "mutations": ["replace an SPD block by an indefinite block", "alter a pseudoinverse entry", "drop the finite Fourier volume normalization"],
+    "acceptance": "explicit checks, nonzero on each actual rejected mutation, same output hashes in normal and python -O modes",
+    "universal_theorem_verified_by_fixtures": false
+  },
+  "separate_audit_required_before_manuscript_integration": ["square padding and source/target fibre spaces", "weak Schatten convention and Fourier L1-to-Linfinity norm", "inverse comparison direction", "exact dictionary for any intended physical form"],
+  "new_Lean_verification": false,
+  "external_model_assessment": null,
+  "existing_PDF_or_score_changed": false,
+  "active_question": "Original positive scalar critical unrestricted rectangular mean partition endpoint remains open",
+  "common_refinement_route": "STOPPED_AFTER_3_UNITS",
+  "pr29": "20/41; TermSource=0"
+}
