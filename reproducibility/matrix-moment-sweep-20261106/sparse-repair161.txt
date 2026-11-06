@@ -59,7 +59,25 @@ actual-rank optimization(1) can be strictly better because selected gradient
 rows can be dependent. This is a rank-truncation consequence of the classical
 input, not a new Cwikel inequality or a claimed original spectral principle.
 
-4. A genuine weakening of the inverse-moment premise for sparse contamination
+The CAPPED budget itself really does extend the old full moment budget.
+Write F_c=nu0+sum_positive min{1,w_j} and T_m=max{1,V/(1+m)^p}.
+If F_c<=K*T_m, equation(2) yields N_<c<=(h+K)*T_m. For SPD fields obeying
+the old normalized budget (1/(rV))*sum tr((m A^-1)^p)<=M, m>=1,
+one has F_c<=alpha*c^p*sum tr A^-p<=2^p*alpha*c^p*r*M*T_m.
+Thus EVERY old admissible family still satisfies a capped budget with an
+explicit uniform constant. Sparse zero channels are additionally permitted.
+
+A concrete strictly positive family proves that the converse fails, with
+no new moment condition assumed: set m=n^2, all rV channel eigenvalues m
+except ONE actual diagonal edge channel epsilon=n^(-4), n>=2. Then T_m=1
+and F_c<=1+alpha*c^p*r for all n, whereas the old normalized inverse moment
+is at least (m/epsilon)^p/(rV)=n^(2D)/r, unbounded as n->infinity.
+Hence the derived observation rank is uniformly bounded on this explicit
+family while every uniform full inverse-moment budget fails. This is an
+all-size algebraic example, not a numerical extrapolation or a claim that
+the particular sparse threshold criterion below subsumes every old family.
+
+4. An alternative sufficient premise admitting sparse signed contamination
 
 Fix m>=1. At every site select ALL eigenchannels with lambda<m, including
 the negative and zero ones. Denote this projection P_m and R_m=rank(P_m d).
@@ -80,11 +98,18 @@ k_m<=K*T_m, equation(3) gives, with constants independent of n and m,
 
 Proof: m^(-p)<=(2/(1+m))^p and T_m>=1. A sufficient directly local version
 is |B|<=B0*T_m, with K=rB0. These are explicit distribution/support conditions,
-not consequences of an arithmetic mean. The count condition is weaker than
-a full inverse-moment budget: even ONE zero channel violates the latter,
-and one positive channel tending to0 makes it diverge, whereas(3) has a
-uniform finite cost. The selected count/order still needs mathematical proof
-in any physical application; it has not been inferred or hidden in a structure.
+not consequences of an arithmetic mean. This admits families excluded by a
+full inverse-moment budget: even ONE zero channel violates the latter, and
+one positive channel tending to0 makes it diverge, whereas(3) has a uniform
+finite cost. But the two sufficient criteria are INCOMPARABLE in general,
+not a universal replacement theorem: A(x)=(m/2)I has normalized inverse moment
+(1/(rV))*sum tr((m A^-1)^p)=2^p for all m, yet ALL rV channels lie below m.
+Taking V/(1+m)^p>=1 and m->infinity makes k_m/T_m=r(1+m)^p unbounded.
+Thus the old moment budget may hold while this particular sparse-threshold
+condition fails. This corrects the earlier overly broad wording "weaker";
+equations(1)-(4) themselves and their explicit hypotheses are unchanged.
+The selected count/order still needs mathematical proof in any physical
+application; it has not been inferred or hidden in a structure.
 
 5. Exact topological computation in the diagonal edge case
 
