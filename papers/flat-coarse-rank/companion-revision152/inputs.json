@@ -11,12 +11,12 @@
   },
   "companion.tex": {
     "path": "papers/flat-coarse-rank/companion-revision152/companion.tex",
-    "sha256": "192616643d7c7b4bb89a85bce3784cfc232636aa2ea7087e8e66eddb0ce6ff77",
+    "sha256": "e3e8afe8bd8b1d57c7673e1f682b14d4ef54da66de62c8455ddcb55ef9517ea1",
     "binary": false
   },
   "physical-cycle.tex": {
     "path": "papers/flat-coarse-rank/companion-revision152/physical-cycle.tex",
-    "sha256": "5e6ed5fb653c841fbd23e1bde82ba9dd1e887b8dc864bc43023fa7808c8fa8cd",
+    "sha256": "17daeb30155cb3c26e0f71484d99f35050b8203d3638af65f38b18387f41f652",
     "binary": false
   },
   "tep-cube-fixtures139.zip": {
