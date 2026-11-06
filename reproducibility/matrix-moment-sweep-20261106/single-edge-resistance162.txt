@@ -1,0 +1,114 @@
+Base b121011090f4f36315cd639cda45e1ea94568106, unit162, 6 November2026.
+Supporting analytical adapter; grouped with158/159/161, not a new paper.
+
+A SIGNED COEFFICIENT FAMILY WITH A UNIFORM ACTUAL GAP AND NO DEPTH BOUND
+
+This proof is independent of the imported Cwikel estimate, not independent
+research priority or independent model review. Classical effective-resistance
+and rank-one congruence methods already treat negative graph weights:
+Zelazo/Burger, On the Definiteness of the Weighted Laplacian and its Connection
+to Effective Resistance (2014), TheoremIII.3, full theorem checked at
+https://connect-lab-technion.github.io/Publications/Zelazo_CDC14.pdf .
+Spielman's Lecture14 (2018), Claim14.6.2, proves the leverage projection and
+trace identity: https://www.cs.yale.edu/homes/spielman/561/lect14-18.pdf .
+No originality of that mechanism is claimed. The proof below fixes our actual
+torus incidence, including the duplicated orientation at n=2.
+
+1. Actual rank-one family
+
+Let D>=2,n>=2,V=n^D, h>=1 and use the unit-spacing forward gradient d from158.
+For ONE selected direction/component row e of d write v=d* e, a vector in
+the hV-dimensional field space. All coefficient channels equal m>0 except
+this one, whose coefficient is -B, B>=0. Thus
+
+ H=mL0-(m+B)vv*,      L0=d*d.
+
+All constant fields are annihilated. On their orthogonal complement let
+G=L0^-1, and put rho=v*Gv. The actual value is
+
+ rho=(V-1)/(D V).                                      (1)
+
+Proof. The scalar torus translations and coordinate permutations act
+transitively on its DV forward rows and preserve L0 and its pseudoinverse.
+Their leverage values are equal. Their sum is
+Tr(d G d*)=Tr(G L0)=V-1 in one component. For h components they decouple,
+so each of the DVh rows has the same value as in the scalar case. Parallel
+reverse rows at n=2 are still counted individually, exactly as in d.
+
+2. Exact phase boundary, not an assumed certificate
+
+On the mean-zero space, congruence by G^(1/2) turns H into
+m I-(m+B)ww*, where w=G^(1/2)v and ||w||^2=rho>0. Sylvester inertia
+therefore gives the sharp threshold
+
+ Bcrit=m*(D V/(V-1)-1).
+
+For B<Bcrit, H is positive definite on mean-zero fields. At B=Bcrit it
+has exactly one extra zero direction there; for B>Bcrit it has exactly one
+negative direction there. Add the h constant zero modes in each case.
+The equality witness is Gv: H Gv=[m-(m+B)rho]v. No simultaneous spectral
+diagonalization with L0 is asserted. This is also the classical one-negative-
+edge effective-resistance threshold, expressed via the full positive reference
+graph rather than via the graph with the changed edge removed.
+
+For every mean-zero u, Cauchy-Schwarz in the L0 energy gives
+|v*u|^2<=rho<u,L0u>. Hence
+
+ <u,Hu> >= [m-(m+B)rho]<u,L0u>.                          (2)
+
+The constant in this comparison is attained at u=Gv, so the energy-relative
+comparison threshold itself is sharp. This does not say that the following
+Euclidean gap lower bound is the exact first positive eigenvalue.
+
+3. A uniform finite gap despite negative coefficient depth growing to infinity
+
+Set m=n^2, B=theta*m, with a fixed 0<=theta<D-1. Since rho<1/D,
+m-(m+B)rho >= m*(D-1-theta)/D. The actual torus Fourier eigenvalues of L0
+are4 sum_i sin^2(pi*k_i/n). On mean-zero fields their minimum is
+4sin^2(pi/n)>=16/n^2, by sin(t)>=2t/pi for0<=t<=pi/2. Equation(2) gives
+
+ <u,Hu> >= g ||u||^2,  g=16*(D-1-theta)/D>0, u mean-zero.
+
+Define the actual normalized observation C(u)=V^(-1/2)sum_x u(x) in R^h.
+For any0<c<=g and Phi(y)=c||y||^2,
+
+ Q_A(u)+Phi(Cu)>=c||u||^2,       rank C=h, ||C||=1.
+
+Its rank is optimal because the h-dimensional constant kernel must be seen
+by any differentiable-at-zero observation with locally quadratically bounded
+penalty, or simply by any linear observation. The proof uses the constructed
+gap, not a supplied spectral/nonlinear certificate.
+
+For theta>0, the negative coefficient depth b=theta*n^2 diverges as n grows,
+yet this observation has the UNIFORM penalty c. Thus a uniform depth bound
+is sufficient for159's generic estimate, not necessary for every signed
+family. This does not contradict161's large-B counterexample with FIXED m:
+the admissible relative depth B/m here stays strictly below the exact
+threshold, while that counterexample sends it to infinity. The signed
+coefficient matrix A is indefinite, but the actual gradient form H is
+nonnegative through graph redundancy. One must distinguish those statements.
+
+The whole one-channel family also obeys N_<c(H)<=h+1 whenever
+0<c<=16m/n^2: apply rank-one interlacing to mL0, whose nonconstant spectrum
+starts at least16m/n^2. At/above Bcrit this bound is attained because the
+extra zero/negative direction is strictly below c. Below Bcrit and c<=g,
+the stronger exact count h follows from the proved uniform gap.
+
+4. Limits and review context
+
+This is an analytic all-size finite-graph derivation prepared after the162
+sparse-fixture replay. The replay at f644c093 DID NOT test this new formula,
+its leverage identity or its equality threshold. Those need pinned exact
+inertia/Green-witness checks at n=2 and n=3 and below/equal/above Bcrit,
+with normal/-O genuine mutations, before manuscript integration.
+No Lean, independent model/human audit, model score or new PDF is claimed.
+Exact preparing backend identity is not exposed. The classical primary
+sources prevent attributing a new general negative-weight principle here.
+
+All gradients here have unit spacing; the m=n^2 scaling is explicitly a
+coefficient choice. This finite actual gap is NOT an interacting Yang-Mills
+spectral gap, continuum construction or missing physical form dictionary.
+It neither restores the refuted frozen-compensation route nor settles the
+original positive critical rectangular question. That remains the sole active
+research question; this supporting family has an explicit derived answer.
+PR29=20/41,TermSource=0. No AIRR deposit or separate small-corollary paper.
