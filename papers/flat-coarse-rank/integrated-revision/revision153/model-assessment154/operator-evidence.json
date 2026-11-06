@@ -1,0 +1,58 @@
+{
+  "contextual_clarifications": [
+    "2R<n fixed Section4 applies Section5",
+    "Section11 m budget distinct from internal dimension"
+  ],
+  "score_modified": false,
+  "source_checks": "Direct exact source and recovered PDF text; four final page images re-inspected. No new rendering or mathematical oracle.",
+  "render_source": "4e0e2f76a375b70105bcdcd1c00d23dc14e7a5ce",
+  "pages": [
+    {
+      "sha256": "881d0d0aa0ded54d7ce1677cfef6b987731ba3b1ea5f78a9119e7e21e352e09c",
+      "archive_member": "page-04.jpg",
+      "page": 4,
+      "visually_reinspected": false
+    },
+    {
+      "sha256": "135118a3ecccbf6ee5fe1d81b8ed2378e0e1ca5f82169f2d84912811873c5e46",
+      "archive_member": "page-05.jpg",
+      "page": 5,
+      "visually_reinspected": true
+    },
+    {
+      "sha256": "3188a743b736e5f7c03daf2c6212bd7a28cf666a903f6e802e65c05a1b3c1aa7",
+      "archive_member": "page-14.jpg",
+      "page": 14,
+      "visually_reinspected": false
+    },
+    {
+      "sha256": "2d13890ddb6f870736d5ebb5c9fe507824e12e95087a828ce02ed2df16577024",
+      "archive_member": "page-16.jpg",
+      "page": 16,
+      "visually_reinspected": true
+    },
+    {
+      "sha256": "9d7387e70ceeb6101d87514831f6f4a367255a7bced1310d9c6d139511e60dda",
+      "archive_member": "page-27.jpg",
+      "page": 27,
+      "visually_reinspected": true
+    },
+    {
+      "sha256": "245b24ccd1a171a5c068095540aeeebde5f7abb4b7793aefcb5ade20c3a95751",
+      "archive_member": "page-32.jpg",
+      "page": 32,
+      "visually_reinspected": true
+    }
+  ],
+  "PDF_modified": false,
+  "artifact_commit": "609753048ac3bc3f11bfd3d3332ed85fdeae0294",
+  "pdf_sha256": "ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389",
+  "sobolev_source_sha256": "50cb98c9f963f554bf82744da24dbc368f538e3c4e762958c8f0e033e40fe983",
+  "repro_zip_sha256": "4e86e9088134a1c7b23900aff0816cab440847b233f0060ea337f0bb7ecb13f8",
+  "master_source_sha256": "10906f6593d49d8db022abf3fde608ac3b08a64d35f424b55c023cc800b519f3",
+  "false_readings": [
+    "p16 already liminf",
+    "p27 already margin2c",
+    "p32 already D^(1/q-prime)"
+  ]
+}

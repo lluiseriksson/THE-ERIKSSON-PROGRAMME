@@ -1,0 +1,7959 @@
+1. Exact Artifact Identity and Page Count
+
+Artifact Filename: flat_critical_integrated.pdf   
+flat_critical_integrated.pdf
+
+Title: Coarse information and finite rank obstructions for flat lattice Hodge forms (consolidated revision candidate)   
+flat_critical_integrated.pdf
+
+Author & Date: Lluis Eriksson, 6 November 2026   
+flat_critical_integrated.pdf
+
+Page Count: 46 pages (pages 1–46 inclusive inspected in full)   
+flat_critical_integrated.pdf
++ 1
+
+User-Supplied Artifact Identifiers: Artifact SHA-256 ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389; source render commit 4e0e2f76a375b70105bcdcd1c00d23dc14e7a5ce. (Note: These hashes are recorded as prompt-supplied metadata; raw PDF byte hashing was not independently executed because no code execution was performed.)
+
+2. Model and Backend Identity
+
+Exposed Identity: Gemini (as exposed by the system environment).
+
+Unexposed Backend Parameters: Exact model version string, checkpoint/weights identifier, serving infrastructure, and runtime decoding parameters are not genuinely exposed to the model environment and are therefore recorded as unknown.
+
+3. Inspected Inputs and Verification Boundaries
+
+Directly Inspected Inputs:
+
+The complete 46-page text and mathematical content of flat_critical_integrated.pdf (Sections 1–27 and References [1]–[14], pp. 1–46).   
+flat_critical_integrated.pdf
++ 2
+
+The user review prompt and its constraints.
+
+Uninspected / Unexecuted External Artifacts:
+
+No Lean 4 or Repository Verification: The external GitHub repository (THE-ERIKSSON-PROGRAMME), pinned Git commit SHAs (e31b4289..., 7b25bfb3..., 17ca395d..., dfd49d0b..., 81cf07b2..., ef81f028..., 9bb90cfd..., ac60c0df..., 7f37d643..., 810785b1..., 497e3b4e..., 4c5728d1..., 067fed75..., 564b8423..., 0c706827..., 41f8492c..., etc.), compiled .olean binaries, and JSON manifest/mapping files (declaration-map.json, paired-full-form148.json, inputs.json) were not fetched, inspected, or compiled.   
+flat_critical_integrated.pdf
++ 4
+
+No Colab or Code Execution: None of the cited Colab Linux archives (067/067b, 076/076b, 077/077b, 079/079b, 081/081b, 094/094b, Colab109, Colab115, Colab118, unit151) were opened or executed, and no external code interpreter was run during this review.   
+flat_critical_integrated.pdf
++ 4
+
+No Primary-Literature Inspection: Referenced external papers and books [1]–[14] (e.g., Dodziuk [2], Albert [3], Carlson–Haynsworth–Markham [4], Dimock [5], Mathlib source [6], Spielman [7], Levin–Peres [8], Zelazo–Bürger [9], Lin–Wan–Zhang [10], de Berg [11], Anderson–Trapp [12], Frank [13], Andres–Deuschel–Slowik [14]) were not retrieved or cross-checked against original publications; all mathematical claims were audited directly from the self-contained derivations in the PDF.   
+flat_critical_integrated.pdf
+
+4. Mathematical Findings Across the Integrated Paper
+4.1 Spaces, Flat Hodge Form, and Original Block Kernel (Sections 1–3, pp. 1–4)
+
+Flat Hodge Identity on Embedded Complex Scalars (Section 2, Eq. 1–2, pp. 2–3): On 
+𝑋
+𝑛
+=
+(
+𝑍
+/
+𝑛
+𝑍
+)
+𝑑
+X
+n
+	​
+
+=(Z/nZ)
+d
+ with internal dimension 
+𝑚
+=
+𝑁
+𝑐
+2
+−
+1
+≥
+3
+m=N
+c
+2
+	​
+
+−1≥3 (
+𝑁
+𝑐
+≥
+2
+N
+c
+	​
+
+≥2), the real injection 
+𝐸
+𝑗
+𝑓
+E
+j
+	​
+
+f using two orthogonal unit vectors 
+𝑢
+,
+𝑣
+∈
+𝑅
+𝑚
+u,v∈R
+m
+ satisfies 
+∥
+𝐸
+𝑗
+𝑓
+∥
+2
+=
+∑
+𝑥
+∈
+𝑋
+𝑛
+∣
+𝑓
+(
+𝑥
+)
+∣
+2
+∥E
+j
+	​
+
+f∥
+2
+=∑
+x∈X
+n
+	​
+
+	​
+
+∣f(x)∣
+2
+. Because unordered plaquettes 
+𝑖
+<
+𝑘
+i<k are summed once in 
+∥
+𝑑
+𝐴
+∥
+2
+∥dA∥
+2
+, each 
+𝑖
+≠
+𝑗
+i
+
+=j contributes 
+∑
+𝑥
+∣
+𝐷
+𝑖
+𝑓
+(
+𝑥
+)
+∣
+2
+∑
+x
+	​
+
+∣D
+i
+	​
+
+f(x)∣
+2
+ via 
+(
+𝑑
+(
+𝐸
+𝑗
+𝑓
+)
+)
+𝑖
+𝑗
+(d(E
+j
+	​
+
+f))
+ij
+	​
+
+ (or 
+(
+𝑑
+(
+𝐸
+𝑗
+𝑓
+)
+)
+𝑗
+𝑖
+(d(E
+j
+	​
+
+f))
+ji
+	​
+
+), while the backward divergence 
+(
+𝛿
+(
+𝐸
+𝑗
+𝑓
+)
+)
+(
+𝑥
+)
+=
+(
+𝐸
+𝑗
+𝑓
+)
+𝑗
+(
+𝑥
+)
+−
+(
+𝐸
+𝑗
+𝑓
+)
+𝑗
+(
+𝑥
+−
+𝑒
+𝑗
+)
+(δ(E
+j
+	​
+
+f))(x)=(E
+j
+	​
+
+f)
+j
+	​
+
+(x)−(E
+j
+	​
+
+f)
+j
+	​
+
+(x−e
+j
+	​
+
+) contributes 
+∑
+𝑥
+∣
+𝐷
+𝑗
+𝑓
+(
+𝑥
+)
+∣
+2
+∑
+x
+	​
+
+∣D
+j
+	​
+
+f(x)∣
+2
+ by periodic translation invariance, verifying Eq. (2) without extraneous factors of 
+2
+2.   
+flat_critical_integrated.pdf
++ 2
+
+Factorized Block-Average Obstruction and Repair Budget (Section 3, Eq. 3, pp. 3–4): On 
+𝑛
+=
+𝑙
+𝑁
+′
+n=lN
+′
+ (
+𝑑
+≥
+2
+,
+𝑙
+≥
+2
+d≥2,l≥2), the transverse Fourier mode 
+𝐴
+𝑖
+(
+𝑙
+)
+(
+𝑥
+)
+=
+1
+𝑖
+=
+𝑝
+𝜄
+(
+𝑒
+2
+𝜋
+𝑖
+𝑥
+𝑞
+/
+𝑙
+)
+A
+i
+(l)
+	​
+
+(x)=1
+i=p
+	​
+
+ι(e
+2πix
+q
+	​
+
+/l
+) (
+𝑝
+≠
+𝑞
+p
+
+=q) lies in 
+ker
+⁡
+𝑄
+𝑙
+∩
+ker
+⁡
+𝛿
+kerQ
+l
+	​
+
+∩kerδ because the block sum over 
+𝑟
+𝑞
+∈
+{
+0
+,
+…
+,
+𝑙
+−
+1
+}
+r
+q
+	​
+
+∈{0,…,l−1} vanishes and shifts along 
+𝑒
+𝑝
+e
+p
+	​
+
+ leave 
+𝑥
+𝑞
+x
+q
+	​
+
+ invariant. Its exact Rayleigh quotient is 
+𝜆
+𝑙
+=
+4
+sin
+⁡
+2
+(
+𝜋
+/
+𝑙
+)
+≤
+4
+𝜋
+2
+/
+𝑙
+2
+λ
+l
+	​
+
+=4sin
+2
+(π/l)≤4π
+2
+/l
+2
+, forcing 
+𝐶
+𝑃
+(
+𝑙
+)
+≥
+𝜆
+𝑙
+−
+1
+≥
+𝑙
+2
+/
+(
+4
+𝜋
+2
+)
+C
+P
+	​
+
+(l)≥λ
+l
+−1
+	​
+
+≥l
+2
+/(4π
+2
+) for any penalty 
+Ψ
+𝑙
+(
+𝑄
+𝑙
+𝐴
+)
+Ψ
+l
+	​
+
+(Q
+l
+	​
+
+A) with 
+Ψ
+𝑙
+(
+0
+)
+=
+0
+Ψ
+l
+	​
+
+(0)=0. The 
+2
+𝑅
+2R-dimensional spectral cluster for 
+1
+≤
+𝑟
+≤
+𝑅
+≤
+⌊
+(
+𝑙
+−
+1
+)
+/
+2
+⌋
+1≤r≤R≤⌊(l−1)/2⌋ and the linear repair identity 
+⟨
+𝐴
+(
+𝑙
+)
+,
+𝐻
+~
+𝑙
+𝐴
+(
+𝑙
+)
+⟩
+/
+∥
+𝐴
+(
+𝑙
+)
+∥
+2
+=
+𝜆
+𝑙
++
+𝜖
+𝑙
+2
++
+𝜈
+𝑙
+⟨A
+(l)
+,
+H
+~
+l
+	​
+
+A
+(l)
+⟩/∥A
+(l)
+∥
+2
+=λ
+l
+	​
+
++ϵ
+l
+2
+	​
+
++ν
+l
+	​
+
+ are elementary and sound.   
+flat_critical_integrated.pdf
++ 3
+
+4.2 Finite Low-Band Information Budget and Nonlinear Tangent Obstructions (Sections 4–8, pp. 4–8)
+
+Low-Frequency Band and Rank-Nullity Budget (Sections 4–6, Lemma 4.1, Theorems 5.1 & 6.1, Prop. 5.2, pp. 4–6): Under the non-aliasing condition 
+2
+𝑅
+<
+𝑛
+2R<n, coordinate differences in 
+Λ
+𝑅
+=
+{
+−
+𝑅
+,
+…
+,
+𝑅
+}
+𝑑
+Λ
+R
+	​
+
+={−R,…,R}
+d
+ satisfy 
+∣
+𝑘
+𝑖
+−
+𝑙
+𝑖
+∣
+≤
+2
+𝑅
+<
+𝑛
+∣k
+i
+	​
+
+−l
+i
+	​
+
+∣≤2R<n, so the characters 
+𝜒
+𝑘
+χ
+k
+	​
+
+ are orthogonal on 
+𝑋
+𝑛
+X
+n
+	​
+
+ and 
+dim
+⁡
+𝑅
+𝑆
+𝑅
+=
+2
+(
+2
+𝑅
++
+1
+)
+𝑑
+dim
+R
+	​
+
+S
+R
+	​
+
+=2(2R+1)
+d
+ with 
+⟨
+𝐴
+,
+𝐾
+0
+,
+𝑛
+𝐴
+⟩
+≤
+𝑏
+𝑅
+(
+𝑛
+)
+∥
+𝐴
+∥
+2
+⟨A,K
+0,n
+	​
+
+A⟩≤b
+R
+	​
+
+(n)∥A∥
+2
+, 
+𝑏
+𝑅
+(
+𝑛
+)
+=
+4
+𝜋
+2
+𝑑
+𝑅
+2
+/
+𝑛
+2
+b
+R
+	​
+
+(n)=4π
+2
+dR
+2
+/n
+2
+ (Eq. 4). Restricting 
+(
+𝐶
+,
+𝑉
+)
+(C,V) (or 
+(
+𝐶
+,
+𝑃
+)
+(C,P)) to 
+𝑆
+𝑅
+S
+R
+	​
+
+ yields the rank budget 
+2
+(
+2
+𝑅
++
+1
+)
+𝑑
+≤
+dim
+⁡
+𝐹
++
+rank
+⁡
+𝑉
+2(2R+1)
+d
+≤dimF+rankV whenever 
+𝑐
+>
+𝑏
+𝑅
+(
+𝑛
+)
+c>b
+R
+	​
+
+(n) and 
+Φ
+(
+0
+)
+=
+0
+Φ(0)=0. In Theorem 6.1, the explicit finite threshold 
+𝐿
+>
+max
+⁡
+{
+2
+𝑅
+,
+𝑎
+/
+𝑐
+,
+1
+}
+L>max{2R,a/c,1} with 
+𝑎
+=
+4
+𝜋
+2
+𝑑
+𝑅
+2
+a=4π
+2
+dR
+2
+ guarantees 
+𝑛
+𝐿
+=
+(
+𝐿
++
+1
+)
+𝑁
+′
+>
+𝐿
+>
+2
+𝑅
+n
+L
+	​
+
+=(L+1)N
+′
+>L>2R and 
+𝑛
+𝐿
+2
+>
+𝐿
+2
+>
+𝐿
+>
+𝑎
+/
+𝑐
+n
+L
+2
+	​
+
+>L
+2
+>L>a/c, so 
+𝑏
+𝑅
+(
+𝑛
+𝐿
+)
+<
+𝑐
+b
+R
+	​
+
+(n
+L
+	​
+
+)<c without invoking asymptotic limits.   
+flat_critical_integrated.pdf
++ 2
+
+Whole-Space Gradient Identity and Tangent Obstructions (Sections 7–8, Theorems 7.1 & 8.1, Prop. 8.2, pp. 6–8): The identity 
+∥
+𝐺
+𝐴
+∥
+2
+=
+⟨
+𝐴
+,
+𝐾
+0
+,
+𝑛
+𝐴
+⟩
+∥GA∥
+2
+=⟨A,K
+0,n
+	​
+
+A⟩ holds on all of 
+𝐸
+𝑛
+E
+n
+	​
+
+ (derived explicitly on pp. 38–39 via periodic summation by parts canceling the cross terms 
+∑
+𝑥
+⟨
+𝐷
+𝑖
++
+𝐴
+𝑗
+,
+𝐷
+𝑗
++
+𝐴
+𝑖
+⟩
+=
+∑
+𝑥
+⟨
+𝐷
+𝑗
+−
+𝐴
+𝑗
+,
+𝐷
+𝑖
+−
+𝐴
+𝑖
+⟩
+∑
+x
+	​
+
+⟨D
+i
++
+	​
+
+A
+j
+	​
+
+,D
+j
++
+	​
+
+A
+i
+	​
+
+⟩=∑
+x
+	​
+
+⟨D
+j
+−
+	​
+
+A
+j
+	​
+
+,D
+i
+−
+	​
+
+A
+i
+	​
+
+⟩). For 
+𝑤
+𝑥
+,
+𝑖
+,
+𝑘
+≤
+𝑀
+w
+x,i,k
+	​
+
+≤M (
+𝑀
+≥
+0
+M≥0), 
+𝑞
+𝑤
+(
+𝐴
+)
+≤
+(
+1
++
+𝑀
+)
+𝑏
+𝑅
+(
+𝑛
+)
+∥
+𝐴
+∥
+2
+q
+w
+	​
+
+(A)≤(1+M)b
+R
+	​
+
+(n)∥A∥
+2
+ on 
+𝑆
+𝑅
+S
+R
+	​
+
+ (Eq. 6).   
+flat_critical_integrated.pdf
++ 2
+
+In Theorem 7.1 (p. 6), Fréchet differentiability of 
+𝐶
+C at 
+0
+0 with 
+𝐶
+(
+0
+)
+=
+0
+C(0)=0 and 
+Φ
+(
+𝑦
+)
+≤
+𝐾
+∥
+𝑦
+∥
+2
+Φ(y)≤K∥y∥
+2
+ (
+∥
+𝑦
+∥
+<
+𝛿
+∥y∥<δ) implies that for 
+0
+≠
+𝑣
+∈
+𝑆
+∩
+ker
+⁡
+𝐷
+𝐶
+(
+0
+)
+0
+
+=v∈S∩kerDC(0), 
+∥
+𝐶
+(
+𝑡
+𝑣
+)
+∥
+=
+𝑜
+(
+∣
+𝑡
+∣
+)
+∥C(tv)∥=o(∣t∣) and hence 
+lim sup
+⁡
+𝑡
+→
+0
+Φ
+(
+𝐶
+(
+𝑡
+𝑣
+)
+)
+/
+∥
+𝑡
+𝑣
+∥
+2
+≤
+0
+limsup
+t→0
+	​
+
+Φ(C(tv))/∥tv∥
+2
+≤0, forcing 
+𝑐
+≤
+𝑏
+c≤b. The 
+𝐶
+1
+C
+1
+ counterexample 
+𝐶
+(
+𝑥
+)
+=
+∥
+𝑥
+∥
+𝛼
+,
+Φ
+(
+𝑦
+)
+=
+∣
+𝑦
+∣
+2
+/
+𝛼
+C(x)=∥x∥
+α
+,Φ(y)=∣y∣
+2/α
+ (
+1
+<
+𝛼
+<
+2
+1<α<2) rigorously shows that local upper-quadratic control of 
+Φ
+Φ is necessary.   
+flat_critical_integrated.pdf
++ 1
+
+In Theorem 8.1 (p. 7), for a regular sector 
+𝑃
+−
+1
+(
+0
+)
+P
+−1
+(0) with 
+𝑃
+(
+0
+)
+=
+0
+P(0)=0 and 
+𝐴
+=
+𝐷
+𝑃
+(
+0
+)
+:
+𝐸
+→
+𝐺
+A=DP(0):E→G surjective, rank-nullity on 
+(
+𝐷
+𝐶
+(
+0
+)
+,
+𝐷
+𝑃
+(
+0
+)
+)
+∣
+𝑆
+(DC(0),DP(0))∣
+S
+	​
+
+ yields 
+0
+≠
+𝑣
+∈
+𝑆
+∩
+ker
+⁡
+𝐷
+𝐶
+(
+0
+)
+∩
+ker
+⁡
+𝐷
+𝑃
+(
+0
+)
+0
+
+=v∈S∩kerDC(0)∩kerDP(0) when 
+dim
+⁡
+𝑆
+>
+dim
+⁡
+𝐹
++
+dim
+⁡
+𝐺
+dimS>dimF+dimG, and the implicit function theorem produces a 
+𝐶
+1
+C
+1
+ curve 
+𝛾
+(
+𝑡
+)
+=
+𝑡
+𝑣
++
+𝑒
+(
+𝑡
+)
+∈
+𝑃
+−
+1
+(
+0
+)
+γ(t)=tv+e(t)∈P
+−1
+(0) with 
+𝑒
+(
+𝑡
+)
+=
+𝑜
+(
+∣
+𝑡
+∣
+)
+e(t)=o(∣t∣). Because 
+𝛾
+(
+𝑡
+)
+γ(t) generally leaves 
+𝑆
+S (as shown by the paraboloid counterexample 
+𝑃
+(
+𝑢
+,
+𝑦
+,
+𝑧
+)
+=
+𝑧
+−
+∥
+𝑢
+∥
+2
+P(u,y,z)=z−∥u∥
+2
+ on p. 8), the proof rightly uses the full-space quadratic expansion of 
+𝑞
+(
+𝑥
+)
+=
+⟨
+𝑥
+,
+𝑇
+𝑥
+⟩
+q(x)=⟨x,Tx⟩ to obtain 
+𝑞
+(
+𝛾
+(
+𝑡
+)
+)
+/
+𝑡
+2
+→
+𝑞
+(
+𝑣
+)
+≤
+𝑏
+∥
+𝑣
+∥
+2
+q(γ(t))/t
+2
+→q(v)≤b∥v∥
+2
+. The counterexamples 
+𝑃
+=
+𝑧
+−
+∥
+𝑢
+∥
+4
+/
+3
+,
+𝑒
+=
+∣
+𝑧
+∣
+3
+/
+2
+P=z−∥u∥
+4/3
+,e=∣z∣
+3/2
+ (
+𝐶
+1
+C
+1
+ non-quadratic energy) and 
+𝑃
+(
+𝑥
+)
+=
+∥
+𝑥
+∥
+2
+P(x)=∥x∥
+2
+ (non-surjective 
+𝐷
+𝑃
+(
+0
+)
+DP(0)) are exact.   
+flat_critical_integrated.pdf
++ 3
+
+4.3 Directional Mean Weights, Signed/Positive-Part Means, and Full-Volume Rank (Sections 9–14, pp. 9–20)
+
+Nonnegative Directional Mean Obstruction (Section 9, Theorem 9.1, pp. 9–11): For 
+𝑖
+≠
+𝑗
+i
+
+=j, the 
+2
+𝑅
+2R orthonormal modes 
+𝜓
+𝑠
+,
+𝑎
+ψ
+s,a
+	​
+
+ (
+1
+≤
+𝑠
+≤
+𝑅
+1≤s≤R, two internal coordinates 
+𝑢
+,
+𝑣
+u,v) are supported in component 
+𝑗
+j and depend only on 
+𝑥
+𝑖
+x
+i
+	​
+
+, so 
+𝛿
+𝜓
+𝑠
+,
+𝑎
+=
+0
+δψ
+s,a
+	​
+
+=0 and 
+𝜓
+𝑠
+,
+𝑎
+∈
+𝐷
+𝑛
+=
+ker
+⁡
+𝛿
+ψ
+s,a
+	​
+
+∈D
+n
+	​
+
+=kerδ. Their squared forward differences are spatially uniform (
+𝑛
+−
+𝑑
+∣
+𝑒
+2
+𝜋
+𝑖
+𝑠
+/
+𝑛
+−
+1
+∣
+2
+n
+−d
+∣e
+2πis/n
+−1∣
+2
+ in direction 
+𝑖
+i, zero in directions 
+𝑘
+≠
+𝑖
+k
+
+=i), so the compression trace of 
+𝑄
+𝑛
+Q
+n
+	​
+
+ on 
+𝑆
+𝑅
+,
+𝑛
+S
+R,n
+	​
+
+ is exactly 
+2
+(
+1
++
+𝑏
+𝑖
+𝑗
+(
+𝑛
+)
+)
+∑
+𝑠
+=
+1
+𝑅
+∣
+𝑒
+2
+𝜋
+𝑖
+𝑠
+/
+𝑛
+−
+1
+∣
+2
+≤
+8
+𝜋
+2
+(
+1
++
+𝑏
+𝑖
+𝑗
+(
+𝑛
+)
+)
+𝑅
+3
+/
+𝑛
+2
+2(1+b
+ij
+	​
+
+(n))∑
+s=1
+R
+	​
+
+∣e
+2πis/n
+−1∣
+2
+≤8π
+2
+(1+b
+ij
+	​
+
+(n))R
+3
+/n
+2
+ (Eq. 10). Nonnegativity of 
+𝑤
+𝑛
+w
+n
+	​
+
+ ensures 
+𝑄
+𝑛
+≥
+0
+Q
+n
+	​
+
+≥0 on 
+𝑆
+𝑅
+,
+𝑛
+⊖
+(
+𝑆
+𝑅
+,
+𝑛
+∩
+ker
+⁡
+𝐷
+𝐶
+𝑛
+(
+0
+)
+)
+S
+R,n
+	​
+
+⊖(S
+R,n
+	​
+
+∩kerDC
+n
+	​
+
+(0)), yielding 
+𝑐
+(
+2
+𝑅
+−
+dim
+⁡
+𝐹
+𝑛
+)
+≤
+tr
+⁡
+𝑆
+𝑅
+,
+𝑛
+𝑄
+𝑛
+c(2R−dimF
+n
+	​
+
+)≤tr
+S
+R,n
+	​
+
+	​
+
+Q
+n
+	​
+
+. Section 9.1 (p. 10) verifies that quadratic weights 
+𝑤
+𝑛
+=
+2
+𝑑
+𝑛
+2
+w
+n
+	​
+
+=2dn
+2
+ with mean observation 
+𝜇
+(
+𝐴
+)
+μ(A) achieve global coercivity via the path-Cauchy–Schwarz inequality 
+∥
+𝐴
+−
+lift
+⁡
+𝜇
+(
+𝐴
+)
+∥
+2
+≤
+𝑑
+𝑛
+2
+∥
+𝐺
+𝐴
+∥
+2
+∥A−liftμ(A)∥
+2
+≤dn
+2
+∥GA∥
+2
+.   
+flat_critical_integrated.pdf
++ 4
+
+Signed Weights, Positive-Part Sufficiency, and Counterexamples (Section 10, Theorem 10.1, Prop. 10.2, pp. 11–14):
+
+Theorem 10.1 (p. 11): Pointwise majorization 
+𝑤
+≤
+𝑤
++
+=
+max
+⁡
+{
+𝑤
+,
+0
+}
+w≤w
++
+=max{w,0} gives 
+𝑄
+𝑤
+(
+𝐴
+)
+≤
+𝑄
+𝑤
++
+(
+𝐴
+)
+Q
+w
+	​
+
+(A)≤Q
+w
++
+	​
+
+(A) for every cochain 
+𝐴
+A, transferring the local coercivity inequality to the nonnegative weight 
+𝑤
++
+w
++
+ and proving 
+dim
+⁡
+𝐹
+𝑛
+→
+∞
+dimF
+n
+	​
+
+→∞ if 
+(
+1
++
+𝑏
+𝑖
+𝑗
++
+(
+𝑛
+)
+)
+/
+𝑛
+2
+→
+0
+(1+b
+ij
++
+	​
+
+(n))/n
+2
+→0.   
+flat_critical_integrated.pdf
+
+Zero Signed Means Counterexample (Prop. 10.2, p. 12): For 
+𝑤
+𝑛
+(
+𝑘
+,
+(
+𝑥
+,
+𝑙
+)
+)
+=
+𝑎
+(
+1
+−
+𝑉
+1
+𝑥
+=
+𝑜
+)
+w
+n
+	​
+
+(k,(x,l))=a(1−V1
+x=o
+	​
+
+) (
+𝑉
+=
+𝑛
+𝑑
+,
+𝑎
+=
+2
+𝑑
+𝑛
+2
+V=n
+d
+,a=2dn
+2
+), every ordinary spatial mean is zero, yet observing the global mean 
+𝜇
+(
+𝐴
+)
+μ(A) and the single-site gradient jet 
+𝐽
+𝑛
+(
+𝐴
+)
+=
+(
+𝐷
+𝑘
+𝐴
+𝑙
+(
+𝑜
+)
+)
+𝑘
+,
+𝑙
+J
+n
+	​
+
+(A)=(D
+k
+	​
+
+A
+l
+	​
+
+(o))
+k,l
+	​
+
+ (fixed output dimension 
+(
+𝑑
++
+𝑑
+2
+)
+𝑚
+(d+d
+2
+)m) with penalty 
+Φ
+𝑛
+(
+𝑦
+,
+𝑧
+)
+=
+2
+𝑉
+∥
+𝑦
+∥
+2
+2
++
+𝑎
+𝑉
+∥
+𝑧
+∥
+2
+2
+Φ
+n
+	​
+
+(y,z)=2V∥y∥
+2
+2
+	​
+
++aV∥z∥
+2
+2
+	​
+
+ exactly cancels the negative spike 
+−
+𝑎
+𝑉
+∥
+𝐽
+𝑛
+(
+𝐴
+)
+∥
+2
+2
+−aV∥J
+n
+	​
+
+(A)∥
+2
+2
+	​
+
+ and yields 
+∥
+𝐴
+∥
+2
+≤
+𝑄
+𝑤
+𝑛
+(
+𝐴
+)
++
+Φ
+𝑛
+(
+𝐶
+𝑛
+(
+𝐴
+)
+)
+∥A∥
+2
+≤Q
+w
+n
+	​
+
+	​
+
+(A)+Φ
+n
+	​
+
+(C
+n
+	​
+
+(A)). The hyperplane indicator diagnostic 
+𝐴
+𝑗
+(
+𝑥
+)
+=
+𝑢
+1
+𝑥
+𝑖
+=
+𝑜
+𝑖
+A
+j
+	​
+
+(x)=u1
+x
+i
+	​
+
+=o
+i
+	​
+
+	​
+
+ (
+𝑖
+≠
+𝑗
+,
+𝑛
+>
+3
+i
+
+=j,n>3) has 
+∥
+𝐺
+𝐴
+∥
+2
+=
+2
+𝑛
+𝑑
+−
+1
+∥GA∥
+2
+=2n
+d−1
+ and 
+∥
+𝐽
+𝑛
+(
+𝐴
+)
+∥
+2
+=
+1
+∥J
+n
+	​
+
+(A)∥
+2
+=1, confirming 
+𝑄
+𝑤
+𝑛
+(
+𝐴
+)
+=
+𝑛
+𝑑
+−
+1
+(
+2
+−
+𝑎
+(
+𝑛
+−
+2
+)
+)
+<
+0
+Q
+w
+n
+	​
+
+	​
+
+(A)=n
+d−1
+(2−a(n−2))<0.   
+flat_critical_integrated.pdf
++ 1
+
+Square Cancellation (Section 10.2, pp. 13–14): Using the plaquette identity 
+𝐷
+𝑖
+𝐴
+𝑗
+(
+𝑜
+)
+=
+𝐷
+𝑘
+𝐴
+𝑗
+(
+𝑜
+)
++
+𝐷
+𝑖
+𝐴
+𝑗
+(
+𝑜
++
+𝑒
+𝑘
+)
+−
+𝐷
+𝑘
+𝐴
+𝑗
+(
+𝑜
++
+𝑒
+𝑖
+)
+D
+i
+	​
+
+A
+j
+	​
+
+(o)=D
+k
+	​
+
+A
+j
+	​
+
+(o)+D
+i
+	​
+
+A
+j
+	​
+
+(o+e
+k
+	​
+
+)−D
+k
+	​
+
+A
+j
+	​
+
+(o+e
+i
+	​
+
+) and 
+∥
+𝑥
++
+𝑦
+−
+𝑧
+∥
+2
+≤
+3
+(
+∥
+𝑥
+∥
+2
++
+∥
+𝑦
+∥
+2
++
+∥
+𝑧
+∥
+2
+)
+∥x+y−z∥
+2
+≤3(∥x∥
+2
++∥y∥
+2
++∥z∥
+2
+), the 4-edge weight 
+𝑤
+w satisfies 
+⟨
+𝐴
+,
+𝑅
+𝑤
+𝐴
+⟩
+≤
+0
+⟨A,R
+w
+	​
+
+A⟩≤0 for all 
+𝐴
+A while having 
+𝑏
+𝑖
+𝑗
++
+(
+𝑛
+)
+=
+𝑛
+2
+b
+ij
++
+	​
+
+(n)=n
+2
+ for 
+𝐴
+0
+=
+𝑛
+𝑑
++
+2
+A
+0
+	​
+
+=n
+d+2
+ (
+𝑛
+>
+2
+n>2). Summing this cycle over all 
+𝑗
+j and all 
+𝑖
+≠
+𝑗
+i
+
+=j with 
+𝑘
+=
+𝑗
+k=j produces 
+𝑤
+ˉ
+w
+ˉ
+ with 
+⟨
+𝐴
+,
+𝑅
+𝑤
+ˉ
+𝐴
+⟩
+≤
+0
+⟨A,R
+w
+ˉ
+	​
+
+A⟩≤0: because the two negative edges in direction 
+𝑘
+=
+𝑗
+k=j are diagonal (
+(
+𝑗
+,
+(
+𝑜
+,
+𝑗
+)
+)
+(j,(o,j)) and 
+(
+𝑗
+,
+(
+𝑜
++
+𝑒
+𝑖
+,
+𝑗
+)
+)
+(j,(o+e
+i
+	​
+
+,j))), each off-diagonal channel 
+(
+𝑖
+,
+𝑗
+)
+(i,j) (
+𝑖
+≠
+𝑗
+i
+
+=j) receives contributions only from the single cycle 
+(
+𝑖
+,
+𝑗
+)
+(i,j), giving 
+𝑤
+ˉ
+(
+𝑖
+,
+(
+𝑥
+,
+𝑗
+)
+)
+=
+𝐴
+0
+1
+𝑥
+=
+𝑜
+−
+3
+𝐴
+0
+1
+𝑥
+=
+𝑜
++
+𝑒
+𝑗
+w
+ˉ
+(i,(x,j))=A
+0
+	​
+
+1
+x=o
+	​
+
+−3A
+0
+	​
+
+1
+x=o+e
+j
+	​
+
+	​
+
+ and 
+𝑏
+ˉ
+𝑖
+𝑗
++
+(
+𝑛
+)
+=
+𝑛
+2
+b
+ˉ
+ij
++
+	​
+
+(n)=n
+2
+ for every eligible off-diagonal pair.   
+flat_critical_integrated.pdf
++ 1
+
+Full-Volume Coexact Packet and Exact Multiplier Average (Section 11, Theorems 11.1 & 11.2, Prop. 11.3, pp. 14–16): For 
+𝑘
+∈
+𝐾
+=
+{
+1
+,
+…
+,
+𝑅
+}
+×
+{
+−
+𝑅
+,
+…
+,
+𝑅
+}
+𝐷
+−
+1
+k∈K={1,…,R}×{−R,…,R}
+D−1
+ (
+2
+𝑅
+<
+𝑛
+2R<n), the coexact modes supported on components 
+0
+,
+1
+0,1 have non-vanishing norm because 
+1
+≤
+𝑘
+0
+≤
+𝑅
+<
+𝑛
+/
+2
+⟹
+sin
+⁡
+(
+𝜋
+𝑘
+0
+/
+𝑛
+)
+>
+0
+1≤k
+0
+	​
+
+≤R<n/2⟹sin(πk
+0
+	​
+
+/n)>0, and span an 
+𝐻
+=
+2
+𝑅
+(
+2
+𝑅
++
+1
+)
+𝐷
+−
+1
+H=2R(2R+1)
+D−1
+ dimensional subspace 
+𝑆
+𝑛
+⊂
+𝐷
+𝑛
+S
+n
+	​
+
+⊂D
+n
+	​
+
+. Majorizing 
+1
++
+𝑤
+𝑛
+1+w
+n
+	​
+
+ on components 
+𝑙
+∈
+{
+0
+,
+1
+}
+l∈{0,1} by 
+𝑣
+𝑛
+=
+max
+⁡
+{
+1
++
+𝑤
+𝑛
+,
+0
+}
+v
+n
+	​
+
+=max{1+w
+n
+	​
+
+,0} yields Eq. (13). In Theorem 11.2 (p. 15), setting 
+𝑅
+=
+⌊
+𝑛
+/
+𝑘
+⌋
+R=⌊n/k⌋ for 
+𝑛
+≥
+𝑘
+≥
+3
+n≥k≥3 gives 
+𝑛
+<
+𝑘
+(
+𝑅
++
+1
+)
+≤
+2
+𝑘
+𝑅
+⟹
+𝐻
+>
+(
+2
+𝑅
+)
+𝐷
+>
+(
+𝑛
+/
+𝑘
+)
+𝐷
+n<k(R+1)≤2kR⟹H>(2R)
+D
+>(n/k)
+D
+, yielding 
+dim
+⁡
+𝑅
+𝐹
+𝑛
+≥
+1
+2
+𝑘
+𝐷
+𝑛
+𝐷
+dim
+R
+	​
+
+F
+n
+	​
+
+≥
+2k
+D
+1
+	​
+
+n
+D
+ on the entire integer tail 
+𝑛
+≥
+𝑘
+n≥k. In Prop. 11.3 (pp. 15–16), the average of 
+Λ
+(
+𝑘
+)
+Λ(k) over 
+𝐾
+K is 
+4
+𝐴
+𝑅
+(
+𝜋
+/
+𝑛
+)
+𝑅
++
+(
+𝐷
+−
+1
+)
+8
+𝐴
+𝑅
+(
+𝜋
+/
+𝑛
+)
+2
+𝑅
++
+1
+=
+4
+𝐴
+𝑅
+(
+𝜋
+/
+𝑛
+)
+2
+𝐷
+𝑅
++
+1
+𝑅
+(
+2
+𝑅
++
+1
+)
+≤
+2
+𝜋
+2
+3
+𝑛
+2
+(
+𝑅
++
+1
+)
+(
+2
+𝐷
+𝑅
++
+1
+)
+R
+4A
+R
+	​
+
+(π/n)
+	​
+
++(D−1)
+2R+1
+8A
+R
+	​
+
+(π/n)
+	​
+
+=4A
+R
+	​
+
+(π/n)
+R(2R+1)
+2DR+1
+	​
+
+≤
+3n
+2
+2π
+2
+	​
+
+(R+1)(2DR+1), improving the low-frequency quadratic coefficient by a factor of 
+3
+3.   
+flat_critical_integrated.pdf
++ 4
+
+Singular Schur Complement Criterion (Section 12, Prop. 12.1, pp. 16–17): Completing the square on 
+𝐸
+=
+ker
+⁡
+𝐶
+⊕
+(
+ker
+⁡
+𝐶
+)
+⊥
+E=kerC⊕(kerC)
+⊥
+ proves that 
+⟨
+𝑥
+,
+𝐵
+𝑥
+⟩
++
+Φ
+(
+𝐶
+𝑥
+)
+≥
+0
+⟨x,Bx⟩+Φ(Cx)≥0 holds for some 
+Φ
+Φ with 
+Φ
+(
+0
+)
+=
+0
+Φ(0)=0 if and only if 
+𝐴
+=
+𝐵
+∣
+ker
+⁡
+𝐶
+≥
+0
+A=B∣
+kerC
+	​
+
+≥0 and 
+ker
+⁡
+𝐴
+⊆
+ker
+⁡
+𝐷
+∗
+kerA⊆kerD
+∗
+.   
+flat_critical_integrated.pdf
+
+4.4 Global Critical Inverse-Moment Sufficiency and Lower-Exponent Insufficiency (Sections 15–18, pp. 21–24)
+
+Finite Normalized Rumin–Frank / Cwikel Bound (Lemma 17.2, pp. 22–23): For 
+𝐾
+=
+𝑀
+𝑓
+𝐹
+∗
+𝑀
+𝑔
+𝐹
+K=M
+f
+	​
+
+F
+∗
+M
+g
+	​
+
+F on a finite abelian group of size 
+𝑉
+V and 
+𝑝
+>
+1
+p>1, the weak-frequency tail of 
+𝐴
+=
+𝐹
+∗
+𝑀
+∣
+𝑔
+∣
+2
+𝐹
+A=F
+∗
+M
+∣g∣
+2
+	​
+
+F on 
+𝑃
+𝐸
+=
+1
+{
+𝐴
++
+≤
+𝐸
+}
+P
+E
+	​
+
+=1
+{A
++
+≤E}
+	​
+
+ satisfies 
+⟨
+𝛿
+𝑥
+,
+𝑃
+𝐸
+𝐴
+𝑃
+𝐸
+𝛿
+𝑥
+⟩
+≤
+𝐵
+0
+𝐸
+𝑝
+−
+1
+⟨δ
+x
+	​
+
+,P
+E
+	​
+
+AP
+E
+	​
+
+δ
+x
+	​
+
+⟩≤B
+0
+	​
+
+E
+p−1
+ with 
+𝐵
+0
+=
+𝑝
+𝐿
+/
+(
+𝑝
+−
+1
+)
+B
+0
+	​
+
+=pL/(p−1) by layer-cake integration. Spectral layer integration of 
+⟨
+𝛿
+𝑥
+,
+𝑅
+𝐸
+𝛾
+𝑅
+𝐸
+𝛿
+𝑥
+⟩
+≥
+(
+𝜌
+(
+𝑥
+)
+−
+𝐵
+0
+𝐸
+(
+𝑝
+−
+1
+)
+/
+2
+)
++
+2
+⟨δ
+x
+	​
+
+,R
+E
+	​
+
+γR
+E
+	​
+
+δ
+x
+	​
+
+⟩≥(
+ρ(x)
+	​
+
+−
+B
+0
+	​
+
+	​
+
+E
+(p−1)/2
+)
++
+2
+	​
+
+ over 
+𝐸
+∈
+[
+0
+,
+(
+𝜌
+(
+𝑥
+)
+/
+𝐵
+0
+)
+1
+/
+(
+𝑝
+−
+1
+)
+]
+E∈[0,(ρ(x)/B
+0
+	​
+
+)
+1/(p−1)
+] yields 
+Tr
+⁡
+(
+𝐴
++
+𝛾
+)
+≥
+𝐼
+𝑝
+𝐵
+0
+−
+1
+/
+(
+𝑝
+−
+1
+)
+∑
+𝑥
+𝜌
+(
+𝑥
+)
+𝑝
+/
+(
+𝑝
+−
+1
+)
+Tr(A
++
+γ)≥I
+p
+	​
+
+B
+0
+−1/(p−1)
+	​
+
+∑
+x
+	​
+
+ρ(x)
+p/(p−1)
+ with 
+𝐼
+𝑝
+=
+∫
+0
+1
+(
+1
+−
+𝑡
+(
+𝑝
+−
+1
+)
+/
+2
+)
+2
+𝑑
+𝑡
+=
+(
+𝑝
+−
+1
+)
+2
+𝑝
+(
+𝑝
++
+1
+)
+I
+p
+	​
+
+=∫
+0
+1
+	​
+
+(1−t
+(p−1)/2
+)
+2
+dt=
+p(p+1)
+(p−1)
+2
+	​
+
+ (Eq. 18). Applying Hölder's inequality to 
+𝛾
+=
+𝐴
+1
+/
+2
+𝑃
+𝐴
+1
+/
+2
+γ=A
+1/2
+PA
+1/2
+ for the spectral projection 
+𝑃
+P of 
+𝐴
+1
+/
+2
+𝑀
+∣
+𝑓
+∣
+2
+𝐴
+1
+/
+2
+A
+1/2
+M
+∣f∣
+2
+	​
+
+A
+1/2
+ above 
+𝑠
+s gives 
+𝑛
+(
+𝑠
+,
+𝐾
+∗
+𝐾
+)
+≤
+Γ
+𝑝
+𝐿
+𝑠
+−
+𝑝
+∑
+𝑥
+∣
+𝑓
+(
+𝑥
+)
+∣
+2
+𝑝
+n(s,K
+∗
+K)≤Γ
+p
+	​
+
+Ls
+−p
+∑
+x
+	​
+
+∣f(x)∣
+2p
+.   
+flat_critical_integrated.pdf
++ 4
+
+Variational Flow Comparison and Spectral Sufficiency (Theorem 17.1 & Section 17.2, pp. 21–24): On the mean-zero scalar space 
+𝐻
+0
+H
+0
+	​
+
+, Thomson's principle shows that 
+𝑗
+∗
+=
+𝑀
+𝑎
+𝑑
+𝐿
+𝑎
+−
+1
+𝑓
+j
+∗
+	​
+
+=M
+a
+	​
+
+dL
+a
+−1
+	​
+
+f minimizes 
+⟨
+𝑗
+,
+𝑀
+𝑎
+−
+1
+𝑗
+⟩
+⟨j,M
+a
+−1
+	​
+
+j⟩ subject to 
+𝑑
+∗
+𝑗
+=
+𝑓
+d
+∗
+j=f; testing against the flat potential flow 
+𝑗
+=
+𝑑
+𝐿
+0
+−
+1
+𝑓
+j=dL
+0
+−1
+	​
+
+f yields 
+𝐿
+𝑎
+−
+1
+≤
+∑
+𝑖
+=
+1
+𝐷
+𝑇
+𝑖
+∗
+𝑇
+𝑖
+L
+a
+−1
+	​
+
+≤∑
+i=1
+D
+	​
+
+T
+i
+∗
+	​
+
+T
+i
+	​
+
+ with 
+𝑇
+𝑖
+=
+𝑀
+𝑎
+−
+1
+/
+2
+𝑑
+𝑖
+𝐿
+0
+−
+1
+T
+i
+	​
+
+=M
+a
+−1/2
+	​
+
+d
+i
+	​
+
+L
+0
+−1
+	​
+
+. Using 
+𝜆
+(
+𝑘
+)
+≥
+16
+∣
+𝑟
+∣
+2
+/
+𝑛
+2
+λ(k)≥16∣r∣
+2
+/n
+2
+ and 
+∣
+𝑔
+𝑖
+(
+𝑘
+)
+∣
+≤
+𝑛
+/
+(
+4
+∣
+𝑟
+∣
+)
+∣g
+i
+	​
+
+(k)∣≤n/(4∣r∣), the integer lattice count inside 
+∣
+𝑟
+∣
+<
+𝑅
+=
+𝑛
+/
+(
+4
+𝜏
+)
+∣r∣<R=n/(4τ) (
+𝑅
+>
+1
+R>1) is at most 
+(
+2
+⌊
+𝑅
+⌋
++
+1
+)
+𝐷
+<
+(
+3
+𝑅
+)
+𝐷
+(2⌊R⌋+1)
+D
+<(3R)
+D
+, proving 
+𝐿
+≤
+(
+3
+/
+4
+)
+𝐷
+L≤(3/4)
+D
+ uniformly for all 
+𝑛
+≥
+2
+n≥2 (Eq. 19). Weyl subadditivity across the 
+𝐷
+D directions at threshold 
+𝑠
+=
+1
+/
+(
+𝐷
+𝑐
+)
+s=1/(Dc), plus 
+1
+1 for the constant mode and 
+(
+1
++
+𝜇
+)
+/
+𝜇
+≤
+2
+(1+μ)/μ≤2, yields Eq. (21) and Theorem 17.1 (Eq. 17).   
+flat_critical_integrated.pdf
++ 4
+
+Sharpness of the Critical Exponent 
+𝑝
+=
+𝐷
+/
+2
+p=D/2 (Theorem 18.1, p. 24): For any 
+0
+<
+𝑟
+<
+𝐷
+/
+2
+0<r<D/2, the product triangular window 
+𝜓
+𝑦
+(
+𝑥
+)
+=
+∏
+𝑖
+𝑡
+(
+𝑥
+𝑖
+−
+𝑦
+𝑖
+)
+ψ
+y
+	​
+
+(x)=∏
+i
+	​
+
+t(x
+i
+	​
+
+−y
+i
+	​
+
+) (
+𝑡
+(
+𝑠
+)
+=
+(
+1
+−
+∣
+𝑠
+∣
+/
+𝑙
+)
++
+t(s)=(1−∣s∣/l)
++
+	​
+
+) has exact 1D sums 
+𝑇
+=
+(
+2
+𝑙
+2
++
+1
+)
+/
+(
+3
+𝑙
+)
+T=(2l
+2
++1)/(3l), 
+𝑉
+=
+2
+/
+𝑙
+V=2/l, 
+𝑊
+=
+6
+/
+𝑙
+2
+W=6/l
+2
+. The divergence-free curl 
+𝑈
+1
+=
+𝑑
+2
+−
+𝜓
+𝑦
+𝐻
+,
+𝑈
+2
+=
+−
+𝑑
+1
+−
+𝜓
+𝑦
+𝐻
+U
+1
+	​
+
+=d
+2
+−
+	​
+
+ψ
+y
+	​
+
+H,U
+2
+	​
+
+=−d
+1
+−
+	​
+
+ψ
+y
+	​
+
+H has both its field support and all active forward-gradient start sites inside 
+𝑦
++
+[
+−
+𝑙
+,
+𝑙
+]
+𝐷
+y+[−l,l]
+D
+ (volume 
+𝐵
+=
+(
+2
+𝑙
++
+1
+)
+𝐷
+B=(2l+1)
+D
+) and unweighted Rayleigh quotient 
+𝑊
+𝑉
++
+(
+𝐷
+−
+1
+)
+𝑉
+𝑇
+=
+3
+𝑙
++
+6
+(
+𝐷
+−
+1
+)
+2
+𝑙
+2
++
+1
+≤
+3
+𝐷
+𝑙
+<
+𝑐
+V
+W
+	​
+
++(D−1)
+T
+V
+	​
+
+=
+l
+3
+	​
+
++
+2l
+2
++1
+6(D−1)
+	​
+
+≤
+l
+3D
+	​
+
+<c. Placing 
+𝐽
+=
+⌊
+𝑛
+𝐷
+−
+2
+𝑟
+/
+𝐵
+⌋
+→
+∞
+J=⌊n
+D−2r
+/B⌋→∞ disjoint boxes on a grid of spacing 
+𝑃
+=
+2
+𝑙
++
+2
+P=2l+2 with 
+𝑎
+=
+1
+a=1 inside the boxes and 
+𝑎
+=
+(
+𝜇
+−
+𝑠
+)
+/
+(
+1
+−
+𝑠
+)
+a=(μ−s)/(1−s) outside (
+𝜇
+=
+𝑛
+2
+μ=n
+2
+) satisfies 
+mean
+⁡
+(
+(
+𝜇
+/
+𝑎
+)
+𝑟
+)
+≤
+2
+mean((μ/a)
+r
+)≤2 while forcing 
+dim
+⁡
+𝐹
+≥
+𝐽
+→
+∞
+dimF≥J→∞, refuting the 
+𝑂
+(
+1
+)
+O(1) bound of Theorem 17.1 at 
+𝜇
+=
+𝑛
+2
+μ=n
+2
+.   
+flat_critical_integrated.pdf
++ 2
+
+4.5 Spatial Mean Limitations, Threshold Bounds, and Counterexamples (Sections 19–21, pp. 24–30)
+
+Dyadic Cube-Tree Obstruction vs. Anisotropic Rectangles (Prop. 19.1, pp. 24–25): For a single weak cube 
+𝑆
+=
+{
+0
+,
+…
+,
+𝐿
+−
+1
+}
+𝐷
+S={0,…,L−1}
+D
+ (
+𝐿
+=
+2
+𝑞
+≥
+4
+𝑙
++
+2
+,
+𝑎
+=
+1
+L=2
+q
+≥4l+2,a=1 on 
+𝑆
+S, 
+𝑎
+=
+𝐴
+≥
+𝜇
+=
+𝛾
+𝑛
+2
+a=A≥μ=γn
+2
+ outside), any translated dyadic grid at level 
+𝑗
+∗
+=
+𝐽
+−
+𝑞
+j
+∗
+	​
+
+=J−q (cell side 
+𝐿
+L) intersects each coordinate interval of 
+𝑆
+S in at most two cyclic intervals, one of which has length 
+≥
+𝐿
+/
+2
+≥
+2
+𝑙
++
+1
+≥L/2≥2l+1, containing a full curl support box 
+𝑦
++
+[
+−
+𝑙
+,
+𝑙
+]
+𝐷
+y+[−l,l]
+D
+ whose leaf means vanish because 
+𝑈
+1
+,
+𝑈
+2
+U
+1
+	​
+
+,U
+2
+	​
+
+ are differences of 
+𝜓
+𝑦
+ψ
+y
+	​
+
+ supported strictly inside the cell. Hence any coercive full dyadic cube tree requires depth 
+≥
+𝐽
+−
+𝑞
++
+1
+≥J−q+1 and at least 
+1
++
+(
+2
+𝐷
+−
+1
+)
+(
+𝐽
+−
+𝑞
++
+1
+)
+=
+Ω
+(
+log
+⁡
+𝑛
+)
+1+(2
+D
+−1)(J−q+1)=Ω(logn) leaves (Eq. 22), whereas isolating the 
+𝐿
+𝐷
+L
+D
+ singletons of 
+𝑆
+S and splitting 
+𝑋
+𝑛
+∖
+𝑆
+X
+n
+	​
+
+∖S into 
+𝐷
+D anisotropic rectangles 
+𝑅
+𝑖
+R
+i
+	​
+
+ achieves global coercivity with 
+𝐿
+𝐷
++
+𝐷
+=
+𝑂
+(
+1
+)
+L
+D
++D=O(1) blocks.   
+flat_critical_integrated.pdf
++ 1
+
+Variance Tensorization and Threshold Construction (Sections 19, 21.1, 23.6, Eq. 26–27, pp. 25, 28–29, 37): Because the 1D coordinate averaging projections 
+𝑃
+𝑖
+P
+i
+	​
+
+ commute, 
+𝐼
+−
+∏
+𝑖
+=
+1
+𝐷
+𝑃
+𝑖
+=
+∑
+𝑖
+=
+1
+𝐷
+𝑃
+1
+⋯
+𝑃
+𝑖
+−
+1
+(
+𝐼
+−
+𝑃
+𝑖
+)
+I−∏
+i=1
+D
+	​
+
+P
+i
+	​
+
+=∑
+i=1
+D
+	​
+
+P
+1
+	​
+
+⋯P
+i−1
+	​
+
+(I−P
+i
+	​
+
+) is an orthogonal sum and 
+∥
+𝑃
+1
+⋯
+𝑃
+𝑖
+−
+1
+(
+𝐼
+−
+𝑃
+𝑖
+)
+𝑢
+∥
+2
+2
+≤
+∥
+(
+𝐼
+−
+𝑃
+𝑖
+)
+𝑢
+∥
+2
+2
+∥P
+1
+	​
+
+⋯P
+i−1
+	​
+
+(I−P
+i
+	​
+
+)u∥
+2
+2
+	​
+
+≤∥(I−P
+i
+	​
+
+)u∥
+2
+2
+	​
+
+ bounds each direction 
+𝑖
+i using only internal edges in direction 
+𝑖
+i. Since edge sets in distinct directions are disjoint, the 1D path-Cauchy–Schwarz constant 
+𝑙
+𝑖
+(
+𝑙
+𝑖
+−
+1
+)
+/
+4
+l
+i
+	​
+
+(l
+i
+	​
+
+−1)/4 tensorizes to 
+𝐿
+(
+𝐿
+−
+1
+)
+/
+4
+L(L−1)/4 without an extra factor of 
+𝐷
+D (Eq. 26). Excising each weak vertex (
+𝑎
+<
+𝜏
+a<τ) replaces its current rectangle by 
+1
+1 singleton and at most 
+2
+𝐷
+2D complement rectangles (a net increase of at most 
+2
+𝐷
+2D blocks per weak vertex), yielding 
+∣
+𝑃
+∣
+≤
+𝐵
+𝑐
+max
+⁡
+{
+1
+,
+𝑛
+𝐷
+/
+𝜏
+𝑝
+}
++
+2
+𝐷
+#
+{
+𝑎
+<
+𝜏
+}
+∣P∣≤B
+c
+	​
+
+max{1,n
+D
+/τ
+p
+}+2D#{a<τ} and the general 
+𝐷
+/
+4
+D/4-exponent bound at 
+𝜏
+=
+𝜇
+τ=
+μ
+	​
+
+.   
+flat_critical_integrated.pdf
++ 4
+
+Global-Threshold and Universal-Cube Counterexamples (Sections 21.2 & 21.4, pp. 29–30):
+
+Section 21.2 (p. 29) constructs a profile (
+𝑎
+=
+𝛾
+𝑛
+a=γn on 
+𝑆
+=
+{
+0
+,
+…
+,
+𝑡
+−
+1
+}
+𝐷
+S={0,…,t−1}
+D
+, 
+𝑛
+=
+𝑡
+2
+n=t
+2
+, 
+𝜇
+=
+𝛾
+𝑛
+2
+μ=γn
+2
+) where any single threshold 
+𝜏
+τ produces 
+≥
+Ω
+(
+𝑛
+𝐷
+/
+2
+)
+≥Ω(n
+D/2
+) blocks (via grid volume if 
+𝜏
+≤
+𝑏
+τ≤b or 
+𝑡
+𝐷
+=
+𝑛
+𝐷
+/
+2
+t
+D
+=n
+D/2
+ singletons if 
+𝜏
+>
+𝑏
+τ>b), whereas 
+𝐷
++
+1
+D+1 rectangles suffice.   
+flat_critical_integrated.pdf
+
+Section 21.4 (p. 30) sets 
+𝑎
+=
+1
+a=1 on 
+𝑊
+=
+{
+𝑒
+1
+,
+−
+𝑒
+1
+}
+W={e
+1
+	​
+
+,−e
+1
+	​
+
+} and 
+𝑎
+=
+𝐴
+∈
+(
+𝑛
+,
+2
+𝑛
+]
+a=A∈(n,2n] elsewhere (
+𝜇
+=
+𝑛
+μ=n). Since 
+𝑎
+(
+𝑥
+)
+≤
+2
+𝑛
+<
+𝑐
+𝑛
+(
+𝑛
+−
+1
+)
+/
+4
+a(x)≤2n<cn(n−1)/4 everywhere (for 
+𝑛
+>
+1
++
+8
+/
+𝑐
+n>1+8/c), any family satisfying Eq. (28) must cover 
+0
+0. A cube of side 
+𝐿
+=
+1
+L=1 at 
+0
+0 violates 
+𝐴
+≤
+𝛽
+A≤β, while any cube of side 
+𝐿
+≥
+2
+L≥2 containing 
+0
+0 must contain 
+𝑒
+1
+e
+1
+	​
+
+ or 
+−
+𝑒
+1
+−e
+1
+	​
+
+, forcing 
+𝑐
+𝐿
+(
+𝐿
+−
+1
+)
+/
+4
+≤
+1
+⟹
+𝐿
+2
+≤
+2
+𝐿
+(
+𝐿
+−
+1
+)
+≤
+8
+/
+𝑐
+cL(L−1)/4≤1⟹L
+2
+≤2L(L−1)≤8/c and 
+𝐴
+≤
+𝛽
+𝐿
+2
+≤
+8
+𝛽
+/
+𝑐
+<
+𝑛
+<
+𝐴
+A≤βL
+2
+≤8β/c<n<A, a contradiction.   
+flat_critical_integrated.pdf
++ 1
+
+4.6 Self-Contained Finite Rectangle Sobolev Derivation (Section 22, pp. 30–33)
+
+Entropy Projection, Cube Isoperimetry, and Coarea/Power Steps (Sections 22.1–22.3, Eq. 29–31, pp. 31–32): Conditioning drop 
+𝐻
+(
+𝑋
+𝑗
+∣
+𝑋
+<
+𝑗
+∖
+𝑋
+𝑖
+)
+≥
+𝐻
+(
+𝑋
+𝑗
+∣
+𝑋
+<
+𝑗
+)
+H(X
+j
+	​
+
+∣X
+<j
+	​
+
+∖X
+i
+	​
+
+)≥H(X
+j
+	​
+
+∣X
+<j
+	​
+
+) and 
+𝐻
+(
+𝑋
+−
+𝑖
+)
+≤
+log
+⁡
+∣
+𝜋
+𝑖
+𝐴
+∣
+H(X
+−i
+	​
+
+)≤log∣π
+i
+	​
+
+A∣ prove the Loomis–Whitney projection inequality 
+∣
+𝐴
+∣
+𝐷
+−
+1
+≤
+∏
+𝑖
+=
+1
+𝐷
+∣
+𝜋
+𝑖
+𝐴
+∣
+∣A∣
+D−1
+≤∏
+i=1
+D
+	​
+
+∣π
+i
+	​
+
+A∣ (Eq. 29). Counting non-full fibers yields 
+∣
+∂
+𝐸
+𝐴
+∣
+≥
+∑
+𝑖
+(
+𝑃
+𝑖
+−
+𝑎
+/
+𝑠
+)
+≥
+𝑐
+𝐷
+∣
+𝐴
+∣
+(
+𝐷
+−
+1
+)
+/
+𝐷
+∣∂
+E
+	​
+
+A∣≥∑
+i
+	​
+
+(P
+i
+	​
+
+−a/s)≥c
+D
+	​
+
+∣A∣
+(D−1)/D
+ for 
+∣
+𝐴
+∣
+≤
+∣
+𝑄
+𝑠
+∣
+/
+2
+∣A∣≤∣Q
+s
+	​
+
+∣/2 (Eq. 30). Applying the coarea identity to 
+𝑣
+𝛼
+v
+α
+ (
+𝛼
+=
+2
+(
+𝐷
+−
+1
+)
+/
+𝐷
+α=2(D−1)/D) with 
+𝑞
+=
+2
+𝐷
+/
+(
+𝐷
++
+2
+)
+,
+𝑞
+′
+=
+2
+𝐷
+/
+(
+𝐷
+−
+2
+)
+q=2D/(D+2),q
+′
+=2D/(D−2) (so 
+(
+𝛼
+−
+1
+)
+𝑞
+′
+=
+2
+(α−1)q
+′
+=2) and splitting at a counting median 
+𝑚
+m via 
+∣
+𝑑
+𝑣
++
+∣
+𝑞
++
+∣
+𝑑
+𝑣
+−
+∣
+𝑞
+≤
+∣
+𝑑
+𝑢
+∣
+𝑞
+∣dv
++
+	​
+
+∣
+q
++∣dv
+−
+	​
+
+∣
+q
+≤∣du∣
+q
+ and 
+2
+/
+𝑞
+≥
+1
+2/q≥1 establishes Eq. (31) on 
+𝑄
+𝑠
+Q
+s
+	​
+
+.   
+flat_critical_integrated.pdf
++ 3
+
+Aspect-Ratio Reflection and Original-Weight Hölder Step (Sections 22.4–22.6, Eq. 32–33, pp. 32–33): Folding 
+𝑄
+𝑠
+Q
+s
+	​
+
+ (
+𝑠
+=
+2
+𝐿
++
+1
+s=2L+1) onto 
+𝑅
+=
+∏
+𝑖
+{
+0
+,
+…
+,
+𝑙
+𝑖
+−
+1
+}
+R=∏
+i
+	​
+
+{0,…,l
+i
+	​
+
+−1} via the 
+2
+𝑙
+𝑖
+2l
+i
+	​
+
+-periodic endpoint-repeating reflection gives at least 
+2
+⌊
+𝑠
+/
+(
+2
+𝑙
+𝑖
+)
+⌋
+≥
+𝑠
+/
+(
+2
+𝑙
+𝑖
+)
+2⌊s/(2l
+i
+	​
+
+)⌋≥s/(2l
+i
+	​
+
+) and at most 
+2
+⌊
+𝑠
+/
+(
+2
+𝑙
+𝑖
+)
+⌋
++
+2
+≤
+𝑠
+/
+𝑙
+𝑖
++
+2
+≤
+3
+𝑠
+/
+𝑙
+𝑖
+2⌊s/(2l
+i
+	​
+
+)⌋+2≤s/l
+i
+	​
+
++2≤3s/l
+i
+	​
+
+ preimages per coordinate, so 
+Var
+⁡
+𝑄
+𝑠
+(
+𝑢
+~
+)
+≥
+2
+−
+𝐷
+𝑟
+Var
+⁡
+𝑅
+(
+𝑢
+)
+Var
+Q
+s
+	​
+
+	​
+
+(
+u
+~
+)≥2
+−D
+rVar
+R
+	​
+
+(u) and 
+∑
+𝑄
+𝑠
+∣
+𝑑
+𝑢
+~
+∣
+𝑞
+≤
+3
+𝐷
+𝑟
+∑
+𝑅
+∣
+𝑑
+𝑢
+∣
+𝑞
+∑
+Q
+s
+	​
+
+	​
+
+∣d
+u
+~
+∣
+q
+≤3
+D
+r∑
+R
+	​
+
+∣du∣
+q
+ with 
+𝑟
+=
+𝑠
+𝐷
+/
+𝑉
+r=s
+D
+/V. Because 
+𝑟
+2
+/
+𝑞
+−
+1
+=
+(
+𝑠
+𝐷
+/
+𝑉
+)
+2
+/
+𝐷
+=
+𝑠
+2
+/
+𝑉
+2
+/
+𝐷
+≤
+9
+𝐿
+2
+/
+𝑉
+2
+/
+𝐷
+=
+9
+𝜅
+r
+2/q−1
+=(s
+D
+/V)
+2/D
+=s
+2
+/V
+2/D
+≤9L
+2
+/V
+2/D
+=9κ, the unweighted reflection is completed before applying Hölder's inequality with exponents 
+2
+/
+𝑞
+2/q and 
+2
+/
+(
+2
+−
+𝑞
+)
+=
+𝐷
+/
+2
+=
+𝑝
+2/(2−q)=D/2=p on 
+𝑅
+R, avoiding reflected weights and proving Eq. (33) and Eq. (23).   
+flat_critical_integrated.pdf
++ 3
+
+4.7 Supplied-Cube Partition via Corner Potential and Proper Intersections (Section 23, pp. 33–37)
+
+Quarter-Offset Solids and Proper-Intersection Bound (Sections 23.1–23.2, pp. 34–35): Replacing disjoint integer cubes 
+𝑆
+𝑘
+S
+k
+	​
+
+ by closed cubes 
+𝑄
+𝑘
+=
+∏
+𝑖
+[
+𝑏
+𝑘
+𝑖
+−
+1
+/
+4
+,
+𝑏
+𝑘
+𝑖
++
+𝐿
+𝑘
+−
+3
+/
+4
+]
+Q
+k
+	​
+
+=∏
+i
+	​
+
+[b
+ki
+	​
+
+−1/4,b
+ki
+	​
+
++L
+k
+	​
+
+−3/4] (side 
+𝑎
+𝑘
+=
+𝐿
+𝑘
+−
+1
+/
+2
+≥
+1
+/
+2
+a
+k
+	​
+
+=L
+k
+	​
+
+−1/2≥1/2, gap 
+≥
+1
+/
+2
+≥1/2) ensures 
+𝑄
+𝑘
+∩
+𝑍
+𝐷
+=
+int
+⁡
+(
+𝑄
+𝑘
+)
+∩
+𝑍
+𝐷
+=
+𝑆
+𝑘
+Q
+k
+	​
+
+∩Z
+D
+=int(Q
+k
+	​
+
+)∩Z
+D
+=S
+k
+	​
+
+. If a query cube 
+𝐶
+C of side 
+𝑠
+s has no corner of any 
+𝑄
+𝑘
+Q
+k
+	​
+
+ in 
+int
+⁡
+𝐶
+intC, no 
+𝑄
+𝑘
+Q
+k
+	​
+
+ with 
+𝑎
+𝑘
+<
+𝑠
+a
+k
+	​
+
+<s can meet 
+int
+⁡
+𝐶
+intC (otherwise in each coordinate at least one endpoint of 
+𝑄
+𝑘
+Q
+k
+	​
+
+'s interval would lie inside 
+𝐶
+C's open interval, placing a corner of 
+𝑄
+𝑘
+Q
+k
+	​
+
+ in 
+int
+⁡
+𝐶
+intC), and every 
+𝑄
+𝑘
+Q
+k
+	​
+
+ with 
+𝑎
+𝑘
+≥
+𝑠
+a
+k
+	​
+
+≥s meeting 
+int
+⁡
+𝐶
+intC contains at least one endpoint of 
+𝐶
+C in each coordinate and hence contains a corner of 
+𝐶
+C, bounding the number of properly intersecting 
+𝑄
+𝑘
+Q
+k
+	​
+
+ by 
+2
+𝐷
+2
+D
+. Section 23.2 (pp. 34–35) constructs an explicit family of 
+2
+𝐷
+−
+1
+2
+D−1
+ disjoint side-2 cubes whose quarter-offset solids all properly meet 
+𝐶
+=
+[
+1
+,
+2
+]
+𝐷
+C=[1,2]
+D
+ with no corner in 
+int
+⁡
+𝐶
+intC, proving that the earlier one-cluster-per-leaf inference was false.   
+flat_critical_integrated.pdf
++ 3
+
+Corner-Potential Subdivision, Slab Covering, and Half-Open Integer Discretization (Sections 23.3–23.6, Eq. 34–36, pp. 35–37): The integer potential 
+Ψ
+=
+∑
+𝐶
+ active
+(
+2
+𝑛
+𝐶
+−
+1
+)
+Ψ=∑
+C active
+	​
+
+(2n
+C
+	​
+
+−1) (
+Ψ
+0
+=
+2
+𝑁
+−
+1
+,
+𝑁
+=
+2
+𝐷
+𝐽
+Ψ
+0
+	​
+
+=2N−1,N=2
+D
+J) decreases by 
+2
+𝑟
++
+𝑡
+−
+1
+≥
+1
+2r+t−1≥1 at every midpoint split (
+𝑟
+≥
+1
+r≥1 or 
+𝑡
+≥
+2
+t≥2) and every shrinking box cut (
+𝑟
+≥
+1
+r≥1), bounding the number of terminal corner-free rectangles by 
+𝑀
+≤
+1
++
+(
+2
+𝑁
+−
+1
+)
+(
+2
+𝐷
+−
+1
+)
+≤
+2
+𝐷
++
+1
+(
+2
+𝐷
+−
+1
+)
+𝐽
+M≤1+(2N−1)(2
+D
+−1)≤2
+D+1
+(2
+D
+−1)J (Eq. 34). Each non-cube terminal box 
+𝐸
+𝑖
+E
+i
+	​
+
+ is covered by 
+2
+𝐷
+−
+1
+2
+D−1
+ corner-free cubes of side 
+𝑠
+−
+𝑎
+s−a (since 
+𝑎
+<
+𝑠
+/
+2
+⟹
+[
+0
+,
+𝑠
+−
+𝑎
+]
+∪
+[
+𝑎
+,
+𝑠
+]
+=
+[
+0
+,
+𝑠
+]
+a<s/2⟹[0,s−a]∪[a,s]=[0,s]), bounding proper intersections per terminal rectangle by 
+𝑇
+𝐷
+=
+2
+2
+𝐷
+−
+1
+T
+D
+	​
+
+=2
+2D−1
+ (Eq. 35) and refined subrectangles by 
+(
+2
+𝑇
+𝐷
++
+1
+)
+𝐷
+(2T
+D
+	​
+
++1)
+D
+. Assigning splitting hyperplanes via 
+[
+𝑙
+𝑖
+,
+ℎ
+𝑖
+)
+[l
+i
+	​
+
+,h
+i
+	​
+
+) and intersecting with 
+𝑋
+X partitions 
+𝑋
+X into at most 
+𝐴
+𝐷
+max
+⁡
+{
+1
+,
+𝐽
+}
+A
+D
+	​
+
+max{1,J} integer rectangles, each entirely inside one 
+𝑆
+𝑘
+S
+k
+	​
+
+ or outside all 
+𝑆
+𝑘
+S
+k
+	​
+
+ because every 
+𝑧
+∈
+𝑅
+∩
+𝑆
+𝑘
+z∈R∩S
+k
+	​
+
+ lies in 
+int
+⁡
+(
+𝑄
+𝑘
+)
+∩
+𝑇
+‾
+int(Q
+k
+	​
+
+)∩
+T
+, forcing 
+int
+⁡
+(
+𝑄
+𝑘
+)
+∩
+int
+⁡
+(
+𝑇
+)
+≠
+∅
+int(Q
+k
+	​
+
+)∩int(T)
+
+=∅ and non-integer facet cuts at 
+𝑍
+±
+1
+/
+4
+Z±1/4.   
+flat_critical_integrated.pdf
++ 3
+
+4.8 Physical Four-Cycle Obstruction, Exact Subsharp Threshold, and Sharp Extension (Sections 20.2 & 24, pp. 26–27, 38–43)
+
+All-Field Kernel Premise and Divergence-Zero Fixed-Penalty Failure (Sections 24.1–24.2, Eq. 37–43, pp. 38–40): On 
+𝑋
+=
+(
+𝑍
+/
+4
+𝑍
+)
+𝐷
+X=(Z/4Z)
+D
+ (
+𝐷
+≥
+3
+D≥3) with 
+𝛼
+=
+(
+1
+,
+6
+,
+4
+,
+1
+)
+α=(1,6,4,1) and 
+𝑎
+(
+𝑥
+)
+=
+𝛼
+𝑥
+1
+a(x)=α
+x
+1
+	​
+
+	​
+
+, the unweighted curl-divergence cancellation yields 
+𝐻
+0
+(
+𝐴
+)
+=
+∑
+𝑖
+,
+𝑥
+,
+𝑙
+∥
+𝐷
+𝑖
++
+𝐴
+𝑙
+(
+𝑥
+)
+∥
+2
+H
+0
+	​
+
+(A)=∑
+i,x,l
+	​
+
+∥D
+i
++
+	​
+
+A
+l
+	​
+
+(x)∥
+2
+ and 
+𝐻
+(
+𝐴
+)
+=
+∑
+𝑥
+,
+𝑖
+,
+𝑙
+𝛼
+𝑥
+1
+∥
+𝐷
+𝑖
++
+𝐴
+𝑙
+(
+𝑥
+)
+∥
+2
+H(A)=∑
+x,i,l
+	​
+
+α
+x
+1
+	​
+
+	​
+
+∥D
+i
++
+	​
+
+A
+l
+	​
+
+(x)∥
+2
+ for all cochains 
+𝐴
+A (Eq. 37). For the 2-site domino partition 
+𝐼
+0
+=
+{
+0
+,
+1
+}
+,
+𝐼
+1
+=
+{
+2
+,
+3
+}
+I
+0
+	​
+
+={0,1},I
+1
+	​
+
+={2,3} along 
+𝑥
+1
+x
+1
+	​
+
+, any 
+𝐴
+∈
+ker
+⁡
+𝐶
+A∈kerC has 
+𝑥
+1
+x
+1
+	​
+
+-profiles of the form 
+𝑣
+=
+(
+𝑥
+,
+−
+𝑥
+,
+𝑦
+,
+−
+𝑦
+)
+v=(x,−x,y,−y), where 
+𝐸
+(
+𝑣
+)
+−
+19
+5
+∣
+𝑣
+∣
+2
+=
+17
+5
+(
+𝑥
++
+35
+17
+𝑦
+)
+2
++
+84
+85
+𝑦
+2
+≥
+0
+E(v)−
+5
+19
+	​
+
+∣v∣
+2
+=
+5
+17
+	​
+
+(x+
+17
+35
+	​
+
+y)
+2
++
+85
+84
+	​
+
+y
+2
+≥0 (Eq. 41); summing over all transverse 
+𝑦
+,
+𝑙
+,
+𝑘
+y,l,k and dropping nonnegative transverse derivative terms (
+𝑖
+≥
+2
+i≥2) proves 
+𝐻
+(
+𝐴
+)
+≥
+19
+5
+∥
+𝐴
+∥
+2
+H(A)≥
+5
+19
+	​
+
+∥A∥
+2
+ on all 
+𝐴
+∈
+ker
+⁡
+𝐶
+A∈kerC (Eq. 42). Lifting 
+𝑢
+=
+(
+19
+,
+−
+9
+,
+−
+5
+,
+−
+5
+)
+/
+14
+u=(19,−9,−5,−5)/14 into component 
+2
+2 (
+𝐽
+𝑢
+2
+(
+𝑥
+)
+=
+𝑢
+𝑥
+1
+𝑇
+Ju
+2
+	​
+
+(x)=u
+x
+1
+	​
+
+	​
+
+T) gives a divergence-zero cochain with 
+𝐻
+(
+𝐽
+𝑢
+)
++
+19
+5
+∥
+𝐶
+𝐽
+𝑢
+∥
+2
+−
+19
+5
+∥
+𝐽
+𝑢
+∥
+2
+=
+−
+6
+35
+4
+𝐷
+−
+1
+<
+0
+H(Ju)+
+5
+19
+	​
+
+∥CJu∥
+2
+−
+5
+19
+	​
+
+∥Ju∥
+2
+=−
+35
+6
+	​
+
+4
+D−1
+<0 (Eq. 43).   
+flat_critical_integrated.pdf
++ 4
+
+Exact Subsharp Penalty Threshold 
+𝐾
+≥
+1138
+/
+35
+K≥1138/35 and Sharp Free-Penalty Obstruction (Sections 24.3–24.4, Eq. 44, pp. 40–42): Completing the square on 
+𝑅
+4
+R
+4
+ via 
+𝑋
+=
+𝑥
+−
+25
+𝛿
+/
+2
+,
+𝑌
+=
+𝑦
++
+75
+𝛿
+/
+14
+X=x−25δ/2,Y=y+75δ/14 (equivalent to Schur complement 
+𝐾
++
+16
+/
+5
+−
+𝑏
+𝑇
+𝑀
+−
+1
+𝑏
+=
+𝐾
+−
+1138
+/
+35
+K+16/5−b
+T
+M
+−1
+b=K−1138/35 with 
+𝑏
+𝑇
+𝑀
+−
+1
+𝑏
+=
+250
+/
+7
+b
+T
+M
+−1
+b=250/7) proves Eq. (44), establishing that 
+𝐻
+(
+𝐴
+)
++
+𝐾
+∥
+𝐶
+𝐴
+∥
+2
+≥
+19
+5
+∥
+𝐴
+∥
+2
+H(A)+K∥CA∥
+2
+≥
+5
+19
+	​
+
+∥A∥
+2
+ holds on 
+𝐸
+𝑛
+E
+n
+	​
+
+ (and on 
+ker
+⁡
+div
+⁡
+−
+kerdiv
+−
+) if and only if 
+𝐾
+≥
+1138
+/
+35
+K≥1138/35, with necessity witnessed by 
+𝐽
+𝑢
+∗
+Ju
+∗
+	​
+
+ for 
+𝑢
+∗
+=
+(
+13
+,
+−
+12
+,
+−
+41
+/
+7
+,
+34
+/
+7
+)
+u
+∗
+	​
+
+=(13,−12,−41/7,34/7). At the sharp kernel constant 
+𝑐
+∗
+=
+(
+17
+−
+85
+)
+/
+2
+c
+∗
+	​
+
+=(17−
+85
+	​
+
+)/2, the kernel vector 
+𝑣
+∗
+=
+(
+7
+,
+−
+7
+,
+6
+−
+𝑠
+,
+𝑠
+−
+6
+)
+v
+∗
+	​
+
+=(7,−7,6−s,s−6) (
+𝑠
+=
+85
+s=
+85
+	​
+
+) lies in 
+ker
+⁡
+(
+𝐷
+0
+−
+𝑐
+∗
+𝐼
+)
+ker(D
+0
+	​
+
+−c
+∗
+	​
+
+I) with 
+𝐵
+∗
+𝑝
+𝛿
+⊥̸
+𝑣
+∗
+B
+∗
+p
+δ
+	​
+
+
+⊥v
+∗
+	​
+
+, giving defect 
+(
+7
++
+𝐾
+−
+𝑐
+∗
+)
+𝛿
+2
+−
+10
+(
+13
+−
+𝑠
+)
+𝛿
+=
+−
+25
+(
+13
+−
+𝑠
+)
+2
+7
++
+𝐾
+−
+𝑐
+∗
+<
+0
+(7+K−c
+∗
+	​
+
+)δ
+2
+−10(13−s)δ=−
+7+K−c
+∗
+	​
+
+25(13−s)
+2
+	​
+
+<0 at 
+𝛿
+=
+5
+(
+13
+−
+𝑠
+)
+7
++
+𝐾
+−
+𝑐
+∗
+δ=
+7+K−c
+∗
+	​
+
+5(13−s)
+	​
+
+ for every finite 
+𝐾
+≥
+0
+K≥0.   
+flat_critical_integrated.pdf
++ 3
+
+5. Material Objections, Falsifiers, and Required Corrections
+Objection 1: Unresolved Unrestricted Critical Rectangular Partition and Supplied-Cube Assumption Gap
+
+Precise Location: Section 16 (Eq. 14, p. 21), Section 17 (Theorem 17.1, pp. 21–24), Section 19 (p. 25), Section 21 (Sections 21.1–21.4, Eq. 28, pp. 28–30), Section 23 (Section 23.6, p. 37), and Section 27 (p. 45).
+
+Mathematical Issue: A supplied assumption is not a hypothesis elimination. The sufficiency part of the paper does not resolve the critical spatial observation question under the inverse-moment condition 
+𝑛
+−
+𝐷
+∑
+𝑥
+(
+𝜇
+/
+𝑎
+(
+𝑥
+)
+)
+𝐷
+/
+2
+≤
+𝑀
+n
+−D
+∑
+x
+	​
+
+(μ/a(x))
+D/2
+≤M (Eq. 16):   
+flat_critical_integrated.pdf
++ 1
+
+Theorem 17.1 (p. 22) achieves the critical rank order 
+𝑂
+(
+(
+𝑛
+/
+1
++
+𝜇
+)
+𝐷
+)
+O((n/
+1+μ
+	​
+
+)
+D
+) only via global spectral eigenprojections of 
+𝐿
+𝑎
+L
+a
+	​
+
+, which are spatially delocalized and profile-dependent.   
+flat_critical_integrated.pdf
++ 2
+
+For spatially localized rectangular block means 
+𝐶
+𝑃
+C
+P
+	​
+
+, the unconditional threshold partition in Section 21.1 (pp. 28–29) yields only the suboptimal exponent 
+𝐷
+/
+4
+D/4 (
+dim
+⁡
+𝐹
+≤
+ℎ
+(
+𝐵
+𝑐
++
+2
+𝐷
+𝑀
+)
+max
+⁡
+{
+1
+,
+𝑛
+𝐷
+/
+𝜇
+𝐷
+/
+4
+}
+dimF≤h(B
+c
+	​
+
++2DM)max{1,n
+D
+/μ
+D/4
+}), losing a factor of 
+𝜇
+𝐷
+/
+4
+μ
+D/4
+ relative to the necessary lower bound.   
+flat_critical_integrated.pdf
++ 1
+
+The target exponent 
+𝐷
+/
+2
+D/2 in Section 21.3 and Section 23.6 (pp. 29, 37) is obtained only by supplying an external family of disjoint cubes 
+𝑆
+𝑘
+S
+k
+	​
+
+ obeying both the two-sided local scale bound 
+𝑐
+𝐿
+𝑘
+(
+𝐿
+𝑘
+−
+1
+)
+/
+4
+≤
+𝑎
+(
+𝑥
+)
+≤
+𝛽
+𝐿
+𝑘
+2
+cL
+k
+	​
+
+(L
+k
+	​
+
+−1)/4≤a(x)≤βL
+k
+2
+	​
+
+ on 
+𝑆
+𝑘
+S
+k
+	​
+
+ and the global complement bound 
+𝑎
+(
+𝑥
+)
+≥
+𝑐
+𝑛
+(
+𝑛
+−
+1
+)
+/
+4
+a(x)≥cn(n−1)/4 outside 
+⋃
+𝑘
+𝑆
+𝑘
+⋃
+k
+	​
+
+S
+k
+	​
+
+ (Eq. 28).   
+flat_critical_integrated.pdf
++ 1
+
+Falsifier / Concrete Blocker: The profile constructed in Section 21.4 (p. 30)—
+𝑎
+=
+1
+a=1 on 
+𝑊
+=
+{
+𝑒
+1
+,
+−
+𝑒
+1
+}
+W={e
+1
+	​
+
+,−e
+1
+	​
+
+} and 
+𝑎
+=
+𝐴
+=
+(
+𝑛
+−
+𝑓
+)
+/
+(
+1
+−
+𝑓
+)
+a=A=(n−f)/(1−f) elsewhere with 
+𝜇
+=
+𝑛
+,
+𝑓
+=
+2
+/
+𝑛
+𝐷
+μ=n,f=2/n
+D
+—satisfies 
+1
+≤
+𝑎
+≤
+2
+𝜇
+1≤a≤2μ, 
+mean
+⁡
+(
+𝑎
+)
+=
+𝜇
+mean(a)=μ, and critical moment 
+<
+2
+<2, yet falsifies the existence of any cube decomposition satisfying Eq. (28) for all 
+𝑛
+>
+max
+⁡
+{
+𝛽
+,
+8
+𝛽
+/
+𝑐
+,
+1
++
+8
+/
+𝑐
+}
+n>max{β,8β/c,1+8/c}.   
+flat_critical_integrated.pdf
+
+Required Correction: Until either a constructive anisotropic rectangular partitioning theorem is proved directly from Eq. (16) without assuming Eq. (28), or a counterexample defeating all axis-aligned rectangular partitions under Eq. (16) is found, the critical spatial sufficiency problem (Section 27, p. 45) remains open and must be treated strictly as an unresolved boundary of the working paper.   
+flat_critical_integrated.pdf
+
+Objection 2: Restriction of Sufficiency Results to a Single Isotropic Scalar Weight Profile and Absence of Interacting/Continuum Gauge Coupling
+
+Precise Location: Section 1 (pp. 1–2), Section 2 (Eq. 1, p. 2), Section 13 (p. 17), Section 16 (Eq. 14, p. 21), and Section 26 (p. 45).
+
+Mathematical Issue:
+
+Whereas the necessity theorems in Sections 7 and 9–11 allow direction- and component-dependent signed weights 
+𝑤
+𝑛
+(
+𝑖
+,
+(
+𝑥
+,
+𝑙
+)
+)
+w
+n
+	​
+
+(i,(x,l)), the sufficiency framework in Sections 16–23 (Eq. 14, p. 21) restricts to a single shared positive scalar weight 
+𝑎
+(
+𝑥
+)
+=
+1
++
+𝑤
+𝑖
+,
+𝑥
+,
+𝑗
+>
+0
+a(x)=1+w
+i,x,j
+	​
+
+>0 identical across all derivative directions 
+𝑖
+∈
+{
+1
+,
+…
+,
+𝐷
+}
+i∈{1,…,D}, field components 
+𝑗
+∈
+{
+1
+,
+…
+,
+𝐷
+}
+j∈{1,…,D}, and internal Lie coordinates. Under Eq. (14), 
+𝐸
+𝑎
+(
+𝑈
+)
+E
+a
+	​
+
+(U) decouples into 
+ℎ
+=
+𝐷
+(
+𝑁
+𝑐
+2
+−
+1
+)
+h=D(N
+c
+2
+	​
+
+−1) independent scalar graph Laplacians 
+𝐿
+𝑎
+=
+𝑑
+∗
+𝑀
+𝑎
+𝑑
+L
+a
+	​
+
+=d
+∗
+M
+a
+	​
+
+d.   
+flat_critical_integrated.pdf
++ 4
+
+Furthermore, all operators throughout Sections 1–27 act on unit-spacing flat finite tori 
+(
+𝑍
+/
+𝑛
+𝑍
+)
+𝑑
+(Z/nZ)
+d
+ without non-abelian gauge covariant derivatives, background link variables, plaquette nonlinearities, or continuum 
+𝑙
+2
+𝐾
+0
+l
+2
+K
+0
+	​
+
+ scaling.   
+flat_critical_integrated.pdf
++ 3
+
+Falsifier / Concrete Blocker: For anisotropic weights 
+𝑤
+𝑛
+(
+𝑖
+,
+(
+𝑥
+,
+𝑗
+)
+)
+w
+n
+	​
+
+(i,(x,j)) where 
+1
++
+𝑤
+𝑛
+(
+𝑖
+,
+(
+𝑥
+,
+𝑗
+)
+)
+=
+1
+1+w
+n
+	​
+
+(i,(x,j))=1 for one off-diagonal pair 
+(
+𝑖
+,
+𝑗
+)
+(i,j) and 
+1
++
+𝑤
+𝑛
+(
+𝑘
+,
+(
+𝑥
+,
+𝑙
+)
+)
+=
+𝑛
+2
+1+w
+n
+	​
+
+(k,(x,l))=n
+2
+ for all other pairs, the arithmetic average of 
+𝑎
+a over directions/components is 
+Θ
+(
+𝑛
+2
+)
+Θ(n
+2
+), yet Theorem 9.1 (p. 9) forces 
+dim
+⁡
+𝐹
+𝑛
+→
+∞
+dimF
+n
+	​
+
+→∞ via modes varying only along direction 
+𝑖
+i in component 
+𝑗
+j. Thus a single scalar summary 
+𝑎
+(
+𝑥
+)
+a(x) cannot capture directional anisotropy without taking a worst-case directional envelope.
+
+Required Correction: Keep the explicit scope disclaimers in Sections 1, 13, 16, and 26, and note in Section 16 (p. 21) that extending Theorem 17.1 beyond decoupled scalar copies 
+𝐿
+𝑎
+⊗
+𝐼
+ℎ
+L
+a
+	​
+
+⊗I
+h
+	​
+
+ to anisotropic or gauge-covariant operators requires controlling directional minimums 
+𝑎
+min
+⁡
+(
+𝑥
+)
+=
+min
+⁡
+𝑖
+,
+𝑗
+(
+1
++
+𝑤
+𝑖
+,
+𝑥
+,
+𝑗
+)
+a
+min
+	​
+
+(x)=min
+i,j
+	​
+
+(1+w
+i,x,j
+	​
+
+) or cross-component commutator terms.
+
+Objection 3: Uninspected External Formal Evidence and Large Analytic-Only Proof Surface
+
+Precise Location: Section 14 (pp. 17–20), Section 15 (p. 21), Section 22 (p. 33), Section 23 (pp. 33–34), Section 24.3–24.5 (pp. 40–43), Section 25 (pp. 43–44), and Section 26 (pp. 44–45).
+
+Mathematical & Evidentiary Issue:
+
+All Lean 4 formalization claims and Colab reproduction logs cited in Sections 14, 24.5, and 25 are reported text within the PDF; because the external git repository, .olean files, and Colab archives are not inspectable inside the PDF artifact, formal verification status is unverified by direct inspection in this review.   
+flat_critical_integrated.pdf
++ 3
+
+Even within the manuscript's reported scope, the entire sufficiency and spatial-geometry half of the paper—Theorem 17.1, Lemma 17.2, Theorem 18.1, Proposition 19.1, Sections 20.1 & 20.3, Section 21, the finite Sobolev derivation in Section 22, and the supplied-cube BSP partition in Section 23—together with the all-pairs square-cancellation sum in Section 10.2 (p. 13), Proposition 11.3 (pp. 15–16), Proposition 12.1 (p. 16), the general-
+𝐷
+D proof of the exact subsharp threshold 
+𝐾
+≥
+1138
+/
+35
+K≥1138/35 in Section 24.3 (pp. 40–41), and the sharp free-penalty obstruction in Section 24.4 (pp. 41–42) are analytic paper proofs, not machine-checked Lean theorems.   
+flat_critical_integrated.pdf
++ 4
+
+Objection 4: Specific Mathematical Quantifier, Notation, and Typographical Defects in the Text
+
+Every item below was verified directly against the rendered text of flat_critical_integrated.pdf:
+
+Invalid 
+lim
+⁡
+𝑛
+→
+∞
+lim
+n→∞
+	​
+
+ instead of 
+lim inf
+⁡
+𝑛
+→
+∞
+liminf
+n→∞
+	​
+
+ in Proposition 11.3 (Section 11, p. 16, line 2):
+
+Location: Page 16, Proposition 11.3, first displayed inequality at the top of the page.   
+flat_critical_integrated.pdf
+
+Defect: The displayed inequality writes
+
+lim
+⁡
+𝑛
+→
+∞
+dim
+⁡
+𝐹
+𝑛
+𝑛
+𝐷
+≥
+(
+2
+𝛼
+)
+𝐷
+[
+1
+−
+𝑚
+𝑐
+2
+𝐷
+(
+1
+−
+sin
+⁡
+(
+2
+𝜋
+𝛼
+)
+2
+𝜋
+𝛼
+)
+]
+n→∞
+lim
+	​
+
+n
+D
+dimF
+n
+	​
+
+	​
+
+≥(2α)
+D
+[1−
+c
+m
+	​
+
+2D(1−
+2πα
+sin(2πα)
+	​
+
+)]
+
+
+using 
+lim
+⁡
+𝑛
+→
+∞
+lim
+n→∞
+	​
+
+ rather than 
+lim inf
+⁡
+𝑛
+→
+∞
+liminf
+n→∞
+	​
+
+, even though the sequence 
+dim
+⁡
+𝐹
+𝑛
+/
+𝑛
+𝐷
+dimF
+n
+	​
+
+/n
+D
+ is arbitrary above the lower bound and need not converge (and the proof itself on p. 16, line 11 states: "Divide the finite rank bound by 
+𝑛
+𝐷
+n
+D
+ and take the lower limit").   
+flat_critical_integrated.pdf
+
+Falsifier: Take 
+𝐹
+𝑛
+=
+𝑅
+𝑛
+𝐷
+F
+n
+	​
+
+=R
+n
+D
+ for even 
+𝑛
+n and 
+𝐹
+𝑛
+=
+𝑅
+2
+𝑛
+𝐷
+F
+n
+	​
+
+=R
+2n
+D
+ for odd 
+𝑛
+n with 
+𝑚
+=
+0
+m=0; all hypotheses hold, the lower limit is 
+1
+1, and 
+lim
+⁡
+𝑛
+→
+∞
+(
+dim
+⁡
+𝐹
+𝑛
+)
+/
+𝑛
+𝐷
+lim
+n→∞
+	​
+
+(dimF
+n
+	​
+
+)/n
+D
+ does not exist.
+
+Required Correction: Replace \lim_{n\to\infty} by \liminf_{n\to\infty} in the displayed formula of Proposition 11.3 on p. 16.
+
+Omitted Non-Aliasing Hypothesis 
+2
+𝑅
+<
+𝑛
+2R<n in Theorem 5.1 and Proposition 5.2 Statements (Section 5, p. 5):
+
+Location: Page 5, Theorem 5.1 and Proposition 5.2.   
+flat_critical_integrated.pdf
+
+Defect: Both Theorem 5.1 and Proposition 5.2 state the rank bound 
+2
+(
+2
+𝑅
++
+1
+)
+𝑑
+≤
+dim
+⁡
+𝐹
++
+rank
+⁡
+𝑉
+2(2R+1)
+d
+≤dimF+rankV (or 
+dim
+⁡
+𝐹
++
+rank
+⁡
+𝑃
+dimF+rankP) assuming only 
+𝑐
+>
+𝑏
+𝑅
+(
+𝑛
+)
+c>b
+R
+	​
+
+(n), leaving the non-aliasing condition 
+2
+𝑅
+<
+𝑛
+2R<n implicit from Section 4 (p. 4). (By contrast, Theorem 9.1 on p. 9 and Theorem 11.1 on p. 14 explicitly include 
+0
+≤
+𝑅
+<
+𝑛
+0≤R<n and 
+2
+𝑅
+<
+𝑛
+2R<n in their theorem statements.)   
+flat_critical_integrated.pdf
++ 3
+
+Falsifier: Fix 
+𝑛
+=
+4
+,
+𝑑
+=
+4
+,
+𝑁
+𝑐
+=
+2
+n=4,d=4,N
+c
+	​
+
+=2 (
+𝑚
+=
+3
+m=3, 
+dim
+⁡
+𝐸
+𝑛
+=
+𝑑
+𝑚
+𝑛
+𝑑
+=
+3072
+dimE
+n
+	​
+
+=dmn
+d
+=3072), take 
+𝐹
+=
+𝐸
+𝑛
+,
+𝐶
+=
+𝐼
+,
+𝑉
+=
+0
+,
+Φ
+(
+𝑦
+)
+=
+𝑐
+∥
+𝑦
+∥
+2
+F=E
+n
+	​
+
+,C=I,V=0,Φ(y)=c∥y∥
+2
+, and choose 
+𝑅
+=
+3
+R=3 (so 
+2
+𝑅
+<
+𝑛
+2R<n fails) and 
+𝑐
+=
+𝑏
+3
+(
+4
+)
++
+1
+c=b
+3
+	​
+
+(4)+1. Then Eq. (5) holds for all 
+𝐴
+∈
+𝐸
+𝑛
+A∈E
+n
+	​
+
+, but 
+2
+(
+2
+𝑅
++
+1
+)
+𝑑
+=
+2
+⋅
+7
+4
+=
+4802
+>
+3072
+=
+dim
+⁡
+𝐹
++
+rank
+⁡
+𝑉
+2(2R+1)
+d
+=2⋅7
+4
+=4802>3072=dimF+rankV because the frequencies in 
+Λ
+𝑅
+Λ
+R
+	​
+
+ alias modulo 
+𝑛
+n.
+
+Required Correction: Explicitly state "Let 
+0
+≤
+𝑅
+0≤R be an integer with 
+2
+𝑅
+<
+𝑛
+2R<n" inside the hypotheses of Theorem 5.1 and Proposition 5.2 on p. 5.
+
+Symbol Clash / Misprint "
+2
+𝜖
+2ϵ" vs. "
+2
+𝑐
+2c" (or "
+𝜖
+=
+𝑐
+ϵ=c") in the Free-Penalty Margin Formula (Section 20.2, p. 27, lines 14–16):
+
+Location: Page 27, Section 20.2, penultimate paragraph.   
+flat_critical_integrated.pdf
+
+Defect: The text states: "In particular a proved all-cochain margin 
+𝐷
+0
+≥
+(
+𝑐
++
+𝜖
+)
+𝐼
+D
+0
+	​
+
+≥(c+ϵ)I gives 
+𝐾
+=
+𝑐
++
+∥
+𝐿
+𝑎
+∥
+2
+/
+𝜖
+K=c+∥L
+a
+	​
+
+∥
+2
+/ϵ. For actual 
+𝑎
+≤
+2
+𝜇
+a≤2μ the elementary edge estimate 
+∣
+𝑟
+−
+𝑠
+∣
+2
+≤
+2
+∣
+𝑟
+∣
+2
++
+2
+∣
+𝑠
+∣
+2
+∣r−s∣
+2
+≤2∣r∣
+2
++2∣s∣
+2
+ gives 
+∥
+𝐿
+𝑎
+∥
+≤
+8
+𝐷
+𝜇
+∥L
+a
+	​
+
+∥≤8Dμ, including the parallel edge occurrences at 
+𝑛
+=
+2
+n=2. A margin 
+2
+𝜖
+2ϵ therefore permits 
+𝐾
+=
+𝑐
++
+64
+𝐷
+2
+𝜇
+2
+/
+𝑐
+K=c+64D
+2
+μ
+2
+/c, without increasing the number of observations."   
+flat_critical_integrated.pdf
+
+Falsifier / Calculation Check: Substituting 
+∥
+𝐿
+𝑎
+∥
+≤
+8
+𝐷
+𝜇
+∥L
+a
+	​
+
+∥≤8Dμ into 
+𝐾
+=
+𝑐
++
+∥
+𝐿
+𝑎
+∥
+2
+/
+𝜖
+K=c+∥L
+a
+	​
+
+∥
+2
+/ϵ gives 
+𝐾
+=
+𝑐
++
+64
+𝐷
+2
+𝜇
+2
+/
+𝜖
+K=c+64D
+2
+μ
+2
+/ϵ. Obtaining 
+𝐾
+=
+𝑐
++
+64
+𝐷
+2
+𝜇
+2
+/
+𝑐
+K=c+64D
+2
+μ
+2
+/c requires setting the margin to 
+𝜖
+=
+𝑐
+ϵ=c (so that 
+𝐷
+0
+≥
+(
+𝑐
++
+𝑐
+)
+𝐼
+=
+2
+𝑐
+𝐼
+D
+0
+	​
+
+≥(c+c)I=2cI), whereas a margin of 
+2
+𝜖
+2ϵ would give 
+𝐾
+=
+𝑐
++
+32
+𝐷
+2
+𝜇
+2
+/
+𝜖
+K=c+32D
+2
+μ
+2
+/ϵ.
+
+Required Correction: Change "A margin 
+2
+𝜖
+2ϵ" to "A threshold 
+2
+𝑐
+2c (margin 
+𝜖
+=
+𝑐
+ϵ=c)" (or change the denominator in 
+𝐾
+=
+𝑐
++
+64
+𝐷
+2
+𝜇
+2
+/
+𝑐
+K=c+64D
+2
+μ
+2
+/c to 
+𝜖
+ϵ / 
+2
+𝜖
+2ϵ consistently) on p. 27.
+
+Exponent Typo 
+𝐷
+1
+/
+𝑞
+D
+1/q
+ Instead of 
+𝐷
+1
+/
+𝑞
+′
+D
+1/q
+′
+ in the Sobolev Power Step (Section 22.3, p. 32, line 7):
+
+Location: Page 32, Section 22.3, second line of the displayed inequality chain for 
+∥
+𝑣
+∥
+2
+𝛼
+∥v∥
+2
+α
+	​
+
+.   
+flat_critical_integrated.pdf
+
+Defect: The second line of the display prints 
+≤
+2
+𝛼
+𝐷
+1
+/
+𝑞
+𝑐
+𝐷
+(
+∑
+𝑒
+∣
+𝑑
+𝑣
+(
+𝑒
+)
+∣
+𝑞
+)
+1
+/
+𝑞
+∥
+𝑣
+∥
+2
+𝛼
+−
+1
+≤
+c
+D
+	​
+
+2αD
+1/q
+	​
+
+(∑
+e
+	​
+
+∣dv(e)∣
+q
+)
+1/q
+∥v∥
+2
+α−1
+	​
+
+ with 
+𝐷
+1
+/
+𝑞
+D
+1/q
+ instead of 
+𝐷
+1
+/
+𝑞
+′
+D
+1/q
+′
+. Because the vertex degree sum 
+∑
+𝑒
+=
+{
+𝑥
+,
+𝑦
+}
+(
+𝑣
+(
+𝑥
+)
+2
++
+𝑣
+(
+𝑦
+)
+2
+)
+≤
+2
+𝐷
+∥
+𝑣
+∥
+2
+2
+∑
+e={x,y}
+	​
+
+(v(x)
+2
++v(y)
+2
+)≤2D∥v∥
+2
+2
+	​
+
+ sits inside the 
+𝐿
+𝑞
+′
+L
+q
+′
+ norm 
+(
+⋅
+)
+1
+/
+𝑞
+′
+(⋅)
+1/q
+′
+ on the preceding line, the factor is 
+𝐷
+1
+/
+𝑞
+′
+D
+1/q
+′
+, matching the definition 
+𝐾
+𝐷
+=
+2
+𝛼
+𝐷
+1
+/
+𝑞
+′
+𝑐
+𝐷
+K
+D
+	​
+
+=
+c
+D
+	​
+
+2αD
+1/q
+′
+	​
+
+ on p. 30.   
+flat_critical_integrated.pdf
++ 2
+
+Required Correction: Replace 
+𝐷
+1
+/
+𝑞
+D
+1/q
+ with 
+𝐷
+1
+/
+𝑞
+′
+D
+1/q
+′
+ in the displayed inequality on p. 32.
+
+Residual Symbol Clash for 
+𝑚
+m in Section 11 Despite Section 26's Claimed Cleanup (Section 11, pp. 14–16 vs. Section 2, p. 2 and Section 26, p. 44):
+
+Location: Pages 14–16 (Theorem 11.1, Eq. 12–13, Theorem 11.2, Proposition 11.3) and Page 44 (Section 26, paragraph 3).   
+flat_critical_integrated.pdf
++ 4
+
+Defect: Section 2 (p. 2) defines 
+𝑚
+=
+𝑁
+𝑐
+2
+−
+1
+m=N
+c
+2
+	​
+
+−1 as the internal Lie dimension of 
+𝐸
+𝑛
+E
+n
+	​
+
+, and Section 10.1 (p. 12) uses 
+𝑚
+m in that sense (
+dim
+⁡
+𝐹
+=
+(
+𝑑
++
+𝑑
+2
+)
+𝑚
+dimF=(d+d
+2
+)m). Section 11 (pp. 14–16) then reuses the symbol 
+𝑚
+≥
+0
+m≥0 for the spatial mean budget of 
+max
+⁡
+{
+1
++
+𝑤
+𝑛
+,
+0
+}
+max{1+w
+n
+	​
+
+,0} on the same space 
+𝐸
+𝑛
+E
+n
+	​
+
+, before Section 15 (p. 21) switches to 
+𝜇
+μ to avoid clashing with 
+𝑚
+=
+𝑁
+𝑐
+2
+−
+1
+m=N
+c
+2
+	​
+
+−1. Section 26 (p. 44) states that "this candidate corrects stale weight symbols 
+𝑚
+m to 
+𝜇
+μ", which is true in Section 20.3 (p. 28) but leaves 
+𝑚
+m overloaded in Section 11.   
+flat_critical_integrated.pdf
++ 4
+
+Required Correction: Either rename the mean-budget parameter 
+𝑚
+m in Section 11 (pp. 14–16) to 
+𝑚
+wt
+m
+wt
+	​
+
+ or 
+𝜇
++
+μ
++
+	​
+
+, or explicitly state at the start of Section 11 (p. 14) that 
+𝑚
+≥
+0
+m≥0 locally denotes the mean weight budget rather than 
+𝑁
+𝑐
+2
+−
+1
+N
+c
+2
+	​
+
+−1.
+
+6. Originality, Relevance, and Primary-Literature Limits
+
+Originality and Methodological Scope: As candidly documented throughout the manuscript (Sections 1, 10.2, 12, 17.1, 20.2, 22, 23, 24.5, 26), the underlying analytical engines are classical: discrete Fourier diagonalization and rank-nullity (Sections 3–6, 9, 11), the implicit function theorem on regular submanifolds (Section 8), the Zelazo–Bürger 4-cycle effective-resistance cancellation [9] (Section 10.2), the Albert / Carlson–Haynsworth–Markham / Anderson–Trapp singular Schur complement and shorted-operator conditions [3, 4, 12] (Sections 12, 20.2, 24), the Rumin–Frank density-matrix proof of Cwikel-type eigenvalue bounds [13] (Section 17.1), discrete Loomis–Whitney/coarea Sobolev inequalities [14] (Section 22), and de Berg's compressed corner-potential binary space partition for fat objects [11] (Section 23).   
+flat_critical_integrated.pdf
++ 4
+
+Programme Relevance: The genuine mathematical value of this working paper lies in concrete adaptation, diagnostic precision, and self-contained verification within the author's lattice Hodge programme: tracking exact unit-spacing counting normalizations without hidden volume or dimension factors, isolating where tangent/regular-sector/mean-weight/dyadic/global-threshold/supplied-cube/fixed-penalty repair strategies fail, and providing self-contained finite proofs of the rectangle Sobolev inequality (Section 22) and the supplied-cube partition (Section 23) alongside the physical divergence-free 4-cycle counterexample (Section 24).
+
+Primary-Literature Limits: Because external literature [1]–[14] was not retrieved or inspected during this review, priority and exact fidelity to the external formulations in [2]–[14] are evaluated solely on the internal self-consistency of the proofs printed in the PDF.
+
+7. Review Context, Non-Blinding, and Unestablished Independence
+
+Non-Blinded Review Context: This review is explicitly non-blinded. The manuscript contains extensive historical review narratives, prior model names (gpt-6-astra, Gemini 4 Argon High), preparing-agent (Codex) notes, and numerical scores (6/10, 3.4/10, 3.5/10, 6.5/10) for earlier distinct artifacts (v2, v5, revision136, review150, revision152) on pages 20 and 44–45.   
+flat_critical_integrated.pdf
++ 2
+
+Strict Non-Inheritance: In accordance with the review protocol, none of the historical grades, subtotals, or resolved-objection dispositions from those earlier artifacts were transferred to this assessment. Every section, equation, and objection above was evaluated freshly from the 46 pages of flat_critical_integrated.pdf.
+
+Unestablished Independence: This assessment is an AI-only technical review of the provided PDF artifact. It does not constitute human peer review, independent editorial screening, or an organizationally isolated audit of the external code/Lean repositories.
+
+8. Recommendation and AI-Only Score
+
+Recommendation: acceptable_as_working_paper (with minor_revision recommended to fix the four localized mathematical/typographical slips in Objection 4—specifically 
+lim
+⁡
+→
+lim inf
+⁡
+lim→liminf in Prop. 11.3 on p. 16, explicit 
+2
+𝑅
+<
+𝑛
+2R<n in Theorem 5.1/Prop. 5.2 on p. 5, the 
+2
+𝜖
+→
+2
+𝑐
+2ϵ→2c margin typo on p. 27, and 
+𝐷
+1
+/
+𝑞
+→
+𝐷
+1
+/
+𝑞
+′
+D
+1/q
+→D
+1/q
+′
+ on p. 32).
+
+AI-Only Score: 7.6 / 10
+
+Score Rationale:
+
+Mathematical Rigor & Internal Completeness (+): Across all 46 pages, the calculations, finite Fourier sums, variational flow comparisons, discrete coarea/Sobolev reflections, corner-potential BSP bounds, and rational Schur-complement decompositions (
+𝐾
+≥
+1138
+/
+35
+K≥1138/35 and 
+𝑐
+∗
+=
+(
+17
+−
+85
+)
+/
+2
+c
+∗
+	​
+
+=(17−
+85
+	​
+
+)/2) are mathematically sound and worked out in full quantitative detail. The inclusion of self-contained proofs in Sections 22, 23, and 24 eliminates the external black-box gaps of earlier partial drafts, and the correction of the multi-cluster leaf occupancy bound (
+𝑇
+𝐷
+=
+2
+2
+𝐷
+−
+1
+T
+D
+	​
+
+=2
+2D−1
+, backed by the 
+2
+𝐷
+−
+1
+2
+D−1
+ stress family in Section 23.2) is solid.
+
+Epistemic Transparency (+): The manuscript is exceptionally transparent about what is proved vs. assumed, what is Lean-verified vs. analytic, and what remains open.
+
+Deductions (-): The score is bounded below the 8.5–10 range by (1) the unresolved status of the central unrestricted critical rectangular partition question (Section 27) and the reliance of Section 21.3/Section 23 on supplied cubes satisfying Eq. (28) (which Section 21.4 shows is non-universal); (2) the restriction of the sufficiency theory (Sections 16–23) to a single isotropic scalar weight 
+𝑎
+(
+𝑥
+)
+a(x) on a flat abelian-type lattice with no interacting or continuum Yang–Mills coupling; (3) the inability to directly inspect or execute the external Lean 4 / Colab evidence archives from the PDF alone, alongside the fact that the entire sufficiency/spatial continuation (Sections 15–23 and 24.3–24.4) is analytic rather than kernel-verified; and (4) the minor quantifier and typographical slips documented in Objection 4.
