@@ -1,0 +1,137 @@
+Base1837aa3a0113964ff1358c9ab5ba0e8d4395023a, unit163, 6 November2026.
+Grouped analytic supplement; no separate paper or priority claim.
+
+ACTUAL COUPLED NEGATIVE CHANNELS: A SMALL SCHUR TEST AND A FALSE SHORTCUT
+
+1. Classical context, actual dictionary
+
+General effective-resistance characterizations of signed graph Laplacians
+already exist: Chen et al., Characterizing the Positive Semidefiniteness of
+Signed Laplacians via Effective Resistances (2016), Theorem1 and the mutual
+resistance definitions in SectionIII; author-hosted full paper checked at
+https://people.kth.se/~kallej/papers/network_cdc16chen.pdf . Also Song/Hill/Liu,
+arXiv:1906.07632v3, Theorems6/7 and Remark5 discuss general signed graphs.
+Theorems and relevant context checked, not every proof in both papers.
+No new general Schur-complement/effective-resistance principle is claimed.
+The matrix in our proof uses the POSITIVE REFERENCE inverse; it must not be
+silently substituted for a differently defined resistance matrix of a signed
+operator in another source.
+
+Use the actual torus d,L0 and constant projection P from162. Select q actual
+direction/component rows of d, with no requirement that their cycles be
+disjoint. Let Z be the q-by-hV matrix of those rows and W=diag(w_j)>0.
+The explicit modified gradient form is
+
+ H=mL0-Z*WZ, m>0.
+
+Equivalently the selected actual diagonal coefficient channels change from
+m to m-w_j; for negative channels w_j=m+B_j, B_j>0. The form equality follows
+by expanding the selected row squares, not by an assumed physical producer.
+Rows annihilate constants. On their orthogonal complement let G=L0^-1 and
+define the ACTUAL q-by-q Green interaction matrix and reduced matrix
+
+ Gamma=Z G Z*,       C=m W^-1-Gamma.                       (1)
+
+2. Exact inertia reduction, including dependencies and zero eigenvalues
+
+Write N0=h(V-1). The symmetric block matrix
+
+ M=[[mL0, Z*],[Z,W^-1]]
+
+on the mean-zero domain plus R^q has two legitimate Schur complements.
+Eliminate W^-1>0: inertia(M)=inertia(H|H0)+(q,0,0).
+Eliminate mL0>0: inertia(M)=(N0,0,0)+inertia(W^-1-Gamma/m).
+The second reduced matrix is C/m and has the same inertia as C. Therefore,
+using order (positive,negative,zero),
+
+ n_-(H)=n_-(C),
+ n_0(H)=h+n_0(C),
+ n_+(H)=N0-q+n_+(C).                                     (2)
+
+The block eliminations are congruences: for [[A,B],[B*,D]] with invertible A,
+multiply by [[I,-A^-1 B],[0,I]] and its transpose to obtain
+diag(A,D-B*A^-1B). This explicitly proves the inertia step. No row
+independence, disjoint-cycle, simultaneous diagonalization or nonsingular H
+premise is required. C is constructed from actual coefficients and incidence;
+checking it is not a promise that it is positive.
+
+In particular H is PSD iff C is PSD. H is PSD with exactly the h constant
+zero modes iff C is positive definite. These are conclusions of the displayed
+finite form equality and block algebra. For q=1 this recovers162's sharp
+threshold. The method is classical; the useful artifact is the auditable
+actual finite adapter and exact coupled failure below.
+
+3. Individually safe negative channels can be jointly unstable
+
+On the actual D=3,n=2,h=1 torus, select the first and second direction rows
+at the same vertex. All unchanged directed-row coefficients are m=4.
+The actual reference Green interaction is
+
+ Gamma=[[7/24,5/48],[5/48,7/24]].                          (3)
+
+A direct Walsh derivation: forward multipliers are0 or-2 and the Laplacian
+symbol is4 times the number of nonzero frequency bits. For the diagonal,
+the trace/transitivity identity gives7/24. For the off-diagonal, only
+frequencies whose first two bits are1 contribute, so it is
+(1/8)(1/2+1/3)=5/48. This counts both orientations in the actual n=2 d.
+
+Set both selected coefficients to -84/11. Then their update weights are
+w=m+84/11=128/11, so t=w/m=32/11. Each channel separately is below its
+critical magnitude68/7: equivalently1/t-7/24=5/96>0. Its full operator is
+positive on the seven-dimensional mean-zero space.
+
+Together, C=(1/t)I-Gamma has diagonal5/96 and off-diagonal-5/48. Its
+eigenvalues are -5/96 and5/32, so(2) gives the joint full inertia
+
+ (6 positive,1 negative,1 constant zero).
+
+This already falsifies a concrete observation shortcut. For either channel
+alone, the mean-zero gap is at least16*(1-t*rho)=80/33>1, by162's actual
+energy comparison at m=4,n=2. The SAME rank-one normalized mean observation
+with Phi(y)=|y|^2 therefore restores coercivity at c=1 in either single case.
+For the joint form, its negative eigenvector and the constant vector span a
+two-dimensional nonpositive subspace. Every scalar linear observation has
+a nonzero kernel vector in that subspace. If Phi is nonnegative and bounded
+quadratically near0, Phi(0)=0, so that vector contradicts coercivity at c=1.
+Thus no scalar linear observation can repair the joint form, even though a
+specific scalar observation repairs either constituent case separately.
+The obstruction also applies to ANY observation F:R^8->R differentiable at0
+with F(0)=0 and nonnegative Phi(z)<=K|z|^2 near0. Its derivative has a nonzero
+kernel vector v in the same two-dimensional nonpositive space. Then
+F(tv)=o(t), Phi(F(tv))=o(t^2), and Q(tv)<=0, contradicting
+Q(tv)+Phi(F(tv))>=||tv||^2 for sufficiently small nonzero t. No factorization,
+locality or preservation of the single-channel observation is assumed. The
+normalization at0 and local quadratic penalty are explicit substantive scope.
+
+Thus the rule "every single negative channel is individually safe, hence
+all are safe together" is FALSE for actual torus coefficients. The coupling
+has not been hidden in a new structure: all entries are computed explicitly.
+This does not refute the full matrix resistance criterion or the disjoint-cycle
+theorems in the literature; it refutes the shortcut that drops their premise
+or erases the actual off-diagonal interaction.
+
+The rational163 fixtures additionally check D3,n3,h1/h2 and D4,n2,h2, using
+actual matrices and a parameter chosen from the computed nonzero off-diagonal.
+The all-size formula(2) is an analytical block-congruence proof, not certified
+by these finitely many examples. Arbitrary q and arbitrary unequal W are not
+claimed numerically replayed by a one-row/two-equal-row fixture.
+
+4. Consequence for observation resources and scope
+
+The actual low eigenspace still supplies the spectral observation of159.
+Its dimension obeys N_<c(H)<=h+q for0<c<=16m/n^2 by rank-q min-max against
+mL0. If negative or additional zero modes appear, their count in(2) provides
+a necessary lower bound h+n_-(C)+n_0(C) for the linear observation rank.
+This does not alone bound the normalized penalty coefficient: the actual
+negative eigenvalue depth still matters. In stable families with an actual
+uniform mean-zero gap,162's explicit mean observation and penalty c apply.
+No general interacting form, local rectangular observation or physical
+Yang-Mills gap is obtained from this finite gradient dictionary.
+
+Review context: prepared by the same continuing Codex session; exact backend
+identity not exposed, no independent review/Lean/new score. Finite163 replay
+and mutation results must be read from their preserved reports; the analytical
+source was written after pinning that executable source and is not a new
+scored PDF. No AIRR deposit or standalone small-corollary paper. Original
+positive critical rectangle remains the only active question; common-refinement
+STOPPED3, PR29=20/41,TermSource=0.

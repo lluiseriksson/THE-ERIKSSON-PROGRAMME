@@ -1,0 +1,452 @@
+{
+  "Lean_verified": false,
+  "all_size_theorem_verified": false,
+  "child_maxrss_kib": 106976,
+  "clones": [
+    {
+      "clean_before_execution": true,
+      "head": "378e879bc2687368a11d25a0c1b1d57f332547fd",
+      "method": "actual fresh filtered sparse git clone, pinned fetch and detached checkout",
+      "name": "fresh_a"
+    },
+    {
+      "clean_before_execution": true,
+      "head": "378e879bc2687368a11d25a0c1b1d57f332547fd",
+      "method": "actual fresh filtered sparse git clone, pinned fetch and detached checkout",
+      "name": "fresh_b"
+    }
+  ],
+  "compute_units_billed": null,
+  "elapsed_seconds": 29.98344045899998,
+  "expected_git_LF_hashes": {
+    "exact159.py": "8b509a83fbd799581b41d60d493fe36e86c04124be47453f38da4d1e0ea6e07a",
+    "exact162.py": "4d36e61e9a34740e73e93d8f3f8244cc1405fa6ecfcdb31d951ae1bb1065a8bf",
+    "exact163.py": "16481285f0bcb4445549fc21ec910d1ac96998b54e34380fb77536bf73e6aa30",
+    "single-edge-resistance162.txt": "355140a47646bd5f30d50a9376368430e5aca924e0673be9ce2d4d61d98f8626"
+  },
+  "finished_utc": "2026-11-06T19:12:12.102411+00:00",
+  "fresh_runtime_pair_completed": false,
+  "gpu_environment": "",
+  "independent_review": false,
+  "normal_optimized_byte_identical": true,
+  "payload": {
+    "Lean_verified": false,
+    "all_size_theorem_verified": false,
+    "distinct_mutation_types": 7,
+    "fixtures": [
+      {
+        "D": 3,
+        "critical_B": "68/7",
+        "field_dimension": 8,
+        "h": 1,
+        "m": "4",
+        "n": 2,
+        "pair": {
+          "each_negative_B": "84/11",
+          "individual_inertias": [
+            [
+              7,
+              0,
+              1
+            ],
+            [
+              7,
+              0,
+              1
+            ]
+          ],
+          "joint_inertia": [
+            6,
+            1,
+            1
+          ],
+          "offdiagonal_Green": "5/48",
+          "reduced_inertia": [
+            1,
+            1,
+            0
+          ],
+          "update_ratio_t": "32/11"
+        },
+        "phases": [
+          {
+            "B": "54/7",
+            "inertia_pos_neg_zero": [
+              7,
+              0,
+              1
+            ],
+            "low_count_c1": 1,
+            "phase": "below"
+          },
+          {
+            "B": "68/7",
+            "inertia_pos_neg_zero": [
+              6,
+              0,
+              2
+            ],
+            "low_count_c1": 2,
+            "phase": "equal"
+          },
+          {
+            "B": "82/7",
+            "inertia_pos_neg_zero": [
+              6,
+              1,
+              1
+            ],
+            "low_count_c1": 2,
+            "phase": "above"
+          }
+        ],
+        "proved_gap_bound": "16/3",
+        "rejected_mutations": [
+          "altered_rho",
+          "dropped_volume_factor",
+          "wrong_critical_weight",
+          "altered_Green_witness",
+          "reversed_phase_sign",
+          "gap_claim_above_threshold",
+          "ignore_offdiagonal_coupling"
+        ],
+        "rho": "7/24",
+        "stable_low_count_at_gap": 1,
+        "stable_theta": "1"
+      },
+      {
+        "D": 3,
+        "critical_B": "495/26",
+        "field_dimension": 27,
+        "h": 1,
+        "m": "9",
+        "n": 3,
+        "pair": {
+          "each_negative_B": "1791/125",
+          "individual_inertias": [
+            [
+              26,
+              0,
+              1
+            ],
+            [
+              26,
+              0,
+              1
+            ]
+          ],
+          "joint_inertia": [
+            25,
+            1,
+            1
+          ],
+          "offdiagonal_Green": "7/54",
+          "reduced_inertia": [
+            1,
+            1,
+            0
+          ],
+          "update_ratio_t": "324/125"
+        },
+        "phases": [
+          {
+            "B": "189/13",
+            "inertia_pos_neg_zero": [
+              26,
+              0,
+              1
+            ],
+            "low_count_c1": 1,
+            "phase": "below"
+          },
+          {
+            "B": "495/26",
+            "inertia_pos_neg_zero": [
+              25,
+              0,
+              2
+            ],
+            "low_count_c1": 2,
+            "phase": "equal"
+          },
+          {
+            "B": "306/13",
+            "inertia_pos_neg_zero": [
+              25,
+              1,
+              1
+            ],
+            "low_count_c1": 2,
+            "phase": "above"
+          }
+        ],
+        "proved_gap_bound": "16/3",
+        "rejected_mutations": [
+          "altered_rho",
+          "dropped_volume_factor",
+          "wrong_critical_weight",
+          "altered_Green_witness",
+          "reversed_phase_sign",
+          "gap_claim_above_threshold",
+          "ignore_offdiagonal_coupling"
+        ],
+        "rho": "26/81",
+        "stable_low_count_at_gap": 1,
+        "stable_theta": "1"
+      },
+      {
+        "D": 3,
+        "critical_B": "495/26",
+        "field_dimension": 54,
+        "h": 2,
+        "m": "9",
+        "n": 3,
+        "pair": {
+          "each_negative_B": "1791/125",
+          "individual_inertias": [
+            [
+              52,
+              0,
+              2
+            ],
+            [
+              52,
+              0,
+              2
+            ]
+          ],
+          "joint_inertia": [
+            51,
+            1,
+            2
+          ],
+          "offdiagonal_Green": "7/54",
+          "reduced_inertia": [
+            1,
+            1,
+            0
+          ],
+          "update_ratio_t": "324/125"
+        },
+        "phases": [
+          {
+            "B": "189/13",
+            "inertia_pos_neg_zero": [
+              52,
+              0,
+              2
+            ],
+            "low_count_c1": 2,
+            "phase": "below"
+          },
+          {
+            "B": "495/26",
+            "inertia_pos_neg_zero": [
+              51,
+              0,
+              3
+            ],
+            "low_count_c1": 3,
+            "phase": "equal"
+          },
+          {
+            "B": "306/13",
+            "inertia_pos_neg_zero": [
+              51,
+              1,
+              2
+            ],
+            "low_count_c1": 3,
+            "phase": "above"
+          }
+        ],
+        "proved_gap_bound": "16/3",
+        "rejected_mutations": [
+          "altered_rho",
+          "dropped_volume_factor",
+          "wrong_critical_weight",
+          "altered_Green_witness",
+          "reversed_phase_sign",
+          "gap_claim_above_threshold",
+          "ignore_offdiagonal_coupling"
+        ],
+        "rho": "26/81",
+        "stable_low_count_at_gap": 2,
+        "stable_theta": "1"
+      },
+      {
+        "D": 4,
+        "critical_B": "196/15",
+        "field_dimension": 32,
+        "h": 2,
+        "m": "4",
+        "n": 2,
+        "pair": {
+          "each_negative_B": "1108/107",
+          "individual_inertias": [
+            [
+              30,
+              0,
+              2
+            ],
+            [
+              30,
+              0,
+              2
+            ]
+          ],
+          "joint_inertia": [
+            29,
+            1,
+            2
+          ],
+          "offdiagonal_Green": "17/192",
+          "reduced_inertia": [
+            1,
+            1,
+            0
+          ],
+          "update_ratio_t": "384/107"
+        },
+        "phases": [
+          {
+            "B": "166/15",
+            "inertia_pos_neg_zero": [
+              30,
+              0,
+              2
+            ],
+            "low_count_c1": 2,
+            "phase": "below"
+          },
+          {
+            "B": "196/15",
+            "inertia_pos_neg_zero": [
+              29,
+              0,
+              3
+            ],
+            "low_count_c1": 3,
+            "phase": "equal"
+          },
+          {
+            "B": "226/15",
+            "inertia_pos_neg_zero": [
+              29,
+              1,
+              2
+            ],
+            "low_count_c1": 3,
+            "phase": "above"
+          }
+        ],
+        "proved_gap_bound": "6",
+        "rejected_mutations": [
+          "altered_rho",
+          "dropped_volume_factor",
+          "wrong_critical_weight",
+          "altered_Green_witness",
+          "reversed_phase_sign",
+          "gap_claim_above_threshold",
+          "ignore_offdiagonal_coupling"
+        ],
+        "rho": "15/64",
+        "stable_low_count_at_gap": 2,
+        "stable_theta": "3/2"
+      }
+    ],
+    "independent_review": false,
+    "mutation_pairs": 28,
+    "status": "EXACT_RESISTANCE_DIAGNOSTICS_PASS"
+  },
+  "payload_sha256": "297af4199a956a1a34c5fd1ec8c18bdc199009a50032f3033cbc9af3bad08ba1",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "process_replays": 4,
+  "python": "3.13.18",
+  "source_sha": "378e879bc2687368a11d25a0c1b1d57f332547fd",
+  "started_utc": "2026-11-06T19:11:42.118981+00:00",
+  "status": "EXACT_RESISTANCE_DIAGNOSTICS_PASS",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "fresh_a-clone",
+      "seconds": 0.8871223170000064
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-sparse",
+      "seconds": 0.004106780000000754
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-fetch",
+      "seconds": 0.46626001500001735
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-checkout",
+      "seconds": 0.6664352550000103
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-head",
+      "seconds": 0.004202359999993632
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-status",
+      "seconds": 0.04697727499998905
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-normal",
+      "seconds": 6.822275286000007
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-optimized",
+      "seconds": 6.554018530999997
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-clone",
+      "seconds": 0.4177383010000142
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-sparse",
+      "seconds": 0.0018936209999935727
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-fetch",
+      "seconds": 0.4047856890000219
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-checkout",
+      "seconds": 0.45591982499999517
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-head",
+      "seconds": 0.001639299999993682
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-status",
+      "seconds": 0.019418572000006407
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-normal",
+      "seconds": 6.202254576000001
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-optimized",
+      "seconds": 7.026580825999986
+    }
+  ],
+  "unit": 163
+}
