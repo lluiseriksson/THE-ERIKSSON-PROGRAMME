@@ -1,0 +1,27 @@
+{
+  "local_duplicate_search": "rg on papers/flat-coarse-rank,YangMills/RG,docs found no matching signed-diagonal compensation theorem; existing unweighted flat identity is prior art in this dossier",
+  "scope": "Bounded primary-source comparison, not exhaustive novelty verification",
+  "correctness": "Self-contained analytic proof plus separately scoped exact finite diagnostics",
+  "primary": [
+    {
+      "authors": "Gopalakrishnan,Kogler,Lederer,Schoeberl",
+      "claim": "Classical context only; no theorem imported or originality certified",
+      "title": "Divergence-conforming velocity and vorticity approximations for incompressible fluids obtained with minimal facet coupling",
+      "url": "https://arxiv.org/html/2112.00089v4",
+      "difference": "BDM/Raviart-Thomas finite elements with facets/boundaries, not this periodic forward/backward torus or its signed channel constants",
+      "inspected": "Abstract,Section1 formulation,Section3.1 equation9 and Lemma3.1 Korn-stability context"
+    },
+    {
+      "authors": "Pichugin,Prikazchikov",
+      "inspected": "Author institutional metadata/abstract and publisher search extract",
+      "difference": "Continuum constrained ellipticity/cubic symmetry context, no identification with exact discrete result claimed",
+      "title": "Remarks on explicit strong ellipticity conditions for anisotropic or pre-stressed incompressible solids",
+      "url": "https://bura.brunel.ac.uk/handle/2438/11706",
+      "failed_direct_open": "Oxford page redirected to inaccessible CDN; full article not read",
+      "DOI": "10.1093/qjmam/hbv017"
+    }
+  ],
+  "checked_utc": "2026-11-06T03:32:45.1778181Z",
+  "failed_other_lookup": "Author-hosted ChenWang2018divfree.pdf returned502; not treated as inspected",
+  "originality": "NO exhaustive priority or independent-novelty claim"
+}
