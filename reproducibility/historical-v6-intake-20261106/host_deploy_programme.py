@@ -13,6 +13,7 @@ import shutil
 import sqlite3
 import subprocess
 import sys
+import time
 import urllib.request
 
 COMMIT = 'f44781be89e8ecb0640983e66f1d5608046c8e96'
@@ -77,9 +78,18 @@ def main():
         command('restore-intake', 'systemctl', 'restart', 'airr-intake.service', timeout=90)
     if Path('/opt/airr-intake/current').resolve().name != COMMIT:
         raise ValueError('Expected reviewed source is not active')
-    with urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=15) as response:
-        if response.status != 200:
-            raise ValueError('Readiness did not pass')
+    ready = False
+    for _ in range(30):
+        try:
+            with urllib.request.urlopen('http://127.0.0.1:8000/readyz', timeout=5) as response:
+                ready = response.status == 200
+            if ready:
+                break
+        except OSError:
+            pass
+        time.sleep(1)
+    if not ready:
+        raise ValueError('Readiness did not pass after restart')
     with sqlite3.connect('/srv/airr-private/instance/intake.sqlite3') as db:
         if db.execute('PRAGMA integrity_check').fetchone()[0] != 'ok':
             raise ValueError('Database integrity failed')
