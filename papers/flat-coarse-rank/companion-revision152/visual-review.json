@@ -1,0 +1,30 @@
+{
+  "comparison": "D evidencia-152/attempt-b-integrity.json",
+  "all_final_pages_covered": true,
+  "final_changed_pages_visually_read": [
+    13,
+    16
+  ],
+  "finding": "All final pages readable, no clipping/overlap, complete equations and assessment context, accurate contents; orphan final line removed",
+  "pdf_sha256": "00f9d63ec6d7d2074559916eddecf1e203bc024670a18aa83acc64f385b62382",
+  "external_scientific_review": false,
+  "first_render_all17pages_read": true,
+  "final_unchanged_page_image_hashes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15
+  ],
+  "pages": 16,
+  "review_score": null
+}
