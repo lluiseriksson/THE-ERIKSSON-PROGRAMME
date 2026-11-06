@@ -138,12 +138,17 @@ Phi(y)<=(c+4Db)||y||^2, by the actual ||du||^2<=4D||u||^2 estimate.
 Thus(4) controls both the observation rank and a uniform penalty whenever
 the sparse channel count and negative-depth bound are actually established.
 
-Small support alone does NOT control normalized penalty size. On one actual
-edge at n>=3 choose its coefficient -B and set all other edge coefficients0.
-Then L_A=-B vv^T, where v=delta_y-delta_x, ||v||^2=2. Its eigenvalue along
-v is -2B. Any linear observation ||C||<=1 and Phi(z)<=K||z||^2 satisfying
-coercivity must have K>=c+2B by evaluating on v. This prevents claiming that
-the repaired rank estimate also removes the independent negative-depth cost.
+Small support alone does NOT control normalized penalty size, EVEN with just
+one bad channel and all other channels uniformly good. For h=1,n>=3, choose
+one actual edge x--y with coefficient -B (B>0), all other coefficients m.
+Set v=delta_y-delta_x, ||v||^2=2. The chosen edge has squared difference4;
+each of the other4D-2 incident edges has squared difference1, and all other
+edges contribute0. Hence Q_A(v)/||v||^2=-2B+(2D-1)m. Any linear observation
+||C||<=1 and Phi(z)<=K||z||^2 satisfying coercivity must have
+K>=c+2B-(2D-1)m, by evaluating on v. Here k_m=R_m=1 independently of B.
+Fix m and send B to infinity. This proves that the sparse rank estimate does
+not remove the independent negative-depth cost. v is a trial vector, not
+claimed to be an eigenvector of the full operator with positive other edges.
 With physical derivative n*d, the penalty estimates acquire n^2; all equations
 here use the stated unit-spacing convention.
 
