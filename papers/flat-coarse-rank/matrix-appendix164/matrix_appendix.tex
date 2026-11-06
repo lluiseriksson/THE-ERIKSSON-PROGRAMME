@@ -4,6 +4,9 @@
 \usepackage[margin=27mm]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
+\hypersetup{pdftitle={Matrix gradients and signed channel interactions},
+pdfauthor={Lluis Eriksson},pdfsubject={Consolidated draft appendix to the coarse information manuscript},
+pdfkeywords={finite gradients, inverse moments, spectral repair, effective resistance}}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{example}[theorem]{Example}
@@ -40,11 +43,11 @@ This is a grouped appendix candidate for the existing integrated manuscript,
 not a separate deposit. Its analytical sources and finite evidence are pinned
 at repository commit \texttt{72baba23}; full identifiers and execution records
 are in Section~\ref{sec:evidence}. The published working paper v6 and its
-assessment report154 remain separate artifacts. This new PDF has no inherited
+assessment report 154 remain separate artifacts. This new PDF has no inherited
 assessment score, independent review or Lean certificate.
 The parent is
 \href{https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v6/}
-{AIRR working paper ARR-2026-7EPM3V3DP796BBRR version6}; its unchanged PDF
+{AIRR working paper ARR-2026-7EPM3V3DP796BBRR version 6}; its unchanged PDF
 SHA256 is
 \begin{center}\scriptsize
 \texttt{ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389}.
@@ -104,7 +107,9 @@ $z_i(k)=e^{2\pi i k_i/n}-1$ and
 $\lambda(k)=4\sum_i\sin^2(\pi k_i/n)$; set $J(0)=0$.
 It is rectangular $r\times h$. Embed $\R^h$ isometrically in $\R^r$ by $I$
 and use the square symbol $G(k)=J(k)I^*$. Thus $\|G(k)\|=\lambda(k)^{-1/2}$
-for $k\ne0$. Centered frequency representatives $b$ satisfy
+for $k\ne0$. Writing $\mathcal F_r$ for the counting transform, the actual
+factorization is $J=\mathcal F_r^*M_G\mathcal F_r I$.
+Centered frequency representatives $b$ satisfy
 $\lambda(k)\geq16|b|^2/n^2$. Counting the cube containing
 $0<|b|<n/(4t)$ gives
 \[
@@ -113,12 +118,12 @@ $0<|b|<n/(4t)$ gives
 When the radius is at most one the set is empty; otherwise
 $(2\lfloor R\rfloor+1)^D\leq(3R)^D$ suffices.
 
-Apply Frank's operator-valued Cwikel theorem~\cite[Theorem3.1]{Frank}
+Apply Frank's operator-valued Cwikel theorem~\cite[Theorem 3.1]{Frank}
 with $q=D$, $f=A^{-1/2}$, this square multiplier and counting measures.
 Its constant is $\frac D2(\frac D{D-2})^{D-1}V^{-1}$, so the displayed
 frequency $V$ cancels exactly once. It bounds the number of singular values
 of $A^{-1/2}J$ strictly above $s$ by
-$\alpha_Ds^{-D}\sum_x\tr A(x)^{-p}$. The final factor $I$ is an isometry
+$\alpha_Ds^{-D}\sum_x\tr A(x)^{-p}$. The right factor $\mathcal F_r I$ is an isometry
 and cannot increase singular-value counts. Apply min-max to the inverse
 comparison at threshold $1/c$ on $H_0$, then add the $h$ constant modes.
 Complexification of a real symmetric matrix preserves multiplicities.
@@ -276,9 +281,11 @@ on $H_0\oplus\R^q$ proves
  n_-(H)=n_-(\mathcal C),\quad n_0(H)=h+n_0(\mathcal C),\quad
  n_+(H)=N_0-q+n_+(\mathcal C).
 \end{equation}
-Indeed the two congruences give respectively
-$\operatorname{inertia}(H|_{H_0})+(q,0,0)$ and
-$(N_0,0,0)+\operatorname{inertia}(\mathcal C/m)$.
+Indeed the two congruences give the identity
+\[
+ \operatorname{inertia}(H|_{H_0})+(q,0,0)
+ = (N_0,0,0)+\operatorname{inertia}(\mathcal C/m).
+\]
 No disjoint-cycle or independent-row assumption occurs. In particular,
 $H$ is positive semidefinite with exactly $h$ constant zeros if and only if
 $\mathcal C$ is positive definite. General signed matrix criteria preexist
@@ -322,7 +329,7 @@ stacked on PR185. All paths below are under
 \texttt{reproducibility/matrix-moment-sweep-20261106/}.
 Full source for this consolidation is pinned at
 \begin{center}\small\texttt{72baba2356c209a75c96cd8e96b758620dbf972d}.\end{center}
-Units162 and163 each used two distinct own CPU allocations, four actual
+Units 162 and 163 each used two distinct own CPU allocations, four actual
 fresh sparse Git clones at one pinned source, and eight normal/optimized
 Python processes. Outputs matched within each unit. Both runtimes were
 deleted and disconnected after evidence export. Full stdout, stderr, exit
@@ -339,20 +346,20 @@ Unit & Executed source prefix & Fixture cases & Mutations per process\\
 \bottomrule
 \end{tabular}
 \end{center}
-The163 fixtures are $(D,n,h)=(3,2,1),(3,3,1),(3,3,2),(4,2,2)$.
+The 163 fixtures are $(D,n,h)=(3,2,1),(3,3,1),(3,3,2),(4,2,2)$.
 They check actual Green and leverage identities, below/equal/above phase
 inertia, equality witnesses, gap and mean-observation coercivity, and coupled
-pair inertia. Unit162 covers zero and near-zero stars, one large negative
+pair inertia. Unit 162 covers zero and near-zero stars, one large negative
 channel and rationally rotated local eigendirections. Every acceptance check
 raises explicitly on failure in both ordinary and \texttt{-O} execution.
-There are 28 fixture-mutation pairs per163 process, not 28 distinct types.
-The two163 recipe times were 53.83 and29.98 seconds; requested-to-release
-times were179.71 and102.74 seconds. Billed compute units were not exposed.
+There are 28 fixture-mutation pairs per 163 process, not 28 distinct types.
+The two163 recipe times were 53.83 and 29.98 seconds; requested-to-release
+times were 179.71 and 102.74 seconds. Billed compute units were not exposed.
 
 Finite replay checks these finite matrices, not the universal analytical
 statements. Arbitrary $q$, unequal weights, the all-size capped-family example
 and the nonlinear derivative consequence are analytical arguments, not extra
-executed fixtures. Earlier159 diagnostics used source downloads rather than
+executed fixtures. Earlier 159 diagnostics used source downloads rather than
 fresh Git clones; their original limitation remains in their own records.
 No Lean compilation certifies this appendix. A full independently prepared
 audit of the imported Fourier adapter and the application form dictionary
@@ -378,26 +385,26 @@ of the result, not editorial acceptance conditions represented as satisfied.
 
 The original positive critical rectangular construction remains open.
 The common-refinement route remains stopped after three unsuccessful units.
-The recorded PR29 baseline stays20/41 with TermSource0. This appendix adds
+The recorded PR29 baseline stays 20/41 with TermSource 0. This appendix adds
 supporting finite mathematical results and useful counterexamples without
 changing those records. It is a draft for consolidation, not a deposit,
 acceptance or new verified public release.
 
 \begin{thebibliography}{9}
 \bibitem{Frank} R. L. Frank, \emph{Cwikel's theorem and the CLR inequality},
-arXiv:1206.3325v1 (2012), Theorem3.1.
+arXiv:1206.3325v1 (2012), Theorem 3.1.
 \url{https://arxiv.org/abs/1206.3325v1}.
 \bibitem{Zelazo} D. Zelazo and M. B\"urger, \emph{On the definiteness of the
 weighted Laplacian and its connection to effective resistance},
-IEEE CDC (2014), TheoremIII.3.
+IEEE CDC (2014), Theorem III.3.
 \url{https://arxiv.org/abs/1408.2187}.
-\bibitem{Spielman} D. A. Spielman, \emph{Spectral Graph Theory Lecture14},
-15 October2018, Claim14.6.2.
+\bibitem{Spielman} D. A. Spielman, \emph{Spectral Graph Theory Lecture 14},
+15 October 2018, Claim 14.6.2.
 \url{https://www.cs.yale.edu/homes/spielman/561/lect14-18.pdf}.
 \bibitem{Chen} W. Chen, J. Liu, Y. Chen, S. Z. Khong, D. Wang,
 T. Ba\c{s}ar, L. Qiu and K. H. Johansson, \emph{Characterizing the positive
 semidefiniteness of signed Laplacians via effective resistances},
-IEEE CDC (2016), pp.985--990.
+IEEE CDC (2016), pp. 985--990.
 \url{https://people.kth.se/~kallej/papers/network_cdc16chen.pdf}.
 \end{thebibliography}
 \end{document}
