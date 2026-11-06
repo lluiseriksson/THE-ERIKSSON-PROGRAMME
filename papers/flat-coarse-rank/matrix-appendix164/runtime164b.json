@@ -1,7 +1,7 @@
 {
   "requested_utc": "2026-11-06T20:26:51.487Z",
   "released_utc": "2026-11-06T20:59:14.998Z",
-  "requested_to_release_seconds": 1943.0,
+  "requested_to_release_seconds": 1943.511,
   "type": "Own Colab Linux CPU",
   "compute_units_billed": null,
   "recipe_seconds": 104.36770951099993,
