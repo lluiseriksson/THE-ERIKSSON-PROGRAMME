@@ -1,0 +1,6 @@
+import YangMills.RG.PhysicalCycleFullForm
+#print axioms YangMills.RG.actualCycleLongitudinalEnergy_eq_directional
+#print axioms YangMills.RG.physicalCycleFour_total_energy_sum
+#print axioms YangMills.RG.actualCycleLongitudinalEnergy_le_total
+#print axioms YangMills.RG.physicalCycleFour_kernel_coercive
+#print axioms YangMills.RG.physicalCycleFour_kernel_fixed_penalty_counterexample

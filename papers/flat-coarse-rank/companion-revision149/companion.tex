@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb}
+\usepackage[margin=27mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\setlength{\emergencystretch}{3em}
+\title{Finite critical estimates cube partitions and physical cycle obstructions\\\large Consolidated companion proof and reproducibility record}
+\author{The Eriksson Programme\\\small Preparing assistant: OpenAI Codex; not an independent reviewer}
+\date{5 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+This companion groups the finite critical rectangle estimate, the partition
+construction for supplied disjoint lattice cubes, and an explicit obstruction
+to a fixed coarse penalty in the actual flat physical cochain domain. In the
+last construction kernel coercivity is proved on every actual cochain,
+while an actual divergence-zero field defeats the same fixed penalty.
+The complete fixed-penalty statement has been formally checked and reproduced
+in two fresh Colab clones at one source commit. The earlier Sobolev and cube
+arguments and the sharp free-penalty extension remain analytic; no common
+verification label is applied to all parts. Suitable cubes are still inputs,
+not consequences of a critical inverse moment. The unrestricted rectangular
+question remains open. This is an unreviewed companion revision, not an AIRR
+deposit, acceptance, peer review or an interacting or continuum mass gap.
+\end{abstract}
+\section*{Reading convention and provenance}
+The three parts below have separate scopes. Part one is a local inequality;
+it is not an algorithm producing a globally adequate partition. Part two
+constructs a partition only when actual disjoint cubes and the stated
+coefficient bounds have already been supplied. Part three concerns one explicitly fixed observation map. Their conclusions must not
+be composed to discard those assumptions.
+
+The dimension symbol $D$ is common to all parts. The constants named
+$A_D$ are \emph{local to their respective parts}: the Sobolev constant
+and the geometric partition constant are different. Each is explicitly
+defined at its point of use; neither is substituted for the other.
+All lattice norms use counting measure. Internal axis edges are counted
+once; periodic wrap edges may only be omitted using nonnegativity.
+
+The classical entropy/projection/coarea derivation and de Berg's compressed
+splitting method are credited in the respective parts. We claim no new
+general Sobolev or BSP principle, original priority or independent discovery.
+This revision consolidates source fragments from units137--140 and the physical cycle work in units142--148, with
+source and existing evidence pinned in the accompanying manifest. It does
+not amend the frozen reviewed PDF or inherit its model assessments.
+\clearpage
+\tableofcontents
+\clearpage
+\input{sobolev.tex}
+\clearpage
+\input{partition.tex}
+\clearpage
+\input{physical-cycle.tex}
+\section{Finite reproduction evidence and its limits}
+The construction was implemented using exact rational arithmetic. On
+5 November 2026 a newly created, exclusively owned Colab Linux CPU runtime
+with high RAM ran source commit
+\begin{quote}\small\ttfamily
+3c309786dff766a97638b9bb4f654bcb14cb9455
+\end{quote}
+under Python 3.13.18. Normal and optimized Python each accepted eight
+baseline certificates and rejected all 47 saved malformed certificates
+and two invalid inputs. All 58 canonical JSON files matched byte for byte
+between the two modes. The source had zero assertion nodes; acceptance
+used explicit failure checks. Both subprocess exit codes were zero.
+Seven scenes used exhaustive lattice coverage. The scene with root side
+$10^9$ used exact volume equality and pairwise disjointness instead.
+The checker reconstructed split geometry, active corner sets and potential
+decrease, and checked whole-rectangle membership and coverage. Midpoint
+and corner-shrink events both occurred. Full logs, real exit sentinels,
+actual malformed certificates and sources are retained in the archive.
+
+This checker shares primitives and authorship with the builder. It is not
+an independently authored validator or reproduction in two independent
+fresh clones. These are finite fixture results, not a proof certificate
+for the universal theorem or Lean verification. All baseline first leaves
+had proper occupancy at most one. They therefore did not test the
+multiple-object family proved in the preceding part. Closed-contact
+negative controls in dimensions two, three and four had respectively
+five, nine and seventeen closed contacts but no proper contact.
+
+The archive is 193158 bytes. After recovery from Colab all 123 inner
+manifest members were rehashed without a mismatch. Its SHA256 is
+\begin{quote}\small\ttfamily
+64f548dff043cf6cf9f1c1a3abf24fc79\\
+3cf6565ff7dd436c1d0f263351b5be1
+\end{quote}
+The line break in this printed hash is typographical; concatenate the two
+lines. The full archive is included in the reproduction package. The
+runtime was disconnected after recovery. The driver took approximately
+3.88 seconds; this is not the billed connection time or an algorithmic
+complexity bound. The resource panel displayed 50.99 GB RAM; an exact
+billed compute-unit delta was unavailable and is not inferred.
+
+\clearpage
+\section{Model assessments and review context}
+\label{sec:companion-review-context}
+This exact successor companion PDF has no external model assessment and no peer
+review. Preparing-assistant analytic checking and visual layout checking
+are reported separately from external review. The authoring interface is
+OpenAI Codex; no more specific API-attested model identifier is available
+in this record. No independence from the proof's preparing context is
+claimed. No review score is assigned to this artifact.
+
+For historical context only, the distinct frozen manuscript identified by
+the SHA256 prefix \texttt{eb4df3} has its own complete first model report and
+review context retained in revision136. The original report gives
+3.5/10 and minor revision; the raw model identifier is unknown and the
+operator observed Google Gemini 4 Argon High in the interface. Its five
+material objections concern uninspected formal/Colab evidence, the
+non-Lean analytic continuation, primary sources not inspected by that
+reviewer, the still-open unrestricted rectangular question, and the
+absent interacting/continuum connection. These remain part of that
+artifact's report. They have not been erased or reassessed by this
+companion. That review was not blinded; prior assessment narrative was
+in its PDF. Independence and context isolation were not established.
+
+The public AIRR v5 is a separate artifact, a working paper rather than
+an accepted or peer-reviewed paper. Its own first report and operator
+response remain separate. Neither historical rating transfers to this
+new companion. Public deposit, model evaluation, editorial acceptance
+and peer review are different events; no new such event is claimed here.
+
+\section{Unresolved obligations and reproducibility instructions}
+The unrestricted critical rectangular partition question is open. The
+generic common-refinement mechanism remains stopped after its recorded
+counterexamples; these classical proof completions do not restart it.
+All actual cube, coefficient lower/upper, strong complement and moment
+assumptions in part two remain. No interacting physical hypothesis is
+removed. PR29 remains recorded as 20/41 with TermSource zero.
+
+For reproduction use the manifest's source SHA, compile this main file
+with the three pinned fragments, and retain every LaTeX pass, the exact
+PDF hash and all page images. The render driver runs only in this chat's
+own Colab Linux runtime. The unit139 fixtures are already preserved;
+rendering this companion does not rerun them. The master and fragments
+are not an alteration of the frozen reviewed manuscript, and their
+successful compilation would not establish the mathematics.
+\end{document}

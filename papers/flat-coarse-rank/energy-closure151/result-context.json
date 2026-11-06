@@ -1,0 +1,41 @@
+{
+  "paired_reproduction": false,
+  "physical_defect": "4^(D-1)*(K-1138/35)",
+  "previous_PDF_and_first_report_unchanged": true,
+  "threshold": "1138/35",
+  "evidence": {
+    "all_inner_hashes_verified": true,
+    "optimized_real_mutations_rejected": 3,
+    "actual_exits": [
+      0,
+      0
+    ],
+    "members": 10,
+    "normal_real_mutations_rejected": 3,
+    "ZIP_sha256": "2ed1816832d0de01e4b0db338a55180f0a0a586156127281f4286f3780a7b005",
+    "manifest_entries": 9,
+    "optimized_accepted": 5,
+    "output_sha256": "c2f56618628ec615233340713aa83090a05a1009db19eb0318033a5c0c1e2616",
+    "normal_accepted": 5,
+    "windows_math_executed": false,
+    "paired_reproduction": false
+  },
+  "new_originality_claim": false,
+  "status": "PAPER_PROOF_WITH_EXACT_COLAB_COEFFICIENT_CHECK",
+  "external_assessment": null,
+  "independent_review": false,
+  "target": "19/5",
+  "new_Lean_theorem": false,
+  "witness": [
+    "13",
+    "-12",
+    "-41/7",
+    "34/7"
+  ],
+  "AIRR_submission": false,
+  "review_score": null,
+  "source_sha": "564b84230478cb8d40505cb67985470e9bae699d",
+  "new_PDF": false,
+  "scope": "Actual fixed map, four-cycle flat class; no all-partition or interacting result",
+  "result": "At target19/5 and same full physical observation: inequality for all actual cochains iff for all divergence-zero cochains iff K>=1138/35"
+}

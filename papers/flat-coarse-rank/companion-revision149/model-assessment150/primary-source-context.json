@@ -1,0 +1,16 @@
+{
+  "volume": 26,
+  "novelty_conclusion": "Classical algebraic context only; no exhaustive novelty or direct theorem identity claim",
+  "consulted_utc": "2026-11-05T22:26:53.7677858Z",
+  "authors": [
+    "David Carlson",
+    "Emilie Haynsworth",
+    "Thomas Markham"
+  ],
+  "full_text_read": false,
+  "inspected": "Publisher abstract, authors, bibliographic metadata and access notice",
+  "pages": "169–175",
+  "year": 1974,
+  "url": "https://epubs.siam.org/doi/10.1137/0126013",
+  "title": "A Generalization of the Schur Complement by Means of the Moore–Penrose Inverse"
+}

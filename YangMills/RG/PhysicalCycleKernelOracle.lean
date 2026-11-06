@@ -1,0 +1,6 @@
+import YangMills.RG.PhysicalCycleKernel
+#print axioms YangMills.RG.actualCycleKernel_profile_pair_zero
+#print axioms YangMills.RG.actualCycleKernel_fibre_coercive
+#print axioms YangMills.RG.actualCycleFibre_norm_decomposition
+#print axioms YangMills.RG.actualCycleKernel_coordinate_sum_coercive
+#print axioms YangMills.RG.actualCycleKernel_norm_coercive

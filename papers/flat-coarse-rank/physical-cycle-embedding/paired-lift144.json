@@ -1,0 +1,111 @@
+{
+  "final_physical_counterexample_Lean_verified": false,
+  "first_notebook": "14aGJgDXTeKw2Amfu9oYOEyGOEEJnfx0H",
+  "actual_hash_comparisons": [
+    {
+      "file": "PhysicalCycleLift.lean",
+      "sha256": "16f9c238258cb35dc5c7ef1c31b4f40502ff7eb3f55cd4308cc2ad9cf9defe82",
+      "match": true
+    },
+    {
+      "file": "PhysicalCycleLiftOracle.lean",
+      "sha256": "ff288ba454b3b190087afe5b6bbf20f0c0892961b778c3604ba89228d3e8b1c8",
+      "match": true
+    },
+    {
+      "file": "PhysicalCycleLift.olean",
+      "sha256": "564c95667cef610466cb520698da12daeb25a8d69a0cf1e1a23b1fefe5878014",
+      "match": true
+    },
+    {
+      "file": "oracle.log",
+      "sha256": "dc9f36b4d7a066c7e5de7fd733b1f32711dfb2247751363d0a27a9aedafaa4ef",
+      "match": true
+    },
+    {
+      "file": "validator-normal.log",
+      "sha256": "9c113a01a363e60babbf767c7b4f87833b036f6062db3f2b95aa35dec1140a49",
+      "match": true
+    },
+    {
+      "file": "validator-optimized.log",
+      "sha256": "9c113a01a363e60babbf767c7b4f87833b036f6062db3f2b95aa35dec1140a49",
+      "match": true
+    },
+    {
+      "file": "build143.py",
+      "sha256": "84f68230e5c166a16cf452f66df4070662973e9341578a6e071694fc5d9931c9",
+      "match": true
+    }
+  ],
+  "energy_transport_Lean_verified": false,
+  "full_observation_norm_Lean_verified": false,
+  "same_frozen_recipe": "Original driver still records unit143/firstclone status; unit144 labels second actual execution without editing its report",
+  "oracle_validator_runs": 4,
+  "status": "PAIRED_FIVE_LIFT_ENDPOINTS_REPRODUCED",
+  "independent_authorship_or_review": false,
+  "both_actual_runtimes_released": true,
+  "second_notebook": "1Xy6vzsiwj6MYnlanYHE2ht578CHC6SwK",
+  "rehashed_archives": [
+    {
+      "path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-144\\second-clone-full",
+      "mismatches": 0,
+      "members": 46
+    },
+    {
+      "path": "D:\\Entregas\\the-eriksson-programme\\2026-11-05_reproduccion-pareada-levantamiento\\recovered",
+      "mismatches": 0,
+      "members": 45
+    }
+  ],
+  "fresh_clones": 2,
+  "second_private_archive": "98fca9e915cc7498f15bb119aff6bb428c4118635c8084d63cec33340e10c033",
+  "accepted_each": 5,
+  "first_public_archive": "636f5c6a43064ccaed5f34092889bccbe887de8b8adc09de55ff2fe4104c8fc5",
+  "endpoints": [
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.physicalCycleLift_divergence_zero"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.physicalCycleLift_injective"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.cycleCoordinateProfile_counting_mass"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.physicalCycleLift_norm_sq"
+    },
+    {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "name": "YangMills.RG.actualCycleFibreObservation_lift"
+    }
+  ],
+  "source_sha": "784236ea24a74728b49516cf5acfdf03aad45c8e",
+  "second_public_archive": "7670b7e63e45aa7ddc185b86ff2150a70ecd6cf489e23a1cf1e6287bfd396a89",
+  "actual_mutations_rejected_each": 3,
+  "unit": 144
+}

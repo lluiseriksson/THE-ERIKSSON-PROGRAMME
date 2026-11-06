@@ -1,0 +1,59 @@
+{
+  "unit": 152,
+  "source_sha": "bf445bbd07803e9542e67ecfdb6446a2f9fd7d54",
+  "started_utc": "2026-11-06T00:33:05.711723+00:00",
+  "steps": [
+    {
+      "name": "apt-update",
+      "exit_code": 0,
+      "seconds": 6.932861145000004
+    },
+    {
+      "name": "apt-install",
+      "exit_code": 0,
+      "seconds": 78.960330844
+    },
+    {
+      "name": "pdflatex-pass1",
+      "exit_code": 0,
+      "seconds": 0.6707408579999878
+    },
+    {
+      "name": "pdflatex-pass2",
+      "exit_code": 0,
+      "seconds": 0.6766103350000208
+    },
+    {
+      "name": "pdflatex-pass3",
+      "exit_code": 0,
+      "seconds": 0.6744955070000174
+    },
+    {
+      "name": "pdfinfo",
+      "exit_code": 0,
+      "seconds": 0.04525365199998532
+    },
+    {
+      "name": "pdftotext",
+      "exit_code": 0,
+      "seconds": 0.13546977300001117
+    },
+    {
+      "name": "render-pages",
+      "exit_code": 0,
+      "seconds": 0.5785387619999938
+    }
+  ],
+  "status": "RENDERED_AWAITING_FULL_VISUAL_QA",
+  "fixtures_rerun": false,
+  "lean_rerun": false,
+  "skills": [
+    "pdf",
+    "documents writing guidance",
+    "access-coordinator artifact scope"
+  ],
+  "warnings": [],
+  "pages": 16,
+  "pdf_sha256": "00f9d63ec6d7d2074559916eddecf1e203bc024670a18aa83acc64f385b62382",
+  "finished_utc": "2026-11-06T00:34:41.234074+00:00"
+}
