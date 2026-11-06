@@ -1,0 +1,16 @@
+{
+  "version_id": "arr:version:71f14ebb-45f7-458d-b5fe-572cea5503d0",
+  "parent_sha256": "69d802bfea8f8f23bfe6aba03cdc4835feac777e024c939040c7f099a11462c8",
+  "version": "v6",
+  "paper_id": "ARR-2026-7EPM3V3DP796BBRR",
+  "record_id": "arr:record:eeb507b1-b6c7-4996-bc62-a4e7c416be00",
+  "supersedes_version_id": "arr:version:0f080d79-5423-4c93-93b1-c9e75bdc43c4",
+  "changelog": {
+    "scope": "Forty-six-page integrated manuscript. Original unrestricted critical rectangular question remains OPEN; common-refinement mechanism STOPPED3. Supporting signed results155/156 are not inserted into this frozen PDF.",
+    "reproducibility": "Frozen PDF ccf53e; render source4e0e2f76; all46pages visually reviewed; pinned reproduction ZIP4e86e908; first exact-artifact report154 and complete unmodified HTML/text, objections, dispositions and two reader clarifications retained.",
+    "version": "Proposed next publicv6 linked to verified current publicv5. Internal source revision153 is distinct from public version numbering. No receipt or public release is asserted before native checks.",
+    "mathematics": "Consolidates the existing finite flat lattice dossier with self-contained partition arguments, full physical four-cycle endpoint and exact fixed-penalty threshold. Distinguishes analytic and separately verified formal endpoints; no new interacting or continuum Yang-Mills claim.",
+    "editorial": "Working paper only under CC BY4.0/CC0. Initial exact46page external AI assessment7.6/10, UI GoogleGemini4ArgonAlto; backend unknown, no blind/independent/human peer-review or AIRR acceptance claim. False readings separately answered, all objections retained."
+  },
+  "sha256": "ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389"
+}
