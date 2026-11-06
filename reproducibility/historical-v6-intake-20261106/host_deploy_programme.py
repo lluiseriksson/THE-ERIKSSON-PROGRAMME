@@ -17,7 +17,7 @@ import time
 import urllib.request
 
 COMMIT = 'f44781be89e8ecb0640983e66f1d5608046c8e96'
-PREVIOUS = '6cd7c2e09c66ded872f2e1b92b3f5f88d2b155f'
+PREVIOUS = '06d7c2e09c66ded8772f2e1b92b3f5f88d2b155f'
 UPGRADE_SHA = '28ff0ed303d5106a318d8627763e71330fafb41a80f2ef7052bc5dca596e7148'
 ROOT = Path('/srv/airr-private/eriksson-autonomy-20261106')
 CONFIG = Path('/etc/airr-intake/intake.env')
@@ -43,6 +43,8 @@ def main():
         print((ROOT/'deployment-result.json').read_text(), flush=True)
         return
     previous = Path('/opt/airr-intake/current').resolve()
+    if not re.fullmatch(r'[0-9a-f]{40}', PREVIOUS):
+        raise ValueError('Pinned previous source must be a complete 40-hex SHA')
     if previous.name != PREVIOUS or (ROOT/'intake-before.env').exists():
         raise ValueError('Unexpected release or earlier partial operation; reconcile before retrying')
     started = datetime.now(timezone.utc)
@@ -94,10 +96,13 @@ def main():
         if db.execute('PRAGMA integrity_check').fetchone()[0] != 'ok':
             raise ValueError('Database integrity failed')
         programme_count = db.execute('SELECT COUNT(*) FROM programme_delegations').fetchone()[0]
+    after_started = datetime.now(timezone.utc)
     command('backup-after', 'systemctl', 'start', 'airr-intake-backup.service')
     command('offsite-after', 'systemctl', 'start', 'airr-intake-offsite.service')
     after = json.loads(Path('/var/lib/airr-offsite/status.json').read_bytes())
-    if not after.get('ok') or not after.get('download_verified'):
+    if (not after.get('ok') or not after.get('download_verified')
+            or datetime.fromisoformat(after['verified_at']) < after_started
+            or datetime.fromisoformat(after['snapshot_at']) < after_started-timedelta(seconds=60)):
         raise ValueError('Post-deployment encrypted offsite verification failed')
     save('offsite-after.json', after)
     proof = json.loads((Path('/srv/airr-private')/('rollback-'+COMMIT[:12])/'deployment.json').read_bytes())
