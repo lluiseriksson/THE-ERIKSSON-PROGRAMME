@@ -1,0 +1,14 @@
+{
+  "verify155.py": {
+    "path": "papers/flat-coarse-rank/signed-diagonal155/verify155.py",
+    "sha256": "f6ce6918ad952d573fc9857e39279f755549d5560a3d3c518810ab6adc27464a"
+  },
+  "primary-source-context.json": {
+    "path": "papers/flat-coarse-rank/signed-diagonal155/primary-source-context.json",
+    "sha256": "62f3f02cce21601428dd63e2aa061ca9c97bcea024696415fda0c5fdad7e69b0"
+  },
+  "proof-and-scope.md": {
+    "path": "papers/flat-coarse-rank/signed-diagonal155/proof-and-scope.md",
+    "sha256": "6a7577ccd99b1067ee99e10172651fafec96910410654a20bce750d6817d5abd"
+  }
+}
