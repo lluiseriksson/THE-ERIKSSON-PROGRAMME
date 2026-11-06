@@ -1,0 +1,198 @@
+1. Exact Artifact Identity and Page Count
+Artifact Filename: flat_critical_integrated.pdf   flat_critical_integrated.pdf
+
+Title: Coarse information and finite rank obstructions for flat lattice Hodge forms (consolidated revision candidate)   flat_critical_integrated.pdf
+
+Author & Date: Lluis Eriksson, 6 November 2026   flat_critical_integrated.pdf
+
+Page Count: 46 pages (pages 1–46 inclusive inspected in full)   flat_critical_integrated.pdf+ 1
+
+User-Supplied Artifact Identifiers: Artifact SHA-256 ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389; source render commit 4e0e2f76a375b70105bcdcd1c00d23dc14e7a5ce. (Note: These hashes are recorded as prompt-supplied metadata; raw PDF byte hashing was not independently executed because no code execution was performed.)
+
+2. Model and Backend Identity
+Exposed Identity: Gemini (as exposed by the system environment).
+
+Unexposed Backend Parameters: Exact model version string, checkpoint/weights identifier, serving infrastructure, and runtime decoding parameters are not genuinely exposed to the model environment and are therefore recorded as unknown.
+
+3. Inspected Inputs and Verification Boundaries
+Directly Inspected Inputs:
+The complete 46-page text and mathematical content of flat_critical_integrated.pdf (Sections 1–27 and References [1]–[14], pp. 1–46).   flat_critical_integrated.pdf+ 2
+
+The user review prompt and its constraints.
+
+Uninspected / Unexecuted External Artifacts:
+No Lean 4 or Repository Verification: The external GitHub repository (THE-ERIKSSON-PROGRAMME), pinned Git commit SHAs (e31b4289..., 7b25bfb3..., 17ca395d..., dfd49d0b..., 81cf07b2..., ef81f028..., 9bb90cfd..., ac60c0df..., 7f37d643..., 810785b1..., 497e3b4e..., 4c5728d1..., 067fed75..., 564b8423..., 0c706827..., 41f8492c..., etc.), compiled .olean binaries, and JSON manifest/mapping files (declaration-map.json, paired-full-form148.json, inputs.json) were not fetched, inspected, or compiled.   flat_critical_integrated.pdf+ 4
+
+No Colab or Code Execution: None of the cited Colab Linux archives (067/067b, 076/076b, 077/077b, 079/079b, 081/081b, 094/094b, Colab109, Colab115, Colab118, unit151) were opened or executed, and no external code interpreter was run during this review.   flat_critical_integrated.pdf+ 4
+
+No Primary-Literature Inspection: Referenced external papers and books [1]–[14] (e.g., Dodziuk [2], Albert [3], Carlson–Haynsworth–Markham [4], Dimock [5], Mathlib source [6], Spielman [7], Levin–Peres [8], Zelazo–Bürger [9], Lin–Wan–Zhang [10], de Berg [11], Anderson–Trapp [12], Frank [13], Andres–Deuschel–Slowik [14]) were not retrieved or cross-checked against original publications; all mathematical claims were audited directly from the self-contained derivations in the PDF.   flat_critical_integrated.pdf
+
+4. Mathematical Findings Across the Integrated Paper
+4.1 Spaces, Flat Hodge Form, and Original Block Kernel (Sections 1–3, pp. 1–4)
+Flat Hodge Identity on Embedded Complex Scalars (Section 2, Eq. 1–2, pp. 2–3): On $X_n = (\mathbb{Z}/n\mathbb{Z})^d$ with internal dimension $m = N_c^2 - 1 \ge 3$ ($N_c \ge 2$), the real injection $E_j f$ using two orthogonal unit vectors $u, v \in \mathbb{R}^m$ satisfies $\Vert{}E_j f\Vert{}^2 = \sum_{x \in X_n} \vert{}f(x)\vert{}^2$. Because unordered plaquettes $i < k$ are summed once in $\Vert{}dA\Vert{}^2$, each $i \ne j$ contributes $\sum_x \vert{}D_i f(x)\vert{}^2$ via $(d(E_j f))_{ij}$ (or $(d(E_j f))_{ji}$), while the backward divergence $(\delta(E_j f))(x) = (E_j f)_j(x) - (E_j f)_j(x-e_j)$ contributes $\sum_x \vert{}D_j f(x)\vert{}^2$ by periodic translation invariance, verifying Eq. (2) without extraneous factors of $2$.   flat_critical_integrated.pdf+ 2
+
+Factorized Block-Average Obstruction and Repair Budget (Section 3, Eq. 3, pp. 3–4): On $n = lN'$ ($d \ge 2, l \ge 2$), the transverse Fourier mode $A_i^{(l)}(x) = \mathbf{1}_{i=p}\iota(e^{2\pi i x_q/l})$ ($p \ne q$) lies in $\ker Q_l \cap \ker \delta$ because the block sum over $r_q \in \{0,\dots,l-1\}$ vanishes and shifts along $e_p$ leave $x_q$ invariant. Its exact Rayleigh quotient is $\lambda_l = 4\sin^2(\pi/l) \le 4\pi^2/l^2$, forcing $C_P(l) \ge \lambda_l^{-1} \ge l^2/(4\pi^2)$ for any penalty $\Psi_l(Q_l A)$ with $\Psi_l(0)=0$. The $2R$-dimensional spectral cluster for $1 \le r \le R \le \lfloor(l-1)/2\rfloor$ and the linear repair identity $\langle A^{(l)}, \tilde{H}_l A^{(l)}\rangle / \|A^{(l)}\|^2 = \lambda_l + \epsilon_l^2 + \nu_l$ are elementary and sound.   flat_critical_integrated.pdf+ 3
+
+4.2 Finite Low-Band Information Budget and Nonlinear Tangent Obstructions (Sections 4–8, pp. 4–8)
+Low-Frequency Band and Rank-Nullity Budget (Sections 4–6, Lemma 4.1, Theorems 5.1 & 6.1, Prop. 5.2, pp. 4–6): Under the non-aliasing condition $2R < n$, coordinate differences in $\Lambda_R = \{-R,\dots,R\}^d$ satisfy $|k_i - l_i| \le 2R < n$, so the characters $\chi_k$ are orthogonal on $X_n$ and $\dim_{\mathbb{R}} S_R = 2(2R+1)^d$ with $\langle A, K_{0,n} A \rangle \le b_R(n)\|A\|^2$, $b_R(n) = 4\pi^2 d R^2/n^2$ (Eq. 4). Restricting $(C, V)$ (or $(C, P)$) to $S_R$ yields the rank budget $2(2R+1)^d \le \dim F + \operatorname{rank} V$ whenever $c > b_R(n)$ and $\Phi(0)=0$. In Theorem 6.1, the explicit finite threshold $L > \max\{2R, a/c, 1\}$ with $a = 4\pi^2 d R^2$ guarantees $n_L = (L+1)N' > L > 2R$ and $n_L^2 > L^2 > L > a/c$, so $b_R(n_L) < c$ without invoking asymptotic limits.   flat_critical_integrated.pdf+ 2
+
+Whole-Space Gradient Identity and Tangent Obstructions (Sections 7–8, Theorems 7.1 & 8.1, Prop. 8.2, pp. 6–8): The identity $\|\mathcal{G}A\|^2 = \langle A, K_{0,n} A \rangle$ holds on all of $E_n$ (derived explicitly on pp. 38–39 via periodic summation by parts canceling the cross terms $\sum_x \langle D_i^+ A_j, D_j^+ A_i \rangle = \sum_x \langle D_j^- A_j, D_i^- A_i \rangle$). For $w_{x,i,k} \le M$ ($M \ge 0$), $q_w(A) \le (1+M)b_R(n)\|A\|^2$ on $S_R$ (Eq. 6).   flat_critical_integrated.pdf+ 2
+
+In Theorem 7.1 (p. 6), Fréchet differentiability of $C$ at $0$ with $C(0)=0$ and $\Phi(y) \le K\|y\|^2$ ($\|y\| < \delta$) implies that for $0 \ne v \in S \cap \ker DC(0)$, $\|C(tv)\| = o(|t|)$ and hence $\limsup_{t\to 0} \Phi(C(tv))/\|tv\|^2 \le 0$, forcing $c \le b$. The $C^1$ counterexample $C(x) = \|x\|^\alpha, \Phi(y) = |y|^{2/\alpha}$ ($1 < \alpha < 2$) rigorously shows that local upper-quadratic control of $\Phi$ is necessary.   flat_critical_integrated.pdf+ 1
+
+In Theorem 8.1 (p. 7), for a regular sector $P^{-1}(0)$ with $P(0)=0$ and $A = DP(0): E \to G$ surjective, rank-nullity on $(DC(0), DP(0))|_S$ yields $0 \ne v \in S \cap \ker DC(0) \cap \ker DP(0)$ when $\dim S > \dim F + \dim G$, and the implicit function theorem produces a $C^1$ curve $\gamma(t) = tv + e(t) \in P^{-1}(0)$ with $e(t) = o(|t|)$. Because $\gamma(t)$ generally leaves $S$ (as shown by the paraboloid counterexample $P(u,y,z) = z - \|u\|^2$ on p. 8), the proof rightly uses the full-space quadratic expansion of $q(x) = \langle x, Tx \rangle$ to obtain $q(\gamma(t))/t^2 \to q(v) \le b\|v\|^2$. The counterexamples $P = z - \|u\|^{4/3}, e = |z|^{3/2}$ ($C^1$ non-quadratic energy) and $P(x) = \|x\|^2$ (non-surjective $DP(0)$) are exact.   flat_critical_integrated.pdf+ 3
+
+4.3 Directional Mean Weights, Signed/Positive-Part Means, and Full-Volume Rank (Sections 9–14, pp. 9–20)
+Nonnegative Directional Mean Obstruction (Section 9, Theorem 9.1, pp. 9–11): For $i \ne j$, the $2R$ orthonormal modes $\psi_{s,a}$ ($1 \le s \le R$, two internal coordinates $u, v$) are supported in component $j$ and depend only on $x_i$, so $\delta\psi_{s,a} = 0$ and $\psi_{s,a} \in D_n = \ker\delta$. Their squared forward differences are spatially uniform ($n^{-d}|e^{2\pi i s/n}-1|^2$ in direction $i$, zero in directions $k \ne i$), so the compression trace of $Q_n$ on $S_{R,n}$ is exactly $2(1+b_{ij}(n))\sum_{s=1}^R |e^{2\pi i s/n}-1|^2 \le 8\pi^2(1+b_{ij}(n))R^3/n^2$ (Eq. 10). Nonnegativity of $w_n$ ensures $Q_n \ge 0$ on $S_{R,n} \ominus (S_{R,n} \cap \ker DC_n(0))$, yielding $c(2R - \dim F_n) \le \operatorname{tr}_{S_{R,n}} Q_n$. Section 9.1 (p. 10) verifies that quadratic weights $w_n = 2dn^2$ with mean observation $\mu(A)$ achieve global coercivity via the path-Cauchy–Schwarz inequality $\|A - \operatorname{lift}\mu(A)\|^2 \le dn^2\|GA\|^2$.   flat_critical_integrated.pdf+ 4
+
+Signed Weights, Positive-Part Sufficiency, and Counterexamples (Section 10, Theorem 10.1, Prop. 10.2, pp. 11–14):
+Theorem 10.1 (p. 11): Pointwise majorization $w \le w^+ = \max\{w,0\}$ gives $Q_w(A) \le Q_{w^+}(A)$ for every cochain $A$, transferring the local coercivity inequality to the nonnegative weight $w^+$ and proving $\dim F_n \to \infty$ if $(1+b_{ij}^+(n))/n^2 \to 0$.   flat_critical_integrated.pdf
+
+Zero Signed Means Counterexample (Prop. 10.2, p. 12): For $w_n(k,(x,l)) = a(1 - V\mathbf{1}_{x=o})$ ($V = n^d, a = 2dn^2$), every ordinary spatial mean is zero, yet observing the global mean $\mu(A)$ and the single-site gradient jet $J_n(A) = (D_k A_l(o))_{k,l}$ (fixed output dimension $(d+d^2)m$) with penalty $\Phi_n(y,z) = 2V\|y\|_2^2 + aV\|z\|_2^2$ exactly cancels the negative spike $-aV\|J_n(A)\|_2^2$ and yields $\|A\|^2 \le Q_{w_n}(A) + \Phi_n(C_n(A))$. The hyperplane indicator diagnostic $A_j(x) = u\mathbf{1}_{x_i=o_i}$ ($i \ne j, n > 3$) has $\|GA\|^2 = 2n^{d-1}$ and $\|J_n(A)\|^2 = 1$, confirming $Q_{w_n}(A) = n^{d-1}(2 - a(n-2)) < 0$.   flat_critical_integrated.pdf+ 1
+
+Square Cancellation (Section 10.2, pp. 13–14): Using the plaquette identity $D_i A_j(o) = D_k A_j(o) + D_i A_j(o+e_k) - D_k A_j(o+e_i)$ and $\|x+y-z\|^2 \le 3(\|x\|^2+\|y\|^2+\|z\|^2)$, the 4-edge weight $w$ satisfies $\langle A, R_w A \rangle \le 0$ for all $A$ while having $b_{ij}^+(n) = n^2$ for $A_0 = n^{d+2}$ ($n > 2$). Summing this cycle over all $j$ and all $i \ne j$ with $k=j$ produces $\bar{w}$ with $\langle A, R_{\bar{w}} A \rangle \le 0$: because the two negative edges in direction $k=j$ are diagonal ($(j,(o,j))$ and $(j,(o+e_i,j))$), each off-diagonal channel $(i,j)$ ($i \ne j$) receives contributions only from the single cycle $(i,j)$, giving $\bar{w}(i,(x,j)) = A_0\mathbf{1}_{x=o} - 3A_0\mathbf{1}_{x=o+e_j}$ and $\bar{b}_{ij}^+(n) = n^2$ for every eligible off-diagonal pair.   flat_critical_integrated.pdf+ 1
+
+Full-Volume Coexact Packet and Exact Multiplier Average (Section 11, Theorems 11.1 & 11.2, Prop. 11.3, pp. 14–16): For $k \in \mathcal{K} = \{1,\dots,R\}\times\{-R,\dots,R\}^{D-1}$ ($2R < n$), the coexact modes supported on components $0,1$ have non-vanishing norm because $1 \le k_0 \le R < n/2 \implies \sin(\pi k_0/n) > 0$, and span an $H = 2R(2R+1)^{D-1}$ dimensional subspace $S_n \subset D_n$. Majorizing $1+w_n$ on components $l \in \{0,1\}$ by $v_n = \max\{1+w_n, 0\}$ yields Eq. (13). In Theorem 11.2 (p. 15), setting $R = \lfloor n/k \rfloor$ for $n \ge k \ge 3$ gives $n < k(R+1) \le 2kR \implies H > (2R)^D > (n/k)^D$, yielding $\dim_{\mathbb{R}} F_n \ge \frac{1}{2k^D} n^D$ on the entire integer tail $n \ge k$. In Prop. 11.3 (pp. 15–16), the average of $\Lambda(k)$ over $\mathcal{K}$ is $\frac{4A_R(\pi/n)}{R} + (D-1)\frac{8A_R(\pi/n)}{2R+1} = 4A_R(\pi/n)\frac{2DR+1}{R(2R+1)} \le \frac{2\pi^2}{3n^2}(R+1)(2DR+1)$, improving the low-frequency quadratic coefficient by a factor of $3$.   flat_critical_integrated.pdf+ 4
+
+Singular Schur Complement Criterion (Section 12, Prop. 12.1, pp. 16–17): Completing the square on $E = \ker C \oplus (\ker C)^\perp$ proves that $\langle x, Bx \rangle + \Phi(Cx) \ge 0$ holds for some $\Phi$ with $\Phi(0)=0$ if and only if $A = B|_{\ker C} \ge 0$ and $\ker A \subseteq \ker D^*$.   flat_critical_integrated.pdf
+
+4.4 Global Critical Inverse-Moment Sufficiency and Lower-Exponent Insufficiency (Sections 15–18, pp. 21–24)
+Finite Normalized Rumin–Frank / Cwikel Bound (Lemma 17.2, pp. 22–23): For $K = M_f \mathcal{F}^* M_g \mathcal{F}$ on a finite abelian group of size $V$ and $p > 1$, the weak-frequency tail of $A = \mathcal{F}^* M_{|g|^2} \mathcal{F}$ on $P_E = \mathbf{1}_{\{A^+ \le E\}}$ satisfies $\langle \delta_x, P_E A P_E \delta_x \rangle \le B_0 E^{p-1}$ with $B_0 = pL/(p-1)$ by layer-cake integration. Spectral layer integration of $\langle \delta_x, R_E \gamma R_E \delta_x \rangle \ge (\sqrt{\rho(x)} - \sqrt{B_0}E^{(p-1)/2})_+^2$ over $E \in [0, (\rho(x)/B_0)^{1/(p-1)}]$ yields $\operatorname{Tr}(A^+\gamma) \ge I_p B_0^{-1/(p-1)}\sum_x \rho(x)^{p/(p-1)}$ with $I_p = \int_0^1 (1-t^{(p-1)/2})^2\,dt = \frac{(p-1)^2}{p(p+1)}$ (Eq. 18). Applying Hölder's inequality to $\gamma = A^{1/2} P A^{1/2}$ for the spectral projection $P$ of $A^{1/2}M_{|f|^2}A^{1/2}$ above $s$ gives $\mathfrak{n}(s, K^*K) \le \Gamma_p L s^{-p} \sum_x |f(x)|^{2p}$.   flat_critical_integrated.pdf+ 4
+
+Variational Flow Comparison and Spectral Sufficiency (Theorem 17.1 & Section 17.2, pp. 21–24): On the mean-zero scalar space $H_0$, Thomson's principle shows that $j_* = M_a d L_a^{-1} f$ minimizes $\langle j, M_{a^{-1}} j \rangle$ subject to $d^* j = f$; testing against the flat potential flow $j = d L_0^{-1} f$ yields $L_a^{-1} \le \sum_{i=1}^D T_i^* T_i$ with $T_i = M_{a^{-1/2}} d_i L_0^{-1}$. Using $\lambda(k) \ge 16|r|^2/n^2$ and $|g_i(k)| \le n/(4|r|)$, the integer lattice count inside $|r| < R = n/(4\tau)$ ($R > 1$) is at most $(2\lfloor R\rfloor + 1)^D < (3R)^D$, proving $L \le (3/4)^D$ uniformly for all $n \ge 2$ (Eq. 19). Weyl subadditivity across the $D$ directions at threshold $s = 1/(Dc)$, plus $1$ for the constant mode and $(1+\mu)/\mu \le 2$, yields Eq. (21) and Theorem 17.1 (Eq. 17).   flat_critical_integrated.pdf+ 4
+
+Sharpness of the Critical Exponent $p = D/2$ (Theorem 18.1, p. 24): For any $0 < r < D/2$, the product triangular window $\psi_y(x) = \prod_i t(x_i - y_i)$ ($t(s) = (1 - |s|/l)_+$) has exact 1D sums $T = (2l^2+1)/(3l)$, $V = 2/l$, $W = 6/l^2$. The divergence-free curl $U_1 = d_2^- \psi_y H, U_2 = -d_1^- \psi_y H$ has both its field support and all active forward-gradient start sites inside $y + [-l,l]^D$ (volume $B = (2l+1)^D$) and unweighted Rayleigh quotient $\frac{W}{V} + (D-1)\frac{V}{T} = \frac{3}{l} + \frac{6(D-1)}{2l^2+1} \le \frac{3D}{l} < c$. Placing $J = \lfloor n^{D-2r}/B \rfloor \to \infty$ disjoint boxes on a grid of spacing $P = 2l+2$ with $a=1$ inside the boxes and $a = (\mu-s)/(1-s)$ outside ($\mu = n^2$) satisfies $\operatorname{mean}((\mu/a)^r) \le 2$ while forcing $\dim F \ge J \to \infty$, refuting the $O(1)$ bound of Theorem 17.1 at $\mu = n^2$.   flat_critical_integrated.pdf+ 2
+
+4.5 Spatial Mean Limitations, Threshold Bounds, and Counterexamples (Sections 19–21, pp. 24–30)
+Dyadic Cube-Tree Obstruction vs. Anisotropic Rectangles (Prop. 19.1, pp. 24–25): For a single weak cube $S = \{0,\dots,L-1\}^D$ ($L = 2^q \ge 4l+2, a=1$ on $S$, $a = A \ge \mu = \gamma n^2$ outside), any translated dyadic grid at level $j_* = J-q$ (cell side $L$) intersects each coordinate interval of $S$ in at most two cyclic intervals, one of which has length $\ge L/2 \ge 2l+1$, containing a full curl support box $y + [-l,l]^D$ whose leaf means vanish because $U_1, U_2$ are differences of $\psi_y$ supported strictly inside the cell. Hence any coercive full dyadic cube tree requires depth $\ge J-q+1$ and at least $1 + (2^D-1)(J-q+1) = \Omega(\log n)$ leaves (Eq. 22), whereas isolating the $L^D$ singletons of $S$ and splitting $X_n \setminus S$ into $D$ anisotropic rectangles $R_i$ achieves global coercivity with $L^D + D = O(1)$ blocks.   flat_critical_integrated.pdf+ 1
+
+Variance Tensorization and Threshold Construction (Sections 19, 21.1, 23.6, Eq. 26–27, pp. 25, 28–29, 37): Because the 1D coordinate averaging projections $P_i$ commute, $I - \prod_{i=1}^D P_i = \sum_{i=1}^D P_1\cdots P_{i-1}(I - P_i)$ is an orthogonal sum and $\|P_1\cdots P_{i-1}(I-P_i)u\|_2^2 \le \|(I-P_i)u\|_2^2$ bounds each direction $i$ using only internal edges in direction $i$. Since edge sets in distinct directions are disjoint, the 1D path-Cauchy–Schwarz constant $l_i(l_i-1)/4$ tensorizes to $L(L-1)/4$ without an extra factor of $D$ (Eq. 26). Excising each weak vertex ($a < \tau$) replaces its current rectangle by $1$ singleton and at most $2D$ complement rectangles (a net increase of at most $2D$ blocks per weak vertex), yielding $|\mathcal{P}| \le B_c\max\{1, n^D/\tau^p\} + 2D\#\{a < \tau\}$ and the general $D/4$-exponent bound at $\tau = \sqrt{\mu}$.   flat_critical_integrated.pdf+ 4
+
+Global-Threshold and Universal-Cube Counterexamples (Sections 21.2 & 21.4, pp. 29–30):
+Section 21.2 (p. 29) constructs a profile ($a = \gamma n$ on $S = \{0,\dots,t-1\}^D$, $n=t^2$, $\mu = \gamma n^2$) where any single threshold $\tau$ produces $\ge \Omega(n^{D/2})$ blocks (via grid volume if $\tau \le b$ or $t^D = n^{D/2}$ singletons if $\tau > b$), whereas $D+1$ rectangles suffice.   flat_critical_integrated.pdf
+
+Section 21.4 (p. 30) sets $a=1$ on $W = \{e_1, -e_1\}$ and $a = A \in (n, 2n]$ elsewhere ($\mu = n$). Since $a(x) \le 2n < cn(n-1)/4$ everywhere (for $n > 1+8/c$), any family satisfying Eq. (28) must cover $0$. A cube of side $L=1$ at $0$ violates $A \le \beta$, while any cube of side $L \ge 2$ containing $0$ must contain $e_1$ or $-e_1$, forcing $cL(L-1)/4 \le 1 \implies L^2 \le 2L(L-1) \le 8/c$ and $A \le \beta L^2 \le 8\beta/c < n < A$, a contradiction.   flat_critical_integrated.pdf+ 1
+
+4.6 Self-Contained Finite Rectangle Sobolev Derivation (Section 22, pp. 30–33)
+Entropy Projection, Cube Isoperimetry, and Coarea/Power Steps (Sections 22.1–22.3, Eq. 29–31, pp. 31–32): Conditioning drop $H(X_j \mid X_{<j}\setminus X_i) \ge H(X_j \mid X_{<j})$ and $H(X_{-i}) \le \log|\pi_i A|$ prove the Loomis–Whitney projection inequality $|A|^{D-1} \le \prod_{i=1}^D |\pi_i A|$ (Eq. 29). Counting non-full fibers yields $|\partial_E A| \ge \sum_i (P_i - a/s) \ge c_D |A|^{(D-1)/D}$ for $|A| \le |Q_s|/2$ (Eq. 30). Applying the coarea identity to $v^\alpha$ ($\alpha = 2(D-1)/D$) with $q = 2D/(D+2), q' = 2D/(D-2)$ (so $(\alpha-1)q' = 2$) and splitting at a counting median $m$ via $|dv_+|^q + |dv_-|^q \le |du|^q$ and $2/q \ge 1$ establishes Eq. (31) on $Q_s$.   flat_critical_integrated.pdf+ 3
+
+Aspect-Ratio Reflection and Original-Weight Hölder Step (Sections 22.4–22.6, Eq. 32–33, pp. 32–33): Folding $Q_s$ ($s = 2L+1$) onto $R = \prod_i \{0,\dots,l_i-1\}$ via the $2l_i$-periodic endpoint-repeating reflection gives at least $2\lfloor s/(2l_i)\rfloor \ge s/(2l_i)$ and at most $2\lfloor s/(2l_i)\rfloor + 2 \le s/l_i + 2 \le 3s/l_i$ preimages per coordinate, so $\operatorname{Var}_{Q_s}(\tilde{u}) \ge 2^{-D}r\operatorname{Var}_R(u)$ and $\sum_{Q_s}|d\tilde{u}|^q \le 3^D r\sum_R |du|^q$ with $r = s^D/V$. Because $r^{2/q-1} = (s^D/V)^{2/D} = s^2/V^{2/D} \le 9L^2/V^{2/D} = 9\kappa$, the unweighted reflection is completed before applying Hölder's inequality with exponents $2/q$ and $2/(2-q) = D/2 = p$ on $R$, avoiding reflected weights and proving Eq. (33) and Eq. (23).   flat_critical_integrated.pdf+ 3
+
+4.7 Supplied-Cube Partition via Corner Potential and Proper Intersections (Section 23, pp. 33–37)
+Quarter-Offset Solids and Proper-Intersection Bound (Sections 23.1–23.2, pp. 34–35): Replacing disjoint integer cubes $S_k$ by closed cubes $Q_k = \prod_i [b_{ki}-1/4, b_{ki}+L_k-3/4]$ (side $a_k = L_k - 1/2 \ge 1/2$, gap $\ge 1/2$) ensures $Q_k \cap \mathbb{Z}^D = \operatorname{int}(Q_k) \cap \mathbb{Z}^D = S_k$. If a query cube $C$ of side $s$ has no corner of any $Q_k$ in $\operatorname{int} C$, no $Q_k$ with $a_k < s$ can meet $\operatorname{int} C$ (otherwise in each coordinate at least one endpoint of $Q_k$'s interval would lie inside $C$'s open interval, placing a corner of $Q_k$ in $\operatorname{int} C$), and every $Q_k$ with $a_k \ge s$ meeting $\operatorname{int} C$ contains at least one endpoint of $C$ in each coordinate and hence contains a corner of $C$, bounding the number of properly intersecting $Q_k$ by $2^D$. Section 23.2 (pp. 34–35) constructs an explicit family of $2^{D-1}$ disjoint side-2 cubes whose quarter-offset solids all properly meet $C = [1,2]^D$ with no corner in $\operatorname{int} C$, proving that the earlier one-cluster-per-leaf inference was false.   flat_critical_integrated.pdf+ 3
+
+Corner-Potential Subdivision, Slab Covering, and Half-Open Integer Discretization (Sections 23.3–23.6, Eq. 34–36, pp. 35–37): The integer potential $\Psi = \sum_{C\text{ active}}(2n_C - 1)$ ($\Psi_0 = 2N-1, N = 2^D J$) decreases by $2r + t - 1 \ge 1$ at every midpoint split ($r \ge 1$ or $t \ge 2$) and every shrinking box cut ($r \ge 1$), bounding the number of terminal corner-free rectangles by $M \le 1 + (2N-1)(2^D-1) \le 2^{D+1}(2^D-1)J$ (Eq. 34). Each non-cube terminal box $E_i$ is covered by $2^{D-1}$ corner-free cubes of side $s-a$ (since $a < s/2 \implies [0,s-a]\cup[a,s] = [0,s]$), bounding proper intersections per terminal rectangle by $T_D = 2^{2D-1}$ (Eq. 35) and refined subrectangles by $(2T_D+1)^D$. Assigning splitting hyperplanes via $[l_i, h_i)$ and intersecting with $X$ partitions $X$ into at most $A_D \max\{1,J\}$ integer rectangles, each entirely inside one $S_k$ or outside all $S_k$ because every $z \in R \cap S_k$ lies in $\operatorname{int}(Q_k) \cap \overline{T}$, forcing $\operatorname{int}(Q_k) \cap \operatorname{int}(T) \ne \emptyset$ and non-integer facet cuts at $\mathbb{Z}\pm 1/4$.   flat_critical_integrated.pdf+ 3
+
+4.8 Physical Four-Cycle Obstruction, Exact Subsharp Threshold, and Sharp Extension (Sections 20.2 & 24, pp. 26–27, 38–43)
+All-Field Kernel Premise and Divergence-Zero Fixed-Penalty Failure (Sections 24.1–24.2, Eq. 37–43, pp. 38–40): On $X = (\mathbb{Z}/4\mathbb{Z})^D$ ($D \ge 3$) with $\alpha = (1,6,4,1)$ and $a(x) = \alpha_{x_1}$, the unweighted curl-divergence cancellation yields $H_0(A) = \sum_{i,x,l} \|D_i^+ A_l(x)\|^2$ and $H(A) = \sum_{x,i,l} \alpha_{x_1}\|D_i^+ A_l(x)\|^2$ for all cochains $A$ (Eq. 37). For the 2-site domino partition $I_0 = \{0,1\}, I_1 = \{2,3\}$ along $x_1$, any $A \in \ker C$ has $x_1$-profiles of the form $v = (x,-x,y,-y)$, where $E(v) - \frac{19}{5}|v|^2 = \frac{17}{5}(x + \frac{35}{17}y)^2 + \frac{84}{85}y^2 \ge 0$ (Eq. 41); summing over all transverse $y, l, k$ and dropping nonnegative transverse derivative terms ($i \ge 2$) proves $H(A) \ge \frac{19}{5}\|A\|^2$ on all $A \in \ker C$ (Eq. 42). Lifting $u = (19,-9,-5,-5)/14$ into component $2$ ($Ju_2(x) = u_{x_1}T$) gives a divergence-zero cochain with $H(Ju) + \frac{19}{5}\|CJu\|^2 - \frac{19}{5}\|Ju\|^2 = -\frac{6}{35}4^{D-1} < 0$ (Eq. 43).   flat_critical_integrated.pdf+ 4
+
+Exact Subsharp Penalty Threshold $K \ge 1138/35$ and Sharp Free-Penalty Obstruction (Sections 24.3–24.4, Eq. 44, pp. 40–42): Completing the square on $\mathbb{R}^4$ via $X = x - 25\delta/2, Y = y + 75\delta/14$ (equivalent to Schur complement $K + 16/5 - b^T M^{-1}b = K - 1138/35$ with $b^T M^{-1}b = 250/7$) proves Eq. (44), establishing that $H(A) + K\|CA\|^2 \ge \frac{19}{5}\|A\|^2$ holds on $E_n$ (and on $\ker\operatorname{div}^-$) if and only if $K \ge 1138/35$, with necessity witnessed by $Ju_*$ for $u_* = (13,-12,-41/7,34/7)$. At the sharp kernel constant $c_* = (17-\sqrt{85})/2$, the kernel vector $v_* = (7,-7,6-s,s-6)$ ($s = \sqrt{85}$) lies in $\ker(D_0 - c_* I)$ with $B^* p_\delta \not\perp v_*$, giving defect $(7+K-c_*)\delta^2 - 10(13-s)\delta = -\frac{25(13-s)^2}{7+K-c_*} < 0$ at $\delta = \frac{5(13-s)}{7+K-c_*}$ for every finite $K \ge 0$.   flat_critical_integrated.pdf+ 3
+
+5. Material Objections, Falsifiers, and Required Corrections
+Objection 1: Unresolved Unrestricted Critical Rectangular Partition and Supplied-Cube Assumption Gap
+Precise Location: Section 16 (Eq. 14, p. 21), Section 17 (Theorem 17.1, pp. 21–24), Section 19 (p. 25), Section 21 (Sections 21.1–21.4, Eq. 28, pp. 28–30), Section 23 (Section 23.6, p. 37), and Section 27 (p. 45).
+
+Mathematical Issue: A supplied assumption is not a hypothesis elimination. The sufficiency part of the paper does not resolve the critical spatial observation question under the inverse-moment condition $n^{-D}\sum_x (\mu/a(x))^{D/2} \le M$ (Eq. 16):   flat_critical_integrated.pdf+ 1
+
+Theorem 17.1 (p. 22) achieves the critical rank order $O((n/\sqrt{1+\mu})^D)$ only via global spectral eigenprojections of $L_a$, which are spatially delocalized and profile-dependent.   flat_critical_integrated.pdf+ 2
+
+For spatially localized rectangular block means $C_{\mathcal{P}}$, the unconditional threshold partition in Section 21.1 (pp. 28–29) yields only the suboptimal exponent $D/4$ ($\dim F \le h(B_c+2DM)\max\{1,n^D/\mu^{D/4}\}$), losing a factor of $\mu^{D/4}$ relative to the necessary lower bound.   flat_critical_integrated.pdf+ 1
+
+The target exponent $D/2$ in Section 21.3 and Section 23.6 (pp. 29, 37) is obtained only by supplying an external family of disjoint cubes $S_k$ obeying both the two-sided local scale bound $cL_k(L_k-1)/4 \le a(x) \le \beta L_k^2$ on $S_k$ and the global complement bound $a(x) \ge cn(n-1)/4$ outside $\bigcup_k S_k$ (Eq. 28).   flat_critical_integrated.pdf+ 1
+
+Falsifier / Concrete Blocker: The profile constructed in Section 21.4 (p. 30)—$a=1$ on $W = \{e_1,-e_1\}$ and $a = A = (n-f)/(1-f)$ elsewhere with $\mu = n, f = 2/n^D$—satisfies $1 \le a \le 2\mu$, $\operatorname{mean}(a)=\mu$, and critical moment $< 2$, yet falsifies the existence of any cube decomposition satisfying Eq. (28) for all $n > \max\{\beta, 8\beta/c, 1+8/c\}$.   flat_critical_integrated.pdf
+
+Required Correction: Until either a constructive anisotropic rectangular partitioning theorem is proved directly from Eq. (16) without assuming Eq. (28), or a counterexample defeating all axis-aligned rectangular partitions under Eq. (16) is found, the critical spatial sufficiency problem (Section 27, p. 45) remains open and must be treated strictly as an unresolved boundary of the working paper.   flat_critical_integrated.pdf
+
+Objection 2: Restriction of Sufficiency Results to a Single Isotropic Scalar Weight Profile and Absence of Interacting/Continuum Gauge Coupling
+Precise Location: Section 1 (pp. 1–2), Section 2 (Eq. 1, p. 2), Section 13 (p. 17), Section 16 (Eq. 14, p. 21), and Section 26 (p. 45).
+
+Mathematical Issue:
+Whereas the necessity theorems in Sections 7 and 9–11 allow direction- and component-dependent signed weights $w_n(i,(x,l))$, the sufficiency framework in Sections 16–23 (Eq. 14, p. 21) restricts to a single shared positive scalar weight $a(x) = 1 + w_{i,x,j} > 0$ identical across all derivative directions $i \in \{1,\dots,D\}$, field components $j \in \{1,\dots,D\}$, and internal Lie coordinates. Under Eq. (14), $\mathcal{E}_a(U)$ decouples into $h = D(N_c^2-1)$ independent scalar graph Laplacians $L_a = d^* M_a d$.   flat_critical_integrated.pdf+ 4
+
+Furthermore, all operators throughout Sections 1–27 act on unit-spacing flat finite tori $(\mathbb{Z}/n\mathbb{Z})^d$ without non-abelian gauge covariant derivatives, background link variables, plaquette nonlinearities, or continuum $l^2 K_0$ scaling.   flat_critical_integrated.pdf+ 3
+
+Falsifier / Concrete Blocker: For anisotropic weights $w_n(i,(x,j))$ where $1+w_n(i,(x,j)) = 1$ for one off-diagonal pair $(i,j)$ and $1+w_n(k,(x,l)) = n^2$ for all other pairs, the arithmetic average of $a$ over directions/components is $\Theta(n^2)$, yet Theorem 9.1 (p. 9) forces $\dim F_n \to \infty$ via modes varying only along direction $i$ in component $j$. Thus a single scalar summary $a(x)$ cannot capture directional anisotropy without taking a worst-case directional envelope.
+
+Required Correction: Keep the explicit scope disclaimers in Sections 1, 13, 16, and 26, and note in Section 16 (p. 21) that extending Theorem 17.1 beyond decoupled scalar copies $L_a \otimes I_h$ to anisotropic or gauge-covariant operators requires controlling directional minimums $a_{\min}(x) = \min_{i,j}(1+w_{i,x,j})$ or cross-component commutator terms.
+
+Objection 3: Uninspected External Formal Evidence and Large Analytic-Only Proof Surface
+Precise Location: Section 14 (pp. 17–20), Section 15 (p. 21), Section 22 (p. 33), Section 23 (pp. 33–34), Section 24.3–24.5 (pp. 40–43), Section 25 (pp. 43–44), and Section 26 (pp. 44–45).
+
+Mathematical & Evidentiary Issue:
+All Lean 4 formalization claims and Colab reproduction logs cited in Sections 14, 24.5, and 25 are reported text within the PDF; because the external git repository, .olean files, and Colab archives are not inspectable inside the PDF artifact, formal verification status is unverified by direct inspection in this review.   flat_critical_integrated.pdf+ 3
+
+Even within the manuscript's reported scope, the entire sufficiency and spatial-geometry half of the paper—Theorem 17.1, Lemma 17.2, Theorem 18.1, Proposition 19.1, Sections 20.1 & 20.3, Section 21, the finite Sobolev derivation in Section 22, and the supplied-cube BSP partition in Section 23—together with the all-pairs square-cancellation sum in Section 10.2 (p. 13), Proposition 11.3 (pp. 15–16), Proposition 12.1 (p. 16), the general-$D$ proof of the exact subsharp threshold $K \ge 1138/35$ in Section 24.3 (pp. 40–41), and the sharp free-penalty obstruction in Section 24.4 (pp. 41–42) are analytic paper proofs, not machine-checked Lean theorems.   flat_critical_integrated.pdf+ 4
+
+Objection 4: Specific Mathematical Quantifier, Notation, and Typographical Defects in the Text
+Every item below was verified directly against the rendered text of flat_critical_integrated.pdf:
+Invalid $\lim_{n\to\infty}$ instead of $\liminf_{n\to\infty}$ in Proposition 11.3 (Section 11, p. 16, line 2):
+Location: Page 16, Proposition 11.3, first displayed inequality at the top of the page.   flat_critical_integrated.pdf
+
+Defect: The displayed inequality writes
+$\lim_{n\to\infty} \frac{\dim F_n}{n^D} \ge (2\alpha)^D \left[ 1 - \frac{m}{c} 2D \left(1 - \frac{\sin(2\pi\alpha)}{2\pi\alpha}\right) \right]$
+
+using $\lim_{n\to\infty}$ rather than $\liminf_{n\to\infty}$, even though the sequence $\dim F_n / n^D$ is arbitrary above the lower bound and need not converge (and the proof itself on p. 16, line 11 states: "Divide the finite rank bound by $n^D$ and take the lower limit").   flat_critical_integrated.pdf
+
+Falsifier: Take $F_n = \mathbb{R}^{n^D}$ for even $n$ and $F_n = \mathbb{R}^{2n^D}$ for odd $n$ with $m=0$; all hypotheses hold, the lower limit is $1$, and $\lim_{n\to\infty} (\dim F_n)/n^D$ does not exist.
+
+Required Correction: Replace \lim_{n\to\infty} by \liminf_{n\to\infty} in the displayed formula of Proposition 11.3 on p. 16.
+
+Omitted Non-Aliasing Hypothesis $2R < n$ in Theorem 5.1 and Proposition 5.2 Statements (Section 5, p. 5):
+Location: Page 5, Theorem 5.1 and Proposition 5.2.   flat_critical_integrated.pdf
+
+Defect: Both Theorem 5.1 and Proposition 5.2 state the rank bound $2(2R+1)^d \le \dim F + \operatorname{rank} V$ (or $\dim F + \operatorname{rank} P$) assuming only $c > b_R(n)$, leaving the non-aliasing condition $2R < n$ implicit from Section 4 (p. 4). (By contrast, Theorem 9.1 on p. 9 and Theorem 11.1 on p. 14 explicitly include $0 \le R < n$ and $2R < n$ in their theorem statements.)   flat_critical_integrated.pdf+ 3
+
+Falsifier: Fix $n=4, d=4, N_c=2$ ($m=3$, $\dim E_n = dmn^d = 3072$), take $F = E_n, C = I, V = 0, \Phi(y) = c\|y\|^2$, and choose $R = 3$ (so $2R < n$ fails) and $c = b_3(4) + 1$. Then Eq. (5) holds for all $A \in E_n$, but $2(2R+1)^d = 2 \cdot 7^4 = 4802 > 3072 = \dim F + \operatorname{rank} V$ because the frequencies in $\Lambda_R$ alias modulo $n$.
+
+Required Correction: Explicitly state "Let $0 \le R$ be an integer with $2R < n$" inside the hypotheses of Theorem 5.1 and Proposition 5.2 on p. 5.
+
+Symbol Clash / Misprint "$2\epsilon$" vs. "$2c$" (or "$\epsilon = c$") in the Free-Penalty Margin Formula (Section 20.2, p. 27, lines 14–16):
+Location: Page 27, Section 20.2, penultimate paragraph.   flat_critical_integrated.pdf
+
+Defect: The text states: "In particular a proved all-cochain margin $D_0 \ge (c+\epsilon)I$ gives $K = c + \|L_a\|^2/\epsilon$. For actual $a \le 2\mu$ the elementary edge estimate $|r-s|^2 \le 2|r|^2 + 2|s|^2$ gives $\|L_a\| \le 8D\mu$, including the parallel edge occurrences at $n=2$. A margin $2\epsilon$ therefore permits $K = c + 64D^2\mu^2/c$, without increasing the number of observations."   flat_critical_integrated.pdf
+
+Falsifier / Calculation Check: Substituting $\|L_a\| \le 8D\mu$ into $K = c + \|L_a\|^2/\epsilon$ gives $K = c + 64D^2\mu^2/\epsilon$. Obtaining $K = c + 64D^2\mu^2/c$ requires setting the margin to $\epsilon = c$ (so that $D_0 \ge (c+c)I = 2cI$), whereas a margin of $2\epsilon$ would give $K = c + 32D^2\mu^2/\epsilon$.
+
+Required Correction: Change "A margin $2\epsilon$" to "A threshold $2c$ (margin $\epsilon = c$)" (or change the denominator in $K = c + 64D^2\mu^2/c$ to $\epsilon$ / $2\epsilon$ consistently) on p. 27.
+
+Exponent Typo $D^{1/q}$ Instead of $D^{1/q'}$ in the Sobolev Power Step (Section 22.3, p. 32, line 7):
+Location: Page 32, Section 22.3, second line of the displayed inequality chain for $\|v\|_2^\alpha$.   flat_critical_integrated.pdf
+
+Defect: The second line of the display prints $\le \frac{2\alpha D^{1/q}}{c_D}(\sum_e |dv(e)|^q)^{1/q}\|v\|_2^{\alpha-1}$ with $D^{1/q}$ instead of $D^{1/q'}$. Because the vertex degree sum $\sum_{e=\{x,y\}}(v(x)^2+v(y)^2) \le 2D\|v\|_2^2$ sits inside the $L^{q'}$ norm $(\cdot)^{1/q'}$ on the preceding line, the factor is $D^{1/q'}$, matching the definition $K_D = \frac{2\alpha D^{1/q'}}{c_D}$ on p. 30.   flat_critical_integrated.pdf+ 2
+
+Required Correction: Replace $D^{1/q}$ with $D^{1/q'}$ in the displayed inequality on p. 32.
+
+Residual Symbol Clash for $m$ in Section 11 Despite Section 26's Claimed Cleanup (Section 11, pp. 14–16 vs. Section 2, p. 2 and Section 26, p. 44):
+Location: Pages 14–16 (Theorem 11.1, Eq. 12–13, Theorem 11.2, Proposition 11.3) and Page 44 (Section 26, paragraph 3).   flat_critical_integrated.pdf+ 4
+
+Defect: Section 2 (p. 2) defines $m = N_c^2 - 1$ as the internal Lie dimension of $E_n$, and Section 10.1 (p. 12) uses $m$ in that sense ($\dim F = (d+d^2)m$). Section 11 (pp. 14–16) then reuses the symbol $m \ge 0$ for the spatial mean budget of $\max\{1+w_n,0\}$ on the same space $E_n$, before Section 15 (p. 21) switches to $\mu$ to avoid clashing with $m = N_c^2 - 1$. Section 26 (p. 44) states that "this candidate corrects stale weight symbols $m$ to $\mu$", which is true in Section 20.3 (p. 28) but leaves $m$ overloaded in Section 11.   flat_critical_integrated.pdf+ 4
+
+Required Correction: Either rename the mean-budget parameter $m$ in Section 11 (pp. 14–16) to $m_{\text{wt}}$ or $\mu_+$, or explicitly state at the start of Section 11 (p. 14) that $m \ge 0$ locally denotes the mean weight budget rather than $N_c^2 - 1$.
+
+6. Originality, Relevance, and Primary-Literature Limits
+Originality and Methodological Scope: As candidly documented throughout the manuscript (Sections 1, 10.2, 12, 17.1, 20.2, 22, 23, 24.5, 26), the underlying analytical engines are classical: discrete Fourier diagonalization and rank-nullity (Sections 3–6, 9, 11), the implicit function theorem on regular submanifolds (Section 8), the Zelazo–Bürger 4-cycle effective-resistance cancellation [9] (Section 10.2), the Albert / Carlson–Haynsworth–Markham / Anderson–Trapp singular Schur complement and shorted-operator conditions [3, 4, 12] (Sections 12, 20.2, 24), the Rumin–Frank density-matrix proof of Cwikel-type eigenvalue bounds [13] (Section 17.1), discrete Loomis–Whitney/coarea Sobolev inequalities [14] (Section 22), and de Berg's compressed corner-potential binary space partition for fat objects [11] (Section 23).   flat_critical_integrated.pdf+ 4
+
+Programme Relevance: The genuine mathematical value of this working paper lies in concrete adaptation, diagnostic precision, and self-contained verification within the author's lattice Hodge programme: tracking exact unit-spacing counting normalizations without hidden volume or dimension factors, isolating where tangent/regular-sector/mean-weight/dyadic/global-threshold/supplied-cube/fixed-penalty repair strategies fail, and providing self-contained finite proofs of the rectangle Sobolev inequality (Section 22) and the supplied-cube partition (Section 23) alongside the physical divergence-free 4-cycle counterexample (Section 24).
+
+Primary-Literature Limits: Because external literature [1]–[14] was not retrieved or inspected during this review, priority and exact fidelity to the external formulations in [2]–[14] are evaluated solely on the internal self-consistency of the proofs printed in the PDF.
+
+7. Review Context, Non-Blinding, and Unestablished Independence
+Non-Blinded Review Context: This review is explicitly non-blinded. The manuscript contains extensive historical review narratives, prior model names (gpt-6-astra, Gemini 4 Argon High), preparing-agent (Codex) notes, and numerical scores (6/10, 3.4/10, 3.5/10, 6.5/10) for earlier distinct artifacts (v2, v5, revision136, review150, revision152) on pages 20 and 44–45.   flat_critical_integrated.pdf+ 2
+
+Strict Non-Inheritance: In accordance with the review protocol, none of the historical grades, subtotals, or resolved-objection dispositions from those earlier artifacts were transferred to this assessment. Every section, equation, and objection above was evaluated freshly from the 46 pages of flat_critical_integrated.pdf.
+
+Unestablished Independence: This assessment is an AI-only technical review of the provided PDF artifact. It does not constitute human peer review, independent editorial screening, or an organizationally isolated audit of the external code/Lean repositories.
+
+8. Recommendation and AI-Only Score
+Recommendation: acceptable_as_working_paper (with minor_revision recommended to fix the four localized mathematical/typographical slips in Objection 4—specifically $\lim \to \liminf$ in Prop. 11.3 on p. 16, explicit $2R < n$ in Theorem 5.1/Prop. 5.2 on p. 5, the $2\epsilon \to 2c$ margin typo on p. 27, and $D^{1/q} \to D^{1/q'}$ on p. 32).
+
+AI-Only Score: 7.6 / 10
+
+Score Rationale:
+Mathematical Rigor & Internal Completeness (+): Across all 46 pages, the calculations, finite Fourier sums, variational flow comparisons, discrete coarea/Sobolev reflections, corner-potential BSP bounds, and rational Schur-complement decompositions ($K \ge 1138/35$ and $c_* = (17-\sqrt{85})/2$) are mathematically sound and worked out in full quantitative detail. The inclusion of self-contained proofs in Sections 22, 23, and 24 eliminates the external black-box gaps of earlier partial drafts, and the correction of the multi-cluster leaf occupancy bound ($T_D = 2^{2D-1}$, backed by the $2^{D-1}$ stress family in Section 23.2) is solid.
+
+Epistemic Transparency (+): The manuscript is exceptionally transparent about what is proved vs. assumed, what is Lean-verified vs. analytic, and what remains open.
+
+Deductions (-): The score is bounded below the 8.5–10 range by (1) the unresolved status of the central unrestricted critical rectangular partition question (Section 27) and the reliance of Section 21.3/Section 23 on supplied cubes satisfying Eq. (28) (which Section 21.4 shows is non-universal); (2) the restriction of the sufficiency theory (Sections 16–23) to a single isotropic scalar weight $a(x)$ on a flat abelian-type lattice with no interacting or continuum Yang–Mills coupling; (3) the inability to directly inspect or execute the external Lean 4 / Colab evidence archives from the PDF alone, alongside the fact that the entire sufficiency/spatial continuation (Sections 15–23 and 24.3–24.4) is analytic rather than kernel-verified; and (4) the minor quantifier and typographical slips documented in Objection 4.
+

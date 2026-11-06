@@ -1,0 +1,20 @@
+{
+  "captured_utc": "2026-11-06T02:41:23.803Z",
+  "conversation": "https://gemini.google.com/app/0376ca805773eb66",
+  "html_characters": 1272038,
+  "html_bytes": 1276248,
+  "html_chunks": 13,
+  "html_complete": true,
+  "visible_text_characters": 49011,
+  "visible_text_bytes": 56805,
+  "textContent_characters": 48674,
+  "math_expressions": 545,
+  "original_report_preserved": true,
+  "external_requests": 1,
+  "regenerations": 0,
+  "initial_truncation_retained": true,
+  "recovery": "Same saved conversation from recent-conversation link; no repeated request",
+  "completion_controls": "Copy/Redo present, Stop absent",
+  "AI_only_score": 7.6,
+  "recommendation": "acceptable_as_working_paper; minor_revision qualification retained"
+}
