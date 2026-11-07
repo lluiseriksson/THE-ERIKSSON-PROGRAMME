@@ -1,0 +1,48 @@
+CANONICAL SINGLE ACTIVE QUESTION — consolidation reconciliation171
+
+Statement: fixed D>=3,Nc>=2,c>0,M<infinity, do actual scalar profiles on
+(Z/nZ)^D with unit spacing,1<=a<=2mu,mean(a)=mu>=1 and
+mean((mu/a)^(D/2))<=M admit the original local actual divergence-free
+coercivity data using normalized means on an unrestricted axis-aligned
+integer rectangular partition, with output rank at most
+C(D,Nc,c,M)*max{1,(n/sqrt(1+mu))^D}?
+
+Original data mean C(0)=0 and an actual finite real output, with a penalty
+locally bounded above by K||y||^2 for some finite K, and the stated positive
+target c on the actual divergence-free domain near0. The constant K and
+neighbourhood may depend on the finite profile and size. For the rectangular
+linear map, proving a global quadratic estimate suffices. Fixing K=c is a
+STRONGER possible construction, not silently equivalent to arbitrary finite
+K. A failed prescribed partition at its sharp target does not exclude every
+other partition or an actual strict margin for a newly constructed one.
+
+Candidate mechanism to examine next: a genuinely non-cube-tree anisotropic
+rectangular construction using actual local weighted variance/capacity
+bounds. It must derive the geometry and strict kernel margin, or the exact
+critical Schur compatibility, from the original critical moment hypothesis;
+neither may be supplied as an unproved structure. The global spectral map
+is already available and does not provide spatial rectangular support.
+No success is claimed for this candidate mechanism. Do not restart the
+stopped common-refinement/full equal-child cube-tree route.
+
+Falsifier for the full question: an explicit actual coefficient family
+satisfying all original hypotheses for which EVERY such partition obeying
+the proposed rank order fails the original target/penalty data. Failing one
+algorithm, a supplied-cube decomposition, a full dyadic tree or a fixed
+prescribed sharp-threshold partition is only a narrower obstruction and
+must be reported with that scope. A positive result must construct the
+actual partition/map and prove the required inequality and rank bound.
+
+Abandonment: after three substantive mathematical units on the new candidate
+mechanism without a proved reduction, theorem or useful scoped falsifier,
+record the exact failures and change mechanism or identify its concrete
+blocker. The former common-refinement counter remains STOPPED3. Manuscript
+editing, formalization and rendering do not reset that historical counter.
+This file opens no second active question and claims no new theorem.
+
+Reconciliation: estado.json's former active_question_spec pointed to the
+CLOSED mean-budget result080, and its former protocol still described the
+earlier strict higher-moment p>D/2 question. Those are preserved as historical
+records, not active questions. The actual current critical rectangular
+question is the one stated in Section27 of the integrated manuscript.
+PR29 remains20/41,TermSource0. No continuum Yang-Mills gap is inferred.
