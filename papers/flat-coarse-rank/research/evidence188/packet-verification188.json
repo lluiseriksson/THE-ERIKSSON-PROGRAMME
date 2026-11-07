@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-07T19:38:40.2884881Z",
+  "subjects": 47,
+  "archive_entries": 48,
+  "hash_mismatches": [],
+  "actual_zero_exit_count": 12,
+  "invalid_exit_count": 0,
+  "payload_hashes": [
+    "10067126fc36f5b5cf48df335b6faa9365d3121a2dfa85ef90f9cb1626f9f004"
+  ],
+  "case_count_per_run": 648,
+  "mutations_rejected_per_run": 6,
+  "no_windows_science": true,
+  "no_all_size_computation_claim": true
+}

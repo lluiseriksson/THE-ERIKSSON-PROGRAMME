@@ -1,0 +1,64 @@
+{
+  "unit": 188,
+  "assessment_type": "source_proof_correctness_audit",
+  "date": "2026-11-07",
+  "source_path": "D:\\Entregas\\the-eriksson-programme\\2026-11-07_partial-invariance188\\partial-invariance-proof188.txt",
+  "source_sha256": "d0b970ab4f8fda85c108de492a8ccb4d5d050e216d315d380bf75cbe24013f9e",
+  "supplied_source_commit": "0178b02bf26381633726edb82758e1c7ccb9aefd",
+  "dependency": {
+    "commit": "22cf1b943646a3dd51c60139363e47d4740c8670",
+    "path": "papers/flat-coarse-rank/integrated-revision/revision187/sobolev.tex",
+    "complete_fragment_read": true,
+    "constants_match": true
+  },
+  "verdict": "supported_with_stated_scope_and_dependency",
+  "blocking_mathematical_objections_found": [],
+  "counterexample_found": false,
+  "conclusion": "The finite construction proves actual K=c and the stated rectangular observation budget for every positive coefficient depending on k<D coordinates. No blocking gap was found in the analytical audit.",
+  "checks": {
+    "sobolev_constant_and_holder": "supported",
+    "odd_and_mixed_singleton_base_sides": "supported",
+    "child_maximum_bounds": "supported",
+    "balanced_extrusion": "supported",
+    "local_mass_and_variance": "supported",
+    "singleton_stopping": "supported",
+    "positive_start_edges_including_n2": "supported",
+    "terminal_internal_assignment": "supported",
+    "leaf_cost_and_constants": "supported",
+    "moment_corollary": "supported",
+    "all_field_quantifiers": "supported"
+  },
+  "limitations_and_recommendations": [
+    {"id":"L1","blocking":false,"finding":"At least one exact invariant coordinate is essential to this proof; clarify the title. No all-variable, approximate-invariance, physical or continuum conclusion."},
+    {"id":"L2","blocking":false,"finding":"Retain the pinned complete Sobolev proof on integration. No formal verification or computational replay performed."},
+    {"id":"L3","blocking":false,"finding":"Finite analytical construction is not an exact-real implementation, complexity or numerical stability guarantee."},
+    {"id":"L4","blocking":false,"finding":"Only limited primary abstract-level literature checks; exact cited theorem/appendix comparisons and priority are unverified."},
+    {"id":"L5","blocking":false,"finding":"Nonoptimal upper-order constants and observation slots do not establish minimal rank or practical efficiency. Administrative programme status was not independently checked."}
+  ],
+  "review_context": {
+    "configured_model_from_orchestration": "gpt-6-astra",
+    "provider_context": "OpenAI Codex",
+    "served_backend_attestation": null,
+    "reasoning_setting_attestation": null,
+    "historical_participation": ["source185 audit", "supplement186 assessment", "manuscript187 assessment"],
+    "shared_chat_account_provider_workspace": true,
+    "blind": false,
+    "organizationally_independent": false,
+    "previous_numerical_reports_consulted_this_audit": false,
+    "prior_scores_transferred": false,
+    "other_reviewers_contacted": false
+  },
+  "scientific_execution_performed": false,
+  "source_modified": false,
+  "pdf_assessed": false,
+  "scores_assigned": false,
+  "human_peer_review": false,
+  "publication_authorization": false,
+  "native_import_validity": false,
+  "airr_version_id": null,
+  "full_report": "source-audit188.txt",
+  "primary_sources_consulted": [
+    "https://arxiv.org/abs/2608.20498v1",
+    "https://arxiv.org/abs/2606.08556v1"
+  ]
+}

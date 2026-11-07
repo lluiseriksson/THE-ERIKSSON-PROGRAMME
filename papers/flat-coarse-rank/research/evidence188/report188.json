@@ -1,0 +1,103 @@
+{
+  "unit": 188,
+  "source_sha": "b9d9dfdee043a62ec5d30926e215f8a581507b70",
+  "started_utc": "2026-11-07T19:36:40.994608+00:00",
+  "steps": [
+    {
+      "label": "fresh-a-clone",
+      "actual_exit": 0,
+      "seconds": 0.45856714399997145
+    },
+    {
+      "label": "fresh-a-sparse",
+      "actual_exit": 0,
+      "seconds": 0.0032988300000624804
+    },
+    {
+      "label": "fresh-a-checkout",
+      "actual_exit": 0,
+      "seconds": 0.3550238499999523
+    },
+    {
+      "label": "fresh-a-head",
+      "actual_exit": 0,
+      "seconds": 0.0025261700000100973
+    },
+    {
+      "label": "fresh-a-normal",
+      "actual_exit": 0,
+      "seconds": 0.6683295899999848
+    },
+    {
+      "label": "fresh-a-optimized",
+      "actual_exit": 0,
+      "seconds": 0.7169404410000197
+    },
+    {
+      "label": "fresh-b-clone",
+      "actual_exit": 0,
+      "seconds": 0.2550683480000089
+    },
+    {
+      "label": "fresh-b-sparse",
+      "actual_exit": 0,
+      "seconds": 0.0017892600000095626
+    },
+    {
+      "label": "fresh-b-checkout",
+      "actual_exit": 0,
+      "seconds": 0.34133668000004036
+    },
+    {
+      "label": "fresh-b-head",
+      "actual_exit": 0,
+      "seconds": 0.0015035199999147153
+    },
+    {
+      "label": "fresh-b-normal",
+      "actual_exit": 0,
+      "seconds": 0.5934115370000654
+    },
+    {
+      "label": "fresh-b-optimized",
+      "actual_exit": 0,
+      "seconds": 0.6010501279999971
+    }
+  ],
+  "payloads": [
+    {
+      "clone": "fresh-a",
+      "mode": "normal",
+      "sha256": "10067126fc36f5b5cf48df335b6faa9365d3121a2dfa85ef90f9cb1626f9f004",
+      "cases": 648,
+      "rejected_mutations": 6
+    },
+    {
+      "clone": "fresh-a",
+      "mode": "optimized",
+      "sha256": "10067126fc36f5b5cf48df335b6faa9365d3121a2dfa85ef90f9cb1626f9f004",
+      "cases": 648,
+      "rejected_mutations": 6
+    },
+    {
+      "clone": "fresh-b",
+      "mode": "normal",
+      "sha256": "10067126fc36f5b5cf48df335b6faa9365d3121a2dfa85ef90f9cb1626f9f004",
+      "cases": 648,
+      "rejected_mutations": 6
+    },
+    {
+      "clone": "fresh-b",
+      "mode": "optimized",
+      "sha256": "10067126fc36f5b5cf48df335b6faa9365d3121a2dfa85ef90f9cb1626f9f004",
+      "cases": 648,
+      "rejected_mutations": 6
+    }
+  ],
+  "billed_units": null,
+  "execution_plane": "Own Colab Linux CPU",
+  "status": "FINITE_DIAGNOSTICS_MATCHED_NOT_ALL_SIZE_PROOF",
+  "finished_utc": "2026-11-07T19:36:45.000900+00:00",
+  "seconds": 4.006274797999936,
+  "child_maxrss_kib": 105332
+}
