@@ -1,0 +1,70 @@
+Integrated revision191 — PREPARED SOURCE ONLY, 2026-11-07
+
+This is a full successor source for the existing AIRR dossier. It is not an
+assigned AIRR version, deposited PDF, working-paper release or acceptance.
+Build source: 1389dd27ab99a2d9f5fb9b9ca7f935129fc40ab2.
+Eight TeX inputs retain the full189 manuscript and add the audited190 detour
+refinement and explicit coexact parity boundary, including all L1–L5
+clarifications. The abstract and theorem/evidence guide are updated. The
+189 source-hash paragraph correction is retained. Old PDFs and reports are
+unchanged; no numerical grades transfer to this changed full artifact.
+
+The new section preserves the exact distinction between periodic
+maximum-coordinate distance two and nearest-neighbour independence. It
+counts both starts on the induced two-cycle, exhibits the actual potential
+preimage, counts real dimensions, and states the unbounded critical moment.
+One spatial mean on cochains remains component-valued. No new mathematics
+beyond the audited source190 is claimed by this transcription.
+
+Actual offline checks: eight source hashes matched; seven included files
+are present; 126 source labels are unique. These are text/hash checks, not
+a TeX build, rendering, visual inspection or scientific reproduction.
+No PDF191, page count, grade, model report, submission receipt or publication
+exists. All finite190 diagnostics remain UNEXECUTED.
+
+The prepared render recipe pins every source and the exact historical
+supporting archives and190 audit inputs. RECOVERY189B_CONFIRMED=False is an
+operational guard: reconcile the existing own189B session before changing it
+and allocating another runtime. It is not a request for renewed author
+consent. The recipe runs only on own Colab Linux CPU/high-RAM. Windows has
+performed only editing, Git, hashing and source packaging.
+
+Export protocol: the recipe prints a short manifest/report and writes the
+full review archive; it does not automatically print a giant base64 line or
+HTML payload. export191-chunk.py exports one already-existing 500000-character
+base64 slice, wrapped at120 columns, with its actual decoded byte count/hash
+and a numbered header/end marker. Preserve and verify every chunk and the
+whole archive before disconnecting. This transport mitigation is PREPARED,
+not browser-tested; no successful export is claimed. If the browser fails,
+the existing Drive connector can retrieve an actually saved notebook output;
+absence of output is not completion or expiry evidence.
+
+Existing189B remains unknown: request20:53:16.774Z, retained own notebook
+1w974UwVIsIdqlJvmZbg7oPnaPnMvW8-o, stuck tabs23/25. Latest saved notebook
+observation:9838bytes, modified21:41:44.794Z, still no outputs. No new runtime
+was allocated. Do not claim thatB ran, succeeded or disconnected. AttemptA
+was actually exported as the failed-layout diagnostic and disconnected.
+
+After recovery: preserve any observable189B evidence and release its own
+runtime. The integrated191 source supersedes the unreleased189 candidate
+as the next full publication candidate; do not spend a fresh grading round
+on an obsolete unassessed candidate solely to fill a record. Build191,
+export exact PDF/logs/all-page images, disconnect, visually inspect every
+page, and declare one first genuine complete exact-hash numerical assessment
+with overall stars and five criterion ratings. Preserve all objections and
+factual involved-model context. Do not invent isolation or backend identity.
+Use the real linked native AIRR grant/receipt/working-permission/release
+route only after reconciling its trusted latest-publicv8 catalogue. No new
+case, administrative permission or forged receipt bypass is authorized.
+
+Research routing: after three consolidation/local-refinement units without
+a substantial advance on the fully variable fixed-M question, stop repeating
+the neutral ancestor-charge route. Its precise block is d=0, where the
+geometric factor becomes1. A distinct future subtest of the same question
+is whether a coefficient-derived capacitary/boundary argument can convert
+disjoint local Neumann defects into global low-energy witnesses while paying
+actual cut-edge energies. No such lemma is assumed or claimed. A counterexample
+to that transfer without added hypotheses falsifies that proposed mechanism.
+Abandon or identify a concrete obstruction after three units on it; do not
+rename the desired partition estimate as an assumed structure. The main
+critical rectangular question and physical continuum remain open.

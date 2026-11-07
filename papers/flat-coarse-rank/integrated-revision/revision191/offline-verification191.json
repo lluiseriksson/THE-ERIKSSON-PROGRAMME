@@ -1,0 +1,26 @@
+{
+  "status": "OFFLINE_TEXT_AND_HASH_CHECKS_ONLY",
+  "build_source_sha": "1389dd27ab99a2d9f5fb9b9ca7f935129fc40ab2",
+  "source_count": 8,
+  "input_files": [
+    "sobolev.tex",
+    "partition.tex",
+    "physical-cycle.tex",
+    "spatial-geometry.tex",
+    "laminates-green.tex",
+    "partial-invariance.tex",
+    "detour-separation.tex"
+  ],
+  "source_hashes_match": true,
+  "unique_source_labels": 126,
+  "new_source_scientific_claims": "Transcribed from audited190 with allL1-L5 clarifications; no new theorem claimed",
+  "pdf_exists": false,
+  "tex_executed": false,
+  "render_executed": false,
+  "visual_review_completed": false,
+  "stars": null,
+  "assessment_requested": false,
+  "existing189_unchanged": true,
+  "driver_executed": false,
+  "recovery189B_guard": false
+}
