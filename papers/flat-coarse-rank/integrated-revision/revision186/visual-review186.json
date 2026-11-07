@@ -1,0 +1,19 @@
+{
+  "pdf_sha256": "040cae56bad1deb48605ea72f7d4e9ee28da00de702b5ebb11c039129fe65146",
+  "page_count": 8,
+  "inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "method": "Own Colab Poppler100dpi page PNGs and both contact sheets, all eight pages inspected; no clipped equations, overlap or missing glyph found",
+  "layout_warnings": [],
+  "metadata_limitation": "PDF title/author metadata fields empty; visible title/author present",
+  "checked_at": "2026-11-07T17:47:44.7867030Z",
+  "not_scientific_assessment": true
+}

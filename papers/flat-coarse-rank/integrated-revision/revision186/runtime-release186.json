@@ -1,0 +1,9 @@
+{
+  "requested_at": "2026-11-07T17:38:02.018Z",
+  "released_observed_at": "2026-11-07T17:46:49.658Z",
+  "request_to_release_seconds": 527.64,
+  "own_runtime_disconnected": true,
+  "archive_sha256": "f1c5ac3fb23bc7496772dbcc6ad0ab1c0e247822ed8bd0057b90c78c632035c4",
+  "compute_units_billed": null,
+  "recovery": "Same notebook own runtime files recovered through fresh tab20; no scientific rerun; original tab16 control timed out"
+}

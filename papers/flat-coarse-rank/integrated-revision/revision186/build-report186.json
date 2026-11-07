@@ -1,0 +1,90 @@
+{
+  "attempt": "B",
+  "child_maxrss_kib": 127780,
+  "compute_units_billed": null,
+  "elapsed_seconds": 85.33318370899998,
+  "execution_plane": "Own Colab Linux CPU",
+  "finished_utc": "2026-11-07T17:39:41.253898+00:00",
+  "independent_review": false,
+  "layout_warnings": [],
+  "model_assessment": null,
+  "numeric_stars": null,
+  "page_count": 8,
+  "pdf_bytes": 321889,
+  "pdf_sha256": "040cae56bad1deb48605ea72f7d4e9ee28da00de702b5ebb11c039129fe65146",
+  "pdfinfo": "Title:           \nSubject:         \nKeywords:        \nAuthor:          \nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Sat Nov  7 00:00:00 2026 UTC\nModDate:         Sat Nov  7 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           8\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       321889 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "pdflatex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "published": false,
+  "python": "3.13.18",
+  "source_hashes": {
+    "rectangular_observations.tex": "5d7b005ea32af993899746b3584b795df1998ef51bfa943d8f4ba3b4b3d0917a"
+  },
+  "source_sha": "fda4743d41960bf2c0cb018e113cccb85d62ca9a",
+  "started_utc": "2026-11-07T17:38:15.920685+00:00",
+  "status": "PDF_RENDERED_PENDING_VISUAL_REVIEW",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "apt-update",
+      "seconds": 4.674022616000016,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "apt-install",
+      "seconds": 75.51437032499999,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdflatex-version",
+      "seconds": 0.004336327999993728,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "poppler-version",
+      "seconds": 0.04712410300001579,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-first",
+      "seconds": 0.663261403000007,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-second",
+      "seconds": 0.6629816390000087,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-final",
+      "seconds": 0.6737681589999909,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdfinfo",
+      "seconds": 0.01995787900000323,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdftext",
+      "seconds": 0.07472605300000623,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "render-pages",
+      "seconds": 2.1037122479999937,
+      "timed_out": false
+    }
+  ],
+  "unit": 186,
+  "visual_review": "PENDING"
+}
