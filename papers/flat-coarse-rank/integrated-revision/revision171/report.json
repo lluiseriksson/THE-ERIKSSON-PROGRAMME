@@ -1,0 +1,78 @@
+{
+  "attempt": "B",
+  "child_maxrss_kib": 127608,
+  "compute_units_billed": null,
+  "elapsed_seconds": 110.12199419399997,
+  "external_model_score": null,
+  "finished_utc": "2026-11-07T03:20:52.823004+00:00",
+  "gpu_environment": "",
+  "independent_review": false,
+  "layout_warnings": [],
+  "page_count": 58,
+  "pdf_bytes": 663701,
+  "pdf_sha256": "9070f806e9069fd4b1fa54ec24527bc0cfcc03ddfce91b1206ed9358f6ce70c6",
+  "pdfinfo": "Title:           Coarse information and finite rank obstructions for flat lattice Hodge forms\nSubject:         \nKeywords:        \nAuthor:          Lluis Eriksson\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Fri Nov  6 00:00:00 2026 UTC\nModDate:         Fri Nov  6 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           58\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       663701 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "pdflatex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "published": false,
+  "python": "3.13.18",
+  "source_sha": "19f8d2a790b04798761ab49b007b47083b2ad3dc",
+  "started_utc": "2026-11-07T03:19:02.701071+00:00",
+  "status": "PDF_RENDERED_PENDING_VISUAL_REVIEW",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "apt-update",
+      "seconds": 7.442783013999929
+    },
+    {
+      "exit_code": 0,
+      "label": "apt-install",
+      "seconds": 91.774444518
+    },
+    {
+      "exit_code": 0,
+      "label": "pdflatex-version",
+      "seconds": 0.007030382000039026
+    },
+    {
+      "exit_code": 0,
+      "label": "poppler-version",
+      "seconds": 0.07298004099993705
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-first",
+      "seconds": 2.1976851699999997
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-second",
+      "seconds": 1.3130066200000101
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-final",
+      "seconds": 1.295445897000036
+    },
+    {
+      "exit_code": 0,
+      "label": "pdfinfo",
+      "seconds": 0.029184224000005088
+    },
+    {
+      "exit_code": 0,
+      "label": "pdftext",
+      "seconds": 0.5434856809999928
+    },
+    {
+      "exit_code": 0,
+      "label": "render-pages",
+      "seconds": 2.708940886999926
+    }
+  ],
+  "tex_git_LF_sha256": "a02f7f3d61f1ba3781890f86a8918b05959824a562625a2e90ccb6651cb9f305",
+  "unit": 171,
+  "visual_review": "PENDING"
+}

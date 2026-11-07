@@ -1,0 +1,146 @@
+EXACT INTEGRATED PDF REVIEW171 —7November2026
+Artifact flat_critical_integrated.pdf:58pages,663701bytes.
+SHA2569070f806e9069fd4b1fa54ec24527bc0cfcc03ddfce91b1206ed9358f6ce70c6.
+Exact main/input source19f8d2a790b04798761ab49b007b47083b2ad3dc.
+Main Git-LF SHA256a02f7f3d61f1ba3781890f86a8918b05959824a562625a2e90ccb6651cb9f305.
+Final recipe5dff46a4cd9164828305b10afb1846545de551b8.
+Recipe Git-LF SHA2567d04a3268580cf97bcaba3b43a85a2b8f785485480fc330b35197b8a457aa7fc.
+
+Identity, scope and assessment boundary
+This is a fresh exact-artifact preparing-session analytical/visual review,
+not independent scientific assessment or a numerical grade. The application
+does not expose the exact backend model identity of the continuing Codex
+agent. No blinding or independence is claimed. There is no external model
+report, human peer review, editorial acceptance or new publication for this
+PDF. Earlier assessments are historical facts about different exact PDFs.
+In particular report154 and its7.6/10 minor-revision result apply ONLY to
+publicv6 SHA256ccf53e0afc9819c3fc9b2008de9076a60f60d23ef6ac2c4ccd82adca30cbf389.
+Its complete prompt/raw response/objections/identity/context are retained
+separately as historical evidence, not reused as a score for171. Section26
+and subsection28.9 make the non-transfer and outstanding objections explicit.
+
+Integration audit
+The existing parent source revision153 was fetched at immutable source
+e1748f206a2e8509fedeb8edea56e11060b852a5 and its four normalized-LF TeX inputs
+checked against its original inputs.json before editing. The3 included
+files sobolev.tex, partition.tex, physical-cycle.tex remain byte-identical
+to those original input hashes. This unit adds no mathematical fixture,
+Lean/Lake run or theorem dependency certificate.
+
+The main manuscript is edited at source level, not concatenated as PDFs.
+Date, metadata and abstract describe the integrated continuation. Historical
+v6/report154 exact-artifact scope is added without rewriting old reports.
+The complete mathematical body, reproduction limits and model context of
+reviewed appendix170 are incorporated as Section28 before one bibliography.
+Namespaced mx: labels/references/citation keys and separate environments
+using the parent theorem counter preserve the mathematics and avoid collisions.
+Hardcoded standalone theorem5 references now point to Theorem28.5, and
+the actual rectangle references point to Example28.6. Equation numbering
+is integrated. First-pass combined-citation omissions were corrected and
+are recorded below; no scientific statement changed in that correction.
+
+Scientific review of the integrated limits
+Parent no-go theorems remain finite flat statements with explicit domain,
+spacing, codomain dimension and penalty assumptions. A real physical low
+band and rank-nullity give necessary information budgets; these do not
+construct sufficient rectangular observations. Global spectral observations
+remain generally nonlocal. The classical singular Schur condition requires
+critical-kernel cross compatibility, not just a weak kernel bound. The
+regular-sector implicit curve and derivative limits retain their stated
+regularity, surjectivity and local quadratic-penalty hypotheses.
+
+The mean and signed-weight criteria retain their actual positive-part and
+counting conventions. The full-volume and integer-tail results retain
+their separately pinned formal referents. Analytical trace improvements, counterexamples, supplied-cube geometry, scalar Fourier adapters and local
+Sobolev/partition proofs are not mislabeled as newly Lean-verified here.
+The original critical rectangular rank-order existence question remains
+open; the supplied cubes are not derived from the inverse moment bound.
+
+The new Section28 explicitly counts oriented rows and local matrix channels.
+Its positive-matrix inverse-flow comparison, normalized Fourier square
+padding and the single volume cancellation remain explicit. Classical
+operator-valued Cwikel, resistance and Schur/resolvent principles are
+credited. Capped signed repair includes the former SPD moment criterion;
+the prescribed-threshold sparse criterion is not confused with that inclusion.
+Coupled channels retain off-diagonal interactions and the scalar-observation
+dimension restriction. Coefficient arithmetic means alone do not imply the
+required inverse-moment or sparse-count hypotheses.
+
+For the actual positive D3,n2 scalar rectangular example, the full8-dimensional
+Schur analysis yields the exact ambient penalty, its transition and the
+constant -192/25 after the leading16/(5delta). Actual unordered-plaquette
+potentials place both negative witnesses in range(d1*). The coexact leading
+coefficient16/5 is obtained by a lower/upper squeeze, not a falsely assumed
+restricted coisometry or equality of full ambient/restricted optima. No
+next constant is asserted for the restricted coexact optimum. New169 replay
+is9 distinct rational delta cases and6 mutation types per process,4 fresh
+clones and8 matching ordinary/-O processes; it does not certify every real
+delta, the general resolvent lemma, a new physical matrix or the limit.
+
+Retained substantive objections
+Classical mechanisms do not establish original priority. Independently
+prepared source/form review remains outstanding. Historical formal evidence
+does not certify the whole changed manuscript. A trivial-background Hodge
+identity is not an interacting physical Hessian identification. Fixed-map
+critical examples do not exclude all other rectangular partitions or prove
+an unbounded-size rank-order falsifier. No continuum construction, physical
+Yang-Mills mass gap, editorial acceptance or peer review follows.
+PR29 remains20/41,TermSource0; common-refinement remains STOPPED3.
+
+Visual inspection of ALL58 exact final pages
+Every final100dpi JPEG was opened individually, not only as a contact sheet,
+after all99 final build-manifest subjects were hash-verified. The full
+inspection progress is retained privately as visual-progress.txt. No prior
+PDF's visual approval or model score was inherited.
+01-04: expanded title/abstract, actual conventions and initial low band fit.
+05-08: rank budget, tangent/sector theorems and their proofs legible.
+09-12: directional means, boundary and signed criteria legible.
+13-16: cancellation, volume/tail and Schur formulas fit.
+17-20: operator interpretation, formal-source hashes and historical context fit.
+21-24: continuation definitions, global moment/Fourier proof legible.
+25-28: dyadic/rectangle geometry and fixed/free penalty distinctions legible.
+29-32: threshold and cube routes, self-contained Sobolev start legible.
+33-36: reflection/multiplicity and integer partition proofs fit.
+37-40: coefficient consequences and actual physical cycle dictionary fit.
+41-44: exact cycle penalty, evidence limits and NEW v6/report154 scope fit.
+45-46: prior report objections retained, no-score-transfer text complete;
+the single active bounded question and unchanged baseline readable.
+47-48: NEW Section28 and integrated theorem/equation numbering fit.
+49: corrected combined references show[16,17], no question-mark placeholders.
+50: coupled-channel example and observation restriction readable.
+51-52: exact Schur criterion, actual rectangle witness, lower bound and FULL
+ambient optimum/all six small matrices legible; cross references resolved.
+53-54: transition, asymptotic/general residue and actual coexact proof fit.
+55: coexact leading-limit argument, source hash and evidence table fit.
+56: replay limits and full subsection28.9 Model assessments and review context
+legible; unified bibliography starts normally.
+57-58: all19 bibliography items/URLs legible and within margins.
+Across all pages no clipping, overlapping text, missing glyphs or unresolved
+reference placeholders observed. Normal page-spanning paragraphs and the
+intentional Section28 page break do not lose content.
+
+Build and failure record
+Three TeX passes and every final command exited0. Final LaTeX layout/reference
+warning list empty. Final recipe110.121994194s. Own CPU runtime was deleted
+and visibly disconnected after complete archive export; billed units unknown.
+Archive14644414bytes SHA2564d6798b9f0b711da5dd8953bf4dd802e46b5fc558e1c0ab1f529f763b0e542af.
+All99 manifest subjects verified. report.json remains the immutable pre-visual
+build report with its original PENDING state; this separate review resolves
+that state after actual inspection, rather than rewriting history.
+
+First full render produced58pages with unresolved combined citation keys
+Zelazo,Spielman on page49. Its exact PDF SHA256 is
+d793cd69382b27d81e105f1bbd5a7ec8aa3d5e036c3f04ab1e16b477191b5d33.
+Complete14644811byte archive3e0456c44b573c946eaaa470f40799ce7c34706963dbcf1cf840d424ea251f7d,
+all58 renders/source/logs/report and99 verified subjects, was saved before
+disconnecting. The two keys were namespaced offline; mathematics unchanged.
+The final recipe additionally rejects any remaining final citation/layout
+warning. No external grade was repeated or discarded. Both own allocations
+were disconnected; their actual request/release durations and unknown billed
+units are separately recorded. No local Windows scientific/TeX/Lean execution.
+
+Disposition: integrated58-page manuscript candidate with complete same-session
+review and reproducible sources, ready for its own external assessment/service
+route when genuinely available. No new AIRR deposit, receipt or acceptance.
+Return to the sole active research question rather than iterate supporting
+appendices without new mathematical progress; preserve unresolved audit/access.
