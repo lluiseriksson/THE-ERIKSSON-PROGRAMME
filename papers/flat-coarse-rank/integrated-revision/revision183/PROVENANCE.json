@@ -1,0 +1,46 @@
+{
+  "unit": 183,
+  "kind": "Grouped linked revision candidate, not published",
+  "parent_public_version": "v7",
+  "parent_pdf_sha256": "9070f806e9069fd4b1fa54ec24527bc0cfcc03ddfce91b1206ed9358f6ce70c6",
+  "parent_tex_sha256": "a02f7f3d61f1ba3781890f86a8918b05959824a562625a2e90ccb6651cb9f305",
+  "new_results": [
+    175,
+    177,
+    179,
+    181
+  ],
+  "finite_reproductions": [
+    178,
+    180,
+    182
+  ],
+  "original_critical_rectangular_question": "OPEN",
+  "new_model_assessment": null,
+  "new_stars": null,
+  "PDF_visual_review": "PENDING",
+  "rights_route": "Existing continuous revocable sole-author programme delegation, exact artifact child grant still required",
+  "scope": "Finite flat componentwise forms only; no interacting/continuum gap",
+  "sources": [
+    {
+      "name": "flat_critical_integrated.tex",
+      "sha256": "576692fa0d95345979a0f8a90e570e075024ae0c06a3919d9cbb0aa7756d7308"
+    },
+    {
+      "name": "partition.tex",
+      "sha256": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2"
+    },
+    {
+      "name": "physical-cycle.tex",
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+    },
+    {
+      "name": "sobolev.tex",
+      "sha256": "879f895b69eb04fd41c26fd4e4bd779dcdfe7d9547c22181c6d4313f343bdb43"
+    },
+    {
+      "name": "spatial-geometry.tex",
+      "sha256": "6c5c9bbd4a9ed8306810b6e2afb0bb659180e4e8d8ad25c5a85656b89545ab3e"
+    }
+  ]
+}
