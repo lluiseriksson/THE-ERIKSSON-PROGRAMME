@@ -1,0 +1,83 @@
+Unit172,7November2026. Analytical route-elimination review; no numerical grade.
+Parent exactPDF171 and complete historical reports remain unchanged.
+
+Model assessments and review context
+The proof was prepared and checked in the same continuing Codex session.
+Exact backend model identity is not exposed. No independent preparation,
+blinding, external model assessment, human peer review, Lean certificate,
+new PDF, AIRR submission or editorial acceptance is claimed. No earlier
+score transfers. No new runtime or scientific process was opened/executed;
+this is a written proof and primary-source investigation, not a disguised
+claim of computational verification or a percentage of Yang-Mills closure.
+
+Fresh proof audit
+The proposed stopping rule is explicitly c^s Tr((L_R^dagger)^s)<=1, on the
+ordinary counting space with exactly one constant zero mode excluded. It
+is a sufficient local certificate, not the original hypothesis or all
+possible capacity criteria. Boundary edges crossing rectangles are omitted
+positively; local graphs are Cartesian products of actual path intervals
+and possibly full periodic axes. Degenerate length1 sides are handled.
+
+The constructed uniform family a=gamma n^2,gamma=max(1,c/16) has exact
+coefficient inverse moment1 and an actual one-rectangle coercive observation
+with penalty c. This avoids the known invalid counterprofiles whose moments
+diverge. Actual physical application is componentwise through the existing
+proved flat Hodge-plus-repair identity; no new interacting identity is assumed.
+
+Every local positive eigenvalue<=4Dmu gives the all-shape polynomial lower
+bound for strong exponents s<D/2. The critical lower bound derives an explicit
+product heat-trace estimate valid even for anisotropic shapes and full
+cyclic axes. The constant mode is subtracted BEFORE integrating. The integral
+is restricted to t>=1 and t<=T where the remaining heat trace is positive;
+m>2/A_D is stated. The largest-cell argument splits q<=sqrt(V) from its
+complement and uses a stated sufficiently-large-size threshold; it does
+not assert the logarithmic lower bound at all tiny sizes.
+
+The matching endpoint upper construction uses ONLY proper path-grid cells
+of side at most ell<n, with actual included edges. Sine bounds, nonnegative
+frequency dyadic shells and the floor/ceiling inequalities give a real
+partition satisfying the same certificate, establishing Theta(log n), not
+just an unachieved lower bound. No supplied geometry is assumed.
+
+The D4,n4,c16,mu16 finite statement examines ALL possible axis lengths1-4.
+Length3 already fails the certificate. The other lengths give actual
+path/cycle spectra and the multiplicity polynomial(1+z)^(2a+b). Exact
+thresholds139/144<1<865/576 give maximum accepted volume8 and a covering
+4x2x1x1 grid of32 cells, proving the full certificate optimum32. The actual
+global torus gap32 permits a one-cell observation at target16. These exact
+numbers are derived algebraically; no newly executed enumerator is claimed.
+
+The two-vertex example independently shows that dividing the trace by
+volume destroys the variance-energy inequality. Spectral trace exponent
+is carefully distinguished from the ORIGINAL COEFFICIENT inverse moment.
+Trace-dominating pair-resistance/path/diameter bounds share this obstruction;
+operator norms, weak spectral counts, overlapping-domain arguments, external
+shorting across cells, or other localized capacity criteria are NOT ruled out.
+Nor is any family defeating EVERY admissible actual partition constructed.
+
+Primary literature and originality
+The author-hosted Ghosh–Boyd–Saberi SIAM Review2008 paper was opened and
+Section2.4 formula8 and Section2.5 formulas13,15 read. Pseudoinverse and
+total-resistance identities are classical. Endpoint strong/weak spectral
+distinctions and the heat-integral mechanism are classical as well. The
+proof derives the particular certificate complexity and its actual-torus
+contrast without claiming independent priority or an exhaustive novelty
+search. Full original priority remains unestablished.
+
+Falsifier and remaining verification
+An error in the graph convention/eigenvalue list, constant-mode subtraction,
+heat product/integration, all-shape largest-cell bound, or constructive
+covering would falsify this scoped result. Fresh finite rational replay,
+normal/-O and meaningful mutations in own Colab is the next verification
+step, not a completed fact. It cannot certify the whole asymptotic theorem;
+that retains the displayed analytical proof. Preserve any disagreement.
+
+Disposition
+The unmodified strong inverse-trace/total-resistance stopping mechanism is
+closed as unsuitable for the target order. Do not spend three further units
+on it or normalize away its loss. Return to non-trace-dominating localized
+variational/capacity or weak-count mechanisms within the SAME active critical
+rectangular question. Common-refinement staysSTOPPED3; PR29=20/41,TermSource0.
+This supporting result is to be grouped with the existing manuscript only
+after verification and further substantive advances; no tiny paper or
+another immediate appendix-only rendering cycle.

@@ -1,0 +1,205 @@
+Base d82f567106bcde491a3466ce60187f6cd0ca55f2. Unit172,7November2026.
+Single active question171 retained. Supporting route-elimination result,
+not a separate paper, new PDF or full rectangular-question refutation.
+
+STRONG INVERSE-TRACE RECTANGLE CERTIFICATES LOSE THE TARGET ORDER
+
+1. Actual rule being tested, not every capacity/partition construction
+Fix D>=3, target c>0 and n>=3. For an actual axis-aligned integer rectangle
+R in the unit-spacing torus, retain its actual internal positive-axis edges,
+and let L_R=mu*d_R* d_R for uniform coefficient mu>0. A proper coordinate
+interval gives a path; a full periodic coordinate may retain its cycle.
+The graph is connected, m=|R|, and its only zero mode is the constant.
+All norms/traces below are ordinary COUNTING norms/traces, not volume-normalized.
+For s>0 define
+ T_s(R)=Tr((L_R^dagger)^s)=sum_(lambda>0)lambda^(-s).
+A singleton has T_s=0. Consider the concrete sufficient stopping rule
+
+                  c^s T_s(R)<=1 on EVERY terminal rectangle.          (A)
+
+It certifies c*Var_R(u)<=E_R(u): the largest inverse eigenvalue is at most
+T_s^(1/s), so(A) forces the local spectral gap to be at least c. Summing
+the local inequalities and discarding positive crossing-edge energy then
+gives the global normalized-mean inequality with quadratic penalty c.
+This rule is sufficient, not necessary. It is a restriction on a proof
+certificate, not on the original observation class or permitted penalty.
+
+For s=1 it is exactly the total-pair-effective-resistance certificate:
+ T_1(R)=(1/m) sum_(x<y) R_eff(x,y).
+Indeed Var_R(u)=(1/m)sum_(x<y)(u(x)-u(y))^2 and each squared difference
+is at most R_eff(x,y)E_R(u). Any path or resistance-diameter upper bound
+on this pair sum is at least as restrictive. In particular the diameter
+coefficient is(m-1)R_diam/2, not a volume-normalized trace.
+
+2. A valid critical-moment family that needs only ONE mean rectangle
+Let gamma=max{1,c/16} and set
+               a_n(x)=mu_n=gamma*n^2,  w_n=mu_n-1>=0.
+Then1<=a_n<=2mu_n, mean(a_n)=mu_n and every normalized coefficient
+inverse moment is exactly1. Thus this lies in the original critical
+class with M=1 (and every M>=1). It is NOT the earlier diverging-moment
+counterexample. M<1 gives no profiles in that normalized exact-mean class.
+
+The actual torus Laplacian has first positive eigenvalue
+4mu_n sin^2(pi/n)>=16mu_n/n^2=16gamma>=c. Therefore the ONE global
+rectangle and its actual normalized mean C(f)=n^(-D/2)sum_x f(x) obey
+            c||f||^2<=mu_n||df||^2+c||Cf||^2.
+This also holds componentwise on the actual physical cochains, with
+h=D(Nc^2-1) output coordinates, using the actual flat Hodge-plus-repair
+identity and the constructed w_n above. It holds on all cochains and
+therefore on actual divergence-free and coexact domains. No unidentified
+physical comparison is supplied as a hypothesis.
+Since n/sqrt(1+mu_n)<=1, the desired rank order is bounded. One rectangle
+already attains it with fixed penalty c, stronger than free finite K.
+
+3. Polynomial loss for every strong trace exponent0<s<D/2
+For every R and every scalar f,
+ E_R(f)<=4D mu||f||^2: expand each internal edge difference, bound its
+square by2 times the endpoint squares, and count at most2D incidences.
+Deleting edges cannot increase this bound. Thus every positive eigenvalue
+is at most4D mu, and
+                 T_s(R)>=(m-1)/(4D mu)^s.
+Condition(A) consequently forces m<=1+(4D mu/c)^s. Any partition into q
+accepted rectangles, regardless of how adaptive or anisotropic, must satisfy
+
+                  q>=n^D/[1+(4D mu/c)^s].                          (B)
+
+For the actual family mu=gamma n^2, this is Omega(n^(D-2s)). In particular
+the total-effective-resistance rule s=1 needs Omega(n^(D-2)) rectangles
+even though one actual global mean works. This rules out that entire
+stopping certificate, not just a particular bisection algorithm.
+
+4. The critical strong trace s=p=D/2 STILL necessarily loses log n
+The previous norm bound is insufficient at the endpoint; here is a full
+rectangle-shape-uniform proof of the logarithmic obstruction.
+Write L_R=mu L_R^0 and A_D=(2*pi*e)^(-D). On a coordinate interval of
+length l, path eigenvalues are4sin^2(pi*j/(2l)),0<=j<l; a full cycle
+has4sin^2(pi*j/l). These formulas follow by substituting the discrete
+cosine/Fourier modes, respectively. The singleton has its one zero mode.
+In BOTH cases lambda_j<=4pi^2 j^2/l^2 in this enumeration. For t>=1,
+there are at least l/(2pi sqrt(t)) indices j with lambda_j*t<=1:
+take0<=j<=floor(l/(2pi sqrt(t))); the upper index is always<l.
+Thus each one-dimensional heat trace is at least l/(2pi e sqrt(t)).
+The Cartesian product spectrum gives
+          Tr exp(-t L_R^0)>=A_D*m*t^(-D/2) (t>=1).
+Subtract the single constant mode. If
+                1<=t<=T=(A_D*m/2)^(2/D),
+then A_D*m*t^(-D/2)>=2 and hence
+          Tr exp(-t L_R^0)-1 >=(A_D/2)*m*t^(-p).
+For m>2/A_D, integrate the finite spectral identity
+ lambda^(-p)=Gamma(p)^(-1)int_0^infinity t^(p-1)e^(-lambda*t)dt
+over1<=t<=T. It yields the explicit bound
+
+ T_p(R)>=[A_D/(D Gamma(p))]*(m/mu^p)*log(A_D*m/2).                  (C)
+
+This bound includes highly anisotropic rectangles and full periodic axes;
+it makes no bounded-aspect-ratio or supplied-cube assumption.
+
+Now let V=n^D, mu=gamma n^2, and choose a largest terminal rectangle,
+m>=V/q. Put beta=A_D/(D Gamma(p)) and kappa=beta*(c/gamma)^p/4>0.
+For V>=(2/A_D)^4 and q<=sqrt(V), we have m>=sqrt(V), and
+ log(A_D*m/2)>=one-quarter*log V. From(A),(C),mu^p=gamma^p V,
+ 1>=c^p T_p(R)>=beta*(c/gamma)^p*log V/(4q),
+so q>=kappa log V. If q>sqrt(V), the same conclusion holds for all
+sufficiently large V, since sqrt(V)>=kappa log V eventually. Consequently
+ EVERY partition certified by the CRITICAL strong trace rule needs
+
+                              q=Omega(log n).                    (D)
+
+The original question nonetheless has the one-rectangle solution in2.
+This is a method obstruction, not a false coefficient family or a physical
+mass-gap inference. The rule may be correct and useful while too wasteful.
+
+5. The endpoint loss is SHARP for this uniform family: q=Theta(log n)
+For an ordinary nonperiodic rectangle with each side l_i<=ell, its
+positive Neumann eigenvalues satisfy
+ lambda_j>=4mu*|j|^2/ell^2, j_i in{0,...,l_i-1},j!=0,
+by sin x>=2x/pi on[0,pi/2]. Group indices by
+2^k<=max_i j_i<2^(k+1). There are at most2^(D(k+1)) per group, and
+each inverse p-power is at most ell^D/(mu^p*2^D*2^(Dk)). Thus
+            T_p(R)<=ell^D/mu^p*(1+log_2 ell)                       (E)
+for ell>=2. The singleton case is zero. Short final grid intervals do
+not worsen(E): their frequency set is a subset and their eigenvalues
+are no smaller in this estimate. No periodic wrap edges are needed.
+
+Let B_n=[mu^p/(c^p*(1+log_2 n))]^(1/D). For all sufficiently large n,
+2<=B_n<n. Choose ell=floor(B_n), and partition every axis into consecutive
+intervals of lengths at most ell. Each cell has c^p T_p<=1 by(E).
+The number of cells obeys
+ q=ceil(n/ell)^D <=(4n/B_n)^D
+   =4^D*(c/gamma)^p*(1+log_2 n).
+Together with(D) this proves the sharp certificate-complexity statement:
+
+ for a=gamma n^2, the minimum number of rectangles satisfying(A) at
+ s=D/2 is Theta(log n), whereas an actual coercive mean partition has
+ ONE cell. Constants depend only on fixed D and c, not n or a geometry
+certificate. The theorem concerns the stated spectral-trace stopping rule.
+
+6. Exact finite illustration:32 certificate cells versus ONE actual cell
+Take D=4,n=4,c=16,mu=16,so p=2 and gamma=1. An interval of length3
+has Neumann eigenvalues mu*(0,1,3). Its positive inverse-square sum after
+multiplying by c^2 is1+1/9=10/9>1. Every rectangle having such an axis
+already fails(A): tensor the remaining constant modes to retain these two
+positive eigenvalues, with additional modes contributing nonnegatively.
+
+The only other possible side lengths are1,2,4. A length2 proper interval
+has spectrum mu*(0,2). A full length4 periodic axis has mu*(0,2,2,4).
+In units2mu their multiplicity polynomials are1+z and(1+z)^2. If a axes
+have length4 and b have length2, the product has K=2a+b, volume2^K,
+and eigenvalues2mu*j with multiplicity binomial(K,j). Thus
+ c^2 T_2=(1/4)sum_(j=1)^K binomial(K,j)/j^2.
+This is strictly increasing in K (binomial multiplicities increase and
+additional terms are positive). At K=3 its value is139/144<1; at K=4
+it is865/576>1. Hence every accepted rectangle has volume at most8,
+so every accepted partition of the256 vertices has at least32 cells.
+The grid of shapes4x2x1x1 has exactly32 cells of volume8 and accepts(A),
+which proves the exact minimum32 for this certificate, not just a lower
+bound or a numerical search over a few partitions. Periodic full axes
+are treated with all actual internal edges; dropping wrap edges cannot
+decrease the inverse trace and therefore cannot improve this optimum.
+
+The actual full torus gap is32>=16. Its ONE normalized global mean cell
+already gives the required c16 inequality, including on physical cochains.
+Thus the finite critical certificate loss is32 versus1 while the normalized
+coefficient moment is exactly1. This number is derived analytically from
+the complete possible side-length/spectral dictionary, not represented as
+a newly executed computation. It is suitable for a later exact replay.
+
+7. Normalizing the trace by volume is not a valid shortcut
+Take the actual two-vertex interval embedded in a torus with n>=3 and
+all other rectangle sides1. Its internal matrix is mu[[1,-1],[-1,1]].
+For u=(1,-1), variance=2, energy=4mu and Tr L^dagger=1/(2mu).
+The valid pair-trace bound gives2<=2, but dividing that trace by m=2
+would claim2<=1. Thus the lost factor cannot be removed by changing
+ordinary trace to normalized trace while retaining the same inequality.
+
+8. Primary input, novelty, verification status and next mechanism
+Primary source read7November2026: A. Ghosh,S. Boyd,A. Saberi,
+Minimizing Effective Resistance of a Graph,SIAM Review50(1),37-66(2008),
+Section2.4 formula(8),Section2.5 formulas(13),(15),journal pp42-43.
+Author-hosted full text: https://web.stanford.edu/~boyd/papers/pdf/eff_res.pdf
+The pseudoinverse/total-resistance/spectral identities are classical and
+credited; the stated stopping-rule loss is derived here directly. The
+heat integral and borderline spectral-trace logarithm are classical
+mechanisms. No independent original-priority claim is established.
+
+This unit is an analytical proof, with explicit constants and constructed
+partitions. No new Colab/numerical/Lean execution occurred. Neither finite
+sampling nor a local Windows oracle is being represented as verification.
+The exact actual-diagram/finite replay can be checked in a new own Colab
+unit, including mutations removing the constant mode or normalizing trace.
+Same continuing Codex preparing session; exact backend model identity is
+unavailable. No independent review, external score, new PDF/deposit or
+acceptance. Integrated PDF171 and historical assessments remain immutable.
+
+Closed bounded test: can total resistance or critical STRONG inverse-trace
+stopping rules attain the desired rank order? NO, even uniform admissible
+profiles force respectively polynomial or sharp logarithmic certificate
+loss, despite an actual one-cell solution. This is a useful scoped falsifier,
+not failure to construct some other valid rectangular observation.
+Abandon this unmodified certificate now rather than spend3 more units.
+Candidate capacity/anisotropic routes that do not dominate these strong
+traces remain possible; operator norms or weak spectral counts must not
+be silently replaced by a full positive-mode trace. The sole original
+critical rectangular question remains OPEN, common-refinement STOPPED3,
+PR29=20/41,TermSource0. Next audit genuinely localized capacity/spectral-gap
+criteria rather than recycle the defeated full inverse-trace certificate.
