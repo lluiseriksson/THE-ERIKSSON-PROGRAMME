@@ -1,0 +1,52 @@
+{
+ "unit":192,
+ "date":"2026-11-08",
+ "assessment_type":"involved_source_correctness_audit",
+ "source_path":"C:\\Trabajo\\the-eriksson-programme\\coexact-family-20261031\\papers\\flat-coarse-rank\\research\\2026-11-08_neumann-extension192.txt",
+ "source_sha256":"a088b7bb394964ca81f7822c7b579a6a07ec5101f7e5bdc160da06545895b940",
+ "complete_source_read":true,
+ "verdict":"supported_at_fixed_M_equals_2_not_uniform_M_less_than_2",
+ "blocking_errors_in_stated_source_found":[],
+ "checks":{
+   "coefficient_admissibility":"supported",
+   "actual_moment_strictly_less_than_2_each_n":"supported",
+   "fixed_uniform_M0_less_than_2":"not_satisfied_actual_moment_tends_to_2",
+   "local_two_point_gap_equals_2":"supported",
+   "every_exact_extension_energy_at_least_4H_over_3":"supported",
+   "directed_start_multiplicities_n_ge_3":"supported",
+   "global_mean_zero_gap_at_least_4":"supported",
+   "nonlinear_extension_rules_also_excluded":"supported"
+ },
+ "findings":[
+  {"id":"O1","severity":"material_scope_correction","location":"task wording versus source sections1and3","finding":"The frozen source uses fixed M=2 correctly. Although M_actual<2 at each n, M_actual tends to2, so no fixed M0<2 bounds the full family. Do not propagate the stronger description."},
+  {"id":"L1","severity":"scope_limit","finding":"Retain positive-start weights, n>=3, counting norms and internal-energy-only convention."},
+  {"id":"L2","severity":"scope_limit","finding":"Scalar exact-trace obstruction on one cell; no coexact rank obstruction or refutation of the main rectangular partition question."},
+  {"id":"L3","severity":"scope_limit","finding":"Global gap is a finite unit-spacing lower bound. Vector mean observations require one coordinate per component; no physical continuum conclusion."},
+  {"id":"L4","severity":"verification_limit","finding":"No scientific execution, formal verification, independent review or exhaustive priority search."}
+ ],
+ "primary_source_check":{
+   "doi":"10.4153/CJM-2006-021-0",
+   "scope":"Publisher introduction and Theorem1.4; weight-dependent constants confirmed",
+   "exhaustive":false
+ },
+ "review_context":{
+   "configured_model_from_orchestration":"gpt-6-astra",
+   "provider_context":"OpenAI Codex",
+   "served_backend_attestation":null,
+   "reasoning_setting_attestation":null,
+   "historically_involved_reviewer":true,
+   "shared_history_account_provider_workspace":true,
+   "blind":false,
+   "organizationally_independent":false,
+   "prior_score_consulted_or_transferred":false,
+   "other_reviewers_contacted":false
+ },
+ "scientific_execution_performed":false,
+ "source_modified":false,
+ "pdf_assessed":false,
+ "scores_or_stars_assigned":false,
+ "human_peer_review":false,
+ "publication_authorization":false,
+ "native_import_validity":false,
+ "full_report":"source-audit192.txt"
+}

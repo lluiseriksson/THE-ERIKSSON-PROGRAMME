@@ -1,0 +1,31 @@
+AUTHOR RESPONSE192 — exact source unchanged
+Source SHA256 a088b7bb394964ca81f7822c7b579a6a07ec5101f7e5bdc160da06545895b940.
+Source commit 99c4f0c6; final evidence commit will preserve this parent.
+Full involved gpt-6-astra source audit is retained without editing or
+normalizing its bytes. This is source reasoning, not a PDF assessment.
+
+O1 accepted. The admissibility bound is fixed M=2. Although M_actual<2
+for each n, it approaches2; no fixed uniform M0<2 is established. The
+original assignment's stronger wording must not propagate to summaries.
+The frozen proof already states fixed M=2 and does not need replacement.
+
+L1 accepted. Positive-start weights, n>=3, counting norms and exclusion
+of cut edges from internal Neumann energy are essential definitions.
+L2 accepted. Only the scalar exact-trace internal-energy-only extension
+lemma is refuted. No general partition/counting/coexact obstruction follows.
+L3 accepted. The finite global gap is bounded below by4, not asserted sharp.
+One global cell carries a separate normalized mean for each vector component:
+with Qv=sqrt(N) mean(v), 3||v||^2<=E_a(v)+3||Qv||^2. It is not one scalar
+measurement for all components. No physical continuum conclusion follows.
+L4 accepted. No scientific execution, formal verification, organizationally
+independent review, exhaustive literature search or priority is established.
+
+Optional strengthening observed by the reviewer: the direct weak edge
+also contributes4, so E_a(v)>=4+4H/3. The weaker frozen bound suffices and
+is retained to avoid unnecessary new versions or repeated evaluations.
+
+Next mechanism must pay a derived boundary/capacity cost, including the
+strong bypass in this example. No new PDF or stars/deposit is produced by
+this source note. Consolidated191 remains the publication candidate after
+the already pending recovery of the own Colab189 runtime. Existing native
+AIRR catalogue/server blockage is unchanged; no repeated consent is sought.
