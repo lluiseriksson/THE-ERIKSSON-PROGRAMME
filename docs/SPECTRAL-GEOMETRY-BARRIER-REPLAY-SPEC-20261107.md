@@ -40,6 +40,11 @@ elimination with proper zero-pivot compatibility, not rounded eigenvalues.
 The finite cases
 illustrate, but do not prove, the all-n rectangular theorem.
 
+Also compare the half-slab sign vector with the checkerboard sign vector.
+Construct a bijection matching their two sign classes, verify exact
+permutation conjugacy of L, and verify t=1 and K=c-a for the two-slab
+rectangular partition. This illustrates the coordinate-geometry gap.
+
 Required rejecting mutations: wrong sign for V; omit E; incorrectly
 normalize P by |R|^2; omit a covering cell; duplicate/overlap a cell;
 declare a zero u a nonzero witness; change the predicted threshold to

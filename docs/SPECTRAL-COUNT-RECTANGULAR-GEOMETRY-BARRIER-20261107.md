@@ -63,6 +63,18 @@ For a=c/2 and b=2c, the two weights are c/(2N) and 7c/(2N):
 the graph is connected and their ratio is only7. This does not make it
 spatially local; long edges are essential to this example.
 
+Even the full graph up to isomorphism does not determine its rectangular
+observation cost in a supplied coordinate embedding. Replace sigma by
+tau, equal to+1 on the half-slab 0<=x_1<n/2 and-1 on the other half.
+Both sign classes have N/2 points, so a vertex permutation taking their
+classes to the checkerboard classes conjugates the two Laplacians.
+They have the same spectrum, edge weights and unlabelled weighted graph.
+For the slab labelling, the two half-slabs form an allowed rectangular
+partition with t=1 and K=c-a; its mean-zero observation rank is one.
+The checkerboard labelling needs q>N/3 cells by the argument below.
+The missing information is coordinate geometry, rather than another
+unlabelled spectral invariant.
+
 ## Exact kernel angle calculation
 
 Let a partition P consist of q nonempty disjoint cells covering X, and
