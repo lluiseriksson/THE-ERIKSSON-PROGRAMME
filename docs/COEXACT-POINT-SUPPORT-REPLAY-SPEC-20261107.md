@@ -9,7 +9,7 @@ at the end. Terminal replay requires two fresh clones at the same recipe SHA.
 Use Fraction arithmetic and the exact rational triangular profile. Test D=3,
 even n=4,8,16. Set c=384,mu=n^2, matching the analytical family. Predeclare:
 empty S; one point at0; points at0 and(n-1,0,0); an adjacent three-point
-chain; and, for n>=8, separated points at0 and(n/2,n/2,n/2). Include S=X
+chain; and, for n>=8, a diagonal pair at0 and(n/2,n/2,n/2): connected at n=8 (distance4), separated at n=16 (distance8). Include S=X
 only for n=4 as a zero-witness boundary case. An optional n=64 singleton
 at(n/4,0,0) checks subtraction of the potentially large primitive value.
 
