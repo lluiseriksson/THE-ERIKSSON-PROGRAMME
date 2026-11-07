@@ -9,7 +9,7 @@ where CPu=(sqrt(|R|)mean_Ru)_R, and
  C_D=4 A_D D^(2/D),
  F_{D,k}=2^D 3^d/[1-(2/3)^d].
 Here A_D is the explicit finite unweighted rectangle Sobolev constant from the complete proof in revision187/sobolev.tex:
- q=2D/(D+2), beta=2(D-1)/D, K_D=2D beta sqrt(2D),
+ q=2D/(D+2), qprime=2D/(D-2), beta=2(D-1)/D, c_D=D(1-2^(-1/D)), K_D=2 beta D^(1/qprime)/c_D,
  A_D=K_D² 2^D 3^(2D/q+2).
 The claim holds for every real/complex scalar field and coordinatewise for any fixed h-component field, hence also on every actual coexact subspace. Output dimension is h#P over the selected scalar field; double complex dimension for a real count. K=c is explicit; no prescribed abstract gap/partition hypothesis is carried.
 Under mu=mean(a)>=1 and mean((mu/a)^p)<=M it follows that
