@@ -1,0 +1,47 @@
+Detour exclusion radius and a coexact parity obstruction — research note190
+Author: Lluis Eriksson / THE ERIKSSON PROGRAMME
+Status: analytical candidate; not source-audited, Lean-verified or computationally replayed. No PDF, stars, deposit or publication. Group with the existing dossier, not a separate corollary paper.
+Parent: 5d10d10bdb9a95628782b249cb8b1af946d9692b, integrated-revision/revision189/spatial-geometry.tex, G4–G5. This note leaves the frozen189 dossier unchanged. Colab189B execution/export/release remains unconfirmed; no new allocation or Windows science.
+
+1. Exact set-up and bounded research test
+X=(Z/nZ)^D, D>=2, n>=3. Count each positive-start periodic edge(x,i) once. E0(u)=sum_(x,i)|u(x+e_i)-u(x)|^2. Ew and Es restrict starts to W and its complement. A coefficient a satisfies a>=H>0 outsideW and a>=0 inW; Ea is the actual start-weighted energy.
+Periodic maximum-coordinate distance is max_j min(|x_j-y_j|,n-|x_j-y_j|). Distance2-separatedW means distinct weakvertices have distance>=2. This is stronger than absence of nearest-neighbour weakpairs.
+Targeted subtest of the one existing fullyvariable critical-rectangle question: weaken the established detour radius3 to2 with its constant retained inD>=3, and test whether nearest-neighbour independence alone suffices. Mechanism: inverse edge-use enumeration and a coefficient-derived coexact witness. Falsifiers: allowed repeated strongedge use inD>=3, a weak bypass start, or a failed coexact/zero-energy identity. Abandon the subtest if exhibited; no second main question.
+
+2. Positive theorem: distance2 suffices
+For D>=3,n>=3, distance2-separatedW implies Ew<=3Es, E0<=4Es and Ea>=HE0/4. For D=2 this construction gives Ew<=6Es, E0<=7Es and Ea>=HE0/7; no sharpness of6or7 claimed. Valid for real/complex and finite Hilbert-valued fields, componentwise for the actual one-cochain gradient form and its coexact restriction.
+Proof. Let sigma cyclically permute allD directions. Replace a weak-start edge x->x+e_i by
+ x -> x-e_sigma(i) -> x+e_i-e_sigma(i) -> x+e_i.
+Its positive starts are x-e_sigma(i) in directions sigma(i) andi, and x+e_i-e_sigma(i) in direction sigma(i). All are at nonzero periodic distance1 from weakx and so are strong. The first edge is traversed backwards; its coefficient is at x-e_sigma(i). Individual path edges are distinct for n>=3.
+For a fixed positive edge(y,k), possible weaksource/path types are
+ A=y+e_k, with i=sigma^-1(k);
+ B=y+e_sigma(k), with i=k;
+ C=y-e_sigma^-1(k)+e_k, with i=sigma^-1(k).
+Each type has at mostone actual path. A-B and A-C are nonzero differences with entries in{-1,0,1}. InD>=3 the three directions k,sigma(k),sigma^-1(k) are distinct, so B-C=e_sigma(k)+e_sigma^-1(k)-e_k also has this property. All three pairwise periodic distances are1, including n=3wraps. Thus at mostone source is weak and every strongedge is used at mostonce. Three-step Cauchy–Schwarz and summation give Ew<=3Es.
+InD=2, A is incompatible with B andC, while B-C=2e_sigma(k)-e_k can have periodic distance2. At mostB andC coexist, so edge use is at mosttwo and Ew<=6Es. Add Es and use Ea>=HEs. This proves a coefficient-derived comparison, not a supplied comparison structure.
+The unit-spacing torus Fouriergap gives E0>=4sin^2(pi/n)||u-mean(u)||^2>=16/n^2||u-mean(u)||^2. InD>=3, if4H/n^2>=c, one actual normalized global mean gives c||u||^2<=Ea(u)+c|X||mean(u)||^2. InD=2 the sufficient condition is16H/(7n^2)>=c. These are finite flat statements, not an interacting/continuum mass gap.
+
+3. Negative theorem: nearest-neighbour independence fails, including on actual coexact forms
+Take evenn=2m>=4,D>=2. Let s(x)=sum_jx_j modn in{0,...,n-1}, W={s even}. Every nearest-neighbour step flipsparity, so W has no nearest-neighbour pair. Set a=epsilon>0 onW and a=H>0 elsewhere. Only the limiting strong-graph statement allows epsilon=0.
+For real z=(z_0,...,z_(m-1)) with sum_rz_r=0, define j(s)=ceil(s/2) modm and f_z(x)=z_(j(s(x))). Thus evenlayer2r and oddlayer2r-1 have valuez_r, including wrap0,n-1. Each residue layer has n^(D-1) vertices. Strong positive starts advance2r-1 to2r, giving Es(f_z)=0. Weak positive starts advance2r to2r+1, giving
+ Ew(f_z)=D n^(D-1) sum_r|z_(r+1)-z_r|^2,
+ ||f_z||^2=2 n^(D-1) sum_r|z_r|^2,
+ mean_Xf_z=0,
+ Ea(f_z)/||f_z||^2=(D epsilon/2) sum_r|z_(r+1)-z_r|^2 / sum_r|z_r|^2 <=2D epsilon.
+Indicesr are cyclic. For m=2 the quotient retains TWO positive starts, not a single undirected edge. Nonzero meanzeroz has Ew>0. Hence E0<=C Es fails for every finiteC, and Ea>=kappa H E0 cannot hold uniformly inH/epsilon for fixedpositivekappa, under nearest-neighbour independence alone.
+An actual coexact preimage: sum_s f_z(s)=2sum_rz_r=0. Put psi(0)=0 and psi(s)=sum_(t=1)^s f_z(t) for1<=s<n. The cyclic backward difference psi(s)-psi(s-1)=f_z(s), including s=0. Set antisymmetric potential B_12(x)=psi(s(x)), othercomponentszero. In the repository convention its codifferential image is
+ A_1(x)=B_12(x)-B_12(x-e_2)=f_z(x),
+ A_2(x)=-B_12(x)+B_12(x-e_1)=-f_z(x),
+ A_i=0 fori>=3.
+Thus deltaA=0 andA is meanzero; coexactness is exhibited rather than assumed. NormA^2=2||f_z||^2 and its actual weighted componentgradient energy is2Ea(f_z). The same quotient bound and comparisonfailure hold on an injected real coexact subspace of dimensionm-1. This is not a statement that every weighted physical Hodge form has this energy.
+For the nonzero meanzero cosine z_r=cos(2pi r/m), valid also form=2, the quotient is exactly2D epsilon sin^2(pi/m)=2D epsilon sin^2(2pi/n). Every vector of this(m-1)-dimensional subspace has quotient<=2D epsilon. Therefore for targetc>2D epsilon, arbitrary linear observationC and arbitrary linear repairR with dim(rangeC)+rankR<m-1 cannot satisfy c||A||^2<=Ea(A)+Phi(CA)+<A,RA> on the coexactspace whenPhi(0)=0: rank-nullity for(C,R) supplies a nonzeroA with bothtermszero. No repair self-adjointness or penalty linearity is required. This rank-nullity step is classical and already used by the parent dossier.
+
+4. Critical moment, attribution and limits
+This does NOT refute the critical inverse-moment sufficiency question. Here mu=(H+epsilon)/2 and
+ mean((mu/a)^(D/2))=0.5(mu/epsilon)^(D/2)+0.5(mu/H)^(D/2),
+unbounded for fixedepsilon andH->infinity. Epsilon=1,H>=1 gives1<=a<=2mu, but no fixedM. No unrestricted rectangular impossibility, minimumrank sharpness or physical closure follows.
+The positive theorem removes the unnecessary radius3 hypothesis from this specificD>=3 detour theorem by proving the weaker radius2 coefficient condition; it does not remove separation entirely. The negative theorem refutes the proposed nearest-neighbour-independence-only comparison route by an exact coexact witness. These are scoped finite improvements, not a main endpoint solution. Novelty/priority is NOT established.
+Classical path/congestion comparison: Diaconis–Saloff-Coste, Comparison Theorems for Reversible Markov Chains, Ann.Appl.Probab.3(3)(1993),696–730, Section2B/Theorem2.1/Example2.1, https://pi.math.cornell.edu/~lsc/papers/comp-rev.pdf . Primary text checked190. No new comparison principle or exhaustive literature/repository audit is claimed.
+
+5. Verification and next action
+Analytical derivation whileColab is unavailable. No finite replay, Lean/Lake build, scientificWindows computation, numericmodelscore, independentreview or exactPDF assessment implied. Existing189fullmanuscript is unchanged and its star gate not bypassed. Obtain one involved-source audit of this exacttext and retain all objections. Queue explicit edge-use/coexact identities and normal/-O mutation fixtures for an ownLinux session only after reconciling189B. Group validated corrections with the existing dossier; no standalone paper. Main question remains unrestricted fullyvariablek=D criticalrectangles.
