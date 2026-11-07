@@ -1,0 +1,181 @@
+\section{Critical constants for rectangular mean observations}
+For a disjoint partition $\mathcal P$ of a finite counting space, its
+normalized means are $(Cf)_R=|R|^{-1/2}\sum_{x\in R}f(x)$. They satisfy
+$CC^*=\id$ and $C^*C=P$, the orthogonal projection onto functions constant
+on each cell. This concrete normalization matters for the penalty.
+
+\begin{theorem}\label{thm:critical}
+Let $L=L^*$ on a finite real Hilbert space, $c>0$, and $C$ a coisometry
+onto $\R^q$, $q\geq1$. On $\mathcal K=\ker C$ and
+$\mathcal O=\im C^*$, write
+\[
+ L-c\id=\begin{pmatrix}A_0&X\\X^*&B_0\end{pmatrix}.
+\]
+A finite $k\geq0$ satisfying $L+kC^*C\geq c\id$ exists if and only if
+\begin{equation}\label{eq:compatibility}
+ A_0\geq0,\qquad X^*(\ker A_0)=0.
+\end{equation}
+When these hold, its smallest value is
+\[
+ k_{\min}=\max\{0,\lambda_{\max}(X^*A_0^\dagger X-B_0)\}.
+\]
+Here $A_0^\dagger$ is the Moore--Penrose inverse on $\mathcal K$.
+\end{theorem}
+\begin{proof}
+The restriction to $\mathcal K$ forces $A_0\geq0$. For $z\in\ker A_0$
+the augmented form at $tz+y$ has linear term $2t\langle z,Xy\rangle$
+and no quadratic term in $t$. Nonnegativity for every real $t$ forces
+$X^*z=0$. This is equivalent to $\im X\subseteq\im A_0$. Under that
+condition the full form at $z+y$ is exactly
+\[
+ \langle z+A_0^\dagger Xy,A_0(z+A_0^\dagger Xy)\rangle
+ +\langle y,(B_0+k\id-X^*A_0^\dagger X)y\rangle.
+\]
+Finite spectral decomposition proves the criterion and the minimum.
+\end{proof}
+This is the classical generalized Schur criterion~\cite[Theorem 1]{Higham},
+applied to actual means; it is not a new general matrix theorem. Strict
+positivity of $A_0$ suffices, whereas a weak bound at the target requires
+the extra compatibility in~\eqref{eq:compatibility}.
+
+\begin{example}\label{ex:rectangle}
+On $(\mathbb Z/2\mathbb Z)^3$ take the same scalar coefficient in every
+gradient direction,
+\[
+ a(x)=6+(-1)^{x_1}+4(-1)^{x_2},\qquad L=d^*ad.
+\]
+Its values are $1,3,9,11$, each twice, and its mean is $m=6$; hence
+$1\leq a\leq2m$. Choose the four actual rectangles
+$R_{yz}=\{0,1\}\times\{y\}\times\{z\}$ and
+$(Cf)_{yz}=(f(0,y,z)+f(1,y,z))/\sqrt2$.
+The best coercivity constant of $L$ on $\ker C$ is $16$, but no finite
+quadratic penalty for these means attains the same constant on the full
+space. Every $0<c<16$ is attainable. Thus the supremum $16$ is not attained.
+\end{example}
+\begin{proof}
+For $S\subseteq\{1,2,3\}$ let
+$\chi_S(x)=(-1)^{\sum_{i\in S}x_i}/\sqrt8$. These are an orthonormal real
+Walsh basis. Retain all $24$ oriented forward rows, including opposite rows
+at period two. The actual adjoint calculation gives
+\begin{align*}
+ L\chi_S={}&24|S|\chi_S
+ +4\bigl(|S|-\boldsymbol1_{1\in S}\bigr)\chi_{S\triangle\{1\}}\\
+ &+16\bigl(|S|-\boldsymbol1_{2\in S}\bigr)\chi_{S\triangle\{2\}}.
+\end{align*}
+Indeed $d_i\chi_S=-2\chi_S$ when $i\in S$, and the corresponding
+adjoint term is $2(a+T_i a)\chi_S$; absent directions contribute zero.
+In the kernel basis $(\chi_1,\chi_{12},\chi_{13},\chi_{123})$ the compression
+has the two blocks
+\[
+ \begin{pmatrix}24&16\\16&48\end{pmatrix},\qquad
+ \begin{pmatrix}48&32\\32&72\end{pmatrix}.
+\]
+After subtracting $16\id$, the first is positive semidefinite with kernel
+vector $(-2,1)$, and the second is positive definite, with first pivot $32$
+and determinant $768$. This proves the complete kernel bound, not just a
+bound on selected test vectors.
+
+Set $v=-2\chi_1+\chi_{12}$ and $u=\chi_2$. Direct evaluation gives
+\[
+ Cv=0,\quad\|v\|^2=5,\quad\|Cu\|^2=\|u\|^2=1,
+ \quad(L-16\id)v=4u,\quad\langle u,(L-16\id)u\rangle=8.
+\]
+The augmented form on $u+tv$ is therefore $8+8t+k$, negative for
+$t<-(8+k)/8$. No finite $k$ works. For $c<16$ the compressed block is
+strictly positive and Theorem~\ref{thm:critical} supplies a finite penalty;
+for $c>16$, $v$ violates coercivity already in the kernel.
+\end{proof}
+
+\paragraph{A quantitative penalty obstruction.}
+Write $\delta=16-c>0$. On the orthonormal pair $(v/\sqrt5,u)$ the
+augmented form has matrix
+\[
+ \begin{pmatrix}\delta&4/\sqrt5\\4/\sqrt5&8+\delta+k\end{pmatrix}.
+\]
+Its determinant gives the necessary bound
+\begin{equation}\label{eq:blowup}
+ k\geq\max\{0,16/(5\delta)-8-\delta\}.
+\end{equation}
+This lower bound need not equal the full optimum. It proves divergence
+as the target approaches $16$ from below without numerical extrapolation.
+If $F(0)=0$, $DF(0)=C$ and $0\leq\Phi(y)\leq k\|y\|^2$ near zero,
+local coercivity would imply $L+kC^*C\geq c\id$ by substituting $sf$,
+dividing by $s^2$ and taking $s\to0$. Higher order terms with this same
+derivative do not repair the failure at $c=16$.
+
+\section{Transfer to actual flat coexact cochains}
+The preceding obstruction also holds on the actual finite coexact domain,
+with a proved form dictionary. Fix $N_c\geq2$ and an actual coordinate unit
+$e\in\R^{N_c^2-1}$. At the trivial background, a physical one-cochain is
+$A_j(x)\in\R^{N_c^2-1}$, $j=1,2,3$, with counting inner product. Use one
+unordered plaquette copy for each $i<j$:
+\[
+ (d_1 A)_{ij}=d_iA_j-d_jA_i,\qquad
+ \operatorname{div}A=\sum_j(A_j-T_j^{-1}A_j).
+\]
+Expansion of curl squares and cyclic summation by parts cancel the cross
+terms against divergence, proving the all-cochain identity
+\[
+ \|d_1A\|^2+\|\operatorname{div}A\|^2=\sum_{i,j,x}\|d_iA_j(x)\|^2.
+\]
+These are the actual repository conventions, not a supplied comparison.
+Take the actual componentwise repair coefficient $w(i,(x,j))=a(x)-1\geq0$.
+The total Hodge-plus-repair form is consequently
+\begin{equation}\label{eq:physical-dictionary}
+ Q_w(A)=\|d_1A\|^2+\|\operatorname{div}A\|^2+
+ \sum_{i,j,x}w(x)\|d_iA_j(x)\|^2
+ =\sum_{i,j,x}a(x)\|d_iA_j(x)\|^2.
+\end{equation}
+It is a direct sum of $3(N_c^2-1)$ scalar copies. Componentwise normalized
+means on the same four bars have output dimension $12(N_c^2-1)$, and
+the whole ambient kernel has coercivity constant $16$ by the two blocks
+in Example~\ref{ex:rectangle}. Restriction to coexact fields preserves the
+inequality; coisometry on the restricted domain is not assumed.
+
+\begin{proposition}\label{prop:coexact}
+At target $16$, no finite quadratic penalty for these actual componentwise
+rectangle means supplies coercivity even on $\im d_1^*$. The same is true
+for local nonlinear observations with derivative equal to those restricted
+means and a locally quadratic penalty. On that domain every $0<c<16$ is
+attainable, and the necessary bound~\eqref{eq:blowup} still applies.
+\end{proposition}
+\begin{proof}
+Construct actual fields $U_3=ue$, $V_3=ve$ from Example~\ref{ex:rectangle},
+with all other components zero. They are isometric copies of $u,v$ and
+independent of $x_3$, so their actual backward divergence vanishes.
+More explicitly, use unordered two-cochains with only
+\[
+ B^U_{23}=-\tfrac12\chi_2 e,\qquad
+ B^V_{13}=(\chi_1-\tfrac12\chi_{12})e
+\]
+nonzero. At side two $d_i^*=T_i^{-1}-\id=T_i-\id$. The adjoint of the
+displayed curl puts $d_i^*B_{ij}$ in component $j$ and $-d_j^*B_{ij}$ in
+component $i$. Since $d_3^*B^U=d_3^*B^V=0$ and each relevant character
+has multiplier $-2$, these actual potentials satisfy $d_1^*B^U=U$ and
+$d_1^*B^V=V$. Thus the entire line $U+tV$ is coexact.
+
+Equation~\eqref{eq:physical-dictionary} and the actual means give the same
+augmented value $8+8t+k$. Scaling a violating coexact field towards zero
+also excludes locally bounded quadratic penalties and the stated nonlinear
+observations. Strict positivity on the ambient kernel supplies a finite
+penalty for every $c<16$, which can then be restricted. The coexact field
+$V$ excludes $c>16$. The same two-dimensional determinant proves the bound.
+\end{proof}
+
+\paragraph{Scope and source of the transfer.}
+The actual form identity above agrees with
+\texttt{componentwiseFlatGradient\_eq\_hodge} and
+\texttt{actualTotalStiffness\_energy} in the pinned repository, respectively
+in \path{YangMills/RG/ComponentwiseFlatHodge.lean} and
+\path{YangMills/RG/ActualPacketSupportEnvelope.lean}. Their proofs and the
+actual curl/divergence definitions were read; no new Lean compilation is
+claimed. Unit 166 checks the newly constructed physical stencils rather
+than relabelling a scalar diagnostic. For derivatives $nd_i$ at $n=2$,
+energies and targets scale by four, so $16$ becomes $64$ with rescaled
+potentials. This is finite rescaling, not a physical mass-gap claim.
+
+The example has finite inverse moments at this one size. It refutes weak
+kernel sufficiency for these prescribed rectangles at the same target;
+it does not rule out another rectangular partition with the desired rank,
+or establish an unbounded-size violation of the critical rank-order
+conjecture. Only the trivial-background form has been identified here.

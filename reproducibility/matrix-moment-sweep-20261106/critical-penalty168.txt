@@ -1,0 +1,142 @@
+Base3f13471ee894138ed2eb15bc71dc2a50c6f9b275. Unit168,7November2026.
+Grouped supporting result for PR186 and appendix167; no new small paper/PDF.
+
+EXACT RECTANGULAR PENALTY AND THE COEXACT CRITICAL RESIDUE
+
+1. General finite residue lemma (classical Schur/resolvent mechanism)
+Let L=L* act on a finite real Hilbert space E, let C:E->R^q be a
+coisometry, and let K=ker C, O=ran C*. Suppose the smallest eigenvalue
+of the actual compression L_K is c*>0. Write
+ L-c*I=[[A0,X],[X*,B0]] on K direct-sum O,
+with A0>=0 and let P be the orthogonal projection onto ker A0.
+For delta>0 and c=c*-delta>0 the minimum nonnegative k in
+ L+kC*C >= cI
+is exactly
+ k(delta)=max{0,lambda_max(X*(A0+delta I)^-1 X-B0-delta I)}.
+Consequently
+ lim_(delta->0+) delta k(delta)=||PX||^2.
+If PX!=0, there is no finite penalty at c* and
+ k(delta)=||PX||^2/delta+O(1).
+If PX=0, penalties remain bounded and converge to the finite critical
+minimum max{0,lambda_max(X*A0^dagger X-B0)}.
+
+Proof. Complete the square on the strictly positive kernel block
+A0+delta I, as in165. Let A+ denote A0 restricted to (ker A0)^perp.
+Its smallest eigenvalue is positive unless that space is zero, in
+which case the following remainder is simply zero. Spectral splitting
+gives the EXACT identity
+ (A0+delta I)^-1=delta^-1 P+(A++delta I)^-1(I-P).
+The second term is uniformly bounded and converges to A0^dagger.
+Multiplication on both sides by X*,X leaves the leading positive matrix
+delta^-1 X*PX and a bounded self-adjoint remainder. The variational
+formula for lambda_max gives an error bounded by the norm of that
+remainder. Its leading largest eigenvalue is ||PX||^2. If PX=0 the
+whole matrix instead converges to X*A0^dagger X-B0. Continuity of the
+largest eigenvalue and max{0,.} proves all claims. The impossibility
+at c* with PX!=0 is the critical-kernel compatibility criterion165.
+This is a finite-dimensional application of classical tools, not a
+claim of a new general Schur theorem or independent original priority.
+
+2. Full exact answer for the ACTUAL positive rectangular example165
+Keep counting L2 on (Z/2Z)^3, all24 forward rows,
+ a=6+chi_sign1+4chi_sign2, L=d*ad,
+and C the four normalized x1-bar means. Here chi_S denotes the normalized
+Walsh character used in165, not the unnormalized coefficient sign.
+The critical target is16. Let delta=16-c,0<delta<16. Then the exact
+ambient scalar optimum is
+
+ k_min(c)=max{c, 16(8+delta)/(delta(40+delta))-8-delta}.
+
+Equivalently, the second entry is
+ 16/(5delta)+64/(5(40+delta))-8-delta.
+In particular k_min(c)=c whenever delta>=delta0, and equals the second
+entry whenever0<delta<=delta0, where
+ delta0=(sqrt(3529)-59)/3.
+At equality either expression gives the same optimum. As c approaches16,
+
+ k_min(c)=16/(5(16-c))-192/25+O(16-c).
+
+This sharpens165's necessary lower bound into the FULL ambient optimum,
+with its transition and exact leading residue. It does not change the
+unattainability at16 or the scope to the specified actual rectangles.
+
+3. Verification by complete block elimination, without numerical inference
+In K=(chi1,chi12) direct-sum (chi13,chi123), and
+O=(chi_empty,chi2) direct-sum (chi3,chi23), the actual L-16I has blocks
+
+ A1=[[8,16],[16,32]], A2=[[32,32],[32,56]],
+ B1=diag(-16,8),       B2=[[8,16],[16,32]],
+ X1=[[0,0],[0,4]],     X2=diag(4,8).
+
+All other cross-block entries vanish by the exact Walsh formula165.
+Thus this decomposition accounts for ALL eight dimensions. At c=16-delta
+each A and B block receives +delta I; X is unchanged. The generalized
+Schur criterion gives the maximum of0 and the largest eigenvalues of
+the two observed effective blocks.
+
+In the first block chi_empty is decoupled and contributes16-delta=c.
+The chi2 entry is
+ (0,4)(A1+delta I)^-1(0,4)^T-8-delta
+ =16(8+delta)/(delta(40+delta))-8-delta,
+since det(A1+delta I)=delta(40+delta).
+The spectral splitting of A1, with eigenvalues0,40, also yields the
+displayed partial fractions16/(5delta)+64/(5(40+delta)).
+
+The second observed effective block cannot dominate cI. Indeed
+A2-4I=[[28,32],[32,52]] has positive first pivot28 and determinant432,
+so A2>=4I. Hence for delta>0,
+ X2*(A2+delta I)^-1 X2 <= (1/4)diag(16,64) <=16I.
+Also B2>=0 (rank1 with eigenvalues0,40). Subtracting B2+delta I
+shows that this entire Schur block is <=(16-delta)I=cI.
+Thus no unexamined second-block eigenvalue can alter the optimum.
+Since c>0 the nonnegative cutoff0 is redundant. Conversely taking k
+equal to the displayed maximum makes BOTH full Schur blocks PSD,
+so the result supplies sufficiency as well as necessity.
+
+Comparing the two scalar entries reduces to
+ 3delta^2+118delta-16 >=0,
+with the unique positive root delta0 displayed above. Finally
+64/(5(40+delta)) ->8/25; subtracting8 gives -192/25.
+All divisions use positive delta and40+delta; boundary c=16 is excluded
+by the earlier explicit witness and c>16 already fails inside ker C.
+
+4. ACTUAL coexact consequence, with no false coisometry assumption
+Let k_coex(c) be the infimum over k>=0 supplying the corresponding
+inequality for Q_w and actual componentwise bar means RESTRICTED to
+range(d1*) in166, with Nc>=2 and w=a-1. Do not identify this restricted
+map with a coisometry. The earlier actual potentials give the isometric
+coexact pair U,V, and its2x2 determinant gives
+ k_coex(c)>=max{0,16/(5delta)-8-delta}.
+The actual ambient physical form is a direct sum of scalar copies, so
+the exact scalar optimum above suffices on the ambient physical space
+and therefore on its coexact subspace. Consequently
+ k_coex(c)<=k_min(c).
+Multiplying this two-sided bound by delta and letting delta->0+ proves
+
+ lim_(c->16-) (16-c) k_coex(c)=16/5.
+
+This proves the EXACT critical residue even on the actual coexact domain.
+It does not assert equality of the full ambient and restricted penalty
+functions or of their next constant terms. The analytic coordinate-unit
+embedding works for allNc>=2; no new Nc fixture has been executed.
+
+5. Relevance, falsifier and limits
+Closed supporting question: can the previously established lower blow-up
+be made sharp for this actual rectangular example, and does its leading
+coefficient survive actual coexact restriction? Yes: full ambient formula
+and a coexact squeeze prove both. This is not a new active research route;
+the single active positive critical rectangular rank-order question is
+unchanged. The scalar penalty is normalized with CC*=I on the ambient
+space. A different normalization or derivative spacing changes the formula.
+Falsifier: any incorrect full Walsh block, Schur elimination, or actual
+coexact witness identity. No extrapolated numerical fits are used.
+Abandon or correct the result if an exact full-matrix replay disagrees;
+do not reinterpret disagreement as a change in the original conjecture.
+
+No new local or remote computation was executed for this analytic unit.
+It relies on the explicit mathematical eight-character calculation and
+the prior165/166 finite executions, without treating those executions as
+certification of the newly derived optimum. An independent prepared audit
+and optional new exact replay remain pending. No Lean certificate, external
+assessment, original priority, newPDF, AIRR deposit or acceptance is claimed.
+Consolidate this into appendix167/parent revision, not a separate tiny paper.

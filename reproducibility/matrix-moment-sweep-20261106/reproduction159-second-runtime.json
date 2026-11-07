@@ -1,0 +1,238 @@
+{
+  "child_maxrss_kib": 106844,
+  "compute_units_billed": null,
+  "elapsed_seconds": 28.067405608,
+  "finished_utc": "2026-11-06T16:27:08.047022+00:00",
+  "fresh_runtime_independent_reproduction": false,
+  "gpu_environment": "",
+  "independent_review": false,
+  "new_Lean": false,
+  "normal_optimized_byte_identical": true,
+  "payload": {
+    "fixtures": [
+      {
+        "D": 4,
+        "Fourier_C_squared": "1/16",
+        "Fourier_weak": "1/4",
+        "SPD_counts": [
+          {
+            "bound": "10049/2048",
+            "c": "1/8",
+            "low_count": 1
+          },
+          {
+            "bound": "8129/128",
+            "c": "1/2",
+            "low_count": 1
+          },
+          {
+            "bound": "8009/8",
+            "c": "2",
+            "low_count": 1
+          }
+        ],
+        "field_dimension": 16,
+        "h": 1,
+        "mutations_rejected": [
+          "indefinite_SPD_input",
+          "altered_pseudoinverse_entry",
+          "false_inverse_comparison",
+          "dropped_volume_normalization",
+          "signed_defect_omitted"
+        ],
+        "n": 2,
+        "signed": [
+          {
+            "counts": [
+              {
+                "c": "1/8",
+                "low_count": 16
+              },
+              {
+                "c": "1/2",
+                "low_count": 16
+              },
+              {
+                "c": "2",
+                "low_count": 16
+              }
+            ],
+            "defect_rank": 15,
+            "mode": "zero",
+            "positive_inverse_square_sum": "0"
+          },
+          {
+            "counts": [
+              {
+                "c": "1/8",
+                "low_count": 16
+              },
+              {
+                "c": "1/2",
+                "low_count": 16
+              },
+              {
+                "c": "2",
+                "low_count": 16
+              }
+            ],
+            "defect_rank": 15,
+            "mode": "negative",
+            "positive_inverse_square_sum": "0"
+          },
+          {
+            "counts": [
+              {
+                "c": "1/8",
+                "low_count": 1
+              },
+              {
+                "c": "1/2",
+                "low_count": 1
+              },
+              {
+                "c": "2",
+                "low_count": 1
+              }
+            ],
+            "defect_rank": 1,
+            "mode": "one_bad_channel",
+            "positive_inverse_square_sum": "63/4"
+          }
+        ],
+        "trace_inverse_square": "889/18"
+      },
+      {
+        "D": 4,
+        "Fourier_C_squared": "1/16",
+        "Fourier_weak": "1/4",
+        "SPD_counts": [
+          {
+            "bound": "22465/2048",
+            "c": "1/8",
+            "low_count": 2
+          },
+          {
+            "bound": "18625/128",
+            "c": "1/2",
+            "low_count": 2
+          },
+          {
+            "bound": "18385/8",
+            "c": "2",
+            "low_count": 2
+          }
+        ],
+        "field_dimension": 32,
+        "h": 2,
+        "mutations_rejected": [
+          "indefinite_SPD_input",
+          "altered_pseudoinverse_entry",
+          "false_inverse_comparison",
+          "dropped_volume_normalization",
+          "signed_defect_omitted"
+        ],
+        "n": 2,
+        "signed": [
+          {
+            "counts": [
+              {
+                "c": "1/8",
+                "low_count": 32
+              },
+              {
+                "c": "1/2",
+                "low_count": 32
+              },
+              {
+                "c": "2",
+                "low_count": 32
+              }
+            ],
+            "defect_rank": 30,
+            "mode": "zero",
+            "positive_inverse_square_sum": "0"
+          },
+          {
+            "counts": [
+              {
+                "c": "1/8",
+                "low_count": 32
+              },
+              {
+                "c": "1/2",
+                "low_count": 32
+              },
+              {
+                "c": "2",
+                "low_count": 32
+              }
+            ],
+            "defect_rank": 30,
+            "mode": "negative",
+            "positive_inverse_square_sum": "0"
+          },
+          {
+            "counts": [
+              {
+                "c": "1/8",
+                "low_count": 2
+              },
+              {
+                "c": "1/2",
+                "low_count": 2
+              },
+              {
+                "c": "2",
+                "low_count": 2
+              }
+            ],
+            "defect_rank": 1,
+            "mode": "one_bad_channel",
+            "positive_inverse_square_sum": "127/4"
+          }
+        ],
+        "trace_inverse_square": "2041/18"
+      }
+    ],
+    "independent_review": false,
+    "new_Lean": false,
+    "rejected_mutations": 10,
+    "status": "EXACT_FINITE_DIAGNOSTICS_PASS",
+    "universal_theorem_verified": false
+  },
+  "payload_sha256": "58e01d4cdf260e024c97d3e59d013945387228a41fc5182b2368e36d281ea9f7",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "process_replays": 4,
+  "python": "3.13.18",
+  "script_sha256": "8b509a83fbd799581b41d60d493fe36e86c04124be47453f38da4d1e0ea6e07a",
+  "source_copies": 2,
+  "source_sha": "a8bf1445f35ba033076bd89e6881e4014b0fe312",
+  "started_utc": "2026-11-06T16:26:39.979628+00:00",
+  "status": "EXACT_FINITE_DIAGNOSTICS_PASS",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "fresh_a-normal",
+      "seconds": 8.109229193000004
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_a-optimized",
+      "seconds": 6.667433791000008
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-normal",
+      "seconds": 5.912167847999996
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh_b-optimized",
+      "seconds": 7.133872685
+    }
+  ],
+  "thread": "consolidar-e-investigar-the-eriksson-programme-en-airr",
+  "unit": 159,
+  "universal_theorem_verified": false
+}

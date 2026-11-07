@@ -1,0 +1,19 @@
+{
+  "real_mutations_rejected_each": 10,
+  "universal_theorem_verified": false,
+  "source_sha": "a8bf1445f35ba033076bd89e6881e4014b0fe312",
+  "payload_sha256": "58e01d4cdf260e024c97d3e59d013945387228a41fc5182b2368e36d281ea9f7",
+  "allocations": 2,
+  "terminal_git_clone_reproduction": false,
+  "status": "EXACT_FINITE_REPLAY_MATCH_ACROSS_TWO_OWN_ALLOCATIONS",
+  "mathematical_execution_seconds": [
+    28.380163524999944,
+    28.067405608
+  ],
+  "both_allocations_released": true,
+  "new_Lean": false,
+  "independent_model_review": false,
+  "script_sha256": "8b509a83fbd799581b41d60d493fe36e86c04124be47453f38da4d1e0ea6e07a",
+  "processes": 8,
+  "qualification": "Each allocation used two fresh pinned downloaded source copies; no full fresh git clones, so repository terminal-clone contract is not claimed."
+}

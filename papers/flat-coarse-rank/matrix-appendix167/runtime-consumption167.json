@@ -1,0 +1,23 @@
+{
+  "unit": 167,
+  "runtime_type": "two distinct own Colab Linux CPU allocations",
+  "local_builds": 0,
+  "attemptA": {
+    "recipe_seconds": 97.420296309,
+    "status": "superseded layout overflow; full evidence preserved",
+    "requested_utc": "2026-11-06T23:19:34.453Z",
+    "requested_to_release_seconds": 334.765,
+    "max_child_RSS_KiB": 127600,
+    "released_utc": "2026-11-06T23:25:09.218Z"
+  },
+  "attemptB": {
+    "recipe_seconds": 110.154478097,
+    "status": "rendered and all nine pages visually inspected",
+    "requested_utc": "2026-11-06T23:26:08.263Z",
+    "requested_to_release_seconds": 465.875,
+    "max_child_RSS_KiB": 127416,
+    "released_utc": "2026-11-06T23:33:54.138Z"
+  },
+  "compute_units_billed": null,
+  "notes": "Allocation durations include package installation, browser transport and archive export. No claim of uninterrupted compute. Both runtimes observed disconnected."
+}

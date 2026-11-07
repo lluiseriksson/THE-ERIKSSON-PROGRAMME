@@ -1,0 +1,43 @@
+EXACT PDF REVIEW 167 — complete preparing-session record
+Date: 2026-11-07 local / 2026-11-06 UTC
+Artifact: matrix_appendix.pdf; nine A4 pages; 375844 bytes.
+SHA256: 870ae0a27b11fcbeeda7489a53d8c0c0fa331ede5a6eb26469e870401460462c
+Executed TeX source: be259021ec1110e178eaa94f9beed751e9401a1b
+TeX Git-LF SHA256: ec69595e1cbca432cc42919cc0dacabf4545b8d8e4c81edbfd9676c9133a5238
+Executed recipe: fe34bd299b4adfb54963cdcd8b231af135413682
+Recipe Git-LF SHA256: 173171cf8ce7acc0d72753df4f7d98332a9a7488713c452e9a90f26e0e56a4b8
+Mathematical dossier: 1e3ede175efd2663f75333b3d6094fd01b0f67df
+
+Reviewer and context
+Prepared and reviewed in the same continuing Codex session. The exact backend model identity is not exposed by this application. No external model was called for this PDF, no numerical assessment was assigned, and neither blinding nor reviewer independence is claimed. This is self-review and visual quality assurance, not human peer review, acceptance, or publication. Parent v6/report154 assessments do not transfer. Section9 states these facts and the unresolved mathematical objections inside this exact PDF.
+
+Scope of mathematical review
+This unit consolidates existing analytic results and finite replay evidence; it executes no new scientific fixture. Prior finite replay validates the specified matrices only. Universal statements and nonlinear derivative consequences remain analytic arguments. No Lean compilation of the new appendix has occurred.
+
+1. Finite objects: counting product, oriented forward rows, channel multiplicity, and strict eigenvalue counting including negative and zero modes are stated explicitly. Spectral observation repair is generally nonlocal; it does not construct the desired rectangular observation.
+2. Positive matrix estimate: the inverse comparison follows from minimizing actual A^{-1} flow energy. Fourier padding is a right isometry, not an assumption of commuting coefficients. The normalized transform V^{-1/2}, weak-frequency volume V, and Cwikel V^{-1} factor are kept explicit and cancel once. The imported operator-valued theorem is classical. Independently prepared audit of this adapter remains outstanding before broader claims.
+3. Signed repair: the selected finite-rank perturbation is positive, with rank rank(P_S d), before taking T to infinity. The capped budget includes the former SPD full moment criterion. The prescribed-threshold sparse criterion does not, by itself, include every former moment family. The diagonal graph-rank formula is not applied to rotated eigenchannels. Negative-depth and defect-count lower bounds retain their stated scopes.
+4. Resistance and coupled channels: the exact one-row phase uses the actual inverse on mean-zero fields and counts opposite orientations separately at n=2. The multirow Schur inertia identity retains off-diagonal interactions. The D3,n2 two-channel example excludes normalized differentiable scalar observations with locally quadratic penalty; it does not invalidate the general matrix criterion or every observation dimension.
+5. Critical rectangular means: Theorem5 includes BOTH nonnegative kernel compression and annihilation of its critical kernel by the cross block. The pseudoinverse Schur formula follows from completing the square on the range. This is a classical generalized Schur criterion, explicitly credited. At a=6+chi1+4chi2 the coefficient is positive with values1,3,9,11; both actual kernel blocks are displayed. At c16 the critical vector v=-2chi1+chi12 couples to u=chi2, producing 8+8t+k. Thus no finite k works at16 although all lower positive targets are feasible. The determinant bound16/(5delta)-8-delta is necessary, not asserted to be the full optimum.
+6. Actual coexact transfer: the repository curl/divergence conventions and Hodge-plus-repair identity are stated. w=a-1>=0 is componentwise. Both explicit unordered-plaquette potentials produce the witnesses in range(d1*); the whole violating line is coexact. Coisometry is used on the ambient mean map, not incorrectly assumed after restriction. The analytical internal-coordinate embedding covers Nc>=2, while executed physical replay was Nc2 only. n*d scaling changes16 to64 at n2 and is not a physical mass-gap claim.
+
+Retained objections and limits
+Classical Cwikel, effective-resistance and Schur mechanisms do not establish original priority. The finite example refutes weak kernel sufficiency at the SAME target for the specified bars; it does not exclude another partition, prove an unbounded-size violation, or settle the positive critical rectangular rank-order question. No interacting-background form identity, continuum construction or Yang-Mills mass gap follows. Common-refinement remains stopped after three unsuccessful units. PR29 remains20/41, TermSource0. Independently prepared source/form audit remains required. This grouped draft is not a new AIRR deposit or editorial acceptance.
+
+Visual review of the exact final artifact
+All nine 120dpi page PNGs from attemptB were opened and visually inspected individually, bound through the verified build manifest to the PDF hash above.
+Page1: title, date, abstract, parent hash and provenance legible; introductory equations and footer fit.
+Page2: Cwikel constant, normalization derivation and repair formulas legible; no clipping.
+Page3: capped/sparse distinction, rank and penalty lower bounds legible; footer fits.
+Page4: one-channel phase, gap and Schur inertia blocks legible; no overflow.
+Page5: coupled example and generalized Schur theorem fit; square-completion formula legible.
+Page6: rectangular coefficient, kernel blocks, critical witnesses and blow-up estimate fit and are legible.
+Page7: actual cochain dictionary, Hodge identity, potentials and coexact proof fit; source-reference paragraph continues onto next page without losing content.
+Page8: corrected short theorem/path lines fit; full40-character source SHA, execution table and finite replay limitations legible.
+Page9: full Model assessments and review context, open-question caveats and five references legible; URLs wrap within margins. No clipping, overlap or missing symbols observed.
+Both TeX passes and all rendering commands exited0; final log has no layout warnings. Report.json is the immutable pre-visual build report and correctly retains visual_review=PENDING. This separately hash-bound review records completion rather than rewriting its history.
+
+Failure and correction history
+AttemptA rendered nine pages with PDF SHA256411c9191902ba67c0ec289e000a2979d7d5cd339156c7ac34b0f8be184fa796e. Its final log reported an Overfull hbox132.97725pt in repository source references. The full PDF, all renders, logs and44-subject manifest were preserved in review167-first.zip, SHA256c18d70da21eaf5ff7b32d7adb40f006f0bba3b03bd165afaa9ba21d7d767405b. AttemptB changes only reference layout, not mathematical claims. No assessment was repeated to improve a score. Final ZIP SHA25677164a28e5b0d9c6e8429cc889de98382427493540b86de18f35517deb8f9c54 has44 independently hash-verified manifest subjects. Both own CPU runtimes were deleted and observed disconnected after complete export. Billed compute units are unknown.
+
+Disposition: visually reviewed grouped DRAFT APPENDIX suitable for integration and further independently prepared mathematical audit. No external score, independent review, formal certificate, deposit or acceptance is claimed.

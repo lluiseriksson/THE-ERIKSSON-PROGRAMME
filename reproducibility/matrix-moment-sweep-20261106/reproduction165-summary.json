@@ -1,0 +1,43 @@
+{
+  "unit": 165,
+  "status": "PAIRED_EXACT_FINITE_RECTANGULAR_THRESHOLD_REPRODUCTION",
+  "allocations": [
+    {
+      "allocation": "first",
+      "source": "04aa4bfd0d82d2c6d87212f146edfca91a16c742",
+      "payload_sha256": "91afa5614cbaca9a481446c248bb5bc6b3bc7ff5489418423b630f514d2dafbd",
+      "process_replays": 4,
+      "clones": 2,
+      "normal_optimized_identical": true,
+      "script_seconds": 5.1324182220000125,
+      "peak_child_rss_kib": 106988,
+      "request_utc": "2026-11-06T21:17:18.055Z",
+      "release_utc": "2026-11-06T21:18:19.011Z",
+      "request_to_release_seconds": 60.956,
+      "manifest_subjects": 51,
+      "archive_sha256": "8557a518611d029348d81e7df4619e39ca83d71306216424d45a4f0e3c075150"
+    },
+    {
+      "allocation": "second",
+      "source": "04aa4bfd0d82d2c6d87212f146edfca91a16c742",
+      "payload_sha256": "91afa5614cbaca9a481446c248bb5bc6b3bc7ff5489418423b630f514d2dafbd",
+      "process_replays": 4,
+      "clones": 2,
+      "normal_optimized_identical": true,
+      "script_seconds": 3.862398259999992,
+      "peak_child_rss_kib": 106672,
+      "request_utc": "2026-11-06T21:18:20.440Z",
+      "release_utc": "2026-11-06T21:19:12.634Z",
+      "request_to_release_seconds": 52.194,
+      "manifest_subjects": 51,
+      "archive_sha256": "8e2d634d79a78dded661a3abde049c3e24bde6693de7814b9143943330b1a522"
+    }
+  ],
+  "total_fresh_git_clones": 4,
+  "total_processes": 8,
+  "distinct_mutations": 3,
+  "independent_model_review": false,
+  "Lean_verified": false,
+  "all_size_rank_conjecture_refuted": false,
+  "compute_units_billed": null
+}

@@ -1,0 +1,144 @@
+Base e452603ae4fc3cfdd806732fc9755e330667a818. Unit165,6 November2026.
+Supporting closed question in grouped PR186; not a separate paper.
+
+RECTANGULAR MEANS: CRITICAL KERNEL COERCIVITY NEED NOT BE ATTAINABLE
+
+1. Exact criterion (classical generalized Schur complement)
+Let E be a finite real Hilbert space, L=L*, c>0, and C:E->R^q a
+coisometry (CC*=I). Normalized means on a disjoint partition have this
+property. Set K=ker C, O=ran C*, so E=K orthogonal-sum O, and write
+H=L-cI=[[A,X],[X*,B]] in these actual subspaces. Then a finite k>=0
+with H+k C*C>=0 exists if and only if
+ A>=0 and X*(ker A)=0 (equivalently ran X subset ran A).
+When these hold, the smallest k is
+ max{0,lambda_max(X* A^dagger X-B)}.
+The q0 case means just H>=0, with no largest-eigenvalue expression needed.
+
+Proof. The penalty is zero on K, so A>=0 is necessary. For z in ker A,
+evaluate the full form on tz+y: its coefficient of t is2<z,Xy> and
+its t^2 coefficient vanishes. Nonnegativity for all t forces that linear
+coefficient to vanish for every y. Conversely, with this compatibility,
+the form is exactly
+ <z+A^dagger Xy,A(z+A^dagger Xy)>
+ +<y,(B+kI-X*A^dagger X)y>.
+Finite spectral decomposition proves the criterion and optimal k. This
+derives the needed compatibility, not an assumption that it is automatic.
+If A>0 it is automatic. If A has a zero mode it can fail for every k.
+This is a direct application of a classical theorem, not a new Schur result:
+Nick Higham, What Is the Schur Complement of a Matrix?,1June2023,
+Theorem1, generalized Schur complement section, author primary source:
+https://nhigham.com/2023/06/01/what-is-the-schur-complement-of-a-matrix/
+Checked6November2026. Independent priority for this adapter is unestablished.
+
+The condition also tests local nonlinear observations with THIS derivative.
+If F(0)=0,DF(0)=C and0<=Phi(y)<=k||y||^2 near0, then any local
+coercivity inequality Q_L(u)+Phi(F(u))>=c||u||^2 implies H+kC*C>=0:
+substitute tu,divide by t^2 and take t->0. A failure of the linear
+criterion is therefore not cured by nonlinear higher-order terms with
+the same derivative and a locally quadratic penalty. It does not exclude
+all other derivatives or partitions of the same output dimension.
+
+2. An actual POSITIVE scalar torus example with rectangular partition
+Use X=(Z/2Z)^3, counting inner product, actual forward incidence
+d_i u(x)=u(x+e_i)-u(x). ALL24 oriented rows are retained; opposite rows
+at side2 are not collapsed to a simple graph. Let
+ a(x)=6+(-1)^x1+4(-1)^x2, L=d* a d, c=16.
+The SAME scalar a multiplies every direction at a site. Values are
+1,3,9,11 (each twice), mean m=6; hence1<=a<=2m=12. Every normalized
+inverse moment of fixed order p is finite and, since m/a<=6, bounded
+by6^p in this one finite example. This is not an asymptotic falsifier
+of the critical moment/rank-order conjecture.
+
+Partition into the four actual axis-aligned rectangles
+ R_(y,z)={0,1} x {y} x {z}, with normalized means
+ (Cu)_(y,z)=(u(0,y,z)+u(1,y,z))/sqrt2.
+Then CC*=I4; C*C is the orthogonal projection onto functions independent
+of x1. The kernel comprises functions odd in x1. This is an actual
+rectangular mean observation, not an arbitrary abstract spectral map.
+
+For S subset{1,2,3}, let chi_S(x)=(-1)^(sum_(i in S)xi)/sqrt8.
+These form an orthonormal real basis. Direct forward/adjoint expansion
+gives (an absent-toggle term has zero coefficient)
+ L chi_S=24|S| chi_S
+  +4(|S|-1_(1 in S)) chi_(S symmetric-difference{1})
+  +16(|S|-1_(2 in S)) chi_(S symmetric-difference{2}).
+Indeed d_i chi_S=-2chi_S when i in S and0 otherwise;
+d_i* a d_i chi_S=2(a+T_i a)chi_S for i in S. This verifies the
+actual finite form dictionary including both forward orientations.
+
+The kernel basis (chi_1,chi_12,chi_13,chi_123) compresses L to blocks
+ [[24,16],[16,48]] and [[48,32],[32,72]].
+Subtract16I. The first block [[8,16],[16,32]] is PSD of rank1 with
+zero vector(-2,1); the second [[32,32],[32,56]] is positive definite,
+since its first pivot32>0 and determinant768>0.
+Thus Q_L(v)>=16||v||^2 for EVERY v in ker C, with best constant16.
+This is a complete four-dimensional proof, not a test of selected vectors.
+
+Nevertheless take v=-2chi_1+chi_12, u=chi_2. Then
+ Cv=0, ||v||^2=5, ||Cu||^2=1,
+ (L-16I)v=4chi_2, <v,(L-16I)v>=0,
+ <u,(L-16I)u>=8, <u,(L-16I)v>=4.
+Therefore for EVERY real t and k,
+ <u+tv,(L-16I)(u+tv)>+k||C(u+tv)||^2=8+8t+k.
+For any finite k choose t<-(8+k)/8. The expression is strictly
+negative. Consequently NO finite penalty k||Cu||^2 supplies
+coercivity at c16. Neither does any penalty bounded above by that
+quadratic form, even locally after scaling u+tv towards0. The
+general nonlinear argument above excludes all F with derivative C.
+The failure is the nonzero critical-kernel coupling X*v=4chi_2,
+not a negative direction within ker C or a signed coefficient.
+
+3. Sharp threshold and quantitative loss as it is approached
+For EVERY0<c<16 the same partition DOES admit a finite penalty:
+its kernel compression L|K-cI is positive definite, so the exact
+criterion applies. For c>16 the actual v already violates kernel
+coercivity, and no penalty works. Thus16 is the supremum of
+achievable positive coercivity constants for this partition, but
+it is NOT attained. Replacing a strict kernel margin by a weak
+one at the desired threshold loses a substantive condition.
+
+Write delta=16-c>0. Restrict the penalty form to span{w=v/sqrt5,u}.
+Its matrix is [[delta,4/sqrt5],[4/sqrt5,8+delta+k]]. PSD forces
+ k>=16/(5delta)-8-delta, as well as k>=0.
+In particular any finite-penalty choice diverges at least as
+16/(5delta) when the target approaches16 from below. This lower
+bound need not be the exact full-matrix optimum for c<16.
+It is a strict analytic inequality derived by determinant, not
+numerical extrapolation from a few delta values.
+
+4. Scope, relation to appendix164, falsifier and abandonment
+Closed supporting question: Is weak coercivity on the kernel of
+actual rectangular normalized means sufficient at the SAME target c
+for some finite observation penalty? Answer NO, by the actual scalar
+positive example above. The criterion identifies precisely what must
+be added (critical-kernel compatibility), or one may retain a strict
+margin. No hypothesis is claimed removed without cost. The general
+nonnegative kernel claim is refuted, not appendix164 or the original
+critical moment rank-order existence question (which may use another
+partition, a smaller target after rescaling, or a proved margin).
+
+Mechanism: classical singular Schur complement plus an actual positive
+scalar torus/rectangular dictionary. Falsifier for the CLOSED result:
+an error in the actual eight-character matrix or in the identities
+for u,v,C. A claim about arbitrary q or another partition is not
+such a falsifier. Abandon this supporting route after its first exact
+finite replay and integrate the obstruction into the existing dossier;
+do not create a second active research question or a small new paper.
+The sole ongoing question remains unrestricted rectangular partitions
+at critical inverse-moment rank order; stopped common-refinement stays3.
+PR29 remains20/41,TermSource0. No physical mass-gap/continuum claim.
+
+5. Model assessments and review context
+This is a new analytic source note, not a modified PDF or AIRR deposit.
+Same continuing Codex preparing session; exact backend model identifier
+not exposed. No independence, blinding, human review, numerical score
+or Lean verification. Earlier report154 and self-review164 do NOT assess
+this new source. exact165.py is prepared for actual-incidence rational
+replay and meaningful mutations in normal/-O on own Colab, not Windows.
+Its execution status must be read from a separately preserved real
+report; the existence of the script alone is not numerical verification.
+Retained objections: classical general theorem, small finite example,
+no all-size rank-order refutation, no actual divergence-free cochain
+transfer yet, no audit by a distinct preparer. The positive scalar
+example is on scalar vertex fields, and must not silently be described
+as a constructed physical coexact counterexample.

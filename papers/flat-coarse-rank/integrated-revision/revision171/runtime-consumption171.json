@@ -1,0 +1,26 @@
+{
+  "unit": 171,
+  "compute_units_billed": null,
+  "own_CPU_allocations": 2,
+  "notes": "Durations include provisioning, rendering, archive export and UI handling. No uninterrupted-compute claim.",
+  "final_recipe_seconds": 110.12199419399997,
+  "allocations": [
+    {
+      "requested_to_release_seconds": 243.149,
+      "observed_disconnected": true,
+      "name": "first",
+      "released_utc": "2026-11-07T03:18:11.492Z",
+      "requested_utc": "2026-11-07T03:14:08.343Z"
+    },
+    {
+      "requested_to_release_seconds": 239.215,
+      "observed_disconnected": true,
+      "name": "final",
+      "released_utc": "2026-11-07T03:22:49.651Z",
+      "requested_utc": "2026-11-07T03:18:50.436Z"
+    }
+  ],
+  "local_scientific_builds": 0,
+  "final_max_child_RSS_KiB": 127608,
+  "first_recipe_seconds": 99.339833451
+}

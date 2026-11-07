@@ -1,0 +1,20 @@
+{
+  "processes": 8,
+  "fixture_mutation_pairs_per_process": 28,
+  "distinct_mutation_types": 7,
+  "source": "378e879bc2687368a11d25a0c1b1d57f332547fd",
+  "independent_review": false,
+  "second_maxrss_kib": 106976,
+  "first_seconds": 53.82831629499992,
+  "first_maxrss_kib": 106960,
+  "Lean_verified": false,
+  "manifest_subjects_per_archive": 57,
+  "allocations": 2,
+  "all_size_theorem_verified": false,
+  "compute_units_billed": null,
+  "second_seconds": 29.98344045899998,
+  "status": "PAIRED_EXACT_RESISTANCE_FINITE_REPRODUCTION",
+  "payload_sha256": "297af4199a956a1a34c5fd1ec8c18bdc199009a50032f3033cbc9af3bad08ba1",
+  "fixtures_per_process": 4,
+  "fresh_git_clones": 4
+}

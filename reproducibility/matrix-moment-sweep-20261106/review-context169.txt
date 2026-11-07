@@ -1,0 +1,108 @@
+Unit169. Executed mathematical source a6e8cfec46ccb0ba9952c0086869b46923ababea.
+Executed recipe5f800b060be0a63cda675ba04224d9782bad4b28.
+
+FULL EXACT RATIONAL REPLAY REVIEW AND MODEL CONTEXT
+
+Question: does the complete actual finite8x8 matrix support the exact
+rectangular penalty formula168, including true optimality rather than
+mere feasibility? This closes a verification obligation for the grouped
+appendix, not a new active research route or separate paper.
+
+Construction and checks
+The script builds the spatial matrix from all24 actual weighted forward
+rows on (Z/2Z)^3, a=6+(-1)^x1+4(-1)^x2. It constructs the actual pair-average
+projection in spatial coordinates, then changes basis with exact rational
+Walsh arithmetic. No floating point eigensolver or fitted asymptotic is used.
+All eight dimensions of the claimed kernel/observed/cross dictionary are
+checked against the spatial construction. The proposed penalty formula is
+then tested on the FULL8x8 augmented matrix, not just its convenient2x2
+minor or an algebraically rearranged copy of the formula.
+
+Generic exact symmetric Schur elimination checks PSD, including singular
+zero-pivot cases. A separately implemented rational RREF finds actual null
+vectors. Acceptance also requires an observed null vector with positive
+projection norm: this proves that every strictly smaller penalty fails.
+Its quadratic decrement is checked exactly at1 and1/1000000, while the
+same identity proves all positive decrements. Thus feasible excess penalty
+is explicitly rejected rather than mislabeled optimal.
+
+Nine rational deltas are checked per process:
+1/64,1/16,1/8,27/200,17/125,1/4,1,8,15.
+They cover both branches of the optimum and bracket its irrational transition
+via the exact sign of3delta^2+118delta-16. Further exact calculations verify
+A2>=4I, B2>=0, the critical-kernel projector residue16/5, and the finite
+remainder identity at1/64,1/128,1/1024. These are finite fixture checks,
+not a computational proof for every real delta or of a limiting theorem.
+
+Six mutation types are actually rejected in EVERY process:
+1. Old necessary lower bound reported as full optimum: full8x8 infeasible.
+2. Constant-mode penalty floor omitted: full8x8 infeasible.
+3. Critical residue doubled: feasible but no observed null vector/minimality.
+4. Extra1 added to feasible optimum: no observed null vector/minimality.
+5. Actual x1 coefficient coupling erased: full cross-block mismatch.
+6. Opposite oriented rows collapsed: full kernel-block mismatch.
+All acceptance and mutation counters use explicit checks raising errors,
+not Python assert, and all eight ordinary/optimized payloads match exactly.
+
+Reproduction contract and complete evidence
+Two distinct own Colab Linux CPU allocations. Each made two actual fresh
+filtered sparse Git clones, fetched and detached the SAME pinned source,
+checked its exact40-character HEAD and clean status, verified source hashes,
+and executed normal and -O modes in each clone. Total four fresh clones,
+eight processes, nine fixture cases per process and six mutation types per
+process. These are9 distinct cases/6 distinct mutation types, not72 distinct
+examples or48 distinct mutation types. Full command stdout/stderr, real
+atomically published exit sentinels, copied exact source bytes, Git logs,
+reports and manifests are included in both complete archives.
+
+Payload SHA256 for all eight processes:
+e4dce1125902c202d24ceee438600d3cf169b2713cd460f2fe53731300adfbf5
+First archive febad6b3551931c83d07ec9958fd2b5537c0b702b5e78da7b885a8cf669c2b99.
+Second archive79131943e5704ef56abd97ce442634d15f59895739695a69fc517aaad51f718b.
+All53 manifest subjects in EACH archive were independently hash-recomputed
+after export. Individual immutable build reports truthfully leave their
+fresh_runtime_pair_completed field false, since each single runtime cannot
+attest to the other. The separate reproduction169-summary.json binds the
+pair comparison; individual history is not rewritten.
+
+First recipe3.987471878s, second3.363010585s. Requested-to-release durations
+36.317s and41.920s include provisioning, export and UI handling. Maximum
+child RSS107072/106844KiB. Both own runtimes were deleted and visibly
+disconnected after complete evidence export. Billed compute units unknown.
+No local Windows numerical, Lean/Lake or scientific process executed.
+
+Model assessments and review context
+Preparation, evidence collection and this review occurred in the same
+continuing Codex session. Exact backend model identity is not exposed by
+the application. Separate runtimes and fresh clones establish reproduction
+separation, NOT reviewer independence. No external model assessment, grade,
+blinding, human peer review, editorial acceptance or publication is claimed.
+No earlier PDF score transfers. Immutable exactPDF167 remains unchanged.
+
+Retained objections and limits
+The nine rational points do not certify the universal-in-delta theorem168;
+that statement retains its analytical Schur proof. The script verifies the
+ambient scalar optimum and finite projector residue, NOT a new72x72 physical
+replay or the full coexact restricted optimum. Its physical_replay_this_unit
+field is explicitly false. The exact leading coexact coefficient is still
+the analytical squeeze using actual potentials166 and the ambient upper
+bound; no coisometry is assumed after restricting the observation. The
+constant next term -192/25 is claimed only for the ambient scalar formula.
+Classical Schur/resolvent and Cwikel inputs establish no independent original
+priority. Independently prepared source/form review remains outstanding.
+No interacting physical form identity, continuum limit or Yang-Mills mass
+gap follows. Positive critical rectangular rank order remains OPEN;
+common-refinement STOPPED3; PR29=20/41,TermSource0. Parent publicv6/report154
+and prior PDFs stay unchanged. No new PDF or AIRR submission in this unit.
+
+Operational incident retained
+When formatting the second completed UI result, a transient REPL variable
+from an earlier call was unavailable. The verified ZIP and full second UI
+output had already been saved. Pair comparison was redone from the two
+saved report strings; their identical payload hash is the result above.
+No scientific rerun, source change, discarded failed assessment or quota
+workaround resulted from this presentation error.
+
+Disposition: finite full-matrix optimum verification reproduced at one
+pinned source in two fresh own allocations. Integrate168/169 together into
+the existing appendix/parent revision; do not publish a small separate note.

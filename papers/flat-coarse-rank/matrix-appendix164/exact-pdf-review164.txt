@@ -1,0 +1,110 @@
+Exact PDF self-review 164 -- 6 November 2026
+
+ARTIFACT AND CONTEXT
+Title: Matrix gradients and signed channel interactions.
+PDF SHA256: 0fa265ea16de3a775ca68f4b5243e0019e6d13fd98c258af5c96438016c1684a
+PDF: 347708 bytes, six A4 pages. Text source95c6259c4f4a66f177879064551ed579bb30fa8f,
+Git LF SHA25651643b780567c255202f9c93888cbae2ca47f7c1ef2b16beaf7d9be1634239f5.
+Build recipe c2f6c4db03fbe6cf49ac3ed2f692111bf0dc0bad/render164b.py.
+Analytical and finite diagnostic sources:72baba2356c209a75c96cd8e96b758620dbf972d.
+Review identity: continuing Codex preparing session; exact backend model identifier
+not exposed. This is a self-review, not an independent, blinded, external-model
+assessment or human peer review. No numerical score. Earlier report154 is about
+the parent ccf53e0a PDF and is not transferred to this PDF.
+
+VISUAL REVIEW OF THIS EXACT PDF
+All six full page PNGs rendered by Poppler24.02.0 at120dpi were inspected.
+Page1: title, author/date, abstract, explicit draft status, parent v6 identifier
+and hash, finite-object definitions and penalty equation are legible and bounded.
+Page2: positive matrix estimate, Fourier factorization, normalization, theorem2
+and capped equation are legible. No overlap with footer; theorem proof continues
+on page3. Mathematical glyphs, superscripts and blackboard symbols display.
+Page3: repair argument, strict capped extension, sparse criterion correction,
+graph rank and penalty counterexample all remain within margins.
+Page4: signed phase, uniform gap and Schur inertia identity are legible. The
+superseded first PDF's overfull paragraph is corrected in the displayed identity.
+Page5: coupled counterexample, nonlinear derivative argument, source SHA and
+reproduction table have no clipping or collisions. Source links and table fit.
+Page6: continuation, Model assessments and review context, limitations and four
+references are legible. Line-broken reference URLs remain visibly complete.
+Compiler final log: no overfull/underfull layout warnings; both TeX passes exit0.
+PDFinfo title and author are populated correctly. Six pages, no encryption or
+embedded JavaScript. No visual defect requiring another render was identified.
+PDF tagging/accessibility is not certified (pdfinfo Tagged:no).
+
+ANALYTICAL AUDIT
+1. Flow minimization uses the actual mean-zero inverse and the feasible flow
+Jb=d L0^-1 b. The cross term vanishes by d*k=0, not by simultaneous coefficient
+diagonalization. Strict inverse min-max adds exactly h constant modes.
+2. Fourier counting transform has L1-to-Linfinity norm V^-1/2. Rectangular
+J(k) is padded by I* to a square multiplier, with a right isometry. Its norm
+lambda(k)^-1/2 and the centered frequency cube give weak-D budget(3/4)^D V.
+Frank1206.3325v1 Theorem3.1 was rechecked on the primary PDF: q>2 and prefactor
+(q/2)(q/(q-2))^(q-1) C^2. With q=D and C^2=V^-1 the volume cancels once.
+This is an imported classical theorem, not a new universal Cwikel theorem.
+3. Replacing selected eigenvalues by T strictly above them yields a positive
+update with rank rank(P_S d). Finite rank min-max and T tending to infinity
+give the selected inverse moment estimate. Selecting positive channels whose
+cost exceeds1 proves the capped budget. The old SPD moment implies capped
+budget; the epsilon=n^-4 actual channel at m=n^2 disproves the converse.
+The prescribed lambda<m sparse-count criterion is instead incomparable with
+the old moment budget, as demonstrated by A=(m/2)I. These are distinct claims.
+4. Graph components determine rank only for diagonal incidence rows; rotated
+eigenchannels are not silently assigned that formula. The zero/near-zero
+star and actual negative-edge trial quotient retain rank/penalty costs.
+5. Actual edge leverage rho=(V-1)/(DV) follows by translation/direction
+symmetry and traceV-1, counting parallel n2 rows individually. Rank-one
+congruence gives the equality witness and below/equal/above phase. Fourier
+gap4sin(pi/n)^2>=16/n^2 gives the uniform mean observation at m=n^2,
+B=theta m,theta<D-1 despite unbounded coefficient depth. No fixed-m
+B-to-infinity penalty obstruction is contradicted.
+6. Two Schur eliminations give the stated inertia for arbitrary actual rows
+and unequal positive W. No independent-row or disjoint-cycle hypothesis is
+needed. Positive semidefiniteness WITH exactly h zeros is equivalent to
+C positive definite; counting zeros alone is not enough.
+7. D3n2h1,m4,W128/11: actual Gamma diagonal7/24,offdiagonal5/48; reduced
+eigenvalues-5/96,5/32. Singles have inertia(7,0,1),gap>=80/33, joint(6,1,1)
+(tuple order positive,negative,zero). A scalar derivative has a kernel in
+the joint two-dimensional nonpositive space. Differentiability and a local
+quadratic penalty make its correction o(t^2), contradicting positive
+coercivity. The normalization F(0)=0 and local bound are essential.
+
+EVIDENCE AND OBJECTIONS RETAINED
+The six-page appendix groups units158-163 into one dossier. Unit162 and163
+finite replay records are retained, including original failures and normal/-O
+outputs. This unit does not pretend to rerun those already passing fixtures.
+Finite tests do not prove arbitrary-q, all-size or nonlinear statements.
+The methods of Frank, Zelazo/Buerger, Spielman and Chen et al. are classical.
+New priority is not established. The new contribution claimed here is the
+explicit finite adapter, quantified examples and grouped analytical record.
+Spectral observations are generally nonlocal; no rectangular local observation
+has been constructed. No interacting Hessian/curl/divergence dictionary is
+proved. No Lean certificate, continuum limit or physical mass gap follows.
+An independently prepared source/form audit remains outstanding before broader
+integration/publication claims. Original positive critical rectangle OPEN;
+common-refinement route STOPPED after3 unsuccessful units; PR29=20/41,
+TermSource0. No new hypothesis is claimed eliminated by this consolidation unit.
+
+FAILURES AND SUPERSESSION
+Initial six-page PDF9bbc3a7baefa3a22096b13298cc76aefd6d32bf0be2bd76553e24bfeb910c74f
+is superseded, retained with its full review: one4.53426pt overfull paragraph,
+missing PDF title/author metadata and minor spacing corrected in source95.
+The final build was successful at20:28:46Z. Large browser output export failed;
+normal reversible Drive notebook content edit restored access to the SAME own
+runtime. Original notebook backup and edit record retained privately. Final
+ZIP was recovered in67 small UI chunks and its complete SHA256 matched.
+The local duplicated transfer chunk1 was detected by offset check, compared
+byte-for-byte and truncated before continuing. This was transfer bookkeeping,
+not a scientific rerun or mutation. All41 ZIP manifest subjects match.
+No direct-download timeout, missing output pointer or404 lookup is interpreted
+as lost authority, quota expiry or permission to bypass access controls.
+Own runtime was disconnected/deleted after successful archival; release UI
+showed Ateranslut. Transport recovery latency is included in connected wall
+time and is not reported as productive computation or billed compute units.
+
+DECISION
+This exact PDF is visually ready as a consolidated DRAFT APPENDIX for review
+and integration with the parent. It is not a new AIRR deposit, editorial
+acceptance, independent assessment or verified public AIRR release. No score
+was sought again to improve an earlier score. The parent working-paper v6,
+its receipt and report154 remain unchanged.

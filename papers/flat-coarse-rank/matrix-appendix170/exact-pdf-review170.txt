@@ -1,0 +1,137 @@
+EXACT PDF170 — complete preparing-session review,7November2026
+
+Artifact matrix_appendix.pdf: 11 A4 pages,386944bytes.
+SHA256 b24d538a978e25452f513da1d3433a9e10c25d599a1a2468e15bfbbe71eb032d.
+Exact standalone TeX source5f8021ae35e967973505545e85efcb7a2fc3362f.
+TeX Git-LF SHA256e24d57d19ec11a172b5dcad649cd548cce80d1d6b795f0cfbb84e82112f18e0f.
+Final recipe6f893aec4e5746a67886f492880585e6819eccfd.
+Recipe Git-LF SHA256939acb815689a43f85557f0ad4f6dadd3dd9be7fe6271086895e6b448f15d0b9.
+Mathematical dossier and finite evidence66580c59ea9ef5f3c0374b339a165c9f89173db8.
+The manuscript's dossier pin refers to its mathematical sources/evidence;
+the exact new TeX source is the distinct identifier bound above.
+
+Reviewer identity and context
+Preparation and this fresh exact-artifact review occurred in the same
+continuing Codex session. The application does not expose its exact backend
+model identity. No external model assessment or numerical grade exists for
+this PDF. No independent preparation, blinding, human peer review, editorial
+acceptance or publication is claimed. No earlier PDF score transfers. The
+actual rendered Section9 preserves this context and the substantive limits.
+The review is self-review and quality assurance, not an independent verdict.
+
+Analytical checks of this version
+Actual counting measures, all oriented forward rows, strict spectral counts
+and channel multiplicities are retained. The SPD inverse-flow comparison
+uses the actual minimizing flow and mean-zero inverse. Fourier square
+padding, right isometry and the single cancellation of frequency V with
+Fourier norm-squared V^-1 are explicit; coefficients need not commute.
+Frank's operator-valued theorem is imported and credited, not claimed new.
+The capped repair criterion includes the former SPD full moment budget;
+the prescribed-threshold sparse criterion remains distinct. Diagonal graph
+rank is not silently applied to rotated channels. Actual signed resistance
+and joint-channel Schur inertia retain their off-diagonal interactions and
+observation-dimension limitations.
+
+The rectangular criterion includes critical-kernel compatibility, not just
+weak kernel positivity. The actual coefficient6+chi_sign1+4chi_sign2 is
+positive. Both complete kernel blocks and the unseen/observed witness are
+given. At16,8+8t+k excludes every finite quadratic penalty for these means.
+Every smaller positive target is feasible; the original general partition
+rank-order question is not thereby refuted.
+
+New complete ambient scalar optimum: at delta=16-c in(0,16), both full
+observed Schur blocks are accounted for. The first gives c and the explicit
+rational second entry; A2>=4I and B2>=0 bound the other by c. Taking their
+maximum proves sufficiency as well as necessity. The transition polynomial
+3delta^2+118delta-16 and positive root(sqrt3529-59)/3 agree. Partial fractions
+give16/(5delta)-192/25+O(delta), with the constant term asserted only for
+this ambient scalar optimum. This is stronger than the earlier determinant
+lower bound; the two statements are not conflated.
+
+The general finite residue follows from spectral splitting of
+(A0+delta I)^-1 into delta^-1 Pcrit plus a bounded remainder and the
+variational formula for lambda_max. It yields norm(Pcrit X)^2 and separates
+the zero-coupling finite-limit case. These are classical Schur/resolvent
+principles. Independent original priority is unestablished.
+
+The actual trivial-background Hodge-plus-repair identity and unordered
+plaquette potentials produce both witness fields in range(d1*). The exact
+coexact leading residue16/5 is proved by the witness lower bound and direct-
+sum ambient upper bound. It does not assume that the restricted mean map
+is coisometric or assert equality of full restricted/ambient penalty
+functions or next constants. Analytical internal-coordinate embedding
+covers Nc>=2; physical fixture replay166 was Nc2 only. No interacting
+background dictionary or physical mass-gap implication is supplied.
+
+Reproduction169 is accurately described as9 distinct rational delta cases
+and6 mutation types per process, four actual fresh pinned Git clones and
+eight matching ordinary/optimized processes across two own allocations.
+Generic full8x8 rational PSD and RREF observed null witnesses distinguish
+minimality from excess feasible penalty. This finite replay does not
+certify every real delta, the universal residue lemma, a new72x72 physical
+matrix or the coexact limit; those retain the displayed analytical proofs.
+Earlier arbitrary-q/all-size/nonlinear and159 download-not-clone limits
+are retained. No new scientific fixtures or Lean builds ran in170.
+
+Fresh visual review of ALL exact final pages
+The11 PNGs rendered at120dpi from the PDF hash above were each opened and
+visually inspected, with their hashes independently checked in the final
+archive manifest. Review was not inherited from167.
+1: title, abstract, dossier pin, parent hash, actual finite definitions and
+spectral observation formula legible; no clipping.
+2: positive matrix constant, Fourier normalization and repair theorem fit.
+3: capped/sparse criteria, graph rank and penalty lower bounds legible.
+4: resistance phase and joint-channel inertia formulas fit without overlap.
+5: coupled example and classical generalized Schur criterion legible.
+6: actual positive rectangle example, complete kernel blocks, critical
+witness and previous necessary blow-up bound legible.
+7: NEW exact optimum, all six2x2 blocks, transition, asymptotic constant
+and general residue mechanism fully visible and legible; no overflow.
+8: actual cochain dictionary, Hodge identity, potentials and coexact proof
+legible; source-reference paragraph continues normally on page9.
+9: source names/paths fit, NEW coexact squeeze and16/5 limit legible;
+dossier hash and reproduction table fit. Table paragraph continues on10.
+10: reproduction165/166 limits and NEW169 evidence/counters legible;
+Section9 Model assessments and review context begins and is readable.
+11: assessment objections/open-question limits continue coherently;
+all five primary references and wrapped URLs legible. No clipping or
+missing symbols observed. No need to modify the exact PDF after review.
+
+Build, incidents and immutable history
+Final own Linux render recipe99.793956136s. Both TeX passes and all final
+rendering steps exit0; final layout warning list empty. Complete archive
+3557543bytes, SHA2562f60438d1321fa2704df245eeb82951f5df85aef49605967fc0314e0bdac7f50.
+All46 manifest subjects hash-verified after export. report.json correctly
+retains its pre-visual PENDING field; this separate exact-hash record
+documents completion instead of rewriting the original report.
+
+An initial allocation returned no inspected output before it was released;
+UI showed a reCAPTCHA connection warning and old autosave conflict. The
+root cause is unconfirmed: neither proves that a kernel command failed.
+Ordinary reload and a45s bootstrap timeout/source-success marker were used;
+no CAPTCHA was solved or security warning bypassed. A later output containing
+a traceback was inside the visible cell-output iframe, which required the
+documented frame locator rather than the outer region's innerText.
+
+The next allocation DID compile TeX successfully, then the added content
+check incorrectly demanded the absent literal word minimal. The manuscript
+uses full optimum. Complete failed verifier archive427298bytes, SHA256
+407a15ef061308e5a0accae044f7257a0e1cc81ff5ef73fd9f88a050c9cb5137,
+including PDF/source/logs/report and32 verified manifest subjects, was
+saved before disconnecting. The check was corrected offline to match
+the actual phrase, preserving every other required term. No mathematical
+source or assessment score changed. The subsequently rendered final PDF
+is BYTE-IDENTICAL to the preserved content-check-failure PDF, hash above.
+This is verifier correction, not a failed mathematical result or score-
+improvement review. All three own allocations were released/disconnected;
+their actual request-to-release times are separately recorded. Billed
+units are unknown. No local Windows TeX/scientific/Lean execution occurred.
+
+Disposition and retained objections
+Visually reviewed consolidated draft appendix, ready for parent-manuscript
+integration and independently prepared source/form audit. Original priority
+and independent assessment remain unestablished. The original positive
+critical rectangular rank-order question is OPEN; common-refinement
+STOPPED3; PR29=20/41,TermSource0. Exact older PDFs164/167, public parentv6
+and complete report154 remain unchanged. No new AIRR deposit, working-paper
+release, acceptance or human peer review is claimed for170.

@@ -1,0 +1,108 @@
+Unit166,6 November2026. Actual physical/coexact transfer, grouped with164/165.
+Analytic source e422859386cd07db2c107c8ab1a21067e99f44bb;
+recipe070d86712657901be22de9aa0a3366cd71f15885. No new PDF/score/deposit.
+
+RESULT AND ACTUAL DICTIONARY AUDIT
+Read the repository's real trivial-background definitions of SUNLieCoord,
+covariantD1CLM_trivial_apply,gaugeConstraintQCLM_trivial_apply,
+componentwiseFlatGradient_eq_hodge and actualTotalStiffness_energy.
+SUNLieCoord Nc is the real Euclidean space on Fin(Nc^2-1). Counting,
+one unordered plaquette copy, cyclic unit-spacing shifts and the precise
+backward divergence match the new finite construction. Their Git LF hashes
+and source referents are retained separately. Existing proofs were READ;
+no new Lean run or historical certificate upgrade is claimed.
+
+Actual repair w=a-1>=0 on every direction/component and the Hodge energy
+identity give a direct sum of scalar L_a on ALL physical cochains. The
+componentwise normalized means have output12(Nc^2-1). Kernel bound16 is
+proved globally by the complete scalar blocks, not assumed for test fields.
+U has only field component3,internal coordinate e and scalar chi2; V has
+that component and scalar -2chi1+chi12. Both are independent of x3, so their
+literal backward divergence vanishes. Potentials B^U_23=-chi2/2 and
+B^V_13=chi1-chi12/2 in the same coordinate yield actual d1*B=U,V,
+with other induced components zero. Thus the full witness line is coexact.
+No abstract Hodge decomposition, supplied comparison band, gauge quotient
+or prior assumption of the desired physical counterexample is used.
+
+The actual form, isometry and means give augmented form8+8t+k on U+tV.
+This is negative for some coexact field for every finite k at SAME target16;
+all positive targets below16 are feasible for this partition, while larger
+ones fail on V. For delta=16-c a necessary penalty lower bound is
+max(0,16/(5delta)-8-delta). The same obstruction is necessary for local
+nonlinear observations with derivative equal to the restricted means and
+locally quadratic penalty. Coisometry of C on the RESTRICTED coexact domain
+is not assumed. The ambient C is coisometric; its globally valid strict-
+margin repair can be restricted, which proves feasibility below16.
+
+EXECUTED NEW EVIDENCE, NOT A RELABELLED SCALAR RUN
+D3,n2,Nc2,actual real physical dimension72/internal dimension3.
+Constructed72 unordered curl rows,24 backward-divergence rows and216
+gradient/repair rows. Exact rational Gram arithmetic checked the ENTIRE
+72x72 Hodge-plus-repair matrix against the scalar direct-sum operator.
+Checked actual transpose curl of both real potentials, divergence zero,
+actual rectangular projection, witness norms and energies, cross term and
+several exact finite-k violating fields. Fixture uses unnormalized Walsh
+columns to avoid sqrt8: U norm^2=8,V norm^2=40,Q(U)=192,Q(V)=640,
+cross32; all match the normalized analytic values after dividing by8.
+The whole-kernel assertion follows from the entire direct-sum identity
+and the complete scalar kernel compression, not from sampled witnesses.
+
+Two own CPU Linux allocations, each2actual fresh pinned sparse Git clones
+clean before execution and a normal/-O pair per clone. Eight processes
+matched exact stdout SHA2565bea679e80cc745cb5005ca6dfdb02c07cc6b2ceff09b2987fea2b2d788ea75f.
+Four distinct mutations rejected per process: omit divergence, duplicate
+unordered curl, wrong potential sign, move witness to field component1.
+No assert determines acceptance. The dependency165's scalar verification
+also runs on import with stdout captured, but it does not substitute for
+the new physical checks. Explicit recipe acceptance requires dimension72
+and4mutations plus the real success label.
+
+Source exact166 Git LF SHA256
+0cbb620fe89acb464eb82d1673beb4e4781986f52e532095b6e2c182615ac20d.
+Recipe Git LF441c8ad2569cd58a9e333ccd2b770f413db4551ccbf329913324dd35503a83d5.
+Proof Git LFbf30bebdf32dc27ccc58bb16425e9509c8ae101c4d6d6cfb9da0e709fdc5b681.
+Source/script/recipe committed and verification-plan JSON recorded BEFORE
+either new execution. First recipe5.281398601s,maxRSS106996KiB,requested
+22:19:50.863Z,released22:20:37.088Z=46.225s. Second8.190623372s,
+maxRSS107132KiB,requested22:20:37.090Z,released22:21:26.192Z=49.102s.
+Request-to-release includes allocation/export/UI observation, not billed
+computation. Billed units unknown. Both own runtimes deleted/disconnected
+after verified D export,Ateranslut observed. No Windows scientific run.
+Each archive has55manifest subjects, all independently byte-hash checked.
+First ZIP27240B,7fd45e906b9b0b26b2129d06aa93ac62b32d727db5e8eed74268528ecb9a34bf;
+second27241B,5c3353f0fcbad280d9ced5130d82c893d7b5223f40ca9a231dab14cd0c88542d.
+Complete logs,exit sentinels,Git/source bytes,consumption and reports retained.
+
+OBJECTIONS, FAILURES AND MODEL ASSESSMENTS
+Same continuing preparing Codex session; exact backend identity not exposed.
+Reproduction in fresh clones is not independent judgement or peer review.
+No blinding, external-model assessment, human peer review, numerical grade,
+new Lean endpoint,exact-PDF assessment,AIRR deposit or editorial acceptance.
+Previous154/164/165 assessments do not assess this new source. The generic
+Schur/Hodge methods are classical; no independent originality priority is
+established. Primary author Schur reference was actually read in165 and
+is linked in the proof; local repository definitions are primary for its
+actual flat physical conventions, not evidence of an interacting theory.
+
+No scientific execution failure was observed. Before committing the new
+script, import stdout from165 was redirected to retain exactly one JSON
+payload; this was a preparatory source correction, not a hidden failed run.
+The existing notebook autosave conflict persisted; no remote overwrite was
+attempted and no cloud notebook save is claimed. Source/recipe are in Git;
+both complete execution archives and screenshots are in D/Git. This UI
+persistence warning does not change the executed source or matching bytes.
+Initial persistent-controller question remains pending, no repeated consent
+or login request, no fabricated activation or duplicate public v6.
+
+Scope limitation: only D3,n2,trivial background and original defined repair.
+Analytic internal-coordinate embedding works for everyNc>=2; finite replay
+is onlyNc2. Derivative nD scales energies/targets byn^2, so16 becomes64
+atn2, not a claimed physical spectral gap or continuum result. We prove a
+failure of THIS partition at THIS exact target, not failure of every good
+rectangular partition or the asymptotic critical inverse-moment rank order.
+We have discharged the actual-coexact-transport gap of165 for this example;
+strict margin/critical-kernel compatibility is still substantive. Original
+positive rectangle question OPEN,common-refinementSTOPPED3,PR29=20/41,
+TermSource0. Keep supporting closed results grouped; next integrate into
+one manuscript appendix/revision with explicit dictionary and fresh exact
+PDF review, not a separate small paper or repeated already-passing fixtures.
