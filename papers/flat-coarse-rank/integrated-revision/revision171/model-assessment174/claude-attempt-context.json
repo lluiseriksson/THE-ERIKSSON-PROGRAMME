@@ -1,0 +1,14 @@
+{
+  "attempt": "Claude Code fresh exact-PDF review",
+  "client_version": "2.1.287",
+  "auth_method": "Existing claude.ai Max subscription",
+  "pdf_sha256": "9070f806e9069fd4b1fa54ec24527bc0cfcc03ddfce91b1206ed9358f6ce70c6",
+  "status": "NOT_EVALUATED",
+  "error_code": "oauth_not_allowed_for_organization",
+  "http_status": 403,
+  "message": "Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+  "model_identity": "No inference occurred; requested alias opus did not resolve to a reported evaluated model",
+  "actual_model_usage": {},
+  "new_paid_api_used": false,
+  "report_available": false
+}

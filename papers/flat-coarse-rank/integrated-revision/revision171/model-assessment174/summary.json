@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "assessment_type": "scientific_model_assessment_not_peer_review",
+  "single_exact_artifact_review": true,
+  "pdf_path": "D:\\Entregas\\the-eriksson-programme\\2026-11-07_integrated-revision171\\flat_critical_integrated.pdf",
+  "pdf_sha256": "9070f806e9069fd4b1fa54ec24527bc0cfcc03ddfce91b1206ed9358f6ce70c6",
+  "pages": 58,
+  "configured_model": "gpt-6-astra (original spawn configuration)",
+  "served_model_identity": null,
+  "reasoning_setting": null,
+  "prior_agent_involvement": "Reviewed eight-page ancestor and correction; did not prepare manuscript",
+  "independence": "Same orchestrated chat/account/provider; nonblind; historical scores visible in current PDF",
+  "external_historical_score_reports_opened": false,
+  "numerical_score": null,
+  "decision": "No demonstrated principal mathematical blocker to clearly labelled working-paper release; qualified reading assessment",
+  "principal_theorem_counterexample_found": false,
+  "all_page_images_individually_inspected": true,
+  "manifest_hashes_checked": 64,
+  "manifest_mismatches": 0,
+  "lean_or_scientific_computation_executed": false,
+  "full_dependency_audit_completed": false,
+  "manuscript_modified": false,
+  "publication_performed": false,
+  "report_path": "D:\\Datos\\the-eriksson-programme\\autonomia\\evidencia-174\\codex-review171\\scientific-review.md",
+  "report_sha256": "d0243817b95036154ee630108430acadeb1abfa6ba82b38eff7f341f70691cee",
+  "objections": [
+    {
+      "severity": "minor",
+      "finding": "Trigonometric quotient needs sin(x) nonzero or continuous-extension convention",
+      "id": "R1",
+      "location": "p16 Proposition11.3",
+      "blocks_principal_result": false
+    },
+    {
+      "severity": "minor",
+      "finding": "Immediate predecessor v5 wording conflicts with current parent v6",
+      "id": "R2",
+      "location": "pp20-21 vs44",
+      "blocks_principal_result": false
+    },
+    {
+      "severity": "verification_limit",
+      "id": "R3",
+      "finding": "No independent full Lean/dependency or execution corpus audit; O6-type limitation retained"
+    },
+    {
+      "severity": "originality_limit",
+      "id": "R4",
+      "finding": "Classical mechanisms; priority of particular examples/adapters unestablished"
+    },
+    {
+      "severity": "substantive_open_problem",
+      "id": "R5",
+      "finding": "General critical rectangular observation construction unresolved"
+    },
+    {
+      "severity": "programme_scope_limit",
+      "id": "R6",
+      "finding": "No interacting/continuum form identification or physical mass gap"
+    },
+    {
+      "severity": "editorial",
+      "id": "R7",
+      "finding": "Long dossier structure and repeated historical/operational records reduce accessibility"
+    }
+  ],
+  "primary_sources_checked": [
+    "https://arxiv.org/pdf/1206.3325",
+    "https://arxiv.org/pdf/1408.2187",
+    "https://arxiv.org/pdf/1312.5473v6"
+  ],
+  "source_access_limit": "de Berg cited PDF failed to open; Albert/Carlson not newly full-text audited",
+  "stronger_claims_blocked": [
+    "Human peer review or editorial acceptance",
+    "Independent complete formal verification",
+    "New general Cwikel/Schur principle",
+    "Solved general critical rectangular rank-order problem",
+    "Interacting or continuum Yang-Mills mass-gap result"
+  ]
+}
