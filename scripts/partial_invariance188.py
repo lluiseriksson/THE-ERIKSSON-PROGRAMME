@@ -11,7 +11,7 @@ def balanced(n,m):
     return [small+1]*large+[small]*(q-large)
 def check_geometry(lengths,m):
     need(sum(lengths)>0 and all(F(m,2)<=x<=m for x in lengths),'unbalanced extrusion')
-def fixture(D,k,n,mode,theta):
+def fixture(D,k,n,mode,theta,fault=None):
     d=D-k; need(d>0 and k>=1,'positive invariant dimension required')
     domain=list(product(range(n),repeat=k))
     def beta(x):
@@ -26,25 +26,26 @@ def fixture(D,k,n,mode,theta):
         need(min(sizes)>=m-1 and min(sizes)>0,'base aspect invariant')
         b=sum((mass[x] for x in product(*(range(lo,hi) for lo,hi in bounds))),F(0))
         node={'m':m,'b':b,'w':F(1,m**d),'children':[]};nodes.append(node)
-        if m>=2 and m**d*b>theta:
+        if m>=2 and (b if fault=="omit_stop_power" else m**d*b)>theta:
             pieces=[[(lo,hi)] if hi-lo==1 else [(lo,lo+(hi-lo)//2),(lo+(hi-lo)//2,hi)] for lo,hi in bounds]
             node['children']=[build(list(child)) for child in product(*pieces)]
             for ch in node['children']:
                 need(F(m,3)<=ch['m']<=F(2*m,3),'child max-side bounds')
             need(len(node['children'])<=2**k,'arity')
         else:
-            if m>1:need(m**d*b<=theta,'accepted mass condition')
-            lengths=balanced(n,m);need(sum(lengths)==n and len(lengths)==(n+m-1)//m,'extrusion cover')
+            if m>1 or fault=="force_singleton_mass":need(m**d*b<=theta,'accepted mass condition')
+            lengths=([m]*(n//m)+([n%m] if n%m else []) if fault=="unbalanced_extrusion" else balanced(n,m));need(sum(lengths)==n and len(lengths)==(n+m-1)//m,'extrusion cover')
             check_geometry(lengths,m)
             # Actual inverse mass on every distinct extrusion shape, not a representative fibre.
             for shape in product(sorted(set(lengths)),repeat=d):
                 z=1
                 for v in shape:z*=v
                 actual=sum((mass[x] for x in product(*(range(lo,hi) for lo,hi in bounds))),F(0))*z
-                need(actual==z*b and actual<=m**d*b,'actual extrusion inverse mass')
+                claimed=b if fault=='omit_invariant_volume' else z*b
+                need(actual==claimed and actual<=m**d*b,'actual extrusion inverse mass')
         return node
     root=build([(0,n)]*k);internal=[x for x in nodes if x['children']];leaves=[x for x in nodes if not x['children']]
-    terminal=[x for x in internal if all(not y['children'] for y in x['children'])]
+    terminal=internal if fault=='overlapping_charge' else [x for x in internal if all(not y['children'] for y in x['children'])]
     rho=F(2,3)**d;isum=sum((x['w'] for x in internal),F(0));tsum=sum((x['w'] for x in terminal),F(0));lsum=sum((x['w'] for x in leaves),F(0))
     need(all(x['w']<x['b']/theta for x in internal),'split charge')
     need(sum((x['b'] for x in terminal),F(0))<=root['b'],'terminal disjoint mass')
@@ -68,12 +69,12 @@ def main():
                 for mode in ['uniform','strong','checker','isolated']:
                     for theta in [F(1,8),F(1),F(8)]:cases.append(fixture(D,k,n,mode,theta))
     mutations=[]
-    mutations.append(rejected(lambda:check_geometry([3,3,1],3)))
-    mutations.append(rejected(lambda:need(F(8)*F(1)<=1,'forgot m^d in stop')))
-    mutations.append(rejected(lambda:need(F(8)*F(1)==F(1),'forgot invariant volume')))
-    mutations.append(rejected(lambda:need(F(1,1)<=F(1,8),'forced singleton acceptance mass')))
+    mutations.append(rejected(lambda:fixture(3,1,7,'uniform',F(125),fault='unbalanced_extrusion')))
+    mutations.append(rejected(lambda:fixture(3,2,2,'uniform',F(4),fault='omit_stop_power')))
+    mutations.append(rejected(lambda:fixture(3,1,4,'strong',F(8),fault='omit_invariant_volume')))
+    mutations.append(rejected(lambda:fixture(3,2,2,'uniform',F(1,8),fault='force_singleton_mass')))
     mutations.append(rejected(lambda:fixture(3,3,2,'uniform',F(1))))
-    mutations.append(rejected(lambda:need(F(1)+F(1)<=F(1),'charged overlapping internal mass as disjoint')))
+    mutations.append(rejected(lambda:fixture(3,2,4,'uniform',F(1,8),fault='overlapping_charge')))
     result={'unit':188,'case_count':len(cases),'cases':cases,'mutation_rejections':len(mutations),'all_mutations_rejected':all(mutations),'scope':'Exact finite tree/geometry/mass/rank diagnostics, not all-size proof or local spectral verification','formal_verified':False,'independent_replication':False}
     need(result['case_count']==648 and result['mutation_rejections']==6,'explicit acceptance counters')
     raw=(json.dumps(result,sort_keys=True,separators=(',',':'))+'\n').encode();open('payload188.json','wb').write(raw)
