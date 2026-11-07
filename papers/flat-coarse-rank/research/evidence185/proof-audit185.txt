@@ -1,0 +1,93 @@
+ADVERSARIAL SOURCE-PROOF AUDIT — RESEARCH UNIT 185
+Date: 2026-11-07
+
+ARTIFACT AND REVIEW CONTEXT
+
+Source actually read, all 271 lines:
+C:\Trabajo\the-eriksson-programme\coexact-family-20261031\papers\flat-coarse-rank\research\2026-11-07_laminated-rectangles185.txt
+SHA256: cee3556c1ff9dd99a69b3d62b20f6528818926cca2734b2728b51ce9e4fdd407
+The source declares parent 296498e2106a65efaecad49adb9341f5c695172e. That declaration is recorded, not represented as an independently checked commit-to-file binding.
+
+This is one adversarial correctness audit of this source proof. It is not a numerical manuscript assessment, human peer review, publication authorization, independent replication, or a new assessment of public v8. No grades or previous report files were consulted for this task. Historical ancestor-review context remains present in the same orchestrated account/chat/provider; the review is neither blind nor organizationally independent. Provider/interface: OpenAI Codex. The agent was configured as gpt-6-astra in the supplied orchestration context; actual served backend and reasoning setting are unexposed. A configured name is not runtime attestation.
+
+Methods: read the exact source and its line-numbered text, verify its SHA256, analytically check formulas and constructions, and read D:\LEEME.md. No applicable AGENTS.md file was found at the checked C:\Trabajo ancestor/project/papers/research paths; supplied global instructions were followed. No local mathematical code, Lean, Lake, rendering, numerical oracle, build, source mutation, git mutation, runtime creation or other-reviewer consultation occurred. Hashing and report writing are the only local processing beyond reading. The author's reported bibliography/retrieval checks and any prepared driver execution were not independently repeated. No claim of full literature priority review is made.
+
+DISPOSITION
+
+The principal finite theorem (A)-(B), its target-rank corollary, and the two examples withstand this analytical audit. I found no demonstrated counterexample or missing hypothesis that blocks the laminated theorem as written. The local weighted estimate is derived from actual internal edges, and the tree charge has the correct critical exponent and a finite geometric bound for arbitrary integer n, including odd n. K=c follows directly from the orthogonal mean decomposition; no extra Schur compatibility hypothesis is needed.
+
+One substantive communication distinction must be retained: section 4 supplies a family with a common M=2 and a strict moment <2 at every finite size. It does NOT supply a common fixed M<2 for the whole unbounded family as currently parametrized. The moments tend to 2. The source title 'fixed-M positive family' is valid with M=2, but the task's shorthand 'M<2 family' must not become a uniform M<2 claim. This does not invalidate any displayed theorem or the separation from the earlier fixed coefficient-gap class.
+
+Additional nonblocking precision requests concern complex versus real output dimension, terminology for the local Poincare constant, singleton gap convention, and what 'optimal-order' establishes. None is a discovered failure of the central construction. Detailed derivations, objections and falsifiers follow.
+
+1. QUANTIFIERS, NORMALIZATION AND ACTUAL LOCAL ENERGY
+
+Lines 9-46: D is an integer dimension at least 3, n an integer at least 2, c>0, p=D/2, and each alpha is strictly positive. The partition may depend on alpha, c, n and D, but not on U. The same partition works simultaneously for all scalar or component fields. No bounded contrast, coefficient separation or monotonicity enters the argument. The constants in (B) depend only on D (and the displayed factor c^p). The result on all fields indeed restricts to any chosen coexact subspace without additional assumptions.
+
+Lines 50-90: write E_1 for the internal longitudinal energy and E_perp for the internal transverse energy. For a cut m-vertex path, the resistance appearing in a path from r to s is at most R_I, because the latter includes every starting vertex in I, including the unused terminal start. Thus |u(r)-u(s)|^2 <= R_I E_1 on that fibre. The exact identity Var_I=(1/m) sum_{r<s}|u(r)-u(s)|^2 gives Var_I <= (m-1) R_I E_1/2 <= m R_I E_1/2. This deliberately coarse constant is correct; no effective-resistance approximation or unjustified use of an exterior edge occurs.
+
+For the unweighted l-vertex path, Cauchy along a pair path gives the coefficient (1/l) sum_{r<=k<s}(s-r) at edge k. Bounding (s-r)/l by 1 leaves k(l-k)<=l^2/4. Hence the stated Var<=l^2 E/4 is valid, including l=1 with zero variance and energy. Tensorization on the product Z uses commuting orthogonal coordinate averages. Equivalently, sum the coordinate conditional variances using the product Poincare inequality; the constant is the largest coordinate constant, not its sum. Therefore no missing factor D-1 appears in (3).
+
+For v(y)=m^{-1}sum_x u(x,y), weighted Cauchy gives |D_j v|^2 <= R_I m^{-2} sum_x alpha(x)|D_j u(x,y)|^2. Combining m Var_Z(v) with the m^2/4 tensorized constant yields exactly m R_I E_perp/4. Orthogonal averaging supplies Var_R=sum_y Var_I + m Var_Z(v), so (LOCAL) follows with coefficients mR_I/2 and mR_I/4 as stated. Lamination is genuinely used at this transverse Cauchy step: one common alpha sequence weights every participating fibre. It cannot be replaced by one favorable fibre in a variable transverse field.
+
+Boundary convention is adequate. Even a full-period coordinate is cut to a path for the lower internal energy. Periodic closing edges and cross-rectangle edges are only discarded, never charged twice or given an artificial coefficient. At n=2 the ambient positive-start convention may represent both directions between the two vertices; cutting keeps just the appropriate one and discards the other nonnegative contribution. This does not reverse the energy inequality. All identities use counting measure and unnormalized squared deviations from the arithmetic mean.
+
+Terminology correction, optional but useful: mR_I/2 is a Poincare constant (inverse-gap bound), not the spectral gap itself. The resulting lower gap bound is 2/(mR_I). The displayed inequalities are consistent; only casual wording such as 'gap mR/2' would be reversed.
+
+2. CONSTRUCTION AND THE PENALTY K=c
+
+Lines 99-120: balanced splitting decreases every nonsingleton interval length and terminates in depth at most ceil(log_2 n). Strict splitting when mR_I>2/c accepts equality, exactly as required for a non-strict final quadratic inequality. A terminal nonsingleton has c Var_R<=E_R. A terminal singleton I forces every transverse interval to length 1, so all corresponding rectangles are singleton vertices and their variances vanish, even if R_I>2/c. The algorithm therefore does not require the resistance test to pass at singleton leaves.
+
+For each final I, independent transverse subdivisions give a disjoint rectangular partition of its slab; the slabs themselves are disjoint and cover the torus with the selected cut. Mixed transverse final lengths cause no problem because the local estimate needs only lengths <=m. On each component, ||U||^2=sum_R Var_R(U)+sum_R |R||mean_R U|^2. Summing the internal inequalities and using sum_R E_R<=E_a proves (A) with exactly K=c for all U. Constant fields also show why a penalty at least c is necessary for this normalized mean observation on all fields.
+
+Dimension convention clarification at lines 19-20 and 34-38: h#P is the output dimension over the chosen scalar field. For a complex field of complex dimension h, the same output has real dimension 2h#P. If the target rank is defined over the reals, either restrict that displayed dimension statement to real h or explicitly insert this conversion. It is not a failure of (A), (B), or their componentwise proof.
+
+3. CRITICAL CHARGING AND ODD SIZES
+
+Lines 125-146: p>1, so Holder applies. Raising mR_I>2/c together with R_I<=m^(1-1/p)b(I)^(1/p) yields b(I)>(2/c)^p m^(1-2p). Since d=2p-1, w(I)=m^{-d}<(c/2)^p b(I). The direction of the implication is correct; one does not infer a resistance failure from b alone.
+
+Every finite internal-node subtree has a terminal internal descendant. Terminal internal nodes have no internal children; they are incomparable and hence their underlying intervals are disjoint. Assign each internal node to any one terminal internal descendant. For a balanced split with m>=2, floor(m/2)>=m/3 and ceil(m/2)<=2m/3. The extremal odd case m=3 gives precisely the 1/3 and 2/3 bounds; m=2 also satisfies both. Along a path from ancestor I to descendant J at distance k, w(I)<=r^k w(J) for r=(2/3)^d. Nodes assigned to a fixed J are on its single ancestor path at distinct depths, so their total weight is at most w(J)/(1-r). Each internal node has been assigned once, and the terminal intervals have disjoint inverse-moment mass. This proves (5) without a hidden logarithm or a power-of-two assumption.
+
+The leaf-weight identity is w(root) plus the sum over actual splits of w(child1)+w(child2)-w(parent). Each increment is at most 2*3^d w(parent) (a safe bound discarding the negative term). Thus (6) follows. There is no need to assume that both children split or that terminal leaves satisfy a lower moment bound.
+
+For a leaf of length m the transverse cost is exactly ceil(n/m)^d. Since 1<=m<=n, it is at most (2n/m)^d. Multiplying (6) by (2n)^d gives root cost 2^d and split constant 2^d*2*3^d=2*6^d. Inserting (5) and sum_X a^{-p}=n^d sum_{x1}alpha^{-p} yields precisely B_D in (B). The root-not-split case has one cell and is included. Excessively weak data may produce all singleton cells; the charge still applies.
+
+Lines 162-164: inverse moment <=M gives sum_X a^{-p}<=M n^D/mu^p. For mu>=1, mu^{-p}<=2^p/(1+mu)^p. Set s=n^D/(1+mu)^p; then 2^d+A s <=(2^d+A)max(1,s). This proves (TARGET) without an omitted additive term. Neither the upper bound a<=2mu nor exact-mean identification is used for (A)-(B).
+
+The title 'optimal-order' is supported here in the stated sense of attaining the original target upper order. This note does not itself prove a matching lower bound for every laminate, nor would that be true for every individual coefficient family. If a sharp worst-case minimax interpretation is intended, cite or supply the corresponding lower-bound argument and specify its regime. Do not turn a target-order upper estimate into an unqualified claim of optimality for each coefficient.
+
+4. THIN WEAK LAYER: VALID SEPARATION, BUT M=2 UNIFORMLY
+
+Lines 168-182: take integer t>=2 and n=t^D. Then b=n^(2-2/D)<mu=n^2, while H=(n mu-b)/(n-1)>mu and H<=n mu/(n-1)<=2mu. Thus 1<=a<=2mu and the exact mean is mu. Since (mu/b)^p=n, the weak layer contributes exactly 1 to the normalized inverse moment. The other contribution is (1-1/n)(mu/H)^p<1. The displayed strict inequality (7) is correct for each n.
+
+Important uniform distinction: H/mu=(n-b/mu)/(n-1) tends to 1, and 1-1/n tends to 1. Consequently the moment in (7) tends to 2 from below. For every proposed fixed M<2, sufficiently large members violate moment<=M. The valid uniform admissibility statement is M=2 (or any larger fixed bound); there is no fixed sub-2 margin in this exact family. Calling each finite moment M_n<2 is valid provided its n dependence is explicit. This is the main communication objection in the audit, not a counterexample to the source's theorem. The source's 'fixed-M' wording can be retained with M=2 explicitly stated.
+
+An optional new-family correction, if a common prescribed 1<M<2 is desired, is to multiply b by a fixed factor kappa>1 with 1+kappa^{-p}<M and use sufficiently large n, maintaining b<mu and defining H by the same mean formula. The weak contribution becomes kappa^{-p}, the strong contribution remains <1, and the root resistance remains <2 for sufficiently large n. The lower-bound order survives with an extra kappa^{-d/2} factor. This is an analytic suggestion, not an alteration of or evidence about new source bytes. No such correction is needed to obtain the current M=2 result.
+
+The resistance arithmetic is correct: nR=n/b+n(n-1)/H=n^(-1+2/D)+(n-1)^2/(n^2-b/n). From b<=n^2, the second term is <=(n-1)/n<1; the first is <=1. Hence nR<2, c=1 accepts the root, and one global mean works. For D=3,t=2, H=496/7 and nR=1/2+49/62=40/31. Since b tends to infinity and b/mu tends to zero, for any fixed B and theta>0 a sufficiently large weak-layer value satisfies b>B and b<theta mu. The family therefore escapes that fixed coefficient-gap hypothesis while retaining the uniform M=2 bound.
+
+Minimum-certificate argument (lines 190-202) also checks out. On a rectangle containing the weak layer, min_R a=b. For a cut l-vertex path a linear coordinate test gives quotient 12/[l(l+1)]<=12/l^2; for an uncut full cycle a first Fourier coordinate mode gives 4 sin^2(pi/l)<=4pi^2/l^2<40/l^2. A product-coordinate test has the same quotient on the rectangle. Thus for every transverse side l_j>=2 the necessary certificate condition forces l_j<=sqrt(40b), and length-one sides obey this bound automatically. A rectangle intersects the weak layer in at most (40b)^{d/2} vertices. Disjoint coverage of its n^d vertices gives q>=40^{-d/2} n^{d/D}, exactly (9). A singleton has only one such vertex and obeys the same counting bound.
+
+Clarify lambda_1^0 for a singleton if formalizing the certificate: there is no nonzero mean-zero test space, so its condition is vacuous (or its gap is +infinity). The source's separate singleton counting handles the mathematics, but an undefined numerical gap should not become a hidden convention. This result excludes the minimum-only certificate class, not arbitrary rectangular partitions; the successful one-cell partition is exhibited in the same section.
+
+5. ACTUAL COEXACT COUNTEREXAMPLE TO THE REPRESENTATIVE-FIBRE EXTENSION
+
+Lines 208-234: the coefficient sum is 27+37*64=2395, so mu=2395/64 and 64<2mu. For p=3/2, the stated moment bound uses mu^p<38*(31/5)=1178/5 and (mu/64)^p<1. It equals (31806+185)/320=31991/320<100. No numerical approximation is needed. The selected fibre has four starts of coefficient 64, R=1/16 and nR=1/4<4/15=2/c.
+
+With backward difference D_i^-G(x)=G(x)-G(x-e_i), the two components have opposite adjacent delta values at z and z+e_2, and at z and z+e_1 respectively. A plaquette potential with the corresponding antisymmetric entry generates this field by the backward codifferential (up to the harmless global sign convention). Its backward divergence cancels by commutation. This establishes actual coexactness, not merely a divergence-free surrogate. Each component has zero mean and squared norm 2, so the total norm squared is 4.
+
+For two opposite adjacent deltas at n=4, the gradient energy along their connecting coordinate is 1+4+1=6; each of the other D-1 coordinates contributes 4. Thus the energy per component is 6+4(D-1)=4D+2=14. Both nonzero components contribute independently, giving 28. Every affected forward start is either a support point or a support point minus a coordinate vector, hence lies within {0,1,2}^3. Its actual coefficient is therefore 1. The large exterior coefficients contribute zero energy, so E_a(U)=28 exactly. The global mean observation vanishes, whereas c||U||^2=(15/2)*4=30. The proposed representative-fibre one-cell conclusion is false even on the actual coexact domain.
+
+This witness does not contradict the laminate theorem: its coefficient varies in all three coordinates. It also does not obstruct a different partition in the full general problem, or disprove algorithms that inspect all fibres rather than the favorable selected one. The note makes these distinctions correctly.
+
+6. PRIORITY, RELEVANCE, UNVERIFIED MATTERS AND FALSIFIERS
+
+The current result is a constructive positive theorem for arbitrary one-coordinate laminates, a larger subclass than fixed contrast, fixed coefficient gap or separated weak sites. Its useful feature is actual local energy control together with the critical inverse-moment count and explicit penalty; it does not merely postulate an unproved local-gap input. Section 4 demonstrates one concrete separation from a minimum-coefficient certificate. Section 5 places a real limit on a tempting extension.
+
+This audit does not establish priority. The source identifies weighted Cauchy/Hardy estimates and adaptive tree accounting as classical mechanisms, gives complete elementary proofs rather than importing inaccessible theorems, and discloses limited bibliography access. Those disclosures should remain. I have not independently validated the author's claimed retrieval outcomes, compared the full cited Hardy/adaptive approximation papers, or searched the complete weighted approximation literature. No new-general-theorem priority, independent novelty certificate, or ranking follows from this audit.
+
+No formal proof, executable-driver result, continuum limit, interacting-field construction or physical mass gap has been verified here. The unrestricted critical rectangular question remains open. This audit does not reset project route counters or confirm their historical values; the source's counter statements are recorded as project context, not mathematical consequences.
+
+Concrete falsification targets remain: (i) a laminated rectangle with side lengths <=m and a field violating (LOCAL) under the specified positive-start internal path convention; (ii) a balanced interval tree whose assigned ancestor weights violate the geometric bound (5) or whose actual leaf cost violates (6); (iii) a final partition violating (A) despite the local estimates; (iv) an error in the explicit coexact witness support or codifferential convention. The analytic derivations above address each of these mechanisms. Finite computations may supplement but cannot replace the universal proofs.
+
+Final status: mathematically supported by this source-reading audit, with no identified blocking defect in (A)-(B). Preserve the M=2 versus uniform M<2 distinction and the smaller convention/wording qualifications. No numerical score, publication decision or independence claim is attached.
