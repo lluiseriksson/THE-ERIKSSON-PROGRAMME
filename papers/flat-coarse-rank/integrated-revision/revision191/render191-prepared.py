@@ -66,7 +66,7 @@ try:
     report['pdfinfo']=run(['pdfinfo','flat_critical_integrated.pdf'],'pdfinfo')
     run(['pdftotext','-layout','flat_critical_integrated.pdf','flat_critical_integrated.txt'],'pdftext')
     text=(ev/'flat_critical_integrated.txt').read_text();joined=' '.join(text.split())
-    for required in ('Rectangular means under critical inverse moments','Model assessments and review context','laminate','coexact','Green','retain both positive-start periodic edges','fewer than','648'):
+    for required in ('Rectangular means under critical inverse moments','Model assessments and review context','laminate','coexact','Green','retain both positive-start periodic edges','fewer than','648','Distance two suffices','Independence between neighbours is insufficient','D190'):
         if required not in joined:raise ValueError('Required new content missing: '+required)
     log=(ev/'flat_critical_integrated.log').read_text(errors='replace')
     warnings=[line for line in log.splitlines() if any(s in line for s in ('Overfull','Undefined','undefined references','LaTeX Warning'))]
