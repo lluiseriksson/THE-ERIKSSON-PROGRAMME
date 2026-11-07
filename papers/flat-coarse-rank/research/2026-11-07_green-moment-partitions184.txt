@@ -1,0 +1,348 @@
+SHA context: parent a8eb6f4b4ceee621be9a5f08aa5e9f661577f947
+Research unit184, 7 November2026. Analytical research note; not an AIRR paper,
+not a numerical review, not a Lean result, not a physical mass-gap claim.
+
+STRONG GREEN-MOMENT CERTIFICATES: EXACT PARTITION-COST PHASE DIAGRAM
+
+0. The question being filtered
+
+The sole original critical rectangular observation problem stays open. A
+candidate sufficient local method would replace a local inverse spectral-gap
+bound by a strong Schatten moment of the local Green operator. This note
+proves that the replacement itself imposes unnecessary partition costs even
+on the constant coefficient family. It supplies matching upper constructions,
+not merely a failed particular partition. It does not exclude spectral-gap,
+capacity, truncated counting or weak-Schatten methods in general.
+
+Fix integer D>=3 and s>0, independent of n. Put X=(Z/nZ)^D, N=n^D, n>=2,
+and a(x)=mu=n^2. Counting norms and unit forward differences are used. The
+global scalar energy is E(u)=n^2 sum_{x,i}|u(x+e_i)-u(x)|^2.
+The original coefficient assumptions hold with critical p=D/2 and M=1:
+1<=a<=2mu, mean(a)=mu and mean((mu/a)^p)=1. Moreover
+max(1,N/(1+mu)^p)=1. No contrast or geometric defect is present.
+
+A rectangle R is a product of cyclic integer intervals of lengths l_i in
+{1,...,n}. Its induced internal energy is defined by cutting each coordinate
+to a path. One may alternatively retain the periodic edge in any coordinate
+whose length is exactly n. All conclusions below hold under either convention,
+including mixtures of those conventions. No wrap edge of a shorter interval
+is silently added. Let L_R be the weighted scalar graph Laplacian, with edge
+weight n^2 and the usual counting inner product. It has one constant kernel
+when |R|>0. Define G_R=L_R^dagger, zero on constants, and
+
+    T_s(R)=tr(G_R^s)=sum_{lambda_j(L_R)>0}lambda_j(L_R)^(-s).
+
+For a singleton T_s=0. The strong local certificate considered here is
+
+    T_s(R)<=1 for every leaf R.                                  (C_s)
+
+Since lambda_1^(-s)<=T_s, this really proves variance_R(u)<=E_R(u),
+so it is a sufficient condition, not an invented failing oracle. Summing
+over a partition and adding the squared normalized rectangular means proves
+the original observation inequality with c=K=1 on all scalar fields and,
+componentwise, on every fixed-dimensional cochain field. For the unrestricted
+observation problem the number of output coordinates is h times the cell
+count, for fixed component dimension h. No necessary coexact output rank is
+inferred from a certificate's cell count.
+
+Let q_s(n) be the minimum number of disjoint rectangles covering X that pass
+(C_s). Singletons make q_s(n) finite. The minimum may use arbitrary cuts,
+translations, aspect ratios and non-hierarchical partitions.
+
+THEOREM. For each fixed D>=3 and fixed s>0, as n tends to infinity,
+
+    q_s(n) = Theta_{D,s}(n^(D-2s))       if 0<s<D/2;
+    q_s(n) = Theta_D(log n)             if s=D/2;
+    q_s(n) = Theta_{D,s}(1)             if s>D/2.                 (P)
+
+Nevertheless the true local spectral-gap test already passes on the single
+root rectangle at c=1, even with every periodic edge cut. The original
+periodic energy admits one global mean at c=K=1 for all n. A weak critical
+Green test, stated precisely below, also passes with that same one cell.
+
+1. The actual finite spectra and a successful one-cell control
+
+For the unweighted path of length l, the vectors
+v_k(x)=cos(pi*k*(x+1/2)/l), 0<=k<l, have eigenvalues
+4sin^2(pi*k/(2l)). The interior difference identity follows by addition of
+cosines. At the first endpoint v_k(0)-v_k(1) equals the displayed eigenvalue
+times v_k(0); the final endpoint uses sin(pi*k)=0. These l distinct
+eigenvalues and symmetry give a full orthogonal eigenbasis. For a length-n
+cycle the usual finite Fourier characters have eigenvalues
+4sin^2(pi*k/n), 0<=k<n. At n=2 both positive-start periodic edges are retained,
+so the nonzero cycle eigenvalue is4, whereas the path eigenvalue is2.
+
+Tensor products diagonalize the actual Cartesian product Laplacian. For the
+cut rectangle its positive eigenvalues are therefore
+
+    lambda_k=4n^2 sum_i sin^2(pi*k_i/(2l_i)),
+    k_i in {0,...,l_i-1}, k not all zero.                        (S)
+
+Retaining a full-period edge only adds a positive quadratic form, preserves
+the one-dimensional constant kernel, and increases every ordered positive
+eigenvalue by min-max. This eigenvalue comparison, not an unjustified
+operator-power Loewner inequality, permits the upper estimates below for
+every s>0. For lower estimates we explicitly cover both spectra.
+
+The elementary inequalities sin t>=2t/pi on [0,pi/2] and sin t<=t imply
+lambda_k(root cut)>=4|k|^2. Thus its positive gap is at least4 for all n.
+For the actual periodic root, centered frequency r gives
+lambda_r=4n^2 sum_i sin^2(pi*r_i/n)>=16|r|^2, so its gap is at least16.
+Consequently one normalized mean C(u)=sqrt(N)*mean_X(u) gives
+
+    ||u||^2 <= E(u)+|C(u)|^2.                                  (ONE)
+
+This works componentwise, and hence on the actual flat coexact domain as
+well; the latter has zero global mean and needs no constant-mode repair on
+this homogeneous family. The unit-spacing finite operator has not been
+identified with an interacting or continuum operator.
+
+2. All-partition subcritical lower bound
+
+Every such internal product graph has lambda_max<=4D n^2, under either
+edge convention. If V=|R|, exactly V-1 eigenvalues are positive. Hence
+
+    T_s(R)>=(V-1)/(4D n^2)^s.
+
+Condition (C_s) implies V<=1+(4D n^2)^s. Summing the actual disjoint cell
+volumes gives
+
+    q>=n^D/[1+(4D n^2)^s].                                    (L_s)
+
+For 0<s<D/2 this is Omega_{D,s}(n^(D-2s)). The proof does not assume cube
+shapes, a tree, a mesh or any prescribed arrangement. In particular, for
+D>=3 the ordinary Green trace s=1 forces polynomially many cells while
+(ONE) uses one. Arbitrary positive cross-cell edges in the original energy
+cannot improve this certificate cost, because the certificate discards them
+by its own definition; the original energy itself does not discard them.
+
+3. Critical lower bound for arbitrary aspect ratios
+
+Put p=D/2. Let m=min_i l_i, V=product_i l_i, and
+
+    J(m)=max(0,floor(log_2 m)-2),
+    A_D=2^(-D)*(256D)^(-ceil(D/2)) > 0.
+
+We prove the finite inequality
+
+    T_p(R)>= A_D*(V/n^D)*J(m).                                 (G)
+
+When m<8 its right side is zero. Otherwise set L=floor(log_2 m). For
+j=0,...,L-3 put t_j=2^(j+1)/m and use the product of integer intervals
+
+    ceil(t_j l_i) <= k_i < ceil(2t_j l_i), for every i.          (B_j)
+
+For each coordinate x=t_j l_i>=2, the number of these integers is
+ceil(2x)-ceil(x)>=x-1>=x/2. Thus (B_j) has at least V*t_j^D/2^D modes.
+Every mode is nonconstant, belongs to the actual spectrum, and satisfies
+0<k_i/l_i<2t_j<=1/2. The blocks for different j are disjoint, including
+their exact ceiling endpoints: the next block starts at the previous
+block's excluded upper endpoint.
+
+For a path coordinate use sin(pi*k_i/(2l_i))<=pi*k_i/(2l_i). For a retained
+cycle coordinate use sin(pi*k_i/l_i)<=pi*k_i/l_i. In either case
+
+    lambda_k <=16*pi^2*D*n^2*t_j^2 <256D*n^2*t_j^2.
+
+The pth inverse powers summed in this block are consequently at least
+
+    2^(-D)*(256D)^(-p)*V/n^D >= A_D*V/n^D.
+
+There are exactly J(m)=L-2 blocks. This proves (G), with a deliberately
+small rational constant. No continuum Weyl remainder is invoked.
+
+Now partition X into q rectangles. Call a cell large if its volume is at
+least N/(2q). The other cells cover less than N/2, so large cells cover
+at least N/2. Every side of a large cell is at least n/(2q), since all
+other D-1 sides have length at most n. Summing (G) over large cells gives
+
+    sum_R T_p(R) >= (A_D/2)*
+             max(0,floor(log_2(n/(2q)))-2).
+
+If every cell passes (C_p), the left side is at most q, whence
+
+    q >= (A_D/2)*max(0,floor(log_2(n/(2q)))-2).                 (L_p)
+
+For n>=2^16 this implies the explicit bound
+
+    q >= (A_D/8)*log_2 n.                                     (LOG)
+
+Indeed, if q>=sqrt(n), use sqrt(n)>=log_2 n and A_D/8<=1. Otherwise
+log_2(n/(2q))>(log_2 n)/2-1 and the floored expression in (L_p) is
+at least (log_2 n)/2-4 >=(log_2 n)/4. This proves the critical Omega(log n)
+bound for every rectangular partition, not merely isotropic or hierarchical
+ones. Quantities n, q and side lengths remain integers throughout.
+
+4. Matching upper constructions, including the critical logarithm
+
+Take an ordinary Cartesian mesh whose coordinate interval lengths are at
+most an integer M<=n. All leaves are rectangles; the last interval in a
+coordinate may be shorter. The path spectrum in (S) obeys
+
+    lambda_k>=4n^2*|k|^2/M^2.
+
+For r=max_i k_i>=1 the number of nonnegative integer modes in a shell is
+at most (r+1)^D-r^D<=D*2^(D-1)*r^(D-1). Therefore every leaf satisfies
+
+    T_s(R)<= D*2^(D-1)*4^(-s)*(M/n)^(2s)
+                      *sum_{r=1}^{M-1}r^(D-1-2s).              (U)
+
+Singleton leaves have trace zero. The same estimate holds if the permitted
+full-period edges are retained, by the ordered-eigenvalue comparison above.
+
+If 0<s<p, put b=D-2s>0. The elementary integral estimate bounds the sum in
+(U) by (1+1/b)M^b. Let B=max(1,D*2^(D-1)*4^(-s)*(1+1/b)). Choose
+
+    M=max(1,min(n,floor((n^(2s)/B)^(1/D)))).
+
+When the floor is zero the leaves are singletons. Otherwise (U)<=1.
+For all sufficiently large n, M is at least half the positive quantity
+inside that floor, so q=ceil(n/M)^D=O_{D,s}(n^(D-2s)). Together with
+(L_s), this proves the first line of (P).
+
+If s=p, (U) becomes
+
+    T_p(R)<=(D/2)*(M/n)^D*H_{M-1}
+           <=(D/2)*(M/n)^D*(1+log M).
+
+With B=max(1,D/2), take
+
+    M=max(1,floor(n/[B*(1+log n)]^(1/D))).
+
+Again the floor-zero case is a singleton mesh; otherwise all traces are
+at most1. For large n the cell count is O_D(1+log n). Combining with
+(LOG) proves the critical Theta(log n), not just a divergent lower bound.
+
+If s>p, the sum in (U) is at most 1+1/(2s-D). Define
+B=D*2^(D-1)*4^(-s)*(1+1/(2s-D)) and
+epsilon=min(1,B^(-1/(2s))). Take M=max(1,floor(epsilon*n)).
+Then (U)<=1 whenever M>=2, and singleton cases also pass. For sufficiently
+large n, q<=ceil(2/epsilon)^D, a constant depending only on D,s. Since q>=1,
+this proves the last line of (P).
+
+5. The weak endpoint does not pay the logarithm on this family
+
+For the cut root and p=D/2 define
+
+    W_p(root)=sup_{lambda>0} lambda^(-p)*
+           #{positive eigenvalues of L_root strictly below lambda}.
+
+From lambda_k>=4|k|^2, there are none for lambda<4. For lambda>=4 their
+number is at most (1+sqrt(lambda)/2)^D<=lambda^p. Thus
+
+    W_p(root)<=1                                               (WEAK)
+
+uniformly in n. Retaining periodic edges decreases the counting function,
+so the periodic root satisfies this too. This is equivalently the pth
+power of the weak-S_p quasi-norm of its Green operator. The bound W_p<=1
+implies no positive eigenvalue below1, since the counting function is an
+integer and lambda^p<1 for lambda<1. Thus this weak endpoint test is itself
+a legitimate successful one-cell certificate here, not an appeal to the
+unknown rectangular theorem.
+
+The underlying weak/strong trace-ideal distinction is classical. The
+specific all-rectangle cost lower bound (L_p), matched by the mesh above,
+is a finite programme adapter; no independent originality is asserted.
+Replacing coefficient inverse moments by Green inverse spectral moments
+is not a harmless change of hypothesis. These are different objects. The
+original critical COEFFICIENT moment is exactly1 in this example and is
+not refuted or removed from its global sufficient theorem.
+
+6. Ordinary resistance interpretation (classical identity)
+
+For a connected R of V vertices, define the actual effective resistance
+R_eff(x,y)=(e_x-e_y)^T G_R(e_x-e_y). Since G_R*1=0, summing this identity
+over unordered pairs gives
+
+    sum_{x<y}R_eff(x,y)=V*tr(G_R).
+
+Thus requiring (1/V)sum_{x<y}R_eff(x,y)<=1 is exactly the s=1 certificate,
+and for D>=3 its minimum rectangle count grows like n^(D-2). This does
+not refute using selected resistances, operator norms or capacities. It
+only rejects replacing the true gap by this complete all-pairs trace.
+
+7. Two exact finite controls, derived without an executed oracle
+
+First let D=4,n=4,mu=16 and retain the periodic edges of the root. A single
+coordinate has eigenvalues0,32,64,32. Thus the root has eigenvalues32m
+with multiplicity binomial(8,m), 0<=m<=8: the multiplicity polynomial is
+(1+2z+z^2)^4=(1+z)^8. Its true positive gap is32, but already the m=3,4
+groups give
+
+    T_1(root)>=56/96+70/128=217/192>1.
+
+So the s=1 trace test at c=1 rejects the one-cell solution, although the
+actual periodic energy satisfies the original inequality with that cell.
+A mesh of sixteen length-two boxes has T_1=103/384<1 on each cut box:
+its eigenvalues are32m with multiplicities binomial(4,m). These statements
+are exact finite spectral identities, not floating-point observations.
+
+Second, a critical-endpoint finite example uses c=16 instead of c=1.
+Let n=2 and any fixed D>=3, p=D/2, mu=4. The periodic root has true gap16,
+so one mean and penalty K=c=16 work. Use the corresponding strong test
+
+    16^p*T_p(R)<=1,                                            (C_p,16)
+
+and retain every full-period edge. Every rectangle has r full coordinates
+of length2 and D-r singleton coordinates, for some r. Its positive spectrum
+is16m with multiplicity binomial(r,m), 1<=m<=r. Therefore the left side
+of (C_p,16) is sum_{m=1}^r binomial(r,m)/m^p. It is0 for r=0, equals1
+for r=1, and is at least r>=2 when r>=2. Thus passing rectangles have at
+most2 vertices. Every passing partition has q>=2^(D-1), and a partition
+into disjoint full-period coordinate lines attains equality. The exact
+critical certificate cost is2^(D-1), although the true one-mean solution
+cost is1. With D=4, the rejected root value is865/144. This example keeps
+both positive-start periodic edges at n=2; replacing a cycle by a single
+path edge would change the example and is not permitted silently.
+
+This second control has c=16 and is separate from the c=1 normalization of
+(P). For any other fixed c>0, inserting c^s in (C_s) changes only the
+constants in the three partition-cost estimates: multiply the lower trace
+bounds by c^s and the upper bound constants B by c^s. No fixed rescaling
+of the strong critical trace removes its logarithmic asymptotic overhead.
+
+8. Verification, provenance, novelty and next work
+
+The displayed proof is self-contained finite analysis. Its spectra follow
+from the actual path/cycle edge dictionaries, the endpoint logarithm from
+explicit disjoint mode blocks, and the upper cost from a real covering mesh.
+No structure is supplied containing the desired local inequality. No Lean
+verification, exact finite replay, external review or numerical star rating
+is claimed in this note. A finite replay driver prepared with this note is
+not evidence of execution. New tests, if any, belong on own Colab Linux.
+
+Primary literature checked for scope, not exhaustive priority:
+
+[1] R. L. Frank, Cwikel's theorem and the CLR inequality, arXiv:1206.3325v1,
+    https://arxiv.org/pdf/1206.3325 ; Introduction and Lemma2.3.
+    Weak trace-ideal counting is classical; this work is not an invention of
+    that principle. Publication identity checked against
+    https://ems.press/journals/jst/articles/12465 .
+[2] D. Hundertmark, P. Kunstmann, T. Ried and S. Vugalter, Cwikel's bound
+    reloaded, CRC preprint2018/24, revised September2022,
+    https://www.waves.kit.edu/downloads/CRC1173_Preprint_2018-24.pdf ,
+    Section7, equation(7.1) and Theorem7.1. It is context for weak ideals;
+    no full PDE theorem is transplanted into our finite rectangular setting.
+[3] D. J. Klein and M. Randic, Resistance distance, J.Math.Chem.12(1993),
+    81-95, https://doi.org/10.1007/BF01164627 . Publisher metadata and abstract
+    were accessible, full text was not. The identity needed above is derived
+    here rather than asserted on the basis of inaccessible full text.
+
+An unrelated arXiv identifier1707.01639 was opened during discovery and
+discarded; it is not a source for any mathematical claim. A separate
+resistance-sum PDF lookup returned418; no availability or permission inference
+is made. We have not certified originality of (P). Its general mechanisms
+are classical, and publishing a separate small-corollary paper is not planned.
+
+The sole active question remains the original unrestricted critical
+rectangular observation theorem. Mechanism update: a local construction
+may use actual gaps, capacity or a weak/counting formulation; a pure strong
+critical Green-moment certificate cannot provide its uniform target order.
+This excludes one proposed certificate class, not every trace-based hybrid.
+Falsator of the present theorem: an actual rectangular partition of the
+homogeneous family passing all exact strong critical traces with a cell count
+violating (L_p), under the stated edge/normalization conventions. Check that
+before trying to rescue this route. Abandon deriving optimal original rank
+solely from (C_s) for s<=D/2: (P) proves its unavoidable overhead. Do not reset
+stopped-route counters or claim this negative mechanism result closes the
+original question. PR29 remains20/41,TermSource0; continuum remains open.
