@@ -1,0 +1,210 @@
+% Proof fragment for the existing flat-coarse-rank dossier; no standalone paper.
+% All norms below use counting measure. Analytic proof, not Lean verified.
+\section{A finite proof of the critical rectangle estimate}
+\label{sec:self-contained-box-sobolev}
+This supplement derives the balanced-cube endpoint used by the rectangle
+adapter, rather than importing a local Sobolev estimate as an external input.
+The method is classical: finite entropy proves the projection inequality,
+which yields relative edge isoperimetry, layer sets, and a power argument.
+We claim neither a new general Sobolev principle nor a solution of the open
+critical rectangular-partition problem. This is part of the existing dossier.
+
+Fix $D\geq3$, and put
+\[
+ \begin{gathered}
+ p=D/2,\quad q=\frac{2D}{D+2},\quad q'=\frac{2D}{D-2},\\
+ \alpha=\frac{2(D-1)}D,\quad c_D=D(1-2^{-1/D}),\quad
+ K_D=\frac{2\alpha D^{1/q'}}{c_D}.
+ \end{gathered}
+\]
+An internal axis edge is an unordered adjacent pair, counted once. For its
+positive-axis orientation $e=(x,x+e_i)$, write $du(e)=u(x+e_i)-u(x)$.
+
+\subsection{Finite projection inequality, with proof}
+For a nonempty finite $A\subset\prod_{j=1}^D X_j$, let $\pi_i$ delete
+coordinate $i$. Then
+\begin{equation}\label{eq:finite-projection}
+ |A|^{D-1}\leq\prod_{i=1}^D|\pi_i A|.
+\end{equation}
+Here is a finite proof, including the entropy facts needed for this use.
+For a finite probability vector $r$, define $H(r)=-\sum r\log r$ with
+$0\log0=0$. Concavity follows from $(-t\log t)''=-1/t<0$ and continuity at
+zero. Consequently mixing conditional distributions cannot decrease their
+average entropy: $H(Y\mid Z)\geq H(Y\mid Z,W)$. Factoring finite joint
+probabilities proves the chain rule
+$H(X)=\sum_jH(X_j\mid X_1,\ldots,X_{j-1})$.
+Also $H(Y)\leq\log|\operatorname{supp}Y|$: Jensen's inequality for $\log$
+gives $\sum_y r_y\log(1/r_y)\leq\log\sum_y r_y/r_y$ on the positive support.
+For $X$ uniform on $A$, $H(X)=\log|A|$, while
+\[
+ \begin{split}
+ \sum_i H(X_{-i})
+ &=\sum_i\sum_{j\ne i}H(X_j\mid X_{<j}\setminus X_i)\\
+ &\geq\sum_i\sum_{j\ne i}H(X_j\mid X_{<j})
+ =(D-1)H(X).
+ \end{split}
+\]
+The notation in the conditioning set means omit $X_i$ only when $i<j$.
+Bounding each $H(X_{-i})$ by $\log|\pi_i A|$ and exponentiating proves
+\eqref{eq:finite-projection}. No projection inequality is an unproved
+hypothesis in the sequel.
+
+\subsection{Relative isoperimetry on a finite cube}
+Let $Q_s=\{0,\ldots,s-1\}^D$, $s\geq2$, and let $\partial_E A$ consist
+of internal cube edges crossing $A$ and its complement. If
+$0<|A|\leq |Q_s|/2$, then
+\begin{equation}\label{eq:relative-edge-iso}
+ |\partial_E A|\geq c_D|A|^{(D-1)/D}.
+\end{equation}
+Indeed, put $a=|A|$, $P_i=|\pi_i A|$. At most $a/s$ occupied fibers in
+direction $i$ are full. Every occupied nonfull fiber contains an internal
+crossing edge, because the fiber is a connected interval. Edges in distinct
+fibers/directions are different. Thus projection inequality and AM--GM give
+\[
+ |\partial_E A|\geq\sum_i(P_i-a/s)
+ \geq D a^{(D-1)/D}-Da/s
+ \geq D(1-2^{-1/D})a^{(D-1)/D}.
+\]
+Empty $A$ satisfies the same inequality trivially. The boundary is the EDGE
+boundary, not the vertex boundary in a separate graph theorem.
+
+\subsection{Endpoint counting-norm Sobolev--Poincare inequality}
+For every real $u$ on $Q_s$, including $s=1$,
+\begin{equation}\label{eq:self-contained-cube}
+ \sum_{Q_s}|u-\bar u_{Q_s}|^2
+ \leq K_D^2\left(\sum_{e\subset Q_s}|du(e)|^q\right)^{2/q}.
+\end{equation}
+For $s=1$ both sides vanish. For a nonnegative $v$ supported on at most
+half the cube, layer-set decomposition and the triangle inequality in
+$\ell^{D/(D-1)}$, followed by \eqref{eq:relative-edge-iso}, imply
+\[
+ \|v\|_{D/(D-1)}
+ \leq\int_0^\infty|\{v>t\}|^{(D-1)/D}\,dt
+ \leq c_D^{-1}\int_0^\infty|\partial_E\{v>t\}|\,dt
+ =c_D^{-1}\sum_e|dv(e)|.
+\]
+The integrals are finite sums of step lengths between values of $v$;
+the last equality follows edgewise from the length of the interval
+between its two endpoint values. Apply this inequality to $v^\alpha$.
+For $a,b\geq0$, the fundamental theorem of calculus gives
+\[
+ |a^\alpha-b^\alpha|
+ \leq\alpha|a-b|(a^{\alpha-1}+b^{\alpha-1}).
+\]
+Since $\alpha D/(D-1)=2$ and $(\alpha-1)q'=2$, Holder and the degree
+bound $\deg_{Q_s}(x)\leq2D$ give
+\[
+ \begin{split}
+ \|v\|_2^\alpha
+ &\leq\frac\alpha{c_D}\Big(\sum_e|dv(e)|^q\Big)^{1/q}
+ \Big(\sum_{e=\{x,y\}}(v(x)^{\alpha-1}+v(y)^{\alpha-1})^{q'}\Big)^{1/q'}\\
+ &\leq\frac{2\alpha D^{1/q'}}{c_D}
+ \Big(\sum_e|dv(e)|^q\Big)^{1/q}\|v\|_2^{\alpha-1}.
+ \end{split}
+\]
+The second inequality uses $(a+b)^{q'}\leq2^{q'-1}(a^{q'}+b^{q'})$ and
+$\sum_e(v(x)^2+v(y)^2)\leq2D\|v\|_2^2$.
+If $v=0$ the conclusion is immediate; otherwise division proves
+$\|v\|_2\leq K_D\|dv\|_q$.
+
+Choose a counting median $m$ of $u$ and set $v_+=(u-m)_+$,
+$v_-=(m-u)_+$. Both supports have size at most half the cube. For each edge,
+\[
+ |dv_+(e)|^q+|dv_-(e)|^q\leq|du(e)|^q.
+\]
+For endpoint values on the same side of $m$ this is equality in the
+nonzero part; on opposite sides it is $a^q+b^q\leq(a+b)^q$.
+Since $2/q\geq1$, addition of the two squared estimates gives
+\[
+ \|u-\bar u_{Q_s}\|_2^2\leq\|u-m\|_2^2
+ \leq K_D^2\big(\|dv_+\|_q^q+\|dv_-\|_q^q\big)^{2/q}
+ \leq K_D^2\|du\|_q^2.
+\]
+This proves \eqref{eq:self-contained-cube} without an external graph,
+ball-adapter, coefficient, or boundary-condition hypothesis.
+
+\subsection{Reflection with all aspect-ratio multiplicities}
+Let $R=\prod_i\{0,\ldots,l_i-1\}$, $V=\prod_i l_i$,
+$L=\max_i l_i$, and $\kappa=L^2/V^{2/D}$. If $V=1$ the desired variance
+bound is zero. Otherwise $L\geq2$. Put $s=2L+1$, $r=s^D/V$ and fold
+$Q_s$ coordinatewise onto $R$ by the endpoint-repeating pattern of period
+$2l_i$,
+\[
+ 0,1,\ldots,l_i-1,l_i-1,\ldots,1,0,0,1,\ldots.
+\]
+For $l_i=1$ the fold is constant. Since $s/(2l_i)>1$, each original
+coordinate value has at least $2\lfloor s/(2l_i)\rfloor\geq s/(2l_i)$
+preimages and at most $s/l_i+2\leq3s/l_i$ preimages. An original internal
+edge has at most the same upper count in its own direction; each full
+period traverses it twice. Adjacent folded values either coincide or are
+an original internal edge, possibly with reversed orientation. Thus for
+the unweighted extension $\widetilde u$,
+\[
+ \operatorname{Var}_{Q_s}(\widetilde u)\geq2^{-D}r\operatorname{Var}_R(u),
+ \qquad
+ \sum_{e\subset Q_s}|d\widetilde u(e)|^q
+ \leq3^D r\sum_{e\subset R}|du(e)|^q.
+\]
+The variance inequality holds by applying the preimage lower bound at the
+mean of $\widetilde u$, and then minimizing over constants on $R$.
+Apply \eqref{eq:self-contained-cube}. Since $2/q-1=2/D$ and $s\leq3L$,
+\begin{equation}\label{eq:rectangle-unweighted-derived}
+ \operatorname{Var}_R(u)\leq A_D\kappa
+ \left(\sum_{e\subset R}|du(e)|^q\right)^{2/q},\qquad
+ A_D=K_D^2 2^D 3^{2D/q+2}.
+\end{equation}
+The factor $r$ is not bounded independently of aspect ratio; it was kept
+until it became $s^2/V^{2/D}$. Singleton coordinate sides cause no problem.
+
+\subsection{Positive original edge weights and field coordinates}
+For arbitrary positive ORIGINAL edge coefficients $b_e$, Holder on $R$
+with exponents $2/q$ and $2/(2-q)$ gives
+\[
+ \left(\sum_e|du|^q\right)^{2/q}
+ \leq\Big(\sum_e b_e|du|^2\Big)
+ \Big(\sum_e b_e^{-q/(2-q)}\Big)^{(2-q)/q}.
+\]
+Here $q/(2-q)=D/2=p$. Consequently
+\begin{equation}\label{eq:rectangle-weighted-derived}
+ \operatorname{Var}_R(u)\leq A_D\kappa
+ \Big(\sum_{e\subset R}b_e^{-D/2}\Big)^{2/D}
+ \sum_{e\subset R}b_e|du(e)|^2.
+\end{equation}
+No reflected weights were introduced: reflection was completed before
+this Holder step. For $b_{(x,x+e_i)}=a(x)>0$, each vertex supplies at most
+$D$ internal starting edges. Thus the inverse edge mass is at most
+$D\sum_Ra^{-D/2}$, proving exactly the scalar-start estimate
+\[
+ \operatorname{Var}_R(u)\leq A_D D^{2/D}\kappa
+ \Big(\sum_Ra(x)^{-D/2}\Big)^{2/D}\mathcal E_{a,R}(u).
+\]
+For any fixed finite real internal/field dimension, apply this scalar
+inequality to each coordinate and sum; its coefficient factor is common.
+There is no additional internal-dimension factor and no replacement of
+original edges by enlarged-region energy.
+
+\subsection{Necessity of geometry and status}
+For uniform $a>0$ and a longest coordinate of length $L\geq2$, put
+$u(x)=x_i-(L-1)/2$. Direct sums give
+\[
+ \operatorname{Var}_R(u)=V(L^2-1)/12,\qquad
+ \mathcal E_{a,R}(u)=aV(L-1)/L,
+\]
+so their ratio is $L(L+1)/(12a)\geq L^2/(12a)$. Since
+$\kappa(\sum_Ra^{-D/2})^{2/D}=L^2/a$, the geometric dependence cannot
+be uniformly dropped even for uniform weights. This is not a global
+counterexample to a partition algorithm or to the physical divergence-zero
+observation problem.
+
+For attribution and comparison see S.~Andres, J.-D.~Deuschel and M.~Slowik,
+\emph{Harnack inequalities on weighted graphs and some applications to the
+random conductance model}, arXiv:1312.5473v6, Section~2.2, (2.5)--(2.8).
+Their local normalized inequalities are classical prior context; this
+proof does not import their theorem, graph assumptions or Harnack conclusions.
+The finite projection/entropy, coarea and power steps above are classical,
+not a new general method. The gain is a complete finite derivation of the
+specific input previously left external. No Lean execution, independent
+review, original-priority claim, new physical hypothesis removal or new
+AIRR paper follows from this supplement. The frozen PDF candidate and its
+actual reports/permissions remain unchanged; integration would create a
+new exact artifact and must not inherit their assessments.
