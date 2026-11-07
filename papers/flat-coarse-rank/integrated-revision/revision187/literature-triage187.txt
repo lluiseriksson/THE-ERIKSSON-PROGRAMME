@@ -1,0 +1,14 @@
+Targeted primary-source triage187 — 7November2026
+This is a bounded new literature pass, not an exhaustive Internet or priority audit. It does not modify the frozen187PDF or its declared review round.
+
+1. Cruz-Uribe, Dal, Rodney, Degenerate Sobolev and Poincare inequalities via extrapolation, arXiv2608.20498v1,20August2026. Primary abstract and HTML inspected, Theorem4.5 equations4.6–4.8, Remark4.7 and John-domain variant4.8. With their energy exponent2, q=2D/(D+2), maximal Sobolev gain, tau1, v1 and scalar coefficient w=a, the inverse-weight exponent q/(2-q) equalsD/2. This supports attribution of the critical local inverse-moment inequality to established weighted Sobolev mechanisms. It does not supply a discrete rectangular partition or a uniform target-order cell count. Domain dependence, endpoint infinity interpretation and a finite-lattice transfer must be checked separately. Inference, not a theorem imported into this programme.
+https://arxiv.org/abs/2608.20498v1
+https://arxiv.org/html/2608.20498v1
+
+2. Claros, Perez, Zheng, From Generalized Poincare to Poincare-Sobolev Inequalities via Self-Improving Methods, arXiv2606.08556v1,7June2026. Primary abstract and AppendixC TheoremC.1 inspected. The rectangular extension assumes a strong rectangular Muckenhoupt weight and a discrete geometric summability condition on the local functional, in addition to local oscillation control. These are obligations to derive from actual coefficients, not free consequences of a global inverse moment. Candidate relevance: test a concrete all-fibre functional for the stated summability before attempting the next transverse extension. No complete proof comparison or novelty determination has yet been made.
+https://arxiv.org/html/2606.08556v1
+
+3. Biskup, Chen, Kumagai, Wang, Quenched Invariance Principle for a class of random conductance models with long-range jumps, arXiv2004.01971v2,15April2021. Primary abstract, introduction and assumption context inspected. Their stochastic QIP uses stationarity/ergodicity and strict moment inequality 1/p+1/q<2/D; it is not the deterministic finite endpoint rectangular-observation statement. Taking p=infinity and q=D/2 gives equality, so this inspected condition cannot be invoked directly. This rejects an unsupported shortcut, not their theorem or all conductance methods.
+https://arxiv.org/html/2004.01971v2
+
+The 2026papers were found through search but verified at primary arXiv pages. Third-party summaries and repository metadata are not used as mathematical evidence. Next work remains a single active critical rectangular question. No new hypothesis has been eliminated by this bibliographic pass.

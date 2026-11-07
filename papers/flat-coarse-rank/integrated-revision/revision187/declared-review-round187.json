@@ -1,0 +1,16 @@
+{
+  "declared_at": "2026-11-07T18:52:38.9270608Z",
+  "unit": 187,
+  "artifact": "D:\\Entregas\\the-eriksson-programme\\2026-11-07_integrated-laminates187\\flat_critical_integrated.pdf",
+  "canonical_sha256": "fb71d19d2f14730d56c861a9e578798c541ec11ac11e5d1a5e2eaf9d75ff03f8",
+  "pages": 71,
+  "bytes": 735011,
+  "source_sha": "437f0e28020dedb34a77cefa7008a6d5c6a7c89e",
+  "round": "One first complete exact full-PDF assessment; no inherited score, no resampling",
+  "selected_available_reviewer": "/root/astra_exact_pdf_review",
+  "configured_model": "gpt-6-astra per existing orchestration; served backend and reasoning effort unexposed",
+  "prior_participation": "Source185 audit and supplement186 assessment; involved, shared history/workspace/account, not blind or independent",
+  "requested_output": "Full report plus overall Millennium0–10 to2decimals, rounded1–10overall stars; five numeric1–5criteria; all objections and recommendation",
+  "public_airr_identity": "Not assigned, draft-scoped; no invented UUID, version_id or receipt",
+  "no_new_spend": true
+}

@@ -1,0 +1,123 @@
+{
+  "record_kind": "draft_scoped_full_exact_pdf_model_assessment",
+  "draft_scoped": true,
+  "native_import_validity": false,
+  "public_airr_binding": "Not assigned; no public version_id, assessment UUID or receipt invented",
+  "artifact_path": "D:\\Entregas\\the-eriksson-programme\\2026-11-07_integrated-laminates187\\flat_critical_integrated.pdf",
+  "canonical_sha256": "fb71d19d2f14730d56c861a9e578798c541ec11ac11e5d1a5e2eaf9d75ff03f8",
+  "pages": 71,
+  "bytes": 735011,
+  "source_context_supplied": "437f0e28020dedb34a77cefa7008a6d5c6a7c89e",
+  "assessed_at": "2026-11-07T18:59:29.6165664Z",
+  "provider_interface": "OpenAI Codex",
+  "configured_model_context": "gpt-6-astra",
+  "served_backend": "unexposed",
+  "reasoning_effort": "unexposed",
+  "participation": "involved_in_manuscript",
+  "participation_basis": "Prior source185 audit, supplement186 assessment and historical ancestor-manuscript review context; shared workspace/account/provider/chat. Not blind or organizationally independent.",
+  "review_scope": "Single first FULL assessment of the complete exact 71-page successor; not a supplement-only follow-up, inherited score or resampling",
+  "rubric": "Current supplied AIRR Millennium scale and five diagnostic criteria",
+  "recommendation": "minor_revision",
+  "millennium_score": 4.6,
+  "millennium_score_display": "4.60",
+  "overall_stars": 5,
+  "overall_label": "Very good",
+  "score_interpretation": "Research-position judgment, not correctness probability or criterion average",
+  "criteria": {
+    "correctness_confidence": {
+      "stars": 4,
+      "basis": "The full text supports central Fourier, tangent, trace, inverse-flow, Schur, spatial and laminate results. A threshold illustration has a convention and quantitative-scope error. No principal theorem failure was demonstrated; no independent formal rebuild was performed."
+    },
+    "rigor": {
+      "stars": 4,
+      "basis": "Actual domains, constants, scalar/physical transfers and singular compatibility are explicit. Local overstatements, stale lineage and integration defects remain."
+    },
+    "novelty": {
+      "stars": 3,
+      "basis": "Finite adapters and examples are plausible specialized contributions. Core mechanisms are classical; targeted Frank, de Berg and weighted-interpolation checks do not establish priority."
+    },
+    "significance": {
+      "stars": 4,
+      "basis": "The combined necessary and sufficient results provide a useful finite observation-design toolkit, including arbitrary laminates. The unrestricted rectangular problem and physical interacting/continuum questions remain open."
+    },
+    "reproducibility": {
+      "stars": 3,
+      "basis": "Complete proofs, matched 128-entry manifest and retained finite logs aid inspection. Scientific workers and historical Lean dependencies were not independently replayed or comprehensively audited."
+    }
+  },
+  "summary": "Full exact-manuscript assessment: 4.60/10, rounded to5 stars, minor_revision. No principal theorem was invalidated by this reading. The finite observation framework combines substantive obstructions, spectral sufficiency, singular-penalty analysis and spatial constructions. Preserve the concrete threshold-method counterexample, methodological overstatement, contradictory lineage, presentation defects and assurance/priority/scope limitations. This is an involved shared-context model report on an unbound draft, not human peer review, independent replication or native AIRR admission.",
+  "strengths": [
+    "Actual real Fourier dimension, separate sector budgets and uniform quantifiers are derived rather than assumed.",
+    "Tangent and regular-sector hypotheses are tested by explicit counterexamples; singular Schur compatibility prevents false sufficiency.",
+    "Scalar and matrix inverse-moment sufficiency, actual physical cycle transfers and exact critical penalty behavior are inspectable.",
+    "Arbitrary-laminate rectangles attain the target upper order with K=c; strong Green certificate costs have matching all-partition asymptotics.",
+    "Scope distinctions between certificates, algorithms, observations and physical domains are generally retained."
+  ],
+  "potential_errors": [
+    "O1, p59 section29.3: at-or-above-b singleton wording conflicts with strict a<tau isolation. The unqualified t^D cell lower bound is false for all sufficient uniform meshes: for even t, tau=b=t^2, n=t^2, c=1, side2t mesh gives(t/2)^D cells, no excisions, and L(L-1)/(4b)<1. Name the sqrt-mesh algorithm or correct to the appropriate Omega(t^D) statement. Principal theorems survive.",
+    "O2, p62 final paragraph: must use local energy or capacity suggests an exhaustive classification not proved. Recast as a research recommendation or the limitation of the particular methods in isolation.",
+    "O3, p21 versus pp44-45,68: v5 and v8 are both described as immediately preceding. Label v5 historical and reconcile current lineage; remove stale future-integration boilerplate."
+  ],
+  "weaknesses": [
+    "O4: abstract spans pages1-2; the source185 hash splits across pages68-69. Keep identifiers together, shorten the abstract and repair missing prose spaces. Populated PDF metadata is observed in the supplied report.",
+    "O5: no independent full Lean rebuild, dependency-closure audit or scientific execution. Supplied matching payloads/zero exits are not independent replication or all-size proof.",
+    "O6: priority remains unresolved, classical overlap substantial, positive spatial classes restricted, general rectangular and continuum/physical questions open.",
+    "O7: new evidence locators and supporting archives improve access, but the entire dossier needs a compact theorem/status/public-evidence map; scattered hashes and runtime narratives impede auditing."
+  ],
+  "strong_novelty_candidates": [
+    "Specialized finite physical-domain adapters and quantitative counterexamples; priority unverified.",
+    "Explicit arbitrary-laminate critical inverse-moment rectangular construction and all-aspect strong Green certificate-cost theorem; classical mechanisms acknowledged.",
+    "Exact prescribed-mean penalty optimum and actual coexact leading-residue transfer within the stated finite example."
+  ],
+  "unresolved_material_objections": [],
+  "material_objection_scope": "No demonstrated invalidation of a principal theorem. O1 is still a genuine local quantitative counterexample requiring explicit disposition; absence from this principal-claim list does not erase it.",
+  "verification": {
+    "source_or_pdf_modified": false,
+    "publication_action": false,
+    "manifest_entries_verified": 128,
+    "exhaustive_priority_audit": false,
+    "formal_rebuild": false,
+    "contact_sheet_page_coverage": 71,
+    "individual_full_size_pages_inspected": [
+      23,
+      47,
+      59,
+      62,
+      67,
+      68,
+      69
+    ],
+    "supporting_archives_reports_payloads_read": [
+      "184",
+      "185"
+    ],
+    "supporting_recorded_zero_exits_read": 16,
+    "manifest_mismatches": 0,
+    "contact_sheets_inspected": 12,
+    "complete_text_pages_read": 71,
+    "independent_replication": false,
+    "other_models_contacted": false,
+    "scientific_execution": false,
+    "older_numeric_report_files_opened": false
+  },
+  "primary_sources_checked": [
+    {
+      "url": "https://arxiv.org/pdf/1206.3325v1",
+      "scope": "Theorem3.1 hypotheses and constant, adjacent context"
+    },
+    {
+      "url": "https://ics-archive.science.uu.nl/research/techreps/repo/CS-1998/1998-12.pdf",
+      "scope": "Section2.1 splitting strategy and nearby size analysis"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1402.1916v2",
+      "scope": "Theorem5.7 and nearby assumptions/context"
+    }
+  ],
+  "input_hashes": {
+    "review_zip": "9110c1f6b967b9d984a4bcdbf4871002155b3f88da237d41d8139196cee51171",
+    "complete_text": "71b6bdd63550375b04de2591bea0932a17ae06c66db3ae07bb733fc336a56599"
+  },
+  "full_report": "report-exact187.md",
+  "full_report_sha256": "a24a5b62d0cbaf99cec335e6d459e768af0df66f2f8b0cbae09546866dc1f8aa"
+}

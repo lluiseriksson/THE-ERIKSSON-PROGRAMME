@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-07T18:54:25.2330510Z",
+  "manifest_subjects": 128,
+  "archive_entries": 129,
+  "manifest_mismatches": [],
+  "actual_zero_exits": 10,
+  "nonzero_or_invalid_exits": null,
+  "source_sha": "437f0e28020dedb34a77cefa7008a6d5c6a7c89e",
+  "pdf_sha256": "fb71d19d2f14730d56c861a9e578798c541ec11ac11e5d1a5e2eaf9d75ff03f8",
+  "no_windows_build": true,
+  "no_formal_verification": true
+}

@@ -1,0 +1,95 @@
+{
+  "attempt": "A",
+  "child_maxrss_kib": 127660,
+  "compute_units_billed": null,
+  "elapsed_seconds": 81.75024804600002,
+  "execution_plane": "Own Colab Linux CPU",
+  "finished_utc": "2026-11-07T18:40:15.190210+00:00",
+  "independent_review": false,
+  "layout_warnings": [],
+  "model_assessment": null,
+  "numeric_stars": null,
+  "page_count": 71,
+  "pdf_bytes": 735011,
+  "pdf_sha256": "fb71d19d2f14730d56c861a9e578798c541ec11ac11e5d1a5e2eaf9d75ff03f8",
+  "pdfinfo": "Title:           Coarse information and finite rank obstructions for flat lattice Hodge forms\nSubject:         Finite weighted observations and rectangular constructions\nKeywords:        flat lattice, Hodge form, inverse moment, rectangular partition, laminate\nAuthor:          Lluis Eriksson\nCreator:         LaTeX with hyperref\nProducer:        pdfTeX-1.40.25\nCreationDate:    Sat Nov  7 00:00:00 2026 UTC\nModDate:         Sat Nov  7 00:00:00 2026 UTC\nCustom Metadata: yes\nMetadata Stream: no\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           71\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       735011 bytes\nOptimized:       no\nPDF version:     1.5\n",
+  "pdflatex_version": "pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian)\nkpathsea version 6.3.5\nCopyright 2023 Han The Thanh (pdfTeX) et al.\nThere is NO warranty.  Redistribution of this software is\ncovered by the terms of both the pdfTeX copyright and\nthe Lesser GNU General Public License.\nFor more information about these matters, see the file\nnamed COPYING and the pdfTeX source.\nPrimary author of pdfTeX: Han The Thanh (pdfTeX) et al.\nCompiled with libpng 1.6.43; using libpng 1.6.43\nCompiled with zlib 1.3; using zlib 1.3\nCompiled with xpdf version 4.04\n",
+  "poppler_version": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n",
+  "published": false,
+  "python": "3.13.18",
+  "source_hashes": {
+    "flat_critical_integrated.tex": "97d2ba0933c638c31b97d36255651116e52cdf4b973d3a4272fa680e1b4922fb",
+    "laminates-green.tex": "dad148850b01a90372bebe732836b98926bb6927dcdd0602d1a1638a08ae2bc4",
+    "partition.tex": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+    "physical-cycle.tex": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+    "sobolev.tex": "879f895b69eb04fd41c26fd4e4bd779dcdfe7d9547c22181c6d4313f343bdb43",
+    "spatial-geometry.tex": "3ed30b9aa05bc105266a1512adb2dcf1e801600e5a7c6ce914f196b90d369fca"
+  },
+  "source_sha": "437f0e28020dedb34a77cefa7008a6d5c6a7c89e",
+  "started_utc": "2026-11-07T18:38:53.439936+00:00",
+  "status": "PDF_RENDERED_PENDING_VISUAL_REVIEW",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "apt-update",
+      "seconds": 4.17037865400016,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "apt-install",
+      "seconds": 51.170735341999944,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdflatex-version",
+      "seconds": 0.003158949999942706,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "poppler-version",
+      "seconds": 0.03071954300003199,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-first",
+      "seconds": 0.954174858000215,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-second",
+      "seconds": 0.928179683000053,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "latex-final",
+      "seconds": 0.9492194480001217,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdfinfo",
+      "seconds": 0.016785257000037745,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "pdftext",
+      "seconds": 0.4178936309999699,
+      "timed_out": false
+    },
+    {
+      "exit_code": 0,
+      "label": "render-pages",
+      "seconds": 16.81933917299989,
+      "timed_out": false
+    }
+  ],
+  "unit": 187,
+  "visual_review": "PENDING"
+}

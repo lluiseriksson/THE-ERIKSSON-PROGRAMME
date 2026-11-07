@@ -1,0 +1,22 @@
+Unit187 full-manuscript integration — exact artifact record
+
+Title: Coarse information and finite rank obstructions for flat lattice Hodge forms.
+Source commit: 437f0e28020dedb34a77cefa7008a6d5c6a7c89e.
+PDF: flat_critical_integrated.pdf,71pages,735011bytes.
+PDF SHA256: fb71d19d2f14730d56c861a9e578798c541ec11ac11e5d1a5e2eaf9d75ff03f8.
+Full render archive: tep187-review.zip,21806661bytes.
+Archive SHA256: 9110c1f6b967b9d984a4bcdbf4871002155b3f88da237d41d8139196cee51171.
+
+This full successor integrates the substantive184–185 laminate construction, Green-certificate phase diagram and coexact representative-fibre counterexample into the existing63pagev8 dossier. It is not a new small-corollary paper. The exact n2 retained-periodic-edge convention, copyable source/evidence locators and PDF metadata are supplied. Unit187 itself is consolidation, not a new mathematical theorem or unrestricted hypothesis elimination.
+
+Build: one own Colab Linux CPU/highRAM50.99GB execution,81.750248046seconds,peak childRSS127660KiB,10actual zero exits, three successful TeX passes, final warning-free log, all71Poppler page PNGs.128manifest subjects plus manifest itself129entries verified with no mismatch. All12contact sheets inspected; newproof/context pages63,64,67,68 separately enlarged. No clipping or overlap seen; residual compressed prose joins and short final bibliography page are editorial limits. Windows did only editing/Git/hash/archive preservation, no scientific computation, TeX/Lean build or rendering.
+
+Runtime request18:38:38.968Z; release18:52:04.440Z,2026-11-07. Request-to-release805.472seconds includes export recovery, not uninterrupted productive execution. Giant HTML export and ordinary download failed; preserve this operational failure. The SAME own session's existing archive was recovered through a fresh notebook view and ten plain-text chunks. The recovered full archive matches the original byte count and SHA256 exactly; TeX was not rerun. Screenshot capture unavailable on new tabs; disconnection observed as Återanslut through UI. Billing units unknown. Source recipe, complete logs, exit files, environment and full page images are retained.
+
+A single first exact71page model-assessment round was declared before its request. The eight-page186 assessment and publicv8 grade are historical only and cannot transfer to this changed artifact. Model report, numerical stars and factual participation/context limitations must accompany any new publication. No human peer review, independent replication, exhaustive priority or editorial acceptance is claimed.
+
+Existing public predecessor: https://airr.science/papers/ARR-2026-7EPM3V3DP796BBRR/versions/v8/
+Its PDF SHA256: b68cbb3d02fe96edae263a4ad36c1be471302f488e79cdc8de6f2d771250b3ea.
+No new native AIRR version, UUID, receipt, Working-paper release or acceptance is asserted for187. The trusted native catalogue/postrelease reconciliation remains pending usable authorized server access. Do not use a new-submission case, alter security/quotas, or infer expiry from unavailable lookup.
+
+Scientific boundary: the laminate theorem retains one-coordinate dependence; the strong Green lower bounds concern a sufficient certificate, not successful observations; the representative-fibre example does not refute the unrestricted rectangular problem. General transverse variation and the physical continuum problem remain open. PR29 remains20/41 andTermSource0.

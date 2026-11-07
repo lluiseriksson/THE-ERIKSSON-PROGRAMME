@@ -1,0 +1,8 @@
+{
+  "released_utc": "2026-11-07T18:52:04.440Z",
+  "disconnected_ui_verified": true,
+  "archive_bytes": 21806661,
+  "archive_sha256": "9110c1f6b967b9d984a4bcdbf4871002155b3f88da237d41d8139196cee51171",
+  "billed_units": null,
+  "recovery": "Own same session; giant HTML output failed, 10 plain-text chunks exported with exact archive hash; no build replay"
+}
