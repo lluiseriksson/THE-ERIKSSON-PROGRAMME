@@ -1,0 +1,271 @@
+SHA context: parent296498e2106a65efaecad49adb9341f5c695172e
+Research unit185, 7 November2026. Analytical source, not an AIRR manuscript,
+numerical star assessment, formal Lean result or physical mass-gap claim.
+
+OPTIMAL-ORDER RECTANGULAR OBSERVATIONS FOR ARBITRARY LAMINATED COEFFICIENTS
+
+0. Statement and scope
+
+Fix D>=3, n>=2, c>0 and p=D/2. Let X=(Z/nZ)^D have counting measure. Suppose
+
+    a(x)=alpha(x_1)>0
+
+for an arbitrary positive sequence alpha(0),...,alpha(n-1). No monotonicity,
+two-value property, contrast bound, separation, minimum independent of n,
+coefficient-gap assumption or prescribed partition is imposed. Define
+
+    E_a(U)=sum_{x,j}a(x)|U(x+e_j)-U(x)|^2.
+
+The field U may take values in any fixed finite-dimensional real or complex
+Euclidean space of dimension h. The argument is componentwise and hence also
+holds on any actual flat coexact subspace. For a rectangular partition P let
+C_P U=(sqrt(|R|)*mean_R U)_{R in P}, with the Euclidean output norm.
+
+THEOREM. There is an explicitly constructed axis-aligned integer rectangular
+partition P such that, on all fields,
+
+    c||U||^2 <= E_a(U)+c||C_P U||^2,                           (A)
+
+and, writing d=D-1,
+
+    #P <= 2^d + B_D*(c/2)^p*sum_{x in X}a(x)^(-p),
+    B_D = 2*6^d/[1-(2/3)^d].                                 (B)
+
+The output dimension is h#P. In particular, if the original coefficient
+assumptions hold with exact mean mu>=1 and mean((mu/a)^p)<=M, then
+
+    dim F <= h[2^d+B_D*(c/2)^p*2^p*M]
+                         *max(1,n^D/(1+mu)^p).                (TARGET)
+
+Thus the original target rank order is proved for every one-coordinate
+laminate, with actual penalty K=c, not an unproved kernel premise. The upper
+bound a<=2mu and exact-mean assumption are not needed for the stronger actual
+inverse-sum statement (A)-(B); they are used only when identifying the original
+admissible class and its parameter mu. The lamination assumption is essential
+to this proof and is NOT removed from the full original question. An explicit
+actual coexact falsifier to a representative-fibre extension is given below.
+
+1. Derive the local estimate from actual edges
+
+Take a cut coordinate interval I of length m, and let
+
+    R_I=sum_{x_1 in I}alpha(x_1)^(-1).
+
+Including the last start, whose longitudinal edge exits the interval, only
+makes this quantity larger. No outside edge is used as if it were internal.
+Let Z be a product of D-1 integer intervals, each of length at most m, and
+R=I times Z. Internal energies keep only positive-start edges with both
+endpoints in R, with all full-period coordinates cut into paths as well.
+Discarding these nonnegative cross-leaf/periodic edges is legitimate.
+
+For a scalar u, put v(y)=mean_I u(.,y). Orthogonal averaging gives
+
+    Var_R(u)=sum_y Var_I(u(.,y))+m Var_Z(v).                    (1)
+
+For each fixed y, the exact pair-variance formula and Cauchy along the
+one-dimensional weighted path give
+
+    Var_I(u)=m^(-1)sum_{r<s}|u(r)-u(s)|^2
+             <=((m-1)/2)*R_I*E_1(u)
+             <=(m R_I/2)*E_1(u).                              (2)
+
+Indeed each pair difference is bounded by R_I times that whole path energy,
+and there are m(m-1)/2 pairs. This is an intentionally safe resistance bound.
+
+For an unweighted path of length l<=m, the pair formula, unweighted Cauchy
+and at most l^2/4 pairs crossing an edge yield Var<=l^2 E/4. Commuting
+coordinate averaging projections therefore give
+
+    Var_Z(v)<=(m^2/4)*sum_{y,j>=2}|D_j v(y)|^2.                (3)
+
+For each transverse edge, using the actual same alpha sequence on every
+fibre, weighted Cauchy implies
+
+    |D_j v(y)|^2 <= (R_I/m^2)*sum_{x_1 in I}
+                                    alpha(x_1)|D_j u(x_1,y)|^2.
+
+Combining with (1)-(3) proves the actual local estimate
+
+    Var_R(u) <=(m R_I/2)*E_1(u)+(m R_I/4)*E_perp(u)
+              <=(m R_I/2)*E_R(u).                             (LOCAL)
+
+This is a derived weighted local gap, not an assumption supplied to a new
+structure. It uses line resistances, not the full strong Green trace rejected
+in unit184. The proof explicitly needs the coefficient to be independent of
+y; a selected representative fibre cannot replace that hypothesis.
+
+2. Construct a finite balanced interval tree
+
+Start with I={0,...,n-1}. Split a current interval of length m>=2 into its
+floor(m/2) and ceil(m/2) consecutive children exactly when
+
+    m R_I > 2/c.                                              (SPLIT)
+
+Do not split a singleton. This terminates after finitely many splits at
+depth at most ceil(log_2 n), since sizes decrease. The decision uses only
+finite sums of actual inverse coefficients; for rational data and rational
+c it is an exact rational comparison even when D is odd. Equality is accepted.
+
+For each final I of length m, partition every transverse coordinate into
+consecutive intervals of length m, except for a possible final shorter one.
+The rectangles I times their Cartesian products form an actual disjoint
+covering partition P. A singleton I gives only singleton rectangles. Every
+other leaf has m R_I<=2/c, so (LOCAL) gives c Var_R<=E_R. The exact identity
+||U||^2=sum_R Var_R(U)+||C_P U||^2 and E_a>=sum_R E_R now prove (A), including
+the specified penalty K=c. No Schur compatibility or extra output hypothesis
+is omitted.
+
+This construction is not a D-dimensional full cube tree. The refinement is
+one-dimensional and its leaf cost includes the actual transverse grids. Long
+and short terminal transverse intervals are allowed; no aspect-ratio premise
+is silently introduced.
+
+3. Critical moment controls the entire tree cost
+
+Set d=D-1=2p-1, w(I)=|I|^(-d) and b(I)=sum_I alpha^(-p). If I is an internal
+split node, Holder gives
+
+    R_I <= m^(1-1/p)*b(I)^(1/p).
+
+Together with (SPLIT), this proves
+
+    b(I) > (2/c)^p*m^(-d),
+    w(I) < (c/2)^p*b(I).                                     (4)
+
+This implication is derived; fractional inverse-p powers are not needed in
+the actual splitting decisions. Let T be the internal split nodes having no
+internal split children. They are pairwise disjoint intervals. Every split
+node has at least one descendant in T. Assign each split node to one such
+terminal split descendant. Every child has length at most2/3 of its parent
+(also for the length-two split), so along a path the ancestor w costs decay
+by at least the factor r=(2/3)^d<1 per level. Nodes assigned to a fixed
+terminal descendant lie on its single ancestor path, at distinct levels.
+Consequently
+
+    sum_{split I} w(I) <= [1-r]^(-1)*sum_{J in T}w(J)
+                       <= [(c/2)^p/(1-r)]*sum_{x_1}alpha^(-p). (5)
+
+There is no logarithmic charge of a point across all scales: its assigned
+ancestor costs form this convergent geometric series. If the root is not
+split, the internal sum is empty and the following identity still applies.
+
+The sum of leaf costs telescopes exactly from w(root)=n^(-d). For a split
+of a length-m interval, each child is at least m/3, so the increase of leaf
+cost is at most2*3^d*w(I). Hence
+
+    sum_{leaf I}|I|^(-d) <= n^(-d)+2*3^d*sum_{split I}w(I).     (6)
+
+The actual transverse cell count for I is ceil(n/m)^d <=(2n/m)^d.
+Multiply (6) by (2n)^d and use (5) and
+sum_X a^(-p)=n^d sum_{x_1}alpha^(-p). This gives exactly (B).
+
+Finally sum_X a^(-p)<=M n^D/mu^p. Since mu>=1, mu^(-p)<=2^p(1+mu)^(-p).
+Applying this inequality and max(1,.) proves (TARGET), with constants
+independent of n, the number of coefficient levels or their positions.
+
+4. A fixed-M positive family outside the fixed coefficient-gap class
+
+Let D>=3 and take n=t^D, t>=2. Put mu=n^2, b=n^(2-2/D)=t^(2D-2),
+alpha(0)=b, and alpha(j)=H=(n*mu-b)/(n-1) for j!=0. The coefficient has
+one entire weak layer. Its actual mean is mu, 1<=a<=2mu, and
+
+    mean((mu/a)^p)=1+(1-1/n)*(mu/H)^p<2.                        (7)
+
+The first summand is exactly1 because (mu/b)^p=n. On the root,
+
+    n R_root=n/b+n(n-1)/H
+             =n^(-1+2/D)+(n-1)^2/(n^2-b/n)<2.                 (8)
+
+For the last inequality use n^(-1+2/D)<=1, b<=n^2, and the strict bound
+(n-1)^2/(n^2-b/n)<=(n-1)/n<1. At c=1 the algorithm accepts the root:
+one global rectangular mean works on all fields. For D=3,t=2 the actual
+rational data are n=8,b=16,H=496/7 and nR_root=40/31.
+
+As n grows, b tends to infinity but b/mu tends to zero. Thus no fixed
+constants B and theta>0 make every site satisfy a<=B or a>=theta*mu.
+This is a positive family not covered by the earlier fixed-gap theorem.
+The laminate theorem proves its coefficients' effect rather than assuming
+the missing gap in another structure.
+
+Moreover every partition satisfying the minimum-only local certificate
+min_R(a)*lambda_1^0(R)>=1 has at least
+
+    40^(-(D-1)/2)*n^((D-1)/D) cells.                           (9)
+
+For a weak-layer-containing nonsingleton cell, a coordinate test gives
+lambda_1^0(R)<=40/l_j^2 for every transverse side l_j>=2, whether a
+full-period side is cut or retained. Thus every transverse length is at
+most sqrt(40b); length-one sides satisfy this too. Such a cell contains at
+most (40b)^((D-1)/2) weak-layer vertices. Cover the n^(D-1) layer vertices
+and insert b=n^(2-2/D) to obtain (9). Singleton cells also obey this count.
+This rejects a specific minimum-coefficient certificate, not rectangular
+observations: the actual successful partition here has one cell by (8).
+
+5. Actual coexact falsifier to dropping the fibre hypothesis
+
+This falsifies only the proposed extension using one representative fibre.
+It does not falsify (A) or the original unrestricted rectangular question.
+Take D=3,n=4,c=15/2. Give coefficient1 to the cube {0,1,2}^3 and64 elsewhere.
+Its exact mean is mu=2395/64, and 1<=a<=2mu. Its normalized critical inverse
+moment is less than100: use mu<38, sqrt(38)<31/5 and mu/64<1 to bound it by
+
+    (27/64)*(1178/5)+37/64 =31991/320<100.                     (10)
+
+On the fibre y=(3,3), all four coefficients are64, so its root resistance
+test has nR=1/4<2/c=4/15 and would accept a single global mean.
+
+Let G be the scalar unit point mass at z=(1,1,1), and construct the actual
+coexact field from a plaquette potential by
+
+    U_1=D_2^-G, U_2=-D_1^-G, U_3=0.
+
+Backward differences commute, so div^- U=0, and the displayed potential
+gives coexactness, not just a supplied divergence premise. Every forward
+gradient start with a nonzero difference lies in {0,1,2}^3. Directly summing
+the four signed point values gives
+
+    mean_X U=0, ||U||^2=4, E_a(U)=28<30=c||U||^2.              (11)
+
+For each of the two occupied components, a pair of opposite adjacent point
+masses has unweighted gradient energy4D+2=14; there is no n=2 wrap alias
+at n=4. All those starts have actual coefficient1, which proves (11).
+The one-mean penalty vanishes. Thus using a representative fibre in place
+of a uniform laminate is an invalid extension even on the actual coexact
+domain, with original finite admissible data c=15/2,M=100 and a<=2mu.
+The original problem may use a different partition and finite output, so
+no general negative result follows from this example.
+
+6. Status, attribution and verification boundaries
+
+This note supplies a complete finite analytical proof for a substantial
+positive subclass of the sole original question. It does not supply a full
+arbitrary-coefficient partition theorem or any interacting/continuum result.
+One-dimensional weighted Cauchy/Hardy bounds and adaptive tree accounting
+are classical mechanisms; no independent originality certificate is claimed.
+
+Targeted primary-source checks:
+ - B. Muckenhoupt, Hardy's inequality with weights, Studia Math.44(1972),
+   31-38, DOI10.4064/sm-44-1-31-38. Publisher metadata at IMPAN checked;
+   publisher PDF retrieval returned403. No inaccessible theorem is imported.
+ - P. Binev and R. DeVore, Fast computation in adaptive tree approximation,
+   Numer.Math.97(2004),193-217, DOI10.1007/s00211-003-0493-6. Author's
+   publication list checked at https://people.math.sc.edu/binev/ ; an old
+   institutional preprint link returned404. Abstract and author-uploaded
+   article discovery are not represented as a full priority audit.
+The elementary estimates (1)-(6) are proved here, rather than cited in lieu
+of proof. Broader priority and comparison to adaptive weighted approximation
+remain to be independently reviewed before a grouped manuscript revision.
+
+The proof is not Lean verified. A prepared finite rational driver is not
+evidence of execution until its actual outputs/exits/hashes are retained.
+Any numerical review of the public v8 PDF remains attached only to that
+PDF; this new research source has no inherited score or editorial acceptance.
+
+Mechanism: actual line resistances plus orthogonal transverse averages;
+falsator: a laminated coefficient and a leaf passing mR<=2/c but failing
+the actual matrix cVar<=E, or an actual tree violating (5)-(6). Abandon an
+extension that substitutes one representative fibre: (10)-(11) disproves it.
+To go beyond laminates, derive an actual transverse control rather than
+assume a favourable fibre, a hidden local gap or a separation property.
+The sole original critical rectangular question remains open. PR29 remains
+20/41,TermSource0. Existing stopped-route counters are not reset.
