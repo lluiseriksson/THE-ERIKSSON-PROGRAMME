@@ -1,0 +1,63 @@
+Base3f13471ee894138ed2eb15bc71dc2a50c6f9b275. Unit168.
+FRESH PRIMARY-SOURCE RECHECK — not independently prepared review
+
+Primary source actually opened7November2026:
+Rupert L. Frank, Cwikel's theorem and the CLR inequality,
+arXiv:1206.3325v1 (14June2012), Theorem3.1, Section3.1.
+https://arxiv.org/html/1206.3325v1
+https://arxiv.org/pdf/1206.3325v1
+The theorem on a unitary bounded L1->Linfinity transform has constant
+(q/2)(q/(q-2))^(q-1) times the square of that transform norm, multiplying
+the strong Schatten-valued q budget and weak operator-norm q budget.
+It applies to counting measures on the finite torus with identical
+finite internal spaces. No Euclidean-only or scalar-only invocation is
+required. We use H=G=C^r to avoid the theorem's heterogeneous-space
+notation issue. This imported theorem and its proof are not new results.
+
+Adapter obligations checked against the actual source167:
+1. The square counting Fourier transform has kernel V^-1/2 times a
+unit-modulus scalar and identity_r. Triangle inequality gives L1->Linf
+norm<=V^-1/2; a field supported at one site attains it. Its SQUARE, not
+its Dth power, enters Frank's constant, hence V^-1.
+2. J=dL0^-1 maps h-component mean-zero fields to Dh-component fields.
+Set its zero-frequency symbol to0 and embed h coordinates constantly
+and isometrically into r=Dh. G(k)=J(k)I* is square. At nonzero k its
+operator norm is lambda(k)^-1/2 because J(k)*J(k)=lambda(k)^-1 I_h.
+No trace or rank factor is inserted in the weak operator-norm budget.
+3. F_r* M_G F_r I reproduces J. The right factor is an isometry and
+restriction cannot increase any singular value. The strong multiplier
+budget is sum_x tr(A(x)^(-D/2)), including all r local eigenvalues.
+No simultaneous diagonalization of the coefficient matrices is needed.
+4. Centered frequency representatives satisfy |b_i|<=n/2 and the
+elementary sine bound gives lambda>=16|b|^2/n^2. A strict singular
+threshold t corresponds to0<|b|<R=n/(4t). For R<=1 no representative
+qualifies. For R>1 the containing integer cube has at most
+(2floor(R)+1)^D<=(3R)^D points, even when this overcounts the torus.
+Thus the weak budget is bounded by(3/4)^D V. Boundary even-n choices
+are chosen uniquely and do not duplicate representatives.
+5. Combining q=D>2 gives exactly alpha_D in Theorem1 of167. The
+frequency V cancels V^-1 ONCE. Replacing V^-1 by1 would weaken the
+statement byV; inserting a second V^-1 would be unjustified.
+6. The actual feasible flow Jb proves L_A^-1<=J*A^-1J on the full
+mean-zero space for SPD A. The minimizing flow A d L_A^-1 b is unique
+modulo divergence-free competitors; the cross term vanishes since
+d*k=0. Both inverses exist because ker d consists of constant fields.
+7. Strict eigenvalue comparison at1/c counts positive eigenvalues of
+L_A belowc. Its h actual constant modes are then added. Complexifying
+a real symmetric form preserves eigenvalue multiplicities.
+
+Disposition: this fresh recheck found no failed adapter obligation in
+the stated finite SPD theorem. It does NOT close the outstanding demand
+for an independently prepared source/form audit, establish original
+priority or identify an interacting physical Hessian. The reviewer is
+the same continuing Codex preparation session; exact backend model name
+is unavailable. No external score, peer review or Lean build was used.
+Old exactPDF167 and its self-review remain immutable.
+
+New calculation168 is retained separately in critical-penalty168.txt:
+full exact ambient scalar penalty, its transition, and the exact leading
+coexact critical residue. It is an analytical extension of the classical
+Schur mechanism already credited in165 (Higham's author source,
+https://nhigham.com/2023/06/01/what-is-the-schur-complement-of-a-matrix/).
+No claim of independent novelty is made. Do not use this same-session
+recheck to label the manuscript independently reviewed.
