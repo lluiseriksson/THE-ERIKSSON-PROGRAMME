@@ -23,24 +23,25 @@
   "scope": "Finite flat componentwise forms only; no interacting/continuum gap",
   "sources": [
     {
-      "name": "flat_critical_integrated.tex",
-      "sha256": "576692fa0d95345979a0f8a90e570e075024ae0c06a3919d9cbb0aa7756d7308"
+      "sha256": "576692fa0d95345979a0f8a90e570e075024ae0c06a3919d9cbb0aa7756d7308",
+      "name": "flat_critical_integrated.tex"
     },
     {
-      "name": "partition.tex",
-      "sha256": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2"
+      "sha256": "18a864a9e4eb3aeba417d0ea3f9238b67a68886d2fa9901e64c81298a6369be2",
+      "name": "partition.tex"
     },
     {
-      "name": "physical-cycle.tex",
-      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c"
+      "sha256": "c06cfc76e02a7c50a83d7f9dbad0fb2b92f23440f330339a16c533fb4494917c",
+      "name": "physical-cycle.tex"
     },
     {
-      "name": "sobolev.tex",
-      "sha256": "879f895b69eb04fd41c26fd4e4bd779dcdfe7d9547c22181c6d4313f343bdb43"
+      "sha256": "879f895b69eb04fd41c26fd4e4bd779dcdfe7d9547c22181c6d4313f343bdb43",
+      "name": "sobolev.tex"
     },
     {
-      "name": "spatial-geometry.tex",
-      "sha256": "6c5c9bbd4a9ed8306810b6e2afb0bb659180e4e8d8ad25c5a85656b89545ab3e"
+      "sha256": "b6391a826821da0b6f7dd14e7fc639bb2a9d6056e65c4c2b98ae6ecf9168959d",
+      "name": "spatial-geometry.tex"
     }
-  ]
+  ],
+  "layout_correction": "Attempt A preserved:63pages SHA c6feb3868e7abf0047961684c69d6585251d7306ba1418b4e8d65ab2d9b445e0, overfull23.8639pt at spatial line340; split display without mathematical change before any model assessment"
 }
