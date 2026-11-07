@@ -127,6 +127,34 @@ penalty locally bounded above by K||y||^2, for any finite K, fails.
 This addresses the original *free finite penalty* distinction; it is not
 merely a failure of a prescribed value K=c.
 
+## The finite-penalty endpoint is also explicit
+
+For this example one can calculate the full endpoint, rather than assume
+that nonnegative kernel margin is sufficient. Put d=b-c>0 and r=b-a.
+On H, L-cI+KPi=dI+KPi-rvv*. For K>=0, the positive operator
+B=dI+KPi is invertible. By Cauchy-Schwarz after the substitution B^(1/2)f,
+B-rvv* is nonnegative if and only if r<v,B^(-1)v><=1. As Pi is a
+projection, this condition is exactly
+
+    r[(1-t)/d+t/(d+K)] <= 1.
+
+Solving it gives the following exact criterion and minimum coefficient:
+
+    some finite K exists  iff  rt>c-a;
+    K_min=(b-c)(c-a)/[(b-a)t-(c-a)].                    (5)
+
+At rt=c-a the first summand already equals1 and the second is positive
+for every finite K. Thus the non-strict kernel endpoint in(2) cannot be
+rescued. This is an explicit instance of the classical singular-Schur
+compatibility issue, not a claim to a new Schur principle. A penalty
+locally bounded above by K times the squared normalized means cannot
+outperform this quadratic test; conversely the displayed quadratic
+penalty attains it.
+
+In particular, for a=c/2,b=2c, successful finite-penalty rectangular
+data require t>1/3, hence q>N/3. The integer lower bound is therefore
+floor(N/3)+1. The weaker kernel-only statement(4) remains valid.
+
 ## Hand checks and proof audit
 
 * Two parity classes each have N/2 vertices. The weighted degree is
@@ -139,6 +167,11 @@ merely a failure of a prescribed value K=c.
 * On H, a single point evaluation uniquely determines a scalar multiple
   of v; on span{e,v}, two opposite-parity point samples are a uniqueness
   set. Neither observation fact proves full-domain target coercivity.
+* The cell-count constant is not silently upgraded to1/2. On the 1D
+  cycle of length16, take six consecutive singleton cells and the
+  remaining interval of length10: q=7<N/2, t=6/16=3/8. For c=1,
+  a=1/2,b=2, equation(5) gives K_min=8, so this partition succeeds.
+  This is a hand-derived exact boundary check, not an executed replay.
 * The proof uses no eigenvalue enumeration, asymptotic approximation,
   supplied geometry certificate, local Lean build or numerical verdict.
   It is an elementary analytic proof, not machine verification. A replay
